@@ -16,9 +16,11 @@ class MotionsController < GroupBaseController
       @group = GroupDecorator.new(@motion.group)
       authorize! :create, @motion
       if @motion.save
+        Measurement.increment('motions.create.success')
         flash[:success] = t("success.proposal_created")
         redirect_to @discussion
       else
+        Measurement.increment('motions.create.error')
         flash[:warning] = t("warning.proposal_not_created")
         render action: :new
       end
@@ -67,8 +69,10 @@ class MotionsController < GroupBaseController
 
   def create_outcome
     if MotionService.create_outcome(@motion, permitted_params.motion, current_user)
+      Measurement.increment('motions.create_outcome.success')
       flash[:success] = t("success.motion_outcome_created")
     else
+      Measurement.increment('motions.create_outcome.error')
       flash[:error] = t("error.motion_outcome_not_created")
     end
     redirect_to discussion_url(@motion.discussion, proposal: @motion)
@@ -76,8 +80,10 @@ class MotionsController < GroupBaseController
 
   def update_outcome
     if MotionService.update_outcome(@motion, permitted_params.motion, current_user)
+      Measurement.increment('motions.update_outcome.success')
       flash[:success] = t("success.motion_outcome_updated")
     else
+      Measurement.increment('motions.update_outcome.error')
       flash[:error] = t("error.motion_outcome_not_updated")
     end
     redirect_to discussion_url(@motion.discussion, proposal: @motion)
@@ -89,9 +95,11 @@ class MotionsController < GroupBaseController
     safe_values[:close_at_time] = params[:motion][:close_at_time]
 
     if @motion.update_attributes(safe_values)
+      Measurement.increment('motions.edit_close_date.success')
       Events::MotionCloseDateEdited.publish!(@motion, current_user)
       flash[:success] = t("success.close_date_changed")
     else
+      Measurement.increment('motions.edit_close_date.error')
       flash[:error] = t("error.invalid_close_date")
     end
     redirect_to discussion_url(@motion.discussion)

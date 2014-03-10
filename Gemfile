@@ -53,6 +53,7 @@ gem 'sequenced', '~> 1.4.0'
 gem 'closure_tree', '~> 4.3.0'
 gem 'ruby-progressbar', '1.4.1'
 gem 'bing_translator', '~> 4.0.0'
+gem 'librato-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -107,7 +108,6 @@ group :test do
 end
 
 group :staging, :production do
-  gem 'librato-rails'
   gem 'memcachier', '~> 0.0.2'
   gem 'dalli', '~> 2.6.4'
   gem 'newrelic_rpm', '~> 3.7.3'
