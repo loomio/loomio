@@ -12,11 +12,11 @@ pt:
       privacy: 'Privacidade'
       services: 'Serviços'
     hero:
-      head: 'O mundo precisa de um jeito melhor para tomar decisões em conjunto. '
+      head_html: 'O mundo precisa de um jeito melho de <strong>tomar decisões em conjunto.</strong>'
       subhead: 'Ajude-nos a construí-lo.'
       desc: 'Loomio é um programa de código livre e aberto para qualquer pessoa de qualquer lugar participar das decisões que as afete.'
     product:
-      header: 'Quando nós ouvimos todas as vozes, nós tomamos decisões melhores. '
+      header_html: 'Quandos nós ouvimos <strong>todas as vozes</strong>, nós tomamos <strong>decisões melhores.</strong>'
       step1:
         header: '1. Converse sobre as coisas. '
         desc: 'Inicie uma discussão sobre qualquer assunto e traga as pessoas certas. Compartilhe perspectivas diversas e desenvolva as ideias em conjunto. '
@@ -29,14 +29,14 @@ pt:
     crowdfunding:
       header: 'Estamos buscando o financiamento coletivo para que possamos terminar de construir esta nova plataforma e entregá-la para o mundo.'
     prototype:
-      header: "Nós já construímos um protótipo e as pessoas de todo o mundo estão fazendo coisas incríveis com ele:"
-      subhead: 'Experimente o Loomio Beta agora. Ou junte-se à campanha para obter acesso antecipado ao Loomio 1.0.'
+      header_html: "Nós já construímos um <strong>protótipo</strong>, e pessoas <strong>de todo o mundo</strong> estão fazendo coisas incríveis com ele:"
+      subhead_html: '<a href="%{try_loomio_link}">Experimente o Loomio Beta</a> agora. Ou <a href="%{join_campaign_link}">junte-se à campanha</a> para ter acesso antecipado ao Loomio 1.0.'
     mobile:
       header: 'O Loomio 1.0 deixa as pessoas tomar decisões em conjunto onde quer que elas estejam.'
     quote:
       header:
-        rushkoff: "O Loomio libera o potencial da internet de levar as pessoas em direção ao consenso em vez do debate polarizado. -Douglas Rushkoff"
-        sifry: 'O Loomio está atingindo um ponto ideal entre a voz individual e decisão coletiva. -Micah Sifry'
+        rushkoff_html: "\"O Loomio <strong>libera o potencial da internet</strong> para levar as pessoas em direção ao consenso em vez do debate polarizado.\" -Douglas Rushkoff"
+        sifry_html: 'O Loomio está alcançado o ponto doce entre <strong>a voz individual</strong> e <strong>a decisão coletiva</strong>. -Micah Sifry'
     team:
       header: 'Sobre o Loomio'
       desc: 'Somos uma pequena equipe de desenvolvedores de código aberto e ativistas de justiça social que trabalham na Enspiral na Aotearoa Nova Zelândia, com uma rede mais ampla de amigos, apoiadores e conselheiros de todo o mundo.'
