@@ -107,6 +107,7 @@ group :test do
 end
 
 group :staging, :production do
+  gem 'librato-rails'
   gem 'memcachier', '~> 0.0.2'
   gem 'dalli', '~> 2.6.4'
   gem 'newrelic_rpm', '~> 3.7.3'
