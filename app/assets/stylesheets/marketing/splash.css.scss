@@ -489,6 +489,17 @@ a:hover { text-decoration: none; }
     background-size: auto;
     background-position: center;
   }
+  .mobile-header {
+    h1 {
+      display: none;
+      @include screen-size(medium-up) {
+        display: block;
+        color: #fff;
+        margin-left: 40px;
+        margin-top: 60px;
+      }
+    }
+  }
 }
 
 .quote {
