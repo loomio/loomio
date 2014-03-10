@@ -185,7 +185,6 @@ cs:
     motion_outcome_updated: "aktualizoval(a) výsledek návrhu"
   edit_discussion_context: "Upravit kontext diskuze"
   request_new_group: "Vytvořit skupinu"
-  request_new_group_details: "nebo počkejte, dokud nebudete do jedné pozván(a)."
   empty_notifications: "Nemáte zatím žádná upozornění."
   see_all_notifications: "Zobrazit všechna upozornění"
   profile: "Profil"

@@ -12,10 +12,8 @@ pl:
       privacy: 'Prywatność'
       services: 'Usługi'
     hero:
-      head: 'Świat potrzebuje lepszego sposobu na podejmowanie wspólnie decyzji.'
       subhead: 'Pomóż nam to stworzyć.'
     product:
-      header: 'Gdy słyszymy wszystkie głosy, możemy podjąć lepsze decyzje.'
       step1:
         header: '1. Omówcie wspólnie tematy'
       step2:

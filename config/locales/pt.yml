@@ -174,7 +174,6 @@ pt:
     motion_outcome_updated: "atualizou o resultado da proposição"
   edit_discussion_context: "Editar contexto da discussão"
   request_new_group: "Iniciar um grupo"
-  request_new_group_details: "ou aguarde até ser convidado para um."
   empty_notifications: "Você ainda não tem notificações."
   see_all_notifications: "Ver todas as notificações"
   sign_out: "Sair"
