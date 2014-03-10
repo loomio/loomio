@@ -49,6 +49,7 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     addressable (2.2.8)
+    aggregate (0.2.2)
     airbrake (3.1.14)
       builder
       json
@@ -249,6 +250,15 @@ GEM
     kgio (2.8.1)
     launchy (2.0.5)
       addressable (~> 2.2.6)
+    librato-metrics (1.3.0)
+      aggregate (~> 0.2.2)
+      faraday (~> 0.7)
+      multi_json
+    librato-rack (0.4.4)
+      librato-metrics (~> 1.1)
+    librato-rails (0.10.2)
+      librato-rack (~> 0.4.2)
+      rails (>= 3.0)
     listen (0.7.3)
     lumberjack (1.0.4)
     mail (2.5.4)
@@ -270,7 +280,7 @@ GEM
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
-    newrelic_rpm (3.7.2.195)
+    newrelic_rpm (3.7.3.199)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     oauth2 (0.8.1)
@@ -547,10 +557,11 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari (~> 0.14.0)
   launchy (~> 2.0.5)
+  librato-rails
   memcachier (~> 0.0.2)
   meta_request (~> 0.2.8)
   modernizr-rails (~> 2.6.2)
-  newrelic_rpm (~> 3.7.2)
+  newrelic_rpm (~> 3.7.3)
   nokogiri (~> 1.6.0)
   omniauth (~> 1.1.4)
   omniauth-browserid (~> 0.0.1)

@@ -256,3 +256,17 @@
   padding-top: 10px;
 
 }
+
+.development-warning {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  background-color: pink;
+  height: 28px;
+  width: 44px;
+  padding-top: 12px;
+  text-align: center;
+  font-weight: 700;
+  border: 2px solid white;
+}

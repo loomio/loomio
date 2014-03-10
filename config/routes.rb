@@ -181,15 +181,16 @@ Loomio::Application.routes.draw do
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
   get '/group_requests/:id/start_new_group' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('token=','')}"}
 
-  resources :contributions, only: [:index, :create] do
-    get :callback, on: :collection
-    get :thanks, on: :collection
-  end
+  get '/contributions' => redirect('/crowd')
+  get '/contributions/thanks' => redirect('/crowd')
+  get '/contributions/callback' => redirect('/crowd')
 
-  authenticated do
-    root :to => 'dashboard#show'
-  end
+  # resources :contributions, only: [:index, :create] do
+  #   get :callback, on: :collection
+  #   get :thanks, on: :collection
+  # end
 
+  get '/dashboard', to: 'dashboard#show', as: 'dashboard'
   root :to => 'pages#home'
 
   scope controller: 'pages' do
@@ -199,6 +200,7 @@ Loomio::Application.routes.draw do
     get :purpose
     get :pricing
     get :terms_of_service
+    get :third_parties
     get :browser_not_supported
   end
 

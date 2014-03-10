@@ -10,7 +10,7 @@ class Users::EmailPreferencesController < BaseController
     resource
     if resource.update_attributes(permitted_params.email_preferences)
       flash[:notice] = "Your email settings have been updated."
-      redirect_to root_url
+      redirect_to dashboard_or_root_path
     else
       flash[:error] = "Failed to update settings"
       render :edit

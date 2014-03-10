@@ -8,7 +8,7 @@ Given /^someone comments on the discussion$/ do
 end
 
 When /^I visit the dashboard$/ do
-  visit root_path
+  visit dashboard_path
 end
 
 Then(/^I should see that the discussion has (\d+) unread$/) do |arg1|

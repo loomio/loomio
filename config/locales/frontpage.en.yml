@@ -1,0 +1,60 @@
+en:
+  frontpage:
+    link:
+      blog: 'Blog'
+      contact: 'Contact'
+      log_in: 'LOG IN'
+      crowdfunding: 'Check out the crowdfunding campaign'
+      more: 'More'
+      top: 'Top'
+      public_groups: 'Public groups'
+      terms: 'Terms'
+      privacy: 'Privacy'
+      services: 'Services'
+    hero:
+      head_html: 'The world needs a better way to <strong>make decisions together.</strong>'
+      subhead: 'Help us build it.'
+      desc: 'Loomio is free and open software for anyone, anywhere, to participate in decisions that aﬀect them'
+    product:
+      header_html: 'When we hear <strong>all voices</strong>, we make <strong>better decisions.</strong>'
+      step1:
+        header: '1. Talk things through'
+        desc: 'Start a discussion on any topic, and bring in the right people. Share diverse perspectives and develop ideas together.'
+      step2:
+        header: '2. Build agreement'
+        desc: 'Anyone can propose a course of action. People can agree, abstain, disagree, or block – so you can see how everyone feels, and why.'
+      step3:
+        header: '3. Decide together'
+        desc: 'Develop the proposal together so that it works for everyone. Every decision has a clear deadline, so you always get a clear outcome.'
+    crowdfunding:
+        header: 'We’re crowdfunding so we can ﬁnish building this new platform and give it away to the world.'
+    prototype:
+      header_html: "We've already built a <strong>prototype</strong>, and people <strong>all over the world</strong> are doing amazing things with it:"
+      subhead_html: '<a href="%{try_loomio_link}">Try Loomio Beta</a> now. Or <a href="%{join_campaign_link}">join the campaign</a> to get early access to Loomio 1.0.'
+    mobile:
+      header: 'Loomio 1.0 lets people make decisions together wherever they are.'
+    quote:
+      header:
+        rushkoff_html: "\"Loomio <strong>unleashes the internet's potential</strong> to bring people towards consensus rather than polarized debate.\" -Douglas Rushkoff"
+        sifry_html: 'Loomio is hitting a sweet spot between <strong>individual voice</strong> and <strong>collective decision</strong>. -Micah Sifry'
+    team:
+      header: 'About Loomio'
+      desc: 'We’re a small team of open-source developers and social justice activists working at Enspiral in Aotearoa New Zealand, with a wider network of friends, supporters and advisors all over the world.'
+    ideals:
+      community:
+        header: 'Community driven cooperative'
+        desc: 'Loomio is built by a worker-owned cooperative. We’re a social enterprise working to maximise positive social impact, not proﬁt.'
+      independent:
+        header: 'Independent and neutral'
+        desc: 'We maintain a space for any group to come together, that is independent of political or corporate interest. We will never sell your data.'
+      open:
+        header: 'Free and open software'
+        desc: 'Loomio’s code is a public resource that anyone can run, read, learn from, modify and redistribute.'
+      gift:
+        header: 'Gift economy'
+        desc: 'Loomio is supported by those who pay according to their means. This keeps the platform free of advertising and accessible to groups with no money.'
+    vision:
+      header: 'Help us turn this vision into a reality.'
+
+
+
