@@ -211,8 +211,6 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
-    harness (2.0.0)
-      statsd-ruby
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -455,7 +453,6 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh
       term-ansicolor
-    statsd-ruby (1.2.1)
     strong_parameters (0.2.2)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -546,7 +543,6 @@ DEPENDENCIES
   guard-rspec (~> 2.3.3)
   guard-spork (~> 1.4.1)
   haml-rails (~> 0.4)
-  harness
   heroku-deflater (~> 0.5.1)
   httparty (~> 0.11.0)
   inherited_resources (~> 1.4.1)
