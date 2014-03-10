@@ -9,8 +9,13 @@ es:
   attachment:
     error:
       too_large: "El archivo que tratas de adjuntar es mas grande de 50MB, escoge uno mas pequeño. "
+  time:
+    formats:
+      for_today: '%l:%M %P'
   date:
     formats:
+      for_this_year: '%e %b'
+      for_another_year: '%-d/%-m/%y'
       datepicker: "%d-%m-%Y"
   devise:
     invitations:
@@ -165,7 +170,6 @@ es:
     motion_outcome_updated: "resultado de propuesta modificado"
   edit_discussion_context: "Editar la discusión información"
   request_new_group: "Empieza un grupo"
-  request_new_group_details: "o espera hasta que seas invitado a uno."
   empty_notifications: "Todavía no tienes notificaciones."
   see_all_notifications: "Ver todas tus notificaciones"
   sign_out: "Salir"

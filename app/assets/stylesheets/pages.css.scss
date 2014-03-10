@@ -71,7 +71,8 @@ li.selector-item a.selector-link:hover {
 }
 
 .alert {
-  margin: 20px 0 -10px 0;
+  margin: 0px 0 0px -10px;
+  width: 890px;
 }
 
 // color coded urgency labels
@@ -116,7 +117,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.about,
 .pages.blog,
 .pages.privacy,
-.pages.pricing,
+.pages.services,
 .pages.terms_of_service,
 .pages.third_parties,
 .pages.purpose,
@@ -126,7 +127,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .woc.index,
 .we_the_people.index {
   color: black;
-  background-color: #f7f7f7;
+  background-color: #F2F1ED;
 
   .pages-information { min-height: 200px; }
 
@@ -236,7 +237,7 @@ a.btn-icon:hover { color: $dark-grey; }
   section{
     background: white;
     border: 1px solid #eee;
-    box-shadow: 3px 3px 5px #eee;
+    border-radius: 6px;
     margin-top: 34px;
   }
 
@@ -351,7 +352,7 @@ body.pages.home {
     h2 { margin-bottom: 20px; }}
 }
 
-body.pages.pricing .container{
+body.pages.services .container{
   h3 { margin-bottom: .4em; }
   .span9#content {
     width: 80%;
@@ -636,13 +637,6 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.13);
   -webkit-font-smoothing: antialiased;
 }
-
-.fork-me-ribbon {
-  position: absolute;
-  top: 0;
-  left: 0; border: 0;
-}
-
 
 body.pages.crowd {
   section.first { }

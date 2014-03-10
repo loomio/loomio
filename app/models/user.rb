@@ -103,8 +103,10 @@ class User < ActiveRecord::Base
   scope :sorted_by_name, order("lower(name)")
   scope :admins, where(is_admin: true)
   scope :coordinators, joins(:memberships).where('memberships.access_level = ?', 'admin').group('users.id')
-  #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
-  #
+
+  def self.email_taken?(email)
+    User.find_by_email(email).present?
+  end
 
   def is_logged_in?
     true
@@ -124,20 +126,12 @@ class User < ActiveRecord::Base
     (parents.to_a + orphans.to_a).sort{|a, b| a.full_name <=> b.full_name }
   end
 
-  def self.email_taken?(email)
-    User.find_by_email(email).present?
-  end
-
   def first_name
     name.split(' ').first
   end
 
   def name_and_email
     "#{name} <#{email}>"
-  end
-
-  def primary_language
-    language_preference.split(',').first if language_preference
   end
 
   # Provide can? and cannot? as methods for checking permissions
@@ -265,6 +259,10 @@ class User < ActiveRecord::Base
     elsif kind == "uploaded"
       uploaded_avatar.url(size)
     end
+  end
+
+  def locale
+    selected_locale || detected_locale
   end
 
   def using_initials?

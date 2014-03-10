@@ -9,7 +9,7 @@ class UsersController < BaseController
 
   def update
     if current_user.update_attributes(permitted_params.user)
-      set_locale
+      set_application_locale
       flash[:notice] = t("notice.settings_updated")
       redirect_to dashboard_path
     else

@@ -7,6 +7,7 @@ class BaseController < ApplicationController
   before_filter :check_for_omniauth_authentication,
                 :check_for_invitation,
                 :load_announcements,
+                :initialize_search_form,
                 :set_time_zone_from_javascript, if: :user_signed_in?
 
   helper_method :time_zone
@@ -18,6 +19,9 @@ class BaseController < ApplicationController
   helper_method :permitted_params
 
   protected
+  def initialize_search_form
+    @search_form = SearchForm.new(current_user)
+  end
 
   def load_announcements
     if current_user and not request.xhr?

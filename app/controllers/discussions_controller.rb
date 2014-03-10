@@ -7,6 +7,8 @@ class DiscussionsController < GroupBaseController
 
   after_filter :mark_as_read, only: :show
 
+  caches_action :show, :cache_path => Proc.new { |c| c.params }, unless: :user_signed_in?, :expires_in => 5.minutes
+
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.not_found') }
   end
