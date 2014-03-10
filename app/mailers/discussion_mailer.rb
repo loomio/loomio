@@ -5,7 +5,7 @@ class DiscussionMailer < BaseMailer
     @group = discussion.group
     @rendered_discussion_description = render_rich_text(discussion.description, discussion.uses_markdown)
     @utm_hash = UTM_EMAIL.merge utm_source: 'new_discussion_created'
-    locale = best_locale(user.language_preference, discussion.author.language_preference)
+    locale = best_locale(user.locale, discussion.author.locale)
     I18n.with_locale(locale) do
       mail  to: user.email,
             from: "#{discussion.author.name} <noreply@loomio.org>",

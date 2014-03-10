@@ -1,5 +1,8 @@
 en:
   frontpage:
+    view_this_in_your_language: 'View this site in %{language}'
+    title:
+      collaborative_decision_making: Collaborative Decision-Making
     link:
       blog: 'Blog'
       contact: 'Contact'
@@ -14,7 +17,7 @@ en:
     hero:
       head_html: 'The world needs a better way to <strong>make decisions together.</strong>'
       subhead: 'Help us build it.'
-      desc: 'Loomio is free and open software for anyone, anywhere, to participate in decisions that aﬀect them'
+      desc: 'Loomio is free and open software for anyone, anywhere, to participate in decisions that affect them'
     product:
       header_html: 'When we hear <strong>all voices</strong>, we make <strong>better decisions.</strong>'
       step1:
@@ -36,7 +39,7 @@ en:
     quote:
       header:
         rushkoff_html: "\"Loomio <strong>unleashes the internet's potential</strong> to bring people towards consensus rather than polarized debate.\" -Douglas Rushkoff"
-        sifry_html: 'Loomio is hitting a sweet spot between <strong>individual voice</strong> and <strong>collective decision</strong>. -Micah Sifry'
+        sifry_html: "\"Loomio is hitting a sweet spot between <strong>individual voice</strong> and <strong>collective decision</strong>\". -Micah Sifry"
     team:
       header: 'About Loomio'
       desc: 'We’re a small team of open-source developers and social justice activists working at Enspiral in Aotearoa New Zealand, with a wider network of friends, supporters and advisors all over the world.'

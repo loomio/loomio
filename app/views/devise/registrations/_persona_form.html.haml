@@ -2,7 +2,6 @@
   =f.error_notification
   =f.input :name
   =f.input :email
-  =f.input :language_preference, :collection => Translation::LANGUAGES, selected: I18n.locale, include_blank: false
 
   .terms-of-service-text=t(:terms_of_service_html, button_text: t(:"devise.registrations.sign_up"), link_path: terms_of_service_path)
   -sign_up = t(:"devise.registrations.sign_up")
