@@ -28,6 +28,7 @@
             %li
               %a{href: 'https://www.facebook.com/Loomio'}
                 %i.fa.fa-facebook
+            %li= link_to t(:'frontpage.link.press'), 'http://blog.loomio.org/press-pack', class: 'press'
             %li= link_to t(:'frontpage.link.blog'), blog_path, class: 'blog'
             %li= link_to t(:'frontpage.link.contact'), contact_path, class: 'contact'
             %li= link_to t(:'frontpage.link.log_in'), new_user_session_path, class: 'btn btn-orange'
@@ -69,11 +70,11 @@
             #product-carousel.content.product-carousel.carousel.slide{"data-ride" => 'carousel'}
               .carousel-inner
                 .item.active
-                  = image_tag 'ipad-1.png'
+                  = image_tag 'ipad-1.png', alt: 'Loomio 1.0 discussion mockup'
                 .item
-                  = image_tag 'ipad-2.png'
+                  = image_tag 'ipad-2.png', alt: 'Loomio 1.0 proposal mockup'
                 .item
-                  = image_tag 'ipad-3.png'
+                  = image_tag 'ipad-3.png', alt: 'Loomio 1.0 proposal outcome mockup'
               %a.carousel-control.left-ctrl{href: '#product-carousel', "data-slide" => 'prev'}
                 %i.fa.fa-angle-left
               %a.carousel-control.right-ctrl{href: '#product-carousel', "data-slide" => 'next'}
@@ -98,7 +99,7 @@
               .carousel-inner
                 .item.active
                   .carousel-image
-                    = image_tag 'genzero.png'
+                    = image_tag 'genzero.png', alt: "Generation Zero"
                   .carousel-desc
                     Generation Zero is a youth-led network of climate change activists. Decisions made on Loomio inform their national campaigns and events.
                     .quote
@@ -106,7 +107,7 @@
                       %br – Jimmy Green, Events Director
                 .item
                   .carousel-image
-                    = image_tag 'pathways.png'
+                    = image_tag 'pathways.png', alt: 'Pathways'
                   .carousel-desc
                     New Zealand's leading national provider of community-based mental health and wellness services is rolling out Loomio organisation-wide.
                     .quote
@@ -114,7 +115,7 @@
                       %br – Ross Phillips, business improvement manager
                 .item
                   .carousel-image
-                    = image_tag 'timebank.png'
+                    = image_tag 'timebank.png', alt: 'Wellington Timebank'
                   .carousel-desc
                     Timebanking creates thriving communities by trading skills, knowledge and services between locals.
                     .quote
@@ -122,7 +123,7 @@
                       %br – Hannah Mackintosh, coordinator
                 .item
                   .carousel-image
-                    = image_tag 'nvc.png'
+                    = image_tag 'nvc.png', alt: 'Non-Violent Communication Convention'
                   .carousel-desc
                     After finding it impossible to coordinate a committee across Asia and Europe using other tools, the Non-Violent Communication Convention moved to Loomio.
                     .quote
@@ -164,7 +165,7 @@
           %blockquote= t(:'frontpage.quote.header.sifry_html')
 
       .row
-        = image_tag 'team.png', class: 'img-responsive'
+        = image_tag 'team.png', class: 'img-responsive', alt: 'The Loomio team'
 
       .row.team
         %a{href: about_path, class: 'block-link'}
@@ -217,5 +218,9 @@
             %li= link_to t(:'frontpage.link.public_groups'), public_groups_path
             %li= link_to t(:'frontpage.link.terms'), terms_of_service_path
             %li= link_to t(:'frontpage.link.privacy'), privacy_path
+            %li.enspiral
+              %a{href: 'http://www.enspiral.com'}
+                = image_tag 'enspiral.png', alt: 'Enspiral'
+
 
     = javascript_include_tag "marketing"
