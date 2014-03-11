@@ -541,6 +541,7 @@ a:hover { text-decoration: none; }
   color: $disabled;
   height: 82px;
   .content { padding: 0; }
+  .enspiral { padding: 17px 20px 8px; }
   ul {
     float: left;
     padding-left: 0;
@@ -549,7 +550,7 @@ a:hover { text-decoration: none; }
       float: left;
       position: relative;
       display: block;
-      padding: 20px;
+      padding: 28px 20px 20px;
     }
     a { color: #C0C4C2; }
     &.pull-right { float: right; }
