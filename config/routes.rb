@@ -224,7 +224,6 @@ Loomio::Application.routes.draw do
   match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
 
   #redirect old pages:
-  get '/pricing'       => redirect('/services')
   get '/we_the_people' => redirect('/')
   get '/collaborate'   => redirect('/')
   get '/woc'           => redirect('/')
