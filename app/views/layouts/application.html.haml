@@ -22,3 +22,6 @@
       .page-container
         = yield
       = render 'footer_logged_in'
+
+  - unless hide_crowdfunding_banner?
+    = javascript_include_tag 'campaigns'
