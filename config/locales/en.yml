@@ -940,6 +940,14 @@ en:
       ignore: "If you did not request to join Loomio please ignore this email."
 
 
+
+  #
+  # CAMPAIGNS
+  #
+
+  campaign:
+    crowdfunding_html: "Hey! Loomio is about to get a whole lot better. <a href='http://love.loomio.org'>Check out our crowdfunding campaign!</a>"
+
   #
   # COMMON WORDS
   #

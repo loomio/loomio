@@ -12,7 +12,7 @@ Then /^I should see the announcement$/ do
 end
 
 When /^I dismiss the announcement$/ do
-  find('.close.dismiss-announcement').click()
+  find('.cuke-dismiss-announcement').click()
 end
 
 When /^I reload the dashboard$/ do
