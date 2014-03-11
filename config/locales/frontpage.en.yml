@@ -35,7 +35,7 @@ en:
       header_html: "We’ve already built a <strong>prototype</strong>, and people <strong>all over the world</strong> are doing amazing things with it:"
       subhead_html: '<a href="%{try_loomio_link}">Try Loomio Beta</a> now. Or <a href="%{join_campaign_link}">join the campaign</a> to get early access to Loomio 1.0.'
     mobile:
-      header: 'Loomio 1.0 lets people make decisions together wherever they are.'
+      header_html: 'A platform that works on any device, built with best in <strong>open mobile technology.</strong>'
     quote:
       header:
         rushkoff_html: '“Loomio <strong>unleashes the internet’s potential</strong> to bring people towards consensus rather than polarized debate.” <br />– <a href="http://rushkoff.com">Douglas Rushkoff</a>, author of <em>Present Shock</em>'
