@@ -204,6 +204,10 @@ Loomio::Application.routes.draw do
     get :browser_not_supported
   end
 
+  scope controller: 'campaigns' do
+    get :hide_crowdfunding_banner
+  end
+
   scope controller: 'help' do
     get :help
   end
