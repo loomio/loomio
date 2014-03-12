@@ -166,7 +166,9 @@ a:hover { text-decoration: none; }
     background-image:url('/assets/play.png');
     background-repeat: no-repeat;
     padding-left: 52px;
-    padding-bottom: 4px;
+    height: 40px;
+    padding-top: 2px;
+    display: inline-block;
     &:hover {
     background-image:url('/assets/play-hover.png');
     }
