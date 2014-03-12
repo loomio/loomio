@@ -72,7 +72,7 @@ body.public_index {
       .sort-by-alphabet-icon, .sort-by-alphabet-icon-desc { opacity: .7; }
       &:hover { border: 1px solid $mid-grey; }
     }
-    .public-groups-container {
+    .public-items-container {
       a {
         color: #333;
         font-weight: bold;
@@ -82,14 +82,22 @@ body.public_index {
         padding: 10px;
         &:hover { background-color: $selector; }
       }
-      .group-details {
+      .item-details {
         display: inline-block;
       }
-      .group-name {
+      .item-title {
         color: $link-blue;
         font-weight: 700;
         float: left;
         margin-right: 8px;
+      }
+      .item-subtitle {
+        color: #aaa;
+        a {
+          color: #aaa;
+          font-weight: normal;
+          &:hover { text-decoration: underline; }
+        }
       }
     }
   }

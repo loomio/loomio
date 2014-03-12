@@ -2,20 +2,22 @@
   .span12.header-row
     %h1= "Discover #{@model.pluralize} on Loomio"
     .input-append
-      = form_tag public_groups_path, method: 'get', class: 'form-search' do |f|
+      = form_tag public_index_path(@model), method: 'get', class: 'form-search' do |f|
         = text_field_tag :query, params[:query], class: 'search-query'
         .add-on
           %i.fa.fa-search
             = submit_tag "", class: 'submit-search'
-.public-groups-container
+.public-items-container
 
   %ul.selector-list.bordered
     - @public_items.each do |item|
       = link_to item do
         %li.selector-item
-          .group-name
+          .item-title
             = item.title
-          .group-description.clearfix
+          .item-subtitle
+            = subtitle_for item
+          .item-description.clearfix
             = item.description.to_s
 
 = paginate @public_items, :window => 3
