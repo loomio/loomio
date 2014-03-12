@@ -8,6 +8,7 @@ en:
       contact: 'Contact'
       press: 'Press'
       log_in: 'LOG IN'
+      video: "See more about how Loomio works"
       crowdfunding: 'Check out the crowdfunding campaign'
       more: 'More'
       top: 'Top'
@@ -39,8 +40,8 @@ en:
       header_html: 'A platform that works on any device, built with the best in <strong>open mobile technology.</strong>'
     quote:
       header:
-        rushkoff_html: '“Loomio <strong>unleashes the internet’s potential</strong> to bring people towards consensus rather than polarized debate.” <br />– <a href="http://rushkoff.com">Douglas Rushkoff</a>, author of <em>Present Shock</em>'
-        sifry_html: '“Loomio is hitting a sweet spot between <strong>individual voice</strong> and <strong>collective decision</strong>.” <br />– Micah Sifry, Editor, <em><a href="http://techpresident.com">TechPresident</a></em>'
+        rushkoff_html: '“Loomio <strong>unleashes the internet’s potential</strong> to bring people towards consensus rather than polarized debate.”<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, author of <em>Present Shock</em></div>'
+        sifry_html: '“Loomio is hitting a sweet spot between <strong>individual voice</strong> and <strong>collective decision</strong>.”<div class="attributation">– Micah Sifry, Editor, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: 'About Loomio'
       desc: 'We’re a small team of open-source developers and social justice activists working at Enspiral in Aotearoa New Zealand, with a wider network of friends, supporters and advisors all over the world.'
