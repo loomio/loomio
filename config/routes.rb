@@ -213,6 +213,7 @@ Loomio::Application.routes.draw do
   end
 
   get '/detect_locale' => 'detect_locale#show'
+  match '/detect_video_locale' => 'detect_locale#video', as: :detect_video_locale
 
   resources :contact_messages, only: [:new, :create]
   match 'contact', to: 'contact_messages#new'
