@@ -178,11 +178,10 @@ fr:
     motion_outcome_updated: "a modifié le résultat de la proposition"
   edit_discussion_context: "Editer le contexte de la discussion"
   request_new_group: "Créer un groupe"
-  request_new_group_details: "ou attendre jusqu'à ce qu'on vous invite."
   empty_notifications: "Vous n'avez pas de notification pour l'instant."
   see_all_notifications: "Voir toutes les notifications"
-  user_settings: "Réglages de l'utilisateur"
-  email_preferences: "Email"
+  profile: "Profil"
+  email_settings: "Réglages email"
   sign_out: "Se déconnecter"
   sign_in: "Se connecter"
   honeypot_warning: "Nous n'avons pas pu créer votre compte. Si vous utilisez un lecteur d'écran, veuillez vous assurer que le dernier champ (caché) du formulaire est vide."
@@ -202,9 +201,10 @@ fr:
     message: "<p>La page d'accueil vous présente toutes les discussions actuelles dans tous vos groupes.</p><p>Vous pouvez démarrer une nouvelle discussion sur un nouveau sujet en cliquant sur le bouton \"démarrer une discussion\".</p>"
   prompt_visitor_to_authenticate:
     header: "Connectez-vous ou rejoignez le groupe pour y participer"
-    body_html: |
-      <p>Si vous êtes un membre de ce groupe, vous devrez vous connecter pour y participer.</p>
-      <p>Si vous n'êtes pas membre du groupe, vous pouvez demander à le rejoindre.</p>
+    body: "Si vous êtes un membre de ce groupe, vous devrez vous connecter pour y participer."
+  prompt_user_to_join:
+    header: "Rejoignez le groupe pour participer"
+    body: "Pour écrire un commentaire ou voter, vous devez être membre de ce groupe."
   setup_steps_title: "Prochaines étapes :"
   setup_step_1: "Découvrez un exemple de discussion"
   setup_step_2: "Commencez votre première discussion"
@@ -521,12 +521,17 @@ fr:
     invitees_placeholder: "Nom de l'utilisateur <user1@example.com>, user2@example.com"
     subject: "Merci de rejoindre notre nouveau groupe Loomio, %{group}"
     invite_people: "Inviter des personnes dans votre groupe"
+    invite_to_discussion: "Inviter des personnes à cette discussion"
+    invite_to_discussion_info: "L'ajout de personnes à cette discussion leur enverra une invitation à votre groupe. Quand ils accepteront l'invitation, ils seront redirigés vers cette discussion."
     select_members: "Ajouter des membres de %{which_group}"
     body_editable: |
       Salut, venez construire des décisions avec nous ! Nous utilisons un outil de collaboration collective appelé Loomio
+    body_editable_discussion: |
+      Salut toi, viens et rejoins la discussion !
     message_body: "Message d'invitation"
     invites_more_help2: "<p>Vous pouvez inviter des personnes dans votre groupe à n'importe quel moment.</p><p>Vous pouvez décider d'inviter tous les membres tout de suite, ou vous pouvez démarrer avec un groupe plus restreint des personnes les plus motivées.</p>"
     invitation_link: "Lien d'invitation"
+    discussion_link: "Participer à la discussion :"
     link_help: "Cliquer sur ce lien pour rejoindre %{group}  sur Loomio:"
     copy: "Si quelqu'un ne reçoit pas son email d'invitation, merci de recopier le lien d'invitation ci dessus et de le transmettre directement."
     pending_invitations: 'Invitations en cours'
@@ -552,6 +557,19 @@ fr:
       Est ce une bonne idée ? Le Robert d'Aide de Loomio veut savoir ce que vous en pensez !
       Si vous connaissez déjà votre position, cliquez sur l'une des icones ci dessous (survolez les boutons de décision pour une description de la signification de chacun d'eux).
       Vous êtes invité à laisser un bref commentaire sur la raison de votre choix. Ceci permet de rendre plus facile la synthèse de ce que chacun pense et pourquoi. Vous pouvez changer d'avis et revoter sans souci, tant que la proposition n'est pas close.
+  contact_page:
+    labels:
+      name: 'Votre nom'
+      email: 'Votre adresse email'
+      message: 'Votre message'
+      destination: 'Où devrions-nous envoyer votre message ?'
+      submit: 'Envoyer le message'
+    destinations:
+      tech: 'Support technique / rapports de bugs / demandes de fonctionnalités'
+    messages:
+      email_html: "Remplissez ce formulaire, ou envoyez un email à  <a href='mailto:%{email}'>%{email}</a>"
+      phone: "Si vous préférez parler à quelqu'un directement, vous pouvez appeler %{name} au %{number}"
+      social_html: "Vous pouvez aussi nous rejoindre sur <a href='%{facebook}' target='_blank'>facebook</a> et <a href='%{twitter}' target='_blank'>twitter</a> !"
   discussion_form:
     new:
       header: "Démarrer une discussion"
@@ -584,9 +602,10 @@ fr:
     update_preferences: "Actualiser vos préférences"
   new_user_form:
     create_an_account: "Créer un compte"
-  user_settings_form:
-    header: "Réglages de l'utilisateur"
-    picture: "image"
+  profile_form:
+    view: "Voir mon profil"
+    profile: "Éditer le profil"
+    picture: "Image"
     use_avatar_kind: "Utiliser %{kind}"
     upload_new_image: "Charger une nouvelle image"
   group_setup:
@@ -674,6 +693,15 @@ fr:
         create: "Créer un compte"
         update: "Actualiser vos réglages"
   email:
+    to_join_discussion:
+      subject: "%{who} veut que vous rejoigniez une discussion sur Loomio"
+      content: "Vous avez été invité à participer à la discussion : %{discussion}"
+      message_intro: "%{who} dit :"
+      link: "Rejoindre la discussion"
+    to_join_group:
+      subject: "%{member} vous a invité à rejoindre le groupe %{group_name} sur Loomio"
+    to_start_group:
+      subject: "Créer votre nouveau groupe Loomio: %{group_name}"
     user_added_to_a_group:
       subject: "%{who} vous a ajouté au groupe %{which_group}"
       content: "%{who} vous a ajouté au groupe %{which_group} sur Loomio. Cliquez ici pour aller dans le groupe :"
@@ -735,10 +763,6 @@ fr:
       closing_in_24_hours: "Ferme dans 24 heures"
       headline: "La proposition de %{author} dans %{group} ferme bientôt :"
       summary: "Résumé"
-    to_join_group:
-      subject: "%{member} vous a invité à rejoindre le groupe %{group_name} sur Loomio"
-    to_start_group:
-      subject: "Créer votre nouveau groupe Loomio: %{group_name}"
     verification:
       header: "Vous avez presque fini !"
       intro: "Merci de cliquer sur le lien de vérification pour finaliser votre demande :"

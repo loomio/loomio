@@ -2,27 +2,10 @@
   .row-fluid.sso-btn-row
     .span4.btn-container
       = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-facebook btn-large login' do
-        Facebook
+        = t :facebook
     .span4.btn-container
       = link_to user_omniauth_authorize_path(:google), class: 'btn btn-google btn-large login' do
-        Google
+        = t :google
     .span4.btn-container
-      = link_to '#', class: 'btn btn-persona btn-large login', id: 'persona-login-btn', onclick: 'PersonaLogin(); return false' do
+      = link_to user_omniauth_authorize_path(:browser_id), class: 'btn btn-persona btn-large login', id: 'persona-login-btn' do
         Persona
-
-:javascript
-  function PersonaLogin() {
-    if (navigator.id) {
-      navigator.id.get(function(assertion) {
-        if (assertion) {
-          $('input[name=assertion]').val(assertion);
-          $('#persona_form').submit();
-        } else {
-          window.location = "#{new_user_session_url}"
-        }
-      });
-    }
-  }
-
-%form#persona_form{action: user_omniauth_callback_path(:browser_id)}
-  %input{type: 'hidden', name: 'assertion'}

@@ -163,11 +163,8 @@ de:
     motion_blocked: "blockiert den Vorschlag"
   edit_discussion_context: "Diskussionskontext bearbeiten"
   request_new_group: "Gründe eine Gruppe"
-  request_new_group_details: "oder warte bis du zu einer eingeladen wirst."
   empty_notifications: "Du hast noch keine Benachrichtigungen."
   see_all_notifications: "Alle Benachrichtigungen ansehen"
-  user_settings: "Benutzereinstellungen"
-  email_preferences: "E-Mail-Einstellungen"
   sign_out: "Abmelden"
   tagline: "Eine Welt erschaffen, in der es für jeden einfach ist an Entscheidungen teilzuhaben, die ihn betreffen."
   click_to_dismiss: "Klicke hier um diese Nachricht zu verwerfen"
@@ -445,6 +442,7 @@ de:
   confirmation_not_received: "Keine Bestätigungshinweise bekommen?"
   unlock_not_received: "Keine Hinweise zum Freischalten bekommen?"
   invitation:
+    by_email: "Leute per Email einladen"
     no_invitations_left: "Es tut uns leid, aber du hast keine Einladungen mehr übrig."
     no_invitations_left_get_more: "Bitte wende dich an contact@loomio.org, dann werden wir sehen wie wir dir helfen können"
     invitation_not_found: 'Es konnte keine Einladung mit diesem Token gefunden werden. Bitte frage den Absender nach einer neuen Einladung.'
@@ -453,6 +451,7 @@ de:
     invitees_placeholder: "Name des Benutzers <benutzer1@beispiel.de>, <benutzer2@beispiel.de>"
     subject: "Bitte tritt unserer neuen Loomio-Gruppe %{group} bei "
     invite_people: "Lade Leute in die Gruppe ein"
+    select_members: "Mitglieder aus der Gruppe %{group_name} hinzufügen"
     body_editable: "Hallo ihr, kommt und entscheidet mit uns! Wir benutzen ein kollektives Werkzeug um Entscheidungen zu fällen, genannt Loomio. \n"
     message_body: "Einladungstext"
     invites_more_help2: "<p>Du kannst zu jeder Zeit Leute in deine Gruppe einladen.</p><p>Wenn du magst, dann kannst du alle Leute deines Teams einladen oder nur die Leute, mit denen du am engsten zusammenarbeitest.</p>"
@@ -477,6 +476,10 @@ de:
       Ist das eine gute Idee? Der Loomio Hilferoboter möchte wissen, was du darüber denkst!
       Wenn du dir deiner Meinung sicher bist, klicke auf eines der Symbole unten (lege den Mauszeiger über den Button um dir eine Beschreibung anzusehen, was die einzelnen Buttons bedeuten).
       Du wirst dann aufgefordert werden, kurz an zu geben, warum du diese Entscheidung getroffen. Das ergibt eine kurze Zusammenfassung davon, was jeder denkt und warum. Du kannst dich noch umentscheiden und deine Meinung bearbeiten bis der Vorschlag beendet wird.
+  discussion_form:
+    new:
+      header: "Beginne eine Diskussion"
+      who: "In welcher Gruppe möchtest du die Diskussion beginnen?"
   motion_form:
     header: "Neuer Vorschlag"
     name_helper: "Mache den Titel so klar und kurz wie möglich."
@@ -503,11 +506,6 @@ de:
     update_preferences: "Aktualisiere Einstellungen"
   new_user_form:
     create_an_account: "Ein Konto erstellen"
-  user_settings_form:
-    header: "Benutzereinstellungen"
-    picture: "Bild"
-    use_avatar_kind: "Nutze %{kind}"
-    upload_new_image: "Ein neues Bild hochladen"
   group_setup:
     desc_header: "Du hast es fast geschafft!"
     desc_html: "Als Koordinator der Gruppen bist du Verantwortlich für die Erstellung und Verwaltung deiner Loomio-Gruppen. Zuerst musst du ein paar Einstellungen vornehmen, dann gelangst du in deine neue Gruppe. Beginne ein oder zwei Diskussionen und schicke ein paar Einladungen raus!<p>Wenn du an die einfachste Möglichkeit denkst um deine Gruppe zu beschreiben, frage dich: Was wollt ihr zusammen erreichen? Welche Entscheidungen werdet ihr machen? Wer wird involviert sein?</p>"
@@ -526,6 +524,9 @@ de:
         description: "Kontext"
       group:
         members_invitable_by: "Wer kann Leute in diese Gruppe einladen?"
+        members_invitable_by_members: "Alle Gruppenmitglieder"
+        privacy: Privatsphäre
+        privacy_public_header: Öffentlich
       membership_request:
         introduction: "Stelle dich vor"
       motion:
@@ -557,6 +558,13 @@ de:
         create: "Konto erstellen"
         update: "Einstellungen aktualisieren"
   email:
+    to_join_group:
+      subject: "%{member} hat dich eingeladen %{group_name} auf Loomio beizutreten"
+    to_start_group:
+      subject: "Richte deine neue Loomio-Gruppe ein: %{group_name}"
+    user_added_to_a_group:
+      subject: "%{who} hat dich zu %{which_group} hinzugefügt"
+      content: "%{who} hat dich zu der Loomio Gruppe %{which_group} hinzugefügt"
     unsubscribe: "Bestelle E-Mails ab oder ändere deine E-Mail Einstellungen:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> um deine E-Mail Einstellungen zu ändern und E-Mails abzubestellen."
     view_comment: "Klicke hier um das Kommentar auf Loomio zu sehen"
@@ -596,12 +604,12 @@ de:
       intro: "Der Vorschlag, den du unterstützt, wurde blockiert."
       subject: "Vorschlag blockiert - %{which}"
     proposal_closing_soon:
+      closes_on: "Endet am"
+      closes_at: "Endet um"
       closes_in: "Schließt in"
+      closing_in_24_hours: "Endet in 24 Stunden"
+      headline: "%{author}s Vorschlag in %{group} endet bald"
       summary: "Zusammenfassung"
-    to_join_group:
-      subject: "%{member} hat dich eingeladen %{group_name} auf Loomio beizutreten"
-    to_start_group:
-      subject: "Richte deine neue Loomio-Gruppe ein: %{group_name}"
     verification:
       header: "Du bist fast fertig!"
       intro: "Bitte klicke auf diesen Link zur Verifizierung um deine Anfrage abzuschließen:"

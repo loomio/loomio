@@ -11,8 +11,10 @@ class CommentsController < BaseController
 
   def like
     if params[:like] == 'true'
+      Measurement.increment('comments.like.success')
       DiscussionService.like_comment(current_user, @comment)
     else
+      Measurement.increment('comments.unlike.success')
       DiscussionService.unlike_comment(current_user, @comment)
     end
     @discussion = @comment.discussion
@@ -22,11 +24,6 @@ class CommentsController < BaseController
   
   def translate
     raise NotImplementedError # (temporarily disable translation feature) 
-    
-    @translation = @comment.translate @comment.author.primary_language, I18n.locale.to_s
-    @success = @translation.present? && @translation != @comment.body
-    
-    render :template => "comments/comment_translations"
   end
 
 end

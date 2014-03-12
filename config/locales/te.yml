@@ -101,11 +101,8 @@ te:
     motion_closing_soon: "ప్రతిపాదన తొందరలోనే ముగియనుంది"
   edit_discussion_context: "చర్చ సందర్భాన్ని సవరించు"
   request_new_group: "ఒక సమూహాన్ని ప్రారంభించండి"
-  request_new_group_details: "లేదా ఎవరైనా ఆహ్వానించే వరకూ వేచివుండండి."
   empty_notifications: "మీకు ఇంకా ఎటువంటి గమనికలు లేవు."
   see_all_notifications: "అన్ని గమనికలను చూడండి"
-  user_settings: "వాడుకరి అమరికలు"
-  email_preferences: "వేగు అభిరుచులు"
   sign_out: "నిష్క్రమించండి"
   sign_in: "ప్రవేశించండి"
   click_to_dismiss: "ఈ సందేశాన్ని రద్దుచేయుటకు ఇక్కడ నొక్కండి"
@@ -250,10 +247,6 @@ te:
     update_preferences: "అభిరుచులను నవీకరించండి"
   new_user_form:
     create_an_account: "ఒక ఖాతాను సృష్టించండి"
-  user_settings_form:
-    header: "వాడుకరి అమరికలు"
-    picture: "చిత్రం"
-    upload_new_image: "ఒక కొత్త బొమ్మను ఎక్కించండి"
   group_setup:
     submit: "నన్ను నా సమూహానికి తీసుకెళ్ళు"
     payment_model:

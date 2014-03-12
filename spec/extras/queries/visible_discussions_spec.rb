@@ -9,8 +9,8 @@ describe Queries::VisibleDiscussions do
     Queries::VisibleDiscussions.new(user: user, groups: [group])
   end
 
-  describe 'private? (discussusion)' do
-    context 'true (aka private)' do
+  describe 'when discussion.private?' do
+    context 'true (private)' do
       before { discussion.update_attribute(:private, true) }
 
       it 'guests cannot see discussion' do
@@ -23,7 +23,7 @@ describe Queries::VisibleDiscussions do
       end
     end
 
-    context 'false (aka public)' do
+    context 'false (public)' do
       before { discussion.update_attribute(:private, false) }
       it 'guests can see discussion' do
         subject.should include discussion
@@ -69,7 +69,10 @@ describe Queries::VisibleDiscussions do
 
     context 'viewable by parent group members' do
       let(:parent_group) { create :group }
-      let(:group) { create :group, parent: parent_group, viewable_by_parent_members: true, privacy: 'hidden' }
+      let(:group) { create :group,
+                           parent: parent_group,
+                           viewable_by_parent_members: true,
+                           privacy: 'hidden' }
 
       it 'guests cannot see discussions' do
         subject.should_not include discussion

@@ -145,11 +145,8 @@ ro:
     motion_blocked: "a blocat propunerea"
   edit_discussion_context: "Modifica contextul discutiei"
   request_new_group: "Deschide un grup"
-  request_new_group_details: "sau asteapta pana esti invitat intr-un grup"
   empty_notifications: "Nu ai inca nici o notificare."
   see_all_notifications: "Vezi toate notificarile"
-  user_settings: "Setari utilizator"
-  email_preferences: "Preferinte email"
   sign_out: "De-logare"
   tagline: "Creand o lume in care este posibil pentru toti sa participe in deciziile care-i afecteaza."
   click_to_dismiss: "Click aici pentru a ascunde acest mesaj"
@@ -447,11 +444,6 @@ ro:
     update_preferences: "Modifica preferintele"
   new_user_form:
     create_an_account: "Creeaza un cont"
-  user_settings_form:
-    header: "Setari utilizator"
-    picture: "Poza"
-    use_avatar_kind: "Foloseste %{kind}"
-    upload_new_image: "Uploadeaza o poza noua"
   group_setup:
     submit: "Vreau sa intru in grupul meu!"
   simple_form:
@@ -488,6 +480,10 @@ ro:
         create: "Creeaza cont"
         update: "Modifica setarile"
   email:
+    to_join_group:
+      subject: "%{member} te-a invitat sa te alaturi grupului %{group_name}  pe Loomio"
+    to_start_group:
+      subject: "Seteaza noul tau grup Loomio:  %{group_name}"
     unsubscribe: "Dezabonare sau schimbarea preferintelor de email:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pentru dezabonare sau schimbarea preferintelor de email."
     view_comment: "Apasa aici pentru a vedea comentariul pe Loomio"
@@ -530,10 +526,6 @@ ro:
     proposal_closing_soon:
       closes_in: "Se inchide in"
       summary: "Sumar"
-    to_join_group:
-      subject: "%{member} te-a invitat sa te alaturi grupului %{group_name}  pe Loomio"
-    to_start_group:
-      subject: "Seteaza noul tau grup Loomio:  %{group_name}"
     verification:
       header: "Aproape ai terminat!"
       intro: "Te rugam apasa pe acest link de verificare pentru a finaliza request-ul:"

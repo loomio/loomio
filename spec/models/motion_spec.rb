@@ -96,20 +96,6 @@ describe Motion do
     end
   end
 
-  context "destroying a motion" do
-    before do
-      @discussion = create_discussion
-      @motion = create(:motion, discussion: @discussion)
-      @vote = Vote.create(position: "no", motion: @motion, user: @motion.author)
-      @comment = @motion.discussion.add_comment(@motion.author, "hello", uses_markdown: false)
-      @motion.destroy
-    end
-
-    it "deletes associated votes" do
-      Vote.first.should == nil
-    end
-  end
-
   context "closed motion" do
     before :each do
       @user1 = create(:user)

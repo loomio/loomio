@@ -119,11 +119,8 @@ hu:
     motion_closing_soon: "Hamarosan zárul a javaslat"
     motion_blocked: "blokkolta a javaslatot"
   edit_discussion_context: "A téma leírásának szerkesztése"
-  request_new_group_details: "vagy várd meg, amíg meghívnak egybe."
   empty_notifications: "Még nincsenek értesítéseid."
   see_all_notifications: "Az összes értesítés megtekintése"
-  user_settings: "Beállítások"
-  email_preferences: "E-mail beállítások"
   sign_out: "Kijelentkezés"
   tagline: "Olyan világot teremtünk, ahol mindenki részt vehet a döntésekben és alakíthatja is azokat."
   click_to_dismiss: "Ide kattintva eltűnik ez az üzenet"
@@ -415,11 +412,6 @@ hu:
     update_preferences: "Beállítások frissítése"
   new_user_form:
     create_an_account: "Fiók létrehozása"
-  user_settings_form:
-    header: "Beállítások"
-    picture: "Kép"
-    use_avatar_kind: "%{kind} használata"
-    upload_new_image: "Új kép feltöltése"
   group_setup:
     submit: "Megnézem a csoportom!"
   simple_form:

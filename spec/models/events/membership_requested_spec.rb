@@ -25,7 +25,7 @@ describe Events::MembershipRequested do
   end
 
   context "after event has been published" do
-    let(:admin) { double(:admin, email: 'hello@kitty.com', language_preference: "en") }
+    let(:admin) { double(:admin, email: 'hello@kitty.com', locale: "en") }
     let(:event) { Events::MembershipRequested.new(kind: "new_comment",
                                                      eventable: membership_request) }
     before {

@@ -40,6 +40,8 @@ class Group < ActiveRecord::Base
         where(privacy: 'public').
         parents_only
 
+  scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
+
   # Engagement (Email Template) Related Scopes
   scope :more_than_n_members, lambda { |n| where('memberships_count > ?', n) }
   scope :more_than_n_discussions, lambda { |n| where('discussions_count > ?', n) }
@@ -99,7 +101,7 @@ class Group < ActiveRecord::Base
            through: :memberships,
            source: :user
 
-  has_many :pending_invitations,
+  has_many :pending_invitations, :as => :invitable,
            class_name: 'Invitation',
            conditions: {accepted_at: nil, cancelled_at: nil}
 

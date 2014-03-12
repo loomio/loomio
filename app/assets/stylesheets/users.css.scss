@@ -16,7 +16,7 @@ body.users.show {
 }
 
 body.users {
-  &.settings, &.update {
+  &.profile, &.update {
     form { margin-top: 10px; }
     ul.user-image-options {
       margin-left: -30px;
@@ -24,7 +24,7 @@ body.users {
       li {
         margin: 0 0 10px 0;
         padding: 0px 0px;
-        width: 250px;
+        width: 270px;
         a {
           cursor: pointer;
           color: $mid-grey;

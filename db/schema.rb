@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140222234734) do
+ActiveRecord::Schema.define(:version => 20140306061922) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20140222234734) do
   create_table "attachments", :force => true do |t|
     t.integer  "user_id"
     t.string   "filename"
-    t.string   "location"
+    t.text     "location"
     t.integer  "comment_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -347,7 +347,6 @@ ActiveRecord::Schema.define(:version => 20140222234734) do
   create_table "invitations", :force => true do |t|
     t.string   "recipient_email",                    :null => false
     t.integer  "inviter_id",                         :null => false
-    t.integer  "group_id",                           :null => false
     t.boolean  "to_be_admin",     :default => false, :null => false
     t.string   "token",                              :null => false
     t.integer  "accepted_by_id"
@@ -356,9 +355,10 @@ ActiveRecord::Schema.define(:version => 20140222234734) do
     t.integer  "canceller_id"
     t.datetime "cancelled_at"
     t.string   "recipient_name"
+    t.integer  "invitable_id"
+    t.string   "invitable_type"
   end
 
-  add_index "invitations", ["group_id"], :name => "index_invitations_on_group_id"
   add_index "invitations", ["token"], :name => "index_invitations_on_token"
 
   create_table "membership_requests", :force => true do |t|
@@ -517,9 +517,10 @@ ActiveRecord::Schema.define(:version => 20140222234734) do
     t.string   "unsubscribe_token"
     t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.boolean  "uses_markdown",                                               :default => false
-    t.string   "language_preference"
+    t.string   "selected_locale"
     t.string   "time_zone"
     t.string   "key"
+    t.string   "detected_locale"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

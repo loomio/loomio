@@ -124,11 +124,8 @@ bg:
     motion_closing_soon: "Предложението приключва скоро"
     motion_blocked: "блокира предложението"
   edit_discussion_context: "Редактирай контекста на дискусията"
-  request_new_group_details: "или изчакай докато бъдеш поканен в съществуваща."
   empty_notifications: "Все още нямате никакви известия."
   see_all_notifications: "Виж всички известия"
-  user_settings: "Потребителски настройки"
-  email_preferences: "E-mail настройки"
   sign_out: "Изход"
   tagline: "Създавайки свят в който е лесно всички да участват в решенията които ги засягат."
   click_to_dismiss: "Натисни тук за да отмениш това съобщение"
@@ -418,11 +415,6 @@ bg:
     update_preferences: "Обнови предпочитания"
   new_user_form:
     create_an_account: "Създай акаунт"
-  user_settings_form:
-    header: "Потребителски настройки"
-    picture: "Изображение"
-    use_avatar_kind: "Използвай %{kind}"
-    upload_new_image: "Прикачи ново изображение"
   group_setup:
     submit: "Заведи ме в групата!"
   simple_form:

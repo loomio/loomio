@@ -185,11 +185,10 @@ cs:
     motion_outcome_updated: "aktualizoval(a) výsledek návrhu"
   edit_discussion_context: "Upravit kontext diskuze"
   request_new_group: "Vytvořit skupinu"
-  request_new_group_details: "nebo počkejte, dokud nebudete do jedné pozván(a)."
   empty_notifications: "Nemáte zatím žádná upozornění."
   see_all_notifications: "Zobrazit všechna upozornění"
-  user_settings: "Uživatelská nastavení"
-  email_preferences: "Nastavení emailu"
+  profile: "Profil"
+  email_settings: "Nastavení emailu"
   sign_out: "Odhlásit se"
   sign_in: "Přihlásit se"
   honeypot_warning: "Nepovedlo se vytvořit váš účet. Pokud používáte screen reader, ujistěte se prosím, že poslední (skryté) pole ve formuláři je prázdné."
@@ -202,14 +201,16 @@ cs:
     header: "Vítejte na své první diskuzi"
   group_helper_text:
     header: "Vítejte na své nové skupině!"
+    message: "<p>Toto je <strong>stránka skupiny</strong>. Nalevo je seznam všech diskuzí v této skupině.</p><p>Když chcete, aby skupina prodiskutovala další téma, založte novou diskuzi.</p>"
   dashboard_helper_text:
     header: "Vítejte na své domovské stránce"
     message: "<p>Domovská stránka vám ukáže všechny aktuální diskuze ze všech skupin, ve kterých jste členem.</p><p>Můžete zahájit diskuzi o novém tématu kliknutím na tlačítko „Zahájit diskuzi“.</p>"
   prompt_visitor_to_authenticate:
     header: "Přihlaste se nebo se přidejte ke skupině, abyste se zúčastnil(a)"
-    body_html: |
-      <p>Pokud jste členem této skupiny, musíte se přihlásit, abyste se mohl(a) zúčastnit.</p>
-      <p>Pokud ne, můžete zažádat o členství.</p>
+    body: "Pokud jste členem této skupiny, budete se muset přihlásit, abyste se zapojil(a)."
+  prompt_user_to_join:
+    header: "Přidejte ke skupině, abyste se zúčastnil(a)"
+    body: "Abyste komentoval(a) nebo volil(a), musíte být členem této skupiny"
   setup_steps_title: "Následující kroky:"
   setup_step_1: "Podívejte se na ukázkovou diskuzi"
   setup_step_2: "Zahajte svou první diskuzi"
@@ -380,7 +381,7 @@ cs:
     images_and_text_formatting: "Obrázky a formátování textu"
     keep_up_to_date: "Zůstaň informován(a)"
     make_a_decision: "Rozhodněte se"
-    make_a_decision_description: "Když je skupina připravena učinit rozhodnutí, každý může vytvořit návrh. Krátce popište jasný postup a poskytněte určitý základ, aby každý věděl, co přesně znamená souhlasit či nesouhlasit."
+    make_a_decision_description: "Když je skupina připravena učinit rozhodnutí, každý může vytvořit návrh. Krátce popište jasný návrh postupu a poskytněte určitý základ, aby každý věděl, co přesně znamená souhlasit či nesouhlasit."
     prompt_people_details: "Pokud chcete získat pozornost konkrétní osoby ve vaší skupině, napište ‚@‘ následované jejich jménem. Obdrží email, který jim dá vědět, že jste je zmínil(a)."
     prompt_people_html: "Pobídněte lidi pomocí <span class='blue'>@zmínění</span>"
     positions_agree_description: "<span>Souhlasím</span> znamená, že jsi spokojen(a) s návrhem."
@@ -447,10 +448,14 @@ cs:
     invitees_placeholder: "Uživatelské jméno <uzivatel1@priklad.cz>, uzivatel2@priklad.cz"
     subject: "Prosím přidejte se do naší nové skupiny %{group} na Loomio"
     invite_people: "Pozvěte lidi do své skupiny"
+    invite_to_discussion: "Pozvat lidi k této diskuzi"
     select_members: "Přidat členy z %{group_name}"
+    body_editable_discussion: |
+      Nazdárek, pojď se zapojit do diskuze!
     message_body: "Obsah pozvánky"
     invites_more_help2: "<p>Do této skupiny můžete kdykoliv pozvat lidi.</p><p>Možná chcete rovnou pozvat všechny členy, nebo můžete začít pozváním jen těch, s kterými pracujete nejvíce.</p>"
     invitation_link: "Odkaz na pozvánku"
+    discussion_link: "Zapojte se do diskuze:"
     link_help: "Kilkněte sem, abyste se přidali k %{group} na Loomiu:"
     copy: "Pokud někdo neobdržel svou pozvánku, neváhejte zkopírovat odkaz na pozvánku výše a poskytnout jej příjemci."
     pending_invitations: 'Nevyřízené pozvánky'
@@ -466,6 +471,16 @@ cs:
     title: "Ukázková diskuze: Přivítání a úvod do Loomio"
   example_motion:
     name: "Měli bychom mít dovolenou na měsíci!"
+  contact_page:
+    labels:
+      name: 'Vaše jméno'
+      email: 'Vaše emailová adresa'
+      message: 'Vaše zpráva'
+      destination: 'Kam pošleme vaši zprávu?'
+      submit: 'Odeslat zprávu'
+    messages:
+      email_html: "Vyplňte tento formulář, nebo zašlete email na <a href='mailto:%{email}'>%{email}</a>"
+      phone: "Pokud si radši chcete s někým promluvit, můžete zavolat %{name} na číslo %{number}"
   discussion_form:
     new:
       header: "Zahájit diskuzi"
@@ -498,11 +513,12 @@ cs:
     update_preferences: "Aktualizovat nastavení"
   new_user_form:
     create_an_account: "Vytvořit účet"
-  user_settings_form:
-    header: "Uživatelská nastavení"
-    picture: "Obrázek"
+  profile_form:
+    view: "Zobrazit můj profil"
+    profile: "Upravit profil"
+    picture: "Fotka"
     use_avatar_kind: "Použít %{kind}"
-    upload_new_image: "Nahrát nový obrázek"
+    upload_new_image: "Nahrát novou fotku"
   group_setup:
     set_up_your_group: Zřiďte si skupinu
     desc_header: "Už jste skoro tam!"
@@ -586,6 +602,15 @@ cs:
         create: "Vytvořit účet"
         update: "Aktualizovat nastavení"
   email:
+    to_join_discussion:
+      subject: "%{who} chce, aby ses zapojil(a) do diskuze na Loomio"
+      content: "Byl(a) jste pozván(a), abyste se zapojil(a) do diskuze: %{discussion}"
+      message_intro: "%{who} říká:"
+      link: "Zapojte se do diskuze"
+    to_join_group:
+      subject: "%{member} vás pozval(a) do skupiny %{group_name} na Loomio"
+    to_start_group:
+      subject: "Zřiďte si svou novou Loomio skupinu: %{group_name}"
     user_added_to_a_group:
       subject: "%{who} vás přidal(a) k %{which_group}"
       content: "%{who} vás přidal(a) k %{which_group} na Loomio. Klikněte sem, abyste navštívil(a) skupinu:"
@@ -646,10 +671,6 @@ cs:
       closing_in_24_hours: "Uzavírá se do 24 hodin"
       headline: "návrh %{author} v %{group} se brzy uzavírá:"
       summary: "Shrnutí"
-    to_join_group:
-      subject: "%{member} vás pozval(a) do skupiny %{group_name} na Loomio"
-    to_start_group:
-      subject: "Zřiďte si svou novou Loomio skupinu: %{group_name}"
     verification:
       header: "jste skoro hotov(a)!"
       intro: "Prosím klikněte na tento ověřovací odkaz pro dokončení vaší žádosti:"

@@ -22,8 +22,11 @@ tr:
       send_instructions: 'Davetiye %{email}. e-postasına gönderildi.'
       updated: 'Hesap oluşturuldu.'
       no_invitations_remaining: "Hiç davetiye kalmadı"
+    mailer:
+      invitation_instructions:
+        subject: 'Birisi seni Loomio grubuna katılmaya davet etti'
   error:
-    access_denied: "Bunu yapmaya yetkiniz bulunmuyor."
+    access_denied: "Bunu yapmaya yetkin bulunmuyor."
     cant_join_subgroup: "Eğer ana gruba üye değilsen, bir alt gruba katılamazsın."
     cant_modify_position: "Bu öneri kapatıldı."
     cant_state_position: "Bu öneri kapatıldı."
@@ -35,6 +38,7 @@ tr:
     invalid_email: "Lütfen en az bir adet geçerli e-posta adresi gir"
     image_upload_fail: "Resim yüklenemiyor. Lütfen resmin 1 MB'ın altında ve .jpeg, .png ya da .gif dosyası olduğundan emin ol."
     motion_closing_inputs: "Geçersiz kapanış tarihi"
+    motion_outcome_not_updated: "Sonuç güncellenemedi"
     permission_to_invite: "Yeni üye davet etme iznin bulunmamakta."
     position_not_updated: "Pozisyon güncellenemedi."
     settings_not_updated: "Ayarların güncellenemedi."
@@ -43,16 +47,21 @@ tr:
     group_private_or_not_found: "Grup bulunamadı. \n\nBu grup gizli olabilir. Eğer size bu bağlantıyı birisi verdiyse, o kişiden sizi gruba davet etmesini isteyin."
     group_already_setup: "Kurmaya çalıştığınız grup zaten mevcut."
     proposal_already_exists: "Bu müzakerede açık bir öneri zaten var."
+    user_with_email_address_already_in_group: "Bu e-posta adresine sahip bir kullanıcı zaten bu grupta bulunuyor."
+    you_have_already_requested_membership: "Bu gruba daha önce üyelik talebi gönderdin."
     you_are_already_a_member_of_this_group: "Zaten bu grubun bir üyesisin."
     not_found: "Öğe bulunamadı. Bu öğe silinmiş olabilir."
   alert:
     duplicate_email: "%{which_email} zaten grupta."
   notice:
+    admin_rights_removed: "%{which_user} kullanıcısının koordinatör hakları kaldırıldı. "
+    user_added: "%{user_email_or_name} gruba eklendi."
     member_removed: "Üye çıkarıldı."
     membership_approved: "Üyelik onaylandı."
     membership_request_canceled: "Üyelik isteği iptal edildi."
     membership_request_ignored: "Üyelik isteği yok sayıldı."
     settings_updated: "Ayarların güncellendi."
+    user_made_admin: "%{which_user} kullanıcısı koordinatör yapıldı."
     you_have_left_group: "%{which_group}'dan ayrıldın."
     comment_deleted: "Yorum silindi."
     invitations:
@@ -71,6 +80,7 @@ tr:
       previous: "Önceki"
       next: "Sonraki"
   warning:
+    membership_request_already_approved: "Üyelik isteği daha önce onaylanmış."
     membership_request_already_ignored: "Üyelik isteği daha önce yok sayıldı."
     membership_request_already_canceled: "Üyelik isteği daha önce iptal edildi."
     position_not_submitted: "Pozisyon gönderilemedi"
@@ -150,13 +160,12 @@ tr:
     user_added_to_group: "seni gruba ekledi"
     motion_closing_soon: "Öneri yakında kapanıyor"
     motion_blocked: "öneriyi bloke etti"
+    motion_outcome_created: "öneri için bir sonuç yayınladı"
+    motion_outcome_updated: "önerinin sonucunu güncelledi"
   edit_discussion_context: "Tartışma içeriğini düzenle"
   request_new_group: "Bir grup başlat"
-  request_new_group_details: "ya da birine davet edilinceye kadar bekle."
   empty_notifications: "Henüz herhangi bir bildiriminiz yok."
   see_all_notifications: "Tüm bildirimleri gör"
-  user_settings: "Üyelik ayarları"
-  email_preferences: "E-posta seçenekleri"
   sign_out: "Oturumu kapat"
   sign_in: "Oturum aç"
   tagline: "Herkes için, kendisini etkileyen kararlara katılmanın kolay olduğu bir dünya yaratmak."
@@ -173,15 +182,14 @@ tr:
     message: "<p>Ana sayfa üyesi olduğun gruplardaki güncel müzakerelerin tümünü gösterir.</p><p>\"Bir müzakere başlat\" düğmesine tıklayarak yeni bir konu üzerinde bir müzakere başlatabilirsin.</p>"
   prompt_visitor_to_authenticate:
     header: "Katılımda bulunmak için oturum açın ya da gruba katılın"
-    body_html: |
-      <p>Eğer bu grubun bir üyesi iseniz, katılımda bulunmak için oturum açmanız gerekir.</p>
-      <p>Eğer üye değilseniz, katılmak için başvurabilirsiniz.</p>
   setup_steps_title: "Sonraki adımlar:"
   setup_step_1: "Örnek müzakereye göz at"
   setup_step_2: "İlk müzakereni başlat"
   setup_step_3: "Kişileri grubuna davet et"
   invite_people: "Kişileri davet et"
   no_invitations_button: "Hiç davetiye kalmadı"
+  number_pending: '%{pending} beklemede'
+  and_number_pending: 've %{pending} beklemede'
   edit_memberships: 'Üyeliği düzenle'
   add_new_member: "Yeni üye ekle"
   invite_members_to_group: "%{which_group}'na üye davet et"
@@ -245,6 +253,8 @@ tr:
       by_user: "öneriyi kapattı"
       by_expiry: "Öneri kapatıldı"
     motion_close_date_edited: "önerisi için kapanış tarihini değiştirdi"
+    motion_outcome_created: "öneri için bir sonuç yayınladı"
+    motion_outcome_updated: "önerinin sonucunu güncelledi"
     discussion_title_edited: "tartışma başlığını değiştirdi"
     discussion_description_edited: "tartışma açıklamasını değiştirdi"
   discussion: "Müzakere"
@@ -317,6 +327,12 @@ tr:
     coordinating_details: "Koordinatör olarak, Loomio grubunu düzenlemek ve kişileri davet etmekten \nsen sorumlusun. Yeni bir yazılımın nasıl kullanıldığını öğrenmenin yanı sıra, grubun\ndaha etkili işbirliği ve birlikte iyi kararlar almak için yeni süreçler öğrenecek.\nİşte grubunun\
       \ başarılı olmasını desteklemen için bazı ipuçları:\n"
     different_ways: 'Loomio''yu kullanmanın çeşitli yolları'
+    engaging_html: "<h2>Grubunla etkileşime girmen için ipuçları</h2>\n<p>Kişiler masada etkileşimli bir öneri olduğu zaman katkıda bulunmak için istekli olurlar. İyi bir öneri grup için bir eylem planı içerir, bu yüzden\ngrubun aynı fikirde olup olmadığı ve bunun ne anlama geldiği hemen\
+      \ belli olacaktır. Eğer kişilerin yüzyüze \nya da email aracılığıyla yürüttüğü müzakereler ve aldığı kararlar Loomio aracılığıyla yapılıyor olsaydı\nbunları tanımlamak çok daha kolay olurdu.</p>\n<p>Eğer grubun henüz yeni ise, herkesin Loomio aracıyla oynaması için bir şans vermek\
+      \ ve karar verme sürecini  görebilmesine olanak tanımak için endişe yaratmayacak bir karar ile işe başlayabilirsin.</p>\n<p>Kişilerin müzakerelere dahil olmasını teşvik etmenin diğer bir kolay yolu ise \n@bahset özelliğini kullanarak onları davet etmek; bu özellik kişilere bir\
+      \ yorumda onlardan bahsedildiğini haber veren\nbir e-posta gönderir.</p>\n"
+    example1_html: "<h3>Grubunun geniş bir konuyu müzakere ederek birlikte bir çözüm geliştirmesine ihtiyacın var</h3>\n<p>Strateji: Bir öneri oluşturmadan önce bir süre için konuyu tartışın.</p>\n<p>Eğer belirli bir çözüme varmadan önce grup içinde soruna karşı ortak bir anlayış geliştirirsen,\
+      \ \nmüzakereler genellikle en iyi sonuca ulaşır. Kişiler bu sürece\nkatılım gösterdileri sürece, sonuç hakkında fikir birliğinde olmaları daha olasıdır.</p>\n"
     get_in_touch: "İletişime geç"
     getting_started: "Başlarken"
     getting_started_description: "Sol tarafta, grup bir konuyu tartışır, fikir ve bilgi alışverişinde bulunur. Grubun almasını gerektiren bir karar var olduğunda, sağ tarafta belirir."
@@ -349,8 +365,11 @@ tr:
   pricing_page:
     organisations: Kuruluşlar
     informal_groups: İnformal gruplar
+    informal_groups_examples: örneğin aileler, sosyal hareketler, kolektifler
   contribution:
     currency_desc: Tutarlar ABD doları cinsindendir
+    monthly_html: Ayda bir katkıda bulunmak istiyorum
+    one_time_html: Bir defaya mahsus katkıda bulunmak istiyorum
     submit: Katkıda bulun
     tooltip: Topluğumuzun finansman modeli hakkında bilgi alın
     thank_you_title: Loomio'ya katkı sağladığınız için teşekkür ederiz!
@@ -381,6 +400,7 @@ tr:
     no_invitations_left_get_more: "Sana yardımcı olabilmemiz için lütfen contact@loomio.org e-posta gönder"
     invitation_not_found: 'Bu kuponla ilişik bir davetiye bulunamadı. Lütfen seni davet eden kişiden yeni bir davetiye talep et.'
     invitation_cancelled: 'Bu davetiye iptal edildi. Eğer bunun bir hata olduğunu düşünüyorsan, lütfen seni davet eden kişiyle irtibata geç.'
+    recipients: "E-posta adreslerini, birbirinden virgülle ayırarak yazın:"
     invitees_placeholder: "Kullanıcı Adı <user1@example.com>, user2@example.com"
     subject: "Lütfen yeni Loomio grubumuza katıl, %{group}"
     invite_people: "Kişileri grubuna davet et"
@@ -395,6 +415,7 @@ tr:
     pending_invitations: 'Bekleyen davetler'
     no_pending_invitations: "Şu anda bekleyen hiçbir davetiye bulunmamaktadır."
   search:
+    description: "Başlığında ya da tanımında '%{query}' kelimesinin geçtiği müzakere ve önerilerin listesi aşağıdadır."
     header: "'%{query}' için arama sonuçları"
     placeholder: "Arama"
     empty_search: 'Boş arama'
@@ -410,6 +431,11 @@ tr:
 
   example_motion:
     name: "Ay üzerinde bir tatil yapmalıyız!"
+    description: |
+      Loomio Yardım Robotu sen ve grubunun ayda bir tatile yatırım yapması için epey istekli. Görünüşe göre uzay-peyniri epey lezzetliymiş. Ancak karbon ayakizinize etkileri hakkında endişeleri yok değil.
+      Sence bu nasıl bir fikir? Loomio Yardım Robotu ne düşündüğünü merak ediyor!
+      Eger konumun hakkında net isen, aşağıdaki ikonlardan birini tıkla (ikonların ne anlama geldiklerinin açıklaması için fareni karar düğmelerin üzerinde gezdir).
+      Verdiğin kararın nedeni hakkında kısa bir açıklama yapmanı rica ediyoruz. Böylece herkesin ne düşündüğünü ve neden bu karara vardığını rahatça görebileceksin. Eğer fikrini değiştirirsen, öneri kapanana kadar özgürce kararını yeniden düzenleyebilirsin.
   discussion_form:
     new:
       header: "Bir müzakere başlat"
@@ -441,11 +467,6 @@ tr:
     update_preferences: "Tercihleri güncelle"
   new_user_form:
     create_an_account: "Bir hesap oluştur"
-  user_settings_form:
-    header: "Üyelik ayarları"
-    picture: "Resim"
-    use_avatar_kind: "%{kind} kullan"
-    upload_new_image: "Yeni bir resim yükle"
   group_setup:
     set_up_your_group: Grubunu kur
     desc_header: "Neredeyse geldik!"
@@ -502,6 +523,8 @@ tr:
       discussion:
         title: "Başlık"
         description: "Biraz içerik ver..."
+      membership_request:
+        introduction: "Kendin ve neden %{group_name} grubuna katıldığın hakkında birkaç kelime yaz."
       motion:
         name: "Önerdiğiniz hareket biçimi nedir?"
         description: "Yeterli bilgi verin ki herkes tam olarak katılımlarının ya da katılmamalarının ne anlama geldiğini bilsin."
@@ -522,11 +545,14 @@ tr:
         create: "Hesap oluştur"
         update: "Ayarları güncelle"
   email:
+    to_start_group:
+      subject: "Yeni Loomio grubunu aç: %{group_name}"
     unsubscribe: "Aboneliğini iptal et ya da e-posta tercihlerini değiştir:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aboneliğini iptal etmek ya da e-posta tercihlerini değiştirmek için."
     view_comment: "Bu yorumu Loomio'da görüntülemek için buraya tıkla"
     view_discussion: "Bu müzakereyi görüntülemek için buraya tıkla"
     view_group: "Bu grubu Loomio'da görüntülemek için buraya tıkla"
+    view_proposal: "Bu öneriyi Loomio üzerinde görüntüle"
     create_discussion:
       intro: "%{who} %{which_group} grubunda yeni bir müzakere başlattı:"
       subject: "Yeni müzakere - %{which}"
@@ -545,6 +571,7 @@ tr:
       subject: "Üyelik onaylandı"
     invitation:
       hi: "Merhaba %{name},"
+      intro: "%{group_name} grubunu açmak için aşağıdaki linki tıkla:"
       thanks: |
         Teşekkürler!
         Loomio Takımı
@@ -565,6 +592,7 @@ tr:
     proposal_outcome:
       subject: "Öneri sonucu"
     proposal_blocked:
+      intro: "Kolaylaştırdığın bir öneri bloke edildi."
       subject: "Öneri engellendi - %{which}"
     proposal_closing_soon:
       closes_on: "de kapanır"
@@ -630,6 +658,7 @@ tr:
   start_group: "Grup başlat!"
   starting: "Başlangıç"
   subject: "Konu"
+  terms_of_service_html: "Bunu tıklayarak %{button_text}, Loomio'nun <a href='%{link_path}' target='_blank'>Hizmet Koşullarını</a>kabul etmiş sayılırsınız"
   thanks: "Teşekkürler!"
   translate: "Loomio'nun çevirisine yardımcı ol!"
   unlike: "Beğenmekten vazgeç"

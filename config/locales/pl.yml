@@ -11,7 +11,7 @@ pl:
     invalid_close_date: "Nieprawidłowa data zamknięcia, sprawdź czy termin nie upłynął."
     image_upload_fail: "Nie można przesłać zdjęcie. Upewnij się, że obraz jest mniejszy niż 1 MB i że to plik .jpeg, .png, lub .gif."
     permission_to_invite: "Nie masz uprawnień, żeby zapraszać członków."
-    position_not_updated: "Nie można zaktualizować pozycji."
+    position_not_updated: "Nie można zaktualizować stanowiska."
     settings_not_updated: "Twoje ustawienia nie zostało zaktualizowane."
   alert:
     duplicate_email: "%{which_email} is already in the group."
@@ -24,7 +24,7 @@ pl:
   warning:
     membership_request_already_ignored: "Prośba o członkostwo została już zignorowana."
     membership_request_already_canceled: "Prośba o członkostwo została już anulowana."
-    position_not_submitted: "Twoja pozycja nie może być wysłana."
+    position_not_submitted: "Twoje stanowisko nie może zostać wysłane."
     proposal_not_created: "Propozycja nie może być utworzona. "
   success:
     added_to_group: "Zostałeś dodany do %{which_group}."
@@ -35,8 +35,8 @@ pl:
     group_archived: "Grupa została zarchiwizowana pomyślnie."
     group_created: "Grupa została utworzona pomyślnie."
     members_added: "Nowe osoby dodane do grupy."
-    position_submitted: "Głos oddany"
-    position_updated: "Głos zaktualizowany."
+    position_submitted: "Stanowisko zostało przesłane."
+    position_updated: "Stanowisko zostało zaktualizowane."
     proposal_created: "Propozycja utworzona pomyślnie."
     proposal_deleted: "Propozycja usunięta."
   datetime:
@@ -85,7 +85,6 @@ pl:
       by_user: "zamknij propozycję"
       by_expiry: "Propozycja została zamknięta"
   see_all_notifications: "Zobacz wszystkie powiadomienia"
-  user_settings: "Ustawienia użytkownika"
   sign_out: "Wyloguj się"
   generic_confirm: "Czy jesteś pewien?"
   invite_people: "Zaproś ludzi"
@@ -98,16 +97,58 @@ pl:
   ignore: "Ignoruj"
   subgroups: "Podgrupy"
   create_a_subgroup: "Utwórz podgrupę"
+  invite_members: "Zaproś członków"
   new_subgroup: "Nowa podgrupa"
+  create_subgroup: "Utwórz podgrupę"
+  creating_subgroup: "Tworzenie podgrupy"
   new_group: "Nowa grupa"
   create_group: "Utwórz grupę"
+  creating_group: "Tworzenie grupy"
+  edit_group: "Edycja grupy"
+  update_group: "Aktualizacja grupy"
+  updating_group: "Aktualizowanie grupy"
+  start_a_discussion: "Rozpocznij dyskusję"
+  group_description: "Opis grupy"
+  discussion_items:
+    motion_closed:
+      by_expiry: "Propozycja zamknięta"
+  discussion: "Dyskusja"
+  current_decision: "Obecna decyzja"
+  previous_decisions: "Wcześniejsze decyzje"
+  create_new_proposal: "Utwórz nową propozycję"
+  description_history:
+    subheader: "Wersja"
+  comment_form_placeholder: "Powiedz coś..."
+  delete_comment: "Usuń komentarz"
+  delete_discussion: "Usuń dyskusję"
+  new_proposal: "Nowa propozycja"
+  close_proposal: "Zamknij propozycję"
+  change_proposal_close_date: "Zmień datę zamknięcia"
+  state_your_position: "Podaj swoje stanowisko"
+  positions: "Stanowiska"
+  yes_position: "Zgadzam się"
+  no_position: "Nie zgadzam się"
   help:
     help: "Pomoc"
     how_it_works: "Jak to działa"
     join_the_community: "Dołącz do społeczności"
     make_a_decision: "Podejmij decyzję"
+  hint:
+    vote: 'W każdej chwili możesz zmienić swoje stanowisko'
+  new_password: "Nowe hasło"
+  current_password: "Obecne hasło"
+  remember_me: "Zapamiętaj mnie"
+  forgot_your_password: "Zapomniałeś hasła?"
   search:
     placeholder: "Szukaj"
+  motion_form:
+    header: "Nowa propozycja"
+  vote_form:
+    header: "Podaj swoje stanowisko"
+    edit: "Edycja Twego stanowiska"
+    your_position: "Twoje stanowisko"
+    submit: "Prześlij stanowisko"
+    update: "Zaktualizuj stanowisko"
   simple_form:
     'yes': 'Tak'
     'no': 'Nie'

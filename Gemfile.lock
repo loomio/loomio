@@ -49,6 +49,7 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     addressable (2.2.8)
+    aggregate (0.2.2)
     airbrake (3.1.14)
       builder
       json
@@ -177,9 +178,8 @@ GEM
       net-ssh (>= 2.1.3)
       nokogiri (~> 1.5)
       ruby-hmac
-    font-awesome-sass-rails (3.0.2.2)
-      railties (>= 3.1.1)
-      sass-rails (>= 3.1.1)
+    font-awesome-sass (4.0.3.1)
+      sass (~> 3.2)
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
@@ -248,6 +248,15 @@ GEM
     kgio (2.8.1)
     launchy (2.0.5)
       addressable (~> 2.2.6)
+    librato-metrics (1.3.0)
+      aggregate (~> 0.2.2)
+      faraday (~> 0.7)
+      multi_json
+    librato-rack (0.4.4)
+      librato-metrics (~> 1.1)
+    librato-rails (0.10.2)
+      librato-rack (~> 0.4.2)
+      rails (>= 3.0)
     listen (0.7.3)
     lumberjack (1.0.4)
     mail (2.5.4)
@@ -269,7 +278,7 @@ GEM
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
-    newrelic_rpm (3.7.2.195)
+    newrelic_rpm (3.7.3.199)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     oauth2 (0.8.1)
@@ -524,7 +533,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.2.1)
   faker (~> 1.2.0)
   fog (~> 1.19.0)
-  font-awesome-sass-rails
+  font-awesome-sass
   foreman (~> 0.63.0)
   friendly_id (~> 4.0.10.1)
   gravtastic (~> 3.2.6)
@@ -542,10 +551,11 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari (~> 0.14.0)
   launchy (~> 2.0.5)
+  librato-rails
   memcachier (~> 0.0.2)
   meta_request (~> 0.2.8)
   modernizr-rails (~> 2.6.2)
-  newrelic_rpm (~> 3.7.2)
+  newrelic_rpm (~> 3.7.3)
   nokogiri (~> 1.6.0)
   omniauth (~> 1.1.4)
   omniauth-browserid (~> 0.0.1)

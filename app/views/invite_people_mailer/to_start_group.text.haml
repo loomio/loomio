@@ -1,6 +1,6 @@
 = t("email.invitation.hi", name: @invitation.recipient_first_name)
 \
-= t("email.invitation.intro", group_name: @invitation.group_name)
+= t("email.invitation.intro", group_name: @invitation.invitable_name)
 \
 = invitation_url(@invitation)
 \

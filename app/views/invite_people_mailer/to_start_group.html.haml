@@ -2,7 +2,7 @@
 %html
   %p= t("email.invitation.hi", name: @invitation.recipient_first_name)
 
-  %p= t("email.invitation.intro", group_name: @invitation.group_name)
+  %p= t("email.invitation.intro", group_name: @invitation.invitable_name)
 
   = link_to "#{invitation_url(@invitation)}", invitation_url(@invitation)
 

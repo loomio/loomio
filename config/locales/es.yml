@@ -9,8 +9,13 @@ es:
   attachment:
     error:
       too_large: "El archivo que tratas de adjuntar es mas grande de 50MB, escoge uno mas pequeño. "
+  time:
+    formats:
+      for_today: '%l:%M %P'
   date:
     formats:
+      for_this_year: '%e %b'
+      for_another_year: '%-d/%-m/%y'
       datepicker: "%d-%m-%Y"
   devise:
     invitations:
@@ -165,11 +170,8 @@ es:
     motion_outcome_updated: "resultado de propuesta modificado"
   edit_discussion_context: "Editar la discusión información"
   request_new_group: "Empieza un grupo"
-  request_new_group_details: "o espera hasta que seas invitado a uno."
   empty_notifications: "Todavía no tienes notificaciones."
   see_all_notifications: "Ver todas tus notificaciones"
-  user_settings: "Ajustes de usuario"
-  email_preferences: "Preferencias de correo electrónico "
   sign_out: "Salir"
   sign_in: "Entrar"
   tagline: "Creando un mundo donde es fácil para todos participar de las decisiones que nos afectan."
@@ -421,6 +423,7 @@ es:
   create_an_account: 'Crear una cuenta'
   join_group:
     log_in: "Entrar para unirte a %{group_name}"
+    create_account_to_join_group: "Crear cuenta para acceder a %{group_name}"
   invitation:
     by_email: "Invitar via correo electrónico "
     no_invitations_left: "Ya no tienes mas invitaciones"
@@ -485,11 +488,6 @@ es:
     update_preferences: "Actualizar preferencias"
   new_user_form:
     create_an_account: "Crear una cuenta"
-  user_settings_form:
-    header: "Ajustes de usuario"
-    picture: "Foto"
-    use_avatar_kind: "Usar %{kind}"
-    upload_new_image: "Subir nueva imagen"
   group_setup:
     set_up_your_group: Establecer grupo
     desc_header: "Ya casi terminas!"
@@ -561,6 +559,10 @@ es:
         create: "Crear cuenta"
         update: "Actualizar preferencias"
   email:
+    to_join_group:
+      subject: "%{member} te ha invitado a unirte a %{group_name} en Loomio"
+    to_start_group:
+      subject: "Configura tu nuevo grupo en Loomio: %{group_name}"
     user_added_to_a_group:
       subject: "%{who} te ha adherido a  %{which_group}"
     unsubscribe: "Dale de baja o cambia las preferencias de tu correo electrónico:   "
@@ -591,6 +593,7 @@ es:
       thanks: "Gracias!⏎\nEl Equipo de Loomio⏎ \n"
     membership_request:
       intro: "%{name} (%{email}) ha pedido acceso a uno de tus grupos de Loomio."
+      subject: "%{who} pidió acceso a %{which_group}"
       view_group: "Puedes aceptar o denegar el pedido aquí"
     mentioned:
       intro: "Te han mencionado en el título de una discusión: "
@@ -616,10 +619,6 @@ es:
       closing_in_24_hours: "Cierra en 24 Horas"
       headline: "%{author}'s propuesta en %{group} cerrará pronto:"
       summary: "Resumen"
-    to_join_group:
-      subject: "%{member} te ha invitado a unirte a %{group_name} en Loomio"
-    to_start_group:
-      subject: "Configura tu nuevo grupo en Loomio: %{group_name}"
     verification:
       header: "Ya casi terminas!"
       intro: "Por favor haz click en el enlace de verificación para finalizar tu solicitud:"

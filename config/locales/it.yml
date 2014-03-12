@@ -124,11 +124,8 @@ it:
     motion_closing_soon: "La proposta chiuderà a breve"
     motion_blocked: "ha bloccato la proposta"
   edit_discussion_context: "Modifica il contesto della discussione"
-  request_new_group_details: "o aspetta di essere invitato a uno."
   empty_notifications: "Non hai ancora notifiche."
   see_all_notifications: "Guarda tutte le notifiche"
-  user_settings: "Impostazioni utente"
-  email_preferences: "Opzioni email"
   sign_out: "Esci"
   sign_in: "Accedi"
   tagline: "Creare un mondo in cui chiunque possa prendere facilmente parte a decisioni che lo riguardano."
@@ -425,11 +422,6 @@ it:
     update_preferences: "Aggiorna le preferenze"
   new_user_form:
     create_an_account: "Crea un account"
-  user_settings_form:
-    header: "Impostazioni utente"
-    picture: "Immagine"
-    use_avatar_kind: "Usa %{kind}"
-    upload_new_image: "Carica una nuova immagine"
   group_setup:
     set_up_your_group: Imposta il tuo gruppo
     submit: "Portami al mio gruppo!"

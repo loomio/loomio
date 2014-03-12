@@ -6,6 +6,8 @@ class GroupsController < GroupBaseController
 
   before_filter :ensure_group_is_setup, only: :show
 
+  caches_action :show, :cache_path => Proc.new { |c| c.params }, unless: :user_signed_in?, :expires_in => 5.minutes
+
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.group_private_or_not_found') }
   end
@@ -22,6 +24,7 @@ class GroupsController < GroupBaseController
     authorize!(:create, @group)
     @group.mark_as_setup!
     if @group.save
+      Measurement.increment('groups.create.success')
       @group.add_admin! current_user
       flash[:success] = t("success.group_created")
       redirect_to @group
@@ -29,6 +32,7 @@ class GroupsController < GroupBaseController
         @subgroup = @group
         render 'groups/add_subgroup'
     else
+      Measurement.increment('groups.create.error')
       render 'form'
     end
   end
@@ -43,9 +47,11 @@ class GroupsController < GroupBaseController
       if @group.is_hidden?
         @group.discussions.update_all(private: true)
       end
+      Measurement.increment('groups.update.success')
       flash[:notice] = 'Group was successfully updated.'
       redirect_to @group
     else
+      Measurement.increment('groups.update.error')
       render :edit
     end
   end
@@ -76,7 +82,7 @@ class GroupsController < GroupBaseController
   def archive
     @group.archive!
     flash[:success] = t("success.group_archived")
-    redirect_to root_path
+    redirect_to dashboard_path
   end
 
   def hide_next_steps
@@ -87,6 +93,7 @@ class GroupsController < GroupBaseController
     subject = params[:group_email_subject]
     body = params[:group_email_body]
     GroupMailer.delay.deliver_group_email(@group, current_user, subject, body)
+    Measurement.measure('groups.email_members.size', @group.members.size)
     flash[:success] = t("success.emails_sending")
     redirect_to @group
   end

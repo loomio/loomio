@@ -172,11 +172,8 @@ ml:
     motion_outcome_updated: "ശുപാര്‍ശയുടെ ഫലം പുതുക്കി"
   edit_discussion_context: "ചര്‍ച്ചയുടെ പശ്ചാത്തലം തിരുത്തുക"
   request_new_group: "ഒരു കൂട്ടം ആരംഭിക്കുക"
-  request_new_group_details: "അല്ലെങ്കില്‍ സ്വീകരണം ലഭിക്കാന്‍ കാത്തിരിയ്ക്കുക"
   empty_notifications: "താങ്കള്‍ക്ക് അറിയിപ്പുകള്‍ ഒന്നുമില്ല"
   see_all_notifications: "എല്ലാ അറിയിപ്പുകളും കാണുക"
-  user_settings: "ഉപയോക്താവിന്റെ ക്രമീകരണങ്ങള്‍"
-  email_preferences: "ഈമെയില്‍ മുന്‍ഗണനകള്‍"
   sign_out: "പുറത്തു കടക്കുക"
   sign_in: "പ്രവേശിക്കുക"
   tagline: "ആര്‍ക്കും എളുപ്പം അവരവരെ ബാധിയ്ക്കുന്ന തീരുമാനങ്ങളില്‍ പങ്കെടുക്കാന്‍, ഒരു പുതിയ ലോകം സൃഷ്ടിക്കുന്നു. "
@@ -475,11 +472,6 @@ ml:
     update_preferences: "മുന്‍ഗണനകള്‍ പുതുക്കുക"
   new_user_form:
     create_an_account: "ഒരു അക്കൗണ്ട് തുടങ്ങുക"
-  user_settings_form:
-    header: "ഉപയോക്താവിന്റെ ക്രമീകരണങ്ങള്‍"
-    picture: "ചിത്രം"
-    use_avatar_kind: "ഉപയോഗം %{kind}"
-    upload_new_image: "പുതിയ ചിത്രം അപ്‌ലോഡ്‌ ചെയ്യുക"
   group_setup:
     set_up_your_group: താങ്കളുടെ കൂട്ടം ചിട്ടപെടുത്തുക
     desc_header: "ഏതാണ്ട് എത്തിപോയി!"
@@ -558,6 +550,10 @@ ml:
         create: "അക്കൗണ്ട് തുടങ്ങുക"
         update: "ക്രമീകരണങ്ങള്‍ പുതുക്കുക"
   email:
+    to_join_group:
+      subject: "%{member}  ലൂമിയോയിലെ %{group_name} -ലേക്ക് ക്ഷണിച്ചിരിയ്ക്കുന്നു"
+    to_start_group:
+      subject: "താങ്കളുടെ പുതിയ ലൂമിയോ കൂട്ടം ചിട്ടപെടുത്തു: %{group_name}"
     user_added_to_a_group:
       subject: "%{who} താങ്കളെ  %{which_group}-ലേക്ക് ചേര്‍ത്തു"
       content: "%{who} താങ്കളെ  %{which_group}-ലേക്ക് ചേര്‍ത്തു.  ആ സമൂഹത്തിലേക്ക് പോകാന്‍ ഇവിടെ അമര്‍ത്തുക:"
@@ -614,10 +610,6 @@ ml:
       closing_in_24_hours: "24 മണിയ്ക്കൂറില്‍ അടയ്ക്കുന്നു"
       headline: "%{author}-ടെ %{group}-ലുള്ള പദ്ധതിഅവസാനിയ്ക്കാറായി:"
       summary: "ചുരുക്കം"
-    to_join_group:
-      subject: "%{member}  ലൂമിയോയിലെ %{group_name} -ലേക്ക് ക്ഷണിച്ചിരിയ്ക്കുന്നു"
-    to_start_group:
-      subject: "താങ്കളുടെ പുതിയ ലൂമിയോ കൂട്ടം ചിട്ടപെടുത്തു: %{group_name}"
     verification:
       header: "ദേ ഇപ്പത്തീരും!"
       intro: "താങ്കളുടെ അപേക്ഷ അന്തിമമാക്കാന്‍ ഈ സാധൂകരണ-കണ്ണി ഞെക്കുക:"

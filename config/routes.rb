@@ -1,4 +1,5 @@
 Loomio::Application.routes.draw do
+
   slug_regex = /[a-z0-9\-\_]*/i
   ActiveAdmin.routes(self)
 
@@ -31,15 +32,14 @@ Loomio::Application.routes.draw do
     match 'unfollow'
   end
 
-  resources :invitations, only: [:show]
-
   resources :group_requests, only: [:create, :new] do
     get :confirmation, on: :collection
   end
 
+  resources :invitations, only: [:show, :create, :destroy]
+
   resources :groups, path: 'g', only: [:create, :edit] do
     scope module: :groups do
-      resources :invitations, only: [:destroy, :new, :create]
       resources :memberships, only: [:index, :destroy, :new, :create] do
         member do
          post :make_admin
@@ -77,6 +77,7 @@ Loomio::Application.routes.draw do
 
     resources :motions,     only: [:index]
     resources :discussions, only: [:index, :new]
+    resources :invitations, only: [:new, :destroy]
   end
 
   scope module: :groups, path: 'g', slug: slug_regex do
@@ -115,6 +116,7 @@ Loomio::Application.routes.draw do
 
   resources :discussions, path: 'd', only: [:new, :edit, :create] do
     get :activity_counts, on: :collection
+    resources :invitations, only: [:new]
 
     member do
       post :update_description
@@ -163,7 +165,7 @@ Loomio::Application.routes.draw do
   end
 
   scope module: :users do
-    match '/settings',          action: 'settings', as: :user_settings
+    match '/profile',          action: 'profile', as: :profile
     scope module: :email_preferences do
       get '/email_preferences', action: 'edit',   as: :email_preferences
       put '/email_preferences', action: 'update', as: :update_email_preferences
@@ -180,29 +182,38 @@ Loomio::Application.routes.draw do
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
   get '/group_requests/:id/start_new_group' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('token=','')}"}
 
-  resources :contributions, only: [:index, :create] do
-    get :callback, on: :collection
-    get :thanks, on: :collection
-  end
+  get '/contributions' => redirect('/crowd')
+  get '/contributions/thanks' => redirect('/crowd')
+  get '/contributions/callback' => redirect('/crowd')
+  get '/crowd' => redirect('https://love.loomio.org/')
 
-  authenticated do
-    root :to => 'dashboard#show'
-  end
+  # resources :contributions, only: [:index, :create] do
+  #   get :callback, on: :collection
+  #   get :thanks, on: :collection
+  # end
 
-  root :to => 'pages#home'
+  get '/dashboard', to: 'dashboard#show', as: 'dashboard'
+  root :to => 'marketing#index'
 
   scope controller: 'pages' do
     get :about
     get :privacy
     get :purpose
-    get :pricing
+    get :services
     get :terms_of_service
+    get :third_parties
     get :browser_not_supported
+  end
+
+  scope controller: 'campaigns' do
+    get :hide_crowdfunding_banner
   end
 
   scope controller: 'help' do
     get :help
   end
+
+  get '/detect_locale' => 'detect_locale#show'
 
   resources :contact_messages, only: [:new, :create]
   match 'contact', to: 'contact_messages#new'

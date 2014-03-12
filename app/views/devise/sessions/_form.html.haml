@@ -9,6 +9,6 @@
       #remember-me
         = f.input :remember_me, :as => :boolean, label: false, inline_label: t(:remember_me) if devise_mapping.rememberable?
     #new-account
-      = "Don't have an account?"
-      = link_to "Create one now!", new_user_registration_path, id:'create_account'
+      = t(:'dont_have_an_account')
+      = link_to t(:'create_one_now'), new_user_registration_path, id:'create_account'
 

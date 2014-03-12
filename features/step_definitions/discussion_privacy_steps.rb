@@ -38,5 +38,5 @@ When(/^I change the discussion privacy to public$/) do
 end
 
 Then(/^I should see that the discussion is set to public$/) do
-  page.should have_css('.icon-globe')
+  page.should have_css('.fa-globe')
 end

@@ -1,0 +1,15 @@
+nl:
+  frontpage:
+    link:
+      blog: 'Blog'
+      contact: 'Contact'
+      log_in: 'LOG IN'
+      crowdfunding: 'Bekijk de crowdfunding campagne'
+      more: 'Meer'
+      top: 'Naar boven'
+      public_groups: 'Openbare groepen'
+      terms: 'Voorwaarden'
+      privacy: 'Privacy'
+      services: 'Diensten'
+    hero:
+      subhead: 'Help ons bouwen.'

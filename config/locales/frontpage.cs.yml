@@ -1,0 +1,56 @@
+cs:
+  frontpage:
+    view_this_in_your_language: 'Zobrazit stránku v %{language}'
+    title:
+      collaborative_decision_making: Společné rozhodování
+    link:
+      blog: 'Blog'
+      contact: 'Kontakt'
+      log_in: 'PŘIHLÁSIT SE'
+      crowdfunding: 'Mrkněte se na crowdfundingovou kampaň'
+      more: 'Více'
+      top: 'Začátek'
+      public_groups: 'Veřejné skupiny'
+      terms: 'Podmínky'
+      privacy: 'Soukromí'
+      services: 'Služby'
+    hero:
+      head_html: 'Svět potřebuje lepší způsob, jak <strong>společně rozhodovat</strong>.'
+      subhead: 'Pomozte nám ho vytvořit.'
+      desc: 'Loomio je svobodný a bezplatný open source software, který umožňuje komukoliv, kdekoliv, aby se podílel na rozhodnutích, které jej ovlivňují'
+    product:
+      header_html: 'Když vyslechneme <strong>všechny hlasy</strong>, činíme <strong>lepší rozhodnutí</strong>.'
+      step1:
+        header: '1. Důkladně to prodiskutujte'
+        desc: 'Zahajte diskuzi na jakékoliv téma a pozvěte správné lidí. Sdílejte různé perspektivy a společně rozvíjejte nápady.'
+      step2:
+        header: '2. Dosáhněte dohody'
+        desc: 'Každý může navrhnout řešení. Lidé mohou souhlasit, zdržet se, nesouhlasit, či ho zamítnout – abyste věděli, jaký má každý názor a proč.'
+      step3:
+        header: '3. Rozhodněte se společně'
+        desc: 'Vypracujte návrh společně, aby vyhovoval všem. Každé rozhodnutí má jasnou lhůtu, takže vždy získáte jasné rozhodnutí.'
+    crowdfunding:
+      header: 'Crowdfundujeme, abychom mohli dobudovat tuto novou platformu a poskytnout ji světu.'
+    prototype:
+      header_html: "Už jsme vytvořili <strong>prototyp</strong> a lidé <strong>po celém světě</strong> s ním dělají úžasné věci:"
+      subhead_html: '<a href="%{try_loomio_link}">Zkuste Loomio Beta</a> teď. Nebo se <a href="%{join_campaign_link}">připojte ke kampani</a> a získejte včasný přístup k Loomio 1.0.'
+    mobile:
+      header: 'Loomio 1.0 umožňuje lidem společně rozhodovat odkudkoliv.'
+    team:
+      header: 'O Loomiu'
+      desc: 'Jsme malý tým open-source vývojářů a aktivistů za sociální spravedlnost pracující pro Enspiral v Aotearoa Novém Zélandu, se širší sítí přátel, příznivců a poradců po celém světě.'
+    ideals:
+      community:
+        header: 'Komunitně řízené družstvo'
+        desc: 'Loomio je budováno družstvem vlastněným pracovníky. Jsme sociálním podnikem, co se snaží maximalizovat pozitivní sociální dopad, ne zisk.'
+      independent:
+        header: 'Nezávislé a neutrální'
+        desc: 'Udružujeme prostor, kde se každá skupina může spojit, nezávisle na politickém či firemním zájmu. Nikdy neprodáme vaše údaje.'
+      open:
+        header: 'Svobodný a otevřený software'
+        desc: 'Kód Loomia je veřějným zdrojem, který každý může spouštět, číst, učit se z, upravovat a dále distribuovat.'
+      gift:
+        header: 'Ekonomika darů'
+        desc: 'Loomio je podporován lidmi, kteří platí podle svých možností. To udržuje platformu bez reklam a přístuptupnou skupinám bez peněz.'
+    vision:
+      header: 'Pomozte nám zrealizovat tuto vizi.'

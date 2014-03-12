@@ -1,0 +1,20 @@
+required:
+  # when/if we find required keys, we should load them into an array like so:
+  # - REQUIRED_KEY
+  # - REQUIRED_KEY_2
+
+optional:
+  SECRET_COOKIE_TOKEN: ""
+  EXCEPTION_RECIPIENT: ""
+  AWS_ACCESS_KEY_ID: ""
+  AWS_SECRET_ACCESS_KEY: ""
+  AWS_ATTACHMENT_BUCKET: ""
+  SENDGRID_USERNAME: ""
+  SENDGRID_PASSWORD: ""
+  BING_TRANSLATION_APPID: ""
+  BING_TRANSLATION_SECRET: ""
+  NAVBAR_LOGO_PATH: top-bar-loomio.png
+  NAVBAR_CONTRIBUTE: show
+  # CANONICAL_HOST: loomio.org
+  FOG_DIRECTORY: ""
+  TAG_MANAGER_ID: ""

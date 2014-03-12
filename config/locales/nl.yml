@@ -178,11 +178,8 @@ nl:
     motion_outcome_updated: "werkte de uitkomst van het voorstel bij"
   edit_discussion_context: "Bewerk discussie beschrijving"
   request_new_group: "Begin een groep"
-  request_new_group_details: "of wacht tot je voor één wordt uitgenodigd."
   empty_notifications: "Je hebt nog geen meldingen."
   see_all_notifications: "Bekijk alle meldingen"
-  user_settings: "Gebruikersinstellingen"
-  email_preferences: "E-mail voorkeuren"
   sign_out: "Uitloggen"
   sign_in: "Inloggen"
   honeypot_warning: "Kon je account niet maken. Als je een voorleesprogramma gebruikt, zorg dan dat het laatste (verborgen) veld op het formulier leeg is."
@@ -569,11 +566,6 @@ nl:
     update_preferences: "Voorkeuren bijwerken"
   new_user_form:
     create_an_account: "Maak een account"
-  user_settings_form:
-    header: "Gebruikersinstellingen"
-    picture: "Afbeelding"
-    use_avatar_kind: "Gebruik %{kind}"
-    upload_new_image: "Upload een nieuwe afbeelding"
   group_setup:
     set_up_your_group: Stel je groep in
     desc_header: "Je bent er bijna!"
@@ -658,6 +650,10 @@ nl:
         create: "Maak account"
         update: "Instellingen bijwerken"
   email:
+    to_join_group:
+      subject: "%{member} heeft je uitgenodigd om deel te nemen aan %{group_name} op Loomio"
+    to_start_group:
+      subject: "Stel je nieuwe Loomio groep in: %{group_name}"
     user_added_to_a_group:
       subject: "%{who} heeft je toegevoegd aan %{which_group}"
       content: "%{who} heeft je toegevoegd aan %{which_group} op Loomio. Klik hier om naar de groep te gaan:"
@@ -719,10 +715,6 @@ nl:
       closing_in_24_hours: "Sluit over 24 uur"
       headline: "Het voorstel van %{author} in %{group} sluit binnenkort: "
       summary: "Samenvatting"
-    to_join_group:
-      subject: "%{member} heeft je uitgenodigd om deel te nemen aan %{group_name} op Loomio"
-    to_start_group:
-      subject: "Stel je nieuwe Loomio groep in: %{group_name}"
     verification:
       header: "Je bent bijna klaar!"
       intro: "Klik op deze verificatielink om je aanvraag te voltooien:"

@@ -1,18 +1,25 @@
 class ApplicationController < ActionController::Base
   include LocalesHelper
+  include CurrentUserHelper
   include ReadableUnguessableUrlsHelper
+
   protect_from_forgery
 
-  before_filter :set_locale
-  before_filter :initialize_search_form
-  around_filter :user_time_zone, if: :current_user
   helper :analytics_data
+  helper :locales
   helper_method :current_user_or_visitor
+  helper_method :dashboard_or_root_path
+
+  before_filter :set_application_locale
+  before_filter :save_selected_locale, if: :user_signed_in?
+  around_filter :user_time_zone, if: :user_signed_in?
+
+  after_filter :increment_measurement
 
   rescue_from CanCan::AccessDenied do |exception|
-    if current_user
+    if user_signed_in?
       flash[:error] = t("error.access_denied")
-      redirect_to root_url
+      redirect_to dashboard_path
     else
       store_location
       authenticate_user!
@@ -20,9 +27,28 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+  def increment_measurement
+    Measurement.increment(measurement_name)
+  end
 
-  def current_user_or_visitor
-    current_user || LoggedOutUser.new
+  def measurement_name
+    "#{controller_name}.#{action_name}"
+  end
+
+  def default_url_options
+    if !user_signed_in? and params.has_key?(:locale)
+      super.merge({locale: selected_locale})
+    else
+      super
+    end
+  end
+
+  def dashboard_or_root_path
+    if user_signed_in?
+      dashboard_path
+    else
+      root_path
+    end
   end
 
   def store_location
@@ -34,31 +60,25 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    path = session['user_return_to'] || root_path
+    save_detected_locale(resource)
+    path = session['user_return_to'] || dashboard_path
     clear_stored_location
     path
-  end
-
-  def initialize_search_form
-    @search_form = SearchForm.new(current_user)
   end
 
   def user_time_zone(&block)
     Time.use_zone(current_user.time_zone_city, &block)
   end
 
-
   before_filter :configure_permitted_parameters, if: :devise_controller?
-
-  protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:email, :name, :password, :password_confirmation, :language_preference)
+      u.permit(:email, :name, :password, :password_confirmation)
     end
 
     devise_parameter_sanitizer.for(:sign_in) do |u|
-      u.permit(:email, :password, :language_preference, :remember_me)
+      u.permit(:email, :password, :remember_me)
     end
   end
 end

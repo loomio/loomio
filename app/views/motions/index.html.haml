@@ -7,7 +7,7 @@
   #closed-motions-list
     - if @closed_motions.exists?
       - @closed_motions.each do |motion|
-        %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: @group
+        %li.selector-item= render 'motions/motion_preview', motion: motion
     - else
       %li.selector-item.empty-list-message= t(:empty_decision_index)
-= paginate @closed_motions, :window => 3
+= paginate @closed_motions

@@ -42,6 +42,9 @@ $ ->
   load_inbox_count()
 
 $ ->
+  #load sparklines for motion pies
+  $('.motion-sparkline').sparkline('html', { disableTooltips: true, type: 'pie', height: '26px', width: '26px', sliceColors: [ "#90D490", "#F0BB67", "#D49090", "#dd0000", '#ccc'] })
+
   if $('body.inbox').length > 0
     $('.ui-sortable').sortable()
 
@@ -65,10 +68,9 @@ $ ->
         show_inbox_empty_msg_if_empty
 
 
-    #load sparklines for motion pies
-    $('.motion-sparkline').sparkline('html', { disableTooltips: true, type: 'pie', height: '26px', width: '26px', sliceColors: [ "#90D490", "#F0BB67", "#D49090", "#dd0000", '#ccc'] })
 
     # find times to be updated in javascript
     $('.js-format-as-timeago').each ->
       time = moment($(this).data('time'))
       $(this).text(time.fromNow(true))
+

@@ -118,6 +118,10 @@ class Ability
 
     can :cancel, MembershipRequest, requestor_id: user.id
 
+    can :cancel, Invitation do |invitation|
+      (invitation.inviter == user) or (@admin_group_ids.include?(invitation.group.id))
+    end
+
     can [:approve,
          :ignore], MembershipRequest do |membership_request|
       group = membership_request.group
@@ -128,12 +132,14 @@ class Ability
     end
 
     can :show, Discussion do |discussion|
-      group = discussion.group
       if discussion.archived?
         false
       elsif discussion.public?
         true
-      elsif group.members.include?(user)
+      elsif @member_group_ids.include?(discussion.group_id)
+        true
+      elsif discussion.group.viewable_by_parent_members? &&
+            @member_group_ids.include?(discussion.group.parent_id)
         true
       else
         false
@@ -166,16 +172,26 @@ class Ability
       (comment.author == user) or @admin_group_ids.include?(comment.discussion.group_id)
     end
 
-    can [:create, :vote], Motion do |motion|
+    can [:start_proposal], Discussion do |discussion|
+      can? :create, Motion.new(discussion: discussion)
+    end
+
+    can [:create], Motion do |motion|
+      motion.discussion.current_motion.nil? && @member_group_ids.include?(motion.discussion.group_id)
+    end
+
+    can [:vote], Motion do |motion|
       motion.voting? && @member_group_ids.include?(motion.discussion.group_id)
     end
 
+    can [:close, :edit_close_date], Motion do |motion|
+      motion.voting? && ((motion.author_id == user.id) || @admin_group_ids.include?(motion.discussion.group_id))
+    end
+
     can [:destroy,
-         :close,
          :create_outcome,
-         :update_outcome,
-         :edit_close_date], Motion do |motion|
-      (motion.author == user) or @admin_group_ids.include?(motion.group.id)
+         :update_outcome], Motion do |motion|
+      (motion.author_id == user.id) or @admin_group_ids.include?(motion.discussion.group_id)
     end
   end
 end

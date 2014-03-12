@@ -174,11 +174,8 @@ pt:
     motion_outcome_updated: "atualizou o resultado da proposição"
   edit_discussion_context: "Editar contexto da discussão"
   request_new_group: "Iniciar um grupo"
-  request_new_group_details: "ou aguarde até ser convidado para um."
   empty_notifications: "Você ainda não tem notificações."
   see_all_notifications: "Ver todas as notificações"
-  user_settings: "Configurações de usuário"
-  email_preferences: "Preferências de E-mail"
   sign_out: "Sair"
   sign_in: "Entrar"
   honeypot_warning: "Não foi possível criar sua conta. Se você está usando um leitor de tela, por favor assegure que o último campo (oculto) no formulário esteja em branco."
@@ -543,11 +540,6 @@ pt:
     update_preferences: "Atualizar preferências"
   new_user_form:
     create_an_account: "Criar uma conta"
-  user_settings_form:
-    header: "Configurações de usuário"
-    picture: "Foto"
-    use_avatar_kind: "Usar %{kind}"
-    upload_new_image: "Enviar uma nova imagem"
   group_setup:
     set_up_your_group: Configure seu grupo
     desc_header: "Você está quase lá!"
@@ -632,6 +624,10 @@ pt:
         create: "Criar conta"
         update: "Salvar configurações"
   email:
+    to_join_group:
+      subject: "%{member} foi convidada(o) a participar do grupo %{group_name} no Loomio"
+    to_start_group:
+      subject: "Configure seu novo grupo Loomio: %{group_name}"
     user_added_to_a_group:
       subject: "%{who} lhe adicionou ao grupo %{which_group}"
       content: "%{who} adicionou você ao %{which_group} no Loomio. Clique aqui para visitar o grupo:"
@@ -693,10 +689,6 @@ pt:
       closing_in_24_hours: "Encerra em 24 horas"
       headline: "A proposição de %{author} no grupo %{group} encerrará em breve:"
       summary: "Resumo"
-    to_join_group:
-      subject: "%{member} foi convidada(o) a participar do grupo %{group_name} no Loomio"
-    to_start_group:
-      subject: "Configure seu novo grupo Loomio: %{group_name}"
     verification:
       header: "Você está quase terminando!"
       intro: "Por favor, clique neste link de verificação para finalizar sua solicitação:"

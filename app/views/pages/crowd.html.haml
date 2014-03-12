@@ -1,0 +1,170 @@
+.container
+  %section.first
+    .inner-container.first
+      .row-fluid
+        .span12
+          %h1.head
+            The world needs a better way to
+            %br
+            %span make decisions together.
+            %br
+          %h2.subheader#tagline
+            help us build it
+      .divider.hero
+    .row-fluid
+      .span8.offset2.launch-container
+        %h2.launch
+          %i.fa.fa-rocket
+          Launching March 11, 2014
+        %p We’re crowdfunding to build a totally inclusive platform so anyone anywhere can participate in decisions that affect them.
+    .row-fluid.action-row
+      .span4.offset2
+        %h3 1. Join the Thunderclap
+        %p Automatically share the link on the day of launch.
+        .btn.btn-block.btn-large.btn-success
+          =link_to "Go", "https://www.thunderclap.it/projects/9310-bring-loomio-to-the-world", target: '_blank', class: 'plain-white-link'
+        %p.button-info Amplify the call to action!
+      .span4
+        %h3 2. Subscribe to the mailing list
+        =render 'pages/crowd/mailchimp_form'
+
+    .row-fluid
+      .span12.team
+        %p
+          Built with love by a small team of open-source developers, facilitators and activists in New Zealand.
+          %i.fa.fa-heart-o
+    =image_tag('sneak-peak-reduced.png')
+    .inner-container
+      .row-fluid
+        .span10.offset1
+          %br
+          %br
+          %h3.subheader Real democracy is about collaboration: groups of people getting together and making decisions that work for everyone.
+        .span8.offset2
+          %p Loomio fills a critical gap: bringing online talk to real world action. Social media and email have made it so easy to communicate, but a decision is what turns talk into action. Right now, there's no easy way to make decisions together online. It's like a missing piece of the internet.
+
+          %p
+            We've taken all the learning from thousands of groups using our beta prototype and designed a whole new platform for truly inclusive decision-making: Loomio 1.0
+      .divider
+      .row-fluid
+        .span10.offset1
+          =image_tag('loomio1.png', id: 'ipad-loomio')
+          %h1.smaller Help us build a truly inclusive platform
+          %br
+      .row-fluid
+        .span10.offset1
+          %h3.subheader.bullet
+            It needs to be
+            %strong mobile,
+            to include people in places where computers and internet are scarce.
+          %br
+      .row-fluid
+        .span8.offset2
+          %p
+            So we’re building a platform that works on any device, built with best in open mobile technology: Ruby on Rails, AngularJS, HTML5
+          .divider
+      .row-fluid
+        .span10.offset1
+          %h3.subheader.bullet
+            It needs to be
+            %strong easy,
+            to include all kinds of people.
+          %br
+      .row-fluid
+        .span8.offset2
+          %p
+            So we’ve designed it to be as easy to use as email, so you don’t need to be a computer geek to participate.
+          .divider
+      .row-fluid
+        .span10.offset1
+          %h3.subheader.bullet
+            It needs to be
+            %strong safe,
+            to include people discussing sensitive topics.
+          %br
+      .row-fluid
+        .span8.offset2
+          %p
+            So we’re making it really easy to set up and run your own independent version, so your privacy is entirely under your own control.
+          .divider
+      .row-fluid
+        .span10.offset1
+          %h3.subheader.bullet
+            It needs to be
+            %strong accessible,
+            to include people of all abilities.
+          %br
+      .row-fluid
+        .span8.offset2
+          %p
+            So we’re making it work great with screen-readers and other assistive technologies.
+          .divider
+      .row-fluid
+        .span10.offset1
+          %h3.subheader.bullet
+            It needs to be
+            %strong open,
+            to include everyone.
+          %br
+      .row-fluid
+        .span8.offset2
+          %p So we’re building 100% free and open source. We're building public infrastructure for decision-making, held in the commons.
+
+
+  %section
+    .inner-container.with-action-row
+      .row-fluid
+        .span10.offset1
+          %h1.subheader.smaller
+            We’re launching March 11th 2014.
+      .row-fluid
+        .span8.offset2
+          %p We’ve done all the research and design, now we just have to fund the development needed to release it to the world.
+          %p.last We’re crowdfunding so that the project will be driven by the community of people who want it to happen, not by advertisers or people who want to sell your data.
+
+
+          %h2.subheader
+            We can’t make Loomio 1.0 without you.
+            %br
+          %br
+    .row-fluid.action-row
+      .span4.offset2
+        %h3 1. Join the Thunderclap
+        %p Automatically share the link on the day of launch.
+        .btn.btn-block.btn-large.btn-success
+          =link_to "Go", "https://www.thunderclap.it/projects/9310-bring-loomio-to-the-world", target: '_blank', class: 'plain-white-link'
+        %p.button-info Amplify the call to action!
+      .span4
+        %h3 2. Subscribe to the mailing list
+        =render 'pages/crowd/mailchimp_form'
+
+  %section
+    .inner-container
+      .row-fluid
+        .span8.offset2
+          %p
+            An amazing team of open-source developers and social justice activists in Wellington, New Zealand, has come together to make this happen.
+            = link_to "Find out more.", about_path
+          %p
+            %strong Contact us
+          %p
+            Press inquiries:
+            %span
+              = mail_to 'press@loomio.org'
+          %p
+            Technical inquiries:
+            %span
+              = mail_to 'tech@loomio.org'
+          %p
+            General inquiries:
+            %span
+              = mail_to 'contact@loomio.org'
+          %p
+            Keep up to date on the
+            %a{href: blog_path}
+              Loomio Blog,
+            %a{href: 'https://www.facebook.com/Loomio'}
+              Facebook,
+            and
+            %a{href: 'https://www.twitter.com/loomio'}
+              Twitter.
