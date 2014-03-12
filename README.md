@@ -20,5 +20,5 @@ If you have any questions or feedback, get in touch via [contact@loomio.org](mai
 
 Loomio on [Facebook](https://facebook.com/Loomio)
 Loomio on [Twitter](https://twitter.com/Loomio)
-Loomio on [Google+](https://https://plus.google.com/+LoomioOrg)
+Loomio on [Google+](https://plus.google.com/+LoomioOrg)
 
