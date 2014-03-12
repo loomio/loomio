@@ -30,6 +30,11 @@ p {
   font-size: 16px;
 }
 
+a {
+  color: $blue;
+  &:hover { color: darken($blue, 6%); }
+}
+
 .btn-lg { padding: 8px 26px; }
 
 .btn, a {
@@ -154,7 +159,16 @@ a:hover { text-decoration: none; }
   .content.header {
     width: 100%;
     @include screen-size(medium-up) {
-      width: 38%;
+      width: 600px;
+    }
+  }
+  .video {
+    background-image:url('/assets/play.png');
+    background-repeat: no-repeat;
+    padding-left: 52px;
+    padding-bottom: 4px;
+    &:hover {
+    background-image:url('/assets/play-hover.png');
     }
   }
 }
@@ -163,7 +177,7 @@ a:hover { text-decoration: none; }
   .content.header {
     width: 100%;
     @include screen-size(medium-up) {
-      width: 68%;
+      width: 950px;
     }
   }
 }
@@ -209,6 +223,7 @@ a:hover { text-decoration: none; }
       }
     }
   }
+  .carousel-inner { margin-bottom: 54px; }
 }
 
 #product-carousel {
@@ -504,6 +519,22 @@ a:hover { text-decoration: none; }
 
 .quote {
   background-color: $ash;
+  .content.rushkoff {
+    width: 100%;
+    @include screen-size(medium-up) {
+      width: 1124px;
+    }
+  }
+  .content.sifry {
+    width: 100%;
+    @include screen-size(medium-up) {
+      width: 960px;
+    }
+  }
+}
+.attributation {
+  font-size: 30px;
+  margin-top: 18px;
 }
 
 .team {
