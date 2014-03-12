@@ -79,7 +79,8 @@
                 %i.fa.fa-angle-left
               %a.carousel-control.right-ctrl{href: '#product-carousel', "data-slide" => 'next'}
                 %i.fa.fa-angle-right
-
+              =link_to 'https://www.youtube.com/watch?v=ZipyebSY2Lo', class: 'video hero-text' do
+                = t(:'frontpage.link.video')
 
       .row.crowdfunding
         = link_to 'https://love.loomio.org', class: 'block-link js-not-yet-row' do
@@ -152,7 +153,7 @@
               %p.hero-text= t(:'frontpage.prototype.subhead_html', try_loomio_link: new_group_request_path, join_campaign_link: 'https://love.loomio.org')
 
       .row.quote
-        .content
+        .content.rushkoff
           %blockquote= t(:'frontpage.quote.header.rushkoff_html')
 
       .row.mobile
@@ -161,7 +162,7 @@
             %h1=t(:'frontpage.mobile.header_html')
 
       .row.quote
-        .content
+        .content.sifry
           %blockquote= t(:'frontpage.quote.header.sifry_html')
 
       .row
