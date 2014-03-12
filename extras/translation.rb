@@ -17,13 +17,15 @@ class Translation
                'Tiếng Việt' => :vi,
                'Türkçe' => :tr}
 
-  FRONTPAGE_SUPPORTED_LOCALES = [:en, :ca, :pt, :el, :cs, :fr, :es]
-
   EXPERIMENTAL_LANGUAGES = {'Chinese (Mandarin)' => :cmn,
                             'Italiano' => :it,
                             'తెలుగు' => :te,
                             'Gaelic (Irish)' => :ga,
                             'українська мова' => :uk}
+
+  FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr]
+
+  VIDEO_SUPPORTED_LOCALES  = [:en, :pt_BR, :el, :es, :ca, :cs, :fr, :ja]
 
   def self.language(locale)
     LANGUAGES.key(locale.to_sym)
@@ -39,6 +41,10 @@ class Translation
 
   def self.frontpage_locales
     FRONTPAGE_SUPPORTED_LOCALES
+  end
+
+  def self.video_locales
+    VIDEO_SUPPORTED_LOCALES
   end
 
   def self.experimental_locales
