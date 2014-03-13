@@ -711,8 +711,7 @@ en:
       translations: 'Translation enquiries'
     messages:
       email_html:        "Fill out this form, or send an email to <a href='mailto:%{email}'>%{email}</a>"
-      phone:        "If you'd rather speak to someone directly, you can call %{name} on %{number}"
-      social_html:       "You can also join us on <a href='%{facebook}' target='_blank'>facebook</a> and <a href='%{twitter}' target='_blank'>twitter</a>!"
+      social_html:       "You can also join us on<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
 
   #
   # FORMS
