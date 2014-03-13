@@ -1,9 +1,14 @@
 nl:
   frontpage:
+    view_this_in_your_language: 'Bekijk deze site in het %{language}'
+    title:
+      collaborative_decision_making: Gezamenlijke Besluitvorming
     link:
       blog: 'Blog'
       contact: 'Contact'
+      press: 'Pers'
       log_in: 'LOG IN'
+      video: "Bekijk meer over hoe Loomio werkt"
       crowdfunding: 'Bekijk de crowdfunding campagne'
       more: 'Meer'
       top: 'Naar boven'
@@ -13,3 +18,26 @@ nl:
       services: 'Diensten'
     hero:
       subhead: 'Help ons bouwen.'
+      desc: 'Loomio is vrije en open software voor iedereen, waar ook ter wereld, om deel te nemen aan beslissingen die hen aangaan.'
+    product:
+      step1:
+        header: '1. Dingen bespreken'
+        desc: 'Begin een discussie over een onderwerp en verzamel de juiste mensen. Deel verscheidene perspectieven en ontwikkel samen ideeën.'
+      step2:
+        header: '2. Tot overeenstemming komen'
+      step3:
+        header: '3. Samen beslissen'
+        desc: 'Ontwikkel het voorstel samen zodat het voor iedereen oké is. Iedere beslissing heeft een duidelijke deadline zodat je altijd een helder resultaat krijgt.'
+    team:
+      header: 'Over Loomio'
+    ideals:
+      community:
+        header: 'Samenwerking gedreven door de gemeenschap'
+      independent:
+        header: 'Onafhankelijk en neutraal'
+      open:
+        header: 'Vrije en open software'
+      gift:
+        header: 'Weggeef economie'
+    vision:
+      header: 'Help ons deze visie in een realiteit veranderen.'

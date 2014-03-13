@@ -149,12 +149,12 @@ fr:
         one: "%{count} an"
         other: "%{count} ans"
   footer:
-    about: 'À propos '
+    about: 'À propos'
     blog: 'Blog'
     contact: 'Contact'
     privacy: 'Confidentialité'
     public_groups: 'Groupes publics'
-    terms: 'Termes '
+    terms: 'Conditions d''utilisation'
   inbox:
     dropdown-btn: 'Boîte de réception'
     empty: Vous êtes à jour ! Il n'y a aucun commentaire que vous n'avez pas vu.
@@ -178,6 +178,7 @@ fr:
     motion_outcome_updated: "a modifié le résultat de la proposition"
   edit_discussion_context: "Editer le contexte de la discussion"
   request_new_group: "Créer un groupe"
+  request_or_find_new_group_html: "<a href='%{new_group_link}'>Créer un nouveau groupe</a>, ou <a href='%{existing_group_link}'>trouver un groupe existant</a>"
   empty_notifications: "Vous n'avez pas de notification pour l'instant."
   see_all_notifications: "Voir toutes les notifications"
   profile: "Profil"
@@ -271,6 +272,7 @@ fr:
   edit_group_description: "Donner la description du groupe"
   group_subscription: "Inscription au groupe"
   group_request:
+    neighbourhood_support_group: "par exemple : Groupe d'aide de quartier"
     confirmation:
       title: Vous avez presque fini ! Consultez votre email.
       body_html: |
@@ -497,10 +499,21 @@ fr:
   password_confirmation: "Confirmation du mot de passe"
   current_password: "Mot de passe actuel"
   password_details: "(nous avons besoin de votre mot de passe actuel pour confirmer le changement)"
+  confirm_password: "Confirmer le mot de passe"
   cancel_my_account: "Supprimer mon compte"
   remember_me: "Se souvenir de moi"
   signing_in: "Se connecter"
+  or: "ou"
   forgot_your_password: "Mot de passe oublié ?"
+  dont_have_an_account: "Pas de compte ?"
+  link_it_up_instead: "Lier ce compte à la place"
+  sign_up_via: "S'enregistrer avec"
+  or_fill_in_this_form: "ou remplissez ce formulaire"
+  already_have_account: "Vous avez déjà un compte Loomio ?"
+  confirm_your_details: "Confirmer vos informations personnelle"
+  link_up_your_account: "Lier votre compte utilisateur"
+  log_in_to_your_loomio_account: "Connectez-vous à votre compte Loomio pour le lier avec  %{provider_name}"
+  now_that_your_logged_in: "Maintenant que vous vous êtes connecté avec %{provider_name}, merci de confirmer vos informations personnelles pour créer votre compte Loomio."
   confirmation_not_received: "Instructions de confirmation non reçues ?"
   unlock_not_received: "Instructions de déblocage non reçues ?"
   inactive_html: "Désolé, ce compte est actuellement inactif. Si vous avez la moindre question, n'hésitez pas à <a href='%{path_to_contact}'>nous contacter</a>."
@@ -534,8 +547,8 @@ fr:
     discussion_link: "Participer à la discussion :"
     link_help: "Cliquer sur ce lien pour rejoindre %{group}  sur Loomio:"
     copy: "Si quelqu'un ne reçoit pas son email d'invitation, merci de recopier le lien d'invitation ci dessus et de le transmettre directement."
-    pending_invitations: 'Invitations en cours'
-    no_pending_invitations: "Il n'y a pas d'invitation en attente pour l'instant."
+    pending_invitations: 'Invitations en attente'
+    no_pending_invitations: "Il n'y a pas d'invitations en attente pour l'instant."
   search:
     description: "Voici la liste des discussions et des projets qui contiennent '%{query}' dans leur titre ou dans leur description. "
     header: "Résultat des recherches pour '%{query}'"
@@ -565,7 +578,11 @@ fr:
       destination: 'Où devrions-nous envoyer votre message ?'
       submit: 'Envoyer le message'
     destinations:
+      contact: 'Demande générale'
       tech: 'Support technique / rapports de bugs / demandes de fonctionnalités'
+      press: 'Service presse'
+      sales: 'Relation client'
+      translations: 'Service traduction'
     messages:
       email_html: "Remplissez ce formulaire, ou envoyez un email à  <a href='mailto:%{email}'>%{email}</a>"
       phone: "Si vous préférez parler à quelqu'un directement, vous pouvez appeler %{name} au %{number}"
@@ -667,6 +684,11 @@ fr:
         password: "Mot de passe"
         password_confirmation: "Confirmer votre mot de passe"
         language_preference: "Langue"
+      group_request:
+        admin_name: "Quel est votre nom ?"
+        admin_email: "Quelle est votre adresse email ?"
+        name: "Quel est le nom de votre groupe ?"
+        description: "Si vous avez un moment, dites en nous plus à propos de votre groupe"
     placeholders:
       discussion:
         title: "Titre"
@@ -682,6 +704,8 @@ fr:
       user:
         email: "Email"
         password: "Mot de passe"
+      group_request:
+        description: "Nous aimerions en savoir plus à propos de votre groupe et pourquoi vous voulez utiliser Loomio."
   helpers:
     submit:
       discussion:
@@ -767,6 +791,8 @@ fr:
       header: "Vous avez presque fini !"
       intro: "Merci de cliquer sur le lien de vérification pour finaliser votre demande :"
       ignore: "Si vous n'avez pas demandé à rejoindre Loomio, merci d'ignorer cet email."
+  campaign:
+    crowdfunding_html: "Hé ! Loomio va bientôt devenir encore meilleur. <a href='http://love.loomio.org'>Visitez notre campagne de financement participatif !</a>"
   about_loomio: "À propos de Loomio"
   ago: "il y a %{quantity_of_time}"
   approve: "Approuvez"
@@ -803,6 +829,8 @@ fr:
   next: "Suivant"
   outcome: "Résultat"
   password: "Mot de passe"
+  leave_this_field_blank: "laisser ce champ vide"
+  photo: 'Photo'
   pricing: 'Tarification'
   prev: "Précédent"
   more: "Plus..."
@@ -821,11 +849,14 @@ fr:
   start_group: "Créer un groupe !"
   starting: "Démarrez"
   subject: "Sujet"
-  terms_of_service_html: "En cliquant sur %{button_text}, vous acceptez les <a href='%{link_path}' target='_blank'>conditions</a> de Loomio"
+  terms_of_service_html: "En cliquant sur %{button_text}, vous acceptez les <a href='%{link_path}' target='_blank'>conditions d'utilisation</a> de Loomio"
   thanks: "Merci !"
   translate: "Aidez-nous à traduire Loomio !"
   unlike: "unlike"
-  until_close: "Jusqu'à la fermeture"
+  until_close: "avant fermeture"
   update: "Update"
+  facebook: "Facebook"
+  google: "Google"
+  persona: "Persona"
   common:
     email: "Email"

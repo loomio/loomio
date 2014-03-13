@@ -72,13 +72,10 @@ id:
     comment_deleted: "Komentar dihapus."
     invitations:
       auto_added:
-        one: "1 anggota ditambahkan"
         other: "%{count} anggota ditambahkan"
       existing_member:
-        one: "1 anggota telah masuk ke dalam kelompok"
         other: "%{count} anggota telah masuk ke dalam kelompok"
       sent:
-        one: "1 undangan telah dikirim"
         other: "%{count} undangan telah dikirim"
       auto_added_and_sent: "%{auto_added_text} dan %{sent_text}"
   views:
@@ -115,38 +112,25 @@ id:
     proposal_deleted: "Usulan dihapus."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "1 detik"
-        other: "%{count} detik"
       x_seconds:
-        one: "1 detik"
         other: "%{count} detik"
       less_than_x_minutes:
-        one: "1 menit"
         other: "%{count} menit"
       x_minutes:
-        one: "1 menit"
         other: "%{count} menit"
       about_x_hours:
-        one: "1 jam"
         other: "%{count} jam"
       x_days:
-        one: "1 hari"
         other: "%{count} hari"
       about_x_months:
-        one: "1 bulan"
         other: "%{count} bulan"
       x_months:
-        one: "1 bulan"
         other: "%{count} bulan"
       about_x_years:
-        one: "1 tahun"
         other: "%{count} tahun"
       over_x_years:
-        one: "1 tahun"
         other: "%{count} tahun"
       almost_x_years:
-        one: "1 tahun"
         other: "%{count} tahun"
   footer:
     about: 'Tentang'
@@ -177,7 +161,6 @@ id:
     motion_outcome_updated: "perbarui hasil atas usulan"
   edit_discussion_context: "Ubah konteks diskusi"
   request_new_group: "Buat kelompok"
-  request_new_group_details: "atau tunggu sampai Anda diundang."
   empty_notifications: "Anda tidak memiliki notifikasi."
   see_all_notifications: "Lihat semua notifikasi"
   sign_out: "Keluar"
@@ -197,7 +180,7 @@ id:
   dashboard_helper_text:
     header: "Selamat datang ke Beranda"
     message: "<p>Laman beranda menunjukkan diskusi terkini di semua kelompok yang Anda ikuti.</p><p>Anda dapat memulai topik diskusi baru dengan memilih tombol \"Mulai Diskusi\".</p>"
-  setup_steps_title: "Langkah selanjutnya: "
+  setup_steps_title: "Langkah selanjutnya:"
   setup_step_1: "Simak contoh diskusi"
   setup_step_2: "Mulai diskusi pertama Anda"
   setup_step_3: "Undang teman ke dalam kelompok"
@@ -495,14 +478,14 @@ id:
     log_in: "Masuk log untuk bergabung dengan %{group_name}"
     create_account_to_join_group: "Buat akun untuk bergabung ke dalam %{group_name}"
   invitation:
-    alternate: "Selain itu, sebarkan tautan ini dan setiap orang dapat mengirim permintaan bergabung: "
+    alternate: "Selain itu, sebarkan tautan ini dan setiap orang dapat mengirim permintaan bergabung:"
     by_email: "Undang melalui surel"
     no_invitations_left: "Anda tidak memiliki undangan yang tersisa"
     no_invitations_left_get_more: "Kirim surel ke contact@loomio.org dan kami akan coba membantu Anda"
     invitation_not_found: 'Undangan dengan token tersebut tidak ditemukan. Hubungi pengirim untuk memberikan undangan baru.'
     invitation_cancelled: 'Undangan ini telah dibatalkan. Hubungi pengirim undangan apabila Anda merasa terdapat kesalahan.'
     invitation_already_used: 'Undangan ini telah digunakan. Masuk log untuk lanjut ke kelompok Anda.'
-    recipients: "Masukkan alamat surel, dipisahkan dengan koma: "
+    recipients: "Masukkan alamat surel, dipisahkan dengan koma:"
     invitees_placeholder: "Nama Pengguna <user1@example.com>, user2@example.com"
     subject: "Mari bergabung ke dalam kelompok Loomio kami, %{group}"
     invite_people: "Undang teman ke dalam kelompok Anda"
@@ -512,7 +495,7 @@ id:
     message_body: "Pesan undangan"
     invites_more_help2: "<p>Anda dapat mengundang teman ke dalam kelompok Anda setiap saat.</p><p>Anda dapat mengundang seluruh anggota secara bersamaan, atau undang setiap orang yang dekat dengan Anda.</p>"
     invitation_link: "Pranala undangan"
-    link_help: "Klik tautan ini untuk bergabung dengan %{group} di Loomio: "
+    link_help: "Klik tautan ini untuk bergabung dengan %{group} di Loomio:"
     copy: "Apabila penerima tidak mendapatkan surel undangan, Anda dapat menyalin tautan undangan di atas dan mengirimkannya kepada penerima."
   search:
     description: "Di bawah ini adalah daftar diskusi dan usulan yang memiliki kata '%{query}' di dalam judul atau penjelasan."
@@ -580,7 +563,7 @@ id:
       text: 'harus diisi'
       mark: '*'
     error_notification:
-      default_message: "Mohon tinjau permasalahan di bawah ini: "
+      default_message: "Mohon tinjau permasalahan di bawah ini:"
     labels:
       discussion:
         title: "Judul"
@@ -654,8 +637,8 @@ id:
       subject: "Buat kelompok Loomio Anda yang baru: %{group_name}"
     user_added_to_a_group:
       subject: "%{who} telah menambahkan Anda ke dalam %{which_group}"
-      content: "%{who} telah menambahkan Anda ke dalam %{which_group} di Loomio. Klik di sini untuk mengunjungi kelompok: "
-    unsubscribe: "Tidak ingin berlanggan atau ganti alamat surel: "
+      content: "%{who} telah menambahkan Anda ke dalam %{which_group} di Loomio. Klik di sini untuk mengunjungi kelompok:"
+    unsubscribe: "Tidak ingin berlanggan atau ganti alamat surel:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> untuk ubah langganan atau ganti alamat surel."
     view_comment: "Klik di sini untuk melihat komentar di Loomi"
     view_discussion: "Klik di sini untuk melihat diskusi ini"
@@ -663,7 +646,7 @@ id:
     view_proposal: "Lihat usulan ini di Loomio"
     campaign_html: "Apakah keputusan ini penting untuk Anda? Pertimbangkan <a href='%{link_path}'>memberi sumbangan untuk Loomio</a> dan bantu kami menyebarkan Loomio lebih luas. Kami adalah tim kecil yang ingin melakukan hal besar dan kami butuh kontribusi Anda untuk membantu kami berkembang!"
     create_discussion:
-      intro: "%{who} memulai diskusi baru di dalam %{which_group}: "
+      intro: "%{who} memulai diskusi baru di dalam %{which_group}:"
       subject: "Diskusi baru - %{which}"
     create_proposal:
       intro: "Usulan baru telah dibuat di dalam kelompok Loomio Anda."
@@ -674,13 +657,13 @@ id:
       intro: "Menunjukkan apa yang terjadi pada kelompok Loomio Anda dalam 24 jam terakhir"
       subject: "Loomio - Ringkasan 24 jam terakhir"
     group_email:
-      intro: "%{who} membuat pengumuman di dalam %{group}: "
+      intro: "%{who} membuat pengumuman di dalam %{group}:"
     group_membership_approved:
       intro: "Permintaan Anda untuk mengakses kelompok '%{group_name}' di Loomio telah diterima."
       subject: "Keanggotaan diterima"
     invitation:
       hi: "Halo %{name},"
-      intro: "Klik tautan di bawah untuk membuat kelompok Anda %{group_name}: "
+      intro: "Klik tautan di bawah untuk membuat kelompok Anda %{group_name}:"
       closing_message: "Apabila Anda memiliki pertanyaan atau ada bantuan yang diperlukan, hubungi kami dengan membalas surel ini."
       thanks: |
         Terima kasih!
@@ -690,14 +673,14 @@ id:
       subject: "%{who} mengirimkan permintaan untuk bergabung ke dalam %{which_group}"
       view_group: "Anda dapat menerima atau menolak permintaan di sini"
     mentioned:
-      intro: "Anda disebutkan di dalam diskusi berjudul: "
-      said: "%{comment_author} berkata: "
+      intro: "Anda disebutkan di dalam diskusi berjudul:"
+      said: "%{comment_author} berkata:"
       subject: "%{who} menyebutkan nama Anda di dalam kelompok %{which} di Loomio"
     new_motion_created:
-      context: "%{author} membuat usulan di dalam %{group_full_name}: "
+      context: "%{author} membuat usulan di dalam %{group_full_name}:"
     proposal_closed:
-      intro: 'Usulan Anda"%{proposal_name}" telah ditutup.'
-      intro_html: 'Usulan Anda"%{proposal_name}" telah ditutup.'
+      intro: 'Usulan Anda "%{proposal_name}" telah ditutup.'
+      intro_html: 'Usulan Anda "%{proposal_name}" telah ditutup.'
       specify_outcome_and_notify_group: "Tulis hasil dan kirim ke kelompok Anda!"
       specify_outcome_and_notify_group_html: "Tulis hasil dan kirim ke kelompok Anda!"
       subject: "Usulan ditutup - %{which}"
@@ -711,11 +694,11 @@ id:
       closes_at: "Ditutup pada"
       closes_in: "Ditutup dalam"
       closing_in_24_hours: "Ditutup dalam 24 jam"
-      headline: "Usulan %{author} di dalam %{group} akan segera ditutup: "
+      headline: "Usulan %{author} di dalam %{group} akan segera ditutup:"
       summary: "Ringkasan"
     verification:
       header: "Anda hampir selesai!"
-      intro: "Klik pranala verifikasi untuk menyelesaikan permintaan Anda: "
+      intro: "Klik pranala verifikasi untuk menyelesaikan permintaan Anda:"
       ignore: "Apabila Anda tidak ingin bergabung dengan Loomio, abaikan surel ini."
   about_loomio: "Tentang Loomio"
   ago: "%{quantity_of_time} yang lalu"
