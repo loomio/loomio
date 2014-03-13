@@ -201,6 +201,7 @@ Loomio::Application.routes.draw do
     get :services
     get :terms_of_service
     get :third_parties
+    get :wallets
     get :browser_not_supported
   end
 
