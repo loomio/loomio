@@ -124,6 +124,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.how_it_works,
 .pages.about_us,
 .pages.crowd,
+.pages.wallets,
 .woc.index,
 .we_the_people.index {
   color: black;
@@ -713,6 +714,30 @@ body.pages.crowd {
           font-weight: normal;
           width: 100%;
         }
+      }
+    }
+  }
+}
+
+body.pages.wallets {
+  text-align: center;
+  .wallet {
+    padding: 10px;
+    vertical-align: top;
+    display: inline-block;
+    width: 45%;
+
+    &.bitcoin img { margin: 2px 0 3px; }
+
+    img { width: 100px; }
+
+    .account-key {
+      padding: 5px;
+      font-size: 12px;
+      .target {
+        padding: 5px;
+        .title { font-weight: bold; }
+        .address { font-style: italic; }
       }
     }
   }
