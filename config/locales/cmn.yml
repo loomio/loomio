@@ -56,35 +56,27 @@ cmn:
     proposal_deleted: "建议删除"
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        other: "%{count}秒"
       x_seconds:
-        one: "1秒数"
         other: "%{count}秒数"
       less_than_x_minutes:
-        one: "1分钟"
         other: "%{count}分钟"
       x_minutes:
-        one: "1分钟"
         other: "%{count}分钟"
       about_x_hours:
-        one: "1小时"
         other: "%{count}小时"
       x_days:
-        one: "1天"
         other: "%{count}天"
       about_x_months:
-        one: "1月"
         other: "%{count}月"
       x_months:
-        one: "1月"
         other: "%{count}月"
       about_x_years:
-        one: "1年"
         other: "%{count}年"
       over_x_years:
-        one: "1年"
         other: "%{count}年"
       almost_x_years:
-        one: "1年"
         other: "%{count}年"
   footer:
     public_groups: '公共组团'
@@ -105,7 +97,6 @@ cmn:
     motion_closing_soon: "提议很快就要关闭了"
     motion_blocked: "封锁了提议"
   edit_discussion_context: "编辑讨论上下文"
-  request_new_group_details: "还是等你被邀请到一个"
   empty_notifications: "你还没有任何通知"
   see_all_notifications: "看到所有的通知"
   sign_out: "推出"

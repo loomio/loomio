@@ -15,15 +15,15 @@ class Translation
                'Português (Brasil)' => :pt,
                'română' => :ro,
                'Tiếng Việt' => :vi,
-               'Türkçe' => :tr}
+               'Türkçe' => :tr,
+               'українська мова' => :uk}
 
   EXPERIMENTAL_LANGUAGES = {'Chinese (Mandarin)' => :cmn,
                             'Italiano' => :it,
                             'తెలుగు' => :te,
-                            'Gaelic (Irish)' => :ga,
-                            'українська мова' => :uk}
+                            'Gaelic (Irish)' => :ga}
 
-  FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr]
+  FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl]
 
   VIDEO_SUPPORTED_LOCALES  = [:en, :pt_BR, :el, :es, :ca, :cs, :fr, :ja]
 

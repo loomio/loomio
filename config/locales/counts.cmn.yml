@@ -2,40 +2,40 @@
 # This file is to get around a bug with Transifex:
 # http://support.transifex.com/customer/en/portal/questions/1388258-working-with-pluralization-in-rails-yaml-transifex?new=1388258
 #
-vi:
+cmn:
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        one: "1 giây"
+        one: "1秒"
       x_seconds:
-        one: "1 giây"
+        one: "1秒数"
       less_than_x_minutes:
-        one: "1 phút"
+        one: "1分钟"
       x_minutes:
-        one: "1 phút"
+        one: "1分钟"
       about_x_hours:
-        one: "1 giờ"
+        one: "1小时"
       x_days:
-        one: "1 ngày"
+        one: "1天"
       about_x_months:
-        one: "1 tháng"
+        one: "1月"
       x_months:
-        one: "1 tháng"
+        one: "1月"
       about_x_years:
-        one: "1 năm"
+        one: "1年"
       over_x_years:
-        one: "1 năm"
+        one: "1年"
       almost_x_years:
-        one: "1 năm"
+        one: "1年"
   errors:
     messages:
       not_saved:
-        one: '1 lỗi khi lưu %{resource}:'
+        one:
   notice:
     invitations:
       auto_added:
-        one: "1 thành viên đã được thêm vào"
+        one:
       existing_member:
-        one: "1 thành viên hiện có trong nhóm"
+        one:
       sent:
-        one: "1 lời mời kết nối đã được gửi"
+        one:
