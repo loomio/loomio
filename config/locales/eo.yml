@@ -226,4 +226,9 @@ eo:
     proposal_closing_soon_subscription: "Memorigu al mi 24 horojn antaŭ la limdato de la propono"
     mentions_subscription: "Sendu al mi retmesaĝon kiam ajn mia nomo estas menciita en komentoj"
     group_activity_notifications: "Sciigoj de grupa agado"
+    group_activity_details: "Por ĉiu grupo, alklaku la skatoleton se vi volas ricevi retmesaĝon tuj kiam estas novaj diksutoj aŭ decidoj"
+  simple_form:
+    labels:
+      motion:
+        name: "Titolo"
   outcome: "Rezulto"
