@@ -53,13 +53,10 @@ vi:
     you_have_left_group: "Bạn chỉ còn lại %{which_group}."
     invitations:
       auto_added:
-        one: "1 thành viên đã được thêm vào"
         other: "%{count} thành viên đã được thêm vào"
       existing_member:
-        one: "1 thành viên hiện có trong nhóm"
         other: "%{count} thành viên hiện có trong nhóm"
       sent:
-        one: "1 lời mời kết nối đã được gửi"
         other: "%{count} lời mời kết nối đã được gửi"
       auto_added_and_sent: "%{auto_added_text} và %{sent_text}"
   warning:
@@ -87,38 +84,25 @@ vi:
     proposal_deleted: "Đã xóa lời yêu cầu."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "1 giây"
-        other: "%{count} giây"
       x_seconds:
-        one: "1 giây"
         other: "%{count} giây"
       less_than_x_minutes:
-        one: "1 giây"
         other: "%{count} phút"
       x_minutes:
-        one: "1 phút"
         other: "%{count} phút"
       about_x_hours:
-        one: "1 giờ"
         other: "%{count} giờ"
       x_days:
-        one: "1 ngày"
         other: "%{count} ngày"
       about_x_months:
-        one: "1 tháng"
         other: "%{count} tháng"
       x_months:
-        one: "1 tháng"
         other: "%{count} tháng"
       about_x_years:
-        one: "1 năm"
         other: "%{count} năm"
       over_x_years:
-        one: "1 năm"
         other: "%{count} năm"
       almost_x_years:
-        one: "1 năm"
         other: "%{count} năm"
   footer:
     about: 'Dịch bởi Vietnamesel10n'
@@ -146,7 +130,6 @@ vi:
     motion_blocked: "đã khóa lời yêu cầu"
   edit_discussion_context: "Chỉnh sửa nội dung cuộc thảo luận"
   request_new_group: "Lập một nhóm mới"
-  request_new_group_details: "hoặc đợi cho đến khi bạn được mời vào."
   empty_notifications: "Bạn hiện không có thông báo nào."
   see_all_notifications: "Xem tất cả thông báo"
   sign_out: "Đăng xuất"

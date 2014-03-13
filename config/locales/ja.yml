@@ -27,6 +27,7 @@ ja:
     cant_modify_position: "この提案は決定されました"
     cant_state_position: "この提案は決定されました"
     cant_view_member_profile: "同じグループではないので、メンバーのプロフィールを見ることはできません"
+    contribution: "寄付をするにはログインしてください"
     discussion_not_created: "ディスカッションは作成されませんでした"
     group_not_archived: "グループは無効になりませんでした"
     invalid_close_date: "無効な締切日です"
@@ -64,14 +65,12 @@ ja:
     comment_deleted: "コメントは削除されました"
     invitations:
       auto_added:
-        one: "メンバーが 1 人追加されました"
         other: "メンバーが %{count} 人追加されました"
       existing_member:
-        one: "1 人のメンバーはすでにグループにいます"
         other: "%{count} 人のメンバーはすでにグループにいます"
       sent:
-        one: "1 通の招待が送られました"
         other: "%{count} 通の招待が送られました"
+      auto_added_and_sent: "%{auto_added_text} および %{sent_text}"
   views:
     pagination:
       previous: "前"
@@ -85,6 +84,7 @@ ja:
     proposal_not_created: "提案は作成されませんでした"
     user_already_admin: "%{which_user} はすでにこのグループのコーディネーターです"
     user_already_member: "%{which_user} はすでにこのグループのメンバーです"
+    user_not_admin: "ごめんなさい、これにアクセスするためには %{which_user} はこのグループのコーディネーターである必要があります "
   success:
     added_to_group: "%{which_group} に追加されました"
     close_date_changed: "締切日は変更されました"
@@ -94,6 +94,7 @@ ja:
     group_archived: "グループは無効になりました"
     group_created: "グループは作成されました"
     members_added: "メンバーがグループに追加されました"
+    motion_closed: "提案は締め切られました。\nもし良ければ、結論を以下に設定してあなたのグループに送ることができます"
     motion_outcome_created: "おめでとうございます。\nあなたは提案の結論を出し、あなたのグループメンバーに通知されました"
     motion_outcome_updated: "提案の結論はアップデートされました"
     position_submitted: "意見が送信されました"
@@ -102,40 +103,35 @@ ja:
     proposal_deleted: "提案が削除されました"
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        other: "%{count} 秒"
       x_seconds:
-        one: "1 秒"
         other: "%{count} 秒"
       less_than_x_minutes:
-        one: "1 分"
         other: "%{count} 分"
       x_minutes:
-        one: "1 分"
         other: "%{count} 分"
       about_x_hours:
-        one: "1 時間"
         other: "%{count} 時間"
       x_days:
-        one: "1 日"
         other: "%{count} 日"
       about_x_months:
-        one: "1 月"
         other: "%{count} 月"
       x_months:
-        one: "1 月"
         other: "%{count} 月"
       about_x_years:
-        one: "1 年"
         other: "%{count} 年"
       over_x_years:
-        one: "1 年"
         other: "%{count} 年"
       almost_x_years:
-        one: "1 年"
         other: "%{count} 年"
   footer:
+    about: '会社情報'
     blog: 'ブログ'
     contact: 'お問い合わせ'
     privacy: '個人情報'
+    public_groups: '公開グループ'
+    terms: '使用条件'
   inbox:
     dropdown-btn: '受信箱'
     empty: 全部見ました！見ていないコメントはありません
@@ -157,13 +153,14 @@ ja:
     motion_outcome_updated: "提案の結論をアップデートしました"
   edit_discussion_context: "ディスカッションの情報を編集"
   request_new_group: "グループを開始する"
-  request_new_group_details: "グループに招待されるまで待ってください"
+  request_or_find_new_group_html: "<a href='%{new_group_link}'>新しいグループを開始する</a>、または <a href='%{existing_group_link}'>既存のグループを見つける</a>"
   empty_notifications: "通知はありません"
   see_all_notifications: "全ての通知を見る"
   profile: "プロフィール"
   email_settings: "Eメール設定"
   sign_out: "サインアウト"
   sign_in: "ログイン"
+  honeypot_warning: "あなたのアカウントを作成することができませんでした。\nスクリーンリーダーを使っている場合、フォームの最後の(非表示)フィールドが空白になっていることを確かめてください"
   tagline: "影響がある決定に誰もが簡単に関わることができる世界へ"
   click_to_dismiss: "メッセージを閉じる"
   generic_confirm: "よろしいですか？"
@@ -176,6 +173,12 @@ ja:
   dashboard_helper_text:
     header: "ホームページにようこそ！"
     message: "<p>ホームページは、あなたがメンバーになっている全てのグループの現在のディスカッションを全て表示します</p>\n<p>\"ディスカッションを開始する\"ボタンをクリックすると新しいトピックについてのディスカッションを開始することができます</p>"
+  prompt_visitor_to_authenticate:
+    header: "参加するためにログインする、またはグループに加わる"
+    body: "あなたがこのグループのメンバーである場合、参加するのにログインする必要があります。"
+  prompt_user_to_join:
+    header: "参加するためにグループに加わってください"
+    body: "コメント、または投票するためにはこのグループのメンバーである必要があります"
   setup_steps_title: "次のステップ："
   setup_step_1: "ディスカッションの例を参考にしてください"
   setup_step_2: "初めてのディスカッションを開始してください"
@@ -196,6 +199,7 @@ ja:
   email_group_members: "グループメンバーにEメールを送ります"
   edit_group_settings: "グループの設定を編集します"
   leave_group: "グループを離れます"
+  confirm_leave_hidden_group: "本当に %{which_group} を離れたいですか？　副グループからも削除されます。"
   confirm_leave_group: "%{which_group} を本当に離れたいですか？"
   deactivate_group: "グループを無効にします"
   confirm_deactivate_group: "待ってください！\n本当に %{which_group} を無効にしたいですか？\nグループを閲覧することができなくなります。\nグループに戻りたい場合、再有効化させるために contact@loomio.org にEメールを送ってください。"
@@ -216,6 +220,7 @@ ja:
   confirm_ignore_membership_request: "本当に %{which_user} からのメンバーリクエストを拒否したいですか？"
   membership_requested: "メンバーリクエストが送られました"
   request_membership: "メンバーリクエストを送信する"
+  ask_to_join_group: "グループに参加するように頼む"
   confirm_remove_membership_request: "本当にメンバーリクエストをキャンセルしたいですか？"
   no_pending_membership_requests: "現在、このグループへのメンバーリクエストの保留はありません"
   subgroups: "子グループ"
@@ -226,7 +231,7 @@ ja:
   new_subgroup: "新しい子グループ"
   create_subgroup: "子グループを作成する"
   creating_subgroup: "子グループを作成中"
-  hidden: "隠し"
+  hidden: "非表示"
   public: "公開"
   new_group: "新しいグループ"
   create_group: "グループを作成する"
@@ -239,6 +244,7 @@ ja:
   edit_group_description: "グループ情報を編集する"
   group_subscription: "グループ購読"
   group_request:
+    neighbourhood_support_group: "例：地域サポートグループ"
     confirmation:
       title: もう少しで完了です！メールをチェックしてください
   discussion_items:
@@ -262,6 +268,7 @@ ja:
   empty_discussion_list: "コメントはまだありません"
   empty_discussion_index: "まだディスカッションはありません"
   empty_discussion_index_group: "このグループにはまだディスカッションがありません"
+  private_group_discussion_display: "このグループは非公開です。ディスカッションはメンバーのみ見ることができます。\n参加したい場合、頼んでください。"
   discussion_context:
     started_html: " <a href='%{link}' class='%{link_class}'>%{who}</a> によって %{when} 前に開始されました"
     last_edited_html: " <a href='%{link}' class='%{link_class}'>%{who}</a> によって %{when} 前に最後に編集されました"
@@ -283,6 +290,7 @@ ja:
   markdown_settings_more_info: "続きを見る..."
   edit_discussion: "ディスカッションを編集する"
   move_discussion: "ディスカッションを移動させる"
+  move_discussion_to_hidden_group: "このディスカッションは現在公開されています。非表示のグループに移動させると非公開になります。"
   delete_discussion: "ディスカッションを削除します"
   confirm_delete_discussion: "本当にこのディスカッションを削除したいですか？"
   new_proposal: "新しい提案"
@@ -296,6 +304,7 @@ ja:
   proposal_closed_when: "%{when} 前に締め切られました"
   proposed_when_by_who: " %{who} によって %{when} 前に提案されました "
   engagement_on_open_proposal: "%{percent}% パーセントのメンバーが意見を選択しました  (%{numerator}/%{denominator})"
+  engagement_on_closed_proposal: "メンバーの %{percent}%% パーセントが意見を選択しました(%{numerator}/%{denominator})"
   state_your_position: "意見を選択しください"
   positions: "意見"
   yes_position: "賛成"
@@ -393,7 +402,16 @@ ja:
     invitation: '素晴らしい招待を書くアドバイス'
     proposal: 'はっきりした提案を書くアドバイス'
     vote: 'いつでも意見を変更することができます'
+  pricing_page:
+    organisations: 組織
+    organisations_examples: 例：ビジネス、政府機関、地域組織
+    informal_groups: 非公式のグループ
   contribution:
+    monthly_html: に、毎月の寄付をしたい
+    one_time_html: に、一回きりの寄付をしたい
+    submit: 寄付
+    tooltip: 私たちの地域資金提供モデルについてもっとよく知る
+    thought_about_contributing: 寄付をするチャンス
     thank_you_title: Loomioに貢献してくれてありがとう！
     making_a_donation: 寄付をする
   new_password: "新しいパスワード"
@@ -405,23 +423,35 @@ ja:
   password_confirmation: "パスワードの確認"
   current_password: "現在のパスワード"
   password_details: "(変更をするために現在のパスワードが必要です)"
+  confirm_password: "確認用パスワード"
   cancel_my_account: "アカウントをキャンセルします"
   remember_me: "ログインしたままにする"
   signing_in: "サインイン中"
+  or: "または"
   forgot_your_password: "パスワードを忘れた場合はこちら"
+  dont_have_an_account: "アカウントを持っていませんか？"
+  sign_up_via: "を通してサインアップしてください"
+  or_fill_in_this_form: "またはこのフォームを埋めてください"
+  already_have_account: "すでにLoomioアカウントを持っていますか？"
+  confirm_your_details: "あなたの詳細情報を確認する"
+  now_that_your_logged_in: "今、あなたは %{provider_name} でログインしています、Loomioアカウントを作成するにはあなたの詳細情報を確認してください"
   inactive_html: "ごめんなさい、このアカウントは現在有効ではありません。\n質問がありましたら、 <a href='%{path_to_contact}'>連絡してください</a>。"
   create_an_account: 'アカウントを作成する'
   log_in: "ログイン"
   join_group:
     log_in: "ログインして %{group_name} に参加する"
+    create_account_to_join_group: " %{group_name} に参加するために、アカウントを作成してください"
   invitation:
     by_email: "Eメールで招待を送る"
     no_invitations_left: "(*_ _)人ゴメンナサイ　招待はありません"
     no_invitations_left_get_more: "contact@loomio.org にメールを送ってください\nあなたを助けるために何ができるか考えます"
     invitation_not_found: 'そのトークンでは招待を見つけられませんでした。送信者に新しい招待を要求してください'
     invitation_cancelled: 'この招待はキャンセルされました。エラーによるものだと考えられる場合、招待の送信者に連絡を取ってください'
+    invitation_already_used: 'この招待はすでに使われています。あなたのグループにとどまるにはログインしてください'
     subject: " %{group} という新しいLoomioのグループに参加してください"
     invite_people: "グループにメンバーを招待する"
+    invite_to_discussion: "このディスカッションにメンバーを招待する"
+    invite_to_discussion_info: "このディスカッションにメンバーを追加すると、その人たちにあなたのグループへの招待を送ります。\n彼らが承認すると、このディスカッションに招かれます。"
     select_members: "%{group_name}　からメンバーを追加する"
     body_editable: |
       どうも！一緒に考えて結論を出しましょう！私たちはLoomioという共同意思決定ツールを使っています
@@ -439,6 +469,8 @@ ja:
     description: "以下は、タイトルか説明に '%{query}' を含むディスカッションと提案の一覧です"
     header: " '%{query}' の検索結果"
     placeholder: "検索"
+    empty_search: '空検索'
+    please_enter_a_search: '上の検索バーに検索したい用語を入力してください'
     no_match: '問い合わせにヒットする結果はありませんでした'
   example_discussion:
     description: |
@@ -466,6 +498,10 @@ ja:
       tech: '技術サポート/バグ報告/機能リクエスト'
       press: 'メディアのお問い合わせ'
       translations: '翻訳のお問い合わせ'
+    messages:
+      email_html: "このフォームを埋めてください、もしくは <a href='mailto:%{email}'>%{email}</a> にメールを送ってください"
+      phone: "誰かと直接話すことを希望する場合、 %{name} に %{number}  で電話することができます"
+      social_html: "<a href='%{facebook}' target='_blank'>facebook</a> や <a href='%{twitter}' target='_blank'>twitter</a>からも私たちに参加することができます！"
   discussion_form:
     new:
       header: "ディスカッションを開始する"
@@ -505,15 +541,29 @@ ja:
     upload_new_image: "新しい画像をアップロードする"
   group_setup:
     set_up_your_group: あなたのグループを立ち上げる
+    desc_header: "あともう少しです！"
     submit: "私のグループのところに連れて行って！"
+    payment_model:
+      header: Loomioは皆のためのもの！
+      link: 詳細を見る
   simple_form:
     'yes': 'はい'
     'no': 'いいえ'
+    required:
+      text: '必須'
+      mark: '*'
+    error_notification:
+      default_message: "以下の問題を見直してください："
     labels:
       discussion:
         title: "タイトル"
+        privacy_public_header: "公開"
         privacy_public_description: "誰でもこのディスカッションを見ることができます"
+        privacy_private_header: "非公開"
         privacy_private_description: "%{group} のメンバーのみ、このディスカッションを見ることができます"
+        privacy_hidden_description: "非表示のグループのディスカッションはすべて非公開です"
+        of: "の"
+        of_no_group: "このグループの"
       group:
         name: "グループ名"
         description: "情報"
@@ -522,7 +572,10 @@ ja:
         members_invitable_by_members: "すべてのメンバー"
         privacy: 個人情報
         privacy_public_header: 公開
+        privacy_private_header: ほとんど非公開
+        privacy_hidden_header: 非表示  (完全に非公開)
         privacy_parent_group_members_header: 親グループのメンバーから閲覧可能
+        privacy_parent_group_members_description: 非表示と同じようにグループとディスカッションのみ、親グループのメンバーから見られます
         privacy_parent_group_members_description_short: メンバーおよび親グループのメンバーのみ、このグループとそのディスカッションを見ることができます
         group_members_invitable_by: "コーディネーターのみ"
         submit: 提出する
@@ -538,7 +591,15 @@ ja:
         password: "パスワード"
         password_confirmation: "パスワードの確認"
         language_preference: "言語"
+      group_request:
+        admin_name: "あなたの名前は何ですか？"
+        admin_email: "あなたのEメールアドレスは何ですか？"
+        name: "あなたのグループの名前は何ですか？"
+        description: "お時間があれば、あなたのグループについて教えてください"
     placeholders:
+      discussion:
+        title: "タイトル"
+        description: "情報を与える..."
       membership_request:
         introduction: "あなたがどういう人か、どうして  %{group_name} に参加したいのかについて一言書いてください"
       motion:
@@ -550,10 +611,13 @@ ja:
       user:
         email: "Eメール"
         password: "パスワード"
+      group_request:
+        description: "私たちは、あなたのグループやあなたがLoomioを使いたい理由について是非お聞きしたいです"
   helpers:
     submit:
       discussion:
         create: "ディスカッションを開始します"
+        update: "ディスカッションをアップデートする"
       motion:
         create: "提案を開始します"
       user:
@@ -594,11 +658,13 @@ ja:
       subject: "メンバーリクエストが承認"
     invitation:
       hi: "こんにちは %{name}、"
+      intro: "下のリンクをクリックしてあなたのグループ %{group_name} を立ち上げてください："
       thanks: |
         ありがとう！
         Loomioチーム
     membership_request:
       intro: "%{name}  (%{email}) はあなたのLoomioグループのうち一つのグループへのアクセスを要求しました"
+      subject: " %{who}  が %{which_group} に参加するようにお願いしています"
       view_group: "ここでリクエストを承認または拒否できます"
     mentioned:
       said: "%{comment_author} は言いました："
@@ -619,6 +685,7 @@ ja:
     proposal_closing_soon:
       closes_on: "締め切り日："
       closes_at: "締め切り時間："
+      closes_in: "後に締め切られます"
       closing_in_24_hours: "24時間後に締め切ります"
       headline: " %{group} の %{author} の提案はもうすぐ締め切られます："
       summary: "要約"
@@ -655,9 +722,14 @@ ja:
   next: "次"
   outcome: "結論"
   password: "パスワード"
+  leave_this_field_blank: "このフィールドは空白のままにしておいてください"
+  photo: '写真'
+  pricing: '価格設定'
   prev: "前"
   more: "更に詳細..."
+  translate_this_string: " %{language} に訳す"
   options: "オプション"
+  other: "その他"
   ok_got_it: "了解です！"
   remove: "削除"
   save: "セーブ"
@@ -667,9 +739,12 @@ ja:
   send_email: "Eメールを送信する"
   show_more: "全部を見る"
   start_a_group: "グループを開始する"
+  start_group: "グループを開始する！"
   thanks: "ありがとうございます！"
   translate: "Loomioの翻訳を手伝ってください！"
   unlike: "ええね！を消す"
   update: "アプデート"
+  facebook: "Facebook"
+  google: "Google"
   common:
     email: "Eメール"
