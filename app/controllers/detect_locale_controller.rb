@@ -20,9 +20,7 @@ class DetectLocaleController < ActionController::Base
   def video
     @locale = best_locale(detected_locale(Translation.video_locales))
 
-    dialect_correction_hack
-
-    if @locale == :en
+    if @locale == default_locale
       Measurement.increment('detect_video_locale.default')
     else
       Measurement.increment('detect_video_locale.foreign')
@@ -33,17 +31,11 @@ class DetectLocaleController < ActionController::Base
 
   private
 
-  def dialect_correction_hack
-    if @locale == :pt
-      @locale = :'pt-BR'
-    end
-  end
-
   def current_locale
-    locale = (Translation.locale_strings & [params[:current_locale]]).first
+    locale = (Translation.locales & [params[:current_locale]]).first
 
     if locale.present?
-      locale.to_sym
+      locale
     else
       default_locale
     end

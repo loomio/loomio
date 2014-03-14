@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   helper_method :dashboard_or_root_path
 
   before_filter :set_application_locale
-  before_filter :save_selected_locale, if: :user_signed_in?
   around_filter :user_time_zone, if: :user_signed_in?
 
   after_filter :increment_measurement
@@ -36,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    if !user_signed_in? and params.has_key?(:locale)
+    if params.has_key?(:locale)
       super.merge({locale: selected_locale})
     else
       super
