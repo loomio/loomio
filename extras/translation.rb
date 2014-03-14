@@ -25,7 +25,7 @@ class Translation
 
   FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl]
 
-  VIDEO_SUPPORTED_LOCALES  = [:en, :pt_BR, :el, :es, :ca, :cs, :fr, :ja]
+  VIDEO_SUPPORTED_LOCALES  = [:en, :pt, :el, :es, :ca, :cs, :fr, :ja, :nl, :vi]
 
   def self.language(locale)
     LANGUAGES.key(locale.to_sym)
