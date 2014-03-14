@@ -32,13 +32,7 @@ class DetectLocaleController < ActionController::Base
   private
 
   def current_locale
-    locale = (Translation.locales & [params[:current_locale]]).first
-
-    if locale.present?
-      locale
-    else
-      default_locale
-    end
+    (Translation.locales & [params[:current_locale]]).first || default_locale
   end
 
   # return the CORS access control headers.
