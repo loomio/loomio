@@ -27,7 +27,7 @@ describe DiscussionsController do
       before do
         discussion.stub(:add_comment)
         discussion.stub(:save).and_return(true)
-        discussion.stub(:group_users_without_discussion_author).and_return([])
+        discussion.stub(:group_members_without_discussion_author).and_return([])
         DiscussionMailer.stub(:spam_new_discussion_created)
         user.stub_chain(:ability, :authorize!).and_return(true)
         @discussion_hash = { group_id: group.id, title: "Shinney", private: "true" }

@@ -34,15 +34,6 @@ Then(/^I should see the motion$/) do
   page.should have_content(@motion.title)
 end
 
-When(/^I have voted on the motion$/) do
-  @motion.discussion.as_read_by(@user).viewed!
-  vote = Vote.new(position: "yes")
-  vote.motion = @motion
-  vote.user = @user
-  vote.save!
-  @motion.as_read_by(@user).viewed!
-end
-
 When(/^I mark the discussion as read$/) do
   find('.mark-as-read-btn a').click
 end
