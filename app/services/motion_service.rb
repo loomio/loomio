@@ -1,4 +1,19 @@
 class MotionService
+  def self.cast_vote(vote)
+    vote.user.ability.authorize! :vote, vote.motion
+
+    if vote.save
+      if vote.is_block?
+        unless vote.previous_position_is_block?
+          Events::MotionBlocked.publish!(vote)
+        end
+      else
+        Events::NewVote.publish!(vote)
+      end
+      true
+    end
+  end
+
   def self.close_all_lapsed_motions
     Motion.lapsed_but_not_closed.each do |motion|
       close(motion)
@@ -6,11 +21,6 @@ class MotionService
   end
 
   def self.close(motion)
-    # this line is required because motions are not being
-    # archived when groups get archived so they dangle
-    # TODO ensure that motions get archived with groups
-    return false unless motion.group.present?
-
     motion.store_users_that_didnt_vote
     motion.closed_at = Time.now
     motion.save!
@@ -19,8 +29,6 @@ class MotionService
   end
 
   def self.close_by_user(motion, user)
-    return false unless motion.group.present?
-
     user.ability.authorize! :close, motion
 
     motion.store_users_that_didnt_vote

@@ -40,9 +40,9 @@ class Vote < ActiveRecord::Base
   delegate :name, :full_name, :to => :group, :prefix => :group
 
   before_create :age_previous_votes, :associate_previous_vote
-  after_save :update_motion_vote_counts, :send_notifications
+  after_save :update_motion_vote_counts
 
-  after_create :update_motion_last_vote_at, :fire_new_vote_event
+  after_create :update_motion_last_vote_at
   after_destroy :update_motion_last_vote_at, :update_motion_vote_counts
 
   def other_group_members
@@ -59,6 +59,14 @@ class Vote < ActiveRecord::Base
 
   def previous_position
     previous_vote.position if previous_vote
+  end
+
+  def previous_position_is_block?
+    previous_vote.try(:is_block?)
+  end
+
+  def is_block?
+    position == 'block'
   end
 
   private
@@ -83,17 +91,4 @@ class Vote < ActiveRecord::Base
     end
   end
 
-  def fire_new_vote_event
-    if position == "block"
-      Events::MotionBlocked.publish!(self)
-    else
-      Events::NewVote.publish!(self)
-    end
-  end
-
-  def send_notifications
-    if position == "block" && previous_vote != "block"
-      MotionMailer.delay.motion_blocked(self)
-    end
-  end
 end
