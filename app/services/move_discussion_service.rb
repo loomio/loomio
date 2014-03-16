@@ -15,21 +15,12 @@ class MoveDiscussionService
     discussion.group.admins.include? user
   end
 
-  def user_is_admin_of_destination?
-    destination_group.admins.include? user
-  end
-
-  def destination_group_is_related_to_source_group?
-    if source_group.parent
-      (source_group.parent == destination_group) ||
-      (source_group.parent == destination_group.parent)
-    else
-      destination_group.parent == source_group
-    end
+  def user_is_member_of_destination?
+    destination_group.members.include? user
   end
 
   def valid?
-    user_is_admin_of_source? && user_is_admin_of_destination? && destination_group_is_related_to_source_group?
+    user_is_admin_of_source? && user_is_member_of_destination?
   end
 
   def move!
