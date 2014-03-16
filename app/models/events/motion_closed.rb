@@ -14,7 +14,7 @@ class Events::MotionClosed < Event
   def notify_users!
     MotionMailer.delay.motion_closed(motion, motion.author.email)
 
-    motion.group_users.each do |group_user|
+    motion.group_members.each do |group_user|
       notify!(group_user)
     end
   end
