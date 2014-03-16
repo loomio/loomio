@@ -3,7 +3,7 @@ require_relative '../../app/services/move_discussion_service'
 describe MoveDiscussionService do
   let(:discussion) { double(:discussion, group: source_group) }
   let(:source_group) { double(:source_group, admins: [], parent: nil) }
-  let(:destination_group) { double(:destination_group, admins: [], parent: nil) }
+  let(:destination_group) { double(:destination_group, members: [], parent: nil) }
   let(:user) { double(:user) }
 
   before do
@@ -56,9 +56,9 @@ describe MoveDiscussionService do
       it {should be_false}
     end
 
-    context "user is not admin of destination" do
+    context "user is not member of destination" do
       before do
-        @mover.stub(:user_is_admin_of_destination?).and_return(false)
+        @mover.stub(:user_is_member_of_destination?).and_return(false)
       end
       it {should be_false}
     end
