@@ -536,7 +536,7 @@ fr:
     invite_people: "Inviter des personnes dans votre groupe"
     invite_to_discussion: "Inviter des personnes à cette discussion"
     invite_to_discussion_info: "L'ajout de personnes à cette discussion leur enverra une invitation à votre groupe. Quand ils accepteront l'invitation, ils seront redirigés vers cette discussion."
-    select_members: "Ajouter des membres de %{which_group}"
+    select_members: "Ajouter des membres de %{group_name}"
     body_editable: |
       Salut, venez construire des décisions avec nous ! Nous utilisons un outil de collaboration collective appelé Loomio
     body_editable_discussion: |
