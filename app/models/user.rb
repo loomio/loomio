@@ -311,6 +311,10 @@ class User < ActiveRecord::Base
     groups.manual_subscription.any?
   end
 
+  def is_member_of_restricted_group?
+    groups.cannot_start_parent_group.any?
+  end
+
   private
 
   def set_default_avatar_kind

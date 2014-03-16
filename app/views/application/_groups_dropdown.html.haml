@@ -5,5 +5,6 @@
   %ul.dropdown-menu
     #group-dropdown-items
     %li.group-item.group-links
-      =link_to t(:request_new_group), new_group_path, class: 'new-group'
+      - if can? :create, Group.new
+        =link_to t(:request_new_group), new_group_path, class: 'new-group'
       =link_to 'Find a group', public_groups_path, class: 'find-group'

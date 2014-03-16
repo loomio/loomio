@@ -177,6 +177,17 @@ describe "User abilities" do
         it { should     be_able_to(:show, private_subgroup_discussion) }
       end
     end
+
+    context "group members cannot create other parent groups", :focus => true do
+      let(:restricting_group) { FactoryGirl.create(:group, can_start_group: false) }
+      let(:other_group) { FactoryGirl.build(:group) }
+      let(:subgroup) { FactoryGirl.build(:group, parent: restricting_group) }
+
+      before { restricting_group.add_member!(user) }
+
+      it { should   be_able_to(:create, subgroup)}
+      it { should_not be_able_to(:create, group)}
+    end
   end
 
   context "admin of a group" do
