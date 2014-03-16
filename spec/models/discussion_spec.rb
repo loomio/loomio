@@ -98,7 +98,8 @@ describe Discussion do
       DiscussionService.start_discussion(@discussion)
       @discussion.add_comment(@user, "this is a test comment", uses_markdown: false)
       @motion = create :motion, :discussion => @discussion
-      @vote = create :vote, :position => 'yes', :motion => @motion
+      @vote = build :vote, :position => 'yes', :motion => @motion
+      MotionService.cast_vote(@vote)
       activity = @discussion.activity
       activity[0].kind.should == 'new_discussion'
       activity[1].kind.should == 'new_comment'
