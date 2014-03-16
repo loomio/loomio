@@ -16,6 +16,8 @@ class Comment < ActiveRecord::Base
   validate :attachments_owned_by_author
 
   after_initialize :set_defaults
+  after_destroy :send_discussion_comment_deleted!
+
   default_scope include: [:user, :attachments, :discussion]
 
   delegate :name, :to => :user, :prefix => :user
@@ -81,6 +83,10 @@ class Comment < ActiveRecord::Base
   end
 
   private
+    def send_discussion_comment_deleted!
+      discussion.comment_deleted!
+    end
+
     def set_defaults
       self.liker_ids_and_names ||= {}
     end
