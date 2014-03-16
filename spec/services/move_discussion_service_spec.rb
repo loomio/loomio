@@ -25,15 +25,15 @@ describe MoveDiscussionService do
     end
   end
 
-  context "#user_is_admin_of_destination?" do
-    subject { @mover.user_is_admin_of_destination? }
+  context "#user_is_member_of_destination?" do
+    subject { @mover.user_is_member_of_destination? }
 
-    context "user is admin" do
-      before { destination_group.admins << user }
+    context "user is member" do
+      before { destination_group.members << user }
       it {should be_true}
     end
 
-    context "user is not admin" do
+    context "user is not member" do
       it {should be_false}
     end
   end
@@ -41,7 +41,7 @@ describe MoveDiscussionService do
   context "valid?" do
     before do
       @mover.stub(:user_is_admin_of_source?).and_return(true)
-      @mover.stub(:user_is_admin_of_destination?).and_return(true)
+      @mover.stub(:user_is_member_of_destination?).and_return(true)
       @mover.stub(:destination_group_is_related_to_source_group?).and_return(true)
     end
 
