@@ -11,6 +11,7 @@ class Motion < ActiveRecord::Base
   has_many :votes, :dependent => :destroy, include: :user
   has_many :unique_votes, class_name: 'Vote', conditions: { age: 0 }, include: :user
   has_many :did_not_votes, :dependent => :destroy, include: :user
+  has_many :did_not_voters, through: :did_not_votes, source: :user
   has_many :events, :as => :eventable, :dependent => :destroy, include: :eventable
   has_many :motion_readers, dependent: :destroy
 
@@ -26,7 +27,7 @@ class Motion < ActiveRecord::Base
   delegate :email, :to => :author, :prefix => :author
   delegate :name, :to => :author, :prefix => :author
   delegate :group, :group_id, :to => :discussion
-  delegate :users, :full_name, :to => :group, :prefix => :group
+  delegate :members, :full_name, :to => :group, :prefix => :group
   delegate :email_new_motion?, to: :group, prefix: :group
   delegate :name_and_email, to: :user, prefix: :author
 
@@ -71,14 +72,6 @@ class Motion < ActiveRecord::Base
 
   def closed?
     closed_at.present?
-  end
-
-  def as_read_by(user)
-    if user.blank?
-      self.motion_readers.build(motion: self)
-    else
-      find_or_new_motion_reader_for(user)
-    end
   end
 
   def has_votes?
@@ -132,16 +125,6 @@ class Motion < ActiveRecord::Base
     user && group.users.include?(user)
   end
 
-  def latest_vote_time
-    if last_vote_at.present?
-      last_vote_at
-    else
-      # this seems incorrect behaviour
-      # and without it this method could be removed
-      created_at
-    end
-  end
-
   def last_vote_by_user(user)
     return nil if user.nil?
 
@@ -156,11 +139,25 @@ class Motion < ActiveRecord::Base
     end
   end
 
-  # members_not_voted_count
-  # was no_vote_count
+  def group_size_when_voting
+    if voting?
+      group.memberships_count
+    else
+      total_votes_count + members_not_voted_count
+    end
+  end
+
+  def members_not_voted
+    if voting?
+      group_members - voters
+    else
+      did_not_voters
+    end
+  end
+
   def members_not_voted_count
     if voting?
-      group_size_when_voting - total_votes_count
+      group_members.size - total_votes_count
     else
       did_not_votes_count
     end
@@ -173,7 +170,6 @@ class Motion < ActiveRecord::Base
       (100-(members_not_voted_count/group_size_when_voting.to_f * 100)).to_i
     end
   end
-
 
   # recount all the final votes.
   # rather expensive
@@ -198,14 +194,6 @@ class Motion < ActiveRecord::Base
     save!
   end
 
-  def group_size_when_voting
-    if voting?
-      group.memberships_count || 0
-    else
-      total_votes_count + members_not_voted_count
-    end
-  end
-
   # todo: move to motion mover service
   def move_to_group(group)
     if discussion.present?
@@ -214,11 +202,11 @@ class Motion < ActiveRecord::Base
     end
   end
 
-  def group_users_without_motion_author
+  def group_members_without_motion_author
     group.users.where(User.arel_table[:id].not_eq(author.id))
   end
 
-  def group_users_without_outcome_author
+  def group_members_without_outcome_author
     group.users.where(User.arel_table[:id].not_eq(outcome_author.id))
   end
 
