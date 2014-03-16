@@ -72,10 +72,9 @@ describe Vote do
     vote = Vote.new(position: "yes")
     vote.motion = motion
     vote.user = user
-    vote_time = "time"
-    motion.stub(:latest_vote_time).and_return(vote_time)
-    motion.should_receive(:last_vote_at=).with(vote_time)
     vote.save!
+    motion.reload
+    motion.last_vote_at.to_s.should == vote.created_at.to_s
   end
 
   describe 'other_group_members' do

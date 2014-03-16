@@ -12,7 +12,7 @@ class Events::MotionClosingSoon < Event
   private
 
   def notify_users!
-    motion.group_users.each do |user|
+    motion.group_members.each do |user|
       if user.subscribed_to_proposal_closure_notifications
         UserMailer.delay.motion_closing_soon(user, motion)
       end

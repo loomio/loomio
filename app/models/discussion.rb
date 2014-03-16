@@ -73,7 +73,7 @@ class Discussion < ActiveRecord::Base
     User.find_by_id(originator.to_i)
   end
 
-  def group_users_without_discussion_author
+  def group_members_without_discussion_author
     group.users.where(User.arel_table[:id].not_eq(author_id))
   end
 

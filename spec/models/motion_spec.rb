@@ -125,7 +125,7 @@ describe Motion do
       motion.group.add_member! user
       create :vote, :motion => motion, :position => "yes", :user => user
       motion.reload
-      motion.members_not_voted_count.should == motion.group_users.count - 1
+      motion.members_not_voted_count.should == motion.group_members.count - 1
     end
 
     it "still works if the same user votes multiple times" do
@@ -134,7 +134,7 @@ describe Motion do
       create :vote, :motion => motion, :position => "yes", :user => user
       create :vote, :motion => motion, :position => "no", :user => user
       motion.reload
-      motion.members_not_voted_count.should == motion.group_users.count - 1
+      motion.members_not_voted_count.should == motion.group_members.count - 1
     end
 
     context "for a closed motion" do
