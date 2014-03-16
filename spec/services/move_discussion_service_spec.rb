@@ -3,7 +3,7 @@ require_relative '../../app/services/move_discussion_service'
 describe MoveDiscussionService do
   let(:discussion) { double(:discussion, group: source_group) }
   let(:source_group) { double(:source_group, admins: [], parent: nil) }
-  let(:destination_group) { double(:destination_group, admins: [], parent: nil) }
+  let(:destination_group) { double(:destination_group, members: [], parent: nil) }
   let(:user) { double(:user) }
 
   before do
@@ -25,46 +25,15 @@ describe MoveDiscussionService do
     end
   end
 
-  context "#user_is_admin_of_destination?" do
-    subject { @mover.user_is_admin_of_destination? }
+  context "#user_is_member_of_destination?" do
+    subject { @mover.user_is_member_of_destination? }
 
-    context "user is admin" do
-      before { destination_group.admins << user }
+    context "user is member" do
+      before { destination_group.members << user }
       it {should be_true}
     end
 
-    context "user is not admin" do
-      it {should be_false}
-    end
-  end
-
-  context "destination_group_is_related_to_source_group?" do
-    subject { @mover.destination_group_is_related_to_source_group? }
-
-    context "destination group is parent of source", focus: true do
-      before do
-        source_group.stub(:parent).and_return(destination_group)
-      end
-      it {should be_true}
-    end
-
-    context "destination group is sibling of source" do
-      let(:parent_group) { double(:parent_group) }
-      before do
-        destination_group.stub(:parent).and_return(parent_group)
-        source_group.stub(:parent).and_return(parent_group)
-      end
-      it {should be_true}
-    end
-
-    context "destination group is child of source" do
-      before do
-        destination_group.stub(:parent).and_return(source_group)
-      end
-      it {should be_true}
-    end
-
-    context "destination group is different family" do
+    context "user is not member" do
       it {should be_false}
     end
   end
@@ -72,7 +41,7 @@ describe MoveDiscussionService do
   context "valid?" do
     before do
       @mover.stub(:user_is_admin_of_source?).and_return(true)
-      @mover.stub(:user_is_admin_of_destination?).and_return(true)
+      @mover.stub(:user_is_member_of_destination?).and_return(true)
       @mover.stub(:destination_group_is_related_to_source_group?).and_return(true)
     end
 
@@ -87,16 +56,9 @@ describe MoveDiscussionService do
       it {should be_false}
     end
 
-    context "user is not admin of destination" do
+    context "user is not member of destination" do
       before do
-        @mover.stub(:user_is_admin_of_destination?).and_return(false)
-      end
-      it {should be_false}
-    end
-
-    context "destination group does not belong to source" do
-      before do
-        @mover.stub(:destination_group_is_related_to_source_group?).and_return(false)
+        @mover.stub(:user_is_member_of_destination?).and_return(false)
       end
       it {should be_false}
     end
