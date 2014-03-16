@@ -139,13 +139,9 @@ class Discussion < ActiveRecord::Base
     comments.order("created_at DESC").first
   end
 
-  def refresh_last_comment_at!
-    if comments.exists?
-      last_comment_time = most_recent_comment.created_at
-    else
-      last_comment_time = created_at
-    end
-    update_attribute(:last_comment_at, last_comment_time)
+  def comment_deleted!
+    refresh_last_comment_at!
+    discussion_readers.each(&:reset_counts!)
   end
 
   def public?
@@ -175,6 +171,15 @@ class Discussion < ActiveRecord::Base
 
 
   private
+  def refresh_last_comment_at!
+    if comments.exists?
+      last_comment_time = most_recent_comment.created_at
+    else
+      last_comment_time = created_at
+    end
+    update_attribute(:last_comment_at, last_comment_time)
+  end
+
   def private_is_not_nil
     if self[:private].nil?
       errors.add(:private, "cannot be nil")

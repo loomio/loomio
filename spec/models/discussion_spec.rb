@@ -32,6 +32,23 @@ describe Discussion do
     discussion.last_comment_at.to_s.should == discussion.created_at.to_s
   end
 
+  describe ".comment_deleted!" do
+    after do
+      discussion.comment_deleted!
+    end
+
+    it "resets last_comment_at" do
+      discussion.should_receive(:refresh_last_comment_at!)
+    end
+
+    it "calls reset_counts on all discussion readers" do
+      dr = DiscussionReader.for(discussion: discussion, user: discussion.author)
+      dr.viewed!
+      discussion.stub(:discussion_readers).and_return([dr])
+      dr.should_receive(:reset_counts!)
+    end
+  end
+
   describe "archive!" do
     let(:discussion) { create_discussion }
 
@@ -193,26 +210,6 @@ describe Discussion do
       Vote.find_by_id(@vote.id).should be_nil
     end
   end
-
-  describe "#refresh_last_comment_at!" do
-    it "resets last_comment_at to latest comment.created_at" do
-      comment = discussion.add_comment discussion.author, "hi", uses_markdown: false
-      comment.created_at = Time.zone.now + 2.day
-      comment.save!
-      discussion.update_attribute(:last_comment_at, Time.zone.now + 1.days)
-      discussion.refresh_last_comment_at!
-      discussion.last_comment_at.should == comment.created_at
-    end
-
-    context "no comments in discussion" do
-      it "updates last_comment_at to discussion.created_at" do
-        discussion.update_attribute(:last_comment_at, discussion.created_at + 1.days)
-        discussion.refresh_last_comment_at!
-        discussion.last_comment_at.should == discussion.created_at
-      end
-    end
-  end
-
 
   describe '#private?' do
     # provides a default when the discussion is new
