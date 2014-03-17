@@ -77,11 +77,7 @@ class Ability
 
     can :create, Group do |group|
       if group.is_top_level?
-        if user.is_member_of_restricted_group?
-          false
-        else
-          true
-        end
+        true
       elsif @member_group_ids.include?(group.parent_id)
         true
       else
