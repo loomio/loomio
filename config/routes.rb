@@ -217,7 +217,7 @@ Loomio::Application.routes.draw do
   match '/detect_video_locale' => 'detect_locale#video', as: :detect_video_locale
 
   resources :contact_messages, only: [:new, :create]
-  match 'contact', to: 'contact_messages#new'
+  match 'contact(/:destination)', to: 'contact_messages#new'
 
   #redirect from wall to new group signup
   namespace :group_requests do
