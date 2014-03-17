@@ -568,6 +568,27 @@ a:hover { text-decoration: none; }
   i { font-size: 1.6em; }
 }
 
+.media {
+  background-color: $ash;
+  .content {
+    @include screen-size(medium-up) {
+      width: 1380px;
+    }
+  }
+  ul {
+    margin-top: 10px;
+    list-style: none;
+  }
+  li {
+    margin-bottom: 40px;
+    @include screen-size(medium-up) {
+      display: inline-block;
+      margin-right: 62px;
+      margin-bottom: 0;
+    }
+  }
+}
+
 .footer {
   background-color: $slate;
   background-color: #37362F;
