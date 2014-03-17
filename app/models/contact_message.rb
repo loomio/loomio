@@ -4,7 +4,7 @@ class ContactMessage < ActiveRecord::Base
     'contact',
     'tech',
     'press',
-    'sales',
+    'services',
     'translations'
   ]
 
