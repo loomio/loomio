@@ -1,12 +1,14 @@
 class Groups::MembershipsController < GroupBaseController
   load_and_authorize_resource except: [:index]
+  skip_before_filter :authenticate_user!,  
+                     unless: -> { Group.find(params[:group_id]).privacy == 'hidden'}
 
   rescue_from CanCan::AccessDenied, with: :only_group_admin
 
   def index
     @group = GroupDecorator.new(Group.find(params[:group_id]))
     @memberships = @group.memberships.joins(:user).includes(:user).order('name')
-    if current_user.is_group_admin?(@group)
+    if current_user.present? && current_user.is_group_admin?(@group)
       render "coordinator_index"
     else
       render "index"
