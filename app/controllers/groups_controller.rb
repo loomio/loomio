@@ -15,13 +15,14 @@ class GroupsController < GroupBaseController
   #for new subgroup form
   def add_subgroup
     parent = Group.published.find(params[:id])
-    @subgroup = Group.new(:parent => parent, privacy: parent.privacy)
+    @subgroup = Group.new(parent: parent, privacy: parent.privacy)
     @subgroup.members_invitable_by = parent.members_invitable_by
   end
 
   def create
     @group = Group.new(permitted_params.group)
     authorize!(:create, @group)
+    @group.inherit_start_group_restrictions
     @group.mark_as_setup!
     if @group.save
       Measurement.increment('groups.create.success')

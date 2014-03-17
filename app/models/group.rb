@@ -272,6 +272,12 @@ class Group < ActiveRecord::Base
     self.update_attribute(:setup_completed_at, Time.zone.now.utc)
   end
 
+  def inherit_start_group_restrictions
+    if is_a_subgroup?
+      self.can_start_group = parent.can_start_group
+    end
+  end
+
   def update_full_name_if_name_changed
     if changes.include?('name')
       update_full_name
