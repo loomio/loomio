@@ -8,6 +8,13 @@ describe Comment do
   it { should have_many(:events).dependent(:destroy) }
   it { should respond_to(:uses_markdown) }
 
+  describe "#destroy" do
+    it "calls discussion.commented_deleted!" do
+      discussion.should_receive(:comment_deleted!)
+      comment.destroy
+    end
+  end
+
   describe "validate has_body_or_attachment" do
     it "raises error on body if no text or attachment" do
       comment = Comment.build_from discussion, discussion.author, '', attachments: []

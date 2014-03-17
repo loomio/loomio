@@ -29,6 +29,7 @@ describe 'DiscussionService' do
                          'author=' => nil,
                          created_at: :a_time,
                          discussion: discussion,
+                         destroy: true,
                          author: user) }
   let(:event) { double(:event) }
   let(:discussion_params) { {title: "new title", description: "", private: true, uses_markdown: true} }
@@ -38,6 +39,19 @@ describe 'DiscussionService' do
     Events::NewDiscussion.stub(:publish!).and_return(event)
   end
 
+  describe '.delete_comment' do
+    after do
+      DiscussionService.delete_comment(comment: comment, actor: user)
+    end
+
+    it 'checks the actor has permission' do
+      ability.should_receive(:authorize!).with(:destroy, comment)
+    end
+
+    it 'deletes the comment' do
+      comment.should_receive :destroy
+    end
+  end
 
   describe 'unlike_comment' do
     after do
