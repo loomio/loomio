@@ -4,7 +4,7 @@ class CommentsController < BaseController
   skip_before_filter :authenticate_user!, only: :translate
 
   def destroy
-    CommentDeleter.new(@comment).delete_comment
+    DiscussionService.delete_comment(comment: @comment, actor: current_user)
     flash[:notice] = t(:"notice.comment_deleted")
     redirect_to discussion_url(@comment.discussion)
   end

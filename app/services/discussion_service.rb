@@ -25,6 +25,11 @@ class DiscussionService
     event
   end
 
+  def self.delete_comment(comment: comment, actor: actor)
+    actor.ability.authorize!(:destroy, comment)
+    comment.destroy
+  end
+
   def self.start_discussion(discussion)
     user = discussion.author
     discussion.inherit_group_privacy! if discussion.private.nil?
