@@ -616,7 +616,7 @@ en:
   confirmation_not_received: "Didn't receive confirmation instructions?"
   unlock_not_received: "Didn't receive unlock instructions?"
   inactive_html: "Sorry, this account is currently inactive. If you have any questions please <a href='%{path_to_contact}'>get in touch</a>."
-  create_an_account: 'Create an account'
+  create_an_account_html: 'Create a Loomio Beta account'
   log_in: "Log in"
 
   join_group:
