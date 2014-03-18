@@ -1,6 +1,10 @@
-## Welcome to Loomio! [![Build Status](https://travis-ci.org/loomio/loomio.png?branch=master)](https://travis-ci.org/loomio/loomio) [![Code Climate](https://codeclimate.com/github/loomio/loomio.png)](https://codeclimate.com/github/loomio/loomio) [![Dependency Status](https://gemnasium.com/loomio/loomio.png)](https://gemnasium.com/loomio/loomio)
+<h1><a href="https://www.loomio.org"> <img src="app/assets/images/logo-orange.png" alt="Loomio"/></a> </h1>
+ 
+[![Build Status](https://travis-ci.org/loomio/loomio.png?branch=master)](https://travis-ci.org/loomio/loomio) 
+[![Code Climate](https://codeclimate.com/github/loomio/loomio.png)](https://codeclimate.com/github/loomio/loomio) 
+[![Dependency Status](https://gemnasium.com/loomio/loomio.png)](https://gemnasium.com/loomio/loomio) 
 
-Loomio is a collaborative decision-making tool that makes it easy for anyone to participate in decisions which affect them. If you'd like to find out more, check out [Loomio.org](https://www.loomio.org).
+Welcome to Loomio, a collaborative decision-making tool that makes it easy for anyone to participate in decisions which affect them. If you'd like to find out more, check out [Loomio.org](https://www.loomio.org).
 
 ### Set up Loomio
 
@@ -17,8 +21,6 @@ If you'd like to report a bug, please follow the steps [here](https://github.com
 ### Contact
 
 If you have any questions or feedback, get in touch via [contact@loomio.org](mailto:contact@loomio.org).
-
-Loomio on [Facebook](https://facebook.com/Loomio)
-Loomio on [Twitter](https://twitter.com/Loomio)
-Loomio on [Google+](https://plus.google.com/+LoomioOrg)
+<br />
+[Facebook](https://facebook.com/Loomio) [Twitter](https://twitter.com/Loomio) [Google+](https://plus.google.com/+LoomioOrg)
 
