@@ -70,11 +70,6 @@ li.selector-item a.selector-link:hover {
   text-decoration: none;
 }
 
-.alert {
-  margin: 0px 0 0px -10px;
-  width: 890px;
-}
-
 // color coded urgency labels
 .color-urgent { background-color: #CA3232; }
 .color-warning { background-color: #F89406; }
@@ -457,7 +452,10 @@ body.pages.privacy, body.pages.third_parties {
 body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
 
 .invitations.show, .registrations.create {
-  .alert { margin: 10px 0; }
+  .alert{
+    margin: 0px 0 0px -10px;
+    width: 890px;
+  }
   .terms-of-service-text {
     font-size: 1em;
     margin: 0 0 8px 2px;
@@ -475,6 +473,10 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
     margin: 1em auto 0;
     width: 394px;
     text-align: center;
+  }
+  .alert{
+    margin: 0px 0 0px -10px;
+    width: 890px;
   }
   .container{
 
@@ -804,3 +806,4 @@ body.pages.wallets {
     }
   }
 }
+
