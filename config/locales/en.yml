@@ -340,6 +340,7 @@ en:
   current_decision: "Current decision"
   previous_decisions: "Previous decisions"
   see_previous_decisions: "See previous decisions"
+  see_more: "See more"
   create_new_proposal: "Create new proposal"
   empty_decision_list_html: "Ready to make a decision? <br> Anyone can start a proposal."
   empty_decision_index: "This group has not made any decisions yet."
