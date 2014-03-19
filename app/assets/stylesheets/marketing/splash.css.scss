@@ -573,7 +573,13 @@ a:hover { text-decoration: none; }
   background-color: $ash;
   .content {
     @include screen-size(medium-up) {
-      width: 1380px;
+      width: 100%;
+      padding-bottom: 0;
+    }
+    @include screen(medium-only) {
+      width: 768px;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
   ul {
@@ -585,7 +591,9 @@ a:hover { text-decoration: none; }
     @include screen-size(medium-up) {
       display: inline-block;
       margin-right: 62px;
-      margin-bottom: 0;
+    }
+    @include screen(medium-only) {
+      margin-right: 40px;
     }
   }
 }

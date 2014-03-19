@@ -2,6 +2,10 @@
   @media (min-width: 768px) { @content; }
 }
 
+@mixin screen($medium-only) {
+  @media (min-width: 768px) and (max-width: 1340px) { @content; }
+}
+
 // @mixin screen($medium-down) {
 //   @media (max-width: 768px) { @content; }
 // }
