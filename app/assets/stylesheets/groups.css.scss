@@ -98,6 +98,30 @@ body.groups {
     #sub-groups-panel {
       .group-link a:hover { color: $dark-grey; }
     }
+
+    .previous-discussions-panel {
+      a:hover {
+        color: $dark-grey;
+        text-decoration: underline;
+      }
+    }
+
+    .previous-decision-title {
+      float: right;
+      width: 164px;
+    }
+
+    ul.previous-decisions {
+      margin-bottom: 0px;
+      padding-top: 5px;
+    }
+
+    li.previous-decision { padding: 0px 0px 12px 0px; }
+
+    .motion-sparkline {
+      float: left;
+      padding: 2px 10px 0 0;
+    }
   }
 }
 
