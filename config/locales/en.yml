@@ -193,7 +193,11 @@ en:
 
   edit_discussion_context: "Edit discussion context"
   request_new_group: "Start a group"
-  request_or_find_new_group_html: "<a href='%{new_group_link}'>Start a new group</a>, or <a href='%{existing_group_link}'>find an existing group </a>"
+  start_new_group: "Start a new group"
+  start_new_group_hint: "To start making decisions"
+  find_a_group: "Find a group"
+  find_a_group_hint: "To explore public groups"
+  no_group_header: "Welcome to Loomio Beta"
   empty_notifications: "You do not have any notifications yet."
   see_all_notifications: "See all notifications"
   profile: "Profile"
