@@ -71,6 +71,8 @@ class GroupsController < GroupBaseController
                                                             preload(:current_motion, {:group => :parent}).
                                                             page(params[:page]).per(20)
 
+    @closed_motions = @group.closed_motions
+
     build_discussion_index_caches
 
     assign_meta_data
