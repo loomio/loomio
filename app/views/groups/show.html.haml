@@ -18,9 +18,23 @@
     =render 'groups/description', group: @group
     =render 'subgroups', subgroups: @subgroups, group: @group if display_subgroups_block?(@group)
     - if can? :show, @group
-      .sub-panel.previous-discussions-panel
-        %h4= t(:previous_decisions)
-        = link_to t(:see_previous_decisions), group_motions_path(@group), class: 'bottom-panel-link'
+      - if @closed_motions.exists?
+        .sub-panel.previous-discussions-panel
+          %h4= t(:previous_decisions)
+          %ul.previous-decisions
+            - @closed_motions.first(3).each do |motion|
+              %li.previous-decision
+                %a.selector-link{ href: motion_path(motion) }
+                  .clearfix
+                    .pie.motion-sparkline
+                      -values = motion.vote_counts.values
+                      -if values.sum == 0
+                        0,0,0,0,1
+                      -else
+                        =values.join(',')
+                    .previous-decision-title.word-break=truncate(motion.name, :length => 60, :separator => ' ')
+
+          = link_to t(:see_more), group_motions_path(@group), class: 'bottom-panel-link'
     =render 'membership_requests', group: @group
     =render 'members', group: @group
   =render '/application/closed_motions', user: nil, group: @group
