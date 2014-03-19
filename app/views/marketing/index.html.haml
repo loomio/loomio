@@ -39,8 +39,8 @@
           .content
             =image_tag 'globe.png', class: 'image'
             %h1.header= t(:'frontpage.hero.head_html')
-            %h2.subhead= link_to t(:'frontpage.hero.subhead'), 'https://love.loomio.org'
-            %p.hero-text.description= t(:'frontpage.hero.desc_html')
+            %h2.subhead= t(:'frontpage.hero.subhead')
+            %p.hero-text.description= t(:'frontpage.hero.desc_html', default: :'frontpage.hero.desc')
             =link_to 'https://love.loomio.org', class: 'btn btn-teal btn-lg hero-text js-not-yet-button' do
               = t(:'frontpage.link.crowdfunding')
               %i.fa.fa-angle-right
