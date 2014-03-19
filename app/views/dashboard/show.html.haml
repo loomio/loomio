@@ -13,4 +13,11 @@
         %h4= t(:previous_decisions)
         = link_to t(:see_previous_decisions), motions_path, class: 'bottom-panel-link'
 - else
-  = t(:request_or_find_new_group_html, new_group_link: new_group_path, existing_group_link: public_groups_path)
+  %h1= t(:no_group_header)
+  .no-groups.row
+    .span3.actions
+      .action-button= link_to t(:start_new_group), new_group_path, class: 'btn btn-large btn-primary btn-block'
+      .intro-desc= t(:start_new_group_hint)
+    .span3.actions
+      .action-button= link_to t(:find_a_group), public_groups_path, class: 'btn btn-large btn-success btn-block'
+      .intro-desc= t(:find_a_group_hint)
