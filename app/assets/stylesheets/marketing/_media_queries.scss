@@ -3,7 +3,7 @@
 }
 
 @mixin screen($medium-only) {
-  @media (min-width: 768px) and (max-width: 1340px) { @content; }
+  @media (min-width: 930px) and (max-width: 1380px) { @content; }
 }
 
 // @mixin screen($medium-down) {
