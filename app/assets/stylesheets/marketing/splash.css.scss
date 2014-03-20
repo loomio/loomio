@@ -577,7 +577,7 @@ a:hover { text-decoration: none; }
       padding-bottom: 0;
     }
     @include screen(medium-only) {
-      width: 768px;
+      width: 930px;
       padding-left: 0;
       padding-right: 0;
     }
@@ -590,10 +590,15 @@ a:hover { text-decoration: none; }
     margin-bottom: 40px;
     @include screen-size(medium-up) {
       display: inline-block;
-      margin-right: 62px;
+      margin-right: 24px;
     }
     @include screen(medium-only) {
       margin-right: 40px;
+    }
+    img {
+      @include screen-size(medium-up) {
+        width: 82%;
+      }
     }
   }
 }
