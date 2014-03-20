@@ -390,7 +390,6 @@ tr:
   forgot_your_password: "Şifrenizi mi unuttunuz?"
   confirmation_not_received: "Onay talimatları eline ulaşmadı mı?"
   unlock_not_received: "Yeniden açma talimatları eline ulaşmadı mı?"
-  create_an_account: 'Bir hesap oluştur'
   log_in: "Oturum aç"
   join_group:
     log_in: "%{group_name}'a katılmak için oturum aç"
@@ -638,6 +637,7 @@ tr:
   name: "İsim"
   new_activity: "Yeni aktivite"
   next: "Sonraki"
+  other: "Diğer"
   outcome: "Sonuç"
   password: "Şifre"
   pricing: 'Fiyatlandırma'
@@ -645,7 +645,6 @@ tr:
   more: "Daha fazla..."
   translate_this_string: "%{language} dilinde çeviri yap"
   options: "Seçenekler"
-  other: "Diğer"
   ok_got_it: "Tamam, anladım!"
   remove: "Kaldır"
   save: "Kaydet"

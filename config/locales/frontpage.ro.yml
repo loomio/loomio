@@ -1,1 +1,13 @@
-ro: {}
+ro:
+  frontpage:
+    link:
+      blog: 'Blog'
+      contact: 'Contact'
+      log_in: 'LOG IN'
+      crowdfunding: 'Campanie de strangere de fonduri'
+      more: 'Mai mult'
+      public_groups: 'Grupuri de public'
+      terms: 'Termeni'
+    hero:
+      subhead: 'Ajuta-ne sa o dezvoltam.'
+      desc: 'Loomio este un software gratuit si open-source disponibil pentru oricine, oriunde sa participe in luarea impreuna a deciziilor '

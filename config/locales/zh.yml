@@ -1,10 +1,224 @@
 zh:
+  activerecord:
+    errors:
+      messages:
+        blank: "不能留白"
   errors:
     messages:
-      email: "你的 Email 不被認可喔"
+      email: "不是一個有效的 Email 地址"
+  devise:
+    invitations:
+      updated: '帳號已經建立。'
   error:
-    cant_join_subgroup: "就算不是母群組，你也可以加入一個子群組。"
-    cant_modify_position: "這項提議已經關閉囉。"
-    cant_state_position: "這項提議已經關閉囉。"
+    access_denied: "你沒有足夠的權限。"
+    cant_join_subgroup: "非母群組的成員你不能加入子群組。"
+    cant_modify_position: "這項提議已經關閉。"
+    cant_state_position: "這項提議已經關閉。"
     discussion_not_created: "無法建立這個討論塊。"
     group_not_archived: "無法封存這個群組。"
+    invalid_close_date: "不合法的結束日期，請確認這個日期尚未發生。"
+    invalid_email: "請輸入至少一個合法的 Email 地址"
+    image_upload_fail: "無法上傳圖片。請確認圖片檔案小於 1MB 並且是 .jpeg 、 .png 或 .gif 格式。"
+    permission_to_invite: "你沒有權限邀請新的成員。"
+    settings_not_updated: "你的設定並沒有被更新。"
+  alert:
+    duplicate_email: "%{which_email} 已經在群組中。"
+  notice:
+    member_removed: "成員已被移除。"
+    settings_updated: "你的設定已經被更新。"
+    you_have_left_group: "你已經離開 %{which_group} 。"
+  warning:
+    cant_remove_last_admin: "你是最後一名管理者所以不能被移除"
+    proposal_not_created: "無法建立提案"
+    user_already_admin: "%{which_user}已經是此群主的管理員"
+  success:
+    added_to_group: "你被加入%{which_group}群組"
+    close_date_changed: "結束日期更改成功。"
+    discussion_created: "成功建立討論。"
+    discussion_deleted: "成功移除討論。"
+    emails_sending: "email 傳送中。"
+    group_created: "成功建立群組。"
+  footer:
+    about: '關於'
+  notifications:
+    new_motion: "建立新的提案"
+    motion_closed:
+      by_user: "關閉提案"
+      by_expiry: "提案已關閉"
+    new_comment: "加入討論"
+    comment_liked: "說你的意見很讚"
+    user_mentioned: "在留言中提到你"
+    membership_requested: "申請成為成員"
+    user_added_to_group: "將你加入群組"
+    motion_closing_soon: "本提案即將結束"
+  edit_discussion_context: "編輯討論內容"
+  request_new_group: "建立新的群組"
+  empty_notifications: "你目前沒有新通知"
+  email_settings: "Email 設定"
+  sign_out: "登出"
+  sign_in: "登入"
+  click_to_dismiss: "按此關閉此訊息"
+  generic_confirm: "你確定嗎？"
+  discussion_helper_text:
+    header: "歡迎來到你的第一個討論"
+  group_helper_text:
+    header: "歡迎來到你的新群組！"
+  add_new_member: "增加新成員"
+  invite_members_to_group: "邀請成員到%{which_group}群組"
+  get_in_touch_link: "聯繫"
+  email_members_in_group: "寄信給%{which_group}群組成員"
+  subject_error: "請輸入主題"
+  email_group_members: "寄信給群組成員"
+  edit_group_settings: "編輯群組設定"
+  leave_group: "離開群組"
+  confirm_leave_group: "你確定要離開%{which_group}群組嗎？"
+  invited_users: "邀請成員"
+  members: "成員"
+  confirm_remove_user: "你確定要將 %{which_user} 移出群組嗎？"
+  ignore_request: "忽略申請"
+  membership_requested: "已申請成為成員"
+  request_membership: "申請加入"
+  confirm_remove_membership_request: "你確定要取消加入此群組的要求嗎？"
+  subgroups: "子群組"
+  create_a_subgroup: "建立子群組"
+  select_members_to_add: "選擇要加入%{which_group}群組的成員"
+  empty_parent_group: "請先將成員加入主群組"
+  invite_members: "邀請成員"
+  new_subgroup: "新增子群組"
+  create_subgroup: "建立子群組"
+  creating_subgroup: "子群組建立中"
+  new_group: "新增群組"
+  create_group: "建立群組"
+  creating_group: "群組建立中"
+  edit_group: "編輯群組"
+  update_group: "更新群組"
+  updating_group: "群組更新中"
+  start_a_discussion: "開始一個新的討論"
+  group_description: "群組描述"
+  group_request:
+    confirmation:
+      title: 你快完成了！請確認你的 Email 信箱。
+  discussion_items:
+    new_discussion: "討論已建立"
+    new_motion: "提案已建立"
+    motion_closed:
+      by_user: "提案已關閉"
+      by_expiry: "提議已經關閉"
+    motion_close_date_edited: "更改提案關閉時間"
+    discussion_title_edited: "討論標題已更改"
+    discussion_description_edited: "討論說明已更改"
+  discussion: "討論"
+  current_decision: "目前決定"
+  previous_decisions: "先前決定"
+  create_new_proposal: "建立新提案"
+  empty_decision_index: "此群組尚未做出任何決策"
+  discussion_context:
+    see_revision_history: "查看編輯歷史"
+  description_history:
+    header: "編輯歷史"
+    subheader: "版本"
+  help:
+    different_ways: '各種使用 Loomio 的方式'
+    help: "幫助"
+    join_the_community: "加入社群"
+    make_a_decision: "作出決定"
+    video_tutorial: "影片教學"
+  pricing_page:
+    organisations: 組織
+    informal_groups: 非正式群組
+  contribution:
+    currency_desc: 以美元作為單位
+  password_confirmation: "密碼確認"
+  current_password: "目前密碼"
+  confirm_password: "確認密碼"
+  cancel_my_account: "\b關閉我的帳號"
+  remember_me: "記得我"
+  signing_in: "登入中"
+  forgot_your_password: "忘記密碼？"
+  dont_have_an_account: "還沒有帳號？"
+  already_have_account: "已經有 Loomio 帳號了？"
+  confirmation_not_received: "沒有收到帳號確認程序？"
+  unlock_not_received: "沒有收到帳號解鎖程序？"
+  log_in: "登入"
+  invitation:
+    message_body: "邀請訊息"
+    invitation_link: "邀請連結"
+  contact_page:
+    labels:
+      name: '你的名字'
+      email: '你的 Email 地址'
+      message: '你的訊息'
+  group_form:
+    invitation_settings: "邀請設定"
+  email_preferences_form:
+    header: "Email 偏好設定"
+    daily_activity_summary: "每日活動總結"
+    update_preferences: "更新偏好設定"
+  new_user_form:
+    create_an_account: "建立帳號"
+  simple_form:
+    labels:
+      discussion:
+        title: "標題"
+      group:
+        name: "群組名稱"
+        description: "描述"
+        members_invitable_by: "誰可邀請其他人加入本群組？"
+        submit: 送出
+      motion:
+        name: "標題"
+        description: "詳細內容"
+      user:
+        name: "完整姓名"
+        email: "Email"
+        password: "密碼"
+        language_preference: "語言"
+    placeholders:
+      discussion:
+        title: "標題"
+      group:
+        name: "群組名稱"
+        description: "群組描述"
+  helpers:
+    submit:
+      discussion:
+        update: "更新討論"
+      user:
+        create: "建立帳號"
+        update: "更新設定"
+  email:
+    to_join_discussion:
+      link: "加入討論"
+    proposal_closing_soon:
+      closes_in: "即將結束："
+    verification:
+      header: "你快完成了！"
+  about_loomio: "關於 Loomio"
+  author: "作者"
+  cancel: "取消"
+  click_here: "點這邊"
+  delete: "刪除"
+  details: "詳細內容"
+  discussions: "討論"
+  edit: "編輯"
+  group: "群組"
+  groups: "群組"
+  loading: "讀取中..."
+  message: "訊息"
+  password: "密碼"
+  pricing: '定價'
+  options: "選項"
+  ok_got_it: "Ok，了解了！"
+  save: "儲存"
+  saving: "儲存中"
+  sending: "寄送中"
+  send_invite: "寄送邀請"
+  send_email: "寄送 Email"
+  show_more: "顯示更多"
+  thanks: "謝謝！"
+  translate: "協助翻譯 Loomio！"
+  update: "更新"
+  facebook: "Facebook"
+  google: "Google"
+  common:
+    email: "Email"

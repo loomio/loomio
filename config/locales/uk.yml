@@ -5,7 +5,7 @@ uk:
         blank: "не може бути порожнім"
   errors:
     messages:
-      email: "Адреса електроної пошти не працює"
+      email: "Адреса електронної пошти не валідна"
   time:
     formats:
       for_today: '%l:%M %P'
@@ -31,6 +31,7 @@ uk:
     cant_view_member_profile: "Ви не можете переглянути профіль користувача, бо не є учасниками однієї групи"
     contribution: "Будь ласка, авторизуйтеся для того, щоб зробити свій внесок."
     discussion_not_created: "Неможливо створити обговорення."
+    discussion_not_moved: "Ви не маєте дозволу на переміщення цієї дискусії до групи %{destination_group.name}"
     group_not_archived: "Неможливо зберегти групу в архиві."
     invalid_close_date: "Невірна дата закриття. Дата вже минула."
     invalid_email: "Бідь ласка введіть щонайменьш одну валідну адресу електронної пошти"
@@ -101,6 +102,7 @@ uk:
     group_archived: "Група успішно переміщена до архіву."
     group_created: "Група успішно створена."
     members_added: "Учасників додано до групи."
+    motion_closed: "Пропозицію закрито. Якщо ви хочете, нижче ви можете оголосити результат та надіслати його до вашої групи."
     motion_outcome_updated: "Результат пропозиції було оновлено"
     position_submitted: "Ставлення збережено."
     position_updated: "Ставлення оновлено."
@@ -188,6 +190,7 @@ uk:
   email_settings: "Налаштування електронної пошти"
   sign_out: "Вийти"
   sign_in: "Увійти"
+  honeypot_warning: "Не можливо створити ваш акаунт. Якщо ви користуєтесь читанням з екрану, будь ласка, перевірте, що останнє (приховане) поле на формі є пустим."
   tagline: "Створення світу, де кожен може легко прийняти участь у прийнятті важливих для себе суспільних рішень"
   or_sign_in_html: "Якщо у вас вже є акаунт Loomio, <a href='%{link}' class='%{link_class}'>авторизуйтесь тут</a>"
   click_to_dismiss: "Нитасніть тут щоб відхилити повідомлення"
@@ -201,6 +204,12 @@ uk:
   dashboard_helper_text:
     header: "Ласкаво просимо до твоєї домашньої сторінки"
     message: "Домашня сторінка відображає усі поточні дискусії у всіх групах, де ви є учасником. Ви можете почати дискусію з новою темою, натиснувши кнопку \"Початок дискусії\"."
+  prompt_visitor_to_authenticate:
+    header: "Авторизуйтесь або долучіться до групи, щоб приймати участь у дискусіях"
+    body: "Якщо ви є членом цієї групи, вам потрібно авторизуватись, щоб приймати участь у дискусіях."
+  prompt_user_to_join:
+    header: "Приєднуйтесь до групи, щоб брати участь у дискусіях"
+    body: "Щоб коментувати або голосувати, вам потрібно бути членом цієї групи."
   setup_steps_title: "Наступні кроки:"
   setup_step_1: "Перевірьте приклад обговорення"
   setup_step_2: "Розпочати Ваше перше обговорення"
@@ -222,6 +231,7 @@ uk:
   email_group_members: "Надіслати електрону пошту учасникам"
   edit_group_settings: "Редагувати налаштування групи"
   leave_group: "Вийти з групи"
+  confirm_leave_hidden_group: "Ви впевнені, що хочете покинути %{which_group}? Ви також автоматично покинете усі підгрупи."
   confirm_leave_group: "Ви впевнені, що зочете вийти з %{which_group}?"
   deactivate_group: "Деактивувати групу"
   confirm_deactivate_group: "Почекайте!!! Ви впевнені що хочете деактивувати  %{which_group}? Ви не зможете більше переглядати групу. Однак, якщо Ви забажаєте відновити групу, Ви можете надіслати e-mail запит на повторну активацію групи на contact@loomio.org."
@@ -229,8 +239,11 @@ uk:
   members: "Учасники"
   confirm_remove_user: "Ви впевенені, що хочете видалити %{which_user} з групи?"
   remove_coordinator: "Вилалити координатора"
+  confirm_remove_coordinator: "Ви впевнені, що ви більше не хочете, щоб %{which_user} був координатором цієї групи?"
   make_coordinator: "Зробити координатором"
+  confirm_make_coordinator: "Ви впевнені, що хочете зробити %{which_user} координатором цієї групи?"
   confirm_remove_member: 'Ви впевнені, що хочете видаліти цього учасника з групи?'
+  want_to_invite_html: "Хочете <a href='%{link}'>запросити людей</a> до цієї групи?"
   membership_requests: "Запроси на участь"
   confirm_approve_membership_request: "Ви впевнені, що хочете додати %{which_user} до групи?"
   cancel_membership_request: "Скасувати запит"
@@ -250,6 +263,7 @@ uk:
   new_subgroup: "Нова підгрупа"
   create_subgroup: "Створити підгрупу"
   creating_subgroup: "Створення підгрупи"
+  hidden: "Прихована"
   public: "Відкрита"
   new_group: "Нова група"
   create_group: "Створити групу"
@@ -262,6 +276,7 @@ uk:
   edit_group_description: "Змінити опис групи"
   group_subscription: "Групова підписка"
   group_request:
+    neighbourhood_support_group: "наприклад, Група нашого району"
     confirmation:
       title: Ви майже закінчили! Перевірте Вашу електронну пошту.
   discussion_items:
@@ -285,6 +300,7 @@ uk:
   empty_discussion_list: "Жодних подій в цьому обговоренні"
   empty_discussion_index: "В жодної з ваших груп немає обговорень"
   empty_discussion_index_group: "Обговорення відсутні в цій групі"
+  private_group_discussion_display: "Ця група приватна. Дискусії можуть бачити тільки члени групи. Якщо ви хочете приймати участь у дискусіях, ви можете надіслати запит на приєднання."
   discussion_context:
     started_html: "<a href='%{link}' class='%{link_class}'>%{who}</a> почав цю дискусію %{when} тому"
     last_edited_html: "<a href='%{link}' class='%{link_class}'>%{who}</a> вніс останні зміни %{when} тому"
@@ -306,6 +322,7 @@ uk:
   markdown_settings_more_info: "Більше інформації...."
   edit_discussion: "Редагувати обговорення"
   move_discussion: "Перемістити дискусію"
+  move_discussion_to_hidden_group: "Ця дискусія зараз відкрита. Перенесення дискусії до прихованої групи зробить дискусію закритою."
   move_discussion_where: "Куди ви бажаєте перенести це обговорення?"
   delete_discussion: "Видалити обговорення"
   confirm_delete_discussion: "Ви впевнені, що хочете назавжди видалити це обговорення?"
@@ -366,6 +383,7 @@ uk:
     keep_up_to_date: "Підтримуйте актуальність"
     make_a_decision: "Прийняти рішення"
     make_a_decision_description: "Коли група готова розпочати обговорення, будь-хто може висловити пропозицію. Визначте прозорий план дій та надайте початкову інформацію, щоб будь-який учасник міг зрозуміти, що означає погодитись чи не погодитись на пропозицію."
+    prompt_people_html: "Згадуйте людей за допомогою <span class='blue'>@посилання</span>"
     positions_agree_description: "<span>Згоден</span> означає, що ви задоволені пропозицією"
     positions_abstain_description: "<span>Утримуюсь</span> означає, що ви не впевнені, або доручаєте групі прийняти рішення без Вашої участі."
     positions_disagree_description: "<span>Не згоден</span> означає, що ви бачете кращій вибір, ала згодні прийняти рішення групи."
@@ -384,6 +402,8 @@ uk:
   pricing_page:
     organisations: Організації
     informal_groups: Не формальні групи
+    informal_groups_desc: Членів вашої групи попросять заплатити стільки, скільки вони зможуть
+    informal_groups_examples: наприклад, сім'ї, соціальні ініціативи, коллективи
   contribution:
     any_amount: або індивідуальний разовий внесок у розмірі
     currency_desc: Суми зазначено у американських доларах
@@ -408,8 +428,10 @@ uk:
   cancel_my_account: "Скасувати мій обліковий запис"
   remember_me: "Запам’ятати мене"
   signing_in: "Здцйснюється вхід"
+  or: "або"
   forgot_your_password: "Забули пароль?"
   dont_have_an_account: "Ще не маєте аккаунту?"
+  link_it_up_instead: "Зробіть посилання натомість"
   sign_up_via: "Авторизуйтесь через "
   or_fill_in_this_form: "або заповніть цю форму"
   already_have_account: "Вже маєте Loomio аккаунт?"
@@ -419,11 +441,13 @@ uk:
   now_that_your_logged_in: "Тепер, коли ви авторизовані через %{provider_name}, будь ласка, підтвердіть свої дані, щоб створити Loomio акаунт."
   confirmation_not_received: "Не отримали інструкцію для підтвердження?"
   unlock_not_received: "Не отримали інструкцій для разблокування?"
-  create_an_account: 'Створити обліковий запис'
   log_in: "Увійти"
   join_group:
     log_in: "Авторизуйтесь, щоб приєднатися до групи %{group_name}"
+    create_account_to_join_group: "Будь ласка, створіть акаунт, щоб долучитися до %{group_name}"
   invitation:
+    alternate: "Або, поширте це посилання та будь-хто може надіслати запит на приєднання до групи:"
+    by_email: "Запрошення через email"
     no_invitations_left: "Нажаль, наразі у вас немає жодного запрошення"
     no_invitations_left_get_more: "Будь-ласка відправте email на contact@loomio.org і ми розглянемо яким чином ми можемо вам допомогти"
     invitation_not_found: 'Не можемо знайти запрошення з таким номером. Будь ласка, попросіть нове запрошення у відправника.'
@@ -433,18 +457,27 @@ uk:
     invitees_placeholder: "User Name <user1@example.com>, user2@example.com"
     subject: "Будь ласка, приєднуйтесь до нової групи, %{group}"
     invite_people: "Запросіть людей до вашої групи"
+    invite_to_discussion: "Запросити людей до цієї дискусії"
+    invite_to_discussion_info: "Додання людей до цієї дискусії надішле їм запрошення на приєднання до цієї групи. Коли вони підтвердять запрошення, їх буде перенаправлено до цієї дискусії."
+    select_members: "Додати членів з групи %{group_name}"
     body_editable: |
       Привіт, приєднуйся приймати рішення разом з нами! Ми використовуємо спільний інструмент з прийняття рішень - Луміо.
+    body_editable_discussion: |
+      Привіт, заходьте та долучайтесь до дискусії!
     message_body: "Запрошення"
     invites_more_help2: "<p>Ви можете запрошувати людей в Вашу групу будь-коли.</p><p>Ви можете запросити всіх учасників одразу, або ж почати з запрошення людей, з якими ви найтісніше співпрацюєте.</p>"
     invitation_link: "Посилання для запрошення"
+    discussion_link: "Прийміть участь у дискусії:"
     link_help: "Для приєднання до групи на Луміо натисніть на посилання:"
     copy: "Якщо хтось не отримав email з запрошенням, Ви можете скопіювати посилання для запрошення, що вказано вище, і власноруч надіслати його одержувачу."
+    pending_invitations: 'Запрошення, що очікують'
+    no_pending_invitations: "Запрошень більше немає."
   search:
     header: "Результати пошуку за запросом '%{query}'"
     placeholder: "Пошук"
     empty_search: 'Пошук пустий'
     please_enter_a_search: 'Будь ласка, впишіть запит у ділянці пошуку вище'
+    no_match: 'Не було результатів, що відповідають вашому запиту.'
   example_discussion:
     title: "Приклад обговорення: Запрошення та знайомство з Луміо"
     description: |
@@ -462,12 +495,21 @@ uk:
       name: 'Ваше ім''я'
       email: 'Ваша електронна адреса'
       message: 'Ваше повідомлення'
+      destination: 'Куди нам надіслати ваше повідомлення?'
       submit: 'Відправити повідомлення'
     destinations:
+      contact: 'Загальні запити'
       tech: 'Технічна підтримка / повідомлення про помилки / особливі запити '
+      press: 'Медіа запити'
+      sales: 'Запити від продавців та покупців'
+      translations: 'Запити на переклад'
+    messages:
+      email_html: "Заповніть цю форму, або надішліть email до <a href='mailto:%{email}'>%{email}</a>"
+      social_html: "Ви також можете приєднатися до нас  на<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, та <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: "Розпочати обговорення"
+      who: "У якій групі ви хочете розпочати дискусію?"
     edit:
       header: "Редагувати обговорення"
   motion_form:
@@ -499,12 +541,16 @@ uk:
   profile_form:
     view: "Переглянути мій профіль"
     profile: "Редагувати профіль"
+    picture: "Картинка"
+    use_avatar_kind: "Використовуйте %{kind}"
     upload_new_image: "Завантажити нове зображення"
   group_setup:
+    set_up_your_group: Настройки групи
     desc_header: "Ви майже впорались!"
     submit: "До моєї групи!"
     payment_model:
       header: Loomio для кожного!
+      info: Наша модель платежів підходить до будь-яких груп, навіть для тих, що зовсім не мають грошей :)
       link: Дізнатись більше
   simple_form:
     'yes': 'Так'
@@ -518,9 +564,12 @@ uk:
       discussion:
         title: "Назва"
         description: "Контекст"
+        privacy_public_header: "Відкрита"
         privacy_public_description: "Хто завгодно може бачити це обговорення"
+        privacy_private_header: "Закрита"
         privacy_private_description: "Тільки члени %{group} можуть бачити це обговорення"
         privacy_hidden_description: "Усі дискусії у прихованій групі є приватними."
+        of_no_group: "цієї групи"
       group:
         name: "Назва групи"
         description: "Опси групи"
@@ -528,8 +577,18 @@ uk:
         members_invitable_by_coordinators: "Тільки координатори"
         members_invitable_by_members: "Всі учасники групи"
         privacy: Конфіденційність
+        privacy_public_header: Відкрита
+        privacy_public_description: Дискусії відкриті, якщо ви не позначили їх як приватні. Будь-хто може знайти групу та надіслати запит на приєднання.
+        privacy_private_header: Переважно закрита
+        privacy_private_description: Дискусіі приватні, якщо ви не позначаєте їх як відкриті. Будь-хто може знайти групу та надіслати запит на приєднання.
+        privacy_hidden_header: Прихована (повністю закрита)
+        privacy_hidden_description: Дискусії завжди приватні. Пошук та приєднання до групи тільки за допомогою запрошень.
         privacy_parent_group_members_header: Може бути переглянуто учасниками родительської групи
+        privacy_parent_group_members_description: Так саме, як і у прихованій групі, тільки ця група та її дискусії будуть доступні для членів батьківської групи.
+        privacy_parent_group_members_description_short: Тільки члени цієї та батьківської групи можуть бачити цю групу та її дискусії.
         group_members_invitable_by: "Тільки координатори"
+        submit: Підтвердити
+        viewable_by_parent_members_header: Дозволити усім членам %{group} бачити цю підгрупу та її дискусії
       membership_request:
         introduction: "Розкажіть про себе"
       motion:
@@ -546,6 +605,7 @@ uk:
         admin_name: "Як вас звати?"
         admin_email: "Ваша email-адреса?"
         name: "Назва вашої групи?"
+        description: "Якщо маєте час, розкажіть нам про свою групу"
     placeholders:
       discussion:
         title: "Назва"
@@ -573,11 +633,17 @@ uk:
         update: "Оновити налаштування"
   email:
     to_join_discussion:
+      subject: "%{who} запрошує вас приєднатись до дискусії у Loomio"
+      content: "Вас було запрошено до дискусії: %{discussion}"
+      message_intro: "%{who} говорить:"
       link: "Долучитись до обговорення"
     to_join_group:
       subject: "%{member} запросив вас приєднатися до групи  %{group_name} в Loomio"
     to_start_group:
       subject: "Створіть вашу нову Loomio групу: %{group_name}"
+    user_added_to_a_group:
+      subject: "%{who} додав вас до групи %{which_group}"
+      content: "%{who} додав вас до групи %{which_group} у Loomio. Натисніть тут, щоб потрапити до групи:"
     unsubscribe: "Відпісатися, або змінити Ваші налаштування електронної пошти:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> аби відписатися або змінити налаштування електронної пошти"
     view_comment: "Натисніть тут щоб переглянути коментар на Loomio"
@@ -602,17 +668,20 @@ uk:
       subject: "Участь задовільнено"
     invitation:
       hi: "Привіт %{name},"
+      intro: "Натисніть на посилання внизу для того чтоб створити вашу групу %{group_name}:"
       thanks: "Дякуємо!\nКоманда Loomio \n"
     membership_request:
       intro: "%{name} (%{email}) запросив доступ до однієї з Ваших груп на Loomio."
       subject: "%{who} зробив запит на приєднання до %{which_group}"
-      view_group: "Тут Ви можете задовільнити або відхилити запит"
+      view_group: "Тут ви можете підтвердити або відхилити запит"
     mentioned:
       intro: "Вас було згадано у дискусії за назвою:"
       said: "%{comment_author} сказав:"
       subject: "%{who} згадав Вас у групі %{which} на Loomio"
     proposal_closed:
       intro: 'Ваша пропозиція"%{proposal_name}" була закрита.'
+      specify_outcome_and_notify_group: "Визначте результат та надішліть його своїй группі."
+      specify_outcome_and_notify_group_html: "Визначте результат та надішліть його своїй группі."
       subject: "Пропозиція закрита - %{which}"
     proposal_outcome:
       subject: "Результат пропозиції"
@@ -665,15 +734,16 @@ uk:
   name: "Ім’я"
   new_activity: "Нова дія"
   next: "Наступна"
+  other: "Інше"
   outcome: "Результат"
   password: "Пароль"
   leave_this_field_blank: "залиште це поле пустим"
   photo: 'Фото'
   pricing: 'Ціни'
   prev: "Попередня"
+  more: "Бiльше..."
   translate_this_string: "Перекласти на %{language}"
   options: "Опції"
-  other: "Інше"
   ok_got_it: "Зрозуміло!"
   remove: "Видалити"
   save: "Зберегти"
@@ -693,5 +763,6 @@ uk:
   update: "Оновити"
   facebook: "Facebook"
   google: "Google"
+  persona: "Персона"
   common:
     email: "Електронна пошта"
