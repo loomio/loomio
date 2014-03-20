@@ -11,6 +11,12 @@ class Discussion < ActiveRecord::Base
   scope :order_by_latest_comment, order('last_comment_at DESC')
   scope :last_comment_after, lambda {|time| where('last_comment_at > ?', time)}
 
+  scope :visible_to_the_public, -> { where(private: false) }
+
+  def self.search_or_sort(query = nil)
+    query ? search(query) : order_by_latest_comment
+  end
+ 
   validates_presence_of :title, :group, :author, :group_id
   validate :private_is_not_nil
   validates :title, :length => { :maximum => 150 }
@@ -203,4 +209,5 @@ class Discussion < ActiveRecord::Base
   def fire_edit_description_event(user)
     Events::DiscussionDescriptionEdited.publish!(self, user)
   end
+  
 end

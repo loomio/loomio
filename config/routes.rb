@@ -12,7 +12,8 @@ Loomio::Application.routes.draw do
     end
   end
 
-  get "/groups", to: 'public_groups#index', as: :public_groups
+  get "/groups", to: 'public_index#index', model: :group, as: :public_groups
+  get "/discussions", to: 'public_index#index', model: :discussion, as: :public_discussions
   get "/new_group", to: 'groups#new'
 
   resource :search, only: :show
