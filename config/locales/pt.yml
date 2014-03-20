@@ -465,7 +465,6 @@ pt:
   confirmation_not_received: "Não recebeu as instruções de confirmação?"
   unlock_not_received: "Não recebeu as instruções para desbloquear?"
   inactive_html: "Desculpe, este conta está inativa. Se tiver dúvidas, por favor, <a href='%{path_to_contact}'> entre em contato </a>."
-  create_an_account: 'Criar conta'
   join_group:
     log_in: "Faça login para entrar em %{group_name}"
     create_account_to_join_group: "Por favor crie uma conta para entrar em %{group_name}"
@@ -727,12 +726,12 @@ pt:
   name: "Nome"
   new_activity: "Nova atividade"
   next: "Próximo"
+  other: "Outro"
   outcome: "Resultado"
   password: "Senha"
   pricing: 'Preços'
   prev: "Anterior"
   options: "Opções"
-  other: "Outro"
   ok_got_it: "Ok, entendi!"
   remove: "Remover"
   save: "Salvar"

@@ -1,1 +1,12 @@
-zh: {}
+zh:
+  frontpage:
+    title:
+      collaborative_decision_making: 協同決策
+    link:
+      blog: '部落格'
+      contact: '聯絡資訊'
+      press: '媒體資訊'
+      log_in: '登入'
+      more: '更多'
+    team:
+      header: '關於 Loomio'
