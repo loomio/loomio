@@ -403,7 +403,6 @@ ml:
   forgot_your_password: "അടയാളവാക്ക് മറന്നുവോ?"
   confirmation_not_received: "സ്ഥിരീകരിച്ച നിര്‍ദേശങ്ങള്‍ ലഭിച്ചില്ലേ ?"
   unlock_not_received: "തുറക്കാനുള്ള നിര്‍ദേശങ്ങള്‍ ലഭിച്ചില്ലേ ? "
-  create_an_account: 'ഒരു അക്കൗണ്ട് തുടങ്ങുക'
   log_in: "പ്രവേശിക്കുക"
   join_group:
     log_in: " %{group_name}-ലേക്ക് ചേരാന്‍ അകത്തു പ്രവേശിക്കുക."
@@ -648,6 +647,7 @@ ml:
   name: "പേരു്"
   new_activity: "പുതിയ പ്രവര്‍ത്തനം"
   next: "അടുത്തത്"
+  other: "മറ്റുള്ളത്"
   outcome: "ഫലം"
   password: "അടയാളവാക്ക്"
   pricing: 'വിലവിവരം'
@@ -655,7 +655,6 @@ ml:
   more: "കൂടുതല്‍..."
   translate_this_string: "%{language}-ലേക്ക് തര്‍ജ്ജിമ"
   options: "ഐച്ഛികങ്ങള്‍"
-  other: "മറ്റുള്ളത്"
   ok_got_it: "ശരി, മനസ്സിലായി!"
   remove: "നീക്കുക"
   save: "സൂക്ഷിക്കുക"

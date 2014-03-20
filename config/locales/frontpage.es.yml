@@ -2,44 +2,46 @@ es:
   frontpage:
     view_this_in_your_language: 'Vea esta página en %{language}'
     title:
-      collaborative_decision_making: Toma de decisiones Colectiva
+      collaborative_decision_making: Toma de decisiones colectiva
     link:
       blog: 'Blog'
       contact: 'Contacto'
+      press: 'Prensa'
       log_in: 'Entrar'
+      video: "Más sobre cómo funciona Loomio"
       crowdfunding: 'Echa un vistazo a la campaña de financiación colectiva'
       more: 'Más'
       top: 'Arriba'
       public_groups: 'Grupos abiertos al público'
-      terms: 'Terminos'
+      terms: 'Términos'
       privacy: 'Privacidad'
       services: 'Servicios'
     hero:
-      head_html: 'El mundo necesita mejores caminos para <strong>tomar ediciones en conjunto</strong>.'
+      head_html: 'El mundo necesita mejores caminos para <strong>tomar decisiones en conjunto.</strong>'
       subhead: 'Ayúdanos a crearlo.'
-      desc: 'Loomio es gratis y open-source software para le toma de cisiones para tod@s, en cualquier parte '
+      desc: 'Loomio es gratis y open-source software para la toma de decisiones para tod@s, en cualquier parte '
     product:
-      header_html: 'Cuando escuchamos <strong>todas las voces</strong>, tomamos <strong>mejores decisiones</strong>.'
+      header_html: 'Cuando escuchamos <strong>todas las voces</strong>, tomamos <strong>mejores decisiones. </strong>'
       step1:
         header: '1. Hablemos las cosas'
         desc: 'Empieza una discusión en cualquier tema, e invita a las personas que quieras. Comparte perspectivas diversas y desarrolla las ideas en conjunto.'
       step2:
         header: '2. Construye acuerdo'
-        desc: 'Todos pueden proponer un curso de acción. Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear – de esa manera podrás ver como se siente el grupo y porque.'
+        desc: 'Todos pueden proponer un curso de acción. Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear –de esa manera podrás ver cómo se siente el grupo y por qué-.'
       step3:
         header: '3. Decide juntos'
         desc: 'Desarrolla la propuesta colectivamente para que funcione para todos. Cada decisión posee una fecha limite, siempre obteniendo un resultado claro.'
     crowdfunding:
       header: 'Estamos en el proceso de financiación colectiva para poder construir esta nueva plataforma y poder regalarse al mundo.'
     prototype:
-      header_html: "Ya hemos construido <strong>un prototipo</strong>, y gente <strong>al rededor del mundo</strong> están haciendo cosas fantásticas con èl:"
-      subhead_html: '<a href="%{try_loomio_link}">Prueba Lomio beta ahora. O <a href="%{join_campaign_link}">súmate a la campaña</a> para obtener acceso  directo a Loomio 1.0.'
+      header_html: "Hemos construido ya un prototipo, y personas de todo el mundo están haciendo cosas maravillosas con él."
+      subhead_html: '<a href="%{try_loomio_link}">Prueba ahora Loomio beta</a>. O <a href="%{join_campaign_link}">súmate a la campaña</a> para obtener acceso  directo a Loomio 1.0.'
     mobile:
-      header: 'Loomio 1.0 te permite tomar decisiones donde sea que te encuentres.'
+      header_html: 'Una plataforma que funciona con cualquier aparato, construida con lo mejor en <strong> tecnología abierta de móvil.</strong>'
     quote:
       header:
-        rushkoff_html: "“Loomio <strong>desata el potencial de la internet</strong> para acercar a las personas al consenso envés de al debate polarizado.” <br />– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autor del <em>Present Shock</em>"
-        sifry_html: "“Loomio está golpeando fuerte entre la  <strong> voz individual </ strong> y <strong>la decisión colectiva</strong>.” <br />– Micah Sifry, Editor, <em><a href=\"http://techpresident.com\">TechPresident</a></em>"
+        rushkoff_html: '«Loomio <strong>libera el potencial de Internet</strong> para acercar a las personas al consenso en vez de al debate polarizado».<div class="attributation"> (<a href="http://rushkoff.com">Douglas Rushkoff</a>, autor del libro <em>Present Shock</em>).</div>'
+        sifry_html: '«Loomio alcanza un punto óptimo entre <strong>voz individual</strong> y <strong>decisión colectiva</strong>». <div class="attributation">(Micah Sifry, editor de <em><a href="http://techpresident.com">TechPresident</a></em>)</div>'
     team:
       header: 'Acerca de Loomio'
       desc: 'Somos un pequeño grupo de open-source desarolladores y activistas comunitarios que trabajamos en Ensipral, Aotearoa, Nueva Zelanda con una gran comunidad de amigos, voluntarios y asesores al rededor del mundo.'
@@ -52,9 +54,9 @@ es:
         desc: 'Tenemos espacio para cualquier grupo que sea independiente de partidos políticos o interés corporativo. Nunca venderemos tu información.'
       open:
         header: 'Software gratis y abierto'
-        desc: 'El código de Loomio es público y cualquiera puede usarlo, leerlo y aprender de el, modificarlo y redistribuirlo.'
+        desc: 'El código de Loomio es público y cualquiera puede usarlo, leerlo y aprender de él, modificarlo y redistribuirlo.'
       gift:
         header: 'Economía del regalo'
-        desc: 'Loomio es financiada por aquellos que contribuyen en acuerdo a sus recursos, Esto mantiene la plataforma libre de propagandas comerciales y accesible a grupos sin recursos financieros.'
+        desc: 'Loomio es financiada por aquellos que contribuyen de acuerdo a sus recursos. Esto mantiene la plataforma libre de propagandas comerciales y accesible a grupos sin recursos financieros.'
     vision:
-      header: 'Ayúdanos a transformar esta vision en realidad.'
+      header: 'Ayúdanos a transformar esta visión en realidad.'

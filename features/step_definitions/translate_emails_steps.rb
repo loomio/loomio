@@ -107,16 +107,6 @@ Given(/^"(.*?)" has set a proposal outcome$/) do |arg1|
   MotionService.create_outcome(@motion, motion_params, author)
 end
 
-Then(/^the proposal closed email should be delivered to "(.*?)" in Spanish$/) do |arg1|
-  email = MotionMailer.motion_closed(@motion, "#{arg1}@example.org")
-  email.body.encoded.should include(I18n.t("email.proposal_closed.specify_outcome_and_notify_group", locale: "es")[0..23])
-end
-
-Then(/^the proposal closed email should be delivered to "(.*?)" in English$/) do |arg1|
-  email = MotionMailer.motion_closed(@motion, "#{arg1}@example.org")
-  email.body.encoded.should include(I18n.t("email.proposal_closed.specify_outcome_and_notify_group", locale: "en"))
-end
-
 Then(/^the proposal outcome email should be delivered to "(.*?)" in Spanish$/) do |arg1|
   email = MotionMailer.motion_outcome_created(@motion, User.find_by_name(arg1))
   email.body.encoded.should include(I18n.t("outcome", locale: "es"))

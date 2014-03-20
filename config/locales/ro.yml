@@ -17,12 +17,19 @@ ro:
   devise:
     invitations:
       send_instructions: 'O invitatie a fost trimisa la %{email}.'
+      invitation_token_invalid: 'Codul invitatiei nu este valid!'
+      updated: 'Cont creat.'
+      no_invitations_remaining: "Nici o invitatie disponibila."
+    mailer:
+      invitation_instructions:
+        subject: 'Cineva te-a invitat sa te alaturi grupului lui Loomio'
   error:
     access_denied: "Nu ai permisiune pentru aceasta actiune."
     cant_join_subgroup: "Nu poti sa fii membru intr-un subgrup daca nu esti membru in grupul principal."
     cant_modify_position: "Propunerea este inchisa acum. Nu mai poti sa-ti modifici optiunea."
     cant_state_position: "Propunerea este inchisa acum. Nu mai poti vota."
     cant_view_member_profile: "Nu poti vizualiza profilul utilizatorului acesta pentru ca nu sunteti in acelasi grup."
+    contribution: "Logheaza-te pentru a contribui."
     discussion_not_created: "Discutia nu poate fi creata."
     group_not_archived: "Grupul nu poate fi arhivat."
     invalid_close_date: "Data limita nevalida, trebuie sa fie o data din viitor."
@@ -148,6 +155,7 @@ ro:
   empty_notifications: "Nu ai inca nici o notificare."
   see_all_notifications: "Vezi toate notificarile"
   sign_out: "De-logare"
+  sign_in: "Logheaza-te"
   tagline: "Creand o lume in care este posibil pentru toti sa participe in deciziile care-i afecteaza."
   click_to_dismiss: "Click aici pentru a ascunde acest mesaj"
   generic_confirm: "Esti sigur?"
@@ -276,6 +284,8 @@ ro:
   proposal_closing_when: "Inchidere %{when}"
   proposal_closed_when: "Inchis acum %{when}"
   proposed_when_by_who: "Propus de %{who} acum %{when} "
+  engagement_on_open_proposal: "%{percent}%% din membri si-au exprimat pozitia (%{numerator}/%{denominator})"
+  engagement_on_closed_proposal: "%{percent}%% din membri si-au exprimat pozitia (%{numerator}/%{denominator})"
   state_your_position: "Exprima-ti pozitia"
   positions: "Pozitii"
   yes_position: "Sunt de acord"
@@ -288,6 +298,16 @@ ro:
   block_details: "Obiectez fata de aceasta propunere si NU sunt de acord sa fie adoptata."
   not_voted: "[Afiseaza utilizatorii care nu s-au decis inca]"
   outcome_placeholder: "Care a fost rezultatul acestei propuneri?"
+  position_verbs:
+    'yes': "de acord"
+    'no': "impotriva"
+    abstain: "abtinere"
+    block: "blocheaza"
+    past_tense:
+      'yes': "de acord"
+      'no': "impotriva"
+      abstain: "abtinut"
+      block: "blocat"
   help:
     coordinating: 'Coordonarea grupului tau Loomio'
     coordinating_details: |
@@ -308,6 +328,7 @@ ro:
       poti folosi propunerea pentru a obtine rapid pareri in decizie.</p>
       <p> Poti face lucruri ca finalizarea unui document, aprobarea unei aplicatii, sau semnaturi pentru o idee.</p>
     get_in_touch: "Ia legatura"
+    get_in_touch_description_html: "Daca ai intrebari sau feedback, <a href='%{link}'>trimite-ne un mesaj</a>."
     getting_started: "Pregatit pentru a incepe"
     getting_started_description: "In partea dreapta, grupul discuta o tema, schimband idei si informatii. Cand exista o decizie pe care grupul o ia, apare in partea dreapta."
     getting_the_most: 'Obtine cat mai mult din folosirea Loomio'
@@ -392,6 +413,8 @@ ro:
     no_invitations_left_get_more: "Te rugam sa contactezi contact@loomio.org si vom vedea ce putem face sa te ajutam"
     invitation_not_found: 'Nu am gasit invitatia cu acest token. Cere o noua invitatie celui care ti-a trimis-o.'
     invitation_cancelled: 'Invitatia a fost retrasa. Te rugam sa contactezi pe cel care ti-a triis invitatia daca crezi ca este o eroare.'
+    invitation_already_used: 'Aceasta invitatie a fost deja utilizata. Logheaza-te pentru a ajunge la grupul tau.'
+    recipients: "Introduceti adresele de email, separate prin virgula:"
     invitees_placeholder: "Nume utilizator <user1@example.com>, user2@example.com"
     subject: "Alatura-te noului grup Loomio,  %{group}"
     invite_people: "Invita oameni in grupul tau"
@@ -445,13 +468,23 @@ ro:
   new_user_form:
     create_an_account: "Creeaza un cont"
   group_setup:
+    desc_header: "Aproape ai reusit!"
     submit: "Vreau sa intru in grupul meu!"
   simple_form:
+    'yes': 'Da'
+    'no': 'Nu'
+    required:
+      text: 'cerut'
+      mark: '*'
+    error_notification:
+      default_message: "Te rugam sa verifici problemele de mai jos:"
     labels:
       discussion:
         title: "Titlu"
         description: "Context"
       group:
+        name: "Numele grupului"
+        description: "Descriere"
         members_invitable_by: "Cine poate trimite invita oameni in acest grup?"
       membership_request:
         introduction: "Prezinta-te"
@@ -465,11 +498,19 @@ ro:
         password_confirmation: "Confirma parola"
         language_preference: "Limba"
     placeholders:
+      discussion:
+        title: "Titlu"
+        description: "Introduceti informatii contextuale..."
       membership_request:
         introduction: "Scrie in cateva cuvinte cine esti si de ce vrei sa te alaturi %{group_name}."
       motion:
         name: "Care este propunerea ta pentru pasii urmatori?"
         description: "Adauga destule informatii pentru ca toti din grupul tau sa poata lua o decizie informata."
+      group:
+        description: "Descrierea grupului"
+      user:
+        email: "Email"
+        password: "Parola"
   helpers:
     submit:
       discussion:
@@ -489,12 +530,14 @@ ro:
     view_comment: "Apasa aici pentru a vedea comentariul pe Loomio"
     view_discussion: "Apasa aici pentru a vedea aceasta discutie"
     view_group: "Apasa aici pentru a vedea grupul pe Loomio"
+    view_proposal: "Vizualizeaza aceasta propunere pe Loomio"
     create_discussion:
       intro: "%{who} a pornit o noua discutie in %{which_group}:"
       subject: "Discutie nou - %{which}"
     create_proposal:
       intro: "O noua propunere a fost creata intr-un grup Loomio de care apartii. "
       closes_in: "Se inchide in"
+      subject: "Propunere noua: %{which}"
     daily_activity:
       heading: "Activitatea ta pe Loomio"
       intro: "Iti aratam ce s-a intamplat in grupurile tale Loomio in ultimele 24 de ore"
@@ -512,6 +555,7 @@ ro:
         Echipa Loomio\n
     membership_request:
       intro: "%{name} (%{email}) a cerut acces in unul din grupurile tale Loomio."
+      subject: "%{who} a cerut sa intre in %{which_group}"
       view_group: "Aici poti aproba sau nu cererea"
     mentioned:
       intro: "Ai fost mentionat intr-o discutie numita:"
@@ -563,12 +607,12 @@ ro:
   name: "Nume"
   new_activity: "Activitate noua"
   next: "Urmatorul"
+  other: "Altele"
   outcome: "Rezultat"
   password: "Parola"
   pricing: 'Plati'
   prev: "Anteriorul"
   options: "Optiuni"
-  other: "Altele"
   ok_got_it: "Ok, am inteles!"
   remove: "Elimina"
   save: "Salvare"
