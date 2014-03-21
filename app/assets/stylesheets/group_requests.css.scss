@@ -8,7 +8,7 @@ body.group_requests {
     border-bottom: none;
     color: $mid-grey;
   }
-  p { font-size: $font-medium-large; }
+  p, li { font-size: $font-medium-large; }
   #informal-group { background-color: #FFE6C2; }
   &.create, &.new {
     form {
@@ -46,6 +46,25 @@ body.group_requests {
         font-style: italic;
         span { font-weight: 700; }
       }
+    }
+  }
+  .beta-desc, .full-release-desc { margin-bottom: 20px; }
+  .full-release {
+    h2 {
+      font-size: 18px;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+  }
+  .attributes {
+    list-style: disc;
+    margin-left: 0;
+    margin-bottom: 10px;
+    padding: 10px 10px 10px 30px;
+    border-radius: 4px;
+    li {
+      margin-bottom: 20px;
+      line-height: 1.2;
     }
   }
 }
