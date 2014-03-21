@@ -10,7 +10,11 @@ class MembershipRequest < ActiveRecord::Base
 
   belongs_to :group
   belongs_to :requestor, class_name: 'User'
+  belongs_to :user, foreign_key: 'requestor_id' # duplicate relationship for eager loading
   belongs_to :responder, class_name: 'User'
+
+  scope :pending, -> { where response: nil }
+  scope :requested_by, ->(user) { where requestor_id: user.id }
 
   delegate :admins,               to: :group, prefix: true
   delegate :members,              to: :group, prefix: true

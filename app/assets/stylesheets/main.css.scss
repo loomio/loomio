@@ -74,12 +74,12 @@ ul, ol, li {
   padding: 0;
 }
 
-.alert { margin: 10px 0; }
+.alert { margin-top: 14px; }
 
 .btn-app {
   line-height: 18px;
   padding: 4px 8px 4px 8px;
-  width: 200px;
+  min-width: 200px;
   font-size: $font-medium;
   text-align: left;
 }
@@ -325,25 +325,6 @@ a.btn-icon:hover { color: $dark-grey; }
   .footer-links { float: right; }
 }
 
-#donate-container { position: relative; }
-
-#donate-container:hover .donate-tab {
-  transform: translate(7px,0);
-    -webkit-transform: translate(7px,0);
-    -o-transform: translate(7px,0);
-    -moz-transform: translate(7px,0);
-}
-
-.donate-tab {
-  left: -11px;
-  position: fixed;
-  top: 278px;
-  transition: all .2s ease-in-out;
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-}
-
 .nowrap { white-space: nowrap; }
 
 .info-box {
@@ -365,3 +346,14 @@ a.btn-icon:hover { color: $dark-grey; }
 }
 
 #button-container { margin-top: 5px; }
+
+#search.nav-item {
+  .icon-search { position: relative; }
+  .submit-search {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 26px;
+    opacity: 0;
+  }
+}

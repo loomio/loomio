@@ -26,7 +26,7 @@ Given(/^a public group exists with a Spanish\-speaking admin "(.*?)"$/) do |arg1
   @group.privacy = 'public'
   @group.save
   admin = @group.admins.first
-  admin.update_attribute(:language_preference, "es")
+  admin.update_attribute(:selected_locale, "es")
   admin.update_attribute(:email, "#{arg1}@example.org")
   admin.save
 end
@@ -318,6 +318,6 @@ end
 
 Then(/^I should see that the discussions are private$/) do
   visit discussion_path(@discussion)
-  page.should have_css('.icon-lock')
+  page.should have_css('.fa-lock')
 end
 

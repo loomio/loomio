@@ -1,10 +1,10 @@
 =simple_form_for(@user, url: user_registration_path, :defaults => {:required => false}) do |f|
   =f.error_notification
-  =f.input :name, placeholder: 'Name', label: false
-  =f.input :email, placeholder: 'Email', label: false
+  =f.input :name, placeholder: t(:name), label: false
+  =f.input :email, placeholder: t(:'common.email'), label: false
   -unless omniauth_authenticated_and_waiting?
-    =f.input :password, placeholder: 'Password', label: false
-    =f.input :password_confirmation, placeholder: 'Confirm password', label: false
-  =f.input :honeypot, as: :string, placeholder: 'leave this field blank' , label: false
-  -sign_up = t(:"devise.registrations.sign_up")
+    =f.input :password, placeholder: t(:password), label: false
+    =f.input :password_confirmation, placeholder: t(:confirm_password), label: false
+  =f.input :honeypot, as: :string, placeholder: t(:leave_this_field_blank), label: false
+  -sign_up = t(:'devise.registrations.sign_up')
   =f.submit sign_up, class: "btn btn-info btn-large", :data => {:disable_with => sign_up}

@@ -47,19 +47,22 @@ gem 'airbrake', '~> 3.1.14'
 gem 'fog', '~> 1.19.0'
 gem 'roadie', '~> 2.4.3'
 gem 'valid_email', '~> 0.0.4'
-gem 'font-awesome-sass-rails'
+gem "font-awesome-sass"
 gem 'sequenced', '~> 1.4.0'
-gem 'closure_tree'
 gem 'active_model_serializers', '~> 0.8.1'
 gem 'private_pub'
 gem "thin"
+gem 'closure_tree', '~> 4.3.0'
+gem 'ruby-progressbar', '1.4.1'
+gem 'bing_translator', '~> 4.0.0'
+gem 'librato-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'coffee-rails', '~> 3.2.2'
   gem 'sass-rails', '~> 3.2.6'
-  gem 'bootstrap-sass', '~> 2.3.2.2'
+  gem 'bootstrap-sass', '~> 2.3.2.2' # Bootstrap 2
   gem 'uglifier', '~> 2.2.1'
   gem 'modernizr-rails', '~> 2.6.2'
   gem 'jquery-fileupload-rails', '~> 0.4.1'
@@ -79,6 +82,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'bullet'
   gem 'guard', '~> 1.6.1'
   gem 'guard-spork', '~> 1.4.1'
   gem 'guard-rspec', '~> 2.3.3'
@@ -107,6 +111,6 @@ end
 group :staging, :production do
   gem 'memcachier', '~> 0.0.2'
   gem 'dalli', '~> 2.6.4'
-  gem 'newrelic_rpm', '~> 3.5.7.59'
+  gem 'newrelic_rpm', '~> 3.7.3'
   gem 'heroku-deflater', '~> 0.5.1'
 end

@@ -22,7 +22,7 @@
       -@motion.unique_votes.each do |vote|
         %tr{ :class => ("cell-border-bottom" unless vote==last_vote) }
           %td= vote.user_name
-          %td.proposal-position{class: vote.position_to_s}= vote.position_to_s
+          %td.proposal-position{class: vote.position.to_s}= vote.position_to_s
           %td
             -if vote.statement.present?
               = vote.statement

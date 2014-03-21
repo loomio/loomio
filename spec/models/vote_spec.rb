@@ -20,12 +20,38 @@ describe Vote do
     it {should have(2).errors_on(:position)}
   end
 
+  context 'user votes' do
+    let(:vote) { Vote.create(user: user, motion: motion, position: "no") }
+    subject { vote }
+
+    its(:age) { should == 0 }
+
+    context 'user changes their position' do
+      let(:vote2) { Vote.create(user: user, motion: motion, position: "yes") }
+      before do
+        vote
+        vote2
+      end
+
+      subject { vote2 }
+      its(:age) { should == 0 }
+
+      it "should age the first vote" do
+        vote.reload
+        vote.age.should == 1
+      end
+
+      it 'the second vote should associate the first as the previous' do
+        vote2.previous_vote_id.should == vote.id
+      end
+    end
+  end
+
   it 'should only accept valid position values' do
     vote = build(:vote, position: 'bad', motion: motion)
     vote.valid?
     vote.should have(1).errors_on(:position)
   end
-
 
   it 'can have a statement' do
     vote = Vote.new(position: "yes", statement: "This is what I think about the motion")
@@ -42,14 +68,13 @@ describe Vote do
     vote.should_not be_valid
   end
 
-  it 'should update motion_last_vote_at when new vote is created' do
+  it 'updates motion last_vote_at on create' do
     vote = Vote.new(position: "yes")
     vote.motion = motion
     vote.user = user
-    vote_time = double("time")
-    motion.stub(:latest_vote_time).and_return(vote_time)
-    motion.should_receive(:last_vote_at=).with(vote_time)
     vote.save!
+    motion.reload
+    motion.last_vote_at.to_s.should == vote.created_at.to_s
   end
 
   describe 'other_group_members' do

@@ -3,7 +3,7 @@ class ContactMessagesController < BaseController
   layout 'pages'
 
 	def new
-    @contact_message = ContactMessage.new
+    @contact_message = ContactMessage.new(destination: params[:destination])
     if current_user
       @contact_message.name = current_user.name
       @contact_message.email = current_user.email
@@ -16,10 +16,11 @@ class ContactMessagesController < BaseController
   	if @contact_message.save
       ContactMessageMailer.delay.contact_message_email(@contact_message)
       flash[:success] = "Thanks! Someone from our team will get back to you shortly!"
-      redirect_to root_path
+
+      redirect_to dashboard_or_root_path
     else
       render 'new'
     end
   end
-end
 
+end

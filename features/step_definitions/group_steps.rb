@@ -60,7 +60,7 @@ Given(/^"(.*?)" is a Spanish\-speaking member of the group$/) do |arg1|
   user = FactoryGirl.create :user, name: arg1,
                             email: "#{arg1}@example.org",
                             password: 'password'
-  user.update_attribute(:language_preference, "es")
+  user.update_attribute(:selected_locale, "es")
   @group.add_member! user
 end
 
@@ -170,8 +170,13 @@ Then /^I should not see the list of invited users$/ do
   page.should_not have_css('#invited-users')
 end
 
+When(/^I visit my group's memberships index$/) do
+  visit group_path(@group)
+  click_on 'More'
+end
+
+
 Then /^I email the group members$/ do
-  find('#group-member-options').click()
   click_on "Email group members"
   fill_in "group_email_subject", :with => "Message to group"
   fill_in "group_email_body", :with => "Y'all are great"
@@ -185,6 +190,10 @@ end
 
 Given /^the group has a subgroup$/ do
   @subgroup = FactoryGirl.create(:group, parent: @group)
+end
+
+Given /^the group has a hidden subgroup$/ do
+  @subgroup = FactoryGirl.create(:group, parent: @group, privacy: 'hidden')
 end
 
 Given /^the group has a subgroup I am an admin of$/ do

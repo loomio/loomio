@@ -6,6 +6,9 @@ Loomio::Application.routes.draw do
     get 'setup_for_vote_on_proposal'
   end
 
+
+  slug_regex = /[a-z0-9\-\_]*/i
+
   ActiveAdmin.routes(self)
 
   namespace :admin do
@@ -38,6 +41,7 @@ Loomio::Application.routes.draw do
   end
 
   get "/groups", to: 'public_groups#index', as: :public_groups
+  get "/new_group", to: 'groups#new'
 
   resource :search, only: :show
 
@@ -55,15 +59,14 @@ Loomio::Application.routes.draw do
     match 'unfollow'
   end
 
-  resources :invitations, only: [:show]
-
   resources :group_requests, only: [:create, :new] do
     get :confirmation, on: :collection
   end
 
+  resources :invitations, only: [:show, :create, :destroy]
+
   resources :groups, path: 'g', only: [:create, :edit] do
     scope module: :groups do
-      resources :invitations, only: [:index, :destroy, :new, :create]
       resources :memberships, only: [:index, :destroy, :new, :create] do
         member do
          post :make_admin
@@ -101,11 +104,13 @@ Loomio::Application.routes.draw do
 
     resources :motions,     only: [:index]
     resources :discussions, only: [:index, :new]
+    resources :invitations, only: [:new, :destroy]
   end
-  scope module: :groups, path: 'g' do
-    get    ':id(/:slug)', action: 'show',    slug: /[a-zA-Z0-9-]*/, as: :group
-    put    ':id(/:slug)', action: 'update',  slug: /[a-zA-Z0-9-]*/ #this catches the edit group form
-    delete ':id(/:slug)', action: 'destroy', slug: /[a-zA-Z0-9-]*/
+
+  scope module: :groups, path: 'g', slug: slug_regex do
+    get    ':id(/:slug)', action: 'show', as: :group
+    put    ':id(/:slug)', action: 'update'
+    delete ':id(/:slug)', action: 'destroy'
 
     post 'archive/:id',  action: 'archive', as: :archive_group
   end
@@ -120,7 +125,7 @@ Loomio::Application.routes.draw do
   end
   delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel', as: :cancel_membership_request
 
-  resources :motions, path: 'm', only: [:new, :create, :edit] do
+  resources :motions, path: 'm', only: [:new, :create, :edit, :index] do
     resources :votes, only: [:new, :create, :update]
     member do
       put :close
@@ -129,14 +134,16 @@ Loomio::Application.routes.draw do
       put :edit_close_date
     end
   end
-  scope module: :motions, path: 'm' do
-    get    ':id(/:slug)', action: 'show',    slug: /[a-zA-Z0-9-]*/, as: :motion
-    put    ':id(/:slug)', action: 'update',  slug: /[a-zA-Z0-9-]*/
-    delete ':id(/:slug)', action: 'destroy', slug: /[a-zA-Z0-9-]*/
+
+  scope module: :motions, path: 'm', slug: slug_regex do
+    get    ':id(/:slug)', action: 'show', as: :motion
+    put    ':id(/:slug)', action: 'update'
+    delete ':id(/:slug)', action: 'destroy'
   end
 
   resources :discussions, path: 'd', only: [:new, :edit, :create] do
     get :activity_counts, on: :collection
+    resources :invitations, only: [:new]
 
     member do
       post :update_description
@@ -147,10 +154,11 @@ Loomio::Application.routes.draw do
       post :move
     end
   end
-  scope module: :discussions, path: 'd' do
-    get    ':id(/:slug)', action: 'show',    slug: /[a-zA-Z0-9-]*/, as: :discussion
-    put    ':id(/:slug)', action: 'update',  slug: /[a-zA-Z0-9-]*/
-    delete ':id(/:slug)', action: 'destroy', slug: /[a-zA-Z0-9-]*/
+
+  scope module: :discussions, path: 'd', slug: slug_regex do
+    get    ':id(/:slug)', action: 'show',    as: :discussion
+    put    ':id(/:slug)', action: 'update'
+    delete ':id(/:slug)', action: 'destroy'
 
     post ':id/preview_version/(:version_id)', action: '#preview_version', as: 'preview_version_discussion'
     post 'update_version/:version_id',        action: 'update_version',   as: 'update_version_discussion'
@@ -158,6 +166,7 @@ Loomio::Application.routes.draw do
 
   resources :comments , only: :destroy do
     post :like, on: :member
+    post :translate, on: :member
   end
 
   resources :attachments, only: [:create, :new] do
@@ -181,22 +190,18 @@ Loomio::Application.routes.draw do
       post :upload_new_avatar
     end
   end
-  scope module: :users, path: 'u' do
-    post 'dismiss_system_notice',     action: 'dismiss_system_notice',     as: :dismiss_system_notice_for_user
-    post 'dismiss_dashboard_notice',  action: 'dismiss_dashboard_notice',  as: :dismiss_dashboard_notice_for_user
-    post 'dismiss_group_notice',      action: 'dismiss_group_notice',      as: :dismiss_group_notice_for_user
-    post 'dismiss_discussion_notice', action: 'dismiss_discussion_notice', as: :dismiss_discussion_notice_for_user
-  end
+
   scope module: :users do
-    match '/settings',          action: 'settings', as: :user_settings
+    match '/profile',          action: 'profile', as: :profile
     scope module: :email_preferences do
       get '/email_preferences', action: 'edit',   as: :email_preferences
       put '/email_preferences', action: 'update', as: :update_email_preferences
     end
   end
+
   scope module: :users, path: 'u' do
-    get ':id(/:slug)', action: 'show',    slug: /[a-zA-Z0-9-]*/, as: :user
-    put ':id(/:slug)', action: 'update',  slug: /[a-zA-Z0-9-]*/
+    get ':id(/:slug)', action: 'show',    slug: slug_regex, as: :user
+    put ':id(/:slug)', action: 'update',  slug: slug_regex
   end
 
   match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
@@ -204,36 +209,43 @@ Loomio::Application.routes.draw do
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
   get '/group_requests/:id/start_new_group' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('token=','')}"}
 
-  resources :contributions, only: [:index, :create] do
-    get :callback, on: :collection
-    get :thanks, on: :collection
-  end
+  get '/contributions' => redirect('/crowd')
+  get '/contributions/thanks' => redirect('/crowd')
+  get '/contributions/callback' => redirect('/crowd')
+  get '/crowd' => redirect('https://love.loomio.org/')
 
-  authenticated do
-    root :to => 'dashboard#show'
-  end
+  # resources :contributions, only: [:index, :create] do
+  #   get :callback, on: :collection
+  #   get :thanks, on: :collection
+  # end
 
-  root :to => 'pages#home'
+  get '/dashboard', to: 'dashboard#show', as: 'dashboard'
+  root :to => 'marketing#index'
 
   scope controller: 'pages' do
     get :about
     get :privacy
     get :purpose
-    get :pricing
+    get :services
     get :terms_of_service
+    get :third_parties
+    get :wallets
     get :browser_not_supported
+  end
+
+  scope controller: 'campaigns' do
+    get :hide_crowdfunding_banner
   end
 
   scope controller: 'help' do
     get :help
   end
 
-  get '/we_the_people' => redirect('/')
-  get '/collaborate'   => redirect('/')
-  get '/woc'           => redirect('/')
+  get '/detect_locale' => 'detect_locale#show'
+  match '/detect_video_locale' => 'detect_locale#video', as: :detect_video_locale
 
-  resources :contact_messages, only: [:new, :create,]
-  match 'contact', to: 'contact_messages#new'
+  resources :contact_messages, only: [:new, :create]
+  match 'contact(/:destination)', to: 'contact_messages#new'
 
   #redirect from wall to new group signup
   namespace :group_requests do
@@ -246,6 +258,9 @@ Loomio::Application.routes.draw do
   match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
 
   #redirect old pages:
+  get '/we_the_people' => redirect('/')
+  get '/collaborate'   => redirect('/')
+  get '/woc'           => redirect('/')
   get '/discussions/:id', to: 'discussions_redirect#show'
   get '/groups/:id',      to: 'groups_redirect#show'
   get '/motions/:id',     to: 'motions_redirect#show'
@@ -266,6 +281,4 @@ Loomio::Application.routes.draw do
   get '/blog'       => redirect('http://blog.loomio.org')
   get '/press'      => redirect('http://blog.loomio.org/press-pack')
   get '/press-pack' => redirect('http://blog.loomio.org/press-pack')
-
-  get '/generate_error', to: 'generate_error#new'
 end

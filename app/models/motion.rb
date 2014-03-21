@@ -4,11 +4,15 @@ class Motion < ActiveRecord::Base
   include ReadableUnguessableUrls
 
   belongs_to :author, :class_name => 'User'
+  belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
   belongs_to :outcome_author, :class_name => 'User'
   belongs_to :discussion
-  has_many :votes, :dependent => :destroy
-  has_many :did_not_votes, :dependent => :destroy
-  has_many :events, :as => :eventable, :dependent => :destroy
+  # has_one :group, through: :discussion
+  has_many :votes, :dependent => :destroy, include: :user
+  has_many :unique_votes, class_name: 'Vote', conditions: { age: 0 }, include: :user
+  has_many :did_not_votes, :dependent => :destroy, include: :user
+  has_many :did_not_voters, through: :did_not_votes, source: :user
+  has_many :events, :as => :eventable, :dependent => :destroy, include: :eventable
   has_many :motion_readers, dependent: :destroy
 
   validates_presence_of :name, :discussion, :author, :closing_at
@@ -24,7 +28,7 @@ class Motion < ActiveRecord::Base
   delegate :email, :to => :author, :prefix => :author
   delegate :name, :to => :author, :prefix => :author
   delegate :group, :group_id, :to => :discussion
-  delegate :users, :full_name, :to => :group, :prefix => :group
+  delegate :members, :full_name, :to => :group, :prefix => :group
   delegate :email_new_motion?, to: :group, prefix: :group
   delegate :name_and_email, to: :user, prefix: :author
 
@@ -32,14 +36,33 @@ class Motion < ActiveRecord::Base
 
   attr_accessor :create_discussion
 
-  scope :voting, where('closed_at IS NULL').order('closed_at ASC')
+  scope :voting, where('motions.closed_at IS NULL').order('motions.closed_at ASC')
   scope :lapsed, lambda { where('closing_at < ?', Time.now) }
   scope :lapsed_but_not_closed, voting.lapsed
-  scope :closed, where('closed_at IS NOT NULL').order('closed_at DESC')
+  scope :closed, where('closed_at IS NOT NULL').order('motions.closed_at DESC')
   scope :order_by_latest_activity, -> { order('last_vote_at desc') }
+
+  def grouped_unique_votes
+    order = ['block', 'no', 'abstain', 'yes']
+    unique_votes.sort do |a,b|
+      order.index(a.position) <=> order.index(b.position)
+    end
+  end
+
+  def title
+    name
+  end
 
   def user
     author
+  end
+
+  def voters
+    votes.map(&:user).uniq.compact
+  end
+
+  def voter_ids
+    votes.pluck(:user_id).uniq.compact
   end
 
   def voting?
@@ -48,14 +71,6 @@ class Motion < ActiveRecord::Base
 
   def closed?
     closed_at.present?
-  end
-
-  def as_read_by(user)
-    if user.blank?
-      self.motion_readers.build(motion: self)
-    else
-      find_or_new_motion_reader_for(user)
-    end
   end
 
   def has_votes?
@@ -93,44 +108,55 @@ class Motion < ActiveRecord::Base
   end
 
   def user_has_voted?(user)
-    votes.for_user(user).exists?
+    return false if user.nil?
+    votes.for_user(user.id).exists?
+  end
+
+  def user_has_not_voted?(user)
+    !user_has_voted?(user)
   end
 
   def most_recent_vote_of(user)
-    votes.for_user(user).last
+    votes.for_user(user.id).last
   end
 
   def can_be_voted_on_by?(user)
     user && group.users.include?(user)
   end
 
-  def latest_vote_time
-    if last_vote_at.present?
-      last_vote_at
-    else
-      # this seems incorrect behaviour
-      # and without it this method could be removed
-      created_at
-    end
-  end
-
   def last_vote_by_user(user)
-    votes.where(user_id: user.id).order('created_at DESC').first
+    return nil if user.nil?
+
+    votes.where(user_id: user.id, age: 0).first
   end
 
   def last_position_by_user(user)
     if vote = last_vote_by_user(user)
       vote.position
     else
-      nil
+      'unvoted'
     end
   end
 
-  # members_not_voted_count
-  # was no_vote_count
+  def group_size_when_voting
+    if voting?
+      group.memberships_count
+    else
+      total_votes_count + members_not_voted_count
+    end
+  end
+
+  def members_not_voted
+    if voting?
+      group_members - voters
+    else
+      did_not_voters
+    end
+  end
+
   def members_not_voted_count
     if voting?
-      group_size_when_voting - total_votes_count
+      group_members.size - total_votes_count
     else
       did_not_votes_count
     end
@@ -153,7 +179,7 @@ class Motion < ActiveRecord::Base
       position_counts[position] = 0
     end
 
-    Vote.unique_votes(self).each do |vote|
+    unique_votes.each do |vote|
       position_counts[vote.position] += 1
     end
 
@@ -167,25 +193,20 @@ class Motion < ActiveRecord::Base
     save!
   end
 
-  def group_size_when_voting
-    if voting?
-      group.memberships_count || 0
-    else
-      total_votes_count + members_not_voted_count
+  # todo: move to motion mover service
+  def move_to_group(group)
+    if discussion.present?
+      discussion.group = group
+      discussion.save
     end
   end
 
-  def group_users_without_motion_author
+  def group_members_without_motion_author
     group.users.where(User.arel_table[:id].not_eq(author.id))
   end
 
-  def group_users_without_outcome_author
+  def group_members_without_outcome_author
     group.users.where(User.arel_table[:id].not_eq(outcome_author.id))
-  end
-
-  #expensive to call
-  def unique_votes
-    Vote.unique_votes(self)
   end
 
   def store_users_that_didnt_vote

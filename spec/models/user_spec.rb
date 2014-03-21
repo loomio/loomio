@@ -251,55 +251,6 @@ describe User do
     end
   end
 
-  describe "get_loomio_user" do
-    it "returns the loomio helper bot user (email: contact@loom.io)" do
-      user = User.new
-      user.name = "loomio evil bot"
-      user.email = "darkness@loom.io"
-      user.password = "password"
-      user.save!
-      user1 = User.find_or_create_by_email("contact@loom.io")
-      user1.name = "loomio helper bot"
-      user1.password = "password"
-      user1.save!
-      user2 = User.new
-      user2.name = "George Washingtonne"
-      user2.email = "georgie_porgie@usa.com"
-      user2.password = "password"
-      user2.save!
-      User.loomio_helper_bot.should == user1
-    end
-
-    it "creates loomio helper bot if none exists" do
-      User.loomio_helper_bot.email.should == "contact@loom.io"
-    end
-  end
-
-  describe "recent_notifications" do
-    it "returns 10 notifications if there are less than 10 _unread_ notifications" do
-      # Generate read notifications
-      (0..15).each do |i|
-        notification = Notification.new(:event => stub_model(Event),
-                                        :user => user)
-        notification.viewed_at = Time.now
-        notification.save!
-      end
-      # Generate unread notifications
-      (0..7).each do |i|
-        notification = Notification.new(:event => stub_model(Event),
-                                        :user => user)
-        notification.save!
-      end
-      user.recent_notifications.count.should == 10
-    end
-    it "returns 25 notifications if there are 25 or more _unread_ notifications" do
-      (0..30).each do |i|
-        Notification.create!(:event => stub_model(Event), :user => user)
-      end
-      user.recent_notifications.count.should == 25
-    end
-  end
-
   describe "usernames" do
     before do
       @user1 = User.new(name: "Test User", email: "test1@example.com", password: "password")

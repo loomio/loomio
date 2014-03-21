@@ -8,7 +8,7 @@ Given /^someone comments on the discussion$/ do
 end
 
 When /^I visit the dashboard$/ do
-  visit root_path
+  visit dashboard_path
 end
 
 Then(/^I should see that the discussion has (\d+) unread$/) do |arg1|
@@ -20,7 +20,7 @@ Then /^I should see the number of comments the discussion has$/ do
 end
 
 Given /^I read the discussion when it was uncommented$/ do
-  @discussion.as_read_by(@user).viewed!
+  DiscussionReader.for(user: @user, discussion: @discussion).viewed!
 end
 
 Given /^the discussion has had new comments since I last read it$/ do

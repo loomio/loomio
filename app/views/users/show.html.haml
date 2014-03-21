@@ -1,11 +1,10 @@
 #user-profile
   .row
     .span3
-      = render 'avatar', user: @user, size: "large", kind: nil, id: 'avatar-preview'
+      = render 'avatar', user: @user, size: "large", id: 'avatar-preview'
     .span8
       %h1= @user.name
       %p.username= "@" + @user.username
-      %p.email= mail_to @user.email
 
       - groups = @user.public_groups.order('full_name ASC')
       - if groups.present?

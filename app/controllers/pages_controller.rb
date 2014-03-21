@@ -14,9 +14,12 @@ class PagesController < ApplicationController
   def privacy
   end
 
-  def pricing
+  def services
   end
 
   def terms_of_service
+  end
+
+  def third_parties
   end
 end

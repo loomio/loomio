@@ -32,3 +32,15 @@ end
 Then(/^I should be redirected to the edit memberships page$/) do
   page.should have_content(I18n.t :members)
 end
+
+Given(/^I am a member of the subgroup$/) do
+  @subgroup.add_member! @user
+end
+
+Then(/^I should not be removed from the subgroup$/) do
+  @subgroup.members.should include(@user)
+end
+
+Then(/^I should be removed from the subgroup$/) do
+  @subgroup.members.should_not include(@user)
+end

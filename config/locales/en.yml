@@ -55,9 +55,7 @@ en:
     permission_to_invite: "You do not have permission to invite new members."
     position_not_updated: "Could not update position."
     settings_not_updated: "Your settings did not get updated."
-    group_request_already_verified: "Sorry! The verification link you clicked has already been confirmed. If you haven't heard from us within 48 hours, get in touch: contact@loomio.org"
     group_request_already_accepted: "Sorry! This invitation is invalid or has already been accepted."
-    group_request_contribution: "Please select a category. This isn’t a commitment to pay, just useful information to help us design our model. Thanks!"
     group_request_invalid_token: "Sorry! This is an invalid token"
     group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
     group_already_setup: "The group you are trying to setup already exists."
@@ -129,7 +127,7 @@ en:
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        one:   "seconds"
+        one:   "second"
         other: "%{count} seconds"
       x_seconds:
         one:   "1 second"
@@ -167,6 +165,7 @@ en:
     blog: 'Blog'
     contact: 'Contact'
     privacy: 'Privacy'
+    public_groups: 'Public groups'
     terms: 'Terms'
 
   inbox:
@@ -194,11 +193,15 @@ en:
 
   edit_discussion_context: "Edit discussion context"
   request_new_group: "Start a group"
-  request_new_group_details: "or wait until you are invited to one."
+  start_new_group: "Start a new group"
+  start_new_group_hint: "To start making decisions"
+  find_a_group: "Find a group"
+  find_a_group_hint: "To explore public groups"
+  no_group_header: "Welcome to Loomio Beta"
   empty_notifications: "You do not have any notifications yet."
   see_all_notifications: "See all notifications"
-  user_settings: "User settings"
-  email_preferences: "Email preferences"
+  profile: "Profile"
+  email_settings: "Email settings"
   sign_out: "Sign out"
   sign_in: "Log in"
   honeypot_warning: "Could not create your account. If you're using a screen reader, please make sure the last (hidden) field on the form is blank."
@@ -219,6 +222,13 @@ en:
     header: "Welcome to your Home page"
     message: "<p>The home page shows you all of the current discussions in all the groups you are a member of.</p><p>You can start a discussion on a new topic by clicking the “Start a discussion” button.</p>"
 
+  prompt_visitor_to_authenticate:
+    header: "Log in or join group to participate"
+    body: "If you're a member of this group, you'll have to log in to participate."
+
+  prompt_user_to_join:
+    header: "Join the group to participate"
+    body: "To comment or vote, you need to be a member of this group."
 
   #
   # GROUP PAGE
@@ -231,7 +241,6 @@ en:
 
   invite_people: "Invite people"
   no_invitations_button: "No invitations left"
-  pending_invitations: 'Pending invitations'
   number_pending: '%{pending} pending'
   and_number_pending: 'and %{pending} pending'
   edit_memberships: 'Edit memberships'
@@ -239,7 +248,6 @@ en:
   add_new_member: "Add new member"
   invite_members_to_group: "Invite members to %{which_group}"
   remaining_invites: "remaining invites"
-  need_more_invites_html: "Need more? Loomio is in closed beta, which means we're still in development and have limited resources for user support. If you'd like to increase the size of your group %{href}."
   get_in_touch_link: "get in touch"
 
   email_members_in_group: "Email the members in %{which_group}"
@@ -251,6 +259,7 @@ en:
   email_group_members: "Email group members"
   edit_group_settings: "Edit group settings"
   leave_group: "Leave group"
+  confirm_leave_hidden_group: "Are you sure you wish to leave %{which_group}? You will also be removed from any subgroups."
   confirm_leave_group: "Are you sure you wish to leave %{which_group}?"
   deactivate_group: "De-activate group"
   confirm_deactivate_group: "Wait!!! Are you sure you want to de-activate %{which_group}? You will no longer be able to view the group. However, if you wish to get the group back you can ask us to reactivate it for you by sending an email to contact@loomio.org."
@@ -307,6 +316,7 @@ en:
   #
 
   group_request:
+    neighbourhood_support_group: "e.g. Neighbourhood Support Group"
     confirmation:
       title: You're almost done! Check your email.
       body_html: |
@@ -334,6 +344,7 @@ en:
   current_decision: "Current decision"
   previous_decisions: "Previous decisions"
   see_previous_decisions: "See previous decisions"
+  see_more: "See more"
   create_new_proposal: "Create new proposal"
   empty_decision_list_html: "Ready to make a decision? <br> Anyone can start a proposal."
   empty_decision_index: "This group has not made any decisions yet."
@@ -592,14 +603,26 @@ en:
   password_confirmation: "Password confirmation"
   current_password: "Current password"
   password_details: "(we need your current password to confirm your changes)"
+  confirm_password: "Confirm password"
   cancel_my_account: "Cancel my account"
   remember_me: "Remember me"
   signing_in: "Signing in"
+  or: "or"
   forgot_your_password: "Forgot your password?"
+  dont_have_an_account: "Don't have an account?"
+  link_it_up_instead: "Link it up instead"
+  sign_up_via: "Sign up via"
+  or_fill_in_this_form: "or fill in this form"
+  already_have_account: "Already have a Loomio account?"
+  confirm_your_details: "Confirm your details"
+  link_up_your_account: "Link up your account"
+  log_in_to_your_loomio_account: "Log in to your Loomio account to link it up with %{provider_name}."
+  now_that_your_logged_in: "Now that you've logged in with %{provider_name}, please confirm your details to create a Loomio account."
   confirmation_not_received: "Didn't receive confirmation instructions?"
   unlock_not_received: "Didn't receive unlock instructions?"
   inactive_html: "Sorry, this account is currently inactive. If you have any questions please <a href='%{path_to_contact}'>get in touch</a>."
-  create_an_account: 'Create an account'
+  create_an_account_html: 'Create a Loomio Beta account'
+  log_in: "Log in"
 
   join_group:
     log_in: "Log in to join %{group_name}"
@@ -626,14 +649,21 @@ en:
     invitees_placeholder: "User Name <user1@example.com>, user2@example.com"
     subject: "Please join our new Loomio group, %{group}"
     invite_people: "Invite people to your group"
+    invite_to_discussion: "Invite people to this discussion"
+    invite_to_discussion_info: "Adding people to this discussion will send them an invitation to your group. When they accept, they'll be directed to this discussion."
     select_members: "Add members from %{group_name}"
     body_editable: |
       Hey there, come make decisions with us! We're using a collaborative decision-making tool called Loomio.
+    body_editable_discussion: |
+      Hey there, come and join the discussion!
     message_body: "Invitation message"
     invites_more_help2: "<p>You can invite people to your group at any time.</p><p>You might want to invite all your members in right away, or you could start by inviting just the people you’re working most closely with.</p>"
     invitation_link: "Invitation link"
+    discussion_link: "Participate in the discussion:"
     link_help: "Click this link to join %{group} on Loomio:"
     copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
+    pending_invitations: 'Pending invitations'
+    no_pending_invitations: "There are currently no pending invitations."
 
   #
   # SEARCH
@@ -643,6 +673,10 @@ en:
     description: "Below is a list of discussions and proposals that have '%{query}' in their title or description."
     header: "Search results for '%{query}'"
     placeholder: "Search"
+    empty_search: 'Empty search'
+    please_enter_a_search: 'Please enter a query in the search bar above'
+    no_match: 'There were no results that matched your query'
+
 
   #
   # EXAMPLE CONTENT
@@ -663,6 +697,26 @@ en:
       Is it a good idea? Loomio Helper Bot wants to know what you think!
       If you’re clear about your position, click one of the icons below (hover over the decision buttons for a description of what each one means).
       You’ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes.
+  #
+  # CONTACT PAGE
+  #
+
+  contact_page:
+    labels:
+      name:         'Your name'
+      email:        'Your email address'
+      message:      'Your message'
+      destination:  'Where shall we send your message?'
+      submit:       'Send message'
+    destinations:
+      contact:      'General enquiries'
+      tech:         'Tech support / bug reports / feature requests'
+      press:        'Media enquiries'
+      sales:        'Sales and customer enquiries'
+      translations: 'Translation enquiries'
+    messages:
+      email_html:        "Fill out this form, or send an email to <a href='mailto:%{email}'>%{email}</a>"
+      social_html:       "You can also join us on<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
 
   #
   # FORMS
@@ -706,8 +760,9 @@ en:
   new_user_form:
     create_an_account: "Create an account"
 
-  user_settings_form:
-    header: "User settings"
+  profile_form:
+    view: "View my profile"
+    profile: "Edit profile"
     picture: "Picture"
     use_avatar_kind: "Use %{kind}"
     upload_new_image: "Upload a new image"
@@ -717,6 +772,10 @@ en:
     desc_header: "You're almost there!"
     desc_html: "As the group coordinator, you’re responsible for setting up and managing your Loomio group. After you choose a few settings, you can get into your new group, start a discussion or two, and send out some invitations! <p>When thinking about the simplest way you can describe your group, ask yourself: What do you want to achieve together? What types of decisions will you be making? Who will be involved?</p>"
     submit: "Take me to my group!"
+    payment_model:
+      header: Loomio is for everyone!
+      info: We have a payment model that suits any group, even those with no money :)
+      link: Find out more
 
   simple_form:
     "yes": 'Yes'
@@ -733,7 +792,7 @@ en:
         privacy_public_header: "Public"
         privacy_public_description: "Anyone can see this discussion"
         privacy_private_header: "Private"
-        privacy_private_description: "Only members %{group} can see this discussion"
+        privacy_private_description: "Only members of %{group} can see this discussion"
         privacy_hidden_description: "All discussions in a hidden group are private."
         of: "of "
         of_no_group: "of this group"
@@ -769,6 +828,11 @@ en:
         password: "Password"
         password_confirmation: "Confirm password"
         language_preference: "Language"
+      group_request:
+        admin_name: "What is your name?"
+        admin_email: "What is your email address?"
+        name: "What is the name of your group?"
+        description: "If you have a moment, tell us about your group"
 
     placeholders:
       discussion:
@@ -785,6 +849,8 @@ en:
       user:
         email: "Email"
         password: "Password"
+      group_request:
+        description: "We'd love to hear about your group and why you want to use Loomio."
 
   helpers:
     submit:
@@ -802,6 +868,15 @@ en:
   #
 
   email:
+    to_join_discussion:
+      subject: "%{who} wants you to join a discussion on Loomio"
+      content: "You've been invited to participate in the discussion: %{discussion}"
+      message_intro: "%{who} says:"
+      link: "Join the discussion"
+    to_join_group:
+      subject: "%{member} has invited you to join %{group_name} on Loomio"
+    to_start_group:
+      subject: "Set up your new Loomio group: %{group_name}"
     user_added_to_a_group:
       subject: "%{who} has added you to %{which_group}"
       content: "%{who} has added you to %{which_group} on Loomio. Click here to go to the group:"
@@ -863,30 +938,19 @@ en:
       closing_in_24_hours: "Closing in 24 hours"
       headline: "%{author}'s proposal in %{group} is closing soon:"
       summary: "Summary"
-    to_join_group:
-      subject: "%{member} has invited you to join %{group_name} on Loomio"
-    to_start_group:
-      subject: "Set up your new Loomio group: %{group_name}"
-    trial_expiry:
-      header: "%{group_name}: Your Loomio trial is almost up."
-      hi: "Hi there,"
-      intro_html: |
-        Just a friendly reminder to let you know that your trial will expire in 5 days. We hope you're enjoying Loomio so far.
-        <p>Once the trial period runs out, you'll need to enter your payment details so your group can keep using Loomio.</p>
-        <p><a href=''>Click here</a> to set up your payment details now.</p>
-        <p>If you’ve got any questions or if there’s anything at all we can do to help your group succeed with Loomio, we’d love to hear from you.</p>
-    trial_follow_up:
-      header: "%{group_name}: How’s your Loomio trial going so far?"
-      hi: "Hi there,"
-      intro_html: |
-        Just a friendly reminder to let you know you're halfway through your trial. We hope you’re enjoying Loomio so far! If you’d like some tips about getting the most out of Loomio, <a href='/help#getting-the-most-out-of-Loomio'>have a look here.</a>
-        <p>You'll need to enter your payment information before the end of your trial to keep using Loomio. <a href=''>Click here</a> to set up your payment details now.</p>
-        <p>If you’ve got any questions or if there’s anything at all we can do to help your group succeed with Loomio, we’d love to hear from you.</p>
     verification:
       header: "You're almost done!"
       intro: "Please click this verification link to finalise your request:"
       ignore: "If you did not request to join Loomio please ignore this email."
 
+
+
+  #
+  # CAMPAIGNS
+  #
+
+  campaign:
+    crowdfunding_html: "Hey! Loomio is about to get a whole lot better. <a href='http://love.loomio.org'>Check out our crowdfunding campaign!</a>"
 
   #
   # COMMON WORDS
@@ -897,7 +961,6 @@ en:
   approve: "Approve"
   author: "Author"
   back: "Back"
-  by: "by"
   cancel: "Cancel"
   change: "Change"
   change_language: "Click here to use Loomio in %{language}"
@@ -928,16 +991,17 @@ en:
   new_activity: "New activity"
   next: "Next"
   ok_got_it: "Okay, got it!"
-  options: "Options"
   other: "Other"
   outcome: "Outcome"
   password: "Password"
-  photo:
+  leave_this_field_blank: "leave this field blank"
+  photo: 'Photo'
   pricing: 'Pricing'
   prev: "Prev"
+  more: "More..."
   translate: "Help translate Loomio!"
+  translate_this_string: "Translate to %{language}"
   options: "Options"
-  other: "Other"
   ok_got_it: "Okay, got it!"
   remove: "Remove"
   save: "Save"
@@ -947,13 +1011,18 @@ en:
   send_email: "Send email"
   show_more: "Show More"
   start_a_group: "Start a group"
+  start_group: "Start group!"
   starting: "Starting"
   subject: "Subject"
   terms_of_service_html: "By clicking %{button_text}, you agree to Loomio's <a href='%{link_path}' target='_blank'>Terms of service</a>"
   thanks: "Thanks!"
+  translate: "Help translate Loomio!"
   unlike: "Unlike"
   until_close: "until close"
   update: "Update"
+  facebook: "Facebook"
+  google: "Google"
+  persona: "Persona"
 
   common:
     email: "Email"

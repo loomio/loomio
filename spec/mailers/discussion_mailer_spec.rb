@@ -5,7 +5,7 @@ describe DiscussionMailer do
   let(:group) { discussion.group }
 
   context 'sending individual email upon new discussion creation' do
-    before(:all) do
+    before do
       @email = DiscussionMailer.new_discussion_created(discussion, discussion.author)
     end
 

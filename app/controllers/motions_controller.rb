@@ -16,9 +16,11 @@ class MotionsController < GroupBaseController
       @group = GroupDecorator.new(@motion.group)
       authorize! :create, @motion
       if @motion.save
+        Measurement.increment('motions.create.success')
         flash[:success] = t("success.proposal_created")
         redirect_to @discussion
       else
+        Measurement.increment('motions.create.error')
         flash[:warning] = t("warning.proposal_not_created")
         render action: :new
       end
@@ -33,12 +35,12 @@ class MotionsController < GroupBaseController
       if cannot? :show, @group
         head 401
       else
-        @closed_motions = @group.motions.closed.page(params[:page]).per(7)
+        @closed_motions = @group.motions.closed.page(params[:page])
         render :layout => false if request.xhr?
       end
     else
       authenticate_user!
-      @closed_motions= current_user.motions.closed.page(params[:page]).per(7)
+      @closed_motions= current_user.motions.closed.page(params[:page])
       render :layout => false if request.xhr?
     end
   end
@@ -67,8 +69,10 @@ class MotionsController < GroupBaseController
 
   def create_outcome
     if MotionService.create_outcome(@motion, permitted_params.motion, current_user)
+      Measurement.increment('motions.create_outcome.success')
       flash[:success] = t("success.motion_outcome_created")
     else
+      Measurement.increment('motions.create_outcome.error')
       flash[:error] = t("error.motion_outcome_not_created")
     end
     redirect_to discussion_url(@motion.discussion, proposal: @motion)
@@ -76,8 +80,10 @@ class MotionsController < GroupBaseController
 
   def update_outcome
     if MotionService.update_outcome(@motion, permitted_params.motion, current_user)
+      Measurement.increment('motions.update_outcome.success')
       flash[:success] = t("success.motion_outcome_updated")
     else
+      Measurement.increment('motions.update_outcome.error')
       flash[:error] = t("error.motion_outcome_not_updated")
     end
     redirect_to discussion_url(@motion.discussion, proposal: @motion)
@@ -89,9 +95,11 @@ class MotionsController < GroupBaseController
     safe_values[:close_at_time] = params[:motion][:close_at_time]
 
     if @motion.update_attributes(safe_values)
+      Measurement.increment('motions.edit_close_date.success')
       Events::MotionCloseDateEdited.publish!(@motion, current_user)
       flash[:success] = t("success.close_date_changed")
     else
+      Measurement.increment('motions.edit_close_date.error')
       flash[:error] = t("error.invalid_close_date")
     end
     redirect_to discussion_url(@motion.discussion)
@@ -99,7 +107,7 @@ class MotionsController < GroupBaseController
 
   private
     def load_resource_by_key
-      @motion ||= Motion.find_by_key(params[:id])
+      @motion ||= Motion.find_by_key!(params[:id])
     end
 
     def group
@@ -108,7 +116,7 @@ class MotionsController < GroupBaseController
 
     def find_group
       if (params[:id] && (params[:id] != "new"))
-        Motion.find_by_key(params[:id]).group
+        Motion.find_by_key!(params[:id]).group
       elsif params[:motion][:discussion_id]
         Discussion.find(params[:motion][:discussion_id]).group
       end

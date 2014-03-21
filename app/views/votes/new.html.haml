@@ -5,5 +5,5 @@
     = render 'form', motion: @motion, vote: @vote, form_title: t("vote_form.header")
   - if @motion.description.present?
     .span5.offset1
-      %h3 Proposal details
-      = @motion.description
+      %h3= t :proposal
+      = simple_format @motion.description

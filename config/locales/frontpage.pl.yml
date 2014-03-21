@@ -1,0 +1,33 @@
+pl:
+  frontpage:
+    link:
+      blog: 'Blog'
+      contact: 'Kontakt'
+      log_in: 'ZALOGUJ'
+      crowdfunding: 'Zobacz naszą kampanię crowdfundingową'
+      more: 'Więcej'
+      top: 'Góra'
+      public_groups: 'Grupy publiczne'
+      terms: 'Zasady'
+      privacy: 'Prywatność'
+      services: 'Usługi'
+    hero:
+      subhead: 'Pomóż nam to stworzyć.'
+    product:
+      step1:
+        header: '1. Omówcie wspólnie tematy'
+      step2:
+        header: '2. Stwórzcie porozumienie'
+      step3:
+        header: '3. Wspólnie zdecydujcie'
+    team:
+      header: 'O Loomio'
+    ideals:
+      independent:
+        header: 'Niezależny i neutralny'
+      open:
+        header: 'Wolne i otwarte oprogramowanie'
+      gift:
+        header: 'Ekonomia daru'
+    vision:
+      header: 'Pomóż nam przemienić tę wizję w rzeczywistość.'

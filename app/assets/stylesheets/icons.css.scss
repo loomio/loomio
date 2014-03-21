@@ -41,24 +41,6 @@
   &.discussion-icon.enabled-icon  { background-image:url('/assets/discussion-24.png'); }
   &.discussion-icon.disabled-icon  { background-image:url('/assets/discussion-light-24.png'); }
   &.decision-icon { background-image:url('/assets/pie-24.png'); }
-  &.group-icon {
-    background-image:url('/assets/group-24.png');
-    margin: 0px;
-  }
-  &.heart-icon {
-    text-indent: -9999px;
-    background-image:url('/assets/heart-small.png');
-    margin: 1px 0 0 0;
-  }
-  &.inbox-icon {
-    /*background-image:url('/assets/inbox-icon-24x22.png');*/
-    background-image:url('/assets/inbox-nav-icon.png');
-    margin: 2px 0 0 0px;
-  }
-  &.notification-icon {
-    background-image:url('/assets/notification-24.png');
-    margin: 0;
-  }
   &.pie-icon {
     background-image: url("pie-light-24.png");
     height: 26px;

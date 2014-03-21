@@ -6,6 +6,8 @@ module Events
   class MotionClosed; end
   class MotionClosedByUser; end
   class NewMotion; end
+  class MotionBlocked; end
+  class NewVote; end
 end
 
 class Motion
@@ -50,6 +52,64 @@ describe 'MotionService' do
       it 'fires no motion created event' do
         motion.should_receive(:save).and_return(false)
         Events::NewMotion.should_not_receive(:publish!).with(motion)
+      end
+    end
+  end
+
+  describe '.cast_vote' do
+    let(:vote) { double(:vote, motion: motion, user: user, save: false) }
+
+    it "authorizes the action" do
+      ability.should_receive(:authorize!).with(:vote, motion)
+      MotionService.cast_vote(vote)
+    end
+
+    context 'vote is valid' do
+      after do
+        MotionService.cast_vote(vote)
+      end
+
+      before do
+        vote.should_receive(:save).and_return(true)
+      end
+
+      context 'position is block' do
+        before do
+          vote.stub(:is_block?).and_return(true)
+          vote.stub(:previous_position_is_block?).and_return(false)
+        end
+        it 'fires motion blocked event' do
+          Events::MotionBlocked.should_receive(:publish!).with(vote)
+        end
+
+        context 'previous position of user was block' do
+          before do
+            vote.stub(:previous_position_is_block?).and_return(true)
+          end
+          it 'does not fire motion blocked event' do
+            Events::MotionBlocked.should_not_receive(:publish!)
+          end
+        end
+      end
+
+      context 'position is not block' do
+        before do
+          vote.stub(:is_block?).and_return(false)
+        end
+
+        it 'fires a new vote event' do
+          Events::NewVote.should_receive(:publish!).with(vote)
+        end
+      end
+    end
+
+    context 'vote is invalid' do
+      before do
+        vote.should_receive(:save).and_return false
+      end
+
+      it 'returns nil' do
+        MotionService.cast_vote(vote).should == nil
       end
     end
   end

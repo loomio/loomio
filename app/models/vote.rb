@@ -16,9 +16,10 @@ class Vote < ActiveRecord::Base
   end
 
   POSITIONS = %w[yes abstain no block]
-
-  belongs_to :motion, counter_cache: true
+  default_scope include: :previous_vote
+  belongs_to :motion, counter_cache: true, touch: :last_vote_at
   belongs_to :user
+  belongs_to :previous_vote, class_name: 'Vote'
   has_many :events, :as => :eventable, :dependent => :destroy
 
   validates_presence_of :motion, :user, :position
@@ -27,7 +28,8 @@ class Vote < ActiveRecord::Base
   validates :user_id, user_can_vote: true
   validates :position, :statement, closable: true
 
-  scope :for_user, lambda {|user| where(:user_id => user)}
+  scope :for_user, lambda {|user_id| where(:user_id => user_id)}
+  scope :most_recent, -> { where age: 0  }
 
   delegate :name, :to => :user, :prefix => :user
   delegate :group, :discussion, :to => :motion
@@ -37,9 +39,10 @@ class Vote < ActiveRecord::Base
   delegate :name, :to => :motion, :prefix => :motion
   delegate :name, :full_name, :to => :group, :prefix => :group
 
+  before_create :age_previous_votes, :associate_previous_vote
+
   after_save :update_motion_vote_counts
-  after_create :update_motion_last_vote_at
-  after_destroy :update_motion_last_vote_at, :update_motion_vote_counts
+  after_destroy :update_motion_vote_counts
 
   def other_group_members
     group.users.where(User.arel_table[:id].not_eq(user.id))
@@ -53,24 +56,8 @@ class Vote < ActiveRecord::Base
     user
   end
 
-  def self.unique_votes(motion)
-    Vote.find_by_sql(
-      "SELECT * FROM votes a WHERE created_at = (SELECT  MAX(created_at) as  created_at FROM votes b WHERE a.user_id = b.user_id AND motion_id = #{motion.id})
-      ORDER   BY  Case    a.position
-        When    'block'     Then    0
-        When    'no'        Then    1
-        When    'abstain'   Then    2
-        When    'yes'       Then    3
-        Else    -1
-      End")
-  end
-
   def position_to_s
     return I18n.t(self.position, scope: [:position_verbs, :past_tense])
-  end
-
-  def previous_vote
-    user.votes.where(motion_id: motion_id).order('id desc').last
   end
 
   def previous_position
@@ -78,16 +65,26 @@ class Vote < ActiveRecord::Base
   end
 
   private
+
+  def previous_position_is_block?
+    previous_vote.try(:is_block?)
+  end
+
+  def is_block?
+    position == 'block'
+  end
+
+  def associate_previous_vote
+    self.previous_vote = motion.votes.where(user_id: user_id, age: age + 1).first
+  end
+
+  def age_previous_votes
+    motion.votes.where(user_id: user_id).update_all('age = age + 1')
+  end
+
   def update_motion_vote_counts
     unless motion.nil? || motion.discussion.nil?
       motion.update_vote_counts!
-    end
-  end
-
-  def update_motion_last_vote_at
-    unless motion.nil? || motion.discussion.nil?
-      motion.last_vote_at = motion.latest_vote_time
-      motion.save!
     end
   end
 end

@@ -19,7 +19,7 @@ class PermittedParams < Struct.new(:params, :user)
   def user_attributes
     [:name, :avatar_kind, :email, :password, :password_confirmation,
      :remember_me, :uploaded_avatar, :username, :uses_markdown,
-     :time_zone, :language_preference]
+     :time_zone, :selected_locale]
   end
 
   def vote_attributes
@@ -68,6 +68,6 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def contact_message_attributes
-    [:email, :message, :name]
+    [:email, :message, :name, :destination]
   end
 end

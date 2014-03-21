@@ -7,6 +7,6 @@ Feature: Email group members
   Scenario: Group Admin sends group email
     Given I am logged in
     And I am an admin of a group
-    When I visit the group page
-    Then I email the group members
-    And memberships should get an email with subject "made an announcement"
+    When I visit my group's memberships index
+    And I email the group members
+    Then memberships should get an email with subject "made an announcement"
