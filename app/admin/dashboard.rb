@@ -1,10 +1,10 @@
 def print_month_totals(model)
   if model == "users"
     collection = User.where('created_at > ?', 6.months.ago).order("created_at DESC").group_by{|u| u.created_at.month}
-    divisor = 50
+    divisor = 100
   elsif model == "groups"
     collection = Group.where('parent_id IS NULL AND created_at > ?', 6.months.ago).order("created_at DESC").group_by{|g| g.created_at.month}
-    divisor = 25
+    divisor = 50
   end
   counts = {}
   collection.each_pair do |k, v|
