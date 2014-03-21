@@ -1,29 +1,24 @@
 %div.motion-preview.clearfix
   %a.selector-link{ href: motion_path(motion) }
     .clearfix
-      - if current_user
-        .vote-icon
-          - if current_user.group_membership(this_group) || this_group.nil?
-            %div{:class => 'activity-icon ' + vote_icon_name(current_user.position(motion))}
+      .vote-icon
+        - if current_user
+          - position = motion.last_position_by_user(current_user)
+          %div.activity-icon{ class: "position-#{position}-icon" }
       .proposal-title-container
         .proposal-title.word-break= truncate(motion.name, :length => 60, :separator => ' ')
         .clearfix
-          .proposal-outcome
-            - if !motion.outcome.blank?
+          - if motion.outcome.present?
+            .proposal-outcome
               = t(:outcome) + ": " + motion.outcome
           .proposal-close-date
             - if motion.voting?
               = t(:proposal_closing_when, when: time_ago_in_words(motion.closing_at))
             - else
               = t(:proposal_closed_when, when: time_ago_in_words(motion.closed_at))
-            =" · " unless this_group
-          .proposal-group-name= DiscussionDecorator.new(motion.discussion).display_group_name(this_group)
-      .pie{id: "graph_#{motion.id}", 'data-votes' => motion.votes_for_graph.to_json}
-
-- if params[:controller] == 'discussions'
-  = render('motions/motion_pie_javascript',
-      diameter: 25,
-      motion: motion,
-      padding: 1,
-      gap: 1,
-      legend: 'false')
+      .pie.motion-sparkline
+        -values = motion.vote_counts.values
+        -if values.sum == 0
+          0,0,0,0,1
+        -else
+          =values.join(',')

@@ -1,0 +1,3 @@
+class Proposal
+  greet: ->
+    'hi'

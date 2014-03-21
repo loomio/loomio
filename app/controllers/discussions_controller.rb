@@ -7,6 +7,8 @@ class DiscussionsController < GroupBaseController
 
   after_filter :mark_as_read, only: :show
 
+  caches_action :show, :cache_path => Proc.new { |c| c.params }, unless: :user_signed_in?, :expires_in => 5.minutes
+
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.not_found') }
   end
@@ -74,29 +76,26 @@ class DiscussionsController < GroupBaseController
   end
 
   def show
-    if @discussion.has_previous_versions?
-      @last_collaborator = User.find(@discussion.originator.to_i)
-    end
     @group = GroupDecorator.new(@discussion.group)
-    @vote = Vote.new
-    @current_motion = @discussion.current_motion
-    assign_meta_data
+
     if params[:proposal]
-      @displayed_motion = Motion.find(params[:proposal])
-    elsif @current_motion
-      @displayed_motion = @current_motion
+      @motion = @discussion.motions.find(params[:proposal])
+    else
+      @motion = @discussion.most_recent_motion
     end
 
-    if current_user
-      @uses_markdown = current_user.uses_markdown?
-      if @current_motion
-        @current_motion.as_read_by(current_user).viewed!
-      end
-      @reader = @discussion.as_read_by(current_user)
-      @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
-    else
-      @activity = @discussion.activity.page(params[:page]).per(Discussion::PER_PAGE)
+    if @motion
+      @motion_reader = MotionReader.for(user: current_user_or_visitor, motion: @motion)
     end
+
+    @discussion_reader = DiscussionReader.for(user: current_user_or_visitor, discussion: @discussion)
+
+    @closed_motions = @discussion.closed_motions
+
+    @uses_markdown = current_user_or_visitor.uses_markdown?
+
+    @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
+    assign_meta_data
   end
 
   def move
@@ -118,7 +117,7 @@ class DiscussionsController < GroupBaseController
     build_comment
     if DiscussionService.add_comment(@comment)
       current_user.update_attributes(uses_markdown: params[:uses_markdown])
-      @discussion.as_read_by(current_user).viewed!
+      DiscussionReader.for(user: current_user, discussion: @discussion).viewed!
     else
       head :ok and return
     end
@@ -174,7 +173,7 @@ class DiscussionsController < GroupBaseController
   private
 
   def load_resource_by_key
-    @discussion ||= Discussion.published.find_by_key(params[:id])
+    @discussion ||= Discussion.published.find_by_key!(params[:id])
   end
 
   def build_discussion
@@ -196,8 +195,9 @@ class DiscussionsController < GroupBaseController
   end
 
   def mark_as_read
-    if @reader and @activity and @activity.last
-      @reader.viewed!(@activity.last.updated_at)
+    if @activity and @activity.last
+      @discussion_reader.viewed!(@activity.last.updated_at)
+      @motion_reader.viewed! if @motion_reader
     end
   end
 

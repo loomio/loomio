@@ -26,7 +26,7 @@ describe Events::NewMotion do
                                         eventable: motion,
                                         discussion_id: motion.discussion.id) }
     before do
-      motion.stub(:group_users_without_motion_author).and_return([user])
+      motion.stub(:group_members_without_motion_author).and_return([user])
       user.stub(:email_notifications_for_group?).and_return(false)
       MotionMailer.stub_chain(:new_motion_created, :deliver)
     end
@@ -36,7 +36,7 @@ describe Events::NewMotion do
       before { user.should_receive(:email_notifications_for_group?).
                     with(motion.group).and_return(true) }
 
-      it 'emails group_users_without_motion_author new_motion_created' do
+      it 'emails group_members_without_motion_author new_motion_created' do
         MotionMailer.should_receive(:new_motion_created).with(motion, user)
         event.save
       end

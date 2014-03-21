@@ -38,22 +38,13 @@ body.groups {
     .heart-icon {color: red;}
 
     #members-panel {
+      h4 a{color: $text-black;}
       .dropdown-menu {
         min-width: 205px;
         margin-top: 0;
       }
-      #group-member-options {
-        float: right;
-        height: 14px;
-        line-height: 16px;
-        margin-top: 1px;
-      }
-      .membership-count {
-        background-color: $light-grey;
-        color: white;
-        font-size: $font-small;
-        margin: 2px;
-        float: right;
+      .memberships_link {
+        margin-bottom: 10px;
       }
     }
     #request-membership {
@@ -107,6 +98,26 @@ body.groups {
     #sub-groups-panel {
       .group-link a:hover { color: $dark-grey; }
     }
+
+    .previous-discussions-panel {
+      .previous-decision-title {
+        &:hover { color: $dark-grey; }
+        float: right;
+        width: 164px;
+      }
+
+      ul.previous-decisions {
+        margin-bottom: 0px;
+        padding-top: 5px;
+      }
+
+      li.previous-decision { padding: 0 0 12px 0; }
+
+      .motion-sparkline {
+        float: left;
+        padding: 2px 10px 0 0;
+      }
+    }
   }
 }
 
@@ -115,13 +126,14 @@ body.groups {
 
 // group title (on almost all pages)
 .group-title {
-  margin: 0;
+  margin: 0 0 8px;
   h1 {
     font-size: 24px;
+    font-weight: 400;
     margin-bottom: 0;
   }
   .home-title {
-    color: $dark-grey;
+    color: #727272;
     display: inline;
   }
   .privacy-dropdown {
@@ -159,12 +171,12 @@ body.groups {
   @include ie7-inline-block();
   width: 15px;
   position: relative;
-  bottom: 1px;
-  font-size: 0.6em;
+  bottom: 2px;
+  font-size: 0.5em;
   text-align: center;
 }
 
-body.group_setup.setup, body.groups.edit, body.groups.add_subgroup {
+body.group_setup.setup, body.groups.new, body.groups.edit, body.groups.add_subgroup {
   form.edit_group, form.new_group {
     .control-group.radio_buttons { margin-bottom: 1.6em; }
     input[type="text"] {
@@ -207,5 +219,14 @@ body.group_setup.setup, body.groups.edit, body.groups.add_subgroup {
   .info-box {
     width: 290px;
     margin-top: 1.1em
+  }
+}
+
+body.groups.new {
+  .control-group.group_name {
+    margin-top: 30px;
+  }
+  .info-box {
+    margin-top: 65px;
   }
 }

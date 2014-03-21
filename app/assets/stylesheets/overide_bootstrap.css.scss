@@ -1,4 +1,5 @@
 // override bootstrap
+@import "bootstrap/mixins";
 
 body { line-height: 22px; }
 .btn { margin-bottom: 5px; }
@@ -14,10 +15,14 @@ body { line-height: 22px; }
 
 [class*="span"].flush { margin-left: 0; }
 
-.navbar-inverse .navbar-inner {
-  background: #252525;
-  padding: 3px 0 1px;
+
+.navbar-fixed-top .navbar-inner {
+  background-image: linear-gradient(to bottom, white, white);
+  border-bottom: 1px solid #dbdbdb;
+  min-height: 44px;
 }
+
+.navbar .btn { margin-top: 8px; }
 
 .modal-backdrop {
   background: #999;
@@ -45,3 +50,5 @@ body { line-height: 22px; }
   background: black;
 }
 .navbar-fixed-top .container { width: 960px; }
+
+.dropdown-menu { border: 1px solid #E7E7E7; }

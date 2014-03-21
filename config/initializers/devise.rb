@@ -226,5 +226,12 @@ Devise.setup do |config|
   else
     config.secret_key = 'zxcvbnmasdfghjklqwertyuiop1234567890!@#$%^&*()QWERTYUIOPASDFGHJKLZXCVBNM'
   end
-end
 
+  Warden::Manager.after_set_user do |user,auth,opts|
+    auth.cookies[:signed_in] = 1
+  end
+
+  Warden::Manager.before_logout do |user,auth,opts|
+    auth.cookies.delete :signed_in
+  end
+end

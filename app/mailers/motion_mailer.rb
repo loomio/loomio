@@ -5,7 +5,7 @@ class MotionMailer < BaseMailer
     @group = motion.group
     @rendered_motion_description = render_rich_text(motion.description, false) #should replace false with motion.uses_markdown in future
     @utm_hash = UTM_EMAIL.merge utm_source: 'new_motion_created'
-    locale = best_locale(user.language_preference, motion.author.language_preference)
+    locale = best_locale(user.locale, motion.author.locale)
     I18n.with_locale(locale) do
       mail  to: user.email,
             from: "#{motion.author.name} <noreply@loomio.org>",
@@ -17,7 +17,7 @@ class MotionMailer < BaseMailer
   def motion_closed(motion, email)
     @motion = motion
     @group = motion.group
-    locale = best_locale(User.find_by_email(email).language_preference, motion.author.language_preference)
+    locale = best_locale(User.find_by_email(email).locale, motion.author.locale)
     I18n.with_locale(locale) do
       mail  to: email,
             subject: t("email.proposal_closed.subject", which: @motion.name)
@@ -31,7 +31,7 @@ class MotionMailer < BaseMailer
     @discussion = @motion.discussion
     @group = @motion.group
     @rendered_motion_description = render_rich_text(@motion.description, false) #should replace false with motion.uses_markdown in future
-    locale = best_locale(@motion.author.language_preference, nil)
+    locale = best_locale(@motion.author.locale, nil)
     I18n.with_locale(locale) do
       mail  to: @motion.author_email,
             reply_to: @group.admin_email,
@@ -45,7 +45,7 @@ class MotionMailer < BaseMailer
     @group = motion.group
     @rendered_motion_description = render_rich_text(motion.description, false) #should replace false with motion.uses_markdown in future
     @utm_hash = UTM_EMAIL.merge utm_source: 'motion_outcome_created'
-    locale = best_locale(user.language_preference, motion.author.language_preference)
+    locale = best_locale(user.locale, motion.author.locale)
     I18n.with_locale(locale) do
       mail  to: user.email,
             from: "#{motion.outcome_author.name} <noreply@loomio.org>",

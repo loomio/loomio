@@ -27,10 +27,15 @@ vi:
         one: "1 năm"
       almost_x_years:
         one: "1 năm"
-  invitations:
-    auto_added:
-      one: "1 thành viên đã được thêm vào"
-    existing_member:
-      one: "1 thành viên hiện có trong nhóm"
-    sent:
-      one: "1 lời mời kết nối đã được gửi"
+  errors:
+    messages:
+      not_saved:
+        one: '1 lỗi khi lưu %{resource}:'
+  notice:
+    invitations:
+      auto_added:
+        one: "1 thành viên đã được thêm vào"
+      existing_member:
+        one: "1 thành viên hiện có trong nhóm"
+      sent:
+        one: "1 lời mời kết nối đã được gửi"

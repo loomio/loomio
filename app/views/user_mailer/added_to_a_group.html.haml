@@ -1,6 +1,0 @@
-= render '/application/mailer_doctype'
-%html
-  %p= t("email.user_added_to_a_group.content", which_group: @group.name, who: @inviter.name)
-  %p= link_to group_url(@group), group_url(@group)
-
-  = render 'unsubscribe_link'

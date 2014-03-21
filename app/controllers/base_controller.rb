@@ -7,6 +7,7 @@ class BaseController < ApplicationController
   before_filter :check_for_omniauth_authentication,
                 :check_for_invitation,
                 :load_announcements,
+                :initialize_search_form,
                 :set_time_zone_from_javascript, if: :user_signed_in?
 
   after_filter  :set_csrf_cookie_for_ng
@@ -26,6 +27,11 @@ class BaseController < ApplicationController
 
   def verified_request?
     super || form_authenticity_token == request.headers['X_XSRF_TOKEN']
+  end
+
+  protected
+  def initialize_search_form
+    @search_form = SearchForm.new(current_user)
   end
 
   def load_announcements

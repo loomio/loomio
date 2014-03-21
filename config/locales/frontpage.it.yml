@@ -1,0 +1,13 @@
+it:
+  frontpage:
+    link:
+      blog: 'Blog'
+      contact: 'Contatti'
+      top: 'Su'
+      public_groups: 'Gruppi pubblici'
+      privacy: 'Privacy'
+      services: 'Servizi'
+    hero:
+      head_html: 'Il mondo ha bisogno di un modo migliore per <strong>decidere insieme</strong>.'
+    team:
+      header: 'Informazioni su Loomio'

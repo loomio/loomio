@@ -29,11 +29,11 @@ describe Events::MotionClosed do
 
     before do
       motion.stub(:author).and_return(closer)
-      motion.stub(:group_users).and_return([user])
+      motion.stub(:group_members).and_return([user])
       MotionMailer.stub_chain(:motion_closed, :deliver)
     end
 
-    it 'emails group_users motion_closed' do
+    it 'emails group_members motion_closed' do
       MotionMailer.should_receive(:motion_closed).with(motion, closer.email)
       event.save
     end

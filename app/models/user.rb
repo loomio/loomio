@@ -102,10 +102,27 @@ class User < ActiveRecord::Base
   scope :sorted_by_name, order("lower(name)")
   scope :admins, where(is_admin: true)
   scope :coordinators, joins(:memberships).where('memberships.access_level = ?', 'admin').group('users.id')
-  #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
+  end
+
+  def is_logged_in?
+    true
+  end
+
+  def is_logged_out?
+    !is_logged_in?
+  end
+
+  def cached_group_ids
+    @cached_group_ids ||= group_ids
+  end
+
+  def top_level_groups
+    parents = groups.parents_only.order(:name).includes(:children)
+    orphans = groups.where('parent_id not in (?)', parents.map(&:id))
+    (parents.to_a + orphans.to_a).sort{|a, b| a.full_name <=> b.full_name }
   end
 
   def first_name
@@ -164,17 +181,6 @@ class User < ActiveRecord::Base
     notifications.unviewed
   end
 
-  # Returns most recent notifications
-  #   lower_limit - (minimum # of notifications returned)
-  #   upper_limit - (maximum # of notifications returned)
-  def recent_notifications(lower_limit=10, upper_limit=25)
-    if unviewed_notifications.count < lower_limit
-      notifications.limit(lower_limit)
-    else
-      unviewed_notifications.limit(upper_limit)
-    end
-  end
-
   def mark_notifications_as_viewed!(latest_viewed_id)
     notifications.where('id <= ?', latest_viewed_id).
       update_all(:viewed_at => Time.zone.now)
@@ -200,12 +206,6 @@ class User < ActiveRecord::Base
 
   def parent_groups
     groups.where("parent_id IS NULL").order("LOWER(name)")
-  end
-
-  def position(motion)
-    if motion.user_has_voted?(self)
-      motion.last_position_by_user(self)
-    end
   end
 
   def name
@@ -260,6 +260,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def locale
+    selected_locale || detected_locale
+  end
+
   def using_initials?
     avatar_kind == "initials"
   end
@@ -303,7 +307,11 @@ class User < ActiveRecord::Base
   end
 
   def belongs_to_manual_subscription_group?
-    groups.where(payment_plan: ['manual_subscription']).exists?
+    groups.manual_subscription.any?
+  end
+
+  def show_start_group_button?
+    !groups.cannot_start_parent_group.any?
   end
 
   private

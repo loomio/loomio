@@ -31,7 +31,7 @@ FactoryGirl.define do
     members_invitable_by 'members'
     after(:create) do |group, evaluator|
       user = FactoryGirl.create(:user)
-      group.pending_invitations << FactoryGirl.create(:invitation, group: group)
+      group.pending_invitations << FactoryGirl.create(:invitation, invitable: group)
       if group.parent.present?
         group.parent.admins << user
       end

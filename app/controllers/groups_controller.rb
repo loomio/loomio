@@ -1,10 +1,12 @@
 class GroupsController < GroupBaseController
   before_filter :authenticate_user!, except: :show
 
-  before_filter :load_resource_by_key, except: :create
+  before_filter :load_resource_by_key, :except => [:create, :new]
   authorize_resource except: :create
 
   before_filter :ensure_group_is_setup, only: :show
+
+  caches_action :show, :cache_path => Proc.new { |c| c.params }, unless: :user_signed_in?, :expires_in => 5.minutes
 
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.group_private_or_not_found') }
@@ -17,20 +19,27 @@ class GroupsController < GroupBaseController
     @subgroup.members_invitable_by = parent.members_invitable_by
   end
 
-  #for create group
-  # NOTE (JL): This seems to only be for creating subgroups. Should
-  # be more clear
   def create
     @group = Group.new(permitted_params.group)
     authorize!(:create, @group)
+    @group.mark_as_setup!
     if @group.save
+      Measurement.increment('groups.create.success')
       @group.add_admin! current_user
       flash[:success] = t("success.group_created")
       redirect_to @group
+    elsif @group.is_a_subgroup?
+        @subgroup = @group
+        render 'groups/add_subgroup'
     else
-      @subgroup = @group
-      render 'groups/add_subgroup'
+      Measurement.increment('groups.create.error')
+      render 'form'
     end
+  end
+
+  def new
+    @group = Group.new
+    @group.payment_plan = 'undetermined'
   end
 
   def update
@@ -38,9 +47,11 @@ class GroupsController < GroupBaseController
       if @group.is_hidden?
         @group.discussions.update_all(private: true)
       end
+      Measurement.increment('groups.update.success')
       flash[:notice] = 'Group was successfully updated.'
       redirect_to @group
     else
+      Measurement.increment('groups.update.error')
       render :edit
     end
   end
@@ -49,8 +60,21 @@ class GroupsController < GroupBaseController
     @group = GroupDecorator.new @group
     @subgroups = @group.subgroups.all.select{|g| can?(:show, g) }
     @discussion = Discussion.new(group_id: @group.id)
-    @discussions_with_open_motions = GroupDiscussionsViewer.for(group: @group, user: current_user).with_open_motions.order('motions.closing_at ASC')
-    @discussions_without_open_motions = GroupDiscussionsViewer.for(group: @group, user: current_user).without_open_motions.order('last_comment_at DESC').page(params[:page]).per(20)
+    @discussions_with_open_motions = GroupDiscussionsViewer.for(group: @group, user: current_user).
+                                                            with_open_motions.
+                                                            order('motions.closing_at ASC').
+                                                            preload({:current_motion => :discussion}, {:group => :parent})
+
+    @discussions_without_open_motions = GroupDiscussionsViewer.for(group: @group, user: current_user).
+                                                            without_open_motions.
+                                                            order('last_comment_at DESC').
+                                                            preload(:current_motion, {:group => :parent}).
+                                                            page(params[:page]).per(20)
+
+    @closed_motions = @group.closed_motions
+
+    build_discussion_index_caches
+
     assign_meta_data
   end
 
@@ -60,7 +84,7 @@ class GroupsController < GroupBaseController
   def archive
     @group.archive!
     flash[:success] = t("success.group_archived")
-    redirect_to root_path
+    redirect_to dashboard_path
   end
 
   def hide_next_steps
@@ -71,6 +95,7 @@ class GroupsController < GroupBaseController
     subject = params[:group_email_subject]
     body = params[:group_email_body]
     GroupMailer.delay.deliver_group_email(@group, current_user, subject, body)
+    Measurement.measure('groups.email_members.size', @group.members.size)
     flash[:success] = t("success.emails_sending")
     redirect_to @group
   end

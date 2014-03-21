@@ -1,0 +1,14 @@
+- if @group.is_a_subgroup?
+  %h3= t("invitation.by_email")
+.control-group
+  %p= t("invitation.recipients")
+  = text_area_tag 'invitees', nil, class: 'validate-emails', placeholder: t("invitation.invitees_placeholder")
+  .email-validation-help= t('error.invalid_email')
+  %br
+  %br
+  = form.input :recipients, as: :hidden, input_html: { class: 'recipients' }
+.control-group
+  - if @discussion.present?
+    = form.input :message_body, label: false, as: :text, input_html: { value: t("invitation.body_editable_discussion", group: group.name) }, label: t("invitation.message_body")
+  - else
+    = form.input :message_body, label: false, as: :text, input_html: { value: t("invitation.body_editable", group: group.name) }, label: t("invitation.message_body")

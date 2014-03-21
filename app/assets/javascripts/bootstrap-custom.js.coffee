@@ -5,4 +5,3 @@ $ ->
 $ ->
   $(".modal").modal
     show: false
-    backdrop: "static"

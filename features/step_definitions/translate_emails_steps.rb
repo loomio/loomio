@@ -1,13 +1,13 @@
 Given(/^"(.*?)" is a user with an English language preference$/) do |arg1|
   user = FactoryGirl.create :user, name: arg1,
                             email: "#{arg1}@example.org",
-                            language_preference: "en"
+                            selected_locale: "en"
 end
 
 Given(/^"(.*?)" is a user with a Spanish language preference$/) do |arg1|
   user = FactoryGirl.create :user, name: arg1,
                             email: "#{arg1}@example.org",
-                            language_preference: "es"
+                            selected_locale: "es"
 end
 
 Given(/^"(.*?)" is a user without a specified language preference$/) do |arg1|
@@ -109,7 +109,7 @@ end
 
 Then(/^the proposal closed email should be delivered to "(.*?)" in Spanish$/) do |arg1|
   email = MotionMailer.motion_closed(@motion, "#{arg1}@example.org")
-  email.body.encoded.should include(I18n.t("email.proposal_closed.specify_outcome_and_notify_group", locale: "es"))
+  email.body.encoded.should include(I18n.t("email.proposal_closed.specify_outcome_and_notify_group", locale: "es")[0..23])
 end
 
 Then(/^the proposal closed email should be delivered to "(.*?)" in English$/) do |arg1|

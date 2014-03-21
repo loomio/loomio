@@ -3,7 +3,7 @@
     .span1
       .icon.discussion-icon
         %span.activity-badge.unread-comments-count
-          =item.as_read_by(current_user).unread_comments_count
+          =@discussion_reader_cache.get_for(item).unread_comments_count
 
     .span9.title
       = item.title

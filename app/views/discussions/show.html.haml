@@ -1,9 +1,11 @@
 - set_title @group.name, @discussion.title, @group.parent
+
 .row
   .span9
     =render '/groups/title', group: @group, discussion: @discussion
   .span3#button-container
     = request_membership_button(@group)
+
 .row
   .span12
     .selector-panel
@@ -12,13 +14,13 @@
         #discussion-context= render 'discussion_context'
         .row
           .span6#content-comments
-            - if enough_activity_for_jump_link? and @reader.present?
-              - if @reader.returning_user_and_unread_content_exist?
+            - if enough_activity_for_jump_link?
+              - if @discussion_reader.returning_user_and_unread_content_exist?
                 = link_to path_of_latest_activity, id: 'jump-to-latest', class: 'jump-to-latest-activity btn' do
-                  %i.icon-arrow-down
+                  %i.fa.fa-arrow-down
               -else
                 = link_to path_of_add_comment, id: 'jump-to-latest', class: 'jump-to-add-comment btn' do
-                  %i.icon-arrow-down
+                  %i.fa.fa-arrow-down
             .large-icon.discussion-icon.enabled-icon
             %h3.header-text= t :discussion
             #discussion-activity-body
@@ -27,39 +29,44 @@
                 = render 'add_comment', discussion: @discussion
                 = paginate @activity
 
-
           .span6#content-proposal
             .large-icon.decision-icon
             %h3.header-text= t :current_decision
             .content-proposal-body
               %ul.selector-list
-                - if @current_motion.nil?
-                  - if can? :create, Motion.new(discussion_id: @discussion.id)
-                    = link_to t(:create_new_proposal), new_proposal_discussion_path(@discussion), class: 'btn new-proposal-btn', id: 'new-proposal'
-                    %li.selector-item.empty-list-message#start-proposal-text
-                      = t :empty_decision_list_html
-                - else
-                  - if @displayed_motion == @current_motion
-                    - if can? :close_voting, @current_motion
-                      %li= render '/motions/admin_buttons', :motion => @current_motion
-                    %li.selector-item.current-proposal
-                      = render @current_motion
-                  - else
-                    %li.selector-item.current-proposal
-                      = render '/motions/motion_preview', motion: @current_motion, this_group: @group
+                - if can? :start_proposal, @discussion
+                  = link_to t(:create_new_proposal),
+                            new_proposal_discussion_path(@discussion),
+                            class: 'btn new-proposal-btn',
+                            id: 'new-proposal'
+                  %li.selector-item.empty-list-message#start-proposal-text
+                    = t :empty_decision_list_html # should be "start a proposal"
 
-            - if can? :edit_close_date, @current_motion
-              = render '/motions/edit_close_date', motion: @current_motion, user: @current_user, input_time: @input_time
+                - if @discussion.current_motion
+                  -if @motion == @discussion.current_motion
+                    %li.selector-item.current-proposal
+                      = render @motion
+                  -else
+                    %li.selector-item
+                      = render 'motions/motion_preview', motion: @discussion.current_motion
 
-            - if @discussion.closed_motions.present?
+
+            - if @closed_motions.any?
               #previous-proposals
                 .clearfix
                   .large-icon.decision-icon
                   %h3.header-text= t :previous_decisions
                 .content-proposal-body
                   %ul.selector-list
-                    - @discussion.closed_motions.each do |closed_motion|
-                      - if closed_motion == @displayed_motion
-                        %li.selector-item= render closed_motion, this_group: @group
+                    - @closed_motions.each do |motion|
+                      - if motion == @motion
+                        %li.selector-item= render @motion
                       - else
-                        %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group
+                        %li.selector-item= render 'motions/motion_preview', motion: motion
+
+/ the question should be broader: perhaps can? :participate
+- unless can? :add_comment, @discussion
+  - if current_user_or_visitor.is_logged_in?
+    = render 'discussions/prompt_logged_in_user_to_join_modal'
+  - else
+    = render 'discussions/prompt_logged_out_user_to_authenticate_or_signup_modal'

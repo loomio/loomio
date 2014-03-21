@@ -16,6 +16,10 @@ $ ->
           $.getJSON autocomplete_path, {q: query} , (data) ->
             callback(data)
 
+# Show translation div
+$ ->
+  $('.activity-item-container').on 'click', '.translate-comment', (event) ->
+    $(this).slideUp().closest('.activity-item-body').find('.activity-item-translation').slideDown()
 
 # Global Markdown (new discussion & comments)
 $ ->
@@ -91,3 +95,7 @@ $ ->
   warn_if_moving_discussion_to_private_group()
   $(".move-discussion-form select").on 'change', (e) ->
     warn_if_moving_discussion_to_private_group()
+
+$ ->
+  $(".js-prompt-user-to-join-or-authenticate").on "click", (e) ->
+    $('#prompt-user-to-join-or-authenticate').modal('show')

@@ -28,9 +28,7 @@ hu:
     permission_to_invite: "Nincs hozzá engedélyed, hogy új tagokat hívj meg."
     position_not_updated: "Nem tudtuk megváltoztatni az álláspontodat."
     settings_not_updated: "A beállításaidat nem frissültek."
-    group_request_already_verified: "Bocs! A megerősítő hivatkozást amire klikkeltél már használták. Ha két napon belül nem jelentkezünk, írj a contact@loomio.org címre"
     group_request_already_accepted: "Bocs! Ez a meghívó érvénytelen vagy már felhasználták"
-    group_request_contribution: "Válassz egy kategóriát. Ez nem jelent kötelezettséget, csak segít nekünk kialakítani a működési modellünket. Köszi!"
     group_request_invalid_token: "Bocs! érvénytelen kód"
     group_private_or_not_found: "Nincs ilyen csoport.⏎\n⏎\nLehet, hogy ez a csoport zárt. Ha valakitől kaptad a csoport linkjét, kérd meg, hogy vegyen fel a csoportba."
     group_already_setup: "Már van ilyen csoport."
@@ -72,9 +70,6 @@ hu:
     proposal_deleted: "Töröltük a javaslatot."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "másodperc"
-        other: "%{count} másodperc"
       x_seconds:
         one: "1 másodperc"
         other: "%{count} másodperc"
@@ -124,11 +119,8 @@ hu:
     motion_closing_soon: "Hamarosan zárul a javaslat"
     motion_blocked: "blokkolta a javaslatot"
   edit_discussion_context: "A téma leírásának szerkesztése"
-  request_new_group_details: "vagy várd meg, amíg meghívnak egybe."
   empty_notifications: "Még nincsenek értesítéseid."
   see_all_notifications: "Az összes értesítés megtekintése"
-  user_settings: "Beállítások"
-  email_preferences: "E-mail beállítások"
   sign_out: "Kijelentkezés"
   tagline: "Olyan világot teremtünk, ahol mindenki részt vehet a döntésekben és alakíthatja is azokat."
   click_to_dismiss: "Ide kattintva eltűnik ez az üzenet"
@@ -148,14 +140,12 @@ hu:
   setup_step_3: "Hívj meg másokat a csoportba"
   invite_people: "Hívj meg másokat"
   no_invitations_button: "Nincs több meghívód"
-  pending_invitations: 'Függő meghívók'
   number_pending: '%{pending} függőben'
   and_number_pending: 'és %{pending} függőben'
   edit_memberships: 'Tagság szerkesztése'
   add_new_member: "Új tag hozzáadása"
   invite_members_to_group: "Tagok meghívása a %{which_group} csoportba"
   remaining_invites: "fennmaradó meghívók"
-  need_more_invites_html: "Több kellene? A Loomio jelenleg zárt bétateszt fázisban van, vagyis még fejlesztés alatt áll és korlátozottak az erőforrásaink és a felhasználói támogatás, amit nyújtani tudunk. Ha szeretnéd növelni a csoportod létszámát, %{href}."
   get_in_touch_link: "kapcsolat"
   email_members_in_group: "E-mail küldése a(z) %{which_group} csoport tagjainak"
   subject_error: "Töltsd ki a témát"
@@ -235,7 +225,6 @@ hu:
   delete_comment: "Hozzászólás törlése"
   confirm_delete_comment: "Biztosan törölni akarod ezt a hozzászólást?"
   markdown_settings_more_info: "További információ..."
-  edit_discussion_title: "A téma címének szerkesztése"
   delete_discussion: "A téma törlése"
   confirm_delete_discussion: "Biztosan törölni akarod ezt a témát?"
   new_proposal: "Új javaslat"
@@ -373,7 +362,6 @@ hu:
 
     message_body: "Meghívó üzenet"
     invites_more_help2: "<p>Bármikor meghívhatsz résztvevőket a csoportba</p><p>Meghívhatsz most mindenkit egyszerre, vagy kezdheted azokkal, akikkel a legszorosabban dolgozol együtt.</p>"
-    send_invitations: "Meghívók küldése"
     invitation_link: "Meghívó link"
     link_help: "Kattints erre a linkre, hogy csatlakozz a(z) %{group} csoporthoz a Loomión:"
     copy: "Ha valaki nem kapta meg a meghívóját, nyugodtan küld el neki a meghívó linket magad."
@@ -399,10 +387,6 @@ hu:
 
       lehetőséged van arra is, hogy megindokold a választásodat, így könnyen átlátható, hogy ki mit és miért gondol a javaslatról. A javaslat lezárulta előtt még lehetőséged van változtatni az álláspontodon.
 
-  discussion_form:
-    header: "Téma indítása"
-    who: "Melyik csoportban akarod indítani ezt a témát?"
-    context: "Leírás"
   motion_form:
     header: "Új javaslat"
     name_helper: "A cím legyen egyértelmű és tömör"
@@ -428,11 +412,6 @@ hu:
     update_preferences: "Beállítások frissítése"
   new_user_form:
     create_an_account: "Fiók létrehozása"
-  user_settings_form:
-    header: "Beállítások"
-    picture: "Kép"
-    use_avatar_kind: "%{kind} használata"
-    upload_new_image: "Új kép feltöltése"
   group_setup:
     submit: "Megnézem a csoportom!"
   simple_form:
@@ -454,9 +433,6 @@ hu:
         password_confirmation: "Jelszó megerősítése"
         language_preference: "Nyelv"
     placeholders:
-      discussion:
-        title: "Mit szeretnél megtárgyalni?"
-        description: "Ez jelenik majd meg a téma oldalán. Írd le a témát, adj annyi információt, hogy vita, beszélgetés alakulhasson ki."
       membership_request:
         introduction: "Írj egy pár szót magadról és arról, miért akarsz a %{group_name} csoporthoz csatlakozni."
       motion:
@@ -516,7 +492,6 @@ hu:
   approve: "Jóváhagyás"
   author: "Szerző"
   back: "Vissza"
-  by: "Szerző:"
   cancel: "Mégse"
   change: "Változtatás"
   changing: "Változtatom"

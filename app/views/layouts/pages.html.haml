@@ -1,53 +1,30 @@
 !!!
-%html
+%html{locale: current_locale}
   %head
     - title = @title ? @title : "Loomio | Collaborative Decision-Making"
     %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
     %title= title
-    <!--[if lt IE 9]><script type="text/javascript" src="/assets/lib/excanvas.js"></script><![endif]-->
-    = stylesheet_link_tag    "frontpage"
+    = stylesheet_link_tag "frontpage"
     = csrf_meta_tags
     = render 'social_metadata', description: @meta_description, title: @meta_title
+
 
   %body{class: "#{controller_name} #{action_name}"}
     - analytics_scope do
       = render 'google_tag_manager'
+
+    .navbar.navbar-top
+      .navbar-inner
+        .navbar-container
+          = link_to image_tag("logo-orange.png"), root_path, class: 'brand', alt: 'Loomio'
+
     .container.home-flash
       = render 'flash_messages', :flash => flash
-    - if controller_name == 'pages'
-      = render 'github_fork_us'
-      = render 'donate-tab'
-    .container#top
-      .inner-container
-        .row-fluid
-          .pull-right
-            - if controller_name == 'pages' && (action_name == 'home' || action_name == 'about')
-              =link_to 'Start a group', new_group_request_path, class: 'btn btn-success'
 
-            - unless current_page? new_user_session_path
-              =link_to t(:'devise.sessions.sign_in'), new_user_session_path, class: 'btn btn-info'
-          .span3 &nbsp;
-          .span6
-            =link_to image_tag("logo-426px-mauve-matte.png"), "/"
-            %h2 collaborative decision-making
-        .frontpage-nav
-          =link_to('Purpose', '/purpose')
-          %span &middot;
-
-          =link_to('How it works', '/purpose#how-it-works')
-          %span &middot;
-
-          =link_to('Pricing', '/pricing')
-          %span &middot;
-
-          =link_to('About us', '/about')
-          %span &middot;
-
-          =link_to('Blog', blog_path)
-    = yield
+    .row.hero
+      .content-container
+        .content
+          = yield
 
     = render 'footer_logged_out'
-    = javascript_include_tag "frontpage"
-    = javascript_include_tag 'https://browserid.org/include.js'
-    - analytics_scope do
-      = render 'segmentio'
+  = javascript_include_tag "frontpage"

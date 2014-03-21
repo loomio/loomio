@@ -25,7 +25,7 @@ describe Events::NewDiscussion do
                                                eventable: discussion,
                                                discussion_id: discussion.id) }
     before do
-      discussion.stub(:group_users_without_discussion_author).and_return([user])
+      discussion.stub(:group_members_without_discussion_author).and_return([user])
       user.stub(:email_notifications_for_group?).and_return(false)
       DiscussionMailer.stub_chain(:new_discussion_created, :deliver)
     end
@@ -35,7 +35,7 @@ describe Events::NewDiscussion do
         user.should_receive(:email_notifications_for_group?).with(discussion.group).and_return(true)
       end
 
-      it 'emails group_users_without_motion_author new_motion_created' do
+      it 'emails group_members_without_motion_author new_motion_created' do
         DiscussionMailer.should_receive(:new_discussion_created).with(discussion, user)
         event.save
       end

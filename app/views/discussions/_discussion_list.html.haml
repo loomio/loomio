@@ -1,0 +1,21 @@
+%section.span9#group-discussions
+  %ul.selector-list.bordered
+    #discussions-with-motions
+      - @discussions_with_open_motions.each do |discussion|
+        %li.selector-item= render '/discussions/discussion_preview', discussion: discussion
+      - unless @discussions_with_open_motions.empty?
+        .discussion-with-motion-divider
+  %ul.selector-list
+    #discussion-list
+      - @discussions_without_open_motions.each do |discussion|
+        %li.selector-item= render '/discussions/discussion_preview', discussion: discussion
+  - if @group
+    - if user_sees_private_discussions_message?(current_user, @group)
+      = t :private_group_discussion_display
+    - elsif @discussions_without_open_motions.empty? && @discussions_with_open_motions.empty?
+      %li.empty-list-message= t :empty_discussion_index_group
+  - else
+    - if @discussions_with_open_motions.empty? and @discussions_without_open_motions.empty?
+      %li.empty-list-message.hidden= t(:empty_discussion_index)
+
+  = paginate @discussions_without_open_motions, :window => 3

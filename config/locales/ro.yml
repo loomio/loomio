@@ -32,9 +32,7 @@ ro:
     permission_to_invite: "Nu ai dreptul sa inviti noi membri."
     position_not_updated: "Modificarea votului nu a reusit."
     settings_not_updated: "Setarile nu au fost modificate."
-    group_request_already_verified: "Ne pare rau! Linkul de verificare pe care ai apasat este deja confirmat. Daca nu ai primit nici o confirmare in 48 de ore trimite-ne un mail: contact@loomio.org"
     group_request_already_accepted: "Ne pare rau! Aceasta invitatie este nevalida sau a fost deja acceptata."
-    group_request_contribution: "Selecteaza o categorie. Aceasta nu este o anagajament de plata, doar o informatie utila pentru a ne ajuta sa gandim modelul nostru. Multumim!"
     group_request_invalid_token: "Ne pare rau! Acesta este un token invalid"
     group_private_or_not_found: "Grupul nu a fost gasit.⏎\n⏎\nAcest grup poate fi privat. Daca cineva ti-a trimis acest link, cere-i sa te adauge in grup."
     group_already_setup: "Grupul pe care incerci sa-l creezi exista deja."
@@ -81,10 +79,6 @@ ro:
     proposal_deleted: "Propunerea a fost stearsa."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "o secunda"
-        few: "cateva secunde"
-        other: "%{count} secunde"
       x_seconds:
         one: "1 secunda"
         few: "cateva secunde"
@@ -151,11 +145,8 @@ ro:
     motion_blocked: "a blocat propunerea"
   edit_discussion_context: "Modifica contextul discutiei"
   request_new_group: "Deschide un grup"
-  request_new_group_details: "sau asteapta pana esti invitat intr-un grup"
   empty_notifications: "Nu ai inca nici o notificare."
   see_all_notifications: "Vezi toate notificarile"
-  user_settings: "Setari utilizator"
-  email_preferences: "Preferinte email"
   sign_out: "De-logare"
   tagline: "Creand o lume in care este posibil pentru toti sa participe in deciziile care-i afecteaza."
   click_to_dismiss: "Click aici pentru a ascunde acest mesaj"
@@ -175,14 +166,12 @@ ro:
   setup_step_3: "Invita oameni in grupul tau"
   invite_people: "Invita oameni"
   no_invitations_button: "Nici o invitatie ramasa"
-  pending_invitations: 'Invitatii in asteptare'
   number_pending: '%{pending} in asteptare'
   and_number_pending: 'si %{pending} in asteptare'
   edit_memberships: 'Editeaza membrii'
   add_new_member: "Invita un membru nou"
   invite_members_to_group: "Invita membri in %{which_group}"
   remaining_invites: "invitatii ramase"
-  need_more_invites_html: "AI nevoie de mai multe? Loomio este in faza beta, ceea ce inseamna ca este inca in dezvoltare si resursele pentru mai multi utilizatori sunt limitate. Daca vrei sa inviti mai multi membri in grupul tau %{href} vom verifica daca putem ajuta."
   get_in_touch_link: "contacteaza"
   email_members_in_group: "Trimite email membrilor din %{which_group}"
   subject_error: "Te rugam sa completezi subiectul"
@@ -275,7 +264,6 @@ ro:
   delete_comment: "Sterge comentariu"
   confirm_delete_comment: "Esti sigur ca vrei sa stergi acest comentariu?"
   markdown_settings_more_info: "Mai multe informatii..."
-  edit_discussion_title: "Modifica titlul discutiei"
   delete_discussion: "Sterge discutia"
   confirm_delete_discussion: "Esti sigur ca vrei sa stergi definitiv aceasta discutie?"
   new_proposal: "Propunere Noua"
@@ -411,7 +399,6 @@ ro:
       Salut, vino si ia decizii impreuna cu noi! Noi folosim un tool pentru luarea de decizii in mod colaborativ numit Loomio.
     message_body: "Mesaj invitatie"
     invites_more_help2: "<p> Poti invita oameni la grup in orice moment.</p><p> Poti sa-i inviti pe toti deodata, sau poti sa-i adaugi doar pe cei cu care lucrezi mai des.</p>"
-    send_invitations: "Trimite invitatii"
     invitation_link: "Linkul invitatiei"
     link_help: "Apasa acest link pentru a intra in grupul %{group} pe Loomio:"
     copy: "Daca cineva nu a primit emailul cu invitatia, poti sa copiezi linkul invitatiei de mai sus si sa-l trimiti personal."
@@ -431,10 +418,6 @@ ro:
       E o idee buna? Ajutorul Loomio vrea sa stie ce crezi!
       Daca stii ce vrei, apasa pe unul din butoanele de mai jos (poti sa mergi cu mouse-ul deasupra lor pentru o descriere a fiecaruia)
       Vei fi invitat sa adaugi o propozitie scurta continand motivul deciziei tale. Aceasta usureaza intelegerea rapida a ce doreste fiecare si de ce. Poti sa-ti schimbi parerea si sa-ti modifici decizia de cate ori vrei pana cand propunerea este inchisa.
-  discussion_form:
-    header: "Incepe o discutie"
-    who: "Ce grup vrei sa fie implicat in aceasta discutie?"
-    context: "Context"
   motion_form:
     header: "Propunere noua"
     name_helper: "Scrie un title cat se poate de clar si scurt astfel incat oamenii sa inteleaga exact la ce te referi cand sunt de acord sau nu cu propunerea ta."
@@ -461,11 +444,6 @@ ro:
     update_preferences: "Modifica preferintele"
   new_user_form:
     create_an_account: "Creeaza un cont"
-  user_settings_form:
-    header: "Setari utilizator"
-    picture: "Poza"
-    use_avatar_kind: "Foloseste %{kind}"
-    upload_new_image: "Uploadeaza o poza noua"
   group_setup:
     submit: "Vreau sa intru in grupul meu!"
   simple_form:
@@ -487,9 +465,6 @@ ro:
         password_confirmation: "Confirma parola"
         language_preference: "Limba"
     placeholders:
-      discussion:
-        title: "Care este tema care vrei sa fie discutata?"
-        description: "Aceasta informatie va apare in partea de sus a paginii de discutie. Adauga o introducere a temei si detaliile necesare pentru ca grupul sa poata lua o decizie informata."
       membership_request:
         introduction: "Scrie in cateva cuvinte cine esti si de ce vrei sa te alaturi %{group_name}."
       motion:
@@ -505,6 +480,10 @@ ro:
         create: "Creeaza cont"
         update: "Modifica setarile"
   email:
+    to_join_group:
+      subject: "%{member} te-a invitat sa te alaturi grupului %{group_name}  pe Loomio"
+    to_start_group:
+      subject: "Seteaza noul tau grup Loomio:  %{group_name}"
     unsubscribe: "Dezabonare sau schimbarea preferintelor de email:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pentru dezabonare sau schimbarea preferintelor de email."
     view_comment: "Apasa aici pentru a vedea comentariul pe Loomio"
@@ -547,15 +526,6 @@ ro:
     proposal_closing_soon:
       closes_in: "Se inchide in"
       summary: "Sumar"
-    to_join_group:
-      subject: "%{member} te-a invitat sa te alaturi grupului %{group_name}  pe Loomio"
-    to_start_group:
-      subject: "Seteaza noul tau grup Loomio:  %{group_name}"
-    trial_expiry:
-      header: "%{group_name}: Evaluarea Loomio va expira in curand."
-      hi: "Salut,"
-    trial_follow_up:
-      hi: "Salut,"
     verification:
       header: "Aproape ai terminat!"
       intro: "Te rugam apasa pe acest link de verificare pentru a finaliza request-ul:"
@@ -565,7 +535,6 @@ ro:
   approve: "Aproba"
   author: "Autor"
   back: "Inapoi"
-  by: "de catre"
   cancel: "Cancel"
   change: "Modifica"
   change_language: "Apasa aici pentru a utiliza Loomio in %{language}"
@@ -598,7 +567,6 @@ ro:
   password: "Parola"
   pricing: 'Plati'
   prev: "Anteriorul"
-  translate: "Ajuta la traducerea Loomio!"
   options: "Optiuni"
   other: "Altele"
   ok_got_it: "Ok, am inteles!"
@@ -613,6 +581,7 @@ ro:
   starting: "Incep"
   subject: "Subiect"
   thanks: "Multumim!"
+  translate: "Ajuta la traducerea Loomio!"
   unlike: "Nu apreciez"
   until_close: "pana la inchidere"
   update: "Modifica"

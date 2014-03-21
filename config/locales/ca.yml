@@ -34,6 +34,7 @@ ca:
     cant_view_member_profile: "No pots veure el perfil de l'usuari perquè no esteu al mateix grup."
     contribution: "Sisplau, inicia la sessió per poder fer una contribució."
     discussion_not_created: "No s'ha pogut crear el debat."
+    discussion_not_moved: "No tens permís per a moure la discussió a %{destination_group.name}"
     group_not_archived: "El grup no s'ha pogut arxivar"
     invalid_close_date: "Data de tancament invàlida. Si us plau, comprova que no sigui una data passada."
     invalid_email: "Introdueix com a mínim una direcció de correu electrònic vàlida, si us plau"
@@ -46,9 +47,7 @@ ca:
     permission_to_invite: "No tens els permisos per invitar nous membres."
     position_not_updated: "No s'ha pogut actualitzar la posició."
     settings_not_updated: "La teva configuració no s'ha actualitzat."
-    group_request_already_verified: "Ho sentim, l'enllaç de verificació ja ha estat confirmat. SI no rebs notícies nostres en 48 hores, posa´t en contacte amb nosaltres: contact@loomio.org"
     group_request_already_accepted: "Ho sentim! La invitació no és vàlida o ja ha estat acceptada."
-    group_request_contribution: "Si us plau, sel·lecciona una categoria. Això no et compromet a pagar, només ens dóna informació útil que ens ajuda a desenvolupar el nostre model. Gràcies!"
     group_request_invalid_token: "Ho sentim! Aquest símbol no és vàlid"
     group_private_or_not_found: "No s'ha trobat el grup.\n\nÉs possible que el grup sigui privat. Si algú t'ha passat aquest enllaç demana-li que et convidi al grup."
     group_already_setup: "El grup que intentes configurar ja existeix."
@@ -101,10 +100,13 @@ ca:
     close_date_changed: "La data de tancament s'ha canviat amb èxit."
     discussion_created: "Debat creat amb èxit."
     discussion_deleted: "Debat eliminat amb èxit."
+    discussion_moved: "Discussió moguda amb èxit a %{group_name}"
     emails_sending: "Enviant correus electrònics."
     group_archived: "Grup desat amb èxit."
     group_created: "Grup creat amb èxit."
     members_added: "Els membres s'an afegit al grup."
+    membership_requested: "Has demanat unir-te a %{which_group}. Seràs notificat tan bon punt la teva sol·licitud sigui acceptada. "
+    motion_closed: "Proposta tancada. Si vols, pots fixar un resultat a sota i enviar-lo al teu grup."
     motion_outcome_created: "Gràcies per detallar el resultat de la proposta. S'ha notificat els membres del grup."
     motion_outcome_updated: "El resultat de la proposta s'ha actualitzat."
     position_submitted: "Has presentat la teva posició"
@@ -113,9 +115,6 @@ ca:
     proposal_deleted: "Proposta eliminada."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "segons"
-        other: "%{count} segons"
       x_seconds:
         one: "1 segon"
         other: "%{count} segons"
@@ -175,14 +174,14 @@ ca:
     motion_outcome_updated: "ha actualitzat el resultat de la proposta"
   edit_discussion_context: "Edita el context del debat"
   request_new_group: "Comença un grup"
-  request_new_group_details: "o espera fins que siguis convidat a un."
   empty_notifications: "Encara no tens cap notificació."
   see_all_notifications: "Veure totes les notificacions"
-  user_settings: "Preferències del compte"
-  email_preferences: "Preferències del correu electrònic"
   sign_out: "Tanca la sessió"
   sign_in: "Inicia la sessió"
+  honeypot_warning: "No s'ha pogut crear el compte. Si utilitzes un lector de pantalla assegura't de que l'última casella (amagada) del formulari està buida."
   tagline: "Creant un món on tothom pot participar en les decissions que li afecten."
+  or_sign_in_html: "Si ja disposes d'un compte a Loomio, <a href='%{link}' class='%{link_class}'>inicia aquí la sessió</a>"
+  or_link_account_html: "Si ja disposes d'un compte a Loomio, <a href='%{link}'>enllaça'l</a>"
   click_to_dismiss: "Clica aquí per descartar aquest missatge"
   generic_confirm: "N'estàs segur?"
   discussion_helper_text:
@@ -200,14 +199,12 @@ ca:
   setup_step_3: "convida gent al teu grup"
   invite_people: "Convida gent"
   no_invitations_button: "No et queden invitacions"
-  pending_invitations: 'Invitacions pendents'
   number_pending: '%{pending} pendent'
   and_number_pending: 'i %{pending} pendent'
   edit_memberships: 'Edita les afiliacions'
   add_new_member: "Afegeix un nou membre"
   invite_members_to_group: "Convida membres a %{which_group}"
   remaining_invites: "Invitacions restants"
-  need_more_invites_html: "Necessites més? Loomio es troba en fase beta tancada, el que significa que encara estem en procés de desenvolupament i tenim recursos recursos de suport als usuaris limitats. Si vols augmentar la mida del grup %{href}."
   get_in_touch_link: "Posar-se en contacte"
   email_members_in_group: "Envia un correu electrònic als membres de %{which_group}"
   subject_error: "Omple l'assumpte, si us plau."
@@ -237,6 +234,7 @@ ca:
   confirm_ignore_membership_request: "Estàs segur que vols ignorar la sol·licitud s'afiliació de %{which_user}?"
   membership_requested: "Afiliació sol·licitada"
   request_membership: "Sol·licitar afiliació"
+  ask_to_join_group: "Demana unir-te al grup"
   confirm_remove_membership_request: "Estàs segur que vols cancelar la sol·licitud d'admisió per aquest grup?"
   no_pending_membership_requests: "Actualment no hi ha sol·licituds d'adhesió pendents en aquest grup."
   subgroups: "Sub-grups"
@@ -247,7 +245,7 @@ ca:
   new_subgroup: "Nou sub-grup"
   create_subgroup: "Crear sub-grup"
   creating_subgroup: "Creant el sub-grup"
-  secret: "Secret"
+  hidden: "Secret"
   public: "Públic"
   new_group: "Nou grup"
   create_group: "Crear grup"
@@ -284,6 +282,7 @@ ca:
   empty_discussion_list: "Encara no hi ha activitat en aquesta discussió."
   empty_discussion_index: "No hi ha discussions en cap dels teus grups."
   empty_discussion_index_group: "Aquest grup encara no té cap discussió"
+  private_group_discussion_display: "Aquest grup és privat. Només els membres poden veure les discussions. Si vols participar, pots demanar d'unir't-hi."
   discussion_context:
     started_html: "Começat fa %{when} per <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Darrera modificació fa %{when} per <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -303,7 +302,7 @@ ca:
   delete_comment: "Eliminar comentari"
   confirm_delete_comment: "Estàs segur de que vols eliminar aquest comentari?"
   markdown_settings_more_info: "Més informació..."
-  edit_discussion_title: "Modifica el títol de la discussió"
+  edit_discussion: "Edita la discussió"
   move_discussion: "Mou la discussió"
   delete_discussion: "Eliminar discussió"
   confirm_delete_discussion: "Estàs segur de que vols eliminar permanentment aquesta discussió?"
@@ -467,9 +466,10 @@ ca:
   create_an_account: 'Crea un compte'
   join_group:
     log_in: "Inicia sessió per unir-te a %{group_name}"
-  start_group:
-    log_in: "Inicia sessió per a configurar el grup"
+    create_account_to_join_group: "Crea un compte per unir-te a %{group_name}, si us plau"
   invitation:
+    alternate: "Com a alternativa, comparteix aquest enllaç i qualsevol podrà demanar unir-se."
+    by_email: "Convida per correu electrònic"
     no_invitations_left: "Ho sentim, no et queda cap invitació"
     no_invitations_left_get_more: "Si us plau, escriu-nos un correu electrònic a contact@loomio.org i veurem què podem fer per ajudar-te "
     invitation_not_found: 'No hem pogut trobar la invitació amb aquesta sol·licitud. Si us plau, demana una invitació nova a qui te l''hagi enviat.'
@@ -479,10 +479,10 @@ ca:
     invitees_placeholder: "Nom d'usuari <user1@example.com>, user2@example.com"
     subject: "Si us plau, uneix-te al nou grup de Loomio,  %{group}"
     invite_people: "Convida gent al teu grup"
+    select_members: "Afegeix membres de %{group_name}"
     body_editable: "Ei, decideix amb nosaltres! Emprem una eina per \nprendre decissions de manera col·laborativa anomenada Loomio.\n"
     message_body: "missatge d'invitació"
     invites_more_help2: "<p>Pots convidar gent al teu grup en qualsevol moment.<p><p>Pots convidar tots els teus membres de cop o començar convidant aquells amb qui estàs treballant més estretament.</p>"
-    send_invitations: "Envia invitacions"
     invitation_link: "Enllaç d'invitació"
     link_help: "Clica aquest enllaç per unir-te al grup %{group} a Loomio:"
     copy: "Si algú no ha rebut el correu electrònic d'invitació, pots copiar el link de més amunt i passar-lo tu mateix si vols."
@@ -504,10 +504,6 @@ ca:
       Creus que és una bona idea? El Bot d'Ajuda vol saber que en penses!
       Si ho tens clar, prem alguna de les icones de sota (apropa el cursor als botons per veure una descripció de cadascun)
       Se't demanarà que facis un petit raonament sobre la teva decissió. Així serà més fàcil veure un resum de que pensa cadascú i perquè. Pots canviar d'opinió i editar la teva decissió fins que la proposta es tanqui.
-  discussion_form:
-    header: "Comença una discussió"
-    who: "En quin grup vols començar la discussió?"
-    context: "Context"
   motion_form:
     header: "Nova proposta"
     name_helper: "Escriu un títol tant clar i concís com puguis."
@@ -534,11 +530,6 @@ ca:
     update_preferences: "Actualitza les preferències"
   new_user_form:
     create_an_account: "Crea un compte"
-  user_settings_form:
-    header: "Preferències del compte"
-    picture: "Foto"
-    use_avatar_kind: "Utilitza %{kind}"
-    upload_new_image: "Puja una nova foto"
   group_setup:
     set_up_your_group: Configura el teu grup
     desc_header: "Ja quasi ho tens!"
@@ -564,9 +555,12 @@ ca:
         members_invitable_by_members: "Totes les membres del grup"
         privacy: Privacitat
         privacy_public_header: Públic
-        privacy_secret_header: Secret
         privacy_parent_group_members_header: Visible per membres del grup mare.
+        privacy_parent_group_members_description: El mateix que "secret", només els membres del grup mare poden veure el grup i les seves discussions.
+        privacy_parent_group_members_description_short: Només membres i membres del grup mare poden veure aquest grup i les seves discussions.
         group_members_invitable_by: "Només coordinadores"
+        submit: Enviar
+        viewable_by_parent_members_header: Permet a tot els membres de %{group} veure aquest subgrup i les seves discussions.
       membership_request:
         introduction: "Presenta't"
       motion:
@@ -580,9 +574,6 @@ ca:
         password_confirmation: "Confirma contrassenya"
         language_preference: "Idioma"
     placeholders:
-      discussion:
-        title: "Quin és el tema que vols discutir?"
-        description: "Aquesta descripció apareixerà a l'encapçalament de la pàgina de discussió. Presenta el tema i posa al grup en el context suficient per tal de tenir una discussió ben informada."
       membership_request:
         introduction: "Fes-nos cinc cèntims sobre qui ets i per què t'agradaria unir-te a %{group_name}."
       motion:
@@ -590,6 +581,7 @@ ca:
         description: "Dóna suficient infromació per tal de que tothom sàpiga exactament què vol dir estar d'acord o no estar'hi."
       group:
         name: "Nom del grup"
+        description: "Descripció del grup"
       user:
         email: "Correu electrònic"
         password: "Contrasenya"
@@ -603,9 +595,13 @@ ca:
         create: "Crea un compte"
         update: "Actualitzar la configuració"
   email:
-    added_to_a_group:
-      subject: "T'han afegit a un grup"
-      content: "Felicitats, has estat afegit al grup '%{which}' a Loomio!"
+    to_join_group:
+      subject: "%{member} t'ha convidat a unir-te a %{group_name} a Loomio"
+    to_start_group:
+      subject: "Configura el teu nou grup de Loomio: %{group_name}"
+    user_added_to_a_group:
+      subject: "%{who} t'ha afegit a %{which_group}"
+      content: "%{who} t'ha afegit a %{which_group} a Loomio. Clica aquí per visitar el grup:"
     unsubscribe: "Dóna't de baixa o canvïa les teves preferències de correu:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-te de baixa o canviar les preferències de correu."
     view_comment: "Fes click per veure el comentari a Loomio"
@@ -638,6 +634,7 @@ ca:
         L'equip de Loomio
     membership_request:
       intro: "%{name} (%{email}) ha sol·licitat accés a un dels teus grups de Loomio."
+      subject: "%{who} ha demanat unir-se a %{which_group}"
       view_group: "Pots aprovar o denegar la sol·licitud aquí"
     mentioned:
       intro: "T'han mencionat a la discussió: "
@@ -663,26 +660,6 @@ ca:
       closing_in_24_hours: "Tanca en 24 hores"
       headline: "La proposta de %{author} a %{group} tancarà aviat:"
       summary: "Sumari"
-    to_join_group:
-      subject: "%{member} t'ha convidat a unir-te a %{group_name} a Loomio"
-    to_start_group:
-      subject: "Configura el teu nou grup de Loomio: %{group_name}"
-    trial_expiry:
-      header: "%{group_name}: El teu demo de Loomio gairebé s'ha acabat."
-      hi: "Ei,"
-      intro_html: |
-        Només un recordatori amistós per fer-te saber que la versió de prova caduca en 5 dies. Esperem que estiguis gaudint Loomio fins ara.
-        <p> Una vegada esgotat el període de prova, hauràs d'introduir les teves dades de pagament perquè el teu grup pugui seguir utilitzant Loomio. </p>
-        <p><a href=''> Clic aquí </a> per configurar ara les teves dades de pagament. </p>
-        <p> Si tens alguna pregunta o si hi ha alguna cosa que podem fer per ajudar el teu grup a tenir èxit amb Loomio, ens encantaria saber-ho. </p>
-    trial_follow_up:
-      header: "%{group_name}: Com va la teva demo de Loomio fins ara?"
-      hi: "Ei,"
-      intro_html: |
-        Només un recordatori amistós per fer-te saber que la versió de prova ha arribat a mig camí. Esperem que estiguis gaudint Loomio fins ara!
-        <p> Hauràs d'introduir les teves dades de pagament abans d'exaurir el termini per tal que el teu grup pugui seguir utilitzant Loomio. </p>
-        <p><a href=''> Clic aquí </a> per configurar ara les teves dades de pagament. </p>
-        <p> Si tens alguna pregunta o si hi ha alguna cosa que podem fer per ajudar el teu grup a tenir èxit amb Loomio, ens encantaria saber-ho. </p>
     verification:
       header: "Ja quasi ho tens!"
       intro: "Sisplau, fes click a aquest link per verificar la teva sol·licitud:"
@@ -692,7 +669,6 @@ ca:
   approve: "Aprovar"
   author: "Autor"
   back: "Enrere"
-  by: "per"
   cancel: "Cancelar"
   change: "Canviar"
   change_language: "Fes clic aquí per utilitzar Loomio en %{language}"
@@ -726,7 +702,6 @@ ca:
   password: "Contrasenya"
   pricing: 'Preus'
   prev: "Anterior"
-  translate: "Ajuda a traduir Loomio!"
   options: "Opcions"
   other: "Altres"
   ok_got_it: "D'acord, entesos!"
@@ -742,6 +717,7 @@ ca:
   subject: "Tema"
   terms_of_service_html: "En fer clic a %{button_text},  acceptes els  <a href='%{link_path}' target='_blank'>Termes de servei</a> de Loomio"
   thanks: "Mercès!"
+  translate: "Ajuda a traduir Loomio!"
   unlike: "No m'agrada"
   until_close: "fins al tancament"
   update: "Actualitzar"

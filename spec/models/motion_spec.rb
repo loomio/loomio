@@ -22,6 +22,20 @@ describe Motion do
     end
   end
 
+  describe "#unique_votes" do
+    it "returns only the most recent votes of a user for a motion" do
+      user = FactoryGirl.create :user
+      motion = create :motion, discussion: discussion
+      discussion.group.add_member! user
+      vote1 = Vote.create(motion_id: motion.id, user_id: user.id, position: "no")
+      vote2 = Vote.create(motion_id: motion.id, user_id: user.id, position: "yes")
+
+      motion.votes.count.should == 2
+      motion.unique_votes.count.should == 1
+      motion.unique_votes.first.should == vote2
+    end
+  end
+
   describe "#voting?" do
     it "returns true if motion is open" do
       @motion = create :motion, discussion: discussion
@@ -48,11 +62,6 @@ describe Motion do
       @vote.save!
       @motion.user_has_voted?(@user).should == true
     end
-
-    it "returns false if given nil" do
-      @motion = create(:motion, discussion: discussion)
-      @motion.user_has_voted?(nil).should == false
-    end
   end
 
   describe "#search(query)" do
@@ -78,6 +87,36 @@ describe Motion do
 
     it "deletes associated votes" do
       Vote.first.should == nil
+    end
+  end
+
+  context "events" do
+    before do
+      @user = create :user
+      @group = create :group
+      @group.add_admin! @user
+      @discussion = create_discussion :group => @group
+    end
+    it "fires new_motion event if a motion is created successfully" do
+      motion = build(:motion, discussion: discussion)
+      motion.should_receive(:fire_new_motion_event)
+      motion.save!
+    end
+  end
+
+  context "moving motion to new group" do
+    before do
+      @new_group = create(:group)
+      @motion = create(:motion, discussion: discussion)
+      @motion.move_to_group @new_group
+    end
+
+    it "changes motion group_id to new group" do
+      @motion.group.should == @new_group
+    end
+
+    it "changes motion discussion_id to new group" do
+      @motion.discussion.group.should == @new_group
     end
   end
 
@@ -110,7 +149,7 @@ describe Motion do
       motion.group.add_member! user
       create :vote, :motion => motion, :position => "yes", :user => user
       motion.reload
-      motion.members_not_voted_count.should == motion.group_users.count - 1
+      motion.members_not_voted_count.should == motion.group_members.count - 1
     end
 
     it "still works if the same user votes multiple times" do
@@ -119,7 +158,7 @@ describe Motion do
       create :vote, :motion => motion, :position => "yes", :user => user
       create :vote, :motion => motion, :position => "no", :user => user
       motion.reload
-      motion.members_not_voted_count.should == motion.group_users.count - 1
+      motion.members_not_voted_count.should == motion.group_members.count - 1
     end
 
     context "for a closed motion" do
@@ -183,6 +222,7 @@ describe Motion do
           vote.motion = motion
           vote.user = user
           vote.save!
+          motion.reload
         end
       end
 

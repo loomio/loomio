@@ -68,8 +68,7 @@ class Ability
     end
 
     can :invite_outsiders, Group do |group|
-      # if group.is_a_subgroup? and group.parent_is_hidden?
-      if group.is_a_subgroup?
+      if group.is_a_subgroup? and group.parent_is_hidden?
         false
       else
         true
@@ -77,8 +76,10 @@ class Ability
     end
 
     can :create, Group do |group|
-      if group.parent_id.present?
-        @member_group_ids.include?(group.parent_id)
+      if group.is_top_level?
+        true
+      elsif @member_group_ids.include?(group.parent_id)
+        true
       else
         false
       end
@@ -104,14 +105,22 @@ class Ability
     end
 
     can :request_membership, Group do |group|
-      if group.is_sub_group?
-        group.parent.members.include?(user) and can?(:show, group)
+      if group.archived?
+        false
+      elsif group.is_not_hidden?
+        true
+      elsif group.is_a_subgroup? and group.viewable_by_parent_members? and @member_group_ids.include?(group.parent_id) # assumes group is hidden
+        true
       else
-        can?(:show, group)
+        false
       end
     end
 
     can :cancel, MembershipRequest, requestor_id: user.id
+
+    can :cancel, Invitation do |invitation|
+      (invitation.inviter == user) or (@admin_group_ids.include?(invitation.group.id))
+    end
 
     can [:approve,
          :ignore], MembershipRequest do |membership_request|
@@ -123,12 +132,14 @@ class Ability
     end
 
     can :show, Discussion do |discussion|
-      group = discussion.group
       if discussion.archived?
         false
-      elsif group.members.include?(user)
-        true
       elsif discussion.public?
+        true
+      elsif @member_group_ids.include?(discussion.group_id)
+        true
+      elsif discussion.group.viewable_by_parent_members? &&
+            @member_group_ids.include?(discussion.group.parent_id)
         true
       else
         false
@@ -158,7 +169,19 @@ class Ability
     end
 
     can [:destroy], Comment do |comment|
-      (comment.author == user) or @admin_group_ids.include?(comment.group.id)
+      (comment.author == user) or @admin_group_ids.include?(comment.discussion.group_id)
+    end
+
+    can [:start_proposal], Discussion do |discussion|
+      can? :create, Motion.new(discussion: discussion)
+    end
+
+    can [:create], Motion do |motion|
+      motion.discussion.current_motion.nil? && @member_group_ids.include?(motion.discussion.group_id)
+    end
+
+    can [:vote], Motion do |motion|
+      motion.voting? && @member_group_ids.include?(motion.discussion.group_id)
     end
 
     can [:create, :like], Comment do |comment|
@@ -169,12 +192,14 @@ class Ability
       motion.voting? && @member_group_ids.include?(motion.group.id)
     end
 
+    can [:close, :edit_close_date], Motion do |motion|
+      motion.voting? && ((motion.author_id == user.id) || @admin_group_ids.include?(motion.discussion.group_id))
+    end
+
     can [:destroy,
-         :close,
          :create_outcome,
-         :update_outcome,
-         :edit_close_date], Motion do |motion|
-      (motion.author == user) or @admin_group_ids.include?(motion.group.id)
+         :update_outcome], Motion do |motion|
+      (motion.author_id == user.id) or @admin_group_ids.include?(motion.discussion.group_id)
     end
   end
 end

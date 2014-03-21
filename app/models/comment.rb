@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   attr_accessible :discussion_id, :discussion, :comment, :body, :parent_id, :author
   include Twitter::Extractor
+  include Translatable
 
   has_paper_trail
   acts_as_tree
@@ -18,7 +19,9 @@ class Comment < ActiveRecord::Base
   validate :parent_comment_belongs_to_same_discussion
 
   after_initialize :set_defaults
-  default_scope include: :user
+  after_destroy :send_discussion_comment_deleted!
+
+  default_scope include: [:user, :attachments, :discussion]
 
   scope :published
 

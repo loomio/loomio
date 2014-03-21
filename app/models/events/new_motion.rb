@@ -13,7 +13,7 @@ class Events::NewMotion < Event
   private
 
   def notify_users!
-    motion.group_users_without_motion_author.each do |user|
+    motion.group_members_without_motion_author.each do |user|
       if user.email_notifications_for_group?(motion.group)
         MotionMailer.delay.new_motion_created(motion, user)
       end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DiscussionsController do
   let(:app_controller) { controller }
   let(:user) { stub_model(User) }
-  let(:motion) { mock_model(Motion) }
+  let(:motion) { mock_model(Motion).as_null_object }
   let(:group) { create :group }
   let(:discussion) { stub_model(Discussion,
                                 title: "Top ten",
@@ -18,7 +18,7 @@ describe DiscussionsController do
       sign_in user
       app_controller.stub(:authorize!).and_return(true)
       app_controller.stub(:cannot?).with(:show, group).and_return(false)
-      Discussion.stub_chain(:published, :find_by_key).with(discussion.key).and_return(discussion)
+      Discussion.stub_chain(:published, :find_by_key!).with(discussion.key).and_return(discussion)
       User.stub(:find).and_return(user)
       Group.stub(:find).with(group.key).and_return(group)
     end
@@ -27,7 +27,7 @@ describe DiscussionsController do
       before do
         discussion.stub(:add_comment)
         discussion.stub(:save).and_return(true)
-        discussion.stub(:group_users_without_discussion_author).and_return([])
+        discussion.stub(:group_members_without_discussion_author).and_return([])
         DiscussionMailer.stub(:spam_new_discussion_created)
         user.stub_chain(:ability, :authorize!).and_return(true)
         @discussion_hash = { group_id: group.id, title: "Shinney", private: "true" }

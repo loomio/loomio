@@ -279,8 +279,8 @@ body.discussions.show {
       }
       .discussion-additional-info {
         color: $mid-grey;
-        float: right;
         font-size: $font-smaller;
+        margin-left: 60px;
         max-width: 190px;
         .last-edited-by, .started-by { margin-bottom: 10px; }
         .user-name { white-space: nowrap; }
@@ -290,7 +290,13 @@ body.discussions.show {
         padding-right: 0px;
       }
       .long-description { padding-bottom: 10px; }
-      .right-context { width: 265px; }
+      .right-context {
+        width: 265px;
+        #invite-new-members {
+          margin-bottom: 20px;
+          margin-left: 50px;
+        }
+      }
     }
   }
 
@@ -353,7 +359,7 @@ body.discussions.show {
       background: none;
       border: 0;
       color: $dark-grey;
-      height: 80px;
+      height: 120px;
       margin: 0;
       outline: none;
       width: 380px;
@@ -361,6 +367,12 @@ body.discussions.show {
         border-color: 0;
         /*@include box-shadow(0, 0, 0, 0);*/
       }
+    }
+    .add-comment-placeholder #new-comment{
+      border: 1px solid $light-grey;
+    }
+    #align-button{
+      margin-top: -4px;
     }
     #post-new-comment {
       margin: 8px 5px 5px 45px;
@@ -439,6 +451,11 @@ body.discussions.show {
         }
         p:last-child{margin-bottom: 2px;}
       }
+      .activity-item-translation {
+        display: none;
+        padding: 0 0 5px 5px;
+        font-style: italic;
+      }
       .activity-item-likes{
         color: $dark-grey;
         font-size: $font-tiny;
@@ -460,7 +477,7 @@ body.discussions.show {
     background-color: $selector-panel;
     @include border-radius(8px);
     border: 1px solid $lighter-grey;
-    margin: 10px 0 20px 0;
+    margin: 0 0 20px 0;
     min-height: 59px;
     .dropdown {
       float: right;

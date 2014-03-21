@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
   end
 
   def belongs_to?(this_user)
-    self.user && (self.user == this_user)
+    self.user_id == this_user.id
   end
 
   def publish_event

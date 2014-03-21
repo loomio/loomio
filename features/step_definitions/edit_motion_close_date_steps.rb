@@ -9,7 +9,7 @@ When /^I click the 'change close date' button$/ do
 end
 
 When /^I select the new close date$/ do
-  @close_date = 5.days.from_now
+  @close_date = 5.days.from_now + 12.hours
   fill_in "motion_close_at_date", with: @close_date.strftime("%d-%m-%Y")
   click_on("modal-change-close-date")
 end
