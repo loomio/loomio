@@ -305,4 +305,20 @@ describe Group do
     end
   end
 
+  describe "visible_to_the_public" do
+    let(:private_group) { FactoryGirl.create(:group, privacy: 'private') }
+    let(:hidden_group) { FactoryGirl.create(:group, privacy: 'hidden') }
+
+    before do
+      private_group
+      hidden_group
+      group
+    end
+
+    subject { Group.visible_to_the_public }
+    it { should include group }
+    it { should include private_group }
+    it { should_not include hidden_group }
+  end
+
 end

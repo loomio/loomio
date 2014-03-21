@@ -37,7 +37,7 @@ class Group < ActiveRecord::Base
         order('memberships_count DESC')
 
   scope :visible_to_the_public,
-        where(privacy: 'public').
+        where(privacy: ['public', 'private']).
         parents_only
 
   scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
