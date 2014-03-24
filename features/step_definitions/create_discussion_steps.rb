@@ -16,9 +16,8 @@ When /^I fill in the discussion details and submit the form$/ do
   @discussion_description = "test _this markdown_ "+ Faker::Lorem.paragraph
   fill_in 'discussion_title', with: @discussion_title
   fill_in 'discussion_description', with: @discussion_description
-  find('#discussion_private_false').click
+  find('#discussion_private_true').click
   click_on 'discussion-submit'
-
 end
 
 Then /^a discussion should be created$/ do

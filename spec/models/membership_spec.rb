@@ -49,9 +49,9 @@ describe Membership do
     end
 
     it "removes subgroup memberships if parent is hidden" do
-      group.privacy = 'hidden'
+      group.visible = false
       group.save
-      subgroup = create(:group, parent: group, privacy: 'hidden')
+      subgroup = create(:group, parent: group, visible: false)
       subgroup.add_member! user
       group.reload
       @membership.reload

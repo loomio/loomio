@@ -96,7 +96,7 @@ Given /^there is a discussion in a public group$/ do
 end
 
 Given /^there is a public discussion in a public group$/ do
-  @group = FactoryGirl.create :group, :privacy => 'public'
+  @group = FactoryGirl.create :group, visible: true, private_discussions_only: false, discussions_private_default: nil
   @discussion = create_discussion :group => @group, private: false
 end
 
@@ -193,7 +193,7 @@ Given /^the group has a subgroup$/ do
 end
 
 Given /^the group has a hidden subgroup$/ do
-  @subgroup = FactoryGirl.create(:group, parent: @group, privacy: 'hidden')
+  @subgroup = FactoryGirl.create(:group, parent: @group, visible: false, private_discussions_only: true)
 end
 
 Given /^the group has a subgroup I am an admin of$/ do

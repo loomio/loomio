@@ -211,49 +211,33 @@ describe Discussion do
     end
   end
 
-  describe '#private?' do
+  describe '#private' do
     # provides a default when the discussion is new
     # when present passes the value on unmodified
     let(:discussion) { Discussion.new }
     let(:group) { Group.new }
 
-    subject { discussion.private? }
+    subject { discussion.private }
 
     context "new discussion" do
       context "with group associated" do
         before do
           discussion.group = group
         end
-        context "group is private" do
-          before { group.privacy = 'private' }
+
+        context "group is private only" do
+          before { group.private_discussions_only = true }
           it { should be_true }
         end
 
-        context "group is hidden" do
-          before { group.privacy = 'hidden' }
-          it { should be_true }
-        end
-
-        context "group is public" do
-          before { group.privacy = 'public' }
-          it { should be_false }
+        context "group is not private only" do
+          before { group.private_discussions_only = false }
+          it { should be_nil }
         end
       end
 
       context "without group associated" do
         it { should be_nil }
-      end
-    end
-
-    context "existing discussion" do
-      context "which is private" do
-        before {discussion.private = true}
-        it {should be_true}
-      end
-
-      context "which is not private" do
-        before {discussion.private = false}
-        it {should be_false}
       end
     end
   end
@@ -264,10 +248,11 @@ describe Discussion do
     subject { discussion }
 
 
-    context "discussion is public when group is hidden" do
+    context "discussion is public when group is private only" do
       before do
-        group.privacy = "hidden"
+        group.private_discussions_only = true
         discussion.group = group
+        discussion.private = false
         discussion.valid?
       end
       it {should have(1).errors_on(:private)}

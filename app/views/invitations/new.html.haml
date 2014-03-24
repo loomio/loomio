@@ -18,7 +18,7 @@
         = render 'invite_users', form: f, group: @group, discussion: @discussion
         = @group.invitations_remaining
         = t :invitations_remaining
-    - if @group.is_a_subgroup?
+    - if @group.is_subgroup?
       .span4.invite-members-of-parent
         %h3= t :"invitation.select_members", group_name: @group.parent.name
         .parent-members

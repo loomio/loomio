@@ -11,6 +11,13 @@ class Discussion < ActiveRecord::Base
   scope :order_by_latest_comment, order('last_comment_at DESC')
   scope :last_comment_after, lambda {|time| where('last_comment_at > ?', time)}
 
+  scope :public, where(private: false)
+  scope :private, where(private: true)
+  scope :with_motions, where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL)")
+  scope :without_open_motions, where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND motions.closed_at IS NULL)")
+  scope :with_open_motions, joins(:motions).merge(Motion.voting)
+
+
   validates_presence_of :title, :group, :author, :group_id
   validate :private_is_not_nil
   validates :title, :length => { :maximum => 150 }
@@ -145,32 +152,21 @@ class Discussion < ActiveRecord::Base
   end
 
   def public?
-    self.private == false
+    !private
   end
 
   def private
-    self.private?
-  end
-
-  def private?
-    if self[:private].nil? and group.present?  # this is some hideously unconfident code. discussions have a validation on private col
-      group_default_is_private?
-    else
-      self[:private]
+    if self[:private].nil? and
+       group.present? and
+       group.private_discussions_only?
+      self[:private] = true
     end
-  end
-
-  def inherit_group_privacy!
-    self[:private] = group_default_is_private? if group.present?
-  end
-
-
-  def group_default_is_private?
-    ['hidden', 'private'].include? group.privacy
+    self[:private]
   end
 
 
   private
+
   def refresh_last_comment_at!
     if comments.exists?
       last_comment_time = most_recent_comment.created_at
@@ -182,13 +178,13 @@ class Discussion < ActiveRecord::Base
 
   def private_is_not_nil
     if self[:private].nil?
-      errors.add(:private, "cannot be nil")
+      errors.add(:private, "Please select a privacy")
     end
   end
 
   def privacy_is_permitted_by_group
-    if group.present? and group.is_hidden? and not self.private?
-      errors.add(:private, "must be true when group is hidden")
+    if (self.private == false) and group.private_discussions_only?
+      errors.add(:private, "must be private in this group")
     end
   end
 

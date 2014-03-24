@@ -4,22 +4,22 @@ class Group < ActiveRecord::Base
   class MaximumMembershipsExceeded < Exception
   end
 
-  attr_accessible :name, :privacy, :members_invitable_by, :parent, :parent_id, :description, :max_size, :cannot_contribute, :full_name, :payment_plan, :viewable_by_parent_members
+  #even though we have permitted_params this needs to be here.. it's an issue
+  attr_accessible :name, :members_invitable_by, :parent, :parent_id, :description, :max_size, :cannot_contribute, :full_name, :payment_plan, :visible_to_parent_members, :category_id, :max_size, :visible, :private_discussions_only, :discussions_private_default
   acts_as_tree
 
-  PRIVACY_CATEGORIES = ['public', 'private', 'hidden']
   INVITER_CATEGORIES = ['members', 'admins']
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
   validates_presence_of :name
   validates_inclusion_of :payment_plan, in: PAYMENT_PLANS
-  validates_inclusion_of :privacy, in: PRIVACY_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: INVITER_CATEGORIES
   validates :description, :length => { :maximum => 250 }
   validates :name, :length => { :maximum => 250 }
 
   validate :limit_inheritance
-  validate :privacy_allowed_by_parent, if: :is_a_subgroup?
+  validate :privacy_allowed_by_parent, if: :is_subgroup?
   validate :subgroups_are_hidden, if: :is_hidden?
+  validate :visible_to_parent_members_is_false, if: :is_parent?
 
   after_initialize :set_defaults
   before_save :update_full_name_if_name_changed
@@ -28,17 +28,22 @@ class Group < ActiveRecord::Base
   pg_search_scope :search_full_name, against: [:name, :description],
     using: {tsearch: {dictionary: "english"}}
 
+  scope :public, where(visible: true)
+  scope :hidden, where(visible: false)
+
+  scope :visible_on_explore_front_page, -> { categorised_any.parents_only }
+
+  scope :categorised_any, -> { where('groups.category_id IS NOT NULL') }
+
   scope :archived, lambda { where('archived_at IS NOT NULL') }
   scope :published, lambda { where(archived_at: nil) }
 
   scope :parents_only, where(:parent_id => nil)
 
-  scope :sort_by_popularity,
-        order('memberships_count DESC')
+  scope :sort_by_popularity, order('memberships_count DESC')
 
-  scope :visible_to_the_public,
-        where(privacy: 'public').
-        parents_only
+  scope :visible_to_the_public, where(visible: true)
+  scope :visible, where(visible: true)
 
   scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
 
@@ -110,8 +115,9 @@ class Group < ActiveRecord::Base
   has_many :discussions, :dependent => :destroy
   has_many :motions, :through => :discussions
 
-  belongs_to :parent, :class_name => "Group"
-  has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id', conditions: { archived_at: nil }
+  belongs_to :parent, class_name: "Group"
+  belongs_to :category
+  has_many :subgroups, class_name: "Group", :foreign_key => 'parent_id', conditions: { archived_at: nil }
 
   has_one :subscription, dependent: :destroy
 
@@ -163,47 +169,28 @@ class Group < ActiveRecord::Base
     self.archived_at.present?
   end
 
-  def privacy_public?
-    (privacy == 'public') and !archived?
+  def is_public?
+    visible?
   end
 
   def is_hidden?
-    self.privacy == 'hidden'
-  end
-
-  def is_not_hidden?
-    !is_hidden?
+    !visible?
   end
 
   def parent_is_hidden?
-    parent.is_hidden?
+    parent.present? && parent.is_hidden?
   end
 
   def members_can_invite_members?
     members_invitable_by == 'members'
   end
 
-  def parent_members_visible_to(user)
-    parent.users.sorted_by_name
-  end
-
-  # would be nice if the following 3 methods were reduced to just one - is_subgroup
-  # parent and top_level are the less nice terms
-  #
-  def is_a_parent?
+  def is_parent?
     parent_id.blank?
   end
 
-  def is_top_level?
-    is_a_parent?
-  end
-
-  def is_sub_group?
-    !is_a_parent?
-  end
-
-  def is_a_subgroup?
-    is_sub_group?
+  def is_subgroup?
+    !is_parent?
   end
 
   def admin_email
@@ -215,7 +202,7 @@ class Group < ActiveRecord::Base
   end
 
   def add_member!(user, inviter=nil)
-    if is_a_parent?
+    if is_parent?
       if (memberships_count.to_i > max_size.to_i)
         raise Group::MaximumMembershipsExceeded
       end
@@ -236,7 +223,7 @@ class Group < ActiveRecord::Base
   end
 
   def find_or_create_membership(user, inviter)
-    membership = memberships.where(:user_id => user).first
+    membership = memberships.where(user_id: user.id).first
     membership ||= Membership.create!(group: self, user: user, inviter: inviter)
   end
 
@@ -248,28 +235,24 @@ class Group < ActiveRecord::Base
     Membership.where(:user_id => user, :group_id => self).exists?
   end
 
-  def user_is_a_parent_member? user
-    parent.members.include? user
-  end
-
   def invitations_remaining
     max_size - memberships_count - pending_invitations.count
   end
 
   def has_member_with_email?(email)
-    users.where('email = ?', email).present?
+    members.where(email: email).any?
   end
 
   def has_membership_request_with_email?(email)
-    membership_requests.where('email = ?', email).present?
+    membership_requests.where(email: email).any?
   end
 
   def is_setup?
-    self.setup_completed_at.present?
+    setup_completed_at.present?
   end
 
   def mark_as_setup!
-    self.update_attribute(:setup_completed_at, Time.zone.now.utc)
+    update_attribute(:setup_completed_at, Time.zone.now.utc)
   end
 
   def update_full_name_if_name_changed
@@ -303,14 +286,16 @@ class Group < ActiveRecord::Base
     (subscription.present? && subscription.amount > 0)
   end
 
-  def is_hidden?
-    privacy == "hidden"
-  end
 
   private
+  def visible_to_parent_members_is_false
+    if visible_to_parent_members?
+      errors[:visible_to_parent_members] << "does not makes sence for parent groups"
+    end
+  end
 
   def calculate_full_name
-    if is_a_parent?
+    if is_parent?
       name
     else
       parent_name + " - " + name
@@ -318,7 +303,6 @@ class Group < ActiveRecord::Base
   end
 
   def set_defaults
-    self.privacy ||= 'hidden'
     self.members_invitable_by ||= 'members'
   end
 
@@ -329,13 +313,13 @@ class Group < ActiveRecord::Base
   end
 
   def privacy_allowed_by_parent
-    if parent && parent.privacy == 'hidden' && self.privacy != 'hidden'
-      errors[:privacy] << "Parent group is hidden, subgroups must also be hidden"
+    if parent_is_hidden? && visible?
+      errors[:visible] << "The parent group is hidden so this group must be also"
     end
   end
 
   def subgroups_are_hidden
-    unless subgroups.all?{|g| g.is_hidden?}
+    if subgroups.any?{|g| g.is_hidden?}
       errors[:privacy] << "There are non hidden subgroups, so this group cannot be hidden"
     end
   end

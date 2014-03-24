@@ -6,7 +6,7 @@
       %h1= @user.name
       %p.username= "@" + @user.username
 
-      - groups = @user.public_groups.order('full_name ASC')
+      - groups = @user.visible_groups.order('full_name ASC')
       - if groups.present?
         %h3#user-groups-list= t(:groups)
         %ul

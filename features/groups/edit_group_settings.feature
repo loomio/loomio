@@ -3,39 +3,19 @@ Feature: Edit group settings
   Administrators of a group must be able to edit group settings
 
   Background:
-    Given a group "demo-group" with "furry@example.com" as admin
-    And "non-admin@example.com" is a non-admin of group "demo-group"
+    Given a group "demo-group" with "admin@example.com" as admin
+    And "member@example.com" is a member of group "demo-group"
+    And I am logged in as "admin@example.com"
+    And I visit the group settings page for "demo-group"
+
+  Scenario: Make group public and open
+    When I make the group as public as possible
+    Then the group should be visible, default public, members invite
+
+  Scenario: Make group hidden and locked down
+    When I make the group as secret and locked down as possible
+    Then the group should be hidden, default private, admins invite
 
   Scenario: Non-admin cannot edit group settings
-    Given I am logged in as "non-admin@example.com"
-    Then I should not have access to group settings of "demo-group"
-
-  Scenario: Change group visibility to public
-    Given I am logged in as "furry@example.com"
-    When I visit the group settings page
-    And I update the settings to public
-    Then the group should be public
-
-  Scenario: Change group visibility to Members only
-    Given I am logged in as "furry@example.com"
-    When I visit the group settings page
-    And I update the settings to members only
-    Then the group should be private
-
-  Scenario: Change group name
-    Given I am logged in as "furry@example.com"
-    When I visit the group settings page
-    And I update the group name
-    Then the group name is changed
-
-  Scenario: Change group invitations to allow all members
-    Given I am logged in as "furry@example.com"
-    When I visit the group settings page
-    And I update the invitations to allow all members
-    Then all members should be able to invite other users
-
-  Scenario: Change group invitations to allow only admin
-    Given I am logged in as "furry@example.com"
-    When I visit the group settings page
-    And I update the invitations to allow only admin
-    Then only admin should be able to invite other users
+    When I am not an admin and I access the group settings page
+    Then I see I don't have permission to do this

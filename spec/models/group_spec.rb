@@ -23,7 +23,7 @@ describe Group do
       @group.respond_to?(:memberships)
     end
     it "defaults to private" do
-      @group.privacy.should == 'private'
+      @group.visible.should be_true
     end
     it "defaults to members invitable by members" do
       @group.members_invitable_by.should == 'members'
@@ -78,28 +78,15 @@ describe Group do
       @group.reload
     end
 
-    it "can access it's parent" do
-      @subgroup.parent.should == @group
-    end
-
-    it "can access it's children" do
-      @group.subgroups.count.should eq(1)
-    end
-
-    it "limits group inheritance to 1 level" do
-      invalid = build(:group, :parent => @subgroup)
-      invalid.should_not be_valid
-    end
-
     it "by default is not viewable by parent members" do
-      Group.new(:parent => @group).privacy.should == 'private'
-      Group.new(:parent => @group).should_not be_viewable_by_parent_members
+      Group.new(:parent => @group).should_not be_visible_to_parent_members
     end
 
     context "subgroup.full_name" do
       it "contains parent name" do
         @subgroup.full_name.should == "#{@group.name} - #{@subgroup.name}"
       end
+
       it "updates if parent_name changes" do
         @group.name = "bluebird"
         @group.save!
@@ -111,45 +98,40 @@ describe Group do
 
   context "an existing hidden group" do
     before :each do
-      @group = create(:group, privacy: "hidden")
+      @group = create(:group, visible: false)
       @user = create(:user)
     end
 
-    it "can add an admin" do
-      @group.add_admin!(@user)
-      @group.users.should include(@user)
-      @group.admins.should include(@user)
-    end
     it "can promote existing member to admin" do
       @group.add_member!(@user)
       @group.add_admin!(@user)
     end
+
     it "can be administered by admin of parent" do
       @subgroup = build(:group, :parent => @group)
       @subgroup.has_admin_user?(@user)
     end
+
     it "can add a member" do
       @group.add_member!(@user)
       @group.users.should include(@user)
-    end
-    it "fails silently when trying to add an already-existing member" do
-      @group.add_member!(@user)
-      @group.add_member!(@user)
     end
 
     context "creating a subgroup" do
       before :each do
         @subgroup = build(:group, :parent => @group)
       end
+
       it "can create hidden subgroups" do
-        @subgroup.privacy = 'hidden'
+        @subgroup.visible = false
         @subgroup.valid?
-        @subgroup.should have(0).errors_on(:privacy)
+        @subgroup.should have(0).errors_on(:visible)
       end
+
       it "returns an error when tries to create subgroup that is not hidden" do
-        @subgroup.privacy = 'public'
+        @subgroup.visible = true
         @subgroup.valid?
-        @subgroup.should have(1).errors_on(:privacy)
+        @subgroup.should have(1).errors_on(:visible)
       end
     end
   end
@@ -220,26 +202,6 @@ describe Group do
     end
   end
 
-  describe "#is_hidden?" do
-    let(:group) { Group.new }
-    subject { group.is_hidden? }
-
-    context "group is public" do
-      before { group.privacy = 'public'}
-      it { should be_false }
-    end
-
-    context "group is private" do
-      before { group.privacy = 'private'}
-      it { should be_false }
-    end
-
-    context "group is hidden" do
-      before { group.privacy = 'hidden'}
-      it { should be_true }
-    end
-  end
-
   describe 'engagement-scopes' do
     describe 'more_than_n_members' do
       let(:group_with_no_members) { FactoryGirl.create :group }
@@ -304,5 +266,4 @@ describe Group do
       it {should_not include new_group }
     end
   end
-
 end

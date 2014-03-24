@@ -3,6 +3,14 @@
 @import "mixins";
 
 body.groups {
+  &.edit, &.new, &.create, &.update {
+    .described-label {
+      i {
+        font-size: 0.9em;
+        color: $mid-grey;
+      }
+    }
+  }
   &.show {
     .discussion-preview .discussion-title { margin-top: 7px; }
     .discussion-preview.showing-group .discussion-title { margin-top: 0; }
@@ -207,7 +215,7 @@ body.group_setup.setup, body.groups.new, body.groups.edit, body.groups.add_subgr
       color: $dark-grey;
     }
     .checkbox { margin-bottom: 0px; }
-    .group_viewable_by_parent_members {
+    .group_visible_to_parent_members {
       border-top: 1px solid #DDD;
       border-bottom: 1px solid #DDD;
       padding: 1em 0;
