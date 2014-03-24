@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140317012855) do
+ActiveRecord::Schema.define(:version => 20140318020304) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -76,6 +76,12 @@ ActiveRecord::Schema.define(:version => 20140317012855) do
     t.datetime "updated_at",    :null => false
     t.string   "name",          :null => false
     t.string   "manager_email", :null => false
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "comment_votes", :force => true do |t|
@@ -337,9 +343,11 @@ ActiveRecord::Schema.define(:version => 20140317012855) do
     t.boolean  "viewable_by_parent_members", :default => false,          :null => false
     t.string   "key"
     t.boolean  "can_start_group",            :default => true
+    t.integer  "category_id"
   end
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
+  add_index "groups", ["category_id"], :name => "index_groups_on_category_id"
   add_index "groups", ["full_name"], :name => "index_groups_on_full_name"
   add_index "groups", ["key"], :name => "index_groups_on_key", :unique => true
   add_index "groups", ["name"], :name => "index_groups_on_name"

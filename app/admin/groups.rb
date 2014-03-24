@@ -6,7 +6,7 @@ ActiveAdmin.register Group do
     end
   end
 
-  actions :index, :show, :edit
+  actions :index, :show, :edit, :update
   before_filter :set_pagination
   filter :name
   filter :payment_plan, as: :select, collection: Group::PAYMENT_PLANS
@@ -17,6 +17,7 @@ ActiveAdmin.register Group do
   scope :engaged
   scope :engaged_but_stopped
   scope :has_members_but_never_engaged
+  scope :visible_on_explore_front_page
 
 
   csv do
@@ -63,6 +64,7 @@ ActiveAdmin.register Group do
         row k.to_sym if v.present?
       end
     end
+
     panel("Group Admins") do
       table_for group.admins.each do |admin|
         column :name
@@ -75,6 +77,7 @@ ActiveAdmin.register Group do
         end
       end
     end
+
     panel("Pending invitations") do
       table_for group.pending_invitations.each do |invitation|
         column :recipient_email
@@ -83,6 +86,7 @@ ActiveAdmin.register Group do
         end
       end
     end
+
     panel('Archive') do
       link_to 'Archive this group', archive_admin_group_path(group), method: :post, confirm: "Are you sure you wanna archive #{group.name}, pal?"
     end
@@ -95,20 +99,22 @@ ActiveAdmin.register Group do
       f.input :name, :input_html => { :disabled => true }
       f.input :max_size
       f.input :payment_plan, :as => :select, :collection => Group::PAYMENT_PLANS
+      f.input :category_id, as: :select, collection: Category.all
     end
     f.buttons
   end
 
-  member_action :update, :method => :put do
-    group = Group.find(params[:id])
-    group.max_size = params[:group][:max_size]
-    group.payment_plan = params[:group][:payment_plan]
-    if group.save
-      redirect_to admin_groups_url, :notice => "Group updated."
-    else
-      redirect_to admin_groups_url, :notice => "WARNING: Group could not be updated."
-    end
-  end
+  #member_action :update, :method => :put do
+    #group = Group.find(params[:id])
+    #group.max_size = params[:group][:max_size]
+    #group.payment_plan = params[:group][:payment_plan]
+    #group
+    #if group.save
+      #redirect_to admin_groups_url, :notice => "Group updated."
+    #else
+      #redirect_to admin_groups_url, :notice => "WARNING: Group could not be updated."
+    #end
+  #end
 
   member_action :archive, :method => :post do
     group = Group.find(params[:id])
