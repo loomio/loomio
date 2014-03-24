@@ -1,4 +1,7 @@
 en:
+  explore:
+    go_to_group: "Go to %{group_name}"
+
   activerecord:
     errors:
       messages:
@@ -106,6 +109,7 @@ en:
     user_already_admin: "%{which_user} is already a coordinator of this group."
     user_already_member: "%{which_user} is already a member of this group."
     user_not_admin: "Sorry, %{which_user} must be a coordinator of this group to access this."
+
   success:
     added_to_group: "You have been added to %{which_group}."
     close_date_changed: "Close date successfully changed."
@@ -124,6 +128,7 @@ en:
     position_updated: "Position updated."
     proposal_created: "Proposal successfully created."
     proposal_deleted: "Proposal deleted."
+
   datetime:
     distance_in_words:
       less_than_x_seconds:

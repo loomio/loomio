@@ -1,0 +1,127 @@
+@import 'settings';
+@import "bootstrap/mixins";
+@import "mixins";
+
+
+body.explore {
+  font-family: 'OpenSans', sans-serif;
+  h1 { font-size: 24px; }
+  h2 { font-size: 14px; }
+  h1, h2 {
+    color: #989898;
+    line-height: 1.2;
+    margin-bottom: 0;
+    text-transform: uppercase;
+  }
+
+  .card {
+    background-color: white;
+    padding: 1.5em 1.6em;
+    margin-bottom: 1.7em;
+  }
+
+  .header {
+    @extend .card;
+    padding: 2em 1.6em;
+  }
+  .main-container { background-color: $main-background; }
+
+
+  .category {
+    @extend .card;
+  }
+
+  .group-container {
+    @extend .card;
+    margin-bottom: 1em;
+    h1 {
+      font-size: 22px;
+      text-transform: none;
+    }
+  }
+
+  .groups-row {
+    margin-bottom: 2.6em;
+  }
+
+
+ul.discussion-list{
+  li {
+    a {
+      color: $dark-grey;
+    }
+
+    line-height: 2em;
+    padding: .5em 0;
+
+    .discussion-icon{
+      text-align: center;
+      color: #fff;
+      top: 0.2em;
+      left: 0.3em;
+      background: #7EC6DC;
+      border-radius: 0.2em;
+      position: relative;
+      &:before {
+        position:absolute;
+        content: "";
+        bottom: -0.3em;
+        right: 0.4em;
+        width:0em;
+        height:0em;
+        border-bottom:0.4em solid transparent;
+        border-left:0.4em solid #7EC6DC;
+      }
+    }
+    .icon {
+      position: relative;
+      font-size: .9em;
+      .motion-sparkline{
+        margin: 1px 0 0 .3em;
+        line-height: 4em;
+      }
+      width: 2em;
+      margin: 0 0.5em;
+      display: inline-block;
+      height: 1.7em;
+      .activity-badge{
+        color: #fff;
+        font-weight: 700;
+        bottom: 4px;
+        position: relative;
+        text-align: center;
+      }
+      .activity-container {
+        width: 2em;
+        left: .28em;
+        text-shadow: 1px 1px 2px #666;
+        /*height: 1.3em;*/
+        /*left: 0.68em;*/
+        /*top: 0.5em;*/
+        /*@include border-radius(1000px);*/
+        /*background-color: #fff;*/
+        font-weight: 700;
+        position: absolute;
+        text-align: center;
+        span {
+          color: #fff;
+        }
+      }
+    }
+
+    &:hover {
+      background: $even-lighter-grey;
+    }
+
+    border-top: 1px solid $lighter-grey;
+    .time {
+      color: $dark-grey;
+      span {
+        line-height: 0;
+      }
+      text-align: right;
+    }
+  }
+}
+}
+
