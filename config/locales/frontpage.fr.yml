@@ -7,6 +7,7 @@ fr:
       blog: 'Blog'
       contact: 'Contact'
       press: 'Presse'
+      try_it: 'Essayez'
       log_in: 'SE CONNECTER'
       video: "Apprenez-en plus sur le fonctionnement de Loomio"
       crowdfunding: 'Découvrez la campagne de financement participatif'
@@ -18,8 +19,8 @@ fr:
       services: 'Services'
     hero:
       head_html: 'Le monde a besoin d''un meilleur moyen de <strong>prendre des décisions ensemble</strong>.'
-      subhead: 'Aidez-nous à la construire.'
-      desc: 'Loomio est un logiciel libre et ouvert permettant à chacun, où qu''il se trouve, de participer aux décisions qui le concernent'
+      subhead: 'Aidez-nous à le construire.'
+      desc_html: 'Loomio est un logiciel libre et <a href="https://github.com/loomio/loomio">open source</a>  permettant à chacun, où qu''il se trouve, de participer aux décisions qui le concernent'
     product:
       header_html: 'Quand nous écoutons <strong>toutes les voix</strong>, nous prenons <strong>de meilleures décisions</strong>.'
       step1:
