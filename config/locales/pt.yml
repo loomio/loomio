@@ -115,6 +115,9 @@ pt:
     proposal_deleted: "Proposta apagada."
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: "%{count} segundos"
+        other: "%{count} segundos"
       x_seconds:
         one: "1 segundo"
         other: "%{count} segundos"
@@ -150,6 +153,7 @@ pt:
     blog: 'Blog'
     contact: 'Contato'
     privacy: 'Privacidade'
+    public_groups: 'Grupos públicos'
     terms: 'Termos'
   inbox:
     dropdown-btn: 'Caixa de entrada'
@@ -174,8 +178,15 @@ pt:
     motion_outcome_updated: "atualizou o resultado da proposição"
   edit_discussion_context: "Editar contexto da discussão"
   request_new_group: "Iniciar um grupo"
+  start_new_group: "Iniciar um novo grupo"
+  start_new_group_hint: "Para iniciar a tomada de decisões"
+  find_a_group: "Encontre um grupo"
+  find_a_group_hint: "Para descobrir grupos públicos"
+  no_group_header: "Bem-vindo ao Loomio Beta"
   empty_notifications: "Você ainda não tem notificações."
   see_all_notifications: "Ver todas as notificações"
+  profile: "Perfil"
+  email_settings: "Configurações de email"
   sign_out: "Sair"
   sign_in: "Entrar"
   honeypot_warning: "Não foi possível criar sua conta. Se você está usando um leitor de tela, por favor assegure que o último campo (oculto) no formulário esteja em branco."
@@ -193,6 +204,12 @@ pt:
   dashboard_helper_text:
     header: "Bem-vinda(o) à sua página inicial"
     message: "<p>A página inicial mostra a você todas as discussões em todos os grupos dos quais você faz parte.</p><p>Você pode iniciar uma discussão sobre um novo assunto clicando no botão \"Iniciar uma discussão\".</p>"
+  prompt_visitor_to_authenticate:
+    header: "Entre ou junte-se ao grupo para participar"
+    body: "Se você é membro desse grupo, você terá que fazer login para participar."
+  prompt_user_to_join:
+    header: "Junte-se ao grupo para participar"
+    body: "Para comentar ou votar, você precisa ser membro desse grupo."
   setup_steps_title: "Próximos passos:"
   setup_step_1: "Veja a discussão de exemplo"
   setup_step_2: "Comece sua primeira discussão"
@@ -214,6 +231,7 @@ pt:
   email_group_members: "Enviar email para os membros do grupo"
   edit_group_settings: "Editar configurações do grupo"
   leave_group: "Sair do grupo"
+  confirm_leave_hidden_group: "Tem certeza de que deseja sair de %{which_group}? Você também será removido(a) dos subgrupos."
   confirm_leave_group: "Tem certeza de que deseja abandonar %{which_group}?"
   deactivate_group: "Desativar grupo"
   confirm_deactivate_group: "Espere!!! Tem certeza de que quer desativar %{which_group}? Você não poderá mais ver o grupo. Entretanto, caso deseje ter o grupo de volta, pode pedir para reativá-lo enviando um email para contact@loomio.org."
@@ -258,6 +276,7 @@ pt:
   edit_group_description: "Editar descrição do grupo"
   group_subscription: "Taxa de inscrição do grupo"
   group_request:
+    neighbourhood_support_group: "e.g. Grupo de Apoio do Bairro"
     confirmation:
       title: Você está quase lá! Verifique seu email.
       body_html: |+
@@ -281,6 +300,7 @@ pt:
   current_decision: "Decisão atual"
   previous_decisions: "Decisões anteriores"
   see_previous_decisions: "Ver decisões anteriores"
+  see_more: "Saiba mais"
   create_new_proposal: "Criar nova proposição"
   empty_decision_list_html: "Pronta(o) para tomar uma decisão? <br> Qualquer pessoa pode iniciar uma proposição."
   empty_decision_index: "Este grupo não tomou nenhuma decisão ainda."
@@ -458,13 +478,26 @@ pt:
   password_confirmation: "Confirmação de senha"
   current_password: "Senha atual"
   password_details: "(precisamos de sua senha atual para confirmar suas mudanças)"
+  confirm_password: "Confirmar senha"
   cancel_my_account: "Cancelar minha conta"
   remember_me: "Lembre-se de mim"
   signing_in: "Entrando"
+  or: "ou"
   forgot_your_password: "Esqueceu sua senha?"
+  dont_have_an_account: "Não tem uma conta?"
+  link_it_up_instead: "Então conecte-se"
+  sign_up_via: "Registre-se via"
+  or_fill_in_this_form: "ou preencha este formulário"
+  already_have_account: "Já tem uma conta no Loomio?"
+  confirm_your_details: "Confirme os seus dados"
+  link_up_your_account: "Vincular a sua conta"
+  log_in_to_your_loomio_account: "Faça login na sua conta do Loomio para vinculá-la com %{provider_name}."
+  now_that_your_logged_in: "Agora que você já está conectado(a) com %{provider_name}, por favor confirme os seus dados para criar uma conta no Loomio."
   confirmation_not_received: "Não recebeu as instruções de confirmação?"
   unlock_not_received: "Não recebeu as instruções para desbloquear?"
   inactive_html: "Desculpe, este conta está inativa. Se tiver dúvidas, por favor, <a href='%{path_to_contact}'> entre em contato </a>."
+  create_an_account_html: 'Crie uma conta Loomio Beta'
+  log_in: "Entrar"
   join_group:
     log_in: "Faça login para entrar em %{group_name}"
     create_account_to_join_group: "Por favor crie uma conta para entrar em %{group_name}"
@@ -480,19 +513,29 @@ pt:
     invitees_placeholder: "Nome de usuário  <usuario1@exemplo.com>, usuario2@exemplo.com"
     subject: "Por favor, venha participar de nosso novo grupo Loomio, %{group}"
     invite_people: "Convidar pessoas para o seu grupo"
+    invite_to_discussion: "Convide pessoas para esse debate"
+    invite_to_discussion_info: "Adicionar pessoas a esse debate enviará a elas um convite para o seu grupo. Quando aceitarem, serão direcionadas para esse debate."
     select_members: "Adicionar membros do grupo %{group_name}"
     body_editable: |+
       Ei, venha tomar decisões com a gente! Estamos usando uma ferramenta colaborativa para tomada de decisões chamada Loomio.
 
+    body_editable_discussion: |
+      Olá, venha e junte-se ao debate!
     message_body: "Mensagem de convite"
     invites_more_help2: "<p>Você pode convidar pessoas do seu grupo a qualquer momento.</p><p>Talvez queira convidar todos os membros imediatamente, ou então começar convidando apenas as pessoas mais próximas a você.</p>"
     invitation_link: "Link de convite"
+    discussion_link: "Participar do debate:"
     link_help: "Clique neste link para entrar em %{group} no Loomio:"
     copy: "Se alguém não receber o e-mail de convite, sinta-se à vontade para copiar o link de convite acima e mandar diretamente ao destinatário."
+    pending_invitations: 'Convites pendentes'
+    no_pending_invitations: "Não há novos convites pendentes"
   search:
     description: "Abaixo estão listadas as dicussões e proposições que possuem '%{query}' no título ou descrição."
     header: "Resultados da busca por '%{query}'"
     placeholder: "Pesquisar"
+    empty_search: 'Nada na busca'
+    please_enter_a_search: 'Por favor, faça uma consulta na barra de busca acima'
+    no_match: 'Nenhum resultado correspondente à sua consulta'
   example_discussion:
     title: "Discussão de exemplo: Boas vindas e Introdução ao Loomio"
     description: |
@@ -507,6 +550,22 @@ pt:
       Será que é uma boa ideia? O Robô de Ajuda do Loomio quer saber o que você pensa sobre isso!
       Se você já tem clareza sobre sua posição, clique em um dos ícones abaixo (passe o mouse por cima dos botões de decisão para ver a descrição sobre cada um deles).
       Ao clicar num dos botões, aparecerá uma oportunidade para você justificar brevemente a sua decisão. Isso faz com que seja fácil ver um resumo do que cada um(a) pensa e o porque. Você pode mudar de ideia e editar a sua decisão livremente até que a proposição se encerre.
+  contact_page:
+    labels:
+      name: 'Seu nome'
+      email: 'Seu endereço de email'
+      message: 'Sua mensagem'
+      destination: 'Para onde devemos enviar sua mensagem?'
+      submit: 'Enviar mensagem'
+    destinations:
+      contact: 'Perguntas gerais'
+      tech: 'Suporte técnico / relatórios de erros / pedidos de funções'
+      press: 'Solicitações da mídia'
+      sales: 'Vendas e pedidos de clientes'
+      translations: 'Informações de tradução'
+    messages:
+      email_html: "Preencha esse formulário ou envie um email para <a href='mailto:%{email}'>%{email}</a>"
+      social_html: "Você também pode se juntar a nós no<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, e <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: "Iniciar uma discussão"
@@ -539,6 +598,12 @@ pt:
     update_preferences: "Atualizar preferências"
   new_user_form:
     create_an_account: "Criar uma conta"
+  profile_form:
+    view: "Ver o meu perfil"
+    profile: "Editar perfil"
+    picture: "Imagem"
+    use_avatar_kind: "Usar %{kind}"
+    upload_new_image: "Envie uma nova imagem"
   group_setup:
     set_up_your_group: Configure seu grupo
     desc_header: "Você está quase lá!"
@@ -563,6 +628,7 @@ pt:
         privacy_public_header: "Público"
         privacy_public_description: "Qualquer um pode ver essa discussão"
         privacy_private_header: "Privado"
+        privacy_private_description: "Apenas membros de %{group} podem ver esse debate"
         privacy_hidden_description: "Todas as discussões em um grupo secreto são privadas."
         of: "de"
         of_no_group: "deste grupo"
@@ -597,6 +663,11 @@ pt:
         password: "Senha"
         password_confirmation: "Confirme sua senha"
         language_preference: "Idioma"
+      group_request:
+        admin_name: "Qual o seu nome?"
+        admin_email: "Qual é o seu endereço de email?"
+        name: "Qual é o nome do seu grupo?"
+        description: "Se você tiver um tempo, diga-nos sobre o seu grupo"
     placeholders:
       discussion:
         title: "Título"
@@ -612,6 +683,8 @@ pt:
       user:
         email: "Email"
         password: "Senha"
+      group_request:
+        description: "Gostaríamos muito de ouvir sobre o seu grupo e por que você quer usar Loomio."
   helpers:
     submit:
       discussion:
@@ -623,6 +696,11 @@ pt:
         create: "Criar conta"
         update: "Salvar configurações"
   email:
+    to_join_discussion:
+      subject: "%{who} quer que você participe de um debate no Loomio"
+      content: "Você foi convidado(a) a participar do debate: %{discussion}"
+      message_intro: "%{who} disse:"
+      link: "Junte-se ao debate"
     to_join_group:
       subject: "%{member} foi convidada(o) a participar do grupo %{group_name} no Loomio"
     to_start_group:
@@ -692,6 +770,8 @@ pt:
       header: "Você está quase terminando!"
       intro: "Por favor, clique neste link de verificação para finalizar sua solicitação:"
       ignore: "Se você não pediu para entrar no Loomio, por favor ignore esta mensagem."
+  campaign:
+    crowdfunding_html: "Ei! Loomio está prestes a ficar muito melhor. <a href='http://love.loomio.org'>Confira nossa campanha de financiamento coletivo!</a>"
   about_loomio: "Sobre o Loomio"
   ago: "há %{quantity_of_time}"
   approve: "Aprovar"
@@ -729,8 +809,12 @@ pt:
   other: "Outro"
   outcome: "Resultado"
   password: "Senha"
+  leave_this_field_blank: "Deixar este campo em branco"
+  photo: 'Foto'
   pricing: 'Preços'
   prev: "Anterior"
+  more: "Mais..."
+  translate_this_string: "Traduzir para %{language}"
   options: "Opções"
   ok_got_it: "Ok, entendi!"
   remove: "Remover"
@@ -750,5 +834,8 @@ pt:
   unlike: "Curtir (desfazer)"
   until_close: "até fechar"
   update: "Atualizar"
+  facebook: "Facebook"
+  google: "Google"
+  persona: "Persona"
   common:
     email: "Email"

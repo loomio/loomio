@@ -1,0 +1,87 @@
+da:
+  errors:
+    messages:
+      email: "Dette er ikke en gyldig email adresse"
+  error:
+    access_denied: "Du har ikke adgang til at gøre dette."
+    cant_join_subgroup: "Du kan ikke blive medlem af en undergruppe, hvis du ikke er medlem af overgruppen."
+    cant_modify_position: "Dette foreslag er lukket."
+    cant_state_position: "Dette foreslag er lukket."
+    discussion_not_created: "Diskussionen kunne ikke oprettes."
+    group_not_archived: "Gruppen kunne ikke blive arkiveret."
+    invalid_close_date: "Ugyldig afslutningsdato. Undersøg om datoen allerede er overstået."
+    invalid_email: "Indtast mindst en gyldig email adresse"
+    image_upload_fail: "Kunne ikke uploade billedet. Billedet skal være under 1 MB og enten være en .jpeg, .png eller .gif fil."
+    permission_to_invite: "Du har ikke adgang til at invitere ny medlemmer."
+    position_not_updated: "Kunne ikke opdatere standpunktet."
+    settings_not_updated: "Dine indstillinger blev ikke gemt."
+  alert:
+    duplicate_email: "%{which_email} er allerede med i gruppen."
+  notice:
+    admin_rights_removed: "%{which_user}s koordinatorrettigheder er blevet fjernet."
+    member_removed: "Medlemmet er fjernet."
+    membership_approved: "Medlemskabet er blevet godkendt."
+    membership_request_canceled: "Forespørgsel om medlemskab er tilbagekaldt."
+    membership_request_ignored: "Forespørgsel om medlemskab er ignoreret."
+    settings_updated: "Dine indstillinger er blevet gemt."
+    user_made_admin: "%{which_user} er nu en koordinator."
+    you_have_left_group: "Du har forladt %{which_group}."
+  warning:
+    cant_remove_last_admin: "Du er den sidste koordinator og kan derfor ikke fjernes."
+    membership_request_already_ignored: "Forespørgsel om medlemskab er allerede blevet ignoreret."
+    membership_request_already_canceled: "Forespørgsel om medlemskab er allerede blevet tilbagekaldt."
+    position_not_submitted: "Dit standpunkt blev ikke registreret."
+    proposal_not_created: "Foreslag kunne ikke blive oprettet"
+    user_already_admin: "%{which_user} er allerede koordinator for denne gruppe."
+    user_already_member: "%{which_user} er allerede medlem af denne gruppe."
+    user_not_admin: "%{which_user} skal være koordinator af denne gruppe for at tilgå den."
+  success:
+    added_to_group: "Du er blevet tilføjet til %{which_user}."
+    close_date_changed: "Afslutningsdato blev opdateret."
+    discussion_created: "Diskussionen er blevet oprettet."
+    discussion_deleted: "Diskussionen er blevet slettet."
+    emails_sending: "Emails bliver sendt."
+    group_archived: "Grupper en blevet arkiveret."
+    group_created: "Gruppen er blevet oprettet."
+    members_added: "Medlemmer er blevet tilføjet til gruppen."
+    position_submitted: "Standpunktet er blevet angivet"
+    position_updated: "Standpunktet er blevet opdateret."
+    proposal_created: "Foreslag er oprettet."
+    proposal_deleted: "Foreslag er slettet."
+  datetime:
+    distance_in_words:
+      less_than_x_seconds:
+        one: "sekund"
+        other: "%{count} sekunder"
+      x_seconds:
+        one: "1 sekund"
+        other: "%{count} sekunder"
+      less_than_x_minutes:
+        one: "1 minut"
+        other: "%{count} minutter"
+      x_minutes:
+        one: "1 minut"
+        other: "%{count} minutter"
+      about_x_hours:
+        one: "1 time"
+        other: "%{count} timer"
+      x_days:
+        one: "1 dag"
+        other: "%{count} dage"
+      about_x_months:
+        one: "1 måned"
+        other: "%{count} måneder"
+      x_months:
+        one: "1 måned"
+        other: "%{count} måneder"
+      about_x_years:
+        one: "1 år"
+        other: "%{count} år"
+      over_x_years:
+        one: "1 år"
+        other: "%{count} år"
+      almost_x_years:
+        one: "1 år"
+        other: "%{count} år"
+  notifications:
+    header: "Notifikationer"

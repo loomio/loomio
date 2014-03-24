@@ -7,6 +7,7 @@ cs:
       blog: 'Blog'
       contact: 'Kontakt'
       press: 'Tisk'
+      try_it: 'Vyzkoušejte to'
       log_in: 'PŘIHLÁSIT SE'
       video: "Dozvěďte se více o tom, jak Loomio funguje"
       crowdfunding: 'Mrkněte se na crowdfundingovou kampaň'
@@ -19,7 +20,7 @@ cs:
     hero:
       head_html: 'Svět potřebuje lepší způsob, jak <strong>společně rozhodovat</strong>.'
       subhead: 'Pomozte nám ho vytvořit.'
-      desc: 'Loomio je svobodný a bezplatný open source software, který umožňuje komukoliv, kdekoliv, aby se podílel na rozhodnutích, které jej ovlivňují'
+      desc_html: 'Loomio je svobodný, bezplatný, <a href="https://github.com/loomio/loomio">open source</a> software pro kohokoliv, kdekoliv, aby se podílel na rozhodnutích, které jej ovlivňují.'
     product:
       header_html: 'Když vyslechneme <strong>všechny hlasy</strong>, činíme <strong>lepší rozhodnutí</strong>.'
       step1:
