@@ -11,7 +11,7 @@ class InvitePeopleMailer < BaseMailer
     @invitation = invitation
     @message_body = message_body
     mail to: invitation.recipient_email,
-         from: "#{sender.name} <notifications@loomio.org>",
+         from: "#{sender.name} <#{sender.email}>",
          reply_to: sender.email,
          subject: t("email.to_join_group.subject", member: @invitation.inviter.name, group_name: @invitation.invitable_name)
   end
@@ -22,7 +22,7 @@ class InvitePeopleMailer < BaseMailer
     @inviter = invitation.inviter
     @message = message
     mail to: invitation.recipient_email,
-         from: "#{sender.name} <notifications@loomio.org>",
+         from: "#{sender.name} <#{sender.email}>",
          reply_to: sender.email,
          subject: t("email.to_join_discussion.subject", who: @invitation.inviter.name)
   end
