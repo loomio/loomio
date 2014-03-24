@@ -1,15 +1,33 @@
 - form_params ||= {}
 - form_params.merge!({validate: true, html: {'data-current-privacy' => group.privacy}})
-- privacy_options = group_privacy_options(group)
-- privacy_options_disabled = group_privacy_options_disabled(group)
 
 = simple_form_for group, form_params do |f|
   = f.input :name, label: false
   = f.input :description, as: :text, label: false
-  = f.input :privacy, :as => 'radio_buttons', collection: privacy_options, disabled: privacy_options_disabled
-  - if group.is_a_subgroup?
-    = f.input :viewable_by_parent_members, inline_label: group_viewable_by_parent_label(group), label: false
 
-  = f.input :members_invitable_by, :as => "radio_buttons", collection: group_invitable_by_options(group)
+  = f.input :visible,
+            label: 'Finding and joining the group',
+            as: :radio_buttons,
+            collection: [[label_and_description('Findable and Joinable', 'People can find the group and ask to join it'), true],
+                         [label_and_description('Hidden and Invite only', 'The group wont be indexed by search engines or listed publicly on our site. Membership by invitation only'), false]]
+
+  = f.input :private_discussions_only,
+            label: "Allow private discussions?",
+            as: :radio_buttons,
+            collection: [['Allow public discussions', false],
+                         ['Private discussions only', true]]
+
+  - if group.is_subgroup?
+    = f.input :visible_to_parent_members,
+              inline_label: "Allow #{group.parent_name} members to see private discussions",
+              parent_group_name: group.parent_name,
+              label: false
+
+  = f.input :members_invitable_by,
+            as: :radio_buttons,
+            collection: [[t('simple_form.labels.group.members_invitable_by_members'), :members],
+                         [t('simple_form.labels.group.members_invitable_by_coordinators'), :admins]]
+
   = f.input :parent_id, :as => :hidden, :input_html => { :value => group.parent.id } if group.parent
   = f.submit submit_text, class: 'btn btn-info btn-large', id: 'group_form_submit', :data => { :disable_with => submit_text }
+

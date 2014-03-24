@@ -15,20 +15,18 @@ class Queries::VisibleDiscussions < Delegator
     if @user.present? && group_ids.present?
                                   # group_id is in requested group_ids
       @relation = @relation.where("group_id IN (:group_ids) AND
-                                  -- and they are a member of the group
-                                  (group_id IN (:user_group_ids) OR
-                                  -- or the discussion is public and the group is not secret
-                                  (private = FALSE AND groups.privacy IN ('private', 'public')) OR
-                                  -- or user belongs to parent group...... and that helps
-                                  (groups.viewable_by_parent_members = TRUE AND groups.parent_id IN (:user_group_ids)))",
+                                  -- the discussion is public
+                                  ((discussions.private = FALSE AND groups.private_discussions_only = FALSE) OR
+                                  -- or they are a member of the group
+                                   (group_id IN (:user_group_ids)) OR
+                                  -- or user belongs to parent group and permission is inherited
+                                  (groups.visible_to_parent_members = TRUE AND groups.parent_id IN (:user_group_ids)))",
                                   group_ids: group_ids,
                                   user_group_ids: @user.cached_group_ids)
     elsif @user.present? && group_ids.blank?
       @relation = @relation.where('group_id IN (:user_group_ids)', user_group_ids: @user.cached_group_ids)
     elsif @user.blank? && group_ids.present?
-      @relation = @relation.where("group_id IN (:group_ids) AND
-                                  (private = FALSE AND groups.privacy IN ('private', 'public')) AND
-                                  private = FALSE",
+      @relation = @relation.where("group_id IN (:group_ids) AND discussions.private = FALSE AND groups.private_discussions_only = FALSE",
                                   group_ids: group_ids)
     else
       @relation = []
@@ -52,16 +50,6 @@ class Queries::VisibleDiscussions < Delegator
 
   def followed
     @relation = @relation.where('dv.following = ? OR dv.following IS NULL', true)
-    self
-  end
-
-  def without_open_motions
-    @relation = @relation.where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND motions.closed_at IS NULL)")
-    self
-  end
-
-  def with_open_motions
-    @relation = @relation.joins(:motions).merge(Motion.voting)
     self
   end
 end

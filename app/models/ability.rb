@@ -14,16 +14,15 @@ class Ability
       if group.archived?
         false
       else
-        case group.privacy.to_s
-        when 'public'
+        if group.visible?
           true
-        when 'private'
-          true
-        when 'hidden'
-          if group.viewable_by_parent_members?
-            @member_group_ids.include?(group.id) or @member_group_ids.include?(group.parent_id)
+        else
+          if @member_group_ids.include?(group.id)
+            true
+          elsif group.visible_to_parent_members?
+            @member_group_ids.include?(group.parent_id)
           else
-            @member_group_ids.include?(group.id)
+            false
           end
         end
       end
@@ -32,7 +31,7 @@ class Ability
     # TODO: Refactor to use subscription resource
     can [:view_payment_details,
          :choose_subscription_plan], Group do |group|
-      group.is_top_level? and @admin_group_ids.include?(group.id) and !group.has_manual_subscription?
+      group.is_parent? and @admin_group_ids.include?(group.id) and !group.has_manual_subscription?
     end
 
     can [:update,
@@ -68,7 +67,7 @@ class Ability
     end
 
     can :invite_outsiders, Group do |group|
-      if group.is_a_subgroup? and group.parent_is_hidden?
+      if group.is_subgroup? and group.parent_is_hidden?
         false
       else
         true
@@ -76,7 +75,7 @@ class Ability
     end
 
     can :create, Group do |group|
-      if group.is_top_level?
+      if !group.is_subgroup?
         true
       elsif @member_group_ids.include?(group.parent_id)
         true
@@ -107,9 +106,9 @@ class Ability
     can :request_membership, Group do |group|
       if group.archived?
         false
-      elsif group.is_not_hidden?
+      elsif group.is_public?
         true
-      elsif group.is_a_subgroup? and group.viewable_by_parent_members? and @member_group_ids.include?(group.parent_id) # assumes group is hidden
+      elsif group.visible_to_parent_members? and @member_group_ids.include?(group.parent_id)
         true
       else
         false
@@ -138,7 +137,7 @@ class Ability
         true
       elsif @member_group_ids.include?(discussion.group_id)
         true
-      elsif discussion.group.viewable_by_parent_members? &&
+      elsif discussion.group.visible_to_parent_members? &&
             @member_group_ids.include?(discussion.group.parent_id)
         true
       else

@@ -55,10 +55,12 @@ class User < ActiveRecord::Base
   has_many :groups,
            :through => :memberships,
            conditions: { archived_at: nil }
-  has_many :public_groups,
+
+  has_many :visible_groups,
            :through => :memberships,
            :source => :group,
-           :conditions => { :privacy => 'public' }
+           :conditions => { visible: true }
+
   has_many :adminable_groups,
            :through => :admin_memberships,
            :class_name => 'Group',

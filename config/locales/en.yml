@@ -1,4 +1,7 @@
 en:
+  explore:
+    go_to_group: "Go to %{group_name}"
+
   activerecord:
     errors:
       messages:
@@ -106,6 +109,7 @@ en:
     user_already_admin: "%{which_user} is already a coordinator of this group."
     user_already_member: "%{which_user} is already a member of this group."
     user_not_admin: "Sorry, %{which_user} must be a coordinator of this group to access this."
+
   success:
     added_to_group: "You have been added to %{which_group}."
     close_date_changed: "Close date successfully changed."
@@ -124,6 +128,7 @@ en:
     position_updated: "Position updated."
     proposal_created: "Proposal successfully created."
     proposal_deleted: "Proposal deleted."
+
   datetime:
     distance_in_words:
       less_than_x_seconds:
@@ -803,6 +808,11 @@ en:
         members_invitable_by_coordinators: "Coordinators only"
         members_invitable_by_members: "All group members"
         privacy: Privacy
+        visibility_visible_header: 'Visible'
+        visibility_hidden_header: 'Hidden'
+        visibility_visible_description: 'People can find this group and ask to join.'
+        visibility_hidden_description: 'Joining this group is by invitation only.'
+
         privacy_public_header: Public
         privacy_public_description: Discussions are public, unless made private. Anyone can find the group and ask to join.
         privacy_private_header: Mostly private
@@ -815,7 +825,7 @@ en:
         group_members_invitable_by:
           "Only coordinators"
         submit: Submit
-        viewable_by_parent_members_header: Allow all %{group} members to see this subgroup and its discussions
+        visible_to_parent_members_header: Allow all %{group} members to see this subgroup and its discussions
       membership_request:
         introduction: "Introduce yourself"
       motion:

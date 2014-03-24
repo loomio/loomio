@@ -12,7 +12,7 @@ describe Queries::VisibleMotions do
 
   describe 'privacy' do
     context 'public' do
-      before { group.update_attribute(:privacy, 'public') }
+      before { group.update_attribute(:visible, true) }
 
       it 'guests can see motions' do
         subject.should include motion
@@ -25,7 +25,7 @@ describe Queries::VisibleMotions do
     end
 
     context 'hidden' do
-      before { group.update_attribute(:privacy, 'hidden') }
+      before { group.update_attribute(:visible, false) }
 
       it 'guests cannot see motions' do
         subject.should_not include motion
@@ -39,7 +39,7 @@ describe Queries::VisibleMotions do
 
     context 'viewable by parent members' do
       let(:parent_group) { create :group }
-      let(:group) { create :group, parent: parent_group, viewable_by_parent_members: true, privacy: 'hidden' }
+      let(:group) { create :group, parent: parent_group, visible_to_parent_members: true, visible: false }
 
       it 'guests cannot see motions' do
         subject.should_not include motion

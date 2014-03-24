@@ -1,0 +1,47 @@
+@import 'settings';
+@import "bootstrap/mixins";
+@import "mixins";
+
+
+body.explore {
+  font-family: 'OpenSans', sans-serif;
+  h1 { font-size: 24px; }
+  h2 { font-size: 14px; }
+  h1, h2 {
+    color: #989898;
+    line-height: 1.2;
+    margin-bottom: 0;
+    text-transform: uppercase;
+  }
+
+  .card {
+    background-color: white;
+    padding: 1.5em 1.6em;
+    margin-bottom: 1.7em;
+  }
+
+  .header {
+    @extend .card;
+    padding: 2em 1.6em;
+  }
+  .main-container { background-color: $main-background; }
+
+
+  .category {
+    @extend .card;
+  }
+
+  .group-container {
+    @extend .card;
+    margin-bottom: 1em;
+    h1 {
+      font-size: 22px;
+      text-transform: none;
+    }
+  }
+
+  .groups-row {
+    margin-bottom: 2.6em;
+  }
+}
+
