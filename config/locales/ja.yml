@@ -29,6 +29,7 @@ ja:
     cant_view_member_profile: "同じグループではないので、メンバーのプロフィールを見ることはできません"
     contribution: "寄付をするにはログインしてください"
     discussion_not_created: "ディスカッションは作成されませんでした"
+    discussion_not_moved: "このディスカッションを %{destination_group.name} に移動させる権限がありません。"
     group_not_archived: "グループは無効になりませんでした"
     invalid_close_date: "無効な締切日です"
     invalid_email: "少なくとも一つの有効なEメールアドレスを入力してください"
@@ -156,6 +157,11 @@ ja:
     motion_outcome_updated: "提案の結論をアップデートしました"
   edit_discussion_context: "ディスカッションの情報を編集"
   request_new_group: "グループを開始する"
+  start_new_group: "新しいグループを開始する"
+  start_new_group_hint: "意思決定を開始する"
+  find_a_group: "グループを見つける"
+  find_a_group_hint: "公開グループを調査する"
+  no_group_header: "Loomio Betaにようこそ"
   empty_notifications: "通知はありません"
   see_all_notifications: "全ての通知を見る"
   profile: "プロフィール"
@@ -270,6 +276,7 @@ ja:
   current_decision: "現在の提案"
   previous_decisions: "過去の提案"
   see_previous_decisions: "過去の提案を見る"
+  see_more: "詳細を見る"
   create_new_proposal: "新しい提案を作成する"
   empty_decision_list_html: "決定を行う準備はできましたか？\n誰でも提案を開始することができます。"
   empty_decision_index: "このグループはまだ提案を終了していません"
@@ -441,6 +448,14 @@ ja:
     submit: 寄付
     tooltip: 私たちの地域資金提供モデルについてもっとよく知る
     thought_about_contributing: 寄付をするチャンス
+    thought_about_contributing_description: |
+      Loomioは、影響を持つ決定に誰でも参加しやすくするために働いている社会事業組合です。
+
+      お金は共同意思決定の障壁になるべきではありません。Loomioは、ユーザーのコミュニティからの寄付や、使用している公式の機関によって支払われている購読料によって資金を供給されています。
+
+      あなたの寄付は、私たちが広告のないLoomioの独立を維持し、コミュニティの中で素晴らしいことを行っているグループに自由に利用可能になるということを意味しています。
+
+      これを実現させていただいて、ありがとうございます！
     thank_you_title: Loomioに貢献してくれてありがとう！
     making_a_donation: 寄付をする
   new_password: "新しいパスワード"
@@ -459,12 +474,16 @@ ja:
   or: "または"
   forgot_your_password: "パスワードを忘れた場合はこちら"
   dont_have_an_account: "アカウントを持っていませんか？"
+  link_it_up_instead: "代わりにつなげる"
   sign_up_via: "を通してサインアップしてください"
   or_fill_in_this_form: "またはこのフォームを埋めてください"
   already_have_account: "すでにLoomioアカウントを持っていますか？"
   confirm_your_details: "あなたの詳細情報を確認する"
+  link_up_your_account: "アカウントをつなげる"
+  log_in_to_your_loomio_account: " %{provider_name} につなげるためにLoomioアカウントにログインする"
   now_that_your_logged_in: "今、あなたは %{provider_name} でログインしています、Loomioアカウントを作成するにはあなたの詳細情報を確認してください"
   inactive_html: "ごめんなさい、このアカウントは現在有効ではありません。\n質問がありましたら、 <a href='%{path_to_contact}'>連絡してください</a>。"
+  create_an_account_html: 'Loomio Betaのアカウントを作成する'
   log_in: "ログイン"
   join_group:
     log_in: "ログインして %{group_name} に参加する"
@@ -531,6 +550,7 @@ ja:
       translations: '翻訳のお問い合わせ'
     messages:
       email_html: "このフォームを埋めてください、もしくは <a href='mailto:%{email}'>%{email}</a> にメールを送ってください"
+      social_html: "<br/><a href='%{facebook}' target='_blank'>facebook</a>や<a href='%{google}' target='_blank'>google+</a>、<a href='%{twitter}' target='_blank'>twitter</a>からも私たちに参加することもできます。"
   discussion_form:
     new:
       header: "ディスカッションを開始する"
@@ -604,12 +624,15 @@ ja:
         privacy: 個人情報
         privacy_public_header: 公開
         privacy_private_header: ほとんど非公開
+        privacy_private_description: ディスカッションは、明示的に公開に設定しない限り、非公開になります。誰でもグループを見つけて参加するよう要求することができます。
         privacy_hidden_header: 非表示  (完全に非公開)
+        privacy_hidden_description: ディスカッションはいつも非公開です。グループを見つめて参加するのは、招待によるもののみです。
         privacy_parent_group_members_header: 親グループのメンバーから閲覧可能
         privacy_parent_group_members_description: 非表示と同じようにグループとディスカッションのみ、親グループのメンバーから見られます
         privacy_parent_group_members_description_short: メンバーおよび親グループのメンバーのみ、このグループとそのディスカッションを見ることができます
         group_members_invitable_by: "コーディネーターのみ"
         submit: 提出する
+        viewable_by_parent_members_header: ' %{group} のすべてのメンバーに、子グループとそのディスカッションの閲覧を許可する'
       membership_request:
         introduction: "自己紹介をしてください"
       motion:
@@ -666,6 +689,7 @@ ja:
       subject: "新しいLoomioグループを立ち上げる： %{group_name}"
     user_added_to_a_group:
       subject: "%{who}　が　%{which_group}　にあなたを追加しました"
+      content: "%{who} があなたをLoomioの %{which_group} に追加しました。グループに行くにはここをクリック："
     unsubscribe: "購読をやめる、またはEメール設定を変更する："
     unsubscribe_html: "購読を取り消す、またはメールの設定を変更するためには<a href='%{link_path}'>%{link_text}</a>"
     view_comment: "Loomioのコメントを見るにはここをクリックしてください"
@@ -691,6 +715,7 @@ ja:
     invitation:
       hi: "こんにちは %{name}、"
       intro: "下のリンクをクリックしてあなたのグループ %{group_name} を立ち上げてください："
+      closing_message: "何か質問があったり、あなたを助けるために私たちにできることがあるなら、是非お聞きしたいです　ーただこのメールに返信してください"
       thanks: |
         ありがとう！
         Loomioチーム
