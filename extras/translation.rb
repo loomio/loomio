@@ -3,7 +3,7 @@ class Translation
                'български' => :bg,
                'Català' => :ca,
                'čeština' => :cs,
-               'Chinese (Taiwan)' => :zh,
+               '正體中文' => :zh, #zh-Hant, Chinese (traditional), Taiwan
                'Deutsch' => :de,
                'Español' => :es,
                'ελληνικά' => :el,
