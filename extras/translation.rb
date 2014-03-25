@@ -22,7 +22,8 @@ class Translation
   EXPERIMENTAL_LANGUAGES = {'Chinese (Mandarin)' => :cmn,
                             'Italiano' => :it,
                             'తెలుగు' => :te,
-                            'Gaelic (Irish)' => :ga}
+                            'Gaelic (Irish)' => :ga,
+                            'Svenska' => :sv}
 
   FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl, :zh]
 
