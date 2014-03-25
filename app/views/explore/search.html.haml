@@ -1,0 +1,4 @@
+= render 'header'
+
+= render 'category', heading: "Search results for '#{@query}'", groups: @groups
+= paginate @groups

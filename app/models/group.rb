@@ -29,9 +29,10 @@ class Group < ActiveRecord::Base
   pg_search_scope :search_full_name, against: [:name, :description],
     using: {tsearch: {dictionary: "english"}}
 
-  scope :visible_on_explore_front_page, -> { categorised_any.parents_only }
+  scope :visible_on_explore_front_page, -> { published.categorised_any.parents_only }
 
   scope :categorised_any, -> { where('groups.category_id IS NOT NULL') }
+  scope :in_category, -> (category) { where(category_id: category.id) }
 
   scope :archived, lambda { where('archived_at IS NOT NULL') }
   scope :published, lambda { where(archived_at: nil) }
@@ -42,6 +43,7 @@ class Group < ActiveRecord::Base
         order('memberships_count DESC')
 
   scope :visible_to_the_public,
+        published.
         where(privacy: 'public').
         parents_only
 
