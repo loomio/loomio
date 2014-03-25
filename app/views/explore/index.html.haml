@@ -1,19 +1,4 @@
-.row-fluid
-  .span12.header
-    %h1 Explore Loomio
+= render 'header'
 
 - @groups_by_category.each_pair do |category, groups|
-  .row-fluid
-    .span12.category
-      %h2= category.name
-
-  .row-fluid.groups-row
-    .span6.col
-      - groups.each_with_index do |group, index|
-        - next unless index % 2 == 0
-        =render 'group', group: group
-
-    .span6.col
-      - groups.each_with_index do |group, index|
-        - next unless index % 2 == 1
-        =render 'group', group: group
+  = render 'category', category: category, groups: groups
