@@ -18,7 +18,7 @@ zh:
       privacy: '隱私'
       services: '服務'
     hero:
-      head_html: '這世界需要一個更好的方法來 <strong>共同決定一件事</strong>.'
+      head_html: '這世界需要一個更好的方法來 <br /><strong>共同決定一件事</strong>.'
       subhead: '助我們建立它'
       desc_html: 'Loomio 是一個免費、 <a href="https://github.com/loomio/loomio">開放源碼</a> 的軟體。讓任何人在任何地方都能參與決策。'
     product:
