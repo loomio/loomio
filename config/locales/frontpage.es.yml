@@ -7,6 +7,7 @@ es:
       blog: 'Blog'
       contact: 'Contacto'
       press: 'Prensa'
+      try_it: 'Probalo!'
       log_in: 'Entrar'
       video: "Más sobre cómo funciona Loomio"
       crowdfunding: 'Echa un vistazo a la campaña de financiación colectiva'
@@ -19,7 +20,7 @@ es:
     hero:
       head_html: 'El mundo necesita mejores caminos para <strong>tomar decisiones en conjunto.</strong>'
       subhead: 'Ayúdanos a crearlo.'
-      desc: 'Loomio es gratis y open-source software para la toma de decisiones para tod@s, en cualquier parte '
+      desc_html: 'Loomio este un software gratuit si <a href="https://github.com/loomio/loomio">open-source</a> disponibil pentru oricine, oriunde sa participe in luarea impreuna a deciziilor'
     product:
       header_html: 'Cuando escuchamos <strong>todas las voces</strong>, tomamos <strong>mejores decisiones. </strong>'
       step1:
