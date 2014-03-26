@@ -10,11 +10,11 @@ zh:
       x_seconds:
         one: "1 秒"
       less_than_x_minutes:
-        one: "1 分"
+        one: "1 分鐘"
       x_minutes:
-        one: "1 分"
+        one: "1 分鐘"
       about_x_hours:
-        one: "1 時"
+        one: "1 小時"
       x_days:
         one: "1 日"
       about_x_months:
