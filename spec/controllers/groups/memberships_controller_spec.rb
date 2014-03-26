@@ -50,4 +50,25 @@ describe Groups::MembershipsController do
       end
     end
   end
+
+  context 'signed out user' do
+
+    it 'can view public membership list' do
+      @public = create(:group)
+      get :index, group_id: @public
+      response.should render_template('index')
+    end
+
+    it 'can view private membership list' do
+      @private = create(:group, privacy: 'private')
+      get :index, group_id: @private
+      response.should render_template('index')
+    end
+
+    it 'cannot view hidden membership list' do
+      @hidden = create(:group, privacy: 'hidden')
+      get :index, group_id: @hidden
+      response.should redirect_to '/users/sign_in'
+    end
+  end
 end
