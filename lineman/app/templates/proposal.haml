@@ -3,28 +3,38 @@
     .card__header
       %h2
         {{proposal.name}}
-      %p proposed by {{proposal.author.name}}
-      %p closing {{proposal.closing_at | date:'medium' }}
+        %span.card__header--details
+          %a{ href: '#' }
+            {{proposal.closing_at | timeFromNowInWords:true }} left
+    .media__details
+      Proposed by {{proposal.author.name}} on {{proposal.created_at | timeFromNowInWords:true }}
+      .media__details
     .card__content
-      .pull-right
-        %i.icon-pie-graph{style: "font-size: 10em; color: green;"}
-      {{proposal.description}}
-    .votes
-      yes: {{proposal.yes_votes_count}}
-      no: {{proposal.no_votes_count}}
-      abstain: {{proposal.abstain_votes_count}}
-      block: {{proposal.block_votes_count}}
-    .clearfix
-    .row.decision-buttons
+      .proposal-description
+        {{proposal.description}}
+      .pie
+        .pie-graph{'pie-chart' => true, ng_model: 'proposal'}
+      .decision-tools
+        .vote.agree{ng_click: 'selectPosition("yes")'}
+          %img{src: '/img/yes.png'}
+        .vote.abstain{ng_click: 'selectPosition("abstain")'}
+          %img{src: '/img/abstain.png'}
+        .vote.disagree{ng_click: 'selectPosition("no")'}
+          %img{src: '/img/no.png'}
+        .vote.block{ng_click: 'selectPosition("block")'}
+          %img{src: '/img/block.png'}
+      .vote_count
+        {{proposal.votes_count}} votes
       .agree{ng_click: 'selectPosition("yes")'}
-        %i.fa.fa-smile-o{style: "color: green"}
-      .abstain{ng_click: 'selectPosition("abstain")'}
-        %i.fa.fa-meh-o{style: "color: orange"}
-      .disagree{ng_click: 'selectPosition("no")'}
-        %i.fa.fa-frown-o{style: "color: pink"}
-      .block{ng_click: 'selectPosition("block")'}
-        %i.fa.fa-warning{style: "color: red"}
 
+        / %i.fa.fa-smile-o{style: "color: green"}
+
+      / .abstain{ng_click: 'selectPosition("abstain")'}
+      /   %i.fa.fa-meh-o{style: "color: orange"}
+      / .disagree{ng_click: 'selectPosition("no")'}
+      /   %i.fa.fa-frown-o{style: "color: pink"}
+      / .block{ng_click: 'selectPosition("block")'}
+      /   %i.fa.fa-plus{style: "color: red"}
     .row.statement-form{ng_show: 'voteFormIsExpanded'}
       %form{ng_submit: 'submitVote()'}
         %fieldset{ng_disable: 'voteFormIsDisabled'}

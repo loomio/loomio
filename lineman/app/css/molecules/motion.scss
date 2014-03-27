@@ -9,15 +9,67 @@
 }
 
 .new-position{
-  margin-top: $card-gutter;
+  margin-top: $card-margin;
 }
 
-.decision-buttons{
-  .agree{ @include make-xs-column(3); }
-  .abstain{ @include make-xs-column(3); }
-  .disagree{ @include make-xs-column(3); }
-  .block{ @include make-xs-column(3); }
+.proposal-description{
+  @include make-row($card-gutter);
+  margin-bottom: $card-margin;
+  @include screen-size(medium-up) {
+    @include make-xs-column(6);
+    padding-left: 0;
+  }
 }
+
+.pie {
+  @include make-row($card-gutter);
+  margin-bottom: $card-margin;
+  margin-right: $card-margin;
+  @include screen-size(medium-up) {
+    @include make-xs-column(5);
+    float: right;
+  }
+  .pie-graph {
+    margin: 0 auto;
+    text-align: center;
+    width: 66.67%;
+    @include screen-size(medium-up) {
+      width: 100%;
+    }
+  }
+}
+
+.decision-tools{
+  @include make-row($card-gutter);
+  text-align: center;
+  margin-bottom: $card-margin;
+  margin-top: 10px;
+  margin-left: -20px;
+  @include screen-size(medium-up) {
+    @include make-xs-column(6);
+    padding-left: 0;
+  }
+  img { width: 140%; }
+  .vote {
+    @include screen(small-medium) {
+      @include make-xs-column(3);
+    }
+    @include screen-size(medium-up) {
+      float: left;
+      margin-right: 16px;
+    }
+  }
+
+}
+
+.vote_count {
+  @include make-row($card-gutter);
+  @include screen-size(medium-up) {
+    @include make-xs-column(6);
+    padding-left: 0;
+  }
+}
+
 
 .new-position{
   .agree{ @include make-xs-column(12); }

@@ -5,7 +5,6 @@
 
 */
 
-
 .media{
   margin-bottom: 2px;
 }
@@ -14,11 +13,7 @@
 }
 .media__img {
   float: left;
-  margin-right: $card-gutter;
-}
-.media__img--right {
-  float: right;
-  margin-left: $card-gutter;
+  margin-right: $card-margin;
 }
 .media__img--card {
   @include screen-size(medium-up) {
@@ -27,8 +22,19 @@
     left: -90px;
   }
 }
+
+.media__img--right {
+  float: right;
+  margin-left: $card-margin;
+}
+
 .media__details {
   color: #AAA;
   font-size: 0.8em;
-  margin-top: 4px;
+  margin-bottom: $card-margin;
+}
+
+.media__text--details {
+  @extend .media__text;
+  @extend .media__details;
 }
