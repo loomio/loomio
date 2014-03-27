@@ -6,7 +6,6 @@ describe InboxPreferencesForm do
     membership.group = group
     membership.user = user
     membership.inbox_position = position
-    membership.access_level = 'member'
     membership.save!
     membership
   end

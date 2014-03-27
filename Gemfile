@@ -52,6 +52,7 @@ gem 'closure_tree', '~> 4.3.0'
 gem 'ruby-progressbar', '~> 1.4.1'
 gem 'bing_translator', '~> 4.2.0'
 gem 'librato-rails'
+gem 'browser'
 
 # Gems used only for assets and not required
 # in production environments by default.

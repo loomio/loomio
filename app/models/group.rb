@@ -85,7 +85,6 @@ class Group < ActiveRecord::Base
   has_one :group_request
 
   has_many :memberships,
-    :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
     :dependent => :destroy,
     :extend => GroupMemberships
 
@@ -98,7 +97,7 @@ class Group < ActiveRecord::Base
            dependent: :destroy
 
   has_many :admin_memberships,
-    :conditions => {:access_level => 'admin'},
+    :conditions => { admin: true },
     :class_name => 'Membership',
     :dependent => :destroy
 

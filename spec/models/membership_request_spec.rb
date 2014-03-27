@@ -91,7 +91,7 @@ describe MembershipRequest do
     end
 
     it 'cannot request if member exists with same email address' do
-      create :membership, group: group, user: requestor, access_level: 'member'
+      create :membership, group: group, user: requestor
       membership_request_2.email = requestor.email
       membership_request_2.valid?
       membership_request_2.should have(1).errors_on(:email)
