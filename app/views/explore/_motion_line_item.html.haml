@@ -1,0 +1,18 @@
+%li.motion.row-fluid{data:{motion_id: item.id}}
+  =link_to item do
+    .span1
+      .icon
+        -values = item.vote_counts.values
+        .activity-container
+          %span.count.unread-votes-count
+            - count = item.total_votes_count
+            - if count > 0
+              =count
+        .motion-sparkline
+          -if values.sum == 0
+            0,0,0,0,1
+          -else
+            =values.join(',')
+
+    .span11.title
+      = item.title

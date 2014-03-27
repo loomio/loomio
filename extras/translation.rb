@@ -3,6 +3,7 @@ class Translation
                'български' => :bg,
                'Català' => :ca,
                'čeština' => :cs,
+               '正體中文' => :zh, #zh-Hant, Chinese (traditional), Taiwan
                'Deutsch' => :de,
                'Español' => :es,
                'ελληνικά' => :el,
@@ -23,7 +24,7 @@ class Translation
                             'తెలుగు' => :te,
                             'Gaelic (Irish)' => :ga}
 
-  FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl]
+  FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl, :zh]
 
   VIDEO_SUPPORTED_LOCALES  = [:en, :pt, :el, :es, :ca, :cs, :fr, :ja, :nl, :vi]
 

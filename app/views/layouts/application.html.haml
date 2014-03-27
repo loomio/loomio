@@ -16,9 +16,9 @@
     - analytics_scope do
       = render 'google_tag_manager'
     .main-container.container
-      = render 'announcements'
-      = render 'header'
-      = render 'flash_messages', :flash => flash, :on_landing_page => false
+      = render 'application/announcements'
+      = render 'application/header'
+      = render 'application/flash_messages', :flash => flash, :on_landing_page => false
       .page-container
         = yield
       = render 'footer_logged_in'

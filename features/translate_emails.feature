@@ -31,10 +31,6 @@ Feature: deliver emails in the user's prefered language
     Then "John" should receive the proposal closing soon email in English
     And "Viv" should receive the proposal closing soon email in Spanish
 
-  Scenario: proposal closed email
-    Given "John" has closed their proposal
-    Then the proposal closed email should be delivered to "Eduardo" in Spanish
-
   Scenario: proposal outcome email
     Given "John" has closed their proposal
     And "John" has set a proposal outcome

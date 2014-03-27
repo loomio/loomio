@@ -192,7 +192,6 @@ ga:
   cancel_my_account: "Cuir mo chuntas ar ceal"
   remember_me: "Cuimhnigh orm"
   forgot_your_password: "Ar dhearmad tú d'fhocal faire?"
-  create_an_account: 'Cruthaigh cuntas'
   invitation:
     no_invitations_left: "Is dona linn ach níl aon chuireadh fágtha agat"
     message_body: "Teachtaireacht an chuiridh"
@@ -333,13 +332,13 @@ ga:
   name: "Ainm"
   new_activity: "Gníomhaíocht nua"
   next: "Ar aghaidh"
+  other: "Eile"
   outcome: "Toradh"
   password: "Focal faire"
   prev: "Roimhe"
   more: "Tuilleadh..."
   translate_this_string: "Aistrigh chuig %{language}"
   options: "Roghanna"
-  other: "Eile"
   ok_got_it: "Tuigim é!"
   remove: "Bain é"
   save: "Taisc"

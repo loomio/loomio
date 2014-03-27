@@ -1,1 +1,65 @@
-zh: {}
+zh:
+  frontpage:
+    view_this_in_your_language: '以 %{language} 查看此網站'
+    title:
+      collaborative_decision_making: 協同決策
+    link:
+      blog: '部落格'
+      contact: '聯絡資訊'
+      press: '媒體資訊'
+      try_it: '來試試吧'
+      log_in: '登入'
+      video: "瞭解更多關於 Loomio 如何運作"
+      crowdfunding: '查證群眾募資活動'
+      more: '更多'
+      top: '頂端'
+      public_groups: '公開群組'
+      terms: '項目'
+      privacy: '隱私'
+      services: '服務'
+    hero:
+      head_html: '這世界需要一個更好的方法來 <strong>共同決定一件事</strong>.'
+      subhead: '助我們建立它'
+      desc_html: 'Loomio 是一個免費、 <a href="https://github.com/loomio/loomio">開放源碼</a> 的軟體。讓任何人在任何地方都能參與決策。'
+    product:
+      header_html: '當我們聽到 <strong>所有的聲音</strong> 時，我們可以作 <strong>更好的決策</strong>。'
+      step1:
+        header: '1. 事項討論'
+        desc: '開啟任何主題的討論，並吸引志向相同的人。一同分享各種觀點，一起萌發新想法'
+      step2:
+        header: '2. 建立協議'
+        desc: '任何人可以提供一個行動方案。人們可以同意、放棄、反對 或凍結方案 --- 這樣你
+
+          可以了解每個人的感覺，與背後的原因。'
+      step3:
+        header: '3. 共同決策'
+        desc: '一起發展提案，使之逐漸適用於每個人。每一個決策都有明確的期限，所以你可以得到明確的結果。'
+    crowdfunding:
+      header: '我們用群眾募資，建立這個平台，並且把它推廣給全世界來使用。'
+    prototype:
+      header_html: "我們已經建立一個 <strong>原型</strong>，來自 <strong>世界各地</strong> 的人們正使用它做一些令人驚豔的事："
+      subhead_html: '立即 <a href="%{try_loomio_link}">使用 Loomio Beta</a>，或是加入 <a href="%{join_campaign_link}">搶先體驗Loomio 1.0</a> 。'
+    mobile:
+      header_html: '一個可在任何裝置執行，以最棒的 <strong>開源行動技術</strong>打造的平台。'
+    quote:
+      header:
+        rushkoff_html: '"Loomio 展示了網際網路將人們帶向共識而非兩極化辯論的潛力" <div class="attributation">- <a href="http://rushkoff.com">Douglas Rushkoff</a>, <em>Present Shock</em> 作者</div>'
+        sifry_html: '“Loomio 正中了<strong>個人聲音</strong>與<strong>集體決策</strong>之間的好球帶.”<div class="attributation">– Micah Sifry, 編輯, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
+    team:
+      header: '關於 Loomio'
+      desc: '我們是一組小型的 open-source 開發者，也是社會正義的行動者，我們工作於 Enspiral 公司，位於紐西蘭 Aotearoa 區，透過網路，我們與來自世界各地的朋友、支持者與顧問一起合作。'
+    ideals:
+      community:
+        header: '社群導向協作'
+        desc: 'Loomio 是由互助會形成的。我們是社會企業，致力于以非盈利的方式，把正面衝擊社會的力量發揮到最大值。'
+      independent:
+        header: '獨立且中立'
+        desc: '我們維護了一個空間，任何政治獨立或互助性的團體都可以來。我們絕對不會販賣您的想法。'
+      open:
+        header: '免費且開放的軟體'
+        desc: 'Loomio 的程式原始碼是公開的資源，任何人都可以執行、閱讀、學習、修改或散佈。'
+      gift:
+        header: '禮物經濟學'
+        desc: 'Loomio 的贊助者，透過各自的支付方式來贊助。他們讓沒有錢的組織也有機會來使用這個無廣告的免費平台。'
+    vision:
+      header: '幫助我們，讓此願景成為現實。'
