@@ -375,7 +375,6 @@ it:
   forgot_your_password: "Dimenticato la password?"
   confirmation_not_received: "Non hai ricevuto le istruzioni per la conferma?"
   unlock_not_received: "Non hai ricevuto le istruzioni per lo sblocco?"
-  create_an_account: 'Crea un account'
   invitation:
     no_invitations_left: "Non hai più inviti"
     no_invitations_left_get_more: "Per favore manda una email a contact@loomio.org e vediamo cosa riusciamo a fare per aiutarti"
@@ -564,13 +563,13 @@ it:
   name: "Nome"
   new_activity: "Nuova attività"
   next: "Succ"
+  other: "Altro"
   outcome: "Risultato"
   password: "Password"
   prev: "Prec"
   more: "Altro..."
   translate_this_string: "Traduci in %{language}"
   options: "Opzioni"
-  other: "Altro"
   ok_got_it: "Okay, ho capito!"
   remove: "Rimuovi"
   save: "Salva"

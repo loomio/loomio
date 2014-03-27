@@ -1,1 +1,13 @@
-te: {}
+te:
+  frontpage:
+    link:
+      blog: 'బ్లాగు'
+      contact: 'సంప్రదించండి'
+      more: 'మరింత'
+      top: 'పైకి'
+      public_groups: 'బహిరంగ సమూహాలు'
+      terms: 'షరతులు'
+      services: 'సేవలు'
+    ideals:
+      independent:
+        header: 'స్వతంత్రం మరియు తటస్థం'

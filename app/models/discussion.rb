@@ -11,6 +11,14 @@ class Discussion < ActiveRecord::Base
   scope :order_by_latest_comment, order('last_comment_at DESC')
   scope :last_comment_after, lambda {|time| where('last_comment_at > ?', time)}
 
+  scope :public, where(private: false)
+  scope :private, where(private: true)
+  scope :with_motions, where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL)")
+  scope :without_open_motions, where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND motions.closed_at IS NULL)")
+  scope :with_open_motions, joins(:motions).merge(Motion.voting)
+  scope :not_by_helper_bot, -> { where('author_id NOT IN (?)', User.helper_bots.pluck(:id)) }
+
+
   validates_presence_of :title, :group, :author, :group_id
   validate :private_is_not_nil
   validates :title, :length => { :maximum => 150 }

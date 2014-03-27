@@ -196,6 +196,10 @@ class User < ActiveRecord::Base
     helper_bot
   end
 
+  def self.helper_bots
+    where(email: ['contact@loomio.org', 'contact@loom.io'])
+  end
+
   def self.find_by_email(email)
     User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
   end

@@ -71,7 +71,7 @@ class GroupsController < GroupBaseController
                                                             preload(:current_motion, {:group => :parent}).
                                                             page(params[:page]).per(20)
 
-    @closed_motions = @group.closed_motions
+    @closed_motions = Queries::VisibleMotions.new(user: current_user, groups: @group)
 
     build_discussion_index_caches
 
