@@ -4,6 +4,7 @@
     - title = @title ? @title : "Loomio | Collaborative Decision-Making"
     %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
     %title= title
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
     = stylesheet_link_tag "frontpage"
     = csrf_meta_tags
     = render 'social_metadata', description: @meta_description, title: @meta_title
