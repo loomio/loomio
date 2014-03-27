@@ -37,7 +37,6 @@ describe Membership do
 
   it "can have an inviter" do
     membership = user.memberships.new(:group_id => group.id)
-    membership.access_level = "member"
     membership.inviter = user2
     membership.save!
     membership.inviter.should == user2
