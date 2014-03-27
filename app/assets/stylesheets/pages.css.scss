@@ -332,69 +332,92 @@ a.btn-icon:hover { color: $dark-grey; }
     }
   }
 }
+$package-color: #51BD9E;
 .pages.services{
-  .subhead {
-    h1{margin-bottom: 24px;}
-    h2 {margin-bottom: 0}
+  body, h1, h2, h3, h4, h5, p, div {
+    font-family: 'OpenSans', sans-serif;
+    font-weight: 400;
+    color: #444;
+    font-size: 18px;
   }
-  .center{text-align: center;}
-  .deals{
-    margin: 2em 0;
-    ul{
-      margin-bottom: 1em;
+  p { text-align: justify; }
+  .inner-container{
+    padding: 60px 120px;
+  }
+  h1 {font-size:42px;}
+  .subtitle {
+    font-size: 28px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    line-height: 1.4em;
+    color: #888;
+  }
+  .description { margin-bottom: 30px; }
+  .package-titlearea {
+    background-color: $package-color;
+    padding: 30px;
+    p, h2, div { color: white; }
+    p {
+      margin-bottom: 0;
+      margin-top: 10px;
+      font-weight: 400;
     }
-    ul li{
-      padding-left: 0.5em;
-    }
-    .deal1, .deal3{
-      margin-top: 3em;
-      p{
-        font-size: 15px;
-        line-height: 18px;
-      }
-    }
-    .deal1{
-      width: 228px;
-      .price{margin-top: 153px;}
-    }
-    .deal2{
-      p{
-        font-size: 18px;
-        line-height: 24px;
-      }
-      h3{
-        font-size: 29px;
-        margin-bottom: 0.8em;
-      }
-      h4{ font-size: 18px; }
-      ul li {font-size: 15px; line-height: 18px;}
-      .btn{ margin-top: 28px; }
-      .explain{font-size: 96%;}
-      .price{margin-top: 34px}
-      width: 350px;
-      border: 1px solid #66B265;
-      background: #efffef;
-      padding: 1em;
-    }
-    .deal3{
-      width: 246px;
-      .price{margin-top: 24px;}
-    }
-    .price{
-      font-size: 110%;
-    }
-    .strike-through{ text-decoration: line-through; }
-    .talk-to-us{
-      font-weight: bold;
-      text-decoration: underline;
-      margin-top: 1em;
+    h2 {
+      font-size: 26px;
+      font-weight: 600;
     }
   }
-  .first-year-only{
-    font-size: 97%;
+  .package-content {
+    background-color: #E8E8E8;
+    padding: 30px;
+    margin-bottom: 40px;
+    h3 {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    li {
+      line-height: 2;
+      font-size: 0.9em;
+      font-style: italic;
+      font-weight: 400;
+    }
+  }
+  .package-btn:hover {
+    background-color: #209977;
+  }
+  .package-btn {
+    margin-top: 30px;
+    background-color: $package-color;
+    line-height: 1.4em;
+    padding: 0;
+    div { color: white; }
+    a {
+      display: block;
+      padding: 20px;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+    border-radius: 4px;
+  }
+  .package-btn-main {
+    font-weight: 700;
+    font-size: 22px;
+    padding: 6px;
+    text-align: center; 
+  }
+  .package-btn-sub {
+    text-align: center; 
+  }
+  a.package-link {
+    display: block;
     text-align: center;
+    text-decoration: underline;
+    margin-top: 20px;
+    font-weight: 600;
   }
 }
+
 .sessions.new section { margin-top: 0; }
 
 body.pages { margin-bottom: 34px; }
