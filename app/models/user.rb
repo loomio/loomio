@@ -42,11 +42,11 @@ class User < ActiveRecord::Base
     #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
 
   has_many :admin_memberships,
-           :conditions => { :access_level => 'admin' },
+           :conditions => { admin: true },
            :class_name => 'Membership',
            :dependent => :destroy
+
   has_many :memberships,
-           :conditions => { :access_level => Membership::MEMBER_ACCESS_LEVELS },
            :dependent => :destroy
 
   has_many :membership_requests,
@@ -102,7 +102,7 @@ class User < ActiveRecord::Base
   scope :daily_activity_email_recipients, where(:subscribed_to_daily_activity_email => true)
   scope :sorted_by_name, order("lower(name)")
   scope :admins, where(is_admin: true)
-  scope :coordinators, joins(:memberships).where('memberships.access_level = ?', 'admin').group('users.id')
+  scope :coordinators, joins(:memberships).where('memberships.admin = ?', true).group('users.id')
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
@@ -155,7 +155,7 @@ class User < ActiveRecord::Base
 
 
   def is_group_admin?(group)
-    memberships.for_group(group).with_access('admin').exists?
+    adminable_groups.include?(group)
   end
 
   def time_zone_city
