@@ -56,8 +56,8 @@ class Discussion < ActiveRecord::Base
   # don't use this.. it needs to be removed.
   # use DiscussionService.add_comment directly
   def add_comment(author, body, options = {})
-    options[:body] = body
     comment = Comment.new(options)
+    comment.body = body
     comment.author = author
     comment.discussion = self
     DiscussionService.add_comment(comment)
@@ -88,6 +88,8 @@ class Discussion < ActiveRecord::Base
   def current_motion_closing_at
     current_motion.closing_at
   end
+
+  alias_method :current_proposal, :current_motion
 
   def number_of_comments_since(time)
     comments.where('comments.created_at > ?', time).count

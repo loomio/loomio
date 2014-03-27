@@ -1,18 +1,13 @@
 require_relative '../../app/services/motion_service'
 
 module Events
-  class MotionOutcomeCreated
-  end
-  class MotionOutcomeUpdated
-  end
-  class MotionClosed
-  end
-  class MotionClosedByUser
-  end
-  class MotionBlocked
-  end
-  class NewVote
-  end
+  class MotionOutcomeCreated; end
+  class MotionOutcomeUpdated; end
+  class MotionClosed; end
+  class MotionClosedByUser; end
+  class NewMotion; end
+  class MotionBlocked; end
+  class NewVote; end
 end
 
 class Motion
@@ -20,7 +15,7 @@ end
 
 describe 'MotionService' do
   let(:group) { double(:group, present?: true) }
-  let(:motion) { double(:motion, outcome: "", group: group, :outcome= => true, :outcome_author= => true, :save! => true, save: true) }
+  let(:motion) { double(:motion, author: user, outcome: "", group: group, :outcome= => true, :outcome_author= => true, :save! => true, save: true) }
   let(:ability) { double(:ability, :authorize! => true) }
   let(:user) { double(:user, ability: ability) }
   let(:motion_params) { {outcome: "We won!"} }
@@ -31,6 +26,34 @@ describe 'MotionService' do
   before do
     Events::MotionOutcomeCreated.stub(:publish!).and_return(event)
     Events::MotionOutcomeUpdated.stub(:publish!).and_return(event)
+    Events::NewMotion.stub(:publish!).and_return(event)
+  end
+
+  describe 'create' do
+    after do
+      MotionService.create(motion)
+    end
+
+    it 'authorizes! the create' do
+      ability.should_receive(:authorize!).with(:create, motion)
+    end
+
+    it 'saves the motion' do
+      motion.should_receive(:save).and_return(true)
+    end
+
+    context 'motion saved' do
+      it 'fires the motion created event' do
+        Events::NewMotion.should_receive(:publish!).with(motion)
+      end
+    end
+
+    context 'motion fails to save' do
+      it 'fires no motion created event' do
+        motion.should_receive(:save).and_return(false)
+        Events::NewMotion.should_not_receive(:publish!).with(motion)
+      end
+    end
   end
 
   describe '.cast_vote' do

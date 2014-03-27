@@ -76,9 +76,7 @@ FactoryGirl.define do
     association :author, :factory => :user
     description 'Fake description'
     discussion
-    close_at_date '24-12-2044'
-    close_at_time '16:00'
-    close_at_time_zone 'Wellington'
+    closing_at { 1.year.from_now }
     after(:build) do |motion|
       motion.group.parent.add_member!(motion.author) if motion.group.parent
       motion.group.add_member!(motion.author)
@@ -93,9 +91,7 @@ FactoryGirl.define do
     association :author, :factory => :user
     description 'current motion'
     discussion
-    close_at_date { 5.days.from_now.to_date.to_s }
-    close_at_time '16:00'
-    close_at_time_zone 'Wellington'
+    closing_at { 5.days.from_now }
     after(:build) do |motion|
       motion.group.parent.add_member!(motion.author) if motion.group.parent
       motion.group.add_member!(motion.author)

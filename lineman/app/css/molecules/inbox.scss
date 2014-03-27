@@ -1,0 +1,46 @@
+.inbox{
+  a{
+    color: #333;
+    &:hover {text-decoration: none;}
+  }
+  ul, li{list-style: none; margin: 0; padding: 0;}
+  .item{
+    .item-row{@include make-row();}
+    &.unread{background: white;}
+    &.read{background: #eee;}
+    padding: 1em;
+    border-bottom: 1px solid #ccc;
+  }
+  .item__header{
+    font-size: 1.1em;
+    display: inline;
+    margin: 0;
+  }
+  .unread .item__header{ font-weight: bold; }
+  .item__count{
+    display: inline;
+    margin-left: 5px;
+    color: #777;
+  }
+  .read .item__count{display: none;}
+  .item__clear{
+    font-weight: bold;
+    font-size: 1.6em;
+    margin-top: -0.4em;
+    color: #bbb;
+  }
+  .item__byline{
+    font-size: 1em;
+    line-height: 1.4em;
+    color: #777;
+  }
+  .item__date{
+    color: #777;
+    font-size: 0.9em;
+  }
+  .left{@include make-xs-column(8);}
+  .right{
+    @include make-xs-column(4);
+    text-align: right;
+  }
+}

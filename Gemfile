@@ -48,8 +48,10 @@ gem 'fog', '~> 1.19.0'
 gem 'roadie', '~> 2.4.3'
 gem 'valid_email', '~> 0.0.4'
 gem "font-awesome-sass"
-gem 'rabl', '~> 0.8.6'
 gem 'sequenced', '~> 1.4.0'
+gem 'active_model_serializers', '~> 0.8.1'
+gem 'private_pub'
+gem "thin"
 gem 'closure_tree', '~> 4.3.0'
 gem 'ruby-progressbar', '1.4.1'
 gem 'bing_translator', '~> 4.0.0'
@@ -67,7 +69,6 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'thin', '~> 1.5.1'
   gem 'pry-rails', '~> 0.3.2' # Use this instead of debugger
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'faker', '~> 1.2.0'

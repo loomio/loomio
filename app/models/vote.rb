@@ -52,13 +52,19 @@ class Vote < ActiveRecord::Base
     current_user && user == current_user
   end
 
+  def author
+    user
+  end
+
   def position_to_s
-    I18n.t(self.position, scope: [:position_verbs, :past_tense])
+    return I18n.t(self.position, scope: [:position_verbs, :past_tense])
   end
 
   def previous_position
     previous_vote.position if previous_vote
   end
+
+  private
 
   def previous_position_is_block?
     previous_vote.try(:is_block?)
@@ -68,7 +74,6 @@ class Vote < ActiveRecord::Base
     position == 'block'
   end
 
-  private
   def associate_previous_vote
     self.previous_vote = motion.votes.where(user_id: user_id, age: age + 1).first
   end

@@ -34,7 +34,21 @@ describe Events::MotionBlocked do
 
     it 'notifies other group members' do
       event.should_receive(:notify!).with(user)
-      event.save
+    end
+
+    context 'if the vote was a block' do
+      it 'fires a motion blocked email' do
+        vote.should_receive(:position).and_return('block')
+        MotionMailer.should_receive(:motion_blocked).with(vote)
+      end
+
+      context 'user\'s previous vote was block' do
+        it 'does not fire a motion blocked email' do
+          vote.should_receive(:position).and_return('block')
+          vote.should_receive(:previous_position).and_return('block')
+          MotionMailer.should_not_receive(:motion_blocked).with(vote)
+        end
+      end
     end
 
     it 'emails motion blocked' do

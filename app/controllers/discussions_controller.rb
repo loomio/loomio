@@ -176,6 +176,11 @@ class DiscussionsController < GroupBaseController
     @discussion ||= Discussion.published.find_by_key!(params[:id])
   end
 
+  def build_discussion
+    @discussion = Discussion.new(permitted_params.discussion)
+    @discussion.author = current_user
+  end
+
   def build_comment
     @comment = Comment.new(body: params[:comment],
                            uses_markdown: params[:uses_markdown])
@@ -187,11 +192,6 @@ class DiscussionsController < GroupBaseController
     @comment.attachment_ids = attachment_ids
     @comment.attachments_count = attachment_ids.size
     @comment
-  end
-
-  def build_discussion
-    @discussion = Discussion.new(permitted_params.discussion)
-    @discussion.author = current_user
   end
 
   def mark_as_read

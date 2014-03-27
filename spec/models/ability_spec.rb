@@ -51,6 +51,7 @@ describe "User abilities" do
     it { should_not be_able_to(:choose_subscription_plan, group) }
     it { should     be_able_to(:new_proposal, discussion) }
     it { should     be_able_to(:add_comment, discussion) }
+    it { should     be_able_to(:create, user_comment) }
     it { should     be_able_to(:update_description, discussion) }
     it { should     be_able_to(:edit_description, group) }
     it { should     be_able_to(:show_description_history, discussion) }
@@ -64,6 +65,7 @@ describe "User abilities" do
     it { should     be_able_to(:destroy, user_comment) }
     it { should_not be_able_to(:destroy, discussion) }
     it { should_not be_able_to(:destroy, another_user_comment) }
+    it { should     be_able_to(:like, another_user_comment) }
     it { should     be_able_to(:like_comments, discussion) }
     it { should     be_able_to(:create, new_discussion) }
     it { should_not be_able_to(:make_admin, @membership) }
@@ -246,6 +248,16 @@ describe "User abilities" do
   end
 
   context "non-member of a group" do
+    # removed in master.. waiting to see what I added
+    #let(:group) { create(:group, privacy: 'hidden') }
+    #let(:discussion) { create(:discussion, group: group) }
+    #let(:new_motion) { Motion.new(discussion_id: discussion.id) }
+    #let(:motion) { create(:motion, discussion: discussion) }
+    #let(:new_discussion) { user.authored_discussions.new(
+                           #group: group, title: "new discussion") }
+    #let(:another_user_comment) { discussion.add_comment(discussion.author, "hello", uses_markdown: false) }
+    #let(:my_membership_request) { create(:membership_request, group: group, requestor: user) }
+    #let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }
 
     context 'hidden group' do
       let(:group) { create(:group, privacy: 'hidden') }
@@ -272,7 +284,7 @@ describe "User abilities" do
       it { should_not be_able_to(:add_comment, discussion) }
       it { should_not be_able_to(:move, discussion) }
       it { should_not be_able_to(:destroy, discussion) }
-      it { should_not be_able_to(:like_comments, discussion) }
+      it { should_not be_able_to(:like, another_user_comment) }
       it { should_not be_able_to(:create, new_motion) }
       it { should_not be_able_to(:close, motion) }
       it { should_not be_able_to(:edit_close_date, motion) }

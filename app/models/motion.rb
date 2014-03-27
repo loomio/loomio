@@ -18,6 +18,7 @@ class Motion < ActiveRecord::Base
   validates_presence_of :name, :discussion, :author, :closing_at
 
   validates_length_of :name, :maximum => 250
+  validate :one_motion_voting_at_a_time
   validates_length_of :outcome, :maximum => 250
 
   include PgSearch
@@ -31,9 +32,7 @@ class Motion < ActiveRecord::Base
   delegate :email_new_motion?, to: :group, prefix: :group
   delegate :name_and_email, to: :user, prefix: :author
 
-  after_initialize :set_default_close_at_date_and_time
-  before_validation :set_closing_at
-  after_create :fire_new_motion_event
+  after_initialize :set_default_closing_at
 
   attr_accessor :create_discussion
 
@@ -226,6 +225,12 @@ class Motion < ActiveRecord::Base
   end
 
   private
+    def one_motion_voting_at_a_time
+      if voting? and discussion.current_motion.present? and discussion.current_motion != self
+        errors.add(:discussion, 'already has a motion in progress')
+      end
+    end
+
     def find_or_new_motion_reader_for(user)
       if self.motion_readers.where(user_id: user.id).exists?
         self.motion_readers.where(user_id: user.id).first
@@ -237,19 +242,7 @@ class Motion < ActiveRecord::Base
       end
     end
 
-    def set_default_close_at_date_and_time
-      self.close_at_date ||= (Time.zone.now + 3.days).to_date
-      self.close_at_time ||= Time.zone.now.strftime("%H:00")
-    end
-
-    def set_closing_at
-      date_time_zone_format = '%Y-%m-%d %H:%M %Z'
-      tz_offset = ActiveSupport::TimeZone[close_at_time_zone].formatted_offset
-      date_time_zone_string = "#{close_at_date.to_s} #{close_at_time} #{tz_offset}"
-      self.closing_at = DateTime.strptime(date_time_zone_string, date_time_zone_format)
-    end
-
-    def fire_new_motion_event
-      Events::NewMotion.publish!(self)
+    def set_default_closing_at
+      self.closing_at ||= (Time.zone.now + 3.days)
     end
 end

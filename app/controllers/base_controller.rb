@@ -10,13 +10,24 @@ class BaseController < ApplicationController
                 :initialize_search_form,
                 :set_time_zone_from_javascript, if: :user_signed_in?
 
+  after_filter  :set_csrf_cookie_for_ng
+
   helper_method :time_zone
+  helper_method :permitted_params
+
+  protected
 
   def permitted_params
     @permitted_params ||= PermittedParams.new(params, current_user)
   end
 
-  helper_method :permitted_params
+  def set_csrf_cookie_for_ng
+    cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
+  end
+
+  def verified_request?
+    super || form_authenticity_token == request.headers['X_XSRF_TOKEN']
+  end
 
   protected
   def initialize_search_form

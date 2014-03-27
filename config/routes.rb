@@ -1,6 +1,14 @@
 Loomio::Application.routes.draw do
 
+  scope '/angular_support', controller: 'angular_support', path: 'angular_support', as: 'angular_support' do
+    get 'setup_for_add_comment'
+    get 'setup_for_like_comment'
+    get 'setup_for_vote_on_proposal'
+  end
+
+
   slug_regex = /[a-z0-9\-\_]*/i
+
   ActiveAdmin.routes(self)
 
   namespace :admin do
@@ -12,6 +20,25 @@ Loomio::Application.routes.draw do
     end
   end
 
+  namespace :api, defaults: {format: :json} do
+    namespace :faye do
+      get :who_am_i
+      get :subscribe
+    end
+
+    resources :motions, only: [:create] do
+      member do
+        post :vote
+      end
+    end
+    resources :comments, only: [:create, :show] do
+      member do
+        post :like
+        post :unlike
+      end
+    end
+    resources :discussions, only: :show
+  end
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
   get "/explore/category/:id", to: "explore#category", as: :category_explore

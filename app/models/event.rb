@@ -13,8 +13,9 @@ class Event < ActiveRecord::Base
   validates_inclusion_of :kind, :in => KINDS
   validates_presence_of :eventable
 
-  acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? }
+  after_create :publish_event
 
+  acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? }
 
   def notify!(user)
     notifications.create!(user: user)
@@ -22,5 +23,13 @@ class Event < ActiveRecord::Base
 
   def belongs_to?(this_user)
     self.user_id == this_user.id
+  end
+
+  def publish_event
+    if self.discussion.present?
+      serializer = EventSerializer.new(self)
+      PrivatePub.publish_to "/events", serializer
+      #PrivatePub.publish_to "/events/group_#{discussion.group_id}/#{self.kind}", :event => self
+    end
   end
 end

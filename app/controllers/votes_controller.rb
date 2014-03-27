@@ -14,7 +14,7 @@ class VotesController < BaseController
     if MotionService.cast_vote(@vote)
       Measurement.increment('votes.create.success')
       flash[:success] = t("success.position_submitted")
-      redirect_to @motion
+      redirect_to @vote.motion.discussion
     else
       Measurement.increment('votes.create.errors')
       render :new

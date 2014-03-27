@@ -118,8 +118,14 @@ class Group < ActiveRecord::Base
   has_many :motions, :through => :discussions
 
   belongs_to :parent, :class_name => "Group"
+
+  has_many :subgroups,
+           class_name: "Group",
+           foreign_key: 'parent_id',
+           dependent: :destroy,
+           conditions: { archived_at: nil }
+
   belongs_to :category
-  has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id', conditions: { archived_at: nil }
 
   has_one :subscription, dependent: :destroy
 

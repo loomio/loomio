@@ -1,8 +1,10 @@
 class Comment < ActiveRecord::Base
+  attr_accessible :discussion_id, :discussion, :comment, :body, :parent_id, :author
   include Twitter::Extractor
   include Translatable
 
   has_paper_trail
+  acts_as_tree
 
   belongs_to :discussion, counter_cache: true
   belongs_to :user
@@ -14,11 +16,14 @@ class Comment < ActiveRecord::Base
   validates_presence_of :user
   validate :has_body_or_attachment
   validate :attachments_owned_by_author
+  validate :parent_comment_belongs_to_same_discussion
 
   after_initialize :set_defaults
   after_destroy :send_discussion_comment_deleted!
 
   default_scope include: [:user, :attachments, :discussion]
+
+  scope :published
 
   delegate :name, :to => :user, :prefix => :user
   delegate :email, :to => :user, :prefix => :user
@@ -83,8 +88,12 @@ class Comment < ActiveRecord::Base
   end
 
   private
-    def send_discussion_comment_deleted!
-      discussion.comment_deleted!
+    def parent_comment_belongs_to_same_discussion
+      if self.parent.present?
+        unless discussion_id == parent.discussion_id
+          errors.add(:parent, "Needs to have same discussion id")
+        end
+      end
     end
 
     def set_defaults

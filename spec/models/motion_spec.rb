@@ -1,7 +1,26 @@
 require 'spec_helper'
 
 describe Motion do
-  let(:discussion) { create_discussion }
+
+  let(:discussion) { create :discussion }
+  describe 'validates only one motion voting at a time' do
+
+    subject do
+      Motion.create(discussion: discussion, name: 'yoo hoo', author: discussion.author)
+    end
+
+    context 'no other motions voting' do
+      it {should have(0).errors_on(:discussion)}
+    end
+
+    context 'motion already in voting', focus: true do
+      before do
+        @other_motion = Motion.create(discussion: discussion, name: 'yoo hoo', author: discussion.author)
+      end
+
+      it {should have(1).errors_on(:discussion)}
+    end
+  end
 
   describe "#unique_votes" do
     it "returns only the most recent votes of a user for a motion" do
@@ -33,15 +52,6 @@ describe Motion do
     end
   end
 
-  it "assigns the close_at from close_at_* fields" do
-    close_date = "23-05-2013"
-    close_time = "15:00"
-    time_zone = "Saskatchewan"
-    motion = build(:motion, close_at_date: close_date, close_at_time: close_time, close_at_time_zone: time_zone, discussion: discussion)
-    motion.save!
-    motion.closing_at.in_time_zone("Saskatchewan").to_s.should == "2013-05-23 15:00:00 -0600"
-  end
-
   describe "#user_has_voted?(user)" do
     it "returns true if the given user has voted on motion" do
       @user = create(:user)
@@ -63,6 +73,20 @@ describe Motion do
     it "does not return discussions that don't belong to the user" do
       motion = create(:motion, name: "sandwich crumbs", discussion: discussion)
       @user.motions.search("sandwich").should_not == [motion]
+    end
+  end
+
+  context "destroying a motion" do
+    before do
+      @discussion = create_discussion
+      @motion = create(:motion, discussion: @discussion)
+      @vote = Vote.create(position: "no", motion: @motion, user: @motion.author)
+      @comment = @motion.discussion.add_comment(@motion.author, "hello", uses_markdown: false)
+      @motion.destroy
+    end
+
+    it "deletes associated votes" do
+      Vote.first.should == nil
     end
   end
 
