@@ -42,11 +42,16 @@ class User < ActiveRecord::Base
     #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
 
   has_many :admin_memberships,
-           :conditions => { :access_level => 'admin' },
+           :conditions => { admin: true },
            :class_name => 'Membership',
            :dependent => :destroy
+
+  has_many :adminable_groups,
+           :through => :admin_memberships,
+           :class_name => 'Group',
+           :source => :group
+
   has_many :memberships,
-           :conditions => { :access_level => Membership::MEMBER_ACCESS_LEVELS },
            :dependent => :destroy
 
   has_many :membership_requests,
@@ -55,23 +60,22 @@ class User < ActiveRecord::Base
   has_many :groups,
            :through => :memberships,
            conditions: { archived_at: nil }
+
   has_many :public_groups,
            :through => :memberships,
            :source => :group,
            :conditions => { :privacy => 'public' }
-  has_many :adminable_groups,
-           :through => :admin_memberships,
-           :class_name => 'Group',
-           :source => :group
 
   has_many :discussions,
            :through => :groups
+
   has_many :authored_discussions,
            :class_name => 'Discussion',
            :foreign_key => 'author_id'
 
   has_many :motions,
            :through => :discussions
+
   has_many :authored_motions,
            :class_name => 'Motion',
            :foreign_key => 'author_id'
@@ -102,7 +106,7 @@ class User < ActiveRecord::Base
   scope :daily_activity_email_recipients, where(:subscribed_to_daily_activity_email => true)
   scope :sorted_by_name, order("lower(name)")
   scope :admins, where(is_admin: true)
-  scope :coordinators, joins(:memberships).where('memberships.access_level = ?', 'admin').group('users.id')
+  scope :coordinators, joins(:memberships).where('memberships.admin = ?', true).group('users.id')
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
@@ -155,7 +159,11 @@ class User < ActiveRecord::Base
 
 
   def is_group_admin?(group)
-    memberships.for_group(group).with_access('admin').exists?
+    admin_memberships.where(group_id: group.id).any?
+  end
+
+  def is_group_member?(group)
+    memberships.where(group_id: group.id).any?
   end
 
   def time_zone_city
@@ -166,9 +174,6 @@ class User < ActiveRecord::Base
     self[:time_zone] || 'UTC'
   end
 
-  def is_group_member?(group)
-    memberships.for_group(group).exists?
-  end
 
   def is_parent_group_member?(group)
     memberships.for_group(group.parent).exists? if group.parent
