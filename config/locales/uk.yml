@@ -63,6 +63,7 @@ uk:
   notice:
     admin_rights_removed: "%{which_user} більше не координатор."
     user_added: "%{user_email_or_name} було додано до групи."
+    new_user_added: "%{user_email_or_name} буде доданий до групи після створення Loomio акаунта."
     member_removed: "Учасника видалено."
     membership_approved: "Участь затверджено."
     membership_request_canceled: "Запит на участь скасовано."
@@ -91,7 +92,7 @@ uk:
       next: "Наступна"
   warning:
     cant_remove_last_admin: "Ви - єдиний координатор, та не можете бути видалені."
-    membership_request_already_approved: "Цей запит на участь вже було зхвалено."
+    membership_request_already_approved: "Цей запит на участь вже було підтверджено."
     membership_request_already_ignored: "Цей запит на участь вже було скасовано."
     membership_request_already_canceled: "Цей запит на участь вже було відхилено."
     position_not_submitted: "Ваше ставлення не може бути додане."
@@ -109,6 +110,7 @@ uk:
     group_archived: "Група успішно переміщена до архіву."
     group_created: "Група успішно створена."
     members_added: "Учасників додано до групи."
+    membership_requested: "Ви надіслали запит до вступу у %{which_group}. Вас повідомлять, коли ваш запит буде підтверджено."
     motion_closed: "Пропозицію закрито. Якщо ви хочете, нижче ви можете оголосити результат та надіслати його до вашої групи."
     motion_outcome_created: "Поздоровляємо! Ви визначили результат пропозиції та члени вашої групи були повідомлені про це."
     motion_outcome_updated: "Результат пропозиції було оновлено"
@@ -293,6 +295,10 @@ uk:
     neighbourhood_support_group: "наприклад, Група нашого району"
     confirmation:
       title: Ви майже закінчили! Перевірте Вашу електронну пошту.
+      body_html: |
+        Ми надіслали вам email із запрошенням розпочати вашу групу.
+
+        Якщо ви не бачите запрошення у пошті навіть через декілька хвилин, напишіть нам на <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
   discussion_items:
     new_discussion: "Створив(ла) обговорення"
     new_motion: "Створив(ла) пропозицію"
@@ -432,6 +438,7 @@ uk:
     vote: 'Ви можете змінити Ваше ставлення будь-коли'
   pricing_page:
     organisations: Організації
+    organisations_examples: наприклад бізнес, урядові агенції, суспільні організації
     informal_groups: Не формальні групи
     informal_groups_desc: Членів вашої групи попросять заплатити стільки, скільки вони зможуть
     informal_groups_examples: наприклад, сім'ї, соціальні ініціативи, коллективи
@@ -506,6 +513,7 @@ uk:
     pending_invitations: 'Запрошення, що очікують'
     no_pending_invitations: "Запрошень більше немає."
   search:
+    description: "Нижче ви можете бачити список дискусій та пропозицій, що мають '%{query}' у назві або описі."
     header: "Результати пошуку за запросом '%{query}'"
     placeholder: "Пошук"
     empty_search: 'Пошук пустий'
@@ -644,6 +652,8 @@ uk:
       discussion:
         title: "Назва"
         description: "Будь ласка, надайте якийсь контекст..."
+      membership_request:
+        introduction: "Напишіть декілька слів про себе і про те, чому ви хочете долучитися до %{group_name}."
       motion:
         name: "Який план дій ви пропонуєте?"
         description: "Надайте якомога більше інформації, щоб кожен чітко розумів що це означає і міг погодитися або не погодитися"
@@ -699,11 +709,12 @@ uk:
     group_email:
       intro: "%{who} опублікував оголошення в %{group}:"
     group_membership_approved:
-      intro: "Ваш запит на участь у групі '%{group_name}' на Loomio було задовільнено."
-      subject: "Участь задовільнено"
+      intro: "Ваш запит на участь у групі '%{group_name}' на Loomio було підтверджено."
+      subject: "Запит на участь у групі підтверджено."
     invitation:
       hi: "Привіт %{name},"
       intro: "Натисніть на посилання внизу для того чтоб створити вашу групу %{group_name}:"
+      closing_message: "Якщо у вас є будь-які запитання, або вам потрібна будь-яка допомога для того, щоб розпочати роботу, - ми були б раді почути вас. Для цього - просто надішліть відповідь на цей email."
       thanks: "Дякуємо!\nКоманда Loomio \n"
     membership_request:
       intro: "%{name} (%{email}) запросив доступ до однієї з Ваших груп на Loomio."
@@ -795,6 +806,7 @@ uk:
   start_group: "Створіть групу!"
   starting: "Починаємо"
   subject: "Тема"
+  terms_of_service_html: "Натиснувши на %{button_text}, ви погоджуєтесь із <a href='%{link_path}' target='_blank'>Умовами використання</a> Loomio"
   thanks: "Дякуємо!"
   translate: "Допоможіть перекласти Loomio!"
   unlike: "Не подобається"
