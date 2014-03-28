@@ -1,4 +1,6 @@
 el:
+  explore:
+    go_to_group: "Πηγαίνετε στην ομάδα %{group_name}"
   activerecord:
     errors:
       messages:
