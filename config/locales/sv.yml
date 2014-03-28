@@ -1,4 +1,8 @@
 sv:
+  activerecord:
+    errors:
+      messages:
+        blank: "Kan inte vara blanktecken"
   errors:
     messages:
       email: "Ogiltig epostadress"
@@ -116,7 +120,22 @@ sv:
   tagline: "Skapa en värld där det är enkelt för vem som helst att delta i diskussioner som påverkar dem."
   click_to_dismiss: "Klicka här för att avvisa detta meddelande"
   generic_confirm: "Är du säker?"
+  discussion_helper_text:
+    header: "Välkommen till din första diskussion"
+    message: "<p>Ämnet är högst uppe på sidan, med innehållet under.</p><p>Diskussionen är till vänster och beslut kommer upp till höger. Om du tycker att gruppen är redo att fatta ett beslut kan du göra ett förslag för gruppen att överväga.</p>"
+  group_helper_text:
+    header: "Välkommen till din nya grupp!"
+    message: "<p>Detta är <strong>Gruppsidan</strong>. Till vänster finns en lista på gruppens alla diskussioner.</p><p>När du vill att gruppen ska diskutera ett annat ämne, starta en ny diskussion.</p>"
+  dashboard_helper_text:
+    header: "Välkommen till din startsida"
+    message: "<p>Startsidan visar alla pågående diskussioner i alla grupper du är medlem i.</p><p>Du kan starta en diskussion om ett nytt ämne genom att klicka på knappen \"Starta en diskussion\"</p>"
+  setup_steps_title: "Nästa steg:"
+  setup_step_1: "Titta på diksussionsexemplet"
+  setup_step_2: "Starta din första diskussion"
+  setup_step_3: "Bjud in personer till din grupp"
   invite_people: "Bjud in deltagare"
+  no_invitations_button: "Inga inbjudningar kvar"
+  number_pending: '%{pending} avvaktar'
   edit_memberships: 'Redigera medlemskap'
   add_new_member: "Lägg till ny medlem"
   invite_members_to_group: "Bjud in medlemmar till %{which_group}"
@@ -202,6 +221,7 @@ sv:
   confirm_close_proposal: "Är du säker på att du vill stänga detta förslag?"
   change_proposal_close_date: "Ändra slutdatum"
   change_proposal_close_date_header: "Ändra slutdatum för förslaget '%{which}'"
+  proposal: Förslag
   proposal_close_date_error: "Ge ett framtida slutdatum"
   proposal_closing_when: "Stänger om %{when}"
   proposal_closed_when: "Stängde för %{when}"
@@ -220,19 +240,28 @@ sv:
   not_voted: "[Visa medlemmar som ännu inte har beslutat]"
   outcome_placeholder: "Vad var resultatet av detta förslaget?"
   help:
+    coordinating: 'Koordinerar din Loomiogrupp'
+    different_ways: 'Olika sätt att använda Loomio'
     get_in_touch: "Ta kontakt med"
     get_in_touch_description_html: "Om du har några frågor eller feedback, <a href='%{link}'>skriv till oss</a>."
     getting_started: "Håller på att starta"
     getting_started_description: "Till vänster, diskuterar gruppen ett ämne, utbyter idéer och information. När gruppen kommer fram till ett beslut, dyker det upp till höger."
+    getting_the_most: 'Hur du får mest ut av Loomio'
     have_a_discussion: "Ha en diskussion"
     have_a_discussion_description: "Ämnet och relevant bakgrundsinformation finns högst upp på sidan. Använd kommentarboxen för att göra din röst hörd i diskussionen."
     help: "Hjälp"
     how_it_works: "Hur der fungerar"
     join_the_community: "Gå med i communityn"
     join_the_community_description_html: "Alla är välkomna i Loomio Community, där vi pratar om hur vi får ut mesta möjliga av verktyget och även förslag till hur det kan förbättras.<br /><br /><a href='https://www.loomio.org/groups/3'>Klicka här för att gå till Loomio Community gruppen</a>."
+    images_and_text_formatting: "Bild och textformattering"
+    keep_up_to_date: "Håll informationen uppdaterad"
     make_a_decision: "Fatta beslut"
-    positions_agree_description: "<span>Samtycker</span> innebär att du håller med om förslaget."
-    positions_abstain_description: "<span>Avstår</span> innebär att du är osäker, eller att du låter gruppen fatta beslutet utan dig."
+    make_a_decision_description: "När gruppen är redo att fatta ett beslut, kan vem som helst göra ett förslag. Ange tydligt vad som bör göras och även en kort bakgrund så att alla förstår precis vad det innebär att hålla med eller att inte hålla med."
+    positions_agree_description: "<span>Håller med</span> innebär att du gillar förslaget."
+    positions_abstain_description: "<span>Avstår</span> innebär att du är osäker, eller att kan tänka dig att låta gruppen fatta beslutet utan dig."
+    positions_disagree_description: "<span>Håller inte med</span> innebär att du tror att det kan finnas ett bättre alternativ, men att du kan tänka dig att gå med guppens beslut."
+    positions_block_description: "<span>Blockerar</span> innebär att du har allvarliga invändningar och att du skulle bli mycket missnöjd om detta förslag går igenom."
+    video_id: "52025402"
     video_tutorial: "Video tutorial"
     video_tutorial_description: "Gå till videon för en snabb demonstration av hur Loomio fungerar."
   resend_confirmation: "Sänd konfirmationsinstruktioner en gång till"
@@ -251,6 +280,31 @@ sv:
   forgot_your_password: "Har du glömt ditt lösenord?"
   confirmation_not_received: "Har du inte fått instruktioner för att kunna konfirmera?"
   unlock_not_received: "Har du inte fått instruktioner för att kunna låsa upp?"
+  invitation:
+    no_invitations_left: "Tyvärr har du inga inbjudningar kvar"
+    no_invitations_left_get_more: "Emaila contact@loomio.org och vi ska se vad vi kan göra för att hjälpa dig"
+    invitation_not_found: 'Kunde inte hitta någon inbjudan med denna token. Be om en ny inbjudan från avsändaren.'
+    invitation_cancelled: 'Denna inbjudan har blivit cancellerad. Ta kontakt med avsändaren av inbjudan om du tror att det har blivit fel.'
+    invitation_already_used: 'Denna inbjudan har redan använts. Logga in för att fortsätta till din grupp.'
+    recipients: "Ange emailadresser, åtskilda av kommatecken:"
+    invitees_placeholder: "Användarnamn <user1@example.com>, user2@example.com"
+    subject: "Gå med i vår nya Loomio group, %{group}"
+    invite_people: "Bjud in personer till din grupp"
+    message_body: "Inbjudningsmeddelande"
+    invites_more_help2: "<p>Du kan bjuda in personer till din grupp när som helst.</p><p>Du kanske vill bjuda in alla medlemmar på en gång, eller du kan också börja med att bara bjuda in dem du arbetar närmast med.</p>"
+    invitation_link: "Inbjudningslänk"
+    link_help: "Klicka på denna länken för att gå med %{group} i Loomio:"
+    copy: "Om någon inte skulle fått sitt email med en inbjudan, kopiera då länken ovan och ge direkt till mottagaren."
+  example_discussion:
+    title: "Diskussionsexempel: Välkommen och introduktion till Loomio"
+    description: "Välkommen till Loomio, ett nytt verktyg för att stötta grupper att fatta beslut.\nGenom att engagera sig i ett ämne, diskutera olika perspektiv och information, samt att ta tag eventuella invändningar som dyker upp, kan din grupp slå sina huvuden samman och hitta bästa väg framåt. \n\
+      Du kan använda detta diskussionsexempel för att utforska verktygets olika funktioner.\nFör att komma igång, tycker Loomios Hjälpbot att det vore en bra idé att din grupp tar en semester ihop. Cirkeldiagrammet till höger visar vad din grupp anser om förslaget. Du kan lämna din kommentar genom att\
+      \ klicka på en av beslutsknapparna nedan.\n"
+  example_motion:
+    name: "Vi borde åka på semester till månen!"
+    description: "Loomios Hjälpbot tycker verkligen att din grupp borde åka till månen. Det sägs att rymdosten där är riktigt god. Men konsekvenserna för er klimatpåverkan är oroande. \nÄr detta en bra idé? Loomios Hjälpbot vill veta vad du tycker! \nOm du vet din ståndpunkt, klicka på någon av ikonerna\
+      \ nedan (hovra över beslutsknapparna för en beskrivning av vad var och en betyder). \nDu blir ombedd att göra ett kort uttalande om orsaken till ditt beslut. Detta gör det lätt att se en sammanfattning av vad alla tycker och varför. Du kan ångra dig eller ändra ditt beslut när som fram förslaget\
+      \ stängs.\n"
   motion_form:
     header: "Nytt förslag"
     name_helper: "Skriv rubriken så kort och tydligt som möjligt"
@@ -277,6 +331,8 @@ sv:
     update_preferences: "Uppdatera preferenser"
   new_user_form:
     create_an_account: "Skapa ett konto"
+  group_setup:
+    submit: "Ta mig till min grupp!"
   simple_form:
     labels:
       discussion:
@@ -284,6 +340,8 @@ sv:
         description: "Kontext"
       group:
         name: "Gruppnamn"
+        description: "Beskrivning"
+        members_invitable_by: "Vem kan bjuda in personer till denna gruppen?"
       motion:
         name: "Title"
         description: "Detaljer"
@@ -299,6 +357,8 @@ sv:
       motion:
         name: "Vad är dina förslag till åtgärder?"
         description: "Ge tillräckligt med information så att alla förstår vad det innebär att instämma eller inte instämma."
+      group:
+        description: "Gruppbeskrivning"
   helpers:
     submit:
       discussion:
@@ -308,16 +368,65 @@ sv:
       user:
         create: "Skapa konto"
         update: "Uppdatera inställningar"
+  email:
+    unsubscribe: "Avregistrera dig eller ändra dina emailinställningar:"
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> för att avregistrera eller ändra dina emailinställnignar."
+    view_comment: "Klicka här för att se kommentaren på Loomio"
+    view_discussion: "Klicka här för att se denna diskussion"
+    view_group: "Klicka här för att se gruppen på Loomio"
+    view_proposal: "Visa detta förslag på Loomio"
+    create_discussion:
+      intro: "%{who} startade en ny diskussion i %{which_group}:"
+      subject: "Ny diskussion - %{which}"
+    create_proposal:
+      intro: "Ett nytt förslag skapades i en Loomiogrupp som du är med i."
+      closes_in: "Stänger om"
+      subject: "Nytt förslag: %{which}"
+    daily_activity:
+      heading: "Dina aktiviter i Loomio"
+      intro: "Visar dig vad som har hänt i dina Loomiogrupper under de senaste 24 timmarna"
+      subject: "Loomio - Summering för de senaste 24 timmarna"
+    group_email:
+      intro: "%{who} gjorde ett upprop till  %{group}:"
+    group_membership_approved:
+      intro: "Din begäran att få tillgång till gruppen '%{group_name}' i Loomio har godkänts."
+      subject: "Medlemskap godkänt"
+    membership_request:
+      intro: "%{name} (%{email}) har begärt att få tillgång till en av dina Loomiogrupper."
+      subject: "%{who} har begärt att få gå med %{which_group}"
+      view_group: "Du ka godkänna eller avslå begäran här"
+    mentioned:
+      intro: "Du nämndes i en diskussion med titeln:"
+      said: "%{comment_author} sa:"
+      subject: "%{who} nämnde dig i %{which}gruppen i Loomio"
+    proposal_closed:
+      intro: 'Ditt förslag "%{proposal_name}" är stängt.'
+      subject: "Förslag stängt - %{which}"
+    proposal_blocked:
+      intro: "Ett förslag som du faciliterar har blockerats."
+      subject: "Förslag blockerat - %{which}"
+    proposal_closing_soon:
+      closes_in: "Stänger om"
+      summary: "Summering"
+    verification:
+      header: "Du är nästan klar!"
+      intro: "Klicka på denna verifieringslänken för att slutföra din begäran:"
+      ignore: "Om du inte har begärt att gå med i Loomio ignorera detta email."
   ago: "%{quantity_of_time} sedan"
   approve: "Godkänn"
+  author: "Författare"
   back: "Tillbaka"
   cancel: "Cancellera"
   change: "Ändra"
   changing: "Ändrar"
+  click_here: "Klicka här"
   close: "Stäng"
   closing: "Stänger"
   closed: "Stängd"
+  decisions: "Beslut"
   delete: "Ta bort"
+  details: "Detaljer"
+  discussions: "Diskussioner"
   edit: "Redigera"
   email_address: "Emailadress"
   enable: "Tillåt"
@@ -332,9 +441,12 @@ sv:
   message: "Meddelande"
   name: "Namn"
   new_activity: "Ny aktivitet"
+  next: "Nästa"
   outcome: "Resultat"
   password: "Lösenord"
+  prev: "Föregående"
   options: "Valmöjligheter"
+  ok_got_it: "OK, jag förstår!"
   save: "Spara"
   saving: "Sparar"
   sending: "Skickar"
@@ -346,3 +458,5 @@ sv:
   unlike: "Skild från"
   until_close: "Tills det stänger"
   update: "Uppdatera"
+  common:
+    email: "Email"
