@@ -1,48 +1,31 @@
-.card-page.discussion
-  .card-row
-    .card
-      .card__content
-        .card__header
-          %h1.card__title
-            {{discussion.title}}
-            %i.card__title--icon.fa.fa-star-o
-        .media__details
-          Started {{discussion.created_at | timeFromNowInWords}} by {{discussion.author.name}}
-        .media
-          .media__img
-            %img{src: '/img/group-icon.jpg'}
-          .media__text
-            / {{discussion.group.name}}
-            / {{discussion.group.memberships_count}} members
-            %a{href: '#'}
-              Wellington Bike
-          .media__text--details
-            25 members
-        %img{src: '/img/group-users.png'}
+#sidebar
+  Sidebar content
+#main-content
+  .l-row
+    .card.l-column
+      %h1.card-header
+        {{discussion.title}}
+        %i.fa.fa-star-o.icon-22
+      .card-details
+        Started {{discussion.created_at | timeFromNowInWords}} by {{discussion.author.name}}
+      .media
+        .media-img
+          %img{src: '/img/group-icon.jpg'}
+        .media-text
+          {{discussion.group.name}}
+          {{discussion.group.memberships_count}} members
+        .media-details
+          25 members
+      %img{src: '/img/group-users.png'}
         %i.fa.fa-plus
-        %button.btn.btn-primary.right
-          %i.fa.fa-lock.white
-          Share
-    / .card-row
-    /   .card
-    /     .card__header
-    /       .media
-    /         .media__img
-    /           %img{alt: "...", src: '{{author.avatar_path}}'}
-    /         .media__text
-    /           %h4.media__title Context
-    /           .media__details
-    /             Started {{discussion.created_at | timeFromNowInWords}} by {{discussion.author.name}}
-    /     .card__content
-    /       {{discussion.description}}
-    /     %a.edit-content{href: "#"}
-    /       %i.icon-edit
-    /       Edit
+      .card-btn.btn-primary.l-right
+        %i.fa.fa-lock.white
+        Share
 
   %proposal{proposal: 'discussion.active_proposal', discussion: 'discussion'}
 
-  .card-row
-    .card
+  .l-row
+    .card.l-column
       %div{'ng-repeat' => 'event in discussion.events', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
       -#-#"discussion_title_edited",
       -#-#"discussion_description_edited",

@@ -24,21 +24,8 @@
 
 @import 'molecules/motion';
 
-
-
-#js-mini-motion.fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  background: white;
-  border-bottom: 1px solid #888888;
-}
-
-button{
-  font-weight: bold;
-  color: white;
-}
-
-body {font-family: 'OpenSans';}
+@import 'layout';
+@import 'module/media';
+@import 'module/button';
+@import 'module/icon';
+@import 'module/card';
