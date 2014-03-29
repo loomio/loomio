@@ -7,27 +7,19 @@
     %link{href: "http://fonts.googleapis.com/css?family=Open+Sans", rel: "stylesheet", type: "text/css"}
 
   %body
-    -#%base{href: '/next/'}
-    %nav.navbar.navbar-default.navbar-static-top
-      .container
-        .navbar-header
-          %a.navbar-brand{href: '#'}
-            %img{src: '/img/logo.jpg'}
-          %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", type: "button"}
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          / %ul.nav.navbar-nav.navbar-right
-          /   %li
-          /     %a
-          /       %img{src: '/img/user.png'}
-        /     %li.search-input
-        /       %form{name: 'addCommentForm', ng_submit: 'processForm()'}
-        /         %input.form-control{placeholder: "Search", ng_focus: "expand()", id: 'fake_comment_input'}
-        /     %li{'ng-include' => "'generated/templates/user/avatar.html'", 'ng-init' => "user = comment.author"}
-        /     %i.icon-ios7-bell
-    %img{src: '/img/sidebar.jpg', class: 'sidebar'}
-    .container{'ng-view' => ''}
+    %header#header
+      %nav.navbar.navbar-default.navbar-static-top
+        .container
+          .navbar-header
+            %a.navbar-brand{href: '#'}
+              %img{src: '/img/logo.jpg'}
+            %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", type: "button"}
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+
+    #main-container{'ng-view' => ''}
+
     %script{ src: '/js/app.js', type: 'text/javascript'}
     %script{ src: 'http://localhost:9292/faye/client.js', type: 'text/javascript'}
