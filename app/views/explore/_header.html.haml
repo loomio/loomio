@@ -1,8 +1,13 @@
 .row-fluid
   .span12.header
-    .span6
-      %h1=link_to t(:groups), explore_path
-    .span6
-      .explore-search-bar
-        = form_tag search_explore_path, method: 'get' do |f|
-          = text_field_tag :query, '', placeholder: t(:'search.placeholder')
+    .row-fluid
+      .span6
+        %h1=link_to t(:groups), explore_path
+      .span6
+        .explore-search-bar
+          = form_tag search_explore_path, method: 'get' do |f|
+            = text_field_tag :query, '', placeholder: t(:'search.placeholder')
+    .row-fluid
+      .span12
+        %p Loomio is free and open source software for anyone, anywhere, to participate in decisions that affect them.
+        %p On this page you can explore some of the groups around the world who have opted to make their decision-making process transparent.
