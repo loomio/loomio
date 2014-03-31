@@ -77,6 +77,10 @@ Given(/^I follow a vote link from an email$/) do
   visit new_motion_vote_url(motion_id: @motion.id, position: 'yes', from_email: true)
 end
 
+Then(/^I should not see an edit button next to my vote/) do
+  page.should_not have_css('#edit-vote')
+end
+
 Then(/^I should see my existing vote$/) do
   page.should have_css('body.votes.new')
 end
