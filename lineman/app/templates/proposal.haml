@@ -1,77 +1,32 @@
-.card-row.expanded-motion.cuke-current-proposal{ng_hide: 'proposal == null'}
-  .card
-    .card__header
-      %h2
-        {{proposal.name}}
-        %span.card__header--details
-          %a{ href: '#' }
-            {{proposal.closing_at | timeFromNowInWords:true }} left
-    .media__details
+.l-row#cuke-current-proposal{ng_hide: 'proposal == null'}
+  .card.l-column
+    %h1.card-header
+      {{proposal.name}}
+      %span.card-details
+        %a{ href: '#' }
+          {{proposal.closing_at | timeFromNowInWords:true }} left
+    .card-details
       Proposed by {{proposal.author.name}} on {{proposal.created_at | timeFromNowInWords:true }}
-      .media__details
-    .card__content
       .proposal-description
         {{proposal.description}}
-      .pie
-        .pie-graph{'pie-chart' => true, ng_model: 'proposal'}
-      .decision-tools
-        .vote.agree{ng_click: 'selectPosition("yes")'}
+      .pie-graph{'pie-chart' => true, ng_model: 'proposal'}
+      .positions
+        .agree{ng_click: 'selectPosition("yes")'}
           %img{src: '/img/yes.png'}
-        .vote.abstain{ng_click: 'selectPosition("abstain")'}
+        .abstain{ng_click: 'selectPosition("abstain")'}
           %img{src: '/img/abstain.png'}
-        .vote.disagree{ng_click: 'selectPosition("no")'}
+        .disagree{ng_click: 'selectPosition("no")'}
           %img{src: '/img/no.png'}
-        .vote.block{ng_click: 'selectPosition("block")'}
+        .block{ng_click: 'selectPosition("block")'}
           %img{src: '/img/block.png'}
-      .vote_count
+      .card-details
         {{proposal.votes_count}} votes
       .agree{ng_click: 'selectPosition("yes")'}
 
-        / %i.fa.fa-smile-o{style: "color: green"}
-
-      / .abstain{ng_click: 'selectPosition("abstain")'}
-      /   %i.fa.fa-meh-o{style: "color: orange"}
-      / .disagree{ng_click: 'selectPosition("no")'}
-      /   %i.fa.fa-frown-o{style: "color: pink"}
-      / .block{ng_click: 'selectPosition("block")'}
-      /   %i.fa.fa-plus{style: "color: red"}
-    .row.statement-form{ng_show: 'voteFormIsExpanded'}
+    .l-row.statement-form{ng_show: 'voteFormIsExpanded'}
       %form{ng_submit: 'submitVote()'}
         %fieldset{ng_disable: 'voteFormIsDisabled'}
           .form-group
             %textarea{ng_model: 'newVote.statement'}
             %button.btn.btn-primary{type: :submit}
               Vote
-
-    -#.row.new-position
-      -#.agree
-        -#%form
-          -#.form-group
-            -#%label Agree
-            -#%textarea.form-control{rows: 3}
-          -#%button.btn
-            -#Submit
-      -#.abstain
-        -#%form
-          -#.form-group
-            -#%label Abstain
-            -#%textarea.form-control{rows: 3}
-          -#%button.btn
-            -#Submit
-      -#.disagree
-        -#%form
-          -#.form-group
-            -#%label Disagree
-            -#%textarea.form-control{rows: 3}
-          -#%button.btn
-            -#Submit
-      -#.block
-        -#%form
-          -#.form-group
-            -#%label Block
-            -#%textarea.form-control{rows: 3}
-          -#%button.btn
-            -#Submit
-    -#.card__show-more
-      -#%a View positions
-
