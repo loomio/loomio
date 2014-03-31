@@ -1,31 +1,9 @@
 @import 'utilities/bootstrap-utils';
-@import 'utilities/colors';
-@import 'utilities/fonts';
-@import 'utilities/grid-settings';
-@import 'utilities/icons';
-@import 'utilities/page-settings';
 @import 'utilities/media_queries';
-
-
-@import 'atoms/add-comment-form';
-@import 'atoms/avatars';
-@import 'atoms/buttons';
-@import 'atoms/card';
-@import 'atoms/card-page';
-@import 'atoms/edit-content';
-@import 'atoms/iconic-title';
-@import 'atoms/media-header';
-@import 'atoms/pie-chart';
-@import 'atoms/toolbar';
-
-@import 'molecules/navbar';
-@import 'molecules/inbox';
-@import 'molecules/motion';
-
-@import 'molecules/motion';
-
+@import 'theme';
 @import 'layout';
-@import 'module/media';
-@import 'module/button';
 @import 'module/icon';
+@import 'module/button';
+@import 'module/media';
 @import 'module/card';
+@import 'module/navbar';
