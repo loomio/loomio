@@ -1,4 +1,6 @@
 pt:
+  explore:
+    go_to_group: "Ir para %{group_name}"
   activerecord:
     errors:
       messages:
