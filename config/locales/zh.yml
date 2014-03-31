@@ -38,7 +38,7 @@ zh:
     discussion_not_created: "無法建立這個討論串。"
     discussion_not_moved: "您沒有將這則討論串移至 %{destination_group.name} 的權限"
     group_not_archived: "無法封存這個群組。"
-    invalid_close_date: "不合法的結束日期，請確認這個日期尚未發生。"
+    invalid_close_date: "不合法的定案日期，請檢查日期是否正確。"
     invalid_email: "請輸入至少一個合法的 Email 地址"
     image_upload_fail: "無法上傳圖片。請確認圖片檔案小於 1MB 並且是 .jpeg 、 .png 或 .gif 格式。"
     motion_closing_inputs: "不合法的定案日期"
@@ -212,7 +212,7 @@ zh:
   remaining_invites: "餘下的邀請函"
   get_in_touch_link: "聯繫"
   email_members_in_group: "寄信給%{which_group}群組成員"
-  subject_error: "請輸入主題"
+  subject_error: "請填寫主旨"
   subject_placeholder: "撰寫主旨"
   message_error: "請填寫訊息"
   message_placeholder: "撰寫訊息給 %{which_group} 的成員。"
@@ -273,11 +273,11 @@ zh:
         若幾分鐘後，您在信件收件匣中未看見任何內容，請聯絡我們：<a href='mailto:contact@loomio.org'>contact@loomio.org</a>
   discussion_items:
     new_discussion: "討論串已建立"
-    new_motion: "提案已建立"
+    new_motion: "建立了提案"
     motion_closed:
       by_user: "已定案此提議"
       by_expiry: "提議已定案"
-    motion_close_date_edited: "已更改提議的定案時間"
+    motion_close_date_edited: "更改了提議的定案時間"
     motion_outcome_created: "已發表此提案的成果"
     motion_outcome_updated: "已更新此提案的成果"
     discussion_title_edited: "討論串標題已更改"
@@ -295,7 +295,7 @@ zh:
   empty_discussion_index_group: "此群組尚未有任何的討論。"
   private_group_discussion_display: "本群組是私密的，討論僅供成員使用。如果您想參與，可以要求加入。"
   discussion_context:
-    started_html: "已由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在 %{when} 開始"
+    started_html: "已由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在 %{when} 前開始"
     last_edited_html: "最後由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在 %{when} 前編輯"
     see_revision_history: "查看編輯歷史"
   description_history:
@@ -333,54 +333,52 @@ zh:
   engagement_on_closed_proposal: "%{percent}%% 的成員陳述過他們的立場 (%{numerator}/%{denominator})"
   state_your_position: "陳述您的立場"
   positions: "立場表態"
-  yes_position: "我同意"
-  yes_details: "我同意就這麼進行。"
+  yes_position: "我贊成"
+  yes_details: "我贊成就這麼進行。"
   abstain_position: "我棄權"
   abstain_details: "我很樂意群組的決定沒有我的參與。"
   no_position: "我反對"
   no_details: "我認為我們可以做更好"
-  block_position: "我反對"
+  block_position: "我阻擋"
   block_details: " 我強烈反對並且不願意這個提案繼續下去"
   not_voted: "[顯示尚未決定的成員]"
   outcome_placeholder: "此提案的成果是？"
   outcome_submit: "發表成果"
   position_verbs:
-    'yes': "同意"
+    'yes': "贊成"
     'no': "反對"
     abstain: "棄權"
-    block: "我反對"
+    block: "阻擋"
     past_tense:
-      'yes': "同意"
+      'yes': "贊成"
       'no': "反對"
       abstain: "棄權"
-      block: "我反對"
+      block: "阻擋"
   help:
-    coordinating: '在您的 Loomio 群組協作'
+    coordinating: '在您的 Loomio 群組中協作'
     coordinating_details: |
       身為協作者，您的責任是設置您的 Loomio 群組以及邀請大家加入。在學習使用一種新的軟體的同時，您的群組也將在新的過程中學習到更有效的合作方式，一同作出更好的決策。這裡是一些幫助您的群組成功的小秘訣：
     different_ways: '各種使用 Loomio 的方式'
     engaging_html: |
       <h2>激動人心的群組小技巧</h2>
-      <p>當一個吸引人的提案出現時，夥伴會很興奮的加入討論
-      一個包含預計行動內容的好提案，可幫助夥伴輕易知道要支持，或站在反對立場。
+      <p>當一個吸引人的提案出現時，夥伴會很興奮地加入討論一個開誠布公的好提案，可幫助夥伴直接知道要支持或是站在反對的立場。
       想想看，在面對面的討論或在信件的討論串中的討論狀況，您會發現在 Loomio 參與討論或決策容易得多。</p>
       <p>如果您的群組才剛開始經營，您可以從比較輕鬆的決策開始討論，
       如此一來，大家都有機會使用 Loomio 工具發表意見、參與整個決策制定的過程。</p>
       <p>另一個經營討論的方法是，在提到夥伴時，使用 @夥伴 這個功能，
       一旦某人被提及，就會收到一封 email，通知他們在討論串中被提到了。</p>
-    example1_html: |+
+    example1_html: |
       <h3>您需要群組去討論廣泛的主題並一同發展解決方案</h3>
       <p>策略：在建立提案之前先花點時間討論主題。</p>
-      <p>在下定解決方案之前，若您能建立起對問題的共識，通常能討論出最棒的成果。當夥伴開始參與這個過程，他們將更可能同意此案的成果。</p>
-
+      <p>在下定解決方案之前，若您能建立起對問題的共識，通常能討論出最棒的成果。當夥伴開始參與這個過程，他們將更可能贊成此案的成果。</p>
     example2_html: |
       <h3>您已經想到一個提案，並且希望獲得您的群組批准來進行</h3>
       <p>策略：針對一個特定決策開始討論並立即提出提案。</P>
       <p>如果你腦海中已經有明確的成果，但是您想要確定沒有反對聲浪，你可以使用該提案來快速達成決定。</P>
       <p>您可以使用這樣的方法來達成類似敲定公文、允許申請，或者是核准一件工作。</p>
-    get_in_touch: "試試聯繫對方"
+    get_in_touch: "取得聯繫"
     get_in_touch_description_html: "如果您有任何問題或反饋，<a href='%{link}'>丟封信給我們</a>就行了。"
-    getting_started: "入門"
+    getting_started: "開始入門"
     getting_started_description: "左邊是討論主題、交換想法與資訊的地方。當群組有決策要制定時，選項會出現在右邊。"
     getting_the_most: 'Loomio：工欲善其事必先利其器'
     have_your_say: "擁有發言權"
@@ -401,36 +399,35 @@ zh:
     join_the_community_description_html: "人人都歡迎加入 Loomio 社群，我們可以在此談論如何充分利用以及如何改進這個工具。<br /><br /><a href='https://www.loomio.org/groups/3'>按這裡前往 Loomio 社群</a>。"
     images_and_text_formatting: "圖片及文字格式"
     images_and_text_formatting_html: |
-      <p>Loomio 使用 Markdown 作為文字及圖片內嵌格式。
-      您可以點選意見區塊底下的小灰色圖示開啟 Markdown。</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>點選這裡</a>
-      以瞭解如何使用 Markdown。</p>
-    keep_up_to_date: "跟進"
+      <p>Loomio 使用「Markdown」語法來嵌入圖片、格式化文字。
+      您可以點選意見區塊底下的小灰色圖示切換 Markdown 功能。</p>
+      <p><a href='https://www.loomio.org/discussions/1124'>點選這裡</a>以瞭解如何使用 Markdown。</p>
+    keep_up_to_date: "持續跟進"
     keep_up_to_date_html: |
       <p>點擊您畫面上方的群組名稱以進入群組頁面，頁面中您可看到該群組的討論與決定清單。
-      若您加入一個以上的群組, 您可在首頁看到所有您加入的群組及其所有活動。 </p>
-      <p>當您的群組有要事發生時, 您將會收到通知信。您可<a href="%{link}"">於此</a>更改您偏好使用的電子郵件信箱。</p>
-    make_a_decision: "作出決定"
-    make_a_decision_description: "當群組準備好制定決策時，任何人都可以提案。替行動方案做出概要以及提供一些背景，讓每個人都能明確知道同意與否所代表的真正意義。"
+      若您加入一個以上的群組，您可在首頁看到所有您加入的群組及其所有活動。 </p>
+      <p>當您的群組有要事發生時，您將會收到通知信。您可<a href="%{link}"">於此</a>更改您偏好使用的電子郵件信箱。</p>
+    make_a_decision: "作出決策"
+    make_a_decision_description: "當群組準備好制定決策時，任何人都可以提案。替行動方案做出概要以及提供一些背景資料，讓每個人都能明確知道贊成與否所代表的真正意義。"
     prompt_people_details: "假如您想得到群組內特定人士的注意，先按下「@」緊接著輸入他們的大名。他們會收到一封 email，提醒他們在某則討論串中被提及。"
     prompt_people_html: "提到夥伴時請用 <span class='blue'>@夥伴</span>"
-    positions_agree_description: "<span>同意</span>代表您滿意這個提案。"
+    positions_agree_description: "<span>贊成</span>代表您滿意這個提案。"
     positions_abstain_description: "<span>棄權</span>代表您並不是很確定，或是您很樂意群組的決定沒有您的參與。"
     positions_disagree_description: "<span>反對</span>代表您認為可能有更好的方案，但您願意順應群組的決策。"
     positions_block_description: "<span>阻擋</span>代表您非常反對，並且如果此提案繼續進行，這會讓您非常不愉快。"
     start_discussion: "開始一段激動人心的討論"
     start_discussion_html: |
-      <p>當您開始一場討論，確保您標題傳達的主題是簡潔的。運用論述面板給出所有必要的背景資訊，讓群組的是有生產力、有見地的討論。</p>
+      <p>當您開始一場討論，確保您標題傳達的主題是簡潔的。運用論述面板給出所有必要的背景資訊，讓群組是有生產力、有見地的討論。</p>
       <p>隨著新的資訊明朗化，討論的過程當中論述面板能被更新。不但能闡明主題，還能運用這空間來分享資源，在過程中總結討論，或是概要出您的群組決策制定的協議。</p>
     start_proposal: "寫出明確的提案"
     start_proposal_html: |
-      <p>如果您讓標題明確扼要，夥伴將可以迅速準確理解其意，然後選擇同意或是反對。</p>
+      <p>如果您讓標題明確扼要，夥伴將可以迅速準確理解其意，然後選擇贊成或是反對。</p>
       <p>提案沒有馬上得到明確的共識並不是世界末日。假如群組不滿意一開始的提案，任何人都可以開始新提案來表達您的顧慮，並讓過程順利進行。</p>
       <p>透過這種動態的過程，您的群組解放了集體的智慧，比起獨自拿出個人所有，進而一同產生更棒的想法。</p>
       <p>如果決策需要更多的時間，提案的截止日可以在任何時間延長。每一個人將會在提案結束的 24 小時前接到電子郵件通知。</p>
     video_id: "52025402"
     video_tutorial: "影片教學"
-    video_tutorial_description: "點閱一段簡單示範的影片以瞭解如何使用 Loomio 。"
+    video_tutorial_description: "點閱一段簡單示範的影片以瞭解如何使用 Loomio。"
   hint:
     context: '使用論述控制板的小提示'
     discussion: '開始一段激動人心討論的小提示'
@@ -568,11 +565,11 @@ zh:
       destination: '我們該傳送您的訊息到哪？'
       submit: '寄送訊息'
     destinations:
-      contact: '一般問詢'
+      contact: '一般諮詢'
       tech: '技術支援 / 臭蟲回報 / 功能請求'
-      press: '媒體問詢'
-      sales: '賣家與買家問詢'
-      translations: '翻譯問詢'
+      press: '媒體諮詢'
+      sales: '賣家與買家諮詢'
+      translations: '翻譯諮詢'
     messages:
       email_html: "填寫這張表格，或發電子郵件到 <a href='mailto:%{email}'>%{email}</a>"
       social_html: "您也可以在<br/><a href='%{facebook}' target='_blank'>facebook</a> ， <a href='%{google}' target='_blank'>google+</a> ，和 <a href='%{twitter}' target='_blank'>twitter</a> 加入我們！"
@@ -686,7 +683,7 @@ zh:
         introduction: "簡單幾句話告訴我們您是誰和為甚麼想要加入 %{group_name} 。"
       motion:
         name: "請問您提議的行動方針是?"
-        description: "請提供足夠的資訊，讓每個人都能明確表示同意或是反對。"
+        description: "請提供足夠的資訊，讓每個人都能明確表示贊成或是反對。"
       group:
         name: "群組名稱"
         description: "群組描述"
@@ -781,7 +778,7 @@ zh:
       intro: "為了完成您的申請，請點擊此認證連結："
       ignore: "若您並未申請加入 Loomio，請忽略此郵件。"
   campaign:
-    crowdfunding_html: "Loomio 即將更臻完美。<a href='http://love.loomio.org'>看看我們的群眾募資活動</a>"
+    crowdfunding_html: "嗨！Loomio 即將變得更完美。<a href='http://love.loomio.org'>看看我們的群眾募資活動</a>"
   about_loomio: "關於 Loomio"
   ago: "%{quantity_of_time} "
   approve: "批准"
@@ -792,7 +789,7 @@ zh:
   change_language: "點擊此處，將Loomio轉換成 %{language}"
   changing: "正在更改"
   click_here: "點這邊"
-  close: "定案"
+  close: "關閉"
   closing: "定案"
   closed: "已定案"
   coordinator: "協作者"

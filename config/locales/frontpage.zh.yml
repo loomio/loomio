@@ -28,21 +28,21 @@ zh:
         desc: '開始不限主題的討論、召集對的夥伴。聚在一起分享各種觀點、萌發新的想法。'
       step2:
         header: '2. 建立共識'
-        desc: '任何人可以提供一個行動方案。夥伴可以同意、棄權、反對或凍結方案 — 這樣您可以了解每個人的感覺，與背後的原因。'
+        desc: '任何人都能提供一個行動方案。夥伴可以贊成、棄權、反對或阻擋方案 — 這樣您可以了解每個人的感覺，與背後的原因。'
       step3:
         header: '3. 共同決策'
         desc: '一同發展提案，讓每個人都能適用。每個決策都有明確的期限，因此您總是有明確的成果。'
     crowdfunding:
       header: '我們運用群眾募資來打造這個嶄新的平台並推廣給全世界。'
     prototype:
-      header_html: "我們已經建立了<strong>典範</strong>，來自 <strong>世界各地</strong>的夥伴正在做出一些令人驚豔的事："
+      header_html: "我們已經建立了<strong>典範</strong>，來自<strong>世界各地</strong>的夥伴正在做出一些令人驚豔的事："
       subhead_html: '即刻<a href="%{try_loomio_link}">嘗試 Loomio Beta</a>，或是<a href="%{join_campaign_link}">搶鮮體驗 Loomio 1.0</a>。'
     mobile:
       header_html: '平台可以在任何裝置上運作，以最棒的<strong>開源行動技術</strong>所打造。'
     quote:
       header:
-        rushkoff_html: '「Loomio<strong>釋放了網際網路的潛力</strong>，讓夥伴達成了共識而不是極端的爭論。 — <a href="http://rushkoff.com">Douglas Rushkoff</a>, <b>《Present Shock》</b> 的作者</div>」'
-        sifry_html: '「Loomio 正中了<strong>個別聲音</strong>與<strong>集體決策</strong>之間的好球帶。」<div class="attributation">— Micah Sifry，<b><a href="http://techpresident.com">TechPresident</a></b>的編輯</div>'
+        rushkoff_html: '「Loomio <strong>釋放了網際網路的潛力</strong>，讓夥伴達成了共識而不是極端的爭論。」<div class="attributation">— <a href="http://rushkoff.com">Douglas Rushkoff</a>，<b>《Present Shock》</b>的作者</div>'
+        sifry_html: '「Loomio 正中了<strong>個別聲音</strong>與<strong>集體決策</strong>之間的好球帶。」<div class="attributation">— Micah Sifry，<b><a href="http://techpresident.com">TechPresident</a></b> 的編輯</div>'
     team:
       header: '關於 Loomio'
       desc: '我們是開放源碼的開發者與社會正義行動者所組成的小型團隊，我們在長白雲之境（Aotearoa），也就是紐西蘭（New Zealand）一家名叫 Enspiral 的組織中工作，我們的朋友、支持者與專家顧問來自世界各地。'
