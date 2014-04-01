@@ -135,8 +135,12 @@ module ApplicationHelper
     end
   end
 
-  def navbar_logo_path
-    ENV["NAVBAR_LOGO_PATH"] or "top-bar-loomio.png"
+  def logo_path
+    ENV["NAVBAR_LOGO_PATH"] or "navbar-logo.png"
+  end
+
+  def logo_beta_path
+    ENV["NAVBAR_LOGO_PATH"] or "navbar-logo-beta.jpg"
   end
 
   def navbar_contribute

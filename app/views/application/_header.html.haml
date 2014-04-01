@@ -10,9 +10,9 @@
                 %i.fa.fa-wrench
             %a.nav-logo-link{:href => dashboard_or_root_path}
               - if hide_beta_logo?
-                = image_tag('navbar-logo.png', :alt => "Loomio", class: 'loomio-logo')
+                = image_tag(logo_path, :alt => "Loomio", class: 'loomio-logo')
               - else
-                = image_tag('navbar-logo-beta.jpg', :alt => "Loomio", class: 'loomio-beta-logo')
+                = image_tag(logo_beta_path, :alt => "Loomio", class: 'loomio-beta-logo')
           - if user_signed_in?
             = render 'inbox'
             = render 'notifications_dropdown'
