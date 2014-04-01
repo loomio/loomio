@@ -404,10 +404,10 @@ $package-color: #51BD9E;
     font-weight: 700;
     font-size: 22px;
     padding: 6px;
-    text-align: center; 
+    text-align: center;
   }
   .package-btn-sub {
-    text-align: center; 
+    text-align: center;
   }
   a.package-link {
     display: block;
@@ -813,6 +813,7 @@ body.pages.wallets {
     vertical-align: top;
     display: inline-block;
     width: 45%;
+    margin-bottom: 40px;
 
     &.bitcoin img { margin: 2px 0 3px; }
 
