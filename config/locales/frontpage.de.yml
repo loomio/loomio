@@ -1,1 +1,24 @@
-de: {}
+de:
+  frontpage:
+    view_this_in_your_language: 'Diese Seite in %{language}'
+    title:
+      collaborative_decision_making: Gemeinschaftliche Entscheidungsfindung
+    link:
+      blog: 'Blog'
+      contact: 'Kontakt'
+      press: 'Presse'
+      try_it: 'Testen'
+      log_in: 'ANMELDEN'
+      video: "Erfahren Sie wie Loomio funktioniert"
+      crowdfunding: 'Zu unserer Crowdfunding-Kampagne'
+      more: 'Mehr'
+      top: 'Nach oben'
+      public_groups: 'Öffentliche Gruppen'
+      terms: 'Bedingungen'
+      privacy: 'Datenschutz'
+      services: 'Dienste'
+    hero:
+      subhead: 'Helfen Sie uns es zu bauen.'
+      desc_html: 'Loomio ist als freie Software <a href="https://github.com/loomio/loomio">Open Source</a>, damit jeder überall an Entscheidungsprozessen teilnehmen kann.'
+    mobile:
+      header_html: 'Eine Plattform, die auf jedem Gerät läuft, gebaut mit den besten <strongOpen Mobile Technologien</strong>.'
