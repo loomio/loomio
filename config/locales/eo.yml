@@ -2,30 +2,48 @@ eo:
   errors:
     messages:
       email: "Retadreso ne validas"
+  date:
+    formats:
+      datepicker: "%Y-%m-%d"
   error:
+    access_denied: "Vi ne havas permeson fari ĉi tion"
     cant_join_subgroup: "Vi ne rajtas aniĝi al subgrupo se vi ne estas membro de la ĉefgrupo"
     cant_modify_position: "Tiu ĉi propono estas fermita"
     cant_state_position: "Tiu ĉi propono estas fermita"
+    cant_view_member_profile: "Ne eblas vidi la profilon de la membro ĉar vi ne estas en la sama grupo."
     discussion_not_created: "La diskuto ne estis sukcese kreita"
     group_not_archived: "La grupo ne estis sukcese arĥivita"
     invalid_close_date: "Tiu ĉi limdato ne validas, kontrolu ke tiu ĉi dato ankoraŭ ne pasis."
+    invalid_email: "Bonvolu enigi almenaŭ unu validan retpoŝtadreson"
     image_upload_fail: "Mankas kapablo alŝuti la foton. Kontrolu ke la foto ne estas pli ol 1 MB granda kaj ke ĝi estas .jpeg, .png aŭ .gif dosiero."
     permission_to_invite: "Vi ne estis rajtigita inviti novajn membrojn."
     position_not_updated: "Ne sukcesis ĝisdatigi la sintenon."
     settings_not_updated: "Viaj agordoj ne estis ĝisdatigitaj"
+    group_request_already_accepted: "Pardonu! Ĉi tiu invito estas ne valida aŭ jam akceptiĝis."
+    group_request_invalid_token: "Pardonu! Ĉi tio estas nevalida identaĵo"
+    group_private_or_not_found: "Grupo ne trovita.\n\nĈi tiu grupo povus esti privata. Se iu donis al vi ĉi tiun ligilon, petu invitiĝi al la grupo."
+    group_already_setup: "La grupo kiun vi provas starigi jam ekzistas."
+    proposal_already_exists: "Jam estas malferma propono en ĉi tiu diskuto."
   alert:
     duplicate_email: "%{which_email} estas jam membro de la grupo."
   notice:
+    admin_rights_removed: "La kunordigaj rajtoj de %{which_user} estas forigitaj."
     member_removed: "Membro forigita"
+    membership_approved: "Membreco aprobita."
     membership_request_canceled: "Peto de membreco nuligita."
     membership_request_ignored: "Peto de membreco ignorita."
     settings_updated: "Viaj agordoj estis ĝisdatigitaj."
+    user_made_admin: "%{which_user} fariĝis kunordiganto."
     you_have_left_group: "Vi forlasis %{which_group}."
   warning:
+    cant_remove_last_admin: "Vi estas la lasta kunordiganto kaj ne povas esti forigata."
     membership_request_already_ignored: "Peto de membreco jam estis ignorita."
     membership_request_already_canceled: "Peto de membreco jam estis nuligita."
     position_not_submitted: "Via sinteno ne estis sukcese submetita."
     proposal_not_created: "Via propono ne estis sukcese kreita."
+    user_already_admin: "%{which_user} jam estas kunordiganto de ĉi tiu grupo."
+    user_already_member: "%{which_user} jam estas membro de ĉi tiu grupo."
+    user_not_admin: "Pardonu, %{which_user} devas esti kunordiganto de ĉi tiu grupo por aliri ĉi tion."
   success:
     added_to_group: "Vi estis ĵus anigita al la grupo %{which_group}."
     close_date_changed: "La limdato estis sukcese ŝanĝita."
@@ -41,6 +59,9 @@ eo:
     proposal_deleted: "Propono forigita."
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: "sekundo"
+        other: "%{count} sekundoj"
       x_seconds:
         one: "1 sekundo"
         other: "%{count} sekundoj"
@@ -87,12 +108,24 @@ eo:
     motion_closing_soon: "La propono estos fermita baldaŭ"
     motion_blocked: "blokis la proponon"
   edit_discussion_context: "Redakti la diskutan kuntekston"
+  request_new_group: "Komenci grupon"
   empty_notifications: "Vi ankoraŭ ne havas ajnan sciigon."
   see_all_notifications: "Vidi ĉiujn sciigojn"
   sign_out: "Eliri"
+  sign_in: "Ensaluti"
   tagline: "Ni kreas mondon kie estas facile por ĉiuj partopreni la decidojn kiuj gravas por ili."
   click_to_dismiss: "Alklaku ĉi tie por forigi tiun ĉi mesaĝon"
   generic_confirm: "Ĉu vi certas?"
+  discussion_helper_text:
+    header: "Bonvenon al via unua diskuto"
+    message: "<p>La temo estas supre de la paĝo, kun kunteksto malsupre.</p><p>Diskuto estas maldekstre, decidoj venos dekstre. Se vi pensas ke la grupo pretas fari decidon, vi povas fari proponon por ke la grupo konsideru.</p>"
+  group_helper_text:
+    header: "Bonvenon al via nova grupo!"
+    message: "<p>Jen la <strong>grupa paĝo</strong>. Maldekstre estas la listo de ĉiuj diskutoj en ĉi tiu grupo.</p><p>Se vi volas ke la grupo diskutu pri io nova, komencu novan diskuton.</p>"
+  dashboard_helper_text:
+    header: "Bonvenon al via hejmpaĝo"
+  invite_people: "Inviti personojn"
+  edit_memberships: 'Redakti membrecojn'
   add_new_member: "Aldoni novan memebron"
   invite_members_to_group: "Inviti membrojn aliĝi al  %{which_group}"
   remaining_invites: "ceteraj invitioj"
@@ -115,6 +148,7 @@ eo:
   confirm_approve_membership_request: "Ĉu vi certas, ke vi volas aldoni  %{which_user} al tiu ĉi grupo?"
   ignore_request: "Ignori peton"
   confirm_ignore_membership_request: "Ĉu vi certas, ke vi volas ignori la peton de membreco fare de   %{which_user}?"
+  membership_requested: "Membreco petiĝis"
   request_membership: "Peti membrecon"
   confirm_remove_membership_request: "Ĉu vi certas, ke vi volas nuligi vian peton de membreco en tiu ĉi grupo?"
   subgroups: "Subgrupoj"
@@ -147,6 +181,7 @@ eo:
   previous_decisions: "Antaŭa diskuto"
   see_previous_decisions: "Vidi antaŭajn diskutojn"
   create_new_proposal: "Krei proponon"
+  empty_decision_list_html: "Ĉu vi pretas por fari decidon? <br> Kiu ajn povas komenci proponon."
   empty_decision_index: "Tiu ĉi grupo faris neniun ajn decidojn ĝis nu.n"
   empty_discussion_list: "Ankoraŭ nenio okazis en tiu ĉi diskuto."
   empty_discussion_index: "Neniu diskuto troveblas ene de viaj grupoj."
@@ -178,6 +213,9 @@ eo:
   proposal_close_date_error: "Bonvolu doni limdaton en la estonteco"
   proposal_closing_when: "Fermota je %{when}"
   proposal_closed_when: "Fermita antaŭ %{when} "
+  proposed_when_by_who: "Proponita de %{who} antaŭ %{when}"
+  engagement_on_open_proposal: "%{percent}%% de la membroj jam klarigis sian pozicion (%{numerator} el %{denominator})"
+  engagement_on_closed_proposal: "%{percent}%% de la membroj klarigis sian pozicion (%{numerator} el %{denominator})"
   state_your_position: "Vortumu vian sintenton"
   positions: "Sintenoj"
   yes_position: "Konsentite"
@@ -190,6 +228,25 @@ eo:
   block_details: "Mi havas fortan kontraŭstaron kontraŭ tiu ĉi propono kaj mi tue ne konsentas daŭrigi laŭ tiu vojo."
   not_voted: "[Montri membrojn kiuj ankoraŭ ne decidis]"
   outcome_placeholder: "Kio estas la rezulto de tiu ĉi propono?"
+  help:
+    get_in_touch: "Ekkontakti"
+    get_in_touch_description_html: "Se vi havas ajnajn demandojn aŭ retrokuplon, <a href='%{link}'>kontaktu nin</a>"
+    getting_started: "Ekkomenci"
+    getting_started_description: "Maldekstre, la grupo diskutas pri temo, interŝanĝas ideojn kaj informojn. Kiam la grupo devos decidi pri io, aperos dekstre."
+    have_a_discussion: "Havi diskuton"
+    have_a_discussion_description: "La temo kaj ĉiaj rilataj foninformoj estas je la supro de la paĝo. Uzu la komentkeston por aldoni vian voĉon al la diskuto."
+    help: "Helpo"
+    how_it_works: "Kiel funkcias"
+    join_the_community: "Aliĝi al la komunumo"
+    join_the_community_description_html: "Ĉiuj bonvenas aliĝi al la komunumo de Loomio, kie ni parolas pri kiel plej bonigi la ilon, kaj kiel ĝi povas esti plibonigata.<br /><br /><a href='https://www.loomio.org/groups/3'>Klaku ĉi tie por iri al la grupo de la Loomio-komunumo."
+    make_a_decision: "Fari decidon"
+    make_a_decision_description: "Kiam la grupo pretas por fari decidon, ĉiuj povas fari proponon. Desegnu klaran agoplanon kaj donu iom da fono por ke ĉiuj sciu ekzakte kion volas diri konsento aŭ malkonsento."
+    positions_agree_description: "<span>Konsento</span> volas diri ke vi feliĉas pri la propono."
+    positions_abstain_description: "<span>Abstino</span> volas diri ke vi ne certas, aŭ ke vi senprobleme lasos ke la grupo decidu sen vi."
+    positions_disagree_description: "<span>Malkonsento</span> volas diri ke vi pensas ke eble estas pli bona alternativo, sed vi pretas iri kun la grupa decido."
+    positions_block_description: "<span>Blokado</span> volas diri ke vi serioze obĵetas kaj ke vi tre malfeliĉos se ĉi tiu propono estos efektigata."
+    video_tutorial: "Video-klarigo"
+    video_tutorial_description: "Vidu la filmeton por rapida elmontro kiel uzi Loomion."
   resend_confirmation: "Resendi konfirmajn instrukciojn"
   new_password: "Nova ŝlosilvorto"
   confirm_new_password: "Konfirmi novan ŝlosilvorton"
@@ -206,11 +263,25 @@ eo:
   forgot_your_password: "Ĉu vi forgesis vian ŝlosilvorton?"
   confirmation_not_received: "Ĉu vi ne ricevis la kofirmajn instrukciojn?"
   unlock_not_received: "Ĉu vi ne ricevis la malŝlosajn instrukciojn?"
+  invitation:
+    invitation_not_found: 'Ne eblis trovi la inviton kun tiu identaĵo. Bonvolu peti novan inviton de la sendinto.'
+    invitation_cancelled: 'Ĉi tiu invito nuliĝis. Bonvolu kontakti la sendinton de la invito se vi pensas ke tio estis eraro.'
+    invitation_already_used: 'Ĉi tiu invito jam uziĝis. Bonvolu ensaluti por pluiri al via grupo.'
+    recipients: "Enigu retpoŝtadresojn, disigitajn per komoj:"
+    invitees_placeholder: "Uzantnomo <user1@example.com>, user2@example.com"
+    subject: "Bonvolu aliĝi al nia nova Loomio-grupo, %{group}"
+    body_editable: |
+      Saluton, venu decidadi kun ni! Ni uzas kunlaboran decidadilon kiu nomiĝas Loomio.
+    message_body: "Invitmesaĝo"
+    invites_more_help2: "<p>Vi povas inviti personojn al via grupo iam ajn.</p><p>Vi eble volos inviti ĉiujn membrojn tuj, aŭ vi povos komenci invitante nur la personojn kun kiuj vi plej proksime laboras.</p>"
+    invitation_link: "Invitligilo"
+    copy: "Se iu ne ricevis la invitmesaĝon, sentu vin libera kopii la invitligilon ĉi-supre kaj doni ĝin mem al la ricevanto."
   motion_form:
     header: "Nova propono"
     name_helper: "Bonvolu klarigi kaj mallongigi la titolon kiel eble plej multe."
   group_form:
     invitation_settings: "Agordoj de la invito"
+    admins_only: "Nur kunordigantoj"
   vote_form:
     header: "Vortumi vian sintenton"
     edit: "Redakti vian sintenon"
@@ -220,6 +291,7 @@ eo:
     submit: "Submeti sintenon"
     update: "Ĝisdatigi sintenon"
   email_preferences_form:
+    header: "Retpoŝtaj preferoj"
     daily_activity_summary: "Taga Agad-resumo"
     daily_activity_subscription: "Sendu al mi ĉiutagan agadan mesaĝon, enhavantan resumon de ĉio kio okazas en miaj grupoj"
     global_notifications: "Ĝeneralaj sciigoj"
@@ -227,8 +299,78 @@ eo:
     mentions_subscription: "Sendu al mi retmesaĝon kiam ajn mia nomo estas menciita en komentoj"
     group_activity_notifications: "Sciigoj de grupa agado"
     group_activity_details: "Por ĉiu grupo, alklaku la skatoleton se vi volas ricevi retmesaĝon tuj kiam estas novaj diksutoj aŭ decidoj"
+    update_preferences: "Ĝisdatigi preferojn"
+  new_user_form:
+    create_an_account: "Krei konton"
   simple_form:
     labels:
+      discussion:
+        title: "Titolo"
+        description: "Kunteksto"
+      group:
+        name: "Grupnomo"
       motion:
         name: "Titolo"
+        description: "Detaloj"
+      user:
+        name: "Plena nomo"
+        email: "Retpoŝto"
+        password: "Pasvorto"
+        language_preference: "Lingvo"
+    placeholders:
+      discussion:
+        title: "Titolo"
+        description: "Donu kuntekston..."
+      motion:
+        name: "Kion vi proponas ke okazu?"
+        description: "Donu sufiĉajn informojn por ke ĉiuj sciu ekzakte kion signifas konsenti aŭ malkonsenti."
+  helpers:
+    submit:
+      discussion:
+        create: "Starigi la diskuton"
+      motion:
+        create: "Starigi proponon"
+      user:
+        create: "Krei konton"
+        update: "Ĝisdatigi agordojn"
+  ago: "antaŭ %{quantity_of_time}"
+  approve: "Aprobi"
+  back: "Reen"
+  cancel: "Nuligi"
+  change: "Ŝanĝi"
+  changing: "Ŝanĝiĝas"
+  close: "Fermi"
+  closing: "Fermiĝas"
+  closed: "Fermita"
+  delete: "Forviŝi"
+  edit: "Redakti"
+  email_address: "Retpoŝtadreso"
+  enable: "Ebligi"
+  participation: "Partopreno"
+  disable: "Malebligi"
+  group: "Grupo"
+  groups: "Grupoj"
+  group_admin: "Grupkunordiganto"
+  home: "Hejmo"
+  like: "Ŝati"
+  loading: "Ŝargas..."
+  message: "Mesaĝo"
+  name: "Nomo"
+  new_activity: "Nova aktivaĵo"
+  next: "Sekva"
   outcome: "Rezulto"
+  password: "Pasvorto"
+  prev: "Antaŭa"
+  options: "Opcioj"
+  ok_got_it: "Bone, mi komprenas!"
+  save: "Savi"
+  saving: "Saviĝas"
+  sending: "Sendiĝas"
+  send_invite: "Sendi inviton"
+  send_email: "Sendi retpoŝton"
+  show_more: "Montri pli"
+  starting: "Komenciĝas"
+  subject: "Temo"
+  unlike: "Ne ŝati"
+  until_close: "ĝis fermi"
+  update: "Ĝisdatigo"

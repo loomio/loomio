@@ -23,7 +23,8 @@ class Translation
                             'Italiano' => :it,
                             'తెలుగు' => :te,
                             'Gaelic (Irish)' => :ga,
-                            'Svenska' => :sv}
+                            'Svenska' => :sv,
+                            'Esperanto' => :eo}
 
   FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl, :zh]
 

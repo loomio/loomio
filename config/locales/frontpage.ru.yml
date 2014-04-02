@@ -1,9 +1,15 @@
 ru:
   frontpage:
+    view_this_in_your_language: 'Переключить язык на %{language}'
+    title:
+      collaborative_decision_making: Совместное принятие решений
     link:
       blog: 'Блог'
       contact: 'Контактная информация'
+      press: 'Пресса'
+      try_it: 'Попробуйте!'
       log_in: 'Регистрация'
+      video: "Узнать больше о том, как работает Loomio"
       crowdfunding: 'Краудфандинговые проекты'
       more: 'Больше'
       top: 'Наверх'
