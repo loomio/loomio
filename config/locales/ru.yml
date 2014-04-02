@@ -1,1 +1,8 @@
-ru: {}
+ru:
+  errors:
+    messages:
+      email: "Невалидный email"
+  error:
+    access_denied: "У вас недостаточно прав"
+  group_setup:
+    set_up_your_group: Настройки вашей группы
