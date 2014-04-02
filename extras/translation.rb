@@ -15,6 +15,7 @@ class Translation
                'Nederlands' => :nl,
                'Português (Brasil)' => :pt,
                'română' => :ro,
+               'Svenska' => :sv,
                'Tiếng Việt' => :vi,
                'Türkçe' => :tr,
                'українська мова' => :uk}
@@ -23,10 +24,9 @@ class Translation
                             'Italiano' => :it,
                             'తెలుగు' => :te,
                             'Gaelic (Irish)' => :ga,
-                            'Svenska' => :sv,
                             'Esperanto' => :eo}
 
-  FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl, :zh]
+  FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl, :zh, :sv]
 
   VIDEO_SUPPORTED_LOCALES  = [:en, :pt, :el, :es, :ca, :cs, :fr, :ja, :nl, :vi]
 
