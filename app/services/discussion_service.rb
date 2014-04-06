@@ -50,6 +50,10 @@ class DiscussionService
     discussion.description = discussion_params[:description]
     discussion.uses_markdown = discussion_params[:uses_markdown]
 
+    if user.ability.can? :update, discussion.group
+      discussion.iframe_src = discussion_params[:iframe_src]
+    end
+
     return false unless discussion.save
 
     user.update_attributes(uses_markdown: discussion.uses_markdown)
