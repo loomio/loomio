@@ -248,18 +248,67 @@ eo:
       procesojn por kunlabori pli efike kaj fari bonajn decidojn kune. Jen kelkaj konsiloj
       por helpi vian grupon sukcesi:
     different_ways: 'Malsamaj manieroj por uzi Loomion'
+    engaging_html: |
+      <h2>Konsiloj por engaĝigi vian grupon</h2>
+      <p>Oni ekscitiĝos ensalti kaj komenci partopreni se estas engaĝiga propono sur la
+      tablo. Bona propono enhavas agoplanon por la grupo, por ke tuj estu klare kion
+      signifas konsenti aŭ malkonsenti. Pripensu kiel vi povas identigi diskutojn/decidojn
+      pri kiuj la grupo nun interkonsentiĝas persone aŭ retpoŝte por kiuj pli facilus se ili
+      estus en Loomio.</p>
+      <p>Se via grupo ĵus komenciĝis, vi povus komenci per facilanima decido, por doni
+      al ĉiuj la ŝancon ludi per la ilo kaj mem vidi la decidadon dum ĝi okazas.</p>
+      <p>Alia simpla maniero por kuraĝigi personojn engaĝiĝi en diskuto estas uzi la eblo
+      @mencii por indiki specifajn personojn; tio sendos retpoŝton al il por diri ke ili estas
+      menciitaj en komento.</p>
+    example1_html: |
+      <h3>Vi bezonas ke la grupo diskutu larĝan temon kaj kune pripensu solvon</h3>
+      <p>Strategio: diskutu temon dum iom da tempo antaŭ ol krei proponon.</p>
+      <p>Diskutoj ofte atingas la plej bonan konkludon se vi konstruas komunan komprenon
+      pri la problemo antaŭ ol salti al specifa solvo. Kiam homoj partoprenas en la proceso, ili multe pli verŝajne konsentos kun la konkludo.</p>
+    example2_html: |
+      <h3>Vi jam pripensis proponon, kaj vi volas havi subtenon de la grupo por antaŭeniri kun ĝi.</h3>
+      <p>Strategio: komencu diskuton pri specifa decido kaj tuj faru proponon.</p>
+      <p>Se vi imagas klaran konkludon sed vi volas certigi ke ne estas esencaj problemoj,
+      vi povas uzi la proponon por rapide havi retrokuplon pri decido.</p>
+      <p>Vi povas fari aferojn kiel finigi dokumenton, aprobi peton, aŭ konsentigi laborpecon.</p>
     get_in_touch: "Ekkontakti"
     get_in_touch_description_html: "Se vi havas ajnajn demandojn aŭ retrokuplon, <a href='%{link}'>kontaktu nin</a>"
     getting_started: "Ekkomenci"
     getting_started_description: "Maldekstre, la grupo diskutas pri temo, interŝanĝas ideojn kaj informojn. Kiam la grupo devos decidi pri io, aperos dekstre."
+    getting_the_most: 'Fari kiel eble plej per Loomio'
+    have_your_say_details_html: |
+      <p>Se vi pretas por montri vian opinion, alklaku unu el la kvar decidbutonojn.</p>
+      <p>Se vi faris vian decidon, mallonge klarigu. Sub la grafiko, vi povas vidi kion ĉiuj aliaj pensas.
+      Tio ebligas rapide kaj facile vidi kio okazis en la diskuto. Dum novaj informoj aperas, vi ajnamomente povas ŝanĝi vian opinion.</p>
     have_a_discussion: "Havi diskuton"
     have_a_discussion_description: "La temo kaj ĉiaj rilataj foninformoj estas je la supro de la paĝo. Uzu la komentkeston por aldoni vian voĉon al la diskuto."
     help: "Helpo"
     how_it_works: "Kiel funkcias"
+    invitation_html: |
+      <h2>Verki bonegan inviton</h2>
+      <p>La unua demando kiun ĉiu nova membro al si faros estas 'por kio uziĝas ĉi tiu grupo?'</p>
+      <p>Pensu pri la plej simpla maniero priskribi la grupon: Kion vi volas kune atingi? Kiajn decidojn vi faros? Kiuj envolviĝos?</p>
+      <p>Povas esti bona ideo unue paroli al via grupo antaŭ ol inviti ilin aliĝi al Loomio.</p>
+      <p>Oni volas scii kial ili estis invititaj, kion oni atendas de ili, kaj kial indas ilia tempo por lerni
+      kiel uzi la novan ilon.</p>
     join_the_community: "Aliĝi al la komunumo"
     join_the_community_description_html: "Ĉiuj bonvenas aliĝi al la komunumo de Loomio, kie ni parolas pri kiel plej bonigi la ilon, kaj kiel ĝi povas esti plibonigata.<br /><br /><a href='https://www.loomio.org/groups/3'>Klaku ĉi tie por iri al la grupo de la Loomio-komunumo."
+    images_and_text_formatting: "Bildoj kaj teksta formatado"
+    images_and_text_formatting_html: |
+      <p>Loomio uzas 'Markdown' por bildenmetado kaj tekstformatado.
+      Vi povas enŝalti Markdown per la malgranda griza emblemo sub la komentkesto.</p>
+      <p><a href='https://www.loomio.org/discussions/1124'>Klaku ĉi tie</a>
+      por informiĝi kiel uzi Markdown.</p>
+    keep_up_to_date: "Resti ĝisdata"
+    keep_up_to_date_html: |
+      <p>Per klako sur la nomo de via grupo supre de la ekrano, vi iros al la gruppaĝo,
+      kaj tie vi povas vidi liston da ĉiuj diskutoj kaj decidoj de tiu grupo. Se vi estas en
+      pli ol unu grupo, vi povas vidi ĉiujn aktivecojn de ĉiuj viaj grupoj kune en la hejmpaĝo.</p>
+      <p>Vi ricevos retpoŝtajn sciigojn kiam gravaj aferoj okazas en via grupo.
+      Vi povas ŝanĝi viajn retpoŝtajn preferojn <a href="%{link}">ĉi tie</a>.</p>
     make_a_decision: "Fari decidon"
     make_a_decision_description: "Kiam la grupo pretas por fari decidon, ĉiuj povas fari proponon. Desegnu klaran agoplanon kaj donu iom da fono por ke ĉiuj sciu ekzakte kion volas diri konsento aŭ malkonsento."
+    prompt_people_details: "Se vi volas voki la atenton de specifa persono en via grupo, tajpu '@' sekve de ties nomo. Tiu persono ricevos retpoŝtaĵon sciigante ilin ke vi menciis ilin en komento."
     positions_agree_description: "<span>Konsento</span> volas diri ke vi feliĉas pri la propono."
     positions_abstain_description: "<span>Abstino</span> volas diri ke vi ne certas, aŭ ke vi senprobleme lasos ke la grupo decidu sen vi."
     positions_disagree_description: "<span>Malkonsento</span> volas diri ke vi pensas ke eble estas pli bona alternativo, sed vi pretas iri kun la grupa decido."

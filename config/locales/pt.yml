@@ -198,13 +198,13 @@ pt:
   click_to_dismiss: "Clique aqui para remover esta mensagem"
   generic_confirm: "Você tem certeza?"
   discussion_helper_text:
-    header: "Bem-vinda/o à sua primeira discussão"
+    header: "Boas vindas à sua primeira discussão"
     message: "<p>O assunto fica no topo da página, com um contexto abaixo dele.</p><p>A discussão está na esquerda, e as decisões aparecem na direita. Se você acha que o grupo está pronto para tomar alguma decisão, você pode fazer uma proposição para o grupo considerar.</p>"
   group_helper_text:
     header: "Seja bem-vinda(o) ao seu novo grupo!"
     message: "<p>Esta é a <strong>página do grupo</strong>. Na esquerda está uma lista de todas as discussões neste grupo.</p><p>Quando você quiser que o grupo discuta outro assunto, inicie uma nova discussão.</p>"
   dashboard_helper_text:
-    header: "Bem-vinda(o) à sua página inicial"
+    header: "Bem-vindo(a) à sua página inicial"
     message: "<p>A página inicial mostra a você todas as discussões em todos os grupos dos quais você faz parte.</p><p>Você pode iniciar uma discussão sobre um novo assunto clicando no botão \"Iniciar uma discussão\".</p>"
   prompt_visitor_to_authenticate:
     header: "Entre ou junte-se ao grupo para participar"
@@ -397,7 +397,7 @@ pt:
       e rápido. Você pode mudar sua posição em qualquer momento de acordo com a chegada de novas
       informações.</p>
     have_a_discussion: "Comece uma discussão"
-    have_a_discussion_description: "O assunto e informações de contexto relevantes ficam no topo da página. Use a caixa de comentários para participar do debate."
+    have_a_discussion_description: "O assunto e informações relevantes de contexto ficam no topo da página. Use a caixa de comentários para participar da discussão."
     help: "Ajuda"
     how_it_works: "Como funciona"
     invitation_html: |
@@ -427,7 +427,7 @@ pt:
     positions_abstain_description: "<span>Abstenção</span> significa que você está insegura/o, ou que você não se importa se o grupo decidir sem você."
     positions_disagree_description: "<span>Desacordo</span> significa que você acredita que deve haver uma alternativa melhor, mas que está disposta/o a aceitar a decisão da maioria."
     positions_block_description: "<span>Bloqueio</span> significa que você tem sérias objeções à proposta e ficará muito insatisfeita/o se ela for aprovada."
-    start_discussion: "Iniciar uma discussão estimulante"
+    start_discussion: "Iniciar uma discussão envolvente"
     start_discussion_html: "<p>Quando você iniciar uma discussão, certifique-se de que o título comunica o tópico\nde maneira sucinta. Use o Painel de Contexto para fornecer toda informação necessária\npara que o grupo tenha uma discussão informada e produtiva.</p>\n<p>Durante a discussão, o Painel de Contexto pode ser atualizado de acordo com a chegada\nde novas informações. Além de esclarecer o tópico, você pode usar esse espaço para \ncompartilhar recursos, resumir\
       \ a discussão enquanto ela avança ou explicar os\nprotocolos de tomada de decisão que seu grupo está usando.</p>\n\n"
     start_proposal: "Escrevendo uma proposição clara"
@@ -438,7 +438,7 @@ pt:
     video_tutorial_description: "Assista ao vídeo para uma rápida demonstração de como usar o Loomio."
   hint:
     context: 'Dicas para usar o painel de contexto'
-    discussion: 'Dicas para iniciar uma discussão estimulante'
+    discussion: 'Dicas para iniciar uma discussão envolvente'
     invitation: 'Dicas para escrever um ótimo convite'
     proposal: 'Dicas para escrever uma proposição clara'
     vote: 'Você pode mudar sua posição a qualquer momento'
@@ -515,18 +515,18 @@ pt:
     invitees_placeholder: "Nome de usuário  <usuario1@exemplo.com>, usuario2@exemplo.com"
     subject: "Por favor, venha participar de nosso novo grupo Loomio, %{group}"
     invite_people: "Convidar pessoas para o seu grupo"
-    invite_to_discussion: "Convide pessoas para esse debate"
-    invite_to_discussion_info: "Adicionar pessoas a esse debate enviará a elas um convite para o seu grupo. Quando aceitarem, serão direcionadas para esse debate."
+    invite_to_discussion: "Convide pessoas para essa discussão"
+    invite_to_discussion_info: "Adicionar pessoas a essa discussão enviará a elas um convite para o seu grupo. Quando aceitarem, serão direcionadas para essa discussão."
     select_members: "Adicionar membros do grupo %{group_name}"
     body_editable: |+
       Ei, venha tomar decisões com a gente! Estamos usando uma ferramenta colaborativa para tomada de decisões chamada Loomio.
 
     body_editable_discussion: |
-      Olá, venha e junte-se ao debate!
+      Olá, venha e junte-se à discussão!
     message_body: "Mensagem de convite"
     invites_more_help2: "<p>Você pode convidar pessoas do seu grupo a qualquer momento.</p><p>Talvez queira convidar todos os membros imediatamente, ou então começar convidando apenas as pessoas mais próximas a você.</p>"
     invitation_link: "Link de convite"
-    discussion_link: "Participar do debate:"
+    discussion_link: "Participar da discussão:"
     link_help: "Clique neste link para entrar em %{group} no Loomio:"
     copy: "Se alguém não receber o e-mail de convite, sinta-se à vontade para copiar o link de convite acima e mandar diretamente ao destinatário."
     pending_invitations: 'Convites pendentes'
@@ -630,7 +630,7 @@ pt:
         privacy_public_header: "Público"
         privacy_public_description: "Qualquer um pode ver essa discussão"
         privacy_private_header: "Privado"
-        privacy_private_description: "Apenas membros de %{group} podem ver esse debate"
+        privacy_private_description: "Apenas membros do %{group} podem ver essa discussão"
         privacy_hidden_description: "Todas as discussões em um grupo secreto são privadas."
         of: "de"
         of_no_group: "deste grupo"
@@ -644,9 +644,9 @@ pt:
         privacy_public_header: Público
         privacy_public_description: Discussões são públicas, a menos que você as torne privadas. Qualquer um pode achar o grupo e juntar-se a ele
         privacy_private_header: Privada em sua maior parte
-        privacy_private_description: Discussões são privadas, a menos que você explicitamente as torne públicas. Qualquer um pode achar o grupo e juntar-se a ele.
+        privacy_private_description: Discussões são privadas, a menos que você explicitamente as tornem públicas. Qualquer um pode achar o grupo e pedir para participar.
         privacy_hidden_header: Secreto (completamente privado)
-        privacy_hidden_description: 'Discussões são sempre privadas. Achar e juntar-se ao grupo acontece apenas por convite. '
+        privacy_hidden_description: Discussões são sempre privadas. Encontrar e participar do grupo acontece apenas por convite.
         privacy_parent_group_members_header: Visível a membros do grupo principal
         privacy_parent_group_members_description: Semelhante ao secreto, mas o grupo e suas discussões podem ser vistas pelos membros do grupo principal.
         privacy_parent_group_members_description_short: Apenas membros deste grupo e do grupo principal podem ver este grupo e suas discussões.
@@ -699,10 +699,10 @@ pt:
         update: "Salvar configurações"
   email:
     to_join_discussion:
-      subject: "%{who} quer que você participe de um debate no Loomio"
-      content: "Você foi convidado(a) a participar do debate: %{discussion}"
+      subject: "%{who} quer que você participe de uma discussão no Loomio"
+      content: "Você foi convidado(a) a participar da discussão: %{discussion}"
       message_intro: "%{who} disse:"
-      link: "Junte-se ao debate"
+      link: "Participar da discussão"
     to_join_group:
       subject: "%{member} foi convidada(o) a participar do grupo %{group_name} no Loomio"
     to_start_group:
@@ -745,7 +745,7 @@ pt:
       subject: "%{who} solicitou entrada em %{which_group}"
       view_group: "Você pode aprovar ou recusar o pedido aqui"
     mentioned:
-      intro: "Você foi mencionada(o) na seguinte discussão:"
+      intro: "Você foi mencionado(a) na seguinte discussão:"
       said: "%{comment_author} disse:"
       subject: "%{who} mencionou você no grupo %{which} no Loomio"
     new_motion_created:
