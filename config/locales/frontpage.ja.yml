@@ -1,1 +1,15 @@
-ja: {}
+ja:
+  frontpage:
+    link:
+      blog: 'ブログ'
+      contact: 'お問い合わせ'
+      log_in: 'ログイン'
+      crowdfunding: 'クラウドファンディング・キャンペーンをチェックする'
+      more: '更に詳細'
+      top: 'トップ'
+      public_groups: '公開グループ'
+      terms: '使用条件'
+      privacy: '個人情報'
+      services: 'サービス'
+    hero:
+      subhead: 'そんな世界を構築するのを手伝ってください'
