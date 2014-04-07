@@ -160,11 +160,11 @@ zh:
     membership_requested: "申請成為成員"
     membership_request_approved: '已批准您的加入申請'
     user_added_to_group: "將您加入群組"
-    motion_closing_soon: "本提案即將定案"
+    motion_closing_soon: "此提議即將定案"
     motion_blocked: "提案已阻擋"
     motion_outcome_created: "已發表此提案的成果"
     motion_outcome_updated: "更新此提案的結果"
-  edit_discussion_context: "編輯討論內容"
+  edit_discussion_context: "編輯論述"
   request_new_group: "建立新的群組"
   start_new_group: "建立新的群組"
   start_new_group_hint: "開始一個新的討論"
@@ -720,15 +720,15 @@ zh:
     view_comment: "點擊此處，您可以看到在 Loomio 上的意見。"
     view_discussion: "點擊此處，您可以看到這條討論串。"
     view_group: "點擊此處，您可以看到Loomio上的群組。"
-    view_proposal: "在Loomio上觀看這項提案。"
+    view_proposal: "在 Loomio 上觀看這項提案。"
     campaign_html: "這個決策對您很重要嗎？考慮 <a href='%{link_path}'> 成為 Loomio 的贊助者</a> 並幫助我們傳播 Loomio 到世界各地。我們是一個試著做大事的小團隊，並且需要您的贊助以幫助我們持續成長。"
     create_discussion:
       intro: "%{who} 在 %{which_group} 開啟了新的討論串："
       subject: "新討論串 — %{which}"
     create_proposal:
-      intro: "在您所屬的Loomio群組中，有一個新的提案！"
+      intro: "在您所屬的 Loomio 群組中，有一個新的提案！"
       closes_in: "即將結束。"
-      subject: "新提案：%{which}"
+      subject: "新的提案：%{which}"
     daily_activity:
       heading: "您最近再Loomio上的活動"
       intro: "讓您了解過去24小時內，在您的Loomio群組中發生了什麼新鮮事！"
@@ -764,7 +764,7 @@ zh:
     proposal_outcome:
       subject: "提案成果"
     proposal_blocked:
-      intro: "您所推進的提案已經遭到阻擋。"
+      intro: "您所推動的提案已經遭到阻擋。"
       subject: "提案已阻擋 — %{which}"
     proposal_closing_soon:
       closes_on: "定案於"

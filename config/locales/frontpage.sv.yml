@@ -15,7 +15,7 @@ sv:
       top: 'Överst'
       public_groups: 'Öppna grupper'
       terms: 'Villkor'
-      privacy: 'Slutna'
+      privacy: 'Integritet'
       services: 'Tjänster'
     hero:
       head_html: 'Världen behöver ett bättre sätt att <strong>fatta beslut tillsammans</strong>.'
