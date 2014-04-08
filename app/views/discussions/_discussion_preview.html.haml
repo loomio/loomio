@@ -42,6 +42,6 @@
 
       .discussion-date-info
         -if motion
-          .proposal-close-date= "#{time_ago_in_words(motion.closing_at)} until close"
+          .proposal-close-date= t( :time_until_close, quantity_of_time: time_ago_in_words(motion.closing_at) )
         - else
-          .latest-comment-time= "#{t('ago', :quantity_of_time => time_ago_in_words(discussion.last_comment_at))}"
+          .latest-comment-time= t( :ago, quantity_of_time: time_ago_in_words(discussion.last_comment_at) )

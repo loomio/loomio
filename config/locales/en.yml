@@ -1023,7 +1023,7 @@ en:
   thanks: "Thanks!"
   translate: "Help translate Loomio!"
   unlike: "Unlike"
-  until_close: "until close"
+  time_until_close: "%{quantity_of_time} until close"
   update: "Update"
   facebook: "Facebook"
   google: "Google"
