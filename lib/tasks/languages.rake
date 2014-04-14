@@ -71,7 +71,7 @@ namespace :languages do
     languages_hash.keys.each do |language|
       dialect = decide_dialect(language, languages_hash)
 
-      print "[\e[31m #{dialect} \e[0m] : "
+      printf '%20s', "\e[31m #{dialect}\e[0m : "
 
       RESOURCES.keys.each do |resource|
         update(dialect, resource)

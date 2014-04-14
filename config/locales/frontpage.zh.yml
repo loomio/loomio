@@ -20,12 +20,12 @@ zh:
     hero:
       head_html: '這個世界需要更好的方法來<br /><strong>共同參與決策</strong>。'
       subhead: '助我們一臂之力。'
-      desc_html: 'Loomio 是一套自由、<a href="https://github.com/loomio/loomio">開放源碼</a>的軟體。讓任何人不論在任何地方，都能參與影響他人的決策'
+      desc_html: 'Loomio 是一套自由、<a href="https://github.com/loomio/loomio">開放源碼</a>的軟體，讓任何人不論在任何地方，都能參與影響他人的決策'
     product:
       header_html: '當我們聽到<strong>所有的聲音</strong>時，我們可以作出<strong>更好的決策</strong>。'
       step1:
         header: '1. 討論協商'
-        desc: '開始不限主題的討論、召集對的夥伴。聚在一起分享各種觀點、萌發新的想法。'
+        desc: '開始任何主題的討論、召集對的夥伴，一起分享各種觀點、萌發新的想法。'
       step2:
         header: '2. 建立共識'
         desc: '任何人都能提供一個行動方案。夥伴可以贊成、棄權、反對或阻擋方案 — 這樣您可以了解每個人的感覺，與背後的原因。'
@@ -35,7 +35,7 @@ zh:
     crowdfunding:
       header: '我們運用群眾募資來打造這個嶄新的平台並推廣給全世界。'
     prototype:
-      header_html: "我們已經建立了<strong>典範</strong>，來自<strong>世界各地</strong>的夥伴正在做出一些令人驚豔的事："
+      header_html: "我們已經打造了<strong>試作版</strong>，來自<strong>世界各地</strong>的夥伴正在運用做出一些令人驚豔的事："
       subhead_html: '即刻<a href="%{try_loomio_link}">嘗試 Loomio Beta</a>，或是<a href="%{join_campaign_link}">搶鮮體驗 Loomio 1.0</a>。'
     mobile:
       header_html: '平台可以在任何裝置上運作，以最棒的<strong>開源行動技術</strong>所打造。'
@@ -45,19 +45,19 @@ zh:
         sifry_html: '「Loomio 正中了<strong>個別聲音</strong>與<strong>集體決策</strong>之間的好球帶。」<div class="attributation">— Micah Sifry，<b><a href="http://techpresident.com">TechPresident</a></b> 的編輯</div>'
     team:
       header: '關於 Loomio'
-      desc: '我們是開放源碼的開發者與社會正義行動者所組成的小型團隊，我們在長白雲之境（Aotearoa），也就是紐西蘭（New Zealand）一家名叫 Enspiral 的組織中工作，我們的朋友、支持者與專家顧問來自世界各地。'
+      desc: '我們是開放源碼的開發者與社會正義運動者所組成的小型團隊，我們在長白雲之境（Aotearoa），也就是紐西蘭（New Zealand）一家名叫 Enspiral 的組織中工作，我們的朋友、支持者與專家顧問來自世界各地。'
     ideals:
       community:
         header: '社群導向協作'
-        desc: 'Loomio 由合作社（worker-owned cooperative）關係所打造。我們是社會企業，將正向的社會影響力發揮到極致，而非利潤。'
+        desc: 'Loomio 由合作社（worker-owned cooperative）關係所打造。我們是社會企業，將正向的社會影響力發揮到極致，不以利潤為首要考量。'
       independent:
-        header: '獨立以及中立'
+        header: '獨立並且中立'
         desc: '我們維護讓任何群組都能聚在一起的空間，這空間獨立於政治或是商業利益。我們不會販售您的資料。'
       open:
         header: '自由、開源軟體'
         desc: 'Loomio 的程式原始碼是公開的資源，任何人都能執行、閱讀、從中學習、修改與重新散布。'
       gift:
         header: '禮物經濟學'
-        desc: 'Loomio 按照各自的負擔能力來付費支持。大家的贊助能維持平台的運作、免除廣告的干擾，讓沒有資金的群組也能來隨意運用。'
+        desc: '使用者各自依自己的能力來付費支持 Loomio 。大家的贊助能維持平台的運作、免除廣告的干擾，讓沒有資金的群組也能來隨意運用。'
     vision:
       header: '幫助我們，讓此願景成為現實。'

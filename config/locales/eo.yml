@@ -309,10 +309,15 @@ eo:
     make_a_decision: "Fari decidon"
     make_a_decision_description: "Kiam la grupo pretas por fari decidon, ĉiuj povas fari proponon. Desegnu klaran agoplanon kaj donu iom da fono por ke ĉiuj sciu ekzakte kion volas diri konsento aŭ malkonsento."
     prompt_people_details: "Se vi volas voki la atenton de specifa persono en via grupo, tajpu '@' sekve de ties nomo. Tiu persono ricevos retpoŝtaĵon sciigante ilin ke vi menciis ilin en komento."
+    prompt_people_html: "Demandu partoprenantojn kun  <span class='blue'>@mentions</span>"
     positions_agree_description: "<span>Konsento</span> volas diri ke vi feliĉas pri la propono."
     positions_abstain_description: "<span>Abstino</span> volas diri ke vi ne certas, aŭ ke vi senprobleme lasos ke la grupo decidu sen vi."
     positions_disagree_description: "<span>Malkonsento</span> volas diri ke vi pensas ke eble estas pli bona alternativo, sed vi pretas iri kun la grupa decido."
     positions_block_description: "<span>Blokado</span> volas diri ke vi serioze obĵetas kaj ke vi tre malfeliĉos se ĉi tiu propono estos efektigata."
+    start_discussion: "Komence de egaĝiĝa diskuto"
+    start_discussion_html: "<p>Kiam vi starigas diskuton, certiĝu ke la titolo indikas malmultvorte pri kio ĝi temas.  \nUzu la Kunteksto-Panelo por doni  ĉ.iujn fonajn informojn bezonatajn por ke la grupo havu produktivan kaj bone informitan diskuton,</p>\n<p>Dum la diskutado, la Kunteksto-Panelo povas esti ĝisdatigita kiam novaj\
+      \ informoj aperas.  Vi povs uzi tiun ĉ.i spacon ne nur por klarigi la temon, sed ankaŭ  por dividi utilajn informfontojn, resumi la diksuton dum ĝi progresas aŭ  por skizi la decido-faran proceduron uzatan de la grupo..</p>\n"
+    start_proposal: "Verkante klaran proponon"
     video_id: "52025402"
     video_tutorial: "Video-klarigo"
     video_tutorial_description: "Vidu la filmeton por rapida elmontro kiel uzi Loomion."
@@ -514,7 +519,6 @@ eo:
   starting: "Komenciĝas"
   subject: "Temo"
   unlike: "Ne ŝati"
-  until_close: "ĝis fermi"
   update: "Ĝisdatigo"
   common:
     email: "Retpoŝto"

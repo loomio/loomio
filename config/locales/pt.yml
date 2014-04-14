@@ -834,7 +834,7 @@ pt:
   thanks: "Obrigado!"
   translate: "Ajude a traduzir o Loomio!"
   unlike: "Curtir (desfazer)"
-  until_close: "até fechar"
+  time_until_close: "%{quantity_of_time} até encerrar"
   update: "Atualizar"
   facebook: "Facebook"
   google: "Google"
