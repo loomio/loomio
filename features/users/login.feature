@@ -22,3 +22,9 @@ Feature: Login
     When I visit the group page
     And I log in
     Then I should see the group page
+
+  Scenario: Redirected to previous public page on login
+    Given I am a logged out user
+    When I view a public discussion
+    And I login
+    Then I should see the discussion

@@ -96,6 +96,7 @@ class DiscussionsController < GroupBaseController
 
     @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
     assign_meta_data
+    store_location
   end
 
   def move
