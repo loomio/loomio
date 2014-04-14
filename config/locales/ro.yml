@@ -154,6 +154,7 @@ ro:
     blog: 'Blog'
     contact: 'Contact'
     privacy: 'Confidentialitate'
+    public_groups: 'Grupuri publice'
     terms: 'Termeni'
   inbox:
     dropdown-btn: 'Inbox'
@@ -178,8 +179,10 @@ ro:
     motion_outcome_updated: "actualizat rezultatul propunerii"
   edit_discussion_context: "Modifica contextul discutiei"
   request_new_group: "Deschide un grup"
+  start_new_group: "Creare grup"
   empty_notifications: "Nu ai inca nici o notificare."
   see_all_notifications: "Vezi toate notificarile"
+  profile: "Profil"
   sign_out: "De-logare"
   sign_in: "Logheaza-te"
   tagline: "Creand o lume in care este posibil pentru toti sa participe in deciziile care-i afecteaza."
@@ -195,6 +198,9 @@ ro:
   dashboard_helper_text:
     header: "Bine ai venit pe pagina de start"
     message: "<p> Pagina de start arata toate discutiile curente in grupurile al caror membru esti.</p><p>Poti incepe o noua discutie pe o tema noua apasand butonul \"Incepe o noua discutie.\"</p>"
+  prompt_user_to_join:
+    header: "Ca să participi, înscrie-te în acest grup!"
+    body: "Poţi să scrii comentarii şi să votezi aici după ce devii membru al acestui grup."
   setup_steps_title: "Pasii urmatori:"
   setup_step_1: "Uita-te la un model de discutie"
   setup_step_2: "Incepe prima ta discutie"
@@ -304,7 +310,9 @@ ro:
   delete_comment: "Sterge comentariu"
   confirm_delete_comment: "Esti sigur ca vrei sa stergi acest comentariu?"
   markdown_settings_more_info: "Mai multe informatii..."
+  edit_discussion: "Modificare discuţie"
   move_discussion: "Muta discutia"
+  move_discussion_where: "Unde vrei să muţi discuţia asta?"
   delete_discussion: "Sterge discutia"
   confirm_delete_discussion: "Esti sigur ca vrei sa stergi definitiv aceasta discutie?"
   new_proposal: "Propunere Noua"
@@ -440,6 +448,8 @@ ro:
   remember_me: "Tine-ma minte"
   signing_in: "Intrare in cont"
   forgot_your_password: "Ti-ai uitat parola?"
+  dont_have_an_account: "Nu ai cont la noi?"
+  already_have_account: "Ai cont Loomio?"
   confirmation_not_received: "Nu ai primit instructiunile de confirmare?"
   unlock_not_received: "Nu ai primit instructiunile de deblocare?"
   inactive_html: "Ne pare rau, acest cont este inactiv. Daca ai intrebari te rugam <a href='%{path_to_contact}'>sa ne contactezi</a>."
@@ -462,6 +472,8 @@ ro:
     invitation_link: "Linkul invitatiei"
     link_help: "Apasa acest link pentru a intra in grupul %{group} pe Loomio:"
     copy: "Daca cineva nu a primit emailul cu invitatia, poti sa copiezi linkul invitatiei de mai sus si sa-l trimiti personal."
+    pending_invitations: 'Invitaţii fără răspuns'
+    no_pending_invitations: "Nu sunt invitaţii fără răspuns."
   search:
     description: "Mai jos este o lista a discutiilor si propunerilor care au '%{query}' in titlu sau descriere."
     header: "Cauta rezultate pentru  '%{query}'"
@@ -478,6 +490,18 @@ ro:
       E o idee buna? Ajutorul Loomio vrea sa stie ce crezi!
       Daca stii ce vrei, apasa pe unul din butoanele de mai jos (poti sa mergi cu mouse-ul deasupra lor pentru o descriere a fiecaruia)
       Vei fi invitat sa adaugi o propozitie scurta continand motivul deciziei tale. Aceasta usureaza intelegerea rapida a ce doreste fiecare si de ce. Poti sa-ti schimbi parerea si sa-ti modifici decizia de cate ori vrei pana cand propunerea este inchisa.
+  contact_page:
+    labels:
+      name: 'Nume'
+      message: 'Mesaj'
+      destination: 'Unde să trimitem mesajul?'
+      submit: 'Trimitere'
+  discussion_form:
+    new:
+      header: "Discuţie nouă"
+      who: "În ce grup vrei să începi discuţia asta?"
+    edit:
+      header: "Modificare discuţie"
   motion_form:
     header: "Propunere noua"
     name_helper: "Scrie un title cat se poate de clar si scurt astfel incat oamenii sa inteleaga exact la ce te referi cand sunt de acord sau nu cu propunerea ta."
@@ -504,10 +528,17 @@ ro:
     update_preferences: "Modifica preferintele"
   new_user_form:
     create_an_account: "Creeaza un cont"
+  profile_form:
+    view: "Profil"
+    profile: "Modificare profil"
+    upload_new_image: "Încărcare imagine"
   group_setup:
     set_up_your_group: Creeaza grupul tau
     desc_header: "Aproape ai reusit!"
     submit: "Vreau sa intru in grupul meu!"
+    payment_model:
+      header: Loomio e pentru toţi!
+      info: Oricine îşi permite serviciul nostru, chiar şi grupurile fără bani!
   simple_form:
     'yes': 'Da'
     'no': 'Nu'
@@ -520,6 +551,10 @@ ro:
       discussion:
         title: "Titlu"
         description: "Context"
+        privacy_public_header: "Publică"
+        privacy_public_description: "Oricine poate să vadă discuţia asta."
+        privacy_private_header: "Privată"
+        privacy_private_description: "Numai membrii grupului %{group} pot să vadă discuţia asta."
       group:
         name: "Numele grupului"
         description: "Descriere"
@@ -541,6 +576,9 @@ ro:
         password: "Parola"
         password_confirmation: "Confirma parola"
         language_preference: "Limba"
+      group_request:
+        admin_name: "Cum te cheamă?"
+        name: "Cum se va numi grupul tău?"
     placeholders:
       discussion:
         title: "Titlu"
@@ -559,12 +597,16 @@ ro:
     submit:
       discussion:
         create: "Porneste discutie"
+        update: "Actualizare discuţie"
       motion:
         create: "Porneste propunere"
       user:
         create: "Creeaza cont"
         update: "Modifica setarile"
   email:
+    to_join_discussion:
+      subject: "%{who} te invită la o discuţie pe Loomio."
+      content: "Ai primit invitaţie la discuţia: %{discussion}"
     to_join_group:
       subject: "%{member} te-a invitat sa te alaturi grupului %{group_name}  pe Loomio"
     to_start_group:
@@ -670,6 +712,7 @@ ro:
   password: "Parola"
   pricing: 'Plati'
   prev: "Anteriorul"
+  translate_this_string: "Traducere în %{language}"
   options: "Optiuni"
   ok_got_it: "Ok, am inteles!"
   remove: "Elimina"
@@ -686,7 +729,8 @@ ro:
   thanks: "Multumim!"
   translate: "Ajuta la traducerea Loomio!"
   unlike: "Nu apreciez"
-  until_close: "pana la inchidere"
   update: "Modifica"
+  facebook: "facebook"
+  google: "Google"
   common:
     email: "Email"

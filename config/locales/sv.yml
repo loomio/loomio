@@ -371,7 +371,7 @@ sv:
       abstain: "avstod"
       block: "blockerade"
   help:
-    coordinating: 'Koordinerar din Loomiogrupp'
+    coordinating: 'Koordinera din Loomiogrupp'
     coordinating_details: "Som koordinator är du ansvarig att administrera din Loomiogrupp och bjuda in\nalla deltagare. Förutom att lära sig använda en ny mjukvara, kommer din grupp \natt lära sig nya processer att samarbeta mer effektivt samt att fatta bra beslut \ntillsammans. Här är några tips för att hjälpa din grupp att lyckas:\n"
     different_ways: 'Olika sätt att använda Loomio'
     engaging_html: |
@@ -381,20 +381,20 @@ sv:
       att det är direkt uppenbart vad det är ni ska bli överens eller inte överens om.
       Tänk på de nuvarande diskussioner/beslut som din grupp är engagerade i, på plats
       eller per email, och hur mycket lättare det skulle kunna vara med Loomio.</p>
-      <p>Om din grupp just har börjat, kan du starta med ett enkelt beslut att ge
+      <p>Om din grupp just har startat, kan du börja med ett enkelt beslut att ge
       alla en chans att lära känna verktyget och se beslutsprocessen i handling.</p>
       <p>Ett annat bra sätt att få personer att engagera sig i en diskussion är att använda funktionen
       @mention för att få med någon specifik person, vilket kommer att skicka ett email och informera dem om att
       de har blivit omnämnda i ett inlägg.</p>
     example1_html: |
-      <h3>Din grupp behöver diskutera ett ämne brett och utveckla en lösning tillsammans</h3>
+      <h3>Din grupp behöver diskutera ett ämne och utveckla ett förslag tillsammans</h3>
       <p>Strategi: Diskutera ämnet en stund innan ni arbetar fram ett förslag.</p>
       <p>Diskussioner når ofta det bästa resultatet om ni bygger en gemensam förståelse
       om problemet innan ni väljer en specifik lösning. När personer får möjlighet att
       delta i processen kommer de att vara mer benägna att sluta upp kring resultatet.</p>
     example2_html: "<h3>Du har redan ett förslag i åtanke och vill få med dig gruppen att gå vidare.</h3>\n<p>Strategi: Starta en diskussion om ett särskilt beslut och lägg fram förslaget direkt.</p> \n<p>Om du har ett tydligt resultat i åtanke, men vill se till att det inte finns några kritiska invändningar,\nkan du använda förslaget för att få snabb återkoppling inför ett beslut.</p>\n\
       <p>Du kan använda detta för att slutföra ett dokument, godkänna en ansökan, eller få sign-off på ett arbete.</p>\n"
-    get_in_touch: "Ta kontakt med"
+    get_in_touch: "Kontakta oss"
     get_in_touch_description_html: "Om du har någon fråga eller vill ge feedback, <a href='%{link}'>skriv till oss</a>."
     getting_started: "Håller på att starta"
     getting_started_description: "Till vänster, diskuterar gruppen ett ämne, utbyter idéer och information. När gruppen kommer fram till ett beslut, dyker det upp till höger."
@@ -408,7 +408,7 @@ sv:
     have_a_discussion: "Ha en diskussion"
     have_a_discussion_description: "Ämnet och relevant bakgrundsinformation finns högst upp på sidan. Använd kommentarboxen för att göra din röst hörd i diskussionen."
     help: "Hjälp"
-    how_it_works: "Hur der fungerar"
+    how_it_works: "Hur det fungerar"
     invitation_html: |
       <h2>Hur du skriver en bra inbjudan</h2>
       <p>Den första frågan varje ny medlem får är 'vad är den här gruppen till för?'</p>
@@ -585,8 +585,8 @@ sv:
       sales: 'Sälj- och kundfrågor'
       translations: 'Översättningsfrågor'
     messages:
-      email_html: "Fyll i detta formulär, eller sänd ett email tll <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Du kan också gå med oss på <br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
+      email_html: "Fyll i detta formulär, eller skicka ett email till <a href='mailto:%{email}'>%{email}</a>"
+      social_html: "Du kan också följa oss på <br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: "Starta en diskussion"
@@ -621,7 +621,7 @@ sv:
     create_an_account: "Skapa ett konto"
   profile_form:
     view: "Visa min profil"
-    profile: "Redigare profilen"
+    profile: "Ändra profilen"
     picture: "Bild"
     use_avatar_kind: "Använd %{kind}"
     upload_new_image: "Ladda upp en ny bild"
@@ -853,7 +853,6 @@ sv:
   thanks: "Tack!"
   translate: "Hjälp oss att översätta Loomio!"
   unlike: "Skild från"
-  until_close: "tills det stänger"
   update: "Uppdatera"
   facebook: "Facebook"
   google: "Google"

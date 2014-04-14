@@ -789,7 +789,7 @@ el:
       intro: "Παρακαλούμε πατήστε αυτόν τον σύνδεσμο επαλήθευσης για να τελειώσετε την αίτηση σας:"
       ignore: "Εάν δεν έχετε κάνει αίτηση για να γίνετε μέλος στο Loomio παρακαλούμε αγνοήστε αυτό το email."
   campaign:
-    crowdfunding_html: "Χαίρεται! Το Loomio είναι ετοιμάζεται να γίνει ακόμα καλύτερο! <a href='http://love.loomio.org'> Δείτε την εκστρατεία μας για χρηματοδότηση από το κοινό!</a>"
+    crowdfunding_html: "Χαίρεται! Το Loomio ετοιμάζεται να γίνει ακόμα καλύτερο! <a href='http://love.loomio.org'> Δείτε την εκστρατεία μας για χρηματοδότηση από το πλήθος!</a>"
   about_loomio: "Σχετικά με το Loomio"
   ago: "πριν από %{quantity_of_time} "
   approve: "Έγκριση"
@@ -850,7 +850,7 @@ el:
   thanks: "Ευχαριστούμε!"
   translate: "Βοηθήστε με την μετάφραση του Loomio!"
   unlike: "Δεν μ'άρέσει"
-  until_close: "μέχρι να κλείσει"
+  time_until_close: "%{quantity_of_time} μέχρι να κλείσει"
   update: "Ενημέρωση"
   facebook: "Facebook"
   google: "Google"

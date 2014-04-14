@@ -310,7 +310,7 @@ de:
   private_group_discussion_display: "Diese Gruppe ist privat. Diskussionen sind nur für Mitglieder sichtbar. Wenn du mitmachen möchtest, kannst du darum bitten, in die Gruppe aufgenommen zu werden."
   discussion_context:
     started_html: "Gestartet vor %{when} von <a href='%{link}' class='%{link_class}'>%{who}</a>"
-    last_edited_html: "Zuletzt editiert vor %{when} von <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    last_edited_html: "Zuletzt bearbeitet vor %{when} von <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Änderungsverlauf ansehen"
   description_history:
     header: "Änderungsverlauf"
@@ -847,7 +847,6 @@ de:
   thanks: "Danke"
   translate: "Hilf Loomio zu übersetzen!"
   unlike: "Gefällt mir nicht"
-  until_close: "bis zum Ende"
   update: "Aktualisierung"
   facebook: "Facebook"
   google: "Google"
