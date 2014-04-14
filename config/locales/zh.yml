@@ -48,7 +48,7 @@ zh:
     only_group_coordinator_remove_admin: "此群組必須要有一位協作者。您想要加入其他協作者到這個群組嗎？"
     permission_to_invite: "您沒有邀請新的成員的權限。"
     position_not_updated: "無法更新您的立場。"
-    settings_not_updated: "您的設定並沒有被更新。"
+    settings_not_updated: "您的設定沒有被更新。"
     group_request_already_accepted: "抱歉！此邀請函是無效的，或是已被接受。"
     group_request_invalid_token: "抱歉！這是無效的邀請碼"
     group_private_or_not_found: "找不到群組。\n\n此群組可能是私人群組。如果有人給您這個連結，要求他邀請您加入這個群組。"
@@ -456,7 +456,7 @@ zh:
 
       金錢不應當成為協同決策制定的阻礙。Loomio 的募資來自於我們使用者社群以及使用 Loomio 的正式組織所付費認購的贊助。
 
-      您的贊助意味著我們能保持 Loomio 的獨立運作、免除廣告的干擾、群組在他們的社群當中能自由地處理偉大的事務。
+      您的贊助意味著我們能保持 Loomio 的獨立運作、免除廣告的干擾、群組在他們的社群當中能自由地處理偉大的事業。
 
       感謝您讓此成為可能！
     thank_you_title: 謝謝您為Loomio的貢獻!
@@ -472,7 +472,7 @@ zh:
     making_a_donation_description: |
       Loomio 是一家社會網絡合作企業，致力於讓每一個人能更輕鬆參與影響他人的決策。
 
-      您的贊助代表我們能保持 Loomio 的獨立運作、免除廣告的干擾、群組在他們的社群當中能自由地處理偉大的事務。
+      您的贊助代表我們能保持 Loomio 的獨立運作、免除廣告的干擾、群組在他們的社群當中能自由地處理偉大的事業。
 
       感謝您讓此成為可能！
   resend_confirmation: "重送確認的用法說明"
@@ -730,8 +730,8 @@ zh:
       closes_in: "即將結束。"
       subject: "新的提案：%{which}"
     daily_activity:
-      heading: "您最近再Loomio上的活動"
-      intro: "讓您了解過去24小時內，在您的Loomio群組中發生了什麼新鮮事！"
+      heading: "您的 Loomio 動態"
+      intro: "顯示過去 24 小時內在您的 Loomio 群組中發生了甚麼新鮮事"
       subject: "Loomio — 過去 24 小時的摘要"
     group_email:
       intro: "%{who} 在 %{group}裡發布了一則公告："
@@ -839,7 +839,7 @@ zh:
   thanks: "謝謝！"
   translate: "協助翻譯 Loomio！"
   unlike: "收回讚"
-  until_close: "直到結束"
+  time_until_close: "%{quantity_of_time} 直到定案"
   update: "更新"
   facebook: "Facebook"
   google: "Google"

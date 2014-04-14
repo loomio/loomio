@@ -538,7 +538,6 @@ bg:
   starting: "Започва"
   subject: "Тема"
   unlike: "Не харесвам"
-  until_close: "до затваряне"
   update: "Обновяване"
   common:
     email: "E-mail"

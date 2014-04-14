@@ -365,7 +365,6 @@ cmn:
   subject: "标题"
   thanks: "谢谢您！"
   unlike: "不喜欢"
-  until_close: "直到关闭"
   update: "更新"
   common:
     email: "邮件"
