@@ -1,0 +1,18 @@
+body.dashboard {
+  &.show {
+    .sub-panel ul {
+      a:hover { color: $dark-grey }
+      li { line-height: 21px; }
+      .sub-group .group-link-name { padding-left: 20px; }
+    }
+  }
+  .no-groups {
+    margin-top: 20px;
+    .intro-desc {
+      color: #686868;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+  }
+}
