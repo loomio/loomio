@@ -5,12 +5,12 @@
     %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
     %title= title
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
-    = stylesheet_link_tag "frontpage"
+    = stylesheet_link_tag "application"
     = csrf_meta_tags
     = render 'social_metadata', description: @meta_description, title: @meta_title
 
 
-  %body{class: "#{controller_name} #{action_name}"}
+  %body{class: "pages #{controller_name} #{action_name}"}
     - analytics_scope do
       = render 'google_tag_manager'
 
@@ -28,4 +28,4 @@
           = yield
 
     = render 'footer_logged_out'
-  = javascript_include_tag "frontpage"
+  = javascript_include_tag "application"
