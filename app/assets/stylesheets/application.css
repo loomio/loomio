@@ -4,5 +4,5 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *
  *= require third_party
- *= require default_style
+ *= require unstructured
  */
