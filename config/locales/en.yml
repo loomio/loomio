@@ -2,6 +2,15 @@ en:
   explore:
     go_to_group: "Go to %{group_name}"
 
+  try_it:
+    header: "Try Loomio"
+    start_a_group: "Start a group to make decisions in your own community."
+    join_the_community: "Join the Loomio Community group"
+    loomio_community_info: "This is where we discuss and make decisions about Loomio."
+    explore_groups: "Explore other groups on Loomio"
+    explore_groups_info: "Check out all the awesome groups on Loomio and join them!"
+
+
   activerecord:
     errors:
       messages:
@@ -321,6 +330,8 @@ en:
   #
 
   group_request:
+    beta_request_header: "Start a group on Loomio Beta"
+    beta_request_description: "To start making decisions on Loomio Beta, the first step is to start a group"
     neighbourhood_support_group: "e.g. Neighbourhood Support Group"
     confirmation:
       title: You're almost done! Check your email.
