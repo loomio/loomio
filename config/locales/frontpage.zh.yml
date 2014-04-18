@@ -36,7 +36,6 @@ zh:
       header: '我們運用群眾募資來打造這個嶄新的平台並推廣給全世界。'
     prototype:
       header_html: "我們已經打造了<strong>試作版</strong>，來自<strong>世界各地</strong>的夥伴正在運用做出一些令人驚豔的事："
-      subhead_html: '即刻<a href="%{try_loomio_link}">嘗試 Loomio Beta</a>，或是<a href="%{join_campaign_link}">搶鮮體驗 Loomio 1.0</a>。'
     mobile:
       header_html: '平台可以在任何裝置上運作，以最棒的<strong>開源行動技術</strong>所打造。'
     quote:
