@@ -1,33 +1,6 @@
 .row
-  .span5
+  .span6
     #intro
-      %h1.beta-header
-        Start a group
-        %br
-        on Loomio Beta
-      %p.beta-desc To start making decisions on Loomio Beta, the first step is to start a group.
-      = render 'form', submit_label: t(:start_group), placeholder: t(:'group_request.neighbourhood_support_group')
-  .span5.offset1.full-release
-    %h1
-      Get early access
-      %br
-      to Loomio 1.0
-    %p.full-release-desc We're crowdfunding a fully-featured platform to deliver on the big vision:
-    %h2 It will be:
-    %ul.attributes
-      %li
-        %strong mobile,
-        so it works across all devices
-      %li
-        %strong safe,
-        so you can control your own data and privicy
-      %li
-        %strong accessible,
-        so people of all abilities can participate
-      %li
-        %strong free and open-source software,
-        licensed under AGPL3
-      %li
-        %strong as easy to use as email
-    =link_to 'https://love.loomio.org', class: 'btn btn-primary btn-large ' do
-      = "Get early access"
+      %h1.beta-header= t(:'group_request.beta_request_header')
+      %p.beta-desc= t(:'group_request.beta_request_description')
+    = render 'form', submit_label: t(:start_group), placeholder: t(:'group_request.neighbourhood_support_group')
