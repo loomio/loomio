@@ -42,7 +42,7 @@
             %h1.header= t(:'frontpage.hero.head_html')
             %h2.subhead= t(:'frontpage.hero.subhead')
             %p.hero-text.description= t(:'frontpage.hero.desc_html', default: :'frontpage.hero.desc')
-            =link_to 'https://love.loomio.org', class: 'btn btn-teal btn-lg hero-text js-not-yet-button' do
+            =link_to new_group_request_path, class: 'btn btn-teal btn-lg hero-text js-not-yet-button' do
               = t(:'frontpage.link.try_loomio_beta')
               %i.fa.fa-angle-right
 
@@ -85,7 +85,7 @@
                 = t(:'frontpage.link.video')
 
       .row.crowdfunding
-        = link_to 'https://love.loomio.org', class: 'block-link js-not-yet-row' do
+        = link_to new_group_request_path, class: 'block-link js-not-yet-row' do
           .content
             %h1= t(:'frontpage.prototype.header_html')
             %h2
@@ -202,7 +202,7 @@
               %p.gift= t(:'frontpage.ideals.gift.desc')
 
       .row.vision
-        = link_to 'https://love.loomio.org', class: 'block-link js-not-yet-row' do
+        = link_to new_group_request_path, class: 'block-link js-not-yet-row' do
           .content
             %h1= t(:'frontpage.vision.header')
             %h2
