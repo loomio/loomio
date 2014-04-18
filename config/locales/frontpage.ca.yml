@@ -35,7 +35,6 @@ ca:
       header: 'Estem en un procès de micromecenatge per acabar de construïr aquesta plataforma i lliurar-la al món.'
     prototype:
       header_html: "Ja hem creat un <strong>prototip</strong>, i gent <strong>d'arreu del món</strong> està fent coses increïbles amb ell:"
-      subhead_html: '<a href="%{try_loomio_link}">Prova ara Loomio Beta</a>. O <a href="%{join_campaign_link}"> afegeix-te a la campanya</a> per obtenir accés prematur a Loomio 1.0. '
     mobile:
       header_html: 'Una plataforma que funciona a tots els dispositius, construït amb la millor <strong>tecnologia mòbil oberta.</strong>'
     quote:
