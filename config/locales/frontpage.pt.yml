@@ -36,7 +36,6 @@ pt:
       header: 'Estamos buscando o financiamento coletivo para que possamos terminar de construir esta nova plataforma e entregá-la para o mundo.'
     prototype:
       header_html: "Nós já construímos um <strong>protótipo</strong>, e pessoas <strong>de todo o mundo</strong> estão fazendo coisas incríveis com ele:"
-      subhead_html: '<a href="%{try_loomio_link}">Experimente o Loomio Beta</a> agora. Ou <a href="%{join_campaign_link}">junte-se à campanha</a> para ter acesso antecipado ao Loomio 1.0.'
     mobile:
       header_html: 'Uma plataforma que funciona em qualquer dispositivo, construída com o melhor em <strong>tecnologia móvel aberta.<strong>'
     quote:

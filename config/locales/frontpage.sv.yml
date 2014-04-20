@@ -36,7 +36,6 @@ sv:
       header: 'Vi crowdfunar så att vi kan avlusta bygget av denna nya plattform och ge den som en gåva till världen.'
     prototype:
       header_html: "Vi har redan byggt en <strong>prototyp</strong>, och människor <strong>över hela världen</strong> gör fantastiska saker med den:"
-      subhead_html: '<a href="%{try_loomio_link}">Testa Loomio Beta</a> nu. Eller <a href="%{join_campaign_link}">gå med i kampanjen</a> för att tidigt få tillgång till Loomio 1.0.'
     mobile:
       header_html: 'En plattform som fungerar på alla devices, byggt med bästa tillgängliga <strong>öppna mobiltekologi.</strong>'
     quote:
