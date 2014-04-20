@@ -36,7 +36,6 @@ cs:
       header: 'Crowdfundujeme, abychom mohli dobudovat tuto novou platformu a poskytnout ji světu.'
     prototype:
       header_html: "Už jsme vytvořili <strong>prototyp</strong>, a lidé <strong>z celého světa</strong> s ním dělají úžasné věci:"
-      subhead_html: '<a href="%{try_loomio_link}">Zkuste Loomio Beta</a> teď. Nebo se <a href="%{join_campaign_link}">připojte ke kampani</a> a získejte včasný přístup k Loomio 1.0.'
     mobile:
       header_html: 'Platforma, která běží na jakémkoliv zařízení, stavěná s nejlepší <strong>otevřenou mobilní techologií.</strong>'
     team:
