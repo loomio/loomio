@@ -608,6 +608,7 @@ DEPENDENCIES
   rack_session_access (~> 0.1.1)
   rails (~> 3.2.17)
   rails-backbone (~> 0.7.2)
+  rake (~> 10.2.1)
   rb-fchange (~> 0.0.5)
   rb-fsevent (~> 0.9.1)
   rb-inotify (~> 0.8.8)
