@@ -21,7 +21,6 @@ class ApplicationController < ActionController::Base
       flash[:error] = t("error.access_denied")
       redirect_to dashboard_path
     else
-      store_location
       authenticate_user!
     end
   end
@@ -50,9 +49,9 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
-
-  def store_location
-    session['user_return_to'] = request.original_url
+  
+  def store_previous_location
+    session['user_return_to'] = request.env['HTTP_REFERER'] if request.env['HTTP_REFERER'].present?
   end
 
   def clear_stored_location
@@ -61,9 +60,21 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     save_detected_locale(resource)
-    path = session['user_return_to'] || dashboard_path
+    path = user_return_path
     clear_stored_location
     path
+  end
+  
+  def user_return_path
+    if invalid_return_urls.include? session['user_return_to']
+      dashboard_path
+    else
+      session['user_return_to']
+    end
+  end
+
+  def invalid_return_urls
+    [nil, new_user_password_url]
   end
 
   def user_time_zone(&block)
