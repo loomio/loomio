@@ -4,6 +4,12 @@ Feature: Invitation to join group
   So that I can have the right people in my discussions
 
   @javascript
+  Scenario: Group Admin invites multiple users to join a group
+    Given I am a group admin
+    When I invite bill and jane to our group
+    Then bill and jane should both have invitations to join
+
+  @javascript
   Scenario: Group Admin invites new user to join a group
     Given I am a group admin
     When I invite "new@user.com" to our group
