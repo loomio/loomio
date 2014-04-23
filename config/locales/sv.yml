@@ -791,8 +791,6 @@ sv:
       header: "Du är nästan klar!"
       intro: "Klicka på denna verifieringslänk för att slutföra din begäran:"
       ignore: "Om du inte har begärt att gå med i Loomio ignorera detta email."
-  campaign:
-    crowdfunding_html: "Vänta! Loomio håller på att göras ännu bättre. <a href='http://love.loomio.org'>Läs mer om vår crowdfundingkampanj!</a>"
   about_loomio: "Mer om Loomio"
   ago: "%{quantity_of_time} sedan"
   approve: "Godkänn"
