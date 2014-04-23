@@ -775,8 +775,6 @@ fr:
       header: "Vous avez presque fini !"
       intro: "Merci de cliquer sur le lien de vérification pour finaliser votre demande :"
       ignore: "Si vous n'avez pas demandé à rejoindre Loomio, merci d'ignorer cet e-mail."
-  campaign:
-    crowdfunding_html: "Hé ! Loomio va bientôt devenir encore meilleur. <a href='http://love.loomio.org'>Découvrez notre campagne de financement participatif !</a>"
   about_loomio: "À propos de Loomio"
   ago: "il y a %{quantity_of_time}"
   approve: "Approuvez"

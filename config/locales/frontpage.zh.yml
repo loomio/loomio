@@ -6,11 +6,13 @@ zh:
     link:
       blog: '部落格'
       contact: '聯絡資訊'
+      donate: '今天就贊助'
       press: '懶人包'
       try_it: '來試試吧'
       log_in: '登入'
       video: "來看看 Loomio 是怎樣辦到的"
-      crowdfunding: '看看群眾募資活動'
+      try_loomio_beta: '試試看 Loomio beta'
+      check_out_loomio_beta: '看看 Loomio beta'
       more: '瞭解更多'
       top: '回到頁面頂端'
       public_groups: '公開群組'
@@ -35,9 +37,10 @@ zh:
     crowdfunding:
       header: '我們運用群眾募資來打造這個嶄新的平台並推廣給全世界。'
     prototype:
-      header_html: "我們已經打造了<strong>試作版</strong>，來自<strong>世界各地</strong>的夥伴正在運用做出一些令人驚豔的事："
+      header_html: "我們已經打造出試作版，來自世界各地的夥伴正在運用做出令人驚豔的事情"
+      subhead_html: '現在就<a href="%{try_loomio_link}">試試 Loomio Beta</a>。或者您能資助 Loomio 1.0，<a href="%{donate_link}">支持這個專案</a>'
     mobile:
-      header_html: '平台可以在任何裝置上運作，以最棒的<strong>開源行動技術</strong>所打造。'
+      header_html: 'Loomio 1.0 可在任何裝置上運作，以最棒的<strong>開源行動技術</strong>所打造。'
     quote:
       header:
         rushkoff_html: '「Loomio <strong>釋放了網際網路的潛力</strong>，讓夥伴達成了共識而不是極端的爭論。」<div class="attributation">— <a href="http://rushkoff.com">Douglas Rushkoff</a>，<b>《Present Shock》</b>的作者</div>'

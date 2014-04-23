@@ -24,9 +24,10 @@ class Translation
                             'Italiano' => :it,
                             'తెలుగు' => :te,
                             'Gaelic (Irish)' => :ga,
-                            'Esperanto' => :eo}
+                            'Esperanto' => :eo,
+                            'Telugu' => :te}
 
-  FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl, :zh, :sv]
+  FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl, :zh, :sv, :da, :be]
 
   VIDEO_SUPPORTED_LOCALES  = [:en, :pt, :el, :es, :ca, :cs, :fr, :ja, :nl, :vi]
 

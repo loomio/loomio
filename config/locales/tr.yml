@@ -85,6 +85,7 @@ tr:
     membership_request_already_canceled: "Üyelik isteği daha önce iptal edildi."
     position_not_submitted: "Pozisyon gönderilemedi"
     proposal_not_created: "Öneri oluşturulamadı."
+    user_already_admin: "%{which_user} zaten bu grupta koordinatör."
     user_already_member: "%{which_user} zaten bu grubun bir üyesi."
     user_not_admin: "Üzgünüz, %{which_user} buna erişebilmek için koordinatör olmalı."
   success:
@@ -300,6 +301,8 @@ tr:
   proposal_closing_when: "%{when} içinde kapanıyor"
   proposal_closed_when: "%{when} önce kapandı"
   proposed_when_by_who: "%{who} tarafından %{when} önce önerildi."
+  engagement_on_open_proposal: "Şu ana kadar kullanıcıların %%%{percent}'i  pozisyonunu belirtti (%{numerator}/%{denominator})"
+  engagement_on_closed_proposal: "Kullanıcıların %%%{percent}'i  pozisyonunu belirtti (%{numerator}/%{denominator})"
   state_your_position: "Konumunu belirt"
   positions: "Konumlar"
   yes_position: "Katılıyorum"
