@@ -9,7 +9,6 @@ nl:
       press: 'Pers'
       log_in: 'LOG IN'
       video: "Bekijk meer over hoe Loomio werkt"
-      crowdfunding: 'Bekijk de crowdfunding campagne'
       more: 'Meer'
       top: 'Naar boven'
       public_groups: 'Openbare groepen'
@@ -28,8 +27,6 @@ nl:
       step3:
         header: '3. Samen beslissen'
         desc: 'Ontwikkel het voorstel samen zodat het voor iedereen oké is. Iedere beslissing heeft een duidelijke deadline zodat je altijd een helder resultaat krijgt.'
-    mobile:
-      header_html: 'Een platform dat op elk apparaat werkt, gemaakt met het beste van <strong>open mobile technology.</strong>'
     team:
       header: 'Over Loomio'
     ideals:

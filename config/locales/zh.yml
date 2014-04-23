@@ -1,6 +1,13 @@
 zh:
   explore:
     go_to_group: "前往 %{group_name}"
+  try_it:
+    header: "試試 Loomio"
+    start_a_group: "要在您的社群中作決策，開始一個群組。"
+    join_the_community: "加入 Loomio 社群群組"
+    loomio_community_info: "這是我們討論有關 Loomio 及作決策的地方。"
+    explore_groups: "探索其他在 Loomio 的群組"
+    explore_groups_info: "看看 Loomio 上所有的出色群組並加入他們吧！"
   activerecord:
     errors:
       messages:
@@ -264,7 +271,9 @@ zh:
   edit_group_description: "編輯群組的描述"
   group_subscription: "群組訂閱"
   group_request:
-    neighbourhood_support_group: "例如：鄰近的支援群組"
+    beta_request_header: "在 Loomio Beta 上開始一個群組"
+    beta_request_description: "要開始在 Loomio Beta 上作決策，第一步是開始一個群組"
+    neighbourhood_support_group: "例如：守望相助支援群組"
     confirmation:
       title: 您就快完成了！請確認您的 Email 信箱。
       body_html: |
@@ -778,7 +787,7 @@ zh:
       intro: "為了完成您的申請，請點擊此認證連結："
       ignore: "若您並未申請加入 Loomio，請忽略此郵件。"
   campaign:
-    crowdfunding_html: "嗨！Loomio 即將變得更完美。<a href='http://love.loomio.org'>看看我們的群眾募資活動</a>"
+    crowdfunding_html: "我們辦到了！感謝每一位幫助我們的 Loomio 1.0 群眾募資。我們熱愛社群！</a>"
   about_loomio: "關於 Loomio"
   ago: "%{quantity_of_time} "
   approve: "批准"
