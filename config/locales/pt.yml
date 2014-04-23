@@ -1,6 +1,13 @@
 pt:
   explore:
     go_to_group: "Ir para %{group_name}"
+  try_it:
+    header: "Experimente Loomio"
+    start_a_group: "Iniciar um grupo para tomar decisões em sua própria comunidade."
+    join_the_community: "Junte-se ao grupo Loomio Comunidade"
+    loomio_community_info: "Este é o lugar onde discutimos e tomamos decisões sobre o Loomio."
+    explore_groups: "Conheça outros grupos no Loomio"
+    explore_groups_info: "Confira todos os íncríveis grupos no Loomio e junte-se a eles!"
   activerecord:
     errors:
       messages:
@@ -278,6 +285,8 @@ pt:
   edit_group_description: "Editar descrição do grupo"
   group_subscription: "Taxa de inscrição do grupo"
   group_request:
+    beta_request_header: "Iniciar um grupo no Loomio Beta"
+    beta_request_description: "Para começar a tomar decisões no Loomio Beta, o primeiro passo é iniciar um grupo"
     neighbourhood_support_group: "e.g. Grupo de Apoio do Bairro"
     confirmation:
       title: Você está quase lá! Verifique seu email.
@@ -773,7 +782,7 @@ pt:
       intro: "Por favor, clique neste link de verificação para finalizar sua solicitação:"
       ignore: "Se você não pediu para entrar no Loomio, por favor ignore esta mensagem."
   campaign:
-    crowdfunding_html: "Ei! Loomio está prestes a ficar muito melhor. <a href='http://love.loomio.org'>Confira nossa campanha de financiamento coletivo!</a>"
+    crowdfunding_html: "NÓS CONSEGUIMOS! Agradecemos a todo mundo que nos ajudou no financioamento coletivo do Loomio 1.0. Nós amamos nossa comunidade!</a>"
   about_loomio: "Sobre o Loomio"
   ago: "há %{quantity_of_time}"
   approve: "Aprovar"

@@ -1,6 +1,13 @@
 el:
   explore:
     go_to_group: "Πηγαίνετε στην ομάδα %{group_name}"
+  try_it:
+    header: "Δοκιμάστε το Loomio"
+    start_a_group: "Ξεκινήστε μια ομάδα για να παίρνετε αποφάσεις στην δική σας κοινότητα."
+    join_the_community: "Γίνετε μέλος στην ομάδα της κοινότητας του Loomio"
+    loomio_community_info: "Εδώ είναι όπου συζητάμε και παίρνουμε αποφάσεις σχετικά με το Loomio."
+    explore_groups: "Εξερευνήστε άλλες ομάδες στο Loomio"
+    explore_groups_info: "Ελέξτε όλες τις υπέροχες ομάδες στο Loomio και συμμετάσχετε σε αυτές!"
   activerecord:
     errors:
       messages:
@@ -278,6 +285,8 @@ el:
   edit_group_description: "Επεξεργασία περιγραφής ομάδας"
   group_subscription: "Συνδρομή Ομάδας"
   group_request:
+    beta_request_header: "Ξεκινήστε μια ομάδα στην δοκιμαστική έκδοση του Loomio"
+    beta_request_description: "Για να ξεκινήσετε να παίρνετε αποφάσεις στην δοκιμαστική έκδοση του Loomio, το πρώτο βήμα είναι να ξεκινήσετε μια ομάδα"
     neighbourhood_support_group: "π.χ. Ομάδα Υποστήριξης Γειτονιάς"
     confirmation:
       title: Σχεδόν τελειώσατε! Ελέγξτε το ηλεκτρονικό ταχυδρομείο σας.
@@ -789,7 +798,7 @@ el:
       intro: "Παρακαλούμε πατήστε αυτόν τον σύνδεσμο επαλήθευσης για να τελειώσετε την αίτηση σας:"
       ignore: "Εάν δεν έχετε κάνει αίτηση για να γίνετε μέλος στο Loomio παρακαλούμε αγνοήστε αυτό το email."
   campaign:
-    crowdfunding_html: "Χαίρεται! Το Loomio ετοιμάζεται να γίνει ακόμα καλύτερο! <a href='http://love.loomio.org'> Δείτε την εκστρατεία μας για χρηματοδότηση από το πλήθος!</a>"
+    crowdfunding_html: "Τα καταφέραμε! Ευχαριστούμε όλους όσους μας βοήθησαν στην χρηματοδότηση από το πλήθος για το Loomio 1.0. Αγαπάμε την κοινότητα μας!</a>"
   about_loomio: "Σχετικά με το Loomio"
   ago: "πριν από %{quantity_of_time} "
   approve: "Έγκριση"
