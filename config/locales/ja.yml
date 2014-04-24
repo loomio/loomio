@@ -776,8 +776,6 @@ ja:
       header: "もう少しで完了です！"
       intro: "あなたのリクエストを最終的なものにするには、この確認リンクをクリックしてください"
       ignore: "Loomio参加へのリクエストを送って無かった場合は、このメールを無視してください"
-  campaign:
-    crowdfunding_html: "どうも！Loomioはさらに改善されてきています。<a href='http://love.loomio.org'>私たちのクラウドファンディング・キャンペーンをチェックする</a>"
   about_loomio: "Loomioについて"
   ago: "%{quantity_of_time} 前"
   approve: "承認"
