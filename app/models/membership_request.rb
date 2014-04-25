@@ -14,6 +14,7 @@ class MembershipRequest < ActiveRecord::Base
   belongs_to :responder, class_name: 'User'
 
   scope :pending, -> { where response: nil }
+  scope :responded_to, -> { where('response IS NOT ?', nil).order('responded_at DESC') }
   scope :requested_by, ->(user) { where requestor_id: user.id }
 
   delegate :admins,               to: :group, prefix: true

@@ -5,6 +5,9 @@ class Groups::ManageMembershipRequestsController < GroupBaseController
   def index
     @group = GroupDecorator.new Group.find(params[:group_id])
     if can? :manage_membership_requests, @group
+      @current_requests  = @group.membership_requests.pending
+      @previous_requests = @group.membership_requests.responded_to.page(params[:page]).per(7)
+
       render 'index'
     else
       redirect_to group_path(@group)
