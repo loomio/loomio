@@ -428,6 +428,11 @@ body.discussions.show {
         color: $mid-grey;
         font-style: italic;
         word-wrap: break-word;
+        .see-description-history {
+          color: #999;
+          font-style: normal;
+          font-size: 0.9em;
+        }
       }
 
       .activity-item-header{
