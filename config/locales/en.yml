@@ -289,6 +289,9 @@ en:
   want_to_invite_html: "Want to <a href='%{link}'>invite people</a> to this group?"
 
   membership_requests: "Membership requests"
+  previous_requests: Previous requests
+  approved_by_person: Approved by %{person}
+  ignored_by_perosn: Ignored by %{person}
   confirm_approve_membership_request: "Are you sure you want to add %{which_user} to the group?"
   cancel_membership_request: "Cancel request"
   ignore_request: "Ignore request"
