@@ -2,33 +2,7 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require_self
- *= require jquery.ui.datepicker
- *= require lib/jquery.jqplot.min
- *= require jquery.atwho
- *= require main
- *= require overide_bootstrap
- *= require icons
- *= require header
- *= require dashboard
- *= require groups
- *= require groups/public_groups
- *= require discussions
- *= require pages
- *= require notifications
- *= require motions
- *= require votes
- *= require users
- *= require memberships
- *= require invitations
- *= require group_requests
- *= require help
- *= require contributions
- *= require inbox
- *= require manage_membership_requests
- *= require searches
- *= require subscriptions
- *= require atomic
- *= require campaign
- *= require explore
+ *
+ *= require third_party
+ *= require unstructured
  */
