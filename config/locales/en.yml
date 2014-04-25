@@ -373,6 +373,7 @@ en:
     started_html: "Started %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Last edited %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "See revision history"
+    see_history: "See history"
 
   description_history:
     header: "Revision history"
