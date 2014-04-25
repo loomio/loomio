@@ -13,10 +13,12 @@ Loomio::Application.configure do
   config.static_cache_control = 'public, max-age=31536000'
 
   # Compress JavaScripts and CSS
-  config.assets.compress = true
+  config.assets.compress = false
+  #EvoluteChange
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  config.assets.compile = true
+  #EvoluteChange
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -39,8 +41,8 @@ Loomio::Application.configure do
   # config.logger = SyslogLogger.new
 
   # Use a different cache store in production
-  # config.cache_store = :mem_cache_store
-  config.cache_store = :dalli_store
+  config.cache_store = :mem_cache_store
+  # EvoluteChange config.cache_store = :dalli_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
