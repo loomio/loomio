@@ -1,0 +1,591 @@
+/* Active Admin Print Stylesheet */
+/* line 37, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* line 47, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+body {
+  line-height: 1;
+  color: black;
+  background: white;
+}
+
+/* line 49, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 51, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+
+/* line 53, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 55, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+q, blockquote {
+  quotes: "" "";
+}
+/* line 126, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+}
+
+/* line 57, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+a img {
+  border: none;
+}
+
+/* line 27, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+html {
+  font-size: 100.01%;
+}
+
+/* line 28, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+body {
+  font-size: 75%;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+/* line 31, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  color: black;
+}
+/* line 34, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {
+  margin: 0;
+}
+
+/* line 37, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+h1 {
+  font-size: 3em;
+  line-height: 1;
+  margin-bottom: 0.5em;
+}
+
+/* line 38, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+h2 {
+  font-size: 2em;
+  margin-bottom: 0.75em;
+}
+
+/* line 39, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+h3 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-bottom: 1em;
+}
+
+/* line 40, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+h4 {
+  font-size: 1.2em;
+  line-height: 1.25;
+  margin-bottom: 1.25em;
+}
+
+/* line 41, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+h5 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 1.5em;
+}
+
+/* line 42, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+h6 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* line 45, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+p {
+  margin: 0 0 1.5em;
+}
+/* line 48, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+p .left {
+  margin: 1.5em 1.5em 1.5em 0;
+  padding: 0;
+}
+/* line 49, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+p .right {
+  margin: 1.5em 0 1.5em 1.5em;
+  padding: 0;
+}
+
+/* line 52, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+.left {
+  float: left !important;
+}
+
+/* line 53, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+.right {
+  float: right !important;
+}
+
+/* line 55, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+blockquote {
+  margin: 1.5em;
+  color: #666;
+  font-style: italic;
+}
+
+/* line 56, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+strong, dfn {
+  font-weight: bold;
+}
+
+/* line 57, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+em, dfn {
+  font-style: italic;
+}
+
+/* line 58, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+sup, sub {
+  line-height: 0;
+}
+
+/* line 60, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+abbr,
+acronym {
+  border-bottom: 1px dotted #666;
+}
+
+/* line 62, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+address {
+  margin: 0 0 1.5em;
+  font-style: italic;
+}
+
+/* line 63, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+del {
+  color: #666;
+}
+
+/* line 65, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+pre {
+  margin: 1.5em 0;
+  white-space: pre;
+}
+
+/* line 66, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+pre, code, tt {
+  font: 1em 'andale mono', 'lucida console', monospace;
+  line-height: 1.5;
+}
+
+/* line 69, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+li ul,
+li ol {
+  margin: 0;
+}
+
+/* line 71, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+ul, ol {
+  margin: 0 1.5em 1.5em 0;
+  padding-left: 1.5em;
+}
+
+/* line 73, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+ul {
+  list-style-type: disc;
+}
+
+/* line 74, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+ol {
+  list-style-type: decimal;
+}
+
+/* line 76, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+dl {
+  margin: 0 0 1.5em 0;
+}
+
+/* line 77, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+dl dt {
+  font-weight: bold;
+}
+
+/* line 78, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+dd {
+  margin-left: 1.5em;
+}
+
+/* line 81, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+table {
+  margin-bottom: 1.4em;
+  width: 100%;
+}
+
+/* line 82, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+th {
+  font-weight: bold;
+}
+
+/* line 83, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+thead th {
+  background: #c3d9ff;
+}
+
+/* line 84, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+th, td, caption {
+  padding: 4px 10px 4px 5px;
+}
+
+/* line 87, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+.small {
+  font-size: .8em;
+  margin-bottom: 1.875em;
+  line-height: 1.875em;
+}
+
+/* line 88, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+.large {
+  font-size: 1.2em;
+  line-height: 2.5em;
+  margin-bottom: 1.25em;
+}
+
+/* line 89, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+.hide {
+  display: none;
+}
+
+/* line 91, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+.quiet {
+  color: #666;
+}
+
+/* line 92, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+.loud {
+  color: #000;
+}
+
+/* line 93, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+.highlight {
+  background: #ff0;
+}
+
+/* line 94, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+.added {
+  background: #060;
+  color: #fff;
+}
+
+/* line 95, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+.removed {
+  background: #900;
+  color: #fff;
+}
+
+/* line 97, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+.first {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* line 98, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+.last {
+  margin-right: 0;
+  padding-right: 0;
+}
+
+/* line 99, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+.top {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* line 100, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/_typography.css.scss */
+.bottom {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* line 14, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 150%;
+  font-size: 72%;
+  background: #fff;
+  width: 99%;
+  margin: 0;
+  padding: .5%;
+  color: black;
+}
+
+/* line 25, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+a {
+  color: black;
+  text-decoration: none;
+}
+
+/* line 30, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+h3 {
+  font-weight: bold;
+  margin-bottom: .5em;
+}
+
+/* line 36, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+#header {
+  float: left;
+}
+/* line 39, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+#header #tabs, #header .tabs, #header #utility_nav {
+  display: none;
+}
+/* line 43, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+#header h1 {
+  font-weight: bold;
+}
+
+/* line 48, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.flashes {
+  display: none;
+}
+
+/* line 52, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+#title_bar {
+  float: right;
+}
+/* line 55, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+#title_bar h2 {
+  line-height: 2em;
+  margin: 0;
+}
+/* line 60, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+#title_bar .breadcrumb, #title_bar #titlebar_right {
+  display: none;
+}
+
+/* line 66, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+#active_admin_content {
+  border-top: thick solid black;
+  clear: both;
+  margin-top: 2em;
+  padding-top: 3em;
+}
+
+/* line 74, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+#footer {
+  display: none;
+}
+
+/* line 80, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.table_tools ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+/* line 85, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.table_tools ul li {
+  display: none;
+  padding: 0;
+  margin-bottom: 1em;
+}
+/* line 90, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.table_tools ul li.scope.selected, .table_tools ul li.index.selected {
+  display: block;
+}
+/* line 93, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.table_tools ul li.scope.selected:before, .table_tools ul li.index.selected:before {
+  content: "Showing ";
+}
+/* line 97, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.table_tools ul li.scope.selected a, .table_tools ul li.index.selected a {
+  font-weight: bold;
+}
+/* line 101, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.table_tools ul li.scope.selected span, .table_tools ul li.index.selected span {
+  display: inline-block;
+  font-weight: normal;
+  font-size: .9em;
+}
+
+/* line 112, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+table {
+  margin-bottom: 1.5em;
+  text-align: left;
+  width: 100%;
+}
+/* line 117, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+table thead {
+  display: table-header-group;
+}
+/* line 120, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+table thead th {
+  background: none;
+  border-bottom: medium solid black;
+  font-weight: bold;
+}
+/* line 125, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+table thead th a {
+  text-decoration: none;
+}
+/* line 131, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+table th, table td {
+  padding: .5em 1em;
+}
+/* line 134, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+table th .member_link, table td .member_link {
+  display: none;
+}
+/* line 139, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+table td {
+  border-bottom: thin solid black;
+}
+/* line 143, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+table tr {
+  page-break-inside: avoid;
+}
+
+/* line 149, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+#index_footer, .pagination_information {
+  display: none;
+}
+
+/* line 154, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.index_grid td {
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+}
+/* line 159, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.index_grid td img {
+  max-width: 1in;
+}
+
+/* line 166, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.panel {
+  border-bottom: thick solid #ccc;
+  margin-bottom: 3em;
+  padding-bottom: 2em;
+  page-break-inside: avoid;
+}
+/* line 172, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.panel:last-child {
+  border-bottom: none;
+}
+
+/* line 178, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.comments form {
+  display: none;
+}
+/* line 182, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.comments .active_admin_comment {
+  border-top: thin solid black;
+  padding-top: 1em;
+}
+/* line 187, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.comments .active_admin_comment .active_admin_comment_meta h4 {
+  font-size: 1em;
+  font-weight: bold;
+  float: left;
+  margin-right: .5em;
+  margin-bottom: 0;
+}
+/* line 195, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.comments .active_admin_comment .active_admin_comment_meta span {
+  font-size: .9em;
+  font-style: italic;
+  vertical-align: top;
+}
+/* line 202, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.comments .active_admin_comment .active_admin_comment_body {
+  clear: both;
+  margin-bottom: 1em;
+}
+
+/* line 211, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.attributes_table {
+  border-top: medium solid black;
+}
+/* line 214, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.attributes_table th {
+  border-bottom: thin solid black;
+  vertical-align: top;
+}
+/* line 218, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.attributes_table th:after {
+  content: ':';
+}
+/* line 224, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+.attributes_table td img {
+  max-height: 4in;
+  max-width: 6in;
+}
+
+/* line 232, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+#filters_sidebar_section {
+  display: none;
+}
+
+/* line 238, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+form fieldset {
+  border-top: thick solid #ccc;
+  padding-top: 2em;
+  margin-bottom: 2em;
+}
+/* line 243, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+form fieldset:last-child {
+  border-bottom: none;
+}
+/* line 248, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+form .buttons, form abbr {
+  display: none;
+}
+/* line 251, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+form ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 256, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+form ol li {
+  border-top: thin solid black;
+  margin: 0;
+  padding: 1em 0;
+  overflow: hidden;
+}
+/* line 262, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+form ol li.password, form ol li.hidden {
+  display: none;
+}
+/* line 266, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+form ol li label {
+  font-weight: bold;
+  float: left;
+  width: 20%;
+}
+/* line 272, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+form ol li input, form ol li textarea, form ol li select {
+  background: none;
+  border: 0;
+  font: Arial, Helvetica, sans-serif;
+}
+/* line 278, ../../../../../../.rvm/gems/ruby-2.0.0-p451/bundler/gems/active_admin-40c18cf23f2f/app/assets/stylesheets/active_admin/print.css.scss */
+form ol li input[type=file] {
+  display: none;
+}
