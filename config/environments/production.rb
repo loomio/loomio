@@ -14,12 +14,12 @@ Loomio::Application.configure do
   config.static_cache_control = 'public, max-age=604800'
 
   # Compress JavaScripts and CSS
-  config.assets.compress = false
-  #EvoluteChange
+  config.assets.compress = true
+  #NOEvoluteChange
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true
-  #EvoluteChange
+  config.assets.compile = false
+  #NOEvoluteChange
 
   # Generate digests for assets URLs
   config.assets.digest = true
