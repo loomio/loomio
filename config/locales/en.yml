@@ -186,6 +186,7 @@ en:
     dropdown-btn: 'Inbox'
     empty: You're up to date! There are no comments you haven't seen.
 
+  subject_verb_object: "%s %v %o"
   notifications:
     header: "Notifications"
     new_discussion: "started a new discussion"
