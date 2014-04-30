@@ -14,7 +14,7 @@ describe DiscussionMailer do
     end
 
     it 'renders the sender email' do
-      @email.from.should == ['noreply@loomio.org']
+      @email.from.should == ['notifications@loomio.org']
     end
 
     it 'sends email to group members but not author' do
