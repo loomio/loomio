@@ -1,118 +1,121 @@
 class GroupsController < GroupBaseController
-  inherit_resources
-  load_and_authorize_resource except: :show
   before_filter :authenticate_user!, except: :show
-  before_filter :check_group_read_permissions, :only => :show
+
+  before_filter :load_resource_by_key, :except => [:create, :new]
+  authorize_resource except: :create
+
   before_filter :ensure_group_is_setup, only: :show
-  after_filter :store_location, :only => :show
+  before_filter :assign_meta_data, only: :show
+
+  caches_action :show, :cache_path => Proc.new { |c| c.params }, unless: :user_signed_in?, :expires_in => 5.minutes
 
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.group_private_or_not_found') }
   end
 
+  #for new subgroup form
+  def add_subgroup
+    parent = Group.published.find(params[:id])
+    @subgroup = Group.new(:parent => parent, privacy: parent.privacy)
+    @subgroup.members_invitable_by = parent.members_invitable_by
+  end
+
   def create
-    @group = Group.new(params[:group])
+    @group = Group.new(permitted_params.group)
+    authorize!(:create, @group)
+    @group.mark_as_setup!
     if @group.save
+      Measurement.increment('groups.create.success')
       @group.add_admin! current_user
       flash[:success] = t("success.group_created")
       redirect_to @group
+    elsif @group.is_a_subgroup?
+        @subgroup = @group
+        render 'groups/add_subgroup'
     else
-      render 'groups/new'
+      Measurement.increment('groups.create.error')
+      render 'form'
+    end
+  end
+
+  def new
+    @group = Group.new
+    @group.payment_plan = 'undetermined'
+  end
+
+  def update
+    if @group.update_attributes(permitted_params.group)
+      if @group.is_hidden?
+        @group.discussions.update_all(private: true)
+      end
+      Measurement.increment('groups.update.success')
+      flash[:notice] = 'Group was successfully updated.'
+      redirect_to @group
+    else
+      Measurement.increment('groups.update.error')
+      render :edit
     end
   end
 
   def show
-    @group = GroupDecorator.new Group.find(params[:id])
-    @subgroups = @group.subgroups.accessible_by(current_ability, :show)
-    @discussions = Queries::VisibleDiscussions.for(@group, current_user)
+    @group = GroupDecorator.new @group
+    @subgroups = @group.subgroups.all.select{|g| can?(:show, g) }
     @discussion = Discussion.new(group_id: @group.id)
-    assign_meta_data
+    @discussions_with_open_motions = GroupDiscussionsViewer.for(group: @group, user: current_user).
+                                                            with_open_motions.
+                                                            order('motions.closing_at ASC').
+                                                            preload({:current_motion => :discussion}, {:group => :parent})
+
+    @discussions_without_open_motions = GroupDiscussionsViewer.for(group: @group, user: current_user).
+                                                            without_open_motions.
+                                                            order('last_comment_at DESC').
+                                                            preload(:current_motion, {:group => :parent}).
+                                                            page(params[:page]).per(20)
+
+    @closed_motions = Queries::VisibleMotions.new(user: current_user, groups: @group).order('closed_at desc')
+
+    build_discussion_index_caches
   end
 
   def edit
-    @group = GroupDecorator.new(Group.find(params[:id]))
   end
-
-  # CUSTOM CONTROLLER ACTIONS
 
   def archive
     @group.archive!
     flash[:success] = t("success.group_archived")
-    redirect_to root_path
-  end
-
-  def add_subgroup
-    @parent = Group.find(params[:id])
-    @subgroup = Group.new(:parent => @parent)
-    @subgroup.members_invitable_by = @parent.members_invitable_by
-  end
-
-  # This method is only for subgroups
-  def add_members
-    params.each_key do |key|
-      if key =~ /user_/
-        user = User.find(key[5..-1])
-        group.add_member!(user, current_user)
-      end
-    end
-    flash[:success] = t("success.members_added")
-    redirect_to group_url(group)
+    redirect_to dashboard_path
   end
 
   def hide_next_steps
     @group.update_attribute(:next_steps_completed, true)
-    # respond_to do | format |
-    #   format.html { redirect_to @group }
-    # end
-  end
-
-  def request_membership
-    if resource.users.include? current_user
-      redirect_to group_url(resource)
-    else
-      @membership = Membership.new
-    end
-  end
-
-  def new_motion
-    @group = GroupDecorator.new Group.find(params[:id])
-    @motion = Motion.new
   end
 
   def email_members
-    @group = Group.find(params[:id])
     subject = params[:group_email_subject]
     body = params[:group_email_body]
     GroupMailer.delay.deliver_group_email(@group, current_user, subject, body)
+    Measurement.measure('groups.email_members.size', @group.members.size)
     flash[:success] = t("success.emails_sending")
-    redirect_to group_url(@group)
+    redirect_to @group
   end
 
   def edit_description
-    @group = Group.find(params[:id])
     @description = params[:description]
     @group.description = @description
     @group.save!
   end
 
-  def get_members
-    @users = group.users
-    if (params[:pre].present?)
-      @users = @users.select { |user| user.username =~ /#{params[:pre]}/ }
-    end
-    respond_to do |format|
-      format.json { render 'groups/users' }
-    end
-  end
-
-  def edit_privacy
-    @group = Group.find(params[:id])
-    @viewable_by = params[:viewable_by]
-    @group.viewable_by = @viewable_by
-    @group.save!
+  def members_autocomplete
+    users = @group.users.where('username ilike :term or name ilike :term ', {term: "%#{params[:q]}%"})
+    render json: users.map{|u| {name: "#{u.name} #{u.username}", username: u.username, real_name: u.name} }
   end
 
   private
+
+    def load_resource_by_key
+      group
+      raise ActiveRecord::RecordNotFound if @group.model.blank?
+    end
 
     def ensure_group_is_setup
       if user_signed_in? && @group.admins.include?(current_user)
@@ -123,13 +126,9 @@ class GroupsController < GroupBaseController
     end
 
     def assign_meta_data
-      if @group.viewable_by == :everyone
+      if @group.privacy_public?
         @meta_title = @group.name
         @meta_description = @group.description
       end
-    end
-
-    def group
-      resource
     end
 end

@@ -1,17 +1,25 @@
 ActiveAdmin.register Group do
-  actions :index, :show, :edit
+
+  controller do
+    def collection
+      super.includes(:group_request)
+    end
+  end
+
+  actions :index, :show, :edit, :update
   before_filter :set_pagination
   filter :name
+  filter :payment_plan, as: :select, collection: Group::PAYMENT_PLANS
+  filter :memberships_count
+  filter :created_at
+  filter :privacy
 
-  scope "Parent groups" do |group|
-    group.where(parent_id: nil)
-  end
-  scope "<5 members" do |group|
-    group.where('memberships_count <= ?', 5)
-  end
-  scope "> 85% full" do |group|
-    group.where('max_size > ? AND memberships_count/max_size >= ?', 0, 0.85)
-  end
+  scope :parents_only
+  scope :engaged
+  scope :engaged_but_stopped
+  scope :has_members_but_never_engaged
+  scope :visible_on_explore_front_page
+
 
   csv do
     column :id
@@ -26,33 +34,27 @@ ActiveAdmin.register Group do
   end
 
   index :download_links => false do
-    if params[:pagination].blank?
-      div :class => "admin-panel-paginate-toggle" do
-        link_to("single page", 'groups?pagination=false', class: "table_tools_button")
-      end
-    else
-      div :class => "admin-panel-paginate-toggle" do
-        link_to("paginate", 'groups', class: "table_tools_button")
-      end
+    selectable_column
+    column :id
+    column :name do |g|
+      simple_format(g.full_name.sub(' - ', "\n \n> "))
+    end
+    column :contact do |g|
+      admin_name = ERB::Util.h(g.requestor_name)
+      admin_email = ERB::Util.h(g.requestor_email)
+      simple_format "#{admin_name} \n &lt;#{admin_email}&gt;"
     end
 
-    column :id
-    column :name
-    column "Size", :sortable => :memberships_count do |group|
-      if group.max_size
-        group_max_size = " (#{group.max_size})"
-      else
-        group_max_size = ""
-      end
-      "#{group.memberships_count}"+group_max_size
-    end
+    column "Size", :memberships_count
+
     column "Discussions", :discussions_count
     column "Motions", :motions_count
     column :created_at
-    column :viewable_by
+    column :privacy
     column :description, :sortable => :description do |group|
       group.description
     end
+    column :payment_plan
     default_actions
   end
 
@@ -60,20 +62,34 @@ ActiveAdmin.register Group do
     attributes_table do
       row :group_request
       group.attributes.each do |k,v|
-        row k.to_sym
+        row k.to_sym if v.present?
       end
     end
+
     panel("Group Admins") do
-        table_for group.admins.each do |admin|
-          column :name
-          column :email do |user|
-            if user.email == group.admin_email
-              simple_format "#{mail_to(user.email,user.email)} <<<<< ADMIN_EMAIL"
-            else
-              mail_to(user.email,user.email)
-            end
+      table_for group.admins.each do |admin|
+        column :name
+        column :email do |user|
+          if user.email == group.admin_email
+            simple_format "#{mail_to(user.email,user.email)}"
+          else
+            mail_to(user.email,user.email)
           end
         end
+      end
+    end
+
+    panel("Pending invitations") do
+      table_for group.pending_invitations.each do |invitation|
+        column :recipient_email
+        column :link do |i|
+          invitation_url(i)
+        end
+      end
+    end
+
+    panel('Archive') do
+      link_to 'Archive this group', archive_admin_group_path(group), method: :post, confirm: "Are you sure you wanna archive #{group.name}, pal?"
     end
     active_admin_comments
   end
@@ -83,19 +99,29 @@ ActiveAdmin.register Group do
       f.input :id, :input_html => { :disabled => true }
       f.input :name, :input_html => { :disabled => true }
       f.input :max_size
-      f.input :paying_subscription, :as => :radio
+      f.input :payment_plan, :as => :select, :collection => Group::PAYMENT_PLANS
+      f.input :category_id, as: :select, collection: Category.all
     end
     f.buttons
   end
 
-  member_action :update, :method => :put do
+  #member_action :update, :method => :put do
+    #group = Group.find(params[:id])
+    #group.max_size = params[:group][:max_size]
+    #group.payment_plan = params[:group][:payment_plan]
+    #group
+    #if group.save
+      #redirect_to admin_groups_url, :notice => "Group updated."
+    #else
+      #redirect_to admin_groups_url, :notice => "WARNING: Group could not be updated."
+    #end
+  #end
+
+  member_action :archive, :method => :post do
     group = Group.find(params[:id])
-    group.max_size = params[:group][:max_size]
-    if group.save
-      redirect_to admin_groups_url, :notice => "Group updated."
-    else
-      redirect_to admin_groups_url, :notice => "WARNING: Group could not be updated."
-    end
+    group.archive!
+    flash[:notice] = "Shoved #{group.name} into the filing cabinet that nobody touches"
+    redirect_to [:admin, :groups]
   end
 
   controller do
@@ -107,6 +133,18 @@ ActiveAdmin.register Group do
       else
         @per_page = params[:pagination]
       end
+    end
+  end
+
+  config.batch_actions = true
+
+  batch_action :email do |group_ids|
+    redirect_to new_admin_email_groups_path(group_ids: group_ids)
+  end
+
+  controller do
+    def permitted_params
+      params.permit!
     end
   end
 end

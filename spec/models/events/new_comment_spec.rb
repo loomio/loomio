@@ -4,7 +4,7 @@ describe Events::NewComment do
   let(:comment){ mock_model(Comment, discussion: mock_model(Discussion))}
 
   describe "::publish!" do
-    let(:event) { stub(:event, notify_users!: true) }
+    let(:event) { double(:event, notify_users!: true) }
     before { Event.stub(:create!).and_return(event) }
 
     it 'creates an event' do
@@ -33,11 +33,6 @@ describe Events::NewComment do
 
     it 'fires a user_mentioned! event for each mentioned group member' do
       Events::UserMentioned.should_receive(:publish!).with(comment, mentioned_user)
-      event.save
-    end
-
-    it 'calls event.notify! for each non mentioned group member' do
-      event.should_receive(:notify!).with(non_mentioned_user)
       event.save
     end
   end

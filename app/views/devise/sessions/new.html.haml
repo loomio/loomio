@@ -2,30 +2,24 @@
   %section#sign-in
     .inner-container
       .row-fluid
-        .subhead
-          .span1 &nbsp;
-          .span4
-            %h2= t :sign_in
-
-      .row-fluid
-        .span1 &nbsp;
-        .span4
-          = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-            = f.label :email, t(:email)
-            = f.email_field :email, autofocus: true
-            = f.label :password, t(:password)
-            = f.password_field :password
-            - if devise_mapping.rememberable?
-              = f.check_box :remember_me, class: "pull-left"
-              = f.label :remember_me, t(:remember_me), class: "checkbox-label"
-            .sign-in-button
-              = f.submit t(:sign_in), class: "btn btn-info btn-large", :id => "sign-in-btn", :data => { :disable_with => t(:sign_in) }
-            = render :partial => "devise/shared/links"
-
-        .span1 &nbsp;
-        .span5
-          %p
-            %strong= t :dont_have_account
-            %br
-            = t :closed_beta
-          %p= t :closed_beta_details
+        .span6.main-content
+          - if omniauth_authenticated_and_waiting?
+            %h1= t :link_up_your_account
+            %p= t :log_in_to_your_loomio_account, provider_name: @omniauth_authentication.provider_name
+          -else
+            %h1
+              - if @invitation
+                - if @invitation.to_start_group?
+                  = t :'start_group.log_in'
+                - else
+                  = t(:'join_group.log_in', group_name: @invitation.invitable_name)
+              - else
+                = t :sign_in
+          .signin_container
+            = render 'devise/shared/omniauth_buttons'
+            .separator-container
+              .separator
+                = t :or
+            = render "form"
+  .terms
+    =t(:terms_of_service_html, button_text: t(:'devise.sessions.sign_in'), link_path: terms_of_service_path)

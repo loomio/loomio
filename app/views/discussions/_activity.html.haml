@@ -1,11 +1,23 @@
 %ul#activity-list
-  %li.divider
-  - if discussion.filtered_activity.count == 0
-    %li.selector-item.empty-list-message= t :empty_discussion_list
-  - else
-    - discussion.filtered_activity.each do |event|
+  .top-pagination
+    = link_to_previous_page items, "Show earlier comments"
+
+  -marked_first_unread = false
+  - items.each do |event|
+    - next if event.kind == 'new_discussion'
+    -unless @discussion_reader.first_read?
+      - unless marked_first_unread
+        - unless @discussion_reader.has_read?(event)
+          - unless event.belongs_to? current_user_or_visitor
+            - marked_first_unread = true
+            .shifted_anchor#latest-activity
+            .dog-ear#js-dog-ear
+              &nbsp;
+            .new-activity-divider
+
+    %li.activity-item-container
       - if event.kind == 'new_comment'
-        %li.activity-item-container= render event.eventable
+        = render event.eventable
       - else
         - discussion_item = DiscussionItem.new(event)
-        %li.activity-item-container= render 'discussion_item', :item => discussion_item
+        = render 'discussion_item', :item => discussion_item

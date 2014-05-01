@@ -22,8 +22,6 @@ describe User do
     user.should have(1).errors_on(:email)
   end
 
-  it "has uploaded avatar less than 1000kb "
-
   it "cannot have invalid avatar_kinds" do
     user.avatar_kind = 'bad'
     user.should have(1).errors_on(:avatar_kind)
@@ -65,33 +63,9 @@ describe User do
     user.admin_memberships.should include(membership)
   end
 
-  it "has correct group request" do
-    create(:membership,:group => group, :user => user)
-    user.group_requests.should include(group)
-  end
-
-  describe "open_votes" do
-    before do
-      @motion = create(:motion)
-      @motion.group.add_member! user
-      @vote = user.votes.new(:position => "yes")
-      @vote.motion = @motion
-      @vote.save
-    end
-
-    it "returns the user's votes on motions that are open" do
-      user.open_votes.should include(@vote)
-    end
-
-    it "does not return the user's votes on motions that are closed" do
-      @motion.close!
-      user.open_votes.should_not include(@vote)
-    end
-  end
-
   it "has authored discussions" do
     group.add_member!(user)
-    discussion = Discussion.new(:group => group, :title => "Hello world")
+    discussion = Discussion.new(:group => group, :title => "Hello world", private: true)
     discussion.author = user
     discussion.save!
     user.authored_discussions.should include(discussion)
@@ -99,113 +73,40 @@ describe User do
 
   it "has authored motions" do
     group.add_member!(user)
-    discussion = create :discussion, group: group
+    discussion = create_discussion group: group
     motion = create(:motion, discussion: discussion, author: user)
     user.authored_motions.should include(motion)
   end
 
-  describe "motions_in_voting_phase" do
-    it "returns motions that belong to user and are in phase 'voting'" do
-      motion = create(:motion, author: user)
-      user.motions_in_voting_phase.should include(motion)
+  describe "#voting_motions" do
+    it "returns motions that belong to user and are open" do
+      discussion = create_discussion group: group
+      motion = create(:motion, author: user, discussion: discussion)
+      user.voting_motions.should include(motion)
     end
 
-    it "should not return motions that belong to the group but are in phase 'closed'" do
-      motion = create(:motion, author: user)
-      motion.close!
-      user.motions_in_voting_phase.should_not include(motion)
+    it "should not return motions that belong to the group but are closed'" do
+      discussion = create_discussion group: group
+      motion = create(:motion, author: user, discussion: discussion)
+      MotionService.close(motion)
+
+      user.voting_motions.should_not include(motion)
     end
   end
 
-  describe "motions_closed" do
-    it "returns motions that belong to the group and are in phase 'voting'" do
-      motion = create(:motion, author: user)
-      motion.close!
-      user.motions_closed.should include(motion)
+  describe "closed_motions" do
+    it "returns motions that belong to the group and are closed" do
+      discussion = create_discussion group: group
+      motion = create(:motion, author: user, discussion: discussion)
+      MotionService.close(motion)
+      user.closed_motions.should include(motion)
     end
 
-    it "should not return motions that belong to the group but are in phase 'closed'" do
-      motion = create(:motion, author: user)
-      user.motions_closed.should_not include(motion)
+    it "should not return motions that belong to the group but are closed" do
+      discussion = create_discussion group: group
+      motion = create(:motion, author: user, discussion: discussion)
+      user.closed_motions.should_not include(motion)
     end
-  end
-
-  context do
-    before do
-      group.add_member! user
-      @discussion1 = create :discussion, :group => group
-      motion1 = create :motion, discussion: @discussion1, author: user
-      @discussion2 = create :discussion, :group => group
-      motion2 = create :motion, discussion: @discussion2, author: user
-      vote = Vote.new position: "yes"
-      vote.motion = motion2
-      vote.user = user
-      vote.save
-    end
-    describe "discussions_with_current_motion_not_voted_on" do
-      it "returns all discussions with a current motion that a user has not voted on" do
-        user.discussions_with_current_motion_not_voted_on.should include(@discussion1)
-        user.discussions_with_current_motion_not_voted_on.should_not include(@discussion2)
-      end
-    end
-
-    describe "discussions_with_current_motion_voted_on" do
-      it "returns all discussions with a current motion that a user has voted on" do
-        user.discussions_with_current_motion_voted_on.should include(@discussion2)
-        user.discussions_with_current_motion_voted_on.should_not include(@discussion1)
-      end
-    end
-  end
-
-  describe "user.discussions_sorted" do
-    before do
-      @user = create :user
-      @group = create :group
-      @group.add_member! @user
-      @discussion1 = create :discussion, group: @group, :author => @user
-    end
-
-    it "returns a list of discussions sorted by last_comment_at" do
-      pending 'this does not help'
-      @discussion2 = create :discussion, :author => @user
-      @discussion2.add_comment @user, "hi", false
-      @discussion3 = create :discussion, :author => @user
-      @discussion1.add_comment @user, "hi", false
-      @user.discussions_sorted.should == [@discussion1, @discussion4, @discussion3, ]
-      @user.discussions_sorted[0].should == @discussion1
-      @user.discussions_sorted[1].should == @discussion4
-      @user.discussions_sorted[2].should == @discussion3
-      @user.discussions_sorted[3].should == @discussion2
-    end
-
-    it "should not include discussions with a current motion" do
-      motion = create :motion, :discussion => @discussion1, author: @user
-      motion.close!
-      motion1 = create :motion, :discussion => @discussion1, author: @user
-      @user.discussions_sorted.should_not include(@discussion1)
-    end
-  end
-
-  describe "user.voted?(motion)" do
-    before do
-      group.add_member!(user)
-      discussion = create :discussion, group: group
-      @motion = create :motion, discussion: discussion, author: user
-    end
-    it "it returns true if user has voted on motion" do
-      vote = user.votes.new(position: "abstain")
-      vote.motion = @motion
-      vote.save!
-      user.voted?(@motion).should == true
-    end
-    it "it returns false if user has not voted on motion" do
-      user.voted?(@motion).should == false
-    end
-  end
-
-  it "can find user by email (case-insensitive)" do
-    user = create(:user, email: "foobar@example.com")
-    User.find_by_email("foObAr@exaMPLE.coM").should == user
   end
 
   describe "mark_notifications_as_viewed" do
@@ -229,9 +130,9 @@ describe User do
   end
 
   describe "name" do
-    it "returns 'Deleted User' if deleted_at is true (a date is present)" do
-      user.update_attribute(:deleted_at, 1.month.ago)
-      user.name.should == 'Deleted user'
+    it "returns user.name '(account inactive)' if deleted_at is true (a date is present)" do
+      user.update_attribute(:deleted_at, Time.now)
+      user.name.should include('account inactive')
     end
 
     it "returns the stored name if deleted_at is nil" do
@@ -239,35 +140,9 @@ describe User do
     end
   end
 
-  context "#create" do
-    it "sets the avatar initials" do
-      user.should_receive(:set_avatar_initials)
-      user.save!
-    end
-  end
-
-  context "#save" do
-    it "sets avatar_initials to 'DU' if deleted_at is true (a date is present)" do
-      user.deleted_at = "20/12/2002"
-      user.save!
-      user.avatar_initials.should == "DU"
-    end
-    it "sets avatar_initials to the first two characters in all caps of the email if the user's name is email" do
-      user.name = "bobbysin@tvhosts.com"
-      user.email = "bobbysin@tvhosts.com"
-      user.save!
-      user.avatar_initials.should == "BO"
-    end
-    it "returns the first three initials of the stored name" do
-      user.name = "Bob bobby sinclair deebop"
-      user.save!
-      user.avatar_initials.should == "BBS"
-    end
-    it "works for strange characters" do
-      user.name = "D'Angelo (Loco)"
-      user.save!
-      user.avatar_initials.should == "D("
-    end
+  it "sets avatar initials on save" do
+    user.should_receive(:set_avatar_initials)
+    user.save
   end
 
   describe "#using_initials?" do
@@ -331,9 +206,16 @@ describe User do
     end
   end
 
-  it "sets deleted_at (Time.current) when deactivate! is called" do
+  it "sets deleted_at (Time.now) when deactivate! is called" do
     user.deactivate!
     user.deleted_at.should be_true
+  end
+
+  it "sets subscriptions to false when deactivate! is called" do
+    user.deactivate!
+    user.subscribed_to_daily_activity_email.should be_false
+    user.subscribed_to_mention_notifications.should be_false
+    user.subscribed_to_proposal_closure_notifications.should be_false
   end
 
   it "unsets deleted_at (nil) when activate! is called" do
@@ -366,55 +248,6 @@ describe User do
       notification.viewed_at = Time.now
       notification.save
       user.unviewed_notifications.count.should == 0
-    end
-  end
-
-  describe "get_loomio_user" do
-    it "returns the loomio helper bot user (email: contact@loom.io)" do
-      user = User.new
-      user.name = "loomio evil bot"
-      user.email = "darkness@loom.io"
-      user.password = "password"
-      user.save!
-      user1 = User.find_or_create_by_email("contact@loom.io")
-      user1.name = "loomio helper bot"
-      user1.password = "password"
-      user1.save!
-      user2 = User.new
-      user2.name = "George Washingtonne"
-      user2.email = "georgie_porgie@usa.com"
-      user2.password = "password"
-      user2.save!
-      User.loomio_helper_bot.should == user1
-    end
-
-    it "creates loomio helper bot if none exists" do
-      User.loomio_helper_bot.email.should == "contact@loom.io"
-    end
-  end
-
-  describe "recent_notifications" do
-    it "returns 10 notifications if there are less than 10 _unread_ notifications" do
-      # Generate read notifications
-      (0..15).each do |i|
-        notification = Notification.new(:event => stub_model(Event),
-                                        :user => user)
-        notification.viewed_at = Time.now
-        notification.save!
-      end
-      # Generate unread notifications
-      (0..7).each do |i|
-        notification = Notification.new(:event => stub_model(Event),
-                                        :user => user)
-        notification.save!
-      end
-      user.recent_notifications.count.should == 10
-    end
-    it "returns 25 notifications if there are 25 or more _unread_ notifications" do
-      (0..30).each do |i|
-        Notification.create!(:event => stub_model(Event), :user => user)
-      end
-      user.recent_notifications.count.should == 25
     end
   end
 
@@ -484,16 +317,22 @@ describe User do
     end
   end
 
-  describe "belongs_to_paying_group" do
-    it "returns true if user is a member of a paying group" do
-      group.paying_subscription = true
-      group.save!
-      group.add_member!(user)
-      user.belongs_to_paying_group?.should == true
+  describe "belongs_to_manual_subscription_group?" do
+    it "returns true if user is a member of a manual subscription group" do
+      group.update_attribute :payment_plan, 'manual_subscription'
+      group.add_member! user
+      user.belongs_to_manual_subscription_group?.should be_true
     end
-    it "returns false if user is not a member of a paying group" do
-      group.paying_subscription == false
+
+    it "returns false if user is a member of a subscription group" do
+      group.update_attribute :payment_plan, 'subscription'
+      group.add_member! user
+      user.belongs_to_manual_subscription_group?.should be_false
+    end
+
+    it "returns false if user is a member of a paying group" do
+      group.update_attribute :payment_plan, 'pwyc'
+      user.belongs_to_manual_subscription_group?.should be_false
     end
   end
-
 end

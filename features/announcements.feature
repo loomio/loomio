@@ -14,6 +14,14 @@ Feature: Announcements
     Given there is an announcement
     When I load the dashboard
     And I dismiss the announcement
-    And I reload the page
+    And I reload the dashboard
     Then I should not see the announcement
 
+  Scenario: User does not see announcements when starting group
+    Given there is an announcement
+    When I go to start a new group from the navbar
+    Then I should not see the announcement
+    When I fill in the group name and submit the form
+    And I recieve an email with an invitation link
+    When I click the invitation link
+    Then I should not see the announcement

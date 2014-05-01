@@ -5,10 +5,8 @@
 #      RAILS_ENV=test TEST_EMAIL=mailcatcher rails runner lib/tasks/email_test.rb
 
 ####To send using Sendgrid####
-#1. Start mailcatcher in terminal (if you need to install it, run `gem install mailcatcher`)
-#2. Open mailcatcher in your browser at http://localhost:1080
-#3. Make sure you have a sengrid username and password to send emails through sendgrid
-#4. In terminal, run:
+#1. Make sure you have a sengrid username and password to send emails through sendgrid
+#2. In terminal, run:
 #      RAILS_ENV=test TEST_EMAIL=sendgrid SENDGRID_USERNAME=***** SENDGRID_PASSWORD=****** rails runner lib/tasks/email_test.rb
 
 #NB Edit the let(:addresses) below to define external targets  (~line 85)
@@ -16,14 +14,36 @@
 #   To the bottom of the file add the lines like:
 #       export SENDGRID_USERNAME=*******
 
-require 'spec_helper'
+require 'rspec/rails'
+require 'rspec/autorun'
+RSpec.configure do |config|
+  config.mock_with :rspec
+  config.treat_symbols_as_metadata_keys_with_true_values = true
+  config.run_all_when_everything_filtered = true
+  config.use_transactional_fixtures = false
+  config.infer_base_class_for_anonymous_controllers = false
+  config.before :suite do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+  config.before type: :request do
+    DatabaseCleaner.strategy = :truncation
+  end
+  config.before do
+    DatabaseCleaner.start
+  end
+  config.after do
+    DatabaseCleaner.clean
+  end
+end
 require 'faker'
+
 
 def create_user
   stub_model User,
       name:               Faker::Name.name,
       email:              Faker::Internet.email,
-      language_preference: "es",
+      language_preference: 'en',
       uses_markdown:      true,
       unsubscribe_token:  (('a'..'z').to_a+('0'..'9').to_a).sample(20).join,
       invitation_token:   (('a'..'z').to_a+('0'..'9').to_a).sample(20).join,
@@ -68,11 +88,11 @@ def create_motion(in_discussion)
       discussion:         in_discussion,
       group:              in_discussion.group,
       author:             author,
-      close_date:         Time.now+rand(300).minutes,
+      closing_at:         Time.now+rand(300).minutes,
       votes_for_graph:    [["Yes (1)", 1, "Yes", [["himful@gmail.com"]]], ["Abstain (0)", 0, "Abstain", [[]]], ["No (0)", 0, "No", [[]]], ["Block (1)", 1, "Block", [["bob@lick.com"]]]],
       percent_voted:      50,
-      group_count:        22,
-      no_vote_count:      11
+      group_size_when_voting:        22,
+      members_not_voted_count:      11
 end
 
 def create_vote
@@ -82,7 +102,6 @@ def create_vote
       position_to_s:      ['agreed', 'abstained', 'disagreed', 'blocked'].sample,
       statement:          Faker::Lorem.paragraph(rand(0..2))
 end
-
 
 describe "Test Email:" do
   let (:addresses) { ['loomio.test.account@outlook.com'] }
@@ -123,6 +142,12 @@ describe "Test Email:" do
     token:              ('a'..'z').to_a.sample(25).join
   }
 
+  let(:membership_request) { stub_model MembershipRequest,
+    group:              group,
+    name:               Faker::Name.name,
+    email:              Faker::Internet.email
+  }
+
   describe "Discussion Mailer:" do
     it "new_discussion_created" do
       puts ' '
@@ -145,7 +170,8 @@ describe "Test Email:" do
       addresses.each do |email|
         admin.stub email: email
         User.stub(:find_by_email).and_return(admin)
-        GroupMailer.new_membership_request(membership).deliver
+        membership_request.stub(:requestor)
+        GroupMailer.new_membership_request(membership_request).deliver
         puts " ~ SENT (#{email})"
       end
     end
@@ -167,6 +193,61 @@ describe "Test Email:" do
    ### SKIP: this mailer just iterates above mailer ###
     # it "deliver_group_email" do
     # end
+  end
+
+  describe "Invite People Mailer" do
+    it "after_membership_request_approval" do
+      puts ' '
+      puts 'AFTER_MEMBERSHIP_REQUEST_APPROVAL'
+
+      message_body = 'Your membership request has been approved! '+Faker::Lorem.paragraph(4)
+
+      addresses.each do |email|
+        membership_request.stub email: email
+
+        invitation = Invitation.after_membership_request_approval( recipient_email: membership_request.email,
+                                                                         inviter: admin,
+                                                                         group: membership_request.group )
+
+        InvitePeopleMailer.after_membership_request_approval(invitation, admin.email, message_body).deliver
+        puts " ~ SENT (#{email})"
+      end
+    end
+
+    it "to_join_group" do
+      puts ' '
+      puts 'TO_JOIN_GROUP'
+
+      message_body = 'Come join us on Loomio! '+Faker::Lorem.paragraph(4)
+
+      addresses.each do |email|
+        membership_request.stub email: email
+
+        invitation = InvitationService.invite_to_join_group( recipient_email: membership_request.email,
+                                                             inviter: admin,
+                                                             group: membership_request.group )
+
+        InvitePeopleMailer.to_join_group(invitation, admin, message_body).deliver
+        puts " ~ SENT (#{email})"
+      end
+    end
+
+    it "to_start_group" do
+      puts ' '
+      puts 'TO_START_GROUP'
+
+      addresses.each do |email|
+        membership_request.stub email: email
+
+        invitation = InvitationService.invite_to_start_group( recipient_email: membership_request.email,
+                                                      recipient_name: membership_request.name,
+                                                      inviter: admin,
+                                                      group: membership_request.group )
+
+        InvitePeopleMailer.to_start_group(invitation, admin.email).deliver
+        puts " ~ SENT (#{email})"
+      end
+    end
   end
 
   describe "Motion Mailer:" do
@@ -313,7 +394,7 @@ describe "Test Email:" do
       unique_votes = []
       rand(2..11).times { unique_votes << create_vote }
       motion.stub unique_votes: unique_votes
-      motion.stub close_at: Time.now + 1.hour
+      motion.stub closing_at: Time.now + 1.hour
       addresses.each do |email|
         user.stub email: email
         UserMailer.motion_closing_soon(user, motion).deliver

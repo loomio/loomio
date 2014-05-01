@@ -2,17 +2,3 @@
   %div.alert-message{ "data-alert" => "alert", :class => "alert alert-#{twitterized_type(type)}" }
     <a class="close" data-dismiss="alert" href="#">×</a>
     = message
-- if !user_signed_in? && (controller_name == "discussions" || controller_name == "groups")
-  %div.alert-message{ "data-alert" => "alert", :class => "alert alert-warning" }
-    - if (@group && @group.id == 696) || (@discussion && @discussion.group_id == 696)
-      %p
-        Do you want to participate in this group?
-      %p
-        If you've never used Loomio before,
-        = link_to "click here to join.", collaborate_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
-      %p
-        If you've already got a Loomio account,
-        = link_to "click here to sign in.", new_user_session_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
-    - else
-      = link_to t(:sign_in), new_user_session_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
-      = t :sign_in_details

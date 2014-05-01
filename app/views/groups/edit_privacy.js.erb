@@ -1,4 +1,0 @@
-$("#privacy-image").attr('src', "/assets/privicon_<%= @group.viewable_by.to_s %>.png")
-tooltipTitle = "Privacy: '<%= @group.viewable_by.to_s %>' can see this group."
-$("#privacy").attr('data-original-title', tooltipTitle)
-             .tooltip('fixTitle');

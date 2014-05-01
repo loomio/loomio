@@ -12,7 +12,7 @@ class InboxPreferencesForm
   end
   
   def submit(params)
-    if valid?
+    if valid? and params.has_key?(:groups)
       ordered_group_ids = params[:groups].reject(&:blank?).map(&:to_i)
       clear_all_groups_from_inbox
       update_inbox_positions(ordered_group_ids)

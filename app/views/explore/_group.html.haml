@@ -1,0 +1,13 @@
+.group
+  .group-container
+    %h1=link_to group.full_name, group
+    %p.description=group.description
+
+    %ul.discussion-list
+      -group.discussions.published.public.not_by_helper_bot.preload(:most_recent_motion).last(5).each do |discussion|
+        - if discussion.most_recent_motion.present?
+          = render 'motion_line_item', item: discussion.most_recent_motion
+        -else
+          = render 'discussion_line_item', item: discussion
+
+    .group-link=link_to t(:'explore.go_to_group', group_name: group.full_name), group_path(group)

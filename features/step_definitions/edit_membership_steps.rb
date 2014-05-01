@@ -5,18 +5,14 @@ Given(/^I am a signed in group admin$/) do
   login @user
 end
 
-When(/^I view click edit memberships from the group page$/) do
+When(/^I click 'More'$/) do
   visit group_path(@group)
-  click_on 'Edit memberships'
+  click_on I18n.t(:"more")
 end
 
-Then(/^I should see the edit memberships page for the group$/) do
+Then(/^I should see the memberships index$/) do
   page.should have_css('body.memberships.index')
   current_path.should == group_memberships_path(@group)
-end
-
-Then(/^I should see the edit memberships page$/) do
-  page.should have_css('body.memberships.index')
 end
 
 Given(/^there is another group member$/) do
@@ -25,8 +21,8 @@ Given(/^there is another group member$/) do
 end
 
 
-When(/^click 'Make admin' on the member$/) do
-  click_on 'Make admin'
+When(/^click 'Make coordinator' on the member$/) do
+  click_on 'Make coordinator'
 end
 
 Then(/^the member should be a group admin$/) do
@@ -38,9 +34,9 @@ Given(/^there is another group admin$/) do
   @group.add_admin! @another_user
 end
 
-When(/^click 'Remove admin' on the member$/) do
+When(/^click 'Remove coordinator' on the member$/) do
   within("table.memberships tbody tr#membership-for-user-#{@another_user.id}") do
-    click_on 'Remove admin'
+    click_on 'Remove coordinator'
   end
 end
 

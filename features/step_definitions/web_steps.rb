@@ -52,8 +52,13 @@ And /^take a screenshot$/ do
   end
   page.driver.render("tmp/screenshots/#{file_name}.png", full: true)
   puts '[SCREENSHOT]: written to tmp/screenshots'
+  system("open tmp/screenshots/#{file_name}.png")
 end
 
 And /^take a screenshot and name it "(.*?)"$/ do |arg1|
   page.driver.render("tmp/screenshots/cucumber_#{arg1}.png")
+end
+
+When(/^I visit "(.*?)"$/) do |arg1|
+  visit arg1
 end

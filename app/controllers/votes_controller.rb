@@ -1,67 +1,39 @@
-class VotesController < GroupBaseController
-  inherit_resources
-  belongs_to :motion
-  # before_filter :ensure_group_member
-  # belongs_to :motion
+class VotesController < BaseController
+  before_filter :require_user_can_vote
 
-  # def begin_of_association_chain
-  #   @motion
-  #
   def new
-    @motion = Motion.find(params[:motion_id])
-    @vote = Vote.new
-    @vote.position = params[:position]
-  end
-
-  def destroy
-    resource
-    if @motion.voting?
-      destroy! { @motion.discussion }
-    else
-      flash[:error] = t("error.cant_modify_position")
-      redirect_to @motion.discussion
-    end
+    @vote = motion.most_recent_vote_of(current_user) || Vote.new
+    @vote.position = params[:position] if params[:position]
   end
 
   def create
-    @motion = Motion.find(params[:motion_id])
-    if @motion.voting?
-      @vote = Vote.new(params[:vote])
-      @vote.motion = @motion
-      @vote.user = current_user
-      if @vote.save
-        flash[:success] = t("success.position_submitted")
-      else
-        flash[:warning] = t("warning.position_not_submitted")
-      end
+    @vote = Vote.new(permitted_params.vote)
+    @vote.motion = motion
+    @vote.user = current_user
+
+    if MotionService.cast_vote(@vote)
+      Measurement.increment('votes.create.success')
+      flash[:success] = t("success.position_submitted")
       redirect_to @motion
     else
-      flash[:error] = t("error.cant_state_position")
-      redirect_to @motion
+      Measurement.increment('votes.create.errors')
+      render :new
     end
   end
 
   def update
-    @motion = Motion.find(params[:motion_id])
-    if @motion.voting?
-      params[:vote].delete(:id)
-      @vote = Vote.new(params[:vote])
-      @vote.motion = @motion
-      @vote.user = current_user
-      if @vote.save
-        flash[:success] = t("success.position_updated")
-      else
-        flash[:error] = t("error.position_not_updated")
-      end
-    else
-      flash[:error] = "Can only vote in voting phase"
-    end
-    redirect_to @motion.discussion
+    create
   end
 
   private
+    def require_user_can_vote
+      unless can?(:vote, motion)
+        flash[:notice] = "You don't have permission to vote on the motion"
+        redirect_to dashboard_path
+      end
+    end
 
-    def group
-      Motion.find(params[:motion_id]).group
+    def motion
+      @motion ||= Motion.find(params[:motion_id])
     end
 end

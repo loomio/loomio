@@ -1,0 +1,11 @@
+it:
+  frontpage:
+    link:
+      blog: 'Blog'
+      contact: 'Contatti'
+      top: 'Su'
+      public_groups: 'Gruppi pubblici'
+      privacy: 'Privacy'
+      services: 'Servizi'
+    team:
+      header: 'Informazioni su Loomio'

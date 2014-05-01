@@ -1,9 +1,13 @@
 class DiscussionsController < GroupBaseController
-  inherit_resources
-  load_and_authorize_resource :except => [:show, :new, :create, :index, :activity_counts]
+  include DiscussionsHelper
+
   before_filter :authenticate_user!, :except => [:show, :index]
-  before_filter :check_group_read_permissions, :only => :show
-  after_filter :store_location, :only => :show
+  before_filter :load_resource_by_key, except: [:new, :create, :index, :update_version]
+  authorize_resource :except => [:new, :create, :index, :add_comment]
+
+  after_filter :mark_as_read, only: :show
+
+  caches_action :show, :cache_path => Proc.new { |c| c.params }, unless: :user_signed_in?, :expires_in => 5.minutes
 
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.not_found') }
@@ -11,19 +15,28 @@ class DiscussionsController < GroupBaseController
 
   def new
     @discussion = Discussion.new
-    @uses_markdown = current_user.uses_markdown
-    if params[:group_id]
-      @discussion.group_id = params[:group_id]
+    @discussion.uses_markdown = current_user.uses_markdown
+    @group = Group.find_by_id params[:group_id]
+    @discussion.group = @group
+    @user_groups = current_user.groups.order('name')
+  end
+
+  def edit
+  end
+
+  def update
+    if DiscussionService.edit_discussion(current_user, permitted_params.discussion, @discussion)
+      flash[:notice] = 'Discussion was successfully updated.'
+      redirect_to @discussion
     else
-      @user_groups = current_user.groups.order('name') unless params[:group_id]
+      @user_groups = current_user.groups.order('name')
+      render :edit
     end
   end
 
   def create
-    current_user.update_attributes(uses_markdown: params[:discussion][:uses_markdown])
-    @discussion = current_user.authored_discussions.new(params[:discussion])
-    authorize! :create, @discussion
-    if @discussion.save
+    build_discussion
+    if DiscussionService.start_discussion(@discussion)
       flash[:success] = t("success.discussion_created")
       redirect_to @discussion
     else
@@ -33,7 +46,6 @@ class DiscussionsController < GroupBaseController
   end
 
   def destroy
-    @discussion = Discussion.find(params[:id])
     @discussion.delayed_destroy
     flash[:success] = t("success.discussion_deleted")
     redirect_to @discussion.group
@@ -45,95 +57,95 @@ class DiscussionsController < GroupBaseController
       if cannot? :show, @group
         head 401
       else
-        @discussions = Queries::VisibleDiscussions.for(@group, current_user).
-                       without_current_motions.page(params[:page]).per(10)
         @no_discussions_exist = (@group.discussions.count == 0)
-        render :layout => false if request.xhr?
+        @discussions = GroupDiscussionsViewer.
+                       for(group: @group, user: current_user).
+                       without_open_motions.
+                       order_by_latest_comment.
+                       page(params[:page]).per(10)
       end
     else
       authenticate_user!
-      @discussions = current_user.discussions_sorted.page(params[:page]).per(10)
       @no_discussions_exist = (current_user.discussions.count == 0)
-      render :layout => false if request.xhr?
+      @discussions = Queries::VisibleDiscussions.
+                     new(user: current_user).
+                     without_open_motions.
+                     order_by_latest_comment.
+                     page(params[:page]).per(10)
     end
   end
 
   def show
-    @discussion = Discussion.find(params[:id])
-    @last_collaborator = User.find @discussion.originator.to_i if @discussion.has_previous_versions?
     @group = GroupDecorator.new(@discussion.group)
-    @vote = Vote.new
-    @current_motion = @discussion.current_motion
-    @activity = @discussion.activity
-    @filtered_activity = @discussion.filtered_activity
-    assign_meta_data
+
     if params[:proposal]
-      @displayed_motion = Motion.find(params[:proposal])
-    elsif @current_motion
-      @displayed_motion = @current_motion
+      @motion = @discussion.motions.find(params[:proposal])
+    else
+      @motion = @discussion.most_recent_motion
     end
-    if current_user
-      @destination_groups = DiscussionMover.destination_groups(@discussion.group, current_user)
-      @uses_markdown = current_user.uses_markdown?
-      ViewLogger.motion_viewed(@current_motion, current_user) if @current_motion
-      ViewLogger.discussion_viewed(@discussion, current_user)
+
+    if @motion
+      @motion_reader = MotionReader.for(user: current_user_or_visitor, motion: @motion)
     end
+
+    @discussion_reader = DiscussionReader.for(user: current_user_or_visitor, discussion: @discussion)
+
+    @closed_motions = @discussion.closed_motions
+
+    @uses_markdown = current_user_or_visitor.uses_markdown?
+
+    @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
+    assign_meta_data
   end
 
   def move
-    @discussion = Discussion.find(params[:id])
-    origin = @discussion.group
-    destination = Group.find(params[:discussion][:group_id])
-    @discussion.group_id = params[:discussion][:group_id]
-    if DiscussionMover.can_move?(current_user, origin, destination) && @discussion.save!
-      flash[:success] = "Discussion successfully moved."
+    destination_group = Group.find params[:destination_group_id]
+
+    discussion_mover = MoveDiscussionService.new(discussion: @discussion,
+                                                 destination_group: destination_group,
+                                                 user: current_user)
+    if discussion_mover.move!
+      flash[:notice] = t(:'success.discussion_moved', group_name: destination_group.name)
     else
-      flash[:error] = "Discussion could not be moved."
+      flash[:alert] = t(:'error.discussion_not_moved', group_name: destination_group.name)
     end
+
     redirect_to @discussion
   end
 
   def add_comment
-    if params[:comment].present?
-      @discussion = Discussion.find(params[:id])
-      @comment = @discussion.add_comment(current_user, params[:comment], params[:global_uses_markdown])
-      ViewLogger.discussion_viewed(@discussion, current_user)
-      unless request.xhr?
-        redirect_to @discussion
-      end
+    build_comment
+    if DiscussionService.add_comment(@comment)
+      current_user.update_attributes(uses_markdown: params[:uses_markdown])
+      DiscussionReader.for(user: current_user, discussion: @discussion).viewed!
     else
-      head :ok
+      head :ok and return
     end
   end
 
   def new_proposal
-    discussion = Discussion.find(params[:id])
-    if discussion.current_motion
-      redirect_to discussion
+    if @discussion.current_motion
+      redirect_to @discussion
       flash[:notice] = "A current proposal already exists for this disscussion."
     else
       @motion = Motion.new
-      @motion.set_default_close_at_date_and_time
-      @motion.discussion = discussion
-      @group = GroupDecorator.new(discussion.group)
+      @motion.discussion = @discussion
+      @group = GroupDecorator.new(@discussion.group)
       render 'motions/new'
     end
   end
 
   def update_description
-    @discussion = Discussion.find(params[:id])
     @discussion.set_description!(params[:description], params[:description_uses_markdown], current_user)
     redirect_to @discussion
   end
 
   def edit_title
-    @discussion = Discussion.find(params[:id])
-    @discussion.set_title!(params[:title], current_user)
+    @discussion.set_title!(params.require(:title), current_user)
     redirect_to @discussion
   end
 
   def show_description_history
-    @discussion = Discussion.find(params[:id])
     @originator = User.find @discussion.originator.to_i
     respond_to do |format|
       format.js
@@ -142,9 +154,7 @@ class DiscussionsController < GroupBaseController
 
   def preview_version
     # assign live item if no version_id is passed
-    if params[:version_id].nil?
-      @discussion = Discussion.find(params[:id])
-    else
+    if params[:version_id].present?
       version = Version.find(params[:version_id])
       @discussion = version.reify
     end
@@ -160,20 +170,39 @@ class DiscussionsController < GroupBaseController
     redirect_to @version.reify()
   end
 
-  def activity_counts
-    # this ensures that you can't ask for comment counts for discussions you dont belong to 
-    discussion_ids = current_user.discussion_ids & params[:discussion_ids].split('x').map(&:to_i)
-
-    counts = Discussion.find(discussion_ids).map do |discussion|
-      discussion.number_of_comments_since_last_looked(current_user)
-    end
-    render json: counts
-  end
-
   private
 
+  def load_resource_by_key
+    @discussion ||= Discussion.published.find_by_key!(params[:id])
+  end
+
+  def build_comment
+    @comment = Comment.new(body: params[:comment],
+                           uses_markdown: params[:uses_markdown])
+
+    attachment_ids = Array(params[:attachments]).map(&:to_i)
+
+    @comment.discussion = @discussion
+    @comment.author = current_user
+    @comment.attachment_ids = attachment_ids
+    @comment.attachments_count = attachment_ids.size
+    @comment
+  end
+
+  def build_discussion
+    @discussion = Discussion.new(permitted_params.discussion)
+    @discussion.author = current_user
+  end
+
+  def mark_as_read
+    if @activity and @activity.last
+      @discussion_reader.viewed!(@activity.last.updated_at)
+      @motion_reader.viewed! if @motion_reader
+    end
+  end
+
   def assign_meta_data
-    if @group.viewable_by == :everyone
+    if @group.privacy == 'public'
       @meta_title = @discussion.title
       @meta_description = @discussion.description
     end
@@ -185,7 +214,7 @@ class DiscussionsController < GroupBaseController
 
   def find_group
     if (params[:id] && (params[:id] != "new"))
-      Discussion.find(params[:id]).group
+      Discussion.published.find(params[:id]).group
     elsif params[:discussion][:group_id]
       Group.find(params[:discussion][:group_id])
     end

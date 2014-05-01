@@ -1,34 +1,40 @@
 .row
   .span9
     - set_title @group.name, "", @group.parent
-    = render '/groups/title', group: @group
+    = render '/groups/title', group: @group, discussion: @discussion
     - if can? :create, @discussion
-      = icon_button(new_discussion_path(:group_id => @group.id), t(:start_a_discussion), '/assets/topic-18.png', 'start-new-discussion')
+      = icon_button(href: new_discussion_path(:group_id => @group.id), text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
   .span3#button-container
     - if can?(:add_members, @group)
-      = render 'invite_button', group: @group
+      = render 'invite_button', group: @group, discussion: @discussion
     = render 'options_dropdown', group: @group
-    =render 'request_membership', group: @group
+    = request_membership_button(@group)
 
 .row.main-content
-  %section.span9
-    %ul.selector-list.bordered
-      #all-discussions-loading
-        %li.selector-item.loading= t(:loading)
-      #discussions-with-motions
-        - @discussions.with_current_motions_user_has_not_voted_on.each do |discussion|
-          %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
-        - @discussions.with_current_motions_user_has_voted_on.each do |discussion|
-          %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
-        .discussion-with-motion-divider.hidden
-      #group-discussions.hidden
-        %div{ class: "group_#{@group.id}" }
-
+  =render 'discussions/discussion_list'
   %section.span3
     =render 'setup_next_steps' if show_next_steps?(@group)
+    / =render 'subscription_prompt' if show_subscription_prompt?(@group)
     =render 'groups/description', group: @group
     =render 'subgroups', subgroups: @subgroups, group: @group if display_subgroups_block?(@group)
-    =render '/application/see_closed_motions'
+    - if can? :show, @group
+      - if @closed_motions.exists?
+        .sub-panel.previous-discussions-panel
+          %h4= t(:previous_decisions)
+          %ul.previous-decisions
+            - @closed_motions.first(3).each do |motion|
+              %li.previous-decision
+                %a.selector-link{ href: motion_path(motion) }
+                  .clearfix
+                    .pie.motion-sparkline
+                      -values = motion.vote_counts.values
+                      -if values.sum == 0
+                        0,0,0,0,1
+                      -else
+                        =values.join(',')
+                    .previous-decision-title.word-break=truncate(motion.name, :length => 60, :separator => ' ')
+
+          = link_to t(:see_more), group_motions_path(@group), class: 'bottom-panel-link'
     =render 'membership_requests', group: @group
     =render 'members', group: @group
   =render '/application/closed_motions', user: nil, group: @group

@@ -1,12 +1,12 @@
 describe DiscussionItems::DiscussionDescriptionEdited do
-  let(:event) { stub(:event) }
-  let(:discussion) { stub(:discussion) }
+  let(:event) { double(:event) }
+  let(:discussion) { double(:discussion) }
   let(:item) { DiscussionItems::DiscussionDescriptionEdited.new(event, discussion) }
 
   it "#icon returns a string indicating the icon-class"
 
   it "#actor returns the user who edited the description" do
-    actor = stub(:actor)
+    actor = double(:actor)
     item.stub_chain(:event, :user).and_return(actor)
     item.actor.should == item.event.user
   end

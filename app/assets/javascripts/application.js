@@ -4,23 +4,28 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 
-//= require lib/excanvas
 //= require jquery
-//= require jquery-ui
 //= require jquery_ujs
+//= require jquery.ui.datepicker
+//= require jquery.ui.sortable
+//= require jquery.atwho/index
 //= require jqplot
 //= require jqplot/plugins/pieRenderer
-//= require lib/jquery.tokeninput
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
+//= require rails.validations
+//= require rails.validations.simple_form
+//= require lib/jquery.cookie.js
+//= require lib/jstz-1.0.4.min
 //= require lib/jquery.mousewheel
 //= require lib/jquery.placeholder
 //= require lib/moment.min
 //= require lib/jquery.sparkline.min
-//= require rails.validations
-//= require rails.validations.simple_form
+//= require lib/jquery.html5-placeholder-shim
+//= require lib/jquery.safetynet
+//= require lib/jquery.netchanger.min
 //= require underscore
 //= require backbone
-//= require backbone_rails_sync
-//= require backbone_datalink
 //= require backbone/loomio
 //= require modernizr
 //= require bootstrap
@@ -33,12 +38,11 @@
 //= require motions
 //= require users
 //= require notifications
-//= require dashboard
 //= require votes
-//= require jquery.atwho
-//= require pop-over
+//= require tooltips
 //= require announcements
-//= require lib/jquery.cookie.js
-//= require lib/jstz-1.0.4.min
 //= require autodetect_time_zone
 //= require inbox
+//= require searches
+//= require attachments
+//= require subscriptions

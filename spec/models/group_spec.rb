@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe Group do
-  let(:motion) { create(:motion) }
+  let(:motion) { create(:motion, discussion: discussion) }
+  let(:user) { create(:user) }
+  let(:group) { create(:group) }
+  let(:discussion) { create_discussion }
 
   it { should have_many :discussions }
 
@@ -15,20 +18,15 @@ describe Group do
     it "must have a name" do
       @group.should have(1).errors_on(:name)
     end
-    it "must have a max_size if it is a parent" do
-      group = create(:group)
-      group.max_size = nil
-      group.valid?
-      group.should have(1).errors_on(:max_size)
-    end
+
     it "has memberships" do
       @group.respond_to?(:memberships)
     end
-    it "defaults to viewable by members" do
-      @group.viewable_by.should == :members
+    it "defaults to private" do
+      @group.privacy.should == 'private'
     end
     it "defaults to members invitable by members" do
-      @group.members_invitable_by.should == :members
+      @group.members_invitable_by.should == 'members'
     end
     it "has a full_name" do
       @group.full_name.should == @group.name
@@ -47,78 +45,29 @@ describe Group do
     end
   end
 
-  describe "motions_in_voting_phase" do
-    it "returns motions that belong to the group and are in phase 'voting'" do
+  describe "#voting_motions" do
+    it "returns motions that belong to the group and are open" do
       @group = motion.group
-      @group.motions_in_voting_phase.should include(motion)
+      @group.voting_motions.should include(motion)
     end
 
-    it "should not return motions that belong to the group but are in phase 'closed'" do
+    it "should not return motions that belong to the group but are closed" do
       @group = motion.group
-      motion.close!
-      @group.motions_in_voting_phase.should_not include(motion)
+      MotionService.close(motion)
+      @group.voting_motions.should_not include(motion)
     end
   end
 
-  describe "motions_closed" do
-    it "returns motions that belong to the group and are in phase 'voting'" do
-      motion.close!
+  describe "#closed_motions" do
+    it "returns motions that belong to the group and are open" do
+      MotionService.close(motion)
       @group = motion.group
-      @group.motions_closed.should include(motion)
+      @group.closed_motions.should include(motion)
     end
 
-    it "should not return motions that belong to the group but are in phase 'closed'" do
+    it "should not return motions that belong to the group but are closed'" do
       @group = motion.group
-      @group.motions_closed.should_not include(motion)
-    end
-  end
-
-  # NOTE (Jon): these descriptions seem ridiculous,
-  # why did i name the tests this way? mehh.....
-  describe "beta_features" do
-    context "group.beta_features = true" do
-      before do
-        @group = create(:group)
-        @group.beta_features = true
-        @group.save
-      end
-      it "group.beta_features? returns true" do
-        @group.beta_features?.should be_true
-      end
-      it "group.beta_features returns true" do
-        @group.beta_features.should be_true
-      end
-      context "subgroup.beta_features = false" do
-        before do
-          @subgroup = create(:group, :parent => @group)
-          @subgroup.beta_features = false
-          @subgroup.save
-        end
-        it "subgroup.beta_features? returns true" do
-          @subgroup.beta_features?.should be_true
-        end
-        it "subgroup.beta_features returns true" do
-          @subgroup.beta_features.should be_true
-        end
-      end
-    end
-    context "group.beta_features = false" do
-      context "subgroup.beta_features = true" do
-        before do
-          @group = create(:group)
-          @group.beta_features = false
-          @group.save
-          @subgroup = create(:group, :parent => @group)
-          @subgroup.beta_features = true
-          @subgroup.save
-        end
-        it "subgroup.beta_features? returns true" do
-          @subgroup.beta_features?.should be_true
-        end
-        it "subgroup.beta_features returns true" do
-          @subgroup.beta_features.should be_true
-        end
-      end
+      @group.closed_motions.should_not include(motion)
     end
   end
 
@@ -128,25 +77,25 @@ describe Group do
       @subgroup = create(:group, :parent => @group)
       @group.reload
     end
-    it "cannot have a max_size" do
-      @subgroup.max_size = 5
-      @subgroup.save
-      @subgroup.should have(1).errors_on(:max_size)
-    end
+
     it "can access it's parent" do
       @subgroup.parent.should == @group
     end
+
     it "can access it's children" do
-      10.times {create(:group, :parent => @group)}
-      @group.subgroups.count.should eq(11)
+      @group.subgroups.count.should eq(1)
     end
+
     it "limits group inheritance to 1 level" do
       invalid = build(:group, :parent => @subgroup)
       invalid.should_not be_valid
     end
-    it "defaults to viewable by parent group members" do
-      Group.new(:parent => @group).viewable_by.should == :parent_group_members
+
+    it "by default is not viewable by parent members" do
+      Group.new(:parent => @group).privacy.should == 'private'
+      Group.new(:parent => @group).should_not be_viewable_by_parent_members
     end
+
     context "subgroup.full_name" do
       it "contains parent name" do
         @subgroup.full_name.should == "#{@group.name} - #{@subgroup.name}"
@@ -160,9 +109,9 @@ describe Group do
     end
   end
 
-  context "an existing group viewiable by members" do
+  context "an existing hidden group" do
     before :each do
-      @group = create(:group, viewable_by: "members")
+      @group = create(:group, privacy: "hidden")
       @user = create(:user)
     end
 
@@ -173,10 +122,6 @@ describe Group do
     end
     it "can promote existing member to admin" do
       @group.add_member!(@user)
-      @group.add_admin!(@user)
-    end
-    it "can promote requested member to admin" do
-      @group.add_request!(@user)
       @group.add_admin!(@user)
     end
     it "can be administered by admin of parent" do
@@ -191,82 +136,173 @@ describe Group do
       @group.add_member!(@user)
       @group.add_member!(@user)
     end
-    it "fails silently when trying to request an already-requested member" do
-      @group.add_request!(@user)
-      @group.add_request!(@user)
-    end
-    it "fails silently when trying to request an already-existing member" do
-      @group.add_member!(@user)
-      @group.add_request!(@user)
-      @group.users.should include(@user)
-    end
-    it "can add a member if a request has already been created" do
-      @group.add_request!(@user)
-      @group.add_member!(@user)
-      @group.users.should include(@user)
-    end
 
-    context "receiving a member request" do
-      it "should not add user to group" do
-        @group.add_request!(@user)
-        @group.users.should_not include(@user)
+    context "creating a subgroup" do
+      before :each do
+        @subgroup = build(:group, :parent => @group)
       end
-      it "should add user to member requests" do
-        @group.add_request!(@user)
-        @group.membership_requests.find_by_user_id(@user).should \
-          == @user.membership_requests.find_by_group_id(@group)
+      it "can create hidden subgroups" do
+        @subgroup.privacy = 'hidden'
+        @subgroup.valid?
+        @subgroup.should have(0).errors_on(:privacy)
+      end
+      it "returns an error when tries to create subgroup that is not hidden" do
+        @subgroup.privacy = 'public'
+        @subgroup.valid?
+        @subgroup.should have(1).errors_on(:privacy)
       end
     end
   end
 
-  describe "activity_since_last_viewed?(user)" do
-    before do
-      @group = create(:group)
-      @user = create(:user)
-      @membership = create :membership, group: @group, user: @user
+  describe "#has_manual_subscription?" do
+    let(:group) { create(:group, payment_plan: 'manual_subscription') }
+
+    it "returns true if group is marked as a manual subscription" do
+      group.should have_manual_subscription
     end
-    context "where user is a member" do
-      before do
-        @group.stub(:membership).with(@user).and_return(@membership)
-      end
-      it "returns false if there is new activity since this group was last viewed but does not have any discussions with unread activity" do
-        @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
-        @group.discussions.stub_chain(:joins, :where, :count).and_return(0)
-        @group.activity_since_last_viewed?(@user).should == false
-      end
-      it "returns false if there is no new activity since this group was last viewed but does have discussions with unread activity" do
-        @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
-        @group.discussions.stub_chain(:joins, :where, :count).and_return(0)
-        @group.activity_since_last_viewed?(@user).should == false
-      end
-      it "returns true if there is no new activity since this group was last viewed but does have discussions with unread activity" do
-        @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
-        @group.discussions.stub_chain(:joins, :where, :count).and_return(2)
-        @group.activity_since_last_viewed?(@user).should == true
-      end
-    end
-    it "returns false there is no membership" do
-      @group.stub(:membership).with(@user)
-      @group.activity_since_last_viewed?(@user).should == false
+    it "returns false if group is not marked as a manual subscription" do
+      group.update_attribute(:payment_plan, 'subscription')
+      group.should_not have_manual_subscription
     end
   end
 
   describe 'archive!' do
-    let(:group) {FactoryGirl.create(:group)}
-    let(:user) {FactoryGirl.create(:user)}
-
     before do
       group.add_member!(user)
+      @discussion = create_discussion group_id: group.id
       group.archive!
     end
 
     it 'sets archived_at on the group' do
       group.archived_at.should be_present
-
     end
 
     it 'archives the memberships of the group' do
       group.memberships.all?{|m| m.archived_at.should be_present}
     end
+
+    it 'archives the discussions' do
+      group.discussions.all?{|d| d.archived_at.should be_present}
+    end
   end
+
+  describe 'is_paying?', focus: true do
+    subject do
+      group.is_paying?
+    end
+
+    context 'payment_plan is manual' do
+      before do
+        group.payment_plan = "manual_subscription"
+      end
+      it {should be_true}
+    end
+
+    context 'payment_plan is pwyc or undetermined' do
+      it {should be_false}
+    end
+
+    context 'group has online subscription' do
+      before do
+        group.subscription = Subscription.create(group: group, amount: 0)
+      end
+
+      context 'with amount 0' do
+        it {should be_false}
+      end
+
+      context 'with amount > 0' do
+        before do
+          group.subscription.amount = 1
+        end
+        it {should be_true}
+      end
+    end
+  end
+
+  describe "#is_hidden?" do
+    let(:group) { Group.new }
+    subject { group.is_hidden? }
+
+    context "group is public" do
+      before { group.privacy = 'public'}
+      it { should be_false }
+    end
+
+    context "group is private" do
+      before { group.privacy = 'private'}
+      it { should be_false }
+    end
+
+    context "group is hidden" do
+      before { group.privacy = 'hidden'}
+      it { should be_true }
+    end
+  end
+
+  describe 'engagement-scopes' do
+    describe 'more_than_n_members' do
+      let(:group_with_no_members) { FactoryGirl.create :group }
+      let(:group_with_1_member) { FactoryGirl.create :group }
+      let(:group_with_2_members) { FactoryGirl.create :group }
+      before do
+        group_with_no_members.memberships.delete_all
+        raise "group with 1 memeber is wrong" unless group_with_1_member.members.size == 1
+
+        group_with_2_members.add_member! FactoryGirl.create(:user)
+        raise "group with 2 members is wrong" unless group_with_2_members.members.size == 2
+      end
+
+      subject { Group.more_than_n_members(1) }
+
+      it {should include(group_with_2_members) }
+      it {should_not include(group_with_1_member, group_with_no_members)}
+    end
+
+    describe 'no_active_discussions_since' do
+      let(:group_with_no_discussions) { FactoryGirl.create :group, name: 'no discussions' }
+      let(:group_with_discussion_1_day_ago) { FactoryGirl.create :group, name: 'discussion 1 day ago' }
+      let(:group_with_discussion_3_days_ago) { FactoryGirl.create :group, name: 'discussion 3 days ago' }
+
+      before do
+        unless group_with_no_discussions.discussions.size == 0
+          raise 'group should not have discussions'
+        end
+
+        Timecop.freeze(1.day.ago) do
+          group_with_discussion_1_day_ago
+          create_discussion group: group_with_discussion_1_day_ago
+        end
+
+        Timecop.freeze(3.days.ago) do
+          group_with_discussion_3_days_ago
+          create_discussion group: group_with_discussion_3_days_ago
+        end
+      end
+
+      subject { Group.no_active_discussions_since(2.days.ago) }
+
+      it {should include(group_with_no_discussions, group_with_discussion_3_days_ago) }
+      it {should_not include(group_with_discussion_1_day_ago) }
+    end
+
+    describe 'older_than' do
+      let(:old_group) { FactoryGirl.create(:group, name: 'old') }
+      let(:new_group) { FactoryGirl.create(:group, name: 'new') }
+      before do
+        Timecop.freeze(1.month.ago) do
+          old_group
+        end
+        Timecop.freeze(1.day.ago) do
+          new_group
+        end
+      end
+
+      subject { Group.created_earlier_than(2.days.ago) }
+
+      it {should include old_group }
+      it {should_not include new_group }
+    end
+  end
+
 end

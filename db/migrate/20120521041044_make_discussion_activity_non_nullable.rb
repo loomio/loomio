@@ -1,4 +1,6 @@
 class MakeDiscussionActivityNonNullable < ActiveRecord::Migration
+  class Discussion < ActiveRecord::Base
+  end
   def up
     Discussion.where("activity is NULL").each do |discussion|
       discussion.activity = 0

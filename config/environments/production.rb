@@ -9,13 +9,14 @@ Loomio::Application.configure do
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = false
+  config.serve_static_assets = true
+  config.static_cache_control = 'public, max-age=31536000'
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  # config.assets.compile = false
+  config.assets.compile = false
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -39,6 +40,7 @@ Loomio::Application.configure do
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
+  config.cache_store = :dalli_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -61,27 +63,22 @@ Loomio::Application.configure do
 
   config.action_mailer.perform_deliveries = true
 
-  # Send emails using SendGrid
+  # Send emails using SMTP service
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
-    :port           => '587',
+    :address        => ENV['SMTP_SERVER'],
+    :port           => ENV['SMTP_PORT'],
     :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'loomio.org'
+    :user_name      => ENV['SMTP_USERNAME'],
+    :password       => ENV['SMTP_PASSWORD'],
+    :domain         => ENV['SMTP_DOMAIN']
   }
 
   config.action_mailer.raise_delivery_errors = true
 
-  # Email admin when server gets exceptions!
-  config.middleware.use ExceptionNotifier,
-    :email_prefix => "[Loomio Exception] ",
-    :sender_address => %{"Exception Notifier" <dudley@loomio.org>},
-    :exception_recipients => [ENV['EXCEPTION_RECIPIENT']]
 
   config.action_mailer.default_url_options = {
-    :host => 'www.loomio.org',
+    :host => ENV['SMTP_DOMAIN'],
   }
 
   # Store avatars on Amazon S3
@@ -95,4 +92,5 @@ Loomio::Application.configure do
     :fog_directory => ENV['AWS_UPLOADS_BUCKET'],
     :fog_public => true
   }
+
 end

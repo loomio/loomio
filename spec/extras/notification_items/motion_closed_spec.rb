@@ -1,24 +1,13 @@
+require 'spec_helper'
+
 describe NotificationItems::MotionClosed do
-  let(:notification) { stub(:notification) }
+  let(:notification) { double(:notification) }
   let(:item) { NotificationItems::MotionClosed.new(notification) }
 
   before do
-    @closer = stub(:user)
+    @closer = double(:user)
     notification.stub_chain(:event, :user).and_return(@closer)
-  end
-
-  it "#actor returns the user who closed the motion" do
-    item.actor.should == @closer
-  end
-
-  context "user closed motion" do
-    it "#action_text returns a string" do
-      item.action_text.should == I18n.t('notifications.motion_closed.by_user')
-    end
-
-    it "#avatar returns the correct user for the notification avatar" do
-      item.avatar.should == @closer
-    end
+    notification.stub_chain(:event, :eventable, :author).and_return(@closer)
   end
 
   context "motion expired" do
@@ -28,7 +17,7 @@ describe NotificationItems::MotionClosed do
       item.action_text.should == I18n.t('notifications.motion_closed.by_expiry') + ": "
     end
 
-    it "#avatar returns the correct user for the notification avatar" do
+    it "#avatar returns the motion author" do
       notification.stub_chain(:eventable, :author).and_return("Peter")
       item.avatar.should == notification.eventable.author
     end
@@ -46,7 +35,7 @@ describe NotificationItems::MotionClosed do
 
   it "#link returns a path to the motion" do
     item.stub_chain(:url_helpers, :motion_path).and_return("/motions/1")
-    notification.stub(:eventable).and_return(stub(:motion))
+    notification.stub(:eventable).and_return(double(:motion))
     item.link.should == "/motions/1"
   end
 end

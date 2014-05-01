@@ -1,8 +1,0 @@
-= render 'avatar', user: vote.user, size: "medium", kind: nil, id: nil
-%div{:class => 'activity-icon ' + vote_icon_name(vote.position)}
-%strong= vote.user.name 
-- if vote.statement != ""
-  = " - " 
-  = vote.statement
-.vote-time
-  = t(:ago, :quantity_of_time => time_ago_in_words(vote.created_at))

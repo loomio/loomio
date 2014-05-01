@@ -1,7 +1,7 @@
 .row
   .span8.offset2
     .clearfix
-      %h1.panel-header Notifications
+      %h1.panel-header= t :"notifications.header"
     %ul.selector-list
       - @notifications.each do |notification|
         = render notification

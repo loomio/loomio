@@ -1,5 +1,5 @@
 namespace :stats do
-  task :all => [:environment, :group_requests, :users, :groups, :events, :discussions, :discussion_read_logs] do
+  task :all => [:environment, :group_requests, :users, :groups, :events, :discussions, :discussion_readers] do
   end
 
   task :group_requests => :environment do
@@ -9,12 +9,12 @@ namespace :stats do
   task :groups => :environment do    # Export all groups, scramble details of private ones
     require 'csv'
     file = CSV.generate do |csv|
-      csv << ["id", "name", "created_at", "viewable_by", "parent_id", "description", "memberships_count", "archived_at", "distribution_metric", "cannot_contribute"]
+      csv << ["id", "name", "created_at", "privacy", "parent_id", "description", "memberships_count", "archived_at", "distribution_metric", "cannot_contribute"]
       Group.find_each do |group|
-        if group.viewable_by == :everyone
-          csv << [group.id, group.name, group.created_at, group.viewable_by, group.parent_id, group.description, group.memberships_count, group.archived_at, group.distribution_metric, group.cannot_contribute]
+        if group.privacy == :public
+          csv << [group.id, group.name, group.created_at, group.privacy, group.parent_id, group.description, group.memberships_count, group.archived_at, group.distribution_metric, group.cannot_contribute]
         else
-          csv << [scramble(group.id), "Private", group.created_at, group.viewable_by, group.parent_id, "Private", group.memberships_count, group.archived_at, group.distribution_metric, group.cannot_contribute]
+          csv << [scramble(group.id), "Private", group.created_at, group.privacy, group.parent_id, "Private", group.memberships_count, group.archived_at, group.distribution_metric, group.cannot_contribute]
         end
       end
     end
@@ -41,60 +41,64 @@ namespace :stats do
       csv << ["id", "user", "group", "parent_group", "top_group", "kind", "created_at"]
       count = 0
       Event.find_each do |event|
-        count += 1
-        puts count if (count % 100) == 0
-        id = event.id
-        kind = event.kind
-        created_at = event.created_at
-        eventable = event.eventable
-        case event.kind
-        when "new_discussion", "new_motion"
-          user = eventable.author if eventable
-          group = eventable.group if eventable
-        when "new_comment", "new_vote", "motion_blocked", "membership_requested", "comment_liked", "mentioned_user"
-          begin
-            user = eventable.user if eventable
+        begin
+          count += 1
+          puts count if (count % 100) == 0
+          id = event.id
+          kind = event.kind
+          created_at = event.created_at
+          eventable = event.eventable
+          case event.kind
+          when "new_discussion", "new_motion"
+            user = eventable.author if eventable
             group = eventable.group if eventable
-          rescue => error
-            puts error.class
-            puts error
+          when "new_comment", "new_vote", "motion_blocked", "membership_requested", "comment_liked", "mentioned_user"
+            begin
+              user = eventable.user if eventable
+              group = eventable.group if eventable
+            rescue => error
+              puts error.class
+              puts error
+              user = nil
+              group = nil
+            end
+          when "motion_closed"
+            user = event.user
+            group = eventable.group if eventable
+          when "user_added_to_group"
+            user = eventable.inviter if eventable
+            group = eventable.group if eventable
+          else
             user = nil
             group = nil
           end
-        when "motion_closed"
-          user = event.user
-          group = eventable.group if eventable
-        when "user_added_to_group"
-          user = eventable.inviter if eventable
-          group = eventable.group if eventable
-        else
-          user = nil
-          group = nil
-        end
 
-        user_id = user ? user.id : ""
+          user_id = user ? user.id : ""
 
-        # scramble users, and (private) groups & subgroups
+          # scramble users, and (private) groups & subgroups
 
-        if group
-          if group.viewable_by == :everyone
-            group_id = group.id
-          else
-            group_id = scramble(group.id)
+          if group
+            if group.privacy == :public
+              group_id = group.id
+            else
+              group_id = scramble(group.id)
+            end
+
+            if group.parent and group.parent.privacy == :public
+              parent_group_id = group.parent.id.to_s
+            elsif group.parent  # i.e. the group is not public
+              parent_group_id = scramble(group.parent.id)
+            else
+              parent_group_id =  ""
+            end
           end
 
-          if group.parent and group.parent.viewable_by == :everyone
-            parent_group_id = group.parent.id.to_s
-          elsif group.parent  # i.e. the group is not public
-            parent_group_id = scramble(group.parent.id)
-          else
-            parent_group_id =  ""
-          end
+          top_group = !parent_group_id.blank? ? parent_group_id : group_id
+
+          csv << [id, scramble(user_id), group_id, parent_group_id, top_group, kind, created_at]
+        rescue Exception
+          p $!, *$@
         end
-
-        top_group = !parent_group_id.blank? ? parent_group_id : group_id
-
-        csv << [id, scramble(user_id), group_id, parent_group_id, top_group, kind, created_at]
       end
     end
 
@@ -112,15 +116,15 @@ namespace :stats do
     fogwrite('discussions.csv', file)
   end
 
-  task :discussion_read_logs => :environment do
+  task :discussion_readers => :environment do
     require 'csv'
     file = CSV.generate do |csv|
-      csv << ["id", "discussion_id", "created_at", "discussion_last_viewed_at", "user_id"]
-      DiscussionReadLog.find_each do |l|
-        csv << [l.id, l.discussion_id, l.created_at, l.discussion_last_viewed_at, scramble(l.user_id)]
+      csv << ["id", "discussion_id", "created_at", "last_read_at", "user_id"]
+      DiscussionReader.find_each do |l|
+        csv << [l.id, l.discussion_id, l.created_at, l.last_read_at, scramble(l.user_id)]
       end
     end
-    fogwrite('discussion_read_logs.csv', file)
+    fogwrite('discussion_readers.csv', file)
   end
 
 

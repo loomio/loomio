@@ -4,7 +4,7 @@ require 'rails/all'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
+  Bundler.require(*Rails.groups(:assets => %w(development benchmark test)))
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
@@ -21,7 +21,12 @@ module Loomio
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/extras #{config.root}/app/forms)
+    config.autoload_paths += %W(#{config.root}/extras
+                                #{config.root}/app/forms
+                                #{config.root}/app/jobs
+                                #{config.root}/app/services
+                                #{config.root}/app/models/concerns)
+    config.autoload_paths += Dir["#{config.root}/app/forms/**/"]
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -53,7 +58,7 @@ module Loomio
     config.assets.version = '1.0'
 
     # Whitelist attributes so we never have to spend 2 days securing this app ;-)
-    config.active_record.whitelist_attributes = true
+    #config.active_record.whitelist_attributes = true
 
     # required for heroku
     config.assets.initialize_on_precompile = false
@@ -61,6 +66,8 @@ module Loomio
     # Enable roadie (email css-->inline style gem)
     config.roadie.enable = true
 
-    config.assets.precompile += %w(active_admin.css active_admin.js frontpage.js frontpage.css active_admin/print.css load_metrics_listener.js)
+    config.assets.precompile += %w(ie8.js active_admin.css active_admin.js active_admin/print.css marketing.js marketing.css campaigns.js third_party.css unstructured.css)
+
+    config.quiet_assets = true
   end
 end

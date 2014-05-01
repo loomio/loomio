@@ -1,4 +1,3 @@
-
 require 'spork'
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
@@ -24,10 +23,17 @@ Spork.prefork do
     c.cassette_library_dir = 'spec/support/vcr_cassettes'
     c.hook_into :webmock
     c.ignore_localhost = true
+    c.ignore_hosts 'codeclimate.com'
   end
 
+  require "codeclimate-test-reporter"
+  CodeClimate::TestReporter.start
+
   require 'rspec/rails'
-  require 'rspec/autorun'
+
+  # commenting this out means you can run rspecs in zeus. Might break in your setup though:
+  # require 'rspec/autorun'
+
   RSpec.configure do |config|
     config.mock_with :rspec
 
@@ -67,10 +73,6 @@ Spork.prefork do
     config.before :suite do
       DatabaseCleaner.strategy = :transaction
       DatabaseCleaner.clean_with(:truncation)
-    end
-
-    config.before type: :request do
-      DatabaseCleaner.strategy = :truncation
     end
 
     config.before do

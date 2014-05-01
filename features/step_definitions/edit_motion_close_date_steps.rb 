@@ -1,6 +1,6 @@
 Given /^I am an admin of a group with a discussion$/ do
   @group = FactoryGirl.create :group
-  @discussion = FactoryGirl.create :discussion, :group => @group
+  @discussion = create_discussion :group => @group
   @group.add_admin! @user
 end
 

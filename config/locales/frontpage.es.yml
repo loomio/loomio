@@ -1,0 +1,57 @@
+es:
+  frontpage:
+    view_this_in_your_language: 'Vea esta página en %{language}'
+    title:
+      collaborative_decision_making: Toma de decisiones colectiva
+    link:
+      blog: 'Blog'
+      contact: 'Contacto'
+      press: 'Prensa'
+      try_it: 'Probalo!'
+      log_in: 'Entrar'
+      video: "Más sobre cómo funciona Loomio"
+      more: 'Más'
+      top: 'Arriba'
+      public_groups: 'Grupos abiertos al público'
+      terms: 'Términos'
+      privacy: 'Privacidad'
+      services: 'Servicios'
+    hero:
+      head_html: 'El mundo necesita mejores caminos para <strong>tomar decisiones en conjunto.</strong>'
+      subhead: 'Ayúdanos a crearlo.'
+      desc_html: 'Loomio este un software gratuit si <a href="https://github.com/loomio/loomio">open-source</a> disponibil pentru oricine, oriunde sa participe in luarea impreuna a deciziilor'
+    product:
+      header_html: 'Cuando escuchamos <strong>todas las voces</strong>, tomamos <strong>mejores decisiones. </strong>'
+      step1:
+        header: '1. Hablemos las cosas'
+        desc: 'Empieza una discusión en cualquier tema, e invita a las personas que quieras. Comparte perspectivas diversas y desarrolla las ideas en conjunto.'
+      step2:
+        header: '2. Construye acuerdo'
+        desc: 'Todos pueden proponer un curso de acción. Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear –de esa manera podrás ver cómo se siente el grupo y por qué-.'
+      step3:
+        header: '3. Decide juntos'
+        desc: 'Desarrolla la propuesta colectivamente para que funcione para todos. Cada decisión posee una fecha limite, siempre obteniendo un resultado claro.'
+    crowdfunding:
+      header: 'Estamos en el proceso de financiación colectiva para poder construir esta nueva plataforma y poder regalarse al mundo.'
+    quote:
+      header:
+        rushkoff_html: '«Loomio <strong>libera el potencial de Internet</strong> para acercar a las personas al consenso en vez de al debate polarizado».<div class="attributation"> (<a href="http://rushkoff.com">Douglas Rushkoff</a>, autor del libro <em>Present Shock</em>).</div>'
+        sifry_html: '«Loomio alcanza un punto óptimo entre <strong>voz individual</strong> y <strong>decisión colectiva</strong>». <div class="attributation">(Micah Sifry, editor de <em><a href="http://techpresident.com">TechPresident</a></em>)</div>'
+    team:
+      header: 'Acerca de Loomio'
+      desc: 'Somos un pequeño grupo de open-source desarolladores y activistas comunitarios que trabajamos en Ensipral, Aotearoa, Nueva Zelanda con una gran comunidad de amigos, voluntarios y asesores al rededor del mundo.'
+    ideals:
+      community:
+        header: 'Cooperativa comunitaria'
+        desc: 'Loomio es construido por una cooperativa propiedad de los trabajadores. Somos una empresa social trabajando para maximizar el cambio social de una manera positiva sin fines de lucro.'
+      independent:
+        header: 'Independiente y neutral'
+        desc: 'Tenemos espacio para cualquier grupo que sea independiente de partidos políticos o interés corporativo. Nunca venderemos tu información.'
+      open:
+        header: 'Software gratis y abierto'
+        desc: 'El código de Loomio es público y cualquiera puede usarlo, leerlo y aprender de él, modificarlo y redistribuirlo.'
+      gift:
+        header: 'Economía del regalo'
+        desc: 'Loomio es financiada por aquellos que contribuyen de acuerdo a sus recursos. Esto mantiene la plataforma libre de propagandas comerciales y accesible a grupos sin recursos financieros.'
+    vision:
+      header: 'Ayúdanos a transformar esta visión en realidad.'

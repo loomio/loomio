@@ -4,7 +4,7 @@ describe Events::MotionClosingSoon do
   let(:motion) { mock_model(Motion, discussion: mock_model(Discussion)) }
 
   describe "::publish!" do
-    let(:event){ stub(:event, notify_users!: true) }
+    let(:event){ double(:event, notify_users!: true) }
     before { Event.stub(:create!).and_return(event) }
 
     it 'creates an event' do
@@ -24,8 +24,8 @@ describe Events::MotionClosingSoon do
                                         eventable: motion,
                                         discussion_id: motion.discussion.id) }
     before do
-      motion.stub(:group_users).and_return([user])
-      UserMailer.stub_chain(:motion_closing_soon, :deliver!)
+      motion.stub(:group_members).and_return([user])
+      UserMailer.stub_chain(:motion_closing_soon, :deliver)
       user.stub(:subscribed_to_proposal_closure_notifications)
     end
 

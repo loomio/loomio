@@ -1,36 +1,96 @@
 class ApplicationController < ActionController::Base
+  include LocalesHelper
+  include CurrentUserHelper
+  include ReadableUnguessableUrlsHelper
+
   protect_from_forgery
 
-  before_filter :set_locale
+  helper :analytics_data
+  helper :locales
+  helper_method :current_user_or_visitor
+  helper_method :dashboard_or_root_path
+
+  before_filter :set_application_locale
+  before_filter :save_selected_locale, if: :user_signed_in?
+  around_filter :user_time_zone, if: :user_signed_in?
+
+  after_filter :increment_measurement
 
   rescue_from CanCan::AccessDenied do |exception|
-    request.env["HTTP_REFERER"] = root_url if request.env["HTTP_REFERER"].nil?
-    flash[:error] = t("error.access_denied")
-    redirect_to :back
+    if user_signed_in?
+      flash[:error] = t("error.access_denied")
+      redirect_to dashboard_path
+    else
+      authenticate_user!
+    end
   end
 
-
   protected
+  def increment_measurement
+    Measurement.increment(measurement_name)
+  end
 
-  def set_locale
-    if current_user
-      if current_user.language_preference.blank?
-        current_user.language_preference = extract_locale_from_accept_language_header
-      end
-      I18n.locale = current_user.language_preference
+  def measurement_name
+    "#{controller_name}.#{action_name}"
+  end
+
+  def default_url_options
+    if !user_signed_in? and params.has_key?(:locale)
+      super.merge({locale: selected_locale})
     else
-      I18n.locale = extract_locale_from_accept_language_header
+      super
     end
     I18n.locale = params[:locale] if params[:locale].present?
   end
 
-  def extract_locale_from_accept_language_header
-    browser_locale = request.env['HTTP_ACCEPT_LANGUAGE'].try(:scan, /^[a-z]{2}/).try(:first).try(:to_s)
-    available_locales = %w{en es el}
-    if available_locales.include? browser_locale
-      browser_locale
+  def dashboard_or_root_path
+    if user_signed_in?
+      dashboard_path
     else
-      I18n.default_locale
+      root_path
+    end
+  end
+  
+  def store_previous_location
+    session['user_return_to'] = request.env['HTTP_REFERER'] if request.env['HTTP_REFERER'].present?
+  end
+
+  def clear_stored_location
+    session['user_return_to'] = nil
+  end
+
+  def after_sign_in_path_for(resource)
+    save_detected_locale(resource)
+    path = user_return_path
+    clear_stored_location
+    path
+  end
+  
+  def user_return_path
+    if invalid_return_urls.include? session['user_return_to']
+      dashboard_path
+    else
+      session['user_return_to']
+    end
+  end
+
+  def invalid_return_urls
+    [nil, new_user_password_url]
+  end
+
+  def user_time_zone(&block)
+    Time.use_zone(current_user.time_zone_city, &block)
+  end
+
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit(:email, :name, :password, :password_confirmation)
+    end
+
+    devise_parameter_sanitizer.for(:sign_in) do |u|
+      u.permit(:email, :password, :remember_me)
     end
   end
 end

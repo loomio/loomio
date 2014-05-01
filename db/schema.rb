@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627002717) do
+ActiveRecord::Schema.define(:version => 20140406041115) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -47,6 +47,18 @@ ActiveRecord::Schema.define(:version => 20130627002717) do
     t.datetime "updated_at",                   :null => false
   end
 
+  create_table "attachments", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "filename"
+    t.text     "location"
+    t.integer  "comment_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "filesize"
+  end
+
+  add_index "attachments", ["comment_id"], :name => "index_attachments_on_comment_id"
+
   create_table "campaign_signups", :force => true do |t|
     t.integer  "campaign_id"
     t.string   "name"
@@ -64,6 +76,13 @@ ActiveRecord::Schema.define(:version => 20130627002717) do
     t.datetime "updated_at",    :null => false
     t.string   "name",          :null => false
     t.string   "manager_email", :null => false
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "position",   :default => 0, :null => false
   end
 
   create_table "comment_votes", :force => true do |t|
@@ -89,12 +108,24 @@ ActiveRecord::Schema.define(:version => 20130627002717) do
     t.datetime "updated_at"
     t.boolean  "uses_markdown",       :default => false, :null => false
     t.integer  "comment_votes_count", :default => 0,     :null => false
+    t.integer  "attachments_count",   :default => 0,     :null => false
+    t.text     "liker_ids_and_names"
   end
 
   add_index "comments", ["discussion_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["discussion_id"], :name => "index_comments_on_discussion_id"
   add_index "comments", ["parent_id"], :name => "index_comments_on_parent_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "contact_messages", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.string   "email"
+    t.text     "message"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.string   "destination", :default => "contact@loomio.org"
+  end
 
   create_table "contributions", :force => true do |t|
     t.integer  "user_id"
@@ -131,18 +162,20 @@ ActiveRecord::Schema.define(:version => 20130627002717) do
   add_index "did_not_votes", ["motion_id"], :name => "index_did_not_votes_on_motion_id"
   add_index "did_not_votes", ["user_id"], :name => "index_did_not_votes_on_user_id"
 
-  create_table "discussion_read_logs", :force => true do |t|
+  create_table "discussion_readers", :force => true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
-    t.datetime "discussion_last_viewed_at"
-    t.boolean  "following",                 :default => true, :null => false
+    t.datetime "last_read_at"
+    t.boolean  "following",           :default => true, :null => false
+    t.integer  "read_comments_count"
+    t.integer  "read_items_count",    :default => 0,    :null => false
   end
 
-  add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
-  add_index "discussion_read_logs", ["user_id", "discussion_id"], :name => "index_discussion_read_logs_on_user_id_and_discussion_id"
-  add_index "discussion_read_logs", ["user_id"], :name => "index_motion_read_logs_on_user_id"
+  add_index "discussion_readers", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
+  add_index "discussion_readers", ["user_id", "discussion_id"], :name => "index_discussion_read_logs_on_user_id_and_discussion_id"
+  add_index "discussion_readers", ["user_id"], :name => "index_motion_read_logs_on_user_id"
 
   create_table "discussions", :force => true do |t|
     t.integer  "group_id"
@@ -156,11 +189,58 @@ ActiveRecord::Schema.define(:version => 20130627002717) do
     t.integer  "total_views",     :default => 0,     :null => false
     t.boolean  "is_deleted",      :default => false, :null => false
     t.integer  "comments_count",  :default => 0,     :null => false
+    t.integer  "items_count",     :default => 0,     :null => false
+    t.datetime "archived_at"
+    t.boolean  "private"
+    t.string   "key"
+    t.string   "iframe_src"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
   add_index "discussions", ["group_id"], :name => "index_discussions_on_group_id"
+  add_index "discussions", ["is_deleted", "group_id"], :name => "index_discussions_on_is_deleted_and_group_id"
+  add_index "discussions", ["is_deleted", "id"], :name => "index_discussions_on_is_deleted_and_id"
   add_index "discussions", ["is_deleted"], :name => "index_discussions_on_is_deleted"
+  add_index "discussions", ["key"], :name => "index_discussions_on_key", :unique => true
+
+  create_table "email_template_sent_to_groups", :force => true do |t|
+    t.integer  "email_template_id"
+    t.integer  "group_id"
+    t.integer  "author_id"
+    t.string   "recipients"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "email_template_sent_to_groups", ["author_id"], :name => "index_email_template_sent_to_groups_on_author_id"
+  add_index "email_template_sent_to_groups", ["email_template_id"], :name => "index_email_template_sent_to_groups_on_email_template_id"
+  add_index "email_template_sent_to_groups", ["group_id"], :name => "index_email_template_sent_to_groups_on_group_id"
+
+  create_table "email_templates", :force => true do |t|
+    t.string   "name"
+    t.string   "language"
+    t.string   "subject"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "emails", :force => true do |t|
+    t.string   "to"
+    t.string   "from"
+    t.string   "reply_to"
+    t.string   "subject"
+    t.string   "language"
+    t.text     "body"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.datetime "sent_at"
+    t.integer  "email_template_id"
+    t.integer  "recipient_id"
+  end
+
+  add_index "emails", ["email_template_id"], :name => "index_emails_on_email_template_id"
+  add_index "emails", ["recipient_id"], :name => "index_emails_on_recipient_id"
 
   create_table "events", :force => true do |t|
     t.string   "kind"
@@ -170,11 +250,22 @@ ActiveRecord::Schema.define(:version => 20130627002717) do
     t.string   "eventable_type"
     t.integer  "user_id"
     t.integer  "discussion_id"
+    t.integer  "sequence_id"
   end
 
+  add_index "events", ["created_at"], :name => "index_events_on_created_at"
+  add_index "events", ["discussion_id", "sequence_id"], :name => "index_events_on_discussion_id_and_sequence_id", :unique => true
   add_index "events", ["discussion_id"], :name => "index_events_on_discussion_id"
-  add_index "events", ["eventable_id"], :name => "index_events_on_eventable_id"
-  add_index "events", ["user_id"], :name => "index_events_on_user_id"
+  add_index "events", ["eventable_type", "eventable_id"], :name => "index_events_on_eventable_type_and_eventable_id"
+
+  create_table "group_hierarchies", :id => false, :force => true do |t|
+    t.integer "ancestor_id",   :null => false
+    t.integer "descendant_id", :null => false
+    t.integer "generations",   :null => false
+  end
+
+  add_index "group_hierarchies", ["ancestor_id", "descendant_id", "generations"], :name => "group_anc_desc_udx", :unique => true
+  add_index "group_hierarchies", ["descendant_id"], :name => "group_desc_idx"
 
   create_table "group_requests", :force => true do |t|
     t.string   "name"
@@ -230,37 +321,43 @@ ActiveRecord::Schema.define(:version => 20130627002717) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "viewable_by"
+    t.string   "privacy",                    :default => "private"
     t.string   "members_invitable_by"
     t.integer  "parent_id"
-    t.boolean  "email_new_motion",     :default => true
-    t.boolean  "hide_members",         :default => false
-    t.boolean  "beta_features",        :default => false
+    t.boolean  "email_new_motion",           :default => true
+    t.boolean  "hide_members",               :default => false
     t.text     "description"
-    t.integer  "memberships_count",    :default => 0,     :null => false
+    t.integer  "memberships_count",          :default => 0,              :null => false
     t.datetime "archived_at"
-    t.integer  "max_size"
-    t.boolean  "cannot_contribute",    :default => false
+    t.integer  "max_size",                   :default => 300,            :null => false
+    t.boolean  "cannot_contribute",          :default => false
     t.integer  "distribution_metric"
     t.string   "sectors"
     t.string   "other_sector"
-    t.integer  "discussions_count",    :default => 0,     :null => false
-    t.integer  "motions_count",        :default => 0,     :null => false
+    t.integer  "discussions_count",          :default => 0,              :null => false
+    t.integer  "motions_count",              :default => 0,              :null => false
     t.string   "country_name"
     t.datetime "setup_completed_at"
-    t.boolean  "next_steps_completed", :default => false, :null => false
+    t.boolean  "next_steps_completed",       :default => false,          :null => false
     t.string   "full_name"
-    t.boolean  "paying_subscription",  :default => false, :null => false
+    t.string   "payment_plan",               :default => "undetermined"
+    t.boolean  "viewable_by_parent_members", :default => false,          :null => false
+    t.string   "key"
+    t.boolean  "can_start_group",            :default => true
+    t.integer  "category_id"
+    t.text     "enabled_beta_features"
   end
 
+  add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
+  add_index "groups", ["category_id"], :name => "index_groups_on_category_id"
   add_index "groups", ["full_name"], :name => "index_groups_on_full_name"
+  add_index "groups", ["key"], :name => "index_groups_on_key", :unique => true
   add_index "groups", ["name"], :name => "index_groups_on_name"
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
 
   create_table "invitations", :force => true do |t|
     t.string   "recipient_email",                    :null => false
     t.integer  "inviter_id",                         :null => false
-    t.integer  "group_id",                           :null => false
     t.boolean  "to_be_admin",     :default => false, :null => false
     t.string   "token",                              :null => false
     t.integer  "accepted_by_id"
@@ -268,35 +365,63 @@ ActiveRecord::Schema.define(:version => 20130627002717) do
     t.string   "intent"
     t.integer  "canceller_id"
     t.datetime "cancelled_at"
+    t.string   "recipient_name"
+    t.integer  "invitable_id"
+    t.string   "invitable_type"
   end
 
-  add_index "invitations", ["group_id"], :name => "index_invitations_on_group_id"
   add_index "invitations", ["token"], :name => "index_invitations_on_token"
+
+  create_table "membership_requests", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "introduction"
+    t.integer  "group_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "requestor_id"
+    t.integer  "responder_id"
+    t.string   "response"
+    t.datetime "responded_at"
+  end
+
+  add_index "membership_requests", ["email"], :name => "index_membership_requests_on_email"
+  add_index "membership_requests", ["group_id", "response"], :name => "index_membership_requests_on_group_id_and_response"
+  add_index "membership_requests", ["group_id"], :name => "index_membership_requests_on_group_id"
+  add_index "membership_requests", ["name"], :name => "index_membership_requests_on_name"
+  add_index "membership_requests", ["requestor_id"], :name => "index_membership_requests_on_requestor_id"
+  add_index "membership_requests", ["responder_id"], :name => "index_membership_requests_on_responder_id"
+  add_index "membership_requests", ["response"], :name => "index_membership_requests_on_response"
 
   create_table "memberships", :force => true do |t|
     t.integer  "group_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "access_level"
     t.integer  "inviter_id"
-    t.datetime "group_last_viewed_at",                                :null => false
+    t.datetime "group_last_viewed_at",                                 :null => false
     t.boolean  "subscribed_to_notification_emails", :default => true
     t.datetime "archived_at"
     t.integer  "inbox_position",                    :default => 0
+    t.boolean  "admin",                             :default => false, :null => false
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
   add_index "memberships", ["inviter_id"], :name => "index_memberships_on_inviter_id"
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
-  create_table "motion_read_logs", :force => true do |t|
+  create_table "motion_readers", :force => true do |t|
     t.integer  "motion_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "motion_last_viewed_at"
+    t.datetime "last_read_at"
+    t.boolean  "following",           :default => true, :null => false
+    t.integer  "read_votes_count",    :default => 0,    :null => false
+    t.integer  "read_activity_count", :default => 0,    :null => false
   end
+
+  add_index "motion_readers", ["user_id", "motion_id"], :name => "index_motion_readers_on_user_id_and_motion_id"
 
   create_table "motions", :force => true do |t|
     t.string   "name"
@@ -304,24 +429,29 @@ ActiveRecord::Schema.define(:version => 20130627002717) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "phase",               :default => "voting", :null => false
-    t.string   "discussion_url",      :default => "",       :null => false
-    t.datetime "close_at"
+    t.datetime "closed_at"
     t.integer  "discussion_id"
     t.string   "outcome"
     t.datetime "last_vote_at"
-    t.boolean  "uses_markdown",       :default => true,     :null => false
+    t.boolean  "uses_markdown",       :default => true, :null => false
     t.date     "close_at_date"
     t.string   "close_at_time"
     t.string   "close_at_time_zone"
-    t.integer  "yes_votes_count",     :default => 0,        :null => false
-    t.integer  "no_votes_count",      :default => 0,        :null => false
-    t.integer  "abstain_votes_count", :default => 0,        :null => false
-    t.integer  "block_votes_count",   :default => 0,        :null => false
+    t.integer  "yes_votes_count",     :default => 0,    :null => false
+    t.integer  "no_votes_count",      :default => 0,    :null => false
+    t.integer  "abstain_votes_count", :default => 0,    :null => false
+    t.integer  "block_votes_count",   :default => 0,    :null => false
+    t.datetime "closing_at"
+    t.integer  "did_not_votes_count"
+    t.integer  "votes_count",         :default => 0,    :null => false
+    t.integer  "outcome_author_id"
+    t.string   "key"
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
+  add_index "motions", ["discussion_id", "closed_at"], :name => "index_motions_on_discussion_id_and_closed_at", :order => {"closed_at"=>:desc}
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
+  add_index "motions", ["key"], :name => "index_motions_on_key", :unique => true
 
   create_table "notifications", :force => true do |t|
     t.integer  "user_id"
@@ -331,8 +461,34 @@ ActiveRecord::Schema.define(:version => 20130627002717) do
     t.datetime "viewed_at"
   end
 
+  add_index "notifications", ["event_id", "user_id"], :name => "index_notifications_on_event_id_and_user_id"
   add_index "notifications", ["event_id"], :name => "index_notifications_on_event_id"
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
+  add_index "notifications", ["viewed_at"], :name => "index_notifications_on_viewed_at"
+
+  create_table "omniauth_identities", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+  end
+
+  add_index "omniauth_identities", ["email"], :name => "index_personas_on_email"
+  add_index "omniauth_identities", ["provider", "uid"], :name => "index_omniauth_identities_on_provider_and_uid"
+  add_index "omniauth_identities", ["user_id"], :name => "index_personas_on_user_id"
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "group_id"
+    t.decimal  "amount",     :precision => 8, :scale => 2
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.string   "profile_id"
+  end
+
+  add_index "subscriptions", ["group_id"], :name => "index_subscriptions_on_group_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                                       :default => "",         :null => false
@@ -349,7 +505,6 @@ ActiveRecord::Schema.define(:version => 20130627002717) do
     t.datetime "updated_at"
     t.string   "name"
     t.string   "unconfirmed_email"
-    t.string   "invitation_token",                             :limit => 60
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
     t.integer  "invitation_limit"
@@ -372,13 +527,15 @@ ActiveRecord::Schema.define(:version => 20130627002717) do
     t.string   "unsubscribe_token"
     t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.boolean  "uses_markdown",                                               :default => false
-    t.string   "language_preference"
+    t.string   "selected_locale"
     t.string   "time_zone"
+    t.string   "key"
+    t.string   "detected_locale"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token"
   add_index "users", ["invited_by_id"], :name => "index_users_on_invited_by_id"
+  add_index "users", ["key"], :name => "index_users_on_key", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unsubscribe_token"], :name => "index_users_on_unsubscribe_token", :unique => true
 
@@ -400,9 +557,12 @@ ActiveRecord::Schema.define(:version => 20130627002717) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "statement"
+    t.integer  "age",              :default => 0, :null => false
+    t.integer  "previous_vote_id"
   end
 
+  add_index "votes", ["motion_id", "user_id", "age"], :name => "vote_age_per_user_per_motion", :unique => true
+  add_index "votes", ["motion_id", "user_id"], :name => "index_votes_on_motion_id_and_user_id"
   add_index "votes", ["motion_id"], :name => "index_votes_on_motion_id"
-  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end

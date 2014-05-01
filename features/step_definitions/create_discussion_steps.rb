@@ -1,6 +1,5 @@
 Given /^I am viewing a discussion titled "(.*?)" in "(.*?)"$/ do |disc_title, group_name|
-  @discussion = FactoryGirl.create :discussion,
-               :title => disc_title, :group => Group.find_by_name(group_name)
+  @discussion = create_discussion :title => disc_title, :group => Group.find_by_name(group_name)
   visit discussion_path(@discussion)
 end
 
@@ -17,7 +16,9 @@ When /^I fill in the discussion details and submit the form$/ do
   @discussion_description = "test _this markdown_ "+ Faker::Lorem.paragraph
   fill_in 'discussion_title', with: @discussion_title
   fill_in 'discussion_description', with: @discussion_description
+  find('#discussion_private_false').click
   click_on 'discussion-submit'
+
 end
 
 Then /^a discussion should be created$/ do
@@ -67,7 +68,7 @@ When /^I disable markdown for the discussion description$/ do
   find('#discussion-markdown-dropdown .disable-markdown-link').click
 end
 
-Then /^the discussion desription should render markdown$/ do
+Then /^the discussion description should render markdown$/ do
   page.find('.description-body').should have_content('this markdown')
   page.find('.description-body').should_not have_content('_this markdown_')
 end

@@ -1,20 +1,27 @@
 %li.motion.row-fluid{data:{motion_id: item.id}}
+  =link_to item do
+    .span1
+      .icon
+        -values = item.vote_counts.values
+        .activity-container
+          %span.count.unread-votes-count
+            - count = @motion_reader_cache.get_for(item).unread_activity_count
+            - if count != 0
+              =count
+        .motion-sparkline
+          -if values.sum == 0
+            0,0,0,0,1
+          -else
+            =values.join(',')
+
+    .span8.title
+      = item.title
+
+    .span2.time
+      %span.js-format-as-timeago{data:{time: item.closing_at.iso8601}}
+        =time_formatted_relative_to_age(item.closing_at)
+      left
+
   .span1
-    .icon
-      -values = item.vote_counts.values
-      .motion-sparkline
-        -if values.sum == 0
-          0,0,0,0,1
-        -else
-          =values.join(',') 
-
-  .span8.title
-    = link_to item.title, item
-
-  .span2.time
-    %span.js-format-as-timeago{data:{time: item.close_at.iso8601}}
-      =time_formatted_relative_to_age(item.close_at)
-    left
-
-  .span1
-    &nbsp;
+    .mark-as-read-btn
+      = link_to 'x', inbox_mark_as_read_path(motion_ids: item.id), remote: true, method: :post

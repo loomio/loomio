@@ -1,0 +1,52 @@
+# Additional translations at http://github.com/plataformatec/devise/wiki/I18n
+
+hu:
+  errors:
+    messages:
+      expired: "lejárt, igényelj egy újat"
+      not_found: "nem található"
+      already_confirmed: "már meg van erősítve"
+      not_locked: "nincs zárolva"
+      not_saved:
+        one: "1 hiba miatt %{resource} mentése nem lehetséges:"
+        other: "%{count} hiba miatt %{resource} mentése nem lehetésges:"
+
+  devise:
+    failure:
+      unauthenticated: 'A folytatáshoz bejelentkezés szükséges.'
+      unconfirmed: 'A folytatáshoz az email cím megerősítése szükséges.'
+      locked: 'A fiók zárolva lett.'
+      invalid: 'Hibás email cím vagy jelszó.'
+      invalid_token: 'Hibás bejelentkező token.'
+      timeout: 'A munkafolyamat lejárt. Újboli bejelentkezés szükséges.'
+      inactive: 'A fiók még nincs aktiválva.'
+    sessions:
+      signed_in: 'Sikeres bejelentkezés.'
+      signed_out: 'A kijelentkezés sikeres.'
+    passwords:
+      send_instructions: 'A megadott címre egy email érkezik hamarosan a további teendőkről.'
+      updated: 'A jelszó megváltozott. Bejelentkezve a felhasználói fiókba'
+      send_paranoid_instructions: "Ha az email cím már létezik az adatbázisban, egy jelszó-visszaállító emailt küldtünk a megadott címre."
+    confirmations:
+      send_instructions: 'A megadott címre egy email érkezik a megerősítő linkkel.'
+      send_paranoid_instructions: 'Ha az email cím már létezik az adatbázisban, egy emailt küldtünk a további teendőkkel a fiók megerősítéséhez.'
+      confirmed: 'Fiók megerősítve. Bejelentkezve a felhasználói fiókba.'
+    registrations:
+      signed_up: 'Sikeres regisztráció.'
+      inactive_signed_up: 'Sikeres regisztráció, azonban még a bejelentkezés nem lehetséges, mert a felhasználói fiók %{reason}.'
+      updated: 'Sikeres fiók módosítás.'
+      destroyed: 'Felhasználói fiók törölve. Reméljük, még visszatér hozzánk.'
+    unlocks:
+      send_instructions: 'Hamarosan a megadott címre érkezik egy email a fiók zárolásának megszüntetésével kapcsolatban.'
+      unlocked: 'A felhasználói fiók zárolása megszűnt. Bejelentkezve a felhasználói fiókba.'
+      send_paranoid_instructions: 'Ha a fiók létezik, egy emailt küldtünk a további teendőkkel a fiók zárolásának megszüntetéséhez.'
+    omniauth_callbacks:
+      success: 'Sikeres azonosítás %{kind} fiókkal.'
+      failure: 'Nem sikerült azonosítani %{kind} fiókkal, az ok: "%{reason}".'
+    mailer:
+      confirmation_instructions:
+        subject: 'Email cím megerősítés'
+      reset_password_instructions:
+        subject: 'Jelszó megváltoztatása'
+      unlock_instructions:
+        subject: 'Fiók zárolásának megszüntetése'

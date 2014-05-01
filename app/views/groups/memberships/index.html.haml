@@ -1,41 +1,23 @@
-= render '/groups/title', group: @group
+.row
+  .span9
+    = render '/groups/title', group: @group
+    %h1= t :members
+  .span3#button-container
+    - if can?(:add_members, @group)
+      = icon_button(href: new_group_invitation_path(@group), text: t(:invite_people), icon: '/assets/member-18.png', id: 'invite-new-members', class: 'btn-grey')
 
-%h1 Members
-
-%table.memberships.table.table-striped
-  %thead
-    %th Photo
-    %th Name
-    %th Email
-    %th Admin
-    %th Remove
-  %tbody
-    -@memberships.each do |membership|
-      -user = membership.user
-      %tr{id: "membership-for-user-#{user.id}"}
-        %td=render 'avatar', user: user, size: "small", kind: nil, id: nil
-        %td=user.name
-        %td=user.email
-        %td
-          - if membership.admin?
-            = link_to t(:remove_admin), 
-              remove_admin_group_membership_path(@group, membership), 
-              method: :post, 
-              class: :btn,
-              :confirm => t(:confirm_remove_admin, which_user: user.name)
-          - else
-            = link_to t(:make_admin), 
-              make_admin_group_membership_path(@group, membership), 
-              method: :post, 
-              class: :btn,
-              :confirm => t(:confirm_make_admin, which_user: user.name)
-        %td=link_to 'Remove', 
-            group_membership_path(@group, membership), 
-            method: :delete, 
-            class: 'btn btn-danger',
-            :confirm => 'Are you sure you want to remove this user from the group?'
-
-%p 
-  Want to 
-  =link_to 'Invite People', new_group_invitation_path(@group)
-  to the group? 
+.row
+  .span12
+    %table.memberships.table.table-striped
+      %thead
+        %th.span1= t :photo
+        %th.span11= t :name
+      %tbody
+        -@memberships.each do |membership|
+          -user = membership.user
+          %tr{id: "membership-for-user-#{user.id}"}
+            %td=render 'avatar', user: user
+            %td
+              %div
+                = link_to user.name, user_path(user)
+              %div.access-level= t :coordinator if membership.admin?

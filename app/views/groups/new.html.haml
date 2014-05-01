@@ -1,3 +1,5 @@
-- set_title "", t(:new_group)
-.page-container
-  = render 'form', group: @group, parent: @parent, submit_text: t(:create_group), disable_text: t(:creating_group), form_title: t(:new_group)
+.row
+  .span6
+    #intro
+      %h1 Start your group
+      = render 'form', group: @group, submit_text: t(:start_group)

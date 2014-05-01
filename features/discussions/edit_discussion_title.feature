@@ -10,7 +10,7 @@ Feature: User edits discussion title
     And I am on the discussion page
     When I choose to edit the discussion title
     And I fill in and submit the discussion title form
-    Then I should see the title change
+    Then I should see the new title
     And I should see a record of my title change in the discussion feed
 
   Scenario: User tries to edit the discussion description when they don't belong to the group

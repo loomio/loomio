@@ -2,16 +2,18 @@ require 'spec_helper'
 
 describe CommentsController do
   let(:app_controller) { controller }
-  let(:user) { stub_model(User) }
-  let(:discussion) { mock_model(Discussion) }
-  let(:comment) { mock_model(Comment, discussion: discussion, reload: true) }
+  let(:group) { create :group }
+  let(:user) { create :user }
+  let(:discussion) { create_discussion group: group }
+  let(:comment) { create :comment, discussion: discussion }
 
   context "authenticated user" do
     before do
       sign_in user
-      app_controller.stub(:authorize!).and_return(true)
-      app_controller.stub(:resource).and_return(comment)
+      group.add_member! user
+      Comment.stub(:find).and_return(comment)
     end
+
 
     context "user likes a comment" do
       before do
@@ -20,19 +22,14 @@ describe CommentsController do
         Events::CommentLiked.stub(:publish!)
       end
 
-      it "checks permissions" do
-        app_controller.should_receive(:authorize!).and_return(true)
-        post :like, id: 23, like: 'true'
-      end
-
       it "adds like to comment model" do
         comment.should_receive(:like).with(user)
-        post :like, id: 23, like: 'true'
+        post :like, id: comment.id, like: 'true', format: :js
       end
 
       it "fires comment_liked! event" do
         Events::CommentLiked.should_receive(:publish!).with(@comment_vote)
-        post :like, id: 23, like: 'true'
+        post :like, id: comment.id, like: 'true', format: :js
       end
     end
 
@@ -42,14 +39,13 @@ describe CommentsController do
       end
 
       it "checks permissions" do
-        app_controller.should_receive(:authorize!).and_return(true)
         comment.should_receive(:unlike).with(user) #hack? -PS
-        post :like, id: 23, like: 'false'
+        post :like, id: comment.id, like: 'false', format: :js
       end
 
       it "removes like from comment model" do
         comment.should_receive(:unlike).with(user)
-        post :like, id: 23, like: 'false'
+        post :like, id: comment.id, like: 'false', format: :js
       end
 
     end

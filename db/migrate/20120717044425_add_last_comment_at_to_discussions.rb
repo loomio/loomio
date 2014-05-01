@@ -1,4 +1,7 @@
 class AddLastCommentAtToDiscussions < ActiveRecord::Migration
+  class Discussion < ActiveRecord::Base
+  end
+
   def up
     add_column :discussions, :last_comment_at, :datetime
 

@@ -1,6 +1,6 @@
 describe NotificationItem do
   describe "initialize" do
-    let(:notification) { stub(:notification) }
+    let(:notification) { double(:notification) }
 
     context "notification is for a new discussion" do
       it "returns a NewDiscussion notification item" do

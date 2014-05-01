@@ -3,7 +3,7 @@ Feature: New user views discussions
   Scenario: User without any groups views dashboard
     Given I am logged in
     When I visit the dashboard
-    Then I should see "Request New Group"
+    Then I should see "Start a group"
 
   @javascript
   Scenario: New user belonging to new group views dashboard

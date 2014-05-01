@@ -5,51 +5,35 @@ $ ->
   if $("body.discussions.new").length > 0
     $('input, textarea').placeholder()
 
-# Edit title
 $ ->
   if $("body.discussions.show").length > 0
-    $("#edit-title").click((event) ->
-      $("#discussion-title").addClass('hidden')
-      $("#edit-discussion-title").removeClass('hidden')
-      event.preventDefault()
-    )
-    $("#cancel-edit-title").click((event) ->
-      $("#edit-discussion-title").addClass('hidden')
-      $("#discussion-title").removeClass('hidden')
-      event.preventDefault()
-    )
+    autocomplete_path = $('#comment-input').data('autocomplete-path')
+    $("textarea").atwho
+      at: '@'
+      tpl: "<li id='${id}' data-value='@${username}'> ${real_name} <small> @${username}</small></li>"
+      callbacks:
+        remote_filter: (query, callback) ->
+          $.getJSON autocomplete_path, {q: query} , (data) ->
+            callback(data)
 
+# Show translation div
 $ ->
-  if $("body.discussions.show").length > 0
-    $("textarea").atWho "@",
-      cache: false
-      tpl: "<li id='${id}' data-value='${username}'> ${name} <small> @${username}</small></li>"
-      callback: (query, callback) ->
-        group = $("#comment-input").data("group")
-        $.get "/groups/#{group}/members", pre: query, ((result) ->
-            #TODO tidy this up
-            names = _.toArray(result)
-            names = _.map names, (name) ->
-              _.toArray(name)
-            callback _.toArray(names)
-        ), "json"
-
+  $('.activity-item-container').on 'click', '.translate-comment', (event) ->
+    $(this).slideUp().closest('.activity-item-body').find('.activity-item-translation').slideDown()
 
 # Global Markdown (new discussion & comments)
 $ ->
-  if $("body.discussions.show").length > 0 || $("body.discussions.new").length > 0 || $("body.discussions.create").length > 0
-    $(".global-markdown-setting .enable-markdown").click((event) ->
-      img_to_replace = $('.global-markdown-setting').children().first()
-      img_to_replace.html('<img alt="Markdown_on" class="markdown-icon markdown-on" src="/assets/markdown_on.png">')
-      updateMarkdownSetting(this, true)
-    )
-$ ->
-  if $("body.discussions.show").length > 0 || $("body.discussions.new").length > 0 || $("body.discussions.create").length > 0
-    $(".global-markdown-setting .disable-markdown").click((event) ->
-      img_to_replace = $('.global-markdown-setting').children().first()
-      img_to_replace.html('<img alt="Markdown_off" class="markdown-icon markdown-off" src="/assets/markdown_off.png">')
-      updateMarkdownSetting(this, false)
-    )
+  $(".global-markdown-setting .enable-markdown").click (event) ->
+    img_to_replace = $('.global-markdown-setting').children().first()
+    img_to_replace.html('<img alt="Markdown_on" class="markdown-icon markdown-on" src="/assets/markdown_on.png">')
+    updateMarkdownSetting(this, true)
+    $('#discussion_uses_markdown').val('true')
+
+  $(".global-markdown-setting .disable-markdown").click (event) ->
+    img_to_replace = $('.global-markdown-setting').children().first()
+    img_to_replace.html('<img alt="Markdown_off" class="markdown-icon markdown-off" src="/assets/markdown_off.png">')
+    updateMarkdownSetting(this, false)
+    $('#discussion_uses_markdown').val('false')
 
 updateMarkdownSetting = (selected, usesMarkdown) ->
   $("#global-uses-markdown").val(usesMarkdown)
@@ -82,3 +66,36 @@ Discussion.enableInlineEdition = ()->
 
 $ ->
   Discussion.enableInlineEdition()
+
+#adds bootstrap tooltips to discussion features
+$ ->
+  $("#js-dog-ear").tooltip
+    placement: "right",
+    title: "Here's where you read up to last time"
+
+  $(".jump-to-add-comment").tooltip
+    placement: "top",
+    title: "Jump to add comment"
+
+  $(".jump-to-latest-activity").tooltip
+    placement: "top",
+    title: "Jump to latest unread activity"
+
+# moving discussion
+warn_if_moving_discussion_to_private_group = ->
+  $('.move-discussion-form .warn-move-will-make-private').hide()
+  private_discussion = $(".move-discussion-form").data('private-discussion')
+  unless private_discussion
+    hidden_group_ids = String($(".move-discussion-form").data('hidden-group-ids')).split(' ')
+    selected_group_id = $("select[name=destination_group_id]").val()
+    if _.include(hidden_group_ids, selected_group_id)
+      $('.move-discussion-form .warn-move-will-make-private').show()
+
+$ ->
+  warn_if_moving_discussion_to_private_group()
+  $(".move-discussion-form select").on 'change', (e) ->
+    warn_if_moving_discussion_to_private_group()
+
+$ ->
+  $(".js-prompt-user-to-join-or-authenticate").on "click", (e) ->
+    $('#prompt-user-to-join-or-authenticate').modal('show')

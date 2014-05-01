@@ -1,22 +1,9 @@
 describe DiscussionItems::MotionClosed do
-  let(:event) { stub(:event) }
-  let(:motion) { stub(:motion) }
+  let(:event) { double(:event) }
+  let(:motion) { double(:motion) }
   let(:item) { DiscussionItems::MotionClosed.new(event, motion) }
 
   it "#icon returns a string indicating the icon-class"
-
-  context "Motion is closed by a user" do
-    before { item.stub_chain(:event, :user).and_return(stub(:user)) }
-
-    it "#actor returns the user who created a discussion" do
-      actor = stub(:actor)
-      item.actor.should == item.event.user
-    end
-
-    it "#header returns a string" do
-      item.header.should == I18n.t('discussion_items.motion_closed.by_user') + ": "
-    end
-  end
 
   context "Motion close date expires" do
     before { item.stub_chain(:event, :user).and_return(nil) }
@@ -35,9 +22,9 @@ describe DiscussionItems::MotionClosed do
     item.group.should == item.motion.group
   end
 
-  it "#body returns the motion's name in quotes" do
+  it "#body returns the motion's name with a space at front" do
     item.stub_chain(:motion, :name).and_return("goob")
-    item.body.should == " \"#{item.motion.name}\""
+    item.body.should == " #{item.motion.name}"
   end
 
   it "#time returns the time the motion was closed" do

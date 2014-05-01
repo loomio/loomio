@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Queries::UnvotedMotions do
   let(:user) { create(:user) }
-  let(:motion) { create(:motion, author: user) }
+  let(:discussion) { create_discussion }
+  let(:motion) { create(:motion, author: user, discussion: discussion) }
   let(:group) { motion.group }
 
   describe ".for(user, group)" do
@@ -39,7 +40,7 @@ describe Queries::UnvotedMotions do
 
     context 'there is a closed motion in the group' do
       it 'does not return the motion' do
-        motion.close_motion!(user)
+        MotionService.close(motion)
         Queries::UnvotedMotions.for(user, group).should_not include(motion)
       end
     end

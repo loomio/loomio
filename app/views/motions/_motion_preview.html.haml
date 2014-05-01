@@ -1,47 +1,24 @@
-%div{ :class => get_motion_preview_class(motion) }
+%div.motion-preview.clearfix
   %a.selector-link{ href: motion_path(motion) }
     .clearfix
-      - if current_user
-        .vote-icon
-          - if current_user.group_membership(this_group) || this_group.nil?
-            %div{:class => 'activity-icon ' + vote_icon_name(current_user.position(motion))}
+      .vote-icon
+        - if current_user
+          - position = motion.last_position_by_user(current_user)
+          %div.activity-icon{ class: "position-#{position}-icon" }
       .proposal-title-container
         .proposal-title.word-break= truncate(motion.name, :length => 60, :separator => ' ')
         .clearfix
-          .proposal-outcome
-            - if !motion.outcome.blank?
+          - if motion.outcome.present?
+            .proposal-outcome
               = t(:outcome) + ": " + motion.outcome
           .proposal-close-date
-            - if motion.close_at.present?
-              - if motion.voting?
-                = t(:proposal_closing_when, when: time_ago_in_words(motion.close_at))
-              - else
-                = t(:proposal_closed_when, when: time_ago_in_words(motion.close_at))
+            - if motion.voting?
+              = t(:proposal_closing_when, when: time_ago_in_words(motion.closing_at))
             - else
-              = "no close date"
-            =" · " unless this_group
-          .proposal-group-name= DiscussionDecorator.new(motion.discussion).display_group_name(this_group)
-      .pie{id: "graph_#{motion.id}", 'data-votes' => motion.votes_for_graph.to_json}
-
-- if params[:controller] == 'discussions'
-  :coffeescript
-    $ ->
-      # Display vote graph
-      make_the_graph = ->
-        @pie_graph_view = new Loomio.Views.Utils.GraphView
-          el: '.pie'
-          id_string: "graph_#{motion.id}"
-          legend: false
-          data: #{motion.votes_for_graph.to_json}
-          type: 'pie'
-          tooltip_selector: '#tooltip'
-          diameter: 25
-          padding: 1
-          gap: 1
-          shadow: 0
-
-      # IE8 FIX - for some reason we have to load the graph after everything else.
-      # Otherwise, the graph doesn't display in IE8.
-      #
-      # Ideally, we'd like to be able to delete this line:
-      $(window).load(make_the_graph)
+              = t(:proposal_closed_when, when: time_ago_in_words(motion.closed_at))
+      .pie.motion-sparkline
+        -values = motion.vote_counts.values
+        -if values.sum == 0
+          0,0,0,0,1
+        -else
+          =values.join(',')

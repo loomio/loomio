@@ -1,26 +1,28 @@
 !!!
 %html
   %head
+    %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
     %title= display_title @unviewed_notifications
-    <!--[if lt IE 9]><script type="text/javascript" src="/assets/lib/excanvas.js"></script><![endif]-->
-    = stylesheet_link_tag    "application"
+
+    /[if lt IE 9]
+      =javascript_include_tag 'ie8'
+
+    = stylesheet_link_tag    "third_party"
+    = stylesheet_link_tag    "unstructured"
     = javascript_include_tag "application"
     = csrf_meta_tags
-    %link{:href => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/flick/jquery-ui.css", :rel => "stylesheet", :type => "text/css"}
-
-    -# Rob took this out because it looked really incomplete and has failing specs
-    -#= render 'social_metadata', :description => @meta_description, :title => @meta_title
+    = render 'social_metadata', :description => @meta_description, :title => @meta_title
 
   %body{class: "#{controller_name} #{action_name}"}
+    - analytics_scope do
+      = render 'google_tag_manager'
     .main-container.container
-      = render 'announcements' if user_signed_in?
-      = render 'header'
-      = render 'flash_messages', :flash => flash, :on_landing_page => false
+      = render 'application/announcements'
+      = render 'application/header'
+      = render 'application/flash_messages', :flash => flash, :on_landing_page => false
       .page-container
         = yield
+      = render 'footer_logged_in'
 
-    - if Rails.env.production? || Rails.env.staging?
-      = render 'google_analytics'
-      / = render 'metrics_listener_data'
-      / = javascript_include_tag 'load_metrics_listener'
-      /= piwik_tracking_tag # Disabling piwik until we've moved it over to our own server
+  - unless hide_crowdfunding_banner?
+    = javascript_include_tag 'campaigns'

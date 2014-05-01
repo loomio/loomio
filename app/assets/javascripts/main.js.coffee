@@ -1,11 +1,5 @@
 window.Application ||= {}
 
-#*** CHECK HTML5 SUPPORT ***
-# canvasSupported = !!window.HTMLCanvasElement
-# Application.html5 = exports ? this
-# Application.html5.supported = true if canvasSupported
-
-### INITIALIZATION ###
 $ ->
   Application.enableInlineEdition()
   Application.hideAllErrorMessages()
@@ -13,8 +7,6 @@ $ ->
   initializeHelpNotices()
   collapseHomepageAccordian()
 
-
-### EVENTS ###
 $ ->
   $(".dismiss-help-notice").click (event)->
     $.post($(this).attr("href"))
@@ -26,71 +18,6 @@ $ -> # check if discussion with motions list is empty
   if $("body.groups.show").length > 0 ||  $("body.dashboard.show").length > 0
     if $("#discussions-with-motions").children().html() != ""
       $(".discussion-with-motion-divider").removeClass('hidden')
-
-$ -> # hide/show mini-graph popovers
-  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    $(".motion-popover-link").click((event) ->
-      $(this).find('.pie').tooltip('hide')
-      if $(this).find(".popover").html() == null
-        event.stopPropagation()
-        currentPie = this
-        $('.motion-popover-link').each(() ->
-          unless this == currentPie
-            $(this).popover('hide')
-        )
-        $(this).find('.button_to').submit()
-        $(this).popover('toggle')
-    )
-
-$ ->
-  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    $(document).click((event) ->
-      $('.motion-popover-link').popover('hide')
-    )
-
-$ -> # closed motions modal
-  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    if $("body.groups.show").length > 0 && $("#error-page").length == 0
-      idStr = new Array
-      idStr = $('#closed-motions-page').children().attr('class').split('_')
-    $("#show-closed-motions").click((event) ->
-      $("#closed-motions").modal('toggle')
-      $("#closed-motions-page").removeClass('hidden')
-      $("#closed-motions-loading").removeClass('hidden')
-      $("#closed-motions-list").addClass('hidden')
-      if $("body.groups.show").length > 0
-        pathStr = "/groups/#{idStr[1]}/motions"
-      else
-        pathStr = "/motions"
-      $('#closed-motions-page').load(pathStr, ->
-        $("#closed-motions-list").removeClass('hidden')
-        $("#closed-motions-loading").addClass('hidden')
-        $("#closed-motions").find('.pie').each(->
-          Application.displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
-        )
-      )
-      event.preventDefault()
-    )
-    $("#closed-motions .close").click((event) ->
-      $("#closed-motions").modal('toggle')
-      event.preventDefault()
-    )
-
-$ -> # Pagination load on closed motions
-  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    $(document).on('click', '#closed-motions-page .pagination a', (e)->
-      unless $(this).parent().hasClass("gap")
-        $("#closed-motions-list").addClass('hidden')
-        $("#closed-motions-loading").removeClass('hidden')
-        $('#closed-motions-page').load($(this).attr('href'), ->
-          $("#closed-motion-list").removeClass('hidden')
-          $("#closed-motions-loading").addClass('hidden')
-          $("#closed-motions").find('.pie').each(->
-            Application.displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
-            )
-          )
-        e.preventDefault()
-      )
 
 $ -> # Confirm dialog box for class ".confirm-dialog"
   $("body").on("click", ".confirm-dialog", (event)->
@@ -133,7 +60,7 @@ initializeHelpNotices= () ->
   )
 
 initializeDatepicker = () ->
-  $('input.datepicker').datepicker(dateFormat: 'dd-mm-yy')
+  $('input.datepicker').datepicker({ dateFormat: 'dd-mm-yy', minDate: - 0})
 
 Application.convertUtcToRelativeTime = ->
   if $(".utc-time").length > 0
@@ -220,3 +147,11 @@ Application.enableInlineEdition = ()->
       $(".discussion-description-helper-text").toggle()
       $(".discussion-additional-info").toggle()
       event.preventDefault()
+
+# Placeholder shim
+$.placeholder.shim();
+
+# throws a warning if you try to navigate away from a page with unsaved form changes
+# todo: translate the warning message
+$ ->
+  $('.js-warn-before-navigating-away').safetynet()

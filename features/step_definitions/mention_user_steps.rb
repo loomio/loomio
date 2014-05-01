@@ -1,6 +1,6 @@
 Given(/^"(.*?)" has been invited to the group but has not accepted$/) do |recipient_email|
-  args = { recipient_email: recipient_email, inviter: @user, group: @group }
-  CreateInvitation.to_join_group(args)
+  args = { recipient_email: recipient_email, inviter: @user, invitable: @group }
+  InvitationService.create_invite_to_join_group(args)
 end
 
 Then(/^I should not see "(.*?)" in the menu that pops up$/) do |recipient_email|
@@ -18,7 +18,10 @@ When /^I click on "(.*?)" in the menu that pops up$/ do |arg1|
 end
 
 When /^a comment exists mentioning "(.*?)"$/ do |text|
-  @discussion.add_comment @user, "Hey #{text}", false
+  @comment = Comment.new(body: "Hey #{text}")
+  @comment.author = @user
+  @comment.discussion = @discussion
+  DiscussionService.add_comment(@comment)
 end
 
 When /^I submit a comment mentioning "(.*?)"$/ do |mention|

@@ -34,6 +34,7 @@ class SwipeWrapper
   end
 
   def query_params
+    user_data = @user.present? ? @user.email : 'guest'
     {
       api_key: ENV["SWIPE_API_KEY"],
       merchant_id: ENV["SWIPE_MERCHANT_ID"],
@@ -41,7 +42,7 @@ class SwipeWrapper
       td_currency: currency,
       td_description: "One-time contribution to Loomio",
       td_amount: @amount,
-      td_user_data: @user.email
+      td_user_data: user_data
     }
   end
 end

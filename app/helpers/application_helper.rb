@@ -1,8 +1,9 @@
 #encoding: UTF-8
 module ApplicationHelper
+
   def time_formatted_relative_to_age(time)
-    current_time = Time.now
-    if time.to_date == Time.now.to_date
+    current_time = Time.zone.now
+    if time.to_date == Time.zone.now.to_date
       l(time, format: :for_today)
     elsif time.year != current_time.year
       l(time.to_date, format: :for_another_year)
@@ -43,10 +44,25 @@ module ApplicationHelper
     content_for :title, title.gsub(/["'<>]/, '')
   end
 
-  def icon_button(link, text, icon, id, is_modal = false)
-    modal_string = "modal" if is_modal
-    content_tag(:a, :href => link, :class => 'btn btn-grey btn-app', :id => id, 'data-toggle' => modal_string) do
-      image_tag(icon, :class => 'button-icon') + text
+  def icon_button(args)
+    href = args[:href]
+    method = args[:method]
+    text = args[:text]
+    icon = args[:icon]
+    id = args[:id]
+    extra_classes = " #{args[:class]}"
+    data_toggle = args['data-toggle'] || false
+    data_confirm = args['data-confirm'] || false
+    title = args[:title] || ""
+
+    classes = "btn btn-app" + extra_classes
+    content = content_tag(:span, text)
+    if icon.present?
+      content = image_tag(icon, class: 'button-icon') + content
+    end
+    content_tag(:a, href: href, 'data-method' => method, class: classes, id: id,
+      'data-toggle' => data_toggle, 'data-confirm' => data_confirm, title: title) do
+      content
     end
   end
 
@@ -71,6 +87,7 @@ module ApplicationHelper
 
       renderer = Redcarpet::Render::HTML.new(
         :filter_html         => true,
+        :hard_wrap           => true,
         :link_attributes     => {target: '_blank'}
         )
       markdown = Redcarpet::Markdown.new(renderer, *options)
@@ -83,7 +100,51 @@ module ApplicationHelper
   end
 
   def show_contribution_icon?
-    current_user && !current_user.belongs_to_paying_group?
+    current_user && !current_user.belongs_to_manual_subscription_group?
   end
-end
 
+  def can_ask_for_contribution?(group)
+    !group.has_manual_subscription? || !group.is_paying?
+  end
+
+  def hide_beta_logo?
+    current_user_or_visitor.belongs_to_manual_subscription_group?
+  end
+
+  def hide_crowdfunding_banner?
+    hide_beta_logo? || session[:hide_banner] == true
+  end
+
+  def visitor?
+    !user_signed_in?
+  end
+
+  def analytics_scope
+    if Rails.env.production? || Rails.env.staging?
+      unless controller_name == 'searches'
+        yield
+      end
+    end
+  end
+
+  def render_announcements?
+    if user_signed_in?
+      not %w[group_requests group_setup].include? controller_name
+    else
+      false
+    end
+  end
+
+  def logo_path
+    ENV["NAVBAR_LOGO_PATH"] or "navbar-logo.png"
+  end
+
+  def logo_beta_path
+    ENV["NAVBAR_LOGO_PATH"] or "navbar-logo-beta.jpg"
+  end
+
+  def navbar_contribute
+    ENV["NAVBAR_CONTRIBUTE"] or "show"
+  end
+
+end

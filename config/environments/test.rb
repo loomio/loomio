@@ -24,6 +24,8 @@ Loomio::Application.configure do
   # Disable request forgery protection in test environment
   config.action_controller.allow_forgery_protection    = false
 
+  config.action_controller.action_on_unpermitted_parameters = :raise
+
   if ENV['TEST_EMAIL'] == 'sendgrid'
     # Send emails using SendGrid
     config.action_mailer.delivery_method = :smtp
@@ -56,7 +58,8 @@ Loomio::Application.configure do
   else
     config.action_mailer.delivery_method = :test
     config.action_mailer.default_url_options = {
-      :host           => 'localhost:3000'
+      :host           => 'localhost',
+      :port           => 3000
     }
   end
 
@@ -69,4 +72,5 @@ Loomio::Application.configure do
   config.active_support.deprecation = :stderr
 
   config.action_mailer.raise_delivery_errors = true
+  config.middleware.use RackSessionAccess::Middleware
 end

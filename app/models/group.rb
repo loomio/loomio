@@ -1,58 +1,113 @@
 class Group < ActiveRecord::Base
+  include ReadableUnguessableUrls
+  AVAILABLE_BETA_FEATURES = ['discussion_iframe']
+  include BetaFeatures
 
-  PERMISSION_CATEGORIES = [:everyone, :members, :admins, :parent_group_members]
+  class MaximumMembershipsExceeded < Exception
+  end
 
-  attr_accessible :name, :viewable_by, :parent_id, :parent, :cannot_contribute,
-                  :members_invitable_by, :email_new_motion, :description, :setup_completed_at,
-                  :next_steps_completed, :paying_subscription
+  #even though we have permitted_params this needs to be here.. it's an issue
+  attr_accessible :name, :privacy, :members_invitable_by, :parent, :parent_id, :description, :max_size, :cannot_contribute, :full_name, :payment_plan, :viewable_by_parent_members, :category_id, :max_size
+  acts_as_tree
 
+  PRIVACY_CATEGORIES = ['public', 'private', 'hidden']
+  INVITER_CATEGORIES = ['members', 'admins']
+  PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
   validates_presence_of :name
-  validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
-  validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
+  validates_inclusion_of :payment_plan, in: PAYMENT_PLANS
+  validates_inclusion_of :privacy, in: PRIVACY_CATEGORIES
+  validates_inclusion_of :members_invitable_by, in: INVITER_CATEGORIES
   validates :description, :length => { :maximum => 250 }
   validates :name, :length => { :maximum => 250 }
-  validates :max_size, presence: true, if: :is_a_parent?
 
   validate :limit_inheritance
-  validate :max_size_is_nil, if: :is_a_subgroup?
+  validate :privacy_allowed_by_parent, if: :is_a_subgroup?
+  validate :subgroups_are_hidden, if: :is_hidden?
 
   after_initialize :set_defaults
-  before_validation :set_max_group_size, on: :create
   before_save :update_full_name_if_name_changed
 
-  default_scope where(:archived_at => nil)
+  include PgSearch
+  pg_search_scope :search_full_name, against: [:name, :description],
+    using: {tsearch: {dictionary: "english"}}
+
+  scope :visible_on_explore_front_page, -> { published.categorised_any.parents_only }
+
+  scope :categorised_any, -> { where('groups.category_id IS NOT NULL') }
+  scope :in_category, -> (category) { where(category_id: category.id) }
+
+  scope :archived, lambda { where('archived_at IS NOT NULL') }
+  scope :published, lambda { where(archived_at: nil) }
 
   scope :parents_only, where(:parent_id => nil)
-  scope :visible_to_the_public,
-        where(viewable_by: 'everyone').
-        where('memberships_count > 4').
-        order(:full_name)
 
-  scope :search_full_name, lambda { |query| where("full_name ILIKE ?", "%#{query}%") }
+  scope :sort_by_popularity,
+        order('memberships_count DESC')
+
+  scope :visible_to_the_public,
+        published.
+        where(privacy: 'public').
+        parents_only
+
+  scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
+
+  scope :cannot_start_parent_group, where(can_start_group: false)
+
+  # Engagement (Email Template) Related Scopes
+  scope :more_than_n_members, lambda { |n| where('memberships_count > ?', n) }
+  scope :more_than_n_discussions, lambda { |n| where('discussions_count > ?', n) }
+  scope :less_than_n_discussions, lambda { |n| where('discussions_count < ?', n) }
+
+  scope :no_active_discussions_since, lambda {|time|
+    includes(:discussions).where('discussions.last_comment_at < ? OR discussions_count = 0', time)
+  }
+
+  scope :active_discussions_since, lambda {|time|
+    includes(:discussions).where('discussions.last_comment_at > ?', time)
+  }
+
+  scope :created_earlier_than, lambda {|time| where('groups.created_at < ?', time) }
+
+  scope :engaged, more_than_n_members(1).
+                  more_than_n_discussions(2).
+                  active_discussions_since(2.month.ago).
+                  parents_only
+
+  scope :engaged_but_stopped, more_than_n_members(1).
+                              more_than_n_discussions(2).
+                              no_active_discussions_since(2.month.ago).
+                              created_earlier_than(2.months.ago).
+                              parents_only
+
+  scope :has_members_but_never_engaged, more_than_n_members(1).
+                                    less_than_n_discussions(2).
+                                    created_earlier_than(1.month.ago).
+                                    parents_only
 
   has_one :group_request
 
   has_many :memberships,
-    :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
     :dependent => :destroy,
     :extend => GroupMemberships
 
   has_many :membership_requests,
-    :conditions => {:access_level => 'request'},
-    :class_name => 'Membership',
     :dependent => :destroy
 
+  has_many :pending_membership_requests,
+           class_name: 'MembershipRequest',
+           conditions: {response: nil},
+           dependent: :destroy
+
   has_many :admin_memberships,
-    :conditions => {:access_level => 'admin'},
+    :conditions => { admin: true },
     :class_name => 'Membership',
     :dependent => :destroy
 
   has_many :members,
            through: :memberships,
-           source: :user,
-           conditions: { :invitation_token => nil }
+           source: :user
 
-  has_many :pending_invitations,
+  has_many :pending_invitations, :as => :invitable,
            class_name: 'Invitation',
            conditions: {accepted_at: nil, cancelled_at: nil}
 
@@ -62,27 +117,50 @@ class Group < ActiveRecord::Base
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, :dependent => :destroy
   has_many :motions, :through => :discussions
-  has_many :motions_in_voting_phase,
-           :through => :discussions,
-           :source => :motions,
-           :conditions => { phase: 'voting' },
-           :order => 'close_at'
-  has_many :motions_closed,
-           :through => :discussions,
-           :source => :motions,
-           :conditions => { phase: 'closed' },
-           :order => 'close_at DESC'
 
   belongs_to :parent, :class_name => "Group"
-  has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
+  belongs_to :category
+  has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id', conditions: { archived_at: nil }
+
+  has_one :subscription, dependent: :destroy
 
   delegate :include?, :to => :users, :prefix => true
   delegate :users, :to => :parent, :prefix => true
+  delegate :members, :to => :parent, :prefix => true
   delegate :name, :to => :parent, :prefix => true
 
   paginates_per 20
 
+  def coordinators
+    admins
+  end
+
+  def contact_person
+    admins.order('id asc').first
+  end
+
+  def requestor_name_and_email
+    "#{requestor_name} <#{requestor_email}>"
+  end
+
+  def requestor_name
+    group_request.try(:admin_name)
+  end
+
+  def requestor_email
+    group_request.try(:admin_email)
+  end
+
+  def voting_motions
+    motions.voting
+  end
+
+  def closed_motions
+    motions.closed
+  end
+
   def archive!
+    self.discussions.each(&:archive!)
     self.update_attribute(:archived_at, DateTime.now)
     memberships.update_all(:archived_at => DateTime.now)
     subgroups.each do |group|
@@ -90,98 +168,51 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def beta_features
-    if parent && (parent.beta_features == true)
-      true
-    else
-      self[:beta_features]
-    end
+  def archived?
+    self.archived_at.present?
   end
 
-  def beta_features?
-    beta_features
+  def privacy_public?
+    (privacy == 'public') and !archived?
   end
 
-  def viewable_by
-    value = read_attribute(:viewable_by)
-    value.to_sym if value.present?
+  def is_hidden?
+    self.privacy == 'hidden'
   end
 
-  def viewable_by=(value)
-    write_attribute(:viewable_by, value.to_s)
+  def is_not_hidden?
+    !is_hidden?
   end
 
-  def members_can_invite?
-    members_invitable_by == :members
+  def parent_is_hidden?
+    parent.is_hidden?
   end
 
-  def members_invitable_by
-    value = read_attribute(:members_invitable_by)
-    value.to_sym if value.present?
-  end
-
-  def members_invitable_by=(value)
-    write_attribute(:members_invitable_by, value.to_s)
-  end
-
-  def root_name
-    if parent
-      parent_name
-    else
-      name
-    end
+  def members_can_invite_members?
+    members_invitable_by == 'members'
   end
 
   def parent_members_visible_to(user)
     parent.users.sorted_by_name
   end
 
-  def activity_since_last_viewed?(user)
-    membership = membership(user)
-    if membership
-      new_comments_since_last_looked_at_group = discussions
-        .includes(:comments)
-        .where('comments.user_id <> ? AND comments.created_at > ?' , user.id, membership.group_last_viewed_at)
-        .count > 0
-      new_comments_since_last_looked_at_discussions = discussions
-        .joins('INNER JOIN discussion_read_logs ON discussions.id = discussion_read_logs.discussion_id')
-        .where('discussion_read_logs.user_id = ? AND discussions.last_comment_at > discussion_read_logs.discussion_last_viewed_at',  user.id)
-        .count > 0
-      unread_comments = new_comments_since_last_looked_at_group &&
-                        new_comments_since_last_looked_at_discussions
-
-      # TODO: Refactor this to an active record query and write tests for it
-      unread_new_discussions = Discussion.find_by_sql(["
-        (SELECT discussions.id FROM discussions WHERE group_id = ? AND discussions.created_at > ?)
-        EXCEPT
-        (SELECT discussions.id FROM discussions
-         INNER JOIN discussion_read_logs ON discussions.id = discussion_read_logs.discussion_id
-         WHERE discussions.group_id = ? AND discussion_read_logs.user_id = ?);",
-        id, membership.group_last_viewed_at, id, user.id])
-
-      return true if unread_comments || unread_new_discussions.present?
-    end
-    false
-  end
-
-
-  # would be nice if the following 4 methods were reduced to just one - is_sub_group
+  # would be nice if the following 3 methods were reduced to just one - is_subgroup
   # parent and top_level are the less nice terms
   #
+  def is_a_parent?
+    parent_id.blank?
+  end
+
   def is_top_level?
-    parent.blank?
+    is_a_parent?
   end
 
   def is_sub_group?
-    parent.present?
-  end
-
-  def is_a_parent?
-    parent.nil?
+    !is_a_parent?
   end
 
   def is_a_subgroup?
-    parent.present?
+    is_sub_group?
   end
 
   def admin_email
@@ -192,62 +223,62 @@ class Group < ActiveRecord::Base
     memberships.where("group_id = ? AND user_id = ?", id, user.id).first
   end
 
-  def add_request!(user)
-    if user_can_join?(user) && !user_membership_or_request_exists?(user)
-      membership = user.memberships.create!(:group_id => id)
-      membership
+  def add_member!(user, inviter=nil)
+    if is_a_parent?
+      if (memberships_count.to_i > max_size.to_i)
+        raise Group::MaximumMembershipsExceeded
+      end
+    end
+    find_or_create_membership(user, inviter)
+  end
+
+  def add_members!(users, inviter=nil)
+    users.map do |user|
+      add_member!(user, inviter)
     end
   end
 
-  def add_member!(user, inviter=nil)
-    membership = find_or_build_membership_for_user(user)
-    membership.promote_to_member!(inviter)
-    membership
-  end
-
   def add_admin!(user, inviter = nil)
-    membership = find_or_build_membership_for_user(user)
+    membership = find_or_create_membership(user, inviter)
     membership.make_admin!
-    membership.inviter = inviter if inviter.present?
     membership
   end
 
-  def find_or_build_membership_for_user(user)
-    membership = Membership.where(:user_id => user, :group_id => self).first
-    membership ||= user.memberships.build(:group_id => id)
+  def find_or_create_membership(user, inviter)
+    membership = memberships.where(:user_id => user).first
+    membership ||= Membership.create!(group: self, user: user, inviter: inviter)
   end
 
   def has_admin_user?(user)
-    return true if admins.include?(user)
-    return true if (parent && parent.admins.include?(user))
+    admins.include?(user) || (parent && parent.admins.include?(user))
   end
 
   def user_membership_or_request_exists? user
     Membership.where(:user_id => user, :group_id => self).exists?
   end
 
-  def user_can_join? user
-    is_a_parent? || user_is_a_parent_member?(user)
-  end
-
-  def is_a_parent?
-    parent_id.nil?
-  end
-
-  def is_a_subgroup?
-    parent_id.present?
-  end
-
   def user_is_a_parent_member? user
-    user.group_membership(parent)
+    parent.members.include? user
   end
 
   def invitations_remaining
     max_size - memberships_count - pending_invitations.count
   end
 
+  def has_member_with_email?(email)
+    users.where('email = ?', email).present?
+  end
+
+  def has_membership_request_with_email?(email)
+    membership_requests.where('email = ?', email).present?
+  end
+
   def is_setup?
     self.setup_completed_at.present?
+  end
+
+  def mark_as_setup!
+    self.update_attribute(:setup_completed_at, Time.zone.now.utc)
   end
 
   def update_full_name_if_name_changed
@@ -264,6 +295,27 @@ class Group < ActiveRecord::Base
     self.full_name = calculate_full_name
   end
 
+  def has_subscription_plan?
+    subscription.present?
+  end
+
+  def subscription_plan
+    subscription.amount
+  end
+
+  def has_manual_subscription?
+    payment_plan == 'manual_subscription'
+  end
+
+  def is_paying?
+    (payment_plan == 'manual_subscription') ||
+    (subscription.present? && subscription.amount > 0)
+  end
+
+  def is_hidden?
+    privacy == "hidden"
+  end
+
   private
 
   def calculate_full_name
@@ -274,28 +326,26 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def set_max_group_size
-    self.max_size = 50 if (is_a_parent? && max_size.nil?)
-  end
-
   def set_defaults
-    if is_a_subgroup?
-      self.viewable_by ||= :parent_group_members
-    else
-      self.viewable_by ||= :members
-    end
-    self.members_invitable_by ||= :members
+    self.privacy ||= 'hidden'
+    self.members_invitable_by ||= 'members'
   end
 
   def limit_inheritance
-    unless parent_id.nil?
+    if parent_id.present?
       errors[:base] << "Can't set a subgroup as parent" unless parent.parent_id.nil?
     end
   end
 
-  def max_size_is_nil
-    unless max_size.nil?
-      errors.add(:max_size, "Cannot be nil")
+  def privacy_allowed_by_parent
+    if parent && parent.privacy == 'hidden' && self.privacy != 'hidden'
+      errors[:privacy] << "Parent group is hidden, subgroups must also be hidden"
+    end
+  end
+
+  def subgroups_are_hidden
+    unless subgroups.all?{|g| g.is_hidden?}
+      errors[:privacy] << "There are non hidden subgroups, so this group cannot be hidden"
     end
   end
 end

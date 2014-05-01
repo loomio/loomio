@@ -1,6 +1,15 @@
 include Warden::Test::Helpers
+
+#this is a copy of a 'spec/support/service_helpers.rb' method
+def create_discussion( options={} )
+  options[:private] = true unless options.has_key?(:private)
+  discussion = FactoryGirl.build(:discussion, options)
+  DiscussionService.start_discussion(discussion)
+  discussion
+end
+
 def view_screenshot
-  filename = "tmp/screenshots/#{Time.now.to_i}.png" 
+  filename = "tmp/screenshots/#{Time.now.to_i}.png"
   page.driver.render(filename, full: true)
   system("open #{filename}")
 end
@@ -18,7 +27,7 @@ def login(user_or_email, password = nil)
   visit "/users/sign_in"
   fill_in 'user_email', with: email
   fill_in 'user_password', :with => password
-  click_button 'Sign in'
+  click_button 'Log in'
 end
 
 def login_automatically(user)
@@ -40,4 +49,12 @@ end
 def visit_add_subgroup_page(groupname)
   @group = Group.find_by_name(groupname)
   visit add_subgroup_group_path(@group)
+end
+
+def last_email_text_body
+  ActionMailer::Base.deliveries.last.parts[0].body
+end
+
+def last_email_html_body
+  ActionMailer::Base.deliveries.last.parts[1].body
 end

@@ -1,18 +1,8 @@
 .page-container
   -if signed_in?
-    =image_tag("loomio-orange.png", :id => "large-logo")
-  #new-request
-    .row
-      %h2.span8.offset2 You're almost done, check your email
-    .row
-      .span6.offset2
-        %p &nbsp;
-        %p Please check your email for a verification link so that we know communication with you is getting through.
-        %p
-          %strong Make sure to click the link inside the email to finalise your request.
-        %p
-          Contact us at
-          = mail_to 'contact@loomio.org'
-          if you don't receive an email.
-      .span2
-        =image_tag("mascot-medium-lefthand.gif")
+    = image_tag "loomio-orange.png", :id => "large-logo"
+  .row
+    .span8.offset2
+      %h2= t(:"group_request.confirmation.title")
+
+      = simple_format t(:"group_request.confirmation.body_html")

@@ -1,31 +1,26 @@
 class BaseController < ApplicationController
   include AutodetectTimeZone
-  before_filter :authenticate_user!, :check_browser, :check_for_invitation, :load_announcements
-  before_filter :set_time_zone_from_javascript
+  include OmniauthAuthenticationHelper
+
+  before_filter :authenticate_user!, :check_browser
+
+  before_filter :check_for_omniauth_authentication,
+                :check_for_invitation,
+                :load_announcements,
+                :initialize_search_form,
+                :set_time_zone_from_javascript, if: :user_signed_in?
+
   helper_method :time_zone
 
+  def permitted_params
+    @permitted_params ||= PermittedParams.new(params, current_user)
+  end
+
+  helper_method :permitted_params
+
   protected
-
-  def time_zone
-    if user_signed_in?
-      current_user.time_zone
-    else
-      'UTC'
-    end
-  end
-
-  def store_location
-    session[:return_to] = request.fullpath
-  end
-
-  def clear_stored_location
-    session[:return_to] = nil
-  end
-
-  def after_sign_in_path_for(resource)
-    path = session[:return_to] || root_path
-    clear_stored_location
-    path
+  def initialize_search_form
+    @search_form = SearchForm.new(current_user)
   end
 
   def load_announcements
@@ -35,13 +30,11 @@ class BaseController < ApplicationController
   end
 
   def check_browser
-    if browser.ie6? # || browser.ie7?
-      redirect_to browser_not_supported_url
-    end
+    redirect_to browser_not_supported_url if browser.ie6?
   end
 
   def check_for_invitation
-    if session[:invitation_token] and user_signed_in?
+    if session[:invitation_token]
       redirect_to invitation_path(session[:invitation_token])
     end
   end

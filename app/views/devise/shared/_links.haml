@@ -1,4 +1,4 @@
-- if controller_name != 'sessions'
+- if (controller_name != 'sessions') && (controller_name != 'invitations')
   = link_to t(:sign_in), new_session_path(resource_name)
   %br/
 -#- if devise_mapping.registerable? && controller_name != 'registrations'
@@ -13,7 +13,7 @@
 - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
   = link_to t(:unlock_not_received), new_unlock_path(resource_name)
   %br/
-- if devise_mapping.omniauthable?
-  - resource_class.omniauth_providers.each do |provider|
-    = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
-    %br/
+-#- if devise_mapping.omniauthable?
+  -#- resource_class.omniauth_providers.each do |provider|
+    -#= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
+    -#%br/

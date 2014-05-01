@@ -1,16 +1,31 @@
 .container
-  .section.first
+  %section.first
     .inner-container
-      .row
-        .span6.offset3
-          %h2 Sign up
-          = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-            = f.error_notification
-            .form-inputs
-              = f.input :name, :required => true, :autofocus => true
-              = f.input :email, :required => true
-              = f.input :password, :required => true
-              = f.input :password_confirmation, :required => true
-            .form-actions
-              = f.button :submit, "Sign up"
-          = render "devise/shared/links"
+      .row-fluid
+        - if omniauth_authenticated_and_waiting?
+          .span6.main-content
+            %h1= t :confirm_your_details
+            %p= t :now_that_your_logged_in, provider_name: @omniauth_authentication.provider_name
+            %p
+              %strong= t :already_have_account
+              = link_to( t(:link_it_up_instead), new_user_session_path)
+            .signin_container
+              = render "form"
+        -else
+          .span6.main-content
+            %h2
+              - if @invitation
+                - if @invitation.to_start_group?
+                  = t :'start_group.create_account_to_start_group', group_name: @invitation.invitable_name
+                -elsif @invitation.to_join_group?
+                  = t :'join_group.create_account_to_join_group', group_name: @invitation.invitable_name
+              - else
+                = t :create_an_account
+            %p= t :or_sign_in_html, link: user_session_path, link_class: 'existing-user'
+            .signin_container
+              %h3= t :sign_up_via
+              = render 'devise/shared/omniauth_buttons'
+              %h3= t :or_fill_in_this_form
+              = render "form"
+  .terms
+    =t(:terms_of_service_html, button_text: t(:'devise.registrations.sign_up'), link_path: terms_of_service_path)

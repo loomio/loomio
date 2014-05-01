@@ -1,9 +1,8 @@
 class Events::MotionClosed < Event
   after_create :notify_users!
 
-  def self.publish!(motion, closer)
-    create!(:kind => "motion_closed", :eventable => motion, :user => closer,
-                      :discussion_id => motion.discussion.id)
+  def self.publish!(motion)
+    create!(:kind => "motion_closed", :eventable => motion, :discussion_id => motion.discussion.id)
   end
 
   def motion
@@ -13,11 +12,10 @@ class Events::MotionClosed < Event
   private
 
   def notify_users!
-    MotionMailer.motion_closed(motion, motion.author.email).deliver
-    motion.group_users.each do |group_user|
-      unless group_user == user
-        notify!(group_user)
-      end
+    MotionMailer.delay.motion_closed(motion, motion.author.email)
+
+    motion.group_members.each do |group_user|
+      notify!(group_user)
     end
   end
 

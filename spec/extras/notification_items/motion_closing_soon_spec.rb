@@ -1,11 +1,11 @@
+require 'spec_helper'
+
 describe NotificationItems::MotionClosingSoon do
-  let(:notification) { stub(:notification) }
+  let(:notification) { double(:notification) }
   let(:item) { NotificationItems::MotionClosingSoon.new(notification) }
 
-  it "#actor returns the current user" do
-    user = stub(:user)
-    notification.stub_chain(:eventable, :user).and_return(user)
-    item.actor.should == notification.eventable.user
+  it "#actor returns nil" do
+    item.actor.should == nil
   end
 
   it "#action_text returns a string" do
@@ -24,7 +24,7 @@ describe NotificationItems::MotionClosingSoon do
 
   it "#link returns a path to the motion" do
     item.stub_chain(:url_helpers, :motion_path).and_return("/motions/1")
-    notification.stub(:eventable).and_return(stub(:motion))
+    notification.stub(:eventable).and_return(double(:motion))
     item.link.should == "/motions/1"
   end
 

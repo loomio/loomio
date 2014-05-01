@@ -1,7 +1,4 @@
-require 'awesome_print'
 Loomio::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb
-
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -25,19 +22,19 @@ Loomio::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  config.sass.debug_info = true
+  # support scss support in chrome devtools
+  #
+  config.sass.line_comments = false
 
+  # config.action_mailer.asset_host = "http://localhost:3000"
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
   config.action_mailer.file_settings = {
     :location => Rails.root.join('tmp/mail')
   }
 
-  #fake production settings
-  #config.serve_static_assets = false
-  #config.assets.compress = true
-  #config.assets.compile = false
-  #config.assets.digest = true
-  #config.assets.precompile += %w(active_admin.css active_admin.js frontpage.js frontpage.css active_admin.css)
+  config.action_controller.action_on_unpermitted_parameters = :raise
 end

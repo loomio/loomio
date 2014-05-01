@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe Events::NewDiscussion do
-  let(:discussion){ mock_model(Discussion, group: stub(:group)) }
+  let(:discussion){ mock_model(Discussion, group: double(:group)) }
 
   describe "::publish!" do
-    let(:event) { stub(:event, notify_users!: true) }
+    let(:event) { double(:event, notify_users!: true) }
     before { Event.stub(:create!).and_return(event) }
 
     it 'creates an event' do
@@ -25,7 +25,7 @@ describe Events::NewDiscussion do
                                                eventable: discussion,
                                                discussion_id: discussion.id) }
     before do
-      discussion.stub(:group_users_without_discussion_author).and_return([user])
+      discussion.stub(:group_members_without_discussion_author).and_return([user])
       user.stub(:email_notifications_for_group?).and_return(false)
       DiscussionMailer.stub_chain(:new_discussion_created, :deliver)
     end
@@ -35,7 +35,7 @@ describe Events::NewDiscussion do
         user.should_receive(:email_notifications_for_group?).with(discussion.group).and_return(true)
       end
 
-      it 'emails group_users_without_motion_author new_motion_created' do
+      it 'emails group_members_without_motion_author new_motion_created' do
         DiscussionMailer.should_receive(:new_discussion_created).with(discussion, user)
         event.save
       end
@@ -51,11 +51,6 @@ describe Events::NewDiscussion do
         DiscussionMailer.should_not_receive(:new_discussion_created)
         event.save
       end
-    end
-
-    it 'notifies group_users_without_motion_author' do
-      event.should_receive(:notify!).with(user)
-      event.save
     end
   end
 end

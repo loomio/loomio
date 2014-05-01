@@ -26,5 +26,14 @@ end
 
 Given /^there is a discussion in a group$/ do
   @group = FactoryGirl.create :group
-  @discussion = FactoryGirl.create :discussion, :group => @group
+  @discussion = create_discussion :group => @group
 end
+
+Then(/^I should not see a link to revision history$/) do
+  page.should_not have_css(".see-revision-history")
+end
+
+Then(/^I should see a link to revision history$/) do
+  page.should have_css(".see-revision-history")
+end
+

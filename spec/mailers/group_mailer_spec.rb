@@ -2,36 +2,51 @@ require "spec_helper"
 
 describe GroupMailer do
 
-  describe 'sends email on membership request' do
-    before :all do
+  describe '#new_membership request' do
+    it 'sends email to all the admins' do
       @group = create(:group)
-      @group.add_admin!(create(:user))
-      @membership = @group.add_request!(create(:user))
-      @mail = GroupMailer.new_membership_request(@membership)
+      @membership_request = create(:membership_request, group: @group, name: 'bob jones', email: "bobby@jones.org")
+      mailer = double "mailer"
+
+      mailer.should_receive(:deliver)
+      GroupMailer.should_receive(:membership_request).with(@group.admins.first, @membership_request).
+        and_return(mailer)
+      GroupMailer.new_membership_request(@membership_request)
+    end
+  end
+
+  describe '#membership_request' do
+    before do
+      @group = create(:group)
+      @admin = @group.admins.first
+      @membership_request = create(:membership_request, group: @group, name: 'bob jones', email: "bobby@jones.org")
+      @mail = GroupMailer.membership_request(@admin, @membership_request)
     end
 
     it 'renders the subject' do
       @mail.subject.should ==
-        "[Loomio: #{@group.full_name}] New membership request from #{@membership.user.name}"
+        "#{@membership_request.name} has requested to join #{@group.full_name}"
     end
 
     it "sends email to group admins" do
-      pending "for some reason this is failing on travis"
-      @mail.to.should == @group.admins.map(&:email)
+      @mail.to.should == [@admin.email]
     end
 
-    it 'renders the sender email' do
-      @mail.from.should == ['noreply@loomio.org']
+    context "requestor is an existing loomio user" do
+      it 'renders the sender email' do
+        @mail.from.should == ['notifications@loomio.org']
+      end
+
+      it 'assigns correct reply_to' do
+        @mail.reply_to.should == [@membership_request.email]
+      end
+
+      it 'assigns confirmation_url for email body' do
+        @mail.body.encoded.should match(/\/g\/#{@group.key}/)
+      end
     end
 
-    it 'assigns correct reply_to' do
-      pending "This spec is failing on travis for some reason..."
-      @mail.reply_to.should == [@group.admin_email]
-    end
-
-    it 'assigns confirmation_url for email body' do
-      @mail.body.encoded.should match(/\/groups\/#{@group.id}/)
-    end
+    context "requestor is not a loomio user"
   end
 
   describe "#deliver_group_email" do
@@ -58,7 +73,7 @@ describe GroupMailer do
 
   describe "#group_email" do
     before :all do
-      @group = stub_model Group, :name => "Blue", :admin_email => "goodbye@world.com"
+      @group = stub_model Group, :name => "Blue", full_name: "Marvin: Blue", :admin_email => "goodbye@world.com", key: 'abc123'
       @sender = stub_model User, :name => "Marvin"
       @recipient = stub_model User, :email => "hello@world.com"
       @subject = "meeby"
@@ -71,6 +86,6 @@ describe GroupMailer do
 
     its(:subject) { should == "[Loomio: #{@group.full_name}] #{@subject}" }
     its(:to) { should == [@recipient.email] }
-    its(:from) { should == ['noreply@loomio.org'] }
+    its(:from) { should == ['notifications@loomio.org'] }
   end
 end

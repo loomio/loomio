@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  include AvatarInitials
+  include ReadableUnguessableUrls
+
   require 'net/http'
   require 'digest/md5'
 
@@ -11,10 +14,11 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
+  attr_accessor :honeypot
 
   validates :name, :presence => true
-  validates :email, :presence => true
+  validates :email, :presence => true, uniqueness: true, email: true
   validates_inclusion_of :uses_markdown, :in => [true,false]
   validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
   validates_attachment :uploaded_avatar,
@@ -37,55 +41,46 @@ class User < ActiveRecord::Base
     #:url => "/system/:class/:attachment/:id/:style/:basename.:extension",
     #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
 
-  has_many :membership_requests,
-           :conditions => { :access_level => 'request' },
-           :class_name => 'Membership',
-           :dependent => :destroy
   has_many :admin_memberships,
-           :conditions => { :access_level => 'admin' },
+           :conditions => { admin: true },
            :class_name => 'Membership',
-           :dependent => :destroy
-  has_many :memberships,
-           :conditions => { :access_level => Membership::MEMBER_ACCESS_LEVELS },
            :dependent => :destroy
 
-  has_many :groups,
-           :through => :memberships
   has_many :adminable_groups,
            :through => :admin_memberships,
            :class_name => 'Group',
            :source => :group
-  has_many :group_requests,
-           :through => :membership_requests,
-           :class_name => 'Group',
-           :source => :group
+
+  has_many :memberships,
+           :dependent => :destroy
+
+  has_many :membership_requests,
+           :foreign_key => 'requestor_id'
+
+  has_many :groups,
+           :through => :memberships,
+           conditions: { archived_at: nil }
+
+  has_many :public_groups,
+           :through => :memberships,
+           :source => :group,
+           :conditions => { :privacy => 'public' }
 
   has_many :discussions,
            :through => :groups
+
   has_many :authored_discussions,
            :class_name => 'Discussion',
            :foreign_key => 'author_id'
 
   has_many :motions,
            :through => :discussions
+
   has_many :authored_motions,
            :class_name => 'Motion',
            :foreign_key => 'author_id'
-  has_many :motions_in_voting_phase,
-           :through => :discussions,
-           :source => :motions,
-           :conditions => { phase: 'voting' }
-  has_many :motions_closed,
-           :through => :discussions,
-           :source => :motions,
-           :conditions => { phase: 'closed' },
-           :order => 'close_at DESC'
 
   has_many :votes
-  has_many :open_votes,
-           :class_name => 'Vote',
-           :source => :votes,
-           :through => :motions_in_voting_phase
 
   has_many :announcement_dismissals
 
@@ -93,51 +88,82 @@ class User < ActiveRecord::Base
            :through => :announcement_dismissals,
            :source => :announcement
 
+  has_many :discussion_readers, dependent: :destroy
+  has_many :motion_read_logs, dependent: :destroy
+
 
   has_many :notifications
   has_many :comments
-
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
-                  :uploaded_avatar, :username, :subscribed_to_daily_activity_email, :subscribed_to_proposal_closure_notifications,
-                  :subscribed_to_mention_notifications, :group_email_preferences, :uses_markdown, :time_zone, :language_preference
+  has_many :attachments
 
   before_save :set_avatar_initials, :ensure_unsubscribe_token
   before_create :set_default_avatar_kind
   before_create :generate_username
   after_create :ensure_name_entry
-  before_destroy { |user| ViewLogger.delete_all_logs_for(user.id) }
 
-  scope :daily_activity_email_recipients, where("subscribed_to_daily_activity_email IS TRUE AND invitation_token IS NULL")
+  scope :active, where(:deleted_at => nil)
+  scope :inactive, where("deleted_at IS NOT NULL")
+  scope :daily_activity_email_recipients, where(:subscribed_to_daily_activity_email => true)
   scope :sorted_by_name, order("lower(name)")
+  scope :admins, where(is_admin: true)
+  scope :coordinators, joins(:memberships).where('memberships.admin = ?', true).group('users.id')
 
-  #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
+  def self.email_taken?(email)
+    User.find_by_email(email).present?
+  end
+
+  def is_logged_in?
+    true
+  end
+
+  def is_logged_out?
+    !is_logged_in?
+  end
+
+  def cached_group_ids
+    @cached_group_ids ||= group_ids
+  end
+
+  def top_level_groups
+    parents = groups.parents_only.order(:name).includes(:children)
+    orphans = groups.where('parent_id not in (?)', parents.map(&:id))
+    (parents.to_a + orphans.to_a).sort{|a, b| a.full_name <=> b.full_name }
+  end
+
+  def first_name
+    name.split(' ').first
+  end
+
+  def name_and_email
+    "#{name} <#{email}>"
+  end
 
   # Provide can? and cannot? as methods for checking permissions
   def ability
     @ability ||= Ability.new(self)
   end
+
   delegate :can?, :cannot?, :to => :ability
+
+  def voting_motions
+    motions.voting
+  end
+
+  def closed_motions
+    motions.closed
+  end
 
   def email_notifications_for_group?(group)
     memberships.where(:group_id => group.id, :subscribed_to_notification_emails => true).present?
   end
 
-  def get_vote_for(motion)
-    Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
-  end
-
-  def get_position_for(motion)
-    vote = Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
-    vote.position if vote
-  end
-
-  def voted?(motion)
-    Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
-  end
 
   def is_group_admin?(group)
-    memberships.for_group(group).with_access('admin').exists?
+    admin_memberships.where(group_id: group.id).any?
+  end
+
+  def is_group_member?(group)
+    memberships.where(group_id: group.id).any?
   end
 
   def time_zone_city
@@ -148,9 +174,6 @@ class User < ActiveRecord::Base
     self[:time_zone] || 'UTC'
   end
 
-  def is_group_member?(group)
-    memberships.for_group(group).exists?
-  end
 
   def is_parent_group_member?(group)
     memberships.for_group(group.parent).exists? if group.parent
@@ -164,45 +187,9 @@ class User < ActiveRecord::Base
     notifications.unviewed
   end
 
-  # Returns most recent notifications
-  #   lower_limit - (minimum # of notifications returned)
-  #   upper_limit - (maximum # of notifications returned)
-  def recent_notifications(lower_limit=10, upper_limit=25)
-    if unviewed_notifications.count < lower_limit
-      notifications.limit(lower_limit)
-    else
-      unviewed_notifications.limit(upper_limit)
-    end
-  end
-
   def mark_notifications_as_viewed!(latest_viewed_id)
-    unviewed_notifications.where("id <= ?", latest_viewed_id).
-      update_all(:viewed_at => Time.now)
-  end
-
-  def discussions_with_current_motion_not_voted_on
-    # TODO: Merge into Queries::VisibleDiscussions
-    if discussions
-      (discussions.includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on)
-    else
-      []
-    end
-  end
-
-  def discussions_with_current_motion_voted_on
-    # TODO: Merge into Queries::VisibleDiscussions
-    if discussions
-      (discussions.includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", id))
-    else
-      []
-    end
-  end
-
-  def discussions_sorted
-    # TODO: Merge into Queries::VisibleDiscussions
-    discussions
-      .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
-      .order("last_comment_at DESC")
+    notifications.where('id <= ?', latest_viewed_id).
+      update_all(:viewed_at => Time.zone.now)
   end
 
   def self.loomio_helper_bot
@@ -213,6 +200,10 @@ class User < ActiveRecord::Base
       helper_bot.save
     end
     helper_bot
+  end
+
+  def self.helper_bots
+    where(email: ['contact@loomio.org', 'contact@loom.io'])
   end
 
   def self.find_by_email(email)
@@ -227,18 +218,21 @@ class User < ActiveRecord::Base
     groups.where("parent_id IS NULL").order("LOWER(name)")
   end
 
-  def position(motion)
-    if motion.user_has_voted?(self)
-      get_vote_for(motion).position
+  def name
+    if deleted_at.present?
+      "#{self[:name]} (account inactive)"
+    else
+      self[:name]
     end
   end
 
-  def name
-    deleted_at ? "Deleted user" : read_attribute(:name)
-  end
-
   def deactivate!
-    update_attribute(:deleted_at, 1.month.ago)
+    update_attributes(:deleted_at => Time.now,
+                      :subscribed_to_daily_activity_email => false,
+                      :subscribed_to_mention_notifications => false,
+                      :subscribed_to_proposal_closure_notifications => false)
+    memberships.update_all(:archived_at => Time.now)
+    membership_requests.where("responded_at IS NULL").destroy_all
   end
 
   def activate!
@@ -248,6 +242,10 @@ class User < ActiveRecord::Base
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
   def active_for_authentication?
     super && !deleted_at
+  end
+
+  def inactive_message
+    I18n.t(:inactive_html, path_to_contact: '/contact').html_safe
   end
 
   def avatar_url(size=nil, kind=nil)
@@ -270,6 +268,10 @@ class User < ActiveRecord::Base
     elsif kind == "uploaded"
       uploaded_avatar.url(size)
     end
+  end
+
+  def locale
+    selected_locale || detected_locale
   end
 
   def using_initials?
@@ -314,8 +316,12 @@ class User < ActiveRecord::Base
     (group_ids & other_user.group_ids).present?
   end
 
-  def belongs_to_paying_group?
-    groups.any? { |group| group.paying_subscription? }
+  def belongs_to_manual_subscription_group?
+    groups.manual_subscription.any?
+  end
+
+  def show_start_group_button?
+    !groups.cannot_start_parent_group.any?
   end
 
   private
@@ -342,17 +348,5 @@ class User < ActiveRecord::Base
       self.name = email
       save
     end
-  end
-
-  def set_avatar_initials
-    initials = ""
-    if  name.blank? || name == email
-      initials = email[0..1]
-    else
-      name.split.each { |name| initials += name[0] }
-    end
-    initials = initials.upcase.gsub(/ /, '')
-    initials = "DU" if deleted_at
-    self.avatar_initials = initials[0..2]
   end
 end

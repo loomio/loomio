@@ -14,4 +14,10 @@ ActiveAdmin.register Announcement do
     ends_at = starts_at + 2.weeks
     @announcement = Announcement.new(starts_at: starts_at, ends_at: ends_at)
   end
+
+  controller do
+    def permitted_params
+      params.permit!
+    end
+  end
 end

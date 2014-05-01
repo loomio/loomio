@@ -1,0 +1,5 @@
+= t("email.membership_request.intro", name: @membership_request.name, email: @membership_request.email)
+
+:plain
+\
+= t("email.membership_request.view_group") + ": " + group_membership_requests_url(@group)

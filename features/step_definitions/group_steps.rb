@@ -60,7 +60,7 @@ Given(/^"(.*?)" is a Spanish\-speaking member of the group$/) do |arg1|
   user = FactoryGirl.create :user, name: arg1,
                             email: "#{arg1}@example.org",
                             password: 'password'
-  user.update_attribute(:language_preference, "es")
+  user.update_attribute(:selected_locale, "es")
   @group.add_member! user
 end
 
@@ -82,74 +82,79 @@ Then /^(?:I|they) should be taken to the group page$/ do
 end
 
 Given /^the group has a discussion with a decision$/ do
-  @discussion = FactoryGirl.create :discussion, :group => @group
+  @discussion = create_discussion :group => @group
   @motion = FactoryGirl.create :motion, :discussion => @discussion
 end
 
 Given /^there is a discussion in the group$/ do
-  @discussion = FactoryGirl.create :discussion, :group => @group
+  @discussion = create_discussion group: @group
 end
 
 Given /^there is a discussion in a public group$/ do
-  @group = FactoryGirl.create :group, :viewable_by => :everyone
-  @discussion = FactoryGirl.create :discussion, :group => @group
+  @group = FactoryGirl.create :group, :privacy => 'public'
+  @discussion = create_discussion :group => @group
+end
+
+Given /^there is a public discussion in a public group$/ do
+  @group = FactoryGirl.create :group, :privacy => 'public'
+  @discussion = create_discussion :group => @group, private: false
 end
 
 Given /^there is a discussion in a private group$/ do
-  @group = FactoryGirl.create :group, :viewable_by => :members
-  @discussion = FactoryGirl.create :discussion, :group => @group
+  @group = FactoryGirl.create :group, :privacy => 'hidden'
+  @discussion = create_discussion :group => @group
 end
 
 Given /^there is a discussion in a group I belong to$/ do
   @group = FactoryGirl.create :group
-  @discussion = FactoryGirl.create :discussion, :group => @group
+  @discussion = create_discussion :group => @group
   @group.add_member! @user
 end
 
 Given /^the subgroup has a discussion$/ do
-  @discussion = FactoryGirl.create :discussion, :group => @subgroup
+  @discussion = create_discussion :group => @subgroup
 end
 
 When /^I fill details for the subgroup$/ do
   fill_in "group_name", :with => 'test group'
-  choose "group_viewable_by_everyone"
+  choose "group_privacy_public"
   choose "group_members_invitable_by_members"
 end
 
 When /^I fill details for public all members invite subgroup$/ do
   fill_in "group_name", :with => 'test group'
-  choose "group_viewable_by_everyone"
+  choose "group_privacy_public"
   choose "group_members_invitable_by_members"
   click_on 'group_form_submit'
 end
 
 When /^I fill details for public admin only invite subgroup$/ do
   fill_in "group_name", :with => 'test group'
-  choose "group_viewable_by_everyone"
+  choose "group_privacy_public"
   choose "group_members_invitable_by_admins"
 end
 
 When /^I fill details for members only all members invite subgroup$/ do
   fill_in "group_name", :with => 'test group'
-  choose "group_viewable_by_members"
+  choose "group_privacy_hidden"
   choose "group_members_invitable_by_members"
 end
 
 When /^I fill details for members only admin invite subgroup$/ do
   fill_in "group_name", :with => 'test group'
-  choose "group_viewable_by_members"
+  choose "group_privacy_hidden"
   choose "group_members_invitable_by_admins"
 end
 
 When /^I fill details for members and parent members only all members invite subgroup$/ do
   fill_in "group_name", :with => 'test group'
-  choose "group_viewable_by_members"
+  choose "group_privacy_hidden"
   choose "group_members_invitable_by_members"
 end
 
 When /^I fill details for members and parent members admin only invite ubgroup$/ do
   fill_in "group_name", :with => 'test group'
-  choose "group_viewable_by_members"
+  choose "group_privacy_hidden"
   choose "group_members_invitable_by_admins"
 end
 
@@ -165,8 +170,13 @@ Then /^I should not see the list of invited users$/ do
   page.should_not have_css('#invited-users')
 end
 
+When(/^I visit my group's memberships index$/) do
+  visit group_path(@group)
+  click_on 'More'
+end
+
+
 Then /^I email the group members$/ do
-  find('#group-member-options').click()
   click_on "Email group members"
   fill_in "group_email_subject", :with => "Message to group"
   fill_in "group_email_body", :with => "Y'all are great"
@@ -182,6 +192,10 @@ Given /^the group has a subgroup$/ do
   @subgroup = FactoryGirl.create(:group, parent: @group)
 end
 
+Given /^the group has a hidden subgroup$/ do
+  @subgroup = FactoryGirl.create(:group, parent: @group, privacy: 'hidden')
+end
+
 Given /^the group has a subgroup I am an admin of$/ do
   @subgroup = FactoryGirl.create(:group, parent: @group)
   @subgroup.add_admin!(@user)
@@ -190,5 +204,5 @@ end
 Then /^the group has another subgroup with a discussion I am an admin of$/ do
   @subgroup1 = FactoryGirl.create(:group, parent: @group)
   @subgroup1.add_admin!(@user)
-  @discussion = FactoryGirl.create :discussion, :group => @subgroup1
+  @discussion = create_discussion :group => @subgroup1
 end

@@ -1,12 +1,11 @@
 require 'spec_helper'
-describe InboxPreferencesForm do
 
+describe InboxPreferencesForm do
   def create_membership_with_position(user, group, position = 0)
     membership = Membership.new
     membership.group = group
     membership.user = user
     membership.inbox_position = position
-    membership.access_level = 'member'
     membership.save!
     membership
   end

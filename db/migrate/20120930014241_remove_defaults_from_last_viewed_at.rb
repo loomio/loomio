@@ -1,4 +1,10 @@
 class RemoveDefaultsFromLastViewedAt < ActiveRecord::Migration
+  class Membership < ActiveRecord::Base
+  end
+
+  class DiscussionReadLog < ActiveRecord::Base
+  end
+
   def up
     change_column_default(:memberships, :last_viewed_at, nil)
     change_column_default(:discussion_read_logs, :discussion_last_viewed_at, nil)

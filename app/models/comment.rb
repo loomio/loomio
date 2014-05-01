@@ -1,23 +1,24 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :body, :uses_markdown
   include Twitter::Extractor
+  include Translatable
 
   has_paper_trail
 
   belongs_to :discussion, counter_cache: true
   belongs_to :user
 
-  has_many :comment_votes
+  has_many :comment_votes, :dependent => :destroy
   has_many :events, :as => :eventable, :dependent => :destroy
+  has_many :attachments
 
-  validates_presence_of :body, :user
-  validates_inclusion_of :uses_markdown, :in => [true,false]
+  validates_presence_of :user
+  validate :has_body_or_attachment
+  validate :attachments_owned_by_author
 
-  after_create :update_discussion_last_comment_at
-  after_create :fire_new_comment_event
-  after_destroy :update_discussion_last_comment_at
+  after_initialize :set_defaults
+  after_destroy :send_discussion_comment_deleted!
 
-  default_scope include: [:comment_votes, :user], order: "id DESC"
+  default_scope include: [:user, :attachments, :discussion]
 
   delegate :name, :to => :user, :prefix => :user
   delegate :email, :to => :user, :prefix => :user
@@ -26,18 +27,23 @@ class Comment < ActiveRecord::Base
   delegate :full_name, :to => :group, :prefix => :group
   delegate :title, :to => :discussion, :prefix => :discussion
 
+  serialize :liker_ids_and_names, Hash
+
   alias_method :author, :user
+  alias_method :author=, :user=
 
   # Helper class method that allows you to build a comment
   # by passing a discussion object, a user_id, and comment text
-  # example in readme
-  
-  def self.build_from(obj, user_id, body, uses_markdown)
+  def self.build_from(discussion, user, body, options = {})
     c = self.new
-    c.discussion_id = obj.id
+    c.discussion = discussion
     c.body = body
-    c.user_id = user_id
-    c.uses_markdown = uses_markdown
+    c.user = user
+    c.uses_markdown = options[:uses_markdown] || false
+    if options[:attachments].present?
+      c.attachment_ids = options[:attachments].map{|s| s.to_i}
+      c.attachments_count = options[:attachments].count
+    end
     c
   end
 
@@ -51,26 +57,19 @@ class Comment < ActiveRecord::Base
   end
 
   def like(user)
-    vote = comment_votes.build
-    vote.user = user
-    vote.save if persisted?
-    vote
+    liker_ids_and_names[user.id] = user.name
+    like = comment_votes.build
+    like.comment = self
+    like.user = user
+    like.save
+    save
+    like
   end
 
   def unlike(user)
+    liker_ids_and_names.delete(user.id)
     comment_votes.where(:user_id => user.id).each(&:destroy)
-  end
-
-  def likes
-    comment_votes
-  end
-
-  def likes_count
-    comment_votes_count
-  end
-
-  def has_not_been_liked_by?(user)
-    !comment_votes.any?{ |cv| cv.user_id == user.id }
+    save
   end
 
   def mentioned_group_members
@@ -82,12 +81,36 @@ class Comment < ActiveRecord::Base
     (discussion.participants - mentioned_group_members) - [author]
   end
 
+  def likes_count
+    comment_votes_count
+  end
+
+  def likers_include?(user)
+    if liker_ids_and_names.respond_to? :keys
+      liker_ids_and_names.keys.include?(user.id)
+    end
+  end
+
   private
-    def fire_new_comment_event
-      Events::NewComment.publish!(self)
+    def send_discussion_comment_deleted!
+      discussion.comment_deleted!
     end
 
-    def update_discussion_last_comment_at
-      discussion.update_attribute(:last_comment_at, created_at)
+    def set_defaults
+      self.liker_ids_and_names ||= {}
+    end
+
+    def attachments_owned_by_author
+      if attachments.present?
+        if attachments.map(&:user_id).uniq != [user.id]
+          errors.add(:attachments, "Attachments must be owned by author")
+        end
+      end
+    end
+
+    def has_body_or_attachment
+      if body.blank? && attachments.blank?
+        errors.add(:body, "Comment cannot be empty")
+      end
     end
 end

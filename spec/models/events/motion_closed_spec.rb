@@ -6,19 +6,18 @@ describe Events::MotionClosed do
   let(:closer) { mock_model(User, email: 'bill@dave.com') }
 
   describe "::publish!" do
-    let(:event) { stub(:event, notify_users!: true) }
+    let(:event) { double(:event, notify_users!: true) }
     before { Event.stub(:create!).and_return(event) }
 
     it 'creates an event' do
       Event.should_receive(:create!).with(kind: 'motion_closed',
                                           eventable: motion,
-                                          user: closer,
                                           discussion_id: motion.discussion.id)
-      Events::MotionClosed.publish!(motion, closer)
+      Events::MotionClosed.publish!(motion)
     end
 
     it 'returns an event' do
-      Events::MotionClosed.publish!(motion, closer).should == event
+      Events::MotionClosed.publish!(motion).should == event
     end
   end
 
@@ -26,16 +25,15 @@ describe Events::MotionClosed do
     let(:user) { mock_model(User) }
     let(:event) { Events::MotionClosed.new(kind: "motion_closed",
                                            eventable: motion,
-                                           user: closer,
                                            discussion_id: motion.discussion.id) }
 
     before do
       motion.stub(:author).and_return(closer)
-      motion.stub(:group_users).and_return([user])
+      motion.stub(:group_members).and_return([user])
       MotionMailer.stub_chain(:motion_closed, :deliver)
     end
 
-    it 'emails group_users motion_closed' do
+    it 'emails group_members motion_closed' do
       MotionMailer.should_receive(:motion_closed).with(motion, closer.email)
       event.save
     end
@@ -45,9 +43,5 @@ describe Events::MotionClosed do
       event.save
     end
 
-    it 'does not notify other the closer' do
-      event.should_not_receive(:notify!).with(closer)
-      event.save
-    end
   end
 end

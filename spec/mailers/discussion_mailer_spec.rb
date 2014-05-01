@@ -1,11 +1,11 @@
 require "spec_helper"
 
 describe DiscussionMailer do
-  let(:discussion) { create(:discussion) }
+  let(:discussion) { create_discussion }
   let(:group) { discussion.group }
 
   context 'sending individual email upon new discussion creation' do
-    before(:all) do
+    before do
       @email = DiscussionMailer.new_discussion_created(discussion, discussion.author)
     end
 
@@ -14,7 +14,7 @@ describe DiscussionMailer do
     end
 
     it 'renders the sender email' do
-      @email.from.should == ['noreply@loomio.org']
+      @email.from.should == ['notifications@loomio.org']
     end
 
     it 'sends email to group members but not author' do

@@ -57,26 +57,22 @@ Loomio::Application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.default_url_options = {
-    :host => 'loomio-staging.herokuapp.com',
+    host: ENV['CANONICAL_HOST'] || 'staging.loomio.org',
   }
 
   if ENV['ENABLE_STAGING_EMAILS']
-    # Send emails using SendGrid
+    # Send emails using SMTP service
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      :address        => 'smtp.sendgrid.net',
-      :port           => '587',
+      :address        => ENV['SMTP_SERVER'],
+      :port           => ENV['SMTP_PORT'],
       :authentication => :plain,
-      :user_name      => ENV['SENDGRID_USERNAME'],
-      :password       => ENV['SENDGRID_PASSWORD'],
-      :domain         => 'loomio.org'
+      :user_name      => ENV['SMTP_USERNAME'],
+      :password       => ENV['SMTP_PASSWORD'],
+      :domain         => ENV['SMTP_DOMAIN']
     }
     config.action_mailer.raise_delivery_errors = true
     # Email admin when server gets exceptions!
-    config.middleware.use ExceptionNotifier,
-      :email_prefix => "[Loomio STAGING Exception] ",
-      :sender_address => %{"Exception Notifier" <staging-exceptions@loomio.org>},
-      :exception_recipients => [ENV['EXCEPTION_RECIPIENT']]
   else
     config.action_mailer.delivery_method = :test
   end

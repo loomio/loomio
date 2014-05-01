@@ -1,0 +1,2 @@
+describe SearchesController do
+end

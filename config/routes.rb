@@ -1,160 +1,262 @@
 Loomio::Application.routes.draw do
 
-  get "/groups", to: 'groups/public_groups#index', as: :public_groups
-
+  slug_regex = /[a-z0-9\-\_]*/i
   ActiveAdmin.routes(self)
 
-  devise_for :users, controllers: { sessions: 'users/sessions',
-                                    registrations: 'users/registrations' }
-
-  get "/inbox", to: "inbox#index", as: :inbox
-  get '/inbox/preferences', to: 'inbox#preferences', as: :inbox_preferences
-  put '/inbox/update_preferences', to: 'inbox#update_preferences', as: :update_inbox_preferences
-  match '/inbox/mark_as_read', to: 'inbox#mark_as_read', as: :mark_as_read_inbox
-  match '/inbox/mark_all_as_read', to: 'inbox#mark_all_as_read', as: :mark_all_as_read_inbox
-  match '/inbox/unfollow', to: 'inbox#unfollow', as: :unfollow_inbox
-
-
-  resources :invitations, only: [:show]
-
-  resources :group_requests, only: [:create, :new] do
-    get :verify, on: :member
-  end
-
-  match "/request_new_group", to: "group_requests#new", as: :request_new_group
-
-  match "/group_request_confirmation", to: "group_requests#confirmation", as: :group_request_confirmation
-
-  resources :groups, except: [:index, :new] do
-    resources :invitations, only: [:index, :destroy, :new, :create], controller: 'groups/invitations'
-    resources :memberships, only: [:index, :destroy, :new, :create], controller: 'groups/memberships' do
-      member do
-       post :make_admin
-       post :remove_admin
-
-       # these three (and #new) are for membership requests which I hope to split off into a new class
-       post :approve_request, as: :approve_request_for
-       post :ignore_request, as: :ignore_request_for
-       delete :cancel_request, as: :cancel_request_for
+  namespace :admin do
+    resource :email_groups, only: [:create, :new]
+    resources :stats, only: [] do
+      collection do
+        get :events
       end
     end
+  end
 
-    get :setup, on: :member, to: 'groups/group_setup#setup'
-    put :finish, on: :member, to: 'groups/group_setup#finish'
+  get "/explore", to: 'explore#index', as: :explore
+  get "/explore/search", to: "explore#search", as: :search_explore
+  get "/explore/category/:id", to: "explore#category", as: :category_explore
 
-    post :add_members, on: :member
-    post :hide_next_steps, on: :member
-    get :add_subgroup, on: :member
+  get "/groups", to: 'public_groups#index', as: :public_groups
 
-    resources :motions
+  get "/new_group", to: 'groups#new'
+
+  resource :search, only: :show
+
+  devise_for :users, controllers: { sessions: 'users/sessions',
+                                    registrations: 'users/registrations',
+                                    omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  namespace :inbox do
+    get   '/', action: 'index'
+    get   'size'
+    get   'preferences'
+    put   'update_preferences'
+    match 'mark_as_read'
+    match 'mark_all_as_read/:id', action: 'mark_all_as_read', as: :mark_all_as_read
+    match 'unfollow'
+  end
+
+  resources :group_requests, only: [:create, :new] do
+    get :confirmation, on: :collection
+  end
+
+  resources :invitations, only: [:show, :create, :destroy]
+
+  resources :groups, path: 'g', only: [:create, :edit] do
+    scope module: :groups do
+      resources :memberships, only: [:index, :destroy, :new, :create] do
+        member do
+         post :make_admin
+         post :remove_admin
+        end
+      end
+      resource :subscription, controller: 'subscriptions', only: [:new, :show] do
+        collection do
+          post :checkout
+          get :confirm
+          get :payment_failed
+        end
+      end
+      scope controller: 'group_setup' do
+        member do
+          get :setup
+          put :finish
+        end
+      end
+
+      get :ask_to_join, controller: 'membership_requests', action: :new
+      resources :membership_requests, only: [:create]
+      get :membership_requests,  to: 'manage_membership_requests#index', as: 'membership_requests'
+    end
+
+    member do
+      post :add_members
+      post :hide_next_steps
+      get :add_subgroup
+      post :email_members
+      post :edit_description
+      delete :leave_group
+      get :members_autocomplete
+    end
+
+    resources :motions,     only: [:index]
     resources :discussions, only: [:index, :new]
-    get :request_membership, on: :member
-    post :email_members, on: :member
-    post :edit_description, on: :member
-    post :edit_privacy, on: :member
-    delete :leave_group, on: :member
+    resources :invitations, only: [:new, :destroy]
   end
 
-  match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
-  match "/groups/:id/members", :to => "groups#get_members", :as => :get_members, :via => :get
+  scope module: :groups, path: 'g', slug: slug_regex do
+    get    ':id(/:slug)', action: 'show', as: :group
+    put    ':id(/:slug)', action: 'update'
+    delete ':id(/:slug)', action: 'destroy'
 
-  resources :motions do
-    resources :votes, only: [:new, :edit, :create, :update]
-    post :get_and_clear_new_activity, on: :member
-    put :close, :on => :member
-    put :edit_outcome, :on => :member
-    put :edit_close_date, :on => :member
+    post 'archive/:id',  action: 'archive', as: :archive_group
   end
 
-  resources :discussions, except: [:edit] do
+  scope module: :groups do
+    resources :manage_membership_requests, only: [], as: 'membership_requests' do
+      member do
+        post :approve
+        post :ignore
+      end
+    end
+  end
+  delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel', as: :cancel_membership_request
+
+  resources :motions, path: 'm', only: [:new, :create, :edit, :index] do
+    resources :votes, only: [:new, :create, :update]
+    member do
+      put :close
+      put :create_outcome
+      post :update_outcome
+      put :edit_close_date
+    end
+  end
+
+  scope module: :motions, path: 'm', slug: slug_regex do
+    get    ':id(/:slug)', action: 'show', as: :motion
+    put    ':id(/:slug)', action: 'update'
+    delete ':id(/:slug)', action: 'destroy'
+  end
+
+  resources :discussions, path: 'd', only: [:new, :edit, :create] do
     get :activity_counts, on: :collection
-    post :update_description, :on => :member
-    post :add_comment, :on => :member
-    post :show_description_history, :on => :member
-    get :new_proposal, :on => :member
-    post :edit_title, :on => :member
-    put :move, :on => :member
+    resources :invitations, only: [:new]
+
+    member do
+      post :update_description
+      post :update
+      post :add_comment
+      post :show_description_history
+      get :new_proposal
+      post :move
+    end
   end
 
-  post "/discussion/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"
-  post "/discussion/update_version/:version_id", :to => "discussions#update_version", :as => "update_version_discussion"
+  scope module: :discussions, path: 'd', slug: slug_regex do
+    get    ':id(/:slug)', action: 'show',    as: :discussion
+    put    ':id(/:slug)', action: 'update'
+    delete ':id(/:slug)', action: 'destroy'
+
+    post ':id/preview_version/(:version_id)', action: 'preview_version', as: 'preview_version_discussion'
+    post 'update_version/:version_id',        action: 'update_version',   as: 'update_version_discussion'
+  end
+
+  resources :comments , only: [:destroy, :edit, :update, :show] do
+    post :like, on: :member
+    post :translate, on: :member
+  end
+
+  resources :attachments, only: [:create, :new] do
+    collection do
+      get 'sign'
+      get :iframe_upload_result
+    end
+  end
 
   resources :notifications, :only => :index do
-    get :groups_tree_dropdown, on: :collection
-    get :dropdown_items, on: :collection
-    post :mark_as_viewed, :on => :collection, :via => :post
+    collection do
+      get :groups_tree_dropdown
+      get :dropdown_items
+      post :mark_as_viewed
+    end
   end
 
+  resources :users, path: 'u', only: [:new] do
+    member do
+      put :set_avatar_kind
+      post :upload_new_avatar
+    end
+  end
 
-  resources :users, :only => [:new, :create, :update, :show,] do
-    put :set_avatar_kind, on: :member
-    post :upload_new_avatar, on: :member
+  scope module: :users do
+    match '/profile',          action: 'profile', as: :profile
+    scope module: :email_preferences do
+      get '/email_preferences', action: 'edit',   as: :email_preferences
+      put '/email_preferences', action: 'update', as: :update_email_preferences
+    end
+  end
+
+  scope module: :users, path: 'u' do
+    get ':id(/:slug)', action: 'show',    slug: slug_regex, as: :user
+    put ':id(/:slug)', action: 'update',  slug: slug_regex
   end
 
   match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
 
-  match "/users/dismiss_system_notice", :to => "users#dismiss_system_notice",
-        :as => :dismiss_system_notice_for_user, :via => :post
-  match "/users/dismiss_dashboard_notice", :to => "users#dismiss_dashboard_notice",
-        :as => :dismiss_dashboard_notice_for_user, :via => :post
-  match "/users/dismiss_group_notice", :to => "users#dismiss_group_notice",
-        :as => :dismiss_group_notice_for_user, :via => :post
-  match "/users/dismiss_discussion_notice", :to => "users#dismiss_discussion_notice",
-        :as => :dismiss_discussion_notice_for_user, :via => :post
-
-  resources :comments , only: [:destroy, :edit, :update, :show] do
-    post :like, on: :member
-    post :unlike, on: :member
-  end
-
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
   get '/group_requests/:id/start_new_group' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('token=','')}"}
 
-  match "/settings", :to => "users#settings", :as => :user_settings
-  match 'email_preferences', :to => "users/email_preferences#edit", :as => :email_preferences, :via => :get
-  match 'email_preferences', :to => "users/email_preferences#update", :as => :update_email_preferences, :via => :put
+  get '/contributions' => redirect('/crowd')
+  get '/contributions/thanks' => redirect('/crowd')
+  get '/contributions/callback' => redirect('/crowd')
+  get '/crowd' => redirect('https://love.loomio.org/')
 
-  resources :contributions, only: [:index, :create] do
-    get :callback, on: :collection
-    get :thanks, on: :collection
-  end
+  # resources :contributions, only: [:index, :create] do
+  #   get :callback, on: :collection
+  #   get :thanks, on: :collection
+  # end
 
-  authenticated do
-    root :to => 'dashboard#show'
-  end
-
-  root :to => 'pages#home'
+  get '/dashboard', to: 'dashboard#show', as: 'dashboard'
+  root :to => 'marketing#index'
 
   scope controller: 'pages' do
     get :about
     get :privacy
+    get :purpose
+    get :services
+    get :terms_of_service
+    get :third_parties
+    get :try_it
+    get :wallets
     get :browser_not_supported
+  end
+
+  scope controller: 'campaigns' do
+    get :hide_crowdfunding_banner
   end
 
   scope controller: 'help' do
     get :help
   end
 
-  resources :woc, only: :index do
-    post :send_request, on: :collection
-  end
-  get '/collaborate', to: "woc#index", as: :collaborate
+  get '/detect_locale' => 'detect_locale#show'
+  match '/detect_video_locale' => 'detect_locale#video', as: :detect_video_locale
 
-  resources :we_the_people, only: :index do
-    post :send_request, on: :collection
+  resources :contact_messages, only: [:new, :create]
+  match 'contact(/:destination)', to: 'contact_messages#new'
+
+  #redirect from wall to new group signup
+  namespace :group_requests do
+    get 'selection', action: 'new'
+    get 'subscription', action: 'new'
+    get 'pwyc', action: 'new'
   end
 
   #redirect old invites
   match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
 
   #redirect old pages:
-  get '/pages/how*it*works' => redirect('/about#how-it-works')
-  get '/pages/home' => redirect('/')
-  get '/get*involved' => redirect('/about#how-it-works')
-  get '/how*it*works' => redirect('/about#how-it-works')
-  get '/pages/get*involved' => redirect('/about')
-  get '/pages/about' => redirect('/about#about-us')
-  get '/pages/contact' => redirect('/about#about-us')
-  get '/contact' => redirect('/about#about-us')
-  get '/pages/privacy' => redirect('/privacy_policy')
+  get '/we_the_people' => redirect('/')
+  get '/collaborate'   => redirect('/')
+  get '/woc'           => redirect('/')
+  get '/discussions/:id', to: 'discussions_redirect#show'
+  get '/groups/:id',      to: 'groups_redirect#show'
+  get '/motions/:id',     to: 'motions_redirect#show'
+
+  scope path: 'pages' do
+    get 'home'         => redirect('/')
+    get 'how*it*works' => redirect('/purpose#how-it-works')
+    get 'get*involved' => redirect('/about')
+    get 'privacy'      => redirect('/privacy_policy')
+    get 'about'        => redirect('/about#about-us')
+    match 'contact'    => 'contact_messages#new'
+  end
+
+  get '/get*involved'       => redirect('/purpose#how-it-works')
+  get '/how*it*works'       => redirect('/purpose#how-it-works')
+  get '/about#how-it-works' => redirect('/purpose#how-it-works')
+
+  get '/blog'       => redirect('http://blog.loomio.org')
+  get '/press'      => redirect('http://blog.loomio.org/press-pack')
+  get '/press-pack' => redirect('http://blog.loomio.org/press-pack')
 end

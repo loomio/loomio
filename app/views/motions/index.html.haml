@@ -1,10 +1,13 @@
+- if @group.present?
+  %h1 Closed proposals for #{@group.name}
+- else
+  %h1 Closed proposals in all of your groups
+
 %ul.selector-list
   #closed-motions-list
     - if @closed_motions.exists?
       - @closed_motions.each do |motion|
-        %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: @group
+        %li.selector-item= render 'motions/motion_preview', motion: motion
     - else
       %li.selector-item.empty-list-message= t(:empty_decision_index)
-  #closed-motions-loading
-    %li.selector-item.loading= t(:loading)
-= paginate @closed_motions, :window => 3, :remote => :true
+= paginate @closed_motions

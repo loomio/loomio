@@ -18,4 +18,4 @@
       .control-group
         =f.collection_check_boxes(:group_email_preferences, @email_preferences.all_memberships, :id, :group_full_name, {}, {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
 
-      =f.submit t("email_preferences_form.update_preferences"), :class => "btn btn-info btn-large"
+      =f.submit t("email_preferences_form.update_preferences"), :class => "btn btn-info btn-large", :data => {:disable_with => t("email_preferences_form.update_preferences")}

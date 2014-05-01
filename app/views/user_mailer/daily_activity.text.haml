@@ -15,8 +15,8 @@
     -@motions.each do |motion|
       =motion.name
       =motion_url(motion)
-      -if motion.close_at.present?
-        \- closes in #{time_ago_in_words(motion.close_at)}
+      -if motion.voting?
+        \- closes in #{time_ago_in_words(motion.closing_at)}
         \
   -if @discussions.present?
     = t :discussions

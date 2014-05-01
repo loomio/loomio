@@ -18,10 +18,19 @@ parseEmails = (input_emails) ->
 Application.validateEmailsAndConfirm = (field) ->
   if $(field).is(":visible")
     emailList = parseEmails($(field).val())
-    if(emailList.length > 0)
-      return false unless confirm("#{emailList.length} invitations will be sent")
+    parentMembersEmpty = $('.invite_people_form_parent_members_to_add input:checked:enabled').length == 0
+    emailListEmpty = emailList.length == 0
+    if parentMembersEmpty && emailListEmpty
+      addValidateEmailErrorMessageFor($(field))
+      return false
+    else
       $(".recipients").val(emailList.toString())
   true
+
+
+addValidateEmailErrorMessageFor = (field) ->
+  $(field).parent().addClass("error")
+  $(field).parent().find(".email-validation-help").show()
 
 hideValidateEmailErrorMessageFor = (field) ->
   $(field).parent().removeClass("error")

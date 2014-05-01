@@ -1,0 +1,58 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+ro:
+   errors:
+     messages:
+       expired: "a expirat, te rugăm să soliciți unul nou"
+       not_found: "nu a fost găsit"
+       already_confirmed: "a fost deja confirmat, te rugăm să te autentifici"
+       not_locked: "nu a fost blocat"
+       not_saved:
+         one: "O eroare a împiedicat ca această %{resource} să fie salvată:"
+         other: "%{count} erori au împiedicat ca această %{resource} să fie salvată:"
+
+   devise:
+     failure:
+       already_authenticated: 'Ești deja autentificat.'
+       unauthenticated: 'Trebuie să te autentifici sau să creezi un cont înainte de a continua.'
+       unconfirmed: 'Trebuie să-ți confirmi contul înainte de a continua.'
+       locked: 'Contul tău este blocat.'
+       invalid: 'Email sau parolă invalide.'
+       invalid_token: 'Cod de autentificare invalid.'
+       timeout: 'Sesiunea de lucru a expirat, te rugăm să te autentifici din nou pentru a continua.'
+       inactive: 'Contul tău nu a fost activat încă.'
+     sessions:
+       signed_in: 'Autentificat cu succes.'
+       signed_out: 'Ai ieșit din cont cu succes.'
+     passwords:
+       send_instructions: 'Vei primi un email cu instrucțiuni despre resetarea parolei în câteva minute.'
+       updated: 'Parola ta a fost schimbată cu succes. Ești acum autentificat.'
+       updated_not_active: 'Parola ta a fost schimbată cu succes.'
+       send_paranoid_instructions: "Dacă email-ul tău există în baza noastră de date, vei primi un email cu un link pentru resetarea parolei în câteva minute."
+     confirmations:
+       send_instructions: 'Vei primi un email cu instrucțiuni despre confirmarea contului în câteva minute.'
+       send_paranoid_instructions: 'Dacă email-ul tău există în baza noastră de date, vei primi un email cu date despre confirmarea contului în câteva minute.'
+       confirmed: 'Contul tău a fost confirmat cu succes. Ești acum autentificat.'
+     registrations:
+       signed_up: 'Bine ai venit! Ai fost autentificat cu succes.'
+       inactive_signed_up: 'Te-ai înregistrat cu succes. Totuși, nu te putem autentifica pentru că acest cont este %{reason}.'
+       updated: 'Ți-ai actualizat contul cu succes.'
+       destroyed: 'La revedere! Contul tău a fost anulat cu succes. Sperăm să te revedem curând.'
+       reasons:
+         inactive: 'inactiv'
+         unconfirmed: 'neconfirmat'
+         locked: 'blocat'
+     unlocks:
+       send_instructions: 'Vei primi un email cu instrucțiuni despre deblocarea contului în câteva minute.'
+       unlocked: 'Contul tău a fost deblocat cu succes. Ești acum autentificat.'
+       send_paranoid_instructions: 'Dacă acest cont există, vei primi un email cu instrucțiuni despre deblocarea sa în câteva minute.'
+     omniauth_callbacks:
+       success: 'Autorizat cu succes folosind contul de %{kind}.'
+       failure: 'Nu s-a putut face autorizarea folosind contul de %{kind} pentru că "%{reason}".'
+     mailer:
+       confirmation_instructions:
+         subject: 'Instrucțiuni pentru confirmarea contului'
+       reset_password_instructions:
+         subject: 'Instrucțiuni pentru resetarea parolei'
+       unlock_instructions:
+         subject: 'Instrucțiuni pentru deblocare'
