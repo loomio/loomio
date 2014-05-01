@@ -1,5 +1,5 @@
 @mixin screen-size($medium-up) {
-  @media (min-width: 768px) { @content; }
+  @media (min-width: 1024px) { @content; }
 }
 
 @mixin screen($medium-only) {
