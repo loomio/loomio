@@ -44,7 +44,7 @@ class UserMailer < BaseMailer
     locale = best_locale(user.locale, @motion.author.locale)
     I18n.with_locale(locale) do
       mail to: user.email,
-           from: "#{motion.author.name} <noreply@loomio.org>",
+           from: "#{motion.author.name} <notifications@loomio.org>",
            reply_to: motion.author_name_and_email,
            subject: "#{t(:"email.proposal_closing_soon.closing_in_24_hours")}: #{motion.name} - #{@group.name}"
     end
