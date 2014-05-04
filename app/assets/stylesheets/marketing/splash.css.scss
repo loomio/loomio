@@ -151,16 +151,19 @@ a:hover { text-decoration: none; }
     margin: 0 auto 26px;
     width: 70%;
   }
-  .content { padding-top: 40px; }
+  .content {
+    padding-top: 40px;
+    padding-bottom: 92px;
+  }
 }
 
-// gross customization of grid
-
 .product {
-  .content.header {
+  .content { padding-bottom: 68px; }
+  .header {
     width: 100%;
     @include screen-size(medium-up) {
       width: 600px;
+      margin: 0 auto;
     }
   }
   .video {
@@ -172,15 +175,6 @@ a:hover { text-decoration: none; }
     display: inline-block;
     &:hover {
     background-image:url('/assets/play-hover.png');
-    }
-  }
-}
-
-.prototype {
-  .content.header {
-    width: 100%;
-    @include screen-size(medium-up) {
-      width: 950px;
     }
   }
 }
@@ -197,11 +191,9 @@ a:hover { text-decoration: none; }
 .content.product-carousel {
   padding-top: 26px;
 }
-//
 
 #product-carousel, #prototype-carousel {
   cursor: pointer;
-  &.content { padding-bottom: 28px; }
   .carousel-control {
     position: absolute;
     z-index: 5;
@@ -213,15 +205,17 @@ a:hover { text-decoration: none; }
     }
 
     &.left-ctrl {
-      left: -29px;
+      display: none;
       @include screen-size(medium-up) {
+        display: block;
         left: -77px;
       }
     }
 
     &.right-ctrl {
-      left: 329px;
+      display: none;
       @include screen-size(medium-up) {
+        display: block;
         left: 890px;
       }
     }
@@ -232,7 +226,6 @@ a:hover { text-decoration: none; }
 #product-carousel {
   .carousel-control {
     &.left-ctrl {
-      display: none;
       @include screen-size(medium-up) {
         display: block;
         left: -77px;
@@ -240,7 +233,6 @@ a:hover { text-decoration: none; }
     }
 
     &.right-ctrl {
-      display: none;
       @include screen-size(medium-up) {
         display: block;
         left: 890px;
@@ -256,28 +248,38 @@ a:hover { text-decoration: none; }
   }
 }
 
+.prototype {
+  .content {
+    padding-bottom: 0;
+    @include screen-size(medium-up) {
+      padding: 52px 26px 0;
+    }
+  }
+}
+
 #prototype-carousel {
-  height: 300px;
-  width: 360px;
-  margin-left: 34px;
+  width: 300px;
+  margin: 52px auto 0;
   @include screen-size(medium-up) {
     width: 960px;
-    margin: 0 auto;
   }
   .carousel-control {
     top: 34%;
   }
   .carousel-image {
-    float: left;
     margin-right: 24px;
     margin-top: 6px;
     width: 38%;
+    @include screen-size(medium-up) {
+      float: left;
+    }
   }
   .carousel-desc {
-    float: left;
-    width: 100%;
+    margin-top: 24px;
     @include screen-size(medium-up) {
+      float: left;
       width: 58%;
+      margin-top: 0;
     }
   }
   .item {
@@ -288,6 +290,13 @@ a:hover { text-decoration: none; }
   .quote {
     margin: 10px 0;
     padding: 8px 16px;
+  }
+  .carousel-inner {
+    margin-bottom: 0;
+    height: 550px;
+    @include screen-size(medium-up) {
+      height: 248px;
+    }
   }
 }
 
@@ -424,23 +433,26 @@ a:hover { text-decoration: none; }
       padding: 20px 0;
     }
   }
-  &.content {
+  .content {
     padding-top: 0;
-    display: none;
+    padding-bottom: 0;
     @include screen-size(medium-up) {
       display: block;
     }
   }
-  .col-xs-3 {
+  .group-tab {
     background: $ash;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
+    border: 1px solid white;
     height: 77px;
     cursor: pointer;
+    @include screen-size(medium-up) {
+      border-top: none;
+      border-bottom: none;
+    }
   }
 }
 
-.col-xs-3 {
+.group-tab {
   &#genzero {
     background-image:url('/assets/genzero-logo-white.png');
     background-repeat: no-repeat;
@@ -466,30 +478,28 @@ a:hover { text-decoration: none; }
 }
 
 .row.links {
-  margin-top: 250px;
-  @include screen-size(medium-up) {
-    margin-top: 0;
-  }
+  margin-top: 0;
+  .content { padding-bottom: 68px; }
 }
 
-.col-xs-3.active {
+.group-tab.active {
   background-color: $charcoal;
 }
 
-.col-xs-3.active:before {
-  position: absolute;
-  top: -14px;
-  right: 98px;
-  border-right: 14px solid transparent;
-  border-bottom: 14px solid #ccc;
-  border-left: 14px solid transparent;
-  border-bottom-color: $charcoal;
-  content: '';
+.group-tab.active:before {
+  display: none;
+  @include screen-size(medium-up) {
+    display: block;
+    position: absolute;
+    top: -14px;
+    right: 98px;
+    border-right: 14px solid transparent;
+    border-bottom: 14px solid #ccc;
+    border-left: 14px solid transparent;
+    border-bottom-color: $charcoal;
+    content: '';
+  }
 }
-
-// .col-xs-3.active:before {
-//   background-color: $charcoal;
-// }
 
 .crowdfunding {
   background-color: $blue;
