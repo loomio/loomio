@@ -960,15 +960,6 @@ en:
       intro: "Please click this verification link to finalise your request:"
       ignore: "If you did not request to join Loomio please ignore this email."
 
-
-
-  #
-  # CAMPAIGNS
-  #
-
-  campaign:
-    crowdfunding_html: "WE DID IT! Thanks everyone who helped us crowdfund Loomio 1.0. We love our community!</a>"
-
   #
   # COMMON WORDS
   #
