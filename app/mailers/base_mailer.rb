@@ -30,4 +30,8 @@ class BaseMailer < ActionMailer::Base
       unique_args: { environment: Rails.env, arguments: args.inspect }
     }.to_json
   end
+
+  def from_user_via_loomio(user)
+    "#{user.name} via Loomio <notifications@loomio.org>"
+  end
 end
