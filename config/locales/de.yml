@@ -1,6 +1,13 @@
 de:
   explore:
     go_to_group: "Zu %{group_name} gehen"
+  try_it:
+    header: "Loomio ausprobieren"
+    start_a_group: "Gründe eine Gruppe, um Entscheidungen in deiner eigenen Community zu treffen."
+    join_the_community: "Tritt der Loomio Comunity-Gruppe bei"
+    loomio_community_info: "Hier diskutieren wir und treffen Entscheidungen über Loomio."
+    explore_groups: "Stöbere in anderen Gruppen auf Loomio"
+    explore_groups_info: "Sieh dir all die fantastischen Gruppen auf Loomio an und tritt ihnen bei!"
   activerecord:
     errors:
       messages:
@@ -278,6 +285,8 @@ de:
   edit_group_description: "Gruppenbeschreibung ändern"
   group_subscription: "Gruppenabonnement"
   group_request:
+    beta_request_header: "Gründe eine Gruppe auf Loomio Beta"
+    beta_request_description: "Um Entscheidungen auf Loomio Beta zu treffen, musst du zuerst eine Gruppe gründen"
     neighbourhood_support_group: "z. B. Nachbarschaftshilfe"
     confirmation:
       title: Du bist fast fertig! Prüfe deine E-Mails.
@@ -302,7 +311,7 @@ de:
   see_previous_decisions: "Bisherige Entscheidungen ansehen"
   see_more: "Mehr erfahren"
   create_new_proposal: "Neuen Vorschlag machen"
-  empty_decision_list_html: "Bereit für eine Entscheidung? <br> Jeder kann einen Vorschlag machen."
+  empty_decision_list_html: "Bereit, eine Entscheidung zu treffen? <br> Jeder kann einen Vorschlag machen."
   empty_decision_index: "Diese Gruppe hat noch keine Entscheidungen getroffen."
   empty_discussion_list: "Es gibt noch keine Aktivitäten in dieser Diskussion."
   empty_discussion_index: "Es gibt keine Diskussionen in deinen Gruppen."
@@ -785,6 +794,8 @@ de:
       header: "Du bist fast fertig!"
       intro: "Bitte klicke auf diesen Link zur Verifizierung um deine Anfrage abzuschließen:"
       ignore: "Wenn du nicht angefragt hast dieser Loomio Gruppe beizutreten, ignoriere diese E-Mail."
+  campaign:
+    crowdfunding_html: "GESCHAFFT! Vielen Dank an alle, die uns geholfen haben Loomio 1.0 zu finanzieren. Wir lieben unsere Community!</a>"
   about_loomio: "Über Loomio"
   ago: "vor %{quantity_of_time}"
   approve: "Zustimmen"
@@ -804,7 +815,7 @@ de:
   details: "Details"
   discussions: "Diskussionen"
   edit: "Bearbeiten"
-  email_address: "E-Mail-Adresse"
+  email_address: "Email-Adresse"
   enable: "Erlauben"
   participation: "Teilnahme"
   disable: "Verbieten"
@@ -845,6 +856,7 @@ de:
   thanks: "Danke"
   translate: "Hilf Loomio zu übersetzen!"
   unlike: "Gefällt mir nicht"
+  time_until_close: "%{quantity_of_time} verbleiben"
   update: "Aktualisierung"
   facebook: "Facebook"
   google: "Google"

@@ -295,7 +295,7 @@ zh:
   current_decision: "目前的決策"
   previous_decisions: "之前的決策"
   see_previous_decisions: "查看之前的決策"
-  see_more: "我要看更多"
+  see_more: "查看詳細資訊"
   create_new_proposal: "建立新提案"
   empty_decision_list_html: "準備好作決策了嗎？<br> 任何人都可以開始一個新的提案。"
   empty_decision_index: "此群組尚未做出任何決策"
@@ -306,7 +306,8 @@ zh:
   discussion_context:
     started_html: "已由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在 %{when} 前開始"
     last_edited_html: "最後由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在 %{when} 前編輯"
-    see_revision_history: "查看編輯歷史"
+    see_revision_history: "查看修訂歷史紀錄"
+    see_history: "查看歷史紀錄"
   description_history:
     header: "編輯歷史"
     subheader: "版本"

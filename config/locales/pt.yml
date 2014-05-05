@@ -323,6 +323,7 @@ pt:
     started_html: "Iniciado %{when} atrás por <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Última edição %{when} atrás por <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Ver o histórico de revisões"
+    see_history: "Ver histórico"
   description_history:
     header: "Histórico de revisões"
     subheader: "Versão"
@@ -782,7 +783,7 @@ pt:
       intro: "Por favor, clique neste link de verificação para finalizar sua solicitação:"
       ignore: "Se você não pediu para entrar no Loomio, por favor ignore esta mensagem."
   campaign:
-    crowdfunding_html: "NÓS CONSEGUIMOS! Agradecemos a todo mundo que nos ajudou no financioamento coletivo do Loomio 1.0. Nós amamos nossa comunidade!</a>"
+    crowdfunding_html: "CONSEGUIMOS! Agradecemos a todo mundo que nos ajudou no financiamento coletivo do Loomio 1.0. Amamos a nossa comunidade!</a>"
   about_loomio: "Sobre o Loomio"
   ago: "há %{quantity_of_time}"
   approve: "Aprovar"
