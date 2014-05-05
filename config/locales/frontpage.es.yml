@@ -6,10 +6,13 @@ es:
     link:
       blog: 'Blog'
       contact: 'Contacto'
+      donate: 'Dona hoy'
       press: 'Prensa'
       try_it: 'Probalo!'
       log_in: 'Entrar'
       video: "Más sobre cómo funciona Loomio"
+      try_loomio_beta: 'Prueba Loomio beta'
+      check_out_loomio_beta: 'Echa un vistazo a Loomio beta'
       more: 'Más'
       top: 'Arriba'
       public_groups: 'Grupos abiertos al público'
@@ -33,6 +36,11 @@ es:
         desc: 'Desarrolla la propuesta colectivamente para que funcione para todos. Cada decisión posee una fecha limite, siempre obteniendo un resultado claro.'
     crowdfunding:
       header: 'Estamos en el proceso de financiación colectiva para poder construir esta nueva plataforma y poder regalarse al mundo.'
+    prototype:
+      header_html: "Ya hemos construido un prototipo, y personas de todo el mundo están haciendo cosas asombrosas con el."
+      subhead_html: '<a href="%{try_loomio_link}">Prueba Lomio beta ahora. O <a href="%{join_campaign_link}">súmate a la campaña</a> para obtener acceso directo a Loomio 1.0.'
+    mobile:
+      header_html: 'Loomio 1.0 funciona con cualquier aparato, construido con lo mejor en <strong> tecnología abierta de móvil.</strong>'
     quote:
       header:
         rushkoff_html: '«Loomio <strong>libera el potencial de Internet</strong> para acercar a las personas al consenso en vez de al debate polarizado».<div class="attributation"> (<a href="http://rushkoff.com">Douglas Rushkoff</a>, autor del libro <em>Present Shock</em>).</div>'

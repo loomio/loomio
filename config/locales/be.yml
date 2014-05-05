@@ -1,1 +1,294 @@
-be: {}
+be:
+  explore:
+    go_to_group: "Перайсці да %{group_name}"
+  try_it:
+    header: "Паспрабаваць Loomio"
+  errors:
+    messages:
+      email: "Нядзейсны email адрас"
+  devise:
+    invitations:
+      send_instructions: 'Запрашэнне адасланае да %{email}.'
+      updated: 'Акаунт створаны.'
+  error:
+    access_denied: "У вас няма дазволу на гэтае дзеянне."
+    cant_join_subgroup: "Вы не можаце далучыцца да падгрупы не з'яўляючыся удзельнікам зыходнай групы."
+    cant_modify_position: "Гэтая прапанова ужо закрытая."
+    cant_state_position: "Гэтая прапанова ужо закрытая."
+    discussion_not_created: "Немажліва стварыць дыскусію."
+    discussion_not_moved: "У Вас няма дазволу пераносіць гэтую дыскусію ў %{destination_group.name}"
+    group_not_archived: "Немажліва стварыць архіў групы. "
+    invalid_close_date: "Няслушная дата закрыцця абмервакавання, калі ласка праверце ці не прашла ўжо ваша дата."
+    invalid_email: "Калі ласка, увядзіце па меншай меры адзін дзеясны email адрас."
+    image_upload_fail: "Немагчыма запампаваць выяву. Упэўнеціся, што выява выжыць не больш 1 MB і яе фармат .jpeg, .png, ці .gif."
+    permission_to_invite: "Вы не маеце дазволу дадаваць новых удзельнікаў."
+    position_not_updated: "Немагчыма абнавіць пазіцыю."
+    settings_not_updated: "Немажліва захаваць вашыя новыя налады."
+  alert:
+    duplicate_email: "%{which_email} ужо ў гэтай групе."
+  notice:
+    member_removed: "Удзельнік выдалены."
+    you_have_left_group: "Вы выйшлі з %{which_group}."
+    comment_deleted: "Каментар выдалены."
+  warning:
+    proposal_not_created: "Немажліва стварыць прапанову."
+    user_already_admin: "%{which_user} ужо з'яўляецца каардынатарам гэтай групы."
+    user_already_member: "%{which_user} ужо з'яўляецца ўдзельнікам групы."
+    user_not_admin: "Выбачайце, каб мець доступ, %{which_user} павінен быць каардынатарам гэтай групы."
+  success:
+    added_to_group: "Вы былі дададзены да %{which_group}."
+    close_date_changed: "Бліжэйшая дата  паспяхова змененая."
+    discussion_created: "Дыскусія паспяхова створаная."
+    discussion_deleted: "Дыскусія выдаленая."
+    emails_sending: "Адсылка email."
+    group_archived: "Архіў групы паспяхова створаны."
+    group_created: "Група паспяхова створаная."
+    members_added: "Удзельнікі даданыя да групы."
+    position_updated: "Пазіцыя адноўленая."
+    proposal_created: "Прапанова была паспяхова створаная."
+    proposal_deleted: "Прапанова выдаленая."
+  datetime:
+    distance_in_words:
+      less_than_x_seconds:
+        one: "секунда"
+        other: "%{count} секунд"
+      x_seconds:
+        one: "1 секунда"
+        other: "%{count} секунд"
+      less_than_x_minutes:
+        one: "1 хвіліна"
+        other: "%{count} хвілін"
+      x_minutes:
+        one: "1 хвіліна"
+        other: "%{count} хвілін"
+      about_x_hours:
+        one: "1 гадзіна"
+        other: "%{count} гадзін"
+      x_days:
+        one: "1 дзень"
+        other: "%{count} дзён"
+      about_x_months:
+        one: "1 месяц"
+        other: "%{count} месяцаў"
+      x_months:
+        one: "1 месяц"
+        other: "%{count} месяцаў"
+      about_x_years:
+        one: "1 год"
+        other: "%{count} гадоў"
+      over_x_years:
+        one: "1 год"
+        other: "%{count} гадоў"
+      almost_x_years:
+        one: "1 год"
+        other: "%{count} гадоў"
+  footer:
+    privacy: 'Канфідэнцыянасць'
+    terms: 'Умовы'
+  notifications:
+    header: "Апавяшчэнні"
+    new_discussion: "распачаў новую дыскусію"
+    new_motion: "стварыў новую прапанову"
+    motion_closed:
+      by_user: "зачыніў гэтую прапанову"
+      by_expiry: "Гэтую прапанову зачынілі"
+    new_comment: "высказаўся ў дыскусіі"
+    comment_liked: "упадабаў ваш каментар у дыскусіі"
+    user_mentioned: "узгадаў Вас у сваім каментары"
+    user_added_to_group: "дадаў Вас да групы."
+    motion_closing_soon: "Прапанова хутка зачыніцца."
+    motion_blocked: "заблакаваў прапанову"
+  request_new_group: "Стварыць групу"
+  start_new_group: "Стварыць новую групу"
+  find_a_group: "Знайсці групу"
+  no_group_header: "Вітаем на Loomio Beta"
+  empty_notifications: "У Вас пакуль што няма ніякіх апавяшчэнняў."
+  see_all_notifications: "Паглядзець усе апавяшчэнні"
+  profile: "Профіль"
+  email_settings: "Налады email"
+  sign_out: "Выйсці"
+  sign_in: "Увайсці"
+  click_to_dismiss: "Клікніце сюды, каб праігнараваць гэтае паведамленне "
+  generic_confirm: "Вы ўпэнены?"
+  discussion_helper_text:
+    header: "Вітаем у Вашай першай дыскусіі"
+  prompt_user_to_join:
+    header: "Для ўдзелу далучыціся да групы"
+  setup_steps_title: "Наступныя крокі"
+  setup_step_2: "Распачаць сваю першую дыскусію"
+  setup_step_3: "Запрасіць людзей у сваю групу"
+  invite_people: "Запрасіць людзей"
+  add_new_member: "Дадаць новага ўдзельніка"
+  invite_members_to_group: "Запрасіць удзельніка ў %{which_group}"
+  get_in_touch_link: "быць на сувязі"
+  email_members_in_group: "Разаслаць email удзельнікам  %{which_group}"
+  leave_group: "Выйсці з групы"
+  confirm_leave_group: "Вы ўпэўнены, што хаціце выйсці з %{which_group}?"
+  invited_users: "Запрошаныя ўдзельнікі"
+  members: "Удзельнікі"
+  subgroups: "Падгрупы"
+  create_a_subgroup: "Стварыць падгрупу"
+  invite_members: "Запрасіць удзельнікаў"
+  new_subgroup: "Новая падгрупа"
+  create_subgroup: "Стварыць падгрупу"
+  creating_subgroup: "Ідзе стварэнне падгрупы"
+  new_group: "Новая група"
+  create_group: "Стварыць групу"
+  creating_group: "Стварэнне групы"
+  edit_group: "Рэдагаваць групу"
+  update_group: "Абнавіць групу"
+  updating_group: "Абнаўленне групы"
+  start_a_discussion: "Пачаць абмеркаванне"
+  group_description: "Апісанне групы"
+  group_request:
+    beta_request_header: "Стварыць групу на Loomio Beta"
+    beta_request_description: "Першы крок для пачатку прыняцця рашэнняў на Loomio Beta-  стварыць групу"
+  discussion_items:
+    new_discussion: "стварыў дыскусію"
+    new_motion: "стварыў прапанову"
+    motion_closed:
+      by_user: "закрыў прапанову"
+      by_expiry: "Прапанова закрытая"
+    discussion_title_edited: "змяніў назву дыскусіі"
+    discussion_description_edited: "змяніў апісанне дыскусіі"
+  discussion: "Дыскусіі"
+  previous_decisions: "Папярэднія рашэнні"
+  see_previous_decisions: "Паглядзець папярэднія рашэнні"
+  see_more: "Даведацца больш"
+  create_new_proposal: "Стварыць новую прапанову"
+  discussion_context:
+    see_history: "Паглядзець гісторыю"
+  description_history:
+    previous: "Папяр"
+    next: "Наст"
+  comment_form_submit_button: "Запосціць каментар"
+  liked_by: "Спадабалася %{who}"
+  delete_comment: "Выдаліць каментар"
+  confirm_delete_comment: "Вы ўпэўнены, што хаціце выдаліць гэты каментар?"
+  markdown_settings_more_info: "Больш інфа..."
+  edit_discussion: "Рэдагаваць дыскусію"
+  delete_discussion: "Выдаліць абмеркаванне"
+  confirm_delete_discussion: "Вы ўпэўнены, што хаціце назаўжды выдаліць гэтую дыскусію?"
+  new_proposal: "Новая Прапанова"
+  close_proposal: "Зачыніць прапанову"
+  confirm_close_proposal: "Вы ўпэўнены, што хаціце зачыніць гэтую прапанову?"
+  proposal: Прапанова
+  yes_position: "Згода"
+  abstain_position: "Я ўстрымліваюся"
+  no_position: "Я не пагаджаюся"
+  help:
+    get_in_touch: "Быць на сувязі"
+    help: "Дапамога"
+  pricing_page:
+    organisations: Арганізацыі
+  new_password: "Новы пароль"
+  confirm_new_password: "Пацвердзіць новы пароль"
+  change_your_password: "Змяніць пароль"
+  change_my_password: "Змяніць пароль"
+  password_confirmation: "Пацвярджэнне пароля"
+  confirm_password: "Пацвердзіце пароль"
+  remember_me: "Запомніць мяне"
+  or: "альбо"
+  forgot_your_password: "Забылі Ваш пароль?"
+  dont_have_an_account: "Яшчэ не маеце акаунта?"
+  confirm_your_details: "Падцвердзіце Вашыя дадзеныя"
+  create_an_account_html: 'Стварыць акаунт на Loomio Beta'
+  join_group:
+    create_account_to_join_group: "Калі ласка, стварыце акаунт, каб далучыцца да %{group_name}"
+  invitation:
+    by_email: "Запрасіць праз email"
+    subject: "Калі ласка, далучайцеся да нашай новай Loomio групы %{group}"
+    invite_to_discussion: "Запрасіць людзей да гэтай дыскусіі"
+    select_members: "Дадаць удзельнікаў з %{group_name}"
+    body_editable_discussion: |
+      Эй, давай далучайся да дыскусіі!
+    discussion_link: "Удзельнічаць у дыскусіі:"
+  search:
+    placeholder: "Пошук"
+  contact_page:
+    labels:
+      name: 'Вашае імя'
+      email: 'Ваш email адрас '
+      message: 'Вашае паведамленне'
+      destination: 'Куды нам адправіць вашае паведамленне?'
+      submit: 'Адправіць паведамленне'
+  discussion_form:
+    new:
+      header: "Распачаць дыскусію"
+    edit:
+      header: "Рэдагаваць дыскусію"
+  motion_form:
+    header: "Новая прапанова"
+  new_user_form:
+    create_an_account: "Стварыць акаўнт"
+  profile_form:
+    view: "Праглядзець мой профіль"
+    profile: "Рэдагаваць профіль"
+    upload_new_image: "Загрузіць новы здымак"
+  group_setup:
+    payment_model:
+      header: Loomio для кожнага!
+      link: Даведацца больш
+  simple_form:
+    'yes': 'Так'
+    'no': 'Не'
+    labels:
+      discussion:
+        privacy_public_description: "Гэтая дыскусія  бачная ўсім"
+        privacy_private_header: "Прыватна"
+        privacy_private_description: "Толькі ўдзельнікі %{group} могуць праглядаць гэтую дыскусію"
+      group:
+        description: "Апісанне"
+        members_invitable_by_members: "Усе ўдзельнікі групы"
+        privacy: Канфідынцыяльнасць
+        privacy_private_header: Пераважна прыватна
+      motion:
+        close_at_date: "Закрываецца"
+      user:
+        email: "Электронная пошта"
+        password: "Пароль"
+        language_preference: "Мова"
+      group_request:
+        admin_name: "Якое Вашае імя?"
+        admin_email: "Які Ваш email адрас?"
+        name: "Як завецца Вашая група?"
+        description: "Калі маеце час, распавядзіце нам пра сваю групу"
+    placeholders:
+      discussion:
+        title: "Назва"
+      group:
+        name: "Назва групы"
+      user:
+        email: "Email"
+        password: "Пароль"
+      group_request:
+        description: "Мы вельмі хацім даведацца пра вашую групу і чаму вы хаціце карыстацца Loomio."
+  helpers:
+    submit:
+      discussion:
+        create: "Распачаць абмеркаванне"
+        update: "Аднавіць дыскусію"
+  email:
+    to_join_discussion:
+      content: "Вас запрасілі для ўдзелу ў дыскусіі %{discussion}"
+      message_intro: "%{who} кажа:"
+      link: "Далучыцца да дыскусіі"
+    user_added_to_a_group:
+      subject: "%{who} дадаў Вас да %{which_group}"
+      content: "%{who} дадаў Вас да %{who} на Loomio. Клікніце сюды, каб перайсці да гэтай групы."
+    invitation:
+      hi: "Вітаем %{name},"
+    proposal_closing_soon:
+      closes_at: "Закрываецца а"
+      closing_in_24_hours: "Закрыецца праз 24 гадзіны"
+  about_loomio: "Аб Loomio"
+  outcome: "Вынік"
+  leave_this_field_blank: "заставіць гэтае поле пустым"
+  photo: 'Здымак'
+  more: "Больш..."
+  remove: "Выдаліць"
+  start_group: "Стварыць групу!"
+  thanks: "Дзякуй!"
+  translate: "Дапамажыце перакласці Loomio!"
+  facebook: "Facebook"
+  google: "Google"

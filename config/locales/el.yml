@@ -321,6 +321,7 @@ el:
     started_html: "Ξεκίνησε πριν από %{when} από τον/την <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Επεξεργάστηκε τελευταία πριν από %{when} από τον/την <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Δείτε το ιστορικό αναθεωρήσεων"
+    see_history: "Δείτε το ιστορικό"
   description_history:
     header: "Ιστορικό αναθεωρήσεων"
     subheader: "Έκδοση"

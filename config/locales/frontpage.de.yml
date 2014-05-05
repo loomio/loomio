@@ -36,6 +36,11 @@ de:
         desc: 'Gemeinsam wird eine Lösung erarbeitet, mit der jeder einverstanden ist. Jede Entscheidung hat eine klare Deadline, damit immer ein klares Ergebnis heraus kommt.'
     crowdfunding:
       header: 'Wir finanzieren uns über Crowdfunding, um diese Plattform fertigzustellen und der Welt zur Verfügung zu stellen.'
+    prototype:
+      header_html: "Wir haben einen Prototypen entwickelt, der von Leuten aus der ganzen Welt für erstaunliche Dinge eingesetzt wird"
+      subhead_html: 'Jetzt <a href="%{try_loomio_link}">Loomio Beta testen</a>, oder <a href="%{donate_link}">für das Projekt spenden</a>, um Loomio 1.0 finanziell zu unterstützen.'
+    mobile:
+      header_html: 'Loomio 1.0 wird auf jedem Gerät funktionieren, gebaut mit der besten <strong>Open Mobile Technologie</strong>.'
     quote:
       header:
         rushkoff_html: '"Loomio <strong>entfesselt im Internet das Potenzial</strong>, um Leute statt in polarisierende Debatten, zu einem gemeinschaftlichen Konsens zu führen."<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, Autor von <em>Present Shock</em></div>'
