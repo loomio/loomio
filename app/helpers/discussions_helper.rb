@@ -108,7 +108,7 @@ module DiscussionsHelper
   end
 
   def current_language
-    Translation.language I18n.locale.to_s
+    AppTranslation.language I18n.locale.to_s
   end
 
   def privacy_language(discussion)

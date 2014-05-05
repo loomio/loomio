@@ -1,3 +1,2 @@
-comment_id = <%= @comment.id.to_s %>
-parent = $("#comment-container-" + comment_id).find(".activity-item-header")
-parent.find(".activity-item-translation").html("<%= escape_javascript(@success ? @translation : 'Unable to complete translation').html_safe %>");
+body = "<%= get_translation @translation, :body %>";
+$('#comment-container-<%= @translation[:id].to_s %>').find('.translated').html(body);

@@ -54,6 +54,7 @@ gem 'ruby-progressbar', '~> 1.4.1'
 gem 'bing_translator', '~> 4.2.0'
 gem 'librato-rails'
 gem 'browser'
+gem 'activerecord-postgres-hstore'
 
 # Gems used only for assets and not required
 # in production environments by default.
