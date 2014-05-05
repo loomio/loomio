@@ -1,3 +1,7 @@
+@import "settings";
+@import "bootstrap/mixins";
+@import "mixins";
+
 body.manage_membership_requests {
   &.index {
     #membership-request-list {

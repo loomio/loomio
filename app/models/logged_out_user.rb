@@ -1,4 +1,22 @@
 class LoggedOutUser
+  include AvatarInitials
+  attr_accessor :name, :email, :avatar_initials
+
+  def initialize(name: nil, email: nil)
+    @name = name
+    @email = email
+    set_avatar_initials if (@name || @email)
+  end
+
+  def avatar_kind
+    'initials'
+  end
+
+  def deleted_at
+    nil
+  end
+
+
   def id
     nil
   end
