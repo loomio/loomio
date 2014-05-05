@@ -11,6 +11,7 @@ class Translation
                'Indonesian' => :id,
                'magyar' => :hu,
                '日本語' => :ja,
+               '한국어' => :ko,
                'മലയാളം' => :ml,
                'Nederlands' => :nl,
                'Português (Brasil)' => :pt,
@@ -25,9 +26,10 @@ class Translation
                             'తెలుగు' => :te,
                             'Gaelic (Irish)' => :ga,
                             'Esperanto' => :eo,
-                            'Telugu' => :te}
+                            'Telugu' => :te,
+                            'khmer' => :km}
 
-  FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl, :zh, :sv, :da, :be]
+  FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl, :zh, :sv, :da, :be, :ru, :ko]
 
   VIDEO_SUPPORTED_LOCALES  = [:en, :pt, :el, :es, :ca, :cs, :fr, :ja, :nl, :vi]
 
