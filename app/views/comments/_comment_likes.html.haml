@@ -9,6 +9,9 @@
   - if can? :destroy, comment
     = " · "
     = link_to t(:delete), "#", 'data-title' => t(:delete_comment), 'data-body' => t(:confirm_delete_comment), 'data-confirm-path' => comment_path(comment), 'data-method-type' => 'delete', class: 'confirm-dialog', id: "delete-comment-#{comment.id}"
+  - if TranslationService.can_translate? comment
+    = " · "
+    = translate_link_for comment
 - if comment.liker_ids_and_names.size > 0
   .activity-item-likes
     - liker_links = comment.liker_ids_and_names.map { |id, name| name }

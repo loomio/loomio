@@ -20,6 +20,8 @@ class Motion < ActiveRecord::Base
   validates_length_of :name, :maximum => 250
   validates_length_of :outcome, :maximum => 250
 
+  is_translatable on: [:name, :description]
+
   include PgSearch
   pg_search_scope :search, against: [:name, :description],
     using: {tsearch: {dictionary: "english"}}
@@ -30,6 +32,7 @@ class Motion < ActiveRecord::Base
   delegate :members, :full_name, :to => :group, :prefix => :group
   delegate :email_new_motion?, to: :group, prefix: :group
   delegate :name_and_email, to: :user, prefix: :author
+  delegate :language, to: :user
 
   after_initialize :set_default_close_at_date_and_time
   before_validation :set_closing_at
@@ -224,7 +227,7 @@ class Motion < ActiveRecord::Base
     update_attribute(:did_not_votes_count, did_not_votes.count)
     reload
   end
-
+  
   private
     def find_or_new_motion_reader_for(user)
       if self.motion_readers.where(user_id: user.id).exists?
