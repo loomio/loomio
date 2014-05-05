@@ -6,27 +6,27 @@ ko:
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        one: "%{count} 초"
+        one: "1 초"
       x_seconds:
-        one: "%{count} 초"
+        one: "1 초"
       less_than_x_minutes:
-        one: "%{count} 분"
+        one: "1 분"
       x_minutes:
-        one: "%{count} 분"
+        one: "1 분"
       about_x_hours:
-        one: "%{count} 시"
+        one: "1 시"
       x_days:
-        one: "%{count} 일"
+        one: "1 일"
       about_x_months:
-        one: "%{count} 월"
+        one: "1 월"
       x_months:
-        one: "%{count} 월"
+        one: "1 월"
       about_x_years:
-        one: "%{count} 년"
+        one: "1 년"
       over_x_years:
-        one: "%{count} 연"
+        one: "1 연"
       almost_x_years:
-        one: "%{count} 연"
+        one: "1 연"
   # errors:
   #   messages:
   #     not_saved:
@@ -34,7 +34,6 @@ ko:
   notice:
     invitations:
       auto_added:
-        one: "%{count} 멤버가 추가됨"
+        one: "1 멤버가 추가됨"
       existing_member:
-        one: "%{count} 멤버가 이 그룹에 있습니다."
-      auto_added_and_sent: "%{auto_added_text} 그리고 %{sent_text}"
+        one: "1 멤버가 이 그룹에 있습니다."

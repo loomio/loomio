@@ -64,27 +64,27 @@ km:
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        other: "%{រាប់} វិនាទី"
+        other: "%{count} វិនាទី"
       x_seconds:
-        other: "%{រាប់} វិនាទី"
+        other: "%{count} វិនាទី"
       less_than_x_minutes:
-        other: "%{រាប់} នាទី"
+        other: "%{count} នាទី"
       x_minutes:
-        other: "%{រាប់} នាទី"
+        other: "%{count} នាទី"
       about_x_hours:
-        other: "%{រាប់} ម៉ោង"
+        other: "%{count} ម៉ោង"
       x_days:
-        other: "%{រាប់} ថ្ងៃ"
+        other: "%{count} ថ្ងៃ"
       about_x_months:
-        other: "%{រាប់} ខែ"
+        other: "%{count} ខែ"
       x_months:
-        other: "%{រាប់} ខែ"
+        other: "%{count} ខែ"
       about_x_years:
-        other: "%{រាប់} ឆ្នាំ"
+        other: "%{count} ឆ្នាំ"
       over_x_years:
-        other: "%{រាប់} ឆ្នាំ"
+        other: "%{count} ឆ្នាំ"
       almost_x_years:
-        other: "%{រាប់} ឆ្នាំ"
+        other: "%{count} ឆ្នាំ"
   notifications:
     header: "ការជូនដំណឹង"
     new_discussion: "ចាប់ផ្តើមការពិភាក្សាថ្មី"
