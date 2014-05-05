@@ -1,9 +1,18 @@
 pl:
   frontpage:
+    view_this_in_your_language: 'Zobacz tę stronę w języku %{language}'
+    title:
+      collaborative_decision_making: Wspólne podejmowanie decyzji
     link:
       blog: 'Blog'
       contact: 'Kontakt'
+      donate: 'Wspomóż dzisiaj'
+      press: 'Prasa'
+      try_it: 'Wypróbuj'
       log_in: 'ZALOGUJ'
+      video: "Dowiedz się więcej jak działa Loomio"
+      try_loomio_beta: 'Wypróbuj Loomio w wersji beta'
+      check_out_loomio_beta: 'Zobacz Loomio w wersji beta'
       more: 'Więcej'
       top: 'Góra'
       public_groups: 'Grupy publiczne'
