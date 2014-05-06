@@ -20,6 +20,8 @@ class UserMailer < BaseMailer
     locale = best_locale(user.locale, comment.author.locale)
     I18n.with_locale(locale) do
       mail to: @user.email,
+           from: from_user_via_loomio(comment.author),
+           reply_to: comment.author.name_and_email,
            subject: t("email.mentioned.subject", who: comment.author.name, which: comment.group.name)
     end
   end
@@ -29,9 +31,9 @@ class UserMailer < BaseMailer
     @group = group
     locale = best_locale(user.locale, User.find_by_email(@group.admin_email).locale)
     I18n.with_locale(locale) do
-      mail  :to => user.email,
-            :reply_to => @group.admin_email,
-            :subject => "#{email_subject_prefix(@group.full_name)} " + t("email.group_membership_approved.subject")
+      mail  to: user.email,
+            reply_to: @group.admin_email,
+            subject: "#{email_subject_prefix(@group.full_name)} " + t("email.group_membership_approved.subject")
     end
   end
 
@@ -44,7 +46,7 @@ class UserMailer < BaseMailer
     locale = best_locale(user.locale, @motion.author.locale)
     I18n.with_locale(locale) do
       mail to: user.email,
-           from: "#{motion.author.name} <notifications@loomio.org>",
+           from: from_user_via_loomio(motion.author),
            reply_to: motion.author_name_and_email,
            subject: "#{t(:"email.proposal_closing_soon.closing_in_24_hours")}: #{motion.name} - #{@group.name}"
     end
@@ -58,6 +60,7 @@ class UserMailer < BaseMailer
     locale = best_locale(user.locale, inviter.locale)
     I18n.with_locale(locale) do
       mail to: user.email,
+           from: from_user_via_loomio(inviter),
            reply_to: inviter.name_and_email,
            subject: t("email.user_added_to_a_group.subject", which_group: group.name, who: inviter.name)
     end
@@ -71,6 +74,7 @@ class UserMailer < BaseMailer
     locale = best_locale(user.locale, inviter.locale)
     I18n.with_locale(locale) do
       mail to: user.email,
+           from: from_user_via_loomio(inviter),
            reply_to: inviter.name_and_email,
            subject: t("email.to_join_discussion.subject", who: inviter.name)
     end
