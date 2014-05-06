@@ -600,14 +600,14 @@ a:hover { text-decoration: none; }
     margin-bottom: 40px;
     @include screen-size(medium-up) {
       display: inline-block;
-      margin-right: 24px;
+      margin-right: 8px;
     }
     @include screen(medium-only) {
       margin-right: 40px;
     }
     img {
       @include screen-size(medium-up) {
-        width: 82%;
+        width: 79%;
       }
     }
   }
