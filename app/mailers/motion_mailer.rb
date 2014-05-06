@@ -8,7 +8,7 @@ class MotionMailer < BaseMailer
     locale = best_locale(user.locale, motion.author.locale)
     I18n.with_locale(locale) do
       mail  to: user.email,
-            from: from_user_via_loomio(user),
+            from: from_user_via_loomio(motion.author),
             reply_to: motion.author_name_and_email,
             subject: "#{t(:proposal)}: #{@motion.name} - #{@group.name}"
     end
