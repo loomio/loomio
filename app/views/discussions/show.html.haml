@@ -5,8 +5,7 @@
     =render '/groups/title', group: @group, discussion: @discussion
   .span3#button-container
     = request_membership_button(@group)
-
-.row
+.row.translate-parent{id: "discussion-#{@discussion.key}" }
   .span12
     .selector-panel
       = render 'title', discussion: @discussion

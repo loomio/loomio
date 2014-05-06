@@ -63,7 +63,7 @@
   padding-top: 10px;
 
   #add-outcome-submit { margin-top: 5px; }
-  #closing-info {
+  .closing-info {
     font-size: $font-smaller;
     color: $mid-grey; }
 
@@ -215,6 +215,11 @@
       font-weight: bold;
       margin-right: 8px;
     }
+    
+    .translate-link {
+      line-height: 15px;
+    }
+    
   }
 
   .toggle-yet-to-vote{

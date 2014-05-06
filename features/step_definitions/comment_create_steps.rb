@@ -1,3 +1,17 @@
+Given /^there is a comment in the discussion$/ do
+  comment_author = FactoryGirl.create :user
+  @comment = FactoryGirl.create :comment, discussion: @discussion, user: comment_author, body: "Test comment!"
+  DiscussionService.add_comment @comment
+end
+
+Given /^the comment is written by an English speaker$/ do
+  @comment.author.update_attributes selected_locale: :en
+end
+
+Given /^the comment is written by a French speaker$/ do
+  @comment.author.update_attributes selected_locale: :fr
+end
+
 When /^I write and submit a comment$/ do
   @comment_text = 'Test comment,'
   @comment_markdown_text = ' also i like http://xkcd.org and also _markdown_'
