@@ -15,7 +15,7 @@ When /^I select the new close date$/ do
 end
 
 Then /^the proposal close date should be updated$/ do
-  find('#closing-info').should have_content("Closing in 5 days")
+  find('.closing-info:not(.translated)').should have_content("Closing in 5 days")
 end
 
 Then /^I should not see a link to edit the close date$/ do

@@ -143,7 +143,6 @@ Loomio::Application.routes.draw do
 
   resources :comments , only: :destroy do
     post :like, on: :member
-    post :translate, on: :member
   end
 
   resources :attachments, only: [:create, :new] do
@@ -182,6 +181,8 @@ Loomio::Application.routes.draw do
   end
 
   match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
+    
+  post '/translate/:model/:id', to: 'translations#create', as: :translate
 
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
   get '/group_requests/:id/start_new_group' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('token=','')}"}

@@ -187,7 +187,19 @@ class Ability
     can [:close, :edit_close_date], Motion do |motion|
       motion.voting? && ((motion.author_id == user.id) || @admin_group_ids.include?(motion.discussion.group_id))
     end
-
+    
+    can [:show], Comment do |comment|
+      can?(:show, comment.discussion)      
+    end
+    
+    can [:show], Motion do |motion|
+      can?(:show, motion.discussion)      
+    end
+    
+    can [:show], Vote do |vote|
+      can?(:show, vote.motion)      
+    end
+    
     can [:destroy,
          :create_outcome,
          :update_outcome], Motion do |motion|

@@ -284,9 +284,11 @@ ul.selector-list {
 }
 
 // edit description dropdown for group and discussion
-.edit-description {
+.edit-description,
+.description-body .translate-link {
   color: $mid-grey;
   text-decoration: underline;
+  font-size: $font-medium;
   &:hover { color: $dark-grey }
 }
 

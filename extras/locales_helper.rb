@@ -7,7 +7,7 @@ module LocalesHelper
     params.has_key?(:locale) || current_user_or_visitor.locale.present?
   end
 
-  def detected_locale(supported_locales = Translation.locales)
+  def detected_locale(supported_locales = AppTranslation.locales)
     (browser_accepted_locales & supported_locales).first
   end
 
@@ -61,7 +61,7 @@ module LocalesHelper
 
   def save_selected_locale
     locale = params[:locale]
-    if Translation.permitted_locale?(locale)
+    if AppTranslation.permitted_locale?(locale)
       current_user.update_attribute(:selected_locale, locale)
     end
   end

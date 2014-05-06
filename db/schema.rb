@@ -490,6 +490,17 @@ ActiveRecord::Schema.define(:version => 20140406041115) do
 
   add_index "subscriptions", ["group_id"], :name => "index_subscriptions_on_group_id"
 
+  create_table "translations", :force => true do |t|
+    t.integer  "translatable_id"
+    t.string   "translatable_type"
+    t.hstore   "fields"
+    t.string   "language"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "translations", ["fields"], :name => "translations_gin_fields"
+
   create_table "users", :force => true do |t|
     t.string   "email",                                                       :default => "",         :null => false
     t.string   "encrypted_password",                           :limit => 128, :default => ""
