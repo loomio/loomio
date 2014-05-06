@@ -32,6 +32,6 @@ class BaseMailer < ActionMailer::Base
   end
 
   def from_user_via_loomio(user)
-    "#{user.name} via Loomio <notifications@loomio.org>"
+    "#{user.name} (Loomio) <notifications@loomio.org>"
   end
 end
