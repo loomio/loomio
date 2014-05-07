@@ -87,11 +87,11 @@ class Group < ActiveRecord::Base
   has_one :group_request
 
   has_many :memberships,
-    :dependent => :destroy,
-    :extend => GroupMemberships
+           dependent: :destroy,
+           extend: GroupMemberships
 
   has_many :membership_requests,
-    :dependent => :destroy
+           dependent: :destroy
 
   has_many :pending_membership_requests,
            class_name: 'MembershipRequest',
@@ -99,35 +99,35 @@ class Group < ActiveRecord::Base
            dependent: :destroy
 
   has_many :admin_memberships,
-    :conditions => { admin: true },
-    :class_name => 'Membership',
-    :dependent => :destroy
+           conditions: { admin: true },
+           class_name: 'Membership',
+           dependent: :destroy
 
   has_many :members,
            through: :memberships,
            source: :user
 
-  has_many :pending_invitations, :as => :invitable,
+  has_many :pending_invitations, as: :invitable,
            class_name: 'Invitation',
            conditions: {accepted_at: nil, cancelled_at: nil}
 
   alias :users :members
 
-  has_many :requested_users, :through => :membership_requests, source: :user
+  has_many :requested_users, through: :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
-  has_many :discussions, :dependent => :destroy
-  has_many :motions, :through => :discussions
+  has_many :discussions, dependent: :destroy
+  has_many :motions, through: :discussions
 
-  belongs_to :parent, :class_name => "Group"
+  belongs_to :parent, class_name: 'Group'
   belongs_to :category
-  has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id', conditions: { archived_at: nil }
+  has_many :subgroups, class_name: 'Group', foreign_key: 'parent_id', conditions: { archived_at: nil }
 
   has_one :subscription, dependent: :destroy
 
-  delegate :include?, :to => :users, :prefix => true
-  delegate :users, :to => :parent, :prefix => true
-  delegate :members, :to => :parent, :prefix => true
-  delegate :name, :to => :parent, :prefix => true
+  delegate :include?, to: :users, prefix: true
+  delegate :users, to: :parent, prefix: true
+  delegate :members, to: :parent, prefix: true
+  delegate :name, to: :parent, prefix: true
 
   paginates_per 20
 
@@ -162,7 +162,7 @@ class Group < ActiveRecord::Base
   def archive!
     self.discussions.each(&:archive!)
     self.update_attribute(:archived_at, DateTime.now)
-    memberships.update_all(:archived_at => DateTime.now)
+    memberships.update_all(archived_at: DateTime.now)
     subgroups.each do |group|
       group.archive!
     end
