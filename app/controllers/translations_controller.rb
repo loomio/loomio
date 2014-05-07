@@ -10,7 +10,7 @@ class TranslationsController < ApplicationController
 
     if model.present?
       model_name = model.to_s.downcase
-      instance = model.get_instance(params[:id])
+      instance = model.get_instance params[:id]
       
       authorize! :show, instance
   
