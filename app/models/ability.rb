@@ -101,7 +101,7 @@ class Ability
     end
 
     can :deactivate, User do |user_to_deactivate|
-      not user_to_deactivate.adminable_groups.any? { |g| g.admins.count == 1 }
+      not user_to_deactivate.adminable_groups.published.any? { |g| g.admins.count == 1 }
     end
 
     can :request_membership, Group do |group|
