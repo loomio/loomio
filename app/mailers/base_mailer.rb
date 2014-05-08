@@ -26,8 +26,7 @@ class BaseMailer < ActionMailer::Base
     mailer = self.class.name
     args = Hash[ method(action).parameters.map(&:last).zip(args) ]
     headers "X-SMTPAPI" => {
-      category:    [ mailer, "#{mailer}##{action}" ],
-      unique_args: { environment: Rails.env, arguments: args.inspect }
+      category:    [ mailer, "#{mailer}##{action}" ]
     }.to_json
   end
 
