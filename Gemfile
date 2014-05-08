@@ -43,7 +43,7 @@ gem 'timecop', '~> 0.6.3'
 gem 'pg_search', '~> 0.7.0'
 gem 'strong_parameters', '~> 0.2.3'
 gem 'airbrake', '~> 3.1.14'
-gem 'fog', '~> 1.21.0'
+# gem 'fog', '~> 1.21.0'
 gem 'roadie', '~> 2.4.3'
 gem 'valid_email', '~> 0.0.4'
 gem "font-awesome-sass"
