@@ -7,7 +7,7 @@ class BaseMailer < ActionMailer::Base
 
   UTM_EMAIL = { utm_campaign: 'notifications', utm_medium: 'email' }
 
-  default :from => "Loomio <noreply@loomio.org>", :css => :email
+  default :from => "Loomio <notifications@loomio.org>", css: :email
 
   def email_subject_prefix(group_name)
     "[Loomio: #{group_name}]"

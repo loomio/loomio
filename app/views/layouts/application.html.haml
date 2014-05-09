@@ -7,7 +7,8 @@
     /[if lt IE 9]
       =javascript_include_tag 'ie8'
 
-    = stylesheet_link_tag    "application"
+    = stylesheet_link_tag    "third_party"
+    = stylesheet_link_tag    "unstructured"
     = javascript_include_tag "application"
     = csrf_meta_tags
     = render 'social_metadata', :description => @meta_description, :title => @meta_title
