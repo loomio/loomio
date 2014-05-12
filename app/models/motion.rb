@@ -234,7 +234,7 @@ class Motion < ActiveRecord::Base
     self.close_at_time = datetime.strftime("%H:00")
     self[:closing_at] = datetime
   end
-  
+
   private
     def find_or_new_motion_reader_for(user)
       if self.motion_readers.where(user_id: user.id).exists?
@@ -248,15 +248,14 @@ class Motion < ActiveRecord::Base
     end
 
     def set_default_close_at_date_and_time
-      self.closing_at = Time.zone.now + 3.days
+      self.closing_at ||= Time.zone.now + 3.days
     end
-
 
     def set_closing_at
       date_time_zone_format = '%Y-%m-%d %H:%M %Z'
       tz_offset = ActiveSupport::TimeZone[close_at_time_zone].formatted_offset
       date_time_zone_string = "#{close_at_date.to_s} #{close_at_time} #{tz_offset}"
-      self.closing_at = DateTime.strptime(date_time_zone_string, date_time_zone_format)
+      self[:closing_at] = DateTime.strptime(date_time_zone_string, date_time_zone_format)
     end
 
     def fire_new_motion_event
