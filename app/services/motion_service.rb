@@ -20,6 +20,13 @@ class MotionService
     end
   end
 
+  def self.reopen(motion, close_at)
+    motion.closed_at = nil
+    motion.closing_at = close_at
+    motion.save!
+    motion.did_not_votes.delete_all
+  end
+
   def self.close(motion)
     motion.store_users_that_didnt_vote
     motion.closed_at = Time.now
