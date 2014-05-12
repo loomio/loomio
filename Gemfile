@@ -109,6 +109,7 @@ group :test do
 end
 
 group :staging, :production do
+gem 'memcache-client', '~> 1.8.0'
 #  gem 'memcachier', '~> 0.0.2'
  # gem 'dalli', '~> 2.7.0'
   #gem 'newrelic_rpm', '~> 3.7.3'
