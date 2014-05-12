@@ -1,4 +1,5 @@
 require_relative '../../app/services/motion_service'
+require 'active_support/all'
 
 module Events
   class MotionOutcomeCreated
@@ -151,6 +152,32 @@ describe 'MotionService' do
       it 'fires motion closed by user event' do
         Events::MotionClosedByUser.should_receive(:publish!).with(motion, user)
       end
+    end
+  end
+
+  describe 'reopen' do
+    let(:date) { 2.days.from_now }
+    let(:did_not_votes) { double(:did_not_votes) }
+
+    before do
+      motion.stub(:closing_at=)
+      motion.stub(:closed_at=)
+      motion.stub(:did_not_votes).and_return(did_not_votes)
+      did_not_votes.stub(:delete_all)
+    end
+
+    after { MotionService.reopen(motion, date) }
+
+    it 'clears the closed_at' do
+      motion.should_receive(:closed_at=).with(nil)
+    end
+
+    it 'sets a new closing_at' do
+      motion.should_receive(:closing_at=).with(date)
+    end
+
+    it 'clears did not votes' do
+      did_not_votes.should_receive(:delete_all)
     end
   end
 
