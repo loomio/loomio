@@ -24,8 +24,4 @@
     %p.proposal-details= t(:proposed_when_by_who, when: time_ago_in_words(@motion.created_at), who: @motion.author_name)
     %p.proposal-details= t(:engagement_on_closed_proposal, percent: @motion.percent_voted, :numerator => (@motion.group_size_when_voting - @motion.members_not_voted_count), denominator:  @motion.group_size_when_voting)
 
-    -unless @group.is_paying?
-      %p.campaign= t(:'email.campaign_html',
-          link_path: contributions_url( @utm_hash.merge utm_campaign: 'fundraising1' ))
-
     = render 'user_mailer/unsubscribe_link'
