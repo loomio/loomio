@@ -12,34 +12,33 @@ class User < ActiveRecord::Base
   SMALL_IMAGE = 25
   MAX_AVATAR_IMAGE_SIZE_CONST = 1000
 
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
   attr_accessor :honeypot
 
   validates :name, :presence => true
   validates :email, :presence => true, uniqueness: true, email: true
   validates_inclusion_of :uses_markdown, :in => [true,false]
-  validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
+
+  has_attached_file :uploaded_avatar,
+    styles: {
+              large: "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
+              medlarge: "#{User::MED_LARGE_IMAGE}x#{User::MED_LARGE_IMAGE}#",
+              medium: "#{User::MEDIUM_IMAGE}x#{User::MEDIUM_IMAGE}#",
+              small: "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#"
+            }
   validates_attachment :uploaded_avatar,
-    :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
-    :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/png", "image/gif"] }
+    size: { in: 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
+    content_type: { content_type: /\Aimage/ },
+    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }
+
+  validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
+
   validates_uniqueness_of :username, :allow_nil => true, :allow_blank => true
 
   include Gravtastic
   gravtastic  :rating => 'pg',
               :default => 'none'
 
-  has_attached_file :uploaded_avatar,
-    :styles => {
-      :large => "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
-      :medlarge => "#{User::MED_LARGE_IMAGE}x#{User::MED_LARGE_IMAGE}#",
-      :medium => "#{User::MEDIUM_IMAGE}x#{User::MEDIUM_IMAGE}#",
-      :small => "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#"
-    }
-    # Use these to change image storage location
-    #:url => "/system/:class/:attachment/:id/:style/:basename.:extension",
-    #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
 
   has_many :admin_memberships,
            :conditions => { admin: true },
@@ -142,7 +141,7 @@ class User < ActiveRecord::Base
   def ability
     @ability ||= Ability.new(self)
   end
-  
+
   def language
     selected_locale || detected_locale
   end
