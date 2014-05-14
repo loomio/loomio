@@ -22,4 +22,5 @@ Session.vim
 screenshots/
 .env
 .idea
+.powenv
 lineman/

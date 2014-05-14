@@ -8,7 +8,6 @@
             = f.input :name, label: t(:"contact_page.labels.name")
             = f.input :email, label: t(:"contact_page.labels.email")
             = f.input :message, label: t(:"contact_page.labels.message")
-            = f.input :destination, label: t(:"contact_page.labels.destination"), as: :select, collection: contact_destinations, include_blank: false
             = f.submit :submit, value: t(:"contact_page.labels.submit"), class: 'btn btn-info btn-large', data: { disable_with: t(:"contact_page.labels.submit") }
         .span5.offset1#direct_contact
           %p= t(:"contact_page.messages.email_html", email: "contact@loomio.org")

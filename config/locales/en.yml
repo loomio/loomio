@@ -726,14 +726,7 @@ en:
       name:         'Your name'
       email:        'Your email address'
       message:      'Your message'
-      destination:  'Where shall we send your message?'
       submit:       'Send message'
-    destinations:
-      contact:      'General enquiries'
-      tech:         'Tech support / bug reports / feature requests'
-      press:        'Media enquiries'
-      sales:        'Sales and customer enquiries'
-      translations: 'Translation enquiries'
     messages:
       email_html:        "Fill out this form, or send an email to <a href='mailto:%{email}'>%{email}</a>"
       social_html:       "You can also join us on<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
