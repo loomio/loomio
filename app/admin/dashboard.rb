@@ -77,12 +77,14 @@ ActiveAdmin.register_page "Dashboard" do
       end
       column do
         panel "Discussions" do
-          h1 { Discussion.count }
+          h1 { Discussion.count - Group.count}
+          div { "Excluding auto-generated example content" }
         end
       end
       column do
         panel "Proposals" do
-          h1 { Motion.count }
+          h1 { Motion.count - Group.count }
+          div { "Excluding auto-generated example content" }
         end
       end
     end

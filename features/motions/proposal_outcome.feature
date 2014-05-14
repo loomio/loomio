@@ -33,9 +33,9 @@ Feature: Coordinator creates proposal outcome
     And a proposal outcome has been sent
     Then I should not see the campaign in the email body
 
-  Scenario: Non-paying group member receives outcome email with campaign
-    Given my group is not paying a subscription
-    And a proposal outcome has been sent
-    Then I should see the campaign in the email body
+  # Scenario: Non-paying group member receives outcome email with campaign
+  #   Given my group is not paying a subscription
+  #   And a proposal outcome has been sent
+  #   Then I should see the campaign in the email body
 
 

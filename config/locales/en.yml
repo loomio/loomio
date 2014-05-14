@@ -906,7 +906,6 @@ en:
     view_discussion: "Click here to view this discussion"
     view_group: "Click here to view the group on Loomio"
     view_proposal: "View this proposal on Loomio"
-    campaign_html: "Was this decision important to you? Consider <a href='%{link_path}'>becoming a Loomio contributor</a> and help us spread Loomio to the world. We're a little team trying to do big things and we need your contribution to keep us growing!"
     create_discussion:
       intro: "%{who} started a new discussion in %{which_group}:"
       subject: "New discussion - %{which}"

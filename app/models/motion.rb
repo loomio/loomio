@@ -227,7 +227,14 @@ class Motion < ActiveRecord::Base
     update_attribute(:did_not_votes_count, did_not_votes.count)
     reload
   end
-  
+
+  # only here while the fix in angular branch awaits merge
+  def closing_at=(datetime)
+    self.close_at_date = datetime.to_date
+    self.close_at_time = datetime.strftime("%H:00")
+    self[:closing_at] = datetime
+  end
+
   private
     def find_or_new_motion_reader_for(user)
       if self.motion_readers.where(user_id: user.id).exists?
@@ -241,15 +248,14 @@ class Motion < ActiveRecord::Base
     end
 
     def set_default_close_at_date_and_time
-      self.close_at_date ||= (Time.zone.now + 3.days).to_date
-      self.close_at_time ||= Time.zone.now.strftime("%H:00")
+      self.closing_at ||= Time.zone.now + 3.days
     end
 
     def set_closing_at
       date_time_zone_format = '%Y-%m-%d %H:%M %Z'
       tz_offset = ActiveSupport::TimeZone[close_at_time_zone].formatted_offset
       date_time_zone_string = "#{close_at_date.to_s} #{close_at_time} #{tz_offset}"
-      self.closing_at = DateTime.strptime(date_time_zone_string, date_time_zone_format)
+      self[:closing_at] = DateTime.strptime(date_time_zone_string, date_time_zone_format)
     end
 
     def fire_new_motion_event

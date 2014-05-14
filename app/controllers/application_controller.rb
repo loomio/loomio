@@ -16,6 +16,9 @@ class ApplicationController < ActionController::Base
 
   after_filter :increment_measurement
 
+  # intercom
+  skip_after_filter :intercom_rails_auto_include
+
   rescue_from CanCan::AccessDenied do |exception|
     if user_signed_in?
       flash[:error] = t("error.access_denied")
