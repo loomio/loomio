@@ -55,6 +55,7 @@ gem 'bing_translator', '~> 4.2.0'
 gem 'librato-rails'
 gem 'browser'
 gem 'activerecord-postgres-hstore'
+gem 'intercom-rails', '~> 0.2.24'
 
 # Gems used only for assets and not required
 # in production environments by default.
