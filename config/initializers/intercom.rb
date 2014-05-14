@@ -46,7 +46,7 @@ if ENV['INTERCOM_APP_ID']
     # A Proc that given a user returns an array of companies
     # that the user belongs to.
     # 
-    config.user.company_association = Proc.new { |user| user.groups.to_a }
+    config.user.company_association = Proc.new { |user| user.parent_groups.to_a }
     # config.user.company_association = Proc.new { |user| [user.company] }
 
     # == Current company method/variable
