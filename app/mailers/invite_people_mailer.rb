@@ -39,7 +39,7 @@ class InvitePeopleMailer < BaseMailer
     @group = group
     @recipient = group.admins.first
     mail  to: @recipient.email,
-          from: 'Chelsea Robinson <chelsea@loomio.org>',
+          from: 'Rich Bartlett <rich@loomio.org>',
           subject: 'Welcome to Loomio!'
   end
 end
