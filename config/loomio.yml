@@ -18,5 +18,5 @@ optional:
   TAG_MANAGER_ID: ""
 
 # Branding
-  NAVBAR_LOGO_PATH:
+  NAVBAR_LOGO_PATH: islogo.png
   NAVBAR_CONTRIBUTE: show
