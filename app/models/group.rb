@@ -327,7 +327,7 @@ class Group < ActiveRecord::Base
   end
 
   def set_defaults
-    self.privacy ||= 'hidden'
+    self.privacy ||= 'public'
     self.members_invitable_by ||= 'members'
   end
 
