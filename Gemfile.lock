@@ -64,6 +64,9 @@ GEM
     arel (3.0.3)
     atomic (1.1.16)
     awesome_print (1.0.2)
+    aws-sdk (1.40.3)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.7)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
@@ -528,6 +531,7 @@ DEPENDENCIES
   activerecord-postgres-hstore
   airbrake (~> 3.1.14)
   awesome_print (~> 1.0.2)
+  aws-sdk (~> 1.40.3)
   better_errors (~> 1.0.1)
   binding_of_caller (~> 0.7.2)
   bing_translator (~> 4.2.0)
