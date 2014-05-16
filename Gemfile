@@ -114,6 +114,6 @@ group :staging, :production do
   gem 'memcachier', '~> 0.0.2'
   gem 'dalli', '~> 2.7.0'
   gem 'newrelic_rpm', '~> 3.7.3'
-  gem 'aws-sdk', '*'
+  gem 'aws-sdk', '~> 1.40.3'
   #gem 'heroku-deflater', '~> 0.5.1'
 end
