@@ -254,6 +254,9 @@ pt:
   confirm_remove_member: 'Tem certeza de que deseja remover esta/e integrante do grupo?'
   want_to_invite_html: "Gostaria de <a href='%{link}'>convidar pessoas</a> para este grupo?"
   membership_requests: "Solicitações de inclusão de membro"
+  previous_requests: Pedidos anteriores
+  approved_by_person: Aprovado(a) por %{person}
+  ignored_by_perosn: Ignorado(a) por %{person}
   confirm_approve_membership_request: "Tem certeza de que quer adicionar %{which_user} ao grupo?"
   cancel_membership_request: "Cancelar solicitação"
   ignore_request: "Ignorar solicitação"
@@ -726,7 +729,6 @@ pt:
     view_discussion: "Clique aqui para ver esta discussão"
     view_group: "Clique aqui para ver o grupo no Loomio"
     view_proposal: "Ver esta proposição no Loomio"
-    campaign_html: "Essa decisão foi importante para você? Considere <a href='%{link_path}'> tornar-se um financiador </a> e ajude-nos a espalhar o Loomio pelo mundo! Somos um pequeno time tentando fazer grandes coisas e precisamos de sua contribuição para continuar crescendo!"
     create_discussion:
       intro: "%{who} iniciou uma nova discussão em %{which_group}:"
       subject: "Nova discussão - %{which}"
@@ -782,8 +784,6 @@ pt:
       header: "Você está quase terminando!"
       intro: "Por favor, clique neste link de verificação para finalizar sua solicitação:"
       ignore: "Se você não pediu para entrar no Loomio, por favor ignore esta mensagem."
-  campaign:
-    crowdfunding_html: "CONSEGUIMOS! Agradecemos a todo mundo que nos ajudou no financiamento coletivo do Loomio 1.0. Amamos a nossa comunidade!</a>"
   about_loomio: "Sobre o Loomio"
   ago: "há %{quantity_of_time}"
   approve: "Aprovar"
@@ -826,7 +826,11 @@ pt:
   pricing: 'Preços'
   prev: "Anterior"
   more: "Mais..."
+  translate: "Ajude a traduzir o Loomio!"
+  translate_field: "Veja tradução"
+  loading_translation: "Carregando tradução..."
   translate_this_string: "Traduzir para %{language}"
+  failed_translation: "Não foi possível concluir a tradução"
   options: "Opções"
   ok_got_it: "Ok, entendi!"
   remove: "Remover"
@@ -842,7 +846,6 @@ pt:
   subject: "Assunto"
   terms_of_service_html: "Clicando em %{button_text}, você concorda com os <a href='%{link_path}' target='_blank'>Termos de Serviço</a> do Loomio"
   thanks: "Obrigado!"
-  translate: "Ajude a traduzir o Loomio!"
   unlike: "Curtir (desfazer)"
   time_until_close: "%{quantity_of_time} até encerrar"
   update: "Atualizar"

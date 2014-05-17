@@ -565,6 +565,7 @@ vi:
   outcome: "Kết quả"
   password: "Mật khẩu"
   prev: "Trước đó"
+  translate: "Tham gia vào công tác chuyển ngữ Loomio!"
   options: "Tùy chọn"
   ok_got_it: "Ô kê con tê tê, tôi đã hiểu rồi!"
   remove: "Loại bỏ"
@@ -576,7 +577,6 @@ vi:
   show_more: "Hiển thị thêm"
   starting: "Đang bắt đầu"
   subject: "Chủ đề"
-  translate: "Tham gia vào công tác chuyển ngữ Loomio!"
   unlike: "Không thích"
   update: "Cập nhật"
   common:

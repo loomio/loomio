@@ -254,6 +254,9 @@ el:
   confirm_remove_member: 'Είστε σίγουροι πως θέλετε να αφαιρέσετε αυτό το μέλος από την ομάδα?'
   want_to_invite_html: "Θέλετε να <a href='%{link}'>προσκαλέσετε άτομα</a> σε αυτή την ομάδα?"
   membership_requests: "Αιτήσεις μελών"
+  previous_requests: Προηγούμενα αιτήματα
+  approved_by_person: Εγκρίθηκε από τον/την %{person}
+  ignored_by_perosn: Αγνοήθηκε από τον/την %{person}
   confirm_approve_membership_request: "Είστε σίγουροι πως θέλετε να προσθέσετε τον/την %{which_user} στην ομάδα?"
   cancel_membership_request: "Ακύρωση αίτησης"
   ignore_request: "Αγνοήστε την αίτηση"
@@ -742,7 +745,6 @@ el:
     view_discussion: "Πατήστε εδώ για να δείτε αυτή την συζήτηση"
     view_group: "Πατήστε εδώ για να δείτε την ομάδα στο Loomio"
     view_proposal: "Εμφάνιση αυτής της πρότασης στο Loomio"
-    campaign_html: "Ήταν αυτή η απόφαση σημαντική για εσάς? Σκεφτείτε <a href='%{link_path}'>να γίνετε χορηγός του Loomio</a> και βοηθήστε μας να το διαδώσουμε στον κόσμο. Είμαστε μια μικρή ομάδα που προσπαθεί να κάνει μεγάλα πράγματα και χρειαζόμαστε την συνδρομή σου για να συνεχίσουμε να μεγαλώνουμε!"
     create_discussion:
       intro: "Ο/Η %{who} ξεκίνησε μια νέα συζήτηση στην ομάδα %{which_group}:"
       subject: "Νέα Συζήτηση - %{which}"
@@ -798,8 +800,6 @@ el:
       header: "Σχεδόν τελειώσατε!"
       intro: "Παρακαλούμε πατήστε αυτόν τον σύνδεσμο επαλήθευσης για να τελειώσετε την αίτηση σας:"
       ignore: "Εάν δεν έχετε κάνει αίτηση για να γίνετε μέλος στο Loomio παρακαλούμε αγνοήστε αυτό το email."
-  campaign:
-    crowdfunding_html: "Τα καταφέραμε! Ευχαριστούμε όλους όσους μας βοήθησαν στην χρηματοδότηση από το πλήθος για το Loomio 1.0. Αγαπάμε την κοινότητα μας!</a>"
   about_loomio: "Σχετικά με το Loomio"
   ago: "πριν από %{quantity_of_time} "
   approve: "Έγκριση"
@@ -842,7 +842,11 @@ el:
   pricing: 'Τιμολόγηση'
   prev: "Προηγούμενο"
   more: "Περισσότερα..."
+  translate: "Βοηθήστε με την μετάφραση του Loomio!"
+  translate_field: "Δείτε την μετάφραση"
+  loading_translation: "Φορτώνει η μετάφραση..."
   translate_this_string: "Μετάφραση σε %{language}"
+  failed_translation: "Αδύνατον να ολοκληρωθεί η μετάφραση"
   options: "Ρυθμίσεις"
   ok_got_it: "Εντάξει, το έχω!"
   remove: "Αφαιρέστε"
@@ -858,7 +862,6 @@ el:
   subject: "Θέμα"
   terms_of_service_html: "Πατώντας %{button_text}, συμφωνείτε στου Loomio τους <a href='%{link_path}' target='_blank'>Όρους της Υπηρεσίας</a>"
   thanks: "Ευχαριστούμε!"
-  translate: "Βοηθήστε με την μετάφραση του Loomio!"
   unlike: "Δεν μ'άρέσει"
   time_until_close: "%{quantity_of_time} μέχρι να κλείσει"
   update: "Ενημέρωση"

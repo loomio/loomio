@@ -589,6 +589,7 @@ nl:
         privacy_public_header: "Openbaar"
         privacy_public_description: "Iedereen kan deze discussie zien"
         privacy_private_header: "Afgeschermd"
+        privacy_private_description: "Alleen leden van %{group} kunnen deze discussie zien"
         privacy_hidden_description: "Alle discussies in een verborgen groep zijn afgeschermd."
         of: "van"
         of_no_group: "van deze groep"
@@ -662,7 +663,6 @@ nl:
     view_discussion: "Klik hier om deze discussie te bekijken"
     view_group: "Klik hier om de groep op Loomio te bekijken"
     view_proposal: "Bekijk dit voorstel op Loomio"
-    campaign_html: "Was deze beslissing belangrijk voor jou? Overweeg <a href='%{link_path}'>een Loomio donateur te worden</a> en help ons Loomio over de wereld te verspreiden. We zijn een klein team dat grote dingen probeert te doen en we hebben jouw bijdrage nodig om te kunnen blijven groeien!"
     create_discussion:
       intro: "%{who} is een nieuwe discussie in %{which_group} begonnen:"
       subject: "Nieuwe discussie - %{which}"
@@ -758,6 +758,7 @@ nl:
   pricing: 'Tarieven'
   prev: "Vorige"
   more: "Meer..."
+  translate: "Help Loomio te vertalen!"
   translate_this_string: "Vertalen naar %{language}"
   options: "Opties"
   ok_got_it: "Okee, ik snap 't!"
@@ -774,7 +775,6 @@ nl:
   subject: "Onderwerp"
   terms_of_service_html: "Door te klikken op %{button_text}, ga je akkoord met Loomio's <a href='%{link_path}' target='_blank'>Algemene Voorwaarden</a>"
   thanks: "Bedankt!"
-  translate: "Help Loomio te vertalen!"
   unlike: "Niet leuk"
   update: "Bijwerken"
   common:

@@ -618,7 +618,6 @@ cs:
     view_discussion: "Klikněte sem pro zobrazení této diskuze"
     view_group: "Klikněte sem pro zobrazení skupiny na Loomio"
     view_proposal: "Zobrazte si tento návrh na Loomio"
-    campaign_html: "Bylo toto rozhodnutí pro vás důležité? Zvažte <a href='%{link_path}'>příspěvek Loomio</a> a pomozte nám Loomio šířit. Jsme malý tým, co se snaží dělat velké věci, a potřebujeme váš příspevek, abychom mohli nadále růst!"
     create_discussion:
       intro: "%{who} zahájil(a) novou diskuzi v %{which_group}:"
       subject: "Nová diskuze - %{which}"
@@ -712,6 +711,7 @@ cs:
   pricing: 'Ceník'
   prev: "Předch."
   more: "Více..."
+  translate: "Pomozte přeložit Loomio!"
   translate_this_string: "Přeložit do %{language}"
   options: "Nastavení"
   ok_got_it: "OK, chápu!"
@@ -727,7 +727,6 @@ cs:
   starting: "Zahajuje se"
   subject: "Téma"
   thanks: "Děkujeme!"
-  translate: "Pomozte přeložit Loomio!"
   unlike: "To se mi nelíbí"
   update: "Aktualizovat"
   common:

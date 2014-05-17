@@ -617,7 +617,6 @@ ro:
     view_discussion: "Apasa aici pentru a vedea aceasta discutie"
     view_group: "Apasa aici pentru a vedea grupul pe Loomio"
     view_proposal: "Vizualizeaza aceasta propunere pe Loomio"
-    campaign_html: "Deciziile luate au fost importante pentru tine? Poti deveni <a href='%{link_path}'> contributor Loomio</a> si sa ne ajuti sa popularizam Loomio. Suntem o echipa mica care incearca sa realizeze lucruri importante si avem nevoie de ajutorul tau ca sa continuam sa crestem!"
     create_discussion:
       intro: "%{who} a pornit o noua discutie in %{which_group}:"
       subject: "Discutie nou - %{which}"
@@ -712,6 +711,7 @@ ro:
   password: "Parola"
   pricing: 'Plati'
   prev: "Anteriorul"
+  translate: "Ajuta la traducerea Loomio!"
   translate_this_string: "Traducere în %{language}"
   options: "Optiuni"
   ok_got_it: "Ok, am inteles!"
@@ -727,7 +727,6 @@ ro:
   subject: "Subiect"
   terms_of_service_html: "Apasand %{button_text}, esti de acord cu <a href='%{link_path}' target='_blank'>Termenii si Conditiile</a> Loomio."
   thanks: "Multumim!"
-  translate: "Ajuta la traducerea Loomio!"
   unlike: "Nu apreciez"
   update: "Modifica"
   facebook: "facebook"

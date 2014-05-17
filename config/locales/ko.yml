@@ -687,8 +687,6 @@ ko:
       header: "거의 다 왔습니다."
       intro: "요청사항을 완료하기 위해서 유효성 확인 링크를 클릭해 주세요."
       ignore: "루미오에 가입 요청을 하지 않았다면 이 이메일을 무시하세요."
-  campaign:
-    crowdfunding_html: "우리는 해냈습니다. 루미오 1.0의 크라우드펀딩을 도와주신 모든 분들에게 감사합니다. 우리는 우리의 커뮤니티를 사랑합니다."
   about_loomio: "루미오에 대해서"
   ago: "%{quantity_of_time} 전"
   approve: "승인"
@@ -731,6 +729,7 @@ ko:
   pricing: '가격표'
   prev: "이전"
   more: "더보기..."
+  translate: "루미오 번연을 도와주세요."
   translate_this_string: "%{language}로 번역하기"
   options: "선택사항"
   ok_got_it: "네 알겠습니다."
@@ -747,7 +746,6 @@ ko:
   subject: "제목"
   terms_of_service_html: "%{button_text} 를 클릭을 통해, 루미도의 약관에 <a href='%{link_path}' target='_blank'>동의</a>하게 됩니다."
   thanks: "고맙습니다."
-  translate: "루미오 번연을 도와주세요."
   unlike: "싫어요"
   time_until_close: "%{quantity_of_time} 까지 닫힘"
   update: "업데이트"

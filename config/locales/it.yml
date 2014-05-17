@@ -656,6 +656,7 @@ it:
   pricing: 'Prezzo'
   prev: "Prec"
   more: "Altro..."
+  translate: "Aiuta tradurre Loomio"
   translate_this_string: "Traduci in %{language}"
   options: "Opzioni"
   ok_got_it: "Okay, ho capito!"
@@ -669,7 +670,6 @@ it:
   starting: "Cominciando"
   subject: "Oggetto"
   thanks: "Grazie!"
-  translate: "Aiuta tradurre Loomio"
   unlike: "Unlike"
   update: "Aggiornamento"
   facebook: "Facebook"

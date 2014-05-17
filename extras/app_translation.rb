@@ -11,6 +11,7 @@ class AppTranslation
                'Indonesian' => :id,
                'magyar' => :hu,
                '日本語' => :ja,
+               'ភាសាខ្មែរ' => :km,
                '한국어' => :ko,
                'മലയാളം' => :ml,
                'Nederlands' => :nl,
@@ -23,11 +24,11 @@ class AppTranslation
 
   EXPERIMENTAL_LANGUAGES = {'Chinese (Mandarin)' => :cmn,
                             'Italiano' => :it,
+                            'беларуская мова' => :be,
                             'తెలుగు' => :te,
                             'Gaelic (Irish)' => :ga,
                             'Esperanto' => :eo,
-                            'Telugu' => :te,
-                            'khmer' => :km}
+                            'Telugu' => :te}
 
   FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl, :zh, :sv, :da, :be, :ru, :ko]
 

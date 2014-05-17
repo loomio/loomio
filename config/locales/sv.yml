@@ -735,7 +735,6 @@ sv:
     view_discussion: "Klicka här för att se denna diskussionen"
     view_group: "Klicka här för att se gruppen på Loomio"
     view_proposal: "Visa detta förslag på Loomio"
-    campaign_html: "Var det här beslutet viktigt för dig? Kan du <a href='%{link_path}'> tänka dig att bli en bidragsgivare till Loomio</a> och hjälpa oss att sprida Loomio till världen. Vi är en liten grupp som försöker göra stora saker och vi behöver ditt bidrag för att kunna fortsätta växa!"
     create_discussion:
       intro: "%{who} startade en ny diskussion i %{which_group}:"
       subject: "Ny diskussion - %{which}"
@@ -833,6 +832,7 @@ sv:
   pricing: 'Prissättning'
   prev: "Tidigare"
   more: "Mer..."
+  translate: "Hjälp oss att översätta Loomio!"
   translate_this_string: "Översätt till %{language}"
   options: "Alternativ"
   ok_got_it: "OK, jag förstår!"
@@ -849,7 +849,6 @@ sv:
   subject: "Ämne"
   terms_of_service_html: "Genom att klicka på %{button_text}, godkänner du Loomios <a href='%{link_path}' target='_blank'>användarvillkor</a>"
   thanks: "Tack!"
-  translate: "Hjälp oss att översätta Loomio!"
   unlike: "Skild från"
   update: "Uppdatera"
   facebook: "Facebook"

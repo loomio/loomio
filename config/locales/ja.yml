@@ -720,7 +720,6 @@ ja:
     view_discussion: "このディスカッションを見るにはここをクリックしてください"
     view_group: "Loomioのグループを見るにはここをクリックしてください"
     view_proposal: "Loomioでこの提案を見る"
-    campaign_html: "この決定はあなたにとって重要でしたか？\n<a href='%{link_path}'>Loomioに寄付をする</a> ことを考えませんか？\nそしてLoomioを世界に広げるのを手伝ってもらえませんか。\n私たちは大きなことをしようとしている小さなチームなので、私たちの発展にはあなたの寄付が必要なのです。"
     create_discussion:
       intro: "%{who} は %{which_group} で新しいディスカッションを開始しました："
       subject: "新しいディスカッション -  %{which}"
@@ -815,6 +814,7 @@ ja:
   pricing: '価格設定'
   prev: "前"
   more: "更に詳細..."
+  translate: "Loomioの翻訳を手伝ってください！"
   translate_this_string: " %{language} に訳す"
   options: "オプション"
   ok_got_it: "了解です！"
@@ -831,7 +831,6 @@ ja:
   subject: "主題"
   terms_of_service_html: " %{button_text} をクリックすることによって、Loomioの<a href='%{link_path}' target='_blank'>サービスの使用条件</a>に同意します。"
   thanks: "ありがとうございます！"
-  translate: "Loomioの翻訳を手伝ってください！"
   unlike: "ええね！を消す"
   update: "アプデート"
   facebook: "Facebook"

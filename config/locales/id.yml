@@ -643,7 +643,6 @@ id:
     view_discussion: "Klik di sini untuk melihat diskusi ini"
     view_group: "Klik di sini untuk melihat kelompok di Loomio"
     view_proposal: "Lihat usulan ini di Loomio"
-    campaign_html: "Apakah keputusan ini penting untuk Anda? Pertimbangkan <a href='%{link_path}'>memberi sumbangan untuk Loomio</a> dan bantu kami menyebarkan Loomio lebih luas. Kami adalah tim kecil yang ingin melakukan hal besar dan kami butuh kontribusi Anda untuk membantu kami berkembang!"
     create_discussion:
       intro: "%{who} memulai diskusi baru di dalam %{which_group}:"
       subject: "Diskusi baru - %{which}"
@@ -738,6 +737,7 @@ id:
   password: "Kata sandi"
   pricing: 'Harga'
   prev: "Sebelumnya"
+  translate: "Bantu terjemahkan Loomio!"
   options: "Pilihan"
   ok_got_it: "Oke, mengerti!"
   remove: "Hapus"
@@ -753,7 +753,6 @@ id:
   subject: "Perihal"
   terms_of_service_html: "Dengan menekan %{button_text}, Anda setuju dengan <a href='%{link_path}' target='_blank'>Ketentuan layanan</a> Loomio"
   thanks: "Terima kasih!"
-  translate: "Bantu terjemahkan Loomio!"
   unlike: "Tidak sukai"
   update: "Perbarui"
   common:

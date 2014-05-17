@@ -56,6 +56,7 @@ tr:
   notice:
     admin_rights_removed: "%{which_user} kullanıcısının koordinatör hakları kaldırıldı. "
     user_added: "%{user_email_or_name} gruba eklendi."
+    new_user_added: "%{user_email_or_name}, Loomio hesabı açtıktan sonra gruba eklenecektir."
     member_removed: "Üye çıkarıldı."
     membership_approved: "Üyelik onaylandı."
     membership_request_canceled: "Üyelik isteği iptal edildi."
@@ -80,6 +81,7 @@ tr:
       previous: "Önceki"
       next: "Sonraki"
   warning:
+    cant_remove_last_admin: "Kalan son koordinatör olduğun için yetkin kaldırılamaz."
     membership_request_already_approved: "Üyelik isteği daha önce onaylanmış."
     membership_request_already_ignored: "Üyelik isteği daha önce yok sayıldı."
     membership_request_already_canceled: "Üyelik isteği daha önce iptal edildi."
@@ -97,6 +99,7 @@ tr:
     group_archived: "Grup başarıyla arşivlendi."
     group_created: "Grup başarıyla oluşturuldu."
     members_added: "Üyeler gruba ekledi."
+    membership_requested: "%{which_group} grubuna katılma isteğinde bulundun. Başvurun onaylanınca  sana bildirilecek."
     position_submitted: "Pozisyon gönderildi"
     position_updated: "Pozisyon güncellendi."
     proposal_created: "Öneri başarıyla oluşturuldu."
@@ -171,6 +174,7 @@ tr:
   sign_out: "Oturumu kapat"
   sign_in: "Oturum aç"
   tagline: "Herkes için, kendisini etkileyen kararlara katılmanın kolay olduğu bir dünya yaratmak."
+  or_sign_in_html: "Zaten bir Loomio hesabın varsa <a href='%{link}' class='%{link_class}'> buradan giriş yap.</a>"
   click_to_dismiss: "Bu iletiyi kapatmak için buraya tıklayın"
   generic_confirm: "Emin misiniz?"
   discussion_helper_text:
@@ -213,7 +217,11 @@ tr:
   members: "Üyeler"
   confirm_remove_user: "%{which_user} üyesini gruptan çıkarmak istediğine emin misin?"
   remove_coordinator: "Koordinatörü kaldır"
+  confirm_remove_coordinator: "%{which_user} artık bu grupta koordinatör olmayacak. Bunun istediğinden emin misin?"
   make_coordinator: "Koordinatör yap"
+  confirm_make_coordinator: " %{which_user} bu grupta koordinatör olacak. Bunu yapmak istediğinden emin misin?"
+  confirm_remove_member: 'Bu üyeyi gruptan çıkartmak istediğinden emin misin?'
+  want_to_invite_html: "Bu gruba birlerini <a href='%{link}'>davet etmek</a> ister misin?"
   membership_requests: "Üyelik istekleri"
   confirm_approve_membership_request: "%{which_user} üyesini gruba eklemek istediğine emin misin?"
   cancel_membership_request: "Talebi iptal et"
@@ -248,6 +256,10 @@ tr:
   group_request:
     confirmation:
       title: Neredeyse bitti! E-postanızı kontrol edin.
+      body_html: |
+        Sana grup başlatma daveti içeren bir e-posta gönderdik.
+
+        Eğer gelen kutusunda birkaç dakika içerisinde göremezseniz <a href='mailto:contact@loomio.org'>contact@loomio.org</a> adresine e-posta göndererek bize ulaşabilirsin.
   discussion_items:
     new_discussion: "müzakereyi oluşturdu"
     new_motion: "bir öneri oluşturdu"
@@ -337,6 +349,11 @@ tr:
       \ gönderir.</p>\n"
     example1_html: "<h3>Grubunun geniş bir konuyu müzakere ederek birlikte bir çözüm geliştirmesine ihtiyacın var</h3>\n<p>Strateji: Bir öneri oluşturmadan önce bir süre için konuyu tartışın.</p>\n<p>Eğer belirli bir çözüme varmadan önce grup içinde soruna karşı ortak bir anlayış geliştirirsen, \nmüzakereler\
       \ genellikle en iyi sonuca ulaşır. Kişiler bu sürece\nkatılım gösterdileri sürece, sonuç hakkında fikir birliğinde olmaları daha olasıdır.</p>\n"
+    example2_html: |
+      <h3>Aklında bir fikir var ve gruptan onay alıp ilerlemek istiyorsun.</h3>
+      <p>Strateji: Almak istediğin karar hakkında bir tartışma başlat ve hemen teklif yap.</p>
+      <p>Eğer aklındaki sonuçlara dair öenmli çekincelerin olmadığında emin olmak istiyorsan teklifi karara dair çabuk bir geri dönüş olarak kullanabilirsin.</p>
+      <p>Bir döümanı tamamlamak, başvuruları onaylamak veya işin bir parçasını kabul ettirmek gibi şeyler yapabilirsin.</p>
     get_in_touch: "İletişime geç"
     get_in_touch_description_html: "Herhangi bir sorunuz veya geri bildiriminiz varsa, <a href='%{link}'>bize yazın</a>."
     getting_started: "Başlarken"
@@ -352,6 +369,7 @@ tr:
     images_and_text_formatting: "Resimler ve metin biçimlendirme"
     keep_up_to_date: "Güncel tutun"
     make_a_decision: "Bir karar ver"
+    make_a_decision_description: "Grup karar vermeye hazır olduğunda herkes teklifte bulunabilir. Kararın ne getireceğini açık bir şekilde anlat ve insanlara onaylamanın veya reddetmenin ne anlama geleceğini anlamaları için gerekli bilgileri ver."
     prompt_people_html: "Kişileri <span class='blue'>@mentions</span> ile harekete geçir"
     positions_agree_description: "<span>Katılıyorum</span> öneriden memnun olduğun anlamına gelir."
     positions_abstain_description: "<span>Çekimserim</span> emin olmadığın ya da grubun senin katılımın olmadan karar vermesine razı olduğun anlamına gelir."
@@ -370,7 +388,9 @@ tr:
     vote: 'Konumunu istediğin zaman değiştirebilirsin'
   pricing_page:
     organisations: Kuruluşlar
+    organisations_examples: örneğin; şirketler, devlet kuruluşları, sivil organizasyonlar
     informal_groups: İnformal gruplar
+    informal_groups_desc: Grubunuzdaki üyelerden yapabilecekleri kadar ödeme yapmaları istenilecek
     informal_groups_examples: örneğin aileler, sosyal hareketler, kolektifler
   contribution:
     currency_desc: Tutarlar ABD doları cinsindendir
@@ -378,6 +398,7 @@ tr:
     one_time_html: Bir defaya mahsus katkıda bulunmak istiyorum
     submit: Katkıda bulun
     tooltip: Topluğumuzun finansman modeli hakkında bilgi alın
+    thought_about_contributing: 'Katkı sunmak için fırsatın '
     thank_you_title: Loomio'ya katkı sağladığınız için teşekkür ederiz!
     making_a_donation: Bağışta bulunmak
   resend_confirmation: "Onay bilgilerini tekrar gönder"
@@ -405,6 +426,7 @@ tr:
     no_invitations_left_get_more: "Sana yardımcı olabilmemiz için lütfen contact@loomio.org e-posta gönder"
     invitation_not_found: 'Bu kuponla ilişik bir davetiye bulunamadı. Lütfen seni davet eden kişiden yeni bir davetiye talep et.'
     invitation_cancelled: 'Bu davetiye iptal edildi. Eğer bunun bir hata olduğunu düşünüyorsan, lütfen seni davet eden kişiyle irtibata geç.'
+    invitation_already_used: 'Bu davetiye daha önce kullanılmış. Lütfen, gruba devam etmek için giriş yapın.'
     recipients: "E-posta adreslerini, birbirinden virgülle ayırarak yazın:"
     invitees_placeholder: "Kullanıcı Adı <user1@example.com>, user2@example.com"
     subject: "Lütfen yeni Loomio grubumuza katıl, %{group}"
@@ -649,6 +671,7 @@ tr:
   pricing: 'Fiyatlandırma'
   prev: "Önceki"
   more: "Daha fazla..."
+  translate: "Loomio'nun çevirisine yardımcı ol!"
   translate_this_string: "%{language} dilinde çeviri yap"
   options: "Seçenekler"
   ok_got_it: "Tamam, anladım!"
@@ -665,7 +688,6 @@ tr:
   subject: "Konu"
   terms_of_service_html: "Bunu tıklayarak %{button_text}, Loomio'nun <a href='%{link_path}' target='_blank'>Hizmet Koşullarını</a>kabul etmiş sayılırsınız"
   thanks: "Teşekkürler!"
-  translate: "Loomio'nun çevirisine yardımcı ol!"
   unlike: "Beğenmekten vazgeç"
   update: "Güncelleme"
   common:

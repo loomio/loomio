@@ -655,6 +655,7 @@ ml:
   pricing: 'വിലവിവരം'
   prev: "മുമ്പുള്ളത്"
   more: "കൂടുതല്‍..."
+  translate: "ലൂമിയോ തര്‍ജ്ജമ ചെയ്യാന്‍ സഹായിക്കൂ!"
   translate_this_string: "%{language}-ലേക്ക് തര്‍ജ്ജിമ"
   options: "ഐച്ഛികങ്ങള്‍"
   ok_got_it: "ശരി, മനസ്സിലായി!"
@@ -671,7 +672,6 @@ ml:
   subject: "വിഷയം"
   terms_of_service_html: "%{button_text} ഞെക്കി,  ലൂമിയോ<a href='%{link_path}' target='_blank'>വ്യവസ്ഥകള്‍</a>ക്ക് സമ്മതം  രേഖപെടുത്തുക"
   thanks: "നന്ദി!"
-  translate: "ലൂമിയോ തര്‍ജ്ജമ ചെയ്യാന്‍ സഹായിക്കൂ!"
   unlike: "ഇഷ്ടം തിരിച്ചെടുക്കുക"
   update: "പുതുക്കുക"
   common:

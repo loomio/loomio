@@ -240,6 +240,9 @@ zh:
   confirm_remove_member: '您確定要將這個成員從群組中移除？'
   want_to_invite_html: "想要 <a href='%{link}'>邀請夥伴</a> 到這個群組嗎？"
   membership_requests: "申請成員資格"
+  previous_requests: 前一個要求
+  approved_by_person: 由%{person}核准
+  ignored_by_perosn: 由%{person}取消
   confirm_approve_membership_request: "您確定要將 %{which_user} 加入群組嗎？"
   cancel_membership_request: "取消申請"
   ignore_request: "忽略申請"
@@ -731,7 +734,6 @@ zh:
     view_discussion: "點擊此處，您可以看到這條討論串。"
     view_group: "點擊此處，您可以看到Loomio上的群組。"
     view_proposal: "在 Loomio 上觀看這項提案。"
-    campaign_html: "這個決策對您很重要嗎？考慮 <a href='%{link_path}'> 成為 Loomio 的贊助者</a> 並幫助我們傳播 Loomio 到世界各地。我們是一個試著做大事的小團隊，並且需要您的贊助以幫助我們持續成長。"
     create_discussion:
       intro: "%{who} 在 %{which_group} 開啟了新的討論串："
       subject: "新討論串 — %{which}"
@@ -787,8 +789,6 @@ zh:
       header: "您就快完成了！"
       intro: "為了完成您的申請，請點擊此認證連結："
       ignore: "若您並未申請加入 Loomio，請忽略此郵件。"
-  campaign:
-    crowdfunding_html: "我們辦到了！感謝每一位幫助我們的 Loomio 1.0 群眾募資。我們熱愛社群！</a>"
   about_loomio: "關於 Loomio"
   ago: "%{quantity_of_time} "
   approve: "批准"
@@ -831,7 +831,11 @@ zh:
   pricing: '定價'
   prev: "上一個"
   more: "更多"
+  translate: "協助翻譯 Loomio！"
+  translate_field: "看看翻譯"
+  loading_translation: "載入翻譯中⋯"
   translate_this_string: "翻譯成 %{language}"
+  failed_translation: "翻譯無法完成"
   options: "選項"
   ok_got_it: "Ok，了解了！"
   remove: "移除"
@@ -847,7 +851,6 @@ zh:
   subject: "主旨"
   terms_of_service_html: "按下%{button_text}按鈕表示您同意遵守 Loomio 的<a href='%{link_path}' target='_blank'>服務條款</a>"
   thanks: "謝謝！"
-  translate: "協助翻譯 Loomio！"
   unlike: "收回讚"
   time_until_close: "%{quantity_of_time} 直到定案"
   update: "更新"

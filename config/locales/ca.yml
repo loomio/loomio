@@ -652,7 +652,6 @@ ca:
     view_discussion: "Fes click aquí per veure aquesta discussió"
     view_group: "Fes click per veure el grup a Loomio"
     view_proposal: "Veure aquesta proposta a Loomio"
-    campaign_html: "Aquesta decisió ha estat important per a tu? Considera <a href='%{link_path}'> contribuir a Loomio</a> i ajuda'ns a estendre Loomio pel món. Som un equip petit que intentem fer coses grans i necessitem les teves aportacions per seguir tirant endavant."
     create_discussion:
       intro: "%{who} ha començat una nova discussió a %{which_group}:"
       subject: "Nova discussió - %{which}"
@@ -749,6 +748,7 @@ ca:
   pricing: 'Preus'
   prev: "Anterior"
   more: "Més..."
+  translate: "Ajuda a traduir Loomio!"
   translate_this_string: "Tradueix a %{language}"
   options: "Opcions"
   ok_got_it: "D'acord, entesos!"
@@ -765,7 +765,6 @@ ca:
   subject: "Tema"
   terms_of_service_html: "En fer clic a %{button_text},  acceptes els  <a href='%{link_path}' target='_blank'>Termes de servei</a> de Loomio"
   thanks: "Mercès!"
-  translate: "Ajuda a traduir Loomio!"
   unlike: "No m'agrada"
   update: "Actualitzar"
   facebook: "Facebook"

@@ -362,6 +362,7 @@ te:
   pricing: 'ధర'
   prev: "మునుపటిది"
   more: "మరింత..."
+  translate: "లూమియోను అనువదించుటలో సహాయం చేయండి!"
   translate_this_string: "%{language} లోకి అనువదించండి"
   options: "ఐచ్ఛికాలు"
   ok_got_it: "సరే, అర్థమైంది!"
@@ -377,7 +378,6 @@ te:
   starting: "ప్రారంభిస్తూంది"
   subject: "విషయం"
   thanks: "ధన్యవాదాలు!"
-  translate: "లూమియోను అనువదించుటలో సహాయం చేయండి!"
   unlike: "అయిష్టం"
   update: "నవీకరించు"
   facebook: "ఫేస్‌బుక్"
