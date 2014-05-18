@@ -1,5 +1,5 @@
 namespace :stats do
-  task :all => [:environment, :group_requests, :users, :groups, :events, :discussions, :discussion_readers] do
+  task :all => [:environment, :group_requests, :users, :groups, :events, :discussions, :discussion_readers, :retention] do
   end
 
   task :group_requests => :environment do
@@ -126,6 +126,56 @@ namespace :stats do
     end
     fogwrite('discussion_readers.csv', file)
   end
+
+  task :retention => :environment do
+    dates = full_recent_months(15)
+    new_users_by_month = dates[0..-4].map do |date|
+      extract_new_user_ids(date.year, date.month)
+    end
+    active_users_by_month = dates[3..-1].map do |date|
+      extract_active_user_ids(date.year, date.month)
+    end
+
+    rates = []
+    new_users_by_month.each_index do |index|
+      arr = retention_rate(new_users_by_month[index], active_users_by_month[index])
+      result = {
+        :month => dates[index+3].strftime('%Y - %m'),
+        :new_users => arr[0],
+        :retained_users => arr[1],
+        :rate => arr[2]
+      }
+      rates.push result
+    end 
+    p rates
+  end
+
+  def retention_rate(month_new, month_later)
+    intersection = month_new & month_later
+    rate = intersection.size.to_f / month_new.size
+    return month_new.size, intersection.size, rate
+  end 
+
+  def extract_active_user_ids(year, month)
+    q_comments = 'SELECT DISTINCT user_id FROM comments WHERE extract(year from created_at) = ' + year.to_s
+    q_comments += ' AND extract(month from created_at) = ' + month.to_s
+    q_votes = 'SELECT DISTINCT user_id FROM votes WHERE extract(year from created_at) = ' + year.to_s
+    q_votes +=  'AND extract(year from created_at) = ' + month.to_s
+    query = 'SELECT DISTINCT I FROM (' + q_comments + ' UNION ' + q_votes + ') AS I'
+    Event.connection.select_all(query).map {|o| o['i'].delete('()').to_i}
+  end
+
+  def full_recent_months(n)
+    require 'date'
+    now = Date.today
+    dates = Array.new(n){|i| now - (i+1).months }.reverse!
+  end
+
+  def extract_new_user_ids(year, month)
+    query = 'SELECT DISTINCT id FROM users WHERE extract(year from created_at) = ' + year.to_s
+    query += ' AND extract(month from created_at) = ' + month.to_s
+    Event.connection.select_all(query).map {|o| o['id'].to_i}
+  end 
 
 
   def export_model_to_s3(model, fields)
