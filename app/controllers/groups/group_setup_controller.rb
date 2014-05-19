@@ -1,5 +1,6 @@
 class Groups::GroupSetupController < GroupBaseController
 
+  before_filter :load_group
   before_filter :require_current_user_is_group_admin
   before_filter :redirect_to_group_if_already_setup
 
