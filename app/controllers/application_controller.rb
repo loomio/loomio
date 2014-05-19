@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def show_subdomain
+    render text: request.subdomain.inspect
+  end
+
   protected
 
   def increment_measurement
