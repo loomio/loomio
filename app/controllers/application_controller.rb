@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
   before_filter :save_selected_locale, if: :user_signed_in?
   around_filter :user_time_zone, if: :user_signed_in?
 
+
+
   after_filter :increment_measurement
 
   # intercom
@@ -28,7 +30,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def show_subdomain
+    render text: request.subdomain.inspect
+  end
+
   protected
+
   def increment_measurement
     Measurement.increment(measurement_name)
   end
