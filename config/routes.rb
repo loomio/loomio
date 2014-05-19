@@ -43,18 +43,6 @@ Loomio::Application.routes.draw do
   resources :invitations, only: [:show, :create, :destroy]
 
   get "/theme_css/:id", to: 'theme_css#show', as: 'theme_css'
-  resources :themes, except: [:destroy]
-  get "show_subdomain", to: 'application#show_subdomain'
-
-  constraints(GroupSubdomainConstraint) do
-    get '/' => 'groups#show'
-
-    #resources :posts do
-      #collection do
-        #get :search
-      #end
-    #end
-  end
 
   resources :groups, path: 'g', only: [:create, :edit] do
     scope module: :groups do
@@ -108,6 +96,12 @@ Loomio::Application.routes.draw do
       end
     end
   end
+
+  constraints(GroupSubdomainConstraint) do
+    get '/' => 'groups#show'
+    put '/' => 'groups#update'
+  end
+
   delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel', as: :cancel_membership_request
 
   resources :motions, path: 'm', only: [:new, :create, :edit, :index] do
