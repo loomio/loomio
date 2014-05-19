@@ -1,5 +1,5 @@
 Loomio::Application.configure do
-  config.action_dispatch.tld_length = ENV.fetch('TLD_LENGTH', 1)
+  config.action_dispatch.tld_length = ENV.fetch('TLD_LENGTH', 1).to_i
 
   # Settings specified here will take precedence over those in config/application.rb
 
