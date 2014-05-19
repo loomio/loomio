@@ -44,16 +44,17 @@ Loomio::Application.routes.draw do
 
   get "/theme_css/:id", to: 'theme_css#show', as: 'theme_css'
   resources :themes, except: [:destroy]
+  get "show_subdomain", to: 'application#show_subdomain'
 
-  constraints(GroupSubdomainConstraint) do
-    get '/' => 'groups#show'
+  #constraints(GroupSubdomainConstraint) do
+    #get '/' => 'groups#show'
 
-    #resources :posts do
-      #collection do
-        #get :search
-      #end
-    #end
-  end
+    ##resources :posts do
+      ##collection do
+        ##get :search
+      ##end
+    ##end
+  #end
 
   resources :groups, path: 'g', only: [:create, :edit] do
     scope module: :groups do
