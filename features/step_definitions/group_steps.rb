@@ -40,7 +40,7 @@ Given /^I am an admin of a group$/ do
 end
 
 Given /^I am a member of a group$/ do
-  @group = FactoryGirl.create :group
+  @group = FactoryGirl.create :group, privacy: 'public'
   @group.add_member! @user
 end
 

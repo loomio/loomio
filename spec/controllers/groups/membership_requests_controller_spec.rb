@@ -4,7 +4,7 @@ describe Groups::MembershipRequestsController do
 
   describe '#cancel' do
     let(:requestor) { create(:user) }
-    let(:group) { mock_model Group, full_name: "Isolde's Bane" }
+    let(:group) { mock_model Group, full_name: "Isolde's Bane", has_subdomain?: false }
     let(:membership_request) { mock_model MembershipRequest, group: group, requestor_id: requestor.id }
 
     before do

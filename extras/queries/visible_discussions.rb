@@ -31,7 +31,7 @@ class Queries::VisibleDiscussions < Delegator
                                   private = FALSE",
                                   group_ids: group_ids)
     else
-      @relation = []
+      @relation = Discussion.none
     end
 
     super(@relation)
