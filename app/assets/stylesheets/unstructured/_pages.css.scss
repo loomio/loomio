@@ -123,7 +123,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .woc.index,
 .we_the_people.index {
   color: black;
-  background-color: #F2F1ED;
+  background-color: $pages-background;
 
   .pages-information { min-height: 200px; }
 
@@ -492,7 +492,7 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
 .registrations.create,
 .registrations.new {
   .terms {
-    color: $mid-grey;
+    color: $text-on-bg;
     margin: 1em auto 0;
     width: 394px;
     text-align: center;

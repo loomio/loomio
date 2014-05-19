@@ -1,3 +1,7 @@
+- if hide_beta_logo?
+  - logo_class = 'app-logo'
+- else
+  - logo_class = 'app-logo beta'
 .toolbar-navigation
   .navbar.navbar-fixed-top
     .navbar-inner
@@ -7,11 +11,8 @@
             - if Rails.env.development?
               .development-warning
                 %i.fa.fa-wrench
-            %a.nav-logo-link{:href => dashboard_or_root_path}
-              - if hide_beta_logo?
-                = image_tag(logo_path, :alt => "Loomio", class: 'loomio-logo')
-              - else
-                = image_tag(logo_beta_path, :alt => "Loomio", class: 'loomio-beta-logo')
+            %a.nav-logo-link{class: logo_class, href: dashboard_or_root_path, title: t(:"organisation.name")}
+              &nbsp;
           - if user_signed_in?
             = render 'inbox'
             = render 'notifications_dropdown'

@@ -34,7 +34,7 @@ class Queries::VisibleMotions < Delegator
       @relation = @relation.where("discussions.group_id IN (:group_ids) AND groups.privacy = 'public'",
                                   group_ids: group_ids)
     else
-      @relation = []
+      @relation = Motion.none
     end
 
     super(@relation)
