@@ -10,7 +10,6 @@
     = csrf_meta_tags
     = render 'social_metadata', description: @meta_description, title: @meta_title
 
-
   %body{class: "pages #{controller_name} #{action_name}"}
     - analytics_scope do
       = render 'google_tag_manager'
@@ -29,4 +28,6 @@
           = yield
 
     = render 'footer_logged_out'
+
   = javascript_include_tag "application"
+  = theme_javascript_include_tag
