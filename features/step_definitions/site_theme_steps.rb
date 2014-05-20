@@ -29,7 +29,7 @@ Given(/^there is a group with a theme associated$/) do
 end
 
 Then(/^I should see the theme$/) do
-  page.should have_xpath("//link[contains(@href, '#{theme_css_path(@theme)}.css')]", visible: false)
+  page.should have_xpath("//link[contains(@href, '#{theme_assets_path(@theme)}.css')]", visible: false)
 end
 
 When(/^I visit the a discussion in that themed group$/) do
