@@ -22,7 +22,7 @@ When(/^I click the log in button$/) do
 end
 
 Then(/^I should see the subdomain login page$/) do
-  page.should have_xpath("//link[contains(@href, '#{theme_css_path(@theme)}.css')]", visible: false)
+  page.should have_xpath("//link[contains(@href, '#{theme_assets_path(@theme)}.css')]", visible: false)
   page.should have_content "By clicking Log in, you agree to Loomio"
 end
 
