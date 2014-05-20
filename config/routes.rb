@@ -42,7 +42,7 @@ Loomio::Application.routes.draw do
 
   resources :invitations, only: [:show, :create, :destroy]
 
-  get "/theme_css/:id", to: 'theme_css#show', as: 'theme_css'
+  get "/theme_assets/:id", to: 'theme_assets#show', as: 'theme_assets'
 
   resources :groups, path: 'g', only: [:create, :edit] do
     scope module: :groups do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140517010701) do
+ActiveRecord::Schema.define(:version => 20140520021918) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -505,6 +505,7 @@ ActiveRecord::Schema.define(:version => 20140517010701) do
     t.string   "app_logo_content_type"
     t.integer  "app_logo_file_size"
     t.datetime "app_logo_updated_at"
+    t.text     "javascript"
   end
 
   create_table "translations", :force => true do |t|
