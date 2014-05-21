@@ -52,7 +52,10 @@ module ReadableUnguessableUrlsHelper
         uri.path = ''
         return uri.to_s
       end
+    elsif ENV['DEFAULT_SUBDOMAIN']
+      options[:subdomain] = ENV['DEFAULT_SUBDOMAIN']
     end
+
     url_for(options)
   end
 
