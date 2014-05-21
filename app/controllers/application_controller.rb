@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   helper :locales
   helper_method :current_user_or_visitor
   helper_method :dashboard_or_root_path
+  helper_method :subdomain
 
   before_filter :set_application_locale
   before_filter :save_selected_locale, if: :user_signed_in?
@@ -30,11 +31,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def show_subdomain
-    render text: request.subdomain.inspect
-  end
-
   protected
+  def subdomain
+    request.subdomain.gsub(/^www./, '')
+  end
 
   def increment_measurement
     Measurement.increment(measurement_name)

@@ -1,7 +1,7 @@
 module ThemesHelper
   def theme_stylesheet_link_tag
     if GroupSubdomainConstraint.matches?(request)
-      @group = Group.published.find_by_subdomain(request.subdomain)
+      @group = Group.published.find_by_subdomain(subdomain)
     end
 
     if @group and @group.theme.present?
@@ -11,7 +11,7 @@ module ThemesHelper
 
   def theme_javascript_include_tag
     if GroupSubdomainConstraint.matches?(request)
-      @group = Group.published.find_by_subdomain(request.subdomain)
+      @group = Group.published.find_by_subdomain(subdomain)
     end
 
     if @group and @group.theme.present?

@@ -42,7 +42,7 @@ class GroupBaseController < BaseController
   def load_group
     return @group if @group
     if group_subdomain_present? and group_id.blank?
-      group = Group.published.find_by_subdomain!(request.subdomain)
+      group = Group.published.find_by_subdomain!(subdomain)
     else
       group = Group.published.find_by_key!(group_id)
     end
