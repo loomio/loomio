@@ -1,5 +1,5 @@
 .row
-  .span9
+  .span9.group-heading
     - set_title @group.name, "", @group.parent
     = render '/groups/title', group: @group, discussion: @discussion
     - if can? :create, @discussion
