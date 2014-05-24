@@ -42,6 +42,8 @@ Loomio::Application.routes.draw do
 
   resources :invitations, only: [:show, :create, :destroy]
 
+  get "/theme_assets/:id", to: 'theme_assets#show', as: 'theme_assets'
+
   resources :groups, path: 'g', only: [:create, :edit] do
     scope module: :groups do
       resources :memberships, only: [:index, :destroy, :new, :create] do
@@ -50,13 +52,7 @@ Loomio::Application.routes.draw do
          post :remove_admin
         end
       end
-      resource :subscription, controller: 'subscriptions', only: [:new, :show] do
-        collection do
-          post :checkout
-          get :confirm
-          get :payment_failed
-        end
-      end
+
       scope controller: 'group_setup' do
         member do
           get :setup
@@ -100,6 +96,12 @@ Loomio::Application.routes.draw do
       end
     end
   end
+
+  constraints(GroupSubdomainConstraint) do
+    get '/' => 'groups#show'
+    put '/' => 'groups#update'
+  end
+
   delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel', as: :cancel_membership_request
 
   resources :motions, path: 'm', only: [:new, :create, :edit, :index] do
@@ -143,7 +145,6 @@ Loomio::Application.routes.draw do
 
   resources :comments , only: [:destroy, :edit, :update, :show] do
     post :like, on: :member
-    post :translate, on: :member
   end
 
   resources :attachments, only: [:create, :new] do
@@ -182,6 +183,8 @@ Loomio::Application.routes.draw do
   end
 
   match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
+    
+  post '/translate/:model/:id', to: 'translations#create', as: :translate
 
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
   get '/group_requests/:id/start_new_group' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('token=','')}"}
@@ -209,10 +212,6 @@ Loomio::Application.routes.draw do
     get :try_it
     get :wallets
     get :browser_not_supported
-  end
-
-  scope controller: 'campaigns' do
-    get :hide_crowdfunding_banner
   end
 
   scope controller: 'help' do

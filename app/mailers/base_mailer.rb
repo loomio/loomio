@@ -26,8 +26,11 @@ class BaseMailer < ActionMailer::Base
     mailer = self.class.name
     args = Hash[ method(action).parameters.map(&:last).zip(args) ]
     headers "X-SMTPAPI" => {
-      category:    [ mailer, "#{mailer}##{action}" ],
-      unique_args: { environment: Rails.env, arguments: args.inspect }
+      category:    [ mailer, "#{mailer}##{action}" ]
     }.to_json
+  end
+
+  def from_user_via_loomio(user)
+    "\"#{user.name} (Loomio)\" <notifications@loomio.org>"
   end
 end

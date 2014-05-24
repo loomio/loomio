@@ -1,0 +1,40 @@
+#
+# This file is to get around a bug with Transifex:
+# http://support.transifex.com/customer/en/portal/questions/1388258-working-with-pluralization-in-rails-yaml-transifex?new=1388258
+#
+km:
+  datetime:
+    distance_in_words:
+      less_than_x_seconds:
+        one: "1 វិនាទី"
+      x_seconds:
+        one: "1 វិនាទី"
+      less_than_x_minutes:
+        one: "1 នាទី"
+      x_minutes:
+        one: "1 នាទី"
+      about_x_hours:
+        one: "1 ម៉ោង"
+      x_days:
+        one: "1 ថ្ងៃ"
+      about_x_months:
+        one: "1 ខែ"
+      x_months:
+        one: "1 ខែ"
+      about_x_years:
+        one: "1 ឆ្នាំ"
+      over_x_years:
+        one: "1 ឆ្នាំ"
+      almost_x_years:
+        one: "1 ឆ្នាំ"
+  # errors:
+  #   messages:
+  #     not_saved:
+  #       one:
+  # notice:
+  #   invitations:
+  #     auto_added:
+  #       one: "%{count} 멤버가 추가됨"
+  #     existing_member:
+  #       one: "%{count} 멤버가 이 그룹에 있습니다."
+

@@ -1,4 +1,10 @@
 es:
+  explore:
+    go_to_group: "Ir a %{group_name}"
+  try_it:
+    header: "Prueba Loomio"
+    explore_groups: "Explorar los grupos de Loomio"
+    explore_groups_info: "Echale un vistazo a todos los fantasticos grupos de Loomio y únete "
   activerecord:
     errors:
       messages:
@@ -178,6 +184,11 @@ es:
     motion_outcome_updated: "resultado de propuesta modificado"
   edit_discussion_context: "Editar información de la discusión"
   request_new_group: "Empieza un grupo"
+  start_new_group: "Empieza un nuevo grupo"
+  start_new_group_hint: "Empieza a tomar decisiones "
+  find_a_group: "Encuentra un grupo"
+  find_a_group_hint: "Explora grupos abiertos al público"
+  no_group_header: "Bienvenid@ a Loomio Beta"
   empty_notifications: "Todavía no tienes notificaciones."
   see_all_notifications: "Ver todas tus notificaciones"
   profile: "Perfil"
@@ -271,6 +282,7 @@ es:
   edit_group_description: "Editar descripción del grupo"
   group_subscription: "Subscripción grupal "
   group_request:
+    beta_request_header: "Empezar un grupo en Loomio Beta"
     neighbourhood_support_group: "ej. Grupo de apoyo al vecindario"
     confirmation:
       title: '¡Ya casi has terminado! Revisa tu correo electrónico. '
@@ -293,6 +305,7 @@ es:
   current_decision: "Decisión actual"
   previous_decisions: "Decisiones anteriores"
   see_previous_decisions: "Ver decisiones anteriores"
+  see_more: "Ver más"
   create_new_proposal: "Crear nueva propuesta"
   empty_decision_list_html: "¿Estás listo para tomar una decisión? <br> Cualquiera puede empezar una propuesta."
   empty_decision_index: " Este grupo no ha tomado ninguna decisión todavía."
@@ -304,6 +317,7 @@ es:
     started_html: "Iniciado hace %{when} por <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Última edición hace %{when} por <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Ver historial de revisión"
+    see_history: "Ver historia"
   description_history:
     header: "Historial de revisión"
     subheader: "Versión"
@@ -507,6 +521,7 @@ es:
   confirmation_not_received: "¿No has recibido las instrucciones de confirmación?"
   unlock_not_received: "¿No has recibido instrucciones de desbloqueo?"
   inactive_html: "Esta cuenta se encuentra inactiva. Si tienes alguna pregunta, por favor, <a href='%{path_to_contact}'>ponte en \ncontacto</a>."
+  create_an_account_html: 'Crear una cuenta Loomio Beta'
   log_in: "Entrar"
   join_group:
     log_in: "Entrar para unirte a %{group_name}"
@@ -771,6 +786,8 @@ es:
       header: "¡Ya casi terminas!"
       intro: "Por favor, haz click en el enlace de verificación para finalizar tu solicitud:"
       ignore: "Si no has pedido ser parte de Loomio ignora este correo electrónico. "
+  campaign:
+    crowdfunding_html: "Lo hicimos! Gracias a tod@s los que nos ayudaron a financiar Loomio 1.0. Amamos nuestra comunidad!</a>"
   about_loomio: "Acerca de Loomio"
   ago: "hace %{quantity_of_time}"
   approve: "Aprobar"
@@ -831,6 +848,7 @@ es:
   thanks: "¡Gracias!"
   translate: "¡Ayúdanos a traducir Loomio!"
   unlike: "Ya no me gusta"
+  time_until_close: "%{quantity_of_time} para cierre"
   update: "Actualizar"
   facebook: "Facebook"
   google: "Google"

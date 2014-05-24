@@ -16,6 +16,14 @@ Given /^I am logged in$/ do
   login_automatically @user
 end
 
+Given /^I speak English$/ do
+  @user.update_attributes(selected_locale: :en)
+end
+
+Given /^I speak French$/ do
+  @user.update_attributes(selected_locale: :fr) 
+end
+
 Given /^I prefer markdown$/ do
   @user.update_attributes(uses_markdown: true)
 end

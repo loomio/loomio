@@ -8,7 +8,7 @@ class DiscussionMailer < BaseMailer
     locale = best_locale(user.locale, discussion.author.locale)
     I18n.with_locale(locale) do
       mail  to: user.email,
-            from: "#{discussion.author.name} <notifications@loomio.org>",
+            from: from_user_via_loomio(discussion.author),
             reply_to: discussion.author_name_and_email,
             subject: "#{email_subject_prefix(@group.full_name)} " + t("email.create_discussion.subject", which: @discussion.title)
     end

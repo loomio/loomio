@@ -174,6 +174,9 @@ en:
         one:   "1 year"
         other: "%{count} years"
 
+  organisation:
+    name: "Loomio"
+
   footer:
     about: 'About'
     blog: 'Blog'
@@ -289,6 +292,9 @@ en:
   want_to_invite_html: "Want to <a href='%{link}'>invite people</a> to this group?"
 
   membership_requests: "Membership requests"
+  previous_requests: Previous requests
+  approved_by_person: Approved by %{person}
+  ignored_by_perosn: Ignored by %{person}
   confirm_approve_membership_request: "Are you sure you want to add %{which_user} to the group?"
   cancel_membership_request: "Cancel request"
   ignore_request: "Ignore request"
@@ -903,7 +909,6 @@ en:
     view_discussion: "Click here to view this discussion"
     view_group: "Click here to view the group on Loomio"
     view_proposal: "View this proposal on Loomio"
-    campaign_html: "Was this decision important to you? Consider <a href='%{link_path}'>becoming a Loomio contributor</a> and help us spread Loomio to the world. We're a little team trying to do big things and we need your contribution to keep us growing!"
     create_discussion:
       intro: "%{who} started a new discussion in %{which_group}:"
       subject: "New discussion - %{which}"
@@ -960,15 +965,6 @@ en:
       intro: "Please click this verification link to finalise your request:"
       ignore: "If you did not request to join Loomio please ignore this email."
 
-
-
-  #
-  # CAMPAIGNS
-  #
-
-  campaign:
-    crowdfunding_html: "WE DID IT! Thanks everyone who helped us crowdfund Loomio 1.0. We love our community!</a>"
-
   #
   # COMMON WORDS
   #
@@ -1017,7 +1013,10 @@ en:
   prev: "Prev"
   more: "More..."
   translate: "Help translate Loomio!"
+  translate_field: "See translation"
+  loading_translation: "Loading translation..."
   translate_this_string: "Translate to %{language}"
+  failed_translation: "Unable to complete translation"
   options: "Options"
   ok_got_it: "Okay, got it!"
   remove: "Remove"
@@ -1033,7 +1032,6 @@ en:
   subject: "Subject"
   terms_of_service_html: "By clicking %{button_text}, you agree to Loomio's <a href='%{link_path}' target='_blank'>Terms of service</a>"
   thanks: "Thanks!"
-  translate: "Help translate Loomio!"
   unlike: "Unlike"
   time_until_close: "%{quantity_of_time} until close"
   update: "Update"

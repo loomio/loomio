@@ -1,10 +1,8 @@
 class MotionsController < GroupBaseController
-  #rob would like to remove inherited_resources...
   inherit_resources
   before_filter :load_resource_by_key, except: [:create, :index]
   authorize_resource except: [:create, :index, :show]
   before_filter :authenticate_user!, except: [:show, :index]
-  before_filter :check_group_read_permissions, :only => :show
 
   def create
     @discussion = Discussion.find(params[:motion][:discussion_id])
@@ -108,10 +106,6 @@ class MotionsController < GroupBaseController
   private
     def load_resource_by_key
       @motion ||= Motion.find_by_key!(params[:id])
-    end
-
-    def group
-      @group ||= find_group
     end
 
     def find_group

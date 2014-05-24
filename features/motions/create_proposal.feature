@@ -17,7 +17,7 @@ Feature: User creates proposal
     And I should see the proposal details
 
   Scenario: Members get emailed when a proposal is created
-   Given "Ben" is a member of the group
+    Given "Ben" is a member of the group
     And "Hannah" is a member of the group
     And "newuser@example.org" has been invited to the group but has not accepted
     And no emails have been sent

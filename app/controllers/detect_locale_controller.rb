@@ -7,7 +7,7 @@ class DetectLocaleController < ActionController::Base
   after_filter :cors_set_access_control_headers, only: :video
 
   def show
-    d = best_locale(detected_locale(Translation.frontpage_locales))
+    d = best_locale(detected_locale(AppTranslation.frontpage_locales))
     if current_locale != d
       I18n.locale = d
       Measurement.increment('detect_locale.foreign')
@@ -18,7 +18,7 @@ class DetectLocaleController < ActionController::Base
   end
 
   def video
-    @locale = best_locale(detected_locale(Translation.video_locales))
+    @locale = best_locale(detected_locale(AppTranslation.video_locales))
 
     dialect_correction_hack
 
@@ -40,7 +40,7 @@ class DetectLocaleController < ActionController::Base
   end
 
   def current_locale
-    locale = (Translation.locale_strings & [params[:current_locale]]).first
+    locale = (AppTranslation.locale_strings & [params[:current_locale]]).first
 
     if locale.present?
       locale.to_sym
