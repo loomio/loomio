@@ -2,6 +2,7 @@ class InvitationsController < ApplicationController
   include InvitationsHelper
   before_filter :load_invitable, only: [:new, :create]
   before_filter :ensure_invitations_available, only: [:new, :create]
+  before_filter :require_current_user_can_invite_people, only: :create
 
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error',
@@ -27,7 +28,6 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    require_current_user_can_invite_people
     @invite_people_form = InvitePeopleForm.new(params[:invite_people_form])
 
     if @invitable.kind_of?(Group)
