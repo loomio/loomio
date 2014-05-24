@@ -2,6 +2,18 @@ module DiscussionsHelper
   include Twitter::Extractor
   include Twitter::Autolink
 
+  def filter_duplicate_activities(activity)
+    last_item = nil
+    filtered_event_kinds = %w[discussion_description_edited discussion_title_edited motion_close_date_edited]
+
+    activity.map do |item|
+      next if last_item &&
+              filtered_event_kinds.include?(item.kind) &&
+              item.user == last_item.user
+      last_item = item
+    end.compact
+  end
+
   def no_discussions_available?
     (@discussion_readers_with_open_motions.size + @discussion_readers_without_open_motions.size) == 0
   end
