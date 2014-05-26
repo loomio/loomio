@@ -324,6 +324,14 @@ class Group < ActiveRecord::Base
     group_request.try :description
   end
 
+  def parent_or_self
+    if parent.present?
+      parent
+    else
+      self
+    end
+  end
+
   def has_subdomain?
     if is_sub_group?
       parent.has_subdomain?

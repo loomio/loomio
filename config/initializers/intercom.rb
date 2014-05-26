@@ -54,7 +54,7 @@ if ENV['INTERCOM_APP_ID']
     # in your controllers. 'Companies' are generic groupings of users, so this 
     # could be a company, app or group.
     #
-    config.company.current = Proc.new { @group }
+    config.company.current = Proc.new { @group.parent_or_self }
     # config.company.current = Proc.new { @group.parent.present? ? @group : @group.parent }
 
     # == Company Custom Data
