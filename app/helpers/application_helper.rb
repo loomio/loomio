@@ -135,14 +135,6 @@ module ApplicationHelper
     end
   end
 
-  def logo_path
-    ENV["NAVBAR_LOGO_PATH"] or "navbar-logo.png"
-  end
-
-  def logo_beta_path
-    ENV["NAVBAR_LOGO_PATH"] or "navbar-logo-beta.jpg"
-  end
-
   def navbar_contribute
     ENV["NAVBAR_CONTRIBUTE"] or "show"
   end

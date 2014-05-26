@@ -1,10 +1,11 @@
 module ReadableUnguessableUrlsHelper
   MODELS_WITH_SLUGS = { 'discussion' => :title,
-                             'group' => :full_name,
                               'user' => :name,
+                            'group'  => :full_name,
                             'motion' => :name }
 
   MODELS_WITH_SLUGS.keys.each do |model|
+    next if model == 'group'
     model = model.to_s.downcase
 
     define_method("#{model}_url", ->(instance, options={}) {
@@ -22,7 +23,33 @@ module ReadableUnguessableUrlsHelper
 
   end
 
+  def group_url(group, options = {})
+    options = options.merge( host_and_port ).
+                      merge( route_hash(group, 'group') )
 
+    if request.present?
+      options[:host] = request.domain
+      options.delete(:subdomain)
+    end
+
+    if group.has_subdomain?
+      options[:subdomain] = group.subdomain
+      unless group.is_sub_group?
+        uri = URI(url_for(options))
+        uri.path = ''
+        return uri.to_s
+      end
+    elsif ENV['DEFAULT_SUBDOMAIN']
+      options[:subdomain] = ENV['DEFAULT_SUBDOMAIN']
+    end
+
+    url_for(options)
+  end
+
+  def group_path(group, options = {})
+    #options = options.merge(only_path: true) unless group.has_subdomain?
+    group_url(group, options)
+  end
 
   private
 

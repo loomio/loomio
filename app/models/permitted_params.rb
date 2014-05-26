@@ -2,11 +2,15 @@ class PermittedParams < Struct.new(:params, :user)
 
   %w[user vote subscription motion membership membership_request
    invitation group_request group discussion comment announcement_dismissal
-   email_preferences attachment contact_message].each do |kind|
+   email_preferences attachment contact_message theme].each do |kind|
     define_method(kind) do
       permitted_attributes = self.send("#{kind}_attributes")
       params.require(kind).permit(*permitted_attributes)
     end
+  end
+
+  def theme_attributes
+    [:name, :style, :pages_logo, :app_logo]
   end
 
   def email_preferences_attributes

@@ -42,6 +42,8 @@ Loomio::Application.routes.draw do
 
   resources :invitations, only: [:show, :create, :destroy]
 
+  get "/theme_assets/:id", to: 'theme_assets#show', as: 'theme_assets'
+
   resources :groups, path: 'g', only: [:create, :edit] do
     scope module: :groups do
       resources :memberships, only: [:index, :destroy, :new, :create] do
@@ -50,13 +52,7 @@ Loomio::Application.routes.draw do
          post :remove_admin
         end
       end
-      resource :subscription, controller: 'subscriptions', only: [:new, :show] do
-        collection do
-          post :checkout
-          get :confirm
-          get :payment_failed
-        end
-      end
+
       scope controller: 'group_setup' do
         member do
           get :setup
@@ -100,6 +96,12 @@ Loomio::Application.routes.draw do
       end
     end
   end
+
+  constraints(GroupSubdomainConstraint) do
+    get '/' => 'groups#show'
+    put '/' => 'groups#update'
+  end
+
   delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel', as: :cancel_membership_request
 
   resources :motions, path: 'm', only: [:new, :create, :edit, :index] do
