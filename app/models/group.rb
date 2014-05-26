@@ -320,6 +320,10 @@ class Group < ActiveRecord::Base
     privacy == "hidden"
   end
 
+  def group_request_description
+    group_request.try :description
+  end
+
   def has_subdomain?
     if is_sub_group?
       parent.has_subdomain?
