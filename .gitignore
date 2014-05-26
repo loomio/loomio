@@ -24,3 +24,4 @@ screenshots/
 .idea
 .powenv
 lineman/
+.powenv

@@ -74,7 +74,7 @@ Then(/^I should be returned to the vote page$/) do
 end
 
 Given(/^I follow a vote link from an email$/) do
-  visit new_motion_vote_url(motion_id: @motion.id, position: 'yes', from_email: true)
+  visit new_motion_vote_path(motion_id: @motion.id, position: 'yes', from_email: true)
 end
 
 Then(/^I should not see an edit button next to my vote/) do
