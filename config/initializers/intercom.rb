@@ -54,7 +54,7 @@ if ENV['INTERCOM_APP_ID']
     # in your controllers. 'Companies' are generic groupings of users, so this 
     # could be a company, app or group.
     #
-    config.company.current = Proc.new { @group }
+    config.company.current = Proc.new { @group.is_parent? ? @group : @group.parent }
 
     # == Company Custom Data
     # A hash of additional data you wish to send about a company.
@@ -64,6 +64,12 @@ if ENV['INTERCOM_APP_ID']
     #   :number_of_messages => Proc.new { |app| app.messages.count },
     #   :is_interesting => :is_interesting?
     # }
+    config.company.custom_data = {
+        discussions_count: :discussions_count,
+        motions_count: :motions_count,
+        description: :description,
+        group_request_description: :group_request_description
+    }
 
     # == Company Plan name
     # This is the name of the plan a company is currently paying (or not paying) for.

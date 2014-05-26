@@ -316,6 +316,10 @@ class Group < ActiveRecord::Base
     privacy == "hidden"
   end
 
+  def group_request_description
+    group_request.try :description
+  end
+
   private
 
   def calculate_full_name
