@@ -66,8 +66,8 @@ if ENV['INTERCOM_APP_ID']
     #   :is_interesting => :is_interesting?
     # }
     config.company.custom_data = {
-        discussions_count: :discussions_count,
-        motions_count: :motions_count,
+        discussions: :organisation_discussions_count,
+        proposals: :organisation_motions_count,
         description: :description,
         group_request_description: :group_request_description
     }
