@@ -12,7 +12,12 @@ Loomio::Application.routes.draw do
     end
   end
 
+  get "/explore", to: 'explore#index', as: :explore
+  get "/explore/search", to: "explore#search", as: :search_explore
+  get "/explore/category/:id", to: "explore#category", as: :category_explore
+
   get "/groups", to: 'public_groups#index', as: :public_groups
+
   get "/new_group", to: 'groups#new'
 
   resource :search, only: :show
@@ -37,6 +42,8 @@ Loomio::Application.routes.draw do
 
   resources :invitations, only: [:show, :create, :destroy]
 
+  get "/theme_assets/:id", to: 'theme_assets#show', as: 'theme_assets'
+
   resources :groups, path: 'g', only: [:create, :edit] do
     scope module: :groups do
       resources :memberships, only: [:index, :destroy, :new, :create] do
@@ -45,13 +52,7 @@ Loomio::Application.routes.draw do
          post :remove_admin
         end
       end
-      resource :subscription, controller: 'subscriptions', only: [:new, :show] do
-        collection do
-          post :checkout
-          get :confirm
-          get :payment_failed
-        end
-      end
+
       scope controller: 'group_setup' do
         member do
           get :setup
@@ -95,6 +96,12 @@ Loomio::Application.routes.draw do
       end
     end
   end
+
+  constraints(GroupSubdomainConstraint) do
+    get '/' => 'groups#show'
+    put '/' => 'groups#update'
+  end
+
   delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel', as: :cancel_membership_request
 
   resources :motions, path: 'm', only: [:new, :create, :edit, :index] do
@@ -132,13 +139,12 @@ Loomio::Application.routes.draw do
     put    ':id(/:slug)', action: 'update'
     delete ':id(/:slug)', action: 'destroy'
 
-    post ':id/preview_version/(:version_id)', action: '#preview_version', as: 'preview_version_discussion'
+    post ':id/preview_version/(:version_id)', action: 'preview_version', as: 'preview_version_discussion'
     post 'update_version/:version_id',        action: 'update_version',   as: 'update_version_discussion'
   end
 
   resources :comments , only: :destroy do
     post :like, on: :member
-    post :translate, on: :member
   end
 
   resources :attachments, only: [:create, :new] do
@@ -177,6 +183,8 @@ Loomio::Application.routes.draw do
   end
 
   match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
+    
+  post '/translate/:model/:id', to: 'translations#create', as: :translate
 
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
   get '/group_requests/:id/start_new_group' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('token=','')}"}
@@ -201,12 +209,9 @@ Loomio::Application.routes.draw do
     get :services
     get :terms_of_service
     get :third_parties
+    get :try_it
     get :wallets
     get :browser_not_supported
-  end
-
-  scope controller: 'campaigns' do
-    get :hide_crowdfunding_banner
   end
 
   scope controller: 'help' do
@@ -217,7 +222,7 @@ Loomio::Application.routes.draw do
   match '/detect_video_locale' => 'detect_locale#video', as: :detect_video_locale
 
   resources :contact_messages, only: [:new, :create]
-  match 'contact', to: 'contact_messages#new'
+  match 'contact(/:destination)', to: 'contact_messages#new'
 
   #redirect from wall to new group signup
   namespace :group_requests do

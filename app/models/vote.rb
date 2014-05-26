@@ -1,4 +1,5 @@
 class Vote < ActiveRecord::Base
+
   class UserCanVoteValidator < ActiveModel::EachValidator
     def validate_each(object, attribute, value)
       unless value && object.motion.can_be_voted_on_by?(User.find(value))
@@ -17,9 +18,9 @@ class Vote < ActiveRecord::Base
 
   POSITIONS = %w[yes abstain no block]
   default_scope include: :previous_vote
-  belongs_to :motion, counter_cache: true
+  belongs_to :motion, counter_cache: true, touch: :last_vote_at
   belongs_to :user
-  belongs_to :previous_vote, class_name: 'Vote'
+  belongs_to :previous_vote, class_name: 'Vote'  
   has_many :events, :as => :eventable, :dependent => :destroy
 
   validates_presence_of :motion, :user, :position
@@ -27,6 +28,8 @@ class Vote < ActiveRecord::Base
   validates_length_of :statement, maximum: 250
   validates :user_id, user_can_vote: true
   validates :position, :statement, closable: true
+
+  is_translatable on: :statement
 
   scope :for_user, lambda {|user_id| where(:user_id => user_id)}
   scope :most_recent, -> { where age: 0  }
@@ -38,12 +41,12 @@ class Vote < ActiveRecord::Base
   delegate :author, :to => :discussion, :prefix => :discussion
   delegate :name, :to => :motion, :prefix => :motion
   delegate :name, :full_name, :to => :group, :prefix => :group
+  delegate :language, :to => :user
 
   before_create :age_previous_votes, :associate_previous_vote
-  after_save :update_motion_vote_counts, :send_notifications
 
-  after_create :update_motion_last_vote_at, :fire_new_vote_event
-  after_destroy :update_motion_last_vote_at, :update_motion_vote_counts
+  after_save :update_motion_vote_counts
+  after_destroy :update_motion_vote_counts
 
   def other_group_members
     group.users.where(User.arel_table[:id].not_eq(user.id))
@@ -61,6 +64,18 @@ class Vote < ActiveRecord::Base
     previous_vote.position if previous_vote
   end
 
+  def previous_position_is_block?
+    previous_vote.try(:is_block?)
+  end
+
+  def is_block?
+    position == 'block'
+  end
+
+  def has_statement?
+    statement.present?
+  end
+
   private
   def associate_previous_vote
     self.previous_vote = motion.votes.where(user_id: user_id, age: age + 1).first
@@ -73,27 +88,6 @@ class Vote < ActiveRecord::Base
   def update_motion_vote_counts
     unless motion.nil? || motion.discussion.nil?
       motion.update_vote_counts!
-    end
-  end
-
-  def update_motion_last_vote_at
-    unless motion.nil? || motion.discussion.nil?
-      motion.last_vote_at = motion.latest_vote_time
-      motion.save!
-    end
-  end
-
-  def fire_new_vote_event
-    if position == "block"
-      Events::MotionBlocked.publish!(self)
-    else
-      Events::NewVote.publish!(self)
-    end
-  end
-
-  def send_notifications
-    if position == "block" && previous_vote != "block"
-      MotionMailer.delay.motion_blocked(self)
     end
   end
 end

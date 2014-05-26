@@ -1,4 +1,13 @@
 el:
+  explore:
+    go_to_group: "Πηγαίνετε στην ομάδα %{group_name}"
+  try_it:
+    header: "Δοκιμάστε το Loomio"
+    start_a_group: "Ξεκινήστε μια ομάδα για να παίρνετε αποφάσεις στην δική σας κοινότητα."
+    join_the_community: "Γίνετε μέλος στην ομάδα της κοινότητας του Loomio"
+    loomio_community_info: "Εδώ είναι όπου συζητάμε και παίρνουμε αποφάσεις σχετικά με το Loomio."
+    explore_groups: "Εξερευνήστε άλλες ομάδες στο Loomio"
+    explore_groups_info: "Ελέξτε όλες τις υπέροχες ομάδες στο Loomio και συμμετάσχετε σε αυτές!"
   activerecord:
     errors:
       messages:
@@ -178,7 +187,11 @@ el:
     motion_outcome_updated: "ανανεώθηκε το αποτέλεσμα για την πρόταση"
   edit_discussion_context: "Επεξεργασία περιεχομένου συζήτησης"
   request_new_group: "Ξεκινήστε μια ομάδα"
-  request_or_find_new_group_html: "<a href='%{new_group_link}'>Ξεκινήστε μια νέα ομάδα</a>, ή <a href='%{existing_group_link}'>βρείτε μια υπάρχουσα ομάδα </a>"
+  start_new_group: "Ξεκινήστε μια νέα ομάδα"
+  start_new_group_hint: "Για να ξεκινήσετε να παίρνετε αποφάσεις"
+  find_a_group: "Βρείτε μια ομάδα"
+  find_a_group_hint: "Για να εξερευνήσετε τις δημόσιες ομάδες"
+  no_group_header: "Καλώς ήρθατε στην δοκιμαστική έκδοση του Loomio"
   empty_notifications: "Δεν έχετε καμία ειδοποίηση ακόμα."
   see_all_notifications: "Δείτε όλες τις ειδοποιήσεις"
   profile: "Προφίλ"
@@ -272,6 +285,8 @@ el:
   edit_group_description: "Επεξεργασία περιγραφής ομάδας"
   group_subscription: "Συνδρομή Ομάδας"
   group_request:
+    beta_request_header: "Ξεκινήστε μια ομάδα στην δοκιμαστική έκδοση του Loomio"
+    beta_request_description: "Για να ξεκινήσετε να παίρνετε αποφάσεις στην δοκιμαστική έκδοση του Loomio, το πρώτο βήμα είναι να ξεκινήσετε μια ομάδα"
     neighbourhood_support_group: "π.χ. Ομάδα Υποστήριξης Γειτονιάς"
     confirmation:
       title: Σχεδόν τελειώσατε! Ελέγξτε το ηλεκτρονικό ταχυδρομείο σας.
@@ -294,6 +309,7 @@ el:
   current_decision: "Τωρινή απόφαση"
   previous_decisions: "Προηγούμενες αποφάσεις"
   see_previous_decisions: "Δείτε τις προηγούμενες αποφάσεις"
+  see_more: "Δείτε περισσότερα"
   create_new_proposal: "Δημιουργήστε μια νέα πρόταση"
   empty_decision_list_html: "Έτοιμοι να πάρετε απόφαση? <br> Οποιοσδήποτε μπορεί να ξεκινήσει μια πρόταση."
   empty_decision_index: "Αυτή η ομάδα δεν έχει πάρει καμία απόφαση ακόμα."
@@ -305,6 +321,7 @@ el:
     started_html: "Ξεκίνησε πριν από %{when} από τον/την <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Επεξεργάστηκε τελευταία πριν από %{when} από τον/την <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Δείτε το ιστορικό αναθεωρήσεων"
+    see_history: "Δείτε το ιστορικό"
   description_history:
     header: "Ιστορικό αναθεωρήσεων"
     subheader: "Έκδοση"
@@ -508,7 +525,7 @@ el:
   confirmation_not_received: "Δεν λάβατε οδηγίες επιβεβαίωσης?"
   unlock_not_received: "Δεν λάβατε οδηγίες ξεκλειδώματος?"
   inactive_html: "Συγνώμη, αυτός ο λογαριασμός είναι απενεργοποιημένος. Εάν έχετε ερωτήσεις παρακαλούμε <a href='%{path_to_contact}'>επικοινωνήστε μαζί μας</a>."
-  create_an_account: 'Δημιουργήστε ένα λογαριασμό'
+  create_an_account_html: 'Δημιουργήστε λογαριασμό στην δοκιμαστική έκδοση του Loomio'
   log_in: "Είσοδος"
   join_group:
     log_in: "Εισέλθετε για να συμμετάσχετε στο/στη/στους %{group_name}"
@@ -576,8 +593,7 @@ el:
       translations: 'Πληροφορίες μεταφράσεων'
     messages:
       email_html: "Συμπληρώστε αυτή την φόρμα, ή στείλτε ηλεκτρονικό μήνυμα στο <a href='mailto:%{email}'>%{email}</a>"
-      phone: "Εάν θέλετε να μιλήσετε απευθείας σε κάποιον, μπορείτε να καλέσετε τον/την  %{name} στο %{number}"
-      social_html: "Μπορείτε να συμμετάσχετε στο <a href='%{facebook}' target='_blank'>facebook</a> and <a href='%{twitter}' target='_blank'>twitter</a>!"
+      social_html: "Μπορείτε επίσης να μας βρείτε στο <br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: "Ξεκινήστε μια συζήτηση"
@@ -782,6 +798,8 @@ el:
       header: "Σχεδόν τελειώσατε!"
       intro: "Παρακαλούμε πατήστε αυτόν τον σύνδεσμο επαλήθευσης για να τελειώσετε την αίτηση σας:"
       ignore: "Εάν δεν έχετε κάνει αίτηση για να γίνετε μέλος στο Loomio παρακαλούμε αγνοήστε αυτό το email."
+  campaign:
+    crowdfunding_html: "Τα καταφέραμε! Ευχαριστούμε όλους όσους μας βοήθησαν στην χρηματοδότηση από το πλήθος για το Loomio 1.0. Αγαπάμε την κοινότητα μας!</a>"
   about_loomio: "Σχετικά με το Loomio"
   ago: "πριν από %{quantity_of_time} "
   approve: "Έγκριση"
@@ -816,6 +834,7 @@ el:
   name: "Όνομα"
   new_activity: "Νέα δραστηριότητα"
   next: "Επόμενο"
+  other: "Άλλο"
   outcome: "Αποτέλεσμα"
   password: "Κωδικός"
   leave_this_field_blank: "αφήστε κενό αυτό το πεδίο"
@@ -825,7 +844,6 @@ el:
   more: "Περισσότερα..."
   translate_this_string: "Μετάφραση σε %{language}"
   options: "Ρυθμίσεις"
-  other: "Άλλο"
   ok_got_it: "Εντάξει, το έχω!"
   remove: "Αφαιρέστε"
   save: "Αποθήκευση"
@@ -842,7 +860,7 @@ el:
   thanks: "Ευχαριστούμε!"
   translate: "Βοηθήστε με την μετάφραση του Loomio!"
   unlike: "Δεν μ'άρέσει"
-  until_close: "μέχρι να κλείσει"
+  time_until_close: "%{quantity_of_time} μέχρι να κλείσει"
   update: "Ενημέρωση"
   facebook: "Facebook"
   google: "Google"

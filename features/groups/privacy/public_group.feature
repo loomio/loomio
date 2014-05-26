@@ -22,6 +22,11 @@ Feature: Coordinator sets group privacy to public
     When I visit the group page
     Then I should see the group title
 
+  Scenario: Public group is shared via social media
+    Given a public group exists
+    When I visit the group page
+    Then I should see the group title in the metadata
+
   Scenario: Visitor views a public sub-group
     Given a public sub-group exists
     When I visit the sub-group page

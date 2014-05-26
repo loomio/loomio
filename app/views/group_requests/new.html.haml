@@ -1,7 +1,6 @@
 .row
-  .span8.offset1
+  .span6
     #intro
-      %h1 Start your group
-.row
-  .span5.offset1
+      %h1.beta-header= t(:'group_request.beta_request_header')
+      %p.beta-desc= t(:'group_request.beta_request_description')
     = render 'form', submit_label: t(:start_group), placeholder: t(:'group_request.neighbourhood_support_group')

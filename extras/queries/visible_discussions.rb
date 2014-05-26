@@ -31,7 +31,7 @@ class Queries::VisibleDiscussions < Delegator
                                   private = FALSE",
                                   group_ids: group_ids)
     else
-      @relation = []
+      @relation = Discussion.none
     end
 
     super(@relation)
@@ -52,16 +52,6 @@ class Queries::VisibleDiscussions < Delegator
 
   def followed
     @relation = @relation.where('dv.following = ? OR dv.following IS NULL', true)
-    self
-  end
-
-  def without_open_motions
-    @relation = @relation.where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND motions.closed_at IS NULL)")
-    self
-  end
-
-  def with_open_motions
-    @relation = @relation.joins(:motions).merge(Motion.voting)
     self
   end
 end

@@ -473,7 +473,6 @@ id:
   confirmation_not_received: "Tidak menerima instruksi konfirmasi?"
   unlock_not_received: "Tidak menerima instruksi untuk membuka?"
   inactive_html: "Maaf, akun ini untuk sementara tidak aktif. Apabila Anda memiliki pertanyaan, silakan <a href='%{path_to_contact}'>hubungi kami</a>."
-  create_an_account: 'Buat akun'
   join_group:
     log_in: "Masuk log untuk bergabung dengan %{group_name}"
     create_account_to_join_group: "Buat akun untuk bergabung ke dalam %{group_name}"
@@ -734,12 +733,12 @@ id:
   name: "Nama"
   new_activity: "Aktivitas baru"
   next: "Selanjutnya"
+  other: "Lainnya"
   outcome: "Hasil"
   password: "Kata sandi"
   pricing: 'Harga'
   prev: "Sebelumnya"
   options: "Pilihan"
-  other: "Lainnya"
   ok_got_it: "Oke, mengerti!"
   remove: "Hapus"
   save: "Simpan"
@@ -756,7 +755,6 @@ id:
   thanks: "Terima kasih!"
   translate: "Bantu terjemahkan Loomio!"
   unlike: "Tidak sukai"
-  until_close: "hingga ditutup"
   update: "Perbarui"
   common:
     email: "Surel"

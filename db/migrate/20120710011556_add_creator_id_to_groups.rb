@@ -1,4 +1,8 @@
 class AddCreatorIdToGroups < ActiveRecord::Migration
+  class Membership < ActiveRecord::Base
+    MEMBER_ACCESS_LEVELS = ['member', 'admin']
+  end
+
   class Group < ActiveRecord::Base
     has_many :memberships,
       :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},

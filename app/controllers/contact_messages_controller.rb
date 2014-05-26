@@ -3,7 +3,7 @@ class ContactMessagesController < BaseController
   layout 'pages'
 
 	def new
-    @contact_message = ContactMessage.new
+    @contact_message = ContactMessage.new(destination: params[:destination])
     if current_user
       @contact_message.name = current_user.name
       @contact_message.email = current_user.email

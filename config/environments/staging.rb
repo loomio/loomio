@@ -1,5 +1,5 @@
 Loomio::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb
+  config.action_dispatch.tld_length = (ENV['TLD_LENGTH'] || 1).to_i
 
   # Code is not reloaded between requests
   config.cache_classes = true

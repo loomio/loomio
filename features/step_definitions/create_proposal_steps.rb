@@ -27,8 +27,8 @@ end
 
 Then /^I should see the proposal details$/ do
   proposal_description = @proposal_description.length > 20 ? @proposal_description[0..19] : @proposal_description
-  find('.motion-title').should have_content(@proposal_name)
-  find('.description').should have_content(proposal_description)
+  find('.motion .motion-title:not(.translated)').should have_content(@proposal_name)
+  find('.motion .description:not(.translated)').should have_content(proposal_description)
 end
 
 Then(/^the time zone should match my time zone setting$/) do

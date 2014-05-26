@@ -30,14 +30,17 @@ module LocalesHelper
     end
   end
 
+  # consider best_locale
   def best_logged_in_locale
     selected_locale || detected_locale || default_locale
   end
 
+  # consider best_cachable_locale
   def best_logged_out_locale
     selected_locale || default_locale
   end
 
+  # consider locale_fallback
   def best_locale(first, second = nil)
     first || second || default_locale
   end

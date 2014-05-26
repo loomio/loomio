@@ -5,13 +5,16 @@
     =render '/groups/title', group: @group, discussion: @discussion
   .span3#button-container
     = request_membership_button(@group)
-
-.row
+.row.translate-parent{id: "discussion-#{@discussion.key}" }
   .span12
     .selector-panel
       = render 'title', discussion: @discussion
       #discussion-content-container
         #discussion-context= render 'discussion_context'
+        - if @group.beta_feature_enabled?('discussion_iframe') and @discussion.iframe_src.present?
+          .row
+            .span12
+              %iframe.discussion-iframe{src: @discussion.iframe_src}
         .row
           .span6#content-comments
             - if enough_activity_for_jump_link?
@@ -49,7 +52,6 @@
                   -else
                     %li.selector-item
                       = render 'motions/motion_preview', motion: @discussion.current_motion
-
 
             - if @closed_motions.any?
               #previous-proposals

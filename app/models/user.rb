@@ -12,41 +12,45 @@ class User < ActiveRecord::Base
   SMALL_IMAGE = 25
   MAX_AVATAR_IMAGE_SIZE_CONST = 1000
 
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
   attr_accessor :honeypot
 
   validates :name, :presence => true
   validates :email, :presence => true, uniqueness: true, email: true
   validates_inclusion_of :uses_markdown, :in => [true,false]
-  validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
+
+  has_attached_file :uploaded_avatar,
+    styles: {
+              large: "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
+              medlarge: "#{User::MED_LARGE_IMAGE}x#{User::MED_LARGE_IMAGE}#",
+              medium: "#{User::MEDIUM_IMAGE}x#{User::MEDIUM_IMAGE}#",
+              small: "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#"
+            }
   validates_attachment :uploaded_avatar,
-    :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
-    :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/png", "image/gif"] }
+    size: { in: 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
+    content_type: { content_type: /\Aimage/ },
+    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }
+
+  validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
+
   validates_uniqueness_of :username, :allow_nil => true, :allow_blank => true
 
   include Gravtastic
   gravtastic  :rating => 'pg',
               :default => 'none'
 
-  has_attached_file :uploaded_avatar,
-    :styles => {
-      :large => "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
-      :medlarge => "#{User::MED_LARGE_IMAGE}x#{User::MED_LARGE_IMAGE}#",
-      :medium => "#{User::MEDIUM_IMAGE}x#{User::MEDIUM_IMAGE}#",
-      :small => "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#"
-    }
-    # Use these to change image storage location
-    #:url => "/system/:class/:attachment/:id/:style/:basename.:extension",
-    #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
 
   has_many :admin_memberships,
-           :conditions => { :access_level => 'admin' },
+           :conditions => { admin: true },
            :class_name => 'Membership',
            :dependent => :destroy
+
+  has_many :adminable_groups,
+           :through => :admin_memberships,
+           :class_name => 'Group',
+           :source => :group
+
   has_many :memberships,
-           :conditions => { :access_level => Membership::MEMBER_ACCESS_LEVELS },
            :dependent => :destroy
 
   has_many :membership_requests,
@@ -55,23 +59,22 @@ class User < ActiveRecord::Base
   has_many :groups,
            :through => :memberships,
            conditions: { archived_at: nil }
+
   has_many :public_groups,
            :through => :memberships,
            :source => :group,
            :conditions => { :privacy => 'public' }
-  has_many :adminable_groups,
-           :through => :admin_memberships,
-           :class_name => 'Group',
-           :source => :group
 
   has_many :discussions,
            :through => :groups
+
   has_many :authored_discussions,
            :class_name => 'Discussion',
            :foreign_key => 'author_id'
 
   has_many :motions,
            :through => :discussions
+
   has_many :authored_motions,
            :class_name => 'Motion',
            :foreign_key => 'author_id'
@@ -102,7 +105,7 @@ class User < ActiveRecord::Base
   scope :daily_activity_email_recipients, where(:subscribed_to_daily_activity_email => true)
   scope :sorted_by_name, order("lower(name)")
   scope :admins, where(is_admin: true)
-  scope :coordinators, joins(:memberships).where('memberships.access_level = ?', 'admin').group('users.id')
+  scope :coordinators, joins(:memberships).where('memberships.admin = ?', true).group('users.id')
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
@@ -139,6 +142,10 @@ class User < ActiveRecord::Base
     @ability ||= Ability.new(self)
   end
 
+  def language
+    selected_locale || detected_locale
+  end
+
   delegate :can?, :cannot?, :to => :ability
 
   def voting_motions
@@ -155,7 +162,11 @@ class User < ActiveRecord::Base
 
 
   def is_group_admin?(group)
-    memberships.for_group(group).with_access('admin').exists?
+    admin_memberships.where(group_id: group.id).any?
+  end
+
+  def is_group_member?(group)
+    memberships.where(group_id: group.id).any?
   end
 
   def time_zone_city
@@ -166,9 +177,6 @@ class User < ActiveRecord::Base
     self[:time_zone] || 'UTC'
   end
 
-  def is_group_member?(group)
-    memberships.for_group(group).exists?
-  end
 
   def is_parent_group_member?(group)
     memberships.for_group(group.parent).exists? if group.parent
@@ -195,6 +203,10 @@ class User < ActiveRecord::Base
       helper_bot.save
     end
     helper_bot
+  end
+
+  def self.helper_bots
+    where(email: ['contact@loomio.org', 'contact@loom.io'])
   end
 
   def self.find_by_email(email)
@@ -309,6 +321,10 @@ class User < ActiveRecord::Base
 
   def belongs_to_manual_subscription_group?
     groups.manual_subscription.any?
+  end
+
+  def show_start_group_button?
+    !groups.cannot_start_parent_group.any?
   end
 
   private

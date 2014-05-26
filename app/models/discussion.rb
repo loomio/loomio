@@ -1,4 +1,5 @@
 class Discussion < ActiveRecord::Base
+
   PER_PAGE = 50
   paginates_per PER_PAGE
 
@@ -11,12 +12,21 @@ class Discussion < ActiveRecord::Base
   scope :order_by_latest_comment, order('last_comment_at DESC')
   scope :last_comment_after, lambda {|time| where('last_comment_at > ?', time)}
 
+  scope :public, where(private: false)
+  scope :private, where(private: true)
+  scope :with_motions, where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL)")
+  scope :without_open_motions, where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND motions.closed_at IS NULL)")
+  scope :with_open_motions, joins(:motions).merge(Motion.voting)
+  scope :not_by_helper_bot, -> { where('author_id NOT IN (?)', User.helper_bots.pluck(:id)) }
+
+
   validates_presence_of :title, :group, :author, :group_id
   validate :private_is_not_nil
   validates :title, :length => { :maximum => 150 }
   validates_inclusion_of :uses_markdown, :in => [true,false]
   validate :privacy_is_permitted_by_group
-
+  
+  is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   has_paper_trail :only => [:title, :description]
 
   belongs_to :group, :counter_cache => true
@@ -42,6 +52,7 @@ class Discussion < ActiveRecord::Base
   delegate :full_name, :to => :group, :prefix => :group
   delegate :email, :to => :author, :prefix => :author
   delegate :name_and_email, :to => :author, prefix: :author
+  delegate :language, to: :author
 
   before_create :set_last_comment_at
 
@@ -73,7 +84,7 @@ class Discussion < ActiveRecord::Base
     User.find_by_id(originator.to_i)
   end
 
-  def group_users_without_discussion_author
+  def group_members_without_discussion_author
     group.users.where(User.arel_table[:id].not_eq(author_id))
   end
 
@@ -139,13 +150,9 @@ class Discussion < ActiveRecord::Base
     comments.order("created_at DESC").first
   end
 
-  def refresh_last_comment_at!
-    if comments.exists?
-      last_comment_time = most_recent_comment.created_at
-    else
-      last_comment_time = created_at
-    end
-    update_attribute(:last_comment_at, last_comment_time)
+  def comment_deleted!
+    refresh_last_comment_at!
+    discussion_readers.each(&:reset_counts!)
   end
 
   def public?
@@ -173,8 +180,16 @@ class Discussion < ActiveRecord::Base
     ['hidden', 'private'].include? group.privacy
   end
 
-
   private
+  def refresh_last_comment_at!
+    if comments.exists?
+      last_comment_time = most_recent_comment.created_at
+    else
+      last_comment_time = created_at
+    end
+    update_attribute(:last_comment_at, last_comment_time)
+  end
+
   def private_is_not_nil
     if self[:private].nil?
       errors.add(:private, "cannot be nil")

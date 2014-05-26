@@ -4,6 +4,7 @@
     %span= t :groups
   %ul.dropdown-menu
     #group-dropdown-items
-    %li.group-item.group-links
-      =link_to t(:request_new_group), new_group_path, class: 'new-group'
-      =link_to 'Find a group', public_groups_path, class: 'find-group'
+    - if current_user.show_start_group_button?
+      %li.group-item.group-links
+        =link_to t(:request_new_group), new_group_path, class: 'new-group'
+        =link_to t(:find_a_group), explore_path, class: 'find-group'

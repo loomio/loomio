@@ -8,7 +8,7 @@ require 'active_support/concern'
 
 module NotificationItems; end
 require_relative '../../../app/models/concerns/avatar_initials'
-require_relative '../../../app/models/visitor'
+require_relative '../../../app/models/logged_out_user'
 require_relative '../../../extras/notification_item'
 require_relative '../../../extras/notification_items/membership_requested'
 
@@ -58,7 +58,7 @@ describe NotificationItems::MembershipRequested do
       end
 
       it "returns a visitor with a name and email" do
-        item.actor.class.should eq(Visitor)
+        item.actor.class.should eq(LoggedOutUser)
         item.actor.name.should eq(@name)
         item.actor.email.should eq(@email)
       end

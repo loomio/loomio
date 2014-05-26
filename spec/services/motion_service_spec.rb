@@ -1,4 +1,5 @@
 require_relative '../../app/services/motion_service'
+require 'active_support/all'
 
 module Events
   class MotionOutcomeCreated
@@ -8,6 +9,10 @@ module Events
   class MotionClosed
   end
   class MotionClosedByUser
+  end
+  class MotionBlocked
+  end
+  class NewVote
   end
 end
 
@@ -27,6 +32,64 @@ describe 'MotionService' do
   before do
     Events::MotionOutcomeCreated.stub(:publish!).and_return(event)
     Events::MotionOutcomeUpdated.stub(:publish!).and_return(event)
+  end
+
+  describe '.cast_vote' do
+    let(:vote) { double(:vote, motion: motion, user: user, save: false) }
+
+    it "authorizes the action" do
+      ability.should_receive(:authorize!).with(:vote, motion)
+      MotionService.cast_vote(vote)
+    end
+
+    context 'vote is valid' do
+      after do
+        MotionService.cast_vote(vote)
+      end
+
+      before do
+        vote.should_receive(:save).and_return(true)
+      end
+
+      context 'position is block' do
+        before do
+          vote.stub(:is_block?).and_return(true)
+          vote.stub(:previous_position_is_block?).and_return(false)
+        end
+        it 'fires motion blocked event' do
+          Events::MotionBlocked.should_receive(:publish!).with(vote)
+        end
+
+        context 'previous position of user was block' do
+          before do
+            vote.stub(:previous_position_is_block?).and_return(true)
+          end
+          it 'does not fire motion blocked event' do
+            Events::MotionBlocked.should_not_receive(:publish!)
+          end
+        end
+      end
+
+      context 'position is not block' do
+        before do
+          vote.stub(:is_block?).and_return(false)
+        end
+
+        it 'fires a new vote event' do
+          Events::NewVote.should_receive(:publish!).with(vote)
+        end
+      end
+    end
+
+    context 'vote is invalid' do
+      before do
+        vote.should_receive(:save).and_return false
+      end
+
+      it 'returns nil' do
+        MotionService.cast_vote(vote).should == nil
+      end
+    end
   end
 
   describe '.close_lapsed_motions' do
@@ -89,6 +152,32 @@ describe 'MotionService' do
       it 'fires motion closed by user event' do
         Events::MotionClosedByUser.should_receive(:publish!).with(motion, user)
       end
+    end
+  end
+
+  describe 'reopen' do
+    let(:date) { 2.days.from_now }
+    let(:did_not_votes) { double(:did_not_votes) }
+
+    before do
+      motion.stub(:closing_at=)
+      motion.stub(:closed_at=)
+      motion.stub(:did_not_votes).and_return(did_not_votes)
+      did_not_votes.stub(:delete_all)
+    end
+
+    after { MotionService.reopen(motion, date) }
+
+    it 'clears the closed_at' do
+      motion.should_receive(:closed_at=).with(nil)
+    end
+
+    it 'sets a new closing_at' do
+      motion.should_receive(:closing_at=).with(date)
+    end
+
+    it 'clears did not votes' do
+      did_not_votes.should_receive(:delete_all)
     end
   end
 

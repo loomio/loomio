@@ -9,7 +9,7 @@ class Events::MotionClosedByUser < Events::MotionClosed
   private
 
   def notify_users!
-    motion.group_users.each do |group_user|
+    motion.group_members.each do |group_user|
       notify!(group_user) unless group_user == user
     end
   end

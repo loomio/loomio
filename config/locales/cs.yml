@@ -432,7 +432,6 @@ cs:
   confirmation_not_received: "Nepřišly vám pokyny k potvrzení?"
   unlock_not_received: "Nepřišly vám pokyny k odemčení?"
   inactive_html: "Omlouváme se, tento účet je momentálně neaktivní. Pokud máte nějaké otázky, prosím <a href='%{path_to_contact}'>spojte se s námi</a>."
-  create_an_account: 'Vytvořit účet'
   log_in: "Přihlásit se"
   join_group:
     log_in: "Napište nám, abyste se přidal(a) k %{group_name}"
@@ -480,7 +479,6 @@ cs:
       submit: 'Odeslat zprávu'
     messages:
       email_html: "Vyplňte tento formulář, nebo zašlete email na <a href='mailto:%{email}'>%{email}</a>"
-      phone: "Pokud si radši chcete s někým promluvit, můžete zavolat %{name} na číslo %{number}"
   discussion_form:
     new:
       header: "Zahájit diskuzi"
@@ -708,6 +706,7 @@ cs:
   name: "Jméno"
   new_activity: "Nová aktivita"
   next: "Násl."
+  other: "Ostatní"
   outcome: "Výsledek"
   password: "Heslo"
   pricing: 'Ceník'
@@ -715,7 +714,6 @@ cs:
   more: "Více..."
   translate_this_string: "Přeložit do %{language}"
   options: "Nastavení"
-  other: "Ostatní"
   ok_got_it: "OK, chápu!"
   remove: "Vyloučit"
   save: "Uložit"
@@ -731,7 +729,6 @@ cs:
   thanks: "Děkujeme!"
   translate: "Pomozte přeložit Loomio!"
   unlike: "To se mi nelíbí"
-  until_close: "do uzavření"
   update: "Aktualizovat"
   common:
     email: "E-mail"

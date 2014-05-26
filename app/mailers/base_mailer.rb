@@ -7,7 +7,7 @@ class BaseMailer < ActionMailer::Base
 
   UTM_EMAIL = { utm_campaign: 'notifications', utm_medium: 'email' }
 
-  default :from => "Loomio <noreply@loomio.org>", :css => :email
+  default :from => "Loomio <notifications@loomio.org>", css: :email
 
   def email_subject_prefix(group_name)
     "[Loomio: #{group_name}]"
@@ -26,8 +26,11 @@ class BaseMailer < ActionMailer::Base
     mailer = self.class.name
     args = Hash[ method(action).parameters.map(&:last).zip(args) ]
     headers "X-SMTPAPI" => {
-      category:    [ mailer, "#{mailer}##{action}" ],
-      unique_args: { environment: Rails.env, arguments: args.inspect }
+      category:    [ mailer, "#{mailer}##{action}" ]
     }.to_json
+  end
+
+  def from_user_via_loomio(user)
+    "\"#{user.name} (Loomio)\" <notifications@loomio.org>"
   end
 end

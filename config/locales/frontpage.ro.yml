@@ -1,1 +1,12 @@
-ro: {}
+ro:
+  frontpage:
+    link:
+      blog: 'Blog'
+      contact: 'Contact'
+      log_in: 'LOG IN'
+      more: 'Mai mult'
+      public_groups: 'Grupuri de public'
+      terms: 'Termeni'
+    hero:
+      subhead: 'Ajuta-ne sa o dezvoltam.'
+      desc_html: 'Loomio este un software gratuit si <a href="https://github.com/loomio/loomio">open-source</a> disponibil pentru oricine, oriunde sa participe in luarea impreuna a deciziilor'

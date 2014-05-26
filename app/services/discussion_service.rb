@@ -25,6 +25,11 @@ class DiscussionService
     event
   end
 
+  def self.delete_comment(comment: comment, actor: actor)
+    actor.ability.authorize!(:destroy, comment)
+    comment.destroy
+  end
+
   def self.start_discussion(discussion)
     user = discussion.author
     discussion.inherit_group_privacy! if discussion.private.nil?
@@ -44,6 +49,10 @@ class DiscussionService
     discussion.title = discussion_params[:title]
     discussion.description = discussion_params[:description]
     discussion.uses_markdown = discussion_params[:uses_markdown]
+
+    if user.ability.can? :update, discussion.group
+      discussion.iframe_src = discussion_params[:iframe_src]
+    end
 
     return false unless discussion.save
 

@@ -9,7 +9,6 @@ nl:
       press: 'Pers'
       log_in: 'LOG IN'
       video: "Bekijk meer over hoe Loomio werkt"
-      crowdfunding: 'Bekijk de crowdfunding campagne'
       more: 'Meer'
       top: 'Naar boven'
       public_groups: 'Openbare groepen'
@@ -18,7 +17,7 @@ nl:
       services: 'Diensten'
     hero:
       subhead: 'Help ons bouwen.'
-      desc: 'Loomio is vrije en open software voor iedereen, waar ook ter wereld, om deel te nemen aan beslissingen die hen aangaan.'
+      desc_html: 'Loomio is vrije en <a href="https://github.com/loomio/loomio">open software</a> voor iedereen, waar ook ter wereld, om deel te nemen aan beslissingen die hen aangaan.'
     product:
       step1:
         header: '1. Dingen bespreken'

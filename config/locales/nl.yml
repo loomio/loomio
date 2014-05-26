@@ -418,7 +418,7 @@ nl:
       <p> Als je de titel kort en bondig maakt, weten mensen precies wat het betekent om het eens of oneens te zijn.</p>
       <p>Het betekent niet het einde van de wereld als niet iedereen het voorstel meteen helemaal goedkeurt.
       Als de groep het eerste voorstel niet leuk vindt, kan een ieder een nieuw voorstel doen om de bezwaren aan te kaarten en het proces vooruit te helpen.</p>
-      <p>Door dit dynamische proces kan de collectieve wijsheid van jouw groep betere ideeën genereren dan iemand in zijn eentje had kunnen bedenken.</p>
+      <p>Door dit dynamische proces kan de collectieve wijsheid van jouw groep betere ideeën creëren dan iemand in zijn eentje had kunnen bedenken.</p>
       <p>De deadline van een voorstel kan ieder moment uitgesteld worden als het erop lijkt dat er meer ruimte nodig is. Iedereen krijgt een e-mail notificatie 24 uur voordat een voorstel sluit.</p>
     video_id: "52025402"
     video_tutorial: "Video uitleg"
@@ -488,7 +488,6 @@ nl:
   confirmation_not_received: "Geen bevestigingsinstructies ontvangen?"
   unlock_not_received: "Geen ontgrendelingsinstructies ontvangen?"
   inactive_html: "Sorry, dit account is op het moment niet actief. <a href='%{path_to_contact}'>Neem contact op</a> als je vragen hebt."
-  create_an_account: 'Maak een account'
   join_group:
     log_in: "Log in om je bij %{group_name} aan te sluiten"
     create_account_to_join_group: "Maak een account om lid te worden van %{group_name}"
@@ -753,6 +752,7 @@ nl:
   name: "Naam"
   new_activity: "Nieuwe activiteit"
   next: "Volgende"
+  other: "Andere"
   outcome: "Uitkomst"
   password: "Wachtwoord"
   pricing: 'Tarieven'
@@ -760,7 +760,6 @@ nl:
   more: "Meer..."
   translate_this_string: "Vertalen naar %{language}"
   options: "Opties"
-  other: "Andere"
   ok_got_it: "Okee, ik snap 't!"
   remove: "Verwijder"
   save: "Bewaar"
@@ -777,7 +776,6 @@ nl:
   thanks: "Bedankt!"
   translate: "Help Loomio te vertalen!"
   unlike: "Niet leuk"
-  until_close: "tot sluiting"
   update: "Bijwerken"
   common:
     email: "E-mail"

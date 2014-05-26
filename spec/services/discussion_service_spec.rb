@@ -11,7 +11,7 @@ end
 
 describe 'DiscussionService' do
   let(:comment_vote) { double(:comment_vote) }
-  let(:ability) { double(:ability, :authorize! => true) }
+  let(:ability) { double(:ability, :authorize! => true, can?: true) }
   let(:user) { double(:user, ability: ability, update_attributes: true) }
   let(:discussion) { double(:discussion, author: user,
                                          save: true,
@@ -20,8 +20,10 @@ describe 'DiscussionService' do
                                          :private= => true,
                                          :uses_markdown= => true,
                                          uses_markdown: true,
+                                         :iframe_src= => true,
                                          update_attribute: true,
                                          update_attributes: true,
+                                         group: true,
                                          private: true,
                                          created_at: Time.now) }
   let(:comment) { double(:comment,
@@ -29,6 +31,7 @@ describe 'DiscussionService' do
                          'author=' => nil,
                          created_at: :a_time,
                          discussion: discussion,
+                         destroy: true,
                          author: user) }
   let(:event) { double(:event) }
   let(:discussion_params) { {title: "new title", description: "", private: true, uses_markdown: true} }
@@ -38,6 +41,19 @@ describe 'DiscussionService' do
     Events::NewDiscussion.stub(:publish!).and_return(event)
   end
 
+  describe '.delete_comment' do
+    after do
+      DiscussionService.delete_comment(comment: comment, actor: user)
+    end
+
+    it 'checks the actor has permission' do
+      ability.should_receive(:authorize!).with(:destroy, comment)
+    end
+
+    it 'deletes the comment' do
+      comment.should_receive :destroy
+    end
+  end
 
   describe 'unlike_comment' do
     after do

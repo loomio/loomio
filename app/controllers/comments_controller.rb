@@ -1,10 +1,9 @@
 class CommentsController < BaseController
   load_and_authorize_resource only: :destroy
-  load_resource only: [:like, :translate]
-  skip_before_filter :authenticate_user!, only: :translate
+  load_resource only: [:like]
 
   def destroy
-    CommentDeleter.new(@comment).delete_comment
+    DiscussionService.delete_comment(comment: @comment, actor: current_user)
     flash[:notice] = t(:"notice.comment_deleted")
     redirect_to discussion_url(@comment.discussion)
   end
@@ -20,10 +19,6 @@ class CommentsController < BaseController
     @discussion = @comment.discussion
 
     render :template => "comments/comment_likes"
-  end
-  
-  def translate
-    raise NotImplementedError # (temporarily disable translation feature) 
   end
 
 end

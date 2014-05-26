@@ -1,1 +1,15 @@
-id: {}
+id:
+  frontpage:
+    view_this_in_your_language: 'Lihat situs ini dalam bahasa %{language}'
+    link:
+      blog: 'Blog'
+      contact: 'Kontak'
+      press: 'Pers'
+      log_in: 'LOG IN'
+      terms: 'Ketentuan'
+      privacy: 'Kebijakan Privasi'
+      services: 'Layanan'
+    team:
+      header: 'Tentang Loomio'
+    vision:
+      header: 'Bantu kami untuk mewujudkan visi'

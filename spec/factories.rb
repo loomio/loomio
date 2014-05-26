@@ -166,4 +166,10 @@ FactoryGirl.define do
     filename { Faker::Name.name }
     location { Faker::Name.name }
   end
+  
+  factory :translation do
+    language 'en'
+    fields {{ body: 'Successful translation' }}
+  end
+
 end

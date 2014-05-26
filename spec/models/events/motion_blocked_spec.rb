@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 describe Events::MotionBlocked do
-  let(:vote) { mock_model(Vote) }
+  let(:motion) { FactoryGirl.create :motion }
+  let(:author) { FactoryGirl.create :user }
+  let(:vote) { FactoryGirl.create :vote, motion: motion }
 
   describe "::publish!" do
     let(:event) { double(:event, :notify_users! => true) }
-    let(:discussion) { mock_model(Discussion) }
 
     before do
       Event.stub(:create!).and_return(event)
-      vote.stub_chain(:motion, :discussion).and_return(discussion)
     end
 
     it 'creates an event' do
@@ -23,13 +23,22 @@ describe Events::MotionBlocked do
   end
 
   context "after event has been published" do
-    let(:user) { double(:user) }
+    let(:user) { FactoryGirl.create :user }
+    let(:mailer) { double(:mailer, deliver: true) }
     let(:event) { Events::MotionBlocked.new(kind: "new_comment",
                                                   eventable: vote) }
-    before { vote.stub(:other_group_members).and_return([user]) }
+    before do
+      vote.stub(:other_group_members).and_return([user])
+      vote.stub(:user).and_return(author)
+    end
 
     it 'notifies other group members' do
       event.should_receive(:notify!).with(user)
+      event.save
+    end
+
+    it 'emails motion blocked' do
+      MotionMailer.should_receive(:motion_blocked).with(vote).and_return(mailer)
       event.save
     end
   end

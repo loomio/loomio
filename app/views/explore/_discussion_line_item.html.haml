@@ -1,0 +1,9 @@
+%li.discussion.row-fluid{data:{discussion_id: item.id }}
+  = link_to item do
+    .span1
+      .icon.discussion-icon
+        %span.activity-badge.unread-comments-count
+          =item.comments_count
+
+    .span11.title
+      = item.title

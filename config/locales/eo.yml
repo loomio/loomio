@@ -1,31 +1,53 @@
 eo:
+  activerecord:
+    errors:
+      messages:
+        blank: "ne povas esti malplena"
   errors:
     messages:
       email: "Retadreso ne validas"
+  date:
+    formats:
+      datepicker: "%Y-%m-%d"
   error:
+    access_denied: "Vi ne havas permeson fari ĉi tion"
     cant_join_subgroup: "Vi ne rajtas aniĝi al subgrupo se vi ne estas membro de la ĉefgrupo"
     cant_modify_position: "Tiu ĉi propono estas fermita"
     cant_state_position: "Tiu ĉi propono estas fermita"
+    cant_view_member_profile: "Ne eblas vidi la profilon de la membro ĉar vi ne estas en la sama grupo."
     discussion_not_created: "La diskuto ne estis sukcese kreita"
     group_not_archived: "La grupo ne estis sukcese arĥivita"
     invalid_close_date: "Tiu ĉi limdato ne validas, kontrolu ke tiu ĉi dato ankoraŭ ne pasis."
+    invalid_email: "Bonvolu enigi almenaŭ unu validan retpoŝtadreson"
     image_upload_fail: "Mankas kapablo alŝuti la foton. Kontrolu ke la foto ne estas pli ol 1 MB granda kaj ke ĝi estas .jpeg, .png aŭ .gif dosiero."
     permission_to_invite: "Vi ne estis rajtigita inviti novajn membrojn."
     position_not_updated: "Ne sukcesis ĝisdatigi la sintenon."
     settings_not_updated: "Viaj agordoj ne estis ĝisdatigitaj"
+    group_request_already_accepted: "Pardonu! Ĉi tiu invito estas ne valida aŭ jam akceptiĝis."
+    group_request_invalid_token: "Pardonu! Ĉi tio estas nevalida identaĵo"
+    group_private_or_not_found: "Grupo ne trovita.\n\nĈi tiu grupo povus esti privata. Se iu donis al vi ĉi tiun ligilon, petu invitiĝi al la grupo."
+    group_already_setup: "La grupo kiun vi provas starigi jam ekzistas."
+    proposal_already_exists: "Jam estas malferma propono en ĉi tiu diskuto."
   alert:
     duplicate_email: "%{which_email} estas jam membro de la grupo."
   notice:
+    admin_rights_removed: "La kunordigaj rajtoj de %{which_user} estas forigitaj."
     member_removed: "Membro forigita"
+    membership_approved: "Membreco aprobita."
     membership_request_canceled: "Peto de membreco nuligita."
     membership_request_ignored: "Peto de membreco ignorita."
     settings_updated: "Viaj agordoj estis ĝisdatigitaj."
+    user_made_admin: "%{which_user} fariĝis kunordiganto."
     you_have_left_group: "Vi forlasis %{which_group}."
   warning:
+    cant_remove_last_admin: "Vi estas la lasta kunordiganto kaj ne povas esti forigata."
     membership_request_already_ignored: "Peto de membreco jam estis ignorita."
     membership_request_already_canceled: "Peto de membreco jam estis nuligita."
     position_not_submitted: "Via sinteno ne estis sukcese submetita."
     proposal_not_created: "Via propono ne estis sukcese kreita."
+    user_already_admin: "%{which_user} jam estas kunordiganto de ĉi tiu grupo."
+    user_already_member: "%{which_user} jam estas membro de ĉi tiu grupo."
+    user_not_admin: "Pardonu, %{which_user} devas esti kunordiganto de ĉi tiu grupo por aliri ĉi tion."
   success:
     added_to_group: "Vi estis ĵus anigita al la grupo %{which_group}."
     close_date_changed: "La limdato estis sukcese ŝanĝita."
@@ -41,6 +63,9 @@ eo:
     proposal_deleted: "Propono forigita."
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: "sekundo"
+        other: "%{count} sekundoj"
       x_seconds:
         one: "1 sekundo"
         other: "%{count} sekundoj"
@@ -87,12 +112,31 @@ eo:
     motion_closing_soon: "La propono estos fermita baldaŭ"
     motion_blocked: "blokis la proponon"
   edit_discussion_context: "Redakti la diskutan kuntekston"
+  request_new_group: "Komenci grupon"
   empty_notifications: "Vi ankoraŭ ne havas ajnan sciigon."
   see_all_notifications: "Vidi ĉiujn sciigojn"
   sign_out: "Eliri"
+  sign_in: "Ensaluti"
   tagline: "Ni kreas mondon kie estas facile por ĉiuj partopreni la decidojn kiuj gravas por ili."
   click_to_dismiss: "Alklaku ĉi tie por forigi tiun ĉi mesaĝon"
   generic_confirm: "Ĉu vi certas?"
+  discussion_helper_text:
+    header: "Bonvenon al via unua diskuto"
+    message: "<p>La temo estas supre de la paĝo, kun kunteksto malsupre.</p><p>Diskuto estas maldekstre, decidoj venos dekstre. Se vi pensas ke la grupo pretas fari decidon, vi povas fari proponon por ke la grupo konsideru.</p>"
+  group_helper_text:
+    header: "Bonvenon al via nova grupo!"
+    message: "<p>Jen la <strong>grupa paĝo</strong>. Maldekstre estas la listo de ĉiuj diskutoj en ĉi tiu grupo.</p><p>Se vi volas ke la grupo diskutu pri io nova, komencu novan diskuton.</p>"
+  dashboard_helper_text:
+    header: "Bonvenon al via hejmpaĝo"
+    message: "<p>La hejmpaĝo montras al vi ĉiujn nunajn diskutojn en ĉiuj grupoj kie vi estas membro.</p><p>Vi povas starigi diskuton pri nova temo klakante la butonon 'Starigi diskuton'.</p>"
+  setup_steps_title: "Sekvaj paŝoj:"
+  setup_step_1: "Vidu pri la ekzempla diskuto"
+  setup_step_2: "Starigi vian unuan diskuton"
+  setup_step_3: "Inviti personojn al via grupo"
+  invite_people: "Inviti personojn"
+  no_invitations_button: "Ne plu estas invitoj"
+  number_pending: '%{pending} traktiĝas'
+  edit_memberships: 'Redakti membrecojn'
   add_new_member: "Aldoni novan memebron"
   invite_members_to_group: "Inviti membrojn aliĝi al  %{which_group}"
   remaining_invites: "ceteraj invitioj"
@@ -115,6 +159,7 @@ eo:
   confirm_approve_membership_request: "Ĉu vi certas, ke vi volas aldoni  %{which_user} al tiu ĉi grupo?"
   ignore_request: "Ignori peton"
   confirm_ignore_membership_request: "Ĉu vi certas, ke vi volas ignori la peton de membreco fare de   %{which_user}?"
+  membership_requested: "Membreco petiĝis"
   request_membership: "Peti membrecon"
   confirm_remove_membership_request: "Ĉu vi certas, ke vi volas nuligi vian peton de membreco en tiu ĉi grupo?"
   subgroups: "Subgrupoj"
@@ -147,6 +192,7 @@ eo:
   previous_decisions: "Antaŭa diskuto"
   see_previous_decisions: "Vidi antaŭajn diskutojn"
   create_new_proposal: "Krei proponon"
+  empty_decision_list_html: "Ĉu vi pretas por fari decidon? <br> Kiu ajn povas komenci proponon."
   empty_decision_index: "Tiu ĉi grupo faris neniun ajn decidojn ĝis nu.n"
   empty_discussion_list: "Ankoraŭ nenio okazis en tiu ĉi diskuto."
   empty_discussion_index: "Neniu diskuto troveblas ene de viaj grupoj."
@@ -175,9 +221,13 @@ eo:
   confirm_close_proposal: "Ĉu vi certas, ke vi volas fermi tiun ĉi proponon?"
   change_proposal_close_date: "Ŝanĝi limdaton"
   change_proposal_close_date_header: "Ŝanĝi la limdaton por la propono '%{which}'"
+  proposal: Propono
   proposal_close_date_error: "Bonvolu doni limdaton en la estonteco"
   proposal_closing_when: "Fermota je %{when}"
   proposal_closed_when: "Fermita antaŭ %{when} "
+  proposed_when_by_who: "Proponita de %{who} antaŭ %{when}"
+  engagement_on_open_proposal: "%{percent}%% de la membroj jam klarigis sian pozicion (%{numerator} el %{denominator})"
+  engagement_on_closed_proposal: "%{percent}%% de la membroj klarigis sian pozicion (%{numerator} el %{denominator})"
   state_your_position: "Vortumu vian sintenton"
   positions: "Sintenoj"
   yes_position: "Konsentite"
@@ -190,6 +240,87 @@ eo:
   block_details: "Mi havas fortan kontraŭstaron kontraŭ tiu ĉi propono kaj mi tue ne konsentas daŭrigi laŭ tiu vojo."
   not_voted: "[Montri membrojn kiuj ankoraŭ ne decidis]"
   outcome_placeholder: "Kio estas la rezulto de tiu ĉi propono?"
+  help:
+    coordinating: 'Kunordigante vian Loomio-grupon'
+    coordinating_details: |
+      Kiel kunordiganto vi respondecas pri konfigurado de via Loomio-grupo kaj invito
+      de ĉiuj al ĝi. Kune kun la lernado de nova programo, via grupo ankaŭ lernos novajn
+      procesojn por kunlabori pli efike kaj fari bonajn decidojn kune. Jen kelkaj konsiloj
+      por helpi vian grupon sukcesi:
+    different_ways: 'Malsamaj manieroj por uzi Loomion'
+    engaging_html: |
+      <h2>Konsiloj por engaĝigi vian grupon</h2>
+      <p>Oni ekscitiĝos ensalti kaj komenci partopreni se estas engaĝiga propono sur la
+      tablo. Bona propono enhavas agoplanon por la grupo, por ke tuj estu klare kion
+      signifas konsenti aŭ malkonsenti. Pripensu kiel vi povas identigi diskutojn/decidojn
+      pri kiuj la grupo nun interkonsentiĝas persone aŭ retpoŝte por kiuj pli facilus se ili
+      estus en Loomio.</p>
+      <p>Se via grupo ĵus komenciĝis, vi povus komenci per facilanima decido, por doni
+      al ĉiuj la ŝancon ludi per la ilo kaj mem vidi la decidadon dum ĝi okazas.</p>
+      <p>Alia simpla maniero por kuraĝigi personojn engaĝiĝi en diskuto estas uzi la eblo
+      @mencii por indiki specifajn personojn; tio sendos retpoŝton al il por diri ke ili estas
+      menciitaj en komento.</p>
+    example1_html: |
+      <h3>Vi bezonas ke la grupo diskutu larĝan temon kaj kune pripensu solvon</h3>
+      <p>Strategio: diskutu temon dum iom da tempo antaŭ ol krei proponon.</p>
+      <p>Diskutoj ofte atingas la plej bonan konkludon se vi konstruas komunan komprenon
+      pri la problemo antaŭ ol salti al specifa solvo. Kiam homoj partoprenas en la proceso, ili multe pli verŝajne konsentos kun la konkludo.</p>
+    example2_html: |
+      <h3>Vi jam pripensis proponon, kaj vi volas havi subtenon de la grupo por antaŭeniri kun ĝi.</h3>
+      <p>Strategio: komencu diskuton pri specifa decido kaj tuj faru proponon.</p>
+      <p>Se vi imagas klaran konkludon sed vi volas certigi ke ne estas esencaj problemoj,
+      vi povas uzi la proponon por rapide havi retrokuplon pri decido.</p>
+      <p>Vi povas fari aferojn kiel finigi dokumenton, aprobi peton, aŭ konsentigi laborpecon.</p>
+    get_in_touch: "Ekkontakti"
+    get_in_touch_description_html: "Se vi havas ajnajn demandojn aŭ retrokuplon, <a href='%{link}'>kontaktu nin</a>"
+    getting_started: "Ekkomenci"
+    getting_started_description: "Maldekstre, la grupo diskutas pri temo, interŝanĝas ideojn kaj informojn. Kiam la grupo devos decidi pri io, aperos dekstre."
+    getting_the_most: 'Fari kiel eble plej per Loomio'
+    have_your_say_details_html: |
+      <p>Se vi pretas por montri vian opinion, alklaku unu el la kvar decidbutonojn.</p>
+      <p>Se vi faris vian decidon, mallonge klarigu. Sub la grafiko, vi povas vidi kion ĉiuj aliaj pensas.
+      Tio ebligas rapide kaj facile vidi kio okazis en la diskuto. Dum novaj informoj aperas, vi ajnamomente povas ŝanĝi vian opinion.</p>
+    have_a_discussion: "Havi diskuton"
+    have_a_discussion_description: "La temo kaj ĉiaj rilataj foninformoj estas je la supro de la paĝo. Uzu la komentkeston por aldoni vian voĉon al la diskuto."
+    help: "Helpo"
+    how_it_works: "Kiel funkcias"
+    invitation_html: |
+      <h2>Verki bonegan inviton</h2>
+      <p>La unua demando kiun ĉiu nova membro al si faros estas 'por kio uziĝas ĉi tiu grupo?'</p>
+      <p>Pensu pri la plej simpla maniero priskribi la grupon: Kion vi volas kune atingi? Kiajn decidojn vi faros? Kiuj envolviĝos?</p>
+      <p>Povas esti bona ideo unue paroli al via grupo antaŭ ol inviti ilin aliĝi al Loomio.</p>
+      <p>Oni volas scii kial ili estis invititaj, kion oni atendas de ili, kaj kial indas ilia tempo por lerni
+      kiel uzi la novan ilon.</p>
+    join_the_community: "Aliĝi al la komunumo"
+    join_the_community_description_html: "Ĉiuj bonvenas aliĝi al la komunumo de Loomio, kie ni parolas pri kiel plej bonigi la ilon, kaj kiel ĝi povas esti plibonigata.<br /><br /><a href='https://www.loomio.org/groups/3'>Klaku ĉi tie por iri al la grupo de la Loomio-komunumo."
+    images_and_text_formatting: "Bildoj kaj teksta formatado"
+    images_and_text_formatting_html: |
+      <p>Loomio uzas 'Markdown' por bildenmetado kaj tekstformatado.
+      Vi povas enŝalti Markdown per la malgranda griza emblemo sub la komentkesto.</p>
+      <p><a href='https://www.loomio.org/discussions/1124'>Klaku ĉi tie</a>
+      por informiĝi kiel uzi Markdown.</p>
+    keep_up_to_date: "Resti ĝisdata"
+    keep_up_to_date_html: |
+      <p>Per klako sur la nomo de via grupo supre de la ekrano, vi iros al la gruppaĝo,
+      kaj tie vi povas vidi liston da ĉiuj diskutoj kaj decidoj de tiu grupo. Se vi estas en
+      pli ol unu grupo, vi povas vidi ĉiujn aktivecojn de ĉiuj viaj grupoj kune en la hejmpaĝo.</p>
+      <p>Vi ricevos retpoŝtajn sciigojn kiam gravaj aferoj okazas en via grupo.
+      Vi povas ŝanĝi viajn retpoŝtajn preferojn <a href="%{link}">ĉi tie</a>.</p>
+    make_a_decision: "Fari decidon"
+    make_a_decision_description: "Kiam la grupo pretas por fari decidon, ĉiuj povas fari proponon. Desegnu klaran agoplanon kaj donu iom da fono por ke ĉiuj sciu ekzakte kion volas diri konsento aŭ malkonsento."
+    prompt_people_details: "Se vi volas voki la atenton de specifa persono en via grupo, tajpu '@' sekve de ties nomo. Tiu persono ricevos retpoŝtaĵon sciigante ilin ke vi menciis ilin en komento."
+    prompt_people_html: "Demandu partoprenantojn kun  <span class='blue'>@mentions</span>"
+    positions_agree_description: "<span>Konsento</span> volas diri ke vi feliĉas pri la propono."
+    positions_abstain_description: "<span>Abstino</span> volas diri ke vi ne certas, aŭ ke vi senprobleme lasos ke la grupo decidu sen vi."
+    positions_disagree_description: "<span>Malkonsento</span> volas diri ke vi pensas ke eble estas pli bona alternativo, sed vi pretas iri kun la grupa decido."
+    positions_block_description: "<span>Blokado</span> volas diri ke vi serioze obĵetas kaj ke vi tre malfeliĉos se ĉi tiu propono estos efektigata."
+    start_discussion: "Komence de egaĝiĝa diskuto"
+    start_discussion_html: "<p>Kiam vi starigas diskuton, certiĝu ke la titolo indikas malmultvorte pri kio ĝi temas.  \nUzu la Kunteksto-Panelo por doni  ĉ.iujn fonajn informojn bezonatajn por ke la grupo havu produktivan kaj bone informitan diskuton,</p>\n<p>Dum la diskutado, la Kunteksto-Panelo povas esti ĝisdatigita kiam novaj\
+      \ informoj aperas.  Vi povs uzi tiun ĉ.i spacon ne nur por klarigi la temon, sed ankaŭ  por dividi utilajn informfontojn, resumi la diksuton dum ĝi progresas aŭ  por skizi la decido-faran proceduron uzatan de la grupo..</p>\n"
+    start_proposal: "Verkante klaran proponon"
+    video_id: "52025402"
+    video_tutorial: "Video-klarigo"
+    video_tutorial_description: "Vidu la filmeton por rapida elmontro kiel uzi Loomion."
   resend_confirmation: "Resendi konfirmajn instrukciojn"
   new_password: "Nova ŝlosilvorto"
   confirm_new_password: "Konfirmi novan ŝlosilvorton"
@@ -206,11 +337,43 @@ eo:
   forgot_your_password: "Ĉu vi forgesis vian ŝlosilvorton?"
   confirmation_not_received: "Ĉu vi ne ricevis la kofirmajn instrukciojn?"
   unlock_not_received: "Ĉu vi ne ricevis la malŝlosajn instrukciojn?"
+  invitation:
+    no_invitations_left: "Pardonu, sed ne restas plu invitoj"
+    no_invitations_left_get_more: "Bonvolu retpoŝti al contact@loomio.org kaj ni vidos kion ni povos fari por helpi vin"
+    invitation_not_found: 'Ne eblis trovi la inviton kun tiu identaĵo. Bonvolu peti novan inviton de la sendinto.'
+    invitation_cancelled: 'Ĉi tiu invito nuliĝis. Bonvolu kontakti la sendinton de la invito se vi pensas ke tio estis eraro.'
+    invitation_already_used: 'Ĉi tiu invito jam uziĝis. Bonvolu ensaluti por pluiri al via grupo.'
+    recipients: "Enigu retpoŝtadresojn, disigitajn per komoj:"
+    invitees_placeholder: "Uzantnomo <user1@example.com>, user2@example.com"
+    subject: "Bonvolu aliĝi al nia nova Loomio-grupo, %{group}"
+    invite_people: "Inviti personojn al via grupo"
+    body_editable: |
+      Saluton, venu decidadi kun ni! Ni uzas kunlaboran decidadilon kiu nomiĝas Loomio.
+    message_body: "Invitmesaĝo"
+    invites_more_help2: "<p>Vi povas inviti personojn al via grupo iam ajn.</p><p>Vi eble volos inviti ĉiujn membrojn tuj, aŭ vi povos komenci invitante nur la personojn kun kiuj vi plej proksime laboras.</p>"
+    invitation_link: "Invitligilo"
+    link_help: "Klaku ĉi tiun ligilon por aliĝi al %{group} en Loomio:"
+    copy: "Se iu ne ricevis la invitmesaĝon, sentu vin libera kopii la invitligilon ĉi-supre kaj doni ĝin mem al la ricevanto."
+  example_discussion:
+    title: "Ekzempla diskuto: bonvenon kaj enkonduko al Loomio"
+    description: |
+      Bonvenon al Loomio, nova ilo por grupa decidado.
+      Interagante pri temo, diskutante pri diversaj vidpunktoj kaj informoj, kaj albordante ĉiujn dubojn kiuj venas, via grupo povas kunigi fortojn por trovi la plej bonan vojon antaŭen.
+      Vi povas uzi ĉi tiun ekzemplan diskuton por ludi pri la ebloj de la ilo.
+      Por ekkomenci la aferon, la Loomio-helproboto pensas ke estus bona ideo ke via grupo iru feriumi kune. La tortgrafiko dekstre montras kiel via grupo pensas pri la propono. Vi povas diri ion pri tio klakante unu el la decidbutonojn sube.
+  example_motion:
+    name: "Ni feriumu sur la luno!"
+    description: |
+      La Loomio-helproboto vere ŝatos ke via grupo investu en vojaĝo al la luno. Ŝajne la spaco-fromaĝo bongustegas. Sed la implikoj pol via karbon-impakto estas zorgigaj.
+      Ĉu estas bona ideo? La Loomio-helproboto volas scii kion vi pensas!
+      Se vi certas pri via pozicio, alklaku unu el la simboloj malsupre (movu la muŝon super la decidbutonojn por priskribo de la signifo de ĉiuj).
+      Al vi estos petate skribi mallonge pri via kialo por via decido. Tio helpos vidi resumon de ĉies pensoj kaj kialoj. Vi povas ŝanĝi vian opinion kaj redakti vian decidon libere ĝis kiam la propono fermiĝas.
   motion_form:
     header: "Nova propono"
     name_helper: "Bonvolu klarigi kaj mallongigi la titolon kiel eble plej multe."
   group_form:
     invitation_settings: "Agordoj de la invito"
+    admins_only: "Nur kunordigantoj"
   vote_form:
     header: "Vortumi vian sintenton"
     edit: "Redakti vian sintenon"
@@ -220,6 +383,7 @@ eo:
     submit: "Submeti sintenon"
     update: "Ĝisdatigi sintenon"
   email_preferences_form:
+    header: "Retpoŝtaj preferoj"
     daily_activity_summary: "Taga Agad-resumo"
     daily_activity_subscription: "Sendu al mi ĉiutagan agadan mesaĝon, enhavantan resumon de ĉio kio okazas en miaj grupoj"
     global_notifications: "Ĝeneralaj sciigoj"
@@ -227,8 +391,134 @@ eo:
     mentions_subscription: "Sendu al mi retmesaĝon kiam ajn mia nomo estas menciita en komentoj"
     group_activity_notifications: "Sciigoj de grupa agado"
     group_activity_details: "Por ĉiu grupo, alklaku la skatoleton se vi volas ricevi retmesaĝon tuj kiam estas novaj diksutoj aŭ decidoj"
+    update_preferences: "Ĝisdatigi preferojn"
+  new_user_form:
+    create_an_account: "Krei konton"
+  group_setup:
+    submit: "Portu min al la grupo!"
   simple_form:
     labels:
+      discussion:
+        title: "Titolo"
+        description: "Kunteksto"
+      group:
+        name: "Grupnomo"
+        description: "Priskribo"
+        members_invitable_by: "Kiu povos inviti personojn al ĉi tiu grupo?"
       motion:
         name: "Titolo"
+        description: "Detaloj"
+      user:
+        name: "Plena nomo"
+        email: "Retpoŝto"
+        password: "Pasvorto"
+        language_preference: "Lingvo"
+    placeholders:
+      discussion:
+        title: "Titolo"
+        description: "Donu kuntekston..."
+      motion:
+        name: "Kion vi proponas ke okazu?"
+        description: "Donu sufiĉajn informojn por ke ĉiuj sciu ekzakte kion signifas konsenti aŭ malkonsenti."
+      group:
+        description: "Grupa priskribo"
+  helpers:
+    submit:
+      discussion:
+        create: "Starigi la diskuton"
+      motion:
+        create: "Starigi proponon"
+      user:
+        create: "Krei konton"
+        update: "Ĝisdatigi agordojn"
+  email:
+    unsubscribe: "Malaboni aŭ ŝanĝi viajn retpoŝtpreferojn:"
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> por malaboni aŭ ŝanĝi viajn retpoŝtpreferojn."
+    view_comment: "Klaku ĉi tie por vidi vian komenton en Loomio"
+    view_discussion: "Klaku ĉi tie por vidi ĉi tiun diskuton"
+    view_group: "Klaku ĉi tie por vidi la grupon en Loomio"
+    view_proposal: "Vidi ĉi tiun proponon en Loomio"
+    create_discussion:
+      intro: "%{who} starigis novan diskuton en %{which_group}:"
+      subject: "Nova diskuto - %{which}"
+    create_proposal:
+      intro: "Nova propono kreiĝis en Loomio-grupo al kiu vi apartenas."
+      closes_in: "Fermiĝos post"
+      subject: "Nova propono: %{which}"
+    daily_activity:
+      heading: "Via aktiveco en Loomio"
+      intro: "Montras al vi kio okazis en viaj Loomio-grupoj en la lastaj 24 horoj"
+      subject: "Loomio - Resumo de la lastaj 24 horoj"
+    group_email:
+      intro: "%{who} anoncis al %{group}"
+    group_membership_approved:
+      intro: "Via peto aliĝi al la grupo '%{group_name}' en Loomio estas aprobita."
+      subject: "Membreco aprobita"
+    membership_request:
+      intro: "%{name} (%{email}) petis aliron al unu el viaj Loomio-grupoj."
+      subject: "%{who} petis aliĝi al %{which_group}"
+      view_group: "Vi povas aprobi aŭ malaprobi la peton ĉi tie"
+    mentioned:
+      intro: "Vi menciiĝis en diskuto kun la titolo:"
+      said: "%{comment_author} diris:"
+      subject: "%{who} menciis vin en la grupo %{which} en Loomio"
+    proposal_closed:
+      intro: 'Via propono "%{proposal_name}" fermiĝis.'
+      subject: "Propono fermita - %{which}"
+    proposal_blocked:
+      intro: "Propono kiun vi ebligas estas blokita."
+      subject: "Propono blokita - %{which}"
+    proposal_closing_soon:
+      closes_in: "Fermiĝos post"
+      summary: "Resumo"
+    verification:
+      header: "Vi preskaŭ pretas!"
+      intro: "Bonvolu alklaki la kontrololigilon por fini vian peton:"
+      ignore: "Se vi ne petis aliĝi al Loomio bonvolu ignori ĉi tiun retpoŝtaĵon."
+  ago: "antaŭ %{quantity_of_time}"
+  approve: "Aprobi"
+  author: "Aŭtoro"
+  back: "Reen"
+  cancel: "Nuligi"
+  change: "Ŝanĝi"
+  changing: "Ŝanĝiĝas"
+  click_here: "Klaku ĉi tie"
+  close: "Fermi"
+  closing: "Fermiĝas"
+  closed: "Fermita"
+  decisions: "Decidoj"
+  delete: "Forviŝi"
+  details: "Detaloj"
+  discussions: "Diskutoj"
+  edit: "Redakti"
+  email_address: "Retpoŝtadreso"
+  enable: "Ebligi"
+  participation: "Partopreno"
+  disable: "Malebligi"
+  group: "Grupo"
+  groups: "Grupoj"
+  group_admin: "Grupkunordiganto"
+  home: "Hejmo"
+  like: "Ŝati"
+  loading: "Ŝargas..."
+  message: "Mesaĝo"
+  name: "Nomo"
+  new_activity: "Nova aktivaĵo"
+  next: "Sekva"
   outcome: "Rezulto"
+  password: "Pasvorto"
+  prev: "Antaŭa"
+  options: "Opcioj"
+  ok_got_it: "Bone, mi komprenas!"
+  save: "Savi"
+  saving: "Saviĝas"
+  sending: "Sendiĝas"
+  send_invite: "Sendi inviton"
+  send_email: "Sendi retpoŝton"
+  show_more: "Montri pli"
+  starting: "Komenciĝas"
+  subject: "Temo"
+  unlike: "Ne ŝati"
+  update: "Ĝisdatigo"
+  common:
+    email: "Retpoŝto"

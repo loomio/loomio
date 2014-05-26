@@ -216,7 +216,6 @@ te:
   remember_me: "నన్ను గుర్తుపెట్టుకో"
   signing_in: "ప్రవేశం"
   forgot_your_password: "మీ సంకేతపదాన్ని మర్చిపోయారా?"
-  create_an_account: 'ఒక ఖాతాను సృష్టించుకోండి'
   join_group:
     log_in: "%{group_name} చేరుటకు ప్రవేశించండి"
   invitation:
@@ -225,6 +224,11 @@ te:
     invitation_link: "ఆహ్వానపు లంకె"
   search:
     placeholder: "వెతుకు"
+  contact_page:
+    labels:
+      name: 'మీ పేరు'
+      email: 'మీ ఈమెయిలు చిరునామా'
+      message: 'మీ సందేశం'
   discussion_form:
     new:
       header: "ఒక చర్చను ఆరంభించండి"
@@ -263,6 +267,7 @@ te:
         title: "శీర్షిక"
         description: "సందర్భం"
         privacy_public_header: "బహిరంగం"
+        privacy_public_description: "ఈ చర్చను ఎవరైనా చూడగలరు"
       group:
         name: "సమూహం పేరు"
         description: "వివరణ"
@@ -285,6 +290,9 @@ te:
         password: "సంకేతపదం"
         password_confirmation: "సంకేతపదాన్ని నిర్ధారించండి"
         language_preference: "భాష"
+      group_request:
+        admin_name: "మీ పేరు ఏమిటి?"
+        admin_email: "మీ ఈమెయిలు చిరునామా ఏమిటి?"
     placeholders:
       discussion:
         title: "శీర్షిక"
@@ -305,6 +313,8 @@ te:
         create: "ఖాతాను సృష్టించండి"
         update: "అమరికలను నవీకరించు"
   email:
+    to_join_discussion:
+      link: "చర్చలో పాల్గొనండి"
     unsubscribe: "మీ ఈమెయిలు అభిరుచులను మార్చండి లేదా చందావిరమించుకోండి:"
     create_discussion:
       subject: "కొత్త చర్చ - %{which}"
@@ -334,6 +344,7 @@ te:
   edit: "సవరించు"
   email_address: "ఈమెయిలు చిరునామా"
   enable: "చేతనించు"
+  participation: "పాల్గోలు"
   disable: "అచేతనించు"
   group: "సమూహం"
   groups: "సమూహాలు"
@@ -346,13 +357,13 @@ te:
   name: "పేరు"
   new_activity: "కొత్త కార్యకలాపం"
   next: "తరువాతది"
+  other: "ఇతరాలు"
   password: "సంకేతపదం"
   pricing: 'ధర'
   prev: "మునుపటిది"
   more: "మరింత..."
   translate_this_string: "%{language} లోకి అనువదించండి"
   options: "ఐచ్ఛికాలు"
-  other: "ఇతరాలు"
   ok_got_it: "సరే, అర్థమైంది!"
   remove: "తీసివేయి"
   save: "భద్రపరుచు"
@@ -368,7 +379,9 @@ te:
   thanks: "ధన్యవాదాలు!"
   translate: "లూమియోను అనువదించుటలో సహాయం చేయండి!"
   unlike: "అయిష్టం"
-  until_close: "ముగిసే వరకూ"
   update: "నవీకరించు"
+  facebook: "ఫేస్‌బుక్"
+  google: "గూగుల్"
+  persona: "పెర్సోనా"
   common:
     email: "వేగు"

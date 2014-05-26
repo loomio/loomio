@@ -297,6 +297,10 @@ Then(/^I should see the group title$/) do
   page.should have_content(@group.full_name)
 end
 
+Then(/^I should see the group title in the metadata$/) do
+  page.should have_css "meta[content=\"#{@group.full_name}\"]", { visible: false }
+end
+
 Then(/^I should see the subgroup title$/) do
   page.should have_content(@sub_group.name)
 end

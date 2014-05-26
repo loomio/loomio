@@ -12,6 +12,19 @@ When(/^I invite "(.*?)" to our group$/) do |arg1|
   click_on 'Invite people'
 end
 
+When(/^I invite bill and jane to our group$/) do
+  ActionMailer::Base.deliveries = []
+  visit group_path(@group)
+  click_on 'invite-new-members'
+  fill_in "invitees", with: 'bill@example.org, jane@example.org'
+  click_on 'Invite people'
+end
+
+Then(/^bill and jane should both have invitations to join$/) do
+  emails = ActionMailer::Base.deliveries.map(&:to).flatten.sort
+  emails.should == %w[bill@example.org jane@example.org]
+end
+
 Then(/^"(.*?)" should get an invitation to join the group$/) do |arg1|
   last_email = ActionMailer::Base.deliveries.last
   last_email.to.should == [arg1]

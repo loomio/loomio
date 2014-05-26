@@ -13,7 +13,7 @@ class Events::MotionOutcomeCreated < Event
   private
 
   def notify_users!
-    motion.group_users_without_outcome_author.each do |user|
+    motion.group_members_without_outcome_author.each do |user|
       if user.email_notifications_for_group?(motion.group)
         MotionMailer.motion_outcome_created(motion, user).deliver
       end

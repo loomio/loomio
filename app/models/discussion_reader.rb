@@ -36,6 +36,10 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
+  def unread_items_count
+    discussion.items_count - read_items_count
+  end
+
   def has_read?(event)
     if last_read_at.present?
       self.last_read_at >= event.updated_at
@@ -62,12 +66,18 @@ class DiscussionReader < ActiveRecord::Base
     discussion.viewed!
 
     if last_read_at.nil? or last_read_at < age_of_last_read_item
-      self.read_comments_count = discussion.comments.where('created_at <= ?', age_of_last_read_item).count
-      self.read_items_count = discussion.items.where('created_at <= ?', age_of_last_read_item).count
+      self.read_comments_count = count_read_comments(age_of_last_read_item)
+      self.read_items_count = count_read_items(age_of_last_read_item)
       self.last_read_at = age_of_last_read_item
     end
 
     save
+  end
+
+  def reset_counts!
+    self.read_comments_count = count_read_comments(last_read_at)
+    self.read_items_count = count_read_items(last_read_at)
+    self.save!
   end
 
   def first_unread_page
@@ -83,7 +93,12 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
-  def unread_items_count
-    discussion.items_count - read_items_count
+  private
+  def count_read_comments(since)
+    discussion.comments.where('created_at <= ?', since).count
+  end
+
+  def count_read_items(since)
+    discussion.items.where('created_at <= ?', since).count
   end
 end

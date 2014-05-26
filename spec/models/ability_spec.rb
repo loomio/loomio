@@ -30,6 +30,7 @@ describe "User abilities" do
     let(:user_comment) { discussion.add_comment(user, "hello") }
     let(:another_user_comment) { discussion.add_comment(other_user, "hello") }
     let(:user_motion) { create(:motion, author: user, discussion: discussion) }
+    let(:user_vote) { create(:vote, user: user, motion: user_motion)}
     let(:other_users_motion) { create(:motion, author: other_user, discussion: discussion) }
     let(:new_motion) { Motion.new(discussion_id: discussion.id) }
     let(:closed_motion) { create(:motion, discussion: discussion, closed_at: 1.day.ago) }
@@ -83,8 +84,13 @@ describe "User abilities" do
     it { should     be_able_to(:vote, user_motion) }
     it { should     be_able_to(:vote, other_users_motion) }
     it { should_not be_able_to(:vote, closed_motion) }
+
     it { should     be_able_to(:cancel, own_invitation) }
     it { should_not be_able_to(:cancel, other_members_invitation) }
+
+    it { should be_able_to(:show, user_comment) }
+    it { should be_able_to(:show, user_motion) }
+    it { should be_able_to(:show, user_vote) }
 
     it "cannot remove themselves if they are the only member of the group" do
       group.memberships.where("memberships.id != ?", @membership.id).destroy_all
@@ -252,6 +258,7 @@ describe "User abilities" do
       let(:discussion) { create_discussion group: group, private: true }
       let(:new_motion) { Motion.new(discussion_id: discussion.id) }
       let(:motion) { create(:motion, discussion: discussion) }
+      let(:vote) { create(:vote, user: discussion.author, motion: motion) }
       let(:new_discussion) { user.authored_discussions.new(
                              group: group, title: "new discussion") }
       let(:another_user_comment) { discussion.add_comment(discussion.author, "hello", uses_markdown: false) }
@@ -282,6 +289,11 @@ describe "User abilities" do
       it { should_not be_able_to(:destroy, another_user_comment) }
 
       it { should_not be_able_to(:vote, motion) }
+      
+      it { should_not be_able_to(:show, another_user_comment) }
+      it { should_not be_able_to(:show, motion) }
+      it { should_not be_able_to(:show, vote) }
+      
     end
 
     context "public group" do

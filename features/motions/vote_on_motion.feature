@@ -43,17 +43,25 @@ Feature: User votes on a motion
     And I should see my vote in the list of positions
     And the proposal author should recieve an email with subject "Proposal blocked"
 
-  Scenario: As a logged in member I should be able to edit my vote on a proposal
-    Given I am logged in
+  #Scenario: As a logged in member I should be able to edit my vote on a proposal
+    #Given I am logged in
+    #And there is a discussion in a group I belong to
+    #And the discussion has an open proposal
+    #And I have voted on the proposal
+    #When I visit the discussion page
+    #And I edit my vote
+    #Then I should see new vote in the activity feed
+    #And I should see my new vote in the list of positions
+    #And I should not see my original vote in the list of positions
+
+  Scenario: As a logged in member I should not be able to edit my vote on a closed proposal
+  	Given I am logged in
     And there is a discussion in a group I belong to
     And the discussion has an open proposal
     And I have voted on the proposal
+    And the proposal has closed
     When I visit the discussion page
-    And I edit my vote
-    Then I should see new vote in the activity feed
-    And I should see my new vote in the list of positions
-    And I should not see my original vote in the list of positions
-
+    Then I should not see an edit button next to my vote
 
   Scenario: As a non-member I should not be able to vote on a proposal
     Given there is a discussion in a public group

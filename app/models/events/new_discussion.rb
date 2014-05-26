@@ -13,7 +13,7 @@ class Events::NewDiscussion < Event
   private
 
   def notify_users!
-    discussion.group_users_without_discussion_author.each do |user|
+    discussion.group_members_without_discussion_author.each do |user|
       if user.email_notifications_for_group?(discussion.group)
         DiscussionMailer.delay.new_discussion_created(discussion, user)
       end

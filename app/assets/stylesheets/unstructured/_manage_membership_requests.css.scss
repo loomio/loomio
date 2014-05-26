@@ -1,0 +1,16 @@
+body.manage_membership_requests {
+  &.index {
+    #membership-request-list {
+      width: 100%;
+    }
+    .time-ago-subtle{
+      color: #999;
+      font-size: 0.9em;
+      white-space: nowrap;
+    }
+
+    .no-current-requests{
+      margin-bottom: 50px;
+    }
+  }
+}

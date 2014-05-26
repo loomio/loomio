@@ -1,4 +1,16 @@
 en:
+  explore:
+    go_to_group: "Go to %{group_name}"
+
+  try_it:
+    header: "Try Loomio"
+    start_a_group: "Start a group to make decisions in your own community."
+    join_the_community: "Join the Loomio Community group"
+    loomio_community_info: "This is where we discuss and make decisions about Loomio."
+    explore_groups: "Explore other groups on Loomio"
+    explore_groups_info: "Check out all the awesome groups on Loomio and join them!"
+
+
   activerecord:
     errors:
       messages:
@@ -106,6 +118,7 @@ en:
     user_already_admin: "%{which_user} is already a coordinator of this group."
     user_already_member: "%{which_user} is already a member of this group."
     user_not_admin: "Sorry, %{which_user} must be a coordinator of this group to access this."
+
   success:
     added_to_group: "You have been added to %{which_group}."
     close_date_changed: "Close date successfully changed."
@@ -124,6 +137,7 @@ en:
     position_updated: "Position updated."
     proposal_created: "Proposal successfully created."
     proposal_deleted: "Proposal deleted."
+
   datetime:
     distance_in_words:
       less_than_x_seconds:
@@ -160,6 +174,9 @@ en:
         one:   "1 year"
         other: "%{count} years"
 
+  organisation:
+    name: "Loomio"
+
   footer:
     about: 'About'
     blog: 'Blog'
@@ -193,7 +210,11 @@ en:
 
   edit_discussion_context: "Edit discussion context"
   request_new_group: "Start a group"
-  request_or_find_new_group_html: "<a href='%{new_group_link}'>Start a new group</a>, or <a href='%{existing_group_link}'>find an existing group </a>"
+  start_new_group: "Start a new group"
+  start_new_group_hint: "To start making decisions"
+  find_a_group: "Find a group"
+  find_a_group_hint: "To explore public groups"
+  no_group_header: "Welcome to Loomio Beta"
   empty_notifications: "You do not have any notifications yet."
   see_all_notifications: "See all notifications"
   profile: "Profile"
@@ -271,6 +292,9 @@ en:
   want_to_invite_html: "Want to <a href='%{link}'>invite people</a> to this group?"
 
   membership_requests: "Membership requests"
+  previous_requests: Previous requests
+  approved_by_person: Approved by %{person}
+  ignored_by_perosn: Ignored by %{person}
   confirm_approve_membership_request: "Are you sure you want to add %{which_user} to the group?"
   cancel_membership_request: "Cancel request"
   ignore_request: "Ignore request"
@@ -312,6 +336,8 @@ en:
   #
 
   group_request:
+    beta_request_header: "Start a group on Loomio Beta"
+    beta_request_description: "To start making decisions on Loomio Beta, the first step is to start a group"
     neighbourhood_support_group: "e.g. Neighbourhood Support Group"
     confirmation:
       title: You're almost done! Check your email.
@@ -340,6 +366,7 @@ en:
   current_decision: "Current decision"
   previous_decisions: "Previous decisions"
   see_previous_decisions: "See previous decisions"
+  see_more: "See more"
   create_new_proposal: "Create new proposal"
   empty_decision_list_html: "Ready to make a decision? <br> Anyone can start a proposal."
   empty_decision_index: "This group has not made any decisions yet."
@@ -352,6 +379,7 @@ en:
     started_html: "Started %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Last edited %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "See revision history"
+    see_history: "See history"
 
   description_history:
     header: "Revision history"
@@ -616,7 +644,7 @@ en:
   confirmation_not_received: "Didn't receive confirmation instructions?"
   unlock_not_received: "Didn't receive unlock instructions?"
   inactive_html: "Sorry, this account is currently inactive. If you have any questions please <a href='%{path_to_contact}'>get in touch</a>."
-  create_an_account: 'Create an account'
+  create_an_account_html: 'Create a Loomio Beta account'
   log_in: "Log in"
 
   join_group:
@@ -881,7 +909,6 @@ en:
     view_discussion: "Click here to view this discussion"
     view_group: "Click here to view the group on Loomio"
     view_proposal: "View this proposal on Loomio"
-    campaign_html: "Was this decision important to you? Consider <a href='%{link_path}'>becoming a Loomio contributor</a> and help us spread Loomio to the world. We're a little team trying to do big things and we need your contribution to keep us growing!"
     create_discussion:
       intro: "%{who} started a new discussion in %{which_group}:"
       subject: "New discussion - %{which}"
@@ -938,15 +965,6 @@ en:
       intro: "Please click this verification link to finalise your request:"
       ignore: "If you did not request to join Loomio please ignore this email."
 
-
-
-  #
-  # CAMPAIGNS
-  #
-
-  campaign:
-    crowdfunding_html: "Hey! Loomio is about to get a whole lot better. <a href='http://love.loomio.org'>Check out our crowdfunding campaign!</a>"
-
   #
   # COMMON WORDS
   #
@@ -995,7 +1013,10 @@ en:
   prev: "Prev"
   more: "More..."
   translate: "Help translate Loomio!"
+  translate_field: "See translation"
+  loading_translation: "Loading translation..."
   translate_this_string: "Translate to %{language}"
+  failed_translation: "Unable to complete translation"
   options: "Options"
   ok_got_it: "Okay, got it!"
   remove: "Remove"
@@ -1011,9 +1032,8 @@ en:
   subject: "Subject"
   terms_of_service_html: "By clicking %{button_text}, you agree to Loomio's <a href='%{link_path}' target='_blank'>Terms of service</a>"
   thanks: "Thanks!"
-  translate: "Help translate Loomio!"
   unlike: "Unlike"
-  until_close: "until close"
+  time_until_close: "%{quantity_of_time} until close"
   update: "Update"
   facebook: "Facebook"
   google: "Google"
