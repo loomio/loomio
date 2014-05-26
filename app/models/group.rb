@@ -332,6 +332,14 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def organisation_discussions_count
+    parent_or_self.subgroups.map(&:discussions_count).sum + parent_or_self.discussions_count
+  end
+
+  def organisation_motions_count
+    parent_or_self.subgroups.map(&:motions_count).sum + parent_or_self.motions_count
+  end
+
   def has_subdomain?
     if is_sub_group?
       parent.has_subdomain?
