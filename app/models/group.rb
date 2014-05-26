@@ -333,11 +333,11 @@ class Group < ActiveRecord::Base
   end
 
   def organisation_discussions_count
-    parent_or_self.subgroups.map(&:discussions_count).sum + parent_or_self.discussions_count
+    Group.where("parent_id = ? OR (parent_id IS NULL AND id = ?)", parent_or_self.id, parent_or_self.id).sum(:discussions_count)
   end
 
   def organisation_motions_count
-    parent_or_self.subgroups.map(&:motions_count).sum + parent_or_self.motions_count
+    Group.where("parent_id = ? OR (parent_id IS NULL AND id = ?)", parent_or_self.id, parent_or_self.id).sum(:motions_count)
   end
 
   def has_subdomain?
