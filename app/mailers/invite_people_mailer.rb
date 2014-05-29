@@ -34,12 +34,4 @@ class InvitePeopleMailer < BaseMailer
          reply_to: sender_email,
          subject: "#{email_subject_prefix(@group.full_name)} " + t("email.group_membership_approved.subject")
   end
-
-  def welcome(group)
-    @group = group
-    @recipient = group.admins.first
-    mail  to: @recipient.email,
-          from: 'Rich Bartlett <rich@loomio.org>',
-          subject: 'Welcome to Loomio!'
-  end
 end
