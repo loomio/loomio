@@ -725,6 +725,7 @@ en:
   #
 
   contact_page:
+    contact_us:     'Contact us'
     labels:
       name:         'Your name'
       email:        'Your email address'

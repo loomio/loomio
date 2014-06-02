@@ -3,7 +3,7 @@
     .inner-container
       .row-fluid
         .span5#contact_form
-          %h1 Contact us
+          %h1= t(:"contact_page.contact_us")
           = simple_form_for @contact_message, :defaults => {:required => true}, :validate => true do |f|
             = f.input :name, label: t(:"contact_page.labels.name")
             = f.input :email, label: t(:"contact_page.labels.email")
