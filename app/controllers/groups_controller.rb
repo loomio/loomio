@@ -33,12 +33,13 @@ class GroupsController < GroupBaseController
     @group.mark_as_setup!
     if @group.save
       Measurement.increment('groups.create.success')
+      create_intercom_event 'group_created'
       @group.add_admin! current_user
       flash[:success] = t("success.group_created")
       redirect_to @group
     elsif @group.is_subgroup?
-        @subgroup = @group
-        render 'groups/add_subgroup'
+      @subgroup = @group
+      render 'groups/add_subgroup'
     else
       Measurement.increment('groups.create.error')
       render 'new'

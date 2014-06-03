@@ -112,6 +112,10 @@ class User < ActiveRecord::Base
     User.find_by_email(email).present?
   end
 
+  def user_id
+    id
+  end
+
   def is_logged_in?
     true
   end
