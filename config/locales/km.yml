@@ -265,9 +265,6 @@ km:
   empty_decision_list_html: "ត្រៀមខ្លួនជាស្រេចដើម្បីធ្វើការសម្រេចចិត្តមួយ?​ <br> ​នរណាម្នាក់អាចចាប់ផ្តើមសំណើរមួយនេះបាន"
   empty_decision_index: "ក្រុមនេះមិនបានធ្វើការសម្រេចចិត្តណាមួយនៅឡើយទេ"
   empty_discussion_list: "មិនមានសកម្មភាពនៅឡើយទេនៅក្នុងការពិភាក្សានេះ"
-  empty_discussion_index: "​នៅក្នុងក្រុមរបស់អ្នកមានការពិភាក្សាណាមួយទេ"
-  empty_discussion_index_group: "ក្រុមនេះមិនមានការពិភាក្សាណាមួយនៅឡើយទេ"
-  private_group_discussion_display: "ក្រុមនេះគឺជាឯកជន។ការពិភាក្សានេះគឺអាចមើលឃើញតែមួយគត់ដើម្បីមានសមាជិកប្រសិនបើអ្នកចង់ចូលរួមអ្នកអ្នកអាចសុំចូលរួម។"
   discussion_context:
     started_html: "ចាប់ផ្តើម%{when} កន្លងទៅដោយ<a href='%{link}' class='%{link_class}'>%{who}</a> "
     last_edited_html: "ការកែសម្រួលចុងក្រោយ%{when}កន្លងទៅដោយ<a href='%{link}' class='%{link_class}'>%{who}</a>​"
@@ -428,9 +425,6 @@ km:
   motion_form:
     header: "សំណើថ្មី"
     name_helper: "ធ្វើឲ្យចំណងជើងមានភាពច្បាស់លាស់នឹងករណីសង្ខេបដូចអាចធ្វើទៅបាន"
-  group_form:
-    invitation_settings: "កំណត់ការអញ្ជើញ "
-    admins_only: "សម្របសម្រួល តែប៉ុណ្ណោះ "
   vote_form:
     header: "បញ្ចាក់ពីមុខតំណែងរបស់អ្នក"
     edit: "កែសម្រួលតំណែងរបស់អ្នក"
@@ -482,7 +476,6 @@ km:
         privacy_parent_group_members_description_short: សមាជិកប៉ុណ្ណោះនិងសមាជិកក្រុមមេអាចមើលឃើញក្រុមនេះនិងការពិភាក្សារបស់ខ្លួន។​
         group_members_invitable_by: "សម្របសម្រួលប៉ុណ្ណោះ"
         submit: 'ដាក់ស្នើ '
-        viewable_by_parent_members_header: អនុញ្ញាតឱ្យទាំងអស់%{group} សមាជិកដែលបានមើលឃើញក្រុមនេះនិងការពិភាក្សារបស់ខ្លួន​
       membership_request:
         introduction: "ណែនាំខ្លួនអ្នក"
       motion:

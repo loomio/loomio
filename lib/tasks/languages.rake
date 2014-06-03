@@ -3,7 +3,8 @@
 namespace :languages do
   LOGIN = { basic_auth: {username: ENV['TRANSIFEX_USERNAME'], password: ENV['TRANSIFEX_PASSWORD']} }
   DIALECT_OVERRIDES = { 'pt' => 'pt_BR',
-                        'ga' => 'ga_IE' }
+                        'ga' => 'ga_IE',
+                        'sr' => 'sr' }
   RESOURCES = { 'github-linked-version' => 'en.yml' ,
                  'frontpageenyml' => 'frontpage.en.yml' }
 
@@ -71,7 +72,7 @@ namespace :languages do
     languages_hash.keys.each do |language|
       dialect = decide_dialect(language, languages_hash)
 
-      printf '%20s', "\e[31m #{dialect}\e[0m : "
+      printf '%20s', "\e[32m #{dialect}\e[0m : "
 
       RESOURCES.keys.each do |resource|
         update(dialect, resource)

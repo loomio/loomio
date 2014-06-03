@@ -15,9 +15,6 @@ nl:
       terms: 'Voorwaarden'
       privacy: 'Privacy'
       services: 'Diensten'
-    hero:
-      subhead: 'Help ons bouwen.'
-      desc_html: 'Loomio is vrije en <a href="https://github.com/loomio/loomio">open software</a> voor iedereen, waar ook ter wereld, om deel te nemen aan beslissingen die hen aangaan.'
     product:
       step1:
         header: '1. Dingen bespreken'

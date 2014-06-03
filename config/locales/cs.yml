@@ -301,9 +301,6 @@ cs:
   empty_decision_list_html: "Jsi připraven(a) učinit rozhodnutí?<br>Každý může vytvořit návrh."
   empty_decision_index: "Tato skupina zatím neučinila žádná rozhodnutí."
   empty_discussion_list: "V této diskuzi zatím není žádná aktivita."
-  empty_discussion_index: "V žádných vašich skupinách nejsou diskuze."
-  empty_discussion_index_group: "Tato skupina zatím nemá žádné diskuze."
-  private_group_discussion_display: "Tato skupina je soukromá. Diskuze jsou viditelné jen členům. Pokud byste se rád(a) zúčastnil(a), můžete zažádat o členství."
   discussion_context:
     started_html: "Zahájil(a) <a href='%{link}' class='%{link_class}'>%{who}</a> před %{when}"
     last_edited_html: "Naposledy upravil(a) <a href='%{link}' class='%{link_class}'>%{who}</a> před %{when}"
@@ -475,7 +472,6 @@ cs:
       name: 'Vaše jméno'
       email: 'Vaše emailová adresa'
       message: 'Vaše zpráva'
-      destination: 'Kam pošleme vaši zprávu?'
       submit: 'Odeslat zprávu'
     messages:
       email_html: "Vyplňte tento formulář, nebo zašlete email na <a href='mailto:%{email}'>%{email}</a>"
@@ -488,9 +484,6 @@ cs:
   motion_form:
     header: "Nový návrh"
     name_helper: "Vyberte co nejjasnější a nejstručnější název."
-  group_form:
-    invitation_settings: "Nastavení pozvánek"
-    admins_only: "Jen koordinátoři"
   vote_form:
     header: "Konstatujte svůj postoj"
     edit: "Upravte svůj postoj"
@@ -537,13 +530,6 @@ cs:
       discussion:
         title: "Název"
         description: "Kontext"
-        privacy_public_header: "Veřejná"
-        privacy_public_description: "Každý vidí tuto diskuzi"
-        privacy_private_header: "Soukromá"
-        privacy_private_description: "Jen členové %{group} vidí tuto diskuzi"
-        privacy_hidden_description: "Všechny diskuze ve skryté skupině jsou soukromé."
-        of: "z"
-        of_no_group: "této skupiny"
       group:
         name: "Název skupiny"
         description: "Popis"
@@ -561,7 +547,6 @@ cs:
         privacy_parent_group_members_description_short: Jen členové a členové rodičovské skupiny vidí tuto skupinu a její diskuze.
         group_members_invitable_by: "Jen koordinátoři"
         submit: Odeslat
-        is_visible_to_parent_members_header: Povolit všem členům %{group} vidět tuto podskupinu a diskuze v ní
       membership_request:
         introduction: "Představte se"
       motion:
@@ -723,7 +708,6 @@ cs:
   send_email: "Odeslat e-mail"
   show_more: "Zobrazit více"
   start_a_group: "Vytvořit skupinu"
-  start_group: "Vytvořte skupinu!"
   starting: "Zahajuje se"
   subject: "Téma"
   thanks: "Děkujeme!"

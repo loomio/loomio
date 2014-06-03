@@ -279,8 +279,6 @@ tr:
   empty_decision_list_html: "Bir karar vermek için hazır mısın? <br> Herkes bir öneri başlatabilir."
   empty_decision_index: "Bu grup henüz bir karar vermiş değil."
   empty_discussion_list: "Henüz bu müzakerede hiçbir faaliyet yok."
-  empty_discussion_index: "Gruplarının arasında hiçbir müzakere yok."
-  empty_discussion_index_group: "Bu grup henüz hiçbir müzakereye sahip değil."
   discussion_context:
     started_html: "%{when} önce <a href='%{link}' class='%{link_class}'>%{who}</a> tarafından başlatıldı"
     last_edited_html: "En son %{when} önce <a href='%{link}' class='%{link_class}'>%{who}</a> tarafından güncellendi"
@@ -471,9 +469,6 @@ tr:
   motion_form:
     header: "Yeni öneri"
     name_helper: "Başlığı mümkün olduğunca kısa ve öz tut."
-  group_form:
-    invitation_settings: "Davetiye Ayarları"
-    admins_only: "Sadece koordinatörler"
   vote_form:
     header: "Konumunu belirt"
     edit: "Konumunu düzenle"
@@ -514,13 +509,6 @@ tr:
       discussion:
         title: "Başlık"
         description: "Bağlam"
-        privacy_public_header: "Genel"
-        privacy_public_description: "Bu müzakereyi herkes görebilir"
-        privacy_private_header: "Özel"
-        privacy_private_description: "Sadece %{group} üyeleri bu müzakereyi görebilir"
-        privacy_hidden_description: "Gizli bir gruptaki tüm müzakereler özeldir."
-        of: "-ın"
-        of_no_group: "bu grubun"
       group:
         name: "Grup adı"
         description: "Tanım"
@@ -683,7 +671,6 @@ tr:
   send_email: "E-posta gönder"
   show_more: "Daha Fazla Göster"
   start_a_group: "Bir grup başlat"
-  start_group: "Grup başlat!"
   starting: "Başlangıç"
   subject: "Konu"
   terms_of_service_html: "Bunu tıklayarak %{button_text}, Loomio'nun <a href='%{link_path}' target='_blank'>Hizmet Koşullarını</a>kabul etmiş sayılırsınız"

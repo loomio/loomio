@@ -317,9 +317,6 @@ de:
   empty_decision_list_html: "Bereit, eine Entscheidung zu treffen? <br> Jeder kann einen Vorschlag machen."
   empty_decision_index: "Diese Gruppe hat noch keine Entscheidungen getroffen."
   empty_discussion_list: "Es gibt noch keine Aktivitäten in dieser Diskussion."
-  empty_discussion_index: "Es gibt keine Diskussionen in deinen Gruppen."
-  empty_discussion_index_group: "Diese Gruppe hat noch keine Diskussionen."
-  private_group_discussion_display: "Diese Gruppe ist privat. Diskussionen sind nur für Mitglieder sichtbar. Wenn du mitmachen möchtest, kannst du darum bitten, in die Gruppe aufgenommen zu werden."
   discussion_context:
     started_html: "Gestartet vor %{when} von <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Zuletzt bearbeitet vor %{when} von <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -585,14 +582,7 @@ de:
       name: 'Dein Name'
       email: 'Deine E-Mail-Adresse'
       message: 'Deine Nachricht'
-      destination: 'An wen soll deine Nachricht geschickt werden?'
       submit: 'Nachricht abschicken'
-    destinations:
-      contact: 'Allgemeine Fragen'
-      tech: 'Technischer Support / Bug-Reports / Verbesserungsvorschläge'
-      press: 'Medienanfragen'
-      sales: 'Fragen zu Vertrieb und Kundenbetreuung'
-      translations: 'Fragen zur Übersetzung'
     messages:
       email_html: "Fülle dieses Formular aus oder schicke eine E-Mail an <a href='mailto:%{email}'>%{email}</a>"
       social_html: "Du findest uns auch auf<br/><a href='%{facebook}' target='_blank'>Facebook</a>, <a href='%{google}' target='_blank'>Google+</a>, und <a href='%{twitter}' target='_blank'>Twitter</a>!"
@@ -605,9 +595,6 @@ de:
   motion_form:
     header: "Neuer Vorschlag"
     name_helper: "Wähle einen möglichst knappen und klar verständlichen Titel."
-  group_form:
-    invitation_settings: "Einladungseinstellungen"
-    admins_only: "Nur Koordinatoren"
   vote_form:
     header: "Gib deine Meinung ab"
     edit: "Bearbeite deine Meinung"
@@ -655,13 +642,6 @@ de:
       discussion:
         title: "Titel"
         description: "Kontext"
-        privacy_public_header: "Öffentlich"
-        privacy_public_description: "Diese Diskussion ist für alle sichtbar"
-        privacy_private_header: "Privat"
-        privacy_private_description: "Diese Diskussion ist nur für Mitglieder der Gruppe %{group} sichtbar"
-        privacy_hidden_description: "Alle Diskussionen in einer versteckten Gruppe sind als privat markiert."
-        of: "''"
-        of_no_group: "dieser Gruppe"
       group:
         name: "Gruppenname"
         description: "Beschreibung"
@@ -680,7 +660,6 @@ de:
         privacy_parent_group_members_description_short: Die Gruppe und ihre Diskussionen sind nur für Mitglieder dieser Gruppe und der Hauptgruppe sichtbar.
         group_members_invitable_by: "Nur Koordinatoren"
         submit: Abschicken
-        viewable_by_parent_members_header: Diese Untergruppe und ihre Diskussionen für alle Mitglieder der Gruppe %{group} sichtbar machen
       membership_request:
         introduction: "Stelle dich vor"
       motion:
@@ -854,7 +833,6 @@ de:
   send_email: "E-Mail senden"
   show_more: "Mehr anzeigen"
   start_a_group: "Eröffne eine Gruppe"
-  start_group: "Gruppe gründen!"
   starting: "Wird gestartet"
   subject: "Betreff"
   terms_of_service_html: "When du %{button_text} klickst, stimmst du Loomio´s <a href='%{link_path}' target='_blank'>Geschäftsbedingungen</a> zu."

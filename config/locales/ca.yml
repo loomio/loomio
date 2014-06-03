@@ -286,9 +286,6 @@ ca:
   empty_decision_list_html: "Preparat per prendre una decisió? <br> Qualsevol pot crear una propsta."
   empty_decision_index: "Aquest grup encara no ha decidit res."
   empty_discussion_list: "Encara no hi ha activitat en aquesta discussió."
-  empty_discussion_index: "No hi ha discussions en cap dels teus grups."
-  empty_discussion_index_group: "Aquest grup encara no té cap discussió"
-  private_group_discussion_display: "Aquest grup és privat. Només els membres poden veure les discussions. Si vols participar, pots demanar d'unir't-hi."
   discussion_context:
     started_html: "Começat fa %{when} per <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Darrera modificació fa %{when} per <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -531,9 +528,6 @@ ca:
   motion_form:
     header: "Nova proposta"
     name_helper: "Escriu un títol tant clar i concís com puguis."
-  group_form:
-    invitation_settings: "Configuració d'invitacions"
-    admins_only: "Només coordinadors"
   vote_form:
     header: "Declara la teva posició"
     edit: "Canvïa la teva posició"
@@ -575,13 +569,6 @@ ca:
       discussion:
         title: "Títol"
         description: "Context"
-        privacy_public_header: "Públic"
-        privacy_public_description: "Tothom pot veure aquesta discussió"
-        privacy_private_header: "Privat"
-        privacy_private_description: "Només les persones membres de %{group} poden veure aquesta discussió"
-        privacy_hidden_description: "Totes les discussions a un grup amagat són privades."
-        of: "de"
-        of_no_group: "d'aquest grup"
       group:
         name: "Nom del grup"
         description: "Descripció"
@@ -600,7 +587,6 @@ ca:
         privacy_parent_group_members_description_short: Només membres i membres del grup mare poden veure aquest grup i les seves discussions.
         group_members_invitable_by: "Només coordinadores"
         submit: Enviar
-        is_visible_to_parent_members_header: Permet a tot els membres de %{group} veure aquest subgrup i les seves discussions.
       membership_request:
         introduction: "Presenta't"
       motion:
@@ -760,7 +746,6 @@ ca:
   send_email: "Envia un correu electrònic"
   show_more: "Mostra'n més"
   start_a_group: "Comença un grup"
-  start_group: "Comença un grup!"
   starting: "Iniciant"
   subject: "Tema"
   terms_of_service_html: "En fer clic a %{button_text},  acceptes els  <a href='%{link_path}' target='_blank'>Termes de servei</a> de Loomio"

@@ -157,6 +157,8 @@ el:
       almost_x_years:
         one: "1 χρόνος"
         other: "%{count} χρόνια"
+  organisation:
+    name: "Loomio"
   footer:
     about: 'Σχετικά'
     blog: 'Blog'
@@ -317,9 +319,6 @@ el:
   empty_decision_list_html: "Έτοιμοι να πάρετε απόφαση? <br> Οποιοσδήποτε μπορεί να ξεκινήσει μια πρόταση."
   empty_decision_index: "Αυτή η ομάδα δεν έχει πάρει καμία απόφαση ακόμα."
   empty_discussion_list: "Δεν υπάρχει δραστηριότητα στην συζήτηση ακόμα."
-  empty_discussion_index: "Δεν υπάρχουν συζητήσεις σε καμία από τις ομάδες σας."
-  empty_discussion_index_group: "Αυτή η ομάδα δεν έχει καμία συζήτηση ακόμα."
-  private_group_discussion_display: "Αυτή η ομάδα είναι ιδιωτική. Οι συζητήσεις είναι εμφανής μόνο στα μέλη. Εάν θέλετε να συμμετάσχετε, μπορείτε να κάνετε αίτηση συμμετοχής."
   discussion_context:
     started_html: "Ξεκίνησε πριν από %{when} από τον/την <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Επεξεργάστηκε τελευταία πριν από %{when} από τον/την <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -586,14 +585,7 @@ el:
       name: 'Το όνομα σας'
       email: 'Η Ηλεκτρονική Διεύθυνση σας'
       message: 'Το μήνυμα σας'
-      destination: 'Που θέλετε να στείλουμε το μήνυμα σας?'
       submit: 'Αποστολή μηνύματος'
-    destinations:
-      contact: 'Γενικές Πληροφορίες'
-      tech: 'Τεχνική υποστήριξη / Αναφορές σφαλμάτων / Αιτήματα χαρακτηριστικών'
-      press: 'Πληροφορίες μέσων ενημέρωσης'
-      sales: 'Πληροφορίες πωλήσεων και πελατών'
-      translations: 'Πληροφορίες μεταφράσεων'
     messages:
       email_html: "Συμπληρώστε αυτή την φόρμα, ή στείλτε ηλεκτρονικό μήνυμα στο <a href='mailto:%{email}'>%{email}</a>"
       social_html: "Μπορείτε επίσης να μας βρείτε στο <br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
@@ -606,9 +598,6 @@ el:
   motion_form:
     header: "Νέα Πρόταση"
     name_helper: "Κάντε τον τίτλος όσο πιο σαφή και συνοπτικό γίνετε."
-  group_form:
-    invitation_settings: "Ρυθμίσεις προσκλήσεων"
-    admins_only: "Μόνο Συντονιστές"
   vote_form:
     header: "Δηλώστε την θέση σας"
     edit: "Επεξεργαστείτε την θέση σας"
@@ -656,13 +645,6 @@ el:
       discussion:
         title: "Τίτλος"
         description: "Περιεχόμενο"
-        privacy_public_header: "Δημόσιο"
-        privacy_public_description: "Οποιοσδήποτε μπορεί να δει αυτή την συζήτηση"
-        privacy_private_header: "Ιδιωτικό"
-        privacy_private_description: "Μόνο τα μέλη της ομάδας %{group} μπορούν να δουν αυτή την συζήτηση"
-        privacy_hidden_description: "Όλες οι συζητήσεις είναι ιδιωτικές σε κρυφή ομάδα."
-        of: "από"
-        of_no_group: "από αυτή την ομάδα"
       group:
         name: "Όνομα ομάδας"
         description: "Περιγραφή"
@@ -681,7 +663,6 @@ el:
         privacy_parent_group_members_description_short: Μόνο τα μέλη και τα μέλη της κύριας ομάδας μπορούν να δουν αυτή την ομάδα και τις συζητήσεις τις.
         group_members_invitable_by: "Μόνο συντονιστές"
         submit: Υποβολή
-        is_visible_to_parent_members_header: Επιτρέψτε σε όλα τα μέλη της ομάδας %{group} να βλέπουν αυτή την υπό-ομάδα και τις συζητήσεις τους
       membership_request:
         introduction: "Συστηθείτε"
       motion:
@@ -857,7 +838,6 @@ el:
   send_email: "Στείλε ηλεκτρονικό ταχυδρομείο"
   show_more: "Δείξε περισσότερα"
   start_a_group: "Ξεκινήστε μια ομάδα"
-  start_group: "Ξεκινήστε μια ομάδα!"
   starting: "Ξεκινάει"
   subject: "Θέμα"
   terms_of_service_html: "Πατώντας %{button_text}, συμφωνείτε στου Loomio τους <a href='%{link_path}' target='_blank'>Όρους της Υπηρεσίας</a>"

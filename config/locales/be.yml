@@ -208,8 +208,6 @@ be:
   create_new_proposal: "Стварыць новую прапанову"
   empty_decision_index: "Гэта група пакуль не зрабіла ніякіх вырашэнняў."
   empty_discussion_list: "У гэтым абмеркаванні пакуль няма ніякай актыўнасці."
-  empty_discussion_index: "Ні ў адной з Вашых груп няма абмеркаванняў."
-  empty_discussion_index_group: "У гэтай гупы пакуль няма абмеркаванняў."
   discussion_context:
     see_revision_history: "Паглядзець гісторыю змен"
     see_history: "Паглядзець гісторыю"
@@ -311,7 +309,6 @@ be:
       name: 'Вашае імя'
       email: 'Ваш email адрас '
       message: 'Вашае паведамленне'
-      destination: 'Куды нам адправіць вашае паведамленне?'
       submit: 'Адправіць паведамленне'
   discussion_form:
     new:
@@ -322,9 +319,6 @@ be:
   motion_form:
     header: "Новая прапанова"
     name_helper: "Зрабіце назву як мага больш выразнай і дакладнай."
-  group_form:
-    invitation_settings: "Налады запрашэнняў"
-    admins_only: "Толькі для каардынатараў"
   vote_form:
     header: "Заявіце сваё меркаванне"
     edit: "Рэдагаваць сваё меркаванне"
@@ -353,17 +347,12 @@ be:
     'yes': 'Так'
     'no': 'Не'
     labels:
-      discussion:
-        privacy_public_description: "Гэта абмеркаванне бачна ўсім"
-        privacy_private_header: "Прыватна"
-        privacy_private_description: "Толькі ўдзельнікі %{group} здольны праглядаць гэта абмеркаванне"
       group:
         name: "Назва групы"
         description: "Апісанне"
         members_invitable_by_members: "Усе ўдзельнікі групы"
         privacy: Канфідэнцыйнасць
         privacy_private_header: Пераважна прыватна
-        viewable_by_parent_members_header: Дазволіць усім удзельнікам  %{group} каб праглядаць падгрупы і абмеркаванні ў іх
       motion:
         description: "Дадзеныя"
         close_at_date: "Закрываецца"
@@ -448,7 +437,6 @@ be:
   send_invite: "Адаслаць запрашэнне"
   send_email: "Адаслаць email"
   show_more: "Паказаць больш"
-  start_group: "Стварыць групу!"
   thanks: "Дзякуй!"
   unlike: "Не падабаецца"
   time_until_close: "%{quantity_of_time} да закрыцця"

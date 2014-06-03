@@ -319,9 +319,6 @@ uk:
   empty_decision_list_html: "Готові приймати рішення? <br> Будь-хто може розпочати з пропозиції"
   empty_decision_index: "Ця група ще не прийняла жодного рішення"
   empty_discussion_list: "Жодних подій в цьому обговоренні"
-  empty_discussion_index: "В жодної з ваших груп немає обговорень"
-  empty_discussion_index_group: "В цій групі наразі немає жодної дискусії"
-  private_group_discussion_display: "Ця група приватна. Дискусії можуть бачити тільки члени групи. Якщо ви хочете приймати участь у дискусіях, ви можете надіслати запит на приєднання."
   discussion_context:
     started_html: "<a href='%{link}' class='%{link_class}'>%{who}</a> почав цю дискусію %{when} тому"
     last_edited_html: "<a href='%{link}' class='%{link_class}'>%{who}</a> вніс останні зміни %{when} тому"
@@ -588,14 +585,7 @@ uk:
       name: 'Ваше ім''я'
       email: 'Ваша електронна адреса'
       message: 'Ваше повідомлення'
-      destination: 'Куди нам надіслати ваше повідомлення?'
       submit: 'Відправити повідомлення'
-    destinations:
-      contact: 'Загальні запити'
-      tech: 'Технічна підтримка / повідомлення про помилки / особливі запити '
-      press: 'Медіа запити'
-      sales: 'Запити від продавців та покупців'
-      translations: 'Запити на переклад'
     messages:
       email_html: "Заповніть цю форму, або надішліть email до <a href='mailto:%{email}'>%{email}</a>"
       social_html: "Ви також можете приєднатися до нас  на<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, та <a href='%{twitter}' target='_blank'>twitter</a>!"
@@ -608,9 +598,6 @@ uk:
   motion_form:
     header: "Нова пропозиція"
     name_helper: "Зробіть заголовок якомога чітким і стислим"
-  group_form:
-    invitation_settings: "Налаштування щодо запрошень"
-    admins_only: "Тільки для координаторів"
   vote_form:
     header: "Висловіть ваше ставлення"
     edit: "Змінити ваше ставлення"
@@ -658,13 +645,6 @@ uk:
       discussion:
         title: "Назва"
         description: "Контекст"
-        privacy_public_header: "Відкрита"
-        privacy_public_description: "Хто завгодно може бачити цю дискусію"
-        privacy_private_header: "Закрита"
-        privacy_private_description: "Тільки члени %{group} можуть бачити цю дискусію"
-        privacy_hidden_description: "Усі дискусії у прихованій групі є приватними."
-        of: "''"
-        of_no_group: "цієї групи"
       group:
         name: "Назва групи"
         description: "Опси групи"
@@ -683,7 +663,6 @@ uk:
         privacy_parent_group_members_description_short: Тільки члени цієї та батьківської групи можуть бачити цю групу та її дискусії.
         group_members_invitable_by: "Тільки координатори"
         submit: Підтвердити
-        viewable_by_parent_members_header: Дозволити усім членам %{group} бачити цю підгрупу та її дискусії
       membership_request:
         introduction: "Розкажіть про себе"
       motion:
@@ -854,7 +833,6 @@ uk:
   send_email: "Надіслати електронну пошту"
   show_more: "Показати більше"
   start_a_group: "Створити групу"
-  start_group: "Створіть групу!"
   starting: "Починаємо"
   subject: "Тема"
   terms_of_service_html: "Натиснувши на %{button_text}, ви погоджуєтесь із <a href='%{link_path}' target='_blank'>Умовами використання</a> Loomio"

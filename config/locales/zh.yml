@@ -143,6 +143,8 @@ zh:
         other: "%{count} 年"
       almost_x_years:
         other: "%{count} 年"
+  organisation:
+    name: "Loomio"
   footer:
     about: '關於'
     blog: '部落格'
@@ -303,16 +305,13 @@ zh:
   empty_decision_list_html: "準備好作決策了嗎？<br> 任何人都可以開始一個新的提案。"
   empty_decision_index: "此群組尚未做出任何決策"
   empty_discussion_list: "這條討論串中尚未有動態。"
-  empty_discussion_index: "您所屬的群組中沒有任何的討論。"
-  empty_discussion_index_group: "此群組尚未有任何的討論。"
-  private_group_discussion_display: "本群組是私密的，討論僅供成員使用。如果您想參與，可以要求加入。"
   discussion_context:
     started_html: "已由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在 %{when} 前開始"
     last_edited_html: "最後由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在 %{when} 前編輯"
     see_revision_history: "查看修訂歷史紀錄"
     see_history: "查看歷史紀錄"
   description_history:
-    header: "編輯歷史"
+    header: "修訂歷史"
     subheader: "版本"
     edited_by: "最後是由 %{who} 在 %{when} 之前編輯"
     current: "(目前)"
@@ -575,14 +574,7 @@ zh:
       name: '您的大名'
       email: '您的 Email 地址'
       message: '您的訊息'
-      destination: '我們該傳送您的訊息到哪？'
       submit: '寄送訊息'
-    destinations:
-      contact: '一般諮詢'
-      tech: '技術支援 / 臭蟲回報 / 功能請求'
-      press: '媒體諮詢'
-      sales: '賣家與買家諮詢'
-      translations: '翻譯諮詢'
     messages:
       email_html: "填寫這張表格，或發電子郵件到 <a href='mailto:%{email}'>%{email}</a>"
       social_html: "您也可以在<br/><a href='%{facebook}' target='_blank'>facebook</a> ， <a href='%{google}' target='_blank'>google+</a> ，和 <a href='%{twitter}' target='_blank'>twitter</a> 加入我們！"
@@ -595,9 +587,6 @@ zh:
   motion_form:
     header: "新的提案"
     name_helper: "請讓標題盡可能明確扼要。"
-  group_form:
-    invitation_settings: "邀請設定"
-    admins_only: "協作者限定"
   vote_form:
     header: "陳述您的立場"
     edit: "編輯您的立場"
@@ -645,13 +634,6 @@ zh:
       discussion:
         title: "標題"
         description: "脈絡"
-        privacy_public_header: "公開"
-        privacy_public_description: "任何人都能看到這則討論串"
-        privacy_private_header: "私人"
-        privacy_private_description: "只有 %{group} 的成員可以看到這則討論串"
-        privacy_hidden_description: "在隱藏群組中的討論都是私人的。"
-        of: "於"
-        of_no_group: "(在此群組)"
       group:
         name: "群組名稱"
         description: "描述"
@@ -670,7 +652,6 @@ zh:
         privacy_parent_group_members_description_short: 僅有成員及父群組能看到這個群組與其討論。
         group_members_invitable_by: "協作者限定"
         submit: 呈遞
-        viewable_by_parent_members_header: 允許所有 %{group} 的成員都能看到這個子群組及其討論
       membership_request:
         introduction: "介紹您自己"
       motion:
@@ -846,7 +827,6 @@ zh:
   send_email: "寄送 Email"
   show_more: "顯示更多"
   start_a_group: "開始一個群組"
-  start_group: "建立新的群組！"
   starting: "正在開始"
   subject: "主旨"
   terms_of_service_html: "按下%{button_text}按鈕表示您同意遵守 Loomio 的<a href='%{link_path}' target='_blank'>服務條款</a>"

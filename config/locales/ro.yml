@@ -289,8 +289,6 @@ ro:
   empty_decision_list_html: "Pregatit sa ceri vot pe o decizie? <br> Oricine poate creea o propunere."
   empty_decision_index: "Acest grup inca nu a adoptat nici o decizie."
   empty_discussion_list: "Inca nu exista activitate in aceasta discutie."
-  empty_discussion_index: "Inca nu exista discutii in grupurile tale."
-  empty_discussion_index_group: "Acest grup nu are inca nici o discutie."
   discussion_context:
     started_html: "Inceputa acum %{when} de catre <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Editat acum  %{when} de catre <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -494,7 +492,6 @@ ro:
     labels:
       name: 'Nume'
       message: 'Mesaj'
-      destination: 'Unde să trimitem mesajul?'
       submit: 'Trimitere'
   discussion_form:
     new:
@@ -505,9 +502,6 @@ ro:
   motion_form:
     header: "Propunere noua"
     name_helper: "Scrie un title cat se poate de clar si scurt astfel incat oamenii sa inteleaga exact la ce te referi cand sunt de acord sau nu cu propunerea ta."
-  group_form:
-    invitation_settings: "Setari pentru Invitatii"
-    admins_only: "Doar coordonatorii"
   vote_form:
     header: "Exprima-ti pozitia"
     edit: "Editeaza pozitia ta"
@@ -551,10 +545,6 @@ ro:
       discussion:
         title: "Titlu"
         description: "Context"
-        privacy_public_header: "Publică"
-        privacy_public_description: "Oricine poate să vadă discuţia asta."
-        privacy_private_header: "Privată"
-        privacy_private_description: "Numai membrii grupului %{group} pot să vadă discuţia asta."
       group:
         name: "Numele grupului"
         description: "Descriere"

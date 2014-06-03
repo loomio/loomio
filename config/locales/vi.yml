@@ -228,8 +228,6 @@ vi:
   empty_decision_list_html: "Đã sẵn sàng đưa ra quyết định? <br> Bất kỳ ai cũng có thể bắt đầu đưa ra lời đề nghị."
   empty_decision_index: "Nhóm này vẫn chưa đưa ra quyết định nào."
   empty_discussion_list: "Phần thảo luận này hiện vẫn chưa có thông tin nào."
-  empty_discussion_index: "Hiện không có phần thảo luận nào trong bất kỳ nhóm nào của bạn."
-  empty_discussion_index_group: "Nhóm này hiện không có phần thảo luận nào."
   discussion_context:
     started_html: "Đã bắt đầu cách đây %{when} bởi <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Đã được chỉnh sửa cách đây %{when} bởi <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -416,9 +414,6 @@ vi:
   motion_form:
     header: "Tạo lời đề nghị mới"
     name_helper: "Hãy soạn thảo phần tiêu đề theo hướng rõ ràng và ngắn gọn."
-  group_form:
-    invitation_settings: "Cài đặt phần gửi lời mời"
-    admins_only: "Chỉ dành cho các điều hành viên"
   vote_form:
     header: "Đưa ra kiến nghị của bạn"
     edit: "Chỉnh sửa kiến nghị của bạn"

@@ -252,8 +252,6 @@ it:
   empty_decision_list_html: "Sei pronto a prendere una decisione? <br> Chiunque può lanciare una proposta."
   empty_decision_index: "Questo gruppo non ha ancora preso alcuna decisione."
   empty_discussion_list: "Non ci sono ancora attività in questa discussione."
-  empty_discussion_index: "Non ci sono discussioni in nessuno dei tuoi gruppi."
-  empty_discussion_index_group: "Questo gruppo non ha ancora alcuna discussione."
   discussion_context:
     started_html: "Iniziato %{when} fa da <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Ultima modifica %{when} fa da <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -477,9 +475,6 @@ it:
   motion_form:
     header: "Nuova proposta"
     name_helper: "Usa un titolo il più possibile chiaro e sintetico."
-  group_form:
-    invitation_settings: "Impostazioni Inviti"
-    admins_only: "Solo per coordinatori"
   vote_form:
     header: "Dichiara la tua posizione"
     edit: "Modifica la tua posizione"
@@ -515,10 +510,6 @@ it:
       discussion:
         title: "Titolo"
         description: "Contesto"
-        privacy_public_header: "Pubblico"
-        privacy_public_description: "Tutti possono vedere questa discussione"
-        privacy_private_header: "Privato"
-        of: "di"
       group:
         name: "Nome del gruppo"
         description: "Descrizione"

@@ -285,9 +285,6 @@ ja:
   empty_decision_list_html: "決定を行う準備はできましたか？\n誰でも提案を開始することができます。"
   empty_decision_index: "このグループはまだ提案を終了していません"
   empty_discussion_list: "コメントはまだありません"
-  empty_discussion_index: "まだディスカッションはありません"
-  empty_discussion_index_group: "このグループにはまだディスカッションがありません"
-  private_group_discussion_display: "このグループは非公開です。ディスカッションはメンバーのみ見ることができます。\n参加したい場合、頼んでください。"
   discussion_context:
     started_html: " <a href='%{link}' class='%{link_class}'>%{who}</a> によって %{when} 前に開始されました"
     last_edited_html: " <a href='%{link}' class='%{link_class}'>%{who}</a> によって %{when} 前に最後に編集されました"
@@ -562,14 +559,7 @@ ja:
       name: 'あなたの名前'
       email: 'あなたのメールアドレス'
       message: 'あなたのメッセージ'
-      destination: 'どこであなたのメッセージを送りましょうか？'
       submit: 'メッセージを送る'
-    destinations:
-      contact: '一般的なお問い合わせ'
-      tech: '技術サポート/バグ報告/機能リクエスト'
-      press: 'メディアのお問い合わせ'
-      sales: '販売および顧客検索'
-      translations: '翻訳のお問い合わせ'
     messages:
       email_html: "このフォームを埋めてください、もしくは <a href='mailto:%{email}'>%{email}</a> にメールを送ってください"
       social_html: "<br/><a href='%{facebook}' target='_blank'>facebook</a>や<a href='%{google}' target='_blank'>google+</a>、<a href='%{twitter}' target='_blank'>twitter</a>からも私たちに参加することもできます。"
@@ -582,9 +572,6 @@ ja:
   motion_form:
     header: "新しい提案"
     name_helper: "タイトルは出来るだけ簡潔にしてください"
-  group_form:
-    invitation_settings: "招待の設定"
-    admins_only: "コーディネーターのみ"
   vote_form:
     header: "意見を選択しください"
     edit: "意見を変更"
@@ -631,13 +618,6 @@ ja:
     labels:
       discussion:
         title: "タイトル"
-        privacy_public_header: "公開"
-        privacy_public_description: "誰でもこのディスカッションを見ることができます"
-        privacy_private_header: "非公開"
-        privacy_private_description: "%{group} のメンバーのみ、このディスカッションを見ることができます"
-        privacy_hidden_description: "非表示のグループのディスカッションはすべて非公開です"
-        of: "の"
-        of_no_group: "このグループの"
       group:
         name: "グループ名"
         description: "情報"
@@ -656,7 +636,6 @@ ja:
         privacy_parent_group_members_description_short: メンバーおよび親グループのメンバーのみ、このグループとそのディスカッションを見ることができます
         group_members_invitable_by: "コーディネーターのみ"
         submit: 提出する
-        viewable_by_parent_members_header: ' %{group} のすべてのメンバーに、子グループとそのディスカッションの閲覧を許可する'
       membership_request:
         introduction: "自己紹介をしてください"
       motion:
@@ -826,7 +805,6 @@ ja:
   send_email: "Eメールを送信する"
   show_more: "全部を見る"
   start_a_group: "グループを開始する"
-  start_group: "グループを開始する！"
   starting: "開始中"
   subject: "主題"
   terms_of_service_html: " %{button_text} をクリックすることによって、Loomioの<a href='%{link_path}' target='_blank'>サービスの使用条件</a>に同意します。"

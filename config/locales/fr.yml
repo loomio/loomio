@@ -304,9 +304,6 @@ fr:
   empty_decision_list_html: "Prêt à prendre position ? <br> Tout le monde peut rédiger une proposition."
   empty_decision_index: "Ce groupe n'a pas encore pris de décision."
   empty_discussion_list: "Il n'y a pas d'activité dans cette discussion pour l'instant."
-  empty_discussion_index: "il n'y a de discussions dans aucun de vos groupes."
-  empty_discussion_index_group: "Ce groupe n'a pas encore de discussions."
-  private_group_discussion_display: "Ce groupe est privé. Les discussions sont seulement visibles par ses membres. Si vous voulez participer, vous pouvez demander à rejoindre le groupe."
   discussion_context:
     started_html: "Débuté il y a %{when} par <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Dernière modification il y a %{when} par <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -560,14 +557,7 @@ fr:
       name: 'Votre nom'
       email: 'Votre adresse e-mail'
       message: 'Votre message'
-      destination: 'Où devrions-nous envoyer votre message ?'
       submit: 'Envoyer le message'
-    destinations:
-      contact: 'Demande générale'
-      tech: 'Support technique / rapports de bugs / demandes de fonctionnalités'
-      press: 'Service presse'
-      sales: 'Relation client'
-      translations: 'Service traduction'
     messages:
       email_html: "Remplissez ce formulaire, ou envoyez un email à  <a href='mailto:%{email}'>%{email}</a>"
       social_html: "Vous pouvez aussi nous rejoindre sur <a href='%{facebook}' target='_blank'>facebook</a>,  <a href='%{google}' target='_blank'>google+</a> et <a href='%{twitter}' target='_blank'>twitter</a> !"
@@ -580,9 +570,6 @@ fr:
   motion_form:
     header: "Nouvelle proposition"
     name_helper: "Rédigez un titre aussi clair et bref que possible"
-  group_form:
-    invitation_settings: "Paramétrage des invitations"
-    admins_only: "Réservé aux coordinateurs"
   vote_form:
     header: "Donner votre position"
     edit: "Modifier votre position"
@@ -630,13 +617,6 @@ fr:
       discussion:
         title: "Titre"
         description: "Contexte"
-        privacy_public_header: "Public"
-        privacy_public_description: "Tout le monde peut voir cette discussion"
-        privacy_private_header: "Privé(e)"
-        privacy_private_description: "Seuls les membres du groupe %{group} peuvent voir cette discussion."
-        privacy_hidden_description: "Toutes les discussions d'un groupe caché sont privées."
-        of: "de"
-        of_no_group: "de ce groupe"
       group:
         name: "Nom du groupe"
         description: "Description"
@@ -655,7 +635,6 @@ fr:
         privacy_parent_group_members_description_short: Seuls les membres du groupe et les membres du groupe parent peuvent voir ce groupe et ses discussions.
         group_members_invitable_by: "Seulement les coordinateurs"
         submit: Envoyer
-        is_visible_to_parent_members_header: Autoriser tous les membres du groupe %{group} à voir ce sous-groupe et ses discussions
       membership_request:
         introduction: "Présentez-vous"
       motion:
@@ -828,7 +807,6 @@ fr:
   send_email: "Envoyer e-mail"
   show_more: "Plus d'info"
   start_a_group: "Créer un groupe"
-  start_group: "Créer un groupe !"
   starting: "Démarrez"
   subject: "Sujet"
   terms_of_service_html: "En cliquant sur %{button_text}, vous acceptez les <a href='%{link_path}' target='_blank'>conditions d'utilisation</a> de Loomio"

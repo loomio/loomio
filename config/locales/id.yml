@@ -270,9 +270,6 @@ id:
   empty_decision_list_html: "Siap membuat keputusan? <br> Setiap orang dapat membuat usulan."
   empty_decision_index: "Kelompok ini belum membuat keputusan."
   empty_discussion_list: "Belum ada aktivitas di dalam diskusi ini."
-  empty_discussion_index: "Belum ada diskusi di dalam kelompok Anda."
-  empty_discussion_index_group: "Kelompok ini belum memiliki diskusi."
-  private_group_discussion_display: "Kelompok ini tertutup. Diskusi hanya tampil untuk anggota. Apabila Anda ingin berpartisipasi, Anda dapat mengirim permintaan untuk bergabung."
   discussion_context:
     started_html: "Dimulai %{when} yang lalu oleh <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Terakhir diubah %{when} lalu oleh <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -523,9 +520,6 @@ id:
   motion_form:
     header: "Usulan baru"
     name_helper: "Buat judul yang jelas dan ringkas."
-  group_form:
-    invitation_settings: "Setelan Undangan"
-    admins_only: "Hanya untuk koordinator"
   vote_form:
     header: "Berikan pendapat Anda"
     edit: "Ubah pendapat Anda"
@@ -567,12 +561,6 @@ id:
       discussion:
         title: "Judul"
         description: "Konteks"
-        privacy_public_header: "Terbuka"
-        privacy_public_description: "Semua orang dapat melihat diskusi ini"
-        privacy_private_header: "Tertutup"
-        privacy_hidden_description: "Seluruh diskusi pada kelompok tersembunyi adalah tertutup."
-        of: "dari"
-        of_no_group: "dari kelompok ini"
       group:
         name: "Nama kelompok"
         description: "Deskripsi"
@@ -591,7 +579,6 @@ id:
         privacy_parent_group_members_description_short: Hanya anggota dan anggota kelompok induk dapat melihat kelompok ini dan diskusinya.
         group_members_invitable_by: "Hanya koordinator"
         submit: Masukkan
-        is_visible_to_parent_members_header: Izinkan seluruh anggota %{group} untuk melihat kelompok kecil dan diskusinya.
       membership_request:
         introduction: "Kenalkan diri Anda"
       motion:
@@ -748,7 +735,6 @@ id:
   send_email: "Kirim surel"
   show_more: "Tunjukan Lagi"
   start_a_group: "Buat kelompok"
-  start_group: "Buat kelompok!"
   starting: "Memulai"
   subject: "Perihal"
   terms_of_service_html: "Dengan menekan %{button_text}, Anda setuju dengan <a href='%{link_path}' target='_blank'>Ketentuan layanan</a> Loomio"

@@ -215,8 +215,6 @@ bg:
   empty_decision_list_html: "Готови за вземане на решение? <br> Всеки може да направи предложение."
   empty_decision_index: "Групата не е взела решения все още."
   empty_discussion_list: "Няма активност в тази дискусия все още."
-  empty_discussion_index: "Няма дискусии във вашите групи."
-  empty_discussion_index_group: "Групата няма дискусии все още."
   discussion_context:
     started_html: "Започнато преди %{when} от <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Последно редактирано на %{when} от <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -392,9 +390,6 @@ bg:
   motion_form:
     header: "Ново предложение"
     name_helper: "Направете заглавието колкото е възможно по-ясно и кратко."
-  group_form:
-    invitation_settings: "Опции за Покана"
-    admins_only: "Само за координатори"
   vote_form:
     header: "Изразете своята позиция"
     edit: "Редактирайте своята позиция"

@@ -288,9 +288,6 @@ nl:
   empty_decision_list_html: "Klaar om een beslissing te maken? <br> Iedereen kan een voorstel indienen."
   empty_decision_index: "Deze groep heeft nog geen beslissingen genomen."
   empty_discussion_list: "Er is nog geen activiteit in deze discussie."
-  empty_discussion_index: "In geen van je groepen is een discussie gaande."
-  empty_discussion_index_group: "Deze groep heeft nog geen discussies."
-  private_group_discussion_display: "Deze groep is afgeschermd. De discussies zijn alleen zichtbaar voor leden. Als je mee wilt praten, kan je hierom vragen."
   discussion_context:
     started_html: "%{when} geleden begonnen door <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Laatst bewerkt %{when} geleden door <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -542,9 +539,6 @@ nl:
   motion_form:
     header: "Nieuw voorstel"
     name_helper: "Maak de titel zo duidelijk en beknopt mogelijk."
-  group_form:
-    invitation_settings: "Instellingen Uitnodigingen"
-    admins_only: "Alleen coördinatoren"
   vote_form:
     header: "Maak je standpunt kenbaar"
     edit: "Bewerk je standpunt"
@@ -586,13 +580,6 @@ nl:
       discussion:
         title: "Titel"
         description: "Beschrijving"
-        privacy_public_header: "Openbaar"
-        privacy_public_description: "Iedereen kan deze discussie zien"
-        privacy_private_header: "Afgeschermd"
-        privacy_private_description: "Alleen leden van %{group} kunnen deze discussie zien"
-        privacy_hidden_description: "Alle discussies in een verborgen groep zijn afgeschermd."
-        of: "van"
-        of_no_group: "van deze groep"
       group:
         name: "Groepsnaam"
         description: "Beschrijving"
@@ -611,7 +598,6 @@ nl:
         privacy_parent_group_members_description_short: Alleen leden en hoofd-groepsleden kunnen deze groep en de discussies erin zien.
         group_members_invitable_by: "Alleen coördinatoren"
         submit: Verzenden
-        is_visible_to_parent_members_header: Sta alle leden van %{group} toe om deze subgroep en de discussies erin te zien
       membership_request:
         introduction: "Introduceer jezelf"
       motion:
@@ -770,7 +756,6 @@ nl:
   send_email: "Stuur e-mail"
   show_more: "Laat meer zien"
   start_a_group: "Begin een groep"
-  start_group: "Start groep!"
   starting: "Beginnen"
   subject: "Onderwerp"
   terms_of_service_html: "Door te klikken op %{button_text}, ga je akkoord met Loomio's <a href='%{link_path}' target='_blank'>Algemene Voorwaarden</a>"
