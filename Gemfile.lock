@@ -249,6 +249,8 @@ GEM
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
+    intercom (1.0.0)
+      json
     intercom-rails (0.2.24)
       activesupport (> 3.0)
     journey (1.0.4)
@@ -585,6 +587,7 @@ DEPENDENCIES
   heroku-deflater (~> 0.5.1)
   httparty (~> 0.13.0)
   inherited_resources (~> 1.4.1)
+  intercom
   intercom-rails (~> 0.2.24)
   jqplot-rails (~> 0.3)
   jquery-atwho-rails (~> 0.4.7)
