@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include LocalesHelper
   include CurrentUserHelper
   include ReadableUnguessableUrlsHelper
+  include IntercomHelper
 
   protect_from_forgery
 
