@@ -15,10 +15,7 @@ Loomio::Application.routes.draw do
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
   get "/explore/category/:id", to: "explore#category", as: :category_explore
-
   get "/groups", to: 'public_groups#index', as: :public_groups
-
-  get "/new_group", to: 'groups#new'
 
   resource :search, only: :show
 
@@ -44,7 +41,22 @@ Loomio::Application.routes.draw do
 
   get "/theme_assets/:id", to: 'theme_assets#show', as: 'theme_assets'
 
-  resources :groups, path: 'g', only: [:create, :edit] do
+  resources :groups, path: 'g', only: [:new, :create, :edit, :update] do
+    member do
+      post :join
+      post :add_members
+      post :hide_next_steps
+      get :add_subgroup
+      post :email_members
+      post :edit_description
+      delete :leave_group
+      get :members_autocomplete
+    end
+
+    resources :motions,     only: [:index]
+    resources :discussions, only: [:index, :new]
+    resources :invitations, only: [:new, :destroy]
+
     scope module: :groups do
       resources :memberships, only: [:index, :destroy, :new, :create] do
         member do
@@ -60,24 +72,9 @@ Loomio::Application.routes.draw do
         end
       end
 
-      get :ask_to_join, controller: 'membership_requests', action: :new
-      resources :membership_requests, only: [:create]
+      resources :membership_requests, only: [:create, :new]
       get :membership_requests,  to: 'manage_membership_requests#index', as: 'membership_requests'
     end
-
-    member do
-      post :add_members
-      post :hide_next_steps
-      get :add_subgroup
-      post :email_members
-      post :edit_description
-      delete :leave_group
-      get :members_autocomplete
-    end
-
-    resources :motions,     only: [:index]
-    resources :discussions, only: [:index, :new]
-    resources :invitations, only: [:new, :destroy]
   end
 
   scope module: :groups, path: 'g', slug: slug_regex do

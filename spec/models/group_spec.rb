@@ -18,19 +18,6 @@ describe Group do
     it "must have a name" do
       @group.should have(1).errors_on(:name)
     end
-
-    it "has memberships" do
-      @group.respond_to?(:memberships)
-    end
-    it "defaults to private" do
-      @group.privacy.should == 'private'
-    end
-    it "defaults to members invitable by members" do
-      @group.members_invitable_by.should == 'members'
-    end
-    it "has a full_name" do
-      @group.full_name.should == @group.name
-    end
   end
 
   describe 'invitations_remaining' do
@@ -78,28 +65,11 @@ describe Group do
       @group.reload
     end
 
-    it "can access it's parent" do
-      @subgroup.parent.should == @group
-    end
-
-    it "can access it's children" do
-      @group.subgroups.count.should eq(1)
-    end
-
-    it "limits group inheritance to 1 level" do
-      invalid = build(:group, :parent => @subgroup)
-      invalid.should_not be_valid
-    end
-
-    it "by default is not viewable by parent members" do
-      Group.new(:parent => @group).privacy.should == 'private'
-      Group.new(:parent => @group).should_not be_viewable_by_parent_members
-    end
-
     context "subgroup.full_name" do
       it "contains parent name" do
         @subgroup.full_name.should == "#{@group.name} - #{@subgroup.name}"
       end
+
       it "updates if parent_name changes" do
         @group.name = "bluebird"
         @group.save!
@@ -111,45 +81,130 @@ describe Group do
 
   context "an existing hidden group" do
     before :each do
-      @group = create(:group, privacy: "hidden")
+      @group = create(:group, is_visible_to_public: false)
       @user = create(:user)
     end
 
-    it "can add an admin" do
-      @group.add_admin!(@user)
-      @group.users.should include(@user)
-      @group.admins.should include(@user)
-    end
     it "can promote existing member to admin" do
       @group.add_member!(@user)
       @group.add_admin!(@user)
     end
-    it "can be administered by admin of parent" do
-      @subgroup = build(:group, :parent => @group)
-      @subgroup.has_admin_user?(@user)
-    end
+
     it "can add a member" do
       @group.add_member!(@user)
       @group.users.should include(@user)
     end
-    it "fails silently when trying to add an already-existing member" do
-      @group.add_member!(@user)
-      @group.add_member!(@user)
+  end
+
+  describe "visible_to" do
+    let(:group) { build(:group) }
+    subject { group.visible_to }
+
+    before do
+      group.is_visible_to_public = false
+      group.is_visible_to_parent_members = false
     end
 
-    context "creating a subgroup" do
-      before :each do
-        @subgroup = build(:group, :parent => @group)
+    context "is visible_to_public = true" do
+      before { group.is_visible_to_public = true }
+      it {should == "public"}
+    end
+
+    context "is_visible_to_parent_members = true" do
+      before { group.is_visible_to_parent_members = true }
+      it {should == "parent_members"}
+    end
+
+    context "is_visible_to_public, is_visible_to_parent_members both false" do
+      it {should == "members"}
+    end
+  end
+
+  describe "visible_to=" do
+    context "public" do
+      before { group.visible_to = 'public' }
+
+      it "sets is_visible_to_public = true" do
+        group.is_visible_to_public.should be_true
+        group.is_visible_to_parent_members.should be_false
       end
-      it "can create hidden subgroups" do
-        @subgroup.privacy = 'hidden'
-        @subgroup.valid?
-        @subgroup.should have(0).errors_on(:privacy)
+    end
+
+    context "parent_members" do
+      before { group.visible_to = 'parent_members' }
+      it "sets is_visible_to_parent_members = true" do
+        group.is_visible_to_public.should be_false
+        group.is_visible_to_parent_members.should be_true
       end
-      it "returns an error when tries to create subgroup that is not hidden" do
-        @subgroup.privacy = 'public'
-        @subgroup.valid?
-        @subgroup.should have(1).errors_on(:privacy)
+    end
+
+    context "members" do
+      before { group.visible_to = 'members' }
+      it "sets is_visible_to_parent_members and public = false" do
+        group.is_visible_to_public.should be_false
+        group.is_visible_to_parent_members.should be_false
+      end
+    end
+  end
+
+  describe "parent_members_can_see_discussions_is_valid?" do
+    context "parent_members_can_see_discussions = true" do
+      it "errors for a parent group" do
+        expect { create(:group,
+                        parent_members_can_see_discussions: true) }.to raise_error
+      end
+
+      it "errors for a hidden_from_everyone subgroup" do
+        expect { create(:group,
+                        is_visible_to_public: false,
+                        is_visible_to_parent_members: false,
+                        parent: create(:group),
+                        parent_members_can_see_discussions: true) }.to raise_error
+      end
+
+      it "errors for a visible_to_public subgroup" do
+        expect { create(:group,
+                        is_visible_to_public: true,
+                        parent: create(:group,
+                                       is_visible_to_public: true),
+                        parent_members_can_see_discussions: true) }.to raise_error
+      end
+
+      it "does not error for a visible to parent subgroup" do
+        expect { create(:group,
+                        is_visible_to_public: false,
+                        is_visible_to_parent_members: true,
+                        parent: create(:group),
+                        parent_members_can_see_discussions: true) }.to_not raise_error
+      end
+    end
+
+    context "both are true" do
+      it "raises error about it"
+      # dont merge before there is a spec here
+    end
+  end
+
+  describe "parent_members_can_see_group_is_valid?" do
+    context "parent_members_can_see_group = true" do
+      it "for a parent group" do
+        expect { create(:group,
+                        parent_members_can_see_group: true) }.to raise_error
+      end
+
+      it "for a hidden subgroup" do
+        expect { create(:group,
+                        is_visible_to_public: false,
+                        is_visible_to_parent_members: true,
+                        parent: create(:group)) }.to_not raise_error
+      end
+
+      it "for a visible subgroup" do
+        expect { create(:group,
+                        is_visible_to_public: true,
+                        parent: create(:group,
+                                       is_visible_to_public: true),
+                        parent_members_can_see_group: true) }.to raise_error
       end
     end
   end
@@ -220,26 +275,6 @@ describe Group do
     end
   end
 
-  describe "#is_hidden?" do
-    let(:group) { Group.new }
-    subject { group.is_hidden? }
-
-    context "group is public" do
-      before { group.privacy = 'public'}
-      it { should be_false }
-    end
-
-    context "group is private" do
-      before { group.privacy = 'private'}
-      it { should be_false }
-    end
-
-    context "group is hidden" do
-      before { group.privacy = 'hidden'}
-      it { should be_true }
-    end
-  end
-
   describe 'engagement-scopes' do
     describe 'more_than_n_members' do
       let(:group_with_no_members) { FactoryGirl.create :group }
@@ -304,5 +339,4 @@ describe Group do
       it {should_not include new_group }
     end
   end
-
 end

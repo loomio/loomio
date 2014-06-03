@@ -11,6 +11,7 @@ Given(/^I am on the home page of the website$/) do
 end
 
 When(/^I go to start a new group from the navbar$/) do
+  find('.groups-dropdown-btn').click
   find(".group-links a.new-group").click
 end
 

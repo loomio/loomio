@@ -23,7 +23,7 @@ module LocalesHelper
     if user_signed_in?
       I18n.locale = best_available_locale
     else
-      I18n.locale = best_cachabale_locale
+      I18n.locale = best_cachable_locale
     end
   end
 
@@ -31,7 +31,7 @@ module LocalesHelper
     selected_locale || detected_locale || default_locale
   end
 
-  def best_cachabale_locale
+  def best_cachable_locale
     selected_locale || default_locale
   end
 

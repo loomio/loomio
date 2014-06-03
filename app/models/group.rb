@@ -7,33 +7,36 @@ class Group < ActiveRecord::Base
   end
 
   #even though we have permitted_params this needs to be here.. it's an issue
-  attr_accessible :name, :privacy, :members_invitable_by, :parent, :parent_id, :description,
-                  :max_size, :cannot_contribute, :full_name, :payment_plan, :viewable_by_parent_members,
-                  :category_id, :max_size, :theme_id, :subdomain
+  attr_accessible :name, :members_can_add_members, :parent, :parent_id, :description, :max_size,
+                  :cannot_contribute, :full_name, :payment_plan, :parent_members_can_see_discussions,
+                  :category_id, :max_size, :is_visible_to_parent_members, :is_visible_to_public,
+                  :discussion_privacy_options, :membership_granted_upon, :visible_to,
+                  :theme_id, :subdomain
   acts_as_tree
 
-  PRIVACY_CATEGORIES = ['public', 'private', 'hidden']
-  INVITER_CATEGORIES = ['members', 'admins']
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
+  DISCUSSION_PRIVACY_OPTIONS = ['public_only', 'private_only', 'public_or_private']
+  MEMBERSHIP_GRANTED_UPON_OPTIONS = ['request', 'approval', 'invitation']
+
   validates_presence_of :name
   validates_inclusion_of :payment_plan, in: PAYMENT_PLANS
-  validates_inclusion_of :privacy, in: PRIVACY_CATEGORIES
-  validates_inclusion_of :members_invitable_by, in: INVITER_CATEGORIES
+  validates_inclusion_of :discussion_privacy_options, in: DISCUSSION_PRIVACY_OPTIONS
+  validates_inclusion_of :membership_granted_upon, in: MEMBERSHIP_GRANTED_UPON_OPTIONS
   validates :description, length: { maximum: 250 }
   validates :name, length: { maximum: 250 }
 
   validate :limit_inheritance
-  validate :privacy_allowed_by_parent, if: :is_a_subgroup?
-  validate :subgroups_are_hidden, if: :is_hidden?
+  validate :validate_parent_members_can_see_discussions
+  validate :validate_is_visible_to_parent_members
+  validate :validate_discussion_privacy_options
 
-  after_initialize :set_defaults
   before_save :update_full_name_if_name_changed
+  before_validation :set_discussions_private_only, if: :is_hidden_from_public?
 
   include PgSearch
   pg_search_scope :search_full_name, against: [:name, :description],
     using: {tsearch: {dictionary: "english"}}
 
-  scope :visible_on_explore_front_page, -> { published.categorised_any.parents_only }
 
   scope :categorised_any, -> { where('groups.category_id IS NOT NULL') }
   scope :in_category, -> (category) { where(category_id: category.id) }
@@ -43,13 +46,12 @@ class Group < ActiveRecord::Base
 
   scope :parents_only, where(parent_id: nil)
 
-  scope :sort_by_popularity,
-        order('memberships_count DESC')
+  scope :sort_by_popularity, order('memberships_count DESC')
 
-  scope :visible_to_the_public,
-        published.
-        where(privacy: 'public').
-        parents_only
+  scope :visible_to_public, published.where(is_visible_to_public: true)
+  scope :hidden_from_public, published.where(is_visible_to_public: false)
+
+  scope :visible_on_explore_front_page, -> { published.categorised_any.parents_only }
 
   scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
 
@@ -113,6 +115,8 @@ class Group < ActiveRecord::Base
            class_name: 'Invitation',
            conditions: {accepted_at: nil, cancelled_at: nil}
 
+  after_initialize :set_defaults
+
   alias :users :members
 
   has_many :requested_users, through: :membership_requests, source: :user
@@ -134,6 +138,7 @@ class Group < ActiveRecord::Base
   delegate :name, to: :parent, prefix: true
 
   paginates_per 20
+
 
   def coordinators
     admins
@@ -172,51 +177,64 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def archived?
+  def is_archived?
     self.archived_at.present?
   end
 
-  def privacy_public?
-    (privacy == 'public') and !archived?
+  def is_hidden_from_public?
+    !is_visible_to_public?
   end
 
-  def is_hidden?
-    self.privacy == 'hidden'
+  def is_subgroup_of_hidden_parent?
+    is_subgroup? and parent.is_hidden_from_public?
   end
 
-  def is_not_hidden?
-    !is_hidden?
+  def visible_to=(term)
+    case term.to_s
+    when 'public'
+      self.is_visible_to_public = true
+      self.is_visible_to_parent_members = false
+    when 'parent_members'
+      self.is_visible_to_public = false
+      self.is_visible_to_parent_members = true
+    when 'members'
+      self.is_visible_to_public = false
+      self.is_visible_to_parent_members = false
+      self.discussion_privacy_options = 'private_only'
+      self.membership_granted_upon = 'invitation'
+    else
+      raise "visible_to term not recognised: #{term}"
+    end
   end
 
-  def parent_is_hidden?
-    parent.is_hidden?
+  def visible_to
+    if is_visible_to_public?
+      'public'
+    elsif is_visible_to_parent_members?
+      'parent_members'
+    else
+      'members'
+    end
   end
 
-  def members_can_invite_members?
-    members_invitable_by == 'members'
+  def membership_granted_upon_approval?
+    membership_granted_upon == 'approval'
   end
 
-  def parent_members_visible_to(user)
-    parent.users.sorted_by_name
+  def membership_granted_upon_request?
+    membership_granted_upon == 'request'
   end
 
-  # would be nice if the following 3 methods were reduced to just one - is_subgroup
-  # parent and top_level are the less nice terms
-  #
-  def is_a_parent?
+  def membership_granted_upon_invitation?
+    membership_granted_upon == 'invitation'
+  end
+
+  def is_parent?
     parent_id.blank?
   end
 
-  def is_top_level?
-    is_a_parent?
-  end
-
-  def is_sub_group?
-    !is_a_parent?
-  end
-
-  def is_a_subgroup?
-    is_sub_group?
+  def is_subgroup?
+    !is_parent?
   end
 
   def admin_email
@@ -227,8 +245,38 @@ class Group < ActiveRecord::Base
     memberships.where("group_id = ? AND user_id = ?", id, user.id).first
   end
 
+  def pending_membership_request_for(user)
+    if user.is_logged_in?
+      membership_requests.pending.where(requestor_id: user.id).first
+    else
+      false
+    end
+  end
+
+  def private_discussions_only?
+    discussion_privacy_options == 'private_only'
+  end
+
+  def public_discussions_only?
+    discussion_privacy_options == 'public_only'
+  end
+  
+  def public_or_private_discussions_allowed?
+    discussion_privacy_options == 'public_or_private'
+  end
+
+  def discussion_private_default
+    case discussion_privacy_options
+    when 'public_or_private' then nil
+    when 'public_only' then false
+    when 'private_only' then true
+    else
+      raise "invalid discussion_privacy value"
+    end
+  end
+
   def add_member!(user, inviter=nil)
-    if is_a_parent?
+    if is_parent?
       if (memberships_count.to_i > max_size.to_i)
         raise Group::MaximumMembershipsExceeded
       end
@@ -249,20 +297,12 @@ class Group < ActiveRecord::Base
   end
 
   def find_or_create_membership(user, inviter)
-    membership = memberships.where(:user_id => user).first
+    membership = memberships.where(user_id: user.id).first
     membership ||= Membership.create!(group: self, user: user, inviter: inviter)
-  end
-
-  def has_admin_user?(user)
-    admins.include?(user) || (parent && parent.admins.include?(user))
   end
 
   def user_membership_or_request_exists? user
     Membership.where(:user_id => user, :group_id => self).exists?
-  end
-
-  def user_is_a_parent_member? user
-    parent.members.include? user
   end
 
   def invitations_remaining
@@ -270,19 +310,19 @@ class Group < ActiveRecord::Base
   end
   
   def has_member_with_email?(email)
-    users.where('email = ?', email).present?
+    members.where(email: email).any?
   end
 
   def has_membership_request_with_email?(email)
-    membership_requests.where('email = ?', email).present?
+    membership_requests.where(email: email).any?
   end
 
   def is_setup?
-    self.setup_completed_at.present?
+    setup_completed_at.present?
   end
 
   def mark_as_setup!
-    self.update_attribute(:setup_completed_at, Time.zone.now.utc)
+    update_attribute(:setup_completed_at, Time.zone.now.utc)
   end
 
   def update_full_name_if_name_changed
@@ -316,10 +356,6 @@ class Group < ActiveRecord::Base
     (subscription.present? && subscription.amount > 0)
   end
 
-  def is_hidden?
-    privacy == "hidden"
-  end
-
   def group_request_description
     group_request.try :description
   end
@@ -341,7 +377,7 @@ class Group < ActiveRecord::Base
   end
 
   def has_subdomain?
-    if is_sub_group?
+    if is_subgroup?
       parent.has_subdomain?
     else
       subdomain.present?
@@ -349,7 +385,7 @@ class Group < ActiveRecord::Base
   end
 
   def subdomain
-    if is_sub_group?
+    if is_subgroup?
       parent.subdomain
     else
       super
@@ -357,7 +393,7 @@ class Group < ActiveRecord::Base
   end
 
   def theme
-    if is_sub_group?
+    if is_subgroup?
       parent.theme
     else
       super
@@ -365,35 +401,60 @@ class Group < ActiveRecord::Base
   end
 
   private
+  def set_discussions_private_only
+    self.discussion_privacy_options = 'private_only'
+  end
+
+  def validate_discussion_privacy_options
+    if membership_granted_upon_request? and not public_discussions_only?
+      self.errors.add(:discussion_privacy_options, "Discussions must be public if group is open")
+    end
+
+    if is_hidden_from_public? and not private_discussions_only?
+      self.errors.add(:discussion_privacy_options, "Discussions must be private if group is hidden")
+    end
+  end
+
+  def validate_parent_members_can_see_discussions
+    self.errors.add(:parent_members_can_see_discussions) unless parent_members_can_see_discussions_is_valid?
+  end
+
+  def validate_is_visible_to_parent_members
+    self.errors.add(:is_visible_to_parent_members) unless visible_to_parent_members_is_valid?
+  end
+
+  def parent_members_can_see_discussions_is_valid?
+    if parent_members_can_see_discussions?
+      is_visible_to_parent_members?
+    else
+      true
+    end
+  end
+
+  def visible_to_parent_members_is_valid?
+    if is_visible_to_parent_members?
+      is_hidden_from_public? and is_subgroup?
+    else
+      true
+    end
+  end
+
+  def set_defaults
+    self.discussion_privacy_options ||= 'public_or_private'
+    self.membership_granted_upon ||= 'approval'
+  end
 
   def calculate_full_name
-    if is_a_parent?
+    if is_parent?
       name
     else
       parent_name + " - " + name
     end
   end
 
-  def set_defaults
-    self.privacy ||= 'hidden'
-    self.members_invitable_by ||= 'members'
-  end
-
   def limit_inheritance
     if parent_id.present?
       errors[:base] << "Can't set a subgroup as parent" unless parent.parent_id.nil?
-    end
-  end
-
-  def privacy_allowed_by_parent
-    if parent && parent.privacy == 'hidden' && self.privacy != 'hidden'
-      errors[:privacy] << "Parent group is hidden, subgroups must also be hidden"
-    end
-  end
-
-  def subgroups_are_hidden
-    unless subgroups.all?{|g| g.is_hidden?}
-      errors[:privacy] << "There are non hidden subgroups, so this group cannot be hidden"
     end
   end
 end

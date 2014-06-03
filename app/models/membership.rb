@@ -55,7 +55,7 @@ class Membership < ActiveRecord::Base
 
   def leave_subgroups_of_hidden_parents
     return if group.nil? #necessary if group is missing (as in case of production data)
-    return unless group.is_hidden?
+    return unless group.is_hidden_from_public?
     group.subgroups.each do |subgroup|
       subgroup.memberships.where(user_id: user.id).destroy_all
     end

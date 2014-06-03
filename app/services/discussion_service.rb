@@ -32,7 +32,7 @@ class DiscussionService
 
   def self.start_discussion(discussion)
     user = discussion.author
-    discussion.inherit_group_privacy! if discussion.private.nil?
+    discussion.inherit_group_privacy!
 
     return false unless discussion.save
 

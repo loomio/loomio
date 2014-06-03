@@ -591,7 +591,7 @@ id:
         privacy_parent_group_members_description_short: Hanya anggota dan anggota kelompok induk dapat melihat kelompok ini dan diskusinya.
         group_members_invitable_by: "Hanya koordinator"
         submit: Masukkan
-        viewable_by_parent_members_header: Izinkan seluruh anggota %{group} untuk melihat kelompok kecil dan diskusinya.
+        is_visible_to_parent_members_header: Izinkan seluruh anggota %{group} untuk melihat kelompok kecil dan diskusinya.
       membership_request:
         introduction: "Kenalkan diri Anda"
       motion:

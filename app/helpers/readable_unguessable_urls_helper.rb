@@ -26,39 +26,58 @@ module ReadableUnguessableUrlsHelper
   def group_url(group, options = {})
     options = options.merge( host_and_port ).
                       merge( route_hash(group, 'group') )
-
-    if request.present?
-      options[:host] = request.domain
-      options.delete(:subdomain)
-    end
-
     if group.has_subdomain?
       options[:subdomain] = group.subdomain
-      unless group.is_sub_group?
-        uri = URI(url_for(options))
-        uri.path = ''
-        return uri.to_s
-      end
     elsif ENV['DEFAULT_SUBDOMAIN']
       options[:subdomain] = ENV['DEFAULT_SUBDOMAIN']
     end
 
-    url_for(options)
+    if group.has_subdomain? and not group.is_subgroup?
+      uri = URI(url_for(options))
+      uri.path = ''
+      uri.to_s
+    else
+      url_for(options)
+    end
+  rescue
+    raise [ActionMailer::Base.default_url_options, host_and_port, options].inspect
+  end
+
+  def host_needed_to_link_to?(group)
+    if request.blank?
+      true
+    elsif group.has_subdomain?
+      group.subdomain != request.subdomain
+    elsif ENV['DEFAULT_SUBDOMAIN'].present?
+      request.subdomain != ENV['DEFAULT_SUBDOMAIN']
+    else
+      request.subdomain.present?
+    end
   end
 
   def group_path(group, options = {})
-    #options = options.merge(only_path: true) unless group.has_subdomain?
-    group_url(group, options)
+    url = group_url(group, options)
+    if host_needed_to_link_to?(group)
+      url
+    else
+      path = URI(url).path
+      if path.blank?
+        '/'
+      else
+        path
+      end
+    end
   end
 
   private
 
   def host_and_port
     if request.present?
+      host = request.domain || request.host
       if include_port?(request)
-        { host: request.host, port: request.port }
+        { host: host, port: request.port }
       else
-        { host: request.host, port: nil }
+        { host: host, port: nil }
       end
     else
       ActionMailer::Base.default_url_options

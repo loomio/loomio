@@ -2,40 +2,47 @@ Feature: Edit group settings
   In order for groups to be customized to suit the users' needs
   Administrators of a group must be able to edit group settings
 
-  Background:
-    Given a group "demo-group" with "furry@example.com" as admin
-    And "non-admin@example.com" is a non-admin of group "demo-group"
+  @javascript
+  Scenario: Change all the privacy settings on a parent group
+    Given I am the logged in admin of a group
+    And I visit the group settings page
+    When I select listed, open, public only
+    Then the group should be listed, open, public only
+    When I select listed, by request, admins add members, public and private
+    Then the group should be listed, by request, admins add members, public and private
+    When I select listed, invitation only, admins add members, private only
+    Then the group should be listed, by request, admins add members, private only
+    When I select unlisted, admins add members
+    Then the group should be unlisted, invitation only, admins add members, prviate discussions only
 
-  Scenario: Non-admin cannot edit group settings
-    Given I am logged in as "non-admin@example.com"
-    Then I should not have access to group settings of "demo-group"
+  @javascript
+  Scenario: Change the settings on a subgroup
+    Given I am the logged in admin of a group
+    And I am editing the settings for a subgroup
+    When I select visible to parent group members and save
+    Then the subgroup should be visible to parent group members
 
-  Scenario: Change group visibility to public
-    Given I am logged in as "furry@example.com"
-    When I visit the group settings page
-    And I update the settings to public
-    Then the group should be public
+  @javascript
+  Scenario: Change the name and description
+    Given I am the logged in admin of a group
+    And I visit the group settings page
+    When I change the group name and description
+    Then the group name and description should be changed
 
-  Scenario: Change group visibility to Members only
-    Given I am logged in as "furry@example.com"
-    When I visit the group settings page
-    And I update the settings to members only
-    Then the group should be private
+  @javascript
+  Scenario: Change from public to private discussions
+    Given I am the logged in admin of a group
+    And the group has a public discussion
+    And I visit the group settings page
+    When I change the group to private discussions only
+    Then I should have to confirm making discussions private
+    And the discussion should be private
 
-  Scenario: Change group name
-    Given I am logged in as "furry@example.com"
-    When I visit the group settings page
-    And I update the group name
-    Then the group name is changed
-
-  Scenario: Change group invitations to allow all members
-    Given I am logged in as "furry@example.com"
-    When I visit the group settings page
-    And I update the invitations to allow all members
-    Then all members should be able to invite other users
-
-  Scenario: Change group invitations to allow only admin
-    Given I am logged in as "furry@example.com"
-    When I visit the group settings page
-    And I update the invitations to allow only admin
-    Then only admin should be able to invite other users
+  @javascript
+  Scenario: Change from private to public discussions
+    Given I am the logged in admin of a group
+    And the group has a private discussion
+    And I visit the group settings page
+    When I change the group to public discussions only
+    Then I should have to confirm making discussions public
+    And the discussion should be public

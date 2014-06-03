@@ -2,7 +2,8 @@ class Event < ActiveRecord::Base
   KINDS = %w[new_discussion discussion_title_edited discussion_description_edited new_comment
              new_motion new_vote motion_blocked motion_close_date_edited
              motion_closing_soon motion_closed motion_closed_by_user motion_outcome_created motion_outcome_updated
-             membership_requested invitation_accepted user_added_to_group membership_request_approved
+             membership_requested invitation_accepted user_added_to_group user_joined_group
+             membership_request_approved
              comment_liked user_mentioned]
 
   has_many :notifications, dependent: :destroy

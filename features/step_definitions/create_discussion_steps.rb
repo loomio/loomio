@@ -18,7 +18,6 @@ When /^I fill in the discussion details and submit the form$/ do
   fill_in 'discussion_description', with: @discussion_description
   find('#discussion_private_false').click
   click_on 'discussion-submit'
-
 end
 
 Then /^a discussion should be created$/ do

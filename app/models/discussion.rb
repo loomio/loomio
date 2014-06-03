@@ -17,8 +17,9 @@ class Discussion < ActiveRecord::Base
   scope :with_motions, where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL)")
   scope :without_open_motions, where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND motions.closed_at IS NULL)")
   scope :with_open_motions, joins(:motions).merge(Motion.voting)
-  scope :not_by_helper_bot, -> { where('author_id NOT IN (?)', User.helper_bots.pluck(:id)) }
+  scope :joined_to_current_motion, joins('LEFT OUTER JOIN motions ON motions.discussion_id = discussions.id').merge(Motion.voting)
 
+  scope :not_by_helper_bot, -> { where('author_id NOT IN (?)', User.helper_bots.pluck(:id)) }
 
   validates_presence_of :title, :group, :author, :group_id
   validate :private_is_not_nil
@@ -71,7 +72,7 @@ class Discussion < ActiveRecord::Base
     self.update_attribute(:archived_at, DateTime.now)
   end
 
-  def archived?
+  def is_archived?
     archived_at.present?
   end
 
@@ -156,31 +157,17 @@ class Discussion < ActiveRecord::Base
   end
 
   def public?
-    self.private == false
-  end
-
-  def private
-    self.private?
-  end
-
-  def private?
-    if self[:private].nil? and group.present?  # this is some hideously unconfident code. discussions have a validation on private col
-      group_default_is_private?
-    else
-      self[:private]
-    end
+    !private
   end
 
   def inherit_group_privacy!
-    self[:private] = group_default_is_private? if group.present?
-  end
-
-
-  def group_default_is_private?
-    ['hidden', 'private'].include? group.privacy
+    if self[:private].nil? and group.present?
+      self[:private] = group.discussion_private_default
+    end
   end
 
   private
+
   def refresh_last_comment_at!
     if comments.exists?
       last_comment_time = most_recent_comment.created_at
@@ -191,14 +178,17 @@ class Discussion < ActiveRecord::Base
   end
 
   def private_is_not_nil
-    if self[:private].nil?
-      errors.add(:private, "cannot be nil")
-    end
+    errors.add(:private, "Please select a privacy") if self[:private].nil?
   end
 
   def privacy_is_permitted_by_group
-    if group.present? and group.is_hidden? and not self.private?
-      errors.add(:private, "must be true when group is hidden")
+    return unless group.present?
+    if self.public? and group.private_discussions_only?
+      errors.add(:private, "must be private in this group")
+    end
+
+    if self.private? and group.public_discussions_only?
+      errors.add(:private, "must be public in this group")
     end
   end
 
