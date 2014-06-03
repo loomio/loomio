@@ -25,7 +25,7 @@ Capybara.default_selector = :css
 ActionController::Base.allow_rescue = false
 Cucumber::Rails::Database.javascript_strategy = :truncation
 Capybara.default_driver = :rack_test
-Capybara.default_wait_time = 20
+Capybara.default_wait_time = 5
 
 ENV['PAYPAL_USERNAME'] = 'jonny'
 ENV['PAYPAL_PASSWORD'] = '12345'

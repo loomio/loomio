@@ -1,27 +1,18 @@
 body.groups {
+  &.edit, &.new, &.create, &.update {
+    .described-label {
+      i {
+        font-size: 0.9em;
+        color: $mid-grey;
+      }
+    }
+  }
   &.show {
     .discussion-preview .discussion-title { margin-top: 7px; }
     .discussion-preview.showing-group .discussion-title { margin-top: 0; }
-    #group-description-panel {
-      #description-edit-form {
-        margin-bottom: 0px;
-        #description-input {
-          width: 184px;
-          height: 90px;
-          margin-bottom: 2px;
-        }
-        .character-counter {
-          width: 196px;
-          top: 0;
-        }
-        .dropdown-menu a {
-          padding-left: 5px;
-        }
-        form {
-          margin: 0;
-          display: inline;
-        }
-      }
+    .edit-group-link {
+      float: right;
+      padding: 10px;
     }
     .group-options {
       width: 200px;
@@ -117,6 +108,10 @@ body.groups {
   }
 }
 
+#group-actions{
+  margin-bottom: 20px;
+}
+
 #group_email_subject { width: 510px; }
 #group_email_body { width: 510px; }
 
@@ -132,34 +127,10 @@ body.groups {
     color: #727272;
     display: inline;
   }
-  .privacy-dropdown {
-    display: inline;
-    width: 120px;
-    bottom: 5px;
-  }
-  .privacy-dropdown .dropdown-menu a { padding-left: 5px; }
-  li.privacy-item i {
-    display: inline-block;
-    width: 15px;
-  }
-  .privacy-dropdown form {
-    margin: 0px;
-    display: inline;
-  }
-  li.privacy-item button {
-    border: none;
-    border-radius: 0px;
-    -webkit-border-radius: 0px;
-    margin-bottom: 0px;
-    box-shadow: none;
-    width: 180px;
-    padding-left: 25px;
-    text-align: left;
-  }
-  li.privacy-item button:hover {
-    color: white;
-    background-color: #08c;
-  }
+}
+
+#group-privacy-label {
+  font-size: .8em;
 }
 
 .name-separator {
@@ -173,7 +144,7 @@ body.groups {
 }
 
 body.group_setup.setup, body.groups.new, body.groups.edit, body.groups.add_subgroup {
-  form.edit_group, form.new_group {
+  form.group-settings {
     .control-group.radio_buttons { margin-bottom: 1.6em; }
     input[type="text"] {
       font-size: 28px;
@@ -181,8 +152,24 @@ body.group_setup.setup, body.groups.new, body.groups.edit, body.groups.add_subgr
       line-height: 32px;
       margin-bottom: .6em;
     }
-    input[type="submit"] { margin-top: .4em; }
-    label { font-size: 18px; }
+
+    label span:before { content: '- '; }
+    label.radio {
+      /*margin-bottom: .5em;*/
+      /*font-weight: 500;*/
+    }
+    label.radio span {
+      font-style: italic;
+      /*font-size: 0.85em;*/
+      /*display: block;*/
+      font-weight: normal;
+      /*color: $mid-grey;*/
+    }
+
+    /*label.disabled span{*/
+      /*[>display: block;<]*/
+      /*color: $lighter-grey;*/
+    /*}*/
     textarea {
       @include placeholder { font-style: italic; }
       font-size: 16px;
@@ -203,7 +190,7 @@ body.group_setup.setup, body.groups.new, body.groups.edit, body.groups.add_subgr
       color: $dark-grey;
     }
     .checkbox { margin-bottom: 0px; }
-    .group_viewable_by_parent_members {
+    .group_is_visible_to_parent_members {
       border-top: 1px solid #DDD;
       border-bottom: 1px solid #DDD;
       padding: 1em 0;

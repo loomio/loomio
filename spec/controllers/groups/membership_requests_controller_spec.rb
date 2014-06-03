@@ -26,6 +26,7 @@ describe Groups::MembershipRequestsController do
         flash[:success].should =~ /Membership request canceled/i
       end
     end
+
     context "a user doesn't have permission to cancel membership request" do
       before { membership_request.stub(:requestor_id).and_return(requestor.id+1) }
       it "doesn't destroy the membership request" do

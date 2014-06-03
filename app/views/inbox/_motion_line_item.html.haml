@@ -2,17 +2,13 @@
   =link_to item do
     .span1
       .icon
-        -values = item.vote_counts.values
         .activity-container
           %span.count.unread-votes-count
             - count = @motion_reader_cache.get_for(item).unread_activity_count
             - if count != 0
               =count
         .motion-sparkline
-          -if values.sum == 0
-            0,0,0,0,1
-          -else
-            =values.join(',')
+          = motion_sparkline(item)
 
     .span8.title
       = item.title

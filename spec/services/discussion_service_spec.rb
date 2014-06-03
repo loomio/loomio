@@ -19,6 +19,7 @@ describe 'DiscussionService' do
                                          :description= => true,
                                          :private= => true,
                                          :uses_markdown= => true,
+                                         inherit_group_privacy!: nil,
                                          uses_markdown: true,
                                          :iframe_src= => true,
                                          update_attribute: true,

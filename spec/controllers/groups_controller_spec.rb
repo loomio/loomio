@@ -7,7 +7,7 @@ describe GroupsController do
 
   context 'signed out' do
     context "public group" do
-      before { group.update_attribute(:privacy, :public) }
+      before { group.update_attribute(:is_visible_to_public, true) }
 
       it "show" do
         get :show, :id => group.key
@@ -16,7 +16,7 @@ describe GroupsController do
     end
 
     context "hidden group" do
-      before { group.update_attribute(:privacy, :hidden) }
+      before { group.update_attribute(:is_visible_to_public, false) }
       it "does not show" do
         get :show, :id => group.key
         response.should be_redirect
@@ -26,7 +26,7 @@ describe GroupsController do
 
   context "hidden group" do
     before do
-      group.update_attribute(:privacy, :hidden)
+      group.update_attribute(:is_visible_to_public, false)
       group.add_member!(user)
       sign_in user
     end
@@ -42,7 +42,7 @@ describe GroupsController do
     end
 
     it "create subgroup" do
-      post :create, :group => {parent_id: group.id, name: 'subgroup', privacy: 'hidden'}
+      post :create, :group => {parent_id: group.id, name: 'subgroup', is_visible_to_public: false}
       assigns(:group).parent.should eq(group)
       assigns(:group).admins.should include(user)
       response.should redirect_to(group_url(assigns(:group)))

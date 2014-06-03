@@ -1,7 +1,7 @@
 class ExploreController < ApplicationController
   def search
     @query = params[:query]
-    @groups = Group.visible_to_the_public.
+    @groups = Group.visible_to_public.
                     search_full_name(@query).
                     page(params[:page])
   end
@@ -13,6 +13,6 @@ class ExploreController < ApplicationController
 
   def category
     @category = Category.find(params[:id])
-    @groups = Group.visible_to_the_public.in_category(@category)
+    @groups = Group.visible_to_public.in_category(@category)
   end
 end

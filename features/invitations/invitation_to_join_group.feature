@@ -44,6 +44,7 @@ Feature: Invitation to join group
     When I click an invitation link I have already used
     Then I should be redirected to the group page
 
+  @javascript
   Scenario: Signed out user refollows their invitation link
     Given I am not logged in
     When I follow an invitation link I have already used
@@ -64,19 +65,13 @@ Feature: Invitation to join group
     And I should see "David" as a member of the subgroup
     And "David" should receive a notification that they have been added
 
+  @javascript
   Scenario: Subgroup member cannot add members to a subgroup invitable by admins
     Given I am logged in
     And I am a member of a group
     And I am a member of a subgroup invitable by admins
     When I visit the subgroup page
     Then I should not see the add member button
-
-  Scenario: Subgroup member cannot add members to subgroup with hidden parent
-    Given I am logged in
-    And I am a coordinator of a hidden subgroup with hidden parent
-    When I visit the subgroup page
-    And I click invite people
-    Then I should not see the invitations field
 
   @javascript
   Scenario: Group Admin invites new user to join discussion
@@ -86,6 +81,7 @@ Feature: Invitation to join group
     And I invite "new@user.com" to join the discussion
     Then "new@user.com" should get an invitation to join the discussion
 
+  @javascript
   Scenario: New user accepts invitation to join discussion
     Given I am invited to join a discussion
     When I accept my invitation via email

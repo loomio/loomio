@@ -24,6 +24,7 @@ Scenario: Guest creates group
   And I setup the group
   Then I should see the group page
 
+@javascript
 Scenario: User creates group
   Given I am logged in
   When I go to start a new group from the navbar

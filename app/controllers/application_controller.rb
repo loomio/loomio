@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
-  
+
   def store_previous_location
     session['user_return_to'] = request.env['HTTP_REFERER'] if request.env['HTTP_REFERER'].present?
   end

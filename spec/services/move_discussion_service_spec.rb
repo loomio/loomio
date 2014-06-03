@@ -73,7 +73,7 @@ describe MoveDiscussionService do
       @mover.should_receive(:valid?).and_return(true)
       discussion.stub(:group=){ discussion.stub(:group).and_return destination_group}
       discussion.stub(:public?).and_return(true)
-      destination_group.stub(:is_hidden?).and_return(false)
+      destination_group.stub(:is_hidden_from_public?).and_return(false)
     end
 
     it "moves the discussion from source to destination" do
