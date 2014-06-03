@@ -84,3 +84,22 @@ namespace :languages do
     puts "Remember to check EXPERIMENTAL_LANGUAGES array ^_^"
   end
 end
+
+
+#this method returns all key-chains which have variables in them.
+def dig_hash(input_hash, key_trace = '')
+  input_hash.keys.each do |key|
+    extended_key_trace = key_trace + key + '.'
+
+    one_in = input_hash[key]
+    if one_in.is_a?(String)
+      if one_in.scan(/%{[^%{}]*}/).present?
+        puts "#{extended_key_trace.chomp('.')} = #{one_in}"
+      end
+      # check if there are any : .scan(/%{[^%{}]*}/).present?
+
+    else
+      dig_hash(one_in, extended_key_trace)
+    end
+  end
+end
