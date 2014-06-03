@@ -15,7 +15,7 @@
       %button.close{"data-dismiss" => "modal"}×
       %h3= t :move_discussion_where
     - destination_groups=  destinations_for(discussion: discussion, user: current_user)
-    - hidden_destination_group_ids = destination_groups.select{|g| g.is_hidden?}.map(&:id)
+    - hidden_destination_group_ids = destination_groups.select{|g| g.is_hidden_from_public?}.map(&:id)
     - private_int = @discussion.private ? 1 : 0
     = form_tag move_discussion_path(discussion), method: :post, data: {hidden_group_ids: hidden_destination_group_ids.join(' '), private_discussion: @discussion.private }, class: 'move-discussion-form' do
       .modal-body

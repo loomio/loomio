@@ -681,7 +681,7 @@ el:
         privacy_parent_group_members_description_short: Μόνο τα μέλη και τα μέλη της κύριας ομάδας μπορούν να δουν αυτή την ομάδα και τις συζητήσεις τις.
         group_members_invitable_by: "Μόνο συντονιστές"
         submit: Υποβολή
-        viewable_by_parent_members_header: Επιτρέψτε σε όλα τα μέλη της ομάδας %{group} να βλέπουν αυτή την υπό-ομάδα και τις συζητήσεις τους
+        is_visible_to_parent_members_header: Επιτρέψτε σε όλα τα μέλη της ομάδας %{group} να βλέπουν αυτή την υπό-ομάδα και τις συζητήσεις τους
       membership_request:
         introduction: "Συστηθείτε"
       motion:

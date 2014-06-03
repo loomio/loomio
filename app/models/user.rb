@@ -60,10 +60,10 @@ class User < ActiveRecord::Base
            :through => :memberships,
            conditions: { archived_at: nil }
 
-  has_many :public_groups,
+  has_many :visible_to_public_groups,
            :through => :memberships,
            :source => :group,
-           :conditions => { :privacy => 'public' }
+           :conditions => { is_visible_to_public: true }
 
   has_many :discussions,
            :through => :groups
@@ -88,7 +88,8 @@ class User < ActiveRecord::Base
            :source => :announcement
 
   has_many :discussion_readers, dependent: :destroy
-  has_many :motion_read_logs, dependent: :destroy
+  has_many :motion_readers, dependent: :destroy
+  has_many :omniauth_identities, dependent: :destroy
 
 
   has_many :notifications
@@ -109,6 +110,10 @@ class User < ActiveRecord::Base
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
+  end
+
+  def user_id
+    id
   end
 
   def is_logged_in?
@@ -160,12 +165,11 @@ class User < ActiveRecord::Base
     memberships.where(:group_id => group.id, :subscribed_to_notification_emails => true).present?
   end
 
-
   def is_group_admin?(group)
     admin_memberships.where(group_id: group.id).any?
   end
 
-  def is_group_member?(group)
+  def is_member_of?(group)
     memberships.where(group_id: group.id).any?
   end
 
@@ -176,7 +180,6 @@ class User < ActiveRecord::Base
   def time_zone
     self[:time_zone] || 'UTC'
   end
-
 
   def is_parent_group_member?(group)
     memberships.for_group(group.parent).exists? if group.parent

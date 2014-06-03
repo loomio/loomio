@@ -35,14 +35,3 @@ Feature: Clear vote activity
     And I visit the discussion page
     And I visit the group page
     Then I should not see any new activity for that discussion
-
-  @javascript
-  Scenario: Logged out user views a discussion's proposal activity from the group page
-    Given there is a public discussion in a public group
-    And the discussion has an open proposal
-    And there is proposal activity on the discussion
-    When I visit the group page
-    And I see proposal activity on the discussion
-    And I click on the mini-pie graph for the discussion
-    Then I should see a summary of the proposal's activity
-    And I should still see the proposal activity count for that discussion

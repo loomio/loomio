@@ -655,7 +655,7 @@ fr:
         privacy_parent_group_members_description_short: Seuls les membres du groupe et les membres du groupe parent peuvent voir ce groupe et ses discussions.
         group_members_invitable_by: "Seulement les coordinateurs"
         submit: Envoyer
-        viewable_by_parent_members_header: Autoriser tous les membres du groupe %{group} à voir ce sous-groupe et ses discussions
+        is_visible_to_parent_members_header: Autoriser tous les membres du groupe %{group} à voir ce sous-groupe et ses discussions
       membership_request:
         introduction: "Présentez-vous"
       motion:

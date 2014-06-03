@@ -15,10 +15,7 @@ Loomio::Application.routes.draw do
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
   get "/explore/category/:id", to: "explore#category", as: :category_explore
-
   get "/groups", to: 'public_groups#index', as: :public_groups
-
-  get "/new_group", to: 'groups#new'
 
   resource :search, only: :show
 
@@ -42,34 +39,11 @@ Loomio::Application.routes.draw do
 
   resources :invitations, only: [:show, :create, :destroy]
 
-  resources :groups, path: 'g', only: [:create, :edit] do
-    scope module: :groups do
-      resources :memberships, only: [:index, :destroy, :new, :create] do
-        member do
-         post :make_admin
-         post :remove_admin
-        end
-      end
-      resource :subscription, controller: 'subscriptions', only: [:new, :show] do
-        collection do
-          post :checkout
-          get :confirm
-          get :payment_failed
-        end
-      end
-      scope controller: 'group_setup' do
-        member do
-          get :setup
-          put :finish
-        end
-      end
+  get "/theme_assets/:id", to: 'theme_assets#show', as: 'theme_assets'
 
-      get :ask_to_join, controller: 'membership_requests', action: :new
-      resources :membership_requests, only: [:create]
-      get :membership_requests,  to: 'manage_membership_requests#index', as: 'membership_requests'
-    end
-
+  resources :groups, path: 'g', only: [:new, :create, :edit, :update] do
     member do
+      post :join
       post :add_members
       post :hide_next_steps
       get :add_subgroup
@@ -82,6 +56,25 @@ Loomio::Application.routes.draw do
     resources :motions,     only: [:index]
     resources :discussions, only: [:index, :new]
     resources :invitations, only: [:new, :destroy]
+
+    scope module: :groups do
+      resources :memberships, only: [:index, :destroy, :new, :create] do
+        member do
+         post :make_admin
+         post :remove_admin
+        end
+      end
+
+      scope controller: 'group_setup' do
+        member do
+          get :setup
+          put :finish
+        end
+      end
+
+      resources :membership_requests, only: [:create, :new]
+      get :membership_requests,  to: 'manage_membership_requests#index', as: 'membership_requests'
+    end
   end
 
   scope module: :groups, path: 'g', slug: slug_regex do
@@ -100,6 +93,12 @@ Loomio::Application.routes.draw do
       end
     end
   end
+
+  constraints(GroupSubdomainConstraint) do
+    get '/' => 'groups#show'
+    put '/' => 'groups#update'
+  end
+
   delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel', as: :cancel_membership_request
 
   resources :motions, path: 'm', only: [:new, :create, :edit, :index] do

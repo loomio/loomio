@@ -17,6 +17,7 @@ class AppTranslation
                'Nederlands' => :nl,
                'Português (Brasil)' => :pt,
                'română' => :ro,
+               'srpski' => :sr,
                'Svenska' => :sv,
                'Tiếng Việt' => :vi,
                'Türkçe' => :tr,
@@ -30,7 +31,7 @@ class AppTranslation
                             'Esperanto' => :eo,
                             'Telugu' => :te}
 
-  FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl, :zh, :sv, :da, :be, :ru, :ko]
+  FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl, :zh, :sv, :da, :be, :ru, :ko, :sr]
 
   VIDEO_SUPPORTED_LOCALES  = [:en, :pt, :el, :es, :ca, :cs, :fr, :ja, :nl, :vi]
   

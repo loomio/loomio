@@ -561,7 +561,7 @@ cs:
         privacy_parent_group_members_description_short: Jen členové a členové rodičovské skupiny vidí tuto skupinu a její diskuze.
         group_members_invitable_by: "Jen koordinátoři"
         submit: Odeslat
-        viewable_by_parent_members_header: Povolit všem členům %{group} vidět tuto podskupinu a diskuze v ní
+        is_visible_to_parent_members_header: Povolit všem členům %{group} vidět tuto podskupinu a diskuze v ní
       membership_request:
         introduction: "Představte se"
       motion:

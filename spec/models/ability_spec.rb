@@ -17,6 +17,122 @@ describe "User abilities" do
                                                                                  group: group,
                                                                                  inviter: other_user) }
   it { should     be_able_to(:create, group) }
+  
+  context "in relation to a group" do
+    describe "is_visible_to_public?" do
+      context "true" do
+        before { group.update_attribute(:is_visible_to_public, true) }
+
+        describe "non member" do
+          it {should be_able_to(:show, group)}
+        end
+
+        describe "member" do
+          before { group.add_member!(user) }
+
+          it {should be_able_to(:show, group)}
+        end
+      end
+
+      context "false" do
+        before { group.update_attribute(:is_visible_to_public, false) }
+
+        describe "non member" do
+          it {should_not be_able_to(:show, group)}
+        end
+
+        describe "member" do
+          before { group.add_member!(user) }
+          it {should be_able_to(:show, group)}
+        end
+      end
+    end
+
+    describe "is_visible_to_parent_members?" do
+      let(:parent_group) { create(:group) }
+
+      before do
+        group.update_attribute(:is_visible_to_public, false)
+        group.parent = parent_group
+        group.save
+      end
+
+      context "true" do
+        before { group.update_attribute(:is_visible_to_parent_members, true) }
+
+        describe "non member" do
+          it { should_not be_able_to(:show, group) }
+        end
+
+        describe "member of parent only" do
+          before { parent_group.add_member!(user) }
+          it {should be_able_to(:show, group)}
+        end
+
+        describe "member of subgroup only" do
+          before { group.add_member!(user) }
+          it {should be_able_to(:show, group)}
+        end
+      end
+
+      context "false" do
+        before { group.update_attribute(:is_visible_to_parent_members, false) }
+
+        describe "non member" do
+          it { should_not be_able_to(:show, group) }
+        end
+
+        describe "member of parent only" do
+          before { parent_group.add_member!(user) }
+          it {should_not be_able_to(:show, group)}
+        end
+
+        describe "member of subgroup only" do
+          before { group.add_member!(user) }
+          it {should be_able_to(:show, group)}
+        end
+      end
+    end
+
+    describe "members_can_add_members?" do
+
+      context "true" do
+        before { group.update_attribute(:members_can_add_members, true) }
+
+        describe "non member of group" do
+          it {should_not be_able_to(:add_members, group)}
+        end
+
+        describe "member of group" do
+          before { group.add_member!(user) }
+          it {should be_able_to(:add_members, group)}
+        end
+
+        describe "admin of group" do
+          before { group.add_admin!(user) }
+          it {should be_able_to(:add_members, group)}
+        end
+      end
+
+      context "false" do
+        before { group.update_attribute(:members_can_add_members, false) }
+
+        describe "non member of group" do
+          it {should_not be_able_to(:add_members, group)}
+        end
+
+        describe "member of group" do
+          before { group.add_member!(user) }
+          it {should_not be_able_to(:add_members, group)}
+        end
+
+        describe "admin of group" do
+          before { group.add_admin!(user) }
+          it {should be_able_to(:add_members, group)}
+        end
+      end
+    end
+  end
 
   context "member of a group" do
     let(:group) { create(:group) }
@@ -53,7 +169,6 @@ describe "User abilities" do
     it { should     be_able_to(:new_proposal, discussion) }
     it { should     be_able_to(:add_comment, discussion) }
     it { should     be_able_to(:update_description, discussion) }
-    it { should     be_able_to(:edit_description, group) }
     it { should     be_able_to(:show_description_history, discussion) }
     it { should     be_able_to(:preview_version, discussion) }
     it { should     be_able_to(:update_version, discussion) }
@@ -97,8 +212,8 @@ describe "User abilities" do
       should_not be_able_to(:destroy, @membership)
     end
 
-    context "group members invitable by members" do
-      before { group.update_attributes(:members_invitable_by => 'members') }
+    context "members can add members" do
+      before { group.update_attribute(:members_can_add_members, true) }
       it { should     be_able_to(:add_members, group) }
       it { should     be_able_to(:invite_people, group) }
       it { should     be_able_to(:manage_membership_requests, group) }
@@ -107,81 +222,14 @@ describe "User abilities" do
       it { should_not be_able_to(:destroy, @other_membership) }
     end
 
-    context "group members invitable by admins" do
-      before { group.update_attributes(:members_invitable_by => 'admins') }
+    context "members cannot add members" do
+      before { group.update_attribute(:members_can_add_members, false) }
       it { should_not be_able_to(:add_members, group) }
       it { should_not be_able_to(:invite_people, group) }
       it { should_not be_able_to(:manage_membership_requests, group) }
       it { should_not be_able_to(:approve, membership_request) }
       it { should_not be_able_to(:ignore, membership_request) }
-    end
-
-    context "that is hidden" do
-      before { group.update_attributes(:privacy => 'hidden') }
-      it { should     be_able_to(:show, group) }
-
-      context "with hidden subgroup" do
-        before do
-          subgroup.update_attributes(privacy: 'hidden', viewable_by_parent_members: false)
-          subgroup.add_member!(user)
-        end
-
-        context "invitable by members" do
-          before { subgroup.update_attributes(:members_invitable_by => 'members') }
-          it { should_not be_able_to(:invite_outsiders, subgroup) }
-          it { should     be_able_to(:invite_people, subgroup) }
-        end
-
-        context "invitable by admins only" do
-          before { subgroup.update_attributes(:members_invitable_by => 'admins') }
-          it { should_not be_able_to(:invite_outsiders, subgroup) }
-          it { should_not be_able_to(:invite_people, subgroup) }
-        end
-      end
-    end
-
-    context "viewing a subgroup they do not belong to" do
-      let(:subgroup) { create(:group, parent: group) }
-      let(:private_subgroup_discussion) { create_discussion group: subgroup, private: true }
-      let(:public_subgroup_discussion) { create_discussion group: subgroup, private: false }
-
-      context "public subgroup" do
-        before { subgroup.update_attributes(:privacy => 'public') }
-        it { should     be_able_to(:show, subgroup) }
-        it { should     be_able_to(:request_membership, subgroup) }
-        it { should_not be_able_to(:show, private_subgroup_discussion) }
-        it { should     be_able_to(:show, public_subgroup_discussion) }
-      end
-
-      context "private subgroup" do
-        before { subgroup.update_attributes(:privacy => 'private') }
-        it { should     be_able_to(:show, subgroup) }
-        it { should     be_able_to(:request_membership, subgroup) }
-        it { should_not be_able_to(:show, private_subgroup_discussion) }
-        it { should     be_able_to(:show, public_subgroup_discussion) }
-      end
-
-      context "private subgroup viewable by parent members" do
-        before { subgroup.update_attributes(:privacy => 'private', viewable_by_parent_members: true) }
-        it { should     be_able_to(:show, subgroup) }
-        it { should     be_able_to(:request_membership, subgroup) }
-        it { should     be_able_to(:show, private_subgroup_discussion) }
-        it { should     be_able_to(:show, public_subgroup_discussion) }
-      end
-
-      context "hidden subgroup" do
-        before { subgroup.update_attributes(privacy: 'hidden') }
-        it { should_not be_able_to(:show, subgroup) }
-        it { should_not be_able_to(:request_membership, subgroup) }
-        it { should_not be_able_to(:show, private_subgroup_discussion) }
-      end
-
-      context "hidden subgroup viewable by parent members" do
-        before { subgroup.update_attributes(privacy: 'hidden', viewable_by_parent_members: true) }
-        it { should     be_able_to(:show, subgroup) }
-        it { should     be_able_to(:request_membership, subgroup) }
-        it { should     be_able_to(:show, private_subgroup_discussion) }
-      end
+      it { should_not be_able_to(:destroy, @other_membership) }
     end
   end
 
@@ -217,6 +265,7 @@ describe "User abilities" do
     it { should     be_able_to(:destroy, another_user_comment) }
     it { should     be_able_to(:cancel, own_invitation) }
     it { should     be_able_to(:cancel, other_members_invitation) }
+    it { should     be_able_to(:edit_description, group) }
 
     it "should not be able to delete the only admin of a group" do
       group.admin_memberships.where("memberships.id != ?", @membership.id).destroy_all
@@ -224,7 +273,7 @@ describe "User abilities" do
     end
 
     context "group members invitable by admins" do
-      before { group.update_attributes(:members_invitable_by => 'admins') }
+      before { group.update_attribute(:members_can_add_members, false) }
       it { should     be_able_to(:add_members, group) }
       it { should     be_able_to(:invite_people, group) }
       it { should     be_able_to(:manage_membership_requests, group) }
@@ -248,13 +297,13 @@ describe "User abilities" do
     end
     it { should_not be_able_to(:view_payment_details, sub_group) }
     it { should_not be_able_to(:choose_subscription_plan, sub_group) }
-    it { should     be_able_to(:invite_outsiders, sub_group) }
+    it { should     be_able_to(:invite_people, sub_group) }
   end
 
   context "non-member of a group" do
 
     context 'hidden group' do
-      let(:group) { create(:group, privacy: 'hidden') }
+      let(:group) { create(:group, is_visible_to_public: false) }
       let(:discussion) { create_discussion group: group, private: true }
       let(:new_motion) { Motion.new(discussion_id: discussion.id) }
       let(:motion) { create(:motion, discussion: discussion) }
@@ -266,7 +315,6 @@ describe "User abilities" do
       let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }
 
       it { should_not be_able_to(:show, group) }
-      it { should_not be_able_to(:request_membership, group) }
       it { should_not be_able_to(:update, group) }
       it { should_not be_able_to(:email_members, group) }
       it { should_not be_able_to(:add_subgroup, group) }
@@ -297,7 +345,7 @@ describe "User abilities" do
     end
 
     context "public group" do
-      let(:group) { create(:group, privacy: 'public') }
+      let(:group) { create(:group, is_visible_to_public: true) }
       let(:private_discussion) { create_discussion group: group, private: true }
       let(:public_discussion) { create_discussion group: group, private: false }
       let(:new_motion) { Motion.new(discussion_id: private_discussion.id) }
@@ -309,7 +357,6 @@ describe "User abilities" do
       let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }
 
       it { should     be_able_to(:show, group) }
-      it { should     be_able_to(:request_membership, group) }
       it { should_not be_able_to(:view_payment_details, group) }
       it { should_not be_able_to(:choose_subscription_plan, group) }
       it { should_not be_able_to(:update, group) }
@@ -348,75 +395,6 @@ describe "User abilities" do
       it { should_not be_able_to(:open, motion) }
       it { should_not be_able_to(:update, motion) }
       it { should_not be_able_to(:destroy, motion) }
-    end
-
-    context "private group" do
-      let(:group) { create(:group, privacy: 'private') }
-      let(:private_discussion) { create_discussion group: group, private: true }
-      let(:public_discussion) { create_discussion group: group, private: false }
-      let(:new_motion) { Motion.new(discussion_id: private_discussion.id) }
-      let(:motion) { create(:motion, discussion: private_discussion) }
-      let(:new_discussion) { user.authored_discussions.new(
-                             group: group, title: "new discussion") }
-      let(:another_user_comment) { private_discussion.add_comment(private_discussion.author, "hello", uses_markdown: false) }
-      let(:my_membership_request) { create(:membership_request, group: group, requestor: user) }
-      let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }
-
-      it { should     be_able_to(:show, group) }
-      it { should     be_able_to(:request_membership, group) }
-      it { should_not be_able_to(:view_payment_details, group) }
-      it { should_not be_able_to(:choose_subscription_plan, group) }
-      it { should_not be_able_to(:update, group) }
-      it { should_not be_able_to(:email_members, group) }
-      it { should_not be_able_to(:add_subgroup, group) }
-      it { should_not be_able_to(:add_members, group) }
-      it { should_not be_able_to(:manage_membership_requests, group) }
-      it { should_not be_able_to(:hide_next_steps, group) }
-      it { should_not be_able_to(:unfollow, group) }
-
-      it { should     be_able_to(:cancel, my_membership_request) }
-      it { should_not be_able_to(:cancel, other_membership_request) }
-      it { should_not be_able_to(:approve, other_membership_request) }
-      it { should_not be_able_to(:ignore, other_membership_request) }
-
-      it { should_not be_able_to(:create, new_discussion) }
-      it { should_not be_able_to(:show, private_discussion) }
-      it { should_not be_able_to(:new_proposal, private_discussion) }
-      it { should_not be_able_to(:add_comment, private_discussion) }
-      it { should_not be_able_to(:move, private_discussion) }
-      it { should_not be_able_to(:destroy, private_discussion) }
-
-      it { should     be_able_to(:show, public_discussion) }
-      it { should_not be_able_to(:new_proposal, public_discussion) }
-      it { should_not be_able_to(:add_comment, public_discussion) }
-      it { should_not be_able_to(:move, public_discussion) }
-      it { should_not be_able_to(:destroy, public_discussion) }
-
-      it { should_not be_able_to(:destroy, another_user_comment) }
-      it { should_not be_able_to(:like, another_user_comment) }
-      it { should_not be_able_to(:unlike, another_user_comment) }
-
-      it { should_not be_able_to(:create, new_motion) }
-      it { should_not be_able_to(:close, motion) }
-      it { should_not be_able_to(:edit_close_date, motion) }
-      it { should_not be_able_to(:open, motion) }
-      it { should_not be_able_to(:update, motion) }
-      it { should_not be_able_to(:destroy, motion) }
-    end
-
-    context "subgroup viewable to parent members" do
-      let(:group) { create :group}
-      let(:subgroup) { create(:group, parent: group, privacy: 'hidden',
-                              viewable_by_parent_members: true) }
-      it { should_not be_able_to(:show, subgroup) }
-      it { should_not be_able_to(:request_membership, subgroup) }
-    end
-
-    context "subgroup which is non-hidden" do
-      let(:group) { create :group}
-      let(:subgroup) { create(:group, parent: group, privacy: 'private') }
-
-      it { should be_able_to(:request_membership, subgroup) }
     end
   end
 

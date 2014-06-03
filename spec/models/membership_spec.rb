@@ -4,7 +4,7 @@ describe Membership do
   let(:membership) { Membership.new }
   let(:user) { create(:user) }
   let(:user2) { create(:user) }
-  let(:group) { create(:group) }
+  let(:group) { create(:group, is_visible_to_public: true) }
 
   it { should have_many(:events).dependent(:destroy) }
 
@@ -48,9 +48,9 @@ describe Membership do
     end
 
     it "removes subgroup memberships if parent is hidden" do
-      group.privacy = 'hidden'
+      group.is_visible_to_public = false
       group.save
-      subgroup = create(:group, parent: group, privacy: 'hidden')
+      subgroup = create(:group, parent: group, is_visible_to_public: false)
       subgroup.add_member! user
       group.reload
       @membership.reload

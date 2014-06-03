@@ -665,7 +665,7 @@ pt:
         privacy_parent_group_members_description_short: Apenas membros deste grupo e do grupo principal podem ver este grupo e suas discussões.
         group_members_invitable_by: "Coordenadoras(es) somente"
         submit: Enviar
-        viewable_by_parent_members_header: Permitir a todos os membros de %{group} visualizarem este subgrupo e suas discussões
+        is_visible_to_parent_members_header: Permitir a todos os membros de %{group} visualizarem este subgrupo e suas discussões
       membership_request:
         introduction: "Apresente-se"
       motion:

@@ -600,7 +600,7 @@ ca:
         privacy_parent_group_members_description_short: Només membres i membres del grup mare poden veure aquest grup i les seves discussions.
         group_members_invitable_by: "Només coordinadores"
         submit: Enviar
-        viewable_by_parent_members_header: Permet a tot els membres de %{group} veure aquest subgrup i les seves discussions.
+        is_visible_to_parent_members_header: Permet a tot els membres de %{group} veure aquest subgrup i les seves discussions.
       membership_request:
         introduction: "Presenta't"
       motion:

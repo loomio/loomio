@@ -1,4 +1,6 @@
 if ENV['INTERCOM_APP_ID']
+  Intercom.app_id = ENV["INTERCOM_APP_ID"]
+  Intercom.api_key = ENV['INTERCOM_APP_API_KEY']
   IntercomRails.config do |config|
     # == Intercom app_id
     #
@@ -54,7 +56,8 @@ if ENV['INTERCOM_APP_ID']
     # in your controllers. 'Companies' are generic groupings of users, so this 
     # could be a company, app or group.
     #
-    config.company.current = Proc.new { @group }
+    config.company.current = Proc.new { @group.parent_or_self }
+    # config.company.current = Proc.new { @group.parent.present? ? @group : @group.parent }
 
     # == Company Custom Data
     # A hash of additional data you wish to send about a company.
@@ -64,6 +67,12 @@ if ENV['INTERCOM_APP_ID']
     #   :number_of_messages => Proc.new { |app| app.messages.count },
     #   :is_interesting => :is_interesting?
     # }
+    config.company.custom_data = {
+        discussions: :organisation_discussions_count,
+        proposals: :organisation_motions_count,
+        description: :description,
+        group_request_description: :group_request_description
+    }
 
     # == Company Plan name
     # This is the name of the plan a company is currently paying (or not paying) for.

@@ -12,12 +12,8 @@ Feature: User creates discussion
   Scenario: Group member creates discussion from group page
     When I visit the group page
     And I choose to create a discussion
-    And I see discussion markdown is disabled
-    And I enable markdown for the discussion description
     And I fill in the discussion details and submit the form
     Then a discussion should be created
-    And the discussion description should render markdown
-    And my global markdown preference should now be 'enabled'
 
   @javascript
   Scenario: Group member creates discussion from dashboard
@@ -27,6 +23,7 @@ Feature: User creates discussion
     And I fill in the discussion details and submit the form
     Then a discussion should be created
 
+  @javascript
   Scenario: Members get emailed when a discussion is created
     Given "Ben" is a member of the group
     And "Hannah" is a member of the group
