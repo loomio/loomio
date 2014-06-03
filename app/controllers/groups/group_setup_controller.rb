@@ -10,7 +10,7 @@ class Groups::GroupSetupController < GroupBaseController
   def finish
     if @group.update_attributes(permitted_params.group)
       @group.mark_as_setup!
-      InvitePeopleMailer.delay.welcome(@group)
+      create_intercom_event 'first_group_created'
       redirect_to @group
     else
       render 'setup'
