@@ -96,6 +96,6 @@ if ENV['INTERCOM_APP_ID']
     #             id of #Intercom.
     #
     # config.inbox.style = :default 
-    # config.inbox.style = :custom
+    config.inbox.style = :custom
   end
 end
