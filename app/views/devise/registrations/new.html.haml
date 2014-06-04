@@ -20,7 +20,7 @@
                 -elsif @invitation.to_join_group?
                   = t :'join_group.create_account_to_join_group', group_name: @invitation.invitable_name
               - else
-                = t :create_an_account
+                = t :"new_user_form.create_an_account"
             %p= t :or_sign_in_html, link: user_session_path, link_class: 'existing-user'
             .signin_container
               %h3= t :sign_up_via
