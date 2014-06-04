@@ -1075,7 +1075,6 @@ en:
   send_email: "Send email"
   show_more: "Show More"
   start_a_group: "Start a group"
-  start_group: "Start group!"
   starting: "Starting"
   subject: "Subject"
   terms_of_service_html: "By clicking %{button_text}, you agree to Loomio's <a href='%{link_path}' target='_blank'>Terms of service</a>"
@@ -1092,3 +1091,4 @@ en:
     private: "Private"
     public: "Public"
     email: "Email"
+    start_group: "Start group!"

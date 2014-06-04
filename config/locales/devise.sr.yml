@@ -1,55 +1,57 @@
 sr:
   errors:
     messages:
-      expired: "је истекао, молимо затражите нови"
-      not_found: "није нађено"
-      already_confirmed: "је већ потврђено, покушајте да се пријавите"
-      not_locked: "није закључано"
+      expired: "je istekao, molim zatražite novi"
+      not_found: "nije nađeno"
+      already_confirmed: "već je potvrđeno, molim pokušajte da se prijavite"
+      not_locked: "nije zaključano"
       not_saved:
-        one: "1 грешка спречава снимање %{resource}:"
-        few: "%{count} грешке спречавају снимање %{resource}:"
-        other: "%{count} грешака спречавају снимање %{resource}:"
+        one: "1 greška je sprečila da %{resource} bude sačuvano:"
+        other: "%{count} grešaka je sprečilo da %{resource} bude sačuvano:"
 
   devise:
     failure:
-      already_authenticated: 'Већ сте улоговани.'
-      unauthenticated: 'Морате бити пријављени да би сте наставили.'
-      unconfirmed: 'Морате потврдити свој налог пре него што наставите.'
-      locked: 'Ваш налог је закључан.'
-      invalid: 'Неисправан имејл или лозинка.'
-      invalid_token: 'Неисправан токен за аутентификацију.'
-      timeout: 'Ваша сесија је истекла, улогујте се поново како би наставили.'
-      inactive: 'Ваш налог још није активиран.'
+      already_authenticated: 'Vi ste već prijavljeni.'
+      unauthenticated: 'Morate se prijaviti pre nego što nastavite.'
+      unconfirmed: 'morate potvrditi svoj nalog pre nego što nastavite.'
+      locked: 'Vaš nalog je zaključan.'
+      invalid: 'Nepravilna adresa ePošte ili lozinka.'
+      invalid_token: 'Nevažeći token autentifikacije.'
+      timeout: 'Vaša sesija je istekla, molim prijavite se ponovo za nastavak.'
+      inactive: 'Vaš nalog još uvek nije aktiviran.'
     sessions:
-      signed_in: 'Успешно сте се пријавили.'
-      signed_out: 'Успешно сте се одјавили.'
+      sign_in: 'Prijavite se'
+      signed_in: 'Prijava uspešna.'
+      signed_out: 'Odjavljivanje uspešno.'
     passwords:
-      send_instructions: 'Ускоро ћете добити имејл са упутствима како да ресетујете лозинку.'
-      updated: 'Ваша лозинка је успешно измењена, сада сте пријављени на систем.'
-      updated_not_active: 'Лозинка је успешно промењена.'
-      send_paranoid_instructions: 'Ако Ваша имејл адреса постоји у бази, ускоро ћете добити мејл са упутствима како да ресетујете лозинку.'
+      send_instructions: 'Dobićete jednu ePoruku sa instrukcijama o tome kako da promenite svoju lozinku kroz nekoliko minuta.'
+      updated: 'Vaša lozinka je uspešno promenjena. Sada ste prijavljeni na sistem.'
+      updated_not_active: 'Vaša lozinka je uspešno promenjena.'
+      send_paranoid_instructions: "Ako Vaša adresa ePošte postoji u bazi podataka, dobićete vezu u ePoruci na adresu Vaše ePošte na koju treba da škljocnete mišem kako bi ste sredili svoju lozinku"
     confirmations:
-      send_instructions: 'Ускоро ћете добити имејл са упутствима како да потврдите ваш налог.'
-      send_paranoid_instructions: 'Ако Ваша имејл адреса постоји у бази, добићете мејл са упутствима како да потврдите Ваш налог.'
-      confirmed: 'Ваш налог је успешно потврђен, сада сте пријављени на систем.'
+      send_instructions: 'Dobićete jednu ePoruku sa instrukcijama kako da potvrdite svoj nalog kroz nekoliko minuta.'
+      send_paranoid_instructions: 'Ukoliko Vaša adresa ePošte postoji u bazi podataka, dobićete jednu ePoruku sa instrukcijama o tome kako da potvrdite svoj nalog kroz nekoliko minuta.'
+      confirmed: 'Vaš nalog je uspešno potvrđen. Sada ste prijavljeni na sistem.'
     registrations:
-      signed_up: 'Добродошли! Успешно сте се пријавили.'
-      signed_up_but_unconfirmed: 'Порука са линком за потврду налога Вам је послата на Вашу имејл адресу. Молимо отворите тај линк како би сте активирали свој налог.'
-      signed_up_but_inactive: 'Успешно сте се регистровали. Међутим, нисмо могли да Вас пријавимо јер Ваш налог још увек није активиран.'
-      signed_up_but_locked: 'Успешно сте се регистровали. Међутим, нисмо могли да Вас пријавимо јер је Ваш налог закључан.'
-      updated: 'Успешно сте ажурирали свој налог.'
-      update_needs_confirmation: 'Успешно сте ажурирали свој налог, али потребно је да потврдите Вашу нову имејл адресу. Молимо проверите Ваш мејл и кликните на линк за потврду Ваше нове имејл адресе.'
-      destroyed: 'Довиђења! Ваш налог је успешно отказан. Надамо се да ћемо Вас видети поново.'
+      sign_up: 'Napravi nalog'
+      signed_up: 'Dobrodošli! Prijavili ste se uspešno na sistem.'
+      signed_up_but_unconfirmed: 'Poruka sa vezom za potvrdu je poslata na Vašu adresu ePošte. Molim škljocnite na vezu u poruci da aktivirate svoj nalog.'
+      signed_up_but_inactive: 'Registrovali ste se uspešno. Međutim, ne možemo Vas prijaviti na sistem jer Vaš nalog nije još uvek aktiviran.'
+      signed_up_but_locked: 'Registrovali ste se uspešno. Međutim, ne možemo Vas prijaviti na sistem jer je Vaš nalog zaključan.'
+      updated: 'Ažurirali ste uspešno svoj nalog.'
+      update_needs_confirmation: "Ažurirali ste svoj nalog uspešno, ali potrebno je da potvrdite svoju novu adresu ePošte. Molim peoverite svoju ePoštu i škljocnite mišem na vezu kako bi potvrdili sovu novu adresu ePošte."
+      destroyed: 'Doviđenja! Vaš nalog je uspešno otkazan. Nadamo se da ćemo Vas videti ponovo uskoro.'
     unlocks:
-      send_instructions: 'Ускоро ћете примити имејл са упуствима како да откључате свој налог.'
-      unlocked: 'Ваш налог је успешно откључан. Молимо пријавите се како би наставили.'
+      send_instructions: 'Dobićete jednu ePoruku, sa uputstvom kako da otključate svoj nalog, kroz nekoliko minuta.'
+      unlocked: 'Vaš nalog je otključan uspešno. Molim prijavite se za nastavak.'
+      send_paranoid_instructions: 'Ukoliko Vaš nalog postoji, dobićete jednu ePoruku, sa uputstvom kako da otključate nalog, kroz nekoliko minuta.'
     omniauth_callbacks:
-      success: 'Успешна пријава кроз %{kind} налог.'
-      failure: 'Пријава кроз %{kind} није успела због "%{reason}".'
+      success: 'Uspešno autorizovan %{kind} nalog.'
+      failure: 'Nemoguća autorizacija %{kind} zbog "%{reason}".'
     mailer:
       confirmation_instructions:
-        subject: 'Упутства за потврду налога'
+        subject: 'Uputstva o potvrđivanju'
       reset_password_instructions:
-        subject: 'Упутства за ресетовање лозинке'
+        subject: 'Uputstvo za promenu lozinke'
       unlock_instructions:
-        subject: 'Упутства за откључавање налога'
+        subject: 'Uputstvo za otključavanje'
