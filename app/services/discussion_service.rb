@@ -62,8 +62,10 @@ class DiscussionService
       if discussion.description_changed?
         Events::DiscussionDescriptionEdited.publish!(discussion, user)
       end
-      discussion.save!
       user.update_attributes(uses_markdown: discussion.uses_markdown)
+      discussion.save
+    else
+      false
     end
   end
 end
