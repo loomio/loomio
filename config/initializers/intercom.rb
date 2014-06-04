@@ -1,4 +1,6 @@
 if ENV['INTERCOM_APP_ID']
+  Intercom.app_id = ENV["INTERCOM_APP_ID"]
+  Intercom.api_key = ENV['INTERCOM_APP_API_KEY']
   IntercomRails.config do |config|
     # == Intercom app_id
     #
@@ -94,6 +96,6 @@ if ENV['INTERCOM_APP_ID']
     #             id of #Intercom.
     #
     # config.inbox.style = :default 
-    # config.inbox.style = :custom
+    config.inbox.style = :custom
   end
 end
