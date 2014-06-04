@@ -8,60 +8,6 @@ namespace :languages do
   RESOURCES = { 'github-linked-version' => 'en.yml' ,
                  'frontpageenyml' => 'frontpage.en.yml' }
 
-  def build_languages_hash(language_info)
-    languages_hash = {}
-    language_info.each do |l|
-      lang_code = l['language_code']
-      language = lang_code.split('_')[0]
-      if languages_hash[language].nil?
-        languages_hash[language] = [lang_code]
-      else
-        languages_hash[language] += [lang_code]
-      end
-    end
-    languages_hash
-  end
-
-  def check_all_languages_for_competition(languages_hash)
-    languages_hash.keys.each do |language|
-      check_language_for_competition(language, languages_hash)
-    end
-  end
-
-  def check_language_for_competition(language, languages_hash)
-    if languages_hash[language].length > 1 && !DIALECT_OVERRIDES.keys.include?(language)
-      raise "there are multiple unresolved dialects for #{language} and we currently don't support this!"
-    end
-  end
-
-  def decide_dialect(language, languages_hash)
-    check_language_for_competition(language, languages_hash)
-
-    DIALECT_OVERRIDES[language] || languages_hash[language].first
-  end
-
-  def update(lang_code, resource)
-    simplified_language = lang_code.split('_')[0]
-    filename = RESOURCES[resource].chomp('en.yml') + "#{simplified_language}.yml"
-
-    response = HTTParty.get("http://www.transifex.com/api/2/project/loomio-1/resource/#{resource}/translation/#{lang_code}", LOGIN)
-
-    if response.present? && content = response['content']
-
-      content = content.gsub("#{lang_code}:", "#{simplified_language}:")
-
-
-      target = File.open("config/locales/#{filename}", 'w')
-      target.write(content)
-      target.close()
-
-      print "#{filename} "
-    else
-      puts "ERROR!! -- #{simplified_language} - #{filename}"
-    end
-  end
-
-
   task :update => :environment do
     language_info = HTTParty.get('http://www.transifex.com/api/2/project/loomio-1/languages', LOGIN)
     languages_hash = build_languages_hash(language_info)
@@ -81,25 +27,119 @@ namespace :languages do
       print "\n"
     end
 
+    print "\n"
+    Rake::Task["languages:check_variables"].invoke
+    print "\n"
+    print "\n"
     puts "Remember to check EXPERIMENTAL_LANGUAGES array ^_^"
+  end
+
+  task :check_variables => :environment do
+    RESOURCES.values.each do |file|
+      print "CHECKING KEYS AGAINST #{file} \n\n"
+
+      source_language_hash = YAML.load(File.read("config/locales/#{file}"))
+      keys_with_variables = find_keys_with_variables(source_language_hash).map {|key| key[2..-2] }
+
+      AppTranslation::LANGUAGES.values.each do |language|
+        keys_with_variables.each do |key|
+          english_str = I18n.t(key, locale: :en)
+          foreign_str = I18n.t(key, locale: language)
+          english_variables = parse_for_variables english_str
+          foreign_variables = parse_for_variables foreign_str
+
+          if english_variables.any? { |var| !foreign_variables.include?(var) }
+            print "  #{language.to_s}#{key}\n"
+            print "\t\e[32m#{english_str}\e[0m\n"
+            print "\t#{foreign_str}\n\n"
+          end
+        end
+      end
+
+    end
+
   end
 end
 
 
 #this method returns all key-chains which have variables in them.
-def dig_hash(input_hash, key_trace = '')
+def find_keys_with_variables(input_hash, key_trace = '')
+  target_keys = []
+
   input_hash.keys.each do |key|
     extended_key_trace = key_trace + key + '.'
 
-    one_in = input_hash[key]
-    if one_in.is_a?(String)
-      if one_in.scan(/%{[^%{}]*}/).present?
-        puts "#{extended_key_trace.chomp('.')} = #{one_in}"
-      end
-      # check if there are any : .scan(/%{[^%{}]*}/).present?
-
+    hash_or_string = input_hash[key]
+    if hash_or_string.is_a? Hash
+      result_from_deeper = find_keys_with_variables(hash_or_string, extended_key_trace)
+      target_keys << result_from_deeper unless result_from_deeper.empty?
     else
-      dig_hash(one_in, extended_key_trace)
+      target_keys << extended_key_trace if contains_variables?(hash_or_string)
     end
   end
+
+  target_keys.flatten
+end
+
+def parse_for_variables(str)
+  str.scan(/%{[^%{}]*}/)
+end
+
+def contains_variables?(str)
+  parse_for_variables(str).present?
+end
+
+##############
+
+def update(lang_code, resource)
+  simplified_language = lang_code.split('_')[0]
+  filename = RESOURCES[resource].chomp('en.yml') + "#{simplified_language}.yml"
+
+  response = HTTParty.get("http://www.transifex.com/api/2/project/loomio-1/resource/#{resource}/translation/#{lang_code}", LOGIN)
+
+  if response.present? && content = response['content']
+
+    content = content.gsub("#{lang_code}:", "#{simplified_language}:")
+
+
+    target = File.open("config/locales/#{filename}", 'w')
+    target.write(content)
+    target.close()
+
+    print "#{filename} "
+  else
+    puts "ERROR!! -- #{simplified_language} - #{filename}"
+  end
+end
+
+def build_languages_hash(language_info)
+  languages_hash = {}
+  language_info.each do |l|
+    lang_code = l['language_code']
+    language = lang_code.split('_')[0]
+    if languages_hash[language].nil?
+      languages_hash[language] = [lang_code]
+    else
+      languages_hash[language] += [lang_code]
+    end
+  end
+  languages_hash
+end
+
+def check_all_languages_for_competition(languages_hash)
+  languages_hash.keys.each do |language|
+    check_language_for_competition(language, languages_hash)
+  end
+end
+
+def check_language_for_competition(language, languages_hash)
+  if languages_hash[language].length > 1 && !DIALECT_OVERRIDES.keys.include?(language)
+    raise "there are multiple unresolved dialects for #{language} and we currently don't support this!"
+  end
+end
+
+def decide_dialect(language, languages_hash)
+  check_language_for_competition(language, languages_hash)
+
+  DIALECT_OVERRIDES[language] || languages_hash[language].first
 end
