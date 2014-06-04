@@ -24,8 +24,10 @@
       = render 'options_dropdown', group: @group
 
       = join_group_button(@group)
-    =render 'setup_next_steps' if show_next_steps?(@group)
-    =render 'subgroups', subgroups: @subgroups, group: @group if display_subgroups_block?(@group)
+    = render 'setup_next_steps' if show_next_steps?(@group)
+
+    = render 'subgroups', group: @group
+
     - if @closed_motions.any?
       .sub-panel.previous-discussions-panel
         %h4= t(:previous_decisions)

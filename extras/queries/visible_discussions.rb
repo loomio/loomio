@@ -2,10 +2,12 @@ class Queries::VisibleDiscussions < Delegator
   def initialize(user: nil, groups: nil, group_ids: nil)
     @user = user
 
-    if groups.present?
-      group_ids = Array(groups).map(&:id)
-    else
-      group_ids = user.group_ids
+    if group_ids.nil?
+      if groups.present?
+        group_ids = Array(groups).map(&:id)
+      elsif user.present?
+        group_ids = user.group_ids
+      end
     end
 
     @relation = Discussion.joins(:group).merge(Group.published).published
