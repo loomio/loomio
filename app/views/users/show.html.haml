@@ -11,6 +11,6 @@
       - if groups.present?
         %h3#user-groups-list= t(:groups)
         %ul
-          - groups.uniq.sort{|a,b| a.full_name <=> b.full_name}.each do |group|
+          - groups.flatten.uniq.sort{|a,b| a.full_name <=> b.full_name}.each do |group|
             %li
               = link_to group.full_name, group_path(group)
