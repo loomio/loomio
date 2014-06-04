@@ -19,10 +19,10 @@
     - private_int = @discussion.private ? 1 : 0
     = form_tag move_discussion_path(discussion), method: :post, data: {hidden_group_ids: hidden_destination_group_ids.join(' '), private_discussion: @discussion.private }, class: 'move-discussion-form' do
       .modal-body
-        = select_tag :destination_group_id, options_for_select(destination_groups.map{|g| [g.name, g.id]})
+        = select_tag :destination_group_id, options_for_select(destination_groups.sort{|a,b| a.full_name <=> b.full_name}.map{|g| [g.full_name, g.id]})
       .warn-move-will-make-private{style: "display: none"}
         %i.fa.fa-lock
         = t(:move_discussion_to_hidden_group)
       .modal-footer
-        = submit_tag t(:move_discussion), class: "btn btn-info", id: 'move-discussion-submit', :data => { :disable_with => "Move discussion" }
+        = submit_tag t(:move_discussion), class: "btn btn-info", id: 'move-discussion-submit', :data => { :disable_with => t(:'move_discussion') }
         = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn"
