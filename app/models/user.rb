@@ -160,8 +160,12 @@ class User < ActiveRecord::Base
     memberships.where(:group_id => group.id, :subscribed_to_notification_emails => true).present?
   end
 
-  def is_group_admin?(group)
-    admin_memberships.where(group_id: group.id).any?
+  def is_group_admin?(group=nil)
+    if group.present?
+      admin_memberships.where(group_id: group.id).any?
+    else
+      admin_memberships.any?
+    end
   end
 
   def is_member_of?(group)
