@@ -44,6 +44,10 @@ if ENV['INTERCOM_APP_ID']
     #   :favorite_color => :favorite_color
     # }
 
+    config.user.custom_data = {
+        is_coordinator: :is_group_admin?
+    }
+
     # == User -> Company association
     # A Proc that given a user returns an array of companies
     # that the user belongs to.
