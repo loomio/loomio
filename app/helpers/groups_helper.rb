@@ -33,10 +33,6 @@ module GroupsHelper
     end
   end
 
-  def display_subgroups_block?(group)
-    group.parent.nil? && (group.subgroups.present? || (current_user && group.users_include?(current_user)))
-  end
-
   def show_next_steps?(group)
     user_signed_in? && current_user.is_group_admin?(group) && !group.next_steps_completed? && @group.is_parent?
   end

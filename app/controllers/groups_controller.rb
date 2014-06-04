@@ -73,7 +73,6 @@ class GroupsController < GroupBaseController
 
   def show
     @group = GroupDecorator.new @group
-    @subgroups = @group.subgroups.all.select{|g| can?(:show, g) }
     @discussion = Discussion.new(group_id: @group.id)
 
     @discussions = GroupDiscussionsViewer.for(group: @group, user: current_user).
