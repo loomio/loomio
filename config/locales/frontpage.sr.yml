@@ -7,7 +7,7 @@ sr:
       blog: 'Blog'
       contact: 'Kontakt'
       donate: 'Doniraj danas'
-      press: 'Pritisni'
+      press: 'Za Medije'
       try_it: 'Probaj'
       log_in: 'PRIJAVI SE'
       video: "Vidi više o tome kako Loomio radi"
@@ -16,12 +16,12 @@ sr:
       more: 'Još'
       top: 'Vrh'
       public_groups: 'Javne grupe'
-      terms: 'Termini'
+      terms: 'Uslovi'
       privacy: 'Privatnost'
       services: 'Usluge'
     hero:
       head_html: 'Svetu je potreban bolji način da <strong>donosi odluke zajedno</strong>.'
-      desc_html: 'Loomio je besplatan softver<a href="https://github.com/loomio/loomio">otvorenog izvora</a> za svakog, svuda, da učestvuje u odlukama koje utiču na život'
+      desc_html: 'Loomio je besplatan softver <a href="https://github.com/loomio/loomio">otvorenog izvora</a> za svakog, svuda, da učestvuje u odlukama koje utiču na život'
     product:
       header_html: 'Kada čujemo <strong>sva mišljenja</strong>, donosimo <strong>ispravnije odluke</strong>.'
       step1:
@@ -45,7 +45,7 @@ sr:
         rushkoff_html: '“Loomio <strong>oslobađa potencijal interneta</strong> da približi ljude samom koncenzusu umesto polarizovanoj debati.”<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, autor <em>Present Shock</em></div>'
         sifry_html: '“Loomio je popunio prostor između <strong>individualnog glasa</strong> i <strong>kolektivnog odlučivanja</strong>.”<div class="attributation">– Micah Sifry, Urednik, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
-      header: 'O Loomio-u'
+      header: 'O Loomio'
       desc: 'Mi smo mali tim open source developera i aktivista koji zastupaju socijalnu pravdu, koji rade u Enspiral u Aoteri na Novom Zelandu, sa širom mrežom prijatelja, simpatizera i savetnika širom sveta.'
     ideals:
       community:
@@ -56,7 +56,7 @@ sr:
         desc: 'Obezbeđujemo prostor za okupljanje bilo koje grupe, koja je nezavisna od političkih ili korporativnih interesa. Mi nikada nećemo prodati vaše podatke.'
       open:
         header: 'Besplatno i otvorenog koda'
-        desc: 'Loomio-ov izvorni kod je javni resurs koji svako može pokretati, čitati, učiti iz njega, menjati i redistribuirati.'
+        desc: 'Loomio izvorni kod je javni resurs koji svako može pokretati, čitati, učiti iz njega, menjati i redistribuirati.'
       gift:
         header: 'Ekonomija poklona'
         desc: 'Loomio je podržan od strane onih koji plaćaju prema svojim mogućnostima. Ovo čini platformu slobodnom od oglašavanja i pristupačnom grupama bez novca.'
