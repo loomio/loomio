@@ -127,7 +127,7 @@ class Ability
       end
     end
 
-    can :update, Discussion do |discussion|
+    can [:update, :update_version], Discussion do |discussion|
       (discussion.author == user) or user_is_admin_of?(discussion.group_id)
     end
 

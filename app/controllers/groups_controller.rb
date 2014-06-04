@@ -108,12 +108,6 @@ class GroupsController < GroupBaseController
     redirect_to @group
   end
 
-  def edit_description
-    @description = params[:description]
-    @group.description = @description
-    @group.save!
-  end
-
   def members_autocomplete
     users = @group.users.where('username ilike :term or name ilike :term ', {term: "%#{params[:q]}%"})
     render json: users.map{|u| {name: "#{u.name} #{u.username}", username: u.username, real_name: u.name} }
