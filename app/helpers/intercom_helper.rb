@@ -6,5 +6,7 @@ module IntercomHelper
         user: current_user
       })
     end
+  rescue => e
+    Airbrake.notify e
   end
 end
