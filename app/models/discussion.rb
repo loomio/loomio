@@ -23,8 +23,8 @@ class Discussion < ActiveRecord::Base
 
   validates_presence_of :title, :group, :author, :group_id
   validate :private_is_not_nil
-  validates :title, :length => { :maximum => 150 }
-  validates_inclusion_of :uses_markdown, :in => [true,false]
+  validates :title, length: { maximum: 150 }
+  validates_inclusion_of :uses_markdown, in: [true,false]
   validate :privacy_is_permitted_by_group
   
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
@@ -37,22 +37,22 @@ class Discussion < ActiveRecord::Base
   has_one :current_motion, class_name: 'Motion', conditions: {'motions.closed_at' => nil}, order: 'motions.closed_at asc'
   has_one :most_recent_motion, class_name: 'Motion', order: 'motions.created_at desc'
   has_many :votes, through: :motions
-  has_many :comments, :dependent => :destroy
-  has_many :comment_likes, :through => :comments, :source => :comment_votes
-  has_many :commenters, :through => :comments, :source => :user, :uniq => true
-  has_many :events, :as => :eventable, :dependent => :destroy, include: :user
-  has_many :items, class_name: 'Event', include: [{:eventable => :user}, :user], order: 'created_at ASC'
+  has_many :comments, dependent: :destroy
+  has_many :comment_likes, through: :comments, source: :comment_votes
+  has_many :commenters, through: :comments, source: :user, uniq: true
+  has_many :events, as: :eventable, dependent: :destroy, include: :user
+  has_many :items, class_name: 'Event', include: [{eventable: :user}, :user], order: 'created_at ASC'
   has_many :discussion_readers
 
   include PgSearch
   pg_search_scope :search, against: [:title, :description],
     using: {tsearch: {dictionary: "english"}}
 
-  delegate :name, :to => :group, :prefix => :group
-  delegate :users, :to => :group, :prefix => :group
-  delegate :full_name, :to => :group, :prefix => :group
-  delegate :email, :to => :author, :prefix => :author
-  delegate :name_and_email, :to => :author, prefix: :author
+  delegate :name, to: :group, prefix: :group
+  delegate :users, to: :group, prefix: :group
+  delegate :full_name, to: :group, prefix: :group
+  delegate :email, to: :author, prefix: :author
+  delegate :name_and_email, to: :author, prefix: :author
   delegate :language, to: :author
 
   before_create :set_last_comment_at
@@ -129,18 +129,6 @@ class Discussion < ActiveRecord::Base
     items
   end
 
-  def set_description!(description, uses_markdown, user)
-    self.description = description
-    self.uses_markdown = uses_markdown
-    save!
-    fire_edit_description_event(user)
-  end
-
-  def set_title!(title, user)
-    self.title = title
-    save!
-    fire_edit_title_event(user)
-  end
 
   def delayed_destroy
     self.update_attribute(:is_deleted, true)
