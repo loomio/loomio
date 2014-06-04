@@ -45,7 +45,6 @@ class Ability
     can [:update,
          :email_members,
          :hide_next_steps,
-         :edit_description,
          :archive], Group do |group|
       user_is_admin_of?(group.id)
     end
@@ -128,7 +127,7 @@ class Ability
       end
     end
 
-    can :update, Discussion do |discussion|
+    can [:update, :update_version], Discussion do |discussion|
       (discussion.author == user) or user_is_admin_of?(discussion.group_id)
     end
 
@@ -141,12 +140,9 @@ class Ability
          :add_comment,
          :new_proposal,
          :create,
-         :update_description,
-         :edit_title,
          :show_description_history,
          :preview_version,
-         :like_comments,
-         :update_version], Discussion do |discussion|
+         :like_comments], Discussion do |discussion|
       user_is_member_of?(discussion.group_id)
     end
 
@@ -169,19 +165,19 @@ class Ability
     can [:close, :edit_close_date], Motion do |motion|
       motion.voting? && ((motion.author_id == user.id) || user_is_admin_of?(motion.discussion.group_id))
     end
-    
+
     can [:show], Comment do |comment|
-      can?(:show, comment.discussion)      
+      can?(:show, comment.discussion)
     end
-    
+
     can [:show], Motion do |motion|
-      can?(:show, motion.discussion)      
+      can?(:show, motion.discussion)
     end
-    
+
     can [:show], Vote do |vote|
-      can?(:show, vote.motion)      
+      can?(:show, vote.motion)
     end
-    
+
     can [:destroy,
          :create_outcome,
          :update_outcome], Motion do |motion|

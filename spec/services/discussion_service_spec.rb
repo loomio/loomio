@@ -15,6 +15,9 @@ describe 'DiscussionService' do
   let(:user) { double(:user, ability: ability, update_attributes: true) }
   let(:discussion) { double(:discussion, author: user,
                                          save: true,
+                                         valid?: true,
+                                         title_changed?: false,
+                                         description_changed?: false,
                                          :title= => true,
                                          :description= => true,
                                          :private= => true,
@@ -203,7 +206,7 @@ describe 'DiscussionService' do
     end
 
     context 'the discussion is invalid' do
-      before { discussion.stub(:save).and_return(false) }
+      before { discussion.stub(:valid?).and_return(false) }
       it 'returns false' do
         DiscussionService.edit_discussion(user, discussion_params, discussion).should == false
       end

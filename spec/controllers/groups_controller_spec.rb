@@ -58,13 +58,6 @@ describe GroupsController do
         response.should redirect_to expected_new_path
       end
 
-      describe "#edit description" do
-        it "assigns description and saves model" do
-          xhr :post, :edit_description, :id => group.key, :description => "blah"
-          assigns(:group).description.should == 'blah'
-        end
-      end
-
       describe "archives group" do
         before { put :archive, :id => group.key }
 

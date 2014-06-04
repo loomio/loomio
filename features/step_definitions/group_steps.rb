@@ -107,7 +107,7 @@ end
 
 Given /^there is a discussion in a group I belong to$/ do
   @group = FactoryGirl.create :group
-  @discussion = create_discussion :group => @group
+  @discussion = create_discussion group: @group, author: @user
   @group.add_member! @user
 end
 
