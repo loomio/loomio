@@ -18,7 +18,6 @@ da:
       services: 'Faciliteter'
     hero:
       head_html: 'Verdenen behøver en bedre måde at <strong>lave fælles beslutninger</strong>.'
-      subhead: 'Hjælp os til at skabe det.'
     product:
       header_html: 'Når vi hører <strong>alle stemmer</strong>, så opnår vi <strong>bedre beslutninger</strong>.'
       step1:

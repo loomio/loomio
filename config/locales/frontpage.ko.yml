@@ -21,8 +21,6 @@ ko:
       services: '서비스'
     hero:
       head_html: '우리에게는 더 나은 <strong>협력적 의사 결정</strong> 방법이 필요합니다.'
-      subhead: '루미오를 도와주세요'
-      desc_html: '루미오는 누구에게나 이용 관련 참여를 허락하는 자유 <a href="https://github.com/loomio/loomio">오픈 소스</a> 소프트웨어입니다'
     product:
       header_html: '<strong>모두의 의견</strong>이 반영될 때, <strong>더 나은 결론</strong>을 이끌어낼 수 있습니다.'
       step1:

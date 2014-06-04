@@ -143,6 +143,8 @@ zh:
         other: "%{count} 年"
       almost_x_years:
         other: "%{count} 年"
+  organisation:
+    name: "Loomio"
   footer:
     about: '關於'
     blog: '部落格'
@@ -240,6 +242,9 @@ zh:
   confirm_remove_member: '您確定要將這個成員從群組中移除？'
   want_to_invite_html: "想要 <a href='%{link}'>邀請夥伴</a> 到這個群組嗎？"
   membership_requests: "申請成員資格"
+  previous_requests: 前一個要求
+  approved_by_person: 由%{person}核准
+  ignored_by_perosn: 由%{person}取消
   confirm_approve_membership_request: "您確定要將 %{which_user} 加入群組嗎？"
   cancel_membership_request: "取消申請"
   ignore_request: "忽略申請"
@@ -300,16 +305,13 @@ zh:
   empty_decision_list_html: "準備好作決策了嗎？<br> 任何人都可以開始一個新的提案。"
   empty_decision_index: "此群組尚未做出任何決策"
   empty_discussion_list: "這條討論串中尚未有動態。"
-  empty_discussion_index: "您所屬的群組中沒有任何的討論。"
-  empty_discussion_index_group: "此群組尚未有任何的討論。"
-  private_group_discussion_display: "本群組是私密的，討論僅供成員使用。如果您想參與，可以要求加入。"
   discussion_context:
     started_html: "已由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在 %{when} 前開始"
     last_edited_html: "最後由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在 %{when} 前編輯"
     see_revision_history: "查看修訂歷史紀錄"
     see_history: "查看歷史紀錄"
   description_history:
-    header: "編輯歷史"
+    header: "修訂歷史"
     subheader: "版本"
     edited_by: "最後是由 %{who} 在 %{when} 之前編輯"
     current: "(目前)"
@@ -572,14 +574,7 @@ zh:
       name: '您的大名'
       email: '您的 Email 地址'
       message: '您的訊息'
-      destination: '我們該傳送您的訊息到哪？'
       submit: '寄送訊息'
-    destinations:
-      contact: '一般諮詢'
-      tech: '技術支援 / 臭蟲回報 / 功能請求'
-      press: '媒體諮詢'
-      sales: '賣家與買家諮詢'
-      translations: '翻譯諮詢'
     messages:
       email_html: "填寫這張表格，或發電子郵件到 <a href='mailto:%{email}'>%{email}</a>"
       social_html: "您也可以在<br/><a href='%{facebook}' target='_blank'>facebook</a> ， <a href='%{google}' target='_blank'>google+</a> ，和 <a href='%{twitter}' target='_blank'>twitter</a> 加入我們！"
@@ -592,9 +587,6 @@ zh:
   motion_form:
     header: "新的提案"
     name_helper: "請讓標題盡可能明確扼要。"
-  group_form:
-    invitation_settings: "邀請設定"
-    admins_only: "協作者限定"
   vote_form:
     header: "陳述您的立場"
     edit: "編輯您的立場"
@@ -642,13 +634,6 @@ zh:
       discussion:
         title: "標題"
         description: "脈絡"
-        privacy_public_header: "公開"
-        privacy_public_description: "任何人都能看到這則討論串"
-        privacy_private_header: "私人"
-        privacy_private_description: "只有 %{group} 的成員可以看到這則討論串"
-        privacy_hidden_description: "在隱藏群組中的討論都是私人的。"
-        of: "於"
-        of_no_group: "(在此群組)"
       group:
         name: "群組名稱"
         description: "描述"
@@ -667,7 +652,6 @@ zh:
         privacy_parent_group_members_description_short: 僅有成員及父群組能看到這個群組與其討論。
         group_members_invitable_by: "協作者限定"
         submit: 呈遞
-        viewable_by_parent_members_header: 允許所有 %{group} 的成員都能看到這個子群組及其討論
       membership_request:
         introduction: "介紹您自己"
       motion:
@@ -731,7 +715,6 @@ zh:
     view_discussion: "點擊此處，您可以看到這條討論串。"
     view_group: "點擊此處，您可以看到Loomio上的群組。"
     view_proposal: "在 Loomio 上觀看這項提案。"
-    campaign_html: "這個決策對您很重要嗎？考慮 <a href='%{link_path}'> 成為 Loomio 的贊助者</a> 並幫助我們傳播 Loomio 到世界各地。我們是一個試著做大事的小團隊，並且需要您的贊助以幫助我們持續成長。"
     create_discussion:
       intro: "%{who} 在 %{which_group} 開啟了新的討論串："
       subject: "新討論串 — %{which}"
@@ -787,8 +770,6 @@ zh:
       header: "您就快完成了！"
       intro: "為了完成您的申請，請點擊此認證連結："
       ignore: "若您並未申請加入 Loomio，請忽略此郵件。"
-  campaign:
-    crowdfunding_html: "我們辦到了！感謝每一位幫助我們的 Loomio 1.0 群眾募資。我們熱愛社群！</a>"
   about_loomio: "關於 Loomio"
   ago: "%{quantity_of_time} "
   approve: "批准"
@@ -831,7 +812,11 @@ zh:
   pricing: '定價'
   prev: "上一個"
   more: "更多"
+  translate: "協助翻譯 Loomio！"
+  translate_field: "看看翻譯"
+  loading_translation: "載入翻譯中⋯"
   translate_this_string: "翻譯成 %{language}"
+  failed_translation: "翻譯無法完成"
   options: "選項"
   ok_got_it: "Ok，了解了！"
   remove: "移除"
@@ -842,12 +827,10 @@ zh:
   send_email: "寄送 Email"
   show_more: "顯示更多"
   start_a_group: "開始一個群組"
-  start_group: "建立新的群組！"
   starting: "正在開始"
   subject: "主旨"
   terms_of_service_html: "按下%{button_text}按鈕表示您同意遵守 Loomio 的<a href='%{link_path}' target='_blank'>服務條款</a>"
   thanks: "謝謝！"
-  translate: "協助翻譯 Loomio！"
   unlike: "收回讚"
   time_until_close: "%{quantity_of_time} 直到定案"
   update: "更新"

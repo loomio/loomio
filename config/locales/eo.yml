@@ -195,8 +195,6 @@ eo:
   empty_decision_list_html: "Ĉu vi pretas por fari decidon? <br> Kiu ajn povas komenci proponon."
   empty_decision_index: "Tiu ĉi grupo faris neniun ajn decidojn ĝis nu.n"
   empty_discussion_list: "Ankoraŭ nenio okazis en tiu ĉi diskuto."
-  empty_discussion_index: "Neniu diskuto troveblas ene de viaj grupoj."
-  empty_discussion_index_group: "Tiu ĉi grupo havas neniun ajn decidon ĝis nun."
   discussion_context:
     see_revision_history: "Vidu la revizian historion"
   description_history:
@@ -371,9 +369,6 @@ eo:
   motion_form:
     header: "Nova propono"
     name_helper: "Bonvolu klarigi kaj mallongigi la titolon kiel eble plej multe."
-  group_form:
-    invitation_settings: "Agordoj de la invito"
-    admins_only: "Nur kunordigantoj"
   vote_form:
     header: "Vortumi vian sintenton"
     edit: "Redakti vian sintenon"

@@ -237,10 +237,6 @@ ga:
       discussion:
         title: "Teideal"
         description: "Comhthéacs"
-        privacy_public_header: "Poiblí"
-        privacy_public_description: "Tig le cách an plé seo a fheiceáil"
-        privacy_private_header: "Príobháideach"
-        of: "de"
       group:
         description: "Cur síos"
         members_invitable_by_members: "Baill uile an ghrúpa"
@@ -354,7 +350,6 @@ ga:
   send_email: "Seol ríomhphost"
   show_more: "Taispeáin Tuilleadh"
   start_a_group: "Cuir baicle ar bun"
-  start_group: "Grúpa tosaithe!"
   starting: "Ag tosú"
   subject: "Ábhar"
   thanks: "Go raibh maith agat!"

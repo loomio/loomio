@@ -19,8 +19,6 @@ pl:
       terms: 'Zasady'
       privacy: 'Prywatność'
       services: 'Usługi'
-    hero:
-      subhead: 'Pomóż nam to stworzyć.'
     product:
       step1:
         header: '1. Omówcie wspólnie tematy'

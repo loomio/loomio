@@ -236,9 +236,6 @@ te:
       header: "చర్చను సవరించండి"
   motion_form:
     header: "కొత్త ప్రతిపాదన"
-  group_form:
-    invitation_settings: "ఆహ్వాన అమరికలు"
-    admins_only: "సమన్వయకర్తలు మాత్రమే"
   vote_form:
     edit: "మీ స్థానాన్ని సవరించుకోండి"
     your_position: "మీ స్థానము"
@@ -266,8 +263,6 @@ te:
       discussion:
         title: "శీర్షిక"
         description: "సందర్భం"
-        privacy_public_header: "బహిరంగం"
-        privacy_public_description: "ఈ చర్చను ఎవరైనా చూడగలరు"
       group:
         name: "సమూహం పేరు"
         description: "వివరణ"
@@ -362,6 +357,7 @@ te:
   pricing: 'ధర'
   prev: "మునుపటిది"
   more: "మరింత..."
+  translate: "లూమియోను అనువదించుటలో సహాయం చేయండి!"
   translate_this_string: "%{language} లోకి అనువదించండి"
   options: "ఐచ్ఛికాలు"
   ok_got_it: "సరే, అర్థమైంది!"
@@ -373,11 +369,9 @@ te:
   send_email: "ఈమెయిలు పంపండి"
   show_more: "మరింత చూపించు"
   start_a_group: "ఒక సమూహాన్ని ప్రారంభించండి"
-  start_group: "సమూహాన్ని ప్రారంభించండి!"
   starting: "ప్రారంభిస్తూంది"
   subject: "విషయం"
   thanks: "ధన్యవాదాలు!"
-  translate: "లూమియోను అనువదించుటలో సహాయం చేయండి!"
   unlike: "అయిష్టం"
   update: "నవీకరించు"
   facebook: "ఫేస్‌బుక్"

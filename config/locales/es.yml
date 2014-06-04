@@ -310,9 +310,6 @@ es:
   empty_decision_list_html: "¿Estás listo para tomar una decisión? <br> Cualquiera puede empezar una propuesta."
   empty_decision_index: " Este grupo no ha tomado ninguna decisión todavía."
   empty_discussion_list: "Todavía no hay actividad en esta discusión."
-  empty_discussion_index: "No hay discusiones en ninguno de tus grupos"
-  empty_discussion_index_group: "Este grupo no tiene discusiones todavía."
-  private_group_discussion_display: "Este grupo es privado. Las discusiones son visibles solo a los miembros. Si deseas participar, puedes solicitar tu inclusión."
   discussion_context:
     started_html: "Iniciado hace %{when} por <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Última edición hace %{when} por <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -573,14 +570,7 @@ es:
       name: 'Tu nombre'
       email: 'Tu correo electrónico'
       message: 'Tu mensaje'
-      destination: '¿A dónde enviaremos tu mensaje?'
       submit: 'Enviar mensaje'
-    destinations:
-      contact: 'Preguntas generales'
-      tech: 'Soporte técnico / informar errores / solicitar características'
-      press: 'Preguntas (medios)'
-      sales: 'Preguntas (ventas y clientes)'
-      translations: 'Preguntas (traducción)'
     messages:
       email_html: "Rellena este formulario o envía un correo electrónico a <a href='mailto:%{email}'>%{email}</a>"
       social_html: "También puedes encontrarnos en<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
@@ -593,9 +583,6 @@ es:
   motion_form:
     header: "Nueva propuesta"
     name_helper: " Haz el título lo más claro y conciso posible para que la gente sepa exactamente lo que quieres decir cuando estén de acuerdo o en desacuerdo con la propuesta."
-  group_form:
-    invitation_settings: "Configuración de invitaciones"
-    admins_only: "Solo coordinadores"
   vote_form:
     header: "Establece tu posición"
     edit: "Modifica tu posición"
@@ -643,13 +630,6 @@ es:
       discussion:
         title: "Título"
         description: "Contexto"
-        privacy_public_header: "Público"
-        privacy_public_description: "Todos/as pueden ver esta discusión"
-        privacy_private_header: "Privado"
-        privacy_private_description: "Solo los miembros de %{group} puden ver esta discusión"
-        privacy_hidden_description: "Todas las discusiones en un grupo oculto son privadas. "
-        of: "de"
-        of_no_group: "de este grupo"
       group:
         name: "Nombre del Grupo"
         description: "Descripción "
@@ -668,7 +648,6 @@ es:
         privacy_parent_group_members_description_short: Solo miembros y miembros de grupo superior pueden ver este grupo y sus discusiones.
         group_members_invitable_by: "Solo coordinadores"
         submit: Enviar
-        viewable_by_parent_members_header: Permitir a todos los miembros de %{group} ver este subgrupo y sus discusiones
       membership_request:
         introduction: "Preséntate"
       motion:
@@ -732,7 +711,6 @@ es:
     view_discussion: "Haz click aquí para ver esta discusión "
     view_group: "Haz click aquí para ver el grupo en Loomio"
     view_proposal: "Ver esta propuesta en Loomio"
-    campaign_html: "¿Fue importante para ti esta decisión? Considera <a href='%{link_path}'>convertirte en contribuidor de Loomio</a> y ayúdanos a difundir Loomio al mundo. ¡Somos un pequeño equipo tratando de hacer grandes cosas, y necesitamos tu contribución para seguir creciendo!"
     create_discussion:
       intro: "%{who} empezó una discusión en %{which_group}:"
       subject: "Nueva discusión - %{which}"
@@ -786,8 +764,6 @@ es:
       header: "¡Ya casi terminas!"
       intro: "Por favor, haz click en el enlace de verificación para finalizar tu solicitud:"
       ignore: "Si no has pedido ser parte de Loomio ignora este correo electrónico. "
-  campaign:
-    crowdfunding_html: "Lo hicimos! Gracias a tod@s los que nos ayudaron a financiar Loomio 1.0. Amamos nuestra comunidad!</a>"
   about_loomio: "Acerca de Loomio"
   ago: "hace %{quantity_of_time}"
   approve: "Aprobar"
@@ -830,6 +806,7 @@ es:
   pricing: 'Precios'
   prev: "Atrás"
   more: "Más..."
+  translate: "¡Ayúdanos a traducir Loomio!"
   translate_this_string: "Traducir a %{language}"
   options: "Opciones"
   ok_got_it: "Bien, ¡lo tengo!"
@@ -841,12 +818,10 @@ es:
   send_email: "Enviar correo electrónico"
   show_more: "Mostrar más"
   start_a_group: "Empieza un grupo"
-  start_group: "¡Iniciar grupo!"
   starting: "Empezando"
   subject: "Título"
   terms_of_service_html: "Haciendo click en %{button_text}, aceptas <a href='%{link_path}' target='_blank'>los términos de servicio de Loomio</a>"
   thanks: "¡Gracias!"
-  translate: "¡Ayúdanos a traducir Loomio!"
   unlike: "Ya no me gusta"
   time_until_close: "%{quantity_of_time} para cierre"
   update: "Actualizar"
