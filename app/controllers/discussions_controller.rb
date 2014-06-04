@@ -135,16 +135,6 @@ class DiscussionsController < GroupBaseController
     end
   end
 
-  def update_description
-    @discussion.set_description!(params[:description], params[:description_uses_markdown], current_user)
-    redirect_to @discussion
-  end
-
-  def edit_title
-    @discussion.set_title!(params.require(:title), current_user)
-    redirect_to @discussion
-  end
-
   def show_description_history
     @originator = User.find @discussion.originator.to_i
     respond_to do |format|

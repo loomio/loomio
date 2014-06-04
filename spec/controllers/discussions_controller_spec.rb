@@ -123,43 +123,6 @@ describe DiscussionsController do
       end
     end
 
-    describe "edit description" do
-      before do
-        discussion.stub(:set_edit_description_activity!)
-        discussion.stub(:save!)
-      end
-
-      after do
-        post :update_description, :id => discussion.key, :description => "blah"
-      end
-
-      it "assigns description to the model" do
-        discussion.should_receive(:set_description!)
-      end
-    end
-
-    describe "edit title" do
-      before do
-        discussion.stub(:save!)
-      end
-
-      after do
-        xhr :post, :edit_title,
-          :id => discussion.key,
-          :title => "The Butterflys"
-      end
-
-      it "assigns title to the model" do
-        discussion.should_receive(:title=).with "The Butterflys"
-      end
-      it "saves the model" do
-        discussion.should_receive :save!
-      end
-      it "creates activity in the events table" do
-        discussion.should_receive :fire_edit_title_event
-      end
-    end
-
     describe "change version" do
       before do
         @version_item = mock_model(Discussion, :title => 'most important discussion', :description => "new version", key: 'abc1234', :save! => true)

@@ -54,9 +54,18 @@ class DiscussionService
       discussion.iframe_src = discussion_params[:iframe_src]
     end
 
-    return false unless discussion.save
+    if discussion.valid?
+      if discussion.title_changed?
+        Events::DiscussionTitleEdited.publish!(discussion, user)
+      end
 
-    user.update_attributes(uses_markdown: discussion.uses_markdown)
+      if discussion.description_changed?
+        Events::DiscussionDescriptionEdited.publish!(discussion, user)
+      end
+      user.update_attributes(uses_markdown: discussion.uses_markdown)
+      discussion.save
+    else
+      false
+    end
   end
-
 end
