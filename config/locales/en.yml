@@ -417,6 +417,7 @@ en:
   empty_decision_list_html: "Ready to make a decision? <br> Anyone can start a proposal."
   empty_decision_index: "This group has not made any decisions yet."
   empty_discussion_list: "There is no activity in this discussion yet."
+  go_to_add_comment_html: "To add a comment, <a href='%{href}'>go to the end of the discussion</a>."
 
   discussion_list:
     empty:

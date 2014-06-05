@@ -31,9 +31,9 @@
                 = render 'activity', items: @activity
                 = render 'add_comment', discussion: @discussion
                 = paginate @activity
-
-                - if comment_box_is_not_displayed?
-                  %p= link_to "Go to the end of the discussion to add a comment.",  path_of_add_comment
+                - unless last_page?
+                  %p.go-to-add-comment
+                    = t( :go_to_add_comment_html, href: path_of_add_comment )
 
           .span6#content-proposal
             .large-icon.decision-icon
