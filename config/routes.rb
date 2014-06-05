@@ -199,16 +199,29 @@ Loomio::Application.routes.draw do
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
   root :to => 'marketing#index'
 
-  scope controller: 'pages' do
-    get :about
-    get :privacy
-    get :purpose
-    get :services
-    get :terms_of_service
-    get :third_parties
-    get :try_it
-    get :wallets
-    get :browser_not_supported
+  constraints(MainDomainConstraint) do
+    scope controller: 'pages' do
+      get :about
+      get :privacy
+      get :purpose
+      get :services
+      get :terms_of_service
+      get :third_parties
+      get :try_it
+      get :wallets
+      get :browser_not_supported
+    end
+  end
+
+  constraints(GroupSubdomainConstraint) do
+    match '/about' => redirect('https://www.loomio.org/about')
+    match '/privacy' => redirect('https://www.loomio.org/privacy')
+    match '/purpose' => redirect('https://www.loomio.org/purpose')
+    match '/services' => redirect('https://www.loomio.org/services')
+    match '/terms_of_service' => redirect('https://www.loomio.org/terms_of_service')
+    match '/third_parties' => redirect('https://www.loomio.org/third_parties')
+    match '/try_it' => redirect('https://www.loomio.org/try_it')
+    match '/wallets' => redirect('https://www.loomio.org/wallets')
   end
 
   scope controller: 'help' do
