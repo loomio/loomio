@@ -22,11 +22,7 @@
       - if motion
         .icon.shim{:id => "graph_#{motion.id}"}
           .motion-sparkline
-            -values = motion.vote_counts.values
-            -if values.sum == 0
-              0,0,0,0,1
-            -else
-              =values.join(',')
+            = motion_sparkline(motion)
           - if motion.voting? && motion_reader.unread_activity_count > 0
             %span.activity-count.label.label-info
               = motion_reader.unread_activity_count

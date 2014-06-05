@@ -17,13 +17,29 @@
       - if discussion.group.present? and discussion.group.beta_feature_enabled?('discussion_iframe') and can?(:update, discussion.group)
         =f.input :iframe_src
 
-      - if discussion.group.present? and discussion.group.is_hidden?
-        .hidden-group-discussion-privacy
-          %h3.header= t :'simple_form.labels.group.privacy'
-          %i.fa.fa-lock
-          %span.subhead= t :'simple_form.labels.discussion.privacy_private_header'
-          .description= t :'simple_form.labels.discussion.privacy_hidden_description'
-          = f.input_field :private, as: :hidden, value: true
+      - if discussion.group.present?
+        - group = discussion.group
+        - if group.is_visible_to_parent_members?
+          .hidden-group-discussion-privacy
+            %i.fa.fa-lock
+            %span.subhead= t :'common.private'
+            .description= t :'discussion_form.privacy.will_be_private_to_parent_group', parent_group_name: group.parent.name, group_name: group.name
+            = f.input_field :private, as: :hidden, value: true
+        - else
+          - if group.private_discussions_only?
+            .hidden-group-discussion-privacy
+              %i.fa.fa-lock
+              %span.subhead= t :'common.private'
+              .description= t :'discussion_form.privacy.will_be_private_to_group', group_name: group.name
+              = f.input_field :private, as: :hidden, value: true
+          - elsif group.public_discussions_only?
+            .hidden-group-discussion-privacy
+              %i.fa.fa-globe
+              %span.subhead= t :'common.public'
+              .description= t :'discussion_form.privacy.will_be_public'
+              = f.input_field :private, as: :hidden, value: false
+          - else
+            = f.input :private, as: :radio_buttons, collection: discussion_privacy_options(discussion), label: t('simple_form.labels.group.privacy')
       - else
         = f.input :private, as: :radio_buttons, collection: discussion_privacy_options(discussion), label: t('simple_form.labels.group.privacy')
       = f.input 'uses_markdown', as: :hidden, id: 'global-uses-markdown'

@@ -5,20 +5,7 @@
     .translation-spacer.translated
     .translated-description.translated
       = t(:loading_translation)
-    - if can? :update_description, discussion
-      = link_to t(:edit_discussion_context), "#", class: "edit-description edit-discussion-description bottom-panel-link", id: 'edit_description'
+    - if can?(:edit, discussion)
+      = link_to t(:'edit'), edit_discussion_path(discussion), class: "edit-description edit-discussion-description bottom-panel-link"
     - if TranslationService.can_translate? discussion
       = translate_link_for discussion
-  - if can? :update_description, discussion
-    = form_tag update_description_discussion_path(discussion), :id => "description-edit-form", :class => "hidden" do |f|
-      = hidden_field_tag 'id'
-      = hidden_field_tag 'description_uses_markdown', description_markdown_setting, {id: 'description-markdown-setting'}
-      .control-group
-        = text_area_tag 'description', description, {id: 'description-input', class: 'js-warn-before-navigating-away',  :autofocus => true }
-      .save-buttons.clearfix
-        = submit_tag t(:save), class: 'btn btn-small btn-grey run-validations', id: 'add-description-submit', :data => {:disable_with => t(:saving)}
-        = link_to t(:cancel), "#", id: 'cancel-add-description'
-        .dropdown#discussion-markdown-dropdown.local-markdown-setting
-          %a.dropdown-toggle{href:'#discussion-markdown-dropdown', id:'discussion-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
-            = markdown_img(description_markdown_setting)
-          = render 'markdown_setting', target: discussion

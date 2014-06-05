@@ -15,10 +15,7 @@ Loomio::Application.routes.draw do
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
   get "/explore/category/:id", to: "explore#category", as: :category_explore
-
   get "/groups", to: 'public_groups#index', as: :public_groups
-
-  get "/new_group", to: 'groups#new'
 
   resource :search, only: :show
 
@@ -44,7 +41,22 @@ Loomio::Application.routes.draw do
 
   get "/theme_assets/:id", to: 'theme_assets#show', as: 'theme_assets'
 
-  resources :groups, path: 'g', only: [:create, :edit] do
+  resources :groups, path: 'g', only: [:new, :create, :edit, :update] do
+    member do
+      post :join
+      post :add_members
+      post :hide_next_steps
+      get :add_subgroup
+      post :email_members
+      post :edit_description
+      delete :leave_group
+      get :members_autocomplete
+    end
+
+    resources :motions,     only: [:index]
+    resources :discussions, only: [:index, :new]
+    resources :invitations, only: [:new, :destroy]
+
     scope module: :groups do
       resources :memberships, only: [:index, :destroy, :new, :create] do
         member do
@@ -60,24 +72,9 @@ Loomio::Application.routes.draw do
         end
       end
 
-      get :ask_to_join, controller: 'membership_requests', action: :new
-      resources :membership_requests, only: [:create]
+      resources :membership_requests, only: [:create, :new]
       get :membership_requests,  to: 'manage_membership_requests#index', as: 'membership_requests'
     end
-
-    member do
-      post :add_members
-      post :hide_next_steps
-      get :add_subgroup
-      post :email_members
-      post :edit_description
-      delete :leave_group
-      get :members_autocomplete
-    end
-
-    resources :motions,     only: [:index]
-    resources :discussions, only: [:index, :new]
-    resources :invitations, only: [:new, :destroy]
   end
 
   scope module: :groups, path: 'g', slug: slug_regex do
@@ -183,35 +180,35 @@ Loomio::Application.routes.draw do
   end
 
   match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
-    
+
   post '/translate/:model/:id', to: 'translations#create', as: :translate
-
-  get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
-  get '/group_requests/:id/start_new_group' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('token=','')}"}
-
-  get '/contributions' => redirect('/crowd')
-  get '/contributions/thanks' => redirect('/crowd')
-  get '/contributions/callback' => redirect('/crowd')
-  get '/crowd' => redirect('https://love.loomio.org/')
-
-  # resources :contributions, only: [:index, :create] do
-  #   get :callback, on: :collection
-  #   get :thanks, on: :collection
-  # end
 
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
   root :to => 'marketing#index'
 
-  scope controller: 'pages' do
-    get :about
-    get :privacy
-    get :purpose
-    get :services
-    get :terms_of_service
-    get :third_parties
-    get :try_it
-    get :wallets
-    get :browser_not_supported
+  constraints(MainDomainConstraint) do
+    scope controller: 'pages' do
+      get :about
+      get :privacy
+      get :purpose
+      get :services
+      get :terms_of_service
+      get :third_parties
+      get :try_it
+      get :wallets
+      get :browser_not_supported
+    end
+  end
+
+  constraints(GroupSubdomainConstraint) do
+    match '/about' => redirect('https://www.loomio.org/about')
+    match '/privacy' => redirect('https://www.loomio.org/privacy')
+    match '/purpose' => redirect('https://www.loomio.org/purpose')
+    match '/services' => redirect('https://www.loomio.org/services')
+    match '/terms_of_service' => redirect('https://www.loomio.org/terms_of_service')
+    match '/third_parties' => redirect('https://www.loomio.org/third_parties')
+    match '/try_it' => redirect('https://www.loomio.org/try_it')
+    match '/wallets' => redirect('https://www.loomio.org/wallets')
   end
 
   scope controller: 'help' do
@@ -219,7 +216,6 @@ Loomio::Application.routes.draw do
   end
 
   get '/detect_locale' => 'detect_locale#show'
-  match '/detect_video_locale' => 'detect_locale#video', as: :detect_video_locale
 
   resources :contact_messages, only: [:new, :create]
   match 'contact(/:destination)', to: 'contact_messages#new'
@@ -231,31 +227,32 @@ Loomio::Application.routes.draw do
     get 'pwyc', action: 'new'
   end
 
-  #redirect old invites
-  match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
-
-  #redirect old pages:
-  get '/we_the_people' => redirect('/')
-  get '/collaborate'   => redirect('/')
-  get '/woc'           => redirect('/')
   get '/discussions/:id', to: 'discussions_redirect#show'
   get '/groups/:id',      to: 'groups_redirect#show'
   get '/motions/:id',     to: 'motions_redirect#show'
 
+  get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
+  get '/group_requests/:id/start_new_group' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('token=','')}"}
+
+  get '/contributions'      => redirect('/crowd')
+  get '/contributions/thanks' => redirect('/crowd')
+  get '/contributions/callback' => redirect('/crowd')
+  get '/crowd'              => redirect('https://love.loomio.org/')
+
   scope path: 'pages' do
-    get 'home'         => redirect('/')
-    get 'how*it*works' => redirect('/purpose#how-it-works')
-    get 'get*involved' => redirect('/about')
-    get 'privacy'      => redirect('/privacy_policy')
-    get 'about'        => redirect('/about#about-us')
-    match 'contact'    => 'contact_messages#new'
+    get 'home'              => redirect('/')
+    get 'how*it*works'      => redirect('/purpose#how-it-works')
+    get 'get*involved'      => redirect('/about')
+    get 'privacy'           => redirect('/privacy_policy')
+    get 'about'             => redirect('/about#about-us')
+    match 'contact'         => 'contact_messages#new'
   end
 
   get '/get*involved'       => redirect('/purpose#how-it-works')
   get '/how*it*works'       => redirect('/purpose#how-it-works')
   get '/about#how-it-works' => redirect('/purpose#how-it-works')
 
-  get '/blog'       => redirect('http://blog.loomio.org')
-  get '/press'      => redirect('http://blog.loomio.org/press-pack')
-  get '/press-pack' => redirect('http://blog.loomio.org/press-pack')
+  get '/blog'               => redirect('http://blog.loomio.org')
+  get '/press'              => redirect('http://blog.loomio.org/press-pack')
+  get '/press-pack'         => redirect('http://blog.loomio.org/press-pack')
 end

@@ -23,25 +23,26 @@ module LocalesHelper
   end
 
   def set_application_locale
+    I18n.locale = best_locale
+  end
+
+  def best_locale
     if user_signed_in?
-      I18n.locale = best_logged_in_locale
+      best_available_locale
     else
-      I18n.locale = best_logged_out_locale
+      best_cachable_locale
     end
   end
 
-  # consider best_locale
-  def best_logged_in_locale
+  def best_available_locale
     selected_locale || detected_locale || default_locale
   end
 
-  # consider best_cachable_locale
-  def best_logged_out_locale
+  def best_cachable_locale
     selected_locale || default_locale
   end
 
-  # consider locale_fallback
-  def best_locale(first, second = nil)
+  def locale_fallback(first, second = nil)
     first || second || default_locale
   end
 
@@ -53,5 +54,12 @@ module LocalesHelper
 
   def save_detected_locale(user)
     user.update_attribute(:detected_locale, detected_locale)
+  end
+
+  def save_selected_locale
+    locale = params[:locale]
+    if AppTranslation.permitted_locale?(locale)
+      current_user.update_attribute(:selected_locale, locale)
+    end
   end
 end

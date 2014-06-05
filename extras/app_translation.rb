@@ -16,6 +16,7 @@ class AppTranslation
                'Nederlands' => :nl,
                'Português (Brasil)' => :pt,
                'română' => :ro,
+               'srpski' => :sr,
                'Svenska' => :sv,
                'Tiếng Việt' => :vi,
                'Türkçe' => :tr,
@@ -29,7 +30,7 @@ class AppTranslation
                             'Telugu' => :te,
                             'khmer' => :km}
 
-  VIDEO_SUPPORTED_LOCALES  = [:en, :pt, :el, :es, :ca, :cs, :fr, :ja, :nl, :vi]
+  FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl, :zh, :sv, :da, :be, :ru, :ko, :sr]
 
   def self.language(locale)
     LANGUAGES.key(locale.to_s)
@@ -41,10 +42,6 @@ class AppTranslation
 
   def self.frontpage_locales
     FRONTPAGE_SUPPORTED_LOCALES
-  end
-
-  def self.video_locales
-    VIDEO_SUPPORTED_LOCALES
   end
 
   def self.experimental_locales

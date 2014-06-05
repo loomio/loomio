@@ -56,6 +56,7 @@ gem 'librato-rails'
 gem 'http_accept_language'
 gem 'browser'
 gem 'activerecord-postgres-hstore'
+gem 'intercom'
 gem 'intercom-rails', '~> 0.2.24'
 
 # Gems used only for assets and not required
