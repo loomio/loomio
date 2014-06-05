@@ -114,16 +114,25 @@ $ ->
   # and when the dom loads
   update_group_form_state()
 
-show_edit_link = ->
-  $('.edit-group-link').show()
+show_cover_photo_upload = ->
+  $('.cover-photo-upload').show()
 
-hide_edit_link = ->
-  $('.edit-group-link').hide()
+hide_cover_photo_upload = ->
+  $('.cover-photo-upload').hide()
+
+show_edit_group = ->
+  $('.edit-group').show()
+  $('.edit-group-placeholder').hide()
+
+hide_edit_group = ->
+  $('.edit-group').hide()
+  $('.edit-group-placeholder').show()
 
 $ ->
-  hide_edit_link()
-  $('.group-heading').hover(show_edit_link, hide_edit_link)
-
+  hide_cover_photo_upload()
+  hide_edit_group()
+  $('.group-heading').hover(show_cover_photo_upload, hide_cover_photo_upload)
+  $('.group-description').hover(show_edit_group, hide_edit_group)
 
 $ ->
   $(".js-submit-on-change").change (event) ->

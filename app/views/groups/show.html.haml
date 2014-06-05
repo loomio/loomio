@@ -4,17 +4,24 @@
 
   - if can? :edit, @group
     .cover-photo-upload
-      %span
-        %i.fa.fa-picture-o
-        upload
       = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
-        = file_field_tag "group[cover_photo]", class: 'upload'
+        = file_field_tag "group[cover_photo]"
+        .upload-button
+          %i.fa.fa-pencil
+          = t :change_cover_photo
+
   .group-logo
   = render '/groups/title', group: @group, discussion: @discussion
 
 .row
   .span9
     .group-description
+      - if can? :edit, @group
+        = link_to edit_group_path @group do
+          .edit-group
+            %i.fa.fa-pencil
+              = t :edit
+          .edit-group-placeholder
       .logo-placeholder
       ~ render_rich_text(@group.description)
     .main-content
@@ -22,6 +29,7 @@
 
   .span3
     #group-actions
+
       - if can? :create, @discussion
         = icon_button(href: new_discussion_path(:group_id => @group.id), text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
       - if can?(:add_members, @group)
@@ -49,15 +57,3 @@
     =render 'membership_requests', group: @group
     =render 'members', group: @group
     =render '/application/closed_motions', user: nil, group: @group
-
-
-/ above the fold
-/   cover photo
-/   icon
-/   name
-/ below the fold
-/   left
-/     description
-/     discussions
-/   right
-/     sidebar
