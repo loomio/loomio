@@ -1,29 +1,24 @@
-.row
-  .span9
-    .group-heading
-      - if can? :edit, @group
-        .edit-group-link
-          =link_to edit_group_path(@group) do
-            %i.fa.fa-pencil
-            = t :edit
-      - set_title @group.name, "", @group.parent
-      = render '/groups/title', group: @group, discussion: @discussion
-      .group-description
-        ~ render_rich_text(@group.description)
+- set_title @group.name, "", @group.parent
 
-    .row
-      .main-content
-        =render 'discussions/discussion_list'
+.group-heading.clearfix
+  .group-logo
+  = render '/groups/title', group: @group, discussion: @discussion
+  .group-description
+    ~ render_rich_text(@group.description)
+  #group-actions
+    - if can? :create, @discussion
+      = icon_button(href: new_discussion_path(:group_id => @group.id), text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
+    - if can?(:add_members, @group)
+      = render 'invite_button', group: @group, discussion: @discussion
+    = render 'options_dropdown', group: @group
+
+    = join_group_button(@group)
+
+.row
+  .main-content
+    =render 'discussions/discussion_list'
 
   %section.span3
-    #group-actions
-      - if can? :create, @discussion
-        = icon_button(href: new_discussion_path(:group_id => @group.id), text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
-      - if can?(:add_members, @group)
-        = render 'invite_button', group: @group, discussion: @discussion
-      = render 'options_dropdown', group: @group
-
-      = join_group_button(@group)
     = render 'setup_next_steps' if show_next_steps?(@group)
 
     = render 'subgroups', group: @group

@@ -14,6 +14,40 @@ body.groups {
       float: right;
       padding: 10px;
     }
+    .shadow{
+      text-shadow: 0 1px 1px rgba(0,0,0,.8);
+      text-rendering: optimizelegibility;
+      color: white;
+    }
+    .group-heading {
+      background: image-url('forest.png') 0 0 no-repeat;
+      margin: -23px -20px 0 -20px;
+      .group-logo {
+        width: 100px;
+        height: 100px;
+        margin: 90px 20px 0px 20px;
+        background: image-url('teal-logo.png') 0 0;
+        float: left;
+      }
+      .group-title {
+        float: left;
+        margin-top: 90px;
+        a {
+          color: white;
+          font-size: 30px;
+        }
+      }
+      .group-description{
+        float: left;
+        margin: 20px 0 -8px 0;
+        width: 600px;
+      }
+      #group-actions{
+        float: left;
+        width: 218px;
+        margin: 20px 0 -8px 0;
+      }
+    }
     .group-options {
       width: 200px;
       .dropdown-menu {
@@ -106,10 +140,6 @@ body.groups {
       }
     }
   }
-}
-
-#group-actions{
-  margin-bottom: 20px;
 }
 
 #group_email_subject { width: 510px; }

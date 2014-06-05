@@ -1,5 +1,5 @@
 .group-title
-  %h1.home-title
+  %h1.home-title.shadow
     - if @group
       - if @group.is_subgroup?
         = link_to @group.parent.name, @group.parent

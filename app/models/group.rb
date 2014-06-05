@@ -139,6 +139,10 @@ class Group < ActiveRecord::Base
 
   paginates_per 20
 
+  # validates_attachment_size :cover_photo, :in => 0..10.megabytes
+  # validates_attachment_content_type :cover_photo, :content_type => /^image\/(png|gif|jpeg)/
+  # has_attached_file    :cover_photo,
+  #                      :styles => { group_cover_desktop: "980x140#" }
 
   def coordinators
     admins
