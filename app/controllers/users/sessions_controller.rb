@@ -22,7 +22,8 @@ class Users::SessionsController < Devise::SessionsController
           unless u = User.find_by_email(params[:user][:email])
             u = User.create!(name: "#{user_hash['firstname']} #{user_hash['lastname']}",
                              email: params[:user][:email],
-                             password: params[:user][:password])
+                             password: params[:user][:password],
+                             subscribed_to_daily_activity_email: true)
           end
 
           g = Group.find(ENV['PARSE_GROUP_ID'])

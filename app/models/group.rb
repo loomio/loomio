@@ -298,7 +298,10 @@ class Group < ActiveRecord::Base
 
   def find_or_create_membership(user, inviter)
     membership = memberships.where(user_id: user.id).first
-    membership ||= Membership.create!(group: self, user: user, inviter: inviter)
+    membership ||= Membership.create!(group: self,
+                                      user: user,
+                                      inviter: inviter,
+                                      subscribed_to_notification_emails: email_notification_default)
   end
 
   def user_membership_or_request_exists? user
