@@ -5,7 +5,7 @@ class UserMailer < BaseMailer
     @since_time = since_time
     @since_time_formatted = since_time.strftime('%A, %-d %B')
     @groups = user.groups.sort{|a,b| a.full_name <=> b.full_name }
-    locale = best_locale(user.locale)
+    locale = locale_fallback(user.locale)
     I18n.with_locale(locale) do
       mail to: @user.email,
            subject: t("email.daily_activity.subject")
@@ -17,7 +17,7 @@ class UserMailer < BaseMailer
     @comment = comment
     @rendered_comment_body = render_rich_text(comment.body, comment.uses_markdown)
     @discussion = comment.discussion
-    locale = best_locale(user.locale, comment.author.locale)
+    locale = locale_fallback(user.locale, comment.author.locale)
     I18n.with_locale(locale) do
       mail to: @user.email,
            from: from_user_via_loomio(comment.author),
@@ -29,7 +29,7 @@ class UserMailer < BaseMailer
   def group_membership_approved(user, group)
     @user = user
     @group = group
-    locale = best_locale(user.locale, User.find_by_email(@group.admin_email).locale)
+    locale = locale_fallback(user.locale, User.find_by_email(@group.admin_email).locale)
     I18n.with_locale(locale) do
       mail  to: user.email,
             reply_to: @group.admin_email,
@@ -43,7 +43,7 @@ class UserMailer < BaseMailer
     @group = motion.group
     @rendered_motion_description = render_rich_text(motion.description, false) #later: change false to motion.uses_markdown
     @utm_hash = UTM_EMAIL.merge utm_source: 'motion_closing_soon'
-    locale = best_locale(user.locale, @motion.author.locale)
+    locale = locale_fallback(user.locale, @motion.author.locale)
     I18n.with_locale(locale) do
       mail to: user.email,
            from: from_user_via_loomio(motion.author),
@@ -57,7 +57,7 @@ class UserMailer < BaseMailer
     @inviter = inviter
     @group = group
     @message = message
-    locale = best_locale(user.locale, inviter.locale)
+    locale = locale_fallback(user.locale, inviter.locale)
     I18n.with_locale(locale) do
       mail to: user.email,
            from: from_user_via_loomio(inviter),
@@ -71,7 +71,7 @@ class UserMailer < BaseMailer
     @inviter = inviter
     @discussion = discussion
     @message = message
-    locale = best_locale(user.locale, inviter.locale)
+    locale = locale_fallback(user.locale, inviter.locale)
     I18n.with_locale(locale) do
       mail to: user.email,
            from: from_user_via_loomio(inviter),

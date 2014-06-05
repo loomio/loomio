@@ -1,6 +1,59 @@
 require 'http_accept_language'
 
 module LocalesHelper
+  LANGUAGES = {'English' => :en,
+               'български' => :bg,
+               'Català' => :ca,
+               'čeština' => :cs,
+               '正體中文' => :zh, #zh-Hant, Chinese (traditional), Taiwan
+               'Deutsch' => :de,
+               'Español' => :es,
+               'ελληνικά' => :el,
+               'Français' => :fr,
+               'Indonesian' => :id,
+               'magyar' => :hu,
+               '日本語' => :ja,
+               '한국어' => :ko,
+               'മലയാളം' => :ml,
+               'Nederlands' => :nl,
+               'Português (Brasil)' => :pt,
+               'română' => :ro,
+               'srpski' => :sr,
+               'Svenska' => :sv,
+               'Tiếng Việt' => :vi,
+               'Türkçe' => :tr,
+               'українська мова' => :uk}
+
+  EXPERIMENTAL_LANGUAGES = {'Chinese (Mandarin)' => :cmn,
+                            'Italiano' => :it,
+                            'తెలుగు' => :te,
+                            'Gaelic (Irish)' => :ga,
+                            'Esperanto' => :eo,
+                            'Telugu' => :te,
+                            'khmer' => :km}
+
+  def locale_name(locale)
+    LANGUAGES.key(locale.to_s)
+  end
+
+  def supported_locales
+    LANGUAGES.values
+  end
+
+  def experimental_locales
+    EXPERIMENTAL_LANGUAGES.values
+  end
+
+  def valid_locale?(locale)
+    return false if locale.blank?
+    (LANGUAGES.values + EXPERIMENTAL_LANGUAGES.values).include? locale.to_s
+  end
+
+  def language_link_attributes(language)
+    { href: "?&locale=#{language[1]}"  ,
+      title: "#{I18n.t(:change_language, language: language[0])}",
+      text: "#{language[0]}" }
+  end
 
   def selected_locale
     (params[:locale] || current_user_or_visitor.selected_locale).try(:to_s)
@@ -10,7 +63,7 @@ module LocalesHelper
     params.has_key?(:locale) || current_user_or_visitor.locale.present?
   end
 
-  def detected_locale(supported_locales = Translation.locales)
+  def detected_locale
     (browser_accepted_locales & supported_locales).first
   end
 
@@ -58,7 +111,7 @@ module LocalesHelper
 
   def save_selected_locale
     locale = params[:locale]
-    if AppTranslation.permitted_locale?(locale)
+    if valid_locale?(locale)
       current_user.update_attribute(:selected_locale, locale)
     end
   end

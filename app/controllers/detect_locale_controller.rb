@@ -4,7 +4,7 @@ class DetectLocaleController < ActionController::Base
   include CurrentUserHelper
 
   def show
-    d = best_locale(detected_locale(AppTranslation.frontpage_locales))
+    d = locale_fallback(detected_locale)
     if current_locale != d
       I18n.locale = d
       Measurement.increment('detect_locale.foreign')
@@ -17,7 +17,7 @@ class DetectLocaleController < ActionController::Base
 
   private
   def current_locale
-    locale = (AppTranslation.locales & [params[:current_locale]]).first
+    locale = (supported_locales & [params[:current_locale]]).first
 
     if locale.present?
       locale.to_sym
