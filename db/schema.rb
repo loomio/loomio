@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140520021918) do
+ActiveRecord::Schema.define(:version => 20140605024255) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -353,6 +353,7 @@ ActiveRecord::Schema.define(:version => 20140520021918) do
     t.string   "discussion_privacy_options",                                     :null => false
     t.boolean  "members_can_add_members",            :default => false,          :null => false
     t.string   "membership_granted_upon",                                        :null => false
+    t.boolean  "email_notification_default",         :default => true,           :null => false
   end
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
