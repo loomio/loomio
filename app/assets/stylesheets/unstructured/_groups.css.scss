@@ -31,6 +31,11 @@ body.groups {
       margin: -23px -20px 0 -20px;
       position: relative;
       height: 140px;
+      .alert{
+        margin: 16px;
+        width: 652px;
+        float: left;
+      }
       .group-logo {
         width: 100px;
         height: 100px;

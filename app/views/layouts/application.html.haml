@@ -21,7 +21,8 @@
     .main-container.container
       = render 'application/announcements'
       = render 'application/header'
-      = render 'application/flash_messages', :flash => flash, :on_landing_page => false
+      - unless (controller_name == 'groups') && (action_name == 'show')
+        = render 'application/flash_messages', :flash => flash, :on_landing_page => false
       .page-container
         = yield
       = render 'footer_logged_in'

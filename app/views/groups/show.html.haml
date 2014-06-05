@@ -1,7 +1,7 @@
 - set_title @group.name, "", @group.parent
 
 .group-heading{style: "background-image: url('#{@group.cover_photo.url(:desktop)}')"}
-
+  = render 'application/flash_messages', :flash => flash, :on_landing_page => false
   - if can? :edit, @group
     .cover-photo-upload
       = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
