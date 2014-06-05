@@ -331,6 +331,9 @@ body.discussions.show {
         border-bottom: 1px solid $lighter-grey;
         margin: 7px 15px 6px 0px;
       }
+      .go-to-add-comment {
+        margin-left: 47px;
+      }
     }
     #discussion-markdown-dropdown li i {
       display: inline-block;
