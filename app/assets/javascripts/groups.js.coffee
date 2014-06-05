@@ -123,3 +123,8 @@ hide_edit_link = ->
 $ ->
   hide_edit_link()
   $('.group-heading').hover(show_edit_link, hide_edit_link)
+
+
+$ ->
+  $(".js-submit-on-change").change (event) ->
+    $(this).submit()

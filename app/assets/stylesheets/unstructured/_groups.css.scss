@@ -22,31 +22,68 @@ body.groups {
     .group-heading {
       background: image-url('forest.png') 0 0 no-repeat;
       margin: -23px -20px 0 -20px;
+      position: relative;
+      height: 140px;
       .group-logo {
         width: 100px;
         height: 100px;
-        margin: 90px 20px 0px 20px;
         background: image-url('teal-logo.png') 0 0;
-        float: left;
+        position: absolute;
+        top: 90px;
+        left: 20px;
       }
       .group-title {
-        float: left;
-        margin-top: 90px;
+        position: absolute;
+        top: 90px;
+        left: 140px;
         a {
           color: white;
           font-size: 30px;
         }
       }
-      .group-description{
-        float: left;
-        margin: 20px 0 -8px 0;
-        width: 600px;
+    }
+    .cover-photo-upload {
+      position: absolute;
+      width: 100px;
+      top: 0;
+      right: 0;
+      overflow: hidden;
+      margin: 10px;
+      span {
+        background: white;
+        padding: 3px;
       }
-      #group-actions{
-        float: left;
-        width: 218px;
-        margin: 20px 0 -8px 0;
-      }
+    }
+    .cover-photo-upload input.upload {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0;
+      padding: 0;
+      width: 100px;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      filter: alpha(opacity=0);
+    }
+    .group-description{
+      float: left;
+      margin: 20px 0 -8px 0;
+      width: 600px;
+    }
+    .logo-placeholder {
+      float: left;
+      width: 120px;
+      height: 30px;
+    }
+    .main-content{
+      width: 700px;
+      float: left;
+    }
+    .sidebar {
+      width: 220px;
+      float: left;
+      margin-left: 20px;
     }
     .group-options {
       width: 200px;
@@ -55,6 +92,9 @@ body.groups {
         margin-top: 0;
         left: 0;
       }
+    }
+    #group-actions {
+      margin: 20px 0 15px 0;
     }
     .heart-icon {color: red;}
 

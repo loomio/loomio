@@ -1,24 +1,34 @@
 - set_title @group.name, "", @group.parent
 
-.group-heading.clearfix
+.group-heading{style: "background-image: url('#{@group.cover_photo.url(:desktop)}')"}
+
+  - if can? :edit, @group
+    .cover-photo-upload
+      %span
+        %i.fa.fa-picture-o
+        upload
+      = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
+        = file_field_tag "group[cover_photo]", class: 'upload'
   .group-logo
   = render '/groups/title', group: @group, discussion: @discussion
-  .group-description
-    ~ render_rich_text(@group.description)
-  #group-actions
-    - if can? :create, @discussion
-      = icon_button(href: new_discussion_path(:group_id => @group.id), text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
-    - if can?(:add_members, @group)
-      = render 'invite_button', group: @group, discussion: @discussion
-    = render 'options_dropdown', group: @group
-
-    = join_group_button(@group)
 
 .row
-  .main-content
-    =render 'discussions/discussion_list'
+  .span9
+    .group-description
+      .logo-placeholder
+      ~ render_rich_text(@group.description)
+    .main-content
+      =render 'discussions/discussion_list'
 
-  %section.span3
+  .span3
+    #group-actions
+      - if can? :create, @discussion
+        = icon_button(href: new_discussion_path(:group_id => @group.id), text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
+      - if can?(:add_members, @group)
+        = render 'invite_button', group: @group, discussion: @discussion
+      = render 'options_dropdown', group: @group
+
+      = join_group_button(@group)
     = render 'setup_next_steps' if show_next_steps?(@group)
 
     = render 'subgroups', group: @group
@@ -38,4 +48,16 @@
 
     =render 'membership_requests', group: @group
     =render 'members', group: @group
-  =render '/application/closed_motions', user: nil, group: @group
+    =render '/application/closed_motions', user: nil, group: @group
+
+
+/ above the fold
+/   cover photo
+/   icon
+/   name
+/ below the fold
+/   left
+/     description
+/     discussions
+/   right
+/     sidebar
