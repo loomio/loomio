@@ -11,7 +11,7 @@ class Group < ActiveRecord::Base
                   :cannot_contribute, :full_name, :payment_plan, :parent_members_can_see_discussions,
                   :category_id, :max_size, :is_visible_to_parent_members, :is_visible_to_public,
                   :discussion_privacy_options, :membership_granted_upon, :visible_to,
-                  :theme_id, :subdomain, :cover_photo
+                  :theme_id, :subdomain, :cover_photo, :logo
   acts_as_tree
 
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
@@ -141,6 +141,8 @@ class Group < ActiveRecord::Base
 
   has_attached_file    :cover_photo,
                        :styles => { desktop: "980x140#" }
+  has_attached_file    :logo,
+                       :styles => { medium: "100x100#" }
   validates_attachment :cover_photo,
     size: { in: 0..10.megabytes },
     content_type: { content_type: /\Aimage/ },

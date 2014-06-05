@@ -317,7 +317,6 @@ en:
   message_error: "Please fill in a message"
   message_placeholder: "Write a message to the members of %{which_group}."
 
-  change_cover_photo: "Change cover photo"
   email_group_members: "Email group members"
   edit_group_settings: "Edit group settings"
   leave_group: "Leave group"

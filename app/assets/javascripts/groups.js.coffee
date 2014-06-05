@@ -120,6 +120,12 @@ show_cover_photo_upload = ->
 hide_cover_photo_upload = ->
   $('.cover-photo-upload').hide()
 
+show_logo_upload = ->
+  $('.logo-upload').show()
+
+hide_logo_upload = ->
+  $('.logo-upload').hide()
+
 show_edit_group = ->
   $('.edit-group').show()
   $('.edit-group-placeholder').hide()
@@ -130,8 +136,10 @@ hide_edit_group = ->
 
 $ ->
   hide_cover_photo_upload()
+  hide_logo_upload()
   hide_edit_group()
   $('.group-heading').hover(show_cover_photo_upload, hide_cover_photo_upload)
+  $('.group-logo').hover(show_logo_upload, hide_logo_upload)
   $('.group-description').hover(show_edit_group, hide_edit_group)
 
 $ ->

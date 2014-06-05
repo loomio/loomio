@@ -8,9 +8,18 @@
         = file_field_tag "group[cover_photo]"
         .upload-button
           %i.fa.fa-pencil
-          = t :change_cover_photo
+          = t :edit
 
-  .group-logo
+  .group-logo{style: "background-image: url('#{@group.logo.url(:medium)}')"}
+
+    - if can? :edit, @group
+      .logo-upload
+        = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
+          = file_field_tag "group[logo]"
+          .upload-button
+            %i.fa.fa-pencil
+            = t :edit
+
   = render '/groups/title', group: @group, discussion: @discussion
 
 .row
@@ -29,7 +38,6 @@
 
   .span3
     #group-actions
-
       - if can? :create, @discussion
         = icon_button(href: new_discussion_path(:group_id => @group.id), text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
       - if can?(:add_members, @group)

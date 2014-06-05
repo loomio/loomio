@@ -42,8 +42,8 @@ body.groups {
       }
       .group-title {
         position: absolute;
-        top: 90px;
-        left: 140px;
+        top: 94px;
+        left: 138px;
         a {
           color: white;
           font-size: 30px;
@@ -53,20 +53,19 @@ body.groups {
     .cover-photo-upload {
       position: relative;
       cursor: pointer;
-      width: 150px;
-      height: 24px;
+      width: 45px;
+      height: 23px;
       font-size: 12px;
       background: white;
       float: right;
-      margin: 20px;
       .upload-button {
         position: absolute;
         top: 0px;
-        left: 10px;
+        left: 5px;
         z-index: 1;
         cursor: pointer;
-        width: 140px;
-        height: 24px;
+        width: 40px;
+        height: 23px;
         font-size: 12px;
       }
       input {
@@ -75,19 +74,48 @@ body.groups {
         opacity: 0;
         z-index: 2;
         cursor: pointer;
-        width: 140px;
-        height: 24px;
+        width: 40px;
+        height: 23px;
+        font-size: 12px;
+      }
+    }
+    .logo-upload{
+      position: relative;
+      cursor: pointer;
+      width: 45px;
+      height: 23px;
+      font-size: 12px;
+      background: white;
+      float: right;
+      .upload-button {
+        position: absolute;
+        top: 0px;
+        left: 5px;
+        z-index: 1;
+        cursor: pointer;
+        width: 40px;
+        height: 23px;
+        font-size: 12px;
+      }
+      input {
+        position: relative;
+        text-align: right;
+        opacity: 0;
+        z-index: 2;
+        cursor: pointer;
+        width: 40px;
+        height: 23px;
         font-size: 12px;
       }
     }
     .group-description{
       float: left;
-      margin: 20px 0 -8px 0;
+      margin: 16px 0 -8px 0;
     }
     .logo-placeholder {
       float: left;
-      width: 120px;
-      height: 30px;
+      width: 118px;
+      height: 34px;
     }
     .main-content{
       width: 700px;
