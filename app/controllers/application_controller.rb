@@ -15,8 +15,6 @@ class ApplicationController < ActionController::Base
   before_filter :set_application_locale
   around_filter :user_time_zone, if: :user_signed_in?
 
-
-
   after_filter :increment_measurement
 
   # intercom
@@ -74,7 +72,7 @@ class ApplicationController < ActionController::Base
     clear_stored_location
     path
   end
-  
+
   def user_return_path
     if invalid_return_urls.include? session['user_return_to']
       dashboard_path

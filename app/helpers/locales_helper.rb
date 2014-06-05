@@ -108,11 +108,4 @@ module LocalesHelper
   def save_detected_locale(user)
     user.update_attribute(:detected_locale, detected_locale)
   end
-
-  def save_selected_locale
-    locale = params[:locale]
-    if valid_locale?(locale)
-      current_user.update_attribute(:selected_locale, locale)
-    end
-  end
 end
