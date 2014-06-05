@@ -3,22 +3,20 @@
 .group-heading{style: "background-image: url('#{@group.cover_photo.url(:desktop)}')"}
   = render 'application/flash_messages', :flash => flash, :on_landing_page => false
   - if can? :edit, @group
-    .cover-photo-upload
+    .upload-button.cover-photo-upload
       = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
         = file_field_tag "group[cover_photo]"
-        .upload-button
+        .edit-icon
           %i.fa.fa-pencil
-          = t :edit
 
   .group-logo{style: "background-image: url('#{@group.logo.url(:medium)}')"}
 
     - if can? :edit, @group
-      .logo-upload
+      .upload-button.logo-upload
         = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
           = file_field_tag "group[logo]"
-          .upload-button
+          .edit-icon
             %i.fa.fa-pencil
-            = t :edit
 
   = render '/groups/title', group: @group, discussion: @discussion
 
@@ -27,9 +25,8 @@
     .group-description
       - if can? :edit, @group
         = link_to edit_group_path @group do
-          .edit-group
+          .edit-icon.edit-group
             %i.fa.fa-pencil
-              = t :edit
           .edit-group-placeholder
       .logo-placeholder
       ~ render_rich_text(@group.description)
