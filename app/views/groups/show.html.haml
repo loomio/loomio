@@ -8,11 +8,11 @@
 .group-heading{style: "background-image: url('#{cover_photo_url}')"}
   = render 'application/flash_messages', :flash => flash, :on_landing_page => false
   - if can? :edit, @group
-    .upload-button.cover-photo-upload
+    .upload-button.cover-photo-upload{'data-title' => t(:'tooltip.cover_photo_upload')}
       = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
         = file_field_tag "group[cover_photo]"
-        .edit-icon
-          %i.fa.fa-pencil
+        .edit-icon{'data-title' => "Edit-icon" }
+          %i.fa.fa-pencil{'data-title' => "Edit-icon" }
 
   - if @group.logo.blank? && @group.is_subgroup?
     - logo_url = @group.parent.logo.url(:medium)
@@ -21,7 +21,7 @@
 
   .group-logo{style: "background-image: url('#{logo_url}')"}
     - if can? :edit, @group
-      .upload-button.logo-upload
+      .upload-button.logo-upload{'data-title' => t(:'tooltip.logo_upload')}
         = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
           = file_field_tag "group[logo]"
           .edit-icon
@@ -34,9 +34,9 @@
     .group-description
       - if (can? :edit, @group) && @group.description.present?
         = link_to edit_group_path @group do
-          .edit-icon.edit-group
+          .edit-icon.edit-description{'data-title' => t(:'tooltip.edit_description')}
             %i.fa.fa-pencil
-          .edit-group-placeholder
+        .edit-description-placeholder
       .logo-placeholder
       ~ render_rich_text(@group.description)
     .main-content

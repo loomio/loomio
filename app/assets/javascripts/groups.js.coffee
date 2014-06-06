@@ -1,7 +1,3 @@
-$ ->
-  $('.title-tooltip').tooltip
-    placement: "right"
-
 # adds bootstrap popovers to group activity indicators
 activate_discussions_tooltips = () ->
   $(".unread-group-activity").tooltip
@@ -126,22 +122,28 @@ show_logo_upload = ->
 hide_logo_upload = ->
   $('.logo-upload').hide()
 
-show_edit_group = ->
-  $('.edit-group').show()
-  $('.edit-group-placeholder').hide()
+show_edit_description = ->
+  $('.edit-description').show()
+  $('.edit-description-placeholder').hide()
 
-hide_edit_group = ->
-  $('.edit-group').hide()
-  $('.edit-group-placeholder').show()
+hide_edit_description = ->
+  $('.edit-description').hide()
+  $('.edit-description-placeholder').show()
 
 $ ->
   hide_cover_photo_upload()
   hide_logo_upload()
-  hide_edit_group()
+  hide_edit_description()
   $('.group-heading').hover(show_cover_photo_upload, hide_cover_photo_upload)
   $('.group-logo').hover(show_logo_upload, hide_logo_upload)
-  $('.group-description').hover(show_edit_group, hide_edit_group)
+  $('.group-description').hover(show_edit_description, hide_edit_description)
 
-$ ->
   $(".js-submit-on-change").change (event) ->
     $(this).submit()
+
+  $('.cover-photo-upload').tooltip
+    placement: "bottom"
+  $('.logo-upload').tooltip
+    placement: "bottom"
+  $('.edit-description').tooltip
+    placement: "bottom"

@@ -103,6 +103,11 @@ en:
         other: "%{count} invitations sent"
       auto_added_and_sent: "%{auto_added_text} and %{sent_text}"
 
+  tooltip:
+    cover_photo_upload: "Upload new cover photo"
+    logo_upload: "Upload new logo"
+    edit_description: "Edit description"
+
   views:
     pagination:
       previous: "Prev"
