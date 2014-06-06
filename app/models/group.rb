@@ -128,7 +128,7 @@ class Group < ActiveRecord::Base
   belongs_to :category
   belongs_to :theme
 
-  has_many :subgroups, class_name: 'Group', foreign_key: 'parent_id', conditions: { archived_at: nil }
+  has_many :subgroups, class_name: 'Group', foreign_key: 'parent_id', conditions: { archived_at: nil }, order: 'name'
 
   has_one :subscription, dependent: :destroy
 
