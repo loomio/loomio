@@ -19,7 +19,7 @@ body.groups {
       background: image-url('forest.png') 0 0 no-repeat;
       margin: -23px -20px 0 -20px;
       position: relative;
-      height: 140px;
+      height: 200px;
       .alert{
         margin: 16px;
         width: 652px;
@@ -31,12 +31,12 @@ body.groups {
         background: image-url('teal-logo.png') 0 0;
         position: absolute;
         border: 4px solid white;
-        top: 86px;
+        top: 146px;
         left: 16px;
       }
       .group-title {
         position: absolute;
-        top: 94px;
+        bottom: 0px;
         left: 138px;
         a {
           color: white;

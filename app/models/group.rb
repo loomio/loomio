@@ -140,10 +140,16 @@ class Group < ActiveRecord::Base
   paginates_per 20
 
   has_attached_file    :cover_photo,
-                       :styles => { desktop: "980x140#" }
+                       styles: { desktop: "980x200#" },
+                       default_url: '/assets/cover-photo.png'
   has_attached_file    :logo,
-                       :styles => { medium: "100x100#" }
+                       styles: { medium: "100x100#" },
+                       default_url: '/assets/logo.png'
   validates_attachment :cover_photo,
+    size: { in: 0..10.megabytes },
+    content_type: { content_type: /\Aimage/ },
+    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }
+  validates_attachment :logo,
     size: { in: 0..10.megabytes },
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }

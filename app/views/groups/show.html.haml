@@ -1,6 +1,11 @@
 - set_title @group.name, "", @group.parent
 
-.group-heading{style: "background-image: url('#{@group.cover_photo.url(:desktop)}')"}
+- if @group.cover_photo.blank? && @group.is_subgroup?
+  - cover_photo_url = @group.parent.cover_photo.url(:desktop)
+- else
+  - cover_photo_url = @group.cover_photo.url(:desktop)
+
+.group-heading{style: "background-image: url('#{cover_photo_url}')"}
   = render 'application/flash_messages', :flash => flash, :on_landing_page => false
   - if can? :edit, @group
     .upload-button.cover-photo-upload
@@ -9,8 +14,12 @@
         .edit-icon
           %i.fa.fa-pencil
 
-  .group-logo{style: "background-image: url('#{@group.logo.url(:medium)}')"}
+  - if @group.logo.blank? && @group.is_subgroup?
+    - logo_url = @group.parent.logo.url(:medium)
+  - else
+    - logo_url = @group.logo.url(:medium)
 
+  .group-logo{style: "background-image: url('#{logo_url}')"}
     - if can? :edit, @group
       .upload-button.logo-upload
         = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
@@ -23,7 +32,7 @@
 .row
   .span9
     .group-description
-      - if can? :edit, @group
+      - if (can? :edit, @group) && @group.description.present?
         = link_to edit_group_path @group do
           .edit-icon.edit-group
             %i.fa.fa-pencil
