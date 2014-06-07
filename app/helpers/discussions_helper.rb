@@ -2,6 +2,18 @@ module DiscussionsHelper
   include Twitter::Extractor
   include Twitter::Autolink
 
+  def filter_duplicate_activities(activity)
+    last_item = nil
+    filtered_event_kinds = %w[discussion_description_edited discussion_title_edited motion_close_date_edited]
+
+    activity.map do |item|
+      next if last_item &&
+              filtered_event_kinds.include?(item.kind) &&
+              item.user == last_item.user
+      last_item = item
+    end.compact
+  end
+
   def no_discussions_available?
     (@discussion_readers_with_open_motions.size + @discussion_readers_without_open_motions.size) == 0
   end
@@ -91,24 +103,25 @@ module DiscussionsHelper
 
   def discussion_privacy_options(discussion)
     options = []
-    group =
-      if discussion.group_id
-        t(:'simple_form.labels.discussion.of') + discussion.group.name
-      else
-        t :'simple_form.labels.discussion.of_no_group'
-      end
-    icon =
-    header = t "simple_form.labels.discussion.privacy_public_header"
-    description = t 'simple_form.labels.discussion.privacy_public_description'
-    options << ["<span class='discussion-privacy-setting-header'><i class='fa fa-globe'></i>#{header}<br /><p>#{description}</p>".html_safe, false]
 
-    header = t "simple_form.labels.discussion.privacy_private_header"
-    description = t(:'simple_form.labels.discussion.privacy_private_description', group: group)
-    options << ["<span class='discussion-privacy-setting-header'><i class='fa fa-lock'></i>#{header}<br /><p>#{description}</p>".html_safe, true ]
+    public_description = t('discussion_form.privacy.will_be_public')
+    if discussion.group.present?
+      private_description = t('discussion_form.privacy.will_be_private_to_group', group_name: discussion.group_name)
+    else
+      private_description = t('discussion_form.privacy.will_be_private')
+    end
+
+    options << ["<span class='discussion-privacy-setting-header'>
+                  <i class='fa fa-globe'></i>#{t(:'common.public')}</span>
+                  <p>#{public_description}</p>".html_safe, false]
+
+    options << ["<span class='discussion-privacy-setting-header'>
+                  <i class='fa fa-lock'></i>#{t(:'common.private')}</span>
+                 <p>#{private_description}</p>".html_safe, true ]
   end
 
   def current_language
-    Translation.language I18n.locale.to_s
+    AppTranslation.language I18n.locale.to_s
   end
 
   def privacy_language(discussion)

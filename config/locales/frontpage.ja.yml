@@ -1,1 +1,45 @@
-ja: {}
+ja:
+  frontpage:
+    view_this_in_your_language: 'このサイトを %{language} 語で見る'
+    title:
+      collaborative_decision_making: 共同意思決定
+    link:
+      blog: 'ブログ'
+      contact: 'お問い合わせ'
+      donate: '今日、寄付する'
+      log_in: 'ログイン'
+      video: "Loomioがどのように動くか、更に詳細を見る"
+      try_loomio_beta: 'Loomio beta を試す'
+      check_out_loomio_beta: 'Loomio beta をチェックする'
+      more: '更に詳細'
+      top: 'トップ'
+      public_groups: '公開グループ'
+      terms: '使用条件'
+      privacy: '個人情報'
+      services: 'サービス'
+    hero:
+      subhead: 'そんな世界を構築するのを手伝ってください'
+      desc_html: 'Loomioは無料であり、影響を持つ決定に参加するため、どこでも誰でも利用できる<a href="https://github.com/loomio/loomio">オープンソース</a>ソフトウェアです。'
+    product:
+      step1:
+        desc: 'どのトピックでもいいので、ディスカッションを初めて正しい人たちを集めましょう。多様な視点を分け合ってアイディアをともに発展させましょう。'
+      step2:
+        header: '2. 合意を形成しましょう'
+        desc: '誰でもアクションの内容を提案することができます。メンバーが賛成、棄権、不賛成、ブロックすることができ、あなたは皆がどのように感じ、それは何故なのか知ることができます。'
+      step3:
+        header: '3. 一緒に決めましょう'
+        desc: '皆に機能するように、提案を一緒に発展させましょう。すべての決定が明確な締め切りを持つので、常に明確な結果を得るでしょう。'
+    crowdfunding:
+      header: '私たちは、この新しいプラットフォームを築き終えるために、そして世界に広めるためにクラウドファンディングをしています。'
+    mobile:
+      header_html: 'Loomio 1.0はどのデバイスでも動きますが、 <strong>オープン・モバイル・テクノロジー.</strong>で最も良く動きます。'
+    team:
+      header: 'Loomioについて'
+    ideals:
+      community:
+        header: '協力駆動型コミュニティ'
+      independent:
+        header: '独立および中立'
+      open:
+        header: '無料およびオープンソフトウェア'
+        desc: 'Loomioのコードは誰でも動かし、読み、学び、改良でき、再分配できるパブリックのリソースです。'

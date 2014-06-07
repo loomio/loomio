@@ -10,7 +10,6 @@ cs:
       try_it: 'Vyzkoušejte to'
       log_in: 'PŘIHLÁSIT SE'
       video: "Dozvěďte se více o tom, jak Loomio funguje"
-      crowdfunding: 'Mrkněte se na crowdfundingovou kampaň'
       more: 'Více'
       top: 'Začátek'
       public_groups: 'Veřejné skupiny'
@@ -34,11 +33,6 @@ cs:
         desc: 'Vypracujte návrh společně, aby vyhovoval všem. Každé rozhodnutí má jasnou lhůtu, takže vždy získáte jasné rozhodnutí.'
     crowdfunding:
       header: 'Crowdfundujeme, abychom mohli dobudovat tuto novou platformu a poskytnout ji světu.'
-    prototype:
-      header_html: "Už jsme vytvořili <strong>prototyp</strong>, a lidé <strong>z celého světa</strong> s ním dělají úžasné věci:"
-      subhead_html: '<a href="%{try_loomio_link}">Zkuste Loomio Beta</a> teď. Nebo se <a href="%{join_campaign_link}">připojte ke kampani</a> a získejte včasný přístup k Loomio 1.0.'
-    mobile:
-      header_html: 'Platforma, která běží na jakémkoliv zařízení, stavěná s nejlepší <strong>otevřenou mobilní techologií.</strong>'
     team:
       header: 'O Loomiu'
       desc: 'Jsme malý tým open-source vývojářů a aktivistů za sociální spravedlnost pracující pro Enspiral v Aotearoa Novém Zélandu, se širší sítí přátel, příznivců a poradců po celém světě.'

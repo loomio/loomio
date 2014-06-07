@@ -15,5 +15,5 @@ end
 
 Then(/^I should see the beta logo$/) do
   visit group_path(@group)
-  page.should have_css('.loomio-beta-logo')
+  page.should have_css('.app-logo.beta')
 end

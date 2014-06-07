@@ -9,10 +9,7 @@
             - if count > 0
               =count
         .motion-sparkline
-          -if values.sum == 0
-            0,0,0,0,1
-          -else
-            =values.join(',')
+          = motion_sparkline(item)
 
     .span11.title
       = item.title

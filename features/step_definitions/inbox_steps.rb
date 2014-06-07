@@ -91,7 +91,8 @@ Given(/^I belong to a group with more than max per inbox group discussions$/) do
   @discussion = create_discussion
   @group = @discussion.group
   @group.add_member!(@user)
-  Inbox::UNREAD_PER_GROUP_LIMIT.times do
+  Inbox::UNREAD_PER_GROUP_LIMIT = 3
+  4.times do
     create_discussion group: @group
   end
 end

@@ -21,6 +21,8 @@ class Motion < ActiveRecord::Base
   validate :one_motion_voting_at_a_time
   validates_length_of :outcome, :maximum => 250
 
+  is_translatable on: [:name, :description]
+
   include PgSearch
   pg_search_scope :search, against: [:name, :description],
     using: {tsearch: {dictionary: "english"}}
@@ -31,6 +33,7 @@ class Motion < ActiveRecord::Base
   delegate :members, :full_name, :to => :group, :prefix => :group
   delegate :email_new_motion?, to: :group, prefix: :group
   delegate :name_and_email, to: :user, prefix: :author
+  delegate :language, to: :user
 
   after_initialize :set_default_closing_at
 
@@ -222,6 +225,13 @@ class Motion < ActiveRecord::Base
     end
     update_attribute(:did_not_votes_count, did_not_votes.count)
     reload
+  end
+
+  # only here while the fix in angular branch awaits merge
+  def closing_at=(datetime)
+    self.close_at_date = datetime.to_date
+    self.close_at_time = datetime.strftime("%H:00")
+    self[:closing_at] = datetime
   end
 
   private

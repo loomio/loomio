@@ -3,7 +3,7 @@
     = link_to_previous_page items, "Show earlier comments"
 
   -marked_first_unread = false
-  - items.each do |event|
+  - filter_duplicate_activities(items).each do |event|
     - next if event.kind == 'new_discussion'
     -unless @discussion_reader.first_read?
       - unless marked_first_unread

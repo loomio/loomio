@@ -6,10 +6,11 @@
       %h1= @user.name
       %p.username= "@" + @user.username
 
-      - groups = @user.public_groups.order('full_name ASC')
+      - groups = @user.groups.visible_to_public.order('full_name ASC')
+      - groups += [@user.groups & current_user.groups]
       - if groups.present?
         %h3#user-groups-list= t(:groups)
         %ul
-        - groups.each do |group|
-          %li
-            = link_to group.full_name, group_path(group)
+          - groups.flatten.uniq.sort{|a,b| a.full_name <=> b.full_name}.each do |group|
+            %li
+              = link_to group.full_name, group_path(group)

@@ -7,8 +7,11 @@
     /[if lt IE 9]
       =javascript_include_tag 'ie8'
 
-    = stylesheet_link_tag    "application"
+    = stylesheet_link_tag    "third_party"
+    = stylesheet_link_tag    "unstructured"
+    = theme_stylesheet_link_tag
     = javascript_include_tag "application"
+    = theme_javascript_include_tag
     = csrf_meta_tags
     = render 'social_metadata', :description => @meta_description, :title => @meta_title
 
@@ -22,6 +25,4 @@
       .page-container
         = yield
       = render 'footer_logged_in'
-
-  - unless hide_crowdfunding_banner?
-    = javascript_include_tag 'campaigns'
+    = render 'intercom_tracker'

@@ -1,7 +1,9 @@
 Given /^an open group exists$/ do
   @group = FactoryGirl.create :group
   @group.add_admin! FactoryGirl.create :user
-  @group.privacy = 'public'
+  @group.visible_to = 'public'
+  @group.membership_granted_upon = 'request'
+  @group.discussion_privacy_options = 'public_only'
   @group.description = "This is an *Open Group* group, which would formally have been called a 'public group'"
   @group.save!
 end
@@ -9,22 +11,20 @@ end
 Given /^a public group exists$/ do
   @group = FactoryGirl.create :group
   @group.add_admin! FactoryGirl.create :user
-  @group.privacy = 'public'
+  @group.visible_to = 'public'
   @group.description = "this group is public"
   @group.save!
 end
 
 Given /^a hidden group exists$/ do
-  @group = FactoryGirl.create :group
-  @group.privacy = 'hidden'
-  @group.description = "this group is hidden"
-  @group.save
+  @group = FactoryGirl.create :group,
+            visible_to: 'members',
+            discussion_privacy_options: 'private_only',
+            description: "this group is hidden"
 end
 
 Given(/^a public group exists with a Spanish\-speaking admin "(.*?)"$/) do |arg1|
-  @group = FactoryGirl.create :group
-  @group.privacy = 'public'
-  @group.save
+  @group = FactoryGirl.create :group, visible_to: 'public'
   admin = @group.admins.first
   admin.update_attribute(:selected_locale, "es")
   admin.update_attribute(:email, "#{arg1}@example.org")
@@ -32,22 +32,25 @@ Given(/^a public group exists with a Spanish\-speaking admin "(.*?)"$/) do |arg1
 end
 
 Given /^a public sub\-group exists$/ do
-  @parent_group = FactoryGirl.create :group, :privacy => 'public'
-  @sub_group = FactoryGirl.create :group, :parent => @parent_group,
-                                  :privacy => 'public'
+  @parent_group = FactoryGirl.create :group, visible_to: 'public'
+  @sub_group = FactoryGirl.create :group, parent: @parent_group
+  @sub_group.visible_to = 'public'
 end
 
 Given /^a hidden sub\-group exists$/ do
   @parent_group = FactoryGirl.create :group
-  @sub_group = FactoryGirl.create :group, :parent => @parent_group
-  @sub_group.privacy = 'hidden'
-  @sub_group.save
+  @sub_group = FactoryGirl.create :group,
+                parent: @parent_group,
+                visible_to: 'members',
+                discussion_privacy_options: "private_only"
 end
 
 Given /^a sub\-group viewable by parent\-group members exists$/ do
   @parent_group = FactoryGirl.create :group
-  @sub_group = FactoryGirl.create :group, :parent => @parent_group, privacy: 'hidden', viewable_by_parent_members: true
-  @sub_group.save
+  @sub_group = FactoryGirl.create :group,
+                parent: @parent_group,
+                discussion_privacy_options: 'private_only',
+                visible_to: 'parent_members'
 end
 
 Given /^I am a member of a public group$/ do
@@ -56,16 +59,16 @@ Given /^I am a member of a public group$/ do
 end
 
 Given /^the group has a discussion$/ do
-  @discussion = create_discussion :group => @group
+  @discussion = create_discussion group: @group
   @discussion.description = "this discussion should inherit privacy from it's group"
   @discussion.save!
 end
 
 Given /^the group has discussions$/ do
-  @discussion = create_discussion :group => @group
+  @discussion = create_discussion group: @group
   @discussion.description = "this discussion should inherit privacy from it's group"
   @discussion.save
-  @discussion_with_decision = create_discussion :group => @group, :title => 'This is a discussion with decision'
+  @discussion_with_decision = create_discussion group: @group, title: 'This is a discussion with decision'
   FactoryGirl.create :motion, :discussion => @discussion_with_decision
 end
 
@@ -112,7 +115,7 @@ Given /^I am a member of a parent\-group that has a sub\-group viewable by paren
   @parent_group = FactoryGirl.create :group
   @admin_user = FactoryGirl.create :user
   @parent_group.add_admin! @admin_user
-  @sub_group = FactoryGirl.create :group, :parent => @parent_group, :privacy => 'hidden', :viewable_by_parent_members => true
+  @sub_group = FactoryGirl.create :group, :parent => @parent_group, discussion_privacy_options: 'private_only', visible_to: 'parent_members'
   @sub_group.add_admin! @admin_user
   @parent_group.add_member! @user
 end
@@ -167,12 +170,17 @@ Given(/^I am a member of a parent\-group that has sub\-groups I don't belong to$
   @parent_group = FactoryGirl.create :group
   @parent_group.add_member! @user
   @sub_groups = []
-  ['hidden', 'public'].each do |privacy|
-    @sub_groups << FactoryGirl.create(:group,
-                                      parent: @parent_group,
-                                      privacy: privacy,
-                                      viewable_by_parent_members: true)
-  end
+  @sub_groups << FactoryGirl.create(:group,
+                                    parent: @parent_group,
+                                    visible: true,
+                                    discussion_privacy_options: 'public_or_private',
+                                    is_visible_to_parent_members: true)
+
+  @sub_groups << FactoryGirl.create(:group,
+                                    parent: @parent_group,
+                                    visible: false,
+                                    discussion_privacy_options: 'private_only',
+                                    is_visible_to_parent_members: true)
 end
 
 Given(/^those sub\-groups have discussions$/) do
@@ -191,7 +199,8 @@ end
 Given(/^I am a coordinator of a public group$/) do
   @group = FactoryGirl.create :group
   @group.add_admin! @user
-  @group.privacy = 'public'
+  @group.visible = true
+  @group.discussion_privacy_options = 'public_or_private'
 end
 
 When(/^I set the group to hidden$/) do
@@ -202,13 +211,13 @@ end
 
 Then(/^the group should be set to hidden$/) do
   @group.reload
-  @group.privacy.should == 'hidden'
+  @group.should_not be_visible
 end
 
 Given(/^I am a coordinator of a hidden group$/) do
   @group = FactoryGirl.create :group
   @group.add_admin! @user
-  @group.privacy = 'hidden'
+  @group.visible = false
 end
 
 When(/^I set the group to public$/) do
@@ -235,13 +244,13 @@ When(/^I visit the edit subgroup page$/) do
 end
 
 When(/^I set the subgroup to be viewable by parent members$/) do
-  check 'group_viewable_by_parent_members'
+  check 'group_is_visible_to_parent_members'
   click_on 'group_form_submit'
 end
 
 Then(/^the subgroup should be viewable by parent members$/) do
   @subgroup.reload
-  @subgroup.should be_viewable_by_parent_members
+  @subgroup.should be_is_visible_to_parent_members
 end
 
 When(/^I set the group to private$/) do
@@ -297,17 +306,12 @@ Then(/^I should see the group title$/) do
   page.should have_content(@group.full_name)
 end
 
+Then(/^I should see the group title in the metadata$/) do
+  page.should have_css "meta[content=\"#{@group.full_name}\"]", { visible: false }
+end
+
 Then(/^I should see the subgroup title$/) do
   page.should have_content(@sub_group.name)
-end
-
-Given(/^I am a coordinator of a non\-hidden group$/) do
-  @public_group = FactoryGirl.create :group, privacy: 'public'
-  @public_group.add_admin! @user
-end
-
-Given(/^the group has a public discussion$/) do
-  @discussion = create_discussion group: @public_group, private: false
 end
 
 When(/^I set the group privacy to hidden$/) do

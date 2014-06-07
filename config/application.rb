@@ -66,7 +66,7 @@ module Loomio
     # Enable roadie (email css-->inline style gem)
     config.roadie.enable = true
 
-    config.assets.precompile += %w(ie8.js active_admin.css active_admin.js frontpage.js frontpage.css active_admin/print.css marketing.js marketing.css campaigns.js)
+    config.assets.precompile += %w(ie8.js active_admin.css active_admin.js active_admin/print.css marketing.js marketing.css campaigns.js third_party.css unstructured.css)
 
     config.quiet_assets = true
   end

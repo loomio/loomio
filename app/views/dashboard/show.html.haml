@@ -1,13 +1,17 @@
 - if current_user.parent_groups.present?
-  .group-title
-    %h1.home-title
-      = link_to t(:home), dashboard_path
-  .clearfix
-    = icon_button(href: new_discussion_path, text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
-  .row.main-content
-    =render 'discussions/discussion_list'
+  .row
+    .span9
+      .group-title
+        %h1.home-title
+          = link_to t(:home), dashboard_path
+      .row
+        .main-content
+          =render 'discussions/discussion_list'
 
     %section.span3
+      #group-actions
+        .clearfix
+          = icon_button(href: new_discussion_path, text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
       =render 'groups'
       .sub-panel.previous-discussions-panel
         %h4= t(:previous_decisions)

@@ -1,130 +1,42 @@
 .container
-  %section.first
-    .inner-container
-      .row-fluid
-        .subhead.center
-          %h1 Loomio Services and Support
-          %h2 When you need more help...
-      .row-fluid
-        .span8.offset2
-          %p If your workplace or organisation is facing stacked inboxes, long meetings, or is constantly fire-fighting and struggling with the really important decisions, we can help.
-          %p We offer custom-designed support for your organisation, based on global experience helping teams succeed through streamlined online decision-making.
-          %p Realise your team’s full potential - engage, collaborate and make powerful decisions!
+  .row-fluid
+    .span12
+      %section.first
+        .inner-container
+          %h1 Loomio crowdfunding deal
+          .subtitle Sign up with us during our crowdfunding campaign for a special deal to kickstart your collaboration.
 
-          %h3.center Loomio Services Crowdfunding Deal
+          .description
+            %p If your organisation wants to make it easy for more people to be involved in important discussions and decisions, campaigns and projects but your current approach results in overwhelming email, long meetings, or expensive travel, we can help.
 
-          %p
-            Sign up with us during our crowdfunding campaign, for a special deal to
-            %b Kickstart Collaboration.
+            %p We offer a version of Loomio customised to look like your group. We also provide expertise to get your online collaboration up and running.
 
-      .row-fluid.deals
-        .span4.deal1
-          %h3 Your Community Online
-          %p Create your online community, tailored to look and feel like your own
-          %h4 Customised online space
-          %ul
-            %li
-              %i.fa.fa-check
-              your own branding
-            %li
-              %i.fa.fa-check
-              custom domain name
-            %li
-              %i.fa.fa-check
-              unlimited data storage
-            %li
-              %i.fa.fa-check
-              up to 250 people
-          %p.price US$5,000
-          =link_to "Get in touch", "/contact/services", class: "btn btn-block"
+            %p Realise the power of people in your organisation making better decisions together.
 
-
-        .span4.deal2
-          %h3 Kickstart Collaboration
-          %p Get the Support you need to launch your organisation on Loomio quickly, so it works first time.
-          %h4 Customised online space
-          %ul
-            %li
-              %i.fa.fa-check
-              your own branding
-            %li
-              %i.fa.fa-check
-              custom domain name
-            %li
-              %i.fa.fa-check
-              unlimited data storage
-            %li
-              %i.fa.fa-check
-              up to
-              %strong 500 people
-          %h4 Expert consultation
-          %ul
-            %li
-              %i.fa.fa-check
-              %strong personal coach
-              at setup
-            %li
-              %i.fa.fa-check
-              %strong initial training
-              for group leaders
-            %li
-              %i.fa.fa-check
-              %strong online facilitation
-              as you get started
-
-          %p.price
-            %span.strike-through
-              US$10,000
-            &nbsp;
-            %strong $5000
-          %a.btn.btn-block.btn-large.btn-success{href: "http://love.loomio.org"}
-            Claim your deal!
-          %p.explain Select the $5000 reward on the crowdfunding page
-          %p.talk-to-us.center
-            =link_to "or talk to us", "/contact/services"
-
-        .span4.deal3
-          %h3 Collaboration Culture
-          %p Move beyond using a tool to growing a culture of collaboration and shared leadership.
-
-          %h4 Customised online space
-          %ul
-            %li
-              %i.fa.fa-check
-              your own branding
-            %li
-              %i.fa.fa-check
-              custom domain name
-            %li
-              %i.fa.fa-check
-              unlimited data storage
-            %li
-              %i.fa.fa-check
-              %strong Unlimited memberships
-
-          %h4 Expert consultation
-          %ul
-            %li
-              %i.fa.fa-check
-              personal coach at setup
-            %li
-              %i.fa.fa-check
-              additional training for leaders
-            %li
-              %i.fa.fa-check
-              ongoing online facilitation
-            %li
-              %i.fa.fa-check
-              engagement strategy
-            %li
-              %i.fa.fa-check
-              decision-making protocol
-
-
-          %p.price US$20,000
-          =link_to "Get in touch", "/contact/services", class: "btn btn-block"
-
-      %p.first-year-only
-        %em Price covers first year’s use. After year one, an annual user fee applies.
-
-
+          .package
+            .package-titlearea
+              %h2 Kickstart collaboration
+              .package-price $5000
+              %p Customised Loomio platform tailored to your organisation plus help from our online collaboration experts makes it easy to engage, collaborate and make powerful decisions together.
+            .package-content
+              .row-fluid
+                .span6
+                  %h3 Customised online space
+                  %ul
+                    %li Your own branding
+                    %li Custom domain name
+                    %li Unlimited storage
+                    %li Up to 250 people
+                .span6
+                  %h3 Collaboration consultant
+                  %ul
+                    %li Personal coach at setup
+                    %li Initial training for your internal champions
+                    %li Online facilitation as you get started
+              .package-btn
+                = link_to "https://love.loomio.org" do
+                  .package-btn-main
+                    Claim your deal!
+                  .package-btn-sub
+                    (Select the $5000 reward on the crowdfunding page)
+              = link_to "or talk to us", "/contact/services", class: 'package-link'

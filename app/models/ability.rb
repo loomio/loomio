@@ -1,6 +1,14 @@
 class Ability
   include CanCan::Ability
 
+  def user_is_member_of?(group_id)
+    @member_group_ids.include?(group_id)
+  end
+
+  def user_is_admin_of?(group_id)
+    @admin_group_ids.include?(group_id)
+  end
+
   def initialize(user)
 
     user ||= User.new
@@ -11,78 +19,64 @@ class Ability
     cannot :sign_up, User
 
     can :show, Group do |group|
-      if group.archived?
+      if group.is_archived?
         false
       else
-        case group.privacy.to_s
-        when 'public'
-          true
-        when 'private'
-          true
-        when 'hidden'
-          if group.viewable_by_parent_members?
-            @member_group_ids.include?(group.id) or @member_group_ids.include?(group.parent_id)
-          else
-            @member_group_ids.include?(group.id)
-          end
-        end
+        group.is_visible_to_public? or
+        user_is_member_of?(group.id) or
+        (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id))
       end
     end
 
-    # TODO: Refactor to use subscription resource
+    can :see_private_content, Group do |group|
+      if group.is_archived?
+        false
+      else
+        user_is_member_of?(group.id) or
+        (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id))
+      end
+    end
+
     can [:view_payment_details,
          :choose_subscription_plan], Group do |group|
-      group.is_top_level? and @admin_group_ids.include?(group.id) and !group.has_manual_subscription?
+      group.is_parent? and user_is_admin_of?(group.id) and (!group.has_manual_subscription?)
     end
 
     can [:update,
          :email_members,
          :hide_next_steps,
          :archive], Group do |group|
-      @admin_group_ids.include?(group.id)
+      user_is_admin_of?(group.id)
     end
 
     can [:add_subgroup,
-        :edit_description,
-        :members_autocomplete], Group do |group|
-      @member_group_ids.include?(group.id)
+         :members_autocomplete], Group do |group|
+      user_is_member_of?(group.id)
     end
 
     can [:add_members,
+         :invite_people,
          :manage_membership_requests], Group do |group|
-      case group.members_invitable_by
-      when 'members'
-        @member_group_ids.include?(group.id)
-      when 'admins'
-        @admin_group_ids.include?(group.id)
-      end
-    end
 
-    can :invite_people, Group do |group|
-      case group.members_invitable_by
-      when 'members'
-        @member_group_ids.include?(group.id)
-      when 'admins'
-        @admin_group_ids.include?(group.id)
-      end
-    end
-
-    can :invite_outsiders, Group do |group|
-      if group.is_a_subgroup? and group.parent_is_hidden?
-        false
+      if group.members_can_add_members?
+        user_is_member_of?(group.id)
       else
-        true
+        user_is_admin_of?(group.id)
       end
     end
 
     can :create, Group do |group|
-      if group.is_top_level?
+      if !group.is_subgroup?
         true
-      elsif @member_group_ids.include?(group.parent_id)
+      elsif user_is_member_of?(group.parent_id)
         true
       else
         false
       end
+    end
+
+    can :join, Group do |group|
+      can?(:show, group) and group.membership_granted_upon_request?
     end
 
     can [:make_admin], Membership do |membership|
@@ -96,80 +90,64 @@ class Ability
       elsif membership.admin? and membership.group.admins.size == 1
         false
       else
-        (membership.user == user) or @admin_group_ids.include?(membership.group_id)
+        (membership.user == user) or user_is_admin_of?(membership.group_id)
       end
     end
 
     can :deactivate, User do |user_to_deactivate|
-      not user_to_deactivate.adminable_groups.any? { |g| g.admins.count == 1 }
+      not user_to_deactivate.adminable_groups.published.any? { |g| g.admins.count == 1 }
     end
 
-    can :request_membership, Group do |group|
-      if group.archived?
-        false
-      elsif group.is_not_hidden?
-        true
-      elsif group.is_a_subgroup? and group.viewable_by_parent_members? and @member_group_ids.include?(group.parent_id) # assumes group is hidden
-        true
-      else
-        false
-      end
+    can :create, MembershipRequest do |request|
+      group = request.group
+      can?(:show, group) and group.membership_granted_upon_approval?
     end
 
     can :cancel, MembershipRequest, requestor_id: user.id
 
     can :cancel, Invitation do |invitation|
-      (invitation.inviter == user) or (@admin_group_ids.include?(invitation.group.id))
+      (invitation.inviter == user) or user_is_admin_of?(invitation.group.id)
     end
 
     can [:approve,
          :ignore], MembershipRequest do |membership_request|
       group = membership_request.group
 
-      group.admins.include?(user) or
-        (group.members_can_invite_members? and
-         group.members.include?(user))
+      user_is_admin_of?(group.id) or
+        (user_is_member_of?(group.id) and group.members_can_add_members?)
     end
 
     can :show, Discussion do |discussion|
-      if discussion.archived?
+      if discussion.is_archived?
         false
-      elsif discussion.public?
-        true
-      elsif @member_group_ids.include?(discussion.group_id)
-        true
-      elsif discussion.group.viewable_by_parent_members? &&
-            @member_group_ids.include?(discussion.group.parent_id)
-        true
       else
-        false
+        discussion.public? or
+        user_is_member_of?(discussion.group_id) or
+        (discussion.group.is_visible_to_parent_members? and user_is_member_of?(discussion.group.parent_id))
       end
     end
 
-    can :update, Discussion do |discussion|
-      (discussion.author == user) or @admin_group_ids.include?(discussion.group_id)
+    can [:update, :update_version], Discussion do |discussion|
+      (discussion.author == user) or user_is_admin_of?(discussion.group_id)
     end
 
     can [:destroy,
          :move], Discussion do |discussion|
-      @admin_group_ids.include?(discussion.group_id)
+      user_is_admin_of?(discussion.group_id)
     end
 
     can [:unfollow,
          :add_comment,
          :new_proposal,
          :create,
-         :update_description,
-         :edit_title,
          :show_description_history,
          :preview_version,
-         :like_comments,
-         :update_version], Discussion do |discussion|
-      @member_group_ids.include?(discussion.group_id)
+         :like_comments], Discussion do |discussion|
+      user_is_member_of?(discussion.group_id)
     end
 
     can [:destroy], Comment do |comment|
-      (comment.author == user) or @admin_group_ids.include?(comment.discussion.group_id)
+      (comment.author == user) or user_is_admin_of?(comment.discussion.group_id)
     end
 
     can [:start_proposal], Discussion do |discussion|
@@ -177,11 +155,11 @@ class Ability
     end
 
     can [:create], Motion do |motion|
-      motion.discussion.current_motion.nil? && @member_group_ids.include?(motion.discussion.group_id)
+      motion.discussion.current_motion.nil? && user_is_member_of?(motion.discussion.group_id)
     end
 
     can [:vote], Motion do |motion|
-      motion.voting? && @member_group_ids.include?(motion.discussion.group_id)
+      motion.voting? && user_is_member_of?(motion.discussion.group_id)
     end
 
     can [:create, :like], Comment do |comment|
@@ -193,13 +171,25 @@ class Ability
     end
 
     can [:close, :edit_close_date], Motion do |motion|
-      motion.voting? && ((motion.author_id == user.id) || @admin_group_ids.include?(motion.discussion.group_id))
+      motion.voting? && ((motion.author_id == user.id) || user_is_admin_of?(motion.discussion.group_id))
+    end
+
+    can [:show], Comment do |comment|
+      can?(:show, comment.discussion)
+    end
+
+    can [:show], Motion do |motion|
+      can?(:show, motion.discussion)
+    end
+
+    can [:show], Vote do |vote|
+      can?(:show, vote.motion)
     end
 
     can [:destroy,
          :create_outcome,
          :update_outcome], Motion do |motion|
-      (motion.author_id == user.id) or @admin_group_ids.include?(motion.discussion.group_id)
+      (motion.author_id == user.id) or user_is_admin_of?(motion.discussion.group_id)
     end
   end
 end

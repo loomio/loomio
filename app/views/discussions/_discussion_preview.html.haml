@@ -22,11 +22,7 @@
       - if motion
         .icon.shim{:id => "graph_#{motion.id}"}
           .motion-sparkline
-            -values = motion.vote_counts.values
-            -if values.sum == 0
-              0,0,0,0,1
-            -else
-              =values.join(',')
+            = motion_sparkline(motion)
           - if motion.voting? && motion_reader.unread_activity_count > 0
             %span.activity-count.label.label-info
               = motion_reader.unread_activity_count
@@ -42,6 +38,6 @@
 
       .discussion-date-info
         -if motion
-          .proposal-close-date= "#{time_ago_in_words(motion.closing_at)} until close"
+          .proposal-close-date= t( :time_until_close, quantity_of_time: time_ago_in_words(motion.closing_at) )
         - else
-          .latest-comment-time= "#{t('ago', :quantity_of_time => time_ago_in_words(discussion.last_comment_at))}"
+          .latest-comment-time= t( :ago, quantity_of_time: time_ago_in_words(discussion.last_comment_at) )

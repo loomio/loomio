@@ -8,7 +8,7 @@
 //= require jquery_ujs
 //= require jquery.ui.datepicker
 //= require jquery.ui.sortable
-//= require jquery.atwho
+//= require jquery.atwho/index
 //= require jqplot
 //= require jqplot/plugins/pieRenderer
 //= require jquery-fileupload/basic

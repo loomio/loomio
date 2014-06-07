@@ -10,7 +10,6 @@ fr:
       try_it: 'Essayez'
       log_in: 'SE CONNECTER'
       video: "Apprenez-en plus sur le fonctionnement de Loomio"
-      crowdfunding: 'Découvrez la campagne de financement participatif'
       more: 'Plus'
       top: 'Haut'
       public_groups: 'Groupes publiques'
@@ -34,11 +33,6 @@ fr:
         desc: 'Détailler ensemble la proposition de sorte que cela fonctionne pour tout le monde. Chaque décision a une échéance claire, pour que vous obteniez toujours un résultat clair.'
     crowdfunding:
       header: 'Nous avons choisi le financement participatif – crowdfunding – afin que nous puissions finir de construire cette nouvelle plateforme et la donner au monde.'
-    prototype:
-      header_html: "Nous avons déjà construit un <strong>prototype</strong> et des gens <strong>partout dans le monde</strong> en font des choses incroyables :"
-      subhead_html: '<a href="%{try_loomio_link}">Essayez la version bêta de Loomio</ a> maintenant. Ou <a href="%{join_campaign_link}">participez à la campagne</ a> pour obtenir un accès à Loomio 1.0 en avant-première.'
-    mobile:
-      header_html: 'Une plateforme qui fonctionne sur n''importe quel appareil, construite avec le meilleur des <strong>technologies mobiles ouvertes</strong>'
     quote:
       header:
         rushkoff_html: '«Loomio <strong> libère le potentiel d''internet </ strong> pour favoriser l''émergence du consensus au lieu d''un débat polarisé.» <br />– <a href="http://rushkoff.com">Douglas Rushkoff</a>, auteur de <em>Present Shock</em>'
