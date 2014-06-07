@@ -2,15 +2,15 @@ require 'spec_helper'
 
 describe Queries::VisibleDiscussions do
   let(:user) { create :user }
-  let(:group) { create :group }
-  let(:discussion) { create_discussion group: group }
+  let(:group) { create :group, discussion_privacy_options: 'public_or_private' }
+  let(:discussion) { create_discussion group: group, private: true }
 
   subject do
     Queries::VisibleDiscussions.new(user: user, groups: [group])
   end
 
-  describe 'when discussion.private?' do
-    context 'true (private)' do
+  describe 'discussion privacy' do
+    context 'private' do
       before { discussion.update_attribute(:private, true) }
 
       it 'guests cannot see discussion' do
@@ -23,7 +23,7 @@ describe Queries::VisibleDiscussions do
       end
     end
 
-    context 'false (public)' do
+    context 'not private' do
       before { discussion.update_attribute(:private, false) }
       it 'guests can see discussion' do
         subject.should include discussion
@@ -38,9 +38,9 @@ describe Queries::VisibleDiscussions do
   end
 
   describe 'group privacy' do
-    context 'public (aka public)' do
+    context 'public discussions allowed' do
       before do
-        group.update_attribute(:privacy, 'public')
+        group.update_attribute(:discussion_privacy_options, 'public_or_private')
         discussion.update_attribute(:private, false)
       end
 
@@ -54,8 +54,11 @@ describe Queries::VisibleDiscussions do
       end
     end
 
-    context 'hidden' do
-      before { group.update_attribute(:privacy, 'hidden') }
+    context 'private discussions only' do
+      before do
+        group.update_attribute(:discussion_privacy_options, 'private_only')
+        discussion.update_attribute(:private, true)
+      end
 
       it 'guests cannot see discussions' do
         subject.should_not include discussion
@@ -67,25 +70,25 @@ describe Queries::VisibleDiscussions do
       end
     end
 
-    context 'viewable by parent group members' do
-      let(:parent_group) { create :group }
+    context 'parent_members_can_see_discussions' do
+      let(:parent_group) { create :group, is_visible_to_public: false, discussion_privacy_options: 'private_only' }
       let(:group) { create :group,
                            parent: parent_group,
-                           viewable_by_parent_members: true,
-                           privacy: 'hidden' }
+                           parent_members_can_see_discussions: true,
+                           is_visible_to_public: false,
+                           is_visible_to_parent_members: true,
+                           discussion_privacy_options: 'private_only' }
 
-      it 'guests cannot see discussions' do
+      before do
+        discussion.update_attribute(:private, true)
+      end
+
+      it 'non members cannot see discussions' do
         subject.should_not include discussion
       end
 
       it 'member of parent group can see discussions' do
         parent_group.add_member! user
-        subject.should include discussion
-      end
-
-      it 'members can see discussions' do
-        parent_group.add_member! user
-        group.add_member! user
         subject.should include discussion
       end
     end
@@ -98,33 +101,4 @@ describe Queries::VisibleDiscussions do
       subject.should_not include discussion
     end
   end
-
-  # test that archived group not viewable
-
-  #describe "#with_open_motions" do
-    #before do
-      #@discussion_with_motion_in_public_group = create :discussion, group: public_group
-      #@motion = create :current_motion, discussion: @discussion_with_motion_in_public_group
-    #end
-
-    #subject do
-      #Queries::VisibleDiscussions.new(user: non_member, groups: [public_group]).with_open_motions
-    #end
-
-    #it {should include @discussion_with_motion_in_public_group}
-    #its(:size){should == 1}
-  #end
-
-  #describe "#without_open_motions" do
-    #before do
-      #@discussion_with_motion_in_public_group = create :discussion, group: public_group
-      #@motion = create :current_motion, discussion: @discussion_with_motion_in_public_group
-    #end
-
-    #subject do
-      #Queries::VisibleDiscussions.new(groups: [public_group]).without_open_motions
-    #end
-
-    #it {should_not include @discussion_with_motion_in_public_group}
-  #end
 end

@@ -1,4 +1,13 @@
 el:
+  explore:
+    go_to_group: "Πηγαίνετε στην ομάδα %{group_name}"
+  try_it:
+    header: "Δοκιμάστε το Loomio"
+    start_a_group: "Ξεκινήστε μια ομάδα για να παίρνετε αποφάσεις στην δική σας κοινότητα."
+    join_the_community: "Γίνετε μέλος στην ομάδα της κοινότητας του Loomio"
+    loomio_community_info: "Εδώ είναι όπου συζητάμε και παίρνουμε αποφάσεις σχετικά με το Loomio."
+    explore_groups: "Εξερευνήστε άλλες ομάδες στο Loomio"
+    explore_groups_info: "Ελέξτε όλες τις υπέροχες ομάδες στο Loomio και συμμετάσχετε σε αυτές!"
   activerecord:
     errors:
       messages:
@@ -276,6 +285,8 @@ el:
   edit_group_description: "Επεξεργασία περιγραφής ομάδας"
   group_subscription: "Συνδρομή Ομάδας"
   group_request:
+    beta_request_header: "Ξεκινήστε μια ομάδα στην δοκιμαστική έκδοση του Loomio"
+    beta_request_description: "Για να ξεκινήσετε να παίρνετε αποφάσεις στην δοκιμαστική έκδοση του Loomio, το πρώτο βήμα είναι να ξεκινήσετε μια ομάδα"
     neighbourhood_support_group: "π.χ. Ομάδα Υποστήριξης Γειτονιάς"
     confirmation:
       title: Σχεδόν τελειώσατε! Ελέγξτε το ηλεκτρονικό ταχυδρομείο σας.
@@ -310,6 +321,7 @@ el:
     started_html: "Ξεκίνησε πριν από %{when} από τον/την <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Επεξεργάστηκε τελευταία πριν από %{when} από τον/την <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Δείτε το ιστορικό αναθεωρήσεων"
+    see_history: "Δείτε το ιστορικό"
   description_history:
     header: "Ιστορικό αναθεωρήσεων"
     subheader: "Έκδοση"
@@ -666,7 +678,7 @@ el:
         privacy_parent_group_members_description_short: Μόνο τα μέλη και τα μέλη της κύριας ομάδας μπορούν να δουν αυτή την ομάδα και τις συζητήσεις τις.
         group_members_invitable_by: "Μόνο συντονιστές"
         submit: Υποβολή
-        viewable_by_parent_members_header: Επιτρέψτε σε όλα τα μέλη της ομάδας %{group} να βλέπουν αυτή την υπό-ομάδα και τις συζητήσεις τους
+        is_visible_to_parent_members_header: Επιτρέψτε σε όλα τα μέλη της ομάδας %{group} να βλέπουν αυτή την υπό-ομάδα και τις συζητήσεις τους
       membership_request:
         introduction: "Συστηθείτε"
       motion:
@@ -787,7 +799,7 @@ el:
       intro: "Παρακαλούμε πατήστε αυτόν τον σύνδεσμο επαλήθευσης για να τελειώσετε την αίτηση σας:"
       ignore: "Εάν δεν έχετε κάνει αίτηση για να γίνετε μέλος στο Loomio παρακαλούμε αγνοήστε αυτό το email."
   campaign:
-    crowdfunding_html: "Χαίρεται! Το Loomio είναι ετοιμάζεται να γίνει ακόμα καλύτερο! <a href='http://love.loomio.org'> Δείτε την εκστρατεία μας για χρηματοδότηση από το κοινό!</a>"
+    crowdfunding_html: "Τα καταφέραμε! Ευχαριστούμε όλους όσους μας βοήθησαν στην χρηματοδότηση από το πλήθος για το Loomio 1.0. Αγαπάμε την κοινότητα μας!</a>"
   about_loomio: "Σχετικά με το Loomio"
   ago: "πριν από %{quantity_of_time} "
   approve: "Έγκριση"
@@ -848,7 +860,7 @@ el:
   thanks: "Ευχαριστούμε!"
   translate: "Βοηθήστε με την μετάφραση του Loomio!"
   unlike: "Δεν μ'άρέσει"
-  until_close: "μέχρι να κλείσει"
+  time_until_close: "%{quantity_of_time} μέχρι να κλείσει"
   update: "Ενημέρωση"
   facebook: "Facebook"
   google: "Google"

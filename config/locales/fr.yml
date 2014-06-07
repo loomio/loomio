@@ -1,4 +1,6 @@
 fr:
+  explore:
+    go_to_group: "Voir le groupe %{group_name}"
   activerecord:
     errors:
       messages:
@@ -179,6 +181,10 @@ fr:
   edit_discussion_context: "Modifier le contexte de la discussion"
   request_new_group: "Créer un groupe"
   start_new_group: "Créer un nouveau groupe"
+  start_new_group_hint: "Pour commencer à prendre des décisions"
+  find_a_group: "Trouver un groupe"
+  find_a_group_hint: "Pour explorer les groupes publics"
+  no_group_header: "Bienvenue sur Loomio Beta"
   empty_notifications: "Vous n'avez pas de notification pour l'instant."
   see_all_notifications: "Voir toutes les notifications"
   profile: "Profil"
@@ -293,6 +299,7 @@ fr:
   current_decision: "Décision actuelle"
   previous_decisions: "Décisions précédentes"
   see_previous_decisions: "Voir les décisions précédentes"
+  see_more: "Voir plus"
   create_new_proposal: "Créer une nouvelle proposition"
   empty_decision_list_html: "Prêt à prendre position ? <br> Tout le monde peut rédiger une proposition."
   empty_decision_index: "Ce groupe n'a pas encore pris de décision."
@@ -495,6 +502,7 @@ fr:
   confirmation_not_received: "Instructions de confirmation non reçues ?"
   unlock_not_received: "Instructions de déblocage non reçues ?"
   inactive_html: "Désolé, ce compte est actuellement inactif. Si vous avez la moindre question, n'hésitez pas à <a href='%{path_to_contact}'>nous contacter</a>."
+  create_an_account_html: 'Créer un compte sur Loomio Beta'
   log_in: "Se connecter"
   join_group:
     log_in: "Connectez-vous pour rejoindre %{group_name}"
@@ -647,7 +655,7 @@ fr:
         privacy_parent_group_members_description_short: Seuls les membres du groupe et les membres du groupe parent peuvent voir ce groupe et ses discussions.
         group_members_invitable_by: "Seulement les coordinateurs"
         submit: Envoyer
-        viewable_by_parent_members_header: Autoriser tous les membres du groupe %{group} à voir ce sous-groupe et ses discussions
+        is_visible_to_parent_members_header: Autoriser tous les membres du groupe %{group} à voir ce sous-groupe et ses discussions
       membership_request:
         introduction: "Présentez-vous"
       motion:
@@ -767,8 +775,6 @@ fr:
       header: "Vous avez presque fini !"
       intro: "Merci de cliquer sur le lien de vérification pour finaliser votre demande :"
       ignore: "Si vous n'avez pas demandé à rejoindre Loomio, merci d'ignorer cet e-mail."
-  campaign:
-    crowdfunding_html: "Hé ! Loomio va bientôt devenir encore meilleur. <a href='http://love.loomio.org'>Découvrez notre campagne de financement participatif !</a>"
   about_loomio: "À propos de Loomio"
   ago: "il y a %{quantity_of_time}"
   approve: "Approuvez"
@@ -829,7 +835,6 @@ fr:
   thanks: "Merci !"
   translate: "Aidez-nous à traduire Loomio !"
   unlike: "Je n'aime plus"
-  until_close: "avant fermeture"
   update: "Mise à jour"
   facebook: "Facebook"
   google: "Google"

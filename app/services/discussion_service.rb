@@ -33,7 +33,7 @@ class DiscussionService
 
   def self.start_discussion(discussion)
     user = discussion.author
-    discussion.inherit_group_privacy! if discussion.private.nil?
+    discussion.inherit_group_privacy!
 
     return false unless discussion.save
 
@@ -51,9 +51,22 @@ class DiscussionService
     discussion.description = discussion_params[:description]
     discussion.uses_markdown = discussion_params[:uses_markdown]
 
-    return false unless discussion.save
+    if user.ability.can? :update, discussion.group
+      discussion.iframe_src = discussion_params[:iframe_src]
+    end
 
-    user.update_attributes(uses_markdown: discussion.uses_markdown)
+    if discussion.valid?
+      if discussion.title_changed?
+        Events::DiscussionTitleEdited.publish!(discussion, user)
+      end
+
+      if discussion.description_changed?
+        Events::DiscussionDescriptionEdited.publish!(discussion, user)
+      end
+      user.update_attributes(uses_markdown: discussion.uses_markdown)
+      discussion.save
+    else
+      false
+    end
   end
-
 end

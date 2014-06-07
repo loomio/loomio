@@ -18,6 +18,10 @@ When /^I login as "(.*?)" with an incorrect password$/ do |email|
   login(email, 'wrong_password')
 end
 
+When /^I click on the login button$/ do
+  first('.login').click
+end
+
 When(/^I log in$/) do
   fill_in 'user_email', with: @user.email
   fill_in 'user_password', :with => 'password'

@@ -1,7 +1,6 @@
 window.Application ||= {}
 
 $ ->
-  Application.enableInlineEdition()
   Application.hideAllErrorMessages()
   initializeDatepicker()
   initializeHelpNotices()
@@ -122,31 +121,6 @@ Application.getPageParam = () ->
     page
   else
     ""
-
-# Edit description
-Application.enableInlineEdition = ()->
-  if $("body.groups.show").length > 0 || $("body.discussions.show").length > 0
-    $(".edit-description").click((event) ->
-      container = $(this).parents(".description-container")
-      description_height = container.find(".long-description").height()
-      container.find(".description-body").toggle()
-      container.find("#description-edit-form").toggle()
-      if description_height > 90
-        container.find('#description-input').height(description_height)
-      event.preventDefault()
-    )
-
-    $(".description-body").on('click', '.edit-discussion-description', (event)->
-      $(".discussion-description-helper-text").toggle()
-      $(".discussion-additional-info").toggle()
-      event.preventDefault()
-      )
-    $("#cancel-add-description").click (event) ->
-      $("#description-edit-form").toggle()
-      $(".description-body").toggle()
-      $(".discussion-description-helper-text").toggle()
-      $(".discussion-additional-info").toggle()
-      event.preventDefault()
 
 # Placeholder shim
 $.placeholder.shim();

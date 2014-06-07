@@ -1,10 +1,11 @@
 class GroupsController < GroupBaseController
   before_filter :authenticate_user!, except: :show
 
-  before_filter :load_resource_by_key, :except => [:create, :new]
+  before_filter :load_group, :except => [:create, :new]
   authorize_resource except: :create
 
   before_filter :ensure_group_is_setup, only: :show
+  before_filter :assign_meta_data, only: :show
 
   caches_action :show, :cache_path => Proc.new { |c| c.params }, unless: :user_signed_in?, :expires_in => 5.minutes
 
@@ -15,8 +16,15 @@ class GroupsController < GroupBaseController
   #for new subgroup form
   def add_subgroup
     parent = Group.published.find(params[:id])
-    @subgroup = Group.new(:parent => parent, privacy: parent.privacy)
-    @subgroup.members_invitable_by = parent.members_invitable_by
+    @subgroup = Group.new(parent: parent,
+                          is_visible_to_public: parent.is_visible_to_public,
+                          discussion_privacy_options: parent.discussion_privacy_options)
+    @subgroup.members_can_add_members = parent.members_can_add_members
+  end
+
+  def join
+    MembershipService.join_group(group: @group, user: current_user)
+    redirect_to @group, notice: t(:you_have_joined_group, group_name: @group.name)
   end
 
   def create
@@ -25,15 +33,16 @@ class GroupsController < GroupBaseController
     @group.mark_as_setup!
     if @group.save
       Measurement.increment('groups.create.success')
+      create_intercom_event 'group_created'
       @group.add_admin! current_user
       flash[:success] = t("success.group_created")
       redirect_to @group
-    elsif @group.is_a_subgroup?
-        @subgroup = @group
-        render 'groups/add_subgroup'
+    elsif @group.is_subgroup?
+      @subgroup = @group
+      render 'groups/add_subgroup'
     else
       Measurement.increment('groups.create.error')
-      render 'form'
+      render 'new'
     end
   end
 
@@ -44,9 +53,15 @@ class GroupsController < GroupBaseController
 
   def update
     if @group.update_attributes(permitted_params.group)
-      if @group.is_hidden?
+
+      if @group.private_discussions_only?
         @group.discussions.update_all(private: true)
       end
+
+      if @group.public_discussions_only?
+        @group.discussions.update_all(private: false)
+      end
+
       Measurement.increment('groups.update.success')
       flash[:notice] = 'Group was successfully updated.'
       redirect_to @group
@@ -58,24 +73,17 @@ class GroupsController < GroupBaseController
 
   def show
     @group = GroupDecorator.new @group
-    @subgroups = @group.subgroups.all.select{|g| can?(:show, g) }
     @discussion = Discussion.new(group_id: @group.id)
-    @discussions_with_open_motions = GroupDiscussionsViewer.for(group: @group, user: current_user).
-                                                            with_open_motions.
-                                                            order('motions.closing_at ASC').
-                                                            preload({:current_motion => :discussion}, {:group => :parent})
 
-    @discussions_without_open_motions = GroupDiscussionsViewer.for(group: @group, user: current_user).
-                                                            without_open_motions.
-                                                            order('last_comment_at DESC').
-                                                            preload(:current_motion, {:group => :parent}).
-                                                            page(params[:page]).per(20)
+    @discussions = GroupDiscussionsViewer.for(group: @group, user: current_user).
+                                          joined_to_current_motion.
+                                          preload(:current_motion, {:group => :parent}).
+                                          order('motions.closing_at ASC, last_comment_at DESC').
+                                          page(params[:page]).per(20)
 
-    @closed_motions = Queries::VisibleMotions.new(user: current_user, groups: @group)
+    @closed_motions = Queries::VisibleMotions.new(user: current_user, groups: @group).order('closed_at desc')
 
     build_discussion_index_caches
-
-    assign_meta_data
   end
 
   def edit
@@ -100,34 +108,22 @@ class GroupsController < GroupBaseController
     redirect_to @group
   end
 
-  def edit_description
-    @description = params[:description]
-    @group.description = @description
-    @group.save!
-  end
-
   def members_autocomplete
     users = @group.users.where('username ilike :term or name ilike :term ', {term: "%#{params[:q]}%"})
     render json: users.map{|u| {name: "#{u.name} #{u.username}", username: u.username, real_name: u.name} }
   end
 
   private
-
-    def load_resource_by_key
-      group
-      raise ActiveRecord::RecordNotFound if @group.model.blank?
-    end
-
     def ensure_group_is_setup
       if user_signed_in? && @group.admins.include?(current_user)
-        unless @group.is_setup? || @group.is_a_subgroup?
+        unless @group.is_setup? || @group.is_subgroup?
           redirect_to setup_group_path(@group)
         end
       end
     end
 
     def assign_meta_data
-      if @group.privacy == :public
+      if @group.is_visible_to_public?
         @meta_title = @group.name
         @meta_description = @group.description
       end

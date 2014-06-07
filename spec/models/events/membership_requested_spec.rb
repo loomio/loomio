@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Events::MembershipRequested do
-  let(:admin) {mock_model(User, email: 'hello@kitty.com')}
+  let(:admin) {mock_model(User, email: 'hello@kitty.com', name_and_email: 'Kitty <hello@kitty.com>')}
   let(:group) {mock_model(Group,
                           admins: [admin],
                           full_name: 'bingo for alcoholics',
@@ -25,7 +25,7 @@ describe Events::MembershipRequested do
   end
 
   context "after event has been published" do
-    let(:admin) { double(:admin, email: 'hello@kitty.com', locale: "en") }
+    let(:admin) { double(:admin, email: 'hello@kitty.com', locale: 'en', name_and_email: 'Kitty <hello@kitty.com>') }
     let(:event) { Events::MembershipRequested.new(kind: "new_comment",
                                                      eventable: membership_request) }
     before {

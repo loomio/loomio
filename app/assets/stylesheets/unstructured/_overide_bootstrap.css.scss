@@ -1,0 +1,51 @@
+body { line-height: 22px; }
+.btn { margin-bottom: 5px; }
+
+.modal {
+  opacity: 100%;
+  filter:alpha(opacity=100);
+  form {
+    margin: 0;
+    .btn{ margin: 0; }
+  }
+}
+
+[class*="span"].flush { margin-left: 0; }
+
+
+.navbar-fixed-top .navbar-inner {
+  background-image: linear-gradient(to bottom, white, white);
+  border-bottom: 1px solid #dbdbdb;
+  min-height: 44px;
+}
+
+.navbar .btn { margin-top: 8px; }
+
+.modal-backdrop {
+  background: #999;
+  top: 0;
+}
+
+.modal-header {
+  h2 { font-size: 1.2em; }
+  h3 { font-size: 1em; }
+  h2, h3 {
+    display: inline;
+    font-weight: bold;
+    width: 80%;
+  }
+}
+
+.control-label { display: inline; }
+
+.popover {
+  width: 276px;
+  z-index: 10000;
+}
+
+.popover-inner {
+  background: black;
+}
+.navbar-fixed-top .container { width: 960px; }
+
+.dropdown-menu { border: 1px solid #E7E7E7; }

@@ -9,4 +9,4 @@
         = f.input :name
         = f.input :email
       = f.input :introduction, placeholder: t(:'simple_form.placeholders.membership_request.introduction', group_name: membership_request.group_name)
-      = f.submit t(:ask_to_join_group), class: "btn btn-info btn-large", data: { disable_with: t(:ask_to_join_group) }
+      = f.submit t(:ask_to_join_group), class: "btn btn-info btn-large", data: { disable_with: t(:ask_to_join_group) }, id: 'submit-membership-request'

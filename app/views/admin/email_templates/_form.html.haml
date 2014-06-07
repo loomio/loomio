@@ -1,7 +1,7 @@
 =semantic_form_for [:admin, @email_template] do |f|
   =f.inputs "Email Template" do
     =f.input :name
-    =f.input :language, as: :select, :collection => Translation::LANGUAGES
+    =f.input :language, as: :select, :collection => AppTranslation::LANGUAGES
     =f.input :subject
     =f.input :body
     =f.submit

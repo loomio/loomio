@@ -13,12 +13,11 @@
     - else
       %h1= t("invitation.invite_people")
   .row#invitation-options
-    - if can? :invite_outsiders, @group
-      .span6.invite-by-email
-        = render 'invite_users', form: f, group: @group, discussion: @discussion
-        = @group.invitations_remaining
-        = t :invitations_remaining
-    - if @group.is_a_subgroup?
+    .span6.invite-by-email
+      = render 'invite_users', form: f, group: @group, discussion: @discussion
+      = @group.invitations_remaining
+      = t :invitations_remaining
+    - if @group.is_subgroup?
       .span4.invite-members-of-parent
         %h3= t :"invitation.select_members", group_name: @group.parent.name
         .parent-members

@@ -12,9 +12,9 @@ class GroupMailer < BaseMailer
     @group = membership_request.group
     locale = best_locale(admin.locale)
     I18n.with_locale(locale) do
-      mail  :to => admin.email,
-            :reply_to => "#{@membership_request.name} <#{@membership_request.email}>",
-            :subject => t("email.membership_request.subject", who: @membership_request.name, which_group: @group.full_name)
+      mail  to: admin.name_and_email,
+            reply_to: "#{@membership_request.name} <#{@membership_request.email}>",
+            subject: t("email.membership_request.subject", who: @membership_request.name, which_group: @group.full_name)
     end
   end
 
@@ -25,9 +25,9 @@ class GroupMailer < BaseMailer
     @recipient = recipient
     locale = best_locale(recipient.locale, sender.locale)
     I18n.with_locale(locale) do
-      mail  :to => @recipient.email,
-            :reply_to => "#{sender.name} <#{sender.email}>",
-            :subject => "#{email_subject_prefix(@group.full_name)} #{subject}"
+      mail  to: @recipient.email,
+            reply_to: sender.name_and_email,
+            subject: "#{email_subject_prefix(@group.full_name)} #{subject}"
     end
   end
 

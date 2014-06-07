@@ -8,7 +8,6 @@ describe EmailPreferences do
     result.user = user
     result.group = options[:group] || group
     result.subscribed_to_notification_emails = options[:subscribed]
-    result.access_level = 'member'
     result.save!
     result
   end

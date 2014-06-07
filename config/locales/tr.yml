@@ -85,7 +85,9 @@ tr:
     membership_request_already_canceled: "Üyelik isteği daha önce iptal edildi."
     position_not_submitted: "Pozisyon gönderilemedi"
     proposal_not_created: "Öneri oluşturulamadı."
+    user_already_admin: "%{which_user} zaten bu grupta koordinatör."
     user_already_member: "%{which_user} zaten bu grubun bir üyesi."
+    user_not_admin: "Üzgünüz, %{which_user} buna erişebilmek için koordinatör olmalı."
   success:
     added_to_group: "%{which_group} grubuna başarıyla eklendin."
     close_date_changed: "Kapanış tarihi başarıyla değiştirildi."
@@ -299,6 +301,8 @@ tr:
   proposal_closing_when: "%{when} içinde kapanıyor"
   proposal_closed_when: "%{when} önce kapandı"
   proposed_when_by_who: "%{who} tarafından %{when} önce önerildi."
+  engagement_on_open_proposal: "Şu ana kadar kullanıcıların %%%{percent}'i  pozisyonunu belirtti (%{numerator}/%{denominator})"
+  engagement_on_closed_proposal: "Kullanıcıların %%%{percent}'i  pozisyonunu belirtti (%{numerator}/%{denominator})"
   state_your_position: "Konumunu belirt"
   positions: "Konumlar"
   yes_position: "Katılıyorum"
@@ -324,16 +328,17 @@ tr:
       block: "itiraz ettin"
   help:
     coordinating: 'Loomio grubunu koordine etmek'
-    coordinating_details: "Koordinatör olarak, Loomio grubunu düzenlemek ve kişileri davet etmekten \nsen sorumlusun. Yeni bir yazılımın nasıl kullanıldığını öğrenmenin yanı sıra, grubun\ndaha etkili işbirliği ve birlikte iyi kararlar almak için yeni süreçler öğrenecek.\nİşte grubunun\
-      \ başarılı olmasını desteklemen için bazı ipuçları:\n"
+    coordinating_details: "Koordinatör olarak, Loomio grubunu düzenlemek ve kişileri davet etmekten \nsen sorumlusun. Yeni bir yazılımın nasıl kullanıldığını öğrenmenin yanı sıra, grubun\ndaha etkili işbirliği ve birlikte iyi kararlar almak için yeni süreçler öğrenecek.\nİşte grubunun başarılı olmasını\
+      \ desteklemen için bazı ipuçları:\n"
     different_ways: 'Loomio''yu kullanmanın çeşitli yolları'
-    engaging_html: "<h2>Grubunla etkileşime girmen için ipuçları</h2>\n<p>Kişiler masada etkileşimli bir öneri olduğu zaman katkıda bulunmak için istekli olurlar. İyi bir öneri grup için bir eylem planı içerir, bu yüzden\ngrubun aynı fikirde olup olmadığı ve bunun ne anlama geldiği hemen\
-      \ belli olacaktır. Eğer kişilerin yüzyüze \nya da email aracılığıyla yürüttüğü müzakereler ve aldığı kararlar Loomio aracılığıyla yapılıyor olsaydı\nbunları tanımlamak çok daha kolay olurdu.</p>\n<p>Eğer grubun henüz yeni ise, herkesin Loomio aracıyla oynaması için bir şans vermek\
-      \ ve karar verme sürecini  görebilmesine olanak tanımak için endişe yaratmayacak bir karar ile işe başlayabilirsin.</p>\n<p>Kişilerin müzakerelere dahil olmasını teşvik etmenin diğer bir kolay yolu ise \n@bahset özelliğini kullanarak onları davet etmek; bu özellik kişilere bir\
-      \ yorumda onlardan bahsedildiğini haber veren\nbir e-posta gönderir.</p>\n"
-    example1_html: "<h3>Grubunun geniş bir konuyu müzakere ederek birlikte bir çözüm geliştirmesine ihtiyacın var</h3>\n<p>Strateji: Bir öneri oluşturmadan önce bir süre için konuyu tartışın.</p>\n<p>Eğer belirli bir çözüme varmadan önce grup içinde soruna karşı ortak bir anlayış geliştirirsen,\
-      \ \nmüzakereler genellikle en iyi sonuca ulaşır. Kişiler bu sürece\nkatılım gösterdileri sürece, sonuç hakkında fikir birliğinde olmaları daha olasıdır.</p>\n"
+    engaging_html: "<h2>Grubunla etkileşime girmen için ipuçları</h2>\n<p>Kişiler masada etkileşimli bir öneri olduğu zaman katkıda bulunmak için istekli olurlar. İyi bir öneri grup için bir eylem planı içerir, bu yüzden\ngrubun aynı fikirde olup olmadığı ve bunun ne anlama geldiği hemen belli olacaktır.\
+      \ Eğer kişilerin yüzyüze \nya da email aracılığıyla yürüttüğü müzakereler ve aldığı kararlar Loomio aracılığıyla yapılıyor olsaydı\nbunları tanımlamak çok daha kolay olurdu.</p>\n<p>Eğer grubun henüz yeni ise, herkesin Loomio aracıyla oynaması için bir şans vermek ve karar verme sürecini  görebilmesine\
+      \ olanak tanımak için endişe yaratmayacak bir karar ile işe başlayabilirsin.</p>\n<p>Kişilerin müzakerelere dahil olmasını teşvik etmenin diğer bir kolay yolu ise \n@bahset özelliğini kullanarak onları davet etmek; bu özellik kişilere bir yorumda onlardan bahsedildiğini haber veren\nbir e-posta\
+      \ gönderir.</p>\n"
+    example1_html: "<h3>Grubunun geniş bir konuyu müzakere ederek birlikte bir çözüm geliştirmesine ihtiyacın var</h3>\n<p>Strateji: Bir öneri oluşturmadan önce bir süre için konuyu tartışın.</p>\n<p>Eğer belirli bir çözüme varmadan önce grup içinde soruna karşı ortak bir anlayış geliştirirsen, \nmüzakereler\
+      \ genellikle en iyi sonuca ulaşır. Kişiler bu sürece\nkatılım gösterdileri sürece, sonuç hakkında fikir birliğinde olmaları daha olasıdır.</p>\n"
     get_in_touch: "İletişime geç"
+    get_in_touch_description_html: "Herhangi bir sorunuz veya geri bildiriminiz varsa, <a href='%{link}'>bize yazın</a>."
     getting_started: "Başlarken"
     getting_started_description: "Sol tarafta, grup bir konuyu tartışır, fikir ve bilgi alışverişinde bulunur. Grubun almasını gerektiren bir karar var olduğunda, sağ tarafta belirir."
     getting_the_most: 'Loomio''dan en iyi şekilde yararlanmak'
@@ -343,6 +348,7 @@ tr:
     help: "Yardım"
     how_it_works: "Nasıl çalışıyor"
     join_the_community: "Topluluğa katıl"
+    join_the_community_description_html: "Loomio'yu nasıl geliştirilebiliriz ve nasıl en iyi şekilde kullanabiliriz konularını konuştuğumuz Loomio Topluluğuna herkes katılmakta özgürdür. <br /><br /><a href='https://www.loomio.org/groups/3'>Loomio Topluluğu grubuna gitmek için tıklayın.</a>."
     images_and_text_formatting: "Resimler ve metin biçimlendirme"
     keep_up_to_date: "Güncel tutun"
     make_a_decision: "Bir karar ver"
@@ -661,7 +667,6 @@ tr:
   thanks: "Teşekkürler!"
   translate: "Loomio'nun çevirisine yardımcı ol!"
   unlike: "Beğenmekten vazgeç"
-  until_close: "kapanıncaya kadar"
   update: "Güncelleme"
   common:
     email: "E-posta"

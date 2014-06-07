@@ -9,7 +9,6 @@ ca:
       press: 'Premsa'
       log_in: 'INICIA SESSIÓ'
       video: "Veure més sobre com funciona Loomio"
-      crowdfunding: 'Fés-li un cop d’ull a la campanya de micromecenatge'
       more: 'Més'
       top: 'Inici'
       public_groups: 'Grups públics'
@@ -19,7 +18,7 @@ ca:
     hero:
       head_html: 'El món necessita una manera millor per <strong>prendre decisions plegats.</strong>'
       subhead: 'Ajuda''ns a crear-lo'
-      desc: 'Loomio és software lliure i gratuït per a qualsevol persona, en qualsevol lloc, per participar en les decisions que li afecten'
+      desc_html: 'Loomio és <a href="https://github.com/loomio/loomio">software lliure i gratuït</a> per a qualsevol persona, en qualsevol lloc, per participar en les decisions que li afecten'
     product:
       header_html: 'Quan escoltem <strong>totes les veus</strong>, prenem <strong>millors decisions</strong>.'
       step1:
@@ -33,11 +32,6 @@ ca:
         desc: 'Desenvolupeu la proposta plegats de manera que satisfaci a tothom. Cada decisió té una data límit clara, així sempre s''obté un resultat concret.'
     crowdfunding:
       header: 'Estem en un procès de micromecenatge per acabar de construïr aquesta plataforma i lliurar-la al món.'
-    prototype:
-      header_html: "Ja hem creat un <strong>prototip</strong>, i gent <strong>d'arreu del món</strong> està fent coses increïbles amb ell:"
-      subhead_html: '<a href="%{try_loomio_link}">Prova ara Loomio Beta</a>. O <a href="%{join_campaign_link}"> afegeix-te a la campanya</a> per obtenir accés prematur a Loomio 1.0. '
-    mobile:
-      header_html: 'Una plataforma que funciona a tots els dispositius, construït amb la millor <strong>tecnologia mòbil oberta.</strong>'
     quote:
       header:
         rushkoff_html: '"Loomio <strong>desencadena el potencial d''internet</strong> per coduïr a la gent cap al consens i no cap al debat polaritzat". <div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, autor de <em>Present Shock</em></div>'

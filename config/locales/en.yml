@@ -2,6 +2,15 @@ en:
   explore:
     go_to_group: "Go to %{group_name}"
 
+  try_it:
+    header: "Try Loomio"
+    start_a_group: "Start a group to make decisions in your own community."
+    join_the_community: "Join the Loomio Community group"
+    loomio_community_info: "This is where we discuss and make decisions about Loomio."
+    explore_groups: "Explore other groups on Loomio"
+    explore_groups_info: "Check out all the awesome groups on Loomio and join them!"
+
+
   activerecord:
     errors:
       messages:
@@ -165,6 +174,9 @@ en:
         one:   "1 year"
         other: "%{count} years"
 
+  organisation:
+    name: "Loomio"
+
   footer:
     about: 'About'
     blog: 'Blog'
@@ -238,6 +250,50 @@ en:
   #
   # GROUP PAGE
   #
+  group_form:
+    confirm_all_discussions_will_be_made_private_message: "If you proceed, any public discussions will be made private."
+    confirm_all_discussions_will_be_made_public_message: "Are you sure? If you proceed, any private discussions will be made public."
+
+    visible_to:
+      label: Who can find this group?
+      public_html: 'Anyone <span>list the group publicly</span>'
+      parent_members_html: 'People in %{parent_group_name} <span>unlisted to the public, but visible to members of %{parent_group_name}</span>'
+      members_html: 'Members only <span>the group will not be listed</span>'
+
+    membership_granted_upon:
+      label: How do people join?
+      hidden_parent:
+        request_html: 'Open <span>to members of %{parent_group_name}</span>'
+        approval_html: 'By request <span>from members of %{parent_group_name}</span>'
+      request_html: Open <span>anyone can join the group</span>
+      approval_html: By request <span>anyone can request to join</span>
+      invitation_html: Invitation only <span>new members must be invited</span>
+
+    members_can_add_members:
+      label: Who can add members?
+      'true': All members
+      'false': Coordinators only
+
+    parent_members_can_see_discussions:
+      label: Discussion privacy
+      'true': 'Anyone in %{parent_group_name} can see discussions'
+      'false': Only members can see discussions
+
+    discussion_privacy_options:
+      label: Discussion privacy
+      public_only_html: Public discussions only <span>visible to anyone</span>
+      public_or_private_html: Allow public and private discussions <span>set the discussion privacy per discussion</span>
+      private_only_html: Private discussions only <span>visible only to group members</span>
+
+  group_privacy:
+    visible_to:
+      public: Publicly listed group.
+      parent_members: 'Privately listed group. Only visible to members and people in %{parent_group_name}.'
+      members: Hidden group. Only visible to members.
+
+      public_html: 'Anyone <span>list the group publicly</span>'
+      parent_members_html: 'People in %{parent_group_name} <span>unlisted to the public, but visible to members of %{parent_group_name}</span>'
+      members_html: 'Members only <span>the group will not be listed</span>'
 
   setup_steps_title: "Next steps:"
   setup_step_1: "Check out the example discussion"
@@ -280,6 +336,11 @@ en:
   want_to_invite_html: "Want to <a href='%{link}'>invite people</a> to this group?"
 
   membership_requests: "Membership requests"
+  previous_requests: Previous requests
+  approved_by_person: Approved by %{person}
+  ignored_by_perosn: Ignored by %{person}
+  join_group_btn: Join group
+  you_have_joined_group: You have joined %{group_name}
   confirm_approve_membership_request: "Are you sure you want to add %{which_user} to the group?"
   cancel_membership_request: "Cancel request"
   ignore_request: "Ignore request"
@@ -321,6 +382,8 @@ en:
   #
 
   group_request:
+    beta_request_header: "Start a group on Loomio Beta"
+    beta_request_description: "To start making decisions on Loomio Beta, the first step is to start a group"
     neighbourhood_support_group: "e.g. Neighbourhood Support Group"
     confirmation:
       title: You're almost done! Check your email.
@@ -354,14 +417,24 @@ en:
   empty_decision_list_html: "Ready to make a decision? <br> Anyone can start a proposal."
   empty_decision_index: "This group has not made any decisions yet."
   empty_discussion_list: "There is no activity in this discussion yet."
-  empty_discussion_index: "There are no discussions in any of your groups."
-  empty_discussion_index_group: "This group does not have any discussions yet."
-  private_group_discussion_display: "This group is private. The discussions are only visible to members. If you'd like to participate, you can ask to join."
+  go_to_add_comment_html: "To add a comment, <a href='%{href}'>go to the end of the discussion</a>."
+
+  discussion_list:
+    empty:
+      no_discussions: "There are no discussions in any of your groups."
+      no_discussions_in_group: "This group does not have any discussions yet."
+      no_public_discussions: "There are no public discussions in this group."
+      discussions_are_private: "All discussions in this group are private."
+      request_membership_html: "To see private discussions, <a href='%{href}'>request to join the group.</a>"
+      membership_is_invitation_only: "To join this group you need to be invited by a member."
+      membership_is_invitation_by_admin_only: "To join this group you need to be invited by a coordinator."
+      log_in_html: "If you are a member, <a href='%{href}'>log in</a> to see any private discussions."
 
   discussion_context:
     started_html: "Started %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Last edited %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "See revision history"
+    see_history: "See history"
 
   description_history:
     header: "Revision history"
@@ -615,6 +688,7 @@ en:
   or: "or"
   forgot_your_password: "Forgot your password?"
   dont_have_an_account: "Don't have an account?"
+  create_one_now: "Create one now"
   link_it_up_instead: "Link it up instead"
   sign_up_via: "Sign up via"
   or_fill_in_this_form: "or fill in this form"
@@ -707,18 +781,12 @@ en:
   #
 
   contact_page:
+    contact_us:     'Contact us'
     labels:
       name:         'Your name'
       email:        'Your email address'
       message:      'Your message'
-      destination:  'Where shall we send your message?'
       submit:       'Send message'
-    destinations:
-      contact:      'General enquiries'
-      tech:         'Tech support / bug reports / feature requests'
-      press:        'Media enquiries'
-      sales:        'Sales and customer enquiries'
-      translations: 'Translation enquiries'
     messages:
       email_html:        "Fill out this form, or send an email to <a href='mailto:%{email}'>%{email}</a>"
       social_html:       "You can also join us on<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
@@ -733,14 +801,15 @@ en:
       who: "Which group would you like to start this discussion in?"
     edit:
       header: "Edit discussion"
+    privacy:
+      will_be_private: "The discussion will only be visible to members of the group."
+      will_be_private_to_group: "The discussion will only be visible to members of %{group_name}."
+      will_be_private_to_parent_group: "The discussion will be visible to members of %{parent_group_name} and members of %{group_name}."
+      will_be_public: "Anyone can see the discussion."
 
   motion_form:
     header: "New proposal"
     name_helper: "Make the title as clear and succinct as possible."
-
-  group_form:
-    invitation_settings: "Invitation Settings"
-    admins_only: "Coordinators only"
 
   vote_form:
     header: "State your position"
@@ -794,13 +863,6 @@ en:
       discussion:
         title: "Title"
         description: "Context"
-        privacy_public_header: "Public"
-        privacy_public_description: "Anyone can see this discussion"
-        privacy_private_header: "Private"
-        privacy_private_description: "Only members of %{group} can see this discussion"
-        privacy_hidden_description: "All discussions in a hidden group are private."
-        of: "of "
-        of_no_group: "of this group"
       group:
         name: "Group name"
         description: "Description"
@@ -808,6 +870,11 @@ en:
         members_invitable_by_coordinators: "Coordinators only"
         members_invitable_by_members: "All group members"
         privacy: Privacy
+        visibility_visible_header: 'Visible'
+        visibility_hidden_header: 'Hidden'
+        visibility_visible_description: 'People can find this group and ask to join.'
+        visibility_hidden_description: 'Joining this group is by invitation only.'
+
         privacy_public_header: Public
         privacy_public_description: Discussions are public, unless made private. Anyone can find the group and ask to join.
         privacy_private_header: Mostly private
@@ -820,7 +887,7 @@ en:
         group_members_invitable_by:
           "Only coordinators"
         submit: Submit
-        viewable_by_parent_members_header: Allow all %{group} members to see this subgroup and its discussions
+        is_visible_to_parent_members_header: Allow all %{group} members to see this subgroup and its discussions
       membership_request:
         introduction: "Introduce yourself"
       motion:
@@ -891,7 +958,6 @@ en:
     view_discussion: "Click here to view this discussion"
     view_group: "Click here to view the group on Loomio"
     view_proposal: "View this proposal on Loomio"
-    campaign_html: "Was this decision important to you? Consider <a href='%{link_path}'>becoming a Loomio contributor</a> and help us spread Loomio to the world. We're a little team trying to do big things and we need your contribution to keep us growing!"
     create_discussion:
       intro: "%{who} started a new discussion in %{which_group}:"
       subject: "New discussion - %{which}"
@@ -948,15 +1014,6 @@ en:
       intro: "Please click this verification link to finalise your request:"
       ignore: "If you did not request to join Loomio please ignore this email."
 
-
-
-  #
-  # CAMPAIGNS
-  #
-
-  campaign:
-    crowdfunding_html: "Hey! Loomio is about to get a whole lot better. <a href='http://love.loomio.org'>Check out our crowdfunding campaign!</a>"
-
   #
   # COMMON WORDS
   #
@@ -1005,7 +1062,10 @@ en:
   prev: "Prev"
   more: "More..."
   translate: "Help translate Loomio!"
+  translate_field: "See translation"
+  loading_translation: "Loading translation..."
   translate_this_string: "Translate to %{language}"
+  failed_translation: "Unable to complete translation"
   options: "Options"
   ok_got_it: "Okay, got it!"
   remove: "Remove"
@@ -1016,18 +1076,20 @@ en:
   send_email: "Send email"
   show_more: "Show More"
   start_a_group: "Start a group"
-  start_group: "Start group!"
   starting: "Starting"
   subject: "Subject"
   terms_of_service_html: "By clicking %{button_text}, you agree to Loomio's <a href='%{link_path}' target='_blank'>Terms of service</a>"
   thanks: "Thanks!"
-  translate: "Help translate Loomio!"
   unlike: "Unlike"
-  until_close: "until close"
+  time_until_close: "%{quantity_of_time} until close"
   update: "Update"
   facebook: "Facebook"
   google: "Google"
   persona: "Persona"
 
   common:
+    privacy: "Privacy"
+    private: "Private"
+    public: "Public"
     email: "Email"
+    start_group: "Start group!"

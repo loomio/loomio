@@ -7,7 +7,7 @@ module LocalesHelper
     params.has_key?(:locale) || current_user_or_visitor.locale.present?
   end
 
-  def detected_locale(supported_locales = Translation.locales)
+  def detected_locale(supported_locales = AppTranslation.locales)
     (browser_accepted_locales & supported_locales).first
   end
 
@@ -23,7 +23,7 @@ module LocalesHelper
     if user_signed_in?
       I18n.locale = best_available_locale
     else
-      I18n.locale = best_cachabale_locale
+      I18n.locale = best_cachable_locale
     end
   end
 
@@ -31,7 +31,7 @@ module LocalesHelper
     selected_locale || detected_locale || default_locale
   end
 
-  def best_cachabale_locale
+  def best_cachable_locale
     selected_locale || default_locale
   end
 
@@ -61,7 +61,7 @@ module LocalesHelper
 
   def save_selected_locale
     locale = params[:locale]
-    if Translation.permitted_locale?(locale)
+    if AppTranslation.permitted_locale?(locale)
       current_user.update_attribute(:selected_locale, locale)
     end
   end

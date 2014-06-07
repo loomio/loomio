@@ -1,4 +1,6 @@
 ja:
+  explore:
+    go_to_group: " %{group_name} に行く"
   activerecord:
     errors:
       messages:
@@ -37,6 +39,7 @@ ja:
     motion_closing_inputs: "無効な締切日です"
     motion_outcome_not_created: "結論を公表することができません"
     motion_outcome_not_updated: "結論をアップデートすることができません"
+    only_group_coordinator_destroy: "あなたは唯一のコーディネーターなのでこのグループを去ることはできません。\nドロップダウンのオプションから、またはグループにa href='%{add_coordinator}'>新しいコーディネーターを加える</a>ことによってあなたのグループを非アクティブ化することができます。"
     only_group_coordinator_remove_admin: "グループはコーディネーターを一人持たなければいけません。グループにコーディネーターを一人追加したいですか？"
     permission_to_invite: "新しいメンバーを招待する許可がありません"
     position_not_updated: "意見をアップデートできません"
@@ -171,6 +174,7 @@ ja:
   honeypot_warning: "あなたのアカウントを作成することができませんでした。\nスクリーンリーダーを使っている場合、フォームの最後の(非表示)フィールドが空白になっていることを確かめてください"
   tagline: "影響がある決定に誰もが簡単に関わることができる世界へ"
   or_sign_in_html: "すでにLoomioアカウントを持っている場合は、<a href='%{link}' class='%{link_class}'>ここからログイン</a>"
+  or_link_account_html: "もしあなたがすでにLoomioアカウントを持っている場合、<a href='%{link}'>つなげる</a>"
   click_to_dismiss: "メッセージを閉じる"
   generic_confirm: "よろしいですか？"
   discussion_helper_text:
@@ -270,8 +274,8 @@ ja:
     motion_close_date_edited: "提案の締切日が変更されました"
     motion_outcome_created: "提案の結論を公表しました"
     motion_outcome_updated: "提案の結論をアップデートしました"
-    discussion_title_edited: "ディスカッションのタイトルが変更されました"
-    discussion_description_edited: "ディスカッション情報が変更されました"
+    discussion_title_edited: "　がディスカッションのタイトルを変更しました"
+    discussion_description_edited: "がディスカッションの情報を変更しました"
   discussion: "ディスカッション"
   current_decision: "現在の提案"
   previous_decisions: "過去の提案"
@@ -340,10 +344,10 @@ ja:
     abstain: "棄権"
     block: "ブロック"
     past_tense:
-      'yes': "賛成されました"
-      'no': "反対されました"
-      abstain: "棄権されました"
-      block: "ブロックされました"
+      'yes': "賛成"
+      'no': "反対"
+      abstain: "棄権"
+      block: "ブロック"
   help:
     coordinating: 'Loomioグループをコーディネートする'
     coordinating_details: |
@@ -417,6 +421,7 @@ ja:
     positions_abstain_description: "<span>棄権</span>は、確信がない、またはあなた抜きでグループに決定を行ってほしいことを意味します"
     positions_disagree_description: "<span>反対</span>は、より良い代替案があると考えますがグループの決定を尊重することを意味します"
     positions_block_description: "<span>ブロック</span>は、真剣に異議を唱え、その提案が決定されることに対して納得がいかないことを意味します"
+    start_discussion: "ディスカッションを開始する"
     start_discussion_html: |
       <p>ディスカッションを開始するときに、タイトルがトピックの内容を簡潔に伝えていることを確認してください。
       グループが生産的で知識のあるディスカッションをするために必要なバックグラウンド情報を提供するには、コンテキストパネルを使ってください。</p>
@@ -432,10 +437,16 @@ ja:
     video_tutorial_description: "Loomioの使い方の手短なデモンストレーションに関してはこのビデオを見てください。"
   hint:
     context: 'ディスカッション情報を使うアドバイス'
+    discussion: 'ディスカッションを開始するにあたってアドバイス'
     invitation: '素晴らしい招待を書くアドバイス'
     proposal: 'はっきりした提案を書くアドバイス'
     vote: 'いつでも意見を変更することができます'
   pricing_page:
+    intro: |
+      予算のあるグループは、ツールを使用するための購読料を支払います。
+      支払う手段のないグループは、以下のシステムを使ってください。
+      Pay What You Canモデル：そのメンバーはボランティアで寄付をすることを勧められます。
+      あなたの寄付は、広告のない、私たちのコミュニティによって運営されるLoomioの独立を維持することを意味します。
     organisations: 組織
     organisations_examples: 例：ビジネス、政府機関、地域組織
     informal_groups: 非公式のグループ
@@ -457,7 +468,16 @@ ja:
 
       これを実現させていただいて、ありがとうございます！
     thank_you_title: Loomioに貢献してくれてありがとう！
+    thank_you_body: |
+      あなたの寄付は、容易な共同意思決定を世界へ届けることを助けてくれます。
+
+      あなたの寄付の領収証のついたメールをすぐに受け取るでしょう。
+
+      誰でもLoomioコミュニティへの参加が歓迎されます。Loomioコミュニティは、そのツールを最大限に活かす方法、そしてどのように改良できるかについて話す場です。
+
+      <a href='https://www.loomio.org/groups/3'>Loomioコミュニティグループ & raquoにジャンプする</a>
     making_a_donation: 寄付をする
+    making_a_donation_description: "Loomioは、影響を持つ決定に誰でも参加しやすくするために働いている社会事業組合です。 \nあなたの寄付は、私たちが広告のないLoomioの独立を維持し、コミュニティの中で素晴らしいことを行っているグループに自由に利用可能になるということを意味しています。\n\n これを実現させていただいて、ありがとうございます！\n"
   new_password: "新しいパスワード"
   confirm_new_password: "新しいパスワードを再入力してください"
   change_your_password: "パスワードを変更します"
@@ -489,6 +509,7 @@ ja:
     log_in: "ログインして %{group_name} に参加する"
     create_account_to_join_group: " %{group_name} に参加するために、アカウントを作成してください"
   invitation:
+    alternate: "代わりにこのリンクをシェアして、参加するように誰でも要求できるようにする："
     by_email: "Eメールで招待を送る"
     no_invitations_left: "(*_ _)人ゴメンナサイ　招待はありません"
     no_invitations_left_get_more: "contact@loomio.org にメールを送ってください\nあなたを助けるために何ができるか考えます"
@@ -547,6 +568,7 @@ ja:
       contact: '一般的なお問い合わせ'
       tech: '技術サポート/バグ報告/機能リクエスト'
       press: 'メディアのお問い合わせ'
+      sales: '販売および顧客検索'
       translations: '翻訳のお問い合わせ'
     messages:
       email_html: "このフォームを埋めてください、もしくは <a href='mailto:%{email}'>%{email}</a> にメールを送ってください"
@@ -588,10 +610,11 @@ ja:
     profile: "プロフィールを編集する"
     picture: "画像"
     use_avatar_kind: " %{kind} を使用する"
-    upload_new_image: "新しい画像をアップロードする"
+    upload_new_image: "新しい画像をアップロード"
   group_setup:
     set_up_your_group: あなたのグループを立ち上げる
     desc_header: "あともう少しです！"
+    desc_html: "グループのコーディネーターとして、Loomioグループを立ち上げて管理する責任があります。いくつかの設定を選択した後、あなたが作った新しいグループに入り、ディスカッションを始め、招待状を送ることができます。<p>あなたのグループを説明するのに一番シンプルな方法を考えるとき、自分に尋ねてみてください：何を一緒に成し遂げたいか？どのようなタイプの決定を行いたいか？誰が含まれるのか？</p>"
     submit: "私のグループのところに連れて行って！"
     payment_model:
       header: Loomioは皆のためのもの！
@@ -623,6 +646,7 @@ ja:
         members_invitable_by_members: "すべてのメンバー"
         privacy: 個人情報
         privacy_public_header: 公開
+        privacy_public_description: ディスカッションは、非公開に設定しないかぎり公開になります。誰でもグループを見つけて参加するように要求することができます。
         privacy_private_header: ほとんど非公開
         privacy_private_description: ディスカッションは、明示的に公開に設定しない限り、非公開になります。誰でもグループを見つけて参加するよう要求することができます。
         privacy_hidden_header: 非表示  (完全に非公開)
@@ -676,7 +700,7 @@ ja:
         create: "提案を開始します"
       user:
         create: "アカウントを作成します"
-        update: "アップデート設定"
+        update: "設定をアップデート"
   email:
     to_join_discussion:
       subject: "%{who} があなたにLoomioのディスカッションに参加してもらいたがっています"
@@ -696,6 +720,7 @@ ja:
     view_discussion: "このディスカッションを見るにはここをクリックしてください"
     view_group: "Loomioのグループを見るにはここをクリックしてください"
     view_proposal: "Loomioでこの提案を見る"
+    campaign_html: "この決定はあなたにとって重要でしたか？\n<a href='%{link_path}'>Loomioに寄付をする</a> ことを考えませんか？\nそしてLoomioを世界に広げるのを手伝ってもらえませんか。\n私たちは大きなことをしようとしている小さなチームなので、私たちの発展にはあなたの寄付が必要なのです。"
     create_discussion:
       intro: "%{who} は %{which_group} で新しいディスカッションを開始しました："
       subject: "新しいディスカッション -  %{which}"
@@ -751,8 +776,6 @@ ja:
       header: "もう少しで完了です！"
       intro: "あなたのリクエストを最終的なものにするには、この確認リンクをクリックしてください"
       ignore: "Loomio参加へのリクエストを送って無かった場合は、このメールを無視してください"
-  campaign:
-    crowdfunding_html: "どうも！Loomioはさらに良くなってきているところです。<a href='http://love.loomio.org'>私たちのクラウドファンディング　キャンペーンをチェックする</a>"
   about_loomio: "Loomioについて"
   ago: "%{quantity_of_time} 前"
   approve: "承認"
@@ -810,7 +833,6 @@ ja:
   thanks: "ありがとうございます！"
   translate: "Loomioの翻訳を手伝ってください！"
   unlike: "ええね！を消す"
-  until_close: "締め切るまで"
   update: "アプデート"
   facebook: "Facebook"
   google: "Google"

@@ -25,7 +25,7 @@ describe Groups::MembershipsController do
         post :make_admin, :id => @membership.id, group_id: @group.id
         flash[:notice].should =~ /#{@new_user.name} has been made a coordinator./
         response.should redirect_to(group_memberships_path(@group))
-        assigns(:membership).access_level.should == 'admin'
+        assigns(:membership).admin.should be_true
         @group.admins.should include(@new_user)
       end
 
@@ -45,7 +45,7 @@ describe Groups::MembershipsController do
         post :remove_admin, :id => @membership.id, group_id: @group.id
         flash[:notice].should =~ /#{@membership.user_name}'s coordinator rights have been removed./
         response.should redirect_to(group_memberships_path(@group))
-        assigns(:membership).access_level.should == 'member'
+        assigns(:membership).admin.should be_false
         @group.admins.should_not include(@new_user)
       end
     end

@@ -10,7 +10,6 @@ da:
       try_it: 'Prøv det'
       log_in: 'LOG IND'
       video: "Se mere om, hvordan Loomio fungerer"
-      crowdfunding: 'Besøg crowdfunding-kampagnen'
       more: 'Mere'
       top: 'Toppen af siden.'
       public_groups: 'Offentlige grupper'
@@ -33,11 +32,6 @@ da:
         desc: 'Udvikl forslaget sammen så  alle kan acceptere det. Alle forslag har en tydelig deadline, hvorfor du altid får et tideligt resultat.'
     crowdfunding:
       header: 'Vi er crowdfunded. Det betyder, at vi kan færdigbygge denne nye softwareplatform og give den til verdenen.'
-    prototype:
-      header_html: "Vi har allerede bygget en <strong>prototype</strong>, og mennesker <strong>over hele kloden</strong> udretter fantastiske ting med den:"
-      subhead_html: '<a href="%{try_loomio_link}">Prøv Loomio Beta</a> nu. Alternativt, <a href="%{join_campaign_link}">deltag i kampagnen</a> og få tidlig adgang til Loomio 1.0.'
-    mobile:
-      header_html: 'En platform, der fungerer på alle enheder og er bygget ved hjælp af det bedste i <strong>åbne mobile teknologier.</strong>'
     quote:
       header:
         rushkoff_html: '"Loomio <strong>frigører internettets potentiale</strong> for at opnå konsensus mellem mennesker frem for at polarisere debatten."<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, forfatter af <em>Present Shock</em></div>'

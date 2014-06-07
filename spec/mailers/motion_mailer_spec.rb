@@ -18,7 +18,7 @@ describe MotionMailer do
 
     #ensure that the sender is correct
     it 'renders the sender email' do
-      @email.from.should == ["noreply@loomio.org"]
+      @email.from.should == ["notifications@loomio.org"]
     end
 
     #ensure that reply to is correct
@@ -52,7 +52,7 @@ describe MotionMailer do
 
     #ensure that the sender is correct
     it 'renders the sender email' do
-      @email.from.should == ['noreply@loomio.org']
+      @email.from.should == ['notifications@loomio.org']
     end
 
     it 'sends to the motion author' do

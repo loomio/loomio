@@ -1,5 +1,8 @@
+- if hide_beta_logo?
+  - logo_class = 'app-logo'
+- else
+  - logo_class = 'app-logo beta'
 .toolbar-navigation
-  = render 'campaigns/crowdfunding'
   .navbar.navbar-fixed-top
     .navbar-inner
       .container
@@ -8,20 +11,15 @@
             - if Rails.env.development?
               .development-warning
                 %i.fa.fa-wrench
-            %a.nav-logo-link{:href => dashboard_or_root_path}
-              - if hide_beta_logo?
-                = image_tag('navbar-logo.png', :alt => "Loomio", class: 'loomio-logo')
-              - else
-                = image_tag('navbar-logo-beta.jpg', :alt => "Loomio", class: 'loomio-beta-logo')
+            %a.nav-logo-link{class: logo_class, href: dashboard_or_root_path, title: t(:"organisation.name")}
+              &nbsp;
           - if user_signed_in?
             = render 'inbox'
             = render 'notifications_dropdown'
             = render 'application/groups_dropdown'
             = render 'user_dropdown'
-            / - if navbar_contribute == "show"
-            /   = render 'contribute'
             = render 'search'
           - else
             %li.pull-right
               - unless controller_name == "group_requests"
-                =link_to t(:log_in), new_user_session_path, class: 'btn btn-info'
+                =link_to t(:log_in), new_user_session_path, class: 'btn btn-info login'

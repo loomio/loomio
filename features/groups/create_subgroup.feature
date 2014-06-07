@@ -7,36 +7,16 @@
     And I visit create subgroup page
 
   @javascript
-  Scenario: Create public subgroup where all group members can invite
-    When I fill details for public all members invite subgroup
-    Then a new sub-group should be created
+  Scenario: Create visible, public allowed, members invitable subgroup
+    When I create a totally open subgroup
+    Then a totally open subgroup should be created
 
   @javascript
-  Scenario: Create public subgroup where only admin can invite
-    When I fill details for public admin only invite subgroup
-    And I click "Create sub-group"
-    Then I should see "Group created successfully"
+  Scenario: Create visible to parent members subgroup
+    When I create a visible to parent members subgroup
+    Then a visible to parent members subgroup should be created
 
   @javascript
-  Scenario: Create members only subgroup where all group members can invite
-    When I fill details for members only all members invite subgroup
-    And I click "Create sub-group"
-    Then I should see "Group created successfully"
-
-  @javascript
-  Scenario: Create members only subgroup where only admin can invite
-    When I fill details for members only admin invite subgroup
-    And I click "Create sub-group"
-    Then I should see "Group created successfully"
-
-  @javascript
-  Scenario: Create members and parent members only subgroup where all group members can invite
-    When I fill details for members and parent members only all members invite subgroup
-    And I click "Create sub-group"
-    Then I should see "Group created successfully"
-
-  @javascript
-  Scenario: Create members and parent members only subgroup where only admin can invite
-    When I fill details for members and parent members admin only invite ubgroup
-    And I click "Create sub-group"
-    Then I should see "Group created successfully"
+  Scenario: Create hidden, private only, no inheritance, admins invite subgroup
+    When I create a locked down subgroup
+    Then a locked down subgroup should be created

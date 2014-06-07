@@ -4,7 +4,7 @@ describe Groups::MembershipRequestsController do
 
   describe '#cancel' do
     let(:requestor) { create(:user) }
-    let(:group) { mock_model Group, full_name: "Isolde's Bane" }
+    let(:group) { mock_model Group, full_name: "Isolde's Bane", has_subdomain?: false }
     let(:membership_request) { mock_model MembershipRequest, group: group, requestor_id: requestor.id }
 
     before do
@@ -26,6 +26,7 @@ describe Groups::MembershipRequestsController do
         flash[:success].should =~ /Membership request canceled/i
       end
     end
+
     context "a user doesn't have permission to cancel membership request" do
       before { membership_request.stub(:requestor_id).and_return(requestor.id+1) }
       it "doesn't destroy the membership request" do

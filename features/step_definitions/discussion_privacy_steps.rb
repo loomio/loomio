@@ -8,14 +8,14 @@ Then(/^I should see that the group is set to private$/) do
 end
 
 When(/^I visit a public group$/) do
-  @public_group = FactoryGirl.create :group, privacy: 'public'
+  @public_group = FactoryGirl.create :group, visible: true, discussion_privacy: 'public_or_private'
   @public_discussion = create_discussion group: @public_group, private: false, title: "Everyone should know i hate gummy bears"
   @private_discussion = create_discussion group: @public_group, private: true, title: "No one can know I like ice cream"
   visit group_path(@public_group)
 end
 
 When(/^I visit a private group$/) do
-  @private_group = FactoryGirl.create :group, privacy: 'private'
+  @private_group = FactoryGirl.create :group, visible: true, discussion_privacy: 'public_or_private'
   @public_discussion = create_discussion group: @private_group, private: false, title: "Everyone should know i hate gummy bears"
   @private_discussion = create_discussion group: @private_group, private: true, title: "No one can know I like ice cream"
   visit group_path(@private_group)

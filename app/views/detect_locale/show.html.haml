@@ -2,7 +2,7 @@
   %button.close{'data-dismiss' => 'alert', 'aria-hidden' => 'true'}
     &times;
   = link_to t(:'frontpage.view_this_in_your_language',
-              language: Translation.language(I18n.locale)),
+              language: AppTranslation.language(I18n.locale)),
               "?locale=#{I18n.locale}"
 :javascript
   $('.detect-locale.alert').slideDown()

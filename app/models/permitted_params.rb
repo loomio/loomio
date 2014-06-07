@@ -2,11 +2,15 @@ class PermittedParams < Struct.new(:params, :user)
 
   %w[user vote subscription motion membership membership_request
    invitation group_request group discussion comment announcement_dismissal
-   email_preferences attachment contact_message].each do |kind|
+   email_preferences attachment contact_message theme].each do |kind|
     define_method(kind) do
       permitted_attributes = self.send("#{kind}_attributes")
       params.require(kind).permit(*permitted_attributes)
     end
+  end
+
+  def theme_attributes
+    [:name, :style, :pages_logo, :app_logo]
   end
 
   def email_preferences_attributes
@@ -47,12 +51,12 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def group_attributes
-    [:parent_id, :name, :privacy, :members_invitable_by, :description, :next_steps_completed, :payment_plan,
-     :viewable_by_parent_members]
+    [:parent_id, :name, :visible_to, :is_visible_to_public, :discussion_privacy_options, :members_can_add_members, :description, :next_steps_completed, :payment_plan,
+     :is_visible_to_parent_members, :parent_members_can_see_discussions, :membership_granted_upon]
   end
 
   def discussion_attributes
-    [:title, :description, :uses_markdown, :group_id, :private]
+    [:title, :description, :uses_markdown, :group_id, :private, :iframe_src]
   end
 
   def comment_attributes
