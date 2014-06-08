@@ -17,7 +17,7 @@ describe "User abilities" do
                                                                                  group: group,
                                                                                  inviter: other_user) }
   it { should     be_able_to(:create, group) }
-  
+
   context "in relation to a group" do
     describe "is_visible_to_public?" do
       context "true" do
@@ -173,6 +173,7 @@ describe "User abilities" do
     it { should_not be_able_to(:update_version, discussion) }
     it { should     be_able_to(:update_version, user_discussion) }
     it { should_not be_able_to(:move, discussion) }
+    it { should     be_able_to(:move, user_discussion) }
     it { should_not be_able_to(:update, discussion) }
     it { should     be_able_to(:update, user_discussion) }
     it { should     be_able_to(:show, Discussion) }
@@ -335,11 +336,11 @@ describe "User abilities" do
       it { should_not be_able_to(:destroy, another_user_comment) }
 
       it { should_not be_able_to(:vote, motion) }
-      
+
       it { should_not be_able_to(:show, another_user_comment) }
       it { should_not be_able_to(:show, motion) }
       it { should_not be_able_to(:show, vote) }
-      
+
     end
 
     context "public group" do

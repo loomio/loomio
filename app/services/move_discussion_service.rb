@@ -15,12 +15,16 @@ class MoveDiscussionService
     discussion.group.admins.include? user
   end
 
+  def user_is_author_of_discussion?
+    discussion.author == user
+  end
+
   def user_is_member_of_destination?
     destination_group.members.include? user
   end
 
   def valid?
-    user_is_admin_of_source? && user_is_member_of_destination?
+    user_is_admin_of_source? || user_is_author_of_discussion? && user_is_member_of_destination?
   end
 
   def move!
