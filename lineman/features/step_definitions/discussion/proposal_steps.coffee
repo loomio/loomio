@@ -19,7 +19,7 @@ module.exports = ->
         callback.fail()
 
   @Then /^the proposal should be running$/, (callback) ->
-    @browser.findElement(@by.css('.cuke-current-proposal')).getText().then (text) =>
+    @browser.findElement(@by.css('#cuke-current-proposal')).getText().then (text) =>
       callback.pending()
 
   @Given /^I am signed in, viewing a discussion with a proposal$/, (callback) ->

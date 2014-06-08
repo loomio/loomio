@@ -21,7 +21,7 @@ in the loomio folder
 # Running
 Run the rails development server and Private Pub
   (loomio) $ rails s
-           $ rackup private_pub.ru -s thin -E productio
+           $ rackup private_pub.ru -s thin -E production
 
 The start lineman
   (loomio/lineman folder) $ lineman run
