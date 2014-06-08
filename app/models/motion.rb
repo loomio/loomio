@@ -227,13 +227,6 @@ class Motion < ActiveRecord::Base
     reload
   end
 
-  # only here while the fix in angular branch awaits merge
-  def closing_at=(datetime)
-    self.close_at_date = datetime.to_date
-    self.close_at_time = datetime.strftime("%H:00")
-    self[:closing_at] = datetime
-  end
-
   private
     def one_motion_voting_at_a_time
       if voting? and discussion.current_motion.present? and discussion.current_motion != self
