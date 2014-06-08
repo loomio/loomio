@@ -19,7 +19,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
   loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ngmin", "grunt-haml", 'grunt-sass', 'grunt-cucumber', 'grunt-contrib-copy']
 
   removeTasks:
-    common: ["handlebars", "jst", 'less', 'pages:dev', 'grunt-haml']
+    common: ["handlebars", "jst", 'less', 'pages:dev']
     dev: ["pages:dev"]
     dist: ['pages:dev']
 
@@ -39,6 +39,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
 
   haml:
     dist:
+      language: 'coffee'
       target: 'html'
       files: [
         expand: true

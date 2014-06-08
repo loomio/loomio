@@ -2,7 +2,7 @@
   .card__header
     .media
       .media__img.media__img--card
-        %div{'ng-include' => "'generated/templates/user/avatar.html'", 'ng-init' => "user = comment.author"}
+        %div{ng_include: "'generated/templates/user/avatar.html'", ng_init: "user = comment.author"}
       .media__text
         %h4.media__title{ng_click: 'alert("hello")'}
           {{comment.author.name}}

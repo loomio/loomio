@@ -9,7 +9,7 @@
       Proposed by {{proposal.author.name}} on {{proposal.created_at | timeFromNowInWords:true }}
       .proposal-description
         {{proposal.description}}
-      .pie-graph{'pie-chart' => true, ng_model: 'proposal'}
+      .pie-graph{pie_chart:  true, ng_model: 'proposal'}
       .positions
         .agree{ng_click: 'selectPosition("yes")'}
           %img{src: '/img/yes.png'}
