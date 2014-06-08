@@ -2,3 +2,6 @@
   @media (min-width:768px) { @content; }
 }
 
+@mixin screen($small-medium) {
+  @media (max-width:768px) { @content; }
+}
