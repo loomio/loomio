@@ -51,7 +51,7 @@ class Ability
 
     can [:add_subgroup,
          :members_autocomplete], Group do |group|
-      user_is_member_of?(group.id)
+      user_is_member_of?(group.id) and group.is_parent?
     end
 
     can [:add_members,
