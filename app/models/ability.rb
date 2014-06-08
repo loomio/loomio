@@ -131,9 +131,12 @@ class Ability
       (discussion.author == user) or user_is_admin_of?(discussion.group_id)
     end
 
-    can [:destroy,
-         :move], Discussion do |discussion|
+    can [:destroy], Discussion do |discussion|
       user_is_admin_of?(discussion.group_id)
+    end
+
+    can [:move], Discussion do |discussion|
+      (discussion.author == user) or user_is_admin_of?(discussion.group_id)
     end
 
     can [:unfollow,

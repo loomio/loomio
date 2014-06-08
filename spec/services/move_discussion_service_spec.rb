@@ -1,7 +1,7 @@
 require_relative '../../app/services/move_discussion_service'
 
 describe MoveDiscussionService do
-  let(:discussion) { double(:discussion, group: source_group) }
+  let(:discussion) { double(:discussion, group: source_group, author_id: user) }
   let(:source_group) { double(:source_group, admins: [], parent: nil) }
   let(:destination_group) { double(:destination_group, members: [], parent: nil) }
   let(:user) { double(:user) }
@@ -21,6 +21,19 @@ describe MoveDiscussionService do
     end
 
     context "user is not admin" do
+      it {should be_false}
+    end
+  end
+
+  context "#user_is_author_of_discussion?" do
+    subject { @mover.user_is_author_of_discussion?}
+
+    context "user is author of discussion" do
+      # before {discussion.author_id = user.id}
+      it {should be_true}
+    end
+
+    context "user is not author of discussion" do
       it {should be_false}
     end
   end
