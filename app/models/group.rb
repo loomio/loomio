@@ -409,8 +409,10 @@ class Group < ActiveRecord::Base
   end
 
   def validate_discussion_privacy_options
-    if membership_granted_upon_request? and not public_discussions_only?
-      self.errors.add(:discussion_privacy_options, "Discussions must be public if group is open")
+    unless is_visible_to_parent_members?
+      if membership_granted_upon_request? and not public_discussions_only?
+        self.errors.add(:discussion_privacy_options, "Discussions must be public if group is open")
+      end
     end
 
     if is_hidden_from_public? and not private_discussions_only?
