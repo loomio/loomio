@@ -30,8 +30,8 @@ class GroupsController < GroupBaseController
   def create
     @group = Group.new(permitted_params.group)
     authorize!(:create, @group)
-    @group.mark_as_setup!
     if @group.save
+      @group.mark_as_setup!
       Measurement.increment('groups.create.success')
       create_intercom_event 'group_created'
       @group.add_admin! current_user
