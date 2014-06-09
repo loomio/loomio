@@ -45,7 +45,7 @@ body.discussions.new, body.discussions.create, body.discussions.edit {
   textarea {
     @include placeholder { font-style: italic; }
     font-size: 16px;
-    height: 100px;
+    height: 200px;
   }
 
   .control-label.radio_buttons {

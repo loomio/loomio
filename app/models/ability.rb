@@ -49,9 +49,12 @@ class Ability
       user_is_admin_of?(group.id)
     end
 
-    can [:add_subgroup,
-         :members_autocomplete], Group do |group|
+    can [:add_subgroup], Group do |group|
       user_is_member_of?(group.id) and group.is_parent?
+    end
+
+    can [:members_autocomplete], Group do |group|
+      user_is_member_of?(group.id)
     end
 
     can [:add_members,

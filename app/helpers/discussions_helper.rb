@@ -31,7 +31,7 @@ module DiscussionsHelper
   end
 
   def path_of_add_comment
-    if current_page == @discussion_reader.first_unread_page
+    if current_page == actual_total_pages
       '#comment-input'
     else
       if actual_total_pages == 1
