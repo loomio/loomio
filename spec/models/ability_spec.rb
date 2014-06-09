@@ -157,6 +157,20 @@ describe "User abilities" do
       @other_membership = group.add_member!(other_user)
     end
 
+    context "members_can_edit_discussions" do
+      before do
+        group.members_can_edit_discussions = true
+      end
+      it { should be_able_to(:update, discussion) }
+    end
+
+    context "members_can_not_edit_discussions" do
+      before do
+        group.members_can_edit_discussions = false
+      end
+      it { should_not be_able_to(:update, discussion) }
+    end
+
     it { should     be_able_to(:create, subgroup) }
     it { should     be_able_to(:show, group) }
     it { should_not be_able_to(:update, group) }
@@ -173,7 +187,6 @@ describe "User abilities" do
     it { should_not be_able_to(:update_version, discussion) }
     it { should     be_able_to(:update_version, user_discussion) }
     it { should_not be_able_to(:move, discussion) }
-    it { should_not be_able_to(:update, discussion) }
     it { should     be_able_to(:update, user_discussion) }
     it { should     be_able_to(:show, Discussion) }
     it { should     be_able_to(:unfollow, Discussion) }

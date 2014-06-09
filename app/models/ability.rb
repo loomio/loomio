@@ -127,8 +127,16 @@ class Ability
       end
     end
 
-    can [:update, :update_version], Discussion do |discussion|
+    can :update_version, Discussion do |discussion|
       (discussion.author == user) or user_is_admin_of?(discussion.group_id)
+    end
+
+    can :update, Discussion do |discussion|
+      if discussion.group.members_can_edit_discussions?
+        user_is_member_of?(discussion.group_id)
+      else
+        (discussion.author == user) or user_is_admin_of?(discussion.group_id)
+      end
     end
 
     can [:destroy,
