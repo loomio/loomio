@@ -128,7 +128,7 @@ class Group < ActiveRecord::Base
   belongs_to :category
   belongs_to :theme
 
-  has_many :subgroups, class_name: 'Group', foreign_key: 'parent_id', conditions: { archived_at: nil }
+  has_many :subgroups, class_name: 'Group', foreign_key: 'parent_id', conditions: { archived_at: nil }, order: 'name'
 
   has_one :subscription, dependent: :destroy
 
@@ -423,8 +423,10 @@ class Group < ActiveRecord::Base
   end
 
   def validate_discussion_privacy_options
-    if membership_granted_upon_request? and not public_discussions_only?
-      self.errors.add(:discussion_privacy_options, "Discussions must be public if group is open")
+    unless is_visible_to_parent_members?
+      if membership_granted_upon_request? and not public_discussions_only?
+        self.errors.add(:discussion_privacy_options, "Discussions must be public if group is open")
+      end
     end
 
     if is_hidden_from_public? and not private_discussions_only?

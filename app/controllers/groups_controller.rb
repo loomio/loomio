@@ -2,7 +2,7 @@ class GroupsController < GroupBaseController
   before_filter :authenticate_user!, except: :show
 
   before_filter :load_group, :except => [:create, :new]
-  authorize_resource except: :create
+  authorize_resource except: [:create, :members_autocomplete]
 
   before_filter :ensure_group_is_setup, only: :show
   before_filter :assign_meta_data, only: :show
@@ -30,8 +30,8 @@ class GroupsController < GroupBaseController
   def create
     @group = Group.new(permitted_params.group)
     authorize!(:create, @group)
-    @group.mark_as_setup!
     if @group.save
+      @group.mark_as_setup!
       Measurement.increment('groups.create.success')
       create_intercom_event 'group_created'
       @group.add_admin! current_user
