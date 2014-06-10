@@ -1,10 +1,5 @@
 - set_title @group.name, "", @group.parent
-
-- if @group.cover_photo.blank? && @group.is_subgroup?
-  - cover_photo_url = @group.parent.cover_photo.url(:desktop)
-- else
-  - cover_photo_url = @group.cover_photo.url(:desktop)
-
+- cover_photo_url = use_parent_if_blank(@group, :cover_photo).url(:desktop)
 .group-heading{style: "background-image: url('/assets/cover-photo-gradient.png'), url('#{cover_photo_url}')"}
   = render 'application/flash_messages', :flash => flash, :on_landing_page => false
   - if can? :edit, @group
@@ -14,10 +9,7 @@
         .edit-icon{'data-title' => "Edit-icon" }
           %i.fa.fa-pencil{'data-title' => "Edit-icon" }
 
-  - if @group.logo.blank? && @group.is_subgroup?
-    - logo_url = @group.parent.logo.url(:medium)
-  - else
-    - logo_url = @group.logo.url(:medium)
+  - logo_url = use_parent_if_blank(@group, :logo).url(:medium)
 
   .group-logo{style: "background-image: url('#{logo_url}')"}
     - if can? :edit, @group
@@ -36,8 +28,8 @@
         = link_to @group.name, @group
         = render 'groups/privacy_dropdown', :group => @group
     - if @group.category.present?
-      .group-category.shadow{'data-title' => t(:'tooltip.group_category')}
-        =link_to @group.category.name, category_explore_path(@group.category)
+      .group-category.shadow
+        =link_to @group.category.name, category_explore_path(@group.category), title: t(:'tooltip.group_category')
 
 .row
   .span9
