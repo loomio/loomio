@@ -107,6 +107,7 @@ en:
     cover_photo_upload: "Upload new cover photo"
     logo_upload: "Upload new logo"
     edit_description: "Edit description"
+    group_category: "Find more groups like this"
 
   views:
     pagination:

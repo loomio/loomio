@@ -143,7 +143,7 @@ class Group < ActiveRecord::Base
                        styles: { desktop: "980x200#" },
                        default_url: '/assets/default-cover-photo.png'
   has_attached_file    :logo,
-                       styles: { medium: "100x100#" },
+                       styles: { medium: "100x100" },
                        default_url: '/assets/default-logo.png'
   validates_attachment :cover_photo,
     size: { in: 0..10.megabytes },

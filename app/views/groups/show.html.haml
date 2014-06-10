@@ -27,7 +27,17 @@
           .edit-icon
             %i.fa.fa-pencil
 
-  = render '/groups/title', group: @group, discussion: @discussion
+  .group-title
+    %h1.home-title.shadow
+      - if @group
+        - if @group.is_subgroup?
+          = link_to @group.parent.name, @group.parent
+          = content_tag :span, "\u25B6", class: 'name-separator'
+        = link_to @group.name, @group
+        = render 'groups/privacy_dropdown', :group => @group
+    - if @group.category.present?
+      .group-category.shadow{'data-title' => t(:'tooltip.group_category')}
+        =link_to @group.category.name, category_explore_path(@group.category)
 
 .row
   .span9

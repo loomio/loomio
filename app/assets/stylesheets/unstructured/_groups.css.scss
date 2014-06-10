@@ -16,10 +16,11 @@ body.groups {
       color: white;
     }
     .group-heading {
-      background: image-url('forest.png') 0 0 no-repeat;
+      background: image-url('default-cover-photo.png') 0 0 no-repeat;
       margin: -23px -20px 0 -20px;
       position: relative;
       height: 200px;
+      a { color: white; }
       .alert{
         margin: 16px;
         width: 652px;
@@ -28,7 +29,7 @@ body.groups {
       .group-logo {
         width: 100px;
         height: 100px;
-        background: image-url('teal-logo.png') 0 0;
+        background: image-url('default-logo.png') no-repeat top center white;
         position: absolute;
         border: 4px solid white;
         top: 146px;
@@ -38,9 +39,23 @@ body.groups {
         position: absolute;
         bottom: 0px;
         left: 138px;
-        a {
-          color: white;
-          font-size: 30px;
+        width: 842px;
+      }
+      .home-title{
+        font-size: 30px;
+        max-width: 582px;
+        display: block;
+      }
+      .group-category{
+        position: absolute;
+        right: 22px;
+        bottom: 8px;
+        max-width: 218px;
+        text-align: right;
+        a{
+          font-size: 14px;
+          background: rgba(0,0,0,0.5);
+          padding: 3px 6px;
         }
       }
     }
@@ -232,34 +247,22 @@ body.groups {
 body.group_setup.setup, body.groups.new, body.groups.edit, body.groups.add_subgroup {
   form.group-settings {
     .control-group.radio_buttons { margin-bottom: 1.6em; }
+    input, select, textarea{
+      margin-bottom: 15px;
+    }
     input[type="text"] {
       font-size: 28px;
       height: 32px;
       line-height: 32px;
-      margin-bottom: .6em;
     }
-
     label span:before { content: '- '; }
-    label.radio {
-      /*margin-bottom: .5em;*/
-      /*font-weight: 500;*/
-    }
     label.radio span {
       font-style: italic;
-      /*font-size: 0.85em;*/
-      /*display: block;*/
       font-weight: normal;
-      /*color: $mid-grey;*/
     }
-
-    /*label.disabled span{*/
-      /*[>display: block;<]*/
-      /*color: $lighter-grey;*/
-    /*}*/
     textarea {
       @include placeholder { font-style: italic; }
       font-size: 16px;
-      margin-bottom: 1.6em;
       height: 100px;
     }
     .control-label.radio_buttons {

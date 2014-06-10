@@ -147,3 +147,5 @@ $ ->
     placement: "bottom"
   $('.edit-description').tooltip
     placement: "bottom"
+  $('.group-category').tooltip
+    placement: "bottom"
