@@ -248,8 +248,14 @@ body.groups {
 body.group_setup.setup, body.groups.new, body.groups.edit, body.groups.add_subgroup {
   form.group-settings {
     .control-group.radio_buttons { margin-bottom: 1.6em; }
-    input, select, textarea{
+    input, textarea{
       margin-bottom: 15px;
+    }
+    select{
+      margin-bottom: 0;
+    }
+    p.prompt-to-suggest{
+      margin-bottom: 25px;
     }
     input[type="text"] {
       font-size: 28px;
