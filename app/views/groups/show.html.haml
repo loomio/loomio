@@ -5,7 +5,7 @@
 - else
   - cover_photo_url = @group.cover_photo.url(:desktop)
 
-.group-heading{style: "background-image: url('#{cover_photo_url}')"}
+.group-heading{style: "background-image: url('/assets/cover-photo-gradient.png'), url('#{cover_photo_url}')"}
   = render 'application/flash_messages', :flash => flash, :on_landing_page => false
   - if can? :edit, @group
     .upload-button.cover-photo-upload{'data-title' => t(:'tooltip.cover_photo_upload')}

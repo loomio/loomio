@@ -43,19 +43,20 @@ body.groups {
       }
       .home-title{
         font-size: 30px;
-        max-width: 582px;
+        max-width: 632px;
         display: block;
       }
       .group-category{
         position: absolute;
         right: 22px;
         bottom: 8px;
-        max-width: 218px;
+        max-width: 168px;
         text-align: right;
         a{
           font-size: 14px;
           background: rgba(0,0,0,0.5);
-          padding: 3px 6px;
+          padding: 3px 10px;
+          display: block;
         }
       }
     }
