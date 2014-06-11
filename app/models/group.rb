@@ -7,7 +7,8 @@ class Group < ActiveRecord::Base
   end
 
   #even though we have permitted_params this needs to be here.. it's an issue
-  attr_accessible :name, :members_can_add_members, :parent, :parent_id, :description, :max_size,
+  attr_accessible :members_can_add_members, :members_can_edit_discussions, :motions_can_be_edited,
+                  :name, :parent, :parent_id, :description, :max_size,
                   :cannot_contribute, :full_name, :payment_plan, :parent_members_can_see_discussions,
                   :category_id, :max_size, :is_visible_to_parent_members, :is_visible_to_public,
                   :discussion_privacy_options, :membership_granted_upon, :visible_to,

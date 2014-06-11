@@ -14,10 +14,7 @@ class Events::MotionBlocked < Event
 
   def notify_users!
     MotionMailer.delay.motion_blocked(vote)
-
-    vote.other_group_members.each do |user|
-      notify!(user)
-    end
+    notify!(vote.motion.author)
   end
 
   handle_asynchronously :notify_users!

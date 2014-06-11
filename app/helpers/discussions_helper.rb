@@ -9,7 +9,7 @@ module DiscussionsHelper
     activity.map do |item|
       next if last_item &&
               filtered_event_kinds.include?(item.kind) &&
-              item.user == last_item.user
+              item.user == last_item.user && item.kind == last_item.kind
       last_item = item
     end.compact
   end

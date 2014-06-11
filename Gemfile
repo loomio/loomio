@@ -67,6 +67,7 @@ group :assets do
   gem 'uglifier', '~> 2.2.1'
   gem 'modernizr-rails', '~> 2.6.2'
   gem 'jquery-fileupload-rails', '~> 0.4.1'
+  gem 'momentjs-rails', '~> 2.6.0'
 end
 
 group :development, :test do

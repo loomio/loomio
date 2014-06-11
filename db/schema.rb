@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140609012258) do
+ActiveRecord::Schema.define(:version => 20140611100737) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -363,6 +363,7 @@ ActiveRecord::Schema.define(:version => 20140609012258) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.boolean  "members_can_edit_discussions",       :default => true,           :null => false
+    t.boolean  "motions_can_be_edited",              :default => false,          :null => false
   end
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"

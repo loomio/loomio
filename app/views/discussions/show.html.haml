@@ -2,9 +2,10 @@
 
 .row
   .span9
-    =render '/groups/title', group: @group, discussion: @discussion
+    = render '/groups/title', group: @group, discussion: @discussion
   .span3#button-container
     = join_group_button(@group)
+
 .row.translate-parent{id: "discussion-#{@discussion.key}" }
   .span12
     .selector-panel
@@ -21,7 +22,7 @@
               - if @discussion_reader.returning_user_and_unread_content_exist?
                 = link_to path_of_latest_activity, id: 'jump-to-latest', class: 'jump-to-latest-activity btn' do
                   %i.fa.fa-arrow-down
-              -else
+              - else
                 = link_to path_of_add_comment, id: 'jump-to-latest', class: 'jump-to-add-comment btn' do
                   %i.fa.fa-arrow-down
             .large-icon.discussion-icon.enabled-icon
@@ -49,10 +50,10 @@
                     = t :empty_decision_list_html # should be "start a proposal"
 
                 - if @discussion.current_motion
-                  -if @motion == @discussion.current_motion
+                  - if @motion == @discussion.current_motion
                     %li.selector-item.current-proposal
                       = render @motion
-                  -else
+                  - else
                     %li.selector-item
                       = render 'motions/motion_preview', motion: @discussion.current_motion
 

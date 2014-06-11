@@ -25,54 +25,48 @@ Then(/^the group should be listed, open, public only$/) do
   @group.should be_public_discussions_only
 end
 
-When(/^I select listed, by request, admins add members, public and private$/) do
+When(/^I select listed, by request, public and private$/) do
   visit edit_group_path(@group)
   choose 'group_visible_to_public'
   choose 'group_membership_granted_upon_approval'
-  choose 'group_members_can_add_members_false'
   choose 'group_discussion_privacy_options_public_or_private'
   click_on 'group_form_submit'
 end
 
-Then(/^the group should be listed, by request, admins add members, public and private$/) do
+Then(/^the group should be listed, by request, public and private$/) do
   @group.reload
   @group.should be_is_visible_to_public
   @group.membership_granted_upon_approval?.should be_true
-  @group.members_can_add_members.should be_false
   @group.should be_public_or_private_discussions_allowed
 end
 
-When(/^I select listed, invitation only, admins add members, private only$/) do
+When(/^I select listed, invitation only, private only$/) do
   visit edit_group_path(@group)
   choose 'group_visible_to_public'
   choose 'group_membership_granted_upon_invitation'
-  choose 'group_members_can_add_members_false'
   choose 'group_discussion_privacy_options_private_only'
   click_on 'group_form_submit'
 end
 
-Then(/^the group should be listed, by request, admins add members, private only$/) do
+Then(/^the group should be listed, by request, private only$/) do
   @group.reload
   @group.should be_is_visible_to_public
   @group.membership_granted_upon_invitation?.should be_true
-  @group.members_can_add_members.should be_false
   @group.should be_private_discussions_only
 end
 
-When(/^I select unlisted, admins add members$/) do
+When(/^I select unlisted$/) do
   visit edit_group_path(@group)
   choose 'group_visible_to_members'
   choose 'group_membership_granted_upon_invitation'
-  choose 'group_members_can_add_members_false'
   choose 'group_discussion_privacy_options_private_only'
   click_on 'group_form_submit'
 end
 
-Then(/^the group should be unlisted, invitation only, admins add members, prviate discussions only$/) do
+Then(/^the group should be unlisted, invitation only, prviate discussions only$/) do
   @group.reload
   @group.should be_is_hidden_from_public
   @group.membership_granted_upon_invitation?.should be_true
-  @group.members_can_add_members.should be_false
   @group.should be_private_discussions_only
 end
 
@@ -121,4 +115,30 @@ end
 Then(/^the discussion should be private$/) do
   @discussion.reload
   @discussion.should be_private
+end
+
+When(/^I allow the members to do everything$/) do
+  visit edit_group_path(@group)
+  check 'group[members_can_add_members]'
+  check 'group[members_can_edit_discussions]'
+  click_on 'group_form_submit'
+end
+
+Then(/^they should be allowed to do everything$/) do
+  @group.reload
+  @group.members_can_add_members.should be_true
+  @group.members_can_edit_discussions.should be_true
+end
+
+When(/^I disallow the members to do everything$/) do
+  visit edit_group_path(@group)
+  uncheck 'group[members_can_add_members]'
+  uncheck 'group[members_can_edit_discussions]'
+  click_on 'group_form_submit'
+end
+
+Then(/^they should be disallowed from doing everything$/) do
+  @group.reload
+  @group.members_can_add_members.should be_false
+  @group.members_can_edit_discussions.should be_false
 end
