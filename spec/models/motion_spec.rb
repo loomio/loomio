@@ -33,15 +33,6 @@ describe Motion do
     end
   end
 
-  it "assigns the close_at from close_at_* fields" do
-    close_date = "23-05-2013"
-    close_time = "15:00"
-    time_zone = "Saskatchewan"
-    motion = build(:motion, close_at_date: close_date, close_at_time: close_time, close_at_time_zone: time_zone, discussion: discussion)
-    motion.save!
-    motion.closing_at.in_time_zone("Saskatchewan").to_s.should == "2013-05-23 15:00:00 -0600"
-  end
-
   describe "#user_has_voted?(user)" do
     it "returns true if the given user has voted on motion" do
       @user = create(:user)
@@ -77,22 +68,6 @@ describe Motion do
       motion = build(:motion, discussion: discussion)
       motion.should_receive(:fire_new_motion_event)
       motion.save!
-    end
-  end
-
-  context "moving motion to new group" do
-    before do
-      @new_group = create(:group)
-      @motion = create(:motion, discussion: discussion)
-      @motion.move_to_group @new_group
-    end
-
-    it "changes motion group_id to new group" do
-      @motion.group.should == @new_group
-    end
-
-    it "changes motion discussion_id to new group" do
-      @motion.discussion.group.should == @new_group
     end
   end
 

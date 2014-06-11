@@ -173,8 +173,14 @@ class Ability
       motion.voting? && user_is_member_of?(motion.discussion.group_id)
     end
 
-    can [:close, :edit_close_date], Motion do |motion|
-      motion.voting? && ((motion.author_id == user.id) || user_is_admin_of?(motion.discussion.group_id))
+    can [:close, :update], Motion do |motion|
+      motion.persisted? && motion.voting? && ((motion.author_id == user.id) || user_is_admin_of?(motion.discussion.group_id))
+    end
+
+    can [:destroy,
+         :create_outcome,
+         :update_outcome], Motion do |motion|
+      (motion.author_id == user.id) or user_is_admin_of?(motion.discussion.group_id)
     end
 
     can [:show], Comment do |comment|
@@ -189,11 +195,6 @@ class Ability
       can?(:show, vote.motion)
     end
 
-    can [:destroy,
-         :create_outcome,
-         :update_outcome], Motion do |motion|
-      (motion.author_id == user.id) or user_is_admin_of?(motion.discussion.group_id)
-    end
   end
 end
 

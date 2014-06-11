@@ -284,7 +284,6 @@ ul.selector-list {
 }
 
 // edit description dropdown for group and discussion
-.edit-description,
 .description-body .translate-link {
   color: $mid-grey;
   text-decoration: underline;
@@ -353,4 +352,20 @@ a.btn-icon:hover { color: $dark-grey; }
     width: 26px;
     opacity: 0;
   }
+}
+
+/*TODO - read the SMACSS book and restructure this (RDB)*/
+
+.edit-icon{
+  float: right;
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
+  background: white;
+  i{padding: 6px 8px 6px 7px;}
+}
+
+.edit-icon-labelled{
+  float: right;
+  font-size: 14px;
 }

@@ -8,7 +8,9 @@
         .translated-description.translated
           = t(:loading_translation)
         - if can?(:edit, @discussion)
-          = link_to t(:'edit'), edit_discussion_path(@discussion), class: "edit-description edit-discussion-description bottom-panel-link"
+          = link_to edit_discussion_path(@discussion) do
+            %i.fa.fa-pencil
+            = t :edit
         - if TranslationService.can_translate? @discussion
           = translate_link_for @discussion
   .span3.right-context
