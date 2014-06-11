@@ -21,12 +21,6 @@
             as: :radio_buttons,
             collection: group_joining_options(group)
 
-  = f.input :members_can_add_members,
-            label: t(:'group_form.members_can_add_members.label'),
-            as: :radio_buttons,
-            collection: [[t(:'group_form.members_can_add_members.true'), true],
-                         [t(:'group_form.members_can_add_members.false'), false]]
-
   - if group.is_subgroup?
     = f.input :parent_members_can_see_discussions,
               label: t(:'group_form.parent_members_can_see_discussions.label'),
@@ -44,6 +38,12 @@
                          [t(:'group_form.discussion_privacy_options.public_or_private_html'), :public_or_private],
                          [t(:'group_form.discussion_privacy_options.private_only_html'), :private_only]]
 
+  .control-group.what-can-members-do
+    %label.control-label= t :'group_form.what_can_members_do'
+    = f.input :members_can_add_members, as: :boolean, inline_label: t(:'group_form.members_can.add_members'), label: false
+    = f.input :members_can_edit_discussions, as: :boolean, inline_label: t(:'group_form.members_can.edit_discussions'),  label: false
+    = f.input :motions_can_be_edited, as: :boolean, inline_label: t(:'group_form.motions_can_be_edited'),  label: false
+
   = f.input :parent_id, :as => :hidden
-  = f.submit submit_text, class: 'btn btn-info', id: 'group_form_submit', :data => { :disable_with => submit_text }
+  = f.submit submit_text, class: 'btn btn-info', id: 'group_form_submit', data: {disable_with: submit_text}
 

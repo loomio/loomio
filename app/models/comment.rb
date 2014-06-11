@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
 
   has_paper_trail
   is_translatable on: :body
-  
+
   belongs_to :discussion, counter_cache: true
   belongs_to :user
 
@@ -32,6 +32,10 @@ class Comment < ActiveRecord::Base
 
   alias_method :author, :user
   alias_method :author=, :user=
+
+  def author_id
+    user_id
+  end
 
   # Helper class method that allows you to build a comment
   # by passing a discussion object, a user_id, and comment text

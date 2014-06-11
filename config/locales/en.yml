@@ -253,6 +253,12 @@ en:
     confirm_all_discussions_will_be_made_private_message: "If you proceed, any public discussions will be made private."
     confirm_all_discussions_will_be_made_public_message: "Are you sure? If you proceed, any private discussions will be made public."
 
+    what_can_members_do: "What can members do?"
+    members_can:
+      add_members: Invite and approve new members
+      edit_discussions: Edit the context of any discussion in the group
+    motions_can_be_edited: Edit proposal text after voting has started
+
     visible_to:
       label: Who can find this group?
       public_html: 'Anyone <span>list the group publicly</span>'
@@ -268,21 +274,17 @@ en:
       approval_html: By request <span>anyone can request to join</span>
       invitation_html: Invitation only <span>new members must be invited</span>
 
-    members_can_add_members:
-      label: Who can add members?
-      'true': All members
-      'false': Coordinators only
-
     parent_members_can_see_discussions:
       label: Discussion privacy
       'true': 'Anyone in %{parent_group_name} can see discussions'
       'false': Only members can see discussions
 
     discussion_privacy_options:
-      label: Discussion privacy
-      public_only_html: Public discussions only <span>visible to anyone</span>
-      public_or_private_html: Allow public and private discussions <span>set the discussion privacy per discussion</span>
-      private_only_html: Private discussions only <span>visible only to group members</span>
+      label: Who can see discussions?
+      hint: Public discussions can be viewed by anyone.
+      public_only_html: Public discussions only
+      public_or_private_html: Allow public and private discussions
+      private_only_html: Private discussions only
 
   group_privacy:
     visible_to:
@@ -467,7 +469,7 @@ en:
   #
 
   new_proposal: "New Proposal"
-
+  edit_proposal: "Edit Proposal"
   close_proposal: "Close proposal"
   confirm_close_proposal: "Are you sure you want to close this proposal?"
   change_proposal_close_date: "Change close date"
@@ -816,8 +818,7 @@ en:
     edit:
       header: "Edit proposal"
       submit: 'Update proposal'
-      with_care: "Edits should not change the meaning of the proposal. If you're making a big change, close the proposal and start a new one."
-      with_care_title: Edit with care
+      only_closing_at: 'You cannot change the name or description after voting has started'
 
     name_helper: "Make the title as clear and succinct as possible."
     close_proposal_heading: "Want to close the proposal early?"

@@ -27,5 +27,4 @@ When(/^I close the proposal via the edit form$/) do
   find('.cuke-edit-motion').click
   click_on 'Close proposal'
   click_on 'confirm-action'
-  view_screenshot
 end

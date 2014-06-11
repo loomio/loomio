@@ -143,8 +143,20 @@ body.groups {
   text-align: center;
 }
 
+form.group-settings{
+  label span:before { content: '- '; }
+  .control-label{ font-weight: bold; }
+  .what-can-members-do{
+    label.control-label{ margin-bottom: 5px; }
+    .control-group{
+      margin-bottom: 0;
+      margin-top: 5px;
+    }
+  }
+  .disabled { color:#ccc; }
+}
 body.group_setup.setup, body.groups.new, body.groups.edit, body.groups.add_subgroup {
-  form.group-settings {
+  /*form.group-settings {
     .control-group.radio_buttons { margin-bottom: 1.6em; }
     input[type="text"] {
       font-size: 28px;
@@ -153,23 +165,13 @@ body.group_setup.setup, body.groups.new, body.groups.edit, body.groups.add_subgr
       margin-bottom: .6em;
     }
 
-    label span:before { content: '- '; }
     label.radio {
-      /*margin-bottom: .5em;*/
-      /*font-weight: 500;*/
     }
     label.radio span {
       font-style: italic;
-      /*font-size: 0.85em;*/
-      /*display: block;*/
       font-weight: normal;
-      /*color: $mid-grey;*/
     }
 
-    /*label.disabled span{*/
-      /*[>display: block;<]*/
-      /*color: $lighter-grey;*/
-    /*}*/
     textarea {
       @include placeholder { font-style: italic; }
       font-size: 16px;
@@ -202,7 +204,7 @@ body.group_setup.setup, body.groups.new, body.groups.edit, body.groups.add_subgr
   .info-box {
     width: 290px;
     margin-top: 1.1em
-  }
+  }*/
 }
 
 body.groups.new {
