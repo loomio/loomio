@@ -255,7 +255,7 @@ en:
 
     what_can_members_do: "What can members do?"
     members_can:
-      add_members: Invite new members
+      add_members: Invite and approve new members
       edit_discussions: Edit the context of any discussion in the group
     motions_can_be_edited: Edit proposal text after voting has started
 
@@ -280,10 +280,11 @@ en:
       'false': Only members can see discussions
 
     discussion_privacy_options:
-      label: Discussion privacy
-      public_only_html: Public discussions only <span>visible to anyone</span>
-      public_or_private_html: Allow public and private discussions <span>set the discussion privacy per discussion</span>
-      private_only_html: Private discussions only <span>visible only to group members</span>
+      label: Who can see discussions?
+      hint: Public discussions can be viewed by anyone.
+      public_only_html: Public discussions only
+      public_or_private_html: Allow public and private discussions
+      private_only_html: Private discussions only
 
   group_privacy:
     visible_to:
