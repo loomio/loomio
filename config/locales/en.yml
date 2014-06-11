@@ -253,6 +253,12 @@ en:
     confirm_all_discussions_will_be_made_private_message: "If you proceed, any public discussions will be made private."
     confirm_all_discussions_will_be_made_public_message: "Are you sure? If you proceed, any private discussions will be made public."
 
+    what_can_members_do: "What can members do?"
+    members_can:
+      add_members: "Add or invite new members"
+      edit_own_motions: "Edit their own proposals"
+      edit_discussions: "Edit the title and context of any discussion in the group"
+
     visible_to:
       label: Who can find this group?
       public_html: 'Anyone <span>list the group publicly</span>'
@@ -267,11 +273,6 @@ en:
       request_html: Open <span>anyone can join the group</span>
       approval_html: By request <span>anyone can request to join</span>
       invitation_html: Invitation only <span>new members must be invited</span>
-
-    members_can_add_members:
-      label: Who can add members?
-      'true': All members
-      'false': Coordinators only
 
     parent_members_can_see_discussions:
       label: Discussion privacy

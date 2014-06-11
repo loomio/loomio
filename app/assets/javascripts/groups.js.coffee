@@ -57,7 +57,6 @@ set_invitation_only = ->
 set_members_can_add_members_only = ->
   check $('#group_members_can_add_members_true')
   disable $('#group_members_can_add_members_false')
-  $('.group_members_can_add_members').hide()
 
 update_group_form_state = ->
   return unless $('form.group-settings').length > 0

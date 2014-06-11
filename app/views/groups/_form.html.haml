@@ -21,11 +21,11 @@
             as: :radio_buttons,
             collection: group_joining_options(group)
 
-  = f.input :members_can_add_members,
-            label: t(:'group_form.members_can_add_members.label'),
-            as: :radio_buttons,
-            collection: [[t(:'group_form.members_can_add_members.true'), true],
-                         [t(:'group_form.members_can_add_members.false'), false]]
+  .control-group.what-can-members-do
+    %label.control-label= t :'group_form.what_can_members_do'
+    = f.input :members_can_add_members, as: :boolean, inline_label: t(:'group_form.members_can.add_members'), label: false
+    = f.input :members_can_edit_own_motions, as: :boolean, inline_label: t(:'group_form.members_can.edit_own_motions'),  label: false
+    = f.input :members_can_edit_discussions, as: :boolean, inline_label: t(:'group_form.members_can.edit_discussions'),  label: false
 
   - if group.is_subgroup?
     = f.input :parent_members_can_see_discussions,

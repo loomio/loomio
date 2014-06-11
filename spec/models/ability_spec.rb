@@ -171,6 +171,20 @@ describe "User abilities" do
       it { should_not be_able_to(:update, discussion) }
     end
 
+    context "members_can_edit_own_motions" do
+      before do
+        group.members_can_edit_own_motions = true
+      end
+      it { should be_able_to(:update, user_motion) }
+    end
+
+    context "members_can_not_edit_own_motions" do
+      before do
+        group.members_can_edit_own_motions = false
+      end
+      it { should_not be_able_to(:update, user_motion) }
+    end
+
     it { should     be_able_to(:create, subgroup) }
     it { should     be_able_to(:show, group) }
     it { should_not be_able_to(:update, group) }
@@ -201,7 +215,6 @@ describe "User abilities" do
     it { should     be_able_to(:destroy, @membership) }
     it { should     be_able_to(:create, new_motion) }
     it { should     be_able_to(:close, user_motion) }
-    it { should     be_able_to(:update, user_motion) }
     it { should     be_able_to(:create_outcome, user_motion) }
     it { should     be_able_to(:destroy, user_motion) }
     it { should_not be_able_to(:destroy, other_users_motion) }
