@@ -159,7 +159,7 @@ Loomio::Application.routes.draw do
     end
   end
 
-  get '/localisation/datetime_input_translations' => 'localisation#datetime_input_translations'
+  get '/localisation/datetime_input_translations' => 'localisation#datetime_input_translations', format: 'js'
 
   resources :users, path: 'u', only: [:new] do
     member do
