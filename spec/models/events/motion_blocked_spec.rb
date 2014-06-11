@@ -32,11 +32,6 @@ describe Events::MotionBlocked do
       vote.stub(:user).and_return(author)
     end
 
-    it 'notifies other group members' do
-      event.should_receive(:notify!).with(user)
-      event.save
-    end
-
     it 'emails motion blocked' do
       MotionMailer.should_receive(:motion_blocked).with(vote).and_return(mailer)
       event.save
