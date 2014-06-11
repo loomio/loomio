@@ -35,7 +35,7 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def motion_attributes
-    [:name, :description, :discussion_id, :close_at_date, :close_at_time, :close_at_time_zone, :outcome]
+    [:name, :description, :discussion_id, :closing_at, :outcome]
   end
 
   def membership_request_attributes
@@ -51,8 +51,10 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def group_attributes
-    [:parent_id, :name, :privacy, :members_invitable_by, :description, :next_steps_completed, :payment_plan,
-     :viewable_by_parent_members]
+    [:parent_id, :name, :visible_to, :is_visible_to_public, :discussion_privacy_options,
+     :members_can_add_members, :members_can_edit_discussions, :motions_can_be_edited,
+     :description, :next_steps_completed, :payment_plan,
+     :is_visible_to_parent_members, :parent_members_can_see_discussions, :membership_granted_upon]
   end
 
   def discussion_attributes

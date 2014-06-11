@@ -15,10 +15,7 @@ Loomio::Application.routes.draw do
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
   get "/explore/category/:id", to: "explore#category", as: :category_explore
-
   get "/groups", to: 'public_groups#index', as: :public_groups
-
-  get "/new_group", to: 'groups#new'
 
   resource :search, only: :show
 
@@ -44,7 +41,22 @@ Loomio::Application.routes.draw do
 
   get "/theme_assets/:id", to: 'theme_assets#show', as: 'theme_assets'
 
-  resources :groups, path: 'g', only: [:create, :edit] do
+  resources :groups, path: 'g', only: [:new, :create, :edit, :update] do
+    member do
+      post :join
+      post :add_members
+      post :hide_next_steps
+      get :add_subgroup
+      post :email_members
+      post :edit_description
+      delete :leave_group
+      get :members_autocomplete
+    end
+
+    resources :motions,     only: [:index]
+    resources :discussions, only: [:index, :new]
+    resources :invitations, only: [:new, :destroy]
+
     scope module: :groups do
       resources :memberships, only: [:index, :destroy, :new, :create] do
         member do
@@ -60,24 +72,9 @@ Loomio::Application.routes.draw do
         end
       end
 
-      get :ask_to_join, controller: 'membership_requests', action: :new
-      resources :membership_requests, only: [:create]
+      resources :membership_requests, only: [:create, :new]
       get :membership_requests,  to: 'manage_membership_requests#index', as: 'membership_requests'
     end
-
-    member do
-      post :add_members
-      post :hide_next_steps
-      get :add_subgroup
-      post :email_members
-      post :edit_description
-      delete :leave_group
-      get :members_autocomplete
-    end
-
-    resources :motions,     only: [:index]
-    resources :discussions, only: [:index, :new]
-    resources :invitations, only: [:new, :destroy]
   end
 
   scope module: :groups, path: 'g', slug: slug_regex do
@@ -162,6 +159,8 @@ Loomio::Application.routes.draw do
     end
   end
 
+  get '/localisation/datetime_input_translations' => 'localisation#datetime_input_translations', format: 'js'
+
   resources :users, path: 'u', only: [:new] do
     member do
       put :set_avatar_kind
@@ -202,16 +201,29 @@ Loomio::Application.routes.draw do
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
   root :to => 'marketing#index'
 
-  scope controller: 'pages' do
-    get :about
-    get :privacy
-    get :purpose
-    get :services
-    get :terms_of_service
-    get :third_parties
-    get :try_it
-    get :wallets
-    get :browser_not_supported
+  constraints(MainDomainConstraint) do
+    scope controller: 'pages' do
+      get :about
+      get :privacy
+      get :purpose
+      get :services
+      get :terms_of_service
+      get :third_parties
+      get :try_it
+      get :wallets
+      get :browser_not_supported
+    end
+  end
+
+  constraints(GroupSubdomainConstraint) do
+    match '/about' => redirect('https://www.loomio.org/about')
+    match '/privacy' => redirect('https://www.loomio.org/privacy')
+    match '/purpose' => redirect('https://www.loomio.org/purpose')
+    match '/services' => redirect('https://www.loomio.org/services')
+    match '/terms_of_service' => redirect('https://www.loomio.org/terms_of_service')
+    match '/third_parties' => redirect('https://www.loomio.org/third_parties')
+    match '/try_it' => redirect('https://www.loomio.org/try_it')
+    match '/wallets' => redirect('https://www.loomio.org/wallets')
   end
 
   scope controller: 'help' do
@@ -258,4 +270,5 @@ Loomio::Application.routes.draw do
   get '/blog'       => redirect('http://blog.loomio.org')
   get '/press'      => redirect('http://blog.loomio.org/press-pack')
   get '/press-pack' => redirect('http://blog.loomio.org/press-pack')
+  get '/roadmap'    => redirect('https://trello.com/b/tM6QGCLH/loomio-roadmap')
 end

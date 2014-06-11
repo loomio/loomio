@@ -24,7 +24,7 @@ class MoveDiscussionService
   end
 
   def move!
-    if discussion.public? && destination_group.is_hidden?
+    if discussion.public? && destination_group.private_discussions_only?
       discussion.private = true
     end
     discussion.group = destination_group if valid?

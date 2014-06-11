@@ -43,32 +43,6 @@ updateMarkdownSetting = (selected, usesMarkdown) ->
   $(selected).children().first().children().addClass('icon-ok')
   event.preventDefault()
 
-# Edit description
-Discussion.enableInlineEdition = ()->
-  Application.enableInlineEdition
-
-   #edit description markdown setting
-  $(".local-markdown-setting .enable-markdown").click((event) ->
-    img_to_replace = $('#discussion-markdown-dropdown-link')
-    img_to_replace.html('<img alt="Markdown_on" class="markdown-icon markdown-on" src="/assets/markdown_on.png">')
-    editDescriptionMarkdownSetting(this, true)
-  )
-
-  $(".local-markdown-setting .disable-markdown").click((event) ->
-    img_to_replace = $('#discussion-markdown-dropdown-link')
-    img_to_replace.html('<img alt="Markdown_off" class="markdown-icon markdown-off" src="/assets/markdown_off.png">')
-    editDescriptionMarkdownSetting(this, false)
-  )
-
-  editDescriptionMarkdownSetting = (selected, usesMarkdown) ->
-    $('#description-markdown-setting').val(usesMarkdown)
-    $('.local-markdown-setting .markdown-setting-dropdown').find('.icon-ok').removeClass('icon-ok')
-    $(selected).children().first().children().addClass('icon-ok')
-    event.preventDefault()
-
-$ ->
-  Discussion.enableInlineEdition()
-
 #adds bootstrap tooltips to discussion features
 $ ->
   $("#js-dog-ear").tooltip

@@ -13,7 +13,7 @@
         /   %li= link_to t(:group_subscription), group_subscription_path(group)
         - if can_leave
           - membership = current_user.group_membership(group)
-          - if @group.is_hidden?
+          - if @group.is_hidden_from_public?
             - msg = t(:confirm_leave_hidden_group, which_group: group.name)
           - else
             - msg = t(:confirm_leave_group, which_group: group.name)

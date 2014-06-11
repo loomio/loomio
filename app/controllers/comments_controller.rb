@@ -1,6 +1,5 @@
 class CommentsController < BaseController
-  load_and_authorize_resource only: :destroy
-  load_resource only: [:like]
+  load_and_authorize_resource
 
   def destroy
     DiscussionService.delete_comment(comment: @comment, actor: current_user)

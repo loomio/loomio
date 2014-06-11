@@ -1,4 +1,6 @@
 .activity-item-time
+  - if comment.is_edited?
+    =link_to 'Edited', comment
   = link_to(t('ago', :quantity_of_time => time_ago_in_words(comment.created_at)), "#comment-#{comment.id}")
   - if @can_like_comments ||= can?(:like_comments, @discussion)
     = " · "
@@ -14,9 +16,6 @@
     ·
     = link_to t(:edit), [:edit, comment]
 
-  - if comment.is_edited?
-    · Edited
-    =link_to 'View changes', comment
 
   - if TranslationService.can_translate? comment
     = " · "

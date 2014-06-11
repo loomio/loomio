@@ -3,6 +3,11 @@ require_relative '../../app/services/membership_service'
 module Events
   class UserAddedToGroup
   end
+
+  class UserJoinedGroup
+    def self.publish!(membership)
+    end
+  end
 end
 
 class UserMailer
@@ -14,14 +19,35 @@ end
 
 describe 'MembershipService' do
 
-  let(:group){ double(:group) }
   let(:users){ [user] }
-  let(:user){ double(:user) }
+  let(:user){ double(:user, ability: ability) }
   let(:inviter){ double(:inviter) }
   let(:message){ double(:message) }
-  let(:membership){ double(:membership, user: user, inviter: inviter, group: group) }
+  let(:ability){ double(:ability, authorize!: true) }
+
+  describe 'join_group' do
+    let(:group){ double(:group, add_member!: membership) }
+    let(:membership){ double(:membership) }
+    after do
+      MembershipService.join_group(user: user, group: group)
+    end
+
+    it "authorises the action" do
+      ability.should_receive(:authorize!).with(:join, group)
+    end
+
+    it "adds the member to the group" do
+      group.should_receive(:add_member!).with(user).and_return(membership)
+    end
+
+    it "publishes the joined group event" do
+      Events::UserJoinedGroup.should_receive(:publish!).with(membership)
+    end
+  end
 
   describe 'add_users_to_group' do
+    let(:group){ double(:group) }
+    let(:membership){ double(:membership, user: user, inviter: inviter, group: group) }
 
     before do
       Events::UserAddedToGroup.stub(:publish!).with(membership, inviter)

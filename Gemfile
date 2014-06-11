@@ -56,6 +56,7 @@ gem 'librato-rails'
 gem 'browser'
 gem 'diffy'
 gem 'activerecord-postgres-hstore'
+gem 'intercom'
 gem 'intercom-rails', '~> 0.2.24'
 
 # Gems used only for assets and not required
@@ -67,6 +68,7 @@ group :assets do
   gem 'uglifier', '~> 2.2.1'
   gem 'modernizr-rails', '~> 2.6.2'
   gem 'jquery-fileupload-rails', '~> 0.4.1'
+  gem 'momentjs-rails', '~> 2.6.0'
 end
 
 group :development, :test do

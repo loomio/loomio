@@ -9,7 +9,7 @@ module DiscussionsHelper
     activity.map do |item|
       next if last_item &&
               filtered_event_kinds.include?(item.kind) &&
-              item.user == last_item.user
+              item.user == last_item.user && item.kind == last_item.kind
       last_item = item
     end.compact
   end
@@ -31,7 +31,7 @@ module DiscussionsHelper
   end
 
   def path_of_add_comment
-    if current_page == @discussion_reader.first_unread_page
+    if current_page == actual_total_pages
       '#comment-input'
     else
       if actual_total_pages == 1
@@ -103,20 +103,21 @@ module DiscussionsHelper
 
   def discussion_privacy_options(discussion)
     options = []
-    group =
-      if discussion.group_id
-        t(:'simple_form.labels.discussion.of') + discussion.group.name
-      else
-        t :'simple_form.labels.discussion.of_no_group'
-      end
-    icon =
-    header = t "simple_form.labels.discussion.privacy_public_header"
-    description = t 'simple_form.labels.discussion.privacy_public_description'
-    options << ["<span class='discussion-privacy-setting-header'><i class='fa fa-globe'></i>#{header}<br /><p>#{description}</p>".html_safe, false]
 
-    header = t "simple_form.labels.discussion.privacy_private_header"
-    description = t(:'simple_form.labels.discussion.privacy_private_description', group: group)
-    options << ["<span class='discussion-privacy-setting-header'><i class='fa fa-lock'></i>#{header}<br /><p>#{description}</p>".html_safe, true ]
+    public_description = t('discussion_form.privacy.will_be_public')
+    if discussion.group.present?
+      private_description = t('discussion_form.privacy.will_be_private_to_group', group_name: discussion.group_name)
+    else
+      private_description = t('discussion_form.privacy.will_be_private')
+    end
+
+    options << ["<span class='discussion-privacy-setting-header'>
+                  <i class='fa fa-globe'></i>#{t(:'common.public')}</span>
+                  <p>#{public_description}</p>".html_safe, false]
+
+    options << ["<span class='discussion-privacy-setting-header'>
+                  <i class='fa fa-lock'></i>#{t(:'common.private')}</span>
+                 <p>#{private_description}</p>".html_safe, true ]
   end
 
   def current_language

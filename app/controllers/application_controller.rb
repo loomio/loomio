@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include LocalesHelper
   include CurrentUserHelper
   include ReadableUnguessableUrlsHelper
+  include IntercomHelper
 
   protect_from_forgery
 
@@ -50,7 +51,6 @@ class ApplicationController < ActionController::Base
     else
       super
     end
-    I18n.locale = params[:locale] if params[:locale].present?
   end
 
   def dashboard_or_root_path
@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
-  
+
   def store_previous_location
     session['user_return_to'] = request.env['HTTP_REFERER'] if request.env['HTTP_REFERER'].present?
   end

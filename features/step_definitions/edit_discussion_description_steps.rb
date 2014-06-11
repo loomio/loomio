@@ -1,11 +1,11 @@
 When /^I choose to edit the discussion description$/ do
-  click_link("edit_description")
+  click_on("Edit")
 end
 
 When /^I fill in and submit the discussion description form$/ do
   @description_text = "This discussion is more interesting with _this markdown_"
-  fill_in "description-input", :with  => @description_text
-  click_on("add-description-submit")
+  fill_in "discussion_description", :with => @description_text
+  click_on("discussion-submit")
 end
 
 Then /^I should see the description change$/ do

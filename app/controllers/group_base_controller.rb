@@ -3,16 +3,14 @@ class GroupBaseController < BaseController
   protected
 
   def build_discussion_index_caches
-    @discussions = [@discussions_with_open_motions.all + @discussions_without_open_motions].flatten
-
-    @current_motions = @discussions_with_open_motions.map{|d| d.current_motion }
+    @current_motion_ids = @discussions.map(&:current_motion).compact.map(&:id)
 
     if current_user
       @discussion_readers = DiscussionReader.where(user_id: current_user.id,
-                                                    discussion_id: @discussions.map(&:id)).includes(:discussion)
+                                                   discussion_id: @discussions.map(&:id)).includes(:discussion)
       @motion_readers = MotionReader.where(user_id: current_user.id,
-                                           motion_id: @current_motions.map(&:id) ).includes(:motion)
-      @last_votes = Vote.most_recent.where(user_id: current_user, motion_id: @current_motions.map(&:id))
+                                           motion_id: @current_motion_ids ).includes(:motion)
+      @last_votes = Vote.most_recent.where(user_id: current_user, motion_id: @current_motion_ids)
     else
       @discussion_readers =[]
       @motion_readers = []
