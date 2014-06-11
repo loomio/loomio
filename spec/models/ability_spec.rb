@@ -201,13 +201,12 @@ describe "User abilities" do
     it { should     be_able_to(:destroy, @membership) }
     it { should     be_able_to(:create, new_motion) }
     it { should     be_able_to(:close, user_motion) }
+    it { should     be_able_to(:update, user_motion) }
     it { should     be_able_to(:create_outcome, user_motion) }
-    it { should     be_able_to(:edit_close_date, user_motion) }
     it { should     be_able_to(:destroy, user_motion) }
     it { should_not be_able_to(:destroy, other_users_motion) }
     it { should_not be_able_to(:close, other_users_motion) }
     it { should_not be_able_to(:create_outcome, other_users_motion) }
-    it { should_not be_able_to(:edit_close_date, other_users_motion) }
 
     it { should     be_able_to(:vote, user_motion) }
     it { should     be_able_to(:vote, other_users_motion) }
@@ -269,11 +268,10 @@ describe "User abilities" do
     it { should     be_able_to(:make_admin, @other_membership) }
     it { should     be_able_to(:remove_admin, @other_membership) }
     it { should     be_able_to(:destroy, @other_membership) }
-    it { should_not be_able_to(:update, other_users_motion) }
+    it { should     be_able_to(:update, other_users_motion) }
     it { should     be_able_to(:destroy, other_users_motion) }
     it { should     be_able_to(:close, other_users_motion) }
     it { should     be_able_to(:create_outcome, other_users_motion) }
-    it { should     be_able_to(:edit_close_date, other_users_motion) }
     it { should     be_able_to(:destroy, another_user_comment) }
     it { should     be_able_to(:cancel, own_invitation) }
     it { should     be_able_to(:cancel, other_members_invitation) }
@@ -297,18 +295,6 @@ describe "User abilities" do
       it { should_not be_able_to(:view_payment_details, group) }
       it { should_not be_able_to(:choose_subscription_plan, group) }
     end
-  end
-
-  context "admin of a subgroup" do
-    let(:group) { create(:group) }
-    let(:sub_group) { create(:group, parent: group) }
-    before do
-      group.add_member! user
-      sub_group.add_admin! user
-    end
-    it { should_not be_able_to(:view_payment_details, sub_group) }
-    it { should_not be_able_to(:choose_subscription_plan, sub_group) }
-    it { should     be_able_to(:invite_people, sub_group) }
   end
 
   context "non-member of a group" do
@@ -346,13 +332,10 @@ describe "User abilities" do
       it { should_not be_able_to(:update, motion) }
       it { should_not be_able_to(:destroy, motion) }
       it { should_not be_able_to(:destroy, another_user_comment) }
-
       it { should_not be_able_to(:vote, motion) }
-      
       it { should_not be_able_to(:show, another_user_comment) }
       it { should_not be_able_to(:show, motion) }
       it { should_not be_able_to(:show, vote) }
-      
     end
 
     context "public group" do

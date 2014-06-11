@@ -1,4 +1,31 @@
 class MotionService
+  def self.update_motion(motion: motion, params: params, user: user)
+    user.ability.authorize! :update, motion
+
+    motion.name = params[:name]
+    motion.description = params[:description]
+    unless motion.closing_at == Time.zone.parse(params[:closing_at])
+      motion.closing_at = params[:closing_at]
+    end
+
+    if motion.valid?
+      if motion.name_changed?
+        Events::MotionNameEdited.publish!(motion, user)
+      end
+
+      if motion.description_changed?
+        Events::MotionDescriptionEdited.publish!(motion, user)
+      end
+
+      if motion.closing_at_changed?
+        Events::MotionCloseDateEdited.publish!(motion, user)
+      end
+      motion.save
+    else
+      false
+    end
+  end
+
   def self.cast_vote(vote)
     vote.user.ability.authorize! :vote, vote.motion
 

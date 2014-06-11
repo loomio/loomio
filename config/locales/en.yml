@@ -32,7 +32,6 @@ en:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%-d/%-m/%y'
-      datepicker: "%d-%m-%Y"
 
   devise:
     invitations:
@@ -407,6 +406,8 @@ en:
     motion_outcome_updated: "updated the outcome for the proposal"
     discussion_title_edited: "changed the discussion title"
     discussion_description_edited: "changed the discussion description"
+    motion_name_edited: 'edited the proposal title'
+    motion_description_edited: 'edited the proposal description'
 
   discussion: "Discussion"
   current_decision: "Current decision"
@@ -808,8 +809,18 @@ en:
       will_be_public: "Anyone can see the discussion."
 
   motion_form:
-    header: "New proposal"
+    new:
+      header: "New proposal"
+      submit: 'Create proposal'
+
+    edit:
+      header: "Edit proposal"
+      submit: 'Update proposal'
+      with_care: "Edits should not change the meaning of the proposal. If you're making a big change, close the proposal and start a new one."
+      with_care_title: Edit with care
+
     name_helper: "Make the title as clear and succinct as possible."
+    close_proposal_heading: "Want to close the proposal early?"
 
   vote_form:
     header: "State your position"
@@ -1088,6 +1099,63 @@ en:
   persona: "Persona"
 
   common:
+    today: Today
+    months:
+      january: January
+      february: February
+      march: March
+      april: April
+      may: May
+      june: June
+      july: July
+      august: August
+      september: September
+      october: October
+      november: November
+      december: December
+
+    abbr_months:
+      jan: Jan
+      feb: Feb
+      mar: Mar
+      apr: Apr
+      may: May
+      jun: Jun
+      jul: Jul
+      aug: Aug
+      sep: Sep
+      oct: Oct
+      nov: Nov
+      dec: Dec
+
+    days:
+      monday: Monday
+      tuesday: Tuesday
+      wednesday: Wednesday
+      thursday: Thursday
+      friday: Friday
+      saturday: Saturday
+      sunday: Sunday
+
+    abbr_days:
+      mon: Mon
+      tue: Tue
+      wed: Wed
+      thu: Thu
+      fri: Fri
+      sat: Sat
+      sun: Sun
+
+    tiny_days:
+      mo: Mo
+      tu: Tu
+      we: We
+      th: Th
+      fr: Fr
+      sa: Sa
+      su: Su
+
+    please_wait: "Please wait"
     privacy: "Privacy"
     private: "Private"
     public: "Public"

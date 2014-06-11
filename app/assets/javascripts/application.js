@@ -6,7 +6,7 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.datepicker
+//= require moment
 //= require jquery.ui.sortable
 //= require jquery.atwho/index
 //= require jqplot
@@ -19,11 +19,11 @@
 //= require lib/jstz-1.0.4.min
 //= require lib/jquery.mousewheel
 //= require lib/jquery.placeholder
-//= require lib/moment.min
 //= require lib/jquery.sparkline.min
 //= require lib/jquery.html5-placeholder-shim
 //= require lib/jquery.safetynet
 //= require lib/jquery.netchanger.min
+//= require lib/bootstrap2-datetimepicker
 //= require underscore
 //= require backbone
 //= require backbone/loomio

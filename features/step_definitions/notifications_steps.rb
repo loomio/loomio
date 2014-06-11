@@ -1,6 +1,6 @@
 Given(/^I have a proposal which has expired$/) do
   @motion = FactoryGirl.create :motion, author: @user
-  @motion.close_at_date = Date.parse((Time.zone.now - 10.days).to_s)
+  @motion.closing_at = 2.days.ago
   @motion.save
   MotionService.close_all_lapsed_motions
 end

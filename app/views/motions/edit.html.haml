@@ -1,0 +1,6 @@
+- set_title @group.name, t(:new_proposal)
+= render '/groups/title', group: @group
+%h2= t "motion_form.edit.header"
+.row
+  .span5
+= render 'motions/form', submit_text: t('motion_form.edit.submit'), action: :update
