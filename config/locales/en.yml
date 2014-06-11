@@ -255,9 +255,9 @@ en:
 
     what_can_members_do: "What can members do?"
     members_can:
-      add_members: "Add or invite new members"
-      edit_own_motions: "Edit their own proposals"
-      edit_discussions: "Edit the title and context of any discussion in the group"
+      add_members: Invite new members
+      edit_discussions: Edit the context of any discussion in the group
+    motions_can_be_edited: Edit proposal text after voting has started
 
     visible_to:
       label: Who can find this group?
@@ -468,7 +468,7 @@ en:
   #
 
   new_proposal: "New Proposal"
-
+  edit_proposal: "Edit Proposal"
   close_proposal: "Close proposal"
   confirm_close_proposal: "Are you sure you want to close this proposal?"
   change_proposal_close_date: "Change close date"
@@ -817,7 +817,7 @@ en:
     edit:
       header: "Edit proposal"
       submit: 'Update proposal'
-      only_closing_at: 'You cannot change the name or description of a proposal after a member has stated their position'
+      only_closing_at: 'You cannot change the name or description after voting has started'
 
     name_helper: "Make the title as clear and succinct as possible."
     close_proposal_heading: "Want to close the proposal early?"

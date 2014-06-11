@@ -3,6 +3,6 @@
 %h2= t "motion_form.edit.header"
 .row
   .span5
-    - if @motion.has_votes?
+    - unless @motion.can_be_edited?
       %p.alert= t :'motion_form.edit.only_closing_at'
 = render 'motions/form', submit_text: t('motion_form.edit.submit'), action: :update

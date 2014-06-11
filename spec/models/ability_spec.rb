@@ -171,26 +171,53 @@ describe "User abilities" do
       it { should_not be_able_to(:update, discussion) }
     end
 
-    context "can edit voting motion if no votes" do
-      it { should be_able_to(:update, user_motion) }
-    end
+    describe "motions_can_be_edited" do
+      context "true" do
+        before do
+          group.update_attributes(motions_can_be_edited: true)
+        end
+        context "a vote has been cast" do
+          before { user_vote }
+          context "can change text" do
+            before do
+              user_motion.name = "name change"
+              user_motion.description = "description change"
+            end
 
-    context "cannot edit description of voting motion if votes", focus: true do
-      before do
-        user_vote
-        user_motion.reload
-        user_motion.description = "a sneeky trick"
+            it { should be_able_to(:update, user_motion) }
+          end
+        end
       end
-      it { should_not be_able_to(:update, user_motion) }
-    end
 
-    context "can edit closing_at of voting motion if votes", focus: true do
-      before do
-        user_vote
-        user_motion.reload
-        user_motion.closing_at = 5.days.from_now
+      context "false" do
+        before do
+          group.update_attributes(motions_can_be_edited: false)
+        end
+
+        context "a vote has been cast" do
+          before { user_vote }
+          context "cannot change text", focus: true do
+            before do
+              user_motion.name = "name change"
+              user_motion.description = "description change"
+            end
+
+            it { should_not be_able_to(:update, user_motion) }
+          end
+
+          context "can change closing_at" do
+            before do
+              user_motion.closing_at = 44.days.from_now
+            end
+
+            it { should be_able_to(:update, user_motion) }
+          end
+        end
+
+        context "no votes yet" do
+          it { should be_able_to(:update, user_motion) }
+        end
       end
-      it { should be_able_to(:update, user_motion) }
     end
 
     it { should_not be_able_to(:update, other_users_motion) }
