@@ -818,7 +818,7 @@ en:
     edit:
       header: "Edit proposal"
       submit: 'Update proposal'
-      only_closing_at: 'You cannot change the name or description after voting has started'
+      only_closing_at: 'You cannot change the proposal name or description after voting has started'
 
     name_helper: "Make the title as clear and succinct as possible."
     close_proposal_heading: "Want to close the proposal early?"
