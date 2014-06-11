@@ -75,7 +75,8 @@ if ENV['INTERCOM_APP_ID']
         discussions: :organisation_discussions_count,
         proposals: :organisation_motions_count,
         description: :description,
-        group_request_description: :group_request_description
+        group_request_description: :group_request_description,
+        plan: :payment_plan
     }
 
     # == Company Plan name

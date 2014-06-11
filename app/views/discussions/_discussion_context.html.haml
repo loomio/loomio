@@ -1,6 +1,16 @@
 .row
   .span8
-    =render 'description', discussion: @discussion, description: @discussion.description, description_markdown_setting: @discussion.uses_markdown
+    .description-container
+      .description-body
+        .long-description
+          = render_rich_text(@discussion.description, @discussion.uses_markdown)
+        .translation-spacer.translated
+        .translated-description.translated
+          = t(:loading_translation)
+        - if can?(:edit, @discussion)
+          = link_to t(:'edit'), edit_discussion_path(@discussion), class: "edit-description edit-discussion-description bottom-panel-link"
+        - if TranslationService.can_translate? @discussion
+          = translate_link_for @discussion
   .span3.right-context
     .helper-text.discussion-description-helper-text.hidden
       =render "application/hint", text: t(:"hint.context"), anchor: 'starting-an-engaging-discussion'
