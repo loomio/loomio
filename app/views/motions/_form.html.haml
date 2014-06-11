@@ -1,19 +1,31 @@
-#motion-form
-  = simple_form_for @motion, validate: true do |f|
-    %h2= t "motion_form.header"
-    .row
-      .span5
-        %p= t "motion_form.name_helper"
-        = f.input :name, id: "motion-name", input_html: {class: 'js-warn-before-navigating-away'}
-    .row
-      .span9
-        = render 'motions/close_at_inputs', form: f, user: @current_user
-    .row
-      .span5
-        #description
-          = f.input :description, input_html: {class: 'js-warn-before-navigating-away'}
-
+.row
+  .span5
+    #motion-form
+      = simple_form_for @motion, validate: true do |f|
+        = f.input :name, id: "motion-name", input_html: {class: 'js-warn-before-navigating-away'}, hint: t('motion_form.name_helper')
+        = f.input :closing_at
+        = f.input :description, input_html: {class: 'js-warn-before-navigating-away'}
         = f.input :discussion_id, as: :hidden, input_html: {value: @motion.discussion_id}
-        = f.submit :class => "btn btn-large btn-info run-validations", id: "proposal-submit", :data => {:disable_with => t("helpers.submit.motion.create")}
-        = render 'application/hint', text: t(:"hint.proposal"), anchor: 'writing-a-clear-proposal'
+        - if action == :update
+          = f.submit submit_text,
+            :class => "btn btn-info",
+            id: "proposal-submit",
+            data: {disable_with: t("common.please_wait"),
+                   confirm: t(:'motion_form.edit.with_care')}
+        - else
+          = f.submit submit_text,
+            :class => "btn btn-info",
+            id: "proposal-submit"
+        = link_to t('common.cancel'), @motion.discussion, :class => "btn btn-cancel"
+
+      -if can? :close, @motion
+        %h3=t('motion_form.close_proposal_heading')
+        = link_to t(:close_proposal), "#",
+          'data-title' => t(:close_proposal),
+          'data-body' => t(:confirm_close_proposal),
+          'data-confirm-path' => close_motion_path(@motion),
+          'data-method-type' => 'put',
+          class: 'btn confirm-dialog',
+          id: 'close-voting'
+    %script{src: localisation_datetime_input_translations_path, charset: 'UTF-8'}
 

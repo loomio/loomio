@@ -26,8 +26,6 @@ class MotionsController < GroupBaseController
   end
 
   def index
-    # NOTE (Jon): This currently only returns closed motions, which
-    # means it should probably be renamed to something like "closed_motions"
     if params[:group_id].present?
       @group = Group.find(params[:group_id])
       if cannot? :show, @group
@@ -41,6 +39,17 @@ class MotionsController < GroupBaseController
       @closed_motions= current_user.motions.closed.page(params[:page])
       render :layout => false if request.xhr?
     end
+  end
+
+  def edit
+    @group = @motion.group
+  end
+
+  def update
+    MotionService.update_motion(motion: @motion,
+                                params: permitted_params.motion,
+                                user: current_user)
+    redirect_to @motion
   end
 
   def show
@@ -85,22 +94,6 @@ class MotionsController < GroupBaseController
       flash[:error] = t("error.motion_outcome_not_updated")
     end
     redirect_to discussion_url(@motion.discussion, proposal: @motion)
-  end
-
-  def edit_close_date
-    safe_values = {}
-    safe_values[:close_at_date] = params[:motion][:close_at_date]
-    safe_values[:close_at_time] = params[:motion][:close_at_time]
-
-    if @motion.update_attributes(safe_values)
-      Measurement.increment('motions.edit_close_date.success')
-      Events::MotionCloseDateEdited.publish!(@motion, current_user)
-      flash[:success] = t("success.close_date_changed")
-    else
-      Measurement.increment('motions.edit_close_date.error')
-      flash[:error] = t("error.invalid_close_date")
-    end
-    redirect_to discussion_url(@motion.discussion)
   end
 
   private

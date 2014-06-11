@@ -33,9 +33,9 @@ class Motion < ActiveRecord::Base
   delegate :email_new_motion?, to: :group, prefix: :group
   delegate :name_and_email, to: :user, prefix: :author
   delegate :language, to: :user
+  has_paper_trail only: [:name, :description, :closing_at]
 
-  after_initialize :set_default_close_at_date_and_time
-  before_validation :set_closing_at
+  after_initialize :set_default_closing_at
   after_create :fire_new_motion_event
 
   attr_accessor :create_discussion
@@ -198,14 +198,6 @@ class Motion < ActiveRecord::Base
     save!
   end
 
-  # todo: move to motion mover service
-  def move_to_group(group)
-    if discussion.present?
-      discussion.group = group
-      discussion.save
-    end
-  end
-
   def group_members_without_motion_author
     group.users.where(User.arel_table[:id].not_eq(author.id))
   end
@@ -228,34 +220,9 @@ class Motion < ActiveRecord::Base
     reload
   end
 
-  # only here while the fix in angular branch awaits merge
-  def closing_at=(datetime)
-    self.close_at_date = datetime.to_date
-    self.close_at_time = datetime.strftime("%H:00")
-    self[:closing_at] = datetime
-  end
-
   private
-    def find_or_new_motion_reader_for(user)
-      if self.motion_readers.where(user_id: user.id).exists?
-        self.motion_readers.where(user_id: user.id).first
-      else
-        motion_reader = self.motion_readers.build
-        motion_reader.motion = self
-        motion_reader.user = user
-        motion_reader
-      end
-    end
-
-    def set_default_close_at_date_and_time
-      self.closing_at ||= Time.zone.now + 3.days
-    end
-
-    def set_closing_at
-      date_time_zone_format = '%Y-%m-%d %H:%M %Z'
-      tz_offset = ActiveSupport::TimeZone[close_at_time_zone].formatted_offset
-      date_time_zone_string = "#{close_at_date.to_s} #{close_at_time} #{tz_offset}"
-      self[:closing_at] = DateTime.strptime(date_time_zone_string, date_time_zone_format)
+    def set_default_closing_at
+      self.closing_at ||= (Time.zone.now + 3.days).at_beginning_of_hour
     end
 
     def fire_new_motion_event
