@@ -354,6 +354,8 @@ ActiveRecord::Schema.define(:version => 20140611100737) do
     t.boolean  "members_can_add_members",            :default => false,          :null => false
     t.string   "membership_granted_upon",                                        :null => false
     t.boolean  "email_notification_default",         :default => true,           :null => false
+    t.boolean  "members_can_edit_discussions",       :default => true,           :null => false
+    t.boolean  "motions_can_be_edited",              :default => false,          :null => false
     t.string   "cover_photo_file_name"
     t.string   "cover_photo_content_type"
     t.integer  "cover_photo_file_size"
@@ -362,8 +364,6 @@ ActiveRecord::Schema.define(:version => 20140611100737) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.boolean  "members_can_edit_discussions",       :default => true,           :null => false
-    t.boolean  "motions_can_be_edited",              :default => false,          :null => false
   end
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
