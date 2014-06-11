@@ -171,6 +171,57 @@ describe "User abilities" do
       it { should_not be_able_to(:update, discussion) }
     end
 
+    describe "motions_can_be_edited" do
+      context "true" do
+        before do
+          group.update_attributes(motions_can_be_edited: true)
+        end
+        context "a vote has been cast" do
+          before { user_vote }
+          context "can change text" do
+            before do
+              user_motion.name = "name change"
+              user_motion.description = "description change"
+            end
+
+            it { should be_able_to(:update, user_motion) }
+          end
+        end
+      end
+
+      context "false" do
+        before do
+          group.update_attributes(motions_can_be_edited: false)
+        end
+
+        context "a vote has been cast" do
+          before { user_vote }
+          context "cannot change text", focus: true do
+            before do
+              user_motion.name = "name change"
+              user_motion.description = "description change"
+            end
+
+            it { should_not be_able_to(:update, user_motion) }
+          end
+
+          context "can change closing_at" do
+            before do
+              user_motion.closing_at = 44.days.from_now
+            end
+
+            it { should be_able_to(:update, user_motion) }
+          end
+        end
+
+        context "no votes yet" do
+          it { should be_able_to(:update, user_motion) }
+        end
+      end
+    end
+
+    it { should_not be_able_to(:update, other_users_motion) }
+
     it { should     be_able_to(:create, subgroup) }
     it { should     be_able_to(:show, group) }
     it { should_not be_able_to(:update, group) }
@@ -201,7 +252,6 @@ describe "User abilities" do
     it { should     be_able_to(:destroy, @membership) }
     it { should     be_able_to(:create, new_motion) }
     it { should     be_able_to(:close, user_motion) }
-    it { should     be_able_to(:update, user_motion) }
     it { should     be_able_to(:create_outcome, user_motion) }
     it { should     be_able_to(:destroy, user_motion) }
     it { should_not be_able_to(:destroy, other_users_motion) }

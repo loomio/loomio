@@ -9,9 +9,14 @@ class Ability
     @admin_group_ids.include?(group_id)
   end
 
+  def user_is_author_of?(object)
+    object.author_id == @user.id
+  end
+
   def initialize(user)
 
     user ||= User.new
+    @user = user
     @admin_group_ids = user.adminable_group_ids
     @member_group_ids = user.group_ids
 
@@ -131,14 +136,14 @@ class Ability
     end
 
     can :update_version, Discussion do |discussion|
-      (discussion.author == user) or user_is_admin_of?(discussion.group_id)
+      user_is_author_of?(discussion) or user_is_admin_of?(discussion.group_id)
     end
 
     can :update, Discussion do |discussion|
       if discussion.group.members_can_edit_discussions?
         user_is_member_of?(discussion.group_id)
       else
-        (discussion.author == user) or user_is_admin_of?(discussion.group_id)
+        user_is_author_of?(discussion) or user_is_admin_of?(discussion.group_id)
       end
     end
 
@@ -158,7 +163,7 @@ class Ability
     end
 
     can [:destroy], Comment do |comment|
-      (comment.author == user) or user_is_admin_of?(comment.discussion.group_id)
+      user_is_author_of?(comment) or user_is_admin_of?(comment.discussion.group_id)
     end
 
     can [:start_proposal], Discussion do |discussion|
@@ -173,14 +178,20 @@ class Ability
       motion.voting? && user_is_member_of?(motion.discussion.group_id)
     end
 
-    can [:close, :update], Motion do |motion|
-      motion.persisted? && motion.voting? && ((motion.author_id == user.id) || user_is_admin_of?(motion.discussion.group_id))
+    can [:close], Motion do |motion|
+      motion.persisted? && motion.voting? &&
+       ( user_is_admin_of?(motion.discussion.group_id) or user_is_author_of?(motion) )
+    end
+
+    can [:update], Motion do |motion|
+      (motion.can_be_edited? || (not motion.restricted_changes_made?)) &&
+      (user_is_admin_of?(motion.discussion.group_id) || user_is_author_of?(motion))
     end
 
     can [:destroy,
          :create_outcome,
          :update_outcome], Motion do |motion|
-      (motion.author_id == user.id) or user_is_admin_of?(motion.discussion.group_id)
+      user_is_author_of?(motion) or user_is_admin_of?(motion.discussion.group_id)
     end
 
     can [:show], Comment do |comment|

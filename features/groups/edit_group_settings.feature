@@ -8,12 +8,17 @@ Feature: Edit group settings
     And I visit the group settings page
     When I select listed, open, public only
     Then the group should be listed, open, public only
-    When I select listed, by request, admins add members, public and private
-    Then the group should be listed, by request, admins add members, public and private
-    When I select listed, invitation only, admins add members, private only
-    Then the group should be listed, by request, admins add members, private only
-    When I select unlisted, admins add members
-    Then the group should be unlisted, invitation only, admins add members, prviate discussions only
+    When I select listed, by request, public and private
+    Then the group should be listed, by request, public and private
+    When I select listed, invitation only, private only
+    Then the group should be listed, by request, private only
+    When I select unlisted
+    Then the group should be unlisted, invitation only, prviate discussions only
+    When I allow the members to do everything
+    Then they should be allowed to do everything
+    When I disallow the members to do everything
+    Then they should be disallowed from doing everything
+
 
   @javascript
   Scenario: Change the settings on a subgroup
