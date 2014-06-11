@@ -120,7 +120,6 @@ end
 When(/^I allow the members to do everything$/) do
   visit edit_group_path(@group)
   check 'group[members_can_add_members]'
-  check 'group[members_can_edit_own_motions]'
   check 'group[members_can_edit_discussions]'
   click_on 'group_form_submit'
 end
@@ -129,13 +128,11 @@ Then(/^they should be allowed to do everything$/) do
   @group.reload
   @group.members_can_add_members.should be_true
   @group.members_can_edit_discussions.should be_true
-  @group.members_can_edit_own_motions.should be_true
 end
 
 When(/^I disallow the members to do everything$/) do
   visit edit_group_path(@group)
   uncheck 'group[members_can_add_members]'
-  uncheck 'group[members_can_edit_own_motions]'
   uncheck 'group[members_can_edit_discussions]'
   click_on 'group_form_submit'
 end
@@ -144,5 +141,4 @@ Then(/^they should be disallowed from doing everything$/) do
   @group.reload
   @group.members_can_add_members.should be_false
   @group.members_can_edit_discussions.should be_false
-  @group.members_can_edit_own_motions.should be_false
 end

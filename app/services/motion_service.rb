@@ -1,12 +1,13 @@
 class MotionService
   def self.update_motion(motion: motion, params: params, user: user)
-    user.ability.authorize! :update, motion
 
-    motion.name = params[:name]
-    motion.description = params[:description]
-    unless motion.closing_at == Time.zone.parse(params[:closing_at])
-      motion.closing_at = params[:closing_at]
+    if motion.closing_at.to_s == Time.zone.parse(params[:closing_at]).to_s
+      params.delete(:closing_at)
     end
+
+    motion.attributes = params
+
+    user.ability.authorize! :update, motion
 
     if motion.valid?
       if motion.name_changed?

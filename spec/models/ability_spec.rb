@@ -171,19 +171,29 @@ describe "User abilities" do
       it { should_not be_able_to(:update, discussion) }
     end
 
-    context "members_can_edit_own_motions" do
+    context "can edit voting motion if no votes" do
+      it { should be_able_to(:update, user_motion) }
+    end
+
+    context "cannot edit description of voting motion if votes", focus: true do
       before do
-        group.members_can_edit_own_motions = true
+        user_vote
+        user_motion.reload
+        user_motion.description = "a sneeky trick"
+      end
+      it { should_not be_able_to(:update, user_motion) }
+    end
+
+    context "can edit closing_at of voting motion if votes", focus: true do
+      before do
+        user_vote
+        user_motion.reload
+        user_motion.closing_at = 5.days.from_now
       end
       it { should be_able_to(:update, user_motion) }
     end
 
-    context "members_can_not_edit_own_motions" do
-      before do
-        group.members_can_edit_own_motions = false
-      end
-      it { should_not be_able_to(:update, user_motion) }
-    end
+    it { should_not be_able_to(:update, other_users_motion) }
 
     it { should     be_able_to(:create, subgroup) }
     it { should     be_able_to(:show, group) }

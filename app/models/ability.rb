@@ -178,10 +178,22 @@ class Ability
       motion.voting? && user_is_member_of?(motion.discussion.group_id)
     end
 
-    can [:close, :update], Motion do |motion|
-      if motion.persisted? && motion.voting?
-        user_is_admin_of?(motion.discussion.group_id) ||
-          (user_is_author_of?(motion) && motion.group.members_can_edit_own_motions?)
+    can [:close], Motion do |motion|
+      motion.persisted? && motion.voting? &&
+       ( user_is_admin_of?(motion.discussion.group_id) or user_is_author_of?(motion) )
+    end
+
+    can [:update], Motion do |motion|
+      if motion.persisted? &&
+         motion.voting? &&
+         ( user_is_admin_of?(motion.discussion.group_id) or user_is_author_of?(motion) )
+
+        # this says that you can edit name and description if there are no votes
+        if motion.has_votes? and motion.changed?
+          (['name', 'description'] & motion.changed).empty?
+        else
+          true
+        end
       end
     end
 

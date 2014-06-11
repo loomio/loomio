@@ -1,6 +1,7 @@
 .motion.translate-parent{id:"motion-#{motion.id}"}
   .motion-header-info
     %h3.motion-title.word-break= motion.name
+    = motion.changed.inspect
     - if can? :edit, motion
       = link_to edit_motion_path(motion), class: 'cuke-edit-motion edit-icon-labelled' do
         %i.fa.fa-pencil

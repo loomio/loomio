@@ -817,8 +817,7 @@ en:
     edit:
       header: "Edit proposal"
       submit: 'Update proposal'
-      with_care: "Edits should not change the meaning of the proposal. If you're making a big change, close the proposal and start a new one."
-      with_care_title: Edit with care
+      only_closing_at: 'You cannot change the name or description of a proposal after a member has stated their position'
 
     name_helper: "Make the title as clear and succinct as possible."
     close_proposal_heading: "Want to close the proposal early?"
