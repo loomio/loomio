@@ -31,9 +31,3 @@ Feature: User creates proposal
     And clicking the link in the email should take him to the proposal
     Then "hannah@example.org" should receive no email
     And "newuser@example.org" should receive no email
-
-  Scenario: Correct timezone is selected and saved properly when creating proposal
-    When I visit the discussion page
-    And I click "Create new proposal"
-    Then the time zone should match my time zone setting
-    And I fill in the proposal details and submit the form
