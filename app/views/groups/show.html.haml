@@ -30,7 +30,7 @@
         = render 'groups/privacy_dropdown', :group => @group
     - if @group.category.present?
       .group-category.shadow
-        =link_to @group.category.name, category_explore_path(@group.category), title: t(:'tooltip.group_category')
+        =link_to t(@group.category.translatable_name), category_explore_path(@group.category), title: t(:'tooltip.group_category')
 
 .row
   .span9
