@@ -130,6 +130,10 @@ hide_edit_description = ->
   $('.edit-description-placeholder').show()
 
 $ ->
+
+  if navigator.userAgent.match(/MSIE 8/) != null
+    $('.group-heading').attr('style', $('.group-heading').attr('style').replace('url(/assets/cover-photo-gradient.png), ', ''))
+
   hide_cover_photo_upload()
   hide_logo_upload()
   hide_edit_description()
