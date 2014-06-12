@@ -255,15 +255,23 @@ en:
   #
   # GROUP PAGE
   #
+
+
   group_form:
+    name: "Group name"
+    description: "Description"
+    category: "Category"
+
     confirm_all_discussions_will_be_made_private_message: "If you proceed, any public discussions will be made private."
     confirm_all_discussions_will_be_made_public_message: "Are you sure? If you proceed, any private discussions will be made public."
+
+    prompt_to_suggest_categories_html: "If you'd like to suggest some new categories, <a href='%{link}' target='_blank'>join this discussion</a>."
 
     what_can_members_do: "What can members do?"
     members_can:
       add_members: Invite and approve new members
       edit_discussions: Edit the context of any discussion in the group
-    motions_can_be_edited: Edit proposal text after voting has started
+    motions_can_be_edited: Edit their proposals after voting has started
 
     visible_to:
       label: Who can find this group?
@@ -881,31 +889,6 @@ en:
       discussion:
         title: "Title"
         description: "Context"
-      group:
-        name: "Group name"
-        description: "Description"
-        members_invitable_by: "Who can invite people to this group?"
-        members_invitable_by_coordinators: "Coordinators only"
-        members_invitable_by_members: "All group members"
-        privacy: Privacy
-        visibility_visible_header: 'Visible'
-        visibility_hidden_header: 'Hidden'
-        visibility_visible_description: 'People can find this group and ask to join.'
-        visibility_hidden_description: 'Joining this group is by invitation only.'
-
-        privacy_public_header: Public
-        privacy_public_description: Discussions are public, unless made private. Anyone can find the group and ask to join.
-        privacy_private_header: Mostly private
-        privacy_private_description: Discussions are private, unless you explicitly make them public. Anyone can find the group and ask to join.
-        privacy_hidden_header: Hidden (completely private)
-        privacy_hidden_description: Discussions are always private. Finding and joining the group is by invitation only.
-        privacy_parent_group_members_header: Viewable by parent group members
-        privacy_parent_group_members_description: Same as hidden, only the group and its discussions can be seen by parent group members.
-        privacy_parent_group_members_description_short: Only members and parent group members can see this group and its discussions.
-        group_members_invitable_by:
-          "Only coordinators"
-        submit: Submit
-        is_visible_to_parent_members_header: Allow all %{group} members to see this subgroup and its discussions
       membership_request:
         introduction: "Introduce yourself"
       motion:
@@ -933,9 +916,6 @@ en:
       motion:
         name: "What is your proposed course of action?"
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
-      group:
-        name: "Group name"
-        description: "Group description"
       user:
         email: "Email"
         password: "Password"
