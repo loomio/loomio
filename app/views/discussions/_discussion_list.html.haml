@@ -1,4 +1,4 @@
-%section.span9#group-discussions
+%section#group-discussions
   - if @discussions.any?
     - discussions_with_motions = @discussions.select(&:current_motion)
     - if discussions_with_motions.any?

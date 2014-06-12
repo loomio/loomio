@@ -10,9 +10,112 @@ body.groups {
   &.show {
     .discussion-preview .discussion-title { margin-top: 7px; }
     .discussion-preview.showing-group .discussion-title { margin-top: 0; }
-    .edit-group-link {
+    .shadow{
+      text-shadow: 0 1px 1px rgba(0,0,0,.8);
+      text-rendering: optimizelegibility;
+      color: white;
+    }
+    .group-heading {
+      background: image-url('default-cover-photo.png') 0 0 no-repeat;
+      margin: -23px -20px 0 -20px;
+      position: relative;
+      height: 200px;
+      a { color: white; }
+      .alert{
+        margin: 16px;
+        width: 652px;
+        float: left;
+      }
+      .group-logo {
+        width: 100px;
+        height: 100px;
+        background: image-url('default-logo.png') no-repeat top center white;
+        position: absolute;
+        border: 4px solid white;
+        top: 146px;
+        left: 16px;
+      }
+      .group-title {
+        position: absolute;
+        bottom: 0px;
+        left: 138px;
+        width: 842px;
+      }
+      .home-title{
+        font-size: 30px;
+        max-width: 632px;
+        display: block;
+      }
+      .group-category{
+        position: absolute;
+        right: 22px;
+        bottom: 8px;
+        max-width: 168px;
+        text-align: right;
+        a{
+          font-size: 14px;
+          background: rgba(0,0,0,0.5);
+          padding: 3px 10px;
+          display: block;
+        }
+      }
+    }
+    .edit-icon{
       float: right;
-      padding: 10px;
+      font-size: 20px;
+      width: 32px;
+      height: 32px;
+      background: white;
+      i{padding: 6px 8px 6px 7px;}
+    }
+    .edit-description-placeholder{
+      width: 32px;
+      height: 32px;
+      float: right;
+    }
+    .upload-button {
+      position: relative;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      float: right;
+      .edit-icon {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 1;
+        cursor: pointer;
+      }
+      input {
+        position: relative;
+        opacity: 0;
+        z-index: 2;
+        cursor: pointer;
+        width: 32px;
+        height: 32px;
+      }
+    }
+    .logo-upload{
+      margin: -4px;
+    }
+    .group-description{
+      float: left;
+      margin: 16px 0 -8px 0;
+      width: 100%;
+    }
+    .logo-placeholder {
+      float: left;
+      width: 118px;
+      height: 34px;
+    }
+    .main-content{
+      width: 700px;
+      float: left;
+    }
+    .sidebar {
+      width: 220px;
+      float: left;
+      margin-left: 20px;
     }
     .group-options {
       width: 200px;
@@ -21,6 +124,9 @@ body.groups {
         margin-top: 0;
         left: 0;
       }
+    }
+    #group-actions {
+      margin: 20px 0 15px 0;
     }
     .heart-icon {color: red;}
 
@@ -108,10 +214,6 @@ body.groups {
   }
 }
 
-#group-actions{
-  margin-bottom: 20px;
-}
-
 #group_email_subject { width: 510px; }
 #group_email_body { width: 510px; }
 
@@ -154,57 +256,6 @@ form.group-settings{
     }
   }
   .disabled { color:#ccc; }
-}
-body.group_setup.setup, body.groups.new, body.groups.edit, body.groups.add_subgroup {
-  /*form.group-settings {
-    .control-group.radio_buttons { margin-bottom: 1.6em; }
-    input[type="text"] {
-      font-size: 28px;
-      height: 32px;
-      line-height: 32px;
-      margin-bottom: .6em;
-    }
-
-    label.radio {
-    }
-    label.radio span {
-      font-style: italic;
-      font-weight: normal;
-    }
-
-    textarea {
-      @include placeholder { font-style: italic; }
-      font-size: 16px;
-      margin-bottom: 1.6em;
-      height: 100px;
-    }
-    .control-label.radio_buttons {
-      font-size: 20px;
-    }
-    .radio_buttons .controls { margin-top: .5em; }
-    .radio, .checkbox { font-size: 16px; }
-    .radio p {
-      font-size: 14px;
-      font-style: italic;
-      line-height: 18px;
-      margin-top: 0.2em;
-      margin-bottom: 1em;
-      color: $dark-grey;
-    }
-    .checkbox { margin-bottom: 0px; }
-    .group_is_visible_to_parent_members {
-      border-top: 1px solid #DDD;
-      border-bottom: 1px solid #DDD;
-      padding: 1em 0;
-      margin-bottom: 1.8em;
-    }
-  }
-  .disabled { color:#ccc; }
-  #group-setup { margin-top: 1.2em; }
-  .info-box {
-    width: 290px;
-    margin-top: 1.1em
-  }*/
 }
 
 body.groups.new {

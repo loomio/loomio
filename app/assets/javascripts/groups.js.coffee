@@ -1,7 +1,3 @@
-$ ->
-  $('.title-tooltip').tooltip
-    placement: "right"
-
 # adds bootstrap popovers to group activity indicators
 activate_discussions_tooltips = () ->
   $(".unread-group-activity").tooltip
@@ -113,12 +109,44 @@ $ ->
   # and when the dom loads
   update_group_form_state()
 
-show_edit_link = ->
-  $('.edit-group-link').show()
+show_cover_photo_upload = ->
+  $('.cover-photo-upload').show()
 
-hide_edit_link = ->
-  $('.edit-group-link').hide()
+hide_cover_photo_upload = ->
+  $('.cover-photo-upload').hide()
+
+show_logo_upload = ->
+  $('.logo-upload').show()
+
+hide_logo_upload = ->
+  $('.logo-upload').hide()
+
+show_edit_description = ->
+  $('.edit-description').show()
+  $('.edit-description-placeholder').hide()
+
+hide_edit_description = ->
+  $('.edit-description').hide()
+  $('.edit-description-placeholder').show()
 
 $ ->
-  hide_edit_link()
-  $('.group-heading').hover(show_edit_link, hide_edit_link)
+
+  if navigator.userAgent.match(/MSIE 8/) != null
+    $('.group-heading').attr('style', $('.group-heading').attr('style').replace('url(/assets/cover-photo-gradient.png), ', ''))
+
+  hide_cover_photo_upload()
+  hide_logo_upload()
+  hide_edit_description()
+  $('.group-heading').hover(show_cover_photo_upload, hide_cover_photo_upload)
+  $('.group-logo').hover(show_logo_upload, hide_logo_upload)
+  $('.group-description').hover(show_edit_description, hide_edit_description)
+
+  $(".js-submit-on-change").change (event) ->
+    $(this).submit()
+
+  $('.cover-photo-upload').tooltip
+    placement: "bottom"
+  $('.logo-upload').tooltip
+    placement: "bottom"
+  $('.edit-description').tooltip
+    placement: "bottom"
