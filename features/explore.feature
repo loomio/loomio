@@ -13,4 +13,5 @@ Feature: Explore Loomio
 
   Scenario: Explore a category
     When I visit an explore category
-    Then I should see the groups in that category
+    Then I should see the public groups in that category
+    And I should not see the hidden groups in that category
