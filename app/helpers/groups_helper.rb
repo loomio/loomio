@@ -110,4 +110,11 @@ module GroupsHelper
     group.discussions.where('private = ?', false).empty?
   end
 
+  def use_parent_if_blank(group, method)
+    if group.is_subgroup? && group.send(method).blank?
+      group.parent.send(method)
+    else
+      group.send(method)
+    end
+  end
 end

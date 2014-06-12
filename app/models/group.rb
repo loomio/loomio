@@ -12,7 +12,7 @@ class Group < ActiveRecord::Base
                   :cannot_contribute, :full_name, :payment_plan, :parent_members_can_see_discussions,
                   :category_id, :max_size, :is_visible_to_parent_members, :is_visible_to_public,
                   :discussion_privacy_options, :membership_granted_upon, :visible_to,
-                  :theme_id, :subdomain
+                  :theme_id, :subdomain, :cover_photo, :logo
   acts_as_tree
 
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
@@ -140,6 +140,20 @@ class Group < ActiveRecord::Base
 
   paginates_per 20
 
+  has_attached_file    :cover_photo,
+                       styles: { desktop: "980x200#" },
+                       default_url: '/assets/default-cover-photo.png'
+  has_attached_file    :logo,
+                       styles: { medium: "100x100" },
+                       default_url: '/assets/default-logo.png'
+  validates_attachment :cover_photo,
+    size: { in: 0..10.megabytes },
+    content_type: { content_type: /\Aimage/ },
+    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }
+  validates_attachment :logo,
+    size: { in: 0..10.megabytes },
+    content_type: { content_type: /\Aimage/ },
+    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }
 
   def coordinators
     admins
