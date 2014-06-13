@@ -134,7 +134,7 @@ describe "User abilities" do
     end
   end
 
-  context "suspended member" do
+  context "suspended member", focus: true do
     let(:group) { create(:group) }
     let(:admin_group) { create(:group) }
     let(:subgroup) { create(:group, parent: group) }
@@ -151,6 +151,10 @@ describe "User abilities" do
 
       it { should be_able_to(:show, group) }
       it { should_not be_able_to(:show, private_discussion) }
+      it "is no longer a group member" do
+        group.reload
+        group.members.should_not include user
+      end
     end
 
     context "group is hidden from public" do
