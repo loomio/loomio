@@ -10,13 +10,16 @@ Loomio::Application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = true
-  config.static_cache_control = 'public, max-age=31536000'
+  #EvoluteChange config.static_cache_control = 'public, max-age=31536000'
+  config.static_cache_control = 'public, max-age=604800'
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
+  #NOEvoluteChange
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
+  #NOEvoluteChange
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -26,8 +29,9 @@ Loomio::Application.configure do
   # config.assets.manifest = YOUR_PATH
 
   # Specifies the header that your server uses for sending files
-  config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
+  # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
+  config.action_dispatch.x_sendfile_header = nil  
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
@@ -41,9 +45,11 @@ Loomio::Application.configure do
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
   config.cache_store = :dalli_store
+  
+  #NUDGE
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  # config.action_controller.asset_host = "http://assets.example.com"
+  #config.action_controller.asset_host = "d1zqv527t2wmnk.cloudfront.net"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
@@ -83,14 +89,11 @@ Loomio::Application.configure do
 
   # Store avatars on Amazon S3
   config.paperclip_defaults = {
-    :storage => :fog,
-    :fog_credentials => {
-      :provider => 'AWS',
-      :aws_access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :aws_secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-    },
-    :fog_directory => ENV['AWS_UPLOADS_BUCKET'],
-    :fog_public => true
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
   }
-
+}
 end

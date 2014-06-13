@@ -43,7 +43,7 @@ gem 'timecop', '~> 0.6.3'
 gem 'pg_search', '~> 0.7.0'
 gem 'strong_parameters', '~> 0.2.3'
 gem 'airbrake', '~> 3.1.14'
-gem 'fog', '~> 1.21.0'
+# gem 'fog', '~> 1.21.0'
 gem 'roadie', '~> 2.4.3'
 gem 'valid_email', '~> 0.0.4'
 gem "font-awesome-sass"
@@ -112,8 +112,10 @@ group :test do
 end
 
 group :staging, :production do
+#gem 'memcache-client', '~> 1.8.0'
   gem 'memcachier', '~> 0.0.2'
   gem 'dalli', '~> 2.7.0'
   gem 'newrelic_rpm', '~> 3.7.3'
-  gem 'heroku-deflater', '~> 0.5.1'
+  gem 'aws-sdk', '~> 1.40.3'
+  #gem 'heroku-deflater', '~> 0.5.1'
 end

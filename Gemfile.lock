@@ -63,6 +63,9 @@ GEM
       activesupport (>= 3.0.0)
     arel (3.0.3)
     awesome_print (1.0.2)
+    aws-sdk (1.40.3)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.7)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
@@ -560,6 +563,7 @@ DEPENDENCIES
   activerecord-postgres-hstore
   airbrake (~> 3.1.14)
   awesome_print (~> 1.0.2)
+  aws-sdk (~> 1.40.3)
   better_errors (~> 1.0.1)
   binding_of_caller (~> 0.7.2)
   bing_translator (~> 4.2.0)
@@ -584,7 +588,6 @@ DEPENDENCIES
   email_spec (~> 1.2.1)
   factory_girl_rails (~> 4.2.1)
   faker (~> 1.2.0)
-  fog (~> 1.21.0)
   font-awesome-sass
   foreman (~> 0.63.0)
   friendly_id (~> 4.0.10.1)
@@ -593,7 +596,6 @@ DEPENDENCIES
   guard-rspec (~> 2.3.3)
   guard-spork (~> 1.4.1)
   haml-rails (~> 0.4.0)
-  heroku-deflater (~> 0.5.1)
   httparty (~> 0.13.0)
   inherited_resources (~> 1.4.1)
   intercom
