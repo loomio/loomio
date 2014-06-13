@@ -62,7 +62,7 @@ module GroupsHelper
   end
 
   def join_group_button(group, args = {})
-    unless current_user_or_visitor.is_member_of? group
+    if user_can_join_group?(current_user_or_visitor, group)
       case group.membership_granted_upon
       when 'request'
         icon_button({href: join_group_path(group),
@@ -77,6 +77,12 @@ module GroupsHelper
         end
       end
     end
+  end
+
+  def user_can_join_group?(user, group)
+    return true if user.is_logged_out?
+    # need to say No if any memberships, suspended or otherwise
+    Membership.where(user_id: user.id, group_id: group.id).blank?
   end
 
 
