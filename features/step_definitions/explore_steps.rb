@@ -13,7 +13,7 @@ When(/^I visit the explore page$/) do
 end
 
 Then(/^I should see the categoried groups$/) do
-  page.should have_content 'blue'
+  page.should have_content 'Blue'
   page.should have_content @blue_group.name
 end
 
