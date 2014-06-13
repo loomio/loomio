@@ -134,6 +134,37 @@ describe "User abilities" do
     end
   end
 
+  context "suspended member" do
+    let(:group) { create(:group) }
+    let(:admin_group) { create(:group) }
+    let(:subgroup) { create(:group, parent: group) }
+    let(:private_discussion) { create_discussion group: group, private: true }
+
+
+    context "group is visible to public" do
+      let(:group) { create(:group, is_visible_to_public: true) }
+
+      before do
+        membership = group.add_member!(user)
+        MembershipService.suspend_membership!(membership: membership)
+      end
+
+      it { should be_able_to(:show, group) }
+      it { should_not be_able_to(:show, private_discussion) }
+    end
+
+    context "group is hidden from public" do
+      let(:group) { create(:group, is_visible_to_public: false) }
+
+      before do
+        membership = group.add_member!(user)
+        MembershipService.suspend_membership!(membership: membership)
+      end
+
+      it { should_not be_able_to(:show, group) }
+    end
+  end
+
   context "member of a group" do
     let(:group) { create(:group) }
     let(:subgroup) { build(:group, parent: group) }
@@ -196,7 +227,7 @@ describe "User abilities" do
 
         context "a vote has been cast" do
           before { user_vote }
-          context "cannot change text", focus: true do
+          context "cannot change text" do
             before do
               user_motion.name = "name change"
               user_motion.description = "description change"
@@ -220,7 +251,6 @@ describe "User abilities" do
       end
     end
 
-    it { should_not be_able_to(:update, other_users_motion) }
 
     it { should     be_able_to(:create, subgroup) }
     it { should     be_able_to(:show, group) }
