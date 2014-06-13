@@ -6,6 +6,14 @@ class GroupsController < GroupBaseController
 
   before_filter :ensure_group_is_setup, only: :show
   before_filter :assign_meta_data, only: :show
+  before_filter :notify_intercom_if_cover_photo_updated, only: :update
+
+  def notify_intercom_if_cover_photo_updated
+    attributes = permitted_params.group
+    if attributes.keys.include?('cover_photo')
+      create_intercom_event('cover_photo_updated')
+    end
+  end
 
   caches_action :show, :cache_path => Proc.new { |c| c.params }, unless: :user_signed_in?, :expires_in => 5.minutes
 
