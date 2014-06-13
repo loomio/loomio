@@ -256,8 +256,12 @@ class Group < ActiveRecord::Base
     admins.first.email
   end
 
-  def membership(user)
+  def membership_for(user)
     memberships.where("group_id = ? AND user_id = ?", id, user.id).first
+  end
+
+  def membership(user)
+    membership_for(user)
   end
 
   def pending_membership_request_for(user)

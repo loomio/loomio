@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140611100737) do
+ActiveRecord::Schema.define(:version => 20140612232325) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -423,6 +423,7 @@ ActiveRecord::Schema.define(:version => 20140611100737) do
     t.datetime "archived_at"
     t.integer  "inbox_position",                    :default => 0
     t.boolean  "admin",                             :default => false, :null => false
+    t.boolean  "is_suspended",                      :default => false, :null => false
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
