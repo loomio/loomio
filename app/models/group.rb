@@ -92,6 +92,7 @@ class Group < ActiveRecord::Base
   has_one :group_request
 
   has_many :memberships,
+           conditions: {is_suspended: false},
            dependent: :destroy,
            extend: GroupMemberships
 
