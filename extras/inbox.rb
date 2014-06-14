@@ -89,7 +89,7 @@ class Inbox
   end
 
   def groups
-    @user.groups.where('memberships.inbox_position is not null').order(:inbox_position)
+    @user.inbox_groups
   end
 
   def clear_all_in_group(group)

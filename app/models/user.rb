@@ -130,6 +130,10 @@ class User < ActiveRecord::Base
     (parents.to_a + orphans.to_a).sort{|a, b| a.full_name <=> b.full_name }
   end
 
+  def inbox_groups
+    groups.where('memberships.inbox_position is not null').order(:inbox_position)
+  end
+
   def first_name
     name.split(' ').first
   end
