@@ -11,6 +11,6 @@ end
 
 Then(/^the suspended member loses their membership privileges$/) do
   @group.reload
-  @group.membership_for(@bad_user).should be_is_suspended
-  @subgroup.membership_for(@bad_user).should be_is_suspended
+  @group.all_memberships.where(user_id: @bad_user).first.should be_is_suspended
+  @subgroup.all_memberships.where(user_id: @bad_user).first.should be_is_suspended
 end
