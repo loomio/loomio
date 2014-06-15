@@ -1,5 +1,7 @@
 window.Application ||= {}
 
+$ ->
+  Application.hideAllErrorMessages()
 
 ### EVENTS ###
 

@@ -9,7 +9,7 @@ module DiscussionsHelper
     activity.map do |item|
       next if last_item &&
               filtered_event_kinds.include?(item.kind) &&
-              item.user == last_item.user
+              item.user == last_item.user && item.kind == last_item.kind
       last_item = item
     end.compact
   end
@@ -31,7 +31,7 @@ module DiscussionsHelper
   end
 
   def path_of_add_comment
-    if current_page == @discussion_reader.first_unread_page
+    if current_page == actual_total_pages
       '#comment-input'
     else
       if actual_total_pages == 1

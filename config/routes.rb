@@ -159,6 +159,8 @@ Loomio::Application.routes.draw do
     end
   end
 
+  get '/localisation/datetime_input_translations' => 'localisation#datetime_input_translations', format: 'js'
+
   resources :users, path: 'u', only: [:new] do
     member do
       put :set_avatar_kind
@@ -252,7 +254,8 @@ Loomio::Application.routes.draw do
   get '/how*it*works'       => redirect('/purpose#how-it-works')
   get '/about#how-it-works' => redirect('/purpose#how-it-works')
 
-  get '/blog'               => redirect('http://blog.loomio.org')
-  get '/press'              => redirect('http://blog.loomio.org/press-pack')
-  get '/press-pack'         => redirect('http://blog.loomio.org/press-pack')
+  get '/blog'       => redirect('http://blog.loomio.org')
+  get '/press'      => redirect('http://blog.loomio.org/press-pack')
+  get '/press-pack' => redirect('http://blog.loomio.org/press-pack')
+  get '/roadmap'    => redirect('https://trello.com/b/tM6QGCLH/loomio-roadmap')
 end

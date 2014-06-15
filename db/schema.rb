@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140605024255) do
+ActiveRecord::Schema.define(:version => 20140612232325) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -354,6 +354,16 @@ ActiveRecord::Schema.define(:version => 20140605024255) do
     t.boolean  "members_can_add_members",            :default => false,          :null => false
     t.string   "membership_granted_upon",                                        :null => false
     t.boolean  "email_notification_default",         :default => true,           :null => false
+    t.boolean  "members_can_edit_discussions",       :default => true,           :null => false
+    t.boolean  "motions_can_be_edited",              :default => false,          :null => false
+    t.string   "cover_photo_file_name"
+    t.string   "cover_photo_content_type"
+    t.integer  "cover_photo_file_size"
+    t.datetime "cover_photo_updated_at"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
@@ -413,6 +423,7 @@ ActiveRecord::Schema.define(:version => 20140605024255) do
     t.datetime "archived_at"
     t.integer  "inbox_position",                    :default => 0
     t.boolean  "admin",                             :default => false, :null => false
+    t.boolean  "is_suspended",                      :default => false, :null => false
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"

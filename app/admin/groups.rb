@@ -79,6 +79,13 @@ ActiveAdmin.register Group do
       end
     end
 
+    panel("Subgroups") do
+      table_for group.subgroups.each do |subgroup|
+        column :name
+        column :id
+      end
+    end
+
     panel("Pending invitations") do
       table_for group.pending_invitations.each do |invitation|
         column :recipient_email

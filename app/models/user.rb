@@ -15,9 +15,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
   attr_accessor :honeypot
 
-  validates :name, :presence => true
-  validates :email, :presence => true, uniqueness: true, email: true
-  validates_inclusion_of :uses_markdown, :in => [true,false]
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true, email: true
+  validates_inclusion_of :uses_markdown, in: [true,false]
 
   has_attached_file :uploaded_avatar,
     styles: {
@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
   validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
 
-  validates_uniqueness_of :username, :allow_nil => true, :allow_blank => true
+  validates_uniqueness_of :username, allow_nil: true, allow_blank: true
 
   include Gravtastic
   gravtastic  :rating => 'pg',
@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
 
 
   has_many :admin_memberships,
-           :conditions => { admin: true },
+           :conditions => 'memberships.admin = TRUE AND memberships.is_suspended = FALSE',
            :class_name => 'Membership',
            :dependent => :destroy
 
@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
            :source => :group
 
   has_many :memberships,
+           conditions: {is_suspended: false},
            :dependent => :destroy
 
   has_many :membership_requests,

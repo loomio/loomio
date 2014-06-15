@@ -8,8 +8,13 @@
 - form_params.merge!(validate: true, html: {data: form_data, class: 'group-settings'})
 
 = simple_form_for group, form_params do |f|
-  = f.input :name, label: 'Group name'
-  = f.input :description, as: :text
+  = f.input :name, label: t(:'group_form.name')
+  = f.input :description, as: :text, label: t(:'group_form.description')
+  - if group.is_parent?
+    - translated_categories = Category.all.map{|c| [t(c.translatable_name), c.id]}
+    = f.input :category_id, as: :select, collection: translated_categories, include_blank: t(:"group_categories.blank"), label: t(:"group_form.category")
+    %p
+      %em= t :"group_form.prompt_to_suggest_categories_html", link: "https://loomio.org/d/d8nzaSEG"
 
   = f.input :visible_to,
             label: t(:'group_form.visible_to.label'),
@@ -20,12 +25,6 @@
             label: t(:'group_form.membership_granted_upon.label'),
             as: :radio_buttons,
             collection: group_joining_options(group)
-
-  = f.input :members_can_add_members,
-            label: t(:'group_form.members_can_add_members.label'),
-            as: :radio_buttons,
-            collection: [[t(:'group_form.members_can_add_members.true'), true],
-                         [t(:'group_form.members_can_add_members.false'), false]]
 
   - if group.is_subgroup?
     = f.input :parent_members_can_see_discussions,
@@ -44,6 +43,12 @@
                          [t(:'group_form.discussion_privacy_options.public_or_private_html'), :public_or_private],
                          [t(:'group_form.discussion_privacy_options.private_only_html'), :private_only]]
 
+  .control-group.what-can-members-do
+    %label.control-label= t :'group_form.what_can_members_do'
+    = f.input :members_can_add_members, as: :boolean, inline_label: t(:'group_form.members_can.add_members'), label: false
+    = f.input :members_can_edit_discussions, as: :boolean, inline_label: t(:'group_form.members_can.edit_discussions'),  label: false
+    / = f.input :motions_can_be_edited, as: :boolean, inline_label: t(:'group_form.motions_can_be_edited'),  label: false
+
   = f.input :parent_id, :as => :hidden
-  = f.submit submit_text, class: 'btn btn-info', id: 'group_form_submit', :data => { :disable_with => submit_text }
+  = f.submit submit_text, class: 'btn btn-info', id: 'group_form_submit', data: {disable_with: submit_text}
 

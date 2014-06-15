@@ -134,6 +134,41 @@ describe "User abilities" do
     end
   end
 
+  context "suspended member", focus: true do
+    let(:group) { create(:group) }
+    let(:admin_group) { create(:group) }
+    let(:subgroup) { create(:group, parent: group) }
+    let(:private_discussion) { create_discussion group: group, private: true }
+
+
+    context "group is visible to public" do
+      let(:group) { create(:group, is_visible_to_public: true) }
+
+      before do
+        membership = group.add_member!(user)
+        MembershipService.suspend_membership!(membership: membership)
+      end
+
+      it { should be_able_to(:show, group) }
+      it { should_not be_able_to(:show, private_discussion) }
+      it "is no longer a group member" do
+        group.reload
+        group.members.should_not include user
+      end
+    end
+
+    context "group is hidden from public" do
+      let(:group) { create(:group, is_visible_to_public: false) }
+
+      before do
+        membership = group.add_member!(user)
+        MembershipService.suspend_membership!(membership: membership)
+      end
+
+      it { should_not be_able_to(:show, group) }
+    end
+  end
+
   context "member of a group" do
     let(:group) { create(:group) }
     let(:subgroup) { build(:group, parent: group) }
@@ -157,6 +192,70 @@ describe "User abilities" do
       @other_membership = group.add_member!(other_user)
     end
 
+    context "members_can_edit_discussions" do
+      before do
+        group.members_can_edit_discussions = true
+      end
+      it { should be_able_to(:update, discussion) }
+    end
+
+    context "members_can_not_edit_discussions" do
+      before do
+        group.members_can_edit_discussions = false
+      end
+      it { should_not be_able_to(:update, discussion) }
+    end
+
+    describe "motions_can_be_edited" do
+      context "true" do
+        before do
+          group.update_attributes(motions_can_be_edited: true)
+        end
+        context "a vote has been cast" do
+          before { user_vote }
+          context "can change text" do
+            before do
+              user_motion.name = "name change"
+              user_motion.description = "description change"
+            end
+
+            it { should be_able_to(:update, user_motion) }
+          end
+        end
+      end
+
+      context "false" do
+        before do
+          group.update_attributes(motions_can_be_edited: false)
+        end
+
+        context "a vote has been cast" do
+          before { user_vote }
+          context "cannot change text" do
+            before do
+              user_motion.name = "name change"
+              user_motion.description = "description change"
+            end
+
+            it { should_not be_able_to(:update, user_motion) }
+          end
+
+          context "can change closing_at" do
+            before do
+              user_motion.closing_at = 44.days.from_now
+            end
+
+            it { should be_able_to(:update, user_motion) }
+          end
+        end
+
+        context "no votes yet" do
+          it { should be_able_to(:update, user_motion) }
+        end
+      end
+    end
+
+
     it { should     be_able_to(:create, subgroup) }
     it { should     be_able_to(:show, group) }
     it { should_not be_able_to(:update, group) }
@@ -173,7 +272,6 @@ describe "User abilities" do
     it { should_not be_able_to(:update_version, discussion) }
     it { should     be_able_to(:update_version, user_discussion) }
     it { should_not be_able_to(:move, discussion) }
-    it { should_not be_able_to(:update, discussion) }
     it { should     be_able_to(:update, user_discussion) }
     it { should     be_able_to(:show, Discussion) }
     it { should     be_able_to(:unfollow, Discussion) }
@@ -189,12 +287,10 @@ describe "User abilities" do
     it { should     be_able_to(:create, new_motion) }
     it { should     be_able_to(:close, user_motion) }
     it { should     be_able_to(:create_outcome, user_motion) }
-    it { should     be_able_to(:edit_close_date, user_motion) }
     it { should     be_able_to(:destroy, user_motion) }
     it { should_not be_able_to(:destroy, other_users_motion) }
     it { should_not be_able_to(:close, other_users_motion) }
     it { should_not be_able_to(:create_outcome, other_users_motion) }
-    it { should_not be_able_to(:edit_close_date, other_users_motion) }
 
     it { should     be_able_to(:vote, user_motion) }
     it { should     be_able_to(:vote, other_users_motion) }
@@ -256,11 +352,10 @@ describe "User abilities" do
     it { should     be_able_to(:make_admin, @other_membership) }
     it { should     be_able_to(:remove_admin, @other_membership) }
     it { should     be_able_to(:destroy, @other_membership) }
-    it { should_not be_able_to(:update, other_users_motion) }
+    it { should     be_able_to(:update, other_users_motion) }
     it { should     be_able_to(:destroy, other_users_motion) }
     it { should     be_able_to(:close, other_users_motion) }
     it { should     be_able_to(:create_outcome, other_users_motion) }
-    it { should     be_able_to(:edit_close_date, other_users_motion) }
     it { should     be_able_to(:destroy, another_user_comment) }
     it { should     be_able_to(:cancel, own_invitation) }
     it { should     be_able_to(:cancel, other_members_invitation) }
@@ -284,18 +379,6 @@ describe "User abilities" do
       it { should_not be_able_to(:view_payment_details, group) }
       it { should_not be_able_to(:choose_subscription_plan, group) }
     end
-  end
-
-  context "admin of a subgroup" do
-    let(:group) { create(:group) }
-    let(:sub_group) { create(:group, parent: group) }
-    before do
-      group.add_member! user
-      sub_group.add_admin! user
-    end
-    it { should_not be_able_to(:view_payment_details, sub_group) }
-    it { should_not be_able_to(:choose_subscription_plan, sub_group) }
-    it { should     be_able_to(:invite_people, sub_group) }
   end
 
   context "non-member of a group" do
@@ -333,13 +416,10 @@ describe "User abilities" do
       it { should_not be_able_to(:update, motion) }
       it { should_not be_able_to(:destroy, motion) }
       it { should_not be_able_to(:destroy, another_user_comment) }
-
       it { should_not be_able_to(:vote, motion) }
-      
       it { should_not be_able_to(:show, another_user_comment) }
       it { should_not be_able_to(:show, motion) }
       it { should_not be_able_to(:show, vote) }
-      
     end
 
     context "public group" do
