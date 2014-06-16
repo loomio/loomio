@@ -1,1 +1,8 @@
-=Diffy::Diff.new(@comment.body, @comment.previous_version.body).to_s(:html).html_safe
+- @comment.versions.each do |version|
+  - next unless comment = version.reify
+  %strong= comment.updated_at.strftime("%I:%M%p %d %B %Y")
+  = simple_format comment.body
+
+
+%strong= @comment.updated_at.strftime("%I:%M%p %d %B %Y")
+= simple_format @comment.body
