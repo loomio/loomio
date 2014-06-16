@@ -7,8 +7,8 @@ class CollectsRecentActivityByGroup
 
     user.groups.each do |group|
       h = {}
-      h[:discussions] = group.discussions.active_since(since)
-      h[:motions] = group.voting_motions
+      h[:discussions] = group.discussions.active_since(since).limit(50)
+      h[:motions] = group.voting_motions.limit(50)
       if h[:discussions].present? or h[:motions].present?
         @results[group.full_name] = h
       end

@@ -22,4 +22,8 @@ class MembershipService
                                            discussion: discussion, message: message)
     end
   end
+
+  def self.suspend_membership!(membership: membership)
+    membership.suspend!
+  end
 end
