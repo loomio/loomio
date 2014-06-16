@@ -96,6 +96,11 @@ class Group < ActiveRecord::Base
            dependent: :destroy,
            extend: GroupMemberships
 
+  has_many :all_memberships,
+           dependent: :destroy,
+           class_name: 'Membership',
+           extend: GroupMemberships
+
   has_many :membership_requests,
            dependent: :destroy
 
