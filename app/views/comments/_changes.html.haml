@@ -1,8 +1,7 @@
 - @comment.versions.each do |version|
   - next unless comment = version.reify
-  %strong= comment.updated_at.strftime("%I:%M%p %d %B %Y")
-  = simple_format comment.body
+  .version-header= comment.updated_at.strftime("%I:%M%p %d %B %Y")
+  ~ render_rich_text comment.body
 
-
-%strong= @comment.updated_at.strftime("%I:%M%p %d %B %Y")
-= simple_format @comment.body
+.version-header= @comment.updated_at.strftime("%I:%M%p %d %B %Y")
+= render_rich_text @comment.body

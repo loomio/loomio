@@ -1,5 +1,5 @@
-.span6
-  %h1 Comment changes
-
-  = render 'changes'
-  = link_to "Back to discussion", :back
+.row
+  .span6
+    %h1= t :"edit_comment.comment_changes"
+    = render 'changes'
+    = link_to t("common.back_to_discussion"), :back, class: "btn btn-info"

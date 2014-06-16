@@ -1,5 +1,7 @@
-%h1 Edit comment on #{@comment.discussion_title}
-- if can? :edit, @comment
-  = simple_form_for @comment do |f|
-    =f.input :body
-    =f.submit 'Save changes'
+.row
+  .span6
+    %h1= t :"edit_comment.edit_comment"
+    - if can? :edit, @comment
+      = simple_form_for @comment do |f|
+        =f.input :body, label: false
+        =f.submit t(:update), class: "btn btn-info"

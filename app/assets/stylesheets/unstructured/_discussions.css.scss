@@ -7,6 +7,14 @@
   overflow: scroll;
 }
 
+body.comments.show{
+  .version-header{
+    padding-top: 1em;
+    font-weight: bold;
+    border-bottom: 1px solid $lighter-grey;
+  }
+}
+
 body.discussions.new, body.discussions.create, body.discussions.edit {
 
 // from group

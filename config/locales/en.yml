@@ -522,6 +522,10 @@ en:
       abstain: "abstained"
       block: "blocked"
 
+  edit_comment:
+    comment_changes: "Comment changes"
+    edit_comment: "Edit comment"
+
   #
   # HELP PAGES
   #
@@ -1021,6 +1025,7 @@ en:
   approve: "Approve"
   author: "Author"
   back: "Back"
+  back_to_discussion: "Back to discussion"
   cancel: "Cancel"
   change: "Change"
   change_language: "Click here to use Loomio in %{language}"
