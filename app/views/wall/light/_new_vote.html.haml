@@ -1,0 +1,11 @@
+- vote = item.eventable
+- position = vote.position
+- ditem = DiscussionItems::NewVote.new(item.eventable)
+%tr
+  %td.icon
+    %div{:class => "activity-icon " + ditem.icon}
+  %td
+    %b= vote.author.name
+    - past_tense_position = I18n.t("position_verbs.past_tense.#{position}")
+    = t('notifications.new_vote', position: past_tense_position)
+    = simple_format vote.statement

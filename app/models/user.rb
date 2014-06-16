@@ -276,7 +276,7 @@ class User < ActiveRecord::Base
     if kind == "gravatar"
       gravatar_url(:size => pixels)
     elsif kind == "uploaded"
-      uploaded_avatar.url(size)
+      uploaded_avatar.url(size, host: 'https://www.loomio.org')
     end
   end
 

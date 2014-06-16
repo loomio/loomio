@@ -1,0 +1,22 @@
+.icon { width: 50px; vertical-align: top; padding-top: 5px }
+.light-discussion { width: 600px; border-top: 1px solid #000 }
+.motion-pie { float: right }
+hr { margin: 1em 0 }
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}

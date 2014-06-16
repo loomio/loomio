@@ -46,6 +46,7 @@ class Motion < ActiveRecord::Base
   scope :closed, where('closed_at IS NOT NULL').order('motions.closed_at DESC')
   scope :order_by_latest_activity, -> { order('last_vote_at desc') }
   scope :public, joins(:discussion).merge(Discussion.public)
+  scope :voting_or_closed_after, -> (time) { where('motions.closed_at IS NULL OR (motions.closed_at > ?)', time) }
 
   def grouped_unique_votes
     order = ['block', 'no', 'abstain', 'yes']

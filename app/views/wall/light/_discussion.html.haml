@@ -1,0 +1,17 @@
+.light-discussion{id: discussion.key}
+  %h3= link_to(discussion.title, discussion_url(discussion))
+  %p by #{discussion.author.name} to #{link_to discussion.group_name, group_url(discussion.group)}
+  - if discussion.created_at >= @time_since
+    = render_rich_text discussion.description
+
+  - if motion = discussion.motions.voting_or_closed_after(@time_since).first
+    = render 'wall/light/motion', motion: motion
+
+  %hr
+  %table
+    - discussion.items.where('created_at > ?', @time_since).order('created_at').each do |item|
+      - next unless ['new_comment', 'new_vote', 'motion_closed', 'motion_closed_by_user'].include? item.kind
+      = render "wall/light/#{item.kind}", item: item
+  %p
+    Link:
+    = link_to discussion_url(discussion), discussion_url(discussion)

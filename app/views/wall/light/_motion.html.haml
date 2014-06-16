@@ -1,0 +1,17 @@
+%h3
+  = t(:proposal)+":"
+  %br
+  = link_to motion.name, motion_url(motion)
+= render 'wall/light/motion_pie', motion: motion
+.clearfix
+  - if motion.closed?
+    %b Closed #{ time_formatted_relative_to_age(motion.closing_at) }
+    - if motion.outcome.present?
+      = simple_format motion.outcome
+    - else
+      = simple_format motion.description
+  - else
+    = simple_format motion.description
+  - unless motion.user_has_voted?(@user)
+    %h4.have-say-title= t(:"help.have_your_say")
+    =render '/motion_mailer/vote_buttons', motion: motion

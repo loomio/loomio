@@ -1,0 +1,12 @@
+- comment = item.eventable
+%tr
+  %td.icon
+    = image_tag comment.author.avatar_url(:medium)
+  %td
+    %b= comment.author.name
+    %br
+    = render_rich_text comment.body
+    %p
+      = link_to 'Like', '#'
+
+

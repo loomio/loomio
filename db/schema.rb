@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140612232325) do
+ActiveRecord::Schema.define(:version => 20140616012702) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -185,15 +185,16 @@ ActiveRecord::Schema.define(:version => 20140612232325) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "uses_markdown",   :default => true,  :null => false
-    t.integer  "total_views",     :default => 0,     :null => false
-    t.boolean  "is_deleted",      :default => false, :null => false
-    t.integer  "comments_count",  :default => 0,     :null => false
-    t.integer  "items_count",     :default => 0,     :null => false
+    t.boolean  "uses_markdown",    :default => true,  :null => false
+    t.integer  "total_views",      :default => 0,     :null => false
+    t.boolean  "is_deleted",       :default => false, :null => false
+    t.integer  "comments_count",   :default => 0,     :null => false
+    t.integer  "items_count",      :default => 0,     :null => false
     t.datetime "archived_at"
     t.boolean  "private"
     t.string   "key"
     t.string   "iframe_src"
+    t.datetime "last_activity_at"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
