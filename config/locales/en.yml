@@ -857,6 +857,9 @@ en:
       will_be_private_to_parent_group: "The discussion will be visible to members of %{parent_group_name} and members of %{group_name}."
       will_be_public: "Anyone can see the discussion."
 
+  motion_history:
+    title: "Proposal changes"
+
   motion_form:
     new:
       header: "New proposal"

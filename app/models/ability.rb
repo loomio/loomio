@@ -206,7 +206,7 @@ class Ability
       can?(:show, comment.discussion)
     end
 
-    can [:show], Motion do |motion|
+    can [:show, :history], Motion do |motion|
       can?(:show, motion.discussion)
     end
 

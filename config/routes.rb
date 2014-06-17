@@ -104,6 +104,7 @@ Loomio::Application.routes.draw do
   resources :motions, path: 'm', only: [:new, :create, :edit, :index] do
     resources :votes, only: [:new, :create, :update]
     member do
+      get :history
       put :close
       put :create_outcome
       post :update_outcome

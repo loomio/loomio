@@ -52,6 +52,9 @@ class MotionsController < GroupBaseController
     redirect_to @motion
   end
 
+  def history
+  end
+
   def show
     discussion = @motion.discussion
     if @motion == discussion.current_motion

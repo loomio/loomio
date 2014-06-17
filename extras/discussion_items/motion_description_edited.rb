@@ -22,7 +22,7 @@ class DiscussionItems::MotionDescriptionEdited < DiscussionItem
   end
 
   def body
-    ""
+    ActionController::Base.helpers.link_to('View changes', history_motion_path(motion)).html_safe
   end
 
   def time
