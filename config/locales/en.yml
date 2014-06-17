@@ -301,6 +301,34 @@ en:
       public_or_private_html: Allow public and private discussions
       private_only_html: Private discussions only
 
+    learn_about_permissions: Find out more about group permissions
+
+  group_permissions:
+    header: Group permissions
+    coordinators_can: "Coordinators can:"
+    c1: Change the group settings
+    c2: Edit the title and context of any discussion.
+    c3: Move discussions between groups.
+    c4: Invite and approve new members.
+    c5: Send an announcement email to all group members.
+    c6: De-activate a group.
+    c7: Add/remove other coordinators.
+    c8: Delete discussions.
+    c9: Delete comments.
+
+    members_can: "Members can:"
+    m1: Delete their own comments.
+    m2: Edit their own comments, until someone has replied.
+    m3: Edit the title and description of proposals they start, until someone has stated their position. 
+    m4: Edit the closing date of proposals they start, until they close.
+    m5: Edit the title and context of discussions they start at any time.
+    m6: Start a subgroup, which they become the coordinator of.
+
+    optionally: "Optionally, coordinators can allow group members to:"
+    o1: Invite and approve new members.
+    o2: Edit their own comments at any time.
+    o3: Edit the title or context of any discussion in the group.
+
   group_privacy:
     visible_to:
       public: Publicly listed group.

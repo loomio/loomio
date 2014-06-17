@@ -389,3 +389,11 @@ a.btn-icon:hover { color: $dark-grey; }
   height: 32px;
   float: right;
 }
+
+.modal ul{
+  list-style: disc;
+  li{
+    margin-left: 20px;
+  }
+  margin-bottom: 20px;
+}
