@@ -185,15 +185,16 @@ ActiveRecord::Schema.define(:version => 20140616022958) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "uses_markdown",   :default => true,  :null => false
-    t.integer  "total_views",     :default => 0,     :null => false
-    t.boolean  "is_deleted",      :default => false, :null => false
-    t.integer  "comments_count",  :default => 0,     :null => false
-    t.integer  "items_count",     :default => 0,     :null => false
+    t.boolean  "uses_markdown",    :default => true,  :null => false
+    t.integer  "total_views",      :default => 0,     :null => false
+    t.boolean  "is_deleted",       :default => false, :null => false
+    t.integer  "comments_count",   :default => 0,     :null => false
+    t.integer  "items_count",      :default => 0,     :null => false
     t.datetime "archived_at"
     t.boolean  "private"
     t.string   "key"
     t.string   "iframe_src"
+    t.datetime "last_activity_at"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -578,6 +579,7 @@ ActiveRecord::Schema.define(:version => 20140616022958) do
     t.string   "time_zone"
     t.string   "key"
     t.string   "detected_locale"
+    t.boolean  "subscribed_to_missed_yesterday_email",                        :default => false,      :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

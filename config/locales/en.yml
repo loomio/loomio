@@ -967,6 +967,9 @@ en:
       heading: "Your Loomio Activity"
       intro: "Showing you what’s been happening in your Loomio groups in the last 24 hours"
       subject: "Loomio - Summary of the last 24 hours"
+    missed_yesterday:
+      subject: "Here's what you missed on Loomio yesterday"
+      title: "Here's what you missed on Loomio yesterday"
     group_email:
       intro: "%{who} made an announcement to %{group}:"
     group_membership_approved:
