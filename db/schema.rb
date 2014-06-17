@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140617001229) do
+ActiveRecord::Schema.define(:version => 20140617021219) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -356,8 +356,6 @@ ActiveRecord::Schema.define(:version => 20140617001229) do
     t.boolean  "members_can_add_members",            :default => false,          :null => false
     t.string   "membership_granted_upon",                                        :null => false
     t.boolean  "email_notification_default",         :default => true,           :null => false
-    t.boolean  "members_can_edit_discussions",       :default => true,           :null => false
-    t.boolean  "motions_can_be_edited",              :default => false,          :null => false
     t.string   "cover_photo_file_name"
     t.string   "cover_photo_content_type"
     t.integer  "cover_photo_file_size"
@@ -366,6 +364,8 @@ ActiveRecord::Schema.define(:version => 20140617001229) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.boolean  "members_can_edit_discussions",       :default => true,           :null => false
+    t.boolean  "motions_can_be_edited",              :default => false,          :null => false
     t.boolean  "members_can_edit_comments",          :default => true
   end
 
