@@ -56,6 +56,14 @@ class Comment < ActiveRecord::Base
     edited_at.present?
   end
 
+  def is_most_recent?
+    discussion.comments.last.id == id
+  end
+
+  def can_be_edited?
+    group.members_can_edit_comments? or is_most_recent?
+  end
+
   def like(user)
     liker_ids_and_names[user.id] = user.name
     like = comment_votes.build

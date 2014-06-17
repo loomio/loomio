@@ -47,6 +47,7 @@
     %label.control-label= t :'group_form.what_can_members_do'
     = f.input :members_can_add_members, as: :boolean, inline_label: t(:'group_form.members_can.add_members'), label: false
     = f.input :members_can_edit_discussions, as: :boolean, inline_label: t(:'group_form.members_can.edit_discussions'),  label: false
+    = f.input :members_can_edit_comments, as: :boolean, inline_label: t(:'group_form.members_can.edit_comments'), label: false
     / = f.input :motions_can_be_edited, as: :boolean, inline_label: t(:'group_form.motions_can_be_edited'),  label: false
 
   = f.input :parent_id, :as => :hidden

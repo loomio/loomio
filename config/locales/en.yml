@@ -270,6 +270,7 @@ en:
     what_can_members_do: "What can members do?"
     members_can:
       add_members: Invite and approve new members
+      edit_comments: Edit their comments at any time
       edit_discussions: Edit the context of any discussion in the group
     motions_can_be_edited: Edit their proposals after voting has started
 
