@@ -21,7 +21,6 @@ class DiscussionService
     return false unless comment.save
 
     event = Events::NewComment.publish!(comment)
-    comment.discussion.update_attribute(:last_comment_at, comment.created_at)
     event
   end
 

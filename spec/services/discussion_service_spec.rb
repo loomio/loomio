@@ -119,10 +119,6 @@ describe 'DiscussionService' do
         Events::NewComment.should_receive(:publish!).with(comment)
       end
 
-      it 'updates discussion last_comment_at' do
-        discussion.should_receive(:update_attribute).with(:last_comment_at, comment.created_at)
-      end
-
       it 'returns the event created' do
         DiscussionService.add_comment(comment).should == event
       end

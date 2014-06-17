@@ -99,7 +99,8 @@ class User < ActiveRecord::Base
 
   scope :active, where(:deleted_at => nil)
   scope :inactive, where("deleted_at IS NOT NULL")
-  scope :daily_activity_email_recipients, where(:subscribed_to_daily_activity_email => true)
+  scope :daily_activity_email_recipients, where(subscribed_to_daily_activity_email: true)
+  scope :subscribed_to_missed_yesterday_email, where(subscribed_to_missed_yesterday_email: true)
   scope :sorted_by_name, order("lower(name)")
   scope :admins, where(is_admin: true)
   scope :coordinators, joins(:memberships).where('memberships.admin = ?', true).group('users.id')
@@ -128,6 +129,10 @@ class User < ActiveRecord::Base
     parents = groups.parents_only.order(:name).includes(:children)
     orphans = groups.where('parent_id not in (?)', parents.map(&:id))
     (parents.to_a + orphans.to_a).sort{|a, b| a.full_name <=> b.full_name }
+  end
+
+  def inbox_groups
+    groups.where('memberships.inbox_position is not null').order(:inbox_position)
   end
 
   def first_name
