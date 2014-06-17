@@ -192,6 +192,28 @@ describe "User abilities" do
       @other_membership = group.add_member!(other_user)
     end
 
+    context "members_can_edit_comments"do
+      it { should be_able_to(:manage, user_comment) }
+      it { should_not be_able_to(:manage, another_user_comment) }
+    end
+
+    context "members_can_not_edit_comments", focus: true do
+      before do
+        group.members_can_edit_comments = false
+      end
+      context "is most recent comment" do
+        it { should be_able_to(:manage, user_comment) }
+      end
+      context "is not most recent comment" do
+        before do
+          user_comment
+          FactoryGirl.create(:comment, discussion: discussion, author: other_user)
+        end
+        it { should_not be_able_to(:manage, user_comment) }
+      end
+    end
+
+
     context "members_can_edit_discussions" do
       before do
         group.members_can_edit_discussions = true

@@ -7,6 +7,14 @@
   overflow: scroll;
 }
 
+body.comments.show{
+  .version-header{
+    padding-top: 1em;
+    font-weight: bold;
+    border-bottom: 1px solid $lighter-grey;
+  }
+}
+
 body.discussions.new, body.discussions.create, body.discussions.edit {
 
 // from group
@@ -422,9 +430,8 @@ body.discussions.show {
         padding-bottom: 8px;
       }
       .activity-item-comment-actor {
-        float: left;
         font-weight: bold;
-        margin-right: 8px;
+        margin-bottom: 3px;
       }
       .activity-item-container {
         margin-top: 8px;
