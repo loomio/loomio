@@ -53,12 +53,15 @@ class Comment < ActiveRecord::Base
   end
 
   def is_edited?
-    created_at != updated_at
+    edited_at.present?
   end
 
-  def edit_body!(body)
-    self.body = body
-    save!
+  def is_most_recent?
+    discussion.comments.last.id == id
+  end
+
+  def can_be_edited?
+    group.members_can_edit_comments? or is_most_recent?
   end
 
   def like(user)

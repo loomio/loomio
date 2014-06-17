@@ -59,9 +59,10 @@ if ENV['INTERCOM_APP_ID']
     # The method/variable that contains the current company for the current user,
     # in your controllers. 'Companies' are generic groupings of users, so this 
     # could be a company, app or group.
-    #
-    config.company.current = Proc.new { @group.parent_or_self }
-    # config.company.current = Proc.new { @group.parent.present? ? @group : @group.parent }
+
+    # only send the group through if user is a member
+    config.company.current = Proc.new { [current_user.groups.all & [@group.parent_or_self]].first.first }
+    # config.company.current = Proc.new { @group.parent_or_self }
 
     # == Company Custom Data
     # A hash of additional data you wish to send about a company.
@@ -76,6 +77,7 @@ if ENV['INTERCOM_APP_ID']
         proposals: :organisation_motions_count,
         description: :description,
         group_request_description: :group_request_description,
+        privacy: :privacy,
         plan: :payment_plan
     }
 

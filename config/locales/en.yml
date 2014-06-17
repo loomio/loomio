@@ -102,6 +102,12 @@ en:
         other: "%{count} invitations sent"
       auto_added_and_sent: "%{auto_added_text} and %{sent_text}"
 
+  tooltip:
+    cover_photo_upload: "Upload new cover photo"
+    logo_upload: "Upload new logo"
+    edit_description: "Edit description"
+    group_category: "Find more groups like this"
+
   views:
     pagination:
       previous: "Prev"
@@ -249,15 +255,24 @@ en:
   #
   # GROUP PAGE
   #
+
+
   group_form:
+    name: "Group name"
+    description: "Description"
+    category: "Category"
+
     confirm_all_discussions_will_be_made_private_message: "If you proceed, any public discussions will be made private."
     confirm_all_discussions_will_be_made_public_message: "Are you sure? If you proceed, any private discussions will be made public."
+
+    prompt_to_suggest_categories_html: "If you'd like to suggest some new categories, <a href='%{link}' target='_blank'>join this discussion</a>."
 
     what_can_members_do: "What can members do?"
     members_can:
       add_members: Invite and approve new members
+      edit_comments: Edit their comments at any time
       edit_discussions: Edit the context of any discussion in the group
-    motions_can_be_edited: Edit proposal text after voting has started
+    motions_can_be_edited: Edit their proposals after voting has started
 
     visible_to:
       label: Who can find this group?
@@ -285,6 +300,34 @@ en:
       public_only_html: Public discussions only
       public_or_private_html: Allow public and private discussions
       private_only_html: Private discussions only
+
+    learn_about_permissions: Find out more about group permissions
+
+  group_permissions:
+    header: Group permissions
+    coordinators_can: "Coordinators can:"
+    c1: Change the group settings
+    c2: Edit the title and context of any discussion.
+    c3: Move discussions between groups.
+    c4: Invite and approve new members.
+    c5: Send an announcement email to all group members.
+    c6: De-activate a group.
+    c7: Add/remove other coordinators.
+    c8: Delete discussions.
+    c9: Delete comments.
+
+    members_can: "Members can:"
+    m1: Delete their own comments.
+    m2: Edit their own comments, until someone has replied.
+    m3: Edit the title and description of proposals they start, until someone has stated their position. 
+    m4: Edit the closing date of proposals they start, until they close.
+    m5: Edit the title and context of discussions they start at any time.
+    m6: Start a subgroup, which they become the coordinator of.
+
+    optionally: "Optionally, coordinators can allow group members to:"
+    o1: Invite and approve new members.
+    o2: Edit their own comments at any time.
+    o3: Edit the title or context of any discussion in the group.
 
   group_privacy:
     visible_to:
@@ -507,6 +550,10 @@ en:
       "no": "disagreed"
       abstain: "abstained"
       block: "blocked"
+
+  edit_comment:
+    comment_changes: "Comment changes"
+    edit_comment: "Edit comment"
 
   #
   # HELP PAGES
@@ -875,31 +922,6 @@ en:
       discussion:
         title: "Title"
         description: "Context"
-      group:
-        name: "Group name"
-        description: "Description"
-        members_invitable_by: "Who can invite people to this group?"
-        members_invitable_by_coordinators: "Coordinators only"
-        members_invitable_by_members: "All group members"
-        privacy: Privacy
-        visibility_visible_header: 'Visible'
-        visibility_hidden_header: 'Hidden'
-        visibility_visible_description: 'People can find this group and ask to join.'
-        visibility_hidden_description: 'Joining this group is by invitation only.'
-
-        privacy_public_header: Public
-        privacy_public_description: Discussions are public, unless made private. Anyone can find the group and ask to join.
-        privacy_private_header: Mostly private
-        privacy_private_description: Discussions are private, unless you explicitly make them public. Anyone can find the group and ask to join.
-        privacy_hidden_header: Hidden (completely private)
-        privacy_hidden_description: Discussions are always private. Finding and joining the group is by invitation only.
-        privacy_parent_group_members_header: Viewable by parent group members
-        privacy_parent_group_members_description: Same as hidden, only the group and its discussions can be seen by parent group members.
-        privacy_parent_group_members_description_short: Only members and parent group members can see this group and its discussions.
-        group_members_invitable_by:
-          "Only coordinators"
-        submit: Submit
-        is_visible_to_parent_members_header: Allow all %{group} members to see this subgroup and its discussions
       membership_request:
         introduction: "Introduce yourself"
       motion:
@@ -927,9 +949,6 @@ en:
       motion:
         name: "What is your proposed course of action?"
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
-      group:
-        name: "Group name"
-        description: "Group description"
       user:
         email: "Email"
         password: "Password"
@@ -1100,6 +1119,8 @@ en:
   persona: "Persona"
 
   common:
+    back_to_discussion: "Back to discussion"
+    edited: Edited
     today: Today
     months:
       january: January
@@ -1162,3 +1183,33 @@ en:
     public: "Public"
     email: "Email"
     start_group: "Start group!"
+
+  group_categories:
+    blank: "Uncategorised"
+    economics: "Economics"
+    activist: "Activist"
+    arts: "Arts"
+    business: "Business"
+    collective: "Collective"
+    community_group: "Community group"
+    co_operative: "Co-operative"
+    democratic_organisation: "Democratic organisation"
+    education: "Education"
+    environmental_group: "Environmental group"
+    family: "Family"
+    local_government: "Local government"
+    online_community: "Online community"
+    religious_group: "Religious/spiritual"
+    event: "Event"
+    open_source_software: "Open source software"
+    political_initiative: "Political initiative"
+    social_enterprise: "Social enterprise"
+    social_justice: "Social justice"
+    advocacy_group: "Advocacy group"
+    science: "Science"
+    technology: "Technology"
+    sports: "Sports"
+    youth: "Youth"
+    women: "Women"
+    media: "Media"
+    health: "Health"

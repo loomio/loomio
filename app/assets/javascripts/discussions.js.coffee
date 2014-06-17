@@ -75,3 +75,9 @@ $ ->
 $ ->
   $(".js-prompt-user-to-join-or-authenticate").on "click", (e) ->
     $('#prompt-user-to-join-or-authenticate').modal('show')
+
+$ ->
+  $('.edit-comment').tooltip
+    placement: "bottom"
+  $('.delete-icon').tooltip
+    placement: "bottom"

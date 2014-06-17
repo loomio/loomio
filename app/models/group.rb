@@ -7,12 +7,12 @@ class Group < ActiveRecord::Base
   end
 
   #even though we have permitted_params this needs to be here.. it's an issue
-  attr_accessible :members_can_add_members, :members_can_edit_discussions, :motions_can_be_edited,
+  attr_accessible :members_can_add_members, :members_can_edit_discussions, :members_can_edit_comments, :motions_can_be_edited,
                   :name, :parent, :parent_id, :description, :max_size,
                   :cannot_contribute, :full_name, :payment_plan, :parent_members_can_see_discussions,
                   :category_id, :max_size, :is_visible_to_parent_members, :is_visible_to_public,
                   :discussion_privacy_options, :membership_granted_upon, :visible_to,
-                  :theme_id, :subdomain
+                  :theme_id, :subdomain, :cover_photo, :logo
   acts_as_tree
 
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
@@ -92,7 +92,13 @@ class Group < ActiveRecord::Base
   has_one :group_request
 
   has_many :memberships,
+           conditions: {is_suspended: false},
            dependent: :destroy,
+           extend: GroupMemberships
+
+  has_many :all_memberships,
+           dependent: :destroy,
+           class_name: 'Membership',
            extend: GroupMemberships
 
   has_many :membership_requests,
@@ -140,6 +146,20 @@ class Group < ActiveRecord::Base
 
   paginates_per 20
 
+  has_attached_file    :cover_photo,
+                       styles: { desktop: "980x200#" },
+                       default_url: '/assets/default-cover-photo.png'
+  has_attached_file    :logo,
+                       styles: { medium: "100x100" },
+                       default_url: '/assets/default-logo.png'
+  validates_attachment :cover_photo,
+    size: { in: 0..10.megabytes },
+    content_type: { content_type: /\Aimage/ },
+    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }
+  validates_attachment :logo,
+    size: { in: 0..10.megabytes },
+    content_type: { content_type: /\Aimage/ },
+    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }
 
   def coordinators
     admins
@@ -242,8 +262,12 @@ class Group < ActiveRecord::Base
     admins.first.email
   end
 
-  def membership(user)
+  def membership_for(user)
     memberships.where("group_id = ? AND user_id = ?", id, user.id).first
+  end
+
+  def membership(user)
+    membership_for(user)
   end
 
   def pending_membership_request_for(user)

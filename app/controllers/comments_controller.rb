@@ -11,8 +11,10 @@ class CommentsController < BaseController
   end
 
   def update
-    @comment.edit_body!(params[:comment][:body])
-    redirect_to @comment.discussion
+    @comment.body = params[:comment][:body]
+    @comment.edited_at = Time.zone.now
+    @comment.save!
+    redirect_to discussion_path(@comment.discussion, anchor: "comment-#{@comment.id}")
   end
 
   def show

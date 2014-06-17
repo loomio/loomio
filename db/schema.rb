@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140611100737) do
+ActiveRecord::Schema.define(:version => 20140617021219) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20140611100737) do
     t.integer  "comment_votes_count", :default => 0,     :null => false
     t.integer  "attachments_count",   :default => 0,     :null => false
     t.text     "liker_ids_and_names"
+    t.datetime "edited_at"
   end
 
   add_index "comments", ["discussion_id"], :name => "index_comments_on_commentable_id"
@@ -329,7 +330,7 @@ ActiveRecord::Schema.define(:version => 20140611100737) do
     t.text     "description"
     t.integer  "memberships_count",                  :default => 0,              :null => false
     t.datetime "archived_at"
-    t.integer  "max_size",                           :default => 300,            :null => false
+    t.integer  "max_size",                           :default => 1000,           :null => false
     t.boolean  "cannot_contribute",                  :default => false
     t.integer  "distribution_metric"
     t.string   "sectors"
@@ -355,7 +356,6 @@ ActiveRecord::Schema.define(:version => 20140611100737) do
     t.string   "membership_granted_upon",                                        :null => false
     t.boolean  "email_notification_default",         :default => true,           :null => false
     t.boolean  "members_can_edit_discussions",       :default => true,           :null => false
-    t.boolean  "motions_can_be_edited",              :default => false,          :null => false
     t.string   "cover_photo_file_name"
     t.string   "cover_photo_content_type"
     t.integer  "cover_photo_file_size"
@@ -364,6 +364,8 @@ ActiveRecord::Schema.define(:version => 20140611100737) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.boolean  "motions_can_be_edited",              :default => false,          :null => false
+    t.boolean  "members_can_edit_comments",          :default => true
   end
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
@@ -423,6 +425,7 @@ ActiveRecord::Schema.define(:version => 20140611100737) do
     t.datetime "archived_at"
     t.integer  "inbox_position",                    :default => 0
     t.boolean  "admin",                             :default => false, :null => false
+    t.boolean  "is_suspended",                      :default => false, :null => false
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
