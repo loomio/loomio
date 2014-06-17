@@ -186,6 +186,7 @@ class Ability
     end
 
     can [:update], Motion do |motion|
+      motion.voting? &&
       (motion.can_be_edited? || (not motion.restricted_changes_made?)) &&
       (user_is_admin_of?(motion.discussion.group_id) || user_is_author_of?(motion))
     end
