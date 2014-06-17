@@ -1,7 +1,9 @@
 .activity-item-time
   - if comment.is_edited?
-    =link_to 'Edited', comment
-  = link_to(t('ago', :quantity_of_time => time_ago_in_words(comment.created_at)), "#comment-#{comment.id}")
+    =link_to t(:"common.edited"), comment
+    =link_to(t('ago', :quantity_of_time => time_ago_in_words(comment.edited_at)), "#comment-#{comment.id}")
+  - else
+    =link_to(t('ago', :quantity_of_time => time_ago_in_words(comment.created_at)), "#comment-#{comment.id}")
   - if @can_like_comments ||= can?(:like_comments, @discussion)
     = " · "
     - if comment.likers_include?(current_user)

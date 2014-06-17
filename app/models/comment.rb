@@ -53,12 +53,7 @@ class Comment < ActiveRecord::Base
   end
 
   def is_edited?
-    created_at != updated_at
-  end
-
-  def edit_body!(body)
-    self.body = body
-    save!
+    edited_at.present?
   end
 
   def like(user)

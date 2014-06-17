@@ -1025,7 +1025,6 @@ en:
   approve: "Approve"
   author: "Author"
   back: "Back"
-  back_to_discussion: "Back to discussion"
   cancel: "Cancel"
   change: "Change"
   change_language: "Click here to use Loomio in %{language}"
@@ -1091,6 +1090,8 @@ en:
   persona: "Persona"
 
   common:
+    back_to_discussion: "Back to discussion"
+    edited: Edited
     today: Today
     months:
       january: January
