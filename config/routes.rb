@@ -198,6 +198,7 @@ Loomio::Application.routes.draw do
   #   get :thanks, on: :collection
   # end
 
+  get '/wall', to: 'wall#show', as: 'wall'
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
   root :to => 'marketing#index'
 

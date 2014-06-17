@@ -11,7 +11,7 @@
     %br
 
   %h4.have-say-title= t(:"help.have_your_say")
-  = render 'vote_buttons'
+  = render 'vote_buttons', motion: @motion
 
   %br
   = render 'user_mailer/unsubscribe_link'

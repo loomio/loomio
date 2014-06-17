@@ -3,22 +3,22 @@ class Motion < ActiveRecord::Base
 
   include ReadableUnguessableUrls
 
-  belongs_to :author, :class_name => 'User'
+  belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
-  belongs_to :outcome_author, :class_name => 'User'
+  belongs_to :outcome_author, class_name: 'User'
   belongs_to :discussion
   # has_one :group, through: :discussion
-  has_many :votes, :dependent => :destroy, include: :user
+  has_many :votes, dependent: :destroy, include: :user
   has_many :unique_votes, class_name: 'Vote', conditions: { age: 0 }, include: :user
-  has_many :did_not_votes, :dependent => :destroy, include: :user
+  has_many :did_not_votes, dependent: :destroy, include: :user
   has_many :did_not_voters, through: :did_not_votes, source: :user
-  has_many :events, :as => :eventable, :dependent => :destroy, include: :eventable
+  has_many :events, as: :eventable, dependent: :destroy, include: :eventable
   has_many :motion_readers, dependent: :destroy
 
   validates_presence_of :name, :discussion, :author, :closing_at
 
-  validates_length_of :name, :maximum => 250
-  validates_length_of :outcome, :maximum => 250
+  validates_length_of :name, maximum: 250
+  validates_length_of :outcome, maximum: 250
 
   is_translatable on: [:name, :description]
 
@@ -26,10 +26,10 @@ class Motion < ActiveRecord::Base
   pg_search_scope :search, against: [:name, :description],
     using: {tsearch: {dictionary: "english"}}
 
-  delegate :email, :to => :author, :prefix => :author
-  delegate :name, :to => :author, :prefix => :author
-  delegate :group, :group_id, :to => :discussion
-  delegate :members, :full_name, :to => :group, :prefix => :group
+  delegate :email, to: :author, prefix: :author
+  delegate :name, to: :author, prefix: :author
+  delegate :group, :group_id, to: :discussion
+  delegate :members, :full_name, to: :group, prefix: :group
   delegate :email_new_motion?, to: :group, prefix: :group
   delegate :name_and_email, to: :user, prefix: :author
   delegate :language, to: :user
@@ -46,6 +46,8 @@ class Motion < ActiveRecord::Base
   scope :closed, where('closed_at IS NOT NULL').order('motions.closed_at DESC')
   scope :order_by_latest_activity, -> { order('last_vote_at desc') }
   scope :public, joins(:discussion).merge(Discussion.public)
+  scope :voting_or_closed_after, -> (time) { where('motions.closed_at IS NULL OR (motions.closed_at > ?)', time) }
+  scope :closing_in_24_hours, -> { where('motions.closing_at > ? AND motions.closing_at <= ?', Time.now, 24.hours.from_now) }
 
   def grouped_unique_votes
     order = ['block', 'no', 'abstain', 'yes']
