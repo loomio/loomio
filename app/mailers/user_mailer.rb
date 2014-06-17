@@ -1,6 +1,7 @@
 class UserMailer < BaseMailer
   helper :email
   helper :motions
+  helper :application
 
   def missed_yesterday(user)
     @user = user
