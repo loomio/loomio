@@ -157,13 +157,16 @@ class Ability
          :new_proposal,
          :create,
          :show_description_history,
-         :preview_version,
-         :like_comments], Discussion do |discussion|
+         :preview_version], Discussion do |discussion|
       user_is_member_of?(discussion.group_id)
     end
 
     can :manage, Comment do |comment|
       user_is_author_of?(comment) and comment.can_be_edited?
+    end
+
+    can :like, Comment do |comment|
+      user_is_member_of?(comment.group.id)
     end
 
     can [:destroy], Comment do |comment|

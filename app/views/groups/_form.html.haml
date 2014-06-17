@@ -50,6 +50,7 @@
     = f.input :members_can_edit_comments, as: :boolean, inline_label: t(:'group_form.members_can.edit_comments'), label: false
     / = f.input :motions_can_be_edited, as: :boolean, inline_label: t(:'group_form.motions_can_be_edited'),  label: false
     %p
+      %i.fa.fa-star
       %em= link_to t(:"group_form.learn_about_permissions"), "#learn-about-permissions-modal", 'data-toggle' => 'modal', id: 'learn-about-permissions'
 
   = f.input :parent_id, :as => :hidden
