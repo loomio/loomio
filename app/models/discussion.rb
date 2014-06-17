@@ -8,9 +8,9 @@ class Discussion < ActiveRecord::Base
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil, is_deleted: false) }
 
-  scope :active_since, lambda {|some_time| where('created_at >= ? or last_comment_at >= ?', some_time, some_time)}
-  scope :order_by_latest_comment, order('last_comment_at DESC')
+  scope :active_since, lambda {|time| where('last_activity_at > ?', time)}
   scope :last_comment_after, lambda {|time| where('last_comment_at > ?', time)}
+  scope :order_by_latest_comment, order('last_comment_at DESC')
 
   scope :public, where(private: false)
   scope :private, where(private: true)
@@ -26,7 +26,7 @@ class Discussion < ActiveRecord::Base
   validates :title, length: { maximum: 150 }
   validates_inclusion_of :uses_markdown, in: [true,false]
   validate :privacy_is_permitted_by_group
-  
+
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   has_paper_trail :only => [:title, :description]
 

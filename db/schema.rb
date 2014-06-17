@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140616022958) do
+ActiveRecord::Schema.define(:version => 20140617001229) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -185,15 +185,16 @@ ActiveRecord::Schema.define(:version => 20140616022958) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "uses_markdown",   :default => true,  :null => false
-    t.integer  "total_views",     :default => 0,     :null => false
-    t.boolean  "is_deleted",      :default => false, :null => false
-    t.integer  "comments_count",  :default => 0,     :null => false
-    t.integer  "items_count",     :default => 0,     :null => false
+    t.boolean  "uses_markdown",    :default => true,  :null => false
+    t.integer  "total_views",      :default => 0,     :null => false
+    t.boolean  "is_deleted",       :default => false, :null => false
+    t.integer  "comments_count",   :default => 0,     :null => false
+    t.integer  "items_count",      :default => 0,     :null => false
     t.datetime "archived_at"
     t.boolean  "private"
     t.string   "key"
     t.string   "iframe_src"
+    t.datetime "last_activity_at"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -355,6 +356,7 @@ ActiveRecord::Schema.define(:version => 20140616022958) do
     t.string   "membership_granted_upon",                                        :null => false
     t.boolean  "email_notification_default",         :default => true,           :null => false
     t.boolean  "members_can_edit_discussions",       :default => true,           :null => false
+    t.boolean  "motions_can_be_edited",              :default => false,          :null => false
     t.string   "cover_photo_file_name"
     t.string   "cover_photo_content_type"
     t.integer  "cover_photo_file_size"
@@ -363,7 +365,6 @@ ActiveRecord::Schema.define(:version => 20140616022958) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.boolean  "motions_can_be_edited",              :default => false,          :null => false
   end
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
@@ -578,6 +579,7 @@ ActiveRecord::Schema.define(:version => 20140616022958) do
     t.string   "time_zone"
     t.string   "key"
     t.string   "detected_locale"
+    t.boolean  "subscribed_to_missed_yesterday_email",                        :default => false,      :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

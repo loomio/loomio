@@ -6,24 +6,29 @@ blockquote{
   margin: 0 3em;
   p { max-width: 34em; }
 }
+
 hr{
   max-width: 40em;
   margin-left: 0;
 }
+
 h1, h2, h3, h4, h5, h6{
   max-width: 40em;
   margin: .2em 0;
 }
+
 p{
   max-width: 40em;
   margin-bottom: 0;
 }
+
 p.unsubscribe{
   font-size: 0.8em;
   border-top: 1px solid #CCCCCC;
   padding-top: 5px;
   max-width: 50em;
 }
+
 table{
   max-width: 40em;
   border-collapse: collapse;
@@ -33,12 +38,15 @@ table{
     width: 40px;
   }
 }
+
 .cell-border-bottom{ border-bottom: 1px solid #CCCCCC;}
+
 th{
   text-align: right;
   vertical-align: top;
   padding-right: 0.5em;
 }
+
 .agreed, .yes { color: #90D490;}
 .abstained, .abstain { color: #F0BB67; }
 .disagreed, .no { color: #D49090;}
@@ -48,14 +56,17 @@ th{
   font-weight: bold;
   margin: 0 5px 0 0;
 }
+
 .abstain-link{
   font-weight: bold;
   margin: 0 5px;
 }
+
 .no-link{
   font-weight: bold;
   margin: 0 5px;
 }
+
 .block-link{
   font-weight: bold;
   margin: 0 5px;
@@ -76,6 +87,7 @@ th{
   padding-left: 25px;
   max-width: 40em;
 }
+
 img {
   max-width: 40em;
 }
