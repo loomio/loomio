@@ -48,6 +48,10 @@ class Vote < ActiveRecord::Base
   after_save :update_motion_vote_counts
   after_destroy :update_motion_vote_counts
 
+  def author
+    user
+  end
+
   def other_group_members
     group.users.where(User.arel_table[:id].not_eq(user.id))
   end
