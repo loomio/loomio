@@ -354,9 +354,7 @@ a.btn-icon:hover { color: $dark-grey; }
   }
 }
 
-/*TODO - read the SMACSS book and restructure this (RDB)*/
-
-.edit-icon{
+.edit-icon {
   float: right;
   font-size: 20px;
   width: 32px;
@@ -364,8 +362,38 @@ a.btn-icon:hover { color: $dark-grey; }
   background: white;
   i{padding: 6px 8px 6px 7px;}
 }
+.delete-icon{
+  float: right;
+  margin-left: 3px;
+}
 
-.edit-icon-labelled{
+.comment-actions{
+  float: right;
+  a{color: $light-grey;}
+  a:hover{color: $link-blue;}
+}
+
+.edit-icon-small {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+  i{padding: 0;}
+}
+
+.edit-icon-labelled {
   float: right;
   font-size: 14px;
+}
+.edit-icon-placeholder {
+  width: 32px;
+  height: 32px;
+  float: right;
+}
+
+.modal ul{
+  list-style: disc;
+  li{
+    margin-left: 20px;
+  }
+  margin-bottom: 20px;
 }

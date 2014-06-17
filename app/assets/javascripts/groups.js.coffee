@@ -123,11 +123,11 @@ hide_logo_upload = ->
 
 show_edit_description = ->
   $('.edit-description').show()
-  $('.edit-description-placeholder').hide()
+  $('.edit-icon-placeholder').hide()
 
 hide_edit_description = ->
   $('.edit-description').hide()
-  $('.edit-description-placeholder').show()
+  $('.edit-icon-placeholder').show()
 
 $ ->
 

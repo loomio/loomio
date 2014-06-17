@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20140617001229) do
     t.integer  "comment_votes_count", :default => 0,     :null => false
     t.integer  "attachments_count",   :default => 0,     :null => false
     t.text     "liker_ids_and_names"
+    t.datetime "edited_at"
   end
 
   add_index "comments", ["discussion_id"], :name => "index_comments_on_commentable_id"
@@ -365,6 +366,7 @@ ActiveRecord::Schema.define(:version => 20140617001229) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.boolean  "members_can_edit_comments",          :default => true
   end
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"

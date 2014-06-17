@@ -157,9 +157,16 @@ class Ability
          :new_proposal,
          :create,
          :show_description_history,
-         :preview_version,
-         :like_comments], Discussion do |discussion|
+         :preview_version], Discussion do |discussion|
       user_is_member_of?(discussion.group_id)
+    end
+
+    can :manage, Comment do |comment|
+      user_is_author_of?(comment) and comment.can_be_edited?
+    end
+
+    can :like, Comment do |comment|
+      user_is_member_of?(comment.group.id)
     end
 
     can [:destroy], Comment do |comment|
@@ -184,6 +191,7 @@ class Ability
     end
 
     can [:update], Motion do |motion|
+      motion.voting? &&
       (motion.can_be_edited? || (not motion.restricted_changes_made?)) &&
       (user_is_admin_of?(motion.discussion.group_id) || user_is_author_of?(motion))
     end
@@ -198,7 +206,7 @@ class Ability
       can?(:show, comment.discussion)
     end
 
-    can [:show], Motion do |motion|
+    can [:show, :history], Motion do |motion|
       can?(:show, motion.discussion)
     end
 

@@ -22,7 +22,7 @@ class DiscussionItems::MotionNameEdited < DiscussionItem
   end
 
   def body
-    ""
+    " #{motion.version_at(event.created_at).name}"
   end
 
   def time

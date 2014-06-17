@@ -4,7 +4,7 @@ class DiscussionService
   end
 
   def self.like_comment(user, comment)
-    user.ability.authorize!(:like_comments, comment.discussion)
+    user.ability.authorize!(:like, comment)
     comment_vote = comment.like(user)
     Events::CommentLiked.publish!(comment_vote)
   end

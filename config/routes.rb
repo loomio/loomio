@@ -104,6 +104,7 @@ Loomio::Application.routes.draw do
   resources :motions, path: 'm', only: [:new, :create, :edit, :index] do
     resources :votes, only: [:new, :create, :update]
     member do
+      get :history
       put :close
       put :create_outcome
       post :update_outcome
@@ -140,7 +141,7 @@ Loomio::Application.routes.draw do
     post 'update_version/:version_id',        action: 'update_version',   as: 'update_version_discussion'
   end
 
-  resources :comments , only: :destroy do
+  resources :comments , only: [:destroy, :edit, :update, :show] do
     post :like, on: :member
   end
 
