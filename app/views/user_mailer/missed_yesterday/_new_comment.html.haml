@@ -2,7 +2,7 @@
 %table
   %tr
     %td.icon
-      = image_tag comment.author.avatar_url(:medium)
+      %img{src: comment.author.avatar_url(:medium)}
     %td.content
       %b= comment.author.name
       %br
