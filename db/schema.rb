@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140616012702) do
+ActiveRecord::Schema.define(:version => 20140617001229) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -330,7 +330,7 @@ ActiveRecord::Schema.define(:version => 20140616012702) do
     t.text     "description"
     t.integer  "memberships_count",                  :default => 0,              :null => false
     t.datetime "archived_at"
-    t.integer  "max_size",                           :default => 300,            :null => false
+    t.integer  "max_size",                           :default => 1000,           :null => false
     t.boolean  "cannot_contribute",                  :default => false
     t.integer  "distribution_metric"
     t.string   "sectors"
@@ -579,6 +579,7 @@ ActiveRecord::Schema.define(:version => 20140616012702) do
     t.string   "time_zone"
     t.string   "key"
     t.string   "detected_locale"
+    t.boolean  "subscribed_to_missed_yesterday_email",                        :default => false,      :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

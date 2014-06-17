@@ -1,24 +1,9 @@
 %h1 Here's what you missed on Loomio yesterday
 
-%h4 Headlines
-- @discussions_by_group.each do |group, discussions|
-  %p
-    = group.full_name
-    %ul
-      - discussions.each do |discussion|
-        %li= link_to discussion.title, "##{discussion.key}"
-
-%li one liners for each discussion - new discussion/#new comments/prop
-%li 
-%li new discussion: How we do things around here
-%li proposals with title
-%li and author and jump links
-%li maybe we dont need this..
-%p or maybe it should be a index to the activity feed
-%p Proposals closing in the next 24 hours
-
-- @discussions.each do |discussion|
-  = render 'wall/light/discussion', discussion: discussion
+- @user.inbox_groups.each do |group|
+  - next unless @discussions_by_group.has_key?(group)
+  - @discussions_by_group[group].each do |discussion|
+    = render 'wall/light/discussion', discussion: discussion
 
 = link_to t(:'mark_all_as_read'), '#'
 

@@ -99,7 +99,8 @@ class User < ActiveRecord::Base
 
   scope :active, where(:deleted_at => nil)
   scope :inactive, where("deleted_at IS NOT NULL")
-  scope :daily_activity_email_recipients, where(:subscribed_to_daily_activity_email => true)
+  scope :daily_activity_email_recipients, where(subscribed_to_daily_activity_email: true)
+  scope :subscribed_to_missed_yesterday_email, where(subscribed_to_missed_yesterday_email: true)
   scope :sorted_by_name, order("lower(name)")
   scope :admins, where(is_admin: true)
   scope :coordinators, joins(:memberships).where('memberships.admin = ?', true).group('users.id')

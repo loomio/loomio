@@ -1,5 +1,6 @@
 - motion = item.eventable
-%tr
-  %td.icon
-  %td
-    =I18n.t('discussion_items.motion_closed.by_expiry') + ": #{item.eventable.name}"
+%table
+  %tr
+    %td.icon
+    %td.content
+      =I18n.t('discussion_items.motion_closed.by_expiry') + ": #{item.eventable.name}"

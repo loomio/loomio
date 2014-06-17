@@ -1,12 +1,12 @@
 - comment = item.eventable
-%tr
-  %td.icon
-    = image_tag comment.author.avatar_url(:medium)
-  %td
-    %b= comment.author.name
-    %br
-    = render_rich_text comment.body
-    %p
-      = link_to 'Like', '#'
-
-
+%table
+  %tr
+    %td.icon
+      = image_tag comment.author.avatar_url(:medium)
+    %td.content
+      %b= comment.author.name
+      %br
+      - if comment.uses_markdown?
+        = render_email_markdown comment.body
+      - else
+        = render_email_plaintext comment.body

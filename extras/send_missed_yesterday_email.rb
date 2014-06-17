@@ -1,0 +1,12 @@
+class SendMissedYesterdayEmail
+  def self.to_subscribers!
+    zones = User.pluck('DISTINCT time_zone').select do |zone|
+      DateTime.now.in_time_zone(zone).hour == 14
+    end
+
+    User.subscribed_to_missed_yesterday_email.where(time_zone: zones).each do |user|
+      puts "Emailing yesterdays activity to #{user.name_and_email}"
+      UserMailer.missed_yesterday(user).deliver
+    end
+  end
+end
