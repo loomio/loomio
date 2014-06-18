@@ -3,22 +3,29 @@ class UserMailer < BaseMailer
   helper :motions
   helper :application
 
-  def missed_yesterday(user)
+  def missed_yesterday(user, time_since = nil, unread = true)
     @user = user
-    @time_since = 24.hours.ago
+    @time_since = time_since || 24.hours.ago
     @utm_hash = UTM_EMAIL.merge utm_source: 'missed_yesterday'
-    @discussions_by_group = Queries::VisibleDiscussions.new(user: user,
+    if unread
+      @discussions_by_group = Queries::VisibleDiscussions.new(user: user,
                                                             groups: user.inbox_groups).
                                                             unread.
                                                             active_since(@time_since).
                                                             group_by(&:group)
+    else
+      @discussions_by_group = Queries::VisibleDiscussions.new(user: user,
+                                                            groups: user.inbox_groups).
+                                                            active_since(@time_since).
+                                                            group_by(&:group)
+    end
 
     unless @discussions_by_group.empty?
       locale = best_locale(user.locale)
       I18n.with_locale(locale) do
         mail to: user.email,
              subject: t("email.missed_yesterday.subject"),
-             css: ['email', 'missed_yesterday']
+             css: 'missed_yesterday'
       end
     end
   end
