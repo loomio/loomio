@@ -130,9 +130,9 @@ describe User do
   end
 
   describe "name" do
-    it "returns user.name '(account inactive)' if deleted_at is true (a date is present)" do
+    it "returns '[deactivated account]' if deleted_at is true (a date is present)" do
       user.update_attribute(:deleted_at, Time.now)
-      user.name.should include('account inactive')
+      user.name.should include('deactivated account')
     end
 
     it "returns the stored name if deleted_at is nil" do
