@@ -1,8 +1,16 @@
+.everything{width: 600px;}
 .icon { width: 50px; vertical-align: top }
-.icon img { width: 40px }
-.pie-icon { width: 50px; vertical-align: top; padding-top: 10px }
+.light-discussion .icon img { width: 40px }
+.light-discussion .description {margin-bottom: 1em;}
+.activity-feed {margin-top: 1em;}
+.light-proposal .icon img { width: 50px; padding-top: 10px }
 table { width: 600px }
 .content { width: 550px }
-.light-discussion { width: 600px; border-top: 1px solid #000; margin-top: 2em; padding-top: 1em; }
+.light-discussion { width: 600px; margin-bottom: 3em;}
+.light-proposal {margin-bottom: 2em;}
 .motion-pie { float: right }
-hr { margin: 1em 0 }
+.position-abstain-icon { background-image:image-url('hand-abstain-18.png'); }
+.position-block-icon { background-image:image-url('hand-block-18.png'); }
+.position-no-icon { background-image:image-url('hand-no-18.png'); }
+.position-yes-icon { background-image:image-url('hand-yes-18.png'); }
+.activity-icon{ width: 40px; height: 18px; background-position: right; background-repeat: no-repeat;}
