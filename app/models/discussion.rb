@@ -49,6 +49,7 @@ class Discussion < ActiveRecord::Base
     using: {tsearch: {dictionary: "english"}}
 
   delegate :name, to: :group, prefix: :group
+  delegate :name, to: :author, prefix: :author
   delegate :users, to: :group, prefix: :group
   delegate :full_name, to: :group, prefix: :group
   delegate :email, to: :author, prefix: :author
