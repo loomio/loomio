@@ -81,7 +81,7 @@ describe 'DiscussionService' do
     end
 
     it 'checks the user can like the comment' do
-      ability.should_receive(:authorize!).with(:like_comments, discussion)
+      ability.should_receive(:authorize!).with(:like, comment)
     end
 
     it 'creates a comment vote' do
