@@ -3,8 +3,8 @@
 - ditem = DiscussionItems::NewVote.new(item.eventable)
 %table
   %tr
-    %td.icon
-      %div{:class => "activity-icon " + ditem.icon}
+    %td.icon.activity-icon
+      %img{src: asset_path("hand-" + position + "-18.png")}
     %td.content
       %b= vote.author.name
       - past_tense_position = I18n.t("position_verbs.past_tense.#{position}")
