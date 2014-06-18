@@ -21,6 +21,7 @@ class Comment < ActiveRecord::Base
   default_scope include: [:user, :attachments, :discussion]
 
   delegate :name, :to => :user, :prefix => :user
+  delegate :name, :to => :user, :prefix => :author
   delegate :email, :to => :user, :prefix => :user
   delegate :participants, :to => :discussion, :prefix => :discussion
   delegate :group, :to => :discussion
