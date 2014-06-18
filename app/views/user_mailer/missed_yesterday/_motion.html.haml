@@ -1,15 +1,17 @@
 .light-proposal
   %table
     %tr
-      %td.pie-icon
+      %td.icon
         = render 'user_mailer/missed_yesterday/motion_pie', motion: motion
       %td.content
-        %h4
+        %h3
           = t(:proposal)+":"
-          %br
           = link_to motion.name, motion_url(motion)
+        %p
+          %em= t(:"email.by_who", person: motion.author.name)
+
         - if motion.closed?
-          %b Closed #{ time_formatted_relative_to_age(motion.closing_at) }
+          %b= t(:closed) + time_formatted_relative_to_age(motion.closing_at)
           - if motion.outcome.present?
             = render_email_plaintext motion.outcome
           - else
