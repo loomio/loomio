@@ -300,7 +300,7 @@ describe "User abilities" do
     it { should     be_able_to(:destroy, user_comment) }
     it { should_not be_able_to(:destroy, discussion) }
     it { should_not be_able_to(:destroy, another_user_comment) }
-    it { should     be_able_to(:like_comments, discussion) }
+    it { should     be_able_to(:like, Comment) }
     it { should     be_able_to(:create, new_discussion) }
     it { should_not be_able_to(:make_admin, @membership) }
     it { should_not be_able_to(:make_admin, @other_membership) }
