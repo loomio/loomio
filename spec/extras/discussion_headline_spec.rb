@@ -1,5 +1,6 @@
-require_relative '../../extras/discussion_headline'
 require 'spec_helper'
+require_relative '../../extras/discussion_headline'
+include ActionView::Helpers::SanitizeHelper
 
 describe "DiscussionHeadline" do
   let(:group) { FactoryGirl.create(:group) }
@@ -56,7 +57,7 @@ describe "DiscussionHeadline" do
 
   describe "discussion synopsis" do
     subject do
-      DiscussionHeadline.new(discussion, time_frame).discussion_synopsis
+      strip_tags DiscussionHeadline.new(discussion, time_frame).discussion_synopsis
     end
 
     context "new discussion" do
@@ -117,7 +118,7 @@ describe "DiscussionHeadline" do
 
   describe "motion synopsis", focus: true do
     subject do
-      DiscussionHeadline.new(discussion, time_frame).motion_synopsis
+      strip_tags DiscussionHeadline.new(discussion, time_frame).motion_synopsis
     end
 
     context "new proposal" do
