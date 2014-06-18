@@ -12,6 +12,6 @@ Feature: Edit Comment
   Scenario: User views edited comment diff
     Given there is an edited comment in the discussion
     When I view the history of that comment
-    Then I should see a diff between the old and new versions
+    Then I should see the old and new versions
 
 
