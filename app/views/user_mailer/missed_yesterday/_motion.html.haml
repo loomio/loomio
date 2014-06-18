@@ -11,7 +11,7 @@
           %em= t(:"email.by_who", person: motion.author.name)
 
         - if motion.closed?
-          %b= t(:closed) + time_formatted_relative_to_age(motion.closing_at)
+          %b= t(:closed) + " " + time_formatted_relative_to_age(motion.closing_at)
           - if motion.outcome.present?
             = render_email_plaintext motion.outcome
           - else
