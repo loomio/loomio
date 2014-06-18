@@ -92,13 +92,13 @@
         border-left: 1px solid #ccc;
         border-right: none;
         display: inline-block;
-        @include ie7-inline-block();
+        //@include ie7-inline-block();
         @include box-shadow(0, 1px, 1px, 0, rgba(0,0,0,.07) inset);
       }
       body { color: #fff; }
       .control-group {
         display: inline-block;
-        @include ie7-inline-block();
+        //@include ie7-inline-block();
         margin-bottom: 8px;
         input {
           border-left: none;
