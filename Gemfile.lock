@@ -73,7 +73,7 @@ GEM
       json (~> 1.8.0)
       nokogiri (~> 1.6.0)
       savon (~> 2.0)
-    bootstrap-sass (2.3.2.2)
+    bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     bourbon (4.0.2)
       sass (~> 3.3)
@@ -563,7 +563,7 @@ DEPENDENCIES
   better_errors (~> 1.0.1)
   binding_of_caller (~> 0.7.2)
   bing_translator (~> 4.2.0)
-  bootstrap-sass (~> 2.3.2.2)
+  bootstrap-sass (~> 3.1.1)
   browser
   bullet
   cancan (~> 1.6.10)

@@ -33,7 +33,7 @@
         =link_to t(@group.category.translatable_name), category_explore_path(@group.category), title: t(:'tooltip.group_category')
 
 .row
-  .span9
+  .col-md-9
     .group-description
       - if (can? :edit, @group) && @group.description.present?
         = link_to edit_group_path @group do
@@ -45,7 +45,7 @@
     .main-content
       =render 'discussions/discussion_list'
 
-  .span3
+  .col-md-3
     #group-actions
       - if can? :create, @discussion
         = icon_button(href: new_discussion_path(:group_id => @group.id), text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')

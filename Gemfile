@@ -63,7 +63,7 @@ gem 'intercom-rails', '~> 0.2.24'
 group :assets do
   gem 'coffee-rails', '~> 3.2.2'
   gem 'sass-rails', '~> 3.2.6'
-  gem 'bootstrap-sass', '~> 2.3.2.2' # Bootstrap 2
+  gem 'bootstrap-sass', '~> 3.1.1'
   gem 'uglifier', '~> 2.2.1'
   gem 'modernizr-rails', '~> 2.6.2'
   gem 'jquery-fileupload-rails', '~> 0.4.1'
