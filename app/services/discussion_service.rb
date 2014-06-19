@@ -19,7 +19,7 @@ class DiscussionService
 
     author.ability.authorize! :add_comment, comment.discussion
     return false unless comment.save
-
+    comment.discussion.update_attribute(:last_comment_at, comment.created_at)
     event = Events::NewComment.publish!(comment)
     event
   end

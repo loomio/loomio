@@ -4,7 +4,7 @@ class Comment < ActiveRecord::Base
   has_paper_trail
   is_translatable on: :body
 
-  belongs_to :discussion, counter_cache: true, touch: :last_comment_at
+  belongs_to :discussion, counter_cache: true
   belongs_to :user
 
   has_many :comment_votes, :dependent => :destroy
