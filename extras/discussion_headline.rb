@@ -21,7 +21,7 @@ class DiscussionHeadline
     else
       case participants.size
       when 0
-        nil
+        ''
       when 1
         "#{participants.first.name} discussed: #{linked_discussion_title(discussion)}"
       when 2
