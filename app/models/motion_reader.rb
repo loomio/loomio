@@ -32,15 +32,23 @@ class MotionReader < ActiveRecord::Base
     save!
   end
 
-  def viewed!
+  def viewed!(last_viewed_at = Time.now)
     return if user.nil?
-    update_viewed_attributes
+    update_viewed_attributes(last_viewed_at)
     save
   end
 
-  def update_viewed_attributes
-    self.read_votes_count = motion.total_votes_count
-    self.read_activity_count = motion.activity_count
-    self.last_read_at = Time.zone.now
+  def update_viewed_attributes(time = Time.now)
+    self.read_votes_count = count_read_votes(time)
+    self.read_activity_count = count_read_activity(time)
+    self.last_read_at = time
+  end
+
+  def count_read_votes(time)
+    motion.grouped_unique_votes.select{|v| v.created_at <= time }.count
+  end
+
+  def count_read_activity(time)
+    motion.votes.where('created_at <= ?', time).count
   end
 end
