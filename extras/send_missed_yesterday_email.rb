@@ -7,7 +7,7 @@ class SendMissedYesterdayEmail
     User.subscribed_to_missed_yesterday_email.where(time_zone: zones).each do |user|
       Measurement.increment('missed_yesterday_email_sent')
       puts "Emailing yesterdays activity to #{user.name_and_email}"
-      UserMailer.missed_yesterday(user).deliver
+      UserMailer.delay.missed_yesterday(user)
     end
   end
 end

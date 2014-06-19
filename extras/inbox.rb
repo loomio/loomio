@@ -92,13 +92,14 @@ class Inbox
     @user.inbox_groups
   end
 
-  def clear_all_in_group(group)
+  #group can be group or groups
+  def clear_all_in_group(group, last_viewed_at = Time.now)
     unread_discussions_for(group).each do |discussion|
-      DiscussionReader.for(user: @user, discussion: discussion).viewed!
+      DiscussionReader.for(user: @user, discussion: discussion).viewed!(last_viewed_at)
     end
 
     unread_motions_for(group).each do |motion|
-      MotionReader.for(user: @user, motion: motion).viewed!
+      MotionReader.for(user: @user, motion: motion).viewed!(last_viewed_at)
     end
   end
 
