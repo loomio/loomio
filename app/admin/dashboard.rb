@@ -77,14 +77,13 @@ ActiveAdmin.register_page "Dashboard" do
       end
       column do
         panel "Discussions" do
-          h1 { Discussion.count - Group.count}
-          div { "Excluding auto-generated example content" }
+          # total discussions - 400 created by old helper bot - those created by new helper bot
+          h1 { Discussion.where('author_id != 5562').count - 400}
         end
       end
       column do
         panel "Proposals" do
-          h1 { Motion.count - Group.count }
-          div { "Excluding auto-generated example content" }
+          h1 { Motion.where('author_id != 5562').count - 400}
         end
       end
     end
