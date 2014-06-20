@@ -1,8 +1,0 @@
-#closed-motions.modal.hidden
-  .modal-header
-    %button.close &times;
-    %h2= t :previous_decisions
-  .modal-body
-    #closed-motions-page.hidden
-      - if @group
-        %div{ class: "group_#{@group.id}" }

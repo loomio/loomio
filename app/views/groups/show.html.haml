@@ -47,11 +47,45 @@
 
   .col-md-3
     #group-actions
+      .btn-toolbar
       - if can? :create, @discussion
-        = icon_button(href: new_discussion_path(:group_id => @group.id), text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
+        = link_to new_discussion_path(:group_id => @group.id), class: 'btn btn-block btn-default btn-left' do
+          %i.fa.fa-comments
+          = t(:start_a_discussion)
       - if can?(:add_members, @group)
         = render 'invite_button', group: @group, discussion: @discussion
-      = render 'options_dropdown', group: @group
+      - if params[:controller] == 'groups' && params[:action] == 'show'
+        - can_edit = can? :edit, @group
+        - can_leave = @group.users_include? current_user
+        - can_archive = can? :edit, @group
+        - can_email = can? :email_members, @group
+        - if can_edit || can_leave
+          .btn-group.btn-block
+            = link_to '#',
+                      class: 'btn btn-block btn-default btn-left dropdown-toggle',
+                      data: { toggle: 'dropdown' }  do
+              %i.fa.fa-cog
+              = t :options
+
+            %ul.dropdown-menu.btn-block{role: 'menu'}
+              - if can_edit
+                %li= link_to t(:edit_group_settings), edit_group_path(@group)
+                %li= link_to t(:manage_members), group_memberships_path(@group)
+
+              - if can_leave
+                - membership = current_user.group_membership(@group)
+                - if @group.is_hidden_from_public?
+                  - msg = t(:confirm_leave_hidden_group, which_group: @group.name)
+                - else
+                  - msg = t(:confirm_leave_group, which_group: @group.name)
+                %li= link_to t(:leave_group), "#", 'data-title' => t(:leave_group), 'data-body' => msg, 'data-confirm-path' => group_membership_path(@group, membership), 'data-method-type' => 'delete', class: 'confirm-dialog', id: 'leave group'
+
+              - if can_archive
+                %li= link_to t(:deactivate_group), "#", 'data-title' => t(:deactivate_group), 'data-body' => t(:confirm_deactivate_group, which_group: @group.name), 'data-confirm-path' => archive_group_path(@group), 'data-method-type' => 'post', class: 'confirm-dialog', id: 'de-activate group'
+        - if can_email
+          #email-members-modal.modal.hidden
+            = render "groups/email_members", :group => @group
+
 
       = join_group_button(@group)
     = render 'setup_next_steps' if show_next_steps?(@group)
@@ -59,18 +93,20 @@
     = render 'subgroups', group: @group
 
     - if @closed_motions.any?
-      .sub-panel.previous-discussions-panel
-        %h4= t(:previous_decisions)
-        %ul.previous-decisions
-          - @closed_motions.first(3).each do |motion|
-            %li.previous-decision
-              %a.selector-link{ href: motion_path(motion) }
-                .clearfix
-                  .pie.motion-sparkline
-                    = motion_sparkline(motion)
-                  .previous-decision-title.word-break=truncate(motion.name, :length => 60, :separator => ' ')
-          = link_to t(:see_more), group_motions_path(@group), class: 'bottom-panel-link'
+      .panel.panel-default.previous-discussions-panel
+        .panel-heading
+          %h4= t(:previous_decisions)
+        .panel-body
+          %ul.previous-decisions
+            - @closed_motions.first(3).each do |motion|
+              %li.previous-decision
+                %a.selector-link{ href: motion_path(motion) }
+                  .clearfix
+                    .pie.motion-sparkline
+                      = motion_sparkline(motion)
+                    .previous-decision-title.word-break=truncate(motion.name, :length => 60, :separator => ' ')
+        .panel-footer
+          = link_to t(:see_more), group_motions_path(@group)
 
     =render 'membership_requests', group: @group
     =render 'members', group: @group
-    =render '/application/closed_motions', user: nil, group: @group

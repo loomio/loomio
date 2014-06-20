@@ -4,6 +4,6 @@
   .span5
     = render 'form', motion: @motion, vote: @vote, form_title: t("vote_form.header")
   - if @motion.description.present?
-    .span5.offset1
+    .span5.offset1.word-break
       %h3= t :proposal
       = simple_format @motion.description

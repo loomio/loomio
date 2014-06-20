@@ -363,6 +363,7 @@ en:
 
   email_group_members: "Email group members"
   edit_group_settings: "Edit group settings"
+  manage_members: "Manage members"
   leave_group: "Leave group"
   confirm_leave_hidden_group: "Are you sure you wish to leave %{which_group}? You will also be removed from any subgroups."
   confirm_leave_group: "Are you sure you wish to leave %{which_group}?"

@@ -51,7 +51,6 @@ body.discussions.new, body.discussions.create, body.discussions.edit {
   label { font-size: 18px; }
 
   textarea {
-    @include placeholder { font-style: italic; }
     font-size: 16px;
     height: 200px;
   }

@@ -9,7 +9,7 @@
       - @discussions.select{|d| d.current_motion.nil? }.each do |discussion|
         %li.selector-item= render '/discussions/discussion_preview', discussion: discussion
 
-    = paginate @discussions, :window => 3
+    .text-center= paginate @discussions, :window => 3
 
   -else
     - # no discussions visible

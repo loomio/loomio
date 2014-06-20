@@ -74,14 +74,13 @@ ul, ol, li {
 }
 .alert { margin-top: 14px; }
 
-.btn-app {
-  line-height: 18px;
-  padding: 4px 8px 4px 8px;
-  min-width: 200px;
-  font-size: $font-medium;
+.btn-left {
   text-align: left;
+  padding-left: 1em;
 }
-
+.btn i{
+  width: 1.3em;
+}
 .box-lt-blue { background-color: #E7F5F8; }
 .box-lime { background-color: #E9F1D9; }
 .box-yellow { background-color: #FCF7D7; }
@@ -235,37 +234,8 @@ ul.selector-list {
     }
   }
 }
-
-.sub-panel {
-  background-color: $sub-selector-panel;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  padding: 6px 10px;
-
-  h4 {
-    line-height: 1.8em;
-    margin-bottom: 5px;
-  }
-  a { color: $mid-grey; }
-  .bottom-panel-link {
-    text-decoration: underline;
-    color: #777;
-  }
-  .close { color: #000 }
-  .dropdown {
-    float: right;
-    li {
-      background-color: white;
-      line-height: 1em;
-    }
-    li a {
-      color: $dark-grey;
-      text-decoration: none;
-      text-shadow: none;
-      &:hover { color: white; }
-    }
-  }
-  ul { margin-bottom: 10px; }
+.panel{
+  img{max-width: 100%;}
 }
 
 .validate-length {
