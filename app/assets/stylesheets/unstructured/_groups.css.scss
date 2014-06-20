@@ -225,7 +225,6 @@ body.groups {
 
 .name-separator {
   display: inline-block;
-  @include ie7-inline-block();
   width: 15px;
   position: relative;
   bottom: 2px;

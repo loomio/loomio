@@ -1,15 +1,16 @@
-@import "bootstrap/mixins";
 @import "settings";
-@import "loomio_theme";
-@import "mixins";
-@import "overide_bootstrap";
-@import "pages";
+@import "bootstrap";
+@import "groups";
 @import "main";
+/*@import "bootstrap/mixins";*/
+/*@import "mixins";*/
+/*@import "overide_bootstrap";*/
+/*@import "pages";*/
+/*
 @import "session_navbar";
 @import "icons";
 @import "header";
 @import "dashboard";
-@import "groups";
 @import "public_groups";
 @import "discussions";
 @import "notifications";
@@ -25,3 +26,4 @@
 @import "searches";
 @import "subscriptions";
 @import "explore";
+*/

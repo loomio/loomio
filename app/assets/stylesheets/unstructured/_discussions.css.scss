@@ -120,7 +120,7 @@ body.discussions.new, body.discussions.create, body.discussions.edit {
 body.discussions.show {
   .form-container {
     border: 1px solid #cccccc;
-    @include border-radius(4px);
+    border-radius: 4px;
     @include box-shadow(0, 1px, 1px, 0, rgba(0, 0, 0, 0.075) inset);
     margin: 10px 12px 0 44px;
   }
@@ -494,7 +494,7 @@ body.discussions.show {
   .selector-panel {
     h2 { margin: 0; }
     background-color: $selector-panel;
-    @include border-radius(8px);
+    border-radius: 8px;
     border: 1px solid $lighter-grey;
     margin: 0 0 20px 0;
     min-height: 59px;

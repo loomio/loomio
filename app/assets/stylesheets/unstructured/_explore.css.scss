@@ -64,7 +64,7 @@ body.explore {
       /*line-height: 1.2;*/
       height: 32px;
       width: 160px;
-      @include border-radius(4px);
+      border-radius: 4px;
       box-shadow: 0px 1px 1px 1px #E5E2E1 inset;
       /*margin-top: -6px;*/
     }
@@ -128,7 +128,7 @@ body.explore {
           /*height: 1.3em;*/
           /*left: 0.68em;*/
           /*top: 0.5em;*/
-          /*@include border-radius(1000px);*/
+          /*border-radius: 1000px;*/
           /*background-color: #fff;*/
           font-weight: 700;
           position: absolute;

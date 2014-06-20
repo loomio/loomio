@@ -166,7 +166,7 @@
 
   .vote-buttons {
     .btn {
-      @include border-radius(5px);
+      border-radius: 5px;
       border: 1px solid $light-grey;
       float: left;
       margin: 10px 10px 15px 0;
