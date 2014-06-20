@@ -620,14 +620,14 @@ pre{
   background-color: $unhighlighted;
   float: left;
   height: 47px;
-  width: 700px;
+  width: 100%;
   &:hover { background-color: $selector ! important; }
   a {
     color: $dark-grey;
     &:hover { text-decoration: none; }
     &.selector-discussion-link {
       float: left;
-      width: 690px;
+      width: 100%;
       padding: 6px 5px;
     }
   }

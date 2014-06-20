@@ -13,7 +13,6 @@ code{
 
 form {
   input, select, textarea {
-    width: 100%;
     color: #252525;
   }
   textarea {
@@ -72,6 +71,10 @@ ul, ol, li {
 @media (min-width: 1200px) {
   .container{ max-width: 970px; }
 }
+.container{
+  background-color: $container;
+}
+.navbar-default{ background-color: white;}
 .alert { margin-top: 14px; }
 
 .btn-left {

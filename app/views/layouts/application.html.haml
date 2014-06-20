@@ -18,9 +18,9 @@
   %body{class: "#{controller_name} #{action_name}"}
     - analytics_scope do
       = render 'google_tag_manager'
-    .main-container.container
+    = render 'application/header'
+    .container
       = render 'application/announcements'
-      = render 'application/header'
       - unless (controller_name == 'groups') && (action_name == 'show')
         = render 'application/flash_messages', :flash => flash, :on_landing_page => false
       .page-container

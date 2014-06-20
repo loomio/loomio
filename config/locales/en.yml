@@ -182,6 +182,10 @@ en:
   organisation:
     name: "Loomio"
 
+  # Text for screenreaders
+  sr:
+    toggle_navigation: "Toggle navigation"
+
   footer:
     about: 'About'
     blog: 'Blog'
