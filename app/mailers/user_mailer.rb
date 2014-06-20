@@ -5,19 +5,21 @@ class UserMailer < BaseMailer
 
   def missed_yesterday(user, time_since = nil, unread = true)
     @user = user
-    @time_since = time_since || 24.hours.ago
-    @time_frame = @time_since..Time.zone.now
+    @time_start = time_since || 24.hours.ago
+    @time_finish = Time.zone.now
+    @time_frame = @time_start...@time_finish
+
     @utm_hash = UTM_EMAIL.merge utm_source: 'missed_yesterday'
     if unread
       @discussions_by_group = Queries::VisibleDiscussions.new(user: user,
                                                             groups: user.inbox_groups).
                                                             unread.
-                                                            active_since(@time_since).
+                                                            active_since(@time_start).
                                                             group_by(&:group)
     else
       @discussions_by_group = Queries::VisibleDiscussions.new(user: user,
                                                             groups: user.inbox_groups).
-                                                            active_since(@time_since).
+                                                            active_since(@time_start).
                                                             group_by(&:group)
     end
 
