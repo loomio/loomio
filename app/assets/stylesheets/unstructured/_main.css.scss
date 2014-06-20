@@ -267,7 +267,6 @@ ul.selector-list {
 
 .validate-length {
   display: inline-block;
-  @include ie7-inline-block();
 }
 
 .word-break {
