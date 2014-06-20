@@ -17,6 +17,16 @@ GIT
       ransack (~> 1.0)
       sass-rails
 
+GIT
+  remote: git://github.com/guilleiguaran/sass-rails.git
+  revision: 0393d9e1a6e4a776e61f16fb75f97971b9f4abd2
+  branch: backport
+  specs:
+    sass-rails (4.0.1)
+      railties (>= 3.2.0, < 5.0)
+      sass (>= 3.2.0)
+      sprockets-rails (~> 2.0.0.backport1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -454,10 +464,6 @@ GEM
     rubyzip (0.9.9)
     safe_yaml (1.0.3)
     sass (3.3.8)
-    sass-rails (3.2.6)
-      railties (~> 3.2.0)
-      sass (>= 3.1.10)
-      tilt (~> 1.3)
     savon (2.5.1)
       akami (~> 1.2.0)
       builder (>= 2.1.2)
@@ -490,11 +496,15 @@ GEM
     spork-rails (3.2.1)
       rails (>= 3.0.0, < 3.3.0)
       spork (>= 1.0rc0)
-    sprockets (2.2.2)
+    sprockets (2.2.2.backport2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sprockets-rails (2.0.0.backport1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (~> 2.2.2.backport2)
     sshkit (1.5.1)
       colorize
       net-scp (>= 1.1.2)
@@ -640,12 +650,14 @@ DEPENDENCIES
   rspec-rails (~> 2.14.0)
   ruby-prof
   ruby-progressbar (~> 1.4.1)
-  sass-rails (~> 3.2.6)
+  sass-rails!
   selenium-webdriver (~> 2.35.1)
   sequenced (~> 1.5.0)
   shoulda-matchers (~> 2.3.0)
   simple_form (~> 2.1.1)
   spork-rails (~> 3.2.1)
+  sprockets (= 2.2.2.backport2)
+  sprockets-rails (= 2.0.0.backport1)
   strong_parameters (~> 0.2.3)
   thin (~> 1.5.1)
   timecop (~> 0.6.3)
