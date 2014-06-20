@@ -4,7 +4,7 @@ class WallController < BaseController
     # discussions that had activity in the last 24 hours
 
     groups = current_user.inbox_groups
-    @time_since = 3.days.ago
+    @time_since = 12.days.ago
     @time_frame = @time_since..Time.zone.now
 
     @discussions_by_group = Queries::VisibleDiscussions.new(user: current_user,

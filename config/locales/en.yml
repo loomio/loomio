@@ -1008,6 +1008,13 @@ en:
       subject: "Loomio - Summary of the last 24 hours"
     missed_yesterday:
       subject: "Yesterday on Loomio"
+      mark_as_read: Mark as read
+      thanks_for_reading: Thanks for reading, have a great day!
+      click_here_to_mark_all_as_read_html: |
+        Here's the stuff that happened yesterday on Loomio.
+        Once you've read it, click <a href="%{link}">mark as read</a> to remove it from your Loomio Inbox.
+      marked_as_read_success: "Everything from the email has been marked as read"
+
     group_email:
       intro: "%{who} made an announcement to %{group}:"
     group_membership_approved:

@@ -1,6 +1,10 @@
 = render '/application/mailer_doctype'
 %html
   .everything
+    %p
+      %em
+        %small= t(:'email.missed_yesterday.click_here_to_mark_all_as_read_html',
+                  link: mark_summary_as_read_url_for(@user))
     %h1 Headlines
     .toc
       =render 'user_mailer/missed_yesterday/headlines'
@@ -11,4 +15,8 @@
       - @discussions_by_group[group].each do |discussion|
         = render 'user_mailer/missed_yesterday/discussion', discussion: discussion
 
+    %p
+      = t(:'email.missed_yesterday.thanks_for_reading')
+      %br
+      =link_to(t('email.missed_yesterday.mark_as_read'), mark_summary_as_read_url_for(@user))
     =render 'unsubscribe_link'

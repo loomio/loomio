@@ -41,55 +41,57 @@ class User < ActiveRecord::Base
 
 
   has_many :admin_memberships,
-           :conditions => 'memberships.admin = TRUE AND memberships.is_suspended = FALSE',
-           :class_name => 'Membership',
-           :dependent => :destroy
+           conditions: 'memberships.admin = TRUE AND memberships.is_suspended = FALSE',
+           class_name: 'Membership',
+           dependent: :destroy
 
   has_many :adminable_groups,
-           :through => :admin_memberships,
-           :class_name => 'Group',
-           :source => :group
+           through: :admin_memberships,
+           class_name: 'Group',
+           source: :group
 
   has_many :memberships,
            conditions: {is_suspended: false},
-           :dependent => :destroy
+           dependent: :destroy
 
   has_many :membership_requests,
-           :foreign_key => 'requestor_id'
+           foreign_key: 'requestor_id'
 
   has_many :groups,
-           :through => :memberships,
+           through: :memberships,
            conditions: { archived_at: nil }
 
   has_many :discussions,
-           :through => :groups
+           through: :groups
 
   has_many :authored_discussions,
-           :class_name => 'Discussion',
-           :foreign_key => 'author_id'
+           class_name: 'Discussion',
+           foreign_key: 'author_id',
+           dependent: :destroy
 
   has_many :motions,
-           :through => :discussions
+           through: :discussions
 
   has_many :authored_motions,
-           :class_name => 'Motion',
-           :foreign_key => 'author_id'
+           class_name: 'Motion',
+           foreign_key: 'author_id',
+           dependent: :destroy
 
-  has_many :votes
+  has_many :votes, dependent: :destroy
 
-  has_many :announcement_dismissals
+  has_many :announcement_dismissals, dependent: :destroy
 
   has_many :dismissed_announcements,
-           :through => :announcement_dismissals,
-           :source => :announcement
+           through: :announcement_dismissals,
+           source: :announcement
 
   has_many :discussion_readers, dependent: :destroy
   has_many :motion_readers, dependent: :destroy
   has_many :omniauth_identities, dependent: :destroy
 
 
-  has_many :notifications
-  has_many :comments
+  has_many :notifications, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :attachments
 
   before_save :set_avatar_initials, :ensure_unsubscribe_token
@@ -97,7 +99,7 @@ class User < ActiveRecord::Base
   before_create :generate_username
   after_create :ensure_name_entry
 
-  scope :active, where(:deleted_at => nil)
+  scope :active, where(deleted_at: nil)
   scope :inactive, where("deleted_at IS NOT NULL")
   scope :daily_activity_email_recipients, where(subscribed_to_daily_activity_email: true)
   scope :subscribed_to_missed_yesterday_email, where(subscribed_to_missed_yesterday_email: true)
