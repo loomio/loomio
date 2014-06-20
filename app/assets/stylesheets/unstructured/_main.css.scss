@@ -69,6 +69,9 @@ ul, ol, li {
   padding: 0;
 }
 
+@media (min-width: 1200px) {
+  .container{ max-width: 970px; }
+}
 .alert { margin-top: 14px; }
 
 .btn-app {
