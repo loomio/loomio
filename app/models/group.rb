@@ -155,11 +155,11 @@ class Group < ActiveRecord::Base
   validates_attachment :cover_photo,
     size: { in: 0..10.megabytes },
     content_type: { content_type: /\Aimage/ },
-    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }
+    file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
   validates_attachment :logo,
     size: { in: 0..10.megabytes },
     content_type: { content_type: /\Aimage/ },
-    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }
+    file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
   def coordinators
     admins
