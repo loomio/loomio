@@ -3,22 +3,22 @@ class Motion < ActiveRecord::Base
 
   include ReadableUnguessableUrls
 
-  belongs_to :author, :class_name => 'User'
+  belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
-  belongs_to :outcome_author, :class_name => 'User'
+  belongs_to :outcome_author, class_name: 'User'
   belongs_to :discussion
   # has_one :group, through: :discussion
-  has_many :votes, :dependent => :destroy, include: :user
+  has_many :votes, dependent: :destroy, include: :user
   has_many :unique_votes, class_name: 'Vote', conditions: { age: 0 }, include: :user
-  has_many :did_not_votes, :dependent => :destroy, include: :user
+  has_many :did_not_votes, dependent: :destroy, include: :user
   has_many :did_not_voters, through: :did_not_votes, source: :user
-  has_many :events, :as => :eventable, :dependent => :destroy, include: :eventable
+  has_many :events, as: :eventable, dependent: :destroy, include: :eventable
   has_many :motion_readers, dependent: :destroy
 
   validates_presence_of :name, :discussion, :author, :closing_at
 
-  validates_length_of :name, :maximum => 250
-  validates_length_of :outcome, :maximum => 250
+  validates_length_of :name, maximum: 250
+  validates_length_of :outcome, maximum: 250
 
   is_translatable on: [:name, :description]
 
@@ -26,16 +26,16 @@ class Motion < ActiveRecord::Base
   pg_search_scope :search, against: [:name, :description],
     using: {tsearch: {dictionary: "english"}}
 
-  delegate :email, :to => :author, :prefix => :author
-  delegate :name, :to => :author, :prefix => :author
-  delegate :group, :group_id, :to => :discussion
-  delegate :members, :full_name, :to => :group, :prefix => :group
+  delegate :email, to: :author, prefix: :author
+  delegate :name, to: :author, prefix: :author
+  delegate :group, :group_id, to: :discussion
+  delegate :members, :full_name, to: :group, prefix: :group
   delegate :email_new_motion?, to: :group, prefix: :group
   delegate :name_and_email, to: :user, prefix: :author
   delegate :language, to: :user
+  has_paper_trail only: [:name, :description, :closing_at]
 
-  after_initialize :set_default_close_at_date_and_time
-  before_validation :set_closing_at
+  after_initialize :set_default_closing_at
   after_create :fire_new_motion_event
 
   attr_accessor :create_discussion
@@ -46,6 +46,8 @@ class Motion < ActiveRecord::Base
   scope :closed, where('closed_at IS NOT NULL').order('motions.closed_at DESC')
   scope :order_by_latest_activity, -> { order('last_vote_at desc') }
   scope :public, joins(:discussion).merge(Discussion.public)
+  scope :voting_or_closed_after, -> (time) { where('motions.closed_at IS NULL OR (motions.closed_at > ?)', time) }
+  scope :closing_in_24_hours, -> { where('motions.closing_at > ? AND motions.closing_at <= ?', Time.now, 24.hours.from_now) }
 
   def grouped_unique_votes
     order = ['block', 'no', 'abstain', 'yes']
@@ -88,6 +90,14 @@ class Motion < ActiveRecord::Base
      'abstain' => abstain_votes_count,
      'no' => no_votes_count,
      'block' => block_votes_count}
+  end
+
+  def restricted_changes_made?
+    (changed & ['name', 'description']).any?
+  end
+
+  def can_be_edited?
+    !persisted? || (voting? && (!has_votes? || group.motions_can_be_edited?))
   end
 
   # number of final votes
@@ -198,14 +208,6 @@ class Motion < ActiveRecord::Base
     save!
   end
 
-  # todo: move to motion mover service
-  def move_to_group(group)
-    if discussion.present?
-      discussion.group = group
-      discussion.save
-    end
-  end
-
   def group_members_without_motion_author
     group.users.where(User.arel_table[:id].not_eq(author.id))
   end
@@ -228,34 +230,9 @@ class Motion < ActiveRecord::Base
     reload
   end
 
-  # only here while the fix in angular branch awaits merge
-  def closing_at=(datetime)
-    self.close_at_date = datetime.to_date
-    self.close_at_time = datetime.strftime("%H:00")
-    self[:closing_at] = datetime
-  end
-
   private
-    def find_or_new_motion_reader_for(user)
-      if self.motion_readers.where(user_id: user.id).exists?
-        self.motion_readers.where(user_id: user.id).first
-      else
-        motion_reader = self.motion_readers.build
-        motion_reader.motion = self
-        motion_reader.user = user
-        motion_reader
-      end
-    end
-
-    def set_default_close_at_date_and_time
-      self.closing_at ||= Time.zone.now + 3.days
-    end
-
-    def set_closing_at
-      date_time_zone_format = '%Y-%m-%d %H:%M %Z'
-      tz_offset = ActiveSupport::TimeZone[close_at_time_zone].formatted_offset
-      date_time_zone_string = "#{close_at_date.to_s} #{close_at_time} #{tz_offset}"
-      self[:closing_at] = DateTime.strptime(date_time_zone_string, date_time_zone_format)
+    def set_default_closing_at
+      self.closing_at ||= (Time.zone.now + 3.days).at_beginning_of_hour
     end
 
     def fire_new_motion_event

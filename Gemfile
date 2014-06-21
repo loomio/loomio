@@ -20,11 +20,11 @@ gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 gem 'jqplot-rails', '~> 0.3'
 gem 'rails-backbone', '~> 0.7.2'
-gem 'cancan', '~> 1.6.10'
+gem 'cancancan', '~> 1.8'
 gem 'draper', '~> 0.11.1'
 gem 'rmagick', '~> 2.13.1'
 gem 'gravtastic', '~> 3.2.6'
-gem 'paperclip', '~> 4.0.0'
+gem 'paperclip', '~> 4.1.0'
 gem 'kaminari', '~> 0.14.0'
 gem 'activeadmin', github: 'gregbell/active_admin', ref: '40c18cf23f2f2aab6bcc9bcdbd4ccae87c8632fa'
 gem 'nokogiri', '~> 1.6.0'
@@ -55,6 +55,7 @@ gem 'bing_translator', '~> 4.2.0'
 gem 'librato-rails'
 gem 'browser'
 gem 'activerecord-postgres-hstore'
+gem 'intercom'
 gem 'intercom-rails', '~> 0.2.24'
 
 # Gems used only for assets and not required
@@ -66,6 +67,7 @@ group :assets do
   gem 'uglifier', '~> 2.2.1'
   gem 'modernizr-rails', '~> 2.6.2'
   gem 'jquery-fileupload-rails', '~> 0.4.1'
+  gem 'momentjs-rails', '~> 2.6.0'
 end
 
 group :development, :test do

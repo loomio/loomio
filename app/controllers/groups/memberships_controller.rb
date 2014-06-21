@@ -36,6 +36,8 @@ class Groups::MembershipsController < GroupBaseController
     end
   end
 
+  private
+
   def only_group_admin
     if action_name == 'destroy'
       flash[:error] = t("error.only_group_coordinator_destroy", add_coordinator: group_memberships_path(@membership.group)).html_safe

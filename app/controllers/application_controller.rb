@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include LocalesHelper
   include CurrentUserHelper
   include ReadableUnguessableUrlsHelper
+  include IntercomHelper
 
   protect_from_forgery
 
@@ -9,10 +10,13 @@ class ApplicationController < ActionController::Base
   helper :locales
   helper_method :current_user_or_visitor
   helper_method :dashboard_or_root_path
+  helper_method :subdomain
 
   before_filter :set_application_locale
   before_filter :save_selected_locale, if: :user_signed_in?
   around_filter :user_time_zone, if: :user_signed_in?
+
+
 
   after_filter :increment_measurement
 
@@ -29,6 +33,10 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+  def subdomain
+    request.subdomain.gsub(/^www./, '')
+  end
+
   def increment_measurement
     Measurement.increment(measurement_name)
   end
@@ -52,7 +60,7 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
-  
+
   def store_previous_location
     session['user_return_to'] = request.env['HTTP_REFERER'] if request.env['HTTP_REFERER'].present?
   end

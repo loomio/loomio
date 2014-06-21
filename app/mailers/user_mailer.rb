@@ -1,4 +1,38 @@
 class UserMailer < BaseMailer
+  helper :email
+  helper :motions
+  helper :application
+
+  def missed_yesterday(user, time_since = nil, unread = true)
+    @user = user
+    @time_start = time_since || 24.hours.ago
+    @time_finish = Time.zone.now
+    @time_frame = @time_start...@time_finish
+
+    @utm_hash = UTM_EMAIL.merge utm_source: 'missed_yesterday'
+    if unread
+      @discussions_by_group = Queries::VisibleDiscussions.new(user: user,
+                                                            groups: user.inbox_groups).
+                                                            unread.
+                                                            active_since(@time_start).
+                                                            group_by(&:group)
+    else
+      @discussions_by_group = Queries::VisibleDiscussions.new(user: user,
+                                                            groups: user.inbox_groups).
+                                                            active_since(@time_start).
+                                                            group_by(&:group)
+    end
+
+    unless @discussions_by_group.empty?
+      locale = best_locale(user.locale)
+      I18n.with_locale(locale) do
+        mail to: user.email,
+             subject: t("email.missed_yesterday.subject"),
+             css: 'missed_yesterday'
+      end
+    end
+  end
+
   def daily_activity(user, activity, since_time)
     @user = user
     @activity = activity

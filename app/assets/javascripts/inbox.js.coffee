@@ -39,7 +39,8 @@ $ ->
       complete: ->
         setTimeout(load_inbox_count, step*60*1000);
 
-  load_inbox_count()
+  if $('#inbox-count').length > 0
+    load_inbox_count()
 
 $ ->
   #load sparklines for motion pies

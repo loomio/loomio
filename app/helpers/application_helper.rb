@@ -93,7 +93,7 @@ module ApplicationHelper
       markdown = Redcarpet::Markdown.new(renderer, *options)
       output = markdown.render(text)
     else
-      output = Rinku.auto_link(simple_format(html_escape(text)), mode=:all, 'target="_blank"')
+      output = Rinku.auto_link(simple_format(html_escape(text)), :all, 'target="_blank"')
     end
 
     Redcarpet::Render::SmartyPants.render(output).html_safe
@@ -133,14 +133,6 @@ module ApplicationHelper
     else
       false
     end
-  end
-
-  def logo_path
-    ENV["NAVBAR_LOGO_PATH"] or "navbar-logo.png"
-  end
-
-  def logo_beta_path
-    ENV["NAVBAR_LOGO_PATH"] or "navbar-logo-beta.jpg"
   end
 
   def navbar_contribute

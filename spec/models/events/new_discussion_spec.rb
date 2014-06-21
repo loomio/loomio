@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Events::NewDiscussion do
-  let(:discussion){ mock_model(Discussion, group: double(:group)) }
+  let(:discussion){ mock_model(Discussion, group: double(:group), touch: true) }
 
   describe "::publish!" do
     let(:event) { double(:event, notify_users!: true) }

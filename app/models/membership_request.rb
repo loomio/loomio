@@ -20,7 +20,7 @@ class MembershipRequest < ActiveRecord::Base
   delegate :admins,               to: :group, prefix: true
   delegate :members,              to: :group, prefix: true
   delegate :membership_requests,  to: :group, prefix: true
-  delegate :members_invitable_by, to: :group, prefix: true
+  delegate :members_can_add_members, to: :group, prefix: true
   delegate :name,                 to: :group, prefix: true
 
   def name

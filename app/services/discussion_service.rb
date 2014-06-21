@@ -4,7 +4,7 @@ class DiscussionService
   end
 
   def self.like_comment(user, comment)
-    user.ability.authorize!(:like_comments, comment.discussion)
+    user.ability.authorize!(:like, comment)
     comment_vote = comment.like(user)
     Events::CommentLiked.publish!(comment_vote)
   end
@@ -19,9 +19,8 @@ class DiscussionService
 
     author.ability.authorize! :add_comment, comment.discussion
     return false unless comment.save
-
-    event = Events::NewComment.publish!(comment)
     comment.discussion.update_attribute(:last_comment_at, comment.created_at)
+    event = Events::NewComment.publish!(comment)
     event
   end
 
@@ -32,7 +31,7 @@ class DiscussionService
 
   def self.start_discussion(discussion)
     user = discussion.author
-    discussion.inherit_group_privacy! if discussion.private.nil?
+    discussion.inherit_group_privacy!
 
     return false unless discussion.save
 
@@ -54,9 +53,18 @@ class DiscussionService
       discussion.iframe_src = discussion_params[:iframe_src]
     end
 
-    return false unless discussion.save
+    if discussion.valid?
+      if discussion.title_changed?
+        Events::DiscussionTitleEdited.publish!(discussion, user)
+      end
 
-    user.update_attributes(uses_markdown: discussion.uses_markdown)
+      if discussion.description_changed?
+        Events::DiscussionDescriptionEdited.publish!(discussion, user)
+      end
+      user.update_attributes(uses_markdown: discussion.uses_markdown)
+      discussion.save
+    else
+      false
+    end
   end
-
 end

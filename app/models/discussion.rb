@@ -8,24 +8,25 @@ class Discussion < ActiveRecord::Base
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil, is_deleted: false) }
 
-  scope :active_since, lambda {|some_time| where('created_at >= ? or last_comment_at >= ?', some_time, some_time)}
-  scope :order_by_latest_comment, order('last_comment_at DESC')
+  scope :active_since, lambda {|time| where('last_activity_at > ?', time)}
   scope :last_comment_after, lambda {|time| where('last_comment_at > ?', time)}
+  scope :order_by_latest_comment, order('last_comment_at DESC')
 
   scope :public, where(private: false)
   scope :private, where(private: true)
   scope :with_motions, where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL)")
   scope :without_open_motions, where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND motions.closed_at IS NULL)")
   scope :with_open_motions, joins(:motions).merge(Motion.voting)
-  scope :not_by_helper_bot, -> { where('author_id NOT IN (?)', User.helper_bots.pluck(:id)) }
+  scope :joined_to_current_motion, joins('LEFT OUTER JOIN motions ON motions.discussion_id = discussions.id AND motions.closed_at IS NULL')
 
+  scope :not_by_helper_bot, -> { where('author_id NOT IN (?)', User.helper_bots.pluck(:id)) }
 
   validates_presence_of :title, :group, :author, :group_id
   validate :private_is_not_nil
-  validates :title, :length => { :maximum => 150 }
-  validates_inclusion_of :uses_markdown, :in => [true,false]
+  validates :title, length: { maximum: 150 }
+  validates_inclusion_of :uses_markdown, in: [true,false]
   validate :privacy_is_permitted_by_group
-  
+
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   has_paper_trail :only => [:title, :description]
 
@@ -36,22 +37,23 @@ class Discussion < ActiveRecord::Base
   has_one :current_motion, class_name: 'Motion', conditions: {'motions.closed_at' => nil}, order: 'motions.closed_at asc'
   has_one :most_recent_motion, class_name: 'Motion', order: 'motions.created_at desc'
   has_many :votes, through: :motions
-  has_many :comments, :dependent => :destroy
-  has_many :comment_likes, :through => :comments, :source => :comment_votes
-  has_many :commenters, :through => :comments, :source => :user, :uniq => true
-  has_many :events, :as => :eventable, :dependent => :destroy, include: :user
-  has_many :items, class_name: 'Event', include: [{:eventable => :user}, :user], order: 'created_at ASC'
+  has_many :comments, dependent: :destroy
+  has_many :comment_likes, through: :comments, source: :comment_votes
+  has_many :commenters, through: :comments, source: :user, uniq: true
+  has_many :events, as: :eventable, dependent: :destroy, include: :user
+  has_many :items, class_name: 'Event', include: [{eventable: :user}, :user], order: 'created_at ASC'
   has_many :discussion_readers
 
   include PgSearch
   pg_search_scope :search, against: [:title, :description],
     using: {tsearch: {dictionary: "english"}}
 
-  delegate :name, :to => :group, :prefix => :group
-  delegate :users, :to => :group, :prefix => :group
-  delegate :full_name, :to => :group, :prefix => :group
-  delegate :email, :to => :author, :prefix => :author
-  delegate :name_and_email, :to => :author, prefix: :author
+  delegate :name, to: :group, prefix: :group
+  delegate :name, to: :author, prefix: :author
+  delegate :users, to: :group, prefix: :group
+  delegate :full_name, to: :group, prefix: :group
+  delegate :email, to: :author, prefix: :author
+  delegate :name_and_email, to: :author, prefix: :author
   delegate :language, to: :author
 
   before_create :set_last_comment_at
@@ -71,7 +73,7 @@ class Discussion < ActiveRecord::Base
     self.update_attribute(:archived_at, DateTime.now)
   end
 
-  def archived?
+  def is_archived?
     archived_at.present?
   end
 
@@ -128,18 +130,6 @@ class Discussion < ActiveRecord::Base
     items
   end
 
-  def set_description!(description, uses_markdown, user)
-    self.description = description
-    self.uses_markdown = uses_markdown
-    save!
-    fire_edit_description_event(user)
-  end
-
-  def set_title!(title, user)
-    self.title = title
-    save!
-    fire_edit_title_event(user)
-  end
 
   def delayed_destroy
     self.update_attribute(:is_deleted, true)
@@ -156,31 +146,17 @@ class Discussion < ActiveRecord::Base
   end
 
   def public?
-    self.private == false
-  end
-
-  def private
-    self.private?
-  end
-
-  def private?
-    if self[:private].nil? and group.present?  # this is some hideously unconfident code. discussions have a validation on private col
-      group_default_is_private?
-    else
-      self[:private]
-    end
+    !private
   end
 
   def inherit_group_privacy!
-    self[:private] = group_default_is_private? if group.present?
-  end
-
-
-  def group_default_is_private?
-    ['hidden', 'private'].include? group.privacy
+    if self[:private].nil? and group.present?
+      self[:private] = group.discussion_private_default
+    end
   end
 
   private
+
   def refresh_last_comment_at!
     if comments.exists?
       last_comment_time = most_recent_comment.created_at
@@ -191,14 +167,17 @@ class Discussion < ActiveRecord::Base
   end
 
   def private_is_not_nil
-    if self[:private].nil?
-      errors.add(:private, "cannot be nil")
-    end
+    errors.add(:private, "Please select a privacy") if self[:private].nil?
   end
 
   def privacy_is_permitted_by_group
-    if group.present? and group.is_hidden? and not self.private?
-      errors.add(:private, "must be true when group is hidden")
+    return unless group.present?
+    if self.public? and group.private_discussions_only?
+      errors.add(:private, "must be private in this group")
+    end
+
+    if self.private? and group.public_discussions_only?
+      errors.add(:private, "must be public in this group")
     end
   end
 

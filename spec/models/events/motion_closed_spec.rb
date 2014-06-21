@@ -37,11 +37,5 @@ describe Events::MotionClosed do
       MotionMailer.should_receive(:motion_closed).with(motion, closer.email)
       event.save
     end
-
-    it 'notifies other group members' do
-      event.should_receive(:notify!).with(user)
-      event.save
-    end
-
   end
 end

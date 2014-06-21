@@ -39,7 +39,6 @@
         .content
           =image_tag 'globe.png', class: 'image'
           %h1.header= t(:'frontpage.hero.head_html')
-          %h2.subhead= t(:'frontpage.hero.subhead')
           %p.hero-text.description= t(:'frontpage.hero.desc_html', default: :'frontpage.hero.desc')
           =link_to try_it_path, class: 'btn btn-teal btn-lg hero-text js-not-yet-button' do
             = t(:'frontpage.link.try_loomio_beta')
@@ -161,7 +160,7 @@
           %blockquote= t(:'frontpage.quote.header.sifry_html')
 
       .row
-        = image_tag 'team.png', class: 'img-responsive', alt: 'The Loomio team'
+        = image_tag 'team.png', class: 'img-responsive full-width', alt: 'The Loomio team'
 
       .row.team
         %a{href: about_path, class: 'block-link'}

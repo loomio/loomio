@@ -79,6 +79,13 @@ ActiveAdmin.register Group do
       end
     end
 
+    panel("Subgroups") do
+      table_for group.subgroups.each do |subgroup|
+        column :name
+        column :id
+      end
+    end
+
     panel("Pending invitations") do
       table_for group.pending_invitations.each do |invitation|
         column :recipient_email
@@ -98,6 +105,9 @@ ActiveAdmin.register Group do
     f.inputs "Details" do
       f.input :id, :input_html => { :disabled => true }
       f.input :name, :input_html => { :disabled => true }
+      f.input :description
+      f.input :subdomain
+      f.input :theme, as: :select, collection: Theme.all
       f.input :max_size
       f.input :payment_plan, :as => :select, :collection => Group::PAYMENT_PLANS
       f.input :category_id, as: :select, collection: Category.all

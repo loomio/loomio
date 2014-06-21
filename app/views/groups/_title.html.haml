@@ -1,9 +1,7 @@
 .group-title
   %h1.home-title
-    = link_to t(:home), dashboard_path
-    = content_tag :span, "\u25B6", class: 'name-separator'
     - if @group
-      - if @group.is_a_subgroup?
+      - if @group.is_subgroup?
         = link_to @group.parent.name, @group.parent
         = content_tag :span, "\u25B6", class: 'name-separator'
       = link_to @group.name, @group

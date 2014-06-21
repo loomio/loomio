@@ -15,10 +15,14 @@ describe 'DiscussionService' do
   let(:user) { double(:user, ability: ability, update_attributes: true) }
   let(:discussion) { double(:discussion, author: user,
                                          save: true,
+                                         valid?: true,
+                                         title_changed?: false,
+                                         description_changed?: false,
                                          :title= => true,
                                          :description= => true,
                                          :private= => true,
                                          :uses_markdown= => true,
+                                         inherit_group_privacy!: nil,
                                          uses_markdown: true,
                                          :iframe_src= => true,
                                          update_attribute: true,
@@ -77,7 +81,7 @@ describe 'DiscussionService' do
     end
 
     it 'checks the user can like the comment' do
-      ability.should_receive(:authorize!).with(:like_comments, discussion)
+      ability.should_receive(:authorize!).with(:like, comment)
     end
 
     it 'creates a comment vote' do
@@ -113,10 +117,6 @@ describe 'DiscussionService' do
 
       it 'fires a NewComment event' do
         Events::NewComment.should_receive(:publish!).with(comment)
-      end
-
-      it 'updates discussion last_comment_at' do
-        discussion.should_receive(:update_attribute).with(:last_comment_at, comment.created_at)
       end
 
       it 'returns the event created' do
@@ -202,7 +202,7 @@ describe 'DiscussionService' do
     end
 
     context 'the discussion is invalid' do
-      before { discussion.stub(:save).and_return(false) }
+      before { discussion.stub(:valid?).and_return(false) }
       it 'returns false' do
         DiscussionService.edit_discussion(user, discussion_params, discussion).should == false
       end

@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
 
   has_paper_trail
   is_translatable on: :body
-  
+
   belongs_to :discussion, counter_cache: true
   belongs_to :user
 
@@ -21,6 +21,7 @@ class Comment < ActiveRecord::Base
   default_scope include: [:user, :attachments, :discussion]
 
   delegate :name, :to => :user, :prefix => :user
+  delegate :name, :to => :user, :prefix => :author
   delegate :email, :to => :user, :prefix => :user
   delegate :participants, :to => :discussion, :prefix => :discussion
   delegate :group, :to => :discussion
@@ -32,6 +33,10 @@ class Comment < ActiveRecord::Base
 
   alias_method :author, :user
   alias_method :author=, :user=
+
+  def author_id
+    user_id
+  end
 
   # Helper class method that allows you to build a comment
   # by passing a discussion object, a user_id, and comment text
@@ -46,6 +51,18 @@ class Comment < ActiveRecord::Base
       c.attachments_count = options[:attachments].count
     end
     c
+  end
+
+  def is_edited?
+    edited_at.present?
+  end
+
+  def is_most_recent?
+    discussion.comments.last.id == id
+  end
+
+  def can_be_edited?
+    group.members_can_edit_comments? or is_most_recent?
   end
 
   def like(user)

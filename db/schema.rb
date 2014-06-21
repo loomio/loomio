@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140406041115) do
+ActiveRecord::Schema.define(:version => 20140617021219) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20140406041115) do
     t.integer  "comment_votes_count", :default => 0,     :null => false
     t.integer  "attachments_count",   :default => 0,     :null => false
     t.text     "liker_ids_and_names"
+    t.datetime "edited_at"
   end
 
   add_index "comments", ["discussion_id"], :name => "index_comments_on_commentable_id"
@@ -185,15 +186,16 @@ ActiveRecord::Schema.define(:version => 20140406041115) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "uses_markdown",   :default => true,  :null => false
-    t.integer  "total_views",     :default => 0,     :null => false
-    t.boolean  "is_deleted",      :default => false, :null => false
-    t.integer  "comments_count",  :default => 0,     :null => false
-    t.integer  "items_count",     :default => 0,     :null => false
+    t.boolean  "uses_markdown",    :default => true,  :null => false
+    t.integer  "total_views",      :default => 0,     :null => false
+    t.boolean  "is_deleted",       :default => false, :null => false
+    t.integer  "comments_count",   :default => 0,     :null => false
+    t.integer  "items_count",      :default => 0,     :null => false
     t.datetime "archived_at"
     t.boolean  "private"
     t.string   "key"
     t.string   "iframe_src"
+    t.datetime "last_activity_at"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -321,36 +323,56 @@ ActiveRecord::Schema.define(:version => 20140406041115) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "privacy",                    :default => "private"
+    t.string   "privacy",                            :default => "private"
     t.string   "members_invitable_by"
     t.integer  "parent_id"
-    t.boolean  "email_new_motion",           :default => true
-    t.boolean  "hide_members",               :default => false
+    t.boolean  "email_new_motion",                   :default => true
+    t.boolean  "hide_members",                       :default => false
     t.text     "description"
-    t.integer  "memberships_count",          :default => 0,              :null => false
+    t.integer  "memberships_count",                  :default => 0,              :null => false
     t.datetime "archived_at"
-    t.integer  "max_size",                   :default => 300,            :null => false
-    t.boolean  "cannot_contribute",          :default => false
+    t.integer  "max_size",                           :default => 1000,           :null => false
+    t.boolean  "cannot_contribute",                  :default => false
     t.integer  "distribution_metric"
     t.string   "sectors"
     t.string   "other_sector"
-    t.integer  "discussions_count",          :default => 0,              :null => false
-    t.integer  "motions_count",              :default => 0,              :null => false
+    t.integer  "discussions_count",                  :default => 0,              :null => false
+    t.integer  "motions_count",                      :default => 0,              :null => false
     t.string   "country_name"
     t.datetime "setup_completed_at"
-    t.boolean  "next_steps_completed",       :default => false,          :null => false
+    t.boolean  "next_steps_completed",               :default => false,          :null => false
     t.string   "full_name"
-    t.string   "payment_plan",               :default => "undetermined"
-    t.boolean  "viewable_by_parent_members", :default => false,          :null => false
+    t.string   "payment_plan",                       :default => "undetermined"
+    t.boolean  "parent_members_can_see_discussions", :default => false,          :null => false
     t.string   "key"
-    t.boolean  "can_start_group",            :default => true
+    t.boolean  "can_start_group",                    :default => true
     t.integer  "category_id"
     t.text     "enabled_beta_features"
+    t.string   "subdomain"
+    t.integer  "theme_id"
+    t.boolean  "is_visible_to_public",               :default => false,          :null => false
+    t.boolean  "is_visible_to_parent_members",       :default => false,          :null => false
+    t.string   "discussion_privacy_options",                                     :null => false
+    t.boolean  "members_can_add_members",            :default => false,          :null => false
+    t.string   "membership_granted_upon",                                        :null => false
+    t.boolean  "email_notification_default",         :default => true,           :null => false
+    t.string   "cover_photo_file_name"
+    t.string   "cover_photo_content_type"
+    t.integer  "cover_photo_file_size"
+    t.datetime "cover_photo_updated_at"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.boolean  "members_can_edit_discussions",       :default => true,           :null => false
+    t.boolean  "motions_can_be_edited",              :default => false,          :null => false
+    t.boolean  "members_can_edit_comments",          :default => true
   end
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
   add_index "groups", ["category_id"], :name => "index_groups_on_category_id"
   add_index "groups", ["full_name"], :name => "index_groups_on_full_name"
+  add_index "groups", ["is_visible_to_public"], :name => "index_groups_on_is_visible_to_public"
   add_index "groups", ["key"], :name => "index_groups_on_key", :unique => true
   add_index "groups", ["name"], :name => "index_groups_on_name"
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
@@ -404,6 +426,7 @@ ActiveRecord::Schema.define(:version => 20140406041115) do
     t.datetime "archived_at"
     t.integer  "inbox_position",                    :default => 0
     t.boolean  "admin",                             :default => false, :null => false
+    t.boolean  "is_suspended",                      :default => false, :null => false
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
@@ -490,6 +513,22 @@ ActiveRecord::Schema.define(:version => 20140406041115) do
 
   add_index "subscriptions", ["group_id"], :name => "index_subscriptions_on_group_id"
 
+  create_table "themes", :force => true do |t|
+    t.text     "style"
+    t.string   "name"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "pages_logo_file_name"
+    t.string   "pages_logo_content_type"
+    t.integer  "pages_logo_file_size"
+    t.datetime "pages_logo_updated_at"
+    t.string   "app_logo_file_name"
+    t.string   "app_logo_content_type"
+    t.integer  "app_logo_file_size"
+    t.datetime "app_logo_updated_at"
+    t.text     "javascript"
+  end
+
   create_table "translations", :force => true do |t|
     t.integer  "translatable_id"
     t.string   "translatable_type"
@@ -542,6 +581,7 @@ ActiveRecord::Schema.define(:version => 20140406041115) do
     t.string   "time_zone"
     t.string   "key"
     t.string   "detected_locale"
+    t.boolean  "subscribed_to_missed_yesterday_email",                        :default => false,      :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

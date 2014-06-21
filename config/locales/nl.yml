@@ -610,7 +610,7 @@ nl:
         privacy_parent_group_members_description_short: Alleen leden en hoofd-groepsleden kunnen deze groep en de discussies erin zien.
         group_members_invitable_by: "Alleen coördinatoren"
         submit: Verzenden
-        viewable_by_parent_members_header: Sta alle leden van %{group} toe om deze subgroep en de discussies erin te zien
+        is_visible_to_parent_members_header: Sta alle leden van %{group} toe om deze subgroep en de discussies erin te zien
       membership_request:
         introduction: "Introduceer jezelf"
       motion:

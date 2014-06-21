@@ -7,6 +7,14 @@
   overflow: scroll;
 }
 
+body.comments.show{
+  .version-header{
+    padding-top: 1em;
+    font-weight: bold;
+    border-bottom: 1px solid $lighter-grey;
+  }
+}
+
 body.discussions.new, body.discussions.create, body.discussions.edit {
 
 // from group
@@ -45,7 +53,7 @@ body.discussions.new, body.discussions.create, body.discussions.edit {
   textarea {
     @include placeholder { font-style: italic; }
     font-size: 16px;
-    height: 100px;
+    height: 200px;
   }
 
   .control-label.radio_buttons {
@@ -72,7 +80,7 @@ body.discussions.new, body.discussions.create, body.discussions.edit {
 
   .checkbox { margin-bottom: 0px; }
 
-  .group_viewable_by_parent_members {
+  .group_is_visible_to_parent_members {
     border-top: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
     padding: 1em 0;
@@ -331,6 +339,9 @@ body.discussions.show {
         border-bottom: 1px solid $lighter-grey;
         margin: 7px 15px 6px 0px;
       }
+      .go-to-add-comment {
+        margin-left: 47px;
+      }
     }
     #discussion-markdown-dropdown li i {
       display: inline-block;
@@ -419,9 +430,8 @@ body.discussions.show {
         padding-bottom: 8px;
       }
       .activity-item-comment-actor {
-        float: left;
         font-weight: bold;
-        margin-right: 8px;
+        margin-bottom: 3px;
       }
       .activity-item-container {
         margin-top: 8px;

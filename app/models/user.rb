@@ -15,9 +15,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
   attr_accessor :honeypot
 
-  validates :name, :presence => true
-  validates :email, :presence => true, uniqueness: true, email: true
-  validates_inclusion_of :uses_markdown, :in => [true,false]
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true, email: true
+  validates_inclusion_of :uses_markdown, in: [true,false]
 
   has_attached_file :uploaded_avatar,
     styles: {
@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
   validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
 
-  validates_uniqueness_of :username, :allow_nil => true, :allow_blank => true
+  validates_uniqueness_of :username, allow_nil: true, allow_blank: true
 
   include Gravtastic
   gravtastic  :rating => 'pg',
@@ -41,58 +41,57 @@ class User < ActiveRecord::Base
 
 
   has_many :admin_memberships,
-           :conditions => { admin: true },
-           :class_name => 'Membership',
-           :dependent => :destroy
+           conditions: 'memberships.admin = TRUE AND memberships.is_suspended = FALSE',
+           class_name: 'Membership',
+           dependent: :destroy
 
   has_many :adminable_groups,
-           :through => :admin_memberships,
-           :class_name => 'Group',
-           :source => :group
+           through: :admin_memberships,
+           class_name: 'Group',
+           source: :group
 
   has_many :memberships,
-           :dependent => :destroy
+           conditions: {is_suspended: false},
+           dependent: :destroy
 
   has_many :membership_requests,
-           :foreign_key => 'requestor_id'
+           foreign_key: 'requestor_id'
 
   has_many :groups,
-           :through => :memberships,
+           through: :memberships,
            conditions: { archived_at: nil }
 
-  has_many :public_groups,
-           :through => :memberships,
-           :source => :group,
-           :conditions => { :privacy => 'public' }
-
   has_many :discussions,
-           :through => :groups
+           through: :groups
 
   has_many :authored_discussions,
-           :class_name => 'Discussion',
-           :foreign_key => 'author_id'
+           class_name: 'Discussion',
+           foreign_key: 'author_id',
+           dependent: :destroy
 
   has_many :motions,
-           :through => :discussions
+           through: :discussions
 
   has_many :authored_motions,
-           :class_name => 'Motion',
-           :foreign_key => 'author_id'
+           class_name: 'Motion',
+           foreign_key: 'author_id',
+           dependent: :destroy
 
-  has_many :votes
+  has_many :votes, dependent: :destroy
 
-  has_many :announcement_dismissals
+  has_many :announcement_dismissals, dependent: :destroy
 
   has_many :dismissed_announcements,
-           :through => :announcement_dismissals,
-           :source => :announcement
+           through: :announcement_dismissals,
+           source: :announcement
 
   has_many :discussion_readers, dependent: :destroy
-  has_many :motion_read_logs, dependent: :destroy
+  has_many :motion_readers, dependent: :destroy
+  has_many :omniauth_identities, dependent: :destroy
 
 
-  has_many :notifications
-  has_many :comments
+  has_many :notifications, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :attachments
 
   before_save :set_avatar_initials, :ensure_unsubscribe_token
@@ -100,15 +99,20 @@ class User < ActiveRecord::Base
   before_create :generate_username
   after_create :ensure_name_entry
 
-  scope :active, where(:deleted_at => nil)
+  scope :active, where(deleted_at: nil)
   scope :inactive, where("deleted_at IS NOT NULL")
-  scope :daily_activity_email_recipients, where(:subscribed_to_daily_activity_email => true)
+  scope :daily_activity_email_recipients, where(subscribed_to_daily_activity_email: true)
+  scope :subscribed_to_missed_yesterday_email, where(subscribed_to_missed_yesterday_email: true)
   scope :sorted_by_name, order("lower(name)")
   scope :admins, where(is_admin: true)
   scope :coordinators, joins(:memberships).where('memberships.admin = ?', true).group('users.id')
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
+  end
+
+  def user_id
+    id
   end
 
   def is_logged_in?
@@ -127,6 +131,10 @@ class User < ActiveRecord::Base
     parents = groups.parents_only.order(:name).includes(:children)
     orphans = groups.where('parent_id not in (?)', parents.map(&:id))
     (parents.to_a + orphans.to_a).sort{|a, b| a.full_name <=> b.full_name }
+  end
+
+  def inbox_groups
+    groups.where('memberships.inbox_position is not null').order(:inbox_position)
   end
 
   def first_name
@@ -160,12 +168,15 @@ class User < ActiveRecord::Base
     memberships.where(:group_id => group.id, :subscribed_to_notification_emails => true).present?
   end
 
-
-  def is_group_admin?(group)
-    admin_memberships.where(group_id: group.id).any?
+  def is_group_admin?(group=nil)
+    if group.present?
+      admin_memberships.where(group_id: group.id).any?
+    else
+      admin_memberships.any?
+    end
   end
 
-  def is_group_member?(group)
+  def is_member_of?(group)
     memberships.where(group_id: group.id).any?
   end
 
@@ -176,7 +187,6 @@ class User < ActiveRecord::Base
   def time_zone
     self[:time_zone] || 'UTC'
   end
-
 
   def is_parent_group_member?(group)
     memberships.for_group(group.parent).exists? if group.parent
@@ -223,18 +233,19 @@ class User < ActiveRecord::Base
 
   def name
     if deleted_at.present?
-      "#{self[:name]} (account inactive)"
+      "[deactivated account]"
     else
       self[:name]
     end
   end
 
   def deactivate!
-    update_attributes(:deleted_at => Time.now,
-                      :subscribed_to_daily_activity_email => false,
-                      :subscribed_to_mention_notifications => false,
-                      :subscribed_to_proposal_closure_notifications => false)
-    memberships.update_all(:archived_at => Time.now)
+    update_attributes(deleted_at: Time.now,
+                      subscribed_to_daily_activity_email: false,
+                      subscribed_to_mention_notifications: false,
+                      subscribed_to_proposal_closure_notifications: false)
+    memberships.update_all(archived_at: Time.now,
+                      subscribed_to_notification_emails: false)
     membership_requests.where("responded_at IS NULL").destroy_all
   end
 

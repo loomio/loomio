@@ -15,10 +15,7 @@ Loomio::Application.routes.draw do
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
   get "/explore/category/:id", to: "explore#category", as: :category_explore
-
   get "/groups", to: 'public_groups#index', as: :public_groups
-
-  get "/new_group", to: 'groups#new'
 
   resource :search, only: :show
 
@@ -42,34 +39,11 @@ Loomio::Application.routes.draw do
 
   resources :invitations, only: [:show, :create, :destroy]
 
-  resources :groups, path: 'g', only: [:create, :edit] do
-    scope module: :groups do
-      resources :memberships, only: [:index, :destroy, :new, :create] do
-        member do
-         post :make_admin
-         post :remove_admin
-        end
-      end
-      resource :subscription, controller: 'subscriptions', only: [:new, :show] do
-        collection do
-          post :checkout
-          get :confirm
-          get :payment_failed
-        end
-      end
-      scope controller: 'group_setup' do
-        member do
-          get :setup
-          put :finish
-        end
-      end
+  get "/theme_assets/:id", to: 'theme_assets#show', as: 'theme_assets'
 
-      get :ask_to_join, controller: 'membership_requests', action: :new
-      resources :membership_requests, only: [:create]
-      get :membership_requests,  to: 'manage_membership_requests#index', as: 'membership_requests'
-    end
-
+  resources :groups, path: 'g', only: [:new, :create, :edit, :update] do
     member do
+      post :join
       post :add_members
       post :hide_next_steps
       get :add_subgroup
@@ -82,6 +56,25 @@ Loomio::Application.routes.draw do
     resources :motions,     only: [:index]
     resources :discussions, only: [:index, :new]
     resources :invitations, only: [:new, :destroy]
+
+    scope module: :groups do
+      resources :memberships, only: [:index, :destroy, :new, :create] do
+        member do
+         post :make_admin
+         post :remove_admin
+        end
+      end
+
+      scope controller: 'group_setup' do
+        member do
+          get :setup
+          put :finish
+        end
+      end
+
+      resources :membership_requests, only: [:create, :new]
+      get :membership_requests,  to: 'manage_membership_requests#index', as: 'membership_requests'
+    end
   end
 
   scope module: :groups, path: 'g', slug: slug_regex do
@@ -100,11 +93,18 @@ Loomio::Application.routes.draw do
       end
     end
   end
+
+  constraints(GroupSubdomainConstraint) do
+    get '/' => 'groups#show'
+    put '/' => 'groups#update'
+  end
+
   delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel', as: :cancel_membership_request
 
   resources :motions, path: 'm', only: [:new, :create, :edit, :index] do
     resources :votes, only: [:new, :create, :update]
     member do
+      get :history
       put :close
       put :create_outcome
       post :update_outcome
@@ -141,7 +141,7 @@ Loomio::Application.routes.draw do
     post 'update_version/:version_id',        action: 'update_version',   as: 'update_version_discussion'
   end
 
-  resources :comments , only: :destroy do
+  resources :comments , only: [:destroy, :edit, :update, :show] do
     post :like, on: :member
   end
 
@@ -160,6 +160,8 @@ Loomio::Application.routes.draw do
     end
   end
 
+  get '/localisation/datetime_input_translations' => 'localisation#datetime_input_translations', format: 'js'
+
   resources :users, path: 'u', only: [:new] do
     member do
       put :set_avatar_kind
@@ -172,6 +174,7 @@ Loomio::Application.routes.draw do
     scope module: :email_preferences do
       get '/email_preferences', action: 'edit',   as: :email_preferences
       put '/email_preferences', action: 'update', as: :update_email_preferences
+      get '/mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
     end
   end
 
@@ -197,19 +200,33 @@ Loomio::Application.routes.draw do
   #   get :thanks, on: :collection
   # end
 
+  get '/wall', to: 'wall#show', as: 'wall'
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
   root :to => 'marketing#index'
 
-  scope controller: 'pages' do
-    get :about
-    get :privacy
-    get :purpose
-    get :services
-    get :terms_of_service
-    get :third_parties
-    get :try_it
-    get :wallets
-    get :browser_not_supported
+  constraints(MainDomainConstraint) do
+    scope controller: 'pages' do
+      get :about
+      get :privacy
+      get :purpose
+      get :services
+      get :terms_of_service
+      get :third_parties
+      get :try_it
+      get :wallets
+      get :browser_not_supported
+    end
+  end
+
+  constraints(GroupSubdomainConstraint) do
+    match '/about' => redirect('https://www.loomio.org/about')
+    match '/privacy' => redirect('https://www.loomio.org/privacy')
+    match '/purpose' => redirect('https://www.loomio.org/purpose')
+    match '/services' => redirect('https://www.loomio.org/services')
+    match '/terms_of_service' => redirect('https://www.loomio.org/terms_of_service')
+    match '/third_parties' => redirect('https://www.loomio.org/third_parties')
+    match '/try_it' => redirect('https://www.loomio.org/try_it')
+    match '/wallets' => redirect('https://www.loomio.org/wallets')
   end
 
   scope controller: 'help' do
@@ -256,4 +273,5 @@ Loomio::Application.routes.draw do
   get '/blog'       => redirect('http://blog.loomio.org')
   get '/press'      => redirect('http://blog.loomio.org/press-pack')
   get '/press-pack' => redirect('http://blog.loomio.org/press-pack')
+  get '/roadmap'    => redirect('https://trello.com/b/tM6QGCLH/loomio-roadmap')
 end

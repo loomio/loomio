@@ -1,4 +1,5 @@
 class DiscussionItem
+  include Routing
   attr_accessor :item
 
   delegate :icon, :position, :group, :actor, :header, :body, :time, :to => :item
@@ -28,6 +29,10 @@ class DiscussionItem
         DiscussionItems::MotionOutcomeCreated.new(event, event_item)
       when 'motion_outcome_updated'
         DiscussionItems::MotionOutcomeUpdated.new(event, event_item)
+      when 'motion_name_edited'
+        DiscussionItems::MotionNameEdited.new(event, event_item)
+      when 'motion_description_edited'
+        DiscussionItems::MotionDescriptionEdited.new(event, event_item)
     end
   end
 end
