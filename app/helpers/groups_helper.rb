@@ -65,9 +65,13 @@ module GroupsHelper
     if user_can_join_group?(current_user_or_visitor, group)
       case group.membership_granted_upon
       when 'request'
-        icon_button({href: join_group_path(group),
-                     method: :post,
-                     text: t(:join_group_btn)}.merge(args))
+
+        # icon_button({href: join_group_path(group),
+        #              method: :post,
+        #              text: t(:join_group_btn)}.merge(args))
+        link_to(t(:join_group_btn), join_group_path(group), method: :post, class: "btn btn-block btn-default btn-right")
+
+
       when 'approval'
         if group.pending_membership_request_for(current_user_or_visitor)
           membership_request = group.membership_requests.pending.where(requestor_id: current_user_or_visitor).first

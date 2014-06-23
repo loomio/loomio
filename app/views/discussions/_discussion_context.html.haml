@@ -1,5 +1,5 @@
 .row
-  .span8
+  .col-md-8
     .description-container
       .description-body
         .long-description
@@ -13,11 +13,14 @@
             = t :edit
         - if TranslationService.can_translate? @discussion
           = translate_link_for @discussion
-  .span3.right-context
+  .col-md-3.right-context
     .helper-text.discussion-description-helper-text.hidden
       =render "application/hint", text: t(:"hint.context"), anchor: 'starting-an-engaging-discussion'
     - if can?(:invite_people, @group)
-      = icon_button(href: new_discussion_invitation_path(@discussion), text: t(:invite_people), icon: '/assets/member-18.png', id: 'invite-new-members', class: 'btn-grey')
+      / = icon_button(href: new_discussion_invitation_path(@discussion), text: t(:invite_people), icon: '/assets/member-18.png', id: 'invite-new-members', class: 'btn-grey')
+      = link_to new_discussion_invitation_path(@discussion), class: 'btn btn-block btn-default btn-left' do
+        %i.fa.fa-user
+        = t :invite_people
     .discussion-additional-info
       = t("discussion_context.started_html",
           when: time_ago_in_words(@discussion.created_at),
