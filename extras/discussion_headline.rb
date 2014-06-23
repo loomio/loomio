@@ -40,7 +40,7 @@ class DiscussionHeadline
       motion = discussion.current_motion
       case voters.size
       when 0
-        nil
+        ""
       when 1
         "#{voters.first.name} voted on: #{motion.title}"
       when 2
