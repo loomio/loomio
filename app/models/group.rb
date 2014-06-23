@@ -52,7 +52,7 @@ class Group < ActiveRecord::Base
   scope :visible_to_public, published.where(is_visible_to_public: true)
   scope :hidden_from_public, published.where(is_visible_to_public: false)
 
-  scope :visible_on_explore_front_page, -> { published.categorised_any.parents_only }
+  scope :visible_on_explore_front_page, -> { visible_to_public.categorised_any.parents_only }
 
   scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
 
