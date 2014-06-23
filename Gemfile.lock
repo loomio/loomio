@@ -144,6 +144,9 @@ GEM
     dalli (2.7.2)
     database_cleaner (1.1.1)
     debug_inspector (0.0.2)
+    delayed-plugins-airbrake (1.1.0)
+      airbrake
+      delayed_job
     delayed_job (4.0.1)
       activesupport (>= 3.0, < 4.2)
     delayed_job_active_record (4.0.1)
@@ -578,6 +581,7 @@ DEPENDENCIES
   cucumber-rails (~> 1.4.0)
   dalli (~> 2.7.0)
   database_cleaner (~> 1.1.1)
+  delayed-plugins-airbrake
   delayed_job_active_record (~> 4.0.0)
   devise (~> 3.2.0)
   draper (~> 0.11.1)

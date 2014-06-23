@@ -886,7 +886,7 @@ en:
     header: "Email preferences"
     daily_activity_summary: "Daily Activity Summary"
     daily_activity_subscription: "Send me a daily activity email summarising what’s been happening in my groups"
-    missed_yesterday_subscription: "Send me 'Yesterday on Loomio' - all the new unread content from the past 24 hours"
+    missed_yesterday_subscription: "Send me 'Yesterday on Loomio' - my unread content from the past 24 hours"
     global_notifications: "Global Notifications"
     proposal_closing_soon_subscription: "Remind me 24 hours before a proposal closes"
     mentions_subscription: "Email me when someone mentions me in a comment"

@@ -112,6 +112,7 @@ group :test do
 end
 
 group :staging, :production do
+  gem 'delayed-plugins-airbrake'
   gem 'memcachier', '~> 0.0.2'
   gem 'dalli', '~> 2.7.0'
   gem 'newrelic_rpm', '~> 3.7.3'

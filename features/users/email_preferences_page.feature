@@ -9,19 +9,6 @@ Feature: Email preferences page
     And "Ben" belongs to "Pals"
     And I login as "ben@example.org"
 
-  Scenario: User enables daily email
-    When I visit the email preferences page
-    And I check "email_preferences_subscribed_to_daily_activity_email"
-    And I click "Update preferences"
-    Then I should be subscribed to the daily actitivy email
-
-  Scenario: User disables daily email
-    Given I am subscribed to the daily activity email
-    When I visit the email preferences page
-    And I uncheck "email_preferences_subscribed_to_daily_activity_email"
-    And I click "Update preferences"
-    Then I should not be subscribed to the daily actitivy email
-
   Scenario: User enables 24 hour proposal close notification
     When I visit the email preferences page
     And I check "email_preferences_subscribed_to_proposal_closure_notifications"
