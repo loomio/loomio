@@ -3,6 +3,8 @@ Loomio::Application.routes.draw do
   slug_regex = /[a-z0-9\-\_]*/i
   ActiveAdmin.routes(self)
 
+  root :to => 'marketing#index'
+
   namespace :admin do
     resource :email_groups, only: [:create, :new]
     resources :stats, only: [] do
@@ -202,7 +204,6 @@ Loomio::Application.routes.draw do
 
   get '/wall', to: 'wall#show', as: 'wall'
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
-  root :to => 'marketing#index'
 
   constraints(MainDomainConstraint) do
     scope controller: 'pages' do
