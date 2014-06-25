@@ -1,9 +1,9 @@
 .container
   %section.first
     .inner-container
-      .row-fluid
+      .row
         - if omniauth_authenticated_and_waiting?
-          .span6.main-content
+          .col-md-6.main-content
             %h1= t :confirm_your_details
             %p= t :now_that_your_logged_in, provider_name: @omniauth_authentication.provider_name
             %p
@@ -12,7 +12,7 @@
             .signin_container
               = render "form"
         -else
-          .span6.main-content
+          .col-md-6.main-content
             %h2
               - if @invitation
                 - if @invitation.to_start_group?

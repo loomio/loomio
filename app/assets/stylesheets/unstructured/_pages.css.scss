@@ -1,7 +1,6 @@
 @import "marketing/color";
 @import "marketing/buttons";
 
-
 // CSS reset - does this exist elsewhere?
 ul, ol, li {
   margin: 0;
@@ -494,7 +493,7 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
   .terms {
     color: $text-on-bg;
     margin: 1em auto 0;
-    width: 394px;
+    // width: 394px;
     text-align: center;
   }
   .alert{
@@ -513,7 +512,7 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
     }
     h2 { margin-bottom: .8em; }
     input {
-      @include box-sizing;
+      max-width: 100%;
     }
     input[type="checkbox"] {
       float: right;
@@ -536,6 +535,7 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
     .main-content {
       float: none;
       margin: 0 auto;
+      width: 50%;
     }
     .signin_container {
       a { text-align: left; }
@@ -553,7 +553,7 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
       margin: 2.4em 0em;
       position: relative;
       @include box-shadow(0px, 2px, 6px, -3px, #555);
-      // box-shadow: 0px 2px 6px -3px #555;
+      //box-shadow: 0px 2px 6px -3px #555;
       .separator {
         background: #fff;
         color: #777;
@@ -586,9 +586,12 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
     }
 
     #remember-me {
-      float: right;
-      margin: .2em 0 .8em 1em;
+      //float: right;
+      margin: 0 0 .8em 1em;
       label { font-size: 16px;}
+    }
+    #forgot-pwd {
+      //float: right;
     }
 
     #signin_container {
