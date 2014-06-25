@@ -21,8 +21,7 @@ zh:
       services: '服務'
     hero:
       head_html: '這個世界需要更好的方法來<br /><strong>共同參與決策</strong>。'
-      subhead: '助我們一臂之力。'
-      desc_html: 'Loomio 是一套自由、<a href="https://github.com/loomio/loomio">開放源碼</a>的軟體，讓任何人不論在任何地方，都能參與影響他人的決策'
+      desc_html: 'Loomio 是一套自由、<a href="https://github.com/loomio/loomio">開放源碼</a>的軟體。讓任何人不論在任何地方，都能參與影響他人的決策。'
     product:
       header_html: '當我們聽到<strong>所有的聲音</strong>時，我們可以作出<strong>更好的決策</strong>。'
       step1:
@@ -40,7 +39,7 @@ zh:
       header_html: "我們已經打造出試作版，來自世界各地的夥伴正在運用做出令人驚豔的事情"
       subhead_html: '現在就<a href="%{try_loomio_link}">試試 Loomio Beta</a>。或者您能資助 Loomio 1.0，<a href="%{donate_link}">支持這個專案</a>'
     mobile:
-      header_html: 'Loomio 1.0 可在任何裝置上運作，以最棒的<strong>開源行動技術</strong>打造。'
+      header_html: '以最棒的<strong>開源行動技術</strong>所打造的 Loomio 1.0 可以在任何的裝置上運作。'
     quote:
       header:
         rushkoff_html: '「Loomio <strong>釋放了網際網路的潛力</strong>，讓夥伴達成了共識而不是極端的爭論。」<div class="attributation">— <a href="http://rushkoff.com">Douglas Rushkoff</a>，<b>《Present Shock》</b>的作者</div>'
