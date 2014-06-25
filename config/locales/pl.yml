@@ -141,8 +141,6 @@ pl:
   forgot_your_password: "Zapomniałeś hasła?"
   search:
     placeholder: "Szukaj"
-  motion_form:
-    header: "Nowa propozycja"
   vote_form:
     header: "Podaj swoje stanowisko"
     edit: "Edycja Twego stanowiska"
