@@ -9,9 +9,6 @@ cs:
   attachment:
     error:
       too_large: "Soubor, který jste se pokusil(a) přiložit, je větší než 50MB. Prosím, vyberte menší soubor."
-  date:
-    formats:
-      datepicker: "%d-%m-%Y"
   devise:
     invitations:
       send_instructions: 'Pozvánka byla odeslána na %{email}.'
@@ -301,9 +298,6 @@ cs:
   empty_decision_list_html: "Jsi připraven(a) učinit rozhodnutí?<br>Každý může vytvořit návrh."
   empty_decision_index: "Tato skupina zatím neučinila žádná rozhodnutí."
   empty_discussion_list: "V této diskuzi zatím není žádná aktivita."
-  empty_discussion_index: "V žádných vašich skupinách nejsou diskuze."
-  empty_discussion_index_group: "Tato skupina zatím nemá žádné diskuze."
-  private_group_discussion_display: "Tato skupina je soukromá. Diskuze jsou viditelné jen členům. Pokud byste se rád(a) zúčastnil(a), můžete zažádat o členství."
   discussion_context:
     started_html: "Zahájil(a) <a href='%{link}' class='%{link_class}'>%{who}</a> před %{when}"
     last_edited_html: "Naposledy upravil(a) <a href='%{link}' class='%{link_class}'>%{who}</a> před %{when}"
@@ -475,7 +469,6 @@ cs:
       name: 'Vaše jméno'
       email: 'Vaše emailová adresa'
       message: 'Vaše zpráva'
-      destination: 'Kam pošleme vaši zprávu?'
       submit: 'Odeslat zprávu'
     messages:
       email_html: "Vyplňte tento formulář, nebo zašlete email na <a href='mailto:%{email}'>%{email}</a>"
@@ -486,11 +479,7 @@ cs:
     edit:
       header: "Upravit diskuzi"
   motion_form:
-    header: "Nový návrh"
     name_helper: "Vyberte co nejjasnější a nejstručnější název."
-  group_form:
-    invitation_settings: "Nastavení pozvánek"
-    admins_only: "Jen koordinátoři"
   vote_form:
     header: "Konstatujte svůj postoj"
     edit: "Upravte svůj postoj"
@@ -537,31 +526,6 @@ cs:
       discussion:
         title: "Název"
         description: "Kontext"
-        privacy_public_header: "Veřejná"
-        privacy_public_description: "Každý vidí tuto diskuzi"
-        privacy_private_header: "Soukromá"
-        privacy_private_description: "Jen členové %{group} vidí tuto diskuzi"
-        privacy_hidden_description: "Všechny diskuze ve skryté skupině jsou soukromé."
-        of: "z"
-        of_no_group: "této skupiny"
-      group:
-        name: "Název skupiny"
-        description: "Popis"
-        members_invitable_by: "Kdo může pozvat lidi do této skupiny?"
-        members_invitable_by_coordinators: "Jen koordinátoři"
-        members_invitable_by_members: "Všichni členové skupiny"
-        privacy: Soukromí
-        privacy_public_header: Veřejná
-        privacy_public_description: Diskuze jsou veřejné pokud nejsou udělány soukromými. Každý může najít skupinu a zažádat o členství.
-        privacy_private_header: Převážně soukromá
-        privacy_private_description: Diskuze jsou soukromé pokud je výslovně neoznačíte za veřejné. Každý může najít skupinu a zažádat o členství.
-        privacy_hidden_header: Skrytá (zcela soukromá)
-        privacy_hidden_description: Diskuze jsou vždy soukromé. Nalézt skupinu a připojení se k ní lze jen skrz pozvánku.
-        privacy_parent_group_members_header: Viditelné členům rodičovské skupiny
-        privacy_parent_group_members_description_short: Jen členové a členové rodičovské skupiny vidí tuto skupinu a její diskuze.
-        group_members_invitable_by: "Jen koordinátoři"
-        submit: Odeslat
-        is_visible_to_parent_members_header: Povolit všem členům %{group} vidět tuto podskupinu a diskuze v ní
       membership_request:
         introduction: "Představte se"
       motion:
@@ -583,9 +547,6 @@ cs:
       motion:
         name: "Jaké řešení navrhujete?"
         description: "Poskytněte dostatek informací, aby každý věděl, co vlastně znamená, když souhlasí nebo nesouhlasí."
-      group:
-        name: "Název skupiny"
-        description: "Popis skupiny"
       user:
         email: "E-mail"
         password: "Heslo"
@@ -618,7 +579,6 @@ cs:
     view_discussion: "Klikněte sem pro zobrazení této diskuze"
     view_group: "Klikněte sem pro zobrazení skupiny na Loomio"
     view_proposal: "Zobrazte si tento návrh na Loomio"
-    campaign_html: "Bylo toto rozhodnutí pro vás důležité? Zvažte <a href='%{link_path}'>příspěvek Loomio</a> a pomozte nám Loomio šířit. Jsme malý tým, co se snaží dělat velké věci, a potřebujeme váš příspevek, abychom mohli nadále růst!"
     create_discussion:
       intro: "%{who} zahájil(a) novou diskuzi v %{which_group}:"
       subject: "Nová diskuze - %{which}"
@@ -712,6 +672,7 @@ cs:
   pricing: 'Ceník'
   prev: "Předch."
   more: "Více..."
+  translate: "Pomozte přeložit Loomio!"
   translate_this_string: "Přeložit do %{language}"
   options: "Nastavení"
   ok_got_it: "OK, chápu!"
@@ -723,11 +684,9 @@ cs:
   send_email: "Odeslat e-mail"
   show_more: "Zobrazit více"
   start_a_group: "Vytvořit skupinu"
-  start_group: "Vytvořte skupinu!"
   starting: "Zahajuje se"
   subject: "Téma"
   thanks: "Děkujeme!"
-  translate: "Pomozte přeložit Loomio!"
   unlike: "To se mi nelíbí"
   update: "Aktualizovat"
   common:

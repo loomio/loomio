@@ -17,8 +17,6 @@ ca:
       services: 'Serveis'
     hero:
       head_html: 'El món necessita una manera millor per <strong>prendre decisions plegats.</strong>'
-      subhead: 'Ajuda''ns a crear-lo'
-      desc_html: 'Loomio és <a href="https://github.com/loomio/loomio">software lliure i gratuït</a> per a qualsevol persona, en qualsevol lloc, per participar en les decisions que li afecten'
     product:
       header_html: 'Quan escoltem <strong>totes les veus</strong>, prenem <strong>millors decisions</strong>.'
       step1:

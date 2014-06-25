@@ -3,6 +3,9 @@ es:
     go_to_group: "Ir a %{group_name}"
   try_it:
     header: "Prueba Loomio"
+    start_a_group: "Inicia un grupo para tomar decisiones con tu propia comunidad."
+    join_the_community: "Únete al grupo de la comunidad de Loomio"
+    loomio_community_info: "Aquí es donde discutimos y tomamos decisiones sobre Loomio."
     explore_groups: "Explorar los grupos de Loomio"
     explore_groups_info: "Echale un vistazo a todos los fantasticos grupos de Loomio y únete "
   activerecord:
@@ -22,7 +25,6 @@ es:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%-d/%-m/%y'
-      datepicker: "%d-%m-%Y"
   devise:
     invitations:
       send_instructions: 'La invitación ha sido enviada a %{email}.'
@@ -33,10 +35,10 @@ es:
       invitation_instructions:
         subject: 'Alguien te ha invitado a participar de su grupo en Loomio'
   error:
-    access_denied: "Acceso denegado."
+    access_denied: "No tienes permisos para hacer esto."
     cant_join_subgroup: "No puedes unirte a un subgrupo si no eres miembro del grupo superior."
     cant_modify_position: "La propuesta ha cerrado. Ya no puedes modificar tu posición."
-    cant_state_position: "Esta propuesta ha cerrado. Ya no puedes decidir."
+    cant_state_position: "Esta propuesta se ha cerrado."
     cant_view_member_profile: "No puedes ver el perfil de este miembro porque no perteneces al mismo grupo."
     contribution: "Inicia sesión para hacer una contribución."
     discussion_not_created: "No se pudo crear la discusión."
@@ -68,13 +70,13 @@ es:
     admin_rights_removed: "Los derechos de %{which_user} como coordinador han sido removidos."
     user_added: "%{user_email_or_name} se ha añadido al grupo."
     new_user_added: "%{user_email_or_name} será añadido al grupo cuando cree una cuenta en Loomio."
-    member_removed: "Miembro eliminado."
+    member_removed: "Usuario eliminado."
     membership_approved: "Membresía aprobada."
-    membership_request_canceled: "Pedido de membresía cancelada."
-    membership_request_ignored: "Pedido de membresía ignorado."
-    settings_updated: "Tus ajustes han sido actualizados."
+    membership_request_canceled: "Solicitud de membresía cancelada."
+    membership_request_ignored: "Solicitud de membresía ignorado."
+    settings_updated: "Tu configuración ha sido actualizada."
     user_made_admin: "%{which_user} se ha convertido en coordinador."
-    you_have_left_group: "Te has ido de %{which_group}."
+    you_have_left_group: "Has dejado %{which_group}."
     comment_deleted: "Comentario eliminado."
     invitations:
       auto_added:
@@ -87,16 +89,21 @@ es:
         one: "%{count} invitaciones enviadas"
         other: "%{count} invitaciones enviadas"
       auto_added_and_sent: "%{auto_added_text} y %{sent_text}"
+  tooltip:
+    cover_photo_upload: "Sube una nueva foto de portada"
+    logo_upload: "Sube un nuevo logo"
+    edit_description: "Editar descripción"
+    group_category: "Encuentra más grupos como éste"
   views:
     pagination:
       previous: "Atrás"
       next: "Siguiente"
   warning:
-    cant_remove_last_admin: "Eres el último coordinador y no puedes ser removido."
+    cant_remove_last_admin: "Eres el último coordinador y no puedes ser eliminado."
     membership_request_already_approved: "La petición de membresía ya ha sido aprobada."
     membership_request_already_ignored: "La solicitud de membresía ya ha sido ignorada."
     membership_request_already_canceled: "La solicitud de membresía ya ha sido cancelada."
-    position_not_submitted: "Tu posición no pudo ser enviada."
+    position_not_submitted: "Tu posición no pudo ser enviada"
     proposal_not_created: "La propuesta no pudo ser creada."
     user_already_admin: "%{which_user} ya es coordinador de este grupo."
     user_already_member: "%{which_user} ya es miembro de este grupo."
@@ -110,7 +117,7 @@ es:
     emails_sending: "Enviando correos electrónicos."
     group_archived: "Grupo archivado exitosamente."
     group_created: "Grupo creado exitosamente."
-    members_added: "Miembros adheridos al grupo."
+    members_added: "Usuarios agregados al grupo."
     membership_requested: "Has solicitado unirte a %{which_group}. Serás notificado/a una vez que tu petición haya sido aprobada."
     motion_closed: "Propuesta concluida. Si lo deseas, debajo puedes establecer un resultado y enviarlo a tu grupo."
     motion_outcome_created: "Felicitaciones, has creado la decisión a una propuesta y los miembros del grupo serán notificados."
@@ -154,6 +161,8 @@ es:
       almost_x_years:
         one: "1 año"
         other: "%{count} años"
+  organisation:
+    name: "Loomio"
   footer:
     about: 'Acerca de Loomio'
     blog: 'Blog'
@@ -216,6 +225,74 @@ es:
   prompt_user_to_join:
     header: "Únete al grupo para participar"
     body: "Para comentar o votar, necesitas ser miembro de este grupo"
+  group_form:
+    name: "Nombre del grupo"
+    description: "Descripcón"
+    category: "Categoría"
+    confirm_all_discussions_will_be_made_private_message: "Si continúas, las discusiones públicas se harán privadas."
+    confirm_all_discussions_will_be_made_public_message: "¿Estás seguro? Si continúas, las discusiones privadas se harán públicas."
+    prompt_to_suggest_categories_html: "Si quieres proponer alguna categoría nueva, <a href='%{link}' target='_blank'>entra en esta discusión</a>."
+    what_can_members_do: "¿Qué pueden hacer los miembros?"
+    members_can:
+      add_members: Invitar y aprobar nuevos miembros
+      edit_comments: Edita sus comentarios en cualquier momento
+      edit_discussions: Edita el contexto de cualquier discusión del grupo
+    motions_can_be_edited: Edita las propuestas después de que la votación haya empezado
+    visible_to:
+      label: ¿Quien puede encontrar este grupo?
+      public_html: 'Cualquiera <span>hacer una lista pública del grupo</span>'
+      parent_members_html: 'Las personas en %{parent_group_name} <span>no aparecen públicamente en la lista, pero son visibles para los miembros de %{parent_group_name}</span>'
+      members_html: 'Solo miembros <span>no hay una lista del grupo</span>'
+    membership_granted_upon:
+      label: ¿Cómo se unen las personas?
+      hidden_parent:
+        request_html: 'Abierto <span>a miembros de %{parent_group_name}</span>'
+        approval_html: 'Mediante solicitud <span>de miembros de %{parent_group_name}</span>'
+      request_html: Abierto <span>cualquiera puede unirse al grupo</span>
+      approval_html: Mediante solicitud <span>todo el mundo puede solicitar unirse</span>
+      invitation_html: Sólo por invitación <span>los nuevos miembros deben ser invitados</span>
+    parent_members_can_see_discussions:
+      label: Privacidad de la discusión
+      'true': 'Cualquiera en %{parent_group_name} puede ver las discusiones'
+      'false': Solamente miembros pueden ver las discusiones
+    discussion_privacy_options:
+      label: ¿Quién puede ver las discusiones?
+      hint: Las discusiones públicas pueden ser vistas por cualquiera
+      public_only_html: Sólo discusiones públicas
+      public_or_private_html: Permitir discusiones públicas y privadas.
+      private_only_html: Sólo discusiones privadas
+    learn_about_permissions: Más información sobre permisos de grupo
+  group_permissions:
+    header: Permisos del grupo
+    coordinators_can: "Los coordinadores pueden:"
+    c1: Cambia la configuración del grupo
+    c2: Edita el título y el contexto de cualquier discusión.
+    c3: Mueve discusiones entre grupos.
+    c4: Invita y aprueba nuevos miembros
+    c5: Envía un email a todos los miembros del grupo
+    c6: Desactiva un grupo.
+    c7: Añadir/eliminar otros coordinadores.
+    c8: Borrar discusión
+    c9: Borrar comentarios.
+    members_can: "Los miembros pueden:"
+    m1: Elimina sus propios comentarios.
+    m2: Edita sus propios comentarios, hasta que alguien haya respondido.
+    m3: Edita el título y la descripción de las propuestas que ellos empiezan, hasta que alguien haya determinado su postura.
+    m4: Edita la fecha de cierre de las propuestas, hasta que acaben.
+    m5: Edita el título y el contexto de las discusiones que ellos empiezan en cualquier momento.
+    m6: Empieza un subgrupo, del que te conviertes en coordinador.
+    optionally: "Opcionalmente, los coordinadores pueden permitir a los miembros del grupo:"
+    o1: Invitar y aprobar nuevos miembros.
+    o2: Editar sus propios comentarios en cualquier momento.
+    o3: Editar el título o el contexto de cualquier discusión del grupo.
+  group_privacy:
+    visible_to:
+      public: Hay una lista pública del grupo.
+      parent_members: 'Hay una lista privada del grupo. Solo visible para miembros y personas de %{parent_group_name}.'
+      members: Grupo oculto. Solo visible para los miembros.
+      public_html: 'Cualquiera <span>hacer una lista pública del grupo</span>'
+      parent_members_html: 'Las personas de %{parent_group_name} <span> no son públicas, pero son visibles para %{parent_group_name}</span>'
+      members_html: 'Solo miembros <span>no hay una lista del grupo</span>'
   setup_steps_title: "Pasos siguientes:"
   setup_step_1: "Echa un vistazo a la discusión de ejemplo"
   setup_step_2: " Empieza tu primera discusión"
@@ -251,6 +328,11 @@ es:
   confirm_remove_member: '¿Estás seguro que deseas remover a este miembro del grupo?'
   want_to_invite_html: "¿Quieres <a href='%{link}'> invitar a personas</a> a este grupo?"
   membership_requests: "Peticiones de membresía"
+  previous_requests: Solicitudes anteriores
+  approved_by_person: Aprobado por %{person}
+  ignored_by_perosn: Ignorado por %{person}
+  join_group_btn: Unirse al grupo
+  you_have_joined_group: Te has unido al grupo %{group_name}
   confirm_approve_membership_request: "¿Estás seguro de que deseas que %{which_user} pertenezca a este grupo?"
   cancel_membership_request: "Cancelar petición"
   ignore_request: "Ignorar petición"
@@ -283,6 +365,7 @@ es:
   group_subscription: "Subscripción grupal "
   group_request:
     beta_request_header: "Empezar un grupo en Loomio Beta"
+    beta_request_description: "Para tomar decisiones en Loomio Beta, el primer paso es iniciar un grupo."
     neighbourhood_support_group: "ej. Grupo de apoyo al vecindario"
     confirmation:
       title: '¡Ya casi has terminado! Revisa tu correo electrónico. '
@@ -301,6 +384,8 @@ es:
     motion_outcome_updated: "resultado de propuesta modificado"
     discussion_title_edited: "cambió el titulo de discusión"
     discussion_description_edited: "cambió la descripción de discusión"
+    motion_name_edited: 'Edita el título de la propuesta'
+    motion_description_edited: 'Edita la descripción de la propuesta'
   discussion: "Discusión"
   current_decision: "Decisión actual"
   previous_decisions: "Decisiones anteriores"
@@ -310,9 +395,17 @@ es:
   empty_decision_list_html: "¿Estás listo para tomar una decisión? <br> Cualquiera puede empezar una propuesta."
   empty_decision_index: " Este grupo no ha tomado ninguna decisión todavía."
   empty_discussion_list: "Todavía no hay actividad en esta discusión."
-  empty_discussion_index: "No hay discusiones en ninguno de tus grupos"
-  empty_discussion_index_group: "Este grupo no tiene discusiones todavía."
-  private_group_discussion_display: "Este grupo es privado. Las discusiones son visibles solo a los miembros. Si deseas participar, puedes solicitar tu inclusión."
+  go_to_add_comment_html: "Para añadir un comentario,  <a href='%{href}'> ve al final de la discusión </a>."
+  discussion_list:
+    empty:
+      no_discussions: "No hay discusiones en ninguno de tus grupos."
+      no_discussions_in_group: "Este grupo no tiene discusiones todavía."
+      no_public_discussions: "No hay discusiones públicas en este grupo."
+      discussions_are_private: "Todas las discusiones en este grupo son privadas."
+      request_membership_html: "Para ver discusiones privadas, <a href='%{href}'>solicita unirte al grupo.</a>"
+      membership_is_invitation_only: "Para unirte a este grupo necesitas ser invitado por un miembro."
+      membership_is_invitation_by_admin_only: "Para unirte a este grupo necesitas ser invitado por un coordinador."
+      log_in_html: "Si eres un miembro, <a href='%{href}'>inicia sesión</a> para ver las discusiones privadas."
   discussion_context:
     started_html: "Iniciado hace %{when} por <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Última edición hace %{when} por <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -340,6 +433,7 @@ es:
   delete_discussion: "Eliminar discusión"
   confirm_delete_discussion: "¿Estás seguro de que quieres eliminar permanentemente esta discusión?"
   new_proposal: "Nueva propuesta"
+  edit_proposal: "Editar propuesta"
   close_proposal: "Cerrar propuesta"
   confirm_close_proposal: "¿Estás seguro de que quieres cerrar esta propuesta?"
   change_proposal_close_date: "Cambiar fecha de cierre"
@@ -374,6 +468,9 @@ es:
       'no': "No estoy de acuerdo"
       abstain: "Me abstengo"
       block: "Bloqueo"
+  edit_comment:
+    comment_changes: "Comentar cambios"
+    edit_comment: "Editar comentario"
   help:
     coordinating: 'Coordinando tu grupo en Loomio'
     coordinating_details: |
@@ -510,6 +607,7 @@ es:
   or: "o"
   forgot_your_password: "¿Olvidaste tu contraseña?"
   dont_have_an_account: "¿No tienes una cuenta?"
+  create_one_now: "Crea uno ahora"
   link_it_up_instead: "En su lugar, haz que se vinculen"
   sign_up_via: "Accede vía"
   or_fill_in_this_form: "o rellena este formulario"
@@ -526,6 +624,10 @@ es:
   join_group:
     log_in: "Entrar para unirte a %{group_name}"
     create_account_to_join_group: "Crea una cuenta para acceder a %{group_name}"
+  start_group:
+    log_in: "Inicia sesión para configurar tu grupo."
+    create_account_to_start_group: "Por favor crea una cuenta para empezar tu grupo %{group_name}"
+    create_account: "Por favor, crea una cuenta"
   invitation:
     alternate: "Como alternativa, comparte este enlace y cualquiera podrá solicitar unirse:"
     by_email: "Invitar vía correo electrónico "
@@ -555,7 +657,7 @@ es:
     pending_invitations: 'Invitaciones pendientes'
     no_pending_invitations: "Actualmente, no hay invitaciones pendientes"
   search:
-    description: "A continuación se muestra una lista de las discusiones y propuestas que contienen «% {query}» en su título o descripción."
+    description: "A continuación se muestra una lista de las discusiones y propuestas que contienen «%{query}» en su título o descripción."
     header: "Buscar resultados «%{query}»"
     placeholder: "Buscar"
     empty_search: 'Búsqueda vacía'
@@ -569,18 +671,12 @@ es:
     description: "Loomio Helper Bot está muy interesado en que tu grupo invierta en un viaje a la luna. Al parecer, el espacio queso es delicioso. Pero las implicaciones por la huella de carbono son preocupantes. ⏎\n¿Es una buena idea? Loomio Helper Bot quiere saber lo que piensas! ⏎\nSi estás convencido de tu posición, haz clic en uno de los iconos de abajo (pulsa el cursor sobre los botones de decisiones para una descripción de lo que cada\
       \ uno de ellos significa). ⏎\nSe te pedirá que realices una breve declaración sobre la razón de tu decisión. Esto hace que sea fácil de ver en forma de resumen de lo que todos piensan y por qué. Puedes cambiar de opinión y editar tu decisión libremente hasta que la propuesta se cierra. ⏎ \n"
   contact_page:
+    contact_us: 'Contáctanos'
     labels:
       name: 'Tu nombre'
       email: 'Tu correo electrónico'
       message: 'Tu mensaje'
-      destination: '¿A dónde enviaremos tu mensaje?'
       submit: 'Enviar mensaje'
-    destinations:
-      contact: 'Preguntas generales'
-      tech: 'Soporte técnico / informar errores / solicitar características'
-      press: 'Preguntas (medios)'
-      sales: 'Preguntas (ventas y clientes)'
-      translations: 'Preguntas (traducción)'
     messages:
       email_html: "Rellena este formulario o envía un correo electrónico a <a href='mailto:%{email}'>%{email}</a>"
       social_html: "También puedes encontrarnos en<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
@@ -590,12 +686,23 @@ es:
       who: "¿En qué grupo te gustaría iniciar esta discusión?"
     edit:
       header: "Editar discusión "
+    privacy:
+      will_be_private: "La discusión sólo estará visible para miembros del grupo"
+      will_be_private_to_group: "La discusión sólo estará visible para miembros de %{group_name}."
+      will_be_private_to_parent_group: "La discusión estará visible para miembros de %{parent_group_name} y miembros de %{group_name}."
+      will_be_public: "Cualquiera puede ver la discusión."
+  motion_history:
+    title: "Proponer cambios"
   motion_form:
-    header: "Nueva propuesta"
+    new:
+      header: "Nueva propuesta"
+      submit: 'Crear propuesta'
+    edit:
+      header: "Editar propuesta"
+      submit: 'Actualizar propuesta'
+      only_closing_at: 'No puedes cambiar el nombre o descripción de la propuesta después de que la votación haya empezado'
     name_helper: " Haz el título lo más claro y conciso posible para que la gente sepa exactamente lo que quieres decir cuando estén de acuerdo o en desacuerdo con la propuesta."
-  group_form:
-    invitation_settings: "Configuración de invitaciones"
-    admins_only: "Solo coordinadores"
+    close_proposal_heading: "¿Quiéres cerrar la propuesta ahora?"
   vote_form:
     header: "Establece tu posición"
     edit: "Modifica tu posición"
@@ -643,32 +750,6 @@ es:
       discussion:
         title: "Título"
         description: "Contexto"
-        privacy_public_header: "Público"
-        privacy_public_description: "Todos/as pueden ver esta discusión"
-        privacy_private_header: "Privado"
-        privacy_private_description: "Solo los miembros de %{group} puden ver esta discusión"
-        privacy_hidden_description: "Todas las discusiones en un grupo oculto son privadas. "
-        of: "de"
-        of_no_group: "de este grupo"
-      group:
-        name: "Nombre del Grupo"
-        description: "Descripción "
-        members_invitable_by: "¿Quién puede invitar miembros a este grupo?"
-        members_invitable_by_coordinators: "Solo para coordinadores"
-        members_invitable_by_members: "Todos los miembros del grupo"
-        privacy: Privacidad
-        privacy_public_header: Público
-        privacy_public_description: Las discusiones son públicas, a no ser que se hagan privadas. Todos pueden encontrar al grupo y solicitar unirse.
-        privacy_private_header: 'Mayoritariamente privado '
-        privacy_private_description: Las discusiones son privadas, a no ser que explícitamente las hagas públicas. Todos pueden encontrar al grupo y solicitar unirse.
-        privacy_hidden_header: Oculto (completamente privado)
-        privacy_hidden_description: Las discusiones son siempre privadas. Encontrar y unirse al grupo es solo mediante invitación.
-        privacy_parent_group_members_header: Puede ser visto por miembros del grupo superior
-        privacy_parent_group_members_description: Idéntico a oculto, solo que el grupo y sus discusiones pueden ser vistos por los miembros del grupo superior.
-        privacy_parent_group_members_description_short: Solo miembros y miembros de grupo superior pueden ver este grupo y sus discusiones.
-        group_members_invitable_by: "Solo coordinadores"
-        submit: Enviar
-        viewable_by_parent_members_header: Permitir a todos los miembros de %{group} ver este subgrupo y sus discusiones
       membership_request:
         introduction: "Preséntate"
       motion:
@@ -695,9 +776,6 @@ es:
       motion:
         name: "¿Cuál es tu propuesta de plan de acción?"
         description: "Da información suficiente para que cualquier persona en tu grupo pueda tomar una decisión bien informada."
-      group:
-        name: "Nombre del Grupo"
-        description: "Descripción del grupo"
       user:
         email: "Correo electrónico"
         password: "Contraseña"
@@ -714,6 +792,8 @@ es:
         create: "Crear cuenta"
         update: "Actualizar preferencias"
   email:
+    by_who: "por %{person}"
+    reply_to_this_discussion: Contestar a esta discusión
     to_join_discussion:
       subject: "%{who} desea que te unas a una discusión en Loomio"
       content: "Has sido invitado/a a participar en la discusión: %{discussion}"
@@ -732,7 +812,6 @@ es:
     view_discussion: "Haz click aquí para ver esta discusión "
     view_group: "Haz click aquí para ver el grupo en Loomio"
     view_proposal: "Ver esta propuesta en Loomio"
-    campaign_html: "¿Fue importante para ti esta decisión? Considera <a href='%{link_path}'>convertirte en contribuidor de Loomio</a> y ayúdanos a difundir Loomio al mundo. ¡Somos un pequeño equipo tratando de hacer grandes cosas, y necesitamos tu contribución para seguir creciendo!"
     create_discussion:
       intro: "%{who} empezó una discusión en %{which_group}:"
       subject: "Nueva discusión - %{which}"
@@ -744,6 +823,14 @@ es:
       heading: "Tu actividad en Loomio"
       intro: "Esto es lo que ha pasado en las últimas 24 horas en tus grupos de Loomio"
       subject: "Loomio - Resumen de las últimas 24 horas"
+    missed_yesterday:
+      subject: "Ayer en Loomio"
+      mark_as_read: Marcar como leído
+      thanks_for_reading: Gracias por leer, ¡que tengas un buen día!
+      click_here_to_mark_all_as_read_html: |
+        Esto es lo que pasó ayer en Loomio.
+        Una vez que lo hayas leído, haz click en <a href="%{link}">marcar como leído</a> para eliminarlo de tu bandeja de entrada de Loomio.
+      marked_as_read_success: "Todo el contenido del correo ha sido marcado como leído"
     group_email:
       intro: "%{who} hizo un anuncio en %{group}:"
     group_membership_approved:
@@ -751,7 +838,7 @@ es:
       subject: "Membresía aprobada"
     invitation:
       hi: "Hola %{name},"
-      intro: "Haz clic en el enlace de abajo para configurar tu grupo % {nombre_grupo}:"
+      intro: "Haz clic en el enlace de abajo para configurar tu grupo %{group_name}:"
       closing_message: "Si tienes alguna pregunta o hay cualquier cosa con la que te podamos ayudar a mantenerte en marcha, nos encantará saber de ti; tan solo responde a este correo electrónico."
       thanks: "Gracias!⏎\nEl Equipo de Loomio⏎ \n"
     membership_request:
@@ -786,8 +873,6 @@ es:
       header: "¡Ya casi terminas!"
       intro: "Por favor, haz click en el enlace de verificación para finalizar tu solicitud:"
       ignore: "Si no has pedido ser parte de Loomio ignora este correo electrónico. "
-  campaign:
-    crowdfunding_html: "Lo hicimos! Gracias a tod@s los que nos ayudaron a financiar Loomio 1.0. Amamos nuestra comunidad!</a>"
   about_loomio: "Acerca de Loomio"
   ago: "hace %{quantity_of_time}"
   approve: "Aprobar"
@@ -830,7 +915,11 @@ es:
   pricing: 'Precios'
   prev: "Atrás"
   more: "Más..."
+  translate: "¡Ayúdanos a traducir Loomio!"
+  translate_field: "Ver traducción"
+  loading_translation: "Cargando traducción..."
   translate_this_string: "Traducir a %{language}"
+  failed_translation: "No se pudo completar la traducción"
   options: "Opciones"
   ok_got_it: "Bien, ¡lo tengo!"
   remove: "Eliminar"
@@ -841,12 +930,10 @@ es:
   send_email: "Enviar correo electrónico"
   show_more: "Mostrar más"
   start_a_group: "Empieza un grupo"
-  start_group: "¡Iniciar grupo!"
   starting: "Empezando"
   subject: "Título"
   terms_of_service_html: "Haciendo click en %{button_text}, aceptas <a href='%{link_path}' target='_blank'>los términos de servicio de Loomio</a>"
   thanks: "¡Gracias!"
-  translate: "¡Ayúdanos a traducir Loomio!"
   unlike: "Ya no me gusta"
   time_until_close: "%{quantity_of_time} para cierre"
   update: "Actualizar"
@@ -854,4 +941,91 @@ es:
   google: "Google"
   persona: "Persona"
   common:
+    back_to_discussion: "Volver a la discusión"
+    edited: Editado
+    today: Hoy
+    months:
+      january: Enero
+      february: Febrero
+      march: Marzo
+      april: Abril
+      may: Mayo
+      june: Junio
+      july: Julio
+      august: Agosto
+      september: Septiembre
+      october: Octubre
+      november: Noviembre
+      december: Diciembre
+    abbr_months:
+      jan: Ene
+      feb: Feb
+      mar: Mar
+      apr: Abr
+      may: May
+      jun: Jun
+      jul: Jul
+      aug: Ago
+      sep: Sep
+      oct: Oct
+      nov: Nov
+      dec: Dic
+    days:
+      monday: Lunes
+      tuesday: Martes
+      wednesday: Miércoles
+      thursday: Jueves
+      friday: Viernes
+      saturday: Sábado
+      sunday: Domingo
+    abbr_days:
+      mon: Lun
+      tue: Mar
+      wed: Mie
+      thu: Jue
+      fri: Vie
+      sat: Sab
+      sun: Dom
+    tiny_days:
+      mo: Lu
+      tu: Ma
+      we: Mi
+      th: Ju
+      fr: Vi
+      sa: Sa
+      su: Do
+    please_wait: "Por favor espera"
+    privacy: "Privacidad"
+    private: "Privado"
+    public: "Público"
     email: "Correo electrónico"
+    start_group: "Empieza un grupo!"
+  group_categories:
+    blank: "Sin categoría"
+    economics: "Economía"
+    activist: "Activista"
+    arts: "Arte"
+    business: "Negocios"
+    collective: "Colectivo"
+    community_group: "Comunidad"
+    co_operative: "Cooperativo"
+    democratic_organisation: "Organización democrática"
+    education: "Educación"
+    environmental_group: "Grupo medioambiental"
+    family: "Familia"
+    local_government: "Gobierno local"
+    online_community: "Comunidad online"
+    religious_group: "Religioso/espiritual"
+    event: "Evento"
+    open_source_software: "Software de código abierto"
+    political_initiative: "Iniciativa política"
+    social_enterprise: "Empresa social"
+    social_justice: "Justicia social"
+    advocacy_group: "Grupo de apoyo"
+    science: "Ciencia"
+    technology: "Tecnología"
+    sports: "Deportes"
+    youth: "Juventud"
+    women: "Mujer"
+    media: "Medios de comunicación"
+    health: "Salud"

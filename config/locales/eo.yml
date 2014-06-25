@@ -6,9 +6,6 @@ eo:
   errors:
     messages:
       email: "Retadreso ne validas"
-  date:
-    formats:
-      datepicker: "%Y-%m-%d"
   error:
     access_denied: "Vi ne havas permeson fari ĉi tion"
     cant_join_subgroup: "Vi ne rajtas aniĝi al subgrupo se vi ne estas membro de la ĉefgrupo"
@@ -195,8 +192,6 @@ eo:
   empty_decision_list_html: "Ĉu vi pretas por fari decidon? <br> Kiu ajn povas komenci proponon."
   empty_decision_index: "Tiu ĉi grupo faris neniun ajn decidojn ĝis nu.n"
   empty_discussion_list: "Ankoraŭ nenio okazis en tiu ĉi diskuto."
-  empty_discussion_index: "Neniu diskuto troveblas ene de viaj grupoj."
-  empty_discussion_index_group: "Tiu ĉi grupo havas neniun ajn decidon ĝis nun."
   discussion_context:
     see_revision_history: "Vidu la revizian historion"
   description_history:
@@ -369,11 +364,7 @@ eo:
       Se vi certas pri via pozicio, alklaku unu el la simboloj malsupre (movu la muŝon super la decidbutonojn por priskribo de la signifo de ĉiuj).
       Al vi estos petate skribi mallonge pri via kialo por via decido. Tio helpos vidi resumon de ĉies pensoj kaj kialoj. Vi povas ŝanĝi vian opinion kaj redakti vian decidon libere ĝis kiam la propono fermiĝas.
   motion_form:
-    header: "Nova propono"
     name_helper: "Bonvolu klarigi kaj mallongigi la titolon kiel eble plej multe."
-  group_form:
-    invitation_settings: "Agordoj de la invito"
-    admins_only: "Nur kunordigantoj"
   vote_form:
     header: "Vortumi vian sintenton"
     edit: "Redakti vian sintenon"
@@ -401,10 +392,6 @@ eo:
       discussion:
         title: "Titolo"
         description: "Kunteksto"
-      group:
-        name: "Grupnomo"
-        description: "Priskribo"
-        members_invitable_by: "Kiu povos inviti personojn al ĉi tiu grupo?"
       motion:
         name: "Titolo"
         description: "Detaloj"
@@ -420,8 +407,6 @@ eo:
       motion:
         name: "Kion vi proponas ke okazu?"
         description: "Donu sufiĉajn informojn por ke ĉiuj sciu ekzakte kion signifas konsenti aŭ malkonsenti."
-      group:
-        description: "Grupa priskribo"
   helpers:
     submit:
       discussion:

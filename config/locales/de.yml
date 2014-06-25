@@ -25,7 +25,6 @@ de:
     formats:
       for_this_year: '%e. %b'
       for_another_year: '%d.%m.%y'
-      datepicker: "%d.%m.%Y"
   devise:
     invitations:
       send_instructions: 'Eine Einladung wurde an %{email} versendet.'
@@ -254,6 +253,9 @@ de:
   confirm_remove_member: 'Bist du sicher, dass du dieses Mitglied aus der Gruppe entfernen möchtest?'
   want_to_invite_html: "Willst du <a href='%{link}'>Leute zu dieser Gruppe einladen</a>?"
   membership_requests: "Mitgliedschaftsanfragen"
+  previous_requests: Bisherige Anfragen
+  approved_by_person: Von %{person} bestätigt
+  ignored_by_perosn: Von %{person} ignoriert
   confirm_approve_membership_request: "Bist du sicher, dass du %{which_user} der Gruppe hinzufügen möchtest?"
   cancel_membership_request: "Anfrage abbrechen"
   ignore_request: "Anfrage ignorieren"
@@ -314,13 +316,11 @@ de:
   empty_decision_list_html: "Bereit, eine Entscheidung zu treffen? <br> Jeder kann einen Vorschlag machen."
   empty_decision_index: "Diese Gruppe hat noch keine Entscheidungen getroffen."
   empty_discussion_list: "Es gibt noch keine Aktivitäten in dieser Diskussion."
-  empty_discussion_index: "Es gibt keine Diskussionen in deinen Gruppen."
-  empty_discussion_index_group: "Diese Gruppe hat noch keine Diskussionen."
-  private_group_discussion_display: "Diese Gruppe ist privat. Diskussionen sind nur für Mitglieder sichtbar. Wenn du mitmachen möchtest, kannst du darum bitten, in die Gruppe aufgenommen zu werden."
   discussion_context:
     started_html: "Gestartet vor %{when} von <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Zuletzt bearbeitet vor %{when} von <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Änderungsverlauf ansehen"
+    see_history: "Verlauf"
   description_history:
     header: "Änderungsverlauf"
     subheader: "Version"
@@ -581,14 +581,7 @@ de:
       name: 'Dein Name'
       email: 'Deine E-Mail-Adresse'
       message: 'Deine Nachricht'
-      destination: 'An wen soll deine Nachricht geschickt werden?'
       submit: 'Nachricht abschicken'
-    destinations:
-      contact: 'Allgemeine Fragen'
-      tech: 'Technischer Support / Bug-Reports / Verbesserungsvorschläge'
-      press: 'Medienanfragen'
-      sales: 'Fragen zu Vertrieb und Kundenbetreuung'
-      translations: 'Fragen zur Übersetzung'
     messages:
       email_html: "Fülle dieses Formular aus oder schicke eine E-Mail an <a href='mailto:%{email}'>%{email}</a>"
       social_html: "Du findest uns auch auf<br/><a href='%{facebook}' target='_blank'>Facebook</a>, <a href='%{google}' target='_blank'>Google+</a>, und <a href='%{twitter}' target='_blank'>Twitter</a>!"
@@ -599,11 +592,7 @@ de:
     edit:
       header: "Diskussion bearbeiten"
   motion_form:
-    header: "Neuer Vorschlag"
     name_helper: "Wähle einen möglichst knappen und klar verständlichen Titel."
-  group_form:
-    invitation_settings: "Einladungseinstellungen"
-    admins_only: "Nur Koordinatoren"
   vote_form:
     header: "Gib deine Meinung ab"
     edit: "Bearbeite deine Meinung"
@@ -651,32 +640,6 @@ de:
       discussion:
         title: "Titel"
         description: "Kontext"
-        privacy_public_header: "Öffentlich"
-        privacy_public_description: "Diese Diskussion ist für alle sichtbar"
-        privacy_private_header: "Privat"
-        privacy_private_description: "Diese Diskussion ist nur für Mitglieder der Gruppe %{group} sichtbar"
-        privacy_hidden_description: "Alle Diskussionen in einer versteckten Gruppe sind als privat markiert."
-        of: "''"
-        of_no_group: "dieser Gruppe"
-      group:
-        name: "Gruppenname"
-        description: "Beschreibung"
-        members_invitable_by: "Wer kann Leute in diese Gruppe einladen?"
-        members_invitable_by_coordinators: "Nur Koordinatoren"
-        members_invitable_by_members: "Alle Gruppenmitglieder"
-        privacy: Privatsphäre
-        privacy_public_header: Öffentlich
-        privacy_public_description: Diskussionen sind öffentlich, wenn sie nicht als privat markiert werden. Jeder kann die Gruppe sehen und um Aufnahme bitten.
-        privacy_private_header: Größtenteils privat
-        privacy_private_description: Diskussionen sind privat, wenn du sie nicht explizit als öffentlich markierst. Jeder kann die Gruppe sehen und um Aufnahme bitten.
-        privacy_hidden_header: Versteckt (absolut privat)
-        privacy_hidden_description: Diskussionen sind immer privat. Die Gruppe kann nicht gefunden werden und der Beitritt ist nur per Einladung möglich.
-        privacy_parent_group_members_header: Sichtbar für Mitglieder der Hauptgruppe
-        privacy_parent_group_members_description: Genau wie versteckt, außer dass die Gruppe und ihre Diskussionen für Mitglieder der Hauptgruppe sichtbar sind.
-        privacy_parent_group_members_description_short: Die Gruppe und ihre Diskussionen sind nur für Mitglieder dieser Gruppe und der Hauptgruppe sichtbar.
-        group_members_invitable_by: "Nur Koordinatoren"
-        submit: Abschicken
-        viewable_by_parent_members_header: Diese Untergruppe und ihre Diskussionen für alle Mitglieder der Gruppe %{group} sichtbar machen
       membership_request:
         introduction: "Stelle dich vor"
       motion:
@@ -703,9 +666,6 @@ de:
       motion:
         name: "Was ist dein Vorschlag zum Handlungsablauf?"
         description: "Gib genug Informationen an, damit jeder genau versteht, was Zustimmung und Ablehnung jeweils bedeuten."
-      group:
-        name: "Gruppenname"
-        description: "Gruppenbeschreibung"
       user:
         email: "E-Mail"
         password: "Passwort"
@@ -740,7 +700,6 @@ de:
     view_discussion: "Klicke hier um diese Diskussion zu sehen"
     view_group: "Klicke hier um die Gruppe auf Loomio zu sehen"
     view_proposal: "Diesen Vorschlag auf Loomio ansehen"
-    campaign_html: "War dir diese Entscheidung wichtig? Vielleicht kannst du dir vorstellen, <a href='%{link_path}'>Loomio etwas zu spenden</a> und dazu beizutragen, dass noch mehr Leute Loomio nutzen können. Wir sind ein kleines Team mit großen Zielen und brauchen deine Spende, um weiter zu wachsen!"
     create_discussion:
       intro: "%{who} hat eine neue Diskussion in %{which_group} gestartet:"
       subject: "Neue Diskussion - %{which}"
@@ -763,7 +722,7 @@ de:
       closing_message: "Wenn du Fragen hast oder es etwas gibt, mit dem wir dir weiterhelfen können, würden wir sehr gerne von dir hören - antworte einfach auf die E-Mail."
       thanks: "Danke!\nDas Loomio Team \n"
     membership_request:
-      intro: "%{name} (%{email)} bittet um Zugang zu einer deiner Loomio Gruppen."
+      intro: "%{name} (%{email}) bittet um Zugang zu einer deiner Loomio Gruppen."
       subject: "%{who} bittet darum %{which_group} beitreten zu dürfen."
       view_group: "Du kannst die Anfrage hier annehmen oder ablehnen"
     mentioned:
@@ -794,8 +753,6 @@ de:
       header: "Du bist fast fertig!"
       intro: "Bitte klicke auf diesen Link zur Verifizierung um deine Anfrage abzuschließen:"
       ignore: "Wenn du nicht angefragt hast dieser Loomio Gruppe beizutreten, ignoriere diese E-Mail."
-  campaign:
-    crowdfunding_html: "GESCHAFFT! Vielen Dank an alle, die uns geholfen haben Loomio 1.0 zu finanzieren. Wir lieben unsere Community!</a>"
   about_loomio: "Über Loomio"
   ago: "vor %{quantity_of_time}"
   approve: "Zustimmen"
@@ -838,7 +795,11 @@ de:
   pricing: 'Preisgestaltung'
   prev: "Vorheriges"
   more: "Mehr..."
+  translate: "Hilf Loomio zu übersetzen!"
+  translate_field: "Übersetzung"
+  loading_translation: "Lade Übersetzung..."
   translate_this_string: "Auf %{language} übersetzen"
+  failed_translation: "Die Übersetzung kann nicht fertiggestellt werden"
   options: "Optionen"
   ok_got_it: "Okay, ich hab´s!"
   remove: "entfernen"
@@ -849,12 +810,10 @@ de:
   send_email: "E-Mail senden"
   show_more: "Mehr anzeigen"
   start_a_group: "Eröffne eine Gruppe"
-  start_group: "Gruppe gründen!"
   starting: "Wird gestartet"
   subject: "Betreff"
   terms_of_service_html: "When du %{button_text} klickst, stimmst du Loomio´s <a href='%{link_path}' target='_blank'>Geschäftsbedingungen</a> zu."
   thanks: "Danke"
-  translate: "Hilf Loomio zu übersetzen!"
   unlike: "Gefällt mir nicht"
   time_until_close: "%{quantity_of_time} verbleiben"
   update: "Aktualisierung"

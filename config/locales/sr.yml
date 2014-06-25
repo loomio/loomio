@@ -25,7 +25,6 @@ sr:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%-d/%-m/%y'
-      datepicker: "%d-%m-%Y"
   devise:
     invitations:
       send_instructions: 'Poziv je poslat na %{email}.'
@@ -93,6 +92,11 @@ sr:
         few: "%{count} poslate pozivnice"
         other: "%{count} poslatih pozivnica"
       auto_added_and_sent: "%{auto_added_text} i %{sent_text}"
+  tooltip:
+    cover_photo_upload: "Pošalji novu fotografiju zaglavlja"
+    logo_upload: "Pošalji nov logotip"
+    edit_description: "Izmeni opis"
+    group_category: "Nađi još sličnih grupa"
   views:
     pagination:
       previous: "Pret"
@@ -218,7 +222,7 @@ sr:
   tagline: "Stvaranje sveta gde je za svakog lako da učestvuje u odlukama koje ih se tiču i dotiču."
   or_sign_in_html: "Ako već imate Lumio nalog, <a href='%{link}' class='%{link_class}'>prijavite se ovde</a>"
   or_link_account_html: "Ako već imate Lumio nalog, <a href='%{link}'>povežite ga</a>"
-  click_to_dismiss: "Klikni ovde da zatvorš poruku"
+  click_to_dismiss: "Škljocni ovde da zatvoriš poruku"
   generic_confirm: "Da li ste sigurni?"
   discussion_helper_text:
     header: "Dobrodošli u svoju prvu diskusiju"
@@ -228,7 +232,7 @@ sr:
     message: "<p>Ovo je <strong>stranica grupe</strong>. Na levoj strani je spisak svih diskusija u ovoj grupi.</p> <p>Kada želite da krupa diskutuje o drugoj temi, pokrenite novu diskusiju.</p>"
   dashboard_helper_text:
     header: "Dobrodošli na svoju Početnu stranu"
-    message: "<p>Početna stranica Vam predstavlja sve trenutne diskusije iz grupa čiji ste član.</p> <p>Možete da započnete diskusiju na novu temu tako što ćete kliknuti na dugme \"Pokreni diskusiju\".</p >"
+    message: "<p>Početna stranica Vam predstavlja sve trenutne diskusije iz grupa čiji ste član.</p> <p>Možete da započnete diskusiju na novu temu tako što ćete škljocnuti na ikonu \"Pokreni diskusiju\".</p >"
   prompt_visitor_to_authenticate:
     header: "Prijavi se ili pridruži grupi da učestvuješ"
     body: "Ako ste član ove grupe, morate se prijaviti da učestvujete."
@@ -236,8 +240,18 @@ sr:
     header: "Pridruži se grupi kako bi učestvovao"
     body: "Da komentarišete ili glasate, morate biti član ove grupe."
   group_form:
+    name: "Naziv grupe"
+    description: "Opis"
+    category: "Kategorija"
     confirm_all_discussions_will_be_made_private_message: "Ako nastavite, sve javne diskusije postaće privatne."
     confirm_all_discussions_will_be_made_public_message: "Da li ste sigurni? Ako nastavite, sve privatne diskusije postaće javne."
+    prompt_to_suggest_categories_html: "Ako želite predložiti nekoliko novih kategorija, <a href='%{link}' target='_blank'>pridružite se ovoj diskusiji</a>."
+    what_can_members_do: "Šta članovi mogu raditi?"
+    members_can:
+      add_members: Pozovite i odobrite nove članove
+      edit_comments: Menjaj njihove komentare u svakom momentu
+      edit_discussions: Izmeni kontekst bilo koje diskusije u grupi
+    motions_can_be_edited: Izmeni njihove predloge nakon što je glasanje počelo
     visible_to:
       label: Ko može naći ovu grupu?
       public_html: 'Svako <span>javno prikaži grupu u listi</span>'
@@ -251,19 +265,40 @@ sr:
       request_html: Javno <span>svako može da se pridruži grupi</span>
       approval_html: Sa zahtevom <span>svako može da zatraži da se priključi</span>
       invitation_html: Samo uz pozivnicu <span>novi članovi moraju biti pozvani</span>
-    members_can_add_members:
-      label: Ko može dodati članove?
-      'true': Svi članovi
-      'false': Samo za koordinatore
     parent_members_can_see_discussions:
       label: Privatnost diskusije
       'true': 'Sako u %{parent_group_name} može videti diskusije'
       'false': Samo članovi mogu videti diskusije
     discussion_privacy_options:
-      label: Privatnost diskusije
-      public_only_html: Javne diskusije siključivo<span>vidljive svima</span>
-      public_or_private_html: Omogući javne i privatne diskusije <span>odredi privatnost diskusije prema diskusiji</span>
-      private_only_html: Samo privatne diskusije <span>vidljive isključivo članovima grupe</span>
+      label: Ko može videti diskusije?
+      hint: Javne diskusije može svako videti.
+      public_only_html: Samo javne diskusije
+      public_or_private_html: Omogući javne i privatne diskusije
+      private_only_html: Samo privatne diskusije
+    learn_about_permissions: Saznaj više o dozvolama u grupi
+  group_permissions:
+    header: Dozvole grupe
+    coordinators_can: "Koordinatori mogu:"
+    c1: Promeni opcije grupe
+    c2: Izmeni naslov i kontekst bilo koje diskusije.
+    c3: Premesti diskusije u bilo koje grupe.
+    c4: Pozovi i odobri nove članove.
+    c5: Pošalji obaveštenje porukom svim članovima grupe.
+    c6: Deaktiviraj grupu.
+    c7: Dodaj/ukloni druge koordinatore.
+    c8: Obriši diskusije.
+    c9: Obriši komentare.
+    members_can: "Članovi mogu:"
+    m1: Brisati svoje komentare.
+    m2: Menjati njihove komentare, sve dok neko ne odgovori.
+    m3: Izmeni naslov i opsis predloga koji su pokrenuli, dok neko nije izneo svoj stav.
+    m4: Izmeni datum zatvranja predloga koji je pokrenut, dok nije zatvoren.
+    m5: Izmeni naslov i kontekst diskusije koju su pokrenuli u bilo koje vreme.
+    m6: Pokreni podgrupu, u kojoj će biti koordinatori nje.
+    optionally: "Opciono, koordinatori mogu odobriti članovima grupe da:"
+    o1: Pozovi i odobri novi članove.
+    o2: Menjati svoje komentare u bilo koje vreme.
+    o3: Menjati naslov ili kontekst bilo koje diskusije u grupi.
   group_privacy:
     visible_to:
       public: Javno dostupna grupa.
@@ -363,6 +398,8 @@ sr:
     motion_outcome_updated: "ažurirao/la je ishod predloga"
     discussion_title_edited: "naslov diskusije je promenjen"
     discussion_description_edited: "je promenio/la opis diskusije"
+    motion_name_edited: 'izmenjen naslov predloga'
+    motion_description_edited: 'izmenjen opis predloga'
   discussion: "Diskusija"
   current_decision: "Trenutna odluka"
   previous_decisions: "Prethodne odluke"
@@ -372,6 +409,7 @@ sr:
   empty_decision_list_html: "Spemni da donesete odluku? <br> Svako može pokrenuti predlog."
   empty_decision_index: "Ova grupa nije donela nikakvu odluku još uvek."
   empty_discussion_list: "Nema aktivnosti u ovoj diskusiji još."
+  go_to_add_comment_html: "Da dodate komentar, <a href='%{href}'>Idite na kraj diskusije</a>."
   discussion_list:
     empty:
       no_discussions: "Nema diskusija ni u jednoj od Vaših grupa."
@@ -409,6 +447,7 @@ sr:
   delete_discussion: "Obriši diskusiju"
   confirm_delete_discussion: "Da li ste sigurni da želite trajno obrisati ovu diskusiju?"
   new_proposal: "Novi predlog"
+  edit_proposal: "Izmeni Predlog"
   close_proposal: "Zatvori predlog"
   confirm_close_proposal: "Želiš da zatvoriš ovaj predlog?"
   change_proposal_close_date: "Promeni datum zatvaranja"
@@ -443,6 +482,9 @@ sr:
       'no': "se nije složio/la"
       abstain: "se sudržao/la"
       block: "je blokirao/la"
+  edit_comment:
+    comment_changes: "Izmene komentara"
+    edit_comment: "Izmeni komentar"
   help:
     coordinating: 'Koordiniranje svoje Lumio grupe'
     coordinating_details: |
@@ -482,7 +524,7 @@ sr:
     getting_started_description: "Sa leve strane, grupa diskutuje o temi, razmenjuje ideje i informacije.\nKada postoji odluka koju grupa treba doneti, ona se pojavljuje na desnoj strani."
     getting_the_most: 'Iskoristite Lumio na najbolji način'
     have_your_say: "Recite šta imate"
-    have_your_say_details_html: "<p>Kada ste spremni da kažete svoje, kliknite na jednu od četiri ikona za odlučivanje.</p>\n<p>Kada ste se odlučili, napišite kratko objašnjenje. Ispod grafickog prikaza statistike,\nmožete videti šta ostali misle. Na taj način lako možete pratiti \ndiskusiju. Kada pristigne nova informacija, možete promeniti svoju\npoziciju bilo kada.</p>\n"
+    have_your_say_details_html: "<p>Kada ste spremni da kažete svoje, škljocnite na jednu od četiri ikona za odlučivanje.</p>\n<p>Kada ste se odlučili, napišite kratko objašnjenje. Ispod grafičkog prikaza statistike,\nmožete videti šta ostali misle. Na taj način lako možete pratiti \ndiskusiju. Kada pristigne nova informacija, možete promeniti svoju\npoziciju bilo kada.</p>\n"
     have_a_discussion: "Diskutujte"
     have_a_discussion_description: "Tema i svaka relevantna prateća informacija stoji na vrhu strane. Koristite polje za komentar da iskažete svoj glas u diskusiji."
     help: "Pomoć"
@@ -685,9 +727,18 @@ sr:
       will_be_private_to_group: "Diskusija će biti vidljiva isključivo članovima %{group_name}."
       will_be_private_to_parent_group: "Diskusija će biti vidljiva članovima %{parent_group_name} i članovima %{group_name}."
       will_be_public: "Svako može videti diskusiju."
+  motion_history:
+    title: "Izmene predloga"
   motion_form:
-    header: "Novi predlog"
+    new:
+      header: "Novi predlog"
+      submit: 'Napravi predlog'
+    edit:
+      header: "Izmeni predlog"
+      submit: 'Ažuriraj predlog'
+      only_closing_at: 'Ne možete promeniti naziv predloga ili opis nakon što je glasanje počelo'
     name_helper: "Neka naslov bude što je moguće jasniji i sažetiji."
+    close_proposal_heading: "Želite da zatvorite predlog ranije?"
   vote_form:
     header: "Reci svoj stav"
     edit: "Promeni svoj stav"
@@ -735,29 +786,6 @@ sr:
       discussion:
         title: "Naslov"
         description: "Kontekst"
-      group:
-        name: "Naziv grupe"
-        description: "Opis"
-        members_invitable_by: "Ko može zvati ljude u ovu grupu?"
-        members_invitable_by_coordinators: "Samo za koordinatore"
-        members_invitable_by_members: "Svi članovi grupe"
-        privacy: Privatnost
-        visibility_visible_header: 'Vidljivo'
-        visibility_hidden_header: 'Sakriveno'
-        visibility_visible_description: 'Ljudi mogu naći ovu grupu i pitati da se priključe.'
-        visibility_hidden_description: 'Priključivanje ovoj grupi je isključivo pozivom.'
-        privacy_public_header: Javno
-        privacy_public_description: Diskusije su javne, osim ako se učine privatnim. Bilo ko može naći grupu i zatražiti članstvo.
-        privacy_private_header: Uglavnom privatno
-        privacy_private_description: Diskusije su privatne, sem ako ih vi eksplicitno ne učinite javnim. Bilo ko može naći grupu i prijaviti se za članstvo.
-        privacy_hidden_header: Skriveno (potpuno privatno)
-        privacy_hidden_description: Diskusije su uvek privatne. Pronaći i pridružiti se grupi moguće je samo preko pozivnice.
-        privacy_parent_group_members_header: Vidljivo za članove glavne grupe
-        privacy_parent_group_members_description: 'Isto kao da je skrivena, samo grupa i njene diskusije mogu biti vidljive od strane pripadnika glavne grupe. '
-        privacy_parent_group_members_description_short: Samo članovi i članovi glavne grupe mogu videti ovu grupu i diskusije u njoj.
-        group_members_invitable_by: "Samo za koordinatore"
-        submit: Iznesi
-        is_visible_to_parent_members_header: Omogući svim članovima %{group} da vide ovu podgrupu i njene diskusije
       membership_request:
         introduction: "Predstavite se"
       motion:
@@ -780,13 +808,10 @@ sr:
         title: "Naslov"
         description: "Dajte neki kontekst..."
       membership_request:
-        introduction: "Napišite nekoliko reči o tome ko ste i zašto želite da se pridružite % {groupe_name}."
+        introduction: "Napišite nekoliko reči o tome ko ste i zašto želite da se pridružite %{group_name}."
       motion:
         name: "Šta je Vaš predlog smera akcije?"
         description: "Dajte dovoljno informacija kako bi svi znali šta tačno znači složiti se ili se ne sa ovim predlogom."
-      group:
-        name: "Naziv grupe"
-        description: "Opis grupe"
       user:
         email: "ePošta"
         password: "Lozinka"
@@ -803,6 +828,8 @@ sr:
         create: "Napravi nalog"
         update: "Postavke ažuriranja"
   email:
+    by_who: "od strane %{person}"
+    reply_to_this_discussion: Odgovori u ovoj diskusiji
     to_join_discussion:
       subject: "%{who} želi da se pridružiš diskusiji na Lumiju."
       content: "Pozvani ste da učestvujete u diskusiji: %{discussion}"
@@ -817,7 +844,7 @@ sr:
       content: "%{who} te je dodao/la u %{which_group} na Lumiju. Škljocni ovde da odeš u grupu:"
     unsubscribe: "Odjavite se ili promenite podešavanja ePošte"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavu sa liste za obaveštenja ili promenu podešavanja Vaše ePošte."
-    view_comment: "Kliknite ovde da bi videli komentar na Lumiju"
+    view_comment: "Škljocnite ovde da bi videli komentar na Lumiju"
     view_discussion: "Škljocni ovde da vidiš ovu diskusiju"
     view_group: "Škljocni ovde da vidiš grupu na Lumiju"
     view_proposal: "Pogledajte ovaj predlog na Lumiju"
@@ -883,7 +910,7 @@ sr:
   back: "Nazad"
   cancel: "Otkaži"
   change: "Promeni"
-  change_language: "Kliknite ovde da koristite Lumio na %{language}"
+  change_language: "Škljocnite ovde da koristite Lumio na %{language}"
   changing: "Menja se"
   click_here: "Škljocni ovde"
   close: "Zatvori"
@@ -918,13 +945,13 @@ sr:
   pricing: 'Cenovnik'
   prev: "Prethodno"
   more: "Detaljnije..."
-  translate: "Pomozite da prevodemo Lumio!"
+  translate: "Pomozite da prevedemo Lumio!"
   translate_field: "Vidi prevod"
   loading_translation: "Učitavanje prevoda..."
   translate_this_string: "Prevedi na %{language}"
   failed_translation: "Nije moguće obaviti prevod"
   options: "Opcije"
-  ok_got_it: "Ok, shvatio!"
+  ok_got_it: "U redu, shvatio!"
   remove: "Ukloni"
   save: "Snimi"
   saving: "Snima se"
@@ -935,7 +962,6 @@ sr:
   start_a_group: "Započnite grupu"
   starting: "Počinje"
   subject: "Tema"
-  terms_of_service_html: "Kada škljocnete na Prijavi se, prihvatate Lumio <a href='%{link_path}' target='_blank'>Uslove</a>"
   thanks: "Hvala!"
   unlike: "Ne Sviđa"
   time_until_close: "%{quantity_of_time} do zatvaranja"
@@ -944,8 +970,91 @@ sr:
   google: "Google"
   persona: "Osoba"
   common:
+    back_to_discussion: "Nazad na diskusiju"
+    edited: Izmenjeno
+    today: Danas
+    months:
+      january: Januar
+      february: Februar
+      march: Mart
+      april: April
+      may: Maj
+      june: Jun
+      july: Jul
+      august: Avgust
+      september: Septembar
+      october: Oktobar
+      november: Novembar
+      december: Decembar
+    abbr_months:
+      jan: Jan
+      feb: Feb
+      mar: Mar
+      apr: Apr
+      may: Maj
+      jun: Jun
+      jul: Jul
+      aug: Avg
+      sep: Sep
+      oct: Okt
+      nov: Nov
+      dec: Dec
+    days:
+      monday: Ponedeljak
+      tuesday: Utorak
+      wednesday: Sreda
+      thursday: Četvrtak
+      friday: Petak
+      saturday: Subota
+      sunday: Nedelja
+    abbr_days:
+      mon: Pon
+      tue: Uto
+      wed: Sre
+      thu: Čet
+      fri: Pet
+      sat: Sub
+      sun: Ned
+    tiny_days:
+      mo: Po
+      tu: Ut
+      we: Sr
+      th: Če
+      fr: Pe
+      sa: Su
+      su: Ne
+    please_wait: "Molim sačekajte"
     privacy: "Privatnost"
     private: "Privatno"
     public: "Javno"
     email: "ePoruka"
     start_group: "Pokreni grupu!"
+  group_categories:
+    blank: "Nekategorizovano"
+    economics: "Ekonomija"
+    activist: "Aktivist"
+    arts: "Umetnost"
+    business: "Poslovanje"
+    collective: "Kolektiv"
+    community_group: "Grupa zajednice"
+    co_operative: "Kooperacija"
+    democratic_organisation: "Demokratska organizacija"
+    education: "Obrazovanje"
+    environmental_group: "Grupa za životnu sredinu"
+    family: "Porodica"
+    local_government: "Lokalna samouprava"
+    online_community: "Umrežena zajednica"
+    religious_group: "Religija/duhovnost"
+    event: "Događaj"
+    open_source_software: "Softver otvorenog izvora"
+    political_initiative: "Politička inicijativa"
+    social_enterprise: "Socijalna preduzuća"
+    social_justice: "Socijalna pravda"
+    advocacy_group: "Advokatska grupa"
+    science: "Nauka"
+    technology: "Tehnologija"
+    sports: "Sportovi"
+    youth: "Mladi"
+    women: "Žena"
+    media: "Mediji"
+    health: "Zdravstvo"

@@ -1,4 +1,13 @@
 nl:
+  explore:
+    go_to_group: "Ga naar %{group_name}"
+  try_it:
+    header: "Probeer Loomio"
+    start_a_group: "Begin een groep om beslissingen te maken in je eigen gemeenschap."
+    join_the_community: "Word lid van de Loomio Community groep"
+    loomio_community_info: "Dit is waar we discussiëren en beslissingen maken over Loomio."
+    explore_groups: "Ontdek andere groepen op Loomio"
+    explore_groups_info: "Check alle fantastische groepen op Loomio en word lid!"
   activerecord:
     errors:
       messages:
@@ -16,7 +25,6 @@ nl:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%-d/%-m/%y'
-      datepicker: "%d-%m-%Y"
   devise:
     invitations:
       send_instructions: 'Een uitnodiging is verstuurd naar %{email}.'
@@ -81,6 +89,11 @@ nl:
         one: "%{count} uitnodiging verzonden"
         other: "%{count} uitnodigingen verzonden"
       auto_added_and_sent: "%{auto_added_text} en %{sent_text}"
+  tooltip:
+    cover_photo_upload: "Upload nieuwe coverfoto"
+    logo_upload: "Upload nieuw logo"
+    edit_description: "Bewerk omschrijving"
+    group_category: "Vind meer groepen als deze"
   views:
     pagination:
       previous: "Vorige"
@@ -148,6 +161,8 @@ nl:
       almost_x_years:
         one: "1 jaar"
         other: "%{count} jaren"
+  organisation:
+    name: "Loomio"
   footer:
     about: 'Over'
     blog: 'Blog'
@@ -178,8 +193,15 @@ nl:
     motion_outcome_updated: "werkte de uitkomst van het voorstel bij"
   edit_discussion_context: "Bewerk discussie beschrijving"
   request_new_group: "Begin een groep"
+  start_new_group: "Begin een nieuwe groep"
+  start_new_group_hint: "Om te beginnen met het maken van beslissingen"
+  find_a_group: "Vind een groep"
+  find_a_group_hint: "Om openbare groepen te ontdekken"
+  no_group_header: "Welkom bij Loomio Beta"
   empty_notifications: "Je hebt nog geen meldingen."
   see_all_notifications: "Bekijk alle meldingen"
+  profile: "Profiel"
+  email_settings: "E-mail instellingen"
   sign_out: "Uitloggen"
   sign_in: "Inloggen"
   honeypot_warning: "Kon je account niet maken. Als je een voorleesprogramma gebruikt, zorg dan dat het laatste (verborgen) veld op het formulier leeg is."
@@ -197,6 +219,80 @@ nl:
   dashboard_helper_text:
     header: "Welkom op je Thuispagina"
     message: "<p>De Thuispagina laat je alle discussies zien in alle groepen waar je lid van bent.</p><p>Je kan een discussie beginnen over een nieuw onderwerp door te klikken op de “Begin een discussie” knop .</p>"
+  prompt_visitor_to_authenticate:
+    header: "Log in of meld je aan bij een groep om deel te nemen"
+    body: "Als je lid bent van deze groep moet je inloggen om deel te nemen."
+  prompt_user_to_join:
+    header: "Meld je aan bij de groep om deel te nemen"
+    body: "Om te reageren of te stemmen moet je lid zijn van deze groep."
+  group_form:
+    name: "Groepsnaam"
+    description: "Omschrijving"
+    category: "Categorie"
+    confirm_all_discussions_will_be_made_private_message: "Als je doorgaat zullen alle openbare discussies besloten gemaakt worden."
+    confirm_all_discussions_will_be_made_public_message: "Weet je het zeker? Als je doorgaat zullen alle besloten discussies openbaar gemaakt worden."
+    prompt_to_suggest_categories_html: "Als je nieuwe categorieën wil voorstellen, <a href='%{link}' target='_blank'>meng je in deze discussie</a>."
+    what_can_members_do: "Wat kunnen leden doen?"
+    members_can:
+      add_members: Nodig nieuwe leden uit en laat ze toe
+      edit_comments: Bewerk hun reacties op elk moment
+      edit_discussions: Bewerk de context van een discussie in de groep
+    motions_can_be_edited: Bewerk hun voorstellen nadat het stemmen is begonnen
+    visible_to:
+      label: Wie kan deze groep vinden?
+      public_html: 'Iedereen <span>groep openbaar tonen</span>'
+      parent_members_html: 'Mensen in %{parent_group_name} <span>niet openbaar getoond, maar zichtbaar voor leden van %{parent_group_name}</span>'
+      members_html: 'Alleen leden <span>de groep wordt niet getoond</span>'
+    membership_granted_upon:
+      label: Hoe worden mensen lid?
+      hidden_parent:
+        request_html: 'Open <span>voor gebruikers van %{parent_group_name}</span>'
+        approval_html: 'Op aanvraag <span>van leden van %{parent_group_name}</span>'
+      request_html: Open <span>iedereen kan lid worden van de groep</span>
+      approval_html: Middels aanvraag <span>iedereen kan aanvragen lid te worden</span>
+      invitation_html: Alleen op uitnodiging <span>nieuwe leden moeten uitgenodigd worden</span>
+    parent_members_can_see_discussions:
+      label: Discussie privacy
+      'true': 'Iedereen in %{parent_group_name} kan discussies zien'
+      'false': Alleen leden kunnen discussies zien
+    discussion_privacy_options:
+      label: Wie kunnen discussies zien?
+      hint: Openbare discussies kunnen bekeken worden door iedereen.
+      public_only_html: Alleen openbare discussies
+      public_or_private_html: Sta zowel openbare als besloten discussies toe
+      private_only_html: Alleen besloten discussies
+    learn_about_permissions: Ontdek meer over groepspermissies
+  group_permissions:
+    header: Groepspermissies
+    coordinators_can: "Coördinatoren kunnen:"
+    c1: De groepsinstellingen veranderen
+    c2: De titel en context van een discussie bewerken.
+    c3: Discussies tussen groepen verplaatsen.
+    c4: Nieuwe leden uitnodigen en ze toelaten.
+    c5: Een e-mail met aankondiging naar alle groepsleden versturen.
+    c6: Een groep deactiveren.
+    c7: Andere coördinatoren toevoegen/verwijderen.
+    c8: Discussies verwijderen.
+    c9: Reacties verwijderen.
+    members_can: "Leden kunnen:"
+    m1: Hun eigen reacties verwijderen.
+    m2: Hun eigen reacties bewerken tot iemand geantwoord heeft.
+    m3: De titel en omschrijving van voorstellen bewerken die ze begonnen zijn, tot iemand zijn/haar standpunt kenbaar heeft gemaakt.
+    m4: De sluitingsdatum van voorstellen die ze begonnen zijn bewerken, tot ze gesloten zijn.
+    m5: De titel en omschrijving van discussies die ze begonnen zijn bewerken.
+    m6: Een subgroep beginnen waar ze coördinator van worden.
+    optionally: "Optioneel kunnen coördinatoren groepsleden toestaan om:"
+    o1: Nieuwe leden uit te nodigen en toe te staan.
+    o2: Hun eigen reacties altijd te kunnen bewerken.
+    o3: De titel of omschrijving van elke discussie in de groep bewerken.
+  group_privacy:
+    visible_to:
+      public: Openbaar getoonde groep.
+      parent_members: 'Groep tonen als besloten. Alleen zichtbaar voor leden en mensen in %{parent_group_name}.'
+      members: Besloten groep. Alleen zichtbaar voor leden.
+      public_html: 'Iedereen <span>maak de groep openbaar</span>'
+      parent_members_html: 'Mensen in %{parent_group_name} <span>niet openbaar getoond, maar zichtbaar voor leden van %{parent_group_name}</span>'
+      members_html: 'Alleen leden <span>de groep wordt niet getoond</span>'
   setup_steps_title: "Volgende stappen:"
   setup_step_1: "Bekijk de voorbeeld discussie"
   setup_step_2: "Begin je eerste discussie"
@@ -232,6 +328,11 @@ nl:
   confirm_remove_member: 'Weet je zeker dat je dit lid wilt verwijderen uit de groep?'
   want_to_invite_html: "Wil je <a href='%{link}'>mensen uitnodigen</a> voor deze groep?"
   membership_requests: "Lidmaatschapsverzoeken"
+  previous_requests: Eerdere verzoeken
+  approved_by_person: Goedgekeurd door %{person}
+  ignored_by_perosn: Genegeerd door %{person}
+  join_group_btn: Word lid van groep
+  you_have_joined_group: Je bent lid geworden van %{group_name}
   confirm_approve_membership_request: "Weet je zeker dat je %{which_user} aan de groep toe wilt voegen?"
   cancel_membership_request: "Annuleer aanvraag"
   ignore_request: "Aanvraag negeren"
@@ -263,6 +364,9 @@ nl:
   edit_group_description: "Bewerk groepsomschrijving"
   group_subscription: "Groepsabonnement"
   group_request:
+    beta_request_header: "Begin een groep op Loomio Beta"
+    beta_request_description: "Om te beginnen met het maken van beslissingen op Loomio Beta, is het maken van een groep de eerste stap"
+    neighbourhood_support_group: "b.v. Buurt Steungroep"
     confirmation:
       title: Je bent bijna klaar! Bekijk je e-mail.
       body_html: |
@@ -280,21 +384,33 @@ nl:
     motion_outcome_updated: "heeft de uitkomst van het voorstel bijgewerkt"
     discussion_title_edited: "veranderde de titel van de discussie"
     discussion_description_edited: "veranderde de omschrijving van de discussie"
+    motion_name_edited: 'bewerkte de titel van het voorstel'
+    motion_description_edited: 'bewerkte de omschrijving van het voorstel'
   discussion: "Discussie"
   current_decision: "Huidige beslissing"
   previous_decisions: "Vorige beslissingen"
   see_previous_decisions: "Bekijk vorige beslissingen"
+  see_more: "Bekijk meer"
   create_new_proposal: "Maak nieuw voorstel"
   empty_decision_list_html: "Klaar om een beslissing te maken? <br> Iedereen kan een voorstel indienen."
   empty_decision_index: "Deze groep heeft nog geen beslissingen genomen."
   empty_discussion_list: "Er is nog geen activiteit in deze discussie."
-  empty_discussion_index: "In geen van je groepen is een discussie gaande."
-  empty_discussion_index_group: "Deze groep heeft nog geen discussies."
-  private_group_discussion_display: "Deze groep is afgeschermd. De discussies zijn alleen zichtbaar voor leden. Als je mee wilt praten, kan je hierom vragen."
+  go_to_add_comment_html: "Om een reactie te geven, <a href='%{href}'>ga naar het einde van de discussie</a>."
+  discussion_list:
+    empty:
+      no_discussions: "Er zijn geen discussies in jouw groepen."
+      no_discussions_in_group: "Deze groep bevat nog geen discussies."
+      no_public_discussions: "Er zijn geen openbare discussies binnen deze groep."
+      discussions_are_private: "Alle discussies in deze groep zijn besloten."
+      request_membership_html: "Om besloten discussies te zien, <a href='%{href}'>vraag aan om lid te worden.</a>"
+      membership_is_invitation_only: "Om lid te worden van deze groep moet je uitgenodigd zijn door een lid."
+      membership_is_invitation_by_admin_only: "Om lid te worden van deze groep moet je uitgenodigd zijn door een coördinator."
+      log_in_html: "Als je lid bent, <a href='%{href}'>log in</a> om besloten discussies te bekijken."
   discussion_context:
     started_html: "%{when} geleden begonnen door <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Laatst bewerkt %{when} geleden door <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Bekijk mutatie geschiedenis"
+    see_history: "Bekijk geschiedenis"
   description_history:
     header: "Mutatie geschiedenis"
     subheader: "Versie"
@@ -317,6 +433,7 @@ nl:
   delete_discussion: "Verwijder discussie"
   confirm_delete_discussion: "Weet je zeker dat je deze discussie permanent wilt verwijderen?"
   new_proposal: "Nieuw Voorstel"
+  edit_proposal: "Bewerk Voorstel"
   close_proposal: "Sluit voorstel"
   confirm_close_proposal: "Weet je zeker dat je dit voorstel wilt sluiten?"
   change_proposal_close_date: "Verander sluitingsdatum"
@@ -351,6 +468,9 @@ nl:
       'no': "mee oneens"
       abstain: "onthouden"
       block: "geblokkeerd"
+  edit_comment:
+    comment_changes: "Reactie wijzigingen"
+    edit_comment: "Bewerk reactie"
   help:
     coordinating: 'Coördineer jouw Loomio groep'
     coordinating_details: |
@@ -481,16 +601,34 @@ nl:
   password_confirmation: "Wachtwoord bevestiging"
   current_password: "Huidig wachtwoord"
   password_details: "(we hebben je huidige wachtwoord nodig om je veranderingen te bevestigen)"
+  confirm_password: "Bevestig wachtwoord"
   cancel_my_account: "Annuleer mijn account"
   remember_me: "Onthoud mij"
   signing_in: "Aanmelden"
+  or: "of"
   forgot_your_password: "Wachtwoord vergeten?"
+  dont_have_an_account: "Heb je geen account?"
+  create_one_now: "Maak er nu een"
+  link_it_up_instead: "Of verbind het"
+  sign_up_via: "Meld je aan via"
+  or_fill_in_this_form: "of vul dit formulier in"
+  already_have_account: "Heb je al een Loomio account?"
+  confirm_your_details: "Bevestig je gegevens"
+  link_up_your_account: "Koppel je account"
+  log_in_to_your_loomio_account: "Log in je Loomio account en koppel dit met %{provider_name}."
+  now_that_your_logged_in: "Nu je ingelogd bent met %{provider_name}, bevestig je gegevens om  je Loomio account te maken."
   confirmation_not_received: "Geen bevestigingsinstructies ontvangen?"
   unlock_not_received: "Geen ontgrendelingsinstructies ontvangen?"
   inactive_html: "Sorry, dit account is op het moment niet actief. <a href='%{path_to_contact}'>Neem contact op</a> als je vragen hebt."
+  create_an_account_html: 'Maak een Loomio Beta account'
+  log_in: "Log in"
   join_group:
     log_in: "Log in om je bij %{group_name} aan te sluiten"
     create_account_to_join_group: "Maak een account om lid te worden van %{group_name}"
+  start_group:
+    log_in: "Log in om je groep in te stellen"
+    create_account_to_start_group: "Maak een account om je groep %{group_name} te maken"
+    create_account: "Maak een account"
   invitation:
     alternate: "Of deel deze link waarmee iedereen een aanvraag in kan dienen om lid te worden:"
     by_email: "Uitnodiging via e-mail"
@@ -503,12 +641,17 @@ nl:
     invitees_placeholder: "Gebruikersnaam <user1@example.com>, user2@example.com"
     subject: "Sluit je aan bij onze nieuwe Loomio groep, %{group}"
     invite_people: "Nodig mensen uit in jouw groep"
+    invite_to_discussion: "Nodig mensen uit voor deze discussie"
+    invite_to_discussion_info: "Door mensen toe te voegen aan deze discussie verstuur je automatisch een uitnodiging om lid te worden van de groep. Als ze accepteren, worden ze naar deze discussie geleid."
     select_members: "Voeg leden toe uit %{group_name}"
     body_editable: |
       Hoi, kom beslissingen maken met ons! We gebruiken een gezamenlijk besluitvormingsinstrument genaamd Loomio.
+    body_editable_discussion: |
+      Heej daar, kom erbij en voeg je bij de discussie!
     message_body: "Uitnodiging"
     invites_more_help2: "<p>Je kan ten alle tijde mensen uitnodigen voor je groep.</p><p>Mogelijk wil je gelijk alle leden in een keer uitnodigen of alleen de mensen met wie je het meeste samenwerkt.</p>"
     invitation_link: "Uitnodigingslink"
+    discussion_link: "Doe mee aan de discussie:"
     link_help: "Klik op deze link om je aan te sluiten bij %{group} op Loomio:"
     copy: "Als iemand de e-mail met een uitnodiging niet heeft gekregen, dan kan je bovenstaande uitnodigingslink kopiëren en zelf aan de ontvanger sturen."
     pending_invitations: 'Uitnodigingsverzoeken'
@@ -533,18 +676,39 @@ nl:
       Loomio Helper Bot probeert jouw groep enthousiast te krijgen voor een reis naar de maan. Schijnbaar is de ruimte-kaas heerlijk. Echter, de gevolgen van je co2-voetafdruk zijn zorgelijk. Is het een goed idee? Loomio Helper Bot wil graag weten wat jij denkt!
       Als je je standpunt ten opzichte van dit voorstel helder voor ogen hebt, klik dan op een van icoontjes hieronder (zweef over de beslis-icoontjes heen om een uitleg te krijgen over wat ze betekenen).
       Je wordt gevraagd om een korte uitleg te geven over de reden van je beslissing. Dat maakt het gemakkelijk om een samenvatting te zien van wat iedereen denkt en waarom. Je kan van gedachten veranderen en je standpunt bewerken tot het voorstel sluit.
+  contact_page:
+    contact_us: 'Neem contact op'
+    labels:
+      name: 'Je naam'
+      email: 'Je e-mailadres'
+      message: 'Je bericht'
+      submit: 'Verstuur bericht'
+    messages:
+      email_html: "Vul dit formulier in of stuur een e-mail naar <a href='mailto:%{email}'>%{email}</a>"
+      social_html: "Je kan ons ook volgen op<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>en <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: "Begin een discussie"
       who: "In welke groep wil je de discussie maken?"
     edit:
       header: "Bewerk discussie"
+    privacy:
+      will_be_private: "De discussie zal alleen zichtbaar zijn voor leden van de groep."
+      will_be_private_to_group: "De discussie zal alleen zichtbaar zijn voor leden van %{group_name}."
+      will_be_private_to_parent_group: "De discussie zal zichtbaar zijn voor leden van %{parent_group_name} en leden van van %{group_name}."
+      will_be_public: "Iedereen kan deze discussie zien."
+  motion_history:
+    title: "Voorstel wijzigingen"
   motion_form:
-    header: "Nieuw voorstel"
+    new:
+      header: "Nieuw voorstel"
+      submit: 'Maak voorstel'
+    edit:
+      header: "Bewerk voorstel"
+      submit: 'Update voorstel'
+      only_closing_at: 'Je kan de naam of omschrijving van het voorstel niet aanpassen nadat het stemmen is begonnen'
     name_helper: "Maak de titel zo duidelijk en beknopt mogelijk."
-  group_form:
-    invitation_settings: "Instellingen Uitnodigingen"
-    admins_only: "Alleen coördinatoren"
+    close_proposal_heading: "Wil je het voorstel vroegtijdig sluiten?"
   vote_form:
     header: "Maak je standpunt kenbaar"
     edit: "Bewerk je standpunt"
@@ -557,6 +721,7 @@ nl:
     header: "E-mail voorkeuren"
     daily_activity_summary: "Samenvatting Dagelijkse Activiteiten"
     daily_activity_subscription: "Stuur me dagelijks een activiteiten e-mail met een samenvatting van wat er in mijn groepen is gebeurd"
+    missed_yesterday_subscription: "Stuur mij 'Gisteren op Loomio' - mijn ongelezen inhoud van de afgelopen 24 uur"
     global_notifications: "Algemene Meldingen"
     proposal_closing_soon_subscription: "Herinner me 24 uur voordat een voorstel sluit"
     mentions_subscription: "E-mail me wanneer iemand mij noemt in een reactie"
@@ -565,6 +730,12 @@ nl:
     update_preferences: "Voorkeuren bijwerken"
   new_user_form:
     create_an_account: "Maak een account"
+  profile_form:
+    view: "Bekijk mijn profiel"
+    profile: "Bewerk profiel"
+    picture: "Afbeelding"
+    use_avatar_kind: "Gebruik %{kind}"
+    upload_new_image: "Upload nieuwe afbeelding"
   group_setup:
     set_up_your_group: Stel je groep in
     desc_header: "Je bent er bijna!"
@@ -586,31 +757,6 @@ nl:
       discussion:
         title: "Titel"
         description: "Beschrijving"
-        privacy_public_header: "Openbaar"
-        privacy_public_description: "Iedereen kan deze discussie zien"
-        privacy_private_header: "Afgeschermd"
-        privacy_hidden_description: "Alle discussies in een verborgen groep zijn afgeschermd."
-        of: "van"
-        of_no_group: "van deze groep"
-      group:
-        name: "Groepsnaam"
-        description: "Beschrijving"
-        members_invitable_by: "Wie kunnen mensen uitnodigen tot deze groep?"
-        members_invitable_by_coordinators: "Alleen coördinatoren"
-        members_invitable_by_members: "Alle groepsleden"
-        privacy: Privacy
-        privacy_public_header: Openbaar
-        privacy_public_description: Discussies zijn openbaar, tenzij je deze afschermt. Iedereen kan de groep vinden en vragen om lid te worden.
-        privacy_private_header: Grotendeels afgeschermd
-        privacy_private_description: Discussies zijn afgeschermd, tenzij je deze expliciet openbaar maakt. Iedereen kan de groep vinden en vragen om lid te worden.
-        privacy_hidden_header: Verborgen (volledig afgeschermd)
-        privacy_hidden_description: Discussies zijn altijd afgeschermd. De groep zoeken en je erbij aansluiten kan alleen via een uitnodiging.
-        privacy_parent_group_members_header: Zichtbaar voor hoofd-groepsleden
-        privacy_parent_group_members_description: Zelfde als verborgen, alleen de groep en de discussies erin kunnen bekeken worden door hoofd-groepsleden.
-        privacy_parent_group_members_description_short: Alleen leden en hoofd-groepsleden kunnen deze groep en de discussies erin zien.
-        group_members_invitable_by: "Alleen coördinatoren"
-        submit: Verzenden
-        is_visible_to_parent_members_header: Sta alle leden van %{group} toe om deze subgroep en de discussies erin te zien
       membership_request:
         introduction: "Introduceer jezelf"
       motion:
@@ -623,6 +769,11 @@ nl:
         password: "Wachtwoord"
         password_confirmation: "Bevestig wachtwoord"
         language_preference: "Taal"
+      group_request:
+        admin_name: "Wat is je naam?"
+        admin_email: "Wat is je e-mailadres?"
+        name: "Wat is de naam van je groep?"
+        description: "Als je een momentje hebt, vertel ons over jouw groep"
     placeholders:
       discussion:
         title: "Titel"
@@ -632,12 +783,11 @@ nl:
       motion:
         name: "Welke vervolgstap stel je voor?"
         description: "Geef voldoende informatie zodat iedereen exact weet wat het betekent om het eens of oneens te zijn."
-      group:
-        name: "Groepsnaam"
-        description: "Groepsomschrijving"
       user:
         email: "E-mail"
         password: "Wachtwoord"
+      group_request:
+        description: "We vinden het leuk om wat over jouw groep te horen en waarom je Loomio wil gebruiken."
   helpers:
     submit:
       discussion:
@@ -649,6 +799,13 @@ nl:
         create: "Maak account"
         update: "Instellingen bijwerken"
   email:
+    by_who: "door %{person}"
+    reply_to_this_discussion: Reageer op deze discussie
+    to_join_discussion:
+      subject: "%{who} wil dat je meedoet aan een discussie op Loomio"
+      content: "Je bent uitgenodigd om deel te nemen aan de discussie: %{discussion}"
+      message_intro: "%{who} zegt:"
+      link: "Doe mee aan de discussie"
     to_join_group:
       subject: "%{member} heeft je uitgenodigd om deel te nemen aan %{group_name} op Loomio"
     to_start_group:
@@ -662,7 +819,6 @@ nl:
     view_discussion: "Klik hier om deze discussie te bekijken"
     view_group: "Klik hier om de groep op Loomio te bekijken"
     view_proposal: "Bekijk dit voorstel op Loomio"
-    campaign_html: "Was deze beslissing belangrijk voor jou? Overweeg <a href='%{link_path}'>een Loomio donateur te worden</a> en help ons Loomio over de wereld te verspreiden. We zijn een klein team dat grote dingen probeert te doen en we hebben jouw bijdrage nodig om te kunnen blijven groeien!"
     create_discussion:
       intro: "%{who} is een nieuwe discussie in %{which_group} begonnen:"
       subject: "Nieuwe discussie - %{which}"
@@ -674,6 +830,14 @@ nl:
       heading: "Jouw Loomio Activiteit"
       intro: "Tonen wat er is gebeurd in jouw Loomio groepen in de laatste 24 uur"
       subject: "Loomio - Samenvatting van de laatste 24 uur"
+    missed_yesterday:
+      subject: "Gisteren op Loomio"
+      mark_as_read: Markeer als gelezen
+      thanks_for_reading: Bedankt voor het lezen, een fijne dag gewenst!
+      click_here_to_mark_all_as_read_html: |
+        Hier is alles dat gisteren op Loomio gebeurde.
+        Als je het gelezen hebt, klik <a href="%{link}">markeer als gelezen</a> om het uit je Loomio Inbox te halen.
+      marked_as_read_success: "Alles uit de e-mail is gemarkeerd als gelezen"
     group_email:
       intro: "%{who} maakte een aankondiging aan %{group}:"
     group_membership_approved:
@@ -755,10 +919,16 @@ nl:
   other: "Andere"
   outcome: "Uitkomst"
   password: "Wachtwoord"
+  leave_this_field_blank: "laat dit veld leeg"
+  photo: 'Foto'
   pricing: 'Tarieven'
   prev: "Vorige"
   more: "Meer..."
+  translate: "Help Loomio te vertalen!"
+  translate_field: "Bekijk vertaling"
+  loading_translation: "Vertaling laden..."
   translate_this_string: "Vertalen naar %{language}"
+  failed_translation: "Vertaling voltooien mislukt"
   options: "Opties"
   ok_got_it: "Okee, ik snap 't!"
   remove: "Verwijder"
@@ -769,13 +939,102 @@ nl:
   send_email: "Stuur e-mail"
   show_more: "Laat meer zien"
   start_a_group: "Begin een groep"
-  start_group: "Start groep!"
   starting: "Beginnen"
   subject: "Onderwerp"
   terms_of_service_html: "Door te klikken op %{button_text}, ga je akkoord met Loomio's <a href='%{link_path}' target='_blank'>Algemene Voorwaarden</a>"
   thanks: "Bedankt!"
-  translate: "Help Loomio te vertalen!"
   unlike: "Niet leuk"
+  time_until_close: "%{quantity_of_time} tot sluiting"
   update: "Bijwerken"
+  facebook: "Facebook"
+  google: "Google"
+  persona: "Persoonsgegevens"
   common:
+    back_to_discussion: "Terug naar discussie"
+    edited: Bewerkt
+    today: Vandaag
+    months:
+      january: januari
+      february: februari
+      march: maart
+      april: april
+      may: mei
+      june: juni
+      july: juli
+      august: augustus
+      september: september
+      october: oktober
+      november: november
+      december: december
+    abbr_months:
+      jan: jan
+      feb: feb
+      mar: mrt
+      apr: apr
+      may: mei
+      jun: jun
+      jul: jul
+      aug: aug
+      sep: sep
+      oct: okt
+      nov: nov
+      dec: dec
+    days:
+      monday: maandag
+      tuesday: dinsdag
+      wednesday: woensdag
+      thursday: donderdag
+      friday: vrijdag
+      saturday: zaterdag
+      sunday: zondag
+    abbr_days:
+      mon: maa
+      tue: din
+      wed: woe
+      thu: don
+      fri: vrij
+      sat: zat
+      sun: zon
+    tiny_days:
+      mo: ma
+      tu: di
+      we: wo
+      th: do
+      fr: vr
+      sa: za
+      su: zo
+    please_wait: "Even geduld"
+    privacy: "Privacy"
+    private: "Besloten"
+    public: "Openbaar"
     email: "E-mail"
+    start_group: "Begin groep!"
+  group_categories:
+    blank: "Niet gecategoriseerd "
+    economics: "Economie"
+    activist: "Activisme"
+    arts: "Kunsten"
+    business: "Zakelijk"
+    collective: "Collectief"
+    community_group: "Community groep"
+    co_operative: "Coöperatief "
+    democratic_organisation: "Democratische organisatie"
+    education: "Educatie"
+    environmental_group: "Milieubeweging"
+    family: "Familie"
+    local_government: "Lokale overheid"
+    online_community: "Online gemeenschap"
+    religious_group: "Religieus/spiritueel"
+    event: "Gebeurtenis"
+    open_source_software: "Open source software"
+    political_initiative: "Politiek initiatief"
+    social_enterprise: "Sociale onderneming"
+    social_justice: "Sociale gerechtigheid"
+    advocacy_group: "Lobbygroep"
+    science: "Wetenschap"
+    technology: "Technologie"
+    sports: "Sport"
+    youth: "Jeugd"
+    women: "Vrouwen"
+    media: "Media"
+    health: "Gezondheid"
