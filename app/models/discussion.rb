@@ -182,6 +182,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def set_last_comment_at
+    self.last_activity_at ||= Time.now
     self.last_comment_at ||= Time.now
   end
 
