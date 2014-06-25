@@ -61,7 +61,12 @@ class Invitation < ActiveRecord::Base
   end
 
   def cancelled?
-    cancelled_at.present?
+    if invitable.blank?
+      Measurement.increment('invitation_to_deleted_invitable')
+      true
+    else
+      cancelled_at.present?
+    end
   end
 
   def accepted?
