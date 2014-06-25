@@ -10,20 +10,22 @@ class UserMailer < BaseMailer
     @time_frame = @time_start...@time_finish
 
     @utm_hash = UTM_EMAIL.merge utm_source: 'missed_yesterday'
+
     if unread
-      @discussions_by_group = Queries::VisibleDiscussions.new(user: user,
-                                                            groups: user.inbox_groups).
-                                                            unread.
-                                                            active_since(@time_start).
-                                                            group_by(&:group)
+      @discussions = Queries::VisibleDiscussions.new(user: user,
+                                                     groups: user.inbox_groups).
+                                                     unread.
+                                                     active_since(@time_start)
     else
-      @discussions_by_group = Queries::VisibleDiscussions.new(user: user,
-                                                            groups: user.inbox_groups).
-                                                            active_since(@time_start).
-                                                            group_by(&:group)
+      @discussions = Queries::VisibleDiscussions.new(user: user,
+                                                     groups: user.inbox_groups).
+                                                     active_since(@time_start)
     end
 
-    unless @discussions_by_group.empty?
+    #binding.pry
+
+    unless @discussions.empty?
+      @discussions_by_group = @discussions.group_by(&:group)
       locale = best_locale(user.locale)
       I18n.with_locale(locale) do
         mail to: user.email,

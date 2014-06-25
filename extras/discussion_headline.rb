@@ -58,11 +58,7 @@ class DiscussionHeadline
     if motion_synopsis.present?
       "#{discussion_synopsis} and #{motion_synopsis}"
     else
-      if discussion_synopsis.present?
-        discussion_synopsis
-      else
-        motion_synopsis
-      end
+      discussion_synopsis
     end
   end
 
