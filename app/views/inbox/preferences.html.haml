@@ -14,7 +14,7 @@
       - group = membership.group
       - next if group.nil?
       .row
-        .span12
+        .col-md-12
           =label_tag "group_#{group.id}", class: 'checkbox' do
             =check_box_tag 'groups[]', group.id, membership.inbox_position.present?, id: "group_#{group.id}", class: 'checkbox'
             =group.full_name

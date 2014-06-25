@@ -1,5 +1,5 @@
 .row
-  .span12
+  .col-md-12
     %h1= t("email_preferences_form.header")
     =simple_form_for(@email_preferences, :url => update_email_preferences_path, :method => :put) do |f|
       %h2= t("email_preferences_form.daily_activity_summary")

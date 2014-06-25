@@ -6,10 +6,10 @@
   .container
     .navbar-header
       %button.navbar-toggle{type: 'button', data: {toggle: 'collapse', target: '#navbar-collapse'}}
-        %span.sr-only= t :"sr.toggle_navigation"
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
+        %col-md-.sr-only= t :"sr.toggle_navigation"
+        %col-md-.icon-bar
+        %col-md-.icon-bar
+        %col-md-.icon-bar
       %a.navbar-brand{class: logo_class, href: dashboard_or_root_path, title: t(:"organisation.name")}
 
     - if user_signed_in?
@@ -18,11 +18,11 @@
           %li
             %a{href: inbox_path}
               %i.fa.fa-inbox
-              %span#inbox-count.label
+              %col-md-#inbox-count.label
           %li.dropdown
             %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
               %i.fa.fa-bell
-              %span#notifications-count.label.activity-count
+              %col-md-#notifications-count.label.activity-count
             %ul.dropdown-menu
               %li
                 %h3= t("notifications.header")
@@ -34,7 +34,7 @@
           %li.dropdown
             %a.dropdown-toggle{href: "#", 'data-toggle' => 'dropdown'}
               %i.fa.fa-group
-              %span= t :groups
+              %col-md-= t :groups
             %ul.dropdown-menu
               #group-dropdown-items
               - if current_user.show_start_group_button?

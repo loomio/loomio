@@ -1,11 +1,11 @@
 -unless omniauth_authenticated_and_waiting?
   .row.sso-btn-row
-    .col-md-4.btn-container
+    %col-md-4.btn-container
       = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-default btn-facebook btn-lg login' do
         = t :facebook
-    .col-md-4.btn-container
+    %col-md-4.btn-container
       = link_to user_omniauth_authorize_path(:google), class: 'btn btn-default btn-google btn-lg login' do
         = t :google
-    .col-md-4.btn-container
+    %col-md-4.btn-container
       = link_to user_omniauth_authorize_path(:browser_id), class: 'btn btn-default btn-persona btn-lg login', id: 'persona-login-btn' do
         Persona

@@ -1,5 +1,5 @@
-.row-fluid
-  .span12.category
+.row
+  .col-md-12.category
     - if category
       %h2= link_to_unless_current t(category.translatable_name), category_explore_path(category)
     -else
@@ -7,13 +7,13 @@
 
 
 
-.row-fluid.groups-row
-  .span6.col
+.row.groups-row
+  %col-md-6.col
     - groups.each_with_index do |group, index|
       - next unless index % 2 == 0
       =render 'group', group: group
 
-  .span6.col
+  %col-md-6.col
     - groups.each_with_index do |group, index|
       - next unless index % 2 == 1
       =render 'group', group: group

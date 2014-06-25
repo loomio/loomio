@@ -1,9 +1,9 @@
-.row-fluid
-  .span12.header
-    .row-fluid
-      .span6
+.row
+  .col-md-12.header
+    .row
+      .col-md-6
         %h1=link_to t(:groups), explore_path
-      .span6
-        .explore-search-bar
+      .col-md-6
+        .explore-search-bar#searchbar
           = form_tag search_explore_path, method: 'get' do |f|
             = text_field_tag :query, '', placeholder: t(:'search.placeholder')

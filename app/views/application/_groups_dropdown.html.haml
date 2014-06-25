@@ -1,7 +1,7 @@
 %li.nav-item.dropdown.left-side#groups
   %a.nav-link.dropdown-toggle.groups-dropdown-btn{href: "#", 'data-toggle' => 'dropdown'}
     %i.fa.fa-group
-    %span= t :groups
+    %col-md-= t :groups
   %ul.dropdown-menu
     #group-dropdown-items
     - if current_user.show_start_group_button?
