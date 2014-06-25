@@ -28,7 +28,9 @@ class AppTranslation
                             'Gaelic (Irish)' => :ga,
                             'Esperanto' => :eo,
                             'Telugu' => :te,
-                            'khmer' => :km}
+                            'khmer' => :km,
+                            'Belarusian' => :be,
+                            'Macedonian' => :mk }
 
   FRONTPAGE_SUPPORTED_LOCALES = [:en, :pt, :el, :es, :ca, :cs, :fr, :uk, :nl, :zh, :sv, :da, :be, :ru, :ko, :sr]
 
