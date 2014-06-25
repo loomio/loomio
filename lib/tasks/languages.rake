@@ -56,6 +56,7 @@ namespace :languages do
             print "  #{language.to_s}#{key}\n"
             print "\t\e[32m#{bolded_english}\e[0m\n"
             print "\t#{foreign_str}\n\n"
+            print "\t\e[30mhttps://www.transifex.com/projects/p/loomio-1/translate/##{language.to_s}/#{RESOURCES.key(file)}/?key=#{key[1..-1]}\e[0m\n\n"
           end
         end
       end
