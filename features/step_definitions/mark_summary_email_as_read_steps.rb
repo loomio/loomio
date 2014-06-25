@@ -4,11 +4,12 @@ Given(/^I am a logged out user with an unread discussion$/) do
   @group = FactoryGirl.create(:group)
   @group.add_member!(@user)
   @group.add_member!(@voter)
+  @time_start = 1.hour.ago
 
-  @discussion = FactoryGirl.create(:discussion, group: @group, created_at: 1.hour.ago)
-  @motion = FactoryGirl.create(:motion, discussion: @discussion, created_at: 1.hour.ago)
+  @discussion = FactoryGirl.create(:discussion, group: @group, created_at: @time_start)
+  @motion = FactoryGirl.create(:motion, discussion: @discussion, created_at: @time_start)
 
-  Vote.create!(motion: @motion, user: @voter, position: 'yes', created_at: 1.hour.ago)
+  Vote.create!(motion: @motion, user: @voter, position: 'yes', created_at: @time_start)
 
   @motion.reload
   @discussion.reload
@@ -26,7 +27,8 @@ end
 
 When(/^I mark the email as read$/) do
   visit mark_summary_email_as_read_path(
-    email_timestamp: 30.minutes.ago.utc.to_i,
+    time_start: @time_start.utc.to_i,
+    time_finish: 30.minutes.ago.utc.to_i,
     unsubscribe_token: @user.unsubscribe_token
   )
 end

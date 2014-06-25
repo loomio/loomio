@@ -1,4 +1,8 @@
 namespace :loomio do
+  task :send_proposal_closing_soon => :environment do
+    Delayed::Job.enqueue ProposalsClosingSoonJob.new
+  end
+
   task :close_lapsed_motions => :environment do
     MotionService.close_all_lapsed_motions
   end

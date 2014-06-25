@@ -52,7 +52,7 @@ class Group < ActiveRecord::Base
   scope :visible_to_public, published.where(is_visible_to_public: true)
   scope :hidden_from_public, published.where(is_visible_to_public: false)
 
-  scope :visible_on_explore_front_page, -> { published.categorised_any.parents_only }
+  scope :visible_on_explore_front_page, -> { visible_to_public.categorised_any.parents_only }
 
   scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
 
@@ -155,11 +155,11 @@ class Group < ActiveRecord::Base
   validates_attachment :cover_photo,
     size: { in: 0..10.megabytes },
     content_type: { content_type: /\Aimage/ },
-    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }
+    file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
   validates_attachment :logo,
     size: { in: 0..10.megabytes },
     content_type: { content_type: /\Aimage/ },
-    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }
+    file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
   def coordinators
     admins
