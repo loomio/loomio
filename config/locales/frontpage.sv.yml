@@ -6,10 +6,13 @@ sv:
     link:
       blog: 'Blogg'
       contact: 'Kontakt'
+      donate: 'Gör en donation redan idag'
       press: 'Press'
       try_it: 'Pröva det'
       log_in: 'LOGGA IN'
       video: "Läs mer om hur Loomio fungerar"
+      try_loomio_beta: 'Prova Loomio Beta'
+      check_out_loomio_beta: 'Kolla in Loomio Beta'
       more: 'Mer'
       top: 'Överst'
       public_groups: 'Öppna grupper'
@@ -18,8 +21,6 @@ sv:
       services: 'Tjänster'
     hero:
       head_html: 'Världen behöver ett bättre sätt att <strong>fatta beslut tillsammans</strong>.'
-      subhead: 'Hjälp oss att bygga det.'
-      desc_html: 'Loomio är fri <a href="https://github.com/loomio/loomio">open source</a> mjukvara för vem som helst, var som helst, att kunna delta i beslut som berör dem'
     product:
       header_html: 'När vi lyssnar <strong>all voices</strong>, fattar vi <strong>bättre beslut</strong>.'
       step1:
@@ -33,6 +34,11 @@ sv:
         desc: 'Utveckla förslaget tillsamman så att alla kan ställa sig bakom det. Varje beslut har en tydlig dead-line, så att ni alltid når ett konkret resultat.'
     crowdfunding:
       header: 'Vi crowdfunar så att vi kan avlusta bygget av denna nya plattform och ge den som en gåva till världen.'
+    prototype:
+      header_html: "Vi har redan gjort en prototyp, och folk över hela världen gör fantastiska saker med den"
+      subhead_html: '<a href="%{try_loomio_link}">Prova Loomio Beta</a> nu. Eller så kan du <a href="%{donate_link}"> stödja projektet</a> så vi kan skapa Loomio 1.0'
+    mobile:
+      header_html: 'Loomio 1.0 kommer att fungera på alla plattformar, och är byggd med det bästa från <strong>öppen mobil teknologi.</strong>'
     quote:
       header:
         rushkoff_html: '“Loomio <strong>släpper loss internets potential</strong> för att få människor att nå konsensus snarare än polariserade debatter.”<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, författare till <em>Present Shock</em></div>'

@@ -20,7 +20,8 @@ namespace :languages do
     languages_hash.keys.each do |language|
       dialect = decide_dialect(language, languages_hash)
 
-      printf '%20s', "\e[32m #{dialect}\e[0m : "
+      printf '%20s', "\e[32m #{dialect}\e[0m "
+      print "#{status(dialect)} "
 
       RESOURCES.keys.each do |resource|
         update(dialect, resource)
@@ -56,6 +57,7 @@ namespace :languages do
             print "  #{language.to_s}#{key}\n"
             print "\t\e[32m#{bolded_english}\e[0m\n"
             print "\t#{foreign_str}\n\n"
+            print "\t\e[30mhttps://www.transifex.com/projects/p/loomio-1/translate/##{language.to_s}/#{RESOURCES.key(file)}/?key=#{key[1..-1]}\e[0m\n\n"
           end
         end
       end
@@ -113,6 +115,17 @@ def update(lang_code, resource)
     print "#{filename} "
   else
     puts "ERROR!! -- #{simplified_language} - #{filename}"
+  end
+end
+
+def status(lang_code)
+  simplified_language = lang_code.split('_')[0].to_sym
+  if AppTranslation.locales.include? simplified_language
+    "\e[1m\e[30mLive\e[0m\e[22m"
+  elsif AppTranslation.experimental_locales.include? simplified_language
+    "\e[30mExp\e[0m "
+  else
+    "    "
   end
 end
 

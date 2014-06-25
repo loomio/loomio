@@ -33,9 +33,6 @@ gl:
     discussion_description_edited: "cambiou a descripción do debate"
   discussion: "Debate"
   empty_discussion_list: "Todavía sen actividade neste debate."
-  empty_discussion_index: "Sen debates nos teus grupos."
-  empty_discussion_index_group: "Este grupo aínda non ten debates."
-  private_group_discussion_display: "Este grupo é privado. Os debates son visibles só para os rexistrados. Se queres participar, pide para unirte."
   move_discussion: "Mover debate"
   delete_discussion: "Eliminar debate"
   confirm_delete_discussion: "Estás seguro de querer eliminar este debate para sempre?"
@@ -65,11 +62,6 @@ gl:
     group_activity_details: "Por cada grupo, marca a casiña se queres recibir un correo así que se produzan novos debates e decisións."
   group_setup:
     desc_html: "Como coordinador de grupo, es o responsable de preparar e manter o teu grupo Loomio. Logo de seleccionar unhas opcións, podes ir ao teu novo grupo, comezar un debate ou dous, e enviar algunha invitación! <p>Cando penses nun xeito sinxelo de describir o teu grupo, pregúntache: Que queres que acaden xuntos? Que tipos de decisións tomaredes? Quen vai estar implicado?</p>"
-  simple_form:
-    labels:
-      group:
-        privacy_parent_group_members_description_short: Só os rexistrados neste grupo e no superior poden ver este grupo e os seus debates.
-        is_visible_to_parent_members_header: Permite aos rexistrados de %{group} ver este subgrupo e os seus debates
   helpers:
     submit:
       discussion:

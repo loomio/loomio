@@ -20,9 +20,8 @@ pt:
       privacy: 'Privacidade'
       services: 'Serviços'
     hero:
-      head_html: 'O mundo precisa de um jeito melho de <strong>tomar decisões em conjunto.</strong>'
-      subhead: 'Ajude-nos a construí-lo.'
-      desc_html: 'Loomio é gratuito e <a href="https://github.com/loomio/loomio">um programa de código aberto</a> para qualquer pessoa, em qualquer lugar, participar das decisões que as afetam.'
+      head_html: 'O mundo precisa de um jeito melhor para <strong>tomar decisões em conjunto.</strong>'
+      desc_html: 'Loomio é um programa gratuito e <a href="https://github.com/loomio/loomio">de código aberto</a> para qualquer pessoa, de qualquer lugar, participar em decisões que as afetam.'
     product:
       header_html: 'Quandos nós ouvimos <strong>todas as vozes</strong>, nós tomamos <strong>decisões melhores</strong>.'
       step1:
