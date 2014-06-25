@@ -4,7 +4,9 @@ namespace :languages do
   LOGIN = { basic_auth: {username: ENV['TRANSIFEX_USERNAME'], password: ENV['TRANSIFEX_PASSWORD']} }
   DIALECT_OVERRIDES = { 'pt' => 'pt_BR',
                         'ga' => 'ga_IE',
-                        'sr' => 'sr' }
+                        'sr' => 'sr',
+                        'es' => 'es' }
+
   RESOURCES = { 'github-linked-version' => 'en.yml' ,
                  'frontpageenyml' => 'frontpage.en.yml' }
 
