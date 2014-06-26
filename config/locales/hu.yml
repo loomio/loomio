@@ -13,7 +13,6 @@ hu:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%-nap/%-hónap/%év'
-      datepicker: "%d-%m-%Y"
   error:
     access_denied: "Ehhez nincs jogosultságod."
     cant_join_subgroup: "Nem csatlakozhatsz egy alcsoporthoz, ha nem vagy ragja a csoportnak"
@@ -204,8 +203,6 @@ hu:
   empty_decision_list_html: "Itt az ideje a döntésnek?  <br> Bárki tehet javaslatot."
   empty_decision_index: "Ez a csoport még nem hozott döntést."
   empty_discussion_list: "Ebben a témában még nincs semmilyen hozzászólás."
-  empty_discussion_index: "Egyik csoportodban sincsen semmilyen felvetett téma."
-  empty_discussion_index_group: "Ennek a csoportnak még nincsenek felvetett témái."
   discussion_context:
     started_html: "<a href='%{link}' class='%{link_class}'>%{who}</a> indította, az indítástól eltelt idő: %{when}"
     last_edited_html: "Legútóbb módosította: <a href='%{link}' class='%{link_class}'>%{who}</a>, a módosítás óta eltelt idő: %{when}"
@@ -388,10 +385,7 @@ hu:
       lehetőséged van arra is, hogy megindokold a választásodat, így könnyen átlátható, hogy ki mit és miért gondol a javaslatról. A javaslat lezárulta előtt még lehetőséged van változtatni az álláspontodon.
 
   motion_form:
-    header: "Új javaslat"
     name_helper: "A cím legyen egyértelmű és tömör"
-  group_form:
-    invitation_settings: "A meghívás beállításai"
   vote_form:
     header: "Add meg az álláspontodat"
     edit: "Változtasd meg az álláspontodat"
@@ -419,8 +413,6 @@ hu:
       discussion:
         title: "Cím"
         description: "Leírás"
-      group:
-        members_invitable_by: "Ki hívhat meg másokat ebbe a csoportba?"
       membership_request:
         introduction: "Mutatkozz be!"
       motion:

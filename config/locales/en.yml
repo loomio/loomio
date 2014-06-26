@@ -92,13 +92,13 @@ en:
     comment_deleted: "Comment deleted."
     invitations:
       auto_added:
-        one: "%{count} member added"
+        one: "1 member added"
         other: "%{count} members added"
       existing_member:
-        one: "%{count} member already in group"
+        one: "1 member already in group"
         other: "%{count} members already in group"
       sent:
-        one: "%{count} invitation sent"
+        one: "1 invitation sent"
         other: "%{count} invitations sent"
       auto_added_and_sent: "%{auto_added_text} and %{sent_text}"
 
@@ -146,7 +146,7 @@ en:
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        one:   "second"
+        one:   "1 second"
         other: "%{count} seconds"
       x_seconds:
         one:   "1 second"

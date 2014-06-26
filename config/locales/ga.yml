@@ -13,7 +13,6 @@ ga:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%-d/%-m/%y'
-      datepicker: "%l-%m-%B"
   devise:
     invitations:
       send_instructions: 'Seoladh cuireadh chuig %{email}.'
@@ -214,8 +213,6 @@ ga:
       header: "Cuir tús le plé"
     edit:
       header: "Déan eagarthóireacht ar an bplé"
-  motion_form:
-    header: "Togra nua"
   email_preferences_form:
     header: "Sainroghanna ríomhphoist"
     update_preferences: "Leasaigh na sainroghanna agat"
@@ -237,19 +234,6 @@ ga:
       discussion:
         title: "Teideal"
         description: "Comhthéacs"
-        privacy_public_header: "Poiblí"
-        privacy_public_description: "Tig le cách an plé seo a fheiceáil"
-        privacy_private_header: "Príobháideach"
-        of: "de"
-      group:
-        description: "Cur síos"
-        members_invitable_by_members: "Baill uile an ghrúpa"
-        privacy: Príobháideachas
-        privacy_public_header: Poiblí
-        privacy_parent_group_members_header: Sofheicthe do bhaill grúpa thuismitheora
-        privacy_parent_group_members_description_short: Sofheicthe do baill agus baill grúpa tuismitheora amháin
-        group_members_invitable_by: "coordaitheoirí amháin"
-        submit: Seol
       membership_request:
         introduction: "Cuir tú féin in aithne do dhaoine"
       motion:
@@ -265,9 +249,6 @@ ga:
     placeholders:
       discussion:
         title: "Teideal"
-      group:
-        name: "Ainm na baiclí"
-        description: "Tuairisc grúpa"
       user:
         password: "Focal faire"
   helpers:
@@ -354,7 +335,6 @@ ga:
   send_email: "Seol ríomhphost"
   show_more: "Taispeáin Tuilleadh"
   start_a_group: "Cuir baicle ar bun"
-  start_group: "Grúpa tosaithe!"
   starting: "Ag tosú"
   subject: "Ábhar"
   thanks: "Go raibh maith agat!"

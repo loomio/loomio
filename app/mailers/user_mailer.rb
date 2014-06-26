@@ -24,7 +24,7 @@ class UserMailer < BaseMailer
 
     #binding.pry
 
-    unless @discussions.empty?
+    unless @discussions.empty? or @user.inbox_groups.empty?
       @discussions_by_group = @discussions.group_by(&:group)
       locale = best_locale(user.locale)
       I18n.with_locale(locale) do
