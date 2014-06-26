@@ -2,7 +2,7 @@
   =simple_form_for @search_form, url: search_path, method: :get, html: {class: "navbar-form navbar-left"}, role: "search" do |f|
     .form-group
       .input-group
-        %span.input-group-addon
+        %col-md-.input-group-addon
           %i.fa.fa-search
         = f.input :query, label: false, placeholder: t("search.placeholder"), input_html: { class: 'form-control', tabindex: 1 }
         / = submit_tag "", class: 'submit-search'

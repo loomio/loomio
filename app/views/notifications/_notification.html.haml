@@ -13,13 +13,13 @@
   %li.selector-item{:class => "notification-item#{class_name}", :id => "notification-#{notification.id}" }
     %a{:href => href }
       = render 'avatar', user: avatar
-      %span.notification-content
+      %col-md-.notification-content
         - if actor
-          %span.bold-name= actor.name
+          %col-md-.bold-name= actor.name
         = " #{action_text} "
         - if title_text
-          %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
-        %span.notification-item-footer
+          %col-md-.bold-name= truncate(title_text, :length => 80, :omission => '...')
+        %col-md-.notification-item-footer
           = "#{t(:ago, :quantity_of_time => date)} · #{group_name}"
 
 - rescue Exception => e

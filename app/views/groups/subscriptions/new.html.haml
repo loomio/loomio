@@ -1,27 +1,27 @@
 - set_title @group.name, 'Group subscription', @group.parent
 = render '/groups/title', group: @group
 .row.iconrow
-  .span2
+  .col-md-2
     = image_tag 'loomio-users.png'
-  .span7
+  .col-md-7
     %h1 Group subscription
     %h2 You choose how much to pay
 .row
-  .span7.offset2
+  .col-md-7.offset2
     %p
       Groups with a budget typically choose a monthly rate of about
-      %span.nowrap $2 - $5 per person.
+      %col-md-.nowrap $2 - $5 per person.
     %p
       %em (e.g. business, government, community orgs)
 
     %p
       If your group is flat broke, you can even
-      %span.nowrap
+      %col-md-.nowrap
         choose $0!
 .row.iconrow
-  .span2
+  .col-md-2
     = image_tag 'colablove.png', id: 'colablove'
-  .span5
+  .col-md-5
     = simple_form_for @subscription_form, url: checkout_group_subscription_path(@group) do |f|
       %h2 Set your group subscription:
       = f.input :preset_amount, collection: @subscription_form.amounts, as: :radio_buttons, label: false

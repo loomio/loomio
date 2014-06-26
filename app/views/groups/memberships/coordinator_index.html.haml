@@ -1,8 +1,8 @@
 .row
-  .span9
+  .col-md-9
     = render '/groups/title', group: @group
     %h1= t :members
-  .span3#button-container
+  .col-md-3#button-container
     = icon_button(href: new_group_invitation_path(@group), text: t(:invite_people), icon: '/assets/member-18.png', id: 'invite-new-members', class: 'btn-grey')
     #email-members-modal.modal.hidden
       = render "groups/email_members", :group => @group
@@ -11,7 +11,7 @@
 
 %table.memberships.table.table-striped
   %thead
-    %th.span1= t :photo
+    %th.col-md-1= t :photo
     %th= t :name
     %th= t :"common.email"
     %th= t :coordinator

@@ -3,7 +3,7 @@
   = link_to vote.user_name, vote.user, class: 'user-name'
   - if vote.user == current_user
     = link_to "edit", new_motion_vote_path(motion), class: 'btn btn-mini', id: 'edit-vote' if can? :vote, motion
-  %span.word-break~ vote.statement
+  %col-md-.word-break~ vote.statement
   .translation-spacer.translated
   .translated-position.translated
     = t(:loading_translation)

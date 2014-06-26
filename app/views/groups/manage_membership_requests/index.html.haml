@@ -9,7 +9,7 @@
         =render 'requestor', request: request
         %td
           =render_rich_text(request.introduction, false)
-          %span.time-ago-subtle= t(:ago, quantity_of_time: time_ago_in_words(request.created_at))
+          %col-md-.time-ago-subtle= t(:ago, quantity_of_time: time_ago_in_words(request.created_at))
 
         %td
           =link_to approve_membership_request_path(request), method: :post, id: "approve-membership-request-#{request.id}" do
@@ -25,12 +25,12 @@
     %tr
       =render 'requestor', request: request
       %td= render_rich_text(request.introduction, false)
-      %td.span2
+      %td.col-md-2
         -responder = request.responder.name
         -case request.response
         -when 'approved'
           =t(:approved_by_person, person: responder)
         -when 'ignored'
           =t(:ignored_by_person, person: responder)
-        %span.time-ago-subtle= t(:ago, quantity_of_time: time_ago_in_words(request.responded_at))
+        %col-md-.time-ago-subtle= t(:ago, quantity_of_time: time_ago_in_words(request.responded_at))
 = paginate @previous_requests

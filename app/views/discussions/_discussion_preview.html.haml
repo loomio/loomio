@@ -24,7 +24,7 @@
           .motion-sparkline
             = motion_sparkline(motion)
           - if motion.voting? && motion_reader.unread_activity_count > 0
-            %span.activity-count.label.label-info
+            %col-md-.activity-count.label.label-info
               = motion_reader.unread_activity_count
       - else
         .large-icon.pie-icon.activity-icon
@@ -33,7 +33,7 @@
         .large-icon.discussion-icon.activity-icon.disabled-icon
       -else
         .large-icon.discussion-icon.activity-icon.enabled-icon
-          %span.activity-count.label.label-info
+          %col-md-.activity-count.label.label-info
             = unread_comments_count
 
       .discussion-date-info

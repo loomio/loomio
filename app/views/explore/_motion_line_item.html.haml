@@ -1,15 +1,15 @@
-%li.motion.row-fluid{data:{motion_id: item.id}}
+%li.motion.row{data:{motion_id: item.id}}
   =link_to item do
-    .span1
+    .col-md-1
       .icon
         -values = item.vote_counts.values
         .activity-container
-          %span.count.unread-votes-count
+          %col-md-.count.unread-votes-count
             - count = item.total_votes_count
             - if count > 0
               =count
         .motion-sparkline
           = motion_sparkline(item)
 
-    .span11.title
+    .col-md-11.title
       = item.title
