@@ -80,11 +80,11 @@ zh:
     comment_deleted: "意見已刪除。"
     invitations:
       auto_added:
-        other: "%{count} 成員已加入"
+        other: "已新增 %{count} 位成員"
       existing_member:
-        other: "%{count} 成員已經在群組中"
+        other: "群組中已經有 %{count} 名成員"
       sent:
-        other: "送出 %{count} 份邀請"
+        other: "送出了 %{count} 封邀請函"
       auto_added_and_sent: "%{auto_added_text} 與 %{sent_text}"
   tooltip:
     cover_photo_upload: "上傳新的封面圖片"
@@ -138,9 +138,9 @@ zh:
       x_days:
         other: "%{count} 天"
       about_x_months:
-        other: "%{count} 月"
+        other: "%{count} 個月"
       x_months:
-        other: "%{count} 月"
+        other: "%{count} 個月"
       about_x_years:
         other: "%{count} 年"
       over_x_years:
@@ -161,7 +161,7 @@ zh:
     empty: 您跟上了進度！意見通通都看過了。
   notifications:
     header: "通知"
-    new_discussion: "新的討論串已開始"
+    new_discussion: "新的討論串已啟動"
     new_motion: "建立新的提案"
     motion_closed:
       by_user: "已定案此提議"
@@ -180,10 +180,10 @@ zh:
   edit_discussion_context: "編輯論述"
   request_new_group: "啟動群組"
   start_new_group: "啟動新的群組"
-  start_new_group_hint: "開始一個新的討論"
+  start_new_group_hint: "開始作出決定"
   find_a_group: "找尋群組"
   find_a_group_hint: "瀏覽公開群組"
-  no_group_header: "歡迎使用 Loomio Beta 版"
+  no_group_header: "歡迎使用 Loomio Beta"
   empty_notifications: "您目前沒有新的通知。"
   see_all_notifications: "查看所有通知"
   profile: "簡歷"
@@ -204,7 +204,7 @@ zh:
     message: "<p>這裡是 <strong>群組頁面</strong>。左邊是這個群組內所有的討論。</p><p>當您希望群組開始討論另一個主題時，只要建立新的討論串就行了。</p>"
   dashboard_helper_text:
     header: "歡迎來到您的首頁"
-    message: "<p>首頁上顯示的是您所有參與的群組中目前進行的討論。</p><p>您可以按下「開始新的討論串」按鈕以開啟一個新的討論主題。</p>"
+    message: "<p>首頁上顯示的是您所有參與的群組中目前進行的討論。</p><p>您可以按下「啟動新的討論串」按鈕以啟動一個新的討論主題。</p>"
   prompt_visitor_to_authenticate:
     header: "登入或加入群組以參與"
     body: "如果您是這個群組的成員，請登入以參與。"
@@ -222,7 +222,7 @@ zh:
     members_can:
       add_members: 邀請並且批准新的成員
       edit_comments: 任何時候都能編輯他們的意見
-      edit_discussions: 編輯在此群組中任何討論的論述
+      edit_discussions: 編輯在此群組中任何討論串的論述
     motions_can_be_edited: 編輯他們已經開始投票的提案
     visible_to:
       label: 誰能找到這個群組？
@@ -233,9 +233,9 @@ zh:
       label: 夥伴要怎樣加入？
       hidden_parent:
         request_html: '開放 <span>開放給「%{parent_group_name}」父群組的成員</span>'
-        approval_html: '申請條件：<span>「%{parent_group_name}」群組所屬的成員</span>'
+        approval_html: '透過申請<span>「%{parent_group_name}」群組所屬的成員</span>'
       request_html: 開放 <span>任何人都能加入此群組</span>
-      approval_html: 申請條件：<span>任何人都能申請加入</span>
+      approval_html: 透過申請<span>任何人都能申請加入</span>
       invitation_html: 僅限邀請 <span>新成員必須先被邀請</span>
     parent_members_can_see_discussions:
       label: 討論串私密
@@ -247,7 +247,7 @@ zh:
       public_only_html: 僅限公開討論串
       public_or_private_html: 允許公開與私密討論串
       private_only_html: 僅限私密討論串
-    learn_about_permissions: 找尋更多有關群組權限
+    learn_about_permissions: 詳細瞭解有關群組權限
   group_permissions:
     header: 群組權限
     coordinators_can: "協作者能夠："
@@ -345,7 +345,7 @@ zh:
   edit_group: "編輯群組"
   update_group: "更新群組"
   updating_group: "群組更新中"
-  start_a_discussion: "開始新的討論串"
+  start_a_discussion: "啟動新的討論串"
   group_description: "群組描述"
   edit_group_description: "編輯群組的描述"
   group_subscription: "群組訂閱"
@@ -400,7 +400,7 @@ zh:
   description_history:
     header: "修訂歷史"
     subheader: "版本"
-    edited_by: "最後是由 %{who} 在 %{when} 之前編輯"
+    edited_by: "最後是由 %{who} 在%{when}之前編輯"
     current: "(目前)"
     restore: "(回復此版本)"
     applying_changes: "(套用變更中⋯)"
@@ -427,8 +427,8 @@ zh:
   proposal: 提案
   proposal_close_date_error: "請提供尚未逾期的定案日期"
   proposal_closing_when: "在 %{when} 之內定案"
-  proposal_closed_when: "在 %{when} 之前已定案"
-  proposed_when_by_who: "由 %{who} 在 %{when} 之前提案"
+  proposal_closed_when: "在%{when}之前已定案"
+  proposed_when_by_who: "由 %{who} 在%{when}之前提案"
   engagement_on_open_proposal: "%{percent}%% 的成員已經陳述他們的立場 (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}%% 的成員陳述他們的立場 (%{numerator}/%{denominator})"
   state_your_position: "陳述您的立場"
@@ -476,7 +476,7 @@ zh:
       <p>在下定解決方案之前，若您能建立起對問題的共識，通常能討論出最棒的成果。當夥伴開始參與這個過程，他們將更可能贊成此案的成果。</p>
     example2_html: |
       <h3>您已經想到一個提案，並且希望獲得您的群組批准來進行</h3>
-      <p>策略：針對一個特定決策開始討論並立即提出提案。</P>
+      <p>策略：針對一個特定決策來啟動討論並立即提出提案。</P>
       <p>如果你腦海中已經有明確的成果，但是您想要確定沒有反對聲浪，你可以使用該提案來快速達成決定。</P>
       <p>您可以使用這樣的方法來達成類似敲定公文、允許申請，或者是核准一件工作。</p>
     get_in_touch: "取得聯繫"
@@ -518,14 +518,14 @@ zh:
     positions_abstain_description: "<span>棄權</span>代表您並不是很確定，或是您很樂意群組的決定沒有您的參與。"
     positions_disagree_description: "<span>反對</span>代表您認為可能有更好的方案，但您願意順應群組的決策。"
     positions_block_description: "<span>阻擋</span>代表您非常反對，並且如果此提案繼續進行，這會讓您非常不愉快。"
-    start_discussion: "開始一段激動人心的討論"
+    start_discussion: "發起一段激動人心的討論"
     start_discussion_html: |
-      <p>當您開始一場討論，確保您標題傳達的主題是簡潔的。運用論述面板給出所有必要的背景資訊，讓群組是有生產力、有見地的討論。</p>
+      <p>當您啟動一場討論，確保您標題傳達的主題是簡潔的。運用論述面板給出所有必要的背景資訊，讓群組是有生產力、有見地的討論。</p>
       <p>隨著新的資訊明朗化，討論的過程當中論述面板能被更新。不但能闡明主題，還能運用這空間來分享資源，在過程中總結討論，或是概要出您的群組決策制定的協議。</p>
     start_proposal: "寫出明確的提案"
     start_proposal_html: |
       <p>如果您讓標題明確扼要，夥伴將可以迅速準確理解其意，然後選擇贊成或是反對。</p>
-      <p>提案沒有馬上得到明確的共識並不是世界末日。假如群組不滿意一開始的提案，任何人都可以開始新提案來表達您的顧慮，並讓過程順利進行。</p>
+      <p>提案沒有馬上得到明確的共識並不是世界末日。假如群組不滿意一開始的提案，任何人都可以啟動新提案來表達您的顧慮，並讓過程順利進行。</p>
       <p>透過這種動態的過程，您的群組解放了集體的智慧，比起獨自拿出個人所有，進而一同產生更棒的想法。</p>
       <p>如果決策需要更多的時間，提案的截止日可以在任何時間延長。每一個人將會在提案結束的 24 小時前接到電子郵件通知。</p>
     video_id: "52025402"
@@ -533,7 +533,7 @@ zh:
     video_tutorial_description: "點閱一段簡單示範的影片以瞭解如何使用 Loomio。"
   hint:
     context: '使用論述控制板的小提示'
-    discussion: '開始一段激動人心討論的小提示'
+    discussion: '發起一段激動人心討論的小提示'
     invitation: '寫出偉大邀請函的小提示'
     proposal: '寫出明確提案的小提示'
     vote: '任何時候您都能改變您的立場'
@@ -549,7 +549,7 @@ zh:
   contribution:
     any_amount: 或是自訂的單次贊助：
     currency_desc: 以美元作為單位
-    monthly_html: 我想要每月固定贊助：
+    monthly_html: 我想要每月定期贊助：
     one_time_html: 我想要進行單次贊助：
     submit: 貢獻
     tooltip: 從中瞭解有關我們社群的募資模式
@@ -632,9 +632,9 @@ zh:
     invite_to_discussion_info: "新增夥伴到目前的討論串時，他們將收到一封邀請訊息。如果他們接受邀請，則他們將直接被加入到討論串中。"
     select_members: "從 %{group_name} 加入成員"
     body_editable: |
-      嗨！快來和我們一同作決策！我們正在使用一個叫作 Loomio 的協同決策制定工具。
+      嗨各位，快來和我們一同作決策！我們正在使用一套叫作 Loomio 的協同決策制定工具。
     body_editable_discussion: |
-      嗨，一起加入討論吧！
+      嗨各位，快來加入這個討論串吧！
     message_body: "邀請訊息"
     invites_more_help2: "<p>您可以在任何時候邀請夥伴加入您的群組。</p><p>您可能想要馬上把所有的成員都邀請進來，或是一開始只邀請合作最緊密的那些夥伴。</p>"
     invitation_link: "邀請連結"
@@ -678,7 +678,7 @@ zh:
   discussion_form:
     new:
       header: "啟動討論串"
-      who: "您要在哪個群組開始討論？"
+      who: "您要在哪個群組啟動討論？"
     edit:
       header: "編輯討論串"
     privacy:
@@ -728,12 +728,12 @@ zh:
   group_setup:
     set_up_your_group: 設置您的群組
     desc_header: "就快到了！"
-    desc_html: "作為群組的協調者，您的責任是設置並且管理您的 Loomio 群組。在您選擇幾項設定之後，您就能進入到您的新群組，開始幾場討論、送出一些邀請函！<p>當您在想要怎樣以最簡單的方式描述您的群組時，問您自己：你要大家一起實現的是甚麼？哪幾種決定是你會作的？這會牽涉到誰？</p>"
+    desc_html: "作為群組的協調者，您的責任是設置並且管理您的 Loomio 群組。在您選擇幾項設定之後，您就能進入到您的新群組，啟動幾場討論、送出一些邀請函！<p>當您在想要怎樣以最簡單的方式描述您的群組時，問您自己：你要大家一起實現的是甚麼？哪幾種決定是你會作的？這會牽涉到誰？</p>"
     submit: "直接到我的群組"
     payment_model:
       header: Loomio 是大家的！
       info: 我們的付出模式適用於任何的群組，即使他們沒有錢 :)
-      link: 找尋更多
+      link: 詳細瞭解
   simple_form:
     'yes': '是'
     'no': '否'
@@ -745,7 +745,7 @@ zh:
     labels:
       discussion:
         title: "標題"
-        description: "脈絡"
+        description: "論述"
       membership_request:
         introduction: "介紹您自己"
       motion:
@@ -766,7 +766,7 @@ zh:
     placeholders:
       discussion:
         title: "標題"
-        description: "提供一些脈絡"
+        description: "提出一些論述⋯"
       membership_request:
         introduction: "簡單幾句話告訴我們您是誰和為甚麼想要加入 %{group_name} 。"
       motion:
@@ -809,7 +809,7 @@ zh:
     view_group: "點擊此處檢視 Loomio 上的群組"
     view_proposal: "在 Loomio 上觀看這項提案。"
     create_discussion:
-      intro: "%{who} 在 %{which_group} 開啟了新的討論串："
+      intro: "%{who} 在 %{which_group} 啟動了新的討論串："
       subject: "新討論串 — %{which}"
     create_proposal:
       intro: "在您所屬的 Loomio 群組中，有一個新的提案！"
@@ -1001,7 +1001,7 @@ zh:
   group_categories:
     blank: "不分類"
     economics: "經濟"
-    activist: "社運"
+    activist: "社運組織"
     arts: "藝術"
     business: "商務"
     collective: "各類團體"
