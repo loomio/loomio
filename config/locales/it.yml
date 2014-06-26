@@ -15,14 +15,15 @@ it:
     formats:
       for_this_year: '%b %e'
       for_another_year: '%-d/%-m/%y'
-      datepicker: "%d-%m-%Y"
   devise:
     invitations:
       send_instructions: 'Un invito è stato mandato a %{email}.'
+      invitation_token_invalid: 'Il codice di invito non è valido!'
       updated: 'Account creato.'
+      no_invitations_remaining: "Hai finito gli inviti"
     mailer:
       invitation_instructions:
-        subject: 'Qualcuno ti ha invitato a far parte del loro gruppo di Loomio.'
+        subject: 'Qualcuno ti ha invitato a far parte del suo gruppo di Loomio.'
   error:
     access_denied: "Non hai l'autorizzazione per farlo."
     cant_join_subgroup: "Non puoi unirti a un sotto-gruppo se non sei membro del gruppo genitore."
@@ -61,6 +62,10 @@ it:
     settings_updated: "Le tue impostazioni sono state aggiornate."
     user_made_admin: "%{which_user} è stato reso coordinatore."
     you_have_left_group: "Hai abbandonato %{which_group}."
+    invitations:
+      auto_added:
+        one: "%{count} membri aggiunti"
+        other: "%{count} membri aggiunti"
   warning:
     cant_remove_last_admin: "Tu sei l'ultimo coordinatore e non puoi essere rimosso."
     membership_request_already_approved: "La richiesta d'iscrizione è già stata approvata."
@@ -252,8 +257,6 @@ it:
   empty_decision_list_html: "Sei pronto a prendere una decisione? <br> Chiunque può lanciare una proposta."
   empty_decision_index: "Questo gruppo non ha ancora preso alcuna decisione."
   empty_discussion_list: "Non ci sono ancora attività in questa discussione."
-  empty_discussion_index: "Non ci sono discussioni in nessuno dei tuoi gruppi."
-  empty_discussion_index_group: "Questo gruppo non ha ancora alcuna discussione."
   discussion_context:
     started_html: "Iniziato %{when} fa da <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Ultima modifica %{when} fa da <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -304,9 +307,12 @@ it:
     'yes': "favorevole"
     'no': "contrario"
     abstain: "astenuto"
+    block: "blocco"
     past_tense:
       'yes': "favorevole"
       'no': "contrario"
+      abstain: "astenuto"
+      block: "bloccato"
   help:
     coordinating: 'Coordinazione del tuo gruppo Loomio'
     coordinating_details: |
@@ -475,11 +481,7 @@ it:
     edit:
       header: "Modifica discussione"
   motion_form:
-    header: "Nuova proposta"
     name_helper: "Usa un titolo il più possibile chiaro e sintetico."
-  group_form:
-    invitation_settings: "Impostazioni Inviti"
-    admins_only: "Solo per coordinatori"
   vote_form:
     header: "Dichiara la tua posizione"
     edit: "Modifica la tua posizione"
@@ -510,23 +512,11 @@ it:
       text: 'richiesto'
       mark: '*'
     error_notification:
-      default_message: "Per piacere rivedi i problemi qui sotto:"
+      default_message: "Per favore controlla questi problemi:"
     labels:
       discussion:
         title: "Titolo"
         description: "Contesto"
-        privacy_public_header: "Pubblico"
-        privacy_public_description: "Tutti possono vedere questa discussione"
-        privacy_private_header: "Privato"
-        of: "di"
-      group:
-        name: "Nome del gruppo"
-        description: "Descrizione"
-        members_invitable_by: "Chi può invitare gente a questo gruppo?"
-        privacy: Privacy
-        privacy_public_header: 'Pubblico '
-        group_members_invitable_by: "Solo coordinatori"
-        submit: Invia
       membership_request:
         introduction: "Presentati"
       motion:
@@ -547,9 +537,6 @@ it:
       motion:
         name: "Che linea d'azione proponi?"
         description: "Fornisci informazioni sufficienti perché tutti sappiano esattamente cosa significa essere o non essere d'accordo."
-      group:
-        name: "Nome del gruppo"
-        description: "Descrizione del gruppo"
       user:
         email: "Email"
         password: "Password"
@@ -566,6 +553,8 @@ it:
   email:
     to_join_group:
       subject: "%{member} ti ha invitato ad unirti a %{group_name} su Loomio"
+    to_start_group:
+      subject: "Imposta il tuo nuovo gruppo Loomio: %{group_name}"
     unsubscribe: "Disiscriviti o cambia le preferenze email:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per disiscriverti o cambiare le preferenze email."
     view_comment: "Clicca qui per vedere il commento su Loomio"
@@ -591,6 +580,7 @@ it:
     invitation:
       hi: "Ciao %{name},"
       intro: "Fai clic sul link in basso per impsotare il tuo gruppo %{group_name}:"
+      closing_message: "Se hai domande o per qualsiasi cosa possiamo fare per aiutarti a partire, fatti sentire rispondendo a questa email."
       thanks: |
         Grazie!
         Il team di Loomio
@@ -656,6 +646,7 @@ it:
   pricing: 'Prezzo'
   prev: "Prec"
   more: "Altro..."
+  translate: "Aiuta tradurre Loomio"
   translate_this_string: "Traduci in %{language}"
   options: "Opzioni"
   ok_got_it: "Okay, ho capito!"
@@ -666,10 +657,11 @@ it:
   send_invite: "Invia invito"
   send_email: "Invia email"
   show_more: "Mostra di più"
+  start_a_group: "Apri un gruppo"
   starting: "Cominciando"
   subject: "Oggetto"
+  terms_of_service_html: "Cliccando %{button_text}, accetti le <a href='%{link_path}' target='_blank'>Condizioni di servizio</a> di Loomio"
   thanks: "Grazie!"
-  translate: "Aiuta tradurre Loomio"
   unlike: "Unlike"
   update: "Aggiornamento"
   facebook: "Facebook"

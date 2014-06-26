@@ -17,9 +17,6 @@ ja:
       terms: '使用条件'
       privacy: '個人情報'
       services: 'サービス'
-    hero:
-      subhead: 'そんな世界を構築するのを手伝ってください'
-      desc_html: 'Loomioは無料であり、影響を持つ決定に参加するため、どこでも誰でも利用できる<a href="https://github.com/loomio/loomio">オープンソース</a>ソフトウェアです。'
     product:
       step1:
         desc: 'どのトピックでもいいので、ディスカッションを初めて正しい人たちを集めましょう。多様な視点を分け合ってアイディアをともに発展させましょう。'

@@ -9,7 +9,6 @@ cmn:
     formats:
       for_this_year: '%e%b'
       for_another_year: '%-d/%-m/%y'
-      datepicker: "%天-%月-%年"
   error:
     cant_join_subgroup: "如果你不是大组的一员那你就不能加入一个小组"
     cant_modify_position: "这提议已经关闭了"
@@ -167,8 +166,6 @@ cmn:
   create_new_proposal: "创建新的建议"
   empty_decision_index: "这个组还没有做出什么决定"
   empty_discussion_list: "这一条讨论还没有发表"
-  empty_discussion_index: "你的团队里没有任何讨论"
-  empty_discussion_index_group: "这个团队还没有讨论过"
   discussion_context:
     see_revision_history: "看历史修订"
   description_history:
@@ -243,10 +240,7 @@ cmn:
     invitation_link: "邀请链接"
     copy: "如果有些人没有得到他们的邀请邮件，请自觉的复制这上面的邀请链接并且发送给他们"
   motion_form:
-    header: "新提议"
     name_helper: "尽可能让这个标题清晰和简洁"
-  group_form:
-    invitation_settings: "邀请设置"
   vote_form:
     header: "陈述你的位置"
     edit: "编辑你的位置"
@@ -360,7 +354,6 @@ cmn:
   send_invite: "发送邀请"
   send_email: "发邮件"
   show_more: "展示更多"
-  start_group: "开始组团！"
   starting: "正在开始"
   subject: "标题"
   thanks: "谢谢您！"
