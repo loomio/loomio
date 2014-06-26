@@ -50,24 +50,21 @@
             %h1= t(:'frontpage.product.header_html')
           .decision-steps
             .content
-              #threads
-                %col-md-4.step
-                  .step-img
-                    = image_tag 'threads.png', {class: 'top active'}
-                  %h2.active= t(:'frontpage.product.step1.header')
-                  %p.active= t(:'frontpage.product.step1.desc')
-              #weaving
-                %col-md-4.step
-                  .step-img.hide-background
-                    = image_tag 'weaving.png', {class: 'top'}
-                  %h2= t(:'frontpage.product.step2.header')
-                  %p= t(:'frontpage.product.step2.desc')
-              #braid
-                %col-md-4.step
-                  .step-img.hide-background
-                    = image_tag 'braid.png', {class: 'top'}
-                  %h2= t(:'frontpage.product.step3.header')
-                  %p= t(:'frontpage.product.step3.desc')
+              #threads.col-md-4.step
+                .step-img
+                  = image_tag 'threads.png', {class: 'top active'}
+                %h2.active= t(:'frontpage.product.step1.header')
+                %p.active= t(:'frontpage.product.step1.desc')
+              #weaving.col-md-4.step
+                .step-img.hide-background
+                  = image_tag 'weaving.png', {class: 'top'}
+                %h2= t(:'frontpage.product.step2.header')
+                %p= t(:'frontpage.product.step2.desc')
+              #braid.col-md-4.step
+                .step-img.hide-background
+                  = image_tag 'braid.png', {class: 'top'}
+                %h2= t(:'frontpage.product.step3.header')
+                %p= t(:'frontpage.product.step3.desc')
           .col-xs-12#product-carousel.content.product-carousel.carousel.slide{"data-ride" => 'carousel'}
             .carousel-inner
               .item.active
@@ -133,22 +130,18 @@
 
       .row.groups
         .content
-          .group-tab
-            %col-md-3#genzero.active
-              .group.active
-                = image_tag 'genzero-logo.png', alt: "Generation Zero"
-          .group-tab
-            %col-md-3#pathways
-              .group
-                = image_tag 'pathways-logo.png', alt: "Pathways"
-          .group-tab
-            %col-md-3#timebank
-              .group
-                = image_tag 'timebank-logo.png', alt: "Timebank"
-          .group-tab
-            %col-md-3#nvc
-              .group
-                = image_tag 'nvc-logo.png', alt: "Generation Zero"
+          .group-tab.col-md-3#genzero.active
+            .group.active
+              = image_tag 'genzero-logo.png', alt: "Generation Zero"
+          .group-tab.col-md-3#pathways
+            .group
+              = image_tag 'pathways-logo.png', alt: "Pathways"
+          .group-tab.col-md-3#timebank
+            .group
+              = image_tag 'timebank-logo.png', alt: "Timebank"
+          .group-tab.col-md-3#nvc
+            .group
+              = image_tag 'nvc-logo.png', alt: "Generation Zero"
       .row.links
         .content
           %p.hero-text= t(:'frontpage.prototype.subhead_html', try_loomio_link: try_it_path, donate_link: 'https://love.loomio.org')
@@ -159,7 +152,7 @@
 
       .row.mobile
         .content
-          %col-md-6.mobile-header
+          .col-md-6.mobile-header
             %h1=t(:'frontpage.mobile.header_html')
 
       .row.quote

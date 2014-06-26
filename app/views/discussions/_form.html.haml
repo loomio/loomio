@@ -1,5 +1,5 @@
 .row
-  .col-md-5
+  .span5
     = simple_form_for discussion, :validate => true do |f|
       .control-group
         - if @user_groups && params[:group_id].blank?
@@ -22,20 +22,20 @@
         - if group.is_visible_to_parent_members?
           .hidden-group-discussion-privacy
             %i.fa.fa-lock
-            %col-md-.subhead= t :'common.private'
+            %span.subhead= t :'common.private'
             .description= t :'discussion_form.privacy.will_be_private_to_parent_group', parent_group_name: group.parent.name, group_name: group.name
             = f.input_field :private, as: :hidden, value: true
         - else
           - if group.private_discussions_only?
             .hidden-group-discussion-privacy
               %i.fa.fa-lock
-              %col-md-.subhead= t :'common.private'
+              %span.subhead= t :'common.private'
               .description= t :'discussion_form.privacy.will_be_private_to_group', group_name: group.name
               = f.input_field :private, as: :hidden, value: true
           - elsif group.public_discussions_only?
             .hidden-group-discussion-privacy
               %i.fa.fa-globe
-              %col-md-.subhead= t :'common.public'
+              %span.subhead= t :'common.public'
               .description= t :'discussion_form.privacy.will_be_public'
               = f.input_field :private, as: :hidden, value: false
           - else

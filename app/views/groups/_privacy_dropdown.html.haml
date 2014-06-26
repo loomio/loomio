@@ -1,5 +1,5 @@
 - privacy = group.is_visible_to_public? ? 'public' : 'private'
-%col-md-#group-privacy-label
+%span#group-privacy-label
   - case @group.visible_to
   - when 'public'
     - if @group.public_discussions_only?

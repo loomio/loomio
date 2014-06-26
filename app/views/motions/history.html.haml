@@ -1,5 +1,5 @@
 .row
-  .col-md-6
+  .span6
     %h1= t :"motion_history.title"
     - @motion.versions.each do |version|
       - next unless motion = version.reify

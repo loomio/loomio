@@ -6,22 +6,22 @@
         %i.fa.fa-pencil
         = t :edit
     - if motion.closed?
-      %col-md-.label.label-important= t(:closed)
+      %span.label.label-important= t(:closed)
     .closing-info
       - if motion.voting?
         = t(:proposal_closing_when, when: time_ago_in_words(motion.closing_at))
       - else
-        %col-md-= t(:proposal_closed_when, when: time_ago_in_words(motion.closed_at))
+        %span= t(:proposal_closed_when, when: time_ago_in_words(motion.closed_at))
     .proposed-by
       = t(:proposed_when_by_who, when: time_ago_in_words(motion.created_at), who: motion.author_name)
 
 
   -if motion.closed?
     .row
-      .col-md-5
+      .span5
         =render "motions/outcome_statement", motion: motion
   .row
-    .col-md-5
+    .span5
       .description
         .long-description
           = render_rich_text(motion.description, false)
@@ -29,14 +29,14 @@
           = translate_link_for motion
 
   .row
-    .col-md-4.motion-header-info
+    .span4.motion-header-info
       .clearfix
         .translation-spacer.translated
         %h3.motion-title.word-break.translated-title.translated
         .closing-info.translated
         .proposed-by.translated
   .row
-    .col-md-5
+    .span5
       .description.translated-description.translated
         = t(:loading_translation)
 

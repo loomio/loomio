@@ -323,7 +323,7 @@ ActiveRecord::Schema.define(:version => 20140622232955) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "privacy",                            :default => "public"
+    t.string   "privacy",                            :default => "private"
     t.string   "members_invitable_by"
     t.integer  "parent_id"
     t.boolean  "email_new_motion",                   :default => true
@@ -347,14 +347,14 @@ ActiveRecord::Schema.define(:version => 20140622232955) do
     t.string   "key"
     t.boolean  "can_start_group",                    :default => true
     t.integer  "category_id"
+    t.text     "enabled_beta_features"
+    t.string   "subdomain"
+    t.integer  "theme_id"
     t.boolean  "is_visible_to_public",               :default => false,          :null => false
     t.boolean  "is_visible_to_parent_members",       :default => false,          :null => false
     t.string   "discussion_privacy_options",                                     :null => false
     t.boolean  "members_can_add_members",            :default => false,          :null => false
     t.string   "membership_granted_upon",                                        :null => false
-    t.text     "enabled_beta_features"
-    t.string   "subdomain"
-    t.integer  "theme_id"
     t.boolean  "email_notification_default",         :default => true,           :null => false
     t.boolean  "members_can_edit_discussions",       :default => true,           :null => false
     t.boolean  "motions_can_be_edited",              :default => false,          :null => false
@@ -426,6 +426,7 @@ ActiveRecord::Schema.define(:version => 20140622232955) do
     t.datetime "archived_at"
     t.integer  "inbox_position",                    :default => 0
     t.boolean  "admin",                             :default => false, :null => false
+    t.boolean  "is_suspended",                      :default => false, :null => false
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"

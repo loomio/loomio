@@ -1,8 +1,8 @@
 #user-profile
   .row
-    .col-md-3
+    .span3
       = render 'avatar', user: @user, size: "large", id: 'avatar-preview'
-    .col-md-8
+    .span8
       %h1= @user.name
       %p.username= "@" + @user.username
 

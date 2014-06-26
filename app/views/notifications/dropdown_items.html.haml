@@ -5,5 +5,5 @@
 :javascript
   var new_notifications_count = #{@unviewed_notifications.size}
   if (new_notifications_count > 0) {
-    $('%col-md-#notifications-count').html(new_notifications_count)
+    $('span#notifications-count').html(new_notifications_count)
   }

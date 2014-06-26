@@ -1,14 +1,14 @@
 - if current_user.parent_groups.present?
   .row
-    .col-md
+    .span9
       .group-title
         %h1.home-title
           = link_to t(:home), dashboard_path
       .row
-        .col-md.main-content
+        .span9.main-content
           =render 'discussions/discussion_list'
 
-    %section.col-md-3
+    %section.span3
       #group-actions
         .clearfix
           = icon_button(href: new_discussion_path, text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
@@ -19,9 +19,9 @@
 - else
   %h1= t(:no_group_header)
   .no-groups.row
-    .col-md-3.actions
+    .span3.actions
       .action-button= link_to t(:start_new_group), new_group_path, class: 'btn btn-large btn-primary btn-block'
       .intro-desc= t(:start_new_group_hint)
-    .col-md-3.actions
+    .span3.actions
       .action-button= link_to t(:find_a_group), explore_path, class: 'btn btn-large btn-success btn-block'
       .intro-desc= t(:find_a_group_hint)

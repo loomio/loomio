@@ -1,5 +1,5 @@
 .row
-  .col-md-5
+  .span5
     #motion-form
       = simple_form_for @motion, validate: true do |f|
         = f.input :name, id: "motion-name", input_html: {class: 'js-warn-before-navigating-away'}, hint: t('motion_form.name_helper'), disabled: !@motion.can_be_edited?

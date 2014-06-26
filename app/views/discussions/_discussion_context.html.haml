@@ -1,5 +1,5 @@
 .row
-  %col-md-8
+  .col-md-8
     .description-container
       .description-body
         .long-description
@@ -13,7 +13,7 @@
             = t :edit
         - if TranslationService.can_translate? @discussion
           = translate_link_for @discussion
-  %col-md-3.right-context
+  .col-md-3.right-context
     .helper-text.discussion-description-helper-text.hidden
       =render "application/hint", text: t(:"hint.context"), anchor: 'starting-an-engaging-discussion'
     - if can?(:invite_people, @group)

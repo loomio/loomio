@@ -2,13 +2,13 @@
   - if group
     %h1.home-title
       = link_to t(:home), "/"
-      = content_tag :%col-md-, "\u25B6", class: 'name-separator'
+      = content_tag :span, "\u25B6", class: 'name-separator'
       - if group.is_subgroup?
         = link_to group.parent.name, group.parent
-        = content_tag :%col-md-, "\u25B6", class: 'name-separator'
+        = content_tag :span, "\u25B6", class: 'name-separator'
       = link_to group.name, group
       - if discussion.present?
-        = content_tag :%col-md-, "\u25B6", class: 'name-separator'
+        = content_tag :span, "\u25B6", class: 'name-separator'
         = link_to discussion.title
     = render 'groups/privacy_dropdown', :group => group
   - else

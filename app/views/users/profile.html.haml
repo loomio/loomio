@@ -1,6 +1,6 @@
 %h1= t :'profile_form.profile'
 .row
-  .col-md-4
+  .span4
     = link_to t(:'profile_form.view'), user_path(current_user), id: 'edit-profile'
     = simple_form_for @user do |f|
       = f.input :name
@@ -9,12 +9,12 @@
       = f.submit :class => "btn btn-info btn-large", id: "profile-submit", :data => {:disable_with => t("helpers.submit.user.update")}
 
 .row
-  .col-md-6
+  .span6
     %h2= t("profile_form.picture")
 .row
-  .col-md-3
+  .span3
     = render 'avatar', user: @user, size: "large", id: 'avatar-preview'
-  .col-md-3
+  .span3
     %ul.user-image-options
       - if @user.has_uploaded_image?
         = render 'avatar_setting_option', user: @user, kind: 'uploaded'
