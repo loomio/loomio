@@ -190,6 +190,10 @@ class Group < ActiveRecord::Base
     motions.closed
   end
 
+  def motions_count
+    discussions.published.sum :motions_count
+  end
+
   def archive!
     self.discussions.each(&:archive!)
     self.update_attribute(:archived_at, DateTime.now)

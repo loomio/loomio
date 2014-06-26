@@ -196,6 +196,7 @@ ActiveRecord::Schema.define(:version => 20140702205123) do
     t.string   "key"
     t.string   "iframe_src"
     t.datetime "last_activity_at"
+    t.integer  "motions_count",    :default => 0
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -337,7 +338,6 @@ ActiveRecord::Schema.define(:version => 20140702205123) do
     t.string   "sectors"
     t.string   "other_sector"
     t.integer  "discussions_count",                  :default => 0,              :null => false
-    t.integer  "motions_count",                      :default => 0,              :null => false
     t.string   "country_name"
     t.datetime "setup_completed_at"
     t.boolean  "next_steps_completed",               :default => false,          :null => false
@@ -582,6 +582,7 @@ ActiveRecord::Schema.define(:version => 20140702205123) do
     t.string   "key"
     t.string   "detected_locale"
     t.boolean  "subscribed_to_missed_yesterday_email",                        :default => true,       :null => false
+    t.string   "email_api_key"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
