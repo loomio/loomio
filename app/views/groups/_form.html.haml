@@ -43,7 +43,7 @@
                          [t(:'group_form.discussion_privacy_options.public_or_private_html'), :public_or_private],
                          [t(:'group_form.discussion_privacy_options.private_only_html'), :private_only]]
 
-  .control-group.what-can-members-do
+  .form-group.what-can-members-do
     %label.control-label= t :'group_form.what_can_members_do'
     = f.input :members_can_add_members, as: :boolean, inline_label: t(:'group_form.members_can.add_members'), label: false
     = f.input :members_can_edit_discussions, as: :boolean, inline_label: t(:'group_form.members_can.edit_discussions'),  label: false

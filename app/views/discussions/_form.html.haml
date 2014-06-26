@@ -1,7 +1,7 @@
 .row
   .col-md-5
     = simple_form_for discussion, :validate => true do |f|
-      .control-group
+      .form-group
         - if @user_groups && params[:group_id].blank?
           %p= t "discussion_form.new.who"
           = f.collection_select :group_id, user_groups.sort{|a,b| a.full_name <=> b.full_name}, :id, :full_name, {include_blank: true}

@@ -9,7 +9,7 @@
 =simple_form_for @inbox_preferences_form,
   url: inbox_update_preferences_path,
   method: :put do |f|
-  .control-group.ui-sortable
+  .form-group.ui-sortable
     -@inbox_preferences_form.all_memberships.each do |membership|
       - group = membership.group
       - next if group.nil?

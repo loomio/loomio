@@ -3,11 +3,11 @@
   %h3= t :email_members_in_group, which_group: group.full_name
 = form_tag email_members_group_path(group) do
   .modal-body
-    .control-group
+    .form-group
       = label_tag "group_email_subject", t(:subject)
       %col-md-.presence-error-message= t :subject_error
       = text_field_tag "group_email_subject", nil, :placeholder => t(:subject_placeholder), :class => "validate-presence"
-    .control-group
+    .form-group
       = label_tag "group_email_body", t(:message)
       %col-md-.presence-error-message= t :message_error
       = text_area_tag "group_email_body", nil, :placeholder => t(:message_placeholder, which_group: group.full_name), :class => "validate-presence"

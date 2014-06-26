@@ -4,7 +4,7 @@
       - if motion.outcome.blank?
         #outcome-input
           = form_for motion, url: create_outcome_motion_path(motion) do |f|
-            .control-group
+            .form-group
               = f.text_area :outcome, id: 'outcome-input', class: 'validate-length limit-250', :placeholder => t(:outcome_placeholder)
               .character-counter
             .save-button.clearfix
@@ -12,7 +12,7 @@
       - else
         #outcome-input.hidden
           = form_for motion, url: update_outcome_motion_path(motion), method: 'post' do |f|
-            .control-group
+            .form-group
               = f.text_area :outcome, id: 'outcome-input', class: 'validate-length limit-250', :placeholder => t(:outcome_placeholder)
               .character-counter
             .save-button.clearfix
