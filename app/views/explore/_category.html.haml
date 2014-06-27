@@ -8,7 +8,7 @@
 
 
 .row.groups-row
-  .col-md-6.col
+  .col-md-6.col-sm-12
     - groups.each_with_index do |group, index|
       - next unless index % 2 == 0
       =render 'group', group: group
