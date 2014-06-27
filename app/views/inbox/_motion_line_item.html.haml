@@ -3,7 +3,7 @@
     .col-md-1
       .icon
         .activity-container
-          %col-md-.count.unread-votes-count
+          %span.count.unread-votes-count
             - count = @motion_reader_cache.get_for(item).unread_activity_count
             - if count != 0
               =count
@@ -14,7 +14,7 @@
       = item.title
 
     .col-md-2.time
-      %col-md-.js-format-as-timeago{data:{time: item.closing_at.iso8601}}
+      %span.js-format-as-timeago{data:{time: item.closing_at.iso8601}}
         =time_formatted_relative_to_age(item.closing_at)
       left
 

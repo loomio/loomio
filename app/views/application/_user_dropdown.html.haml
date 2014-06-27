@@ -1,7 +1,7 @@
 %li.dropdown
   %a{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
     = render 'base/avatar', user: current_user, size: "small", id: 'header-user-image'
-    %col-md-#user-name-dropdown
+    %span#user-name-dropdown
       = current_user.name
     %b.caret
   %ul.dropdown-menu

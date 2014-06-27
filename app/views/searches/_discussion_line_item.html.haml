@@ -4,5 +4,5 @@
       .large-icon.discussion-icon.enabled-icon
 
     .col-md-11
-      %col-md-.title= item.title
-      %col-md-.description= "- #{truncate(item.description, length: 180, omission: '...', separator: " ")}" unless item.description.blank?
+      %span.title= item.title
+      %span.description= "- #{truncate(item.description, length: 180, omission: '...', separator: " ")}" unless item.description.blank?

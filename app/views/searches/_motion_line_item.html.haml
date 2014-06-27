@@ -10,5 +10,5 @@
             =values.join(',')
 
     .col-md-11
-      %col-md-.title= item.name
-      %col-md-.description= "- #{truncate(item.description, length: 180, omission: '...', separator: " ")}" unless item.description.blank?
+      %span.title= item.name
+      %span.description= "- #{truncate(item.description, length: 180, omission: '...', separator: " ")}" unless item.description.blank?

@@ -6,12 +6,12 @@
         %i.fa.fa-pencil
         = t :edit
     - if motion.closed?
-      %col-md-.label.label-important= t(:closed)
+      %span.label.label-important= t(:closed)
     .closing-info
       - if motion.voting?
         = t(:proposal_closing_when, when: time_ago_in_words(motion.closing_at))
       - else
-        %col-md-= t(:proposal_closed_when, when: time_ago_in_words(motion.closed_at))
+        %span= t(:proposal_closed_when, when: time_ago_in_words(motion.closed_at))
     .proposed-by
       = t(:proposed_when_by_who, when: time_ago_in_words(motion.created_at), who: motion.author_name)
 

@@ -22,7 +22,7 @@
       %h3= t("contribution.any_amount")
       =form_tag(contributions_path) do
         .input-prepend
-          %col-md-.add-on= '$'
+          %span.add-on= '$'
           %input.input-mini{:id => "custom_amount", :name => "amount", :type => "text"}
         %input{:id => "custom_amount_input", type: 'submit', value: t("contribution.submit"), class: "btn btn-info", :data => {:disable_with => t("contribution.submit")}}
   .row#currency-desc

@@ -1,9 +1,9 @@
 .activity-item-body.translate-parent
   %div{:class => "activity-icon " + item.icon }
-  %col-md-.activity-item-actor
+  %span.activity-item-actor
     - unless item.actor.blank?
       =link_to item.actor.name, user_path(item.actor), class: "user-name"
-  %col-md-.activity-item-header= item.header
-  %col-md-.activity-item-content.word-break= item.body
+  %span.activity-item-header= item.header
+  %span.activity-item-content.word-break= item.body
   .activity-item-time
     = t(:ago, :quantity_of_time => time_ago_in_words(item.time))
