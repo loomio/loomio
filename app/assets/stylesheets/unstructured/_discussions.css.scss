@@ -21,6 +21,7 @@ body.discussions.new, body.discussions.create, body.discussions.edit {
   .control-group.radio_buttons { margin-bottom: 1.6em; }
 
   #discussion_title {
+    max-width:100em;
     font-size: 18px;
     height: 24px;
     line-height: 22px;
@@ -211,7 +212,6 @@ body.discussions.show {
   }
   .discussion-title-container {
     display: inline-block;
-    width: 850px;
     margin: 0 0 0 15px;
 
     #discussion-title { font-size: 22px; }
@@ -264,7 +264,6 @@ body.discussions.show {
         #description-input {
           height: 90px;
           margin-bottom: 5px;
-          width: 100em;
         }
       }
 
@@ -273,7 +272,7 @@ body.discussions.show {
           clear:both;
         }
         .revision-title {
-          width: 450px;
+          max-width: 450px;
           float: left;
           p { font-size: 85%; }
         }
@@ -305,7 +304,7 @@ body.discussions.show {
       }
       .long-description { padding-bottom: 10px; }
       .right-context {
-        width: 265px;
+        max-width: 265px;
         #invite-new-members {
           margin-bottom: 20px;
           margin-left: 50px;
@@ -379,7 +378,7 @@ body.discussions.show {
       height: 120px;
       margin: 0;
       outline: none;
-      width: 380px;
+      max-width: 380px;
       &:focus {
         border-color: 0;
         /*@include box-shadow(0, 0, 0, 0);*/
@@ -644,7 +643,7 @@ pre{
   .group-name {
     color: $mid-grey;
     font-size: $font-small;
-    width: 460px;
+    max-width: 460px;
   }
   .discussion-date-info {
     display: inline;
@@ -700,7 +699,7 @@ div.jqplot-table-legend-swatch{
 .top-pagination {
   margin-bottom: 1em;
   text-align: center;
-  width: 453px;
+  max-width: 453px;
   a {
     background: #eee;
     color: $mid-grey;
@@ -711,7 +710,7 @@ div.jqplot-table-legend-swatch{
 .new-activity-divider {
   border-bottom: 2px solid #7ec6dc;
   margin: -1px 0 0.8em 0;
-  width: 470px;
+  max-width: 470px;
   margin-left: -8px;
 }
 
