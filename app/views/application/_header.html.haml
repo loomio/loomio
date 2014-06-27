@@ -6,10 +6,10 @@
   .container
     .navbar-header
       %button.navbar-toggle{type: 'button', data: {toggle: 'collapse', target: '#navbar-collapse'}}
-        %col-md-.sr-only= t :"sr.toggle_navigation"
-        %col-md-.icon-bar
-        %col-md-.icon-bar
-        %col-md-.icon-bar
+        %span.sr-only= t :"sr.toggle_navigation"
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
       %a.navbar-brand{class: logo_class, href: dashboard_or_root_path, title: t(:"organisation.name")}
 
     - if user_signed_in?
