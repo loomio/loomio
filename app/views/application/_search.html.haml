@@ -4,5 +4,5 @@
       .input-group
         %col-md-.input-group-addon
           %i.fa.fa-search
-        = f.input :query, label: false, placeholder: t("search.placeholder"), input_html: { class: 'form-control', tabindex: 1 }
+        = f.input :query, label: false, placeholder: t("search.placeholder"), input_html: { class: 'form-control', tabindex: 1, size: '20'  }
         / = submit_tag "", class: 'submit-search'
