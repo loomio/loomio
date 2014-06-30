@@ -378,7 +378,7 @@ zh:
   see_previous_decisions: "查看之前的決策"
   see_more: "查看詳細資訊"
   create_new_proposal: "建立新提案"
-  empty_decision_list_html: "準備好作決策了嗎？<br> 任何人都可以啟動一個新的提案。"
+  empty_decision_list_html: "準備好作決策了嗎？<br> 任何人都可以啟動新提案。"
   empty_decision_index: "此群組尚未做出任何決策"
   empty_discussion_list: "這條討論串中尚未有動態。"
   go_to_add_comment_html: "<a href='%{href}'>前往討論串的底部</a>增加意見。"
@@ -476,7 +476,7 @@ zh:
       <p>在下定解決方案之前，若您能建立起對問題的共識，通常能討論出最棒的成果。當夥伴開始參與這個過程，他們將更可能贊成此案的成果。</p>
     example2_html: |
       <h3>您已經想到一個提案，並且希望獲得您的群組批准來進行</h3>
-      <p>策略：針對一個特定決策來啟動討論並立即提出提案。</P>
+      <p>策略：針對一個特定決策來啟動討論串並立即提出提案。</P>
       <p>如果你腦海中已經有明確的成果，但是您想要確定沒有反對聲浪，你可以使用該提案來快速達成決定。</P>
       <p>您可以使用這樣的方法來達成類似敲定公文、允許申請，或者是核准一件工作。</p>
     get_in_touch: "取得聯繫"
@@ -493,7 +493,7 @@ zh:
     help: "教學文件"
     how_it_works: "這是怎樣辦到的"
     invitation_html: |
-      <h2>寫下一封偉大邀請函</h2>
+      <h2>寫下一封卓越邀請函</h2>
       <p>每一個新成員想到的第一個問題通常是：「這個群組是作甚麼用的？」</p>
       <p>用您所能想到最簡單的方式來描述你的群組：你們想要共同達成甚麼？你們將會作出哪種類型的決策？將會涉及到誰？</p>
       <p>在您邀請他們加入 Loomio 前，先告訴他們這些可能會是個好主意。</p>
@@ -534,7 +534,7 @@ zh:
   hint:
     context: '使用論述控制板的小提示'
     discussion: '發起一段激動人心討論的小提示'
-    invitation: '寫出偉大邀請函的小提示'
+    invitation: '寫出卓越邀請函的小提示'
     proposal: '寫出明確提案的小提示'
     vote: '任何時候您都能改變您的立場'
   pricing_page:
@@ -545,7 +545,7 @@ zh:
     organisations_examples: 例如，公司行號，政府機關，或社群團體
     informal_groups: 非正式群組
     informal_groups_desc: 您群組內的成員會被要求「隨意付」
-    informal_groups_examples: 例如：家庭、社會運動、各類團體
+    informal_groups_examples: 例如：家庭會議、社會運動、集體創作
   contribution:
     any_amount: 或是自訂的單次贊助：
     currency_desc: 以美元作為單位
@@ -555,14 +555,14 @@ zh:
     tooltip: 從中瞭解有關我們社群的募資模式
     thought_about_contributing: 您的貢獻機會
     thought_about_contributing_description: |
-      Loomio 是一家社會網絡合作企業，致力於讓每一個人能更輕鬆參與影響他人的決策。
+      Loomio 是一家合作社型的社會企業，致力於讓每一個人能更輕鬆參與影響他人的決策。
 
       金錢不應當成為協同決策制定的阻礙。Loomio 的募資來自於我們使用者社群以及使用 Loomio 的正式組織所付費認購的贊助。
 
-      您的贊助意味著我們能保持 Loomio 的獨立運作、免除廣告的干擾、群組在他們的社群當中能自由地處理偉大的事業。
+      您的贊助意味著我們能保持 Loomio 的獨立運作、免除廣告的干擾、群組在他們的社群當中能自由地處理卓越的事業。
 
       感謝您讓此成為可能！
-    thank_you_title: 謝謝您為Loomio的貢獻!
+    thank_you_title: 謝謝您贊助 Loomio！
     thank_you_body: |
       您的贊助會幫助我們為世界傳遞更為輕鬆的協同決策制定方式。
 
@@ -571,11 +571,11 @@ zh:
       人人都歡迎加入 Loomio 社群，我們可以在此談論如何充分利用以及如何改進這個工具。
 
       <a href='https://www.loomio.org/groups/3'>帶我去 Loomio 社群 &raquo;</a>
-    making_a_donation: 我要捐獻！
+    making_a_donation: 現在就捐款
     making_a_donation_description: |
-      Loomio 是一家社會網絡合作企業，致力於讓每一個人能更輕鬆參與影響他人的決策。
+      Loomio 是一家合作社型的社會企業，致力於讓每一個人能更輕鬆參與影響他人的決策。
 
-      您的贊助代表我們能保持 Loomio 的獨立運作、免除廣告的干擾、群組在他們的社群當中能自由地處理偉大的事業。
+      您的贊助代表我們能保持 Loomio 的獨立運作、免除廣告的干擾、群組在他們的社群當中能自由地處理卓越的事業。
 
       感謝您讓此成為可能！
   resend_confirmation: "重送確認的用法說明"
@@ -678,7 +678,7 @@ zh:
   discussion_form:
     new:
       header: "啟動討論串"
-      who: "您要在哪個群組啟動討論？"
+      who: "您要在哪個群組啟動討論串？"
     edit:
       header: "編輯討論串"
     privacy:
@@ -728,7 +728,7 @@ zh:
   group_setup:
     set_up_your_group: 設置您的群組
     desc_header: "就快到了！"
-    desc_html: "作為群組的協調者，您的責任是設置並且管理您的 Loomio 群組。在您選擇幾項設定之後，您就能進入到您的新群組，啟動幾場討論、送出一些邀請函！<p>當您在想要怎樣以最簡單的方式描述您的群組時，問您自己：你要大家一起實現的是甚麼？哪幾種決定是你會作的？這會牽涉到誰？</p>"
+    desc_html: "身為群組的協作者，您的責任是設置並且管理您的 Loomio 群組。在您選擇幾項設定之後，您就能進入到您的新群組，啟動幾場討論、送出一些邀請函！<p>當您在想要怎樣以最簡單的方式描述您的群組時，問您自己：你要大家一起實現的是甚麼？哪幾種決定是你會作的？這會牽涉到誰？</p>"
     submit: "直接到我的群組"
     payment_model:
       header: Loomio 是大家的！
@@ -768,7 +768,7 @@ zh:
         title: "標題"
         description: "提出一些論述⋯"
       membership_request:
-        introduction: "簡單幾句話告訴我們您是誰和為甚麼想要加入 %{group_name} 。"
+        introduction: "簡單幾句話告訴我們您是誰和為甚麼想要加入「%{group_name}」。"
       motion:
         name: "請問您提議的行動方針是?"
         description: "請提供足夠的資訊，讓每個人都能明確表示贊成或是反對。"
@@ -803,7 +803,7 @@ zh:
       subject: "%{who} 將您加入至 %{which_group}"
       content: "%{who} 將您加入至 Loomio 的 %{which_group} 。點選這裡前往群組："
     unsubscribe: "取消訂閱，或是變更您的email設定："
-    unsubscribe_html: "點這 <a href='%{link_path}'>%{link_text}</a> 取消訂閱或變更個人郵件設定。"
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消訂閱或變更個人郵件設定。"
     view_comment: "點擊此處，您可以看到在 Loomio 上的意見。"
     view_discussion: "點擊此處，您可以看到這條討論串。"
     view_group: "點擊此處檢視 Loomio 上的群組"
@@ -833,7 +833,7 @@ zh:
       intro: "您加入 Loomio「%{group_name}」群組的申請已批准！"
       subject: "成員資格已批准"
     invitation:
-      hi: "Hi %{name},"
+      hi: "%{name} 您好，"
       intro: "點選以下連結以設定您的群組 %{group_name} ："
       closing_message: "如果您有問題或有需要我們幫助您快速開始使用的話，我們樂於聽到您的意見 — 只要回覆此封郵件即可。"
       thanks: |
@@ -878,7 +878,7 @@ zh:
   back: "返回"
   cancel: "取消"
   change: "更改"
-  change_language: "點擊此處，將Loomio轉換成 %{language}"
+  change_language: "點擊此處，將 Loomio 轉換成 %{language}"
   changing: "正在更改"
   click_here: "點這邊"
   close: "關閉"
@@ -1004,14 +1004,14 @@ zh:
     activist: "社運組織"
     arts: "藝術"
     business: "商務"
-    collective: "各類團體"
+    collective: "集體創作"
     community_group: "社群團體"
     co_operative: "合作社"
     democratic_organisation: "民主組織"
     education: "教育"
     environmental_group: "環保團體"
     family: "家庭"
-    local_government: "在地政府"
+    local_government: "地方政府"
     online_community: "線上社群"
     religious_group: "宗教信仰"
     event: "事件"
@@ -1019,7 +1019,7 @@ zh:
     political_initiative: "政治倡議"
     social_enterprise: "社會企業"
     social_justice: "社會正義"
-    advocacy_group: "倡導團體"
+    advocacy_group: "倡議團體"
     science: "科學"
     technology: "科技"
     sports: "運動"

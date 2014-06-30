@@ -28,7 +28,7 @@ nl:
         desc: 'Begin een discussie over een onderwerp en verzamel de juiste mensen. Deel verscheidene perspectieven en ontwikkel samen ideeën.'
       step2:
         header: '2. Tot overeenstemming komen'
-        desc: 'Wie dan ook kan een plan van aanpak voorstellen. Mensen kunnen instemmen, onthouden, het oneens zijn of blokkeren - zodat je kan zien wat iedereen ervan vindt, en waarom.'
+        desc: 'Wie dan ook kan een plan van aanpak voorstellen. Mensen kunnen ermee instemmen, zich onthouden, het ermee oneens zijn of het blokkeren - zodat je kan zien wat iedereen ervan vindt, en waarom.'
       step3:
         header: '3. Samen beslissen'
         desc: 'Ontwikkel het voorstel samen zodat het voor iedereen oké is. Iedere beslissing heeft een duidelijke deadline zodat je altijd een helder resultaat krijgt.'
@@ -44,17 +44,17 @@ nl:
         rushkoff_html: '“Loomio <strong>laat de potentie van het internet los</strong> om mensen richting consensus te bewegen in plaats van gepolariseerd debat.”<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, auteur van <em>Present Shock</em></div>'
     team:
       header: 'Over Loomio'
-      desc: 'We zijn een klein team van open-source ontwikkelaars en mensenrechtenactivisten die bij Enspiral in Aotearoa New Zealand werken, met een groter netwerk van vrienden, hulp en adviseurs van over de hele wereld.'
+      desc: 'We zijn een klein team van open-source ontwikkelaars en mensenrechtenactivisten die bij Enspiral in Aotearoa, Nieuw Zeeland, werken, met een groot netwerk van vrienden, hulp en adviseurs van over de hele wereld.'
     ideals:
       community:
         header: 'Samenwerking gedreven door de gemeenschap'
       independent:
         header: 'Onafhankelijk en neutraal'
-        desc: 'We onderhouden een ruimte om samen te komen voor welke groep dan ook, die onafhankelijk is van politieke- of bedrijfsbelangen. We zullen je gegevens nooit verkopen.'
+        desc: 'We bieden een mogelijkheid om samen te komen voor welke groep dan ook, onafhankelijk van politieke- of bedrijfsbelangen. We zullen je gegevens nooit verkopen.'
       open:
         header: 'Vrije en open software'
       gift:
         header: 'Weggeef economie'
-        desc: 'Loomio wordt ondersteund door mensen die betalen naar hun middelen. Dit houdt het platform vrij van advertenties en toegankelijk voor groepen die geen geld hebben.'
+        desc: 'Loomio wordt ondersteund door mensen die bijdragen naar wat ze kunnen betalen. Dit houdt het platform vrij van advertenties en toegankelijk voor groepen die geen geld hebben.'
     vision:
       header: 'Help ons deze visie in een realiteit veranderen.'
