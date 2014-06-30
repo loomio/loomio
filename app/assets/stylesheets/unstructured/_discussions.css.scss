@@ -641,6 +641,8 @@ pre{
   }
   .discussion-title {
     display: inline;
+    position: relative;
+    z-index: 4;
     float: left;
   }
   .group-name {
