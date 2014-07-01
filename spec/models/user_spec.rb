@@ -12,15 +12,7 @@ describe User do
   end
 
   it { should have_many(:notifications) }
-  it { should have(1).errors_on(:name) }
   it { should respond_to(:uses_markdown) }
-
-  it "must have a valid email" do
-    user = User.new
-    user.email = '"Joe Gumby" <joe@gumby.com>'
-    user.valid?
-    user.should have(1).errors_on(:email)
-  end
 
   it "cannot have invalid avatar_kinds" do
     user.avatar_kind = 'bad'
