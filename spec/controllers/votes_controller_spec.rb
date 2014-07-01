@@ -17,6 +17,21 @@ describe VotesController do
       post :create, motion_id: motion.id, vote: {position: 'yes'}
     end
 
+    it "flashes a motion closed message when the motion is closed" do 
+      motion.update_attribute :closed_at, Date.yesterday
+      post :create, motion_id: motion.id, vote: { position: 'yes' }   
+      
+      flash[:notice].should =~ /motion has already closed/   
+    end
+
+    it "flashes a permission denied message when the user does not have permission" do
+      other_user = create :user
+      sign_in other_user
+      post :create, motion_id: motion.id, vote: { position: 'yes' }
+
+      flash[:notice].should =~ /You do not have permission/
+    end
+
     it 'saves the vote' do
       vote = double(:vote).as_null_object
       vote.should_receive(:save)
