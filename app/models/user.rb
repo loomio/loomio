@@ -77,6 +77,7 @@ class User < ActiveRecord::Base
            dependent: :destroy
 
   has_many :votes, dependent: :destroy
+  has_many :comment_votes, dependent: :destroy
 
   has_many :announcement_dismissals, dependent: :destroy
 
