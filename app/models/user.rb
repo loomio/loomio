@@ -93,10 +93,8 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :attachments
 
-  before_save :set_avatar_initials, :ensure_unsubscribe_token
+  before_save :set_avatar_initials, :ensure_unsubscribe_token, :generate_username
   before_create :set_default_avatar_kind
-  before_create :generate_username
-  after_create :ensure_name_entry
 
   scope :active, where(deleted_at: nil)
   scope :inactive, where("deleted_at IS NOT NULL")
@@ -201,14 +199,14 @@ class User < ActiveRecord::Base
 
   def mark_notifications_as_viewed!(latest_viewed_id)
     notifications.where('id <= ?', latest_viewed_id).
-      update_all(:viewed_at => Time.zone.now)
+      update_all(:viewed_at => Time.now)
   end
 
   def self.loomio_helper_bot
     helper_bot = User.find_or_create_by_email('contact@loom.io')
     unless helper_bot.persisted?
       helper_bot.name = "Loomio Helper Bot"
-      helper_bot.password = SecureRandom.hex(16)
+      helper_bot.password = SecureRandom.hex
       helper_bot.save
     end
     helper_bot
@@ -307,7 +305,8 @@ class User < ActiveRecord::Base
   end
 
   def generate_username
-    ensure_name_entry if name.nil?
+    return if name.blank? or username.present?
+
     if name.include? '@'
       #email used in place of name
       email_str = email.split("@").first
@@ -353,13 +352,6 @@ class User < ActiveRecord::Base
         found = true unless self.class.where(:unsubscribe_token => token).exists?
       end
       self.unsubscribe_token = token
-    end
-  end
-
-  def ensure_name_entry
-    unless name
-      self.name = email
-      save
     end
   end
 end
