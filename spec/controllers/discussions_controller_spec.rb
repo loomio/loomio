@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DiscussionsController do
   let(:app_controller) { controller }
-  let(:user) { stub_model(User) }
+  let(:user) { FactoryGirl.create(:user) }
   let(:motion) { mock_model(Motion).as_null_object }
   let(:group) { create :group }
   let(:discussion) { stub_model(Discussion,
