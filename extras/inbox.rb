@@ -94,11 +94,11 @@ class Inbox
 
   #group can be group or groups
   def clear_all_in_group(group, last_viewed_at = Time.now)
-    unread_discussions_for(group).each do |discussion|
+    unread_discussions_for(group).find_each do |discussion|
       DiscussionReader.for(user: @user, discussion: discussion).viewed!(last_viewed_at)
     end
 
-    unread_motions_for(group).each do |motion|
+    unread_motions_for(group).find_each do |motion|
       MotionReader.for(user: @user, motion: motion).viewed!(last_viewed_at)
     end
   end
@@ -109,7 +109,7 @@ class Inbox
       unread.
       last_comment_after(3.months.ago).
       includes(:group).
-      order_by_latest_comment.readonly(false)
+      order_by_latest_comment.readonly(false).limit(100)
   end
 
   def unvoted_motions_for(group)
@@ -121,7 +121,7 @@ class Inbox
                     new(user: @user, groups: group_or_groups).
                     unread.voting.
                     includes({:discussion => :group}).
-                    order_by_latest_activity.readonly(false)
+                    order_by_latest_activity.readonly(false).limit(100)
   end
 
   def start_date_for(group)
