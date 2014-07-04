@@ -60,6 +60,7 @@ class Group < ActiveRecord::Base
 
   # Engagement (Email Template) Related Scopes
   scope :more_than_n_members, lambda { |n| where('memberships_count > ?', n) }
+  scope :less_than_n_members, lambda { |n| where('memberships_count < ?', n) }
   scope :more_than_n_discussions, lambda { |n| where('discussions_count > ?', n) }
   scope :less_than_n_discussions, lambda { |n| where('discussions_count < ?', n) }
 
