@@ -1,5 +1,9 @@
 Loomio::Application.routes.draw do
 
+  namespace :api, path: '/api/v1' do
+    resources :comments, only: :create
+  end
+
   slug_regex = /[a-z0-9\-\_]*/i
   ActiveAdmin.routes(self)
 
@@ -184,7 +188,6 @@ Loomio::Application.routes.draw do
   end
 
   match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
-    
   post '/translate/:model/:id', to: 'translations#create', as: :translate
 
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
@@ -195,12 +198,6 @@ Loomio::Application.routes.draw do
   get '/contributions/callback' => redirect('/crowd')
   get '/crowd' => redirect('https://love.loomio.org/')
 
-  # resources :contributions, only: [:index, :create] do
-  #   get :callback, on: :collection
-  #   get :thanks, on: :collection
-  # end
-
-  get '/wall', to: 'wall#show', as: 'wall'
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
   root :to => 'marketing#index'
 
