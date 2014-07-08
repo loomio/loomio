@@ -80,13 +80,13 @@ el:
     comment_deleted: "Σχόλιο διαγράφτηκε."
     invitations:
       auto_added:
-        one: "%{count} μέλος προστέθηκε"
+        one: "1 μέλος προστέθηκε"
         other: "%{count} μέλη προστέθηκαν"
       existing_member:
-        one: "%{count} μέλους είναι ήδη στην ομάδα"
-        other: "%{count} μελών είναι ήδη στην ομάδα"
+        one: "1 μέλος είναι ήδη στην ομάδα"
+        other: "%{count} μέλη είναι ήδη στην ομάδα"
       sent:
-        one: "%{count} πρόσκληση στάλθηκε"
+        one: "1 πρόσκληση στάλθηκε"
         other: "%{count} προσκλήσεις στάλθηκαν"
       auto_added_and_sent: "%{auto_added_text} και %{sent_text}"
   tooltip:
@@ -129,7 +129,7 @@ el:
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        one: "Δευτερόλεπτο"
+        one: "1 δευτερόλεπτο"
         other: "%{count} δευτερόλεπτα"
       x_seconds:
         one: "1 δευτερόλεπτο"
@@ -721,6 +721,7 @@ el:
     header: "Προτιμήσεις Ηλεκτρονικού Ταχυδρομείου"
     daily_activity_summary: "Σύνοψη ημερήσιας δραστηριότητας"
     daily_activity_subscription: "Στείλε μου την ημερήσια δραστηριότητα με ηλεκτρονικό ταχυδρομείο συνοψίζωντας τι συμβαίνει στις ομάδες μου."
+    missed_yesterday_subscription: "Στείλτε μου 'Εχθές στο Loomio' - όλα τα μη διαβασμένα περιεχόμενα των τελευταίων 24 ωρών "
     global_notifications: "Παγκόσμιες Ειδοποιήσεις"
     proposal_closing_soon_subscription: "Θύμησε μου 24 ώρες πριν η πρόταση κλείσει"
     mentions_subscription: "Ειδοποιήσε με όταν κάποιος με αναφέρει σε ένα σχόλιο"

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe DashboardController do
-  let(:user) { stub_model(User) }
+  let(:user) { FactoryGirl.create(:user) }
   let(:app_controller) { controller }
 
   before do
@@ -12,6 +12,7 @@ describe DashboardController do
   context "views homepage" do
     it "succeeds" do
       get :show
+      puts response.body
       response.should be_success
     end
   end

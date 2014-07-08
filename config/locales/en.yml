@@ -551,6 +551,10 @@ en:
       abstain: "abstained"
       block: "blocked"
 
+  unable_to_vote:
+    permission_denied: "You do not have permission to vote on this motion"
+    motion_closed: "This motion has already closed"
+
   edit_comment:
     comment_changes: "Comment changes"
     edit_comment: "Edit comment"

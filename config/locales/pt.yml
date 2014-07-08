@@ -80,13 +80,13 @@ pt:
     comment_deleted: "Comentário apagado."
     invitations:
       auto_added:
-        one: "%{count} membro adicionado"
+        one: "1 membro adicionado"
         other: "%{count} membros adicionados"
       existing_member:
-        one: "%{count} membro do grupo"
-        other: "%{count} membros no grupo"
+        one: "1 já são membros no grupo"
+        other: "%{count} já são membros no grupo"
       sent:
-        one: "%{count} convite enviado"
+        one: "1 convites enviados"
         other: "%{count} convites enviados"
       auto_added_and_sent: "%{auto_added_text} e %{sent_text}"
   tooltip:
@@ -129,7 +129,7 @@ pt:
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        one: "%{count} segundos"
+        one: "1 segundo"
         other: "%{count} segundos"
       x_seconds:
         one: "1 segundo"

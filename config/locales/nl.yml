@@ -80,13 +80,13 @@ nl:
     comment_deleted: "Reactie verwijderd."
     invitations:
       auto_added:
-        one: "%{count} lid toegevoegd"
+        one: "1 lid toegevoegd"
         other: "%{count} leden toegevoegd"
       existing_member:
-        one: "%{count} lid zit al in de groep"
-        other: "%{count} leden zitten al in de groep"
+        one: "1 lid al in de groep"
+        other: "%{count} leden al in de groep"
       sent:
-        one: "%{count} uitnodiging verzonden"
+        one: "1 uitnodiging verzonden"
         other: "%{count} uitnodigingen verzonden"
       auto_added_and_sent: "%{auto_added_text} en %{sent_text}"
   tooltip:
@@ -129,7 +129,7 @@ nl:
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        one: "seconde"
+        one: "1 seconde"
         other: "%{count} seconden"
       x_seconds:
         one: "1 seconde"

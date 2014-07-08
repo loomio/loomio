@@ -21,11 +21,11 @@ pt:
       services: 'Serviços'
     hero:
       head_html: 'O mundo precisa de um jeito melhor para <strong>tomar decisões em conjunto.</strong>'
-      desc_html: 'Loomio é um programa gratuito e <a href="https://github.com/loomio/loomio">de código aberto</a> para qualquer pessoa, de qualquer lugar, participar em decisões que as afetam.'
+      desc_html: 'Loomio é um programa gratuito e de <a href="https://github.com/loomio/loomio">código aberto</a> para qualquer pessoa, em qualquer lugar, participar de decisões.'
     product:
       header_html: 'Quandos nós ouvimos <strong>todas as vozes</strong>, nós tomamos <strong>decisões melhores</strong>.'
       step1:
-        header: '1. Converse sobre as coisas'
+        header: '1. Converse sobre'
         desc: 'Inicie uma discussão sobre qualquer assunto e traga as pessoas certas. Compartilhe perspectivas diversas e desenvolva as ideias em conjunto. '
       step2:
         header: '2. Construa o consenso'
@@ -36,7 +36,7 @@ pt:
     crowdfunding:
       header: 'Estamos buscando o financiamento coletivo para que possamos terminar de construir esta nova plataforma e entregá-la para o mundo.'
     prototype:
-      header_html: "Nós já construímos um protótipo e as pessoas de todo o mundo estão fazendo coisas incríveis com ele"
+      header_html: "Já construímos um protótipo e pessoas de todo o mundo estão fazendo coisas incríveis com ele"
       subhead_html: '<a href="%{try_loomio_link}">Experimente Loomio Beta</a> agora. Ou você pode <a href="%{donate_link}">apoiar o projeto</a> para ajudar a financiar o Loomio 1.0'
     mobile:
       header_html: 'Loomio 1.0 vai funcionar em qualquer dispositivo, construído com o melhor em <strong>tecnologia móvel aberta.</strong>'
@@ -46,19 +46,19 @@ pt:
         sifry_html: '“O Loomio está alcançado o ponto doce entre <strong>a voz individual</strong> e <strong>a decisão coletiva</strong>.” <br />– Micah Sifry, Editor, <em><a href="http://techpresident.com">TechPresident</em>'
     team:
       header: 'Sobre o Loomio'
-      desc: 'Somos uma pequena equipe de desenvolvedores de código aberto e ativistas de justiça social que trabalham na Enspiral na Aotearoa Nova Zelândia, com uma rede mais ampla de amigos, apoiadores e conselheiros de todo o mundo.'
+      desc: 'Somos uma pequena equipe de desenvolvedores de código aberto e ativistas de justiça social que trabalham na Enspiral em Aotearoa, Nova Zelândia, com uma ampla rede de amigos, apoiadores e conselheiros de todo o mundo.'
     ideals:
       community:
         header: 'Cooperação conduzida pela comunidade'
         desc: 'O Loomio é construído por uma cooperativa de propriedade dos trabalhadores. Somos uma empresa social que trabalha para maximizar o impacto social positivo, e não o lucro.'
       independent:
-        header: 'Independente and neutro'
-        desc: 'Mantemos um espaço para qualquer grupo se reunir, que é independente de interesses políticos ou corporativos. Nós nunca venderemos seus dados.'
+        header: 'Independente e neutro'
+        desc: 'Mantemos um espaço para qualquer grupo se reunir independente de interesses políticos ou corporativos. Nós nunca venderemos seus dados.'
       open:
         header: 'Programa de código livre e aberto'
         desc: 'O código do Loomio é um recurso público que qualquer pessoa pode executar, ler, estudar, modificar e redistribuir.'
       gift:
-        header: 'Economia de oferta'
+        header: 'Economia do Presente'
         desc: 'O Loomio é apoiado por aqueles que pagam de acordo com suas possibilidades. Isso mantém a plataforma livre de publicidade e acessível a grupos sem dinheiro.'
     vision:
       header: 'Ajude-nos a transformar essa visão em realidade.'

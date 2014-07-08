@@ -79,14 +79,8 @@ fr:
     you_have_left_group: "Vous avez quitté %{which_group}."
     comment_deleted: "Commentaire supprimé."
     invitations:
-      auto_added:
-        one: "%{count} membre ajouté"
-        other: "%{count} membres ajoutés"
-      existing_member:
-        one: "%{count} membre est déjà dans le groupe"
-        other: "%{count} membres déjà dans le groupe"
       sent:
-        one: "%{count} invitation envoyée"
+        one: "1 invitation envoyée"
         other: "%{count} invitations envoyées"
       auto_added_and_sent: "%{auto_added_text} et %{sent_text}"
   tooltip:
@@ -129,7 +123,7 @@ fr:
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        one: "seconde"
+        one: "1 seconde"
         other: "%{count} secondes"
       x_seconds:
         one: "%{count} seconde"
@@ -260,6 +254,10 @@ fr:
       public_only_html: Discussions publiques seulement
       public_or_private_html: Autorise les discussions privées et publiques
       private_only_html: discussions privées seulement
+  group_permissions:
+    header: Permissions du groupe
+    c9: Supprimer les commentaires.
+    members_can: "Les membres peuvent :"
   group_privacy:
     visible_to:
       public: Groupe public.
@@ -442,6 +440,8 @@ fr:
       'no': "est pas d'accord"
       abstain: "s'est abstenu(e)"
       block: "a bloqué"
+  edit_comment:
+    edit_comment: "Modifier le commentaire"
   help:
     coordinating: 'Coordonner vos groupes Loomio'
     coordinating_details: "En tant que coordinateur, vous êtes responsables du paramétrage du groupe Loomio et des \ninvitations. Tout en apprenant à utiliser un nouveau logiciel, votre groupe va\napprendre un nouveau processus pour collaborer plus efficacement et prendre de bonnes décisions ensemble. Voilà quelques trucs pour aider votre groupe :\n\n"
@@ -755,6 +755,7 @@ fr:
         create: "Créer un compte"
         update: "Mettre à jour vos réglages"
   email:
+    by_who: "par %{person}"
     to_join_discussion:
       subject: "%{who} veut que vous rejoigniez une discussion sur Loomio"
       content: "Vous avez été invité à participer à la discussion : %{discussion}"
@@ -784,6 +785,9 @@ fr:
       heading: "Votre activité Loomio"
       intro: "Pour voir ce qui s'est passé dans vos groupes Loomio durant les dernières 24 heures"
       subject: "Loomio - Résumé des dernières 24 heures"
+    missed_yesterday:
+      subject: "Hier sur Loomio"
+      mark_as_read: Marquer comme lu
     group_email:
       intro: "%{who} à fait une annonce à %{group}:"
     group_membership_approved:
@@ -896,6 +900,7 @@ fr:
   google: "Google"
   persona: "Persona"
   common:
+    back_to_discussion: "Retour à la discussion"
     today: Aujourd'hui
     months:
       january: Janvier
