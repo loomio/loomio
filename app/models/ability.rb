@@ -65,12 +65,7 @@ class Ability
     can [:add_members,
          :invite_people,
          :manage_membership_requests], Group do |group|
-
-      if group.members_can_add_members?
-        user_is_member_of?(group.id)
-      else
-        user_is_admin_of?(group.id)
-      end
+      (group.members_can_add_members? && user_is_member_of?(group.id)) || user_is_admin_of?(group.id)
     end
 
     can :create, Group do |group|
