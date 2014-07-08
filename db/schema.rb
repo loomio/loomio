@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140702205123) do
+ActiveRecord::Schema.define(:version => 20140708053114) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -582,6 +582,7 @@ ActiveRecord::Schema.define(:version => 20140702205123) do
     t.string   "key"
     t.string   "detected_locale"
     t.boolean  "subscribed_to_missed_yesterday_email",                        :default => true,       :null => false
+    t.string   "email_api_key"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
