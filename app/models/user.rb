@@ -94,7 +94,11 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :attachments
 
-  before_save :set_avatar_initials, :ensure_unsubscribe_token, :generate_username
+  before_save :set_avatar_initials,
+              :ensure_unsubscribe_token,
+              :ensure_email_api_key,
+              :generate_username
+
   before_create :set_default_avatar_kind
 
   scope :active, where(deleted_at: nil)
@@ -343,6 +347,10 @@ class User < ActiveRecord::Base
     if has_gravatar?
       self.avatar_kind = "gravatar"
     end
+  end
+
+  def ensure_email_api_key
+    self.email_api_key ||= SecureRandom.hex(16)
   end
 
   def ensure_unsubscribe_token
