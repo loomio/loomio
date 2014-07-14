@@ -54,10 +54,6 @@ class Group < ActiveRecord::Base
 
   scope :visible_on_explore_front_page, -> { visible_to_public.categorised_any.parents_only }
   scope :include_admins, includes(:admins)
-  scope :visible_to_the_public,
-        published.
-        where(privacy: 'public').
-        parents_only
 
   scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
 
