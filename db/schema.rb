@@ -196,6 +196,7 @@ ActiveRecord::Schema.define(:version => 20140708053114) do
     t.string   "key"
     t.string   "iframe_src"
     t.datetime "last_activity_at"
+    t.integer  "motions_count",    :default => 0
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -337,7 +338,6 @@ ActiveRecord::Schema.define(:version => 20140708053114) do
     t.string   "sectors"
     t.string   "other_sector"
     t.integer  "discussions_count",                  :default => 0,              :null => false
-    t.integer  "motions_count",                      :default => 0,              :null => false
     t.string   "country_name"
     t.datetime "setup_completed_at"
     t.boolean  "next_steps_completed",               :default => false,          :null => false
