@@ -6,8 +6,8 @@ class Motion < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
   belongs_to :outcome_author, class_name: 'User'
-  belongs_to :discussion
-  # has_one :group, through: :discussion
+  belongs_to :discussion, counter_cache: true
+
   has_many :votes, dependent: :destroy, include: :user
   has_many :unique_votes, class_name: 'Vote', conditions: { age: 0 }, include: :user
   has_many :did_not_votes, dependent: :destroy, include: :user
@@ -99,7 +99,7 @@ class Motion < ActiveRecord::Base
   def can_be_edited?
     !persisted? || (voting? && (!has_votes? || group.motions_can_be_edited?))
   end
-
+  
   # number of final votes
   def total_votes_count
     vote_counts.values.sum
@@ -238,4 +238,5 @@ class Motion < ActiveRecord::Base
     def fire_new_motion_event
       Events::NewMotion.publish!(self)
     end
+
 end

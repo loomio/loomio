@@ -70,7 +70,9 @@ class Discussion < ActiveRecord::Base
   end
 
   def archive!
-    self.update_attribute(:archived_at, DateTime.now)
+    return if is_archived?
+    self.update_attribute :archived_at, DateTime.now and
+    Group.update_counters(group_id, discussions_count: -1) and true
   end
 
   def is_archived?
