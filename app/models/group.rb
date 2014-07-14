@@ -403,12 +403,10 @@ class Group < ActiveRecord::Base
 
   def organisation_discussions_count
     Group.where("parent_id = ? OR (parent_id IS NULL AND id = ?)", parent_or_self.id, parent_or_self.id).sum(:discussions_count)
-    0
   end
 
   def organisation_motions_count
-    #Group.where("parent_id = ? OR (parent_id IS NULL AND id = ?)", parent_or_self.id, parent_or_self.id).sum(:motions_count)
-    0
+    Group.where("parent_id = ? OR (parent_id IS NULL AND id = ?)", parent_or_self.id, parent_or_self.id).all.sum(&:motions_count)
   end
 
   def has_subdomain?
