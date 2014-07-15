@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   validates_attachment :uploaded_avatar,
     size: { in: 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
     content_type: { content_type: /\Aimage/ },
-    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }
+    file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
   validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
 
