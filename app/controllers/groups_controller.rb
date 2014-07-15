@@ -90,6 +90,7 @@ class GroupsController < GroupBaseController
                                           page(params[:page]).per(20)
 
     @closed_motions = Queries::VisibleMotions.new(user: current_user, groups: @group).order('closed_at desc')
+    @feed_url = group_url @group, format: :xml
 
     build_discussion_index_caches
   end
