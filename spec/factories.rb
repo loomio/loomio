@@ -9,6 +9,7 @@ FactoryGirl.define do
     sequence(:name) { Faker::Name.name }
     password 'password'
     time_zone "Pacific/Tarawa"
+
     after(:build) do |user|
       user.generate_username
     end
@@ -76,9 +77,6 @@ FactoryGirl.define do
     association :author, :factory => :user
     description 'Fake description'
     discussion
-    close_at_date '24-12-2044'
-    close_at_time '16:00'
-    close_at_time_zone 'Wellington'
     after(:build) do |motion|
       motion.group.parent.add_member!(motion.author) if motion.group.parent
       motion.group.add_member!(motion.author)
