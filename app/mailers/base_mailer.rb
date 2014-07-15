@@ -3,6 +3,7 @@ class BaseMailer < ActionMailer::Base
   include LocalesHelper
   include ERB::Util
   include ActionView::Helpers::TextHelper
+  include EmailHelper
   add_template_helper(ReadableUnguessableUrlsHelper)
 
   UTM_EMAIL = { utm_campaign: 'notifications', utm_medium: 'email' }
@@ -18,8 +19,6 @@ class BaseMailer < ActionMailer::Base
       add_sendgrid_headers(method_name, args) if method_name
     end
   end
-
-  private
 
   # Set headers for SendGrid.
   def add_sendgrid_headers(action, args)
