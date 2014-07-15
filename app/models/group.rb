@@ -53,6 +53,7 @@ class Group < ActiveRecord::Base
   scope :hidden_from_public, published.where(is_visible_to_public: false)
 
   scope :visible_on_explore_front_page, -> { visible_to_public.categorised_any.parents_only }
+  scope :include_admins, includes(:admins)
 
   scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
 

@@ -1117,6 +1117,7 @@ en:
   translate_this_string: "Translate to %{language}"
   failed_translation: "Unable to complete translation"
   options: "Options"
+  rss_subscribe: "Subscribe to feed"
   ok_got_it: "Okay, got it!"
   remove: "Remove"
   save: "Save"
