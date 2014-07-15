@@ -53,6 +53,7 @@ class Group < ActiveRecord::Base
   scope :hidden_from_public, published.where(is_visible_to_public: false)
 
   scope :visible_on_explore_front_page, -> { visible_to_public.categorised_any.parents_only }
+  scope :include_admins, includes(:admins)
 
   scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
 
@@ -188,6 +189,10 @@ class Group < ActiveRecord::Base
 
   def closed_motions
     motions.closed
+  end
+
+  def motions_count
+    discussions.published.sum :motions_count
   end
 
   def archive!
@@ -402,7 +407,7 @@ class Group < ActiveRecord::Base
   end
 
   def organisation_motions_count
-    Group.where("parent_id = ? OR (parent_id IS NULL AND id = ?)", parent_or_self.id, parent_or_self.id).sum(:motions_count)
+    Group.where("parent_id = ? OR (parent_id IS NULL AND id = ?)", parent_or_self.id, parent_or_self.id).all.sum(&:motions_count)
   end
 
   def has_subdomain?
