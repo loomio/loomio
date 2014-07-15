@@ -1,4 +1,12 @@
 module EmailHelper
+  def reply_to_address(discussion: discussion, user: user)
+    pairs = []
+    {d: discussion.key, u: user.id, k: user.email_api_key}.each do |key, value|
+      pairs << "#{key}=#{value}"
+    end
+    pairs.join('&')+"@#{ENV['REPLY_HOSTNAME']}"
+  end
+
   def render_email_plaintext(text)
     Rinku.auto_link(simple_format(html_escape(text)), :all, 'target="_blank"').html_safe
   end
