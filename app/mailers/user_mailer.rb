@@ -35,19 +35,6 @@ class UserMailer < BaseMailer
     end
   end
 
-  def daily_activity(user, activity, since_time)
-    @user = user
-    @activity = activity
-    @since_time = since_time
-    @since_time_formatted = since_time.strftime('%A, %-d %B')
-    @groups = user.groups.sort{|a,b| a.full_name <=> b.full_name }
-    locale = best_locale(user.locale)
-    I18n.with_locale(locale) do
-      mail to: @user.email,
-           subject: t("email.daily_activity.subject")
-    end
-  end
-
   def mentioned(user, comment)
     @user = user
     @comment = comment
