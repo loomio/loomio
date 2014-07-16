@@ -1,14 +1,36 @@
 class UserMailer < BaseMailer
-  def daily_activity(user, activity, since_time)
+  helper :email
+  helper :motions
+  helper :application
+
+  def missed_yesterday(user, time_since = nil, unread = true)
     @user = user
-    @activity = activity
-    @since_time = since_time
-    @since_time_formatted = since_time.strftime('%A, %-d %B')
-    @groups = user.groups.sort{|a,b| a.full_name <=> b.full_name }
-    locale = locale_fallback(user.locale)
-    I18n.with_locale(locale) do
-      mail to: @user.email,
-           subject: t("email.daily_activity.subject")
+    @time_start = time_since || 24.hours.ago
+    @time_finish = Time.zone.now
+    @time_frame = @time_start...@time_finish
+
+    @utm_hash = UTM_EMAIL.merge utm_source: 'missed_yesterday'
+
+    if unread
+      @discussions = Queries::VisibleDiscussions.new(user: user,
+                                                     groups: user.inbox_groups).
+                                                     unread.
+                                                     active_since(@time_start)
+    else
+      @discussions = Queries::VisibleDiscussions.new(user: user,
+                                                     groups: user.inbox_groups).
+                                                     active_since(@time_start)
+    end
+
+    unless @discussions.empty? or @user.inbox_groups.empty?
+      @discussions_by_group = @discussions.group_by(&:group)
+      locale = locale_fallback(user.locale)
+
+      I18n.with_locale(locale) do
+        mail to: user.email,
+             subject: t("email.missed_yesterday.subject"),
+             css: 'missed_yesterday'
+      end
     end
   end
 
@@ -19,9 +41,13 @@ class UserMailer < BaseMailer
     @discussion = comment.discussion
     locale = locale_fallback(user.locale, comment.author.locale)
     I18n.with_locale(locale) do
+
+      # from Robert Guthrie <notifications@loomio.org>"
+      # reply_to Group of discussion? <d=13&sdf@reply.loomio.org>
+
       mail to: @user.email,
            from: from_user_via_loomio(comment.author),
-           reply_to: comment.author.name_and_email,
+           reply_to: reply_to_address(discussion: @discussion, user: @user),
            subject: t("email.mentioned.subject", who: comment.author.name, which: comment.group.name)
     end
   end

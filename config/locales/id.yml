@@ -16,7 +16,6 @@ id:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%-d/%-m/%y'
-      datepicker: "%d-%m-%Y"
   devise:
     invitations:
       send_instructions: 'Undangan telah dikirim ke %{email}.'
@@ -112,6 +111,8 @@ id:
     proposal_deleted: "Usulan dihapus."
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        other: "%{count} detik"
       x_seconds:
         other: "%{count} detik"
       less_than_x_minutes:
@@ -137,6 +138,7 @@ id:
     blog: 'Blog'
     contact: 'Hubungi'
     privacy: 'Kerahasiaan'
+    public_groups: 'Kelompok umum'
     terms: 'Ketentuan'
   inbox:
     dropdown-btn: 'Kotak masuk'
@@ -201,6 +203,7 @@ id:
   email_group_members: "Kirim surel ke anggota kelompok"
   edit_group_settings: "Ubah setelan kelompok"
   leave_group: "Tinggalkan kelompok"
+  confirm_leave_hidden_group: "Apakah Anda yakin untuk keluar dari %{which_group}? Anda juga akan dikeluarkan dari setiap kelompok kecil di dalam kelompok ini."
   confirm_leave_group: "Apakah Anda ingin keluar dari %{which_group}?"
   deactivate_group: "Non-aktifkan kelompok"
   confirm_deactivate_group: "Tunggu!!! Apakah Anda yakin ingin menonaktifkan %{which_group}? Anda tidak dapat memuat kelompok ini lagi. Namun, Anda dapat menghubungi kami apabila Anda ingin kelompok ini diaktifkan kembali dengan mengirimkan surel kepada contact@loomio.org."
@@ -270,9 +273,6 @@ id:
   empty_decision_list_html: "Siap membuat keputusan? <br> Setiap orang dapat membuat usulan."
   empty_decision_index: "Kelompok ini belum membuat keputusan."
   empty_discussion_list: "Belum ada aktivitas di dalam diskusi ini."
-  empty_discussion_index: "Belum ada diskusi di dalam kelompok Anda."
-  empty_discussion_index_group: "Kelompok ini belum memiliki diskusi."
-  private_group_discussion_display: "Kelompok ini tertutup. Diskusi hanya tampil untuk anggota. Apabila Anda ingin berpartisipasi, Anda dapat mengirim permintaan untuk bergabung."
   discussion_context:
     started_html: "Dimulai %{when} yang lalu oleh <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Terakhir diubah %{when} lalu oleh <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -500,6 +500,7 @@ id:
     description: "Di bawah ini adalah daftar diskusi dan usulan yang memiliki kata '%{query}' di dalam judul atau penjelasan."
     header: "Cari hasil dari '%{query}'"
     placeholder: "Cari"
+    empty_search: 'Kosongkan pencarian'
   example_discussion:
     title: "Contoh Diskusi: Selamat datang dan perkenalan kepada Loomio"
     description: |
@@ -521,11 +522,7 @@ id:
     edit:
       header: "Ubah diskusi"
   motion_form:
-    header: "Usulan baru"
     name_helper: "Buat judul yang jelas dan ringkas."
-  group_form:
-    invitation_settings: "Setelan Undangan"
-    admins_only: "Hanya untuk koordinator"
   vote_form:
     header: "Berikan pendapat Anda"
     edit: "Ubah pendapat Anda"
@@ -567,31 +564,6 @@ id:
       discussion:
         title: "Judul"
         description: "Konteks"
-        privacy_public_header: "Terbuka"
-        privacy_public_description: "Semua orang dapat melihat diskusi ini"
-        privacy_private_header: "Tertutup"
-        privacy_hidden_description: "Seluruh diskusi pada kelompok tersembunyi adalah tertutup."
-        of: "dari"
-        of_no_group: "dari kelompok ini"
-      group:
-        name: "Nama kelompok"
-        description: "Deskripsi"
-        members_invitable_by: "Siapa yang dapat mengundang teman ke dalam kelompok ini?"
-        members_invitable_by_coordinators: "Hanya untuk koordinator"
-        members_invitable_by_members: "Seluruh anggota kelompok"
-        privacy: Kerahasiaan
-        privacy_public_header: Terbuka
-        privacy_public_description: Diskusi bersifat terbuka, kecuali dibuat tertutup. Setiap orang dapat menemukan kelompok ini dan mengirim permintaan bergabung.
-        privacy_private_header: Sebagian besar tertutup
-        privacy_private_description: Diskusi bersifat tertutup, kecuali Anda secara tegas membuatnya terbuka. Setiap orang dapat menemukan kelompok ini dan mengirim permintaan bergabung.
-        privacy_hidden_header: Tersembunyi (ditutup secara keseluruhan)
-        privacy_hidden_description: Diskusi selalu tertutup. Menemukan dan bergabung dengan kelompok ini hanya melalui undangan.
-        privacy_parent_group_members_header: Dapat dilihat oleh anggota kelompok induk
-        privacy_parent_group_members_description: Sama seperti tersembunyi, hanya anggota kelompok induk yang dapat membuka kelompok dan diskusinya.
-        privacy_parent_group_members_description_short: Hanya anggota dan anggota kelompok induk dapat melihat kelompok ini dan diskusinya.
-        group_members_invitable_by: "Hanya koordinator"
-        submit: Masukkan
-        is_visible_to_parent_members_header: Izinkan seluruh anggota %{group} untuk melihat kelompok kecil dan diskusinya.
       membership_request:
         introduction: "Kenalkan diri Anda"
       motion:
@@ -613,9 +585,6 @@ id:
       motion:
         name: "Apa tindakan yang Anda usulkan?"
         description: "Berikan informasi yang cukup sehingga anggota kelompok dapat segera memilih untuk setuju atau tidak setuju."
-      group:
-        name: "Nama kelompok"
-        description: "Deskripsi kelompok"
       user:
         email: "Surel"
         password: "Kata sandi"
@@ -643,7 +612,6 @@ id:
     view_discussion: "Klik di sini untuk melihat diskusi ini"
     view_group: "Klik di sini untuk melihat kelompok di Loomio"
     view_proposal: "Lihat usulan ini di Loomio"
-    campaign_html: "Apakah keputusan ini penting untuk Anda? Pertimbangkan <a href='%{link_path}'>memberi sumbangan untuk Loomio</a> dan bantu kami menyebarkan Loomio lebih luas. Kami adalah tim kecil yang ingin melakukan hal besar dan kami butuh kontribusi Anda untuk membantu kami berkembang!"
     create_discussion:
       intro: "%{who} memulai diskusi baru di dalam %{which_group}:"
       subject: "Diskusi baru - %{which}"
@@ -738,6 +706,8 @@ id:
   password: "Kata sandi"
   pricing: 'Harga'
   prev: "Sebelumnya"
+  more: "Selanjutnya..."
+  translate: "Bantu terjemahkan Loomio!"
   options: "Pilihan"
   ok_got_it: "Oke, mengerti!"
   remove: "Hapus"
@@ -748,12 +718,10 @@ id:
   send_email: "Kirim surel"
   show_more: "Tunjukan Lagi"
   start_a_group: "Buat kelompok"
-  start_group: "Buat kelompok!"
   starting: "Memulai"
   subject: "Perihal"
   terms_of_service_html: "Dengan menekan %{button_text}, Anda setuju dengan <a href='%{link_path}' target='_blank'>Ketentuan layanan</a> Loomio"
   thanks: "Terima kasih!"
-  translate: "Bantu terjemahkan Loomio!"
   unlike: "Tidak sukai"
   update: "Perbarui"
   common:

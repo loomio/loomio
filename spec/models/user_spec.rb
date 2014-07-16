@@ -12,15 +12,7 @@ describe User do
   end
 
   it { should have_many(:notifications) }
-  it { should have(1).errors_on(:name) }
   it { should respond_to(:uses_markdown) }
-
-  it "must have a valid email" do
-    user = User.new
-    user.email = '"Joe Gumby" <joe@gumby.com>'
-    user.valid?
-    user.should have(1).errors_on(:email)
-  end
 
   it "cannot have invalid avatar_kinds" do
     user.avatar_kind = 'bad'
@@ -130,9 +122,9 @@ describe User do
   end
 
   describe "name" do
-    it "returns user.name '(account inactive)' if deleted_at is true (a date is present)" do
+    it "returns '[deactivated account]' if deleted_at is true (a date is present)" do
       user.update_attribute(:deleted_at, Time.now)
-      user.name.should include('account inactive')
+      user.name.should include('deactivated account')
     end
 
     it "returns the stored name if deleted_at is nil" do
@@ -213,7 +205,7 @@ describe User do
 
   it "sets subscriptions to false when deactivate! is called" do
     user.deactivate!
-    user.subscribed_to_daily_activity_email.should be_false
+    user.subscribed_to_missed_yesterday_email.should be_false
     user.subscribed_to_mention_notifications.should be_false
     user.subscribed_to_proposal_closure_notifications.should be_false
   end

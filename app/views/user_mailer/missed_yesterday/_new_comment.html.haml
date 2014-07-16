@@ -1,0 +1,12 @@
+- comment = item.eventable
+%table
+  %tr
+    %td.icon
+      %img{src: comment.author.avatar_url(:medium)}
+    %td.content
+      %b= comment.author.name
+      %br
+      - if comment.uses_markdown?
+        = render_email_markdown comment.body
+      - else
+        = render_email_plaintext comment.body

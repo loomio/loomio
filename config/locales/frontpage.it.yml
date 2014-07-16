@@ -3,9 +3,23 @@ it:
     link:
       blog: 'Blog'
       contact: 'Contatti'
+      log_in: 'ACCEDI'
+      more: 'Altro'
       top: 'Su'
       public_groups: 'Gruppi pubblici'
+      terms: 'Termini'
       privacy: 'Privacy'
       services: 'Servizi'
+    product:
+      step1:
+        desc: 'Inizia una discussione su qualsiasi argomento, e invita le persone giuste. Condividi diversi punti di vista e sviluppa le idee insieme.'
+      step2:
+        desc: 'Chiunque può proporre una linea di azione. Le persone possono concordare, astenersi, non essere d''accordo, o bloccare - così vuoi vedere come tutti reagiscono, e perché.'
+      step3:
+        header: '3. Decidere insieme'
+        desc: 'Sviluppa la proposta insieme così che funzioni per tutti. Ogni decisione ha una scadenza chiara, così hai sempre un risultato chiaro.'
+    crowdfunding:
+      header: 'Siamo in crowdfunding per poter finire di costruire questa nuova piattaforma e darla a disposizione al mondo.'
     team:
       header: 'Informazioni su Loomio'
+      desc: 'Siamo un piccolo team di sviluppatori open-source e attivisti per la giustizia che lavora a Enspiral in Aotearoa, Nuova Zelanda, con una vasta rete di amici, sostenitori e consulenti in tutto il mondo.'

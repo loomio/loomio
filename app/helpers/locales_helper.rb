@@ -30,7 +30,9 @@ module LocalesHelper
                             'Gaelic (Irish)' => :ga,
                             'Esperanto' => :eo,
                             'Telugu' => :te,
-                            'khmer' => :km}
+                            'khmer' => :km,
+                            'Belarusian' => :be,
+                            'Macedonian' => :mk }
 
   def locale_name(locale)
     LANGUAGES.key(locale.to_s)

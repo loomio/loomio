@@ -1,5 +1,9 @@
 Loomio::Application.routes.draw do
 
+  namespace :api, path: '/api/v1' do
+    resources :comments, only: :create
+  end
+
   slug_regex = /[a-z0-9\-\_]*/i
   ActiveAdmin.routes(self)
 
@@ -104,6 +108,7 @@ Loomio::Application.routes.draw do
   resources :motions, path: 'm', only: [:new, :create, :edit, :index] do
     resources :votes, only: [:new, :create, :update]
     member do
+      get :history
       put :close
       put :create_outcome
       post :update_outcome
@@ -140,7 +145,7 @@ Loomio::Application.routes.draw do
     post 'update_version/:version_id',        action: 'update_version',   as: 'update_version_discussion'
   end
 
-  resources :comments , only: :destroy do
+  resources :comments , only: [:destroy, :edit, :update, :show] do
     post :like, on: :member
   end
 
@@ -173,6 +178,7 @@ Loomio::Application.routes.draw do
     scope module: :email_preferences do
       get '/email_preferences', action: 'edit',   as: :email_preferences
       put '/email_preferences', action: 'update', as: :update_email_preferences
+      get '/mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
     end
   end
 
@@ -182,8 +188,15 @@ Loomio::Application.routes.draw do
   end
 
   match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
-
   post '/translate/:model/:id', to: 'translations#create', as: :translate
+
+  get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
+  get '/group_requests/:id/start_new_group' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('token=','')}"}
+
+  get '/contributions' => redirect('/crowd')
+  get '/contributions/thanks' => redirect('/crowd')
+  get '/contributions/callback' => redirect('/crowd')
+  get '/crowd' => redirect('https://love.loomio.org/')
 
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
   root :to => 'marketing#index'
@@ -258,4 +271,6 @@ Loomio::Application.routes.draw do
   get '/press'      => redirect('http://blog.loomio.org/press-pack')
   get '/press-pack' => redirect('http://blog.loomio.org/press-pack')
   get '/roadmap'    => redirect('https://trello.com/b/tM6QGCLH/loomio-roadmap')
+
+  get '/robots'     => 'robots#show'
 end

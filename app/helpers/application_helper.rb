@@ -93,7 +93,7 @@ module ApplicationHelper
       markdown = Redcarpet::Markdown.new(renderer, *options)
       output = markdown.render(text)
     else
-      output = Rinku.auto_link(simple_format(html_escape(text)), mode=:all, 'target="_blank"')
+      output = Rinku.auto_link(simple_format(html_escape(text)), :all, 'target="_blank"')
     end
 
     Redcarpet::Render::SmartyPants.render(output).html_safe

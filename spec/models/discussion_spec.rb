@@ -106,6 +106,32 @@ describe Discussion do
     end
   end
 
+  describe "#motions_count" do
+    before do
+      @user = create(:user)
+      @group = create(:group)
+      @discussion = create(:discussion, group: @group)
+      @motion = create(:motion, discussion: @discussion)
+    end
+
+    it "returns a count of motions" do
+      @discussion.reload.motions_count.should == 1
+    end
+
+    it "updates correctly after creating a motion" do
+      expect {
+        @discussion.motions.create(attributes_for(:motion).merge({ author: @user }))
+      }.to change { @discussion.reload.motions_count }.by(1)
+    end
+
+    it "updates correctly after deleting a motion" do
+      expect {
+        @motion.destroy
+      }.to change { @discussion.reload.motions_count }.by(-1)
+    end
+
+  end
+
   describe "#activity" do
     it "returns all the activity for the discussion" do
       @user = create :user

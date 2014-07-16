@@ -9,8 +9,8 @@ class InboxController < BaseController
     load_inbox
     size = @inbox.items_count
 
-    if size > 50
-      render text: '50+'
+    if size > 100
+      render text: '100+'
     elsif size > 0
       render text: size
     else
@@ -48,6 +48,7 @@ class InboxController < BaseController
     redirect_back_or_head_ok
   end
 
+  # doh.. I ment mark all in group as read.. sigh
   def mark_all_as_read
     @inbox = Inbox.new(current_user)
     group = current_user.groups.find(params[:id])

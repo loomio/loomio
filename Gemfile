@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.1.2'
 gem 'rails', '~> 3.2.18'
 gem 'rake', '~> 10.3.1'
 gem 'haml-rails', '~> 0.4.0'
@@ -20,7 +20,7 @@ gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 gem 'jqplot-rails', '~> 0.3'
 gem 'rails-backbone', '~> 0.7.2'
-gem 'cancan', '~> 1.6.10'
+gem 'cancancan', '~> 1.8'
 gem 'draper', '~> 0.11.1'
 gem 'rmagick', '~> 2.13.1'
 gem 'gravtastic', '~> 3.2.6'
@@ -113,8 +113,9 @@ group :test do
 end
 
 group :staging, :production do
+  gem 'delayed-plugins-airbrake'
   gem 'memcachier', '~> 0.0.2'
   gem 'dalli', '~> 2.7.0'
-  gem 'newrelic_rpm', '~> 3.7.3'
+  gem 'newrelic_rpm'
   gem 'heroku-deflater', '~> 0.5.1'
 end

@@ -16,7 +16,6 @@ ro:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%-d/%-m/%y'
-      datepicker: "%d-%m-%Y"
   devise:
     invitations:
       send_instructions: 'O invitatie a fost trimisa la %{email}.'
@@ -289,8 +288,6 @@ ro:
   empty_decision_list_html: "Pregatit sa ceri vot pe o decizie? <br> Oricine poate creea o propunere."
   empty_decision_index: "Acest grup inca nu a adoptat nici o decizie."
   empty_discussion_list: "Inca nu exista activitate in aceasta discutie."
-  empty_discussion_index: "Inca nu exista discutii in grupurile tale."
-  empty_discussion_index_group: "Acest grup nu are inca nici o discutie."
   discussion_context:
     started_html: "Inceputa acum %{when} de catre <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Editat acum  %{when} de catre <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -494,7 +491,6 @@ ro:
     labels:
       name: 'Nume'
       message: 'Mesaj'
-      destination: 'Unde să trimitem mesajul?'
       submit: 'Trimitere'
   discussion_form:
     new:
@@ -503,11 +499,7 @@ ro:
     edit:
       header: "Modificare discuţie"
   motion_form:
-    header: "Propunere noua"
     name_helper: "Scrie un title cat se poate de clar si scurt astfel incat oamenii sa inteleaga exact la ce te referi cand sunt de acord sau nu cu propunerea ta."
-  group_form:
-    invitation_settings: "Setari pentru Invitatii"
-    admins_only: "Doar coordonatorii"
   vote_form:
     header: "Exprima-ti pozitia"
     edit: "Editeaza pozitia ta"
@@ -551,19 +543,6 @@ ro:
       discussion:
         title: "Titlu"
         description: "Context"
-        privacy_public_header: "Publică"
-        privacy_public_description: "Oricine poate să vadă discuţia asta."
-        privacy_private_header: "Privată"
-        privacy_private_description: "Numai membrii grupului %{group} pot să vadă discuţia asta."
-      group:
-        name: "Numele grupului"
-        description: "Descriere"
-        members_invitable_by: "Cine poate trimite invita oameni in acest grup?"
-        members_invitable_by_coordinators: "Doar coordonatori"
-        members_invitable_by_members: "Toti membrii grupului"
-        privacy_public_header: Public
-        privacy_public_description: Daca nu sunt setate in mod privat, discutiile sunt publice. Oricine poate gasi grupul si cere aprobarea sa i se alature.
-        privacy_parent_group_members_header: Poate fi vazut doar de catre mebrii grupului.
       membership_request:
         introduction: "Prezinta-te"
       motion:
@@ -588,8 +567,6 @@ ro:
       motion:
         name: "Care este propunerea ta pentru pasii urmatori?"
         description: "Adauga destule informatii pentru ca toti din grupul tau sa poata lua o decizie informata."
-      group:
-        description: "Descrierea grupului"
       user:
         email: "Email"
         password: "Parola"
@@ -617,7 +594,6 @@ ro:
     view_discussion: "Apasa aici pentru a vedea aceasta discutie"
     view_group: "Apasa aici pentru a vedea grupul pe Loomio"
     view_proposal: "Vizualizeaza aceasta propunere pe Loomio"
-    campaign_html: "Deciziile luate au fost importante pentru tine? Poti deveni <a href='%{link_path}'> contributor Loomio</a> si sa ne ajuti sa popularizam Loomio. Suntem o echipa mica care incearca sa realizeze lucruri importante si avem nevoie de ajutorul tau ca sa continuam sa crestem!"
     create_discussion:
       intro: "%{who} a pornit o noua discutie in %{which_group}:"
       subject: "Discutie nou - %{which}"
@@ -712,6 +688,7 @@ ro:
   password: "Parola"
   pricing: 'Plati'
   prev: "Anteriorul"
+  translate: "Ajuta la traducerea Loomio!"
   translate_this_string: "Traducere în %{language}"
   options: "Optiuni"
   ok_got_it: "Ok, am inteles!"
@@ -727,7 +704,6 @@ ro:
   subject: "Subiect"
   terms_of_service_html: "Apasand %{button_text}, esti de acord cu <a href='%{link_path}' target='_blank'>Termenii si Conditiile</a> Loomio."
   thanks: "Multumim!"
-  translate: "Ajuta la traducerea Loomio!"
   unlike: "Nu apreciez"
   update: "Modifica"
   facebook: "facebook"

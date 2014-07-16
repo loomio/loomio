@@ -21,6 +21,7 @@ class Comment < ActiveRecord::Base
   default_scope include: [:user, :attachments, :discussion]
 
   delegate :name, :to => :user, :prefix => :user
+  delegate :name, :to => :user, :prefix => :author
   delegate :email, :to => :user, :prefix => :user
   delegate :participants, :to => :discussion, :prefix => :discussion
   delegate :group, :to => :discussion
@@ -50,6 +51,18 @@ class Comment < ActiveRecord::Base
       c.attachments_count = options[:attachments].count
     end
     c
+  end
+
+  def is_edited?
+    edited_at.present?
+  end
+
+  def is_most_recent?
+    discussion.comments.last.id == id
+  end
+
+  def can_be_edited?
+    group.members_can_edit_comments? or is_most_recent?
   end
 
   def like(user)

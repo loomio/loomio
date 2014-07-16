@@ -32,6 +32,76 @@ describe Group do
     end
   end
 
+  context "children counting" do
+
+    describe "#motions_count" do
+      before do
+        @group = create(:group)
+        @user = create(:user)
+        @discussion = create(:discussion, group: @group)
+        @motion = create(:motion, discussion: @discussion)
+      end
+
+      it "returns a count of motions" do
+        @group.reload.motions_count.should == 1
+      end
+
+      it "updates correctly after creating a motion" do
+        expect {
+          @discussion.motions.create(attributes_for(:motion).merge({ author: @user }))
+        }.to change { @group.reload.motions_count }.by(1)
+      end
+
+      it "updates correctly after deleting a motion" do
+        expect {
+          @motion.destroy
+        }.to change { @group.reload.motions_count }.by(-1)
+      end
+
+      it "updates correctly after its discussion is destroyed" do
+        expect {
+          @discussion.destroy
+        }.to change { @group.reload.motions_count }.by(-1)
+      end
+
+      it "updates correctly after its discussion is archived" do
+        expect {
+          @discussion.archive!
+        }.to change { @group.reload.motions_count }.by(-1)
+      end
+
+    end
+
+    describe "#discussions_count" do
+      before do
+        @group = create(:group)
+        @user = create(:user)
+      end
+
+      it "returns a count of discussions" do
+        expect { 
+          @group.discussions.create(attributes_for(:discussion).merge({ author: @user }))
+        }.to change { @group.reload.discussions_count }.by(1)
+      end
+
+      it "updates correctly after archiving a discussion" do
+        @group.discussions.create(attributes_for(:discussion).merge({ author: @user }))
+        @group.reload.discussions_count.should == 1
+        expect {
+          @group.discussions.first.archive!
+        }.to change { @group.reload.discussions_count }.by(-1)
+      end
+
+      it "updates correctly after deleting a discussion" do
+        @group.discussions.create(attributes_for(:discussion).merge({ author: @user }))
+        @group.reload.discussions_count.should == 1
+        expect {
+          @group.discussions.first.destroy
+        }.to change { @group.reload.discussions_count }.by(-1)
+      end
+    end
+  end
+
   describe "#voting_motions" do
     it "returns motions that belong to the group and are open" do
       @group = motion.group

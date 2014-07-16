@@ -4,7 +4,7 @@ class DiscussionService
   end
 
   def self.like_comment(user, comment)
-    user.ability.authorize!(:like_comments, comment.discussion)
+    user.ability.authorize!(:like, comment)
     comment_vote = comment.like(user)
     Events::CommentLiked.publish!(comment_vote)
   end
@@ -19,9 +19,8 @@ class DiscussionService
 
     author.ability.authorize! :add_comment, comment.discussion
     return false unless comment.save
-
-    event = Events::NewComment.publish!(comment)
     comment.discussion.update_attribute(:last_comment_at, comment.created_at)
+    event = Events::NewComment.publish!(comment)
     event
   end
 

@@ -7,7 +7,7 @@ class Group < ActiveRecord::Base
   end
 
   #even though we have permitted_params this needs to be here.. it's an issue
-  attr_accessible :members_can_add_members, :members_can_edit_discussions, :motions_can_be_edited,
+  attr_accessible :members_can_add_members, :members_can_edit_discussions, :members_can_edit_comments, :motions_can_be_edited,
                   :name, :parent, :parent_id, :description, :max_size,
                   :cannot_contribute, :full_name, :payment_plan, :parent_members_can_see_discussions,
                   :category_id, :max_size, :is_visible_to_parent_members, :is_visible_to_public,
@@ -52,7 +52,8 @@ class Group < ActiveRecord::Base
   scope :visible_to_public, published.where(is_visible_to_public: true)
   scope :hidden_from_public, published.where(is_visible_to_public: false)
 
-  scope :visible_on_explore_front_page, -> { published.categorised_any.parents_only }
+  scope :visible_on_explore_front_page, -> { visible_to_public.categorised_any.parents_only }
+  scope :include_admins, includes(:admins)
 
   scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
 
@@ -60,6 +61,7 @@ class Group < ActiveRecord::Base
 
   # Engagement (Email Template) Related Scopes
   scope :more_than_n_members, lambda { |n| where('memberships_count > ?', n) }
+  scope :less_than_n_members, lambda { |n| where('memberships_count < ?', n) }
   scope :more_than_n_discussions, lambda { |n| where('discussions_count > ?', n) }
   scope :less_than_n_discussions, lambda { |n| where('discussions_count < ?', n) }
 
@@ -155,11 +157,11 @@ class Group < ActiveRecord::Base
   validates_attachment :cover_photo,
     size: { in: 0..10.megabytes },
     content_type: { content_type: /\Aimage/ },
-    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }
+    file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
   validates_attachment :logo,
     size: { in: 0..10.megabytes },
     content_type: { content_type: /\Aimage/ },
-    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }
+    file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
   def coordinators
     admins
@@ -187,6 +189,10 @@ class Group < ActiveRecord::Base
 
   def closed_motions
     motions.closed
+  end
+
+  def motions_count
+    discussions.published.sum :motions_count
   end
 
   def archive!
@@ -401,7 +407,7 @@ class Group < ActiveRecord::Base
   end
 
   def organisation_motions_count
-    Group.where("parent_id = ? OR (parent_id IS NULL AND id = ?)", parent_or_self.id, parent_or_self.id).sum(:motions_count)
+    Group.where("parent_id = ? OR (parent_id IS NULL AND id = ?)", parent_or_self.id, parent_or_self.id).all.sum(&:motions_count)
   end
 
   def has_subdomain?

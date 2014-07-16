@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140612232325) do
+ActiveRecord::Schema.define(:version => 20140715215610) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -59,17 +59,6 @@ ActiveRecord::Schema.define(:version => 20140612232325) do
 
   add_index "attachments", ["comment_id"], :name => "index_attachments_on_comment_id"
 
-  create_table "campaign_signups", :force => true do |t|
-    t.integer  "campaign_id"
-    t.string   "name"
-    t.string   "email"
-    t.boolean  "spam"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "campaign_signups", ["campaign_id"], :name => "index_campaign_signups_on_campaign_id"
-
   create_table "campaigns", :force => true do |t|
     t.string   "showcase_url"
     t.datetime "created_at",    :null => false
@@ -97,19 +86,17 @@ ActiveRecord::Schema.define(:version => 20140612232325) do
 
   create_table "comments", :force => true do |t|
     t.integer  "discussion_id",       :default => 0
-    t.string   "title",               :default => ""
     t.text     "body",                :default => ""
     t.string   "subject",             :default => ""
     t.integer  "user_id",             :default => 0,     :null => false
     t.integer  "parent_id"
-    t.integer  "lft"
-    t.integer  "rgt"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "uses_markdown",       :default => false, :null => false
     t.integer  "comment_votes_count", :default => 0,     :null => false
     t.integer  "attachments_count",   :default => 0,     :null => false
     t.text     "liker_ids_and_names"
+    t.datetime "edited_at"
   end
 
   add_index "comments", ["discussion_id"], :name => "index_comments_on_commentable_id"
@@ -185,15 +172,17 @@ ActiveRecord::Schema.define(:version => 20140612232325) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "uses_markdown",   :default => true,  :null => false
-    t.integer  "total_views",     :default => 0,     :null => false
-    t.boolean  "is_deleted",      :default => false, :null => false
-    t.integer  "comments_count",  :default => 0,     :null => false
-    t.integer  "items_count",     :default => 0,     :null => false
+    t.boolean  "uses_markdown",    :default => true,  :null => false
+    t.integer  "total_views",      :default => 0,     :null => false
+    t.boolean  "is_deleted",       :default => false, :null => false
+    t.integer  "comments_count",   :default => 0,     :null => false
+    t.integer  "items_count",      :default => 0,     :null => false
     t.datetime "archived_at"
     t.boolean  "private"
     t.string   "key"
     t.string   "iframe_src"
+    t.datetime "last_activity_at"
+    t.integer  "motions_count",    :default => 0
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -329,13 +318,12 @@ ActiveRecord::Schema.define(:version => 20140612232325) do
     t.text     "description"
     t.integer  "memberships_count",                  :default => 0,              :null => false
     t.datetime "archived_at"
-    t.integer  "max_size",                           :default => 300,            :null => false
+    t.integer  "max_size",                           :default => 1000,           :null => false
     t.boolean  "cannot_contribute",                  :default => false
     t.integer  "distribution_metric"
     t.string   "sectors"
     t.string   "other_sector"
     t.integer  "discussions_count",                  :default => 0,              :null => false
-    t.integer  "motions_count",                      :default => 0,              :null => false
     t.string   "country_name"
     t.datetime "setup_completed_at"
     t.boolean  "next_steps_completed",               :default => false,          :null => false
@@ -364,6 +352,7 @@ ActiveRecord::Schema.define(:version => 20140612232325) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.boolean  "members_can_edit_comments",          :default => true
   end
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
@@ -418,7 +407,6 @@ ActiveRecord::Schema.define(:version => 20140612232325) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "inviter_id"
-    t.datetime "group_last_viewed_at",                                 :null => false
     t.boolean  "subscribed_to_notification_emails", :default => true
     t.datetime "archived_at"
     t.integer  "inbox_position",                    :default => 0
@@ -454,9 +442,6 @@ ActiveRecord::Schema.define(:version => 20140612232325) do
     t.string   "outcome"
     t.datetime "last_vote_at"
     t.boolean  "uses_markdown",       :default => true, :null => false
-    t.date     "close_at_date"
-    t.string   "close_at_time"
-    t.string   "close_at_time_zone"
     t.integer  "yes_votes_count",     :default => 0,    :null => false
     t.integer  "no_votes_count",      :default => 0,    :null => false
     t.integer  "abstain_votes_count", :default => 0,    :null => false
@@ -551,14 +536,7 @@ ActiveRecord::Schema.define(:version => 20140612232325) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.string   "unconfirmed_email"
-    t.datetime "invitation_sent_at"
-    t.datetime "invitation_accepted_at"
-    t.integer  "invitation_limit"
-    t.integer  "invited_by_id"
-    t.string   "invited_by_type"
     t.datetime "deleted_at"
-    t.boolean  "has_read_system_notice",                                      :default => false,      :null => false
     t.boolean  "is_admin",                                                    :default => false
     t.string   "avatar_kind",                                                 :default => "initials", :null => false
     t.string   "uploaded_avatar_file_name"
@@ -567,7 +545,6 @@ ActiveRecord::Schema.define(:version => 20140612232325) do
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials"
     t.string   "username"
-    t.boolean  "subscribed_to_daily_activity_email",                          :default => false,      :null => false
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,       :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false
     t.string   "authentication_token"
@@ -578,10 +555,11 @@ ActiveRecord::Schema.define(:version => 20140612232325) do
     t.string   "time_zone"
     t.string   "key"
     t.string   "detected_locale"
+    t.boolean  "subscribed_to_missed_yesterday_email",                        :default => true,       :null => false
+    t.string   "email_api_key"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["invited_by_id"], :name => "index_users_on_invited_by_id"
   add_index "users", ["key"], :name => "index_users_on_key", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unsubscribe_token"], :name => "index_users_on_unsubscribe_token", :unique => true

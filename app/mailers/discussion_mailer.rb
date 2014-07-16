@@ -9,7 +9,7 @@ class DiscussionMailer < BaseMailer
     I18n.with_locale(locale) do
       mail  to: user.email,
             from: from_user_via_loomio(discussion.author),
-            reply_to: discussion.author_name_and_email,
+            reply_to: reply_to_address(discussion: discussion, user: user),
             subject: "#{email_subject_prefix(@group.full_name)} " + t("email.create_discussion.subject", which: @discussion.title)
     end
   end

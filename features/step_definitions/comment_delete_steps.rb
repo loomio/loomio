@@ -8,7 +8,7 @@ Given(/^the discussion has a comment$/) do
 end
 
 When /^I click the delete button on a post$/ do
-  click_link 'Delete'
+  find(".delete-icon").click()
 end
 
 And /^I accept the popup to confirm$/ do

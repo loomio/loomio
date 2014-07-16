@@ -47,8 +47,44 @@
     %label.control-label= t :'group_form.what_can_members_do'
     = f.input :members_can_add_members, as: :boolean, inline_label: t(:'group_form.members_can.add_members'), label: false
     = f.input :members_can_edit_discussions, as: :boolean, inline_label: t(:'group_form.members_can.edit_discussions'),  label: false
+    = f.input :members_can_edit_comments, as: :boolean, inline_label: t(:'group_form.members_can.edit_comments'), label: false
     / = f.input :motions_can_be_edited, as: :boolean, inline_label: t(:'group_form.motions_can_be_edited'),  label: false
+    %p
+      %i.fa.fa-star
+      %em= link_to t(:"group_form.learn_about_permissions"), "#learn-about-permissions-modal", 'data-toggle' => 'modal', id: 'learn-about-permissions'
 
   = f.input :parent_id, :as => :hidden
   = f.submit submit_text, class: 'btn btn-info', id: 'group_form_submit', data: {disable_with: submit_text}
 
+#learn-about-permissions-modal.modal.hidden
+  .modal-header
+    %button.close{"data-dismiss" => "modal"}×
+    %h3= t :"group_permissions.header"
+  .modal-body
+    %p= t :"group_permissions.coordinators_can"
+    %ul
+      %li= t :"group_permissions.c1"
+      %li= t :"group_permissions.c2"
+      %li= t :"group_permissions.c3"
+      %li= t :"group_permissions.c4"
+      %li= t :"group_permissions.c5"
+      %li= t :"group_permissions.c6"
+      %li= t :"group_permissions.c7"
+      %li= t :"group_permissions.c8"
+      %li= t :"group_permissions.c9"
+    %p= t :"group_permissions.members_can"
+    %ul
+      %li= t :"group_permissions.m1"
+      %li= t :"group_permissions.m2"
+      %li= t :"group_permissions.m3"
+      %li= t :"group_permissions.m4"
+      %li= t :"group_permissions.m5"
+      %li= t :"group_permissions.m6"
+    %p= t :"group_permissions.optionally"
+    %ul
+      %li= t :"group_permissions.o1"
+      %li= t :"group_permissions.o2"
+      %li= t :"group_permissions.o3"
+
+  .modal-footer
+    = link_to t(:close), "#", "data-dismiss" => "modal", class: "btn"

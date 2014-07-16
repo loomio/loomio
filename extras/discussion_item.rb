@@ -1,4 +1,5 @@
 class DiscussionItem
+  include Routing
   attr_accessor :item
 
   delegate :icon, :position, :group, :actor, :header, :body, :time, :to => :item

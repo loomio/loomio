@@ -1,14 +1,16 @@
 .activity-item-time
-  = link_to(t('ago', :quantity_of_time => time_ago_in_words(comment.created_at)), "#comment-#{comment.id}")
-  - if @can_like_comments ||= can?(:like_comments, @discussion)
+  - if comment.is_edited?
+    =link_to t(:"common.edited"), comment
+    =link_to(t('ago', :quantity_of_time => time_ago_in_words(comment.edited_at)), "#comment-#{comment.id}")
+  - else
+    =link_to(t('ago', :quantity_of_time => time_ago_in_words(comment.created_at)), "#comment-#{comment.id}")
+  - if @can_like_comments ||= can?(:like, comment)
     = " · "
     - if comment.likers_include?(current_user)
       = link_to t(:unlike), like_comment_path(id: comment, like: 'false'), method: :post, remote: true, id: "unlike-comment-#{comment.id}"
     - else
       = link_to t(:like), like_comment_path(id: comment, like: 'true'), method: :post, remote: true, id: "like-comment-#{comment.id}"
-  - if can? :destroy, comment
-    = " · "
-    = link_to t(:delete), "#", 'data-title' => t(:delete_comment), 'data-body' => t(:confirm_delete_comment), 'data-confirm-path' => comment_path(comment), 'data-method-type' => 'delete', class: 'confirm-dialog', id: "delete-comment-#{comment.id}"
+
   - if TranslationService.can_translate? comment
     = " · "
     = translate_link_for comment

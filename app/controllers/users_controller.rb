@@ -1,4 +1,6 @@
 class UsersController < BaseController
+  skip_before_filter :ensure_user_name_present, only: [:profile, :update]
+
   def show
     @user = User.find_by_key!(params[:id])
     unless current_user.in_same_group_as?(@user)
@@ -44,11 +46,5 @@ class UsersController < BaseController
 
   def profile
     @user = current_user
-  end
-
-  def dismiss_system_notice
-    current_user.has_read_system_notice = true
-    current_user.save!
-    head :ok
   end
 end
