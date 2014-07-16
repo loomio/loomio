@@ -22,7 +22,6 @@ class Membership < ActiveRecord::Base
   delegate :admins, to: :group, prefix: :group
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
 
-  before_create :set_group_last_viewed_at_to_now
   before_create :check_group_max_size
   before_destroy :remove_open_votes
   after_destroy :leave_subgroups_of_hidden_parents
@@ -58,10 +57,6 @@ class Membership < ActiveRecord::Base
     if group.max_size
       raise "Group max_size exceeded" if group.memberships_count >= group.max_size
     end
-  end
-
-  def set_group_last_viewed_at_to_now
-    self.group_last_viewed_at = Time.now
   end
 
   def leave_subgroups_of_hidden_parents

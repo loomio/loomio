@@ -103,7 +103,6 @@ class User < ActiveRecord::Base
 
   scope :active, where(deleted_at: nil)
   scope :inactive, where("deleted_at IS NOT NULL")
-  scope :daily_activity_email_recipients, where(subscribed_to_daily_activity_email: true)
   scope :subscribed_to_missed_yesterday_email, where(subscribed_to_missed_yesterday_email: true)
   scope :sorted_by_name, order("lower(name)")
   scope :admins, where(is_admin: true)
@@ -243,7 +242,7 @@ class User < ActiveRecord::Base
 
   def deactivate!
     update_attributes(deleted_at: Time.now,
-                      subscribed_to_daily_activity_email: false,
+                      subscribed_to_missed_yesterday_email: false,
                       subscribed_to_mention_notifications: false,
                       subscribed_to_proposal_closure_notifications: false)
     memberships.update_all(archived_at: Time.now,
