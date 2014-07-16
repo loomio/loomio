@@ -1,5 +1,18 @@
 window.Application ||= {}
 
+$ ->
+  if $(".js-autocomplete-contacts").length > 0
+    autocomplete_path = $('.js-autocomplete-contacts').data('autocomplete-path')
+    $("textarea.js-autocomplete-contacts").atwho
+      at: '',
+      tpl: "<li id='${id}' data-value='${name_and_email}, '>${name} &lt;${email}&gt;</li>"
+      limit: 5
+      callbacks:
+        remote_filter: (query, callback) ->
+          if query.length > 2
+            $.getJSON autocomplete_path, {q: query}, (data) ->
+              callback(data)
+
 ### EVENTS ###
 
 $ -> # Remove email help class if changed

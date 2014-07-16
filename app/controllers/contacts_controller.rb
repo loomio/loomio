@@ -1,2 +1,0 @@
-class ContactsController < ApplicationController
-end
