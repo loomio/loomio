@@ -2,8 +2,9 @@
   %h3= t("invitation.by_email")
 .control-group
   %p= t("invitation.recipients")
-  = text_area_tag 'invitees', nil, class: 'validate-emails', placeholder: t("invitation.invitees_placeholder")
+  = text_area_tag 'invitees', nil, class: 'validate-emails js-autocomplete-contacts', placeholder: t("invitation.invitees_placeholder"), data: {autocomplete_path: autocomplete_contacts_path}
   .email-validation-help= t('error.invalid_email')
+  = link_to "Import contacts", import_contacts_path
   %br
   %br
   = form.input :recipients, as: :hidden, input_html: { class: 'recipients' }

@@ -79,6 +79,7 @@ en:
     duplicate_email: "%{which_email} is already in the group."
 
   notice:
+    new_contacts_imported: "%{count} new contacts imported."
     admin_rights_removed: "%{which_user}'s coordinator rights have been removed."
     user_added: "%{user_email_or_name} has been added to the group."
     new_user_added: "%{user_email_or_name} will be added to the group after they set up a Loomio account."

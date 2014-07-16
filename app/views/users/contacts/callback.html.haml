@@ -1,0 +1,7 @@
+%h1 user contacts
+%table
+  - current_user.contacts.each do |contact|
+    %tr
+      %td=contact.name
+      %td=contact.email
+      %td=contact.source
