@@ -185,7 +185,6 @@ cs:
     message: "<p>Toto je <strong>stránka skupiny</strong>. Nalevo je seznam všech diskuzí v této skupině.</p><p>Když chcete, aby skupina prodiskutovala další téma, založte novou diskuzi.</p>"
   dashboard_helper_text:
     header: "Vítejte na své domovské stránce"
-    message: "<p>Domovská stránka vám ukáže všechny aktuální diskuze ze všech skupin, ve kterých jste členem.</p><p>Můžete zahájit diskuzi o novém tématu kliknutím na tlačítko „Zahájit diskuzi“.</p>"
   prompt_visitor_to_authenticate:
     header: "Přihlaste se nebo se přidejte ke skupině, abyste se zúčastnil(a)"
     body: "Pokud jste členem této skupiny, budete se muset přihlásit, abyste se zapojil(a)."

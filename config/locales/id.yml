@@ -173,7 +173,6 @@ id:
     message: "<p>Ini adalah <strong>laman kelompok</strong>. Di bagian kiri adalah daftar diskusi dalam kelompok ini.</p><p>Apabila Anda ingin kelompok mendiskusikan topik lain, buatlah diskusi baru.</p>"
   dashboard_helper_text:
     header: "Selamat datang ke Beranda"
-    message: "<p>Laman beranda menunjukkan diskusi terkini di semua kelompok yang Anda ikuti.</p><p>Anda dapat memulai topik diskusi baru dengan memilih tombol \"Mulai Diskusi\".</p>"
   setup_steps_title: "Langkah selanjutnya:"
   setup_step_1: "Simak contoh diskusi"
   setup_step_2: "Mulai diskusi pertama Anda"
