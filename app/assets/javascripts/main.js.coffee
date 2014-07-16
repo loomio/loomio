@@ -49,3 +49,15 @@ $.placeholder.shim();
 # todo: translate the warning message
 $ ->
   $('.js-warn-before-navigating-away').safetynet()
+
+getParameterByName = (name) ->
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    regex = new RegExp("[\\?&]#{name}=([^&#]*)")
+    results = regex.exec(location.search);
+    if results == null
+      ""
+    else
+      decodeURIComponent(results[1].replace(/\+/g, " "));
+
+if locale = getParameterByName('locale')
+  $.ajaxSetup(data: {locale: locale})

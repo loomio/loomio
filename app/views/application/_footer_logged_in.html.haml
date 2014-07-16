@@ -4,14 +4,14 @@
       %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
         %span
           = "#{t(:"simple_form.labels.user.language_preference")}:"
-          = AppTranslation.language(current_locale)
+          = locale_name(current_locale)
         %b.caret
       %ul.dropdown-menu
-        - AppTranslation::LANGUAGES.each do |language|
-          - link_attrs = AppTranslation.language_link_attributes(language)
+        - LocalesHelper::LANGUAGES.each do |language|
+          - link_attrs = language_link_attributes(language)
           %li= link_to link_attrs[:text], link_attrs[:href], title: link_attrs[:title]
 
-    = link_to t(:translate, default: "help translate Loomio!"), 'https://www.loomio.org/discussions/4896'
+    = link_to t(:translate, default: "help translate Loomio!"), 'https://www.loomio.org/d/hB1Oijwv/overview-of-the-translation-process-for-translators'
 
   .footer-links
     = render "footer_links", target: 'blank'
