@@ -238,7 +238,6 @@ Loomio::Application.routes.draw do
   end
 
   get '/detect_locale' => 'detect_locale#show'
-  match '/detect_video_locale' => 'detect_locale#video', as: :detect_video_locale
 
   resources :contact_messages, only: [:new, :create]
   match 'contact(/:destination)', to: 'contact_messages#new'
@@ -250,24 +249,25 @@ Loomio::Application.routes.draw do
     get 'pwyc', action: 'new'
   end
 
-  #redirect old invites
-  match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
-
-  #redirect old pages:
-  get '/we_the_people' => redirect('/')
-  get '/collaborate'   => redirect('/')
-  get '/woc'           => redirect('/')
   get '/discussions/:id', to: 'discussions_redirect#show'
   get '/groups/:id',      to: 'groups_redirect#show'
   get '/motions/:id',     to: 'motions_redirect#show'
 
+  get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
+  get '/group_requests/:id/start_new_group' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('token=','')}"}
+
+  get '/contributions'      => redirect('/crowd')
+  get '/contributions/thanks' => redirect('/crowd')
+  get '/contributions/callback' => redirect('/crowd')
+  get '/crowd'              => redirect('https://love.loomio.org/')
+
   scope path: 'pages' do
-    get 'home'         => redirect('/')
-    get 'how*it*works' => redirect('/purpose#how-it-works')
-    get 'get*involved' => redirect('/about')
-    get 'privacy'      => redirect('/privacy_policy')
-    get 'about'        => redirect('/about#about-us')
-    match 'contact'    => 'contact_messages#new'
+    get 'home'              => redirect('/')
+    get 'how*it*works'      => redirect('/purpose#how-it-works')
+    get 'get*involved'      => redirect('/about')
+    get 'privacy'           => redirect('/privacy_policy')
+    get 'about'             => redirect('/about#about-us')
+    match 'contact'         => 'contact_messages#new'
   end
 
   get '/get*involved'       => redirect('/purpose#how-it-works')

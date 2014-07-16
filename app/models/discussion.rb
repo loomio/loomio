@@ -54,7 +54,7 @@ class Discussion < ActiveRecord::Base
   delegate :full_name, to: :group, prefix: :group
   delegate :email, to: :author, prefix: :author
   delegate :name_and_email, to: :author, prefix: :author
-  delegate :language, to: :author
+  delegate :locale, to: :author
 
   before_create :set_last_comment_at
 

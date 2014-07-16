@@ -1,6 +1,6 @@
 de:
   frontpage:
-    view_this_in_your_language: 'Diese Seite in %{language}'
+    view_this_in_your_language: 'Diese Seite auf %{language}'
     title:
       collaborative_decision_making: Gemeinschaftliche Entscheidungsfindung
     link:
@@ -10,7 +10,7 @@ de:
       press: 'Presse'
       try_it: 'Testen'
       log_in: 'ANMELDEN'
-      video: "So funktioniert Loomio"
+      video: "Sieh, wie Loomio funktioniert"
       try_loomio_beta: 'Loomio Beta testen'
       check_out_loomio_beta: 'Loomio Beta Details'
       more: 'Mehr'
@@ -25,40 +25,40 @@ de:
     product:
       header_html: 'Wenn wir <strong>alle Meinungen</strong> einbeziehen, können wir <strong>bessere Entscheidungen</strong> treffen.'
       step1:
-        header: '1. Dinge durchbesprechen'
+        header: '1. Dinge besprechen'
         desc: 'Starte eine neue Diskussion zu einem beliebigen Thema und hole die richtigen Leute ins Boot. Teile unterschiedlichste Perspektiven und entwickle gemeinsam neue Ideen.'
       step2:
         header: '2. Eine Übereinkunft finden'
         desc: 'Jeder kann Lösungswege vorschlagen. Die Teilnehmer können zustimmen, sich enthalten, dagegen stimmen oder blockieren. So sieht jeder, wie die anderen denken und warum.'
       step3:
         header: '3. Gemeinsam entscheiden'
-        desc: 'Gemeinsam wird eine Lösung erarbeitet, mit der jeder einverstanden ist. Jede Entscheidung hat eine klare Deadline, damit immer ein klares Ergebnis heraus kommt.'
+        desc: 'Gemeinsam wird eine Lösung erarbeitet, mit der jeder einverstanden ist. Jede Entscheidung hat eine klare Deadline, damit immer ein klares Ergebnis herauskommt.'
     crowdfunding:
       header: 'Wir finanzieren uns über Crowdfunding, um diese Plattform fertigzustellen und der Welt zur Verfügung zu stellen.'
     prototype:
       header_html: "Wir haben einen Prototypen entwickelt, der von Leuten aus der ganzen Welt für erstaunliche Dinge eingesetzt wird"
-      subhead_html: 'Jetzt <a href="%{try_loomio_link}">Loomio Beta testen</a>, oder <a href="%{donate_link}">für das Projekt spenden</a>, um Loomio 1.0 finanziell zu unterstützen.'
+      subhead_html: 'Jetzt <a href="%{try_loomio_link}">Loomio Beta testen</a>, oder <a href="%{donate_link}">für das Projekt spenden</a>, um Loomio 1.0 finanziell zu unterstützen'
     mobile:
       header_html: 'Loomio 1.0 wird auf jedem Gerät funktionieren, gebaut mit der besten <strong>Open Mobile Technologie</strong>.'
     quote:
       header:
-        rushkoff_html: '"Loomio <strong>entfesselt im Internet das Potenzial</strong>, um Leute statt in polarisierende Debatten, zu einem gemeinschaftlichen Konsens zu führen."<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, Autor von <em>Present Shock</em></div>'
+        rushkoff_html: '"Loomio <strong>entfesselt im Internet das Potenzial</strong>, um Leute statt in polarisierende Debatten zu einem gemeinschaftlichen Konsens zu führen."<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, Autor von <em>Present Shock</em></div>'
         sifry_html: '"Loomio trifft genau den Punkt zwischen <strong>individueller Meinung</strong> und <strong>gemeinschaftlicher Entscheidung</strong>."<div class="attributation">– Micah Sifry, Redakteur, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: 'Über Loomio'
       desc: 'Wir sind ein kleines Team von Open Source Entwicklern und Aktivisten für gesellschaftliche Gerechtigkeit, die bei Enspiral in Aotearoa/Neuseeland mit einem größeren Netzwerk aus Freunden, Unterstützern und Beratern aus der ganzen Welt arbeiten.'
     ideals:
       community:
-        header: 'Eine Kooperative aus der Community'
-        desc: 'Loomio gehört einer Kooperative aus Enthusiasten, die es bauen. Das Ziel unserer Organisation ist es, den positiven Einfluss auf die Gesellschaft zu maximieren, nicht Gewinne.'
+        header: 'Eine aus der Community getriebene Kooperative'
+        desc: 'Loomio gehört einer Kooperative aus Enthusiasten, die es erstellen. Das Ziel unserer Organisation ist es, den positiven Einfluss auf die Gesellschaft zu maximieren, nicht Gewinne.'
       independent:
         header: 'Unabhängig und neutral'
         desc: 'Wir betreiben die Plattform um beliebige Gruppen zusammen zu bringen, unabhängig von politischen oder wirtschaftlichen Interessen. Wir werden deine Daten nie verkaufen.'
       open:
         header: 'Gratis und Open Source'
-        desc: 'Loomios Quelltexte sind öffentlich zugänglich, damit sie jeder lesen, starten, verändern, weitergeben und von ihnen lernen kann.'
+        desc: 'Loomios Quellcode ist eine öffentliche Ressource, die jeder lesen, starten, verändern, weitergeben und von ihnen lernen kann.'
       gift:
         header: 'Schenkwirtschaft'
         desc: 'Loomio wird von jenen unterstützt, die geben was in ihrer Möglichkeit steht. Das sorgt dafür, dass die Plattform werbefrei betrieben wird und auch für jene zugänglich bleibt, die kein Geld haben.'
     vision:
-      header: 'Hilf uns, aus dieser Vision Wirklichkeit zu machen.'
+      header: 'Hilf uns aus dieser Vision Wirklichkeit zu machen.'

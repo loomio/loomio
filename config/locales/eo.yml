@@ -1,4 +1,10 @@
 eo:
+  explore:
+    header: "Esploru publikajn grupojn"
+  try_it:
+    header: "Provu uzi Loomio-n"
+    start_a_group: "Starigu grupon por fari decidojn rilatajn al via komunumo"
+    loomio_community_info: "Ĉi tie ni diskutas kaj decidas pri Loomio"
   activerecord:
     errors:
       messages:
@@ -6,6 +12,15 @@ eo:
   errors:
     messages:
       email: "Retadreso ne validas"
+  devise:
+    invitations:
+      send_instructions: 'Invito estis sendita al  %{email}.'
+      invitation_token_invalid: 'La invita ĵetono kiun vi provizis malvalidas'
+      updated: 'La konto estas kreita'
+      no_invitations_remaining: "Ne restas pliaj invitoj"
+    mailer:
+      invitation_instructions:
+        subject: 'Iu invitis vin aliĝi al Loomio'
   error:
     access_denied: "Vi ne havas permeson fari ĉi tion"
     cant_join_subgroup: "Vi ne rajtas aniĝi al subgrupo se vi ne estas membro de la ĉefgrupo"
@@ -122,7 +137,6 @@ eo:
     message: "<p>Jen la <strong>grupa paĝo</strong>. Maldekstre estas la listo de ĉiuj diskutoj en ĉi tiu grupo.</p><p>Se vi volas ke la grupo diskutu pri io nova, komencu novan diskuton.</p>"
   dashboard_helper_text:
     header: "Bonvenon al via hejmpaĝo"
-    message: "<p>La hejmpaĝo montras al vi ĉiujn nunajn diskutojn en ĉiuj grupoj kie vi estas membro.</p><p>Vi povas starigi diskuton pri nova temo klakante la butonon 'Starigi diskuton'.</p>"
   setup_steps_title: "Sekvaj paŝoj:"
   setup_step_1: "Vidu pri la ekzempla diskuto"
   setup_step_2: "Starigi vian unuan diskuton"

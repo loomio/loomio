@@ -41,7 +41,7 @@ class Vote < ActiveRecord::Base
   delegate :author, :to => :discussion, :prefix => :discussion
   delegate :name, :to => :motion, :prefix => :motion
   delegate :name, :full_name, :to => :group, :prefix => :group
-  delegate :language, :to => :user
+  delegate :locale, :to => :user
 
   before_create :age_previous_votes, :associate_previous_vote
 

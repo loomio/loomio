@@ -11,16 +11,16 @@
   - class_name = notification.viewed_at.nil? ? " unread" : ""
 
   %li.selector-item{:class => "notification-item#{class_name}", :id => "notification-#{notification.id}" }
-    %a{:href => href }
+    =link_to href do
       = render 'avatar', user: avatar
       %span.notification-content
         - if actor
           %span.bold-name= actor.name
-        = " #{action_text} "
+        = action_text
         - if title_text
           %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
         %span.notification-item-footer
-          = "#{t(:ago, :quantity_of_time => date)} · #{group_name}"
+          #{t(:ago, :quantity_of_time => date)} · #{group_name}
 
 - rescue Exception => e
   - stuff = "\n #{notification.inspect}\n #{item.inspect}\n #{notification.event.inspect}\n #{e}\n #{e.backtrace.join("\n ")}"

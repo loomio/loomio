@@ -10,7 +10,7 @@ class GroupMailer < BaseMailer
   def membership_request(admin, membership_request)
     @membership_request = membership_request
     @group = membership_request.group
-    locale = best_locale(admin.locale)
+    locale = locale_fallback(admin.locale)
     I18n.with_locale(locale) do
       mail  to: admin.name_and_email,
             reply_to: "#{@membership_request.name} <#{@membership_request.email}>",
@@ -23,7 +23,7 @@ class GroupMailer < BaseMailer
     @sender = sender
     @message = message
     @recipient = recipient
-    locale = best_locale(recipient.locale, sender.locale)
+    locale = locale_fallback(recipient.locale, sender.locale)
     I18n.with_locale(locale) do
       mail  to: @recipient.email,
             reply_to: sender.name_and_email,

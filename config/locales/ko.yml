@@ -1,6 +1,4 @@
 ko:
-  explore:
-    go_to_group: "%{group_name} 로 가기"
   try_it:
     header: "루미오 사용해보기"
     start_a_group: "여러분이 커뮤니티에서 의사결정을 위해서 그룹시작하기"
@@ -184,7 +182,6 @@ ko:
     message: "<p>여기는 <strong>그룹 페이지 입니다.</strong>. 이 그룹의 모든 토론 리스틑 왼쪽에 있습니다. </p><p>다다른 주제로 그룹안에서 토론을 워하는 경우 새로운 토론을 시작하세요.</p>"
   dashboard_helper_text:
     header: "환영합니다."
-    message: "<p>여러분이 멤버로 있는 그룹에서 현재 진행되고 있는 모든 토론을 홈페이지에서 보여주고 있습니다.<p><p>\n\"토론 시작하기\" 버튼을 클릭해서 새로운 주제에 대해서 토론을 시작할 수 있습니다.<p>"
   prompt_visitor_to_authenticate:
     header: "그룹에 참여하기 위해 로그인이나 가입하기"
     body: "이 그룹에 멤버라면 참여를 위해서 로그인을 해야합니다."
