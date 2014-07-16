@@ -15,7 +15,6 @@ class PermittedParams < Struct.new(:params, :user)
 
   def email_preferences_attributes
     [{:group_email_preferences => []},
-     :subscribed_to_daily_activity_email,
      :subscribed_to_proposal_closure_notifications,
      :subscribed_to_mention_notifications,
      :subscribed_to_missed_yesterday_email ]
