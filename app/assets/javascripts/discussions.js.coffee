@@ -7,6 +7,11 @@ $ ->
 
 $ ->
   if $("body.discussions.show").length > 0
+
+    if $('#js-dog-ear').length > 0
+      $('html,body').animate
+        scrollTop: $('#js-dog-ear').offset().top - 75
+
     autocomplete_path = $('#comment-input').data('autocomplete-path')
     $("textarea").atwho
       at: '@'
