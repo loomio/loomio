@@ -96,6 +96,8 @@ class DiscussionsController < GroupBaseController
 
     @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
     assign_meta_data
+    
+    @feed_url = discussion_url @discussion, format: :xml if @discussion.public?
   end
 
   def move
