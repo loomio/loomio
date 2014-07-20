@@ -6,4 +6,4 @@
   - if @motion.description.present?
     .span5.offset1
       %h3= t :proposal
-      = simple_format @motion.description
+      = simple_format @motion.description, class: "word-break"
