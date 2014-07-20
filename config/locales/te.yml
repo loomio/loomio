@@ -46,9 +46,6 @@ te:
     proposal_deleted: "ప్రతిపాదన తొలిగించబడింది."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "క్షణం"
-        other: "%{count} క్షణాలు"
       x_seconds:
         one: "1 క్షణం"
         other: "%{count} క్షణాలు"

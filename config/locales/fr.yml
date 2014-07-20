@@ -79,6 +79,12 @@ fr:
     you_have_left_group: "Vous avez quitté %{which_group}."
     comment_deleted: "Commentaire supprimé."
     invitations:
+      auto_added:
+        one: "1 membre a été ajouté"
+        other: "%{count} membres ont été ajoutés"
+      existing_member:
+        one: "1 membre est déjà dans le groupe"
+        other: "%{count} membres sont déjà dans le groupe"
       sent:
         one: "1 invitation envoyée"
         other: "%{count} invitations envoyées"
@@ -229,6 +235,7 @@ fr:
     what_can_members_do: "Que peuvent faire les membres?"
     members_can:
       add_members: Inviter et approuver les nouveaux membres
+      edit_comments: Modifier leurs commentaires à tout moment
       edit_discussions: Éditer le contexte de chaque discussion du groupe
     motions_can_be_edited: Éditer ses propositions après que le vote a commencé
     visible_to:
@@ -254,10 +261,30 @@ fr:
       public_only_html: Discussions publiques seulement
       public_or_private_html: Autorise les discussions privées et publiques
       private_only_html: discussions privées seulement
+    learn_about_permissions: En savoir plus sur les permissions de groupe
   group_permissions:
     header: Permissions du groupe
+    coordinators_can: "Les coordinateurs peuvent :"
+    c1: Modifier les paramètres du groupe
+    c2: Modifier le titre et le contexte de n'importe quelle discussion
+    c3: Déplacer des discussions d'un groupe à l'autre.
+    c4: Inviter et accepter de nouveaux membres.
+    c5: Envoyer un email d'annonce à tous les membres du groupe.
+    c6: Désactiver un groupe.
+    c7: Ajouter/enlever d'autres coordinateurs.
+    c8: Supprimer des discussions.
     c9: Supprimer les commentaires.
     members_can: "Les membres peuvent :"
+    m1: Supprimer leurs propres commentaires.
+    m2: Modifier leurs propres commentaires, jusqu'à ce que quelqu'un réponde.
+    m3: Modifier le titre et la description des propositions qu'ils lancent, jusqu'à ce que quelqu'un se positionne dessus.
+    m4: Modifier la date de fin des propositions qu'ils lancent, jusqu'à ce qu'elles se terminent.
+    m5: Modifier le titre et le contexte des discussions qu'ils lancent à tout moment.
+    m6: Démarrer un sous-groupe, dont ils deviennent le coordinateur.
+    optionally: "De manière facultative, les coordinateurs peuvent autoriser les membres du groupe à :"
+    o1: Inviter et accepter de nouveaux membres.
+    o2: Modifier leurs propres commentaires à tout moment.
+    o3: Modifier le titre et le contexte de n'importe quelle discussion dans le groupe.
   group_privacy:
     visible_to:
       public: Groupe public.
@@ -440,7 +467,11 @@ fr:
       'no': "est pas d'accord"
       abstain: "s'est abstenu(e)"
       block: "a bloqué"
+  unable_to_vote:
+    permission_denied: "Vous n'avez pas la permission de voter sur cette motion"
+    motion_closed: "Cette motion est déjà fermée"
   edit_comment:
+    comment_changes: "Modifications du commentaire"
     edit_comment: "Modifier le commentaire"
   help:
     coordinating: 'Coordonner vos groupes Loomio'
@@ -656,6 +687,8 @@ fr:
       will_be_private_to_group: "La discussion sera visible seulement des membres du groupe %{group_name}."
       will_be_private_to_parent_group: "La discussion sera visible des membres du groupe %{parent_group_name} et de ceux de %{group_name}."
       will_be_public: "Tout le monde peut voir cette discussion."
+  motion_history:
+    title: "Modifications de la proposition"
   motion_form:
     new:
       header: "Nouvelle proposition"
@@ -678,6 +711,7 @@ fr:
     header: "Préférences d'e-mail"
     daily_activity_summary: "Résumé quotidien d'activité"
     daily_activity_subscription: "Envoyez-moi un e-mail quotidien synthétisant l'activité de mes groupes"
+    missed_yesterday_subscription: "M'envoyer 'Hier sur Loomio' - mon contenu non-lu des dernières 24 heures"
     global_notifications: "Notifications globales"
     proposal_closing_soon_subscription: "M'avertir 24 heures avant la clôture d'une proposition"
     mentions_subscription: "M'envoyer un e-mail quand quelqu'un me mentionne dans un commentaire"
@@ -756,6 +790,7 @@ fr:
         update: "Mettre à jour vos réglages"
   email:
     by_who: "par %{person}"
+    reply_to_this_discussion: Répondre à cette discussion
     to_join_discussion:
       subject: "%{who} veut que vous rejoigniez une discussion sur Loomio"
       content: "Vous avez été invité à participer à la discussion : %{discussion}"
@@ -788,6 +823,11 @@ fr:
     missed_yesterday:
       subject: "Hier sur Loomio"
       mark_as_read: Marquer comme lu
+      thanks_for_reading: Merci d'avoir lu ceci, passez une bonne journée !
+      click_here_to_mark_all_as_read_html: |
+        Voici ce qui s'est passé hier sur Loomio.
+        Lorsque vous l'avez lu, cliquez sur <a href="%{link}">marquer comme lu</a> pour le supprimer de votre Boîte de réception dans Loomio.
+      marked_as_read_success: "Tout le contenu de cet email a été marqué comme lu"
     group_email:
       intro: "%{who} à fait une annonce à %{group}:"
     group_membership_approved:
@@ -901,6 +941,7 @@ fr:
   persona: "Persona"
   common:
     back_to_discussion: "Retour à la discussion"
+    edited: Modifié
     today: Aujourd'hui
     months:
       january: Janvier

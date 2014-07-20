@@ -50,10 +50,6 @@ ru:
     proposal_deleted: "Предложение удалено."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "секунда"
-        few: "секунды"
-        other: "%{count} секунд"
       x_seconds:
         one: "1 секунда"
         few: "секунды"

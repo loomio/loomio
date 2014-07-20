@@ -72,18 +72,6 @@ uk:
     you_have_left_group: "Ви покинули %{which_group}."
     comment_deleted: "Коментар видалено."
     invitations:
-      auto_added:
-        one: "%{count} учасника додано"
-        few: "%{count} учасників додано"
-        other: "%{count} учасників додано"
-      existing_member:
-        one: "%{count} учасник вже входить у групу."
-        few: "%{count} учасників вже входить у групу."
-        other: "%{count} учасників вже входить у групу."
-      sent:
-        one: "%{count} запрошення надіслано"
-        few: "%{count} запрошень надіслано"
-        other: "%{count} запрошень надіслано"
       auto_added_and_sent: "%{auto_added_text} та %{sent_text}"
   views:
     pagination:
@@ -119,10 +107,6 @@ uk:
     proposal_deleted: "Пропозицію видалено."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "%{count} секунда"
-        few: "%{count} секунди"
-        other: "%{count} секунд"
       x_seconds:
         one: "%{count} секунда"
         few: "%{count} секунди"

@@ -71,12 +71,6 @@ ja:
     you_have_left_group: "%{which_group} を離れました"
     comment_deleted: "コメントは削除されました"
     invitations:
-      auto_added:
-        other: "メンバーが %{count} 人追加されました"
-      existing_member:
-        other: "%{count} 人のメンバーはすでにグループにいます"
-      sent:
-        other: "%{count} 通の招待が送られました"
       auto_added_and_sent: "%{auto_added_text} および %{sent_text}"
   views:
     pagination:
@@ -112,8 +106,6 @@ ja:
     proposal_deleted: "提案が削除されました"
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        other: "%{count} 秒"
       x_seconds:
         other: "%{count} 秒"
       less_than_x_minutes:

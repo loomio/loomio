@@ -468,6 +468,9 @@ el:
       'no': "Διαφώνησα"
       abstain: "Απείχα"
       block: "Μπλοκάρισα"
+  unable_to_vote:
+    permission_denied: "Δεν έχετε δικαιώμα για να ψηφίσετε σε αυτή την κίνηση"
+    motion_closed: "Αυτή η κίνηση έχει ήδη κλείσει."
   edit_comment:
     comment_changes: "Σχολιάστε τις αλλαγές"
     edit_comment: "Επεξεργαστείτε σχόλιο"
@@ -930,6 +933,7 @@ el:
   translate_this_string: "Μετάφραση σε %{language}"
   failed_translation: "Αδύνατον να ολοκληρωθεί η μετάφραση"
   options: "Ρυθμίσεις"
+  rss_subscribe: "Εγγραφείτε στην τροφοδοσία νέων περιεχομένων"
   ok_got_it: "Εντάξει, το έχω!"
   remove: "Αφαιρέστε"
   save: "Αποθήκευση"

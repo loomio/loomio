@@ -470,6 +470,9 @@ pt:
       'no': "discordou"
       abstain: "absteve"
       block: "bloqueou"
+  unable_to_vote:
+    permission_denied: "Você não tem permissão para votar nesta proposta"
+    motion_closed: "Esta proposta já encerrou"
   edit_comment:
     comment_changes: "Alterar comentários"
     edit_comment: "Editar comentários"
@@ -914,6 +917,7 @@ pt:
   translate_this_string: "Traduzir para %{language}"
   failed_translation: "Não foi possível concluir a tradução"
   options: "Opções"
+  rss_subscribe: "Subscreva o feed"
   ok_got_it: "Ok, entendi!"
   remove: "Remover"
   save: "Salvar"
