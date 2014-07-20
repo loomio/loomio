@@ -55,8 +55,6 @@ cmn:
     proposal_deleted: "建议删除"
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        other: "%{count}秒"
       x_seconds:
         other: "%{count}秒数"
       less_than_x_minutes:

@@ -51,12 +51,6 @@ vi:
     user_made_admin: "%{which_user} đã trở thành người điều hành viên."
     you_have_left_group: "Bạn chỉ còn lại %{which_group}."
     invitations:
-      auto_added:
-        other: "%{count} thành viên đã được thêm vào"
-      existing_member:
-        other: "%{count} thành viên hiện có trong nhóm"
-      sent:
-        other: "%{count} lời mời kết nối đã được gửi"
       auto_added_and_sent: "%{auto_added_text} và %{sent_text}"
   warning:
     cant_remove_last_admin: "Bạn là người điều hành viên cuối cùng và không thể bị loại bỏ."

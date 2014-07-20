@@ -67,15 +67,6 @@ ml:
     you_have_left_group: "നിങ്ങള്‍ %{which_group} കൂട്ടം വിട്ടിരിയ്ക്കുന്നു."
     comment_deleted: "അഭിപ്രായം തഴഞ്ഞു."
     invitations:
-      auto_added:
-        one: "%{count} അംഗത്തെ ചേര്‍ത്തു"
-        other: "%{count} അംഗങ്ങളെ ചേര്‍ത്തു"
-      existing_member:
-        one: "%{which_email} നേരത്തെ തന്നെ അംഗമാണു്."
-        other: "%{count} അംഗങ്ങള്‍ നേരത്തെ തന്നെയുണ്ട്"
-      sent:
-        one: "%{count} ക്ഷണനം അയച്ചു"
-        other: "%{count} ക്ഷണനങ്ങള്‍ അയച്ചു"
       auto_added_and_sent: "%{auto_added_text} & %{sent_text}"
   views:
     pagination:
@@ -108,9 +99,6 @@ ml:
     proposal_deleted: "ശുപാര്‍ശ നീക്കം ചെയ്തു."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "സെക്കന്റ്"
-        other: "%{count} സെക്കന്റുകള്‍"
       x_seconds:
         one: "ഒരു സെക്കന്റ്"
         other: "%{count} സെക്കന്റുകള്‍"
