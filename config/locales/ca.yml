@@ -70,15 +70,6 @@ ca:
     you_have_left_group: "Has deixat %{which_group}."
     comment_deleted: "Comentari eliminat."
     invitations:
-      auto_added:
-        one: "%{count} membre afegit"
-        other: "%{count} membres afegits"
-      existing_member:
-        one: "%{count} membre forma part del grup"
-        other: "%{count} membres formen part del grup"
-      sent:
-        one: "%{count} invitació enviada"
-        other: "%{count} invitacions enviades"
       auto_added_and_sent: "%{auto_added_text} i %{sent_text}"
   views:
     pagination:
@@ -114,9 +105,6 @@ ca:
     proposal_deleted: "Proposta eliminada."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "segon"
-        other: "%{count} segons"
       x_seconds:
         one: "1 segon"
         other: "%{count} segons"

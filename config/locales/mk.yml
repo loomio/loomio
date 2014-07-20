@@ -47,13 +47,6 @@ mk:
     user_made_admin: "%{which_user} беше назначен за координатор."
     you_have_left_group: "Ја напушти групата %{which_group}."
     comment_deleted: "Коментарот е избришан."
-    invitations:
-      auto_added:
-        one: "%{count} член додаден"
-        other: "%{count} членови додадени"
-      sent:
-        one: "%{count} испратена покана"
-        other: "%{count} испратени покани"
   tooltip:
     cover_photo_upload: "Прикачи нова насловна фотографија"
     logo_upload: "Прикачи ново лого"
@@ -89,9 +82,6 @@ mk:
     proposal_deleted: "Предлогот е избришан."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "секунда"
-        other: "%{count} секунди"
       x_seconds:
         one: "1 секунда"
         other: "%{count} секунди"

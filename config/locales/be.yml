@@ -66,9 +66,6 @@ be:
     proposal_deleted: "Прапанова выдаленая."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "секунда"
-        other: "%{count} секунд"
       x_seconds:
         one: "1 секунда"
         other: "%{count} секунд"
