@@ -10,18 +10,23 @@ namespace :languages do
   RESOURCES = { 'github-linked-version' => 'en.yml' ,
                  'frontpageenyml' => 'frontpage.en.yml' }
 
+  THRESHOLDS = { "Live" => 80,
+                 "Exp"  => 40 }
+
   task :update => :environment do
     language_info = HTTParty.get('http://www.transifex.com/api/2/project/loomio-1/languages', LOGIN)
     languages_hash = build_languages_hash(language_info)
 
-    check_all_languages_for_competition(languages_hash)
+    # note we're only fetching stats on the Main resource
+    language_stats = HTTParty.get('http://www.transifex.com/api/2/project/loomio-1/resource/github-linked-version/stats', LOGIN)
+
     puts "current languages = #{languages_hash.keys}"
+    check_all_languages_for_competition(languages_hash)
 
     languages_hash.keys.each do |language|
       dialect = decide_dialect(language, languages_hash)
 
-      printf '%20s', "\e[32m #{dialect}\e[0m "
-      print "#{status(dialect)} "
+      printf '%20s %16s', cyan(dialect), status(dialect, language_stats)
 
       RESOURCES.keys.each do |resource|
         update(dialect, resource)
@@ -112,21 +117,60 @@ def update(lang_code, resource)
     target.write(content)
     target.close()
 
-    print "#{filename} "
+    printf "%18s ", grey(filename)
   else
     puts "ERROR!! -- #{simplified_language} - #{filename}"
   end
 end
 
-def status(lang_code)
+def status(lang_code, language_stats)
   simplified_language = lang_code.split('_')[0].to_sym
+  perc_comp_str = percent_complete(lang_code, language_stats)
+  perc_comp = perc_comp_str.to_i
+    perc_comp_str += " " unless perc_comp == 100
+    perc_comp_str += " " if perc_comp < 10
+
   if AppTranslation.locales.include? simplified_language
-    "\e[1m\e[30mLive\e[0m\e[22m"
+    if perc_comp >= THRESHOLDS["Live"] - 5
+      "\e[1mLive\e[22m #{perc_comp_str}"
+    else
+      red("Live #{perc_comp_str}")
+    end
+
   elsif AppTranslation.experimental_locales.include? simplified_language
-    "\e[30mExp\e[0m "
+    if perc_comp >= THRESHOLDS["Live"] - 5
+      green("Exp  #{perc_comp_str}")
+    else
+     "\e[0mExp  #{perc_comp_str}\e[0m"
+    end
+
   else
-    "    "
+    if perc_comp >= THRESHOLDS["Exp"] - 5
+      green(" ^   #{perc_comp_str}")
+    else
+       grey(" -   #{perc_comp_str}")
+    end
   end
+end
+
+def percent_complete(lang_code, language_stats)
+  language_stats[lang_code]["completed"]
+end
+
+def green(string)
+  "\e[92m#{string}\e[0m"
+end
+
+def red(string)
+  "\e[91m#{string}\e[0m"
+end
+
+def grey(string)
+  "\e[30m#{string}\e[0m"
+end
+
+def cyan(string)
+  "\e[96m#{string}\e[0m"
 end
 
 def build_languages_hash(language_info)

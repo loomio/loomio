@@ -76,10 +76,6 @@ ko:
     you_have_left_group: "%{which_group} 그룹을 떠났습니다. "
     comment_deleted: "코멘트 삭제"
     invitations:
-      auto_added:
-        other: "%{count} 멤버가 추가됨"
-      existing_member:
-        other: "%{count} 멤버가 이 그룹에 있습니다."
       auto_added_and_sent: "%{auto_added_text} 그리고 %{sent_text}"
   views:
     pagination:
@@ -114,8 +110,6 @@ ko:
     proposal_deleted: "제안이 삭제됨"
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        other: "%{count} 초"
       x_seconds:
         other: "%{count} 초"
       less_than_x_minutes:

@@ -63,9 +63,13 @@ it:
     user_made_admin: "%{which_user} è stato reso coordinatore."
     you_have_left_group: "Hai abbandonato %{which_group}."
     invitations:
-      auto_added:
-        one: "%{count} membri aggiunti"
-        other: "%{count} membri aggiunti"
+      sent:
+        one: "1 invito è stato inviato"
+        other: "%{count} gli inviti sono stati inviati"
+  views:
+    pagination:
+      previous: "Prec"
+      next: "Succ"
   warning:
     cant_remove_last_admin: "Tu sei l'ultimo coordinatore e non puoi essere rimosso."
     membership_request_already_approved: "La richiesta d'iscrizione è già stata approvata."
@@ -125,6 +129,8 @@ it:
       almost_x_years:
         one: "1 anno"
         other: "%{count} anni"
+  organisation:
+    name: "Loomio"
   footer:
     about: 'Informazioni'
     blog: 'Blog'
@@ -147,14 +153,18 @@ it:
     comment_liked: "ha apprezzato il tuo commento nella discussione"
     user_mentioned: "ti ha citato in un commento in"
     membership_requested: "ha richiesto l'iscrizione a"
+    membership_request_approved: 'La tua adesione è stata approvata'
     user_added_to_group: "ti ha aggiunto al gruppo"
     motion_closing_soon: "La proposta chiuderà a breve"
     motion_blocked: "ha bloccato la proposta"
   edit_discussion_context: "Modifica il contesto della discussione"
   request_new_group: "Lancia un gruppo"
+  start_new_group: "Inizia un nuovo gruppo"
+  find_a_group: "Trova un gruppo"
   empty_notifications: "Non hai ancora notifiche."
   see_all_notifications: "Guarda tutte le notifiche"
   profile: "Profilo"
+  email_settings: "Impostazioni Email"
   sign_out: "Esci"
   sign_in: "Accedi"
   tagline: "Creare un mondo in cui chiunque possa prendere facilmente parte a decisioni che lo riguardano."
@@ -172,6 +182,14 @@ it:
     message: "<p>La Home mostra tutte le discussioni in corso in tutti i gruppi di cui sei membro</p><p>Puoi cominciare una discussione su un nuovo argomento cliccando il bottone \"Comincia discussione\".</p>"
   prompt_visitor_to_authenticate:
     header: "Login o unirsi al gruppo per partecipare"
+  group_form:
+    visible_to:
+      label: Chi può vedere questo gruppo?
+    discussion_privacy_options:
+      label: Chi può vedere le discussioni?
+      public_only_html: Solo discussioni pubbliche
+      public_or_private_html: Permetti discussioni pubbliche e private
+      private_only_html: Solo discussioni private
   setup_steps_title: "Prossimi passi:"
   setup_step_1: "Controlla la discussione di esempio"
   setup_step_2: "Comincia la tua prima discussione"
@@ -206,6 +224,7 @@ it:
   confirm_remove_member: 'Sei sicuro che vuoi rimuovere questo membro dal gruppo?'
   want_to_invite_html: "Vuoi <a href='%{link}'>invitare persone</a> a questo gruppo?"
   membership_requests: "Richieste di iscrizione"
+  join_group_btn: Aderisci al gruppo
   confirm_approve_membership_request: "Sei sicuro che vuoi aggiungere %{which_user} al gruppo?"
   cancel_membership_request: "Annulla richiesta "
   ignore_request: "Ignora la richiesta"
@@ -253,6 +272,7 @@ it:
   current_decision: "Attuale decisione"
   previous_decisions: "Decisioni precedenti"
   see_previous_decisions: "Guarda le decisioni precedenti"
+  see_more: "Vedi altro"
   create_new_proposal: "Crea una nuova proposta"
   empty_decision_list_html: "Sei pronto a prendere una decisione? <br> Chiunque può lanciare una proposta."
   empty_decision_index: "Questo gruppo non ha ancora preso alcuna decisione."
@@ -261,6 +281,7 @@ it:
     started_html: "Iniziato %{when} fa da <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Ultima modifica %{when} fa da <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Guarda la storia delle revisioni"
+    see_history: "Mostra cronologia"
   description_history:
     header: "Storia delle revisioni"
     subheader: "Versione"
@@ -432,13 +453,24 @@ it:
   password_confirmation: "Conferma la password"
   current_password: "Attuale password"
   password_details: "(abbiamo bisogno della tua attuale password per confermare le modifiche)"
+  confirm_password: "Conferma la password"
   cancel_my_account: "Cancella il mio account"
   remember_me: "Ricordami"
   signing_in: "Accedendo"
   forgot_your_password: "Dimenticato la password?"
+  dont_have_an_account: "Non hai un account?"
+  create_one_now: "Crea una nuova"
+  sign_up_via: "Accedi tramite"
+  or_fill_in_this_form: "o compila questo modulo"
+  already_have_account: "Hai già un account Loomio?"
   confirmation_not_received: "Non hai ricevuto le istruzioni per la conferma?"
   unlock_not_received: "Non hai ricevuto le istruzioni per lo sblocco?"
+  create_an_account_html: 'Crea un Beta Loomio account'
+  start_group:
+    log_in: "Entra per impostare il tuo gruppo"
+    create_account: "Per favore crea un account"
   invitation:
+    by_email: "Invito via e-mail"
     no_invitations_left: "Non hai più inviti"
     no_invitations_left_get_more: "Per favore manda una email a contact@loomio.org e vediamo cosa riusciamo a fare per aiutarti"
     invitation_not_found: 'Non è stato possibile trovare un invito con quel token. Chiedi un nuovo invito al mittente.'
@@ -456,6 +488,7 @@ it:
     invitation_link: "Link invito"
     link_help: "Clicca su questo link per unirti a %{group} su Loomio:"
     copy: "Se qualcuno non ha ricevuto la mail di invito, copia pure il link qui sopra e mandalo direttamente al destinatario in questione."
+    pending_invitations: 'Inviti in sospeso'
     no_pending_invitations: "Attualmente non ci sono inviti in sospeso."
   search:
     description: "Segue una lista di discussioni e proposte che contengono '%{query}' nel titolo o nella descrizione."
@@ -475,12 +508,25 @@ it:
       È una buona idea? Il Piccolo Aiutante di Loomio vuole sapere come la pensi!
       Se hai un'opinione formata, clicca su una delle icone sotto (passa il mouse sopra i bottoni per vedere cosa significano).
       Ti chiederanno di fare una piccola dichiarazione circa le ragioni della tua decisione. Questo rende più semplice capire, in breve, cosa pensa ognuno e perché. Puoi comunque cambiare idea e modificare la tua decisione liberamente fino a quando la proposta non sarà chiusa.
+  contact_page:
+    contact_us: 'Contattaci'
+    labels:
+      name: 'Nominativo'
+      email: 'Indirizzo email'
+      message: 'Messaggio'
+      submit: 'Invia messaggio'
   discussion_form:
     new:
       header: "Comincia discussione"
     edit:
       header: "Modifica discussione"
   motion_form:
+    new:
+      header: "Nuova proposta"
+      submit: 'Crea una nuova proposta'
+    edit:
+      header: "Modifica proposta"
+      submit: 'Aggiorna proposta'
     name_helper: "Usa un titolo il più possibile chiaro e sintetico."
   vote_form:
     header: "Dichiara la tua posizione"
@@ -502,8 +548,14 @@ it:
     update_preferences: "Aggiorna le preferenze"
   new_user_form:
     create_an_account: "Crea un account"
+  profile_form:
+    view: "Mostra il mio profilo"
+    profile: "Modifica profilo"
+    picture: "Immagine"
+    upload_new_image: "Carica una nuova immagine"
   group_setup:
     set_up_your_group: Imposta il tuo gruppo
+    desc_header: "Ci siamo quasi!"
     submit: "Portami al mio gruppo!"
   simple_form:
     'yes': 'Sì'
@@ -522,6 +574,7 @@ it:
       motion:
         name: "Titolo"
         description: "Dettagli"
+        close_at_date: "In chiusura"
       user:
         name: "Nome completo"
         email: "Email"
@@ -551,6 +604,8 @@ it:
         create: "Crea un account"
         update: "Aggiorna impostazioni"
   email:
+    to_join_discussion:
+      link: "Aderisci alla discussione"
     to_join_group:
       subject: "%{member} ti ha invitato ad unirti a %{group_name} su Loomio"
     to_start_group:
@@ -647,7 +702,10 @@ it:
   prev: "Prec"
   more: "Altro..."
   translate: "Aiuta tradurre Loomio"
+  translate_field: "Mostra traduzioni"
+  loading_translation: "Traduzione in caricamento..."
   translate_this_string: "Traduci in %{language}"
+  failed_translation: "Impossibile completare la traduzione"
   options: "Opzioni"
   ok_got_it: "Okay, ho capito!"
   remove: "Rimuovi"
@@ -668,4 +726,41 @@ it:
   google: "Google"
   persona: "Persona"
   common:
+    today: Oggi
+    months:
+      january: Gennaio
+      february: Febbraio
+      march: Marzo
+      april: Aprile
+      may: Maggio
+      june: Giugno
+      july: Luglio
+      august: Agosto
+      september: Settembre
+      october: Ottobre
+      november: Novembre
+      december: Dicembre
+    abbr_months:
+      jan: Gen
+      feb: Feb
+      mar: Mar
+      apr: Apr
+      may: Mag
+      jun: Giu
+      jul: Lug
+      aug: Ago
+      sep: Set
+      oct: Ott
+      nov: Nov
+      dec: Dic
+    days:
+      monday: Lunedì
+      tuesday: Martedì
+      wednesday: Mercoledì
+      thursday: Giovedì
+      friday: Venerdì
+      saturday: Sabato
+      sunday: Domenica
+    private: "Privato"
+    public: "Pubblico"
     email: "Email"
