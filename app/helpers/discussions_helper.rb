@@ -42,6 +42,13 @@ module DiscussionsHelper
     end
   end
 
+  def xml_item(activity)
+    case activity.kind.to_sym
+    when :new_comment then CommentDecorator.new activity.eventable
+    else                   DiscussionItem.new activity
+    end
+  end
+
   def css_classes_for_discussion_preview(discussion, discussion_reader)
     class_names = []
     class_names << 'showing-group' unless @group == discussion.group
