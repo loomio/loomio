@@ -66,13 +66,10 @@ tr:
     comment_deleted: "Yorum silindi."
     invitations:
       auto_added:
-        one: "%{count} üye eklendi"
+        one: "1 üye eklendi"
         other: "%{count} üye eklendi"
-      existing_member:
-        one: "%{count} üye zaten grupta"
-        other: "%{count} üye zaten grupta"
       sent:
-        one: "%{count} davetiye gönderildi"
+        one: "1 davetiye gönderildi"
         other: "%{count} davetiye gönderildi"
       auto_added_and_sent: "%{auto_added_text} ve %{sent_text}"
   views:
@@ -106,7 +103,7 @@ tr:
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        one: "saniye"
+        one: "1 saniye"
         other: "%{count} saniye"
       x_seconds:
         one: "1 saniye"
@@ -298,6 +295,7 @@ tr:
   confirm_delete_comment: "Bu yorumu silmek istediğinden emin misin?"
   markdown_settings_more_info: "Daha fazla bilgi..."
   edit_discussion: "Müzakereyi düzenle"
+  move_discussion: "Müzakereyi taşı"
   delete_discussion: "Müzakereyi sil"
   confirm_delete_discussion: "Bu müzakereyi kalıcı olarak silmek istediğinden emin misin?"
   new_proposal: "Yeni Öneri"
@@ -460,6 +458,12 @@ tr:
       Sence bu nasıl bir fikir? Loomio Yardım Robotu ne düşündüğünü merak ediyor!
       Eger konumun hakkında net isen, aşağıdaki ikonlardan birini tıkla (ikonların ne anlama geldiklerinin açıklaması için fareni karar düğmelerin üzerinde gezdir).
       Verdiğin kararın nedeni hakkında kısa bir açıklama yapmanı rica ediyoruz. Böylece herkesin ne düşündüğünü ve neden bu karara vardığını rahatça görebileceksin. Eğer fikrini değiştirirsen, öneri kapanana kadar özgürce kararını yeniden düzenleyebilirsin.
+  contact_page:
+    labels:
+      name: 'Adın'
+      email: 'E-posta adresin'
+      message: 'Mesajın'
+      submit: 'Mesaj gönder'
   discussion_form:
     new:
       header: "Bir müzakere başlat"

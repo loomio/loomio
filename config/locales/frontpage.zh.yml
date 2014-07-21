@@ -21,7 +21,7 @@ zh:
       services: '服務'
     hero:
       head_html: '這個世界需要更好的方法來<br /><strong>共同參與決策</strong>。'
-      desc_html: 'Loomio 是一套自由、<a href="https://github.com/loomio/loomio">開放源碼</a>的軟體。讓任何人不論在任何地方，都能參與影響他人的決策。'
+      desc_html: 'Loomio 是一套自由、<a href="https://github.com/loomio/loomio">開放源碼</a>的軟體，讓任何人不論在任何地方，都能參與影響他人的決策。'
     product:
       header_html: '當我們聽到<strong>所有的聲音</strong>時，我們可以作出<strong>更好的決策</strong>。'
       step1:

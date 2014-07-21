@@ -50,8 +50,6 @@ fa:
     proposal_deleted: "پیشنهاد حذف شد."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        other: "%{count} ثانیه"
       x_seconds:
         other: "%{count} ثانیه"
       less_than_x_minutes:

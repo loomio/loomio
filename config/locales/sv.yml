@@ -79,15 +79,6 @@ sv:
     you_have_left_group: "Du har lämnat %{which_group}."
     comment_deleted: "Kommentaren borttagen"
     invitations:
-      auto_added:
-        one: "%{count} tillagd medlem"
-        other: "%{count} tillagda medlemmar"
-      existing_member:
-        one: "%{count} medlem finns i gruppen"
-        other: "%{count} medlemmar finns i gruppen"
-      sent:
-        one: "%{count} skickad inbjudning"
-        other: "%{count} skickade inbjudningar"
       auto_added_and_sent: "%{auto_added_text} och %{sent_text}"
   views:
     pagination:
@@ -123,9 +114,6 @@ sv:
     proposal_deleted: "Förslaget är raderat."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "sekund"
-        other: "%{count} sekunder"
       x_seconds:
         one: "1 sekund"
         other: "%{count} sekunder"

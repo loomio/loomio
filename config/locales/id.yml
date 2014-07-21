@@ -70,12 +70,6 @@ id:
     you_have_left_group: "Anda telah meninggalkan %{which_group}."
     comment_deleted: "Komentar dihapus."
     invitations:
-      auto_added:
-        other: "%{count} anggota ditambahkan"
-      existing_member:
-        other: "%{count} anggota telah masuk ke dalam kelompok"
-      sent:
-        other: "%{count} undangan telah dikirim"
       auto_added_and_sent: "%{auto_added_text} dan %{sent_text}"
   views:
     pagination:
@@ -111,8 +105,6 @@ id:
     proposal_deleted: "Usulan dihapus."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        other: "%{count} detik"
       x_seconds:
         other: "%{count} detik"
       less_than_x_minutes:
