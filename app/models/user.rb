@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
               :default => 'none'
 
 
+  has_many :contacts
   has_many :admin_memberships,
            conditions: 'memberships.admin = TRUE AND memberships.is_suspended = FALSE',
            class_name: 'Membership',

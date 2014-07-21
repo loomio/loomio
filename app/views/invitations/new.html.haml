@@ -6,12 +6,7 @@
     = hidden_field_tag :discussion_id, @invitable.key
 
   .row#invitations-header
-    - if @discussion.present?
-      %h1= t("invitation.invite_to_discussion")
-      .invite-to-discussion-info
-        %p= t("invitation.invite_to_discussion_info")
-    - else
-      %h1= t("invitation.invite_people")
+    %h1= t("invitation.invite_people")
   .row#invitation-options
     .span6.invite-by-email
       = render 'invite_users', form: f, group: @group, discussion: @discussion
