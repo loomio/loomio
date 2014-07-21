@@ -798,7 +798,7 @@ en:
     copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
     pending_invitations: 'Pending invitations'
     no_pending_invitations: "There are currently no pending invitations."
-    import_contacts_html: "Can't remember an email address? Import your contacts from %{facebook_link} or %{google_link}"
+    import_contacts_html: "Can't remember an email address? Import your contacts from %{yahoo_link} or %{google_link}"
 
   #
   # SEARCH
@@ -1137,6 +1137,7 @@ en:
   time_until_close: "%{quantity_of_time} until close"
   update: "Update"
   facebook: "Facebook"
+  yahoo: "Yahoo"
   google: "Google"
   persona: "Persona"
 

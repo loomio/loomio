@@ -1,6 +1,15 @@
-%h1 user contacts
+%h1 Callback report
+
+Results from service
 %table
-  - current_user.contacts.each do |contact|
+  - request.env['omnicontacts.contacts'].each do |contact|
+    %tr
+      %td=contact[:name]
+      %td=contact[:email]
+
+Accepted contacts
+%table
+  - @contacts.each do |contact|
     %tr
       %td=contact.name
       %td=contact.email

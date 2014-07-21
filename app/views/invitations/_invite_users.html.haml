@@ -6,7 +6,7 @@
   .email-validation-help= t('error.invalid_email')
   %p
     %small= t(:'invitation.import_contacts_html',
-      facebook_link: link_to(t(:facebook), import_contacts_path(from: 'facebook')),
+      yahoo_link: link_to(t(:yahoo), import_contacts_path(from: 'yahoo')),
       google_link: link_to(t(:google), import_contacts_path(from: 'gmail')))
   = form.input :recipients, as: :hidden, input_html: { class: 'recipients' }
 
