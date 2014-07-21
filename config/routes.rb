@@ -27,6 +27,9 @@ Loomio::Application.routes.draw do
                                     registrations: 'users/registrations',
                                     omniauth_callbacks: 'users/omniauth_callbacks' }
 
+
+  match "/contacts/:importer/callback" => "users/contacts#callback"
+
   namespace :inbox do
     get   '/', action: 'index'
     get   'size'
@@ -174,6 +177,10 @@ Loomio::Application.routes.draw do
   end
 
   scope module: :users do
+
+    get 'import_contacts' => 'contacts#import'
+    get 'autocomplete_contacts' => 'contacts#autocomplete'
+
     match '/profile',          action: 'profile', as: :profile
     scope module: :email_preferences do
       get '/email_preferences', action: 'edit',   as: :email_preferences
