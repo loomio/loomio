@@ -393,14 +393,14 @@ zh:
       membership_is_invitation_by_admin_only: "您需要被協作者邀請才能加入這個群組。"
       log_in_html: "假如您是成員，<a href='%{href}'>登入</a>就能看到私密討論串。"
   discussion_context:
-    started_html: "已由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在 %{when} 前開始"
-    last_edited_html: "最後由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在 %{when} 前編輯"
+    started_html: "已由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在%{when}前開始"
+    last_edited_html: "最後由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在%{when}前編輯"
     see_revision_history: "查看修訂歷史紀錄"
     see_history: "查看歷史紀錄"
   description_history:
     header: "修訂歷史"
     subheader: "版本"
-    edited_by: "最後是由 %{who} 在%{when}之前編輯"
+    edited_by: "最後是由 %{who} 在%{when}前編輯"
     current: "(目前)"
     restore: "(回復此版本)"
     applying_changes: "(套用變更中⋯)"
@@ -426,11 +426,11 @@ zh:
   change_proposal_close_date_header: "變更提議「%{which}」的定案日期"
   proposal: 提案
   proposal_close_date_error: "請提供尚未逾期的定案日期"
-  proposal_closing_when: "在 %{when} 之內定案"
-  proposal_closed_when: "在%{when}之前已定案"
-  proposed_when_by_who: "由 %{who} 在%{when}之前提案"
-  engagement_on_open_proposal: "%{percent}%% 的成員已經陳述他們的立場 (%{numerator}/%{denominator})"
-  engagement_on_closed_proposal: "%{percent}%% 的成員陳述他們的立場 (%{numerator}/%{denominator})"
+  proposal_closing_when: "在%{when}之內定案"
+  proposal_closed_when: "在%{when}前已定案"
+  proposed_when_by_who: "由 %{who} 在%{when}前提案"
+  engagement_on_open_proposal: "%{percent}%%的成員已經陳述他們的立場 (%{numerator}/%{denominator})"
+  engagement_on_closed_proposal: "%{percent}%%的成員陳述他們的立場 (%{numerator}/%{denominator})"
   state_your_position: "陳述您的立場"
   positions: "立場表態"
   yes_position: "我贊成"
@@ -454,6 +454,9 @@ zh:
       'no': "反對"
       abstain: "棄權"
       block: "阻擋"
+  unable_to_vote:
+    permission_denied: "在此項動議上您無權投票"
+    motion_closed: "這項動議已經定案了"
   edit_comment:
     comment_changes: "更動意見"
     edit_comment: "編輯意見"
@@ -872,7 +875,7 @@ zh:
       intro: "為了完成您的申請，請點擊此認證連結："
       ignore: "若您並未申請加入 Loomio，請忽略此郵件。"
   about_loomio: "關於 Loomio"
-  ago: "%{quantity_of_time} "
+  ago: "%{quantity_of_time}前"
   approve: "批准"
   author: "作者"
   back: "返回"
@@ -919,6 +922,7 @@ zh:
   translate_this_string: "翻譯成 %{language}"
   failed_translation: "翻譯無法完成"
   options: "選項"
+  rss_subscribe: "訂閱 Feed"
   ok_got_it: "Ok，了解了！"
   remove: "移除"
   save: "儲存"
@@ -933,14 +937,14 @@ zh:
   terms_of_service_html: "按下%{button_text}按鈕表示您同意遵守 Loomio 的<a href='%{link_path}' target='_blank'>服務條款</a>"
   thanks: "謝謝！"
   unlike: "收回讚"
-  time_until_close: "%{quantity_of_time} 直到定案"
+  time_until_close: "直到定案還有 %{quantity_of_time}"
   update: "更新"
   facebook: "Facebook"
   google: "Google"
   persona: "人物誌"
   common:
     back_to_discussion: "回到討論串"
-    edited: 已編輯
+    edited: 編輯紀錄
     today: 今天
     months:
       january: 一月

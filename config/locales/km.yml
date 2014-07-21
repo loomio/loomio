@@ -69,12 +69,6 @@ km:
     you_have_left_group: "អ្នកបានចាកចេញ%{which_group}. "
     comment_deleted: "អត្ថាធិប្បាយបានលុប"
     invitations:
-      auto_added:
-        other: "%{count} សមាជិកបានបន្ថែមទៀត"
-      existing_member:
-        other: "%{count} សមាជិកក្នុងក្រុមរួចទៅហើយ"
-      sent:
-        other: "%{count} លិខិតអញ្ជើញត្រូវបានផ្ញើ​"
       auto_added_and_sent: "%{auto_added_text}​ ហើយ %{sent_text}​"
   views:
     pagination:
@@ -109,8 +103,6 @@ km:
     proposal_deleted: "សំណើលុបចោល"
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        other: "%{count} វិនាទី "
       x_seconds:
         other: "%{count}  វិនាទី "
       less_than_x_minutes:

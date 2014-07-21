@@ -21,6 +21,7 @@ de:
       services: 'Dienste'
     hero:
       head_html: 'Die Welt braucht eine bessere Möglichkeit, um <strong>gemeinschaftlich Entscheidungen zu treffen</strong>.'
+      desc_html: 'Loomio ist als freie Software <a href="https://github.com/loomio/loomio">Open Source</a>, damit jeder überall an Entscheidungsprozessen teilnehmen kann.'
     product:
       header_html: 'Wenn wir <strong>alle Meinungen</strong> einbeziehen, können wir <strong>bessere Entscheidungen</strong> treffen.'
       step1:

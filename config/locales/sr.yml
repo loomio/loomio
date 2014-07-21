@@ -80,16 +80,16 @@ sr:
     comment_deleted: "Komentar je obrisan."
     invitations:
       auto_added:
-        one: "%{count} član dodat"
-        few: "%{count} člana dodato"
-        other: "%{count} članova dodato"
+        one: "1 član je dodat"
+        few: "članova je dodato"
+        other: "%{count} članova je dodato"
       existing_member:
-        one: "%{count} član je već u grupi"
-        few: "%{count} člana su već u grupi"
+        one: "1 član je već u grupi"
+        few: "članova je već u grupi"
         other: "%{count} članova je već u grupi"
       sent:
-        one: "%{count} poslata pozivnica"
-        few: "%{count} poslate pozivnice"
+        one: "1 pozivnica je poslata"
+        few: "pozivnica je poslato"
         other: "%{count} poslatih pozivnica"
       auto_added_and_sent: "%{auto_added_text} i %{sent_text}"
   tooltip:
@@ -132,7 +132,7 @@ sr:
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        one: "sekunda"
+        one: "1 sekunda"
         few: "sekundi"
         other: "%{count} sekundi"
       x_seconds:
@@ -482,6 +482,9 @@ sr:
       'no': "se nije složio/la"
       abstain: "se sudržao/la"
       block: "je blokirao/la"
+  unable_to_vote:
+    permission_denied: "Vi nemate dozvolu da glasate o ovom predlogu"
+    motion_closed: "Ovaj predlog je već zatvoren"
   edit_comment:
     comment_changes: "Izmene komentara"
     edit_comment: "Izmeni komentar"
@@ -751,6 +754,7 @@ sr:
     header: "Osobine ePoruka"
     daily_activity_summary: "Dnevni Rezime Aktivnosti"
     daily_activity_subscription: "Pošalji mi dnevno ePoruku sa rezimeom dešavanja u mojim grupama"
+    missed_yesterday_subscription: "Pošalji mi 'Juče na Lumiju' - moj nepročitani sadržaj iz proteklih 24 sata"
     global_notifications: "Globalna Obaveštenja"
     proposal_closing_soon_subscription: "Obavesti me 24 časa pre zatvaranja predloga"
     mentions_subscription: "Pošalji mi ePoruku kada me neko pomene u komentaru"
@@ -859,6 +863,14 @@ sr:
       heading: "Vaša Lumio aktivnost"
       intro: "Prikazuje Vam šta se dešavalo u Vašim Lumio grupama u poslednja 24 sata"
       subject: "Lumio - Rezime poslednjih 24 sata"
+    missed_yesterday:
+      subject: "Juče na Lumiju"
+      mark_as_read: Označi kao pročitano
+      thanks_for_reading: Hvala na čitanju, prijatan dan!
+      click_here_to_mark_all_as_read_html: |
+        Evo šta se juče dešavalo na Lumiju.
+        Kada pročitate, škljocnite na <a href="%{link}">označi kao pročitano</a> da uklonite iz svojih Lumio poruka.
+      marked_as_read_success: "Sve ePoruke su označene kao pročitane"
     group_email:
       intro: "%{who} je napravio/la objavu za grupu %{group}:"
     group_membership_approved:
@@ -951,6 +963,7 @@ sr:
   translate_this_string: "Prevedi na %{language}"
   failed_translation: "Nije moguće obaviti prevod"
   options: "Opcije"
+  rss_subscribe: "Prijavi se na fid"
   ok_got_it: "U redu, shvatio!"
   remove: "Ukloni"
   save: "Snimi"
@@ -962,6 +975,7 @@ sr:
   start_a_group: "Započnite grupu"
   starting: "Počinje"
   subject: "Tema"
+  terms_of_service_html: "Klikom na %{button_text}, slažete se sa Loomio <a href='%{link_path}' target='_blank'>Uslovima korišćenja</a>"
   thanks: "Hvala!"
   unlike: "Ne Sviđa"
   time_until_close: "%{quantity_of_time} do zatvaranja"

@@ -61,18 +61,6 @@ cs:
     you_have_left_group: "Opustil(a) jste %{which_group}."
     comment_deleted: "Komentář smazán."
     invitations:
-      auto_added:
-        one: "%{count} člen přidán"
-        few: "%{count} členové přidáni"
-        other: "%{count} členů přidáno"
-      existing_member:
-        one: "%{count} člen ve skupině"
-        few: "%{count} členové ve skupině"
-        other: "%{count} členů ve skupině"
-      sent:
-        one: "%{count} pozvánka odeslána"
-        few: "%{count} pozvánky odeslány"
-        other: "%{count} pozvánek odesláno"
       auto_added_and_sent: "%{auto_added_text} a %{sent_text}"
   views:
     pagination:
@@ -108,10 +96,6 @@ cs:
     proposal_deleted: "Návrh odstraněn."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "vteřinou"
-        few: "%{count} vteřinami"
-        other: "%{count} vteřinami"
       x_seconds:
         one: "vteřinou"
         few: "%{count} vteřinami"

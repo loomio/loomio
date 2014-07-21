@@ -60,9 +60,6 @@ eo:
     proposal_deleted: "Propono forigita."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "sekundo"
-        other: "%{count} sekundoj"
       x_seconds:
         one: "1 sekundo"
         other: "%{count} sekundoj"

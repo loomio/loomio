@@ -79,15 +79,6 @@ es:
     you_have_left_group: "Has dejado %{which_group}."
     comment_deleted: "Comentario eliminado."
     invitations:
-      auto_added:
-        one: "%{count} miembros adheridos"
-        other: "%{count} miembros adheridos"
-      existing_member:
-        one: "%{count} miembros en este grupo"
-        other: "%{count} miembros en este grupo"
-      sent:
-        one: "%{count} invitaciones enviadas"
-        other: "%{count} invitaciones enviadas"
       auto_added_and_sent: "%{auto_added_text} y %{sent_text}"
   tooltip:
     cover_photo_upload: "Sube una nueva foto de portada"
@@ -128,9 +119,6 @@ es:
     proposal_deleted: "Propuesta eliminada."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "segundo"
-        other: "%{count} segundos"
       x_seconds:
         one: "1 segundo"
         other: "%{count} segundos"

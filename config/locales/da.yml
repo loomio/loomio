@@ -50,9 +50,6 @@ da:
     proposal_deleted: "Foreslag er slettet."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "sekund"
-        other: "%{count} sekunder"
       x_seconds:
         one: "1 sekund"
         other: "%{count} sekunder"

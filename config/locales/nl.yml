@@ -468,6 +468,9 @@ nl:
       'no': "mee oneens"
       abstain: "onthouden"
       block: "geblokkeerd"
+  unable_to_vote:
+    permission_denied: "Je hebt geen rechten om op deze motie te stemmen"
+    motion_closed: "Deze motie is al gesloten"
   edit_comment:
     comment_changes: "Reactie wijzigingen"
     edit_comment: "Bewerk reactie"
@@ -930,6 +933,7 @@ nl:
   translate_this_string: "Vertalen naar %{language}"
   failed_translation: "Vertaling voltooien mislukt"
   options: "Opties"
+  rss_subscribe: "Meld aan voor feed"
   ok_got_it: "Okee, ik snap 't!"
   remove: "Verwijder"
   save: "Bewaar"
