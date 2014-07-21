@@ -94,7 +94,7 @@ class Group < ActiveRecord::Base
   has_one :group_request
 
   has_many :memberships,
-           conditions: {is_suspended: false},
+           conditions: {is_suspended: false, archived_at: nil},
            dependent: :destroy,
            extend: GroupMemberships
 
@@ -112,7 +112,7 @@ class Group < ActiveRecord::Base
            dependent: :destroy
 
   has_many :admin_memberships,
-           conditions: { admin: true },
+           conditions: {is_suspended: false, archived_at: nil, admin: true },
            class_name: 'Membership',
            dependent: :destroy
 

@@ -8,10 +8,9 @@ class Membership < ActiveRecord::Base
   belongs_to :inviter, class_name: 'User'
   has_many :events, as: :eventable, dependent: :destroy
 
-  scope :active, -> { published.where(is_suspended: false) }
+  scope :active, -> { where(is_suspended: false, archived_at: nil) }
   scope :suspended, -> { where(is_suspended: true) }
   scope :archived, lambda { where('archived_at IS NOT NULL') }
-  scope :published, lambda { where(archived_at: nil) }
 
   scope :for_group, lambda {|group| where(group_id: group)}
   scope :admin, where(admin: true)

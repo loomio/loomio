@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
 
 
   has_many :admin_memberships,
-           conditions: 'memberships.admin = TRUE AND memberships.is_suspended = FALSE',
+           conditions: {is_suspended: false, archived_at: nil, admin: true},
            class_name: 'Membership',
            dependent: :destroy
 
@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
            source: :group
 
   has_many :memberships,
-           conditions: {is_suspended: false},
+           conditions: {is_suspended: false, archived_at: nil},
            dependent: :destroy
 
   has_many :membership_requests,
@@ -245,8 +245,9 @@ class User < ActiveRecord::Base
                       subscribed_to_missed_yesterday_email: false,
                       subscribed_to_mention_notifications: false,
                       subscribed_to_proposal_closure_notifications: false)
-    memberships.update_all(archived_at: Time.now,
-                      subscribed_to_notification_emails: false)
+
+    memberships.update_all(archived_at: Time.now, subscribed_to_notification_emails: false)
+
     membership_requests.where("responded_at IS NULL").destroy_all
   end
 
