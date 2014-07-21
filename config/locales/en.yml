@@ -79,7 +79,7 @@ en:
     duplicate_email: "%{which_email} is already in the group."
 
   notice:
-    new_contacts_imported: "%{count} new contacts imported."
+    new_contacts_imported: "That worked! You can type names into the field below and we'll suggest the email address."
     admin_rights_removed: "%{which_user}'s coordinator rights have been removed."
     user_added: "%{user_email_or_name} has been added to the group."
     new_user_added: "%{user_email_or_name} will be added to the group after they set up a Loomio account."
@@ -798,6 +798,7 @@ en:
     copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
     pending_invitations: 'Pending invitations'
     no_pending_invitations: "There are currently no pending invitations."
+    import_contacts_html: "Can't remember an email address? Import your contacts from %{facebook_link} or %{google_link}"
 
   #
   # SEARCH
