@@ -5,9 +5,7 @@
   = text_area_tag 'invitees', nil, class: 'validate-emails js-autocomplete-contacts', placeholder: t("invitation.invitees_placeholder"), data: {autocomplete_path: autocomplete_contacts_path}
   .email-validation-help= t('error.invalid_email')
   %p
-    %small= t(:'invitation.import_contacts_html',
-      yahoo_link: link_to(t(:yahoo), import_contacts_path(from: 'yahoo')),
-      google_link: link_to(t(:google), import_contacts_path(from: 'gmail')))
+    %small= t(:'invitation.import_contacts_html', google_link: link_to(t(:google), import_contacts_path(from: 'gmail')))
   = form.input :recipients, as: :hidden, input_html: { class: 'recipients' }
 
 .control-group
