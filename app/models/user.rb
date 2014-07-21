@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
 
 
   has_many :admin_memberships,
-           conditions: {is_suspended: false, archived_at: nil, admin: true},
+           conditions: "memberships.is_suspended = FALSE AND memberships.archived_at IS NULL AND memberships.admin = TRUE",
            class_name: 'Membership',
            dependent: :destroy
 
@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
            source: :group
 
   has_many :memberships,
-           conditions: {is_suspended: false, archived_at: nil},
+           conditions: "memberships.is_suspended = FALSE AND memberships.archived_at IS NULL",
            dependent: :destroy
 
   has_many :membership_requests,
