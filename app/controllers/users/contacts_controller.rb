@@ -1,6 +1,10 @@
 class Users::ContactsController < BaseController
   def import
 
+    if params[:from]
+      session[:return_to_after_import_contacts] = request.referer
+      redirect_to "/contacts/#{params[:from]}"
+    end
   end
 
   def callback
@@ -17,7 +21,16 @@ class Users::ContactsController < BaseController
                                    source: params[:importer])
 
     end
-    redirect_to :import_contacts, notice: t(:'notice.new_contacts_imported', count: @contacts.size)
+
+    if session[:return_to_after_import_contacts]
+      return_url = session[:return_to_after_import_contacts]
+      session.delete(:return_to_after_import_contacts)
+    else
+      return_url = import_contacts_path
+    end
+
+    redirect_to return_url,
+                notice: t(:'notice.new_contacts_imported')
   end
 
   def autocomplete

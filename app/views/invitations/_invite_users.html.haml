@@ -4,10 +4,12 @@
   %p= t("invitation.recipients")
   = text_area_tag 'invitees', nil, class: 'validate-emails js-autocomplete-contacts', placeholder: t("invitation.invitees_placeholder"), data: {autocomplete_path: autocomplete_contacts_path}
   .email-validation-help= t('error.invalid_email')
-  = link_to "Import contacts", import_contacts_path
-  %br
-  %br
+  %p
+    %small= t(:'invitation.import_contacts_html',
+      facebook_link: link_to(t(:facebook), import_contacts_path(from: 'facebook')),
+      google_link: link_to(t(:google), import_contacts_path(from: 'gmail')))
   = form.input :recipients, as: :hidden, input_html: { class: 'recipients' }
+
 .control-group
   - if @discussion.present?
     = form.input :message_body, label: false, as: :text, input_html: { value: t("invitation.body_editable_discussion", group: group.name) }, label: t("invitation.message_body")
