@@ -132,9 +132,72 @@ describe "User abilities" do
         end
       end
     end
+
+    context "member of group", focus: true do
+      before { group.add_member!(user) }
+
+      describe "members_can_start_discussions" do
+        let(:discussion) { Discussion.new(group: group) }
+
+        context "true" do
+          before { group.update_attribute(:members_can_start_discussions, true) }
+          it {should be_able_to(:create, discussion)}
+        end
+
+        context "false" do
+          before { group.update_attribute(:members_can_start_discussions, false) }
+          it {should_not be_able_to(:create, discussion)}
+        end
+      end
+
+      describe "members_can_raise_motions" do
+        let(:discussion) { FactoryGirl.create(:discussion, group: group, author: user) }
+        let(:motion) { Motion.new(discussion: discussion) }
+
+        context "true" do
+          before { group.update_attribute(:members_can_raise_motions, true) }
+          it {should be_able_to(:create, motion)}
+        end
+
+        context "false" do
+          before { group.update_attribute(:members_can_raise_motions, false) }
+          it {should_not be_able_to(:create, motion)}
+        end
+      end
+
+      describe "members_can_vote" do
+        let(:discussion) { FactoryGirl.create(:discussion, group: group, author: user) }
+        let(:motion) { FactoryGirl.create(:motion, discussion: discussion) }
+
+        context "true" do
+          before { group.update_attribute(:members_can_vote, true) }
+          it {should be_able_to(:vote, motion)}
+        end
+
+        context "false" do
+          before { group.update_attribute(:members_can_vote, false) }
+          it {should_not be_able_to(:vote, motion)}
+        end
+      end
+
+      # start_subgroups
+      describe "members_can_create_subgroups" do
+        let(:subgroup) { Group.new(parent: group) }
+
+        context "true" do
+          before { group.update_attribute(:members_can_create_subgroups, true) }
+          it {should be_able_to(:create, subgroup)}
+        end
+
+        context "false" do
+          before { group.update_attribute(:members_can_create_subgroups, false) }
+          it {should_not be_able_to(:create, subgroup)}
+        end
+      end
+    end
   end
 
-  context "suspended member", focus: true do
+  context "suspended member" do
     let(:group) { create(:group) }
     let(:admin_group) { create(:group) }
     let(:subgroup) { create(:group, parent: group) }
@@ -197,7 +260,7 @@ describe "User abilities" do
       it { should_not be_able_to(:manage, another_user_comment) }
     end
 
-    context "members_can_not_edit_comments", focus: true do
+    context "members_can_not_edit_comments" do
       before do
         group.members_can_edit_comments = false
       end

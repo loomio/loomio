@@ -54,9 +54,6 @@ class Ability
       user_is_admin_of?(group.id)
     end
 
-    can [:add_subgroup], Group do |group|
-      user_is_member_of?(group.id) and group.is_parent?
-    end
 
     can [:members_autocomplete], Group do |group|
       user_is_member_of?(group.id)
@@ -68,14 +65,23 @@ class Ability
       (group.members_can_add_members? && user_is_member_of?(group.id)) || user_is_admin_of?(group.id)
     end
 
+    # please note that I don't like this duplication either.
+    # add_subgroup checks against a parent group
+    can [:add_subgroup], Group do |group|
+      group.is_parent? &&
+      user_is_member_of?(group.id) &&
+      group.members_can_create_subgroups?
+    end
+
+    # create group checks against the group to be created
     can :create, Group do |group|
-      if !group.is_subgroup?
-        true
-      elsif user_is_member_of?(group.parent_id)
-        true
-      else
-        false
-      end
+      # anyone can create a top level group of their own
+      # otherwise, the group must be a subgroup
+      # inwhich case we need to confirm membership and permission
+
+      group.is_parent? ||
+      (user_is_member_of?(group.parent.id) &&
+       group.parent.members_can_create_subgroups?)
     end
 
     can :join, Group do |group|
@@ -146,11 +152,16 @@ class Ability
          :move], Discussion do |discussion|
       user_is_admin_of?(discussion.group_id)
     end
+    
+    can :create, Discussion do |discussion|
+      (discussion.group.members_can_start_discussions? &&
+       user_is_member_of?(discussion.group_id)) ||
+      user_is_admin_of?(discussion.group_id)
+    end
 
     can [:unfollow,
          :add_comment,
          :new_proposal,
-         :create,
          :show_description_history,
          :preview_version], Discussion do |discussion|
       user_is_member_of?(discussion.group_id)
@@ -168,16 +179,19 @@ class Ability
       user_is_author_of?(comment) or user_is_admin_of?(comment.discussion.group_id)
     end
 
-    can [:start_proposal], Discussion do |discussion|
-      can? :create, Motion.new(discussion: discussion)
-    end
-
     can [:create], Motion do |motion|
-      motion.discussion.current_motion.nil? && user_is_member_of?(motion.discussion.group_id)
+      discussion = motion.discussion
+      discussion.motion_can_be_raised? &&
+      ((discussion.group.members_can_raise_motions? &&
+        user_is_member_of?(discussion.group_id)) ||
+        user_is_admin_of?(discussion.group_id) )
     end
 
     can [:vote], Motion do |motion|
-      motion.voting? && user_is_member_of?(motion.discussion.group_id)
+      discussion = motion.discussion
+      motion.voting? &&
+      ((discussion.group.members_can_vote? && user_is_member_of?(discussion.group_id)) ||
+        user_is_admin_of?(discussion.group_id) )
     end
 
     can [:close], Motion do |motion|

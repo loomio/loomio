@@ -116,6 +116,10 @@ class Discussion < ActiveRecord::Base
     User.find(motions.pluck(:author_id))
   end
 
+  def motion_can_be_raised?
+    current_motion.blank?
+  end
+
   def has_previous_versions?
     (previous_version && previous_version.id)
   end
@@ -131,7 +135,6 @@ class Discussion < ActiveRecord::Base
   def activity
     items
   end
-
 
   def delayed_destroy
     self.update_attribute(:is_deleted, true)
