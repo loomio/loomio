@@ -1,5 +1,7 @@
 Given(/^I complete the group setup form$/) do
   fill_in 'group_name', with: "Fantastic Spinners"
+  click_on 'Next'
+  click_on 'Next'
   find('#group_form_submit').click
 end
 

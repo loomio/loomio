@@ -3,6 +3,7 @@ Given(/^I am on the create a group page$/) do
 end
 
 When(/^a group is made visible, join on request$/) do
+  click_on 'Next'
   choose 'group_visible_to_public'
   choose 'group_membership_granted_upon_request'
 end

@@ -11,9 +11,11 @@ Given(/^I visit the group settings page$/) do
 end
 
 When(/^I select listed, open, public only$/) do
+  click_on 'Next'
   choose 'group_visible_to_public'
   choose 'group_membership_granted_upon_request'
   choose 'group_discussion_privacy_options_public_only'
+  click_on 'Next'
   click_on 'group_form_submit'
 end
 
@@ -27,9 +29,11 @@ end
 
 When(/^I select listed, by request, public and private$/) do
   visit edit_group_path(@group)
+  click_on 'Next'
   choose 'group_visible_to_public'
   choose 'group_membership_granted_upon_approval'
   choose 'group_discussion_privacy_options_public_or_private'
+  click_on 'Next'
   click_on 'group_form_submit'
 end
 
@@ -42,9 +46,11 @@ end
 
 When(/^I select listed, invitation only, private only$/) do
   visit edit_group_path(@group)
+  click_on 'Next'
   choose 'group_visible_to_public'
   choose 'group_membership_granted_upon_invitation'
   choose 'group_discussion_privacy_options_private_only'
+  click_on 'Next'
   click_on 'group_form_submit'
 end
 
@@ -57,9 +63,11 @@ end
 
 When(/^I select unlisted$/) do
   visit edit_group_path(@group)
+  click_on 'Next'
   choose 'group_visible_to_members'
   choose 'group_membership_granted_upon_invitation'
   choose 'group_discussion_privacy_options_private_only'
+  click_on 'Next'
   click_on 'group_form_submit'
 end
 
@@ -77,7 +85,9 @@ Given(/^I am editing the settings for a subgroup$/) do
 end
 
 When(/^I select visible to parent group members and save$/) do
+  click_on 'Next'
   choose 'group_visible_to_parent_members'
+  click_on 'Next'
   click_on 'group_form_submit'
 end
 
@@ -89,6 +99,8 @@ end
 When(/^I change the group name and description$/) do
   fill_in :group_name, with: 'changed'
   fill_in :group_description, with: 'changed'
+  click_on 'Next'
+  click_on 'Next'
   click_on 'group_form_submit'
 end
 
@@ -104,7 +116,9 @@ Given(/^the group has a public discussion$/) do
 end
 
 When(/^I change the group to private discussions only$/) do
+  click_on 'Next'
   choose 'group_discussion_privacy_options_private_only'
+  click_on 'Next'
   click_on 'group_form_submit'
 end
 
@@ -119,6 +133,8 @@ end
 
 When(/^I allow the members to do everything$/) do
   visit edit_group_path(@group)
+  click_on 'Next'
+  click_on 'Next'
   check 'group[members_can_add_members]'
   check 'group[members_can_edit_discussions]'
   click_on 'group_form_submit'
@@ -132,6 +148,8 @@ end
 
 When(/^I disallow the members to do everything$/) do
   visit edit_group_path(@group)
+  click_on 'Next'
+  click_on 'Next'
   uncheck 'group[members_can_add_members]'
   uncheck 'group[members_can_edit_discussions]'
   click_on 'group_form_submit'

@@ -234,8 +234,18 @@ body.groups {
 }
 
 form.group-settings{
+  textarea{
+    box-sizing:border-box;
+    height: 122px;
+  }
+  input[type="text"] {
+    box-sizing:border-box;
+    height: 2em;
+  }
+  input#group_form_submit { margin-top: 62px; }
   label span:before { content: '- '; }
   .control-label{ font-weight: bold; }
+  .tab-content{ padding-left: 5px; }
   .what-can-members-do{
     label.control-label{ margin-bottom: 5px; }
     .control-group{
@@ -244,13 +254,4 @@ form.group-settings{
     }
   }
   .disabled { color:#ccc; }
-}
-
-body.groups.new {
-  .control-group.group_name {
-    margin-top: 30px;
-  }
-  .info-box {
-    margin-top: 65px;
-  }
 }
