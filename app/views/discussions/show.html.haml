@@ -41,7 +41,7 @@
             %h3.header-text= t :current_decision
             .content-proposal-body
               %ul.selector-list
-                - if can? :start_proposal, @discussion
+                - if can? :create, Motion.new(discussion: @discussion)
                   = link_to t(:create_new_proposal),
                             new_proposal_discussion_path(@discussion),
                             class: 'btn new-proposal-btn',

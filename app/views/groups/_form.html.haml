@@ -8,53 +8,72 @@
 - form_params.merge!(validate: true, html: {data: form_data, class: 'group-settings'})
 
 = simple_form_for group, form_params do |f|
-  = f.input :name, label: t(:'group_form.name')
-  = f.input :description, as: :text, label: t(:'group_form.description')
-  - if group.is_parent?
-    - translated_categories = Category.all.map{|c| [t(c.translatable_name), c.id]}
-    = f.input :category_id, as: :select, collection: translated_categories, include_blank: t(:"group_categories.blank"), label: t(:"group_form.category")
-    %p
-      %em= t :"group_form.prompt_to_suggest_categories_html", link: "https://loomio.org/d/d8nzaSEG"
+  %ul.nav.nav-tabs#group-form-tabs
+    %li.active
+      %a{href: '#profile'}= t :profile
+    %li
+      %a{href: '#privacy'}= t :"common.privacy"
+    %li
+      %a{href: '#permissions'}= t :"common.permissions"
 
-  = f.input :visible_to,
-            label: t(:'group_form.visible_to.label'),
-            as: :radio_buttons,
-            collection: group_visibilty_options(group)
+  .tab-content
+    .tab-pane.active#profile
+      = f.input :name, label: t(:'group_form.name')
+      = f.input :description, as: :text, label: t(:'group_form.description')
+      - if group.is_parent?
+        - translated_categories = Category.all.map{|c| [t(c.translatable_name), c.id]}
+        = f.input :category_id, as: :select, collection: translated_categories, include_blank: t(:"group_categories.blank"), label: t(:"group_form.category")
+      %a.btn.btn-info{href: '#', onclick: "$('a[href=\"#privacy\"]').tab('show')"}
+        = t(:next)
+    .tab-pane#privacy
+      = f.input :visible_to,
+                label: t(:'group_form.visible_to.label'),
+                as: :radio_buttons,
+                collection: group_visibilty_options(group)
 
-  = f.input :membership_granted_upon,
-            label: t(:'group_form.membership_granted_upon.label'),
-            as: :radio_buttons,
-            collection: group_joining_options(group)
+      = f.input :membership_granted_upon,
+                label: t(:'group_form.membership_granted_upon.label'),
+                as: :radio_buttons,
+                collection: group_joining_options(group)
 
-  - if group.is_subgroup?
-    = f.input :parent_members_can_see_discussions,
-              label: t(:'group_form.parent_members_can_see_discussions.label'),
-              as: :radio_buttons,
-              collection: [[t(:'group_form.parent_members_can_see_discussions.true',
-                              parent_group_name: group.parent.name),
-                            true],
-                           [t(:'group_form.parent_members_can_see_discussions.false'),
-                            false]]
+      - if group.is_subgroup?
+        = f.input :parent_members_can_see_discussions,
+                  label: t(:'group_form.parent_members_can_see_discussions.label'),
+                  as: :radio_buttons,
+                  collection: [[t(:'group_form.parent_members_can_see_discussions.true',
+                                  parent_group_name: group.parent.name),
+                                true],
+                               [t(:'group_form.parent_members_can_see_discussions.false'),
+                                false]]
 
-  = f.input :discussion_privacy_options,
-            label: t(:'group_form.discussion_privacy_options.label'),
-            as: :radio_buttons,
-            collection: [[t(:'group_form.discussion_privacy_options.public_only_html'), :public_only],
-                         [t(:'group_form.discussion_privacy_options.public_or_private_html'), :public_or_private],
-                         [t(:'group_form.discussion_privacy_options.private_only_html'), :private_only]]
+      = f.input :discussion_privacy_options,
+                label: t(:'group_form.discussion_privacy_options.label'),
+                as: :radio_buttons,
+                collection: [[t(:'group_form.discussion_privacy_options.public_only_html'), :public_only],
+                             [t(:'group_form.discussion_privacy_options.public_or_private_html'), :public_or_private],
+                             [t(:'group_form.discussion_privacy_options.private_only_html'), :private_only]]
 
-  .control-group.what-can-members-do
-    %label.control-label= t :'group_form.what_can_members_do'
-    = f.input :members_can_add_members, as: :boolean, inline_label: t(:'group_form.members_can.add_members'), label: false
-    = f.input :members_can_edit_discussions, as: :boolean, inline_label: t(:'group_form.members_can.edit_discussions'),  label: false
-    = f.input :members_can_edit_comments, as: :boolean, inline_label: t(:'group_form.members_can.edit_comments'), label: false
-    / = f.input :motions_can_be_edited, as: :boolean, inline_label: t(:'group_form.motions_can_be_edited'),  label: false
-    %p
-      %i.fa.fa-star
-      %em= link_to t(:"group_form.learn_about_permissions"), "#learn-about-permissions-modal", 'data-toggle' => 'modal', id: 'learn-about-permissions'
+      %a.btn.btn-info{href: '#', onclick: "$('a[href=\"#permissions\"]').tab('show')"}
+        = t(:next)
 
-  = f.input :parent_id, :as => :hidden
-  = f.submit submit_text, class: 'btn btn-info', id: 'group_form_submit', data: {disable_with: submit_text}
+    .tab-pane#permissions
+      .control-group.what-can-members-do
+        %label.control-label= t :'group_form.what_can_members_do'
+        = f.input :members_can_add_members, as: :boolean, inline_label: t(:'group_form.members_can.add_members'), label: false
+        = f.input :members_can_create_subgroups, as: :boolean, inline_label: t(:'group_form.members_can.create_subgroups'), label: false
+        = f.input :members_can_start_discussions, as: :boolean, inline_label: t(:'group_form.members_can.start_discussions'), label: false
+        = f.input :members_can_edit_discussions, as: :boolean, inline_label: t(:'group_form.members_can.edit_discussions'),  label: false
+        = f.input :members_can_edit_comments, as: :boolean, inline_label: t(:'group_form.members_can.edit_comments'), label: false
+        = f.input :members_can_raise_motions, as: :boolean, inline_label: t(:'group_form.members_can.raise_motions'), label: false
+        = f.input :members_can_vote,          as: :boolean, inline_label: t(:'group_form.members_can.vote'), label: false
+
+        / = f.input :motions_can_be_edited, as: :boolean, inline_label: t(:'group_form.motions_can_be_edited'),  label: false
+        %p
+          %i.fa.fa-star
+          %em= link_to t(:"group_form.learn_about_permissions"), "#learn-about-permissions-modal", 'data-toggle' => 'modal', id: 'learn-about-permissions'
+
+        = f.input :parent_id, :as => :hidden
+        = f.submit submit_text, class: 'btn btn-info', id: 'group_form_submit', data: {disable_with: submit_text}
 
 #learn-about-permissions-modal.modal.hidden
   .modal-header
@@ -72,19 +91,20 @@
       %li= t :"group_permissions.c7"
       %li= t :"group_permissions.c8"
       %li= t :"group_permissions.c9"
-    %p= t :"group_permissions.members_can"
+      %li= t :"group_permissions.c10"
+      %li= t :"group_permissions.c11"
+      %li= t :"group_permissions.c12"
+      %li= t :"group_permissions.c13"
+    %p= t :"group_permissions.members_defaults"
     %ul
       %li= t :"group_permissions.m1"
-      %li= t :"group_permissions.m2"
       %li= t :"group_permissions.m3"
       %li= t :"group_permissions.m4"
       %li= t :"group_permissions.m5"
       %li= t :"group_permissions.m6"
-    %p= t :"group_permissions.optionally"
-    %ul
-      %li= t :"group_permissions.o1"
-      %li= t :"group_permissions.o2"
-      %li= t :"group_permissions.o3"
+      %li= t :"group_permissions.m7"
+      %li= t :"group_permissions.m8"
+    %p= t :"group_permissions.optional_restrictions"
 
   .modal-footer
     = link_to t(:close), "#", "data-dismiss" => "modal", class: "btn"
