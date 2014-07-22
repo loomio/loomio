@@ -3,6 +3,7 @@
     #motion-form
       = simple_form_for @motion, validate: true do |f|
         = f.input :name, id: "motion-name", input_html: {class: 'js-warn-before-navigating-away'}, hint: t('motion_form.name_helper'), disabled: !@motion.can_be_edited?
+        .timezone= "#{Time.zone.name} (GMT #{Time.zone.formatted_offset})"
         = f.input :closing_at
         = f.input :description, input_html: {class: 'js-warn-before-navigating-away'}, disabled: !@motion.can_be_edited?
         = f.input :discussion_id, as: :hidden, input_html: {value: @motion.discussion_id}
