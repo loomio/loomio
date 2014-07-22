@@ -233,21 +233,13 @@ table.jqplot-table-legend {
   }
 }
 
-.new_proposal, #edit-close-date {
-  .motion-closing-inputs {
-    .control-group { display: inline-block; }
-
-    .motion-close-at-date {
-      height: 20px;
-      position: relative;
-      top: 1px;
-      width: 85px;
-    }
-    .motion-close-at-time { width: 80px; }
-    .motion-close-at-time-zone { width: 214px; }
-    .motion-close-at-time, .motion-close-at-time-zone {
-      display: inline-block;
-      margin-top: 10px;
-    }
+#motion-form{
+  #motion_closing_at{
+    width: 35%;
+  }
+  .timezone{
+    float: right;
+    margin-top: 26px;
+    text-align: right;
   }
 }
