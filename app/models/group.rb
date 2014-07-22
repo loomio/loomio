@@ -6,13 +6,15 @@ class Group < ActiveRecord::Base
   class MaximumMembershipsExceeded < Exception
   end
 
-  #even though we have permitted_params this needs to be here.. it's an issue
+  #even though we have permitted_params this needs to be here.. it's an issue brought about by one of the gems included.. i think the tree one
+
   attr_accessible :members_can_add_members, :members_can_edit_discussions, :members_can_edit_comments, :motions_can_be_edited,
                   :name, :parent, :parent_id, :description, :max_size,
                   :cannot_contribute, :full_name, :payment_plan, :parent_members_can_see_discussions,
                   :category_id, :max_size, :is_visible_to_parent_members, :is_visible_to_public,
                   :discussion_privacy_options, :membership_granted_upon, :visible_to,
-                  :theme_id, :subdomain, :cover_photo, :logo
+                  :theme_id, :subdomain, :cover_photo, :logo, :members_can_raise_motions,
+                  :members_can_vote, :members_can_start_discussions, :members_can_create_subgroups
   acts_as_tree
 
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']

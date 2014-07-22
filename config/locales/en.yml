@@ -266,13 +266,15 @@ en:
     confirm_all_discussions_will_be_made_private_message: "If you proceed, any public discussions will be made private."
     confirm_all_discussions_will_be_made_public_message: "Are you sure? If you proceed, any private discussions will be made public."
 
-    prompt_to_suggest_categories_html: "If you'd like to suggest some new categories, <a href='%{link}' target='_blank'>join this discussion</a>."
-
     what_can_members_do: "What can members do?"
     members_can:
       add_members: Invite and approve new members
       edit_comments: Edit their comments at any time
       edit_discussions: Edit the context of any discussion in the group
+      start_discussions: Start discussions
+      raise_motions: Raise proposals
+      vote: Vote on proposals
+      create_subgroups: Create subgroups
     motions_can_be_edited: Edit their proposals after voting has started
 
     visible_to:
@@ -316,19 +318,21 @@ en:
     c7: Add/remove other coordinators.
     c8: Delete discussions.
     c9: Delete comments.
+    c10: Create subgroups.
+    c11: Start discussions.
+    c12: Raise proposals.
+    c13: Vote on proposals.
 
-    members_can: "Members can:"
+    members_defaults: "With the default settings, members can:"
     m1: Delete their own comments.
-    m2: Edit their own comments, until someone has replied.
     m3: Edit the title and description of proposals they start, until someone has stated their position. 
     m4: Edit the closing date of proposals they start, until they close.
-    m5: Edit the title and context of discussions they start at any time.
+    m5: Edit the title and context of any discussion.
     m6: Start a subgroup, which they become the coordinator of.
+    m7: Edit their own comments at any time.
+    m8: Raise and participate in proposals.
 
-    optionally: "Optionally, coordinators can allow group members to:"
-    o1: Invite and approve new members.
-    o2: Edit their own comments at any time.
-    o3: Edit the title or context of any discussion in the group.
+    optional_restrictions: "Optionally, coordinators can restrict what members can do."
 
   group_privacy:
     visible_to:

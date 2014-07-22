@@ -150,3 +150,7 @@ $ ->
     placement: "bottom"
   $('.edit-description').tooltip
     placement: "bottom"
+
+  $('#group-form-tabs a').click (e) ->
+    e.preventDefault();
+    $(this).tab('show');
