@@ -18,7 +18,6 @@ class DiscussionsController < GroupBaseController
     @discussion.uses_markdown = current_user.uses_markdown
     @group = Group.find_by_id params[:group_id]
     @discussion.group = @group
-    @user_groups = current_user.groups.order('name')
   end
 
   def edit
