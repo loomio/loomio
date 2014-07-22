@@ -635,7 +635,7 @@ DEPENDENCIES
   rabl (~> 0.9.3)
   rack-canonical-host (~> 0.0.9)
   rack_session_access (~> 0.1.1)
-  rails (~> 3.2.18)
+  rails (~> 3.2.19)
   rails-backbone (~> 0.7.2)
   rake (~> 10.3.1)
   rb-fchange (~> 0.0.5)
