@@ -1,12 +1,3 @@
-.row-fluid
-  .span12.category
-    - if category
-      %h2= link_to_unless_current t(category.translatable_name), category_explore_path(category)
-    -else
-      %h2= heading
-
-
-
 .row-fluid.groups-row
   .span6.col
     - groups.each_with_index do |group, index|

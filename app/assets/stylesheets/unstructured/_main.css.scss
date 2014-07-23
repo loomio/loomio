@@ -207,7 +207,11 @@ ul, ol, li {
   margin-top: 30px;
   min-height: 600px;
 }
-
+.shadow{
+  text-shadow: 0 1px 1px rgba(0,0,0,.8);
+  text-rendering: optimizelegibility;
+  color: white;
+}
 ul.selector-list {
   &.bordered { border-top: 1px solid $light-grey }
   li.selector-item {

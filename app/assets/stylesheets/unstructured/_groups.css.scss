@@ -10,11 +10,6 @@ body.groups {
   &.show {
     .discussion-preview .discussion-title { margin-top: 7px; }
     .discussion-preview.showing-group .discussion-title { margin-top: 0; }
-    .shadow{
-      text-shadow: 0 1px 1px rgba(0,0,0,.8);
-      text-rendering: optimizelegibility;
-      color: white;
-    }
     .group-heading {
       background: image-url('default-cover-photo.png') 0 0 no-repeat;
       margin: -23px -20px 0 -20px;
