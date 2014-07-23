@@ -9,12 +9,16 @@ class ExploreController < ApplicationController
   end
 
   def index
-    @groups = Group.visible_on_explore_front_page
+    @groups = Group.visible_on_explore_front_page.page(params[:page]).per(20)
   end
 
   def category
-    @category = Category.find(params[:id])
-    @groups = Group.visible_to_public.in_category(@category)
+    if params[:id] = 'all'
+      @groups = Group.visible_to_public.more_than_n_discussions(3).page(params[:page]).per(20)
+    else
+      @category = Category.find(params[:id])
+      @groups = Group.visible_to_public.in_category(@category).page(params[:page]).per(20)
+    end
   end
 
   private
@@ -22,12 +26,15 @@ class ExploreController < ApplicationController
   def category_names_and_paths
     @categories = Category.all
     names_and_paths = @categories.map{|c| [I18n.t(c.translatable_name), category_explore_path(c)]}
-    names_and_paths.prepend [t(:"group_categories.all"), explore_path]
+    names_and_paths.prepend [t(:"group_categories.all"), category_explore_path(:all)]
+    names_and_paths.prepend ["", explore_path]
   end
 
   def selected_category_path
     if @category
       category_explore_path(@category)
+    elsif params[:id] == 'all'
+      category_explore_path(:all)
     else
       nil
     end
