@@ -1,10 +1,14 @@
 .row-fluid.groups-row
-  .span6.col
+  .span6
     - groups.each_with_index do |group, index|
       - next unless index % 2 == 0
       =render 'group', group: group
 
-  .span6.col
+  .span6
     - groups.each_with_index do |group, index|
       - next unless index % 2 == 1
       =render 'group', group: group
+
+.row-fluid
+  .span12
+    = paginate @groups

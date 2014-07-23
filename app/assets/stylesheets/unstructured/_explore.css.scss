@@ -3,9 +3,8 @@ body.explore {
     /*font-family: 'OpenSans', 'OpenSans', sans-serif;*/
     /*font-weight: 300;*/
     h1 { font-size: 24px; }
-    h2 { font-size: 14px; }
+    h2 { font-size: 18px; }
     h1, h2 {
-      color: #989898;
       line-height: 1.2;
     }
     a {
@@ -22,12 +21,10 @@ body.explore {
   }
 
   .header {
-    @extend .card;
     .category_select label{
       margin: 5px 5px 0 0;
       float: left;
     }
-    form{ margin-bottom: 0; }
     input {
       margin-bottom: 0;
       box-sizing: border-box;

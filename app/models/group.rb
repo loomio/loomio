@@ -42,7 +42,6 @@ class Group < ActiveRecord::Base
 
 
   scope :categorised_any, -> { where('groups.category_id IS NOT NULL') }
-  scope :has_cover_photo, -> { where('groups.cover_photo_updated_at IS NOT NULL') }
   scope :in_category, -> (category) { where(category_id: category.id) }
 
   scope :archived, lambda { where('archived_at IS NOT NULL') }
@@ -56,7 +55,13 @@ class Group < ActiveRecord::Base
   scope :hidden_from_public, published.where(is_visible_to_public: false)
 
   scope :visible_on_explore_front_page,
-        -> { visible_to_public.categorised_any.has_cover_photo.engaged.limit(20) }
+        -> { visible_to_public.categorised_any.parents_only.
+             created_earlier_than(2.months.ago).
+             active_discussions_since(1.month.ago).
+             more_than_n_members(3).
+             more_than_n_discussions(3).
+             order('discussions.last_comment_at') }
+
   scope :include_admins, includes(:admins)
 
   scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
