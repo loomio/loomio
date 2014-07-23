@@ -96,8 +96,17 @@ Given /^there is a discussion in a public group$/ do
 end
 
 Given /^there is a public discussion in a public group$/ do
-  @group = FactoryGirl.create :group, visible_to: 'public', discussion_privacy_options: 'public_only'
+  @group = FactoryGirl.create :group, :is_visible_to_public => true
   @discussion = create_discussion :group => @group, private: false
+end
+
+Given /^there is a public group with a discussion with a comment$/ do 
+  @user ||= FactoryGirl.create :user
+  @group ||= FactoryGirl.create :group, :is_visible_to_public => true
+  @discussion ||= FactoryGirl.create :discussion, group: @group, private: false
+  @group.add_member! @user
+  @comment = FactoryGirl.create :comment, author: @user, discussion: @discussion
+  DiscussionService.add_comment @comment
 end
 
 Given /^there is a discussion in a private group$/ do
