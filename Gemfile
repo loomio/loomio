@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '2.1.2'
-gem 'rails', '~> 3.2.18'
+gem 'rails', '~> 3.2.19'
 gem 'rake', '~> 10.3.1'
 gem 'haml-rails', '~> 0.4.0'
 gem 'devise', '~> 3.2.0'
