@@ -1,6 +1,6 @@
 en:
   explore:
-    go_to_group: "Go to %{group_name}"
+    header: "Explore public groups"
 
   try_it:
     header: "Try Loomio"
@@ -1213,6 +1213,7 @@ en:
     start_group: "Start group!"
 
   group_categories:
+    all: "All"
     blank: "Uncategorised"
     economics: "Economics"
     activist: "Activist"

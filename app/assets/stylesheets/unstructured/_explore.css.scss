@@ -3,12 +3,9 @@ body.explore {
     /*font-family: 'OpenSans', 'OpenSans', sans-serif;*/
     /*font-weight: 300;*/
     h1 { font-size: 24px; }
-    h2 { font-size: 14px; }
+    h2 { font-size: 18px; }
     h1, h2 {
-      color: #989898;
       line-height: 1.2;
-      margin-bottom: 0;
-      text-transform: uppercase;
     }
     a {
       color: #3995DF;
@@ -19,55 +16,86 @@ body.explore {
   }
   .card {
     background-color: white;
-    padding: 1.5em 1.6em;
     margin-bottom: 1.7em;
+    padding: 1.5em 1.6em;
   }
 
   .header {
-    @extend .card;
-    padding: 2em 1.6em 1.5em;
+    .category_select label{
+      margin: 5px 5px 0 0;
+      float: left;
+    }
+    input {
+      margin-bottom: 0;
+      box-sizing: border-box;
+      height: 2.2em;
+    }
   }
   .main-container { background-color: $app-background; }
-
 
   .category {
     @extend .card;
   }
 
-  .group-container {
-    @extend .card;
-    margin-bottom: 1em;
-    h1 {
-      font-size: 22px;
-      text-transform: none;
-      margin-bottom: 10px;
+  .group{
+    background-color: white;
+    margin-bottom: 1.7em;
+  }
+
+  .group-description{
+    margin: 14px 20px 0 20px;
+    font-size: 90%;
+    line-height: 1.4;
+    .logo-placeholder {
+      float: left;
+      width: 84px;
+      height: 18px;
     }
-    .group-link {
-      a {
-        color: #C0B0AB;
+  }
+
+  .group-heading{
+    background-repeat: none;
+    height: 94px;
+    padding: 0 1.5em;
+    position: relative;
+    a { color: white; }
+    .group-logo {
+      position: absolute;
+      top: 45px;
+      left: 20px;
+      width: 67px;
+      height: 67px;
+      background: image-url('default-logo-card.png') no-repeat top center white;
+      border: 2px solid white;
+    }
+    .group-title {
+      position: absolute;
+      bottom: 0px;
+      left: 104px;
+      margin-right: 10px;
+    }
+    .group-category{
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      text-align: right;
+      a{
+        color: rgba(255,255,255,0.9);
+        background: rgba(0,0,0,0.5);
+        padding: 2px 8px;
+        display: block;
       }
     }
   }
 
-  .groups-row {
-    margin-bottom: 2.6em;
+  .group-content{
+    margin: 0 20px;
+    padding-bottom: 1px;
+    clear: both;
   }
 
-  .explore-search-bar {
-    text-align: right;
-    margin-top: -6px;
-    form { margin-bottom: 0; }
-    input {
-      /*font-family: 'OpenSans-Light', 'OpenSans', sans-serif;*/
-      /*font-weight: 300;*/
-      /*font-size: 18px;*/
-      /*line-height: 1.2;*/
-      height: 32px;
-      width: 160px;
-      @include border-radius(4px);
-      box-shadow: 0px 1px 1px 1px #E5E2E1 inset;
-      /*margin-top: -6px;*/
-    }
+  .groups-row {
+    margin-bottom: 2.6em;
   }
 
   ul.discussion-list{
@@ -77,12 +105,14 @@ body.explore {
         color: $dark-grey;
       }
       line-height: 2em;
-      padding: .5em 0;
+      padding: .3em 0;
 
       .title {
         width: 88%;
         margin-left: 1.1em;
-        font-size: 16px;
+        font-size: 1.1em;
+        line-height: 1.6;
+        padding-top: 7px;
       }
       .discussion-icon{
         text-align: center;
