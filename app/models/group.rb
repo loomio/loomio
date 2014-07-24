@@ -54,7 +54,14 @@ class Group < ActiveRecord::Base
   scope :visible_to_public, published.where(is_visible_to_public: true)
   scope :hidden_from_public, published.where(is_visible_to_public: false)
 
-  scope :visible_on_explore_front_page, -> { visible_to_public.categorised_any.parents_only }
+  scope :visible_on_explore_front_page,
+        -> { visible_to_public.categorised_any.parents_only.
+             created_earlier_than(2.months.ago).
+             active_discussions_since(1.month.ago).
+             more_than_n_members(3).
+             more_than_n_discussions(3).
+             order('discussions.last_comment_at') }
+
   scope :include_admins, includes(:admins)
 
   scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
@@ -151,11 +158,11 @@ class Group < ActiveRecord::Base
   paginates_per 20
 
   has_attached_file    :cover_photo,
-                       styles: { desktop: "980x200#" },
+                       styles: { desktop: "980x200#", card: "460x94#" },
                        default_url: '/assets/default-cover-photo.png'
   has_attached_file    :logo,
-                       styles: { medium: "100x100" },
-                       default_url: '/assets/default-logo.png'
+                       styles: { card: "67x67", medium: "100x100" },
+                       default_url: '/assets/default-logo-:style.png'
   validates_attachment :cover_photo,
     size: { in: 0..10.megabytes },
     content_type: { content_type: /\Aimage/ },
