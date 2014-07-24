@@ -10,7 +10,6 @@ class DiscussionItems::MotionClosed < DiscussionItem
   end
 
   def actor
-    return "" if event.user.nil?
     event.user
   end
 
