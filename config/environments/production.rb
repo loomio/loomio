@@ -90,7 +90,8 @@ Loomio::Application.configure do
       :aws_secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     },
     :fog_directory => ENV['AWS_UPLOADS_BUCKET'],
-    :fog_public => true
+    :fog_public => true,
+    :fog_host => ENV['FOG_HOST']
   }
 
 end
