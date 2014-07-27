@@ -813,7 +813,7 @@ es:
       subject: "Loomio - Resumen de las últimas 24 horas"
     missed_yesterday:
       subject: "Ayer en Loomio"
-      mark_as_read: Marcar como leído
+      mark_as_read: Marcar como leído (si imágenes deshabilitadas)
       thanks_for_reading: Gracias por leer, ¡que tengas un buen día!
       click_here_to_mark_all_as_read_html: |
         Esto es lo que pasó ayer en Loomio.

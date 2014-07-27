@@ -1019,7 +1019,7 @@ en:
       subject: "Loomio - Summary of the last 24 hours"
     missed_yesterday:
       subject: "Yesterday on Loomio"
-      mark_as_read: Mark as read
+      mark_as_read: Mark as read (if images are disabled)
       thanks_for_reading: Thanks for reading, have a great day!
       click_here_to_mark_all_as_read_html: |
         Here's the stuff that happened yesterday on Loomio.
