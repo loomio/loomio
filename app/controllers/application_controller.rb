@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   around_filter :user_time_zone, if: :user_signed_in?
 
   after_filter :increment_measurement
+  after_filter :new_relic_insights, if: :using_new_relic?
 
   # intercom
   skip_after_filter :intercom_rails_auto_include
@@ -31,6 +32,14 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+  def using_new_relic?
+    ENV['NEW_RELIC_APP_NAME'].present?
+  end
+
+  def new_relic_insights
+    NewRelic::Agent.add_custom_parameters({:user_id => current_user_or_visitor.id})
+  end
+
   def subdomain
     request.subdomain.gsub(/^www./, '')
   end
