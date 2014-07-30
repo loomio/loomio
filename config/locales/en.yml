@@ -243,7 +243,7 @@ en:
     message: "<p>This is the <strong>group page</strong>. On the left is a list of all the discussions in this group.</p><p>When you want the group to discuss another topic, start a new discussion.</p>"
   dashboard_helper_text:
     header: "Welcome to your Home page"
-    message: "<p>The home page shows you all of the current discussions in all the groups you are a member of.</p><p>You can start a discussion on a new topic by clicking the “Start a discussion” button.</p>"
+    message: "<p>The home page shows you all of the current discussions in all the groups you are a member of.</p><p>You can start a discussion on a new topic by clicking the “Start discussion” button.</p>"
 
   prompt_visitor_to_authenticate:
     header: "Log in or join group to participate"
