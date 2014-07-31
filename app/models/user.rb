@@ -48,6 +48,7 @@ class User < ActiveRecord::Base
   has_many :adminable_groups,
            through: :admin_memberships,
            class_name: 'Group',
+           conditions: {archived_at: nil},
            source: :group
 
   has_many :memberships,
@@ -137,6 +138,11 @@ class User < ActiveRecord::Base
 
   def inbox_groups
     groups.where('memberships.inbox_position is not null').order(:inbox_position)
+  end
+
+  def groups_discussions_can_be_started_in
+    (groups.where(members_can_start_discussions: true) | adminable_groups).
+     sort{|a,b| a.full_name <=> b.full_name}
   end
 
   def first_name
