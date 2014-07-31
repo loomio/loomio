@@ -40,7 +40,7 @@
       .description.translated-description.translated
         = t(:loading_translation)
 
-  .pie{id: "graph_#{motion.id}"}
+  %canvas.pie{id: "graph_#{motion.id}"}
 
   .percentage-to-vote
     - if motion.closed?
@@ -79,8 +79,4 @@
 = link_to t(:not_voted), '#', class: 'toggle-yet-to-vote'
 
 = render('motions/motion_pie_javascript',
-    diameter: 200,
-    motion: motion,
-    padding: 0,
-    gap: 5,
-    legend: 'true')
+    motion: motion)

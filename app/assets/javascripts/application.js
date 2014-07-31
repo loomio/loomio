@@ -24,6 +24,7 @@
 //= require lib/jquery.safetynet
 //= require lib/jquery.netchanger.min
 //= require lib/bootstrap2-datetimepicker
+//= require lib/Chart
 //= require underscore
 //= require backbone
 //= require backbone/loomio
