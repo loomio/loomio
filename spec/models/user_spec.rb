@@ -4,6 +4,8 @@ require 'spec_helper'
 describe User do
   let(:user) { create(:user) }
   let(:group) { create(:group) }
+  let(:restrictive_group) { create(:group, members_can_start_discussions: false) }
+  let(:admin) { create :user }
 
   subject do
     user = User.new
@@ -48,6 +50,16 @@ describe User do
   it "has many adminable_groups" do
     group.add_admin!(user)
     user.adminable_groups.should include(group)
+  end
+
+  it "has many groups that discussions can be started in" do
+    group.add_member!(user)
+    restrictive_group.add_member!(user)
+    restrictive_group.add_admin!(admin)
+
+    user.groups_discussions_can_be_started_in.should include(group)
+    user.groups_discussions_can_be_started_in.should_not include(restrictive_group)
+    admin.groups_discussions_can_be_started_in.should include(restrictive_group)
   end
 
   it "has many admin memberships" do

@@ -2,9 +2,9 @@
   .span5
     = simple_form_for discussion, :validate => true do |f|
       .control-group
-        - if @user_groups && params[:group_id].blank?
+        - if params[:group_id].blank?
           %p= t "discussion_form.new.who"
-          = f.collection_select :group_id, user_groups.sort{|a,b| a.full_name <=> b.full_name}, :id, :full_name, {include_blank: true}
+          = f.collection_select :group_id, current_user.groups_discussions_can_be_started_in, :id, :full_name, {include_blank: true}
         - else
           = f.input :group_id, :as => :hidden
       = f.input :title, autofocus: true, input_html: {class: 'js-warn-before-navigating-away'}, label: false
