@@ -3,6 +3,9 @@
     %i.fa.fa-group
     %span= t :groups
   %ul.dropdown-menu
+    = text_field :search, :groups, class: 'group-dropdown-search', placeholder: t(:search_for_group)
+    .no-groups-found 
+      = t(:no_groups_found)
     #group-dropdown-items
     - if current_user.show_start_group_button?
       %li.group-item.group-links
