@@ -63,19 +63,26 @@ $ ->
     title: "Jump to latest unread activity"
 
 # moving discussion
-warn_if_moving_discussion_to_private_group = ->
-  $('.move-discussion-form .warn-move-will-make-private').hide()
-  private_discussion = $(".move-discussion-form").data('private-discussion')
-  unless private_discussion
-    hidden_group_ids = String($(".move-discussion-form").data('hidden-group-ids')).split(' ')
-    selected_group_id = $("select[name=destination_group_id]").val()
-    if _.include(hidden_group_ids, selected_group_id)
-      $('.move-discussion-form .warn-move-will-make-private').show()
+warn_if_moving_discussion = ->
+  form = $('.move-discussion-form')
+  form.find('.warn-move').hide()
+  
+  selected_group_id = form.find("select[name=destination_group_id]").val()
+
+  if form.data('private-discussion')
+    group_ids = String(form.data('public-group-ids')).split(' ')
+    target = form.find '.warn-move-will-make-public'
+  else
+    group_ids = String(form.data('hidden-group-ids')).split(' ')
+    target = form.find '.warn-move-will-make-private'
+
+  if _.include(group_ids, selected_group_id)
+    target.show()
 
 $ ->
-  warn_if_moving_discussion_to_private_group()
+  warn_if_moving_discussion()
   $(".move-discussion-form select").on 'change', (e) ->
-    warn_if_moving_discussion_to_private_group()
+    warn_if_moving_discussion()
 
 $ ->
   $(".js-prompt-user-to-join-or-authenticate").on "click", (e) ->
