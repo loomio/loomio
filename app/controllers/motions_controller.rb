@@ -11,7 +11,7 @@ class MotionsController < GroupBaseController
       flash[:error] = t(:"error.proposal_already_exists")
     else
       @motion = current_user.authored_motions.new(permitted_params.motion)
-      @group = GroupDecorator.new(@motion.group)
+      @group = @motion.group
       authorize! :create, @motion
       if @motion.save
         Measurement.increment('motions.create.success')
@@ -27,7 +27,7 @@ class MotionsController < GroupBaseController
 
   def index
     if params[:group_id].present?
-      @group = Group.find(params[:group_id])
+      @group = Group.friendly.find(params[:group_id])
       if cannot? :show, @group
         head 401
       else

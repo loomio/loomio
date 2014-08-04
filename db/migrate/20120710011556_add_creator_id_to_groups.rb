@@ -5,17 +5,17 @@ class AddCreatorIdToGroups < ActiveRecord::Migration
 
   class Group < ActiveRecord::Base
     has_many :memberships,
-      :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
+      -> { where(access_level: Membership::MEMBER_ACCESS_LEVELS)
+          .include(:user)
+          .order('LOWER(users.name)') },
       :dependent => :destroy,
-      :extend => GroupMemberships,
-      :include => :user,
-      :order => "LOWER(users.name)"
+      :extend => GroupMemberships
     has_many :membership_requests,
-      :conditions => {:access_level => 'request'},
+      -> { where(access_level: 'request') },
       :class_name => 'Membership',
       :dependent => :destroy
     has_many :admin_memberships,
-      :conditions => {:access_level => 'admin'},
+      -> { where(access_level: 'admin') },
       :class_name => 'Membership',
       :dependent => :destroy
     has_many :users, :through => :memberships # TODO: rename to members

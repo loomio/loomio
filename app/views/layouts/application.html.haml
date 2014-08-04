@@ -3,7 +3,7 @@
   %head
     %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
     %title= display_title @unviewed_notifications
-    
+
     - if @feed_url
       %link{href: @feed_url, rel: 'alternate', type: 'application/rss+xml', title: t(:rss_subscribe), class: 'rss-link' }
 
@@ -16,7 +16,8 @@
     = javascript_include_tag "application"
     = theme_javascript_include_tag
     = csrf_meta_tags
-    = render 'social_metadata', :description => @meta_description, :title => @meta_title
+    = render 'social_metadata', description: @meta_description, title: @meta_title
+
   %body{class: "#{controller_name} #{action_name}"}
     - analytics_scope do
       = render 'google_tag_manager'

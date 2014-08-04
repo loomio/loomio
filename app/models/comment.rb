@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   include Twitter::Extractor
+  include Translatable
 
   has_paper_trail
   is_translatable on: :body
@@ -18,7 +19,7 @@ class Comment < ActiveRecord::Base
   after_initialize :set_defaults
   after_destroy :send_discussion_comment_deleted!
 
-  default_scope include: [:user, :attachments, :discussion]
+  default_scope { includes(:user).includes(:attachments).includes(:discussion) }
 
   delegate :name, :to => :user, :prefix => :user
   delegate :name, :to => :user, :prefix => :author
@@ -38,27 +39,12 @@ class Comment < ActiveRecord::Base
     user_id
   end
 
-  # Helper class method that allows you to build a comment
-  # by passing a discussion object, a user_id, and comment text
-  def self.build_from(discussion, user, body, options = {})
-    c = self.new
-    c.discussion = discussion
-    c.body = body
-    c.user = user
-    c.uses_markdown = options[:uses_markdown] || false
-    if options[:attachments].present?
-      c.attachment_ids = options[:attachments].map{|s| s.to_i}
-      c.attachments_count = options[:attachments].count
-    end
-    c
+  def is_most_recent?
+    discussion.comments.last == self
   end
 
   def is_edited?
     edited_at.present?
-  end
-
-  def is_most_recent?
-    discussion.comments.last.id == id
   end
 
   def can_be_edited?

@@ -4,7 +4,7 @@ end
 
 Then /^I should be subscribed to the daily actitivy email$/ do
   @user.reload
-  @user.subscribed_to_daily_activity_email.should be_true
+  @user.subscribed_to_daily_activity_email.should be true
 end
 
 Given /^I am subscribed to the daily activity email$/ do
@@ -17,17 +17,17 @@ end
 
 Then /^I should not be subscribed to the daily actitivy email$/ do
   @user.reload
-  @user.subscribed_to_daily_activity_email.should be_false
+  @user.subscribed_to_daily_activity_email.should be false
 end
 
 Then /^I should be subscribed to proposal closure notification emails$/ do
   @user.reload
-  @user.subscribed_to_proposal_closure_notifications.should be_true
+  @user.subscribed_to_proposal_closure_notifications.should be true
 end
 
 Then /^I should not be subscribed to proposal closure notification emails$/ do
   @user.reload
-  @user.subscribed_to_proposal_closure_notifications.should be_false
+  @user.subscribed_to_proposal_closure_notifications.should be false
 end
 
 Given /^I am subscribed to mention email notifications$/ do
@@ -40,20 +40,20 @@ end
 
 Then /^I should be subscribed to mention notifications$/ do
   @user.reload
-  @user.subscribed_to_mention_notifications.should be_true
+  @user.subscribed_to_mention_notifications.should be true
 end
 
 Then /^I should not be subscribed to mention notifications$/ do
   @user.reload
-  @user.subscribed_to_mention_notifications.should be_false
+  @user.subscribed_to_mention_notifications.should be false
 end
 
 Then /^I should not be subscribed to group notifications about "(.*?)"$/ do |arg1|
-  @user.email_notifications_for_group?(Group.find_by_name(arg1)).should be_false
+  @user.email_notifications_for_group?(Group.find_by_name(arg1)).should be false
 end
 
 Then /^I should be subscribed to group notifications about "(.*?)"$/ do |arg1|
-  @user.email_notifications_for_group?(Group.find_by_name(arg1)).should be_true
+  @user.email_notifications_for_group?(Group.find_by_name(arg1)).should be true
 end
 
 Given /^I am subscribed to group notifications about "(.*?)"$/ do |arg1|

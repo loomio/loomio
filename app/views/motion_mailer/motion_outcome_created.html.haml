@@ -1,5 +1,7 @@
 = render '/application/mailer_doctype'
 %html
+  %head
+    = stylesheet_link_tag 'email'
   %body.proposal-outcome
     %h1.outcome-header= t(:outcome)
     %p= @motion.outcome

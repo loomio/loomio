@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe UserMailer do
   shared_examples_for 'email_meta' do
@@ -11,10 +11,14 @@ describe UserMailer do
     end
   end
   context 'sending email on membership approval' do
-    before :all do
+    before :each do
       @user = create(:user)
       @group = create(:group)
       @mail = UserMailer.group_membership_approved(@user, @group)
+       #stub_request(:head, /www.gravatar.com/).
+      #with(headers: {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
+      #to_return(status: 200, body: "stubbed response", headers: {})
+
     end
 
     it_behaves_like 'email_meta'

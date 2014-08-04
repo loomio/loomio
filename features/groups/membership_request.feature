@@ -31,13 +31,6 @@ Feature: Request Membership to Group
     And I fill in and submit the Request membership form using email of existing member
     Then I should see a field error telling me I am already a member of the group
 
-  Scenario: Visitor with pending membership request cannot submit new request
-    Given I am a visitor
-    And I have requested membership to a group (as a visitor)
-    When I visit the request membership page for the group
-    And I fill in and submit the Request membership form
-    Then I should see a field error telling me I have already requested membership
-
   Scenario: Visitor requests membership, is ignored, then requests again
     Given I am a visitor
     And I have requested membership as a visitor and been ignored

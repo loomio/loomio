@@ -1,36 +1,10 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Group do
   let(:motion) { create(:motion, discussion: discussion) }
   let(:user) { create(:user) }
   let(:group) { create(:group) }
-  let(:discussion) { create_discussion }
-
-  it { should have_many :discussions }
-
-  context "a new group" do
-    before :each do
-      @group = Group.new
-      @group.valid?
-      @group
-    end
-
-    it "must have a name" do
-      @group.should have(1).errors_on(:name)
-    end
-  end
-
-  describe 'invitations_remaining' do
-    before do
-      @group = Group.new
-    end
-
-    it 'is max_size minus members.count' do
-      @group.max_size = 10
-      @group.should_receive(:memberships_count).and_return 5
-      @group.invitations_remaining.should == 5
-    end
-  end
+  let(:discussion) { create :discussion }
 
   context "children counting" do
 
@@ -195,24 +169,24 @@ describe Group do
       before { group.visible_to = 'public' }
 
       it "sets is_visible_to_public = true" do
-        group.is_visible_to_public.should be_true
-        group.is_visible_to_parent_members.should be_false
+        group.is_visible_to_public.should be true
+        group.is_visible_to_parent_members.should be false
       end
     end
 
     context "parent_members" do
       before { group.visible_to = 'parent_members' }
       it "sets is_visible_to_parent_members = true" do
-        group.is_visible_to_public.should be_false
-        group.is_visible_to_parent_members.should be_true
+        group.is_visible_to_public.should be false
+        group.is_visible_to_parent_members.should be true
       end
     end
 
     context "members" do
       before { group.visible_to = 'members' }
       it "sets is_visible_to_parent_members and public = false" do
-        group.is_visible_to_public.should be_false
-        group.is_visible_to_parent_members.should be_false
+        group.is_visible_to_public.should be false
+        group.is_visible_to_parent_members.should be false
       end
     end
   end
@@ -294,7 +268,7 @@ describe Group do
   describe 'archive!' do
     before do
       group.add_member!(user)
-      @discussion = create_discussion group_id: group.id
+      @discussion = create :discussion, group_id: group.id
       group.archive!
     end
 
@@ -320,11 +294,11 @@ describe Group do
       before do
         group.payment_plan = "manual_subscription"
       end
-      it {should be_true}
+      it {should be true}
     end
 
     context 'payment_plan is pwyc or undetermined' do
-      it {should be_false}
+      it {should be false}
     end
 
     context 'group has online subscription' do
@@ -333,14 +307,14 @@ describe Group do
       end
 
       context 'with amount 0' do
-        it {should be_false}
+        it {should be false}
       end
 
       context 'with amount > 0' do
         before do
           group.subscription.amount = 1
         end
-        it {should be_true}
+        it {should be true}
       end
     end
   end
@@ -376,12 +350,12 @@ describe Group do
 
         Timecop.freeze(1.day.ago) do
           group_with_discussion_1_day_ago
-          create_discussion group: group_with_discussion_1_day_ago
+          create :discussion, group: group_with_discussion_1_day_ago
         end
 
         Timecop.freeze(3.days.ago) do
           group_with_discussion_3_days_ago
-          create_discussion group: group_with_discussion_3_days_ago
+          create :discussion, group: group_with_discussion_3_days_ago
         end
       end
 
