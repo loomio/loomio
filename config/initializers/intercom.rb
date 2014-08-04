@@ -17,7 +17,7 @@ if Rails.application.secrets.intercom_app_id
     # This is required for some Intercom rake tasks like importing your users;
     # you can generate one at https://www.intercom.io/apps/api_keys.
     #
-    config.api_key = Rails.application.secrets.intercom_app_api_key
+    config.app_api_key = Rails.application.secrets.intercom_app_api_key
 
     # == Enabled Environments
     # Which environments is auto inclusion of the Javascript enabled for
