@@ -11,6 +11,7 @@ Loomio::Application.routes.draw do
     resource :email_groups, only: [:create, :new]
     resources :stats, only: [] do
       collection do
+        get :group_metrics
         get :events
       end
     end
