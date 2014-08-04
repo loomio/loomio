@@ -411,7 +411,11 @@ class Group < ActiveRecord::Base
   end
 
   def organisation_motions_count
-    Group.where("parent_id = ? OR (parent_id IS NULL AND id = ?)", parent_or_self.id, parent_or_self.id).all.sum(&:motions_count)
+    Discussion.published.where(group_id: [org_group_ids]).sum(:motions_count)
+  end
+
+  def org_group_ids
+    [parent_or_self.id, parent_or_self.subgroup_ids].flatten
   end
 
   def has_subdomain?
