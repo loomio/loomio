@@ -1,11 +1,11 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe DiscussionReader do
 
   describe "#first_unread_page" do
     let(:user) { FactoryGirl.create :user }
     let(:other_user) { FactoryGirl.create :user }
-    let(:discussion) { create_discussion }
+    let(:discussion) { FactoryGirl.create :discussion }
     let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
 
     before do

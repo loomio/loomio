@@ -150,22 +150,6 @@ body.discussions.show {
 
   #request-membership, #request-membership-disabled { text-align: center; }
 
-  #jump-to-latest{
-    a {
-      color: $mid-grey;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: none;
-    }
-    color: $mid-grey;
-    text-decoration: none;
-    float: right;
-    margin-top: 2px;
-    margin-right: 5px;
-    color: $mid-grey;
-  }
-
   #attachment-container {
     background: #EBEBEB;
     padding: 0 5px 0 10px;

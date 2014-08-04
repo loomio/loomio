@@ -7,7 +7,7 @@ end
 
 Then(/^the group should be setup$/) do
   @group.reload
-  @group.is_setup?.should be_true
+  @group.is_setup?.should be true
 end
 
 Then(/^I should be on the group page$/) do

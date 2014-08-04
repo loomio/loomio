@@ -38,14 +38,11 @@ class GroupBaseController < BaseController
   end
 
   def load_group
-    return @group if @group
-    if group_subdomain_present? and group_id.blank?
-      group = Group.published.find_by_subdomain!(subdomain)
-    else
-      group = Group.published.find_by_key!(group_id)
-    end
-
-    @group = GroupDecorator.new(group)
+    @group ||= if group_subdomain_present? and group_id.blank?
+               Group.published.find_by_subdomain!(subdomain)
+             else
+               Group.published.find_by_key!(group_id)
+             end
   end
 
   def group_subdomain_present?

@@ -5,12 +5,11 @@
 # files.
 
 require 'cucumber/rails'
-require 'spork'
 
-require 'email_spec' # add this line if you use spork
+require 'email_spec'
 require 'email_spec/cucumber'
 
-require 'cucumber/rspec/doubles'
+#require 'cucumber/rspec/doubles'
 #require 'capybara-screenshot/cucumber'
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
@@ -20,24 +19,35 @@ require 'cucumber/rspec/doubles'
 
 require "rack_session_access/capybara"
 
-ENV["RAILS_ENV"] ||= test
+ENV["RAILS_ENV"] ||= 'test'
 Capybara.default_selector = :css
 ActionController::Base.allow_rescue = false
 Cucumber::Rails::Database.javascript_strategy = :truncation
-Capybara.default_driver = :rack_test
 Capybara.default_wait_time = 5
 
-ENV['PAYPAL_USERNAME'] = 'jonny'
-ENV['PAYPAL_PASSWORD'] = '12345'
-ENV['PAYPAL_SIGNATURE'] = '54321'
-ENV['PAYPAL_ENDPOINT_URL'] = "https://api-3t.sandbox.paypal.com/nvp"
-ENV['PAYPAL_GATEWAY_URL'] = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token="
+require 'capybara/poltergeist'
+
+polter_options = {
+  :phantomjs_options => ['--load-images=no'],
+  js_errors: true,
+  inspector: true,
+  debug: false
+}
+
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, polter_options)
+end
+
+Capybara.javascript_driver = :poltergeist
+#Capybara.javascript_driver = :selenium
+Capybara.default_driver = :rack_test
+
 ENV['AWS_ACCESS_KEY_ID']="notarealaccesskeyid"
 ENV['AWS_SECRET_ACCESS_KEY']="notarealsecretaccesskey"
 ENV['AWS_ATTACHMENTS_BUCKET']="notarealbucker"
 ENV['DEVISE_SECRET'] = 'testvalueaskjdhakjdhaksjhdkajhdkjahdkjashkjdhakjdh'
 
-# Before do |scenario|
-#   @feature_name = scenario.feature.title
-#   @scenario_name = scenario.title
-# end
+Before do |scenario|
+  stub_request(:head, /gravatar.com/).with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).to_return(:status => 200, :body => "", :headers => {})
+end
+

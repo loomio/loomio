@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe GroupsHelper do
   let(:group) { FactoryGirl.create(:group) }
@@ -14,22 +14,22 @@ describe GroupsHelper do
     end
 
     it "returns false for new groups" do
-      helper.show_subscription_prompt?(group).should be_false
+      helper.show_subscription_prompt?(group).should be false
     end
 
     it "returns false for paying groups" do
       group.update_attribute(:payment_plan, 'manual_subscription')
-      helper.show_subscription_prompt?(group).should be_false
+      helper.show_subscription_prompt?(group).should be false
     end
 
     it "returns false for sub groups" do
       subgroup.update_attribute(:created_at, 1.month.ago)
-      helper.show_subscription_prompt?(subgroup).should be_false
+      helper.show_subscription_prompt?(subgroup).should be false
     end
 
     it "returns true for older unpaying groups" do
       group.update_attribute(:created_at, 1.month.ago)
-      helper.show_subscription_prompt?(group).should be_true
+      helper.show_subscription_prompt?(group).should be true
     end
   end
 end

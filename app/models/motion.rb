@@ -7,12 +7,12 @@ class Motion < ActiveRecord::Base
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
   belongs_to :outcome_author, class_name: 'User'
   belongs_to :discussion, counter_cache: true
-
-  has_many :votes, dependent: :destroy, include: :user
-  has_many :unique_votes, class_name: 'Vote', conditions: { age: 0 }, include: :user
-  has_many :did_not_votes, dependent: :destroy, include: :user
+  # has_one :group, through: :discussion
+  has_many :votes,         -> { includes(:user) },  dependent: :destroy
+  has_many :unique_votes,  -> { includes(:user).where(age: 0) }, class_name: 'Vote'
+  has_many :did_not_votes, -> { includes(:user) }, dependent: :destroy
   has_many :did_not_voters, through: :did_not_votes, source: :user
-  has_many :events, as: :eventable, dependent: :destroy, include: :eventable
+  has_many :events,        -> { includes(:eventable) }, as: :eventable, dependent: :destroy
   has_many :motion_readers, dependent: :destroy
 
   validates_presence_of :name, :discussion, :author, :closing_at
@@ -20,6 +20,7 @@ class Motion < ActiveRecord::Base
   validates_length_of :name, maximum: 250
   validates_length_of :outcome, maximum: 250
 
+  include Translatable
   is_translatable on: [:name, :description]
 
   include PgSearch
@@ -40,14 +41,14 @@ class Motion < ActiveRecord::Base
 
   attr_accessor :create_discussion
 
-  scope :voting, where('motions.closed_at IS NULL').order('motions.closed_at ASC')
-  scope :lapsed, lambda { where('closing_at < ?', Time.now) }
-  scope :lapsed_but_not_closed, voting.lapsed
-  scope :closed, where('closed_at IS NOT NULL').order('motions.closed_at DESC')
+  scope :voting,                   -> { where(closed_at: nil).order(closed_at: :asc) }
+  scope :lapsed,                   -> { where('closing_at < ?', Time.now) }
+  scope :lapsed_but_not_closed,    -> { voting.lapsed }
+  scope :closed,                   -> { where('closed_at IS NOT NULL').order(closed_at: :desc) }
   scope :order_by_latest_activity, -> { order('last_vote_at desc') }
-  scope :public, joins(:discussion).merge(Discussion.public)
-  scope :voting_or_closed_after, -> (time) { where('motions.closed_at IS NULL OR (motions.closed_at > ?)', time) }
-  scope :closing_in_24_hours, -> { where('motions.closing_at > ? AND motions.closing_at <= ?', Time.now, 24.hours.from_now) }
+  #scope :visible_to_public,        -> { joins(:discussion).merge(Discussion.public) }
+  scope :voting_or_closed_after,   ->(time) { where('motions.closed_at IS NULL OR (motions.closed_at > ?)', time) }
+  scope :closing_in_24_hours,      -> { where('motions.closing_at > ? AND motions.closing_at <= ?', Time.now, 24.hours.from_now) }
 
   def grouped_unique_votes
     order = ['block', 'no', 'abstain', 'yes']

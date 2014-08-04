@@ -1,5 +1,5 @@
 require "cancan/matchers"
-require 'spec_helper'
+require 'rails_helper'
 
 describe "User abilities" do
   let(:user) { create(:user) }
@@ -201,7 +201,7 @@ describe "User abilities" do
     let(:group) { create(:group) }
     let(:admin_group) { create(:group) }
     let(:subgroup) { create(:group, parent: group) }
-    let(:private_discussion) { create_discussion group: group, private: true }
+    let(:private_discussion) { create :discussion, group: group, private: true }
 
 
     context "group is visible to public" do
@@ -237,8 +237,8 @@ describe "User abilities" do
     let(:subgroup) { build(:group, parent: group) }
     let(:subgroup_for_another_group) { build(:group, parent: create(:group)) }
     let(:membership_request) { create(:membership_request, group: group, requestor: non_member) }
-    let(:discussion) { create_discussion group: group }
-    let(:user_discussion) { create_discussion group: group, author: user }
+    let(:discussion) { create :discussion, group: group }
+    let(:user_discussion) { create :discussion, group: group, author: user }
     let(:new_discussion) { user.authored_discussions.new(
                            group: group, title: "new discussion") }
     let(:user_comment) { discussion.add_comment(user, "hello") }
@@ -416,7 +416,7 @@ describe "User abilities" do
 
   context "admin of a group" do
     let(:group) { create(:group) }
-    let(:discussion) { create_discussion group: group }
+    let(:discussion) { create :discussion, group: group }
     let(:another_user_comment) { discussion.add_comment(other_user, "hello", uses_markdown: false) }
     let(:other_users_motion) { create(:motion, author: other_user, discussion: discussion) }
     let(:membership_request) { create(:membership_request, group: group, requestor: non_member) }
@@ -470,7 +470,7 @@ describe "User abilities" do
 
     context 'hidden group' do
       let(:group) { create(:group, is_visible_to_public: false) }
-      let(:discussion) { create_discussion group: group, private: true }
+      let(:discussion) { create :discussion, group: group, private: true }
       let(:new_motion) { Motion.new(discussion_id: discussion.id) }
       let(:motion) { create(:motion, discussion: discussion) }
       let(:vote) { create(:vote, user: discussion.author, motion: motion) }
@@ -509,8 +509,8 @@ describe "User abilities" do
 
     context "public group" do
       let(:group) { create(:group, is_visible_to_public: true) }
-      let(:private_discussion) { create_discussion group: group, private: true }
-      let(:public_discussion) { create_discussion group: group, private: false }
+      let(:private_discussion) { create :discussion, group: group, private: true }
+      let(:public_discussion) { create :discussion, group: group, private: false }
       let(:new_motion) { Motion.new(discussion_id: private_discussion.id) }
       let(:motion) { create(:motion, discussion: private_discussion) }
       let(:new_discussion) { user.authored_discussions.new(

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 describe AcceptInvitation do
   let(:group) { FactoryGirl.create(:group) }
   let(:invitation) { FactoryGirl.create(:invitation, invitable: group) }

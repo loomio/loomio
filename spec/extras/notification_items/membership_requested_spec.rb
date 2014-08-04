@@ -1,4 +1,4 @@
-require 'spec_helper_lite'
+require 'rails_helper'
 
 # External dependencies
 module I18n; end

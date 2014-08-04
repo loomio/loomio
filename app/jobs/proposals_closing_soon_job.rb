@@ -13,9 +13,4 @@ class ProposalsClosingSoonJob
       Events::MotionClosingSoon.publish!(motion)
     end
   end
-
-  # TODO: install crashlog
-  # def error(job, exception)
-  #   CrashLog.notify(exception, job)
-  # end
 end

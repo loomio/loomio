@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe EmailPreferences do
   subject { EmailPreferences.new(user) }
@@ -70,27 +70,27 @@ describe EmailPreferences do
       it "does nothing if given nil" do
         m1 = create_membership_for_new_group("Foo", subscribed: true)
         subject.group_email_preferences = nil
-        m1.reload.subscribed_to_notification_emails.should be_true
+        m1.reload.subscribed_to_notification_emails.should be true
       end
 
       it "disables membership notification if id not included in array" do
         m1 = create_membership_for_new_group("Foo", subscribed: true)
         subject.group_email_preferences = ['9232']
-        m1.reload.subscribed_to_notification_emails.should be_false
+        m1.reload.subscribed_to_notification_emails.should be false
       end
 
       it "enables membership notification if id is included in array" do
         m1 = create_membership_for_new_group("Foo", subscribed: false)
         subject.group_email_preferences = [m1.id.to_s]
-        m1.reload.subscribed_to_notification_emails.should be_true
+        m1.reload.subscribed_to_notification_emails.should be true
       end
 
       it "both enables and disables as required" do
         m1 = create_membership_for_new_group("Foo", subscribed: false)
         m2 = create_membership_for_new_group("Bar", subscribed: true)
         subject.group_email_preferences = [m1.id.to_s]
-        m1.reload.subscribed_to_notification_emails.should be_true
-        m2.reload.subscribed_to_notification_emails.should be_false
+        m1.reload.subscribed_to_notification_emails.should be true
+        m2.reload.subscribed_to_notification_emails.should be false
       end
     end
   end

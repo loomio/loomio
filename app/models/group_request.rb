@@ -9,11 +9,11 @@ class GroupRequest < ActiveRecord::Base
 
   belongs_to :group
 
-  scope :starred, where(high_touch: true)
-  scope :not_starred, where(high_touch: false)
-  scope :not_setup, joins(:group).where("groups.setup_completed_at IS NULL")
-  scope :setup_completed, joins(:group).where('groups.setup_completed_at IS NOT NULL')
-  scope :zero_members, joins(:group).where(groups: {memberships_count: 0}) 
+  scope :starred, -> { where(high_touch: true) }
+  scope :not_starred, -> { where(high_touch: false) }
+  scope :not_setup, -> { joins(:group).where("groups.setup_completed_at IS NULL") }
+  scope :setup_completed, -> { joins(:group).where('groups.setup_completed_at IS NOT NULL') }
+  scope :zero_members, -> { joins(:group).where(groups: {memberships_count: 0}) }
 
   before_destroy :prevent_destroy_if_group_present
   before_validation :generate_token, on: :create

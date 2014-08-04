@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Events::MotionBlocked do
   let(:motion) { FactoryGirl.create :motion }

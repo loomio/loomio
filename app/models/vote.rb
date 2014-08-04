@@ -1,5 +1,4 @@
 class Vote < ActiveRecord::Base
-
   class UserCanVoteValidator < ActiveModel::EachValidator
     def validate_each(object, attribute, value)
       unless value && object.motion.can_be_voted_on_by?(User.find(value))
@@ -7,6 +6,7 @@ class Vote < ActiveRecord::Base
       end
     end
   end
+
   class ClosableValidator < ActiveModel::EachValidator
     def validate_each(object, attribute, value)
       if object.motion && (not object.motion.voting?)
@@ -17,7 +17,7 @@ class Vote < ActiveRecord::Base
   end
 
   POSITIONS = %w[yes abstain no block]
-  default_scope include: :previous_vote
+  default_scope { includes(:previous_vote) }
   belongs_to :motion, counter_cache: true, touch: :last_vote_at
   belongs_to :user
   belongs_to :previous_vote, class_name: 'Vote'  
@@ -29,6 +29,7 @@ class Vote < ActiveRecord::Base
   validates :user_id, user_can_vote: true
   validates :position, :statement, closable: true
 
+  include Translatable
   is_translatable on: :statement
 
   scope :for_user, lambda {|user_id| where(:user_id => user_id)}
