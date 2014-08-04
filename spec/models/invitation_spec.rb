@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Invitation do
   let(:admin_user){FactoryGirl.create(:admin_user)}
@@ -27,14 +27,14 @@ describe Invitation do
       before do
         @invitation.accepted_by = FactoryGirl.create(:user)
       end
-      it {should be_true}
+      it {should be true}
     end
 
     context 'accepted_by blank' do
       before do
         @invitation.accepted_by = nil
       end
-      it {should be_false}
+      it {should be false}
     end
   end
 
@@ -78,7 +78,7 @@ describe Invitation do
     end
 
     it 'is to join as an admin' do
-      @invitation.to_be_admin?.should be_true
+      @invitation.to_be_admin?.should be true
     end
   end
 
@@ -103,7 +103,7 @@ describe Invitation do
     end
 
     it 'is to join as an admin' do
-      @invitation.to_be_admin?.should be_false
+      @invitation.to_be_admin?.should be false
     end
   end
 end

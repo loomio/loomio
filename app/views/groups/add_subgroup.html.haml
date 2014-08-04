@@ -2,6 +2,6 @@
 .page-container
   .row
     .span6
-      = render '/groups/title', group: GroupDecorator.decorate(@subgroup.parent)
+      = render '/groups/title', group: @subgroup.parent
       %h2 New subgroup
       = render 'form', group: @subgroup, submit_text: t(:create_subgroup), form_title: t(:new_subgroup)

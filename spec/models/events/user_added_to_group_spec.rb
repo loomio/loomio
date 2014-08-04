@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Events::UserAddedToGroup do
   let(:membership){ mock_model(Membership) }

@@ -134,7 +134,7 @@ Given(/^I visit the request membership page for the group$/) do
 end
 
 Then(/^I should see a flash message telling me I have already requested membership$/) do
-  find('.alert-warning').should have_content(I18n.t(:'error.you_have_already_requested_membership'))
+  find('.alert').should have_content(I18n.t(:'error.you_have_already_requested_membership'))
 end
 
 Given(/^I have requested membership, been accepted to, and then left a group$/) do
@@ -181,7 +181,7 @@ Then(/^I should see a field error telling me I have already requested membership
 end
 
 Then(/^I should see a flash message telling me I am already a member of the group$/) do
-  find('.alert-warning').should have_content(I18n.t(:'error.you_are_already_a_member_of_this_group'))
+  find('.alert').should have_content(I18n.t(:'error.you_are_already_a_member_of_this_group'))
 end
 
 

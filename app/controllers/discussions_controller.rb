@@ -75,10 +75,10 @@ class DiscussionsController < GroupBaseController
   end
 
   def show
-    @group = GroupDecorator.new(@discussion.group)
+    @group = @discussion.group
 
     if params[:proposal]
-      @motion = @discussion.motions.find(params[:proposal])
+      @motion = @discussion.motions.find_by_key!(params[:proposal])
     else
       @motion = @discussion.most_recent_motion
     end
@@ -131,7 +131,7 @@ class DiscussionsController < GroupBaseController
     else
       @motion = Motion.new
       @motion.discussion = @discussion
-      @group = GroupDecorator.new(@discussion.group)
+      @group = @discussion.group
       render 'motions/new'
     end
   end
@@ -146,7 +146,7 @@ class DiscussionsController < GroupBaseController
   def preview_version
     # assign live item if no version_id is passed
     if params[:version_id].present?
-      version = Version.find(params[:version_id])
+      version = PaperTrail::Version.find(params[:version_id])
       @discussion = version.reify
     end
     @originator = User.find @discussion.originator.to_i
@@ -156,7 +156,7 @@ class DiscussionsController < GroupBaseController
   end
 
   def update_version
-    @version = Version.find(params[:version_id])
+    @version = PaperTrail::Version.find(params[:version_id])
     @version.reify.save!
     redirect_to @version.reify()
   end

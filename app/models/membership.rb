@@ -14,7 +14,7 @@ class Membership < ActiveRecord::Base
   scope :published, lambda { where(archived_at: nil) }
 
   scope :for_group, lambda {|group| where(group_id: group)}
-  scope :admin, where(admin: true)
+  scope :admin, -> { where(admin: true) }
 
   delegate :name, :email, to: :user, prefix: :user
   delegate :parent, to: :group, prefix: :group, allow_nil: true

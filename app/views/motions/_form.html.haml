@@ -24,8 +24,8 @@
           'data-title' => t(:close_proposal),
           'data-body' => t(:confirm_close_proposal),
           'data-confirm-path' => close_motion_path(@motion),
-          'data-method-type' => 'put',
+          'data-method-type' => 'patch',
           class: 'btn confirm-dialog',
           id: 'close-voting'
-    %script{src: localisation_datetime_input_translations_path, charset: 'UTF-8'}
+    %script{src: localisation_datetime_input_translations_path(authenticity_token: form_authenticity_token), charset: 'UTF-8'}
 

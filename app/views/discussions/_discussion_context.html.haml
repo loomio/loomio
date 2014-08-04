@@ -16,8 +16,6 @@
   .span3.right-context
     .helper-text.discussion-description-helper-text.hidden
       =render "application/hint", text: t(:"hint.context"), anchor: 'starting-an-engaging-discussion'
-      / - if can?(:invite_people, @group)
-      /   = icon_button(href: new_discussion_invitation_path(@discussion), text: t(:invite_people), icon: '/assets/member-18.png', id: 'invite-new-members', class: 'btn-grey')
     .discussion-additional-info
       = t("discussion_context.started_html",
           when: time_ago_in_words(@discussion.created_at),

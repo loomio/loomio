@@ -54,14 +54,6 @@ $ ->
     placement: "right",
     title: "Here's where you read up to last time"
 
-  $(".jump-to-add-comment").tooltip
-    placement: "top",
-    title: "Jump to add comment"
-
-  $(".jump-to-latest-activity").tooltip
-    placement: "top",
-    title: "Jump to latest unread activity"
-
 # moving discussion
 warn_if_moving_discussion_to_private_group = ->
   $('.move-discussion-form .warn-move-will-make-private').hide()

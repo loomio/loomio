@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe GroupsController do
   let(:group) { create :group }
@@ -70,16 +70,6 @@ describe GroupsController do
           response.should redirect_to '/dashboard'
         end
       end
-    end
-  end
-
-  describe "viewing an archived group" do
-    render_views
-    before { group.archive! }
-
-    it "should render the page not found template" do
-      get :show, :id => group.key
-      response.should render_template('application/display_error', message: I18n.t('error.group_private_or_not_found'))
     end
   end
 end

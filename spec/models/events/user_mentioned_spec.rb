@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Events::UserMentioned do
   let(:comment){ mock_model(Comment)}

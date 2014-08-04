@@ -28,16 +28,16 @@ Loomio::Application.routes.draw do
                                     omniauth_callbacks: 'users/omniauth_callbacks' }
 
 
-  match "/contacts/:importer/callback" => "users/contacts#callback"
+  get "/contacts/:importer/callback" => "users/contacts#callback"
 
   namespace :inbox do
     get   '/', action: 'index'
     get   'size'
     get   'preferences'
-    put   'update_preferences'
-    match 'mark_as_read'
-    match 'mark_all_as_read/:id', action: 'mark_all_as_read', as: :mark_all_as_read
-    match 'unfollow'
+    patch   'update_preferences'
+    match 'mark_as_read', via: [:get, :post]
+    match 'mark_all_as_read/:id', action: 'mark_all_as_read', as: :mark_all_as_read, via: [:get, :post]
+    match 'unfollow', via: [:get, :post]
   end
 
   resources :group_requests, only: [:create, :new] do
@@ -65,7 +65,7 @@ Loomio::Application.routes.draw do
     resources :invitations, only: [:new, :destroy]
 
     scope module: :groups do
-      resources :memberships, only: [:index, :destroy, :new, :create] do
+      resources :memberships, only: [:index, :edit, :destroy, :new, :create] do
         member do
          post :make_admin
          post :remove_admin
@@ -80,15 +80,14 @@ Loomio::Application.routes.draw do
       end
 
       resources :membership_requests, only: [:create, :new]
-      get :membership_requests,  to: 'manage_membership_requests#index', as: 'membership_requests'
+      get :membership_requests,  to: 'manage_membership_requests#index', as: 'manage_membership_requests'
     end
   end
 
   scope module: :groups, path: 'g', slug: slug_regex do
-    get    ':id(/:slug)', action: 'show', as: :group
-    put    ':id(/:slug)', action: 'update'
+    get    ':id(/:slug)', action: 'show' #, as: :group
+    patch    ':id(/:slug)', action: 'update'
     delete ':id(/:slug)', action: 'destroy'
-
     post 'archive/:id',  action: 'archive', as: :archive_group
   end
 
@@ -103,7 +102,7 @@ Loomio::Application.routes.draw do
 
   constraints(GroupSubdomainConstraint) do
     get '/' => 'groups#show'
-    put '/' => 'groups#update'
+    patch '/' => 'groups#update'
   end
 
   delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel', as: :cancel_membership_request
@@ -112,16 +111,15 @@ Loomio::Application.routes.draw do
     resources :votes, only: [:new, :create, :update]
     member do
       get :history
-      put :close
-      put :create_outcome
-      post :update_outcome
-      put :edit_close_date
+      patch :close
+      patch :create_outcome
+      post  :update_outcome
     end
   end
 
   scope module: :motions, path: 'm', slug: slug_regex do
     get    ':id(/:slug)', action: 'show', as: :motion
-    put    ':id(/:slug)', action: 'update'
+    patch  ':id(/:slug)', action: 'update'
     delete ':id(/:slug)', action: 'destroy'
   end
 
@@ -140,8 +138,8 @@ Loomio::Application.routes.draw do
   end
 
   scope module: :discussions, path: 'd', slug: slug_regex do
-    get    ':id(/:slug)', action: 'show',    as: :discussion
-    put    ':id(/:slug)', action: 'update'
+    get    ':id(/:slug)', action: 'show' #,    as: :discussion
+    patch  ':id(/:slug)', action: 'update'
     delete ':id(/:slug)', action: 'destroy'
 
     post ':id/preview_version/(:version_id)', action: 'preview_version', as: 'preview_version_discussion'
@@ -173,28 +171,28 @@ Loomio::Application.routes.draw do
     member do
       put :set_avatar_kind
       post :upload_new_avatar
+      post :dismiss_system_notice
     end
   end
 
   scope module: :users do
-
+    match '/profile',          action: 'profile', as: :profile, via: [:get, :post]
     get 'import_contacts' => 'contacts#import'
     get 'autocomplete_contacts' => 'contacts#autocomplete'
 
-    match '/profile',          action: 'profile', as: :profile
     scope module: :email_preferences do
-      get '/email_preferences', action: 'edit',   as: :email_preferences
-      put '/email_preferences', action: 'update', as: :update_email_preferences
-      get '/mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
+      get   '/email_preferences', action: 'edit',   as: :email_preferences
+      put   '/email_preferences', action: 'update', as: :update_email_preferences
+      get   '/mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
     end
   end
 
   scope module: :users, path: 'u' do
     get ':id(/:slug)', action: 'show',    slug: slug_regex, as: :user
-    put ':id(/:slug)', action: 'update',  slug: slug_regex
+    patch ':id(/:slug)', action: 'update',  slug: slug_regex
   end
 
-  match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
+  match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement', via: [:get, :post]
   post '/translate/:model/:id', to: 'translations#create', as: :translate
 
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
@@ -223,14 +221,14 @@ Loomio::Application.routes.draw do
   end
 
   constraints(GroupSubdomainConstraint) do
-    match '/about' => redirect('https://www.loomio.org/about')
-    match '/privacy' => redirect('https://www.loomio.org/privacy')
-    match '/purpose' => redirect('https://www.loomio.org/purpose')
-    match '/services' => redirect('https://www.loomio.org/services')
-    match '/terms_of_service' => redirect('https://www.loomio.org/terms_of_service')
-    match '/third_parties' => redirect('https://www.loomio.org/third_parties')
-    match '/try_it' => redirect('https://www.loomio.org/try_it')
-    match '/wallets' => redirect('https://www.loomio.org/wallets')
+    get '/about' => redirect('https://www.loomio.org/about')
+    get '/privacy' => redirect('https://www.loomio.org/privacy')
+    get '/purpose' => redirect('https://www.loomio.org/purpose')
+    get '/services' => redirect('https://www.loomio.org/services')
+    get '/terms_of_service' => redirect('https://www.loomio.org/terms_of_service')
+    get '/third_parties' => redirect('https://www.loomio.org/third_parties')
+    get '/try_it' => redirect('https://www.loomio.org/try_it')
+    get '/wallets' => redirect('https://www.loomio.org/wallets')
   end
 
   scope controller: 'help' do
@@ -238,10 +236,10 @@ Loomio::Application.routes.draw do
   end
 
   get '/detect_locale' => 'detect_locale#show'
-  match '/detect_video_locale' => 'detect_locale#video', as: :detect_video_locale
+  get '/detect_video_locale' => 'detect_locale#video', as: :detect_video_locale
 
   resources :contact_messages, only: [:new, :create]
-  match 'contact(/:destination)', to: 'contact_messages#new'
+  get 'contact(/:destination)', to: 'contact_messages#new'
 
   #redirect from wall to new group signup
   namespace :group_requests do
@@ -251,7 +249,7 @@ Loomio::Application.routes.draw do
   end
 
   #redirect old invites
-  match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
+  get "/groups/:id/invitations/:token" => "group_requests#start_new_group"
 
   #redirect old pages:
   get '/we_the_people' => redirect('/')
@@ -267,7 +265,7 @@ Loomio::Application.routes.draw do
     get 'get*involved' => redirect('/about')
     get 'privacy'      => redirect('/privacy_policy')
     get 'about'        => redirect('/about#about-us')
-    match 'contact'    => 'contact_messages#new'
+    match 'contact'    => 'contact_messages#new', via: [:get, :post]
   end
 
   get '/get*involved'       => redirect('/purpose#how-it-works')

@@ -8,5 +8,5 @@ When(/^I enable the beta feature "(.*?)"$/) do |arg1|
 end
 
 Then(/^the group should have "(.*?)" beta feature$/) do |arg1|
-  @group.beta_feature_enabled?('discussion_iframe').should be_true
+  @group.beta_feature_enabled?('discussion_iframe').should be true
 end
