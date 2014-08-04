@@ -17,11 +17,11 @@ describe MoveDiscussionService do
 
     context "user is admin" do
       before { source_group.admins << user }
-      it {should be_true}
+      it {should be true}
     end
 
     context "user is not admin" do
-      it {should be_false}
+      it {should be false}
     end
   end
 
@@ -30,11 +30,11 @@ describe MoveDiscussionService do
 
     context "user is member" do
       before { destination_group.members << user }
-      it {should be_true}
+      it {should be true}
     end
 
     context "user is not member" do
-      it {should be_false}
+      it {should be false}
     end
   end
 
@@ -53,18 +53,18 @@ describe MoveDiscussionService do
       before do
         @mover.stub(:user_is_admin_of_source?).and_return(false)
       end
-      it {should be_false}
+      it {should be false}
     end
 
     context "user is not member of destination" do
       before do
         @mover.stub(:user_is_member_of_destination?).and_return(false)
       end
-      it {should be_false}
+      it {should be false}
     end
 
     context "all conditions are true" do
-      it {should be_true}
+      it {should be true}
     end
   end
 

@@ -41,27 +41,27 @@ class User < ActiveRecord::Base
 
   has_many :contacts
   has_many :admin_memberships,
-           conditions: 'memberships.admin = TRUE AND memberships.is_suspended = FALSE',
+           -> { where('memberships.admin = ? AND memberships.is_suspended = ?', true, false) },
            class_name: 'Membership',
            dependent: :destroy
 
   has_many :adminable_groups,
+           -> { where( archived_at: nil) },
            through: :admin_memberships,
            class_name: 'Group',
-           conditions: {archived_at: nil},
            source: :group
 
   has_many :memberships,
-           conditions: {is_suspended: false},
+           -> { where is_suspended: false },
            dependent: :destroy
 
   has_many :membership_requests,
            foreign_key: 'requestor_id'
 
   has_many :groups,
-           through: :memberships,
-           conditions: { archived_at: nil }
-
+           -> { where archived_at: nil },
+           through: :memberships
+           
   has_many :discussions,
            through: :groups
 
@@ -103,12 +103,12 @@ class User < ActiveRecord::Base
 
   before_create :set_default_avatar_kind
 
-  scope :active, where(deleted_at: nil)
-  scope :inactive, where("deleted_at IS NOT NULL")
-  scope :subscribed_to_missed_yesterday_email, where(subscribed_to_missed_yesterday_email: true)
-  scope :sorted_by_name, order("lower(name)")
-  scope :admins, where(is_admin: true)
-  scope :coordinators, joins(:memberships).where('memberships.admin = ?', true).group('users.id')
+  scope :active, -> { where(deleted_at: nil) }
+  scope :inactive, -> { where("deleted_at IS NOT NULL") }
+  scope :subscribed_to_missed_yesterday_email, -> { where(subscribed_to_missed_yesterday_email: true) }
+  scope :sorted_by_name, -> { order("lower(name)") }
+  scope :admins, -> { where(is_admin: true) }
+  scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
@@ -137,7 +137,7 @@ class User < ActiveRecord::Base
   end
 
   def inbox_groups
-    groups.where('memberships.inbox_position is not null').order(:inbox_position)
+    groups.where('memberships.inbox_position is not null').order('memberships.inbox_position')
   end
 
   def groups_discussions_can_be_started_in
@@ -209,14 +209,9 @@ class User < ActiveRecord::Base
       update_all(:viewed_at => Time.now)
   end
 
-  def self.loomio_helper_bot
-    helper_bot = User.find_or_create_by_email('contact@loom.io')
-    unless helper_bot.persisted?
-      helper_bot.name = "Loomio Helper Bot"
-      helper_bot.password = SecureRandom.hex
-      helper_bot.save
-    end
-    helper_bot
+  def self.loomio_helper_bot(password: nil)
+    where(email: 'contact@loom.io').first ||
+    create!(email: 'contact@loom.io', name: 'Loomio Helper Bot', password: password || SecureRandom.hex)
   end
 
   def self.helper_bots
@@ -224,7 +219,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_email(email)
-    User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
+    User.where('lower(email) = ?', email.downcase).first
   end
 
   def subgroups

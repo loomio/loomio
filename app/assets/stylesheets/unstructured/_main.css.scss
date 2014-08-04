@@ -195,7 +195,7 @@ ul, ol, li {
 }
 
 .loading {
-  background: url(ajax-loader.gif) no-repeat;
+  background: image-url('ajax-loader.gif') no-repeat;
   background-position: 300px 200px;
   line-height: 33.5em;
   text-indent: -9999px;

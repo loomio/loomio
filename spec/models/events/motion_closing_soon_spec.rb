@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Events::MotionClosingSoon do
   let(:motion) { mock_model(Motion, discussion: mock_model(Discussion)) }

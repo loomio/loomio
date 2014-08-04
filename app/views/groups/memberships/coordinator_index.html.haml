@@ -3,10 +3,10 @@
     = render '/groups/title', group: @group
     %h1= t :members
   .span3#button-container
-    = icon_button(href: new_group_invitation_path(@group), text: t(:invite_people), icon: '/assets/member-18.png', id: 'invite-new-members', class: 'btn-grey')
+    = icon_button(href: new_group_invitation_path(@group), text: t(:invite_people), icon: 'member-18.png', id: 'invite-new-members', class: 'btn-grey')
     #email-members-modal.modal.hidden
       = render "groups/email_members", :group => @group
-    = icon_button "data-toggle" => "modal", href: "#email-members-modal", text: t(:email_group_members), icon: '/assets/email.png', class: 'btn-grey'
+    = icon_button "data-toggle" => "modal", href: "#email-members-modal", text: t(:email_group_members), icon: 'email.png', class: 'btn-grey'
 
 
 %table.memberships.table.table-striped

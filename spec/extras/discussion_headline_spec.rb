@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 require_relative '../../extras/discussion_headline'
 include ActionView::Helpers::SanitizeHelper
 

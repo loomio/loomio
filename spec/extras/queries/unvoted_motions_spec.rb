@@ -1,10 +1,10 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Queries::UnvotedMotions do
   let(:user) { create(:user) }
-  let(:discussion) { create_discussion }
+  let(:discussion) { create :discussion }
   let(:motion) { create(:motion, author: user, discussion: discussion) }
-  let(:group) { motion.group }
+  let(:group) { discussion.group }
 
   describe ".for(user, group)" do
     context 'there is an open motion in the group' do

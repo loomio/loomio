@@ -4,20 +4,21 @@ class Discussion < ActiveRecord::Base
   paginates_per PER_PAGE
 
   include ReadableUnguessableUrls
+  include Translatable
 
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil, is_deleted: false) }
 
-  scope :active_since, lambda {|time| where('last_activity_at > ?', time)}
-  scope :last_comment_after, lambda {|time| where('last_comment_at > ?', time)}
-  scope :order_by_latest_comment, order('last_comment_at DESC')
+  scope :active_since, ->(time) { where('last_activity_at > ?', time)}
+  scope :last_comment_after, ->(time) { where('last_comment_at > ?', time)}
+  scope :order_by_latest_comment, -> { order('last_comment_at DESC') }
 
-  scope :public, where(private: false)
-  scope :private, where(private: true)
-  scope :with_motions, where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL)")
-  scope :without_open_motions, where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND motions.closed_at IS NULL)")
-  scope :with_open_motions, joins(:motions).merge(Motion.voting)
-  scope :joined_to_current_motion, joins('LEFT OUTER JOIN motions ON motions.discussion_id = discussions.id AND motions.closed_at IS NULL')
+  scope :visible_to_public, -> { published.where(private: false) }
+  scope :not_visible_to_public, -> { where(private: true) }
+  scope :with_motions, -> { where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL)") }
+  scope :without_open_motions, -> { where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND motions.closed_at IS NULL)") }
+  scope :with_open_motions, -> { joins(:motions).merge(Motion.voting) }
+  scope :joined_to_current_motion, -> { joins('LEFT OUTER JOIN motions ON motions.discussion_id = discussions.id AND motions.closed_at IS NULL') }
 
   scope :not_by_helper_bot, -> { where('author_id NOT IN (?)', User.helper_bots.pluck(:id)) }
 
@@ -34,14 +35,14 @@ class Discussion < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
   has_many :motions, :dependent => :destroy
-  has_one :current_motion, class_name: 'Motion', conditions: {'motions.closed_at' => nil}, order: 'motions.closed_at asc'
+  has_one :current_motion, -> { where('motions.closed_at IS NULL').order('motions.closed_at ASC') }, class_name: 'Motion'
   has_one :most_recent_motion, class_name: 'Motion', order: 'motions.created_at desc'
   has_many :votes, through: :motions
   has_many :comments, dependent: :destroy
   has_many :comment_likes, through: :comments, source: :comment_votes
-  has_many :commenters, through: :comments, source: :user, uniq: true
-  has_many :events, as: :eventable, dependent: :destroy, include: :user
-  has_many :items, class_name: 'Event', include: [{eventable: :user}, :user], order: 'created_at ASC'
+  has_many :commenters, -> { uniq }, through: :comments, source: :user
+  has_many :events, -> { includes :user }, as: :eventable, dependent: :destroy
+  has_many :items, -> { includes(eventable: :user).order(created_at: :asc) }, class_name: 'Event'
   has_many :discussion_readers
 
   include PgSearch

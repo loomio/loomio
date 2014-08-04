@@ -23,7 +23,7 @@ class GroupsController < GroupBaseController
 
   #for new subgroup form
   def add_subgroup
-    parent = Group.published.find(params[:id])
+    parent = Group.published.find_by(key: params[:id])
     @subgroup = Group.new(parent: parent,
                           is_visible_to_public: parent.is_visible_to_public,
                           discussion_privacy_options: parent.discussion_privacy_options)
@@ -80,7 +80,6 @@ class GroupsController < GroupBaseController
   end
 
   def show
-    @group = GroupDecorator.new @group
     @discussion = Discussion.new(group_id: @group.id)
 
     @discussions = GroupDiscussionsViewer.for(group: @group, user: current_user).

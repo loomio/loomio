@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 ENV['REPLY_HOSTNAME'] = 'replyhostname.com'
 

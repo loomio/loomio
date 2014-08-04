@@ -1,9 +1,9 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe VotesController do
   let(:user) { create :user }
   let(:group) { create :group }
-  let(:discussion) { create_discussion group: group }
+  let(:discussion) { create :discussion, group: group }
   let(:motion) { create :motion, discussion: discussion }
 
   before :each do

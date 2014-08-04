@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Membership do
   let(:membership) { Membership.new }
@@ -9,16 +9,6 @@ describe Membership do
   it { should have_many(:events).dependent(:destroy) }
 
   describe "validation" do
-    it "must have a group" do
-      membership.valid?
-      membership.should have(1).errors_on(:group)
-    end
-
-    it "must have a user" do
-      membership.valid?
-      membership.should have(1).errors_on(:user)
-    end
-
     it "cannot have duplicate memberships" do
       create(:membership, :user => user, :group => group)
       membership.user = user
@@ -69,7 +59,7 @@ describe Membership do
 
     context do
       before do
-        discussion = create_discussion group: group
+        discussion = create :discussion,  group: group
         @motion = create(:motion, discussion: discussion)
         vote = Vote.new
         vote.user = user
@@ -85,7 +75,7 @@ describe Membership do
 
       it "does not remove user's open votes for other groups" do
         group2 = create(:group)
-        discussion2 = create_discussion group: group2
+        discussion2 = create :discussion, group: group2
         motion2 = create(:motion, author: user, discussion: discussion2 )
         vote = Vote.new
         vote.user = user
