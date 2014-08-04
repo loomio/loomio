@@ -1,3 +1,34 @@
+.motion-graph {
+
+  .pie {
+    height: 350px;
+    width: 350px;
+    float: left;
+    margin: 1em;
+  }
+
+  .legend {
+    font-size: .85em;
+    float: left;
+    width: 100px;
+    padding-left: 3em;
+    padding-top: 6em;
+    color: $mid-grey;
+
+    .item {
+      text-transform:capitalize;
+      line-height: 1;
+      padding-left: .5em;
+      margin-bottom: .5em;
+    }
+
+    .yes { border-left: 1em solid #90D490 }
+    .no { border-left: 1em solid #D49090   }
+    .abstain { border-left: 1em solid #F0BB67}
+    .block { border-left: 1em solid #dd0000 }
+  }
+}
+
 .motion-preview {
   a {
     display: block;
@@ -84,7 +115,9 @@
     font-weight: normal;
   }
 
-  .motion .pie { height: 250px; }
+  .motion-graph {
+    width: 100%;
+  }
 
   .motion-admin-buttons {
     margin-left: 0;

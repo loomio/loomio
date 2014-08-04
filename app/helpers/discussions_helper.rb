@@ -44,7 +44,7 @@ module DiscussionsHelper
 
   def xml_item(activity)
     case activity.kind.to_sym
-    when :new_comment then CommentDecorator.new activity.eventable
+    when :new_comment then activity.eventable
     else                   DiscussionItem.new activity
     end
   end

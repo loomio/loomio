@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Events::MotionClosedByUser do
   let(:discussion) { mock_model(Discussion) }

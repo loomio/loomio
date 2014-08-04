@@ -6,7 +6,7 @@ atom_feed do |feed|
   @activity.each do |event|
     item = xml_item(event)
     feed.entry(event, url: discussion_url(@discussion)) do |entry|
-      entry.title item.title
+      entry.title t(:comment_by, comment_author: item.author.name)
       entry.content item.body, type: :text
       entry.published item.created_at
       entry.author { |author| author.name item.author.name }

@@ -1,8 +1,11 @@
 = render '/application/mailer_doctype'
 %html
-  %p=@message_body
+  %head
+    = stylesheet_link_tag 'email'
+  %body
+    %p=@message_body
 
-  %p
-    =t(:"invitation.link_help", group: @invitation.invitable_name)
-    %br
-    = link_to "#{invitation_url(@invitation)}", invitation_url(@invitation)
+    %p
+      =t(:"invitation.link_help", group: @invitation.invitable_name)
+      %br
+      = link_to "#{invitation_url(@invitation)}", invitation_url(@invitation)

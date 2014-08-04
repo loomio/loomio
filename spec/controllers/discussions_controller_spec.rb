@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe DiscussionsController do
   let(:app_controller) { controller }
@@ -21,33 +21,6 @@ describe DiscussionsController do
       Discussion.stub_chain(:published, :find_by_key!).with(discussion.key).and_return(discussion)
       User.stub(:find).and_return(user)
       Group.stub(:find).with(group.key).and_return(group)
-    end
-
-    describe "creating a discussion" do
-      before do
-        discussion.stub(:add_comment)
-        discussion.stub(:save).and_return(true)
-        discussion.stub(:group_members_without_discussion_author).and_return([])
-        DiscussionMailer.stub(:spam_new_discussion_created)
-        user.stub_chain(:ability, :authorize!).and_return(true)
-        @discussion_hash = { group_id: group.id, title: "Shinney", private: "true" }
-        app_controller.stub(:current_user).and_return(user)
-      end
-
-      it "does not send email by default" do
-        DiscussionMailer.should_not_receive(:spam_new_discussion_created)
-        get :create, discussion: @discussion_hash
-      end
-
-      it "displays flash success message" do
-        get :create, discussion: @discussion_hash
-        flash[:success].should match(I18n.t("success.discussion_created"))
-      end
-
-      it "redirects to discussion" do
-        get :create, discussion: @discussion_hash
-        response.should redirect_to discussion_url(Discussion.last)
-      end
     end
 
     context "deleting a discussion" do
@@ -126,8 +99,8 @@ describe DiscussionsController do
     describe "change version" do
       before do
         @version_item = mock_model(Discussion, :title => 'most important discussion', :description => "new version", key: 'abc1234', :save! => true)
-        @version = mock_model(Version, :item => discussion)
-        Version.stub(:find).and_return(@version)
+        @version = mock_model(PaperTrail::Version, :item => discussion)
+        PaperTrail::Version.stub(:find).and_return(@version)
         @version.stub(:reify).and_return(@version_item)
         @version.stub(:save!)
       end

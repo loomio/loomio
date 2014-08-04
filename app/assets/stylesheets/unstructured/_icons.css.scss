@@ -6,7 +6,7 @@
   vertical-align: text-bottom;
   width: 18px;
   &.dot-icon {
-    background-image:url('/assets/dot-18.png');
+    background-image: image-url('dot-18.png');
     float: right;
   }
   &:hover { color: $dark-grey; }
@@ -20,14 +20,14 @@
   height: 18px;
   padding-right: 0.4em;
   width: 18px;
-  &.discussion-icon { background-image:url('/assets/discussion-18.png'); }
-  &.loomio-icon { background-image:url('/assets/topic-18.png'); }
-  &.position-abstain-icon { background-image:url('/assets/hand-abstain-18.png'); }
-  &.position-block-icon { background-image:url('/assets/hand-block-18.png'); }
-  &.position-no-icon { background-image:url('/assets/hand-no-18.png'); }
-  &.position-unvoted-icon { background-image:url('/assets/questionmark-18.png'); }
-  &.position-yes-icon { background-image:url('/assets/hand-yes-18.png'); }
-  &.proposal-icon { background-image:url('/assets/pie-18.png'); }
+  &.discussion-icon { background-image: image-url('discussion-18.png'); }
+  &.loomio-icon { background-image: image-url('topic-18.png'); }
+  &.position-abstain-icon { background-image: image-url('hand-abstain-18.png'); }
+  &.position-block-icon { background-image: image-url('hand-block-18.png'); }
+  &.position-no-icon { background-image: image-url('hand-no-18.png'); }
+  &.position-unvoted-icon { background-image: image-url('questionmark-18.png'); }
+  &.position-yes-icon { background-image: image-url('hand-yes-18.png'); }
+  &.proposal-icon { background-image: image-url('pie-18.png'); }
 }
 
 .large-icon{
@@ -36,14 +36,14 @@
   height: 24px;
   margin: 6px 13px 0 13px;
   width: 24px;
-  &.discussion-icon.enabled-icon  { background-image:url('/assets/discussion-24.png'); }
-  &.discussion-icon.disabled-icon  { background-image:url('/assets/discussion-light-24.png'); }
-  &.decision-icon { background-image:url('/assets/pie-24.png'); }
+  &.discussion-icon.enabled-icon  { background-image: image-url('discussion-24.png'); }
+  &.discussion-icon.disabled-icon  { background-image: image-url('discussion-light-24.png'); }
+  &.decision-icon { background-image: image-url('pie-24.png'); }
   &.pie-icon {
-    background-image: url("pie-light-24.png");
+    background-image: image-url("pie-light-24.png");
     height: 26px;
   }
-  &.topic-icon { background-image:url('/assets/topic-24.png'); }
+  &.topic-icon { background-image: image-url('topic-24.png'); }
 }
 
 .header-bar-icon{
@@ -52,7 +52,7 @@
 }
 
 .attachment-icon {
-  background-image:url('/assets/paperclip20.png');
+  background-image: image-url('paperclip20.png');
   background-repeat: no-repeat;
   height: 22px;
   margin: 0;
@@ -62,7 +62,7 @@
 }
 
 .sort-by-alphabet-icon {
-  background-image:url('/assets/sort-by-alphabet.jpg');
+  background-image: image-url('sort-by-alphabet.jpg');
   background-repeat: no-repeat;
   display: inline-block;
   height: 18px;
@@ -70,7 +70,7 @@
 }
 
 .sort-by-alphabet-icon-desc {
-  background-image:url('/assets/sort-by-alphabet-desc.jpg');
+  background-image: image-url('sort-by-alphabet-desc.jpg');
   background-repeat: no-repeat;
   display: inline-block;
   height: 18px;
