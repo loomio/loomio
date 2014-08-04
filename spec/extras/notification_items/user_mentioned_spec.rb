@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe NotificationItems::UserMentioned do
   let(:notification) { double(eventable: eventable) }

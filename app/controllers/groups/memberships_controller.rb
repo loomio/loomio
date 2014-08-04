@@ -4,7 +4,7 @@ class Groups::MembershipsController < GroupBaseController
   rescue_from CanCan::AccessDenied, with: :only_group_admin
 
   def index
-    @group = GroupDecorator.new(Group.find(params[:group_id]))
+    load_group
     @memberships = @group.memberships.joins(:user).includes(:user).order('name')
     if current_user.is_group_admin?(@group)
       render "coordinator_index"

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Groups::MembershipsController do
   context 'signed in user' do
@@ -17,7 +17,7 @@ describe Groups::MembershipsController do
 
       it "can edit a user" do
         membership = @group.add_member!(@new_user)
-        get :edit, :id => membership.id
+        get :edit, :group_id => @group.id, :id => membership.id
       end
 
       it 'can add an admin' do
@@ -25,7 +25,7 @@ describe Groups::MembershipsController do
         post :make_admin, :id => @membership.id, group_id: @group.id
         flash[:notice].should =~ /#{@new_user.name} has been made a coordinator./
         response.should redirect_to(group_memberships_path(@group))
-        assigns(:membership).admin.should be_true
+        assigns(:membership).admin.should be true
         @group.admins.should include(@new_user)
       end
 
@@ -33,7 +33,7 @@ describe Groups::MembershipsController do
         before do
           @group.add_member!(@new_user)
           @membership = @group.memberships.find_by_user_id(@new_user.id)
-          delete :destroy, :id => @membership.id
+          delete :destroy, :id => @membership.id, :group_id => @group.id
         end
         it { flash[:notice].should =~ /Member removed/ }
         it { response.should redirect_to group_memberships_path(@membership.group)}
@@ -45,7 +45,7 @@ describe Groups::MembershipsController do
         post :remove_admin, :id => @membership.id, group_id: @group.id
         flash[:notice].should =~ /#{@membership.user_name}'s coordinator rights have been removed./
         response.should redirect_to(group_memberships_path(@group))
-        assigns(:membership).admin.should be_false
+        assigns(:membership).admin.should be false
         @group.admins.should_not include(@new_user)
       end
     end

@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Motion do
-  let(:discussion) { create_discussion }
+  let(:discussion) { create :discussion }
 
   describe "#unique_votes" do
     it "returns only the most recent votes of a user for a motion" do
@@ -20,16 +20,16 @@ describe Motion do
   describe "#voting?" do
     it "returns true if motion is open" do
       @motion = create :motion, discussion: discussion
-      @motion.voting?.should be_true
-      @motion.closed?.should be_false
+      @motion.voting?.should be true
+      @motion.closed?.should be false
     end
   end
 
   describe "#closed?" do
     it "returns true if motion is open" do
       @motion = create(:motion, closed_at: 2.days.ago, discussion: discussion)
-      @motion.closed?.should be_true
-      @motion.voting?.should be_false
+      @motion.closed?.should be true
+      @motion.voting?.should be false
     end
   end
 
@@ -62,7 +62,7 @@ describe Motion do
       @user = create :user
       @group = create :group
       @group.add_admin! @user
-      @discussion = create_discussion :group => @group
+      @discussion = create :discussion, group: @group
     end
     it "fires new_motion event if a motion is created successfully" do
       motion = build(:motion, discussion: discussion)
@@ -76,7 +76,7 @@ describe Motion do
       @user1 = create(:user)
       @user2 = create(:user)
       @user3 = create(:user)
-      @discussion = create_discussion
+      @discussion = create :discussion
       @motion = create(:motion, discussion: @discussion)
       @motion.group.add_member!(@user2)
       @motion.group.add_member!(@user3)
@@ -139,10 +139,10 @@ describe Motion do
         @vote.save!
         @motion.reload
       end
-      it {should be_true}
+      it {should be true}
     end
     context 'user has not voted' do
-      it {should be_false}
+      it {should be false}
     end
   end
 
@@ -161,7 +161,7 @@ describe Motion do
   describe 'update_vote_counts!' do
     context 'there is 1 vote for each position' do
       let(:group){FactoryGirl.create :group}
-      let(:discussion){create_discussion group: group}
+      let(:discussion){create :discussion, group: group}
       let(:motion){FactoryGirl.create :motion, discussion: discussion}
 
       before do

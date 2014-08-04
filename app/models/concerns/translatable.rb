@@ -1,6 +1,4 @@
 module Translatable
-  # Requires base class to define:
-  # => language
   extend ActiveSupport::Concern
 
   included do
@@ -8,9 +6,8 @@ module Translatable
     before_update :clear_translations, if: :translatable_fields_modified?
   end
 
-  protected
-  
   def translatable_fields_modified?
+    return unless TranslationService.available?
     (self.changed.map(&:to_sym) & self.class.translatable_fields).any?
   end
 
@@ -18,4 +15,14 @@ module Translatable
     self.translations.delete_all
   end
 
+  module ClassMethods
+    def is_translatable(on: [], load_via: :find, id_field: :id, language_field: :locale)
+
+      define_singleton_method :translatable_fields, -> { Array on }
+      define_singleton_method :get_instance, ->(id) { send load_via, id }
+
+      define_method :id_field, -> { send id_field }
+      define_method :language_field, -> { send language_field }
+    end
+  end
 end

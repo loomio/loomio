@@ -1,6 +1,5 @@
 When(/^I create a theme$/) do
   visit new_theme_path
-  save_and_open_page
   fill_in :theme_name, with: 'Party theme'
   fill_in :theme_style, with: '.themed-element: { text-decoration: "confetti" };'
   click_on 'Create Theme'

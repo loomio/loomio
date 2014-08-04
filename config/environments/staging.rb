@@ -8,8 +8,7 @@ Loomio::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = false
+  config.static_cache_control = 'public, max-age=31536000'
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
@@ -21,12 +20,12 @@ Loomio::Application.configure do
   config.assets.digest = true
   config.assets.enabled = true
 
+  config.eager_load = true
+  
+  config.action_dispatch.x_sendfile_header = nil
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
-
-  # Specifies the header that your server uses for sending files
-  config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
-  # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
@@ -51,10 +50,6 @@ Loomio::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-
-  config.action_mailer.default_url_options = {
-    host: ENV['CANONICAL_HOST'] || 'staging.loomio.org',
-  }
 
   if ENV['ENABLE_STAGING_EMAILS']
     # Send emails using SMTP service

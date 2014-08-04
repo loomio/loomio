@@ -15,7 +15,7 @@
 
   .group-content
     %ul.discussion-list
-      -group.discussions.published.public.not_by_helper_bot.preload(:most_recent_motion).last(5).each do |discussion|
+      -group.discussions.visible_to_public.not_by_helper_bot.preload(:most_recent_motion).last(5).each do |discussion|
         - if discussion.most_recent_motion.present?
           = render 'motion_line_item', item: discussion.most_recent_motion
         -else

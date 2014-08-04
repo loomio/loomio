@@ -24,8 +24,7 @@ module Loomio
     config.autoload_paths += %W(#{config.root}/extras
                                 #{config.root}/app/forms
                                 #{config.root}/app/jobs
-                                #{config.root}/app/services
-                                #{config.root}/app/models/concerns)
+                                #{config.root}/app/services)
     config.autoload_paths += Dir["#{config.root}/app/forms/**/"]
 
     # Only load the plugins named here, in the order given (default is alphabetical).
@@ -64,17 +63,18 @@ module Loomio
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    # Whitelist attributes so we never have to spend 2 days securing this app ;-)
-    #config.active_record.whitelist_attributes = true
+    config.action_mailer.default_url_options = {
+      host: ENV['CANONICAL_HOST']
+    }
+
+    config.roadie.url_options = {host: ENV['CANONICAL_HOST']}
 
     # required for heroku
     config.assets.initialize_on_precompile = false
 
-    # Enable roadie (email css-->inline style gem)
-    config.roadie.enable = true
-
     config.assets.precompile += %w(ie8.js active_admin.css active_admin.js active_admin/print.css marketing.js marketing.css campaigns.js third_party.css unstructured.css missed_yesterday.css email.css)
 
     config.quiet_assets = true
+    config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
   end
 end

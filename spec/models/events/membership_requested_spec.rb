@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Events::MembershipRequested do
   let(:admin) {mock_model(User, email: 'hello@kitty.com', name_and_email: 'Kitty <hello@kitty.com>')}

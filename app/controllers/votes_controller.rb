@@ -38,6 +38,6 @@ class VotesController < BaseController
     end
 
     def motion
-      @motion ||= Motion.find(params[:motion_id])
+      @motion ||= Motion.friendly.find params[:motion_id]
     end
 end

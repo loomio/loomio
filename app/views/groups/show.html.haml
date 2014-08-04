@@ -48,7 +48,7 @@
   .span3
     #group-actions
       - if can? :create, @discussion
-        = icon_button(href: new_discussion_path(:group_id => @group.id), text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
+        = icon_button(href: new_discussion_path(:group_id => @group.id), text: t(:start_a_discussion), icon: 'topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
       - if can?(:add_members, @group)
         = render 'invite_button', group: @group, discussion: @discussion
       = render 'options_dropdown', group: @group
