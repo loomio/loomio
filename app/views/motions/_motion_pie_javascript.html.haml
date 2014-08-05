@@ -1,30 +1,35 @@
 :javascript
   var ctx = document.getElementById("graph_#{motion.id}").getContext("2d");
 
-  var votes = #{motion.votes_for_graph.to_json}
-  var data = [
-    {
-      value: votes[0][1],
-      color: "#90D490",
-      label: "Yes"
-    },
-    {
-      value: votes[1][1],
-      color: "#F0BB67",
-      label: "Abstain"
-    },
-    {
-      value: votes[2][1],
-      color:"#D49090",
-      label: "No"
-    },
-    {
-      value: votes[3][1],
-      color: "#dd0000",
-      label: "Block"
-    }
-  ]
-
+  var votes = #{motion.vote_counts.to_json}
+  var total_votes = #{motion.total_votes_count}
+  if (total_votes == 0){
+    var data = [
+      {
+        value: 1,
+        color: "#cccccc"
+      }
+    ]
+  }else{
+    var data = [
+      {
+        value: votes.yes,
+        color: "#90D490"
+      },
+      {
+        value: votes.abstain,
+        color: "#F0BB67"
+      },
+      {
+        value: votes.no,
+        color:"#D49090"
+      },
+      {
+        value: votes.block,
+        color: "#dd0000"
+      }
+    ]
+  }
   var options = { showTooltips: false, animation: false }
 
   var myPieChart = new Chart(ctx).Pie(data, options);
