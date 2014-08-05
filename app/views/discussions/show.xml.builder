@@ -4,8 +4,8 @@ atom_feed do |feed|
   feed.updated(@activity.min_by(&:created_at).created_at) if @activity.any?
 	
   @activity.each do |event|
+    next if event.eventable.nil?
     item = xml_item(event)
-    next unless item.present?
     feed.entry(event, url: discussion_url(@discussion)) do |entry|
       entry.title t(:comment_by, comment_author: item.author_name)
       entry.content item.body, type: :text
