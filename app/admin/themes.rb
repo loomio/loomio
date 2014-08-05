@@ -2,7 +2,7 @@ ActiveAdmin.register Theme do
   index do
     column :name
     column :updated_at
-    default_actions
+    actions
   end
 
   show do |theme|
