@@ -58,7 +58,7 @@ describe DiscussionsController do
           post :move, id: d.key, destination_group_id: g.key
 
           expect(d.group).to eq g
-          expect(d.private).to be_true
+          expect(d.private).to be true
         end
       end
 
@@ -75,7 +75,7 @@ describe DiscussionsController do
           post :move, id: d.key, destination_group_id: g.key
 
           expect(d.group).to eq g
-          expect(d.private).to be_false
+          expect(d.private).to be false
         end
       end
 
