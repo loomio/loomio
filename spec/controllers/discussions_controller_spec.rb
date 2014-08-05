@@ -107,7 +107,7 @@ describe DiscussionsController do
         end
         it "displays a proposal already exists message" do
           get :new_proposal, id: discussion.key
-          flash[:notice].should =~ /A current proposal already exists for this disscussion./
+          flash[:notice].should =~ /A current proposal already exists for this discussion./
         end
       end
       context "where no current proposal exists" do
