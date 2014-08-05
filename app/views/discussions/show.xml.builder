@@ -5,6 +5,7 @@ atom_feed do |feed|
 	
   @activity.each do |event|
     item = xml_item(event)
+    next unless item.present?
     feed.entry(event, url: discussion_url(@discussion)) do |entry|
       entry.title t(:comment_by, comment_author: item.author_name)
       entry.content item.body, type: :text
