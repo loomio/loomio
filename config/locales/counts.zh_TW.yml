@@ -2,7 +2,7 @@
 # This file is to get around a bug with Transifex:
 # http://support.transifex.com/customer/en/portal/questions/1388258-working-with-pluralization-in-rails-yaml-transifex?new=1388258
 #
-zh_TW:
+zh-TW:
   datetime:
     distance_in_words:
       less_than_x_seconds:
