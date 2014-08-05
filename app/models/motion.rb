@@ -112,6 +112,7 @@ class Motion < ActiveRecord::Base
     votes_count
   end
 
+  # depricated
   def votes_for_graph
     votes_for_graph = []
     vote_counts.each do |k, v|
