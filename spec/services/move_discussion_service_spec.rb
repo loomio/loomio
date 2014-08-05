@@ -73,6 +73,8 @@ describe MoveDiscussionService do
       @mover.should_receive(:valid?).and_return(true)
       discussion.stub(:group=){ discussion.stub(:group).and_return destination_group}
       discussion.stub(:public?).and_return(true)
+      discussion.stub(:private=) { discussion.stub(:private).and_return false }
+      destination_group.stub(:public_discussions_only?).and_return(true)
       destination_group.stub(:private_discussions_only?).and_return(false)
     end
 
