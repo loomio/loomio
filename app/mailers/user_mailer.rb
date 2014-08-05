@@ -79,7 +79,8 @@ class UserMailer < BaseMailer
     @inviter = inviter
     @group = group
     @message = message
-    locale = locale_fallback(user.locale, inviter.locale)
+
+    locale = locale_fallback(user.try(:locale), inviter.try(:locale))
     I18n.with_locale(locale) do
       mail to: user.email,
            from: from_user_via_loomio(inviter),
