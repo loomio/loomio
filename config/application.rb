@@ -45,7 +45,7 @@ module Loomio
 
     # fallback_tree = LocalesHelper::FALLBACKS   # can this be done without loading the app in the wrong order?
 
-    fallback_tree = { :pt => :'pt-BR',
+    fallback_tree = { :'pt-PT' => :'pt-BR',
                       :zh => :'zh-TW',
                       :ca => :es    }
 
