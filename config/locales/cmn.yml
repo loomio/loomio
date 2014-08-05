@@ -24,7 +24,7 @@ cmn:
     group_request_already_accepted: "对不起！这个邀请无效或者已经接受过"
     proposal_already_exists: "已经有一个开放式的建议在此讨论"
   alert:
-    duplicate_email: "%{which email}已经在这个团队里了？"
+    duplicate_email: "%{which_email}已经在这个团队里了？"
   notice:
     member_removed: "删除成员。"
     membership_request_canceled: "会员请求取消"
@@ -120,7 +120,7 @@ cmn:
   edit_group_settings: "编辑团队设置"
   leave_group: "离开团队"
   confirm_leave_hidden_group: "你确定你要离开%{which_group}吗？同时你也会被其他小组给移除的"
-  confirm_leave_group: "你确定你想要离开%（那个团队）？"
+  confirm_leave_group: "你确定你想要离开 %{which_group}？"
   deactivate_group: "取消团队"
   confirm_deactivate_group: "等等！！！你确定你想要取消%{which_group}？那你就再也查不到这个组了，但是，如果你想要重新激活这个组，你可以通过发送邮件到contact@loomio.org"
   invited_users: "邀请成员"

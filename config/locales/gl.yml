@@ -22,8 +22,6 @@ gl:
     message: "<p>O asunto vai no alto da páxina, co contexto xusto debaixo.</p><p>O debate vai na esquerda, as decisións aparecen na dereita. Se pensas que o grupo está preparado para tomar unha decisión, podes facer unha proposta para que o grupo a teña en consideración.</p>"
   group_helper_text:
     message: "<p>Esta é a <strong>páxina do grupo</strong>. Na esquerda está a lista de todos os debates neste grupo.</p><p>Se queres que o grupo debata outro asunto, inicia un novo debate.</p>"
-  dashboard_helper_text:
-    message: "<p>A páxina de inicio amosa os debates correntes nos grupos nos que esteas rexistrado.</p><p>Podes comezar un debate sobre un asunto novo premendo no botón \"Comezar un debate\".</p>"
   setup_step_1: "Bótalle un ollo ao debate de exemplo"
   setup_step_2: "Iniciar o teu primeiro debate"
   start_a_discussion: "Comezar un debate"
