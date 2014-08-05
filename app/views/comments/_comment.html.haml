@@ -26,7 +26,7 @@
       -if comment.attachments_count > 0
         -comment.attachments.each do |a|
           .comment-attachment
-            %img{src: asset_path('paperclip22.png'), class: 'paperclip'}
+            = image_tag 'paperclip22.png', class: 'paperclip'
             =link_to a.truncated_filename(38), a.location, { target: 'blank' }
             -fileSizeText = (a.filesize >= 1048576) ? (a.filesize/1048576.0).round(1).to_s + ' MB' : (a.filesize/1024.0).round.to_s + ' kB';
             ="("+fileSizeText+")"
