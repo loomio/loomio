@@ -87,6 +87,10 @@ class DiscussionsController < GroupBaseController
       @motion_reader = MotionReader.for(user: current_user_or_visitor, motion: @motion)
     end
 
+    if can?(:move, @discussion)
+      @destination_groups = current_user_or_visitor.groups.order(:name).uniq.reject { |g| g.id == @group.id }
+    end
+
     @discussion_reader = DiscussionReader.for(user: current_user_or_visitor, discussion: @discussion)
 
     @closed_motions = @discussion.closed_motions

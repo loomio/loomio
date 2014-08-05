@@ -3,6 +3,7 @@ require 'rails_helper'
 describe DiscussionsController do
   let(:app_controller) { controller }
   let(:user) { FactoryGirl.create(:user) }
+  let(:other_user) { FactoryGirl.create(:user) }
   let(:motion) { mock_model(Motion).as_null_object }
   let(:group) { create :group }
   let(:discussion) { stub_model(Discussion,
@@ -40,6 +41,62 @@ describe DiscussionsController do
         delete :destroy, id: discussion.key
         flash[:success].should =~ /Discussion successfully deleted/
       end
+    end
+
+    describe "moving a discussion" do
+
+      context "from a public group to a private group" do 
+        it "makes the discussion private" do 
+          g = FactoryGirl.create :group, discussion_privacy_options: 'private_only'
+          d = FactoryGirl.create :discussion, private: false
+          Group.stub(:find).with(g.key).and_return(g)
+          Discussion.stub_chain(:published, :find_by_key!).with(d.key).and_return(d)
+          
+          d.group.stub(:admins).and_return([user])
+          g.stub(:members).and_return([user])
+
+          post :move, id: d.key, destination_group_id: g.key
+
+          expect(d.group).to eq g
+          expect(d.private).to be_true
+        end
+      end
+
+      context "from a private group to a public group" do
+        it "makes the discussion public" do 
+          g = FactoryGirl.create :group, discussion_privacy_options: 'public_only'
+          d = FactoryGirl.create :discussion, private: true
+          Group.stub(:find).with(g.key).and_return(g)
+          Discussion.stub_chain(:published, :find_by_key!).with(d.key).and_return(d)
+          
+          d.group.stub(:admins).and_return([user])
+          g.stub(:members).and_return([user])
+
+          post :move, id: d.key, destination_group_id: g.key
+
+          expect(d.group).to eq g
+          expect(d.private).to be_false
+        end
+      end
+
+      context "to a group with a different user as admin" do 
+        it "successfully moves the discussion" do 
+          g1 = FactoryGirl.create :group
+          g2 = FactoryGirl.create :group
+          d = FactoryGirl.create :discussion, group: g1
+          Group.stub(:find).with(g2.key).and_return(g2)
+          Discussion.stub_chain(:published, :find_by_key!).with(d.key).and_return(d)
+          
+          g1.stub(:admins).and_return([user])
+          g2.stub(:admins).and_return([other_user])
+          g2.stub(:members).and_return([user])
+
+          post :move, id: d.key, destination_group_id: g2.key
+
+          expect(d.reload.group).to eq g2
+        end
+      end
+
     end
 
     describe "creating a new proposal" do
