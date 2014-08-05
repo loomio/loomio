@@ -2,7 +2,7 @@ class DiscussionItem
   include Routing
   attr_accessor :item
 
-  delegate :icon, :position, :group, :actor, :header, :body, :time, :to => :item
+  delegate :icon, :position, :group, :actor, :header, :body, :time, :author_name, :to => :item
 
   alias :author :actor
   alias :created_at :time
