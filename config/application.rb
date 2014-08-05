@@ -67,7 +67,7 @@ module Loomio
       host: ENV['CANONICAL_HOST']
     }
 
-    config.roadie.url_options = {host: ENV['CANONICAL_HOST']}
+    #config.roadie.url_options = {host: ENV['CANONICAL_HOST']}
 
     # required for heroku
     config.assets.initialize_on_precompile = false
