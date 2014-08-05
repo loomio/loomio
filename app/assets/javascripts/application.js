@@ -41,3 +41,4 @@
 //= require attachments
 //= require subscriptions
 //= require explore
+//= require locale_selector

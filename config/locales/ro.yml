@@ -1,6 +1,4 @@
 ro:
-  explore:
-    go_to_group: "Du-te la %{group_name}"
   try_it:
     header: "Incearca Loomio"
     start_a_group: "Formeaza un grup pentru a initia decizii in comunitatea ta."
@@ -119,6 +117,10 @@ ro:
     proposal_deleted: "Propunerea a fost stearsa."
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: "un secunde"
+        few: "%{count} secunde"
+        other: "%{count} secunde"
       x_seconds:
         one: "1 secunda"
         few: "cateva secunde"
@@ -216,7 +218,6 @@ ro:
     message: "<p> Aceasta este <strong>pagina grupului</strong>. In partea dreapta este o lista a tuturor discutiilor din acest grup.</p><p> Cand vrei ca grupul sa discute alta tema, porneste o noua discutie.</p>"
   dashboard_helper_text:
     header: "Bine ai venit pe pagina de start"
-    message: "<p> Pagina de start arata toate discutiile curente in grupurile al caror membru esti.</p><p>Poti incepe o noua discutie pe o tema noua apasand butonul \"Incepe o noua discutie.\"</p>"
   prompt_visitor_to_authenticate:
     header: "Autentifica-te sau alatura-te grupului pentru a participa"
     body: "Daca esti membru al acestui grup va trebui sa te autentifici pentru a participa."
@@ -229,7 +230,6 @@ ro:
     category: "Categoria"
     confirm_all_discussions_will_be_made_private_message: "Daca vei continua, orice discutie publica va deveni privata."
     confirm_all_discussions_will_be_made_public_message: "Esti sigur? Daca continui orice discutie privata va deveni publica."
-    prompt_to_suggest_categories_html: "Daca doresti sa sugerezi o categorie noua, <a href='%{link}' target='_blank'>alatura-te acestei discutiia>."
     what_can_members_do: "Ce pot face membrii?"
     members_can:
       add_members: Invita si valideaza noi membrii
@@ -272,17 +272,10 @@ ro:
     c7: Adauga/invalideaza alti coordonatori
     c8: Sterge discutii
     c9: Sterge comentarii
-    members_can: "Membrii pot:"
     m1: Sa stearga propriile comentarii.
-    m2: sa editeze propriile comentarii, pana in momentul in care cineva le da o replica.
     m3: Sa editeze titlul si descrierea unei propuneri pe care au inceput-o pana in momentul cand cineva isi posteaza pozitia.
     m4: Sa editeze data inchiderii propunerii propuse de ei, pana cand aceasta se inchide.
-    m5: Sa editeze titlul si contextul discutiei propuse de ei oricand.
     m6: Sa formeze un subgrup, devenind coordonatorul acestuia.
-    optionally: "Optional, coordonatorii pot permite membrilor sa:"
-    o1: Invite si sa valideze noi membrii.
-    o2: Sa editeze propriile comentarii oricand.
-    o3: Sa editeze titlul sau contextul oricarei discutii in grup.
   group_privacy:
     visible_to:
       public: Grup listat public.

@@ -1,0 +1,64 @@
+pt_PT:
+  errors:
+    messages:
+      email: "Endereço de email inválido"
+  error:
+    cant_join_subgroup: "Não pode afiliar-se a um sub-grupo se não for membro do grupo principal."
+    cant_modify_position: "Esta proposta foi fechada."
+    cant_state_position: "Esta proposta foi fechada."
+    discussion_not_created: "Não foi possível criar a discussão."
+    group_not_archived: "Não foi possível arquivar o Grupo."
+    invalid_close_date: "Data de encerramento inválida, por favor verifique a sua validade."
+    image_upload_fail: "Não foi possível enviar a imagem. Verifique se a imagem tem tamanho inferior a 1 MB e se é um ficheiro .jpeg, .png, ou .gif."
+    permission_to_invite: "Não tem permissão para convidar novos membros."
+    position_not_updated: "Não foi possível atualizar posição."
+    settings_not_updated: "As suas configurações não foram atualizadas."
+  alert:
+    duplicate_email: "%{which_email} já pertence ao grupo."
+  notice:
+    member_removed: "Membro retirado."
+    membership_request_canceled: "Pedido de adesão cancelado."
+    membership_request_ignored: "Pedido de adesão ignorado."
+    settings_updated: "As suas configurações foram actualizadas."
+    you_have_left_group: "Saiu %{which_group}."
+  warning:
+    membership_request_already_ignored: "Pedido de adesão já tinha sido ignorado."
+    membership_request_already_canceled: "Pedido de adesão já foi cancelado."
+    position_not_submitted: "A sua posição não pode ser submetida."
+    proposal_not_created: "Proposta não pode ser criada."
+  success:
+    added_to_group: "Foi adicionado a %{which_group}."
+    close_date_changed: "Data de encerramento alterada com sucesso."
+    discussion_created: "Discussão criada com sucesso."
+    discussion_deleted: "Discussão apagada com sucesso."
+    emails_sending: "A enviar correio electrónico."
+    group_archived: "Grupo arquivado com sucesso."
+    group_created: "Grupo criado com sucesso."
+    members_added: "Membros adicionados ao grupo."
+    position_submitted: "Posição submetida."
+    position_updated: "Posição actualizada."
+    proposal_created: "Proposta criada com sucesso."
+    proposal_deleted: "Proposta apagada."
+  datetime:
+    distance_in_words:
+      x_seconds:
+        one: "1 segundo"
+        other: "%{count} segundos"
+      less_than_x_minutes:
+        one: "1 minuto"
+        other: "%{count} minutos"
+      x_minutes:
+        one: "1 minuto"
+        other: "%{count} minutos"
+      about_x_hours:
+        one: "1 hora"
+        other: "%{count} horas"
+      x_days:
+        one: "1 dia"
+        other: "%{count} dias"
+      about_x_months:
+        one: "1 mês"
+        other: "%{count} meses"
+      x_months:
+        one: "1 mês"
+        other: "%{count} meses"

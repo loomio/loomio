@@ -127,10 +127,6 @@ module DiscussionsHelper
                  <p>#{private_description}</p>".html_safe, true ]
   end
 
-  def current_language
-    AppTranslation.language I18n.locale.to_s
-  end
-
   def privacy_language(discussion)
     discussion.private? ? "private" : "public"
   end

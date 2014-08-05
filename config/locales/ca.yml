@@ -182,7 +182,6 @@ ca:
     message: "<p>Aquesta és la pàgina del grup <strong></strong>. A l'esquerra hi ha una llista amb totes les discussions en aquest grup.</p><p>Quan vulguis que el grup discuteixi un altre tema, comença una nova discussió.</p>"
   dashboard_helper_text:
     header: "Benvingut a la teva pàgina d'inici"
-    message: "<p>La pàgina d'inici mostra les discussions actuals de tots els grups dels que formes part.<p><p>Pots començar una discussió sobre un nou tema clicant el botó \"Comença una discussió\".</p>"
   prompt_visitor_to_authenticate:
     header: "Inicia sessió o uneix-te a un grup per a participar"
   setup_steps_title: "Propers passos:"

@@ -1,6 +1,6 @@
 sr:
   explore:
-    go_to_group: "Idi u %{group_name}"
+    header: "Istraži javne grupe"
   try_it:
     header: "Probaj Lumio"
     start_a_group: "Započni grupu da bi donosio odluke u svojoj zajednici."
@@ -67,6 +67,7 @@ sr:
   alert:
     duplicate_email: "%{which_email} je već u grupi."
   notice:
+    new_contacts_imported: "To je u redu! Možeš napisati imena u polje ispod i mi ćemo predložiti adrese ePošte."
     admin_rights_removed: "Koordinatorska prava su iklonjena za korisnički nalog %{which_user}."
     user_added: "%{user_email_or_name} je dodat u grupu."
     new_user_added: "%{user_email_or_name} će biti dodat/a u grupu nakon što napravi Lumio nalog."
@@ -232,7 +233,7 @@ sr:
     message: "<p>Ovo je <strong>stranica grupe</strong>. Na levoj strani je spisak svih diskusija u ovoj grupi.</p> <p>Kada želite da krupa diskutuje o drugoj temi, pokrenite novu diskusiju.</p>"
   dashboard_helper_text:
     header: "Dobrodošli na svoju Početnu stranu"
-    message: "<p>Početna stranica Vam predstavlja sve trenutne diskusije iz grupa čiji ste član.</p> <p>Možete da započnete diskusiju na novu temu tako što ćete škljocnuti na ikonu \"Pokreni diskusiju\".</p >"
+    message: "<p>Početna strana Vam prikazuje sve trenutne diskusije iz svih grupa u kojima ste član.</p><p>Možete početi diskusiju o novoj temi klikom na \"Počni diskusiju\" dugme.</p>"
   prompt_visitor_to_authenticate:
     header: "Prijavi se ili pridruži grupi da učestvuješ"
     body: "Ako ste član ove grupe, morate se prijaviti da učestvujete."
@@ -245,12 +246,15 @@ sr:
     category: "Kategorija"
     confirm_all_discussions_will_be_made_private_message: "Ako nastavite, sve javne diskusije postaće privatne."
     confirm_all_discussions_will_be_made_public_message: "Da li ste sigurni? Ako nastavite, sve privatne diskusije postaće javne."
-    prompt_to_suggest_categories_html: "Ako želite predložiti nekoliko novih kategorija, <a href='%{link}' target='_blank'>pridružite se ovoj diskusiji</a>."
     what_can_members_do: "Šta članovi mogu raditi?"
     members_can:
       add_members: Pozovite i odobrite nove članove
       edit_comments: Menjaj njihove komentare u svakom momentu
       edit_discussions: Izmeni kontekst bilo koje diskusije u grupi
+      start_discussions: Počni diskusije
+      raise_motions: Istaknite predloge
+      vote: Glasajte o predlozima
+      create_subgroups: Napravite podgrupe
     motions_can_be_edited: Izmeni njihove predloge nakon što je glasanje počelo
     visible_to:
       label: Ko može naći ovu grupu?
@@ -288,17 +292,19 @@ sr:
     c7: Dodaj/ukloni druge koordinatore.
     c8: Obriši diskusije.
     c9: Obriši komentare.
-    members_can: "Članovi mogu:"
+    c10: Napravite podgrupe.
+    c11: Počnite diskusije.
+    c12: Istaknite predloge.
+    c13: Glasajte o predlozima.
+    members_defaults: "Sa predefinisanim postavkama, članovi mogu:"
     m1: Brisati svoje komentare.
-    m2: Menjati njihove komentare, sve dok neko ne odgovori.
     m3: Izmeni naslov i opsis predloga koji su pokrenuli, dok neko nije izneo svoj stav.
     m4: Izmeni datum zatvranja predloga koji je pokrenut, dok nije zatvoren.
-    m5: Izmeni naslov i kontekst diskusije koju su pokrenuli u bilo koje vreme.
+    m5: Menjati naslov i kontekst svake diskusije.
     m6: Pokreni podgrupu, u kojoj će biti koordinatori nje.
-    optionally: "Opciono, koordinatori mogu odobriti članovima grupe da:"
-    o1: Pozovi i odobri novi članove.
-    o2: Menjati svoje komentare u bilo koje vreme.
-    o3: Menjati naslov ili kontekst bilo koje diskusije u grupi.
+    m7: Menjati svoje komentare u bilo koje vreme.
+    m8: Isticati i pridružiti se predlozima.
+    optional_restrictions: "Opciono, koordinatori mogu odrediti bliže šta članovi mogu raditi."
   group_privacy:
     visible_to:
       public: Javno dostupna grupa.
@@ -410,6 +416,7 @@ sr:
   empty_decision_index: "Ova grupa nije donela nikakvu odluku još uvek."
   empty_discussion_list: "Nema aktivnosti u ovoj diskusiji još."
   go_to_add_comment_html: "Da dodate komentar, <a href='%{href}'>Idite na kraj diskusije</a>."
+  comment_by: "Komentar od %{comment_author}"
   discussion_list:
     empty:
       no_discussions: "Nema diskusija ni u jednoj od Vaših grupa."
@@ -691,6 +698,7 @@ sr:
     copy: "Ako neko nije dobio svoju pozivnicu, budite slobodni da kopirate pozivni link iznad i da ga prosledite lično primaocu."
     pending_invitations: 'Pozivi u toku'
     no_pending_invitations: "Ovde trenutno nema pozivnica na čekanju."
+    import_contacts_html: "Niste upamtili neku adresu ePošte? Uvezite svoje kontakte iz %{google_link} "
   search:
     description: "Ispod je lista diskusija i predloga koje imaju '%{query}' u svom naslovu ili opisu."
     header: "Rezultati pretrage za '%{query}'"
@@ -981,6 +989,7 @@ sr:
   time_until_close: "%{quantity_of_time} do zatvaranja"
   update: "Ažuriraj"
   facebook: "Facebook"
+  yahoo: "Yahoo"
   google: "Google"
   persona: "Osoba"
   common:
@@ -1044,6 +1053,7 @@ sr:
     email: "ePoruka"
     start_group: "Pokreni grupu!"
   group_categories:
+    all: "Sve"
     blank: "Nekategorizovano"
     economics: "Ekonomija"
     activist: "Aktivist"

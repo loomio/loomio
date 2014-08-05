@@ -1,6 +1,4 @@
 fr:
-  explore:
-    go_to_group: "Voir le groupe %{group_name}"
   try_it:
     header: "Essayez Loomio"
     start_a_group: "Commencez un groupe pour prendre des décisions dans votre communauté."
@@ -218,7 +216,6 @@ fr:
     message: "<p>Ceci est <strong>la page du groupe</strong>. Sur la gauche figure une liste des discussions du groupe.</p><p>Quand vous voulez discuter d'un nouveau sujet, démarrer une nouvelle discussion.</p>"
   dashboard_helper_text:
     header: "Bienvenue sur votre page d'accueil"
-    message: "<p>La page d'accueil vous présente toutes les discussions actuelles dans tous vos groupes.</p><p>Vous pouvez démarrer une nouvelle discussion sur un nouveau sujet en cliquant sur le bouton \"démarrer une discussion\".</p>"
   prompt_visitor_to_authenticate:
     header: "Connectez-vous ou rejoignez le groupe pour y participer"
     body: "Si vous êtes un membre de ce groupe, vous devrez vous connecter pour y participer."
@@ -231,7 +228,6 @@ fr:
     category: "Catégorie"
     confirm_all_discussions_will_be_made_private_message: "Si vous faites ceci, toutes les discussions publiques seront rendues privées."
     confirm_all_discussions_will_be_made_public_message: "Êtes-vous sûr ? Si vous faites ceci, toutes les discussions privées seront rendues publiques."
-    prompt_to_suggest_categories_html: "Si vous voulez suggérer de nouvelles catégories, <a href='%{link}' target='_blank'>rejoignez la discussion</a>."
     what_can_members_do: "Que peuvent faire les membres?"
     members_can:
       add_members: Inviter et approuver les nouveaux membres
@@ -274,17 +270,10 @@ fr:
     c7: Ajouter/enlever d'autres coordinateurs.
     c8: Supprimer des discussions.
     c9: Supprimer les commentaires.
-    members_can: "Les membres peuvent :"
     m1: Supprimer leurs propres commentaires.
-    m2: Modifier leurs propres commentaires, jusqu'à ce que quelqu'un réponde.
     m3: Modifier le titre et la description des propositions qu'ils lancent, jusqu'à ce que quelqu'un se positionne dessus.
     m4: Modifier la date de fin des propositions qu'ils lancent, jusqu'à ce qu'elles se terminent.
-    m5: Modifier le titre et le contexte des discussions qu'ils lancent à tout moment.
     m6: Démarrer un sous-groupe, dont ils deviennent le coordinateur.
-    optionally: "De manière facultative, les coordinateurs peuvent autoriser les membres du groupe à :"
-    o1: Inviter et accepter de nouveaux membres.
-    o2: Modifier leurs propres commentaires à tout moment.
-    o3: Modifier le titre et le contexte de n'importe quelle discussion dans le groupe.
   group_privacy:
     visible_to:
       public: Groupe public.

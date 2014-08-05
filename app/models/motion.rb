@@ -33,7 +33,7 @@ class Motion < ActiveRecord::Base
   delegate :members, :full_name, to: :group, prefix: :group
   delegate :email_new_motion?, to: :group, prefix: :group
   delegate :name_and_email, to: :user, prefix: :author
-  delegate :language, to: :user
+  delegate :locale, to: :user
   has_paper_trail only: [:name, :description, :closing_at]
 
   after_initialize :set_default_closing_at

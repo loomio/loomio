@@ -181,7 +181,6 @@ tr:
     message: "<p>Bu <strong>grup sayfası</strong>. Soldaki bu gruptaki tüm müzakerelerin bir listesidir.</p><p>Grubun başka bir konuyu tartışmasını istediğin, yeni bir müzakere başlatabilirsin.</p>"
   dashboard_helper_text:
     header: "Ana sayfana hoşgeldin"
-    message: "<p>Ana sayfa üyesi olduğun gruplardaki güncel müzakerelerin tümünü gösterir.</p><p>\"Bir müzakere başlat\" düğmesine tıklayarak yeni bir konu üzerinde bir müzakere başlatabilirsin.</p>"
   prompt_visitor_to_authenticate:
     header: "Katılımda bulunmak için oturum açın ya da gruba katılın"
   setup_steps_title: "Sonraki adımlar:"

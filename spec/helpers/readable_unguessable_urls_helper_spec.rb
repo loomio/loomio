@@ -50,17 +50,17 @@ describe ReadableUnguessableUrlsHelper do
 
       context "used within an email" do
         before { helper.stub(:request).and_return(nil) }
-        it{ should == "http://custom.example.com:3000" }
+        it{ should == "http://custom.example.com:3000/" }
       end
 
       context "used on default subdomain" do
         before { request.stub(:subdomain).and_return('www') }
-        it{ should == "http://custom.example.com" }
+        it{ should == "http://custom.example.com/" }
       end
 
       context "used on custom subdomain" do
         before { request.stub(:subdomain).and_return('custom') }
-        it{ should == "http://custom.example.com" }
+        it{ should == "http://custom.example.com/" }
       end
     end
 
@@ -115,7 +115,7 @@ describe ReadableUnguessableUrlsHelper do
 
       context "used on default subdomain" do
         before { request.stub(:subdomain).and_return('www') }
-        it{ should == "http://custom.example.com" }
+        it{ should == "http://custom.example.com/" }
       end
 
       context "used on custom subdomain" do
@@ -167,7 +167,7 @@ describe ReadableUnguessableUrlsHelper do
 
       context "used on default subdomain" do
         before { request.stub(:subdomain).and_return(nil) }
-        it{ should == "http://custom.example.com" }
+        it{ should == "http://custom.example.com/" }
       end
 
       context "used on custom subdomain" do

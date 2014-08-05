@@ -137,7 +137,6 @@ vi:
     message: "<p>Đây là <strong>trang của nhóm</strong>. Ở phía bên trái là danh sách tất cả các phần thảo luận trong nhóm này.</p><p>Khi bạn muốn cả nhóm thảo luận một vấn đề khác, hãy bắt đầu một phần thảo luận mới.</p>"
   dashboard_helper_text:
     header: "Chào mừng đến với Trang Chủ của bạn"
-    message: "<p>Trang chủ hiển thị các phần thảo luận hiện đang diễn ra trong tất cả các nhóm mà bạn đã tham gia vào.</p><p>Bạn có thể bắt đầu một phần thảo luận về một chủ đề mới bằng cách click vào nút “Bắt đầu một phần thảo luận”.</p>"
   setup_steps_title: "Các bước tiếp theo:"
   setup_step_1: "Thử dùng một thảo luận dạng mẫu"
   setup_step_2: "Bắt đầu phần thảo luận đầu tiên của bạn"

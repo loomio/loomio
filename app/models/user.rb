@@ -158,10 +158,6 @@ class User < ActiveRecord::Base
     @ability ||= Ability.new(self)
   end
 
-  def language
-    selected_locale || detected_locale
-  end
-
   delegate :can?, :cannot?, :to => :ability
 
   def voting_motions

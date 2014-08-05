@@ -82,6 +82,9 @@ mk:
     proposal_deleted: "Предлогот е избришан."
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: "1 секунда"
+        other: "%{count} секунди"
       x_seconds:
         one: "1 секунда"
         other: "%{count} секунди"
@@ -178,10 +181,6 @@ mk:
     c7: Додај/избриши други координатори.
     c8: Избриши дискусии.
     c9: Избриши коментари.
-    members_can: "Членовите можат:"
-    o1: Покани и одобри нови членови.
-    o2: Измени ги нивните сопствени коментари во секое време.
-    o3: Измени го насловот или контекстот на било која дискусија во групата.
   group_privacy:
     visible_to:
       members: Скриена група. Видлива само за членовите.
@@ -514,7 +513,7 @@ mk:
       subject: "%{who} те спомена во %{which} групата на Loomio"
     proposal_closed:
       intro: 'Твојот предлог "%{proposal_name}" е затворен.'
-      intro_html: 'Твојот предлог "%{proposoal_name}" е затворен.'
+      intro_html: 'Твојот предлог "%{proposal_name}" е затворен.'
       subject: "Предлогот е затворен - %{which}"
     proposal_outcome:
       subject: "Исход на предлогот"

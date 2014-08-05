@@ -16,7 +16,7 @@ module Translatable
   end
 
   module ClassMethods
-    def is_translatable(on: [], load_via: :find, id_field: :id, language_field: :language)
+    def is_translatable(on: [], load_via: :find, id_field: :id, language_field: :locale)
 
       define_singleton_method :translatable_fields, -> { Array on }
       define_singleton_method :get_instance, ->(id) { send load_via, id }

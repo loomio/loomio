@@ -1,6 +1,6 @@
 es:
   explore:
-    go_to_group: "Ir a %{group_name}"
+    header: "Explora grupos abiertos al público"
   try_it:
     header: "Prueba Loomio"
     start_a_group: "Inicia un grupo para tomar decisiones con tu propia comunidad."
@@ -67,6 +67,7 @@ es:
   alert:
     duplicate_email: "%{which_email} ya está en el grupo."
   notice:
+    new_contacts_imported: "¡Funcionó! Puedes escribir nombres en el campo de abajo y te sugeriremos la dirección email."
     admin_rights_removed: "Los derechos de %{which_user} como coordinador han sido removidos."
     user_added: "%{user_email_or_name} se ha añadido al grupo."
     new_user_added: "%{user_email_or_name} será añadido al grupo cuando cree una cuenta en Loomio."
@@ -79,6 +80,15 @@ es:
     you_have_left_group: "Has dejado %{which_group}."
     comment_deleted: "Comentario eliminado."
     invitations:
+      auto_added:
+        one: "1 miembro añadido"
+        other: "%{count} miembros adheridos"
+      existing_member:
+        one: "1 miembro en este grupo"
+        other: "%{count} miembros en este grupo"
+      sent:
+        one: "1 invitación enviada"
+        other: "%{count} invitaciones enviadas"
       auto_added_and_sent: "%{auto_added_text} y %{sent_text}"
   tooltip:
     cover_photo_upload: "Sube una nueva foto de portada"
@@ -119,6 +129,9 @@ es:
     proposal_deleted: "Propuesta eliminada."
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: "1 segundo"
+        other: "%{count} segundos"
       x_seconds:
         one: "1 segundo"
         other: "%{count} segundos"
@@ -206,7 +219,6 @@ es:
     message: "<p>Esta es la <strong> página del grupo</strong>. A la izquierda se encuentra la lista de todas las discusiones de este grupo.</p><p>Cuando quieras que el grupo discuta sobre otro tema, empieza una nueva discusión.</p>"
   dashboard_helper_text:
     header: "Bienvenido/a a tu página de inicio"
-    message: "<p>La página de inicio muestra todas las discusiones actuales de todos los grupos de los que eres miembro.</p><p>Puedes empezar una discusión haciendo click en el botón «Empezar discusión».</p>"
   prompt_visitor_to_authenticate:
     header: "Accede a tu cuenta o únete al grupo para participar"
     body: "Si eres miembro de este grupo, has de acceder a tu cuenta para participar"
@@ -219,12 +231,15 @@ es:
     category: "Categoría"
     confirm_all_discussions_will_be_made_private_message: "Si continúas, las discusiones públicas se harán privadas."
     confirm_all_discussions_will_be_made_public_message: "¿Estás seguro? Si continúas, las discusiones privadas se harán públicas."
-    prompt_to_suggest_categories_html: "Si quieres proponer alguna categoría nueva, <a href='%{link}' target='_blank'>entra en esta discusión</a>."
     what_can_members_do: "¿Qué pueden hacer los miembros?"
     members_can:
       add_members: Invitar y aprobar nuevos miembros
       edit_comments: Edita sus comentarios en cualquier momento
       edit_discussions: Edita el contexto de cualquier discusión del grupo
+      start_discussions: Empezar discusiones
+      raise_motions: Poner propuestas
+      vote: Votar en propuestas
+      create_subgroups: Crear subgrupos
     motions_can_be_edited: Edita las propuestas después de que la votación haya empezado
     visible_to:
       label: ¿Quien puede encontrar este grupo?
@@ -262,17 +277,19 @@ es:
     c7: Añadir/eliminar otros coordinadores.
     c8: Borrar discusión
     c9: Borrar comentarios.
-    members_can: "Los miembros pueden:"
+    c10: Crear subgrupos
+    c11: Empezar discusiones.
+    c12: Poner propuestas.
+    c13: Votar en propuestas.
+    members_defaults: "Con los ajustes por defecto, los miembros pueden:"
     m1: Elimina sus propios comentarios.
-    m2: Edita sus propios comentarios, hasta que alguien haya respondido.
     m3: Edita el título y la descripción de las propuestas que ellos empiezan, hasta que alguien haya determinado su postura.
     m4: Edita la fecha de cierre de las propuestas, hasta que acaben.
-    m5: Edita el título y el contexto de las discusiones que ellos empiezan en cualquier momento.
+    m5: Editar el título y contexto de cualquier discusión.
     m6: Empieza un subgrupo, del que te conviertes en coordinador.
-    optionally: "Opcionalmente, los coordinadores pueden permitir a los miembros del grupo:"
-    o1: Invitar y aprobar nuevos miembros.
-    o2: Editar sus propios comentarios en cualquier momento.
-    o3: Editar el título o el contexto de cualquier discusión del grupo.
+    m7: Editar sus propios comentarios en cualquier momento.
+    m8: Poner y participar en propuestas.
+    optional_restrictions: "Opcionalmente, los coordinadores pueden restringir lo que los miembros pueden hacer."
   group_privacy:
     visible_to:
       public: Hay una lista pública del grupo.
@@ -384,6 +401,7 @@ es:
   empty_decision_index: " Este grupo no ha tomado ninguna decisión todavía."
   empty_discussion_list: "Todavía no hay actividad en esta discusión."
   go_to_add_comment_html: "Para añadir un comentario,  <a href='%{href}'> ve al final de la discusión </a>."
+  comment_by: "Comentario de %{comment_author}"
   discussion_list:
     empty:
       no_discussions: "No hay discusiones en ninguno de tus grupos."
@@ -456,6 +474,9 @@ es:
       'no': "No estoy de acuerdo"
       abstain: "Me abstengo"
       block: "Bloqueo"
+  unable_to_vote:
+    permission_denied: "No tienes permiso para votar en esta propuesta."
+    motion_closed: "Esta propuesta ya se ha cerrado"
   edit_comment:
     comment_changes: "Comentar cambios"
     edit_comment: "Editar comentario"
@@ -644,6 +665,7 @@ es:
     copy: "Si alguien no ha recibido la invitación electrónica, no dudes en copiar el enlace de arriba y enviarlo personalmente."
     pending_invitations: 'Invitaciones pendientes'
     no_pending_invitations: "Actualmente, no hay invitaciones pendientes"
+    import_contacts_html: "¿No recuerdas un correo electrónico? Importa tus contactos desde %{google_link}"
   search:
     description: "A continuación se muestra una lista de las discusiones y propuestas que contienen «%{query}» en su título o descripción."
     header: "Buscar resultados «%{query}»"
@@ -703,6 +725,7 @@ es:
     header: "Preferencias de correo electrónico "
     daily_activity_summary: "Resumen de actividades diarias"
     daily_activity_subscription: "Enviadme la actividad diaria resumiendo lo que ha estado pasando en mis grupos"
+    missed_yesterday_subscription: "Enviadme \"Ayer en Loomio\" - la actividad que no he visto en las últimas 24 horas"
     global_notifications: "Notificaciones globales"
     proposal_closing_soon_subscription: "Avisadme 24 horas antes del cierre de una propuesta"
     mentions_subscription: "Enviadme un correo electrónico cuando alguien me mencione en un comentario"
@@ -909,6 +932,7 @@ es:
   translate_this_string: "Traducir a %{language}"
   failed_translation: "No se pudo completar la traducción"
   options: "Opciones"
+  rss_subscribe: "Suscribirme al feed"
   ok_got_it: "Bien, ¡lo tengo!"
   remove: "Eliminar"
   save: "Guardar"
@@ -926,6 +950,7 @@ es:
   time_until_close: "%{quantity_of_time} para cierre"
   update: "Actualizar"
   facebook: "Facebook"
+  yahoo: "Yahoo"
   google: "Google"
   persona: "Persona"
   common:
@@ -989,6 +1014,7 @@ es:
     email: "Correo electrónico"
     start_group: "Empieza un grupo!"
   group_categories:
+    all: "Todos/as"
     blank: "Sin categoría"
     economics: "Economía"
     activist: "Activista"
