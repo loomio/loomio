@@ -220,6 +220,8 @@ en:
   start_new_group_hint: "To start making decisions"
   find_a_group: "Find a group"
   find_a_group_hint: "To explore public groups"
+  search_for_group: "Search for a group..."
+  no_groups_found: "No groups found by that name!"
   no_group_header: "Welcome to Loomio Beta"
   empty_notifications: "You do not have any notifications yet."
   see_all_notifications: "See all notifications"
