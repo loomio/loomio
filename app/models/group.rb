@@ -66,11 +66,11 @@ class Group < ActiveRecord::Base
   scope :less_than_n_discussions, ->(count) { where('discussions_count < ?', count) }
 
   scope :no_active_discussions_since, ->(time) {
-    joins(:discussions).where('discussions.last_comment_at < ?', time) | where(discussions_count: 0) 
+    includes(:discussions).where('discussions.last_comment_at < ?', time) | where(discussions_count: 0) 
   }
 
   scope :active_discussions_since, ->(time) {
-    joins(:discussions).where('discussions.last_comment_at > ?', time)
+    includes(:discussions).where('discussions.last_comment_at > ?', time)
   }
 
   scope :created_earlier_than, lambda {|time| where('groups.created_at < ?', time) }
