@@ -35,6 +35,10 @@ class Comment < ActiveRecord::Base
   alias_method :author, :user
   alias_method :author=, :user=
 
+  def author_name
+    author.try(:name)
+  end
+
   def author_id
     user_id
   end

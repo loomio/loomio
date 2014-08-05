@@ -42,10 +42,10 @@ module DiscussionsHelper
     end
   end
 
-  def xml_item(activity)
-    case activity.kind.to_sym
-    when :new_comment then activity.eventable
-    else                   DiscussionItem.new activity
+  def xml_item(event)
+    case event.kind.to_sym
+    when :new_comment then event.eventable
+    else                   DiscussionItem.new event
     end
   end
 
