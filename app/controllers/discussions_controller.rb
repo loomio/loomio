@@ -1,6 +1,7 @@
 class DiscussionsController < GroupBaseController
   include DiscussionsHelper
 
+  before_filter :we_dont_serve_images_here_google_bot
   before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :load_resource_by_key, except: [:new, :create, :index, :update_version]
   authorize_resource :except => [:new, :create, :index, :add_comment]
@@ -170,6 +171,12 @@ class DiscussionsController < GroupBaseController
   end
 
   private
+
+  def we_dont_serve_images_here_google_bot
+    if request.format == :png
+      render :text => 'Not Found', :status => '404'
+    end
+  end
 
   def load_resource_by_key
     @discussion ||= Discussion.published.find_by_key!(params[:id])
