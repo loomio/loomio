@@ -33,6 +33,15 @@ When(/^I mark the email as read$/) do
   )
 end
 
+When(/^I read the summary email with images enabled$/) do
+  visit mark_summary_email_as_read_path(
+    time_start: @time_start.utc.to_i,
+    time_finish: 30.minutes.ago.utc.to_i,
+    unsubscribe_token: @user.unsubscribe_token,
+    format: 'gif'
+  )
+end
+
 Then(/^the discussion should be marked as read when the email was generated$/) do
   @motion.reload
   @discussion.reload
