@@ -1011,7 +1011,6 @@ en:
     view_proposal: "View this proposal on Loomio"
     create_discussion:
       intro: "%{who} started a new discussion in %{which_group}:"
-      subject: "New discussion - %{which}"
     create_proposal:
       intro: "A new proposal was created in a Loomio group that you belong to."
       closes_in: "Closes in"

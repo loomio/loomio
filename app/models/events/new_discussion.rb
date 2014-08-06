@@ -15,7 +15,7 @@ class Events::NewDiscussion < Event
   def notify_users!
     discussion.group_members_without_discussion_author.each do |user|
       if user.email_notifications_for_group?(discussion.group)
-        UserMailer.delay.new_discussion(discussion, user)
+        ThreadMailer.delay.new_discussion(discussion, user)
       end
       #notify!(user)
     end

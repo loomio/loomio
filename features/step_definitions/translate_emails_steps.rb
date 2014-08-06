@@ -65,12 +65,12 @@ Given(/^"(.*?)" has blocked a proposal started by "(.*?)"$/) do |arg1, arg2|
 end
 
 Then(/^the proposal blocked email should be delivered to "(.*?)" in Spanish$/) do |arg1|
-  email = ThreadMailer.motion_blocked(@vote)
+  email = UserMailer.motion_blocked(@vote)
   email.body.encoded.should include("Grupo")
 end
 
 Then(/^the proposal blocked email should be delivered to "(.*?)" in English$/) do |arg1|
-  email = ThreadMailer.motion_blocked(@vote)
+  email = UserMailer.motion_blocked(@vote)
   email.body.encoded.should include(I18n.t(:group, locale: "en"))
 end
 

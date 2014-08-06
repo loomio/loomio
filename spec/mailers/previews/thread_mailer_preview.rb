@@ -20,25 +20,11 @@ class ThreadMailerPreview < ActionMailer::Preview
     ThreadMailer.motion_created(motion, user)
   end
 
-  def motion_blocked
-    motion = FactoryGirl.create(:motion)
-    vote = FactoryGirl.create(:vote, motion: motion, position: 'block')
-    ThreadMailer.motion_blocked(vote)
-  end
-
   def motion_closing_soon
     user = FactoryGirl.create(:user)
     motion = FactoryGirl.create(:motion)
     motion.group.add_member!(user)
     ThreadMailer.motion_closing_soon(user, motion)
-  end
-
-  def motion_closed
-    motion = FactoryGirl.create(:motion)
-    motion.store_users_that_didnt_vote
-    motion.closed_at = Time.now
-    motion.save!
-    ThreadMailer.motion_closed(motion, motion.author.email)
   end
 
   def motion_outcome_created
