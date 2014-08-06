@@ -8,6 +8,8 @@ atom_feed do |feed|
     next unless event.eventable.valid?
 
     item = xml_item(event)
+    next if item.nil?
+    next if item.author.blank?
     feed.entry(event, url: discussion_url(@discussion)) do |entry|
       entry.title t(:comment_by, comment_author: item.author_name)
       entry.content item.body, type: :text
