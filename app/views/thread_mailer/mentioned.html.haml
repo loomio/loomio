@@ -18,4 +18,4 @@
     %p
       = link_to t("email.view_comment"), discussion_url(@discussion)+"#comment-#{@comment.id}"
 
-    = render 'unsubscribe_link'
+    = render 'user_mailer/unsubscribe_link'
