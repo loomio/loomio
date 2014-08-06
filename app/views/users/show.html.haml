@@ -4,7 +4,8 @@
       = render 'avatar', user: @user, size: "large", id: 'avatar-preview'
     .span8
       %h1= @user.name
-      %p.username= "@" + @user.username
+      %p.username
+        @#{@user.username}
 
       - groups = @user.groups.visible_to_public.order('full_name ASC')
       - groups += [@user.groups & current_user.groups]
