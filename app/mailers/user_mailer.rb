@@ -59,4 +59,29 @@ class UserMailer < BaseMailer
            subject: t("email.user_added_to_a_group.subject", which_group: group.name, who: inviter.name)
     end
   end
+
+  def motion_blocked(vote)
+    @vote = vote
+    @user = vote.user
+    @motion = vote.motion
+    @discussion = @motion.discussion
+    @group = @motion.group
+    @rendered_motion_description = render_rich_text(@motion.description, false) #should replace false with motion.uses_markdown in future
+    locale = locale_fallback(@motion.author.locale, nil)
+    I18n.with_locale(locale) do
+      mail  to: @motion.author_email,
+            reply_to: @group.admin_email,
+            subject: "#{email_subject_prefix(@group.full_name)} " + t("email.proposal_blocked.subject", which: @motion.name)
+    end
+  end
+
+  def motion_closed(motion, email)
+    @motion = motion
+    @group = motion.group
+    locale = locale_fallback(User.find_by_email(email).locale, motion.author.locale)
+    I18n.with_locale(locale) do
+      mail  to: email,
+            subject: t("email.proposal_closed.subject", which: @motion.name)
+    end
+  end
 end

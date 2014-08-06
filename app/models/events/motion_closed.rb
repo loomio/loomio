@@ -12,7 +12,7 @@ class Events::MotionClosed < Event
   private
 
   def notify_users!
-    ThreadMailer.delay.motion_closed(motion, motion.author.email)
+    UserMailer.delay.motion_closed(motion, motion.author.email)
     notify! motion.author
   end
 
