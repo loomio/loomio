@@ -27,7 +27,7 @@ module LocalesHelper
                 'українська мова' => :uk }
 
   LOCALE_STRINGS = LANGUAGES.values.map(&:to_s)
-  EXPERIMENTAL_LOCALE_STRINGS = %w( ar be-BY cmn hr da eo fi gl ga ga-IE km lv-LV mk mi fa-IR pl pt-PT ru si-LK sl es-US te )
+  EXPERIMENTAL_LOCALE_STRINGS = %w( ar be-BY cmn hr da eo fi gl ga-IE km mk mi fa-IR pl pt-PT ru sl te )
 
   def locale_name(locale)
     LANGUAGES.key(locale.to_sym)
