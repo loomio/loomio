@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 describe "Comments API v1" do
   before do
     @user = FactoryGirl.create(:user)

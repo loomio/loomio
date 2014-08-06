@@ -125,7 +125,7 @@ body.discussions.show {
     margin: 10px 12px 0 44px;
   }
 
-  .warn-move-will-make-private { padding: 0 15px 15px; }
+  .warn-move { padding: 0 15px 15px; }
 
   #options-dropdown {
     font-size: 1.4em;
@@ -149,22 +149,6 @@ body.discussions.show {
   }
 
   #request-membership, #request-membership-disabled { text-align: center; }
-
-  #jump-to-latest{
-    a {
-      color: $mid-grey;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: none;
-    }
-    color: $mid-grey;
-    text-decoration: none;
-    float: right;
-    margin-top: 2px;
-    margin-right: 5px;
-    color: $mid-grey;
-  }
 
   #attachment-container {
     background: #EBEBEB;

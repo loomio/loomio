@@ -1,8 +1,8 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Comment do
   let(:user) { stub_model(User) }
-  let(:discussion) { create_discussion }
+  let(:discussion) { create :discussion }
   let(:comment) { create(:comment, discussion: discussion) }
 
   it { should have_many(:events).dependent(:destroy) }
@@ -11,14 +11,14 @@ describe Comment do
   describe "#is_most_recent?" do
     subject { comment.is_most_recent? }
     context "comment is the last one added to discussion" do
-      it { should be_true }
+      it { should be true }
     end
     context "a newer comment exists" do
       before do
         comment
-        new_comment = discussion.add_comment(discussion.author, "another comment")
+        discussion.add_comment(discussion.author, "another comment")
       end
-      it { should be_false }
+      it { should be false }
     end
   end
 
@@ -26,21 +26,6 @@ describe Comment do
     it "calls discussion.commented_deleted!" do
       discussion.should_receive(:comment_deleted!)
       comment.destroy
-    end
-  end
-
-  describe "validate has_body_or_attachment" do
-    it "raises error on body if no text or attachment" do
-      comment = Comment.build_from discussion, discussion.author, '', attachments: []
-      comment.save
-      comment.should have(1).errors_on(:body)
-    end
-
-    it "does not need a body if it has an attachment" do
-      attachment = create(:attachment, user: discussion.author)
-      comment = Comment.build_from discussion, discussion.author, '', attachments: [attachment.id.to_s]
-      comment.save
-      comment.should be_valid
     end
   end
 
@@ -118,7 +103,7 @@ describe Comment do
     before do
       @group = create :group
       @user = create :user
-      @discussion = create_discussion :author => @user, :group => @group
+      @discussion = create :discussion, author: @user, group: @group
       Event.stub(:send_new_comment_notifications!)
       @user.stub(:subscribed_to_mention_notifications?).and_return(true)
     end

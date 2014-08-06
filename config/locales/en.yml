@@ -1,6 +1,6 @@
 en:
   explore:
-    go_to_group: "Go to %{group_name}"
+    header: "Explore public groups"
 
   try_it:
     header: "Try Loomio"
@@ -79,6 +79,7 @@ en:
     duplicate_email: "%{which_email} is already in the group."
 
   notice:
+    new_contacts_imported: "That worked! You can type names into the field below and we'll suggest the email address."
     admin_rights_removed: "%{which_user}'s coordinator rights have been removed."
     user_added: "%{user_email_or_name} has been added to the group."
     new_user_added: "%{user_email_or_name} will be added to the group after they set up a Loomio account."
@@ -219,6 +220,8 @@ en:
   start_new_group_hint: "To start making decisions"
   find_a_group: "Find a group"
   find_a_group_hint: "To explore public groups"
+  search_for_group: "Search for a group..."
+  no_groups_found: "No groups found by that name!"
   no_group_header: "Welcome to Loomio Beta"
   empty_notifications: "You do not have any notifications yet."
   see_all_notifications: "See all notifications"
@@ -242,7 +245,7 @@ en:
     message: "<p>This is the <strong>group page</strong>. On the left is a list of all the discussions in this group.</p><p>When you want the group to discuss another topic, start a new discussion.</p>"
   dashboard_helper_text:
     header: "Welcome to your Home page"
-    message: "<p>The home page shows you all of the current discussions in all the groups you are a member of.</p><p>You can start a discussion on a new topic by clicking the “Start a discussion” button.</p>"
+    message: "<p>The home page shows you all of the current discussions in all the groups you are a member of.</p><p>You can start a discussion on a new topic by clicking the “Start discussion” button.</p>"
 
   prompt_visitor_to_authenticate:
     header: "Log in or join group to participate"
@@ -265,13 +268,15 @@ en:
     confirm_all_discussions_will_be_made_private_message: "If you proceed, any public discussions will be made private."
     confirm_all_discussions_will_be_made_public_message: "Are you sure? If you proceed, any private discussions will be made public."
 
-    prompt_to_suggest_categories_html: "If you'd like to suggest some new categories, <a href='%{link}' target='_blank'>join this discussion</a>."
-
     what_can_members_do: "What can members do?"
     members_can:
       add_members: Invite and approve new members
       edit_comments: Edit their comments at any time
       edit_discussions: Edit the context of any discussion in the group
+      start_discussions: Start discussions
+      raise_motions: Raise proposals
+      vote: Vote on proposals
+      create_subgroups: Create subgroups
     motions_can_be_edited: Edit their proposals after voting has started
 
     visible_to:
@@ -315,19 +320,21 @@ en:
     c7: Add/remove other coordinators.
     c8: Delete discussions.
     c9: Delete comments.
+    c10: Create subgroups.
+    c11: Start discussions.
+    c12: Raise proposals.
+    c13: Vote on proposals.
 
-    members_can: "Members can:"
+    members_defaults: "With the default settings, members can:"
     m1: Delete their own comments.
-    m2: Edit their own comments, until someone has replied.
     m3: Edit the title and description of proposals they start, until someone has stated their position. 
     m4: Edit the closing date of proposals they start, until they close.
-    m5: Edit the title and context of discussions they start at any time.
+    m5: Edit the title and context of any discussion.
     m6: Start a subgroup, which they become the coordinator of.
+    m7: Edit their own comments at any time.
+    m8: Raise and participate in proposals.
 
-    optionally: "Optionally, coordinators can allow group members to:"
-    o1: Invite and approve new members.
-    o2: Edit their own comments at any time.
-    o3: Edit the title or context of any discussion in the group.
+    optional_restrictions: "Optionally, coordinators can restrict what members can do."
 
   group_privacy:
     visible_to:
@@ -464,6 +471,7 @@ en:
   empty_decision_index: "This group has not made any decisions yet."
   empty_discussion_list: "There is no activity in this discussion yet."
   go_to_add_comment_html: "To add a comment, <a href='%{href}'>go to the end of the discussion</a>."
+  comment_by: "Comment by %{comment_author}"
 
   discussion_list:
     empty:
@@ -503,6 +511,7 @@ en:
   edit_discussion: "Edit discussion"
   move_discussion: "Move discussion"
   move_discussion_to_hidden_group: "This discussion is currently public. Moving it to this hidden group will make it private."
+  move_discussion_to_public_group: "This discussion is currently private. Moving it to this public group will make it public."
   move_discussion_where: "Where would you like to move this discussion to?"
   delete_discussion: "Delete discussion"
   confirm_delete_discussion: "Are you sure you want to permanently delete this discussion?"
@@ -797,6 +806,7 @@ en:
     copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
     pending_invitations: 'Pending invitations'
     no_pending_invitations: "There are currently no pending invitations."
+    import_contacts_html: "Can't remember an email address? Import your contacts from %{google_link}"
 
   #
   # SEARCH
@@ -1135,6 +1145,7 @@ en:
   time_until_close: "%{quantity_of_time} until close"
   update: "Update"
   facebook: "Facebook"
+  yahoo: "Yahoo"
   google: "Google"
   persona: "Persona"
 
@@ -1205,6 +1216,7 @@ en:
     start_group: "Start group!"
 
   group_categories:
+    all: "All"
     blank: "Uncategorised"
     economics: "Economics"
     activist: "Activist"

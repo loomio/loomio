@@ -1,10 +1,10 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe CommentsController do
   let(:app_controller) { controller }
   let(:group) { create :group }
   let(:user) { create :user }
-  let(:discussion) { create_discussion group: group }
+  let(:discussion) { create :discussion, group: group }
   let(:comment) { create :comment, discussion: discussion }
 
   context "authenticated user" do

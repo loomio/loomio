@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Events::NewDiscussion do
   let(:discussion){ mock_model(Discussion, group: double(:group), touch: true) }
@@ -27,7 +27,7 @@ describe Events::NewDiscussion do
     before do
       discussion.stub(:group_members_without_discussion_author).and_return([user])
       user.stub(:email_notifications_for_group?).and_return(false)
-      DiscussionMailer.stub_chain(:new_discussion_created, :deliver)
+      UserMailer.stub_chain(:new_discussion, :deliver)
     end
 
     context 'if user is subscribed to group notification emails' do
@@ -36,7 +36,7 @@ describe Events::NewDiscussion do
       end
 
       it 'emails group_members_without_motion_author new_motion_created' do
-        DiscussionMailer.should_receive(:new_discussion_created).with(discussion, user)
+        UserMailer.should_receive(:new_discussion).with(discussion, user)
         event.save
       end
     end
@@ -48,7 +48,7 @@ describe Events::NewDiscussion do
       end
 
       it 'does not email new motion created' do
-        DiscussionMailer.should_not_receive(:new_discussion_created)
+        UserMailer.should_not_receive(:new_discussion)
         event.save
       end
     end

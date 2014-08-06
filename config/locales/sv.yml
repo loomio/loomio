@@ -1,6 +1,4 @@
 sv:
-  explore:
-    go_to_group: "Gå till %{group_name}"
   try_it:
     header: "Prova Loomio"
     start_a_group: "Starta en grupp för att ta beslut tillsammans med dina medarbetare. "
@@ -201,7 +199,6 @@ sv:
     message: "<p>Detta är <strong>Gruppsidan</strong>. Till vänster finns en lista på gruppens alla diskussioner.</p><p>När du vill att gruppen ska diskutera ett annat ämne, starta en ny diskussion.</p>"
   dashboard_helper_text:
     header: "Välkommen till din startsida"
-    message: "<p>Startsidan visar alla pågående diskussioner i alla grupper du är med i.</p><p>Du kan starta en diskussion om ett nytt ämne genom att klicka på knappen \"Starta en diskussion\"</p>"
   prompt_visitor_to_authenticate:
     header: "Logga in eller gå med i gruppen för att delta"
     body: "Om du är medlem i denna gruppen, behöver du logga in för att delta."

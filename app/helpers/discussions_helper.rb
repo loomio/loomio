@@ -42,6 +42,13 @@ module DiscussionsHelper
     end
   end
 
+  def xml_item(event)
+    case event.kind.to_sym
+    when :new_comment then event.eventable
+    #else                   DiscussionItem.new event
+    end
+  end
+
   def css_classes_for_discussion_preview(discussion, discussion_reader)
     class_names = []
     class_names << 'showing-group' unless @group == discussion.group
@@ -118,10 +125,6 @@ module DiscussionsHelper
     options << ["<span class='discussion-privacy-setting-header'>
                   <i class='fa fa-lock'></i>#{t(:'common.private')}</span>
                  <p>#{private_description}</p>".html_safe, true ]
-  end
-
-  def current_language
-    AppTranslation.language I18n.locale.to_s
   end
 
   def privacy_language(discussion)

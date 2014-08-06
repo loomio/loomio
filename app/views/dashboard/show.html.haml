@@ -11,7 +11,7 @@
     %section.span3
       #group-actions
         .clearfix
-          = icon_button(href: new_discussion_path, text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
+          = icon_button(href: new_discussion_path, text: t(:start_a_discussion), icon: 'topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
       =render 'groups'
       .sub-panel.previous-discussions-panel
         %h4= t(:previous_decisions)
@@ -23,5 +23,5 @@
       .action-button= link_to t(:start_new_group), new_group_path, class: 'btn btn-large btn-primary btn-block'
       .intro-desc= t(:start_new_group_hint)
     .span3.actions
-      .action-button= link_to t(:find_a_group), explore_path, class: 'btn btn-large btn-success btn-block'
+      .action-button= link_to t(:"find_a_group"), explore_path, class: 'btn btn-large btn-success btn-block'
       .intro-desc= t(:find_a_group_hint)

@@ -1,3 +1,3 @@
 Airbrake.configure do |config|
-  config.api_key = ENV['AIRBRAKE_API_KEY']
+  config.api_key = Rails.application.secrets.airbrake_api_key
 end

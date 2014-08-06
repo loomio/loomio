@@ -8,6 +8,11 @@ ActiveAdmin.register User do
   scope :all
   scope :coordinators
 
+  controller do
+    def find_resource
+      User.friendly.find(params[:id])
+    end
+  end
   index do
     column :name
     column :email
@@ -15,7 +20,7 @@ ActiveAdmin.register User do
     column :last_sign_in_at
     column "No. of groups", :memberships_count
     column :deleted_at
-    default_actions
+    actions
   end
 
   form do |f|
@@ -29,7 +34,7 @@ ActiveAdmin.register User do
   end
 
   member_action :update, :method => :put do
-    user = User.find(params[:id])
+    user = User.friendly.find(params[:id])
     user.name = params[:user][:name]
     user.email = params[:user][:email]
     user.username = params[:user][:username]
@@ -69,7 +74,7 @@ ActiveAdmin.register User do
   end
 
   member_action :deactivate, method: :put do
-    user = User.find(params[:id])
+    user = User.friendly.find(params[:id])
     user.deactivate!
     redirect_to admin_users_url, :notice => "User account deactivated"
   end

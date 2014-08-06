@@ -195,7 +195,7 @@ ul, ol, li {
 }
 
 .loading {
-  background: url(ajax-loader.gif) no-repeat;
+  background: image-url('ajax-loader.gif') no-repeat;
   background-position: 300px 200px;
   line-height: 33.5em;
   text-indent: -9999px;
@@ -207,7 +207,11 @@ ul, ol, li {
   margin-top: 30px;
   min-height: 600px;
 }
-
+.shadow{
+  text-shadow: 0 1px 1px rgba(0,0,0,.8);
+  text-rendering: optimizelegibility;
+  color: white;
+}
 ul.selector-list {
   &.bordered { border-top: 1px solid $light-grey }
   li.selector-item {
@@ -396,4 +400,9 @@ a.btn-icon:hover { color: $dark-grey; }
     margin-left: 20px;
   }
   margin-bottom: 20px;
+}
+
+#select-locale {
+  width: 180px;
+  margin-bottom: 4px;
 }

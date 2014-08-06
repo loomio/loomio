@@ -36,7 +36,7 @@ da:
     user_already_member: "%{which_user} er allerede medlem af denne gruppe."
     user_not_admin: "%{which_user} skal være koordinator af denne gruppe for at tilgå den."
   success:
-    added_to_group: "Du er blevet tilføjet til %{which_user}."
+    added_to_group: "Du er blevet tilføjet til %{which_group}."
     close_date_changed: "Afslutningsdato blev opdateret."
     discussion_created: "Diskussionen er blevet oprettet."
     discussion_deleted: "Diskussionen er blevet slettet."

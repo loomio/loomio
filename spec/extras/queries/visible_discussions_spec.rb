@@ -1,9 +1,9 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Queries::VisibleDiscussions do
   let(:user) { create :user }
   let(:group) { create :group, discussion_privacy_options: 'public_or_private' }
-  let(:discussion) { create_discussion group: group, private: true }
+  let(:discussion) { create :discussion, group: group, private: true }
 
   subject do
     Queries::VisibleDiscussions.new(user: user, groups: [group])

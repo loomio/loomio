@@ -13,7 +13,7 @@ class Membership < ActiveRecord::Base
   scope :archived, lambda { where('archived_at IS NOT NULL') }
 
   scope :for_group, lambda {|group| where(group_id: group)}
-  scope :admin, where(admin: true)
+  scope :admin, -> { where(admin: true) }
 
   delegate :name, :email, to: :user, prefix: :user
   delegate :parent, to: :group, prefix: :group, allow_nil: true

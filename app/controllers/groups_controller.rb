@@ -6,14 +6,6 @@ class GroupsController < GroupBaseController
 
   before_filter :ensure_group_is_setup, only: :show
   before_filter :assign_meta_data, only: :show
-  before_filter :notify_intercom_if_cover_photo_updated, only: :update
-
-  def notify_intercom_if_cover_photo_updated
-    attributes = permitted_params.group
-    if attributes.keys.include?('cover_photo')
-      create_intercom_event('cover_photo_updated')
-    end
-  end
 
   caches_action :show, :cache_path => Proc.new { |c| c.params }, unless: :user_signed_in?, :expires_in => 5.minutes
 
@@ -23,7 +15,7 @@ class GroupsController < GroupBaseController
 
   #for new subgroup form
   def add_subgroup
-    parent = Group.published.find(params[:id])
+    parent = Group.published.find_by(key: params[:id])
     @subgroup = Group.new(parent: parent,
                           is_visible_to_public: parent.is_visible_to_public,
                           discussion_privacy_options: parent.discussion_privacy_options)
@@ -41,7 +33,6 @@ class GroupsController < GroupBaseController
     if @group.save
       @group.mark_as_setup!
       Measurement.increment('groups.create.success')
-      create_intercom_event 'group_created'
       @group.add_admin! current_user
       flash[:success] = t("success.group_created")
       redirect_to @group
@@ -80,17 +71,16 @@ class GroupsController < GroupBaseController
   end
 
   def show
-    @group = GroupDecorator.new @group
     @discussion = Discussion.new(group_id: @group.id)
 
     @discussions = GroupDiscussionsViewer.for(group: @group, user: current_user).
                                           joined_to_current_motion.
                                           preload(:current_motion, {:group => :parent}).
-                                          order('motions.closing_at ASC, last_comment_at DESC').
+                                          order('motions.closing_at ASC, last_activity_at DESC').
                                           page(params[:page]).per(20)
 
     @closed_motions = Queries::VisibleMotions.new(user: current_user, groups: @group).order('closed_at desc')
-    @feed_url = group_url @group, format: :xml
+    @feed_url = group_url @group, format: :xml if @group.is_visible_to_public?
 
     build_discussion_index_caches
   end

@@ -132,7 +132,6 @@ hu:
     message: "<p>Ez a <strong>csoportoldal</strong> Bal oldalon vannak a csoport témái.</p><p>Ha szerinted valami mást is meg kellene tárgyalni, indíts új témát.</p>"
   dashboard_helper_text:
     header: "Üdvözlet a nyitólapodon!"
-    message: "<p>A nyitólapon láthatod az összes témát a csoportjaidból. <p></p>Új témát nyithatsz a \"Téma indítása\" gombra kattintva.</p>"
   setup_steps_title: "Következő lépések:"
   setup_step_1: "Nézd meg a példa témát"
   setup_step_2: "Indítsd az első témádat"

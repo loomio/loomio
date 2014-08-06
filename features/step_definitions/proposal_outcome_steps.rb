@@ -19,8 +19,8 @@ end
 
 When(/^I click the link to create a proposal outcome$/) do
   open_email(@user.email, :with_subject => "Proposal closed")
-  link = links_in_email(current_email)[2]
-  request_uri = URI::parse(link).request_uri
+  link = links_in_email(current_email)[1]
+  request_uri = CGI.unescapeHTML(URI::parse(link).request_uri)
   visit request_uri
 end
 

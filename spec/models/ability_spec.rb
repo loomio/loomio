@@ -1,5 +1,5 @@
 require "cancan/matchers"
-require 'spec_helper'
+require 'rails_helper'
 
 describe "User abilities" do
   let(:user) { create(:user) }
@@ -132,13 +132,76 @@ describe "User abilities" do
         end
       end
     end
+
+    context "member of group", focus: true do
+      before { group.add_member!(user) }
+
+      describe "members_can_start_discussions" do
+        let(:discussion) { Discussion.new(group: group) }
+
+        context "true" do
+          before { group.update_attribute(:members_can_start_discussions, true) }
+          it {should be_able_to(:create, discussion)}
+        end
+
+        context "false" do
+          before { group.update_attribute(:members_can_start_discussions, false) }
+          it {should_not be_able_to(:create, discussion)}
+        end
+      end
+
+      describe "members_can_raise_motions" do
+        let(:discussion) { FactoryGirl.create(:discussion, group: group, author: user) }
+        let(:motion) { Motion.new(discussion: discussion) }
+
+        context "true" do
+          before { group.update_attribute(:members_can_raise_motions, true) }
+          it {should be_able_to(:create, motion)}
+        end
+
+        context "false" do
+          before { group.update_attribute(:members_can_raise_motions, false) }
+          it {should_not be_able_to(:create, motion)}
+        end
+      end
+
+      describe "members_can_vote" do
+        let(:discussion) { FactoryGirl.create(:discussion, group: group, author: user) }
+        let(:motion) { FactoryGirl.create(:motion, discussion: discussion) }
+
+        context "true" do
+          before { group.update_attribute(:members_can_vote, true) }
+          it {should be_able_to(:vote, motion)}
+        end
+
+        context "false" do
+          before { group.update_attribute(:members_can_vote, false) }
+          it {should_not be_able_to(:vote, motion)}
+        end
+      end
+
+      # start_subgroups
+      describe "members_can_create_subgroups" do
+        let(:subgroup) { Group.new(parent: group) }
+
+        context "true" do
+          before { group.update_attribute(:members_can_create_subgroups, true) }
+          it {should be_able_to(:create, subgroup)}
+        end
+
+        context "false" do
+          before { group.update_attribute(:members_can_create_subgroups, false) }
+          it {should_not be_able_to(:create, subgroup)}
+        end
+      end
+    end
   end
 
-  context "suspended member", focus: true do
+  context "suspended member" do
     let(:group) { create(:group) }
     let(:admin_group) { create(:group) }
     let(:subgroup) { create(:group, parent: group) }
-    let(:private_discussion) { create_discussion group: group, private: true }
+    let(:private_discussion) { create :discussion, group: group, private: true }
 
 
     context "group is visible to public" do
@@ -174,8 +237,8 @@ describe "User abilities" do
     let(:subgroup) { build(:group, parent: group) }
     let(:subgroup_for_another_group) { build(:group, parent: create(:group)) }
     let(:membership_request) { create(:membership_request, group: group, requestor: non_member) }
-    let(:discussion) { create_discussion group: group }
-    let(:user_discussion) { create_discussion group: group, author: user }
+    let(:discussion) { create :discussion, group: group }
+    let(:user_discussion) { create :discussion, group: group, author: user }
     let(:new_discussion) { user.authored_discussions.new(
                            group: group, title: "new discussion") }
     let(:user_comment) { discussion.add_comment(user, "hello") }
@@ -197,7 +260,7 @@ describe "User abilities" do
       it { should_not be_able_to(:manage, another_user_comment) }
     end
 
-    context "members_can_not_edit_comments", focus: true do
+    context "members_can_not_edit_comments" do
       before do
         group.members_can_edit_comments = false
       end
@@ -353,7 +416,7 @@ describe "User abilities" do
 
   context "admin of a group" do
     let(:group) { create(:group) }
-    let(:discussion) { create_discussion group: group }
+    let(:discussion) { create :discussion, group: group }
     let(:another_user_comment) { discussion.add_comment(other_user, "hello", uses_markdown: false) }
     let(:other_users_motion) { create(:motion, author: other_user, discussion: discussion) }
     let(:membership_request) { create(:membership_request, group: group, requestor: non_member) }
@@ -407,7 +470,7 @@ describe "User abilities" do
 
     context 'hidden group' do
       let(:group) { create(:group, is_visible_to_public: false) }
-      let(:discussion) { create_discussion group: group, private: true }
+      let(:discussion) { create :discussion, group: group, private: true }
       let(:new_motion) { Motion.new(discussion_id: discussion.id) }
       let(:motion) { create(:motion, discussion: discussion) }
       let(:vote) { create(:vote, user: discussion.author, motion: motion) }
@@ -446,8 +509,8 @@ describe "User abilities" do
 
     context "public group" do
       let(:group) { create(:group, is_visible_to_public: true) }
-      let(:private_discussion) { create_discussion group: group, private: true }
-      let(:public_discussion) { create_discussion group: group, private: false }
+      let(:private_discussion) { create :discussion, group: group, private: true }
+      let(:public_discussion) { create :discussion, group: group, private: false }
       let(:new_motion) { Motion.new(discussion_id: private_discussion.id) }
       let(:motion) { create(:motion, discussion: private_discussion) }
       let(:new_discussion) { user.authored_discussions.new(

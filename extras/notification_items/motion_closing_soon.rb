@@ -11,9 +11,9 @@ class NotificationItems::MotionClosingSoon < NotificationItem
     I18n.t('notifications.motion_closing_soon') + ": "
   end
 
-    def actor
-      nil
-    end
+  def actor
+    nil
+  end
 
   def title
     @notification.eventable.name

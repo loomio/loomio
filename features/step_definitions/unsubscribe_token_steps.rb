@@ -17,5 +17,5 @@ Then /^I should be able to update my email preferences$/ do
   uncheck 'email_preferences[subscribed_to_missed_yesterday_email]'
   click_on 'Update preferences'
   page.should have_content 'Your email settings have been updated.'
-  @user.reload.subscribed_to_missed_yesterday_email.should be_false
+  @user.reload.subscribed_to_missed_yesterday_email.should be false
 end

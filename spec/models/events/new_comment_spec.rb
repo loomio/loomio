@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Events::NewComment do
   let(:comment){ mock_model(Comment, discussion: mock_model(Discussion))}

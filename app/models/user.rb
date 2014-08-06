@@ -39,26 +39,28 @@ class User < ActiveRecord::Base
               :default => 'none'
 
 
+  has_many :contacts
   has_many :admin_memberships,
-           conditions: "memberships.is_suspended = FALSE AND memberships.archived_at IS NULL AND memberships.admin = TRUE",
+           -> { where('memberships.admin = ? AND memberships.is_suspended = ? AND memberships.archived_at', true, false, nil) },
            class_name: 'Membership',
            dependent: :destroy
 
   has_many :adminable_groups,
+           -> { where( archived_at: nil) },
            through: :admin_memberships,
            class_name: 'Group',
            source: :group
 
   has_many :memberships,
-           conditions: "memberships.is_suspended = FALSE AND memberships.archived_at IS NULL",
+           -> { where is_suspended: false, archived_at: nil },
            dependent: :destroy
 
   has_many :membership_requests,
            foreign_key: 'requestor_id'
 
   has_many :groups,
-           through: :memberships,
-           conditions: { archived_at: nil }
+           -> { where archived_at: nil },
+           through: :memberships
 
   has_many :discussions,
            through: :groups
@@ -101,12 +103,12 @@ class User < ActiveRecord::Base
 
   before_create :set_default_avatar_kind
 
-  scope :active, where(deleted_at: nil)
-  scope :inactive, where("deleted_at IS NOT NULL")
-  scope :subscribed_to_missed_yesterday_email, where(subscribed_to_missed_yesterday_email: true)
-  scope :sorted_by_name, order("lower(name)")
-  scope :admins, where(is_admin: true)
-  scope :coordinators, joins(:memberships).where('memberships.admin = ?', true).group('users.id')
+  scope :active, -> { where(deleted_at: nil) }
+  scope :inactive, -> { where("deleted_at IS NOT NULL") }
+  scope :subscribed_to_missed_yesterday_email, -> { where(subscribed_to_missed_yesterday_email: true) }
+  scope :sorted_by_name, -> { order("lower(name)") }
+  scope :admins, -> { where(is_admin: true) }
+  scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
@@ -135,7 +137,12 @@ class User < ActiveRecord::Base
   end
 
   def inbox_groups
-    groups.where('memberships.inbox_position is not null').order(:inbox_position)
+    groups.where('memberships.inbox_position is not null').order('memberships.inbox_position')
+  end
+
+  def groups_discussions_can_be_started_in
+    (groups.where(members_can_start_discussions: true) | adminable_groups).
+     sort{|a,b| a.full_name <=> b.full_name}
   end
 
   def first_name
@@ -149,10 +156,6 @@ class User < ActiveRecord::Base
   # Provide can? and cannot? as methods for checking permissions
   def ability
     @ability ||= Ability.new(self)
-  end
-
-  def language
-    selected_locale || detected_locale
   end
 
   delegate :can?, :cannot?, :to => :ability
@@ -206,14 +209,9 @@ class User < ActiveRecord::Base
       update_all(:viewed_at => Time.now)
   end
 
-  def self.loomio_helper_bot
-    helper_bot = User.find_or_create_by_email('contact@loom.io')
-    unless helper_bot.persisted?
-      helper_bot.name = "Loomio Helper Bot"
-      helper_bot.password = SecureRandom.hex
-      helper_bot.save
-    end
-    helper_bot
+  def self.loomio_helper_bot(password: nil)
+    where(email: 'contact@loom.io').first ||
+    create!(email: 'contact@loom.io', name: 'Loomio Helper Bot', password: password || SecureRandom.hex)
   end
 
   def self.helper_bots
@@ -221,7 +219,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_email(email)
-    User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
+    User.where('lower(email) = ?', email.downcase).first
   end
 
   def subgroups
@@ -244,9 +242,11 @@ class User < ActiveRecord::Base
     update_attributes(deleted_at: Time.now,
                       subscribed_to_missed_yesterday_email: false,
                       subscribed_to_mention_notifications: false,
-                      subscribed_to_proposal_closure_notifications: false)
+                      subscribed_to_proposal_closure_notifications: false,
+                      avatar_kind: "initials")
 
-    memberships.update_all(archived_at: Time.now, subscribed_to_notification_emails: false)
+    memberships.update_all(archived_at: Time.now,
+                      subscribed_to_notification_emails: false)
 
     membership_requests.where("responded_at IS NULL").destroy_all
   end
