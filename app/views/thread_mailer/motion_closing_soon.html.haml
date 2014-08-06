@@ -15,7 +15,7 @@
 
     - unless @motion.user_has_voted?(@user)
       %h4.have-say-title= t(:"help.have_your_say")
-      =render '/motion_mailer/vote_buttons', motion: @motion
+      =render '/thread_mailer/vote_buttons', motion: @motion
       %br
 
     -if @motion.unique_votes.present?
