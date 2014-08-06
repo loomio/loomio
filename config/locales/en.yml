@@ -1025,7 +1025,7 @@ en:
       mark_as_read: Mark as read
       thanks_for_reading: Thanks for reading, have a great day!
       click_here_to_mark_all_as_read_html: |
-        Here's the stuff that happened yesterday on Loomio.
+        Here's what happened on Loomio yesterday.
         Once you've read it, click <a href="%{link}">mark as read</a> to remove it from your Loomio Inbox.
       marked_as_read_success: "Everything from the email has been marked as read"
 
