@@ -43,13 +43,13 @@ end
 
 Then(/^the new proposal email should be delivered to "(.*?)" in Spanish$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
-  email = MotionMailer.new_motion_created(@motion, user)
+  email = MotionMailer.motion_created(@motion, user)
   email.body.encoded.should include(I18n.t(:"help.have_your_say", locale: "es")[0..9])
 end
 
 Then(/^the new proposal email should be delivered to "(.*?)" in English$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
-  email = MotionMailer.new_motion_created(@motion, user)
+  email = MotionMailer.motion_created(@motion, user)
   email.body.encoded.should include(I18n.t(:"help.have_your_say", locale: "en"))
 end
 

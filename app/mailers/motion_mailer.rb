@@ -1,5 +1,5 @@
 class MotionMailer < BaseMailer
-  def new_motion_created(motion, user)
+  def motion_created(motion, user)
     @user = user
     @motion = motion
     @group = motion.group
