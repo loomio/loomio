@@ -5,7 +5,7 @@ class UserMailerPreview < ActionMailer::Preview
       group = FactoryGirl.create(:group)
       group.add_admin!(user)
       discussion = FactoryGirl.build(:discussion, group: group, author: user)
-      
+
       #raise user.can?(:create, discussion).inspect
       #discussion.reload
       #user.reload
@@ -35,25 +35,11 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.missed_yesterday(user)
   end
 
-  def mentioned
-    user = FactoryGirl.create(:user)
-    discussion = FactoryGirl.create(:discussion)
-    comment = FactoryGirl.create(:comment, discussion: discussion, body: "Hey there @#{user.username}, I love what you said and want to find out more about the stuff you mentioned, can we please have a cup of tea and a bike ride with me?")
-    UserMailer.mentioned(user, comment)
-  end
-
   def group_membership_approved
     user = FactoryGirl.create(:user)
     discussion = FactoryGirl.create(:discussion)
     comment = FactoryGirl.create(:comment, discussion: discussion, body: "Hey there @#{user.username}, I love what you said and want to find out more about the stuff you mentioned, can we please have a cup of tea and a bike ride with me?")
     UserMailer.mentioned(user, comment)
-  end
-
-  def motion_closing_soon
-    user = FactoryGirl.create(:user)
-    motion = FactoryGirl.create(:motion)
-    motion.group.add_member!(user)
-    UserMailer.motion_closing_soon(user, motion)
   end
 
   def added_to_group
@@ -63,11 +49,5 @@ class UserMailerPreview < ActionMailer::Preview
     group.add_member!(inviter)
     message = "Hello! It's been a long time coming but I though you would be the best person to invite to the group now that we're developing a univfying agreement plan consenting process"
     UserMailer.added_to_group(user: user, inviter: inviter, group: group, message: message)
-  end
-
-  def new_discussion
-    user = FactoryGirl.create(:user)
-    discussion = FactoryGirl.create(:discussion)
-    UserMailer.new_discussion(discussion, user)
   end
 end
