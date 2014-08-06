@@ -33,8 +33,16 @@ class Users::EmailPreferencesController < BaseController
       end
     end
 
-    flash[:notice] = I18n.t "email.missed_yesterday.marked_as_read_success"
-    redirect_to dashboard_or_root_path
+    respond_to do |format|
+      format.html {
+        flash[:notice] = I18n.t "email.missed_yesterday.marked_as_read_success"
+        redirect_to dashboard_or_root_path
+      }
+      format.gif {
+        send_file Rails.root.join('app','assets','images', 'empty.gif'),
+                  type: 'image/gif', disposition: 'inline'
+      }
+    end
   end
 
   private
