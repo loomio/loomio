@@ -18,7 +18,6 @@ module LocalesHelper
                 'മലയാളം' => :ml,
                 'Nederlands' => :'nl-NL',
                 'Português (Brasil)' => :'pt-BR',
-                #'Português' => :pt,
                 'română' => :ro,
                 'Srpski - Latinica' => :sr,
                 'Srpski - Ćirilica' => :'sr-RS',
