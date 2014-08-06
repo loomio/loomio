@@ -45,7 +45,7 @@ module DiscussionsHelper
   def xml_item(event)
     case event.kind.to_sym
     when :new_comment then event.eventable
-    else                   DiscussionItem.new event
+    #else                   DiscussionItem.new event
     end
   end
 
