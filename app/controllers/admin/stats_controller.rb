@@ -13,7 +13,7 @@ class Admin::StatsController < Admin::BaseController
 
   def retention_metrics
     @metrics = []
-    (1..32).each do |months_ago|
+    (1..19).each do |months_ago|
       @metrics << retention_metrics_counts(months_ago)
     end
     render layout: false
