@@ -1,10 +1,10 @@
 class MotionMailerPreview < ActionMailer::Preview
-  def new_motion_created
+  def motion_created
     motion = FactoryGirl.create(:motion)
     group = motion.group
     user = FactoryGirl.create(:user)
     group.add_member!(user)
-    MotionMailer.new_motion_created(motion, user)
+    MotionMailer.motion_created(motion, user)
   end
 
   def motion_closed
