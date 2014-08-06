@@ -12,6 +12,7 @@ Loomio::Application.routes.draw do
     resources :stats, only: [] do
       collection do
         get :group_metrics
+        get :retention_metrics
         get :events
       end
     end
