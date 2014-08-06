@@ -21,7 +21,6 @@ Loomio::Application.routes.draw do
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
   get "/explore/category/:id", to: "explore#category", as: :category_explore
-  get "/groups", to: 'public_groups#index', as: :public_groups
 
   resource :search, only: :show
 
@@ -204,6 +203,7 @@ Loomio::Application.routes.draw do
   get '/contributions/thanks' => redirect('/crowd')
   get '/contributions/callback' => redirect('/crowd')
   get '/crowd' => redirect('https://love.loomio.org/')
+  get '/groups' => redirect('/explore')
 
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
   root :to => 'marketing#index'
