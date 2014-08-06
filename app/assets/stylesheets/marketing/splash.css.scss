@@ -4,9 +4,6 @@
 @import "color";
 @import "buttons";
 
-// * { border: 1px solid #333; }
-
-
 body, h1, h2, h3, h4, h5 {
   font-family: 'OpenSans-Light', 'OpenSans', sans-serif;
   font-weight: 300;
@@ -682,4 +679,8 @@ a:hover { text-decoration: none; }
   img.full-width {
     width: 100%;
   }
+}
+
+.cache-clear{
+  margin: 10px;
 }
