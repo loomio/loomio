@@ -1,4 +1,6 @@
 zh-TW:
+  explore:
+    header: "探索公開群組"
   try_it:
     header: "試試 Loomio"
     start_a_group: "要在您的社群中作決策，請啟動群組。"
@@ -181,6 +183,8 @@ zh-TW:
   start_new_group_hint: "開始作出決定"
   find_a_group: "找尋群組"
   find_a_group_hint: "瀏覽公開群組"
+  search_for_group: "搜尋群組⋯"
+  no_groups_found: "沒有發現有關這名稱的群組！"
   no_group_header: "歡迎使用 Loomio Beta"
   empty_notifications: "您目前沒有新的通知。"
   see_all_notifications: "查看所有通知"
@@ -220,6 +224,8 @@ zh-TW:
       edit_comments: 任何時候都能編輯他們的意見
       edit_discussions: 編輯在此群組中任何討論串的論述
       start_discussions: 啟動討論串
+      vote: 在提案上投票
+      create_subgroups: 建立子群組
     motions_can_be_edited: 編輯他們已經開始投票的提案
     visible_to:
       label: 誰能找到這個群組？
@@ -257,10 +263,15 @@ zh-TW:
     c7: 新增 / 移除協作者。
     c8: 刪除討論串。
     c9: 刪除意見。
+    c10: 建立子群組。
+    c11: 啟動討論串。
+    c13: 在提案上投票。
     m1: 刪除他們自己的意見。
     m3: 編輯他們所啟動的提案標題與描述，直到有人已經陳述他們的立場。
     m4: 編輯他們所啟動的提議定案日期，直到他們定案。
+    m5: 編輯任何討論串的標題與論述。
     m6: 啟動子群組，他們會成為子群組的協作者。
+    m7: 任何時候都能編輯他們自己的意見。
   group_privacy:
     visible_to:
       public: 公開陳列群組。
@@ -816,9 +827,6 @@ zh-TW:
       subject: "昨日 Loomio"
       mark_as_read: 設為已讀
       thanks_for_reading: 感謝您的閱讀，祝您有美好的一天！
-      click_here_to_mark_all_as_read_html: |
-        這些是昨日 Loomio 發生的大小事。
-        您已讀過的討論串，點擊<a href="%{link}">設為已讀</a>就能從您的 Loomio 收件箱中移除。
       marked_as_read_success: "電子郵件所列的討論串現在設為已讀了"
     group_email:
       intro: "%{who} 在 %{group}裡發布了一則公告："
@@ -994,6 +1002,7 @@ zh-TW:
     email: "Email"
     start_group: "啟動群組！"
   group_categories:
+    all: "全部"
     blank: "不分類"
     economics: "經濟"
     activist: "社運組織"

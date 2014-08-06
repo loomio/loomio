@@ -42,9 +42,9 @@ module Loomio
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-
+    # config.i18n.available_locales =
+    config.i18n.enforce_available_locales = false
     # fallback_tree = LocalesHelper::FALLBACKS   # can this be done without loading the app in the wrong order?
-
     fallback_tree = { :'pt-PT' => :'pt-BR',
                       :zh => :'zh-TW',
                       :ca => :es    }

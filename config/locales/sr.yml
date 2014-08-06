@@ -212,6 +212,8 @@ sr:
   start_new_group_hint: "Da počneš donositi odluke"
   find_a_group: "Pronađi grupu"
   find_a_group_hint: "Istraži javne grupe"
+  search_for_group: "Traži grupu..."
+  no_groups_found: "Nisu pronađene grupe sa tim nazivom!"
   no_group_header: "Dobrodošli na Lumio Beta"
   empty_notifications: "Nemate nikakvih obaveštenja još uvek."
   see_all_notifications: "Vidi sva obaveštenja"
@@ -450,6 +452,7 @@ sr:
   edit_discussion: "Uredi diskusiju"
   move_discussion: "Premesti diskusiju"
   move_discussion_to_hidden_group: "Ova diskusija je trenutno javna. Premeštanjem u ovu skrivenu grupu učinićete je privatnom."
+  move_discussion_to_public_group: "Ova diskusija je trenutno privatna. Premeštanje u javne grupe učiniće je javnom."
   move_discussion_where: "Gde želite da premestite ovu diskusiju?"
   delete_discussion: "Obriši diskusiju"
   confirm_delete_discussion: "Da li ste sigurni da želite trajno obrisati ovu diskusiju?"
@@ -875,9 +878,6 @@ sr:
       subject: "Juče na Lumiju"
       mark_as_read: Označi kao pročitano
       thanks_for_reading: Hvala na čitanju, prijatan dan!
-      click_here_to_mark_all_as_read_html: |
-        Evo šta se juče dešavalo na Lumiju.
-        Kada pročitate, škljocnite na <a href="%{link}">označi kao pročitano</a> da uklonite iz svojih Lumio poruka.
       marked_as_read_success: "Sve ePoruke su označene kao pročitane"
     group_email:
       intro: "%{who} je napravio/la objavu za grupu %{group}:"

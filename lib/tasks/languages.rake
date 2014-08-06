@@ -43,7 +43,6 @@ namespace :languages do
   task :check_interpolations, [:locales] => [:environment] do |t, args|
     args.with_defaults(:locales => LocalesHelper::LOCALE_STRINGS + LocalesHelper::EXPERIMENTAL_LOCALE_STRINGS)
 
-
     print "\n"
 
     RESOURCES.values.each do |file|

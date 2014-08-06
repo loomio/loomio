@@ -811,9 +811,6 @@ ro:
       subject: "Ieri pe Loomio"
       mark_as_read: Marcheaza ca citit
       thanks_for_reading: Multumesc pentru lectura, o zi buna!
-      click_here_to_mark_all_as_read_html: |
-        Aici ai tot ce s-a petrecut ieri pe Loomio.
-        Cand ai terminat de citit fa click pe <a href="%{link}">marcheaza ca citit</a> pentru a elimina de pe Loomio Inbox.
       marked_as_read_success: "Tot continutul acestui email a fost marcat ca fiind citit"
     group_email:
       intro: "%{who} a facut un anunt in %{group}:"
