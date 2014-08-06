@@ -1,4 +1,6 @@
 class Admin::StatsController < Admin::BaseController
+  helper_method :format_percents
+
   def group_metrics
     @metrics = []
     group = Group.find params[:id]
@@ -11,13 +13,11 @@ class Admin::StatsController < Admin::BaseController
 
   def retention_metrics
     @metrics = []
-    (1..36).each do |months_ago|
+    (1..19).each do |months_ago|
       @metrics << retention_metrics_counts(months_ago)
     end
     render layout: false
   end
-
-  private
 
   def retention_metrics_counts(months_ago)
     start_date = months_ago.months.ago.at_beginning_of_month
@@ -27,13 +27,25 @@ class Admin::StatsController < Admin::BaseController
 
     acquired_groups = Group.parents_only.where(created_at: start_date..end_date)
     activated_groups = acquired_groups.more_than_n_members(2)
+    small_groups = acquired_groups.more_than_n_members(2).less_than_n_members(20)
+    medium_groups = acquired_groups.more_than_n_members(20).less_than_n_members(50)
+    large_groups = acquired_groups.more_than_n_members(50)
+
     retained_groups_30 = activated_groups.active_discussions_since(r30_date)
     retained_groups_90 = activated_groups.active_discussions_since(r90_date)
+    retained_small_groups_90 = small_groups.active_discussions_since(r90_date)
+    retained_medium_groups_90 = medium_groups.active_discussions_since(r90_date)
+    retained_large_groups_90 = large_groups.active_discussions_since(r90_date)
+
     acquired_count = acquired_groups.count
     activated_count = activated_groups.count
     trial_count = acquired_groups.count - activated_count
     r30 = retained_groups_30.count.to_f / activated_groups.count
     r90 = retained_groups_90.count.to_f / activated_groups.count
+    r90_small = retained_small_groups_90.count.to_f / small_groups.count
+    r90_medium = retained_medium_groups_90.count.to_f / medium_groups.count
+    r90_large = retained_large_groups_90.count.to_f / large_groups.count
+
     { months_ago: months_ago,
       acquired_count: acquired_count,
       activated_count: activated_count,
@@ -45,7 +57,17 @@ class Admin::StatsController < Admin::BaseController
       start_date: start_date,
       end_date: end_date,
       r30_date: r30_date,
-      r90_date: r90_date }
+      r90_date: r90_date,
+      small_groups: small_groups.count,
+      medium_groups: medium_groups.count,
+      large_groups: large_groups.count,
+      retained_small_groups_90: retained_small_groups_90.count,
+      retained_medium_groups_90: retained_medium_groups_90.count,
+      retained_large_groups_90: retained_large_groups_90.count,
+      r90_small: r90_small,
+      r90_medium: r90_medium,
+      r90_large: r90_large
+    }
   end
 
   def group_metrics_counts(g)
@@ -85,4 +107,7 @@ class Admin::StatsController < Admin::BaseController
       coordinators: g.coordinators.map(&:name)}
   end
 
+  def format_percents(float)
+    float > 0 ? "#{(float * 100).round(1)}%" : "0"
+  end
 end
