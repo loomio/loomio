@@ -173,11 +173,11 @@ def percent_complete(locale, language_stats)
 end
 
 def green(string)
-  "\e[92m#{string}\e[0m"
+  "\e[32m#{string}\e[0m"
 end
 
 def red(string)
-  "\e[91m#{string}\e[0m"
+  "\e[31m#{string}\e[0m"
 end
 
 def grey(string)
@@ -185,7 +185,7 @@ def grey(string)
 end
 
 def cyan(string)
-  "\e[96m#{string}\e[0m"
+  "\e[36m#{string}\e[0m"
 end
 
 def bold(string)
