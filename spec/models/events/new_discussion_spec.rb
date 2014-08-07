@@ -27,7 +27,7 @@ describe Events::NewDiscussion do
     before do
       discussion.stub(:group_members_without_discussion_author).and_return([user])
       user.stub(:email_notifications_for_group?).and_return(false)
-      UserMailer.stub_chain(:new_discussion, :deliver)
+      ThreadMailer.stub_chain(:new_discussion, :deliver)
     end
 
     context 'if user is subscribed to group notification emails' do
@@ -36,7 +36,7 @@ describe Events::NewDiscussion do
       end
 
       it 'emails group_members_without_motion_author new_motion_created' do
-        UserMailer.should_receive(:new_discussion).with(discussion, user)
+        ThreadMailer.should_receive(:new_discussion).with(discussion, user)
         event.save
       end
     end
@@ -48,7 +48,7 @@ describe Events::NewDiscussion do
       end
 
       it 'does not email new motion created' do
-        UserMailer.should_not_receive(:new_discussion)
+        ThreadMailer.should_not_receive(:new_discussion)
         event.save
       end
     end
