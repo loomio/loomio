@@ -6,6 +6,7 @@ class DiscussionService
   def self.like_comment(user, comment)
     user.ability.authorize!(:like, comment)
     comment_vote = comment.like(user)
+    DiscussionReader.for(discussion: comment.discussion, user: user).follow!
     Events::CommentLiked.publish!(comment_vote)
   end
 
@@ -19,6 +20,12 @@ class DiscussionService
 
     author.ability.authorize! :add_comment, comment.discussion
     return false unless comment.save
+    DiscussionReader.for(discussion: comment.discussion, user: author).follow!
+
+    comment.mentioned_group_members.each do |mentioned_user|
+      DiscussionReader.for(discussion: comment.discussion, user: mentioned_user).follow!
+    end
+
     comment.discussion.update_attribute(:last_comment_at, comment.created_at)
     event = Events::NewComment.publish!(comment)
     event
@@ -33,24 +40,25 @@ class DiscussionService
     user = discussion.author
     discussion.inherit_group_privacy!
 
-    return false unless discussion.save
-
     user.ability.authorize! :create, discussion
 
+    return false unless discussion.save
     user.update_attributes(uses_markdown: discussion.uses_markdown)
+
+    DiscussionReader.for(discussion: discussion, user: user).follow!
+
     Events::NewDiscussion.publish!(discussion)
   end
 
-  def self.edit_discussion(user, discussion_params, discussion)
+  def self.edit_discussion(user, params, discussion)
     user.ability.authorize! :update, discussion
 
-    discussion.private = discussion_params[:private]
-    discussion.title = discussion_params[:title]
-    discussion.description = discussion_params[:description]
-    discussion.uses_markdown = discussion_params[:uses_markdown]
+    [:private, :title, :description, :uses_markdown].each do |attr|
+      discussion.send("#{attr}=", params[attr]) if params.has_key?(attr)
+    end
 
     if user.ability.can? :update, discussion.group
-      discussion.iframe_src = discussion_params[:iframe_src]
+      discussion.iframe_src = params[:iframe_src]
     end
 
     if discussion.valid?
@@ -62,6 +70,7 @@ class DiscussionService
         Events::DiscussionDescriptionEdited.publish!(discussion, user)
       end
       user.update_attributes(uses_markdown: discussion.uses_markdown)
+      DiscussionReader.for(discussion: discussion, user: user).follow!
       discussion.save
     else
       false

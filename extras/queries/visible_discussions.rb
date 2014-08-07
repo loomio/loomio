@@ -32,6 +32,13 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
+  def following
+    followed_group_ids = @user.memberships.where(following_by_default: true).pluck(:group_id)
+    @relation = @relation.joins("LEFT OUTER JOIN discussion_readers dv ON dv.discussion_id = discussions.id AND dv.user_id = #{@user.id}")
+    @relation = @relation.where('(dv.following = :true) OR (dv.following IS NULL and discussions.group_id IN (:followed_group_ids))', {true: true, followed_group_ids: followed_group_ids})
+    self
+  end
+
   def self.apply_privacy_sql(user: nil, group_ids: [], relation: nil)
     user_group_ids = user.nil? ? [] : user.cached_group_ids
 
