@@ -1068,6 +1068,10 @@ en:
       closing_in_24_hours: "Closing in 24 hours"
       headline: "%{author}'s proposal in %{group} is closing soon:"
       summary: "Summary"
+    thread_mailer:
+      footer:
+        comment: "Reply to this comment directly or"
+        link_text: "view it on Loomio"
     verification:
       header: "You're almost done!"
       intro: "Please click this verification link to finalise your request:"

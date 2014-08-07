@@ -28,4 +28,8 @@ module EmailHelper
                                    time_finish: @time_finish.utc.to_i,
                                    format: format)
   end
+
+  def comment_url_helper(comment)
+    discussion_url(comment.discussion, anchor: "comment-#{comment.id}")
+  end
 end

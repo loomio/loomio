@@ -19,6 +19,19 @@ class ThreadMailer < BaseMailer
     end
   end
 
+  def new_comment(comment, user)
+    @comment = comment
+    @discussion = comment.discussion
+    @rendered_comment_body = render_rich_text(comment.body, comment.uses_markdown)
+    locale = locale_fallback(user.locale, comment.author.locale)
+    I18n.with_locale(locale) do
+      mail  to: user.email,
+            from: from_user_via_loomio(comment.author),
+            reply_to: reply_to_address(discussion: @discussion, user: user),
+            subject: thread_subject
+    end
+  end
+
   def mentioned(user, comment)
     @user = user
     @comment = comment
