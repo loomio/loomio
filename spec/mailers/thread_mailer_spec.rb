@@ -96,6 +96,10 @@ describe ThreadMailer do
       expect(@email.body.encoded).to include(motion.description)
     end
 
+    it 'has the pie-graph in the body' do
+      expect(@email.body.encoded).to include('chart.googleapis.com')
+    end
+
     context 'user has not voted' do
       it 'has the vote buttons in the body' do
         expect(@email.body.encoded).to include(new_motion_vote_url(motion, position: 'yes'))

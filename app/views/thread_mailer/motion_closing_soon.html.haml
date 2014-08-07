@@ -1,9 +1,16 @@
 %p= t(:"email.thread_mailer.motion_closing_soon")
 %h4= link_to @motion.name, motion_url(@motion)
 
--if @rendered_motion_description.present?
-  = @rendered_motion_description
+%table
+  %tr
+    %td
+      = render 'motion_pie', motion: @motion
+    %td
+      -if @rendered_motion_description.present?
+        = @rendered_motion_description
 
 - unless @motion.user_has_voted?(@user)
   %h4= t(:"help.have_your_say")
   =render 'vote_buttons', motion: @motion
+
+

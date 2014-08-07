@@ -25,4 +25,10 @@ class ThreadMailerPreview < ActionMailer::Preview
     motion = FactoryGirl.create :motion
     ThreadMailer.new_motion motion, user
   end
+
+  def motion_closing_soon
+    user = FactoryGirl.create :user
+    motion = FactoryGirl.create :motion
+    ThreadMailer.motion_closing_soon motion, user
+  end
 end
