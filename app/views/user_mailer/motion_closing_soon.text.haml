@@ -8,7 +8,7 @@
   =@motion.description
 \
 = t(:"email.proposal_closing_soon.closes_at")
-= @motion.closing_at.in_time_zone(TimeZoneToCity.convert @user.time_zone).strftime('%l:%M%P - %A %-d %b')
+= motion_closing_time_for @user
 \
 - if @motion.unique_votes.present?
   = "#{t :positions}:"
