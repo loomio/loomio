@@ -5,6 +5,4 @@
 %br
 = render_email_plaintext @vote.statement
 
-%hr
-= t :"email.thread_mailer.footer.generic"
-= link_to t(:"email.thread_mailer.footer.link_text"), motion_url(@motion)
+= render "footer", link: motion_url(@motion)

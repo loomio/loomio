@@ -1,7 +1,5 @@
 - past_tense_position = I18n.t("position_verbs.past_tense.#{@position}")
 = "#{@vote.author.name} #{t('notifications.new_vote', position: past_tense_position)}:"
-= @vote.statement
 \
-\---
-= t(:"email.thread_mailer.footer.generic") + " " + t(:"email.thread_mailer.footer.link_text") + ":"
-= motion_url(@motion)
+= @vote.statement
+= render "footer", link: motion_url(@motion)
