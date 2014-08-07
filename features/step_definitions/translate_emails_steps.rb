@@ -43,13 +43,13 @@ end
 
 Then(/^the new proposal email should be delivered to "(.*?)" in Spanish$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
-  email = ThreadMailer.motion_created(@motion, user)
+  email = UserMailer.motion_created(@motion, user)
   email.body.encoded.should include(I18n.t(:"help.have_your_say", locale: "es")[0..9])
 end
 
 Then(/^the new proposal email should be delivered to "(.*?)" in English$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
-  email = ThreadMailer.motion_created(@motion, user)
+  email = UserMailer.motion_created(@motion, user)
   email.body.encoded.should include(I18n.t(:"help.have_your_say", locale: "en"))
 end
 
@@ -108,12 +108,12 @@ Given(/^"(.*?)" has set a proposal outcome$/) do |arg1|
 end
 
 Then(/^the proposal outcome email should be delivered to "(.*?)" in Spanish$/) do |arg1|
-  email = ThreadMailer.motion_outcome_created(@motion, User.find_by_name(arg1))
+  email = UserMailer.motion_outcome_created(@motion, User.find_by_name(arg1))
   email.body.encoded.should include(I18n.t("outcome", locale: "es"))
 end
 
 Then(/^the proposal outcome email should be delivered to "(.*?)" in English$/) do |arg1|
-  email = ThreadMailer.motion_outcome_created(@motion, User.find_by_name(arg1))
+  email = UserMailer.motion_outcome_created(@motion, User.find_by_name(arg1))
   email.body.encoded.should include(I18n.t("outcome", locale: "en"))
 end
 
