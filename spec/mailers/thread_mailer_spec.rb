@@ -14,8 +14,8 @@ describe ThreadMailer do
     end
 
     it 'sets the reply_to so replies attach to the end of the thread' do
-      expect(@email.reply_to).to include(user.id.to_s)
-      expect(@email.reply_to).to include(discussion.key)
+      @email.reply_to.should include(user.id.to_s)
+      @email.reply_to.should include(discussion.key)
     end
   end
 
