@@ -5,6 +5,14 @@ class ThreadMailerPreview < ActionMailer::Preview
     ThreadMailer.new_discussion(discussion, user)
   end
 
+  def new_comment
+    user = FactoryGirl.create :user
+    discussion = FactoryGirl.create :discussion
+    rich_text_body = "I am a comment with a **bold bit**"
+    comment = FactoryGirl.create :comment, discussion: discussion, body: rich_text_body, uses_markdown: true
+    ThreadMailer.new_comment comment, user
+  end
+
   def mentioned
     user = FactoryGirl.create(:user)
     discussion = FactoryGirl.create(:discussion)
