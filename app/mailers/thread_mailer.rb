@@ -33,6 +33,7 @@ class ThreadMailer < BaseMailer
     @user = user
     @motion = motion
     @discussion = motion.discussion
+    @group = @discussion.group
     send_thread_email_for(@motion)
   end
 

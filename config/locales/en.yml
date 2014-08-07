@@ -1069,10 +1069,8 @@ en:
       headline: "%{author}'s proposal in %{group} is closing soon:"
       summary: "Summary"
     thread_mailer:
-      footer:
-        comment: "Reply to this comment directly or"
-        generic: "Reply to this message directly or"
-        link_text: "view it on Loomio"
+      footer_text: "Reply to this email directly or view it on Loomio:"
+      footer_html: "Reply to this email directly or <a href='%{link}'>view it on Loomio</a>."
     verification:
       header: "You're almost done!"
       intro: "Please click this verification link to finalise your request:"

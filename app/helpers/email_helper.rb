@@ -45,4 +45,8 @@ module EmailHelper
       "https://loomio-uploads.s3.amazonaws.com/themes/app_logos/000/000/004/original/hand-abstain-18.png?1403064137"
     end
   end
+
+  def motion_closing_time_for(user)
+    @motion.closing_at.in_time_zone(TimeZoneToCity.convert user.time_zone).strftime('%A %-d %b - %l:%M%P')
+  end
 end

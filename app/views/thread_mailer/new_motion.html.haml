@@ -1,1 +1,10 @@
-new_motion.html.haml
+%p= t(:"email.new_motion_created.context", author: @motion.author_name, group_full_name: @group.full_name)
+%h4= link_to @motion.name, motion_url(@motion)
+
+-if @rendered_motion_description.present?
+  = @rendered_motion_description
+
+%p= t(:"email.proposal_closing_soon.closes_on") + ' ' + motion_closing_time_for(@user)
+
+%h4= t(:"help.have_your_say")
+= render 'thread_mailer/vote_buttons', motion: @motion

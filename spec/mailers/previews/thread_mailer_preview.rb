@@ -20,6 +20,12 @@ class ThreadMailerPreview < ActionMailer::Preview
     ThreadMailer.new_vote vote, user
   end
 
+  def new_motion
+    user = FactoryGirl.create :user
+    motion = FactoryGirl.create :motion
+    ThreadMailer.new_motion motion, user
+  end
+
   def mentioned
     user = FactoryGirl.create(:user)
     discussion = FactoryGirl.create(:discussion)

@@ -1,1 +1,11 @@
-new_motion.text.haml
+= t(:"email.new_motion_created.context", author: @motion.author_name, group_full_name: @group.full_name)
+\
+= @motion.name
+\
+-if @motion.description.present?
+  = @motion.description
+\
+= t(:"email.proposal_closing_soon.closes_on") + ' ' + motion_closing_time_for(@user)
+\
+= t(:"help.have_your_say") + ":"
+= motion_url(@motion)
