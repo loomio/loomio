@@ -1,4 +1,4 @@
-%p= t(:"email.new_motion_created.context", author: @motion.author_name, group_full_name: @group.full_name)
+%p= t(:"email.thread_mailer.new_motion", who: @motion.author_name)
 %h4= link_to @motion.name, motion_url(@motion)
 
 -if @rendered_motion_description.present?
@@ -7,4 +7,4 @@
 %p= t(:"email.proposal_closing_soon.closes_on") + ' ' + motion_closing_time_for(@user)
 
 %h4= t(:"help.have_your_say")
-= render 'thread_mailer/vote_buttons', motion: @motion
+= render 'vote_buttons', motion: @motion

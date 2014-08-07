@@ -34,15 +34,17 @@ class ThreadMailer < BaseMailer
     @motion = motion
     @discussion = motion.discussion
     @group = @discussion.group
+    @rendered_motion_description = render_rich_text(@motion.description, false)
     send_thread_email_for(@motion)
   end
 
-  def mentioned(user, comment)
+  def motion_closing_soon(motion, user)
     @user = user
-    @comment = comment
-    @rendered_comment_body = render_rich_text(comment.body, comment.uses_markdown)
-    @discussion = comment.discussion
-    send_thread_email_for(@comment)
+    @motion = motion
+    @discussion = motion.discussion
+    @group = @discussion.group
+    @rendered_motion_description = render_rich_text(@motion.description, false)
+    send_thread_email_for(@motion)
   end
 
   private

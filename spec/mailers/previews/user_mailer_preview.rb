@@ -50,6 +50,13 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.added_to_group(user: user, inviter: inviter, group: group, message: message)
   end
 
+  def mentioned
+    user = FactoryGirl.create(:user)
+    discussion = FactoryGirl.create(:discussion)
+    comment = FactoryGirl.create(:comment, discussion: discussion, body: "Hey there @#{user.username}, I love what you said and want to find out more about the stuff you mentioned, can we please have a cup of tea and a bike ride with me?")
+    UserMailer.mentioned(user, comment)
+  end
+
   def motion_blocked
     motion = FactoryGirl.create(:motion)
     vote = FactoryGirl.create(:vote, motion: motion, position: 'block')

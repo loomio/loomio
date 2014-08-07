@@ -25,11 +25,4 @@ class ThreadMailerPreview < ActionMailer::Preview
     motion = FactoryGirl.create :motion
     ThreadMailer.new_motion motion, user
   end
-
-  def mentioned
-    user = FactoryGirl.create(:user)
-    discussion = FactoryGirl.create(:discussion)
-    comment = FactoryGirl.create(:comment, discussion: discussion, body: "Hey there @#{user.username}, I love what you said and want to find out more about the stuff you mentioned, can we please have a cup of tea and a bike ride with me?")
-    ThreadMailer.mentioned(user, comment)
-  end
 end
