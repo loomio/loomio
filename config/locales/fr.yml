@@ -813,9 +813,6 @@ fr:
       subject: "Hier sur Loomio"
       mark_as_read: Marquer comme lu
       thanks_for_reading: Merci d'avoir lu ceci, passez une bonne journée !
-      click_here_to_mark_all_as_read_html: |
-        Voici ce qui s'est passé hier sur Loomio.
-        Lorsque vous l'avez lu, cliquez sur <a href="%{link}">marquer comme lu</a> pour le supprimer de votre Boîte de réception dans Loomio.
       marked_as_read_success: "Tout le contenu de cet email a été marqué comme lu"
     group_email:
       intro: "%{who} à fait une annonce à %{group}:"

@@ -864,9 +864,6 @@ it:
       subject: "Ieri su Loomio"
       mark_as_read: Contrassegnato come letto
       thanks_for_reading: Grazie per aver letto, buona giornata!
-      click_here_to_mark_all_as_read_html: |
-        Queste sono le cose successe ieri su Loomio.
-        Una volta letto, clicca <a href="%{link}">contrassegnato come letto</a> per rimuoverlo dalla cartella 'Loomio Inbox'.
       marked_as_read_success: "Tutte le email sono state contrassegnate come lette"
     group_email:
       intro: "%{who} ha fatto un annuncio ha %{group}:"

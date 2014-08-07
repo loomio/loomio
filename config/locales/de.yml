@@ -198,6 +198,8 @@ de:
   start_new_group_hint: "Um gemeinsam Entscheidungen zu treffen"
   find_a_group: "Finde eine Gruppe"
   find_a_group_hint: "Öffentliche Gruppen erkunden"
+  search_for_group: "Eine Gruppe suchen..."
+  no_groups_found: "Keine Gruppen dieses Namens gefunden!"
   no_group_header: "Willkommen bei der Loomio Beta"
   empty_notifications: "Du hast noch keine Benachrichtigungen."
   see_all_notifications: "Alle Benachrichtigungen ansehen"
@@ -436,6 +438,7 @@ de:
   edit_discussion: "Diskussion bearbeiten"
   move_discussion: "Diskussion verschieben"
   move_discussion_to_hidden_group: "Diese Diskussion ist im Moment öffentlich. Wenn sie in diese versteckte Gruppe verschoben wird, wird sie als privat markiert."
+  move_discussion_to_public_group: "Diese Diskussion ist momentan nichtöffentlich. Durch das Verschieben in diese öffentliche Gruppe würde sie öffentlich werden."
   move_discussion_where: "Wohin möchtest Du diese Diskussion verschieben?"
   delete_discussion: "Diskussion löschen"
   confirm_delete_discussion: "Bist Du sicher, dass Du diese Diskussion unwiderruflich löschen willst?"
@@ -845,8 +848,8 @@ de:
       mark_as_read: Als gelesen markieren
       thanks_for_reading: Vielen Dank fürs Lesen. Wir wünschen einen schönen Tag!
       click_here_to_mark_all_as_read_html: |
-        Hier ist was gestern auf Loomio passiert ist.
-        wenn Du es gelesen hast, klicke auf <a href="%{link}">als gelesen markieren</a> um es von Deiner Loomio-Inbox zu löschen.
+        Hier ist, was gestern auf Loomio passiert ist.
+        Wenn Du es gelesen hast, klicke auf <a href="%{link}">als gelesen markieren</a>, um es von Deiner Loomio-Inbox zu löschen.
       marked_as_read_success: "Alles aus der eMail wurde als gelesen markiert"
     group_email:
       intro: "%{who} hat eine Ankündigung zu %{group}:"

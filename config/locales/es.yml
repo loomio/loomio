@@ -198,6 +198,8 @@ es:
   start_new_group_hint: "Empieza a tomar decisiones "
   find_a_group: "Encuentra un grupo"
   find_a_group_hint: "Explora grupos abiertos al público"
+  search_for_group: "Buscar un grupo..."
+  no_groups_found: "¡No encontrados grupos con ese nombre!"
   no_group_header: "Bienvenid@ a Loomio Beta"
   empty_notifications: "Todavía no tienes notificaciones."
   see_all_notifications: "Ver todas tus notificaciones"
@@ -219,6 +221,7 @@ es:
     message: "<p>Esta es la <strong> página del grupo</strong>. A la izquierda se encuentra la lista de todas las discusiones de este grupo.</p><p>Cuando quieras que el grupo discuta sobre otro tema, empieza una nueva discusión.</p>"
   dashboard_helper_text:
     header: "Bienvenido/a a tu página de inicio"
+    message: "<p>La página de inicio muestra todas las discusiones actuales de todos los grupos que eres miembro.</p><p>Puedes empezar una discusión haciendo click  en el botón \"Empezar discusión\".</p>"
   prompt_visitor_to_authenticate:
     header: "Accede a tu cuenta o únete al grupo para participar"
     body: "Si eres miembro de este grupo, has de acceder a tu cuenta para participar"
@@ -435,6 +438,7 @@ es:
   edit_discussion: "Editar discusión "
   move_discussion: "Mover discusión"
   move_discussion_to_hidden_group: "Actualmente, esta discusión es pública. Trasladarla a un grupo oculto la convertirá en privada."
+  move_discussion_to_public_group: "Actualmente, esta discusión es privada. Trasladarla a un grupo público la convertirá en pública."
   move_discussion_where: "¿A dónde te gustaría trasladar esta discusión?"
   delete_discussion: "Eliminar discusión"
   confirm_delete_discussion: "¿Estás seguro de que quieres eliminar permanentemente esta discusión?"
@@ -838,9 +842,6 @@ es:
       subject: "Ayer en Loomio"
       mark_as_read: Marcar como leído
       thanks_for_reading: Gracias por leer, ¡que tengas un buen día!
-      click_here_to_mark_all_as_read_html: |
-        Esto es lo que pasó ayer en Loomio.
-        Una vez que lo hayas leído, haz click en <a href="%{link}">marcar como leído</a> para eliminarlo de tu bandeja de entrada de Loomio.
       marked_as_read_success: "Todo el contenido del correo ha sido marcado como leído"
     group_email:
       intro: "%{who} hizo un anuncio en %{group}:"

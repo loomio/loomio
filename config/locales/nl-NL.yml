@@ -198,6 +198,8 @@ nl-NL:
   start_new_group_hint: "Om te beginnen met het maken van beslissingen"
   find_a_group: "Vind een groep"
   find_a_group_hint: "Om openbare groepen te ontdekken"
+  search_for_group: "Zoek naar een groep..."
+  no_groups_found: "Geen groepen met die naam gevonden!"
   no_group_header: "Welkom bij Loomio Beta"
   empty_notifications: "Je hebt nog geen meldingen."
   see_all_notifications: "Bekijk alle meldingen"
@@ -436,6 +438,7 @@ nl-NL:
   edit_discussion: "Bewerk discussie"
   move_discussion: "Verplaats discussie"
   move_discussion_to_hidden_group: "Deze discussie is op het moment openbaar. Door de discussie te verplaatsen naar een verborgen groep, zal deze afgeschermd worden."
+  move_discussion_to_public_group: "De discussie is momenteel besloten. Door de discussie naar een openbare groep te verplaatsen wordt deze openbaar."
   move_discussion_where: "Waar wil je de discussie naartoe verplaatsen?"
   delete_discussion: "Verwijder discussie"
   confirm_delete_discussion: "Weet je zeker dat je deze discussie permanent wilt verwijderen?"
@@ -845,9 +848,6 @@ nl-NL:
       subject: "Gisteren op Loomio"
       mark_as_read: Markeer als gelezen
       thanks_for_reading: Bedankt voor het lezen, een fijne dag gewenst!
-      click_here_to_mark_all_as_read_html: |
-        Hier is alles dat gisteren op Loomio gebeurde.
-        Als je het gelezen hebt, klik <a href="%{link}">markeer als gelezen</a> om het uit je Loomio Inbox te halen.
       marked_as_read_success: "Alles uit de e-mail is gemarkeerd als gelezen"
     group_email:
       intro: "%{who} maakte een aankondiging aan %{group}:"

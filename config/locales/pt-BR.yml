@@ -198,6 +198,8 @@ pt-BR:
   start_new_group_hint: "Para iniciar a tomada de decisões"
   find_a_group: "Encontre um grupo"
   find_a_group_hint: "Para descobrir grupos públicos"
+  search_for_group: "Procure por um grupo..."
+  no_groups_found: "Nenhum grupo encontrado com esse nome!"
   no_group_header: "Bem-vindo ao Loomio Beta"
   empty_notifications: "Você ainda não tem notificações."
   see_all_notifications: "Ver todas as notificações"
@@ -438,6 +440,7 @@ pt-BR:
   edit_discussion: "Editar discussão"
   move_discussion: "Mover discussão"
   move_discussion_to_hidden_group: "Esta discussão atualmente é pública. Movê-la para este grupo secreto irá torná-la privada."
+  move_discussion_to_public_group: "Esta discussão é atualmente privada. Movê-la para este grupo público irá torná-la pública."
   move_discussion_where: "Para onde você gostaria de mover esta discussão?"
   delete_discussion: "Apagar discussão"
   confirm_delete_discussion: "Tem certeza que quer apagar permanentemente esta discussão?"
@@ -830,8 +833,8 @@ pt-BR:
       mark_as_read: Marcar como lida
       thanks_for_reading: Obrigado por ler, tenha um ótimo dia!
       click_here_to_mark_all_as_read_html: |
-        Aqui está o que aconteceu ontem no Loomio.
-        Depois que você ler, clique em <a href="%{link}">marcar como lida</a> para removê-la da caixa de entrada do seu Loomio.
+        Aconteceu no Loomio ontem.
+        Depois de ler, clique em <a href="%{link}">marcar como lida</a> para remover da caixa de entrada do seu Loomio.
       marked_as_read_success: "Tudo no email foi marcado como lido"
     group_email:
       intro: "%{who} anunciou para %{group}:"
