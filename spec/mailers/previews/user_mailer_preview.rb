@@ -83,6 +83,7 @@ class UserMailerPreview < ActionMailer::Preview
     user = FactoryGirl.create(:user)
     motion = FactoryGirl.create(:motion)
     motion.group.add_member!(user)
+    vote = FactoryGirl.create(:vote, motion: motion)
     UserMailer.motion_closing_soon(user, motion)
   end
 

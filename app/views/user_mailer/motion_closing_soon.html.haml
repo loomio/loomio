@@ -6,16 +6,21 @@
     %p.author-action= t(:"email.proposal_closing_soon.headline", author: @motion.author_name, group: @group.full_name)
     %p.motion-name= link_to @motion.name, motion_url(@motion, @utm_hash)
 
-    -if @rendered_motion_description.present?
-      = @rendered_motion_description
+    %table
+      %tr
+        %td
+          = render 'thread_mailer/motion_pie', motion: @motion
+        %td
+          -if @rendered_motion_description.present?
+            = @rendered_motion_description
 
     %p
       = t(:"email.proposal_closing_soon.closes_at")
-      = @motion.closing_at.in_time_zone(TimeZoneToCity.convert @user.time_zone).strftime('%l:%M%P - %A %-d %b')
+      = motion_closing_time_for(@user)
 
     - unless @motion.user_has_voted?(@user)
       %h4.have-say-title= t(:"help.have_your_say")
-      =render '/thread_mailer/vote_buttons', motion: @motion
+      =render 'thread_mailer/vote_buttons', motion: @motion
       %br
 
     -if @motion.unique_votes.present?
