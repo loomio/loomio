@@ -32,6 +32,20 @@ class ThreadMailer < BaseMailer
     end
   end
 
+  def new_vote(vote, user)
+    @vote = vote
+    @position = vote.position
+    @motion = @vote.motion
+    @discussion = @motion.discussion
+    locale = locale_fallback(user.locale, vote.author.locale)
+    I18n.with_locale(locale) do
+      mail  to: user.email,
+            from: from_user_via_loomio(vote.author),
+            reply_to: reply_to_address(discussion: @discussion, user: user),
+            subject: thread_subject
+    end
+  end
+
   def mentioned(user, comment)
     @user = user
     @comment = comment

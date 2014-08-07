@@ -1071,6 +1071,7 @@ en:
     thread_mailer:
       footer:
         comment: "Reply to this comment directly or"
+        generic: "Reply to this message directly or"
         link_text: "view it on Loomio"
     verification:
       header: "You're almost done!"
