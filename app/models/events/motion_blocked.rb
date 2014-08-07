@@ -13,7 +13,7 @@ class Events::MotionBlocked < Event
   private
 
   def notify_users!
-    ThreadMailer.delay.motion_blocked(vote)
+    UserMailer.delay.motion_blocked(vote)
     notify!(vote.motion.author)
   end
 

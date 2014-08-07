@@ -39,11 +39,11 @@ describe Events::UserMentioned do
       before do
         mentioned_user.should_receive(:subscribed_to_mention_notifications?).
                                       and_return(true)
-        UserMailer.stub_chain(:mentioned, :deliver)
+        ThreadMailer.stub_chain(:mentioned, :deliver)
       end
 
       it 'emails the mentioned user to say they were mentioned' do
-        UserMailer.should_receive(:mentioned).with(mentioned_user, comment)
+        ThreadMailer.should_receive(:mentioned).with(mentioned_user, comment)
         event.save
       end
     end
