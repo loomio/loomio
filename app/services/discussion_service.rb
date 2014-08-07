@@ -19,14 +19,35 @@ class DiscussionService
     end
 
     author.ability.authorize! :add_comment, comment.discussion
+
     return false unless comment.save
+    comment.discussion.update_attribute(:last_comment_at, comment.created_at)
+
+    # Ensure the comment author is following
+    # Ensure that mentioned users are following
+    # Create mentioned events for mentioned users
+    #
+    # Email (non mentioned, non author, followers) who are subscribed to emails
+
     DiscussionReader.for(discussion: comment.discussion, user: author).follow!
 
     comment.mentioned_group_members.each do |mentioned_user|
-      DiscussionReader.for(discussion: comment.discussion, user: mentioned_user).follow!
+      DiscussionReader.for(discussion: comment.discussion,
+                           user: mentioned_user).follow!
+
+      Events::UserMentioned.publish!(comment, mentioned_user)
     end
 
-    comment.discussion.update_attribute(:last_comment_at, comment.created_at)
+    remaining_followers = (discussion.followers -
+                           mentioned_group_members -
+                           [author])
+
+    followers_to_email = remaining_followers.select {|u| u.email_preferences.email_followed_threads? }
+
+    followers_to_email.each do |user|
+      UserMailer.new_comment(comment: comment, recipient: user)
+    end
+
     event = Events::NewComment.publish!(comment)
     event
   end

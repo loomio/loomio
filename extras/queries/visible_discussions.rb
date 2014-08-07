@@ -26,15 +26,23 @@ class Queries::VisibleDiscussions < Delegator
     @relation = obj
   end
 
+  def join_to_discussion_readers
+    unless @joined_to_discussion_readers
+      @relation = @relation.joins("LEFT OUTER JOIN discussion_readers dv ON dv.discussion_id = discussions.id AND dv.user_id = #{@user.id}")
+      @joined_to_discussion_readers = true
+    end
+    self
+  end
+
   def unread
-    @relation = @relation.joins("LEFT OUTER JOIN discussion_readers dv ON dv.discussion_id = discussions.id AND dv.user_id = #{@user.id}")
+    join_to_discussion_readers
     @relation = @relation.where('(dv.last_read_at < discussions.last_comment_at) OR dv.last_read_at IS NULL')
     self
   end
 
   def following
+    join_to_discussion_readers
     followed_group_ids = @user.memberships.where(following_by_default: true).pluck(:group_id)
-    @relation = @relation.joins("LEFT OUTER JOIN discussion_readers dv ON dv.discussion_id = discussions.id AND dv.user_id = #{@user.id}")
     @relation = @relation.where('(dv.following = :true) OR (dv.following IS NULL and discussions.group_id IN (:followed_group_ids))', {true: true, followed_group_ids: followed_group_ids})
     self
   end
