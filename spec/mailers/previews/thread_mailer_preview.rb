@@ -13,6 +13,13 @@ class ThreadMailerPreview < ActionMailer::Preview
     ThreadMailer.new_comment comment, user
   end
 
+  def new_vote
+    user = FactoryGirl.create :user
+    motion = FactoryGirl.create :motion
+    vote = FactoryGirl.create :vote, motion: motion
+    ThreadMailer.new_vote vote, user
+  end
+
   def mentioned
     user = FactoryGirl.create(:user)
     discussion = FactoryGirl.create(:discussion)

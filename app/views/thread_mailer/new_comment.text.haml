@@ -1,2 +1,5 @@
 = @comment.body
-= render 'thread_mailer/footer', kind: 'new_comment'
+\
+\---
+= t(:"email.thread_mailer.footer.comment") + " " + t(:"email.thread_mailer.footer.link_text") + ":"
+=comment_url_helper(@comment)
