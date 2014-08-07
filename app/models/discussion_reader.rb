@@ -19,6 +19,22 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
+  def follow!
+    update_attribute(:following, true)
+  end
+
+  def unfollow!
+    update_attribute(:following, false)
+  end
+
+  def following?
+    if self[:following].nil?
+      membership.following_by_default
+    else
+      self[:following]
+    end
+  end
+
   def first_read?
     last_read_at.blank?
   end
@@ -56,10 +72,6 @@ class DiscussionReader < ActiveRecord::Base
     last_read_at.present? and unread_content_exists?
   end
 
-  def unfollow!
-    self.following = false
-    save!
-  end
 
   def viewed!(age_of_last_read_item = Time.now)
     return if user.nil?
@@ -94,6 +106,10 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   private
+  def membership
+    discussion.group.membership_for(user)
+  end
+
   def count_read_comments(since)
     discussion.comments.where('created_at <= ?', since).count
   end

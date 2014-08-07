@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731225442) do
+ActiveRecord::Schema.define(version: 20140807012527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -161,9 +161,9 @@ ActiveRecord::Schema.define(version: 20140731225442) do
     t.datetime "updated_at"
     t.integer  "discussion_id"
     t.datetime "last_read_at"
-    t.boolean  "following",           default: true, null: false
     t.integer  "read_comments_count"
-    t.integer  "read_items_count",    default: 0,    null: false
+    t.integer  "read_items_count",    default: 0, null: false
+    t.boolean  "following"
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
@@ -383,6 +383,7 @@ ActiveRecord::Schema.define(version: 20140731225442) do
     t.integer  "inbox_position",                    default: 0
     t.boolean  "admin",                             default: false, null: false
     t.boolean  "is_suspended",                      default: false, null: false
+    t.boolean  "following_by_default",              default: false, null: false
   end
 
   add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
@@ -395,9 +396,8 @@ ActiveRecord::Schema.define(version: 20140731225442) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "last_read_at"
-    t.boolean  "following",           default: true, null: false
-    t.integer  "read_votes_count",    default: 0,    null: false
-    t.integer  "read_activity_count", default: 0,    null: false
+    t.integer  "read_votes_count",    default: 0, null: false
+    t.integer  "read_activity_count", default: 0, null: false
   end
 
   add_index "motion_readers", ["user_id", "motion_id"], name: "index_motion_readers_on_user_id_and_motion_id", using: :btree
