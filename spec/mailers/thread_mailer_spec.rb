@@ -6,7 +6,8 @@ describe ThreadMailer do
   let(:discussion) { create :discussion, group: group }
   let(:comment) { create :comment, discussion: discussion }
   let(:motion) { create(:motion, discussion: discussion) }
-  let(:vote) { create(:vote, motion: motion) }
+  let(:motion_user_voted_on) { create(:motion, discussion: discussion) }
+  let(:vote) { create(:vote, user: user, motion: motion_user_voted_on) }
 
   shared_examples_for 'thread_message' do
     it 'renders the thread subject' do
@@ -75,6 +76,36 @@ describe ThreadMailer do
 
     it 'includes the thread_mailer footer' do
       expect(@email.body.encoded).to include("view it on Loomio")
+    end
+  end
+
+  describe "motion closing soon adds another email to thread" do
+    before do
+      @email = ThreadMailer.motion_closing_soon(motion, user)
+      @voted_email = ThreadMailer.motion_closing_soon(motion_user_voted_on, user)
+    end
+
+    it_behaves_like 'thread_message'
+
+    it 'has a link to the motion' do
+      expect(@email.body.encoded).to include(motion_url(motion))
+    end
+
+    it 'has the motion details in the body' do
+      expect(@email.body.encoded).to include(motion.title)
+      expect(@email.body.encoded).to include(motion.description)
+    end
+
+    context 'user has not voted' do
+      it 'has the vote buttons in the body' do
+        expect(@email.body.encoded).to include(new_motion_vote_url(motion, position: 'yes'))
+      end
+    end
+
+    context 'user has voted' do
+      it 'does not have the vote buttons in the body' do
+        expect(@voted_email.body.encoded).to_not include(new_motion_vote_url(motion, position: 'yes'))
+      end
     end
   end
 

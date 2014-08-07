@@ -23,13 +23,13 @@ end
 
 Then(/^the new discussion email should be delivered to "(.*?)" in Spanish$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
-  email = UserMailer.new_discussion(@discussion, user)
+  email = ThreadMailer.new_discussion(@discussion, user)
   email.body.encoded.should include("Haz click")
 end
 
 Then(/^the new discussion email should be delivered to "(.*?)" in English$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
-  email = UserMailer.new_discussion(@discussion, user)
+  email = ThreadMailer.new_discussion(@discussion, user)
   snippet = I18n.t(:"email.create_discussion.intro", who: @discussion.author.name, which_group: @discussion.group.full_name, locale: "en")
   email.body.encoded.should include(snippet)
 end
