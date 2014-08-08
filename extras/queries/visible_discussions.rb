@@ -43,17 +43,19 @@ class Queries::VisibleDiscussions < Delegator
   def following
     join_to_discussion_readers
     followed_group_ids = @user.memberships.where(following_by_default: true).pluck(:group_id)
-    @relation = @relation.where('(dv.following = :true) OR (dv.following IS NULL and discussions.group_id IN (:followed_group_ids))', {true: true, followed_group_ids: followed_group_ids})
+    @relation = @relation.where('(dv.following = :true) OR (dv.following IS NULL and discussions.group_id IN (:followed_group_ids))',
+                                {true: true, followed_group_ids: followed_group_ids})
     self
   end
 
   def self.apply_privacy_sql(user: nil, group_ids: [], relation: nil)
     user_group_ids = user.nil? ? [] : user.cached_group_ids
 
+    # select where
     # the discussion is public
     # or they are a member of the group
     # or user belongs to parent group and permission is inherited
-    #
+
     relation = relation.where("((discussions.private = :false) OR
                                 (group_id IN (:user_group_ids)) OR
                                 (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids)))",
