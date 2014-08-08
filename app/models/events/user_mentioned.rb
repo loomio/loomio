@@ -1,8 +1,8 @@
 class Events::UserMentioned < Event
-  after_create :notify_users!
-
   def self.publish!(comment, mentioned_user)
-    create!(kind: "user_mentioned", eventable: comment, user: mentioned_user)
+    event = create!(kind: "user_mentioned", eventable: comment, user: mentioned_user)
+
+    event.notify_user!
   end
 
   def comment
@@ -15,7 +15,7 @@ class Events::UserMentioned < Event
 
   private
 
-  def notify_users!
+  def notify_user!
     unless mentioned_user == comment.user
       if mentioned_user.subscribed_to_mention_notifications?
         UserMailer.delay.mentioned(mentioned_user, comment)
@@ -23,6 +23,4 @@ class Events::UserMentioned < Event
       notify!(mentioned_user)
     end
   end
-
-  handle_asynchronously :notify_users!
 end
