@@ -1,9 +1,12 @@
 class Events::NewDiscussion < Event
-  after_create :notify_users!
-
   def self.publish!(discussion)
-    create!(:kind => "new_discussion", :eventable => discussion,
+    event = create!(:kind => "new_discussion", :eventable => discussion,
                       :discussion_id => discussion.id)
+
+    # enfollow the author of the discussion
+    DiscussionReader.for(discussion: discussion, user: user).follow!
+
+    event.delay.email_followers!
   end
 
   def discussion
@@ -12,14 +15,14 @@ class Events::NewDiscussion < Event
 
   private
 
-  def notify_users!
-    discussion.group_members_without_discussion_author.each do |user|
-      if user.email_notifications_for_group?(discussion.group)
-        UserMailer.delay.new_discussion(discussion, user)
+  def email_followers!
+    # email non author followers of the discussion
+    followers = discussion.followers - [discussion.author]
+
+    followers.each do |follower|
+      if user.email_preferences.followed_threads?
+        ThreadMailer.delay.new_discussion(discussion, user)
       end
-      #notify!(user)
     end
   end
-
-  handle_asynchronously :notify_users!
 end
