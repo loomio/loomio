@@ -24,8 +24,8 @@ body.discussions.new, body.discussions.create, body.discussions.edit {
 
   #discussion_title {
     font-size: 18px;
-    height: 24px;
-    line-height: 22px;
+    height: 32px;
+    line-height: 30px;
     margin-bottom: .6em;
   }
 
@@ -50,11 +50,15 @@ body.discussions.new, body.discussions.create, body.discussions.edit {
 
   input[type="submit"] { margin-top: .4em; }
 
-  label { font-size: 18px; }
+  label {
+    font-size: 18px;
+    font-weight: 400;
+  }
 
   textarea {
     font-size: 16px;
     height: 200px;
+    width: 100%;
   }
 
   .control-label.radio_buttons {
@@ -356,7 +360,7 @@ body.discussions.show {
 
     .comment-toolbar {
       float: right;
-      margin-top: -32px;
+      margin-top: -38px;
       margin-right: -8px;
       width: 78px;
       .attachment-icon {
@@ -382,6 +386,7 @@ body.discussions.show {
       margin: 0;
       outline: none;
       width: 380px;
+      padding: 6px;
       &:focus {
         border-color: 0;
         /*@include box-shadow(0, 0, 0, 0);*/
@@ -395,6 +400,7 @@ body.discussions.show {
     }
     #post-new-comment {
       margin: 8px 5px 5px 45px;
+      width: 160px;
     }
     /** Code block padding (Stops avatars destroying indentation) */
     pre {
@@ -741,3 +747,4 @@ div.jqplot-table-legend-swatch{
   }
 }
 
+#group-discussions { font-size: 16px; }

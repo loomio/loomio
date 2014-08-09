@@ -6,7 +6,7 @@
     %p= t :"prompt_visitor_to_authenticate.body"
     %p= t :"prompt_user_to_join.body"
   .modal-footer
-    =link_to t(:log_in), new_user_session_path, class: "btn btn-large btn-success"
-    =join_group_button(@group, class: "btn btn-large btn-primary", id: "align-button")
+    =link_to t(:log_in), new_user_session_path, class: "btn btn-lg btn-success"
+    =join_group_button(@group, class: "btn btn-lg btn-primary", id: "align-button")
 
 = render 'discussions/js_prompt_user_to_join_or_authenticate'
