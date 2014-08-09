@@ -29,13 +29,12 @@ class Events::NewComment < Event
     followers = comment.discussion.followers -
                 comment.mentioned_group_members -
                 [comment.author]
-
+    #comment.discussion.followers.where('id not in (?)')
     followers.each do |follower|
       if follower.email.followed_threads?
         ThreadMailer.delay.new_comment(follower, comment)
       end
     end
   end
-
 end
 

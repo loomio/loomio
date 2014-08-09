@@ -31,10 +31,10 @@ class Discussion < ActiveRecord::Base
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   has_paper_trail :only => [:title, :description]
 
-  belongs_to :group, :counter_cache => true
+  belongs_to :group, counter_cache: true
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
-  has_many :motions, :dependent => :destroy
+  has_many :motions, dependent: :destroy
   has_one :current_motion, -> { where('motions.closed_at IS NULL').order('motions.closed_at ASC') }, class_name: 'Motion'
   has_one :most_recent_motion, class_name: 'Motion', order: 'motions.created_at desc'
   has_many :votes, through: :motions
@@ -44,6 +44,11 @@ class Discussion < ActiveRecord::Base
   has_many :events, -> { includes :user }, as: :eventable, dependent: :destroy
   has_many :items, -> { includes(eventable: :user).order(created_at: :asc) }, class_name: 'Event'
   has_many :discussion_readers
+
+  has_many :explicit_followers,
+           -> { where('discussion_readers.following = ?', true) },
+           through: :discussion_readers
+
 
   include PgSearch
   pg_search_scope :search, against: [:title, :description],
@@ -59,21 +64,20 @@ class Discussion < ActiveRecord::Base
 
   before_create :set_last_comment_at
 
-  # don't use this.. it needs to be removed.
-  # use DiscussionService.add_comment directly
-  def add_comment(author, body, options = {})
-    options[:body] = body
-    comment = Comment.new(options)
-    comment.author = author
-    comment.discussion = self
-    DiscussionService.add_comment(comment)
-    comment
+  def followers
+    User.joins("LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id = #{id})").
+         joins("LEFT OUTER JOIN memberships m ON (m.user_id = users.id AND m.group_id = #{group_id})").
+         where('dr.following = TRUE OR (dr.following IS NULL AND m.following_by_default = TRUE)')
+  end
+
+  def followers_without_author
+    followers.where('id != ?', author_id)
   end
 
   def archive!
     return if is_archived?
-    self.update_attribute :archived_at, DateTime.now and
-    Group.update_counters(group_id, discussions_count: -1) and true
+    self.update_attribute(:archived_at, Time.now) and
+      Group.update_counters(group_id, discussions_count: -1)
   end
 
   def is_archived?

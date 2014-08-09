@@ -135,6 +135,7 @@ FactoryGirl.define do
     motion
     ##  update below with Vote::POSITIONS content if changed###
     position %w[yes no abstain block].sample
+    statement "A short statement explaining my position."
     after(:build) do |vote|
       vote.motion.group.add_member!(vote.user)
     end

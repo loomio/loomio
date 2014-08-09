@@ -28,7 +28,7 @@ describe Events::NewMotion do
     before do
       motion.stub(:group_members_without_motion_author).and_return([user])
       user.stub(:email_notifications_for_group?).and_return(false)
-      MotionMailer.stub_chain(:new_motion_created, :deliver)
+      UserMailer.stub_chain(:motion_created, :deliver)
     end
 
 
@@ -37,7 +37,7 @@ describe Events::NewMotion do
                     with(motion.group).and_return(true) }
 
       it 'emails group_members_without_motion_author new_motion_created' do
-        MotionMailer.should_receive(:new_motion_created).with(motion, user)
+        UserMailer.should_receive(:motion_created).with(motion, user)
         event.save
       end
     end
@@ -47,7 +47,7 @@ describe Events::NewMotion do
                     with(motion.group).and_return(false) }
 
       it 'does not email new motion created' do
-        MotionMailer.should_not_receive(:new_motion_created)
+        UserMailer.should_not_receive(:motion_created)
         event.save
       end
     end

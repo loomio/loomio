@@ -10,11 +10,11 @@
       = @rendered_motion_description
 
     %p
-      = t(:"email.proposal_closing_soon.closes_on") + ' ' + @motion.closing_at.in_time_zone(TimeZoneToCity.convert @user.time_zone).strftime('%A %-d %b - %l:%M%P')
+      = t(:"email.proposal_closing_soon.closes_on") + ' ' + motion_closing_time_for(@user)
       %br
 
     %h4.have-say-title= t(:"help.have_your_say")
-    = render 'vote_buttons', motion: @motion
+    = render 'thread_mailer/vote_buttons', motion: @motion
 
     %br
     = render 'user_mailer/unsubscribe_link'
