@@ -261,7 +261,7 @@ GEM
       multi_xml (>= 0.5.2)
     httpi (2.2.4)
       rack
-    i18n (0.6.9)
+    i18n (0.6.11)
     inflecto (0.0.2)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
@@ -659,7 +659,7 @@ DEPENDENCIES
   selenium-webdriver (~> 2.35.1)
   sequenced (~> 1.5.0)
   shoulda-matchers (~> 2.3.0)
-  simple_form (~> 2.1.1)
+  simple_form
   spork-rails (~> 3.2.1)
   sprockets (= 2.2.2.backport2)
   sprockets-rails (= 2.0.0.backport1)
