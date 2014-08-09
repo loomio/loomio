@@ -1,7 +1,31 @@
 require 'rails_helper'
 
 describe Events::NewComment do
-  let(:comment){ mock_model(Comment, discussion: mock_model(Discussion))}
+  let(:discussion_author)  { double(:discussion_author) }
+  let(:comment_author)     { double(:comment_author) }
+  let(:mentioned_user)     { double(:mentioned_user) }
+  let(:discussion)         { double(:discussion,
+                                    id: 1,
+                                    author: discussion_author) }
+
+  let(:comment)            { double :comment,
+                                    author: comment_author,
+                                    discussion: discussion,
+                                    mentioned_users: [mentioned_user],
+                                    followers_without_mentioned_users_or_author: followers_double }
+
+  let(:followers_double)   { double :followers_double,
+                                    email_followed_threads: [follower] }
+
+  let(:follower)           { double :follower }
+  let(:discussion_reader)  { double(:discussion_reader, follow!: true) }
+  let(:mailer)             { double deliver: true }
+
+  before do
+    allow(DiscussionReader).to receive(:for) { discussion_reader }
+    allow(Events::UserMentioned).to receive(:publish!)
+    allow(ThreadMailer).to receive(:new_comment) { mailer }
+  end
 
   describe "::publish!" do
     let(:event) { double(:event, notify_users!: true) }
@@ -18,8 +42,23 @@ describe Events::NewComment do
       Events::NewComment.publish!(comment).should == event
     end
 
-    it 'enfollows the author'
-    it 'creates mention events'
-    it 'emails discussion followers but not comment author or mentioned users'
+    it 'enfollows the author' do
+      expect(DiscussionReader).to receive(:for).
+                                  with(discussion: discussion,
+                                       user: comment_author) { double follow!: true }
+
+      Events::NewComment.publish!(comment)
+    end
+
+    it 'creates mention events' do
+      expect(comment).to receive(:mentioned_users) { [mentioned_user] }
+      expect(Events::UserMentioned).to receive(:publish!).with(comment, mentioned_user)
+      Events::NewComment.publish!(comment)
+    end
+
+    it 'emails discussion followers but not comment author or mentioned users' do
+      expect(ThreadMailer).to receive(:new_comment).with(comment, follower)
+      Events::NewComment.publish!(comment)
+    end
   end
 end
