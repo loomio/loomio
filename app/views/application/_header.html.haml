@@ -19,7 +19,7 @@
             %a{href: inbox_path}
               %i.fa.fa-inbox
               %col-md-#inbox-count.label
-          %li.dropdown
+          %li.dropdown#notifications-container
             %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
               %i.fa.fa-bell
               %col-md-#notifications-count.label.activity-count
@@ -31,7 +31,7 @@
                   %li Loading
               %li#notifications-see-more= link_to t(:see_all_notifications), notifications_path
 
-          %li.dropdown
+          %li.dropdown#groups
             %a.dropdown-toggle{href: "#", 'data-toggle' => 'dropdown'}
               %i.fa.fa-group
               %col-md-= t :groups
@@ -42,8 +42,8 @@
                   =link_to t(:request_new_group), new_group_path, class: 'new-group'
                   =link_to t(:find_a_group), explore_path, class: 'find-group'
 
-        = render 'search'
         %ul.nav.navbar-nav.navbar-right
+          = render 'search'
           = render 'user_dropdown'
 
     - else

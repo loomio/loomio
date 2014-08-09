@@ -1,11 +1,9 @@
 - if current_user.parent_groups.present?
   .row
-    .col-md-9
+    .col-md-9.main-content
       .group-title
         %h1.home-title
           = link_to t(:home), dashboard_path
-      .row
-        .col-md-9.main-content
           =render 'discussions/discussion_list'
 
     %section.col-md-3
