@@ -17,23 +17,9 @@ describe Events::NewComment do
     it 'returns an event' do
       Events::NewComment.publish!(comment).should == event
     end
-  end
 
-  context "after event has been published" do
-    let(:mentioned_user) { mock_model(User) }
-    let(:non_mentioned_user) { mock_model(User) }
-    let(:event) { Events::NewComment.new(kind: "new_comment",
-                                         eventable: comment,
-                                         discussion_id: comment.discussion.id) }
-    before do
-      comment.stub(:mentioned_group_members).and_return([mentioned_user])
-      comment.stub(:non_mentioned_discussion_participants).and_return([non_mentioned_user])
-      Events::UserMentioned.stub(:publish!)
-    end
-
-    it 'fires a user_mentioned! event for each mentioned group member' do
-      Events::UserMentioned.should_receive(:publish!).with(comment, mentioned_user)
-      event.save
-    end
+    it 'enfollows the author'
+    it 'creates mention events'
+    it 'emails discussion followers but not comment author or mentioned users'
   end
 end

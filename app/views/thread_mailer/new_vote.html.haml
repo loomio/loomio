@@ -1,0 +1,8 @@
+%img{src: vote_icon_paths_helper(@position)}
+%strong= @vote.author.name
+- past_tense_position = I18n.t("position_verbs.past_tense.#{@position}")
+= t('notifications.new_vote', position: past_tense_position) + ":"
+%br
+= render_email_plaintext @vote.statement
+
+= render "footer", link: motion_url(@motion)

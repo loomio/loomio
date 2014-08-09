@@ -5,7 +5,7 @@ class UserMailerPreview < ActionMailer::Preview
       group = FactoryGirl.create(:group)
       group.add_admin!(user)
       discussion = FactoryGirl.build(:discussion, group: group, author: user)
-      
+
       #raise user.can?(:create, discussion).inspect
       #discussion.reload
       #user.reload
@@ -35,25 +35,10 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.missed_yesterday(user)
   end
 
-  def mentioned
-    user = FactoryGirl.create(:user)
-    discussion = FactoryGirl.create(:discussion)
-    comment = FactoryGirl.create(:comment, discussion: discussion, body: "Hey there @#{user.username}, I love what you said and want to find out more about the stuff you mentioned, can we please have a cup of tea and a bike ride with me?")
-    UserMailer.mentioned(user, comment)
-  end
-
   def group_membership_approved
     user = FactoryGirl.create(:user)
-    discussion = FactoryGirl.create(:discussion)
-    comment = FactoryGirl.create(:comment, discussion: discussion, body: "Hey there @#{user.username}, I love what you said and want to find out more about the stuff you mentioned, can we please have a cup of tea and a bike ride with me?")
-    UserMailer.mentioned(user, comment)
-  end
-
-  def motion_closing_soon
-    user = FactoryGirl.create(:user)
-    motion = FactoryGirl.create(:motion)
-    motion.group.add_member!(user)
-    UserMailer.motion_closing_soon(user, motion)
+    group = FactoryGirl.create(:group)
+    UserMailer.group_membership_approved(user, group)
   end
 
   def added_to_group
@@ -65,9 +50,53 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.added_to_group(user: user, inviter: inviter, group: group, message: message)
   end
 
-  def new_discussion
+  def mentioned
     user = FactoryGirl.create(:user)
     discussion = FactoryGirl.create(:discussion)
-    UserMailer.new_discussion(discussion, user)
+    comment = FactoryGirl.create(:comment, discussion: discussion, body: "Hey there @#{user.username}, I love what you said and want to find out more about the stuff you mentioned, can we please have a cup of tea and a bike ride with me?")
+    UserMailer.mentioned(user, comment)
+  end
+
+  def motion_blocked
+    motion = FactoryGirl.create(:motion)
+    vote = FactoryGirl.create(:vote, motion: motion, position: 'block')
+    UserMailer.motion_blocked(vote)
+  end
+
+  def motion_closed
+    motion = FactoryGirl.create(:motion)
+    motion.store_users_that_didnt_vote
+    motion.closed_at = Time.now
+    motion.save!
+    UserMailer.motion_closed(motion, motion.author.email)
+  end
+
+  def motion_created
+    motion = FactoryGirl.create(:motion)
+    group = motion.group
+    user = FactoryGirl.create(:user)
+    group.add_member!(user)
+    UserMailer.motion_created(motion, user)
+  end
+
+  def motion_closing_soon
+    user = FactoryGirl.create(:user)
+    motion = FactoryGirl.create(:motion)
+    motion.group.add_member!(user)
+    vote = FactoryGirl.create(:vote, motion: motion)
+    UserMailer.motion_closing_soon(user, motion)
+  end
+
+  def motion_outcome_created
+    motion = FactoryGirl.create(:motion)
+    group = motion.group
+    user = FactoryGirl.create(:user)
+    group.add_member!(user)
+    motion.store_users_that_didnt_vote
+    motion.closed_at = Time.now
+    motion.save!
+    motion.outcome = "the motion was voted upon variously, hurrah"
+    motion.outcome_author = motion.author
+    UserMailer.motion_outcome_created(motion, user)
   end
 end

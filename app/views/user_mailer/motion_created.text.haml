@@ -4,9 +4,9 @@
 -if @motion.description.present?
   = @motion.description
 \
-= t(:"email.proposal_closing_soon.closes_on") +' '+ @motion.closing_at.in_time_zone(TimeZoneToCity.convert @user.time_zone).strftime('%A %-d %b - %l:%M%P')
+= t(:"email.proposal_closing_soon.closes_on") + ' ' + motion_closing_time_for(@user)
 \
-= t(:"help.have_your_say")
+= t(:"help.have_your_say") + ":"
 = motion_url(@motion, @utm_hash).html_safe
 \
 \
