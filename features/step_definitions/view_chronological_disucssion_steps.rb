@@ -30,7 +30,8 @@ end
 
 
 Given(/^there has been new activity$/) do
-  @third_comment = @discussion.add_comment @commenter, "newest comment", uses_markdown: false
+  @third_comment = build :comment, user: @commenter, discussion: @discussion
+  DiscussionService.add_comment(@third_comment)
 end
 
 

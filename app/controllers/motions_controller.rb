@@ -13,7 +13,7 @@ class MotionsController < GroupBaseController
       @motion = current_user.authored_motions.new(permitted_params.motion)
       @group = @motion.group
 
-      if MotionService.start_motion(motion)
+      if MotionService.start_motion(@motion)
         Measurement.increment('motions.create.success')
         flash[:success] = t("success.proposal_created")
         redirect_to @discussion

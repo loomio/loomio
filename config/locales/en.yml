@@ -1,4 +1,16 @@
 en:
+  users:
+    email_preferences:
+      edit:
+        title: 'Email preferences'
+        when_do_you_want_emails: 'When would you like to be emailed?'
+        email_missed_yesterday: "Each morning, with just what I missed yesterday"
+        email_when_proposal_closing_soon: "When a proposal is closing soon"
+        email_when_mentioned: "When I'm @mentioned in a discussion"
+        email_followed_threads: "Immediately for discussions I am following"
+        you_follow_when_you_get_involved: "You start following a discussion if you participate or are mentioned"
+        groups_to_auto_follow: "Following new discussions by default in these groups:"
+
   explore:
     header: "Explore public groups"
 
@@ -895,18 +907,6 @@ en:
     your_statement: "Your statement"
     submit: "Submit position"
     update: "Update position"
-
-  email_preferences_form:
-    header: "Email preferences"
-    daily_activity_summary: "Daily Activity Summary"
-    daily_activity_subscription: "Send me a daily activity email summarising what’s been happening in my groups"
-    missed_yesterday_subscription: "Send me 'Yesterday on Loomio' - my unread content from the past 24 hours"
-    global_notifications: "Global Notifications"
-    proposal_closing_soon_subscription: "Remind me 24 hours before a proposal closes"
-    mentions_subscription: "Email me when someone mentions me in a comment"
-    group_activity_notifications: "Group Activity Notifications"
-    group_activity_details: "For each group, check the box if you want to be emailed immediately about new discussions and decisions."
-    update_preferences: "Update preferences"
 
   new_user_form:
     create_an_account: "Create an account"
