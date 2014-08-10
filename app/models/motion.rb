@@ -37,7 +37,6 @@ class Motion < ActiveRecord::Base
   has_paper_trail only: [:name, :description, :closing_at]
 
   after_initialize :set_default_closing_at
-  after_create :fire_new_motion_event
 
   attr_accessor :create_discussion
 
@@ -233,12 +232,7 @@ class Motion < ActiveRecord::Base
   end
 
   private
-    def set_default_closing_at
-      self.closing_at ||= (Time.zone.now + 3.days).at_beginning_of_hour
-    end
-
-    def fire_new_motion_event
-      Events::NewMotion.publish!(self)
-    end
-
+  def set_default_closing_at
+    self.closing_at ||= (Time.zone.now + 3.days).at_beginning_of_hour
+  end
 end
