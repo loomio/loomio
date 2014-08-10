@@ -49,10 +49,12 @@ describe DiscussionReader do
 
     context '2 read, 1 unread' do
       before do
-        DiscussionService.add_comment create :comment, discussion: discussion
-        DiscussionService.add_comment create :comment, discussion: discussion
+        create :comment, discussion: discussion
+        create :comment, discussion: discussion
+
         discussion.reload
         reader.viewed!
+
         create :comment, discussion: discussion
         discussion.reload
       end

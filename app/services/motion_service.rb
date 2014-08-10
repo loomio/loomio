@@ -1,4 +1,12 @@
 class MotionService
+  def self.start_motion(motion)
+    motion.author.ability.authorize! :create, motion
+    return false unless motion.valid?
+    motion.save
+    DiscussionReader.for(discussion: motion.discussion, user: motion.author).follow!
+    Events::NewMotion.publish!(motion)
+  end
+
   def self.update_motion(motion: motion, params: params, user: user)
 
     if motion.closing_at.to_s == Time.zone.parse(params[:closing_at]).to_s

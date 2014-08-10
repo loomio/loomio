@@ -14,24 +14,91 @@ module Events
   end
   class NewVote
   end
+  class NewMotion
+  end
 end
 
 class Motion
 end
 
+class DiscussionReader
+end
+
 describe 'MotionService' do
   let(:group) { double(:group, present?: true) }
-  let(:motion) { double(:motion, outcome: "", group: group, :outcome= => true, :outcome_author= => true, :save! => true, save: true) }
+  let(:discussion) { double :discussion }
+  let(:motion) { double :motion,
+                        discussion: discussion,
+                        outcome: "",
+                        author: user,
+                        group: group,
+                        valid?: true,
+                        :outcome= => true,
+                        :outcome_author= => true,
+                        :save! => true,
+                        save: true }
   let(:ability) { double(:ability, :authorize! => true) }
   let(:user) { double(:user, ability: ability) }
   let(:motion_params) { {outcome: "We won!"} }
   let(:outcome_string) { double(:outcome_string) }
   let(:event) { double(:event) }
+  let(:discussion_reader) { double :discussion_reader, follow!: true }
 
 
   before do
-    Events::MotionOutcomeCreated.stub(:publish!).and_return(event)
-    Events::MotionOutcomeUpdated.stub(:publish!).and_return(event)
+    allow(DiscussionReader).to receive(:for) { discussion_reader }
+    Events::MotionOutcomeCreated.stub(:publish!) { event }
+    Events::MotionOutcomeUpdated.stub(:publish!) { event }
+  end
+
+  describe '#start_motion', focus: true do
+    before do
+      allow(Events::NewMotion).to receive(:publish!)
+    end
+
+    after do
+      MotionService.start_motion(motion)
+    end
+
+    it "authorises the action" do
+      expect(ability).to receive(:authorize!).with(:create, motion)
+    end
+
+    context "motion is valid" do
+
+      before do
+        allow(motion).to receive(:valid?) { true }
+        allow(Events::NewMotion).to receive(:publish!) {event}
+      end
+
+      it "saves the motion" do
+        expect(motion).to receive(:save)
+      end
+
+      it "enfollows the author" do
+        expect(discussion_reader).to receive(:follow!) {true}
+      end
+
+      it "creates an event" do
+        expect(Events::NewMotion).to receive(:publish!).with(motion)
+      end
+
+      it "returns an event" do 
+        expect(MotionService.start_motion(motion)).to be event
+      end
+    end
+
+    context "motion is invalid" do
+      before { allow(motion).to receive(:valid?) {false}}
+
+      it "returns false" do
+        expect(MotionService.start_motion(motion)).to be false
+      end
+
+      it "does not save the motion" do
+        expect(motion).to_not receive(:save)
+      end
+    end
   end
 
   describe '.cast_vote' do

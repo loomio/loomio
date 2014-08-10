@@ -133,36 +133,18 @@ describe Discussion do
 
   end
 
-  describe "#activity" do
-    it "returns all the activity for the discussion" do
-      @user = create :user
-      @group = create :group
-      @group.add_member! @user
-      @discussion = build :discussion, :group => @group, private: true
-      DiscussionService.start_discussion(@discussion)
-      #@discussion.add_comment(@user, "this is a test comment", uses_markdown: false)
-      DiscussionService.add_comment(build :comment, discussion: discussion)
-      @motion = create :motion, discussion: @discussion
-      @vote = build :vote, :position => 'yes', :motion => @motion
-      MotionService.cast_vote(@vote)
-      activity = @discussion.activity
-      activity[0].kind.should == 'new_discussion'
-      activity[1].kind.should == 'new_comment'
-      activity[2].kind.should == 'new_motion'
-      activity[3].kind.should == 'new_vote'
-    end
-  end
-
   describe "#current_motion" do
     before do
       @discussion = create :discussion
       @motion = create :motion, discussion: @discussion
     end
+
     context "where motion is in open" do
       it "returns motion" do
         @discussion.current_motion.should eq(@motion)
       end
     end
+
     context "where motion close date has past" do
       before do
         @motion.closed_at = 3.days.ago
