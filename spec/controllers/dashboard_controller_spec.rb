@@ -12,7 +12,6 @@ describe DashboardController do
   context "views homepage" do
     it "succeeds" do
       get :show
-      puts response.body
       response.should be_success
     end
   end
