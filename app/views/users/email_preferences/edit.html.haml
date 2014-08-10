@@ -1,24 +1,20 @@
 .row
   .span12
-    %h1= t("email_preferences_form.header")
-    =simple_form_for(@email_preferences, :url => update_email_preferences_path, :method => :put) do |f|
-      %h2= t("email_preferences_form.daily_activity_summary")
+    %h1= t('.title')
+    =simple_form_for(@email_preferences, url: update_email_preferences_path, method: :put) do |f|
       -if params[:unsubscribe_token]
         =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
-      = f.input :subscribed_to_missed_yesterday_email, as: :boolean, inline_label: t("email_preferences_form.missed_yesterday_subscription"), label: false
-      %p
-        %i.fa.fa-star
-        %em <a href="https://www.loomio.org/d/GUCFDqQH/beta-feature-yesterday-on-loomio">Find out more</a> about 'Yesterday on Loomio'
 
-      -#=f.input :subscribed_to_mention_notifications, label: 'When someone mentions your name'
-      %h2= t("email_preferences_form.global_notifications")
-      =f.input :subscribed_to_proposal_closure_notifications, :as => :boolean, :inline_label => t("email_preferences_form.proposal_closing_soon_subscription"), :label => false
-      =f.input :subscribed_to_mention_notifications, :as => :boolean, :inline_label =>  t("email_preferences_form.mentions_subscription"), :label => false
+      = f.input :email_missed_yesterday, as: :boolean, inline_label: t('.email_missed_yesterday'), label: false
+      = f.input :email_when_proposal_closing_soon, as: :boolean, inline_label: t('.email_when_proposal_closing_soon'), label: false
+      = f.input :email_when_mentioned, as: :boolean, inline_label: t('.email_when_mentioned'), label: false
+      = f.input :email_followed_threads, as: :boolean, inline_label: t('.email_followed_threads'), label: false
 
-      %h2= t("email_preferences_form.group_activity_notifications")
-      %p= t("email_preferences_form.group_activity_details")
+      %p= t '.you_follow_when_you_get_involved'
+
+      %h2= t '.groups_to_auto_follow'
 
       .control-group
-        =f.collection_check_boxes(:group_email_preferences, @email_preferences.all_memberships, :id, :group_full_name, {}, {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
+        =f.collection_check_boxes(:group_ids_to_follow_by_default, @email_preferences.all_memberships, :id, :group_full_name, {}, {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
 
       =f.submit t("email_preferences_form.update_preferences"), :class => "btn btn-info btn-large", :data => {:disable_with => t("email_preferences_form.update_preferences")}
