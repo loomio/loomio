@@ -8,8 +8,8 @@ class Comment < ActiveRecord::Base
   belongs_to :discussion, counter_cache: true
   belongs_to :user
 
-  has_many :comment_votes, :dependent => :destroy
-  has_many :events, :as => :eventable, :dependent => :destroy
+  has_many :comment_votes, dependent: :destroy
+  has_many :events, as: :eventable, dependent: :destroy
   has_many :attachments
 
   validates_presence_of :user
@@ -21,13 +21,13 @@ class Comment < ActiveRecord::Base
 
   default_scope { includes(:user).includes(:attachments).includes(:discussion) }
 
-  delegate :name, :to => :user, :prefix => :user
-  delegate :name, :to => :user, :prefix => :author
-  delegate :email, :to => :user, :prefix => :user
-  delegate :participants, :to => :discussion, :prefix => :discussion
-  delegate :group, :to => :discussion
-  delegate :full_name, :to => :group, :prefix => :group
-  delegate :title, :to => :discussion, :prefix => :discussion
+  delegate :name, to: :user, prefix: :user
+  delegate :name, to: :user, prefix: :author
+  delegate :email, to: :user, prefix: :user
+  delegate :participants, to: :discussion, prefix: :discussion
+  delegate :group, to: 'discussion'
+  delegate :full_name, to: :group, prefix: :group
+  delegate :title, to: :discussion, prefix: :discussion
   delegate :locale, to: :user
 
   serialize :liker_ids_and_names, Hash
@@ -71,9 +71,9 @@ class Comment < ActiveRecord::Base
     save
   end
 
-  def mentioned_users
+  def mentioned_group_members
     usernames = extract_mentioned_screen_names(self.body)
-    group.users.where(username: usernames).where('id != ?', author.id)
+    group.users.where(username: usernames).where('users.id != ?', author.id)
   end
 
   def non_mentioned_discussion_participants
@@ -88,6 +88,10 @@ class Comment < ActiveRecord::Base
     if liker_ids_and_names.respond_to? :keys
       liker_ids_and_names.keys.include?(user.id)
     end
+  end
+
+  def followers_without_author
+    discussion.followers.where('users.id != ?', author_id)
   end
 
   private

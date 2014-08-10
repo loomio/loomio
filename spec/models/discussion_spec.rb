@@ -140,7 +140,8 @@ describe Discussion do
       @group.add_member! @user
       @discussion = build :discussion, :group => @group, private: true
       DiscussionService.start_discussion(@discussion)
-      @discussion.add_comment(@user, "this is a test comment", uses_markdown: false)
+      #@discussion.add_comment(@user, "this is a test comment", uses_markdown: false)
+      DiscussionService.add_comment(build :comment, discussion: discussion)
       @motion = create :motion, discussion: @discussion
       @vote = build :vote, :position => 'yes', :motion => @motion
       MotionService.cast_vote(@vote)
@@ -182,8 +183,8 @@ describe Discussion do
       @group.add_member! @user2
       @group.add_member! @user3
       @group.add_member! @user4
-      @discussion.add_comment(@user2, "givin a shout out to user3!", uses_markdown: false)
-      @discussion.add_comment(@user3, "thanks 4 thah love usah two!", uses_markdown: false)
+      DiscussionService.add_comment(build :comment, user: @user2, discussion: @discussion)
+      DiscussionService.add_comment(build :comment, user: @user3, discussion: @discussion)
     end
 
     it "should include users who have commented on discussion" do

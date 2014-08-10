@@ -109,6 +109,7 @@ class User < ActiveRecord::Base
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
+  scope :email_followed_threads, -> { where(email_followed_threads: true) }
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
@@ -240,12 +241,12 @@ class User < ActiveRecord::Base
 
   def deactivate!
     update_attributes(deleted_at: Time.now,
-                      subscribed_to_missed_yesterday_email: false,
-                      subscribed_to_mention_notifications: false,
-                      subscribed_to_proposal_closure_notifications: false,
+                      email_missed_yesterday: false,
+                      email_when_mentioned: false,
+                      email_when_proposal_closing_soon: false,
                       avatar_kind: "initials")
     memberships.update_all(archived_at: Time.now,
-                      subscribed_to_notification_emails: false)
+                           subscribed_to_notification_emails: false)
     membership_requests.where("responded_at IS NULL").destroy_all
   end
 

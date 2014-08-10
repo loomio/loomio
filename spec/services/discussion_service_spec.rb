@@ -9,6 +9,9 @@ module Events
   end
 end
 
+class DiscussionReader
+end
+
 describe 'DiscussionService' do
   let(:comment_vote) { double(:comment_vote) }
   let(:ability) { double(:ability, :authorize! => true, can?: true) }
@@ -38,11 +41,13 @@ describe 'DiscussionService' do
                          destroy: true,
                          author: user) }
   let(:event) { double(:event) }
+  let(:discussion_reader) { double(:discussion_reader, follow!: true) }
   let(:discussion_params) { {title: "new title", description: "", private: true, uses_markdown: true} }
 
 
   before do
     Events::NewDiscussion.stub(:publish!).and_return(event)
+    allow(DiscussionReader).to receive(:for) { discussion_reader }
   end
 
   describe '.delete_comment' do
@@ -88,6 +93,9 @@ describe 'DiscussionService' do
       comment.should_receive(:like).with(user).and_return(comment_vote)
     end
 
+    it 'enfollows the liker' do
+      expect(discussion_reader).to receive(:follow!)
+    end
     it 'publishes a like comment event' do
       Events::CommentLiked.should_receive(:publish!).with(comment_vote)
     end

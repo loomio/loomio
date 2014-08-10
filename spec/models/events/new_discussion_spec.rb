@@ -10,7 +10,7 @@ describe Events::NewDiscussion do
 
   describe "::publish!" do
     let(:dr) { double(:discussion_reader, follow!: true) }
-    let(:event) { double(:event, email_followers!: true) }
+    let(:event) { double :event }
 
     before do
       allow(ThreadMailer).to receive(:new_discussion) { double(deliver: true) }

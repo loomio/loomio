@@ -33,26 +33,27 @@ describe DiscussionReader do
 
     context '0 read, 1 unread' do
       before do
-        discussion.add_comment(other_user, 'hi')
+        create :comment, discussion: discussion
       end
       it {should == 1}
     end
 
     context '1 read, 1 unread' do
       before do
-        discussion.add_comment(other_user, 'hi')
+        create :comment, discussion: discussion
         reader.viewed!
-        discussion.add_comment(other_user, 'hi')
+        create :comment, discussion: discussion
       end
       it {should == 1}
     end
 
     context '2 read, 1 unread' do
       before do
-        discussion.add_comment(other_user, 'hi')
-        discussion.add_comment(other_user, 'hi')
+        DiscussionService.add_comment create :comment, discussion: discussion
+        DiscussionService.add_comment create :comment, discussion: discussion
+        discussion.reload
         reader.viewed!
-        discussion.add_comment(other_user, 'hi')
+        create :comment, discussion: discussion
         discussion.reload
       end
       it {should == 2}

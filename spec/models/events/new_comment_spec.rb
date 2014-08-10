@@ -11,7 +11,7 @@ describe Events::NewComment do
   let(:comment)            { double :comment,
                                     author: comment_author,
                                     discussion: discussion,
-                                    mentioned_users: [mentioned_user],
+                                    mentioned_group_members: [mentioned_user],
                                     followers_without_author: followers_double }
 
   let(:followers_double)   { double :followers_double,
@@ -51,7 +51,7 @@ describe Events::NewComment do
     end
 
     it 'creates mention events' do
-      expect(comment).to receive(:mentioned_users) { [mentioned_user] }
+      expect(comment).to receive(:mentioned_group_members) { [mentioned_user] }
       expect(Events::UserMentioned).to receive(:publish!).with(comment, mentioned_user)
       Events::NewComment.publish!(comment)
     end
