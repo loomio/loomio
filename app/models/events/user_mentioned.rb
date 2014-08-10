@@ -2,7 +2,20 @@ class Events::UserMentioned < Event
   def self.publish!(comment, mentioned_user)
     event = create!(kind: "user_mentioned", eventable: comment, user: mentioned_user)
 
-    event.notify_user!
+    discussion_reader = DiscussionReader.for(discussion: comment.discussion,
+                                             user: mentioned_user)
+
+    unless discussion_reader.following?
+      if mentioned_user.email_when_mentioned?
+        UserMailer.delay.mentioned(mentioned_user, comment)
+      end
+
+      discussion_reader.follow!
+    end
+
+    notify!(mentioned_user)
+
+    event
   end
 
   def comment
@@ -11,16 +24,5 @@ class Events::UserMentioned < Event
 
   def mentioned_user
     user
-  end
-
-  private
-
-  def notify_user!
-    unless mentioned_user == comment.user
-      if mentioned_user.subscribed_to_mention_notifications?
-        UserMailer.delay.mentioned(mentioned_user, comment)
-      end
-      notify!(mentioned_user)
-    end
   end
 end

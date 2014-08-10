@@ -1,60 +1,59 @@
 require 'rails_helper'
 
 describe Events::UserMentioned do
-  let(:comment){ mock_model(Comment)}
-  let(:mentioned_user) { mock_model(User,
-                              :subscribed_to_mention_notifications? => false) }
-
   describe "::publish!" do
-    let(:event) { double(:event, :notify_users! => true) }
+    let(:discussion) { double :discussion }
+    let(:comment) { double :comment, discussion: discussion }
+    let(:mentioned_user) { double :user, email_when_mentioned?: false  }
+    let(:discussion_reader) { double :discussion_reader, following?: false, follow!: true }
+    let(:event) { double :event }
 
-    before { Event.stub(:create!).and_return(event) }
+    before do
+      allow(DiscussionReader).to receive(:for) { discussion_reader }
+      allow(Events::UserMentioned).to receive(:create!) { event }
+      allow(Events::UserMentioned).to receive(:notify!)
+    end
+
+    after do
+      Events::UserMentioned.publish!(comment, mentioned_user)
+    end
 
     it 'creates an event' do
-      Event.should_receive(:create!).with(kind: 'user_mentioned',
-                                          eventable: comment,
-                                          user: mentioned_user)
-      Events::UserMentioned.publish!(comment, mentioned_user)
+      expect(Events::UserMentioned).to receive(:create!).with(kind: 'user_mentioned',
+                                                              eventable: comment,
+                                                              user: mentioned_user)
     end
 
     it 'returns an event' do
       Events::UserMentioned.publish!(comment, mentioned_user).should == event
     end
-  end
 
-  context "after event has been published" do
-    let(:comment_author) { mock_model(User) }
-    let(:event) { Events::UserMentioned.new(kind: "user_mentioned",
-                                            eventable: comment,
-                                            user: mentioned_user) }
+    context "mentioned user is not following" do
+      before { allow(discussion_reader).to receive(:following?) { false } }
 
-    before { comment.stub(:user).and_return(comment_author) }
+      context "wants email when mentioned" do
+        before { allow(mentioned_user).to receive(:email_when_mentioned?) { true } }
 
-    it 'notifies the mentioned user' do
-      event.should_receive(:notify!).with(mentioned_user)
-      event.save
-    end
-
-    context 'mentioned user is subscribed to email notifications' do
-      before do
-        mentioned_user.should_receive(:subscribed_to_mention_notifications?).
-                                      and_return(true)
-        UserMailer.stub_chain(:mentioned, :deliver)
+        it "sends a mentioned email" do
+          expect(UserMailer).to receive(:mentioned).with(mentioned_user, comment) { double deliver: true }
+        end
       end
 
-      it 'emails the mentioned user to say they were mentioned' do
-        UserMailer.should_receive(:mentioned).with(mentioned_user, comment)
-        event.save
+      context "does not want email when mentioned" do
+        before { allow(mentioned_user).to receive(:email_when_mentioned?) { false } }
+
+        it "does not send a mentioned email" do
+          expect(UserMailer).to_not receive(:mentioned)
+        end
+      end
+
+      it "enfollows the user" do
+        expect(discussion_reader).to receive(:follow!)
       end
     end
 
-    context 'mentioned user is comment author' do
-      let(:mentioned_user) { comment_author }
-
-      it 'does not notify the mentioned user' do
-        event.should_not_receive(:notify!)
-        event.save
-      end
+    it "creates an in-app mentioned notification" do
+      expect(Events::UserMentioned).to receive(:notify!).with(mentioned_user)
     end
   end
 end

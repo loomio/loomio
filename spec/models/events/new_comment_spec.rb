@@ -12,7 +12,7 @@ describe Events::NewComment do
                                     author: comment_author,
                                     discussion: discussion,
                                     mentioned_users: [mentioned_user],
-                                    followers_without_mentioned_users_or_author: followers_double }
+                                    followers_without_author: followers_double }
 
   let(:followers_double)   { double :followers_double,
                                     email_followed_threads: [follower] }
@@ -56,7 +56,7 @@ describe Events::NewComment do
       Events::NewComment.publish!(comment)
     end
 
-    it 'emails discussion followers but not comment author or mentioned users' do
+    it 'emails discussion followers but not comment author' do
       expect(ThreadMailer).to receive(:new_comment).with(comment, follower)
       Events::NewComment.publish!(comment)
     end

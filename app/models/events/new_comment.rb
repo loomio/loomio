@@ -7,13 +7,13 @@ class Events::NewComment < Event
     DiscussionReader.for(user: comment.author,
                          discussion: comment.discussion).follow!
 
-    comment.mentioned_users.each do |mentioned_user|
-      Events::UserMentioned.publish!(comment, mentioned_user)
-    end
-
-    comment.followers_without_mentioned_users_or_author.
+    comment.followers_without_author.
             email_followed_threads.each do |follower|
         ThreadMailer.delay.new_comment(comment, follower)
+    end
+
+    comment.mentioned_users.each do |mentioned_user|
+      Events::UserMentioned.publish!(comment, mentioned_user)
     end
 
     event
@@ -23,4 +23,3 @@ class Events::NewComment < Event
     eventable
   end
 end
-
