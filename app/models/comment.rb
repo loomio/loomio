@@ -71,9 +71,9 @@ class Comment < ActiveRecord::Base
     save
   end
 
-  def mentioned_group_members
+  def mentioned_users
     usernames = extract_mentioned_screen_names(self.body)
-    group.users.where(username: usernames)
+    group.users.where(username: usernames).where('id != ?', author.id)
   end
 
   def non_mentioned_discussion_participants
