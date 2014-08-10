@@ -71,7 +71,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def followers_without_author
-    followers.where('id != ?', author_id)
+    followers.where('users.id != ?', author_id)
   end
 
   def archive!

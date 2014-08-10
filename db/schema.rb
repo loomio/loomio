@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807012527) do
+ActiveRecord::Schema.define(version: 20140810033902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -494,12 +494,12 @@ ActiveRecord::Schema.define(version: 20140807012527) do
   add_index "translations", ["fields"], name: "translations_gin_fields", using: :gin
 
   create_table "users", force: true do |t|
-    t.string   "email",                                                    default: "",         null: false
-    t.string   "encrypted_password",                           limit: 128, default: ""
+    t.string   "email",                                        default: "",         null: false
+    t.string   "encrypted_password",               limit: 128, default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                            default: 0
+    t.integer  "sign_in_count",                                default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -508,26 +508,27 @@ ActiveRecord::Schema.define(version: 20140807012527) do
     t.datetime "updated_at"
     t.string   "name"
     t.datetime "deleted_at"
-    t.boolean  "is_admin",                                                 default: false
-    t.string   "avatar_kind",                                              default: "initials", null: false
+    t.boolean  "is_admin",                                     default: false
+    t.string   "avatar_kind",                                  default: "initials", null: false
     t.string   "uploaded_avatar_file_name"
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials"
     t.string   "username"
-    t.boolean  "subscribed_to_mention_notifications",                      default: true,       null: false
-    t.boolean  "subscribed_to_proposal_closure_notifications",             default: true,       null: false
+    t.boolean  "email_when_mentioned",                         default: true,       null: false
+    t.boolean  "email_when_proposal_closing_soon",             default: true,       null: false
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.integer  "memberships_count",                                        default: 0,          null: false
-    t.boolean  "uses_markdown",                                            default: false
+    t.integer  "memberships_count",                            default: 0,          null: false
+    t.boolean  "uses_markdown",                                default: false
     t.string   "selected_locale"
     t.string   "time_zone"
     t.string   "key"
     t.string   "detected_locale"
-    t.boolean  "subscribed_to_missed_yesterday_email",                     default: true,       null: false
+    t.boolean  "email_missed_yesterday",                       default: true,       null: false
     t.string   "email_api_key"
+    t.boolean  "email_followed_threads",                       default: true,       null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

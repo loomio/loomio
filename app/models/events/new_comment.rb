@@ -12,7 +12,7 @@ class Events::NewComment < Event
         ThreadMailer.delay.new_comment(comment, follower)
     end
 
-    comment.mentioned_users.each do |mentioned_user|
+    comment.mentioned_group_members.each do |mentioned_user|
       Events::UserMentioned.publish!(comment, mentioned_user)
     end
 
