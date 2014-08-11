@@ -2,12 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-if defined?(Bundler)
-  # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development benchmark test)))
-  # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
-end
+Bundler.require(*Rails.groups)
 
 module Loomio
   class Application < Rails::Application
@@ -44,6 +39,7 @@ module Loomio
 
     # config.i18n.available_locales =
     config.i18n.enforce_available_locales = false
+
     # fallback_tree = LocalesHelper::FALLBACKS   # can this be done without loading the app in the wrong order?
     fallback_tree = { :'pt-PT' => :'pt-BR',
                       :zh => :'zh-TW',
@@ -61,7 +57,7 @@ module Loomio
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.0'
+    config.assets.version = '1.1'
 
     config.action_mailer.default_url_options = {
       host: ENV['CANONICAL_HOST']
