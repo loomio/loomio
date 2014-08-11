@@ -278,6 +278,7 @@ Loomio::Application.routes.draw do
   get '/press'      => redirect('http://blog.loomio.org/press-pack')
   get '/press-pack' => redirect('http://blog.loomio.org/press-pack')
   get '/roadmap'    => redirect('https://trello.com/b/tM6QGCLH/loomio-roadmap')
+  get '/timeline'   => redirect('http://www.tiki-toki.com/timeline/entry/313361/Loomio')
 
   get '/robots'     => 'robots#show'
 end

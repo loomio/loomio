@@ -4,7 +4,7 @@ class AddCommentsCountToDiscussions < ActiveRecord::Migration
   end
 
   class Comment < ActiveRecord::Base
-    belongs_to :discussion
+    belongs_to :discussion, counter_cache: true
   end
 
   def up
@@ -13,7 +13,7 @@ class AddCommentsCountToDiscussions < ActiveRecord::Migration
                                        total: Discussion.count )
     Discussion.reset_column_information
     Discussion.find_each do |discussion|
-      discussion.update_attribute(:comments_count, discussion.comments.count)
+      Discussion.reset_counters(discussion.id, :comments)
       progress_bar.increment
     end
   end
