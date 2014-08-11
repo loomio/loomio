@@ -33,7 +33,7 @@ describe Events::MotionBlocked do
     end
 
     it 'emails motion blocked' do
-      MotionMailer.should_receive(:motion_blocked).with(vote).and_return(mailer)
+      UserMailer.should_receive(:motion_blocked).with(vote).and_return(mailer)
       event.save
     end
   end
