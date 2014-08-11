@@ -1,10 +1,10 @@
 es:
   explore:
-    header: "Explora grupos abiertos al público"
+    header: "Explore grupos abiertos al público"
   try_it:
-    header: "Prueba Loomio"
-    start_a_group: "Inicia un grupo para tomar decisiones con tu propia comunidad."
-    join_the_community: "Únete al grupo de la comunidad de Loomio"
+    header: "Pruebe Loomio"
+    start_a_group: "Inicie un grupo para tomar decisiones con su propia comunidad."
+    join_the_community: "Únase al grupo de la comunidad de Loomio"
     loomio_community_info: "Aquí es donde discutimos y tomamos decisiones sobre Loomio."
     explore_groups: "Explorar los grupos de Loomio"
     explore_groups_info: "Echale un vistazo a todos los fantasticos grupos de Loomio y únete "
