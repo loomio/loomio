@@ -1,8 +1,4 @@
-<%
-rerun = File.file?('rerun.txt') ? IO.read('rerun.txt') : ""
-rerun_opts = rerun.to_s.strip.empty? ? "-r features --format #{ENV['CUCUMBER_FORMAT'] || 'progress'} features" : "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} #{rerun}"
-std_opts = "-r features --format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} --tags ~@wip"
-%>
-default: <%= std_opts %> features
-wip: --tags @wip:3 --wip features
-rerun: <%= rerun_opts %> --format rerun --out rerun.txt --tags ~@wip
+# config/cucumber.yml
+##YAML Template
+---
+default: --format progress
