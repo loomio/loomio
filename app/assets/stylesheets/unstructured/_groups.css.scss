@@ -1,3 +1,7 @@
+//= depend_on 'default-cover-photo.png'
+//= depend_on 'default-logo-medium.png'
+//= depend_on 'cover-photo-gradient.png'
+
 body.groups {
   &.edit, &.new, &.create, &.update {
     .described-label {
