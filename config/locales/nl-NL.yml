@@ -848,6 +848,10 @@ nl-NL:
       subject: "Gisteren op Loomio"
       mark_as_read: Markeer als gelezen
       thanks_for_reading: Bedankt voor het lezen, een fijne dag gewenst!
+      click_here_to_mark_all_as_read_html: |+
+        Hier zie je wat er gisteren op Loomio gebeurde.
+        Als je het hebt gelezen, klik <a href="%{link}">markeer als gelezen</a> om het te verwijderen uit je Loomio Inbox.
+
       marked_as_read_success: "Alles uit de e-mail is gemarkeerd als gelezen"
     group_email:
       intro: "%{who} maakte een aankondiging aan %{group}:"

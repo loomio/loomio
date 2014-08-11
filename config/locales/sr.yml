@@ -878,6 +878,9 @@ sr:
       subject: "Juče na Lumiju"
       mark_as_read: Označi kao pročitano
       thanks_for_reading: Hvala na čitanju, prijatan dan!
+      click_here_to_mark_all_as_read_html: |
+        Evo šta se dogodilo na Lumiju juče.
+        Kada pročitate, škljocnite <a href="%{link}>označi kao pročitano</a> da ukloite iz svog Lumio sandučeta sa porukama.
       marked_as_read_success: "Sve ePoruke su označene kao pročitane"
     group_email:
       intro: "%{who} je napravio/la objavu za grupu %{group}:"
