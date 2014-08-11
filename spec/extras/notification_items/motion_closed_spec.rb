@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe NotificationItems::MotionClosed do
   let(:notification) { double(:notification) }

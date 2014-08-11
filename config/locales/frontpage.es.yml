@@ -6,39 +6,38 @@ es:
     link:
       blog: 'Blog'
       contact: 'Contacto'
-      donate: 'Dona hoy'
+      donate: 'Haz una donación hoy'
       press: 'Prensa'
-      try_it: 'Probalo!'
+      try_it: 'Pruébalo'
       log_in: 'Entrar'
       video: "Más sobre cómo funciona Loomio"
       try_loomio_beta: 'Prueba Loomio beta'
       check_out_loomio_beta: 'Echa un vistazo a Loomio beta'
       more: 'Más'
       top: 'Arriba'
-      public_groups: 'Grupos abiertos al público'
+      public_groups: 'Grupos Públicos'
       terms: 'Términos'
       privacy: 'Privacidad'
       services: 'Servicios'
     hero:
       head_html: 'El mundo necesita mejores caminos para <strong>tomar decisiones en conjunto.</strong>'
-      subhead: 'Ayúdanos a crearlo.'
-      desc_html: 'Loomio este un software gratuit si <a href="https://github.com/loomio/loomio">open-source</a> disponibil pentru oricine, oriunde sa participe in luarea impreuna a deciziilor'
+      desc_html: 'Loomio es software libre y de <a href="https://github.com/loomio/loomio">código abierto</a> para cualquiera persona, en cualquier parte, para participar en decisiones que los afecten.'
     product:
       header_html: 'Cuando escuchamos <strong>todas las voces</strong>, tomamos <strong>mejores decisiones. </strong>'
       step1:
-        header: '1. Hablemos las cosas'
+        header: '1. Discutir a fondo las cosas'
         desc: 'Empieza una discusión en cualquier tema, e invita a las personas que quieras. Comparte perspectivas diversas y desarrolla las ideas en conjunto.'
       step2:
-        header: '2. Construye acuerdo'
+        header: '2. Construir un acuerdo'
         desc: 'Todos pueden proponer un curso de acción. Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear –de esa manera podrás ver cómo se siente el grupo y por qué-.'
       step3:
-        header: '3. Decide juntos'
+        header: '3. Decidir juntos'
         desc: 'Desarrolla la propuesta colectivamente para que funcione para todos. Cada decisión posee una fecha limite, siempre obteniendo un resultado claro.'
     crowdfunding:
       header: 'Estamos en el proceso de financiación colectiva para poder construir esta nueva plataforma y poder regalarse al mundo.'
     prototype:
       header_html: "Ya hemos construido un prototipo, y personas de todo el mundo están haciendo cosas asombrosas con el."
-      subhead_html: '<a href="%{try_loomio_link}">Prueba Lomio beta ahora. O <a href="%{donate_link}">súmate a la campaña</a> para obtener acceso directo a Loomio 1.0.'
+      subhead_html: '<a href="%{try_loomio_link}">Prueba Loomio Beta</a> ahora. O puedes <a href="%{donate_link}">apoyar al proyecto</a> para ayudar a financiar Loomio 1.0'
     mobile:
       header_html: 'Loomio 1.0 funciona con cualquier aparato, construido con lo mejor en <strong> tecnología abierta de móvil.</strong>'
     quote:
@@ -47,7 +46,7 @@ es:
         sifry_html: '«Loomio alcanza un punto óptimo entre <strong>voz individual</strong> y <strong>decisión colectiva</strong>». <div class="attributation">(Micah Sifry, editor de <em><a href="http://techpresident.com">TechPresident</a></em>)</div>'
     team:
       header: 'Acerca de Loomio'
-      desc: 'Somos un pequeño grupo de open-source desarolladores y activistas comunitarios que trabajamos en Ensipral, Aotearoa, Nueva Zelanda con una gran comunidad de amigos, voluntarios y asesores al rededor del mundo.'
+      desc: 'Somos un pequeño grupo de desarolladores open-source y activistas comunitarios que trabajamos en Ensipral en Aotearoa, Nueva Zelanda, con una gran comunidad de amigos, voluntarios y asesores alrededor del mundo.'
     ideals:
       community:
         header: 'Cooperativa comunitaria'
@@ -56,8 +55,8 @@ es:
         header: 'Independiente y neutral'
         desc: 'Tenemos espacio para cualquier grupo que sea independiente de partidos políticos o interés corporativo. Nunca venderemos tu información.'
       open:
-        header: 'Software gratis y abierto'
-        desc: 'El código de Loomio es público y cualquiera puede usarlo, leerlo y aprender de él, modificarlo y redistribuirlo.'
+        header: 'Software libre y abierto'
+        desc: 'El código de Loomio es público y cualquiera puede ejecutarlo, leerlo y aprender de él, modificarlo y redistribuirlo.'
       gift:
         header: 'Economía del regalo'
         desc: 'Loomio es financiada por aquellos que contribuyen de acuerdo a sus recursos. Esto mantiene la plataforma libre de propagandas comerciales y accesible a grupos sin recursos financieros.'

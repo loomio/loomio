@@ -1,4 +1,12 @@
 module EmailHelper
+  def reply_to_address(discussion: discussion, user: user)
+    pairs = []
+    {d: discussion.key, u: user.id, k: user.email_api_key}.each do |key, value|
+      pairs << "#{key}=#{value}"
+    end
+    pairs.join('&')+"@#{ENV['REPLY_HOSTNAME']}"
+  end
+
   def render_email_plaintext(text)
     Rinku.auto_link(simple_format(html_escape(text)), :all, 'target="_blank"').html_safe
   end
@@ -14,9 +22,10 @@ module EmailHelper
     @markdown_email_parser ||= Redcarpet::Markdown.new(EmailMarkdownRenderer, autolink: true)
   end
 
-  def mark_summary_as_read_url_for(user)
+  def mark_summary_as_read_url_for(user, format: nil)
     mark_summary_email_as_read_url(unsubscribe_token: user.unsubscribe_token,
                                    time_start: @time_start.utc.to_i,
-                                   time_finish: @time_finish.utc.to_i)
+                                   time_finish: @time_finish.utc.to_i,
+                                   format: format)
   end
 end

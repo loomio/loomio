@@ -1,18 +1,21 @@
 = render '/application/mailer_doctype'
 %html
-  %p
-    = t("email.mentioned.intro")
-    = link_to "#{@discussion.title}", discussion_url(@discussion)
+  %head
+    = stylesheet_link_tag 'email'
+  %body
+    %p
+      = t("email.mentioned.intro")
+      = link_to "#{@discussion.title}", discussion_url(@discussion)
 
-  %p= t("email.mentioned.said", comment_author: @comment.author.name)
+    %p= t("email.mentioned.said", comment_author: @comment.author.name)
 
-  %table
-    %tr
-      %td.comment
-        :plain
-          #{@rendered_comment_body}
+    %table
+      %tr
+        %td.comment
+          :plain
+            #{@rendered_comment_body}
 
-  %p
-    = link_to t("email.view_comment"), discussion_url(@discussion)+"#comment-#{@comment.id}"
+    %p
+      = link_to t("email.view_comment"), discussion_url(@discussion)+"#comment-#{@comment.id}"
 
-  = render 'unsubscribe_link'
+    = render 'unsubscribe_link'

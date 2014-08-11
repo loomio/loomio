@@ -3,8 +3,11 @@
     %i.fa.fa-group
     %col-md-= t :groups
   %ul.dropdown-menu
+    = text_field :search, :groups, class: 'group-dropdown-search', placeholder: t(:search_for_group)
+    .no-groups-found 
+      = t(:no_groups_found)
     #group-dropdown-items
     - if current_user.show_start_group_button?
       %li.group-item.group-links
         =link_to t(:request_new_group), new_group_path, class: 'new-group'
-        =link_to t(:find_a_group), explore_path, class: 'find-group'
+        =link_to t(:"explore.header"), explore_path, class: 'find-group'

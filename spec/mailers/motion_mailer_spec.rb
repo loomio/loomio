@@ -1,9 +1,9 @@
-require "spec_helper"
+require "rails_helper"
 
 describe MotionMailer do
   let(:user) { create(:user) }
   let(:group) { create(:group) }
-  let(:discussion) { create_discussion group: group }
+  let(:discussion) { create :discussion, group: group }
   let(:motion) { create(:motion, discussion: discussion) }
 
   describe 'sending email on new motion creation' do
@@ -59,11 +59,11 @@ describe MotionMailer do
       @email.to.should == [motion.author_email]
     end
 
-    #ensure that reply to is correct
-    it 'assigns reply to' do
-      pending "This spec is failing on travis for some reason..."
-      @email.reply_to.should == [group.admin_email]
-    end
+    ##ensure that reply to is correct
+    #it 'assigns reply to' do
+      #pending "This spec is failing on travis for some reason..."
+      #@email.reply_to.should == [group.admin_email]
+    #end
 
     #ensure that the group name variable appears in the email body
     it 'assigns group.full_name' do

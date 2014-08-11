@@ -22,6 +22,7 @@ Loomio::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  config.assets.raise_runtime_errors = true
   config.sass.debug_info = true
   # support scss support in chrome devtools
   #
@@ -34,6 +35,9 @@ Loomio::Application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+
+  config.eager_load = false
+  config.roadie.url_options = {host: 'localhost'}
 
   # Use these settings to send mail from gmail. If you use 2-step authentication on
   # your google account, create a new application-specific password and use it in here
@@ -54,4 +58,16 @@ Loomio::Application.configure do
   }
 
   config.action_controller.action_on_unpermitted_parameters = :raise
+
+  config.paperclip_defaults = {
+    :storage => :fog,
+    :fog_credentials => {
+      :provider => 'AWS',
+      :aws_access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :aws_secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    },
+    :fog_directory => ENV['AWS_UPLOADS_BUCKET'],
+    :fog_public => true,
+    :fog_host => ENV['FOG_HOST']
+  }
 end

@@ -1,8 +1,8 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe MotionsController do
   let(:group) { stub_model(Group, full_name: 'Bobs Bakery', key: 'aAa121') }
-  let(:user)  { stub_model(User) }
+  let(:user)  { FactoryGirl.create(:user) }
   let(:discussion)  { stub_model(Discussion, group: group, title: 'some discussion', key: 'asdf333') }
   let(:motion) { stub_model(Motion, discussion: discussion, key: 'abc777') }
   let(:previous_url) { root_url }
@@ -19,14 +19,14 @@ describe MotionsController do
       sign_in user
     end
 
-    context "viewing a motion" do
-      it "redirects to discussion" do
-        pending "this isn't working for some reason"
-        discussion.stub(:current_motion).and_return(motion)
-        get :show, :id => motion.key
-        response.should redirect_to(discussion_url(discussion))
-      end
-    end
+    #context "viewing a motion" do
+      #it "redirects to discussion" do
+        #pending "this isn't working for some reason"
+        #discussion.stub(:current_motion).and_return(motion)
+        #get :show, :id => motion.key
+        #response.should redirect_to(discussion_url(discussion))
+      #end
+    #end
 
     context "closing a motion manually" do
       before do

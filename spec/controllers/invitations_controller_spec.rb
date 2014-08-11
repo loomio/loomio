@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe InvitationsController do
   before do
@@ -9,6 +9,7 @@ describe InvitationsController do
 
   describe 'destroy' do
     let(:invitation){double(:invitation,
+                            id: 1,
                             recipient_email: 'jim@jam.com',
                             cancel!: true,
                             group: @group)}
@@ -21,7 +22,7 @@ describe InvitationsController do
     it 'cancels the invitation' do
       controller.should_receive(:authorize!).with(:cancel, invitation)
       invitation.should_receive(:cancel!).with(canceller: @user)
-      delete :destroy, group_id: @group.key
+      delete :destroy, id: invitation.id, group_id: @group.key
       response.should redirect_to group_memberships_path(@group)
     end
   end
@@ -87,7 +88,7 @@ describe InvitationsController do
 
         it 'accepts the invitation, redirects to group, and clears token from session' do
           AcceptInvitation.should_receive(:and_grant_access!).with(invitation, @user)
-          get :show
+          get :show, :id => 'AaBC1256'
           response.should redirect_to group_path(group)
           session[:invitation_token].should be_nil
         end

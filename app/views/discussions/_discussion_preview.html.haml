@@ -14,8 +14,15 @@
 
       .discussion-title
         = truncate(discussion.title, :length => 60, :separator => ' ')
+
         - if @group.nil?
-          .group-name= GroupDecorator.new(discussion.group).fancy_name
+          .group-name
+            - if discussion.group.is_subgroup?
+              = discussion.group.parent.name
+              %span.name-separator
+                ▶
+            = discussion.group.name
+
         - elsif @group != discussion.group
           .group-name= discussion.group_name
 

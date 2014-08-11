@@ -41,7 +41,7 @@ Then /^"(.*?)" should get the daily activity email$/ do |arg1|
       found_email = true
     end
   end
-  found_email.should be_true
+  found_email.should be true
 end
 
 Then /^"(.*?)" should not get the daily activity email$/ do |arg1|
@@ -52,7 +52,7 @@ Then /^"(.*?)" should not get the daily activity email$/ do |arg1|
       found_email = true
     end
   end
-  found_email.should be_false
+  found_email.should be false
 end
 
 Then /^that email should have the discussion "(.*?)"$/ do |arg1|

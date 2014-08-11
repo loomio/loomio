@@ -16,7 +16,6 @@ ml:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%-d/%-m/%y'
-      datepicker: "%d-%m-%Y"
   devise:
     invitations:
       send_instructions: 'ഒരു ക്ഷണനം %{email}-ലേക്ക് അയച്ചു.'
@@ -68,15 +67,6 @@ ml:
     you_have_left_group: "നിങ്ങള്‍ %{which_group} കൂട്ടം വിട്ടിരിയ്ക്കുന്നു."
     comment_deleted: "അഭിപ്രായം തഴഞ്ഞു."
     invitations:
-      auto_added:
-        one: "%{count} അംഗത്തെ ചേര്‍ത്തു"
-        other: "%{count} അംഗങ്ങളെ ചേര്‍ത്തു"
-      existing_member:
-        one: "%{which_email} നേരത്തെ തന്നെ അംഗമാണു്."
-        other: "%{count} അംഗങ്ങള്‍ നേരത്തെ തന്നെയുണ്ട്"
-      sent:
-        one: "%{count} ക്ഷണനം അയച്ചു"
-        other: "%{count} ക്ഷണനങ്ങള്‍ അയച്ചു"
       auto_added_and_sent: "%{auto_added_text} & %{sent_text}"
   views:
     pagination:
@@ -109,9 +99,6 @@ ml:
     proposal_deleted: "ശുപാര്‍ശ നീക്കം ചെയ്തു."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "സെക്കന്റ്"
-        other: "%{count} സെക്കന്റുകള്‍"
       x_seconds:
         one: "ഒരു സെക്കന്റ്"
         other: "%{count} സെക്കന്റുകള്‍"
@@ -217,7 +204,6 @@ ml:
   members: "അംഗങ്ങള്‍"
   confirm_remove_user: " സമൂഹത്തില്‍ നിന്ന് %{which_user} എന്നയാളെ നീക്കാന്‍ ആഗ്രഹിക്കുന്നുണ്ടോ ?"
   remove_coordinator: "എകോപകനെ നീക്കുക"
-  confirm_remove_coordinator: "തുടര്‍ന്ന് എകൊപകനാകണ്ട എന്ന് നിശ്ചയിച്ചോ?"
   make_coordinator: "എകോപകൻ ആക്കുക"
   confirm_make_coordinator: "ഉറപ്പായും %{which_user}-ക്ക് കൂട്ടത്തിന്റെ ഏകോപന-അധികാരം നല്‍കണോ?"
   confirm_remove_member: 'ഈ അംഗത്തെ കൂട്ടത്തില്‍ നിന്ന് നീക്കം ചെയ്യണോ?'
@@ -275,8 +261,6 @@ ml:
   empty_decision_list_html: "തീരുമാനമെടുക്കാന്‍ തയ്യാറാണോ? <br>ആര്‍ക്കും നിര്‍ദേശങ്ങള്‍ തുടങ്ങാം."
   empty_decision_index: "ഈ കൂട്ടം ഇതുവരെ തീരുമാനങ്ങളൊന്നുമെടുത്തിട്ടില്ല"
   empty_discussion_list: "ഈ ചര്‍ച്ചയില്‍ ഇതുവരെ ഒരു കര്‍മ്മവുമില്ല "
-  empty_discussion_index: "താങ്കളുടെ സമൂഹത്തില്‍ ഒന്നും ചര്‍ച്ചകളില്ല "
-  empty_discussion_index_group: "ഈ സമൂഹത്തില്‍ യാതൊരു ചര്‍ച്ചയും ഇതുവരെ ഇല്ല"
   discussion_context:
     started_html: " %{when} മുന്‍പ്  <a href='%{link}' class='%{link_class}'>%{who}</a> തുടങ്ങി"
     last_edited_html: "അവസാനമായി  <a href='%{link}' class='%{link_class}'>%{who}</a> %{when} മുന്‍പ് തിരുത്തി"
@@ -448,11 +432,7 @@ ml:
     edit:
       header: "ചര്‍ച്ച തിരുത്തുക"
   motion_form:
-    header: "പുതിയ ശുപാര്‍ശ"
     name_helper: "ഈ തലകെട്ട് പരമാവധി ലളിതമാക്കുക"
-  group_form:
-    invitation_settings: "ക്ഷണ ക്രമീകരണങ്ങള്‍"
-    admins_only: "എകോപകര്‍ മാത്രം"
   vote_form:
     header: "നിങ്ങളുടെ നിലപാടു് വ്യക്തമാക്കുക"
     edit: "നിങ്ങളുടെ നിലപാടു് തിരുത്തുക"
@@ -493,26 +473,6 @@ ml:
       discussion:
         title: "തലക്കെട്ട്"
         description: "പശ്ചാത്തലം"
-        privacy_public_header: "പൊതുവായ"
-        privacy_public_description: "ഈ ചര്‍ച്ച ആര്‍ക്കും കാണാനാകും"
-        privacy_private_header: "സ്വകാര്യം"
-        privacy_private_description: "%{group}-ലെ അംഗങ്ങള്‍ക്ക് മാത്രമേ ഈ ചര്‍ച്ച കാണാനാകൂ"
-        privacy_hidden_description: "ഒളിവിലുള്ള കൂട്ടത്തിന്‍റെ എല്ലാ ചര്‍ച്ചകളും സ്വകാര്യമാണ്."
-        of: "-ന്‍റെ"
-        of_no_group: "കൂട്ടത്തിന്‍റെ"
-      group:
-        name: "കൂട്ടത്തിന്റെ പേരു്"
-        description: "വിവരണം"
-        members_invitable_by: "ഈ സമൂഹത്തിലേക്ക് ആര്‍ക്കൊകെ ആളുകളെ ക്ഷണിക്കാം?"
-        members_invitable_by_coordinators: "എകോപകര്‍ മാത്രം"
-        members_invitable_by_members: "കൂട്ടത്തിലെ എല്ലാ അംഗങ്ങളും"
-        privacy: സ്വകാര്യത
-        privacy_public_header: എല്ലാവരും
-        privacy_private_header: ഒട്ടുമിക്കതും സ്വകാര്യം
-        privacy_hidden_header: ഒളിവില്‍(എല്ലാം സ്വകാര്യം)
-        privacy_parent_group_members_header: മാതൃസമൂഹത്തിന്‍റെ അംഗങ്ങള്‍ക്ക് കാണാനാകും
-        group_members_invitable_by: "എകോപകര്‍ മാത്രം"
-        submit: സമര്‍പ്പിക്കുക
       membership_request:
         introduction: "സ്വയം പരിചയപ്പെടുത്തുക"
       motion:
@@ -534,9 +494,6 @@ ml:
       motion:
         name: "താങ്കള്‍ നിര്‍ദേശിക്കുന്ന കര്‍മ്മ പാത എന്ത് ?"
         description: "പരമാവധി വിവരം നല്‍കി എല്ലാവര്‍ക്കും അവരുടെ സമ്മതം/ സമ്മതമല്ല എന്നുള്ളത്‌  എന്തിനെ സൂചിപ്പിക്കുന്നു എന്ന്‍ കൃത്യമായി മനസ്സിലാക്കുവാന്‍ സഹായിയ്ക്കുക"
-      group:
-        name: "കൂട്ടത്തിന്റെ പേരു്"
-        description: "കൂട്ടത്തിന്റെ വിവരണം"
       user:
         email: "ഈമെയില്‍"
         password: "അടയാളവാക്ക്"
@@ -655,6 +612,7 @@ ml:
   pricing: 'വിലവിവരം'
   prev: "മുമ്പുള്ളത്"
   more: "കൂടുതല്‍..."
+  translate: "ലൂമിയോ തര്‍ജ്ജമ ചെയ്യാന്‍ സഹായിക്കൂ!"
   translate_this_string: "%{language}-ലേക്ക് തര്‍ജ്ജിമ"
   options: "ഐച്ഛികങ്ങള്‍"
   ok_got_it: "ശരി, മനസ്സിലായി!"
@@ -666,12 +624,10 @@ ml:
   send_email: "ഈമെയില്‍ അയക്കുക"
   show_more: "കൂടുതല്‍ കാണിക്കുക"
   start_a_group: "കൂട്ടം ആരംഭിക്കുക"
-  start_group: "കൂട്ടം ആരംഭിക്കുക!"
   starting: "തുടങ്ങുന്നു"
   subject: "വിഷയം"
   terms_of_service_html: "%{button_text} ഞെക്കി,  ലൂമിയോ<a href='%{link_path}' target='_blank'>വ്യവസ്ഥകള്‍</a>ക്ക് സമ്മതം  രേഖപെടുത്തുക"
   thanks: "നന്ദി!"
-  translate: "ലൂമിയോ തര്‍ജ്ജമ ചെയ്യാന്‍ സഹായിക്കൂ!"
   unlike: "ഇഷ്ടം തിരിച്ചെടുക്കുക"
   update: "പുതുക്കുക"
   common:

@@ -1,6 +1,7 @@
 - if last_page?
   - if can? :add_comment, discussion
     = form_tag add_comment_discussion_path(discussion), :remote => true, id: "new-comment-form" do
+      = hidden_field_tag 'authenticity_token', form_authenticity_token
       = render 'avatar', user: current_user
       #comment-input{ data: {group: @group.id, autocomplete_path: members_autocomplete_group_path(@group) } }
         .form-container

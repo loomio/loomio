@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Events::CommentLiked do
   describe "::publish!" do

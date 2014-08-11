@@ -55,7 +55,7 @@ ActiveAdmin.register Group do
       group.description
     end
     column :payment_plan
-    default_actions
+    actions
   end
 
   show do |group|

@@ -1,4 +1,4 @@
-require 'spec_helper_lite'
+require 'rails_helper'
 
 # External dependencies
 require 'active_support/core_ext/object/blank'

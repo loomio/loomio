@@ -1,6 +1,22 @@
 window.Application ||= {}
 
+# keyboard shortcuts
 $ ->
+  $(document).on 'keydown', (event) ->
+    if document.activeElement.tagName not in ['INPUT', 'TEXTAREA', 'SELECT']
+      switch event.which
+        when 71 # G for groups search dropdown
+          $('#groups>a').click()
+          $('#groups').find('.group-dropdown-search').focus()
+          event.preventDefault()
+        when 78 # N for notifications dropdown
+          $('#notifications-container>a').click()
+        when 83 # S for search box
+          $('#search_form_query').focus()
+          event.preventDefault()
+        when 85 # U for user dropdown
+          $("#user>a").click()
+
   $(".dismiss-help-notice").click (event)->
     $.post($(this).attr("href"))
     $('.help-notice').modal('hide')
@@ -49,3 +65,15 @@ $.placeholder.shim();
 # todo: translate the warning message
 $ ->
   $('.js-warn-before-navigating-away').safetynet()
+
+getParameterByName = (name) ->
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    regex = new RegExp("[\\?&]#{name}=([^&#]*)")
+    results = regex.exec(location.search);
+    if results == null
+      ""
+    else
+      decodeURIComponent(results[1].replace(/\+/g, " "));
+
+if locale = getParameterByName('locale')
+  $.ajaxSetup(data: {locale: locale})

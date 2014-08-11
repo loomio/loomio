@@ -3,11 +3,21 @@ class BaseMailer < ActionMailer::Base
   include LocalesHelper
   include ERB::Util
   include ActionView::Helpers::TextHelper
+  include EmailHelper
+  #include Roadie::Rails::Mailer
+  include Roadie::Rails::Automatic
+
   add_template_helper(ReadableUnguessableUrlsHelper)
 
   UTM_EMAIL = { utm_campaign: 'notifications', utm_medium: 'email' }
 
-  default :from => "Loomio <notifications@loomio.org>", css: :email
+  default :from => "Loomio <notifications@loomio.org>"
+
+  protected
+
+  def roadie_options
+    super.merge(url_options: {host: ActionMailer::Base.default_url_options[:host]})
+  end
 
   def email_subject_prefix(group_name)
     "[Loomio: #{group_name}]"
@@ -18,8 +28,6 @@ class BaseMailer < ActionMailer::Base
       add_sendgrid_headers(method_name, args) if method_name
     end
   end
-
-  private
 
   # Set headers for SendGrid.
   def add_sendgrid_headers(action, args)

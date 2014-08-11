@@ -37,9 +37,6 @@ class SetupGroup
     example_motion.description = I18n.t('example_motion.description')
     example_motion.author = helper_bot
     example_motion.discussion = example_discussion
-    example_motion.close_at_date = 14.days.from_now.to_date
-    example_motion.close_at_time = Time.now.strftime("%H:00")
-    example_motion.close_at_time_zone = helper_bot.time_zone
     example_motion.save!
   end
 

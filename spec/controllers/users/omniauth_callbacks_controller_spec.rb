@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Users::OmniauthCallbacksController do
   describe "POST all" do
@@ -12,11 +12,23 @@ describe Users::OmniauthCallbacksController do
     context 'existing identity' do
       let(:identity) {double(:identity, user: user) }
 
-      it 'signs in the user' do
+      it 'signs in the user with google' do
         controller.should_receive(:sign_in).with(:user, user)
-        post :all
-        response.should be_redirect
+        post :google
+        response.should be_redirect      
       end
+
+      it 'signs in the user with facebook' do
+        controller.should_receive(:sign_in).with(:user, user)
+        post :facebook
+        response.should be_redirect       
+      end
+
+      it 'signs in the user with browser_id' do
+        controller.should_receive(:sign_in).with(:user, user)
+        post :browser_id
+        response.should be_redirect 
+      end      
     end
 
     context 'new identity' do
@@ -27,17 +39,43 @@ describe Users::OmniauthCallbacksController do
           User.should_receive(:find_by_email).and_return(user)
         end
 
-        it 'signs in the user and sets identity in session' do
+        it 'signs in the user and sets identity in session with google' do
           controller.should_receive(:sign_in).with(:user, user)
-          post :all
+          post :google
+          session[:omniauth_identity_id].should == identity.id
+          response.should be_redirect
+        end
+
+        it 'signs in the user and sets identity in session with facebook' do
+          controller.should_receive(:sign_in).with(:user, user)
+          post :facebook
+          session[:omniauth_identity_id].should == identity.id
+          response.should be_redirect
+        end
+
+        it 'signs in the user and sets identity in session with browser_id' do
+          controller.should_receive(:sign_in).with(:user, user)
+          post :browser_id
           session[:omniauth_identity_id].should == identity.id
           response.should be_redirect
         end
       end
 
       context 'unrecognised email' do
-        it 'sets identity in session and redirects for loomio auth' do
-          post :all
+        it 'sets identity in session and redirects for loomio auth for google' do
+          post :google
+          session[:omniauth_identity_id].should == identity.id
+          response.should be_redirect
+        end
+
+        it 'sets identity in session and redirects for loomio auth for facebook' do
+          post :facebook
+          session[:omniauth_identity_id].should == identity.id
+          response.should be_redirect
+        end
+
+        it 'sets identity in session and redirects for loomio auth for browser_id' do
+          post :browser_id
           session[:omniauth_identity_id].should == identity.id
           response.should be_redirect
         end

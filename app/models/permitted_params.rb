@@ -15,7 +15,6 @@ class PermittedParams < Struct.new(:params, :user)
 
   def email_preferences_attributes
     [{:group_email_preferences => []},
-     :subscribed_to_daily_activity_email,
      :subscribed_to_proposal_closure_notifications,
      :subscribed_to_mention_notifications,
      :subscribed_to_missed_yesterday_email ]
@@ -55,7 +54,9 @@ class PermittedParams < Struct.new(:params, :user)
     [:parent_id, :name, :visible_to, :is_visible_to_public, :discussion_privacy_options,
      :members_can_add_members, :members_can_edit_discussions, :members_can_edit_comments, :motions_can_be_edited,
      :description, :next_steps_completed, :payment_plan,
-     :is_visible_to_parent_members, :parent_members_can_see_discussions, :membership_granted_upon, :cover_photo, :logo, :category_id]
+     :is_visible_to_parent_members, :parent_members_can_see_discussions,
+     :membership_granted_upon, :cover_photo, :logo, :category_id,
+     :members_can_raise_motions, :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups]
   end
 
   def discussion_attributes
@@ -63,7 +64,7 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def comment_attributes
-    [:body, :uses_markdown, :attachment_ids]
+    [:body, :uses_markdown, :attachment_ids, :discussion_id]
   end
 
   def announcement_dismissal_attributes

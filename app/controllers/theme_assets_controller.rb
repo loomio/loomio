@@ -1,6 +1,9 @@
 class ThemeAssetsController < ApplicationController
   # remember to cache this a little bit..
   # caches_action :index, :cache_path => Proc.new { |c| c.params }
+  #
+  skip_before_action :verify_authenticity_token
+
   def show
     @theme = Theme.find(params[:id])
     #fresh_when last_modified: @product.published_at.utc, etag: @product

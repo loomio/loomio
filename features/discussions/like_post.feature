@@ -20,6 +20,5 @@ Feature: Like post
     And I am on the discussion page
     When I write and submit a comment
     And I click the like button on a post
-    And I am on the discussion page
     When I click the unlike button on a post
     Then I should not see any liked posts by "furry@example.com"

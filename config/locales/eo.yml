@@ -1,4 +1,10 @@
 eo:
+  explore:
+    header: "Esploru publikajn grupojn"
+  try_it:
+    header: "Provu uzi Loomio-n"
+    start_a_group: "Starigu grupon por fari decidojn rilatajn al via komunumo"
+    loomio_community_info: "Ĉi tie ni diskutas kaj decidas pri Loomio"
   activerecord:
     errors:
       messages:
@@ -6,9 +12,15 @@ eo:
   errors:
     messages:
       email: "Retadreso ne validas"
-  date:
-    formats:
-      datepicker: "%Y-%m-%d"
+  devise:
+    invitations:
+      send_instructions: 'Invito estis sendita al  %{email}.'
+      invitation_token_invalid: 'La invita ĵetono kiun vi provizis malvalidas'
+      updated: 'La konto estas kreita'
+      no_invitations_remaining: "Ne restas pliaj invitoj"
+    mailer:
+      invitation_instructions:
+        subject: 'Iu invitis vin aliĝi al Loomio'
   error:
     access_denied: "Vi ne havas permeson fari ĉi tion"
     cant_join_subgroup: "Vi ne rajtas aniĝi al subgrupo se vi ne estas membro de la ĉefgrupo"
@@ -63,9 +75,6 @@ eo:
     proposal_deleted: "Propono forigita."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "sekundo"
-        other: "%{count} sekundoj"
       x_seconds:
         one: "1 sekundo"
         other: "%{count} sekundoj"
@@ -128,7 +137,6 @@ eo:
     message: "<p>Jen la <strong>grupa paĝo</strong>. Maldekstre estas la listo de ĉiuj diskutoj en ĉi tiu grupo.</p><p>Se vi volas ke la grupo diskutu pri io nova, komencu novan diskuton.</p>"
   dashboard_helper_text:
     header: "Bonvenon al via hejmpaĝo"
-    message: "<p>La hejmpaĝo montras al vi ĉiujn nunajn diskutojn en ĉiuj grupoj kie vi estas membro.</p><p>Vi povas starigi diskuton pri nova temo klakante la butonon 'Starigi diskuton'.</p>"
   setup_steps_title: "Sekvaj paŝoj:"
   setup_step_1: "Vidu pri la ekzempla diskuto"
   setup_step_2: "Starigi vian unuan diskuton"
@@ -195,8 +203,6 @@ eo:
   empty_decision_list_html: "Ĉu vi pretas por fari decidon? <br> Kiu ajn povas komenci proponon."
   empty_decision_index: "Tiu ĉi grupo faris neniun ajn decidojn ĝis nu.n"
   empty_discussion_list: "Ankoraŭ nenio okazis en tiu ĉi diskuto."
-  empty_discussion_index: "Neniu diskuto troveblas ene de viaj grupoj."
-  empty_discussion_index_group: "Tiu ĉi grupo havas neniun ajn decidon ĝis nun."
   discussion_context:
     see_revision_history: "Vidu la revizian historion"
   description_history:
@@ -369,11 +375,7 @@ eo:
       Se vi certas pri via pozicio, alklaku unu el la simboloj malsupre (movu la muŝon super la decidbutonojn por priskribo de la signifo de ĉiuj).
       Al vi estos petate skribi mallonge pri via kialo por via decido. Tio helpos vidi resumon de ĉies pensoj kaj kialoj. Vi povas ŝanĝi vian opinion kaj redakti vian decidon libere ĝis kiam la propono fermiĝas.
   motion_form:
-    header: "Nova propono"
     name_helper: "Bonvolu klarigi kaj mallongigi la titolon kiel eble plej multe."
-  group_form:
-    invitation_settings: "Agordoj de la invito"
-    admins_only: "Nur kunordigantoj"
   vote_form:
     header: "Vortumi vian sintenton"
     edit: "Redakti vian sintenon"
@@ -401,10 +403,6 @@ eo:
       discussion:
         title: "Titolo"
         description: "Kunteksto"
-      group:
-        name: "Grupnomo"
-        description: "Priskribo"
-        members_invitable_by: "Kiu povos inviti personojn al ĉi tiu grupo?"
       motion:
         name: "Titolo"
         description: "Detaloj"
@@ -420,8 +418,6 @@ eo:
       motion:
         name: "Kion vi proponas ke okazu?"
         description: "Donu sufiĉajn informojn por ke ĉiuj sciu ekzakte kion signifas konsenti aŭ malkonsenti."
-      group:
-        description: "Grupa priskribo"
   helpers:
     submit:
       discussion:

@@ -5,6 +5,9 @@
     %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
     %title= display_title @unviewed_notifications
 
+    - if @feed_url
+      %link{href: @feed_url, rel: 'alternate', type: 'application/rss+xml', title: t(:rss_subscribe), class: 'rss-link' }
+
     /[if lt IE 9]
       =javascript_include_tag 'ie8'
 
@@ -14,7 +17,7 @@
     = javascript_include_tag "application"
     = theme_javascript_include_tag
     = csrf_meta_tags
-    = render 'social_metadata', :description => @meta_description, :title => @meta_title
+    = render 'social_metadata', description: @meta_description, title: @meta_title
 
   %body{class: "#{controller_name} #{action_name}"}
     - analytics_scope do
@@ -27,4 +30,5 @@
       .page-container
         = yield
       = render 'footer_logged_in'
-    = render 'intercom_tracker'
+  = render 'intercom_tracker'
+  = render 'heap_analytics'

@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
   attr_accessor :honeypot
 
-  validates :name, presence: true
   validates :email, presence: true, uniqueness: true, email: true
   validates_inclusion_of :uses_markdown, in: [true,false]
 
@@ -29,7 +28,7 @@ class User < ActiveRecord::Base
   validates_attachment :uploaded_avatar,
     size: { in: 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
     content_type: { content_type: /\Aimage/ },
-    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] }
+    file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
   validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
 
@@ -40,27 +39,29 @@ class User < ActiveRecord::Base
               :default => 'none'
 
 
+  has_many :contacts
   has_many :admin_memberships,
-           conditions: 'memberships.admin = TRUE AND memberships.is_suspended = FALSE',
+           -> { where('memberships.admin = ? AND memberships.is_suspended = ?', true, false) },
            class_name: 'Membership',
            dependent: :destroy
 
   has_many :adminable_groups,
+           -> { where( archived_at: nil) },
            through: :admin_memberships,
            class_name: 'Group',
            source: :group
 
   has_many :memberships,
-           conditions: {is_suspended: false},
+           -> { where is_suspended: false },
            dependent: :destroy
 
   has_many :membership_requests,
            foreign_key: 'requestor_id'
 
   has_many :groups,
-           through: :memberships,
-           conditions: { archived_at: nil }
-
+           -> { where archived_at: nil },
+           through: :memberships
+           
   has_many :discussions,
            through: :groups
 
@@ -78,6 +79,7 @@ class User < ActiveRecord::Base
            dependent: :destroy
 
   has_many :votes, dependent: :destroy
+  has_many :comment_votes, dependent: :destroy
 
   has_many :announcement_dismissals, dependent: :destroy
 
@@ -94,18 +96,19 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :attachments
 
-  before_save :set_avatar_initials, :ensure_unsubscribe_token
-  before_create :set_default_avatar_kind
-  before_create :generate_username
-  after_create :ensure_name_entry
+  before_save :set_avatar_initials,
+              :ensure_unsubscribe_token,
+              :ensure_email_api_key,
+              :generate_username
 
-  scope :active, where(deleted_at: nil)
-  scope :inactive, where("deleted_at IS NOT NULL")
-  scope :daily_activity_email_recipients, where(subscribed_to_daily_activity_email: true)
-  scope :subscribed_to_missed_yesterday_email, where(subscribed_to_missed_yesterday_email: true)
-  scope :sorted_by_name, order("lower(name)")
-  scope :admins, where(is_admin: true)
-  scope :coordinators, joins(:memberships).where('memberships.admin = ?', true).group('users.id')
+  before_create :set_default_avatar_kind
+
+  scope :active, -> { where(deleted_at: nil) }
+  scope :inactive, -> { where("deleted_at IS NOT NULL") }
+  scope :subscribed_to_missed_yesterday_email, -> { where(subscribed_to_missed_yesterday_email: true) }
+  scope :sorted_by_name, -> { order("lower(name)") }
+  scope :admins, -> { where(is_admin: true) }
+  scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
@@ -134,7 +137,12 @@ class User < ActiveRecord::Base
   end
 
   def inbox_groups
-    groups.where('memberships.inbox_position is not null').order(:inbox_position)
+    groups.where('memberships.inbox_position is not null').order('memberships.inbox_position')
+  end
+
+  def groups_discussions_can_be_started_in
+    (groups.where(members_can_start_discussions: true) | adminable_groups).
+     sort{|a,b| a.full_name <=> b.full_name}
   end
 
   def first_name
@@ -148,10 +156,6 @@ class User < ActiveRecord::Base
   # Provide can? and cannot? as methods for checking permissions
   def ability
     @ability ||= Ability.new(self)
-  end
-
-  def language
-    selected_locale || detected_locale
   end
 
   delegate :can?, :cannot?, :to => :ability
@@ -202,17 +206,12 @@ class User < ActiveRecord::Base
 
   def mark_notifications_as_viewed!(latest_viewed_id)
     notifications.where('id <= ?', latest_viewed_id).
-      update_all(:viewed_at => Time.zone.now)
+      update_all(:viewed_at => Time.now)
   end
 
-  def self.loomio_helper_bot
-    helper_bot = User.find_or_create_by_email('contact@loom.io')
-    unless helper_bot.persisted?
-      helper_bot.name = "Loomio Helper Bot"
-      helper_bot.password = SecureRandom.hex(16)
-      helper_bot.save
-    end
-    helper_bot
+  def self.loomio_helper_bot(password: nil)
+    where(email: 'contact@loom.io').first ||
+    create!(email: 'contact@loom.io', name: 'Loomio Helper Bot', password: password || SecureRandom.hex)
   end
 
   def self.helper_bots
@@ -220,7 +219,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_email(email)
-    User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
+    User.where('lower(email) = ?', email.downcase).first
   end
 
   def subgroups
@@ -241,9 +240,10 @@ class User < ActiveRecord::Base
 
   def deactivate!
     update_attributes(deleted_at: Time.now,
-                      subscribed_to_daily_activity_email: false,
+                      subscribed_to_missed_yesterday_email: false,
                       subscribed_to_mention_notifications: false,
-                      subscribed_to_proposal_closure_notifications: false)
+                      subscribed_to_proposal_closure_notifications: false,
+                      avatar_kind: "initials")
     memberships.update_all(archived_at: Time.now,
                       subscribed_to_notification_emails: false)
     membership_requests.where("responded_at IS NULL").destroy_all
@@ -308,7 +308,8 @@ class User < ActiveRecord::Base
   end
 
   def generate_username
-    ensure_name_entry if name.nil?
+    return if name.blank? or username.present?
+
     if name.include? '@'
       #email used in place of name
       email_str = email.split("@").first
@@ -346,6 +347,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def ensure_email_api_key
+    self.email_api_key ||= SecureRandom.hex(16)
+  end
+
   def ensure_unsubscribe_token
     if unsubscribe_token.blank?
       found = false
@@ -354,13 +359,6 @@ class User < ActiveRecord::Base
         found = true unless self.class.where(:unsubscribe_token => token).exists?
       end
       self.unsubscribe_token = token
-    end
-  end
-
-  def ensure_name_entry
-    unless name
-      self.name = email
-      save
     end
   end
 end
