@@ -246,7 +246,6 @@ li.dropdown#groups {
   }
 }
 
-<<<<<<< HEAD
 /* group dropdown items */
 #group-dropdown-items {
   overflow-y: auto;
@@ -288,40 +287,23 @@ li#groups ul.dropdown-menu li.group-item.group-links {
       background-image: none;
       background-color: #fff;
       text-decoration: underline;;
-||||||| merged common ancestors
-  li#groups ul.dropdown-menu li.group-item.group-links {
-    border-top: 1px solid #E7E7E7;
-    a {
-      margin: 8px auto;
-      display: inline-block;
-      font-size: 14px;
-      min-width: 0;
-      width: 100px;
-      padding: 4px 36px;
-      text-align: center;
-      color: #08C;
-      &:hover {
-        background-image: none;
-        background-color: #fff;
-        text-decoration: underline;;
-      }
-=======
-  li#groups ul.dropdown-menu li.group-item.group-links {
-    border-top: 1px solid #E7E7E7;
-    a {
-      margin: 8px auto;
-      display: inline-block;
-      font-size: 14px;
-      min-width: 0;
-      width: 100px;
-      text-align: center;
-      color: #08C;
-      &:hover {
-        background-image: none;
-        background-color: #fff;
-        text-decoration: underline;;
-      }
->>>>>>> master
+/*=======*/
+  /*li#groups ul.dropdown-menu li.group-item.group-links {*/
+    /*border-top: 1px solid #E7E7E7;*/
+    /*a {*/
+      /*margin: 8px auto;*/
+      /*display: inline-block;*/
+      /*font-size: 14px;*/
+      /*min-width: 0;*/
+      /*width: 100px;*/
+      /*text-align: center;*/
+      /*color: #08C;*/
+      /*&:hover {*/
+        /*background-image: none;*/
+        /*background-color: #fff;*/
+        /*text-decoration: underline;;*/
+      /*}*/
+/*>>>>>>> master*/
     }
   }
   .new-group { border-right: 1px solid rgb(221, 221, 221); }
