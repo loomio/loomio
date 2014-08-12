@@ -1,7 +1,7 @@
 - set_title @group.name, "", @group.parent
 - cover_photo_url = use_parent_if_blank(@group, :cover_photo).url(:desktop)
 
-.group-heading{style: "background-image: url(#{asset_path 'cover-photo-gradient.png'}), url('#{cover_photo_url}')"}
+.group-heading{style: "background-image: url(#{image_path 'cover-photo-gradient.png'}), url('#{cover_photo_url}')"}
   = render 'application/flash_messages', :flash => flash, :on_landing_page => false
   - if can? :edit, @group
     .upload-button.cover-photo-upload{title: t(:'tooltip.cover_photo_upload')}
