@@ -2,20 +2,6 @@ window.Application ||= {}
 
 # keyboard shortcuts
 $ ->
-  $(document).on 'keydown', (event) ->
-    if document.activeElement.tagName not in ['INPUT', 'TEXTAREA', 'SELECT']
-      switch event.which
-        when 71 # G for groups search dropdown
-          $('#groups>a').click()
-          $('#groups').find('.group-dropdown-search').focus()
-          event.preventDefault()
-        when 78 # N for notifications dropdown
-          $('#notifications-container>a').click()
-        when 83 # S for search box
-          $('#search_form_query').focus()
-          event.preventDefault()
-        when 85 # U for user dropdown
-          $("#user>a").click()
 
   $(".dismiss-help-notice").click (event)->
     $.post($(this).attr("href"))
