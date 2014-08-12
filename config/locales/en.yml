@@ -1,4 +1,5 @@
 en:
+  # view path based locale strings
   users:
     email_preferences:
       edit:
@@ -10,6 +11,7 @@ en:
         email_followed_threads: "Immediately for discussions I am following"
         you_follow_when_you_get_involved: "You start following a discussion if you participate or are mentioned"
         groups_to_auto_follow: "Following new discussions by default in these groups:"
+        submit: "Save preferences"
 
   explore:
     header: "Explore public groups"
