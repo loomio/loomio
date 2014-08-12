@@ -20,7 +20,7 @@ Loomio::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
-  config.assets.enabled = true
+
   config.eager_load = true
 
   config.action_dispatch.x_sendfile_header = nil
