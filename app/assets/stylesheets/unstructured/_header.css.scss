@@ -138,6 +138,10 @@
     float: right;
   }
 
+  li.whatswrong {
+    color: black;
+  }
+
   li.nav-item.dropdown#user {
     float: right;
     max-width: 300px;
@@ -165,8 +169,10 @@
       }
     }
   }
+
   li.nav-item.dropdown#groups {
     float: left;
+
     #activity-count {
       font-size: $font-tinywiny;
       padding: 0px 3px;
@@ -174,15 +180,19 @@
       left: 31px;
       bottom: 17px;
     }
+
     .link-container a { display: inline; }
+
     .discussion-activity-count {
       display: inline;
       float: right;
       margin-left: 10px;
     }
+
     .dropdown-menu {
       padding-bottom: 0;
     }
+
     .group-dropdown-search {
       display: none;
       width: 100%;
@@ -192,6 +202,7 @@
       position: relative;
       bottom: 5px;
     }
+
     .no-groups-found {
       display: none;
       padding: 5px 15px;
