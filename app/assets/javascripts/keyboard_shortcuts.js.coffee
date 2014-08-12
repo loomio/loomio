@@ -9,10 +9,11 @@ $ ->
         when 38 # select prev group with up arrow
           target = active.parent().prev('.group-item').find('.selector-link')
           target = $('#group-dropdown-items').find('.selector-link').last() if target.length is 0
-      target.focus() if target?
-      event.preventDefault()
+      if target?
+        target.focus()
+        event.preventDefault()
 
-    if active.not('input, textarea, select') or event.which == 27
+    if !active.is('input, textarea, select') or event.which == 27
       switch event.which
         when 71, 27 # G or ESC for groups search dropdown
           $('#groups>a').click()
