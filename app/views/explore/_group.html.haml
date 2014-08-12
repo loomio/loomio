@@ -1,6 +1,6 @@
 .group
-  .group-heading{style: "background-image: url(#{asset_path 'cover-photo-gradient-card.png'}), url('#{url_for_image(group.cover_photo, :card)}')"}
-    .group-logo{style: "background-image: url('#{url_for_image(group.logo, :card)}')"}
+  .group-heading{style: "background-image: url(#{asset_path 'cover-photo-gradient-card.png'}), url('#{group.cover_photo.url(:card)}')"}
+    .group-logo{style: "background-image: url('#{group.logo.url(:card)}')"}
 
     -if group.category.present?
       .group-category.shadow

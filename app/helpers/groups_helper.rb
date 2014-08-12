@@ -123,12 +123,4 @@ module GroupsHelper
       group.send(method)
     end
   end
-
-  def url_for_image(image, style)
-    if image.blank?
-      asset_path(image.url(style))
-    else
-      image.url(style)
-    end
-  end
 end
