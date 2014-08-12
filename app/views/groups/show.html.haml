@@ -1,5 +1,6 @@
 - set_title @group.name, "", @group.parent
-- cover_photo_url = use_parent_if_blank(@group, :cover_photo).url(:desktop)
+- cover_photo_url = url_for_image(use_parent_if_blank(@group, :cover_photo), :desktop) #.url(:desktop)
+- logo_url = url_for_image(use_parent_if_blank(@group, :logo), :medium) #.url(:medium)
 
 .group-heading{style: "background-image: url(#{image_path 'cover-photo-gradient.png'}), url('#{cover_photo_url}')"}
   = render 'application/flash_messages', :flash => flash, :on_landing_page => false
@@ -10,7 +11,6 @@
         .edit-icon
           %i.fa.fa-pencil
 
-  - logo_url = use_parent_if_blank(@group, :logo).url(:medium)
 
   .group-logo{style: "background-image: url('#{logo_url}')"}
     - if can? :edit, @group
