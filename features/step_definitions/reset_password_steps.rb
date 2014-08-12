@@ -5,9 +5,7 @@ end
 When(/^I reset my password$/) do
   visit new_user_password_path
   fill_in 'Email', with: @user.email
-  view_screenshot
   click_on 'Send me reset password instructions'
-  view_screenshot
 end
 
 Then(/^my password should be reset and I should be logged in$/) do

@@ -1,7 +1,7 @@
 .row
   .span12
     %h1= t('.title')
-    =simple_form_for(@email_preferences, url: update_email_preferences_path, method: :put) do |f|
+    =simple_form_for(@user, url: update_email_preferences_path, method: :put) do |f|
       -if params[:unsubscribe_token]
         =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
 
@@ -12,9 +12,9 @@
 
       %p= t '.you_follow_when_you_get_involved'
 
-      %h2= t '.groups_to_auto_follow'
+      -#%h2= t '.groups_to_auto_follow'
 
-      .control-group
-        =f.collection_check_boxes(:group_ids_to_follow_by_default, @email_preferences.all_memberships, :id, :group_full_name, {}, {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
+      -#.control-group
+        -#=f.collection_check_boxes(:following_by_default_group_ids, @email_preferences.all_memberships, :id, :group_full_name, {}, {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
 
-      =f.submit t("email_preferences_form.update_preferences"), :class => "btn btn-info btn-large", :data => {:disable_with => t("email_preferences_form.update_preferences")}
+      =f.submit t('.submit'), :class => "btn btn-info btn-large"
