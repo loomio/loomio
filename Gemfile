@@ -52,23 +52,19 @@ gem 'intercom'
 gem 'intercom-rails'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
-gem 'minitest'
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'underscore-rails'
-  gem "font-awesome-sass"
-  gem 'coffee-rails'
-  gem 'sass-rails'
-  gem 'uglifier'
-  gem 'bootstrap-sass', '2.3.2.2'
-  gem 'modernizr-rails'
-  gem 'jquery-fileupload-rails'
-  gem 'momentjs-rails'
-end
+gem 'underscore-rails'
+gem "font-awesome-sass"
+gem 'coffee-rails'
+gem 'sass-rails'
+gem 'sprockets-rails', require: 'sprockets/railtie'
+gem 'uglifier'
+gem 'bootstrap-sass', '2.3.2.2'
+gem 'modernizr-rails'
+gem 'jquery-fileupload-rails'
+gem 'momentjs-rails'
 
 group :development, :test do
+  gem 'minitest'
   gem 'timecop'
   gem 'thin'
   gem 'pry-rails'
@@ -104,13 +100,11 @@ group :test do
   gem 'email_spec'
   gem 'poltergeist'
   gem 'webmock'
-  #gem 'vcr'
   gem "codeclimate-test-reporter", require: false
   gem 'rack_session_access'
 end
 
 group :production do
-  gem 'sprockets-rails', require: 'sprockets/railtie'
   gem 'rails_12factor'
   gem 'rails_serve_static_assets'
   gem 'delayed-plugins-airbrake'
