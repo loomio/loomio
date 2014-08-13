@@ -112,6 +112,16 @@ class GroupsController < GroupBaseController
     render json: users.map{|u| {name: "#{u.name} #{u.username}", username: u.username, real_name: u.name} }
   end
 
+  def following
+    membership = @group.membership_for(current_user)
+    if params[:following_by_default] == "true"
+      membership.follow_by_default!
+    elsif params[:following_by_default] == "false"
+      membership.dont_follow_by_default!
+    end
+    redirect_to @group
+  end
+
   private
     def ensure_group_is_setup
       if user_signed_in? && @group.admins.include?(current_user)

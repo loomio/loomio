@@ -1,5 +1,5 @@
 .sub-panel
-  %h4= t :groups
+  %h4= t :"common.groups"
   %ul#dashboard-groups-list
     = render '/application/groups_tree'
     - if current_user.show_start_group_button?

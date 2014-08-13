@@ -1,0 +1,14 @@
+
+- if @group.membership_for(current_user).following_by_default?
+  %i.fa.fa-volume-up
+  = link_to group_following_path(@group, following_by_default: false), method: :patch do
+    = t :".following"
+  %p= t :".following_details"
+
+- else
+  %i.fa.fa-volume-down
+  = link_to group_following_path(@group, following_by_default: true), method: :patch do
+    = t :".not_following"
+  %p= t :".not_following_details"
+
+
