@@ -47,6 +47,7 @@ class Membership < ActiveRecord::Base
     update_attribute(:following_by_default, true)
   end
 
+
   def group_has_multiple_admins?
     group.admins.count > 1
   end

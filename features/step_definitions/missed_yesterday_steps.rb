@@ -4,7 +4,7 @@ Given(/^there is a new discussion in the group$/) do
 end
 
 Given(/^I am subscribed to the missed yesterday email$/) do
-  @user.update_attribute(:subscribed_to_missed_yesterday_email, true)
+  @user.update_attribute(:email_missed_yesterday, true)
 end
 
 When(/^the missed yesterday email is sent$/) do
