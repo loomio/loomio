@@ -1,9 +1,11 @@
 - if current_user.parent_groups.present?
   .row
-    .col-md-9.main-content
+    .col-md-9
       .group-title
         %h1.home-title
           = link_to t(:home), dashboard_path
+      .row
+        .col-md-12.main-content
           =render 'discussions/discussion_list'
 
     %section.col-md-3
@@ -17,9 +19,35 @@
 - else
   %h1= t(:no_group_header)
   .no-groups.row
-    .col-md-3.actions
-      .action-button= link_to t(:start_new_group), new_group_path, class: 'btn btn-lg btn-primary btn-block'
+    .col-md-9.actions
+      .action-button= link_to t(:start_new_group), new_group_path, class: 'btn btn-large btn-primary btn-block'
       .intro-desc= t(:start_new_group_hint)
-    .col-md-3.actions
-      .action-button= link_to t(:"find_a_group"), explore_path, class: 'btn btn-lg btn-success btn-block'
+    .col-md-9.actions
+      .action-button= link_to t(:"find_a_group"), explore_path, class: 'btn btn-large btn-success btn-block'
       .intro-desc= t(:find_a_group_hint)
+
+/ - if current_user.parent_groups.present?
+/   .row
+/     .col-md-9.main-content
+/       .group-title
+/         %h1.home-title
+/           = link_to t(:home), dashboard_path
+/           =render 'discussions/discussion_list'
+
+/     %section.col-md-3
+/       #group-actions
+/         .clearfix
+/           = icon_button(href: new_discussion_path, text: t(:start_a_discussion), icon: 'topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
+/       =render 'groups'
+/       .sub-panel.previous-discussions-panel
+/         %h4= t(:previous_decisions)
+/         = link_to t(:see_previous_decisions), motions_path, class: 'bottom-panel-link'
+/ - else
+/   %h1= t(:no_group_header)
+/   .no-groups.row
+/     .col-md-3.actions
+/       .action-button= link_to t(:start_new_group), new_group_path, class: 'btn btn-lg btn-primary btn-block'
+/       .intro-desc= t(:start_new_group_hint)
+/     .col-md-3.actions
+/       .action-button= link_to t(:"find_a_group"), explore_path, class: 'btn btn-lg btn-success btn-block'
+/       .intro-desc= t(:find_a_group_hint)
