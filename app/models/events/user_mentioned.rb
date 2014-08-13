@@ -11,7 +11,7 @@ class Events::UserMentioned < Event
                          user: mentioned_user).follow!
 
     # in app notification
-    notify!(mentioned_user)
+    event.notify!(mentioned_user)
 
     event
   end
