@@ -3,10 +3,10 @@ require 'rails_helper'
 describe Events::NewDiscussion do
   let(:author) { double(:author) }
   let(:follower) { double(:follower, email_followed_threads?: true) }
-  let(:discussion){ double(:discussion,
+  let(:discussion){ double :discussion,
                            id: 1,
                            author: author,
-                           followers_without_author: [follower]) }
+                           followers_without_author: double(email_followed_threads: [follower]) }
 
   describe "::publish!" do
     let(:dr) { double(:discussion_reader, follow!: true) }

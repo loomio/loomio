@@ -81,13 +81,5 @@ describe NotificationItem do
           item.class.should == NotificationItems::NewVote
       end
     end
-
-    context "notification is for blocked motion" do
-      it "returns MotionBlocked notification item" do
-        notification.stub(:event_kind).and_return("motion_blocked")
-        NotificationItem.new(notification).
-          item.class.should == NotificationItems::MotionBlocked
-      end
-    end
   end
 end

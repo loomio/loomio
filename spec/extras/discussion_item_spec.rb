@@ -40,7 +40,6 @@ describe DiscussionItem do
 
     context "event is for blocked motion" do
       it "delagates to a NewVote discussion item" do
-        event.stub(:kind).and_return("motion_blocked")
         event.stub(:eventable).and_return(double(:Vote))
         DiscussionItem.new(event).
           item.class.should == DiscussionItems::NewVote
