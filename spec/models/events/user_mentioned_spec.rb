@@ -28,28 +28,8 @@ describe Events::UserMentioned do
       Events::UserMentioned.publish!(comment, mentioned_user).should == event
     end
 
-    context "mentioned user is not following" do
-      before { allow(discussion_reader).to receive(:following?) { false } }
-
-      context "wants email when mentioned" do
-        before { allow(mentioned_user).to receive(:email_when_mentioned?) { true } }
-
-        it "sends a mentioned email" do
-          expect(UserMailer).to receive(:mentioned).with(mentioned_user, comment) { double deliver: true }
-        end
-      end
-
-      context "does not want email when mentioned" do
-        before { allow(mentioned_user).to receive(:email_when_mentioned?) { false } }
-
-        it "does not send a mentioned email" do
-          expect(UserMailer).to_not receive(:mentioned)
-        end
-      end
-
-      it "enfollows the user" do
-        expect(discussion_reader).to receive(:follow!)
-      end
+    it "enfollows the user" do
+      expect(discussion_reader).to receive(:follow!)
     end
 
     it "creates an in-app mentioned notification" do
