@@ -49,3 +49,21 @@ body { line-height: 22px; }
 .navbar-fixed-top .container { width: 960px; }
 
 .dropdown-menu { border: 1px solid #E7E7E7; }
+
+.btn-teal {
+  color: white;
+  background-color: $teal;
+  border-color: $teal;
+  background-image: none;
+  text-shadow: none;
+  box-shadow: none;
+  padding: 6px 26px;
+
+  &:hover {
+    text-decoration: none;
+    color: white;
+    background-color: darken($teal, 10%);
+    border-color: darken($teal, 10%);
+  }
+}
+
