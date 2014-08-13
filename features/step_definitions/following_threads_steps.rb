@@ -98,11 +98,12 @@ Given(/^I am not following the group$/) do
   @group.membership_for(@user).update_attribute(:following_by_default, false)
 end
 
-Given(/^I click follow on the group page$/) do
-  pending # express the regexp above with the code you wish you had
+Given(/^I click "(.*?)" on the group page$/) do |arg1|
+  visit group_path(@group)
+  click_on arg1
 end
 
-Then(/^I should get an email about it$/) do
+Then(/^I should get an email about the new discussion$/) do
   pending # express the regexp above with the code you wish you had
 end
 
@@ -110,11 +111,11 @@ Given(/^there is a group I am following$/) do
   pending # express the regexp above with the code you wish you had
 end
 
-Given(/^I click unfollow on the group page$/) do
+Given(/^I click Following on the group page$/) do
   pending # express the regexp above with the code you wish you had
 end
 
-Then(/^I should not get an email about it$/) do
+Then(/^I should not get an email about the new discussion$/) do
   pending # express the regexp above with the code you wish you had
 end
 
