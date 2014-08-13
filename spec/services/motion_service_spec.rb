@@ -10,8 +10,6 @@ module Events
   end
   class MotionClosedByUser
   end
-  class MotionBlocked
-  end
   class NewVote
   end
   class NewMotion
@@ -118,33 +116,8 @@ describe 'MotionService' do
         vote.should_receive(:save).and_return(true)
       end
 
-      context 'position is block' do
-        before do
-          vote.stub(:is_block?).and_return(true)
-          vote.stub(:previous_position_is_block?).and_return(false)
-        end
-        it 'fires motion blocked event' do
-          Events::MotionBlocked.should_receive(:publish!).with(vote)
-        end
-
-        context 'previous position of user was block' do
-          before do
-            vote.stub(:previous_position_is_block?).and_return(true)
-          end
-          it 'does not fire motion blocked event' do
-            Events::MotionBlocked.should_not_receive(:publish!)
-          end
-        end
-      end
-
-      context 'position is not block' do
-        before do
-          vote.stub(:is_block?).and_return(false)
-        end
-
-        it 'fires a new vote event' do
-          Events::NewVote.should_receive(:publish!).with(vote)
-        end
+      it 'fires a new vote event' do
+        Events::NewVote.should_receive(:publish!).with(vote)
       end
     end
 

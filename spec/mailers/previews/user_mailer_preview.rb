@@ -57,12 +57,6 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.mentioned(user, comment)
   end
 
-  def motion_blocked
-    motion = FactoryGirl.create(:motion)
-    vote = FactoryGirl.create(:vote, motion: motion, position: 'block')
-    UserMailer.motion_blocked(vote)
-  end
-
   def motion_closed
     motion = FactoryGirl.create(:motion)
     motion.store_users_that_didnt_vote

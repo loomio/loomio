@@ -11,7 +11,7 @@ describe Events::UserMentioned do
     before do
       allow(DiscussionReader).to receive(:for) { discussion_reader }
       allow(Events::UserMentioned).to receive(:create!) { event }
-      allow(Events::UserMentioned).to receive(:notify!)
+      allow(event).to receive(:notify!)
     end
 
     after do

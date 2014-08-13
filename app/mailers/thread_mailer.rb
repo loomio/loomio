@@ -47,6 +47,33 @@ class ThreadMailer < BaseMailer
     send_thread_email_for(@motion)
   end
 
+  #def motion_outcome_created(motion, user)
+    #@user = user
+    #@motion = motion
+    #@group = motion.group
+    #@rendered_motion_description = render_rich_text(motion.description, false) #should replace false with motion.uses_markdown in future
+    #@utm_hash = UTM_EMAIL.merge utm_source: 'motion_outcome_created'
+    #locale = locale_fallback(user.locale, motion.author.locale)
+    #I18n.with_locale(locale) do
+      #mail  to: user.email,
+            #from: from_user_via_loomio(motion.outcome_author),
+            #reply_to: motion.outcome_author.name_and_email,
+            #subject: "#{t("email.proposal_outcome.subject")}: #{@motion.name} - #{@group.name}"
+    #end
+  #end
+  #
+
+  # Motion_closed is only sent to the motion.author
+  def motion_closed(motion, email)
+    @motion = motion
+    @group = motion.group
+    locale = locale_fallback(User.find_by_email(email).locale, motion.author.locale)
+    I18n.with_locale(locale) do
+      mail  to: email,
+            subject: t("email.proposal_closed.subject", which: @motion.name)
+    end
+  end
+
   private
 
   def send_thread_email_for(object)

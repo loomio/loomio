@@ -39,14 +39,7 @@ class MotionService
     vote.user.ability.authorize! :vote, vote.motion
 
     if vote.save
-      if vote.is_block?
-        unless vote.previous_position_is_block?
-          Events::MotionBlocked.publish!(vote)
-        end
-      else
-        Events::NewVote.publish!(vote)
-      end
-      true
+      Events::NewVote.publish!(vote)
     end
   end
 
