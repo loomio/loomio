@@ -33,7 +33,7 @@ describe Events::UserMentioned do
     end
 
     it "creates an in-app mentioned notification" do
-      expect(Events::UserMentioned).to receive(:notify!).with(mentioned_user)
+      expect(event).to receive(:notify!).with(mentioned_user)
     end
   end
 end
