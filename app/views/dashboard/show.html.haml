@@ -13,9 +13,12 @@
         .clearfix
           = icon_button(href: new_discussion_path, text: t(:start_a_discussion), icon: 'topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
       =render 'groups'
-      .sub-panel.previous-discussions-panel
-        %h4= t(:previous_decisions)
-        = link_to t(:see_previous_decisions), motions_path, class: 'bottom-panel-link'
+      .panel.panel-default.previous-discussions-panel
+        .panel-heading
+          %h4= t(:previous_decisions)
+        .panel-body
+          = link_to t(:see_previous_decisions), motions_path, class: 'bottom-panel-link'
+        .panel-footer
 - else
   %h1= t(:no_group_header)
   .no-groups.row
