@@ -7,10 +7,9 @@ class Events::NewDiscussion < Event
     DiscussionReader.for(discussion: discussion,
                          user: discussion.author).follow!
 
-    discussion.followers_without_author.each do |follower|
-      if follower.email_followed_threads?
-        ThreadMailer.delay.new_discussion(discussion, follower)
-      end
+    discussion.followers_without_author.
+               email_followed_threads.each do |follower|
+      ThreadMailer.delay.new_discussion(discussion, follower)
     end
 
     event

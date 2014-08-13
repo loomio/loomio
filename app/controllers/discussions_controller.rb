@@ -100,8 +100,18 @@ class DiscussionsController < GroupBaseController
 
     @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
     assign_meta_data
-    
+
     @feed_url = discussion_url @discussion, format: :xml if @discussion.public?
+  end
+
+  def follow
+    DiscussionReader.for(discussion: @discussion, user: current_user).follow!
+    redirect_to discussion_url @discussion
+  end
+
+  def unfollow
+    DiscussionReader.for(discussion: @discussion, user: current_user).unfollow!
+    redirect_to discussion_url @discussion
   end
 
   def move

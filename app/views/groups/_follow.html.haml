@@ -1,13 +1,13 @@
-- if @group.membership_for(current_user).following_by_default?
-  = link_to group_following_path(@group, following_by_default: false), method: :patch, class: "btn" do
-    %i.fa.fa-volume-up
-    = t :".following"
-  %p= t :".following_details"
-
-- else
-  = link_to group_following_path(@group, following_by_default: true), method: :patch, class: "btn" do
-    %i.fa.fa-volume-down
-    = t :".not_following"
-  %p= t :".not_following_details"
+- if can? :follow, @group
+  - if @group.membership_for(current_user).following_by_default?
+    = link_to unfollow_group_path(@group), method: :post, class: "btn" do
+      %i.fa.fa-volume-up
+      = t :"common.following"
+    %p= t :".following_details"
+  - else
+    = link_to follow_group_path(@group), method: :post, class: "btn" do
+      %i.fa.fa-volume-down
+      = t :"common.not_following"
+    %p= t :".not_following_details"
 
 
