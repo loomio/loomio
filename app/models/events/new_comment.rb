@@ -7,13 +7,15 @@ class Events::NewComment < Event
     DiscussionReader.for(user: comment.author,
                          discussion: comment.discussion).follow!
 
+    # mention event enfollow the mentioned user
+    # this needs to happen before emailing followers
+    comment.mentioned_group_members.each do |mentioned_user|
+      Events::UserMentioned.publish!(comment, mentioned_user)
+    end
+
     comment.followers_without_author.
             email_followed_threads.each do |follower|
         ThreadMailer.delay.new_comment(comment, follower)
-    end
-
-    comment.mentioned_group_members.each do |mentioned_user|
-      Events::UserMentioned.publish!(comment, mentioned_user)
     end
 
     event
