@@ -1,5 +1,5 @@
-Given /^"(.*?)" is subscribed to proposal closing soon notification emails$/ do |arg1|
-  User.find_by_name(arg1).update_attribute('subscribed_to_proposal_closure_notifications', true)
+Given /^"(.*?)" is subscribed to proposal closing soon emails$/ do |arg1|
+  User.find_by_name(arg1).update_attribute(:email_when_proposal_closing_soon, true)
 end
 
 When /^we run the rake task to check for closing proposals, (\d+) hours before it closes\.$/ do |arg1|
@@ -29,7 +29,7 @@ end
 
 Then(/^the email should give him the closing time appropriate for his timezone$/) do
   local_time = @motion.closing_at.in_time_zone(TimeZoneToCity.convert @user.time_zone).
-               strftime('%l:%M%P - %A %-d %b')
+               strftime('%A %-d %b - %l:%M%P')
 
   @email.default_part_body.to_s.should include(local_time)
 end

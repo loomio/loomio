@@ -30,7 +30,7 @@ end
 
 
 Given(/^there has been new activity$/) do
-  @third_comment = build :comment, user: @commenter, discussion: @discussion
+  @third_comment = FactoryGirl.build :comment, user: @commenter, discussion: @discussion
   DiscussionService.add_comment(@third_comment)
 end
 
