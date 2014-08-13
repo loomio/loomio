@@ -1,9 +1,14 @@
 body.dashboard {
   &.show {
-    .sub-panel ul {
-      a:hover { color: $dark-grey }
-      li { line-height: 21px; }
-      .sub-group .group-link-name { padding-left: 20px; }
+    .sub-panel {
+      padding: 6px 10px;
+      margin: 20px 0;
+      h4 { border-bottom: 1px solid $light-grey; }
+      ul {
+        a:hover { color: $dark-grey }
+        li { line-height: 21px; }
+        .sub-group .group-link-name { padding-left: 20px; }
+      }
     }
   }
   .no-groups {
