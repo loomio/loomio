@@ -55,6 +55,7 @@
 
       = join_group_button(@group)
     = render 'setup_next_steps' if show_next_steps?(@group)
+    =render 'follow', group: @group
 
     = render 'subgroups', group: @group
 
@@ -74,4 +75,3 @@
     =render 'membership_requests', group: @group
     =render 'members', group: @group
     =render '/application/closed_motions', user: nil, group: @group
-    =render 'follow', group: @group

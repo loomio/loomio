@@ -6,15 +6,15 @@ Background:
 
 Scenario: Following a group
   Given I am not following the group
-  And I click follow on the group page
+  And I click "Not following" on the group page
   When there is a new discussion in the group
-  Then I should get an email about it
+  Then I should get an email about the new discussion
 
 Scenario: Unfollowing a group
   Given I am following the group
-  And I click unfollow on the group page
+  And I click "Following" on the group page
   When there is a new discussion in the group
-  Then I should not get an email about it
+  Then I should not get an email about the new discussion
 
 Scenario: Being mentioned in a discussion
   Given there is an discussion I am not following
