@@ -110,6 +110,7 @@ class User < ActiveRecord::Base
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
   scope :email_followed_threads, -> { where(email_followed_threads: true) }
+  scope :email_when_proposal_closing_soon, -> { where email_when_proposal_closing_soon: true }
 
   def self.email_taken?(email)
     User.find_by_email(email).present?

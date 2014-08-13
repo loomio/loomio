@@ -5,7 +5,7 @@ Feature: Proposal closing soon email
 
   Scenario: User in group gets email because proposal is closing
     Given there is a user called "Ben" in timezone "Europe/Budapest"
-    And "Ben" is subscribed to proposal closing soon notification emails
+    And "Ben" is subscribed to proposal closing soon emails
     And there is a group "Pals"
     And "Ben" belongs to "Pals"
     And there is a discussion "I'm Lonely" in "Pals"
