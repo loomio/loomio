@@ -15,22 +15,26 @@
           = translate_link_for @discussion
   .span3.right-context
     .helper-text.discussion-description-helper-text.hidden
-      =render "application/hint", text: t(:"hint.context"), anchor: 'starting-an-engaging-discussion'
+      = render "application/hint", text: t(:"hint.context"), anchor: 'starting-an-engaging-discussion'
     .discussion-additional-info
       = t("discussion_context.started_html",
           when: time_ago_in_words(@discussion.created_at),
           who: @discussion.author.name,
           link: user_path(@discussion.author),
           link_class: 'user-name')
-      -if @discussion.originator.present?
-        - last_collaborator = @discussion.last_collaborator
+      -if @discussion.has_previous_versions?
         .last-edited-by
-          = t("discussion_context.last_edited_html",
-              when: time_ago_in_words(@discussion.last_versioned_at),
-              who: last_collaborator.name,
-              link: user_path(last_collaborator),
-              link_class: 'user-name')
-        .see-revision-history
-          %i.fa.fa-time
-          =link_to t("discussion_context.see_revision_history"), show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
+          = link_to t(:"discussion_context.edited", when: time_ago_in_words(@discussion.last_versioned_at)), show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
+
+      - if can? :follow, @discussion
+        .following-status
+          - if @discussion_reader.following?
+            = link_to unfollow_discussion_path(@discussion), method: :post, class: "btn" do
+              %i.fa.fa-volume-up
+              = t :"common.following"
+          - else
+            = link_to follow_discussion_path(@discussion), method: :post, class: "btn" do
+              %i.fa.fa-volume-down
+              = t :"common.not_following"
+
 #description-revision-history.modal.hidden

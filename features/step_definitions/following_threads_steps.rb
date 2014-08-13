@@ -104,47 +104,62 @@ Given(/^I click "(.*?)" on the group page$/) do |arg1|
 end
 
 Then(/^I should get an email about the new discussion$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Given(/^there is a group I am following$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Given(/^I click Following on the group page$/) do
-  pending # express the regexp above with the code you wish you had
+  ActionMailer::Base.deliveries.last.to.should include @user.email
+  ActionMailer::Base.deliveries.last.subject.should == @discussion.title
 end
 
 Then(/^I should not get an email about the new discussion$/) do
-  pending # express the regexp above with the code you wish you had
+  @current_user = @user
+  step('I should receive no emails')
 end
 
-Given(/^there is an discussion I am not following$/) do
-  pending # express the regexp above with the code you wish you had
+Given(/^there is a discussion I have never seen before$/) do
+  @discussion = FactoryGirl.build :discussion, group: @group
+  DiscussionService.start_discussion @discussion
+end
+
+Given(/^there are no emails waiting for me$/) do
+  ActionMailer::Base.deliveries = []
+end
+
+Then(/^I should be following new discussions by default$/) do
+  @group.membership_for(@user).following_by_default.should == true
+end
+
+Then(/^I should not be following discussions by default$/) do
+  @group.membership_for(@user).following_by_default.should == false
 end
 
 Given(/^I get mentioned in a discussion$/) do
-  pending # express the regexp above with the code you wish you had
+  @comment = FactoryGirl.build(:comment, discussion: @discussion, body: "hi @#{@user.username}")
+  DiscussionService.add_comment(@comment)
 end
 
-Then(/^I should get emailed because I was mentioned$/) do
-  pending # express the regexp above with the code you wish you had
+Given(/^there is a discussion I have unfollowed$/) do
+  @discussion = FactoryGirl.build :discussion, group: @group
+  DiscussionService.start_discussion @discussion
+  DiscussionReader.for(discussion: @discussion, user: @user).unfollow!
 end
 
 Given(/^there is a discussion I am following$/) do
-  pending # express the regexp above with the code you wish you had
+  @discussion = FactoryGirl.build :discussion, group: @group
+  DiscussionService.start_discussion @discussion
+  DiscussionReader.for(discussion: @discussion, user: @user).follow!
 end
 
 When(/^there is a subsequent comment in the discussion$/) do
-  pending # express the regexp above with the code you wish you had
+  @comment = FactoryGirl.build(:comment, discussion: @discussion, body: "yea i know")
+  DiscussionService.add_comment(@comment)
 end
 
 Then(/^I should be emailed the comment$/) do
-  pending # express the regexp above with the code you wish you had
+  @current_user = @user
+  step("I open the email with text \"#{@comment.body}\"")
 end
 
-Given(/^I click unfollow on the discussion page$/) do
-  pending # express the regexp above with the code you wish you had
+Given(/^I click 'Following' on the discussion page$/) do
+  visit discussion_path @discussion
+  click_on "Following"
 end
 
 Then(/^I should not get emailed the comment$/) do

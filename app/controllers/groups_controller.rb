@@ -112,13 +112,15 @@ class GroupsController < GroupBaseController
     render json: users.map{|u| {name: "#{u.name} #{u.username}", username: u.username, real_name: u.name} }
   end
 
-  def following
+  def follow
     membership = @group.membership_for(current_user)
-    if params[:following_by_default] == "true"
-      membership.follow_by_default!
-    elsif params[:following_by_default] == "false"
-      membership.dont_follow_by_default!
-    end
+    membership.follow_by_default!
+    redirect_to @group
+  end
+
+  def unfollow
+    membership = @group.membership_for(current_user)
+    membership.dont_follow_by_default!
     redirect_to @group
   end
 

@@ -1,6 +1,9 @@
 Given(/^there is a new discussion in the group$/) do
-  @discussion = FactoryGirl.create :discussion, group: @group, created_at: 5.hours.ago
-  @comment = FactoryGirl.create :comment, discussion: @discussion, created_at: 4.hours.ago
+  @discussion = FactoryGirl.build :discussion, group: @group, created_at: 5.hours.ago
+  DiscussionService.start_discussion(@discussion)
+
+  @comment = FactoryGirl.build :comment, discussion: @discussion, created_at: 4.hours.ago
+  DiscussionService.add_comment(@comment)
 end
 
 Given(/^I am subscribed to the missed yesterday email$/) do

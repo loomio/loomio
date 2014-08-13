@@ -443,9 +443,7 @@ en:
 
   groups:
     follow:
-      following: "Following"
       following_details: "You'll be notified about every thread in this group."
-      not_following: "Not following"
       not_following_details: "You'll be notified about threads you are participating in."
 
   #
@@ -1162,6 +1160,8 @@ en:
   persona: "Persona"
 
   common:
+    following: Following
+    not_following: Not following
     back_to_discussion: "Back to discussion"
     edited: Edited
     groups: "Groups"
