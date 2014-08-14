@@ -76,6 +76,8 @@ namespace :languages do
   end
 
   task :check_exp_locales, [:locales] => [:environment] do |t, args|
+    args.with_defaults(:locales => LocalesHelper::LOCALE_STRINGS + LocalesHelper::EXPERIMENTAL_LOCALE_STRINGS)
+
     print "\n EXPERIMENTAL_LOCALE_STRINGS = %w( "
     pretty_l = (args[:locales] - LocalesHelper::LOCALE_STRINGS).map do |l|
       if LocalesHelper::EXPERIMENTAL_LOCALE_STRINGS.include? l

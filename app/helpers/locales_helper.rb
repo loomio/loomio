@@ -2,6 +2,7 @@ require 'http_accept_language'
 
 module LocalesHelper
   LANGUAGES = { 'English' => :en,
+                'беларуская мова ' => :'be-BY',
                 'български' => :'bg-BG',
                 'Català' => :ca,
                 'čeština' => :cs,
@@ -27,7 +28,7 @@ module LocalesHelper
                 'українська мова' => :uk }
 
   LOCALE_STRINGS = LANGUAGES.values.map(&:to_s)
-  EXPERIMENTAL_LOCALE_STRINGS = %w( ar be-BY cmn hr da eo fi gl ga-IE km mk mi fa-IR pl pt-PT ru sl te )
+  EXPERIMENTAL_LOCALE_STRINGS = %w( ar cmn hr da eo fi gl ga-IE km mk mi fa-IR pl pt-PT ru sl te )
 
   def locale_name(locale)
     LANGUAGES.key(locale.to_sym)
