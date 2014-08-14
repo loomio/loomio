@@ -22,11 +22,19 @@ body.discussions.new, body.discussions.create, body.discussions.edit {
 // from group
   .control-group.radio_buttons { margin-bottom: 1.6em; }
 
+  select#discussion_group_id {
+    width: 100%;
+    height: 30px;
+    line-height: 32px;
+    font-size: 24px;
+  }
+
   #discussion_title {
     font-size: 18px;
     height: 32px;
     line-height: 30px;
     margin-bottom: .6em;
+    width: 100%;
   }
 
   .hidden-group-discussion-privacy {
