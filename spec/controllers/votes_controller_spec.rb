@@ -31,10 +31,8 @@ describe VotesController do
       flash[:notice].should =~ /You do not have permission/
     end
 
-    it 'saves the vote' do
-      vote = double(:vote).as_null_object
-      vote.should_receive(:save)
-      Vote.stub(:new).and_return(vote)
+    it 'calls MotionService::cast_vote' do
+      expect(MotionService).to receive(:cast_vote)
       post :create, motion_id: motion.id, vote: {position: 'yes'}
     end
 

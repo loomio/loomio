@@ -335,8 +335,7 @@ class Group < ActiveRecord::Base
     membership = memberships.where(user_id: user.id).first
     membership ||= Membership.create!(group: self,
                                       user: user,
-                                      inviter: inviter,
-                                      subscribed_to_notification_emails: email_notification_default)
+                                      inviter: inviter)
   end
 
   def user_membership_or_request_exists? user

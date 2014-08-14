@@ -67,9 +67,9 @@ class ThreadMailer < BaseMailer
   def motion_closed(user, motion)
     @motion = motion
     @group = motion.group
-    locale = locale_fallback(User.find_by_email(email).locale, motion.author.locale)
+    locale = locale_fallback(user.locale, motion.author.locale)
     I18n.with_locale(locale) do
-      mail  to: email,
+      mail  to: user.name_and_email,
             subject: t("email.proposal_closed.subject", which: @motion.name)
     end
   end

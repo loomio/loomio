@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe DiscussionItem do
   describe "initialize" do
     let(:event) { double(:event) }
@@ -35,14 +37,6 @@ describe DiscussionItem do
         event.stub(:eventable).and_return(double(:Motion))
         DiscussionItem.new(event).
           item.class.should == DiscussionItems::MotionClosed
-      end
-    end
-
-    context "event is for blocked motion" do
-      it "delagates to a NewVote discussion item" do
-        event.stub(:eventable).and_return(double(:Vote))
-        DiscussionItem.new(event).
-          item.class.should == DiscussionItems::NewVote
       end
     end
 

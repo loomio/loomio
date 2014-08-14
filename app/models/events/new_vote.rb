@@ -5,7 +5,7 @@ class Events::NewVote < Event
                     discussion_id: vote.motion.discussion.id)
 
     DiscussionReader.for(discussion: vote.motion.discussion,
-                         user: user).follow!
+                         user: vote.author).follow!
 
     vote.motion_followers_without_voter.
          email_followed_threads.each do |user|
