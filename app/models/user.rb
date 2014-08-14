@@ -244,10 +244,9 @@ class User < ActiveRecord::Base
     update_attributes(deleted_at: Time.now,
                       email_missed_yesterday: false,
                       email_when_mentioned: false,
-                      email_when_proposal_closing_soon: false,
+                      new_discussion_and_proposal_notifications_enabled: false,
                       avatar_kind: "initials")
-    memberships.update_all(archived_at: Time.now,
-                           subscribed_to_notification_emails: false)
+    memberships.update_all(archived_at: Time.now)
     membership_requests.where("responded_at IS NULL").destroy_all
   end
 
