@@ -3,7 +3,7 @@ class ThreadMailer < BaseMailer
   helper :motions
   helper :application
 
-  def new_discussion(discussion, user)
+  def new_discussion(user, discussion)
     @user = user
     @discussion = discussion
     @group = discussion.group
@@ -12,7 +12,7 @@ class ThreadMailer < BaseMailer
     send_thread_email_for(@discussion)
   end
 
-  def new_comment(comment, user)
+  def new_comment(user, comment)
     @user = user
     @comment = comment
     @discussion = comment.discussion
@@ -20,7 +20,7 @@ class ThreadMailer < BaseMailer
     send_thread_email_for(@comment)
   end
 
-  def new_vote(vote, user)
+  def new_vote(user, vote)
     @user = user
     @vote = vote
     @position = @vote.position
@@ -29,7 +29,7 @@ class ThreadMailer < BaseMailer
     send_thread_email_for(@vote)
   end
 
-  def new_motion(motion, user)
+  def new_motion(user, motion)
     @user = user
     @motion = motion
     @discussion = motion.discussion
@@ -38,7 +38,7 @@ class ThreadMailer < BaseMailer
     send_thread_email_for(@motion)
   end
 
-  def motion_closing_soon(motion, user)
+  def motion_closing_soon(user, motion)
     @user = user
     @motion = motion
     @discussion = motion.discussion
@@ -64,7 +64,7 @@ class ThreadMailer < BaseMailer
   #
 
   # Motion_closed is only sent to the motion.author
-  def motion_closed(motion, email)
+  def motion_closed(user, motion)
     @motion = motion
     @group = motion.group
     locale = locale_fallback(User.find_by_email(email).locale, motion.author.locale)

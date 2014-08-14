@@ -1,25 +1,32 @@
 class Events::NewMotion < Event
-  after_create :notify_users!
-
   def self.publish!(motion)
-    create!(:kind => "new_motion", :eventable => motion,
-                      :discussion_id => motion.discussion.id)
+    event = create!(kind: "new_motion",
+                    eventable: motion,
+                    discussion_id: motion.discussion.id)
+
+    DiscussionReader.for(discussion: motion.discussion,
+                         user: motion.author).follow!
+
+    motion.followers_without_author.
+           email_followed_threads.each do |user|
+      ThreadMailer.delay.new_motion(user, motion)
+    end
+
+    motion.followers_without_author.
+           dont_email_followed_threads.
+           email_motion_notifications_for(group).each do |user|
+      ThreadMailer.delay.new_motion(user, motion)
+    end
+
+    motion.group_members_not_following.
+           email_motion_notifications_for(group).each do |user|
+      ThreadMailer.delay.new_motion(user, motion)
+    end
+
+    event
   end
 
   def motion
     eventable
   end
-
-  private
-
-  def notify_users!
-    motion.group_members_without_motion_author.each do |user|
-      if user.email_notifications_for_group?(motion.group)
-        UserMailer.delay.motion_created(motion, user)
-      end
-      #notify!(user)
-    end
-  end
-
-  handle_asynchronously :notify_users!
 end
