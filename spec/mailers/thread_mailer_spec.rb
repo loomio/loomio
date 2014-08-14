@@ -33,7 +33,7 @@ describe ThreadMailer do
 
   describe "new comment adds another email to thread" do
     before do
-      @email = ThreadMailer.new_comment(comment, user)
+      @email = ThreadMailer.new_comment(user, comment)
     end
 
     it_behaves_like 'thread_message'
@@ -57,7 +57,7 @@ describe ThreadMailer do
 
   describe "new vote adds another email to thread" do
     before do
-      @email = ThreadMailer.new_vote(vote, user)
+      @email = ThreadMailer.new_vote(user, vote)
     end
 
     it_behaves_like 'thread_message'
@@ -81,8 +81,8 @@ describe ThreadMailer do
 
   describe "motion closing soon adds another email to thread" do
     before do
-      @email = ThreadMailer.motion_closing_soon(motion, user)
-      @voted_email = ThreadMailer.motion_closing_soon(motion_user_voted_on, user)
+      @email = ThreadMailer.motion_closing_soon(user, motion)
+      @voted_email = ThreadMailer.motion_closing_soon(user, motion_user_voted_on)
     end
 
     it_behaves_like 'thread_message'
@@ -115,7 +115,7 @@ describe ThreadMailer do
 
   describe "new motion adds another email to thread" do
     before do
-      @email = ThreadMailer.new_motion(motion, user)
+      @email = ThreadMailer.new_motion(user, motion)
     end
 
     it_behaves_like 'thread_message'

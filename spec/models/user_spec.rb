@@ -215,7 +215,7 @@ describe User do
     user.deactivate!
     user.email_missed_yesterday.should be false
     user.email_when_mentioned.should be false
-    user.email_when_proposal_closing_soon.should be false
+    user.new_discussion_and_proposal_notifications_enabled.should be false
   end
 
   it "unsets deleted_at (nil) when activate! is called" do
