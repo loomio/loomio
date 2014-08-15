@@ -40,10 +40,12 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     ## Inputs
-    b.use :label_input
-    b.use :input, wrap_with: { tag: :div, class: '>>>>>>>>>>>>>>>>>>' }
-    b.use :hint,  wrap_with: { tag: :span, class: :hint }
-    b.use :error, wrap_with: { tag: :span, class: :error }
+    b.use :label
+    b.wrapper :tag => 'div' do |ba|
+      ba.use :input
+      ba.use :hint,  wrap_with: { tag: :span, class: :hint }
+      ba.use :error, wrap_with: { tag: :span, class: :error }
+    end
 
     ## full_messages_for
     # If you want to display the full error message for the attribute, you can
