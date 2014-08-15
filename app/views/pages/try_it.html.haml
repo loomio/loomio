@@ -4,7 +4,7 @@
       %h1= t(:'try_it.header')
 
       .row-fluid
-        =link_to new_group_request_path, class: 'btn btn-teal btn-try-it' do
+        =link_to new_group_request_path, class: 'btn btn-teal btn-try-it', id: 'start-group' do
           .fa.fa-plus.fa-try-it
           .button-text= t(:request_new_group)
       .row-fluid

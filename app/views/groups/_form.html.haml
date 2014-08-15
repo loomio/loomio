@@ -23,7 +23,7 @@
       - if group.is_parent?
         - translated_categories = Category.all.map{|c| [t(c.translatable_name), c.id]}
         = f.input :category_id, as: :select, collection: translated_categories, include_blank: t(:"group_categories.blank"), label: t(:"group_form.category")
-      %a.btn.btn-info{href: '#', onclick: "$('a[href=\"#privacy\"]').tab('show')"}
+      %a.btn.btn-info.profile{href: '#', onclick: "$('a[href=\"#privacy\"]').tab('show')"}
         = t(:next)
     .tab-pane#privacy
       = f.input :visible_to,
@@ -53,7 +53,7 @@
                              [t(:'group_form.discussion_privacy_options.public_or_private_html'), :public_or_private],
                              [t(:'group_form.discussion_privacy_options.private_only_html'), :private_only]]
 
-      %a.btn.btn-info{href: '#', onclick: "$('a[href=\"#permissions\"]').tab('show')"}
+      %a.btn.btn-info.privacy{href: '#', onclick: "$('a[href=\"#permissions\"]').tab('show')"}
         = t(:next)
 
     .tab-pane#permissions
