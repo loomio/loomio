@@ -36,7 +36,7 @@ en:
   devise:
     invitations:
       send_instructions: 'An invite has been sent to %{email}.'
-      invitation_token_invalid: 'The invitation token provided is not valid!'
+      invitation_token_invalid: 'This invitation is no longer valid!'
       updated: 'Account created.'
       no_invitations_remaining: "No invitations remaining"
     mailer:
