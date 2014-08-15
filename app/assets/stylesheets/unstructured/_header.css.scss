@@ -351,3 +351,8 @@ input#search_form_query {
   padding: 3px 15px;
 }
 
+.navbar-fixed-top {
+  border-bottom: 1px solid #dbdbdb;
+  min-height: 47px;
+  @include box-shadow(0 1px 10px rgba(0, 0, 0, 0.1));
+}
