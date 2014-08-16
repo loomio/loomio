@@ -42,8 +42,8 @@ SimpleForm.setup do |config|
     ## Inputs
     b.use :label
     b.wrapper :tag => 'div' do |ba|
-      ba.use :input
-      ba.use :hint,  wrap_with: { tag: :span, class: :hint }
+      ba.use :input, class: "form-control"
+      ba.use :hint,  wrap_with: { tag: :p, class: :hint }
       ba.use :error, wrap_with: { tag: :span, class: :error }
     end
 
@@ -61,7 +61,7 @@ SimpleForm.setup do |config|
   # Defaults to :nested for bootstrap config.
   #   inline: input + label
   #   nested: label > input
-  config.boolean_style = :nested
+  config.boolean_style = :inline
 
   # Default class for buttons
   config.button_class = 'btn'

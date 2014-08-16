@@ -2,7 +2,7 @@
   .col-md-5
     #motion-form
       = simple_form_for @motion, validate: true do |f|
-        = f.input :name, id: "motion-name", input_html: {class: 'js-warn-before-navigating-away'}, wrapper_html: { class: '+++++++++' }, hint: t('motion_form.name_helper'), disabled: !@motion.can_be_edited?
+        = f.input :name, id: "motion-name", input_html: {class: 'js-warn-before-navigating-away'}, hint: t('motion_form.name_helper'), disabled: !@motion.can_be_edited?
         .timezone= "#{Time.zone.now.strftime('%Z')} (GMT #{Time.zone.formatted_offset})"
         = f.input :closing_at
         = f.input :description, input_html: {class: 'js-warn-before-navigating-away'}, disabled: !@motion.can_be_edited?
@@ -16,7 +16,7 @@
           = f.submit submit_text,
             :class => "btn btn-info",
             id: "proposal-submit"
-        = link_to t('common.cancel'), @motion.discussion, :class => "btn btn-cancel"
+        = link_to t('common.cancel'), @motion.discussion, :class => "btn btn-cancel btn-default"
 
       -if can? :close, @motion
         %h3=t('motion_form.close_proposal_heading')

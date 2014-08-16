@@ -1,3 +1,5 @@
+@import "marketing/media_queries";
+
 .discussion-iframe {
   margin: 0;
   padding: 0;
@@ -593,7 +595,7 @@ pre{
   .popover-motion-name {
     color: black;
     font-weight: normal;
-    margin-top: 10px;
+      margin-top: 10px;
     padding-top: 5px;
     border-top: 1px solid white;
   }
@@ -642,6 +644,7 @@ pre{
     position: relative;
     z-index: 4;
     float: left;
+
   }
   .group-name {
     color: $mid-grey;
@@ -739,4 +742,12 @@ div.jqplot-table-legend-swatch{
   }
 }
 
-#group-discussions { font-size: 14px; }
+#group-discussions {
+  font-size: 14px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 4px;
+  @include screen-size(medium-up) {
+    padding: 0;
+  }
+}

@@ -1,3 +1,5 @@
+@import "marketing/media_queries";
+
 body {
   background-color: $app-background;
   height: 100%;
@@ -68,6 +70,8 @@ ul, ol, li {
   margin: 0;
   padding: 0;
 }
+
+input, textarea { width: 100%; }
 
 @media (min-width: 1200px) {
   .container{ max-width: 970px; }
@@ -388,3 +392,14 @@ a.btn-icon:hover { color: $dark-grey; }
   width: 180px;
   margin-bottom: 4px;
 }
+
+.main-container {
+  background: transparent;
+  @include screen-size(medium-up) {
+    background: #fff;
+  }
+}
+
+.checkbox { padding-left: 20px; }
+
+

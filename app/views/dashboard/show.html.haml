@@ -1,17 +1,15 @@
 - if current_user.parent_groups.present?
   .row
-    .col-md-9
+    %section.col-md-9
       .group-title
         %h1.home-title
           = link_to t(:home), dashboard_path
-      .row
-        .col-md-12.main-content
-          =render 'discussions/discussion_list'
+      =render 'discussions/discussion_list'
 
     %section.col-md-3
       #group-actions
         .clearfix
-          = icon_button(href: new_discussion_path, text: t(:start_a_discussion), icon: 'topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
+          = icon_button(href: new_discussion_path, text: t(:start_a_discussion), icon: 'topic-18.png', id: 'start-new-discussion')
       =render 'groups'
       .panel.panel-default.previous-discussions-panel
         .panel-heading

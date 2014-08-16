@@ -274,12 +274,11 @@ table.jqplot-table-legend {
 }
 
 #motion-form{
-  #motion_closing_at{
-    width: 40%;
-  }
   .timezone{
     float: right;
     margin-top: 26px;
     text-align: right;
   }
+  textarea { min-height: 200px; }
+  .btn-info { width: 42%; }
 }
