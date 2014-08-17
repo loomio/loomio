@@ -26,5 +26,5 @@
             =t :empty_parent_group
   .row
     .span5.invitation-submit
-      = f.submit t("invite_people"), :class => "btn btn-info btn-large run-validations", :id => "invite-to-subgroup", :data => { disable_with: t("invite_people") }
+      = f.submit t("invite_people"), :class => "btn btn-info btn-large run-validations", :id => "invite-to-group", :data => { disable_with: t("invite_people") }
       =render "application/hint", text: t(:"hint.invitation"), anchor: 'writing-a-great-invitation'

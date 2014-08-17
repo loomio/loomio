@@ -224,7 +224,7 @@ Then /^I should get an email with subject "(.*?)"$/ do |arg1|
 end
 
 When(/^I confirm the selection$/) do
-  find("#invite-to-subgroup").click
+  find("#invite-to-group").click
 end
 
 Then(/^"(.*?)" should receive a notification that they have been added$/) do |arg1|
