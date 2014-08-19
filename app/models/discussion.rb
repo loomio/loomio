@@ -74,6 +74,10 @@ class Discussion < ActiveRecord::Base
     followers.where('users.id != ?', author_id)
   end
 
+  def group_members_not_following
+    group.members.where('users.id NOT IN (?)', followers.pluck(:id))
+  end
+
   def archive!
     return if is_archived?
     self.update_attribute(:archived_at, Time.now) and
