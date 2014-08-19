@@ -6,18 +6,18 @@ class Events::MotionClosingSoon < Event
 
     motion.followers.
            email_followed_threads.each do |user|
-      ThreadMailer.delay.new_motion(user, motion)
+      ThreadMailer.delay.motion_closing_soon(user, motion)
     end
 
     motion.followers.
            dont_email_followed_threads.
-           email_motion_notifications_for(group).each do |user|
-      ThreadMailer.delay.new_motion(user, motion)
+           email_motion_notifications_for(motion.group).each do |user|
+      ThreadMailer.delay.motion_closing_soon(user, motion)
     end
 
     motion.group_members_not_following.
-           email_motion_notifications_for(group).each do |user|
-      ThreadMailer.delay.new_motion(user, motion)
+           email_motion_notifications_for(motion.group).each do |user|
+      ThreadMailer.delay.motion_closing_soon(user, motion)
     end
 
     motion.group_members.each do |member|
