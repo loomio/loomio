@@ -24,7 +24,7 @@ Scenario: New comment
 Scenario: New mention
   When I mention Mr New Threads Only
   Then "Dr Follow By Email" should be emailed
-  And "Mr New Threads Only" should be notified but not emailed
+  And "Mr New Threads Only" should be notified but not emailed about the new mention
   And "Mrs No Email Please" should not be emailed
   And I should not be emailed
 
@@ -44,19 +44,20 @@ Scenario: New vote
 
 Scenario: Proposal closing soon
   When my proposal is about to close
-  Then "Dr Follow By Email" should be emailed and notifed
-  And "Mr New Threads Only" should be emailed and notifed
-  And "Mrs No Email Please" should be notified but not emailed
-  And I should not be emailed or notified
+  Then "Dr Follow By Email" should be emailed and notified about the proposal closing soon
+  And "Mr New Threads Only" should be emailed and notified about the proposal closing soon
+  And "Mrs No Email Please" should be notified but not emailed about the proposal closing soon
+  And I should be emailed and notified about the proposal closing soon
 
 Scenario: Proposal closed
   When my proposal closes
-  Then I should be emailed and notifed
+  Then I should be emailed and notified that the proposal closed
   And  "Dr Follow By Email" should be emailed
   And "Mr New Threads Only" should not be emailed
   And "Mrs No Email Please" should not be emailed
 
-Scenario: Joining a group
-  When I join a group
-  Then all the existing threads should be unfollowed
-  And my inbox should only show unread content since the day I joined
+Scenario: Email preferences page
+  When I tick all the options on the email preferences page
+  Then my preferences should be updated to have all emails off
+  When I untick all the options on the email preferences page
+  Then my preferences should be updated to have all emails on

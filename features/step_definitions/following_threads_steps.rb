@@ -193,7 +193,7 @@ end
 When(/^I start a new discussion$/) do
   reset_mailer
   @discussion = FactoryGirl.build :discussion, author: @user, group: @group
-  DiscussionService.start_discussion @discussion
+  @event = DiscussionService.start_discussion @discussion
 end
 
 Then(/^"(.*?)" should be emailed$/) do |name|
@@ -215,7 +215,7 @@ When(/^I add a comment$/) do
   step 'I start a new discussion'
   reset_mailer
   @comment = FactoryGirl.build :comment, discussion: @discussion, body: "yea i know", author: @user
-  DiscussionService.add_comment @comment
+  @add_comment_event = DiscussionService.add_comment @comment
 end
 
 When(/^I mention Mr New Threads Only$/) do
@@ -223,46 +223,63 @@ When(/^I mention Mr New Threads Only$/) do
   reset_mailer
   @comment = FactoryGirl.build :comment, discussion: @discussion, author: @user,
                                body: "yea @#{@mr_new_threads_only.username}"
-  DiscussionService.add_comment(@comment)
+  @add_comment_event = DiscussionService.add_comment(@comment)
+  @user_mentioned_event = Event.where(kind: 'user_mentioned').last
 end
 
-Then(/^"(.*?)" should be notified but not emailed$/) do |name|
+Then(/^"(.*?)" should be notified but not emailed about the new mention$/) do |name|
   step "\"#{name}\" should not be emailed"
   mentioned_user = User.find_by_name(name)
-  mentioned_user.notifications.joins(:event).
-    where('events.kind = ?', 'user_mentioned').
-    order('notifications.id').should exist
+  @user_mentioned_event.notifications.where(user_id: mentioned_user.id).should exist
+end
+
+Then(/^"(.*?)" should be emailed and notified about the proposal closing soon$/) do |name|
+  step "\"#{name}\" should be emailed"
+  user = User.find_by_name(name)
+  @motion_closing_soon_event.notifications.where(user_id: user.id).should exist
+end
+
+Then(/^"(.*?)" should be notified but not emailed about the proposal closing soon$/) do |name|
+  step "\"#{name}\" should not be emailed"
+  user = User.find_by_name(name)
+  @motion_closing_soon_event.notifications.where(user_id: user.id).should exist
+end
+
+Then(/^I should be emailed and notified that the proposal closed$/) do
+  step "\"#{@user.name}\" should be emailed"
+  @motion_closed_event.notifications.where(user_id: @user.id).should exist
+end
+
+Then(/^I should be emailed and notified about the proposal closing soon$/) do
+  step "\"#{@user.name}\" should be emailed and notified about the proposal closing soon"
 end
 
 When(/^I start a new proposal$/) do
   step 'I start a new discussion'
   reset_mailer
   @motion = FactoryGirl.build :motion, discussion: @discussion, author: @user
-  MotionService.start_motion(@motion)
+  @start_motion_event = MotionService.start_motion(@motion)
 end
 
 When(/^I vote on the proposal$/) do
-  pending # express the regexp above with the code you wish you had
+  step 'I start a new proposal'
+  reset_mailer
+  @vote = FactoryGirl.build :vote, motion: @motion, user: @user
+  @cast_vote_event = MotionService.cast_vote @vote
 end
 
 When(/^my proposal is about to close$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^"(.*?)" should be emailed and notifed$/) do |name|
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I should not be emailed or notified$/) do
-  pending # express the regexp above with the code you wish you had
+  step 'I start a new discussion'
+  @motion = FactoryGirl.build :motion, discussion: @discussion, author: @user
+  MotionService.start_motion(@motion)
+  reset_mailer
+  @motion_closing_soon_event = Events::MotionClosingSoon.publish! @motion
 end
 
 When(/^my proposal closes$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I should be emailed and notifed$/) do
-  pending # express the regexp above with the code you wish you had
+  step 'I start a new proposal'
+  reset_mailer
+  @motion_closed_event = MotionService.close(@motion)
 end
 
 Then(/^all the existing threads should be unfollowed$/) do
