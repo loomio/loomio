@@ -162,22 +162,113 @@ Given(/^I click 'Following' on the discussion page$/) do
   click_on "Following"
 end
 
-Then(/^I should not get emailed the comment$/) do
+Given(/^Dr Follow By Email wants to be emailed new threads and activity he is following$/) do
+  @dr_follow_by_email = FactoryGirl.create(:user,
+                                           name: 'Dr Follow By Email',
+                                           email_followed_threads: true,
+                                           new_discussion_and_proposal_notifications_enabled: true)
+  @group.add_member! @dr_follow_by_email
+end
+
+Given(/^Dr Follow By Email is following everything in this group$/) do
+  @dr_follow_by_email.memberships.last.update_attribute(:following_by_default, true)
+end
+
+Given(/^Mr New Threads Only only wants to be emailed about new discussions and proposals$/) do
+  @mr_new_threads_only = FactoryGirl.create(:user,
+                                            email_followed_threads: false,
+                                            name: 'Mr New Threads Only',
+                                            new_discussion_and_proposal_notifications_enabled: true)
+  @group.add_member! @mr_new_threads_only
+end
+
+Given(/^Mrs No Email Please does not want to be emailed about anything$/) do
+  @mrs_no_email_please = FactoryGirl.create(:user,
+                                            email_followed_threads: false,
+                                            name: 'Mrs No Email Please',
+                                            new_discussion_and_proposal_notifications_enabled: false)
+  @group.add_member! @mrs_no_email_please
+end
+
+When(/^I start a new discussion$/) do
+  reset_mailer
+  @discussion = FactoryGirl.build :discussion, author: @user, group: @group
+  DiscussionService.start_discussion @discussion
+end
+
+Then(/^"(.*?)" should be emailed$/) do |name|
+  email = User.find_by_name(name).email
+  step "\"#{email}\" should receive an email"
+end
+
+Then(/^"(.*?)" should not be emailed$/) do |name|
+  email = User.find_by_name(name).email
+  step "\"#{email}\" should receive no emails"
+end
+
+Then(/^I should not be emailed$/) do
+  email = @user.email
+  step "\"#{email}\" should receive no emails"
+end
+
+When(/^I add a comment$/) do
+  step 'I start a new discussion'
+  reset_mailer
+  @comment = FactoryGirl.build :comment, discussion: @discussion, body: "yea i know", author: @user
+  DiscussionService.add_comment @comment
+end
+
+When(/^I mention Mr New Threads Only$/) do
+  step 'I start a new discussion'
+  reset_mailer
+  @comment = FactoryGirl.build :comment, discussion: @discussion, author: @user,
+                               body: "yea @#{@mr_new_threads_only.username}"
+  DiscussionService.add_comment(@comment)
+end
+
+Then(/^"(.*?)" should be notified but not emailed$/) do |name|
+  step "\"#{name}\" should not be emailed"
+  mentioned_user = User.find_by_name(name)
+  mentioned_user.notifications.joins(:event).
+    where('events.kind = ?', 'user_mentioned').
+    order('notifications.id').should exist
+end
+
+When(/^I start a new proposal$/) do
+  step 'I start a new discussion'
+  reset_mailer
+  @motion = FactoryGirl.build :motion, discussion: @discussion, author: @user
+  MotionService.start_motion(@motion)
+end
+
+When(/^I vote on the proposal$/) do
   pending # express the regexp above with the code you wish you had
 end
 
-When(/^I am on the dashboard$/) do
+When(/^my proposal is about to close$/) do
   pending # express the regexp above with the code you wish you had
 end
 
-Then(/^I should see both discussions$/) do
+Then(/^"(.*?)" should be emailed and notifed$/) do |name|
   pending # express the regexp above with the code you wish you had
 end
 
-When(/^I filter to only show followed content$/) do
+Then(/^I should not be emailed or notified$/) do
   pending # express the regexp above with the code you wish you had
 end
 
-Then(/^I should only see the followed discussion$/) do
+When(/^my proposal closes$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should be emailed and notifed$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^all the existing threads should be unfollowed$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^my inbox should only show unread content since the day I joined$/) do
   pending # express the regexp above with the code you wish you had
 end

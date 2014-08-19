@@ -110,7 +110,14 @@ class User < ActiveRecord::Base
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
   scope :email_followed_threads, -> { where(email_followed_threads: true) }
+  scope :dont_email_followed_threads, -> { where(email_followed_threads: false) }
   scope :email_when_proposal_closing_soon, -> { where email_when_proposal_closing_soon: true }
+  scope :email_new_discussion_notifications_for, -> (group) {
+        joins(:memberships).
+        where('memberships.group_id = ?', group.id).
+        where('users.new_discussion_and_proposal_notifications_enabled = ?', true).
+        where('memberships.email_new_discussion_and_proposal_notifications = ?', true) }
+  scope :email_motion_notifications_for, -> (group) { email_new_discussion_notifications_for(group) }
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
