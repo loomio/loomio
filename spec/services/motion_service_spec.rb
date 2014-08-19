@@ -1,26 +1,27 @@
-require_relative '../../app/services/motion_service'
-require 'active_support/all'
+require 'rails_helper'
+#require_relative '../../app/services/motion_service'
+#require 'active_support/all'
 
-module Events
-  class MotionOutcomeCreated
-  end
-  class MotionOutcomeUpdated
-  end
-  class MotionClosed
-  end
-  class MotionClosedByUser
-  end
-  class NewVote
-  end
-  class NewMotion
-  end
-end
+#module Events
+  #class MotionOutcomeCreated
+  #end
+  #class MotionOutcomeUpdated
+  #end
+  #class MotionClosed
+  #end
+  #class MotionClosedByUser
+  #end
+  #class NewVote
+  #end
+  #class NewMotion
+  #end
+#end
 
-class Motion
-end
+#class Motion
+#end
 
-class DiscussionReader
-end
+#class DiscussionReader
+#end
 
 describe 'MotionService' do
   let(:group) { double(:group, present?: true) }
