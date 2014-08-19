@@ -28,7 +28,6 @@ it:
   devise:
     invitations:
       send_instructions: 'Un invito è stato mandato a %{email}.'
-      invitation_token_invalid: 'Il codice di invito non è valido!'
       updated: 'Account creato.'
       no_invitations_remaining: "Hai finito gli inviti"
     mailer:

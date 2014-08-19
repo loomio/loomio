@@ -26,7 +26,6 @@ uk:
   devise:
     invitations:
       send_instructions: 'Запрошення було надіслане до %{email}.'
-      invitation_token_invalid: 'Даний номер запрошення не валідний!'
       updated: 'Обліковий запис створено.'
       no_invitations_remaining: "Запрошень більше немає"
     mailer:

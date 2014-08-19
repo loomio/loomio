@@ -28,7 +28,6 @@ zh-TW:
   devise:
     invitations:
       send_instructions: '一封邀請函已經送至 %{email} 。'
-      invitation_token_invalid: '提供的邀請碼無效！'
       updated: '帳號已建立。'
       no_invitations_remaining: "邀請函無剩"
     mailer:
@@ -266,6 +265,7 @@ zh-TW:
     c10: 建立子群組。
     c11: 啟動討論串。
     c13: 在提案上投票。
+    members_defaults: "以預設的設定時，成員能："
     m1: 刪除他們自己的意見。
     m3: 編輯他們所啟動的提案標題與描述，直到有人已經陳述他們的立場。
     m4: 編輯他們所啟動的提議定案日期，直到他們定案。
@@ -383,6 +383,7 @@ zh-TW:
   empty_decision_index: "此群組尚未做出任何決策"
   empty_discussion_list: "這條討論串中尚未有動態。"
   go_to_add_comment_html: "<a href='%{href}'>前往討論串的底部</a>增加意見。"
+  comment_by: "%{comment_author} 的意見"
   discussion_list:
     empty:
       no_discussions: "您的群組尚未有任何的討論串。"

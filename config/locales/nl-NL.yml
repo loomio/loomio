@@ -28,7 +28,7 @@ nl-NL:
   devise:
     invitations:
       send_instructions: 'Een uitnodiging is verstuurd naar %{email}.'
-      invitation_token_invalid: 'De verstrekte uitnodigingstoken is niet geldig!'
+      invitation_token_invalid: 'Deze uitnodiging is niet langer geldig!'
       updated: 'Account gemaakt.'
       no_invitations_remaining: "Geen uitnodigingen over"
     mailer:

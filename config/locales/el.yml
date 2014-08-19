@@ -28,7 +28,6 @@ el:
   devise:
     invitations:
       send_instructions: 'Η πρόσκληση έχει σταλθεί στο %{email}.'
-      invitation_token_invalid: 'Το διακριτικό πρόσκλησης που παρέχεται δεν είναι έγκυρο!'
       updated: 'Ο λογαριασμός δημιουργήθηκε.'
       no_invitations_remaining: "Δεν απομένουν προσκλήσεις"
     mailer:

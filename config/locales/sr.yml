@@ -28,7 +28,6 @@ sr:
   devise:
     invitations:
       send_instructions: 'Poziv je poslat na %{email}.'
-      invitation_token_invalid: 'Pozivni token nije ispravan!'
       updated: 'Nalog kreiran.'
       no_invitations_remaining: "Nema više pozivnica"
     mailer:
