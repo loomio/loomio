@@ -1,12 +1,13 @@
-require_relative '../../app/services/membership_request_service'
+require 'rails_helper'
+#require_relative '../../app/services/membership_request_service'
 
-class MembershipRequest
-end
+#class MembershipRequest
+#end
 
-module Events
-  class MembershipRequested
-  end
-end
+#module Events
+  #class MembershipRequested
+  #end
+#end
 
 describe MembershipRequestService do
   let(:ability) { double(:ability) }

@@ -1,20 +1,21 @@
-require_relative '../../app/services/membership_service'
+require 'rails_helper'
+#require_relative '../../app/services/membership_service'
 
-module Events
-  class UserAddedToGroup
-  end
+#module Events
+  #class UserAddedToGroup
+  #end
 
-  class UserJoinedGroup
-    def self.publish!(membership)
-    end
-  end
-end
+  #class UserJoinedGroup
+    #def self.publish!(membership)
+    #end
+  #end
+#end
 
-class UserMailer
-  def self.delay
-    self
-  end
-end
+#class UserMailer
+  #def self.delay
+    #self
+  #end
+#end
 
 
 describe 'MembershipService' do
@@ -50,7 +51,7 @@ describe 'MembershipService' do
     let(:membership){ double(:membership, user: user, inviter: inviter, group: group) }
 
     before do
-      Events::UserAddedToGroup.stub(:publish!).with(membership, inviter)
+      Events::UserAddedToGroup.stub(:publish!).with(membership, inviter) { double( deliver: true) }
       UserMailer.stub(:added_to_group)
       group.stub(:add_members!).and_return([membership])
     end

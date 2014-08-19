@@ -1,16 +1,17 @@
-require_relative '../../app/services/discussion_service'
+require 'rails_helper'
+#require_relative '../../app/services/discussion_service'
 
-module Events
-  class NewComment
-  end
-  class CommentLiked
-  end
-  class NewDiscussion
-  end
-end
+#module Events
+  #class NewComment
+  #end
+  #class CommentLiked
+  #end
+  #class NewDiscussion
+  #end
+#end
 
-class DiscussionReader
-end
+#class DiscussionReader
+#end
 
 describe 'DiscussionService' do
   let(:comment_vote) { double(:comment_vote) }
