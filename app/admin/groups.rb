@@ -1,6 +1,11 @@
 ActiveAdmin.register Group do
 
   controller do
+
+    def find_resource
+      Group.friendly.find(params[:id])
+    end
+
     def collection
       super.includes(:group_request)
     end
