@@ -14,7 +14,6 @@ When /^I visit email_preferences with unsubscribe_token in the params$/ do
 end
 
 Then /^I should be able to update my email preferences$/ do
-  view_screenshot
   uncheck 'email_preferences[email_missed_yesterday]'
   click_on 'Update preferences'
   page.should have_content 'Your email settings have been updated.'

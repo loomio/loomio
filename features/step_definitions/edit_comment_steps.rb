@@ -26,7 +26,6 @@ When(/^I view the history of that comment$/) do
 end
 
 Then(/^I should see the old and new versions$/) do
-  view_screenshot
   page.should have_content 'I do declare'
   page.should have_content 'I never declare'
 end

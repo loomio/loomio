@@ -12,6 +12,7 @@ class Membership < ActiveRecord::Base
   scope :suspended, -> { where(is_suspended: true) }
   scope :archived, lambda { where('archived_at IS NOT NULL') }
   scope :published, lambda { where(archived_at: nil) }
+  scope :sorted_by_group_name, -> { joins(:group).order('groups.full_name') }
 
   scope :for_group, lambda {|group| where(group_id: group)}
   scope :admin, -> { where(admin: true) }
