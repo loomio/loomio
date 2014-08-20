@@ -15,7 +15,6 @@ eo:
   devise:
     invitations:
       send_instructions: 'Invito estis sendita al  %{email}.'
-      invitation_token_invalid: 'La invita ĵetono kiun vi provizis malvalidas'
       updated: 'La konto estas kreita'
       no_invitations_remaining: "Ne restas pliaj invitoj"
     mailer:

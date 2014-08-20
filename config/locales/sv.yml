@@ -26,7 +26,6 @@ sv:
   devise:
     invitations:
       send_instructions: 'En inbjudan har skickats till %{email}.'
-      invitation_token_invalid: 'Angiven Token för inbjudan är ogiltig!'
       updated: 'Konto skapat.'
       no_invitations_remaining: "Inga fler inbjudningar återstår."
     mailer:
