@@ -281,3 +281,42 @@ When(/^my proposal closes$/) do
   reset_mailer
   @motion_closed_event = MotionService.close(@motion)
 end
+
+Given(/^a group with an existing thread$/) do
+  @group = FactoryGirl.create :group
+  @discussion = FactoryGirl.create :discussion, group: @group
+end
+
+When(/^I join and follow the group$/) do
+  @user = FactoryGirl.create :user
+  @group.add_member! @user
+  @user.memberships.where(group_id: @group.id).first.follow_by_default!
+end
+
+Then(/^I should not see anything in my followed threads$/) do
+  Queries::VisibleDiscussions.new(user: @user, groups: [@group]).following.should be_empty
+end
+
+When(/^there is a new thread started in the group I'm following$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should see the thread in my followed threads$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should see the thread in my unread threads$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^there is a new comment in a thread in the group$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should not see anything in my unread threads$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^the unread count for the thread should be correct$/) do
+  pending # express the regexp above with the code you wish you had
+end
