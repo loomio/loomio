@@ -39,5 +39,5 @@ $ ->
 $ ->
   $("#inbox-container").tooltip
     placement: "bottom",
-    title: "Inbox"
+    title: "Unread"
     delay: 200
