@@ -7,14 +7,6 @@ describe DiscussionReader do
   let(:discussion) { FactoryGirl.create :discussion }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
 
-  describe "#follow!" do
-    it "sets following to true" do
-      reader.following.should be nil
-      reader.follow!
-      reader.following.should be true
-    end
-  end
-
   describe "#first_unread_page" do
     before do
       Discussion.send(:remove_const, 'PER_PAGE')
