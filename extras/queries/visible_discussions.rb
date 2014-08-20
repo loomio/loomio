@@ -36,14 +36,17 @@ class Queries::VisibleDiscussions < Delegator
 
   def unread
     join_to_discussion_readers
-    @relation = @relation.where('(dv.last_read_at < discussions.last_comment_at) OR dv.last_read_at IS NULL')
+    @relation = @relation.where('(dv.last_read_at < discussions.last_activity_at) OR dv.last_read_at IS NULL')
     discussion_activity_newer_than_membership_creation
     self
   end
 
   def discussion_activity_newer_than_membership_creation
-    @relation = @relation.joins("LEFT OUTER JOIN memberships m ON discussions.group_id = m.group_id AND m.user_id = #{@user.id}").
+    unless @filtering_old_discussions
+      @relation = @relation.joins("LEFT OUTER JOIN memberships m ON discussions.group_id = m.group_id AND m.user_id = #{@user.id}").
                           where('discussions.last_activity_at > m.created_at')
+      @filtering_old_discussions = true
+    end
     self
   end
 
