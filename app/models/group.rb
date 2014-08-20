@@ -66,7 +66,7 @@ class Group < ActiveRecord::Base
   scope :less_than_n_discussions, ->(count) { where('discussions_count < ?', count) }
 
   scope :no_active_discussions_since, ->(time) {
-    includes(:discussions).where('discussions.last_comment_at < ?', time).references(:discussions) | where(discussions_count: 0) 
+    includes(:discussions).where('discussions.last_comment_at < ? OR groups.discussions_count = 0', time).references(:discussions)
   }
 
   scope :active_discussions_since, ->(time) {
