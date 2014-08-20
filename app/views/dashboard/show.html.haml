@@ -1,9 +1,11 @@
-= @sql
 - if current_user.parent_groups.present?
   .row
     .span6
       .group-title
-        %h1.home-title= t(:'common.dashboard')
+        %h1.home-title
+          = t(:'common.dashboard')
+          link to clear filters
+
     .span3
       .pull-right
         %strong

@@ -17,12 +17,12 @@
             .activity-icon{class: "position-#{last_vote.position}-icon"}
 
       .discussion-title
-        =# truncate(discussion.title, :length => 60, :separator => '...')
-        %small
-          unread: #{(debug[:last_read_at] < debug[:last_activity_at]).inspect}
-          uc: #{debug[:unread_comments]}, ua: #{debug[:unread_activity]},
-          lreadat: #{debug[:last_read_at]},
-          lactat: #{debug[:last_activity_at]}
+        = truncate(discussion.title, :length => 60, :separator => '...')
+        / %small
+        /   unread: #{(debug[:last_read_at] < debug[:last_activity_at]).inspect}
+        /   uc: #{debug[:unread_comments]}, ua: #{debug[:unread_activity]},
+        /   lreadat: #{debug[:last_read_at]},
+        /   lactat: #{debug[:last_activity_at]}
         - if @group.nil?
           .group-name
             - if discussion.group.is_subgroup?

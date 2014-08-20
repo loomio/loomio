@@ -211,10 +211,8 @@ class DiscussionsController < GroupBaseController
   end
 
   def mark_as_read
-    if @activity and @activity.last
-      @discussion_reader.viewed!(@activity.last.updated_at)
-      @motion_reader.viewed! if @motion_reader
-    end
+    @discussion_reader.viewed!(@discussion.last_activity_at)
+    @motion_reader.viewed! if @motion_reader
   end
 
   def assign_meta_data
