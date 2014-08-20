@@ -3,7 +3,11 @@
 - motion = discussion.current_motion
 - motion_reader = @motion_reader_cache.get_for(motion) if motion
 - last_vote = @last_vote_cache.get_for(motion) if motion
-
+- debug = {unread_comments: unread_comments_count,
+           unread_activity: discussion_reader.unread_items_count,
+           last_read_at: discussion_reader.last_read_at.to_s,
+           last_activity_at: discussion.last_activity_at.to_s,
+           last_comment_at: discussion.last_comment_at.to_s}
 .clearfix
   %div.discussion-preview{ class: css_classes_for_discussion_preview(discussion, discussion_reader) }
     %a.selector-discussion-link{ href: discussion_path(discussion) }
@@ -13,8 +17,12 @@
             .activity-icon{class: "position-#{last_vote.position}-icon"}
 
       .discussion-title
-        = truncate(discussion.title, :length => 60, :separator => ' ')
-
+        =# truncate(discussion.title, :length => 60, :separator => '...')
+        %small
+          unread: #{(debug[:last_read_at] < debug[:last_activity_at]).inspect}
+          uc: #{debug[:unread_comments]}, ua: #{debug[:unread_activity]},
+          lreadat: #{debug[:last_read_at]},
+          lactat: #{debug[:last_activity_at]}
         - if @group.nil?
           .group-name
             - if discussion.group.is_subgroup?
