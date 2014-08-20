@@ -12,8 +12,6 @@ class DashboardController <  GroupBaseController
       @discussions = @discussions.following
     end
 
-    @sql = @discussions.joined_to_current_motion.order('motions.closing_at ASC, last_comment_at DESC').to_sql
-
     @discussions = @discussions.joined_to_current_motion.
                                 preload(:current_motion, {group: :parent}).
                                 order('motions.closing_at ASC, last_comment_at DESC').
