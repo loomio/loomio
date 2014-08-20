@@ -139,4 +139,45 @@ module ApplicationHelper
     ENV["NAVBAR_CONTRIBUTE"] or "show"
   end
 
+  def toggle_unread_dashboard_path
+    options = {}
+    unless sifting_unread?
+      options[:unread] = true
+    end
+
+    if sifting_followed?
+      options[:followed] = params[:followed]
+    end
+
+    dashboard_path(options)
+  end
+
+  def toggle_followed_dashboard_path
+    options = {}
+    unless sifting_followed?
+      options[:followed] = true
+    end
+
+    if sifting_unread?
+      options[:unread] = params[:unread]
+    end
+
+    dashboard_path(options)
+  end
+
+  def sifting_unread?
+    params.has_key? :unread
+  end
+
+  def sifting_followed?
+    params.has_key? :followed
+  end
+
+  def unread_toggle_class
+    'active' if sifting_unread?
+  end
+
+  def followed_toggle_class
+    'active' if sifting_followed?
+  end
 end
