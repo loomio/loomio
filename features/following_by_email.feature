@@ -1,4 +1,4 @@
-Feature: Following Threads
+Feature: Following by email
 
 Background:
   Given I am the logged in admin of a group
@@ -55,9 +55,3 @@ Scenario: Proposal closed
   And  "Dr Follow By Email" should be emailed
   And "Mr New Threads Only" should not be emailed
   And "Mrs No Email Please" should not be emailed
-
-Scenario: Email preferences page
-  When I tick all the options on the email preferences page
-  Then my preferences should be updated to have all emails off
-  When I untick all the options on the email preferences page
-  Then my preferences should be updated to have all emails on

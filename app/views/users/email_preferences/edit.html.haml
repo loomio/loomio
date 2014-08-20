@@ -6,15 +6,17 @@
         =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
 
       = f.input :email_missed_yesterday, as: :boolean, inline_label: t('.email_missed_yesterday'), label: false
-      = f.input :email_when_proposal_closing_soon, as: :boolean, inline_label: t('.email_when_proposal_closing_soon'), label: false
-      = f.input :email_when_mentioned, as: :boolean, inline_label: t('.email_when_mentioned'), label: false
       = f.input :email_followed_threads, as: :boolean, inline_label: t('.email_followed_threads'), label: false
+      = f.input :email_when_proposal_closing_soon, as: :boolean, inline_label: t('.email_when_proposal_closing_soon'), label: false
+      = f.input :email_new_discussions_and_proposals, as: :boolean, inline_label: t('.email_new_discussions_and_proposals'), label: false,
+        input_html: { id: 'js_email_new_discussions_and_proposals' }
 
-      %p= t '.you_follow_when_you_get_involved'
+      .per-group-email-settings
+        %p= t('.for_these_groups')
+        .control-group
+          = f.collection_check_boxes(:email_new_discussions_and_proposals_group_ids,
+                                     @user.memberships.sorted_by_group_name,
+                                     :group_id,:group_full_name, {},
+                                     {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
 
-      -#%h2= t '.groups_to_auto_follow'
-
-      -#.control-group
-        -#=f.collection_check_boxes(:following_by_default_group_ids, @email_preferences.all_memberships, :id, :group_full_name, {}, {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
-
-      =f.submit t('.submit'), :class => "btn btn-info btn-large"
+      = f.submit t('.submit'), :class => "btn btn-info btn-large"

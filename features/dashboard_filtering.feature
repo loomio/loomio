@@ -1,3 +1,5 @@
+Feature: Dashboard filtering
+
 Background:
   Given a group with an existing thread
 

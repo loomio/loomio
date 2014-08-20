@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   MAX_AVATAR_IMAGE_SIZE_CONST = 1000
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
-  attr_accessor :honeypot
+  attr_accessor :honeypot, :email_new_discussions_and_proposals_group_ids
 
   validates :email, presence: true, uniqueness: true, email: true
   validates_inclusion_of :uses_markdown, in: [true,false]
@@ -115,8 +115,8 @@ class User < ActiveRecord::Base
   scope :email_new_discussion_notifications_for, -> (group) {
         joins(:memberships).
         where('memberships.group_id = ?', group.id).
-        where('users.new_discussion_and_proposal_notifications_enabled = ?', true).
-        where('memberships.email_new_discussion_and_proposal_notifications = ?', true) }
+        where('users.email_new_discussions_and_proposals = ?', true).
+        where('memberships.email_new_discussions_and_proposals = ?', true) }
   scope :email_motion_notifications_for, -> (group) { email_new_discussion_notifications_for(group) }
 
   def self.email_taken?(email)
@@ -177,8 +177,15 @@ class User < ActiveRecord::Base
     motions.closed
   end
 
-  def email_notifications_for_group?(group)
-    memberships.where(:group_id => group.id, :subscribed_to_notification_emails => true).present?
+  def email_new_discussions_and_proposals_group_ids
+    memberships.where(email_new_discussions_and_proposals: true).pluck(:group_id)
+  end
+
+  def email_new_discussions_and_proposals_group_ids=(ids)
+    group_ids = ids.reject(&:empty?).map(&:to_i)
+    memberships.update_all(email_new_discussions_and_proposals: false)
+    # raise [group_ids, memberships.where(group_id: group_ids).pluck(:group_id)].inspect
+    memberships.where(group_id: group_ids).update_all('email_new_discussions_and_proposals = true')
   end
 
   def is_group_admin?(group=nil)
@@ -251,7 +258,7 @@ class User < ActiveRecord::Base
     update_attributes(deleted_at: Time.now,
                       email_missed_yesterday: false,
                       email_when_mentioned: false,
-                      new_discussion_and_proposal_notifications_enabled: false,
+                      email_new_discussions_and_proposals: false,
                       avatar_kind: "initials")
     memberships.update_all(archived_at: Time.now)
     membership_requests.where("responded_at IS NULL").destroy_all

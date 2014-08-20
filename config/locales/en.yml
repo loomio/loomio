@@ -4,13 +4,12 @@ en:
     email_preferences:
       edit:
         title: 'Email preferences'
-        when_do_you_want_emails: 'When would you like to be emailed?'
-        email_missed_yesterday: "Each morning, with just what I missed yesterday"
-        email_when_proposal_closing_soon: "When a proposal is closing soon"
-        email_when_mentioned: "When I'm @mentioned in a discussion"
-        email_followed_threads: "Immediately for discussions I am following"
-        you_follow_when_you_get_involved: "You start following a discussion if you participate or are mentioned"
-        groups_to_auto_follow: "Following new discussions by default in these groups:"
+        when_do_you_want_emails: 'Email me:'
+        email_missed_yesterday: "'Yesterday on Loomio' - a daily summary of any activity I've missed"
+        email_followed_threads: "When I'm @mentioned, or there is activity in threads I'm following."
+        email_when_proposal_closing_soon: "24 hours before a proposal closes."
+        email_new_discussions_and_proposals: 'New discussions and proposals'
+        for_these_groups: "For these groups:"
         submit: "Save preferences"
 
   explore:

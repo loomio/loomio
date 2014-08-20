@@ -166,7 +166,7 @@ Given(/^Dr Follow By Email wants to be emailed new threads and activity he is fo
   @dr_follow_by_email = FactoryGirl.create(:user,
                                            name: 'Dr Follow By Email',
                                            email_followed_threads: true,
-                                           new_discussion_and_proposal_notifications_enabled: true)
+                                           email_new_discussions_and_proposals: true)
   @group.add_member! @dr_follow_by_email
 end
 
@@ -178,7 +178,7 @@ Given(/^Mr New Threads Only only wants to be emailed about new discussions and p
   @mr_new_threads_only = FactoryGirl.create(:user,
                                             email_followed_threads: false,
                                             name: 'Mr New Threads Only',
-                                            new_discussion_and_proposal_notifications_enabled: true)
+                                            email_new_discussions_and_proposals: true)
   @group.add_member! @mr_new_threads_only
 end
 
@@ -186,7 +186,7 @@ Given(/^Mrs No Email Please does not want to be emailed about anything$/) do
   @mrs_no_email_please = FactoryGirl.create(:user,
                                             email_followed_threads: false,
                                             name: 'Mrs No Email Please',
-                                            new_discussion_and_proposal_notifications_enabled: false)
+                                            email_new_discussions_and_proposals: false)
   @group.add_member! @mrs_no_email_please
 end
 
@@ -280,12 +280,4 @@ When(/^my proposal closes$/) do
   step 'I start a new proposal'
   reset_mailer
   @motion_closed_event = MotionService.close(@motion)
-end
-
-Then(/^all the existing threads should be unfollowed$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^my inbox should only show unread content since the day I joined$/) do
-  pending # express the regexp above with the code you wish you had
 end

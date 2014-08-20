@@ -102,3 +102,10 @@ body.users {
   line-height: 22px;
 }
 
+.per-group-email-settings{
+  margin-left: 1.5em;
+}
+
+.per-group-email-settings.disabled{
+  color: #ccc;
+}
