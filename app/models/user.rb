@@ -184,7 +184,6 @@ class User < ActiveRecord::Base
   def email_new_discussions_and_proposals_group_ids=(ids)
     group_ids = ids.reject(&:empty?).map(&:to_i)
     memberships.update_all(email_new_discussions_and_proposals: false)
-    # raise [group_ids, memberships.where(group_id: group_ids).pluck(:group_id)].inspect
     memberships.where(group_id: group_ids).update_all('email_new_discussions_and_proposals = true')
   end
 
