@@ -1,21 +1,30 @@
+= @sql
 - if current_user.parent_groups.present?
   .row
-    .span9
+    .span6
       .group-title
-        %h1.home-title
-          = link_to t(:home), dashboard_path
-      .row
-        .span9.main-content
-          =render 'discussions/discussion_list'
+        %h1.home-title= t(:'common.dashboard')
+    .span3
+      .pull-right
+        %strong
+          =t :'common.filter'
+        %a.btn{href: toggle_unread_dashboard_path, class: unread_toggle_class}
+          =t :'common.unread'
+        %a.btn{href: toggle_followed_dashboard_path, class: followed_toggle_class}
+          =t :'common.following'
+    .span3
+      = icon_button(href: new_discussion_path, text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
 
+  .row
+    .span9.main-content
+      =render 'discussions/discussion_list'
     %section.span3
-      #group-actions
-        .clearfix
-          = icon_button(href: new_discussion_path, text: t(:start_a_discussion), icon: 'topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
+      / #group-actions
       =render 'groups'
       .sub-panel.previous-discussions-panel
         %h4= t(:previous_decisions)
         = link_to t(:see_previous_decisions), motions_path, class: 'bottom-panel-link'
+
 - else
   %h1= t(:no_group_header)
   .no-groups.row

@@ -1159,6 +1159,9 @@ en:
   persona: "Persona"
 
   common:
+    dashboard: Dashboard
+    unread: Unread
+    filter: 'Filter:'
     following: Following
     not_following: Not following
     back_to_discussion: "Back to discussion"
