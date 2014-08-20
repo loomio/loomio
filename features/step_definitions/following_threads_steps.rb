@@ -267,7 +267,7 @@ When(/^I vote on the proposal$/) do
   @vote = FactoryGirl.build :vote, motion: @motion, user: @user
   @cast_vote_event = MotionService.cast_vote @vote
 end
-
+  
 When(/^my proposal is about to close$/) do
   step 'I start a new discussion'
   @motion = FactoryGirl.build :motion, discussion: @discussion, author: @user
@@ -297,26 +297,23 @@ Then(/^I should not see anything in my followed threads$/) do
   Queries::VisibleDiscussions.new(user: @user, groups: [@group]).following.should be_empty
 end
 
-When(/^there is a new thread started in the group I'm following$/) do
-  pending # express the regexp above with the code you wish you had
+When(/^there is a new thread started in the group$/) do
+  @discussion = FactoryGirl.create(:discussion, group: @group)
 end
 
 Then(/^I should see the thread in my followed threads$/) do
-  pending # express the regexp above with the code you wish you had
+  Queries::VisibleDiscussions.new(user: @user, groups: [@group]).following.should include @discussion
 end
 
 Then(/^I should see the thread in my unread threads$/) do
-  pending # express the regexp above with the code you wish you had
+  Queries::VisibleDiscussions.new(user: @user, groups: [@group]).unread.should include @discussion
 end
 
-When(/^there is a new comment in a thread in the group$/) do
-  pending # express the regexp above with the code you wish you had
+When(/^there is a new comment in the thread$/) do
+  @comment = FactoryGirl.build(:comment, discussion: @discussion)
+  DiscussionService.add_comment(@comment)
 end
 
 Then(/^I should not see anything in my unread threads$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^the unread count for the thread should be correct$/) do
-  pending # express the regexp above with the code you wish you had
+  Queries::VisibleDiscussions.new(user: @user, groups: [@group]).unread.should be_empty
 end
