@@ -19,7 +19,6 @@ ml:
   devise:
     invitations:
       send_instructions: 'ഒരു ക്ഷണനം %{email}-ലേക്ക് അയച്ചു.'
-      invitation_token_invalid: 'നല്‍കിയ ക്ഷണന ടോക്കണ്‍  സാധുവല്ല!'
       updated: 'ഇടപാട് സൃഷ്ടിയ്ക്കപെട്ടു.'
       no_invitations_remaining: "ക്ഷണങ്ങള്‍ ബാക്കിയില്ല"
     mailer:

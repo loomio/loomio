@@ -28,7 +28,6 @@ es:
   devise:
     invitations:
       send_instructions: 'La invitación ha sido enviada a %{email}.'
-      invitation_token_invalid: '¡La invitación no es válida!'
       updated: 'La cuenta ha sido creada.'
       no_invitations_remaining: "No hay más invitaciones"
     mailer:

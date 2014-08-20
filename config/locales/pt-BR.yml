@@ -28,7 +28,7 @@ pt-BR:
   devise:
     invitations:
       send_instructions: 'Um convite foi enviado para %{email}.'
-      invitation_token_invalid: 'O código do convite não é válido!'
+      invitation_token_invalid: 'Este convite não é válido!'
       updated: 'Conta criada.'
       no_invitations_remaining: "Não restam mais convites"
     mailer:
@@ -45,7 +45,7 @@ pt-BR:
     discussion_not_moved: "Você não tem permissão para mover esta discussão para %{destination_group.name}"
     group_not_archived: "O grupo não pôde ser arquivado."
     invalid_close_date: "Data de encerramento inválida, por favor verifique se essa data já não passou."
-    invalid_email: "Por favor, insira ao menos um endereço de email válido"
+    invalid_email: "Por favor, insira ao menos um endereço de e-mail válido"
     image_upload_fail: "Não foi possível enviar a foto. Verifique se a foto está abaixo de 1MB e é um arquivo .jpeg, .png, ou .gif."
     motion_closing_inputs: "Data de encerramento inválida"
     motion_outcome_not_created: "Não foi possível publicar o resultado."
@@ -115,7 +115,7 @@ pt-BR:
     discussion_created: "Discussão criada com sucesso."
     discussion_deleted: "Discussão apagada com sucesso."
     discussion_moved: "Discussão movida para %{group_name} com sucesso"
-    emails_sending: "Enviando emails."
+    emails_sending: "Enviando e-mails."
     group_archived: "Grupo arquivado com sucesso."
     group_created: "Grupo criado com sucesso."
     members_added: "Membros adicionados ao grupo."
@@ -204,7 +204,7 @@ pt-BR:
   empty_notifications: "Você ainda não tem notificações."
   see_all_notifications: "Ver todas as notificações"
   profile: "Perfil"
-  email_settings: "Configurações de email"
+  email_settings: "Configurações de e-mail"
   sign_out: "Sair"
   sign_in: "Entrar"
   honeypot_warning: "Não foi possível criar sua conta. Se você está usando um leitor de tela, por favor assegure que o último campo (oculto) no formulário esteja em branco."
@@ -275,7 +275,7 @@ pt-BR:
     c2: Editar o título e o contexto de qualquer discussão.
     c3: Mover discussões entre os grupos.
     c4: Convidar e aprovar novos membros.
-    c5: Enviar email de aviso a todos os membros do grupo.
+    c5: Enviar e-mail de aviso a todos os membros do grupo.
     c6: Desativar um grupo.
     c7: Adicionar/remover outros coordenadores.
     c8: Apagar discussões.
@@ -314,18 +314,18 @@ pt-BR:
   invite_members_to_group: "Convidar membros para %{which_group}"
   remaining_invites: "convites restantes"
   get_in_touch_link: "entre em contato"
-  email_members_in_group: "Envie email para os membros em %{which_group}"
+  email_members_in_group: "Envie e-mail para os membros em %{which_group}"
   subject_error: "Por favor, preencha o assunto"
   subject_placeholder: "Escreva um assunto"
   message_error: "Por favor preencha uma mensagem"
   message_placeholder: "Escreva uma mensagem para os membros de %{which_group}."
-  email_group_members: "Enviar email para os membros do grupo"
+  email_group_members: "Enviar e-mail para os membros do grupo"
   edit_group_settings: "Editar configurações do grupo"
   leave_group: "Sair do grupo"
   confirm_leave_hidden_group: "Tem certeza de que deseja sair de %{which_group}? Você também será removido(a) dos subgrupos."
   confirm_leave_group: "Tem certeza de que deseja abandonar %{which_group}?"
   deactivate_group: "Desativar grupo"
-  confirm_deactivate_group: "Espere!!! Tem certeza de que quer desativar %{which_group}? Você não poderá mais ver o grupo. Entretanto, caso deseje ter o grupo de volta, pode pedir para reativá-lo enviando um email para contact@loomio.org."
+  confirm_deactivate_group: "Espere!!! Tem certeza de que quer desativar %{which_group}? Você não poderá mais ver o grupo. Entretanto, caso deseje ter o grupo de volta, pode pedir para reativá-lo enviando um e-mail para contact@loomio.org."
   invited_users: "Membros convidados"
   members: "Membros"
   confirm_remove_user: "Tem certeza de que deseja remover %{which_user} do grupo?"
@@ -376,7 +376,7 @@ pt-BR:
     beta_request_description: "Para começar a tomar decisões no Loomio Beta, o primeiro passo é iniciar um grupo"
     neighbourhood_support_group: "e.g. Grupo de Apoio do Bairro"
     confirmation:
-      title: Você está quase lá! Verifique seu email.
+      title: Você está quase lá! Verifique seu e-mail.
       body_html: |+
         Nós te enviamos um e-mail com um convite para começar teu grupo.
 
@@ -491,7 +491,7 @@ pt-BR:
     coordinating_details: "Como coordenador(a), você é responsável por configurar o seu grupo do Loomio e \nconvidar as pessoas para entrar. Além de aprender a usar uma nova plataforma, o seu grupo\naprenderá novos processos para colaborar mais efetivamente e tomar boas decisões\nem conjunto. Seguem abaixo algumas dicas para ajudar o seu grupo a dar certo:\n"
     different_ways: 'Diferentes formas de usar o Loomio'
     engaging_html: "<h2>Dicas para engajar seu grupo</h2>\n\n<p>As pessoas ficarão empolgadas em se envolver e começar a participar quando houver uma\nproposição na mesa. Uma boa proposição contém um plano de ação para o grupo de tal forma que \né imediatamente óbvio o que significa concordar ou discordar. Pense em como você  pode \nidentificar os debates/decisões que o grupo está atualmente empreendendo pessoalmente ou por email que seriam mais fáceis se estivessem\
-      \ no Loomio.</p>\n<p>Se seu grupo está apenas começando, você poderia inciar uma discussão leve, para dar\na todos a chance de brincar com a ferramenta e ver o processo de tomar decisões em ação\n\nOutra maneira simples de encorajar as pessoas a se envolver no debate é usar o recurso de @menção para estimular pessoas específicas; isto vai enviá-las um email para avisá-las que elas foram mencionadas em um comentário.\n"
+      \ no Loomio.</p>\n<p>Se seu grupo está apenas começando, você poderia inciar uma discussão leve, para dar\na todos a chance de brincar com a ferramenta e ver o processo de tomar decisões em ação\n\nOutra maneira simples de encorajar as pessoas a se envolver no debate é usar o recurso de @menção para estimular pessoas específicas; isto vai enviá-las um e-mail para avisá-las que elas foram mencionadas em um comentário.\n"
     example1_html: "<h3>Você precisa que o grupo discuta um tema amplo e desenvolva uma solução em conjunto</h3>\n<p>Estratégia: Discuta o tópico por um tempo antes de criar uma proposição.</p>\n<p>Discussões muitas vezes alcançam o melhor resultado se você construir um entendimento \ncompartilhado sobre o problema antes de pular para especificar a solução. Quando as pessoas \nchegam a participar do processo, elas são muito mais propensas a estar alinhadas com o resultado.</p>\n"
     example2_html: |+
       <h3>Você já tem uma proposição em mente e gostaria de obter validação do grupo para seguir adiante.</h3>
@@ -626,13 +626,13 @@ pt-BR:
     create_account: "Por favor, crie uma conta"
   invitation:
     alternate: "Ou compartilhe esse link e qualquer um poderá solicitar entrada:"
-    by_email: "Convidar por email"
+    by_email: "Convidar por e-mail"
     no_invitations_left: "Desculpe-me, mas você não tem mais nenhum convite"
     no_invitations_left_get_more: "Por favor escreva para contact@loomio.org e veremos o que podemos fazer para te ajudar"
     invitation_not_found: 'Não localizamos um convite com este código. Por favor peça um novo convite a quem lhe enviou da outra vez.'
     invitation_cancelled: 'Este convite foi cancelado. Por favor entre em contato com quem enviou o convite se você acha que aconteceu por engano.'
     invitation_already_used: 'Esse convite já foi utilizado. Favor fazer login para continuar para seu grupo.'
-    recipients: "Insira endereços de email, separados por vírgulas: "
+    recipients: "Insira endereços de e-mail, separados por vírgulas: "
     invitees_placeholder: "Nome de usuário  <usuario1@exemplo.com>, usuario2@exemplo.com"
     subject: "Por favor, venha participar de nosso novo grupo Loomio, %{group}"
     invite_people: "Convidar pessoas para o seu grupo"
@@ -678,11 +678,11 @@ pt-BR:
     contact_us: 'Contacte-nos'
     labels:
       name: 'Seu nome'
-      email: 'Seu endereço de email'
+      email: 'Seu endereço de e-mail'
       message: 'Sua mensagem'
       submit: 'Enviar mensagem'
     messages:
-      email_html: "Preencha esse formulário ou envie um email para <a href='mailto:%{email}'>%{email}</a>"
+      email_html: "Preencha esse formulário ou envie um e-mail para <a href='mailto:%{email}'>%{email}</a>"
       social_html: "Você também pode se juntar a nós no<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, e <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
@@ -716,15 +716,15 @@ pt-BR:
     submit: "Enviar posição"
     update: "Atualizar posição"
   email_preferences_form:
-    header: "Preferências de email"
+    header: "Preferências de e-mail"
     daily_activity_summary: "Resumo de Atividades Diárias"
-    daily_activity_subscription: "Me envie um email de atividade diária resumindo o que têm acontecido em meus grupos"
+    daily_activity_subscription: "Me envie um e-mail de atividade diária resumindo o que têm acontecido em meus grupos"
     missed_yesterday_subscription: "Envie-me 'Ontem no Loomio' - meu conteúdo não lido das últimas 24 horas"
     global_notifications: "Notificações Globais"
     proposal_closing_soon_subscription: "Lembre-me 24 horas antes de uma proposição encerrar"
-    mentions_subscription: "Me envie um email quando alguem me mencionar em um comentário"
+    mentions_subscription: "Envie-me um e-mail quando alguém me mencionar em um comentário"
     group_activity_notifications: "Notificações de Atividade de Grupo"
-    group_activity_details: "Para cada grupo, marque a caixa se você quiser receber um email assim que surgirem novas discussões e decisões."
+    group_activity_details: "Para cada grupo, marque a caixa se você quiser receber um e-mail assim que surgirem novas discussões e decisões."
     update_preferences: "Atualizar preferências"
   new_user_form:
     create_an_account: "Criar uma conta"
@@ -763,13 +763,13 @@ pt-BR:
         close_at_date: "Encerrando"
       user:
         name: "Nome completo"
-        email: "Email"
+        email: "E-mail"
         password: "Senha"
         password_confirmation: "Confirme sua senha"
         language_preference: "Idioma"
       group_request:
         admin_name: "Qual o seu nome?"
-        admin_email: "Qual é o seu endereço de email?"
+        admin_email: "Qual é o seu endereço de e-mail?"
         name: "Qual é o nome do seu grupo?"
         description: "Se você tiver um tempo, diga-nos sobre o seu grupo"
     placeholders:
@@ -782,7 +782,7 @@ pt-BR:
         name: "Qual medida você está propondo?"
         description: "Forneça informações suficientes para que todos saibam exatamente o que significa concordar ou discordar."
       user:
-        email: "Email"
+        email: "E-mail"
         password: "Senha"
       group_request:
         description: "Gostaríamos muito de ouvir sobre o seu grupo e por que você quer usar Loomio."
@@ -811,8 +811,8 @@ pt-BR:
     user_added_to_a_group:
       subject: "%{who} lhe adicionou ao grupo %{which_group}"
       content: "%{who} adicionou você ao %{which_group} no Loomio. Clique aqui para visitar o grupo:"
-    unsubscribe: "Desinscrever ou modificar suas preferências de email:"
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para se desinscrever ou modificar suas preferências de email."
+    unsubscribe: "Cancelar inscrição ou modificar suas preferências de e-mail:"
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para cancelar sua inscrição ou modificar suas preferências de e-mail."
     view_comment: "Clique aqui para ver o comentário no Loomio"
     view_discussion: "Clique aqui para ver esta discussão"
     view_group: "Clique aqui para ver o grupo no Loomio"
@@ -835,7 +835,7 @@ pt-BR:
       click_here_to_mark_all_as_read_html: |
         Aconteceu no Loomio ontem.
         Depois de ler, clique em <a href="%{link}">marcar como lida</a> para remover da caixa de entrada do seu Loomio.
-      marked_as_read_success: "Tudo no email foi marcado como lido"
+      marked_as_read_success: "Tudo no e-mail foi marcado como lido"
     group_email:
       intro: "%{who} anunciou para %{group}:"
     group_membership_approved:
@@ -844,7 +844,7 @@ pt-BR:
     invitation:
       hi: "Olá %{name},"
       intro: "Clique no link abaixo para configurar o seu grupo %{group_name}:"
-      closing_message: "Se tiver perguntas ou se houver qualquer coisa que possamos fazer para ajudar a deixar tudo funcionando, adoraríamos ouvir de você - é só responder a este email."
+      closing_message: "Se tiver perguntas ou se houver qualquer coisa que possamos fazer para ajudar a deixar tudo funcionando, adoraríamos ouvir de você - é só responder a este e-mail."
       thanks: |
         Muito Obrigado!
         Equipe Loomio
@@ -899,7 +899,7 @@ pt-BR:
   details: "Detalhes"
   discussions: "Discussões"
   edit: "Editar"
-  email_address: "Endereço de email"
+  email_address: "Endereço de e-mail"
   enable: "Habilitar"
   participation: "Participação"
   disable: "Desabilitar"
@@ -935,7 +935,7 @@ pt-BR:
   saving: "Salvando"
   sending: "Enviando"
   send_invite: "Enviar convite"
-  send_email: "Enviar email"
+  send_email: "Enviar e-mail"
   show_more: "Mostrar mais"
   start_a_group: "Iniciar um grupo"
   starting: "Começar"
@@ -1007,7 +1007,7 @@ pt-BR:
     privacy: "Privacidade"
     private: "Privado"
     public: "Público"
-    email: "Email"
+    email: "E-mail"
     start_group: "Iniciar grupo!"
   group_categories:
     all: "Tudo"

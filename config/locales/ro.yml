@@ -26,7 +26,6 @@ ro:
   devise:
     invitations:
       send_instructions: 'O invitatie a fost trimisa la %{email}.'
-      invitation_token_invalid: 'Codul invitatiei nu este valid!'
       updated: 'Cont creat.'
       no_invitations_remaining: "Nici o invitatie disponibila."
     mailer:
@@ -77,6 +76,18 @@ ro:
     you_have_left_group: "Ai parasit grupul %{which_group}."
     comment_deleted: "Comentariu sters."
     invitations:
+      auto_added:
+        one: "un membru adaugat"
+        few: "%{count} membri adaugati"
+        other: "%{count} membri adaugati"
+      existing_member:
+        one: "un membru deja adaugat"
+        few: "%{count} membri deja adaugati"
+        other: "%{count} membri deja adaugati"
+      sent:
+        one: "o invitatie trimisa"
+        few: "%{count} invitatii trimise"
+        other: "%{count} invitatii trimise"
       auto_added_and_sent: "%{auto_added_text} si %{sent_text}"
   tooltip:
     cover_photo_upload: "Incarca o noua fotografie pentru coperta"

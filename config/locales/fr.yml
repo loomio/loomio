@@ -26,7 +26,6 @@ fr:
   devise:
     invitations:
       send_instructions: 'Une invitation a été envoyée sur %{email}.'
-      invitation_token_invalid: 'Le token d''invitation n''est pas valide !'
       updated: 'Compte créé.'
       no_invitations_remaining: "Il ne reste plus d'invitation"
     mailer:

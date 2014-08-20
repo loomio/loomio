@@ -19,7 +19,6 @@ km:
   devise:
     invitations:
       send_instructions: 'ការអញ្ជើញត្រូវបានផ្ញើទៅ %{email}.'
-      invitation_token_invalid: 'សញ្ញាសម្ងាត់ការអញ្ជើញដែលបានផ្ដល់គឺមិនត្រឹមត្រូវ!​'
       updated: 'គណនីបានបង្កើត'
       no_invitations_remaining: "គ្មានលិខិតអញ្ចើញនៅសល់"
     mailer:
