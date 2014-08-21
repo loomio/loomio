@@ -1057,8 +1057,7 @@ en:
       subject: "Proposal: %{proposal_title}"
       context: "%{author} created a proposal in %{group_full_name}:"
     proposal_closed:
-      intro: 'Your proposal "%{proposal_name}" has closed.'
-      intro_html: 'Your proposal "%{proposal_name}" has closed.'
+      proposal_has_closed: 'The proposal has closed.'
       specify_outcome_and_notify_group: "Create an outcome and send it to your group!"
       specify_outcome_and_notify_group_html: "Create an outcome and send it to your group!"
       subject: "Proposal closed - %{which}"
@@ -1080,6 +1079,10 @@ en:
       change_preferences: "Change your email preferences:"
       new_motion: "%{who} proposed:"
       motion_closing_soon: "Proposal closing in 24 hours:"
+      proposal_closed: "Proposal closed:"
+      specify_outcome_html: "Your proposal has closed. <a href='%{link}'>Specify an outcome</a> to let everyone know what the result is."
+      specify_outcome: "Your proposal has closed. Specify an outcome to let everyone know what the result is:"
+      outcome_created: "%{who} set a proposal outcome:"
       you_agreed: "You %{past_tense_position}"
     verification:
       header: "You're almost done!"
