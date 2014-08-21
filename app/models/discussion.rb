@@ -65,9 +65,11 @@ class Discussion < ActiveRecord::Base
   before_create :set_last_comment_at
 
   def followers
-    User.joins("LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id = #{id})").
-         joins("LEFT OUTER JOIN memberships m ON (m.user_id = users.id AND m.group_id = #{group_id})").
-         where('dr.following = TRUE OR (dr.following IS NULL AND m.following_by_default = TRUE)')
+    User.
+      active.
+      joins("LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id = #{id})").
+      joins("LEFT OUTER JOIN memberships m ON (m.user_id = users.id AND m.group_id = #{group_id})").
+      where('dr.following = TRUE OR (dr.following IS NULL AND m.following_by_default = TRUE)')
   end
 
   def followers_without_author
@@ -75,7 +77,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def group_members_not_following
-    group.members.where('users.id NOT IN (?)', followers.pluck(:id))
+    group.members.active.where('users.id NOT IN (?)', followers.pluck(:id))
   end
 
   def archive!

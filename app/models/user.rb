@@ -105,19 +105,20 @@ class User < ActiveRecord::Base
 
   scope :active, -> { where(deleted_at: nil) }
   scope :inactive, -> { where("deleted_at IS NOT NULL") }
-  scope :subscribed_to_missed_yesterday_email, -> { where(subscribed_to_missed_yesterday_email: true) }
+  scope :subscribed_to_missed_yesterday_email, -> { active.where(subscribed_to_missed_yesterday_email: true) }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
-  scope :email_followed_threads, -> { where(email_followed_threads: true) }
-  scope :dont_email_followed_threads, -> { where(email_followed_threads: false) }
-  scope :email_when_proposal_closing_soon, -> { where email_when_proposal_closing_soon: true }
+  scope :email_followed_threads, -> { active.where(email_followed_threads: true) }
+  scope :dont_email_followed_threads, -> { active.where(email_followed_threads: false) }
+  scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
   scope :email_new_discussions_for, -> (group) {
+        active.
         joins(:memberships).
         where('memberships.group_id = ?', group.id).
         where('users.email_new_discussions_and_proposals = ?', true).
         where('memberships.email_new_discussions_and_proposals = ?', true) }
-  scope :email_new_proposals_for, -> (group) { email_new_discussions_for(group) }
+  scope :email_new_proposals_for, -> (group) { active.email_new_discussions_for(group) }
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
@@ -254,10 +255,7 @@ class User < ActiveRecord::Base
   end
 
   def deactivate!
-    update_attributes(deleted_at: Time.now,
-                      email_missed_yesterday: false,
-                      email_new_discussions_and_proposals: false,
-                      avatar_kind: "initials")
+    update_attributes(deleted_at: Time.now, avatar_kind: "initials")
     memberships.update_all(archived_at: Time.now)
     membership_requests.where("responded_at IS NULL").destroy_all
   end

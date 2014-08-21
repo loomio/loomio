@@ -29,7 +29,7 @@ describe Events::MembershipRequested do
     let(:event) { Events::MembershipRequested.new(kind: "new_comment",
                                                      eventable: membership_request) }
     before {
-      membership_request.stub(:group_admins).and_return([admin])
+      membership_request.stub(:group_admins) { double(active: [admin]) }
       User.stub(:find_by_email).and_return(admin)
     }
 
