@@ -49,48 +49,4 @@ class UserMailerPreview < ActionMailer::Preview
     message = "Hello! It's been a long time coming but I though you would be the best person to invite to the group now that we're developing a univfying agreement plan consenting process"
     UserMailer.added_to_group(user: user, inviter: inviter, group: group, message: message)
   end
-
-  def mentioned
-    user = FactoryGirl.create(:user)
-    discussion = FactoryGirl.create(:discussion)
-    comment = FactoryGirl.create(:comment, discussion: discussion, body: "Hey there @#{user.username}, I love what you said and want to find out more about the stuff you mentioned, can we please have a cup of tea and a bike ride with me?")
-    UserMailer.mentioned(user, comment)
-  end
-
-  def motion_closed
-    motion = FactoryGirl.create(:motion)
-    motion.store_users_that_didnt_vote
-    motion.closed_at = Time.now
-    motion.save!
-    UserMailer.motion_closed(motion, motion.author.email)
-  end
-
-  def motion_created
-    motion = FactoryGirl.create(:motion)
-    group = motion.group
-    user = FactoryGirl.create(:user)
-    group.add_member!(user)
-    UserMailer.motion_created(motion, user)
-  end
-
-  def motion_closing_soon
-    user = FactoryGirl.create(:user)
-    motion = FactoryGirl.create(:motion)
-    motion.group.add_member!(user)
-    vote = FactoryGirl.create(:vote, motion: motion)
-    UserMailer.motion_closing_soon(user, motion)
-  end
-
-  def motion_outcome_created
-    motion = FactoryGirl.create(:motion)
-    group = motion.group
-    user = FactoryGirl.create(:user)
-    group.add_member!(user)
-    motion.store_users_that_didnt_vote
-    motion.closed_at = Time.now
-    motion.save!
-    motion.outcome = "the motion was voted upon variously, hurrah"
-    motion.outcome_author = motion.author
-    UserMailer.motion_outcome_created(motion, user)
-  end
 end

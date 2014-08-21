@@ -1,23 +1,6 @@
-= t(:outcome)
+= t(:"email.thread_mailer.outcome_created", who: @motion.outcome_author.name)
 = @motion.outcome
 \
-= t(:proposal)
-= @motion.name
-= motion_url(@motion, @utm_hash).html_safe
+= render 'motion_with_positions'
 \
-= @motion.description
-\
--if @motion.unique_votes.present?
-  = t(:positions).capitalize
-  -last_vote = @motion.unique_votes.last
-  -@motion.unique_votes.each do |vote|
-    = vote.user_name
-    = vote.position_to_s
-    -if vote.statement.present?
-      = vote.statement
-\
-= t(:proposal_closed_when, when: time_ago_in_words(@motion.closed_at))
-= t(:proposed_when_by_who, when: time_ago_in_words(@motion.created_at), who: @motion.author_name)
-= t(:engagement_on_closed_proposal, percent: @motion.percent_voted, :numerator => (@motion.group_size_when_voting - @motion.members_not_voted_count), denominator:  @motion.group_size_when_voting)
-\
-= render 'user_mailer/unsubscribe_link_text'
+= render 'footer', link: motion_url(@motion)

@@ -58,9 +58,11 @@ class ThreadMailer < BaseMailer
   end
 
   def motion_closed(recipient, motion)
+    @recipient = recipient
+    @discussion = motion.discussion
+    @author = motion.author
     @motion = motion
     @group = motion.group
-    @author = motion.author
     send_thread_email(non_following_subject:
                       t("email.proposal_closed.subject", which: @motion.name))
   end

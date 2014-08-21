@@ -1,10 +1,8 @@
-= render '/application/mailer_doctype'
-%html
-  %head
-    = stylesheet_link_tag 'email'
-  %body
-    %table.proposal-text
-      %tr
-        %td= t("email.proposal_closed.intro_html", proposal_name: @motion.name)
-      %tr
-        %td= link_to(t("email.proposal_closed.specify_outcome_and_notify_group"), discussion_url(@motion.discussion, proposal: @motion, focus_outcome_input: "true"))
+-if @recipient == @motion.author
+  %p= t(:"email.thread_mailer.specify_outcome_html", link: discussion_url(@motion.discussion, proposal: @motion, focus_outcome_input: "true"))
+-else
+  %p= t(:"email.thread_mailer.proposal_closed")
+
+= render 'motion_with_positions'
+
+= render "footer", link: motion_url(@motion)
