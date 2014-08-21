@@ -2,8 +2,10 @@ class Events::MotionOutcomeCreated < Event
   after_create :notify_users!
 
   def self.publish!(motion, user)
-    create!(:kind => "motion_outcome_created", :eventable => motion,
-            :discussion_id => motion.discussion.id, :user => user)
+    create!(kind: "motion_outcome_created",
+            eventable: motion,
+            discussion_id: motion.discussion.id,
+            user: user)
   end
 
   def motion

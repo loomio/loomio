@@ -9,7 +9,7 @@ class Events::NewVote < Event
 
     vote.motion_followers_without_voter.
          email_followed_threads.each do |user|
-      ThreadMailer.delay.new_vote(user, vote)
+      ThreadMailer.delay.new_vote(user, event)
     end
 
     event

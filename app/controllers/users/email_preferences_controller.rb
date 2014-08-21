@@ -17,6 +17,16 @@ class Users::EmailPreferencesController < BaseController
     end
   end
 
+  def mark_discussion_as_read
+    @discussion = Discussion.find(params[:discussion_id])
+    @event = Event.find(params[:event_id])
+    DiscussionReader.for(discussion: @discussion, user: user).viewed!(@event.created_at)
+
+    send_file Rails.root.join('app','assets','images', 'empty.gif'),
+              type: 'image/gif',
+              disposition: 'inline'
+  end
+
   def mark_summary_email_as_read
     @inbox = Inbox.new(user)
     @inbox.load

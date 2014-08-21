@@ -2,7 +2,8 @@ class Events::MembershipRequested < Event
   after_create :notify_users!
 
   def self.publish!(membership_request)
-    create!(:kind => "membership_requested", :eventable => membership_request)
+    create!(kind: "membership_requested",
+            eventable: membership_request)
   end
 
   def membership_request

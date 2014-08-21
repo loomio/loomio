@@ -3,66 +3,74 @@ class ThreadMailer < BaseMailer
   helper :motions
   helper :application
 
-  def new_discussion(recipient, discussion)
-    @discussion = discussion
-    @author = discussion.author
+  def new_discussion(recipient, event)
     @recipient = recipient
+    @event = event
+    @discussion = event.discussion
+    @author = event.discussion.author
     send_thread_email(non_following_subject: @discussion.title)
   end
 
-  def new_comment(recipient, comment)
-    @discussion = comment.discussion
-    @author = comment.author
+  def new_comment(recipient, event)
     @recipient = recipient
-    @comment = comment
+    @event = event
+    @comment = event.eventable
+    @discussion = @comment.discussion
+    @author = @comment.author
     send_thread_email
   end
 
-  def new_vote(recipient, vote)
-    @discussion = vote.motion.discussion
-    @author = vote.author
+  def new_vote(recipient, event)
     @recipient = recipient
-    @vote = vote
+    @event = event
+    @vote = event.eventable
+    @discussion = @vote.motion.discussion
+    @author = @vote.author
     @motion = @vote.motion
     send_thread_email
   end
 
-  def new_motion(recipient, motion)
-    @discussion = motion.discussion
-    @author = motion.author
+  def new_motion(recipient, event)
     @recipient = recipient
-    @motion = motion
+    @event = event
+    @motion = event.eventable
+    @discussion = @motion.discussion
+    @author = @motion.author
     @group = @discussion.group
     send_thread_email(non_following_subject:
-                      t(:"email.new_motion_created.subject", proposal_title: motion.title))
+                      t(:"email.new_motion_created.subject", proposal_title: @motion.title))
   end
 
-  def motion_closing_soon(recipient, motion)
+  def motion_closing_soon(recipient, event)
     @recipient = recipient
-    @motion = motion
-    @author = motion.author
-    @discussion = motion.discussion
+    @event = event
+    @motion = event.eventable
+    @author = @motion.author
+    @discussion = @motion.discussion
     @group = @discussion.group
     send_thread_email(non_following_subject:
-                      t(:"email.proposal_closing_soon.subject", proposal_title: motion.title))
+                      t(:"email.proposal_closing_soon.subject", proposal_title: @motion.title))
   end
 
-  def motion_outcome_created(recipient, motion)
+  def motion_outcome_created(recipient, event)
     @recipient = recipient
-    @discussion = motion.discussion
-    @author = motion.outcome_author
-    @motion = motion
-    @group = motion.group
+    @event = event
+    @motion = event.eventable
+    @discussion = @motion.discussion
+    @author = @motion.outcome_author
+    @group = @motion.group
     send_thread_email(non_following_subject:
                       "#{t("email.proposal_outcome.subject")}: #{@motion.name}")
   end
 
-  def motion_closed(recipient, motion)
+  def motion_closed(recipient, event)
     @recipient = recipient
-    @discussion = motion.discussion
-    @author = motion.author
-    @motion = motion
-    @group = motion.group
+    @event = event
+    @motion = event.eventable
+    @discussion = @motion.discussion
+    @author = @motion.author
+    @motion = @motion
+    @group = @motion.group
     send_thread_email(non_following_subject:
                       t("email.proposal_closed.subject", which: @motion.name))
   end

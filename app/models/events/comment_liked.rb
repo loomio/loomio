@@ -2,7 +2,8 @@ class Events::CommentLiked < Event
   after_create :notify_users!
 
   def self.publish!(comment_vote)
-    create!(:kind => "comment_liked", :eventable => comment_vote)
+    create!(kind: "comment_liked",
+            eventable: comment_vote)
   end
 
   def comment_vote

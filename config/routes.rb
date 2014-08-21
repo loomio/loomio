@@ -180,6 +180,7 @@ Loomio::Application.routes.draw do
       get   '/email_preferences', action: 'edit',   as: :email_preferences
       put   '/email_preferences', action: 'update', as: :update_email_preferences
       get   '/mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
+      get   'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
     end
   end
 
