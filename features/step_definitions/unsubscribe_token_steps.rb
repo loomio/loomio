@@ -1,5 +1,5 @@
 Given /^I have a user account but not I'm logged in$/ do
-  @user = FactoryGirl.create :user, name: 'User Guy', 
+  @user = FactoryGirl.create :user, name: 'User Guy',
                                     email: "user@example.org",
                                     password: 'password'
 
@@ -14,8 +14,8 @@ When /^I visit email_preferences with unsubscribe_token in the params$/ do
 end
 
 Then /^I should be able to update my email preferences$/ do
-  uncheck 'email_preferences[email_missed_yesterday]'
-  click_on 'Update preferences'
+  uncheck 'user[email_followed_threads]'
+  click_on 'Save preferences'
   page.should have_content 'Your email settings have been updated.'
-  @user.reload.subscribed_to_missed_yesterday_email.should be false
+  @user.reload.email_followed_threads.should be false
 end

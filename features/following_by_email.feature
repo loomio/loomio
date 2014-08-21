@@ -59,7 +59,15 @@ Scenario: Proposal closing soon
 Scenario: Proposal closed
   When my proposal closes
   Then I should be emailed and notified that the proposal closed
-  And  "Dr Follow By Email" should be emailed
+  And "Dr Follow By Email" should be emailed
   And "Mr New Threads Only" should not be emailed
   And "Mrs No Email Please" should not be emailed
+  And "Ms Prop Close Soon" should not be emailed
+
+Scenario: Proposal Outcome
+  When I set a proposal outcome
+  Then "Dr Follow By Email" should be emailed
+  And "Mr New Threads Only" should be emailed
+  And "Mrs No Email Please" should not be emailed
+  # should proposal closing soon get an email?
   And "Ms Prop Close Soon" should not be emailed
