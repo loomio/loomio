@@ -19,7 +19,6 @@ id:
   devise:
     invitations:
       send_instructions: 'Undangan telah dikirim ke %{email}.'
-      invitation_token_invalid: 'Token undangan yang tersedia tidak benar!'
       updated: 'Akun telah dibuat'
       no_invitations_remaining: "Tidak ada undangan"
     mailer:

@@ -20,6 +20,6 @@ class NotificationItems::NewVote < NotificationItem
 
   def link
     discussion_path = url_helpers.discussion_path(@notification.eventable.discussion)
-    discussion_path + "?proposal=#{@notification.eventable.motion.id}"
+    discussion_path + "?proposal=#{@notification.eventable.motion.key}"
   end
 end

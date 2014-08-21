@@ -1,4 +1,12 @@
 ar:
+  explore:
+    header: "إستكشف مجموعات عامة"
+  try_it:
+    header: "جرّب Loomio"
+    start_a_group: "تبدأ مجموعة لاتخاذ القرارات في مجتمعك."
+    join_the_community: "ضمّ إلى مجموعة Loomio المجتمع"
+    loomio_community_info: "هذا هو المكان الذي نناقش ونتخذ القرارات بشأن Loomio."
+    explore_groups: "إستكشف مجموعات أخرى على Loomio"
   errors:
     messages:
       email: "عنوان البريد الإلكتروني غير صالح"

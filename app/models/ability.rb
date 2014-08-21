@@ -70,7 +70,7 @@ class Ability
     can [:add_subgroup], Group do |group|
       group.is_parent? &&
       user_is_member_of?(group.id) &&
-      group.members_can_create_subgroups?
+      (group.members_can_create_subgroups? || user_is_admin_of?(group.id))
     end
 
     # create group checks against the group to be created
@@ -80,8 +80,8 @@ class Ability
       # inwhich case we need to confirm membership and permission
 
       group.is_parent? ||
-      (user_is_member_of?(group.parent.id) &&
-       group.parent.members_can_create_subgroups?)
+       ((user_is_member_of?(group.parent.id) && group.parent.members_can_create_subgroups?)) ||
+       user_is_admin_of?(group.parent.id)
     end
 
     can :join, Group do |group|
