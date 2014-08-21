@@ -1,5 +1,5 @@
 %p= t(:"email.thread_mailer.new_motion", who: @motion.author_name)
-%h4= link_to @motion.name, motion_url(@motion)
+%h4= link_to @motion.name, motion_url(@motion, @utm_hash)
 
 = render_rich_text(@motion.description, false)
 
@@ -7,4 +7,4 @@
 
 %h4= t(:"help.have_your_say")
 = render 'vote_buttons', motion: @motion
-= render "footer", link: motion_url(@motion)
+= render "footer", link: motion_url(@motion, @utm_hash)

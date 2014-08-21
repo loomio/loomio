@@ -9,8 +9,6 @@ class UserMailer < BaseMailer
     @time_finish = Time.zone.now
     @time_frame = @time_start...@time_finish
 
-    @utm_hash = UTM_EMAIL.merge utm_source: 'missed_yesterday'
-
     if unread
       @discussions = Queries::VisibleDiscussions.new(user: user,
                                                      groups: user.inbox_groups).
