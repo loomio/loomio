@@ -15,7 +15,7 @@ class Events::MotionOutcomeCreated < Event
   def notify_users!
     motion.group_members_without_outcome_author.each do |user|
       if user.email_notifications_for_group?(motion.group)
-        UserMailer.motion_outcome_created(motion, user).deliver
+        UserMailer.motion_outcome_created(user, motion).deliver
       end
       notify!(user)
     end

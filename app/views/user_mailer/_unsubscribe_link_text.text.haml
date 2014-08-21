@@ -1,9 +1,4 @@
-- if @utm_hash
-  - utm_hash = @utm_hash.merge utm_campaign: 'unsubsubscribe'
-- else
-  - utm_hash = {}
-
 = '---------------------------------------------------------------------------'
 
 = t("email.unsubscribe")
-= email_preferences_url( utm_hash.merge unsubscribe_token: @user.unsubscribe_token ).html_safe
+= email_preferences_url( unsubscribe_token: @recipient.unsubscribe_token ).html_safe

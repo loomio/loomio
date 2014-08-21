@@ -1,8 +1,7 @@
 %p= t(:"email.thread_mailer.new_motion", who: @motion.author_name)
 %h4= link_to @motion.name, motion_url(@motion)
 
--if @rendered_motion_description.present?
-  = @rendered_motion_description
+= render_rich_text(@motion.description, false)
 
 %p= t(:"email.proposal_closing_soon.closes_on") + ' ' + motion_closing_time_for(@user)
 

@@ -6,8 +6,7 @@
     %td
       = render 'motion_pie', motion: @motion
     %td
-      -if @rendered_motion_description.present?
-        = @rendered_motion_description
+      = render_rich_text(@motion.description, false)
 
 - unless @motion.user_has_voted?(@user)
   %h4= t(:"help.have_your_say")

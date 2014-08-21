@@ -14,12 +14,12 @@ class Events::NewMotion < Event
 
     motion.followers_without_author.
            dont_email_followed_threads.
-           email_motion_notifications_for(motion.group).each do |user|
+           email_new_proposals_for(motion.group).each do |user|
       ThreadMailer.delay.new_motion(user, motion)
     end
 
     motion.group_members_not_following.
-           email_motion_notifications_for(motion.group).each do |user|
+           email_new_proposals_for(motion.group).each do |user|
       ThreadMailer.delay.new_motion(user, motion)
     end
 

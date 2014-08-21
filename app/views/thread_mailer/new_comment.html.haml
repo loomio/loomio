@@ -1,2 +1,2 @@
-= @rendered_comment_body
+= render_rich_text(@comment.body, @comment.uses_markdown)
 = render "footer", link: comment_url_helper(@comment)

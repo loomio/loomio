@@ -8,7 +8,7 @@
 
     %h1.outcome-header= t(:proposal)
     %p= link_to @motion.name, motion_url(@motion, @utm_hash)
-    %p= @motion.description
+    = render_rich_text(@motion.description, false)
 
     -if @motion.unique_votes.present?
       %h2.outcome-subheader= t(:positions).capitalize
