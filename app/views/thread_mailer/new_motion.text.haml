@@ -7,6 +7,6 @@
 = t(:"email.proposal_closing_soon.closes_on") + ' ' + motion_closing_time_for(@recipient)
 \
 = t(:"help.have_your_say") + ":"
-= motion_url(@motion)
+= motion_url(@motion, @utm_hash)
 
-= render "footer", link: motion_url(@motion)
+= render "footer", link: motion_url(@motion, @utm_hash)

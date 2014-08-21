@@ -1,7 +1,7 @@
 class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
-  AVAILABLE_BETA_FEATURES = ['discussion_iframe']
   include BetaFeatures
+  AVAILABLE_BETA_FEATURES = ['discussion_iframe']
 
   class MaximumMembershipsExceeded < Exception
   end

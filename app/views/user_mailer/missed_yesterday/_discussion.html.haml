@@ -17,4 +17,4 @@
       - next unless ['new_comment', 'new_vote' ].include? item.kind
       = render "thread_mailer/#{item.kind}", item: item
 
-  %p= link_to t(:"email.reply_to_this_discussion"), discussion_url(discussion)
+  %p= link_to t(:"email.reply_to_this_discussion"), discussion_url(discussion, @utm_hash)

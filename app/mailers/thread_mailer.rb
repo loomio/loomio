@@ -71,7 +71,7 @@ class ThreadMailer < BaseMailer
 
   def send_thread_email(non_following_subject: nil)
     @following = DiscussionReader.for(discussion: @discussion, user: @recipient).following?
-    @utm_hash = {}
+    @utm_hash = utm_hash
 
     locale = locale_fallback(@recipient.locale, @author.locale)
     I18n.with_locale(locale) do

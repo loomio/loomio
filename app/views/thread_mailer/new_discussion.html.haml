@@ -10,4 +10,4 @@
 
     = render_rich_text(@discussion.description, @discussion.uses_markdown)
 
-    = render 'footer', link: discussion_url(@discussion)
+    = render 'footer', link: discussion_url(@discussion, @utm_hash)

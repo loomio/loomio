@@ -30,7 +30,7 @@ module EmailHelper
   end
 
   def comment_url_helper(comment)
-    discussion_url(comment.discussion, anchor: "comment-#{comment.id}")
+    discussion_url(comment.discussion, @utm_hash.merge(anchor: "comment-#{comment.id}"))
   end
 
   def vote_icon_paths_helper(position)
