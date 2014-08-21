@@ -7,7 +7,7 @@
       %p
         %em
           %small= t(:'email.missed_yesterday.click_here_to_mark_all_as_read_html',
-                    link: mark_summary_as_read_url_for(@user, @utm_hash))
+                    link: mark_summary_as_read_url_for(@user))
       %h1 Headlines
       .toc
         =render 'user_mailer/missed_yesterday/headlines'
@@ -21,6 +21,6 @@
     %p
       = t(:'email.missed_yesterday.thanks_for_reading')
       %br
-      =link_to(t('email.missed_yesterday.mark_as_read'), mark_summary_as_read_url_for(@user, @utm_hash))
-      %img{src: mark_summary_as_read_url_for(@user, @utm_hash.merge(format: 'gif')), alt: '', width: 1, height: 1}
+      =link_to(t('email.missed_yesterday.mark_as_read'), mark_summary_as_read_url_for(@user))
+      %img{src: mark_summary_as_read_url_for(@user, format: 'gif'), alt: '', width: 1, height: 1}
     =render 'user_mailer/unsubscribe_link'

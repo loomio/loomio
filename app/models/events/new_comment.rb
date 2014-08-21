@@ -16,7 +16,7 @@ class Events::NewComment < Event
 
     comment.followers_without_author.
             email_followed_threads.each do |user|
-      ThreadMailer.delay.new_comment(user, comment)
+      ThreadMailer.delay.new_comment(user, event)
     end
 
     event

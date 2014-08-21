@@ -9,18 +9,18 @@ class Events::NewMotion < Event
 
     motion.followers_without_author.
            email_followed_threads.each do |user|
-      ThreadMailer.delay.new_motion(user, motion)
+      ThreadMailer.delay.new_motion(user, event)
     end
 
     motion.followers_without_author.
            dont_email_followed_threads.
            email_new_proposals_for(motion.group).each do |user|
-      ThreadMailer.delay.new_motion(user, motion)
+      ThreadMailer.delay.new_motion(user, event)
     end
 
     motion.group_members_not_following.
            email_new_proposals_for(motion.group).each do |user|
-      ThreadMailer.delay.new_motion(user, motion)
+      ThreadMailer.delay.new_motion(user, event)
     end
 
     event

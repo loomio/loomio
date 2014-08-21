@@ -1,3 +1,7 @@
+%img{src: mark_discussion_as_read_url(discussion_id: @discussion.id,
+                                      event_id: @event.id,
+                                      unsubscribe_token: @recipient.unsubscribe_token,
+                                      format: 'gif'), alt: '', width: 1, height: 1}
 %p="--"
 %p= t :"email.thread_mailer.footer_html",
         app_link: link,

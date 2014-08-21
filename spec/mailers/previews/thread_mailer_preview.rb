@@ -3,8 +3,9 @@ class ThreadMailerPreview < ActionMailer::Preview
     group = FactoryGirl.create :group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
+    event = Events::NewDiscussion.create(kind: 'new_discussion', eventable: discussion, discussion_id: discussion.id)
     group.add_member! user
-    ThreadMailer.new_discussion user, discussion
+    ThreadMailer.new_discussion user, event
   end
 
   def new_comment_followed
@@ -15,7 +16,8 @@ class ThreadMailerPreview < ActionMailer::Preview
     group.add_member! user
     rich_text_body = "I am a comment with a **bold bit**"
     comment = FactoryGirl.create :comment, discussion: discussion, body: rich_text_body, uses_markdown: true
-    ThreadMailer.new_comment user, comment
+    event = Events::NewComment.create(kind: 'new_comment', eventable: comment, discussion_id: discussion.id)
+    ThreadMailer.new_comment user, event
   end
 
   def new_vote_followed
@@ -26,7 +28,8 @@ class ThreadMailerPreview < ActionMailer::Preview
     group.add_member! user
     motion = FactoryGirl.create :motion, discussion: discussion
     vote = FactoryGirl.create :vote, motion: motion
-    ThreadMailer.new_vote user, vote
+    event = Events::NewVote.create(kind: 'new_vote', eventable: vote, discussion_id: discussion)
+    ThreadMailer.new_vote user, event
   end
 
   def new_motion_not_followed
@@ -35,7 +38,8 @@ class ThreadMailerPreview < ActionMailer::Preview
     discussion = FactoryGirl.create :discussion, group: group
     group.add_member! user
     motion = FactoryGirl.create :motion, discussion: discussion
-    ThreadMailer.new_motion user, motion
+    event = Events::NewMotion.create(kind: 'new_motion', eventable: motion, discussion_id: discussion)
+    ThreadMailer.new_motion user, event
   end
 
   def new_motion_followed
@@ -45,7 +49,8 @@ class ThreadMailerPreview < ActionMailer::Preview
     DiscussionReader.for(user: user, discussion: discussion).follow!
     group.add_member! user
     motion = FactoryGirl.create :motion, discussion: discussion
-    ThreadMailer.new_motion user, motion
+    event = Events::NewMotion.create(kind: 'new_motion', eventable: motion, discussion_id: discussion)
+    ThreadMailer.new_motion user, event
   end
 
   def motion_closing_soon_followed
@@ -55,7 +60,12 @@ class ThreadMailerPreview < ActionMailer::Preview
     DiscussionReader.for(user: user, discussion: discussion).follow!
     group.add_member! user
     motion = FactoryGirl.create :motion, discussion: discussion
-    ThreadMailer.motion_closing_soon user, motion
+
+    event = Events::MotionClosingSoon.create(kind: 'motion_closing_soon',
+                                             eventable: motion,
+                                             discussion_id: motion.discussion.id)
+
+    ThreadMailer.motion_closing_soon user, event
   end
 
   def motion_closing_soon_not_followed
@@ -64,7 +74,10 @@ class ThreadMailerPreview < ActionMailer::Preview
     discussion = FactoryGirl.create :discussion, group: group
     group.add_member! user
     motion = FactoryGirl.create :motion, discussion: discussion
-    ThreadMailer.motion_closing_soon user, motion
+    event = Events::MotionClosingSoon.create(kind: 'motion_closing_soon',
+                                             eventable: motion,
+                                             discussion_id: motion.discussion.id)
+    ThreadMailer.motion_closing_soon user, event
   end
 
   def motion_closed_following
@@ -80,7 +93,10 @@ class ThreadMailerPreview < ActionMailer::Preview
     motion.store_users_that_didnt_vote
     motion.closed_at = Time.now
     motion.save!
-    ThreadMailer.motion_closed user, motion
+    event = Events::MotionClosed.create(kind: 'motion_closed',
+                                        eventable: motion,
+                                        discussion_id: motion.discussion.id)
+    ThreadMailer.motion_closed user, event
   end
 
   def specify_motion_outcome
@@ -96,7 +112,11 @@ class ThreadMailerPreview < ActionMailer::Preview
     motion.store_users_that_didnt_vote
     motion.closed_at = Time.now
     motion.save!
-    ThreadMailer.motion_closed motion.author, motion
+    event = Events::MotionOutcomeCreated.create(kind: "motion_outcome_created",
+                                                eventable: motion,
+                                                discussion_id: motion.discussion.id,
+                                                user: user)
+    ThreadMailer.motion_closed motion.author, event
   end
 
   def motion_outcome_created
@@ -106,9 +126,14 @@ class ThreadMailerPreview < ActionMailer::Preview
     group.add_member!(user)
     motion.store_users_that_didnt_vote
     motion.closed_at = Time.now
-    motion.save!
     motion.outcome = "the motion was voted upon variously, hurrah"
     motion.outcome_author = motion.author
-    ThreadMailer.motion_outcome_created user, motion
+    motion.save!
+
+    event = Events::MotionOutcomeCreated.create(kind: "motion_outcome_created",
+                                                eventable: motion,
+                                                discussion_id: motion.discussion.id,
+                                                user: user)
+    ThreadMailer.motion_outcome_created user, event
   end
 end

@@ -4,7 +4,7 @@ class UserMailer < BaseMailer
   helper :application
 
   def missed_yesterday(user, time_since = nil, unread = true)
-    @user = user
+    @recipient = @user = user
     @time_start = time_since || 24.hours.ago
     @time_finish = Time.zone.now
     @time_frame = @time_start...@time_finish

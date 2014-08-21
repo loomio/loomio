@@ -5,7 +5,7 @@ class Events::MotionClosed < Event
                     discussion_id: motion.discussion.id)
 
     motion.followers.email_followed_threads.each do |user|
-      ThreadMailer.delay.motion_closed(user, motion)
+      ThreadMailer.delay.motion_closed(user, event)
     end
 
     event.notify! motion.author
