@@ -1,6 +1,9 @@
 ActiveAdmin.register Group do
 
   controller do
+    def permitted_params
+      params.permit!
+    end
 
     def find_resource
       Group.friendly.find(params[:id])
@@ -12,7 +15,8 @@ ActiveAdmin.register Group do
   end
 
   actions :index, :show, :edit, :update
-  before_filter :set_pagination
+
+
   filter :name
   filter :payment_plan, as: :select, collection: Group::PAYMENT_PLANS
   filter :memberships_count
@@ -25,21 +29,7 @@ ActiveAdmin.register Group do
   scope :has_members_but_never_engaged
   scope :visible_on_explore_front_page
 
-
-  csv do
-    column :id
-    column :name
-    column :member_email_addresses do |g|
-      g.members.map{|m| [m.name, m.email] }.map{|ne| "#{ne[0]} <#{ne[1]}>"}.join(', ')
-    end
-
-    column :admin_email_addresses do |g|
-      g.admins.map{|m| [m.name, m.email] }.map{|ne| "#{ne[0]} <#{ne[1]}>"}.join(', ')
-    end
-  end
-
   index :download_links => false do
-    selectable_column
     column :id
     column :name do |g|
       simple_format(g.full_name.sub(' - ', "\n \n> "))
@@ -117,49 +107,25 @@ ActiveAdmin.register Group do
       f.input :payment_plan, :as => :select, :collection => Group::PAYMENT_PLANS
       f.input :category_id, as: :select, collection: Category.all
     end
-    f.buttons
+    f.actions
   end
 
-  #member_action :update, :method => :put do
-    #group = Group.find(params[:id])
-    #group.max_size = params[:group][:max_size]
-    #group.payment_plan = params[:group][:payment_plan]
-    #group
-    #if group.save
-      #redirect_to admin_groups_url, :notice => "Group updated."
-    #else
-      #redirect_to admin_groups_url, :notice => "WARNING: Group could not be updated."
-    #end
-  #end
-
   member_action :archive, :method => :post do
-    group = Group.find(params[:id])
+    group = Group.friendly.find(params[:id])
     group.archive!
-    flash[:notice] = "Shoved #{group.name} into the filing cabinet that nobody touches"
+    flash[:notice] = "Archived #{group.name}"
     redirect_to [:admin, :groups]
   end
 
-  controller do
-    def set_pagination
-      if params[:pagination].blank?
-        @per_page = 40
-      elsif params[:pagination] == 'false'
-        @per_page = 999999999
-      else
-        @per_page = params[:pagination]
-      end
-    end
-  end
-
-  config.batch_actions = true
-
-  batch_action :email do |group_ids|
-    redirect_to new_admin_email_groups_path(group_ids: group_ids)
-  end
-
-  controller do
-    def permitted_params
-      params.permit!
-    end
-  end
+  #controller do
+    #def set_pagination
+      #if params[:pagination].blank?
+        #@per_page = 40
+      #elsif params[:pagination] == 'false'
+        #@per_page = 999999999
+      #else
+        #@per_page = params[:pagination]
+      #end
+    #end
+  #end
 end

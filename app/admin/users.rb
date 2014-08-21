@@ -9,10 +9,15 @@ ActiveAdmin.register User do
   scope :coordinators
 
   controller do
+    def permitted_params
+      params.permit!
+    end
+
     def find_resource
       User.friendly.find(params[:id])
     end
   end
+
   index do
     column :name
     column :email
@@ -77,23 +82,5 @@ ActiveAdmin.register User do
     user = User.friendly.find(params[:id])
     user.deactivate!
     redirect_to admin_users_url, :notice => "User account deactivated"
-  end
-  
-  csv do
-    column :id
-    column :name
-    column :email
-    column :created_at
-    column :last_sign_in_at
-    column "Coordinator" do |user|
-      user.adminable_groups.any?
-    end
-    column :memberships_count
-  end
-
-  controller do
-    def permitted_params
-      params.permit!
-    end
   end
 end
