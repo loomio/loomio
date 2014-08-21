@@ -63,3 +63,4 @@ describe DiscussionReader do
     end
   end
 end
+

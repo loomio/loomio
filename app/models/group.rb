@@ -66,7 +66,7 @@ class Group < ActiveRecord::Base
   scope :less_than_n_discussions, ->(count) { where('discussions_count < ?', count) }
 
   scope :no_active_discussions_since, ->(time) {
-    includes(:discussions).where('discussions.last_comment_at < ?', time).references(:discussions) | where(discussions_count: 0) 
+    includes(:discussions).where('discussions.last_comment_at < ? OR groups.discussions_count = 0', time).references(:discussions)
   }
 
   scope :active_discussions_since, ->(time) {
@@ -120,7 +120,7 @@ class Group < ActiveRecord::Base
            through: :memberships,
            source: :user
 
-  has_many :pending_invitations, 
+  has_many :pending_invitations,
            -> { where accepted_at: nil, cancelled_at: nil },
            as: :invitable,
            class_name: 'Invitation'
@@ -138,11 +138,11 @@ class Group < ActiveRecord::Base
   belongs_to :category
   belongs_to :theme
 
-  has_many :subgroups, 
+  has_many :subgroups,
            -> { where(archived_at: nil).order(:name) },
-           class_name: 'Group', 
+           class_name: 'Group',
            foreign_key: 'parent_id'
-           
+
   has_one :subscription, dependent: :destroy
 
   delegate :include?, to: :users, prefix: true
@@ -154,14 +154,17 @@ class Group < ActiveRecord::Base
 
   has_attached_file    :cover_photo,
                        styles: { desktop: "980x200#", card: "460x94#" },
-                       default_url: '/assets/default-cover-photo.png'
+                       default_url: 'default-cover-photo.png'
+
   has_attached_file    :logo,
                        styles: { card: "67x67", medium: "100x100" },
-                       default_url: '/assets/default-logo-:style.png'
+                       default_url: 'default-logo-:style.png'
+
   validates_attachment :cover_photo,
     size: { in: 0..10.megabytes },
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
+
   validates_attachment :logo,
     size: { in: 0..10.megabytes },
     content_type: { content_type: /\Aimage/ },

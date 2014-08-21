@@ -19,7 +19,6 @@ ca:
   devise:
     invitations:
       send_instructions: 'S''ha enviat una invitació a %{email}.'
-      invitation_token_invalid: 'El token d''invitació no és vàlid!'
       updated: 'S''ha creat un compte.'
       no_invitations_remaining: "No et queden invitacions"
     mailer:

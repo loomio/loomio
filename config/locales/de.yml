@@ -28,7 +28,6 @@ de:
   devise:
     invitations:
       send_instructions: 'Eine Einladung wurde an %{email} versendet.'
-      invitation_token_invalid: 'Das von dir angegebene Einladungs-Token ist nicht gültig!'
       updated: 'Konto erstellt.'
       no_invitations_remaining: "Keine verbleibenden Einladungen"
     mailer:

@@ -1,22 +1,12 @@
 Loomio::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
   namespace :api, path: '/api/v1' do
     resources :comments, only: :create
   end
 
   slug_regex = /[a-z0-9\-\_]*/i
-  ActiveAdmin.routes(self)
-
-  namespace :admin do
-    resource :email_groups, only: [:create, :new]
-    resources :stats, only: [] do
-      collection do
-        get :group_metrics
-        get :retention_metrics
-        get :events
-      end
-    end
-  end
 
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore

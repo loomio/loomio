@@ -18,7 +18,6 @@ ja:
   devise:
     invitations:
       send_instructions: '%{email}　へ招待を送りました'
-      invitation_token_invalid: '与えられた招待トークンは有効ではありません！'
       updated: 'アカウントが作成されました'
       no_invitations_remaining: "残っている招待はありません"
     mailer:
