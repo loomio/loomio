@@ -3,7 +3,8 @@
 
 = render_rich_text(@motion.description, false)
 
-%p= t(:"email.proposal_closing_soon.closes_on") + ' ' + motion_closing_time_for(@user)
+%p= t(:"email.proposal_closing_soon.closes_on") + ' ' + motion_closing_time_for(@recipient)
 
 %h4= t(:"help.have_your_say")
 = render 'vote_buttons', motion: @motion
+= render "footer", link: motion_url(@motion)
