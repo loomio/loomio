@@ -19,7 +19,7 @@ class ThreadMailer < BaseMailer
   end
 
   def new_vote(recipient, vote)
-    @discussion = @motion.discussion
+    @discussion = vote.motion.discussion
     @author = vote.author
     @recipient = recipient
     @vote = vote

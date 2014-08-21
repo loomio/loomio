@@ -2,10 +2,9 @@
 \
 = @motion.name
 \
--if @motion.description.present?
-  = @motion.description
+= @motion.description
 \
-= t(:"email.proposal_closing_soon.closes_on") + ' ' + motion_closing_time_for(@user)
+= t(:"email.proposal_closing_soon.closes_on") + ' ' + motion_closing_time_for(@recipient)
 \
 = t(:"help.have_your_say") + ":"
 = motion_url(@motion)
