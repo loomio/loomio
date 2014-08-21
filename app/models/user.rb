@@ -112,12 +112,12 @@ class User < ActiveRecord::Base
   scope :email_followed_threads, -> { where(email_followed_threads: true) }
   scope :dont_email_followed_threads, -> { where(email_followed_threads: false) }
   scope :email_when_proposal_closing_soon, -> { where email_when_proposal_closing_soon: true }
-  scope :email_new_discussion_notifications_for, -> (group) {
+  scope :email_new_discussions_for, -> (group) {
         joins(:memberships).
         where('memberships.group_id = ?', group.id).
         where('users.email_new_discussions_and_proposals = ?', true).
         where('memberships.email_new_discussions_and_proposals = ?', true) }
-  scope :email_motion_notifications_for, -> (group) { email_new_discussion_notifications_for(group) }
+  scope :email_new_proposals_for, -> (group) { email_new_discussions_for(group) }
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
@@ -256,7 +256,6 @@ class User < ActiveRecord::Base
   def deactivate!
     update_attributes(deleted_at: Time.now,
                       email_missed_yesterday: false,
-                      email_when_mentioned: false,
                       email_new_discussions_and_proposals: false,
                       avatar_kind: "initials")
     memberships.update_all(archived_at: Time.now)

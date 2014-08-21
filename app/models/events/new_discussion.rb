@@ -15,12 +15,12 @@ class Events::NewDiscussion < Event
 
     discussion.followers_without_author.
                dont_email_followed_threads.
-               email_new_discussion_notifications_for(group).each do |user|
+               email_new_discussions_for(group).each do |user|
       ThreadMailer.delay.new_discussion(user, discussion)
     end
 
     discussion.group_members_not_following.
-               email_new_discussion_notifications_for(group).each do |user|
+               email_new_discussions_for(group).each do |user|
       ThreadMailer.delay.new_discussion(user, discussion)
     end
 

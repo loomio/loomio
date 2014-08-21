@@ -165,7 +165,9 @@ end
 Given(/^Dr Follow By Email wants to be emailed new threads and activity he is following$/) do
   @dr_follow_by_email = FactoryGirl.create(:user,
                                            name: 'Dr Follow By Email',
+                                           email_missed_yesterday: false,
                                            email_followed_threads: true,
+                                           email_when_proposal_closing_soon: false,
                                            email_new_discussions_and_proposals: true)
   @group.add_member! @dr_follow_by_email
 end
@@ -176,18 +178,32 @@ end
 
 Given(/^Mr New Threads Only only wants to be emailed about new discussions and proposals$/) do
   @mr_new_threads_only = FactoryGirl.create(:user,
-                                            email_followed_threads: false,
                                             name: 'Mr New Threads Only',
+                                            email_missed_yesterday: false,
+                                            email_followed_threads: false,
+                                            email_when_proposal_closing_soon: false,
                                             email_new_discussions_and_proposals: true)
   @group.add_member! @mr_new_threads_only
 end
 
 Given(/^Mrs No Email Please does not want to be emailed about anything$/) do
   @mrs_no_email_please = FactoryGirl.create(:user,
-                                            email_followed_threads: false,
                                             name: 'Mrs No Email Please',
+                                            email_missed_yesterday: false,
+                                            email_followed_threads: false,
+                                            email_when_proposal_closing_soon: false,
                                             email_new_discussions_and_proposals: false)
   @group.add_member! @mrs_no_email_please
+end
+
+Given(/^Ms Prop Close Soon only wants to know about proposals that are about to close$/) do
+  @ms_prop_close_soon = FactoryGirl.create(:user,
+                                            name: 'Ms Prop Close Soon',
+                                            email_missed_yesterday: false,
+                                            email_followed_threads: false,
+                                            email_when_proposal_closing_soon: true,
+                                            email_new_discussions_and_proposals: false)
+  @group.add_member! @ms_prop_close_soon
 end
 
 When(/^I start a new discussion$/) do

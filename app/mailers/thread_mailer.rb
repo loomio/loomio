@@ -3,90 +3,88 @@ class ThreadMailer < BaseMailer
   helper :motions
   helper :application
 
-  def new_discussion(user, discussion)
-    @user = user
+  def new_discussion(recipient, discussion)
     @discussion = discussion
-    @group = discussion.group
-    @rendered_discussion_description = render_rich_text(discussion.description, discussion.uses_markdown)
-    @utm_hash = UTM_EMAIL.merge utm_source: 'new_discussion_created'
-    send_thread_email_for(@discussion)
+    @author = discussion.author
+    @recipient = recipient
+    send_thread_email(non_following_subject: @discussion.title)
   end
 
-  def new_comment(user, comment)
-    @user = user
-    @comment = comment
+  def new_comment(recipient, comment)
     @discussion = comment.discussion
-    @rendered_comment_body = render_rich_text(comment.body, comment.uses_markdown)
-    send_thread_email_for(@comment)
+    @author = comment.author
+    @recipient = recipient
+    @comment = comment
+    send_thread_email
   end
 
-  def new_vote(user, vote)
-    @user = user
-    @vote = vote
-    @position = @vote.position
-    @motion = @vote.motion
+  def new_vote(recipient, vote)
     @discussion = @motion.discussion
-    send_thread_email_for(@vote)
+    @author = vote.author
+    @recipient = recipient
+    @vote = vote
+    @motion = @vote.motion
+    send_thread_email
   end
 
-  def new_motion(user, motion)
-    @user = user
+  def new_motion(recipient, motion)
+    @discussion = motion.discussion
+    @author = motion.author
+    @recipient = recipient
     @motion = motion
+    @group = @discussion.group
+    send_thread_email(non_following_subject:
+                      t(:"email.new_motion_created.subject", proposal_title: motion.title))
+  end
+
+  def motion_closing_soon(recipient, motion)
+    @recipient = recipient
+    @motion = motion
+    @author = motion.author
     @discussion = motion.discussion
     @group = @discussion.group
-    @rendered_motion_description = render_rich_text(@motion.description, false)
-    send_thread_email_for(@motion)
+    send_thread_email(non_following_subject:
+                      t(:"email.proposal_closing_soon.subject", proposal_title: motion.title))
   end
 
-  def motion_closing_soon(user, motion)
-    @user = user
-    @motion = motion
+  def motion_outcome_created(recipient, motion)
+    @recipient = recipient
     @discussion = motion.discussion
-    @group = @discussion.group
-    @rendered_motion_description = render_rich_text(@motion.description, false)
-    send_thread_email_for(@motion)
-  end
-
-  #def motion_outcome_created(motion, user)
-    #@user = user
-    #@motion = motion
-    #@group = motion.group
-    #@rendered_motion_description = render_rich_text(motion.description, false) #should replace false with motion.uses_markdown in future
-    #@utm_hash = UTM_EMAIL.merge utm_source: 'motion_outcome_created'
-    #locale = locale_fallback(user.locale, motion.author.locale)
-    #I18n.with_locale(locale) do
-      #mail  to: user.email,
-            #from: from_user_via_loomio(motion.outcome_author),
-            #reply_to: motion.outcome_author.name_and_email,
-            #subject: "#{t("email.proposal_outcome.subject")}: #{@motion.name} - #{@group.name}"
-    #end
-  #end
-  #
-
-  # Motion_closed is only sent to the motion.author
-  def motion_closed(user, motion)
+    @author = motion.outcome_author
     @motion = motion
     @group = motion.group
-    locale = locale_fallback(user.locale, motion.author.locale)
-    I18n.with_locale(locale) do
-      mail  to: user.name_and_email,
-            subject: t("email.proposal_closed.subject", which: @motion.name)
-    end
+    send_thread_email(non_following_subject:
+                      "#{t("email.proposal_outcome.subject")}: #{@motion.name}")
+  end
+
+  def motion_closed(recipient, motion)
+    @motion = motion
+    @group = motion.group
+    @author = motion.author
+    send_thread_email(non_following_subject:
+                      t("email.proposal_closed.subject", which: @motion.name))
   end
 
   private
 
-  def send_thread_email_for(object)
-    locale = locale_fallback(@user.locale, object.author.locale)
+  def send_thread_email(non_following_subject: nil)
+    @following = DiscussionReader.for(discussion: @discussion, user: @recipient).following?
+    @utm_hash = {}
+
+    locale = locale_fallback(@recipient.locale, @author.locale)
     I18n.with_locale(locale) do
-      mail  to: @user.email,
-            from: from_user_via_loomio(object.author),
-            reply_to: reply_to_address(discussion: @discussion, user: @user),
-            subject: thread_subject
+      mail  to: @recipient.email,
+            from: from_user_via_loomio(@author),
+            reply_to: reply_to_address(discussion: @discussion, user: @recipient),
+            subject: thread_subject(non_following_subject)
     end
   end
 
-  def thread_subject
-    @discussion.title
+  def thread_subject(non_following_subject)
+    if @following
+      @discussion.title
+    else
+      non_following_subject
+    end
   end
 end
