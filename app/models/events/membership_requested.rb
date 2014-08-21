@@ -15,7 +15,7 @@ class Events::MembershipRequested < Event
 
   def notify_users!
     GroupMailer.new_membership_request(eventable)
-    membership_request.group_admins.each do |admin|
+    membership_request.group_admins.active.each do |admin|
       notify!(admin)
     end
   end

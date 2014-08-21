@@ -211,13 +211,6 @@ describe User do
     user.deleted_at.should be_present
   end
 
-  it "sets subscriptions to false when deactivate! is called" do
-    user.deactivate!
-    user.email_missed_yesterday.should be false
-    user.email_when_mentioned.should be false
-    user.email_new_discussions_and_proposals.should be false
-  end
-
   it "unsets deleted_at (nil) when activate! is called" do
     user.update_attribute(:deleted_at, 1.month.ago)
     user.activate!
