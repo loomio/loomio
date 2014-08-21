@@ -13,12 +13,6 @@ Then(/^the user's deleted_at attribute should be set$/) do
   User.where("deleted_at IS NOT NULL").should exist
 end
 
-And(/^the user's email notifications should be turned off$/) do
-  @user.email_missed_yesterday.should == false
-  @user.email_when_mentioned == false
-  @user.email_when_proposal_closing_soon.should == false
-end
-
 And(/^the user's memberships should be archived$/) do
   @membership.reload
   @membership.archived_at.should_not be_nil

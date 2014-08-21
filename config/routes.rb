@@ -75,7 +75,9 @@ Loomio::Application.routes.draw do
       resources :membership_requests, only: [:create, :new]
       get :membership_requests,  to: 'manage_membership_requests#index', as: 'manage_membership_requests'
     end
+  end
 
+  scope module: :groups do
     resources :manage_membership_requests, only: [], as: 'membership_requests' do
       member do
         post :approve
