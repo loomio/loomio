@@ -1,9 +1,9 @@
 GIT
-  remote: git://github.com/gregbell/active_admin.git
-  revision: 73092b1788ff3e2d795dbc8378ae18b90fc1a324
+  remote: git://github.com/activeadmin/activeadmin.git
+  revision: 36edd084f277f21900a768a0384196b57d2931ee
   specs:
     activeadmin (1.0.0.pre)
-      arbre (~> 1.0)
+      arbre (~> 1.0, >= 1.0.2)
       bourbon
       coffee-rails
       formtastic (~> 2.3.0.rc3)
@@ -60,7 +60,7 @@ GEM
     akami (1.2.2)
       gyoku (>= 0.4.0)
       nokogiri
-    arbre (1.0.1)
+    arbre (1.0.2)
       activesupport (>= 3.0.0)
     arel (5.0.1.20140414130214)
     awesome_print (1.2.0)
@@ -199,7 +199,7 @@ GEM
       dotenv (~> 0.11.1)
       thor (~> 0.19.1)
     formatador (0.2.5)
-    formtastic (2.3.0.rc3)
+    formtastic (2.3.0.rc4)
       actionpack (>= 3.0)
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
