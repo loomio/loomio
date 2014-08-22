@@ -12,7 +12,7 @@
             .activity-icon{class: "position-#{last_vote.position}-icon"}
 
       .discussion-title
-        = truncate(discussion.title, :length => 60, :separator => '...')
+        = truncate(discussion.title, :length => 80, :separator => '...')
         - if @group.nil?
           .group-name
             - if discussion.group.is_subgroup?
