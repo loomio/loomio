@@ -38,7 +38,6 @@ describe 'MotionService' do
                         save: true }
   let(:ability) { double(:ability, :authorize! => true) }
   let(:user) { double(:user, ability: ability) }
-  let(:motion_params) { {outcome: "We won!"} }
   let(:outcome_string) { double(:outcome_string) }
   let(:event) { double(:event) }
   let(:discussion_reader) { double :discussion_reader, follow!: true }
@@ -223,21 +222,17 @@ describe 'MotionService' do
   end
 
   describe '.create_outcome' do
+    before do
+      motion.stub(:outcome_author)
+      allow(motion).to receive(:outcome_author) { user }
+      allow(motion).to receive(:outcome) { "Agreement and engagement" }
+    end
+
     it 'authorizes the user can set the outcome' do
       ability.should_receive(:authorize!).with(:create_outcome, motion)
-      MotionService.create_outcome(motion, motion_params, user)
-    end
-
-    it 'updates the outcome and outcome_author attributes' do
-      motion.should_receive(:outcome=).with(motion_params[:outcome])
-      motion.should_receive(:outcome_author=).with(user)
       motion.should_receive(:save)
-      MotionService.create_outcome(motion, motion_params, user)
-    end
-
-    it 'creates a motion_outcome_created event' do
       Events::MotionOutcomeCreated.should_receive(:publish!).with(motion, user)
-      MotionService.create_outcome(motion, motion_params, user)
+      MotionService.create_outcome(motion)
     end
 
     context 'outcome is invalid' do
@@ -246,46 +241,12 @@ describe 'MotionService' do
       end
 
       it 'returns false' do
-        MotionService.create_outcome(motion, motion_params, user).should == false
+        MotionService.create_outcome(motion).should == false
       end
 
       it 'does not create an event' do
         Events::MotionOutcomeCreated.should_not_receive(:publish!)
-        MotionService.create_outcome(motion, motion_params, user)
-      end
-    end
-  end
-
-  describe '.update_outcome' do
-    it 'authorizes the user can set the outcome' do
-      ability.should_receive(:authorize!).with(:update_outcome, motion)
-      MotionService.update_outcome(motion, motion_params, user)
-    end
-
-    it 'updates the outcome and outcome_author attributes' do
-      motion.should_receive(:outcome=).with(motion_params[:outcome])
-      motion.should_receive(:outcome_author=).with(user)
-      motion.should_receive(:save)
-      MotionService.update_outcome(motion, motion_params, user)
-    end
-
-    it 'creates a motion_outcome_updated event' do
-      Events::MotionOutcomeUpdated.should_receive(:publish!).with(motion, user)
-      MotionService.update_outcome(motion, motion_params, user)
-    end
-
-    context 'outcome is invalid' do
-      before do
-        motion.stub(:save).and_return false
-      end
-
-      it 'returns false' do
-        MotionService.update_outcome(motion, motion_params, user).should == false
-      end
-
-      it 'does not create an event' do
-        Events::MotionOutcomeUpdated.should_not_receive(:publish!)
-        MotionService.update_outcome(motion, motion_params, user)
+        MotionService.create_outcome(motion)
       end
     end
   end
