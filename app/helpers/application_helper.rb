@@ -139,7 +139,7 @@ module ApplicationHelper
     ENV["NAVBAR_CONTRIBUTE"] or "show"
   end
 
-  def toggle_unread_dashboard_path
+  def toggle_unread_path
     options = {}
     unless sifting_unread?
       options[:unread] = true
@@ -149,10 +149,10 @@ module ApplicationHelper
       options[:followed] = params[:followed]
     end
 
-    dashboard_path(options)
+    url_for(options)
   end
 
-  def toggle_followed_dashboard_path
+  def toggle_followed_path
     options = {}
     unless sifting_followed?
       options[:followed] = true
@@ -162,7 +162,7 @@ module ApplicationHelper
       options[:unread] = params[:unread]
     end
 
-    dashboard_path(options)
+    url_for(options)
   end
 
   def sifting_unread?
