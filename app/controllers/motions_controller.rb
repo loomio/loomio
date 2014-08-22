@@ -32,12 +32,12 @@ class MotionsController < GroupBaseController
         head 401
       else
         @closed_motions = @group.motions.closed.page(params[:page])
-        render :layout => false if request.xhr?
+        render layout: false if request.xhr?
       end
     else
       authenticate_user!
       @closed_motions= current_user.motions.closed.page(params[:page])
-      render :layout => false if request.xhr?
+      render layout: false if request.xhr?
     end
   end
 
@@ -78,7 +78,10 @@ class MotionsController < GroupBaseController
   end
 
   def create_outcome
-    if MotionService.create_outcome(@motion, permitted_params.motion, current_user)
+    @motion.outcome_author = current_user
+    @motion.outcome = permitted_params.motion[:outcome]
+
+    if MotionService.create_outcome(@motion)
       Measurement.increment('motions.create_outcome.success')
       flash[:success] = t("success.motion_outcome_created")
     else
@@ -89,7 +92,10 @@ class MotionsController < GroupBaseController
   end
 
   def update_outcome
-    if MotionService.update_outcome(@motion, permitted_params.motion, current_user)
+    @motion.outcome_author = current_user
+    @motion.outcome = permitted_params.motion[:outcome]
+
+    if MotionService.update_outcome(@motion)
       Measurement.increment('motions.update_outcome.success')
       flash[:success] = t("success.motion_outcome_updated")
     else

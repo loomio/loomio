@@ -74,23 +74,19 @@ class MotionService
     Events::MotionClosedByUser.publish!(motion, user)
   end
 
-  def self.create_outcome(motion, motion_params, user)
+  def self.create_outcome(motion)
+    user = motion.outcome_author
     user.ability.authorize! :create_outcome, motion
 
-    motion.outcome = motion_params[:outcome]
-    motion.outcome_author = user
     return false unless motion.save
-
     Events::MotionOutcomeCreated.publish!(motion, user)
   end
 
-  def self.update_outcome(motion, motion_params, user)
+  def self.update_outcome(motion)
+    user = motion.outcome_author
     user.ability.authorize! :update_outcome, motion
 
-    motion.outcome = motion_params[:outcome]
-    motion.outcome_author = user
     return false unless motion.save
-
     Events::MotionOutcomeUpdated.publish!(motion, user)
   end
 end

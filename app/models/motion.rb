@@ -54,6 +54,10 @@ class Motion < ActiveRecord::Base
     discussion.followers.where('users.id != ?', author_id)
   end
 
+  def followers_without_outcome_author
+    discussion.followers.where('users.id != ?', outcome_author.id)
+  end
+
   def group_members_not_following
     discussion.group_members_not_following
   end
