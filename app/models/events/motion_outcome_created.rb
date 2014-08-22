@@ -15,10 +15,12 @@ class Events::MotionOutcomeCreated < Event
   private
 
   def notify_users!
+    motion.followers_without_outcome_author.
+           email_followed_threads.each do |user|
+      ThreadMailer.delay.motion_outcome_created(user, self)
+    end
+
     motion.group_members_without_outcome_author.each do |user|
-      if user.email_notifications_for_group?(motion.group)
-        UserMailer.motion_outcome_created(user, motion).deliver
-      end
       notify!(user)
     end
   end

@@ -27,11 +27,6 @@ Given(/^I am autofollowing new discussions in my group$/) do
   @membership.save!
 end
 
-Given(/^there is a discussion I am not following$/) do
-  @discussion = FactoryGirl.build(:discussion, group: @group)
-  DiscussionService.start_discussion(@discussion)
-end
-
 When(/^I comment in the discussion$/) do
   @comment = FactoryGirl.build(:comment, discussion: @discussion, author: @user)
   DiscussionService.add_comment(@comment)
@@ -161,6 +156,37 @@ Given(/^I click 'Following' on the discussion page$/) do
   visit discussion_path @discussion
   click_on "Following"
 end
+
+Then(/^I should get a mentioned notification$/) do
+  @user.notifications.last.event.kind.should == 'user_mentioned'
+end
+
+Given(/^there is a discussion I am not following$/) do
+  @discussion = FactoryGirl.build :discussion, group: @group
+  DiscussionService.start_discussion @discussion
+end
+
+Given(/^I click 'Not Following' on the discussion page$/) do
+  visit discussion_path(@discussion)
+  click_on 'Not following'
+end
+
+When(/^I am on the dashboard$/) do
+  visit dashboard_url
+end
+
+Then(/^I should see both discussions$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I filter to only show followed content$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should only see the followed discussion$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
 
 Given(/^Dr Follow By Email wants to be emailed new threads and activity he is following$/) do
   @dr_follow_by_email = FactoryGirl.create(:user,
@@ -332,4 +358,8 @@ end
 
 Then(/^I should not see anything in my unread threads$/) do
   Queries::VisibleDiscussions.new(user: @user, groups: [@group]).unread.should be_empty
+end
+
+When(/^I set a proposal outcome$/) do
+  pending # express the regexp above with the code you wish you had
 end
