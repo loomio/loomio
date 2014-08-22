@@ -1,0 +1,7 @@
+%h2= t :change_your_password
+= simple_form_for @user, :url => change_password_path, :method => :post do |f|
+  = f.label :password, t(:new_password)
+  = f.password_field :password
+  = f.label :password_confirmation, t(:confirm_new_password)
+  = f.password_field :password_confirmation
+  = f.submit t(:change_my_password), class: "btn primary"
