@@ -184,6 +184,11 @@ Loomio::Application.routes.draw do
       get   '/mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
       get   'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
     end
+
+    scope module: :change_password do
+      get '/change_password', action: 'show'
+      post '/change_password', action: 'update'
+    end
   end
 
   scope module: :users, path: 'u' do
