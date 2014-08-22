@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
 
   has_many :contacts
   has_many :admin_memberships,
-           -> { where('memberships.admin = ? AND memberships.is_suspended = ?', true, false) },
+           -> { where('memberships.admin = ? AND memberships.is_suspended = ? AND memberships.archived_at', true, false, nil) },
            class_name: 'Membership',
            dependent: :destroy
 
@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
            source: :group
 
   has_many :memberships,
-           -> { where is_suspended: false },
+           -> { where is_suspended: false, archived_at: nil },
            dependent: :destroy
 
   has_many :membership_requests,
@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   has_many :groups,
            -> { where archived_at: nil },
            through: :memberships
-           
+
   has_many :discussions,
            through: :groups
 
@@ -244,8 +244,10 @@ class User < ActiveRecord::Base
                       subscribed_to_mention_notifications: false,
                       subscribed_to_proposal_closure_notifications: false,
                       avatar_kind: "initials")
+
     memberships.update_all(archived_at: Time.now,
                       subscribed_to_notification_emails: false)
+
     membership_requests.where("responded_at IS NULL").destroy_all
   end
 
