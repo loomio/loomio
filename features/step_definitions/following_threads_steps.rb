@@ -361,5 +361,9 @@ Then(/^I should not see anything in my unread threads$/) do
 end
 
 When(/^I set a proposal outcome$/) do
-  pending # express the regexp above with the code you wish you had
+  @discussion = FactoryGirl.create :discussion, group: @group
+  @motion = FactoryGirl.create :motion, discussion: @discussion
+  @motion.outcome = "success"
+  @motion.outcome_author = @user
+  MotionService.create_outcome(@motion)
 end
