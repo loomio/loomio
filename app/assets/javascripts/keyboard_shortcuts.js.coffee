@@ -4,11 +4,11 @@ $ ->
     if active.is('.group-dropdown-search, .selector-link')
       switch event.which
         when 40 # select next group with down arrow
-          target = active.parent().next('.group-item').find('.selector-link')
-          target = $('#group-dropdown-items').find('.selector-link').first() if target.length is 0
+          target = active.parent().next('.group-item:visible').find('.selector-link')
+          target = $('#group-dropdown-items').find('.group-item:visible').first().find('.selector-link') if target.length is 0
         when 38 # select prev group with up arrow
-          target = active.parent().prev('.group-item').find('.selector-link')
-          target = $('#group-dropdown-items').find('.selector-link').last() if target.length is 0
+          target = active.parent().prev('.group-item:visible').find('.selector-link')
+          target = $('#group-dropdown-items').find('.group-item:visible').last().find('.selector-link') if target.length is 0
       if target?
         target.focus()
         event.preventDefault()
