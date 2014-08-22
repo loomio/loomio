@@ -43,6 +43,9 @@
       .logo-placeholder
       ~ render_rich_text(@group.description)
     .main-content
+      .span3
+        .pull-right
+          =render 'filter_discussions_buttons'
       =render 'discussions/discussion_list'
 
   .span3
