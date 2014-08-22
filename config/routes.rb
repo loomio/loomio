@@ -176,6 +176,11 @@ Loomio::Application.routes.draw do
       put   '/email_preferences', action: 'update', as: :update_email_preferences
       get   '/mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
     end
+
+    scope module: :change_password do
+      get '/change_password', action: 'show'
+      post '/change_password', action: 'update'
+    end
   end
 
   scope module: :users, path: 'u' do
