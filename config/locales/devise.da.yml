@@ -1,0 +1,57 @@
+da:
+  devise:
+    confirmations:
+      confirmed: Din konto er aktiveret og du er nu logget ind.
+      send_instructions: Om få minutter vil du modtage en e-mail med instruktioner om aktivering af din konto.
+      send_paranoid_instructions: Hvis din e-mail-adresse findes i vores database vil du modtage en e-mail med instruktioner om hvordan du kan aktivere din konto.
+    failure:
+      already_authenticated: Du er allerede logget ind.
+      inactive: Din konto er ikke bekræftet.
+      invalid: E-mail-adresse eller kodeord er ikke gyldig.
+      last_attempt: Du har ét forsøg mere, inden din konto vil blive låst.
+      locked: Din konto er låst i de næste to timer.
+      not_found_in_database: E-mail-adresse eller kodeord er ikke gyldig.
+      timeout: Din session er udløbet. Log ind igen for at kunne fortsætte.
+      unauthenticated: Du skal logge ind for at kunne fortsætte.
+      unconfirmed: Du skal bekræfte din konto for at kunne fortsætte.
+    mailer:
+      confirmation_instructions:
+        subject: Bekræftelsesinstruktioner
+      reset_password_instructions:
+        subject: Nulstilling af kodeord
+      unlock_instructions:
+        subject: Genåbning af konto
+    omniauth_callbacks:
+      failure: Du kunne ikke logges ind med din %{kind} konto.
+      success: Du er nu logget ind med din %{kind} konto.
+    passwords:
+      no_token: Du kan ikke tilgå denne side uden at komme fra en e-mail vedrørende nulstilling af kodeord. Hvis du kommer fra sådan en e-mail, så check venligst at du har benyttet den fulde URL som er angivet.
+      send_instructions: Du vil om et øjeblik modtage en e-mail vedrørende nulstilling af kodeord.
+      send_paranoid_instructions: Hvis din e-mail-adresse findes i vores database vil du modtage et link til hvor du kan nulstille dit kodeord.
+      updated: Dit kodeord er ændret og du er nu logget ind.
+      updated_not_active: Dit kodeord er ændret.
+    registrations:
+      destroyed: Farvel. Din konto er nu lukket.
+      signed_up: Din registrering er godkendt.
+      signed_up_but_inactive: Din registrering er godkendt, men vi kunne ikke logge dig ind, da din konto endnu ikke er blevet aktiveret.
+      signed_up_but_locked: Din registrering er godkendt, men vi kunne ikke logge dig ind, da din konto er låst.
+      signed_up_but_unconfirmed: En besked med bekræftelses link er blevet sendt til din e-mail-adresse. Åbn venligst linket for at aktivere din konto.
+      update_needs_confirmation: Du har nu opdateret din konto, men vi skal verificere din nye e-mail-adresse. Check venligst din e-mail og tryk på linket til bekræftelse for at færdiggøre verificeringen.
+      updated: Din profil er opdateret.
+    sessions:
+      signed_in: Du er nu logget ind.
+      signed_out: Du er nu logget ud.
+    unlocks:
+      send_instructions: Om få minutter vil du modtage en e-mail med instruktioner om genåbning af din konto.
+      send_paranoid_instructions: Hvis din e-mail-adresse findes i vores database vil du modtage in e-mail med instutioner om hvordan du kan låse din konto op.
+      unlocked: Din konto er genåbnet og du er nu logget ind.
+  errors:
+    messages:
+      already_confirmed: er allerede bekræftet
+      confirmation_period_expired: skal bekræftes inden for %{period}, anmod venligst om en ny
+      expired: er udløbet. Vær venlig at bede om en ny
+      not_found: ikke fundet
+      not_locked: var ikke låst
+      not_saved:
+        one: '1 fejl medførte at denne %{resource} ikke kunne gemmes:'
+        other: '%{count} fejl medførte at denne %{resource} ikke kunne gemmes:'

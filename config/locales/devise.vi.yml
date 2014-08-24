@@ -8,9 +8,9 @@ vi:
       already_authenticated: Bạn đã đăng nhập.
       inactive: Tài khoản của bạn chưa được kích hoạt.
       invalid: Email hoặc mật khẩu không chính xác.
-      invalid_token: Mã xác nhận không chính xác.
+      last_attempt: Bạn còn một lần thử đăng nhập nữa trước khi tài khoản của bạn bị khóa.
       locked: Tài khoản của bạn đã bị khóa.
-      not_found_in_database: Email hoặc mật khẩu không chính xác.
+      not_found_in_database: Email hoặc mật khẩu không chính xác
       timeout: Phiên làm việc của bạn đã kết thúc, bạn cần đăng nhập lại để tiếp tục.
       unauthenticated: Bạn cần phải đăng nhập hoặc đăng ký trước khi tiếp tục.
       unconfirmed: Bạn cần phải xác nhận tài khoản trước khi tiếp tục.
@@ -29,7 +29,7 @@ vi:
       send_instructions: Bạn sẽ nhận được email hướng dẫn thiết lập lại mật khẩu trong vài phút nữa.
       send_paranoid_instructions: Nếu email của bạn có trong hệ thống, bạn sẽ nhận được đường dẫn khôi phục mật khẩu trong vài phút nữa qua email.
       updated: Đổi mật khẩu thành công! Bạn hiện đang đăng nhập.
-      updated_not_active: Mật khẩu đã được đổi thành công.
+      updated_not_active: Mật khẩu của bạn đã được thay đổi thành công.
     registrations:
       destroyed: Tạm biệt! Tài khoản của bạn đã được xóa. Chúng tôi hy vọng sẽ sớm gặp lại bạn.
       signed_up: Xin chào! Bạn đã đăng ký thành công.
@@ -53,5 +53,5 @@ vi:
       not_found: không tìm thấy
       not_locked: không bị khóa
       not_saved:
-        one: ! '1 lỗi khi lưu %{resource}:'
-        other: ! '%{count} lỗi khi lưu %{resource}:'
+        one: '1 lỗi khi lưu %{resource}:'
+        other: '%{count} lỗi khi lưu %{resource}:'

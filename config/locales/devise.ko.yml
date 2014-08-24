@@ -1,0 +1,55 @@
+ko:
+  devise:
+    confirmations:
+      confirmed: 가입을 축하드립니다. 지금부터 로그인 가능합니다.
+      send_instructions: 가입 승인 절차에 대한 안내 메일을 곧 받아 보실 수 있습니다.
+      send_paranoid_instructions: 메일주소가 이미 등록되어 있으며, 계정 등록 방법이 담긴 메일을 잠시 후 받을 수 있습니다.
+    failure:
+      already_authenticated: 이미 로그인되어 있습니다.
+      inactive: 계정이 아직 활성화되지 않았습니다.
+      invalid: 이메일 혹은 비밀번호가 틀립니다.
+      last_attempt: '이번 로그인 시도시에 실패하면 계정이 잠기게 됩니다. '
+      locked: 계정이 잠겨있습니다.
+      not_found_in_database: 이메일 주소나 비밀번호가 틀립니다.
+      timeout: 로그아웃 되었습니다. 계속 하려면 다시 로그인 해야 합니다.
+      unauthenticated: 계속하려면 로그인하거나 회원가입 해야 합니다.
+      unconfirmed: 계속하기 전에 계정확인(이메일)을 해야 합니다.
+    mailer:
+      confirmation_instructions:
+        subject: 계정확인(이메일)하는 방법
+      reset_password_instructions:
+        subject: 비밀번호 재설정하는 방법
+      unlock_instructions:
+        subject: 잠금해제하는 방법
+    omniauth_callbacks:
+      failure: '%{reason}과 같은 이유로 %{kind}로부터 인증받지 못했습니다.'
+      success: '%{kind} 계정에서 인증되었습니다.'
+    passwords:
+      no_token: 페스워드 리셋 이메일을 거치지않고 이 페이지에 접근 할 수 없습니다. 페스워드 리셋 이메일에서 오셨다면, 주소가 온전한지 확인해 주세요.
+      send_instructions: 잠시 후에 비밀번호를 재설정할 수 있는 메일을 받을 수 있습니다.
+      send_paranoid_instructions: 정상적으로 등록된 이메일 주소인 경우, 몇 분 안에 비밀번호 복구 링크주소를 이메일로 받으시게 됩니다.
+      updated: 비밀번호를 변경했습니다. 로그인 되었습니다.
+      updated_not_active: 비밀번호가 성공적으로 변경되었습니다.
+    registrations:
+      destroyed: 잘가세요! 계정이 성공적으로 제거 되었습니다. 다시 볼 수 있기를 바랍니다.
+      signed_up: 안녕하세요! 성공적으로 로그인되었습니다.
+      signed_up_but_inactive: 가입이 성공적으로 되었지만 아직 활성화 되지 않았기 때문에 로그인할 수는 없습니다.
+      signed_up_but_locked: 가입이 성공적으로 되었지만, 계정이 잠겨있어 로그인할 수는 없습니다.
+      signed_up_but_unconfirmed: 당신의 이메일로 인증링크가 포함된 메시지를 보냈습니다. 계정활성화를 위해 메일을 확인하세요.
+      update_needs_confirmation: '성공적으로 계정이 갱신되었습니다. 그러나 새 이메일 주소를 확인하여야 합니다. 변경된 메일을 확인하시고 확인 버튼을 눌러야 합니다. '
+      updated: 당신의 계정을 성공적으로 업데이트 하였습니다.
+    sessions:
+      signed_in: 성공적으로 로그인이 되었습니다.
+      signed_out: 정상적으로 로그아웃 되었습니다.
+    unlocks:
+      send_instructions: 잠시 후에 어떻게 계정을 해제(사용가능하게)할 수 있는지 설명된 이메일을 받을 수 있습니다.
+      send_paranoid_instructions: 계정을 가지고 계시면, 잠시 후에 어떻게 계정을 해제(사용가능하게)할 수 있는지 설명된 이메일을 받을 수 있습니다.
+      unlocked: 계정이 성공적으로 해제되었습니다. 이제, 로그인 할 수 있습니다.
+  errors:
+    messages:
+      already_confirmed: 이(가) 이미 승인되었습니다. 다시 로그인 해보시길 바랍니다.
+      confirmation_period_expired: '%{period} 이내에 이메일 인증을 하셔야만 합니다. 다시 이메일 인증 요청을 보내시기 바랍니다.'
+      expired: 만료되었습니다 새로운 요청을 해야합니다.
+      not_found: 찾을 수 없습니다.
+      not_locked: 이(가) 잠기지 않았습니다.
+      not_saved: '%{count}개의 오류로  %{resource}가 저장되는 것이 금지 되었습니다.'

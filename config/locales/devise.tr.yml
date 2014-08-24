@@ -1,0 +1,55 @@
+tr:
+  devise:
+    confirmations:
+      confirmed: Hesabınız başarıyla onaylandı. Şu an giriş yapmış bulunuyorsunuz.
+      send_instructions: Birkaç dakika içinde hesabınızı nasıl onaylayacağınızı anlatan bir e-posta alacaksınız.
+      send_paranoid_instructions: Eğer e-posta adresiniz sistemimizde kayıtlı ise, birkaç dakika içinde hesabınızı nasıl onaylayacağınızı anlatan bir e-posta alacaksınız.
+    failure:
+      already_authenticated: Zaten giriş yaptınız.
+      inactive: Hesabınız daha aktifleştirilmemiş.
+      invalid: Yanlış e-posta adresi veya şifre girdiniz.
+      last_attempt: Hesabınız askıya alınmadan önce son bir deneme hakkınız kaldı.
+      locked: Hesabınız kilitlendi.
+      not_found_in_database: Geçersiz eposta adresi veya şifre.
+      timeout: Oturumunuz sonlandı. Devam etmek için, lütfen yeniden giriş yapınız.
+      unauthenticated: Devam etmeden önce giriş yapmanız veya kayıt olmanız gereklidir.
+      unconfirmed: Devam etmeden önce hesabınızı onaylamalısınız.
+    mailer:
+      confirmation_instructions:
+        subject: Onaylama talimatları.
+      reset_password_instructions:
+        subject: Şifre sıfırlama talimatları.
+      unlock_instructions:
+        subject: Kilit açma talimatları.
+    omniauth_callbacks:
+      failure: Sizi %{kind} aracılığıyla tanıyamadık çünkü "%{reason}".
+      success: '%{kind} aracılığıyla onaylandınız.'
+    passwords:
+      no_token: Bu sayfaya şifre sıfırlama e-postasındaki linke tıklayarak gelmeniz gerekmektedir. Linke tıklamak yerine kopyaladıysanız, hata yapmış olabilirsiniz. Lütfen şifre sıfırlama e-postasındaki linke tıklayın.
+      send_instructions: Birkaç dakika içinde şifrenizi nasıl sıfırlayacağınız ile ilgili bir e-posta alacaksınız.
+      send_paranoid_instructions: 'Eğer e-posta adresiniz sistemimizde kayıtlı ise, birkaç dakika içinde şifrenizi nasıl sıfırlayacağınız ile ilgili bir e-posta alacaksınız. '
+      updated: Şifreniz başarıyla güncellendi. Şu an giriş yapmış bulunuyorsunuz.
+      updated_not_active: Şifreniz başarıyla güncellendi.
+    registrations:
+      destroyed: Hesabınız başarıyla kapatıldı. En kısa sürede görüşmek üzere!
+      signed_up: Başarıyla giriş yaptınız. Hoşgeldiniz!
+      signed_up_but_inactive: Kaydınız başarıyla gerçekleşti. Fakat, hesabınız aktifleştirilmediği için siteye giriş yapamadınız.
+      signed_up_but_locked: Kaydınız başarıyla gerçekleşti. Fakat, hesabınız kilitlendiği için siteye giriş yapamadınız.
+      signed_up_but_unconfirmed: E-posta adresinize hesap aktifleştirme linkini içeren bir e-posta gönderdik. Hesabınızı aktifleştirmek için lütfen e-posta ile gönderdiğimiz linki açın.
+      update_needs_confirmation: Hesabınızı başarıyla güncellediniz, fakat yeni e-posta adresinizin onaylanması gerek. Yeni e-posta hesabınızın onaylanması için lütfen size gönderdiğimiz e-postada bulunan onay linkini açın.
+      updated: Hesabınız başarıyla güncellendi.
+    sessions:
+      signed_in: Başarıyla giriş yapıldı.
+      signed_out: Başarıyla çıkış yapıldı.
+    unlocks:
+      send_instructions: Birkaç dakika içerisinde hesap kilidi açma talimatlarını içeren bir e-posta alacaksınız.
+      send_paranoid_instructions: Eğer hesabınız varsa, birkaç dakika içerisinde hesap kilidi açma talimatlarını içeren bir e-posta alacaksınız.
+      unlocked: Hesabınızın kilidi başarıyla açıldı. Devam etmek için lütfen giriş yapın.
+  errors:
+    messages:
+      already_confirmed: zaten onaylanmış, lütfen giriş yapmayı deneyin
+      confirmation_period_expired: '%{period} içinde onaylanması gerekmektedir, lütfen yeni bir tane isteyiniz.'
+      expired: süresi doldu, lütfen yeni bir tane isteyin
+      not_found: bulunamadı
+      not_locked: kilitlenmemiş
+      not_saved: '%{count} tane hata %{resource}''ın kaydını engelledi.'

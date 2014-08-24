@@ -1,52 +1,57 @@
-# Additional translations at http://github.com/plataformatec/devise/wiki/I18n
-
 hu:
-  errors:
-    messages:
-      expired: "lejárt, igényelj egy újat"
-      not_found: "nem található"
-      already_confirmed: "már meg van erősítve"
-      not_locked: "nincs zárolva"
-      not_saved:
-        one: "1 hiba miatt %{resource} mentése nem lehetséges:"
-        other: "%{count} hiba miatt %{resource} mentése nem lehetésges:"
-
   devise:
-    failure:
-      unauthenticated: 'A folytatáshoz bejelentkezés szükséges.'
-      unconfirmed: 'A folytatáshoz az email cím megerősítése szükséges.'
-      locked: 'A fiók zárolva lett.'
-      invalid: 'Hibás email cím vagy jelszó.'
-      invalid_token: 'Hibás bejelentkező token.'
-      timeout: 'A munkafolyamat lejárt. Újboli bejelentkezés szükséges.'
-      inactive: 'A fiók még nincs aktiválva.'
-    sessions:
-      signed_in: 'Sikeres bejelentkezés.'
-      signed_out: 'A kijelentkezés sikeres.'
-    passwords:
-      send_instructions: 'A megadott címre egy email érkezik hamarosan a további teendőkről.'
-      updated: 'A jelszó megváltozott. Bejelentkezve a felhasználói fiókba'
-      send_paranoid_instructions: "Ha az email cím már létezik az adatbázisban, egy jelszó-visszaállító emailt küldtünk a megadott címre."
     confirmations:
-      send_instructions: 'A megadott címre egy email érkezik a megerősítő linkkel.'
-      send_paranoid_instructions: 'Ha az email cím már létezik az adatbázisban, egy emailt küldtünk a további teendőkkel a fiók megerősítéséhez.'
-      confirmed: 'Fiók megerősítve. Bejelentkezve a felhasználói fiókba.'
-    registrations:
-      signed_up: 'Sikeres regisztráció.'
-      inactive_signed_up: 'Sikeres regisztráció, azonban még a bejelentkezés nem lehetséges, mert a felhasználói fiók %{reason}.'
-      updated: 'Sikeres fiók módosítás.'
-      destroyed: 'Felhasználói fiók törölve. Reméljük, még visszatér hozzánk.'
-    unlocks:
-      send_instructions: 'Hamarosan a megadott címre érkezik egy email a fiók zárolásának megszüntetésével kapcsolatban.'
-      unlocked: 'A felhasználói fiók zárolása megszűnt. Bejelentkezve a felhasználói fiókba.'
-      send_paranoid_instructions: 'Ha a fiók létezik, egy emailt küldtünk a további teendőkkel a fiók zárolásának megszüntetéséhez.'
-    omniauth_callbacks:
-      success: 'Sikeres azonosítás %{kind} fiókkal.'
-      failure: 'Nem sikerült azonosítani %{kind} fiókkal, az ok: "%{reason}".'
+      confirmed: Fiók megerősítve. Bejelentkezve a felhasználói fiókba.
+      send_instructions: A megadott címre egy email érkezik a megerősítő linkkel.
+      send_paranoid_instructions: Ha az email cím már létezik az adatbázisban, egy emailt küldtünk a további teendőkkel a fiók megerősítéséhez.
+    failure:
+      already_authenticated: Már belépett.
+      inactive: A fiók még nincs aktiválva.
+      invalid: Hibás email cím vagy jelszó.
+      last_attempt: Már csak egy próbálkozási lehetőség maradt, mielőtt a fiók zárolásra kerül.
+      locked: A fiók zárolva lett.
+      not_found_in_database: Hibás email cím vagy jelszó.
+      timeout: A munkafolyamat lejárt. Újboli bejelentkezés szükséges.
+      unauthenticated: A folytatáshoz bejelentkezés szükséges.
+      unconfirmed: A folytatáshoz az email cím megerősítése szükséges.
     mailer:
       confirmation_instructions:
-        subject: 'Email cím megerősítés'
+        subject: Email cím megerősítés
       reset_password_instructions:
-        subject: 'Jelszó megváltoztatása'
+        subject: Jelszó megváltoztatása
       unlock_instructions:
-        subject: 'Fiók zárolásának megszüntetése'
+        subject: Fiók zárolásának megszüntetése
+    omniauth_callbacks:
+      failure: 'Nem sikerült azonosítani %{kind} fiókkal, az ok: "%{reason}".'
+      success: Sikeres azonosítás %{kind} fiókkal.
+    passwords:
+      no_token: Ezt az oldalt csak a jelszóváltoztató e-mailben küldött linkre kattintva lehet elérni, és ellenőrizni kell, hogy a címsorban az e-mailben található teljes webcím szerepel-e.
+      send_instructions: A megadott címre egy email érkezik hamarosan a további teendőkről.
+      send_paranoid_instructions: Ha az email cím már létezik az adatbázisban, egy jelszó-visszaállító emailt küldtünk a megadott címre.
+      updated: A jelszó megváltozott. Bejelentkezve a felhasználói fiókba
+      updated_not_active: A jelszó megváltozott
+    registrations:
+      destroyed: Felhasználói fiók törölve. Reméljük, még visszatér hozzánk.
+      signed_up: Sikeres regisztráció.
+      signed_up_but_inactive: A regisztráció sikerült, azonban a bejelentkezés még nem lehetséges, mert a fiók nincs aktiválva.
+      signed_up_but_locked: A regisztráció sikerült, azonban a bejelentkezés még nem lehetséges, mert a fiók zárolt.
+      signed_up_but_unconfirmed: Egy megerősítő linket küldtünk a megadott e-mail címre. Nézze meg az e-mailjeit, és kattintson a küldött linkre a fiók aktiválásához.
+      update_needs_confirmation: A fiók módosítása sikeres, de meg kell erősíteni az e-mail címet. Nézze meg az e-mailjeit, és kattintson a küldött linkre hogy megerősítse az e-mail cím létezését.
+      updated: Sikeres fiók módosítás.
+    sessions:
+      signed_in: Sikeres bejelentkezés.
+      signed_out: A kijelentkezés sikeres.
+    unlocks:
+      send_instructions: Hamarosan a megadott címre érkezik egy email a fiók zárolásának megszüntetésével kapcsolatban.
+      send_paranoid_instructions: Ha a fiók létezik, egy emailt küldtünk a további teendőkkel a fiók zárolásának megszüntetéséhez.
+      unlocked: A felhasználói fiók zárolása megszűnt. Bejelentkezve a felhasználói fiókba.
+  errors:
+    messages:
+      already_confirmed: már meg van erősítve
+      confirmation_period_expired: '%{period} letelte előtt kell megerősíteni, igényelj egy újat'
+      expired: lejárt, igényelj egy újat
+      not_found: nem található
+      not_locked: nincs zárolva
+      not_saved:
+        one: '1 hiba miatt %{resource} mentése nem lehetséges:'
+        other: '%{count} hiba miatt %{resource} mentése nem lehetséges:'

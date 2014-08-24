@@ -1,0 +1,57 @@
+he:
+  devise:
+    confirmations:
+      confirmed: חשבונך אושר בהצלחה. כעת הנך מחובר/ת.
+      send_instructions: בדקות הקרובות יגיע אליך אימייל עם הנחיות כיצד לאשר את הרשמתך.
+      send_paranoid_instructions: אם האימייל שלך נמצא במאגר נתונים שלנו, נשלח לך אימייל עם הוראות כיצד לאשר את החשבון שלך בעוד כמה דקות.
+    failure:
+      already_authenticated: את/ה כבר מחובר/ת
+      inactive: חשבונך טרם הופעל.
+      invalid: כתובת אימייל או סיסמא שגויה.
+      last_attempt: יש לך עוד ניסיון אחד לפני שהחשבון שלך ינעל.
+      locked: חשבונך ננעל.
+      not_found_in_database: כתובת אימייל או סיסמא לא תקינה
+      timeout: פג תוקף החיבור לאתר, אנא התחבר מחדש.
+      unauthenticated: עליך להתחבר או להרשם על-מנת להמשיך.
+      unconfirmed: עליך לאשר את הרשמתך לפני שתוכל להמשיך.
+    mailer:
+      confirmation_instructions:
+        subject: הוראות לאישור הרשמה
+      reset_password_instructions:
+        subject: הוראות לאיפוס סיסמא
+      unlock_instructions:
+        subject: הוראות להסרת נעילה
+    omniauth_callbacks:
+      failure: לא הצלחנו לאמת את זהותך מסוג %{kind} בגלל "%{reason}"
+      success: 
+    passwords:
+      no_token: אינך יכול/ה לגשת לעמוד זה אם לא הופנת מאימייל לשינוי סיסמא. אם את/ה כן מגיע משם, אנא ודא/י שהשתמשת בכתובת אינטרנט המלאה.
+      send_instructions: בדקות הקרובות יגיע אליך אימייל עם הנחיות כיצד לאפס את סיסמתך.
+      send_paranoid_instructions: אם האימייל שלך קיים במאגר, אנו נשלח לך לינק לחידוש סיסמא באימייל.
+      updated: סיסמתך שונתה בהצלחה. כעת הנך מחובר/ת.
+      updated_not_active: הסיסמא שלך שונתה בהצלחה.
+    registrations:
+      destroyed: חשבונך נמחק בהצלחה. מקווים לראותך בעתיד.
+      signed_up: נרשמת בהצלחה. אם נדרש, יישלח אליך אימייל לאישור הרשמתך.
+      signed_up_but_inactive: ההרשמה בוצעה בהצלחה, אך לא יכולנו להכניס אותך למערכת מכיוון שעוד לא הפעלת את חשבונך
+      signed_up_but_locked: ההרשמה בוצעה בהצלחה, אך לא יכולנו להכניס אותך למערכת מכיוון שחשבונתך נעול.
+      signed_up_but_unconfirmed: הודעה עם לינק לאישור חשבונך נשלח לאימייל שלך. אנא פתח/י את הלינק על מנת להפעיל את חשבונך.
+      update_needs_confirmation: עידכנת את חשבונך בהצלחה, אבל אנחנו צריכים לאשר את האימייל החדש שלך. אנא בדק/י את האימייל שלך ולחצ/י על הלינק על מנת לאשר את חשבון האימייל החדש.
+      updated: עדכנת בהצלחה את חשבונך.
+    sessions:
+      signed_in: התחברת בהצלחה
+      signed_out: התנתקת בהצלחה.
+    unlocks:
+      send_instructions: בדקות הקרובות יישלח אליך אימייל עם הנחיות כיצד להסיר את הנעילה מחשבונך.
+      send_paranoid_instructions: אם חשבונך קיים, את/ה תקבל/י אימייל עם הוראות כיצד להפעיל מחדש את חשבונך.
+      unlocked: הנעילה הוסרה בהצלחה. כעת הנך מחובר/ת.
+  errors:
+    messages:
+      already_confirmed: כבר אושר. אני נסה להיכנס למערכת.
+      confirmation_period_expired: 
+      expired: פג תוקף, אנא בקש אחד חדש.
+      not_found: לא נמצא.
+      not_locked: לא היה נעול.
+      not_saved:
+        one: 'שגיאה אחת מנעה את ה%{resource} מלהישמר:'
+        other: '%{count} שגיאות מנעו מ%{resource} מלהישמר:'

@@ -1,0 +1,55 @@
+id:
+  devise:
+    confirmations:
+      confirmed: Akun anda telah berhasil dikonfirmasi. Anda telah sign in.
+      send_instructions: Anda akan menerima e-mail berisi instruksi untuk melakukan konfirmasi akun dalam beberapa menit lagi.
+      send_paranoid_instructions: Jika alamat email Anda ada di database kami, anda akan menerima email dengan instruksi tentang bagaimana untuk mengkonfirmasi account Anda dalam beberapa menit.
+    failure:
+      already_authenticated: Anda sudah sign in.
+      inactive: Akun anda belum diaktifkan.
+      invalid: email atau password yang anda masukkan salah.
+      last_attempt: Kesempatan terakhir sebelum akun Anda dikunci.
+      locked: Akun anda terkunci.
+      not_found_in_database: Akun tidak ditemukan di dalam basis data.
+      timeout: Sesi anda telah kadaluarsa, silahkan sign in untuk melanjutkan.
+      unauthenticated: Anda harus mendaftar atau sign in sebelum melanjutkan .
+      unconfirmed: Anda harus melakukan konfirmasi sebalum melanjutkan.
+    mailer:
+      confirmation_instructions:
+        subject: Instruksi untuk melakukan konfirmasi
+      reset_password_instructions:
+        subject: Instruksi untuk melakukan Reset password
+      unlock_instructions:
+        subject: Instruksi untuk membuka kembali akun anda
+    omniauth_callbacks:
+      failure: Tidak dapat melakukan autentikasi dari %{kind} karena "%{reason}".
+      success: Berhasil melakukan autentikasi akun %{kind}.
+    passwords:
+      no_token: Tidak dapat mengakses halaman tanpa password dari email. Jika Anda datang dari email password reset, pastikan menggunakan tautan yang benar.
+      send_instructions: Anda akan menerima e-mail berisi instruksi untuk melakukan reset password beberapa menit lagi.
+      send_paranoid_instructions: Jika email Anda terdaftar di basis data kami, Anda akan menerima recovery link di email Anda dalam beberapa menit.
+      updated: Password anda telah berhasil diubah. Anda telah sign in.
+      updated_not_active: Password berhasil diubah.
+    registrations:
+      destroyed: Selamat Tinggal,  Akun anda telah di hapus
+      signed_up: Proses pendaftaran berhasil. Apabila diaktifkan, konfirmasi telah dikirimkan ke e-mail anda.
+      signed_up_but_inactive: Pendaftaran berhasil. Akan tetapi, Anda belum dapat sign in karena akun belum diaktivasi.
+      signed_up_but_locked: Pendaftaran berhasil. Akan tetapi, Anda belum dapat sign in karena akun terkunci.
+      signed_up_but_unconfirmed: Pesan dengan tautan konfirmasi telah dikirim ke email Anda. Harap buka tautan untuk mengaktifkan akun Anda.
+      update_needs_confirmation: Berhasil memperbarui akun, namun Anda harus mengonfirmasi alamat email baru. Tolong cek email anda dan klik tautan konfirmasi untuk menyelesaikan konfirmasi email baru Anda.
+      updated: Akun anda telah berhasil diperbaharui.
+    sessions:
+      signed_in: Proses sign in berhasil.
+      signed_out: Proses sign out berhasil.
+    unlocks:
+      send_instructions: Anda akan menerima e-mail berisi instruksi untuk membuka kembali akun anda dalam beberapa menit lagi.
+      send_paranoid_instructions: Jika akun Anda tercatan, Anda akan menerima email dengan instruksi bagaimana membuka kunci email Anda dalam beberapa menit.
+      unlocked: Akun anda telah berhasil dibuka kembali. Anda telah sign in.
+  errors:
+    messages:
+      already_confirmed: sudah di konfirmasi
+      confirmation_period_expired: harus dikonfirmasi dalam %{period}, tolong pesan lagi
+      expired: telah kadaluarsa, tolong pesan lagi
+      not_found: tidak ditemukan
+      not_locked: tidak dikunci
+      not_saved: '%{count} kesalahan membuat %{resource} tidak bisa disimpan:'

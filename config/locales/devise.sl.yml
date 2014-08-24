@@ -1,0 +1,59 @@
+sl:
+  devise:
+    confirmations:
+      confirmed: Vaš račun je bil uspešno potrjen. Sedaj ste prijavljeni.
+      send_instructions: Prejeli boste e-pošto z navodili kako potrditi vaš račun.
+      send_paranoid_instructions: Če vaša e-pošta obstaja v naši bazi, boste v naslednjih minutah prejeli e-pošto z navodili kako potrditi vaš uporabniški račun.
+    failure:
+      already_authenticated: Ste že prijavljeni.
+      inactive: Vaš račun še ni bil aktiviran.
+      invalid: Neveljavna e-pošta ali geslo.
+      last_attempt: 
+      locked: Vaš račun je zaklenjen.
+      not_found_in_database: 
+      timeout: Vaša seja je potekla. Prosimo, ponovno se prijavite za nadaljevanje.
+      unauthenticated: Za nadaljevanje se morate prijaviti ali registrirati.
+      unconfirmed: Pred nadaljevanjem morate potrditi vaš račun.
+    mailer:
+      confirmation_instructions:
+        subject: Navodila potrditve
+      reset_password_instructions:
+        subject: Navodila za ponastavitev gesla
+      unlock_instructions:
+        subject: Navodila odklepa
+    omniauth_callbacks:
+      failure: Preverjanje pristnosti ni uspelo iz %{kind} zaradi "%{reason}".
+      success: Uspešno preverjena pristnost iz računa %{kind}.
+    passwords:
+      no_token: Do te strani lahko dostopate samo iz povezave v e-pošti za ponastavitev gesla. Če pa ste prišli do te strani preko omenjene povezave, preverite, da ste uporabili celotni URL.
+      send_instructions: V naslednjih minutah boste prejeli e-pošto z navodili kako ponastaviti vaše geslo.
+      send_paranoid_instructions: Če vaša e-pošta obstaja v bazi, boste v naslednjih minutah na vašo e-pošto prejeli povezavo za obnovitev gesla.
+      updated: Vaše geslo je bilo uspešno spremenjeno. Sedaj ste prijavljeni.
+      updated_not_active: Vaše geslo je bilo uspešno spremenjeno.
+    registrations:
+      destroyed: Nasvidenje. Vaš račun je bil uspešno preklican. Upamo, da se kmalu vrnete.
+      signed_up: Dobrodošli. Uspešno ste se registrirali.
+      signed_up_but_inactive: Uspešno ste se registrirali, vendar pred prvo prijavo je potrebno vaš račun še aktivirati.
+      signed_up_but_locked: Uspešno ste se registrirali, vendar prijava ni mogoča, ker je vaš račun zaklenjen.
+      signed_up_but_unconfirmed: Sporočilo s potrditveno povezavo je bilo poslano na vašo e-pošto. Prosimo, kliknite povezavo za aktivacijo vašega računa.
+      update_needs_confirmation: Vaš račun je uspešno posodobljen, vendar potrebno je preveriti vaš novi e-poštni naslov. Prosimo, preverite vašo e-pošto in kliknite na potrditveno povezavo za dokončanje potrditve vašega novega e-poštnega naslova.
+      updated: Uspešno ste posodobili vaš račun.
+    sessions:
+      signed_in: Prijava je bila uspešna.
+      signed_out: Odjava je bila uspešna.
+    unlocks:
+      send_instructions: V naslednjih minutah boste prejeli e-pošto z navodili, kako odkleniti vaš račun.
+      send_paranoid_instructions: Če vaš račun obstaja, boste v naslednjih minutah prejeli e-pošto z navodili kako odkleniti vaš račun.
+      unlocked: Vaš račun je bil uspešno odklenjen. Prosimo, prijavite se za nadaljevanje.
+  errors:
+    messages:
+      already_confirmed: je bil že potrjen, prosimo poskusite se prijaviti
+      confirmation_period_expired: 
+      expired: je poteklo. Prosimo, zahtevajte novo.
+      not_found: ni najdeno
+      not_locked: ni zaklenjeno
+      not_saved:
+        few: '%{count} napak je onemogočilo shraniti %{resource}:'
+        one: '1 napaka je onemogočila shraniti %{resource}:'
+        other: '%{count} napake so onemogočile shraniti %{resource}:'
+        two: '2 napaki sta onemogočili shraniti %{resource}:'

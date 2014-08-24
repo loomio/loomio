@@ -1,56 +1,57 @@
 fr:
-  errors:
-    messages:
-      expired: "a expiré, merci d'en faire une nouvelle demande"
-      not_found: "n'a pas été trouvé(e)"
-      already_confirmed: "a déjà été validé(e)"
-      not_locked: "n'était pas verrouillé(e)"
-      not_saved:
-        one: "1 erreur a empêché ce(tte) %{resource} d'être sauvegardé(e) :"
-        other: "%{count} erreurs ont empêché ce(tte) %{resource} d'être sauvegardé(e) :"
-
   devise:
-    failure:
-      already_authenticated: "Vous êtes déjà connecté !"
-      unauthenticated: "Vous devez vous connecter ou vous inscrire pour continuer."
-      unconfirmed: "Vous devez valider votre compte pour continuer."
-      locked: "Votre compte est verrouillé."
-      invalid: "Email ou mot de passe incorrect."
-      invalid_token: "Jeton d'authentification incorrect."
-      timeout: "Votre session est expirée, veuillez vous reconnecter pour continuer."
-      inactive: "Votre compte n'est pas encore activé."
-    sessions:
-      signed_in: "Connecté."
-      signed_out: "Déconnecté."
-    passwords:
-      send_instructions: 'Vous allez recevoir les instructions de réinitialisation du mot de passe dans quelques instants'
-      updated: 'Votre mot de passe a été édité avec succès, vous êtes maintenant connecté'
-      updated_not_active: 'Votre mot de passe a été changé avec succès.'
-      send_paranoid_instructions: "Si votre e-mail existe dans notre base de données, vous allez recevoir un lien de réinitialisation par e-mail"
-      no_token: "Vous ne pouvez accéder à cette page sans passer par un e-mail de réinitialisation de mot de passe. Si vous êtes passé par un e-mail de ce type, assurez-vous d'utiliser l'URL complète."
     confirmations:
-      send_instructions: 'Vous allez recevoir les instructions nécessaires à la confirmation de votre compte dans quelques minutes'
-      send_paranoid_instructions: 'Si votre e-mail existe dans notre base de données, vous allez bientôt recevoir un e-mail contenant les instructions de confirmation de votre compte.'
-      confirmed: 'Votre compte a été validé, vous êtes maintenant connecté'
-    registrations:
-      signed_up: 'Bienvenu, vous êtes connecté'
-      signed_up_but_unconfirmed: 'Un message contenant un lien de confirmation a été envoyé à votre adresse email. Ouvrez ce lien pour activer votre compte.'
-      signed_up_but_inactive: "Vous êtes bien enregistré. Vous ne pouvez cependant pas vous connecter car votre compte n'est pas encore activé."
-      signed_up_but_locked: "Vous êtes bien enregistré. Vous ne pouvez cependant pas vous connecter car votre compte est verrouillé."
-      updated: 'Votre compte a été modifié avec succès.'
-      update_needs_confirmation: "Votre compte a bien été mis à jour mais nous devons vérifier votre nouvelle adresse email. Merci de vérifier vos emails et de cliquer sur le lien de confirmation pour finaliser la validation de votre nouvelle adresse."
-      destroyed: 'Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt.'
-    unlocks:
-      send_instructions: 'Vous allez recevoir les instructions nécessaires au déverrouillage de votre compte dans quelques instants'
-      unlocked: 'Votre compte a été déverrouillé avec succès, vous êtes maintenant connecté.'
-      send_paranoid_instructions: 'Si votre compte existe, vous allez bientôt recevoir un email contenant les instructions pour le déverrouiller.'
-    omniauth_callbacks:
-      success: 'Authentifié avec succès via %{kind}.'
-      failure: "Nous n'avons pas pu vous authentifier via %{kind} : '%{reason}'."
+      confirmed: Votre compte a été confirmé avec succès.
+      send_instructions: Vous allez recevoir sous quelques minutes un courriel comportant des instructions pour confirmer votre compte.
+      send_paranoid_instructions: Si votre courriel existe sur notre base de données, vous recevrez sous quelques minutes un message avec des instructions pour confirmer votre compte.
+    failure:
+      already_authenticated: Vous êtes déjà connecté(e).
+      inactive: Votre compte n’est pas encore activé.
+      invalid: Courriel ou mot de passe incorrect.
+      last_attempt: Il vous reste une chance avant que votre compte soit bloqué.
+      locked: Votre compte est verrouillé.
+      not_found_in_database: Courriel ou mot de passe incorrect.
+      timeout: Votre session est périmée, veuillez vous reconnecter pour continuer.
+      unauthenticated: Vous devez vous connecter ou vous enregistrer pour continuer.
+      unconfirmed: Vous devez confirmer votre compte par courriel.
     mailer:
       confirmation_instructions:
-        subject: "Instructions de confirmation"
+        subject: Instructions de confirmation
       reset_password_instructions:
-        subject: "Instructions pour changer le mot de passe"
+        subject: Instructions pour changer le mot de passe
       unlock_instructions:
-        subject: "Instructions pour déverrouiller le compte"
+        subject: Instructions pour déverrouiller le compte
+    omniauth_callbacks:
+      failure: 'Nous ne pouvons pas vous authentifier depuis %{kind} pour la raison suivante : ''%{reason}''.'
+      success: Autorisé avec succès par votre compte %{kind}.
+    passwords:
+      no_token: Vous ne pouvez pas accéder à cette page si vous n’y accédez pas depuis un courriel de réinitialisation de mot de passe. Si vous venez en effet d’un tel courriel, vérifiez que vous avez copié l’adresse URL en entier.
+      send_instructions: Vous allez recevoir sous quelques minutes un courriel vous indiquant comment réinitialiser votre mot de passe.
+      send_paranoid_instructions: Si votre courriel existe dans notre base de données, vous recevrez un lien vous permettant de récupérer votre mot de passe.
+      updated: Votre mot de passe a été modifié avec succès. Vous êtes maintenant connecté(e).
+      updated_not_active: Votre mot de passe a été modifié avec succès.
+    registrations:
+      destroyed: Au revoir ! Votre compte a été annulé avec succès. Nous espérons vous revoir bientôt.
+      signed_up: Bienvenue ! Vous vous êtes enregistré(e) avec succès.
+      signed_up_but_inactive: Vous vous êtes enregistré(e) avec succès. Cependant, nous n’avons pas pu vous connecter car votre compte n’a pas encore été activé.
+      signed_up_but_locked: Vous vous êtes enregistré(e) avec succès. Cependant, nous n’avons pas pu vous connecter car votre compte est verrouillé.
+      signed_up_but_unconfirmed: Un message avec un lien de confirmation vous a été envoyé par mail. Veuillez suivre ce lien pour activer votre compte.
+      update_needs_confirmation: Vous avez modifié votre compte avec succès, mais nous devons vérifier votre nouvelle adresse de courriel. Veuillez consulter vos courriels et cliquer sur le lien de confirmation pour confirmer votre nouvelle adresse.
+      updated: Votre compte a été modifié avec succès.
+    sessions:
+      signed_in: Connecté(e) avec succès.
+      signed_out: Déconnecté(e) avec succès.
+    unlocks:
+      send_instructions: Vous allez recevoir sous quelques minutes un courriel comportant des instructions pour déverrouiller votre compte.
+      send_paranoid_instructions: Si votre courriel existe sur notre base de données, vous recevrez sous quelques minutes un message avec des instructions pour déverrouiller votre compte.
+      unlocked: Votre compte a été déverrouillé avec succès. Veuillez vous connecter.
+  errors:
+    messages:
+      already_confirmed: a déjà été confirmé(e)
+      confirmation_period_expired: doit être confirmé(e) en %{period}, veuillez en demander un(e) autre
+      expired: est périmé, veuillez en demander un autre
+      not_found: n’a pas été trouvé(e)
+      not_locked: n’était pas verrouillé(e)
+      not_saved:
+        one: 'une erreur a empêché ce (ou cette) %{resource} d’être enregistré(e) :'
+        other: '%{count} erreurs ont empêché ce (ou cette) %{resource} d’être enregistré(e) :'

@@ -1,0 +1,57 @@
+zh-CN:
+  devise:
+    confirmations:
+      confirmed: 您的帐号已经确认，您现在已登录.
+      send_instructions: 几分钟后，您将收到确认帐号的电子邮件.
+      send_paranoid_instructions: 如果您的邮箱存在于我们的数据库中，您将收到一封确认账号的邮件.
+    failure:
+      already_authenticated: 您已经登录.
+      inactive: 您还没有激活帐户.
+      invalid: 邮箱或密码错误
+      last_attempt: 
+      locked: 您的帐号已被锁定.
+      not_found_in_database: 邮箱或密码错误
+      timeout: 您已登录超时，请重新登录.
+      unauthenticated: 继续操作前请注册或者登录.
+      unconfirmed: 继续操作前请先确认您的帐号.
+    mailer:
+      confirmation_instructions:
+        subject: 确认信息
+      reset_password_instructions:
+        subject: 重置密码信息
+      unlock_instructions:
+        subject: 解锁信息
+    omniauth_callbacks:
+      failure: 因为%{reason}，所以您无法从%{kind}获得授权.
+      success: 成功地从%{kind}获得授权.
+    passwords:
+      no_token: 您暂时不能访问此页面。您需要通过密码重置邮件中的重置链接来访问此页面，如果您正是通过重置链接访问，请确定链接的正确性。
+      send_instructions: 几分钟后，您将收到重置密码的电子邮件.
+      send_paranoid_instructions: 如果您的邮箱存在于我们的数据库中，您将收到一封找回密码的邮件.
+      updated: 您的密码已修改成功，您现在已登录.
+      updated_not_active: 您的密码已修改成功.
+    registrations:
+      destroyed: 再见！您的帐户已成功注销。我们希望很快可以再见到您.
+      signed_up: 欢迎您！您已注册成功.
+      signed_up_but_inactive: 谢谢您！然而您的账号还未被激活，在这之前无法登陆。
+      signed_up_but_locked: 谢谢您！然而您的账号已被锁定，无法登陆。
+      signed_up_but_unconfirmed: 谢谢您！一封确认邮件已经发至您的邮箱，请点击其中的链接激活您的账号。
+      update_needs_confirmation: 新的账号信息已成功提交，一封确认邮件已经发至您的邮箱，请点击其中的链接以使您的新E-mail地址生效。
+      updated: 帐号资料更新成功.
+    sessions:
+      signed_in: 登录成功.
+      signed_out: 退出成功.
+    unlocks:
+      send_instructions: 几分钟后，您将收到一封解锁帐号的邮件.
+      send_paranoid_instructions: 如果您的邮箱存在于我们的数据库中，您将收到一封解锁账号的邮件.
+      unlocked: 您的帐号已成功解锁，您现在已登录.
+  errors:
+    messages:
+      already_confirmed: 已经确认，请重新登录.
+      confirmation_period_expired: 必须在 %{period} 以内确认，请重新申请
+      expired: 您已过期，请重新申请
+      not_found: 没有找到
+      not_locked: 未锁定
+      not_saved:
+        one: '因为1个错误导致此%{resource}保存失败:'
+        other: '因为%{count}个错误导致此%{resource}保存失败:'

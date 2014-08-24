@@ -1,0 +1,57 @@
+pt-BR:
+  devise:
+    confirmations:
+      confirmed: A sua conta foi confirmada com sucesso.
+      send_instructions: Dentro de minutos, você receberá um email com as instruções de confirmação da sua conta.
+      send_paranoid_instructions: Se o seu email existir em nosso banco de dados, você receberá um email com instruções sobre como confirmar sua conta em alguns minutos.
+    failure:
+      already_authenticated: Você já está autenticado.
+      inactive: A sua conta ainda não foi ativada.
+      invalid: Email ou senha inválidos.
+      last_attempt: Você tem mais uma única tentativa antes de sua conta ser bloqueada.
+      locked: A sua conta está bloqueada.
+      not_found_in_database: Email ou senha inválidos.
+      timeout: A sua sessão expirou, por favor, faça login novamente para continuar.
+      unauthenticated: Para continuar, faça login ou registre-se.
+      unconfirmed: Antes de continuar, confirme a sua conta.
+    mailer:
+      confirmation_instructions:
+        subject: Instruções de confirmação
+      reset_password_instructions:
+        subject: Instruções de reinicialização de senha
+      unlock_instructions:
+        subject: Instruções de desbloqueio
+    omniauth_callbacks:
+      failure: Não foi possível autorizar de uma conta de %{kind} porque "%{reason}".
+      success: Autorizado com sucesso de uma conta de %{kind}.
+    passwords:
+      no_token: Você não pode acessar esta página sem estar logado. Se você veio de um email de lembre de senha, por favor certifique-se de ter  digitado a URL corretamente.
+      send_instructions: Dentro de minutos, você receberá um email com as instruções de reinicialização da sua senha.
+      send_paranoid_instructions: Se o seu email existir em nosso banco de dados, você receberá um email com um link para recuperação da senha.
+      updated: A sua senha foi alterada com sucesso. Você está autenticado.
+      updated_not_active: Sua senha foi alterada com sucesso.
+    registrations:
+      destroyed: Adeus! A sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.
+      signed_up: Bem vindo! Você realizou seu registro com sucesso.
+      signed_up_but_inactive: Você se inscreveu com sucesso, porém nós não podemos autenticá-lo porque sua conta ainda não foi ativada.
+      signed_up_but_locked: Você se inscreveu com sucesso. Porém nós não podemos autenticá-lo porque sua conta está bloqueada.
+      signed_up_but_unconfirmed: Uma mensagem com um link de confirmação foi enviada para o seu e-mail. Por favor, acesse o link para ativar sua conta.
+      update_needs_confirmation: Sua conta foi atualizada com sucesso, mas nós precisamos verificar o novo endereço de email. Por favor, verifique seu email e clique no link de confirmação para finalizar confirmando o seu novo email.
+      updated: A sua conta foi atualizada com sucesso.
+    sessions:
+      signed_in: Login efetuado com sucesso.
+      signed_out: Logout efetuado com sucesso.
+    unlocks:
+      send_instructions: Dentro de minutos, você receberá um email com instruções de desbloqueio da sua conta.
+      send_paranoid_instructions: Se sua conta existir em nosso banco de dados, você receberá em breve um email com instruções para desbloquear ela.
+      unlocked: A sua conta foi desbloqueada com sucesso. Você está autenticado.
+  errors:
+    messages:
+      already_confirmed: já foi confirmado
+      confirmation_period_expired: É necessário ser confirmado dentro do período %{period}, por favor requisite um novo usuário.
+      expired: expirou, por favor solicite uma nova
+      not_found: não encontrado
+      not_locked: não foi bloqueado
+      not_saved:
+        one: 'Não foi possível salvar %{resource}: 1 erro'
+        other: 'Não foi possível salvar %{resource}: %{count} erros.'

@@ -1,0 +1,57 @@
+'no':
+  devise:
+    confirmations:
+      confirmed: Din konto er aktivert og du er nå innlogget.
+      send_instructions: Du vil innen få minutter motta en epost med instruksjoner for å aktivere din konto.
+      send_paranoid_instructions: Hvis epostadressen din finnes i vår database vil du innen få minutter motta en epost med instruksjoner for å aktivere din konto.
+    failure:
+      already_authenticated: Du er allerede logget inn.
+      inactive: Din konto er ikke aktivert enda.
+      invalid: Epostadresse eller passord er ikke gyldig.
+      last_attempt: Du har et forsøk til før din konto blir låst.
+      locked: Din konto er låst.
+      not_found_in_database: Ugyldig epost eller passord.
+      timeout: Din sesjon er utløpt. Logg inn igjen for å kunne fortsette.
+      unauthenticated: Du må logge inn eller registrere deg for å kunne fortsette.
+      unconfirmed: Du må bekrefte kontoen din for å kunne fortsette.
+    mailer:
+      confirmation_instructions:
+        subject: Bekreftelsesinstruksjoner
+      reset_password_instructions:
+        subject: Nullstilling av passord
+      unlock_instructions:
+        subject: Gjenåpning av konto
+    omniauth_callbacks:
+      failure: Kunne ikke autorisere deg fra %{kind} fordi "%{reason}".
+      success: Vellykket autorisering fra %{kind}.
+    passwords:
+      no_token: Du kan ikke aksessere denne siden uten å bli videresendt fra en epost med intrukssjoner for å tilbakestille passord. Hvis dette er tilfelle, vennligst sørg for at du brukte hele lenken inneholdt i eposten.
+      send_instructions: Du vil innen få minutter motta en epost med instruksjoner for å nullstille passordet ditt.
+      send_paranoid_instructions: Hvis epostadressen din finnes i vår database vil du innen få minutter motta en epost med instruksjoner for å nullstille passordet ditt.
+      updated: Ditt passord er endret og du er nå innlogget.
+      updated_not_active: Ditt passord er endret.
+    registrations:
+      destroyed: Farvel! Din konto er nå slettet. Vi håper å se deg igjen snart.
+      signed_up: Velkommen! Din registrering er vellykket.
+      signed_up_but_inactive: Du er registrert. Vi kan derimot ikke logge deg på siden kontoen din ennå ikke er aktivert.
+      signed_up_but_locked: Du er registrert. Vi kan derimot ikke logge deg på siden kontoen din er låst.
+      signed_up_but_unconfirmed: En epost med en aktiveringslink er sent til din epostadresse.  Vennligst klikk på linken for å aktivere din konto.
+      update_needs_confirmation: Din profil er oppdatert, men vi trenger å bekrefte din nye epost-adresse. Vennligst sjekk din innboks og klikk på lenken inneholdt i eposten for å bekrefte endring av din epost-adresse.
+      updated: Din profil er oppdatert.
+    sessions:
+      signed_in: Du er nå innlogget.
+      signed_out: Du er nå logget ut.
+    unlocks:
+      send_instructions: Du vil innen få minutter motta en epost med instruksjoner for å gjenåpne din konto.
+      send_paranoid_instructions: Hvis kontoen din eksisterer vil du innen få minutter motta en epost med instruksjoner for å låse den opp.
+      unlocked: Din konto er gjenåpnet. Vennligst logg inn for å fortsette.
+  errors:
+    messages:
+      already_confirmed: har allerede blitt bekreftet, forsøk å logg inn
+      confirmation_period_expired: må bekreftes innen %{period}, vennligst forespør en ny en
+      expired: har utløpt, vennligst få en ny en
+      not_found: ikke funnet
+      not_locked: var ikke låst
+      not_saved:
+        one: 'Én feil gjorde at %{resource} ikke kunne lagres:'
+        other: '%{count} feil gjorde at %{resource} ikke kunne lagres:'

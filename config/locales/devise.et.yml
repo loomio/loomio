@@ -1,0 +1,57 @@
+et:
+  devise:
+    confirmations:
+      confirmed: Sinu konto on edukalt kinnitatud.
+      send_instructions: Mõne minuti jooksul saad sa e-kirja juhistega oma konto kinnitamiseks.
+      send_paranoid_instructions: Kui sinu e-post on meie andmebaasis, saad varsti e-kirja juhistega, kuidas oma konto kinnitada.
+    failure:
+      already_authenticated: Oled juba sisse loginud.
+      inactive: Sinu konto polnud veel aktiveeritud.
+      invalid: Vigane e-post või salasõna.
+      last_attempt: Sinul on jäänud veel üks katse enne kui su konto lukustatakse.
+      locked: Sinu konto lukustati.
+      not_found_in_database: Vigane e-post või salasõna.
+      timeout: Sinu sessioon on aegunud, jätkamiseks logi palun sisse.
+      unauthenticated: Sa pead sisse logima või registreeruma enne jätkamist.
+      unconfirmed: Sa pead oma konto kinnitama, enne jätkamist.
+    mailer:
+      confirmation_instructions:
+        subject: Kinnitamise juhised
+      reset_password_instructions:
+        subject: Salasõna taastamise juhised
+      unlock_instructions:
+        subject: Lukust vabastamise juhised
+    omniauth_callbacks:
+      failure: Ei õnnestunud autoriseerida %{kind}-kontot, põhjus "%{reason}".
+      success: Edukalt autoriseeritud %{kind}-konto.
+    passwords:
+      no_token: Sa ei saa seda lehte külastada mujalt kui salasõna taastamise e-kirjast. Kui sa tuled salasõna taastamise e-kirjast, palun kontrolli, et sa kasutasid täielikku URLi.
+      send_instructions: Mõne minuti jooksul saad sa kirja juhistega, kuidas oma salasõna taastada.
+      send_paranoid_instructions: Kui su e-post on meie andmebaasis, saad varsti e-kirja salasõna taastamise lingiga.
+      updated: Sinu salasõna vahetati edukalt. Oled nüüd sisse logitud.
+      updated_not_active: Sinu salasõna vahetati edukalt.
+    registrations:
+      destroyed: Nägemist! Sinu konto on edukalt tühistatud. Loodame sind peagi uuesti näha.
+      signed_up: Tere tulemast! Sa registreerusid edukalt.
+      signed_up_but_inactive: Sa registreerusid edukalt. Siiski ei saa me sind sisse logida, sest su konto pole veel aktiveeritud.
+      signed_up_but_locked: Sa registreerusid edukalt. Siiski ei saa me sind sisse logida, sest su konto on lukus.
+      signed_up_but_unconfirmed: Kiri kinnituslingiga on saadetud sinu e-posti aadressile. Palun ava see link oma konto kinnitamiseks.
+      update_needs_confirmation: Sa uuendasid edukalt oma kontot, kuid me peame kontrollima sinu e-posti aadressi. Palun kontrolli oma e-posti ja ava kinnitamise link, et viia lõpule aadressi kinnitamine.
+      updated: Sa uuendasid edukalt oma kontot.
+    sessions:
+      signed_in: Edukalt sisse logitud.
+      signed_out: Edukalt välja logitud.
+    unlocks:
+      send_instructions: Sa saad mõne minuti jooksul e-kirja juhistega, kuidas oma konto lukust vabastada.
+      send_paranoid_instructions: Kui su konto eksisteerib, saad sa mõne minuti jooksul e-kirja juhistega, kuidas oma konto lukust vabastada.
+      unlocked: Sinu konto on edukalt lukust vabastatud. Jätkamiseks palun logi sisse.
+  errors:
+    messages:
+      already_confirmed: on juba kinnitatud, proovi sisse logida
+      confirmation_period_expired: vajab kinnitamist %{period} jooksul, palun küsi uus
+      expired: on aegunud, palun küsi uus
+      not_found: ei leitud
+      not_locked: ei olnud lukus
+      not_saved:
+        one: '1 viga takistas salvestamast objekti %{resource}:'
+        other: '%{count} viga takistasid salvestamast objekti %{resource}:'
