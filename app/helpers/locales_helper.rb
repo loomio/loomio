@@ -1,46 +1,26 @@
 require 'http_accept_language'
 
 module LocalesHelper
-  LANGUAGES = { 'English' => :en,
-                'беларуская мова ' => :'be-BY',
-                'български' => :'bg-BG',
-                'Català' => :ca,
-                'čeština' => :cs,
-                '正體中文' => :'zh-TW', #zh-Hant, Chinese (traditional), Taiwan
-                'Deutsch' => :de,
-                'Español' => :es,
-                'Esperanto' => :eo,
-                'ελληνικά' => :el,
-                'Français' => :fr,
-                'Indonesian' => :id,
-                'Italiano' => :it,
-                'magyar' => :hu,
-                '日本語' => :ja,
-                '한국어' => :ko,
-                'മലയാളം' => :ml,
-                'Nederlands' => :'nl-NL',
-                'Português (Brasil)' => :'pt-BR',
-                'română' => :ro,
-                'Srpski - Latinica' => :sr,
-                'Srpski - Ćirilica' => :'sr-RS',
-                'Svenska' => :sv,
-                'Tiếng Việt' => :vi,
-                'Türkçe' => :tr,
-                'українська мова' => :uk }
 
-  LOCALE_STRINGS = LANGUAGES.values.map(&:to_s)
-  EXPERIMENTAL_LOCALE_STRINGS = %w( ar cmn hr da eo fi gl ga-IE km mk mi fa-IR pl pt-PT ru sl te )
+  LOCALE_STRINGS          = Loomio::I18n::LANGUAGES.values.map(&:to_s)
+  LOCALE_FALLBACK_STRINGS = Loomio::I18n::LOCALE_FALLBACKS.keys.map(&:to_s)
 
   def locale_name(locale)
-    LANGUAGES.key(locale.to_sym)
+    locale = fetch_fallback_locale(locale) if is_fallback_locale?(locale)
+
+    Loomio::I18n::LANGUAGES.key(locale.to_sym)
   end
 
-  def supported_locales
-    LANGUAGES.values
+  def fetch_fallback_locale(locale)
+    Loomio::I18n::LOCALE_FALLBACKS[locale.to_sym]
+  end
+
+  def is_fallback_locale?(locale)
+    LOCALE_FALLBACK_STRINGS.include? locale.to_s
   end
 
   def supported_locale_strings
-    LOCALE_STRINGS + EXPERIMENTAL_LOCALE_STRINGS
+    LOCALE_STRINGS + LOCALE_FALLBACK_STRINGS + Loomio::I18n::EXPERIMENTAL_LOCALE_STRINGS
   end
 
   def valid_locale?(locale)
@@ -53,7 +33,7 @@ module LocalesHelper
   end
 
   def legal_selected_param
-    if (LOCALE_STRINGS + EXPERIMENTAL_LOCALE_STRINGS).include? params[:locale]
+    if supported_locale_strings.include? params[:locale]
       params[:locale]
     else
       nil
@@ -116,7 +96,7 @@ module LocalesHelper
 
   def language_options_array
     options = []
-    LANGUAGES.each_pair do |language, locale|
+    Loomio::I18n::LANGUAGES.each_pair do |language, locale|
       options << [language, current_path_with_locale(locale)]
     end
     options
