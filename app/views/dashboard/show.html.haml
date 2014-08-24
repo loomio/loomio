@@ -1,21 +1,17 @@
 - if current_user.parent_groups.present?
   .row
-    .span6
+    .span9
       .group-title
         %h1.home-title
           - if sifting_unread? or sifting_followed?
             = link_to t(:'common.dashboard'), dashboard_path
           - else
             = t(:'common.dashboard')
-
-    .span3
-      .pull-right
-        =render 'filter_discussions_buttons'
     .span3
       = icon_button(href: new_discussion_path, text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
 
   .row
-    .span9.main-content
+    .span9
       =render 'discussions/discussion_list'
     %section.span3
       / #group-actions

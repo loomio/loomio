@@ -493,6 +493,14 @@ en:
   comment_by: "Comment by %{comment_author}"
 
   discussion_list:
+    filter_unread:
+      enable: "Only show unread discussions"
+      disable: "See read and unread discussions"
+
+    filter_followed:
+      enable:  "Only show followed discussions"
+      disable: "See followed and unfollowed discussions"
+
     empty:
       no_discussions: "There are no discussions in any of your groups."
       no_discussions_in_group: "This group does not have any discussions yet."

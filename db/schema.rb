@@ -514,7 +514,7 @@ ActiveRecord::Schema.define(version: 20140819225704) do
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials"
     t.string   "username"
-    t.boolean  "email_when_mentioned",                            default: true,       null: false
+    t.boolean  "email_followed_threads",                          default: true,       null: false
     t.boolean  "email_when_proposal_closing_soon",                default: true,       null: false
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
@@ -526,7 +526,6 @@ ActiveRecord::Schema.define(version: 20140819225704) do
     t.string   "detected_locale"
     t.boolean  "email_missed_yesterday",                          default: true,       null: false
     t.string   "email_api_key"
-    t.boolean  "email_followed_threads",                          default: true,       null: false
     t.boolean  "email_new_discussions_and_proposals",             default: true,       null: false
   end
 
