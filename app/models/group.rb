@@ -504,4 +504,8 @@ class Group < ActiveRecord::Base
       errors[:base] << "Can't set a subgroup as parent" unless parent.parent_id.nil?
     end
   end
+
+  def self.with_one_coordinator
+    published.select{ |g| g.admins.count == 1 }
+  end
 end
