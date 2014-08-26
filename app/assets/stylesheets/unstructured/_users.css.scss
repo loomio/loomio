@@ -13,7 +13,8 @@ body.users.show {
 }
 
 body.users {
-  &.profile, &.update {
+  &.profile, &.update, &.deactivation_instructions, 
+    &.about_deactivation {
     form { margin-top: 10px; }
     ul.user-image-options {
       margin-left: -30px;
@@ -51,8 +52,22 @@ body.users {
         &.clearfix:hover { background-color: $selector; }
       }
     }
+    .deactivation-info { margin-left: 10px; }
+    .deactivation-text { 
+      margin: 50px auto; }
+      ul#info {
+        list-style-type: disc;
+        margin-left: 20px;
+        li { padding: 5px; }
+      }
+    .deactivate-account { margin-top: 40px; }
+    .profile-link {
+      margin-top: 50px;
+      text-align: center;
+    }
   }
 }
+
 
 // app-wide classes for user avataars
 .avatar-canvas {
@@ -101,4 +116,3 @@ body.users {
   font-size: 10px;
   line-height: 22px;
 }
-
