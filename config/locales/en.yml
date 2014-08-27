@@ -516,6 +516,8 @@ en:
     last_edited_html: "Last edited %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "See revision history"
     see_history: "See history"
+    following_details: "You'll be notified of activity in this thread."
+    not_following_details: "You won't be notified of activity in this thread."
 
   description_history:
     header: "Revision history"
