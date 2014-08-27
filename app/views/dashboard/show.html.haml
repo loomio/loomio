@@ -7,6 +7,8 @@
             = link_to t(:'common.dashboard'), dashboard_path
           - else
             = t(:'common.dashboard')
+        = render "application/filter_discussions_buttons"
+
     .span3
       = icon_button(href: new_discussion_path, text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
 

@@ -1,19 +1,3 @@
-.filter-discussion-list-buttons.pull-right.clearfix
-  = t :'common.filter'
-  - if sifting_unread?
-    %a.btn.btn-small.js-tooltip.active{href: toggle_unread_path, title: t(:'discussion_list.filter_unread.disable')}
-      = t :'common.unread'
-  -else
-    %a.btn.btn-small.js-tooltip{href: toggle_unread_path, title: t(:'discussion_list.filter_unread.enable')}
-      = t :'common.unread'
-
-  - if sifting_followed?
-    %a.btn.btn-small.js-tooltip.active{href: toggle_followed_path, title: t(:'discussion_list.filter_followed.disable')}
-      = t :'common.following'
-  -else
-    %a.btn.btn-small.js-tooltip{href: toggle_followed_path, title: t(:'discussion_list.filter_followed.enable')}
-      = t :'common.following'
-
 %section.main-content
   - if @discussions.any?
     - discussions_with_motions = @discussions.select(&:current_motion)

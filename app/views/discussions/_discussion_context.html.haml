@@ -32,9 +32,11 @@
             = link_to unfollow_discussion_path(@discussion), method: :post, class: "btn" do
               %i.fa.fa-volume-up
               = t :"common.following"
+            %p= t :"discussion_context.following_details"
           - else
             = link_to follow_discussion_path(@discussion), method: :post, class: "btn" do
               %i.fa.fa-volume-down
               = t :"common.not_following"
+            %p= t :"discussion_context.not_following_details"
 
 #description-revision-history.modal.hidden
