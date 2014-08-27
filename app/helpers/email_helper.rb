@@ -1,7 +1,7 @@
 module EmailHelper
   def reply_to_address(discussion: discussion, user: user)
     pairs = []
-    {d: discussion.key, u: user.id, k: user.email_api_key}.each do |key, value|
+    {d: discussion.id, u: user.id, k: user.email_api_key}.each do |key, value|
       pairs << "#{key}=#{value}"
     end
     pairs.join('&')+"@#{ENV['REPLY_HOSTNAME']}"
