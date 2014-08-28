@@ -7,8 +7,8 @@ module EmailHelper
     pairs.join('&')+"@#{ENV['REPLY_HOSTNAME']}"
   end
 
-  def reply_to_address_with_group_name(group: group, discussion: discussion, user: user)
-    "#{group.full_name} <#{reply_to_address(discussion: discussion, user: user)}>"
+  def reply_to_address_with_group_name(discussion: discussion, user: user)
+    "#{discussion.group.full_name} <#{reply_to_address(discussion: discussion, user: user)}>"
   end
 
   def render_email_plaintext(text)
