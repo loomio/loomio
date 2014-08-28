@@ -8,8 +8,10 @@ class Event < ActiveRecord::Base
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
-  belongs_to :discussion, counter_cache: :items_count, touch: :last_activity_at
+  belongs_to :discussion, counter_cache: :items_count
   belongs_to :user
+
+  after_create :touch_discussion_last_activity_at
 
   validates_inclusion_of :kind, :in => KINDS
   validates_presence_of :eventable
@@ -23,5 +25,11 @@ class Event < ActiveRecord::Base
 
   def belongs_to?(this_user)
     self.user_id == this_user.id
+  end
+
+  private
+
+  def touch_discussion_last_activity_at
+    discussion.update_attribute(:last_activity_at, created_at)
   end
 end
