@@ -6,7 +6,9 @@ module DiscussionsHelper
     last_item = nil
     filtered_event_kinds = %w[discussion_description_edited discussion_title_edited motion_close_date_edited]
 
-    activity.map do |item|
+    activity.
+      reject {|item| item.kind == 'motion_closing_soon'}.
+      map do |item|
       next if last_item &&
               filtered_event_kinds.include?(item.kind) &&
               item.user == last_item.user && item.kind == last_item.kind
