@@ -444,6 +444,8 @@ en:
 
   groups:
     follow:
+      click_to_follow: "Click to follow group"
+      click_to_unfollow: "Click to unfollow group"
       following_details: "You'll be notified about every thread in this group."
       not_following_details: "You'll be notified about threads you are participating in."
 
@@ -518,6 +520,8 @@ en:
     last_edited_html: "Last edited %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "See revision history"
     see_history: "See history"
+    click_to_follow: "Click to follow thread"
+    click_to_unfollow: "Click to unfollow thread"
     following_details: "You'll be notified of activity in this thread."
     not_following_details: "You won't be notified of activity in this thread."
 
