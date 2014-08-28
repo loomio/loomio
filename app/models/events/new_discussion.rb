@@ -2,7 +2,7 @@ class Events::NewDiscussion < Event
   def self.publish!(discussion)
     event = create!(kind: 'new_discussion',
                     eventable: discussion,
-                    discussion_id: discussion.id)
+                    discussion: discussion)
 
     group = discussion.group
     DiscussionReader.for(discussion: discussion,

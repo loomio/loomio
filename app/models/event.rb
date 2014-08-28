@@ -30,6 +30,8 @@ class Event < ActiveRecord::Base
   private
 
   def touch_discussion_last_activity_at
-    discussion.update_attribute(:last_activity_at, created_at)
+    if discussion.present?
+      discussion.update_attribute(:last_activity_at, created_at)
+    end
   end
 end
