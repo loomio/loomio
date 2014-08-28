@@ -3,7 +3,7 @@ class DiscussionReader < ActiveRecord::Base
   belongs_to :user
   belongs_to :discussion
 
-  validates_presence_of :discussion_id, :user_id
+  validates_presence_of :discussion, :user
   validates_uniqueness_of :user_id, :scope => :discussion_id
 
   scope :for_user, -> (user) { where(user_id: user.id) }
@@ -16,6 +16,22 @@ class DiscussionReader < ActiveRecord::Base
       end
     else
       new(discussion: discussion)
+    end
+  end
+
+  def follow!
+    update_attribute(:following, true)
+  end
+
+  def unfollow!
+    update_attribute(:following, false)
+  end
+
+  def following?
+    if self[:following].nil?
+      membership.following_by_default
+    else
+      self[:following]
     end
   end
 
@@ -56,10 +72,6 @@ class DiscussionReader < ActiveRecord::Base
     last_read_at.present? and unread_content_exists?
   end
 
-  def unfollow!
-    self.following = false
-    save!
-  end
 
   def viewed!(age_of_last_read_item = nil)
     return if user.nil?
@@ -98,6 +110,10 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   private
+  def membership
+    discussion.group.membership_for(user)
+  end
+
   def count_read_comments(since)
     discussion.comments.where('created_at <= ?', since).count
   end

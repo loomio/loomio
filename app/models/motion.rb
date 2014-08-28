@@ -34,10 +34,10 @@ class Motion < ActiveRecord::Base
   delegate :email_new_motion?, to: :group, prefix: :group
   delegate :name_and_email, to: :user, prefix: :author
   delegate :locale, to: :user
+  delegate :followers, to: :discussion
   has_paper_trail only: [:name, :description, :closing_at]
 
   after_initialize :set_default_closing_at
-  after_create :fire_new_motion_event
 
   attr_accessor :create_discussion
 
@@ -49,6 +49,18 @@ class Motion < ActiveRecord::Base
   #scope :visible_to_public,        -> { joins(:discussion).merge(Discussion.public) }
   scope :voting_or_closed_after,   ->(time) { where('motions.closed_at IS NULL OR (motions.closed_at > ?)', time) }
   scope :closing_in_24_hours,      -> { where('motions.closing_at > ? AND motions.closing_at <= ?', Time.now, 24.hours.from_now) }
+
+  def followers_without_author
+    discussion.followers.where('users.id != ?', author_id)
+  end
+
+  def followers_without_outcome_author
+    discussion.followers.where('users.id != ?', outcome_author.id)
+  end
+
+  def group_members_not_following
+    discussion.group_members_not_following
+  end
 
   def grouped_unique_votes
     order = ['block', 'no', 'abstain', 'yes']
@@ -233,12 +245,7 @@ class Motion < ActiveRecord::Base
   end
 
   private
-    def set_default_closing_at
-      self.closing_at ||= (Time.zone.now + 3.days).at_beginning_of_hour
-    end
-
-    def fire_new_motion_event
-      Events::NewMotion.publish!(self)
-    end
-
+  def set_default_closing_at
+    self.closing_at ||= (Time.zone.now + 3.days).at_beginning_of_hour
+  end
 end

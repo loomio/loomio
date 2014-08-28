@@ -53,6 +53,10 @@ class Vote < ActiveRecord::Base
     user
   end
 
+  def motion_followers_without_voter
+    motion.followers.where('users.id != ?', author.id)
+  end
+
   def other_group_members
     group.users.where(User.arel_table[:id].not_eq(user.id))
   end

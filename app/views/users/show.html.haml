@@ -10,7 +10,7 @@
       - groups = @user.groups.visible_to_public.order('full_name ASC')
       - groups += [@user.groups & current_user.groups]
       - if groups.present?
-        %h3#user-groups-list= t(:groups)
+        %h3#user-groups-list= t(:"common.groups")
         %ul
           - groups.flatten.uniq.sort{|a,b| a.full_name <=> b.full_name}.each do |group|
             %li

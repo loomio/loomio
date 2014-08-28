@@ -1,4 +1,5 @@
-require_relative '../../app/services/move_discussion_service'
+require 'rails_helper'
+#require_relative '../../app/services/move_discussion_service'
 
 describe MoveDiscussionService do
   let(:discussion) { double(:discussion, group: source_group) }

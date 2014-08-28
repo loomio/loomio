@@ -3,18 +3,28 @@ class Users::EmailPreferencesController < BaseController
   before_filter :authenticate_user_by_unsubscribe_token_or_fallback
 
   def edit
-    resource
+    @user = user
   end
 
   def update
-    resource
-    if resource.update_attributes(permitted_params.email_preferences)
+    @user = user
+    if @user.update_attributes(permitted_params.user)
       flash[:notice] = "Your email settings have been updated."
       redirect_to dashboard_or_root_path
     else
       flash[:error] = "Failed to update settings"
       render :edit
     end
+  end
+
+  def mark_discussion_as_read
+    @discussion = Discussion.find(params[:discussion_id])
+    @event = Event.find(params[:event_id])
+    DiscussionReader.for(discussion: @discussion, user: user).viewed!(@event.created_at)
+
+    send_file Rails.root.join('app','assets','images', 'empty.gif'),
+              type: 'image/gif',
+              disposition: 'inline'
   end
 
   def mark_summary_email_as_read
@@ -49,10 +59,6 @@ class Users::EmailPreferencesController < BaseController
 
   def user
     @restricted_user || current_user
-  end
-
-  def resource
-    @email_preferences ||= EmailPreferences.new(@restricted_user || current_user)
   end
 
   def authenticate_user_by_unsubscribe_token_or_fallback

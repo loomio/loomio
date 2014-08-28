@@ -17,11 +17,10 @@ describe VotesController do
       post :create, motion_id: motion.id, vote: {position: 'yes'}
     end
 
-    it "flashes a motion closed message when the motion is closed" do 
+    it "flashes a motion closed message when the motion is closed" do
       motion.update_attribute :closed_at, Date.yesterday
-      post :create, motion_id: motion.id, vote: { position: 'yes' }   
-      
-      flash[:notice].should =~ /motion has already closed/   
+      post :create, motion_id: motion.id, vote: { position: 'yes' }
+      flash[:notice].should =~ /motion has already closed/
     end
 
     it "flashes a permission denied message when the user does not have permission" do
@@ -32,10 +31,8 @@ describe VotesController do
       flash[:notice].should =~ /You do not have permission/
     end
 
-    it 'saves the vote' do
-      vote = double(:vote).as_null_object
-      vote.should_receive(:save)
-      Vote.stub(:new).and_return(vote)
+    it 'calls MotionService::cast_vote' do
+      expect(MotionService).to receive(:cast_vote)
       post :create, motion_id: motion.id, vote: {position: 'yes'}
     end
 
@@ -44,13 +41,6 @@ describe VotesController do
 
       flash[:success].should =~ /Position submitted/
       response.should redirect_to motion
-    end
-  end
-
-  describe "casting a 'block' vote" do
-    it "fires motion_blocked event" do
-      Events::MotionBlocked.should_receive(:publish!)
-      post :create, motion_id: motion.id, vote: { position: 'block' }
     end
   end
 end

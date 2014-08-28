@@ -90,7 +90,7 @@ module GroupsHelper
     icon_button(href: cancel_membership_request_path(membership_request),
                 method: 'delete',
                 text: t(:cancel_membership_request),
-                icon: '/assets/group-dark.png',
+                icon: 'group-dark.png',
                 id: 'membership-requested',
                 class: 'btn-grey',
                 'data-confirm' => t(:confirm_remove_membership_request))

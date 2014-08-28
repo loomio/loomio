@@ -3,6 +3,35 @@ require 'rails_helper'
 describe Discussion do
   let(:discussion) { create :discussion }
 
+  describe ".followers" do
+    let(:follower) { FactoryGirl.create(:user) }
+    let(:unfollower) { FactoryGirl.create(:user) }
+    let(:group_follower) { FactoryGirl.create(:user) }
+    let(:group_member) { FactoryGirl.create(:user) }
+    let(:non_member) { FactoryGirl.create(:user) }
+    let(:group) { discussion.group }
+
+    before do
+      [follower, unfollower, group_follower, group_member].each do |user|
+        group.add_member!(user)
+      end
+
+      DiscussionReader.for(discussion: discussion, user: follower).follow!
+      DiscussionReader.for(discussion: discussion, user: unfollower).unfollow!
+      discussion.group.membership_for(group_follower).follow_by_default!
+    end
+
+    subject do
+      discussion.followers
+    end
+
+    it {should include follower}
+    it {should_not include unfollower}
+    it {should include group_follower}
+    it {should_not include group_member }
+    it {should_not include non_member }
+  end
+
   describe ".comment_deleted!" do
     after do
       discussion.comment_deleted!
@@ -104,35 +133,18 @@ describe Discussion do
 
   end
 
-  describe "#activity" do
-    it "returns all the activity for the discussion" do
-      @user = create :user
-      @group = create :group
-      @group.add_member! @user
-      @discussion = build :discussion, :group => @group, private: true
-      DiscussionService.start_discussion(@discussion)
-      @discussion.add_comment(@user, "this is a test comment", uses_markdown: false)
-      @motion = create :motion, discussion: @discussion
-      @vote = build :vote, :position => 'yes', :motion => @motion
-      MotionService.cast_vote(@vote)
-      activity = @discussion.activity
-      activity[0].kind.should == 'new_discussion'
-      activity[1].kind.should == 'new_comment'
-      activity[2].kind.should == 'new_motion'
-      activity[3].kind.should == 'new_vote'
-    end
-  end
-
   describe "#current_motion" do
     before do
       @discussion = create :discussion
       @motion = create :motion, discussion: @discussion
     end
+
     context "where motion is in open" do
       it "returns motion" do
         @discussion.current_motion.should eq(@motion)
       end
     end
+
     context "where motion close date has past" do
       before do
         @motion.closed_at = 3.days.ago
@@ -153,8 +165,8 @@ describe Discussion do
       @group.add_member! @user2
       @group.add_member! @user3
       @group.add_member! @user4
-      @discussion.add_comment(@user2, "givin a shout out to user3!", uses_markdown: false)
-      @discussion.add_comment(@user3, "thanks 4 thah love usah two!", uses_markdown: false)
+      DiscussionService.add_comment(build :comment, user: @user2, discussion: @discussion)
+      DiscussionService.add_comment(build :comment, user: @user3, discussion: @discussion)
     end
 
     it "should include users who have commented on discussion" do

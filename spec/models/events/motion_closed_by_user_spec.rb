@@ -13,7 +13,7 @@ describe Events::MotionClosedByUser do
       Event.should_receive(:create!).with(kind: 'motion_closed_by_user',
                                           eventable: motion,
                                           user: closer,
-                                          discussion_id: motion.discussion.id)
+                                          discussion: motion.discussion)
       Events::MotionClosedByUser.publish!(motion, closer)
     end
 

@@ -1,20 +1,18 @@
 class Events::MotionClosed < Event
-  after_create :notify_users!
-
   def self.publish!(motion)
-    create!(:kind => "motion_closed", :eventable => motion, :discussion_id => motion.discussion.id)
+    event = create!(kind: 'motion_closed',
+                    eventable: motion,
+                    discussion: motion.discussion)
+
+    motion.followers.email_followed_threads.each do |user|
+      ThreadMailer.delay.motion_closed(user, event)
+    end
+
+    event.notify! motion.author
+    event
   end
 
   def motion
     eventable
   end
-
-  private
-
-  def notify_users!
-    MotionMailer.delay.motion_closed(motion, motion.author.email)
-    notify! motion.author
-  end
-
-  handle_asynchronously :notify_users!
 end

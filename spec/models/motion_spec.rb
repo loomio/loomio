@@ -57,41 +57,6 @@ describe Motion do
     end
   end
 
-  context "events" do
-    before do
-      @user = create :user
-      @group = create :group
-      @group.add_admin! @user
-      @discussion = create :discussion, group: @group
-    end
-    it "fires new_motion event if a motion is created successfully" do
-      motion = build(:motion, discussion: discussion)
-      motion.should_receive(:fire_new_motion_event)
-      motion.save!
-    end
-  end
-
-  context "closed motion" do
-    before :each do
-      @user1 = create(:user)
-      @user2 = create(:user)
-      @user3 = create(:user)
-      @discussion = create :discussion
-      @motion = create(:motion, discussion: @discussion)
-      @motion.group.add_member!(@user2)
-      @motion.group.add_member!(@user3)
-      vote1 = create(:vote, :position => 'yes', :user => @user1, :motion => @motion)
-      vote2 = create(:vote, :position => 'no', :user => @user2, :motion => @motion)
-      @updated_at = @motion.updated_at
-      MotionService.close(@motion)
-    end
-
-    it "stores users who did not vote" do
-      not_voted_ids = DidNotVote.all.collect {|u| u.user.id}
-      not_voted_ids.should include(@user3.id)
-    end
-  end
-
   describe "#members_not_voted_count" do
     let(:motion) { create :motion, discussion: discussion }
 

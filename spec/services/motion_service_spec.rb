@@ -1,37 +1,102 @@
-require_relative '../../app/services/motion_service'
-require 'active_support/all'
+require 'rails_helper'
+#require_relative '../../app/services/motion_service'
+#require 'active_support/all'
 
-module Events
-  class MotionOutcomeCreated
-  end
-  class MotionOutcomeUpdated
-  end
-  class MotionClosed
-  end
-  class MotionClosedByUser
-  end
-  class MotionBlocked
-  end
-  class NewVote
-  end
-end
+#module Events
+  #class MotionOutcomeCreated
+  #end
+  #class MotionOutcomeUpdated
+  #end
+  #class MotionClosed
+  #end
+  #class MotionClosedByUser
+  #end
+  #class NewVote
+  #end
+  #class NewMotion
+  #end
+#end
 
-class Motion
-end
+#class Motion
+#end
+
+#class DiscussionReader
+#end
 
 describe 'MotionService' do
   let(:group) { double(:group, present?: true) }
-  let(:motion) { double(:motion, outcome: "", group: group, :outcome= => true, :outcome_author= => true, :save! => true, save: true) }
+  let(:discussion) { double :discussion }
+  let(:motion) { double :motion,
+                        discussion: discussion,
+                        outcome: "",
+                        author: user,
+                        group: group,
+                        valid?: true,
+                        :outcome= => true,
+                        :outcome_author= => true,
+                        :save! => true,
+                        save: true }
   let(:ability) { double(:ability, :authorize! => true) }
   let(:user) { double(:user, ability: ability) }
-  let(:motion_params) { {outcome: "We won!"} }
   let(:outcome_string) { double(:outcome_string) }
   let(:event) { double(:event) }
+  let(:discussion_reader) { double :discussion_reader, follow!: true }
 
 
   before do
-    Events::MotionOutcomeCreated.stub(:publish!).and_return(event)
-    Events::MotionOutcomeUpdated.stub(:publish!).and_return(event)
+    allow(DiscussionReader).to receive(:for) { discussion_reader }
+    Events::MotionOutcomeCreated.stub(:publish!) { event }
+    Events::MotionOutcomeUpdated.stub(:publish!) { event }
+  end
+
+  describe '#start_motion', focus: true do
+    before do
+      allow(Events::NewMotion).to receive(:publish!)
+    end
+
+    after do
+      MotionService.start_motion(motion)
+    end
+
+    it "authorises the action" do
+      expect(ability).to receive(:authorize!).with(:create, motion)
+    end
+
+    context "motion is valid" do
+
+      before do
+        allow(motion).to receive(:valid?) { true }
+        allow(Events::NewMotion).to receive(:publish!) {event}
+      end
+
+      it "saves the motion" do
+        expect(motion).to receive(:save)
+      end
+
+      it "enfollows the author" do
+        expect(discussion_reader).to receive(:follow!) {true}
+      end
+
+      it "creates an event" do
+        expect(Events::NewMotion).to receive(:publish!).with(motion)
+      end
+
+      it "returns an event" do 
+        expect(MotionService.start_motion(motion)).to be event
+      end
+    end
+
+    context "motion is invalid" do
+      before { allow(motion).to receive(:valid?) {false}}
+
+      it "returns false" do
+        expect(MotionService.start_motion(motion)).to be false
+      end
+
+      it "does not save the motion" do
+        expect(motion).to_not receive(:save)
+      end
+    end
   end
 
   describe '.cast_vote' do
@@ -51,33 +116,8 @@ describe 'MotionService' do
         vote.should_receive(:save).and_return(true)
       end
 
-      context 'position is block' do
-        before do
-          vote.stub(:is_block?).and_return(true)
-          vote.stub(:previous_position_is_block?).and_return(false)
-        end
-        it 'fires motion blocked event' do
-          Events::MotionBlocked.should_receive(:publish!).with(vote)
-        end
-
-        context 'previous position of user was block' do
-          before do
-            vote.stub(:previous_position_is_block?).and_return(true)
-          end
-          it 'does not fire motion blocked event' do
-            Events::MotionBlocked.should_not_receive(:publish!)
-          end
-        end
-      end
-
-      context 'position is not block' do
-        before do
-          vote.stub(:is_block?).and_return(false)
-        end
-
-        it 'fires a new vote event' do
-          Events::NewVote.should_receive(:publish!).with(vote)
-        end
+      it 'fires a new vote event' do
+        Events::NewVote.should_receive(:publish!).with(vote)
       end
     end
 
@@ -182,21 +222,17 @@ describe 'MotionService' do
   end
 
   describe '.create_outcome' do
+    before do
+      motion.stub(:outcome_author)
+      allow(motion).to receive(:outcome_author) { user }
+      allow(motion).to receive(:outcome) { "Agreement and engagement" }
+    end
+
     it 'authorizes the user can set the outcome' do
       ability.should_receive(:authorize!).with(:create_outcome, motion)
-      MotionService.create_outcome(motion, motion_params, user)
-    end
-
-    it 'updates the outcome and outcome_author attributes' do
-      motion.should_receive(:outcome=).with(motion_params[:outcome])
-      motion.should_receive(:outcome_author=).with(user)
       motion.should_receive(:save)
-      MotionService.create_outcome(motion, motion_params, user)
-    end
-
-    it 'creates a motion_outcome_created event' do
       Events::MotionOutcomeCreated.should_receive(:publish!).with(motion, user)
-      MotionService.create_outcome(motion, motion_params, user)
+      MotionService.create_outcome(motion)
     end
 
     context 'outcome is invalid' do
@@ -205,46 +241,12 @@ describe 'MotionService' do
       end
 
       it 'returns false' do
-        MotionService.create_outcome(motion, motion_params, user).should == false
+        MotionService.create_outcome(motion).should == false
       end
 
       it 'does not create an event' do
         Events::MotionOutcomeCreated.should_not_receive(:publish!)
-        MotionService.create_outcome(motion, motion_params, user)
-      end
-    end
-  end
-
-  describe '.update_outcome' do
-    it 'authorizes the user can set the outcome' do
-      ability.should_receive(:authorize!).with(:update_outcome, motion)
-      MotionService.update_outcome(motion, motion_params, user)
-    end
-
-    it 'updates the outcome and outcome_author attributes' do
-      motion.should_receive(:outcome=).with(motion_params[:outcome])
-      motion.should_receive(:outcome_author=).with(user)
-      motion.should_receive(:save)
-      MotionService.update_outcome(motion, motion_params, user)
-    end
-
-    it 'creates a motion_outcome_updated event' do
-      Events::MotionOutcomeUpdated.should_receive(:publish!).with(motion, user)
-      MotionService.update_outcome(motion, motion_params, user)
-    end
-
-    context 'outcome is invalid' do
-      before do
-        motion.stub(:save).and_return false
-      end
-
-      it 'returns false' do
-        MotionService.update_outcome(motion, motion_params, user).should == false
-      end
-
-      it 'does not create an event' do
-        Events::MotionOutcomeUpdated.should_not_receive(:publish!)
-        MotionService.update_outcome(motion, motion_params, user)
+        MotionService.create_outcome(motion)
       end
     end
   end

@@ -2,13 +2,16 @@ module DiscussionsHelper
   include Twitter::Extractor
   include Twitter::Autolink
 
-  def filter_duplicate_activities(activity)
+  def filter_discussion_events(activity)
     last_item = nil
-    filtered_event_kinds = %w[discussion_description_edited discussion_title_edited motion_close_date_edited]
+    ignored_event_kinds = %w[motion_closing_soon user_mentioned]
+    deduplicate_kinds = %w[discussion_description_edited discussion_title_edited motion_close_date_edited]
 
-    activity.map do |item|
+    activity.
+      reject {|item| ignored_event_kinds.include? item.kind }.
+      map do |item|
       next if last_item &&
-              filtered_event_kinds.include?(item.kind) &&
+              deduplicate_kinds.include?(item.kind) &&
               item.user == last_item.user && item.kind == last_item.kind
       last_item = item
     end.compact

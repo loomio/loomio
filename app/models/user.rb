@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   MAX_AVATAR_IMAGE_SIZE_CONST = 1000
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
-  attr_accessor :honeypot
+  attr_accessor :honeypot, :email_new_discussions_and_proposals_group_ids
 
   validates :email, presence: true, uniqueness: true, email: true
   validates_inclusion_of :uses_markdown, in: [true,false]
@@ -105,10 +105,20 @@ class User < ActiveRecord::Base
 
   scope :active, -> { where(deleted_at: nil) }
   scope :inactive, -> { where("deleted_at IS NOT NULL") }
-  scope :subscribed_to_missed_yesterday_email, -> { where(subscribed_to_missed_yesterday_email: true) }
+  scope :email_missed_yesterday, -> { active.where(email_missed_yesterday: true) }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
+  scope :email_followed_threads, -> { active.where(email_followed_threads: true) }
+  scope :dont_email_followed_threads, -> { active.where(email_followed_threads: false) }
+  scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
+  scope :email_new_discussions_for, -> (group) {
+        active.
+        joins(:memberships).
+        where('memberships.group_id = ?', group.id).
+        where('users.email_new_discussions_and_proposals = ?', true).
+        where('memberships.email_new_discussions_and_proposals = ?', true) }
+  scope :email_new_proposals_for, -> (group) { active.email_new_discussions_for(group) }
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
@@ -168,8 +178,14 @@ class User < ActiveRecord::Base
     motions.closed
   end
 
-  def email_notifications_for_group?(group)
-    memberships.where(:group_id => group.id, :subscribed_to_notification_emails => true).present?
+  def email_new_discussions_and_proposals_group_ids
+    memberships.where(email_new_discussions_and_proposals: true).pluck(:group_id)
+  end
+
+  def email_new_discussions_and_proposals_group_ids=(ids)
+    group_ids = ids.reject(&:empty?).map(&:to_i)
+    memberships.update_all(email_new_discussions_and_proposals: false)
+    memberships.where(group_id: group_ids).update_all('email_new_discussions_and_proposals = true')
   end
 
   def is_group_admin?(group=nil)
@@ -239,13 +255,8 @@ class User < ActiveRecord::Base
   end
 
   def deactivate!
-    update_attributes(deleted_at: Time.now,
-                      subscribed_to_missed_yesterday_email: false,
-                      subscribed_to_mention_notifications: false,
-                      subscribed_to_proposal_closure_notifications: false,
-                      avatar_kind: "initials")
-    memberships.update_all(archived_at: Time.now,
-                      subscribed_to_notification_emails: false)
+    update_attributes(deleted_at: Time.now, avatar_kind: "initials")
+    memberships.update_all(archived_at: Time.now)
     membership_requests.where("responded_at IS NULL").destroy_all
   end
 
