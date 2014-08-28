@@ -3,10 +3,13 @@
     = render '/groups/title', group: @group
     %h1= t :members
   .col-md-3#button-container
-    = icon_button(href: new_group_invitation_path(@group), text: t(:invite_people), icon: 'member-18.png', id: 'invite-new-members', class: 'btn-grey')
+    %a.btn.btn-default.btn-block{href: new_group_invitation_path(@group), id: 'invite-new-members'}
+      = t :invite_people
+    %a.btn.btn-default.btn-block{href: "#email-members-modal", "data-toggle" => "modal"}
+      = t(:email_group_members)
+
     #email-members-modal.modal.hidden
       = render "groups/email_members", :group => @group
-    = icon_button "data-toggle" => "modal", href: "#email-members-modal", text: t(:email_group_members), icon: 'email.png', class: 'btn-grey'
 
 
 %table.memberships.table.table-striped
@@ -30,13 +33,13 @@
             = link_to t(:remove_coordinator),
               remove_admin_group_membership_path(@group, membership),
               method: :post,
-              class: 'btn btn-danger',
+              class: 'btn btn-warning',
               :confirm => t(:confirm_remove_coordinator, which_user: user.name)
           - else
             = link_to t(:make_coordinator),
               make_admin_group_membership_path(@group, membership),
               method: :post,
-              class: :btn,
+              class: 'btn btn-primary',
               :confirm => t(:confirm_make_coordinator, which_user: user.name)
           %td=link_to t(:remove),
               group_membership_path(@group, membership),

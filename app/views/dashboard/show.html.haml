@@ -9,7 +9,8 @@
     %section.col-md-3
       #group-actions
         .clearfix
-          = icon_button(href: new_discussion_path, text: t(:start_a_discussion), icon: 'topic-18.png', id: 'start-new-discussion')
+          %a.btn.btn-primary.btn-block{href: new_discussion_path, id: 'start-new-discussion'}
+            = t(:start_a_discussion)
       =render 'groups'
       .panel.panel-default.previous-discussions-panel
         .panel-heading

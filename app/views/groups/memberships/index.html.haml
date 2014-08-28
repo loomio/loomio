@@ -4,7 +4,8 @@
     %h1= t :members
   .col-md-3#button-container
     - if can?(:add_members, @group)
-      = icon_button(href: new_group_invitation_path(@group), text: t(:invite_people), icon: 'member-18.png', id: 'invite-new-members', class: 'btn-grey')
+      %a.btn.btn-default{href: new_group_invitation_path(@group), id: 'invite-new-members'}
+        = t :invite_people
 
 .row
   .col-md-12
