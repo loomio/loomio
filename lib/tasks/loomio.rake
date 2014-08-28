@@ -21,6 +21,8 @@ namespace :loomio do
     DiscussionReader.find_each do |dr|
       progress_bar.increment
       next unless dr.valid?
+      next unless dr.discussion.present?
+      next unless dr.user.present?
       dr.viewed!(dr.discussion.last_activity_at) unless dr.unread_content_exists?
     end
   end
