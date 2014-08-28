@@ -3,7 +3,7 @@ class DiscussionReader < ActiveRecord::Base
   belongs_to :user
   belongs_to :discussion
 
-  validates_presence_of :discussion_id, :user_id
+  validates_presence_of :discussion, :user
   validates_uniqueness_of :user_id, :scope => :discussion_id
 
   scope :for_user, -> (user) { where(user_id: user.id) }
