@@ -14,7 +14,7 @@
   -else
     - # no discussions visible
     - if sifting_unread? or sifting_followed?
-      =(t :'discussion_list.empty.no_discussions_matching_filters')
+      =(t :'discussion_list.empty.no_discussions_matching_filters_html', link: dashboard_path)
     - else
       - if @group
         - if @group.public_discussions_only?
