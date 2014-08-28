@@ -85,7 +85,7 @@ class ThreadMailer < BaseMailer
     I18n.with_locale(locale) do
       mail  to: @recipient.email,
             from: from_user_via_loomio(@author),
-            reply_to: reply_to_address(discussion: @discussion, user: @recipient),
+            reply_to: reply_to_address_with_group_name(group: @group, discussion: @discussion, user: @recipient),
             subject: thread_subject(non_following_subject)
     end
   end

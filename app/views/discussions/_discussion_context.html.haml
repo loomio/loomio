@@ -29,12 +29,12 @@
       - if can? :follow, @discussion
         .following-status
           - if @discussion_reader.following?
-            = link_to unfollow_discussion_path(@discussion), method: :post, class: "btn" do
+            = link_to unfollow_discussion_path(@discussion), method: :post, class: "btn js-tooltip", title: t(:"discussion_context.click_to_unfollow") do
               %i.fa.fa-volume-up
               = t :"common.following"
             %p= t :"discussion_context.following_details"
           - else
-            = link_to follow_discussion_path(@discussion), method: :post, class: "btn" do
+            = link_to follow_discussion_path(@discussion), method: :post, class: "btn js-tooltip", title: t(:"discussion_context.click_to_follow") do
               %i.fa.fa-volume-down
               = t :"common.not_following"
             %p= t :"discussion_context.not_following_details"
