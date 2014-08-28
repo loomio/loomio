@@ -10,7 +10,7 @@ Scenario: Following a group
 
 Scenario: Unfollowing a group
   Given I am following the group
-  When I click "Following" on the group page
+  When I click 'Following' on the group page
   Then I should not be following discussions by default
 
 Scenario: New discussion in followed group
