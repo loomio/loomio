@@ -3,7 +3,8 @@ class Events::UserMentioned < Event
     event = create!(kind: 'user_mentioned',
                     eventable: comment,
                     discussion: comment.discussion,
-                    user: mentioned_user)
+                    user: mentioned_user,
+                    created_at: comment.created_at)
 
     DiscussionReader.for(discussion: comment.discussion,
                          user: mentioned_user).follow!
