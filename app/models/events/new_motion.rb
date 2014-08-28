@@ -2,7 +2,7 @@ class Events::NewMotion < Event
   def self.publish!(motion)
     event = create!(kind: "new_motion",
                     eventable: motion,
-                    discussion_id: motion.discussion.id)
+                    discussion: motion.discussion)
 
     DiscussionReader.for(discussion: motion.discussion,
                          user: motion.author).follow!

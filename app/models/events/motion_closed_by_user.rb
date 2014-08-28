@@ -5,7 +5,7 @@ class Events::MotionClosedByUser < Events::MotionClosed
     create!(kind: "motion_closed_by_user",
             eventable: motion,
             user: closer,
-            discussion_id: motion.discussion.id)
+            discussion: motion.discussion)
   end
 
   private

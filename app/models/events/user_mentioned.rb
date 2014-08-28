@@ -2,6 +2,7 @@ class Events::UserMentioned < Event
   def self.publish!(comment, mentioned_user)
     event = create!(kind: 'user_mentioned',
                     eventable: comment,
+                    discussion: comment.discussion,
                     user: mentioned_user)
 
     DiscussionReader.for(discussion: comment.discussion,

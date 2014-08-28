@@ -2,7 +2,7 @@ class Events::NewComment < Event
   def self.publish!(comment)
     event = create!(kind: 'new_comment',
                     eventable: comment,
-                    discussion_id: comment.discussion.id)
+                    discussion: comment.discussion)
 
     DiscussionReader.for(user: comment.author,
                          discussion: comment.discussion).follow!

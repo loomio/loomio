@@ -4,7 +4,7 @@ class Events::MotionOutcomeCreated < Event
   def self.publish!(motion, user)
     create!(kind: "motion_outcome_created",
             eventable: motion,
-            discussion_id: motion.discussion.id,
+            discussion: motion.discussion,
             user: user)
   end
 
