@@ -3,7 +3,6 @@
 - motion = discussion.current_motion
 - motion_reader = @motion_reader_cache.get_for(motion) if motion
 - last_vote = @last_vote_cache.get_for(motion) if motion
-
 .clearfix
   %div.discussion-preview{ class: css_classes_for_discussion_preview(discussion, discussion_reader) }
     %a.selector-discussion-link{ href: discussion_path(discussion) }
@@ -13,8 +12,7 @@
             .activity-icon{class: "position-#{last_vote.position}-icon"}
 
       .discussion-title
-        = truncate(discussion.title, :length => 60, :separator => ' ')
-
+        = truncate(discussion.title, :length => 80, :separator => '...')
         - if @group.nil?
           .group-name
             - if discussion.group.is_subgroup?

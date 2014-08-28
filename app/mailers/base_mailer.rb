@@ -4,16 +4,17 @@ class BaseMailer < ActionMailer::Base
   include ERB::Util
   include ActionView::Helpers::TextHelper
   include EmailHelper
-  #include Roadie::Rails::Mailer
   include Roadie::Rails::Automatic
 
   add_template_helper(ReadableUnguessableUrlsHelper)
 
-  UTM_EMAIL = { utm_campaign: 'notifications', utm_medium: 'email' }
-
   default :from => "Loomio <notifications@loomio.org>"
+  before_action :utm_hash
 
   protected
+  def utm_hash
+    @utm_hash = { utm_medium: 'email', utm_source: action_name, utm_campaign: mailer_name }
+  end
 
   def roadie_options
     super.merge(url_options: {host: ActionMailer::Base.default_url_options[:host]})

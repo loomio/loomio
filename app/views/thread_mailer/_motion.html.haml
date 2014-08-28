@@ -1,0 +1,23 @@
+.light-proposal
+  %table
+    %tr
+      %td.icon
+        = render 'thread_mailer/motion_pie', motion: motion
+      %td.content
+        %h3
+          = t(:proposal)+":"
+          = link_to motion.name, motion_url(motion, @utm_hash)
+        %p
+          %em= t(:"email.by_who", person: motion.author.name)
+
+        - if motion.closed?
+          %b= t(:closed) + " " + time_formatted_relative_to_age(motion.closing_at)
+          - if motion.outcome.present?
+            = render_email_plaintext motion.outcome
+          - else
+            = render_email_plaintext motion.description
+        - else
+          = render_email_plaintext motion.description
+        - unless motion.user_has_voted?(@user)
+          %h4.have-say-title= t(:"help.have_your_say")
+          =render 'thread_mailer/vote_buttons', motion: motion

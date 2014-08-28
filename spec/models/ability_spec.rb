@@ -241,8 +241,8 @@ describe "User abilities" do
     let(:user_discussion) { create :discussion, group: group, author: user }
     let(:new_discussion) { user.authored_discussions.new(
                            group: group, title: "new discussion") }
-    let(:user_comment) { discussion.add_comment(user, "hello") }
-    let(:another_user_comment) { discussion.add_comment(other_user, "hello") }
+    let(:user_comment) { create :comment, discussion: discussion, user: user }
+    let(:another_user_comment) { create :comment, discussion: discussion }
     let(:user_motion) { create(:motion, author: user, discussion: discussion) }
     let(:user_vote) { create(:vote, user: user, motion: user_motion)}
     let(:other_users_motion) { create(:motion, author: other_user, discussion: discussion) }
@@ -417,7 +417,7 @@ describe "User abilities" do
   context "admin of a group" do
     let(:group) { create(:group) }
     let(:discussion) { create :discussion, group: group }
-    let(:another_user_comment) { discussion.add_comment(other_user, "hello", uses_markdown: false) }
+    let(:another_user_comment) { create :comment, discussion: discussion, user: other_user }
     let(:other_users_motion) { create(:motion, author: other_user, discussion: discussion) }
     let(:membership_request) { create(:membership_request, group: group, requestor: non_member) }
 
@@ -476,7 +476,7 @@ describe "User abilities" do
       let(:vote) { create(:vote, user: discussion.author, motion: motion) }
       let(:new_discussion) { user.authored_discussions.new(
                              group: group, title: "new discussion") }
-      let(:another_user_comment) { discussion.add_comment(discussion.author, "hello", uses_markdown: false) }
+      let(:another_user_comment) { create :comment, discussion: discussion }
       let(:my_membership_request) { create(:membership_request, group: group, requestor: user) }
       let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }
 
@@ -515,7 +515,7 @@ describe "User abilities" do
       let(:motion) { create(:motion, discussion: private_discussion) }
       let(:new_discussion) { user.authored_discussions.new(
                              group: group, title: "new discussion") }
-      let(:another_user_comment) { private_discussion.add_comment(private_discussion.author, "hello", uses_markdown: false) }
+      let(:another_user_comment) { create :comment, discussion: private_discussion }
       let(:my_membership_request) { create(:membership_request, group: group, requestor: user) }
       let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }
 

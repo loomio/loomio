@@ -1,28 +1,23 @@
 class Events::UserMentioned < Event
-  after_create :notify_users!
-
   def self.publish!(comment, mentioned_user)
-    create!(kind: "user_mentioned", eventable: comment, user: mentioned_user)
+    event = create!(kind: 'user_mentioned',
+                    eventable: comment,
+                    discussion: comment.discussion,
+                    user: mentioned_user,
+                    created_at: comment.created_at)
+
+    DiscussionReader.for(discussion: comment.discussion,
+                         user: mentioned_user).follow!
+
+    # in app notification
+    event.notify!(mentioned_user)
+
+    # we don't email anything. New comment will handle that
+
+    event
   end
 
   def comment
     eventable
   end
-
-  def mentioned_user
-    user
-  end
-
-  private
-
-  def notify_users!
-    unless mentioned_user == comment.user
-      if mentioned_user.subscribed_to_mention_notifications?
-        UserMailer.delay.mentioned(mentioned_user, comment)
-      end
-      notify!(mentioned_user)
-    end
-  end
-
-  handle_asynchronously :notify_users!
 end

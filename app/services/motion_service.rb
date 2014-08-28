@@ -1,4 +1,12 @@
 class MotionService
+  def self.start_motion(motion)
+    motion.author.ability.authorize! :create, motion
+    return false unless motion.valid?
+    motion.save
+    DiscussionReader.for(discussion: motion.discussion, user: motion.author).follow!
+    Events::NewMotion.publish!(motion)
+  end
+
   def self.update_motion(motion: motion, params: params, user: user)
 
     if motion.closing_at.to_s == Time.zone.parse(params[:closing_at]).to_s
@@ -31,14 +39,7 @@ class MotionService
     vote.user.ability.authorize! :vote, vote.motion
 
     if vote.save
-      if vote.is_block?
-        unless vote.previous_position_is_block?
-          Events::MotionBlocked.publish!(vote)
-        end
-      else
-        Events::NewVote.publish!(vote)
-      end
-      true
+      Events::NewVote.publish!(vote)
     end
   end
 
@@ -73,23 +74,19 @@ class MotionService
     Events::MotionClosedByUser.publish!(motion, user)
   end
 
-  def self.create_outcome(motion, motion_params, user)
+  def self.create_outcome(motion)
+    user = motion.outcome_author
     user.ability.authorize! :create_outcome, motion
 
-    motion.outcome = motion_params[:outcome]
-    motion.outcome_author = user
     return false unless motion.save
-
     Events::MotionOutcomeCreated.publish!(motion, user)
   end
 
-  def self.update_outcome(motion, motion_params, user)
+  def self.update_outcome(motion)
+    user = motion.outcome_author
     user.ability.authorize! :update_outcome, motion
 
-    motion.outcome = motion_params[:outcome]
-    motion.outcome_author = user
     return false unless motion.save
-
     Events::MotionOutcomeUpdated.publish!(motion, user)
   end
 end

@@ -1,5 +1,6 @@
 Given(/^I have a comment on the discussion$/) do
-  @comment = @discussion.add_comment(@user, 'I do declare!')
+  @comment = FactoryGirl.build(:comment, discussion: @discussion, user: @user)
+  DiscussionService.add_comment @comment
 end
 
 When(/^I edit my comment$/) do
@@ -14,7 +15,8 @@ Then(/^I should see my comment has updated in the discussion$/) do
 end
 
 Given(/^there is an edited comment in the discussion$/) do
-  @comment = @discussion.add_comment(@user, 'I do declare!')
+  @comment = FactoryGirl.build(:comment, discussion: @discussion, user: @user, body: 'I do declare')
+  DiscussionService.add_comment @comment
   @comment.update_attributes(body: 'I never declare!', edited_at: Time.zone.now)
 end
 
@@ -24,6 +26,6 @@ When(/^I view the history of that comment$/) do
 end
 
 Then(/^I should see the old and new versions$/) do
-  page.should have_content 'I do declare!'
-  page.should have_content 'I never declare!'
+  page.should have_content 'I do declare'
+  page.should have_content 'I never declare'
 end

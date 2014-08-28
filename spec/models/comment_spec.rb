@@ -16,7 +16,7 @@ describe Comment do
     context "a newer comment exists" do
       before do
         comment
-        discussion.add_comment(discussion.author, "another comment")
+        DiscussionService.add_comment(build :comment, discussion: discussion)
       end
       it { should be false }
     end
@@ -40,16 +40,9 @@ describe Comment do
 
   describe "creating a comment on a discussion" do
     it "updates discussion.last_comment_at" do
-      discussion.last_comment_at = 2.days.ago
-      discussion.save!
-      comment = discussion.add_comment discussion.author, "hi", uses_markdown: false
-      discussion.reload
+      discussion.update_attribute(:last_comment_at, 2.days.ago)
+      DiscussionService.add_comment build(:comment, user: discussion.author, discussion: discussion)
       discussion.last_comment_at.to_s.should == comment.created_at.to_s
-    end
-
-    it 'fires a new_comment! event' do
-      Events::NewComment.should_receive(:publish!)
-      comment = discussion.add_comment discussion.author, "hi", uses_markdown: false
     end
   end
 
@@ -102,31 +95,26 @@ describe Comment do
   describe "#mentioned_group_members" do
     before do
       @group = create :group
-      @user = create :user
-      @discussion = create :discussion, author: @user, group: @group
-      Event.stub(:send_new_comment_notifications!)
-      @user.stub(:subscribed_to_mention_notifications?).and_return(true)
+      @member = create :user
+      @group.add_member! @member
+      @discussion = create :discussion, group: @group
     end
+
     context "user mentions another group member" do
-      before do
-        @member = create :user
-        @group.add_member! @member
-        @comment = @discussion.add_comment @user, "@#{@member.username}", uses_markdown: false
-      end
+      let(:comment) { create :comment, discussion: @discussion, body: "@#{@member.username}" }
+
       it "returns the mentioned user" do
-        @comment.mentioned_group_members.should include(@member)
-      end
-      it "should not return an un-mentioned user" do
-        member1 = create :user
-        @group.add_member! member1
-        @comment.mentioned_group_members.should_not include(member1)
+        comment.mentioned_group_members.should include(@member)
       end
     end
+
     context "user mentions a non-group member" do
+      let(:non_member) { create :user }
+      let(:comment) { create :comment, discussion: @discussion, body: "@#{non_member.username}" }
+
       it "should not return a mentioned non-member" do
         non_member = create :user
-        @comment = @discussion.add_comment @user, "@#{non_member.username}", uses_markdown: false
-        @comment.mentioned_group_members.should_not include(non_member)
+        comment.mentioned_group_members.should_not include(non_member)
       end
     end
   end

@@ -6,8 +6,7 @@ class InboxController < BaseController
   end
 
   def size
-    load_inbox
-    size = @inbox.items_count
+    size = GroupDiscussionsViewer.for(user: current_user).unread.count
 
     if size > 100
       render text: '100+'

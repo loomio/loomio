@@ -1,4 +1,5 @@
 class GroupsController < GroupBaseController
+  include ApplicationHelper
   before_filter :authenticate_user!, except: :show
 
   before_filter :load_group, :except => [:create, :new]
@@ -73,11 +74,20 @@ class GroupsController < GroupBaseController
   def show
     @discussion = Discussion.new(group_id: @group.id)
 
-    @discussions = GroupDiscussionsViewer.for(group: @group, user: current_user).
-                                          joined_to_current_motion.
-                                          preload(:current_motion, {:group => :parent}).
-                                          order('motions.closing_at ASC, last_activity_at DESC').
-                                          page(params[:page]).per(20)
+    @discussions = GroupDiscussionsViewer.for(group: @group, user: current_user)
+
+    if sifting_unread?
+      @discussions = @discussions.unread
+    end
+
+    if sifting_followed?
+      @discussions = @discussions.following
+    end
+
+    @discussions = @discussions.joined_to_current_motion.
+                                preload(:current_motion, {:group => :parent}).
+                                order('motions.closing_at ASC, last_activity_at DESC').
+                                page(params[:page]).per(20)
 
     @closed_motions = Queries::VisibleMotions.new(user: current_user, groups: @group).order('closed_at desc')
     @feed_url = group_url @group, format: :xml if @group.is_visible_to_public?
@@ -110,6 +120,18 @@ class GroupsController < GroupBaseController
   def members_autocomplete
     users = @group.users.where('username ilike :term or name ilike :term ', {term: "%#{params[:q]}%"})
     render json: users.map{|u| {name: "#{u.name} #{u.username}", username: u.username, real_name: u.name} }
+  end
+
+  def follow
+    membership = @group.membership_for(current_user)
+    membership.follow_by_default!
+    redirect_to @group
+  end
+
+  def unfollow
+    membership = @group.membership_for(current_user)
+    membership.dont_follow_by_default!
+    redirect_to @group
   end
 
   private

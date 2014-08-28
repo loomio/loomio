@@ -1,0 +1,8 @@
+\
+\--
+= t :"email.thread_mailer.footer_text"
+= link
+\
+= t :"email.thread_mailer.change_preferences"
+=raw email_preferences_url(@utm_hash.merge(unsubscribe_token: @recipient.unsubscribe_token))
+

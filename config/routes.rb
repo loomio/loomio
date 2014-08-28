@@ -41,6 +41,8 @@ Loomio::Application.routes.draw do
 
   resources :groups, path: 'g', only: [:new, :create, :edit, :update] do
     member do
+      post :follow
+      post :unfollow
       post :join
       post :add_members
       post :hide_next_steps
@@ -75,6 +77,15 @@ Loomio::Application.routes.draw do
     end
   end
 
+  scope module: :groups do
+    resources :manage_membership_requests, only: [], as: 'membership_requests' do
+      member do
+        post :approve
+        post :ignore
+      end
+    end
+  end
+
   scope module: :groups, path: 'g', slug: slug_regex do
     get    ':id(/:slug)', action: 'show' #, as: :group
     patch    ':id(/:slug)', action: 'update'
@@ -83,12 +94,6 @@ Loomio::Application.routes.draw do
   end
 
   scope module: :groups do
-    resources :manage_membership_requests, only: [], as: 'membership_requests' do
-      member do
-        post :approve
-        post :ignore
-      end
-    end
   end
 
   constraints(GroupSubdomainConstraint) do
@@ -119,6 +124,8 @@ Loomio::Application.routes.draw do
     resources :invitations, only: [:new]
 
     member do
+      post :follow
+      post :unfollow
       post :update_description
       post :update
       post :add_comment
@@ -175,6 +182,7 @@ Loomio::Application.routes.draw do
       get   '/email_preferences', action: 'edit',   as: :email_preferences
       put   '/email_preferences', action: 'update', as: :update_email_preferences
       get   '/mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
+      get   'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
     end
 
     scope module: :change_password do
