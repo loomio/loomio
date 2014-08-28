@@ -10,7 +10,7 @@
   .legend {
     font-size: .85em;
     float: left;
-    width: 100px;
+    width: 140px;
     padding-left: 3em;
     padding-top: 6em;
     color: $mid-grey;
@@ -198,14 +198,15 @@
   .validate-length { margin-left: 0px; height: 65px; }
 
   .vote-buttons {
+    a:hover{background-color: $light-grey;}
     .btn {
       border-radius: 5px;
       border: 1px solid $light-grey;
       float: left;
       margin: 10px 10px 15px 0;
       padding: 3px;
-      width: 40px;
-      height:40px;
+      width: 50px;
+      height:50px;
       img {
         hight:40px;
         width:40px;
@@ -276,7 +277,9 @@ table.jqplot-table-legend {
 #motion-form{
   .timezone{
     float: right;
-    margin-top: 26px;
+    margin-top: 34px;
+    font-size: 0.9em;
+    padding-left: 0.2em;
     text-align: right;
   }
   textarea { min-height: 200px; }

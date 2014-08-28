@@ -964,9 +964,6 @@ en:
         description: "If you have a moment, tell us about your group"
 
     placeholders:
-      discussion:
-        title: "Title"
-        description: "Give some context..."
       membership_request:
         introduction: "Write a few words about who you are and why you would like to join %{group_name}."
       motion:
@@ -1216,6 +1213,7 @@ en:
     please_wait: "Please wait"
     privacy: "Privacy"
     private: "Private"
+    permissions: "Permissions"
     public: "Public"
     email: "Email"
     start_group: "Start group!"

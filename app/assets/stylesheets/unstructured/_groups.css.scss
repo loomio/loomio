@@ -2,7 +2,7 @@ body.groups {
   &.edit, &.new, &.create, &.update {
     .described-label {
       i {
-        font-size: 0.9em;
+        /*font-size: 0.9em;*/
         color: $mid-grey;
       }
     }
@@ -215,7 +215,6 @@ form.group-settings{
     box-sizing:border-box;
     height: 2em;
   }
-  input#group_form_submit { margin-top: 62px; }
   label span:before { content: '- '; }
   .control-label{ font-weight: bold; }
   .tab-content{ padding: 1em 0.5em; }
@@ -227,6 +226,9 @@ form.group-settings{
     }
   }
   .disabled { color:#ccc; }
+  .hint{
+    margin-top: 1em;
+  }
 }
 
 .btn-default-legacy {

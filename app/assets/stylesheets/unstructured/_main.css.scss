@@ -401,3 +401,39 @@ a.btn-icon:hover { color: $dark-grey; }
 .checkbox { padding-left: 20px; }
 
 
+/* hacks for bootstrap 3 + simpleform */
+form{
+  .radio {
+    margin-top: 0px;
+  }
+  .radio input[type="radio"] {
+    width: 2em;
+    box-shadow: none;
+    margin-left: 0;
+    margin-right: -20px;
+    clear: both;
+  }
+  .radio label{
+    margin-top: 0.5em;
+  }
+  .radio_buttons label{
+    margin-bottom: 0;
+    width: 95%;
+  }
+  .radio_buttons.form-control{
+    height: 24px;
+  }
+  .form-group.boolean{
+    margin-bottom: 0;
+    float: left;
+    clear: both;
+    cursor: pointer;
+    font-weight: normal;
+  }
+  .boolean-options label{
+    cursor: pointer;
+    font-weight: normal;
+    width: 95%;
+    margin-left: 0.5em;
+  }
+}

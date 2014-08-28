@@ -4,11 +4,11 @@
       .form-group
         - if params[:group_id].blank?
           %p= t "discussion_form.new.who"
-          = f.collection_select :group_id, current_user.groups_discussions_can_be_started_in, :id, :full_name, {include_blank: true}
+          = f.collection_select :group_id, current_user.groups_discussions_can_be_started_in, :id, :full_name, {include_blank: true}, class: 'form-control'
         - else
           = f.input :group_id, :as => :hidden
-      = f.input :title, autofocus: true, input_html: {class: 'js-warn-before-navigating-away'}, label: false
-      = f.input :description, input_html: {class: 'js-warn-before-navigating-away'}, label: false
+      = f.input :title, autofocus: true, input_html: {class: 'js-warn-before-navigating-away'}
+      = f.input :description, input_html: {class: 'js-warn-before-navigating-away'}
       .dropdown#discussion-markdown-dropdown.global-markdown-setting
         %a.dropdown-toggle{href:'#discussion-markdown-dropdown', id:'discussion-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
           = markdown_img(discussion.uses_markdown)
@@ -22,21 +22,21 @@
         - if group.is_visible_to_parent_members?
           .hidden-group-discussion-privacy
             %i.fa.fa-lock
-            %span.subhead= t :'common.private'
-            .description= t :'discussion_form.privacy.will_be_private_to_parent_group', parent_group_name: group.parent.name, group_name: group.name
+            = t :'common.private'
+            = t :'discussion_form.privacy.will_be_private_to_parent_group', parent_group_name: group.parent.name, group_name: group.name
             = f.input_field :private, as: :hidden, value: true
         - else
           - if group.private_discussions_only?
             .hidden-group-discussion-privacy
               %i.fa.fa-lock
-              %span.subhead= t :'common.private'
-              .description= t :'discussion_form.privacy.will_be_private_to_group', group_name: group.name
+              = t :'common.private'
+              = t :'discussion_form.privacy.will_be_private_to_group', group_name: group.name
               = f.input_field :private, as: :hidden, value: true
           - elsif group.public_discussions_only?
             .hidden-group-discussion-privacy
               %i.fa.fa-globe
-              %span.subhead= t :'common.public'
-              .description= t :'discussion_form.privacy.will_be_public'
+              = t :'common.public'
+              = t :'discussion_form.privacy.will_be_public'
               = f.input_field :private, as: :hidden, value: false
           - else
             = f.input :private, as: :radio_buttons, collection: discussion_privacy_options(discussion), label: t('simple_form.labels.group.privacy')
