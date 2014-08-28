@@ -26,14 +26,15 @@ namespace :loomio do
   end
 
   task fix_unread: :environment do
-    puts "Correcting slightly wrong last_read_at values"
+    puts "Recounting discussion reader counts"
     progress_bar = ProgressBar.create( format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: DiscussionReader.count )
+
     DiscussionReader.find_each do |dr|
       progress_bar.increment
       next unless dr.valid?
       next unless dr.discussion.present?
       next unless dr.user.present?
-      dr.viewed!(dr.discussion.last_activity_at) unless dr.unread_content_exists?
+      dr.reset_counts!
     end
   end
 end
