@@ -63,7 +63,6 @@ Loomio::Application.configure do
       :domain         => ENV['SMTP_DOMAIN']
     }
     config.action_mailer.raise_delivery_errors = true
-    # Email admin when server gets exceptions!
   else
     config.action_mailer.delivery_method = :test
   end
