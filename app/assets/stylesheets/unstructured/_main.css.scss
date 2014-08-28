@@ -71,8 +71,6 @@ ul, ol, li {
   padding: 0;
 }
 
-input, textarea { width: 100%; }
-
 @media (min-width: 1200px) {
   .container{ max-width: 970px; }
 }
@@ -289,7 +287,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .footer {
   border-top: 2px solid $lighter-grey;
   margin-top: 40px;
-  padding: 10px 0 14px 0;
+  padding: 10px 0 34px 0;
   a {
     color: $dark-grey;
     padding: 0 3px;
