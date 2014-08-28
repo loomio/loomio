@@ -42,7 +42,7 @@
         .edit-icon-placeholder
       .logo-placeholder
       ~ render_rich_text(@group.description)
-    = render "application/filter_discussions_buttons"
+    = render "application/filter_discussions_buttons" if can? :follow, @group
     = render 'discussions/discussion_list'
 
   .span3
