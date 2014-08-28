@@ -505,8 +505,7 @@ en:
     empty:
       no_discussions: "There are no discussions in any of your groups."
       no_discussions_in_group: "This group does not have any discussions yet."
-      no_unread_discussions: "There are no unread discussions."
-      no_followed_discussions: "There are no followed discussions."
+      no_discussions_matching_filters: "There are no discussions matching these filters."
       no_public_discussions: "There are no public discussions in this group."
       discussions_are_private: "All discussions in this group are private."
       request_membership_html: "To see private discussions, <a href='%{href}'>request to join the group.</a>"
