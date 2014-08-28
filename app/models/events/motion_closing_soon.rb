@@ -1,8 +1,7 @@
 class Events::MotionClosingSoon < Event
   def self.publish!(motion)
     event = create!(kind: "motion_closing_soon",
-                    eventable: motion,
-                    discussion: motion.discussion)
+                    eventable: motion)
 
     motion.followers.
            email_followed_threads.each do |user|

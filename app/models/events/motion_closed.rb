@@ -1,8 +1,7 @@
 class Events::MotionClosed < Event
   def self.publish!(motion)
     event = create!(kind: 'motion_closed',
-                    eventable: motion,
-                    discussion: motion.discussion)
+                    eventable: motion)
 
     motion.followers.email_followed_threads.each do |user|
       ThreadMailer.delay.motion_closed(user, event)

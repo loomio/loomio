@@ -3,8 +3,7 @@ class Events::CommentLiked < Event
 
   def self.publish!(comment_vote)
     create!(kind: "comment_liked",
-            eventable: comment_vote,
-            discussion: comment_vote.discussion)
+            eventable: comment_vote)
   end
 
   def comment_vote
