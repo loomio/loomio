@@ -98,6 +98,11 @@ Given(/^I click "(.*?)" on the group page$/) do |arg1|
   click_on arg1
 end
 
+Given(/^I click 'Following' on the group page$/) do
+  visit group_path(@group)
+  find('.cuke-unfollow-group').click
+end
+
 Then(/^I should get an email about the new discussion$/) do
   ActionMailer::Base.deliveries.last.to.should include @user.email
   ActionMailer::Base.deliveries.last.subject.should == @discussion.title
@@ -168,7 +173,7 @@ end
 
 Given(/^I click 'Not Following' on the discussion page$/) do
   visit discussion_path(@discussion)
-  click_on 'Not following'
+  find('.cuke-follow').click
 end
 
 When(/^I am on the dashboard$/) do

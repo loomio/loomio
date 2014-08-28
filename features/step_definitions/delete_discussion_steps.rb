@@ -12,7 +12,7 @@ Then /^I should be directed to the group page$/ do
 end
 
 Then /^I should not see the discussion in the list of discussions$/ do
-  find('#group-discussions').should_not have_content(@discussion)
+  page.should_not have_content(@discussion)
 end
 
 Then /^I should see a message notifying me of the deletion$/ do
