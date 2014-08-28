@@ -2,7 +2,7 @@ module DiscussionsHelper
   include Twitter::Extractor
   include Twitter::Autolink
 
-  def filter_duplicate_activities(activity)
+  def filter_discussion_events(activity)
     last_item = nil
     filtered_event_kinds = %w[discussion_description_edited discussion_title_edited motion_close_date_edited]
 
