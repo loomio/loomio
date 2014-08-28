@@ -4,7 +4,8 @@
       .group-title
         %h1.home-title
           - if sifting_unread? or sifting_followed?
-            = link_to t(:'common.dashboard'), dashboard_path
+            %a.js-tooltip{href: dashboard_path, title: t(:"discussion_list.clear_filters")}
+              = t(:'common.dashboard')
           - else
             = t(:'common.dashboard')
         = render "application/filter_discussions_buttons"
