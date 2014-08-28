@@ -7,6 +7,10 @@ module EmailHelper
     pairs.join('&')+"@#{ENV['REPLY_HOSTNAME']}"
   end
 
+  def reply_to_address_with_group_name(group: group, discussion: discussion, user: user)
+    "#{group.full_name} <#{reply_to_address(discussion: discussion, user: user)}>"
+  end
+
   def render_email_plaintext(text)
     Rinku.auto_link(simple_format(html_escape(text)), :all, 'target="_blank"').html_safe
   end
