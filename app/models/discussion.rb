@@ -41,8 +41,11 @@ class Discussion < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :comment_likes, through: :comments, source: :comment_votes
   has_many :commenters, -> { uniq }, through: :comments, source: :user
+
+
   has_many :events, -> { includes :user }, as: :eventable, dependent: :destroy
   has_many :items, -> { includes(eventable: :user).order(created_at: :asc) }, class_name: 'Event'
+
   has_many :discussion_readers
 
   has_many :explicit_followers,
