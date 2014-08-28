@@ -13,10 +13,8 @@
 
   -else
     - # no discussions visible
-    - if sifting_unread?
-      =(t :'discussion_list.empty.no_unread_discussions')
-    - elsif sifting_followed?
-      =(t :'discussion_list.empty.no_followed_discussions')
+    - if sifting_unread? or sifting_followed?
+      =(t :'discussion_list.empty.no_discussions_matching_filters')
     - else
       - if @group
         - if @group.public_discussions_only?
