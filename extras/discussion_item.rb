@@ -40,6 +40,8 @@ class DiscussionItem
         DiscussionItems::MotionNameEdited.new(event, event_item)
       when 'motion_description_edited'
         DiscussionItems::MotionDescriptionEdited.new(event, event_item)
+      else
+        raise "unhandled event kind: #{event.kind}"
     end
   end
 end
