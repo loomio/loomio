@@ -2,7 +2,8 @@ class Events::NewVote < Event
   def self.publish!(vote)
     event = create!(kind: 'new_vote',
                     eventable: vote,
-                    discussion: vote.motion.discussion)
+                    discussion: vote.motion.discussion,
+                    created_at: vote.created_at)
 
     DiscussionReader.for(discussion: vote.motion.discussion,
                          user: vote.author).follow!
