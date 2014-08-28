@@ -105,7 +105,7 @@ class User < ActiveRecord::Base
 
   scope :active, -> { where(deleted_at: nil) }
   scope :inactive, -> { where("deleted_at IS NOT NULL") }
-  scope :subscribed_to_missed_yesterday_email, -> { active.where(subscribed_to_missed_yesterday_email: true) }
+  scope :email_missed_yesterday, -> { active.where(email_missed_yesterday: true) }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
