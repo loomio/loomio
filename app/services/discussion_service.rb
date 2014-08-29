@@ -35,12 +35,11 @@ class DiscussionService
   def self.start_discussion(discussion)
     user = discussion.author
     discussion.inherit_group_privacy!
+    return false unless discussion.valid?
 
     user.ability.authorize! :create, discussion
-
-    return false unless discussion.save
+    discussion.save!
     user.update_attributes(uses_markdown: discussion.uses_markdown)
-
     Events::NewDiscussion.publish!(discussion)
   end
 
