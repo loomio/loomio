@@ -18,9 +18,11 @@ class DiscussionService
       author = user_or_comment
     end
 
+    return false unless comment.valid?
+
     author.ability.authorize! :add_comment, comment.discussion
 
-    return false unless comment.save
+    comment.save!
 
     comment.discussion.update_attribute(:last_comment_at, comment.created_at)
 
@@ -54,19 +56,18 @@ class DiscussionService
       discussion.iframe_src = params[:iframe_src]
     end
 
-    if discussion.valid?
-      if discussion.title_changed?
-        Events::DiscussionTitleEdited.publish!(discussion, user)
-      end
+    return false unless discussion.valid?
 
-      if discussion.description_changed?
-        Events::DiscussionDescriptionEdited.publish!(discussion, user)
-      end
-      user.update_attributes(uses_markdown: discussion.uses_markdown)
-      DiscussionReader.for(discussion: discussion, user: user).follow!
-      discussion.save
-    else
-      false
+    discussion.save!
+    if discussion.title_changed?
+      Events::DiscussionTitleEdited.publish!(discussion, user)
     end
+
+    if discussion.description_changed?
+      Events::DiscussionDescriptionEdited.publish!(discussion, user)
+    end
+
+    user.update_attributes(uses_markdown: discussion.uses_markdown)
+    DiscussionReader.for(discussion: discussion, user: user).follow!
   end
 end
