@@ -9,8 +9,8 @@ class Discussion < ActiveRecord::Base
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil, is_deleted: false) }
 
-  scope :active_since, ->(time) { where('last_activity_at > ?', time)}
-  scope :last_comment_after, ->(time) { where('last_comment_at > ?', time)}
+  scope :active_since, -> (time) { where('last_activity_at > ?', time) }
+  scope :last_comment_after, -> (time) { where('last_comment_at > ?', time) }
   scope :order_by_latest_comment, -> { order('last_comment_at DESC') }
 
   scope :visible_to_public, -> { published.where(private: false) }
@@ -33,7 +33,7 @@ class Discussion < ActiveRecord::Base
 
   belongs_to :group, counter_cache: true
   belongs_to :author, class_name: 'User'
-  belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
+  belongs_to :user, foreign_key: 'author_id'
   has_many :motions, dependent: :destroy
   has_one :current_motion, -> { where('motions.closed_at IS NULL').order('motions.closed_at ASC') }, class_name: 'Motion'
   has_one :most_recent_motion, class_name: 'Motion', order: 'motions.created_at desc'

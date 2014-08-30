@@ -38,14 +38,6 @@ describe Comment do
     end
   end
 
-  describe "creating a comment on a discussion" do
-    it "updates discussion.last_comment_at" do
-      discussion.update_attribute(:last_comment_at, 2.days.ago)
-      DiscussionService.add_comment build(:comment, user: discussion.author, discussion: discussion)
-      discussion.last_comment_at.to_s.should == comment.created_at.to_s
-    end
-  end
-
   context "liked by user" do
     before do
       @like = comment.like user
