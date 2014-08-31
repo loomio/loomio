@@ -270,6 +270,23 @@ en:
     header: "Join the group to participate"
     body: "To comment or vote, you need to be a member of this group."
 
+  user_profile:
+    back: "Back to my profile"
+    change_password: "Change your password"
+    deactivate_account: "Deactivate account"
+    about_deactivation: "What will this mean?"
+    confirm_account_deactivation: "Are you sure you want to deactivate your account?"
+    reactivation_html: "You will need to <a href='%{link}'>contact us</a> to reactivate your account."
+    deactivation:
+      title: "Deactivating your account"
+      only_coordinator: "A group must have at least one coordinator. You are currently the only coordinator of the following groups:"
+      instructions: "In order to deactivate your account, you need to either add another coordinator or deactivate the groups."
+      info_title: "What will deactivating your account mean?"
+      memberships: "You will no longer be listed as a member in any of the groups you currently belong to."
+      group_contributions: "The comments, proposals and discussions you've made in groups will stay, but we'll remove your name from these."
+      emails: "We'll stop sending you Loomio related emails."
+
+
   #
   # GROUP PAGE
   #
@@ -797,7 +814,7 @@ en:
   now_that_your_logged_in: "Now that you've logged in with %{provider_name}, please confirm your details to create a Loomio account."
   confirmation_not_received: "Didn't receive confirmation instructions?"
   unlock_not_received: "Didn't receive unlock instructions?"
-  inactive_html: "Sorry, this account is currently inactive. If you have any questions please <a href='%{path_to_contact}'>get in touch</a>."
+  inactive_html: "This account has been deactivated. If you have any questions please <a href='%{path_to_contact}'>get in touch</a>."
   create_an_account_html: 'Create a Loomio Beta account'
   log_in: "Log in"
 
