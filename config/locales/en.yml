@@ -938,7 +938,9 @@ en:
     view: "View my profile"
     profile: "Edit profile"
     picture: "Picture"
-    use_avatar_kind: "Use %{kind}"
+    use_initials: 'Use initials'
+    use_uploaded: 'Use uploaded image'
+    use_gravtar: 'Use Gravatar'
     upload_new_image: "Upload a new image"
 
   group_setup:
