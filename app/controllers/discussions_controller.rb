@@ -132,7 +132,7 @@ class DiscussionsController < GroupBaseController
   def add_comment
     build_comment
     if DiscussionService.add_comment(@comment)
-      current_user.update_attributes(uses_markdown: params[:uses_markdown])
+      current_user.update_attribute(:uses_markdown, @comment.uses_markdown)
       DiscussionReader.for(user: current_user, discussion: @discussion).viewed!
       respond_to do |format|
         format.js
@@ -194,7 +194,7 @@ class DiscussionsController < GroupBaseController
 
   def build_comment
     @comment = Comment.new(body: params[:comment],
-                           uses_markdown: params[:uses_markdown])
+                           uses_markdown: detect_markdown_preference)
 
     attachment_ids = Array(params[:attachments]).map(&:to_i)
 
@@ -203,6 +203,10 @@ class DiscussionsController < GroupBaseController
     @comment.attachment_ids = attachment_ids
     @comment.attachments_count = attachment_ids.size
     @comment
+  end
+
+  def detect_markdown_preference
+    params[:uses_markdown] || current_user.uses_markdown
   end
 
   def build_discussion
