@@ -133,7 +133,6 @@ class DiscussionsController < GroupBaseController
     build_comment
     if DiscussionService.add_comment(@comment)
       current_user.update_attributes(uses_markdown: params[:uses_markdown])
-      DiscussionReader.for(user: current_user, discussion: @discussion).viewed!
       respond_to do |format|
         format.js
         format.html { redirect_to discussion_path(@discussion) }
