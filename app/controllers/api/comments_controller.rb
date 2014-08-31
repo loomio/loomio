@@ -7,6 +7,7 @@ class API::CommentsController < API::BaseController
     comment = Comment.new(permitted_params.comment)
     comment.author = current_user
     comment.discussion = Discussion.find(params[:comment][:discussion_id])
+    comment.uses_markdown = current_user.uses_markdown
     event = DiscussionService.add_comment(comment)
     head :ok
   end
