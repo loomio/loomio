@@ -590,7 +590,7 @@ DEPENDENCIES
   omniauth-facebook (~> 1.6.0)
   omniauth-google-oauth2 (~> 0.2.5)
   omnicontacts (~> 0.3.4)
-  paper_trail (~> 3.0.3)
+  paper_trail (~> 3.0.5)
   paperclip (~> 4.2.0)
   parallel_tests
   pg (~> 0.17.1)
