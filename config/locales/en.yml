@@ -808,7 +808,7 @@ en:
   start_group:
     log_in: "Log in to set up your group"
     create_account_to_start_group: "Please create an account to start your group %{group_name}"
-    create_account: "Please create an account"
+    create_account: "Create account"
 
   #
   # INVITATIONS
