@@ -1,24 +1,11 @@
 require 'rails_helper'
-#require_relative '../../app/services/discussion_service'
-
-#module Events
-  #class NewComment
-  #end
-  #class CommentLiked
-  #end
-  #class NewDiscussion
-  #end
-#end
-
-#class DiscussionReader
-#end
 
 describe 'DiscussionService' do
   let(:comment_vote) { double(:comment_vote) }
   let(:ability) { double(:ability, :authorize! => true, can?: true) }
   let(:user) { double(:user, ability: ability, update_attributes: true) }
   let(:discussion) { double(:discussion, author: user,
-                                         save: true,
+                                         save!: true,
                                          valid?: true,
                                          title_changed?: false,
                                          description_changed?: false,
@@ -35,7 +22,8 @@ describe 'DiscussionService' do
                                          private: true,
                                          created_at: Time.now) }
   let(:comment) { double(:comment,
-                         save: true,
+                         save!: true,
+                         valid?: true,
                          'author=' => nil,
                          created_at: :a_time,
                          discussion: discussion,
@@ -116,12 +104,12 @@ describe 'DiscussionService' do
     end
 
     it 'saves the comment' do
-      comment.should_receive(:save).and_return(true)
+      comment.should_receive(:save!).and_return(true)
     end
 
     context 'comment is valid' do
       before do
-        comment.stub(:save).and_return(true)
+        comment.stub(:valid?).and_return(true)
       end
 
       it 'fires a NewComment event' do
@@ -135,7 +123,7 @@ describe 'DiscussionService' do
 
     context 'comment is invalid' do
       before do
-        comment.stub(:save).and_return(false)
+        comment.stub(:valid?).and_return(false)
       end
 
       it 'returns false' do
@@ -159,12 +147,12 @@ describe 'DiscussionService' do
     end
 
     it 'saves the discussion' do
-      discussion.should_receive(:save).and_return(true)
+      discussion.should_receive(:save!).and_return(true)
       DiscussionService.start_discussion(discussion)
     end
 
     context 'the discussion is valid' do
-      before { discussion.stub(:save).and_return(true) }
+      before { discussion.stub(:valid?).and_return(true) }
 
       it 'updates user markdown-preference' do
         user.should_receive(:update_attributes).with(uses_markdown: discussion.uses_markdown).and_return(true)
@@ -197,12 +185,12 @@ describe 'DiscussionService' do
     end
 
     it 'saves the discussion' do
-      discussion.should_receive(:save).and_return(true)
+      discussion.should_receive(:save!).and_return(true)
       DiscussionService.edit_discussion(user, discussion_params, discussion)
     end
 
     context 'the discussion is valid' do
-      before { discussion.stub(:save).and_return(true) }
+      before { discussion.stub(:valid?).and_return(true) }
 
       it 'updates user markdown-preference' do
         user.should_receive(:update_attributes).with(uses_markdown: discussion.uses_markdown).and_return(true)
