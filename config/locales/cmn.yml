@@ -80,8 +80,6 @@ cmn:
   inbox:
     dropdown-btn: '收件箱'
   notifications:
-    new_discussion: "新开始了一个讨论"
-    new_motion: "创建一个新的提议"
     motion_closed:
       by_user: "关闭提议"
       by_expiry: "提议已经关闭了"
@@ -247,15 +245,6 @@ cmn:
     your_statement: "你的说法"
     submit: "提交位置"
     update: "位置更新"
-  email_preferences_form:
-    daily_activity_summary: "每日活动总结"
-    daily_activity_subscription: "给我发一封总结组里发生的事情的邮件"
-    global_notifications: "全球通知"
-    proposal_closing_soon_subscription: "在建议关闭前24小时提醒我"
-    mentions_subscription: "当有人提到我的评论时就给我发邮件"
-    group_activity_notifications: "小组活动通知"
-    group_activity_details: "对每个组而言，当你想要收到关于新的讨论及决策时可以查看邮箱"
-    update_preferences: "偏好更新"
   new_user_form:
     create_an_account: "创建一个账户"
   group_setup:
@@ -331,7 +320,6 @@ cmn:
   participation: "参与"
   disable: "不可能"
   group: "组"
-  groups: "组群"
   home: "主页"
   id: "ID"
   like: "喜欢"

@@ -133,8 +133,6 @@ km:
     empty: អ្នកមានរហូតដល់កាលបរិច្ឆេទ!មានយោបល់ទេអ្នកមិនបានគេមើលឃើញថាមាន។
   notifications:
     header: "ការជូនដំណឹង"
-    new_discussion: "ចាប់ផ្តើមការពិភាក្សាថ្មី"
-    new_motion: "បង្កើតសំណើថ្មី"
     motion_closed:
       by_user: "សំណើនេះបានបិទ"
       by_expiry: "សំណើត្រូវបានបិទ"
@@ -421,16 +419,6 @@ km:
     your_statement: "   សេចក្តីថ្លែងការណ៍របស់អ្នក"
     submit: "ដាក់ស្នើមុខតំណែង"
     update: "មុខតំណែងធ្វើឲ្យទាន់សម័យ"
-  email_preferences_form:
-    header: "ចំណង់ចំណូលចិត្តអ៊ីម៉ែល "
-    daily_activity_summary: "សង្ខេបសកម្មភាពជារៀងរាល់ថ្ងៃ"
-    daily_activity_subscription: "ផ្ញើអ៊ីម៉ែលសកម្មភាពប្រចាំថ្ងៃឲ្យមកខ្ញុំ និងការសង្ខេបនូវអ្វីដែរបានកើតឡើងនៅក្នុងក្រុមរបស់ខ្ញុំ"
-    global_notifications: "ការជូនដំណឹងជាសកល "
-    proposal_closing_soon_subscription: "រំលឹកខ្ញុំ 24 ម៉ោងមុនពេលបិទសំណើរ"
-    mentions_subscription: "អ៊ីម៉ែលខ្ញុំ នៅពេលដែលនរណាម្នាក់និយាយអំពីខ្ញុំក្នុងមតិយោបល់"
-    group_activity_notifications: "ការជូនដំណឹងសកម្មភាពក្រុម"
-    group_activity_details: "សម្រាប់ក្រុមនីមួយៗ ធីកប្រអប់នេះប្រសិនបើអ្នកចង់ផ្ញើជាបន្ទាន់អំពីការពិភាក្សានិងការសម្រេចចិត្តថ្មីមួយ។"
-    update_preferences: "ចំណង់ចំណូលចិត្តធ្វើឱ្យទាន់សម័យ "
   new_user_form:
     create_an_account: "បង្កើតគណនីថ្មីមួយ "
   group_setup:
@@ -493,9 +481,6 @@ km:
     view_discussion: "សូមចុចនៅទីនេះដើម្បីមើលការពិភាក្សារនេះ"
     view_group: "សូមចុចនៅទីនេះដើម្បីទៅមើលក្រុមនេះនៅលើ Loomio "
     view_proposal: "មើលសំណើរនេះនៅលើ Loomio"
-    create_discussion:
-      intro: "%{who} ចាប់ផ្តើមការពិភាក្សាថ្មីនៅក្នុង%{which_group}: "
-      subject: "ការពិភាក្សាថ្មី-%{which} "
     create_proposal:
       intro: "សំណើរថ្មីមួយត្រូវបានបង្កើតឡើងនៅក្នុងក្រុម Loomio ដែលអ្នកជាកម្មសិទ្ធិរបស់។"
       closes_in: "បិទនៅខាងក្នុង"
@@ -526,8 +511,6 @@ km:
     new_motion_created:
       context: "%{author} បង្កើតសំណើរមួយក្នុង%{group_full_name}:"
     proposal_closed:
-      intro: 'សំណើររបស់អ្នក"%{proposal_name}" បានត្រូវបិទ '
-      intro_html: 'សំណើររបស់អ្នក"%{proposal_name}" ត្រូវបានបិទ'
       specify_outcome_and_notify_group: "បង្កើតលទ្ធផលមួយហើយនិងផ្ញើវាឲ្យទៅក្រុមរបស់អ្នក!"
       specify_outcome_and_notify_group_html: "បង្កើតលទ្ធផលមួយហើយនិងផ្ញើវាឲ្យទៅក្រុមរបស់អ្នក!"
       subject: "សំណើបានបិទ -%{which} "
@@ -540,7 +523,6 @@ km:
       closes_on: "បិទនៅលើ​"
       closes_at: "បិទនៅ"
       closes_in: "បិទខាងក្នុង"
-      closing_in_24_hours: "បានបិទក្នុង24ម៉ោង"
       headline: "%{author}របស់សំណើរក្នុង%{group}ត្រូវបានបិទក្នុងពេលឆាប់ៗ"
       summary: "សេចក្ដីសង្ខេប"
     verification:
@@ -571,7 +553,6 @@ km:
   participation: "ការចូលរួម "
   disable: "បិទ "
   group: "ក្រុម"
-  groups: "ក្រុម"
   group_admin: "សម្របសម្រួលក្រុម"
   home: "ទំព័រដើម"
   id: "លេខសម្គាល់"

@@ -108,8 +108,6 @@ vi:
     empty: Bạn đã đến đúng ngày! Hiện không có bình luận nào để xem.
   notifications:
     header: "Thông báo"
-    new_discussion: "đã bắt đầu phần thảo luận mới"
-    new_motion: "đã tạo yêu cầu mới"
     motion_closed:
       by_user: "đã đóng lại yêu cầu"
       by_expiry: "Lời yêu cầu đã được đóng lại"
@@ -413,16 +411,6 @@ vi:
     your_statement: "Phát biểu của bạn"
     submit: "Đệ trình kiến nghị"
     update: "Cập nhật kiến nghị"
-  email_preferences_form:
-    header: "Tùy biến email"
-    daily_activity_summary: "Tóm tắt diễn biến hằng ngày"
-    daily_activity_subscription: "Gửi cho tôi một địa chỉ mô tả ngắn gọn về các hoạt động thường nhật diễn ra trong các nhóm mà tôi tham gia."
-    global_notifications: "Thông báo chung"
-    proposal_closing_soon_subscription: "Nhắc nhớ tôi trước khi lời đề nghị của tôi hết hạn trước 24 giờ"
-    mentions_subscription: "Gửi email cho tôi khi có ai đó nhắc đến tôi trong bình luận của họ"
-    group_activity_notifications: "Thông báo về hoạt động của nhóm"
-    group_activity_details: "Đối với mỗi nhóm, hãy chọn một ô nếu bạn muốn được gửi email ngay lập tức về các phần thảo luận và việc đưa ra quyết định mới."
-    update_preferences: "Cập nhật phần tùy biến"
   new_user_form:
     create_an_account: "Tạo một tài khoản"
   group_setup:
@@ -474,9 +462,6 @@ vi:
     view_comment: "Click vào đây để xem các bình luận trên Loomio"
     view_discussion: "Click vào đây để xem phần thảo luận này"
     view_group: "Click vào đây để xem nhóm trên Loomio"
-    create_discussion:
-      intro: "%{who} đã bắt đầu một phần thảo luận mới trong %{which_group}:"
-      subject: "Thảo luận mới - %{which}"
     create_proposal:
       intro: "Một lời đề nghị mới vừa được tạo trong nhóm Loomio mà bạn đã tham gia vào."
       closes_in: "Đóng lại vào"
@@ -500,7 +485,6 @@ vi:
       said: "%{comment_author} đã phát biểu:"
       subject: "%{who} đã đề cập đến bạn trong nhóm %{which} trên Loomio"
     proposal_closed:
-      intro: 'Lời đề nghị của bạn "%{proposal_name}" đã đóng lại.'
       subject: "Lời đề nghị đã đóng lại - %{which}"
     proposal_blocked:
       intro: "Một lời đề nghị của bạn đã bị chặn."
@@ -536,7 +520,6 @@ vi:
   participation: "Sự tham gia"
   disable: "Vô hiệu hóa"
   group: "Nhóm"
-  groups: "Các nhóm"
   group_admin: "Nhóm điều hành viên"
   home: "Trang chủ"
   like: "Thích"

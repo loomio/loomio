@@ -1,4 +1,15 @@
 de:
+  users:
+    email_preferences:
+      edit:
+        title: 'eMail Einstellungen'
+        when_do_you_want_emails: 'Sende mir:'
+        email_missed_yesterday: "\"Yesterday on Loomio\" - eine tägliche Zusammenfassung aller Aktivitäten, die ich verpasst habe"
+        email_followed_threads: "Wenn ich @erwähnt wurde oder es gibt Aktivitäten in den Diskussionen, denen ich folge."
+        email_when_proposal_closing_soon: "24 Stunden bevor der Vorschlag geschlossen wird."
+        email_new_discussions_and_proposals: 'Neue Diskussionen und Vorschläge'
+        for_these_groups: "Für folgende Gruppen:"
+        submit: "Einstellungen speichern"
   explore:
     header: "Erkunde öffentliche Gruppen"
   try_it:
@@ -28,6 +39,7 @@ de:
   devise:
     invitations:
       send_instructions: 'Eine Einladung wurde an %{email} versendet.'
+      invitation_token_invalid: 'Diese Einladung ist nicht mehr gültig!'
       updated: 'Konto erstellt.'
       no_invitations_remaining: "Keine verbleibenden Einladungen"
     mailer:
@@ -58,6 +70,7 @@ de:
     group_request_invalid_token: "Sorry, dieses Token ist ungültig."
     group_private_or_not_found: "Gruppe nicht gefunden.\n\nDiese Gruppe ist möglicherweise privat. Wenn dir jemand diesen Link gegeben hat, bitte ihn, dich in die Gruppe einzuladen."
     group_already_setup: "Die Gruppe, die Du einrichten möchtest, existiert schon."
+    passwords_did_not_match: "Passwort stimmt nicht mit Bestätigung überein."
     proposal_already_exists: "Es gibt schon einen offenen Vorschlag in dieser Diskussion."
     user_with_email_address_already_in_group: "Ein Benutzer mit dieser eMail-Adresse gehört schon zu dieser Gruppe."
     you_have_already_requested_membership: "Du hast die Mitgliedschaft dieser Gruppe schon angefragt."
@@ -122,6 +135,7 @@ de:
     motion_closed: "Vorschlag geschlossen! Unten kannst Du das Ergebnis eingeben und Deiner Gruppe mitteilen."
     motion_outcome_created: "Herzlichen Glückwunsch, Du hast das Ergebnis für den Vorschlag bekanntgegeben. Die Mitglieder Deiner Gruppe wurden benachrichtigt."
     motion_outcome_updated: "Das Ergebnis des Vorschlags wurde aktualisiert."
+    password_updated: "Dein Passwort wurde erfolgreich geändert"
     position_submitted: "Meinung eingereicht"
     position_updated: "Meinung aktualisiert."
     proposal_created: "Vorschlag erfolgreich erstellt."
@@ -175,8 +189,8 @@ de:
     empty: Du bist auf dem neuesten Stand! Es gibt keine Kommentare, die Du noch nicht gesehen hast.
   notifications:
     header: "Benachrichtigungen"
-    new_discussion: "hat eine neue Diskussion gestartet"
-    new_motion: "hat einen neuen Vorschlag erstellt"
+    new_discussion: "begann eine Diskussion"
+    new_motion: "erstellte einen Vorschlag"
     motion_closed:
       by_user: "hat den Vorschlag geschlossen"
       by_expiry: "Vorschlag geschlossen"
@@ -288,10 +302,10 @@ de:
     m3: Titel und Beschreibung ihrer Vorschläge bearbeiten bis jemand seine Position angegeben hat.
     m4: Enddatum ihrer eigenen Vorschläge bearbeiten solange sie offen sind.
     m5: Titel und Kontext jeder Diskussion bearbeiten.
-    m6: Eine Untergruppe starten, bei der sie Koordinator/in werden.
+    m6: Eine Untergruppe starten, bei der Sie Koordinator/in werden.
     m7: Jederzeit ihre eigenen Kommentare bearbeiten.
     m8: Vorschläge einbringen und daran teilnehmen.
-    optional_restrictions: "Optional können Koordinator/innen Mitglieder beschränken."
+    optional_restrictions: "Optional können Koordinator/innen Mitgliederrechte beschränken."
   group_privacy:
     visible_to:
       public: Öffentlich gelistete Gruppe
@@ -370,6 +384,12 @@ de:
   group_description: "Gruppenbeschreibung"
   edit_group_description: "Gruppenbeschreibung ändern"
   group_subscription: "Gruppenabonnement"
+  groups:
+    follow:
+      click_to_follow: "Klicken, um der Gruppe zu folgen"
+      click_to_unfollow: "Klicken, um der Gruppe nicht mehr zu folgen"
+      following_details: "Du wirst über jede Diskussion in dieser Gruppe informiert."
+      not_following_details: "Du wirst über Diskussionen informiert an denen Du beteiligt bist."
   group_request:
     beta_request_header: "Gründe eine Gruppe auf Loomio Beta"
     beta_request_description: "Um Entscheidungen auf Loomio Beta zu treffen, musst Du zuerst eine Gruppe gründen"
@@ -405,9 +425,17 @@ de:
   go_to_add_comment_html: "Um zu kommentieren: <a href='%{href}'>gehe zum Ende der Diskusison</a>."
   comment_by: "Kommentar von %{comment_author}"
   discussion_list:
+    clear_filters: "Filter löschen: alle Diskussionen anzeigen"
+    filter_unread:
+      enable: "Nur \"ungelesene\" Diskussionen anzeigen"
+      disable: "Alle Diskussionen anzeigen"
+    filter_followed:
+      enable: "Nur Diskussionen anzeigen, denen ich folge"
+      disable: "Alle Diskussionen anzeigen"
     empty:
       no_discussions: "Es gibt keine Diskussionen in deinen Gruppen."
       no_discussions_in_group: "Diese Gruppe hat noch keine Diskussionen."
+      no_discussions_matching_filters_html: "Es gibt keine Diskussionen, die dieser Filtereinstellung entsprechen. <a href='%{link}'>Filter löschen</a>."
       no_public_discussions: "Es gibt keine öffentlichen Diskussionen in dieser Gruppe."
       discussions_are_private: "Alle Diskussionen dieser Gruppe sind nichtöffentlich."
       request_membership_html: "Um nichtöffentliche Diskussionen zu sehen, <a href='%{href}'>stelle eine Anfrage zur Gruppen-Mitgliedschaft.</a>"
@@ -419,6 +447,10 @@ de:
     last_edited_html: "Zuletzt bearbeitet vor %{when} von <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Änderungsverlauf ansehen"
     see_history: "Verlauf"
+    click_to_follow: "Klicken, um Diskussion zu folgen"
+    click_to_unfollow: "Klicken, um dieser Diskussion nicht mehr zu folgen"
+    following_details: "Du wirst über Aktivitäten in dieser Diskussion informiert."
+    not_following_details: "Du wirst nicht über Aktivitäten in dieser Diskussion informiert."
   description_history:
     header: "Änderungsverlauf"
     subheader: "Version"
@@ -729,17 +761,6 @@ de:
     your_statement: "Deine Begründung"
     submit: "Meinung abschicken"
     update: "Meinung aktualisieren"
-  email_preferences_form:
-    header: "eMail-Einstellungen"
-    daily_activity_summary: "Tägliche Zusammenfassung von Aktivitäten"
-    daily_activity_subscription: "Schicke mir täglich eine Zusammenfassung dessen, was in meinen Gruppen passiert ist."
-    missed_yesterday_subscription: "Schicke mir 'Gestern auf Loomio' - mein ungelesener Inhalt der vergangenen 24 Stunden"
-    global_notifications: "Globale Benachrichtigungen"
-    proposal_closing_soon_subscription: "Erinnere mich 24 Stunden bevor ein Vorschlag schließt"
-    mentions_subscription: "Sende mir eine eMail, wenn mich jemand in einem Kommentar erwähnt."
-    group_activity_notifications: "Gruppenspezifische Benachrichtigungen"
-    group_activity_details: "Setze ein Häkchen bei jeder Gruppe, für die Du sofort über neue Diskussionen und Entscheidungen benachrichtigt werden möchtest."
-    update_preferences: "Einstellungen speichern"
   new_user_form:
     create_an_account: "Konto erstellen"
   profile_form:
@@ -832,8 +853,7 @@ de:
     view_group: "Klicke hier um die Gruppe auf Loomio zu sehen"
     view_proposal: "Diesen Vorschlag auf Loomio ansehen"
     create_discussion:
-      intro: "%{who} hat eine neue Diskussion in %{which_group} gestartet:"
-      subject: "Neue Diskussion - %{which}"
+      intro: "%{who} begann eine Diskussion in %{which_group}:"
     create_proposal:
       intro: "Ein neuer Vorschlag wurde in einer Loomio Gruppe erstellt, der Du angehörst."
       closes_in: "Schließt in"
@@ -869,10 +889,10 @@ de:
       said: "%{comment_author} hat gesagt:"
       subject: "%{who} hat dich erwähnt in der %{which} Gruppe bei Loomio"
     new_motion_created:
+      subject: "Vorschlag: %{proposal_title}"
       context: "%{author} hat einen Vorschlag in der Gruppe %{group_full_name} erstellt:"
     proposal_closed:
-      intro: 'Dein Vorschlag "%{proposal_name}" wurde geschlossen.'
-      intro_html: 'Dein Vorschlag "%{proposal_name}" wurde geschlossen.'
+      proposal_has_closed: 'Der Vorschlag ist geschlossen.'
       specify_outcome_and_notify_group: "Gib das Ergebnis bekannt und benachrichtige deine Gruppe!"
       specify_outcome_and_notify_group_html: "Gib das Ergebnis bekannt und benachrichtige deine Gruppe!"
       subject: "Vorschlag geschlossen - %{which}"
@@ -885,9 +905,21 @@ de:
       closes_on: "Endet am"
       closes_at: "Endet um"
       closes_in: "Schließt in"
-      closing_in_24_hours: "Endet in 24 Stunden"
+      subject: "Schließt in 24 Stunden: %{proposal_title}"
       headline: "%{author}s Vorschlag in %{group} endet bald:"
       summary: "Zusammenfassung"
+    thread_mailer:
+      footer_text: "Antworte auf diese eMail sofort oder auf Loomio ansehen:"
+      footer_html: "Auf diese eMail sofort antworten oder <a href='%{app_link}'>auf Loomio ansehen</a>. Ändere Deine <a href='%{preferences_link}'>eMail Benachrichtigungen</a>."
+      change_preferences: "Ändere Deine eMail Einstellungen:"
+      new_motion_followed: "%{who} schlägt vor:"
+      new_motion_not_followed: "%{who} schlägt vor:"
+      motion_closing_soon: "Vorschlag endet in 24 Stunden:"
+      proposal_closed: "Vorschlag geschlossen:"
+      specify_outcome_html: "Dein Vorschlag ist geschlossen. <a href='%{link}'>Lege einen Beschluss fest</a>, damit jedeR erfahren kann, wie das Ergbnis lautet."
+      specify_outcome: "Dein Vorschlag ist geschlossen. Lege einen Beschluss fest, damit jedeR erfahren kann, wie das Ergbnis lautet."
+      outcome_created: "%{who} gibt folgendes Vorschlagsergebnis bekannt:"
+      you_agreed: "Du %{past_tense_position}"
     verification:
       header: "Du bist fast fertig!"
       intro: "Bitte klicke auf diesen Link zur Verifizierung, um Deine Anfrage abzuschließen:"
@@ -916,7 +948,6 @@ de:
   participation: "Teilnahme"
   disable: "Verbieten"
   group: "Gruppe"
-  groups: "Gruppen"
   group_admin: "Gruppenkoordinator"
   home: "Start"
   id: "id"
@@ -962,8 +993,14 @@ de:
   google: "Google"
   persona: "Persona"
   common:
+    dashboard: Schreibtisch
+    unread: Ungelesen
+    filter: 'Filter:'
+    following: Gefolgt
+    not_following: Nicht gefolgt
     back_to_discussion: "Zurück zur Diskussion"
     edited: Bearbeitet
+    groups: "Gruppen"
     today: Heute
     months:
       january: Januar

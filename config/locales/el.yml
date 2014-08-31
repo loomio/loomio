@@ -28,6 +28,7 @@ el:
   devise:
     invitations:
       send_instructions: 'Η πρόσκληση έχει σταλθεί στο %{email}.'
+      invitation_token_invalid: 'Αυτή η πρόσκληση δεν είναι έγκυρη πια!'
       updated: 'Ο λογαριασμός δημιουργήθηκε.'
       no_invitations_remaining: "Δεν απομένουν προσκλήσεις"
     mailer:
@@ -58,6 +59,7 @@ el:
     group_request_invalid_token: "Συγνώμη! Αυτό είναι ένα άκυρο διακριτικό"
     group_private_or_not_found: "Η ομάδα δεν βρέθηκε \n\nΑυτή η ομάδα πιθανώς είναι ιδιωτική. Εάν κάποιος σας έδωσε αυτόν τον σύνδεσμο, ζητήστε του να σας προσκαλέσει στην ομάδα."
     group_already_setup: "Η ομάδα που προσπαθείτε να στήσετε υπάρχει ήδη."
+    passwords_did_not_match: "Ο κωδικός δεν ταιριάζει με την επιβεβαίωση"
     proposal_already_exists: "Υπάρχει ήδη ανοιχτή πρόταση για αυτή την συζήτηση."
     user_with_email_address_already_in_group: "Ο χρήστης με αυτό το ηλεκτρονικό ταχυδρομείο ανήκει ήδη σε αυτήν την ομάδα."
     you_have_already_requested_membership: "Έχετε ήδη αιτηθεί για μέλος σε αυτή την ομάδα."
@@ -122,6 +124,7 @@ el:
     motion_closed: "Η πρόταση έκλεισε. Εάν σας αρέσει, μπορείτε να ορίσετε ένα αποτέλεσμα παρακάτω και να το στείλετε στην ομάδα σας."
     motion_outcome_created: "Συγχαρητήρια, δημιουργήσατε το αποτέλεσμα της πρότασης και τα μέλη της ομάδας σας θα ειδοποιηθούν."
     motion_outcome_updated: "Το αποτέλεσμα της πρότασης ανανεώθηκε."
+    password_updated: "Ο κωδικός σας άλλαξε επιτυχώς"
     position_submitted: "Θέση υποβλήθηκε"
     position_updated: "Η θέση ενημερώθηκε."
     proposal_created: "Η πρόταση δημιουργήθηκε επιτυχώς."
@@ -175,8 +178,6 @@ el:
     empty: Είστε ενήμεροι! Δεν υπάρχουν σχόλια που δεν έχετε δει.
   notifications:
     header: "Ειδοποιήσεις"
-    new_discussion: "Ξεκίνησε μια νέα συζήτηση"
-    new_motion: "Δημιουργήθηκε μια νέα πρόταση"
     motion_closed:
       by_user: "έκλεισε η πρόταση"
       by_expiry: "Η πρόταση έχει κλείσει."
@@ -730,17 +731,6 @@ el:
     your_statement: "Η δήλωση σας"
     submit: "Υποβολή θέσης"
     update: "Ενημέρωση θέσης"
-  email_preferences_form:
-    header: "Προτιμήσεις Ηλεκτρονικού Ταχυδρομείου"
-    daily_activity_summary: "Σύνοψη ημερήσιας δραστηριότητας"
-    daily_activity_subscription: "Στείλε μου την ημερήσια δραστηριότητα με ηλεκτρονικό ταχυδρομείο συνοψίζωντας τι συμβαίνει στις ομάδες μου."
-    missed_yesterday_subscription: "Στείλτε μου 'Εχθές στο Loomio' - όλα τα μη διαβασμένα περιεχόμενα των τελευταίων 24 ωρών "
-    global_notifications: "Παγκόσμιες Ειδοποιήσεις"
-    proposal_closing_soon_subscription: "Θύμησε μου 24 ώρες πριν η πρόταση κλείσει"
-    mentions_subscription: "Ειδοποιήσε με όταν κάποιος με αναφέρει σε ένα σχόλιο"
-    group_activity_notifications: "Ειδοποιήσεις δραστηριότητας της ομάδας"
-    group_activity_details: "Για κάθε ομάδα, επιλέξτε το κουτί εάν θέλετε να ειδοποιήστε άμεσα μέσω ηλεκτρονικού ταχυδρομείου σχετικά με νέες συζητήσεις και αποφάσεις."
-    update_preferences: "Ενημέρωση προτιμήσεων"
   new_user_form:
     create_an_account: "Δημιουργήστε ένα λογαριασμό"
   profile_form:
@@ -832,9 +822,6 @@ el:
     view_discussion: "Πατήστε εδώ για να δείτε αυτή την συζήτηση"
     view_group: "Πατήστε εδώ για να δείτε την ομάδα στο Loomio"
     view_proposal: "Εμφάνιση αυτής της πρότασης στο Loomio"
-    create_discussion:
-      intro: "Ο/Η %{who} ξεκίνησε μια νέα συζήτηση στην ομάδα %{which_group}:"
-      subject: "Νέα Συζήτηση - %{which}"
     create_proposal:
       intro: "Μια νέα πρόταση δημιουργήθηκε σε ομάδα του Loomio που ανήκετε."
       closes_in: "Κλείνει σε"
@@ -874,8 +861,6 @@ el:
     new_motion_created:
       context: "%{author} δημιούργησε μια πρόταση στο %{group_full_name}:"
     proposal_closed:
-      intro: 'Η πρόταση σας "%{proposal_name}" έχει κλείσει.'
-      intro_html: 'Η πρόταση σας "%{proposal_name}" έκλεισε.'
       specify_outcome_and_notify_group: "Δημιουργήστε ένα αποτέλεσμα και στείλτε το στην ομάδα σας!"
       specify_outcome_and_notify_group_html: "Δημιουργήστε ένα αποτέλεσμα και στείλτε το στην ομάδα σας!"
       subject: "Πρόταση έκλεισε  - %{which}"
@@ -888,7 +873,6 @@ el:
       closes_on: "Κλείνει στις"
       closes_at: "Κλείνει στις"
       closes_in: "Κλείνει σε"
-      closing_in_24_hours: "Κλείνει σε 24 ώρες"
       headline: "Η πρόταση του/της %{author} στο %{group} κλείνει σύντομα:"
       summary: "Σύνοψη"
     verification:
@@ -919,7 +903,6 @@ el:
   participation: "Συμμετείχε"
   disable: "Απενεργοποιήσε"
   group: "Ομάδα"
-  groups: "Ομάδες"
   group_admin: "Συντονιστής Ομάδας"
   home: "Κεντρική "
   id: "id"

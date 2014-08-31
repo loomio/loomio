@@ -70,8 +70,6 @@ ga-IE:
     dropdown-btn: 'Bosca Isteach'
   notifications:
     header: "Fógraí"
-    new_discussion: "Tús curtha le plé nua"
-    new_motion: "togra nua cruthaithe"
     motion_closed:
       by_user: "togra dúnta"
       by_expiry: "Dúnadh an togra"
@@ -208,9 +206,6 @@ ga-IE:
       header: "Cuir tús le plé"
     edit:
       header: "Déan eagarthóireacht ar an bplé"
-  email_preferences_form:
-    header: "Sainroghanna ríomhphoist"
-    update_preferences: "Leasaigh na sainroghanna agat"
   new_user_form:
     create_an_account: "Cruthaigh cuntas"
   group_setup:
@@ -274,13 +269,11 @@ ga-IE:
       intro: "Rinneadh trácht ort i bplé dár dteideal:"
       said: "Dúirt %{comment_author}:"
     proposal_closed:
-      intro: 'Dhún do thogra "%{proposal_name}".'
       subject: "Togra dúnta - %{which}"
     proposal_closing_soon:
       closes_on: "Dúnann sé ar an"
       closes_at: "Dúnann sé ag a"
       closes_in: "Dúnann sé i gceann"
-      closing_in_24_hours: "Ag dúnadh i gceann 24 uair an chloig"
       summary: "Achoimre"
     verification:
       header: "Tá beagnach críochnaithe agat!"
@@ -306,7 +299,6 @@ ga-IE:
   enable: "Cumasaigh"
   disable: "Díchumasaigh"
   group: "Baicle"
-  groups: "Baiclí"
   home: "Baile"
   loading: "Ag luchtú..."
   message: "Teachtaireacht"
