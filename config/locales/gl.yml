@@ -13,7 +13,6 @@ gl:
     discussion_created: "Debate creado correctamente."
     discussion_deleted: "Debate eliminado correctamente."
   notifications:
-    new_discussion: "iniciou un novo debate"
     new_comment: "comentado no debate"
     comment_liked: "gustou do teu comentario no debate"
   edit_discussion_context: "Editar o contexto do debate"
@@ -55,9 +54,6 @@ gl:
       É unha boa idea? Loomio Helper Bot quere saber o que estás a pensar!
       Se andas seguro do teu posicionamento, fai click nunha das iconas de embaixo (pasa por enriba dos botóns de decisión para ver unha descripción do que veñen significando).
       Pediráseche que fagas unha pequena declaración sobre a razón da túa decisión. Isto fai que sexa doado de ver un resumo do que cadaquén pensa e por que. Podes trocar de opinión e editar a túa decisión libremente ata que a proposta sexa pechada.
-  email_preferences_form:
-    daily_activity_summary: "Resumo da actividade diaria"
-    group_activity_details: "Por cada grupo, marca a casiña se queres recibir un correo así que se produzan novos debates e decisións."
   group_setup:
     desc_html: "Como coordinador de grupo, es o responsable de preparar e manter o teu grupo Loomio. Logo de seleccionar unhas opcións, podes ir ao teu novo grupo, comezar un debate ou dous, e enviar algunha invitación! <p>Cando penses nun xeito sinxelo de describir o teu grupo, pregúntache: Que queres que acaden xuntos? Que tipos de decisións tomaredes? Quen vai estar implicado?</p>"
   helpers:
@@ -66,9 +62,6 @@ gl:
         create: "Comezar debate"
   email:
     view_discussion: "Preme aquí para este debate"
-    create_discussion:
-      intro: "%{who} comezou un novo debate en %{which_group}:"
-      subject: "Novo debate - %{which}"
     daily_activity:
       subject: "Loomio - Resumo das últimas 24 horas"
     mentioned:

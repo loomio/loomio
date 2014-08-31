@@ -72,8 +72,6 @@ fa-IR:
         other: "%{count} سال"
   notifications:
     header: "اطلاعیه ها"
-    new_discussion: "بحث جدید راه انداخت"
-    new_motion: "پیشنهاد جدید ساخت"
     motion_closed:
       by_user: "پیشنهاد را بست"
       by_expiry: "پیشنهاد بسته شد"

@@ -148,8 +148,6 @@ cs:
     empty: Jste dobře informován(a)! Nejsou žádné komentáře, které jste neviděl(a).
   notifications:
     header: "Upozornění"
-    new_discussion: "zahájil(a) novou diskuzi"
-    new_motion: "vytvořil(a) nový návrh"
     motion_closed:
       by_user: "uzavřel(a) návrh"
       by_expiry: "Návrh byl uzavřen"
@@ -471,16 +469,6 @@ cs:
     your_statement: "Vaše prohlášení"
     submit: "Odeslat postoj"
     update: "Aktualizovat postoj"
-  email_preferences_form:
-    header: "Nastavení emailu"
-    daily_activity_summary: "Denní shrnutí aktivity"
-    daily_activity_subscription: "Posílejte mi emaily denní aktivity shrnující co se dělo v mých skupinách"
-    global_notifications: "Globální upozornění"
-    proposal_closing_soon_subscription: "Připomeňte mi 24 hodin předtím, než se návrh uzavře"
-    mentions_subscription: "Emailujte mě vždy, když mě někdo zmíní v komentáři"
-    group_activity_notifications: "Upozornění o aktivitě skupiny"
-    group_activity_details: "Pro každou skupinu zatrhněte políčko pokud chcete dostávat emaily o nových diskuzích a návrzích hned jak vzniknou."
-    update_preferences: "Aktualizovat nastavení"
   new_user_form:
     create_an_account: "Vytvořit účet"
   profile_form:
@@ -562,9 +550,6 @@ cs:
     view_discussion: "Klikněte sem pro zobrazení této diskuze"
     view_group: "Klikněte sem pro zobrazení skupiny na Loomio"
     view_proposal: "Zobrazte si tento návrh na Loomio"
-    create_discussion:
-      intro: "%{who} zahájil(a) novou diskuzi v %{which_group}:"
-      subject: "Nová diskuze - %{which}"
     create_proposal:
       intro: "Nový návrh byl vytvořen v Loomio skupině, ke které patříte"
       closes_in: "Uzavře se"
@@ -596,8 +581,6 @@ cs:
     new_motion_created:
       context: "%{author} vytvořil(a) návrh v %{group_full_name}:"
     proposal_closed:
-      intro: 'Váš návrh „%{proposal_name}“ byl uzavřen.'
-      intro_html: 'Váš návrh „%{proposal_name}“ byl uzavřen.'
       specify_outcome_and_notify_group: "Vytvořte výsledek a pošlete ho své skupině!"
       specify_outcome_and_notify_group_html: "Vytvořte výsledek a pošlete ho své skupině!"
       subject: "Návrh uzavřen - %{which}"
@@ -609,7 +592,6 @@ cs:
       closes_on: "Uzavírá se"
       closes_at: "Uzavírá se"
       closes_in: "Uzavírá se za"
-      closing_in_24_hours: "Uzavírá se do 24 hodin"
       headline: "návrh %{author} v %{group} se brzy uzavírá:"
       summary: "Shrnutí"
     verification:
@@ -640,7 +622,6 @@ cs:
   participation: "Účast"
   disable: "Zakázat"
   group: "Skupina"
-  groups: "Skupiny"
   group_admin: "Koordinátor skupiny"
   home: "Domovská stránka"
   like: "To se mi líbí"
