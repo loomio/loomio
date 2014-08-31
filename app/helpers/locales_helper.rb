@@ -9,6 +9,7 @@ module LocalesHelper
                 '正體中文' => :'zh-TW', #zh-Hant, Chinese (traditional), Taiwan
                 'Deutsch' => :de,
                 'Español' => :es,
+                'Esperanto' => :eo,
                 'ελληνικά' => :el,
                 'Français' => :fr,
                 'Indonesian' => :id,

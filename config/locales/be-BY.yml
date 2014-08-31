@@ -1,6 +1,17 @@
 be-BY:
+  users:
+    email_preferences:
+      edit:
+        title: 'Налады электроннай пошты'
+        when_do_you_want_emails: 'Адпраўляйце лісты на:'
+        email_missed_yesterday: "'Учора на Loomio' - рэзюмэ ўсіх падзей, што я прапусціў за дзень"
+        email_followed_threads: "Калі мяне @ўзгадваюць, ці ў групах ідзе дзейнасць, я за гэтым сачу."
+        email_when_proposal_closing_soon: "Прапанова закрываецца праз 24 гадзіны."
+        email_new_discussions_and_proposals: 'Новыя абмеркаванні і прапановы'
+        for_these_groups: "Для гэтых груп:"
+        submit: "Захаваць налады"
   explore:
-    header: "Праглядзець публічныя групы"
+    header: "Знайсці публічныя групы"
   try_it:
     header: "Паспрабаваць Loomio"
     start_a_group: "Стварыце групу каб прымаць вырашенні ў сваёй супольнасці"
@@ -59,6 +70,7 @@ be-BY:
     group_request_invalid_token: "Выбачайце, але гэты код нядзейсны."
     group_private_or_not_found: "Група не знойдзена. \n\nГэта група можа быць прыватнай. Калі хтосці даў вам гэту спасылку, запытайце ў іх, каб вас запрасілі ў групу."
     group_already_setup: "Група, якую вы спрабуеце распачаць, ужо існуе."
+    passwords_did_not_match: "Паролі адрозніваюцца"
     proposal_already_exists: "У гэтым абмеркаванні ўжо ёсць адкрытая прапанова."
     user_with_email_address_already_in_group: "Карыстальнік з такім паштовым адрасам ўжо ўдзельнічае ў групе."
     you_have_already_requested_membership: "Вы ўжо запытвалі ўдзел у гэтай групе."
@@ -123,6 +135,7 @@ be-BY:
     motion_closed: "Прапанова закрыта. Ніжэй вы можаце ўсталяваць вынік і адправіць яго ў вашу групу."
     motion_outcome_created: "Віншуем, вы стварылі вынік прапановы і паведамілі пра гэта ўдзельнікам групы."
     motion_outcome_updated: "Вынік прапановы быў абноўлены."
+    password_updated: "Пароль быў паспяхова зменены"
     position_submitted: "Меркаванне даслана"
     position_updated: "Меркаванне абноўлена."
     proposal_created: "Прапанова была паспяхова створаная."
@@ -176,8 +189,8 @@ be-BY:
     empty: Вы ў курсе ўсіх падзей! Каментароў, якія трэба праглядзець, больш не засталося.
   notifications:
     header: "Апавяшчэнні"
-    new_discussion: "распачаў новае абмеркаванне"
-    new_motion: "стварыў новую прапанову"
+    new_discussion: "распачаў абмеркаванне"
+    new_motion: "стварыў прапанову"
     motion_closed:
       by_user: "зачыніў гэтую прапанову"
       by_expiry: "Гэтую прапанову зачынілі"
@@ -371,6 +384,12 @@ be-BY:
   group_description: "Апісанне групы"
   edit_group_description: "Рэдагаваць апісанне групы"
   group_subscription: "Падпіска групы"
+  groups:
+    follow:
+      click_to_follow: "Націсніце, каб сачыць за групай"
+      click_to_unfollow: "Націсніце, каб больш не сачыць за групай"
+      following_details: "Вам паведамяць пра любую дзейнасць у групе. "
+      not_following_details: "Вам паведамяць пра дзейнасць у абмеркаваннях, у якіх вы ўдзельнічаце. "
   group_request:
     beta_request_header: "Стварыць групу на Loomio Beta"
     beta_request_description: "Першы крок для пачатку прыняцця рашэнняў на Loomio Beta-  стварыць групу"
@@ -406,9 +425,17 @@ be-BY:
   go_to_add_comment_html: "Каментар можна дадаць <a href='%{href}'>унізе абмеркавання</a>."
   comment_by: "Каментар %{comment_author}"
   discussion_list:
+    clear_filters: "Убраць фільтры: бачыць усе абмеркаванні"
+    filter_unread:
+      enable: "Паказваць толькі непрачытаныя абмеркаванні"
+      disable: "Паказваць прачытаныя і непрачытаныя абмеркаванні"
+    filter_followed:
+      enable: "Паказваць толькі тыя абмеркаванні, за якімі я сачу"
+      disable: "Паказваць абмеркаванні за якімі я сачу і не сачу"
     empty:
       no_discussions: "Ні ў адной з Вашых груп няма абмеркаванняў."
       no_discussions_in_group: "У гэтай гупы пакуль няма абмеркаванняў."
+      no_discussions_matching_filters_html: "Няма абмераванняў, якія адпавядаюць фільтрам. <a href='%{link}'>Убраць фільтры</a>."
       no_public_discussions: "У гэтай групе няма публічных абмеркаванняў."
       discussions_are_private: "Усе абмеркаванні ў гэтай групе прыватныя."
       request_membership_html: "Каб убачыць прыватныя абмеркаванні, <a href='%{href}'>зрабіце запыт пра далучэнне да групы.</a>"
@@ -420,6 +447,10 @@ be-BY:
     last_edited_html: "Зменена %{when} таму, карыстальнікам <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Паглядзець гісторыю змен"
     see_history: "Паглядзець гісторыю"
+    click_to_follow: "Націсніце, каб сачыць"
+    click_to_unfollow: "Націсніце, каб больш не сачыць"
+    following_details: "Вам паведамяць пра любую дзейнасць у гэтым абмеракаванні. "
+    not_following_details: "Вам не будут  паведамляць пра дзейнасць у гэтым абмеракаванні. "
   description_history:
     header: "Гісторыя змен"
     subheader: "Версія"
@@ -748,17 +779,6 @@ be-BY:
     your_statement: "Ваша заява"
     submit: "Заявіць меркаванне"
     update: "Абнавіць меркаванне"
-  email_preferences_form:
-    header: "Налады электроннай пошты"
-    daily_activity_summary: "Рэзюмэ дзённай актыўнасці"
-    daily_activity_subscription: "Адсылайце мне ліст, які штодзённа рэзюмуе ўсё што адбываецца ў маіх групах"
-    missed_yesterday_subscription: "Адпраўляйце мне лісты \"Учора на Loomio\", якія будуць уключаць усё непрачытанае за апошія 24 гадзіны."
-    global_notifications: "Агульныя апавяшчэнні"
-    proposal_closing_soon_subscription: "Прысылайце мне нагадванне за 24 гадзіны да закрыцця прапановы"
-    mentions_subscription: "Прысылайце мне ліст, калі хто-небудзь узгадае мяне ў каментары"
-    group_activity_notifications: "Апавяшчэнні пра падзеі ў групах"
-    group_activity_details: "Усталюйце сцяжок для груп, для якіх вы хаціце адразу атрымліваць апавяшчэнні пра новыя абмеркаванні і прапановы."
-    update_preferences: "Змяніць налады"
   new_user_form:
     create_an_account: "Стварыць акаўнт"
   profile_form:
@@ -851,8 +871,7 @@ be-BY:
     view_group: "Націсніце тут, каб перайсці да гэтай групы на Loomio"
     view_proposal: "Праглядзець гэту прапанову на Loomio"
     create_discussion:
-      intro: "Карыстальнік %{who} распачаў новае абмеркаванне ў гурпе %{which_group}:"
-      subject: "Новае абмеркаванне - %{which}"
+      intro: "Карыстальнік %{who} распачаў абмеркаванне ў гурпе %{which_group}:"
     create_proposal:
       intro: "У групе на Loomio, у якой вы ўдзельнічаеце, была створана новая прапанова."
       closes_in: "Закрываецца праз"
@@ -890,10 +909,10 @@ be-BY:
       said: "Карыстальнік %{comment_author} напісаў:"
       subject: "Карыстальнік %{who} узгадаў вас ў гурпе %{which} на Loomio"
     new_motion_created:
+      subject: "Прапанова: %{proposal_title}"
       context: "Карыстальнік %{author} стварыў прапанову ў %{group_full_name}:"
     proposal_closed:
-      intro: 'Ваша прапанова "%{proposal_name}" закрыта.'
-      intro_html: 'Ваша прапанова "%{proposal_name}" закрыта.'
+      proposal_has_closed: 'Прапанова зачынена.'
       specify_outcome_and_notify_group: "Аформіце вынік і адпраўце сваёй групе!"
       specify_outcome_and_notify_group_html: "Аформіце вынік і адпраўце сваёй групе!"
       subject: "Прапанова закрыта - %{which}"
@@ -906,9 +925,21 @@ be-BY:
       closes_on: "Зачыняецца"
       closes_at: "Закрываецца а"
       closes_in: "Закрываецца праз"
-      closing_in_24_hours: "Закрыецца праз 24 гадзіны"
+      subject: "Зачыняецца праз 24 гадзіны: %{proposal_title}"
       headline: "Прапанова %{author} у %{group} хутка зачыніцца:"
       summary: "Рэзюмэ"
+    thread_mailer:
+      footer_text: "Наўпрост адкажыце на гэты ліст ці праглядзіце яго на Loomio:"
+      footer_html: "Наўпрост адкажыце на гэты ліст ці <a href='%{app_link}'>праглядзіце яго на Loomio</a>. Змяніць свае <a href='%{preferences_link}'>налады электроннай пошты</a>."
+      change_preferences: "Змяніць свае налады электроннай пошты:"
+      new_motion_followed: "Карыстальнік %{who} прапанаваў:"
+      new_motion_not_followed: "Карыстальнік %{who} прапанаваў:"
+      motion_closing_soon: "Прапанова закрываецца праз 24 гадзіны:"
+      proposal_closed: "Прапанова закрыта:"
+      specify_outcome_html: "Ваша прапанова закрыта. <a href='%{link}'>Падагульніце зыход</a>, каб паведаміць усім пра вынік."
+      specify_outcome: "Ваша прапанова закрыта. Падагульніце зыход, каб паведаміць усім пра вынік:"
+      outcome_created: "Карыстальнік %{who} усталяваў вынік прапановы:"
+      you_agreed: "Вы %{past_tense_position}"
     verification:
       header: "Вы амаль скончылі!"
       intro: "Калі ласка, націсніце на гэтую спасылку праверкі, каб завяршыць запыт:"
@@ -937,7 +968,6 @@ be-BY:
   participation: "Удзел"
   disable: "Адключыць"
   group: "Група"
-  groups: "Групы"
   group_admin: "Каардынатар групы"
   home: "Галоўная"
   id: "ідэнтыфікацыйны нумар"
@@ -983,8 +1013,14 @@ be-BY:
   google: "Google"
   persona: "Persona"
   common:
+    dashboard: Галоўная
+    unread: Непрачытаныя
+    filter: 'Фільтр:'
+    following: Сачу
+    not_following: Не сачу
     back_to_discussion: "Назад да абмеркавання"
     edited: Адрэдагавана
+    groups: "Групы"
     today: Сёння
     months:
       january: Студзень

@@ -140,8 +140,6 @@ ko:
     empty: 최신 상태이며, 확인하지 않은 댓글이 없습니다.
   notifications:
     header: "알림"
-    new_discussion: "새로운 토론 시작하기"
-    new_motion: "새로운 제안 만들기"
     motion_closed:
       by_user: "제안 마감하기"
       by_expiry: "제안이 마감되었습니다."
@@ -482,16 +480,6 @@ ko:
     your_statement: "사용자의 이야기"
     submit: "입장 등록"
     update: "입장 업데이트"
-  email_preferences_form:
-    header: "이메일 환경설정"
-    daily_activity_summary: "일간 활동 요약"
-    daily_activity_subscription: "내 그룹에서 일어난 일에 대해서 요약 이메일을 매일 보내기"
-    global_notifications: "전체 알림"
-    proposal_closing_soon_subscription: "제안이 마감되기 24시간 전에 알림받기"
-    mentions_subscription: "누군가 나를 댓글에서 이야기한 경우 이메일로 알리기"
-    group_activity_notifications: "그룹 활동 알림"
-    group_activity_details: "새로운 토론이나 결정이 있는 그룹에 대해서 이메일을 받기를 원한다면 각 그룹을 선택해 주세요."
-    update_preferences: "업데이트 현황"
   new_user_form:
     create_an_account: "계정 만들기"
   profile_form:
@@ -580,9 +568,6 @@ ko:
     view_discussion: "토론을 보기 위해서 여기를 선택하세요."
     view_group: "루미오에 그룹을 보기 위해서 여기를 클릭하세요."
     view_proposal: "루미오에서 이 제안 보기"
-    create_discussion:
-      intro: "%{who} 님이 %{which_group}그룹에서 새로운 토론을 시작했습니다. "
-      subject: "새로운 토론 - %{which}"
     create_proposal:
       intro: "사용자가 소속되어 있는 루미오 그룹에 새로운 제안이 만들어졌습니다."
       closes_in: "닫습니다."
@@ -614,8 +599,6 @@ ko:
     new_motion_created:
       context: "%{author} 님이  %{group_full_name} 그룹에 제안을 시작했습니다."
     proposal_closed:
-      intro: '"%{proposal_name}" 제안이 닫혀있습니다.'
-      intro_html: '제안하신  "%{proposal_name}" 가 종료되었습니다.'
       specify_outcome_and_notify_group: "결과를 만들고 그룹 멤버들에게 보내기"
       specify_outcome_and_notify_group_html: "결과를 만들고 그룹 멤버들에게 보내기"
       subject: "닫힌 제안 - %{which}"
@@ -628,7 +611,6 @@ ko:
       closes_on: "닫습니다."
       closes_at: "에 닫습니다."
       closes_in: "닫습니다. "
-      closing_in_24_hours: "24시간안에 닫습니다."
       headline: "%{group} 그룹에 %{author}님의 제안이 곧 마감이 됩니다."
       summary: "요약"
     verification:
@@ -659,7 +641,6 @@ ko:
   participation: "참여"
   disable: "비활성화"
   group: "그룹"
-  groups: "그룹"
   group_admin: "그룹 코디네이터"
   home: "홈"
   id: "아이디"

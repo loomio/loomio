@@ -1,4 +1,15 @@
 pt-BR:
+  users:
+    email_preferences:
+      edit:
+        title: 'Preferências de e-mail'
+        when_do_you_want_emails: 'Envie-me um e-mail:'
+        email_missed_yesterday: "'Ontem no Loomio' - um resumo diário de qualquer atividade que perdi"
+        email_followed_threads: "Quando sou @mencionado ou há atividade em tópicos que estou seguindo"
+        email_when_proposal_closing_soon: "24 horas antes de uma proposta encerrar."
+        email_new_discussions_and_proposals: 'Novas discussões e propostas'
+        for_these_groups: "Para estes grupos:"
+        submit: "Salvar preferências"
   explore:
     header: "Conheça grupos públicos"
   try_it:
@@ -59,6 +70,7 @@ pt-BR:
     group_request_invalid_token: "Desculpe! Este token não é válido"
     group_private_or_not_found: "Grupo não encontrado.\n\nPode ser um grupo privado. Se alguém te passou este link, peça a esta pessoa que te convide para entrar no grupo."
     group_already_setup: "O grupo que você está tentando criar já existe."
+    passwords_did_not_match: "A senha não confere com a confirmação"
     proposal_already_exists: "Já existe uma proposição aberta nesta discussão."
     user_with_email_address_already_in_group: "Um usuário com esse endereço de e-mail já pertence a este grupo."
     you_have_already_requested_membership: "Você já solicitou adesão à este grupo"
@@ -123,6 +135,7 @@ pt-BR:
     motion_closed: "Proposta encerrada. Se vocẽ quiser, pode definir um resultado abaixo e mandar ao teu grupo."
     motion_outcome_created: "Parabéns, você criou um resultado para a proposição e os membros de seu grupo foram notificados."
     motion_outcome_updated: "O resultado da proposição foi atualizado."
+    password_updated: "Sua senha foi alterada com sucesso"
     position_submitted: "Posição enviada"
     position_updated: "Posição atualizada."
     proposal_created: "Proposta criada com sucesso."
@@ -176,8 +189,8 @@ pt-BR:
     empty: Você está em dia! Não há comentários não lidos.
   notifications:
     header: "Notificações"
-    new_discussion: "iniciou uma nova discussão"
-    new_motion: "criou uma nova proposição"
+    new_discussion: "iniciou uma discussão"
+    new_motion: "criou uma proposta"
     motion_closed:
       by_user: "encerrou a proposição"
       by_expiry: "Proposição encerrada"
@@ -371,6 +384,12 @@ pt-BR:
   group_description: "Descrição do grupo"
   edit_group_description: "Editar descrição do grupo"
   group_subscription: "Taxa de inscrição do grupo"
+  groups:
+    follow:
+      click_to_follow: "Clicar para seguir o grupo"
+      click_to_unfollow: "Clicar para deixar de seguir o grupo"
+      following_details: "Você será notificado sobre todos os tópicos nesse grupo"
+      not_following_details: "Você será notificado sobre os tópicos que está participando"
   group_request:
     beta_request_header: "Iniciar um grupo no Loomio Beta"
     beta_request_description: "Para começar a tomar decisões no Loomio Beta, o primeiro passo é iniciar um grupo"
@@ -408,9 +427,17 @@ pt-BR:
   go_to_add_comment_html: "Para adicionar um comentário, <a href='%{href}'>vá para o final da discussão</a>."
   comment_by: "Comentário por %{comment_author}"
   discussion_list:
+    clear_filters: "Limpar filtros: ver todas as discussões"
+    filter_unread:
+      enable: "Mostrar apenas discussões não lidas"
+      disable: "Ver discussões lidas e não lidas"
+    filter_followed:
+      enable: "Mostrar somente discussões seguidas"
+      disable: "Ver discussões seguidas e não seguidas"
     empty:
       no_discussions: "Não há discussões em nenhum dos seus grupos."
       no_discussions_in_group: "Este grupo não tem nenhum tópico até o momento."
+      no_discussions_matching_filters_html: "Não há discussões correspondentes a estes filtros. <a href='%{link}'>Limpar filtros</a>."
       no_public_discussions: "Não há discussões públicas neste grupo."
       discussions_are_private: "Todas as discussões neste grupo são privadas."
       request_membership_html: "Para ver discussões privadas, <a href='%{href}'>peça para se juntar ao grupo.</a>"
@@ -422,6 +449,10 @@ pt-BR:
     last_edited_html: "Última edição %{when} atrás por <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Ver o histórico de revisões"
     see_history: "Ver histórico"
+    click_to_follow: "Clicar para seguir tópico"
+    click_to_unfollow: "Clicar para deixar de seguir tópico"
+    following_details: "Você será notificado sobre atividades nesse tópico."
+    not_following_details: "Você não será notificado sobre atividades nesse tópico."
   description_history:
     header: "Histórico de revisões"
     subheader: "Versão"
@@ -715,17 +746,6 @@ pt-BR:
     your_statement: "Sua declaração"
     submit: "Enviar posição"
     update: "Atualizar posição"
-  email_preferences_form:
-    header: "Preferências de e-mail"
-    daily_activity_summary: "Resumo de Atividades Diárias"
-    daily_activity_subscription: "Me envie um e-mail de atividade diária resumindo o que têm acontecido em meus grupos"
-    missed_yesterday_subscription: "Envie-me 'Ontem no Loomio' - meu conteúdo não lido das últimas 24 horas"
-    global_notifications: "Notificações Globais"
-    proposal_closing_soon_subscription: "Lembre-me 24 horas antes de uma proposição encerrar"
-    mentions_subscription: "Envie-me um e-mail quando alguém me mencionar em um comentário"
-    group_activity_notifications: "Notificações de Atividade de Grupo"
-    group_activity_details: "Para cada grupo, marque a caixa se você quiser receber um e-mail assim que surgirem novas discussões e decisões."
-    update_preferences: "Atualizar preferências"
   new_user_form:
     create_an_account: "Criar uma conta"
   profile_form:
@@ -818,8 +838,7 @@ pt-BR:
     view_group: "Clique aqui para ver o grupo no Loomio"
     view_proposal: "Ver esta proposição no Loomio"
     create_discussion:
-      intro: "%{who} iniciou uma nova discussão em %{which_group}:"
-      subject: "Nova discussão - %{which}"
+      intro: "%{who} iniciou uma discussão em %{which_group}:"
     create_proposal:
       intro: "Uma nova proposição foi criada em um dos grupos do Loomio dos quais você faz parte."
       closes_in: "Encerra em"
@@ -857,10 +876,10 @@ pt-BR:
       said: "%{comment_author} disse:"
       subject: "%{who} mencionou você no grupo %{which} no Loomio"
     new_motion_created:
+      subject: "Proposta: %{proposal_title}"
       context: "%{author} criou uma proposição no grupo %{group_full_name}:"
     proposal_closed:
-      intro: 'Sua proposição "%{proposal_name}" foi encerrada.'
-      intro_html: 'Sua proposição "%{proposal_name}" foi encerrada.'
+      proposal_has_closed: 'A proposta foi encerrada.'
       specify_outcome_and_notify_group: "Crie um resultado e envie para seu grupo!"
       specify_outcome_and_notify_group_html: "Crie um resultado e envie para seu grupo!"
       subject: "Proposição encerrada - %{which}"
@@ -873,9 +892,21 @@ pt-BR:
       closes_on: "Encerra em"
       closes_at: "Encerra em"
       closes_in: "Encerra em"
-      closing_in_24_hours: "Encerra em 24 horas"
+      subject: "Encerrando em 24 horas: %{proposal_title}"
       headline: "A proposição de %{author} no grupo %{group} encerrará em breve:"
       summary: "Resumo"
+    thread_mailer:
+      footer_text: "Responda este e-mail diretamente ou veja no Loomio:"
+      footer_html: "Responda este e-mail diretamente ou <a href='%{app_link}'>veja no Loomio</a>. Modifique suas <a href='%{preferences_link}'>preferências de e-mail</a>."
+      change_preferences: "Modifique suas preferências de e-mail:"
+      new_motion_followed: "%{who} propôs:"
+      new_motion_not_followed: "%{who} propôs:"
+      motion_closing_soon: "Proposta encerra em 24 horas:"
+      proposal_closed: "Proposta encerrada:"
+      specify_outcome_html: "Sua proposta foi encerrada. <a href='%{link}'>Especifique um resultado</a> para que todos saibam."
+      specify_outcome: "Sua proposta foi encerrada. Especifique um resultado para que todos saibam."
+      outcome_created: "%{who} definiu um resultado da proposta:"
+      you_agreed: "Você %{past_tense_position}"
     verification:
       header: "Você está quase terminando!"
       intro: "Por favor, clique neste link de verificação para finalizar sua solicitação:"
@@ -904,7 +935,6 @@ pt-BR:
   participation: "Participação"
   disable: "Desabilitar"
   group: "Grupo"
-  groups: "Grupos"
   group_admin: "Coordenador(a) do Grupo"
   home: "Início"
   id: "id"
@@ -950,8 +980,14 @@ pt-BR:
   google: "Google"
   persona: "Persona"
   common:
+    dashboard: Painel
+    unread: Não lida
+    filter: 'Filtro:'
+    following: Seguindo
+    not_following: Não seguindo
     back_to_discussion: "Voltar para a discussão"
     edited: Editado
+    groups: "Grupos"
     today: Hoje
     months:
       january: Janeiro

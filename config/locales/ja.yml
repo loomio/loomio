@@ -137,8 +137,6 @@ ja:
     empty: 全部見ました！見ていないコメントはありません
   notifications:
     header: "通知"
-    new_discussion: "新しいディスカッションを開始しました"
-    new_motion: "新しい提案を作成しました"
     motion_closed:
       by_user: "提案を締め切ります"
       by_expiry: "提案が締め切られました"
@@ -628,16 +626,6 @@ ja:
     your_statement: "あなたの意見の説明"
     submit: "意見を送信"
     update: "意見をアップデート"
-  email_preferences_form:
-    header: "Eメールの設定"
-    daily_activity_summary: "一日のイベント要約"
-    daily_activity_subscription: "グループに起こったイベントの要約を毎日配信する"
-    global_notifications: "全ての通知"
-    proposal_closing_soon_subscription: "提案が締め切る24時間前に知らせる"
-    mentions_subscription: "誰かがコメントで自分をタグ付けしたらEメールを送る"
-    group_activity_notifications: "グループの通知"
-    group_activity_details: "新しいディスカッションや提案が作成されたらすぐにEメールしてほしい場合、各グループにチェックをつけてください"
-    update_preferences: "設定をアップデート"
   new_user_form:
     create_an_account: "アカウントを作成します"
   profile_form:
@@ -726,9 +714,6 @@ ja:
     view_discussion: "このディスカッションを見るにはここをクリックしてください"
     view_group: "Loomioのグループを見るにはここをクリックしてください"
     view_proposal: "Loomioでこの提案を見る"
-    create_discussion:
-      intro: "%{who} は %{which_group} で新しいディスカッションを開始しました："
-      subject: "新しいディスカッション -  %{which}"
     create_proposal:
       intro: "あなたのいるLoomioグループで新しい提案が作成されました"
       closes_in: "後に締め切ります"
@@ -760,8 +745,6 @@ ja:
     new_motion_created:
       context: "%{author} は  %{group_full_name} で提案を作成しました："
     proposal_closed:
-      intro: 'あなたの提案 "%{proposal_name}"  を締め切りました'
-      intro_html: 'あなたの提案 "%{proposal_name}" は締め切られました'
       specify_outcome_and_notify_group: "結論を出してあなたのグループに送りましょう！"
       specify_outcome_and_notify_group_html: "結論を出してあなたのグループに送りましょう！"
       subject: "提案は締め切られました - %{which}"
@@ -774,7 +757,6 @@ ja:
       closes_on: "締め切り日："
       closes_at: "締め切り時間："
       closes_in: "後に締め切られます"
-      closing_in_24_hours: "24時間後に締め切ります"
       headline: " %{group} の %{author} の提案はもうすぐ締め切られます："
       summary: "要約"
     verification:
@@ -802,7 +784,6 @@ ja:
   edit: "編集"
   email_address: "Eメールアドレス"
   group: "グルブ"
-  groups: "グループ"
   group_admin: "グループコーディネーター"
   home: "ホーム"
   id: "ID"

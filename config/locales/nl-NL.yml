@@ -1,4 +1,15 @@
 nl-NL:
+  users:
+    email_preferences:
+      edit:
+        title: 'E-mail voorkeuren'
+        when_do_you_want_emails: 'E-mail mij:'
+        email_missed_yesterday: "'Gisteren op Loomio' - een dagelijkse samenvatting van wat er gebeurd is"
+        email_followed_threads: "Als ik een @-benoeming krijg, of als er iets gebeurd in gesprekken die ik volg."
+        email_when_proposal_closing_soon: "24 uur voordat een voorstel sluit."
+        email_new_discussions_and_proposals: 'Nieuwe discussies en voorstellen'
+        for_these_groups: "Voor deze groepen:"
+        submit: "Bewaar voorkeuren"
   explore:
     header: "Ontdek openbare groepen"
   try_it:
@@ -59,6 +70,7 @@ nl-NL:
     group_request_invalid_token: "Sorry! Deze token is niet geldig"
     group_private_or_not_found: "Groep niet gevonden.\n\nDeze groep is mogelijk afgeschermd. Als iemand je deze link heeft gegeven, vraag diegene om je uit te nodigen voor de groep."
     group_already_setup: "De groep die je probeert aan te maken bestaat al."
+    passwords_did_not_match: "Wachtwoorden komen niet overeen"
     proposal_already_exists: "Er staat al een voorstel open binnen deze discussie."
     user_with_email_address_already_in_group: "Een gebruiker met dit e-mailadres behoort al tot deze groep."
     you_have_already_requested_membership: "Je hebt al een lidmaatschap aangevraagd voor deze groep."
@@ -123,6 +135,7 @@ nl-NL:
     motion_closed: "Voorstel gesloten. Als je wil, kan je hieronder een uitkomst beschrijven en deze naar je groep versturen."
     motion_outcome_created: "Gefeliciteerd, je bent tot een uitkomst-voorstel gekomen en je groepsleden zijn op de hoogte gesteld."
     motion_outcome_updated: "Het uitkomst-voorstel is bijgewerkt."
+    password_updated: "Je wachtwoord is succesvol gewijzigd"
     position_submitted: "Standpunt verwerkt"
     position_updated: "Standpunt bijgewerkt."
     proposal_created: "Voorstel is gemaakt."
@@ -176,8 +189,8 @@ nl-NL:
     empty: Je bent helemaal bij! Er zijn geen ongelezen reacties.
   notifications:
     header: "Meldingen"
-    new_discussion: "begon een nieuwe discussie"
-    new_motion: "creëerde een nieuw voorstel"
+    new_discussion: "begon een discussie"
+    new_motion: "maakte een voorstel"
     motion_closed:
       by_user: "sloot het voorstel"
       by_expiry: "Voorstel gesloten"
@@ -292,7 +305,7 @@ nl-NL:
     m6: Een subgroep beginnen waar ze coördinator van worden.
     m7: Hun eigen reacties altijd bewerken.
     m8: Voorstellen doen en hieraan deelnemen.
-    optional_restrictions: "Optioneel kunnen coordinatoren leden beperken in wat ze kunnen doen."
+    optional_restrictions: "Optioneel kunnen coördinatoren leden beperken in wat ze kunnen doen."
   group_privacy:
     visible_to:
       public: Openbaar getoonde groep.
@@ -371,6 +384,12 @@ nl-NL:
   group_description: "Groepsomschrijving"
   edit_group_description: "Bewerk groepsomschrijving"
   group_subscription: "Groepsabonnement"
+  groups:
+    follow:
+      click_to_follow: "Klik om groep te volgen"
+      click_to_unfollow: "Klik om groep niet meer te volgen"
+      following_details: "Je wordt op de hoogte gesteld van elk gesprek in deze groep."
+      not_following_details: "Je wordt op de hoogte gesteld van gesprekken waar je aan deelneemt."
   group_request:
     beta_request_header: "Begin een groep op Loomio Beta"
     beta_request_description: "Om te beginnen met het maken van beslissingen op Loomio Beta, is het maken van een groep de eerste stap"
@@ -406,9 +425,17 @@ nl-NL:
   go_to_add_comment_html: "Om een reactie te geven, <a href='%{href}'>ga naar het einde van de discussie</a>."
   comment_by: "Reactie door %{comment_author}"
   discussion_list:
+    clear_filters: "Filters opschonen: bekijk alle discussies"
+    filter_unread:
+      enable: "Bekijk alleen ongelezen discussies"
+      disable: "Bekijk gelezen en ongelezen discussies"
+    filter_followed:
+      enable: "Laat alleen gevolgde discussies zien"
+      disable: "Bekijk gevolgde en niet gevolgde discussies"
     empty:
       no_discussions: "Er zijn geen discussies in jouw groepen."
       no_discussions_in_group: "Deze groep bevat nog geen discussies."
+      no_discussions_matching_filters_html: "Er zijn geen discussies met dit filter. <a href='%{link}'>Filters opschonen</a>."
       no_public_discussions: "Er zijn geen openbare discussies binnen deze groep."
       discussions_are_private: "Alle discussies in deze groep zijn besloten."
       request_membership_html: "Om besloten discussies te zien, <a href='%{href}'>vraag aan om lid te worden.</a>"
@@ -420,6 +447,10 @@ nl-NL:
     last_edited_html: "Laatst bewerkt %{when} geleden door <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Bekijk mutatie geschiedenis"
     see_history: "Bekijk geschiedenis"
+    click_to_follow: "Klik om gesprek te volgen"
+    click_to_unfollow: "Klik om gesprek niet meer te volgen"
+    following_details: "Je wordt op de hoogte gesteld van wat er in dit gesprek gebeurt."
+    not_following_details: "Je wordt niet op de hoogte gesteld van wat er in dit gesprek gebeurt."
   description_history:
     header: "Mutatie geschiedenis"
     subheader: "Versie"
@@ -731,17 +762,6 @@ nl-NL:
     your_statement: "Jouw uitleg"
     submit: "Verstuur standpunt"
     update: "Standpunt bijwerken"
-  email_preferences_form:
-    header: "E-mail voorkeuren"
-    daily_activity_summary: "Samenvatting Dagelijkse Activiteiten"
-    daily_activity_subscription: "Stuur me dagelijks een activiteiten e-mail met een samenvatting van wat er in mijn groepen is gebeurd"
-    missed_yesterday_subscription: "Stuur mij 'Gisteren op Loomio' - mijn ongelezen inhoud van de afgelopen 24 uur"
-    global_notifications: "Algemene Meldingen"
-    proposal_closing_soon_subscription: "Herinner me 24 uur voordat een voorstel sluit"
-    mentions_subscription: "E-mail me wanneer iemand mij noemt in een reactie"
-    group_activity_notifications: "Meldingen Groepsactiviteit"
-    group_activity_details: "Vink voor iedere groep aan of je meteen een e-mail wilt ontvangen over nieuwe discussies en beslissingen."
-    update_preferences: "Voorkeuren bijwerken"
   new_user_form:
     create_an_account: "Maak een account"
   profile_form:
@@ -834,8 +854,7 @@ nl-NL:
     view_group: "Klik hier om de groep op Loomio te bekijken"
     view_proposal: "Bekijk dit voorstel op Loomio"
     create_discussion:
-      intro: "%{who} is een nieuwe discussie in %{which_group} begonnen:"
-      subject: "Nieuwe discussie - %{which}"
+      intro: "%{who} begon een discussie in %{which_group}:"
     create_proposal:
       intro: "Een nieuw voorstel is gemaakt in een Loomio groep waar je lid van bent."
       closes_in: "Sluit over"
@@ -874,10 +893,10 @@ nl-NL:
       said: "%{comment_author} zei:"
       subject: "%{who} noemde je in de %{which} groep op Loomio"
     new_motion_created:
+      subject: "Voorstel: %{proposal_title}"
       context: "%{author} heeft een voorstel gedaan in %{group_full_name}:"
     proposal_closed:
-      intro: 'Je voorstel "%{proposal_name}" is gesloten.'
-      intro_html: 'Jouw voorstel "%{proposal_name}" is afgesloten.'
+      proposal_has_closed: 'Het voorstel is gesloten.'
       specify_outcome_and_notify_group: "Maak een uitkomst en verzend deze naar je groep!"
       specify_outcome_and_notify_group_html: "Maak een uitkomst en verzend deze naar je groep!"
       subject: "Voorstel gesloten - %{which}"
@@ -890,9 +909,21 @@ nl-NL:
       closes_on: "Sluit op"
       closes_at: "Sluit om"
       closes_in: "Sluit over"
-      closing_in_24_hours: "Sluit over 24 uur"
+      subject: "Sluit binnen 24 uur: %{proposal_title}"
       headline: "Het voorstel van %{author} in %{group} sluit binnenkort: "
       summary: "Samenvatting"
+    thread_mailer:
+      footer_text: "Reageer direct op deze e-mail of bekijk het op Loomio:"
+      footer_html: "Reageer direct op deze e-mail of <a href='%{app_link}'>bekijk het op Loomio</a>. Verander je <a href='%{preferences_link}'>e-mail voorkeuren<a>."
+      change_preferences: "Verander je e-mail voorkeuren:"
+      new_motion_followed: "%{who} stelde voor:"
+      new_motion_not_followed: "%{who} stelde voor:"
+      motion_closing_soon: "Voorstel sluit binnen 24 uur:"
+      proposal_closed: "Voorstel sloot:"
+      specify_outcome_html: "Je voorstel is gesloten. <a href='%{link}'>Specificeer een uitkomst</a> om iedereen te laten weten wat het resultaat is."
+      specify_outcome: "Je voorstel is gesloten. Specificeer een uitkomst om iedereen te laten weten wat het resultaat is:"
+      outcome_created: "%{who} heeft een uitkomst van een voorstel geschreven:"
+      you_agreed: "Je %{past_tense_position}"
     verification:
       header: "Je bent bijna klaar!"
       intro: "Klik op deze verificatielink om je aanvraag te voltooien:"
@@ -921,7 +952,6 @@ nl-NL:
   participation: "Deelname"
   disable: "Uitzetten"
   group: "Groep"
-  groups: "Groepen"
   group_admin: "Groepscoördinator"
   home: "Home"
   id: "id"
@@ -967,8 +997,14 @@ nl-NL:
   google: "Google"
   persona: "Persoonsgegevens"
   common:
+    dashboard: Dashboard
+    unread: Ongelezen
+    filter: 'Filter:'
+    following: Gevolgd
+    not_following: Niet gevolgd
     back_to_discussion: "Terug naar discussie"
     edited: Bewerkt
+    groups: "Groepen"
     today: Vandaag
     months:
       january: januari

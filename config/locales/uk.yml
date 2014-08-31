@@ -163,8 +163,6 @@ uk:
     empty: Усі повідомлення преглянуті!
   notifications:
     header: "Оповіщення"
-    new_discussion: "почав(ла) нову дискусію"
-    new_motion: "створив(ла) нову пропозицію"
     motion_closed:
       by_user: "закрив(ла) пропозицію"
       by_expiry: "Пропозицію закрито"
@@ -591,16 +589,6 @@ uk:
     your_statement: "Ваше судження"
     submit: "Надіслати ваше ставлення"
     update: "Оновити ваше ставлення"
-  email_preferences_form:
-    header: "Налаштування електронної пошти"
-    daily_activity_summary: "Підсумок активності за день"
-    daily_activity_subscription: "Надсилати мені щоденний email з підсумком подій, що відбувались в моїх групах"
-    global_notifications: "Глобальні оповіщення"
-    proposal_closing_soon_subscription: "Нагадати мені за 24 одини до закриття пропозиції"
-    mentions_subscription: "Надсилати мені email , коли  хтось згадує мене в коментарі"
-    group_activity_notifications: "Оповіщення активності групи"
-    group_activity_details: "Для кожної групи, зробіть відмітку, якщо Ви хочете отримувати миттєві email сповіщення про нові дискусії та рішення"
-    update_preferences: "Оновити налаштування"
   new_user_form:
     create_an_account: "Створити обліковий запис"
   profile_form:
@@ -690,9 +678,6 @@ uk:
     view_discussion: "Натисніть тут для перегляду дискусії"
     view_group: "Натисніть тут щоб переглянути групу на Loomio"
     view_proposal: "Переглянути цю пропозицію на Loomio"
-    create_discussion:
-      intro: "%{who} почав нову дискусію у %{which_group}:"
-      subject: "Нова дискусія - %{which}"
     create_proposal:
       intro: "В групі на Loomio, де ви є учасником, створено нову пропозицію."
       closes_in: "Закривається через"
@@ -722,8 +707,6 @@ uk:
     new_motion_created:
       context: "%{author} створив пропозицію у %{group_full_name}:"
     proposal_closed:
-      intro: 'Ваша пропозиція"%{proposal_name}" була закрита.'
-      intro_html: 'Вашу пропозицію "%{proposal_name}" закрито.'
       specify_outcome_and_notify_group: "Визначте результат та надішліть його своїй группі."
       specify_outcome_and_notify_group_html: "Визначте результат та надішліть його своїй группі."
       subject: "Пропозиція закрита - %{which}"
@@ -736,7 +719,6 @@ uk:
       closes_on: "Закривається "
       closes_at: "Закривається о"
       closes_in: "Буде закрито через"
-      closing_in_24_hours: "Буде закрито через 24 години"
       headline: "Пропозицію %{author} у групі %{group} скоро буде закрито:"
       summary: "Підсумок"
     verification:
@@ -767,7 +749,6 @@ uk:
   participation: "Участь"
   disable: "Ввимкнути"
   group: "Група"
-  groups: "Групи"
   group_admin: "Координатор групи"
   home: "На головну"
   id: "id"

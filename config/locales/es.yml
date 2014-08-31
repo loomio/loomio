@@ -175,8 +175,6 @@ es:
     empty: ¡Estás al día! No hay comentarios que no hayas visto.
   notifications:
     header: "Notificaciones"
-    new_discussion: "abrió una propuesta"
-    new_motion: "creó una nueva propuesta"
     motion_closed:
       by_user: "cerró la propuesta"
       by_expiry: "La propuesta se ha cerrado"
@@ -724,17 +722,6 @@ es:
     your_statement: "Tu opinión o enunciación"
     submit: "Remitir posición"
     update: "Actualizar posición"
-  email_preferences_form:
-    header: "Preferencias de correo electrónico "
-    daily_activity_summary: "Resumen de actividades diarias"
-    daily_activity_subscription: "Enviadme la actividad diaria resumiendo lo que ha estado pasando en mis grupos"
-    missed_yesterday_subscription: "Enviadme \"Ayer en Loomio\" - la actividad que no he visto en las últimas 24 horas"
-    global_notifications: "Notificaciones globales"
-    proposal_closing_soon_subscription: "Avisadme 24 horas antes del cierre de una propuesta"
-    mentions_subscription: "Enviadme un correo electrónico cuando alguien me mencione en un comentario"
-    group_activity_notifications: "Notificaciones de la actividad del grupo"
-    group_activity_details: "Por cada grupo, marca la casilla si deseas recibir un correo electrónico inmediatamente a que se abra una nueva discusión o decisión."
-    update_preferences: "Actualizar preferencias"
   new_user_form:
     create_an_account: "Crear una cuenta"
   profile_form:
@@ -826,9 +813,6 @@ es:
     view_discussion: "Haz click aquí para ver esta discusión "
     view_group: "Haz click aquí para ver el grupo en Loomio"
     view_proposal: "Ver esta propuesta en Loomio"
-    create_discussion:
-      intro: "%{who} empezó una discusión en %{which_group}:"
-      subject: "Nueva discusión - %{which}"
     create_proposal:
       intro: "Una nueva propuesta fue creada en un grupo de Loomio al que tu perteneces."
       closes_in: "Cierra en"
@@ -863,8 +847,6 @@ es:
     new_motion_created:
       context: "%{author} ha creado una propuesta en %{group_full_name}:"
     proposal_closed:
-      intro: 'Tu propuesta «%{proposal_name}» ha cerrado.'
-      intro_html: 'Tu propuesta "%{proposal_name}" ha cerrado.'
       specify_outcome_and_notify_group: "¡Crear un resultado y envíalo a tu grupo!"
       specify_outcome_and_notify_group_html: "¡Crear un resultado y envíalo a tu grupo!"
       subject: "Propuesta cerrada - %{which}"
@@ -877,7 +859,6 @@ es:
       closes_on: "Cierra en"
       closes_at: "Cierra a las"
       closes_in: "Cierra en"
-      closing_in_24_hours: "Cierra en 24 Horas"
       headline: "La propuesta de %{author} en %{group} cerrará pronto:"
       summary: "Resumen"
     verification:
@@ -908,7 +889,6 @@ es:
   participation: "Participación"
   disable: "Apagar"
   group: "Grupo"
-  groups: "Grupos"
   group_admin: "Coordinador del grupo"
   home: "Página principal"
   id: "identificador"

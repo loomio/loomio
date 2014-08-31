@@ -1,18 +1,70 @@
 pt-PT:
+  users:
+    email_preferences:
+      edit:
+        title: 'Preferências de Email'
+        when_do_you_want_emails: 'Envia-me um Email:'
+        email_missed_yesterday: "'Ontem no Loomio' - um resumo da atividade que me escapou"
+        email_followed_threads: "Quando sou @mencionado, ou há atividade em discussões que estou a seguir."
+        email_when_proposal_closing_soon: "24 horas antes da proposta encerrar."
+        email_new_discussions_and_proposals: 'Novas discussões e propostas'
+        for_these_groups: "Para estes grupos:"
+        submit: "Guardar preferências"
+  explore:
+    header: "Explorar grupos públicos"
+  try_it:
+    header: "Experimentar o Loomio"
+    start_a_group: "Criar um grupo para tomar decisões com a minha própria comunidade."
+    join_the_community: "Entrar no grupo Comunidade Loomio"
+    loomio_community_info: "Aqui discutimos e tomamos decisões sobre o Loomio."
+    explore_groups: "Explorar outros grupos no Loomio"
+    explore_groups_info: "Explore os outros grupos fantásticos existentes no Loomio e participe!"
+  activerecord:
+    errors:
+      messages:
+        blank: "não pode ser vazio"
   errors:
     messages:
       email: "Endereço de email inválido"
+  attachment:
+    error:
+      too_large: "O ficheiro que tentou anexar tem mais de 50MB, por favor escolha um ficheiro de menor dimensão."
+  devise:
+    invitations:
+      send_instructions: 'O convite foi enviado para %{email}.'
+      invitation_token_invalid: 'Este convite já não é válido!'
+      updated: 'Conta criada.'
+      no_invitations_remaining: "Não há convites disponíveis"
+    mailer:
+      invitation_instructions:
+        subject: 'Alguém convidou-o para participar no seu grupo Loomio'
   error:
+    access_denied: "Não tem permissão para o fazer."
     cant_join_subgroup: "Não pode afiliar-se a um sub-grupo se não for membro do grupo principal."
     cant_modify_position: "Esta proposta foi fechada."
     cant_state_position: "Esta proposta foi fechada."
+    cant_view_member_profile: "Não pode ver o perfil deste membro porque não são do mesmo grupo."
+    contribution: "Por favor inicie sessão para fazer poder participar."
     discussion_not_created: "Não foi possível criar a discussão."
+    discussion_not_moved: "Não tem permissão para mover a discussão para %{destination_group.name}"
     group_not_archived: "Não foi possível arquivar o Grupo."
     invalid_close_date: "Data de encerramento inválida, por favor verifique a sua validade."
+    invalid_email: "Por favor introduza pelo menos um endereço de email válido"
     image_upload_fail: "Não foi possível enviar a imagem. Verifique se a imagem tem tamanho inferior a 1 MB e se é um ficheiro .jpeg, .png, ou .gif."
+    motion_closing_inputs: "Data de fim inválida"
+    motion_outcome_not_created: "Não foi possível publicar o resultado."
+    motion_outcome_not_updated: "Não foi possível atualizar o resultado."
+    only_group_coordinator_destroy: "Não pode sair deste grupo porque é o único coordenador. Pode desativar o seu grupo através das opções do menu suspenso ou <a href='%{add_coordinator}'>adicione um novo coordenador</a> ao grupo"
+    only_group_coordinator_remove_admin: "O grupo precisa de ter um coordenador. Gostaria de nomear outro coordenador para o grupo?"
     permission_to_invite: "Não tem permissão para convidar novos membros."
     position_not_updated: "Não foi possível atualizar posição."
     settings_not_updated: "As suas configurações não foram atualizadas."
+    group_request_already_accepted: "Pedimos desculpa! Este convite é inválido ou já foi usado."
+    group_request_invalid_token: "Pedimos desculpa! Este token é inválido"
+    group_private_or_not_found: "Grupo não encontrado.\n\nEste grupo pode ser privado. Se alguém lhe deu esta ligação, peça-lhe para o convidar para este grupo."
+    group_already_setup: "O grupo que está a tentar criar já existe."
+    passwords_did_not_match: "A palavra-chave é diferente da confirmação"
+    proposal_already_exists: "Já existe uma proposta em aberto neste debate."
   alert:
     duplicate_email: "%{which_email} já pertence ao grupo."
   notice:

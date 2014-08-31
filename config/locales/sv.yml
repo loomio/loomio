@@ -155,8 +155,6 @@ sv:
     empty: Du är fullt uppdaterad! Det finns inga olästa nya kommentarer.
   notifications:
     header: "Notifieringar"
-    new_discussion: "har startat en ny diskussion"
-    new_motion: "har skapat ett nytt förslag"
     motion_closed:
       by_user: "har stängt förslaget"
       by_expiry: "Förslaget är stängt"
@@ -591,16 +589,6 @@ sv:
     your_statement: "Ditt påstående"
     submit: "Sänd ståndpunkt"
     update: "Uppdatera ståndpunkt"
-  email_preferences_form:
-    header: "Email preferenser"
-    daily_activity_summary: "Sammanfattning av dagens aktiviteter"
-    daily_activity_subscription: "Skicka mig ett email med dagens aktiviteter som sammanfattar vad som hänt i mina grupper"
-    global_notifications: "Globala notifieringar"
-    proposal_closing_soon_subscription: "Påminn mig 24 timmar innan förslaget stänger"
-    mentions_subscription: "Emaila mig när någon nämner mig i en kommentar"
-    group_activity_notifications: "Notifiering för gruppens aktiviteter "
-    group_activity_details: "För varje grupp, markera boxen om du vill få email för varje ny diskussion och beslut."
-    update_preferences: "Uppdatera intsällningar"
   new_user_form:
     create_an_account: "Skapa ett konto"
   profile_form:
@@ -690,9 +678,6 @@ sv:
     view_discussion: "Klicka här för att se denna diskussionen"
     view_group: "Klicka här för att se gruppen på Loomio"
     view_proposal: "Visa detta förslag på Loomio"
-    create_discussion:
-      intro: "%{who} startade en ny diskussion i %{which_group}:"
-      subject: "Ny diskussion - %{which}"
     create_proposal:
       intro: "Ett nytt förslag skapades i en Loomiogrupp som du är med i."
       closes_in: "Stänger om"
@@ -724,8 +709,6 @@ sv:
     new_motion_created:
       context: "%{author} skapade ett förslag i %{group_full_name}:"
     proposal_closed:
-      intro: 'Ditt förslag "%{proposal_name}" är stängt.'
-      intro_html: 'Ditt förslag "%{proposal_name}" har stängts.'
       specify_outcome_and_notify_group: "Skapa ett resultat och skicka det till din grupp!"
       specify_outcome_and_notify_group_html: "Skapa ett resultat och skicka det till din grupp!"
       subject: "Förslaget stängt - %{which}"
@@ -738,7 +721,6 @@ sv:
       closes_on: "Stänger den"
       closes_at: "Stänger vid"
       closes_in: "Stänger om"
-      closing_in_24_hours: "Stänger om 24 timmar"
       headline: "%{author}s förslag i %{group} stänger snart:"
       summary: "Sammanfattning"
     verification:
@@ -769,7 +751,6 @@ sv:
   participation: "Deltagande"
   disable: "Inaktivera"
   group: "Grupp"
-  groups: "Grupper"
   group_admin: "Gruppkoordinator"
   home: "Startsida"
   id: "id"

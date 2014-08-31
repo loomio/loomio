@@ -145,8 +145,6 @@ ca:
     empty: Estàs al dia! No tens cap comentari no llegit.
   notifications:
     header: "Notificacions"
-    new_discussion: "començat un nou debat."
-    new_motion: "creat una nova proposta"
     motion_closed:
       by_user: "tancat la proposta"
       by_expiry: "La proposta ha tancat"
@@ -520,16 +518,6 @@ ca:
     your_statement: "La teva declaració"
     submit: "Enviar posició"
     update: "Actualitzar posició"
-  email_preferences_form:
-    header: "Preferències del correu electrònic"
-    daily_activity_summary: "Resum d'activitat diària"
-    daily_activity_subscription: "Envia'm un correu electrònic d'activitat diària resumint el que ha passat als meus grups"
-    global_notifications: "Notificacions globals"
-    proposal_closing_soon_subscription: "Recorda'm 24 hores abans de ue tanqui una proposta"
-    mentions_subscription: "Envia'm un correu electrònic quan algú m'esmenti en un comentari"
-    group_activity_notifications: "Notificacions d'activitat del grup"
-    group_activity_details: "Per a cada grup, marca la casella si vols que t'enviem un correu electrònic sobre noves discussions i decisions."
-    update_preferences: "Actualitza les preferències"
   new_user_form:
     create_an_account: "Crea un compte"
   group_setup:
@@ -601,9 +589,6 @@ ca:
     view_discussion: "Fes click aquí per veure aquesta discussió"
     view_group: "Fes click per veure el grup a Loomio"
     view_proposal: "Veure aquesta proposta a Loomio"
-    create_discussion:
-      intro: "%{who} ha començat una nova discussió a %{which_group}:"
-      subject: "Nova discussió - %{which}"
     create_proposal:
       intro: "S'ha creat una nova proposta a un grup de Loomio al què pertanys."
       closes_in: "Tanca en"
@@ -635,8 +620,6 @@ ca:
     new_motion_created:
       context: "%{author} ha fet una proposta a %{group_full_name}:"
     proposal_closed:
-      intro: 'La teva proposta "%{proposal_name}" s''ha tancat'
-      intro_html: 'La teva proposta "%{proposal_name}" s''ha tancat.'
       specify_outcome_and_notify_group: "Detalla un resultat i envia'l al grup!"
       specify_outcome_and_notify_group_html: "Detalla un resultat i envia'l al grup!"
       subject: "Proposta tancada - %{which}"
@@ -649,7 +632,6 @@ ca:
       closes_on: "Tanca el"
       closes_at: "Tanca a"
       closes_in: "Tanca en"
-      closing_in_24_hours: "Tanca en 24 hores"
       headline: "La proposta de %{author} a %{group} tancarà aviat:"
       summary: "Sumari"
     verification:
@@ -680,7 +662,6 @@ ca:
   participation: "Participació"
   disable: "Desactivar"
   group: "Grup"
-  groups: "Grups"
   group_admin: "Coordinador/a de Grup"
   home: "Inici"
   id: "id"
