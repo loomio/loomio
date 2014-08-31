@@ -31,18 +31,18 @@
               remove_admin_group_membership_path(@group, membership),
               method: :post,
               class: 'btn btn-danger',
-              :confirm => t(:confirm_remove_coordinator, which_user: user.name)
+              data: {confirm: t(:confirm_remove_coordinator, which_user: user.name)}
           - else
             = link_to t(:make_coordinator),
               make_admin_group_membership_path(@group, membership),
               method: :post,
               class: :btn,
-              :confirm => t(:confirm_make_coordinator, which_user: user.name)
+              data: {confirm: t(:confirm_make_coordinator, which_user: user.name)}
           %td=link_to t(:remove),
               group_membership_path(@group, membership),
               method: :delete,
               class: 'btn btn-danger',
-              :confirm => t(:confirm_remove_member)
+              data: {confirm: t(:confirm_remove_member)}  
 
 - unless @group.pending_invitations.count == 0
   %h1=  t :pending_invitations

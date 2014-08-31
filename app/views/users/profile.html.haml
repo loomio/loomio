@@ -9,7 +9,7 @@
       = f.submit :class => "btn btn-info btn-large", id: "profile-submit", :data => {:disable_with => t("helpers.submit.user.update")}
 .row
   .span4
-    = link_to "Change your password", change_password_path, id: 'change-password'
+    = link_to t(:'user_profile.change_password'), change_password_path, id: 'change-password'
 
 .row
   .span6
@@ -30,3 +30,19 @@
           = file_field_tag :uploaded_avatar, id: 'uploaded-avatar'
           = hidden_field_tag("user[avatar_kind]", "", :id => "user-avatar-kind")
           = hidden_field_tag :max_file_size, User::MAX_AVATAR_IMAGE_SIZE_CONST, id: 'max-file-size'
+
+.row.deactivate-account
+  .span3
+    - if can? :deactivate, @user
+      = link_to t(:'user_profile.deactivate_account'),
+        user_path(@user),
+        method: :post,
+        class: 'btn btn-danger',
+        id: 'deactivate-user-account',
+        data: {confirm: t(:'user_profile.confirm_account_deactivation')}
+    - else
+      = link_to t(:'user_profile.deactivate_account'), deactivation_instructions_path, class: 'btn btn-danger', id: "deactivate-user-account"
+.row
+  .span3
+    = link_to t(:'user_profile.about_deactivation'), about_deactivation_path, class: 'deactivation-info'
+
