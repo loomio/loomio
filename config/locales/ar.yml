@@ -80,8 +80,6 @@ ar:
         other: "%{count} ثوان"
   notifications:
     header: "التنبيهات"
-    new_discussion: "بدأ نقاشا جديدا."
-    new_motion: "أنشأ اقتراحا جديدا."
     motion_closed:
       by_user: "أغلق الإقتراح"
       by_expiry: "تم إغلاق الإقتراح"
@@ -250,15 +248,6 @@ ar:
     your_statement: "بيانك"
     submit: "أرسل الموقف"
     update: "عدّل الموقف"
-  email_preferences_form:
-    header: "إعدادات البريد الإلكتروني"
-    daily_activity_summary: "ملخص النشاط اليومي"
-    daily_activity_subscription: "أرسل لي يوميا رسالة إلكترونية تلخص ما يحصل في مجموعاتي."
-    global_notifications: "التنبيهات "
-    proposal_closing_soon_subscription: "قم بتذكيري بالمقترحات قبل إنتهاء أي منها ب ٢٤ ساعة"
-    mentions_subscription: "أرسل لي رسالة إلكترونية عندما يذكرني أحدهم في تعليق ما"
-    group_activity_notifications: "تنبيهات نشاطات المجموعة"
-    update_preferences: "حدّث الإعدادات"
   new_user_form:
     create_an_account: "أنشئ حسابا"
   simple_form:
@@ -303,7 +292,6 @@ ar:
   enable: "تفعيل"
   disable: "تعطيل"
   group: "المجموعة"
-  groups: "المجموعات"
   like: "يعجبني"
   loading: "جار التحميل"
   new_activity: "نشاط جديد"

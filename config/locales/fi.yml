@@ -50,8 +50,6 @@ fi:
     proposal_deleted: "Esitys poistettu."
   notifications:
     header: "Ilmoitukset"
-    new_discussion: "aloitti uuden keskustelun"
-    new_motion: "loi uuden esityksen"
     motion_closed:
       by_user: "sulki esityksen"
       by_expiry: "Esitys on suljettu"

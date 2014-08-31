@@ -92,8 +92,6 @@ ru:
         other: "%{count} лет"
   notifications:
     header: "Уведомления"
-    new_discussion: "начата новая дискуссия "
-    new_motion: "создано новое предложение "
     motion_closed:
       by_user: "предложение закрыто"
       by_expiry: "Предложение было закрыто"

@@ -104,8 +104,6 @@ hu:
     empty: Naprakész vagy! Minden hozzászólást láttál már.
   notifications:
     header: "Értesítések"
-    new_discussion: "új témát indított"
-    new_motion: "új javaslatot tett"
     motion_closed:
       by_user: "lezárta a javaslatot"
       by_expiry: "A javaslat lezárult"
@@ -393,16 +391,6 @@ hu:
     your_statement: "Az indoklásod"
     submit: "Álláspont megadása"
     update: "Álláspont frissítése"
-  email_preferences_form:
-    header: "E-mail beállítások"
-    daily_activity_summary: "Napi tevékenység"
-    daily_activity_subscription: "Kérek egy napi e-mail, ami összefoglalja, hogy aznap mi történt a csoportjaimban"
-    global_notifications: "Általános értesítések"
-    proposal_closing_soon_subscription: "Emlékeztető kérek egy javaslat lezárulta előtt 24 órával"
-    mentions_subscription: "E-mailt kérek, ha valaki megemlít engem egy hozzászólásban"
-    group_activity_notifications: "Értesítések a csoport tevékenységéről"
-    group_activity_details: "Jelöld be minden csoportnál, ha értesítést kérsz az új témák és javaslatok indulásáról"
-    update_preferences: "Beállítások frissítése"
   new_user_form:
     create_an_account: "Fiók létrehozása"
   group_setup:
@@ -444,9 +432,6 @@ hu:
     view_comment: "Kattints ide, hogy megnézd a hozzászólást a Loomión."
     view_discussion: "Ide kattintva nézheted meg ezt a témát"
     view_group: "Kattints ide, hogy megnézd a csoportot a Loomión."
-    create_discussion:
-      intro: "%{who} új témát nyitott a %{which_group} csoportban:"
-      subject: "Új téma -  %{which}"
     create_proposal:
       intro: "Új javaslatot hoztak létre egy Loomio csoportodban."
       closes_in: "Lezáródik"
@@ -467,7 +452,6 @@ hu:
       said: "%{comment_author} azt írta:"
       subject: "%{who} megemlített téged a %{which} Loomio csoportban"
     proposal_closed:
-      intro: 'A "%{proposal_name}" javaslatod lezárult.'
       subject: "A javaslat lezárult - %{which}"
     proposal_blocked:
       intro: "Az általad kezelt javaslatot blokkolták."
@@ -500,7 +484,6 @@ hu:
   participation: "Részvétel"
   disable: "Kikapcsolás"
   group: "Csoport"
-  groups: "Csoportok"
   home: "Nyitólap"
   like: "Tetszik"
   loading: "Töltés..."
