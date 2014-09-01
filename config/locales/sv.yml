@@ -516,7 +516,6 @@ sv:
   now_that_your_logged_in: "Nu när du har logga in med %{provider_name}, konfirmera dina uppgifter för att skapa ett Loomiokonto."
   confirmation_not_received: "Fick du inte instruktionerna för att kunna konfirmera?"
   unlock_not_received: "Fick du inte instruktionerna för att kunna låsa upp?"
-  inactive_html: "Tyvärr, detta konto är inaktivt för närvarande. Om du har frågor <a href='%{path_to_contact}'>kontakta oss</a>."
   create_an_account_html: 'Skapa ett Loomio Betakonto'
   log_in: "Logga in"
   join_group:
@@ -595,7 +594,6 @@ sv:
     view: "Visa min profil"
     profile: "Ändra profilen"
     picture: "Bild"
-    use_avatar_kind: "Använd %{kind}"
     upload_new_image: "Ladda upp en ny bild"
   group_setup:
     set_up_your_group: Starta din grupp

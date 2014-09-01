@@ -415,7 +415,6 @@ ko:
   now_that_your_logged_in: "%{provider_name}로 로그인을 하고 있습니다. 루미오 계정을 만들기 위해서 세부 사항을 확인해 주세요."
   confirmation_not_received: "확인 안내 메일을 받지 못했나요?"
   unlock_not_received: "해제 안내를 받지 못했나요?"
-  inactive_html: "죄송합니다, 이 계정은 현재 비활성화 되었습니다. 질문이 있다면 <a href='%{path_to_contact}'>연락을 해 주세요.</a>."
   create_an_account_html: '루미오 베타 계정 만들기'
   log_in: "로그인"
   join_group:
@@ -486,7 +485,6 @@ ko:
     view: "내 프로필 보기"
     profile: "프로필 편집"
     picture: "사진"
-    use_avatar_kind: "%{kind} 사용"
     upload_new_image: "새로운 이미지 업로드"
   group_setup:
     set_up_your_group: 그룹 지정하기

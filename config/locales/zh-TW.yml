@@ -609,7 +609,6 @@ zh-TW:
   now_that_your_logged_in: "現在您已以 %{provider_name} 登入，請確認您的詳細訊息以建立 Loomio 帳戶"
   confirmation_not_received: "沒有收到帳號確認程序？"
   unlock_not_received: "沒有收到帳號解鎖程序？"
-  inactive_html: "抱歉，這個帳號目前無法登入。若您有任何問題請點擊以下連結以和我們接觸。 <a href='%{path_to_contact}'></a>"
   create_an_account_html: '建立 Loomio Beta 帳號'
   log_in: "登入"
   join_group:
@@ -715,7 +714,6 @@ zh-TW:
     view: "觀看我的簡歷"
     profile: "編輯簡歷"
     picture: "照片"
-    use_avatar_kind: "使用 %{kind}"
     upload_new_image: "上傳新的圖片"
   group_setup:
     set_up_your_group: 設置您的群組
