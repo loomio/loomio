@@ -451,7 +451,6 @@ ca:
   already_have_account: "Ja tens un compte a Loomio?"
   confirmation_not_received: "No has rebut les instruccions de confirmació_"
   unlock_not_received: "No has rebut les instruccions de desbloqueig?"
-  inactive_html: "Ho sentim, aquest compte es troba inactiu. Si tens alguna pregunta, sisplau <a href='%{path_to_contact}'> posa't en contacte </a>."
   log_in: "Inicia la sessió"
   join_group:
     log_in: "Inicia sessió per unir-te a %{group_name}"

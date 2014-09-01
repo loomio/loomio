@@ -513,7 +513,6 @@ uk:
   now_that_your_logged_in: "Тепер, коли ви авторизовані через %{provider_name}, будь ласка, підтвердіть свої дані, щоб створити Loomio акаунт."
   confirmation_not_received: "Не отримали інструкцію для підтвердження?"
   unlock_not_received: "Не отримали інструкцій для разблокування?"
-  inactive_html: "Пробачте, цей акаунт зараз неактивний. Якщо ви маєте будь-які питання, <a href='%{path_to_contact}'>напишіть нам</a>."
   create_an_account_html: 'Створити акаунт Loomio Beta'
   log_in: "Увійти"
   join_group:
@@ -595,7 +594,6 @@ uk:
     view: "Переглянути мій профіль"
     profile: "Редагувати профіль"
     picture: "Картинка"
-    use_avatar_kind: "Використовуйте %{kind}"
     upload_new_image: "Завантажити нове зображення"
   group_setup:
     set_up_your_group: Настройки групи

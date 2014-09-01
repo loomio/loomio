@@ -1,6 +1,6 @@
-# zeus rake languages:update
+# zeus rake locales:update
 
-namespace :languages do
+namespace :locales do
   LOGIN = { basic_auth: {username: ENV['TRANSIFEX_USERNAME'], password: ENV['TRANSIFEX_PASSWORD']} }
 
   RESOURCES = { 'github-linked-version' => 'en.yml',
@@ -30,14 +30,24 @@ namespace :languages do
     end
 
 
-    Rake::Task["languages:check_interpolations"].invoke(fixed_locales)
+    Rake::Task["locales:check_interpolations"].invoke(fixed_locales)
 
-    Rake::Task["languages:check_exp_locales"].invoke(fixed_locales)
+    Rake::Task["locales:check_exp_locales"].invoke(fixed_locales)
 
 
     print "\n\n"
     puts " DONE!! ^_^"
     print "\n"
+  end
+
+  task :check => :environment do
+    #could be drier
+    language_info = HTTParty.get('http://www.transifex.com/api/2/project/loomio-1/languages', LOGIN)
+    locales = locale_array(language_info)
+    fixed_locales = locales.map {|l| l.gsub('_','-')}
+
+    Rake::Task["locales:check_interpolations"].invoke(fixed_locales)
+    Rake::Task["locales:check_exp_locales"].invoke(fixed_locales)
   end
 
   task :check_interpolations, [:locales] => [:environment] do |t, args|
@@ -76,7 +86,7 @@ namespace :languages do
   end
 
   task :check_exp_locales, [:locales] => [:environment] do |t, args|
-    args.with_defaults(:locales => LocalesHelper::LOCALE_STRINGS + LocalesHelper::EXPERIMENTAL_LOCALE_STRINGS)
+    # args.with_defaults(:locales => LocalesHelper::LOCALE_STRINGS + LocalesHelper::EXPERIMENTAL_LOCALE_STRINGS)
 
     print "\n EXPERIMENTAL_LOCALE_STRINGS = %w( "
     pretty_l = (args[:locales] - LocalesHelper::LOCALE_STRINGS).map do |l|
@@ -129,7 +139,7 @@ def update(locale, resource)
 
   if response.present? && content = response['content']
     target = File.open("config/locales/#{filename}", 'w')
-    target.write(content.gsub(locale, fixed_locale))
+    target.write(content.gsub(/^#{locale}:/, "#{fixed_locale}:"))
     target.close()
 
     printf "%18s ", grey(filename)

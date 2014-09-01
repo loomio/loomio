@@ -241,6 +241,17 @@ nl-NL:
   prompt_user_to_join:
     header: "Meld je aan bij de groep om deel te nemen"
     body: "Om te reageren of te stemmen moet je lid zijn van deze groep."
+  user_profile:
+    back: "Terug naar mijn profiel"
+    change_password: "Verander je wachtwoord"
+    deactivate_account: "Deactiveer account"
+    about_deactivation: "Wat betekent dit?"
+    confirm_account_deactivation: "Weet je zeker dat je je account wil deactiveren?"
+    reactivation_html: "Neem <a href='%{link}'>contact</a> met ons op om je account te heractiveren."
+    deactivation:
+      title: "Account wordt uitgeschakeld"
+      only_coordinator: "Een groep moet minimaal een coördinator hebben. Je bent momenteel de enige coordinator van de volgende groepen:"
+      instructions: "Om je account te deactiveren, moet je ofwel een andere coördinator toevoegen of de groepen deactiveren."
   group_form:
     name: "Groepsnaam"
     description: "Omschrijving"
@@ -663,7 +674,6 @@ nl-NL:
   now_that_your_logged_in: "Nu je ingelogd bent met %{provider_name}, bevestig je gegevens om  je Loomio account te maken."
   confirmation_not_received: "Geen bevestigingsinstructies ontvangen?"
   unlock_not_received: "Geen ontgrendelingsinstructies ontvangen?"
-  inactive_html: "Sorry, dit account is op het moment niet actief. <a href='%{path_to_contact}'>Neem contact op</a> als je vragen hebt."
   create_an_account_html: 'Maak een Loomio Beta account'
   log_in: "Log in"
   join_group:
@@ -768,7 +778,9 @@ nl-NL:
     view: "Bekijk mijn profiel"
     profile: "Bewerk profiel"
     picture: "Afbeelding"
-    use_avatar_kind: "Gebruik %{kind}"
+    use_initials: 'Gebruik initialen'
+    use_uploaded: 'Gebruik geuploade afbeelding'
+    use_gravtar: 'Gebruik Gravatar'
     upload_new_image: "Upload nieuwe afbeelding"
   group_setup:
     set_up_your_group: Stel je groep in
@@ -916,8 +928,6 @@ nl-NL:
       footer_text: "Reageer direct op deze e-mail of bekijk het op Loomio:"
       footer_html: "Reageer direct op deze e-mail of <a href='%{app_link}'>bekijk het op Loomio</a>. Verander je <a href='%{preferences_link}'>e-mail voorkeuren<a>."
       change_preferences: "Verander je e-mail voorkeuren:"
-      new_motion_followed: "%{who} stelde voor:"
-      new_motion_not_followed: "%{who} stelde voor:"
       motion_closing_soon: "Voorstel sluit binnen 24 uur:"
       proposal_closed: "Voorstel sloot:"
       specify_outcome_html: "Je voorstel is gesloten. <a href='%{link}'>Specificeer een uitkomst</a> om iedereen te laten weten wat het resultaat is."

@@ -664,7 +664,6 @@ sr-RS:
   now_that_your_logged_in: "Сада када сте се пријавили са %{provider_name}, молим потврдите своје детаље како бисте креирали Лумио налог."
   confirmation_not_received: "Нисте примили инструкције потврђивања?"
   unlock_not_received: "Нисте добили инструкције о откључавању?"
-  inactive_html: "Извините, овај налог је тренутно неактиван. Ако имате неких питања молимо <a href='%{path_to_contact}'>ступите поново у контакт</a>."
   create_an_account_html: 'Направите Лумио Бета налог'
   log_in: "Пријави се"
   join_group:
@@ -770,7 +769,6 @@ sr-RS:
     view: "Погледај мој профил"
     profile: "Уреди профил"
     picture: "Слика"
-    use_avatar_kind: "Користи %{kind}"
     upload_new_image: "Проследи нову слику"
   group_setup:
     set_up_your_group: Оснуј групу

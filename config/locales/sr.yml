@@ -661,7 +661,6 @@ sr:
   now_that_your_logged_in: "Sada kada ste se prijavili sa %{provider_name}, molim potvrdite svoje detalje kako biste kreirali Lumio nalog."
   confirmation_not_received: "Niste primili instrukcije potvrđivanja?"
   unlock_not_received: "Niste dobili instrukcije o otključavanju?"
-  inactive_html: "Izvinite, ovaj nalog je trenutno neaktivan. Ako imate nekih pitanja molimo <a href='%{path_to_contact}'>stupite ponovo u kontakt</a>."
   create_an_account_html: 'Napravite Lumio Beta nalog'
   log_in: "Prijavi se"
   join_group:
@@ -764,7 +763,6 @@ sr:
     view: "Pogledaj moj profil"
     profile: "Uredi profil"
     picture: "Slika"
-    use_avatar_kind: "Koristi %{kind}"
     upload_new_image: "Prosledi novu sliku"
   group_setup:
     set_up_your_group: Osnuj grupu

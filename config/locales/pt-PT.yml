@@ -65,19 +65,41 @@ pt-PT:
     group_already_setup: "O grupo que está a tentar criar já existe."
     passwords_did_not_match: "A palavra-chave é diferente da confirmação"
     proposal_already_exists: "Já existe uma proposta em aberto neste debate."
+    user_with_email_address_already_in_group: "Um utilizador com esse endereço de email já pertence ao grupo."
+    you_have_already_requested_membership: "Já havia pedido acesso a este grupo."
+    you_are_already_a_member_of_this_group: "Já é membro deste grupo."
   alert:
     duplicate_email: "%{which_email} já pertence ao grupo."
   notice:
+    new_contacts_imported: "Funcionou! Pode introduzir nomes no campo abaixo e nós sugerimos o endereço de email."
+    admin_rights_removed: "%{which_user} perdeu as permissões de coordenador."
+    user_added: "%{user_email_or_name} foi adicionado(a) ao grupo."
+    new_user_added: "%{user_email_or_name} será adicionado(a) ao grupo depois de criar uma conta Loomio."
     member_removed: "Membro retirado."
     membership_request_canceled: "Pedido de adesão cancelado."
     membership_request_ignored: "Pedido de adesão ignorado."
     settings_updated: "As suas configurações foram actualizadas."
+    user_made_admin: "%{which_user} ganhou permissões de coordenador."
     you_have_left_group: "Saiu %{which_group}."
+    comment_deleted: "Comentário apagado."
+    invitations:
+      auto_added_and_sent: "%{auto_added_text} e %{sent_text}"
+  tooltip:
+    cover_photo_upload: "Carregar nova foto de capa"
+    logo_upload: "Carregar novo logótipo"
+    edit_description: "Editar descrição"
+    group_category: "Procurar mais grupos como este"
+  views:
+    pagination:
+      previous: "Anterior"
+      next: "Next"
   warning:
+    cant_remove_last_admin: "É o último coordenador e não pode ser removido."
     membership_request_already_ignored: "Pedido de adesão já tinha sido ignorado."
     membership_request_already_canceled: "Pedido de adesão já foi cancelado."
     position_not_submitted: "A sua posição não pode ser submetida."
     proposal_not_created: "Proposta não pode ser criada."
+    user_already_admin: "%{which_user} já é um coordenador deste grupo."
   success:
     added_to_group: "Foi adicionado a %{which_group}."
     close_date_changed: "Data de encerramento alterada com sucesso."

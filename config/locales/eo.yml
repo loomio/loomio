@@ -1,6 +1,17 @@
 eo:
+  users:
+    email_preferences:
+      edit:
+        title: 'Retpoŝtaj preferoj'
+        when_do_you_want_emails: 'Retpoŝtu min:'
+        email_missed_yesterday: "'Hieraŭ en Loomio' - ĉiutaga resumo de ĉiaj eble perditaj aktivaĵoj"
+        email_followed_threads: "Kiam mi estas @menciata, aŭ kiam estas aktiveco en de mi sekvataj fadenoj."
+        email_when_proposal_closing_soon: "24 horojn antaŭ la fermo de propono."
+        email_new_discussions_and_proposals: 'Novaj diskutoj kaj proponoj'
+        for_these_groups: "Por ĉi tiuj grupoj:"
+        submit: "Konservi preferojn"
   explore:
-    header: "Esploru publikajn grupojn"
+    header: "Esplori publikajn grupojn"
   try_it:
     header: "Provu uzi Loomio-n"
     start_a_group: "Starigu grupon por fari decidojn rilatajn al via komunumo"
@@ -116,7 +127,7 @@ eo:
     discussion_created: "La diskuto estis sukcese kretia."
     discussion_deleted: "La diskuto estis sukcese forigita."
     discussion_moved: "Diskuto sukcese moviĝis al %{group_name}"
-    emails_sending: "Retadresoj kiuj sendis."
+    emails_sending: "Retpoŝtaĵoj sendiĝas."
     group_archived: "Grupo sukcese arĥivita."
     group_created: "Grupo sukcese kreita."
     members_added: "Membroj aldonitaj al la grupo."
@@ -178,6 +189,8 @@ eo:
     empty: Vi estas ĝisdata! Ne estas komentoj kiujn vi ne vidis.
   notifications:
     header: "Sciigoj"
+    new_discussion: "komencis diskuton"
+    new_motion: "kreis proponon"
     motion_closed:
       by_user: "fermita por porponoj"
       by_expiry: "La propono estas fermita."
@@ -228,6 +241,21 @@ eo:
   prompt_user_to_join:
     header: "Aliĝu al la grupo por partopreni"
     body: "Por komenti aŭ voĉdoni, vi devas esti membro de ĉi tiu grupo."
+  user_profile:
+    back: "Reen al mia profilo"
+    change_password: "Ŝanĝi vian pasvorton"
+    deactivate_account: "Malaktivigi konton"
+    about_deactivation: "Kion ĉi tio signifos?"
+    confirm_account_deactivation: "Ĉu vi certas ke vi volas malaktivigi vian konton?"
+    reactivation_html: "Vi devos <a href='%{link}'>kontakti nin</a> por reaktivigi vian konton."
+    deactivation:
+      title: "Malaktivigi vian konton"
+      only_coordinator: "Grupo devas havi almenaŭ unu kunordiganton. Vi momente estas la sola kunordiganto de la sekvaj grupoj:"
+      instructions: "Por malaktivigi vian konton, vi devos ĉu aldoni alian kunordiganton ĉu malaktivigi la grupojn."
+      info_title: "Kion signifos malaktivigon de via konto?"
+      memberships: "Vi ne plu estos listigita kiel membro en ajna grupo al kiu vi nun apartenas."
+      group_contributions: "La komentoj, proponoj kaj diskutoj kiujn vi faris en grupoj restos tie, sed ni forviŝos vian nomon de ili."
+      emails: "Ni ne plu sendos retpoŝtaĵojn rilatajn al Loomio."
   group_form:
     name: "Grupnomo"
     description: "Priskribo"
@@ -371,6 +399,12 @@ eo:
   group_description: "Priskribo de la grupo"
   edit_group_description: "Redakti gruppriskribon"
   group_subscription: "Grupabono"
+  groups:
+    follow:
+      click_to_follow: "Klaku por sekvi grupon"
+      click_to_unfollow: "Klaku por malsekvi grupon"
+      following_details: "Vi estos informata pri ĉiu fadeno en ĉi tiu grupo."
+      not_following_details: "Vi estos informata pri fadenoj en kiuj vi partoprenas."
   group_request:
     beta_request_header: "Komenci grupon en Loomio Beta"
     beta_request_description: "Por komenci fari decidojn en Loomio Beta, unua paŝo estas komenci grupon"
@@ -406,9 +440,17 @@ eo:
   go_to_add_comment_html: "Por aldoni komenton, <a href='%{href}'>iru al la fino de la diskuto</a>."
   comment_by: "Komentis %{comment_author}"
   discussion_list:
+    clear_filters: "Viŝi filtrilojn: vidi ĉiujn diskutojn"
+    filter_unread:
+      enable: "Nur montri nelegitajn diskutojn"
+      disable: "Vidi legitajn kaj nelegitajn diskutojn"
+    filter_followed:
+      enable: "Nur montri sekvatajn diskutojn"
+      disable: "Vidi sekvatajn kaj nesekvatajn diskutojn"
     empty:
       no_discussions: "Ne estas diskutoj en iuj ajn el viaj grupoj."
       no_discussions_in_group: "Ĉi tiu grupo ankoraŭ ne havas diskutojn."
+      no_discussions_matching_filters_html: "Ne estas diskutoj kongruaj kun ĉi tiuj filtriloj. <a href='%{link}'>Viŝi filtrilojn</a>."
       no_public_discussions: "Ne estas publikaj diskutoj en ĉi tiu grupo."
       discussions_are_private: "Ĉiuj diskutoj en ĉi tiu grupo estas privataj."
       request_membership_html: "Por vidi privatajn diskutojn, <a href='%{href}'>petu aliĝi al la grupo.</a>"
@@ -420,6 +462,10 @@ eo:
     last_edited_html: "Laste redaktita antaŭ %{when} de <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Vidu la revizian historion"
     see_history: "Vidi historion"
+    click_to_follow: "Klaku por sekvi fadenon"
+    click_to_unfollow: "Klaku por malsekvi fadenon"
+    following_details: "Vi estos informata pri aktiveco en ĉi tiu fadeno."
+    not_following_details: "Vi ne estos informata pri aktiveco en ĉi tiu fadeno."
   description_history:
     header: "Revizia historio"
     subheader: "Versio"
@@ -651,7 +697,7 @@ eo:
   now_that_your_logged_in: "Ensalutinte per %{provider_name}, bonvolu konfirmi viajn detalojn por fari Loomio-konton."
   confirmation_not_received: "Ĉu vi ne ricevis la konfirmajn instrukciojn?"
   unlock_not_received: "Ĉu vi ne ricevis la malŝlosajn instrukciojn?"
-  inactive_html: "Pardonu, ĉi tiu konto momente estas neaktiva. Se vi havas ajnajn demandojn, bonvolu <a href='%{path_to_contact}'>kontakti nin</a>."
+  inactive_html: "Ĉi tiu konto malaktiviĝis. Se vi havas ajnajn demandojn, bonvolu <a href='%{path_to_contact}'>kontakti nin</a>."
   create_an_account_html: 'Krei Loomio-Beta-konton'
   log_in: "Ensaluti"
   join_group:
@@ -757,7 +803,9 @@ eo:
     view: "Vidi mian profilon"
     profile: "Redakti profilon"
     picture: "Bildo"
-    use_avatar_kind: "Uzi %{kind}"
+    use_initials: 'Uzi unuajn literojn de nomo'
+    use_uploaded: 'Uzi alŝutitan bildon'
+    use_gravtar: 'Uzi Gravataron'
     upload_new_image: "Alŝuti novan bildon"
   group_setup:
     set_up_your_group: Konfiguri vian grupon
@@ -842,6 +890,8 @@ eo:
     view_discussion: "Klaku ĉi tie por vidi ĉi tiun diskuton"
     view_group: "Klaku ĉi tie por vidi la grupon en Loomio"
     view_proposal: "Vidi ĉi tiun proponon en Loomio"
+    create_discussion:
+      intro: "%{who} komencis diskuton en %{which_group}:"
     create_proposal:
       intro: "Nova propono kreiĝis en Loomio-grupo al kiu vi apartenas."
       closes_in: "Fermiĝos post"
@@ -879,8 +929,10 @@ eo:
       said: "%{comment_author} diris:"
       subject: "%{who} menciis vin en la grupo %{which} en Loomio"
     new_motion_created:
+      subject: "Propono: %{proposal_title}"
       context: "%{author} kreis proponon en %{group_full_name}:"
     proposal_closed:
+      proposal_has_closed: 'La propono fermiĝis.'
       specify_outcome_and_notify_group: "Kreu rezulton kaj sendu ĝin al via grupo!"
       specify_outcome_and_notify_group_html: "Kreu rezulton kaj sendu ĝin al via grupo!"
       subject: "Propono fermita - %{which}"
@@ -893,8 +945,20 @@ eo:
       closes_on: "Fermiĝos dum"
       closes_at: "Fermiĝos je"
       closes_in: "Fermiĝos post"
+      subject: "Fermiĝos en 24 horoj: %{proposal_title}"
       headline: "La propono de %{author} en %{group} baldaŭ fermiĝos:"
       summary: "Resumo"
+    thread_mailer:
+      footer_text: "Respondi rekte al ĉi tiu retpoŝtaĵo aŭ vidi ĝin en Loomio:"
+      footer_html: "Respondu rekte al ĉi tiu retpoŝtaĵo aŭ <a href='%{app_link}'>vidu ĝin en Loomio</a>. Ŝanĝi viajn <a href='%{preferences_link}'>retpoŝtajn preferojn</a>."
+      change_preferences: "Ŝanĝi viajn retpoŝtajn preferojn:"
+      new_motion: "%{who} proponis:"
+      motion_closing_soon: "Propono fermiĝos en 24 horoj:"
+      proposal_closed: "Propono fermita:"
+      specify_outcome_html: "Via propono estas fermita. <a href='%{link}'>Decidu rezulton</a> por sciigi al ĉiuj kiel elturniĝis."
+      specify_outcome: "Via propono estas fermita. Decidu rezulton por sciigi al ĉiuj kiel elturniĝis:"
+      outcome_created: "%{who} metis proponan rezulton:"
+      you_agreed: "Vi %{past_tense_position}"
     verification:
       header: "Vi preskaŭ pretas!"
       intro: "Bonvolu alklaki la kontrololigilon por fini vian peton:"
@@ -968,8 +1032,14 @@ eo:
   google: "Google"
   persona: "Persona"
   common:
+    dashboard: Supervidpanelo
+    unread: Nelegitaj
+    filter: 'Filtrilo:'
+    following: Sekviĝas
+    not_following: Ne sekviĝas
     back_to_discussion: "Reen al diskuto"
     edited: Redaktita
+    groups: "Grupoj"
     today: Hodiaŭ
     months:
       january: Januaro
@@ -1024,7 +1094,7 @@ eo:
     please_wait: "Bonvolu atendi"
     privacy: "Privateco"
     private: "Privata"
-    public: "ublika"
+    public: "Publika"
     email: "Retpoŝto"
     start_group: "Komenci grupon!"
   group_categories:
