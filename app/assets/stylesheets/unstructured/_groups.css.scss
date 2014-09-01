@@ -16,9 +16,10 @@ body.groups {
     .discussion-preview.showing-group .discussion-title { margin-top: 0; }
     .group-heading {
       background: image-url('default-cover-photo.png') 0 0 no-repeat;
-      margin: -23px -20px 0 -20px;
+      margin: -23px -20px 0 -15px;
       position: relative;
       height: 200px;
+      max-width: 970px;
       a { color: white; }
       .alert{
         margin: 16px;
@@ -106,6 +107,9 @@ body.groups {
     }
     #group-actions {
       margin: 20px 0 15px 0;
+      .options{margin: 0;
+      }
+
     }
     .heart-icon {color: red;}
     #request-membership {
@@ -177,7 +181,21 @@ body.groups {
         padding: 2px 10px 0 0;
       }
     }
+
+    .follow{
+      margin-bottom: 1.2em;
+    }
   }
+}
+
+.group-link-name{
+  font-weight: bold; 
+  margin-top: 0.3em;
+}
+.sub-group .group-link-name {
+  padding-left: 1em;
+  font-weight: normal;
+  margin-top: 0;
 }
 
 #group_email_subject { width: 510px; }
@@ -199,6 +217,10 @@ body.groups {
 
 #group-privacy-label {
   font-size: .8em;
+}
+
+#group_email_body{
+  height: 200px;
 }
 
 .name-separator {

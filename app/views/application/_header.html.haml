@@ -15,10 +15,10 @@
     - if user_signed_in?
       %nav.collapse.navbar-collapse#navbar-collapse
         %ul.nav.navbar-nav
-          %li
+          %li#inbox-container
             %a{href: inbox_path}
               %i.fa.fa-inbox
-              %span#inbox-count.label
+              %span#inbox-count.activity-count.label
           %li.dropdown#notifications-container
             %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
               %i.fa.fa-bell

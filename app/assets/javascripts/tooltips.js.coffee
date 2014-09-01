@@ -35,4 +35,5 @@ $ ->
     delay: 200
 
 $ ->
-  $('.js-tooltip').tooltip()
+  $('.js-tooltip').tooltip
+    placement: "bottom"

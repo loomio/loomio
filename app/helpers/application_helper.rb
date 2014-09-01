@@ -20,6 +20,8 @@ module ApplicationHelper
         "error"
       when :notice
         "info"
+      when "notice"
+        "info"
       when :success
         "success"
       else

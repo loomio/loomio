@@ -61,6 +61,10 @@ h2, h3 {
   margin: 15px 0 9px 0;
 }
 
+.panel h4{
+  margin-bottom: 0;
+}
+
 hr { margin: 1px; }
 
 html { height: 100%; }
@@ -391,14 +395,12 @@ a.btn-icon:hover { color: $dark-grey; }
 }
 
 .main-container {
-  background: transparent;
-  @include screen-size(medium-up) {
-    background: #fff;
-  }
+  background: #fff;
 }
 
 .checkbox { padding-left: 20px; }
 
+.btn { margin-bottom: 5px; }
 
 /* hacks for bootstrap 3 + simpleform */
 form{
@@ -436,3 +438,5 @@ form{
     margin-left: 0.5em;
   }
 }
+
+.tooltip.bottom .tooltip-arrow{ top: 0 !important; }

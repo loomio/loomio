@@ -60,7 +60,7 @@
         - can_archive = can? :edit, @group
         - can_email = can? :email_members, @group
         - if can_edit || can_leave
-          .btn-group.btn-block
+          .btn-group.btn-block.options
             = link_to '#',
                       class: 'btn btn-block btn-default btn-left dropdown-toggle',
                       data: { toggle: 'dropdown' }  do
@@ -109,11 +109,6 @@
         .panel-footer
           = link_to t(:see_more), group_motions_path(@group)
 
-<<<<<<< HEAD
-    =render 'membership_requests', group: @group
-    =render 'members', group: @group
-=======
     = render 'membership_requests', group: @group
     = render 'members', group: @group
     = render '/application/closed_motions', user: nil, group: @group
->>>>>>> master
