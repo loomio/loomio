@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 20140819225704) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "position",   default: 0, null: false
   end
 
@@ -123,8 +123,8 @@ ActiveRecord::Schema.define(version: 20140819225704) do
     t.string   "name"
     t.string   "email"
     t.string   "source"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
@@ -166,6 +166,7 @@ ActiveRecord::Schema.define(version: 20140819225704) do
     t.boolean  "following"
   end
 
+  add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
   add_index "discussion_readers", ["user_id", "discussion_id"], name: "index_discussion_read_logs_on_user_id_and_discussion_id", using: :btree
   add_index "discussion_readers", ["user_id"], name: "index_motion_read_logs_on_user_id", using: :btree
 
@@ -182,12 +183,12 @@ ActiveRecord::Schema.define(version: 20140819225704) do
     t.boolean  "is_deleted",       default: false, null: false
     t.integer  "comments_count",   default: 0,     null: false
     t.integer  "items_count",      default: 0,     null: false
+    t.datetime "archived_at"
     t.boolean  "private"
     t.string   "key"
-    t.datetime "archived_at"
     t.string   "iframe_src"
-    t.integer  "motions_count",    default: 0
     t.datetime "last_activity_at"
+    t.integer  "motions_count",    default: 0
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
@@ -298,14 +299,16 @@ ActiveRecord::Schema.define(version: 20140819225704) do
     t.string   "key"
     t.boolean  "can_start_group",                    default: true
     t.integer  "category_id"
+    t.text     "enabled_beta_features"
+    t.string   "subdomain"
+    t.integer  "theme_id"
     t.boolean  "is_visible_to_public",               default: false,          null: false
     t.boolean  "is_visible_to_parent_members",       default: false,          null: false
     t.string   "discussion_privacy_options",                                  null: false
     t.boolean  "members_can_add_members",            default: false,          null: false
     t.string   "membership_granted_upon",                                     null: false
-    t.text     "enabled_beta_features"
-    t.string   "subdomain"
-    t.integer  "theme_id"
+    t.boolean  "members_can_edit_discussions",       default: true,           null: false
+    t.boolean  "motions_can_be_edited",              default: false,          null: false
     t.string   "cover_photo_file_name"
     t.string   "cover_photo_content_type"
     t.integer  "cover_photo_file_size"
@@ -314,8 +317,6 @@ ActiveRecord::Schema.define(version: 20140819225704) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.boolean  "members_can_edit_discussions",       default: true,           null: false
-    t.boolean  "motions_can_be_edited",              default: false,          null: false
     t.boolean  "members_can_edit_comments",          default: true
     t.boolean  "members_can_raise_motions",          default: true,           null: false
     t.boolean  "members_can_vote",                   default: true,           null: false
@@ -466,8 +467,8 @@ ActiveRecord::Schema.define(version: 20140819225704) do
   create_table "themes", force: true do |t|
     t.text     "style"
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "pages_logo_file_name"
     t.string   "pages_logo_content_type"
     t.integer  "pages_logo_file_size"
@@ -484,8 +485,8 @@ ActiveRecord::Schema.define(version: 20140819225704) do
     t.string   "translatable_type"
     t.hstore   "fields"
     t.string   "language"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "translations", ["fields"], name: "translations_gin_fields", using: :gin
