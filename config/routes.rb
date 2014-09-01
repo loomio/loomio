@@ -25,7 +25,7 @@ Loomio::Application.routes.draw do
     get   '/', action: 'index'
     get   'size'
     get   'preferences'
-    patch   'update_preferences'
+    put 'update_preferences'
     match 'mark_as_read', via: [:get, :post]
     match 'mark_all_as_read/:id', action: 'mark_all_as_read', as: :mark_all_as_read, via: [:get, :post]
     match 'unfollow', via: [:get, :post]
