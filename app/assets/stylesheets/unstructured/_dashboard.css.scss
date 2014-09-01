@@ -8,6 +8,9 @@ body.dashboard {
     .group-title{
       margin: 0;
     }
+    .primary-action{
+      margin-bottom: 1.2em;
+    }
   }
   .no-groups {
     margin-top: 20px;
@@ -17,8 +20,5 @@ body.dashboard {
       margin-bottom: 40px;
       font-size: 16px;
     }
-  }
-  #group-actions {
-    margin: 8px 0 15px 0;
   }
 }

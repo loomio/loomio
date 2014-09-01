@@ -1,6 +1,6 @@
 - if current_user.parent_groups.present?
   .row
-    %section.col-md-9
+    .col-md-9
       .group-title
         %h1.home-title
           - if sifting_unread? or sifting_followed?
@@ -11,11 +11,9 @@
         = render "application/filter_discussions_buttons"
       =render 'discussions/discussion_list'
 
-    %section.col-md-3
-      #group-actions
-        .clearfix
-          %a.btn.btn-primary.btn-block{href: new_discussion_path, id: 'start-new-discussion'}
-            = t(:start_a_discussion)
+    .col-md-3
+      %a.btn.btn-primary.btn-block.primary-action{href: new_discussion_path, id: 'start-new-discussion'}
+        = t(:start_a_discussion)
       =render 'groups'
       .panel.panel-default.previous-discussions-panel
         .panel-heading

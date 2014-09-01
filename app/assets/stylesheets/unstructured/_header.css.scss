@@ -281,8 +281,6 @@ input#search_form_query {
   background-color: transparent;
 }
 
-
-
 .navbar-default .navbar-nav > .open > a:focus { background-color: transparent; }
 
 #group-dropdown-items .sub-group .group-link-name {
@@ -296,6 +294,5 @@ input#search_form_query {
 
 .navbar-fixed-top {
   border-bottom: 1px solid #dbdbdb;
-  min-height: 47px;
   @include box-shadow(0 1px 10px rgba(0, 0, 0, 0.1));
 }
