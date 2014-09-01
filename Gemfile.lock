@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: 51efc782452398d81eda9838abf4d5c69ed15f24
+  revision: 4a4401b5b390ae7e4fce42d7fa0fb6be038496fd
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -561,7 +561,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   fog
-  font-awesome-sass
+  font-awesome-sass (~> 4.2.0)
   foreman
   friendly_id (~> 5.0.4)
   gravtastic
