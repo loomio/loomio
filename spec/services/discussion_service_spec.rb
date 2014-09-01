@@ -30,7 +30,7 @@ describe 'DiscussionService' do
                          destroy: true,
                          author: user) }
   let(:event) { double(:event) }
-  let(:discussion_reader) { double(:discussion_reader, follow!: true) }
+  let(:discussion_reader) { double(:discussion_reader, follow!: true, viewed!: true) }
   let(:discussion_params) { {title: "new title", description: "", private: true, uses_markdown: true} }
 
 
