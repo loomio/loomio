@@ -91,7 +91,7 @@ ActiveAdmin.register Group do
     end
 
     panel('Archive') do
-      link_to 'Archive this group', archive_admin_group_path(group), method: :post, confirm: "Are you sure you wanna archive #{group.name}, pal?"
+      link_to 'Archive this group', archive_admin_group_path(group), method: :post, data: {confirm: "Are you sure you wanna archive #{group.name}, pal?"}
     end
     active_admin_comments
   end
