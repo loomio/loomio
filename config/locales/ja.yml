@@ -536,7 +536,6 @@ ja:
   link_up_your_account: "アカウントをつなげる"
   log_in_to_your_loomio_account: " %{provider_name} につなげるためにLoomioアカウントにログインする"
   now_that_your_logged_in: "今、あなたは %{provider_name} でログインしています、Loomioアカウントを作成するにはあなたの詳細情報を確認してください"
-  inactive_html: "ごめんなさい、このアカウントは現在有効ではありません。\n質問がありましたら、 <a href='%{path_to_contact}'>連絡してください</a>。"
   create_an_account_html: 'Loomio Betaのアカウントを作成する'
   log_in: "ログイン"
   join_group:
@@ -632,7 +631,6 @@ ja:
     view: "自分のプロフィールを見る"
     profile: "プロフィールを編集する"
     picture: "画像"
-    use_avatar_kind: " %{kind} を使用する"
     upload_new_image: "新しい画像をアップロード"
   group_setup:
     set_up_your_group: あなたのグループを立ち上げる

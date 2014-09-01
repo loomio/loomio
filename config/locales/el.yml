@@ -1,4 +1,15 @@
 el:
+  users:
+    email_preferences:
+      edit:
+        title: 'Προτιμήσεις Ηλεκτρονικού Ταχυδρομείου'
+        when_do_you_want_emails: 'Στείλε μου μήνυμα ηλεκτρονικού ταχυδρομείου'
+        email_missed_yesterday: "'Εχθές στο Loomio' - ημερήσια σύνοψη οποιασδήποτε δραστηριότητας παρέλειψα"
+        email_followed_threads: "Όταν @mentioned, ή υπάρχει δραστηριότητα σε θέματα που ακολουθάω."
+        email_when_proposal_closing_soon: "24 ώρες πριν η πρόταση κλείσει."
+        email_new_discussions_and_proposals: 'Νέες συζητήσεις και προτάσεις'
+        for_these_groups: "Για αυτές τις ομάδες:"
+        submit: "Αποθήκευση προτιμήσεων"
   explore:
     header: "Εξερευνήστε δημόσιες ομάδες"
   try_it:
@@ -178,6 +189,8 @@ el:
     empty: Είστε ενήμεροι! Δεν υπάρχουν σχόλια που δεν έχετε δει.
   notifications:
     header: "Ειδοποιήσεις"
+    new_discussion: "ξεκίνησα μια συζήτηση"
+    new_motion: "δημιούργησα μια πρόταση"
     motion_closed:
       by_user: "έκλεισε η πρόταση"
       by_expiry: "Η πρόταση έχει κλείσει."
@@ -228,6 +241,21 @@ el:
   prompt_user_to_join:
     header: "Εγγραφείτε στην ομάδα για να συμμετάσχετε"
     body: "Για να σχολιάσετε ή να ψηφίσετε, χρειάζεται να είστε μέλος αυτής της ομάδας."
+  user_profile:
+    back: "Πίσω στο προφίλ μου"
+    change_password: "Αλλάξτε τον κωδικό σας"
+    deactivate_account: "Απενεργοποίηση λογαριασμού"
+    about_deactivation: "Τι θα σημαίνει αυτό?"
+    confirm_account_deactivation: "Είστε σίγουροι πως θέλετε να απενεργοποιήσετε τον λογαριασμό σας?"
+    reactivation_html: "Θα χρειαστεί να <a href='%{link}'>επικοινωνήσετε μαζί μας</a> για να σας ξαναενεργοποίησουμε τον λογαριασμό σας."
+    deactivation:
+      title: "Απενεργοποιείται ο λογαριασμός σας"
+      only_coordinator: "Η ομάδα πρέπει να έχει τουλάχιστον έναν συντονιστή. Τώρα είστε ο μοναδικός συντονιστής στις ακόλουθες ομάδες:"
+      instructions: "Για να μπορέσετε να απενεργοποιήστε τον λογαριασμό σας, θα χρειαστείτε ή να προσθέσετε άλλον συντονιστή ή να απενεργοποιήστε τις ομάδες."
+      info_title: "Τι σημαίνει θα απενεργοποιείται ο λογαριασμός σας?"
+      memberships: "Δεν θα είστε δηλωμένοι σαν μέλος σε καμία από τις ομάδες τις οποίες ανήκετε αυτή την στιγμή."
+      group_contributions: "Τα σχόλια, προτάσεις και συζητήσεις που έχετε κάνει στις ομάδες θα παραμείνουν, αλλά θα αφαιρέσουμε το όνομα σας από αυτά."
+      emails: "Θα σταματήσουμε να σας στέλνουμε σχετικά ηλεκτρονικά μηνύματα σχετικά με το Loomio."
   group_form:
     name: "Όνομα ομάδας"
     description: "Περιγραφή"
@@ -371,6 +399,12 @@ el:
   group_description: "Περιγραφή ομάδας"
   edit_group_description: "Επεξεργασία περιγραφής ομάδας"
   group_subscription: "Συνδρομή Ομάδας"
+  groups:
+    follow:
+      click_to_follow: "Πατήστε για να ακολουθήσετε την ομάδα"
+      click_to_unfollow: "Πατήστε για να σταματήσετε να ακολουθείτε την ομάδα"
+      following_details: "Θα ειδοποιείστε σχετικά με κάθε θέμα σε αυτή την ομάδα."
+      not_following_details: "Θα ειδοποιηθείτε σχετικά με τα θέματα που συμμετέχετε."
   group_request:
     beta_request_header: "Ξεκινήστε μια ομάδα στην δοκιμαστική έκδοση του Loomio"
     beta_request_description: "Για να ξεκινήσετε να παίρνετε αποφάσεις στην δοκιμαστική έκδοση του Loomio, το πρώτο βήμα είναι να ξεκινήσετε μια ομάδα"
@@ -406,9 +440,17 @@ el:
   go_to_add_comment_html: "Για να προσθέσετε σχόλιο <a href='%{href}'>πηγαίντε στο τέλος της συζήτησης</a>."
   comment_by: "Σχόλιο από %{comment_author}"
   discussion_list:
+    clear_filters: "Καθαρίστε όλα τα φίλτρα: δείτε όλες τις συζητήσεις"
+    filter_unread:
+      enable: "Δείτε μόνο τις αδιάβαστες συζητήσεις"
+      disable: "Δείτε διαβασμένες και αδιάβαστες συζητήσεις"
+    filter_followed:
+      enable: "Δείτε μόνο τις συζητήσεις που ακολουθείτε"
+      disable: "Δείτε τις ακολουθούμενες και μη ακολουθούμενες συζητήσεις"
     empty:
       no_discussions: "Δεν υπάρχουν συζητήσεις σε καμία από τις ομάδες σας."
       no_discussions_in_group: "Αυτή η ομάδα δεν έχει ακόμα καμία συζήτηση."
+      no_discussions_matching_filters_html: "Δεν υπάρχουν συζητήσεις που να ταιριάζουν σε αυτά τα φίλτρα. <a href='%{link}'>Καθαρίστε τα φίλτρα</a>."
       no_public_discussions: "Δεν υπάρχουν δημόσιες συζητήσεις σε αυτή την ομάδα."
       discussions_are_private: "Όλες οι συζητήσεις σε αυτή την ομάδα είναι ιδιωτικές."
       request_membership_html: "Για να δείτε ιδιωτικές συζητήσεις <a href='%{href}'>αιτηθείτε για να συμμετάσχετε στην ομάδα.</a>"
@@ -420,6 +462,10 @@ el:
     last_edited_html: "Επεξεργάστηκε τελευταία πριν από %{when} από τον/την <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Δείτε το ιστορικό αναθεωρήσεων"
     see_history: "Δείτε το ιστορικό"
+    click_to_follow: "Πατήστε για να ακολουθήσετε το θέμα"
+    click_to_unfollow: "Πατήστε για να σταματήσετε να ακολουθείτε το θέμα"
+    following_details: "Θα ειδοποιηθείτε για την δραστηριότητα σε αυτό το θέμα."
+    not_following_details: "Δεν θα ειδοποιηθείτε για την δραστηριότητα σε αυτό το θέμα."
   description_history:
     header: "Ιστορικό αναθεωρήσεων"
     subheader: "Έκδοση"
@@ -631,7 +677,7 @@ el:
   now_that_your_logged_in: "Τώρα που εισέλθατε με %{provider_name}, παρακαλούμε επιβεβαιώστε τα στοιχεία σας για να δημιουργήσετε Loomio λογαριασμό."
   confirmation_not_received: "Δεν λάβατε οδηγίες επιβεβαίωσης?"
   unlock_not_received: "Δεν λάβατε οδηγίες ξεκλειδώματος?"
-  inactive_html: "Συγνώμη, αυτός ο λογαριασμός είναι απενεργοποιημένος. Εάν έχετε ερωτήσεις παρακαλούμε <a href='%{path_to_contact}'>επικοινωνήστε μαζί μας</a>."
+  inactive_html: "Αυτός ο λογαριασμός έχει απενεργοποιηθεί. Εάν έχετε οποιαδήποτε ερωτήσεις παρακαλούμε <a href='%{path_to_contact}'>μείνετε σε επαφή</a>."
   create_an_account_html: 'Δημιουργήστε λογαριασμό στην δοκιμαστική έκδοση του Loomio'
   log_in: "Είσοδος"
   join_group:
@@ -737,7 +783,9 @@ el:
     view: "Δες το προφίλ μου"
     profile: "Επεξεργασία προφίλ"
     picture: "Εικόνα"
-    use_avatar_kind: "Χρησιμοποιήστε %{kind}"
+    use_initials: 'Χρησιμοποιήστε αρχικά'
+    use_uploaded: 'Χρησιμοποιήστε ανεβασμένη εικόνα'
+    use_gravtar: 'Χρησιμοποιήστε Gravatar'
     upload_new_image: "Ανεβάστε νέα εικόνα"
   group_setup:
     set_up_your_group: Ρυθμίστε την ομάδα σας
@@ -822,6 +870,8 @@ el:
     view_discussion: "Πατήστε εδώ για να δείτε αυτή την συζήτηση"
     view_group: "Πατήστε εδώ για να δείτε την ομάδα στο Loomio"
     view_proposal: "Εμφάνιση αυτής της πρότασης στο Loomio"
+    create_discussion:
+      intro: "%{who} ξεκίνησε μια συζήτηση στην ομάδα %{which_group}:"
     create_proposal:
       intro: "Μια νέα πρόταση δημιουργήθηκε σε ομάδα του Loomio που ανήκετε."
       closes_in: "Κλείνει σε"
@@ -859,8 +909,10 @@ el:
       said: "%{comment_author} είπε:"
       subject: "%{who} σε ανέφερε στην Ομάδα %{which} στο Loomio"
     new_motion_created:
+      subject: "Πρόταση: %{proposal_title}"
       context: "%{author} δημιούργησε μια πρόταση στο %{group_full_name}:"
     proposal_closed:
+      proposal_has_closed: 'Η πρόταση έκλεισε.'
       specify_outcome_and_notify_group: "Δημιουργήστε ένα αποτέλεσμα και στείλτε το στην ομάδα σας!"
       specify_outcome_and_notify_group_html: "Δημιουργήστε ένα αποτέλεσμα και στείλτε το στην ομάδα σας!"
       subject: "Πρόταση έκλεισε  - %{which}"
@@ -873,8 +925,20 @@ el:
       closes_on: "Κλείνει στις"
       closes_at: "Κλείνει στις"
       closes_in: "Κλείνει σε"
+      subject: "Κλείνει σε 24 ώρες: %{proposal_title}"
       headline: "Η πρόταση του/της %{author} στο %{group} κλείνει σύντομα:"
       summary: "Σύνοψη"
+    thread_mailer:
+      footer_text: "Απαντήστε σε αυτό το ηλεκτρονικό μήνυμα απευθείας ή δείτε το στο Loomio:"
+      footer_html: "Απαντήστε σε αυτό το ηλεκτρονικό μήνυμα απευθείας ή <a href='%{app_link}'>δείτε το στο Loomio</a>.  Αλλάξτε τις <a href='%{preferences_link}'>προτιμήσεις του ηλεκτρονικού ταχυδρομείου σας</a>."
+      change_preferences: "Αλλάξτε τις προτιμήσεις του ηλεκτρονικού ταχυδρομείου σας:"
+      new_motion: "%{who} πρότεινε:"
+      motion_closing_soon: "Η πρόταση κλείνει σε 24 ώρες:"
+      proposal_closed: "Η πρόταση έκλεισε:"
+      specify_outcome_html: "Η πρόταση σας έκλεισε. <a href='%{link}'>Καθορίστε ένα αποτέλεσμα</a> για να γνωρίζουν όλοι ποιο είναι το αποτέλεσμα."
+      specify_outcome: "Η πρόταση σας έκλεισε. Καθορίστε ένα αποτέλεσμα για να γνωρίζουν όλοι ποιο είναι το αποτέλεσμα."
+      outcome_created: "%{who} καθόρισε ένα αποτέλεσμα πρότασης:"
+      you_agreed: "Εσείς %{past_tense_position}"
     verification:
       header: "Σχεδόν τελειώσατε!"
       intro: "Παρακαλούμε πατήστε αυτόν τον σύνδεσμο επαλήθευσης για να τελειώσετε την αίτηση σας:"
@@ -948,8 +1012,14 @@ el:
   google: "Google"
   persona: "Persona"
   common:
+    dashboard: Πίνακας Εργαλείων
+    unread: Αδιάβαστα
+    filter: 'Φίλτρο:'
+    following: Ακολουθάω
+    not_following: Δεν ακολουθάω
     back_to_discussion: "Πίσω στην συζήτηση"
     edited: Επεξεργάστηκε
+    groups: "Ομάδες"
     today: Σήμερα
     months:
       january: Ιανουάριος

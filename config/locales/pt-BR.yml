@@ -241,6 +241,21 @@ pt-BR:
   prompt_user_to_join:
     header: "Junte-se ao grupo para participar"
     body: "Para comentar ou votar, você precisa ser membro desse grupo."
+  user_profile:
+    back: "Voltar ao meu perfil"
+    change_password: "Altere sua senha"
+    deactivate_account: "Desativar conta"
+    about_deactivation: "O que isso significará?"
+    confirm_account_deactivation: "Tem certeza de que deseja desativar sua conta?"
+    reactivation_html: "Você vai precisar entrar em <a href='%{link}'>contato conosco</a> para reativar sua conta."
+    deactivation:
+      title: "Desativando sua conta"
+      only_coordinator: "Um grupo deve ter pelo menos um coordenador. Você é atualmente o único coordenador dos seguintes grupos:"
+      instructions: "A fim de desativar a sua conta, você precisa adicionar outro coordenador ou desativar os grupos."
+      info_title: "O que desativar sua conta significará?"
+      memberships: "Você deixará de ser listado como membro de qualquer um dos grupos você pertence."
+      group_contributions: "Comentários, propostas e discussões feitas por você em grupos vão ficar, mas vamos retirar o seu nome destes."
+      emails: "Vamos parar de enviar-lhe e-mails relacionados ao Loomio."
   group_form:
     name: "Nome do grupo"
     description: "Descrição"
@@ -645,7 +660,7 @@ pt-BR:
   now_that_your_logged_in: "Agora que você já está conectado(a) com %{provider_name}, por favor confirme os seus dados para criar uma conta no Loomio."
   confirmation_not_received: "Não recebeu as instruções de confirmação?"
   unlock_not_received: "Não recebeu as instruções para desbloquear?"
-  inactive_html: "Desculpe, este conta está inativa. Se tiver dúvidas, por favor, <a href='%{path_to_contact}'> entre em contato </a>."
+  inactive_html: "Esta conta foi desativada. Se você tiver alguma dúvida, por favor <a href='%{path_to_contact}'>entre em contato</a>."
   create_an_account_html: 'Crie uma conta Loomio Beta'
   log_in: "Entrar"
   join_group:
@@ -752,7 +767,9 @@ pt-BR:
     view: "Ver o meu perfil"
     profile: "Editar perfil"
     picture: "Imagem"
-    use_avatar_kind: "Usar %{kind}"
+    use_initials: 'Use iniciais'
+    use_uploaded: 'Use imagem enviada'
+    use_gravtar: 'Use Gravatar'
     upload_new_image: "Envie uma nova imagem"
   group_setup:
     set_up_your_group: Configure seu grupo
@@ -899,8 +916,7 @@ pt-BR:
       footer_text: "Responda este e-mail diretamente ou veja no Loomio:"
       footer_html: "Responda este e-mail diretamente ou <a href='%{app_link}'>veja no Loomio</a>. Modifique suas <a href='%{preferences_link}'>preferências de e-mail</a>."
       change_preferences: "Modifique suas preferências de e-mail:"
-      new_motion_followed: "%{who} propôs:"
-      new_motion_not_followed: "%{who} propôs:"
+      new_motion: "%{who} propôs:"
       motion_closing_soon: "Proposta encerra em 24 horas:"
       proposal_closed: "Proposta encerrada:"
       specify_outcome_html: "Sua proposta foi encerrada. <a href='%{link}'>Especifique um resultado</a> para que todos saibam."

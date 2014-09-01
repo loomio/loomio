@@ -607,7 +607,6 @@ ro:
   now_that_your_logged_in: "Acum te-ai autentificat cu %{provider_name}, ca urmare te rugam confirma datele tale pentru a crea contul Loomio."
   confirmation_not_received: "Nu ai primit instructiunile de confirmare?"
   unlock_not_received: "Nu ai primit instructiunile de deblocare?"
-  inactive_html: "Ne pare rau, acest cont este inactiv. Daca ai intrebari te rugam <a href='%{path_to_contact}'>sa ne contactezi</a>."
   create_an_account_html: 'Creaza un cont Loomio'
   log_in: "Autentifica-te"
   join_group:
@@ -709,7 +708,6 @@ ro:
     view: "Profil"
     profile: "Modificare profil"
     picture: "Fotografie"
-    use_avatar_kind: "Foloseste %{kind}"
     upload_new_image: "Încărcare imagine"
   group_setup:
     set_up_your_group: Creeaza grupul tau

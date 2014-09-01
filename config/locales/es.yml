@@ -628,7 +628,6 @@ es:
   now_that_your_logged_in: "Ahora que has entrado con %{provider_name}, por favor, confirma tus datos para crear una cuenta Loomio."
   confirmation_not_received: "¿No has recibido las instrucciones de confirmación?"
   unlock_not_received: "¿No has recibido instrucciones de desbloqueo?"
-  inactive_html: "Esta cuenta se encuentra inactiva. Si tienes alguna pregunta, por favor, <a href='%{path_to_contact}'>ponte en \ncontacto</a>."
   create_an_account_html: 'Crear una cuenta Loomio Beta'
   log_in: "Entrar"
   join_group:
@@ -728,7 +727,6 @@ es:
     view: "Ver mi perfil"
     profile: "Editar perfil"
     picture: "Imagen"
-    use_avatar_kind: "Usar %{kind}"
     upload_new_image: "Cargar nueva imagen"
   group_setup:
     set_up_your_group: Establecer grupo
