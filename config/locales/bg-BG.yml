@@ -109,8 +109,6 @@ bg-BG:
     empty: Няма коментари, които вече да не сте видели.
   notifications:
     header: "Известия"
-    new_discussion: "започна нова дискусия"
-    new_motion: "създаде ново предложение"
     motion_closed:
       by_user: "затвори предложението"
       by_expiry: "Това предложение е затворено."
@@ -395,16 +393,6 @@ bg-BG:
     your_statement: "Вашата обосновка"
     submit: "Изпратете позиция"
     update: "Обновете своята позиция"
-  email_preferences_form:
-    header: "E-mail настройки"
-    daily_activity_summary: "Отчет Дневна Активност"
-    daily_activity_subscription: "Изпрати ми e-mail обобщаващ дневната активност на моите групи."
-    global_notifications: "Глобални Известия"
-    proposal_closing_soon_subscription: "Напомни ми 24 часа преди да приключи предложение"
-    mentions_subscription: "Изпрати ми e-mail когато някой ме споменава в коментар"
-    group_activity_notifications: "Известия Групова Активност"
-    group_activity_details: "Сложете маркер за всяка група ако искате да бъдете известявани чрез e-mail относно нови дискусии и решения."
-    update_preferences: "Обнови предпочитания"
   new_user_form:
     create_an_account: "Създай акаунт"
   group_setup:
@@ -446,9 +434,6 @@ bg-BG:
     view_comment: "Кликнете тук за да видите коментара в Loomio"
     view_discussion: "Кликнете тук за да видите тази дискусия"
     view_group: "Кликнете тук за да видите групата в Loomio"
-    create_discussion:
-      intro: "%{who} започна нова дискусия в %{which_group}:"
-      subject: "Нова дискусия - %{which}"
     create_proposal:
       intro: "Създадено е ново предложение в Loomio група, на която сте член."
       closes_in: "Затваря след"
@@ -469,7 +454,6 @@ bg-BG:
       said: "%{comment_author} каза:"
       subject: "%{who} ви спомена в група %{which} в Loomio"
     proposal_closed:
-      intro: 'Вашето предложение "%{proposal_name}" е затворено.'
       subject: "Предложението е затворено - %{which}"
     proposal_blocked:
       intro: "Предложение, което подкрепяте, беше блокирано."
@@ -503,7 +487,6 @@ bg-BG:
   participation: "Участие"
   disable: "Изключване"
   group: "Група"
-  groups: "Групи"
   group_admin: "Групов Координатор"
   home: "Начало"
   like: "Харесвам"

@@ -26,7 +26,6 @@ fr:
   devise:
     invitations:
       send_instructions: 'Une invitation a été envoyée sur %{email}.'
-      invitation_token_invalid: 'Le token d''invitation n''est pas valide !'
       updated: 'Compte créé.'
       no_invitations_remaining: "Il ne reste plus d'invitation"
     mailer:
@@ -173,8 +172,6 @@ fr:
     empty: Vous êtes à jour ! Il n'y a aucun commentaire que vous n'avez pas vu.
   notifications:
     header: "Notifications"
-    new_discussion: "a démarré une nouvelle discussion"
-    new_motion: "a créé une nouvelle proposition"
     motion_closed:
       by_user: "a fermé la proposition"
       by_expiry: "La proposition est close"
@@ -696,17 +693,6 @@ fr:
     your_statement: "Votre déclaration"
     submit: "Publier votre position"
     update: "Mettre à jour votre position"
-  email_preferences_form:
-    header: "Préférences d'e-mail"
-    daily_activity_summary: "Résumé quotidien d'activité"
-    daily_activity_subscription: "Envoyez-moi un e-mail quotidien synthétisant l'activité de mes groupes"
-    missed_yesterday_subscription: "M'envoyer 'Hier sur Loomio' - mon contenu non-lu des dernières 24 heures"
-    global_notifications: "Notifications globales"
-    proposal_closing_soon_subscription: "M'avertir 24 heures avant la clôture d'une proposition"
-    mentions_subscription: "M'envoyer un e-mail quand quelqu'un me mentionne dans un commentaire"
-    group_activity_notifications: "Notifications de l'activité de groupe"
-    group_activity_details: "Pour chaque groupe, cochez la case si vous voulez recevoir un e-mail immédiatement pour chaque nouvelle discussion et décision."
-    update_preferences: "Actualiser vos préférences"
   new_user_form:
     create_an_account: "Créer un compte"
   profile_form:
@@ -798,9 +784,6 @@ fr:
     view_discussion: "Cliquer ici pour voir la discussion"
     view_group: "Cliquer ici pour voir le groupe sur Loomio"
     view_proposal: "Voir cette proposition sur Loomio"
-    create_discussion:
-      intro: "%{who} a démarré une nouvelle discussion dans %{which_group}:"
-      subject: "Nouvelle discussion - %{which}"
     create_proposal:
       intro: "Une nouvelle proposition a été créée dans un groupe Loomio auquel vous appartenez"
       closes_in: "Ferme dans"
@@ -837,8 +820,6 @@ fr:
     new_motion_created:
       context: "%{author} a créé une proposition dans %{group_full_name}:"
     proposal_closed:
-      intro: 'Votre proposition "%{proposal_name}" est fermée.'
-      intro_html: 'Votre proposition "%{proposal_name}" a fermé.'
       specify_outcome_and_notify_group: "Créez un résultat et envoyez-le à votre groupe !"
       specify_outcome_and_notify_group_html: "Créez un résultat et envoyez-le à votre groupe !"
       subject: "Fermeture de la proposition - %{which}"
@@ -851,7 +832,6 @@ fr:
       closes_on: "Ferme le "
       closes_at: "Ferme à"
       closes_in: "Ferme dans"
-      closing_in_24_hours: "Ferme dans 24 heures"
       headline: "La proposition de %{author} dans %{group} ferme bientôt :"
       summary: "Résumé"
     verification:
@@ -882,7 +862,6 @@ fr:
   participation: "Participation"
   disable: "Désactiver"
   group: "Groupe"
-  groups: "Groupes"
   group_admin: "Coordinateur de groupe"
   home: "Accueil"
   id: "Identifiant"

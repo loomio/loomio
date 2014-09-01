@@ -1,7 +1,8 @@
 - set_title @group.name, "", @group.parent
-- cover_photo_url = use_parent_if_blank(@group, :cover_photo).url(:desktop)
+- cover_photo_url = image_url use_parent_if_blank(@group, :cover_photo).url(:desktop)
+- logo_url = image_url use_parent_if_blank(@group, :logo).url(:medium)
 
-.group-heading{style: "background-image: url(#{asset_path 'cover-photo-gradient.png'}), url('#{cover_photo_url}')"}
+.group-heading{style: "background-image: url(#{image_path 'cover-photo-gradient.png'}), url('#{cover_photo_url}')"}
   = render 'application/flash_messages', :flash => flash, :on_landing_page => false
   - if can? :edit, @group
     .upload-button.cover-photo-upload{title: t(:'tooltip.cover_photo_upload')}
@@ -10,7 +11,6 @@
         .edit-icon
           %i.fa.fa-pencil
 
-  - logo_url = use_parent_if_blank(@group, :logo).url(:medium)
 
   .group-logo{style: "background-image: url('#{logo_url}')"}
     - if can? :edit, @group
@@ -42,8 +42,8 @@
         .edit-icon-placeholder
       .logo-placeholder
       ~ render_rich_text(@group.description)
-    .main-content
-      =render 'discussions/discussion_list'
+    = render "application/filter_discussions_buttons" if can? :follow, @group
+    = render 'discussions/discussion_list'
 
   .col-md-3
     #group-actions
@@ -89,6 +89,7 @@
 
       = join_group_button(@group)
     = render 'setup_next_steps' if show_next_steps?(@group)
+    = render 'follow', group: @group
 
     = render 'subgroups', group: @group
 
@@ -108,5 +109,11 @@
         .panel-footer
           = link_to t(:see_more), group_motions_path(@group)
 
+<<<<<<< HEAD
     =render 'membership_requests', group: @group
     =render 'members', group: @group
+=======
+    = render 'membership_requests', group: @group
+    = render 'members', group: @group
+    = render '/application/closed_motions', user: nil, group: @group
+>>>>>>> master

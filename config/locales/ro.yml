@@ -26,7 +26,6 @@ ro:
   devise:
     invitations:
       send_instructions: 'O invitatie a fost trimisa la %{email}.'
-      invitation_token_invalid: 'Codul invitatiei nu este valid!'
       updated: 'Cont creat.'
       no_invitations_remaining: "Nici o invitatie disponibila."
     mailer:
@@ -77,6 +76,18 @@ ro:
     you_have_left_group: "Ai parasit grupul %{which_group}."
     comment_deleted: "Comentariu sters."
     invitations:
+      auto_added:
+        one: "un membru adaugat"
+        few: "%{count} membri adaugati"
+        other: "%{count} membri adaugati"
+      existing_member:
+        one: "un membru deja adaugat"
+        few: "%{count} membri deja adaugati"
+        other: "%{count} membri deja adaugati"
+      sent:
+        one: "o invitatie trimisa"
+        few: "%{count} invitatii trimise"
+        other: "%{count} invitatii trimise"
       auto_added_and_sent: "%{auto_added_text} si %{sent_text}"
   tooltip:
     cover_photo_upload: "Incarca o noua fotografie pentru coperta"
@@ -175,8 +186,6 @@ ro:
     empty: Ai primit toate notificarile! Nu sunt comentarii pe care nu le-ai vazut.
   notifications:
     header: "Notificari"
-    new_discussion: "a inceput o discutie noua"
-    new_motion: "a creat o propunere noua"
     motion_closed:
       by_user: "a inchis propunerea"
       by_expiry: "Propunerea este inchisa"
@@ -694,17 +703,6 @@ ro:
     your_statement: "Pozitia ta"
     submit: "Pozitia ta"
     update: "Actualizeaza pozitia ta"
-  email_preferences_form:
-    header: "Preferinte email"
-    daily_activity_summary: "Sumarul de Activitate Zilnica"
-    daily_activity_subscription: "Trimite-mi un email zilnic cu sumarul activitatii din grupurile mele"
-    missed_yesterday_subscription: "Trimite-mi 'Ieri pe Loomio' -continutul necitit de mine in ultimele 24 de ore"
-    global_notifications: "Notificari Globale"
-    proposal_closing_soon_subscription: "Aminteste-mi cu 24 de ore inainte ca propunerea sa se inchida"
-    mentions_subscription: "Trimite-mi email cand cineva ma mentioneaza intr-un comentariu"
-    group_activity_notifications: "Notificari ale Activitatii Grupului"
-    group_activity_details: "Pentru fiecare grup, selecteaza casuta daca vrei sa primesti email imediat ce apar noi discutii si decizii."
-    update_preferences: "Actualizeaza preferintele"
   new_user_form:
     create_an_account: "Creeaza un cont"
   profile_form:
@@ -796,9 +794,6 @@ ro:
     view_discussion: "Apasa aici pentru a vedea aceasta discutie"
     view_group: "Apasa aici pentru a vedea grupul pe Loomio"
     view_proposal: "Vizualizeaza aceasta propunere pe Loomio"
-    create_discussion:
-      intro: "%{who} a pornit o noua discutie in %{which_group}:"
-      subject: "Discutie nou - %{which}"
     create_proposal:
       intro: "O noua propunere a fost creata intr-un grup Loomio de care apartii. "
       closes_in: "Se inchide in"
@@ -835,8 +830,6 @@ ro:
     new_motion_created:
       context: "%{author} a creat o propunere in %{group_full_name}:"
     proposal_closed:
-      intro: 'Propunerea ta "%{proposal_name}" s-a inchis.'
-      intro_html: 'Propunerea ta "%{proposal_name}" s-a inchis.'
       specify_outcome_and_notify_group: "Creeaza un rezultat si trimite-l grupului tau!"
       specify_outcome_and_notify_group_html: "Creeaza un rezultat si trimite-l grupului tau!"
       subject: "Propunere inchisa - %{which}"
@@ -849,7 +842,6 @@ ro:
       closes_on: "Se inchide pe"
       closes_at: "Se inchide la"
       closes_in: "Se inchide in"
-      closing_in_24_hours: "Se inchide in 24 de ore"
       headline: "Propunerea %{author} in grupul %{group} se va inchide in curand:"
       summary: "Sumar"
     verification:
@@ -880,7 +872,6 @@ ro:
   participation: "Participare"
   disable: "Dezactiveaza"
   group: "Grup"
-  groups: "Grupuri"
   group_admin: "Coordonator al grupului"
   home: "Home"
   id: "id"

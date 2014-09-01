@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731225442) do
+ActiveRecord::Schema.define(version: 20140819225704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 20140731225442) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "position",   default: 0, null: false
   end
 
@@ -123,8 +123,8 @@ ActiveRecord::Schema.define(version: 20140731225442) do
     t.string   "name"
     t.string   "email"
     t.string   "source"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
@@ -161,12 +161,11 @@ ActiveRecord::Schema.define(version: 20140731225442) do
     t.datetime "updated_at"
     t.integer  "discussion_id"
     t.datetime "last_read_at"
-    t.boolean  "following",           default: true, null: false
     t.integer  "read_comments_count"
-    t.integer  "read_items_count",    default: 0,    null: false
+    t.integer  "read_items_count",    default: 0, null: false
+    t.boolean  "following"
   end
 
-  add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
   add_index "discussion_readers", ["user_id", "discussion_id"], name: "index_discussion_read_logs_on_user_id_and_discussion_id", using: :btree
   add_index "discussion_readers", ["user_id"], name: "index_motion_read_logs_on_user_id", using: :btree
 
@@ -183,12 +182,12 @@ ActiveRecord::Schema.define(version: 20140731225442) do
     t.boolean  "is_deleted",       default: false, null: false
     t.integer  "comments_count",   default: 0,     null: false
     t.integer  "items_count",      default: 0,     null: false
-    t.datetime "archived_at"
     t.boolean  "private"
     t.string   "key"
+    t.datetime "archived_at"
     t.string   "iframe_src"
-    t.datetime "last_activity_at"
     t.integer  "motions_count",    default: 0
+    t.datetime "last_activity_at"
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
@@ -280,7 +279,6 @@ ActiveRecord::Schema.define(version: 20140731225442) do
     t.string   "privacy",                            default: "private"
     t.string   "members_invitable_by"
     t.integer  "parent_id"
-    t.boolean  "email_new_motion",                   default: true
     t.boolean  "hide_members",                       default: false
     t.text     "description"
     t.integer  "memberships_count",                  default: 0,              null: false
@@ -300,17 +298,14 @@ ActiveRecord::Schema.define(version: 20140731225442) do
     t.string   "key"
     t.boolean  "can_start_group",                    default: true
     t.integer  "category_id"
-    t.text     "enabled_beta_features"
-    t.string   "subdomain"
-    t.integer  "theme_id"
     t.boolean  "is_visible_to_public",               default: false,          null: false
     t.boolean  "is_visible_to_parent_members",       default: false,          null: false
     t.string   "discussion_privacy_options",                                  null: false
     t.boolean  "members_can_add_members",            default: false,          null: false
     t.string   "membership_granted_upon",                                     null: false
-    t.boolean  "email_notification_default",         default: true,           null: false
-    t.boolean  "members_can_edit_discussions",       default: true,           null: false
-    t.boolean  "motions_can_be_edited",              default: false,          null: false
+    t.text     "enabled_beta_features"
+    t.string   "subdomain"
+    t.integer  "theme_id"
     t.string   "cover_photo_file_name"
     t.string   "cover_photo_content_type"
     t.integer  "cover_photo_file_size"
@@ -319,6 +314,8 @@ ActiveRecord::Schema.define(version: 20140731225442) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.boolean  "members_can_edit_discussions",       default: true,           null: false
+    t.boolean  "motions_can_be_edited",              default: false,          null: false
     t.boolean  "members_can_edit_comments",          default: true
     t.boolean  "members_can_raise_motions",          default: true,           null: false
     t.boolean  "members_can_vote",                   default: true,           null: false
@@ -378,11 +375,12 @@ ActiveRecord::Schema.define(version: 20140731225442) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "inviter_id"
-    t.boolean  "subscribed_to_notification_emails", default: true
+    t.boolean  "email_new_discussions_and_proposals", default: true
     t.datetime "archived_at"
-    t.integer  "inbox_position",                    default: 0
-    t.boolean  "admin",                             default: false, null: false
-    t.boolean  "is_suspended",                      default: false, null: false
+    t.integer  "inbox_position",                      default: 0
+    t.boolean  "admin",                               default: false, null: false
+    t.boolean  "is_suspended",                        default: false, null: false
+    t.boolean  "following_by_default",                default: false, null: false
   end
 
   add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
@@ -395,9 +393,8 @@ ActiveRecord::Schema.define(version: 20140731225442) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "last_read_at"
-    t.boolean  "following",           default: true, null: false
-    t.integer  "read_votes_count",    default: 0,    null: false
-    t.integer  "read_activity_count", default: 0,    null: false
+    t.integer  "read_votes_count",    default: 0, null: false
+    t.integer  "read_activity_count", default: 0, null: false
   end
 
   add_index "motion_readers", ["user_id", "motion_id"], name: "index_motion_readers_on_user_id_and_motion_id", using: :btree
@@ -469,8 +466,8 @@ ActiveRecord::Schema.define(version: 20140731225442) do
   create_table "themes", force: true do |t|
     t.text     "style"
     t.string   "name"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "pages_logo_file_name"
     t.string   "pages_logo_content_type"
     t.integer  "pages_logo_file_size"
@@ -487,19 +484,19 @@ ActiveRecord::Schema.define(version: 20140731225442) do
     t.string   "translatable_type"
     t.hstore   "fields"
     t.string   "language"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "translations", ["fields"], name: "translations_gin_fields", using: :gin
 
   create_table "users", force: true do |t|
-    t.string   "email",                                                    default: "",         null: false
-    t.string   "encrypted_password",                           limit: 128, default: ""
+    t.string   "email",                                           default: "",         null: false
+    t.string   "encrypted_password",                  limit: 128, default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                            default: 0
+    t.integer  "sign_in_count",                                   default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -508,26 +505,27 @@ ActiveRecord::Schema.define(version: 20140731225442) do
     t.datetime "updated_at"
     t.string   "name"
     t.datetime "deleted_at"
-    t.boolean  "is_admin",                                                 default: false
-    t.string   "avatar_kind",                                              default: "initials", null: false
+    t.boolean  "is_admin",                                        default: false
+    t.string   "avatar_kind",                                     default: "initials", null: false
     t.string   "uploaded_avatar_file_name"
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials"
     t.string   "username"
-    t.boolean  "subscribed_to_mention_notifications",                      default: true,       null: false
-    t.boolean  "subscribed_to_proposal_closure_notifications",             default: true,       null: false
+    t.boolean  "email_followed_threads",                          default: true,       null: false
+    t.boolean  "email_when_proposal_closing_soon",                default: true,       null: false
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.integer  "memberships_count",                                        default: 0,          null: false
-    t.boolean  "uses_markdown",                                            default: false
+    t.integer  "memberships_count",                               default: 0,          null: false
+    t.boolean  "uses_markdown",                                   default: false
     t.string   "selected_locale"
     t.string   "time_zone"
     t.string   "key"
     t.string   "detected_locale"
-    t.boolean  "subscribed_to_missed_yesterday_email",                     default: true,       null: false
+    t.boolean  "email_missed_yesterday",                          default: true,       null: false
     t.string   "email_api_key"
+    t.boolean  "email_new_discussions_and_proposals",             default: true,       null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

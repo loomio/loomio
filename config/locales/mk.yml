@@ -128,7 +128,6 @@ mk:
     dropdown-btn: 'Сандаче'
   notifications:
     header: "Известувања"
-    new_discussion: "започна нова дискусија"
     motion_closed:
       by_expiry: "Предлогот е затворен"
     new_vote: "%{position} на предлогот"
@@ -407,8 +406,6 @@ mk:
     your_position: "Твој став"
     your_statement: "Ваша изјава"
     update: "Ажурирај позиција"
-  email_preferences_form:
-    global_notifications: "Глобални известувања"
   new_user_form:
     create_an_account: "Креирај сметка"
   profile_form:
@@ -482,9 +479,6 @@ mk:
     view_discussion: "Кликни овде за да ја видиш дискусијата"
     view_group: "Кликни овде за да ја видиш групата на Loomio"
     view_proposal: "Види го предлогот на Loomio"
-    create_discussion:
-      intro: "%{who} започна нова дискусија во %{which_group}:"
-      subject: "Нова дискусија - %{which}"
     create_proposal:
       closes_in: "Се затвора во"
       subject: "Нов предлог: %{which}"
@@ -512,8 +506,6 @@ mk:
       said: "%{comment_author} рече:"
       subject: "%{who} те спомена во %{which} групата на Loomio"
     proposal_closed:
-      intro: 'Твојот предлог "%{proposal_name}" е затворен.'
-      intro_html: 'Твојот предлог "%{proposal_name}" е затворен.'
       subject: "Предлогот е затворен - %{which}"
     proposal_outcome:
       subject: "Исход на предлогот"
@@ -550,7 +542,6 @@ mk:
   participation: "Учество"
   disable: "Оневозможи"
   group: "Група"
-  groups: "Групи"
   group_admin: "Координатор на групата"
   home: "Почетна"
   like: "Ми се допаѓа"

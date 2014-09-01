@@ -28,7 +28,6 @@ zh-TW:
   devise:
     invitations:
       send_instructions: '一封邀請函已經送至 %{email} 。'
-      invitation_token_invalid: '提供的邀請碼無效！'
       updated: '帳號已建立。'
       no_invitations_remaining: "邀請函無剩"
     mailer:
@@ -161,8 +160,6 @@ zh-TW:
     empty: 您跟上了進度！意見通通都看過了。
   notifications:
     header: "通知"
-    new_discussion: "新的討論串已啟動"
-    new_motion: "建立新的提案"
     motion_closed:
       by_user: "已定案此提議"
       by_expiry: "提議已定案"
@@ -266,6 +263,7 @@ zh-TW:
     c10: 建立子群組。
     c11: 啟動討論串。
     c13: 在提案上投票。
+    members_defaults: "以預設的設定時，成員能："
     m1: 刪除他們自己的意見。
     m3: 編輯他們所啟動的提案標題與描述，直到有人已經陳述他們的立場。
     m4: 編輯他們所啟動的提議定案日期，直到他們定案。
@@ -383,6 +381,7 @@ zh-TW:
   empty_decision_index: "此群組尚未做出任何決策"
   empty_discussion_list: "這條討論串中尚未有動態。"
   go_to_add_comment_html: "<a href='%{href}'>前往討論串的底部</a>增加意見。"
+  comment_by: "%{comment_author} 的意見"
   discussion_list:
     empty:
       no_discussions: "您的群組尚未有任何的討論串。"
@@ -710,17 +709,6 @@ zh-TW:
     your_statement: "您的聲明"
     submit: "呈遞您的立場"
     update: "更新您的立場"
-  email_preferences_form:
-    header: "Email 偏好設定"
-    daily_activity_summary: "每日活動摘要"
-    daily_activity_subscription: "請寄給我每日活動電子郵件，內容是我參與的群組中發生了甚麼事的總結"
-    missed_yesterday_subscription: "寄給我「昨日 Loomio」— 過去 24 小時我的未讀內容"
-    global_notifications: "全域通知"
-    proposal_closing_soon_subscription: "在提議定案前 24 小時提醒我"
-    mentions_subscription: "當有人在意見中提到我時以電子郵件通知我"
-    group_activity_notifications: "全域活動通知"
-    group_activity_details: "勾選每個您想要直接收到新討論與決策通知的群組。"
-    update_preferences: "更新偏好設定"
   new_user_form:
     create_an_account: "建立帳號"
   profile_form:
@@ -812,9 +800,6 @@ zh-TW:
     view_discussion: "點擊此處，您可以看到這條討論串。"
     view_group: "點擊此處檢視 Loomio 上的群組"
     view_proposal: "在 Loomio 上觀看這項提案。"
-    create_discussion:
-      intro: "%{who} 在 %{which_group} 啟動了新的討論串："
-      subject: "新討論串 — %{which}"
     create_proposal:
       intro: "在您所屬的 Loomio 群組中，有一個新的提案！"
       closes_in: "即將結束。"
@@ -851,8 +836,6 @@ zh-TW:
     new_motion_created:
       context: "%{author}開始一個提案在%{group_full_name}:"
     proposal_closed:
-      intro: '您的提議「%{proposal_name}」已經定案。'
-      intro_html: '您的提議「%{proposal_name}」已經定案。'
       specify_outcome_and_notify_group: "建立成果並發送給您的群組成員！"
       specify_outcome_and_notify_group_html: "建立成果並發送給您的群組成員！"
       subject: "提議已定案 — %{which}"
@@ -865,7 +848,6 @@ zh-TW:
       closes_on: "定案於"
       closes_at: "定案在"
       closes_in: "即將結束："
-      closing_in_24_hours: "在 24 小時之內定案"
       headline: "%{author} 在 %{group} 群組的提案很快就要定案了："
       summary: "摘要"
     verification:
@@ -896,7 +878,6 @@ zh-TW:
   participation: "參與"
   disable: "停用"
   group: "群組"
-  groups: "群組"
   group_admin: "群組協作者"
   home: "主畫面"
   id: "編號"

@@ -147,8 +147,6 @@ tr:
     empty: Güncelsiniz! Görmediğiniz yorum yok.
   notifications:
     header: "Bildirimler"
-    new_discussion: "yeni bir müzakere başlattı"
-    new_motion: "yeni bir öneri oluşturdu"
     motion_closed:
       by_user: "öneriyi kapattı"
       by_expiry: "Öneri kapatıldı"
@@ -478,16 +476,6 @@ tr:
     your_statement: "Beyanın"
     submit: "Konumunu gir"
     update: "Konumunu güncelle"
-  email_preferences_form:
-    header: "E-posta seçenekleri"
-    daily_activity_summary: "Günlük Etkinlik Özeti"
-    daily_activity_subscription: "Bana gruplarımda neler olduğunu özetleyen bir günlük aktivite e-postası gönder"
-    global_notifications: "Küresel bildirimler"
-    proposal_closing_soon_subscription: "Bir öneri kapanmadan 24 saat önce bana hatırlat"
-    mentions_subscription: "Birisi bir yorumda benden bahsederse e-posta gönder"
-    group_activity_notifications: "Grup Aktivite Bildirimleri"
-    group_activity_details: "Eğer yeni müzakereler ve kararlar hakkında anında e-posta almak istiyorsan, her grup için kutuları işaretle."
-    update_preferences: "Tercihleri güncelle"
   new_user_form:
     create_an_account: "Bir hesap oluştur"
   group_setup:
@@ -553,9 +541,6 @@ tr:
     view_discussion: "Bu müzakereyi görüntülemek için buraya tıkla"
     view_group: "Bu grubu Loomio'da görüntülemek için buraya tıkla"
     view_proposal: "Bu öneriyi Loomio üzerinde görüntüle"
-    create_discussion:
-      intro: "%{who} %{which_group} grubunda yeni bir müzakere başlattı:"
-      subject: "Yeni müzakere - %{which}"
     create_proposal:
       intro: "Ait olduğunuz bir Loomio grubunda yeni bir öneri oluşturuldu."
       closes_in: "içinde kapanacak"
@@ -584,8 +569,6 @@ tr:
       said: "%{comment_author} söyledi:"
       subject: "Loomio da %{who}  %{which} grubunda siz bahsetti."
     proposal_closed:
-      intro: '"%{proposal_name}" önerin kapatıldı.'
-      intro_html: '"%{proposal_name}" önerin kapatıldı.'
       specify_outcome_and_notify_group: "Bir sonuç oluştur ve grubuna gönder!"
       specify_outcome_and_notify_group_html: "Bir sonuç oluştur ve grubuna gönder!"
       subject: "Öneri kapandı - %{which}"
@@ -598,7 +581,6 @@ tr:
       closes_on: "de kapanır"
       closes_at: "de kapanır"
       closes_in: "içinde kapanacak"
-      closing_in_24_hours: "24 saat içinde kapanıyor"
       summary: "Özet"
     verification:
       header: "Neredeyse bitti!"
@@ -628,7 +610,6 @@ tr:
   participation: "Katılım"
   disable: "Devre dışı bırak"
   group: "Grup"
-  groups: "Gruplar"
   group_admin: "Grup koordinatörü"
   home: "Ana sayfa"
   id: "kimlik"

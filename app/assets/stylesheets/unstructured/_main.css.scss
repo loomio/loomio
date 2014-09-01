@@ -1,4 +1,5 @@
 @import "marketing/media_queries";
+//= depend_on 'ajax-loader.gif'
 
 body {
   background-color: $app-background;
@@ -214,8 +215,6 @@ ul, ol, li {
   line-height: 33.5em;
   text-indent: -9999px;
 }
-
-.main-content { margin-top: 20px; }
 
 .page-container {
   margin-top: 30px;

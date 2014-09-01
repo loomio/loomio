@@ -22,12 +22,12 @@ gem 'rmagick', '~> 2.13.3'
 gem 'gravtastic'
 gem 'paperclip', '~> 4.2.0'
 gem 'kaminari'
-gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin', github: 'activeadmin'
 gem 'nokogiri'
 gem 'twitter-text'
 gem 'jquery-atwho-rails', '~> 0.4.11'
 gem 'redcarpet', '~> 3.1.2'
-gem 'paper_trail', '~> 3.0.3'
+gem 'paper_trail', '~> 3.0.5'
 gem 'unicorn', '~> 4.8.3'
 gem 'rack-canonical-host'
 gem 'delayed_job', '~> 4.0.2'
@@ -52,23 +52,19 @@ gem 'intercom'
 gem 'intercom-rails'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
-gem 'minitest'
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'underscore-rails'
-  gem "font-awesome-sass"
-  gem 'coffee-rails'
-  gem 'sass-rails'
-  gem 'uglifier'
-  gem 'bootstrap-sass', '~> 3.1.1'
-  gem 'modernizr-rails'
-  gem 'jquery-fileupload-rails'
-  gem 'momentjs-rails'
-end
+gem 'underscore-rails'
+gem "font-awesome-sass"
+gem 'coffee-rails'
+gem 'sass-rails'
+gem 'sprockets-rails', require: 'sprockets/railtie'
+gem 'uglifier'
+gem 'bootstrap-sass', '~>3.1.1'
+gem 'modernizr-rails'
+gem 'jquery-fileupload-rails'
+gem 'momentjs-rails'
 
 group :development, :test do
+  gem 'minitest'
   gem 'timecop'
   gem 'thin'
   gem 'pry-rails'
@@ -104,13 +100,11 @@ group :test do
   gem 'email_spec'
   gem 'poltergeist'
   gem 'webmock'
-  #gem 'vcr'
   gem "codeclimate-test-reporter", require: false
   gem 'rack_session_access'
 end
 
 group :production do
-  gem 'sprockets-rails', require: 'sprockets/railtie'
   gem 'rails_12factor'
   gem 'rails_serve_static_assets'
   gem 'delayed-plugins-airbrake'

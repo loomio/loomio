@@ -30,8 +30,6 @@ class NotificationItem
         NotificationItems::UserMentioned.new(notification)
       when "motion_closing_soon"
         NotificationItems::MotionClosingSoon.new(notification)
-      when "motion_blocked"
-        NotificationItems::MotionBlocked.new(notification)
       when "motion_outcome_created"
         NotificationItems::MotionOutcomeCreated.new(notification)
     end

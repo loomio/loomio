@@ -28,7 +28,6 @@ sr:
   devise:
     invitations:
       send_instructions: 'Poziv je poslat na %{email}.'
-      invitation_token_invalid: 'Pozivni token nije ispravan!'
       updated: 'Nalog kreiran.'
       no_invitations_remaining: "Nema više pozivnica"
     mailer:
@@ -190,8 +189,6 @@ sr:
     empty: Sve ste videli! Nema komentara koje niste videli.
   notifications:
     header: "Obaveštenja"
-    new_discussion: "započeo/la novu diskusiju"
-    new_motion: "kreirao/la nov predlog"
     motion_closed:
       by_user: "zatvorio/la predlog"
       by_expiry: "Predlog je zatvoren"
@@ -761,17 +758,6 @@ sr:
     your_statement: "Vaša izjava"
     submit: "Iznesi stav"
     update: "Izmeni poziciju"
-  email_preferences_form:
-    header: "Osobine ePoruka"
-    daily_activity_summary: "Dnevni Rezime Aktivnosti"
-    daily_activity_subscription: "Pošalji mi dnevno ePoruku sa rezimeom dešavanja u mojim grupama"
-    missed_yesterday_subscription: "Pošalji mi 'Juče na Lumiju' - moj nepročitani sadržaj iz proteklih 24 sata"
-    global_notifications: "Globalna Obaveštenja"
-    proposal_closing_soon_subscription: "Obavesti me 24 časa pre zatvaranja predloga"
-    mentions_subscription: "Pošalji mi ePoruku kada me neko pomene u komentaru"
-    group_activity_notifications: "Obaveštenja Aktivnosti Grupe"
-    group_activity_details: "Štiklirajte kvadrat svake grupe koja Vas zanima, ako želite da Vam se odmah pošalje poruka o novim diskusijama i odlukama."
-    update_preferences: "Opcije ažuriranja"
   new_user_form:
     create_an_account: "Napravi jedan nalog"
   profile_form:
@@ -863,9 +849,6 @@ sr:
     view_discussion: "Škljocni ovde da vidiš ovu diskusiju"
     view_group: "Škljocni ovde da vidiš grupu na Lumiju"
     view_proposal: "Pogledajte ovaj predlog na Lumiju"
-    create_discussion:
-      intro: "%{who} je počeo/la novu diskusiju u grupi %{which_group}:"
-      subject: "Nova diskusija - %{which}"
     create_proposal:
       intro: "Novi predlog je pokrenut u Lumio grupi kojoj pripadate"
       closes_in: "Zatvara se"
@@ -878,6 +861,9 @@ sr:
       subject: "Juče na Lumiju"
       mark_as_read: Označi kao pročitano
       thanks_for_reading: Hvala na čitanju, prijatan dan!
+      click_here_to_mark_all_as_read_html: |
+        Evo šta se dogodilo na Lumiju juče.
+        Kada pročitate, škljocnite <a href="%{link}>označi kao pročitano</a> da ukloite iz svog Lumio sandučeta sa porukama.
       marked_as_read_success: "Sve ePoruke su označene kao pročitane"
     group_email:
       intro: "%{who} je napravio/la objavu za grupu %{group}:"
@@ -902,8 +888,6 @@ sr:
     new_motion_created:
       context: "%{author} je predložio/la u %{group_full_name}:"
     proposal_closed:
-      intro: 'Vaš predlog "%{proposal_name}" je zaključen.'
-      intro_html: 'Vaš predlog "%{proposal_name}" je istekao.'
       specify_outcome_and_notify_group: "Odredite ishod i pošaljite to svojoj grupi!"
       specify_outcome_and_notify_group_html: "Odredite ishod i pošaljite to svojoj grupi!"
       subject: "Predlog zaključen - %{which}"
@@ -916,7 +900,6 @@ sr:
       closes_on: "Zatvara se"
       closes_at: "Zatvara se "
       closes_in: "Ističe"
-      closing_in_24_hours: "Zatvara se kroz 24 sata"
       headline: "%{author}ov/in predlog u grupi %{group} uskoro ističe:"
       summary: "Rezime"
     verification:
@@ -947,7 +930,6 @@ sr:
   participation: "Učestvovanje"
   disable: "Onemogući"
   group: "Grupa"
-  groups: "Grupe"
   group_admin: "Koordinator grupe"
   home: "Početna"
   id: "id"

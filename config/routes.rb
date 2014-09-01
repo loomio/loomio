@@ -1,24 +1,14 @@
 Loomio::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
   namespace :api, path: '/api/v1' do
     resources :comments, only: :create
   end
 
   slug_regex = /[a-z0-9\-\_]*/i
-  ActiveAdmin.routes(self)
 
   root :to => 'marketing#index'
-
-  namespace :admin do
-    resource :email_groups, only: [:create, :new]
-    resources :stats, only: [] do
-      collection do
-        get :group_metrics
-        get :retention_metrics
-        get :events
-      end
-    end
-  end
 
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
@@ -53,6 +43,8 @@ Loomio::Application.routes.draw do
 
   resources :groups, path: 'g', only: [:new, :create, :edit, :update] do
     member do
+      post :follow
+      post :unfollow
       post :join
       post :add_members
       post :hide_next_steps
@@ -87,6 +79,15 @@ Loomio::Application.routes.draw do
     end
   end
 
+  scope module: :groups do
+    resources :manage_membership_requests, only: [], as: 'membership_requests' do
+      member do
+        post :approve
+        post :ignore
+      end
+    end
+  end
+
   scope module: :groups, path: 'g', slug: slug_regex do
     get    ':id(/:slug)', action: 'show' #, as: :group
     patch    ':id(/:slug)', action: 'update'
@@ -95,12 +96,6 @@ Loomio::Application.routes.draw do
   end
 
   scope module: :groups do
-    resources :manage_membership_requests, only: [], as: 'membership_requests' do
-      member do
-        post :approve
-        post :ignore
-      end
-    end
   end
 
   constraints(GroupSubdomainConstraint) do
@@ -131,6 +126,8 @@ Loomio::Application.routes.draw do
     resources :invitations, only: [:new]
 
     member do
+      post :follow
+      post :unfollow
       post :update_description
       post :update
       post :add_comment
@@ -187,6 +184,12 @@ Loomio::Application.routes.draw do
       get   '/email_preferences', action: 'edit',   as: :email_preferences
       put   '/email_preferences', action: 'update', as: :update_email_preferences
       get   '/mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
+      get   'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
+    end
+
+    scope module: :change_password do
+      get '/change_password', action: 'show'
+      post '/change_password', action: 'update'
     end
   end
 
@@ -279,6 +282,7 @@ Loomio::Application.routes.draw do
   get '/press'      => redirect('http://blog.loomio.org/press-pack')
   get '/press-pack' => redirect('http://blog.loomio.org/press-pack')
   get '/roadmap'    => redirect('https://trello.com/b/tM6QGCLH/loomio-roadmap')
+  get '/timeline'   => redirect('http://www.tiki-toki.com/timeline/entry/313361/Loomio')
 
   get '/robots'     => 'robots#show'
 end

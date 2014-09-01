@@ -132,68 +132,6 @@
   margin-bottom: 0;
 }
 
-
-/* Commented out as it was modified in master and deleted in bootstrap3 */
-  /*li.nav-item.dropdown#user {*/
-    /*float: right;*/
-    /*max-width: 300px;*/
-    /*max-height: 30px;*/
-    /*#header-user-image {*/
-      /*position: relative;*/
-      /*bottom: 5px;*/
-      /*margin-right: 5px;*/
-    /*}*/
-    /*.nav-link { padding-top: 12px; }*/
-    /*.dropdown-menu {*/
-      /*border: none;*/
-      /*margin: 7px 8px 0;*/
-      /*min-width: 128px;*/
-      /*@include box-shadow(0, 3px, 5px, 0, rgba(0, 0, 0, 0.075));*/
-      /*a {*/
-        /*margin-top: 4px;*/
-        /*padding: 3px 18px;*/
-        /*.fa {*/
-          /*font-size: 16px;*/
-          /*margin-right: 5px;*/
-          /*opacity: .8;*/
-        /*}*/
-        /*.fa-envelope { font-size: 14px; }*/
-      /*}*/
-    /*}*/
-  /*}*/
-  /*li.nav-item.dropdown#groups {*/
-    /*float: left;*/
-    /*#activity-count {*/
-      /*font-size: $font-tinywiny;*/
-      /*padding: 0px 3px;*/
-      /*position: absolute;*/
-      /*left: 31px;*/
-      /*bottom: 17px;*/
-    /*}*/
-    /*.link-container a { display: inline; }*/
-    /*.discussion-activity-count {*/
-      /*display: inline;*/
-      /*float: right;*/
-      /*margin-left: 10px;*/
-    /*}*/
-    /*.dropdown-menu {*/
-      /*padding-bottom: 0;*/
-    /*}*/
-    /*.group-dropdown-search {*/
-      /*display: none;*/
-      /*width: 100%;*/
-      /*padding: 1em;*/
-      /*margin: 0;*/
-      /*box-sizing: border-box;*/
-      /*position: relative;*/
-      /*bottom: 5px;*/
-    /*}*/
-    /*.no-groups-found {*/
-      /*display: none;*/
-      /*padding: 5px 15px;*/
-    /*}*/
-  /*}*/
-
 li#sign-in {
   float: right;
 }

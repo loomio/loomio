@@ -1,4 +1,17 @@
 en:
+  # view path based locale strings
+  users:
+    email_preferences:
+      edit:
+        title: 'Email preferences'
+        when_do_you_want_emails: 'Email me:'
+        email_missed_yesterday: "'Yesterday on Loomio' - a daily summary of any activity I've missed"
+        email_followed_threads: "When I'm @mentioned, or there is activity in threads I'm following."
+        email_when_proposal_closing_soon: "24 hours before a proposal closes."
+        email_new_discussions_and_proposals: 'New discussions and proposals'
+        for_these_groups: "For these groups:"
+        submit: "Save preferences"
+
   explore:
     header: "Explore public groups"
 
@@ -36,7 +49,7 @@ en:
   devise:
     invitations:
       send_instructions: 'An invite has been sent to %{email}.'
-      invitation_token_invalid: 'The invitation token provided is not valid!'
+      invitation_token_invalid: 'This invitation is no longer valid!'
       updated: 'Account created.'
       no_invitations_remaining: "No invitations remaining"
     mailer:
@@ -70,6 +83,7 @@ en:
     group_request_invalid_token: "Sorry! This is an invalid token"
     group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
     group_already_setup: "The group you are trying to setup already exists."
+    passwords_did_not_match: "Password did not match confirmation"
     proposal_already_exists: "There is already an open proposal in this discussion."
     user_with_email_address_already_in_group: "A user with that email address already belongs to this group."
     you_have_already_requested_membership: "You have already requested membership to this group."
@@ -139,6 +153,7 @@ en:
     motion_closed: "Proposal closed. If you like, you can set an outcome below and send it to your group."
     motion_outcome_created: "Congratulations, you've created a proposal outcome and your group members have been notified."
     motion_outcome_updated: "The proposal outcome has been updated."
+    password_updated: "Your password was changed successfully"
     position_submitted: "Position submitted"
     position_updated: "Position updated."
     proposal_created: "Proposal successfully created."
@@ -201,8 +216,8 @@ en:
 
   notifications:
     header: "Notifications"
-    new_discussion: "started a new discussion"
-    new_motion: "created a new proposal"
+    new_discussion: "started a discussion"
+    new_motion: "created a proposal"
     motion_closed:
       by_user: "closed the proposal"
       by_expiry: "Proposal has closed"
@@ -432,6 +447,12 @@ en:
   edit_group_description: "Edit group description"
   group_subscription: "Group subscription"
 
+  groups:
+    follow:
+      click_to_follow: "Click to follow group"
+      click_to_unfollow: "Click to unfollow group"
+      following_details: "You'll be notified about every thread in this group."
+      not_following_details: "You'll be notified about threads you are participating in."
 
   #
   # GROUP REQUESTS
@@ -479,9 +500,19 @@ en:
   comment_by: "Comment by %{comment_author}"
 
   discussion_list:
+    clear_filters: "Clear filters: see all discussions"
+    filter_unread:
+      enable: "Only show unread discussions"
+      disable: "See read and unread discussions"
+
+    filter_followed:
+      enable:  "Only show followed discussions"
+      disable: "See followed and unfollowed discussions"
+
     empty:
       no_discussions: "There are no discussions in any of your groups."
       no_discussions_in_group: "This group does not have any discussions yet."
+      no_discussions_matching_filters_html: "There are no discussions matching these filters. <a href='%{link}'>Clear filters</a>."
       no_public_discussions: "There are no public discussions in this group."
       discussions_are_private: "All discussions in this group are private."
       request_membership_html: "To see private discussions, <a href='%{href}'>request to join the group.</a>"
@@ -494,6 +525,10 @@ en:
     last_edited_html: "Last edited %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "See revision history"
     see_history: "See history"
+    click_to_follow: "Click to follow thread"
+    click_to_unfollow: "Click to unfollow thread"
+    following_details: "You'll be notified of activity in this thread."
+    not_following_details: "You won't be notified of activity in this thread."
 
   description_history:
     header: "Revision history"
@@ -901,18 +936,6 @@ en:
     submit: "Submit position"
     update: "Update position"
 
-  email_preferences_form:
-    header: "Email preferences"
-    daily_activity_summary: "Daily Activity Summary"
-    daily_activity_subscription: "Send me a daily activity email summarising what’s been happening in my groups"
-    missed_yesterday_subscription: "Send me 'Yesterday on Loomio' - my unread content from the past 24 hours"
-    global_notifications: "Global Notifications"
-    proposal_closing_soon_subscription: "Remind me 24 hours before a proposal closes"
-    mentions_subscription: "Email me when someone mentions me in a comment"
-    group_activity_notifications: "Group Activity Notifications"
-    group_activity_details: "For each group, check the box if you want to be emailed immediately about new discussions and decisions."
-    update_preferences: "Update preferences"
-
   new_user_form:
     create_an_account: "Create an account"
 
@@ -920,7 +943,9 @@ en:
     view: "View my profile"
     profile: "Edit profile"
     picture: "Picture"
-    use_avatar_kind: "Use %{kind}"
+    use_initials: 'Use initials'
+    use_uploaded: 'Use uploaded image'
+    use_gravtar: 'Use Gravatar'
     upload_new_image: "Upload a new image"
 
   group_setup:
@@ -1012,8 +1037,7 @@ en:
     view_group: "Click here to view the group on Loomio"
     view_proposal: "View this proposal on Loomio"
     create_discussion:
-      intro: "%{who} started a new discussion in %{which_group}:"
-      subject: "New discussion - %{which}"
+      intro: "%{who} started a discussion in %{which_group}:"
     create_proposal:
       intro: "A new proposal was created in a Loomio group that you belong to."
       closes_in: "Closes in"
@@ -1052,10 +1076,10 @@ en:
       said: "%{comment_author} said:"
       subject: "%{who} mentioned you in the %{which} group on Loomio"
     new_motion_created:
+      subject: "Proposal: %{proposal_title}"
       context: "%{author} created a proposal in %{group_full_name}:"
     proposal_closed:
-      intro: 'Your proposal "%{proposal_name}" has closed.'
-      intro_html: 'Your proposal "%{proposal_name}" has closed.'
+      proposal_has_closed: 'The proposal has closed.'
       specify_outcome_and_notify_group: "Create an outcome and send it to your group!"
       specify_outcome_and_notify_group_html: "Create an outcome and send it to your group!"
       subject: "Proposal closed - %{which}"
@@ -1068,9 +1092,21 @@ en:
       closes_on: "Closes on"
       closes_at: "Closes at"
       closes_in: "Closes in"
-      closing_in_24_hours: "Closing in 24 hours"
+      subject: "Closing in 24 hours: %{proposal_title}"
       headline: "%{author}'s proposal in %{group} is closing soon:"
       summary: "Summary"
+    thread_mailer:
+      footer_text: "Reply to this email directly or view it on Loomio:"
+      footer_html: "Reply to this email directly or <a href='%{app_link}'>view it on Loomio</a>. Change your <a href='%{preferences_link}'>email preferences</a>."
+      change_preferences: "Change your email preferences:"
+      new_motion_followed: "%{who} proposed:"
+      new_motion_not_followed: "%{who} proposed:"
+      motion_closing_soon: "Proposal closing in 24 hours:"
+      proposal_closed: "Proposal closed:"
+      specify_outcome_html: "Your proposal has closed. <a href='%{link}'>Specify an outcome</a> to let everyone know what the result is."
+      specify_outcome: "Your proposal has closed. Specify an outcome to let everyone know what the result is:"
+      outcome_created: "%{who} set a proposal outcome:"
+      you_agreed: "You %{past_tense_position}"
     verification:
       header: "You're almost done!"
       intro: "Please click this verification link to finalise your request:"
@@ -1104,7 +1140,6 @@ en:
   participation: "Participation"
   disable: "Disable"
   group: "Group"
-  groups: "Groups"
   group_admin: "Group Coordinator"
   home: "Home"
   id: "id"
@@ -1152,8 +1187,14 @@ en:
   persona: "Persona"
 
   common:
+    dashboard: Dashboard
+    unread: Unread
+    filter: 'Filter:'
+    following: Following
+    not_following: Not following
     back_to_discussion: "Back to discussion"
     edited: Edited
+    groups: "Groups"
     today: Today
     months:
       january: January

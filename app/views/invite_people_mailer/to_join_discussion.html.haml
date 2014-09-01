@@ -7,4 +7,4 @@
     %p= t("email.to_join_discussion.message_intro", who: @inviter.name)
     %p= @message
     %p
-      = link_to t("email.to_join_discussion.link"), invitation_url(@invitation)
+      = link_to t("email.to_join_discussion.link"), invitation_url(@invitation, @utm_hash)

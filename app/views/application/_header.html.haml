@@ -18,11 +18,11 @@
           %li
             %a{href: inbox_path}
               %i.fa.fa-inbox
-              %col-md-#inbox-count.label
+              %span#inbox-count.label
           %li.dropdown#notifications-container
             %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
               %i.fa.fa-bell
-              %col-md-#notifications-count.label.activity-count
+              %span#notifications-count.label.activity-count
             %ul.dropdown-menu
               %li
                 %h3= t("notifications.header")
@@ -34,7 +34,7 @@
           %li.dropdown#groups
             %a.dropdown-toggle{href: "#", 'data-toggle' => 'dropdown'}
               %i.fa.fa-group
-              %col-md-= t :groups
+              %span= t :"common.groups"
             %ul.dropdown-menu
               #group-dropdown-items
               - if current_user.show_start_group_button?

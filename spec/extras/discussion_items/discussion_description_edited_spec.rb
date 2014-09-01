@@ -1,3 +1,5 @@
+require "rails_helper"
+
 describe DiscussionItems::DiscussionDescriptionEdited do
   let(:event) { double(:event) }
   let(:discussion) { double(:discussion) }

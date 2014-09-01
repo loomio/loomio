@@ -19,7 +19,6 @@ ml:
   devise:
     invitations:
       send_instructions: 'ഒരു ക്ഷണനം %{email}-ലേക്ക് അയച്ചു.'
-      invitation_token_invalid: 'നല്‍കിയ ക്ഷണന ടോക്കണ്‍  സാധുവല്ല!'
       updated: 'ഇടപാട് സൃഷ്ടിയ്ക്കപെട്ടു.'
       no_invitations_remaining: "ക്ഷണങ്ങള്‍ ബാക്കിയില്ല"
     mailer:
@@ -141,8 +140,6 @@ ml:
     empty: താങ്കള്‍ ഇതുവരെയുള്ളതെല്ലാംകണ്ടു! കാണാത്ത അഭിപ്രായങ്ങള്‍ ഒന്നും തന്നെ ഇല്ല.
   notifications:
     header: "അറിയിപ്പുകള്‍"
-    new_discussion: "പുതിയൊരു ചര്‍ച്ച തുടങ്ങിയിരിക്കുന്നു."
-    new_motion: "പുതിയൊരു പ്രസ്താവന തുടങ്ങിയിരിക്കുന്നു."
     motion_closed:
       by_user: "ശുപാര്‍ശ അവസാനിപ്പിച്ചു"
       by_expiry: "ശുപാര്‍ശ അവസാനിച്ചു"
@@ -441,16 +438,6 @@ ml:
     your_statement: "നിങ്ങളുടെ പ്രസ്താവന"
     submit: "നിലപാടു് സമര്‍പ്പിക്കുക"
     update: "നിലപാടു് പുതുക്കുക"
-  email_preferences_form:
-    header: "ഈമെയില്‍ മുന്‍ഗണനകള്‍"
-    daily_activity_summary: "ദൈനംദിന പ്രവര്‍ത്തനത്തിന്റെ ചുരുക്കം"
-    daily_activity_subscription: "സമൂഹത്തിലെ പ്രതിദിന കര്‍മ്മങ്ങള്‍ ലഘൂകരിച്ച് ഇമെയില്‍ അയയ്ക്കുക"
-    global_notifications: "ആഗോള അറിയിപ്പുകള്‍"
-    proposal_closing_soon_subscription: "ശുപാര്‍ശ്ശ അടയ്ക്കുന്നതിനു 24 മണിക്കൂര്‍ മുമ്പ് എന്നെ ഓര്‍മ്മപെടുത്തുക"
-    mentions_subscription: "ആരെങ്കിലും എന്നെ ചര്‍ച്ചയില്‍ സ്മരിച്ചാല്‍ ഇമെയില്‍ അയയ്ക്കുക"
-    group_activity_notifications: "സമൂഹകര്‍മ്മങ്ങളുടെ അറിയ്പ്പുകള്‍"
-    group_activity_details: "ഓരോ സമൂഹത്തിനും, പുതിയ ചര്‍ച്ചകളും തീരുമാനങ്ങളും അറിയുന്നതിനായി പെട്ടിയില്‍ അടയാളമിടുക"
-    update_preferences: "മുന്‍ഗണനകള്‍ പുതുക്കുക"
   new_user_form:
     create_an_account: "ഒരു അക്കൗണ്ട് തുടങ്ങുക"
   group_setup:
@@ -521,9 +508,6 @@ ml:
     view_discussion: "ഈ ചര്‍ച്ച കാണാന്‍ ഇവിടെ ഞെക്കുക"
     view_group: "ലൂമിയോയില്‍ ഈ കൂട്ടം കാണാന്‍ ഇവിടെ ക്ലീക്ക് ചെയ്യുക"
     view_proposal: "ഈ പദ്ധതി ലൂമിയോയില്‍ കാണുക"
-    create_discussion:
-      intro: "%{who}  %{which_group}-ല്‍ ചര്‍ച്ച തുടങ്ങി:"
-      subject: "പുതിയ ചര്‍ച്ച  - %{which}"
     create_proposal:
       intro: "താങ്കള്‍ അംഗമായ കൂട്ടത്തില്‍ ഒരു പുതിയ നിര്‍ദേശ സാധ്യത സൃഷ്ടിക്കപെട്ടിരിക്കുന്നു."
       closes_in: "അടയ്ക്കും"
@@ -551,8 +535,6 @@ ml:
     new_motion_created:
       context: "%{author}  %{group_full_name}-ല്‍ പുതിയ പദ്ധതി സൃഷ്ടിച്ചു:"
     proposal_closed:
-      intro: 'താങ്കളുടെ പദ്ധതി "%{proposal_name}" അടച്ചു'
-      intro_html: 'താങ്കളുടെ പദ്ധതി "%{proposal_name}" അടച്ചു.'
       specify_outcome_and_notify_group: "ഒരു ഫലം സൃഷ്ടിച്ച് താങ്കളുടെ കൂട്ടത്തിന് അയയ്ക്കുക!"
       specify_outcome_and_notify_group_html: "ഒരു ഫലം സൃഷ്ടിച്ച് താങ്കളുടെ കൂട്ടത്തിന് അയയ്ക്കുക!"
       subject: "പദ്ധതി അടഞ്ഞു - %{which}"
@@ -565,7 +547,6 @@ ml:
       closes_on: "അടയ്ക്കുന്നത്"
       closes_at: "അടയ്ക്കുന്നത്"
       closes_in: "അടയ്ക്കും"
-      closing_in_24_hours: "24 മണിയ്ക്കൂറില്‍ അടയ്ക്കുന്നു"
       headline: "%{author}-ടെ %{group}-ലുള്ള പദ്ധതിഅവസാനിയ്ക്കാറായി:"
       summary: "ചുരുക്കം"
     verification:
@@ -596,7 +577,6 @@ ml:
   participation: "പങ്കെടുക്കല്‍"
   disable: "അസാധുവാക്കുക"
   group: "കൂട്ടം"
-  groups: "കൂട്ടങ്ങള്‍"
   group_admin: "കൂട്ടത്തിന്റെ എകോപകൻ"
   home: "പൂമുഖം"
   id: "തിരിച്ചറിയല്‍"

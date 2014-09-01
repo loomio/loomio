@@ -1,14 +1,13 @@
 body.dashboard {
   &.show {
-    .sub-group .group-link-name { padding-left: 1em; }
-/*    .sub-panel {
-      padding: 6px 10px;
-      margin: 20px 0;
-      ul {
-        a:hover { color: $dark-grey }
-        li { line-height: 21px; }
-      }
-    }*/
+    .sub-panel ul {
+      a:hover { color: $dark-grey }
+      li { line-height: 21px; }
+      .sub-group .group-link-name { padding-left: 1em; }
+    }
+    .group-title{
+      margin: 0;
+    }
   }
   .no-groups {
     margin-top: 20px;

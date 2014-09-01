@@ -28,7 +28,6 @@ sr-RS:
   devise:
     invitations:
       send_instructions: 'Позив је послат на %{email}.'
-      invitation_token_invalid: 'Позивни токен није исправан!'
       updated: 'Налог креиран.'
       no_invitations_remaining: "Нема више позивница"
     mailer:
@@ -190,8 +189,6 @@ sr-RS:
     empty: Све сте видели! Нема коментара које нисте видели.
   notifications:
     header: "Обавештења"
-    new_discussion: "започео/ла нову дискусију"
-    new_motion: "креирао/ла нов предлог"
     motion_closed:
       by_user: "затворио/ла предлог"
       by_expiry: "Предлог је затворен"
@@ -767,17 +764,6 @@ sr-RS:
     your_statement: "Ваша изјава"
     submit: "Изнеси став"
     update: "Измени позицију"
-  email_preferences_form:
-    header: "Особине еПорука"
-    daily_activity_summary: "Дневни Резиме Активности"
-    daily_activity_subscription: "Пошаљи ми дневно еПоруку са резимеом дешавања у мојим групама"
-    missed_yesterday_subscription: "Пошаљи ми 'Јуче на Лумију' - мој непрочитани садржај из протеклих 24 сата"
-    global_notifications: "Глобална Обавештења"
-    proposal_closing_soon_subscription: "Обавести ме 24 часа пре затварања предлога"
-    mentions_subscription: "Пошаљи ми еПоруку када ме неко помене у коментару"
-    group_activity_notifications: "Обавештења Активности Групе"
-    group_activity_details: "Штиклирајте квадрат сваке групе која Вас занима, ако желите да Вам се одмах пошаље порука о новим дискусијама и одлукама."
-    update_preferences: "Опције ажурирања"
   new_user_form:
     create_an_account: "Направи један налог"
   profile_form:
@@ -869,9 +855,6 @@ sr-RS:
     view_discussion: "Шкљоцни овде да видиш ову дискусију"
     view_group: "Шкљоцни овде да видиш групу на Лумију"
     view_proposal: "Погледајте овај предлог на Лумију"
-    create_discussion:
-      intro: "%{who} је почео/ла нову дискусију у групи %{which_group}:"
-      subject: "Нова дискусија - %{which}"
     create_proposal:
       intro: "Нови предлог је покренут у Лумио групи којој припадате"
       closes_in: "Затвара се"
@@ -911,8 +894,6 @@ sr-RS:
     new_motion_created:
       context: "%{author} је предложио/ла у %{group_full_name}:"
     proposal_closed:
-      intro: 'Ваш предлог "%{proposal_name}" је закључен.'
-      intro_html: 'Ваш предлог "%{proposal_name}" је истекао.'
       specify_outcome_and_notify_group: "Одредите исход и пошаљите то својој групи!"
       specify_outcome_and_notify_group_html: "Одредите исход и пошаљите то својој групи!"
       subject: "Предлог закључен - %{which}"
@@ -925,7 +906,6 @@ sr-RS:
       closes_on: "Затвара се"
       closes_at: "Затвара се "
       closes_in: "Истиче"
-      closing_in_24_hours: "Затвара се кроз 24 сата"
       headline: "%{author} предлог у групи %{group} ускоро истиче:"
       summary: "Резиме"
     verification:
@@ -956,7 +936,6 @@ sr-RS:
   participation: "Учествовање"
   disable: "Онемогући"
   group: "Група"
-  groups: "Групе"
   group_admin: "Координатор групе"
   home: "Почетна"
   id: "id"

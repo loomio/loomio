@@ -1,8 +1,3 @@
-- if @utm_hash
-  - utm_hash = @utm_hash.merge utm_campaign: 'unsubsubscribe'
-- else
-  - utm_hash = {}
-
 %br
 
-%p.unsubscribe= t("email.unsubscribe_html", link_text: t(:click_here), link_path: email_preferences_url( utm_hash.merge unsubscribe_token: @user.unsubscribe_token ))
+%p.unsubscribe= t("email.unsubscribe_html", link_text: t(:click_here), link_path: email_preferences_url(unsubscribe_token: @recipient.unsubscribe_token))

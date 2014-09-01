@@ -1,25 +1,33 @@
 class Events::NewDiscussion < Event
-  after_create :notify_users!
-
   def self.publish!(discussion)
-    create!(:kind => "new_discussion", :eventable => discussion,
-                      :discussion_id => discussion.id)
+    event = create!(kind: 'new_discussion',
+                    eventable: discussion,
+                    discussion: discussion)
+
+    group = discussion.group
+    DiscussionReader.for(discussion: discussion,
+                         user: discussion.author).follow!
+
+    discussion.followers_without_author.
+               email_followed_threads.each do |user|
+      ThreadMailer.delay.new_discussion(user, event)
+    end
+
+    discussion.followers_without_author.
+               dont_email_followed_threads.
+               email_new_discussions_for(group).uniq.each do |user|
+      ThreadMailer.delay.new_discussion(user, event)
+    end
+
+    discussion.group_members_not_following.
+               email_new_discussions_for(group).uniq.each do |user|
+      ThreadMailer.delay.new_discussion(user, event)
+    end
+
+    event
   end
 
   def discussion
     eventable
   end
-
-  private
-
-  def notify_users!
-    discussion.group_members_without_discussion_author.each do |user|
-      if user.email_notifications_for_group?(discussion.group)
-        UserMailer.delay.new_discussion(discussion, user)
-      end
-      #notify!(user)
-    end
-  end
-
-  handle_asynchronously :notify_users!
 end

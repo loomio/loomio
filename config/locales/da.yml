@@ -82,8 +82,6 @@ da:
         other: "%{count} år"
   notifications:
     header: "Notifikationer"
-    new_discussion: "startede en ny diskussion"
-    new_motion: "oprettede et nyt forslag"
     motion_closed:
       by_user: "lukkede forslaget"
       by_expiry: "Forslaget er lukket"

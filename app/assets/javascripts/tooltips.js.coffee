@@ -1,11 +1,3 @@
-$ ->
-  $('.enable-tooltip').tooltip
-    placement: "bottom"
-
-$ ->
-  $('.tooltip-top').tooltip
-    placement: 'top'
-
 # adds bootstrap popovers to group activity indicators
 $ ->
   $(".group-activity").tooltip
@@ -24,6 +16,7 @@ $ ->
     placement: 'right',
     title: 'Text formatting settings and info.'
 
+$ ->
   $("#discussion-markdown-dropdown").tooltip
     placement: "right",
     container: "body",
@@ -35,9 +28,11 @@ $ ->
     placement: 'bottom',
     title: 'Attach files'
 
-
 $ ->
   $("#inbox-container").tooltip
     placement: "bottom",
-    title: "Inbox"
+    title: "Unread"
     delay: 200
+
+$ ->
+  $('.js-tooltip').tooltip()

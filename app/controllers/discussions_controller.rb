@@ -100,8 +100,18 @@ class DiscussionsController < GroupBaseController
 
     @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
     assign_meta_data
-    
+
     @feed_url = discussion_url @discussion, format: :xml if @discussion.public?
+  end
+
+  def follow
+    DiscussionReader.for(discussion: @discussion, user: current_user).follow!
+    redirect_to discussion_url @discussion
+  end
+
+  def unfollow
+    DiscussionReader.for(discussion: @discussion, user: current_user).unfollow!
+    redirect_to discussion_url @discussion
   end
 
   def move
@@ -201,10 +211,8 @@ class DiscussionsController < GroupBaseController
   end
 
   def mark_as_read
-    if @activity and @activity.last
-      @discussion_reader.viewed!(@activity.last.updated_at)
-      @motion_reader.viewed! if @motion_reader
-    end
+    @discussion_reader.viewed!(@discussion.last_activity_at) if @discussion_reader
+    @motion_reader.viewed! if @motion_reader
   end
 
   def assign_meta_data

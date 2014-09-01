@@ -23,6 +23,7 @@ Loomio::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   config.assets.raise_runtime_errors = true
+  config.assets.raise_production_errors = true
   config.sass.debug_info = true
   # support scss support in chrome devtools
   #
