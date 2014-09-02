@@ -27,7 +27,7 @@ Loomio::Application.routes.draw do
     get   '/', action: 'index'
     get   'size'
     get   'preferences'
-    patch   'update_preferences'
+    put 'update_preferences'
     match 'mark_as_read', via: [:get, :post]
     match 'mark_all_as_read/:id', action: 'mark_all_as_read', as: :mark_all_as_read, via: [:get, :post]
     match 'unfollow', via: [:get, :post]
@@ -196,7 +196,11 @@ Loomio::Application.routes.draw do
   scope module: :users, path: 'u' do
     get ':id(/:slug)', action: 'show',    slug: slug_regex, as: :user
     patch ':id(/:slug)', action: 'update',  slug: slug_regex
+    post ':id(/:slug)', action: 'deactivate', slug: slug_regex
   end
+
+  get '/deactivation_instructions' => 'users#deactivation_instructions'
+  get '/about_deactivation' => 'users#about_deactivation'
 
   match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement', via: [:get, :post]
   post '/translate/:model/:id', to: 'translations#create', as: :translate

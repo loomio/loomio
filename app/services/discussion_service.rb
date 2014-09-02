@@ -26,6 +26,8 @@ class DiscussionService
 
     comment.discussion.update_attribute(:last_comment_at, comment.created_at)
 
+    DiscussionReader.for(user: author, discussion: comment.discussion).viewed!(comment.created_at)
+
     Events::NewComment.publish!(comment)
   end
 

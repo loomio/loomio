@@ -1,3 +1,6 @@
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "bootstrap/mixins";
 @import "settings";
 @import "bootstrap";
 @import "groups";
@@ -6,9 +9,7 @@
 @import "session_navbar";
 @import "discussions";
 @import "users";
-/*@import "bootstrap/mixins";*/
 @import "mixins";
-/*@import "overide_bootstrap";*/
 @import "pages";
 @import "motions";
 @import "icons";

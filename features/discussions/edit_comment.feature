@@ -9,7 +9,6 @@ Feature: Edit Comment
     When I edit my comment
     Then I should see my comment has updated in the discussion
 
-  @javascript
   Scenario: User views edited comment diff
     Given there is an edited comment in the discussion
     When I view the history of that comment

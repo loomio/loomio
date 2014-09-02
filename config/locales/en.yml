@@ -6,7 +6,8 @@ en:
         title: 'Email preferences'
         when_do_you_want_emails: 'Email me:'
         email_missed_yesterday: "'Yesterday on Loomio' - a daily summary of any activity I've missed"
-        email_followed_threads: "When I'm @mentioned, or there is activity in threads I'm following."
+        email_when_mentioned: "When I'm @mentioned"
+        email_followed_threads: "When there is activity in threads I'm following."
         email_when_proposal_closing_soon: "24 hours before a proposal closes."
         email_new_discussions_and_proposals: 'New discussions and proposals'
         for_these_groups: "For these groups:"
@@ -273,6 +274,23 @@ en:
   prompt_user_to_join:
     header: "Join the group to participate"
     body: "To comment or vote, you need to be a member of this group."
+
+  user_profile:
+    back: "Back to my profile"
+    change_password: "Change your password"
+    deactivate_account: "Deactivate account"
+    about_deactivation: "What will this mean?"
+    confirm_account_deactivation: "Are you sure you want to deactivate your account?"
+    reactivation_html: "You will need to <a href='%{link}'>contact us</a> to reactivate your account."
+    deactivation:
+      title: "Deactivating your account"
+      only_coordinator: "A group must have at least one coordinator. You are currently the only coordinator of the following groups:"
+      instructions: "In order to deactivate your account, you need to either add another coordinator or deactivate the groups."
+      info_title: "What will deactivating your account mean?"
+      memberships: "You will no longer be listed as a member in any of the groups you currently belong to."
+      group_contributions: "The comments, proposals and discussions you've made in groups will stay, but we'll remove your name from these."
+      emails: "We'll stop sending you Loomio related emails."
+
 
   #
   # GROUP PAGE
@@ -807,7 +825,7 @@ en:
   now_that_your_logged_in: "Now that you've logged in with %{provider_name}, please confirm your details to create a Loomio account."
   confirmation_not_received: "Didn't receive confirmation instructions?"
   unlock_not_received: "Didn't receive unlock instructions?"
-  inactive_html: "Sorry, this account is currently inactive. If you have any questions please <a href='%{path_to_contact}'>get in touch</a>."
+  inactive_html: "This account has been deactivated. If you have any questions please <a href='%{path_to_contact}'>get in touch</a>."
   create_an_account_html: 'Create a Loomio Beta account'
   log_in: "Log in"
 
@@ -945,7 +963,7 @@ en:
     create_an_account: "Create an account"
 
   profile_form:
-    view: "View my profile"
+    view: "View profile"
     profile: "Edit profile"
     picture: "Picture"
     use_initials: 'Use initials'
@@ -1077,8 +1095,7 @@ en:
       subject: "%{who} has requested to join %{which_group}"
       view_group: "You can approve or decline the request here"
     mentioned:
-      intro: "You were mentioned in a discussion titled:"
-      said: "%{comment_author} said:"
+      context: "%{author_name} mentioned you while discussing \"%{discussion_title}\""
       subject: "%{who} mentioned you in the %{which} group on Loomio"
     new_motion_created:
       subject: "Proposal: %{proposal_title}"
@@ -1104,8 +1121,7 @@ en:
       footer_text: "Reply to this email directly or view it on Loomio:"
       footer_html: "Reply to this email directly or <a href='%{app_link}'>view it on Loomio</a>. Change your <a href='%{preferences_link}'>email preferences</a>."
       change_preferences: "Change your email preferences:"
-      new_motion_followed: "%{who} proposed:"
-      new_motion_not_followed: "%{who} proposed:"
+      new_motion: "%{who} proposed:"
       motion_closing_soon: "Proposal closing in 24 hours:"
       proposal_closed: "Proposal closed:"
       specify_outcome_html: "Your proposal has closed. <a href='%{link}'>Specify an outcome</a> to let everyone know what the result is."

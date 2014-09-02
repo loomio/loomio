@@ -3,7 +3,6 @@ Feature: Missed yesterday email
     Given I am an existing Loomio user
     And I am a member of a group
     And I am subscribed to the missed yesterday email
-    
 
   Scenario: User receives missed yesterday email
     Given there is a new discussion in the group

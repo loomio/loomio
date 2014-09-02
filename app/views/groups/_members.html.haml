@@ -3,7 +3,7 @@
     .panel-heading
       %h4
         = t :members
-        = "(#{ group.memberships_count })"
+        = "(#{ group.members.count })"
 
     .panel-body
       %ul#users-list.clearfix

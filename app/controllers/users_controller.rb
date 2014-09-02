@@ -47,4 +47,18 @@ class UsersController < BaseController
   def profile
     @user = current_user
   end
+
+  def deactivate
+    @user = current_user
+    @user.deactivate!
+    redirect_to root_url
+  end
+
+  def deactivation_instructions
+    @user = current_user
+    @adminable_groups = @user.adminable_groups.with_one_coordinator
+  end
+
+  def about_deactivation
+  end
 end

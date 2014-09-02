@@ -53,7 +53,7 @@ gem 'intercom-rails'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 gem 'underscore-rails'
-gem "font-awesome-sass"
+gem "font-awesome-sass",  '~> 4.2.0'
 gem 'coffee-rails'
 gem 'sass-rails'
 gem 'sprockets-rails', require: 'sprockets/railtie'

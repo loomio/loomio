@@ -406,7 +406,6 @@ cs:
   forgot_your_password: "Zapomněli jste své heslo?"
   confirmation_not_received: "Nepřišly vám pokyny k potvrzení?"
   unlock_not_received: "Nepřišly vám pokyny k odemčení?"
-  inactive_html: "Omlouváme se, tento účet je momentálně neaktivní. Pokud máte nějaké otázky, prosím <a href='%{path_to_contact}'>spojte se s námi</a>."
   log_in: "Přihlásit se"
   join_group:
     log_in: "Napište nám, abyste se přidal(a) k %{group_name}"
@@ -475,7 +474,6 @@ cs:
     view: "Zobrazit můj profil"
     profile: "Upravit profil"
     picture: "Fotka"
-    use_avatar_kind: "Použít %{kind}"
     upload_new_image: "Nahrát novou fotku"
   group_setup:
     set_up_your_group: Zřiďte si skupinu

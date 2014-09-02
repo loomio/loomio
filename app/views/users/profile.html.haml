@@ -1,16 +1,13 @@
 %h1= t :'profile_form.profile'
 .row
   .col-md-4
-    = link_to t(:'profile_form.view'), user_path(current_user), id: 'edit-profile'
+    %p= link_to t(:'profile_form.view'), user_path(current_user), id: 'edit-profile'
     = simple_form_for @user do |f|
       = f.input :name
       = f.input :email
       = f.input :selected_locale, :collection => LocalesHelper::LANGUAGES, include_blank: false, label: t(:'simple_form.labels.user.language_preference')
-      = f.submit :class => "btn btn-info btn-large", id: "profile-submit", :data => {:disable_with => t("helpers.submit.user.update")}
-.row
-  .col-md-4
-    = link_to t(:"change_your_password"), change_password_path, id: 'change-password'
-
+      = f.submit :class => "btn btn-primary", id: "profile-submit", :data => {:disable_with => t("helpers.submit.user.update")}
+    %p= link_to t(:'user_profile.change_password'), change_password_path, id: 'change-password'
 .row
   .col-md-6
     %h2= t("profile_form.picture")
@@ -30,3 +27,20 @@
           = hidden_field_tag :max_file_size, User::MAX_AVATAR_IMAGE_SIZE_CONST, id: 'max-file-size'
   .col-md-3
     = render 'avatar', user: @user, size: "large", id: 'avatar-preview'
+
+.row.deactivate-account
+  .col-md-6
+    %h2= t(:'user_profile.deactivate_account')
+    - if can? :deactivate, @user
+      = link_to t(:'user_profile.deactivate_account'),
+        user_path(@user),
+        method: :post,
+        class: 'btn btn-danger',
+        id: 'deactivate-user-account',
+        data: {confirm: t(:'user_profile.confirm_account_deactivation')}
+    - else
+      = link_to t(:'user_profile.deactivate_account'), deactivation_instructions_path, class: 'btn btn-default', id: "deactivate-user-account"
+.row
+  .col-md-3
+    = link_to t(:'user_profile.about_deactivation'), about_deactivation_path, class: 'deactivation-info'
+

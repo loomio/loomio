@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
            source: :group
 
   has_many :memberships,
-           -> { where is_suspended: false },
+           -> { where(is_suspended: false, archived_at: nil) },
            dependent: :destroy
 
   has_many :membership_requests,

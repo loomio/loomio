@@ -380,7 +380,6 @@ km:
   forgot_your_password: "ភ្លេចពាក្យសម្ងាត់របស់អ្នក? "
   confirmation_not_received: "មិនបានទទួលការណែនាំបញ្ជាក់?"
   unlock_not_received: "មិនបានទទួលការណែនាំដោះសោ? "
-  inactive_html: "សុំទោស!គណនីនេះគឺអសកម្ម។ប្រសិនបើអ្នកមានសំណួរណាមួយសូម<a href='%{path_to_contact}'>get in touch</a>."
   join_group:
     log_in: "ឡុកអ៊ីនដើម្បីចូលរួម%{group_name}"
     create_account_to_join_group: "សូមបង្កើតគណនីមួយដើម្បីចូលរួម%{group_name}"

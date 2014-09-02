@@ -6,6 +6,7 @@
         =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
 
       = f.input :email_missed_yesterday, as: :boolean, inline_label: t('.email_missed_yesterday'), label: false
+      = f.input :email_when_mentioned, as: :boolean, inline_label: t('.email_when_mentioned'), label: false
       = f.input :email_followed_threads, as: :boolean, inline_label: t('.email_followed_threads'), label: false
       = f.input :email_when_proposal_closing_soon, as: :boolean, inline_label: t('.email_when_proposal_closing_soon'), label: false
       = f.input :email_new_discussions_and_proposals, as: :boolean, inline_label: t('.email_new_discussions_and_proposals'), label: false,

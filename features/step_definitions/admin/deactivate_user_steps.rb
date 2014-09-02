@@ -26,5 +26,5 @@ When (/^they attempt to sign in$/) do
 end
 
 Then (/^they should be told their account is inactive$/) do
-  page.should have_content'Sorry, this account is currently inactive'
+  page.should have_content'This account has been deactivated.'
 end

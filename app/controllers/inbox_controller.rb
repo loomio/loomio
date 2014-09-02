@@ -6,7 +6,7 @@ class InboxController < BaseController
   end
 
   def size
-    size = GroupDiscussionsViewer.for(user: current_user).unread.count
+    size = Queries::VisibleDiscussions.new(groups: current_user.inbox_groups, user: current_user).unread.count
 
     if size > 100
       render text: '100+'

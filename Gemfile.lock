@@ -193,7 +193,7 @@ GEM
     fog-softlayer (0.3.13)
       fog-core
       fog-json
-    font-awesome-sass (4.1.0)
+    font-awesome-sass (4.2.0)
       sass (~> 3.2)
     foreman (0.74.0)
       dotenv (~> 0.11.1)
@@ -560,7 +560,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   fog
-  font-awesome-sass
+  font-awesome-sass (~> 4.2.0)
   foreman
   friendly_id (~> 5.0.4)
   gravtastic
