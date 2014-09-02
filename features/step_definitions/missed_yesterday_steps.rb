@@ -1,8 +1,8 @@
 Given(/^there is a new discussion in the group$/) do
-  @discussion = FactoryGirl.build :discussion, group: @group, created_at: 5.hours.ago
+  @discussion = FactoryGirl.build :discussion, group: @group
   DiscussionService.start_discussion(@discussion)
 
-  @comment = FactoryGirl.build :comment, discussion: @discussion, created_at: 4.hours.ago
+  @comment = FactoryGirl.build :comment, discussion: @discussion
   DiscussionService.add_comment(@comment)
 end
 

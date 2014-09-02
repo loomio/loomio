@@ -86,9 +86,7 @@ end
 Given(/^I have read the discussion but there is a new comment$/) do
   @discussion.group.add_member!(@discussion.author)
   DiscussionReader.for(user:@user, discussion: @discussion).viewed!
-  @comment = Comment.new(body: 'hi')
-  @comment.author = @user
-  @comment.discussion = @discussion
+  @comment = FactoryGirl.build(:comment, discussion: @discussion)
   DiscussionService.add_comment(@comment)
 end
 

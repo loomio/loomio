@@ -49,6 +49,7 @@ Feature: Inbox
     When I visit the inbox
     Then I should see the discussion has 2 unread
 
+  @javascript
   Scenario: Read discussion with 1 unread comment gives 1 unread
     Given I belong to a group with a discussion
     And I have read the discussion but there is a new comment
