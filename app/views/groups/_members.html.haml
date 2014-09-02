@@ -3,7 +3,7 @@
     %h4
       = link_to group_memberships_path(group) do
         = t :members
-        = "(#{ group.memberships_count })"
+        = "(#{ group.members.count })"
 
     %ul#users-list.clearfix
       - group.members.first(15).each do |user|
