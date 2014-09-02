@@ -408,6 +408,19 @@ a.btn-icon:hover { color: $dark-grey; }
 .btn { margin-bottom: 5px; }
 
 /* hacks for bootstrap 3 + simpleform */
+form{
+  .radio, .checkbox{
+    margin: 0;
+    line-height: 16px;
+  }
+  .checkbox label{
+    padding-left: 0;
+  }
+  .radio input[type="radio"], .checkbox input[type="checkbox"]{
+    margin-top: 2px;
+  }
+}
+
 /*form{
   .radio, .checkbox {
     margin-top: 0px;

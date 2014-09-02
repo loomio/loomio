@@ -111,7 +111,7 @@ module DiscussionsHelper
     end
   end
 
-  def discussion_privacy_options(discussion)
+  def discussion_privacy_collection(discussion)
     options = []
 
     public_description = t('discussion_form.privacy.will_be_public')

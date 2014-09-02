@@ -355,6 +355,10 @@ en:
 
     optional_restrictions: "Optionally, coordinators can restrict what members can do."
 
+  discussion_privacy:
+    public: This discussion is public on the web
+    private: This discussion is private to group members
+
   group_privacy:
     visible_to:
       public: Publicly listed group.
