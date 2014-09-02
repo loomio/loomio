@@ -16,6 +16,8 @@ module ApplicationHelper
     case type
       when :alert
         "warning"
+      when "alert"
+        "warning"
       when :error
         "error"
       when :notice

@@ -8,6 +8,10 @@ body {
   margin-top: 50px;
 }
 
+body.pages{
+  margin-top: 0;
+}
+
 code{
   padding: 1px 4px;
   overflow: auto;
@@ -404,24 +408,26 @@ a.btn-icon:hover { color: $dark-grey; }
 
 /* hacks for bootstrap 3 + simpleform */
 form{
-  .radio {
+  .radio, .checkbox {
     margin-top: 0px;
   }
-  .radio input[type="radio"] {
+  input[type="radio"], input[type="checkbox"]{
     width: 2em;
     box-shadow: none;
+    margin-top: 0;
     margin-left: 0;
     margin-right: -20px;
     clear: both;
   }
-  .radio label{
+  .radio label, .checkbox label{
     margin-top: 0.5em;
+    min-height: 24px;
   }
-  .radio_buttons label{
+  .radio_buttons label, .checkboxes label{
     margin-bottom: 0;
     width: 95%;
   }
-  .radio_buttons.form-control{
+  .radio_buttons.form-control, .checkboxes.form-control{
     height: 24px;
   }
   .form-group.boolean{

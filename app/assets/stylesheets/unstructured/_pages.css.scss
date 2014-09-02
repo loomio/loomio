@@ -234,7 +234,6 @@ a.btn-icon:hover { color: $dark-grey; }
 
   section{
     background: white;
-    border: 1px solid #eee;
     border-radius: 6px;
     margin-top: 34px;
   }
@@ -535,12 +534,13 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
       margin-bottom: .8em;
     }
     .header { text-align: center; }
-    .main-content {
+/*    .main-content {
       float: none;
       margin: 0 auto;
       width: 50%;
-    }
+    }*/
     .signin_container {
+      color: #555;
       a { text-align: left; }
       .btn-container{ text-align: center; }
       .sso-btn-row { margin-bottom: 2em; }
@@ -580,28 +580,13 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
     }
 
     #new-account {
-      color: #555;
-      font-size: 16px;
-      text-align: left;
-      margin-top: .4em;
-      a { font-size: 16px; }
+      margin-top: 1.5em;
     }
-
-    #remember-me {
-      //float: right;
-      margin: 0 0 .8em 1em;
-      label { font-size: 16px;}
+    #remember-me label{
+      margin-left: 0.5em;
+      font-weight: normal;
+      cursor: pointer;
     }
-    #forgot-pwd {
-      //float: right;
-    }
-
-    #signin_container {
-      float: none;
-      margin: 0 auto;
-    }
-
-
 }
 
 .container#contact_message {
