@@ -1,6 +1,15 @@
 class API::BaseController < ActionController::Base
+  after_filter :increment_measurement
 
   protected
+  def increment_measurement
+    Measurement.increment(measurement_name)
+  end
+
+  def measurement_name
+    "#{controller_name}.#{action_name}"
+  end
+
   def permitted_params
     @permitted_params ||= PermittedParams.new(params, current_user)
   end
