@@ -94,6 +94,11 @@ class Comment < ActiveRecord::Base
     discussion.followers.where('users.id != ?', author_id)
   end
 
+  def non_mentioned_followers_without_author
+    ignored_user_ids = [author.id, mentioned_group_members.pluck(:id)].flatten
+    discussion.followers.where('users.id NOT IN (?)', ignored_user_ids)
+  end
+
   private
     def send_discussion_comment_deleted!
       discussion.comment_deleted!

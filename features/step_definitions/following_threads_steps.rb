@@ -217,6 +217,17 @@ Given(/^Mr New Threads Only only wants to be emailed about new discussions and p
   @group.add_member! @mr_new_threads_only
 end
 
+Given(/^Master Mentions Only only wants to be emailed when mentioned$/) do
+  @master_mentions_only = FactoryGirl.create(:user,
+                                             name: 'Master Mentions Only',
+                                             email_missed_yesterday: false,
+                                             email_followed_threads: false,
+                                             email_when_mentioned: true,
+                                             email_when_proposal_closing_soon: false,
+                                             email_new_discussions_and_proposals: false)
+  @group.add_member! @master_mentions_only
+end
+
 Given(/^Mrs No Email Please does not want to be emailed about anything$/) do
   @mrs_no_email_please = FactoryGirl.create(:user,
                                             name: 'Mrs No Email Please',
@@ -265,12 +276,13 @@ When(/^I add a comment$/) do
   @add_comment_event = DiscussionService.add_comment @comment
 end
 
-When(/^I mention Mr New Threads Only$/) do
+When(/^I mention Master Mentions Only$/) do
   step 'I start a new discussion'
   reset_mailer
   @comment = FactoryGirl.build :comment, discussion: @discussion, author: @user,
-                               body: "yea @#{@mr_new_threads_only.username}"
+                               body: "yea @#{@master_mentions_only.username}"
   @add_comment_event = DiscussionService.add_comment(@comment)
+
   @user_mentioned_event = Event.where(kind: 'user_mentioned').last
 end
 
