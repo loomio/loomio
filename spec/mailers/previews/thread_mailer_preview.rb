@@ -20,6 +20,29 @@ class ThreadMailerPreview < ActionMailer::Preview
     ThreadMailer.new_comment user, event
   end
 
+  def user_mentioned_follows_by_email
+    group = FactoryGirl.create :group
+    user = FactoryGirl.create :user, email_followed_threads: true
+    discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
+    DiscussionReader.for(user: user, discussion: discussion).follow!
+    group.add_member! user
+    rich_text_body = "I like to talk about you online. You're the right person for this conversation to include. You know this."
+    comment = FactoryGirl.create :comment, discussion: discussion, body: rich_text_body, uses_markdown: true
+    event = Events::UserMentioned.create(kind: 'user_mentioned', eventable: comment)
+    ThreadMailer.user_mentioned user, event
+  end
+
+  def user_mentioned_does_not_follow_by_email
+    group = FactoryGirl.create :group
+    user = FactoryGirl.create :user, email_followed_threads: false
+    discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
+    group.add_member! user
+    rich_text_body = "I like to talk about you online. You're the right person for this conversation to include. You know this."
+    comment = FactoryGirl.create :comment, discussion: discussion, body: rich_text_body, uses_markdown: true
+    event = Events::UserMentioned.create(kind: 'user_mentioned', eventable: comment)
+    ThreadMailer.user_mentioned user, event
+  end
+
   def new_vote_followed
     group = FactoryGirl.create :group
     user = FactoryGirl.create :user

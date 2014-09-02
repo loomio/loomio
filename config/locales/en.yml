@@ -6,7 +6,8 @@ en:
         title: 'Email preferences'
         when_do_you_want_emails: 'Email me:'
         email_missed_yesterday: "'Yesterday on Loomio' - a daily summary of any activity I've missed"
-        email_followed_threads: "When I'm @mentioned, or there is activity in threads I'm following."
+        email_when_mentioned: "When I'm @mentioned"
+        email_followed_threads: "When there is activity in threads I'm following."
         email_when_proposal_closing_soon: "24 hours before a proposal closes."
         email_new_discussions_and_proposals: 'New discussions and proposals'
         for_these_groups: "For these groups:"
@@ -1087,8 +1088,7 @@ en:
       subject: "%{who} has requested to join %{which_group}"
       view_group: "You can approve or decline the request here"
     mentioned:
-      intro: "You were mentioned in a discussion titled:"
-      said: "%{comment_author} said:"
+      context: "%{author_name} mentioned you while discussing \"%{discussion_title}\""
       subject: "%{who} mentioned you in the %{which} group on Loomio"
     new_motion_created:
       subject: "Proposal: %{proposal_title}"
