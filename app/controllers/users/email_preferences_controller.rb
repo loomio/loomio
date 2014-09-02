@@ -33,6 +33,7 @@ class Users::EmailPreferencesController < BaseController
     time_start = Time.at(params[:time_start].to_i).utc
     time_finish = Time.at(params[:time_finish].to_i).utc
 
+    Measurement.increment('mark_summary_email_as_read')
     Queries::VisibleDiscussions.new(user: user,
                                     groups: user.inbox_groups).
                                     unread.
