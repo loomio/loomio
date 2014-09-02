@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: 4a4401b5b390ae7e4fce42d7fa0fb6be038496fd
+  revision: 28c5ca569acddc162e1179326872da17a934dbb7
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -178,7 +178,7 @@ GEM
       fog-softlayer
       ipaddress (~> 0.5)
       nokogiri (~> 1.5, >= 1.5.11)
-    fog-brightbox (0.4.1)
+    fog-brightbox (0.5.0)
       fog-core (~> 1.22)
       fog-json
       inflecto
@@ -243,7 +243,7 @@ GEM
     jquery-fileupload-rails (0.4.1)
       actionpack (>= 3.1)
       railties (>= 3.1)
-    jquery-rails (3.1.1)
+    jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.0)

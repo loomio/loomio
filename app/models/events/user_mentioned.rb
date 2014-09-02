@@ -5,13 +5,15 @@ class Events::UserMentioned < Event
                     user: mentioned_user,
                     created_at: comment.created_at)
 
+
+    if mentioned_user.email_when_mentioned?
+      ThreadMailer.delay.user_mentioned(mentioned_user, event)
+    end
+
     DiscussionReader.for(discussion: comment.discussion,
                          user: mentioned_user).follow!
 
-    # in app notification
     event.notify!(mentioned_user)
-
-    # we don't email anything. New comment will handle that
 
     event
   end
