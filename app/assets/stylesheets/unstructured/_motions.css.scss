@@ -115,6 +115,10 @@
     font-weight: normal;
   }
 
+  .label-important{
+    background: #b94a48;
+  }
+
   .motion-graph {
     width: 100%;
   }
@@ -175,8 +179,6 @@
     }
 
     textarea {
-      height: 40px;
-      max-height: 80px;
       max-width: 390px;
       width: 390px;
     }

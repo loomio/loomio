@@ -366,6 +366,7 @@ a.btn-icon:hover { color: $dark-grey; }
   float: right;
   a{color: $light-grey;}
   a:hover{color: $link-blue;}
+  .fa{ font-size: 16px; }
 }
 
 .edit-icon-small {
@@ -407,11 +408,14 @@ a.btn-icon:hover { color: $dark-grey; }
 .btn { margin-bottom: 5px; }
 
 /* hacks for bootstrap 3 + simpleform */
-form{
+/*form{
   .radio, .checkbox {
     margin-top: 0px;
   }
-  input[type="radio"], input[type="checkbox"]{
+  .checkbox {
+    padding-left: 0;
+  }
+  .radio input[type="radio"], .checkbox input[type="checkbox"]{
     width: 2em;
     box-shadow: none;
     margin-top: 0;
@@ -440,9 +444,9 @@ form{
   .boolean-options label{
     cursor: pointer;
     font-weight: normal;
-    width: 95%;
-    margin-left: 0.5em;
+    width: 94%;
+    margin-left: 1em;
   }
 }
-
+*/
 .tooltip.bottom .tooltip-arrow{ top: 0 !important; }

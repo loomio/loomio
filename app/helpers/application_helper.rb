@@ -59,7 +59,7 @@ module ApplicationHelper
     data_confirm = args['data-confirm'] || false
     title = args[:title] || ""
 
-    classes = "btn btn-default-legacy btn-block btn-app" + extra_classes
+    classes = "btn btn-default btn-block btn-app" + extra_classes
     content = content_tag(:span, text)
     if icon.present?
       content = image_tag(icon, class: 'button-icon') + content

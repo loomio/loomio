@@ -7,10 +7,10 @@
     - if can?(:move, @discussion)
       %li= link_to t(:move_discussion), '#move-discussion-modal', "data-toggle" => "modal", id: 'move-discussion'
     -if can? :destroy, discussion
-      %li= link_to t(:delete_discussion), "#", 'data-method-type' => 'delete', 'data-title' => t(:delete_discussion), 'data-body' => t(:confirm_delete_discussion), 'data-confirm-path' => discussion_path(discussion), class: 'confirm-dialog', id: 'delete-discussion'
+      %li= link_to t(:delete_discussion), discussion_path(discussion), method: :delete, data: { confirm: t(:confirm_delete_discussion) }
 
 - if can?(:move, @discussion)
-  #move-discussion-modal.modal.hidden
+  #move-discussion-modal.modal
     .modal-header
       %button.close{"data-dismiss" => "modal"}×
       %h3= t :move_discussion_where

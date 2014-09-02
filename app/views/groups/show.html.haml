@@ -58,7 +58,6 @@
         - can_edit = can? :edit, @group
         - can_leave = @group.users_include? current_user
         - can_archive = can? :edit, @group
-        - can_email = can? :email_members, @group
         - if can_edit || can_leave
           .btn-group.btn-block.options
             = link_to '#',
@@ -78,14 +77,10 @@
                   - msg = t(:confirm_leave_hidden_group, which_group: @group.name)
                 - else
                   - msg = t(:confirm_leave_group, which_group: @group.name)
-                %li= link_to t(:leave_group), "#", 'data-title' => t(:leave_group), 'data-body' => msg, 'data-confirm-path' => group_membership_path(@group, membership), 'data-method-type' => 'delete', class: 'confirm-dialog', id: 'leave group'
+                %li= link_to t(:leave_group), group_membership_path(@group, membership), method: 'delete', data: { confirm: msg }
 
               - if can_archive
-                %li= link_to t(:deactivate_group), "#", 'data-title' => t(:deactivate_group), 'data-body' => t(:confirm_deactivate_group, which_group: @group.name), 'data-confirm-path' => archive_group_path(@group), 'data-method-type' => 'post', class: 'confirm-dialog', id: 'de-activate group'
-        - if can_email
-          #email-members-modal.modal.hidden
-            = render "groups/email_members", :group => @group
-
+                %li= link_to t(:deactivate_group), archive_group_path(@group), method: 'post', data: { confirm: t(:confirm_deactivate_group, which_group: @group.name) }
 
       = join_group_button(@group)
     = render 'setup_next_steps' if show_next_steps?(@group)
@@ -111,4 +106,3 @@
 
     = render 'membership_requests', group: @group
     = render 'members', group: @group
-    = render '/application/closed_motions', user: nil, group: @group

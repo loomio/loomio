@@ -188,6 +188,7 @@ body.discussions.show {
     #previous-proposals .selector-list { border-top: 1px solid $lighter-grey; }
     .content-proposal-body {
       padding: 0 40px;
+      margin-bottom: 1em;
       ul.selector-list {
         li.empty-list-message { padding: 4px; }
         li .motion {
@@ -258,6 +259,9 @@ body.discussions.show {
         max-width: 190px;
         .last-edited-by, .started-by { margin-bottom: 10px; }
         .user-name { white-space: nowrap; }
+      }
+      .following-status{
+        margin-top: 0.5em;
       }
       #discussion-markdown-dropdown {
         margin-right: 8px;

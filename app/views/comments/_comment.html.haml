@@ -11,7 +11,7 @@
 
           .comment-actions
             - if can? :destroy, comment
-              = link_to "#", 'data-title' => t(:delete_comment), 'data-body' => t(:confirm_delete_comment), 'data-confirm-path' => comment_path(comment), 'data-method-type' => 'delete', class: 'confirm-dialog', id: "delete-comment-#{comment.id}" do
+              = link_to comment_path(comment), method: :delete, data: { confirm: t(:confirm_delete_comment) }, id: "delete-comment-#{comment.id}" do
                 .delete-icon.js-tooltip{title: t(:delete_comment)}
                   %i.fa.fa-times
             - if can? :edit, comment
