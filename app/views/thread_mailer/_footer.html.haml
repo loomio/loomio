@@ -1,11 +1,8 @@
-%img{src: mark_discussion_as_read_url(discussion_id: @discussion.id,
-                                      event_id: @event.id,
-                                      unsubscribe_token: @recipient.unsubscribe_token,
-                                      format: 'gif'), alt: '', width: 1, height: 1}
-%br
-%br
-\--
-%br
-= t :"email.thread_mailer.footer_html",
-        app_link: link,
-        preferences_link: email_preferences_url(@utm_hash.merge(unsubscribe_token: @recipient.unsubscribe_token))
+%p{style: 'font-size:small;-webkit-text-size-adjust:none;color:#666;'}
+  &mdash;
+  %br
+  = t :"email.thread_mailer.footer_html", app_link: link, preferences_link: email_preferences_url(@utm_hash.merge(unsubscribe_token: @recipient.unsubscribe_token))
+  %img{src: mark_discussion_as_read_url(discussion_id: @discussion.id,
+                                        event_id: @event.id,
+                                        unsubscribe_token: @recipient.unsubscribe_token,
+                                        format: 'gif'), alt: '', width: 1, height: 1}
