@@ -27,11 +27,21 @@ body.invitations {
   }
 
   .invite-member-checkbox-container {
-   label {
-     display: inline;
-     padding-left: 10px;
-     position: relative;
-     top: 4px;
+    .checkbox {
+      margin-top: 0px;
+      padding-left: 0;
+    }
+    .checkbox input[type="checkbox"]{
+      width: 2em;
+      box-shadow: none;
+      margin-top: 0;
+      margin-left: 0;
+      margin-right: -20px;
+      clear: both;
+    }
+    .checkbox label{
+      margin-top: 0.5em;
+      min-height: 24px;
     }
   }
 

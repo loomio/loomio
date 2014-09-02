@@ -20,7 +20,7 @@
           - existing_user_ids = @group.members.map(&:id)
           - if addable_users.count > 1
             .invite-member-checkbox-container
-            = f.input :parent_members_to_add, collection: addable_users, as: :check_boxes, label: false, disabled: existing_user_ids, checked: existing_user_ids
+              = f.input :parent_members_to_add, collection: addable_users, as: :check_boxes, label: false, disabled: existing_user_ids, checked: existing_user_ids
 
           - else
             =t :empty_parent_group
