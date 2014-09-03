@@ -822,8 +822,6 @@ ro:
       subject: "%{who} a cerut sa intre in %{which_group}"
       view_group: "Aici poti aproba sau nu cererea"
     mentioned:
-      intro: "Ai fost mentionat in discutia numita:"
-      said: "%{comment_author} a spus:"
       subject: "%{who} te-a mentionat in grupul %{which} pe Loomio"
     new_motion_created:
       context: "%{author} a creat o propunere in %{group_full_name}:"

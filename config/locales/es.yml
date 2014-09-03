@@ -1,4 +1,9 @@
 es:
+  users:
+    email_preferences:
+      edit:
+        title: 'Preferencias de correo electrónico '
+        when_do_you_want_emails: 'Enviadme correo electrónico:'
   explore:
     header: "Explore grupos abiertos al público"
   try_it:
@@ -225,6 +230,9 @@ es:
   prompt_user_to_join:
     header: "Únete al grupo para participar"
     body: "Para comentar o votar, necesitas ser miembro de este grupo"
+  user_profile:
+    deactivation:
+      emails: "Dejaremos de mandarte correos relacionados con Loomio."
   group_form:
     name: "Nombre del grupo"
     description: "Descripcón"
@@ -839,8 +847,6 @@ es:
       subject: "%{who} pidió acceso a %{which_group}"
       view_group: "Puedes aceptar o denegar el pedido aquí"
     mentioned:
-      intro: "Te han mencionado en el título de una discusión: "
-      said: "%{comment_author} dijo:"
       subject: "%{who} te mencionó en el grupo de Loomio %{which} "
     new_motion_created:
       context: "%{author} ha creado una propuesta en %{group_full_name}:"

@@ -504,8 +504,6 @@ km:
       subject: "%{who}បានស្នើឲ្យចូលរួម%{which_group} "
       view_group: "អ្នកអាចអនុម័ត្តឬទុកសំណើរនៅទីនេះ"
     mentioned:
-      intro: "អ្នកត្រូវបានរៀបរាប់នៅក្នុងកិច្ចពិភាក្សាមួយដែរមានចំណងជើងថា:"
-      said: "%{comment_author}និយាយថា: "
       subject: "%{who}អ្នកដែលបានរៀបរាប់នៅក្នុង%{which}  ក្រុមនៅលើ Loomio  "
     new_motion_created:
       context: "%{author} បង្កើតសំណើរមួយក្នុង%{group_full_name}:"
