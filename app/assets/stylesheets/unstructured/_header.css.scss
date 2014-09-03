@@ -22,7 +22,6 @@
     font-weight: normal;
     line-height: 18px;
     padding: 3px 15px;
-    white-space: nowrap;
   }
 
   li > a:hover, .active > a, .active > a:hover {
@@ -37,6 +36,9 @@
   }
 }
 
+.navbar-nav{
+  margin: 0;
+}
 
 .navbar {
   .fa{
@@ -150,7 +152,8 @@ li#sign-in {
 li.dropdown#user {
   float: right;
   max-width: 300px;
-  max-height: 35px;
+  height: 45px;
+  padding-top: 2px;
   #header-user-image {
     position: relative;
     bottom: 5px;
@@ -191,13 +194,13 @@ li.dropdown#groups {
 #group-dropdown-items {
   overflow-y: auto;
   max-height: 390px;
-  min-width: 350px;
+  width: 100%;
 }
 li#inbox {
   a {min-width: 250px}
 }
 li#groups ul.dropdown-menu {
-  a { min-width: 250px; }
+  width: 350px;
 }
 li.group-item {
   background-color: white;
@@ -215,6 +218,8 @@ li.group-item.all-groups {
 
 li#groups ul.dropdown-menu li.group-item.group-links {
   border-top: 1px solid #E7E7E7;
+  width: 50%;
+  float: left;
   a {
     font-size: 14px;
     padding: 12px;

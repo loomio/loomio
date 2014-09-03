@@ -2,13 +2,16 @@
   .row
     .col-md-9
       .group-title
-        %h1.home-title
-          - if sifting_unread? or sifting_followed?
-            %a.js-tooltip{href: dashboard_path, title: t(:"discussion_list.clear_filters")}
-              = t(:'common.dashboard')
-          - else
-            = t(:'common.dashboard')
-        = render "application/filter_discussions_buttons"
+        .row
+          .col-xs-4
+            %h1.home-title
+              - if sifting_unread? or sifting_followed?
+                %a.js-tooltip{href: dashboard_path, title: t(:"discussion_list.clear_filters")}
+                  = t(:'common.dashboard')
+              - else
+                = t(:'common.dashboard')
+          .col-xs-8
+            = render "application/filter_discussions_buttons"
       =render 'discussions/discussion_list'
 
     .col-md-3

@@ -12,7 +12,7 @@
             .activity-icon{class: "position-#{last_vote.position}-icon"}
 
       .discussion-title
-        = truncate(discussion.title, :length => 60, :separator => '...')
+        = discussion.title
         - if @group.nil?
           .group-name
             - if discussion.group.is_subgroup?
@@ -41,7 +41,7 @@
           %span.activity-count.label.label-info
             = unread_comments_count
 
-      .discussion-date-info
+      .discussion-date-info.hidden-xs
         -if motion
           .proposal-close-date= t( :time_until_close, quantity_of_time: time_ago_in_words(motion.closing_at) )
         - else

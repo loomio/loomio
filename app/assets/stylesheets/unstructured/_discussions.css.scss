@@ -609,13 +609,18 @@ pre{
     position: relative;
     z-index: 4;
     float: left;
-
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 70%;
+    white-space: nowrap;
   }
 
   .group-name {
     color: $mid-grey;
     font-size: $font-small;
-    width: 460px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .discussion-date-info {
     display: inline;
