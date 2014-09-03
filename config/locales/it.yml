@@ -863,8 +863,6 @@ it:
       subject: "%{who} ha richiesto di entrare in %{which_group}"
       view_group: "Puoi approvare o rifiutare la richiesta qui"
     mentioned:
-      intro: "Sei stato citato in una discussione intitolata:"
-      said: "%{comment_author} ha detto:"
       subject: "%{who} ti ha citato nel gruppo %{which} su Loomio"
     new_motion_created:
       context: "%{author} ha creato una proposta in %{group_full_name}:"
