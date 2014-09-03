@@ -22,13 +22,13 @@
   %body{class: "#{controller_name} #{action_name}"}
     - analytics_scope do
       = render 'google_tag_manager'
-    = render 'application/header'
+    / = render 'application/header'
     .container.main-container
       = render 'application/announcements'
       - unless (controller_name == 'groups') && (action_name == 'show')
         = render 'application/flash_messages', :flash => flash, :on_landing_page => false
       .page-container
         = yield
-      = render 'footer_logged_in'
+      / = render 'footer_logged_in'
   = render 'intercom_tracker'
   = render 'heap_analytics'
