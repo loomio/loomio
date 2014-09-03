@@ -5,7 +5,6 @@ nl-NL:
         title: 'E-mail voorkeuren'
         when_do_you_want_emails: 'E-mail mij:'
         email_missed_yesterday: "'Gisteren op Loomio' - een dagelijkse samenvatting van wat er gebeurd is"
-        email_followed_threads: "Als ik een @-benoeming krijg, of als er iets gebeurd in gesprekken die ik volg."
         email_when_proposal_closing_soon: "24 uur voordat een voorstel sluit."
         email_new_discussions_and_proposals: 'Nieuwe discussies en voorstellen'
         for_these_groups: "Voor deze groepen:"
@@ -901,8 +900,6 @@ nl-NL:
       subject: "%{who} heeft aangevraagd om lid te worden van %{which_group}"
       view_group: "Je kan hier de aanvraag goed- of afkeuren"
     mentioned:
-      intro: "Je werd genoemd in een discussie genaamd:"
-      said: "%{comment_author} zei:"
       subject: "%{who} noemde je in de %{which} groep op Loomio"
     new_motion_created:
       subject: "Voorstel: %{proposal_title}"

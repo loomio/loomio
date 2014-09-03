@@ -1,4 +1,16 @@
 ar:
+  users:
+    email_preferences:
+      edit:
+        title: 'إعدادات البريد الإلكتروني'
+        when_do_you_want_emails: 'راسلني على البريد الإلكتروني:'
+        email_missed_yesterday: "'أحداث الأمس في Loomio' - ملخص يومي حول أية نشاطات فوتها"
+        email_when_mentioned: "عندما يتم ذكر @إسمي"
+        email_followed_threads: "عندما يحدث نشاط في المواضيع التي أتابعها."
+        email_when_proposal_closing_soon: "24 ساعة قبل إغلاق أي من المقترحات."
+        email_new_discussions_and_proposals: 'نقاشات ومقترحات جديدة'
+        for_these_groups: "فيما يخص هذه المجموعات:"
+        submit: "إحفظ الإعدادات"
   explore:
     header: "إستكشف مجموعات عامة"
   try_it:
@@ -7,9 +19,25 @@ ar:
     join_the_community: "ضمّ إلى مجموعة Loomio المجتمع"
     loomio_community_info: "هذا هو المكان الذي نناقش ونتخذ القرارات بشأن Loomio."
     explore_groups: "إستكشف مجموعات أخرى على Loomio"
+    explore_groups_info: "إطلع على المجموعات الرائعة في Loomio وانضم لها!"
+  activerecord:
+    errors:
+      messages:
+        blank: "لا يمكن تركه فارغا"
   errors:
     messages:
       email: "عنوان البريد الإلكتروني غير صالح"
+  attachment:
+    error:
+      too_large: "الملف الذي حاولت إرفاقه أكبر من 50MB. يرجى إختيار ملف أصغر حجما."
+  devise:
+    invitations:
+      send_instructions: 'تم إرسال دعوة إلى %{email}.'
+      invitation_token_invalid: 'هذه الدعوة لم تعد صالحة.'
+      updated: 'تم إنشاء الحساب.'
+    mailer:
+      invitation_instructions:
+        subject: 'لقد تمت دعوتك للإنضمام إلى مجموعة على Loomio'
   error:
     access_denied: "ليس لديك سماحية للقيام بذلك."
     cant_join_subgroup: "لا يمكنك الانضمام إلى مجموعة فرعية إذا لم تكن عضوا في المجموعة الأم."
@@ -306,3 +334,28 @@ ar:
   subject: "الموضوع"
   unlike: "أخالف هذا"
   update: "تحديث"
+  common:
+    today: اليوم
+    months:
+      january: يناير
+      february: فبراير
+      march: مارس
+      april: أبريل
+      may: مايو
+      june: يونيو
+      july: يوليو
+      august: أغسطس
+      september: سبتمبر
+      october: أكتوبر
+      november: نوفمبر
+      december: ديسمبر
+    days:
+      monday: الإثنين
+      tuesday: الثلاثاء
+      wednesday: الأربعاء
+      thursday: الخميس
+      friday: الجمعة
+      saturday: السبت
+      sunday: الأحد
+    please_wait: "الرجاء الإنتظار"
+    privacy: "الخصوصية"

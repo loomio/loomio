@@ -699,8 +699,6 @@ uk:
       subject: "%{who} зробив запит на приєднання до %{which_group}"
       view_group: "Тут ви можете підтвердити або відхилити запит"
     mentioned:
-      intro: "Вас було згадано у дискусії за назвою:"
-      said: "%{comment_author} сказав:"
       subject: "%{who} згадав Вас у групі %{which} на Loomio"
     new_motion_created:
       context: "%{author} створив пропозицію у %{group_full_name}:"

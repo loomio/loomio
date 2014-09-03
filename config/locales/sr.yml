@@ -880,8 +880,6 @@ sr:
       subject: "%{who} je zatražio da se pridruži %{which_group}"
       view_group: "Ovde možete odobriti ili odbiti zahtev"
     mentioned:
-      intro: "Pomenuti ste u diskusiji pod nazivom:"
-      said: "%{comment_author} kaže:"
       subject: "%{who} te je pomenuo/la u grupi %{which} na Lumiju"
     new_motion_created:
       context: "%{author} je predložio/la u %{group_full_name}:"

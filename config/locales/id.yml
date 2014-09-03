@@ -614,8 +614,6 @@ id:
       subject: "%{who} mengirimkan permintaan untuk bergabung ke dalam %{which_group}"
       view_group: "Anda dapat menerima atau menolak permintaan di sini"
     mentioned:
-      intro: "Anda disebutkan di dalam diskusi berjudul:"
-      said: "%{comment_author} berkata:"
       subject: "%{who} menyebutkan nama Anda di dalam kelompok %{which} di Loomio"
     new_motion_created:
       context: "%{author} membuat usulan di dalam %{group_full_name}:"

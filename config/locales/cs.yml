@@ -573,8 +573,6 @@ cs:
       subject: "%{who} zažádal(a) o členství v %{which_group}"
       view_group: "Můžete schválit či odmítnout žádost zde"
     mentioned:
-      intro: "Byl(a) jste zmíněn(a) v diskuzi:"
-      said: "%{comment_author} řekl(a):"
       subject: "%{who} vás zmínil(a) ve skupině %{which} na Loomio"
     new_motion_created:
       context: "%{author} vytvořil(a) návrh v %{group_full_name}:"

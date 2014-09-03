@@ -5,7 +5,8 @@ de:
         title: 'eMail Einstellungen'
         when_do_you_want_emails: 'Sende mir:'
         email_missed_yesterday: "\"Yesterday on Loomio\" - eine tägliche Zusammenfassung aller Aktivitäten, die ich verpasst habe"
-        email_followed_threads: "Wenn ich @erwähnt wurde oder es gibt Aktivitäten in den Diskussionen, denen ich folge."
+        email_when_mentioned: "Wenn ich @erwähnt wurde"
+        email_followed_threads: "Wenn es Aktivität in den Diskussionen gibt, denen ich folge."
         email_when_proposal_closing_soon: "24 Stunden bevor der Vorschlag geschlossen wird."
         email_new_discussions_and_proposals: 'Neue Diskussionen und Vorschläge'
         for_these_groups: "Für folgende Gruppen:"
@@ -902,8 +903,7 @@ de:
       subject: "%{who} bittet darum %{which_group} beitreten zu dürfen."
       view_group: "Du kannst die Anfrage hier annehmen oder ablehnen"
     mentioned:
-      intro: "Du wurdest erwähnt in der Diskussion mit dem Titel:"
-      said: "%{comment_author} hat gesagt:"
+      context: "%{author_name} erwähnte Dich in \"%{discussion_title}\""
       subject: "%{who} hat dich erwähnt in der %{which} Gruppe bei Loomio"
     new_motion_created:
       subject: "Vorschlag: %{proposal_title}"

@@ -886,8 +886,6 @@ sr-RS:
       subject: "%{who} је затражио/ла да се придружи %{which_group}"
       view_group: "Овде можете одобрити или одбити захтев"
     mentioned:
-      intro: "Поменути сте у дискусији под називом:"
-      said: "%{comment_author} каже:"
       subject: "%{who} те је поменуо/ла у групи %{which} на Лумију"
     new_motion_created:
       context: "%{author} је предложио/ла у %{group_full_name}:"

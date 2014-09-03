@@ -5,7 +5,8 @@ pt-BR:
         title: 'Preferências de e-mail'
         when_do_you_want_emails: 'Envie-me um e-mail:'
         email_missed_yesterday: "'Ontem no Loomio' - um resumo diário de qualquer atividade que perdi"
-        email_followed_threads: "Quando sou @mencionado ou há atividade em tópicos que estou seguindo"
+        email_when_mentioned: "Quando sou @mencionado"
+        email_followed_threads: "Quando há atividade em tópicos que estou seguindo."
         email_when_proposal_closing_soon: "24 horas antes de uma proposta encerrar."
         email_new_discussions_and_proposals: 'Novas discussões e propostas'
         for_these_groups: "Para estes grupos:"
@@ -889,8 +890,7 @@ pt-BR:
       subject: "%{who} solicitou entrada em %{which_group}"
       view_group: "Você pode aprovar ou recusar o pedido aqui"
     mentioned:
-      intro: "Você foi mencionado(a) na seguinte discussão:"
-      said: "%{comment_author} disse:"
+      context: "%{author_name} mencionou você durante a discussão \"%{discussion_title}\""
       subject: "%{who} mencionou você no grupo %{which} no Loomio"
     new_motion_created:
       subject: "Proposta: %{proposal_title}"
