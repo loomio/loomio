@@ -12,7 +12,7 @@
           %i.fa.fa-pencil
 
 
-  .group-logo{style: "background-image: url('#{logo_url}')"}
+  .group-logo.hidden-xs{style: "background-image: url('#{logo_url}')"}
     - if can? :edit, @group
       .upload-button.logo-upload{title: t(:'tooltip.logo_upload')}
         = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
@@ -29,7 +29,7 @@
         = link_to @group.name, @group
         = render 'groups/privacy_dropdown', :group => @group
     - if @group.category.present?
-      .group-category.shadow
+      .group-category.shadow.hidden-sm.hidden-xs
         =link_to t(@group.category.translatable_name), category_explore_path(@group.category), title: t(:'tooltip.group_category')
 
 .row
@@ -40,7 +40,7 @@
           .edit-icon.edit-description{'data-title' => t(:'tooltip.edit_description')}
             %i.fa.fa-pencil
         .edit-icon-placeholder
-      .logo-placeholder
+      .logo-placeholder.hidden-xs
       ~ render_rich_text(@group.description)
     = render "application/filter_discussions_buttons" if can? :follow, @group
     = render 'discussions/discussion_list'

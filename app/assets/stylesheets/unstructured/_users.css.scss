@@ -12,6 +12,10 @@ body.users.show {
   }
 }
 
+.edit_user label.checkbox{
+  font-weight: normal;
+}
+
 body.users {
   &.profile, &.update, &.deactivation_instructions, 
     &.about_deactivation {
@@ -118,6 +122,13 @@ body.users {
 
 .per-group-email-settings{
   margin-left: 1.5em;
+  label{
+    min-height: 30px;
+  }
+  .checkbox input[type="checkbox"]{
+    height: 16px;
+    margin-top: 4px;
+  }
 }
 
 .per-group-email-settings.disabled{
