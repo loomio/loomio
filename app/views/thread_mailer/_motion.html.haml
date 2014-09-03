@@ -18,6 +18,6 @@
             = render_email_plaintext motion.description
         - else
           = render_email_plaintext motion.description
-        - unless motion.user_has_voted?(@user)
+        - unless motion.user_has_voted?(@recipient)
           %h4.have-say-title= t(:"help.have_your_say")
           =render 'thread_mailer/vote_buttons', motion: motion
