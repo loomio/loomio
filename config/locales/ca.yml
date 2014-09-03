@@ -613,8 +613,6 @@ ca:
       subject: "%{who} ha demanat unir-se a %{which_group}"
       view_group: "Pots aprovar o denegar la sol·licitud aquí"
     mentioned:
-      intro: "T'han mencionat a la discussió: "
-      said: "%{comment_author} diu:"
       subject: "%{who} t'ha mencionat al grup de Loomio %{which} "
     new_motion_created:
       context: "%{author} ha fet una proposta a %{group_full_name}:"
