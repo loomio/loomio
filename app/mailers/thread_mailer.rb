@@ -8,7 +8,7 @@ class ThreadMailer < BaseMailer
     @event = event
     @discussion = event.discussion
     @author = event.discussion.author
-    headers['Message-ID'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
+    headers['Message-ID'] = "#{@discussion.id}@#{ENV['REPLY_HOSTNAME']}"
     send_thread_email
   end
 
@@ -18,9 +18,9 @@ class ThreadMailer < BaseMailer
     @comment = event.eventable
     @discussion = @comment.discussion
     @author = @comment.author
-    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['References'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
+    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['REPLY_HOSTNAME']}"
+    headers['References'] = "#{@discussion.id}@#{ENV['REPLY_HOSTNAME']}"
+    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['REPLY_HOSTNAME']}"
     send_thread_email
   end
 
@@ -30,9 +30,9 @@ class ThreadMailer < BaseMailer
     @comment = event.eventable
     @discussion = @comment.discussion
     @author = @comment.author
-    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['References'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
+    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['REPLY_HOSTNAME']}"
+    headers['References'] = "#{@discussion.id}@#{ENV['REPLY_HOSTNAME']}"
+    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['REPLY_HOSTNAME']}"
     send_thread_email(alternative_subject: t('email.mentioned.subject',
                                              who: @author.name,
                                              which: @discussion.group.full_name))
@@ -45,9 +45,9 @@ class ThreadMailer < BaseMailer
     @discussion = @vote.motion.discussion
     @author = @vote.author
     @motion = @vote.motion
-    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['References'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
+    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['REPLY_HOSTNAME']}"
+    headers['References'] = "#{@discussion.id}@#{ENV['REPLY_HOSTNAME']}"
+    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['REPLY_HOSTNAME']}"
     send_thread_email
   end
 
@@ -58,9 +58,9 @@ class ThreadMailer < BaseMailer
     @discussion = @motion.discussion
     @author = @motion.author
     @group = @discussion.group
-    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['References'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
+    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['REPLY_HOSTNAME']}"
+    headers['References'] = "#{@discussion.id}@#{ENV['REPLY_HOSTNAME']}"
+    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['REPLY_HOSTNAME']}"
     send_thread_email(alternative_subject: t(:"email.new_motion_created.subject",
                                              proposal_title: @motion.title))
   end
@@ -72,9 +72,9 @@ class ThreadMailer < BaseMailer
     @author = @motion.author
     @discussion = @motion.discussion
     @group = @discussion.group
-    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['References'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
+    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['REPLY_HOSTNAME']}"
+    headers['References'] = "#{@discussion.id}@#{ENV['REPLY_HOSTNAME']}"
+    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['REPLY_HOSTNAME']}"
     send_thread_email(alternative_subject:
                       t(:"email.proposal_closing_soon.subject", proposal_title: @motion.title))
   end
@@ -86,9 +86,9 @@ class ThreadMailer < BaseMailer
     @discussion = @motion.discussion
     @author = @motion.outcome_author
     @group = @motion.group
-    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['References'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
+    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['REPLY_HOSTNAME']}"
+    headers['References'] = "#{@discussion.id}@#{ENV['REPLY_HOSTNAME']}"
+    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['REPLY_HOSTNAME']}"
     send_thread_email(alternative_subject:
                       "#{t("email.proposal_outcome.subject")}: #{@motion.name}")
   end
@@ -101,9 +101,9 @@ class ThreadMailer < BaseMailer
     @author = @motion.author
     @motion = @motion
     @group = @motion.group
-    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['References'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
+    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['REPLY_HOSTNAME']}"
+    headers['References'] = "#{@discussion.id}@#{ENV['REPLY_HOSTNAME']}"
+    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['REPLY_HOSTNAME']}"
     send_thread_email(alternative_subject:
                       t("email.proposal_closed.subject", which: @motion.name))
   end
