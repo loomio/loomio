@@ -26,6 +26,13 @@
 }
 
 .navbar {
+  #notifications-container{
+    @media (max-width: 768px) { clear: both; }
+  }
+  .visible-xs{
+    margin-left: 30px;
+    margin-top: -20px;
+  }
   #notifications-container .a {
     padding-left: 0px;
   }

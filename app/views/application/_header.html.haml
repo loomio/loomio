@@ -19,12 +19,14 @@
             %a{href: inbox_path}
               %i.fa.fa-inbox
               %span#inbox-count.activity-count.label
+              .visible-xs= t :"inbox.dropdown-btn"
           %li.dropdown#notifications-container
             %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
               %i.fa.fa-bell
               %span#notifications-count.label.activity-count
+              .visible-xs= t("notifications.header")
             %ul.dropdown-menu
-              %li
+              %li.hidden-xs
                 %h3= t("notifications.header")
               %li#notification-dropdown-items
                 %ul

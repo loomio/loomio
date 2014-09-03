@@ -14,13 +14,11 @@
 }
 
 #inbox-head {
-  .span1 { width: 76px; }
-  #inbox-description { margin-top: .7em; }
+  #inbox-description { padding-top: .7em; }
  }
 
 .inbox-preferences {
-  margin-top: .7em;
-  width: 192px;
+  padding-top: .7em;
   img {
     margin-bottom: 3px;
   }

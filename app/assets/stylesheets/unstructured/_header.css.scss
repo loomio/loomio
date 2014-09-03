@@ -178,7 +178,7 @@ li.dropdown#user {
   }
 }
 li.dropdown#groups {
-  float: left;
+  @media (max-width: 768px) { clear: both; }
   .link-container a { display: inline; }
   .discussion-activity-count {
     display: inline;
