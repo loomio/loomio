@@ -20,8 +20,8 @@
     = render 'social_metadata', description: @meta_description, title: @meta_title
 
   %body{class: "#{controller_name} #{action_name}"}
-    - analytics_scope do
-      = render 'google_tag_manager'
+    / - analytics_scope do
+    /   = render 'google_tag_manager'
     = render 'application/header'
     .container.main-container
       = render 'application/announcements'
@@ -30,5 +30,5 @@
       .page-container
         = yield
       = render 'footer_logged_in'
-  = render 'intercom_tracker'
-  = render 'heap_analytics'
+  / = render 'intercom_tracker'
+  / = render 'heap_analytics'
