@@ -42,7 +42,7 @@ eo:
       header_html: 'Loomio 1.0 funkcios en ajna aparato, konstruita per la plejbono en <strong>malferma poŝteĥnologio.</strong>'
     quote:
       header:
-        rushkoff_html: '"Loomio <strong>liberigas la povon de la interreto</strong> por kunsentigi homojn anstataŭ polusigi debaton."<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, aŭtoro de '
+        rushkoff_html: '"Loomio <strong>liberigas la povon de la interreto</strong> por kunsentigi homojn anstataŭ polusigi debaton."<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, aŭtoro de <em>Present Shock</em></div>'
         sifry_html: '"Loomio atingas la dolĉan mezon inter <strong>unuopa voĉo</strong> kaj <strong>multopa decido</strong>."<div class="attributation">– Micah Sifry, redaktisto de <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: 'Pri Loomio'
