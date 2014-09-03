@@ -124,7 +124,7 @@ class ThreadMailer < BaseMailer
   end
 
   def thread_subject(alternative_subject)
-    if @recipient.email_followed_threads? and @following
+    if alternative_subject.nil? or (@recipient.email_followed_threads? and @following)
       "[#{@discussion.group.full_name}] #{@discussion.title}"
     else
       alternative_subject
