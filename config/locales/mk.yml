@@ -502,8 +502,6 @@ mk:
       subject: "%{who} побара да се приклучи во %{which_group}"
       view_group: "Можете да го одобрите или одбиете барањето овде"
     mentioned:
-      intro: "Беше споменат во дискусијата наречена:"
-      said: "%{comment_author} рече:"
       subject: "%{who} те спомена во %{which} групата на Loomio"
     proposal_closed:
       subject: "Предлогот е затворен - %{which}"

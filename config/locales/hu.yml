@@ -448,8 +448,6 @@ hu:
       intro: "%{name} (%{email}) hozzáférést kért egy Loomio csoportodhoz."
       view_group: "Jóváhagyhatod vagy elvetheted a kérelmet itt."
     mentioned:
-      intro: "Megemlítettek az alábbi témában:"
-      said: "%{comment_author} azt írta:"
       subject: "%{who} megemlített téged a %{which} Loomio csoportban"
     proposal_closed:
       subject: "A javaslat lezárult - %{which}"

@@ -565,8 +565,6 @@ tr:
       subject: "%{who} %{which_group} grubuna katılmak için talep gönderdi"
       view_group: "Burada isteği onaylayabilir ya da reddedebilirsin"
     mentioned:
-      intro: "Şu müzakerede senden bahsedildi:"
-      said: "%{comment_author} söyledi:"
       subject: "Loomio da %{who}  %{which} grubunda siz bahsetti."
     proposal_closed:
       specify_outcome_and_notify_group: "Bir sonuç oluştur ve grubuna gönder!"
