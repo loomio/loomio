@@ -2,35 +2,35 @@
 - cover_photo_url = image_url use_parent_if_blank(@group, :cover_photo).url(:desktop)
 - logo_url = image_url use_parent_if_blank(@group, :logo).url(:medium)
 
-/ .group-heading{style: "background-image: url(#{image_path 'cover-photo-gradient.png'}), url('#{cover_photo_url}')"}
-/   = render 'application/flash_messages', :flash => flash, :on_landing_page => false
-/   - if can? :edit, @group
-/     .upload-button.cover-photo-upload{title: t(:'tooltip.cover_photo_upload')}
-/       = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
-/         = file_field_tag "group[cover_photo]"
-/         .edit-icon
-/           %i.fa.fa-pencil
+.group-heading{style: "background-image: url(#{image_path 'cover-photo-gradient.png'}), url('#{cover_photo_url}')"}
+  = render 'application/flash_messages', :flash => flash, :on_landing_page => false
+  - if can? :edit, @group
+    .upload-button.cover-photo-upload{title: t(:'tooltip.cover_photo_upload')}
+      = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
+        = file_field_tag "group[cover_photo]"
+        .edit-icon
+          %i.fa.fa-pencil
 
 
-/   .group-logo.hidden-xs{style: "background-image: url('#{logo_url}')"}
-/     - if can? :edit, @group
-/       .upload-button.logo-upload{title: t(:'tooltip.logo_upload')}
-/         = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
-/           = file_field_tag "group[logo]"
-/           .edit-icon
-/             %i.fa.fa-pencil
+  .group-logo.hidden-xs{style: "background-image: url('#{logo_url}')"}
+    - if can? :edit, @group
+      .upload-button.logo-upload{title: t(:'tooltip.logo_upload')}
+        = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
+          = file_field_tag "group[logo]"
+          .edit-icon
+            %i.fa.fa-pencil
 
-/   .group-title
-/     %h1.home-title.shadow
-/       - if @group
-/         - if @group.is_subgroup?
-/           = link_to @group.parent.name, @group.parent
-/           = content_tag :span, "\u25B6", class: 'name-separator'
-/         = link_to @group.name, @group
-/         = render 'groups/privacy_dropdown', :group => @group
-/     - if @group.category.present?
-/       .group-category.shadow.hidden-sm.hidden-xs
-/         =link_to t(@group.category.translatable_name), category_explore_path(@group.category), title: t(:'tooltip.group_category')
+  .group-title
+    %h1.home-title.shadow
+      - if @group
+        - if @group.is_subgroup?
+          = link_to @group.parent.name, @group.parent
+          = content_tag :span, "\u25B6", class: 'name-separator'
+        = link_to @group.name, @group
+        = render 'groups/privacy_dropdown', :group => @group
+    - if @group.category.present?
+      .group-category.shadow.hidden-sm.hidden-xs
+        =link_to t(@group.category.translatable_name), category_explore_path(@group.category), title: t(:'tooltip.group_category')
 
 .row
   .col-md-9
