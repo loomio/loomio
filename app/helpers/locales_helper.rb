@@ -6,17 +6,13 @@ module LocalesHelper
   LOCALE_FALLBACK_STRINGS = Loomio::I18n::LOCALE_FALLBACKS.keys.map(&:to_s)
 
   def locale_name(locale)
-    locale = fetch_fallback_locale(locale) if is_fallback_locale?(locale)
+    locale = replace_fallback_locales(locale)
 
     Loomio::I18n::LANGUAGES.key(locale.to_sym)
   end
 
-  def fetch_fallback_locale(locale)
-    Loomio::I18n::LOCALE_FALLBACKS[locale.to_sym]
-  end
-
-  def is_fallback_locale?(locale)
-    LOCALE_FALLBACK_STRINGS.include? locale.to_s
+  def replace_fallback_locales(locale)
+    Loomio::I18n::LOCALE_FALLBACKS[locale.to_sym] || locale
   end
 
   def supported_locale_strings
