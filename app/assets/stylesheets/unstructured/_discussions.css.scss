@@ -205,6 +205,10 @@ body.discussions.show {
       min-height: 70px;
       padding: 15px 10px 10px 15px;
 
+      .right-context{
+        text-align: right;
+      }
+
       #description-edit-form {
         margin-bottom: 0px;
         #add-description-submit { float: left; }
@@ -255,11 +259,14 @@ body.discussions.show {
       .discussion-additional-info {
         color: $mid-grey;
         font-size: $font-smaller;
-        .last-edited-by, .started-by { margin-bottom: 10px; }
+        .last-edited-by {
+          margin-top: 0.5em;
+          padding-top: 0.5em;
+          margin-bottom: 1em;
+        }
         .user-name { white-space: nowrap; }
       }
       .following-status{
-        margin-top: 0.5em;
       }
       #discussion-markdown-dropdown {
         margin-right: 8px;
