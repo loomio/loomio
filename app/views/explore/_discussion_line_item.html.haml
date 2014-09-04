@@ -1,9 +1,10 @@
 %li.discussion.row{data:{discussion_id: item.id }}
   = link_to item do
-    .col-md-1
+    .col-xs-1
       .icon.discussion-icon
         %span.activity-badge.unread-comments-count
           =item.comments_count
 
-    .col-md-11.title
-      = item.title
+    .col-xs-11
+      .title
+        = item.title

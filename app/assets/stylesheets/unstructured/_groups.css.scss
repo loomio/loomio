@@ -16,10 +16,13 @@ body.groups {
     .discussion-preview.showing-group .discussion-title { margin-top: 0; }
     .group-heading {
       background: image-url('default-cover-photo.png') 0 0 no-repeat;
-      margin: -23px -20px 0 -15px;
+      margin: -23px -15px 0 -15px;
       position: relative;
       height: 200px;
-      max-width: 970px;
+      max-width: 1170px;
+      background-position-y: bottom;
+      background-position-x: center;
+      @media (min-width: 1200px) { background-size: 130%; }
       a { color: white; }
       .alert{
         margin: 16px;

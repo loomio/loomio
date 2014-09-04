@@ -11,32 +11,28 @@
         %span.icon-bar
         %span.icon-bar
       %a.navbar-brand{class: logo_class, href: dashboard_or_root_path, title: t(:"organisation.name")}
+      - if user_signed_in?
 
-    - if user_signed_in?
-      %nav.collapse.navbar-collapse#navbar-collapse
         %ul.nav.navbar-nav
           %li#inbox-container
             %a{href: inbox_path}
               %i.fa.fa-inbox
               %span#inbox-count.activity-count.label
-              .visible-xs= t :"inbox.dropdown-btn"
           %li.dropdown#notifications-container
             %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
               %i.fa.fa-bell
               %span#notifications-count.label.activity-count
-              .visible-xs= t("notifications.header")
             %ul.dropdown-menu
-              %li.hidden-xs
+              %li
                 %h3= t("notifications.header")
               %li#notification-dropdown-items
                 %ul
                   %li Loading
               %li#notifications-see-more= link_to t(:see_all_notifications), notifications_path
-
           %li.dropdown#groups
             %a.dropdown-toggle{href: "#", 'data-toggle' => 'dropdown'}
               %i.fa.fa-group
-              %span= t :"common.groups"
+              %span.hidden-xs= t :"common.groups"
             %ul.dropdown-menu
               #group-dropdown-items
               - if current_user.show_start_group_button?
@@ -45,13 +41,17 @@
                 %li.group-item.group-links
                   =link_to t(:find_a_group), explore_path, class: 'find-group'
 
-        %ul.nav.navbar-nav.navbar-right
-          = render 'search'
-          = render 'user_dropdown'
+        %nav.collapse.navbar-collapse#navbar-collapse
+          %ul.nav.navbar-nav
+            = render 'search'
+            .visible-xs= render 'application/user_profile_options'
 
-    - else
-      %nav.collapse.navbar-collapse#navbar-collapse
-        %ul.nav.navbar-nav
         %ul.nav.navbar-nav.navbar-right
-          - unless controller_name == "group_requests"
-            %li=link_to t(:log_in), new_user_session_path
+          .hidden-xs= render 'user_dropdown'
+
+      - else
+        %nav.collapse.navbar-collapse#navbar-collapse
+          %ul.nav.navbar-nav
+          %ul.nav.navbar-nav.navbar-right
+            - unless controller_name == "group_requests"
+              %li=link_to t(:log_in), new_user_session_path

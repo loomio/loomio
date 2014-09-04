@@ -145,6 +145,8 @@
   margin-bottom: 0;
 }
 
+
+
 li#sign-in {
   float: right;
 }
@@ -178,7 +180,8 @@ li.dropdown#user {
   }
 }
 li.dropdown#groups {
-  @media (max-width: 768px) { clear: both; }
+  max-width: 120px;
+  float: left;
   .link-container a { display: inline; }
   .discussion-activity-count {
     display: inline;
@@ -292,7 +295,10 @@ input#search_form_query {
 }
 
 .navbar-default .navbar-nav > .open > a:focus { background-color: transparent; }
-
+.navbar-collapse { float: left; }
+.navbar-header {
+  @media (min-width: 768px) { width: 100%; }
+}
 #group-dropdown-items a {
   padding: 3px 15px;
 }

@@ -1,8 +1,8 @@
 %li.discussion.row{data:{discussion_id: item.id }}
   = link_to item do
-    .col-md-1
+    .col-xs-1
       .large-icon.discussion-icon.enabled-icon
 
-    .col-md-11
+    .col-xs-11
       %span.title= item.title
       %span.description= "- #{truncate(item.description, length: 180, omission: '...', separator: " ")}" unless item.description.blank?
