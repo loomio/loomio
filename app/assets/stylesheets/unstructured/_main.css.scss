@@ -402,7 +402,8 @@ a.btn-icon:hover { color: $dark-grey; }
 
 .filter{ display: inline; }
 
-/* hacks for bootstrap 3 + simpleform */
+.pagination-centered{ text-align: center; }
+
 form{
   .radio, .checkbox{
     margin: 0;
@@ -416,45 +417,4 @@ form{
   }
 }
 
-/*form{
-  .radio, .checkbox {
-    margin-top: 0px;
-  }
-  .checkbox {
-    padding-left: 0;
-  }
-  .radio input[type="radio"], .checkbox input[type="checkbox"]{
-    width: 2em;
-    box-shadow: none;
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: -20px;
-    clear: both;
-  }
-  .radio label, .checkbox label{
-    margin-top: 0.5em;
-    min-height: 24px;
-  }
-  .radio_buttons label, .checkboxes label{
-    margin-bottom: 0;
-    width: 95%;
-  }
-  .radio_buttons.form-control, .checkboxes.form-control{
-    height: 24px;
-  }
-  .form-group.boolean{
-    margin-bottom: 0;
-    float: left;
-    clear: both;
-    cursor: pointer;
-    font-weight: normal;
-  }
-  .boolean-options label{
-    cursor: pointer;
-    font-weight: normal;
-    width: 94%;
-    margin-left: 1em;
-  }
-}
-*/
 .tooltip.bottom .tooltip-arrow{ top: 0 !important; }
