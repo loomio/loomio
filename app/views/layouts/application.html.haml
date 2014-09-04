@@ -9,9 +9,8 @@
       %link{href: @feed_url, rel: 'alternate', type: 'application/rss+xml', title: t(:rss_subscribe), class: 'rss-link' }
 
     /[if lt IE 9]
-      / =javascript_include_tag 'ie8'
+      =javascript_include_tag 'ie8'
 
-    = stylesheet_link_tag    "third_party"
     = stylesheet_link_tag    "unstructured/index"
     = theme_stylesheet_link_tag
     = javascript_include_tag "application"
@@ -20,15 +19,15 @@
     = render 'social_metadata', description: @meta_description, title: @meta_title
 
   %body{class: "#{controller_name} #{action_name}"}
-    / - analytics_scope do
-    /   = render 'google_tag_manager'
-    / = render 'application/header'
+    - analytics_scope do
+      = render 'google_tag_manager'
+    = render 'application/header'
     .container.main-container
       = render 'application/announcements'
       - unless (controller_name == 'groups') && (action_name == 'show')
         = render 'application/flash_messages', :flash => flash, :on_landing_page => false
       .page-container
         = yield
-      / = render 'footer_logged_in'
-  / = render 'intercom_tracker'
-  / = render 'heap_analytics'
+      = render 'footer_logged_in'
+  = render 'intercom_tracker'
+  = render 'heap_analytics'

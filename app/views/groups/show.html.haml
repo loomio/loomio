@@ -1,9 +1,3 @@
-/ .row
-/   .col-md-9.col-sm-6.col-xs-3
-/     .btn.btn-block.btn-default I'm a col-md-9! And a col-sm-6! and a col-xs-3
-/   .col-md-3.col-sm-6.col-xs-9
-/     .btn.btn-block.btn-default I'm a col-md-3! And a col-sm-6! and a col-xs-9
-
 - set_title @group.name, "", @group.parent
 - cover_photo_url = image_url use_parent_if_blank(@group, :cover_photo).url(:desktop)
 - logo_url = image_url use_parent_if_blank(@group, :logo).url(:medium)
