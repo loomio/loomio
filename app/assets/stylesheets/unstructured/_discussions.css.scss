@@ -682,9 +682,9 @@ div.jqplot-table-legend-swatch{
 
 .new-activity-divider {
   border-bottom: 2px solid #7ec6dc;
-  margin: -1px 0 0.8em 0;
-  width: 470px;
+  margin-bottom: 0.8em;
   margin-left: -8px;
+  @media (min-width: 768px) { margin-right: -26px; }
 }
 
 .dog-ear {
@@ -693,7 +693,8 @@ div.jqplot-table-legend-swatch{
   border-top: 14px solid #7ec6dc;
   float: right;
   height: 0;
-  margin-right: -26px;
+  @media (min-width: 768px) { margin-right: -26px; }
+  @media (max-width: 768px) { margin-right: -12px; }
   width: 0;
 }
 
