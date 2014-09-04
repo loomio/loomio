@@ -238,7 +238,6 @@ ul.selector-list {
     font-weight: normal;
     a.selector-link {
       display: block;
-      padding: 5px 5px 5px 15px;
       &:hover {
         background-color: $selector;
         text-decoration: none;
@@ -305,11 +304,9 @@ a.btn-icon:hover { color: $dark-grey; }
       border-top: 4px solid black;
     }
   }
-  .left{
-    width: 50%;
-    float: left;
+  .footer-links{
+    text-align: right;
   }
-  .footer-links { float: right; }
 }
 
 .nowrap { white-space: nowrap; }

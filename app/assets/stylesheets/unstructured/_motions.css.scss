@@ -10,9 +10,7 @@
   .legend {
     font-size: .85em;
     float: left;
-    width: 140px;
-    padding-left: 3em;
-    padding-top: 6em;
+    padding-top: 5em;
     color: $mid-grey;
 
     .item {
@@ -45,15 +43,11 @@
   }
 
   .pie {
-    float: right;
-    width: 36px;
-    height: 36px;
     z-index: 1;
   }
 
   .proposal-close-date {
     font-size: $font-small;
-    float: left;
   }
 
   .proposal-group-name {
@@ -71,16 +65,6 @@
 
   .proposal-title-container {
     color: $mid-grey;
-    float: left;
-    width: 440px;
-  }
-
-  .vote-icon {
-    float: left;
-    width: 20px;
-    position: relative;
-    top: 6px;
-    padding-right: 7px;
   }
 
   &:hover { background-color: $selector; }
@@ -104,7 +88,6 @@
   }
 
   .description {
-    width: 380px;
     p { color: $dark-grey; }
   }
 
@@ -177,14 +160,7 @@
       background-color: $lighter-grey;
       font-size: 1em;
     }
-
-    textarea {
-      max-width: 390px;
-      width: 390px;
-    }
   }
-
-  .proposal-title-container { width: 305px; }
 
   .proposed-by {
     color: $mid-grey;

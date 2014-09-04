@@ -58,7 +58,7 @@
   &.discussion-icon.disabled-icon  { background-image: image-url('discussion-light-24.png'); }
   &.decision-icon {
     background-image: image-url('pie-24.png');
-    margin-left: 0;
+    @media (min-width: 768px) { margin-left: 0; }
   }
   &.pie-icon {
     background-image: image-url("pie-light-24.png");
