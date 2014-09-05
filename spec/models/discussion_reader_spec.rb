@@ -1,13 +1,21 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe DiscussionReader do
 
-  describe "#first_unread_page" do
-    let(:user) { FactoryGirl.create :user }
-    let(:other_user) { FactoryGirl.create :user }
-    let(:discussion) { create_discussion }
-    let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
+  let(:user) { FactoryGirl.create :user }
+  let(:other_user) { FactoryGirl.create :user }
+  let(:discussion) { FactoryGirl.create :discussion }
+  let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
 
+  describe "#follow!" do
+    it "sets following to true" do
+      reader.following.should be nil
+      reader.follow!
+      reader.following.should be true
+    end
+  end
+
+  describe "#first_unread_page" do
     before do
       Discussion.send(:remove_const, 'PER_PAGE')
       Discussion::PER_PAGE = 2
@@ -25,29 +33,34 @@ describe DiscussionReader do
 
     context '0 read, 1 unread' do
       before do
-        discussion.add_comment(other_user, 'hi')
+        DiscussionService.add_comment build(:comment, discussion: discussion)
       end
       it {should == 1}
     end
 
     context '1 read, 1 unread' do
       before do
-        discussion.add_comment(other_user, 'hi')
+        DiscussionService.add_comment build(:comment, discussion: discussion)
         reader.viewed!
-        discussion.add_comment(other_user, 'hi')
+        DiscussionService.add_comment build(:comment, discussion: discussion)
       end
       it {should == 1}
     end
 
-    context '2 read, 1 unread' do
+    context '2 read, 1 unread', focus: true do
       before do
-        discussion.add_comment(other_user, 'hi')
-        discussion.add_comment(other_user, 'hi')
+        DiscussionService.add_comment build(:comment, discussion: discussion)
+        DiscussionService.add_comment build(:comment, discussion: discussion)
+
+        discussion.reload
         reader.viewed!
-        discussion.add_comment(other_user, 'hi')
+        DiscussionService.add_comment build(:comment, discussion: discussion)
+
         discussion.reload
       end
+
       it {should == 2}
     end
   end
 end
+

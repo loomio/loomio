@@ -1,17 +1,11 @@
 class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
-  AVAILABLE_BETA_FEATURES = ['discussion_iframe']
   include BetaFeatures
+  AVAILABLE_BETA_FEATURES = ['discussion_iframe']
 
   class MaximumMembershipsExceeded < Exception
   end
 
-  #even though we have permitted_params this needs to be here.. it's an issue
-  attr_accessible :name, :members_can_add_members, :parent, :parent_id, :description, :max_size,
-                  :cannot_contribute, :full_name, :payment_plan, :parent_members_can_see_discussions,
-                  :category_id, :max_size, :is_visible_to_parent_members, :is_visible_to_public,
-                  :discussion_privacy_options, :membership_granted_upon, :visible_to,
-                  :theme_id, :subdomain
   acts_as_tree
 
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
@@ -44,66 +38,81 @@ class Group < ActiveRecord::Base
   scope :archived, lambda { where('archived_at IS NOT NULL') }
   scope :published, lambda { where(archived_at: nil) }
 
-  scope :parents_only, where(parent_id: nil)
+  scope :parents_only, -> { where(parent_id: nil) }
 
-  scope :sort_by_popularity, order('memberships_count DESC')
+  scope :sort_by_popularity, -> { order('memberships_count DESC') }
 
-  scope :visible_to_public, published.where(is_visible_to_public: true)
-  scope :hidden_from_public, published.where(is_visible_to_public: false)
+  scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
+  scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
 
-  scope :visible_on_explore_front_page, -> { published.categorised_any.parents_only }
+  scope :visible_on_explore_front_page,
+        -> { visible_to_public.categorised_any.parents_only.
+             created_earlier_than(2.months.ago).
+             active_discussions_since(1.month.ago).
+             more_than_n_members(3).
+             more_than_n_discussions(3).
+             order('discussions.last_comment_at') }
+
+  scope :include_admins, includes(:admins)
 
   scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
 
-  scope :cannot_start_parent_group, where(can_start_group: false)
+  scope :cannot_start_parent_group, -> { where(can_start_group: false) }
 
   # Engagement (Email Template) Related Scopes
-  scope :more_than_n_members, lambda { |n| where('memberships_count > ?', n) }
-  scope :more_than_n_discussions, lambda { |n| where('discussions_count > ?', n) }
-  scope :less_than_n_discussions, lambda { |n| where('discussions_count < ?', n) }
+  scope :more_than_n_members,     ->(count) { where('memberships_count > ?', count) }
+  scope :less_than_n_members,     ->(count) { where('memberships_count < ?', count) }
+  scope :more_than_n_discussions, ->(count) { where('discussions_count > ?', count) }
+  scope :less_than_n_discussions, ->(count) { where('discussions_count < ?', count) }
 
-  scope :no_active_discussions_since, lambda {|time|
-    includes(:discussions).where('discussions.last_comment_at < ? OR discussions_count = 0', time)
+  scope :no_active_discussions_since, ->(time) {
+    includes(:discussions).where('discussions.last_comment_at < ? OR groups.discussions_count = 0', time).references(:discussions)
   }
 
-  scope :active_discussions_since, lambda {|time|
-    includes(:discussions).where('discussions.last_comment_at > ?', time)
+  scope :active_discussions_since, ->(time) {
+    includes(:discussions).where('discussions.last_comment_at > ?', time).references(:discussions)
   }
 
   scope :created_earlier_than, lambda {|time| where('groups.created_at < ?', time) }
 
-  scope :engaged, more_than_n_members(1).
-                  more_than_n_discussions(2).
-                  active_discussions_since(2.month.ago).
-                  parents_only
+  scope :engaged, -> { more_than_n_members(1).
+                       more_than_n_discussions(2).
+                       active_discussions_since(2.month.ago).
+                       parents_only }
 
-  scope :engaged_but_stopped, more_than_n_members(1).
-                              more_than_n_discussions(2).
-                              no_active_discussions_since(2.month.ago).
-                              created_earlier_than(2.months.ago).
-                              parents_only
+  scope :engaged_but_stopped, -> { more_than_n_members(1).
+                                   more_than_n_discussions(2).
+                                   no_active_discussions_since(2.month.ago).
+                                   created_earlier_than(2.months.ago).
+                                   parents_only }
 
-  scope :has_members_but_never_engaged, more_than_n_members(1).
-                                    less_than_n_discussions(2).
-                                    created_earlier_than(1.month.ago).
-                                    parents_only
+  scope :has_members_but_never_engaged, -> { more_than_n_members(1).
+                                             less_than_n_discussions(2).
+                                             created_earlier_than(1.month.ago).
+                                             parents_only }
 
   has_one :group_request
 
   has_many :memberships,
+           -> { where is_suspended: false, archived_at: nil },
            dependent: :destroy,
+           extend: GroupMemberships
+
+  has_many :all_memberships,
+           dependent: :destroy,
+           class_name: 'Membership',
            extend: GroupMemberships
 
   has_many :membership_requests,
            dependent: :destroy
 
   has_many :pending_membership_requests,
+           -> { where response: nil },
            class_name: 'MembershipRequest',
-           conditions: {response: nil},
            dependent: :destroy
 
   has_many :admin_memberships,
-           conditions: { admin: true },
+           -> { where admin: true, archived_at: nil },
            class_name: 'Membership',
            dependent: :destroy
 
@@ -111,9 +120,10 @@ class Group < ActiveRecord::Base
            through: :memberships,
            source: :user
 
-  has_many :pending_invitations, as: :invitable,
-           class_name: 'Invitation',
-           conditions: {accepted_at: nil, cancelled_at: nil}
+  has_many :pending_invitations,
+           -> { where accepted_at: nil, cancelled_at: nil },
+           as: :invitable,
+           class_name: 'Invitation'
 
   after_initialize :set_defaults
 
@@ -124,15 +134,14 @@ class Group < ActiveRecord::Base
   has_many :discussions, dependent: :destroy
   has_many :motions, through: :discussions
 
-  has_many :subgroups,
-           class_name: "Group",
-           foreign_key: 'parent_id',
-           dependent: :destroy,
-           conditions: { archived_at: nil }
 
   belongs_to :parent, class_name: 'Group'
   belongs_to :category
   belongs_to :theme
+  has_many :subgroups,
+           -> { where(archived_at: nil).order(:name) },
+           class_name: 'Group',
+           foreign_key: 'parent_id'
 
   has_one :subscription, dependent: :destroy
 
@@ -143,6 +152,23 @@ class Group < ActiveRecord::Base
 
   paginates_per 20
 
+  has_attached_file    :cover_photo,
+                       styles: { desktop: "980x200#", card: "460x94#" },
+                       default_url: 'default-cover-photo.png'
+
+  has_attached_file    :logo,
+                       styles: { card: "67x67", medium: "100x100" },
+                       default_url: 'default-logo-:style.png'
+
+  validates_attachment :cover_photo,
+    size: { in: 0..10.megabytes },
+    content_type: { content_type: /\Aimage/ },
+    file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
+
+  validates_attachment :logo,
+    size: { in: 0..10.megabytes },
+    content_type: { content_type: /\Aimage/ },
+    file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
   def coordinators
     admins
@@ -170,6 +196,10 @@ class Group < ActiveRecord::Base
 
   def closed_motions
     motions.closed
+  end
+
+  def motions_count
+    discussions.published.sum :motions_count
   end
 
   def archive!
@@ -245,8 +275,12 @@ class Group < ActiveRecord::Base
     admins.first.email
   end
 
-  def membership(user)
+  def membership_for(user)
     memberships.where("group_id = ? AND user_id = ?", id, user.id).first
+  end
+
+  def membership(user)
+    membership_for(user)
   end
 
   def pending_membership_request_for(user)
@@ -304,8 +338,7 @@ class Group < ActiveRecord::Base
     membership = memberships.where(user_id: user.id).first
     membership ||= Membership.create!(group: self,
                                       user: user,
-                                      inviter: inviter,
-                                      subscribed_to_notification_emails: email_notification_default)
+                                      inviter: inviter)
   end
 
   def user_membership_or_request_exists? user
@@ -380,7 +413,11 @@ class Group < ActiveRecord::Base
   end
 
   def organisation_motions_count
-    Group.where("parent_id = ? OR (parent_id IS NULL AND id = ?)", parent_or_self.id, parent_or_self.id).sum(:motions_count)
+    Discussion.published.where(group_id: [org_group_ids]).sum(:motions_count)
+  end
+
+  def org_group_ids
+    [parent_or_self.id, parent_or_self.subgroup_ids].flatten
   end
 
   def has_subdomain?
@@ -413,8 +450,10 @@ class Group < ActiveRecord::Base
   end
 
   def validate_discussion_privacy_options
-    if membership_granted_upon_request? and not public_discussions_only?
-      self.errors.add(:discussion_privacy_options, "Discussions must be public if group is open")
+    unless is_visible_to_parent_members?
+      if membership_granted_upon_request? and not public_discussions_only?
+        self.errors.add(:discussion_privacy_options, "Discussions must be public if group is open")
+      end
     end
 
     if is_hidden_from_public? and not private_discussions_only?
@@ -463,5 +502,9 @@ class Group < ActiveRecord::Base
     if parent_id.present?
       errors[:base] << "Can't set a subgroup as parent" unless parent.parent_id.nil?
     end
+  end
+
+  def self.with_one_coordinator
+    published.select{ |g| g.admins.count == 1 }
   end
 end

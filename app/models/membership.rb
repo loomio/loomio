@@ -1,29 +1,40 @@
 class Membership < ActiveRecord::Base
 
   validates_presence_of :group, :user
-  validates_uniqueness_of :user_id, :scope => :group_id
+  validates_uniqueness_of :user_id, scope: :group_id
 
-  belongs_to :group, :counter_cache => true
-  belongs_to :user, :counter_cache => true
-  belongs_to :inviter, :class_name => "User"
-  has_many :events, :as => :eventable, :dependent => :destroy
+  belongs_to :group, counter_cache: true
+  belongs_to :user, counter_cache: true
+  belongs_to :inviter, class_name: 'User'
+  has_many :events, as: :eventable, dependent: :destroy
 
+  scope :active, -> { published.where(is_suspended: false) }
+  scope :suspended, -> { where(is_suspended: true) }
   scope :archived, lambda { where('archived_at IS NOT NULL') }
   scope :published, lambda { where(archived_at: nil) }
+  scope :sorted_by_group_name, -> { joins(:group).order('groups.full_name') }
 
-  scope :for_group, lambda {|group| where(:group_id => group)}
-  scope :admin, where(admin: true)
+  scope :for_group, lambda {|group| where(group_id: group)}
+  scope :admin, -> { where(admin: true) }
 
-  delegate :name, :email, :to => :user, :prefix => :user
-  delegate :parent, :to => :group, :prefix => :group, :allow_nil => true
-  delegate :name, :full_name, :to => :group, :prefix => :group
-  delegate :admins, :to => :group, :prefix => :group
-  delegate :name, :to => :inviter, :prefix => :inviter, :allow_nil => true
+  delegate :name, :email, to: :user, prefix: :user
+  delegate :parent, to: :group, prefix: :group, allow_nil: true
+  delegate :name, :full_name, to: :group, prefix: :group
+  delegate :admins, to: :group, prefix: :group
+  delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
 
-  before_create :set_group_last_viewed_at_to_now
   before_create :check_group_max_size
   before_destroy :remove_open_votes
   after_destroy :leave_subgroups_of_hidden_parents
+
+  def suspend!
+    update_attribute(:is_suspended, true)
+    subgroup_memberships.each(&:suspend!)
+  end
+
+  def subgroup_memberships
+    Membership.where(group_id: group.subgroup_ids, user_id: user_id)
+  end
 
   def make_admin!
     update_attribute(:admin, true)
@@ -31,6 +42,14 @@ class Membership < ActiveRecord::Base
 
   def remove_admin!
     update_attribute(:admin, false)
+  end
+
+  def follow_by_default!
+    update_attribute(:following_by_default, true)
+  end
+
+  def dont_follow_by_default!
+    update_attribute(:following_by_default, false)
   end
 
   def group_has_multiple_admins?
@@ -47,10 +66,6 @@ class Membership < ActiveRecord::Base
     if group.max_size
       raise "Group max_size exceeded" if group.memberships_count >= group.max_size
     end
-  end
-
-  def set_group_last_viewed_at_to_now
-    self.group_last_viewed_at = Time.now
   end
 
   def leave_subgroups_of_hidden_parents

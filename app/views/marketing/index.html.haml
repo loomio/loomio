@@ -6,7 +6,7 @@
     :javascript
       if (document.cookie.indexOf("signed_in") >= 0) {window.location.replace("#{dashboard_path}");}
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
-    = stylesheet_link_tag  "marketing"
+    = stylesheet_link_tag  "marketing/splash"
     = csrf_meta_tags
     = render 'social_metadata'
 
@@ -32,7 +32,7 @@
                 %i.fa.fa-facebook
             %li= link_to t(:'frontpage.link.blog'), blog_path, class: 'blog'
             %li= link_to t(:'frontpage.link.contact'), contact_path, class: 'contact'
-            %li= link_to t(:'frontpage.link.try_it'), try_it_path, class: 'try-it'
+            %li= link_to t(:'frontpage.link.try_it'), try_it_path, class: 'try-it', id: 'try-it-nav'
             %li= link_to t(:'frontpage.link.log_in'), new_user_session_path, class: 'btn btn-orange'
 
       .row.hero
@@ -40,7 +40,7 @@
           =image_tag 'globe.png', class: 'image'
           %h1.header= t(:'frontpage.hero.head_html')
           %p.hero-text.description= t(:'frontpage.hero.desc_html', default: :'frontpage.hero.desc')
-          =link_to try_it_path, class: 'btn btn-teal btn-lg hero-text js-not-yet-button' do
+          =link_to try_it_path, class: 'btn btn-teal btn-lg hero-text js-not-yet-button', id: 'try-it-main' do
             = t(:'frontpage.link.try_loomio_beta')
             %i.fa.fa-angle-right
 
@@ -236,3 +236,4 @@
 
 
     = javascript_include_tag "marketing"
+    = render 'heap_analytics'

@@ -24,11 +24,12 @@ class MoveDiscussionService
   end
 
   def move!
-    if discussion.public? && destination_group.private_discussions_only?
-      discussion.private = true
+    if valid?
+      discussion.private = true  if destination_group.private_discussions_only?
+      discussion.private = false if destination_group.public_discussions_only?
+      discussion.group = destination_group
+      discussion.save!
     end
-    discussion.group = destination_group if valid?
-    discussion.save!
   end
 end
 

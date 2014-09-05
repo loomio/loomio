@@ -1,4 +1,6 @@
 class UsersController < BaseController
+  skip_before_filter :ensure_user_name_present, only: [:profile, :update]
+
   def show
     @user = User.find_by_key!(params[:id])
     unless current_user.in_same_group_as?(@user)
@@ -46,9 +48,17 @@ class UsersController < BaseController
     @user = current_user
   end
 
-  def dismiss_system_notice
-    current_user.has_read_system_notice = true
-    current_user.save!
-    head :ok
+  def deactivate
+    @user = current_user
+    @user.deactivate!
+    redirect_to root_url
+  end
+
+  def deactivation_instructions
+    @user = current_user
+    @adminable_groups = @user.adminable_groups.with_one_coordinator
+  end
+
+  def about_deactivation
   end
 end

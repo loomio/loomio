@@ -1,8 +1,0 @@
-=simple_form_for @email_groups_form, url: admin_email_groups_path do |f|
-  = f.input :from, hint: 'Email will read as being from this address'
-  = f.input :reply_to, hint: 'replies to the email will go to this address'
-  = f.input :author_id, as: :select, collection: User.admins
-  = f.input :group_ids, as: :hidden
-  = f.input :recipients, as: :select, collection: Admin::EmailGroupsForm::RECIPIENTS_OPTIONS
-  = f.input :email_template_id, as: :select,  collection: EmailTemplate.all
-  = f.submit 'Generate Emails'

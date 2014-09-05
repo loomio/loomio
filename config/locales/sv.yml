@@ -1,6 +1,11 @@
 sv:
-  explore:
-    go_to_group: "Gå till %{group_name}"
+  try_it:
+    header: "Prova Loomio"
+    start_a_group: "Starta en grupp för att ta beslut tillsammans med dina medarbetare. "
+    join_the_community: "Gå med i Loomio-gruppen"
+    loomio_community_info: "Det är här vi diskuterar och tar beslut om Loomio."
+    explore_groups: "Utforska andra Loomio-grupper"
+    explore_groups_info: "Kolla in alla coola Loomio-grupper och gå med i dem! "
   activerecord:
     errors:
       messages:
@@ -18,11 +23,9 @@ sv:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%y/%-m/%-d'
-      datepicker: "%Y-%m-%d"
   devise:
     invitations:
       send_instructions: 'En inbjudan har skickats till %{email}.'
-      invitation_token_invalid: 'Angiven Token för inbjudan är ogiltig!'
       updated: 'Konto skapat.'
       no_invitations_remaining: "Inga fler inbjudningar återstår."
     mailer:
@@ -73,15 +76,6 @@ sv:
     you_have_left_group: "Du har lämnat %{which_group}."
     comment_deleted: "Kommentaren borttagen"
     invitations:
-      auto_added:
-        one: "%{count} tillagd medlem"
-        other: "%{count} tillagda medlemmar"
-      existing_member:
-        one: "%{count} medlem finns i gruppen"
-        other: "%{count} medlemmar finns i gruppen"
-      sent:
-        one: "%{count} skickad inbjudning"
-        other: "%{count} skickade inbjudningar"
       auto_added_and_sent: "%{auto_added_text} och %{sent_text}"
   views:
     pagination:
@@ -117,9 +111,6 @@ sv:
     proposal_deleted: "Förslaget är raderat."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "sekund"
-        other: "%{count} sekunder"
       x_seconds:
         one: "1 sekund"
         other: "%{count} sekunder"
@@ -150,6 +141,8 @@ sv:
       almost_x_years:
         one: "1 år"
         other: "%{count} år"
+  organisation:
+    name: "Loomio"
   footer:
     about: 'Om'
     blog: 'Blogga'
@@ -162,8 +155,6 @@ sv:
     empty: Du är fullt uppdaterad! Det finns inga olästa nya kommentarer.
   notifications:
     header: "Notifieringar"
-    new_discussion: "har startat en ny diskussion"
-    new_motion: "har skapat ett nytt förslag"
     motion_closed:
       by_user: "har stängt förslaget"
       by_expiry: "Förslaget är stängt"
@@ -205,7 +196,6 @@ sv:
     message: "<p>Detta är <strong>Gruppsidan</strong>. Till vänster finns en lista på gruppens alla diskussioner.</p><p>När du vill att gruppen ska diskutera ett annat ämne, starta en ny diskussion.</p>"
   dashboard_helper_text:
     header: "Välkommen till din startsida"
-    message: "<p>Startsidan visar alla pågående diskussioner i alla grupper du är med i.</p><p>Du kan starta en diskussion om ett nytt ämne genom att klicka på knappen \"Starta en diskussion\"</p>"
   prompt_visitor_to_authenticate:
     header: "Logga in eller gå med i gruppen för att delta"
     body: "Om du är medlem i denna gruppen, behöver du logga in för att delta."
@@ -247,6 +237,9 @@ sv:
   confirm_remove_member: 'Är du säker på att du vill ta bort den här medlemmen från gruppen?'
   want_to_invite_html: "Vill du <a href='%{link}'>bjuda in deltagare</a> till denna gruppen?"
   membership_requests: "Medlemsförfrågningar"
+  previous_requests: Tidigare önskemål
+  approved_by_person: Godkänd av %{person}
+  ignored_by_perosn: Ignorerad av %{person}
   confirm_approve_membership_request: "Är du säker på att du vill lägga till %{which_user} i gruppen?"
   cancel_membership_request: "Begäran att ångra"
   ignore_request: "Ignorera förfrågan"
@@ -278,6 +271,8 @@ sv:
   edit_group_description: "Redigera gruppdiskussionen"
   group_subscription: "Gruppabonnemang"
   group_request:
+    beta_request_header: "Starta en grupp på Loomio Beta"
+    beta_request_description: "Att starta en grupp är första steget i att börja ta beslut på Loomio Beta"
     neighbourhood_support_group: "t. ex. Stödgrupp i Grannskapet"
     confirmation:
       title: Du är nästan klar! Kolla din email.
@@ -307,13 +302,11 @@ sv:
   empty_decision_list_html: "Är ni redo att fatta beslut? <br> Vem som helst kan starta ett förslag."
   empty_decision_index: "Denna grupp har ännu inte fattat några beslut."
   empty_discussion_list: "Det finns ännu inga aktiviteter i denna diskussionen."
-  empty_discussion_index: "Det finns inga diskussioner i någon av dina grupper"
-  empty_discussion_index_group: "Denna gruppen har ännu inte några diskussioner."
-  private_group_discussion_display: "Denna grupp är sluten. Diskussionerna är endast synliga för dess medlemmar. Om du vill delta, kan du be att få gå med."
   discussion_context:
     started_html: "Startades %{when} av <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Redigerades senast %{when} av <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Se revisionsloggen"
+    see_history: "Se historik"
   description_history:
     header: "Revisionslogg"
     subheader: "Version"
@@ -523,7 +516,6 @@ sv:
   now_that_your_logged_in: "Nu när du har logga in med %{provider_name}, konfirmera dina uppgifter för att skapa ett Loomiokonto."
   confirmation_not_received: "Fick du inte instruktionerna för att kunna konfirmera?"
   unlock_not_received: "Fick du inte instruktionerna för att kunna låsa upp?"
-  inactive_html: "Tyvärr, detta konto är inaktivt för närvarande. Om du har frågor <a href='%{path_to_contact}'>kontakta oss</a>."
   create_an_account_html: 'Skapa ett Loomio Betakonto'
   log_in: "Logga in"
   join_group:
@@ -576,14 +568,7 @@ sv:
       name: 'Ditt namn'
       email: 'Din emailadress'
       message: 'Ditt meddelande'
-      destination: 'Vart ska vi skicka ditt meddelande?'
       submit: 'Skicka meddelande'
-    destinations:
-      contact: 'Allmänna frågor'
-      tech: 'Teknisk support / felrättningar / ny funktionalitet'
-      press: 'Mediaförfrågningar'
-      sales: 'Sälj- och kundfrågor'
-      translations: 'Översättningsfrågor'
     messages:
       email_html: "Fyll i detta formulär, eller skicka ett email till <a href='mailto:%{email}'>%{email}</a>"
       social_html: "Du kan också följa oss på <br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
@@ -594,11 +579,7 @@ sv:
     edit:
       header: "Redigera diskussionen"
   motion_form:
-    header: "Nytt förslag"
     name_helper: "Skriv rubriken så kort och tydligt som möjligt."
-  group_form:
-    invitation_settings: "Inställningar för inbjudan"
-    admins_only: "Endast för koordinatorer"
   vote_form:
     header: "Ange din ståndpunkt"
     edit: "Redigera din ståndpunkt"
@@ -607,23 +588,12 @@ sv:
     your_statement: "Ditt påstående"
     submit: "Sänd ståndpunkt"
     update: "Uppdatera ståndpunkt"
-  email_preferences_form:
-    header: "Email preferenser"
-    daily_activity_summary: "Sammanfattning av dagens aktiviteter"
-    daily_activity_subscription: "Skicka mig ett email med dagens aktiviteter som sammanfattar vad som hänt i mina grupper"
-    global_notifications: "Globala notifieringar"
-    proposal_closing_soon_subscription: "Påminn mig 24 timmar innan förslaget stänger"
-    mentions_subscription: "Emaila mig när någon nämner mig i en kommentar"
-    group_activity_notifications: "Notifiering för gruppens aktiviteter "
-    group_activity_details: "För varje grupp, markera boxen om du vill få email för varje ny diskussion och beslut."
-    update_preferences: "Uppdatera intsällningar"
   new_user_form:
     create_an_account: "Skapa ett konto"
   profile_form:
     view: "Visa min profil"
     profile: "Ändra profilen"
     picture: "Bild"
-    use_avatar_kind: "Använd %{kind}"
     upload_new_image: "Ladda upp en ny bild"
   group_setup:
     set_up_your_group: Starta din grupp
@@ -646,32 +616,6 @@ sv:
       discussion:
         title: "Titel"
         description: "Kontext"
-        privacy_public_header: "Öppen"
-        privacy_public_description: "Vem som helst kan se denna diskussionen"
-        privacy_private_header: "Sluten"
-        privacy_private_description: "Endast medlemmar i %{group} kan se denna diskussionen"
-        privacy_hidden_description: "Alla diskussioner i en dold grupp är slutna."
-        of: "av"
-        of_no_group: "av denna gruppen"
-      group:
-        name: "Gruppnamn"
-        description: "Beskrivning"
-        members_invitable_by: "Vem kan bjuda in personer till denna gruppen?"
-        members_invitable_by_coordinators: "Endast koordinatorer"
-        members_invitable_by_members: "Alla gruppmedlemmar"
-        privacy: Privat
-        privacy_public_header: Öppen
-        privacy_public_description: Diskussionerna är öppna, så tillvida de inte görs slutna. Vem som helst kan hitta gruppen och be att få gå med.
-        privacy_private_header: Mestadels slutet
-        privacy_private_description: Diskussionerna är slutna, om du inte explicit gör dem öppna. Vem som helst kan hitta gruppen och be att få gå med.
-        privacy_hidden_header: Dold (helt sluten)
-        privacy_hidden_description: Diskussioner är alltid slutna. Det är endast genom inbjudan som man kan hitta och gå med i gruppen.
-        privacy_parent_group_members_header: Synlig för huvudgruppens medlemmar
-        privacy_parent_group_members_description: Samma som sluten, bara gruppen och dess diskussioner kan ses av huvudgruppens medlemmar.
-        privacy_parent_group_members_description_short: Bara medlemmar och huvudgruppens medlemmar kan se denna grupp och dess diskussioner.
-        group_members_invitable_by: "Endast för koordinatorer"
-        submit: Skicka
-        viewable_by_parent_members_header: Tillåt alla %{group} medlemmar att se denna undergrupp och dess diskussioner
       membership_request:
         introduction: "Presentera dig själv"
       motion:
@@ -698,9 +642,6 @@ sv:
       motion:
         name: "Vad är dina förslag till handlingsplan?"
         description: "Ge tillräckligt med bakgrund så att alla förstår vad det innebär att instämma eller inte instämma."
-      group:
-        name: "Gruppnamn"
-        description: "Gruppbeskrivning"
       user:
         email: "Email"
         password: "Lösenord"
@@ -735,10 +676,6 @@ sv:
     view_discussion: "Klicka här för att se denna diskussionen"
     view_group: "Klicka här för att se gruppen på Loomio"
     view_proposal: "Visa detta förslag på Loomio"
-    campaign_html: "Var det här beslutet viktigt för dig? Kan du <a href='%{link_path}'> tänka dig att bli en bidragsgivare till Loomio</a> och hjälpa oss att sprida Loomio till världen. Vi är en liten grupp som försöker göra stora saker och vi behöver ditt bidrag för att kunna fortsätta växa!"
-    create_discussion:
-      intro: "%{who} startade en ny diskussion i %{which_group}:"
-      subject: "Ny diskussion - %{which}"
     create_proposal:
       intro: "Ett nytt förslag skapades i en Loomiogrupp som du är med i."
       closes_in: "Stänger om"
@@ -764,14 +701,10 @@ sv:
       subject: "%{who} har begärt att få gå med %{which_group}"
       view_group: "Du kan godkänna eller avslå begäran här"
     mentioned:
-      intro: "Du nämndes i en diskussion med titeln:"
-      said: "%{comment_author} sa:"
       subject: "%{who} nämnde dig i %{which}gruppen i Loomio"
     new_motion_created:
       context: "%{author} skapade ett förslag i %{group_full_name}:"
     proposal_closed:
-      intro: 'Ditt förslag "%{proposal_name}" är stängt.'
-      intro_html: 'Ditt förslag "%{proposal_name}" har stängts.'
       specify_outcome_and_notify_group: "Skapa ett resultat och skicka det till din grupp!"
       specify_outcome_and_notify_group_html: "Skapa ett resultat och skicka det till din grupp!"
       subject: "Förslaget stängt - %{which}"
@@ -784,7 +717,6 @@ sv:
       closes_on: "Stänger den"
       closes_at: "Stänger vid"
       closes_in: "Stänger om"
-      closing_in_24_hours: "Stänger om 24 timmar"
       headline: "%{author}s förslag i %{group} stänger snart:"
       summary: "Sammanfattning"
     verification:
@@ -815,7 +747,6 @@ sv:
   participation: "Deltagande"
   disable: "Inaktivera"
   group: "Grupp"
-  groups: "Grupper"
   group_admin: "Gruppkoordinator"
   home: "Startsida"
   id: "id"
@@ -833,7 +764,11 @@ sv:
   pricing: 'Prissättning'
   prev: "Tidigare"
   more: "Mer..."
+  translate: "Hjälp oss att översätta Loomio!"
+  translate_field: "Se översättning"
+  loading_translation: "Laddar översättning..."
   translate_this_string: "Översätt till %{language}"
+  failed_translation: "Gick inte att utföra översättning"
   options: "Alternativ"
   ok_got_it: "OK, jag förstår!"
   remove: "Ta bort"
@@ -844,13 +779,12 @@ sv:
   send_email: "Skicka email"
   show_more: "Visa mer"
   start_a_group: "Starta en grupp"
-  start_group: "Starta en grupp!"
   starting: "Startar"
   subject: "Ämne"
   terms_of_service_html: "Genom att klicka på %{button_text}, godkänner du Loomios <a href='%{link_path}' target='_blank'>användarvillkor</a>"
   thanks: "Tack!"
-  translate: "Hjälp oss att översätta Loomio!"
   unlike: "Skild från"
+  time_until_close: "%{quantity_of_time} återstår till stängning"
   update: "Uppdatera"
   facebook: "Facebook"
   google: "Google"

@@ -1,35 +1,35 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Discussion do
-  let(:discussion) { create_discussion }
+  let(:discussion) { create :discussion }
 
-  it { should have_many(:events).dependent(:destroy) }
-  it { should respond_to(:uses_markdown) }
-  it { should validate_presence_of(:title) }
-  it { should validate_presence_of(:group) }
-  it { should validate_presence_of(:author) }
-  it { should ensure_length_of(:title).
-               is_at_most(150) }
+  describe ".followers" do
+    let(:follower) { FactoryGirl.create(:user) }
+    let(:unfollower) { FactoryGirl.create(:user) }
+    let(:group_follower) { FactoryGirl.create(:user) }
+    let(:group_member) { FactoryGirl.create(:user) }
+    let(:non_member) { FactoryGirl.create(:user) }
+    let(:group) { discussion.group }
 
-  it "author must belong to group" do
-    discussion = Discussion.new(group: create(:group))
-    discussion.author = create(:user)
-    discussion.should_not be_valid
-  end
+    before do
+      [follower, unfollower, group_follower, group_member].each do |user|
+        group.add_member!(user)
+      end
 
-  it 'should have comments_count of 0' do
-    discussion.comments_count.should == 0
-  end
+      DiscussionReader.for(discussion: discussion, user: follower).follow!
+      DiscussionReader.for(discussion: discussion, user: unfollower).unfollow!
+      discussion.group.membership_for(group_follower).follow_by_default!
+    end
 
-  it "group member can add comment" do
-    user = create(:user)
-    discussion.group.add_member! user
-    comment = discussion.add_comment(user, "this is a test comment", uses_markdown: false)
-    discussion.comments.should include(comment)
-  end
+    subject do
+      discussion.followers
+    end
 
-  it "automatically populates last_comment_at immediately before creation" do
-    discussion.last_comment_at.to_s.should == discussion.created_at.to_s
+    it {should include follower}
+    it {should_not include unfollower}
+    it {should include group_follower}
+    it {should_not include group_member }
+    it {should_not include non_member }
   end
 
   describe ".comment_deleted!" do
@@ -50,7 +50,7 @@ describe Discussion do
   end
 
   describe "archive!" do
-    let(:discussion) { create_discussion }
+    let(:discussion) { create :discussion }
 
     before do
       discussion.archive!
@@ -64,11 +64,11 @@ describe Discussion do
   describe "#search(query)" do
     before { @user = create(:user) }
     it "returns user's discussions that match the query string" do
-      discussion = create_discussion title: "jam toast", author: @user
+      discussion = create :discussion, title: "jam toast", author: @user
       @user.discussions.search("jam").should == [discussion]
     end
     it "does not return discussions that don't belong to the user" do
-      discussion = create_discussion title: "sandwich crumbs"
+      discussion = create :discussion, title: "sandwich crumbs"
       @user.discussions.search("sandwich").should_not == [discussion]
     end
   end
@@ -76,12 +76,12 @@ describe Discussion do
   describe "#last_versioned_at" do
     it "returns the time the discussion was created at if no previous version exists" do
       Timecop.freeze do
-        discussion = create_discussion
+        discussion = create :discussion
         discussion.last_versioned_at.iso8601.should == discussion.created_at.iso8601
       end
     end
     it "returns the time the previous version was created at" do
-      discussion = create_discussion
+      discussion = create :discussion
       discussion.stub :has_previous_versions? => true
       discussion.stub_chain(:previous_version, :version, :created_at)
                 .and_return 12345
@@ -91,8 +91,9 @@ describe Discussion do
 
   context "versioning" do
     before do
-      @discussion = create_discussion
+      @discussion = create :discussion
       @version_count = @discussion.versions.count
+      PaperTrail.enabled = true
     end
 
     it "doesn't create a new version when unrelevant attribute is edited" do
@@ -106,35 +107,44 @@ describe Discussion do
     end
   end
 
-  describe "#activity" do
-    it "returns all the activity for the discussion" do
-      @user = create :user
-      @group = create :group
-      @group.add_member! @user
-      @discussion = build :discussion, :group => @group, private: true
-      DiscussionService.start_discussion(@discussion)
-      @discussion.add_comment(@user, "this is a test comment", uses_markdown: false)
-      @motion = create :motion, :discussion => @discussion
-      @vote = build :vote, :position => 'yes', :motion => @motion
-      MotionService.cast_vote(@vote)
-      activity = @discussion.activity
-      activity[0].kind.should == 'new_discussion'
-      activity[1].kind.should == 'new_comment'
-      activity[2].kind.should == 'new_motion'
-      activity[3].kind.should == 'new_vote'
+  describe "#motions_count" do
+    before do
+      @user = create(:user)
+      @group = create(:group)
+      @discussion = create(:discussion, group: @group)
+      @motion = create(:motion, discussion: @discussion)
     end
+
+    it "returns a count of motions" do
+      @discussion.reload.motions_count.should == 1
+    end
+
+    it "updates correctly after creating a motion" do
+      expect {
+        @discussion.motions.create(attributes_for(:motion).merge({ author: @user }))
+      }.to change { @discussion.reload.motions_count }.by(1)
+    end
+
+    it "updates correctly after deleting a motion" do
+      expect {
+        @motion.destroy
+      }.to change { @discussion.reload.motions_count }.by(-1)
+    end
+
   end
 
   describe "#current_motion" do
     before do
-      @discussion = create_discussion
+      @discussion = create :discussion
       @motion = create :motion, discussion: @discussion
     end
+
     context "where motion is in open" do
       it "returns motion" do
         @discussion.current_motion.should eq(@motion)
       end
     end
+
     context "where motion close date has past" do
       before do
         @motion.closed_at = 3.days.ago
@@ -150,13 +160,13 @@ describe Discussion do
     before do
       @user1, @user2, @user3, @user4 =
         create(:user), create(:user), create(:user), create(:user)
-      @discussion = create_discussion author: @user1
+      @discussion = create :discussion, author: @user1
       @group = @discussion.group
       @group.add_member! @user2
       @group.add_member! @user3
       @group.add_member! @user4
-      @discussion.add_comment(@user2, "givin a shout out to user3!", uses_markdown: false)
-      @discussion.add_comment(@user3, "thanks 4 thah love usah two!", uses_markdown: false)
+      DiscussionService.add_comment(build :comment, user: @user2, discussion: @discussion)
+      DiscussionService.add_comment(build :comment, user: @user3, discussion: @discussion)
     end
 
     it "should include users who have commented on discussion" do
@@ -173,11 +183,9 @@ describe Discussion do
       current_motion_author = create(:user)
       @group.add_member! previous_motion_author
       @group.add_member! current_motion_author
-      previous_motion = create(:motion, :discussion => @discussion,
-                             :author => previous_motion_author)
+      previous_motion = create(:motion, discussion: @discussion, author: previous_motion_author)
       MotionService.close(previous_motion)
-      current_motion = create(:motion, :discussion => @discussion,
-                             :author => current_motion_author)
+      current_motion = create(:motion, discussion: @discussion, author: current_motion_author)
 
       @discussion.participants.should include(previous_motion_author)
       @discussion.participants.should include(current_motion_author)
@@ -190,7 +198,7 @@ describe Discussion do
 
   describe "#viewed!" do
     before do
-      @discussion = create_discussion
+      @discussion = create :discussion
     end
     it "increases the total_views by 1" do
       @discussion.total_views.should == 0
@@ -230,7 +238,7 @@ describe Discussion do
             group.discussion_privacy_options = 'private_only'
             discussion.inherit_group_privacy!
           end
-          it { should be_true }
+          it { should be true }
         end
 
         context "group is public or private" do
@@ -246,7 +254,7 @@ describe Discussion do
             group.discussion_privacy_options = 'public_only'
             discussion.inherit_group_privacy!
           end
-          it { should be_false }
+          it { should be false }
         end
       end
 

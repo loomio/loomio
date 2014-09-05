@@ -1,8 +1,9 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe DiscussionsController do
   let(:app_controller) { controller }
-  let(:user) { stub_model(User) }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:other_user) { FactoryGirl.create(:user) }
   let(:motion) { mock_model(Motion).as_null_object }
   let(:group) { create :group }
   let(:discussion) { stub_model(Discussion,
@@ -21,33 +22,6 @@ describe DiscussionsController do
       Discussion.stub_chain(:published, :find_by_key!).with(discussion.key).and_return(discussion)
       User.stub(:find).and_return(user)
       Group.stub(:find).with(group.key).and_return(group)
-    end
-
-    describe "creating a discussion" do
-      before do
-        discussion.stub(:add_comment)
-        discussion.stub(:save).and_return(true)
-        discussion.stub(:group_members_without_discussion_author).and_return([])
-        DiscussionMailer.stub(:spam_new_discussion_created)
-        user.stub_chain(:ability, :authorize!).and_return(true)
-        @discussion_hash = { group_id: group.id, title: "Shinney", private: "true" }
-        app_controller.stub(:current_user).and_return(user)
-      end
-
-      it "does not send email by default" do
-        DiscussionMailer.should_not_receive(:spam_new_discussion_created)
-        get :create, discussion: @discussion_hash
-      end
-
-      it "displays flash success message" do
-        get :create, discussion: @discussion_hash
-        flash[:success].should match(I18n.t("success.discussion_created"))
-      end
-
-      it "redirects to discussion" do
-        get :create, discussion: @discussion_hash
-        response.should redirect_to discussion_url(Discussion.last)
-      end
     end
 
     context "deleting a discussion" do
@@ -69,6 +43,62 @@ describe DiscussionsController do
       end
     end
 
+    describe "moving a discussion" do
+
+      context "from a public group to a private group" do 
+        it "makes the discussion private" do 
+          g = FactoryGirl.create :group, discussion_privacy_options: 'private_only'
+          d = FactoryGirl.create :discussion, private: false
+          Group.stub(:find).with(g.key).and_return(g)
+          Discussion.stub_chain(:published, :find_by_key!).with(d.key).and_return(d)
+          
+          d.group.stub(:admins).and_return([user])
+          g.stub(:members).and_return([user])
+
+          post :move, id: d.key, destination_group_id: g.key
+
+          expect(d.group).to eq g
+          expect(d.private).to be true
+        end
+      end
+
+      context "from a private group to a public group" do
+        it "makes the discussion public" do 
+          g = FactoryGirl.create :group, discussion_privacy_options: 'public_only'
+          d = FactoryGirl.create :discussion, private: true
+          Group.stub(:find).with(g.key).and_return(g)
+          Discussion.stub_chain(:published, :find_by_key!).with(d.key).and_return(d)
+          
+          d.group.stub(:admins).and_return([user])
+          g.stub(:members).and_return([user])
+
+          post :move, id: d.key, destination_group_id: g.key
+
+          expect(d.group).to eq g
+          expect(d.private).to be false
+        end
+      end
+
+      context "to a group with a different user as admin" do 
+        it "successfully moves the discussion" do 
+          g1 = FactoryGirl.create :group
+          g2 = FactoryGirl.create :group
+          d = FactoryGirl.create :discussion, group: g1
+          Group.stub(:find).with(g2.key).and_return(g2)
+          Discussion.stub_chain(:published, :find_by_key!).with(d.key).and_return(d)
+          
+          g1.stub(:admins).and_return([user])
+          g2.stub(:admins).and_return([other_user])
+          g2.stub(:members).and_return([user])
+
+          post :move, id: d.key, destination_group_id: g2.key
+
+          expect(d.reload.group).to eq g2
+        end
+      end
+
+    end
+
     describe "creating a new proposal" do
       context "current proposal already exists" do
         it "redirects to the discussion page" do
@@ -77,7 +107,7 @@ describe DiscussionsController do
         end
         it "displays a proposal already exists message" do
           get :new_proposal, id: discussion.key
-          flash[:notice].should =~ /A current proposal already exists for this disscussion./
+          flash[:notice].should =~ /A current proposal already exists for this discussion./
         end
       end
       context "where no current proposal exists" do
@@ -126,8 +156,8 @@ describe DiscussionsController do
     describe "change version" do
       before do
         @version_item = mock_model(Discussion, :title => 'most important discussion', :description => "new version", key: 'abc1234', :save! => true)
-        @version = mock_model(Version, :item => discussion)
-        Version.stub(:find).and_return(@version)
+        @version = mock_model(PaperTrail::Version, :item => discussion)
+        PaperTrail::Version.stub(:find).and_return(@version)
         @version.stub(:reify).and_return(@version_item)
         @version.stub(:save!)
       end

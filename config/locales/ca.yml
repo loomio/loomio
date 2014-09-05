@@ -16,11 +16,9 @@ ca:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%-d/%-m/%y'
-      datepicker: "%d-%m-%Y"
   devise:
     invitations:
       send_instructions: 'S''ha enviat una invitació a %{email}.'
-      invitation_token_invalid: 'El token d''invitació no és vàlid!'
       updated: 'S''ha creat un compte.'
       no_invitations_remaining: "No et queden invitacions"
     mailer:
@@ -71,15 +69,6 @@ ca:
     you_have_left_group: "Has deixat %{which_group}."
     comment_deleted: "Comentari eliminat."
     invitations:
-      auto_added:
-        one: "%{count} membre afegit"
-        other: "%{count} membres afegits"
-      existing_member:
-        one: "%{count} membre forma part del grup"
-        other: "%{count} membres formen part del grup"
-      sent:
-        one: "%{count} invitació enviada"
-        other: "%{count} invitacions enviades"
       auto_added_and_sent: "%{auto_added_text} i %{sent_text}"
   views:
     pagination:
@@ -115,9 +104,6 @@ ca:
     proposal_deleted: "Proposta eliminada."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "segon"
-        other: "%{count} segons"
       x_seconds:
         one: "1 segon"
         other: "%{count} segons"
@@ -159,8 +145,6 @@ ca:
     empty: Estàs al dia! No tens cap comentari no llegit.
   notifications:
     header: "Notificacions"
-    new_discussion: "començat un nou debat."
-    new_motion: "creat una nova proposta"
     motion_closed:
       by_user: "tancat la proposta"
       by_expiry: "La proposta ha tancat"
@@ -195,7 +179,6 @@ ca:
     message: "<p>Aquesta és la pàgina del grup <strong></strong>. A l'esquerra hi ha una llista amb totes les discussions en aquest grup.</p><p>Quan vulguis que el grup discuteixi un altre tema, comença una nova discussió.</p>"
   dashboard_helper_text:
     header: "Benvingut a la teva pàgina d'inici"
-    message: "<p>La pàgina d'inici mostra les discussions actuals de tots els grups dels que formes part.<p><p>Pots començar una discussió sobre un nou tema clicant el botó \"Comença una discussió\".</p>"
   prompt_visitor_to_authenticate:
     header: "Inicia sessió o uneix-te a un grup per a participar"
   setup_steps_title: "Propers passos:"
@@ -286,9 +269,6 @@ ca:
   empty_decision_list_html: "Preparat per prendre una decisió? <br> Qualsevol pot crear una propsta."
   empty_decision_index: "Aquest grup encara no ha decidit res."
   empty_discussion_list: "Encara no hi ha activitat en aquesta discussió."
-  empty_discussion_index: "No hi ha discussions en cap dels teus grups."
-  empty_discussion_index_group: "Aquest grup encara no té cap discussió"
-  private_group_discussion_display: "Aquest grup és privat. Només els membres poden veure les discussions. Si vols participar, pots demanar d'unir't-hi."
   discussion_context:
     started_html: "Começat fa %{when} per <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Darrera modificació fa %{when} per <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -471,7 +451,6 @@ ca:
   already_have_account: "Ja tens un compte a Loomio?"
   confirmation_not_received: "No has rebut les instruccions de confirmació_"
   unlock_not_received: "No has rebut les instruccions de desbloqueig?"
-  inactive_html: "Ho sentim, aquest compte es troba inactiu. Si tens alguna pregunta, sisplau <a href='%{path_to_contact}'> posa't en contacte </a>."
   log_in: "Inicia la sessió"
   join_group:
     log_in: "Inicia sessió per unir-te a %{group_name}"
@@ -498,7 +477,7 @@ ca:
     no_pending_invitations: "Actualment no hi ha invitacions pendents."
   search:
     description: "A sota es mostren les discussions i propostes que tenen '%{query}' en el títol o la descripció."
-    header: "Resultats de la cerca per a '% {query}'"
+    header: "Resultats de la cerca per a '%{query}'"
     placeholder: "Cerca"
     empty_search: 'Cerca buida'
     please_enter_a_search: 'Entra una cerca al camp de dalt'
@@ -529,11 +508,7 @@ ca:
     edit:
       header: "Edita la discussió"
   motion_form:
-    header: "Nova proposta"
     name_helper: "Escriu un títol tant clar i concís com puguis."
-  group_form:
-    invitation_settings: "Configuració d'invitacions"
-    admins_only: "Només coordinadors"
   vote_form:
     header: "Declara la teva posició"
     edit: "Canvïa la teva posició"
@@ -542,16 +517,6 @@ ca:
     your_statement: "La teva declaració"
     submit: "Enviar posició"
     update: "Actualitzar posició"
-  email_preferences_form:
-    header: "Preferències del correu electrònic"
-    daily_activity_summary: "Resum d'activitat diària"
-    daily_activity_subscription: "Envia'm un correu electrònic d'activitat diària resumint el que ha passat als meus grups"
-    global_notifications: "Notificacions globals"
-    proposal_closing_soon_subscription: "Recorda'm 24 hores abans de ue tanqui una proposta"
-    mentions_subscription: "Envia'm un correu electrònic quan algú m'esmenti en un comentari"
-    group_activity_notifications: "Notificacions d'activitat del grup"
-    group_activity_details: "Per a cada grup, marca la casella si vols que t'enviem un correu electrònic sobre noves discussions i decisions."
-    update_preferences: "Actualitza les preferències"
   new_user_form:
     create_an_account: "Crea un compte"
   group_setup:
@@ -575,32 +540,6 @@ ca:
       discussion:
         title: "Títol"
         description: "Context"
-        privacy_public_header: "Públic"
-        privacy_public_description: "Tothom pot veure aquesta discussió"
-        privacy_private_header: "Privat"
-        privacy_private_description: "Només les persones membres de %{group} poden veure aquesta discussió"
-        privacy_hidden_description: "Totes les discussions a un grup amagat són privades."
-        of: "de"
-        of_no_group: "d'aquest grup"
-      group:
-        name: "Nom del grup"
-        description: "Descripció"
-        members_invitable_by: "Qui pot convidar gent a aquest grup?"
-        members_invitable_by_coordinators: "Només coordnadores"
-        members_invitable_by_members: "Totes les membres del grup"
-        privacy: Privacitat
-        privacy_public_header: Públic
-        privacy_public_description: Les discusions són públiques, a menys que les marqueu com privades. Qualsevol pot trobar el grup i demanar entrar-hi.
-        privacy_private_header: En gran part privat
-        privacy_private_description: Les discussions són privades, a menys que tu explícitament les facis públiques.  Qualsevol pot trobar el grup i demanar entrar-hi.
-        privacy_hidden_header: Amagat (completament privat)
-        privacy_hidden_description: Les discussions són sempre privades. Trobar i unir-se al grup funciona només per invitació.
-        privacy_parent_group_members_header: Visible per membres del grup mare.
-        privacy_parent_group_members_description: El mateix que "secret", només els membres del grup mare poden veure el grup i les seves discussions.
-        privacy_parent_group_members_description_short: Només membres i membres del grup mare poden veure aquest grup i les seves discussions.
-        group_members_invitable_by: "Només coordinadores"
-        submit: Enviar
-        is_visible_to_parent_members_header: Permet a tot els membres de %{group} veure aquest subgrup i les seves discussions.
       membership_request:
         introduction: "Presenta't"
       motion:
@@ -622,9 +561,6 @@ ca:
       motion:
         name: "Quins passos proposes seguir?"
         description: "Dóna suficient infromació per tal de que tothom sàpiga exactament què vol dir estar d'acord o no estar'hi."
-      group:
-        name: "Nom del grup"
-        description: "Descripció del grup"
       user:
         email: "Correu electrònic"
         password: "Contrasenya"
@@ -652,10 +588,6 @@ ca:
     view_discussion: "Fes click aquí per veure aquesta discussió"
     view_group: "Fes click per veure el grup a Loomio"
     view_proposal: "Veure aquesta proposta a Loomio"
-    campaign_html: "Aquesta decisió ha estat important per a tu? Considera <a href='%{link_path}'> contribuir a Loomio</a> i ajuda'ns a estendre Loomio pel món. Som un equip petit que intentem fer coses grans i necessitem les teves aportacions per seguir tirant endavant."
-    create_discussion:
-      intro: "%{who} ha començat una nova discussió a %{which_group}:"
-      subject: "Nova discussió - %{which}"
     create_proposal:
       intro: "S'ha creat una nova proposta a un grup de Loomio al què pertanys."
       closes_in: "Tanca en"
@@ -681,14 +613,10 @@ ca:
       subject: "%{who} ha demanat unir-se a %{which_group}"
       view_group: "Pots aprovar o denegar la sol·licitud aquí"
     mentioned:
-      intro: "T'han mencionat a la discussió: "
-      said: "%{comment_author} diu:"
       subject: "%{who} t'ha mencionat al grup de Loomio %{which} "
     new_motion_created:
       context: "%{author} ha fet una proposta a %{group_full_name}:"
     proposal_closed:
-      intro: 'La teva proposta "%{proposal_name}" s''ha tancat'
-      intro_html: 'La teva proposta "%{proposal_name}" s''ha tancat.'
       specify_outcome_and_notify_group: "Detalla un resultat i envia'l al grup!"
       specify_outcome_and_notify_group_html: "Detalla un resultat i envia'l al grup!"
       subject: "Proposta tancada - %{which}"
@@ -701,7 +629,6 @@ ca:
       closes_on: "Tanca el"
       closes_at: "Tanca a"
       closes_in: "Tanca en"
-      closing_in_24_hours: "Tanca en 24 hores"
       headline: "La proposta de %{author} a %{group} tancarà aviat:"
       summary: "Sumari"
     verification:
@@ -732,7 +659,6 @@ ca:
   participation: "Participació"
   disable: "Desactivar"
   group: "Grup"
-  groups: "Grups"
   group_admin: "Coordinador/a de Grup"
   home: "Inici"
   id: "id"
@@ -749,6 +675,7 @@ ca:
   pricing: 'Preus'
   prev: "Anterior"
   more: "Més..."
+  translate: "Ajuda a traduir Loomio!"
   translate_this_string: "Tradueix a %{language}"
   options: "Opcions"
   ok_got_it: "D'acord, entesos!"
@@ -760,12 +687,10 @@ ca:
   send_email: "Envia un correu electrònic"
   show_more: "Mostra'n més"
   start_a_group: "Comença un grup"
-  start_group: "Comença un grup!"
   starting: "Iniciant"
   subject: "Tema"
   terms_of_service_html: "En fer clic a %{button_text},  acceptes els  <a href='%{link_path}' target='_blank'>Termes de servei</a> de Loomio"
   thanks: "Mercès!"
-  translate: "Ajuda a traduir Loomio!"
   unlike: "No m'agrada"
   update: "Actualitzar"
   facebook: "Facebook"

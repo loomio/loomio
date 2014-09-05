@@ -38,12 +38,12 @@ class NotificationsController < BaseController
 
   def preload_associations
     motions = @notifications.select { |n| n.eventable.kind_of? Motion }.map(&:eventable)
-    ActiveRecord::Associations::Preloader.new(motions, [{:discussion => :group}, :author]).run
+    ActiveRecord::Associations::Preloader.new.preload(motions, [{discussion: :group }, :author])
 
     discussions = @notifications.select { |n| n.eventable.kind_of? Discussion }.map(&:eventable)
-    ActiveRecord::Associations::Preloader.new(discussions, [:group, :author]).run
+    ActiveRecord::Associations::Preloader.new.preload(discussions, [:group, :author])
 
     comments = @notifications.select { |n| n.eventable.kind_of? Comment }.map(&:eventable)
-    ActiveRecord::Associations::Preloader.new(comments, [{:discussion => :group}, :user]).run
+    ActiveRecord::Associations::Preloader.new.preload(comments, [{:discussion => :group}, :user])
   end
 end

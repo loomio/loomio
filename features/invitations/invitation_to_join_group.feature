@@ -73,19 +73,19 @@ Feature: Invitation to join group
     When I visit the subgroup page
     Then I should not see the add member button
 
-  @javascript
-  Scenario: Group Admin invites new user to join discussion
-    Given I am a group admin
-    When I visit a discussion page
-    And I click "Invite people"
-    And I invite "new@user.com" to join the discussion
-    Then "new@user.com" should get an invitation to join the discussion
+  # @javascript
+  # Scenario: Group Admin invites new user to join discussion
+  #   Given I am a group admin
+  #   When I visit a discussion page
+  #   And I click "Invite people"
+  #   And I invite "new@user.com" to join the discussion
+  #   Then "new@user.com" should get an invitation to join the discussion
 
-  @javascript
-  Scenario: New user accepts invitation to join discussion
-    Given I am invited to join a discussion
-    When I accept my invitation via email
-    Then I should see the signup form prepopulated with my email address
-    When I sign up as a new user
-    Then I should be a member of the group
-    And I should be redirected to the discussion page
+  # @javascript
+  # Scenario: New user accepts invitation to join discussion
+  #   Given I am invited to join a discussion
+  #   When I accept my invitation via email
+  #   Then I should see the signup form prepopulated with my email address
+  #   When I sign up as a new user
+  #   Then I should be a member of the group
+  #   And I should be redirected to the discussion page

@@ -2,8 +2,10 @@ class Events::MotionOutcomeCreated < Event
   after_create :notify_users!
 
   def self.publish!(motion, user)
-    create!(:kind => "motion_outcome_created", :eventable => motion,
-            :discussion_id => motion.discussion.id, :user => user)
+    create!(kind: "motion_outcome_created",
+            eventable: motion,
+            discussion: motion.discussion,
+            user: user)
   end
 
   def motion
@@ -13,10 +15,12 @@ class Events::MotionOutcomeCreated < Event
   private
 
   def notify_users!
+    motion.followers_without_outcome_author.
+           email_followed_threads.each do |user|
+      ThreadMailer.delay.motion_outcome_created(user, self)
+    end
+
     motion.group_members_without_outcome_author.each do |user|
-      if user.email_notifications_for_group?(motion.group)
-        MotionMailer.motion_outcome_created(motion, user).deliver
-      end
       notify!(user)
     end
   end

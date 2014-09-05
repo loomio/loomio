@@ -1,22 +1,32 @@
 class Events::MotionClosingSoon < Event
-  after_create :notify_users!
-
   def self.publish!(motion)
-    create!(:kind => "motion_closing_soon", :eventable => motion)
+    event = create!(kind: "motion_closing_soon",
+                    eventable: motion)
+
+    motion.followers.
+           email_followed_threads.each do |user|
+      ThreadMailer.delay.motion_closing_soon(user, event)
+    end
+
+    motion.followers.
+           dont_email_followed_threads.
+           email_when_proposal_closing_soon.each do |user|
+      ThreadMailer.delay.motion_closing_soon(user, event)
+    end
+
+    motion.group_members_not_following.
+           email_when_proposal_closing_soon.each do |user|
+      ThreadMailer.delay.motion_closing_soon(user, event)
+    end
+
+    motion.group_members.each do |member|
+      event.notify!(member)
+    end
+
+    event
   end
 
   def motion
     eventable
-  end
-
-  private
-
-  def notify_users!
-    motion.group_members.each do |user|
-      if user.subscribed_to_proposal_closure_notifications
-        UserMailer.delay.motion_closing_soon(user, motion)
-      end
-      notify!(user)
-    end
   end
 end

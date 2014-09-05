@@ -13,7 +13,6 @@ gl:
     discussion_created: "Debate creado correctamente."
     discussion_deleted: "Debate eliminado correctamente."
   notifications:
-    new_discussion: "iniciou un novo debate"
     new_comment: "comentado no debate"
     comment_liked: "gustou do teu comentario no debate"
   edit_discussion_context: "Editar o contexto do debate"
@@ -22,8 +21,6 @@ gl:
     message: "<p>O asunto vai no alto da páxina, co contexto xusto debaixo.</p><p>O debate vai na esquerda, as decisións aparecen na dereita. Se pensas que o grupo está preparado para tomar unha decisión, podes facer unha proposta para que o grupo a teña en consideración.</p>"
   group_helper_text:
     message: "<p>Esta é a <strong>páxina do grupo</strong>. Na esquerda está a lista de todos os debates neste grupo.</p><p>Se queres que o grupo debata outro asunto, inicia un novo debate.</p>"
-  dashboard_helper_text:
-    message: "<p>A páxina de inicio amosa os debates correntes nos grupos nos que esteas rexistrado.</p><p>Podes comezar un debate sobre un asunto novo premendo no botón \"Comezar un debate\".</p>"
   setup_step_1: "Bótalle un ollo ao debate de exemplo"
   setup_step_2: "Iniciar o teu primeiro debate"
   start_a_discussion: "Comezar un debate"
@@ -33,9 +30,6 @@ gl:
     discussion_description_edited: "cambiou a descripción do debate"
   discussion: "Debate"
   empty_discussion_list: "Todavía sen actividade neste debate."
-  empty_discussion_index: "Sen debates nos teus grupos."
-  empty_discussion_index_group: "Este grupo aínda non ten debates."
-  private_group_discussion_display: "Este grupo é privado. Os debates son visibles só para os rexistrados. Se queres participar, pide para unirte."
   move_discussion: "Mover debate"
   delete_discussion: "Eliminar debate"
   confirm_delete_discussion: "Estás seguro de querer eliminar este debate para sempre?"
@@ -60,29 +54,16 @@ gl:
       É unha boa idea? Loomio Helper Bot quere saber o que estás a pensar!
       Se andas seguro do teu posicionamento, fai click nunha das iconas de embaixo (pasa por enriba dos botóns de decisión para ver unha descripción do que veñen significando).
       Pediráseche que fagas unha pequena declaración sobre a razón da túa decisión. Isto fai que sexa doado de ver un resumo do que cadaquén pensa e por que. Podes trocar de opinión e editar a túa decisión libremente ata que a proposta sexa pechada.
-  email_preferences_form:
-    daily_activity_summary: "Resumo da actividade diaria"
-    group_activity_details: "Por cada grupo, marca a casiña se queres recibir un correo así que se produzan novos debates e decisións."
   group_setup:
     desc_html: "Como coordinador de grupo, es o responsable de preparar e manter o teu grupo Loomio. Logo de seleccionar unhas opcións, podes ir ao teu novo grupo, comezar un debate ou dous, e enviar algunha invitación! <p>Cando penses nun xeito sinxelo de describir o teu grupo, pregúntache: Que queres que acaden xuntos? Que tipos de decisións tomaredes? Quen vai estar implicado?</p>"
-  simple_form:
-    labels:
-      group:
-        privacy_parent_group_members_description_short: Só os rexistrados neste grupo e no superior poden ver este grupo e os seus debates.
-        is_visible_to_parent_members_header: Permite aos rexistrados de %{group} ver este subgrupo e os seus debates
   helpers:
     submit:
       discussion:
         create: "Comezar debate"
   email:
     view_discussion: "Preme aquí para este debate"
-    create_discussion:
-      intro: "%{who} comezou un novo debate en %{which_group}:"
-      subject: "Novo debate - %{which}"
     daily_activity:
       subject: "Loomio - Resumo das últimas 24 horas"
-    mentioned:
-      intro: "Fuches citado nun debate titulado:"
     proposal_closing_soon:
       summary: "Resumo"
   discussions: "Debates"

@@ -1,3 +1,5 @@
+//= depend_on 'ajax-loader.gif'
+
 body {
   background-color: $app-background;
   height: 100%;
@@ -195,19 +197,21 @@ ul, ol, li {
 }
 
 .loading {
-  background: url(ajax-loader.gif) no-repeat;
+  background: image-url('ajax-loader.gif') no-repeat;
   background-position: 300px 200px;
   line-height: 33.5em;
   text-indent: -9999px;
 }
 
-.main-content { margin-top: 20px; }
-
 .page-container {
   margin-top: 30px;
   min-height: 600px;
 }
-
+.shadow{
+  text-shadow: 0 1px 1px rgba(0,0,0,.8);
+  text-rendering: optimizelegibility;
+  color: white;
+}
 ul.selector-list {
   &.bordered { border-top: 1px solid $light-grey }
   li.selector-item {
@@ -284,7 +288,6 @@ ul.selector-list {
 }
 
 // edit description dropdown for group and discussion
-.edit-description,
 .description-body .translate-link {
   color: $mid-grey;
   text-decoration: underline;
@@ -353,4 +356,53 @@ a.btn-icon:hover { color: $dark-grey; }
     width: 26px;
     opacity: 0;
   }
+}
+
+.edit-icon {
+  float: right;
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
+  background: white;
+  i{padding: 6px 8px 6px 7px;}
+}
+.delete-icon{
+  float: right;
+  margin-left: 3px;
+}
+
+.comment-actions{
+  float: right;
+  a{color: $light-grey;}
+  a:hover{color: $link-blue;}
+}
+
+.edit-icon-small {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+  i{padding: 0;}
+}
+
+.edit-icon-labelled {
+  float: right;
+  font-size: 14px;
+}
+.edit-icon-placeholder {
+  width: 32px;
+  height: 32px;
+  float: right;
+}
+
+.modal ul{
+  list-style: disc;
+  li{
+    margin-left: 20px;
+  }
+  margin-bottom: 20px;
+}
+
+#select-locale {
+  width: 180px;
+  margin-bottom: 4px;
 }

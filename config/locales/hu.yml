@@ -13,7 +13,6 @@ hu:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%-nap/%-hónap/%év'
-      datepicker: "%d-%m-%Y"
   error:
     access_denied: "Ehhez nincs jogosultságod."
     cant_join_subgroup: "Nem csatlakozhatsz egy alcsoporthoz, ha nem vagy ragja a csoportnak"
@@ -105,8 +104,6 @@ hu:
     empty: Naprakész vagy! Minden hozzászólást láttál már.
   notifications:
     header: "Értesítések"
-    new_discussion: "új témát indított"
-    new_motion: "új javaslatot tett"
     motion_closed:
       by_user: "lezárta a javaslatot"
       by_expiry: "A javaslat lezárult"
@@ -133,7 +130,6 @@ hu:
     message: "<p>Ez a <strong>csoportoldal</strong> Bal oldalon vannak a csoport témái.</p><p>Ha szerinted valami mást is meg kellene tárgyalni, indíts új témát.</p>"
   dashboard_helper_text:
     header: "Üdvözlet a nyitólapodon!"
-    message: "<p>A nyitólapon láthatod az összes témát a csoportjaidból. <p></p>Új témát nyithatsz a \"Téma indítása\" gombra kattintva.</p>"
   setup_steps_title: "Következő lépések:"
   setup_step_1: "Nézd meg a példa témát"
   setup_step_2: "Indítsd az első témádat"
@@ -204,8 +200,6 @@ hu:
   empty_decision_list_html: "Itt az ideje a döntésnek?  <br> Bárki tehet javaslatot."
   empty_decision_index: "Ez a csoport még nem hozott döntést."
   empty_discussion_list: "Ebben a témában még nincs semmilyen hozzászólás."
-  empty_discussion_index: "Egyik csoportodban sincsen semmilyen felvetett téma."
-  empty_discussion_index_group: "Ennek a csoportnak még nincsenek felvetett témái."
   discussion_context:
     started_html: "<a href='%{link}' class='%{link_class}'>%{who}</a> indította, az indítástól eltelt idő: %{when}"
     last_edited_html: "Legútóbb módosította: <a href='%{link}' class='%{link_class}'>%{who}</a>, a módosítás óta eltelt idő: %{when}"
@@ -388,10 +382,7 @@ hu:
       lehetőséged van arra is, hogy megindokold a választásodat, így könnyen átlátható, hogy ki mit és miért gondol a javaslatról. A javaslat lezárulta előtt még lehetőséged van változtatni az álláspontodon.
 
   motion_form:
-    header: "Új javaslat"
     name_helper: "A cím legyen egyértelmű és tömör"
-  group_form:
-    invitation_settings: "A meghívás beállításai"
   vote_form:
     header: "Add meg az álláspontodat"
     edit: "Változtasd meg az álláspontodat"
@@ -400,16 +391,6 @@ hu:
     your_statement: "Az indoklásod"
     submit: "Álláspont megadása"
     update: "Álláspont frissítése"
-  email_preferences_form:
-    header: "E-mail beállítások"
-    daily_activity_summary: "Napi tevékenység"
-    daily_activity_subscription: "Kérek egy napi e-mail, ami összefoglalja, hogy aznap mi történt a csoportjaimban"
-    global_notifications: "Általános értesítések"
-    proposal_closing_soon_subscription: "Emlékeztető kérek egy javaslat lezárulta előtt 24 órával"
-    mentions_subscription: "E-mailt kérek, ha valaki megemlít engem egy hozzászólásban"
-    group_activity_notifications: "Értesítések a csoport tevékenységéről"
-    group_activity_details: "Jelöld be minden csoportnál, ha értesítést kérsz az új témák és javaslatok indulásáról"
-    update_preferences: "Beállítások frissítése"
   new_user_form:
     create_an_account: "Fiók létrehozása"
   group_setup:
@@ -419,8 +400,6 @@ hu:
       discussion:
         title: "Cím"
         description: "Leírás"
-      group:
-        members_invitable_by: "Ki hívhat meg másokat ebbe a csoportba?"
       membership_request:
         introduction: "Mutatkozz be!"
       motion:
@@ -453,9 +432,6 @@ hu:
     view_comment: "Kattints ide, hogy megnézd a hozzászólást a Loomión."
     view_discussion: "Ide kattintva nézheted meg ezt a témát"
     view_group: "Kattints ide, hogy megnézd a csoportot a Loomión."
-    create_discussion:
-      intro: "%{who} új témát nyitott a %{which_group} csoportban:"
-      subject: "Új téma -  %{which}"
     create_proposal:
       intro: "Új javaslatot hoztak létre egy Loomio csoportodban."
       closes_in: "Lezáródik"
@@ -472,11 +448,8 @@ hu:
       intro: "%{name} (%{email}) hozzáférést kért egy Loomio csoportodhoz."
       view_group: "Jóváhagyhatod vagy elvetheted a kérelmet itt."
     mentioned:
-      intro: "Megemlítettek az alábbi témában:"
-      said: "%{comment_author} azt írta:"
       subject: "%{who} megemlített téged a %{which} Loomio csoportban"
     proposal_closed:
-      intro: 'A "%{proposal_name}" javaslatod lezárult.'
       subject: "A javaslat lezárult - %{which}"
     proposal_blocked:
       intro: "Az általad kezelt javaslatot blokkolták."
@@ -509,7 +482,6 @@ hu:
   participation: "Részvétel"
   disable: "Kikapcsolás"
   group: "Csoport"
-  groups: "Csoportok"
   home: "Nyitólap"
   like: "Tetszik"
   loading: "Töltés..."

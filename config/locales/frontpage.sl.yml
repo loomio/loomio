@@ -1,0 +1,15 @@
+sl:
+  frontpage:
+    link:
+      blog: 'Blog'
+      contact: 'Kontakt'
+      donate: 'Donirajte še danes'
+      log_in: 'Prijava'
+      more: 'Več'
+      top: 'Vrh'
+      public_groups: 'Javne skupine'
+      terms: 'Pogoji'
+      privacy: 'Zasebnost'
+      services: 'Storitve'
+    vision:
+      header: 'Pomagajte nam vizijo spremeniti v resničnost.'

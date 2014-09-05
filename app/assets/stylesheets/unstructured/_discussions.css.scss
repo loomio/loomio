@@ -7,6 +7,14 @@
   overflow: scroll;
 }
 
+body.comments.show{
+  .version-header{
+    padding-top: 1em;
+    font-weight: bold;
+    border-bottom: 1px solid $lighter-grey;
+  }
+}
+
 body.discussions.new, body.discussions.create, body.discussions.edit {
 
 // from group
@@ -45,7 +53,7 @@ body.discussions.new, body.discussions.create, body.discussions.edit {
   textarea {
     @include placeholder { font-style: italic; }
     font-size: 16px;
-    height: 100px;
+    height: 200px;
   }
 
   .control-label.radio_buttons {
@@ -117,7 +125,7 @@ body.discussions.show {
     margin: 10px 12px 0 44px;
   }
 
-  .warn-move-will-make-private { padding: 0 15px 15px; }
+  .warn-move { padding: 0 15px 15px; }
 
   #options-dropdown {
     font-size: 1.4em;
@@ -141,22 +149,6 @@ body.discussions.show {
   }
 
   #request-membership, #request-membership-disabled { text-align: center; }
-
-  #jump-to-latest{
-    a {
-      color: $mid-grey;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: none;
-    }
-    color: $mid-grey;
-    text-decoration: none;
-    float: right;
-    margin-top: 2px;
-    margin-right: 5px;
-    color: $mid-grey;
-  }
 
   #attachment-container {
     background: #EBEBEB;
@@ -422,9 +414,8 @@ body.discussions.show {
         padding-bottom: 8px;
       }
       .activity-item-comment-actor {
-        float: left;
         font-weight: bold;
-        margin-right: 8px;
+        margin-bottom: 3px;
       }
       .activity-item-container {
         margin-top: 8px;
@@ -632,10 +623,12 @@ pre{
     top: 6px;
     width: 20px;
   }
+
   .discussion-title {
     display: inline;
     float: left;
   }
+
   .group-name {
     color: $mid-grey;
     font-size: $font-small;

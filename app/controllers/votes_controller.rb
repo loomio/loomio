@@ -28,12 +28,16 @@ class VotesController < BaseController
   private
     def require_user_can_vote
       unless can?(:vote, motion)
-        flash[:notice] = "You don't have permission to vote on the motion"
+        if motion.closed?
+          flash[:notice] = t(:"unable_to_vote.motion_closed")
+        else
+          flash[:notice] = t(:"unable_to_vote.permission_denied")
+        end
         redirect_to dashboard_path
       end
     end
 
     def motion
-      @motion ||= Motion.find(params[:motion_id])
+      @motion ||= Motion.friendly.find params[:motion_id]
     end
 end

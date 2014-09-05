@@ -2,7 +2,7 @@ class Events::UserAddedToGroup < Event
   after_create :notify_users!
 
   def self.publish!(membership, inviter)
-    create!(:kind => "user_added_to_group", :user => inviter, :eventable => membership)
+    create!(kind: "user_added_to_group", user: inviter, eventable: membership)
   end
 
   def membership

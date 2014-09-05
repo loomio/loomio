@@ -1,0 +1,3 @@
+%p= t('email.mentioned.context', discussion_title: @discussion.title, author_name: @comment.author.name)
+= render_rich_text(@comment.body, @comment.uses_markdown)
+= render "footer", link: comment_url_helper(@comment)

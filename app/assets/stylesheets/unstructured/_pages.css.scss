@@ -1,3 +1,4 @@
+//= depend_on "link-icon.png"
 @import "marketing/color";
 @import "marketing/buttons";
 
@@ -282,7 +283,7 @@ a.btn-icon:hover { color: $dark-grey; }
 
   .more-link{
     .toggle{
-      background: url("link-icon.png") 4px 4px no-repeat #f8f8f8;
+      background: image-url("link-icon.png") 4px 4px no-repeat #f8f8f8;
       font-size: 15px;
       padding: 4px 4px 4px 24px;
       a{

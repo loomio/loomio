@@ -29,7 +29,7 @@ class Groups::MembershipRequestsController < BaseController
   private
 
   def load_group
-    @group = GroupDecorator.new(Group.find_by_key!(params[:group_id]))
+    @group = Group.find_by_key!(params[:group_id])
   end
 
   def build_membership_request

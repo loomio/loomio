@@ -8,6 +8,16 @@ ActiveAdmin.register User do
   scope :all
   scope :coordinators
 
+  controller do
+    def permitted_params
+      params.permit!
+    end
+
+    def find_resource
+      User.friendly.find(params[:id])
+    end
+  end
+
   index do
     column :name
     column :email
@@ -15,7 +25,7 @@ ActiveAdmin.register User do
     column :last_sign_in_at
     column "No. of groups", :memberships_count
     column :deleted_at
-    default_actions
+    actions
   end
 
   form do |f|
@@ -29,7 +39,7 @@ ActiveAdmin.register User do
   end
 
   member_action :update, :method => :put do
-    user = User.find(params[:id])
+    user = User.friendly.find(params[:id])
     user.name = params[:user][:name]
     user.email = params[:user][:email]
     user.username = params[:user][:username]
@@ -41,7 +51,7 @@ ActiveAdmin.register User do
   show do |user|
     panel("Deactivate") do
       if can? :deactivate, user
-        button_to 'Deactivate User', deactivate_admin_user_path(user), method: :put, confirm: 'Are you sure you want to deactivate this user?'
+        button_to 'Deactivate User', deactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to deactivate this user?'}
       else
         div "This user cannot be deactivated because they are currently the only coordinator of the following groups:"
         table_for user.adminable_groups.published.select{|g| g.admins.count == 1}.each do |group|
@@ -69,26 +79,8 @@ ActiveAdmin.register User do
   end
 
   member_action :deactivate, method: :put do
-    user = User.find(params[:id])
+    user = User.friendly.find(params[:id])
     user.deactivate!
     redirect_to admin_users_url, :notice => "User account deactivated"
-  end
-  
-  csv do
-    column :id
-    column :name
-    column :email
-    column :created_at
-    column :last_sign_in_at
-    column "Coordinator" do |user|
-      user.adminable_groups.any?
-    end
-    column :memberships_count
-  end
-
-  controller do
-    def permitted_params
-      params.permit!
-    end
   end
 end

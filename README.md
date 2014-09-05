@@ -6,6 +6,8 @@
 
 Welcome to Loomio, a collaborative decision-making tool that makes it easy for anyone to participate in decisions which affect them. If you'd like to find out more, check out [Loomio.org](https://www.loomio.org).
 
+To see what's being worked on and what's in the backlog, vote on development priorities, and find tasks to pick up, check out the [Loomio Roadmap](https://www.loomio.org/roadmap). To participate in discussions about the app, potential features, and more, [join the Loomio Community group on Loomio](https://www.loomio.org/g/WmPCB3IR/loomio-community).
+
 ### Set up Loomio
 
 If you'd like to contribute code or set up your own instance of Loomio, we recommend you check out our guides:
