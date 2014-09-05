@@ -10,7 +10,7 @@ class Queries::VisibleDiscussions < Delegator
       end
     end
 
-    @relation = Discussion.joins(:group).merge(Group.published).published
+    @relation = Discussion.joins(:group).where('groups.archived_at IS NULL').published
 
 
     @relation = self.class.apply_privacy_sql(user: @user, group_ids: group_ids, relation: @relation)

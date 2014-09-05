@@ -95,7 +95,6 @@ class Group < ActiveRecord::Base
 
   has_many :memberships,
            -> { where is_suspended: false, archived_at: nil },
-           dependent: :destroy,
            extend: GroupMemberships
 
   has_many :all_memberships,
@@ -142,6 +141,10 @@ class Group < ActiveRecord::Base
            -> { where(archived_at: nil).order(:name) },
            class_name: 'Group',
            foreign_key: 'parent_id'
+
+  has_many :all_subgroups,
+           class_name: 'Group',
+           foreign_key: :parent_id
 
   has_one :subscription, dependent: :destroy
 
@@ -203,7 +206,6 @@ class Group < ActiveRecord::Base
   end
 
   def archive!
-    self.discussions.each(&:archive!)
     self.update_attribute(:archived_at, DateTime.now)
     memberships.update_all(archived_at: DateTime.now)
     subgroups.each do |group|
@@ -213,6 +215,12 @@ class Group < ActiveRecord::Base
 
   def is_archived?
     self.archived_at.present?
+  end
+
+  def unarchive!
+    self.update_attribute(:archived_at, nil)
+    all_memberships.update_all(archived_at: nil)
+    all_subgroups.update_all(archived_at: nil)
   end
 
   def is_hidden_from_public?
