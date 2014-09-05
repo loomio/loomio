@@ -2,6 +2,8 @@
   %head
     %title Sitewide activity
   %body
+    %iframe{:src => "https://docs.google.com/spreadsheets/d/1X2ZRjZZPub1H_8__OFMQmg7GZgAeLHGLvbtodsOeAOc/pubchart?oid=1487156638&amp;format=interactive", width: "600px", height: "371px"}
+
     %table
       %tr
         %th Weeks ago
@@ -18,5 +20,3 @@
           %td= m.fetch :comments
           %td= m.fetch :motions
           %td= m.fetch :votes
-
-    %iframe{:src => "https://docs.google.com/spreadsheets/d/1X2ZRjZZPub1H_8__OFMQmg7GZgAeLHGLvbtodsOeAOc/pubchart?oid=1487156638&amp;format=interactive", width: "600px", height: "371px"}
