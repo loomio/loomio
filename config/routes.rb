@@ -7,6 +7,7 @@ Loomio::Application.routes.draw do
       get :group_metrics
       get :retention
       get :events
+      get :weekly_activity
     end
   end
 
