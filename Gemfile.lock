@@ -77,7 +77,7 @@ GEM
       json (~> 1.8.0)
       nokogiri (~> 1.6.0)
       savon (~> 2.0)
-    bootstrap-sass (2.3.2.2)
+    bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     bourbon (3.2.3)
       sass (~> 3.2)
@@ -483,7 +483,7 @@ GEM
       activesupport (>= 3.0)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
-    simple_form (3.0.2)
+    simple_form (3.1.0.rc1)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     simplecov (0.9.0)
@@ -566,7 +566,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bing_translator
-  bootstrap-sass (= 2.3.2.2)
+  bootstrap-sass (~> 3.1.1)
   browser
   cancancan
   capybara
@@ -643,7 +643,7 @@ DEPENDENCIES
   selenium-webdriver
   sequenced
   shoulda-matchers
-  simple_form (~> 3.0.2)
+  simple_form (= 3.1.0.rc1)
   spring
   spring-commands-cucumber
   spring-commands-rspec

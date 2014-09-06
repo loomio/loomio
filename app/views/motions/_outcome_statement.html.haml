@@ -4,24 +4,22 @@
       - if motion.outcome.blank?
         #outcome-input
           = form_for motion, url: create_outcome_motion_path(motion) do |f|
-            .control-group
-              = f.text_area :outcome, id: 'outcome-input', class: 'validate-length limit-250', :placeholder => t(:outcome_placeholder)
-              .character-counter
+            .form-group
+              = f.text_area :outcome, :placeholder => t(:outcome_placeholder), class: 'form-control'
             .save-button.clearfix
-              = f.submit t(:outcome_submit), class: 'btn btn-mini run-validations', id: 'add-outcome-submit'
+              = f.submit t(:outcome_submit), class: 'btn btn-primary', id: 'add-outcome-submit'
       - else
         #outcome-input.hidden
           = form_for motion, url: update_outcome_motion_path(motion), method: 'post' do |f|
-            .control-group
-              = f.text_area :outcome, id: 'outcome-input', class: 'validate-length limit-250', :placeholder => t(:outcome_placeholder)
-              .character-counter
+            .form-group
+              = f.text_area :outcome, :placeholder => t(:outcome_placeholder), class: 'form-control'
             .save-button.clearfix
-              = f.submit "Save", class: 'btn btn-mini run-validations', id: 'add-outcome-submit'
+              = f.submit "Save", class: 'btn btn-primary', id: 'add-outcome-submit'
     - if motion.outcome.present?
       #outcome-display
         .statement-display.well
           .clearfix
             - if can? :create_outcome, motion
-              = button_to t(:edit), "#", class: 'btn btn-mini outcome-edit-button', id: 'edit-outcome'
+              = button_to t(:edit), "#", class: 'btn btn-primary outcome-edit-button', id: 'edit-outcome'
             .outcome-label= t(:outcome)
             %p= motion.outcome

@@ -111,7 +111,7 @@ module DiscussionsHelper
     end
   end
 
-  def discussion_privacy_options(discussion)
+  def discussion_privacy_collection(discussion)
     options = []
 
     public_description = t('discussion_form.privacy.will_be_public')
@@ -121,13 +121,11 @@ module DiscussionsHelper
       private_description = t('discussion_form.privacy.will_be_private')
     end
 
-    options << ["<span class='discussion-privacy-setting-header'>
-                  <i class='fa fa-globe'></i>#{t(:'common.public')}</span>
-                  <p>#{public_description}</p>".html_safe, false]
+    options << ["<i class='fa fa-globe'></i>#{t(:'common.public')}:
+                  #{public_description}".html_safe, false]
 
-    options << ["<span class='discussion-privacy-setting-header'>
-                  <i class='fa fa-lock'></i>#{t(:'common.private')}</span>
-                 <p>#{private_description}</p>".html_safe, true ]
+    options << ["<i class='fa fa-lock'></i>#{t(:'common.private')}:
+                 #{private_description}".html_safe, true ]
   end
 
   def privacy_language(discussion)

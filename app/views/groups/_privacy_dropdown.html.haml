@@ -3,16 +3,10 @@
   - case @group.visible_to
   - when 'public'
     - if @group.public_discussions_only?
-      %i.fa.fa-globe.group-privacy-public.title-tooltip{title: t(:'group_privacy.visible_to.public')}
+      %i.fa.fa-globe.group-privacy-public.js-tooltip{title: t(:'group_privacy.visible_to.public')}
     - else
-      %i.fa.fa-unlock-alt.group-privacy-public.title-tooltip{title: t(:'group_privacy.visible_to.public')}
+      %i.fa.fa-unlock-alt.group-privacy-public.js-tooltip{title: t(:'group_privacy.visible_to.public')}
   - when 'parent_members'
-    %i.fa.fa-lock.group-privacy-parent-members.title-tooltip{title: t(:'group_privacy.visible_to.parent_members', parent_group_name: @group.parent_name)}
+    %i.fa.fa-lock.group-privacy-parent-members.js-tooltip{title: t(:'group_privacy.visible_to.parent_members', parent_group_name: @group.parent_name)}
   - when 'members'
-    %i.fa.fa-lock.group-privacy-members-only.title-tooltip{title: t(:'group_privacy.visible_to.members')}
-
-  -#- image_html = image_tag("privicon_"+privacy+".png", alt: privacy, :id => 'privacy-image')
-  -#- if can? :edit, group
-    -#= link_to image_html, edit_group_path(group)
-  -#- else
-    -#= image_html
+    %i.fa.fa-lock.group-privacy-members-only.js-tooltip{title: t(:'group_privacy.visible_to.members')}

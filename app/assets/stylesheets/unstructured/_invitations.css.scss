@@ -26,12 +26,22 @@ body.invitations {
     margin-bottom: 40px;
   }
 
-  .invite-member-checkbox-container {
-   label {
-     display: inline;
-     padding-left: 10px;
-     position: relative;
-     top: 4px;
+  form .invite-member-checkbox-container {
+    .checkbox {
+      margin-top: 0px;
+      padding-left: 0;
+    }
+    .checkbox input[type="checkbox"]{
+      width: 2em;
+      box-shadow: none;
+      margin-top: 0;
+      margin-left: 0;
+      margin-right: -20px;
+      clear: both;
+    }
+    .checkbox label{
+      margin-top: 10px;
+      min-height: 24px;
     }
   }
 
@@ -49,5 +59,8 @@ body.invitations {
     margin-bottom: 20px;
     margin-left: 20px;
     width: 470px;
+  }
+  textarea{
+    height: 200px;
   }
 }

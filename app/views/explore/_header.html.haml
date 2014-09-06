@@ -1,13 +1,16 @@
-.row-fluid.header
-  .span5
+.row.header
+  .col-sm-4
     %h1=link_to t(:"explore.header"), explore_path
 
-  .span4
-    .category_select
+  .col-sm-4
+    .form-inline.category_select
       %label= t(:"group_form.category")
       = select_tag :select_category,
-        options_for_select(category_names_and_paths, selected_category_path)
+        options_for_select(category_names_and_paths, selected_category_path),
+        class: 'form-control'
 
-  .span3
-    = form_tag search_explore_path, method: 'get' do |f|
-      = text_field_tag :query, '', placeholder: t(:'search.placeholder')
+  .col-sm-4
+    .form-inline
+      = form_tag search_explore_path, method: 'get' do |f|
+        %label= t(:'search.placeholder')
+        = text_field_tag :query, '', class: 'form-control'

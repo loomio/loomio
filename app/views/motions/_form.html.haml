@@ -1,5 +1,5 @@
 .row
-  .span5
+  .col-md-5
     #motion-form
       = simple_form_for @motion, validate: true do |f|
         = f.input :name, id: "motion-name", input_html: {class: 'js-warn-before-navigating-away'}, hint: t('motion_form.name_helper'), disabled: !@motion.can_be_edited?
@@ -14,18 +14,15 @@
             data: {disable_with: t("common.please_wait") }
         - else
           = f.submit submit_text,
-            :class => "btn btn-info",
+            :class => "btn btn-primary",
             id: "proposal-submit"
-        = link_to t('common.cancel'), @motion.discussion, :class => "btn btn-cancel"
+        = link_to t('common.cancel'), @motion.discussion, :class => "btn btn-cancel btn-default"
 
       -if can? :close, @motion
         %h3=t('motion_form.close_proposal_heading')
-        = link_to t(:close_proposal), "#",
-          'data-title' => t(:close_proposal),
-          'data-body' => t(:confirm_close_proposal),
-          'data-confirm-path' => close_motion_path(@motion),
-          'data-method-type' => 'patch',
-          class: 'btn confirm-dialog',
+        = link_to t(:close_proposal), close_motion_path(@motion), method: :patch,
+          data: { confirm: t(:confirm_close_proposal) },
+          class: 'btn btn-warning',
           id: 'close-voting'
     %script{src: localisation_datetime_input_translations_path(authenticity_token: form_authenticity_token), charset: 'UTF-8'}
 

@@ -40,6 +40,8 @@ Loomio::Application.routes.draw do
   end
 
 
+  root :to => 'marketing#index'
+
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
   get "/explore/category/:id", to: "explore#category", as: :category_explore
@@ -245,7 +247,6 @@ Loomio::Application.routes.draw do
   get '/groups' => redirect('/explore')
 
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
-  root :to => 'marketing#index'
 
   constraints(MainDomainConstraint) do
     scope controller: 'pages' do
