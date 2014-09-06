@@ -55,6 +55,13 @@ ActiveAdmin.register_page "Dashboard" do
   content :title => proc{ I18n.t("active_admin.dashboard") } do
     columns do
       column do
+        panel "Calculators" do
+          div { link_to "Retention calculator", admin_stats_retention_path }
+          div { link_to "Weekly activity calculator", admin_stats_weekly_activity_path }
+          div { link_to "Group metrics calculator", admin_stats_group_metrics_path(id: 3) }
+        end
+      end
+      column do
         panel "Monthly Active Users" do
           div { print_active_users().html_safe }
         end

@@ -8,6 +8,7 @@
       %tr
         %th Weeks ago
         %th New users
+        %th New top-level groups
         %th New discussions
         %th New comments
         %th New proposals
@@ -16,6 +17,7 @@
         %tr
           %td= m.fetch :weeks_ago
           %td= m.fetch :users
+          %td= m.fetch :groups
           %td= m.fetch :discussions
           %td= m.fetch :comments
           %td= m.fetch :motions
