@@ -97,9 +97,9 @@ GEM
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cliver (0.3.2)
-    closure_tree (4.6.3)
+    closure_tree (5.0.0)
       activerecord (>= 3.2.0)
-      with_advisory_lock (>= 0.0.9)
+      with_advisory_lock (>= 3.0.0)
     cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
     codeclimate-test-reporter (0.4.0)
@@ -357,7 +357,7 @@ GEM
       parallel
     pg (0.17.1)
     pg-hstore (1.2.0)
-    pg_search (0.7.6)
+    pg_search (0.7.7)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
@@ -379,8 +379,6 @@ GEM
       pry (>= 0.9.10)
     quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
-    rabl (0.11.0)
-      activesupport (>= 2.3.14)
     rack (1.5.2)
     rack-canonical-host (0.1.0)
       addressable
@@ -437,7 +435,7 @@ GEM
       rspec-mocks (>= 2.99, < 4.0)
     rspec-collection_matchers (1.0.0)
       rspec-expectations (>= 2.99.0.beta1)
-    rspec-core (3.1.0)
+    rspec-core (3.1.1)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -572,7 +570,7 @@ DEPENDENCIES
   browser
   cancancan
   capybara
-  closure_tree (~> 4.6.3)
+  closure_tree
   codeclimate-test-reporter
   coffee-rails
   country_select
@@ -619,13 +617,12 @@ DEPENDENCIES
   paper_trail (~> 3.0.5)
   paperclip (~> 4.2.0)
   parallel_tests
-  pg (~> 0.17.1)
-  pg_search (~> 0.7.6)
+  pg
+  pg_search
   poltergeist
   private_pub
   pry-rails
   quiet_assets
-  rabl
   rack-canonical-host
   rack_session_access
   rails (~> 4.1.4)
@@ -644,7 +641,7 @@ DEPENDENCIES
   ruby-progressbar
   sass-rails
   selenium-webdriver
-  sequenced (~> 1.6.0)
+  sequenced
   shoulda-matchers
   simple_form (~> 3.0.2)
   spring

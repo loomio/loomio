@@ -1,4 +1,4 @@
-class Api::DiscussionsController < Api::BaseController
+class API::DiscussionsController < API::BaseController
   def show
     @discussion = Discussion.find(params[:id])
     render json: @discussion

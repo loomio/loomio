@@ -48,5 +48,10 @@ RSpec.configure do |config|
     stub_request(:head, /www.gravatar.com/).
       with(headers: {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
       to_return(status: 200, body: "stubbed response", headers: {})
+    stub_request(:post, /localhost:9292\/faye/).
+      with(headers: {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
+      to_return(status: 200, body: "stubbed response", headers: {})
   end
+
+
 end

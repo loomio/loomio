@@ -17,17 +17,9 @@ class Motion < ActiveRecord::Base
 
   validates_presence_of :name, :discussion, :author, :closing_at
 
-<<<<<<< HEAD
-  validates_length_of :name, :maximum => 250
   validate :one_motion_voting_at_a_time
-  validates_length_of :outcome, :maximum => 250
-||||||| merged common ancestors
-  validates_length_of :name, :maximum => 250
-  validates_length_of :outcome, :maximum => 250
-=======
   validates_length_of :name, maximum: 250
-  validates_length_of :outcome, maximum: 250
->>>>>>> master
+  validates_length_of :outcome, maximum: 500
 
   include Translatable
   is_translatable on: [:name, :description]
@@ -254,56 +246,13 @@ class Motion < ActiveRecord::Base
   end
 
   private
-<<<<<<< HEAD
-    def one_motion_voting_at_a_time
-      if voting? and discussion.current_motion.present? and discussion.current_motion != self
-        errors.add(:discussion, 'already has a motion in progress')
-      end
+  def one_motion_voting_at_a_time
+    if voting? and discussion.current_motion.present? and discussion.current_motion != self
+      errors.add(:discussion, 'already has a motion in progress')
     end
+  end
 
-    def find_or_new_motion_reader_for(user)
-      if self.motion_readers.where(user_id: user.id).exists?
-        self.motion_readers.where(user_id: user.id).first
-      else
-        motion_reader = self.motion_readers.build
-        motion_reader.motion = self
-        motion_reader.user = user
-        motion_reader
-      end
-    end
-
-    def set_default_closing_at
-      self.closing_at ||= (Time.zone.now + 3.days)
-    end
-||||||| merged common ancestors
-    def find_or_new_motion_reader_for(user)
-      if self.motion_readers.where(user_id: user.id).exists?
-        self.motion_readers.where(user_id: user.id).first
-      else
-        motion_reader = self.motion_readers.build
-        motion_reader.motion = self
-        motion_reader.user = user
-        motion_reader
-      end
-    end
-
-    def set_default_close_at_date_and_time
-      self.closing_at ||= Time.zone.now + 3.days
-    end
-
-    def set_closing_at
-      date_time_zone_format = '%Y-%m-%d %H:%M %Z'
-      tz_offset = ActiveSupport::TimeZone[close_at_time_zone].formatted_offset
-      date_time_zone_string = "#{close_at_date.to_s} #{close_at_time} #{tz_offset}"
-      self[:closing_at] = DateTime.strptime(date_time_zone_string, date_time_zone_format)
-    end
-
-    def fire_new_motion_event
-      Events::NewMotion.publish!(self)
-    end
-=======
   def set_default_closing_at
     self.closing_at ||= (Time.zone.now + 3.days).at_beginning_of_hour
   end
->>>>>>> master
 end

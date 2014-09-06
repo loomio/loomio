@@ -1,6 +1,6 @@
-<<<<<<< HEAD
-class Api::BaseController < BaseController
+class API::BaseController < ActionController::Base
   respond_to :json
+  after_filter :increment_measurement
 
   protected
   def render_event_or_model_error(event, model)
@@ -10,13 +10,7 @@ class Api::BaseController < BaseController
       render json: model, serializer: ModelErrorSerializer, status: 400, root: :error
     end
   end
-end
-||||||| merged common ancestors
-=======
-class API::BaseController < ActionController::Base
-  after_filter :increment_measurement
 
-  protected
   def increment_measurement
     Measurement.increment(measurement_name)
   end
@@ -47,5 +41,3 @@ class API::BaseController < ActionController::Base
     @current_ability ||= AccountAbility.new(current_user)
   end
 end
-
->>>>>>> master

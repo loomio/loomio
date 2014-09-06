@@ -218,12 +218,11 @@ class Ability
       (user_is_admin_of?(motion.discussion.group_id) || user_is_author_of?(motion))
     end
 
-    # probably unnecessary
-    #can [:destroy,
-         #:create_outcome,
-         #:update_outcome], Motion do |motion|
-      #user_is_author_of?(motion) or user_is_admin_of?(motion.discussion.group_id)
-    #end
+    can [:destroy,
+         :create_outcome,
+         :update_outcome], Motion do |motion|
+      user_is_author_of?(motion) or user_is_admin_of?(motion.discussion.group_id)
+    end
 
     can [:show], Vote do |vote|
       can?(:show, vote.motion)

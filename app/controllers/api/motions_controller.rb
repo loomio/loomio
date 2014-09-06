@@ -1,4 +1,4 @@
-class Api::MotionsController < Api::BaseController
+class API::MotionsController < API::BaseController
 
   def create
     @motion = Motion.new(permitted_params.motion)

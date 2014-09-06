@@ -1,5 +1,4 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :discussion_id, :discussion, :comment, :body, :parent_id, :author
   include Twitter::Extractor
   include Translatable
 
@@ -14,7 +13,7 @@ class Comment < ActiveRecord::Base
   has_many :events, as: :eventable, dependent: :destroy
   has_many :attachments
 
-  validates_presence_of :user
+  validates_presence_of :user, :discussion
   validate :has_body_or_attachment
   validate :attachments_owned_by_author
   validate :parent_comment_belongs_to_same_discussion
@@ -83,6 +82,15 @@ class Comment < ActiveRecord::Base
     (discussion.participants - mentioned_group_members) - [author]
   end
 
+  def followers_without_author
+    discussion.followers.where('users.id != ?', author_id)
+  end
+
+  def non_mentioned_followers_without_author
+    ignored_user_ids = [author.id, mentioned_group_members.pluck(:id)].flatten
+    discussion.followers.where('users.id NOT IN (?)', ignored_user_ids)
+  end
+
   def likes_count
     comment_votes_count
   end
@@ -91,15 +99,6 @@ class Comment < ActiveRecord::Base
     if liker_ids_and_names.respond_to? :keys
       liker_ids_and_names.keys.include?(user.id)
     end
-  end
-
-  def followers_without_author
-    discussion.followers.where('users.id != ?', author_id)
-  end
-
-  def non_mentioned_followers_without_author
-    ignored_user_ids = [author.id, mentioned_group_members.pluck(:id)].flatten
-    discussion.followers.where('users.id NOT IN (?)', ignored_user_ids)
   end
 
   private
