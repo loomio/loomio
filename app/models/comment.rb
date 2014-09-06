@@ -19,7 +19,8 @@ class Comment < ActiveRecord::Base
   validate :parent_comment_belongs_to_same_discussion
 
   after_initialize :set_defaults
-  after_destroy :send_discussion_comment_deleted!
+
+  after_destroy -> { discussion.comment_deleted! }
 
   default_scope { includes(:user).includes(:attachments).includes(:discussion) }
 
@@ -31,6 +32,7 @@ class Comment < ActiveRecord::Base
   delegate :full_name, to: :group, prefix: :group
   delegate :title, to: :discussion, prefix: :discussion
   delegate :locale, to: :user
+  scope :published, -> { where(archived_at: nil) }
 
   serialize :liker_ids_and_names, Hash
 

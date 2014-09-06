@@ -19,7 +19,7 @@ describe VotesController do
     end
 
     it 'casts the vote with VoteService' do
-      VoteService.should_receive(:cast).and_return(true)
+      MotionService.should_receive(:cast_vote).and_return(true)
       post :create, motion_id: motion.id, vote: {position: 'yes'}
     end
 
@@ -27,7 +27,7 @@ describe VotesController do
       post :create, motion_id: motion.id, vote: {position: 'yes'}
 
       flash[:success].should =~ /Position submitted/
-      response.should redirect_to motion
+      response.should redirect_to motion.discussion
     end
   end
 end
