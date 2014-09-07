@@ -4,7 +4,7 @@
       .control-group
         - if params[:group_id].blank?
           %p= t "discussion_form.new.who"
-          = f.collection_select :group_id, current_user.groups_discussions_can_be_started_in, :id, :full_name, {include_blank: true}
+          = f.input :group_id, as: :select, collection: current_user.groups_discussions_can_be_started_in, label_method: :full_name, label: false
         - else
           = f.input :group_id, :as => :hidden
       = f.input :title, autofocus: true, input_html: {class: 'js-warn-before-navigating-away'}, label: false
