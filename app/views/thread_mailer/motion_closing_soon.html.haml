@@ -8,7 +8,7 @@
     %td
       = render_rich_text(@motion.description, false)
 
-- unless @motion.user_has_voted?(@user)
+- unless @motion.user_has_voted?(@recipient)
   %h4= t(:"help.have_your_say")
   =render 'vote_buttons', motion: @motion
 
