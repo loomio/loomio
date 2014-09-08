@@ -89,7 +89,7 @@ class DiscussionsController < GroupBaseController
     end
 
     if can?(:move, @discussion)
-      @destination_groups = current_user_or_visitor.groups.order(:name).uniq.reject { |g| g.id == @group.id }
+      @destination_groups = current_user_or_visitor.groups.order(:full_name).uniq.reject { |g| g.id == @group.id }
     end
 
     @discussion_reader = DiscussionReader.for(user: current_user_or_visitor, discussion: @discussion)
