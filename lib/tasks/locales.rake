@@ -30,10 +30,7 @@ namespace :locales do
     end
 
 
-    Rake::Task["locales:check_interpolations"].invoke(fixed_locales)
-
-    Rake::Task["locales:check_exp_locales"].invoke(fixed_locales)
-
+    Rake::Task["locales:check"].invoke
 
     print "\n\n"
     puts " DONE!! ^_^"
