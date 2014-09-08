@@ -31,7 +31,8 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def motion_attributes
-    [:name, :description, :discussion_id, :closing_at, :outcome]
+    [:name, :description, :discussion_id, :closing_at, :outcome, 
+     :yes_text, :abstain_text, :no_text, :block_text]
   end
 
   def membership_request_attributes

@@ -38,6 +38,7 @@ class Motion < ActiveRecord::Base
   has_paper_trail only: [:name, :description, :closing_at]
 
   after_initialize :set_default_closing_at
+  after_initialize :initialize_vote_text
 
   attr_accessor :create_discussion
 
@@ -247,5 +248,12 @@ class Motion < ActiveRecord::Base
   private
   def set_default_closing_at
     self.closing_at ||= (Time.zone.now + 3.days).at_beginning_of_hour
+  end
+
+  def initialize_vote_text
+    self.yes_text     ||= I18n.t(:"yes_details")
+    self.abstain_text ||= I18n.t(:"abstain_details")
+    self.no_text      ||= I18n.t(:"no_details")
+    self.block_text   ||= I18n.t(:"block_details")
   end
 end
