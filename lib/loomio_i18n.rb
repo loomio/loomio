@@ -25,13 +25,21 @@ module Loomio
                   'Svenska' => :sv,
                   'Tiếng Việt' => :vi,
                   'Türkçe' => :tr,
-                  'українська мова' => :uk }
+                  'українська мова' => :uk,
 
-    LOCALE_FALLBACKS = { :be => :'be-BY',
-                         :ca => :es,
-                         :pt => :'pt-BR',
-                         :'pt-PT' => :'pt-BR',
-                         :zh => :'zh-TW' }
+                  'беларуская мова ' => :be,         # unselectable
+                  '正體中文' => :'zh',                 # unselectable
+                  'Português (Brasil)' => :'pt',     # unselectable
+                  'Português (Brasil)' => :'pt-PT' } # unselectable
+
+    SELECTABLE_FALLBACKS = { :ca => :es }
+
+    UNSELECTABLE_FALLBACKS = { :be      => :'be-BY',
+                               :pt      => :'pt-BR',
+                               :'pt-PT' => :'pt-BR',
+                               :zh      => :'zh-TW' }
+
+    FALLBACKS = UNSELECTABLE_FALLBACKS.merge SELECTABLE_FALLBACKS
 
     EXPERIMENTAL_LOCALE_STRINGS = %w( ar cmn hr da eo fi gl ga-IE km mk mi fa-IR pl pt-PT ru sl te )
 

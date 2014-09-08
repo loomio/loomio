@@ -2,21 +2,14 @@ require 'http_accept_language'
 
 module LocalesHelper
 
-  LOCALE_STRINGS          = Loomio::I18n::LANGUAGES.values.map(&:to_s)
-  LOCALE_FALLBACK_STRINGS = Loomio::I18n::LOCALE_FALLBACKS.keys.map(&:to_s)
+  LOCALE_STRINGS = Loomio::I18n::LANGUAGES.values.map(&:to_s)
 
   def locale_name(locale)
-    locale = replace_fallback_locales(locale)
-
     Loomio::I18n::LANGUAGES.key(locale.to_sym)
   end
 
-  def replace_fallback_locales(locale)
-    Loomio::I18n::LOCALE_FALLBACKS[locale.to_sym] || locale
-  end
-
   def supported_locale_strings
-    LOCALE_STRINGS + LOCALE_FALLBACK_STRINGS + Loomio::I18n::EXPERIMENTAL_LOCALE_STRINGS
+    LOCALE_STRINGS + Loomio::I18n::EXPERIMENTAL_LOCALE_STRINGS
   end
 
   def valid_locale?(locale)
@@ -92,10 +85,14 @@ module LocalesHelper
 
   def language_options_array
     options = []
-    Loomio::I18n::LANGUAGES.each_pair do |language, locale|
+    selectable_languages.each_pair do |language, locale|
       options << [language, current_path_with_locale(locale)]
     end
     options
+  end
+
+  def selectable_languages
+    Loomio::I18n::LANGUAGES.reject { |language, locale| Loomio::I18n::UNSELECTABLE_FALLBACKS.include? locale  }
   end
 
   def selected_language_option
