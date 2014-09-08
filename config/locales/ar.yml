@@ -298,15 +298,58 @@ ar:
       motion:
         name: "ما هو إتجاه العمل الذي تقترحه؟"
         description: "أعط ما يكفي من المعلومات بحيث يدرك الجميع مالذي تعنيه الموافقة أو عدمها."
+      user:
+        email: "البريد الإلكتروني"
+        password: "كلمة السر"
   helpers:
     submit:
       discussion:
         create: "إبدأ نقاشا"
+        update: "حدّث النقاش"
       motion:
         create: "إبدأ مقترحا"
       user:
         create: "أنشئ حسابا"
         update: "حدّث الإعدادات"
+  email:
+    by_who: "من قبل %{person}"
+    reply_to_this_discussion: شارك في هذا النقاش
+    to_join_discussion:
+      subject: "%{who} يريدك أن تنضم إلى نقاش على Loomio"
+      content: "لقد تمت دعوتك للمشاركة في النقاش: %{discussion}"
+      message_intro: "%{who} يقول:"
+      link: "إنضم للنقاش"
+    to_join_group:
+      subject: "لقد قام %{member} بدعوتك للإنضمام إلى %{group_name} على Loomio"
+    to_start_group:
+      subject: "قم بإعداد مجموعة جديدة على Loomio: %{group_name}"
+    user_added_to_a_group:
+      subject: "لقد أضافك %{who} إلى %{which_group}"
+      content: "لقد أضافك %{who} إلى %{which_group} على Loomio. انقر هنا للذهاب إلى المجموعة:"
+    unsubscribe: "الغ الاشتراك أو قم بتغيير تفضيلات البريد الإلكتروني:"
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> لإلغاء الاشتراك أو تغيير تفضيلات البريد الإلكتروني."
+    view_comment: "انقر هنا لاستعراض التعليق على Loomio"
+    view_discussion: "انقر هنا لاستعراض هذا النقاش"
+    view_group: "انقر هنا لاستعراض المجموعة على Loomio"
+    view_proposal: "إستعرض هذا المقترح على Loomio"
+    create_discussion:
+      intro: "%{who} بدأ نقاشا في %{which_group}:"
+    create_proposal:
+      intro: "تم إنشاء مقترح جديد في مجموعة على Loomio أنت عضو فيها."
+      closes_in: "سيغلق خلال"
+      subject: "اقتراح جديد: %{which}"
+    daily_activity:
+      heading: "نشاطك على Loomio"
+      subject: "Loomio - ملخص لل 24 ساعة الأخيرة"
+    missed_yesterday:
+      subject: "أحداث الأمس على Loomio"
+      mark_as_read: تمت قراءته
+      thanks_for_reading: شكرا للقراءة، نتمنى لك يوما سعيدا!
+      click_here_to_mark_all_as_read_html: "هذا ما حدث يوم أمس على Loomio. \nحال إنهاء القراءة، انقر على <a href=\"%{link}\"> تمت قراءته </a> لإزالته من صندوق البريد الوارد لديك على Loomio.\n"
+    group_membership_approved:
+      subject: "تم قبول طلب العضوية"
+    invitation:
+      hi: "مرحبا بك %{name}،"
   ago: "منذ %{quantity_of_time}"
   approve: "موافق"
   back: "الرجوع"
@@ -359,3 +402,33 @@ ar:
       sunday: الأحد
     please_wait: "الرجاء الإنتظار"
     privacy: "الخصوصية"
+    start_group: "ابدأ مجموعة!"
+  group_categories:
+    blank: "غير مصنف"
+    economics: "إقتصاد"
+    activist: "نشاط ونضال"
+    arts: "فنون"
+    business: "أعمال"
+    collective: "جمعية تشاركية"
+    community_group: "مجتمع محلي"
+    co_operative: "جمعية تعاونية"
+    democratic_organisation: "منظمة ديمقراطية"
+    education: "تعليم"
+    environmental_group: "مجموعة بيئية"
+    family: "عائلة"
+    local_government: "حكومة محلية"
+    online_community: "مجتمع على الإنترنت"
+    religious_group: "دين وروحانية"
+    event: "حدث"
+    open_source_software: "برمجيات مفتوحة المصدر"
+    political_initiative: "مبادرة سياسية"
+    social_enterprise: "مؤسسة إجتماعية"
+    social_justice: "عدالة إجتماعية"
+    advocacy_group: "مجموعة دعوة ومناصرة"
+    science: "علوم"
+    technology: "تقانة"
+    sports: "رياضة"
+    youth: "شباب"
+    women: "مرأة"
+    media: "إعلام"
+    health: "صحة"
