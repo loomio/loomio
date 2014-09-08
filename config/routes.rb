@@ -2,6 +2,15 @@ Loomio::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  namespace :admin do
+    namespace :stats do
+      get :group_metrics
+      get :retention
+      get :events
+      get :weekly_activity
+    end
+  end
+
   namespace :api, path: '/api/v1' do
     resources :comments, only: :create
   end

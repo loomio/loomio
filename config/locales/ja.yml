@@ -737,8 +737,6 @@ ja:
       subject: " %{who}  が %{which_group} に参加するようにお願いしています"
       view_group: "ここでリクエストを承認または拒否できます"
     mentioned:
-      intro: "あなたはこのディスカッションでタグ付けされました："
-      said: "%{comment_author} は言いました："
       subject: "%{who} がLoomioの %{which} グループであなたをタグ付けしました"
     new_motion_created:
       context: "%{author} は  %{group_full_name} で提案を作成しました："

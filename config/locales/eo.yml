@@ -5,7 +5,8 @@ eo:
         title: 'Retpoŝtaj preferoj'
         when_do_you_want_emails: 'Retpoŝtu min:'
         email_missed_yesterday: "'Hieraŭ en Loomio' - ĉiutaga resumo de ĉiaj eble perditaj aktivaĵoj"
-        email_followed_threads: "Kiam mi estas @menciata, aŭ kiam estas aktiveco en de mi sekvataj fadenoj."
+        email_when_mentioned: "Kiam mi estas @menciata"
+        email_followed_threads: "Kiam estas aktiveco en fadenoj kiujn mi sekvas."
         email_when_proposal_closing_soon: "24 horojn antaŭ la fermo de propono."
         email_new_discussions_and_proposals: 'Novaj diskutoj kaj proponoj'
         for_these_groups: "Por ĉi tiuj grupoj:"
@@ -124,7 +125,7 @@ eo:
   success:
     added_to_group: "Vi estis ĵus anigita al la grupo %{which_group}."
     close_date_changed: "La limdato estis sukcese ŝanĝita."
-    discussion_created: "La diskuto estis sukcese kretia."
+    discussion_created: "La diskuto estas sukcese kreita."
     discussion_deleted: "La diskuto estis sukcese forigita."
     discussion_moved: "Diskuto sukcese moviĝis al %{group_name}"
     emails_sending: "Retpoŝtaĵoj sendiĝas."
@@ -925,8 +926,7 @@ eo:
       subject: "%{who} petis aliĝi al %{which_group}"
       view_group: "Vi povas aprobi aŭ malaprobi la peton ĉi tie"
     mentioned:
-      intro: "Vi menciiĝis en diskuto kun la titolo:"
-      said: "%{comment_author} diris:"
+      context: "%{author_name} menciis vin dum diskutado de \"%{discussion_title}\""
       subject: "%{who} menciis vin en la grupo %{which} en Loomio"
     new_motion_created:
       subject: "Propono: %{proposal_title}"
@@ -1026,7 +1026,7 @@ eo:
   thanks: "Dankon!"
   unlike: "Ne ŝati"
   time_until_close: "%{quantity_of_time} ĝis fermo"
-  update: "Ĝisdatigo"
+  update: "Ĝisdatigi"
   facebook: "Facebook"
   yahoo: "Yahoo"
   google: "Google"

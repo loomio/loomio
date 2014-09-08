@@ -64,8 +64,6 @@ gl:
     view_discussion: "Preme aquí para este debate"
     daily_activity:
       subject: "Loomio - Resumo das últimas 24 horas"
-    mentioned:
-      intro: "Fuches citado nun debate titulado:"
     proposal_closing_soon:
       summary: "Resumo"
   discussions: "Debates"

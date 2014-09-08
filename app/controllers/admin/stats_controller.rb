@@ -1,6 +1,21 @@
 class Admin::StatsController < Admin::BaseController
   helper_method :format_percents
 
+  def weekly_activity
+    @metrics = []
+    (0..25).each do |i|
+      date_range = (i+1).weeks.ago..i.weeks.ago
+      @metrics << { weeks_ago:   i,
+                    comments:    Comment.where(   created_at: date_range ).count,
+                    groups:      Group.parents_only.where(     created_at: date_range ).count,
+                    users:       User.where(      created_at: date_range ).count,
+                    votes:       Vote.where(      created_at: date_range ).count,
+                    motions:     Motion.where(    created_at: date_range ).where('author_id != 5562').count,
+                    discussions: Discussion.where(created_at: date_range ).where('author_id != 5562').count }
+    end
+    render layout: false
+  end
+
   def group_metrics
     @metrics = []
     group = Group.find params[:id]
@@ -11,7 +26,7 @@ class Admin::StatsController < Admin::BaseController
     render layout: false
   end
 
-  def retention_metrics
+  def retention
     @metrics = []
     (1..19).each do |months_ago|
       @metrics << retention_metrics_counts(months_ago)

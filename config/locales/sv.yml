@@ -701,8 +701,6 @@ sv:
       subject: "%{who} har begärt att få gå med %{which_group}"
       view_group: "Du kan godkänna eller avslå begäran här"
     mentioned:
-      intro: "Du nämndes i en diskussion med titeln:"
-      said: "%{comment_author} sa:"
       subject: "%{who} nämnde dig i %{which}gruppen i Loomio"
     new_motion_created:
       context: "%{author} skapade ett förslag i %{group_full_name}:"
