@@ -451,6 +451,7 @@ es:
     empty:
       no_discussions: "No hay discusiones en ninguno de tus grupos."
       no_discussions_in_group: "Este grupo no tiene discusiones todavía."
+      no_discussions_matching_filters_html: "No se han encontrado discusiones. <a href='%{link}'>Limpiar filtros</a>."
       no_public_discussions: "No hay discusiones públicas en este grupo."
       discussions_are_private: "Todas las discusiones en este grupo son privadas."
       request_membership_html: "Para ver discusiones privadas, <a href='%{href}'>solicita unirte al grupo.</a>"
@@ -677,6 +678,7 @@ es:
   now_that_your_logged_in: "Ahora que has entrado con %{provider_name}, por favor, confirma tus datos para crear una cuenta Loomio."
   confirmation_not_received: "¿No has recibido las instrucciones de confirmación?"
   unlock_not_received: "¿No has recibido instrucciones de desbloqueo?"
+  inactive_html: "Esta cuenta ha sido desactivada. Si tú tienes alguna pregunta, por favor <a href='%{path_to_contact}'>póngase en contacto con nosotros."
   create_an_account_html: 'Crear una cuenta Loomio Beta'
   log_in: "Entrar"
   join_group:
@@ -778,6 +780,7 @@ es:
     picture: "Imagen"
     use_initials: 'Usar iniciales'
     use_uploaded: 'Subir nueva imagen'
+    use_gravtar: 'Usar Gravatar'
     upload_new_image: "Cargar nueva imagen"
   group_setup:
     set_up_your_group: Establecer grupo
@@ -862,6 +865,8 @@ es:
     view_discussion: "Haz click aquí para ver esta discusión "
     view_group: "Haz click aquí para ver el grupo en Loomio"
     view_proposal: "Ver esta propuesta en Loomio"
+    create_discussion:
+      intro: "%{who} empezó una discusión en %{which_group}:"
     create_proposal:
       intro: "Una nueva propuesta fue creada en un grupo de Loomio al que tu perteneces."
       closes_in: "Cierra en"
@@ -874,6 +879,9 @@ es:
       subject: "Ayer en Loomio"
       mark_as_read: Marcar como leído
       thanks_for_reading: Gracias por leer, ¡que tengas un buen día!
+      click_here_to_mark_all_as_read_html: |
+        Esto es lo que sucedió ayer en Loomio.
+        Una vez usted lo haya leído, clic  <a href="%{link}">marcar como leído</a>  para eliminarlo de tú bandeja de entrada.
       marked_as_read_success: "Todo el contenido del correo ha sido marcado como leído"
     group_email:
       intro: "%{who} hizo un anuncio en %{group}:"
@@ -890,8 +898,10 @@ es:
       subject: "%{who} pidió acceso a %{which_group}"
       view_group: "Puedes aceptar o denegar el pedido aquí"
     mentioned:
+      context: "%{author_name} le mencionó en la discusión  \"%{discussion_title}\""
       subject: "%{who} te mencionó en el grupo de Loomio %{which} "
     new_motion_created:
+      subject: "Propuesta: %{proposal_title}"
       context: "%{author} ha creado una propuesta en %{group_full_name}:"
     proposal_closed:
       proposal_has_closed: 'La propuesta se ha cerrado'
@@ -911,11 +921,16 @@ es:
       headline: "La propuesta de %{author} en %{group} cerrará pronto:"
       summary: "Resumen"
     thread_mailer:
+      footer_text: "Responder a este correo electrónico directamente o verlo en Loomio:"
+      footer_html: "Responder a este correo electrónico directamente o <a href='%{app_link}'> verlo en Loomio </a>. Cambia tu <a href='%{preferences_link}'> preferencias de correo electrónico </a>."
       change_preferences: "Cambiar sus preferencias de email"
       new_motion: "%{who} propuso:"
       motion_closing_soon: "Cierra en 24 Horas"
       proposal_closed: "Proposición cerrada:"
+      specify_outcome_html: "Tu propuesta se ha cerrado. <a href='%{link}'>Especifica un resultado </a> para que todos los conozcan."
       specify_outcome: " Su propuesta ha cerrado. Especifique un resultado para que todos lo conozcan:"
+      outcome_created: "%{who} anunció el resultado de la propuesta "
+      you_agreed: "Tú %{past_tense_position}"
     verification:
       header: "¡Ya casi terminas!"
       intro: "Por favor, haz click en el enlace de verificación para finalizar tu solicitud:"
@@ -993,7 +1008,7 @@ es:
     unread: No leído
     filter: 'Filtrar:'
     following: Siguiendo
-    not_following: No siguiendo
+    not_following: Dejar de seguir
     back_to_discussion: "Volver a la discusión"
     edited: Editado
     groups: "Grupos"
