@@ -3,7 +3,7 @@ module AvatarInitials
   #   avatar_initials
   #   name
   #   email
-  #   deleted_at
+  #   deactivated_at
 
   extend ActiveSupport::Concern
 
@@ -16,7 +16,7 @@ module AvatarInitials
                       join('')
     end
     initials = initials.upcase.gsub(/ /, '')
-    initials = "DU" if deleted_at
+    initials = "DU" if deactivated_at
     self.avatar_initials = initials[0..2]
   end
 end

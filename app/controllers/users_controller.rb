@@ -46,12 +46,7 @@ class UsersController < BaseController
 
   def profile
     @user = current_user
-  end
-
-  def deactivate
-    @user = current_user
-    @user.deactivate!
-    redirect_to root_url
+    @user_deactivation_response = UserDeactivationResponse.new
   end
 
   def deactivation_instructions

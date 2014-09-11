@@ -52,6 +52,12 @@ body.users {
         &.clearfix:hover { background-color: $selector; }
       }
     }
+
+    #user_deactivation_response_body {
+      height: 150px;
+      width: 495px;
+      margin-left: 10px;
+    }
     .deactivation-info { margin-left: 10px; }
     .deactivation-text { 
       margin: 50px auto; }

@@ -34,15 +34,21 @@
 .row.deactivate-account
   .span3
     - if can? :deactivate, @user
-      = link_to t(:'user_profile.deactivate_account'),
-        user_path(@user),
-        method: :post,
-        class: 'btn btn-danger',
-        id: 'deactivate-user-account',
-        data: {confirm: t(:'user_profile.confirm_account_deactivation')}
+      = link_to t(:'user_profile.deactivate_account'), '#deactivate-account-modal', "data-toggle" => "modal", id: 'deactivate-user-account', class: 'btn btn-danger'
     - else
       = link_to t(:'user_profile.deactivate_account'), deactivation_instructions_path, class: 'btn btn-danger', id: "deactivate-user-account"
 .row
   .span3
     = link_to t(:'user_profile.about_deactivation'), about_deactivation_path, class: 'deactivation-info'
 
+
+#deactivate-account-modal.modal.hidden
+  .modal-header
+    %button.close{"data-dismiss" => "modal"}×
+    %h3= t(:'user_profile.deactivation.query')
+  = simple_form_for @user_deactivation_response do |f|
+    .modal-body
+      = f.input :body, label: false
+    .modal-footer
+      = submit_tag "Deactivate Account", class: "btn btn-danger", id: 'account-deactivation-submit', :data => { :disable_with => "Deactivate account" }
+      = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn"
