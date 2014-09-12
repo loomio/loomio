@@ -280,6 +280,7 @@ en:
     reactivation_html: "You will need to <a href='%{link}'>contact us</a> to reactivate your account."
     deactivation:
       title: "Deactivating your account"
+      query: "Would you mind telling us why you are deactivating your account?"
       only_coordinator: "A group must have at least one coordinator. You are currently the only coordinator of the following groups:"
       instructions: "In order to deactivate your account, you need to either add another coordinator or deactivate the groups."
       info_title: "What will deactivating your account mean?"
