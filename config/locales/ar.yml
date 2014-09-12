@@ -128,6 +128,45 @@ ar:
   tagline: "إنشاء عالم يكون فيه من السهل لأي كان المشاركة في قرارات تؤثر عليهم."
   click_to_dismiss: "انقر هنا لإغلاق هذه الرسالة"
   generic_confirm: "هل أنت متأكد؟"
+  discussion_helper_text:
+    header: "أهلا بك في نقاشك الأول"
+    message: "<p>الموضوع النقاش يقع أعلى الصفحة، بينما يندرج السياق والتوضيح تحته.</p><p>التعليقات تقع على يمين الصفحة، والقرارات تقع أعلى اليمين. إذا كنت تعتقد أن المجموعة مستعدة لاتخاذ قرار يمكنك عندها تقديم مقترح لنقاشه.</p>"
+  group_helper_text:
+    header: "مرحبا بك في مجموعتك الجديدة!"
+    message: "<p>هذه <strong>صفحة المجموعة</strong>. على اليسار تقع قائمة جميع المناقشات في هذه المجموعة.</p><p>عندما تريد مناقشة موضوع آخر في المجموعة يمكنك عندها بدء نقاش جديد.</p>"
+  dashboard_helper_text:
+    header: "مرحبا بك في صفحتك الرئيسية"
+  prompt_visitor_to_authenticate:
+    header: "قم بتسجيل الدخول أو الإنضمام لإحدى المجموعات من أجل المشاركة"
+    body: "إن كنت عضوا في هذه المجموعة فيجب أن تقوم بتسجيل الدخول من أجل المشاركة"
+  prompt_user_to_join:
+    header: "إنضم للمجموعة من أجل المشاركة"
+    body: "حتى تستطيع التعليق أو التصويت يجب أن تكون عضوا في هذه المجموعة."
+  user_profile:
+    back: "عودة إلى ملفي الشخصي"
+    change_password: "تغيير كلمة السر"
+    deactivate_account: "إيقاف الحساب"
+    confirm_account_deactivation: "هل أنت متأكد من أنك تريد إيقاف حسابك؟"
+    reactivation_html: "سيتعين عليك <a href='%{link}'>الإتصال بنا</a> لإعادة تفعيل حسابك."
+    deactivation:
+      title: "جار إيقاف حسابك"
+  group_form:
+    name: "اسم المجموعة"
+    description: "الوصف"
+    category: "التصنيف"
+    confirm_all_discussions_will_be_made_private_message: "إذا قمت بالمتابعة، فسيتم تحويل كل النقاشات العامة إلى خاصة."
+    confirm_all_discussions_will_be_made_public_message: "هل أنت متأكد؟ إذا قمت بالمتابعة، فسيتم تحويل كل النقاشات الخاصة إلى عامة."
+    members_can:
+      add_members: دعوة وقبول أعضاء جدد
+      edit_comments: تحرير تعليقاتهم في أي وقت
+      edit_discussions: تحرير وصف سياق أي نقاش في المجموعة
+      start_discussions: بدء نقاشات جديدة
+      raise_motions: رفع مقترحات جديدة
+      vote: التصويت على المقترحات
+      create_subgroups: إنشاء مجموعات فرعية
+    motions_can_be_edited: تحرير مقترحاتهم بعد بدء التصويت
+    visible_to:
+      label: من يستطيع إيجاد هذه المجموعة؟
   invite_people: "قم بدعوة الناس"
   edit_memberships: 'عدّل العضويات'
   add_new_member: "أضف عضوا جديدا"
