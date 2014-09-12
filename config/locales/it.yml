@@ -1,4 +1,16 @@
 it:
+  users:
+    email_preferences:
+      edit:
+        title: 'Opzioni email'
+        when_do_you_want_emails: 'Mandami un''email:'
+        email_missed_yesterday: "'Ieri su Loomio' - un riassunto quotidiano delle attività che ho perso"
+        email_when_mentioned: "Quando vengo @menzionato"
+        email_followed_threads: "Quando c'è attività negli argomenti che seguo."
+        email_when_proposal_closing_soon: "24 ore prima che la proposta chiuda."
+        email_new_discussions_and_proposals: 'Nuove discussioni e proposte'
+        for_these_groups: "Per questi gruppi:"
+        submit: "Salva le preferenze"
   explore:
     header: "Esplora gruppi pubblici"
   try_it:
@@ -28,6 +40,7 @@ it:
   devise:
     invitations:
       send_instructions: 'Un invito è stato mandato a %{email}.'
+      invitation_token_invalid: 'Questo invito non è più valido!'
       updated: 'Account creato.'
       no_invitations_remaining: "Hai finito gli inviti"
     mailer:
@@ -58,6 +71,7 @@ it:
     group_request_invalid_token: "OPS! Questo codice non è valido"
     group_private_or_not_found: "Gruppo non trovato. \n\nQuesto gruppo potrebbe essere privato. Se qualcuno ti ha dato questo link, chiedigli di invitarti al gruppo."
     group_already_setup: "Il gruppo che stai cercando di creare esiste già."
+    passwords_did_not_match: "La password di conferma non corrisponde"
     proposal_already_exists: "C'è già una proposta aperta in questa discussione."
     user_with_email_address_already_in_group: "Un utente con questo indirizzo mail fa già parte di questo gruppo."
     you_have_already_requested_membership: "Hai già richiesto di far parte di questo gruppo."
@@ -122,6 +136,7 @@ it:
     motion_closed: "Proposta chiusa. Se vuoi, puoi inserire un risultato qui sotto e mandarlo al tuo gruppo."
     motion_outcome_created: "Congratulazioni, hai creato un risultato per la proposta e i membri del tuo gruppo hanno ricevuto una notifica."
     motion_outcome_updated: "il risultato per la proposta é stato aggiornato."
+    password_updated: "La tua password è stata cambiata correttamente"
     position_submitted: "Posizione inviata"
     position_updated: "Posizione aggiornata."
     proposal_created: "Proposta creata correttamente."
@@ -175,6 +190,8 @@ it:
     empty: Aggiornato! Non ci sono commenti che non hai letto.
   notifications:
     header: "Notifiche"
+    new_discussion: "ha iniziato una discussione"
+    new_motion: "ha creato una proposta"
     motion_closed:
       by_user: "ha chiuso la proposta"
       by_expiry: "La proposta è stata chiusa"
@@ -195,6 +212,8 @@ it:
   start_new_group_hint: "Iniziare a prendere decisioni"
   find_a_group: "Trova un gruppo"
   find_a_group_hint: "Esplorare gruppi pubblici"
+  search_for_group: "Cerca un gruppo..."
+  no_groups_found: "Non è stato trovato alcun gruppo con questo nome!"
   no_group_header: "Benvenuto su Loomio Beta"
   empty_notifications: "Non hai ancora notifiche."
   see_all_notifications: "Guarda tutte le notifiche"
@@ -216,12 +235,22 @@ it:
     message: "<p>Questa è la <strong>pagina del gruppo</strong>. Sulla sinistra c'è una lista di tutte le discussioni del gruppo.</p><p>Se vuoi che il gruppo discuta di un altro argomento, comincia una nuova discussione.</p>"
   dashboard_helper_text:
     header: "Benvenuto nella tua Home"
+    message: "<p>La Home mostra tutte le discussioni in corso in tutti i gruppi di cui sei membro.</p><p>Puoi cominciare una discussione su un nuovo argomento cliccando sul pulsante \"Inizia discussione\".</p>"
   prompt_visitor_to_authenticate:
     header: "Accedi o unisciti al gruppo per partecipare"
     body: "Sei un membro di questo gruppo, dovrai effettuare il log-in per partecipare."
   prompt_user_to_join:
     header: "Unisciti al gruppo per partecipare"
     body: "Per commentare o votare, devi essere un membro di questo gruppo."
+  user_profile:
+    back: "Torna al mio profilo"
+    change_password: "Cambia la tua password"
+    deactivate_account: "Disattiva l'account"
+    about_deactivation: "Cosa comporterà questo?"
+    confirm_account_deactivation: "Sei sicuro di voler disattivare il tuo account?"
+    reactivation_html: "Dovrai <a href='%{link}'>contattarci</a> per riattivare il tuo account."
+    deactivation:
+      title: "Disattivazione del tuo account"
   group_form:
     name: "Nome gruppo"
     description: "Descrizione"
