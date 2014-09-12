@@ -476,6 +476,9 @@ en:
     beta_request_header: "Start a group on Loomio Beta"
     beta_request_description: "To start making decisions on Loomio Beta, the first step is to start a group"
     neighbourhood_support_group: "e.g. Neighbourhood Support Group"
+    commercial_use_option: in a company, formal organisation or workplace
+    non_commercial_use_option: in a community group or informal network
+    please_select_an_option: Please select an option
     confirmation:
       title: You're almost done! Check your email.
       body_html: |
@@ -1001,6 +1004,7 @@ en:
         admin_email: "What is your email address?"
         name: "What is the name of your group?"
         description: "If you have a moment, tell us about your group"
+        is_commercial: "Where are you planning to use Loomio?"
 
     placeholders:
       discussion:
@@ -1210,7 +1214,9 @@ en:
     back_to_discussion: "Back to discussion"
     edited: Edited
     groups: "Groups"
+    select_error: Please select an option
     today: Today
+    select: Please select
     months:
       january: January
       february: February
@@ -1265,6 +1271,10 @@ en:
       fr: Fr
       sa: Sa
       su: Su
+
+    meridians:
+      am: 'am'
+      pm: 'pm'
 
     please_wait: "Please wait"
     privacy: "Privacy"
