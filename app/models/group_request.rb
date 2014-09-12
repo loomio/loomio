@@ -6,6 +6,7 @@ class GroupRequest < ActiveRecord::Base
   validates :admin_name, presence: true, length: {maximum: 250}
   validates :admin_email, presence: true, email: true
   validates :payment_plan, presence: true
+  validates_inclusion_of :is_commercial, in: [true, false], message: I18n.t(:'group_request.please_select_an_option')
 
   belongs_to :group
 
