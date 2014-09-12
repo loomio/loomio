@@ -130,12 +130,12 @@ describe User do
   end
 
   describe "name" do
-    it "returns '[deactivated account]' if deleted_at is true (a date is present)" do
-      user.update_attribute(:deleted_at, Time.now)
+    it "returns '[deactivated account]' if deactivated_at is true (a date is present)" do
+      user.update_attribute(:deactivated_at, Time.now)
       user.name.should include('deactivated account')
     end
 
-    it "returns the stored name if deleted_at is nil" do
+    it "returns the stored name if deactivated_at is nil" do
       user.name.should_not == 'Deleted user'
     end
   end
@@ -206,25 +206,25 @@ describe User do
     end
   end
 
-  it "sets deleted_at (Time.now) when deactivate! is called" do
+  it "sets deactivated_at (Time.now) when deactivate! is called" do
     user.deactivate!
-    user.deleted_at.should be_present
+    user.deactivated_at.should be_present
   end
 
-  it "unsets deleted_at (nil) when activate! is called" do
-    user.update_attribute(:deleted_at, 1.month.ago)
+  it "unsets deactivated_at (nil) when activate! is called" do
+    user.update_attribute(:deactivated_at, 1.month.ago)
     user.activate!
-    user.deleted_at.should be_nil
+    user.deactivated_at.should be_nil
   end
 
   describe "active_for_authentication?" do
-    it "returns false if deleted_at is present" do
-      user.update_attribute(:deleted_at, 1.month.ago)
+    it "returns false if deactivated_at is present" do
+      user.update_attribute(:deactivated_at, 1.month.ago)
       user.should_not be_active_for_authentication
     end
 
-    it "returns true if deleted_at is nil" do
-      user.update_attribute(:deleted_at, nil)
+    it "returns true if deactivated_at is nil" do
+      user.update_attribute(:deactivated_at, nil)
       user.should be_active_for_authentication
     end
   end

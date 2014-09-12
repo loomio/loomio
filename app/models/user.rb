@@ -96,6 +96,9 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :attachments
 
+  has_one :deactivation_response,
+          class_name: 'UserDeactivationResponse'
+
   before_save :set_avatar_initials,
               :ensure_unsubscribe_token,
               :ensure_email_api_key,
@@ -103,8 +106,8 @@ class User < ActiveRecord::Base
 
   before_create :set_default_avatar_kind
 
-  scope :active, -> { where(deleted_at: nil) }
-  scope :inactive, -> { where("deleted_at IS NOT NULL") }
+  scope :active, -> { where(deactivated_at: nil) }
+  scope :inactive, -> { where("deactivated_at IS NOT NULL") }
   scope :email_missed_yesterday, -> { active.where(email_missed_yesterday: true) }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
@@ -247,7 +250,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    if deleted_at.present?
+    if deactivated_at.present?
       "[deactivated account]"
     else
       self[:name]
@@ -255,18 +258,26 @@ class User < ActiveRecord::Base
   end
 
   def deactivate!
-    update_attributes(deleted_at: Time.now, avatar_kind: "initials")
+    update_attributes(deactivated_at: Time.now, avatar_kind: "initials")
     memberships.update_all(archived_at: Time.now)
     membership_requests.where("responded_at IS NULL").destroy_all
   end
 
+  def deactivated?
+    deactivated_at.present?
+  end
+
+  def active?
+    deactivated_at.nil?
+  end
+
   def activate!
-    update_attribute(:deleted_at, nil)
+    update_attribute(:deactivated_at, nil)
   end
 
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
   def active_for_authentication?
-    super && !deleted_at
+    super && !deactivated_at
   end
 
   def inactive_message

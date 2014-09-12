@@ -198,6 +198,10 @@ Loomio::Application.routes.draw do
       get '/change_password', action: 'show'
       post '/change_password', action: 'update'
     end
+
+    scope module: :user_deactivation_responses do
+      post '/user_deactivation_responses', action: 'create'
+    end
   end
 
   scope module: :users, path: 'u' do
