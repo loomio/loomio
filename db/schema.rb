@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140911010851) do
+ActiveRecord::Schema.define(version: 20140911225702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -248,6 +248,7 @@ ActiveRecord::Schema.define(version: 20140911010851) do
     t.text     "why_do_you_want"
     t.text     "group_core_purpose"
     t.text     "admin_notes"
+    t.boolean  "is_commercial"
   end
 
   add_index "group_requests", ["group_id"], name: "index_group_requests_on_group_id", using: :btree

@@ -173,6 +173,7 @@ class Group < ActiveRecord::Base
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
+
   def coordinators
     admins
   end
@@ -449,6 +450,27 @@ class Group < ActiveRecord::Base
       parent.theme
     else
       super
+    end
+  end
+
+  # a bit nasty but no one really cares/has time to clean up the group_request stuff
+  def is_commercial
+    if is_subgroup?
+      parent.is_commercial
+    else
+      if group_request.present?
+        group_request.is_commercial
+      else
+        nil
+      end
+    end
+  end
+
+  def financial_nature
+    case is_commercial
+    when nil then 'undefined'
+    when false then 'non-commercial'
+    when true then 'commercial'
     end
   end
 
