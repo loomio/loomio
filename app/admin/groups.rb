@@ -75,6 +75,17 @@ ActiveAdmin.register Group do
       end
     end
 
+    panel("Group members") do
+      table_for group.members.each do |member|
+        column :user_id do |user|
+          link_to user.id, admin_user_path(user)
+        end
+        column :name
+        column :email
+        column :deactivated_at
+      end
+    end
+
     panel("Subgroups") do
       table_for group.subgroups.each do |subgroup|
         column :name
