@@ -24,6 +24,7 @@ When(/^I fill in and submit the form$/) do
   fill_in :group_request_admin_name, with: @user.name
   fill_in :group_request_admin_email, with: @user.email
   fill_in :group_request_name, with: @group_name
+  select 'in a company, formal organisation or workplace', from: :group_request_is_commercial
   click_on 'sign-up-submit'
 end
 
