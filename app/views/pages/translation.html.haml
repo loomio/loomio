@@ -1,0 +1,42 @@
+.container
+  %section.first
+    .inner-container
+      .row-fluid
+        %h1 Translation
+
+        %p
+          This is a reference page for the translators and developers.
+        %p
+          For details about Loomio translation, please see <a href="https://github.com/loomio/loomio/wiki/Translation">this guide</a>.
+
+
+        %h2 Supported Languages (#{LocalesHelper::LANGUAGES.keys.count})
+        %table
+          - LocalesHelper::LANGUAGES.keys.each do |language|
+            - locale = LocalesHelper::LANGUAGES[language]
+            %tr
+              %td= link_to language, root_path(locale: locale)
+              %td= locale
+
+        %h2 Experimental Languages (#{LocalesHelper::EXPERIMENTAL_LOCALE_STRINGS.count})
+        - LocalesHelper::EXPERIMENTAL_LOCALE_STRINGS.each do |locale|
+          = link_to "#{locale}", root_path(locale: locale)
+          &nbsp;&nbsp;
+
+        %h2 Updates
+
+        <a class="twitter-timeline" href="https://twitter.com/search?q=%40loomio+%23translation" data-widget-id="510776756744114176">Tweets about "@loomio #translation"</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+        %h2 Technical
+
+        %p
+          The locales/ language codes your browser is currently reporting (in order of preference):
+          %br
+          [
+          - browser_accepted_locale_strings.each do |locale|
+            - if valid_locale?(locale)
+              #{link_to locale, root_path(locale: locale)}
+            - else
+              #{locale}
+          ]

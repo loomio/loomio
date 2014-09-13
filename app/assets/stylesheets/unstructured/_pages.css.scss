@@ -116,6 +116,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.terms_of_service,
 .pages.third_parties,
 .pages.try_it,
+.pages.translation,
 .pages.purpose,
 .pages.how_it_works,
 .pages.about_us,
@@ -874,4 +875,7 @@ body.pages.try_it {
       font-size: 30px;
     }
   }
+}
+body.pages.translation {
+  td { padding-left: 20px }
 }
