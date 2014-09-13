@@ -251,6 +251,7 @@ pt-BR:
     reactivation_html: "Você vai precisar entrar em <a href='%{link}'>contato conosco</a> para reativar sua conta."
     deactivation:
       title: "Desativando sua conta"
+      query: "Você se importaria nos dizer por que está desativando a sua conta?"
       only_coordinator: "Um grupo deve ter pelo menos um coordenador. Você é atualmente o único coordenador dos seguintes grupos:"
       instructions: "A fim de desativar a sua conta, você precisa adicionar outro coordenador ou desativar os grupos."
       info_title: "O que desativar sua conta significará?"
@@ -410,6 +411,9 @@ pt-BR:
     beta_request_header: "Iniciar um grupo no Loomio Beta"
     beta_request_description: "Para começar a tomar decisões no Loomio Beta, o primeiro passo é iniciar um grupo"
     neighbourhood_support_group: "e.g. Grupo de Apoio do Bairro"
+    commercial_use_option: em uma empresa, organização formal ou local de trabalho
+    non_commercial_use_option: em um grupo comunitário ou rede informal
+    please_select_an_option: Por favor, selecione uma opção
     confirmation:
       title: Você está quase lá! Verifique seu e-mail.
       body_html: |+
@@ -810,6 +814,7 @@ pt-BR:
         admin_email: "Qual é o seu endereço de e-mail?"
         name: "Qual é o nome do seu grupo?"
         description: "Se você tiver um tempo, diga-nos sobre o seu grupo"
+        is_commercial: "Onde você planeja utilizar Loomio?"
     placeholders:
       discussion:
         title: "Título"
@@ -1004,7 +1009,9 @@ pt-BR:
     back_to_discussion: "Voltar para a discussão"
     edited: Editado
     groups: "Grupos"
+    select_error: Por favor, selecione uma opção
     today: Hoje
+    select: Por favor, selecione
     months:
       january: Janeiro
       february: Fevereiro
@@ -1055,6 +1062,9 @@ pt-BR:
       fr: Se
       sa: Sa
       su: Do
+    meridians:
+      am: 'am'
+      pm: 'pm'
     please_wait: "Por favor, aguarde"
     privacy: "Privacidade"
     private: "Privado"

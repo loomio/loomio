@@ -5,6 +5,8 @@ nl-NL:
         title: 'E-mail voorkeuren'
         when_do_you_want_emails: 'E-mail mij:'
         email_missed_yesterday: "'Gisteren op Loomio' - een dagelijkse samenvatting van wat er gebeurd is"
+        email_when_mentioned: "Als ik een @benoeming krijg"
+        email_followed_threads: "Als er activiteit is in gesprekken die ik volg."
         email_when_proposal_closing_soon: "24 uur voordat een voorstel sluit."
         email_new_discussions_and_proposals: 'Nieuwe discussies en voorstellen'
         for_these_groups: "Voor deze groepen:"
@@ -249,8 +251,13 @@ nl-NL:
     reactivation_html: "Neem <a href='%{link}'>contact</a> met ons op om je account te heractiveren."
     deactivation:
       title: "Account wordt uitgeschakeld"
+      query: "Zou je ons willen vertellen waarom je je account deactiveert?"
       only_coordinator: "Een groep moet minimaal een coördinator hebben. Je bent momenteel de enige coordinator van de volgende groepen:"
       instructions: "Om je account te deactiveren, moet je ofwel een andere coördinator toevoegen of de groepen deactiveren."
+      info_title: "Wat betekent het deactiveren van je account?"
+      memberships: "Je zal niet langer worden weergegeven als lid in de groepen waar je lid van bent."
+      group_contributions: "De reacties, voorstellen en discussies die je in groepen hebt gemaakt zullen blijven, maar we halen je naam wel overal weg."
+      emails: "Je zal geen Loomio gerelateerde e-mails meer van ons krijgen."
   group_form:
     name: "Groepsnaam"
     description: "Omschrijving"
@@ -404,6 +411,9 @@ nl-NL:
     beta_request_header: "Begin een groep op Loomio Beta"
     beta_request_description: "Om te beginnen met het maken van beslissingen op Loomio Beta, is het maken van een groep de eerste stap"
     neighbourhood_support_group: "b.v. Buurt Steungroep"
+    commercial_use_option: in een bedrijf, formele organisatie of werkplek
+    non_commercial_use_option: en een gemeenschapsgroep of informeel netwerk
+    please_select_an_option: Selecteer een optie
     confirmation:
       title: Je bent bijna klaar! Bekijk je e-mail.
       body_html: |
@@ -673,6 +683,7 @@ nl-NL:
   now_that_your_logged_in: "Nu je ingelogd bent met %{provider_name}, bevestig je gegevens om  je Loomio account te maken."
   confirmation_not_received: "Geen bevestigingsinstructies ontvangen?"
   unlock_not_received: "Geen ontgrendelingsinstructies ontvangen?"
+  inactive_html: "Dit account is gedeactiveerd. Als je vragen hebt, <a href='%{path_to_contact}'>neem contact op</a>."
   create_an_account_html: 'Maak een Loomio Beta account'
   log_in: "Log in"
   join_group:
@@ -819,6 +830,7 @@ nl-NL:
         admin_email: "Wat is je e-mailadres?"
         name: "Wat is de naam van je groep?"
         description: "Als je een momentje hebt, vertel ons over jouw groep"
+        is_commercial: "Waar ben je van plan Loomio te gaan gebruiken?"
     placeholders:
       discussion:
         title: "Titel"
@@ -900,6 +912,7 @@ nl-NL:
       subject: "%{who} heeft aangevraagd om lid te worden van %{which_group}"
       view_group: "Je kan hier de aanvraag goed- of afkeuren"
     mentioned:
+      context: "%{author_name} noemde je in de discussie \"%{discussion_title}\""
       subject: "%{who} noemde je in de %{which} groep op Loomio"
     new_motion_created:
       subject: "Voorstel: %{proposal_title}"
@@ -925,6 +938,7 @@ nl-NL:
       footer_text: "Reageer direct op deze e-mail of bekijk het op Loomio:"
       footer_html: "Reageer direct op deze e-mail of <a href='%{app_link}'>bekijk het op Loomio</a>. Verander je <a href='%{preferences_link}'>e-mail voorkeuren<a>."
       change_preferences: "Verander je e-mail voorkeuren:"
+      new_motion: "%{who} stelde voor:"
       motion_closing_soon: "Voorstel sluit binnen 24 uur:"
       proposal_closed: "Voorstel sloot:"
       specify_outcome_html: "Je voorstel is gesloten. <a href='%{link}'>Specificeer een uitkomst</a> om iedereen te laten weten wat het resultaat is."
@@ -1012,7 +1026,9 @@ nl-NL:
     back_to_discussion: "Terug naar discussie"
     edited: Bewerkt
     groups: "Groepen"
+    select_error: Selecteer een optie
     today: Vandaag
+    select: Selecteer
     months:
       january: januari
       february: februari
@@ -1063,6 +1079,9 @@ nl-NL:
       fr: vr
       sa: za
       su: zo
+    meridians:
+      am: 'am'
+      pm: 'pm'
     please_wait: "Even geduld"
     privacy: "Privacy"
     private: "Besloten"
