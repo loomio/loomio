@@ -43,7 +43,7 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def group_request_attributes
-    [:name, :admin_name, :admin_email, :payment_plan, :description]
+    [:name, :admin_name, :admin_email, :payment_plan, :description, :is_commercial]
   end
 
   def group_attributes
