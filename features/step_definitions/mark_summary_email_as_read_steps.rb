@@ -26,7 +26,7 @@ Given(/^I am a logged out user with an unread discussion$/) do
 end
 
 When(/^I mark the email as read$/) do
-  visit mark_summary_email_as_read_path(
+  visit email_actions_mark_summary_email_as_read_path(
     time_start: @time_start.utc.to_i,
     time_finish: 30.minutes.ago.utc.to_i,
     unsubscribe_token: @user.unsubscribe_token
@@ -34,7 +34,7 @@ When(/^I mark the email as read$/) do
 end
 
 When(/^I read the summary email with images enabled$/) do
-  visit mark_summary_email_as_read_path(
+  visit email_actions_mark_summary_email_as_read_path(
     time_start: @time_start.utc.to_i,
     time_finish: 30.minutes.ago.utc.to_i,
     unsubscribe_token: @user.unsubscribe_token,
