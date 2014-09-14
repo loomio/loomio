@@ -26,17 +26,8 @@ class BaseMailer < ActionMailer::Base
 
   def initialize(method_name=nil, *args)
     super.tap do
-      add_sendgrid_headers(method_name, args) if method_name
+      Measurement.increment("#{mailer_name}-#{action_name}")
     end
-  end
-
-  # Set headers for SendGrid.
-  def add_sendgrid_headers(action, args)
-    mailer = self.class.name
-    args = Hash[ method(action).parameters.map(&:last).zip(args) ]
-    headers "X-SMTPAPI" => {
-      category:    [ mailer, "#{mailer}##{action}" ]
-    }.to_json
   end
 
   def from_user_via_loomio(user)
