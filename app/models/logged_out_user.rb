@@ -12,7 +12,7 @@ class LoggedOutUser
     'initials'
   end
 
-  def deleted_at
+  def deactivated_at
     nil
   end
 

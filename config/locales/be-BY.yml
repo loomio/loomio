@@ -251,6 +251,7 @@ be-BY:
     reactivation_html: "Вам прыйдзецца <a href='%{link}'>звязацца з намі</a> каб зноў актываваць свой акаунт."
     deactivation:
       title: "Адключаем акаунт"
+      query: "Калі ласка, паведамце нам, чаму вы адключаеце свой акаунт."
       only_coordinator: "У групы павінен быць як мінімум адзін каардынатар. Вы з'яўляецеся адзіным каардынатарам для наступных груп:"
       instructions: "Каб адключыць свой акаунт, вам трэба дадаць іншага каардынатара ці адключыць гэтыя групы."
       info_title: "Што значыць \"адключэнне акаунта\"?"
@@ -410,6 +411,9 @@ be-BY:
     beta_request_header: "Стварыць групу на Loomio Beta"
     beta_request_description: "Першы крок для пачатку прыняцця рашэнняў на Loomio Beta-  стварыць групу"
     neighbourhood_support_group: "напрыклад, Група нашага двара"
+    commercial_use_option: У кампаніі, афіцыйнай установе ці на працоўным месцы
+    non_commercial_use_option: У супольнасці ці нефармальным аб'яднанні
+    please_select_an_option: Калі ласка, абярыце варыянт
     confirmation:
       title: Вы амаль што скончылі! Праверце сваю потшту.
       body_html: |
@@ -843,6 +847,7 @@ be-BY:
         admin_email: "Які Ваш email адрас?"
         name: "Як завецца Вашая група?"
         description: "Калі маеце час, распавядзіце нам пра сваю групу"
+        is_commercial: "Дзе вы плануеце выкарыстоўваць Loomio?"
     placeholders:
       discussion:
         title: "Назва"
@@ -1037,7 +1042,9 @@ be-BY:
     back_to_discussion: "Назад да абмеркавання"
     edited: Адрэдагавана
     groups: "Групы"
+    select_error: Калі ласка, абярыце варыянт
     today: Сёння
+    select: Калі ласка, абярыце
     months:
       january: Студзень
       february: Люты
@@ -1088,6 +1095,9 @@ be-BY:
       fr: Пт
       sa: Сб
       su: Нд
+    meridians:
+      am: 'am'
+      pm: 'pm'
     please_wait: "Пачакайце, калі ласка"
     privacy: "Канфідэнцыяльнасць"
     private: "Прыватна"

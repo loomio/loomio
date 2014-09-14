@@ -9,8 +9,8 @@ When(/^their account is deactivated$/) do
   @user.deactivate!
 end
 
-Then(/^the user's deleted_at attribute should be set$/) do
-  User.where("deleted_at IS NOT NULL").should exist
+Then(/^the user's deactivated_at attribute should be set$/) do
+  User.where("deactivated_at IS NOT NULL").should exist
 end
 
 And(/^the user's memberships should be archived$/) do

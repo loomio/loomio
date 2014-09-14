@@ -24,7 +24,7 @@ ActiveAdmin.register User do
     column :created_at
     column :last_sign_in_at
     column "No. of groups", :memberships_count
-    column :deleted_at
+    column :deactivated_at
     actions
   end
 
@@ -49,17 +49,23 @@ ActiveAdmin.register User do
   end
 
   show do |user|
-    panel("Deactivate") do
-      if can? :deactivate, user
-        button_to 'Deactivate User', deactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to deactivate this user?'}
-      else
-        div "This user cannot be deactivated because they are currently the only coordinator of the following groups:"
-        table_for user.adminable_groups.published.select{|g| g.admins.count == 1}.each do |group|
-          column :id
-          column :name do |group|
-            link_to group.name, [:admin, group]
+    if user.active?
+      panel("Deactivate") do
+        if can? :deactivate, user
+          button_to 'Deactivate User', deactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to deactivate this user?'}
+        else
+          div "This user cannot be deactivated because they are currently the only coordinator of the following groups:"
+          table_for user.adminable_groups.published.select{|g| g.admins.count == 1}.each do |group|
+            column :id
+            column :name do |group|
+              link_to group.name, [:admin, group]
+            end
           end
         end
+      end
+    else
+      panel("This user account has been deactivated") do
+        button_to 'Activate User', activate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to activate this user?'}
       end
     end
     attributes_table do
@@ -75,6 +81,11 @@ ActiveAdmin.register User do
         end
       end
     end
+    if user.deactivation_response.present?
+      panel("Deactivation query response") do
+        div "#{user.deactivation_response.body}"
+      end
+    end
     active_admin_comments
   end
 
@@ -82,5 +93,11 @@ ActiveAdmin.register User do
     user = User.friendly.find(params[:id])
     user.deactivate!
     redirect_to admin_users_url, :notice => "User account deactivated"
+  end
+
+  member_action :activate, method: :put do
+    user = User.friendly.find(params[:id])
+    user.activate!
+    redirect_to admin_users_url, :notice => "User account activated"
   end
 end

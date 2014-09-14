@@ -30,10 +30,7 @@ namespace :locales do
     end
 
 
-    Rake::Task["locales:check_interpolations"].invoke(fixed_locales)
-
-    Rake::Task["locales:check_exp_locales"].invoke(fixed_locales)
-
+    Rake::Task["locales:check"].invoke
 
     print "\n\n"
     puts " DONE!! ^_^"
@@ -138,11 +135,19 @@ def update(locale, resource)
   response = HTTParty.get("http://www.transifex.com/api/2/project/loomio-1/resource/#{resource}/translation/#{locale}", LOGIN)
 
   if response.present? && content = response['content']
-    target = File.open("config/locales/#{filename}", 'w')
-    target.write(content.gsub(/^#{locale}:/, "#{fixed_locale}:"))
-    target.close()
+    content = content.gsub(/^#{locale}:/, "#{fixed_locale}:")
 
-    printf "%18s ", grey(filename)
+    current_hash = YAML.load(File.read("config/locales/#{filename}"))
+    new_hash = YAML.load(content)
+
+    if current_hash != new_hash
+      target = File.open("config/locales/#{filename}", 'w')
+      target.write(content)
+      target.close()
+      printf "%18s ", green(filename)
+    else
+      printf "%18s ", grey(filename)
+    end
   else
     puts "ERROR!! -- #{locale} - #{filename}"
   end
