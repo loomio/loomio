@@ -182,6 +182,12 @@ Loomio::Application.routes.draw do
     end
   end
 
+  namespace :email_actions do
+    get   'unfollow_discussion/:discussion_id/:unsubscribe_token', action: 'unfollow_discussion', as: :unfollow_discussion
+    get   'mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
+    get   'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
+  end
+
   scope module: :users do
     match '/profile',          action: 'profile', as: :profile, via: [:get, :post]
     get 'import_contacts' => 'contacts#import'
@@ -190,8 +196,6 @@ Loomio::Application.routes.draw do
     scope module: :email_preferences do
       get   '/email_preferences', action: 'edit',   as: :email_preferences
       put   '/email_preferences', action: 'update', as: :update_email_preferences
-      get   '/mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
-      get   'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
     end
 
     scope module: :change_password do
