@@ -27,10 +27,10 @@ module EmailHelper
   end
 
   def mark_summary_as_read_url_for(user, format: nil)
-    mark_summary_email_as_read_url(unsubscribe_token: user.unsubscribe_token,
-                                   time_start: @time_start.utc.to_i,
-                                   time_finish: @time_finish.utc.to_i,
-                                   format: format)
+    email_actions_mark_summary_email_as_read_url(unsubscribe_token: user.unsubscribe_token,
+                                                 time_start: @time_start.utc.to_i,
+                                                 time_finish: @time_finish.utc.to_i,
+                                                 format: format)
   end
 
   def comment_url_helper(comment)
