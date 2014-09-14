@@ -15,8 +15,11 @@
           - LocalesHelper::LANGUAGES.keys.each do |language|
             - locale = LocalesHelper::LANGUAGES[language]
             %tr
-              %td= link_to language, root_path(locale: locale)
               %td= locale
+              %td= "|"
+              %td= link_to language, root_path(locale: locale)
+              %td= "|"
+              %td= t(locale)
 
         %h2 Experimental Languages (#{LocalesHelper::EXPERIMENTAL_LOCALE_STRINGS.count})
         - LocalesHelper::EXPERIMENTAL_LOCALE_STRINGS.each do |locale|
