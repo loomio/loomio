@@ -3,7 +3,6 @@ html, body { overflow-x: hidden; }
 
 body {
   background-color: $app-background;
-  height: 100%;
   color: $text-black;
   margin-top: 50px;
 }
@@ -70,8 +69,6 @@ h2, h3 {
 }
 
 hr { margin: 1px; }
-
-html { height: 100%; }
 
 ul { list-style: none; }
 
