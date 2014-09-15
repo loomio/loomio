@@ -12,7 +12,6 @@ When /^I visit the dashboard$/ do
 end
 
 Then(/^I should see that the discussion has (\d+) unread$/) do |arg1|
-  view_screenshot
   find(".unread-comments-count").should have_content(arg1)
 end
 

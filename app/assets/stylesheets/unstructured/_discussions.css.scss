@@ -339,7 +339,8 @@ body.discussions.show {
       margin-top: -2px;
     }
 
-    textarea #new-comment {
+    textarea#new-comment {
+      width: 100%;
     }
     #new-comment {
       background: none;
