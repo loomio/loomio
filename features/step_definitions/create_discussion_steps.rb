@@ -4,8 +4,7 @@ Given /^I am viewing a discussion titled "(.*?)" in "(.*?)"$/ do |disc_title, gr
 end
 
 When /^I choose to create a discussion$/ do
-  view_screenshot
-  find(".cuke-start-discussion").click
+  click_on('Start a discussion')
 end
 
 When /^I select the group from the groups dropdown$/ do
