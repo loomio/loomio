@@ -11,7 +11,7 @@ Feature: User deletes post
     And I am on the discussion page
     And I write and submit a comment
     When I click the delete button on a post
-    And I accept the popup to confirm
+    #And I accept the popup to confirm
     Then I should no longer see the post in the discussion
     And I should be told the comment was deleted
 
