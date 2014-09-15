@@ -48,12 +48,6 @@ updateMarkdownSetting = (selected, usesMarkdown) ->
   $(selected).children().first().children().addClass('icon-ok')
   event.preventDefault()
 
-#adds bootstrap tooltips to discussion features
-$ ->
-  $("#js-dog-ear").tooltip
-    placement: "right",
-    title: "Here's where you read up to last time"
-
 # moving discussion
 warn_if_moving_discussion = ->
   form = $('.move-discussion-form')
@@ -80,8 +74,3 @@ $ ->
   $(".js-prompt-user-to-join-or-authenticate").on "click", (e) ->
     $('#prompt-user-to-join-or-authenticate').modal('show')
 
-$ ->
-  $('.edit-comment').tooltip
-    placement: "bottom"
-  $('.delete-icon').tooltip
-    placement: "bottom"

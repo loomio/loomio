@@ -1,10 +1,10 @@
-.footer.container.clearfix
-  .left
+%footer.footer
+  .col-sm-4
     - unless current_user
-      %select#select-locale
+      %select#select-locale.form-control
         = options_for_select language_options_array, selected_language_option
 
     = link_to t(:translate, default: "help translate Loomio!"), 'https://www.loomio.org/d/hB1Oijwv/overview-of-the-translation-process-for-translators'
 
-  .footer-links
+  .col-sm-8.footer-links
     = render "footer_links", target: 'blank'

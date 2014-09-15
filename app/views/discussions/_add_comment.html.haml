@@ -9,7 +9,7 @@
           #attachment-container
 
         = hidden_field_tag 'uses_markdown', @uses_markdown, {id: 'global-uses-markdown'}
-        = submit_tag t(:comment_form_submit_button), class: "btn btn-small submit", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}
+        = submit_tag t(:comment_form_submit_button), class: "btn btn-primary submit", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}
       .comment-toolbar
         -unless browser.ie? && browser.version.to_i < 10
           .attachment-icon#add-attachment-icon

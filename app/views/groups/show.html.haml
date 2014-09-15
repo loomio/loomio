@@ -12,7 +12,7 @@
           %i.fa.fa-pencil
 
 
-  .group-logo{style: "background-image: url('#{logo_url}')"}
+  .group-logo.hidden-xs{style: "background-image: url('#{logo_url}')"}
     - if can? :edit, @group
       .upload-button.logo-upload{title: t(:'tooltip.logo_upload')}
         = form_for @group, html: { multipart: true, class: 'js-submit-on-change' } do |f|
@@ -29,29 +29,58 @@
         = link_to @group.name, @group
         = render 'groups/privacy_dropdown', :group => @group
     - if @group.category.present?
-      .group-category.shadow
+      .group-category.shadow.hidden-sm.hidden-xs
         =link_to t(@group.category.translatable_name), category_explore_path(@group.category), title: t(:'tooltip.group_category')
 
 .row
-  .span9
+  .col-md-9
     .group-description
       - if (can? :edit, @group) && @group.description.present?
         = link_to edit_group_path @group do
           .edit-icon.edit-description{'data-title' => t(:'tooltip.edit_description')}
             %i.fa.fa-pencil
         .edit-icon-placeholder
-      .logo-placeholder
+      .logo-placeholder.hidden-xs
       ~ render_rich_text(@group.description)
     = render "application/filter_discussions_buttons" if can? :follow, @group
     = render 'discussions/discussion_list'
 
-  .span3
+  .col-md-3
     #group-actions
+      .btn-toolbar
       - if can? :create, @discussion
-        = icon_button(href: new_discussion_path(:group_id => @group.id), text: t(:start_a_discussion), icon: 'topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
+        = link_to new_discussion_path(:group_id => @group.id), class: 'btn btn-block btn-primary btn-left' do
+          %i.fa.fa-comments
+          = t(:start_a_discussion)
       - if can?(:add_members, @group)
         = render 'invite_button', group: @group, discussion: @discussion
-      = render 'options_dropdown', group: @group
+      - if params[:controller] == 'groups' && params[:action] == 'show'
+        - can_edit = can? :edit, @group
+        - can_leave = @group.users_include? current_user
+        - can_archive = can? :edit, @group
+        - if can_edit || can_leave
+          .btn-group.btn-block.options
+            = link_to '#',
+                      class: 'btn btn-block btn-default btn-left dropdown-toggle',
+                      data: { toggle: 'dropdown' }  do
+              %i.fa.fa-cog
+              = t :options
+
+            %ul.dropdown-menu.btn-block{role: 'menu'}
+              - if can_edit
+                %li= link_to t(:edit_group_settings), edit_group_path(@group)
+                %li= link_to t(:manage_members), group_memberships_path(@group)
+
+              - if can_leave
+                - membership = current_user.group_membership(@group)
+                - if @group.is_hidden_from_public?
+                  - msg = t(:confirm_leave_hidden_group, which_group: @group.name)
+                - else
+                  - msg = t(:confirm_leave_group, which_group: @group.name)
+                %li= link_to t(:leave_group), group_membership_path(@group, membership), method: 'delete', data: { confirm: msg }
+
+              - if can_archive
+                %li= link_to t(:deactivate_group), archive_group_path(@group), method: 'post', data: { confirm: t(:confirm_deactivate_group, which_group: @group.name) }
 
       = join_group_button(@group)
     = render 'setup_next_steps' if show_next_steps?(@group)
@@ -60,18 +89,20 @@
     = render 'subgroups', group: @group
 
     - if @closed_motions.any?
-      .sub-panel.previous-discussions-panel
-        %h4= t(:previous_decisions)
-        %ul.previous-decisions
-          - @closed_motions.first(3).each do |motion|
-            %li.previous-decision
-              %a.selector-link{ href: motion_path(motion) }
-                .clearfix
-                  .pie.motion-sparkline
-                    = motion_sparkline(motion)
-                  .previous-decision-title.word-break=truncate(motion.name, :length => 60, :separator => ' ')
-          = link_to t(:see_more), group_motions_path(@group), class: 'bottom-panel-link'
+      .panel.panel-default.previous-discussions-panel
+        .panel-heading
+          %h4= t(:previous_decisions)
+        .panel-body
+          %ul.previous-decisions
+            - @closed_motions.first(3).each do |motion|
+              %li.previous-decision
+                %a.selector-link{ href: motion_path(motion) }
+                  .clearfix
+                    .pie.motion-sparkline
+                      = motion_sparkline(motion)
+                    .previous-decision-title.word-break=truncate(motion.name, :length => 60, :separator => ' ')
+        .panel-footer
+          = link_to t(:see_more), group_motions_path(@group)
 
     = render 'membership_requests', group: @group
     = render 'members', group: @group
-    = render '/application/closed_motions', user: nil, group: @group

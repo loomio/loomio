@@ -13,12 +13,6 @@ body { line-height: 22px; }
 [class*="span"].flush { margin-left: 0; }
 
 
-.navbar-fixed-top .navbar-inner {
-  background-image: linear-gradient(to bottom, white, white);
-  border-bottom: 1px solid #dbdbdb;
-  min-height: 47px;
-}
-
 .navbar .btn { margin-top: 8px; }
 
 .modal-backdrop {
@@ -46,6 +40,23 @@ body { line-height: 22px; }
 .popover-inner {
   background: black;
 }
-.navbar-fixed-top .container { width: 960px; }
 
 .dropdown-menu { border: 1px solid #E7E7E7; }
+
+.btn-teal {
+  color: white;
+  background-color: $teal;
+  border-color: $teal;
+  background-image: none;
+  text-shadow: none;
+  box-shadow: none;
+  padding: 6px 26px;
+
+  &:hover {
+    text-decoration: none;
+    color: white;
+    background-color: darken($teal, 10%);
+    border-color: darken($teal, 10%);
+  }
+}
+

@@ -1,8 +1,10 @@
-.sub-panel#setup-next-steps
-  %h4
-    = t :setup_steps_title
-    = link_to("×", hide_next_steps_group_path(@group), method: :post, remote: true, class: "close hide-next-steps")
-  %ol
-    %li#example_discussion= t(:setup_step_1)
-    %li#first_discussion= t(:setup_step_2)
-    %li#invite_people= t(:setup_step_3)
+.panel.panel-info#setup-next-steps
+  .panel-heading
+    %h4
+      = t :setup_steps_title
+      = link_to("×", hide_next_steps_group_path(@group), method: :post, remote: true, class: "close hide-next-steps")
+  .panel-body
+    %ol
+      %li#example_discussion= t(:setup_step_1)
+      %li#first_discussion= t(:setup_step_2)
+      %li#invite_people= t(:setup_step_3)

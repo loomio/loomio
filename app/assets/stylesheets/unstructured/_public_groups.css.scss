@@ -35,7 +35,7 @@ body.public_groups {
         margin-bottom: 0px;
       }
       #query {
-        @include border-radius(4px);
+        border-radius: 4px;
         -moz-border-top-right-radius: 0;
           -webkit-border-top-right-radius: 0;
           border-top-right-radius: 0;
@@ -63,7 +63,7 @@ body.public_groups {
     }
     .icon-container {
       border: 1px solid #ccc;
-      @include border-radius(2px);
+      border-radius: 2px;
       padding: 2px 4px 1px 5px;
       .sort-by-alphabet-icon, .sort-by-alphabet-icon-desc { opacity: .7; }
       &:hover { border: 1px solid $mid-grey; }
