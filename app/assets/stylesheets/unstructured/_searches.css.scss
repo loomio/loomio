@@ -17,7 +17,6 @@ body.searches {
           }
           .icon {
             display: inline-block;
-            @include ie7-inline-block();
             font-size: .9em;
             height: 1.7em;
             margin: 0 0.5em;

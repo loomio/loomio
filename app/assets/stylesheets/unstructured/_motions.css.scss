@@ -10,9 +10,7 @@
   .legend {
     font-size: .85em;
     float: left;
-    width: 100px;
-    padding-left: 3em;
-    padding-top: 6em;
+    padding-top: 5em;
     color: $mid-grey;
 
     .item {
@@ -45,15 +43,11 @@
   }
 
   .pie {
-    float: right;
-    width: 36px;
-    height: 36px;
     z-index: 1;
   }
 
   .proposal-close-date {
     font-size: $font-small;
-    float: left;
   }
 
   .proposal-group-name {
@@ -71,16 +65,6 @@
 
   .proposal-title-container {
     color: $mid-grey;
-    float: left;
-    width: 440px;
-  }
-
-  .vote-icon {
-    float: left;
-    width: 20px;
-    position: relative;
-    top: 6px;
-    padding-right: 7px;
   }
 
   &:hover { background-color: $selector; }
@@ -91,9 +75,9 @@
 
 #content-proposal{
   margin-left: 0px;
-  padding-top: 10px;
+  padding: 10px 30px 10px 14px;
 
-  #add-outcome-submit { margin-top: 5px; }
+  #add-outcome-submit { margin: 5px 0 1em 0; }
   .closing-info {
     font-size: $font-smaller;
     color: $mid-grey; }
@@ -104,7 +88,6 @@
   }
 
   .description {
-    width: 380px;
     p { color: $dark-grey; }
   }
 
@@ -113,6 +96,10 @@
   .label {
     text-transform: lowercase;
     font-weight: normal;
+  }
+
+  .label-important{
+    background: #b94a48;
   }
 
   .motion-graph {
@@ -143,6 +130,7 @@
     .button_to { margin: 0px; }
 
     .control-group { margin-bottom: 0px; }
+    textarea { height: 4em; }
 
     .character-counter {
       bottom: 0px;
@@ -173,16 +161,7 @@
       background-color: $lighter-grey;
       font-size: 1em;
     }
-
-    textarea {
-      height: 40px;
-      max-height: 80px;
-      max-width: 390px;
-      width: 390px;
-    }
   }
-
-  .proposal-title-container { width: 305px; }
 
   .proposed-by {
     color: $mid-grey;
@@ -198,13 +177,21 @@
   .validate-length { margin-left: 0px; height: 65px; }
 
   .vote-buttons {
+    a:hover{background-color: $light-grey;}
     .btn {
-      @include border-radius(5px);
+      border-radius: 5px;
       border: 1px solid $light-grey;
       float: left;
       margin: 10px 10px 15px 0;
       padding: 3px;
-      width: 40px;
+      width: 50px;
+      height:50px;
+      img {
+        hight:40px;
+        width:40px;
+        margin: auto;
+        display:inline-block;
+      }
     }
 
     .popover-title { font-size: 1.2em; font-weight: 700; }
@@ -243,11 +230,11 @@
       font-weight: bold;
       margin-right: 8px;
     }
-    
+
     .translate-link {
       line-height: 15px;
     }
-    
+
   }
 
   .toggle-yet-to-vote{
@@ -267,12 +254,13 @@ table.jqplot-table-legend {
 }
 
 #motion-form{
-  #motion_closing_at{
-    width: 40%;
-  }
   .timezone{
-    float: right;
-    margin-top: 26px;
+    margin-top: -0.8em;
+    font-size: 0.9em;
     text-align: right;
   }
+}
+
+body.new_proposal .datetimepicker{
+  margin-top: 50px;
 }

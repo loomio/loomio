@@ -1,16 +1,29 @@
 .row
-  .span12
+  .col-md-12
     %h1= t('.title')
     =simple_form_for(@user, url: update_email_preferences_path, method: :put) do |f|
       -if params[:unsubscribe_token]
         =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
-
-      = f.input :email_missed_yesterday, as: :boolean, inline_label: t('.email_missed_yesterday'), label: false
-      = f.input :email_when_mentioned, as: :boolean, inline_label: t('.email_when_mentioned'), label: false
-      = f.input :email_followed_threads, as: :boolean, inline_label: t('.email_followed_threads'), label: false
-      = f.input :email_when_proposal_closing_soon, as: :boolean, inline_label: t('.email_when_proposal_closing_soon'), label: false
-      = f.input :email_new_discussions_and_proposals, as: :boolean, inline_label: t('.email_new_discussions_and_proposals'), label: false,
-        input_html: { id: 'js_email_new_discussions_and_proposals' }
+      .checkbox
+        = label_tag "user_email_missed_yesterday" do
+          = f.check_box :email_missed_yesterday
+          = t('.email_missed_yesterday')
+      .checkbox
+        = label_tag "user_email_when_mentioned" do
+          = f.check_box :email_when_mentioned
+          = t('.email_when_mentioned')
+      .checkbox
+        = label_tag "user_email_followed_threads" do
+          = f.check_box :email_followed_threads
+          = t('.email_followed_threads')
+      .checkbox
+        = label_tag "user_email_when_proposal_closing_soon" do
+          = f.check_box :email_when_proposal_closing_soon
+          = t('.email_when_proposal_closing_soon')
+      .checkbox
+        = label_tag "user_email_new_discussions_and_proposals" do
+          = f.check_box :email_new_discussions_and_proposals, id: 'js_email_new_discussions_and_proposals'
+          = t('.email_new_discussions_and_proposals')
 
       .per-group-email-settings
         %p= t('.for_these_groups')
@@ -20,4 +33,4 @@
                                      :group_id,:group_full_name, {},
                                      {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
 
-      = f.submit t('.submit'), :class => "btn btn-info btn-large"
+      = f.submit t('.submit'), :class => "btn btn-primary"

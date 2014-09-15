@@ -1,6 +1,10 @@
 //= depend_on default-cover-photo.png
 
 body.explore {
+  .main-container, .container{
+    background-color: transparent;
+
+  }
   .page-container {
     /*font-family: 'OpenSans', 'OpenSans', sans-serif;*/
     /*font-weight: 300;*/
@@ -33,7 +37,6 @@ body.explore {
       height: 2.2em;
     }
   }
-  .main-container { background-color: $app-background; }
 
   .category {
     @extend .card;
@@ -98,10 +101,14 @@ body.explore {
 
   .groups-row {
     margin-bottom: 2.6em;
+    margin-top: 1em;
   }
 
   ul.discussion-list{
     margin-bottom: 1.1em;
+    .col-xs-2{
+      text-align: right
+    }
     li {
       a {
         color: $dark-grey;
@@ -160,7 +167,7 @@ body.explore {
           /*height: 1.3em;*/
           /*left: 0.68em;*/
           /*top: 0.5em;*/
-          /*@include border-radius(1000px);*/
+          /*border-radius: 1000px;*/
           /*background-color: #fff;*/
           font-weight: 700;
           position: absolute;

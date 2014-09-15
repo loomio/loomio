@@ -35,3 +35,4 @@ $ ->
 
 $ ->
   $('.js-tooltip').tooltip
+    placement: "bottom"

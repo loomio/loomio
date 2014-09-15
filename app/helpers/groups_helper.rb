@@ -1,5 +1,5 @@
 module GroupsHelper
-  def group_visibilty_options(group)
+  def group_visibility_options(group)
     options = []
 
     unless group.is_subgroup_of_hidden_parent?
@@ -31,6 +31,12 @@ module GroupsHelper
        [t(:'group_form.membership_granted_upon.approval_html'), 'approval'],
        [t(:'group_form.membership_granted_upon.invitation_html'), 'invitation']]
     end
+  end
+
+  def discussion_privacy_options
+    options = [[t(:'group_form.discussion_privacy_options.public_only_html'), "public_only"],
+               [t(:'group_form.discussion_privacy_options.public_or_private_html'), "public_or_private"],
+               [t(:'group_form.discussion_privacy_options.private_only_html'), "private_only"]]
   end
 
   def show_next_steps?(group)
@@ -65,9 +71,8 @@ module GroupsHelper
     if user_can_join_group?(current_user_or_visitor, group)
       case group.membership_granted_upon
       when 'request'
-        icon_button({href: join_group_path(group),
-                     method: :post,
-                     text: t(:join_group_btn)}.merge(args))
+        link_to(t(:join_group_btn), join_group_path(group), method: :post, class: "btn btn-block btn-default btn-right")
+
       when 'approval'
         if group.pending_membership_request_for(current_user_or_visitor)
           membership_request = group.membership_requests.pending.where(requestor_id: current_user_or_visitor).first
@@ -92,7 +97,7 @@ module GroupsHelper
                 text: t(:cancel_membership_request),
                 icon: 'group-dark.png',
                 id: 'membership-requested',
-                class: 'btn-grey',
+                class: 'btn btn-block btn-default',
                 'data-confirm' => t(:confirm_remove_membership_request))
   end
 
@@ -101,7 +106,7 @@ module GroupsHelper
                    text: t(:ask_to_join_group),
                    icon: nil,
                    id: 'request-membership',
-                   class: 'btn-info' }
+                   class: 'btn-primary' }
     new_params = old_params.merge(params)
     icon_button(new_params)
   end

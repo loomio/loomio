@@ -1,8 +1,8 @@
 .container
   %section#sign-in
     .inner-container
-      .row-fluid
-        .span6.main-content
+      .row
+        .col-md-6.col-md-offset-3.col-xs-12
           - if omniauth_authenticated_and_waiting?
             %h1= t :link_up_your_account
             %p= t :log_in_to_your_loomio_account, provider_name: @omniauth_authentication.provider_name
@@ -21,5 +21,5 @@
               .separator
                 = t :or
             = render "form"
-  .terms
-    =t(:terms_of_service_html, button_text: t(:'devise.sessions.sign_in'), link_path: terms_of_service_path)
+          .terms
+            =t(:terms_of_service_html, button_text: t(:'devise.sessions.sign_in'), link_path: terms_of_service_path)
