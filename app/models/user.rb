@@ -55,6 +55,10 @@ class User < ActiveRecord::Base
            -> { where(is_suspended: false, archived_at: nil) },
            dependent: :destroy
 
+  has_many :archived_memberships,
+           -> { where('archived_at IS NOT NULL') },
+           class_name: 'Membership'
+
   has_many :membership_requests,
            foreign_key: 'requestor_id'
 
@@ -271,8 +275,9 @@ class User < ActiveRecord::Base
     deactivated_at.nil?
   end
 
-  def activate!
+  def reactivate!
     update_attribute(:deactivated_at, nil)
+    archived_memberships.update_all(archived_at: nil)
   end
 
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966

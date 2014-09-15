@@ -206,28 +206,39 @@ describe User do
     end
   end
 
-  it "sets deactivated_at (Time.now) when deactivate! is called" do
-    user.deactivate!
-    user.deactivated_at.should be_present
-  end
+  describe "deactivation" do
 
-  it "unsets deactivated_at (nil) when activate! is called" do
-    user.update_attribute(:deactivated_at, 1.month.ago)
-    user.activate!
-    user.deactivated_at.should be_nil
-  end
+     before do
+       @membership = group.add_member!(user)
+       user.deactivate!
+     end
 
-  describe "active_for_authentication?" do
-    it "returns false if deactivated_at is present" do
-      user.update_attribute(:deactivated_at, 1.month.ago)
-      user.should_not be_active_for_authentication
-    end
+     describe "#deactivate!" do
 
-    it "returns true if deactivated_at is nil" do
-      user.update_attribute(:deactivated_at, nil)
-      user.should be_active_for_authentication
-    end
-  end
+       it "sets deactivated_at to (Time.now)" do
+         user.deactivated_at.should be_present
+       end
+
+       it "archives the user's memberships" do
+         user.archived_memberships.should include(@membership)
+       end
+     end
+
+     describe "#reactivate!" do
+
+       before do
+         user.reactivate!
+       end
+
+       it "unsets deactivated_at (nil)" do
+         user.deactivated_at.should be_nil
+       end
+
+       it "restores the user's memberships" do
+         user.memberships.should include(@membership)
+       end
+     end
+   end
 
   describe "unviewed_notifications" do
     it "returns notifications that the user has not viewed yet" do
