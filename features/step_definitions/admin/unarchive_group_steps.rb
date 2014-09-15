@@ -25,7 +25,6 @@ Then(/^they should be able to view their group page$/) do
 end
 
 Then(/^they should be able to view group discussions$/) do
-  # @discussion.archived_at.should eq nil
   page.should have_content(@discussion.title)
 end
 
