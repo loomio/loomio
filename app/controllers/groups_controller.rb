@@ -8,8 +8,6 @@ class GroupsController < GroupBaseController
   before_filter :ensure_group_is_setup, only: :show
   before_filter :assign_meta_data, only: :show
 
-  caches_action :show, :cache_path => Proc.new { |c| c.params }, unless: :user_signed_in?, :expires_in => 5.minutes
-
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.group_private_or_not_found') }
   end
