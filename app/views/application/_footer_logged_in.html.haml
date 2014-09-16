@@ -2,7 +2,7 @@
   .col-sm-4
     - unless current_user
       %select#select-locale.form-control
-        = options_for_select language_options_array, selected_language_option
+        = options_for_select linked_language_options, selected_language_option
 
     = link_to t(:translate, default: "help translate Loomio!"), 'https://www.loomio.org/d/hB1Oijwv/overview-of-the-translation-process-for-translators'
 
