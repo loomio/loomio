@@ -1,28 +1,8 @@
-%li.nav-item.dropdown#user
-  %a.nav-link{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
+%li.dropdown#user
+  %a{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
     = render 'base/avatar', user: current_user, size: "small", id: 'header-user-image'
     %span#user-name-dropdown
       = current_user.name
     %b.caret
   %ul.dropdown-menu
-    %li
-      %a{href: profile_path}
-        %i.fa.fa-cog
-        = t :profile
-    %li
-      %a{href: email_preferences_path}
-        %i.fa.fa-envelope
-        = t :email_settings
-    %li
-      %a{href: help_path}
-        %i.fa.fa-star
-        = t :"help.help"
-    - if ENV["INTERCOM_APP_ID"].present?
-      %li
-        %a{href: "mailto:#{ENV["INTERCOM_APP_ID"]}@incoming.intercom.io", id: "Intercom"}
-          %i.fa.fa-question-circle
-          = t :"contact_page.contact_us"
-    %li
-      %a{href: destroy_user_session_path, 'data-method' => 'delete'}
-        %i.fa.fa-sign-out
-        = t :sign_out
+    = render 'application/user_profile_options'

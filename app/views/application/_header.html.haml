@@ -2,24 +2,58 @@
   - logo_class = 'app-logo'
 - else
   - logo_class = 'app-logo beta'
-.toolbar-navigation
-  .navbar.navbar-fixed-top
-    .navbar-inner
-      .container
-        %ul.nav-bar-list.clearfix
-          %li.nav-item#logo-home
-            - if Rails.env.development?
-              .development-warning
-                %i.fa.fa-wrench
-            %a.nav-logo-link{class: logo_class, href: dashboard_or_root_path, title: t(:"organisation.name")}
-              &nbsp;
-          - if user_signed_in?
-            = render 'inbox'
-            = render 'notifications_dropdown'
-            = render 'application/groups_dropdown'
-            = render 'user_dropdown'
+
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      - if user_signed_in?
+        %button.navbar-toggle{type: 'button', data: {toggle: 'collapse', target: '#navbar-collapse'}}
+          %span.sr-only= t :"sr.toggle_navigation"
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{class: logo_class, href: dashboard_or_root_path, title: t(:"organisation.name")}
+
+        %ul.nav.navbar-nav
+          %li#inbox-container
+            %a{href: inbox_path}
+              %i.fa.fa-inbox
+              %span#inbox-count.activity-count.label
+          %li.dropdown#notifications-container
+            %a.dropdown-toggle.notifications-dropdown-btn{'data-toggle' => 'dropdown', :href => '#'}
+              %i.fa.fa-bell
+              %span#notifications-count.label.activity-count
+            %ul.dropdown-menu
+              %li
+                %h3= t("notifications.header")
+              %li#notification-dropdown-items
+                %ul
+                  %li Loading
+              %li#notifications-see-more= link_to t(:see_all_notifications), notifications_path
+          %li.dropdown#groups
+            %a.dropdown-toggle.groups-dropdown-btn{href: "#", 'data-toggle' => 'dropdown'}
+              %i.fa.fa-group
+              %span.hidden-xs= t :"common.groups"
+            %ul.dropdown-menu
+              #group-dropdown-items
+              - if current_user.show_start_group_button?
+                %li.group-item.group-links
+                  =link_to t(:request_new_group), new_group_path, class: 'new-group'
+                %li.group-item.group-links
+                  =link_to t(:find_a_group), explore_path, class: 'find-group'
+
+        .collapse.navbar-collapse#navbar-collapse
+          %ul.nav.navbar-nav
+            .user-options.visible-xs
+              = render 'application/user_profile_options'
             = render 'search'
-          - else
-            %li.pull-right
-              - unless controller_name == "group_requests"
-                =link_to t(:log_in), new_user_session_path, class: 'btn btn-info login'
+
+        %ul.nav.navbar-nav.navbar-right.hidden-xs
+          = render 'user_dropdown'
+
+      - else
+        %a.navbar-brand{class: logo_class, href: dashboard_or_root_path, title: t(:"organisation.name")}
+        %nav
+          %ul.nav.navbar-nav.navbar-right.pull-right
+            - unless controller_name == "group_requests"
+              %li=link_to t(:log_in), new_user_session_path, class: 'login'

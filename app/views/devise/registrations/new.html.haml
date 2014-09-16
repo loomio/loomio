@@ -1,9 +1,9 @@
 .container
   %section.first
     .inner-container
-      .row-fluid
-        - if omniauth_authenticated_and_waiting?
-          .span6.main-content
+      .row
+        .col-md-6.col-md-offset-3.col-xs-12
+          - if omniauth_authenticated_and_waiting?
             %h1= t :confirm_your_details
             %p= t :now_that_your_logged_in, provider_name: @omniauth_authentication.provider_name
             %p
@@ -11,8 +11,7 @@
               = link_to( t(:link_it_up_instead), new_user_session_path)
             .signin_container
               = render "form"
-        -else
-          .span6.main-content
+          -else
             %h2
               - if @invitation
                 - if @invitation.to_start_group?
@@ -27,5 +26,4 @@
               = render 'devise/shared/omniauth_buttons'
               %h3= t :or_fill_in_this_form
               = render "form"
-  .terms
-    =t(:terms_of_service_html, button_text: t(:'devise.registrations.sign_up'), link_path: terms_of_service_path)
+          .terms= t(:terms_of_service_html, button_text: t(:'devise.registrations.sign_up'), link_path: terms_of_service_path)

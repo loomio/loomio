@@ -46,8 +46,8 @@ end
 Given(/^there is a two page discussion$/) do
   @commenter = FactoryGirl.create :user
   @group.add_member! @commenter
-  60.times do
-    comment = Comment.new(body: 'yo wassup')
+  60.times do |i|
+    comment = Comment.new(body: "#{i} bottles of beer")
     comment.author = @commenter
     comment.discussion = @discussion
     DiscussionService.add_comment(comment)
@@ -67,7 +67,7 @@ Given(/^now there is new activity$/) do
 end
 
 Then(/^I should see the second page$/) do
-  find(".pagination > ul li:nth-child(3).active")
+  page.should have_content('55 bottles of beer')
 end
 
 Then(/^I should see the add comment input$/) do

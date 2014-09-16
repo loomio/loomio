@@ -1,23 +1,23 @@
 - set_title @group.name, @discussion.title, @group.parent
 
 .row
-  .span9
+  .col-md-9
     = render '/groups/title', group: @group, discussion: @discussion
-  .span3#button-container
+  .col-md-3#button-container
     = join_group_button(@group)
 
 .row.translate-parent{id: "discussion-#{@discussion.key}" }
-  .span12
+  .col-md-12
     .selector-panel
       = render 'title', discussion: @discussion
       #discussion-content-container
         #discussion-context= render 'discussion_context'
         - if @group.beta_feature_enabled?('discussion_iframe') and @discussion.iframe_src.present?
           .row
-            .span12
+            .col-md-12
               %iframe.discussion-iframe{src: @discussion.iframe_src}
         .row
-          .span6#content-comments
+          .col-sm-6#content-comments
             .large-icon.discussion-icon.enabled-icon
             %h3.header-text= t :discussion
             #discussion-activity-body
@@ -29,7 +29,7 @@
                   %p.go-to-add-comment
                     = t( :go_to_add_comment_html, href: path_of_add_comment )
 
-          .span6#content-proposal
+          .col-sm-6#content-proposal
             .large-icon.decision-icon
             %h3.header-text= t :current_decision
             .content-proposal-body
@@ -37,7 +37,7 @@
                 - if can? :create, Motion.new(discussion: @discussion)
                   = link_to t(:create_new_proposal),
                             new_proposal_discussion_path(@discussion),
-                            class: 'btn new-proposal-btn',
+                            class: 'btn btn-primary new-proposal-btn',
                             id: 'new-proposal'
                   %li.selector-item.empty-list-message#start-proposal-text
                     = t :empty_decision_list_html # should be "start a proposal"

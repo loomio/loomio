@@ -11,7 +11,7 @@
           - unless event.belongs_to? current_user_or_visitor
             - marked_first_unread = true
             .shifted_anchor#latest-activity
-            .dog-ear#js-dog-ear
+            .dog-ear#js-dog-ear.js-tooltip{title: t(:'read_up_to')}
               &nbsp;
             .new-activity-divider
 

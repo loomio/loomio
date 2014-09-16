@@ -19,7 +19,7 @@
 //= require lib/jquery.placeholder
 //= require lib/jquery.netchanger.min
 //= require lib/jquery.safetynet
-//= require lib/bootstrap2-datetimepicker
+//= require lib/bootstrap-datetimepicker
 //= require lib/Chart
 //= require modernizr
 //= require bootstrap

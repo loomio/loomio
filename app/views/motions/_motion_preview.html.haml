@@ -1,20 +1,21 @@
-%div.motion-preview.clearfix
+%div.motion-preview.row
   %a.selector-link{ href: motion_path(motion) }
-    .clearfix
+    .col-xs-1
       .vote-icon
         - if current_user
           - position = motion.last_position_by_user(current_user)
           %div.activity-icon{ class: "position-#{position}-icon" }
+    .col-xs-8
       .proposal-title-container
         .proposal-title.word-break= truncate(motion.name, :length => 60, :separator => ' ')
-        .clearfix
-          - if motion.outcome.present?
-            .proposal-outcome
-              = t(:outcome) + ": " + motion.outcome
-          .proposal-close-date
-            - if motion.voting?
-              = t(:proposal_closing_when, when: time_ago_in_words(motion.closing_at))
-            - else
-              = t(:proposal_closed_when, when: time_ago_in_words(motion.closed_at))
+        - if motion.outcome.present?
+          .proposal-outcome
+            = t(:outcome) + ": " + motion.outcome
+        .proposal-close-date
+          - if motion.voting?
+            = t(:proposal_closing_when, when: time_ago_in_words(motion.closing_at))
+          - else
+            = t(:proposal_closed_when, when: time_ago_in_words(motion.closed_at))
+    .col-xs-2
       .pie.motion-sparkline
         = motion_sparkline(motion)

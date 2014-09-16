@@ -9,9 +9,9 @@
     suffix: [],
     meridiem: [],
     weekStart: 1,
-    format: "yyyy.mm.dd"
+    format: 'yyyy-mm-dd hh:ii'
   };
 
-  $('.form_datetime').datetimepicker({ minView: 1, todayBtn:  0, autoclose: 1, todayHighlight: 1, startView: 2, showMeridian: 1, startDate: new Date()});
+  $('.form_datetime').datetimepicker({ fontAwesome: true, minView: 1, todayBtn: false, autoclose: true, todayHighlight: false, startView: 2, startDate: new Date(), forceParse: false});
 }(jQuery));
 

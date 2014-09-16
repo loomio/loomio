@@ -1,5 +1,5 @@
 .row
-  .span4.offset3
+  .col-md-4.offset3
     .signup-form
       %p
         %strong= t :"devise.registrations.sign_up"
@@ -10,8 +10,8 @@
       =f.input :password
       =f.input :password_confirmation
       =f.input :language_preference, :collection => {"English" => "en", "Español" => "es", "ελληνικά" => "el"}, selected: I18n.locale, include_blank: false
-      =f.submit t("devise.registrations.sign_up"), class: "btn btn-info btn-large"
+      =f.submit t("devise.registrations.sign_up"), class: "btn btn-info btn-lg"
 .row
-  .span6.offset3
+  .col-md-6.offset3
     %p= t :"or_sign_in_html", link: user_session_path
 

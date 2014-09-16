@@ -1,5 +1,5 @@
 .row
-  .span6
+  .col-sm-6
     %h1= t :"edit_comment.edit_comment"
     - if can? :edit, @comment
       = simple_form_for @comment do |f|
