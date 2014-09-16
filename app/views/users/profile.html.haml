@@ -40,13 +40,15 @@
     = link_to t(:'user_profile.about_deactivation'), about_deactivation_path, class: 'deactivation-info'
 
 
-#deactivate-account-modal.modal.hidden
-  .modal-header
-    %button.close{"data-dismiss" => "modal"}×
-    %h3= t(:'user_profile.deactivation.query')
-  = simple_form_for @user_deactivation_response do |f|
-    .modal-body
-      = f.input :body, label: false
-    .modal-footer
-      = submit_tag "Deactivate Account", class: "btn btn-danger", id: 'account-deactivation-submit', :data => { :disable_with => "Deactivate account" }
-      = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn"
+#deactivate-account-modal.modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal"}×
+        %h3= t(:'user_profile.deactivation.query')
+      = simple_form_for @user_deactivation_response do |f|
+        .modal-body
+          = f.input :body, label: false
+        .modal-footer
+          = submit_tag "Deactivate Account", class: "btn btn-danger", id: 'account-deactivation-submit', :data => { :disable_with => "Deactivate account" }
+          = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-default"
