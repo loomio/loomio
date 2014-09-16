@@ -8,7 +8,6 @@ class ThreadMailer < BaseMailer
     @event = event
     @discussion = event.discussion
     @author = event.discussion.author
-    headers['Message-ID'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
     send_thread_email
   end
 
@@ -92,7 +91,8 @@ class ThreadMailer < BaseMailer
   def send_thread_email(alternative_subject: nil)
     @following = DiscussionReader.for(discussion: @discussion, user: @recipient).following?
     @utm_hash = utm_hash
-    apply_reply_headers unless action_name.to_sym == :new_discussion
+
+    headers[message_id_header] = message_id
 
     locale = locale_fallback(@recipient.locale, @author.locale)
     I18n.with_locale(locale) do
@@ -103,8 +103,12 @@ class ThreadMailer < BaseMailer
     end
   end
 
-  def apply_reply_headers
-    headers['In-Reply-To'] = "<#{@discussion.id}@#{ENV['SMTP_DOMAIN']}>"
+  def message_id_header
+    action_name == 'new_discussion' ? 'Message-ID' : 'In-Reply-To'
+  end
+
+  def message_id
+    "<#{@discussion.id}@#{ENV['SMTP_DOMAIN']}>"
   end
 
   def thread_subject(alternative_subject)
