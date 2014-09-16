@@ -17,28 +17,21 @@
 
 
   -if motion.closed?
-    .row
-      .span5
-        =render "motions/outcome_statement", motion: motion
-  .row
-    .span5
-      .description
-        .long-description
-          = render_rich_text(motion.description, false)
-        - if TranslationService.can_translate? motion
-          = translate_link_for motion
+    =render "motions/outcome_statement", motion: motion
+  .description
+    .long-description
+      = render_rich_text(motion.description, false)
+    - if TranslationService.can_translate? motion
+      = translate_link_for motion
 
-  .row
-    .span4.motion-header-info
-      .clearfix
-        .translation-spacer.translated
-        %h3.motion-title.word-break.translated-title.translated
-        .closing-info.translated
-        .proposed-by.translated
-  .row
-    .span5
-      .description.translated-description.translated
-        = t(:loading_translation)
+  .motion-header-info
+    .clearfix
+      .translation-spacer.translated
+      %h3.motion-title.word-break.translated-title.translated
+      .closing-info.translated
+      .proposed-by.translated
+  .description.translated-description.translated
+    = t(:loading_translation)
 
   .motion-graph.clearfix
     %canvas.pie{id: "graph_#{motion.id}", height: 150, width: 150}

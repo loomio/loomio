@@ -2,7 +2,6 @@
 @import "marketing/color";
 @import "marketing/buttons";
 
-
 // CSS reset - does this exist elsewhere?
 ul, ol, li {
   margin: 0;
@@ -10,10 +9,7 @@ ul, ol, li {
 }
 ul { list-style: none; }
 
-html { height: 100%; }
-
 body {
-  height: 100%;
   color: $text-black;
 }
 
@@ -50,7 +46,9 @@ h4, h5, h6 { line-height: 18px; }
 .page-container { margin-top: 20px; }
 
 .main-content {
-  margin-top: 15px; }
+  margin-top: 15px;
+  padding-right: 0;
+}
 
 
 /**** Structural elements ****/
@@ -63,7 +61,7 @@ li.selector-item {
 
 li.selector-item a.selector-link {
   display: block;
-  padding: 5px 5px 5px 15px;
+  padding: 5px 0;
 }
 li.selector-item a.selector-link:hover {
   background-color: $selector;
@@ -234,7 +232,6 @@ a.btn-icon:hover { color: $dark-grey; }
 
   section{
     background: white;
-    border: 1px solid #eee;
     border-radius: 6px;
     margin-top: 34px;
   }
@@ -496,7 +493,7 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
   .terms {
     color: $text-on-bg;
     margin: 1em auto 0;
-    width: 394px;
+    // width: 394px;
     text-align: center;
   }
   .alert{
@@ -515,11 +512,7 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
     }
     h2 { margin-bottom: .8em; }
     input {
-      @include box-sizing;
-    }
-    input[type="checkbox"] {
-      float: right;
-      margin: 6px 0 6px 6px;
+      max-width: 100%;
     }
     input[type="text"],
     input[type="email"],
@@ -535,16 +528,17 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
       margin-bottom: .8em;
     }
     .header { text-align: center; }
-    .main-content {
+/*    .main-content {
       float: none;
       margin: 0 auto;
-    }
+      width: 50%;
+    }*/
     .signin_container {
+      color: #555;
       a { text-align: left; }
       .btn-container{ text-align: center; }
       .sso-btn-row { margin-bottom: 2em; }
       .login {
-        width: 88px;
         text-align: center;
         opacity: .9;
       }
@@ -555,13 +549,13 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
       margin: 2.4em 0em;
       position: relative;
       @include box-shadow(0px, 2px, 6px, -3px, #555);
-      // box-shadow: 0px 2px 6px -3px #555;
+      //box-shadow: 0px 2px 6px -3px #555;
       .separator {
         background: #fff;
         color: #777;
         font-size: 1.2em;
         font-style: italic;
-        margin-left: 188px;
+        margin-left: 45%;
         height: 20px;
         position: absolute;
         text-align: center;
@@ -580,25 +574,13 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
     }
 
     #new-account {
-      color: #555;
-      font-size: 16px;
-      text-align: left;
-      margin-top: .4em;
-      a { font-size: 16px; }
+      margin-top: 1.5em;
     }
-
-    #remember-me {
-      float: right;
-      margin: .2em 0 .8em 1em;
-      label { font-size: 16px;}
+    #remember-me label{
+      margin-left: 0.5em;
+      font-weight: normal;
+      cursor: pointer;
     }
-
-    #signin_container {
-      float: none;
-      margin: 0 auto;
-    }
-
-
 }
 
 .container#contact_message {
@@ -868,7 +850,8 @@ body.pages.try_it {
     text-align: left;
     padding: 30px;
     margin: 24px 0 4px;
-    width: 420px;
+    width: 100%;
+    white-space: normal;
 
     .fa-try-it {
       color: white;

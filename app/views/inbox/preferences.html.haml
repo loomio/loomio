@@ -9,14 +9,14 @@
 =simple_form_for @inbox_preferences_form,
   url: inbox_update_preferences_path,
   method: :put do |f|
-  .control-group.ui-sortable
+  .form-group.ui-sortable.checkboxes
     -@inbox_preferences_form.all_memberships.each do |membership|
       - group = membership.group
       - next if group.nil?
-      .row
-        .span12
-          =label_tag "group_#{group.id}", class: 'checkbox' do
-            =check_box_tag 'groups[]', group.id, membership.inbox_position.present?, id: "group_#{group.id}", class: 'checkbox'
-            =group.full_name
-    -#=f.collection_check_boxes(:groups, @inbox_preferences_form.all_groups, :id, :full_name, {}, {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
+      .checkbox
+        =label_tag "group_#{group.id}" do
+          =check_box_tag 'groups[]', group.id, membership.inbox_position.present?, id: "group_#{group.id}"
+          =group.full_name
   =f.submit 'Save', class: 'btn btn-info', :data => {:disable_with => "Save"}
+
+

@@ -30,8 +30,8 @@
     padding-left: 0px;
   }
   #notifications-container .dropdown-menu {
-    width: 350px;
-
+    width: 320px;
+    @media (max-width: 768px) { margin-left: -140px; }
     padding-bottom: 0;
   }
   #notifications-container .dropdown-menu a {
@@ -40,9 +40,7 @@
   }
   #notifications-container .dropdown-menu h3 {
     padding-top: 0;
-    padding-bottom: 0;
     margin-top: 0;
-    margin-bottom: 0;
     padding-left: 5px;
   }
   #notifications-container .divider {
@@ -59,13 +57,6 @@
     padding: 10px 15px;
     color: $dark-grey;
   }
-  #notifications-count {
-    position: absolute;
-    left: 20px;
-    bottom: 14px;
-    padding: 0px 3px;
-    font-size: $font-tinywiny;
-  }
   #notification-dropdown-items {
     overflow-y: auto;
     max-height: 390px;
@@ -76,9 +67,11 @@
       background-color: $highlighted;
     }
     border-top: 1px solid #E7E7E7;
+    li{  margin-top: 0; }
   }
   #notifications-see-more {
     border-top: 1px solid #E7E7E7;
+    margin-top: 0;
     a {
       display: block;
       padding: 8px;

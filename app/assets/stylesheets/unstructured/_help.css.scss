@@ -53,12 +53,11 @@
       .blue{ color: #0088cc; }
     }
     iframe { margin-top: 0; }
-    .span4 img, iframe {
+    img, iframe {
       border: 1px solid #eee;
-      margin-top: 92px;
+      max-width: 100%;
     }
     .example, .extra-margin{ margin-top: 32px}
-    padding-left: 2em;
     .positions {
       margin-top: 92px;
       img {
@@ -73,7 +72,6 @@
 }
 /*Styles only applied to in-app help page*/
 .help{
-  #help-content{padding-bottom: 60em;} /*makes anchors work better*/
 }
 /*Styles only applied to marketing site*/
 .pages.about #video-tutorial{

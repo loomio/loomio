@@ -6,6 +6,6 @@
   @media (min-width: 930px) and (max-width: 1380px) { @content; }
 }
 
-// @mixin screen($medium-down) {
-//   @media (max-width: 768px) { @content; }
-// }
+@mixin screen($medium-down) {
+  @media (max-width: 768px) { @content; }
+}

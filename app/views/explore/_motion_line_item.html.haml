@@ -1,6 +1,6 @@
-%li.motion.row-fluid{data:{motion_id: item.id}}
+%li.motion.row{data:{motion_id: item.id}}
   =link_to item do
-    .span1
+    .col-xs-2
       .icon
         -values = item.vote_counts.values
         .activity-container
@@ -11,5 +11,6 @@
         .motion-sparkline
           = motion_sparkline(item)
 
-    .span11.title
-      = item.title
+    .col-xs-10
+      .title
+        = item.title

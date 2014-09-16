@@ -1,3 +1,5 @@
+@import "marketing/media_queries";
+
 .discussion-iframe {
   margin: 0;
   padding: 0;
@@ -6,7 +8,6 @@
   height: 500px;
   overflow: scroll;
 }
-
 body.comments.show{
   .version-header{
     padding-top: 1em;
@@ -17,14 +18,10 @@ body.comments.show{
 
 body.discussions.new, body.discussions.create, body.discussions.edit {
 
-// from group
   .control-group.radio_buttons { margin-bottom: 1.6em; }
 
-  #discussion_title {
-    font-size: 18px;
-    height: 24px;
-    line-height: 22px;
-    margin-bottom: .6em;
+  select#discussion_group_id {
+    width: 100%;
   }
 
   .hidden-group-discussion-privacy {
@@ -48,34 +45,13 @@ body.discussions.new, body.discussions.create, body.discussions.edit {
 
   input[type="submit"] { margin-top: .4em; }
 
-  label { font-size: 18px; }
-
   textarea {
-    @include placeholder { font-style: italic; }
-    font-size: 16px;
     height: 200px;
   }
-
-  .control-label.radio_buttons {
-    font-size: 20px;
-  }
-
-  .radio_buttons .controls { margin-top: .5em; }
-
-  .radio, .checkbox { font-size: 16px; }
 
   .radio i {
     margin-right: 6px;
     opacity: 0.6;
-  }
-
-  .radio p {
-    font-size: 14px;
-    font-style: italic;
-    line-height: 18px;
-    margin-top: 0.2em;
-    margin-bottom: 1em;
-    color: $dark-grey;
   }
 
   .checkbox { margin-bottom: 0px; }
@@ -93,7 +69,6 @@ body.discussions.new, body.discussions.create, body.discussions.edit {
     width: 290px;
     margin-top: 1.1em
   }
-// -----------
 
   .discussion_private { margin-top: 2.6em; }
 
@@ -120,12 +95,14 @@ body.discussions.new, body.discussions.create, body.discussions.edit {
 body.discussions.show {
   .form-container {
     border: 1px solid #cccccc;
-    @include border-radius(4px);
+    border-radius: 4px;
     @include box-shadow(0, 1px, 1px, 0, rgba(0, 0, 0, 0.075) inset);
     margin: 10px 12px 0 44px;
   }
 
   .warn-move { padding: 0 15px 15px; }
+
+  img { max-width: 100%; }
 
   #options-dropdown {
     font-size: 1.4em;
@@ -134,7 +111,6 @@ body.discussions.show {
   }
 
   #privacy {
-    margin-left: 4px;
     font-size: .8em;
     color: $mid-light-grey;
     text-decoration: none;
@@ -195,11 +171,15 @@ body.discussions.show {
     .paperclip { margin-bottom: 2px; }
   }
   .discussion-title-container {
-    display: inline-block;
-    width: 850px;
-    margin: 0 0 0 15px;
-
-    #discussion-title { font-size: 22px; }
+    #discussion-title {
+      padding-left: 15px;
+      font-size: 22px; 
+    }
+    .dropdown{
+      display: inline;
+      float: right;
+      margin: -5px 10px 0 0;
+    }
   }
   .discussion-title-translation {
     padding: 0 15px 10px;
@@ -212,7 +192,10 @@ body.discussions.show {
     margin-bottom: 5px;
     #previous-proposals .selector-list { border-top: 1px solid $lighter-grey; }
     .content-proposal-body {
-      padding: 0 10px 10px 50px;
+      margin-bottom: 1em;
+      margin-left: 40px;
+      @media (max-width: 768px) { margin-left: 50px; }
+
       ul.selector-list {
         li.empty-list-message { padding: 4px; }
         li .motion {
@@ -228,6 +211,10 @@ body.discussions.show {
       border-bottom: 1px solid $lighter-grey;
       min-height: 70px;
       padding: 15px 10px 10px 15px;
+
+      .right-context{
+        text-align: right;
+      }
 
       #description-edit-form {
         margin-bottom: 0px;
@@ -279,23 +266,21 @@ body.discussions.show {
       .discussion-additional-info {
         color: $mid-grey;
         font-size: $font-smaller;
-        margin-left: 60px;
-        max-width: 190px;
-        .last-edited-by, .started-by { margin-bottom: 10px; }
+        .last-edited-by {
+          margin-top: 0.5em;
+          padding-top: 0.5em;
+          margin-bottom: 1em;
+        }
         .user-name { white-space: nowrap; }
+      }
+      .following-status{
+        margin-top: 0.5em;
       }
       #discussion-markdown-dropdown {
         margin-right: 8px;
         padding-right: 0px;
       }
       .long-description { padding-bottom: 10px; }
-      .right-context {
-        width: 265px;
-        #invite-new-members {
-          margin-bottom: 20px;
-          margin-left: 50px;
-        }
-      }
     }
   }
 
@@ -306,8 +291,7 @@ body.discussions.show {
 
   #content-comments {
     border-right: 1px solid $lighter-grey;
-    min-height: 660px;
-    padding: 10px 10px 0 0;
+    padding: 10px 10px 10px 15px;
     .comment-anchor {
       padding-top: 50px;
       margin-top: -50px;
@@ -339,7 +323,7 @@ body.discussions.show {
 
     .comment-toolbar {
       float: right;
-      margin-top: -32px;
+      margin-top: -38px;
       margin-right: -8px;
       width: 78px;
       .attachment-icon {
@@ -355,7 +339,8 @@ body.discussions.show {
       margin-top: -2px;
     }
 
-    textarea #new-comment {
+    textarea#new-comment {
+      width: 100%;
     }
     #new-comment {
       background: none;
@@ -364,7 +349,8 @@ body.discussions.show {
       height: 120px;
       margin: 0;
       outline: none;
-      width: 380px;
+      /*width: 380px;*/
+      padding: 6px;
       &:focus {
         border-color: 0;
         /*@include box-shadow(0, 0, 0, 0);*/
@@ -378,6 +364,7 @@ body.discussions.show {
     }
     #post-new-comment {
       margin: 8px 5px 5px 45px;
+      width: 160px;
     }
     /** Code block padding (Stops avatars destroying indentation) */
     pre {
@@ -391,7 +378,6 @@ body.discussions.show {
       list-style: none;
       margin: 0 15px 3px 0;
       padding-top: 1px;
-      width: 437px;
       li.empty-list-message {
         margin-left: 45px; /*check this still works*/
       }
@@ -472,19 +458,17 @@ body.discussions.show {
   .header-text {
     color: $mid-grey;
     line-height: 2.0em;
-    margin-top: 0;
+    margin: 0 0 0 10px;
   }
 
   .selector-panel {
     h2 { margin: 0; }
     background-color: $selector-panel;
-    @include border-radius(8px);
+    border-radius: 8px;
     border: 1px solid $lighter-grey;
     margin: 0 0 20px 0;
     min-height: 59px;
     .dropdown {
-      float: right;
-      padding: 6px 10px;
       li {
         background-color: white;
         border: none;
@@ -579,7 +563,7 @@ pre{
   .popover-motion-name {
     color: black;
     font-weight: normal;
-    margin-top: 10px;
+      margin-top: 10px;
     padding-top: 5px;
     border-top: 1px solid white;
   }
@@ -605,14 +589,14 @@ pre{
   background-color: $unhighlighted;
   float: left;
   height: 47px;
-  width: 700px;
+  width: 100%;
   &:hover { background-color: $selector ! important; }
   a {
     color: $dark-grey;
     &:hover { text-decoration: none; }
     &.selector-discussion-link {
       float: left;
-      width: 690px;
+      width: 100%;
       padding: 6px 5px;
     }
   }
@@ -626,13 +610,21 @@ pre{
 
   .discussion-title {
     display: inline;
+    position: relative;
+    z-index: 4;
     float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 70%;
+    white-space: nowrap;
   }
 
   .group-name {
     color: $mid-grey;
     font-size: $font-small;
-    width: 460px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .discussion-date-info {
     display: inline;
@@ -643,7 +635,7 @@ pre{
     .latest-comment-time, .proposal-close-date { display: inline; }
   }
   .activity-icon { float: right; }
-  .discussion-icon.activity-icon { margin: 8px 6px 0 0; }
+  .discussion-icon.activity-icon { margin: 8px 10px 0 0; }
   .pie-icon.activity-icon { margin: 6px 0 0 0; }
   .activity-count {
     font-size: $font-tinywiny;
@@ -688,19 +680,19 @@ div.jqplot-table-legend-swatch{
 .top-pagination {
   margin-bottom: 1em;
   text-align: center;
-  width: 453px;
   a {
     background: #eee;
     color: $mid-grey;
-    padding: .2em 10.5em .2em 11em;
+    display: block;
+    width: 100%
   }
 }
 
 .new-activity-divider {
   border-bottom: 2px solid #7ec6dc;
-  margin: -1px 0 0.8em 0;
-  width: 470px;
+  margin-bottom: 0.8em;
   margin-left: -8px;
+  @media (min-width: 768px) { margin-right: -26px; }
 }
 
 .dog-ear {
@@ -709,7 +701,8 @@ div.jqplot-table-legend-swatch{
   border-top: 14px solid #7ec6dc;
   float: right;
   height: 0;
-  margin-right: -26px;
+  @media (min-width: 768px) { margin-right: -26px; }
+  @media (max-width: 768px) { margin-right: -12px; }
   width: 0;
 }
 
@@ -725,3 +718,12 @@ div.jqplot-table-legend-swatch{
   }
 }
 
+#group-discussions {
+  font-size: 14px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 4px;
+  @include screen-size(medium-up) {
+    padding: 0;
+  }
+}

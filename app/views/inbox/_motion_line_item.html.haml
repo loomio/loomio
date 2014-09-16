@@ -1,6 +1,6 @@
-%li.motion.row-fluid{data:{motion_id: item.id}}
+%li.motion.row{data:{motion_id: item.id}}
   =link_to item do
-    .span1
+    .col-xs-2.col-sm-1
       .icon
         .activity-container
           %span.count.unread-votes-count
@@ -10,14 +10,14 @@
         .motion-sparkline
           = motion_sparkline(item)
 
-    .span8.title
+    .col-xs-8.col-sm-7.title
       = item.title
 
-    .span2.time
+    .col-xs-3.hidden-xs.time
       %span.js-format-as-timeago{data:{time: item.closing_at.iso8601}}
         =time_formatted_relative_to_age(item.closing_at)
       left
 
-  .span1
+  .col-xs-1
     .mark-as-read-btn
       = link_to 'x', inbox_mark_as_read_path(motion_ids: item.id), remote: true, method: :post

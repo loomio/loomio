@@ -199,6 +199,10 @@ en:
   organisation:
     name: "Loomio"
 
+  # Text for screenreaders
+  sr:
+    toggle_navigation: "Toggle navigation"
+
   footer:
     about: 'About'
     blog: 'Blog'
@@ -370,6 +374,10 @@ en:
 
     optional_restrictions: "Optionally, coordinators can restrict what members can do."
 
+  discussion_privacy:
+    public: This discussion is public on the web
+    private: This discussion is private to group members
+
   group_privacy:
     visible_to:
       public: Publicly listed group.
@@ -404,6 +412,7 @@ en:
 
   email_group_members: "Email group members"
   edit_group_settings: "Edit group settings"
+  manage_members: "Manage members"
   leave_group: "Leave group"
   confirm_leave_hidden_group: "Are you sure you wish to leave %{which_group}? You will also be removed from any subgroups."
   confirm_leave_group: "Are you sure you wish to leave %{which_group}?"
@@ -509,12 +518,13 @@ en:
   previous_decisions: "Previous decisions"
   see_previous_decisions: "See previous decisions"
   see_more: "See more"
-  create_new_proposal: "Create new proposal"
+  create_new_proposal: "Create a proposal"
   empty_decision_list_html: "Ready to make a decision? <br> Anyone can start a proposal."
   empty_decision_index: "This group has not made any decisions yet."
   empty_discussion_list: "There is no activity in this discussion yet."
   go_to_add_comment_html: "To add a comment, <a href='%{href}'>go to the end of the discussion</a>."
   comment_by: "Comment by %{comment_author}"
+  read_up_to: "Here\'s where you read up to last time"
 
   discussion_list:
     clear_filters: "Clear filters: see all discussions"
@@ -957,7 +967,7 @@ en:
     create_an_account: "Create an account"
 
   profile_form:
-    view: "View my profile"
+    view: "View profile"
     profile: "Edit profile"
     picture: "Picture"
     use_initials: 'Use initials'
@@ -1007,9 +1017,6 @@ en:
         is_commercial: "Where are you planning to use Loomio?"
 
     placeholders:
-      discussion:
-        title: "Title"
-        description: "Give some context..."
       membership_request:
         introduction: "Write a few words about who you are and why you would like to join %{group_name}."
       motion:
@@ -1282,6 +1289,7 @@ en:
     please_wait: "Please wait"
     privacy: "Privacy"
     private: "Private"
+    permissions: "Permissions"
     public: "Public"
     email: "Email"
     start_group: "Start group!"

@@ -1,7 +1,6 @@
 When(/^I archive my group$/) do
-  find('#group-options').click
+  find('.group-options-btn').click
   click_on('De-activate group')
-  click_on('confirm-action')
 end
 
 Then(/^my group should be archived$/) do
