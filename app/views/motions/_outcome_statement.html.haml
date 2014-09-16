@@ -1,25 +1,24 @@
-- if (can? :create_outcome, motion) || motion.outcome.present?
-  #outcome-statement
-    - if can? :create_outcome, motion
-      - if motion.outcome.blank?
-        #outcome-input
-          = form_for motion, url: create_outcome_motion_path(motion) do |f|
-            .form-group
-              = f.text_area :outcome, :placeholder => t(:outcome_placeholder), class: 'form-control'
-            .save-button.clearfix
-              = f.submit t(:outcome_submit), class: 'btn btn-primary', id: 'add-outcome-submit'
-      - else
-        #outcome-input.hidden
-          = form_for motion, url: update_outcome_motion_path(motion), method: 'post' do |f|
-            .form-group
-              = f.text_area :outcome, :placeholder => t(:outcome_placeholder), class: 'form-control'
-            .save-button.clearfix
-              = f.submit "Save", class: 'btn btn-primary', id: 'add-outcome-submit'
-    - if motion.outcome.present?
-      #outcome-display
-        .statement-display.well
-          .clearfix
-            - if can? :create_outcome, motion
-              = button_to t(:edit), "#", class: 'btn btn-primary outcome-edit-button', id: 'edit-outcome'
-            .outcome-label= t(:outcome)
-            %p= motion.outcome
+#outcome-statement
+  - if motion.has_outcome?
+    #outcome-display
+      .statement-display.well
+        .clearfix
+          - if can? :create_outcome, motion
+            = button_to t(:edit), "#", class: 'btn btn-primary outcome-edit-button', id: 'edit-outcome'
+          .outcome-label= t(:outcome)
+          %p= motion.outcome
+
+  - if can?(:create_outcome, motion)
+    - if motion.has_outcome?
+      - path = update_outcome_motion_path(motion)
+      - outcome_form_style = 'display: none'
+    - else
+      - path = create_outcome_motion_path(motion)
+      - outcome_form_class = ''
+
+    #outcome-form{style: outcome_form_class}
+      = form_for motion, url: path do |f|
+        .form-group
+          = f.text_area :outcome, :placeholder => t(:outcome_placeholder), class: 'form-control'
+        .save-button.clearfix
+          = f.submit t(:outcome_submit), class: 'btn btn-primary', id: 'add-outcome-submit'
