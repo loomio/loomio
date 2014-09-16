@@ -560,6 +560,7 @@ DEPENDENCIES
   jquery-atwho-rails (~> 0.4.11)
   jquery-fileupload-rails
   jquery-rails (~> 3.1.1)
+  jquery-ui-rails (~> 5.0.0)
   kaminari
   launchy
   librato-rails
