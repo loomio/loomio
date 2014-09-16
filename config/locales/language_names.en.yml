@@ -1,0 +1,50 @@
+en:
+  en: English
+  "be-BY": Belarusian
+  "bg-BG": Bulgarian
+  ca: Catalan
+  cs: Czech
+  "zh-TW": Chinese (Traditional, Taiwan)
+  de: German
+  es: Spanish
+  eo: Esperanto
+  el: Greek
+  fr: French
+  id: Indonesian
+  it: Italian
+  hu: Hungarian
+  ja: Japanese
+  ko: Korean
+  ml: Malayalam
+  "nl-NL": Dutch
+  "pt-BR": Portuguese (Brazil)
+  ro: Romanian
+  sr: Serbian (latin)
+  "sr-RS": Serbian (cyrillic)
+  sv: Swedish
+  vi: Vietnamese
+  tr: Turkish
+  uk: Ukranian
+
+# test languages
+  ar: Arabic
+  cmn: Chinese (Mandarin)
+  hr: Croatian
+  da: Danish
+  fi: Finnish
+  gl: Galician
+  'ga-IE': Gaelic (Ireland)
+  km: Khmer
+  mk: Macedonian
+  mi: Maori
+  'fa-IR': Persian (Iran)
+  pl: Polish
+  'pt-PT': Portuguese
+  ru: Russian
+  sl: Slovenian
+  te: Telugu
+
+#'just redirect' languages
+  be: Belarusian
+  pt: Portuguese
+  zh: Chinese (Traditional, Taiwan)

@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'rails_helper'
 
 describe LocalesHelper do
   describe '#browser_accepted_locale_strings' do
@@ -9,7 +10,7 @@ describe LocalesHelper do
     end
 
     it 'gives the correct language preference' do
-      helper.browser_accepted_locale_strings.should == ['pt-BR', 'pt', 'en-US', 'en', 'es']
+      helper.send(:browser_accepted_locales).should == [:'pt-BR', :'pt', :'en-US', :'en', :'es']
     end
   end
 end
