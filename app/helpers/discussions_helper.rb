@@ -45,6 +45,10 @@ module DiscussionsHelper
     end
   end
 
+  def destination_options(destinations)
+    destinations.map{ |g| ["#{"&nbsp;" * 4 if g.is_subgroup?}#{g.name}".html_safe, g.id] }
+  end
+
   def xml_item(event)
     case event.kind.to_sym
     when :new_comment then event.eventable

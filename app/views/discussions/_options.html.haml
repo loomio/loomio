@@ -20,7 +20,7 @@
               private_discussion: @discussion.private ? 1 : 0 }, 
       class: 'move-discussion-form' do
       .modal-body
-        = select_tag :destination_group_id, options_for_select(@destination_groups.map{|g| [g.full_name, g.id]})
+        = select_tag :destination_group_id, options_for_select(destination_options(@destination_groups))
       .warn-move.warn-move-will-make-private{style: "display: none"}
         %i.fa.fa-lock
         = t(:move_discussion_to_hidden_group)
