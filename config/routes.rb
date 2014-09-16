@@ -1,5 +1,7 @@
 Loomio::Application.routes.draw do
 
+  slug_regex = /[a-z0-9\-\_]*/i
+
   ActiveAdmin.routes(self)
 
   namespace :admin do
@@ -15,9 +17,6 @@ Loomio::Application.routes.draw do
     resources :comments, only: :create
   end
 
-  slug_regex = /[a-z0-9\-\_]*/i
-
-  root :to => 'marketing#index'
 
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
@@ -104,12 +103,13 @@ Loomio::Application.routes.draw do
     post 'archive/:id',  action: 'archive', as: :archive_group
   end
 
-  scope module: :groups do
-  end
-
   constraints(GroupSubdomainConstraint) do
     get '/' => 'groups#show'
     patch '/' => 'groups#update'
+  end
+
+  constraints(MainDomainConstraint) do
+    root :to => 'marketing#index'
   end
 
   delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel', as: :cancel_membership_request
