@@ -30,7 +30,8 @@
     padding-left: 0px;
   }
   #notifications-container .dropdown-menu {
-    width: 320px;
+    width: 480px;
+    @media (max-width: 480px) { width: 320px; }
     @media (max-width: 768px) { margin-left: -140px; }
     padding-bottom: 0;
   }
