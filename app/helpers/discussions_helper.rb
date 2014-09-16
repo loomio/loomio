@@ -64,7 +64,7 @@ module DiscussionsHelper
   end
 
   def css_for_markdown_link(target, setting)
-    return "icon-ok" if (target.uses_markdown == setting)
+    return "icon-ok" if (target.uses_markdown? == setting)
   end
 
   def markdown_img(uses_markdown)
