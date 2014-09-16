@@ -136,24 +136,22 @@ body.discussions.show {
       padding: 2px 2px 2px 0px;
     }
     .attachment-uploader {
-      // background: #EBEBEB;
       padding: 4px 0;
-      height: 22px;
+      height: 25px;
       .progress {
         height: 10px;
-        margin: 5px 0 5px 192px;
-        width: 156px;
+        margin: 3px 0;
+        width: 40%;
        }
       .uploading-filename {
         float: left;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        width: 185px;
+        width: 40%;
       }
     }
     .attachment-success { padding: 4px 0; }
-    .remove-attachment, .cancel-upload { padding-top: 2px; }
   }
   .comment-attachment {
     font-size: .9em;
