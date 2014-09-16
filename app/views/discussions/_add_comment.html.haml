@@ -1,23 +1,24 @@
 - if last_page?
-  - if can? :add_comment, discussion
-    = form_tag add_comment_discussion_path(discussion), :remote => true, id: "new-comment-form" do
-      = hidden_field_tag 'authenticity_token', form_authenticity_token
-      = render 'avatar', user: current_user
-      #comment-input{ data: {group: @group.id, autocomplete_path: members_autocomplete_group_path(@group) } }
-        .form-container
-          = text_area_tag 'comment', "", id: 'new-comment', class: 'js-warn-before-navigating-away', placeholder: t(:comment_form_placeholder)
-          #attachment-container
+  = form_tag add_comment_discussion_path(discussion), :remote => true, id: "new-comment-form" do
+    = hidden_field_tag 'authenticity_token', form_authenticity_token
+    = render 'avatar', user: current_user_or_visitor
+    #comment-input{ data: {group: @group.id, autocomplete_path: members_autocomplete_group_path(@group) } }
+      .form-container
+        = text_area_tag 'comment', "", id: 'new-comment', class: 'js-warn-before-navigating-away', placeholder: t(:comment_form_placeholder)
+        #attachment-container
 
-        = hidden_field_tag 'uses_markdown', @uses_markdown, {id: 'global-uses-markdown'}
-        = submit_tag t(:comment_form_submit_button), class: "btn btn-primary submit", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}
+      = hidden_field_tag 'uses_markdown', @uses_markdown, {id: 'global-uses-markdown'}
+      = submit_tag t(:comment_form_submit_button), class: "btn btn-primary submit", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}
+    - if user_signed_in?
       .comment-toolbar
         -unless browser.ie? && browser.version.to_i < 10
           .attachment-icon#add-attachment-icon
         .dropdown#comment-markdown-dropdown.global-markdown-setting
           %a.dropdown-toggle{href:'#comment-markdown-dropdown', id:'comment-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
             = markdown_img(@uses_markdown)
-          = render 'markdown_setting', target: current_user
+          = render 'markdown_setting', target: current_user_or_visitor
 
+  - if user_signed_in?
     -unless browser.ie? && browser.version.to_i < 10
       = s3_uploader_form post: attachments_url, as: "attachment[location]", redirect_url: iframe_upload_result_attachments_url do
         = file_field_tag :file, multiple: true
@@ -39,6 +40,3 @@
 
       %script#template-upload--comment-input{type: "text/x-tmpl"}
         %input{type: 'hidden', name: "attachments[]", value: '{%=o.id%}', data: { 'attachment-id' => "{%=o.id%}" }}
-
-  - else
-    = render "add_comment_placeholder"
