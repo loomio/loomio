@@ -4,19 +4,18 @@
       .statement-display.well
         .clearfix
           - if can? :create_outcome, motion
-            = button_to t(:edit), "#", class: 'btn btn-primary outcome-edit-button', id: 'edit-outcome'
+            = link_to "#", class: 'btn pull-right', id: 'edit-outcome' do
+              %i.fa.fa-pencil
           .outcome-label= t(:outcome)
-          %p= motion.outcome
+          %p.motion-outcome= motion.outcome
 
   - if can?(:create_outcome, motion)
     - if motion.has_outcome?
       - path = update_outcome_motion_path(motion)
-      - outcome_form_style = 'display: none'
     - else
       - path = create_outcome_motion_path(motion)
-      - outcome_form_class = ''
 
-    #outcome-form{style: outcome_form_class}
+    #outcome-form
       = form_for motion, url: path do |f|
         .form-group
           = f.text_area :outcome, :placeholder => t(:outcome_placeholder), class: 'form-control'

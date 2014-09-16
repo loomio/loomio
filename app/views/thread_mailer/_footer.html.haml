@@ -1,3 +1,8 @@
+%img{src: email_actions_mark_discussion_as_read_url(discussion_id: @discussion.id,
+                                                    event_id: @event.id,
+                                                    unsubscribe_token: @recipient.unsubscribe_token,
+                                                    format: 'gif'), alt: '', width: 1, height: 1}
+
 %p{style: 'font-size:small;-webkit-text-size-adjust:none;color:#666;'}
   &mdash;
   %br
@@ -11,7 +16,3 @@
   %br
   = t :"email.thread_mailer.change_email_preferences_html", email_preferences_url: email_preferences_url(@utm_hash.merge(unsubscribe_token: @recipient.unsubscribe_token))
 
-  %img{src: email_actions_mark_discussion_as_read_url(discussion_id: @discussion.id,
-                                                      event_id: @event.id,
-                                                      unsubscribe_token: @recipient.unsubscribe_token,
-                                                      format: 'gif'), alt: '', width: 1, height: 1}

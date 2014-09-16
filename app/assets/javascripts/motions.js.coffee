@@ -1,11 +1,29 @@
 window.Application ||= {}
 
-### INITIALIZATION ###
+$ -> # Show form for editing outcome
+  if $('.motion-outcome').text().length > 0
+    hideMotionOutcomeForm()
+  else
+    showMotionOutcomeForm()
+
+  $('#edit-outcome').click (e) ->
+    e.preventDefault()
+    showMotionOutcomeForm()
+    hideMotionOutcome()
+
+
+hideMotionOutcomeForm = ->
+  $('#outcome-form').addClass('hidden')
+
+showMotionOutcomeForm = ->
+  $('#outcome-form').removeClass('hidden')
+
+hideMotionOutcome = ->
+  $('#outcome-display').addClass('hidden')
 
 $ ->
   if getParameterByName("focus_outcome_input")
     $("#outcome-input textarea").focus()
-
 
 $ -> # Disable links on usernames
   $('.activity-item-actor a, .member-name a').click (event) ->
@@ -13,7 +31,7 @@ $ -> # Disable links on usernames
 
 $ -> # Toggle the list of members who  are yet to vote
   if $(".motion").length > 0
-    $(".toggle-yet-to-vote").click((event) ->
+    $(".toggle-yet-to-vote").click (event) ->
       if $("#yet-to-vote").hasClass("hidden")
         $(this).text("[Hide users who have not yet decided]")
         $("#yet-to-vote").removeClass('hidden')
@@ -21,14 +39,6 @@ $ -> # Toggle the list of members who  are yet to vote
         $(".toggle-yet-to-vote").text("[Show users who have not yet decided]")
         $("#yet-to-vote").addClass('hidden')
       event.preventDefault()
-    )
-
-$ -> # Show form for editing outcome
-  $("#edit-outcome").click (event) ->
-    $("#outcome-form").show()
-    $("#outcome-display").hide()
-    event.preventDefault()
-
 
 getParameterByName = (name) ->
   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]")
