@@ -120,7 +120,7 @@ Loomio::Application.routes.draw do
       get :history
       patch :close
       patch :create_outcome
-      post  :update_outcome
+      patch :update_outcome
     end
   end
 
