@@ -37,15 +37,9 @@ module Loomio
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # config.i18n.available_locales =
+    # config.i18n.available_locales = # --> don't use this, make mostly empty yml files e.g. fallback.be.yml
     config.i18n.enforce_available_locales = false
-
-    # fallback_tree = LocalesHelper::FALLBACKS   # can this be done without loading the app in the wrong order?
-    fallback_tree = { :'pt-PT' => :'pt-BR',
-                      :zh => :'zh-TW',
-                      :ca => :es    }
-
-    config.i18n.fallbacks = [:en, fallback_tree]
+    # config.i18n.fallbacks = # --> see initilizers/loomio_i18n
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
