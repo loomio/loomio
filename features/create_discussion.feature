@@ -22,3 +22,11 @@ Feature: User creates discussion
     And I select the group from the groups dropdown
     And I fill in the discussion details and submit the form
     Then a discussion should be created
+
+  @javascript
+  Scenario: Failing to input valid discussion values outputs an error
+    When I visit the dashboard
+    And I choose to create a discussion
+    And I fill in the discussion details and submit the form
+    Then a discussion should not be created
+    And I should see a discussion not created error

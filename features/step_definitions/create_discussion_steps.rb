@@ -24,6 +24,10 @@ Then /^a discussion should be created$/ do
   Discussion.where(:title => @discussion_title).should exist
 end
 
+Then /^a discussion should not be created$/ do 
+  Discussion.where(:title => @discussion_title).should_not exist
+end
+
 Given /^"(.*?)" has chosen to be emailed about new discussions and decisions for the group$/ do |arg1|
   @notified_user = User.find_by_name arg1
   @notified_user.memberships.where(:group_id => @group.id).update_all(:subscribed_to_notification_emails => true)
@@ -70,6 +74,10 @@ end
 Then /^the discussion description should render markdown$/ do
   page.find('.description-body').should have_content('this markdown')
   page.find('.description-body').should_not have_content('_this markdown_')
+end
+
+Then /^I should see a discussion not created error$/ do
+  find('.main-container').should have_css('.alert.alert-error')
 end
 
 Then /^my global markdown preference should now be 'enabled'$/ do

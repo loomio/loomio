@@ -40,8 +40,8 @@ class DiscussionsController < GroupBaseController
       flash[:success] = t("success.discussion_created")
       redirect_to @discussion
     else
-      render action: :new
       flash[:error] = t("error.discussion_not_created")
+      render action: :new
     end
   end
 
