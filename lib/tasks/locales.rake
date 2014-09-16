@@ -48,7 +48,7 @@ namespace :locales do
   end
 
   task :check_interpolations, [:locales] => [:environment] do |t, args|
-    args.with_defaults(:locales => LocalesHelper::LOCALE_STRINGS + LocalesHelper::EXPERIMENTAL_LOCALE_STRINGS)
+    args.with_defaults(:locales => LocalesHelper::LOCALE_STRINGS + LocalesHelper::TEST_LOCALE_STRINGS)
 
     print "\n"
 
@@ -83,11 +83,11 @@ namespace :locales do
   end
 
   task :check_exp_locales, [:locales] => [:environment] do |t, args|
-    # args.with_defaults(:locales => LocalesHelper::LOCALE_STRINGS + LocalesHelper::EXPERIMENTAL_LOCALE_STRINGS)
+    # args.with_defaults(:locales => LocalesHelper::LOCALE_STRINGS + LocalesHelper::TEST_LOCALE_STRINGS)
 
-    print "\n EXPERIMENTAL_LOCALE_STRINGS = %w( "
+    print "\n TEST_LOCALE_STRINGS = %w( "
     pretty_l = (args[:locales] - LocalesHelper::LOCALE_STRINGS).map do |l|
-      if LocalesHelper::EXPERIMENTAL_LOCALE_STRINGS.include? l
+      if LocalesHelper::TEST_LOCALE_STRINGS.include? l
         grey(l)
       else
         bold(green(l))

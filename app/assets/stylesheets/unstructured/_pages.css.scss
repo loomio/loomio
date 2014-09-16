@@ -877,5 +877,15 @@ body.pages.try_it {
   }
 }
 body.pages.translation {
-  td { padding: 0 10px }
+  .container h2 { font-size: 1.6em; }
+  .twitter-feed-container { padding-left: 16px; }
+  .code {
+    font-family: 'courier';
+    font-size: 14px;
+    background-color: $lighter-grey;
+    border-radius: 2px;
+    margin-left: 16px;
+  }
+  p.code { padding-left: 16px; }
+  td { padding: 0 10px; }
 }
