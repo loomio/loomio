@@ -34,6 +34,11 @@ Then /^debugger$/ do
   debugger
 end
 
+When(/^[I\s]+debug$/) do
+  binding.pry
+end
+
+
 And /^show me the page$/ do
   save_and_open_page
 end
