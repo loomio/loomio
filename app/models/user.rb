@@ -32,7 +32,8 @@ class User < ActiveRecord::Base
 
   validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
 
-  validates_uniqueness_of :username, allow_nil: true, allow_blank: true
+  validates_uniqueness_of :username, allow_blank: true
+  validates_length_of :username, maximum: 30, allow_blank: true
 
   include Gravtastic
   gravtastic  :rating => 'pg',
