@@ -6,7 +6,7 @@ module Loomio
     DETECTABLE_LOCALES = SELECTABLE_LOCALES + %i( be pt zh )
 
     # only for display purposes, please don't depend on this in the system
-    TEST_LOCALE_STRINGS = %i( ar cmn hr da fi gl ga-IE km mk mi fa-IR pl pt-PT ru sl te )
+    TEST_LOCALES = %i( ar cmn hr da fi gl ga-IE km mk mi fa-IR pl pt-PT ru sl te )
 
     FALLBACKS = { :ca      => :es,
                   :'pt-PT' => :'pt-BR',
