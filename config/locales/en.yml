@@ -524,7 +524,7 @@ en:
   empty_discussion_list: "There is no activity in this discussion yet."
   go_to_add_comment_html: "To add a comment, <a href='%{href}'>go to the end of the discussion</a>."
   comment_by: "Comment by %{comment_author}"
-  read_up_to: "Here\'s where you read up to last time"
+  read_up_to: "Here's where you read up to last time"
 
   discussion_list:
     clear_filters: "Clear filters: see all discussions"
