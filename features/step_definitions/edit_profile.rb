@@ -6,7 +6,6 @@ Then /^I should see my display name has been updated$/ do
   page.should have_content(@display_name)
 end
 
-
 Given /^I fill in and submit the new name$/ do
   @display_name = Faker::Name.name
   fill_in 'user_name', with: @display_name
@@ -35,4 +34,18 @@ end
 
 Then(/^I should see the logged in homepage$/) do
   page.should have_css('body.dashboard.show')
+end
+
+When(/^I update my username$/) do
+  @username = Faker::Internet.user_name
+  fill_in 'user_username', with: @username
+  click_on 'profile-submit'
+end
+
+When(/^I view my user profile$/) do
+  visit user_path(@user)
+end
+
+Then(/^I should see my username has been updated$/) do
+  page.should have_content(@username)
 end

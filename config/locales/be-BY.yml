@@ -952,7 +952,9 @@ be-BY:
       summary: "Рэзюмэ"
     thread_mailer:
       footer_text: "Наўпрост адкажыце на гэты ліст ці праглядзіце яго на Loomio:"
-      footer_html: "Наўпрост адкажыце на гэты ліст ці <a href='%{app_link}'>праглядзіце яго на Loomio</a>. Змяніць свае <a href='%{preferences_link}'>налады электроннай пошты</a>."
+      reply_or_view_online_html: "Наўпрост адкажыце на гэты ліст ці <a href='%{url}'>праглядзіце яго на Loomio</a>."
+      unfollow_discussion_html: "<a href='%{unfollow_url}'>Не сачыць</a>, каб больше не атрымліваць лісты пра гэта абмеркаванне."
+      change_email_preferences_html: "Змяніце свае <a href='%{email_preferences_url}'>налады пошты</a> каб адпісацца ад лістоў Loomio."
       change_preferences: "Змяніць свае налады электроннай пошты:"
       new_motion: "Карыстальнік %{who} прапанаваў:"
       motion_closing_soon: "Прапанова закрываецца праз 24 гадзіны:"
