@@ -922,7 +922,6 @@ es:
       summary: "Resumen"
     thread_mailer:
       footer_text: "Responder a este correo electrónico directamente o verlo en Loomio:"
-      footer_html: "Responder a este correo electrónico directamente o <a href='%{app_link}'> verlo en Loomio </a>. Cambia tu <a href='%{preferences_link}'> preferencias de correo electrónico </a>."
       change_preferences: "Cambiar sus preferencias de email"
       new_motion: "%{who} propuso:"
       motion_closing_soon: "Cierra en 24 Horas"

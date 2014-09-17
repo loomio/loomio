@@ -950,7 +950,6 @@ eo:
       summary: "Resumo"
     thread_mailer:
       footer_text: "Respondi rekte al ĉi tiu retpoŝtaĵo aŭ vidi ĝin en Loomio:"
-      footer_html: "Respondu rekte al ĉi tiu retpoŝtaĵo aŭ <a href='%{app_link}'>vidu ĝin en Loomio</a>. Ŝanĝi viajn <a href='%{preferences_link}'>retpoŝtajn preferojn</a>."
       change_preferences: "Ŝanĝi viajn retpoŝtajn preferojn:"
       new_motion: "%{who} proponis:"
       motion_closing_soon: "Propono fermiĝos en 24 horoj:"
