@@ -936,7 +936,6 @@ nl-NL:
       summary: "Samenvatting"
     thread_mailer:
       footer_text: "Reageer direct op deze e-mail of bekijk het op Loomio:"
-      footer_html: "Reageer direct op deze e-mail of <a href='%{app_link}'>bekijk het op Loomio</a>. Verander je <a href='%{preferences_link}'>e-mail voorkeuren<a>."
       change_preferences: "Verander je e-mail voorkeuren:"
       new_motion: "%{who} stelde voor:"
       motion_closing_soon: "Voorstel sluit binnen 24 uur:"
