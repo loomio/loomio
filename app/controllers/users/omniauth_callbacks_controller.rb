@@ -4,7 +4,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include InvitationsHelper
 
   def all
-    auth = OmniauthIdentity.from_omniauth(request.env["omniauth.auth"])
+    auth_params = ActionController::Parameters.new(request.env["omniauth.auth"])
+    user_info = auth_params.require(:info).permit(:name, :email)
+    auth = OmniauthIdentity.from_omniauth(auth_params[:provider], auth_params[:uid], user_info)
 
     if auth.user
       Measurement.increment('omniauth.success.recognised')

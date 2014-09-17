@@ -6,7 +6,11 @@
 -title = ( show_title ? name : nil )
 
 %div{ class: "#{size}-user-avatar #{kind}-user-avatar avatar-canvas", id: id, title: title }
-  - if kind == 'initials'
-    = user.avatar_initials
-  - else
-    = image_tag user.avatar_url(size, kind)
+  - unless user.is_logged_in?
+    %h2
+      %i.fa.fa-user
+  -else
+    - if kind == 'initials'
+      = user.avatar_initials
+    - else
+      = image_tag user.avatar_url(size, kind)

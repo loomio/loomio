@@ -48,7 +48,7 @@ namespace :locales do
   end
 
   task :check_interpolations, [:locales] => [:environment] do |t, args|
-    args.with_defaults(:locales => LocalesHelper::LOCALE_STRINGS + LocalesHelper::TEST_LOCALE_STRINGS)
+    args.with_defaults(:locales => Loomio::I18n::SELECTABLE_LOCALES + Loomio::I18n::TEST_LOCALES )
 
     print "\n"
 
@@ -83,11 +83,11 @@ namespace :locales do
   end
 
   task :check_exp_locales, [:locales] => [:environment] do |t, args|
-    # args.with_defaults(:locales => LocalesHelper::LOCALE_STRINGS + LocalesHelper::TEST_LOCALE_STRINGS)
+    # args.with_defaults(:locales => LocalesHelper::LOCALE_STRINGS + LocalesHelper::TEST_LOCALES)
 
-    print "\n TEST_LOCALE_STRINGS = %w( "
-    pretty_l = (args[:locales] - LocalesHelper::LOCALE_STRINGS).map do |l|
-      if LocalesHelper::TEST_LOCALE_STRINGS.include? l
+    print "\n TEST_LOCALES = %i( "
+    pretty_l = (args[:locales].map(&:to_sym) - Loomio::I18n::SELECTABLE_LOCALES).map do |l|
+      if Loomio::I18n::TEST_LOCALES.include? l
         grey(l)
       else
         bold(green(l))
@@ -161,7 +161,7 @@ def print_status(locale, language_stats)
 
   fixed_locale_str = cyan(fixed_locale_str)
 
-  if LocalesHelper::LANGUAGES.values.include? fixed_locale
+  if Loomio::I18n::SELECTABLE_LOCALES.include? fixed_locale
     if perc_comp >= THRESHOLDS["Live"] - 5
       state         = bold('Live')
       perc_comp_str = grey(perc_comp_str)
