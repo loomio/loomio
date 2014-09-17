@@ -17,19 +17,7 @@
             .col-md-12
               %iframe.discussion-iframe{src: @discussion.iframe_src}
         .row
-          .col-sm-6#content-comments
-            .large-icon.discussion-icon.enabled-icon
-            %h3.header-text= t :discussion
-            #discussion-activity-body
-              #activity-feed
-                = render 'activity', items: @activity
-                = render 'add_comment', discussion: @discussion
-                = paginate @activity
-                - unless last_page?
-                  %p.go-to-add-comment
-                    = t( :go_to_add_comment_html, href: path_of_add_comment )
-
-          .col-sm-6#content-proposal
+          .col-sm-6.pull-right#content-proposal
             .large-icon.decision-icon
             %h3.header-text= t :current_decision
             .content-proposal-body
@@ -62,6 +50,18 @@
                         %li.selector-item= render @motion
                       - else
                         %li.selector-item= render 'motions/motion_preview', motion: motion
+          .col-sm-6#content-comments
+            .large-icon.discussion-icon.enabled-icon
+            %h3.header-text= t :discussion
+            #discussion-activity-body
+              #activity-feed
+                = render 'activity', items: @activity
+                = render 'add_comment', discussion: @discussion
+                = paginate @activity
+                - unless last_page?
+                  %p.go-to-add-comment
+                    = t( :go_to_add_comment_html, href: path_of_add_comment )
+
 
 / the question should be broader: perhaps can? :participate
 - unless can? :add_comment, @discussion
