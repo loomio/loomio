@@ -1,7 +1,7 @@
 Feature: User edits profile
   As a user
   So that I can customise my profile
-  I want to update my display name
+  I want to update my user information
 
   Background:
     Given I am logged in
@@ -15,12 +15,18 @@ Feature: User edits profile
     Then I should see my display name has been updated
 
   @javascript
-  Scenario: User updates display name
+  Scenario: User updates email
     When I change my email to "poro@rubyschool.com" and submit the form
     And I log out
     And I visit the sign in page
     And I log in with "poro@rubyschool.com"
     Then I should see the logged in homepage
+
+  @javascript
+  Scenario: User updates username
+    When I update my username
+    And I view my user profile
+    Then I should see my username has been updated
 
   @javascript
   Scenario: User updates profile photo
