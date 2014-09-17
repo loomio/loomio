@@ -2,10 +2,10 @@ class OmniauthIdentity < ActiveRecord::Base
   belongs_to :user
   validates_presence_of :uid, :provider
 
-  def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |record|
-      record.email = auth.info.email
-      record.name = auth.info.name
+  def self.from_omniauth(provider, uid, user_info)
+    where(provider: provider, uid: uid).first_or_create do |record|
+      record.email = user_info['email']
+      record.name = user_info['name']
     end
   end
 
