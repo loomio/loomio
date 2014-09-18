@@ -12,7 +12,7 @@ When /^I visit the dashboard$/ do
 end
 
 Then(/^I should see that the discussion has (\d+) unread$/) do |arg1|
-  find(".activity-count").should have_content(arg1)
+  find(".unread-comments-count").should have_content(arg1)
 end
 
 Then /^I should see the number of comments the discussion has$/ do

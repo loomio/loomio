@@ -16,17 +16,15 @@ body.invitations {
     -moz-border-radius: 4px;
     -o-border-radius: 4px;
     -ms-border-radius: 4px;
-    float: right;
     margin-top: 9px;
     max-height: 335px;
     overflow: scroll;
     overflow-x: hidden;
     padding: 5px;
-    width: 288px;
     margin-bottom: 40px;
   }
 
-  form .invite-member-checkbox-container {
+  .invite-member-checkbox-container {
     .checkbox {
       margin-top: 0px;
       padding-left: 0;
@@ -42,11 +40,11 @@ body.invitations {
     .checkbox label{
       margin-top: 10px;
       min-height: 24px;
+      padding-left: 20px;
     }
   }
 
   .invite-by-email {
-    margin-right: 80px;
     margin-bottom: 20px;
   }
 

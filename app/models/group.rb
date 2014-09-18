@@ -95,7 +95,6 @@ class Group < ActiveRecord::Base
 
   has_many :memberships,
            -> { where is_suspended: false, archived_at: nil },
-           dependent: :destroy,
            extend: GroupMemberships
 
   has_many :all_memberships,
@@ -143,6 +142,10 @@ class Group < ActiveRecord::Base
            class_name: 'Group',
            foreign_key: 'parent_id'
 
+  has_many :all_subgroups,
+           class_name: 'Group',
+           foreign_key: :parent_id
+
   has_one :subscription, dependent: :destroy
 
   delegate :include?, to: :users, prefix: true
@@ -169,6 +172,7 @@ class Group < ActiveRecord::Base
     size: { in: 0..10.megabytes },
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
+
 
   def coordinators
     admins
@@ -203,7 +207,6 @@ class Group < ActiveRecord::Base
   end
 
   def archive!
-    self.discussions.each(&:archive!)
     self.update_attribute(:archived_at, DateTime.now)
     memberships.update_all(archived_at: DateTime.now)
     subgroups.each do |group|
@@ -213,6 +216,12 @@ class Group < ActiveRecord::Base
 
   def is_archived?
     self.archived_at.present?
+  end
+
+  def unarchive!
+    self.update_attribute(:archived_at, nil)
+    all_memberships.update_all(archived_at: nil)
+    all_subgroups.update_all(archived_at: nil)
   end
 
   def is_hidden_from_public?
@@ -441,6 +450,27 @@ class Group < ActiveRecord::Base
       parent.theme
     else
       super
+    end
+  end
+
+  # a bit nasty but no one really cares/has time to clean up the group_request stuff
+  def is_commercial
+    if is_subgroup?
+      parent.is_commercial
+    else
+      if group_request.present?
+        group_request.is_commercial
+      else
+        nil
+      end
+    end
+  end
+
+  def financial_nature
+    case is_commercial
+    when nil then 'undefined'
+    when false then 'non-commercial'
+    when true then 'commercial'
     end
   end
 

@@ -106,6 +106,9 @@ body.explore {
 
   ul.discussion-list{
     margin-bottom: 1.1em;
+    .col-xs-2{
+      text-align: right
+    }
     li {
       a {
         color: $dark-grey;

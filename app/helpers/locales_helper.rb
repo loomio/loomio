@@ -1,71 +1,25 @@
 require 'http_accept_language'
 
 module LocalesHelper
-  LANGUAGES = { 'English' => :en,
-                'беларуская мова ' => :'be-BY',
-                'български' => :'bg-BG',
-                'Català' => :ca,
-                'čeština' => :cs,
-                '正體中文' => :'zh-TW', #zh-Hant, Chinese (traditional), Taiwan
-                'Deutsch' => :de,
-                'Español' => :es,
-                'Esperanto' => :eo,
-                'ελληνικά' => :el,
-                'Français' => :fr,
-                'Indonesian' => :id,
-                'Italiano' => :it,
-                'magyar' => :hu,
-                '日本語' => :ja,
-                '한국어' => :ko,
-                'മലയാളം' => :ml,
-                'Nederlands' => :'nl-NL',
-                'Português (Brasil)' => :'pt-BR',
-                'română' => :ro,
-                'Srpski - Latinica' => :sr,
-                'Srpski - Ćirilica' => :'sr-RS',
-                'Svenska' => :sv,
-                'Tiếng Việt' => :vi,
-                'Türkçe' => :tr,
-                'українська мова' => :uk }
+  def selectable_locales
+    Loomio::I18n::SELECTABLE_LOCALES
+  end
 
-  LOCALE_STRINGS = LANGUAGES.values.map(&:to_s)
-  EXPERIMENTAL_LOCALE_STRINGS = %w( ar cmn hr da eo fi gl ga-IE km mk mi fa-IR pl pt-PT ru sl te )
+  def detectable_locales
+    Loomio::I18n::DETECTABLE_LOCALES
+  end
 
   def locale_name(locale)
-    LANGUAGES.key(locale.to_sym)
-  end
-
-  def supported_locales
-    LANGUAGES.values
-  end
-
-  def supported_locale_strings
-    LOCALE_STRINGS + EXPERIMENTAL_LOCALE_STRINGS
-  end
-
-  def valid_locale?(locale)
-    return false if locale.blank?
-    supported_locale_strings.include? locale.to_s
+    I18n.t(locale.to_sym, scope: :native_language_name)
   end
 
   def selected_locale
-    legal_selected_param || current_user_or_visitor.selected_locale  #string
+    params_selected_locale || user_selected_locale
   end
 
-  def legal_selected_param
-    if (LOCALE_STRINGS + EXPERIMENTAL_LOCALE_STRINGS).include? params[:locale]
-      params[:locale]
-    else
-      nil
-    end
-  end
-
-  def locale_selected?
-    params.has_key?(:locale) || current_user_or_visitor.locale.present?
-  end
-
+  # 1 of 2 places untrusted input can enter system
   def detected_locale
-    (browser_accepted_locale_strings & supported_locale_strings).first.try(:to_sym)
+    first_detectable_locale browser_accepted_locales
   end
 
   def default_locale
@@ -80,6 +34,50 @@ module LocalesHelper
     I18n.locale = best_locale
   end
 
+  def locale_fallback(first, second = nil)
+    first || second || default_locale
+  end
+
+  def save_detected_locale(user)
+    user.update_attribute(:detected_locale, detected_locale)
+  end
+
+  # View helper methods for language selector dropdown
+
+  def linked_language_options
+    selectable_locales.map do |locale|
+      [locale_name(locale), current_path_with_locale(locale)]
+    end
+  end
+
+  def language_options
+    selectable_locales.map do |locale|
+      [locale_name(locale), locale]
+    end
+  end
+
+  def selected_language_option
+    current_path_with_locale(current_locale)
+  end
+
+  def current_path_with_locale(locale)
+    url_for(locale: locale)
+  end
+
+
+  private
+
+  def all_locale_strings
+    I18n.available_locales.map &:to_s
+  end
+
+  def browser_accepted_locales
+    header = request.env['HTTP_ACCEPT_LANGUAGE']
+    parser = HttpAcceptLanguage::Parser.new(header)
+
+    filter_locales(parser.user_preferred_languages, all_locale_strings)
+  end
+
   def best_locale
     if user_signed_in?
       best_available_locale
@@ -90,43 +88,33 @@ module LocalesHelper
 
   def best_available_locale
     selected_locale || detected_locale || default_locale
-      #   str              sym                 sym
   end
 
   def best_cachable_locale
     selected_locale || default_locale
   end
 
-  def locale_fallback(first, second = nil)
-    first || second || default_locale
+  # 2 of 2 places untrusted user input can enter system
+  def params_selected_locale
+    filter_locales(params[:locale], all_locale_strings).first
   end
 
-  def browser_accepted_locale_strings
-    header = request.env['HTTP_ACCEPT_LANGUAGE']
-    parser = HttpAcceptLanguage::Parser.new(header)
-    parser.user_preferred_languages
+  def user_selected_locale
+    first_selectable_locale current_user_or_visitor.selected_locale
   end
 
-  def save_detected_locale(user)
-    user.update_attribute(:detected_locale, detected_locale)
+  def first_detectable_locale(locales)
+    filter_locales(locales, detectable_locales).first
   end
 
-
-  # methods for language selector dropdown
-
-  def language_options_array
-    options = []
-    LANGUAGES.each_pair do |language, locale|
-      options << [language, current_path_with_locale(locale)]
-    end
-    options
+  def first_selectable_locale(locales)
+    filter_locales(locales, selectable_locales).first
   end
 
-  def selected_language_option
-    current_path_with_locale(current_locale)
-  end
+  def filter_locales(input_locales, valid_locales)
+    input_locales = Array(input_locales).map &:to_s
+    valid_locales = Array(valid_locales).map &:to_s
 
-  def current_path_with_locale(locale)
-    url_for(locale: locale)
+    ( input_locales & valid_locales ).map(&:to_sym)
   end
 end

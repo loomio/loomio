@@ -9,10 +9,7 @@ ul, ol, li {
 }
 ul { list-style: none; }
 
-html { height: 100%; }
-
 body {
-  height: 100%;
   color: $text-black;
 }
 
@@ -117,6 +114,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.terms_of_service,
 .pages.third_parties,
 .pages.try_it,
+.pages.translation,
 .pages.purpose,
 .pages.how_it_works,
 .pages.about_us,
@@ -516,10 +514,6 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
     input {
       max-width: 100%;
     }
-    input[type="checkbox"] {
-      float: right;
-      margin: 6px 0 6px 6px;
-    }
     input[type="text"],
     input[type="email"],
     input[type="password"]  {
@@ -561,7 +555,7 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
         color: #777;
         font-size: 1.2em;
         font-style: italic;
-        margin-left: 188px;
+        margin-left: 45%;
         height: 20px;
         position: absolute;
         text-align: center;
@@ -856,11 +850,25 @@ body.pages.try_it {
     text-align: left;
     padding: 30px;
     margin: 24px 0 4px;
-    width: 420px;
+    width: 100%;
+    white-space: normal;
 
     .fa-try-it {
       color: white;
       font-size: 30px;
     }
   }
+}
+body.pages.translation {
+  .container h2 { font-size: 1.6em; }
+  .twitter-feed-container { padding-left: 16px; }
+  .code {
+    font-family: 'courier';
+    font-size: 14px;
+    background-color: $lighter-grey;
+    border-radius: 2px;
+    margin-left: 16px;
+  }
+  p.code { padding-left: 16px; }
+  td { padding: 0 10px; }
 }

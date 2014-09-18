@@ -1,9 +1,9 @@
-.row.clearfix.discussion-header-container
-  .col-xs-11
+.row.discussion-header-container
+  .col-xs-12
     .discussion-title-container
       %h2#discussion-title
+        - if can?(:edit, discussion) || can?(:move, discussion) || can?(:destroy, discussion)
+          =render "discussions/options", discussion: discussion
         = discussion.title
         = render 'discussions/privacy_icon', discussion: discussion
-  - if can?(:edit, discussion) || can?(:move, discussion) || can?(:destroy, discussion)
-    .col-xs-1=render "discussions/options", discussion: discussion
   .discussion-title-translation.translated= t(:loading_translation)

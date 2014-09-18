@@ -8,12 +8,12 @@
   .row#invitations-header
     %h1= t("invitation.invite_people")
   .row#invitation-options
-    .col-md-6.invite-by-email
+    .col-sm-6.invite-by-email
       = render 'invite_users', form: f, group: @group, discussion: @discussion
       = @group.invitations_remaining
       = t :invitations_remaining
     - if @group.is_subgroup?
-      .col-md-4.invite-members-of-parent
+      .col-sm-5.col-sm-offset-1.invite-members-of-parent
         %h3= t :"invitation.select_members", group_name: @group.parent.name
         .parent-members
           - addable_users = @group.parent_members.sorted_by_name.map{|u| [u.name, u.id] }
@@ -25,6 +25,8 @@
           - else
             =t :empty_parent_group
   .row
-    .col-md-5.invitation-submit
+    .span5.invitation-submit
+      = f.submit t("invite_people"), :class => "btn btn-info btn-large run-validations", :id => "invite-to-group", :data => { disable_with: t("invite_people") }
+    .col-sm-5.invitation-submit
       = f.submit t("invite_people"), :class => "btn btn-primary btn-lg run-validations", :id => "invite-to-group", :data => { disable_with: t("invite_people") }
       =render "application/hint", text: t(:"hint.invitation"), anchor: 'writing-a-great-invitation'

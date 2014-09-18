@@ -5,6 +5,8 @@ el:
         title: 'Προτιμήσεις Ηλεκτρονικού Ταχυδρομείου'
         when_do_you_want_emails: 'Στείλε μου μήνυμα ηλεκτρονικού ταχυδρομείου'
         email_missed_yesterday: "'Εχθές στο Loomio' - ημερήσια σύνοψη οποιασδήποτε δραστηριότητας παρέλειψα"
+        email_when_mentioned: "Όταν @αναφέρομαι"
+        email_followed_threads: "Όταν υπάρχει δραστηριότητα σε θέματα που ακολουθάω."
         email_when_proposal_closing_soon: "24 ώρες πριν η πρόταση κλείσει."
         email_new_discussions_and_proposals: 'Νέες συζητήσεις και προτάσεις'
         for_these_groups: "Για αυτές τις ομάδες:"
@@ -904,6 +906,7 @@ el:
       subject: "%{who} έχει αιτηθεί να συμμετάσχει στην ομάδα %{which_group}"
       view_group: "Μπορείς να εγκρίνεις ή να απορρίψεις την αίτηση εδώ"
     mentioned:
+      context: "%{author_name} σε ανέφερε όταν συζητούσε στο θέμα \"%{discussion_title}\""
       subject: "%{who} σε ανέφερε στην Ομάδα %{which} στο Loomio"
     new_motion_created:
       subject: "Πρόταση: %{proposal_title}"
@@ -927,7 +930,6 @@ el:
       summary: "Σύνοψη"
     thread_mailer:
       footer_text: "Απαντήστε σε αυτό το ηλεκτρονικό μήνυμα απευθείας ή δείτε το στο Loomio:"
-      footer_html: "Απαντήστε σε αυτό το ηλεκτρονικό μήνυμα απευθείας ή <a href='%{app_link}'>δείτε το στο Loomio</a>.  Αλλάξτε τις <a href='%{preferences_link}'>προτιμήσεις του ηλεκτρονικού ταχυδρομείου σας</a>."
       change_preferences: "Αλλάξτε τις προτιμήσεις του ηλεκτρονικού ταχυδρομείου σας:"
       new_motion: "%{who} πρότεινε:"
       motion_closing_soon: "Η πρόταση κλείνει σε 24 ώρες:"

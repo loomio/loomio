@@ -4,7 +4,7 @@ end
 
 When /^I select the delete discussion link from the discussion dropdown$/ do
   find("#options-dropdown").click
-  click_on "delete-discussion"
+  click_on "Delete discussion"
 end
 
 Then /^I should be directed to the group page$/ do

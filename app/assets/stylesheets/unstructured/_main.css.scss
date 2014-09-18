@@ -3,7 +3,6 @@ html, body { overflow-x: hidden; }
 
 body {
   background-color: $app-background;
-  height: 100%;
   color: $text-black;
   margin-top: 50px;
 }
@@ -23,7 +22,7 @@ form {
   input, select, textarea {
     color: #252525;
   }
-  textarea {
+  textarea, textarea.form-control {
     margin-bottom: 0;
     height: 200px;
   }
@@ -71,8 +70,6 @@ h2, h3 {
 
 hr { margin: 1px; }
 
-html { height: 100%; }
-
 ul { list-style: none; }
 
 ul, ol, li {
@@ -81,6 +78,7 @@ ul, ol, li {
 }
 .container{
   background-color: $container;
+  max-width: 970px;
 }
 .navbar-default{ background-color: white;}
 .alert { margin-top: 14px; }
@@ -411,9 +409,10 @@ form{
   }
   .checkbox label{
     padding-left: 0;
+    padding-bottom: 1em;
   }
-  .radio input[type="radio"], .checkbox input[type="checkbox"]{
-    /*margin-top: 2px;*/
+  .radio label{
+    padding-bottom: 1em;
   }
 }
 

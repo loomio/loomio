@@ -109,10 +109,15 @@ a:hover { text-decoration: none; }
   li a.btn {
     color: white;
     padding: 6px 20px;
-    margin: 4px 0 10px 10px;
+    margin: 4px 10px 0 0;
     @include screen-size(medium-up) {
       margin: 10px 0 10px 10px;
     }
+  }
+  li.visible-xs{
+    width: 40px;
+    margin-top: -4px;
+    margin-left: 6px
   }
 
   &.navbar-default .navbar-nav > li > a.btn:hover {

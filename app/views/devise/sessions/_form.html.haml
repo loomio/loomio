@@ -5,8 +5,10 @@
 
   .row
     .col-md-6#remember-me
-      = f.input :remember_me, :as => :boolean, label: false
-      %label{for: "user_remember_me"}= t(:remember_me)
+      .checkbox
+        = label_tag "user_remember_me" do
+          = f.check_box :remember_me
+          = t(:remember_me)
     .col-md-6#forgot-pwd
       = link_to t(:forgot_your_password), new_password_path(resource_name)
   .row

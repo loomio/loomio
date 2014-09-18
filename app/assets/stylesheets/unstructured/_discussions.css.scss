@@ -111,7 +111,6 @@ body.discussions.show {
   }
 
   #privacy {
-    margin-left: 4px;
     font-size: .8em;
     color: $mid-light-grey;
     text-decoration: none;
@@ -137,24 +136,22 @@ body.discussions.show {
       padding: 2px 2px 2px 0px;
     }
     .attachment-uploader {
-      // background: #EBEBEB;
       padding: 4px 0;
-      height: 22px;
+      height: 25px;
       .progress {
         height: 10px;
-        margin: 5px 0 5px 192px;
-        width: 156px;
+        margin: 3px 0;
+        width: 40%;
        }
       .uploading-filename {
         float: left;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        width: 185px;
+        width: 40%;
       }
     }
     .attachment-success { padding: 4px 0; }
-    .remove-attachment, .cancel-upload { padding-top: 2px; }
   }
   .comment-attachment {
     font-size: .9em;
@@ -172,9 +169,15 @@ body.discussions.show {
     .paperclip { margin-bottom: 2px; }
   }
   .discussion-title-container {
-    display: inline-block;
-    margin: 0 0 0 15px;
-    #discussion-title { font-size: 22px; }
+    #discussion-title {
+      padding-left: 15px;
+      font-size: 22px; 
+    }
+    .dropdown{
+      display: inline;
+      float: right;
+      margin: -5px 10px 0 0;
+    }
   }
   .discussion-title-translation {
     padding: 0 15px 10px;
@@ -188,7 +191,9 @@ body.discussions.show {
     #previous-proposals .selector-list { border-top: 1px solid $lighter-grey; }
     .content-proposal-body {
       margin-bottom: 1em;
-      margin-left: 50px;
+      margin-left: 40px;
+      @media (max-width: 768px) { margin-left: 50px; }
+
       ul.selector-list {
         li.empty-list-message { padding: 4px; }
         li .motion {
@@ -267,6 +272,7 @@ body.discussions.show {
         .user-name { white-space: nowrap; }
       }
       .following-status{
+        margin-top: 0.5em;
       }
       #discussion-markdown-dropdown {
         margin-right: 8px;
@@ -307,6 +313,7 @@ body.discussions.show {
       display: inline-block;
       width: 15px;
     }
+
     #new-comment-form {
       margin-bottom: 0px;
       padding: 0 0 10px 0;
@@ -331,7 +338,8 @@ body.discussions.show {
       margin-top: -2px;
     }
 
-    textarea #new-comment {
+    textarea#new-comment {
+      width: 100%;
     }
     #new-comment {
       background: none;
@@ -340,7 +348,7 @@ body.discussions.show {
       height: 120px;
       margin: 0;
       outline: none;
-      width: 380px;
+      /*width: 380px;*/
       padding: 6px;
       &:focus {
         border-color: 0;
@@ -460,7 +468,6 @@ body.discussions.show {
     margin: 0 0 20px 0;
     min-height: 59px;
     .dropdown {
-      padding-top: 6px;
       li {
         background-color: white;
         border: none;
@@ -627,7 +634,7 @@ pre{
     .latest-comment-time, .proposal-close-date { display: inline; }
   }
   .activity-icon { float: right; }
-  .discussion-icon.activity-icon { margin: 8px 6px 0 0; }
+  .discussion-icon.activity-icon { margin: 8px 10px 0 0; }
   .pie-icon.activity-icon { margin: 6px 0 0 0; }
   .activity-count {
     font-size: $font-tinywiny;

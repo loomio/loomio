@@ -1,6 +1,6 @@
 %li.motion.row{data:{motion_id: item.id}}
   =link_to item do
-    .col-xs-1
+    .col-xs-2
       .icon
         -values = item.vote_counts.values
         .activity-container
@@ -11,6 +11,6 @@
         .motion-sparkline
           = motion_sparkline(item)
 
-    .col-xs-11
+    .col-xs-10
       .title
         = item.title

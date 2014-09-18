@@ -129,6 +129,8 @@ class Ability
     can :show, Discussion do |discussion|
       if discussion.is_archived?
         false
+      elsif discussion.group.is_archived?
+        false
       else
         discussion.public? or
         user_is_member_of?(discussion.group_id) or

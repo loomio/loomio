@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140906034307) do
+||||||| merged common ancestors
+ActiveRecord::Schema.define(version: 20140902023416) do
+=======
+ActiveRecord::Schema.define(version: 20140911225702) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -258,6 +264,7 @@ ActiveRecord::Schema.define(version: 20140906034307) do
     t.text     "why_do_you_want"
     t.text     "group_core_purpose"
     t.text     "admin_notes"
+    t.boolean  "is_commercial"
   end
 
   add_index "group_requests", ["group_id"], name: "index_group_requests_on_group_id", using: :btree
@@ -501,6 +508,13 @@ ActiveRecord::Schema.define(version: 20140906034307) do
 
   add_index "translations", ["fields"], name: "translations_gin_fields", using: :gin
 
+  create_table "user_deactivation_responses", force: true do |t|
+    t.integer "user_id"
+    t.text    "body"
+  end
+
+  add_index "user_deactivation_responses", ["user_id"], name: "index_user_deactivation_responses_on_user_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                                           default: "",         null: false
     t.string   "encrypted_password",                  limit: 128, default: ""
@@ -515,7 +529,7 @@ ActiveRecord::Schema.define(version: 20140906034307) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.datetime "deleted_at"
+    t.datetime "deactivated_at"
     t.boolean  "is_admin",                                        default: false
     t.string   "avatar_kind",                                     default: "initials", null: false
     t.string   "uploaded_avatar_file_name"

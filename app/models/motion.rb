@@ -50,6 +50,10 @@ class Motion < ActiveRecord::Base
   scope :voting_or_closed_after,   ->(time) { where('motions.closed_at IS NULL OR (motions.closed_at > ?)', time) }
   scope :closing_in_24_hours,      -> { where('motions.closing_at > ? AND motions.closing_at <= ?', Time.now, 24.hours.from_now) }
 
+  def has_outcome?
+    outcome.present?
+  end
+
   def followers_without_author
     discussion.followers.where('users.id != ?', author_id)
   end

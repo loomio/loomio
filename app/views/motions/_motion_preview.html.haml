@@ -5,7 +5,7 @@
         - if current_user
           - position = motion.last_position_by_user(current_user)
           %div.activity-icon{ class: "position-#{position}-icon" }
-    .col-xs-9
+    .col-xs-8
       .proposal-title-container
         .proposal-title.word-break= truncate(motion.name, :length => 60, :separator => ' ')
         - if motion.outcome.present?

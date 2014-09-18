@@ -2,16 +2,17 @@
   - logo_class = 'app-logo'
 - else
   - logo_class = 'app-logo beta'
+
 %nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
-      %button.navbar-toggle{type: 'button', data: {toggle: 'collapse', target: '#navbar-collapse'}}
-        %span.sr-only= t :"sr.toggle_navigation"
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{class: logo_class, href: dashboard_or_root_path, title: t(:"organisation.name")}
       - if user_signed_in?
+        %button.navbar-toggle{type: 'button', data: {toggle: 'collapse', target: '#navbar-collapse'}}
+          %span.sr-only= t :"sr.toggle_navigation"
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{class: logo_class, href: dashboard_or_root_path, title: t(:"organisation.name")}
 
         %ul.nav.navbar-nav
           %li#inbox-container
@@ -19,7 +20,7 @@
               %i.fa.fa-inbox
               %span#inbox-count.activity-count.label
           %li.dropdown#notifications-container
-            %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
+            %a.dropdown-toggle.notifications-dropdown-btn{'data-toggle' => 'dropdown', :href => '#', :id => 'notifications-toggle'}
               %i.fa.fa-bell
               %span#notifications-count.label.activity-count
             %ul.dropdown-menu
@@ -30,7 +31,7 @@
                   %li Loading
               %li#notifications-see-more= link_to t(:see_all_notifications), notifications_path
           %li.dropdown#groups
-            %a.dropdown-toggle{href: "#", 'data-toggle' => 'dropdown'}
+            %a.dropdown-toggle.groups-dropdown-btn{href: "#", 'data-toggle' => 'dropdown'}
               %i.fa.fa-group
               %span.hidden-xs= t :"common.groups"
             %ul.dropdown-menu
@@ -41,17 +42,18 @@
                 %li.group-item.group-links
                   =link_to t(:find_a_group), explore_path, class: 'find-group'
 
-        %nav.collapse.navbar-collapse#navbar-collapse
+        .collapse.navbar-collapse#navbar-collapse
           %ul.nav.navbar-nav
+            .user-options.visible-xs
+              = render 'application/user_profile_options'
             = render 'search'
-            .visible-xs= render 'application/user_profile_options'
 
-        %ul.nav.navbar-nav.navbar-right
-          .hidden-xs= render 'user_dropdown'
+        %ul.nav.navbar-nav.navbar-right.hidden-xs
+          = render 'user_dropdown'
 
       - else
-        %nav.collapse.navbar-collapse#navbar-collapse
-          %ul.nav.navbar-nav
-          %ul.nav.navbar-nav.navbar-right
+        %a.navbar-brand{class: logo_class, href: dashboard_or_root_path, title: t(:"organisation.name")}
+        %nav
+          %ul.nav.navbar-nav.navbar-right.pull-right
             - unless controller_name == "group_requests"
-              %li=link_to t(:log_in), new_user_session_path
+              %li=link_to t(:log_in), new_user_session_path, class: 'login'

@@ -6,7 +6,7 @@ Given(/^I have a proposal which has expired$/) do
 end
 
 When(/^I click the notifications dropdown$/) do
-  find("#notifications-toggle").click
+  find(".notifications-dropdown-btn").click
 end
 
 Then(/^I should see that the motion expired$/) do

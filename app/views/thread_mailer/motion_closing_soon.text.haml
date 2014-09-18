@@ -4,7 +4,7 @@
 \
 = @motion.description
 \
-- unless @motion.user_has_voted?(@user)
+- unless @motion.user_has_voted?(@recipient)
   = t(:"help.have_your_say")
   = motion_url(@motion)
 

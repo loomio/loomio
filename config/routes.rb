@@ -9,6 +9,8 @@ Loomio::Application.routes.draw do
 
 
 
+  slug_regex = /[a-z0-9\-\_]*/i
+
   ActiveAdmin.routes(self)
 
   namespace :admin do
@@ -16,6 +18,7 @@ Loomio::Application.routes.draw do
       get :group_metrics
       get :retention
       get :events
+      get :weekly_activity
     end
   end
 
@@ -38,9 +41,6 @@ Loomio::Application.routes.draw do
     end
     resources :discussions, only: :show
   end
-
-
-  root :to => 'marketing#index'
 
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
@@ -127,12 +127,13 @@ Loomio::Application.routes.draw do
     post 'archive/:id',  action: 'archive', as: :archive_group
   end
 
-  scope module: :groups do
-  end
-
   constraints(GroupSubdomainConstraint) do
     get '/' => 'groups#show'
     patch '/' => 'groups#update'
+  end
+
+  constraints(MainDomainConstraint) do
+    root :to => 'marketing#index'
   end
 
   delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel', as: :cancel_membership_request
@@ -143,7 +144,7 @@ Loomio::Application.routes.draw do
       get :history
       patch :close
       patch :create_outcome
-      post  :update_outcome
+      patch :update_outcome
     end
   end
 
@@ -207,6 +208,12 @@ Loomio::Application.routes.draw do
     end
   end
 
+  namespace :email_actions do
+    get   'unfollow_discussion/:discussion_id/:unsubscribe_token', action: 'unfollow_discussion', as: :unfollow_discussion
+    get   'mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
+    get   'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
+  end
+
   scope module: :users do
     match '/profile',          action: 'profile', as: :profile, via: [:get, :post]
     get 'import_contacts' => 'contacts#import'
@@ -215,13 +222,15 @@ Loomio::Application.routes.draw do
     scope module: :email_preferences do
       get   '/email_preferences', action: 'edit',   as: :email_preferences
       put   '/email_preferences', action: 'update', as: :update_email_preferences
-      get   '/mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
-      get   'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
     end
 
     scope module: :change_password do
       get '/change_password', action: 'show'
       post '/change_password', action: 'update'
+    end
+
+    scope module: :user_deactivation_responses do
+      post '/user_deactivation_responses', action: 'create'
     end
   end
 
@@ -257,6 +266,7 @@ Loomio::Application.routes.draw do
       get :terms_of_service
       get :third_parties
       get :try_it
+      get :translation
       get :wallets
       get :browser_not_supported
     end

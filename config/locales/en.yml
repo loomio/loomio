@@ -284,6 +284,7 @@ en:
     reactivation_html: "You will need to <a href='%{link}'>contact us</a> to reactivate your account."
     deactivation:
       title: "Deactivating your account"
+      query: "Would you mind telling us why you are deactivating your account?"
       only_coordinator: "A group must have at least one coordinator. You are currently the only coordinator of the following groups:"
       instructions: "In order to deactivate your account, you need to either add another coordinator or deactivate the groups."
       info_title: "What will deactivating your account mean?"
@@ -484,6 +485,9 @@ en:
     beta_request_header: "Start a group on Loomio Beta"
     beta_request_description: "To start making decisions on Loomio Beta, the first step is to start a group"
     neighbourhood_support_group: "e.g. Neighbourhood Support Group"
+    commercial_use_option: in a company, formal organisation or workplace
+    non_commercial_use_option: in a community group or informal network
+    please_select_an_option: Please select an option
     confirmation:
       title: You're almost done! Check your email.
       body_html: |
@@ -514,13 +518,13 @@ en:
   previous_decisions: "Previous decisions"
   see_previous_decisions: "See previous decisions"
   see_more: "See more"
-  create_new_proposal: "Create new proposal"
+  create_new_proposal: "Create a proposal"
   empty_decision_list_html: "Ready to make a decision? <br> Anyone can start a proposal."
   empty_decision_index: "This group has not made any decisions yet."
   empty_discussion_list: "There is no activity in this discussion yet."
   go_to_add_comment_html: "To add a comment, <a href='%{href}'>go to the end of the discussion</a>."
   comment_by: "Comment by %{comment_author}"
-  read_up_to: "Here\'s where you read up to last time"
+  read_up_to: "Here's where you read up to last time"
 
   discussion_list:
     clear_filters: "Clear filters: see all discussions"
@@ -1010,6 +1014,7 @@ en:
         admin_email: "What is your email address?"
         name: "What is the name of your group?"
         description: "If you have a moment, tell us about your group"
+        is_commercial: "Where are you planning to use Loomio?"
 
     placeholders:
       membership_request:
@@ -1119,7 +1124,10 @@ en:
       summary: "Summary"
     thread_mailer:
       footer_text: "Reply to this email directly or view it on Loomio:"
-      footer_html: "Reply to this email directly or <a href='%{app_link}'>view it on Loomio</a>. Change your <a href='%{preferences_link}'>email preferences</a>."
+      #footer_html: "Reply to this email directly or <a href='%{app_link}'>view it on Loomio</a>. Change your <a href='%{preferences_link}'>email preferences</a>."
+      reply_or_view_online_html: "Reply to this email directly or <a href='%{url}'>view it on Loomio</a>."
+      unfollow_discussion_html: "<a href='%{unfollow_url}'>Unfollow</a> to stop emails about this discussion."
+      change_email_preferences_html: "Change your <a href='%{email_preferences_url}'>email preferences</a> to unsubscribe from Loomio emails."
       change_preferences: "Change your email preferences:"
       new_motion: "%{who} proposed:"
       motion_closing_soon: "Proposal closing in 24 hours:"
@@ -1216,7 +1224,9 @@ en:
     back_to_discussion: "Back to discussion"
     edited: Edited
     groups: "Groups"
+    select_error: Please select an option
     today: Today
+    select: Please select
     months:
       january: January
       february: February
@@ -1271,6 +1281,10 @@ en:
       fr: Fr
       sa: Sa
       su: Su
+
+    meridians:
+      am: 'am'
+      pm: 'pm'
 
     please_wait: "Please wait"
     privacy: "Privacy"
