@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe InvitePeopleForm do
   context 'parsed_emails' do

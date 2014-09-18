@@ -3,7 +3,7 @@
     = link_to_previous_page items, "Show earlier comments"
 
   -marked_first_unread = false
-  - filter_duplicate_activities(items).each do |event|
+  - filter_discussion_events(items).each do |event|
     - next if event.kind == 'new_discussion'
     -unless @discussion_reader.first_read?
       - unless marked_first_unread
@@ -11,7 +11,7 @@
           - unless event.belongs_to? current_user_or_visitor
             - marked_first_unread = true
             .shifted_anchor#latest-activity
-            .dog-ear#js-dog-ear
+            .dog-ear#js-dog-ear.js-tooltip{title: t(:'read_up_to')}
               &nbsp;
             .new-activity-divider
 

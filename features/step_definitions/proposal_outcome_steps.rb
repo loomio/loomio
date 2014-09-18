@@ -19,8 +19,8 @@ end
 
 When(/^I click the link to create a proposal outcome$/) do
   open_email(@user.email, :with_subject => "Proposal closed")
-  link = links_in_email(current_email)[2]
-  request_uri = URI::parse(link).request_uri
+  link = links_in_email(current_email)[1]
+  request_uri = CGI.unescapeHTML(URI::parse(link).request_uri)
   visit request_uri
 end
 
@@ -29,7 +29,8 @@ end
 # end
 
 When(/^I specify a proposal outcome$/) do
-  fill_in 'motion[outcome]', with: "Let's talk to hank about doing that thing."
+  view_screenshot
+  fill_in :motion_outcome, with: "Let's talk to hank about doing that thing."
 end
 
 Then(/^my group members should receive an email with subject "(.*?)"$/) do |arg1|
@@ -44,7 +45,7 @@ end
 When(/^I edit the proposal outcome$/) do
   visit discussion_path(@discussion)
   find('#edit-outcome').click
-  fill_in 'motion[outcome]', with: "Let's talk to Hank about doing that thing."
+  fill_in :motion_outcome, with: "Let's talk to Hank about doing that thing."
   find('#add-outcome-submit').click
 end
 

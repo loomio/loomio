@@ -1,26 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Motion do
-
   let(:discussion) { create :discussion }
-  describe 'validates only one motion voting at a time' do
-
-    subject do
-      Motion.create(discussion: discussion, name: 'yoo hoo', author: discussion.author)
-    end
-
-    context 'no other motions voting' do
-      it {should have(0).errors_on(:discussion)}
-    end
-
-    context 'motion already in voting', focus: true do
-      before do
-        @other_motion = Motion.create(discussion: discussion, name: 'yoo hoo', author: discussion.author)
-      end
-
-      it {should have(1).errors_on(:discussion)}
-    end
-  end
 
   describe "#unique_votes" do
     it "returns only the most recent votes of a user for a motion" do
@@ -39,16 +20,16 @@ describe Motion do
   describe "#voting?" do
     it "returns true if motion is open" do
       @motion = create :motion, discussion: discussion
-      @motion.voting?.should be_true
-      @motion.closed?.should be_false
+      @motion.voting?.should be true
+      @motion.closed?.should be false
     end
   end
 
   describe "#closed?" do
     it "returns true if motion is open" do
       @motion = create(:motion, closed_at: 2.days.ago, discussion: discussion)
-      @motion.closed?.should be_true
-      @motion.voting?.should be_false
+      @motion.closed?.should be true
+      @motion.voting?.should be false
     end
   end
 
@@ -73,71 +54,6 @@ describe Motion do
     it "does not return discussions that don't belong to the user" do
       motion = create(:motion, name: "sandwich crumbs", discussion: discussion)
       @user.motions.search("sandwich").should_not == [motion]
-    end
-  end
-
-  context "destroying a motion" do
-    before do
-      @discussion = create_discussion
-      @motion = create(:motion, discussion: @discussion)
-      @vote = Vote.create(position: "no", motion: @motion, user: @motion.author)
-      @comment = @motion.discussion.add_comment(@motion.author, "hello", uses_markdown: false)
-      @motion.destroy
-    end
-
-    it "deletes associated votes" do
-      Vote.first.should == nil
-    end
-  end
-
-  context "events" do
-    before do
-      @user = create :user
-      @group = create :group
-      @group.add_admin! @user
-      @discussion = create_discussion :group => @group
-    end
-    it "fires new_motion event if a motion is created successfully" do
-      motion = build(:motion, discussion: discussion)
-      motion.should_receive(:fire_new_motion_event)
-      motion.save!
-    end
-  end
-
-  context "moving motion to new group" do
-    before do
-      @new_group = create(:group)
-      @motion = create(:motion, discussion: discussion)
-      @motion.move_to_group @new_group
-    end
-
-    it "changes motion group_id to new group" do
-      @motion.group.should == @new_group
-    end
-
-    it "changes motion discussion_id to new group" do
-      @motion.discussion.group.should == @new_group
-    end
-  end
-
-  context "closed motion" do
-    before :each do
-      @user1 = create(:user)
-      @user2 = create(:user)
-      @user3 = create(:user)
-      @discussion = create_discussion
-      @motion = create(:motion, discussion: @discussion)
-      @motion.group.add_member!(@user2)
-      @motion.group.add_member!(@user3)
-      vote1 = create(:vote, :position => 'yes', :user => @user1, :motion => @motion)
-      vote2 = create(:vote, :position => 'no', :user => @user2, :motion => @motion)
-      @updated_at = @motion.updated_at
-      MotionService.close(@motion)
-    end
-
-    it "stores users who did not vote" do
-      not_voted_ids = DidNotVote.all.collect {|u| u.user.id}
-      not_voted_ids.should include(@user3.id)
     end
   end
 
@@ -188,10 +104,10 @@ describe Motion do
         @vote.save!
         @motion.reload
       end
-      it {should be_true}
+      it {should be true}
     end
     context 'user has not voted' do
-      it {should be_false}
+      it {should be false}
     end
   end
 
@@ -210,7 +126,7 @@ describe Motion do
   describe 'update_vote_counts!' do
     context 'there is 1 vote for each position' do
       let(:group){FactoryGirl.create :group}
-      let(:discussion){create_discussion group: group}
+      let(:discussion){create :discussion, group: group}
       let(:motion){FactoryGirl.create :motion, discussion: discussion}
 
       before do

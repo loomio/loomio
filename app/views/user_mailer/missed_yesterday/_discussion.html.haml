@@ -1,0 +1,20 @@
+.light-discussion{id: discussion.key}
+  %h2= link_to(discussion.title, discussion_url(discussion))
+  - if discussion.created_at >= @time_start
+    %p
+      %em by #{discussion.author.name}
+    .description
+      - if discussion.uses_markdown?
+        = render_email_markdown discussion.description
+      - else
+        = render_email_plaintext discussion.description
+
+  - if motion = discussion.motions.voting_or_closed_after(@time_start).first
+    = render 'thread_mailer/motion', motion: motion
+
+  .activity-feed
+    - discussion.items.where('created_at > ?', @time_start).order('created_at').each do |item|
+      - next unless ['new_comment', 'new_vote' ].include? item.kind
+      = render "thread_mailer/#{item.kind}", item: item
+
+  %p= link_to t(:"email.reply_to_this_discussion"), discussion_url(discussion, @utm_hash)

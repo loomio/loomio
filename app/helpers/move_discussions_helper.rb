@@ -1,9 +1,12 @@
 module MoveDiscussionsHelper
-  def destinations_for(discussion: nil, user: nil)
-    source_group = discussion.group
-    # can't move the discussion unless the user belongs to the group it's currently in
-    return [] unless user.adminable_groups.include? source_group
-    user.groups.uniq - [source_group]
+
+  def destination_ids_for(discussion, user, visibility)
+    method = case visibility
+      when :private  then :private_discussions_only?
+      when :public   then :public_discussions_only? 
+    end
+
+    @destination_groups.select(&method).map(&:id).join(' ')
   end
 
 end

@@ -1,0 +1,61 @@
+.container
+  %section.first
+    .inner-container
+      .row-fluid
+        %h1 Translation
+        %p This is a reference page for the translators and developers.
+        %p For details about Loomio translation, please see <a href="https://github.com/loomio/loomio/wiki/Translation">this guide</a>.
+
+
+        %h2 Supported Languages (#{selectable_locales.count})
+        %table.code
+          - selectable_locales.each do |locale|
+            %tr
+              %td= locale
+              %td= "|"
+              %td= link_to locale_name(locale), root_path(locale: locale)
+              %td= "|"
+              %td= t(locale)
+
+        %h2 Test Languages (#{Loomio::I18n::TEST_LOCALES.count})
+        %table.code
+          - Loomio::I18n::TEST_LOCALES.each do |locale|
+            %tr
+              %td= locale
+              %td= "|"
+              %td= link_to locale_name(locale), root_path(locale: locale)
+              %td= "|"
+              %td= t(locale)
+
+        %h2 Updates
+        .twitter-feed-container
+          <a class="twitter-timeline" href="https://twitter.com/search?q=%40loomio+%23translation" data-widget-id="510776756744114176">Tweets about "@loomio #translation"</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+        %h2 Technical
+        %p
+          Your browser reports a list of preferred languages to Loomio when it asks for pages. Here is what your browser is requesting :
+
+        %p.code
+          - # not quite honest
+          / - binding.pry
+          - browser_accepted_locales.each_with_index do |locale,i|
+            - if detectable_locales.include?(locale)
+              = link_to locale, root_path(locale: locale), title: t(locale)
+            - else
+              = locale
+            = ', ' unless i == browser_accepted_locales.count - 1
+
+        %p
+          The current fallback settings for loomio:
+          %br
+
+        %table.code
+          - Loomio::I18n::FALLBACKS.each_pair do |k,v|
+            %tr
+              %td= k
+              %td -->
+              %td= v
+
+
+

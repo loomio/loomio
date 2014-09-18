@@ -1,5 +1,5 @@
 .row
-  .span6
+  .col-md-6
     %h1= form_title
     = simple_form_for membership_request, url: group_membership_requests_path(group) do |f|
       - if current_user
@@ -9,4 +9,4 @@
         = f.input :name
         = f.input :email
       = f.input :introduction, placeholder: t(:'simple_form.placeholders.membership_request.introduction', group_name: membership_request.group_name)
-      = f.submit t(:ask_to_join_group), class: "btn btn-info btn-large", data: { disable_with: t(:ask_to_join_group) }, id: 'submit-membership-request'
+      = f.submit t(:ask_to_join_group), class: "btn btn-primary btn-lg", data: { disable_with: t(:ask_to_join_group) }, id: 'submit-membership-request'

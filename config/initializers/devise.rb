@@ -205,8 +205,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth 'google_oauth2', ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], name: 'google'
-  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
+  config.omniauth 'google_oauth2', Rails.application.secrets.google_key, Rails.application.secrets.google_secret, name: 'google'
+  config.omniauth :facebook, Rails.application.secrets.facebook_key, Rails.application.secrets.facebook_secret
   config.omniauth :browser_id
 
   # ==> Warden configuration
@@ -217,11 +217,8 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
-  if Rails.env.production?
-    config.secret_key = ENV['DEVISE_SECRET']
-  else
-    config.secret_key = 'zxcvbnmasdfghjklqwertyuiop1234567890!@#$%^&*()QWERTYUIOPASDFGHJKLZXCVBNM'
-  end
+  #
+  config.secret_key = Rails.application.secrets.devise
 
   Warden::Manager.after_set_user do |user,auth,opts|
     auth.cookies[:signed_in] = 1

@@ -1,19 +1,20 @@
-%li.discussion.row-fluid{data:{discussion_id: item.id }}
-  = link_to item do
-    .span1
-      .icon.discussion-icon
-        %span.activity-badge.unread-comments-count
-          =@discussion_reader_cache.get_for(item).unread_comments_count
+%li.discussion{data:{discussion_id: item.id }}
+  .row
+    = link_to item do
+      .col-xs-2.col-sm-1
+        .icon.discussion-icon
+          %span.activity-badge.unread-comments-count
+            =@discussion_reader_cache.get_for(item).unread_comments_count
 
-    .span9.title
-      = item.title
+      .col-xs-8.col-sm-7.title
+        = item.title
 
-    .span1.time{title: 'Last comment at'}
-      = time_formatted_relative_to_age(item.last_comment_at)
-    -#.span1
-      -#.unfollow-btn
-        -#= link_to 'h', inbox_unfollow_path({class: item.class.to_s, id: item.id}), remote: true, method: :post, id: 'unfollow-btn'
-  .span1
-    .mark-as-read-btn
-      = link_to 'x', inbox_mark_as_read_path(discussion_ids: item.id), remote: true, method: :post
+      .col-xs-3.hidden-xs.time{title: 'Last comment at'}
+        = time_formatted_relative_to_age(item.last_comment_at)
+      -#.col-xs-1
+        -#.unfollow-btn
+          -#= link_to 'h', inbox_unfollow_path({class: item.class.to_s, id: item.id}), remote: true, method: :post, id: 'unfollow-btn'
+    .col-xs-1
+      .mark-as-read-btn
+        = link_to 'x', inbox_mark_as_read_path(discussion_ids: item.id), remote: true, method: :post
 

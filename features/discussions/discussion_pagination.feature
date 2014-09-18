@@ -7,6 +7,7 @@ Feature: User sees pagination on long discussions
     Given I am logged in
     And I belong to a group with a discussion
 
+  @javascript
   Scenario: See pagination
     Given a discussion has over 50 posts
     When I visit the discussion page

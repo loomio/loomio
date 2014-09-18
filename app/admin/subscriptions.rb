@@ -14,7 +14,7 @@ ActiveAdmin.register Subscription do
     column :amount
     column :created_at
     column :updated_at
-    default_actions
+    actions
   end
 
   member_action :update, :method => :put do

@@ -22,12 +22,12 @@ end
 
 When /^I enable comment markdown$/ do
   find('#comment-markdown-dropdown-link .markdown-icon').click
-  find('#comment-markdown-dropdown .enable-markdown').click
+  find('#comment-markdown-dropdown .enable-markdown-link').click
 end
 
 When /^I disable comment markdown$/ do
   find('#comment-markdown-dropdown-link .markdown-icon').click
-  find('#comment-markdown-dropdown .disable-markdown').click
+  find('#comment-markdown-dropdown .disable-markdown-link').click
 end
 
 Then /^a comment should be added to the discussion$/ do

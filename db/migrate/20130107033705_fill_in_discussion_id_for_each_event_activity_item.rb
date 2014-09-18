@@ -8,7 +8,7 @@ class FillInDiscussionIdForEachEventActivityItem < ActiveRecord::Migration
     belongs_to :user
     validates_inclusion_of :kind, :in => KINDS
     validates_presence_of :eventable
-    attr_accessible :kind, :eventable, :user, :discussion_id
+    #attr_accessible :kind, :eventable, :user, :discussion_id
   end
 
   def up

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe MembershipRequest do
   let(:group) { create(:group) }
@@ -9,20 +9,6 @@ describe MembershipRequest do
   end
   let(:responder) { stub_model User }
   let(:requestor) { create(:user) }
-
-  describe '#new' do
-    it "must have a valid email" do
-      membership_request.email = '"Joe Gumby" <joe@gumby.com>'
-      membership_request.valid?
-      membership_request.should have(1).errors_on(:email)
-    end
-
-    it "allows apostrophes in email addresses" do
-      membership_request.email = "D'aRCY@kiwi.NZ"
-      membership_request.valid?
-      membership_request.should have(0).errors_on(:email)
-    end
-  end
 
   context 'user' do
     it 'cannot have multiple pending requests' do

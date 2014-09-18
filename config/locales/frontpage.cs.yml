@@ -18,8 +18,6 @@ cs:
       services: 'Služby'
     hero:
       head_html: 'Svět potřebuje lepší způsob, jak <strong>společně rozhodovat</strong>.'
-      subhead: 'Pomozte nám ho vytvořit.'
-      desc_html: 'Loomio je svobodný, bezplatný, <a href="https://github.com/loomio/loomio">open source</a> software pro kohokoliv, kdekoliv, aby se podílel na rozhodnutích, které jej ovlivňují.'
     product:
       header_html: 'Když vyslechneme <strong>všechny hlasy</strong>, činíme <strong>lepší rozhodnutí</strong>.'
       step1:

@@ -1,3 +1,32 @@
+.motion-graph {
+
+  .pie {
+    height: 350px;
+    width: 350px;
+    float: left;
+    margin: 1em;
+  }
+
+  .legend {
+    font-size: .85em;
+    float: left;
+    padding-top: 5em;
+    color: $mid-grey;
+
+    .item {
+      text-transform:capitalize;
+      line-height: 1;
+      padding-left: .5em;
+      margin-bottom: .5em;
+    }
+
+    .yes { border-left: 1em solid #90D490 }
+    .no { border-left: 1em solid #D49090   }
+    .abstain { border-left: 1em solid #F0BB67}
+    .block { border-left: 1em solid #dd0000 }
+  }
+}
+
 .motion-preview {
   a {
     display: block;
@@ -14,15 +43,11 @@
   }
 
   .pie {
-    float: right;
-    width: 36px;
-    height: 36px;
     z-index: 1;
   }
 
   .proposal-close-date {
     font-size: $font-small;
-    float: left;
   }
 
   .proposal-group-name {
@@ -40,16 +65,6 @@
 
   .proposal-title-container {
     color: $mid-grey;
-    float: left;
-    width: 440px;
-  }
-
-  .vote-icon {
-    float: left;
-    width: 20px;
-    position: relative;
-    top: 6px;
-    padding-right: 7px;
   }
 
   &:hover { background-color: $selector; }
@@ -60,9 +75,9 @@
 
 #content-proposal{
   margin-left: 0px;
-  padding-top: 10px;
+  padding: 10px 30px 10px 14px;
 
-  #add-outcome-submit { margin-top: 5px; }
+  #add-outcome-submit { margin: 5px 0 1em 0; }
   .closing-info {
     font-size: $font-smaller;
     color: $mid-grey; }
@@ -73,7 +88,6 @@
   }
 
   .description {
-    width: 380px;
     p { color: $dark-grey; }
   }
 
@@ -84,7 +98,13 @@
     font-weight: normal;
   }
 
-  .motion .pie { height: 250px; }
+  .label-important{
+    background: #b94a48;
+  }
+
+  .motion-graph {
+    width: 100%;
+  }
 
   .motion-admin-buttons {
     margin-left: 0;
@@ -95,11 +115,6 @@
       margin: 5px 0 0 0;
       width: 108px;
     }
-  }
-
-  .motion-header-info {
-    width: 270px;
-    padding-right: 5px;
   }
 
   .new-proposal-btn {
@@ -115,6 +130,7 @@
     .button_to { margin: 0px; }
 
     .control-group { margin-bottom: 0px; }
+    textarea { height: 4em; }
 
     .character-counter {
       bottom: 0px;
@@ -145,16 +161,7 @@
       background-color: $lighter-grey;
       font-size: 1em;
     }
-
-    textarea {
-      height: 40px;
-      max-height: 80px;
-      max-width: 390px;
-      width: 390px;
-    }
   }
-
-  .proposal-title-container { width: 305px; }
 
   .proposed-by {
     color: $mid-grey;
@@ -170,13 +177,21 @@
   .validate-length { margin-left: 0px; height: 65px; }
 
   .vote-buttons {
+    a:hover{background-color: $light-grey;}
     .btn {
-      @include border-radius(5px);
+      border-radius: 5px;
       border: 1px solid $light-grey;
       float: left;
-      margin: 10px 10px 15px 0;
+      margin: 10px 5px 15px 0;
       padding: 3px;
-      width: 40px;
+      width: 50px;
+      height:50px;
+      img {
+        hight:40px;
+        width:40px;
+        margin: auto;
+        display:inline-block;
+      }
     }
 
     .popover-title { font-size: 1.2em; font-weight: 700; }
@@ -215,11 +230,11 @@
       font-weight: bold;
       margin-right: 8px;
     }
-    
+
     .translate-link {
       line-height: 15px;
     }
-    
+
   }
 
   .toggle-yet-to-vote{
@@ -238,21 +253,14 @@ table.jqplot-table-legend {
   }
 }
 
-.new_proposal, #edit-close-date {
-  .motion-closing-inputs {
-    .control-group { display: inline-block; }
-
-    .motion-close-at-date {
-      height: 20px;
-      position: relative;
-      top: 1px;
-      width: 85px;
-    }
-    .motion-close-at-time { width: 80px; }
-    .motion-close-at-time-zone { width: 214px; }
-    .motion-close-at-time, .motion-close-at-time-zone {
-      display: inline-block;
-      margin-top: 10px;
-    }
+#motion-form{
+  .timezone{
+    margin-top: -0.8em;
+    font-size: 0.9em;
+    text-align: right;
   }
+}
+
+body.new_proposal .datetimepicker{
+  margin-top: 50px;
 }

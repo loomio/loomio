@@ -1,7 +1,15 @@
 class DiscussionItem
+  include Routing
   attr_accessor :item
 
-  delegate :icon, :position, :group, :actor, :header, :body, :time, :to => :item
+  delegate :icon, :position, :group, :actor, :header, :body, :time, :author_name, :to => :item
+
+  alias :author :actor
+  alias :created_at :time
+
+  def title
+    "#{actor.name} #{header}"
+  end
 
   def initialize(event)
     event_item = event.eventable
@@ -28,6 +36,12 @@ class DiscussionItem
         DiscussionItems::MotionOutcomeCreated.new(event, event_item)
       when 'motion_outcome_updated'
         DiscussionItems::MotionOutcomeUpdated.new(event, event_item)
+      when 'motion_name_edited'
+        DiscussionItems::MotionNameEdited.new(event, event_item)
+      when 'motion_description_edited'
+        DiscussionItems::MotionDescriptionEdited.new(event, event_item)
+      else
+        raise "unhandled event kind: #{event.kind}"
     end
   end
 end

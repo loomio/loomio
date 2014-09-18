@@ -1,15 +1,10 @@
-// .activity-count
-//   bottom: 1px
-//   margin-left: 8px
-//   z-index: 2
-
 .activity-count {
   font-size: $font-tinywiny;
   position: relative;
   bottom: 8px;
   left: 16px;
   color: white;
-  background-color: $group-activity;
+  background-color: #08C;
 }
 
 .pie .activity-count {
@@ -19,13 +14,11 @@
 }
 
 #inbox-head {
-  .span1 { width: 76px; }
-  #inbox-description { margin-top: .7em; }
+  #inbox-description { padding-top: .7em; }
  }
 
 .inbox-preferences {
-  margin-top: .7em;
-  width: 192px;
+  padding-top: .7em;
   img {
     margin-bottom: 3px;
   }
@@ -104,11 +97,6 @@ ul.inbox-list{
         width: 2em;
         left: .28em;
         text-shadow: 1px 1px 2px #666;
-        /*height: 1.3em;*/
-        /*left: 0.68em;*/
-        /*top: 0.5em;*/
-        /*@include border-radius(1000px);*/
-        /*background-color: #fff;*/
         font-weight: 700;
         position: absolute;
         text-align: center;
@@ -124,13 +112,6 @@ ul.inbox-list{
       font-size: 1.2em;
       text-align: center;
     }
-      /*margin: .5em;*/
-      /*padding: 0;*/
-      /*display: inline-block;*/
-      /*background: #ccc;*/
-      /*width: 2em;*/
-      /*height: 2em;*/
-    /*}*/
     &:hover {
       background: $even-lighter-grey;
     }
@@ -142,16 +123,5 @@ ul.inbox-list{
       }
       text-align: right;
     }
-  }
-}
-
-.navbar {
-  #inbox-count {
-    position: absolute;
-    left: 21px;
-    bottom: 19px;
-    padding: 0px 3px;
-    font-size: $font-tinywiny;
-    background-color: #08C;
   }
 }

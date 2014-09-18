@@ -25,4 +25,7 @@ class PagesController < ApplicationController
 
   def try_it
   end
+
+  def translation
+  end
 end

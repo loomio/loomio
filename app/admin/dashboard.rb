@@ -1,10 +1,10 @@
 def print_month_totals(model)
   if model == "users"
     collection = User.where('created_at > ?', 6.months.ago).order("created_at DESC").group_by{|u| u.created_at.month}
-    divisor = 100
+    divisor = 500
   elsif model == "groups"
     collection = Group.where('parent_id IS NULL AND created_at > ?', 6.months.ago).order("created_at DESC").group_by{|g| g.created_at.month}
-    divisor = 50
+    divisor = 100
   end
   counts = {}
   collection.each_pair do |k, v|
@@ -55,6 +55,13 @@ ActiveAdmin.register_page "Dashboard" do
   content :title => proc{ I18n.t("active_admin.dashboard") } do
     columns do
       column do
+        panel "Calculators" do
+          div { link_to "Retention calculator", admin_stats_retention_path }
+          div { link_to "Weekly activity calculator", admin_stats_weekly_activity_path }
+          div { link_to "Group metrics calculator", admin_stats_group_metrics_path(id: 3) }
+        end
+      end
+      column do
         panel "Monthly Active Users" do
           div { print_active_users().html_safe }
         end
@@ -77,14 +84,13 @@ ActiveAdmin.register_page "Dashboard" do
       end
       column do
         panel "Discussions" do
-          h1 { Discussion.count - Group.count}
-          div { "Excluding auto-generated example content" }
+          # total discussions - 400 created by old helper bot - those created by new helper bot
+          h1 { Discussion.where('author_id != 5562').count - 400}
         end
       end
       column do
         panel "Proposals" do
-          h1 { Motion.count - Group.count }
-          div { "Excluding auto-generated example content" }
+          h1 { Motion.where('author_id != 5562').count - 400}
         end
       end
     end

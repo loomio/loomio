@@ -1,11 +1,11 @@
 .row
-  .span5.offset1
+  .col-md-5.offset1
     #intro
       %h1 Try Loomio for free
 .row
-  .span5.offset1
+  .col-md-5.offset1
     = render 'form', submit_label: "Start your free trial!", placeholder: "e.g. Jane's Accounting Service"
-  .span5
+  .col-md-5
     .info-box#organisation
       = render 'groups/subscriptions/pricing_table'
       %p

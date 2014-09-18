@@ -1,7 +1,5 @@
 Given(/^there is a user in a group$/) do
-  @user = FactoryGirl.create(:user, name: "Marge", 
-  									email: "marge@large.org")
-  @user.subscribed_to_daily_activity_email = true
+  @user = FactoryGirl.create(:user, name: "Marge", email: "marge@large.org", email_missed_yesterday: true)
   @user.save!
   @group = FactoryGirl.create :group
   @membership = @group.add_member! @user
@@ -11,14 +9,8 @@ When(/^their account is deactivated$/) do
   @user.deactivate!
 end
 
-Then(/^the user's deleted_at attribute should be set$/) do
-  User.where("deleted_at IS NOT NULL").should exist
-end
-
-And(/^the user's email notifications should be turned off$/) do
-  @user.subscribed_to_daily_activity_email.should == false
-  @user.subscribed_to_mention_notifications == false
-  @user.subscribed_to_proposal_closure_notifications.should == false
+Then(/^the user's deactivated_at attribute should be set$/) do
+  User.where("deactivated_at IS NOT NULL").should exist
 end
 
 And(/^the user's memberships should be archived$/) do
@@ -34,5 +26,5 @@ When (/^they attempt to sign in$/) do
 end
 
 Then (/^they should be told their account is inactive$/) do
-  page.should have_content'Sorry, this account is currently inactive'
+  page.should have_content'This account has been deactivated.'
 end

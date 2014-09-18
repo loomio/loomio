@@ -12,11 +12,16 @@ body.users.show {
   }
 }
 
+.edit_user label.checkbox{
+  font-weight: normal;
+}
+
 body.users {
-  &.profile, &.update {
+  &.profile, &.update, &.deactivation_instructions, 
+    &.about_deactivation {
     form { margin-top: 10px; }
+    #profile-submit{ margin-bottom: 2em;}
     ul.user-image-options {
-      margin-left: -30px;
       h3 { margin: 0 0 0 30px; }
       li {
         margin: 0 0 10px 0;
@@ -24,7 +29,6 @@ body.users {
         width: 270px;
         a {
           cursor: pointer;
-          color: $mid-grey;
           float: left;
           padding: 8px 8px;
         }
@@ -51,8 +55,28 @@ body.users {
         &.clearfix:hover { background-color: $selector; }
       }
     }
+
+    #user_deactivation_response_body {
+      height: 150px;
+      width: 495px;
+      margin-left: 10px;
+    }
+    .deactivation-info { margin-left: 10px; }
+    .deactivation-text { 
+      margin: 50px auto; }
+      ul#info {
+        list-style-type: disc;
+        margin-left: 20px;
+        li { padding: 5px; }
+      }
+    .deactivate-account { margin-top: 40px; }
+    .profile-link {
+      margin-top: 50px;
+      text-align: center;
+    }
   }
 }
+
 
 // app-wide classes for user avataars
 .avatar-canvas {
@@ -102,3 +126,17 @@ body.users {
   line-height: 22px;
 }
 
+.per-group-email-settings{
+  margin-left: 1.5em;
+  label{
+    min-height: 30px;
+  }
+  .checkbox input[type="checkbox"]{
+    height: 16px;
+    margin-top: 4px;
+  }
+}
+
+.per-group-email-settings.disabled{
+  color: #ccc;
+}

@@ -1,13 +1,14 @@
 - if @group.is_subgroup?
   %h3= t("invitation.by_email")
-.control-group
+.form-group
   %p= t("invitation.recipients")
-  = text_area_tag 'invitees', nil, class: 'validate-emails', placeholder: t("invitation.invitees_placeholder")
-  .email-validation-help= t('error.invalid_email')
-  %br
-  %br
+  = text_area_tag 'invitees', nil, class: 'validate-emails form-control js-autocomplete-contacts', placeholder: t("invitation.invitees_placeholder"), data: {autocomplete_path: autocomplete_contacts_path}
+  -#.email-validation-help= t('error.invalid_email')
+  %p
+    %small= t(:'invitation.import_contacts_html', google_link: link_to(t(:google), import_contacts_path(from: 'gmail')))
   = form.input :recipients, as: :hidden, input_html: { class: 'recipients' }
-.control-group
+
+.form-group
   - if @discussion.present?
     = form.input :message_body, label: false, as: :text, input_html: { value: t("invitation.body_editable_discussion", group: group.name) }, label: t("invitation.message_body")
   - else

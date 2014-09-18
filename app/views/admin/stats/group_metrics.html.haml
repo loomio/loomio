@@ -1,0 +1,36 @@
+%html
+  %table
+    %tr
+      %th ID
+      %th Name
+      %th Discussions
+      %th Comments
+      %th Proposals
+      %th Outcomes
+      %th Members
+      %th Active members
+      %th Discussion authors
+      %th Comment authors
+      %th Proposal authors
+      %th Voters
+      %th Created at
+      %th Last activity at
+      %th Coordinators
+      %th Active members
+    - @metrics.each do |m|
+      %tr
+        %td= m.fetch(:id)
+        %td= m.fetch(:name)
+        %td= m.fetch(:discussions)
+        %td= m.fetch(:comments)
+        %td= m.fetch(:motions)
+        %td= m.fetch(:outcomes)
+        %td= m.fetch(:members)
+        %td= m.fetch(:active_users)
+        %td= m.fetch(:discussion_authors)
+        %td= m.fetch(:comment_authors)
+        %td= m.fetch(:motion_authors)
+        %td= m.fetch(:voters)
+        %td= m.fetch(:created_at).strftime("%d-%m-%y")
+        %td= m.fetch(:last_activity_at).strftime("%d-%m-%y")
+        %td=m.fetch(:coordinators).join(', ')

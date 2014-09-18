@@ -9,33 +9,56 @@ pl:
       donate: 'Wspomóż dzisiaj'
       press: 'Prasa'
       try_it: 'Wypróbuj'
-      log_in: 'ZALOGUJ'
+      log_in: 'ZALOGUJ SIĘ'
       video: "Dowiedz się więcej jak działa Loomio"
       try_loomio_beta: 'Wypróbuj Loomio w wersji beta'
       check_out_loomio_beta: 'Zobacz Loomio w wersji beta'
       more: 'Więcej'
-      top: 'Góra'
+      top: 'Powrót do góry storny'
       public_groups: 'Grupy publiczne'
-      terms: 'Zasady'
-      privacy: 'Prywatność'
+      terms: 'Regulamin'
+      privacy: 'Zasady prywatności'
       services: 'Usługi'
     hero:
-      subhead: 'Pomóż nam to stworzyć.'
+      head_html: 'Świat potrzebuje lepszego sposobu na <strong>wspólne podejmowanie decyzji</strong>.'
+      desc_html: 'Loomio jest darmowym i <a href="https://github.com/loomio/loomio">open source''owym</a> oprogramowaniem dla wszystkich, wszędzie umożliwiającym uczestniczenie w podejmowaniu decyzji ich dotyczących.'
     product:
+      header_html: 'Gdy słyszymy <strong>wszystkie głosy</strong>, podejmujemy <strong>lepsze decyzje</strong>.'
       step1:
         header: '1. Omówcie wspólnie tematy'
+        desc: 'Rozpocznijcie dyskusje na wybrane tematy i zaproście do niej odpowiednich ludzi. Dzielcie się różnymi opiniami i wspólnie rozwijajcie pomysły.'
       step2:
-        header: '2. Stwórzcie porozumienie'
+        header: '2. Budujcie porozumienie'
+        desc: 'Każdy może zaproponować plan działania. Ludzie mogą się na niego zgodzić, wstrzymać się lub go zablokować. To pozwoli Wam zobaczyć co każdy myśli oraz ich powody.'
       step3:
         header: '3. Wspólnie zdecydujcie'
+        desc: 'Wspólne stwórzcie propozycję tak, by odpowiadała każdemu. Każda decyzja ma jasno określony termin jej podjęcia, więc zawsze otrzymacie jasny wynik. '
+    crowdfunding:
+      header: 'Korzystamy z crowdfundingu, więc możemy udostępnić tę platformę całemu światu po tym jak skończymy ją budować.'
+    prototype:
+      header_html: "Stworzyliśmy już prototyp, na którym ludzie z całego świata dokonują niesamowitych rzeczy."
+      subhead_html: '<a href="%{try_loomio_link}">Wypróbuj Loomio Beta</a> już teraz. Możesz także <a href="%{donate_link}">wesprzeć ten projekt</a> by zasponsorować Loomio 1.0'
+    mobile:
+      header_html: 'Loomio 1.0 będzie dostępne na każde urządzenie i będzie zbudowane w oparciu o najlepszą <strong>otwartą technologię mobilną.</strong>'
+    quote:
+      header:
+        rushkoff_html: '“Loomio <strong>uwalnia potencjał internetu</strong> pozwalający ludziom osiągać konsensus zamiast mnożyć poróżniające nas kłótnie." <div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, autor <em>Present Shock</em></div>'
+        sifry_html: '“Loomio świetnie znajduje balans pomiędzy<strong>głosem jednostki</strong> a <strong>kolektywnymi decyzjami</strong>.”<div class="attributation">– Micah Sifry, Editor, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: 'O Loomio'
+      desc: 'Jesteśmy niewielkim zespołem open-source''owych developerów i aktywistów w sprawie sprawiedliwości społecznej pracujących w Enspiral w Aotearoa w Nowej Zelandii. Współpracujemy z szeroką siecią przyjaciół, wspierających i doradców z całego świata.'
     ideals:
+      community:
+        header: 'Społeczność oparta na współpracy'
+        desc: 'Loomio jest stworzone przez kooperatywę, w której właścicielami są sami pracownicy. Jesteśmy firmą społeczną pracującą dla maksymalizowania pozytywnego wpływu społecznego, a nie dla zysku.'
       independent:
-        header: 'Niezależny i neutralny'
+        header: 'Niezależni i neutralni'
+        desc: 'Pozostawiamy przestrzeń dla wszelkiego rodzaju grup, które zechcą z nami współpracować, jeśli ich cele nie są ukierunkowane politycznie czy korporacyjnie. Nigdy nie odsprzedamy twoich danych.'
       open:
         header: 'Wolne i otwarte oprogramowanie'
+        desc: 'Kod Loomio jest zasobem publicznym, który każdy może używać, czytać, studiować, modyfikować i dystrybuować. '
       gift:
         header: 'Ekonomia daru'
+        desc: 'Loomio jest wspierane przez tych, którzy wpłacają tyle ile mogą. To pozwala tej platformie pozostać wolną od reklam i dostępną dla grup nie dysponującymi pieniędzmi. '
     vision:
       header: 'Pomóż nam przemienić tę wizję w rzeczywistość.'

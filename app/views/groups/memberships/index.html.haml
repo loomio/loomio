@@ -1,17 +1,18 @@
 .row
-  .span9
+  .col-md-9
     = render '/groups/title', group: @group
     %h1= t :members
-  .span3#button-container
+  .col-md-3#button-container
     - if can?(:add_members, @group)
-      = icon_button(href: new_group_invitation_path(@group), text: t(:invite_people), icon: '/assets/member-18.png', id: 'invite-new-members', class: 'btn-grey')
+      %a.btn.btn-default{href: new_group_invitation_path(@group), id: 'invite-new-members'}
+        = t :invite_people
 
 .row
-  .span12
+  .col-md-12
     %table.memberships.table.table-striped
       %thead
-        %th.span1= t :photo
-        %th.span11= t :name
+        %th.col-md-1= t :photo
+        %th.col-md-11= t :name
       %tbody
         -@memberships.each do |membership|
           -user = membership.user

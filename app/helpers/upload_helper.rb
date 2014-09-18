@@ -12,9 +12,9 @@ module UploadHelper
     def initialize(options)
       @options = options.reverse_merge(
         id: "fileupload",
-        aws_access_key_id:     ENV.fetch('AWS_ACCESS_KEY_ID'),
-        aws_secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
-        bucket:                ENV.fetch('AWS_ATTACHMENTS_BUCKET'),
+        aws_access_key_id:     Rails.application.secrets.aws_access_key_id,
+        aws_secret_access_key: Rails.application.secrets.aws_secret_access_key,
+        bucket:                Rails.application.secrets.aws_attachments_bucket,
         acl: "public-read",
         expiration: 10.hours.from_now.utc,
         max_file_size: 100.megabytes,
@@ -79,7 +79,7 @@ module UploadHelper
     def signature
       Base64.encode64(
         OpenSSL::HMAC.digest(
-          OpenSSL::Digest::Digest.new('sha1'),
+          OpenSSL::Digest.new('sha1'),
           @options[:aws_secret_access_key] || "", policy
         )
       ).gsub("\n", "")

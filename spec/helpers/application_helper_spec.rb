@@ -1,8 +1,8 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ApplicationHelper do
   describe 'time_formatted_relative_to_age' do
-    let(:time){ "2013-01-02 16:55:00 UTC".to_time }
+    let(:time){ Time.parse "2013-01-02 16:55:00 UTC" }
 
     subject do
       helper.time_formatted_relative_to_age(time)

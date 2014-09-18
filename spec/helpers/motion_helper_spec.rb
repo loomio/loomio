@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe MotionsHelper do
   describe "display_vote_buttons?(motion, user)" do

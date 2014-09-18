@@ -3,7 +3,6 @@
 - motion = discussion.current_motion
 - motion_reader = @motion_reader_cache.get_for(motion) if motion
 - last_vote = @last_vote_cache.get_for(motion) if motion
-
 .clearfix
   %div.discussion-preview{ class: css_classes_for_discussion_preview(discussion, discussion_reader) }
     %a.selector-discussion-link{ href: discussion_path(discussion) }
@@ -13,9 +12,15 @@
             .activity-icon{class: "position-#{last_vote.position}-icon"}
 
       .discussion-title
-        = truncate(discussion.title, :length => 60, :separator => ' ')
+        = discussion.title
         - if @group.nil?
-          .group-name= GroupDecorator.new(discussion.group).fancy_name
+          .group-name
+            - if discussion.group.is_subgroup?
+              = discussion.group.parent.name
+              %span.name-separator
+                ▶
+            = discussion.group.name
+
         - elsif @group != discussion.group
           .group-name= discussion.group_name
 
@@ -33,10 +38,10 @@
         .large-icon.discussion-icon.activity-icon.disabled-icon
       -else
         .large-icon.discussion-icon.activity-icon.enabled-icon
-          %span.activity-count.label.label-info
+          %span.activity-count.label.label-info.unread-comments-count
             = unread_comments_count
 
-      .discussion-date-info
+      .discussion-date-info.hidden-xs
         -if motion
           .proposal-close-date= t( :time_until_close, quantity_of_time: time_ago_in_words(motion.closing_at) )
         - else

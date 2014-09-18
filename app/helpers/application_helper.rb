@@ -16,9 +16,13 @@ module ApplicationHelper
     case type
       when :alert
         "warning"
+      when "alert"
+        "warning"
       when :error
         "error"
       when :notice
+        "info"
+      when "notice"
         "info"
       when :success
         "success"
@@ -55,7 +59,7 @@ module ApplicationHelper
     data_confirm = args['data-confirm'] || false
     title = args[:title] || ""
 
-    classes = "btn btn-app" + extra_classes
+    classes = "btn btn-default btn-block btn-app" + extra_classes
     content = content_tag(:span, text)
     if icon.present?
       content = image_tag(icon, class: 'button-icon') + content
@@ -93,7 +97,7 @@ module ApplicationHelper
       markdown = Redcarpet::Markdown.new(renderer, *options)
       output = markdown.render(text)
     else
-      output = Rinku.auto_link(simple_format(html_escape(text)), mode=:all, 'target="_blank"')
+      output = Rinku.auto_link(simple_format(html_escape(text)), :all, 'target="_blank"')
     end
 
     Redcarpet::Render::SmartyPants.render(output).html_safe
@@ -139,4 +143,45 @@ module ApplicationHelper
     ENV["NAVBAR_CONTRIBUTE"] or "show"
   end
 
+  def toggle_unread_path
+    options = {}
+    unless sifting_unread?
+      options[:unread] = true
+    end
+
+    if sifting_followed?
+      options[:followed] = params[:followed]
+    end
+
+    url_for(options)
+  end
+
+  def toggle_followed_path
+    options = {}
+    unless sifting_followed?
+      options[:followed] = true
+    end
+
+    if sifting_unread?
+      options[:unread] = params[:unread]
+    end
+
+    url_for(options)
+  end
+
+  def sifting_unread?
+    params.has_key? :unread
+  end
+
+  def sifting_followed?
+    params.has_key? :followed
+  end
+
+  def unread_toggle_class
+    'active' if sifting_unread?
+  end
+
+  def followed_toggle_class
+    'active' if sifting_followed?
+  end
 end

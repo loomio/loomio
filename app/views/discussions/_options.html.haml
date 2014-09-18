@@ -7,22 +7,28 @@
     - if can?(:move, @discussion)
       %li= link_to t(:move_discussion), '#move-discussion-modal', "data-toggle" => "modal", id: 'move-discussion'
     -if can? :destroy, discussion
-      %li= link_to t(:delete_discussion), "#", 'data-method-type' => 'delete', 'data-title' => t(:delete_discussion), 'data-body' => t(:confirm_delete_discussion), 'data-confirm-path' => discussion_path(discussion), class: 'confirm-dialog', id: 'delete-discussion'
+      %li= link_to t(:delete_discussion), discussion_path(discussion), method: :delete, data: { confirm: t(:confirm_delete_discussion) }
 
 - if can?(:move, @discussion)
-  #move-discussion-modal.modal.hidden
-    .modal-header
-      %button.close{"data-dismiss" => "modal"}×
-      %h3= t :move_discussion_where
-    - destination_groups=  destinations_for(discussion: discussion, user: current_user)
-    - hidden_destination_group_ids = destination_groups.select{|g| g.is_hidden_from_public?}.map(&:id)
-    - private_int = @discussion.private ? 1 : 0
-    = form_tag move_discussion_path(discussion), method: :post, data: {hidden_group_ids: hidden_destination_group_ids.join(' '), private_discussion: @discussion.private }, class: 'move-discussion-form' do
-      .modal-body
-        = select_tag :destination_group_id, options_for_select(destination_groups.sort{|a,b| a.full_name <=> b.full_name}.map{|g| [g.full_name, g.id]})
-      .warn-move-will-make-private{style: "display: none"}
-        %i.fa.fa-lock
-        = t(:move_discussion_to_hidden_group)
-      .modal-footer
-        = submit_tag t(:move_discussion), class: "btn btn-info", id: 'move-discussion-submit', :data => { :disable_with => t(:'move_discussion') }
-        = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn"
+  #move-discussion-modal.modal
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"data-dismiss" => "modal"}×
+          %h3= t :move_discussion_where
+        = form_tag move_discussion_path(discussion), method: :post, 
+          data: { public_group_ids: destination_ids_for(discussion, current_user, :public),
+                  hidden_group_ids: destination_ids_for(discussion, current_user, :private),
+                  private_discussion: @discussion.private ? 1 : 0 }, 
+          class: 'move-discussion-form' do
+          .modal-body
+            = select_tag :destination_group_id, options_for_select(@destination_groups.map{|g| [g.full_name, g.id]}), class: 'form-control'
+          .warn-move.warn-move-will-make-private{style: "display: none"}
+            %i.fa.fa-lock
+            = t(:move_discussion_to_hidden_group)
+          .warn-move.warn-move-will-make-public{style: "display: none"}
+            %i.fa.fa-unlock
+            = t(:move_discussion_to_public_group)
+          .modal-footer
+            = submit_tag t(:move_discussion), class: "btn btn-info", id: 'move-discussion-submit', :data => { :disable_with => t(:'move_discussion') }
+            = link_to t(:cancel), "#", "data-dismiss" => "modal", class: "btn btn-default"

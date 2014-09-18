@@ -1,14 +1,12 @@
-class Users::EmailPreferencesController < BaseController
-  skip_before_filter :authenticate_user!
-  before_filter :authenticate_user_by_unsubscribe_token_or_fallback
+class Users::EmailPreferencesController < AuthenticateByUnsubscribeTokenController
 
   def edit
-    resource
+    @user = user
   end
 
   def update
-    resource
-    if resource.update_attributes(permitted_params.email_preferences)
+    @user = user
+    if @user.update_attributes(permitted_params.user)
       flash[:notice] = "Your email settings have been updated."
       redirect_to dashboard_or_root_path
     else
@@ -19,8 +17,8 @@ class Users::EmailPreferencesController < BaseController
 
   private
 
-  def resource
-    @email_preferences ||= EmailPreferences.new(@restricted_user || current_user)
+  def user
+    @restricted_user || current_user
   end
 
   def authenticate_user_by_unsubscribe_token_or_fallback

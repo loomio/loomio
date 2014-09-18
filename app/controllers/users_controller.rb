@@ -1,4 +1,6 @@
 class UsersController < BaseController
+  skip_before_filter :ensure_user_name_present, only: [:profile, :update]
+
   def show
     @user = User.find_by_key!(params[:id])
     unless current_user.in_same_group_as?(@user)
@@ -16,6 +18,7 @@ class UsersController < BaseController
     else
       Measurement.increment('users.update.error')
       @user = current_user
+      @user_deactivation_response = UserDeactivationResponse.new
       flash[:error] = t("error.settings_not_updated")
       render "profile"
     end
@@ -44,11 +47,14 @@ class UsersController < BaseController
 
   def profile
     @user = current_user
+    @user_deactivation_response = UserDeactivationResponse.new
   end
 
-  def dismiss_system_notice
-    current_user.has_read_system_notice = true
-    current_user.save!
-    head :ok
+  def deactivation_instructions
+    @user = current_user
+    @adminable_groups = @user.adminable_groups.with_one_coordinator
+  end
+
+  def about_deactivation
   end
 end
