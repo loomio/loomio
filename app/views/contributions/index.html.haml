@@ -2,7 +2,7 @@
 - if signed_in?
   %h1= t("contribution.thought_about_contributing")
   .row
-    .span5#description
+    .col-md-5#description
       = simple_format t("contribution.thought_about_contributing_description")
       = image_tag("loomio-orange-header.png", :alt => "Loomio")
     = render 'contribute-options'
@@ -10,6 +10,6 @@
 -if not signed_in?
   %h1= t("contribution.making_a_donation")
   .row
-    .span5#description
+    .col-md-5#description
       = simple_format t("contribution.making_a_donation_description")
     = render 'contribute-options'

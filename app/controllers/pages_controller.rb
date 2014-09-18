@@ -22,4 +22,10 @@ class PagesController < ApplicationController
 
   def third_parties
   end
+
+  def try_it
+  end
+
+  def translation
+  end
 end

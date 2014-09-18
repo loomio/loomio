@@ -1,22 +1,35 @@
 :javascript
-  $(function(){
-    make_the_graph = function(){
-      this.pie_graph_view = new Loomio.Views.Utils.GraphView(
-       {el: '.pie',
-        id_string: "graph_#{motion.id}",
-        legend: #{legend},
-        data: #{motion.votes_for_graph.to_json},
-        type: 'pie',
-        tooltip_selector: '#tooltip',
-        diameter: #{diameter},
-        padding: #{padding},
-        gap: #{gap},
-        shadow: 0})
-    }
+  var ctx = document.getElementById("graph_#{motion.id}").getContext("2d");
 
-    // IE8 FIX - for some reason we have to load the graph after everything else.
-    // Otherwise, the graph doesn't display in IE8.
-    //
-    // Ideally, we'd like to be able to delete this line:
-    $(window).load(make_the_graph);
-  });
+  var votes = #{motion.vote_counts.to_json}
+  var total_votes = #{motion.total_votes_count}
+  if (total_votes == 0){
+    var data = [
+      {
+        value: 1,
+        color: "#cccccc"
+      }
+    ]
+  }else{
+    var data = [
+      {
+        value: votes.yes,
+        color: "#90D490"
+      },
+      {
+        value: votes.abstain,
+        color: "#F0BB67"
+      },
+      {
+        value: votes.no,
+        color:"#D49090"
+      },
+      {
+        value: votes.block,
+        color: "#dd0000"
+      }
+    ]
+  }
+  var options = { showTooltips: false, animation: false }
+
+  var myPieChart = new Chart(ctx).Pie(data, options);

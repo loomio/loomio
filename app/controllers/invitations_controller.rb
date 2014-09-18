@@ -2,6 +2,7 @@ class InvitationsController < ApplicationController
   include InvitationsHelper
   before_filter :load_invitable, only: [:new, :create]
   before_filter :ensure_invitations_available, only: [:new, :create]
+  before_filter :authenticate_user!, only: :create
 
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error',

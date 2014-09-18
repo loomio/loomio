@@ -1,47 +1,78 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Group do
   let(:motion) { create(:motion, discussion: discussion) }
   let(:user) { create(:user) }
   let(:group) { create(:group) }
-  let(:discussion) { create_discussion }
+  let(:discussion) { create :discussion }
 
-  it { should have_many :discussions }
+  context "children counting" do
 
-  context "a new group" do
-    before :each do
-      @group = Group.new
-      @group.valid?
-      @group
+    describe "#motions_count" do
+      before do
+        @group = create(:group)
+        @user = create(:user)
+        @discussion = create(:discussion, group: @group)
+        @motion = create(:motion, discussion: @discussion)
+      end
+
+      it "returns a count of motions" do
+        @group.reload.motions_count.should == 1
+      end
+
+      it "updates correctly after creating a motion" do
+        expect {
+          @discussion.motions.create(attributes_for(:motion).merge({ author: @user }))
+        }.to change { @group.reload.motions_count }.by(1)
+      end
+
+      it "updates correctly after deleting a motion" do
+        expect {
+          @motion.destroy
+        }.to change { @group.reload.motions_count }.by(-1)
+      end
+
+      it "updates correctly after its discussion is destroyed" do
+        expect {
+          @discussion.destroy
+        }.to change { @group.reload.motions_count }.by(-1)
+      end
+
+      it "updates correctly after its discussion is archived" do
+        expect {
+          @discussion.archive!
+        }.to change { @group.reload.motions_count }.by(-1)
+      end
+
     end
 
-    it "must have a name" do
-      @group.should have(1).errors_on(:name)
-    end
+    describe "#discussions_count" do
+      before do
+        @group = create(:group)
+        @user = create(:user)
+      end
 
-    it "has memberships" do
-      @group.respond_to?(:memberships)
-    end
-    it "defaults to private" do
-      @group.privacy.should == 'private'
-    end
-    it "defaults to members invitable by members" do
-      @group.members_invitable_by.should == 'members'
-    end
-    it "has a full_name" do
-      @group.full_name.should == @group.name
-    end
-  end
+      it "returns a count of discussions" do
+        expect { 
+          @group.discussions.create(attributes_for(:discussion).merge({ author: @user }))
+        }.to change { @group.reload.discussions_count }.by(1)
+      end
 
-  describe 'invitations_remaining' do
-    before do
-      @group = Group.new
-    end
+      it "updates correctly after archiving a discussion" do
+        @group.discussions.create(attributes_for(:discussion).merge({ author: @user }))
+        @group.reload.discussions_count.should == 1
+        expect {
+          @group.discussions.first.archive!
+        }.to change { @group.reload.discussions_count }.by(-1)
+      end
 
-    it 'is max_size minus members.count' do
-      @group.max_size = 10
-      @group.should_receive(:memberships_count).and_return 5
-      @group.invitations_remaining.should == 5
+      it "updates correctly after deleting a discussion" do
+        @group.discussions.create(attributes_for(:discussion).merge({ author: @user }))
+        @group.reload.discussions_count.should == 1
+        expect {
+          @group.discussions.first.destroy
+        }.to change { @group.reload.discussions_count }.by(-1)
+      end
     end
   end
 
@@ -78,28 +109,11 @@ describe Group do
       @group.reload
     end
 
-    it "can access it's parent" do
-      @subgroup.parent.should == @group
-    end
-
-    it "can access it's children" do
-      @group.subgroups.count.should eq(1)
-    end
-
-    it "limits group inheritance to 1 level" do
-      invalid = build(:group, :parent => @subgroup)
-      invalid.should_not be_valid
-    end
-
-    it "by default is not viewable by parent members" do
-      Group.new(:parent => @group).privacy.should == 'private'
-      Group.new(:parent => @group).should_not be_viewable_by_parent_members
-    end
-
     context "subgroup.full_name" do
       it "contains parent name" do
         @subgroup.full_name.should == "#{@group.name} - #{@subgroup.name}"
       end
+
       it "updates if parent_name changes" do
         @group.name = "bluebird"
         @group.save!
@@ -111,45 +125,130 @@ describe Group do
 
   context "an existing hidden group" do
     before :each do
-      @group = create(:group, privacy: "hidden")
+      @group = create(:group, is_visible_to_public: false)
       @user = create(:user)
     end
 
-    it "can add an admin" do
-      @group.add_admin!(@user)
-      @group.users.should include(@user)
-      @group.admins.should include(@user)
-    end
     it "can promote existing member to admin" do
       @group.add_member!(@user)
       @group.add_admin!(@user)
     end
-    it "can be administered by admin of parent" do
-      @subgroup = build(:group, :parent => @group)
-      @subgroup.has_admin_user?(@user)
-    end
+
     it "can add a member" do
       @group.add_member!(@user)
       @group.users.should include(@user)
     end
-    it "fails silently when trying to add an already-existing member" do
-      @group.add_member!(@user)
-      @group.add_member!(@user)
+  end
+
+  describe "visible_to" do
+    let(:group) { build(:group) }
+    subject { group.visible_to }
+
+    before do
+      group.is_visible_to_public = false
+      group.is_visible_to_parent_members = false
     end
 
-    context "creating a subgroup" do
-      before :each do
-        @subgroup = build(:group, :parent => @group)
+    context "is visible_to_public = true" do
+      before { group.is_visible_to_public = true }
+      it {should == "public"}
+    end
+
+    context "is_visible_to_parent_members = true" do
+      before { group.is_visible_to_parent_members = true }
+      it {should == "parent_members"}
+    end
+
+    context "is_visible_to_public, is_visible_to_parent_members both false" do
+      it {should == "members"}
+    end
+  end
+
+  describe "visible_to=" do
+    context "public" do
+      before { group.visible_to = 'public' }
+
+      it "sets is_visible_to_public = true" do
+        group.is_visible_to_public.should be true
+        group.is_visible_to_parent_members.should be false
       end
-      it "can create hidden subgroups" do
-        @subgroup.privacy = 'hidden'
-        @subgroup.valid?
-        @subgroup.should have(0).errors_on(:privacy)
+    end
+
+    context "parent_members" do
+      before { group.visible_to = 'parent_members' }
+      it "sets is_visible_to_parent_members = true" do
+        group.is_visible_to_public.should be false
+        group.is_visible_to_parent_members.should be true
       end
-      it "returns an error when tries to create subgroup that is not hidden" do
-        @subgroup.privacy = 'public'
-        @subgroup.valid?
-        @subgroup.should have(1).errors_on(:privacy)
+    end
+
+    context "members" do
+      before { group.visible_to = 'members' }
+      it "sets is_visible_to_parent_members and public = false" do
+        group.is_visible_to_public.should be false
+        group.is_visible_to_parent_members.should be false
+      end
+    end
+  end
+
+  describe "parent_members_can_see_discussions_is_valid?" do
+    context "parent_members_can_see_discussions = true" do
+      it "errors for a parent group" do
+        expect { create(:group,
+                        parent_members_can_see_discussions: true) }.to raise_error
+      end
+
+      it "errors for a hidden_from_everyone subgroup" do
+        expect { create(:group,
+                        is_visible_to_public: false,
+                        is_visible_to_parent_members: false,
+                        parent: create(:group),
+                        parent_members_can_see_discussions: true) }.to raise_error
+      end
+
+      it "errors for a visible_to_public subgroup" do
+        expect { create(:group,
+                        is_visible_to_public: true,
+                        parent: create(:group,
+                                       is_visible_to_public: true),
+                        parent_members_can_see_discussions: true) }.to raise_error
+      end
+
+      it "does not error for a visible to parent subgroup" do
+        expect { create(:group,
+                        is_visible_to_public: false,
+                        is_visible_to_parent_members: true,
+                        parent: create(:group),
+                        parent_members_can_see_discussions: true) }.to_not raise_error
+      end
+    end
+
+    context "both are true" do
+      it "raises error about it"
+      # dont merge before there is a spec here
+    end
+  end
+
+  describe "parent_members_can_see_group_is_valid?" do
+    context "parent_members_can_see_group = true" do
+      it "for a parent group" do
+        expect { create(:group,
+                        parent_members_can_see_group: true) }.to raise_error
+      end
+
+      it "for a hidden subgroup" do
+        expect { create(:group,
+                        is_visible_to_public: false,
+                        is_visible_to_parent_members: true,
+                        parent: create(:group)) }.to_not raise_error
+      end
+
+      it "for a visible subgroup" do
+        expect { create(:group,
+                        is_visible_to_public: true,
+                        parent: create(:group,
+                                       is_visible_to_public: true),
+                        parent_members_can_see_group: true) }.to raise_error
       end
     end
   end
@@ -166,23 +265,35 @@ describe Group do
     end
   end
 
-  describe 'archive!' do
+  describe 'archival' do
     before do
       group.add_member!(user)
-      @discussion = create_discussion group_id: group.id
       group.archive!
     end
 
-    it 'sets archived_at on the group' do
-      group.archived_at.should be_present
+    describe '#archive!' do
+
+      it 'sets archived_at on the group' do
+        group.archived_at.should be_present
+      end
+
+      it 'archives the memberships of the group' do
+        group.memberships.all?{|m| m.archived_at.should be_present}
+      end
     end
 
-    it 'archives the memberships of the group' do
-      group.memberships.all?{|m| m.archived_at.should be_present}
-    end
+    describe '#unarchive!' do
+      before do
+        group.unarchive!
+      end
 
-    it 'archives the discussions' do
-      group.discussions.all?{|d| d.archived_at.should be_present}
+      it 'restores archived_at to nil on the group' do
+        group.archived_at.should be_nil
+      end
+
+      it 'restores the memberships of the group' do
+        group.memberships.all?{|m| m.archived_at.should be_nil}
+      end
     end
   end
 
@@ -195,11 +306,11 @@ describe Group do
       before do
         group.payment_plan = "manual_subscription"
       end
-      it {should be_true}
+      it {should be true}
     end
 
     context 'payment_plan is pwyc or undetermined' do
-      it {should be_false}
+      it {should be false}
     end
 
     context 'group has online subscription' do
@@ -208,35 +319,15 @@ describe Group do
       end
 
       context 'with amount 0' do
-        it {should be_false}
+        it {should be false}
       end
 
       context 'with amount > 0' do
         before do
           group.subscription.amount = 1
         end
-        it {should be_true}
+        it {should be true}
       end
-    end
-  end
-
-  describe "#is_hidden?" do
-    let(:group) { Group.new }
-    subject { group.is_hidden? }
-
-    context "group is public" do
-      before { group.privacy = 'public'}
-      it { should be_false }
-    end
-
-    context "group is private" do
-      before { group.privacy = 'private'}
-      it { should be_false }
-    end
-
-    context "group is hidden" do
-      before { group.privacy = 'hidden'}
-      it { should be_true }
     end
   end
 
@@ -271,12 +362,12 @@ describe Group do
 
         Timecop.freeze(1.day.ago) do
           group_with_discussion_1_day_ago
-          create_discussion group: group_with_discussion_1_day_ago
+          create :discussion, group: group_with_discussion_1_day_ago
         end
 
         Timecop.freeze(3.days.ago) do
           group_with_discussion_3_days_ago
-          create_discussion group: group_with_discussion_3_days_ago
+          create :discussion, group: group_with_discussion_3_days_ago
         end
       end
 
@@ -304,5 +395,4 @@ describe Group do
       it {should_not include new_group }
     end
   end
-
 end

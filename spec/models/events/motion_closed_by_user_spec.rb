@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Events::MotionClosedByUser do
   let(:discussion) { mock_model(Discussion) }
@@ -12,8 +12,7 @@ describe Events::MotionClosedByUser do
     it 'creates an event' do
       Event.should_receive(:create!).with(kind: 'motion_closed_by_user',
                                           eventable: motion,
-                                          user: closer,
-                                          discussion_id: motion.discussion.id)
+                                          user: closer)
       Events::MotionClosedByUser.publish!(motion, closer)
     end
 

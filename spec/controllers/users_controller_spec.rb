@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe UsersController do
   let(:user) { create(:user) }
@@ -72,29 +72,6 @@ describe UsersController do
     end
     it "saves the model" do
       user.should_receive(:save!)
-    end
-  end
-
-  # describe "#set_markdown" do
-  #   before do
-  #     user.stub(:save!)
-  #   end
-  #   after do
-  #     xhr :post, :set_markdown, :current_user => 1, :id => 1, :global_uses_markdown => "true"
-  #   end
-  #   it "updates the uses_markdown attribute in the model" do
-  #     user.should_receive(:uses_markdown=).with "true"
-  #   end
-  #   it "saves the model" do
-  #     user.should_receive(:save!)
-  #   end
-  # end
-
-  describe "#dismiss_system_notice" do
-    it "sets flag on user model" do
-      user.should_receive(:has_read_system_notice=).with(true)
-      user.should_receive(:save!)
-      xhr :post, :dismiss_system_notice
     end
   end
 end

@@ -1,5 +1,5 @@
-require 'spec_helper'
-describe Api::MotionsController do
+require 'rails_helper'
+describe API::MotionsController do
   render_views
 
   let(:user) { create :user }

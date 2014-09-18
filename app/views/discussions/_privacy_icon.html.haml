@@ -1,10 +1,8 @@
 - privacy = privacy_language(discussion)
 - icon_type = privacy_icon(discussion)
-- header = t "simple_form.labels.discussion.privacy_#{privacy}_header"
-- description = t "simple_form.labels.discussion.privacy_#{privacy}_description", group: t(:"simple_form.labels.discussion.of_no_group")
-%span
+
 - if can?(:edit, discussion)
   %a{ href: edit_discussion_path(discussion) }
-    %i{id: "privacy", class: "fa fa-#{icon_type}", alt: privacy.to_s, "data-title" => "#{header}: #{description}", 'data-container'=> 'body'}
+    %i.js-tooltip{id: "privacy", class: "fa fa-#{icon_type}", alt: privacy.to_s, title: t(:"discussion_privacy.#{privacy}")}
 - else
-  %i{id: "privacy", class: "fa fa-#{icon_type}", alt: privacy.to_s, "data-title" => "#{header}: #{description}", 'data-container'=> 'body'}
+  %i.js-tooltip{id: "privacy", class: "fa fa-#{icon_type}", alt: privacy.to_s, title: t(:"discussion_privacy.#{privacy}")}

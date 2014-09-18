@@ -10,15 +10,6 @@ Feature: Admin deletes a discussion on Loomio
     And I am an admin of this group
     When I visit the discussion page
     And I select the delete discussion link from the discussion dropdown
-    And I confirm the action
     Then I should be directed to the group page
     And I should not see the discussion in the list of discussions
     And I should see a message notifying me of the deletion
-
-  @javascript
-  Scenario: A non admin tries to delete a discussion from a group
-    Given I am logged in
-    And there is a discussion in a group I belong to
-    And I am not an admin of this group
-    When I visit the discussion page
-    And I should not see the delete discussion link in the discussion dropdown

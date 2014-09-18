@@ -1,0 +1,66 @@
+sl:
+  try_it:
+    start_a_group: "Ustvarite skupino in pričnite sprejemati odločitve v vaši skupnosti"
+    join_the_community: "Pridruži se skupini Loomio Skupnosti"
+  errors:
+    messages:
+      email: "Neveljaven email naslov"
+  error:
+    access_denied: "Nimate dovoljenja za to."
+    cant_join_subgroup: "Ne morete se pridružiti podskupini, če niste član nadrejene skupine."
+    cant_modify_position: "Ta predlog je zaprt."
+    cant_state_position: "Ta predlog je zaprt."
+    discussion_not_created: "Razprave ni bilo mogoče ustvariti."
+    group_not_archived: "Skupine ni bilo mogoče arhivirati."
+    invalid_email: "Prosimo vnesite vsaj en veljaven email naslov"
+    permission_to_invite: "Nimate dovoljenja za vabljenje novih članov."
+  notice:
+    membership_approved: "Članstvo odobreno."
+    membership_request_canceled: "Zahteva za članstvo je bila preklicana."
+    membership_request_ignored: "Zahteva za članstvo ni bila upoštevana."
+    invitations:
+      auto_added:
+        one: "1 član dodan"
+        two: "2 člana dodana"
+        few: "%{count} člani dodani"
+        other: "%{count} članov dodanih"
+      existing_member:
+        one: "%{count} član je že v skupini"
+        two: "%{count} člana sta že v skupini"
+        few: "%{count} člani so že v skupini"
+        other: "%{count} članov je že v skupini"
+  warning:
+    membership_request_already_approved: "Zahteva za članstvo je bila že odobrena."
+    membership_request_already_ignored: "Zahteva za članstvo je bila že prezrta."
+    membership_request_already_canceled: "Zahteva za članstvo je bila že zavrnjena."
+  notifications:
+    membership_requested: "zahteva članstvo v"
+  setup_steps_title: "Naslednji koraki:"
+  setup_step_1: "Oglejte si primer razprave"
+  setup_step_2: "Ustvarite svojo prvo razpravo"
+  setup_step_3: "Povabi osebe v svojo skupino"
+  invite_people: "Povabite ljudi"
+  edit_memberships: 'Urejanje članstev'
+  members: "Člani"
+  want_to_invite_html: "Ali želite <a href='%{link}'>povabiti ljudi</a> v to skupino?"
+  membership_requests: "Zahteve za članstvo"
+  subgroups: "Podskupine"
+  create_a_subgroup: "Ustvari podskupino"
+  invite_members: "Povabi člane"
+  new_subgroup: "Nova podskupina"
+  create_subgroup: "Ustvari podskupino"
+  creating_subgroup: "Ustvarjanje podskupine"
+  start_a_discussion: "Začni razpravo"
+  previous_decisions: "Pretekle odločitve"
+  see_previous_decisions: "Oglej si pretekle odločitve"
+  invitation:
+    invite_people: "Povabi osebe v svojo skupino"
+    invite_to_discussion: "Povabi osebe k tej razpravi"
+  email:
+    group_membership_approved:
+      subject: "Članstvo odobreno"
+  ago: "pred %{quantity_of_time}"
+  options: "Možnosti"
+  time_until_close: "%{quantity_of_time} do zaprtja"
+  group_categories:
+    community_group: "Skupina skupnosti"

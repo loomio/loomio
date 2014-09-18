@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe InboxPreferencesForm do
   def create_membership_with_position(user, group, position = 0)
@@ -6,7 +6,6 @@ describe InboxPreferencesForm do
     membership.group = group
     membership.user = user
     membership.inbox_position = position
-    membership.access_level = 'member'
     membership.save!
     membership
   end

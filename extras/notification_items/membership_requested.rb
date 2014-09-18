@@ -10,8 +10,8 @@ class NotificationItems::MembershipRequested < NotificationItem
     if requestor
       requestor
     else
-      visitor = Visitor.new(notification.eventable.name,
-                            notification.eventable.email)
+      visitor = LoggedOutUser.new(name: notification.eventable.name,
+                                 email: notification.eventable.email)
       visitor.set_avatar_initials
       visitor
     end

@@ -3,8 +3,7 @@ Given(/^there is another admin in the group also$/) do
 end
 
 And(/^I choose to leave the group$/) do
-  find('#group-options').click
-  click_on('Leave group')
+  find('.group-options-btn').click
   click_on('Leave group')
 end
 

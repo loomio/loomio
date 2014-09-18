@@ -96,18 +96,27 @@ Given /^there is a discussion in a public group$/ do
 end
 
 Given /^there is a public discussion in a public group$/ do
-  @group = FactoryGirl.create :group, :privacy => 'public'
+  @group = FactoryGirl.create :group, :is_visible_to_public => true
   @discussion = create_discussion :group => @group, private: false
 end
 
+Given /^there is a public group with a discussion with a comment$/ do 
+  @user ||= FactoryGirl.create :user
+  @group ||= FactoryGirl.create :group, :is_visible_to_public => true
+  @discussion ||= FactoryGirl.create :discussion, group: @group, private: false
+  @group.add_member! @user
+  @comment = FactoryGirl.create :comment, author: @user, discussion: @discussion
+  DiscussionService.add_comment @comment
+end
+
 Given /^there is a discussion in a private group$/ do
-  @group = FactoryGirl.create :group, :privacy => 'hidden'
+  @group = FactoryGirl.create :group, :is_visible_to_public => false
   @discussion = create_discussion :group => @group
 end
 
 Given /^there is a discussion in a group I belong to$/ do
   @group = FactoryGirl.create :group
-  @discussion = create_discussion :group => @group
+  @discussion = create_discussion group: @group, author: @user
   @group.add_member! @user
 end
 
@@ -118,44 +127,44 @@ end
 When /^I fill details for the subgroup$/ do
   fill_in "group_name", :with => 'test group'
   choose "group_privacy_public"
-  choose "group_members_invitable_by_members"
+  choose "group_members_can_add_members_true"
 end
 
 When /^I fill details for public all members invite subgroup$/ do
   fill_in "group_name", :with => 'test group'
   choose "group_privacy_public"
-  choose "group_members_invitable_by_members"
+  choose "group_members_can_add_members_true"
   click_on 'group_form_submit'
 end
 
 When /^I fill details for public admin only invite subgroup$/ do
   fill_in "group_name", :with => 'test group'
   choose "group_privacy_public"
-  choose "group_members_invitable_by_admins"
+  choose "group_members_can_add_members_false"
 end
 
 When /^I fill details for members only all members invite subgroup$/ do
   fill_in "group_name", :with => 'test group'
   choose "group_privacy_hidden"
-  choose "group_members_invitable_by_members"
+  choose "group_members_can_add_members_true"
 end
 
 When /^I fill details for members only admin invite subgroup$/ do
   fill_in "group_name", :with => 'test group'
   choose "group_privacy_hidden"
-  choose "group_members_invitable_by_admins"
+  choose "group_members_can_add_members_false"
 end
 
 When /^I fill details for members and parent members only all members invite subgroup$/ do
   fill_in "group_name", :with => 'test group'
   choose "group_privacy_hidden"
-  choose "group_members_invitable_by_members"
+  choose "group_members_can_add_members_true"
 end
 
 When /^I fill details for members and parent members admin only invite ubgroup$/ do
   fill_in "group_name", :with => 'test group'
   choose "group_privacy_hidden"
-  choose "group_members_invitable_by_admins"
+  choose "group_members_can_add_members_false"
 end
 
 When /^I visit the group page for "(.*?)"$/ do |group_name|
@@ -175,6 +184,9 @@ When(/^I visit my group's memberships index$/) do
   click_on 'More'
 end
 
+When(/^I visit the subscribe to feed link$/) do
+  visit group_path(@group, format: :xml)
+end
 
 Then /^I email the group members$/ do
   click_on "Email group members"
@@ -193,7 +205,7 @@ Given /^the group has a subgroup$/ do
 end
 
 Given /^the group has a hidden subgroup$/ do
-  @subgroup = FactoryGirl.create(:group, parent: @group, privacy: 'hidden')
+  @subgroup = FactoryGirl.create(:group, parent: @group, visible_to: :members,  discussion_privacy_options: 'private_only')
 end
 
 Given /^the group has a subgroup I am an admin of$/ do
@@ -205,4 +217,18 @@ Then /^the group has another subgroup with a discussion I am an admin of$/ do
   @subgroup1 = FactoryGirl.create(:group, parent: @group)
   @subgroup1.add_admin!(@user)
   @discussion = create_discussion :group => @subgroup1
+end
+
+Then /^I should see a subscribe to feed link$/ do
+  page.should have_css('.rss-link', visible: false)
+end
+
+Then /^I should not see a subscribe to feed link$/ do
+  page.should_not have_css('.rss-link', visible: false)
+end
+
+Then /^I should see an xml feed$/ do                                                                                                                            
+    response = Hash.from_xml page.body
+    response['feed']['title'].should =~ /#{@group.name}/
+    response['feed']['subtitle'].should =~ /#{@group.description}/
 end

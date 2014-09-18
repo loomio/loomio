@@ -1,4 +1,4 @@
-require 'spec_helper_lite'
+require 'rails_helper'
 
 # External dependencies
 require 'active_support/core_ext/object/blank'
@@ -8,7 +8,7 @@ require_relative '../../../app/models/concerns/avatar_initials'
 
 class DummyUser
   include AvatarInitials
-  attr_accessor :name, :email, :deleted_at, :avatar_initials
+  attr_accessor :name, :email, :deactivated_at, :avatar_initials
 end
 
 describe AvatarInitials do
@@ -20,8 +20,8 @@ describe AvatarInitials do
   end
 
   describe "#set_avatar_initials" do
-    it "sets avatar_initials to 'DU' if deleted_at is true (a date is present)" do
-      user.deleted_at = "20/12/2002"
+    it "sets avatar_initials to 'DU' if deactivated_at is true (a date is present)" do
+      user.deactivated_at = "20/12/2002"
       user.set_avatar_initials
       user.avatar_initials.should == "DU"
     end

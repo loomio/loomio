@@ -1,0 +1,27 @@
+ga-IE:
+  frontpage:
+    view_this_in_your_language: 'Féach an suíomh seo i %{language}'
+    link:
+      blog: 'Blag'
+      contact: 'Déan Teagmháil'
+      donate: 'Bronn airgead orainn'
+      press: 'Brúigh'
+      try_it: 'Bain triail as'
+      log_in: 'SÍNIGH ISTEACH'
+      video: "Féach tuilleadh faoi conas mar a fheidhmíonn Loomio"
+      more: 'Tuilleadh'
+      top: 'Barr'
+    product:
+      step1:
+        header: '1. Déan an scéal a chíoradh'
+      step3:
+        header: '3. Déan cinneadh le chéile'
+    team:
+      header: 'Maidir le Loomio'
+    ideals:
+      independent:
+        header: 'Neamhspleách agus neodrach'
+      open:
+        header: 'Oideasra atá saor agus le foinse oscailte'
+    vision:
+      header: 'Cabhraigh linn an fhís seo a fhíorú'

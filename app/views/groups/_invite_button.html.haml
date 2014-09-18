@@ -1,1 +1,3 @@
-= icon_button(href: new_group_invitation_path(@group), text: t(:invite_people), icon: '/assets/member-18.png', id: 'invite-new-members', class: 'btn-grey')
+= link_to new_group_invitation_path(@group), class: 'btn btn-block btn-default btn-left' do
+  %i.fa.fa-user
+  = t :invite_people

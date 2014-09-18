@@ -1,21 +1,36 @@
 .row
-  .span12
-    %h1= t("email_preferences_form.header")
-    =simple_form_for(@email_preferences, :url => update_email_preferences_path, :method => :put) do |f|
-      %h2= t("email_preferences_form.daily_activity_summary")
+  .col-md-12
+    %h1= t('.title')
+    =simple_form_for(@user, url: update_email_preferences_path, method: :put) do |f|
       -if params[:unsubscribe_token]
         =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
-      =f.input :subscribed_to_daily_activity_email, :as => :boolean, :inline_label => t("email_preferences_form.daily_activity_subscription"), :label => false
+      .checkbox
+        = label_tag "user_email_missed_yesterday" do
+          = f.check_box :email_missed_yesterday
+          = t('.email_missed_yesterday')
+      .checkbox
+        = label_tag "user_email_when_mentioned" do
+          = f.check_box :email_when_mentioned
+          = t('.email_when_mentioned')
+      .checkbox
+        = label_tag "user_email_followed_threads" do
+          = f.check_box :email_followed_threads
+          = t('.email_followed_threads')
+      .checkbox
+        = label_tag "user_email_when_proposal_closing_soon" do
+          = f.check_box :email_when_proposal_closing_soon
+          = t('.email_when_proposal_closing_soon')
+      .checkbox
+        = label_tag "user_email_new_discussions_and_proposals" do
+          = f.check_box :email_new_discussions_and_proposals, id: 'js_email_new_discussions_and_proposals'
+          = t('.email_new_discussions_and_proposals')
 
-      -#=f.input :subscribed_to_mention_notifications, label: 'When someone mentions your name'
-      %h2= t("email_preferences_form.global_notifications")
-      =f.input :subscribed_to_proposal_closure_notifications, :as => :boolean, :inline_label => t("email_preferences_form.proposal_closing_soon_subscription"), :label => false
-      =f.input :subscribed_to_mention_notifications, :as => :boolean, :inline_label =>  t("email_preferences_form.mentions_subscription"), :label => false
+      .per-group-email-settings
+        %p= t('.for_these_groups')
+        .control-group
+          = f.collection_check_boxes(:email_new_discussions_and_proposals_group_ids,
+                                     @user.memberships.sorted_by_group_name,
+                                     :group_id,:group_full_name, {},
+                                     {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
 
-      %h2= t("email_preferences_form.group_activity_notifications")
-      %p= t("email_preferences_form.group_activity_details")
-
-      .control-group
-        =f.collection_check_boxes(:group_email_preferences, @email_preferences.all_memberships, :id, :group_full_name, {}, {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
-
-      =f.submit t("email_preferences_form.update_preferences"), :class => "btn btn-info btn-large", :data => {:disable_with => t("email_preferences_form.update_preferences")}
+      = f.submit t('.submit'), :class => "btn btn-primary"

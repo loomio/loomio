@@ -10,5 +10,4 @@ Feature: Admin deletes post
     And the discussion has a comment
     And I am on the discussion page
     When I click the delete button on a post
-    And I accept the popup to confirm
     Then I should no longer see the post in the discussion

@@ -2,7 +2,8 @@ class Events::MembershipRequested < Event
   after_create :notify_users!
 
   def self.publish!(membership_request)
-    create!(:kind => "membership_requested", :eventable => membership_request)
+    create!(kind: "membership_requested",
+            eventable: membership_request)
   end
 
   def membership_request
@@ -14,7 +15,7 @@ class Events::MembershipRequested < Event
 
   def notify_users!
     GroupMailer.new_membership_request(eventable)
-    membership_request.group_admins.each do |admin|
+    membership_request.group_admins.active.each do |admin|
       notify!(admin)
     end
   end

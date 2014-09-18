@@ -1,3 +1,17 @@
+Given /^there is a comment in the discussion$/ do
+  comment_author = FactoryGirl.create :user
+  @comment = FactoryGirl.create :comment, discussion: @discussion, user: comment_author, body: "Test comment!"
+  DiscussionService.add_comment @comment
+end
+
+Given /^the comment is written by an English speaker$/ do
+  @comment.author.update_attributes selected_locale: :en
+end
+
+Given /^the comment is written by a French speaker$/ do
+  @comment.author.update_attributes selected_locale: :fr
+end
+
 When /^I write and submit a comment$/ do
   @comment_text = 'Test comment,'
   @comment_markdown_text = ' also i like http://xkcd.org and also _markdown_'
@@ -8,12 +22,12 @@ end
 
 When /^I enable comment markdown$/ do
   find('#comment-markdown-dropdown-link .markdown-icon').click
-  find('#comment-markdown-dropdown .enable-markdown').click
+  find('#comment-markdown-dropdown .enable-markdown-link').click
 end
 
 When /^I disable comment markdown$/ do
   find('#comment-markdown-dropdown-link .markdown-icon').click
-  find('#comment-markdown-dropdown .disable-markdown').click
+  find('#comment-markdown-dropdown .disable-markdown-link').click
 end
 
 Then /^a comment should be added to the discussion$/ do

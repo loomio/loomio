@@ -9,24 +9,39 @@ class ApplicationController < ActionController::Base
   helper :locales
   helper_method :current_user_or_visitor
   helper_method :dashboard_or_root_path
+  helper_method :subdomain
 
   before_filter :set_application_locale
-  before_filter :save_selected_locale, if: :user_signed_in?
   around_filter :user_time_zone, if: :user_signed_in?
 
   after_filter :increment_measurement
+  after_filter :new_relic_insights, if: :using_new_relic?
+
+  # intercom
+  skip_after_filter :intercom_rails_auto_include
 
   rescue_from CanCan::AccessDenied do |exception|
     if user_signed_in?
       flash[:error] = t("error.access_denied")
       redirect_to dashboard_path
     else
-      store_location
       authenticate_user!
     end
   end
 
   protected
+  def using_new_relic?
+    ENV['NEW_RELIC_APP_NAME'].present?
+  end
+
+  def new_relic_insights
+    NewRelic::Agent.add_custom_parameters({:user_id => current_user_or_visitor.id})
+  end
+
+  def subdomain
+    request.subdomain.gsub(/^www./, '')
+  end
+
   def increment_measurement
     Measurement.increment(measurement_name)
   end
@@ -36,7 +51,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    if !user_signed_in? and params.has_key?(:locale)
+    if params.has_key?(:locale)
       super.merge({locale: selected_locale})
     else
       super
@@ -51,8 +66,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def store_location
-    session['user_return_to'] = request.original_url
+  def store_previous_location
+    session['user_return_to'] = request.env['HTTP_REFERER'] if request.env['HTTP_REFERER'].present?
   end
 
   def clear_stored_location
@@ -61,9 +76,21 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     save_detected_locale(resource)
-    path = session['user_return_to'] || dashboard_path
+    path = user_return_path
     clear_stored_location
     path
+  end
+
+  def user_return_path
+    if invalid_return_urls.include? session['user_return_to']
+      dashboard_or_root_path
+    else
+      session['user_return_to']
+    end
+  end
+
+  def invalid_return_urls
+    [nil, root_url, new_user_password_url]
   end
 
   def user_time_zone(&block)

@@ -4,7 +4,7 @@ Given /^I am viewing a discussion titled "(.*?)" in "(.*?)"$/ do |disc_title, gr
 end
 
 When /^I choose to create a discussion$/ do
-  find("#start-new-discussion").click
+  click_on('Start a discussion')
 end
 
 When /^I select the group from the groups dropdown$/ do
@@ -18,7 +18,6 @@ When /^I fill in the discussion details and submit the form$/ do
   fill_in 'discussion_description', with: @discussion_description
   find('#discussion_private_false').click
   click_on 'discussion-submit'
-
 end
 
 Then /^a discussion should be created$/ do

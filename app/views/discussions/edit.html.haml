@@ -1,5 +1,4 @@
 .page-container
-  - group = GroupDecorator.decorate(@discussion.group) if @discussion.group
-  = render '/groups/title', group: group, discussion: @discussion
+  = render '/groups/title', group: @discussion.group, discussion: @discussion
   %h2= t "discussion_form.edit.header"
   = render "/discussions/form", :discussion => @discussion, :user_groups => @user_groups

@@ -1,24 +1,14 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Membership do
   let(:membership) { Membership.new }
   let(:user) { create(:user) }
   let(:user2) { create(:user) }
-  let(:group) { create(:group) }
+  let(:group) { create(:group, is_visible_to_public: true) }
 
   it { should have_many(:events).dependent(:destroy) }
 
   describe "validation" do
-    it "must have a group" do
-      membership.valid?
-      membership.should have(1).errors_on(:group)
-    end
-
-    it "must have a user" do
-      membership.valid?
-      membership.should have(1).errors_on(:user)
-    end
-
     it "cannot have duplicate memberships" do
       create(:membership, :user => user, :group => group)
       membership.user = user
@@ -37,7 +27,6 @@ describe Membership do
 
   it "can have an inviter" do
     membership = user.memberships.new(:group_id => group.id)
-    membership.access_level = "member"
     membership.inviter = user2
     membership.save!
     membership.inviter.should == user2
@@ -49,9 +38,9 @@ describe Membership do
     end
 
     it "removes subgroup memberships if parent is hidden" do
-      group.privacy = 'hidden'
+      group.is_visible_to_public = false
       group.save
-      subgroup = create(:group, parent: group, privacy: 'hidden')
+      subgroup = create(:group, parent: group, is_visible_to_public: false)
       subgroup.add_member! user
       group.reload
       @membership.reload
@@ -70,7 +59,7 @@ describe Membership do
 
     context do
       before do
-        discussion = create_discussion group: group
+        discussion = create :discussion,  group: group
         @motion = create(:motion, discussion: discussion)
         vote = Vote.new
         vote.user = user
@@ -86,7 +75,7 @@ describe Membership do
 
       it "does not remove user's open votes for other groups" do
         group2 = create(:group)
-        discussion2 = create_discussion group: group2
+        discussion2 = create :discussion, group: group2
         motion2 = create(:motion, author: user, discussion: discussion2 )
         vote = Vote.new
         vote.user = user

@@ -1,4 +1,0 @@
-%li
-  .membership-user-name= truncate(membership_request.name, :length => 29, :omission => '...')
-  =link_to t(:approve), "#", 'data-title' => t(:approve), 'data-body' => t(:confirm_approve_membership_request, which_user: membership_request.name), 'data-confirm-path' => approve_membership_request_path(membership_request), 'data-method-type' => 'post', class: 'confirm-dialog', id: 'approve'
-  =link_to "×", "#", 'data-title' => t(:ignore_request), 'data-body' => t(:confirm_ignore_membership_request, which_user: membership_request.name), 'data-confirm-path' => ignore_membership_request_path(membership_request), 'data-method-type' => 'post', class: 'confirm-dialog close', id: 'ignore'

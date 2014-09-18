@@ -1,28 +1,65 @@
 .row
-  .span5
+  .col-md-5
     = simple_form_for discussion, :validate => true do |f|
-      .control-group
-        - if @user_groups && params[:group_id].blank?
+      .form-group
+        - if params[:group_id].blank?
           %p= t "discussion_form.new.who"
-          = f.collection_select :group_id, user_groups.sort{|a,b| a.full_name <=> b.full_name}, :id, :full_name, {include_blank: true}
+          = f.collection_select :group_id, current_user.groups_discussions_can_be_started_in, :id, :full_name, {include_blank: true}, class: 'form-control'
         - else
           = f.input :group_id, :as => :hidden
-      = f.input :title, autofocus: true, input_html: {class: 'js-warn-before-navigating-away'}, label: false
-      = f.input :description, input_html: {class: 'js-warn-before-navigating-away'}, label: false
+      = f.input :title, autofocus: true, input_html: {class: 'js-warn-before-navigating-away'}
+      = f.input :description, input_html: {class: 'js-warn-before-navigating-away'}
       .dropdown#discussion-markdown-dropdown.global-markdown-setting
         %a.dropdown-toggle{href:'#discussion-markdown-dropdown', id:'discussion-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
           = markdown_img(discussion.uses_markdown)
         = render 'markdown_setting', target: current_user
 
-      - if discussion.group.present? and discussion.group.is_hidden?
-        .hidden-group-discussion-privacy
-          %h3.header= t :'simple_form.labels.group.privacy'
-          %i.fa.fa-lock
-          %span.subhead= t :'simple_form.labels.discussion.privacy_private_header'
-          .description= t :'simple_form.labels.discussion.privacy_hidden_description'
-          = f.input_field :private, as: :hidden, value: true
+      - if discussion.group.present? and discussion.group.beta_feature_enabled?('discussion_iframe') and can?(:update, discussion.group)
+        =f.input :iframe_src
+
+      - if discussion.group.present?
+        - group = discussion.group
+        - if group.is_visible_to_parent_members?
+          .hidden-group-discussion-privacy
+            %i.fa.fa-lock
+            = t :'common.private'
+            = t :'discussion_form.privacy.will_be_private_to_parent_group', parent_group_name: group.parent.name, group_name: group.name
+            = f.input_field :private, as: :hidden, value: true
+        - else
+          - if group.private_discussions_only?
+            .hidden-group-discussion-privacy
+              %i.fa.fa-lock
+              = t :'common.private'
+              = t :'discussion_form.privacy.will_be_private_to_group', group_name: group.name
+              = f.input_field :private, as: :hidden, value: true
+          - elsif group.public_discussions_only?
+            .hidden-group-discussion-privacy
+              %i.fa.fa-globe
+              = t :'common.public'
+              = t :'discussion_form.privacy.will_be_public'
+              = f.input_field :private, as: :hidden, value: false
+          - else
+            .radio_buttons
+              = label_tag t('simple_form.labels.group.privacy') do
+                .radio
+                  = label_tag "discussion_private_false" do
+                    = f.radio_button :private, false
+                    = discussion_privacy_collection(discussion)[0][0]
+                .radio
+                  = label_tag "discussion_private_true" do
+                    = f.radio_button :private, true
+                    = discussion_privacy_collection(discussion)[1][0]
       - else
-        = f.input :private, as: :radio_buttons, collection: discussion_privacy_options(discussion), label: t('simple_form.labels.group.privacy')
+        .radio_buttons
+          = label_tag t('simple_form.labels.group.privacy') do
+            .radio
+              = label_tag "discussion_private_false" do
+                = f.radio_button :private, false
+                = discussion_privacy_collection(discussion)[0][0]
+            .radio
+              = label_tag "discussion_private_true" do
+                = f.radio_button :private, true
+                = discussion_privacy_collection(discussion)[1][0]
       = f.input 'uses_markdown', as: :hidden, id: 'global-uses-markdown'
-      = f.submit :class => "btn btn-large btn-info", id: "discussion-submit", :data => {:disable_with => t(:saving)}
+      = f.submit :class => "btn btn-lg btn-primary", id: "discussion-submit", :data => {:disable_with => t(:saving)}
       = render 'application/hint', text: t(:"hint.discussion"), anchor: 'starting-an-engaging-discussion'

@@ -22,7 +22,7 @@ class DiscussionItems::DiscussionDescriptionEdited < DiscussionItem
   end
 
   def body
-    ""
+    "<a href='/d/#{@discussion.key}/show_description_history' class='see-description-history' data-method='post' data-remote='true' rel='nofollow'>(#{I18n.t(:"discussion_context.see_history")})</a>".html_safe
   end
 
   def time

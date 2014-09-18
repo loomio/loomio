@@ -2,6 +2,21 @@ module DiscussionsHelper
   include Twitter::Extractor
   include Twitter::Autolink
 
+  def filter_discussion_events(activity)
+    last_item = nil
+    ignored_event_kinds = %w[motion_closing_soon user_mentioned comment_liked]
+    deduplicate_kinds = %w[discussion_description_edited discussion_title_edited motion_close_date_edited]
+
+    activity.
+      reject {|item| ignored_event_kinds.include? item.kind }.
+      map do |item|
+      next if last_item &&
+              deduplicate_kinds.include?(item.kind) &&
+              item.user == last_item.user && item.kind == last_item.kind
+      last_item = item
+    end.compact
+  end
+
   def no_discussions_available?
     (@discussion_readers_with_open_motions.size + @discussion_readers_without_open_motions.size) == 0
   end
@@ -19,7 +34,7 @@ module DiscussionsHelper
   end
 
   def path_of_add_comment
-    if current_page == @discussion_reader.first_unread_page
+    if current_page == actual_total_pages
       '#comment-input'
     else
       if actual_total_pages == 1
@@ -27,6 +42,13 @@ module DiscussionsHelper
       else
         discussion_path(@discussion, page: actual_total_pages, anchor: 'comment-input')
       end
+    end
+  end
+
+  def xml_item(event)
+    case event.kind.to_sym
+    when :new_comment then event.eventable
+    #else                   DiscussionItem.new event
     end
   end
 
@@ -42,7 +64,7 @@ module DiscussionsHelper
   end
 
   def css_for_markdown_link(target, setting)
-    return "icon-ok" if (target.uses_markdown == setting)
+    return "icon-ok" if (target.uses_markdown? == setting)
   end
 
   def markdown_img(uses_markdown)
@@ -89,26 +111,21 @@ module DiscussionsHelper
     end
   end
 
-  def discussion_privacy_options(discussion)
+  def discussion_privacy_collection(discussion)
     options = []
-    group =
-      if discussion.group_id
-        t(:'simple_form.labels.discussion.of') + discussion.group.name
-      else
-        t :'simple_form.labels.discussion.of_no_group'
-      end
-    icon =
-    header = t "simple_form.labels.discussion.privacy_public_header"
-    description = t 'simple_form.labels.discussion.privacy_public_description'
-    options << ["<span class='discussion-privacy-setting-header'><i class='fa fa-globe'></i>#{header}<br /><p>#{description}</p>".html_safe, false]
 
-    header = t "simple_form.labels.discussion.privacy_private_header"
-    description = t(:'simple_form.labels.discussion.privacy_private_description', group: group)
-    options << ["<span class='discussion-privacy-setting-header'><i class='fa fa-lock'></i>#{header}<br /><p>#{description}</p>".html_safe, true ]
-  end
+    public_description = t('discussion_form.privacy.will_be_public')
+    if discussion.group.present?
+      private_description = t('discussion_form.privacy.will_be_private_to_group', group_name: discussion.group_name)
+    else
+      private_description = t('discussion_form.privacy.will_be_private')
+    end
 
-  def current_language
-    Translation.language I18n.locale.to_s
+    options << ["<i class='fa fa-globe'></i>#{t(:'common.public')}:
+                  #{public_description}".html_safe, false]
+
+    options << ["<i class='fa fa-lock'></i>#{t(:'common.private')}:
+                 #{private_description}".html_safe, true ]
   end
 
   def privacy_language(discussion)

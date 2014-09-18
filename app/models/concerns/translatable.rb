@@ -1,29 +1,28 @@
 module Translatable
-  # Requires base class to define:
-  #   body
-
   extend ActiveSupport::Concern
 
-  def translate(from_lang, to_lang)
-    translator.translate(body, from: from_lang || detect_lang, to: to_lang) if can_translate? from_lang, to_lang
-  end
-  
-  private
-  
-  def can_translate?(from, to)
-    translator.present? && from != to
-  end
-  
-  def translator
-    @translator ||= BingTranslator.new get_env_or_fake('BING_TRANSLATE_APPID'), get_env_or_fake('BING_TRANSLATE_SECRET') rescue nil
-  end
-  
-  def detect_lang
-    translator.detect body
+  included do
+    has_many :translations, as: :translatable
+    before_update :clear_translations, if: :translatable_fields_modified?
   end
 
-  def get_env_or_fake(key)
-    ENV[key] || ''
+  def translatable_fields_modified?
+    return unless TranslationService.available?
+    (self.changed.map(&:to_sym) & self.class.translatable_fields).any?
   end
-  
+
+  def clear_translations
+    self.translations.delete_all
+  end
+
+  module ClassMethods
+    def is_translatable(on: [], load_via: :find, id_field: :id, locale_field: :locale)
+
+      define_singleton_method :translatable_fields, -> { Array on }
+      define_singleton_method :get_instance, ->(id) { send load_via, id }
+
+      define_method :id_field, -> { send id_field }
+      define_method :locale_field, -> { send locale_field }
+    end
+  end
 end

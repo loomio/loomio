@@ -1,0 +1,7 @@
+.row
+  .col-sm-6
+    %h1= t :"edit_comment.edit_comment"
+    - if can? :edit, @comment
+      = simple_form_for @comment do |f|
+        =f.input :body, label: false, input_html: {class: 'js-warn-before-navigating-away'}
+        =f.submit t(:update), class: "btn btn-info"

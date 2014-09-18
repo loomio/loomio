@@ -2,7 +2,7 @@
   -if signed_in?
     = image_tag "loomio-orange.png", :id => "large-logo"
   .row
-    .span8.offset2
+    .col-md-8.offset2
       %h2= t(:"group_request.confirmation.title")
 
       = simple_format t(:"group_request.confirmation.body_html")

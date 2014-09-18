@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe UserMailer do
   shared_examples_for 'email_meta' do
@@ -7,11 +7,12 @@ describe UserMailer do
     end
 
     it 'renders the sender email' do
-      @mail.from.should == ['noreply@loomio.org']
+      @mail.from.should == ['notifications@loomio.org']
     end
   end
+
   context 'sending email on membership approval' do
-    before :all do
+    before :each do
       @user = create(:user)
       @group = create(:group)
       @mail = UserMailer.group_membership_approved(@user, @group)

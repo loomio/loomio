@@ -1,9 +1,12 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  skip_before_action :verify_authenticity_token
   include OmniauthAuthenticationHelper
   include InvitationsHelper
 
   def all
-    auth = OmniauthIdentity.from_omniauth(request.env["omniauth.auth"])
+    auth_params = ActionController::Parameters.new(request.env["omniauth.auth"])
+    user_info = auth_params.require(:info).permit(:name, :email)
+    auth = OmniauthIdentity.from_omniauth(auth_params[:provider], auth_params[:uid], user_info)
 
     if auth.user
       Measurement.increment('omniauth.success.recognised')
@@ -14,6 +17,22 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if user = User.find_by_email(auth.email.to_s)
         Measurement.increment('omniauth.success.recognised_first_auth')
         sign_in_and_redirect(user)
+
+      # at some point in the future we can remove this elsif #IAMSORRY4THIS
+      elsif ENV['PARSE_ID'] and request.subdomain == ENV['PARSE_SUBDOMAIN']
+        if parse_user = ParseAuth.get_user_details(auth.email.to_s)
+          user = User.create!(name: "#{parse_user['firstname']} #{parse_user['lastname']}",
+                              email: auth.email.to_s,
+                              password: SecureRandom.hex)
+
+          group = Group.find(ENV['PARSE_GROUP_ID'])
+          group.add_member!(user)
+          sign_in_and_redirect(user)
+        else
+          Measurement.increment('omniauth.success.unrecognised_first_auth')
+          redirect_to login_or_signup_path_for_email(auth.email)
+        end
+      # end block that could be removed
       else
         Measurement.increment('omniauth.success.unrecognised_first_auth')
         redirect_to login_or_signup_path_for_email(auth.email)

@@ -1,24 +1,26 @@
-Given /^I am in one of the same groups as another user$/ do
-  @group = FactoryGirl.create(:group)
-  @group.add_member!(@user)
-  @other_user = FactoryGirl.create(:user)
-  @group.add_member!(@other_user)
-  @private_group = FactoryGirl.create(:group, privacy: 'hidden')
+def make_private_group
+  @private_group = FactoryGirl.create(:group, visible_to: 'members', discussion_privacy_options: 'private_only')
   @private_group.add_member!(@other_user)
 end
 
-Given /^I am not in any of the same groups as another user$/ do
-  @group = FactoryGirl.create(:group)
+Given /^I am in one of the same groups as another user$/ do
+  @group = FactoryGirl.create(:group, visible_to: 'public')
   @group.add_member!(@user)
   @other_user = FactoryGirl.create(:user)
-  @private_group = FactoryGirl.create(:group, privacy: 'hidden')
-  @private_group.add_member!(@other_user)
+  @group.add_member!(@other_user)
+  make_private_group
+end
+
+Given /^I am not in any of the same groups as another user$/ do
+  @group = FactoryGirl.create(:group, visible_to: 'public')
+  @group.add_member!(@user)
+  @other_user = FactoryGirl.create(:user)
+  make_private_group
 end
 
 Given /^another user exists$/ do
   @other_user = FactoryGirl.create(:user)
-  @private_group = FactoryGirl.create(:group, privacy: 'hidden')
-  @private_group.add_member!(@other_user)
+  make_private_group
 end
 
 When /^I visit the other user's profile page$/ do

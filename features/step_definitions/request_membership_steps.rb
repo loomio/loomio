@@ -1,3 +1,19 @@
+Given(/^a visible join instanty group exists$/) do
+  @group = FactoryGirl.create(:group, is_visible_to_public: true, membership_granted_upon: 'request')
+end
+
+Given(/^an approval required group exists$/) do
+  @group = FactoryGirl.create(:group, is_visible_to_public: true, membership_granted_upon: 'approval')
+end
+
+Given(/^a visible but invitation only group exists$/) do
+  @group = FactoryGirl.create(:group, is_visible_to_public: true, membership_granted_upon: 'invitation')
+end
+
+Then(/^I should see that membership is by invitation only$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
 When(/^I fill in and submit the Request membership form$/) do
   fill_in 'membership_request_name', with: @visitor_name
   fill_in 'membership_request_email', with: @visitor_email
@@ -90,7 +106,7 @@ Then(/^I should be returned to the group page$/) do
 end
 
 Given(/^membership requests can only be managed by group admins for the group$/) do
-  @group.members_invitable_by = 'admins'
+  @group.members_can_add_members = false
   @group.save
 end
 
@@ -114,11 +130,11 @@ Then(/^I should see the request membership button$/) do
 end
 
 Given(/^I visit the request membership page for the group$/) do
-  visit group_ask_to_join_path(@group)
+  visit new_group_membership_request_path(@group)
 end
 
 Then(/^I should see a flash message telling me I have already requested membership$/) do
-  find('.alert-warning').should have_content(I18n.t(:'error.you_have_already_requested_membership'))
+  find('.alert').should have_content(I18n.t(:'error.you_have_already_requested_membership'))
 end
 
 Given(/^I have requested membership, been accepted to, and then left a group$/) do
@@ -146,7 +162,7 @@ Then(/^I should be redirected to the homepage$/) do
 end
 
 When(/^I visit the request membership page for the sub\-group$/) do
-  visit group_ask_to_join_path(@sub_group)
+  visit new_group_membership_request_path(@sub_group)
 end
 
 Given(/^I am a visitor$/) do
@@ -165,7 +181,7 @@ Then(/^I should see a field error telling me I have already requested membership
 end
 
 Then(/^I should see a flash message telling me I am already a member of the group$/) do
-  find('.alert-warning').should have_content(I18n.t(:'error.you_are_already_a_member_of_this_group'))
+  find('.alert').should have_content(I18n.t(:'error.you_are_already_a_member_of_this_group'))
 end
 
 

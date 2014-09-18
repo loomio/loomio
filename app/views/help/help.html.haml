@@ -1,11 +1,4 @@
-.span3#sidenav
-  %ul.nav.nav-tabs.nav-stacked.affix
-    %li= link_to t(:"help.how_it_works"), '#how-it-works'
-    %li= link_to t(:"help.getting_the_most"), '#getting-the-most-out-of-Loomio'
-    %li= link_to t(:"help.coordinating"), '#coordinating-your-Loomio-group'
-    %li= link_to t(:"help.get_in_touch"), '#get-in-touch'
-    %li= link_to t(:"help.join_the_community"), '#join-the-community'
-.span8#help-content
+.col-md-12#help-content
   %section#how-it-works
     .inner-container
       = render 'help/how_it_works'
@@ -19,3 +12,4 @@
   %section#get-in-touch
     .inner-container
       = render 'help/feedback'
+.clearfix
