@@ -13,7 +13,6 @@ vi:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%-d/%-m/%y'
-      datepicker: "%d-%m-%Y"
   error:
     access_denied: "Bạn không có quyền thực hiện thao tác này."
     cant_join_subgroup: "Bạn không thể tham gia vào nhóm-con này nếu bạn không phải là thành viên của nhóm gốc."
@@ -52,12 +51,6 @@ vi:
     user_made_admin: "%{which_user} đã trở thành người điều hành viên."
     you_have_left_group: "Bạn chỉ còn lại %{which_group}."
     invitations:
-      auto_added:
-        other: "%{count} thành viên đã được thêm vào"
-      existing_member:
-        other: "%{count} thành viên hiện có trong nhóm"
-      sent:
-        other: "%{count} lời mời kết nối đã được gửi"
       auto_added_and_sent: "%{auto_added_text} và %{sent_text}"
   warning:
     cant_remove_last_admin: "Bạn là người điều hành viên cuối cùng và không thể bị loại bỏ."
@@ -115,8 +108,6 @@ vi:
     empty: Bạn đã đến đúng ngày! Hiện không có bình luận nào để xem.
   notifications:
     header: "Thông báo"
-    new_discussion: "đã bắt đầu phần thảo luận mới"
-    new_motion: "đã tạo yêu cầu mới"
     motion_closed:
       by_user: "đã đóng lại yêu cầu"
       by_expiry: "Lời yêu cầu đã được đóng lại"
@@ -144,7 +135,6 @@ vi:
     message: "<p>Đây là <strong>trang của nhóm</strong>. Ở phía bên trái là danh sách tất cả các phần thảo luận trong nhóm này.</p><p>Khi bạn muốn cả nhóm thảo luận một vấn đề khác, hãy bắt đầu một phần thảo luận mới.</p>"
   dashboard_helper_text:
     header: "Chào mừng đến với Trang Chủ của bạn"
-    message: "<p>Trang chủ hiển thị các phần thảo luận hiện đang diễn ra trong tất cả các nhóm mà bạn đã tham gia vào.</p><p>Bạn có thể bắt đầu một phần thảo luận về một chủ đề mới bằng cách click vào nút “Bắt đầu một phần thảo luận”.</p>"
   setup_steps_title: "Các bước tiếp theo:"
   setup_step_1: "Thử dùng một thảo luận dạng mẫu"
   setup_step_2: "Bắt đầu phần thảo luận đầu tiên của bạn"
@@ -228,8 +218,6 @@ vi:
   empty_decision_list_html: "Đã sẵn sàng đưa ra quyết định? <br> Bất kỳ ai cũng có thể bắt đầu đưa ra lời đề nghị."
   empty_decision_index: "Nhóm này vẫn chưa đưa ra quyết định nào."
   empty_discussion_list: "Phần thảo luận này hiện vẫn chưa có thông tin nào."
-  empty_discussion_index: "Hiện không có phần thảo luận nào trong bất kỳ nhóm nào của bạn."
-  empty_discussion_index_group: "Nhóm này hiện không có phần thảo luận nào."
   discussion_context:
     started_html: "Đã bắt đầu cách đây %{when} bởi <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Đã được chỉnh sửa cách đây %{when} bởi <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -414,11 +402,7 @@ vi:
       Nếu bạn đã biết rõ kiến nghị của mình, hãy click vào một trong số các biểu tượng bên dưới (rê chuột qua nút quyết định để có được mô tả về mỗi đối tượng mà bạn muốn biết ý nghĩa của chúng).
       Bạn sẽ được thông báo một phát biểu ngắn gọn về nguyên nhân đối với việc đưa ra quyết định của mình. Phần này hoàn toàn dễ dàng nhằm tóm lược thông tin về điều mọi người đang suy nghĩ cũng như lý do tại sao. Bạn có thể thay đổi suy nghĩ của mình và thậm chí là chỉnh sửa việc đưa ra quyết định theo cách tự do nhất có thể miễn là trước khi thời hạn dành cho lời đề nghị chưa bị đóng lại.
   motion_form:
-    header: "Tạo lời đề nghị mới"
     name_helper: "Hãy soạn thảo phần tiêu đề theo hướng rõ ràng và ngắn gọn."
-  group_form:
-    invitation_settings: "Cài đặt phần gửi lời mời"
-    admins_only: "Chỉ dành cho các điều hành viên"
   vote_form:
     header: "Đưa ra kiến nghị của bạn"
     edit: "Chỉnh sửa kiến nghị của bạn"
@@ -427,16 +411,6 @@ vi:
     your_statement: "Phát biểu của bạn"
     submit: "Đệ trình kiến nghị"
     update: "Cập nhật kiến nghị"
-  email_preferences_form:
-    header: "Tùy biến email"
-    daily_activity_summary: "Tóm tắt diễn biến hằng ngày"
-    daily_activity_subscription: "Gửi cho tôi một địa chỉ mô tả ngắn gọn về các hoạt động thường nhật diễn ra trong các nhóm mà tôi tham gia."
-    global_notifications: "Thông báo chung"
-    proposal_closing_soon_subscription: "Nhắc nhớ tôi trước khi lời đề nghị của tôi hết hạn trước 24 giờ"
-    mentions_subscription: "Gửi email cho tôi khi có ai đó nhắc đến tôi trong bình luận của họ"
-    group_activity_notifications: "Thông báo về hoạt động của nhóm"
-    group_activity_details: "Đối với mỗi nhóm, hãy chọn một ô nếu bạn muốn được gửi email ngay lập tức về các phần thảo luận và việc đưa ra quyết định mới."
-    update_preferences: "Cập nhật phần tùy biến"
   new_user_form:
     create_an_account: "Tạo một tài khoản"
   group_setup:
@@ -453,8 +427,6 @@ vi:
       discussion:
         title: "Tiêu đề"
         description: "Nội dung"
-      group:
-        members_invitable_by: "Ai là người có thể thực hiện việc gửi đi lời mời tham gia vào nhóm này?"
       membership_request:
         introduction: "Tự giới thiệu bản thân bạn"
       motion:
@@ -490,9 +462,6 @@ vi:
     view_comment: "Click vào đây để xem các bình luận trên Loomio"
     view_discussion: "Click vào đây để xem phần thảo luận này"
     view_group: "Click vào đây để xem nhóm trên Loomio"
-    create_discussion:
-      intro: "%{who} đã bắt đầu một phần thảo luận mới trong %{which_group}:"
-      subject: "Thảo luận mới - %{which}"
     create_proposal:
       intro: "Một lời đề nghị mới vừa được tạo trong nhóm Loomio mà bạn đã tham gia vào."
       closes_in: "Đóng lại vào"
@@ -512,11 +481,8 @@ vi:
       intro: "%{name} (%{email}) đã gửi lời yêu cầu tham gia vào một trong các nhóm trên Loomio của bạn."
       view_group: "Bạn có thể chấp thuận hoặc từ chối các lời đề nghị kết nối tại đây"
     mentioned:
-      intro: "Tên của bạn vừa được đề cập đến trong phần thảo luận có tiêu đề:"
-      said: "%{comment_author} đã phát biểu:"
       subject: "%{who} đã đề cập đến bạn trong nhóm %{which} trên Loomio"
     proposal_closed:
-      intro: 'Lời đề nghị của bạn "%{proposal_name}" đã đóng lại.'
       subject: "Lời đề nghị đã đóng lại - %{which}"
     proposal_blocked:
       intro: "Một lời đề nghị của bạn đã bị chặn."
@@ -552,7 +518,6 @@ vi:
   participation: "Sự tham gia"
   disable: "Vô hiệu hóa"
   group: "Nhóm"
-  groups: "Các nhóm"
   group_admin: "Nhóm điều hành viên"
   home: "Trang chủ"
   like: "Thích"
@@ -565,6 +530,7 @@ vi:
   outcome: "Kết quả"
   password: "Mật khẩu"
   prev: "Trước đó"
+  translate: "Tham gia vào công tác chuyển ngữ Loomio!"
   options: "Tùy chọn"
   ok_got_it: "Ô kê con tê tê, tôi đã hiểu rồi!"
   remove: "Loại bỏ"
@@ -576,7 +542,6 @@ vi:
   show_more: "Hiển thị thêm"
   starting: "Đang bắt đầu"
   subject: "Chủ đề"
-  translate: "Tham gia vào công tác chuyển ngữ Loomio!"
   unlike: "Không thích"
   update: "Cập nhật"
   common:

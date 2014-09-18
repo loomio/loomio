@@ -13,7 +13,6 @@ te:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%-d/%-m/%y'
-      datepicker: "%d-%m-%Y"
   devise:
     invitations:
       updated: 'ఖాతా సృష్టించబడింది.'
@@ -47,9 +46,6 @@ te:
     proposal_deleted: "ప్రతిపాదన తొలిగించబడింది."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "క్షణం"
-        other: "%{count} క్షణాలు"
       x_seconds:
         one: "1 క్షణం"
         other: "%{count} క్షణాలు"
@@ -92,8 +88,6 @@ te:
     empty: మీరు తాజాగానే ఉన్నారు! మీరు చూడనటువంటి వ్యాఖ్యలేమీ లేవు.
   notifications:
     header: "గమనికలు"
-    new_discussion: "ఒక కొత్త చర్చను ప్రారంభించండి"
-    new_motion: "ఒక కొత్త ప్రతిపాదనను సృష్టించారు"
     motion_closed:
       by_user: "ప్రతిపాదనను మూసివేసారు"
       by_expiry: "ప్రతిపాదన మూసివేయబడింది"
@@ -234,21 +228,12 @@ te:
       header: "ఒక చర్చను ఆరంభించండి"
     edit:
       header: "చర్చను సవరించండి"
-  motion_form:
-    header: "కొత్త ప్రతిపాదన"
-  group_form:
-    invitation_settings: "ఆహ్వాన అమరికలు"
-    admins_only: "సమన్వయకర్తలు మాత్రమే"
   vote_form:
     edit: "మీ స్థానాన్ని సవరించుకోండి"
     your_position: "మీ స్థానము"
     your_statement: "మీ ప్రకటన"
     submit: "స్థానాన్ని సమర్పించండి"
     update: "స్థానాన్ని నవీకరించండి"
-  email_preferences_form:
-    header: "వేగు అభిరుచులు"
-    global_notifications: "సార్వత్రిక గమనికలు"
-    update_preferences: "అభిరుచులను నవీకరించండి"
   new_user_form:
     create_an_account: "ఒక ఖాతాను సృష్టించండి"
   group_setup:
@@ -266,19 +251,6 @@ te:
       discussion:
         title: "శీర్షిక"
         description: "సందర్భం"
-        privacy_public_header: "బహిరంగం"
-        privacy_public_description: "ఈ చర్చను ఎవరైనా చూడగలరు"
-      group:
-        name: "సమూహం పేరు"
-        description: "వివరణ"
-        members_invitable_by: "ఈ సమూహానికి ఎవరెవరు వ్యక్తులను ఆహ్వానించవచ్చు?"
-        members_invitable_by_coordinators: "సమన్వయకర్తలు మాత్రమే"
-        members_invitable_by_members: "సమూహ సభ్యులు అందరు"
-        privacy: గోప్యత
-        privacy_public_header: బహిరంగం
-        privacy_private_header: దాదాపు గోప్యం
-        group_members_invitable_by: "సమన్వయకర్తలు మాత్రమే"
-        submit: సమర్పయామి
       membership_request:
         introduction: "మిమ్మల్ని పరిచయం చేసుకోండి"
       motion:
@@ -296,9 +268,6 @@ te:
     placeholders:
       discussion:
         title: "శీర్షిక"
-      group:
-        name: "సమూహం పేరు"
-        description: "సమూహ వివరణ"
       user:
         email: "ఈమెయిలు"
         password: "సంకేతపదం"
@@ -316,8 +285,6 @@ te:
     to_join_discussion:
       link: "చర్చలో పాల్గొనండి"
     unsubscribe: "మీ ఈమెయిలు అభిరుచులను మార్చండి లేదా చందావిరమించుకోండి:"
-    create_discussion:
-      subject: "కొత్త చర్చ - %{which}"
     create_proposal:
       subject: "కొత్త ప్రతిపాదన: %{which}"
     group_membership_approved:
@@ -347,7 +314,6 @@ te:
   participation: "పాల్గోలు"
   disable: "అచేతనించు"
   group: "సమూహం"
-  groups: "సమూహాలు"
   group_admin: "సమూహ సమన్వయకర్త"
   home: "నివాసం"
   id: "గుచి"
@@ -362,6 +328,7 @@ te:
   pricing: 'ధర'
   prev: "మునుపటిది"
   more: "మరింత..."
+  translate: "లూమియోను అనువదించుటలో సహాయం చేయండి!"
   translate_this_string: "%{language} లోకి అనువదించండి"
   options: "ఐచ్ఛికాలు"
   ok_got_it: "సరే, అర్థమైంది!"
@@ -373,11 +340,9 @@ te:
   send_email: "ఈమెయిలు పంపండి"
   show_more: "మరింత చూపించు"
   start_a_group: "ఒక సమూహాన్ని ప్రారంభించండి"
-  start_group: "సమూహాన్ని ప్రారంభించండి!"
   starting: "ప్రారంభిస్తూంది"
   subject: "విషయం"
   thanks: "ధన్యవాదాలు!"
-  translate: "లూమియోను అనువదించుటలో సహాయం చేయండి!"
   unlike: "అయిష్టం"
   update: "నవీకరించు"
   facebook: "ఫేస్‌బుక్"

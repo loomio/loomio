@@ -1,9 +1,9 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe VotesController do
   let(:user) { create :user }
   let(:group) { create :group }
-  let(:discussion) { create_discussion group: group }
+  let(:discussion) { create :discussion, group: group }
   let(:motion) { create :motion, discussion: discussion }
 
   before :each do
@@ -18,8 +18,22 @@ describe VotesController do
       post :create, motion_id: motion.id, vote: {position: 'yes'}
     end
 
-    it 'casts the vote with VoteService' do
-      VoteService.should_receive(:cast).and_return(true)
+    it "flashes a motion closed message when the motion is closed" do
+      motion.update_attribute :closed_at, Date.yesterday
+      post :create, motion_id: motion.id, vote: { position: 'yes' }
+      flash[:notice].should =~ /motion has already closed/
+    end
+
+    it "flashes a permission denied message when the user does not have permission" do
+      other_user = create :user
+      sign_in other_user
+      post :create, motion_id: motion.id, vote: { position: 'yes' }
+
+      flash[:notice].should =~ /You do not have permission/
+    end
+
+    it 'calls MotionService::cast_vote' do
+      expect(MotionService).to receive(:cast_vote)
       post :create, motion_id: motion.id, vote: {position: 'yes'}
     end
 
@@ -27,7 +41,7 @@ describe VotesController do
       post :create, motion_id: motion.id, vote: {position: 'yes'}
 
       flash[:success].should =~ /Position submitted/
-      response.should redirect_to discussion
+      response.should redirect_to motion
     end
   end
 end

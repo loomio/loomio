@@ -16,6 +16,7 @@ When(/^I sign in$/) do
 end
 
 Then(/^I should have a time_zone defined$/) do
+  sleep 2
   @user.reload
   @user.time_zone.should_not be_blank
 end

@@ -8,12 +8,14 @@ Given /^the translator exists and can translate$/ do
 end
 
 Given /^the translator exists and cannot translate$/ do
-  Discussion.any_instance.stub(:id_field).and_return(1)
-  Comment.any_instance.stub(:id_field).and_return(1)
+  expect_any_instance_of(Discussion).to receive(:id_field).and_return(1)
+  expect_any_instance_of(Comment).to receive(:id_field).and_return(1)
+  expect_any_instance_of(Comment).to receive(:id_field).and_return(1)
   Comment.stub(:get_instance).and_return(@comment)
   TranslationService.stub(:available?).and_return(true)
   TranslationService.stub(:can_translate?).with(anything()).and_return(true)
-  TranslationService.any_instance.stub(:translate).with(anything()).and_return({ id: 1, body: 'Unable to complete translation' })
+  #expect_any_instance_of(TranslationService).to 
+  #TranslationService.any_instance.stub(:translate).with(anything()).and_return({ id: 1, body: 'Unable to complete translation' })
 end
 
 When /^I click on the translate link$/ do

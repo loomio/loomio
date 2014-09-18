@@ -1,10 +1,16 @@
-@import "bootstrap3_subset";
+//= depend_on_asset "play.png"
+//= depend_on_asset "play-hover.png"
+//= depend_on_asset "genzero-logo-white.png"
+//= depend_on_asset "timebank-logo-white.png"
+//= depend_on_asset "nvc-logo-white.png"
+//= depend_on_asset "mobile.png"
+
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import "media_queries";
 @import "color";
 @import "buttons";
-
-// * { border: 1px solid #333; }
-
 
 body, h1, h2, h3, h4, h5 {
   font-family: 'OpenSans-Light', 'OpenSans', sans-serif;
@@ -103,10 +109,15 @@ a:hover { text-decoration: none; }
   li a.btn {
     color: white;
     padding: 6px 20px;
-    margin: 4px 0 10px 10px;
+    margin: 4px 10px 0 0;
     @include screen-size(medium-up) {
       margin: 10px 0 10px 10px;
     }
+  }
+  li.visible-xs{
+    width: 40px;
+    margin-top: -4px;
+    margin-left: 6px
   }
 
   &.navbar-default .navbar-nav > li > a.btn:hover {
@@ -167,14 +178,14 @@ a:hover { text-decoration: none; }
     }
   }
   .video {
-    background-image:url('/assets/play.png');
+    background-image:image-url('play.png');
     background-repeat: no-repeat;
     padding-left: 52px;
     height: 40px;
     padding-top: 2px;
     display: inline-block;
     &:hover {
-    background-image:url('/assets/play-hover.png');
+    background-image:image-url('play-hover.png');
     }
   }
 }
@@ -454,7 +465,7 @@ a:hover { text-decoration: none; }
 
 .group-tab {
   &#genzero {
-    background-image:url('/assets/genzero-logo-white.png');
+    background-image: image-url('genzero-logo-white.png');
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -466,12 +477,12 @@ a:hover { text-decoration: none; }
   }
 
   &#timebank {
-    background-image:url('/assets/timebank-logo-white.png');
+    background-image: image-url('timebank-logo-white.png');
     background-repeat: no-repeat;
     background-position: center;
   }
   &#nvc {
-    background-image:url('/assets/nvc-logo-white.png');
+    background-image: image-url('nvc-logo-white.png');
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -508,7 +519,7 @@ a:hover { text-decoration: none; }
 
 .mobile {
   background-color: $teal;
-  background-image:url('/assets/mobile.png');
+  background-image: image-url('mobile.png');
   background-repeat: no-repeat;
   height: 600px;
   background-size:400% auto;
@@ -681,4 +692,8 @@ a:hover { text-decoration: none; }
   img.full-width {
     width: 100%;
   }
+}
+
+.cache-clear{
+  margin: 10px;
 }

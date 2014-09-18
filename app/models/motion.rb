@@ -3,48 +3,68 @@ class Motion < ActiveRecord::Base
 
   include ReadableUnguessableUrls
 
-  belongs_to :author, :class_name => 'User'
+  belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
-  belongs_to :outcome_author, :class_name => 'User'
-  belongs_to :discussion
+  belongs_to :outcome_author, class_name: 'User'
+  belongs_to :discussion, counter_cache: true
   # has_one :group, through: :discussion
-  has_many :votes, :dependent => :destroy, include: :user
-  has_many :unique_votes, class_name: 'Vote', conditions: { age: 0 }, include: :user
-  has_many :did_not_votes, :dependent => :destroy, include: :user
+  has_many :votes,         -> { includes(:user) },  dependent: :destroy
+  has_many :unique_votes,  -> { includes(:user).where(age: 0) }, class_name: 'Vote'
+  has_many :did_not_votes, -> { includes(:user) }, dependent: :destroy
   has_many :did_not_voters, through: :did_not_votes, source: :user
-  has_many :events, :as => :eventable, :dependent => :destroy, include: :eventable
+  has_many :events,        -> { includes(:eventable) }, as: :eventable, dependent: :destroy
   has_many :motion_readers, dependent: :destroy
 
   validates_presence_of :name, :discussion, :author, :closing_at
 
-  validates_length_of :name, :maximum => 250
-  validate :one_motion_voting_at_a_time
-  validates_length_of :outcome, :maximum => 250
+  validates_length_of :name, maximum: 250
+  validates_length_of :outcome, maximum: 250
 
+  include Translatable
   is_translatable on: [:name, :description]
 
   include PgSearch
   pg_search_scope :search, against: [:name, :description],
     using: {tsearch: {dictionary: "english"}}
 
-  delegate :email, :to => :author, :prefix => :author
-  delegate :name, :to => :author, :prefix => :author
-  delegate :group, :group_id, :to => :discussion
-  delegate :members, :full_name, :to => :group, :prefix => :group
+  delegate :email, to: :author, prefix: :author
+  delegate :name, to: :author, prefix: :author
+  delegate :group, :group_id, to: :discussion
+  delegate :members, :full_name, to: :group, prefix: :group
   delegate :email_new_motion?, to: :group, prefix: :group
   delegate :name_and_email, to: :user, prefix: :author
-  delegate :language, to: :user
+  delegate :locale, to: :user
+  delegate :followers, to: :discussion
+  has_paper_trail only: [:name, :description, :closing_at]
 
   after_initialize :set_default_closing_at
 
   attr_accessor :create_discussion
 
-  scope :voting, where('motions.closed_at IS NULL').order('motions.closed_at ASC')
-  scope :lapsed, lambda { where('closing_at < ?', Time.now) }
-  scope :lapsed_but_not_closed, voting.lapsed
-  scope :closed, where('closed_at IS NOT NULL').order('motions.closed_at DESC')
+  scope :voting,                   -> { where(closed_at: nil).order(closed_at: :asc) }
+  scope :lapsed,                   -> { where('closing_at < ?', Time.now) }
+  scope :lapsed_but_not_closed,    -> { voting.lapsed }
+  scope :closed,                   -> { where('closed_at IS NOT NULL').order(closed_at: :desc) }
   scope :order_by_latest_activity, -> { order('last_vote_at desc') }
-  scope :public, joins(:discussion).merge(Discussion.public)
+  #scope :visible_to_public,        -> { joins(:discussion).merge(Discussion.public) }
+  scope :voting_or_closed_after,   ->(time) { where('motions.closed_at IS NULL OR (motions.closed_at > ?)', time) }
+  scope :closing_in_24_hours,      -> { where('motions.closing_at > ? AND motions.closing_at <= ?', Time.now, 24.hours.from_now) }
+
+  def has_outcome?
+    outcome.present?
+  end
+
+  def followers_without_author
+    discussion.followers.where('users.id != ?', author_id)
+  end
+
+  def followers_without_outcome_author
+    discussion.followers.where('users.id != ?', outcome_author.id)
+  end
+
+  def group_members_not_following
+    discussion.group_members_not_following
+  end
 
   def grouped_unique_votes
     order = ['block', 'no', 'abstain', 'yes']
@@ -89,6 +109,14 @@ class Motion < ActiveRecord::Base
      'block' => block_votes_count}
   end
 
+  def restricted_changes_made?
+    (changed & ['name', 'description']).any?
+  end
+
+  def can_be_edited?
+    !persisted? || (voting? && (!has_votes? || group.motions_can_be_edited?))
+  end
+  
   # number of final votes
   def total_votes_count
     vote_counts.values.sum
@@ -100,6 +128,7 @@ class Motion < ActiveRecord::Base
     votes_count
   end
 
+  # depricated
   def votes_for_graph
     votes_for_graph = []
     vote_counts.each do |k, v|
@@ -197,14 +226,6 @@ class Motion < ActiveRecord::Base
     save!
   end
 
-  # todo: move to motion mover service
-  def move_to_group(group)
-    if discussion.present?
-      discussion.group = group
-      discussion.save
-    end
-  end
-
   def group_members_without_motion_author
     group.users.where(User.arel_table[:id].not_eq(author.id))
   end
@@ -227,13 +248,6 @@ class Motion < ActiveRecord::Base
     reload
   end
 
-  # only here while the fix in angular branch awaits merge
-  def closing_at=(datetime)
-    self.close_at_date = datetime.to_date
-    self.close_at_time = datetime.strftime("%H:00")
-    self[:closing_at] = datetime
-  end
-
   private
     def one_motion_voting_at_a_time
       if voting? and discussion.current_motion.present? and discussion.current_motion != self
@@ -241,18 +255,7 @@ class Motion < ActiveRecord::Base
       end
     end
 
-    def find_or_new_motion_reader_for(user)
-      if self.motion_readers.where(user_id: user.id).exists?
-        self.motion_readers.where(user_id: user.id).first
-      else
-        motion_reader = self.motion_readers.build
-        motion_reader.motion = self
-        motion_reader.user = user
-        motion_reader
-      end
-    end
-
-    def set_default_closing_at
-      self.closing_at ||= (Time.zone.now + 3.days)
-    end
+  def set_default_closing_at
+    self.closing_at ||= (Time.zone.now + 3.days).at_beginning_of_hour
+  end
 end

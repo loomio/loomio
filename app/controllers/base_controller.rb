@@ -2,13 +2,14 @@ class BaseController < ApplicationController
   include AutodetectTimeZone
   include OmniauthAuthenticationHelper
 
-  before_filter :authenticate_user!, :check_browser
+  before_filter :authenticate_user!
 
   before_filter :check_for_omniauth_authentication,
                 :check_for_invitation,
                 :load_announcements,
                 :initialize_search_form,
-                :set_time_zone_from_javascript, if: :user_signed_in?
+                :ensure_user_name_present,
+                :set_time_zone_from_javascript, unless: :ajax_request?
 
   after_filter  :set_csrf_cookie_for_ng
 
@@ -16,6 +17,9 @@ class BaseController < ApplicationController
   helper_method :permitted_params
 
   protected
+  def ajax_request?
+    request.xhr? or not user_signed_in?
+  end
 
   def permitted_params
     @permitted_params ||= PermittedParams.new(params, current_user)
@@ -29,7 +33,12 @@ class BaseController < ApplicationController
     super || form_authenticity_token == request.headers['X_XSRF_TOKEN']
   end
 
-  protected
+  def ensure_user_name_present
+    unless current_user.name.present?
+      redirect_to profile_path, alert: "Please enter your name to continue"
+    end
+  end
+
   def initialize_search_form
     @search_form = SearchForm.new(current_user)
   end
@@ -38,10 +47,6 @@ class BaseController < ApplicationController
     if current_user and not request.xhr?
       @current_and_not_dismissed_announcements = Announcement.current_and_not_dismissed_by(current_user)
     end
-  end
-
-  def check_browser
-    redirect_to browser_not_supported_url if browser.ie6?
   end
 
   def check_for_invitation

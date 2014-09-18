@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Events::MembershipRequested do
   let(:admin) {mock_model(User, email: 'hello@kitty.com', name_and_email: 'Kitty <hello@kitty.com>')}
@@ -29,7 +29,7 @@ describe Events::MembershipRequested do
     let(:event) { Events::MembershipRequested.new(kind: "new_comment",
                                                      eventable: membership_request) }
     before {
-      membership_request.stub(:group_admins).and_return([admin])
+      membership_request.stub(:group_admins) { double(active: [admin]) }
       User.stub(:find_by_email).and_return(admin)
     }
 

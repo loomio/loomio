@@ -2,14 +2,17 @@ module DiscussionsHelper
   include Twitter::Extractor
   include Twitter::Autolink
 
-  def filter_duplicate_activities(activity)
+  def filter_discussion_events(activity)
     last_item = nil
-    filtered_event_kinds = %w[discussion_description_edited discussion_title_edited motion_close_date_edited]
+    ignored_event_kinds = %w[motion_closing_soon user_mentioned comment_liked]
+    deduplicate_kinds = %w[discussion_description_edited discussion_title_edited motion_close_date_edited]
 
-    activity.map do |item|
+    activity.
+      reject {|item| ignored_event_kinds.include? item.kind }.
+      map do |item|
       next if last_item &&
-              filtered_event_kinds.include?(item.kind) &&
-              item.user == last_item.user
+              deduplicate_kinds.include?(item.kind) &&
+              item.user == last_item.user && item.kind == last_item.kind
       last_item = item
     end.compact
   end
@@ -31,7 +34,7 @@ module DiscussionsHelper
   end
 
   def path_of_add_comment
-    if current_page == @discussion_reader.first_unread_page
+    if current_page == actual_total_pages
       '#comment-input'
     else
       if actual_total_pages == 1
@@ -39,6 +42,13 @@ module DiscussionsHelper
       else
         discussion_path(@discussion, page: actual_total_pages, anchor: 'comment-input')
       end
+    end
+  end
+
+  def xml_item(event)
+    case event.kind.to_sym
+    when :new_comment then event.eventable
+    #else                   DiscussionItem.new event
     end
   end
 
@@ -54,7 +64,7 @@ module DiscussionsHelper
   end
 
   def css_for_markdown_link(target, setting)
-    return "icon-ok" if (target.uses_markdown == setting)
+    return "icon-ok" if (target.uses_markdown? == setting)
   end
 
   def markdown_img(uses_markdown)
@@ -101,7 +111,7 @@ module DiscussionsHelper
     end
   end
 
-  def discussion_privacy_options(discussion)
+  def discussion_privacy_collection(discussion)
     options = []
 
     public_description = t('discussion_form.privacy.will_be_public')
@@ -111,17 +121,11 @@ module DiscussionsHelper
       private_description = t('discussion_form.privacy.will_be_private')
     end
 
-    options << ["<span class='discussion-privacy-setting-header'>
-                  <i class='fa fa-globe'></i>#{t(:'common.public')}</span>
-                  <p>#{public_description}</p>".html_safe, false]
+    options << ["<i class='fa fa-globe'></i>#{t(:'common.public')}:
+                  #{public_description}".html_safe, false]
 
-    options << ["<span class='discussion-privacy-setting-header'>
-                  <i class='fa fa-lock'></i>#{t(:'common.private')}</span>
-                 <p>#{private_description}</p>".html_safe, true ]
-  end
-
-  def current_language
-    AppTranslation.language I18n.locale.to_s
+    options << ["<i class='fa fa-lock'></i>#{t(:'common.private')}:
+                 #{private_description}".html_safe, true ]
   end
 
   def privacy_language(discussion)

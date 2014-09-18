@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe GroupMailer do
 
@@ -72,7 +72,7 @@ describe GroupMailer do
   end
 
   describe "#group_email" do
-    before :all do
+    before :each do
       @group = stub_model Group, :name => "Blue", full_name: "Marvin: Blue", :admin_email => "goodbye@world.com", key: 'abc123'
       @sender = stub_model User, :name => "Marvin"
       @recipient = stub_model User, :email => "hello@world.com"

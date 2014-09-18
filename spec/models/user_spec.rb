@@ -1,25 +1,15 @@
-# encoding: UTF-8
-require 'spec_helper'
+require 'rails_helper'
 
 describe User do
   let(:user) { create(:user) }
   let(:group) { create(:group) }
+  let(:restrictive_group) { create(:group, members_can_start_discussions: false) }
+  let(:admin) { create :user }
 
   subject do
     user = User.new
     user.valid?
     user
-  end
-
-  it { should have_many(:notifications) }
-  it { should have(1).errors_on(:name) }
-  it { should respond_to(:uses_markdown) }
-
-  it "must have a valid email" do
-    user = User.new
-    user.email = '"Joe Gumby" <joe@gumby.com>'
-    user.valid?
-    user.should have(1).errors_on(:email)
   end
 
   it "cannot have invalid avatar_kinds" do
@@ -58,6 +48,16 @@ describe User do
     user.adminable_groups.should include(group)
   end
 
+  it "has many groups that discussions can be started in" do
+    group.add_member!(user)
+    restrictive_group.add_member!(user)
+    restrictive_group.add_admin!(admin)
+
+    user.groups_discussions_can_be_started_in.should include(group)
+    user.groups_discussions_can_be_started_in.should_not include(restrictive_group)
+    admin.groups_discussions_can_be_started_in.should include(restrictive_group)
+  end
+
   it "has many admin memberships" do
     membership = group.add_admin!(user)
     user.admin_memberships.should include(membership)
@@ -73,21 +73,21 @@ describe User do
 
   it "has authored motions" do
     group.add_member!(user)
-    discussion = create_discussion group: group
-    motion = create(:motion, discussion: discussion, author: user)
+    discussion = create :discussion, group: group
+    motion = FactoryGirl.create(:motion, discussion: discussion, author: user)
     user.authored_motions.should include(motion)
   end
 
   describe "#voting_motions" do
     it "returns motions that belong to user and are open" do
-      discussion = create_discussion group: group
-      motion = create(:motion, author: user, discussion: discussion)
+      discussion = create :discussion, group: group
+      motion = FactoryGirl.create(:motion, author: user, discussion: discussion)
       user.voting_motions.should include(motion)
     end
 
     it "should not return motions that belong to the group but are closed'" do
-      discussion = create_discussion group: group
-      motion = create(:motion, author: user, discussion: discussion)
+      discussion = create :discussion, group: group
+      motion = FactoryGirl.create(:motion, author: user, discussion: discussion)
       MotionService.close(motion)
 
       user.voting_motions.should_not include(motion)
@@ -96,15 +96,15 @@ describe User do
 
   describe "closed_motions" do
     it "returns motions that belong to the group and are closed" do
-      discussion = create_discussion group: group
-      motion = create(:motion, author: user, discussion: discussion)
+      discussion = create :discussion, group: group
+      motion = FactoryGirl.create(:motion, author: user, discussion: discussion)
       MotionService.close(motion)
       user.closed_motions.should include(motion)
     end
 
     it "should not return motions that belong to the group but are closed" do
-      discussion = create_discussion group: group
-      motion = create(:motion, author: user, discussion: discussion)
+      discussion = create :discussion, group: group
+      motion = FactoryGirl.create(:motion, author: user, discussion: discussion)
       user.closed_motions.should_not include(motion)
     end
   end
@@ -130,12 +130,12 @@ describe User do
   end
 
   describe "name" do
-    it "returns user.name '(account inactive)' if deleted_at is true (a date is present)" do
-      user.update_attribute(:deleted_at, Time.now)
-      user.name.should include('account inactive')
+    it "returns '[deactivated account]' if deactivated_at is true (a date is present)" do
+      user.update_attribute(:deactivated_at, Time.now)
+      user.name.should include('deactivated account')
     end
 
-    it "returns the stored name if deleted_at is nil" do
+    it "returns the stored name if deactivated_at is nil" do
       user.name.should_not == 'Deleted user'
     end
   end
@@ -206,35 +206,39 @@ describe User do
     end
   end
 
-  it "sets deleted_at (Time.now) when deactivate! is called" do
-    user.deactivate!
-    user.deleted_at.should be_true
-  end
+  describe "deactivation" do
 
-  it "sets subscriptions to false when deactivate! is called" do
-    user.deactivate!
-    user.subscribed_to_daily_activity_email.should be_false
-    user.subscribed_to_mention_notifications.should be_false
-    user.subscribed_to_proposal_closure_notifications.should be_false
-  end
+     before do
+       @membership = group.add_member!(user)
+       user.deactivate!
+     end
 
-  it "unsets deleted_at (nil) when activate! is called" do
-    user.update_attribute(:deleted_at, 1.month.ago)
-    user.activate!
-    user.deleted_at.should be_nil
-  end
+     describe "#deactivate!" do
 
-  describe "active_for_authentication?" do
-    it "returns false if deleted_at is present" do
-      user.update_attribute(:deleted_at, 1.month.ago)
-      user.should_not be_active_for_authentication
-    end
+       it "sets deactivated_at to (Time.now)" do
+         user.deactivated_at.should be_present
+       end
 
-    it "returns true if deleted_at is nil" do
-      user.update_attribute(:deleted_at, nil)
-      user.should be_active_for_authentication
-    end
-  end
+       it "archives the user's memberships" do
+         user.archived_memberships.should include(@membership)
+       end
+     end
+
+     describe "#reactivate!" do
+
+       before do
+         user.reactivate!
+       end
+
+       it "unsets deactivated_at (nil)" do
+         user.deactivated_at.should be_nil
+       end
+
+       it "restores the user's memberships" do
+         user.memberships.should include(@membership)
+       end
+     end
+   end
 
   describe "unviewed_notifications" do
     it "returns notifications that the user has not viewed yet" do
@@ -306,13 +310,13 @@ describe User do
   describe "#in_same_group_as?(other_user)" do
     it "returns true if user and other_user are in the same group" do
       group.add_member!(user)
-      other_user = create :user
+      other_user = FactoryGirl.create :user
       group.add_member!(other_user)
       user.in_same_group_as?(other_user).should == true
     end
     it "returns false if user and other_user do not share any groups" do
       group.add_member!(user)
-      other_user = create :user
+      other_user = FactoryGirl.create :user
       user.in_same_group_as?(other_user).should == false
     end
   end
@@ -321,18 +325,18 @@ describe User do
     it "returns true if user is a member of a manual subscription group" do
       group.update_attribute :payment_plan, 'manual_subscription'
       group.add_member! user
-      user.belongs_to_manual_subscription_group?.should be_true
+      user.belongs_to_manual_subscription_group?.should be true
     end
 
     it "returns false if user is a member of a subscription group" do
       group.update_attribute :payment_plan, 'subscription'
       group.add_member! user
-      user.belongs_to_manual_subscription_group?.should be_false
+      user.belongs_to_manual_subscription_group?.should be false
     end
 
     it "returns false if user is a member of a paying group" do
       group.update_attribute :payment_plan, 'pwyc'
-      user.belongs_to_manual_subscription_group?.should be_false
+      user.belongs_to_manual_subscription_group?.should be false
     end
   end
 end

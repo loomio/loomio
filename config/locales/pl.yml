@@ -79,8 +79,6 @@ pl:
     privacy: 'Prywatność'
   notifications:
     header: "Powiadomienia"
-    new_discussion: "rozpocznij nową dyskusję"
-    new_motion: "utwórz nową propozycję"
     motion_closed:
       by_user: "zamknij propozycję"
       by_expiry: "Propozycja została zamknięta"
@@ -141,8 +139,6 @@ pl:
   forgot_your_password: "Zapomniałeś hasła?"
   search:
     placeholder: "Szukaj"
-  motion_form:
-    header: "Nowa propozycja"
   vote_form:
     header: "Podaj swoje stanowisko"
     edit: "Edycja Twego stanowiska"

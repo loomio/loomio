@@ -1,0 +1,52 @@
+en:
+  native_language_name:
+    'be-BY': беларуская мова
+    'bg-BG': български
+    ca: Català
+    cs: čeština
+    'zh-TW': 正體中文
+    de: Deutsch
+    en: English
+    el: ελληνικά
+    eo: Esperanto
+    es: Español
+    fr: Français
+    id: Indonesian
+    it: Italiano
+    hu: magyar
+    ja: 日本語
+    ko: 한국어
+    ml: മലയാളം
+    'nl-NL': Nederlands
+    'pt-BR': Português (Brasil)
+    ro: română
+    sr: Srpski - Latinica
+    'sr-RS': Srpski - Ćirilica
+    sv: Svenska
+    vi: Tiếng Việt
+    tr: Türkçe
+    uk: українська мова
+
+    # aliases
+    be: беларуская мова
+    zh: 正體中文
+    pt: Português (Brasil)
+
+    # experimental
+
+    ar: العربية/عربي
+    cmn: 官話
+    hr: hrvatski
+    da: dansk
+    fi: Suomen kieli
+    gl: galego
+    'ga-IE': Gaeilge
+    km: ភាសាខ្មែរ
+    mk: Македонски јазик
+    mi: Maori
+    'fa-IR': پارسی
+    pl: język polski
+    'pt-PT': Português
+    ru: русский язык
+    sl: slovenski jezik
+    te: తెలుగు

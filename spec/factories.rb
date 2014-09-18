@@ -9,6 +9,7 @@ FactoryGirl.define do
     sequence(:name) { Faker::Name.name }
     password 'password'
     time_zone "Pacific/Tarawa"
+
     after(:build) do |user|
       user.generate_username
     end
@@ -73,16 +74,17 @@ FactoryGirl.define do
 
   factory :motion do
     sequence(:name) { Faker::Name.name }
-    association :author, :factory => :user
+    association :author, factory: :user
     description 'Fake description'
     discussion
-    closing_at { 1.year.from_now }
-    after(:build) do |motion|
-      motion.group.parent.add_member!(motion.author) if motion.group.parent
-      motion.group.add_member!(motion.author)
-    end
+
+    #after(:build) do |motion|
+      #motion.group.parent.add_member!(motion.author) if motion.group.parent
+      #motion.group.add_member!(motion.author)
+    #end
+
     after(:create) do |motion|
-      motion.group.save
+      motion.group.add_member!(motion.author)
     end
   end
 
@@ -131,6 +133,7 @@ FactoryGirl.define do
     motion
     ##  update below with Vote::POSITIONS content if changed###
     position %w[yes no abstain block].sample
+    statement "A short statement explaining my position."
     after(:build) do |vote|
       vote.motion.group.add_member!(vote.user)
     end

@@ -1,40 +1,24 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Comment do
   let(:user) { stub_model(User) }
-  let(:discussion) { create_discussion }
+  let(:discussion) { create :discussion }
   let(:comment) { create(:comment, discussion: discussion) }
 
   it { should have_many(:events).dependent(:destroy) }
   it { should respond_to(:uses_markdown) }
 
-  describe 'parent_comment_belongs_to_same_discussion' do
-    let(:comment) { build(:comment, discussion: discussion) }
-    let(:comment_save_discussion) { create(:comment, discussion: discussion) }
-    let(:comment_other_discussion) { create(:comment) }
-
-    before { comment.save }
-
-    subject { comment }
-
-    context 'no parent' do
-      it {should have(0).errors_on(:parent) }
+  describe "#is_most_recent?" do
+    subject { comment.is_most_recent? }
+    context "comment is the last one added to discussion" do
+      it { should be true }
     end
-
-    context 'parent belongs to same discussion' do
+    context "a newer comment exists" do
       before do
-        comment.parent = comment_save_discussion
+        comment
+        DiscussionService.add_comment(build :comment, discussion: discussion)
       end
-
-      it {should have(0).errors_on(:parent) }
-    end
-
-    context 'parent belongs to another discussion' do
-      before do
-        comment.parent = comment_other_discussion
-      end
-
-      it {should have(1).errors_on(:parent) }
+      it { should be false }
     end
   end
 
@@ -45,42 +29,12 @@ describe Comment do
     end
   end
 
-  describe "validate has_body_or_attachment" do
-    it "raises error on body if no text or attachment" do
-      comment = Comment.build_from discussion, discussion.author, '', attachments: []
-      comment.save
-      comment.should have(1).errors_on(:body)
-    end
-
-    it "does not need a body if it has an attachment" do
-      attachment = create(:attachment, user: discussion.author)
-      comment = Comment.build_from discussion, discussion.author, '', attachments: [attachment.id.to_s]
-      comment.save
-      comment.should be_valid
-    end
-  end
-
   describe "validate attachments_owned_by_author" do
     it "raises error if author does not own attachments" do
       attachment = create(:attachment)
       comment.attachments << attachment
       comment.save
       comment.should have(1).errors_on(:attachments)
-    end
-  end
-
-  describe "creating a comment on a discussion" do
-    it "updates discussion.last_comment_at" do
-      discussion.last_comment_at = 2.days.ago
-      discussion.save!
-      comment = discussion.add_comment discussion.author, "hi", uses_markdown: false
-      discussion.reload
-      discussion.last_comment_at.to_s.should == comment.created_at.to_s
-    end
-
-    it 'fires a new_comment! event' do
-      Events::NewComment.should_receive(:publish!)
-      comment = discussion.add_comment discussion.author, "hi", uses_markdown: false
     end
   end
 
@@ -133,31 +87,26 @@ describe Comment do
   describe "#mentioned_group_members" do
     before do
       @group = create :group
-      @user = create :user
-      @discussion = create_discussion :author => @user, :group => @group
-      Event.stub(:send_new_comment_notifications!)
-      @user.stub(:subscribed_to_mention_notifications?).and_return(true)
+      @member = create :user
+      @group.add_member! @member
+      @discussion = create :discussion, group: @group
     end
+
     context "user mentions another group member" do
-      before do
-        @member = create :user
-        @group.add_member! @member
-        @comment = @discussion.add_comment @user, "@#{@member.username}", uses_markdown: false
-      end
+      let(:comment) { create :comment, discussion: @discussion, body: "@#{@member.username}" }
+
       it "returns the mentioned user" do
-        @comment.mentioned_group_members.should include(@member)
-      end
-      it "should not return an un-mentioned user" do
-        member1 = create :user
-        @group.add_member! member1
-        @comment.mentioned_group_members.should_not include(member1)
+        comment.mentioned_group_members.should include(@member)
       end
     end
+
     context "user mentions a non-group member" do
+      let(:non_member) { create :user }
+      let(:comment) { create :comment, discussion: @discussion, body: "@#{non_member.username}" }
+
       it "should not return a mentioned non-member" do
         non_member = create :user
-        @comment = @discussion.add_comment @user, "@#{non_member.username}", uses_markdown: false
-        @comment.mentioned_group_members.should_not include(non_member)
+        comment.mentioned_group_members.should_not include(non_member)
       end
     end
   end

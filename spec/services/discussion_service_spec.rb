@@ -1,20 +1,11 @@
-require_relative '../../app/services/discussion_service'
-
-module Events
-  class NewComment
-  end
-  class CommentLiked
-  end
-  class NewDiscussion
-  end
-end
+require 'rails_helper'
 
 describe 'DiscussionService' do
   let(:comment_vote) { double(:comment_vote) }
   let(:ability) { double(:ability, :authorize! => true, can?: true) }
   let(:user) { double(:user, ability: ability, update_attributes: true) }
   let(:discussion) { double(:discussion, author: user,
-                                         save: true,
+                                         save!: true,
                                          valid?: true,
                                          title_changed?: false,
                                          description_changed?: false,
@@ -31,18 +22,21 @@ describe 'DiscussionService' do
                                          private: true,
                                          created_at: Time.now) }
   let(:comment) { double(:comment,
-                         save: true,
+                         save!: true,
+                         valid?: true,
                          'author=' => nil,
                          created_at: :a_time,
                          discussion: discussion,
                          destroy: true,
                          author: user) }
   let(:event) { double(:event) }
+  let(:discussion_reader) { double(:discussion_reader, follow!: true, viewed!: true) }
   let(:discussion_params) { {title: "new title", description: "", private: true, uses_markdown: true} }
 
 
   before do
     Events::NewDiscussion.stub(:publish!).and_return(event)
+    allow(DiscussionReader).to receive(:for) { discussion_reader }
   end
 
   describe '.delete_comment' do
@@ -81,13 +75,16 @@ describe 'DiscussionService' do
     end
 
     it 'checks the user can like the comment' do
-      ability.should_receive(:authorize!).with(:like,comment)
+      ability.should_receive(:authorize!).with(:like, comment)
     end
 
     it 'creates a comment vote' do
       comment.should_receive(:like).with(user).and_return(comment_vote)
     end
 
+    it 'enfollows the liker' do
+      expect(discussion_reader).to receive(:follow!)
+    end
     it 'publishes a like comment event' do
       Events::CommentLiked.should_receive(:publish!).with(comment_vote)
     end
@@ -107,20 +104,16 @@ describe 'DiscussionService' do
     end
 
     it 'saves the comment' do
-      comment.should_receive(:save).and_return(true)
+      comment.should_receive(:save!).and_return(true)
     end
 
     context 'comment is valid' do
       before do
-        comment.stub(:save).and_return(true)
+        comment.stub(:valid?).and_return(true)
       end
 
       it 'fires a NewComment event' do
         Events::NewComment.should_receive(:publish!).with(comment)
-      end
-
-      it 'updates discussion last_comment_at' do
-        discussion.should_receive(:update_attribute).with(:last_comment_at, comment.created_at)
       end
 
       it 'returns the event created' do
@@ -130,7 +123,7 @@ describe 'DiscussionService' do
 
     context 'comment is invalid' do
       before do
-        comment.stub(:save).and_return(false)
+        comment.stub(:valid?).and_return(false)
       end
 
       it 'returns false' do
@@ -154,12 +147,12 @@ describe 'DiscussionService' do
     end
 
     it 'saves the discussion' do
-      discussion.should_receive(:save).and_return(true)
+      discussion.should_receive(:save!).and_return(true)
       DiscussionService.start_discussion(discussion)
     end
 
     context 'the discussion is valid' do
-      before { discussion.stub(:save).and_return(true) }
+      before { discussion.stub(:valid?).and_return(true) }
 
       it 'updates user markdown-preference' do
         user.should_receive(:update_attributes).with(uses_markdown: discussion.uses_markdown).and_return(true)
@@ -192,12 +185,12 @@ describe 'DiscussionService' do
     end
 
     it 'saves the discussion' do
-      discussion.should_receive(:save).and_return(true)
+      discussion.should_receive(:save!).and_return(true)
       DiscussionService.edit_discussion(user, discussion_params, discussion)
     end
 
     context 'the discussion is valid' do
-      before { discussion.stub(:save).and_return(true) }
+      before { discussion.stub(:valid?).and_return(true) }
 
       it 'updates user markdown-preference' do
         user.should_receive(:update_attributes).with(uses_markdown: discussion.uses_markdown).and_return(true)

@@ -1,11 +1,13 @@
 Given(/^I complete the group setup form$/) do
   fill_in 'group_name', with: "Fantastic Spinners"
+  click_on 'Next'
+  click_on 'Next'
   find('#group_form_submit').click
 end
 
 Then(/^the group should be setup$/) do
   @group.reload
-  @group.is_setup?.should be_true
+  @group.is_setup?.should be true
 end
 
 Then(/^I should be on the group page$/) do

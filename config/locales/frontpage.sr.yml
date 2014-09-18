@@ -21,7 +21,7 @@ sr:
       services: 'Usluge'
     hero:
       head_html: 'Svetu je potreban bolji način da <strong>donosi odluke zajedno</strong>.'
-      desc_html: 'Lumio je besplatan softver <a href="https://github.com/loomio/loomio">otvorenog izvora</a> za svakog, svuda, da učestvuje u odlukama koje utiču na život'
+      desc_html: 'Loomio je besplatan softver <a href="https://github.com/loomio/loomio">otvorenog izvora</a> za svakog, svuda, da učestvuje u odlukama koje utiču na život'
     product:
       header_html: 'Kada čujemo <strong>sva mišljenja</strong>, donosimo <strong>ispravnije odluke</strong>.'
       step1:
@@ -46,11 +46,11 @@ sr:
         sifry_html: '“Loomio je popunio prostor između <strong>individualnog glasa</strong> i <strong>kolektivnog odlučivanja</strong>.”<div class="attributation">– Micah Sifry, Urednik, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: 'O Lumiju'
-      desc: 'Mi smo mali tim open source developera i aktivista koji zastupaju socijalnu pravdu, koji rade u Enspiral u Aoteri na Novom Zelandu, sa širom mrežom prijatelja, simpatizera i savetnika širom sveta.'
+      desc: 'Mi smo mali tim programera otvorenog izvora i aktivista koji zastupaju socijalnu pravdu, koji rade u Enspiral u Aoteri na Novom Zelandu, sa širom mrežom prijatelja, simpatizera i savetnika širom sveta.'
     ideals:
       community:
         header: 'Zajednicom vođena kooperacija'
-        desc: 'Lumio je građen od strane onih koji ga poseduju i njihovom kooperacijom. Mi smo društvena kompanija koja radi na optimizaciji društvenog uticaja, ne profita. '
+        desc: 'Loomio je građen od strane onih koji ga poseduju i njihovom kooperacijom. Mi smo društvena kompanija koja radi na optimizaciji društvenog uticaja, ne profita. '
       independent:
         header: 'Nezavisno i neutralno'
         desc: 'Obezbeđujemo prostor za okupljanje bilo koje grupe, koja je nezavisna od političkih ili korporativnih interesa. Mi nikada nećemo prodati vaše podatke.'

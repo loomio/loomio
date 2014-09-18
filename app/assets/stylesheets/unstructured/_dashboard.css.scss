@@ -1,9 +1,17 @@
 body.dashboard {
   &.show {
+    .groups-panel .panel-body{
+      padding-top: 10px;
+    }
     .sub-panel ul {
       a:hover { color: $dark-grey }
       li { line-height: 21px; }
-      .sub-group .group-link-name { padding-left: 20px; }
+    }
+    .group-title{
+      margin: 0;
+    }
+    .primary-action{
+      margin-bottom: 17px;
     }
   }
   .no-groups {

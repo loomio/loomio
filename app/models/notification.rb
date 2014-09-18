@@ -8,6 +8,6 @@ class Notification < ActiveRecord::Base
   delegate :kind, :to => :event, :prefix => :event
   delegate :eventable, :to => :event
 
-  scope :unviewed, where("viewed_at IS NULL")
+  scope :unviewed, -> { where("viewed_at IS NULL") }
 end
 

@@ -12,7 +12,7 @@ class TranslationService
     end
 
     model.class.translatable_fields.each do |field|
-      translation.fields[field.to_s] ||= @translator.translate(model.send(field), from: model.language_field, to: to)
+      translation.fields[field.to_s] ||= @translator.translate(model.send(field), from: model.locale_field, to: to)
     end
     translation.save
     translation
@@ -26,8 +26,8 @@ class TranslationService
 
   def self.can_translate?(translatable)
     self.available? &&
-    translatable.language_field != nil &&
-    translatable.language_field != I18n.locale.to_s
+    translatable.locale_field != nil &&
+    translatable.locale_field != I18n.locale.to_s
   end
 
 end

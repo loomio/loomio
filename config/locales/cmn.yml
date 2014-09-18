@@ -9,7 +9,6 @@ cmn:
     formats:
       for_this_year: '%e%b'
       for_another_year: '%-d/%-m/%y'
-      datepicker: "%天-%月-%年"
   error:
     cant_join_subgroup: "如果你不是大组的一员那你就不能加入一个小组"
     cant_modify_position: "这提议已经关闭了"
@@ -25,7 +24,7 @@ cmn:
     group_request_already_accepted: "对不起！这个邀请无效或者已经接受过"
     proposal_already_exists: "已经有一个开放式的建议在此讨论"
   alert:
-    duplicate_email: "%{which email}已经在这个团队里了？"
+    duplicate_email: "%{which_email}已经在这个团队里了？"
   notice:
     member_removed: "删除成员。"
     membership_request_canceled: "会员请求取消"
@@ -56,8 +55,6 @@ cmn:
     proposal_deleted: "建议删除"
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        other: "%{count}秒"
       x_seconds:
         other: "%{count}秒数"
       less_than_x_minutes:
@@ -83,8 +80,6 @@ cmn:
   inbox:
     dropdown-btn: '收件箱'
   notifications:
-    new_discussion: "新开始了一个讨论"
-    new_motion: "创建一个新的提议"
     motion_closed:
       by_user: "关闭提议"
       by_expiry: "提议已经关闭了"
@@ -123,7 +118,7 @@ cmn:
   edit_group_settings: "编辑团队设置"
   leave_group: "离开团队"
   confirm_leave_hidden_group: "你确定你要离开%{which_group}吗？同时你也会被其他小组给移除的"
-  confirm_leave_group: "你确定你想要离开%（那个团队）？"
+  confirm_leave_group: "你确定你想要离开 %{which_group}？"
   deactivate_group: "取消团队"
   confirm_deactivate_group: "等等！！！你确定你想要取消%{which_group}？那你就再也查不到这个组了，但是，如果你想要重新激活这个组，你可以通过发送邮件到contact@loomio.org"
   invited_users: "邀请成员"
@@ -167,8 +162,6 @@ cmn:
   create_new_proposal: "创建新的建议"
   empty_decision_index: "这个组还没有做出什么决定"
   empty_discussion_list: "这一条讨论还没有发表"
-  empty_discussion_index: "你的团队里没有任何讨论"
-  empty_discussion_index_group: "这个团队还没有讨论过"
   discussion_context:
     see_revision_history: "看历史修订"
   description_history:
@@ -243,10 +236,7 @@ cmn:
     invitation_link: "邀请链接"
     copy: "如果有些人没有得到他们的邀请邮件，请自觉的复制这上面的邀请链接并且发送给他们"
   motion_form:
-    header: "新提议"
     name_helper: "尽可能让这个标题清晰和简洁"
-  group_form:
-    invitation_settings: "邀请设置"
   vote_form:
     header: "陈述你的位置"
     edit: "编辑你的位置"
@@ -255,15 +245,6 @@ cmn:
     your_statement: "你的说法"
     submit: "提交位置"
     update: "位置更新"
-  email_preferences_form:
-    daily_activity_summary: "每日活动总结"
-    daily_activity_subscription: "给我发一封总结组里发生的事情的邮件"
-    global_notifications: "全球通知"
-    proposal_closing_soon_subscription: "在建议关闭前24小时提醒我"
-    mentions_subscription: "当有人提到我的评论时就给我发邮件"
-    group_activity_notifications: "小组活动通知"
-    group_activity_details: "对每个组而言，当你想要收到关于新的讨论及决策时可以查看邮箱"
-    update_preferences: "偏好更新"
   new_user_form:
     create_an_account: "创建一个账户"
   group_setup:
@@ -339,7 +320,6 @@ cmn:
   participation: "参与"
   disable: "不可能"
   group: "组"
-  groups: "组群"
   home: "主页"
   id: "ID"
   like: "喜欢"
@@ -360,7 +340,6 @@ cmn:
   send_invite: "发送邀请"
   send_email: "发邮件"
   show_more: "展示更多"
-  start_group: "开始组团！"
   starting: "正在开始"
   subject: "标题"
   thanks: "谢谢您！"

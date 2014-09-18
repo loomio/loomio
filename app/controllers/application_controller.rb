@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   include LocalesHelper
   include CurrentUserHelper
   include ReadableUnguessableUrlsHelper
-  include IntercomHelper
 
   protect_from_forgery
 
@@ -13,12 +12,10 @@ class ApplicationController < ActionController::Base
   helper_method :subdomain
 
   before_filter :set_application_locale
-  before_filter :save_selected_locale, if: :user_signed_in?
   around_filter :user_time_zone, if: :user_signed_in?
 
-
-
   after_filter :increment_measurement
+  after_filter :new_relic_insights, if: :using_new_relic?
 
   # intercom
   skip_after_filter :intercom_rails_auto_include
@@ -33,6 +30,14 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+  def using_new_relic?
+    ENV['NEW_RELIC_APP_NAME'].present?
+  end
+
+  def new_relic_insights
+    NewRelic::Agent.add_custom_parameters({:user_id => current_user_or_visitor.id})
+  end
+
   def subdomain
     request.subdomain.gsub(/^www./, '')
   end
@@ -46,7 +51,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    if !user_signed_in? and params.has_key?(:locale)
+    if params.has_key?(:locale)
       super.merge({locale: selected_locale})
     else
       super
@@ -75,17 +80,17 @@ class ApplicationController < ActionController::Base
     clear_stored_location
     path
   end
-  
+
   def user_return_path
     if invalid_return_urls.include? session['user_return_to']
-      dashboard_path
+      dashboard_or_root_path
     else
       session['user_return_to']
     end
   end
 
   def invalid_return_urls
-    [nil, new_user_password_url]
+    [nil, root_url, new_user_password_url]
   end
 
   def user_time_zone(&block)

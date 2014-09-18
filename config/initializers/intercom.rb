@@ -1,22 +1,23 @@
-if ENV['INTERCOM_APP_ID']
-  Intercom.app_id = ENV["INTERCOM_APP_ID"]
-  Intercom.api_key = ENV['INTERCOM_APP_API_KEY']
+if Rails.application.secrets.intercom_app_id
+  Intercom.app_id = Rails.application.secrets.intercom_app_id
+  Intercom.app_api_key = Rails.application.secrets.intercom_app_api_key
+
   IntercomRails.config do |config|
     # == Intercom app_id
     #
-    config.app_id = ENV["INTERCOM_APP_ID"]
+    config.app_id = Rails.application.secrets.intercom_app_id
 
     # == Intercom secret key 
     # This is required to enable secure mode, you can find it on your Intercom 
     # "security" configuration page.
     # 
-    config.api_secret = ENV['INTERCOM_APP_SECRET']
+    config.api_secret = Rails.application.secrets.intercom_app_secret
 
     # == Intercom API Key
     # This is required for some Intercom rake tasks like importing your users;
     # you can generate one at https://www.intercom.io/apps/api_keys.
     #
-    config.api_key = ENV['INTERCOM_APP_API_KEY']
+    config.api_key = Rails.application.secrets.intercom_app_api_key
 
     # == Enabled Environments
     # Which environments is auto inclusion of the Javascript enabled for
@@ -59,9 +60,10 @@ if ENV['INTERCOM_APP_ID']
     # The method/variable that contains the current company for the current user,
     # in your controllers. 'Companies' are generic groupings of users, so this 
     # could be a company, app or group.
-    #
-    config.company.current = Proc.new { @group.parent_or_self }
-    # config.company.current = Proc.new { @group.parent.present? ? @group : @group.parent }
+
+    # only send the group through if user is a member
+    config.company.current = Proc.new { [current_user.groups.all & [@group.parent_or_self]].first.first }
+    # config.company.current = Proc.new { @group.parent_or_self }
 
     # == Company Custom Data
     # A hash of additional data you wish to send about a company.
@@ -75,7 +77,10 @@ if ENV['INTERCOM_APP_ID']
         discussions: :organisation_discussions_count,
         proposals: :organisation_motions_count,
         description: :description,
-        group_request_description: :group_request_description
+        group_request_description: :group_request_description,
+        financial_nature: :financial_nature,
+        privacy: :privacy,
+        plan: :payment_plan
     }
 
     # == Company Plan name

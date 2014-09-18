@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Events::MembershipRequestApproved do
   let(:requestor) { mock_model(User) }

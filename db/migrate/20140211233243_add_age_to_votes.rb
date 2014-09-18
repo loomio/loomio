@@ -2,6 +2,7 @@ require 'ruby-progressbar'
 class AddAgeToVotes < ActiveRecord::Migration
   def up
     add_column :votes, :age, :integer
+    add_column :votes, :previous_vote_id, :integer unless column_exists? :votes, :previous_vote_id
     add_index :votes, [:motion_id, :user_id, :age], unique: true, name: 'aged_votes_for_motions'
     add_index :votes, [:motion_id, :user_id]
 

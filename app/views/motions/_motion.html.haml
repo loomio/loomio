@@ -1,60 +1,54 @@
 .motion.translate-parent{id:"motion-#{motion.id}"}
-  .row
-    .span4.motion-header-info
-      .clearfix
-        %h3.motion-title.word-break= motion.name
-        - if motion.closed?
-          %span.label.label-important= t(:closed)
-      .closing-info
-        - if motion.voting?
-          = t(:proposal_closing_when, when: time_ago_in_words(motion.closing_at))
-        - else
-          %span= t(:proposal_closed_when, when: time_ago_in_words(motion.closed_at))
-      .proposed-by
-        = t(:proposed_when_by_who, when: time_ago_in_words(motion.created_at), who: motion.author_name)
-    - if motion.voting?
-      .span2.motion-admin-buttons
-        - if can? :close, motion
-          = link_to t(:close_proposal), "#",
-                    'data-title' => t(:close_proposal),
-                    'data-body' => t(:confirm_close_proposal),
-                    'data-confirm-path' => close_motion_path(motion),
-                    'data-method-type' => 'put',
-                    class: 'btn btn-small confirm-dialog',
-                    id: 'close-voting'
+  .motion-header-info
+    %h3.motion-title.word-break= motion.name
+    - if can? :edit, motion
+      = link_to edit_motion_path(motion), class: 'cuke-edit-motion edit-icon-labelled' do
+        %i.fa.fa-pencil
+        = t :edit
+    - if motion.closed?
+      %span.label.label-important= t(:closed)
+    .closing-info
+      - if motion.voting?
+        = t(:proposal_closing_when, when: time_ago_in_words(motion.closing_at))
+      - else
+        %span= t(:proposal_closed_when, when: time_ago_in_words(motion.closed_at))
+    .proposed-by
+      = t(:proposed_when_by_who, when: time_ago_in_words(motion.created_at), who: motion.author_name)
 
-        - if can? :edit_close_date, motion
-          = link_to t(:change_proposal_close_date), '#edit-close-date',
-                    "data-toggle" => "modal",
-                    class: 'btn btn-small',
-                    id: 'change-close-date'
-          = render 'motions/edit_close_date', motion: motion
 
   -if motion.closed?
-    .row
-      .span5
-        =render "motions/outcome_statement", motion: motion
-  .row
-    .span5
-      .description
-        .long-description
-          = render_rich_text(motion.description, false)
-        - if TranslationService.can_translate? motion
-          = translate_link_for motion
+    =render "motions/outcome_statement", motion: motion
+  .description
+    .long-description
+      = render_rich_text(motion.description, false)
+    - if TranslationService.can_translate? motion
+      = translate_link_for motion
 
-  .row
-    .span4.motion-header-info
-      .clearfix
-        .translation-spacer.translated
-        %h3.motion-title.word-break.translated-title.translated
-        .closing-info.translated
-        .proposed-by.translated
-  .row
-    .span5
-      .description.translated-description.translated
-        = t(:loading_translation)
+  .motion-header-info
+    .clearfix
+      .translation-spacer.translated
+      %h3.motion-title.word-break.translated-title.translated
+      .closing-info.translated
+      .proposed-by.translated
+  .description.translated-description.translated
+    = t(:loading_translation)
 
-  .pie{id: "graph_#{motion.id}"}
+  .motion-graph.clearfix
+    %canvas.pie{id: "graph_#{motion.id}", height: 150, width: 150}
+
+    .legend
+      .item.yes
+        = t(:'position_verbs.yes')
+        (#{motion.yes_votes_count})
+      .item.abstain
+        = t(:'position_verbs.abstain')
+        (#{motion.abstain_votes_count})
+      .item.no
+        = t(:'position_verbs.no')
+        (#{motion.no_votes_count})
+      .item.block
+        = t(:'position_verbs.block')
+        (#{motion.block_votes_count})
 
   .percentage-to-vote
     - if motion.closed?
@@ -69,7 +63,7 @@
           denominator:  motion.group_size_when_voting
 
   .votes
-    - if motion.voting? && motion.user_has_not_voted?(current_user)
+    - if can?(:vote, motion) && motion.user_has_not_voted?(current_user)
       %h3= t :state_your_position
       .vote-buttons.clearfix
         - Vote::POSITIONS.each do |position|
@@ -92,9 +86,4 @@
 
 = link_to t(:not_voted), '#', class: 'toggle-yet-to-vote'
 
-= render('motions/motion_pie_javascript',
-    diameter: 200,
-    motion: motion,
-    padding: 0,
-    gap: 5,
-    legend: 'true')
+= render('motions/motion_pie_javascript', motion: motion)

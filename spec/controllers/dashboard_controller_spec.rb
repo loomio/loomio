@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe DashboardController do
-  let(:user) { stub_model(User) }
+  let(:user) { FactoryGirl.create(:user) }
   let(:app_controller) { controller }
 
   before do

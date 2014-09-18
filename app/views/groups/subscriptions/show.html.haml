@@ -1,13 +1,13 @@
 - set_title @group.name, "Subscription", @group.parent
 = render '/groups/title', group: @group
 .row.iconrow
-  .span2
+  .col-md-2
     = image_tag 'colablove.png', id: 'colablove'
-  .span10
+  .col-md-10
     %h1= "Subscription for #{@group.name}"
     - amount = @group.subscription_plan
 .row
-  .span6.offset2
+  .col-md-6.offset2
     %p
       You are currently paying:
       ="US#{number_to_currency amount} per month"

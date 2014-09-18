@@ -4,7 +4,7 @@ end
 
 When /^I select the delete discussion link from the discussion dropdown$/ do
   find("#options-dropdown").click
-  click_on "delete-discussion"
+  click_on "Delete discussion"
 end
 
 Then /^I should be directed to the group page$/ do
@@ -12,7 +12,7 @@ Then /^I should be directed to the group page$/ do
 end
 
 Then /^I should not see the discussion in the list of discussions$/ do
-  find('#group-discussions').should_not have_content(@discussion)
+  page.should_not have_content(@discussion)
 end
 
 Then /^I should see a message notifying me of the deletion$/ do

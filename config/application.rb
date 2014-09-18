@@ -2,12 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-if defined?(Bundler)
-  # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development benchmark test)))
-  # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
-end
+Bundler.require(*Rails.groups)
 
 module Loomio
   class Application < Rails::Application
@@ -16,17 +11,14 @@ module Loomio
       g.template_engine :haml
       g.test_framework  :rspec, :fixture => false
     end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/extras
-                                #{config.root}/app/forms
-                                #{config.root}/app/jobs
-                                #{config.root}/app/services
-                                #{config.root}/app/models/concerns)
-    config.autoload_paths += Dir["#{config.root}/app/forms/**/"]
+    config.autoload_paths += %W(#{config.root}/extras)
+    #config.autoload_paths += Dir["#{config.root}/app/forms/**/"]
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -43,7 +35,9 @@ module Loomio
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.i18n.fallbacks = true
+    # config.i18n.available_locales = # --> don't use this, make mostly empty yml files e.g. fallback.be.yml
+    config.i18n.enforce_available_locales = false
+    # config.i18n.fallbacks = # --> see initilizers/loomio_i18n
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -55,19 +49,18 @@ module Loomio
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.0'
+    config.assets.version = '1.4'
 
-    # Whitelist attributes so we never have to spend 2 days securing this app ;-)
-    #config.active_record.whitelist_attributes = true
+    config.action_mailer.default_url_options = {
+      host: ENV['CANONICAL_HOST']
+    }
+
+    config.roadie.url_options = nil
 
     # required for heroku
     config.assets.initialize_on_precompile = false
 
-    # Enable roadie (email css-->inline style gem)
-    config.roadie.enable = true
-
-    config.assets.precompile += %w(ie8.js active_admin.css active_admin.js active_admin/print.css marketing.js marketing.css campaigns.js third_party.css unstructured.css)
-
     config.quiet_assets = true
+    config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
   end
 end

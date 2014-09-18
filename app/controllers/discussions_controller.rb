@@ -1,13 +1,12 @@
 class DiscussionsController < GroupBaseController
   include DiscussionsHelper
 
+  before_filter :we_dont_serve_images_here_google_bot
   before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :load_resource_by_key, except: [:new, :create, :index, :update_version]
   authorize_resource :except => [:new, :create, :index, :add_comment]
 
   after_filter :mark_as_read, only: :show
-
-  caches_action :show, :cache_path => Proc.new { |c| c.params }, unless: :user_signed_in?, :expires_in => 5.minutes
 
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.not_found') }
@@ -18,7 +17,6 @@ class DiscussionsController < GroupBaseController
     @discussion.uses_markdown = current_user.uses_markdown
     @group = Group.find_by_id params[:group_id]
     @discussion.group = @group
-    @user_groups = current_user.groups.order('name')
   end
 
   def edit
@@ -76,16 +74,20 @@ class DiscussionsController < GroupBaseController
   end
 
   def show
-    @group = GroupDecorator.new(@discussion.group)
+    @group = @discussion.group
 
     if params[:proposal]
-      @motion = @discussion.motions.find(params[:proposal])
+      @motion = @discussion.motions.find_by_key!(params[:proposal])
     else
       @motion = @discussion.most_recent_motion
     end
 
     if @motion
       @motion_reader = MotionReader.for(user: current_user_or_visitor, motion: @motion)
+    end
+
+    if can?(:move, @discussion)
+      @destination_groups = current_user_or_visitor.groups.order(:name).uniq.reject { |g| g.id == @group.id }
     end
 
     @discussion_reader = DiscussionReader.for(user: current_user_or_visitor, discussion: @discussion)
@@ -96,6 +98,18 @@ class DiscussionsController < GroupBaseController
 
     @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
     assign_meta_data
+
+    @feed_url = discussion_url @discussion, format: :xml if @discussion.public?
+  end
+
+  def follow
+    DiscussionReader.for(discussion: @discussion, user: current_user).follow!
+    redirect_to discussion_url @discussion
+  end
+
+  def unfollow
+    DiscussionReader.for(discussion: @discussion, user: current_user).unfollow!
+    redirect_to discussion_url @discussion
   end
 
   def move
@@ -117,7 +131,10 @@ class DiscussionsController < GroupBaseController
     build_comment
     if DiscussionService.add_comment(@comment)
       current_user.update_attributes(uses_markdown: params[:uses_markdown])
-      DiscussionReader.for(user: current_user, discussion: @discussion).viewed!
+      respond_to do |format|
+        format.js
+        format.html { redirect_to discussion_path(@discussion) }
+      end
     else
       head :ok and return
     end
@@ -126,11 +143,11 @@ class DiscussionsController < GroupBaseController
   def new_proposal
     if @discussion.current_motion
       redirect_to @discussion
-      flash[:notice] = "A current proposal already exists for this disscussion."
+      flash[:notice] = "A current proposal already exists for this discussion."
     else
       @motion = Motion.new
       @motion.discussion = @discussion
-      @group = GroupDecorator.new(@discussion.group)
+      @group = @discussion.group
       render 'motions/new'
     end
   end
@@ -145,7 +162,7 @@ class DiscussionsController < GroupBaseController
   def preview_version
     # assign live item if no version_id is passed
     if params[:version_id].present?
-      version = Version.find(params[:version_id])
+      version = PaperTrail::Version.find(params[:version_id])
       @discussion = version.reify
     end
     @originator = User.find @discussion.originator.to_i
@@ -155,12 +172,18 @@ class DiscussionsController < GroupBaseController
   end
 
   def update_version
-    @version = Version.find(params[:version_id])
+    @version = PaperTrail::Version.find(params[:version_id])
     @version.reify.save!
     redirect_to @version.reify()
   end
 
   private
+
+  def we_dont_serve_images_here_google_bot
+    if request.format == :png
+      render :text => 'Not Found', :status => '404'
+    end
+  end
 
   def load_resource_by_key
     @discussion ||= Discussion.published.find_by_key!(params[:id])
@@ -185,10 +208,8 @@ class DiscussionsController < GroupBaseController
   end
 
   def mark_as_read
-    if @activity and @activity.last
-      @discussion_reader.viewed!(@activity.last.updated_at)
-      @motion_reader.viewed! if @motion_reader
-    end
+    @discussion_reader.viewed!(@discussion.last_activity_at) if @discussion_reader
+    @motion_reader.viewed! if @motion_reader
   end
 
   def assign_meta_data
