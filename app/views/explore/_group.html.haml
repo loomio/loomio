@@ -7,7 +7,7 @@
         =link_to t(group.category.translatable_name), category_explore_path(group.category)
 
     .group-title
-      %h1.shadow=link_to group.full_name, group
+      %h1.shadow=link_to group.full_name.truncate(50), group
 
   .group-description
     .logo-placeholder
