@@ -47,12 +47,10 @@ body.groups {
       .home-title{
         font-size: 30px;
         max-width: 632px;
-        display: block;
       }
       .group-category{
-        position: absolute;
-        right: 22px;
-        bottom: 8px;
+        display: inline-block;
+        margin-left: 5px;
         max-width: 168px;
         text-align: right;
         a{
