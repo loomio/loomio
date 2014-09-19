@@ -410,7 +410,6 @@ sr-RS:
   previous_decisions: "Претходне одлуке"
   see_previous_decisions: "Погледај претходне одлуке"
   see_more: "Види више"
-  create_new_proposal: "Направи нови предлог"
   empty_decision_list_html: "Спремни да донесете одлуку? <br> Свако може покренути предлог."
   empty_decision_index: "Ова група није донела никакву одлуку још увек."
   empty_discussion_list: "Нема активности у овој дискусији још."
@@ -766,7 +765,6 @@ sr-RS:
   new_user_form:
     create_an_account: "Направи један налог"
   profile_form:
-    view: "Погледај мој профил"
     profile: "Уреди профил"
     picture: "Слика"
     upload_new_image: "Проследи нову слику"
@@ -809,9 +807,6 @@ sr-RS:
         name: "Како се зове твоја група?"
         description: "Ако имаш времена, реци нам о твојој групи"
     placeholders:
-      discussion:
-        title: "Наслов"
-        description: "Дајте неки контекст..."
       membership_request:
         introduction: "Напишите неколико речи о томе ко сте и зашто желите да се придружите %{group_name}."
       motion:

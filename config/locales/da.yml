@@ -151,7 +151,6 @@ da:
   current_decision: "Aktuelle beslutning"
   previous_decisions: "Forrige beslutninger"
   see_previous_decisions: "Se forrige beslutninger"
-  create_new_proposal: "Opret nyt forslag"
   empty_decision_index: "Denne gruppe har endnu ikke besluttet noget."
   empty_discussion_list: "Der er ingen aktivitet i denne diskussion endnu."
   discussion_context:

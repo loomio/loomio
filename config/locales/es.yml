@@ -251,6 +251,7 @@ es:
     reactivation_html: "Usted necesitará <a href='%{link}'>contactar</a> con nosotros para reactivar su cuenta."
     deactivation:
       title: "Desactivando su cuenta."
+      query: "¿Le importaría decirnos por qué está desactivando su cuenta?"
       only_coordinator: "Un grupo debe tener al menos un cordinador. Tu eres actualmente el único cordinador de los siguientes grupos:"
       instructions: "Con el fin de desactivar su cuenta, es necesario o bien agregar otro coordinador o desactivar los grupos."
       info_title: "¿Qué significa la desactivación de su cuenta?"
@@ -322,6 +323,9 @@ es:
     m7: Editar sus propios comentarios en cualquier momento.
     m8: Poner y participar en propuestas.
     optional_restrictions: "Opcionalmente, los coordinadores pueden restringir lo que los miembros pueden hacer."
+  discussion_privacy:
+    public: This discussion is public on the web
+    private: Esta discusión es privada para los miembros del grupo
   group_privacy:
     visible_to:
       public: Hay una lista pública del grupo.
@@ -350,6 +354,7 @@ es:
   message_placeholder: "Escribe un mensaje a los miembros de %{which_group}."
   email_group_members: "Enviar correo electrónico a los miembros del grupo"
   edit_group_settings: "Editar configuraciones del grupo"
+  manage_members: "Gestionar miembros"
   leave_group: "Abandonar grupo"
   confirm_leave_hidden_group: "¿Seguro que quieres abandonar %{which_group}? También serás removido de todos sus subgrupos."
   confirm_leave_group: "¿Estás seguro de que deseas abandonar el grupo %{which_group}?"
@@ -410,6 +415,9 @@ es:
     beta_request_header: "Empezar un grupo en Loomio Beta"
     beta_request_description: "Para tomar decisiones en Loomio Beta, el primer paso es iniciar un grupo."
     neighbourhood_support_group: "ej. Grupo de apoyo al vecindario"
+    commercial_use_option: en una empresa, organización formal o lugar de trabajo
+    non_commercial_use_option: En una comunidad o grupo informal
+    please_select_an_option: Por favor seleccione una opción
     confirmation:
       title: '¡Ya casi has terminado! Revisa tu correo electrónico. '
       body_html: |
@@ -434,12 +442,13 @@ es:
   previous_decisions: "Decisiones anteriores"
   see_previous_decisions: "Ver decisiones anteriores"
   see_more: "Ver más"
-  create_new_proposal: "Crear nueva propuesta"
+  create_new_proposal: "Crear una propuesta"
   empty_decision_list_html: "¿Estás listo para tomar una decisión? <br> Cualquiera puede empezar una propuesta."
   empty_decision_index: " Este grupo no ha tomado ninguna decisión todavía."
   empty_discussion_list: "Todavía no hay actividad en esta discusión."
   go_to_add_comment_html: "Para añadir un comentario,  <a href='%{href}'> ve al final de la discusión </a>."
   comment_by: "Comentario de %{comment_author}"
+  read_up_to: "Hasta aquí leyó en su última visita"
   discussion_list:
     clear_filters: "Limpiar filtros:Ver todas las discusiones"
     filter_unread:
@@ -775,7 +784,7 @@ es:
   new_user_form:
     create_an_account: "Crear una cuenta"
   profile_form:
-    view: "Ver mi perfil"
+    view: "Ver perfil"
     profile: "Editar perfil"
     picture: "Imagen"
     use_initials: 'Usar iniciales'
@@ -820,10 +829,8 @@ es:
         admin_email: "¿Cuál es tu correo electrónico?"
         name: "¿Cuál es el nombre de tu grupo?"
         description: "Si tienes un momento, háblanos de tu grupo"
+        is_commercial: "¿Dónde estás planeando utilizar Loomio?"
     placeholders:
-      discussion:
-        title: "Título "
-        description: "Aporta algo de contexto..."
       membership_request:
         introduction: "Escribe algunas palabras acerca de quién eres y por qué quieres adherirte a %{group_name}."
       motion:
@@ -922,6 +929,9 @@ es:
       summary: "Resumen"
     thread_mailer:
       footer_text: "Responder a este correo electrónico directamente o verlo en Loomio:"
+      reply_or_view_online_html: "Responder a este correo electrónico directamente o <a href='%{url}'> verlo en Loomio </a>."
+      unfollow_discussion_html: "<a href='%{unfollow_url}'> Dejar de seguir </a> para detener correos electrónicos acerca de esta discusión."
+      change_email_preferences_html: "Cambia tus<a href='%{email_preferences_url}'> preferencias de correo electrónico </a> para darse de baja de los correos electrónicos de  Loomio."
       change_preferences: "Cambiar sus preferencias de email"
       new_motion: "%{who} propuso:"
       motion_closing_soon: "Cierra en 24 Horas"
@@ -1011,7 +1021,9 @@ es:
     back_to_discussion: "Volver a la discusión"
     edited: Editado
     groups: "Grupos"
+    select_error: Por favor seleccione una opción
     today: Hoy
+    select: Por favor seleccione
     months:
       january: Enero
       february: Febrero
@@ -1062,9 +1074,13 @@ es:
       fr: Vi
       sa: Sa
       su: Do
+    meridians:
+      am: 'am'
+      pm: 'pm'
     please_wait: "Por favor espera"
     privacy: "Privacidad"
     private: "Privado"
+    permissions: "Permisos"
     public: "Público"
     email: "Correo electrónico"
     start_group: "Empieza un grupo!"

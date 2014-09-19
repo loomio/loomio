@@ -269,7 +269,6 @@ ar:
   current_decision: "القرار الحالي"
   previous_decisions: "القرارات السابقة"
   see_previous_decisions: "اعرض النقاشات السابقة"
-  create_new_proposal: "أنشئ اقتراحا جديدا"
   empty_decision_list_html: "هل أنت جاهز لاتخاذ قرار؟ <br> يمكن لأي كان أن يطرح مقترحا."
   empty_decision_index: "هذه المجموعة لم تتخذ بعد أية قرارات."
   empty_discussion_list: "لا يوجد نشاط في هذا النقاش بعد."
@@ -377,9 +376,6 @@ ar:
         password: "كلمة السر"
         language_preference: "اللغة"
     placeholders:
-      discussion:
-        title: "العنوان"
-        description: "إشرح بعض الشيء عن موضوع وسياق النقاش..."
       motion:
         name: "ما هو إتجاه العمل الذي تقترحه؟"
         description: "أعط ما يكفي من المعلومات بحيث يدرك الجميع مالذي تعنيه الموافقة أو عدمها."

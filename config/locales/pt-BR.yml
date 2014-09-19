@@ -178,6 +178,8 @@ pt-BR:
         other: "%{count} anos"
   organisation:
     name: "Loomio"
+  sr:
+    toggle_navigation: "Alternar navegação"
   footer:
     about: 'Sobre'
     blog: 'Blog'
@@ -323,6 +325,9 @@ pt-BR:
     m7: Editar seus próprios comentários a qualquer momento.
     m8: Levantar e participar de propostas.
     optional_restrictions: "Opcionalmente, coordenadores podem restringir o que os membros podem fazer."
+  discussion_privacy:
+    public: Esta discussão é pública na web
+    private: Esta discussão é privada para os membros do grupo
   group_privacy:
     visible_to:
       public: Grupo listado publicamente.
@@ -351,6 +356,7 @@ pt-BR:
   message_placeholder: "Escreva uma mensagem para os membros de %{which_group}."
   email_group_members: "Enviar e-mail para os membros do grupo"
   edit_group_settings: "Editar configurações do grupo"
+  manage_members: "Gerenciar membros"
   leave_group: "Sair do grupo"
   confirm_leave_hidden_group: "Tem certeza de que deseja sair de %{which_group}? Você também será removido(a) dos subgrupos."
   confirm_leave_group: "Tem certeza de que deseja abandonar %{which_group}?"
@@ -440,12 +446,13 @@ pt-BR:
   previous_decisions: "Decisões anteriores"
   see_previous_decisions: "Ver decisões anteriores"
   see_more: "Saiba mais"
-  create_new_proposal: "Criar nova proposição"
+  create_new_proposal: "Criar uma proposta"
   empty_decision_list_html: "Pronta(o) para tomar uma decisão? <br> Qualquer pessoa pode iniciar uma proposição."
   empty_decision_index: "Este grupo não tomou nenhuma decisão ainda."
   empty_discussion_list: "Não há atividades nesta discussão ainda."
   go_to_add_comment_html: "Para adicionar um comentário, <a href='%{href}'>vá para o final da discussão</a>."
   comment_by: "Comentário por %{comment_author}"
+  read_up_to: "Até aqui é onde você leu pela última vez"
   discussion_list:
     clear_filters: "Limpar filtros: ver todas as discussões"
     filter_unread:
@@ -769,7 +776,7 @@ pt-BR:
   new_user_form:
     create_an_account: "Criar uma conta"
   profile_form:
-    view: "Ver o meu perfil"
+    view: "Ver perfil"
     profile: "Editar perfil"
     picture: "Imagem"
     use_initials: 'Use iniciais'
@@ -816,9 +823,6 @@ pt-BR:
         description: "Se você tiver um tempo, diga-nos sobre o seu grupo"
         is_commercial: "Onde você planeja utilizar Loomio?"
     placeholders:
-      discussion:
-        title: "Título"
-        description: "Contextualize..."
       membership_request:
         introduction: "Escreva um pouco sobre você e porque gostaria de entrar em %{group_name}."
       motion:
@@ -1070,6 +1074,7 @@ pt-BR:
     please_wait: "Por favor, aguarde"
     privacy: "Privacidade"
     private: "Privado"
+    permissions: "Permissões"
     public: "Público"
     email: "E-mail"
     start_group: "Iniciar grupo!"

@@ -207,7 +207,6 @@ bg-BG:
   current_decision: "Текущо решение"
   previous_decisions: "Предишни решения"
   see_previous_decisions: "Виж предишни решения"
-  create_new_proposal: "Създай ново предложение"
   empty_decision_list_html: "Готови за вземане на решение? <br> Всеки може да направи предложение."
   empty_decision_index: "Групата не е взела решения все още."
   empty_discussion_list: "Няма активност в тази дискусия все още."

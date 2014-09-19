@@ -391,7 +391,6 @@ ro:
   previous_decisions: "Deciziile anterioare"
   see_previous_decisions: "Vizualizeaza deciziile anterioare"
   see_more: "Vezi mai mult"
-  create_new_proposal: "Creeaza o propunere noua"
   empty_decision_list_html: "Pregatit sa ceri vot pe o decizie? <br> Oricine poate creea o propunere."
   empty_decision_index: "Acest grup inca nu a adoptat nici o decizie."
   empty_discussion_list: "Inca nu exista activitate in aceasta discutie."
@@ -705,7 +704,6 @@ ro:
   new_user_form:
     create_an_account: "Creeaza un cont"
   profile_form:
-    view: "Profil"
     profile: "Modificare profil"
     picture: "Fotografie"
     upload_new_image: "Încărcare imagine"
@@ -748,9 +746,6 @@ ro:
         name: "Cum se va numi grupul tău?"
         description: "Daca ai putin timp spune-ne ceva despre grupul tau."
     placeholders:
-      discussion:
-        title: "Titlu"
-        description: "Introduceti informatii contextuale..."
       membership_request:
         introduction: "Scrie in cateva cuvinte cine esti si de ce vrei sa te alaturi %{group_name}."
       motion:

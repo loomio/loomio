@@ -254,7 +254,6 @@ ml:
   current_decision: "ഇപ്പോഴത്തെ തീരുമാനം"
   previous_decisions: "മുമ്പത്തെ തീരുമാനങ്ങള്‍"
   see_previous_decisions: "മുമ്പത്തെ തീരുമാനങ്ങള്‍ കാണുക"
-  create_new_proposal: "പുതിയ ശുപാര്‍ശ തുടങ്ങുക"
   empty_decision_list_html: "തീരുമാനമെടുക്കാന്‍ തയ്യാറാണോ? <br>ആര്‍ക്കും നിര്‍ദേശങ്ങള്‍ തുടങ്ങാം."
   empty_decision_index: "ഈ കൂട്ടം ഇതുവരെ തീരുമാനങ്ങളൊന്നുമെടുത്തിട്ടില്ല"
   empty_discussion_list: "ഈ ചര്‍ച്ചയില്‍ ഇതുവരെ ഒരു കര്‍മ്മവുമില്ല "
@@ -473,9 +472,6 @@ ml:
         password_confirmation: "അടയാളവാക്ക് സ്ഥിരീകരിക്കുക"
         language_preference: "ഭാഷ"
     placeholders:
-      discussion:
-        title: "തലക്കെട്ട്"
-        description: "സന്ദര്‍ഭം നല്‍കുക"
       membership_request:
         introduction: "എന്തുകൊണ്ട്  %{group_name} എന്ന കൂട്ടത്തില്‍ കൂടാന്‍ ആഗ്രഹിക്കുന്നു എന്ന് ലഘുവായി എഴുതുക"
       motion:
