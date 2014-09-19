@@ -193,7 +193,6 @@ ga-IE:
   previous_decisions: "Cinntí roimhe seo"
   see_previous_decisions: "Féach na cinntí roimhe seo"
   see_more: "Féach tuilleadh"
-  create_new_proposal: "Cruthaigh togra nua"
   empty_decision_list_html: "An bhfuil tú réidh chun cinneadh a dhéanamh? <br> Tig le haon duine tús a chur le togra."
   empty_discussion_list: "Níl aon ghníomhaíocht sa phlé seo fós."
   comment_by: "Trácht ó %{comment_author}"
@@ -332,7 +331,6 @@ ga-IE:
   new_user_form:
     create_an_account: "Cruthaigh cuntas"
   profile_form:
-    view: "Breathnaigh ar mo bheathaisnéisín"
     profile: "Cuir do bheathaisnéisín in eagar"
     picture: "Grianghraf"
     use_uploaded: 'Bain feidhm as íomhá atá uasluchtaithe'
@@ -374,9 +372,6 @@ ga-IE:
         name: "Cad is ainm den bhaicle seo agatsa?"
         description: "Má tá an t-am agat, déan cur síos ar an mbaicle seo agatsa"
     placeholders:
-      discussion:
-        title: "Teideal"
-        description: "Mínigh an comhthéacs..."
       membership_request:
         introduction: "Scríobh fút féin chun tú féin a chur in iúl agus mínigh cén fáth ar mhaith leat bheith mar chomhalta de %{group_name}."
       user:
