@@ -9,9 +9,9 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              'vendor/bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css']
 
   js:
-    vendor: ["vendor/bower_components/underscore/underscore.js",
+    vendor: ["vendor/bower_components/lodash/dist/lodash.js",
              "vendor/bower_components/moment/moment.js",
-             "vendor/bower_components/jquery/jquery.js",
+             "vendor/bower_components/jquery/dist/jquery.js",
              "vendor/bower_components/angular/angular.js",
              "vendor/bower_components/angular-route/angular-route.js",
              "vendor/bower_components/angular-cache/dist/angular-cache.js",

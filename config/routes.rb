@@ -21,7 +21,12 @@ Loomio::Application.routes.draw do
   end
 
   namespace :api, path: '/api/v1' do
+    resources :discussions, only: :show
     resources :comments, only: :create
+    namespace :faye do
+      get :subscribe
+      get :who_am_i
+    end
   end
 
   get "/explore", to: 'explore#index', as: :explore

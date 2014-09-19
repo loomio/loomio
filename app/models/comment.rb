@@ -1,5 +1,4 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :discussion_id, :discussion, :comment, :body, :parent_id, :author
   include Twitter::Extractor
   include Translatable
 
@@ -24,7 +23,7 @@ class Comment < ActiveRecord::Base
 
   default_scope { includes(:user).includes(:attachments).includes(:discussion) }
 
-  scope :published
+  #scope :published, -> { where(published: true) }
 
   delegate :name, to: :user, prefix: :user
   delegate :name, to: :user, prefix: :author
