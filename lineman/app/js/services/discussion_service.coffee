@@ -3,7 +3,7 @@ angular.module('loomioApp').service 'DiscussionService',
     constructor: (@$http, @RecordCacheService) ->
 
     remoteGet: (id) ->
-      @$http.get("/api/discussions/#{id}").then (response) =>
+      @$http.get("/api/v1/discussions/#{id}").then (response) =>
         discussion = response.data.discussion
         @RecordCacheService.consumeSideLoadedRecords(response.data)
         @RecordCacheService.hydrateRelationshipsOn(discussion)

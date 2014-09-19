@@ -1,6 +1,6 @@
-class Api::DiscussionsController < Api::BaseController
+class API::DiscussionsController < API::BaseController
   def show
-    @discussion = Discussion.find(params[:id])
+    @discussion = Discussion.friendly.find(params[:id])
     render json: @discussion
   end
 end

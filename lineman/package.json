@@ -16,7 +16,6 @@
     "grunt-concat-sourcemap": "~0.3.0",
     "lineman": ">=0.11.6",
     "coffee-script": "~1.6.3",
-    "jasmine-jquery": "~1.3.3",
     "selenium-webdriver": "~2.38.1"
   },
   "engines": {
