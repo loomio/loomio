@@ -42,18 +42,15 @@ body.groups {
         position: absolute;
         bottom: 0px;
         left: 138px;
-        width: 842px;
         @media (max-width: 768px) { left: 10px; }
       }
       .home-title{
         font-size: 30px;
         max-width: 632px;
-        display: block;
       }
       .group-category{
-        position: absolute;
-        right: 22px;
-        bottom: 8px;
+        display: inline-block;
+        margin-left: 5px;
         max-width: 168px;
         text-align: right;
         a{

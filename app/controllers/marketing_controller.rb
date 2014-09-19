@@ -1,5 +1,7 @@
 class MarketingController < ApplicationController
   def index
-    render layout: false
+    if stale?(1) # bump this when we change the frontpage
+      render layout: false
+    end
   end
 end
