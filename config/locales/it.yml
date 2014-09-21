@@ -422,7 +422,6 @@ it:
   previous_decisions: "Decisioni precedenti"
   see_previous_decisions: "Guarda le decisioni precedenti"
   see_more: "Vedi altro"
-  create_new_proposal: "Crea una nuova proposta"
   empty_decision_list_html: "Sei pronto a prendere una decisione? <br> Chiunque può lanciare una proposta."
   empty_decision_index: "Questo gruppo non ha ancora preso alcuna decisione."
   empty_discussion_list: "Non ci sono ancora attività in questa discussione."
@@ -775,7 +774,6 @@ it:
   new_user_form:
     create_an_account: "Crea un account"
   profile_form:
-    view: "Mostra il mio profilo"
     profile: "Modifica profilo"
     picture: "Immagine"
     upload_new_image: "Carica una nuova immagine"
@@ -818,9 +816,6 @@ it:
         name: "Qual'é il nome del tuo gruppo?"
         description: "Se hai un momento, dì qualcosa sul tuo gruppo"
     placeholders:
-      discussion:
-        title: "Titolo"
-        description: "Fornisci un contesto..."
       membership_request:
         introduction: "Scrivi un paio di parole su di te stesso e perché vorresti unirti a %{group_name}."
       motion:

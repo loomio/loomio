@@ -434,7 +434,6 @@ el:
   previous_decisions: "Προηγούμενες αποφάσεις"
   see_previous_decisions: "Δείτε τις προηγούμενες αποφάσεις"
   see_more: "Δείτε περισσότερα"
-  create_new_proposal: "Δημιουργήστε μια νέα πρόταση"
   empty_decision_list_html: "Έτοιμοι να πάρετε απόφαση? <br> Οποιοσδήποτε μπορεί να ξεκινήσει μια πρόταση."
   empty_decision_index: "Αυτή η ομάδα δεν έχει πάρει καμία απόφαση ακόμα."
   empty_discussion_list: "Δεν υπάρχει δραστηριότητα στην συζήτηση ακόμα."
@@ -781,7 +780,6 @@ el:
   new_user_form:
     create_an_account: "Δημιουργήστε ένα λογαριασμό"
   profile_form:
-    view: "Δες το προφίλ μου"
     profile: "Επεξεργασία προφίλ"
     picture: "Εικόνα"
     use_initials: 'Χρησιμοποιήστε αρχικά'
@@ -827,9 +825,6 @@ el:
         name: "Ποιο είναι το όνομα της ομάδα σας?"
         description: "Εάν έχετε ένα λεπτό, πείτε μας σχετικά με την ομάδα σας"
     placeholders:
-      discussion:
-        title: "Τίτλος"
-        description: "Δώστε κάποιο περιεχόμενο..."
       membership_request:
         introduction: "Γράψτε λίγα λόγια σχετικά με το ποιος/α είστε και γιατί θέλετε να συμμετάσχετε στην ομάδα %{group_name}."
       motion:

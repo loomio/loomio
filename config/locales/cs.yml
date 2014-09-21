@@ -275,7 +275,6 @@ cs:
   current_decision: "Aktuální rozhodnutí"
   previous_decisions: "Minulá rozhodnutí"
   see_previous_decisions: "Zobrazit minulá rozhodnutí"
-  create_new_proposal: "Vytvořit nový návrh"
   empty_decision_list_html: "Jsi připraven(a) učinit rozhodnutí?<br>Každý může vytvořit návrh."
   empty_decision_index: "Tato skupina zatím neučinila žádná rozhodnutí."
   empty_discussion_list: "V této diskuzi zatím není žádná aktivita."
@@ -471,7 +470,6 @@ cs:
   new_user_form:
     create_an_account: "Vytvořit účet"
   profile_form:
-    view: "Zobrazit můj profil"
     profile: "Upravit profil"
     picture: "Fotka"
     upload_new_image: "Nahrát novou fotku"
@@ -508,9 +506,6 @@ cs:
         password_confirmation: "Potvrdit heslo"
         language_preference: "Jazyk"
     placeholders:
-      discussion:
-        title: "Název"
-        description: "Poskytněte kontext..."
       membership_request:
         introduction: "Napište pár slov o sobě a proč se chcete přidat k %{group_name}."
       motion:

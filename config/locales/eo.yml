@@ -434,7 +434,6 @@ eo:
   previous_decisions: "Antaŭa diskuto"
   see_previous_decisions: "Vidi antaŭajn diskutojn"
   see_more: "Vidi pli"
-  create_new_proposal: "Krei proponon"
   empty_decision_list_html: "Ĉu vi pretas por fari decidon? <br> Kiu ajn povas komenci proponon."
   empty_decision_index: "Tiu ĉi grupo faris neniun ajn decidojn ĝis nu.n"
   empty_discussion_list: "Ankoraŭ nenio okazis en tiu ĉi diskuto."
@@ -801,7 +800,6 @@ eo:
   new_user_form:
     create_an_account: "Krei konton"
   profile_form:
-    view: "Vidi mian profilon"
     profile: "Redakti profilon"
     picture: "Bildo"
     use_initials: 'Uzi unuajn literojn de nomo'
@@ -847,9 +845,6 @@ eo:
         name: "Kio estas la nomo de via grupo?"
         description: "Se vi havas momenton, rakontu al ni pri via grupo"
     placeholders:
-      discussion:
-        title: "Titolo"
-        description: "Donu iom da kunteksto..."
       membership_request:
         introduction: "Skribu kelkajn vortojn pri kiu vi estas kaj kial vi volus aliĝi al %{group_name}."
       motion:

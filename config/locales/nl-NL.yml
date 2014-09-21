@@ -438,7 +438,6 @@ nl-NL:
   previous_decisions: "Vorige beslissingen"
   see_previous_decisions: "Bekijk vorige beslissingen"
   see_more: "Bekijk meer"
-  create_new_proposal: "Maak nieuw voorstel"
   empty_decision_list_html: "Klaar om een beslissing te maken? <br> Iedereen kan een voorstel indienen."
   empty_decision_index: "Deze groep heeft nog geen beslissingen genomen."
   empty_discussion_list: "Er is nog geen activiteit in deze discussie."
@@ -785,7 +784,6 @@ nl-NL:
   new_user_form:
     create_an_account: "Maak een account"
   profile_form:
-    view: "Bekijk mijn profiel"
     profile: "Bewerk profiel"
     picture: "Afbeelding"
     use_initials: 'Gebruik initialen'
@@ -832,9 +830,6 @@ nl-NL:
         description: "Als je een momentje hebt, vertel ons over jouw groep"
         is_commercial: "Waar ben je van plan Loomio te gaan gebruiken?"
     placeholders:
-      discussion:
-        title: "Titel"
-        description: "Geef beschrijving..."
       membership_request:
         introduction: "Omschrijf hier wie je bent en waarom je lid wil worden van %{group_name}."
       motion:

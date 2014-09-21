@@ -196,7 +196,6 @@ hu:
   current_decision: "Jelenlegi döntés"
   previous_decisions: "Korábbi döntések"
   see_previous_decisions: "Korábbi döntések megtekintése"
-  create_new_proposal: "Új javaslat létrehozása"
   empty_decision_list_html: "Itt az ideje a döntésnek?  <br> Bárki tehet javaslatot."
   empty_decision_index: "Ez a csoport még nem hozott döntést."
   empty_discussion_list: "Ebben a témában még nincs semmilyen hozzászólás."

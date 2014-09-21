@@ -436,7 +436,6 @@ de:
   previous_decisions: "Bisherige Entscheidungen"
   see_previous_decisions: "Bisherige Entscheidungen ansehen"
   see_more: "Mehr erfahren"
-  create_new_proposal: "Neuer Vorschlag"
   empty_decision_list_html: "Gib der Diskussion eine neue Richtung. Mach einen gänzlich anderen oder einen verfeinerten Vorschlag."
   empty_decision_index: "Diese Gruppe hat noch keine Entscheidungen getroffen."
   empty_discussion_list: "Es gibt noch keine Aktivitäten in dieser Diskussion."
@@ -782,7 +781,6 @@ de:
   new_user_form:
     create_an_account: "Konto erstellen"
   profile_form:
-    view: "Mein Profil"
     profile: "Profil bearbeiten"
     picture: "Bild"
     use_initials: 'Initialen benutzen'
@@ -829,9 +827,6 @@ de:
         description: "Wenn Du einen Moment Zeit hast, erzähl uns von Deiner Gruppe"
         is_commercial: "In welchem Bereich wirst Du Loomio nutzen?"
     placeholders:
-      discussion:
-        title: "Titel"
-        description: "Diskussionskontext"
       membership_request:
         introduction: "Schreibe einige Worte über Dich und warum Du %{group_name} beitreten möchtest ."
       motion:

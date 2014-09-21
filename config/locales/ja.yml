@@ -307,7 +307,6 @@ ja:
   previous_decisions: "過去の提案"
   see_previous_decisions: "過去の提案を見る"
   see_more: "詳細を見る"
-  create_new_proposal: "新しい提案を作成する"
   empty_decision_list_html: "決定を行う準備はできましたか？\n誰でも提案を開始することができます。"
   empty_decision_index: "このグループはまだ提案を終了していません"
   empty_discussion_list: "コメントはまだありません"
@@ -628,7 +627,6 @@ ja:
   new_user_form:
     create_an_account: "アカウントを作成します"
   profile_form:
-    view: "自分のプロフィールを見る"
     profile: "プロフィールを編集する"
     picture: "画像"
     upload_new_image: "新しい画像をアップロード"
@@ -670,9 +668,6 @@ ja:
         name: "あなたのグループの名前は何ですか？"
         description: "お時間があれば、あなたのグループについて教えてください"
     placeholders:
-      discussion:
-        title: "タイトル"
-        description: "情報を与える..."
       membership_request:
         introduction: "あなたがどういう人か、どうして  %{group_name} に参加したいのかについて一言書いてください"
       motion:

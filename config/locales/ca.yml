@@ -265,7 +265,6 @@ ca:
   current_decision: "Decisió actual"
   previous_decisions: "Decisions anteriors"
   see_previous_decisions: "Veure decisions anteriors"
-  create_new_proposal: "Crear una nova proposta"
   empty_decision_list_html: "Preparat per prendre una decisió? <br> Qualsevol pot crear una propsta."
   empty_decision_index: "Aquest grup encara no ha decidit res."
   empty_discussion_list: "Encara no hi ha activitat en aquesta discussió."
@@ -553,9 +552,6 @@ ca:
         password_confirmation: "Confirma contrassenya"
         language_preference: "Idioma"
     placeholders:
-      discussion:
-        title: "Títol"
-        description: "Dóna una mica de context..."
       membership_request:
         introduction: "Fes-nos cinc cèntims sobre qui ets i per què t'agradaria unir-te a %{group_name}."
       motion:
