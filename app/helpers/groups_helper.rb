@@ -71,7 +71,7 @@ module GroupsHelper
     if user_can_join_group?(current_user_or_visitor, group)
       case group.membership_granted_upon
       when 'request'
-        link_to(t(:join_group_btn), join_group_path(group), method: :post, class: "btn btn-block btn-default btn-right")
+        link_to(t(:join_group_btn), join_group_path(group), method: :post, class: "btn btn-block btn-primary btn-left")
 
       when 'approval'
         if group.pending_membership_request_for(current_user_or_visitor)
