@@ -2,8 +2,10 @@ $ ->
   $('#upload-new-image').on 'click', ->
     $("#user-avatar-kind").val("uploaded")
     $('#uploaded-avatar').trigger('click')
-    $("#upload-form").submit()
     return false
+
+  $('#uploaded-avatar').on 'change', ->
+    $("#upload-form").submit()
 
 
 
