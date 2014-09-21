@@ -20,6 +20,10 @@ Loomio::Application.routes.draw do
     end
   end
 
+  namespace :style_guide do
+    get :discussion
+  end
+
   namespace :api, path: '/api/v1' do
     resources :discussions, only: :show
     resources :comments, only: :create
