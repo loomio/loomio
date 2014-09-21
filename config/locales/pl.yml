@@ -113,7 +113,6 @@ pl:
   discussion: "Dyskusja"
   current_decision: "Obecna decyzja"
   previous_decisions: "Wcześniejsze decyzje"
-  create_new_proposal: "Utwórz nową propozycję"
   description_history:
     subheader: "Wersja"
   comment_form_placeholder: "Powiedz coś..."

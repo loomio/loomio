@@ -253,7 +253,6 @@ mk:
   previous_decisions: "Претходна одлука"
   see_previous_decisions: "Погледни ги претходните одлуки"
   see_more: "Види повеќе"
-  create_new_proposal: "Создај нов предлог"
   empty_decision_list_html: "Спремни сте да донесете одлука? <br> Секој може да покрене предлог."
   empty_decision_index: "Оваа група сè уште нема донесено одлуки."
   empty_discussion_list: "Сè уште нема активност во оваа дискусија."
@@ -446,8 +445,6 @@ mk:
         name: "Кое е името на твојата група?"
         description: "Ако имаш минута, кажи ни за твојата група"
     placeholders:
-      discussion:
-        title: "Наслов"
       membership_request:
         introduction: "Напиши неколку зборови за тебе и зошто сакаш да се приклучиш во %{group_name}."
       user:

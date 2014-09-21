@@ -214,7 +214,6 @@ vi:
   current_decision: "Quyết định hiện tại"
   previous_decisions: "Quyết định trước đó"
   see_previous_decisions: "Xem các quyết định trước đó"
-  create_new_proposal: "Tạo một lời đề nghị mới"
   empty_decision_list_html: "Đã sẵn sàng đưa ra quyết định? <br> Bất kỳ ai cũng có thể bắt đầu đưa ra lời đề nghị."
   empty_decision_index: "Nhóm này vẫn chưa đưa ra quyết định nào."
   empty_discussion_list: "Phần thảo luận này hiện vẫn chưa có thông tin nào."
