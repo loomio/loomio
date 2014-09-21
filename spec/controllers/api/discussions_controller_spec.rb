@@ -1,5 +1,5 @@
-require 'spec_helper'
-describe Api::DiscussionsController do
+require 'rails_helper'
+describe API::DiscussionsController do
   render_views
 
   let(:user) { create :user }

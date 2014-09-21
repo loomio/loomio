@@ -1,5 +1,5 @@
-require 'spec_helper'
-describe Api::CommentsController do
+require 'rails_helper'
+describe API::CommentsController do
   render_views
 
   let(:user) { create :user }
