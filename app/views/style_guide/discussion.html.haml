@@ -1,1 +1,62 @@
-Lets make a discussion here
+
+.container
+  .row
+    .col-xs-12
+      - cover_photo_url = image_url use_parent_if_blank(@group, :cover_photo).url(:desktop)
+
+      .group-heading{style: "background-image: url(#{image_path 'cover-photo-gradient.png'}), url('#{cover_photo_url}')"}
+        .group-title
+          %h1.home-title.shadow
+            - if @group
+              - if @group.is_subgroup?
+                = link_to @group.parent.name, @group.parent
+                = content_tag :span, "\u25B6", class: 'name-separator'
+              = link_to @group.name, @group
+      .thread-settings
+        .privacy.btn.btn-default
+          - if @discussion.private?
+            %i.fa.fa-lock
+            Private
+          - else
+            %i.fa.fa-globe
+            Public
+
+        - if can? :follow, @discussion
+          - if @discussion_reader.following?
+            = link_to unfollow_discussion_path(@discussion), method: :post, class: "btn btn-default pull-right", title: t(:"discussion_context.click_to_unfollow") do
+              %i.fa.fa-eye
+              = t :"common.unfollow"
+          - else
+            = link_to follow_discussion_path(@discussion), method: :post, class: "btn btn-default pull-right", title: t(:"discussion_context.click_to_follow") do
+              %i.fa.fa-eye
+              = t :"common.follow"
+
+      .card.card-thread-context
+        .card-content
+          .card-content-header
+            .card-options-menu.pull-right
+              %i.fa.fa-chevron-down
+            %h1= @discussion.title
+            .author-name.card-meta-text
+              Started by
+              %strong= @discussion.author_name
+            .published-at.card-meta-text
+              %abbr.timeago{title: @discussion.published_at.iso8601}
+                30 minutes ago
+
+          .card-content-body
+            = render_rich_text(@discussion.description)
+
+      .card.card-thread-items
+        .card-meta-header
+          %h1 Discussion
+        .card-content
+          -@discussion.items.each do |item|
+            = render "style_guide/thread_items/#{item.kind}", item: item
+
+      .card.card-start-proposal
+        Ready to make a decision?
+        Start a proposal
+
+      .card.card-add-comment
+        Add a comment

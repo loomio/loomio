@@ -39,6 +39,15 @@ class Comment < ActiveRecord::Base
   alias_method :author, :user
   alias_method :author=, :user=
 
+  def published_at
+    created_at
+  end
+
+  def author_role
+    #lookup role from membership of author to comment group
+    ['Program Coordinator', 'Visitor', 'Cooperative Member', 'Hat Wearer', 'Dog burger', 'Zip', 'Banana Phone User'].sample
+  end
+
   def author_name
     author.try(:name)
   end
@@ -57,6 +66,10 @@ class Comment < ActiveRecord::Base
 
   def can_be_edited?
     group.members_can_edit_comments? or is_most_recent?
+  end
+
+  def liker_names(max: 3)
+    comment_votes.last(max).map(&:user_name)
   end
 
   def like(user)

@@ -21,7 +21,7 @@ Loomio::Application.routes.draw do
   end
 
   namespace :style_guide do
-    get :discussion
+    get 'discussion/:key', action: :discussion
   end
 
   namespace :api, path: '/api/v1' do
