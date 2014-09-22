@@ -67,6 +67,10 @@ class Discussion < ActiveRecord::Base
 
   before_create :set_last_comment_at
 
+  def published_at
+    created_at
+  end
+
   def followers
     User.
       active.

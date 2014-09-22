@@ -1,0 +1,29 @@
+- comment = item.eventable
+.thread-item
+  .thread-item-header.media
+    .card-options-menu.pull-right
+      %i.fa.fa-chevron-down
+    .author-photo.pull-left
+      = render 'avatar', user: comment.author
+    .media-body
+      .author-name
+        = comment.author_name
+      .author-role
+        = comment.author_role
+  .thread-item-body
+    -#= comment.body
+    ~ add_mention_links(render_rich_text(comment.body.to_s.force_encoding("UTF-8"), comment.uses_markdown?)).html_safe
+  .thread-item-footer
+    .like-reply-age
+      = link_to 'Like', '#'
+      ·
+      = link_to 'Reply', '#'
+      ·
+      %abbr.timeago{title: comment.published_at.iso8601}
+        = time_ago_in_words(comment.published_at)
+        ago
+    .liked-by
+      - liker_names = comment.liker_names(max: 3)
+      - if liker_names.present?
+        Liked by
+        = liker_names.join(', ').gsub(/\,(?=[^,]*$)/, " and");

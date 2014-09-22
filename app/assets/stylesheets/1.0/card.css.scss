@@ -1,0 +1,115 @@
+
+.thread-settings {
+  margin-bottom: 10px;
+}
+.card-options-menu {
+  margin-top: -5px;
+}
+
+.card {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.card-options-menu {
+  font-size: 18px;
+  color: #ddd;
+}
+
+.card-meta-header {
+  h1 {
+    font-family: HelveticaNeue-Bold;
+    font-size: 14px;
+    color: #888888;
+    line-height: 20px;
+    margin: 0 0 20px 0;
+    padding: 0;
+  }
+}
+
+.card-content-header {
+  margin: 0 0 10px 0;
+}
+
+.card-meta-text {
+  font-family: HelveticaNeue;
+  font-size: 14px;
+  color: #777777;
+  line-height: 20px;
+}
+
+.card-thread-context {
+  h1 {
+    font-family: HelveticaNeue-Bold;
+    font-size: 24px;
+    color: #333333;
+    line-height: 25px;
+    margin: 0 0 20px 0;
+    /* Implementing the 90-: */
+  }
+}
+
+.thread-item {
+  margin: 0 0 30px 0;
+}
+
+
+.thread-item-header {
+  margin-bottom: 7px;
+
+  .author-photo {
+    img {
+      height: 30px;
+      width: 30px;
+
+      @media (min-width: $screen-sm-min) {
+        height: 40px;
+        width: 40px;
+      }
+
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+  }
+
+  .media-body {
+    margin-left: 10px;
+  }
+
+  .author-name {
+    font-family: HelveticaNeue-Bold;
+    font-size: 14px;
+    color: #333333;
+    line-height: 14px;
+  }
+
+  .author-role {
+    font-family: HelveticaNeue;
+    font-size: 12px;
+    color: #777777;
+    line-height: 18px;
+    margin-top: 1px
+  }
+}
+
+.thread-item-body {
+  font-family: HelveticaNeue;
+  font-size: 14px;
+  color: #333333;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+.thread-item-footer {
+  font-family: HelveticaNeue;
+  font-size: 12px;
+  color: #777777;
+  line-height: 15px;
+
+  .like-reply-age {
+    margin-bottom: 5px;
+  }
+}
+

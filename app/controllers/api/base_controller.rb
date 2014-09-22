@@ -1,4 +1,5 @@
 class API::BaseController < ActionController::Base
+  skip_after_filter :intercom_rails_auto_include
   #class Api::BaseController < BaseController
   after_filter :increment_measurement
   respond_to :json
