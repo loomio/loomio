@@ -4,14 +4,10 @@
     .col-xs-12
       - cover_photo_url = image_url use_parent_if_blank(@group, :cover_photo).url(:desktop)
 
-      .group-heading{style: "background-image: url(#{image_path 'cover-photo-gradient.png'}), url('#{cover_photo_url}')"}
-        .group-title
-          %h1.home-title.shadow
-            - if @group
-              - if @group.is_subgroup?
-                = link_to @group.parent.name, @group.parent
-                = content_tag :span, "\u25B6", class: 'name-separator'
-              = link_to @group.name, @group
+      .group-header{style: "background-image: url(#{image_path 'cover-photo-gradient.png'}), url('#{cover_photo_url}')"}
+        .group-header-title
+          %h1
+            = render 'linked_group_name', group: @group
       .thread-settings
         .privacy.btn.btn-default
           - if @discussion.private?
@@ -55,8 +51,64 @@
             = render "style_guide/thread_items/#{item.kind}", item: item
 
       .card.card-start-proposal
-        Ready to make a decision?
-        Start a proposal
+        .media
+          .card-pie-graph-icon.pull-left
+          .media-body
+            .card-meta-text.first-line
+              Ready to make a decision?
+            = link_to 'Start a proposal', '#', data: {toggle: "modal", target: "#startProposalModal"}
+
+        #startProposalModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "startProposalLabel", :role => "dialog", :tabindex => "-1"}
+          .modal-dialog
+            .modal-content
+              .modal-header
+                %button.close{"data-dismiss" => "modal", :type => "button"}
+                  %span{"aria-hidden" => "true"} ×
+                  %span.sr-only Close
+                %h4#startProposalLabel.modal-title Start a proposal
+              .modal-body
+                %p
+                  Proposals allow you to see how everyone feels about a particular course of action.
+
+                %form
+                  .form-group
+                    %label{for: 'proposalTitleField'}
+                      Title
+                    %input#proposalTitleField.form-control{placeholder: 'What is your proposed course of action?'}
+                  .form-group
+                    %label{for: 'proposalDescriptionField'}
+                      Description
+                    %textarea#proposalDescriptionField.form-control{placeholder: 'Give enough information so that everyone knows exactly what it means to agree or disagree'}
+                  .form-group
+                    %label{for: 'proposalClosingAtField'}
+                      Closing at
+                    %input#proposalClosingAtField.form-control{value: 3.days.from_now.at_beginning_of_hour.strftime('%Y-%m-%d %H:%M')}
+
+              .modal-footer
+                %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+                %button.btn.btn-primary{:type => "button"} Save changes
+
 
       .card.card-add-comment
-        Add a comment
+        .collapsed.js-add-comment-small
+          .media
+            .card-author-photo.pull-left
+              = render 'avatar', user: current_user_or_visitor
+            .media-body
+              %input.form-control{type: 'text', placeholder: 'Add a comment...'}
+        .expanded.js-add-comment-big
+          .card-add-comment-header
+            Add a comment
+            %i.fa.fa-close.pull-right
+          %textarea.form-control
+
+          .button-bar
+            %button.btn.btn-primary
+              Submit
+            %button.btn.bt-default
+              Attach file
+
+          .privacy-hint.card-meta-text
+            .fa.fa-globe
+            Your commment will be public on the web
+
