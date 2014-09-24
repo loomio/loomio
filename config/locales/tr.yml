@@ -178,6 +178,8 @@ tr:
         other: "%{count} yıl"
   organisation:
     name: "Loomio"
+  sr:
+    toggle_navigation: "Navigasyona geçiş"
   footer:
     about: 'Hakkında'
     blog: 'Blog'
@@ -277,6 +279,12 @@ tr:
     visible_to:
       label: Kimler bu grubu bulabilir?
       public_html: 'Herkes <span>grubu genel olarak listele</ span>'
+      parent_members_html: '%{parent_group_name} grubundaki kişiler <span>genel listelenmemiş, ancak %{parent_group_name} üyelerine görünür</span>'
+      members_html: 'Sadece üyeler için <span>grup listelenmeyecek</span>'
+    membership_granted_upon:
+      label: İnsanlar nasıl katılabilir?
+      hidden_parent:
+        request_html: '<span>%{parent_group_name} üyelerine</span> açık'
   setup_steps_title: "Sonraki adımlar:"
   setup_step_1: "Örnek müzakereye göz at"
   setup_step_2: "İlk müzakereni başlat"
