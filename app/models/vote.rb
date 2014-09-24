@@ -35,7 +35,8 @@ class Vote < ActiveRecord::Base
   scope :for_user, lambda {|user_id| where(:user_id => user_id)}
   scope :most_recent, -> { where age: 0  }
 
-  delegate :name, :to => :user, :prefix => :user
+  delegate :name, :to => :user, :prefix => :user # deprecated
+  delegate :name, :to => :user, :prefix => :author
   delegate :group, :discussion, :to => :motion
   delegate :users, :to => :group, :prefix => :group
   delegate :author, :to => :motion, :prefix => :motion
@@ -67,6 +68,15 @@ class Vote < ActiveRecord::Base
 
   def author
     user
+  end
+
+  def position_verb
+    case position
+    when 'yes' then 'agree'
+    when 'no' then 'disagree'
+    when 'abstain' then 'abstain'
+    when 'block' then 'block'
+    end
   end
 
   def position_to_s

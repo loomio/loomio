@@ -499,6 +499,15 @@ en:
   # DISCUSSION PAGE
   #
 
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> agreed on the proposal."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> abstained on the proposal."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> disagreed on the proposal."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> blocked on the proposal."
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> agreed on the proposal:"
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> abstained on the proposal:"
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> disagreed on the proposal:"
+    user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> blocked on the proposal:"
   discussion_items:
     new_discussion: "created the discussion"
     new_motion: "created a proposal"

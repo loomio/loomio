@@ -1,4 +1,4 @@
 - if user.avatar_kind == 'initials'
-  = user.avatar_initials
+  .initials= user.avatar_initials
 - else
   = image_tag user.avatar_url('medlarge', user.avatar_kind)
