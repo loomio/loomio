@@ -266,6 +266,9 @@ fr:
       add_members: Inviter et approuver les nouveaux membres
       edit_comments: Modifier leurs commentaires à tout moment
       edit_discussions: Éditer le contexte de chaque discussion du groupe
+      start_discussions: Commencer les discussions
+      vote: Voter pour des propositions
+      create_subgroups: Créer des sous-groupes
     motions_can_be_edited: Éditer ses propositions après que le vote a commencé
     visible_to:
       label: Qui peut voir ce groupe ?
@@ -303,6 +306,8 @@ fr:
     c7: Ajouter/enlever d'autres coordinateurs.
     c8: Supprimer des discussions.
     c9: Supprimer les commentaires.
+    c10: Créer des sous-groupes.
+    c11: Commencer les discussions.
     members_defaults: "Avec les réglages par défaut, les membres peuvent :"
     m1: Supprimer leurs propres commentaires.
     m3: Modifier le titre et la description des propositions qu'ils lancent, jusqu'à ce que quelqu'un se positionne dessus.
@@ -311,6 +316,8 @@ fr:
     m6: Démarrer un sous-groupe, dont ils deviennent le coordinateur.
     m7: Modifier leurs propres commentaires à n'importe quel moment.
     optional_restrictions: "Éventuellement, les coordonnateurs peuvent restreindre ce que les membres peuvent faire."
+  discussion_privacy:
+    public: Cette discussion est publique sur le web
   group_privacy:
     visible_to:
       public: Groupe public.
