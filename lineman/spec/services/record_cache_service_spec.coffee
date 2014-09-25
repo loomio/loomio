@@ -47,7 +47,7 @@ describe 'RecordCacheService', ->
     it 'puts event into events via event_ids', ->
       event = {id: 1, kind: 'new_comment'}
 
-      discussion = 
+      discussion =
         id: 1
         event_ids: [1]
         relationships:
