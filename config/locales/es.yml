@@ -252,7 +252,7 @@ es:
     deactivation:
       title: "Desactivando su cuenta."
       query: "¿Le importaría decirnos por qué está desactivando su cuenta?"
-      only_coordinator: "Un grupo debe tener al menos un cordinador. Tu eres actualmente el único cordinador de los siguientes grupos:"
+      only_coordinator: "Un grupo debe tener al menos un cordinador. Tú eres actualmente el único cordinador de los siguientes grupos:"
       instructions: "Con el fin de desactivar su cuenta, es necesario o bien agregar otro coordinador o desactivar los grupos."
       info_title: "¿Qué significa la desactivación de su cuenta?"
       memberships: "Usted ya no será listado como miembro en cualquiera de los grupos a los que pertenece actualmente."
@@ -1017,7 +1017,7 @@ es:
     unread: No leído
     filter: 'Filtrar:'
     following: Siguiendo
-    not_following: Dejar de seguir
+    not_following: No siguiendo
     back_to_discussion: "Volver a la discusión"
     edited: Editado
     groups: "Grupos"
