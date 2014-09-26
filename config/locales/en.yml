@@ -1141,6 +1141,15 @@ en:
       intro: "Please click this verification link to finalise your request:"
       ignore: "If you did not request to join Loomio please ignore this email."
 
+
+  #
+  # META TAGS
+  #
+
+  meta_tags:
+    default_title: "Loomio | Collaborative Decision-Making"
+    default_description: Loomio is an easy to use online tool for group decision-making. It allows dispersed groups to reach decisions quickly and take constructive action.
+
   #
   # COMMON WORDS
   #
