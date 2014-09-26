@@ -9,13 +9,4 @@ class CommentSerializer < ActiveModel::Serializer
     keys.delete(:parent) unless object.parent.present?
     keys
   end
-
-  def relationships
-    {
-      author: { foreign_key: 'author_id', collection: 'authors' },
-      parent: { foreign_key: 'parent_id', collection: 'comments' }
-    }
-  end
-
-
 end
