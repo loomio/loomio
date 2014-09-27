@@ -40,7 +40,7 @@ es:
   devise:
     invitations:
       send_instructions: 'La invitación ha sido enviada a %{email}.'
-      invitation_token_invalid: '!Esta invitación no es válida!'
+      invitation_token_invalid: '!Esta invitación ya no es válida!'
       updated: 'La cuenta ha sido creada.'
       no_invitations_remaining: "No hay más invitaciones"
     mailer:
@@ -71,7 +71,7 @@ es:
     group_request_invalid_token: "¡Lo siento! Ese código es inválido"
     group_private_or_not_found: "No se encontro grupo. ⏎\n⏎\nEste grupo puede ser privado. Si alguien te ha dado este enlace, pide que te agreguen al grupo."
     group_already_setup: "El grupo que estás tratando de configurar ya existe."
-    passwords_did_not_match: "La contraseña no coincide"
+    passwords_did_not_match: "Las contraseñas no coinciden"
     proposal_already_exists: "Ya existe una propuesta abierta en esta discusión."
     user_with_email_address_already_in_group: "Un usuario con ese correo electrónico ya es miembro de este grupo."
     you_have_already_requested_membership: "Ya has solicitado membresía en este grupo."
@@ -213,7 +213,7 @@ es:
   find_a_group: "Encuentra un grupo"
   find_a_group_hint: "Explora grupos abiertos al público"
   search_for_group: "Buscar un grupo..."
-  no_groups_found: "¡No encontrados grupos con ese nombre!"
+  no_groups_found: "¡No se han encontrado grupos con ese nombre!"
   no_group_header: "Bienvenid@ a Loomio Beta"
   empty_notifications: "Todavía no tienes notificaciones."
   see_all_notifications: "Ver todas tus notificaciones"
@@ -235,7 +235,7 @@ es:
     message: "<p>Esta es la <strong> página del grupo</strong>. A la izquierda se encuentra la lista de todas las discusiones de este grupo.</p><p>Cuando quieras que el grupo discuta sobre otro tema, empieza una nueva discusión.</p>"
   dashboard_helper_text:
     header: "Bienvenido/a a tu página de inicio"
-    message: "<p>La página de inicio muestra todas las discusiones actuales de todos los grupos que eres miembro.</p><p>Puedes empezar una discusión haciendo click  en el botón \"Empezar discusión\".</p>"
+    message: "<p>La página de inicio muestra todas las discusiones actuales de todos los grupos que eres miembro.</p><p>Puedes empezar una discusión haciendo clic en el botón \"Empezar discusión\".</p>"
   prompt_visitor_to_authenticate:
     header: "Accede a tu cuenta o únete al grupo para participar"
     body: "Si eres miembro de este grupo, has de acceder a tu cuenta para participar"
@@ -252,7 +252,7 @@ es:
     deactivation:
       title: "Desactivando su cuenta."
       query: "¿Le importaría decirnos por qué está desactivando su cuenta?"
-      only_coordinator: "Un grupo debe tener al menos un cordinador. Tú eres actualmente el único cordinador de los siguientes grupos:"
+      only_coordinator: "Un grupo debe tener al menos un coordinador. Tú eres actualmente el único coordinador de los siguientes grupos:"
       instructions: "Con el fin de desactivar su cuenta, es necesario o bien agregar otro coordinador o desactivar los grupos."
       info_title: "¿Qué significa la desactivación de su cuenta?"
       memberships: "Usted ya no será listado como miembro en cualquiera de los grupos a los que pertenece actualmente."
@@ -267,10 +267,10 @@ es:
     what_can_members_do: "¿Qué pueden hacer los miembros?"
     members_can:
       add_members: Invitar y aprobar nuevos miembros
-      edit_comments: Edita sus comentarios en cualquier momento
-      edit_discussions: Edita el contexto de cualquier discusión del grupo
+      edit_comments: Editar sus comentarios en cualquier momento
+      edit_discussions: Editar el contexto de cualquier discusión del grupo
       start_discussions: Empezar discusiones
-      raise_motions: Poner propuestas
+      raise_motions: Hacer propuestas
       vote: Votar en propuestas
       create_subgroups: Crear subgrupos
     motions_can_be_edited: Edita las propuestas después de que la votación haya empezado
@@ -312,7 +312,7 @@ es:
     c9: Borrar comentarios.
     c10: Crear subgrupos
     c11: Empezar discusiones.
-    c12: Poner propuestas.
+    c12: Hacer propuestas.
     c13: Votar en propuestas.
     members_defaults: "Con los ajustes por defecto, los miembros pueden:"
     m1: Elimina sus propios comentarios.
@@ -321,7 +321,7 @@ es:
     m5: Editar el título y contexto de cualquier discusión.
     m6: Empieza un subgrupo, del que te conviertes en coordinador.
     m7: Editar sus propios comentarios en cualquier momento.
-    m8: Poner y participar en propuestas.
+    m8: Hacer propuestas y participar en ellas.
     optional_restrictions: "Opcionalmente, los coordinadores pueden restringir lo que los miembros pueden hacer."
   discussion_privacy:
     public: This discussion is public on the web
@@ -334,7 +334,7 @@ es:
       public_html: 'Cualquiera <span>hacer una lista pública del grupo</span>'
       parent_members_html: 'Las personas de %{parent_group_name} <span> no son públicas, pero son visibles para %{parent_group_name}</span>'
       members_html: 'Solo miembros <span>no hay una lista del grupo</span>'
-  setup_steps_title: "Pasos siguientes:"
+  setup_steps_title: "Siguientes pasos:"
   setup_step_1: "Echa un vistazo a la discusión de ejemplo"
   setup_step_2: " Empieza tu primera discusión"
   setup_step_3: "Invita a personas a tu grupo"
@@ -721,7 +721,7 @@ es:
     invites_more_help2: "<p>Puedes invitar a personas a tu grupo en cualquier momento.</p><p>Podrías invitar a todos los miembros del grupo de una sola vez, o puedes empezar invitando solo a los que trabajan contigo diariamente.</p>"
     invitation_link: "Enlace a la invitación"
     discussion_link: "Participa en la discusión:"
-    link_help: "Haz click en este link para unirte a %{group} en loomio:"
+    link_help: "Haz clic en este enlace para unirte a %{group} en loomio:"
     copy: "Si alguien no ha recibido la invitación electrónica, no dudes en copiar el enlace de arriba y enviarlo personalmente."
     pending_invitations: 'Invitaciones pendientes'
     no_pending_invitations: "Actualmente, no hay invitaciones pendientes"
@@ -868,9 +868,9 @@ es:
       content: "%{who} te ha añadido a %{which_group} en Loomio. Pulsa aquí para ir al grupo:"
     unsubscribe: "Da de baja o cambia las preferencias de tu correo electrónico:   "
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para dar de baja o cambiar las preferencias de correo electrónico."
-    view_comment: "Haz click aquí para ver el comentario en Loomio"
-    view_discussion: "Haz click aquí para ver esta discusión "
-    view_group: "Haz click aquí para ver el grupo en Loomio"
+    view_comment: "Haz clic aquí para ver el comentario en Loomio"
+    view_discussion: "Haz clic aquí para ver esta discusión "
+    view_group: "Haz clic aquí para ver el grupo en Loomio"
     view_proposal: "Ver esta propuesta en Loomio"
     create_discussion:
       intro: "%{who} empezó una discusión en %{which_group}:"
@@ -942,7 +942,7 @@ es:
       you_agreed: "Tú %{past_tense_position}"
     verification:
       header: "¡Ya casi terminas!"
-      intro: "Por favor, haz click en el enlace de verificación para finalizar tu solicitud:"
+      intro: "Por favor, haz clic en el enlace de verificación para finalizar tu solicitud:"
       ignore: "Si no has pedido ser parte de Loomio ignora este correo electrónico. "
   about_loomio: "Acerca de Loomio"
   ago: "hace %{quantity_of_time}"
@@ -951,9 +951,9 @@ es:
   back: "Atrás"
   cancel: "Cancelar"
   change: "Cambiar"
-  change_language: "Haz click aquí para usar Loomio en %{language}"
+  change_language: "Haz clic aquí para usar Loomio en %{language}"
   changing: "Cambiando"
-  click_here: "Haz click aquí"
+  click_here: "Haz clic aquí"
   close: "Cerrar"
   closing: "Cerrando"
   closed: "Cerrado"
@@ -1003,7 +1003,7 @@ es:
   start_a_group: "Empieza un grupo"
   starting: "Empezando"
   subject: "Título"
-  terms_of_service_html: "Haciendo click en %{button_text}, aceptas <a href='%{link_path}' target='_blank'>los términos de servicio de Loomio</a>"
+  terms_of_service_html: "Haciendo clic en %{button_text}, aceptas <a href='%{link_path}' target='_blank'>los términos de servicio de Loomio</a>"
   thanks: "¡Gracias!"
   unlike: "Ya no me gusta"
   time_until_close: "%{quantity_of_time} para cierre"
