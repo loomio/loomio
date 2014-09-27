@@ -3,6 +3,7 @@ cs:
     email_preferences:
       edit:
         title: 'Nastavení emailu'
+        submit: "Uložit nastavení"
   explore:
     header: "Prozkoumejte veřejné skupiny"
   try_it:
@@ -79,6 +80,11 @@ cs:
     comment_deleted: "Komentář smazán."
     invitations:
       auto_added_and_sent: "%{auto_added_text} a %{sent_text}"
+  tooltip:
+    cover_photo_upload: "Nahrát novou titulní fotku"
+    logo_upload: "Nahrát nové logo"
+    edit_description: "Upravit popis"
+    group_category: "Najít další skupiny, jako je tato"
   views:
     pagination:
       previous: "Před."
@@ -107,6 +113,7 @@ cs:
     motion_closed: "Návrh uzavřen. Pokud chcete, můžete sepsat výsledek níže a poslat ho své skupině."
     motion_outcome_created: "Gratulujeme, vytvořil(a) jste výsledek návrhu a členům vaší skupiny to bylo oznámeno."
     motion_outcome_updated: "Výsledek návrhu byl obnoven."
+    password_updated: "Vaše heslo bylo úspěšně změněno"
     position_submitted: "Postoj odeslán"
     position_updated: "Postoj aktualizován."
     proposal_created: "Návrh úspěšně vytvořen."
@@ -183,6 +190,7 @@ cs:
     motion_outcome_updated: "aktualizoval(a) výsledek návrhu"
   edit_discussion_context: "Upravit kontext diskuze"
   request_new_group: "Vytvořit skupinu"
+  start_new_group: "Vytvořit novou skupinu"
   find_a_group: "Najít skupinu"
   no_group_header: "Vítejte na Loomio Beta"
   empty_notifications: "Nemáte zatím žádná upozornění."
@@ -223,6 +231,8 @@ cs:
       instructions: "Chcete-li deaktivovat váš účet, budete muset buď přidat dalšího koordinátora nebo deaktivovat skupiny."
       info_title: "Co bude deaktivace vašeho účtu znamenat?"
   group_form:
+    name: "Název skupiny"
+    description: "Popis"
     category: "Kategorie"
     what_can_members_do: "Co mohou členové dělat?"
     members_can:
@@ -231,6 +241,8 @@ cs:
       start_discussions: Zahájit diskuze
       vote: Hlasovat o návrzích
       create_subgroups: Vytvořit podskupiny
+    visible_to:
+      label: Kdo může najít tuto skupinu?
     discussion_privacy_options:
       label: Kdo může vidět diskuze?
       hint: Veřejné diskuze může zobrazit kdokoli.
@@ -292,6 +304,7 @@ cs:
   want_to_invite_html: "Chcete <a href='%{link}'>pozvat lidi</a> do této skupiny?"
   membership_requests: "Žádosti o členství"
   previous_requests: Předchozí žádosti
+  approved_by_person: Schválil %{person}
   join_group_btn: Připojit ke skupině
   you_have_joined_group: Připojili jste se k %{group_name}
   confirm_approve_membership_request: "Opravdu chcete přidat %{which_user} do skupiny?"
@@ -324,6 +337,10 @@ cs:
   group_description: "Popis skupiny"
   edit_group_description: "Upravit popis skupiny"
   group_request:
+    beta_request_header: "Vytvořte skupinu na Loomio Beta"
+    beta_request_description: "Chcete-li začít rozhodování na Loomio Beta, prvním krokem je vytvoření skupiny"
+    commercial_use_option: ve firmě, formální organizaci nebo na pracovišti
+    please_select_an_option: Prosím, vyberte jednu z možností
     confirmation:
       title: Jste téměř u konce! Zkontrolujte si email.
       body_html: |
@@ -351,6 +368,7 @@ cs:
   empty_decision_index: "Tato skupina zatím neučinila žádná rozhodnutí."
   empty_discussion_list: "V této diskuzi zatím není žádná aktivita."
   discussion_list:
+    clear_filters: "Zrušit filtry: zobrazit všechny diskuse"
     filter_unread:
       enable: "Zobrazit pouze nepřečtené diskuze"
       disable: "Zobrazit přečtené i nepřečtené diskuze"
@@ -487,6 +505,12 @@ cs:
   forgot_your_password: "Zapomněli jste své heslo?"
   dont_have_an_account: "Ještě nemáte svůj účet?"
   create_one_now: "Vytvořte si ho právě teď"
+  sign_up_via: "Přihláste se přes"
+  or_fill_in_this_form: "nebo vyplňte tento formulář"
+  already_have_account: "Již máte účet na Loomio?"
+  confirm_your_details: "Potvrďte své údaje"
+  link_up_your_account: "Propojte svůj účet"
+  log_in_to_your_loomio_account: "Přihlaste se ke svému účtu na Loomio a propojte jej s %{provider_name}."
   confirmation_not_received: "Nepřišly vám pokyny k potvrzení?"
   unlock_not_received: "Nepřišly vám pokyny k odemčení?"
   log_in: "Přihlásit se"
@@ -544,6 +568,8 @@ cs:
       who: "V jaké skupině chcete zahájit tuto diskuzi?"
     edit:
       header: "Upravit diskuzi"
+    privacy:
+      will_be_public: "Každý může vidět diskuzi."
   motion_form:
     new:
       header: "Nový návrh"
@@ -722,6 +748,7 @@ cs:
   group: "Skupina"
   group_admin: "Koordinátor skupiny"
   home: "Domovská stránka"
+  id: "id"
   like: "To se mi líbí"
   loading: "Načítá se..."
   message: "Zpráva"
@@ -731,6 +758,7 @@ cs:
   other: "Ostatní"
   outcome: "Výsledek"
   password: "Heslo"
+  leave_this_field_blank: "nechte toto pole prázdné"
   pricing: 'Ceník'
   prev: "Předch."
   more: "Více..."
@@ -757,7 +785,10 @@ cs:
   facebook: "Facebook"
   yahoo: "Yahoo"
   google: "Google"
+  persona: "Persona"
   common:
+    dashboard: Ovládací panel
+    unread: Nepřečteno
     filter: 'Filtr:'
     groups: "Skupiny"
     today: Dnes
@@ -815,6 +846,7 @@ cs:
       am: 'dop.'
       pm: 'odp.'
     please_wait: "Prosím vyčkejte"
+    permissions: "Oprávnění"
     email: "E-mail"
     start_group: "Vytvořit skupinu!"
   group_categories:
