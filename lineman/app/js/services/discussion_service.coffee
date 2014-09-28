@@ -1,13 +1,11 @@
 angular.module('loomioApp').service 'DiscussionService',
   class DiscussionService
-    constructor: (@$http, @RecordCacheService) ->
+    constructor: (@$http, @RecordStoreService) ->
 
-    remoteGet: (id) ->
-      @$http.get("/api/v1/discussions/#{id}").then (response) =>
-        discussion = response.data.discussion
-        @RecordCacheService.consumeSideLoadedRecords(response.data)
-        @RecordCacheService.hydrateRelationshipsOn(discussion)
-        @RecordCacheService.put('discussions', discussion.id, discussion)
-        discussion
+    fetchByKey: (key) ->
+      @$http.get("/api/v1/discussions/#{key}").then (response) =>
+        @RecordStoreService.importRecords(response.data)
+        record = @RecordStoreService.getByKey('discussions', key)
+        record
       , (response) ->
         saveError(response.data.error)

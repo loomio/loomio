@@ -1,16 +1,16 @@
 class DiscussionSerializer < ActiveModel::Serializer
   embed :ids, include: true
   attributes :id,
+             :key,
              :title,
              :description,
              :created_at,
              :updated_at,
              :items_count,
-             :comments_count,
-             :relationships
+             :comments_count
 
-  has_one :current_user, serializer: AuthorSerializer, root: 'authors'
-  has_one :author, serializer: AuthorSerializer
+  has_one :current_user, serializer: UserSerializer, root: 'users'
+  has_one :author, serializer: UserSerializer, root: 'users'
   has_one :active_proposal, serializer: MotionSerializer, root: :proposals
   has_many :events, serializer: EventSerializer
   has_many :proposals, serializer: MotionSerializer
@@ -33,16 +33,6 @@ class DiscussionSerializer < ActiveModel::Serializer
 
   def current_user
     scope
-  end
-
-  def relationships
-    {
-      current_user: {foreign_key: 'current_user_id', collection: 'authors'},
-      author: { foreign_key: 'author_id', collection: 'authors' },
-      active_proposal: { foreign_key: 'active_proposal_id', collection: 'proposals' },
-      events: { foreign_key: 'event_ids', collection: 'events', type: 'list'},
-      proposals: { foreign_key: 'proposal_ids', collection: 'proposals', type: 'list'}
-    }
   end
 
   def filter(keys)

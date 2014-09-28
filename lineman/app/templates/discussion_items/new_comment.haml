@@ -2,14 +2,14 @@
   .card__header
     .media
       .media__img.media__img--card
-        %div{'ng-include' => "'generated/templates/user/avatar.html'", 'ng-init' => "user = comment.author"}
+        %div{'ng-include' => "'generated/templates/user/avatar.html'", 'ng-init' => "user = comment.author()"}
       .media__text
         %h4.media__title{ng_click: 'alert("hello")'}
-          {{comment.author.name}}
+          {{comment.author().name}}
         .media__details
           {{comment.created_at | date:'medium' }}
           %span.in-reply-to{ng_show: 'isAReply()'}
-            in reply to {{ comment.parent.author.name }}
+            in reply to {{ comment.parent().author_name }}
 
   .card__content.comment-body
     {{ comment.body }}

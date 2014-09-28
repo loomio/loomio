@@ -4,6 +4,6 @@ class API::FayeController < API::BaseController
   end
 
   def who_am_i
-    render json: current_user, serializer: AuthorSerializer
+    render json: current_user, serializer: UserSerializer
   end
 end

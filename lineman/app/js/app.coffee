@@ -3,10 +3,13 @@ angular.module('loomioApp', ['ngRoute', 'jmdobry.angular-cache', 'ui.bootstrap.d
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
 
-# an example of putting things on the root scope.
-#angular.module("app", ["ngResource", "ngRoute"]).run ($rootScope) ->
-  #$rootScope.log = (thing) ->
-    #console.log(thing);
-
-  #$rootScope.alert = (thing) ->
-    #alert(thing);
+# setup the RecordStoreService so that it knows about all the models we care about
+angular.module('loomioApp').run (RecordStoreService,
+                                 UserModel,
+                                 CommentModel,
+                                 DiscussionModel,
+                                 ProposalModel) ->
+  RecordStoreService.registerModel(UserModel)
+  RecordStoreService.registerModel(ProposalModel)
+  RecordStoreService.registerModel(DiscussionModel)
+  RecordStoreService.registerModel(CommentModel)
