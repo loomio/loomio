@@ -84,10 +84,10 @@ es:
     admin_rights_removed: "Los derechos de %{which_user} como coordinador han sido removidos."
     user_added: "%{user_email_or_name} se ha añadido al grupo."
     new_user_added: "%{user_email_or_name} será añadido al grupo cuando cree una cuenta en Loomio."
-    member_removed: "Usuario eliminado."
+    member_removed: "Miembro eliminado."
     membership_approved: "Membresía aprobada."
     membership_request_canceled: "Solicitud de membresía cancelada."
-    membership_request_ignored: "Solicitud de membresía ignorado."
+    membership_request_ignored: "Solicitud de membresía ignorada."
     settings_updated: "Tu configuración ha sido actualizada."
     user_made_admin: "%{which_user} se ha convertido en coordinador."
     you_have_left_group: "Has dejado %{which_group}."
@@ -131,7 +131,7 @@ es:
     emails_sending: "Enviando correos electrónicos."
     group_archived: "Grupo archivado exitosamente."
     group_created: "Grupo creado exitosamente."
-    members_added: "Usuarios agregados al grupo."
+    members_added: "Miembros agregados al grupo."
     membership_requested: "Has solicitado unirte a %{which_group}. Serás notificado/a una vez que tu petición haya sido aprobada."
     motion_closed: "Propuesta concluida. Si lo deseas, debajo puedes establecer un resultado y enviarlo a tu grupo."
     motion_outcome_created: "Felicitaciones, has creado la decisión a una propuesta y los miembros del grupo serán notificados."
@@ -207,10 +207,10 @@ es:
     motion_outcome_created: "Publico una decisión para la propuesta."
     motion_outcome_updated: "resultado de propuesta modificado"
   edit_discussion_context: "Editar información de la discusión"
-  request_new_group: "Empieza un grupo"
+  request_new_group: "Crear un grupo"
   start_new_group: "Empieza un nuevo grupo"
   start_new_group_hint: "Empieza a tomar decisiones "
-  find_a_group: "Encuentra un grupo"
+  find_a_group: "Encontrar un grupo"
   find_a_group_hint: "Explora grupos abiertos al público"
   search_for_group: "Buscar un grupo..."
   no_groups_found: "¡No se han encontrado grupos con ese nombre!"
@@ -260,9 +260,9 @@ es:
       emails: "Dejaremos de mandarte correos relacionados con Loomio."
   group_form:
     name: "Nombre del grupo"
-    description: "Descripcón"
+    description: "Descripción"
     category: "Categoría"
-    confirm_all_discussions_will_be_made_private_message: "Si continúas, las discusiones públicas se harán privadas."
+    confirm_all_discussions_will_be_made_private_message: "Si continúas las discusiones públicas se harán privadas."
     confirm_all_discussions_will_be_made_public_message: "¿Estás seguro? Si continúas, las discusiones privadas se harán públicas."
     what_can_members_do: "¿Qué pueden hacer los miembros?"
     members_can:
@@ -280,22 +280,22 @@ es:
       parent_members_html: 'Las personas en %{parent_group_name} <span>no aparecen públicamente en la lista, pero son visibles para los miembros de %{parent_group_name}</span>'
       members_html: 'Solo miembros <span>no hay una lista del grupo</span>'
     membership_granted_upon:
-      label: ¿Cómo se unen las personas?
+      label: ¿Cómo unirse al grupo?
       hidden_parent:
         request_html: 'Abierto <span>a miembros de %{parent_group_name}</span>'
         approval_html: 'Mediante solicitud <span>de miembros de %{parent_group_name}</span>'
-      request_html: Abierto <span>cualquiera puede unirse al grupo</span>
+      request_html: Simplemente entrando <span>cualquiera puede unirse al grupo</span>
       approval_html: Mediante solicitud <span>todo el mundo puede solicitar unirse</span>
       invitation_html: Sólo por invitación <span>los nuevos miembros deben ser invitados</span>
     parent_members_can_see_discussions:
       label: Privacidad de la discusión
       'true': 'Cualquiera en %{parent_group_name} puede ver las discusiones'
-      'false': Solamente miembros pueden ver las discusiones
+      'false': Solamente los miembros pueden ver las discusiones
     discussion_privacy_options:
       label: ¿Quién puede ver las discusiones?
       hint: Las discusiones públicas pueden ser vistas por cualquiera
       public_only_html: Sólo discusiones públicas
-      public_or_private_html: Permitir discusiones públicas y privadas.
+      public_or_private_html: Permitir discusiones públicas y privadas
       private_only_html: Sólo discusiones privadas
     learn_about_permissions: Más información sobre permisos de grupo
   group_permissions:
@@ -330,7 +330,7 @@ es:
     visible_to:
       public: Hay una lista pública del grupo.
       parent_members: 'Hay una lista privada del grupo. Solo visible para miembros y personas de %{parent_group_name}.'
-      members: Grupo oculto. Solo visible para los miembros.
+      members: Grupo oculto. Solo visible para miembros.
       public_html: 'Cualquiera <span>hacer una lista pública del grupo</span>'
       parent_members_html: 'Las personas de %{parent_group_name} <span> no son públicas, pero son visibles para %{parent_group_name}</span>'
       members_html: 'Solo miembros <span>no hay una lista del grupo</span>'
@@ -521,7 +521,7 @@ es:
   no_details: " Creo que podemos hacerlo mejor, pero si el resto del grupo siente que es el mejor curso de acción, entonces yo estoy de acuerdo con que siga adelante."
   block_position: "Bloqueo"
   block_details: "Tengo fuertes objeciones a esta propuesta y no estoy de acuerdo con que siga adelante."
-  not_voted: "[Mostrar los usuarios que aun no han decidido]"
+  not_voted: "[Mostrar los miembros que aun no han decidido]"
   outcome_placeholder: "¿Cuál fue el resultado de esta propuesta?"
   outcome_submit: "Publicar resultado"
   position_verbs:
@@ -944,6 +944,9 @@ es:
       header: "¡Ya casi terminas!"
       intro: "Por favor, haz clic en el enlace de verificación para finalizar tu solicitud:"
       ignore: "Si no has pedido ser parte de Loomio ignora este correo electrónico. "
+  meta_tags:
+    default_title: "Loomio | Toma de decisiones colaborativa"
+    default_description: Loomio es una herramienta online fácil de usar para la toma de decisiones en grupo. Permite a grupos dispersos tomar decisiones rápidamente y ejecutar acciones constructivas.
   about_loomio: "Acerca de Loomio"
   ago: "hace %{quantity_of_time}"
   approve: "Aprobar"
