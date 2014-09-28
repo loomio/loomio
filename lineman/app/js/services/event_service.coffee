@@ -1,6 +1,6 @@
 angular.module('loomioApp').service 'EventService',
   class EventService
-    constructor: (@RecordCacheService) ->
+    constructor: (@RecordStoreService) ->
 
     subscribeTo: (eventSubscription, onEvent) ->
       PrivatePub.sign(eventSubscription)

@@ -1,6 +1,6 @@
 class EventSerializer < ActiveModel::Serializer
   embed :ids, include: true
-  attributes :id, :sequence_id, :kind, :discussion_id, :relationships
+  attributes :id, :sequence_id, :kind, :discussion_id
 
   has_one :comment, serializer: CommentSerializer
   has_one :proposal, serializer: MotionSerializer, root: :proposals
@@ -22,13 +22,4 @@ class EventSerializer < ActiveModel::Serializer
     keys.delete(:vote) unless object.eventable_type == 'Vote'
     keys
   end
-
-  def relationships
-    {
-      comment: {foreign_key: 'comment_id', collection: 'comments'},
-      proposal: { foreign_key: 'proposal_id', collection: 'proposals' },
-      vote: { foreign_key: 'vote_id', collection: 'votes' }
-    }
-  end
-
 end

@@ -1,3 +1,0 @@
-class Proposal
-  greet: ->
-    'hi'
