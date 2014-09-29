@@ -6,7 +6,7 @@
   = f.input :description, as: :text, required: false
   = f.input :payment_plan, as: :hidden
   - if using_commercial_modal?
-    %a{ :class => 'btn btn-info btn-lg commercial-modal-toggle', :data => { :toggle => :modal, :target => "#commercial" } } 
+    %a{ :class => 'btn btn-info btn-lg commercial-modal-toggle', :data => { :toggle => :modal, :target => "#commercial", :backdrop => "static", :keyboard => "false" } } 
       = submit_label
     = render 'modal_commercial', f: f, submit_label: submit_label
     = render 'modal_non_commercial', f: f, submit_label: submit_label
