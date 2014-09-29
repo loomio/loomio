@@ -3,7 +3,9 @@ class CommentSerializer < ActiveModel::Serializer
   attributes :id, :body, :discussion_id, :created_at, :updated_at, :liker_ids_and_names
 
   has_one :author, serializer: UserSerializer, root: 'users'
-  has_one :parent, serializer: CommentSerializer, root: 'comments'
+  has_many :likers, serializer: UserSerializer, root: 'users'
+
+  #has_one :parent, serializer: CommentSerializer, root: 'comments'
 
   def filter(keys)
     keys.delete(:parent) unless object.parent.present?

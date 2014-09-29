@@ -13,6 +13,7 @@ class DiscussionSerializer < ActiveModel::Serializer
   has_one :author, serializer: UserSerializer, root: 'users'
   has_one :active_proposal, serializer: MotionSerializer, root: :proposals
   has_many :events, serializer: EventSerializer
+  has_many :comments, serialier: CommentSerializer
   has_many :proposals, serializer: MotionSerializer
 
   def author

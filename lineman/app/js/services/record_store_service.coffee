@@ -12,10 +12,11 @@ angular.module('loomioApp').service 'RecordStoreService', class RecordStoreServi
 
     importRecords: (responseData) ->
       _.each @collectionNames(), (collectionName) =>
-        console.log responseData
+        #console.log collectionName
         if responseData[collectionName]?
-          console.log("importing #{collectionName} records")
+          console.log("importing #{responseData[collectionName].length} #{collectionName} records")
           _.each responseData[collectionName], (record_data) =>
+            #console.log "record data: #{collectionName} #{JSON.stringify(record_data)}"
             record = new @models[collectionName](record_data)
             @put(record)
 
@@ -29,24 +30,24 @@ angular.module('loomioApp').service 'RecordStoreService', class RecordStoreServi
       "#{record.plural}/key-#{record.key}"
 
     getByKey: (collectionName, key) ->
-      console.log "getting #{collectionName}/key-#{key}"
+      #console.log "getting #{collectionName}/key-#{key}"
       @cache.get "#{collectionName}/key-#{key}"
 
 
-    getAll: (collecitonName, ids) ->
-      _.map ids, (id) ->
-        @cache.get "#{collecitonName}/#{id}"
+    getAll: (collectionName, ids) ->
+      _.map ids, (id) =>
+        #console.log "getting: #{collectionName}/#{id}"
+        @cache.get "#{collectionName}/#{id}"
 
     put: (record) ->
       key = @recordKey(record)
       existing_record = @cache.get(key)
+      #console.log "puttng: #{key} : #{JSON.stringify(record)}"
       if existing_record?
         angular.extend(existing_record, record)
       else
-        console.log "putting #{key}: #{JSON.stringify(record)}"
         @cache.put key, record
         # if record has .key also store against that
         if record.key?
           altKey = @altRecordKey(record)
-          console.log "inserting #{altKey}"
           @cache.put altKey, record
