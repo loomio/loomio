@@ -273,7 +273,6 @@ ko:
   previous_decisions: "이전 결정"
   see_previous_decisions: "이전 결정 보기"
   see_more: "더보기"
-  create_new_proposal: "새로운 제안 만들기"
   empty_decision_list_html: "결정을 내릴 준비가 되어있습니까? <br> 누구나 제안을 시작할 수 있습니다."
   empty_decision_index: "이 그룹은 현재 어떤 의사결정도 한 적이 없습니다. "
   empty_discussion_list: "이 그룹에는 어떤 활동도 아직 없습니다."
@@ -482,7 +481,6 @@ ko:
   new_user_form:
     create_an_account: "계정 만들기"
   profile_form:
-    view: "내 프로필 보기"
     profile: "프로필 편집"
     picture: "사진"
     upload_new_image: "새로운 이미지 업로드"
@@ -524,9 +522,6 @@ ko:
         name: "그룹의 이름이 무엇인가요?"
         description: "잠깐의 여유가 있다면 그룹에 대해서 설명해 주세요."
     placeholders:
-      discussion:
-        title: "제목"
-        description: "간랸히 내용을 입력해 주세요."
       membership_request:
         introduction: "간단한 자기소개와 %{group_name} 그룹에 가입을 원하는 이유를 적어주세요."
       motion:

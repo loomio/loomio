@@ -376,7 +376,6 @@ zh-TW:
   previous_decisions: "之前的決策"
   see_previous_decisions: "查看之前的決策"
   see_more: "查看詳細資訊"
-  create_new_proposal: "建立新提案"
   empty_decision_list_html: "準備好作決策了嗎？<br> 任何人都可以啟動新提案。"
   empty_decision_index: "此群組尚未做出任何決策"
   empty_discussion_list: "這條討論串中尚未有動態。"
@@ -711,7 +710,6 @@ zh-TW:
   new_user_form:
     create_an_account: "建立帳號"
   profile_form:
-    view: "觀看我的簡歷"
     profile: "編輯簡歷"
     picture: "照片"
     upload_new_image: "上傳新的圖片"
@@ -754,9 +752,6 @@ zh-TW:
         name: "您的群組的名稱是？"
         description: "如果您有空的話，多告訴我們一些有關您群組的事"
     placeholders:
-      discussion:
-        title: "標題"
-        description: "提出一些論述⋯"
       membership_request:
         introduction: "簡單幾句話告訴我們您是誰和為甚麼想要加入「%{group_name}」。"
       motion:

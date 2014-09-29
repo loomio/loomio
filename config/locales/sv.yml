@@ -298,7 +298,6 @@ sv:
   previous_decisions: "Tidigare beslut"
   see_previous_decisions: "Se tidigare beslut"
   see_more: "Läs mer"
-  create_new_proposal: "Skapa nytt förslag"
   empty_decision_list_html: "Är ni redo att fatta beslut? <br> Vem som helst kan starta ett förslag."
   empty_decision_index: "Denna grupp har ännu inte fattat några beslut."
   empty_discussion_list: "Det finns ännu inga aktiviteter i denna diskussionen."
@@ -591,7 +590,6 @@ sv:
   new_user_form:
     create_an_account: "Skapa ett konto"
   profile_form:
-    view: "Visa min profil"
     profile: "Ändra profilen"
     picture: "Bild"
     upload_new_image: "Ladda upp en ny bild"
@@ -634,9 +632,6 @@ sv:
         name: "Vad heter din grupp?"
         description: "Om du har möjlighet, berätta lite om din grupp för oss"
     placeholders:
-      discussion:
-        title: "Titel"
-        description: "Ge lite bakgrundsinformation..."
       membership_request:
         introduction: "Skriv några rader om om vem du är och varför du vill gå med i %{group_name}."
       motion:
