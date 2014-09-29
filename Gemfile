@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.1.3'
 
 gem 'rails', '~> 4.1.6'
 gem 'rake'
@@ -86,9 +86,9 @@ group :development do
   gem 'launchy'
   gem 'awesome_print'
   gem 'quiet_assets'
-  gem 'meta_request'
+  #gem 'meta_request'
   gem 'better_errors'
-  gem 'binding_of_caller'
+  #gem 'binding_of_caller'
 end
 
 group :test do

@@ -299,7 +299,6 @@ uk:
   previous_decisions: "Попереднє рішення"
   see_previous_decisions: "Переглянути попередні рішення"
   see_more: "Дізнатись більше"
-  create_new_proposal: "Створити нову пропозицію"
   empty_decision_list_html: "Готові приймати рішення? <br> Будь-хто може розпочати з пропозиції"
   empty_decision_index: "Ця група ще не прийняла жодного рішення"
   empty_discussion_list: "Жодних подій в цьому обговоренні"
@@ -591,7 +590,6 @@ uk:
   new_user_form:
     create_an_account: "Створити обліковий запис"
   profile_form:
-    view: "Переглянути мій профіль"
     profile: "Редагувати профіль"
     picture: "Картинка"
     upload_new_image: "Завантажити нове зображення"
@@ -634,9 +632,6 @@ uk:
         name: "Назва вашої групи?"
         description: "Якщо маєте час, розкажіть нам про свою групу"
     placeholders:
-      discussion:
-        title: "Назва"
-        description: "Будь ласка, надайте якийсь контекст..."
       membership_request:
         introduction: "Напишіть декілька слів про себе і про те, чому ви хочете долучитися до %{group_name}."
       motion:

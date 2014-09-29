@@ -9,7 +9,7 @@ branches:
     - 'production'
     - /^[0-9]+\.[0-9]+$/
 rvm:
-  - 2.1.2
+  - 2.1.3
 before_script:
   - "cp config/database.yml.$DB config/database.yml"
   - "bundle exec rake db:create RAILS_ENV=test"

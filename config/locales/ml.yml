@@ -1,4 +1,24 @@
 ml:
+  users:
+    email_preferences:
+      edit:
+        title: 'ഈമെയില്‍ മുന്‍ഗണനകള്‍'
+        when_do_you_want_emails: 'എനിക്ക് ഈമെയിൽ അയക്കൂ:'
+        email_missed_yesterday: "\"ലൂമിയോയിൽ ഇന്നലെ\" - ഞാൻ നഷ്ടപ്പെടുത്തിയ ഏതൊരു പ്രവൃത്തിയുടേയും ദൈനംദിന സംഗ്രഹം"
+        email_when_mentioned: "എന്നെ @സൂചിപ്പിക്കുമ്പോൾ"
+        email_followed_threads: "ഞാൻ പിന്തുടരുന്ന ത്രെഡുകളിൽ "
+        email_when_proposal_closing_soon: "ഒരു നിർദ്ദേശം അടയ്ക്കുന്നതിനു് 24 മണിക്കൂർ മുൻപ്"
+        email_new_discussions_and_proposals: 'പുതിയ ചർച്ചകളും '
+        for_these_groups: "ഈ ഗ്രൂപ്പുകൾക്ക്:"
+        submit: "മുൻഗണനകൾ സൂക്ഷിക്കുക"
+  explore:
+    header: "പൊതുവായ ഗ്രൂപ്പുകൾ സന്ദർശിക്കുക"
+  try_it:
+    header: "ലൂമിയോ ഉപയോഗിച്ചുനോക്കൂ"
+    start_a_group: "താങ്കളുടെ സമൂഹത്തിൽ തീരുമാനങ്ങൾ എടുക്കാൻ ഒരു ഗ്രൂപ്പ് ഉണ്ടാക്കൂ"
+    join_the_community: "ലൂമിയോ സമൂഹം ഗ്രൂപ്പിൽ ചേരൂ"
+    loomio_community_info: "ലൂമിയോയെ സംബന്ധിച്ച് ഞങ്ങൾ‌ ചർച്ചകൾ നടത്തുന്നതും തീരുമാനങ്ങൾ എടുക്കുന്നതും ഇവിടെയാണ്"
+    explore_groups: "ലൂമിയോയിൽ മറ്റുള്ള ഗ്രൂപ്പുകൾ കണ്ടെത്തൂ"
   activerecord:
     errors:
       messages:
@@ -254,7 +274,6 @@ ml:
   current_decision: "ഇപ്പോഴത്തെ തീരുമാനം"
   previous_decisions: "മുമ്പത്തെ തീരുമാനങ്ങള്‍"
   see_previous_decisions: "മുമ്പത്തെ തീരുമാനങ്ങള്‍ കാണുക"
-  create_new_proposal: "പുതിയ ശുപാര്‍ശ തുടങ്ങുക"
   empty_decision_list_html: "തീരുമാനമെടുക്കാന്‍ തയ്യാറാണോ? <br>ആര്‍ക്കും നിര്‍ദേശങ്ങള്‍ തുടങ്ങാം."
   empty_decision_index: "ഈ കൂട്ടം ഇതുവരെ തീരുമാനങ്ങളൊന്നുമെടുത്തിട്ടില്ല"
   empty_discussion_list: "ഈ ചര്‍ച്ചയില്‍ ഇതുവരെ ഒരു കര്‍മ്മവുമില്ല "
@@ -473,9 +492,6 @@ ml:
         password_confirmation: "അടയാളവാക്ക് സ്ഥിരീകരിക്കുക"
         language_preference: "ഭാഷ"
     placeholders:
-      discussion:
-        title: "തലക്കെട്ട്"
-        description: "സന്ദര്‍ഭം നല്‍കുക"
       membership_request:
         introduction: "എന്തുകൊണ്ട്  %{group_name} എന്ന കൂട്ടത്തില്‍ കൂടാന്‍ ആഗ്രഹിക്കുന്നു എന്ന് ലഘുവായി എഴുതുക"
       motion:

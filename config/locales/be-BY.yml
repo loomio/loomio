@@ -438,7 +438,6 @@ be-BY:
   previous_decisions: "Папярэднія рашэнні"
   see_previous_decisions: "Паглядзець папярэднія рашэнні"
   see_more: "Даведацца больш"
-  create_new_proposal: "Стварыць новую прапанову"
   empty_decision_list_html: "Гатовы прыняць вырашанне? <br> Хто ўгодна можа стварыць прапанову."
   empty_decision_index: "Гэта група пакуль не зрабіла ніякіх вырашэнняў."
   empty_discussion_list: "У гэтым абмеркаванні пакуль няма ніякай актыўнасці."
@@ -802,7 +801,6 @@ be-BY:
   new_user_form:
     create_an_account: "Стварыць акаўнт"
   profile_form:
-    view: "Праглядзець мой профіль"
     profile: "Рэдагаваць профіль"
     picture: "Фота"
     use_initials: 'Выкарыстоўваць ініцыялы'
@@ -849,9 +847,6 @@ be-BY:
         description: "Калі маеце час, распавядзіце нам пра сваю групу"
         is_commercial: "Дзе вы плануеце выкарыстоўваць Loomio?"
     placeholders:
-      discussion:
-        title: "Назва"
-        description: "Дайце невялічкае апісанне..."
       membership_request:
         introduction: "Напішыце некалькі слоў пра тое, хто вы і чаму вы жадаеце далучыцца да групы %{group_name}."
       motion:

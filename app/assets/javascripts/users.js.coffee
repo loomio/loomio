@@ -1,8 +1,13 @@
 $ ->
-  $("#uploaded-avatar").change((event, ui) ->
+  $('#upload-new-image').on 'click', ->
     $("#user-avatar-kind").val("uploaded")
+    $('#uploaded-avatar').trigger('click')
+    return false
+
+  $('#uploaded-avatar').on 'change', ->
     $("#upload-form").submit()
-  )
+
+
 
 toggle_email_new_disussions_and_proposals = ->
   if $('#js_email_new_discussions_and_proposals').is(':checked')

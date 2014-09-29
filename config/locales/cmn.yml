@@ -159,7 +159,6 @@ cmn:
   current_decision: "目前的决定"
   previous_decisions: "先前的决定"
   see_previous_decisions: "看看之前的决定"
-  create_new_proposal: "创建新的建议"
   empty_decision_index: "这个组还没有做出什么决定"
   empty_discussion_list: "这一条讨论还没有发表"
   discussion_context:

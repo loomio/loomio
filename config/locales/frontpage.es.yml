@@ -29,7 +29,7 @@ es:
         desc: 'Empieza una discusión en cualquier tema, e invita a las personas que quieras. Comparte perspectivas diversas y desarrolla las ideas en conjunto.'
       step2:
         header: '2. Construir un acuerdo'
-        desc: 'Todos pueden proponer un curso de acción. Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear –de esa manera podrás ver cómo se siente el grupo y por qué-.'
+        desc: 'Cualquier persona puede proponer una discusión. Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear –de esa manera podrás ver cómo se siente el grupo y por qué-.'
       step3:
         header: '3. Decidir juntos'
         desc: 'Desarrolla la propuesta colectivamente para que funcione para todos. Cada decisión posee una fecha limite, siempre obteniendo un resultado claro.'
@@ -39,7 +39,7 @@ es:
       header_html: "Ya hemos construido un prototipo, y personas de todo el mundo están haciendo cosas asombrosas con el."
       subhead_html: '<a href="%{try_loomio_link}">Prueba Loomio Beta</a> ahora. O puedes <a href="%{donate_link}">apoyar al proyecto</a> para ayudar a financiar Loomio 1.0'
     mobile:
-      header_html: 'Loomio 1.0 funciona con cualquier aparato, construido con lo mejor en <strong> tecnología abierta de móvil.</strong>'
+      header_html: 'Loomio 1.0 funciona con cualquier dispositivo, construido con lo mejor en <strong> tecnología abierta de móvil.</strong>'
     quote:
       header:
         rushkoff_html: '«Loomio <strong>libera el potencial de Internet</strong> para acercar a las personas al consenso en vez de al debate polarizado».<div class="attributation"> (<a href="http://rushkoff.com">Douglas Rushkoff</a>, autor del libro <em>Present Shock</em>).</div>'
@@ -50,7 +50,7 @@ es:
     ideals:
       community:
         header: 'Cooperativa comunitaria'
-        desc: 'Loomio es construido por una cooperativa propiedad de los trabajadores. Somos una empresa social trabajando para maximizar el cambio social de una manera positiva sin fines de lucro.'
+        desc: 'Loomio esta constituido por una cooperativa propiedad de los trabajadores. Somos una empresa social trabajando para maximizar el cambio social de una manera positiva sin fines de lucro.'
       independent:
         header: 'Independiente y neutral'
         desc: 'Tenemos espacio para cualquier grupo que sea independiente de partidos políticos o interés corporativo. Nunca venderemos tu información.'
