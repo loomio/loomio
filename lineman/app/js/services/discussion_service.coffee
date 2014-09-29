@@ -4,8 +4,8 @@ angular.module('loomioApp').service 'DiscussionService',
 
     fetchByKey: (key) ->
       @$http.get("/api/v1/discussions/#{key}").then (response) =>
+        console.log response
         @RecordStoreService.importRecords(response.data)
-        record = @RecordStoreService.getByKey('discussions', key)
-        record
+        @RecordStoreService.getByKey('discussions', key)
       , (response) ->
         saveError(response.data.error)

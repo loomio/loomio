@@ -1,5 +1,5 @@
 angular.module('loomioApp').controller 'NewCommentItemController', ($scope, CommentService) ->
-  $scope.comment = $scope.event.comment
+  $scope.comment = $scope.event.comment()
 
   $scope.like = ->
     CommentService.like($scope.comment)
@@ -8,13 +8,13 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, Comm
     CommentService.unlike($scope.comment)
 
   $scope.currentUserLikesIt = ->
-    $scope.comment.liker_ids_and_names.hasOwnProperty($scope.currentUser.id)
+    _.contains($scope.comment.liker_ids, $scope.currentUser.id)
 
   $scope.anybodyLikesIt = ->
-    _.size($scope.comment.liker_ids_and_names) > 0
+    _.size($scope.comment.liker_ids) > 0
 
   $scope.whoLikesIt = ->
-    names = _.without(_.values($scope.comment.liker_ids_and_names), $scope.currentUser.name)
+    names = _.without(_.values($scope.comment.liker_names()), $scope.currentUser.name)
     if $scope.currentUserLikesIt()
       names.push('You')
     names
@@ -23,7 +23,7 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, Comm
     $scope.$emit 'replyToCommentClicked', $scope.comment
 
   $scope.isAReply = ->
-    _.isObject($scope.comment.parent)
+    _.isObject($scope.comment.parent())
 
 
 

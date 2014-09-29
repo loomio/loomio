@@ -8,8 +8,11 @@ angular.module('loomioApp').run (RecordStoreService,
                                  UserModel,
                                  CommentModel,
                                  DiscussionModel,
-                                 ProposalModel) ->
+                                 ProposalModel,
+                                 EventModel) ->
+
   RecordStoreService.registerModel(UserModel)
   RecordStoreService.registerModel(ProposalModel)
   RecordStoreService.registerModel(DiscussionModel)
   RecordStoreService.registerModel(CommentModel)
+  RecordStoreService.registerModel(EventModel)

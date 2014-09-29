@@ -24,7 +24,7 @@
 
   .l-row
     .card.l-column
-      %div{'ng-repeat' => 'event in discussion.events', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
+      %div{'ng-repeat' => 'event in discussion.events()', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
       -#-#"discussion_title_edited",
       -#-#"discussion_description_edited",
       -#-#"new_motion",
