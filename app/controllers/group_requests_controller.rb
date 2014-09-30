@@ -22,7 +22,7 @@ class GroupRequestsController < BaseController
   private
 
   def using_commercial_page?
-    ENV['SHOW_PAYMENT_PAGE'].present?
+    ENV['SHOW_COMMERCIAL_PAGE'].present?
   end
   helper_method :using_commercial_page?
 
