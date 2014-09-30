@@ -21,10 +21,10 @@ class GroupRequestsController < BaseController
 
   private
 
-  def using_commercial_modal?
-    ENV['GROUP_REQUEST_COMMERCIAL_MODAL'].present?
+  def using_commercial_page?
+    ENV['SHOW_PAYMENT_PAGE'].present?
   end
-  helper_method :using_commercial_modal?
+  helper_method :using_commercial_page?
 
   def build_group_request
     @group_request = GroupRequest.new
