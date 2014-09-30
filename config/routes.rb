@@ -306,5 +306,7 @@ Loomio::Application.routes.draw do
   get '/roadmap'    => redirect('https://trello.com/b/tM6QGCLH/loomio-roadmap')
   get '/timeline'   => redirect('http://www.tiki-toki.com/timeline/entry/313361/Loomio')
 
+  get '/community', to: "groups#show", id: "WmPCB3IR", as: :community if Rails.env.production?
+
   get '/robots'     => 'robots#show'
 end
