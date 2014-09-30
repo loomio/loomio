@@ -308,6 +308,7 @@ fr:
     c9: Supprimer les commentaires.
     c10: Créer des sous-groupes.
     c11: Commencer les discussions.
+    c13: Vote sur les propositions.
     members_defaults: "Avec les réglages par défaut, les membres peuvent :"
     m1: Supprimer leurs propres commentaires.
     m3: Modifier le titre et la description des propositions qu'ils lancent, jusqu'à ce que quelqu'un se positionne dessus.
@@ -909,6 +910,7 @@ fr:
       summary: "Résumé"
     thread_mailer:
       footer_text: "Répondre à ce courriel directement ou le voir sur Loomio :"
+      reply_or_view_online_html: "Répondre à ce message directement ou <a href='%{url}'> visualiser sur Loomio </a>."
       change_preferences: "Modifiez vos préférences de courriel :"
       new_motion: "%{who} propose :"
       motion_closing_soon: "Proposition clôturée dans 24 heures :"
@@ -919,6 +921,8 @@ fr:
       header: "Vous avez presque fini !"
       intro: "Merci de cliquer sur le lien de vérification pour finaliser votre demande :"
       ignore: "Si vous n'avez pas demandé à rejoindre Loomio, merci d'ignorer cet e-mail."
+  meta_tags:
+    default_title: "Loomio | Prise de décision collaborative "
   about_loomio: "À propos de Loomio"
   ago: "il y a %{quantity_of_time}"
   approve: "Approuvez"
