@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+ruby '2.1.3'
+
 gem 'rails', '~> 4.1.6'
 gem 'rake'
 gem 'pg', '~> 0.17.1'
@@ -26,7 +28,6 @@ gem 'twitter-text'
 gem 'jquery-atwho-rails', '~> 0.4.11'
 gem 'redcarpet', '~> 3.1.2'
 gem 'paper_trail', '~> 3.0.5'
-gem 'unicorn', '~> 4.8.3'
 gem 'rack-canonical-host'
 gem 'delayed_job', '~> 4.0.2'
 gem 'delayed_job_active_record', '~> 4.0.1'
@@ -99,6 +100,7 @@ group :test do
 end
 
 group :production do
+  gem 'puma'
   gem 'rails_12factor'
   gem 'rails_serve_static_assets'
   gem 'delayed-plugins-airbrake'
