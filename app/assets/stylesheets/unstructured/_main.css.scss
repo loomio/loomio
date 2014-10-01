@@ -1,9 +1,14 @@
 //= depend_on 'ajax-loader.gif'
+html, body { overflow-x: hidden; }
 
 body {
   background-color: $app-background;
-  height: 100%;
   color: $text-black;
+  margin-top: 50px;
+}
+
+body.pages{
+  margin-top: 0;
 }
 
 code{
@@ -15,10 +20,9 @@ code{
 
 form {
   input, select, textarea {
-    width: 100%;
     color: #252525;
   }
-  textarea {
+  textarea, textarea.form-control {
     margin-bottom: 0;
     height: 200px;
   }
@@ -60,9 +64,11 @@ h2, h3 {
   margin: 15px 0 9px 0;
 }
 
-hr { margin: 1px; }
+.panel h4{
+  margin-bottom: 0;
+}
 
-html { height: 100%; }
+hr { margin: 1px; }
 
 ul { list-style: none; }
 
@@ -70,17 +76,26 @@ ul, ol, li {
   margin: 0;
   padding: 0;
 }
-
+.container{
+  background-color: $container;
+  max-width: 970px;
+}
+.navbar-default{ background-color: white;}
 .alert { margin-top: 14px; }
-
-.btn-app {
-  line-height: 18px;
-  padding: 4px 8px 4px 8px;
-  min-width: 200px;
-  font-size: $font-medium;
+.alert a.close{ padding-left: 0.5em; }
+.btn-left {
   text-align: left;
+  padding-left: 1em;
 }
 
+.btn-right {
+  text-align: right;
+  padding-right: 1em;
+}
+
+.btn i{
+  width: 1.3em;
+}
 .box-lt-blue { background-color: #E7F5F8; }
 .box-lime { background-color: #E9F1D9; }
 .box-yellow { background-color: #FCF7D7; }
@@ -221,7 +236,6 @@ ul.selector-list {
     font-weight: normal;
     a.selector-link {
       display: block;
-      padding: 5px 5px 5px 15px;
       &:hover {
         background-color: $selector;
         text-decoration: none;
@@ -236,42 +250,12 @@ ul.selector-list {
     }
   }
 }
-
-.sub-panel {
-  background-color: $sub-selector-panel;
-  @include border-radius(8px);
-  margin-bottom: 20px;
-  padding: 6px 10px;
-
-  h4 {
-    line-height: 1.8em;
-    margin-bottom: 5px;
-  }
-  a { color: $mid-grey; }
-  .bottom-panel-link {
-    text-decoration: underline;
-    color: #777;
-  }
-  .close { color: #000 }
-  .dropdown {
-    float: right;
-    li {
-      background-color: white;
-      line-height: 1em;
-    }
-    li a {
-      color: $dark-grey;
-      text-decoration: none;
-      text-shadow: none;
-      &:hover { color: white; }
-    }
-  }
-  ul { margin-bottom: 10px; }
+.panel{
+  img{max-width: 100%;}
 }
 
 .validate-length {
   display: inline-block;
-  @include ie7-inline-block();
 }
 
 .word-break {
@@ -303,7 +287,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .footer {
   border-top: 2px solid $lighter-grey;
   margin-top: 40px;
-  padding: 10px 0 14px 0;
+  padding: 10px 0 34px 0;
   a {
     color: $dark-grey;
     padding: 0 3px;
@@ -318,17 +302,15 @@ a.btn-icon:hover { color: $dark-grey; }
       border-top: 4px solid black;
     }
   }
-  .left{
-    width: 50%;
-    float: left;
+  .footer-links{
+    text-align: right;
   }
-  .footer-links { float: right; }
 }
 
 .nowrap { white-space: nowrap; }
 
 .info-box {
-  @include border-radius(4px);
+  border-radius: 4px;
   background-color: #DEF1DE;
   color: #555555;
   margin-top: 30px;
@@ -375,6 +357,7 @@ a.btn-icon:hover { color: $dark-grey; }
   float: right;
   a{color: $light-grey;}
   a:hover{color: $link-blue;}
+  .fa{ font-size: 16px; }
 }
 
 .edit-icon-small {
@@ -406,3 +389,31 @@ a.btn-icon:hover { color: $dark-grey; }
   width: 180px;
   margin-bottom: 4px;
 }
+
+.main-container {
+  background: #fff;
+}
+
+.checkbox { padding-left: 20px; }
+
+.btn { margin-bottom: 5px; }
+
+.filter{ display: inline; }
+
+.pagination-centered{ text-align: center; }
+
+form{
+  .radio, .checkbox{
+    margin: 0;
+    line-height: 20px;
+  }
+  .checkbox label{
+    padding-left: 0;
+    padding-bottom: 1em;
+  }
+  .radio label{
+    padding-bottom: 1em;
+  }
+}
+
+.tooltip.bottom .tooltip-arrow{ top: 0 !important; }

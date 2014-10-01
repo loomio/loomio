@@ -18,6 +18,7 @@ class UsersController < BaseController
     else
       Measurement.increment('users.update.error')
       @user = current_user
+      @user_deactivation_response = UserDeactivationResponse.new
       flash[:error] = t("error.settings_not_updated")
       render "profile"
     end

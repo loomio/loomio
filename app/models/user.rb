@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   MED_LARGE_IMAGE = 70
   MEDIUM_IMAGE = 35
   SMALL_IMAGE = 25
-  MAX_AVATAR_IMAGE_SIZE_CONST = 1000
+  MAX_AVATAR_IMAGE_SIZE_CONST = 10.megabytes
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
   attr_accessor :honeypot, :email_new_discussions_and_proposals_group_ids
@@ -32,7 +32,8 @@ class User < ActiveRecord::Base
 
   validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
 
-  validates_uniqueness_of :username, allow_nil: true, allow_blank: true
+  validates_uniqueness_of :username, allow_blank: true
+  validates_length_of :username, maximum: 30, allow_blank: true
 
   include Gravtastic
   gravtastic  :rating => 'pg',
@@ -54,6 +55,10 @@ class User < ActiveRecord::Base
   has_many :memberships,
            -> { where(is_suspended: false, archived_at: nil) },
            dependent: :destroy
+
+  has_many :archived_memberships,
+           -> { where('archived_at IS NOT NULL') },
+           class_name: 'Membership'
 
   has_many :membership_requests,
            foreign_key: 'requestor_id'
@@ -271,8 +276,9 @@ class User < ActiveRecord::Base
     deactivated_at.nil?
   end
 
-  def activate!
+  def reactivate!
     update_attribute(:deactivated_at, nil)
+    archived_memberships.update_all(archived_at: nil)
   end
 
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966

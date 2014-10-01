@@ -156,7 +156,7 @@ class Group < ActiveRecord::Base
   paginates_per 20
 
   has_attached_file    :cover_photo,
-                       styles: { desktop: "980x200#", card: "460x94#" },
+                       styles: { desktop: "970x200#", card: "460x94#"},
                        default_url: 'default-cover-photo.png'
 
   has_attached_file    :logo,

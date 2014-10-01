@@ -19,7 +19,7 @@
 //= require lib/jquery.placeholder
 //= require lib/jquery.netchanger.min
 //= require lib/jquery.safetynet
-//= require lib/bootstrap2-datetimepicker
+//= require lib/bootstrap-datetimepicker
 //= require lib/Chart
 //= require modernizr
 //= require bootstrap
@@ -43,3 +43,13 @@
 //= require explore
 //= require keyboard_shortcuts
 //= require locale_selector
+
+if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+  var msViewportStyle = document.createElement('style')
+  msViewportStyle.appendChild(
+    document.createTextNode(
+      '@-ms-viewport{width:auto!important}'
+    )
+  )
+  document.querySelector('head').appendChild(msViewportStyle)
+}

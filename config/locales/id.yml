@@ -257,7 +257,6 @@ id:
   current_decision: "Diskusi saat ini"
   previous_decisions: "Diskusi sebelumnya"
   see_previous_decisions: "Lihat diskusi sebelumnya"
-  create_new_proposal: "Buat usulan baru"
   empty_decision_list_html: "Siap membuat keputusan? <br> Setiap orang dapat membuat usulan."
   empty_decision_index: "Kelompok ini belum membuat keputusan."
   empty_discussion_list: "Belum ada aktivitas di dalam diskusi ini."
@@ -554,9 +553,6 @@ id:
         password_confirmation: "Konfirmasi kata sandi"
         language_preference: "Bahasa"
     placeholders:
-      discussion:
-        title: "Judul"
-        description: "Berikan konteks..."
       membership_request:
         introduction: "Perkenalkan diri Anda dan mengapa Anda ingin bergabung ke dalam %{group_name}."
       motion:

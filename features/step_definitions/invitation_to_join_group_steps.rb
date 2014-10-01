@@ -7,7 +7,7 @@ end
 
 When(/^I invite "(.*?)" to our group$/) do |arg1|
   visit group_path(@group)
-  click_on 'invite-new-members'
+  click_on 'Invite people'
   fill_in "invitees", with: arg1
   click_on 'Invite people'
 end
@@ -15,7 +15,7 @@ end
 When(/^I invite bill and jane to our group$/) do
   ActionMailer::Base.deliveries = []
   visit group_path(@group)
-  click_on 'invite-new-members'
+  click_on 'Invite people'
   fill_in "invitees", with: 'bill@example.org, jane@example.org'
   click_on 'Invite people'
 end
@@ -156,7 +156,7 @@ When /^I visit the subgroup page$/ do
 end
 
 When /^I click invite people$/ do
-  find("#group-actions").find("#invite-new-members").click
+  click_on 'Invite people'
 end
 
 When /^I select "(.*?)" from the list of members$/ do |arg1|

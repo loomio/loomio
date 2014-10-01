@@ -10,6 +10,8 @@ cs:
       try_it: 'Vyzkoušejte to'
       log_in: 'PŘIHLÁSIT SE'
       video: "Dozvěďte se více o tom, jak Loomio funguje"
+      try_loomio_beta: 'Vyzkoušejte Loomio beta'
+      check_out_loomio_beta: 'Podívejte se na Loomio beta'
       more: 'Více'
       top: 'Začátek'
       public_groups: 'Veřejné skupiny'
@@ -18,6 +20,7 @@ cs:
       services: 'Služby'
     hero:
       head_html: 'Svět potřebuje lepší způsob, jak <strong>společně rozhodovat</strong>.'
+      desc_html: 'Loomio je svobodný,  <a href="https://github.com/loomio/loomio">open source</a> software umožňující každému a kdekoliv, aby se podílel na rozhodnutích, které se ho týkají.'
     product:
       header_html: 'Když vyslechneme <strong>všechny hlasy</strong>, činíme <strong>lepší rozhodnutí</strong>.'
       step1:
@@ -31,6 +34,8 @@ cs:
         desc: 'Vypracujte návrh společně, aby vyhovoval všem. Každé rozhodnutí má jasnou lhůtu, takže vždy získáte jasné rozhodnutí.'
     crowdfunding:
       header: 'Crowdfundujeme, abychom mohli dobudovat tuto novou platformu a poskytnout ji světu.'
+    prototype:
+      header_html: "Již jsme postavili prototyp, a lidé na celém světě s ním dělají úžasné věci"
     team:
       header: 'O Loomiu'
       desc: 'Jsme malý tým open-source vývojářů a aktivistů za sociální spravedlnost pracující pro Enspiral v Aotearoa Novém Zélandu, se širší sítí přátel, příznivců a poradců po celém světě.'

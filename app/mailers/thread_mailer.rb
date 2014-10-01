@@ -8,7 +8,6 @@ class ThreadMailer < BaseMailer
     @event = event
     @discussion = event.discussion
     @author = event.discussion.author
-    headers['Message-ID'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
     send_thread_email
   end
 
@@ -18,9 +17,6 @@ class ThreadMailer < BaseMailer
     @comment = event.eventable
     @discussion = @comment.discussion
     @author = @comment.author
-    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['References'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
     send_thread_email
   end
 
@@ -30,9 +26,6 @@ class ThreadMailer < BaseMailer
     @comment = event.eventable
     @discussion = @comment.discussion
     @author = @comment.author
-    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['References'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
     send_thread_email(alternative_subject: t('email.mentioned.subject',
                                              who: @author.name,
                                              which: @discussion.group.full_name))
@@ -45,9 +38,6 @@ class ThreadMailer < BaseMailer
     @discussion = @vote.motion.discussion
     @author = @vote.author
     @motion = @vote.motion
-    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['References'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
     send_thread_email
   end
 
@@ -58,9 +48,6 @@ class ThreadMailer < BaseMailer
     @discussion = @motion.discussion
     @author = @motion.author
     @group = @discussion.group
-    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['References'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
     send_thread_email(alternative_subject: t(:"email.new_motion_created.subject",
                                              proposal_title: @motion.title))
   end
@@ -72,9 +59,6 @@ class ThreadMailer < BaseMailer
     @author = @motion.author
     @discussion = @motion.discussion
     @group = @discussion.group
-    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['References'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
     send_thread_email(alternative_subject:
                       t(:"email.proposal_closing_soon.subject", proposal_title: @motion.title))
   end
@@ -86,9 +70,6 @@ class ThreadMailer < BaseMailer
     @discussion = @motion.discussion
     @author = @motion.outcome_author
     @group = @motion.group
-    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['References'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
     send_thread_email(alternative_subject:
                       "#{t("email.proposal_outcome.subject")}: #{@motion.name}")
   end
@@ -101,9 +82,6 @@ class ThreadMailer < BaseMailer
     @author = @motion.author
     @motion = @motion
     @group = @motion.group
-    headers['Message-ID'] = "#{@discussion.id}/#{@event.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['References'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
-    headers['In-Reply-To'] = "#{@discussion.id}@#{ENV['SMTP_DOMAIN']}"
     send_thread_email(alternative_subject:
                       t("email.proposal_closed.subject", which: @motion.name))
   end
@@ -114,6 +92,8 @@ class ThreadMailer < BaseMailer
     @following = DiscussionReader.for(discussion: @discussion, user: @recipient).following?
     @utm_hash = utm_hash
 
+    headers[message_id_header] = message_id
+
     locale = locale_fallback(@recipient.locale, @author.locale)
     I18n.with_locale(locale) do
       mail  to: @recipient.email,
@@ -121,6 +101,14 @@ class ThreadMailer < BaseMailer
             reply_to: reply_to_address_with_group_name(discussion: @discussion, user: @recipient),
             subject: thread_subject(alternative_subject)
     end
+  end
+
+  def message_id_header
+    action_name == 'new_discussion' ? 'Message-ID' : 'In-Reply-To'
+  end
+
+  def message_id
+    "<#{@discussion.id}@#{ENV['SMTP_DOMAIN']}>"
   end
 
   def thread_subject(alternative_subject)

@@ -10,7 +10,7 @@ Feature: User creates proposal
 
   Scenario: Group member creates proposal
     When I visit the discussion page
-    And I click "Create new proposal"
+    And I click "Create a proposal"
     Then I should see the create proposal page
     And I fill in the proposal details and submit the form
     Then a new proposal should be created

@@ -36,7 +36,7 @@
   float: left;
   display: block;
   height: 18px;
-  padding-right: 0.4em;
+  /*margin-right: 0.4em;*/
   width: 18px;
   &.discussion-icon { background-image: image-url('discussion-18.png'); }
   &.loomio-icon { background-image: image-url('topic-18.png'); }
@@ -56,10 +56,14 @@
   width: 24px;
   &.discussion-icon.enabled-icon  { background-image: image-url('discussion-24.png'); }
   &.discussion-icon.disabled-icon  { background-image: image-url('discussion-light-24.png'); }
-  &.decision-icon { background-image: image-url('pie-24.png'); }
+  &.decision-icon {
+    background-image: image-url('pie-24.png');
+    @media (min-width: 768px) { margin-left: 0; }
+  }
   &.pie-icon {
     background-image: image-url("pie-light-24.png");
     height: 26px;
+    width: 30px;
   }
   &.topic-icon { background-image: image-url('topic-24.png'); }
 }

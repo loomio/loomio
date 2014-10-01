@@ -65,7 +65,7 @@ ActiveAdmin.register User do
       end
     else
       panel("This user account has been deactivated") do
-        button_to 'Activate User', activate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to activate this user?'}
+        button_to 'Reactivate User', reactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to reactivate this user?'}
       end
     end
     attributes_table do
@@ -95,9 +95,9 @@ ActiveAdmin.register User do
     redirect_to admin_users_url, :notice => "User account deactivated"
   end
 
-  member_action :activate, method: :put do
+  member_action :reactivate, method: :put do
     user = User.friendly.find(params[:id])
-    user.activate!
+    user.reactivate!
     redirect_to admin_users_url, :notice => "User account activated"
   end
 end

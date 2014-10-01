@@ -164,7 +164,6 @@ te:
   current_decision: "ప్రస్తుత చర్చ"
   previous_decisions: "మునుపటి చర్చ"
   see_previous_decisions: "మునుపటి చర్చలను చూడండి"
-  create_new_proposal: "కొత్త ప్రతిపాదనను సృష్టించండి"
   empty_decision_index: "ఈ సమూహంలో చర్చలేవీ ఇంకా చేపట్టలేదు."
   description_history:
     subheader: "రూపాంతరం"
@@ -266,8 +265,6 @@ te:
         admin_name: "మీ పేరు ఏమిటి?"
         admin_email: "మీ ఈమెయిలు చిరునామా ఏమిటి?"
     placeholders:
-      discussion:
-        title: "శీర్షిక"
       user:
         email: "ఈమెయిలు"
         password: "సంకేతపదం"

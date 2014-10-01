@@ -1,11 +1,14 @@
-- title ||= "Loomio | Collaborative Decision-Making"
-- description ||= "Loomio is an easy to use online tool for group decision-making. It allows dispersed groups to reach decisions quickly and take constructive action."
-- twitter_creator ||= "@LoomioProject"
+- title ||= t(:'meta_tags.default_title')
+- description ||= t(:'meta_tags.default_description')
+- twitter_creator ||= "@Loomio"
+
 %meta{ name: 'description', content: description }
+
 %meta{ name: 'twitter:card', content: 'summary'}
 %meta{ name: 'twitter:creator', content: twitter_creator }
 %meta{ name: 'twitter:title', content: title }
 %meta{ name: 'twitter:description', content: description }
+
 %meta{ property: 'og:title', content: title }
 %meta{ property: 'og:description', content: description }
 %meta{ property: 'og:type', content: 'website' }
@@ -15,6 +18,10 @@
 %meta{ property: 'og:image:width', content: '1200' }
 %meta{ property: 'og:image:height', content: '1200' }
 %meta{ property: 'og:url', content: request.original_url }
-%meta{property:'fb:app_id', content:ENV['FB_APP_ID_META']}
+%meta{ property: 'fb:app_id', content:ENV['FB_APP_ID_META']}
+
+%meta{property:'og:locale', content: current_locale}
+- detectable_locales.each do |locale|
+  %meta{property:'og:locale:alternate', content: locale}
 
 %link{href: 'https://plus.google.com/116342080294548871960/', rel: 'publisher'}

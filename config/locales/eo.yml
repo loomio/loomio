@@ -178,6 +178,8 @@ eo:
         other: "%{count} jaroj"
   organisation:
     name: "Loomio"
+  sr:
+    toggle_navigation: "Transŝalti navigadon"
   footer:
     about: 'Pri'
     blog: 'Blogo'
@@ -251,6 +253,7 @@ eo:
     reactivation_html: "Vi devos <a href='%{link}'>kontakti nin</a> por reaktivigi vian konton."
     deactivation:
       title: "Malaktivigi vian konton"
+      query: "Ĉu vi bonvolus diri al ni kial vi malaktivigas vian konton?"
       only_coordinator: "Grupo devas havi almenaŭ unu kunordiganton. Vi momente estas la sola kunordiganto de la sekvaj grupoj:"
       instructions: "Por malaktivigi vian konton, vi devos ĉu aldoni alian kunordiganton ĉu malaktivigi la grupojn."
       info_title: "Kion signifos malaktivigon de via konto?"
@@ -322,6 +325,9 @@ eo:
     m7: Redakti siajn proprajn komentojn iam ajn.
     m8: Ekproponi kaj partopreni en proponoj.
     optional_restrictions: "Laŭeble, kunordigantoj povas limigi la kapablojn de membroj."
+  discussion_privacy:
+    public: Ĉi tiu diskuto estas publika en la reto
+    private: Ĉi tiu diskuto estas privata al grupaj membroj
   group_privacy:
     visible_to:
       public: Publike listigita grupo.
@@ -350,6 +356,7 @@ eo:
   message_placeholder: "Skribu mesaĝon por la membroj de grupo %{which_group}."
   email_group_members: "Sendi mesaĝon al la membroj"
   edit_group_settings: "Redakti la grupajn agordojn"
+  manage_members: "Manaĝi membrojn"
   leave_group: "Elirii grupon"
   confirm_leave_hidden_group: "Ĉu vi certas ke vi volas forlasi %{which_group}? Vi ankaŭ estos forigata el eventualaj subgrupoj."
   confirm_leave_group: "Ĉu vi certas, ke vi volas elriri la grupon %{which_group}?"
@@ -410,6 +417,9 @@ eo:
     beta_request_header: "Komenci grupon en Loomio Beta"
     beta_request_description: "Por komenci fari decidojn en Loomio Beta, unua paŝo estas komenci grupon"
     neighbourhood_support_group: "ekz. Subtengrupo por la najbararo"
+    commercial_use_option: en entrepreno, formala organizo aŭ laborejo
+    non_commercial_use_option: en komunuma grupo aŭ neformala reto
+    please_select_an_option: Bonvolu elekti opcion
     confirmation:
       title: Vi preskaŭ pretas! Kontrolu vian retpoŝton.
       body_html: |
@@ -440,6 +450,7 @@ eo:
   empty_discussion_list: "Ankoraŭ nenio okazis en tiu ĉi diskuto."
   go_to_add_comment_html: "Por aldoni komenton, <a href='%{href}'>iru al la fino de la diskuto</a>."
   comment_by: "Komentis %{comment_author}"
+  read_up_to: "Vi legis lastatempe ĝis ĉi tie"
   discussion_list:
     clear_filters: "Viŝi filtrilojn: vidi ĉiujn diskutojn"
     filter_unread:
@@ -801,7 +812,7 @@ eo:
   new_user_form:
     create_an_account: "Krei konton"
   profile_form:
-    view: "Vidi mian profilon"
+    view: "Vidi profilon"
     profile: "Redakti profilon"
     picture: "Bildo"
     use_initials: 'Uzi unuajn literojn de nomo'
@@ -846,10 +857,8 @@ eo:
         admin_email: "Kio estas via retpoŝtadreso?"
         name: "Kio estas la nomo de via grupo?"
         description: "Se vi havas momenton, rakontu al ni pri via grupo"
+        is_commercial: "Kie vi planas uzi Loomion?"
     placeholders:
-      discussion:
-        title: "Titolo"
-        description: "Donu iom da kunteksto..."
       membership_request:
         introduction: "Skribu kelkajn vortojn pri kiu vi estas kaj kial vi volus aliĝi al %{group_name}."
       motion:
@@ -950,7 +959,9 @@ eo:
       summary: "Resumo"
     thread_mailer:
       footer_text: "Respondi rekte al ĉi tiu retpoŝtaĵo aŭ vidi ĝin en Loomio:"
-      footer_html: "Respondu rekte al ĉi tiu retpoŝtaĵo aŭ <a href='%{app_link}'>vidu ĝin en Loomio</a>. Ŝanĝi viajn <a href='%{preferences_link}'>retpoŝtajn preferojn</a>."
+      reply_or_view_online_html: "Respondu al ĉi tiu retpoŝtaĵo rekte aŭ <a href='%{url}'>vidu ĝin en Loomio</a>."
+      unfollow_discussion_html: "<a href='%{unfollow_url}'>Malsekvi</a> por haltigi retpoŝtaĵojn pri ĉi tiu diskuto."
+      change_email_preferences_html: "Ŝanĝu viajn <a href='%{email_preferences_url}'>retpoŝtajn preferojn</a> por malaboni Loomio-retpoŝtaĵojn."
       change_preferences: "Ŝanĝi viajn retpoŝtajn preferojn:"
       new_motion: "%{who} proponis:"
       motion_closing_soon: "Propono fermiĝos en 24 horoj:"
@@ -1040,7 +1051,9 @@ eo:
     back_to_discussion: "Reen al diskuto"
     edited: Redaktita
     groups: "Grupoj"
+    select_error: Bonvolu elekti opcion
     today: Hodiaŭ
+    select: Bonvolu elekti
     months:
       january: Januaro
       february: Februaro
@@ -1091,9 +1104,13 @@ eo:
       fr: Ve
       sa: Sa
       su: Di
+    meridians:
+      am: 'atm'
+      pm: 'ptm'
     please_wait: "Bonvolu atendi"
     privacy: "Privateco"
     private: "Privata"
+    permissions: "Permesoj"
     public: "Publika"
     email: "Retpoŝto"
     start_group: "Komenci grupon!"

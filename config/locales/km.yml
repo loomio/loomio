@@ -248,7 +248,6 @@ km:
   current_decision: "ការសម្រេចចិត្តបច្ចុប្បន្ន"
   previous_decisions: "ការសម្រេចចិត្តមុន "
   see_previous_decisions: "មើលការសម្រេចចិត្តមុន "
-  create_new_proposal: "បង្កើតសំណើថ្មី "
   empty_decision_list_html: "ត្រៀមខ្លួនជាស្រេចដើម្បីធ្វើការសម្រេចចិត្តមួយ?​ <br> ​នរណាម្នាក់អាចចាប់ផ្តើមសំណើរមួយនេះបាន"
   empty_decision_index: "ក្រុមនេះមិនបានធ្វើការសម្រេចចិត្តណាមួយនៅឡើយទេ"
   empty_discussion_list: "មិនមានសកម្មភាពនៅឡើយទេនៅក្នុងការពិភាក្សានេះ"
@@ -449,9 +448,6 @@ km:
         password_confirmation: "បញ្ជាក់ពាក្យសម្ងាត់​"
         language_preference: "ភាសា"
     placeholders:
-      discussion:
-        title: "ចំណងជើង"
-        description: "ផ្តល់នូវបរិបទមួយចំនួន ... "
       membership_request:
         introduction: "សរសេរពាក្យមួយចំនួនអំពីអ្នកជានរណាហើយហេតុអ្វីបានជាអ្នកចង់ចូលរួម %{group_name}."
       motion:

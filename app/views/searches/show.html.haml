@@ -1,14 +1,12 @@
 -if @query.empty?
   .row
-    .span8
+    .col-xs-12
       %h1= t(:'search.empty_search')
       = t(:'search.please_enter_a_search')
 -else
   .row
-    .span8
+    .col-xs-12
       %h1= t("search.header", query: @query)
-    .span4#explanation
-      %p= t("search.description", query: @query)
 
   .search-container
     - if @search_form.results.empty?

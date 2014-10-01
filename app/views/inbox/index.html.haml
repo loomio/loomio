@@ -1,10 +1,10 @@
 .row#inbox-head
-  .span1
+  .col-xs-6.col-sm-2
     %h1 Inbox
-  .span8#inbox-description
+  .col-sm-7#inbox-description.hidden-xs
     %i.fa.fa-star
     = "Here is the activity you haven't read yet."
-  .span2.inbox-preferences
+  .col-xs-6.col-sm-3.inbox-preferences
 
     =link_to inbox_preferences_path, class: 'preferences-link' do
       =image_tag 'options-cog.png'
@@ -14,9 +14,9 @@
   - @inbox.items_by_group do |group, items|
     .inbox-group
       .row
-        .span10
+        .col-xs-10
           %h3= link_to group.full_name, group
-        .span2.mark-all-as-read
+        .col-xs-2.mark-all-as-read
           - discussion_ids = items.select{|i| i.is_a? Discussion }.map(&:id)
           - motion_ids = items.select{|i| i.is_a? Motion }.map(&:id)
           =link_to 'Clear',
@@ -33,8 +33,8 @@
         -if @inbox.unread_items_exceeds_max_for(group)
           %li
             .row
-              .span1
-              .span11
+              .col-xs-1
+              .col-xs-11
                 =@inbox.items_not_shown_count_for(group)
                 more unread items.
                 =link_to 'Visit the group', group, class: 'more-unread-items'

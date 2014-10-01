@@ -1,4 +1,11 @@
 namespace :loomio do
+  task tail_call: :environment do
+    RubyVM::InstructionSequence.compile_option = {
+      :tailcall_optimization => true,
+      :trace_instruction => false
+    }
+  end
+
   task send_proposal_closing_soon: :environment do
     Delayed::Job.enqueue ProposalsClosingSoonJob.new
   end

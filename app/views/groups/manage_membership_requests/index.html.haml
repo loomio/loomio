@@ -11,11 +11,10 @@
           =render_rich_text(request.introduction, false)
           %span.time-ago-subtle= t(:ago, quantity_of_time: time_ago_in_words(request.created_at))
 
-        %td
-          =link_to approve_membership_request_path(request), method: :post, id: "approve-membership-request-#{request.id}" do
-            %button.btn=t(:approve)
-          =t(:or) + ' '
-          =link_to t(:ignore).downcase, ignore_membership_request_path(request), method: :post, id: "ignore-membership-request-#{request.id}"
+        %td.approve-or-ignore
+          =link_to approve_membership_request_path(request), method: :post, id: "approve-membership-request-#{request.id}", class: 'btn btn-primary btn-block' do
+            =t(:approve)
+          =link_to t(:ignore), ignore_membership_request_path(request), method: :post, id: "ignore-membership-request-#{request.id}", class: 'btn btn-default btn-block'
 -else
   .no-current-requests= t(:no_pending_membership_requests)
 
@@ -25,7 +24,7 @@
     %tr
       =render 'requestor', request: request
       %td= render_rich_text(request.introduction, false)
-      %td.span2
+      %td.col-md-2
         -responder = request.responder.name
         -case request.response
         -when 'approved'

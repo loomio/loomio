@@ -83,14 +83,14 @@ class ApplicationController < ActionController::Base
 
   def user_return_path
     if invalid_return_urls.include? session['user_return_to']
-      dashboard_path
+      dashboard_or_root_path
     else
       session['user_return_to']
     end
   end
 
   def invalid_return_urls
-    [nil, new_user_password_url]
+    [nil, root_url, new_user_password_url]
   end
 
   def user_time_zone(&block)

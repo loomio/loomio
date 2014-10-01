@@ -178,6 +178,8 @@ nl-NL:
         other: "%{count} jaren"
   organisation:
     name: "Loomio"
+  sr:
+    toggle_navigation: "Verander navigatie"
   footer:
     about: 'Over'
     blog: 'Blog'
@@ -323,6 +325,9 @@ nl-NL:
     m7: Hun eigen reacties altijd bewerken.
     m8: Voorstellen doen en hieraan deelnemen.
     optional_restrictions: "Optioneel kunnen coördinatoren leden beperken in wat ze kunnen doen."
+  discussion_privacy:
+    public: Deze discussie is openbaar toegankelijk
+    private: Deze discussie is besloten voor leden van de groep
   group_privacy:
     visible_to:
       public: Openbaar getoonde groep.
@@ -351,6 +356,7 @@ nl-NL:
   message_placeholder: "Schrijf een bericht aan de leden van %{which_group}."
   email_group_members: "E-mail groepsleden"
   edit_group_settings: "Wijzig groepsinstellingen"
+  manage_members: "Beheer leden"
   leave_group: "Verlaat groep"
   confirm_leave_hidden_group: "Weet je zeker dat je %{which_group} wilt verlaten? Je wordt ook verwijderd uit alle subgroepen."
   confirm_leave_group: "Weet je zeker dat je %{which_group} wil verlaten?"
@@ -438,12 +444,13 @@ nl-NL:
   previous_decisions: "Vorige beslissingen"
   see_previous_decisions: "Bekijk vorige beslissingen"
   see_more: "Bekijk meer"
-  create_new_proposal: "Maak nieuw voorstel"
+  create_new_proposal: "Maak een voorstel"
   empty_decision_list_html: "Klaar om een beslissing te maken? <br> Iedereen kan een voorstel indienen."
   empty_decision_index: "Deze groep heeft nog geen beslissingen genomen."
   empty_discussion_list: "Er is nog geen activiteit in deze discussie."
   go_to_add_comment_html: "Om een reactie te geven, <a href='%{href}'>ga naar het einde van de discussie</a>."
   comment_by: "Reactie door %{comment_author}"
+  read_up_to: "Je hebt de vorige keer tot hier gelezen"
   discussion_list:
     clear_filters: "Filters opschonen: bekijk alle discussies"
     filter_unread:
@@ -785,7 +792,7 @@ nl-NL:
   new_user_form:
     create_an_account: "Maak een account"
   profile_form:
-    view: "Bekijk mijn profiel"
+    view: "Bekijk profiel"
     profile: "Bewerk profiel"
     picture: "Afbeelding"
     use_initials: 'Gebruik initialen'
@@ -832,9 +839,6 @@ nl-NL:
         description: "Als je een momentje hebt, vertel ons over jouw groep"
         is_commercial: "Waar ben je van plan Loomio te gaan gebruiken?"
     placeholders:
-      discussion:
-        title: "Titel"
-        description: "Geef beschrijving..."
       membership_request:
         introduction: "Omschrijf hier wie je bent en waarom je lid wil worden van %{group_name}."
       motion:
@@ -936,7 +940,9 @@ nl-NL:
       summary: "Samenvatting"
     thread_mailer:
       footer_text: "Reageer direct op deze e-mail of bekijk het op Loomio:"
-      footer_html: "Reageer direct op deze e-mail of <a href='%{app_link}'>bekijk het op Loomio</a>. Verander je <a href='%{preferences_link}'>e-mail voorkeuren<a>."
+      reply_or_view_online_html: "Reageer direct op deze e-mail of <a href='%{url}'>bekijk hem op Loomio</a>."
+      unfollow_discussion_html: "<a href='%{unfollow_url}'>Ontvolg</a> om geen e-mails meer te ontvangen over deze discussie."
+      change_email_preferences_html: "Verander je <a href='%{email_preferences_url}'>e-mail voorkeuren</a> om je uit te schrijven van Loomio e-mails."
       change_preferences: "Verander je e-mail voorkeuren:"
       new_motion: "%{who} stelde voor:"
       motion_closing_soon: "Voorstel sluit binnen 24 uur:"
@@ -1085,6 +1091,7 @@ nl-NL:
     please_wait: "Even geduld"
     privacy: "Privacy"
     private: "Besloten"
+    permissions: "Rechten"
     public: "Openbaar"
     email: "E-mail"
     start_group: "Begin groep!"

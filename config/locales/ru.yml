@@ -162,7 +162,6 @@ ru:
   current_decision: "Текущее решение"
   previous_decisions: "Предыдущие решения"
   see_previous_decisions: "Посмотреть прошлые решения"
-  create_new_proposal: "Создать новое предложение"
   empty_decision_index: "Эта группа пока не приняла никаких решений."
   empty_discussion_list: "В этой дискуссии пока не было активности."
   description_history:

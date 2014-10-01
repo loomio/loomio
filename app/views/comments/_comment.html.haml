@@ -11,12 +11,12 @@
 
           .comment-actions
             - if can? :destroy, comment
-              = link_to "#", 'data-title' => t(:delete_comment), 'data-body' => t(:confirm_delete_comment), 'data-confirm-path' => comment_path(comment), 'data-method-type' => 'delete', class: 'confirm-dialog', id: "delete-comment-#{comment.id}" do
-                .delete-icon{'data-title' => t(:delete_comment)}
+              = link_to comment_path(comment), method: :delete, data: { confirm: t(:confirm_delete_comment) }, id: "delete-comment-#{comment.id}" do
+                .delete-icon.js-tooltip{title: t(:delete_comment)}
                   %i.fa.fa-times
             - if can? :edit, comment
               = link_to [:edit, comment] do
-                .edit-icon.edit-icon-small.edit-comment{'data-title' => t(:'edit_comment.edit_comment')}
+                .edit-icon.edit-icon-small.edit-comment.js-tooltip{title: t(:'edit_comment.edit_comment')}
                   %i.fa.fa-pencil
         .activity-item-header
           ~ add_mention_links(render_rich_text(comment.body.to_s.force_encoding("UTF-8"), comment.uses_markdown?)).html_safe
