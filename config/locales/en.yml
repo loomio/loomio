@@ -212,8 +212,13 @@ en:
     terms: 'Terms'
 
   inbox:
+    clear: 'Clear'
+    title: 'Inbox'
+    preferences: 'Inbox preferences'
+    what_you_have_not_read_yet: "Here is the activity you haven't read yet."
     dropdown-btn: 'Inbox'
     empty: You're up to date! There are no comments you haven't seen.
+    preferences_instructions_html: '<strong>Drag items</strong> to reorder them.  <strong>Uncheck</strong> to remove from inbox.'
 
   notifications:
     header: "Notifications"
@@ -1225,6 +1230,7 @@ en:
   persona: "Persona"
 
   common:
+    settings: Settings
     dashboard: Dashboard
     unread: Unread
     filter: 'Filter:'
