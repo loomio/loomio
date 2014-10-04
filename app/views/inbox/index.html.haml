@@ -1,14 +1,14 @@
 .row#inbox-head
   .col-xs-6.col-sm-2
-    %h1 Inbox
+    %h1= t :'inbox.title'
   .col-sm-7#inbox-description.hidden-xs
     %i.fa.fa-star
-    = "Here is the activity you haven't read yet."
+    = t :what_you_have_not_read_yet
   .col-xs-6.col-sm-3.inbox-preferences
 
     =link_to inbox_preferences_path, class: 'preferences-link' do
       =image_tag 'options-cog.png'
-      %span Settings
+      %span= t :'common.settings'
 
 .inbox-container
   - @inbox.items_by_group do |group, items|
@@ -19,7 +19,7 @@
         .col-xs-2.mark-all-as-read
           - discussion_ids = items.select{|i| i.is_a? Discussion }.map(&:id)
           - motion_ids = items.select{|i| i.is_a? Motion }.map(&:id)
-          =link_to 'Clear',
+          =link_to t(:'inbox.clear'),
             inbox_mark_as_read_path(discussion_ids: discussion_ids.join('x'),
                                     motion_ids: motion_ids.join('x')),
             class: 'mark-all-as-read-btn', remote: true
