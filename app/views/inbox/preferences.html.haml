@@ -1,9 +1,5 @@
-%h2 Inbox preferences
-%p
-  %strong Drag items
-  to reorder them.
-  %strong Uncheck
-  to remove from inbox.
+%h2= t :'inbox.preferences'
+%p= t :'inbox.preferences_instructions_html'
 
 
 =simple_form_for @inbox_preferences_form,

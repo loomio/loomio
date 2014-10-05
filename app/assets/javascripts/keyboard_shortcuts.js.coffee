@@ -15,10 +15,13 @@ $ ->
 
     if !active.is('input, textarea, select') or event.which == 27
       switch event.which
-        when 71, 27 # G or ESC for groups search dropdown
+        when 71 # G for groups search dropdown
           $('#groups>a').click()
           $('#groups').find('.group-dropdown-search').focus()
           event.preventDefault()
+        when 27 # ESC for closing groups search dropdown (if it's open)
+          if $('#groups').hasClass('open')
+            $('#groups>a').click()
         when 78 # N for notifications dropdown
           $('#notifications-container>a').click()
         when 83 # S for search box
