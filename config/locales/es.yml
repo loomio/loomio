@@ -210,7 +210,7 @@ es:
   request_new_group: "Crear un grupo"
   start_new_group: "Empieza un nuevo grupo"
   start_new_group_hint: "Empieza a tomar decisiones "
-  find_a_group: "Encontrar un grupo"
+  find_a_group: "Buscar un grupo"
   find_a_group_hint: "Explora grupos abiertos al público"
   search_for_group: "Buscar un grupo..."
   no_groups_found: "¡No se han encontrado grupos con ese nombre!"

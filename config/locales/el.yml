@@ -188,8 +188,13 @@ el:
     public_groups: 'Δημόσιες ομάδες'
     terms: 'Όροι'
   inbox:
+    clear: 'Καθάρισμα'
+    title: 'Εισερχόμενα'
+    preferences: 'Προτιμήσεις εισερχομένων'
+    what_you_have_not_read_yet: "Ορίστε η δραστηριότητα που δεν έχετε διαβάσει ακόμη."
     dropdown-btn: 'Εισερχόμενα'
     empty: Είστε ενήμεροι! Δεν υπάρχουν σχόλια που δεν έχετε δει.
+    preferences_instructions_html: '<strong>Σύρετε αντικείμενα</strong> για να τους αλλάξετε την σειρά. <strong>Αποεπιλέξτε</strong> για να τα αφαιρέσετε από τα εισερχόμενα.'
   notifications:
     header: "Ειδοποιήσεις"
     new_discussion: "ξεκίνησα μια συζήτηση"
@@ -1026,6 +1031,7 @@ el:
   google: "Google"
   persona: "Persona"
   common:
+    settings: Ρυθμίσεις
     dashboard: Πίνακας Εργαλείων
     unread: Αδιάβαστα
     filter: 'Φίλτρο:'
