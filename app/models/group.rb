@@ -16,7 +16,6 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :payment_plan, in: PAYMENT_PLANS
   validates_inclusion_of :discussion_privacy_options, in: DISCUSSION_PRIVACY_OPTIONS
   validates_inclusion_of :membership_granted_upon, in: MEMBERSHIP_GRANTED_UPON_OPTIONS
-  validates :description, length: { maximum: 250 }
   validates :name, length: { maximum: 250 }
 
   validate :limit_inheritance
