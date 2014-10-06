@@ -18,7 +18,6 @@ class Motion < ActiveRecord::Base
   validates_presence_of :name, :discussion, :author, :closing_at
 
   validates_length_of :name, maximum: 250
-  validates_length_of :outcome, maximum: 250
 
   include Translatable
   is_translatable on: [:name, :description]
