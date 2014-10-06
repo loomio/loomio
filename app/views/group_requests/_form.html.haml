@@ -6,7 +6,7 @@
   = f.input :description, as: :text, required: false
   = f.input :payment_plan, as: :hidden
   - if using_commercial_page?
-    %a{ :class => 'btn btn-info btn-lg commercial-page-show', :data => { :target => "#commercial" } } 
+    %a{ :class => 'btn btn-info btn-lg commercial-page-show', :data => { :target => "#commercial" } }
       = submit_label
     = render 'commercial', f: f
     = render 'non_commercial', f: f

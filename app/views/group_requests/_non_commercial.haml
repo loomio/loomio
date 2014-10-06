@@ -7,11 +7,11 @@
       .col-xs-8
         .quote.buffer-bottom
           %p "Loomio is fast and flexible, so we can give more volunteers a stake, and make better informed decisions."
-          %p= "- Jimmy Green, #{link_to 'Generation Zero', 'http://www.generationzero.org/'}".html_safe
+          %p= "- Jimmy Green, #{link_to 'Generation Zero', 'http://www.generationzero.org/', target: 'blank'}".html_safe
         %p.features.buffer-bottom
           If your community doesn't have the resources to pay for software, we |
           want you to use Loomio free. It's our gift to you.
         .buttons.buffer-bottom.clearfix
           = f.submit 'Start your free Loomio group', class: 'btn btn-success hero-text btn-lg col-xs-12', id: 'sign-up-submit'
         .footnote
-          = "In the wrong place? If you're using Loomio for a company or formal organisation, #{link_to 'Click Here', 'javascript:;', class: 'commercial-page-toggle'}. If you have any questions, #{link_to 'get in touch', '/contact'}.".html_safe
+          = "In the wrong place? If you're using Loomio for a company or formal organisation, #{link_to 'click here', 'javascript:;', class: 'commercial-page-toggle', id: 'switch-to-commercial'}. If you have any questions, #{link_to 'get in touch', '/contact'}.".html_safe
