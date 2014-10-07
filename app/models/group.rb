@@ -341,7 +341,7 @@ class Group < ActiveRecord::Base
 
   def add_admin!(user, inviter = nil)
     membership = find_or_create_membership(user, inviter)
-    membership.make_admin!
+    membership.make_admin! && save
     membership
   end
 
