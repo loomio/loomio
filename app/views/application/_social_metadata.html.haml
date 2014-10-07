@@ -21,7 +21,8 @@
 %meta{ property: 'fb:app_id', content:ENV['FB_APP_ID_META']}
 
 %meta{property:'og:locale', content: current_locale}
-- detectable_locales.each do |locale|
+-# detectable_locales.each do |locale|
+- [:es, :fr, :be_BY, :en_US, :en_GB ].each do |locale|
   %meta{property:'og:locale:alternate', content: locale}
 
 %link{href: 'https://plus.google.com/116342080294548871960/', rel: 'publisher'}
