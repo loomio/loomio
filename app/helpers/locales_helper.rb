@@ -105,7 +105,11 @@ module LocalesHelper
 
   # 2 of 2 places untrusted user input can enter system
   def params_selected_locale
-    filter_locales(params[:locale], all_locale_strings).first
+    locale = params[:locale] || params[:fb_locale]
+    return nil if locale.nil?
+
+    fixed_params_locale = locale.gsub('_', '-')
+    filter_locales(fixed_params_locale, all_locale_strings).first
   end
 
   def user_selected_locale
