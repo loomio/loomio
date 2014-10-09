@@ -3,16 +3,16 @@ es:
     email_preferences:
       edit:
         title: 'Preferencias de correo electrónico '
-        when_do_you_want_emails: 'Enviadme correo electrónico:'
-        email_missed_yesterday: "'Ayer en Loomio' - un resumen diario de cualquier actividad que no he leído."
-        email_when_mentioned: "Cuando Yo soy @nombrado "
-        email_followed_threads: "Cuando hay actividad en los temas que yo estoy siguiendo"
-        email_when_proposal_closing_soon: "Últimas 24 horas antes del cierre de la proposición. "
+        when_do_you_want_emails: 'Enviarme un correo electrónico:'
+        email_missed_yesterday: "'Ayer en Loomio' - un resumen diario de toda la actividad no leída"
+        email_when_mentioned: "Cuando sea @nombrado "
+        email_followed_threads: "Cuando hay actividad en los temas que sigo."
+        email_when_proposal_closing_soon: "Últimas 24 horas para el cierre de la propuesta."
         email_new_discussions_and_proposals: 'Nuevas discusiones y propuestas.'
         for_these_groups: "Para estos grupos:"
         submit: "Guardar preferencias"
   explore:
-    header: "Explore grupos abiertos al público"
+    header: "Explorar grupos públicos"
   try_it:
     header: "Prueba Loomio"
     start_a_group: "Inicie un grupo para tomar decisiones con su propia comunidad."
@@ -178,6 +178,8 @@ es:
         other: "%{count} años"
   organisation:
     name: "Loomio"
+  sr:
+    toggle_navigation: "Mostrar / Ocultar Navegación"
   footer:
     about: 'Acerca de Loomio'
     blog: 'Blog'
@@ -186,8 +188,13 @@ es:
     public_groups: 'Grupos públicos'
     terms: 'Términos'
   inbox:
+    clear: 'Limpiar'
+    title: 'Bandeja de entrada'
+    preferences: 'Preferencias de bandeja de entrada'
+    what_you_have_not_read_yet: "He aquí lo que te has perdido"
     dropdown-btn: 'Bandeja de entrada'
     empty: ¡Estás al día! No hay comentarios que no hayas visto.
+    preferences_instructions_html: '<strong>Arrastra los elementos</strong> para reordenarlos. <strong>Deselecciónalos</strong> para eliminarlos de tu bandeja de entrada.'
   notifications:
     header: "Notificaciones"
     new_discussion: "Comenzó una discusión"
@@ -1016,6 +1023,7 @@ es:
   google: "Google"
   persona: "Persona"
   common:
+    settings: Ajustes
     dashboard: Panel de control
     unread: No leído
     filter: 'Filtrar:'
