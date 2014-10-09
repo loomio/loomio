@@ -12,8 +12,7 @@
     = render 'social_metadata'
 
   %body{class: "#{controller_name} #{action_name}"}
-    - analytics_scope do
-      = render 'google_tag_manager'
+    = render 'google_tag_manager'
     = render 'flash_messages'
 
     .container-fluid

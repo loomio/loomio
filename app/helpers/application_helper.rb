@@ -123,14 +123,6 @@ module ApplicationHelper
     !user_signed_in?
   end
 
-  def analytics_scope
-    if Rails.env.production? || Rails.env.staging?
-      unless controller_name == 'searches'
-        yield
-      end
-    end
-  end
-
   def render_announcements?
     if user_signed_in?
       not %w[group_requests group_setup].include? controller_name

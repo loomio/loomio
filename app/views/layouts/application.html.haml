@@ -19,8 +19,7 @@
     = render 'social_metadata', description: @meta_description, title: @meta_title
 
   %body{class: "#{controller_name} #{action_name}"}
-    - analytics_scope do
-      = render 'google_tag_manager'
+    = render 'google_tag_manager'
     = render 'application/header'
     .container.main-container
       = render 'application/announcements'
