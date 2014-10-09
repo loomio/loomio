@@ -27,5 +27,5 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
 
 
     author_name: ->
-      author().name
+      @author().name
 

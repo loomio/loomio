@@ -1,40 +1,37 @@
-#main-content
-  .l-row
-    .card.l-column
-      %h1.card-header
-        {{discussion.title}}
-        %i.fa.fa-star-o.icon-22
-      .card-details
-        Started {{discussion.created_at | timeFromNowInWords}} by {{discussion.author.name}}
-      .media
-        .media-img
-          %img{src: '/img/group-icon.jpg'}
-        .media-text
-          {{discussion.group.name}}
-          {{discussion.group.memberships_count}} members
-        .media-details
-          25 members
-      %img{src: '/img/group-users.png'}
-        %i.fa.fa-plus
-      .card-btn.btn-primary.l-right
-        %i.fa.fa-lock.white
-        Share
+.container
+  .row
+    .col-xs-12
+      -# dicussion title, context card
+      .card.card-thread-context
+        .card-content
+          .card-content-header
+            .card-options-menu.pull-right
+              %i.fa.fa-chevron-down
+            %h1 {{discussion.title}}
+            .author-name.card-meta-text
+              Started by
+              %strong {{discussion.author().name}}
+            .published-at.card-meta-text
+              %abbr.timeago
+                {{discussion.created_at | timeFromNowInWords}}
 
-  %proposal{proposal: 'discussion.active_proposal', discussion: 'discussion'}
+          .card-content-body
+            {{ discussion.description}}
 
-  .l-row
-    .card.l-column
-      %div{'ng-repeat' => 'event in discussion.events()', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
-      -#-#"discussion_title_edited",
-      -#-#"discussion_description_edited",
-      -#-#"new_motion",
-      -#-#"new_vote",
-      -#-#"motion_closed",
-      -#-#"motion_close_date_edited",
-      -#-#"motion_blocked"]
-      -#-#"new_discussion",
 
-  %start_proposal{discussion: 'discussion'}
 
-  %add_comment{discussion: 'discussion'}
+      %proposal{proposal: 'discussion.active_proposal', discussion: 'discussion'}
+
+      .card.card-thread-items
+        .card-meta-header
+          %h1 Discussion
+        .card-content
+          %div{'ng-repeat' => 'event in discussion.events()',
+               ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
+          -#-@discussion.items.each do |item|
+            -#= render "style_guide/thread_items/#{item.kind}", item: item
+
+      %start_proposal{discussion: 'discussion'}
+
+      %add_comment{discussion: 'discussion'}
 
