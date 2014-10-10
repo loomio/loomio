@@ -10,6 +10,8 @@
     "angular-bootstrap-datetimepicker": "latest",
     "angular-cache": "~>2.1.0",
     "faye": "latest",
-    "d3": "~3.4.0"
+    "d3": "~3.4.0",
+    "angular-translate": "~2.4.0",
+    "angular-translate-loader-url": "~2.4.0"
   }
 }

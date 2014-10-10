@@ -1,0 +1,9 @@
+.thread-item.new_vote{ng_controller: 'NewVoteItemController'}
+  {{vote.author_name()}}
+  .thread-item-vote-icon.pull-left
+    -#.vote-icon{class: vote.position_verb}
+
+  .thread-item-activity-description
+    {{ 'no_details' | translate}}
+  .thread-item-body.thread-item-vote-statement
+    {{ vote.statement }}
