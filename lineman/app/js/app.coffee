@@ -1,7 +1,17 @@
-angular.module('loomioApp', ['ngRoute', 'jmdobry.angular-cache', 'ui.bootstrap.datetimepicker']).config ($httpProvider) ->
+angular.module('loomioApp', ['ngRoute', 'jmdobry.angular-cache', 'ui.bootstrap.datetimepicker','pascalprecht.translate']).config ($httpProvider) ->
   # consume the csrf token from the page
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
+
+angular.module('loomioApp').config ($translateProvider) ->
+  console.log 'hi'
+  $translateProvider.useUrlLoader('http://localhost:3000/localisation/en');
+  #$translateProvider.useStaticFile$translateProvider.useUrlLoader('foo/bar.json');sLoader
+    #prefix: '/localisation/'
+  #$translateProvider.useLocalStorage();
+  $translateProvider.preferredLanguage('en');
+
+  # translation via translation loader goes here
 
 # setup the RecordStoreService so that it knows about all the models we care about
 angular.module('loomioApp').run (RecordStoreService,
@@ -9,10 +19,12 @@ angular.module('loomioApp').run (RecordStoreService,
                                  CommentModel,
                                  DiscussionModel,
                                  ProposalModel,
-                                 EventModel) ->
+                                 EventModel,
+                                 VoteModel) ->
 
   RecordStoreService.registerModel(UserModel)
   RecordStoreService.registerModel(ProposalModel)
   RecordStoreService.registerModel(DiscussionModel)
   RecordStoreService.registerModel(CommentModel)
   RecordStoreService.registerModel(EventModel)
+  RecordStoreService.registerModel(VoteModel)
