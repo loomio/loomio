@@ -1031,8 +1031,8 @@ de:
     dashboard: Schreibtisch
     unread: Ungelesen
     filter: 'Filter:'
-    following: Thema nicht folgen
-    not_following: Thema folgen
+    following: Gefolgt
+    not_following: Nicht gefolgt
     back_to_discussion: "Zurück zur Diskussion"
     edited: Bearbeitet
     groups: "Gruppen"

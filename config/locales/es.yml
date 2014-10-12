@@ -6,8 +6,8 @@ es:
         when_do_you_want_emails: 'Enviarme un correo electrónico:'
         email_missed_yesterday: "'Ayer en Loomio' - un resumen diario de toda la actividad no leída"
         email_when_mentioned: "Cuando sea @nombrado "
-        email_followed_threads: "Cuando hay actividad en los temas que sigo."
-        email_when_proposal_closing_soon: "Últimas 24 horas para el cierre de la propuesta."
+        email_followed_threads: "Cuando haya actividad en los temas que sigo."
+        email_when_proposal_closing_soon: "24 horas antes del cierre de una propuesta."
         email_new_discussions_and_proposals: 'Nuevas discusiones y propuestas.'
         for_these_groups: "Para estos grupos:"
         submit: "Guardar preferencias"
@@ -40,7 +40,7 @@ es:
   devise:
     invitations:
       send_instructions: 'La invitación ha sido enviada a %{email}.'
-      invitation_token_invalid: '!Esta invitación ya no es válida!'
+      invitation_token_invalid: '¡Esta invitación ya no es válida!'
       updated: 'La cuenta ha sido creada.'
       no_invitations_remaining: "No hay más invitaciones"
     mailer:
@@ -56,10 +56,10 @@ es:
     discussion_not_created: "No se pudo crear la discusión."
     discussion_not_moved: "No tienes permisos para trasladar esta discusión a %{destination_group.name}"
     group_not_archived: "El grupo no pudo ser archivado."
-    invalid_close_date: "Fecha de cierre invalida. Por favor, comprueba que la fecha no haya pasado."
+    invalid_close_date: "La fecha de cierre no es válida. Por favor, comprueba que la fecha no haya pasado."
     invalid_email: "Por favor introduzca al menos una dirección de correo electrónico valida"
     image_upload_fail: "Imposible cargar la imagen. Asegúrate que el archivo sea inferior a 1 MB y sea un .jpeg, .png, o .gif"
-    motion_closing_inputs: "Fecha de cierre inválida"
+    motion_closing_inputs: "La fecha de cierre no es válida"
     motion_outcome_not_created: "No es posible publicar la decisión."
     motion_outcome_not_updated: "No es posible actualizar la discusión."
     only_group_coordinator_destroy: "No puedes irte de este grupo porque eres el único coordinador. Puedes desactivar tu grupo por medio de las opciones\nabajo o <a href='%{add_coordinator}'>adherir a nuevo coordinador</a> al grupo."
@@ -68,7 +68,7 @@ es:
     position_not_updated: "Su posición no ha sido actualizada."
     settings_not_updated: "Tus ajustes no han sido modificados."
     group_request_already_accepted: "¡Lo siento! Esta invitación no es válida o ya ha sido aceptada."
-    group_request_invalid_token: "¡Lo siento! Ese código es inválido"
+    group_request_invalid_token: "¡Lo siento! Ese código no es válido"
     group_private_or_not_found: "No se encontro grupo. ⏎\n⏎\nEste grupo puede ser privado. Si alguien te ha dado este enlace, pide que te agreguen al grupo."
     group_already_setup: "El grupo que estás tratando de configurar ya existe."
     passwords_did_not_match: "Las contraseñas no coinciden"
@@ -238,7 +238,7 @@ es:
     header: "Bienvenido a tu primera discusión "
     message: "<p> El tema se encuentra al principio de la pagina, con el contexto debajo.</p><p>La discusión está a la izquierda, las decisiones aparecen a la derecha. Si piensas que tu grupo está listo para tomar una decisión, puedes crear una propuesta para que sea considerada.</p>"
   group_helper_text:
-    header: "¡Bienvenido a tu nuevo grupo!"
+    header: "¡Bienvenido/a a tu nuevo grupo!"
     message: "<p>Esta es la <strong> página del grupo</strong>. A la izquierda se encuentra la lista de todas las discusiones de este grupo.</p><p>Cuando quieras que el grupo discuta sobre otro tema, empieza una nueva discusión.</p>"
   dashboard_helper_text:
     header: "Bienvenido/a a tu página de inicio"
@@ -252,8 +252,8 @@ es:
   user_profile:
     back: "Vuelta a mi perfil"
     change_password: "Cambia tu contraseña"
-    deactivate_account: "Desactivar cuenta"
-    about_deactivation: "¿Qué significará esto?"
+    deactivate_account: "Desactiva tu cuenta"
+    about_deactivation: "¿Qué implicará esto?"
     confirm_account_deactivation: "¿Estás seguro de que quieres desactivar tu cuenta?"
     reactivation_html: "Usted necesitará <a href='%{link}'>contactar</a> con nosotros para reactivar su cuenta."
     deactivation:

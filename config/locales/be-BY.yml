@@ -188,8 +188,13 @@ be-BY:
     public_groups: 'Публічныя групы'
     terms: 'Умовы'
   inbox:
+    clear: 'Ачысціць'
+    title: 'Паведамленні'
+    preferences: 'Налады паведамленняў'
+    what_you_have_not_read_yet: "Тое, што вы яшчэ не прачыталі"
     dropdown-btn: 'Паведамленні'
     empty: Вы ў курсе ўсіх падзей! Каментароў, якія трэба праглядзець, больш не засталося.
+    preferences_instructions_html: '<strong>Перацягніце паведамленні</strong> каб змяніць іх парадак.  <strong>Зняміце адзнаку</strong> каб убраць іх са спіса.'
   notifications:
     header: "Апавяшчэнні"
     new_discussion: "распачаў абмеркаванне"
@@ -384,7 +389,7 @@ be-BY:
   confirm_ignore_membership_request: "Вы ўпэўнены, што хачаце ігнараваць запыт чалецтва %{which_user}?"
   membership_requested: "Запыт чалецтва"
   request_membership: "Запытаць чалецтва"
-  ask_to_join_group: "Дашліце запыт каб далучыцца да групы"
+  ask_to_join_group: "Запытаць далучэння да групы"
   confirm_remove_membership_request: "Вы ўпэўнены, што хочаце адмяніць свой запыт чалецчтва у гэтай групе?"
   no_pending_membership_requests: "На дадзены момант няма неразгледжаных запытаў на чалецтва ў групе."
   subgroups: "Падгрупы"
@@ -1043,6 +1048,7 @@ be-BY:
   google: "Google"
   persona: "Persona"
   common:
+    settings: Налады
     dashboard: Галоўная
     unread: Непрачытаныя
     filter: 'Фільтр:'
