@@ -12,6 +12,7 @@ describe VotesController do
   end
 
   describe "casting a vote" do
+    let(:vote) { Vote.new(motion: motion, user: user, position: 'yes') }
     it 'requires the user can vote' do
       VotesController.any_instance.should_receive(:require_user_can_vote)
       post :create, motion_id: motion.id, vote: {position: 'yes'}

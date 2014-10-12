@@ -49,6 +49,15 @@ class MotionService
     end
   end
 
+  def self.create(motion)
+    motion.author.ability.authorize! :create, motion
+    if motion.save
+      Events::NewMotion.publish!(motion)
+    else
+      false
+    end
+  end
+
   def self.reopen(motion, close_at)
     motion.closed_at = nil
     motion.closing_at = close_at

@@ -1,5 +1,12 @@
 Loomio::Application.routes.draw do
 
+  scope '/angular_support', controller: 'angular_support', path: 'angular_support', as: 'angular_support' do
+    get 'setup_for_add_comment'
+    get 'setup_for_like_comment'
+    get 'setup_for_vote_on_proposal'
+  end
+
+
   slug_regex = /[a-z0-9\-\_]*/i
 
   ActiveAdmin.routes(self)
@@ -13,10 +20,18 @@ Loomio::Application.routes.draw do
     end
   end
 
-  namespace :api, path: '/api/v1' do
-    resources :comments, only: :create
+  namespace :style_guide do
+    get 'discussion/:key', action: :discussion
   end
 
+  namespace :api, path: '/api/v1' do
+    resources :discussions, only: :show
+    resources :comments, only: :create
+    namespace :faye do
+      get :subscribe
+      get :who_am_i
+    end
+  end
 
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
@@ -175,6 +190,7 @@ Loomio::Application.routes.draw do
   end
 
   get '/localisation/datetime_input_translations' => 'localisation#datetime_input_translations', format: 'js'
+  get '/localisation/:locale' => 'localisation#show', format: 'js'
 
   resources :users, path: 'u', only: [:new] do
     member do

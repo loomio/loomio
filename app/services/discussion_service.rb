@@ -1,5 +1,6 @@
 class DiscussionService
   def self.unlike_comment(user, comment)
+    user.ability.authorize!(:like, comment)
     comment.unlike(user)
   end
 

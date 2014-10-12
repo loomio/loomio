@@ -1,0 +1,34 @@
+- vote = item.eventable
+.thread-item.new_vote
+  .thread-item-vote-icon.pull-left
+    .vote-icon{class: vote.position_verb}
+
+  .thread-item-activity-description
+    - if vote.statement.blank?
+      - case vote.position_verb
+      - when 'agree'
+        = t('thread_item.user_agreed_on_proposal_html', name: vote.author_name)
+      - when 'abstain'
+        = t('thread_item.user_abstained_on_proposal_html', name: vote.author_name)
+      - when 'disagree'
+        = t('thread_item.user_disagreed_on_proposal_html', name: vote.author_name)
+      - when 'block'
+        = t('thread_item.user_agreed_on_proposal_html', name: vote.author_name)
+    -else
+      - case vote.position_verb
+      - when 'agree'
+        = t('thread_item.user_agreed_on_proposal_with_statement_html', name: vote.author_name)
+      - when 'abstain'
+        = t('thread_item.user_abstained_on_proposal_with_statement_html', name: vote.author_name)
+      - when 'disagree'
+        = t('thread_item.user_disagreed_on_proposal_with_statement_html', name: vote.author_name)
+      - when 'block'
+        = t('thread_item.user_agreed_on_proposal_with_statement_html', name: vote.author_name)
+
+  .thread-item-body.thread-item-vote-statement
+    = vote.statement
+
+  .thread-item-footer
+    %abbr.timeago{title: vote.created_at.iso8601}
+      = time_ago_in_words(vote.created_at)
+      ago

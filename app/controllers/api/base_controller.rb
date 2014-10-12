@@ -1,7 +1,18 @@
 class API::BaseController < ActionController::Base
+  skip_after_filter :intercom_rails_auto_include
+  #class Api::BaseController < BaseController
   after_filter :increment_measurement
+  respond_to :json
 
   protected
+  def render_event_or_model_error(event, model)
+    if event
+      render json: event, serializer: EventSerializer
+    else
+      render json: model, serializer: ModelErrorSerializer, status: 400, root: :error
+    end
+  end
+
   def increment_measurement
     Measurement.increment(measurement_name)
   end
@@ -32,4 +43,3 @@ class API::BaseController < ActionController::Base
     @current_ability ||= AccountAbility.new(current_user)
   end
 end
-
