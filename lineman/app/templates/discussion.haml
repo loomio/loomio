@@ -1,0 +1,37 @@
+.container
+  .row
+    .col-xs-12
+      -# dicussion title, context card
+      .card.card-thread-context
+        .card-content
+          .card-content-header
+            .card-options-menu.pull-right
+              %i.fa.fa-chevron-down
+            %h1 {{discussion.title}}
+            .author-name.card-meta-text
+              Started by
+              %strong {{discussion.author().name}}
+            .published-at.card-meta-text
+              %abbr.timeago
+                {{discussion.created_at | timeFromNowInWords}}
+
+          .card-content-body
+            {{ discussion.description}}
+
+
+
+      %proposal{proposal: 'discussion.active_proposal', discussion: 'discussion'}
+
+      .card.card-thread-items
+        .card-meta-header
+          %h1 Discussion
+        .card-content
+          %div{'ng-repeat' => 'event in discussion.events()',
+               ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
+          -#-@discussion.items.each do |item|
+            -#= render "style_guide/thread_items/#{item.kind}", item: item
+
+      %start_proposal{discussion: 'discussion'}
+
+      %add_comment{discussion: 'discussion'}
+

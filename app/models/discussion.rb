@@ -67,6 +67,10 @@ class Discussion < ActiveRecord::Base
 
   before_create :set_last_comment_at
 
+  def published_at
+    created_at
+  end
+
   def followers
     User.
       active.
@@ -109,6 +113,8 @@ class Discussion < ActiveRecord::Base
   def current_motion_closing_at
     current_motion.closing_at
   end
+
+  alias_method :current_proposal, :current_motion
 
   def number_of_comments_since(time)
     comments.where('comments.created_at > ?', time).count

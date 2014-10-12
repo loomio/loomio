@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: 35084ca71a48e48e4aaa16366b7d1c73039bfed4
+  revision: 930d34cd224272687613dcf1db4cf5b1347f1098
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -31,6 +31,8 @@ GEM
       activesupport (= 4.1.6)
       builder (~> 3.1)
       erubis (~> 2.7.0)
+    active_model_serializers (0.8.2)
+      activemodel (>= 3.0)
     activemodel (4.1.6)
       activesupport (= 4.1.6)
       builder (~> 3.1)
@@ -105,9 +107,10 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    cookiejar (0.3.2)
     countries (0.9.3)
       currencies (~> 0.4.2)
-    country_select (2.0.0)
+    country_select (2.0.1)
       countries (~> 0.9, >= 0.9.3)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
@@ -148,6 +151,14 @@ GEM
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
+    em-http-request (1.1.2)
+      addressable (>= 2.3.4)
+      cookiejar
+      em-socksify (>= 0.3)
+      eventmachine (>= 1.0.3)
+      http_parser.rb (>= 0.6.0)
+    em-socksify (0.3.0)
+      eventmachine (>= 1.0.0.beta.4)
     email_spec (1.6.0)
       launchy (~> 2.1)
       mail (~> 2.2)
@@ -164,6 +175,17 @@ GEM
       i18n (~> 0.5)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    faye (1.0.3)
+      cookiejar (>= 0.3.0)
+      em-http-request (>= 0.3.0)
+      eventmachine (>= 0.12.0)
+      faye-websocket (>= 0.7.0)
+      multi_json (>= 1.0.0)
+      rack (>= 1.0.0)
+      websocket-driver (>= 0.3.0)
+    faye-websocket (0.7.4)
+      eventmachine (>= 0.12.0)
+      websocket-driver (>= 0.3.1)
     ffi (1.9.3)
     fog (1.23.0)
       fog-brightbox
@@ -218,6 +240,7 @@ GEM
       rack (>= 1.4.5)
     hike (1.2.3)
     http_accept_language (2.0.2)
+    http_parser.rb (0.6.0)
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -330,6 +353,8 @@ GEM
       websocket-driver (>= 0.2.0)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
+    private_pub (1.0.3)
+      faye
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -393,7 +418,7 @@ GEM
       rspec-mocks (>= 2.99, < 4.0)
     rspec-collection_matchers (1.0.0)
       rspec-expectations (>= 2.99.0.beta1)
-    rspec-core (3.1.3)
+    rspec-core (3.1.4)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.1)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -401,7 +426,7 @@ GEM
     rspec-its (1.0.1)
       rspec-core (>= 2.99.0.beta1)
       rspec-expectations (>= 2.99.0.beta1)
-    rspec-mocks (3.1.0)
+    rspec-mocks (3.1.1)
       rspec-support (~> 3.1.0)
     rspec-rails (3.1.0)
       actionpack (>= 3.0)
@@ -506,6 +531,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers (~> 0.8.1)
   activeadmin!
   activerecord-postgres-hstore
   airbrake
@@ -565,6 +591,7 @@ DEPENDENCIES
   pg (~> 0.17.1)
   pg_search (~> 0.7.8)
   poltergeist
+  private_pub
   pry-rails
   puma
   quiet_assets

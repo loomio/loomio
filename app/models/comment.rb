@@ -3,6 +3,7 @@ class Comment < ActiveRecord::Base
   include Translatable
 
   has_paper_trail
+  acts_as_tree
   is_translatable on: :body
 
   belongs_to :discussion, counter_cache: true
@@ -11,15 +12,19 @@ class Comment < ActiveRecord::Base
   has_many :comment_votes, dependent: :destroy
   has_many :events, as: :eventable, dependent: :destroy
   has_many :attachments
+  has_many :likers, through: :comment_votes, source: :user
 
   validates_presence_of :user
   validate :has_body_or_attachment
   validate :attachments_owned_by_author
+  validate :parent_comment_belongs_to_same_discussion
 
   after_initialize :set_defaults
   after_destroy :send_discussion_comment_deleted!
 
   default_scope { includes(:user).includes(:attachments).includes(:discussion) }
+
+  #scope :published, -> { where(published: true) }
 
   delegate :name, to: :user, prefix: :user
   delegate :name, to: :user, prefix: :author
@@ -34,6 +39,15 @@ class Comment < ActiveRecord::Base
 
   alias_method :author, :user
   alias_method :author=, :user=
+
+  def published_at
+    created_at
+  end
+
+  def author_role
+    #lookup role from membership of author to comment group
+    ['Program Coordinator', 'Visitor', 'Cooperative Member', 'Hat Wearer', 'Dog burger', 'Zip', 'Banana Phone User'].sample
+  end
 
   def author_name
     author.try(:name)
@@ -53,6 +67,10 @@ class Comment < ActiveRecord::Base
 
   def can_be_edited?
     group.members_can_edit_comments? or is_most_recent?
+  end
+
+  def liker_names(max: 3)
+    comment_votes.last(max).map(&:user_name)
   end
 
   def like(user)
@@ -100,8 +118,12 @@ class Comment < ActiveRecord::Base
   end
 
   private
-    def send_discussion_comment_deleted!
-      discussion.comment_deleted!
+    def parent_comment_belongs_to_same_discussion
+      if self.parent.present?
+        unless discussion_id == parent.discussion_id
+          errors.add(:parent, "Needs to have same discussion id")
+        end
+      end
     end
 
     def set_defaults

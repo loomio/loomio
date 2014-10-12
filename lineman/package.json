@@ -1,0 +1,32 @@
+{
+  "name": "lineman-angular-template",
+  "title": "An HTML/JS/CSS app using Angular.JS",
+  "version": "0.0.1",
+  "private": true,
+  "author": {
+    "name": "David Mosher",
+    "company": "DAVEMO Consulting"
+  },
+  "dependencies": {
+    "grunt-angular-templates": "0.3.8",
+    "grunt-ngmin": "~0.0.3",
+    "protractor": ">=0.8.0",
+    "jasmine-given": "~2.1.0",
+    "grunt": "~0.4.1",
+    "grunt-concat-sourcemap": "~0.3.0",
+    "lineman": ">=0.11.6",
+    "coffee-script": "~1.6.3",
+    "selenium-webdriver": "~2.38.1"
+  },
+  "engines": {
+    "node": "~>0.10.5",
+    "npm": "~>1.2.18"
+  },
+  "devDependencies": {
+    "grunt-contrib-haml": "~0.1.1",
+    "grunt-sass": "~0.8.1",
+    "cucumber": "~0.3.3",
+    "grunt-cucumber": "~0.2.3",
+    "grunt-contrib-copy": "~0.5.0"
+  }
+}

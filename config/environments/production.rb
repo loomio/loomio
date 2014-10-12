@@ -83,5 +83,4 @@ Loomio::Application.configure do
     :fog_public => true,
     :fog_host => ENV['FOG_HOST']
   }
-
 end

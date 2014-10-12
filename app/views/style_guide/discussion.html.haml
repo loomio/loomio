@@ -1,0 +1,113 @@
+.container
+  .row
+    .col-xs-12
+      - cover_photo_url = image_url use_parent_if_blank(@group, :cover_photo).url(:desktop)
+
+      .group-header{style: "background-image: url(#{image_path 'cover-photo-gradient.png'}), url('#{cover_photo_url}')"}
+        .group-header-title
+          %h1
+            = render 'linked_group_name', group: @group
+      .thread-settings
+        .privacy.btn.btn-default
+          - if @discussion.private?
+            %i.fa.fa-lock
+            Private
+          - else
+            %i.fa.fa-globe
+            Public
+
+        - if can? :follow, @discussion
+          - if @discussion_reader.following?
+            = link_to unfollow_discussion_path(@discussion), method: :post, class: "btn btn-default pull-right", title: t(:"discussion_context.click_to_unfollow") do
+              %i.fa.fa-eye
+              = t :"common.unfollow"
+          - else
+            = link_to follow_discussion_path(@discussion), method: :post, class: "btn btn-default pull-right", title: t(:"discussion_context.click_to_follow") do
+              %i.fa.fa-eye
+              = t :"common.follow"
+
+      .card.card-thread-context
+        .card-content
+          .card-content-header
+            .card-options-menu.pull-right
+              %i.fa.fa-chevron-down
+            %h1= @discussion.title
+            .author-name.card-meta-text
+              Started by
+              %strong= @discussion.author_name
+            .published-at.card-meta-text
+              %abbr.timeago{title: @discussion.published_at.iso8601}
+                30 minutes ago
+
+          .card-content-body
+            = render_rich_text(@discussion.description)
+
+      .card.card-thread-items
+        .card-meta-header
+          %h1 Discussion
+        .card-content
+          -@discussion.items.each do |item|
+            = render "style_guide/thread_items/#{item.kind}", item: item
+
+      .card.card-start-proposal
+        .media
+          .card-pie-graph-icon.pull-left
+          .media-body
+            .card-meta-text.first-line
+              Ready to make a decision?
+            = link_to 'Start a proposal', '#', data: {toggle: "modal", target: "#startProposalModal"}
+
+        #startProposalModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "startProposalLabel", :role => "dialog", :tabindex => "-1"}
+          .modal-dialog
+            .modal-content
+              .modal-header
+                %button.close{"data-dismiss" => "modal", :type => "button"}
+                  %span{"aria-hidden" => "true"} ×
+                  %span.sr-only Close
+                %h4#startProposalLabel.modal-title Start a proposal
+              .modal-body
+                %p
+                  Proposals allow you to see how everyone feels about a particular course of action.
+
+                %form
+                  .form-group
+                    %label{for: 'proposalTitleField'}
+                      Title
+                    %input#proposalTitleField.form-control{placeholder: 'What is your proposed course of action?'}
+                  .form-group
+                    %label{for: 'proposalDescriptionField'}
+                      Description
+                    %textarea#proposalDescriptionField.form-control{placeholder: 'Give enough information so that everyone knows exactly what it means to agree or disagree'}
+                  .form-group
+                    %label{for: 'proposalClosingAtField'}
+                      Closing at
+                    %input#proposalClosingAtField.form-control{value: 3.days.from_now.at_beginning_of_hour.strftime('%Y-%m-%d %H:%M')}
+
+              .modal-footer
+                %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+                %button.btn.btn-primary{:type => "button"} Save changes
+
+
+      .card.card-add-comment
+        .collapsed.js-add-comment-small
+          .media
+            .card-author-photo.pull-left
+              = render 'avatar', user: current_user_or_visitor
+            .media-body
+              %input.form-control{type: 'text', placeholder: 'Add a comment...'}
+        .expanded.js-add-comment-big
+          .card-add-comment-header
+            Add a comment
+            %i.fa.fa-close.pull-right
+          %textarea.form-control
+
+          .button-bar
+            %button.btn.btn-primary
+              Submit
+            %button.btn.bt-default
+              Attach file
+
+          .privacy-hint.card-meta-text
+            .fa.fa-globe
+            Your commment will be public on the web
+

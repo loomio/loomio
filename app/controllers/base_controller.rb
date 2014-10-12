@@ -11,6 +11,8 @@ class BaseController < ApplicationController
                 :ensure_user_name_present,
                 :set_time_zone_from_javascript, unless: :ajax_request?
 
+  after_filter  :set_csrf_cookie_for_ng
+
   helper_method :time_zone
   helper_method :permitted_params
 
@@ -21,6 +23,14 @@ class BaseController < ApplicationController
 
   def permitted_params
     @permitted_params ||= PermittedParams.new(params, current_user)
+  end
+
+  def set_csrf_cookie_for_ng
+    cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
+  end
+
+  def verified_request?
+    super || form_authenticity_token == request.headers['X_XSRF_TOKEN']
   end
 
   def ensure_user_name_present
