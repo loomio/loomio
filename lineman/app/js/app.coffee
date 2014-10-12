@@ -4,14 +4,8 @@ angular.module('loomioApp', ['ngRoute', 'jmdobry.angular-cache', 'ui.bootstrap.d
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
 
 angular.module('loomioApp').config ($translateProvider) ->
-  console.log 'hi'
   $translateProvider.useUrlLoader('http://localhost:3000/localisation/en');
-  #$translateProvider.useStaticFile$translateProvider.useUrlLoader('foo/bar.json');sLoader
-    #prefix: '/localisation/'
-  #$translateProvider.useLocalStorage();
   $translateProvider.preferredLanguage('en');
-
-  # translation via translation loader goes here
 
 # setup the RecordStoreService so that it knows about all the models we care about
 angular.module('loomioApp').run (RecordStoreService,
