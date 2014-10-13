@@ -50,6 +50,23 @@
   }
 }
 
+.card-left {
+  width: 30px;
+  @media (min-width: $screen-sm-min) {
+    width: 40px;
+  }  
+  display: inline-block;
+}
+
+.card-right {
+  @media (min-width: $screen-sm-min) {
+    vertical-align: top;
+    margin-top: 5px;
+  }
+  display: inline-block;
+  padding-left: 10px;
+}
+
 .card-content-header {
   margin: 0 0 10px 0;
 }
@@ -152,16 +169,13 @@
   }
 }
 
-.card-start-proposal {
-}
-
 .card-pie-graph-icon {
-  background-image: image_url('1.0/pie_graph_icon_30.png');
+  background-image: url('../img/pie_graph_icon_30.png');
   height: 30px;
   width: 30px;
 
   @media (min-width: $screen-sm-min) {
-    background-image: image_url('1.0/pie_graph_icon_40.png');
+    background-image: url('../img/pie_graph_icon_40.png');
     height: 40px;
     width: 40px;
   }
