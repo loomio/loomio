@@ -9,7 +9,7 @@
       Proposed by {{proposal.author.name}} on {{proposal.created_at | timeFromNowInWords:true }}
       .proposal-description
         {{proposal.description}}
-      .pie-graph{'pie-chart' => true, ng_model: 'proposal'}
+      .pie-graph{'pie-chart': true, ng_model: 'proposal'}
       .positions
         .agree{ng_click: 'selectPosition("yes")'}
           %img{src: '/img/yes.png'}
@@ -28,5 +28,5 @@
         %fieldset{ng_disable: 'voteFormIsDisabled'}
           .form-group
             %textarea{ng_model: 'newVote.statement'}
-            %button.btn.btn-primary{type: :submit}
+            %button.btn.btn-primary{type: 'submit'}
               Vote

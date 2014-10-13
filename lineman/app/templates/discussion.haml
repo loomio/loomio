@@ -26,8 +26,7 @@
         .card-meta-header
           %h1 Discussion
         .card-content
-          %div{'ng-repeat' => 'event in discussion.events()',
-               ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
+          %div{ng_repeat: 'event in discussion.events()', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
           -#-@discussion.items.each do |item|
             -#= render "style_guide/thread_items/#{item.kind}", item: item
 
