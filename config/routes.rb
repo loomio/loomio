@@ -27,6 +27,7 @@ Loomio::Application.routes.draw do
   namespace :api, path: '/api/v1' do
     resources :discussions, only: :show
     resources :comments, only: :create
+    resources :translations, only: :show
     namespace :faye do
       get :subscribe
       get :who_am_i
@@ -189,7 +190,6 @@ Loomio::Application.routes.draw do
     end
   end
 
-  get '/localisation/datetime_input_translations' => 'localisation#datetime_input_translations', format: 'js'
   get '/localisation/:locale' => 'localisation#show', format: 'js'
 
   resources :users, path: 'u', only: [:new] do
