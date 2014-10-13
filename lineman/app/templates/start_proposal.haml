@@ -22,29 +22,22 @@
         %fieldset{ng_disabled: 'isDisabled'}
           .form-group
             %label{for: 'proposal-title-field'} Title
-            %input#proposal-title-field.form-control{placeholder: 'Eg: Let\'s go to the moon',
-                                                     ng_model: 'proposal.name',
-                                                     ng_required: 'true'}
+            %input#proposal-title-field.form-control{placeholder: 'Eg: Let\'s go to the moon', ng_model: 'proposal.name', ng_required: 'true'}
 
           .form-group
             %label{for: 'proposal-close-date-field'} Closes at
             .datetimeselect
-              %input.form-control{ng_model: 'proposal.closing_at',
-                                  ng_focus: 'openDatetimepicker()',
-                                  ng_required: 'true'}
+              %input.form-control{ng_model: 'proposal.closing_at', ng_focus: 'openDatetimepicker()', ng_required: 'true'}
               %i.fa.fa-calendar{ng_click: 'toggleDatetimepicker()'}
 
-              %datetimepicker{ng_model: 'proposal.closing_at',
-                              datetimepicker_config: "{ startView:'day', minView:'hour'}",
-                              on_set_time: 'closeDatetimepicker',
-                              ng_show: 'showDatetimepicker'}
+              %datetimepicker{ng_model: 'proposal.closing_at', datetimepicker_config: "{ startView:'day', minView:'hour'}", on_set_time: 'closeDatetimepicker', ng_show: 'showDatetimepicker'}
 
           .form-group
             %label{for: 'proposal-description-field'} Details
             %textarea#proposal-description-field.form-control{ng_model: 'proposal.description', placeholder: 'Give enough detail so everyone knows exactly what it means to agree or disagree'}
 
           .form-group
-            %button.btn.btn-primary.cuke-submit-proposal-btn{type: :submit}
+            %button.btn.btn-primary.cuke-submit-proposal-btn{type: 'submit'}
               Submit
             %button.btn{ng_click: 'closeForm()', value: 'Cancel'}
               Cancel
