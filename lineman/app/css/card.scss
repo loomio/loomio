@@ -55,16 +55,37 @@
   @media (min-width: $screen-sm-min) {
     width: 40px;
   }  
+  vertical-align: top;
   display: inline-block;
+  img {
+    width: 30px;
+    height: 30px;
+    @media(min-width: $screen-sm-min) {
+      width: 40px;
+      height: 40px;
+    }   
+  }
 }
 
 .card-right {
-  @media (min-width: $screen-sm-min) {
-    vertical-align: top;
-    margin-top: 5px;
+  @media (min-width: $screen-xs-min) {
+    width: 92%;
   }
+  vertical-align: top;
   display: inline-block;
   padding-left: 10px;
+  input {
+    height: 30px;
+    @media(min-width: $screen-sm-min) {
+      height: 40px;
+    }
+  }
+}
+
+.card-right-text {
+  @media (min-width: $screen-sm-min) {
+    margin-top: 5px;
+  }
 }
 
 .card-content-header {
