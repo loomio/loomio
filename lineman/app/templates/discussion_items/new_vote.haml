@@ -1,10 +1,15 @@
 .thread-item.new_vote{ng_controller: 'NewVoteItemController'}
-  {{vote.author_name()}}
   .thread-item-vote-icon.pull-left
     -#.vote-icon{class: vote.position_verb}
 
   .thread-item-activity-description
-    -#{{ 'new_vote.user_abstained_on_proposal' | translate: voteTranslations }}
+    %span{ng_bind_html: "'new_vote_item.user_agreed' | translate: translationData"}
+  -#.thread-item-activity-description{ng_show: 'vote.isDisagree()'}
+    -#{{ 'new_vote_item.user_disagreed' | translate: translationData }}
+  -#.thread-item-activity-description{ng_show: 'vote.isAbstain()'}
+    -#{{ 'new_vote_item.user_abstained' | translate: translationData }}
+  -#.thread-item-activity-description{ng_show: 'vote.isBlock()'}
+    -#{{ 'new_vote_item.user_blocked' | translate: translationData }}
 
   .thread-item-body.thread-item-vote-statement
     {{ vote.statement }}
