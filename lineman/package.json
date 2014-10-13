@@ -23,10 +23,10 @@
     "npm": "~>1.2.18"
   },
   "devDependencies": {
-    "grunt-contrib-haml": "~0.1.1",
-    "grunt-sass": "~0.8.1",
     "cucumber": "~0.3.3",
+    "grunt-contrib-copy": "~0.5.0",
     "grunt-cucumber": "~0.2.3",
-    "grunt-contrib-copy": "~0.5.0"
+    "grunt-haml": "^0.9.0",
+    "grunt-sass": "~0.8.1"
   }
 }
