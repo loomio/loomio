@@ -1,15 +1,19 @@
 .l-row#cuke-current-proposal{ng_hide: 'proposal == null'}
   .card.l-column
-    %h1.card-header
+    %h1.card-header 
       {{proposal.name}}
-      %span.card-details
-        %a{ href: '#' }
-          {{proposal.closing_at | timeFromNowInWords:true }} left
+    %span.card-details
+      %a{ href: '#' }
     .card-details
-      Proposed by {{proposal.author.name}} on {{proposal.created_at | timeFromNowInWords:true }}
+      %abbr.timeago
+        Proposed by {{proposal.author_name()}} {{proposal.created_at | timeFromNowInWords }}
       .proposal-description
         {{proposal.description}}
+      .proposal-closing-at
+        %i{class: 'fa fa-clock'}
+        Closes {{proposal.closing_at | exactDateWithTime }}
       .pie-graph{'pie-chart': true, ng_model: 'proposal'}
+      
       .positions
         .agree{ng_click: 'selectPosition("yes")'}
           %img{src: '/img/yes.png'}
