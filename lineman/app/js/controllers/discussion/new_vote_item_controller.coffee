@@ -1,3 +1,5 @@
 angular.module('loomioApp').controller 'NewVoteItemController', ($scope) ->
-  $scope.vote = $scope.event.vote()
-  
+  vote = $scope.event.vote()
+  $scope.vote = vote
+  $scope.translationData =
+    name: vote.author_name()

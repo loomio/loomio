@@ -2,6 +2,7 @@
   "name": "Loomio assets",
   "dependencies": {
     "angular": "latest",
+    "angular-sanitize": "latest",
     "jquery": "~>2.1.1",
     "lodash": "latest",
     "angular-route": "1.3.0-rc.2",
