@@ -21,9 +21,12 @@
   } 
 }
 
-@mixin cardRight($small:30px, $large:40px, $width:92%) {
+@mixin cardRight($small:30px, $large:40px, $widthSmall: 90%, $widthLarge:92%) {
+  @media (max-width: $screen-xs-min) {
+    width: $widthSmall
+  }
   @media (min-width: $screen-xs-min) {
-    width: $width;
+    width: $widthLarge;
   }
   vertical-align: top;
   display: inline-block;
@@ -97,11 +100,11 @@
 }
 
 .card-right {
-  @include cardRight(30px, 40px, 92%);
+  @include cardRight(30px, 40px, 90%, 92%);
 }
 
 .card-right-small {
-  @include cardRight(50px, 70px, 87%);
+  @include cardRight(50px, 70px, 83%, 87%);
 }
 
 .card-right-text {
