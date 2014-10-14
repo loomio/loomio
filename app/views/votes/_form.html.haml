@@ -7,11 +7,8 @@
       - positions[t(position, scope: :position_verbs)] = position
     = f.select :position, positions, {}, { class: 'form-control' }
   = f.input :statement, as: :text, label: t("vote_form.your_statement"), placeholder: t("vote_form.placeholder"), input_html: {class: "statement validate-length limit-250 js-warn-before-navigating-away form-control"}
-  -#.form-group
-
-    -#= f.label :statement, 
-    -#= f.text_area :statement, , 
-    -#.character-counter
+  .form-group
+    .character-counter
   = f.submit vote_submit_button_text, id: "submit-vote", class: "btn btn-primary run-validations", :data => { :disable_with => vote_submit_button_text }
   = link_to t(:cancel), motion_path(motion), class: "btn btn-default"
   =render "application/hint", text: t(:"hint.vote"), anchor: 'no-link'
