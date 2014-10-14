@@ -10,6 +10,12 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
       @discussion_id = data.discussion_id
       @vote_ids = data.vote_ids
       @votes_count = data.votes_count
+      @pie_chart_data = [
+        { value: data.yes_votes_count, color: '#90D490', label: 'Agree' },
+        { value: data.abstain_votes_count, color: '#F0BB67', label: 'Abstain' }
+        { value: data.no_votes_count, color: '#D49090', label: 'Disagree' }
+        { value: data.block_votes_count, color: '#DD0000', label: 'Block' }
+      ]
 
     plural: 'proposals'
 
