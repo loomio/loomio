@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'VoteModel', (RecordStoreService) ->
+angular.module('loomioApp').factory 'VoteModel', (RecordStoreService, $sanitize) ->
   class VoteModel
     constructor: (data = {}) ->
       @id = data.id
