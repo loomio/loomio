@@ -29,4 +29,4 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
       @author().name
 
     author_avatar: ->
-      @author().avatar_url
+      @author().avatar_or_initials()
