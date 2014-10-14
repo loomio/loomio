@@ -166,26 +166,23 @@
 }
 
 .featured-vote-icon {
-  width: 50px;
-  height: 50px;
+  width: 60px !important;
+  height: 60px !important;
   @media (min-width: $screen-sm-min) {
-    width: 70px;
-    height: 70px;
+    width: 80px !important;
+    height: 80px !important;
   }
 }
 
-.thread-item-vote-icon {
+.thread-item-icon {
   width: 30px;
   height: 30px;
   @media (min-width: $screen-sm-min) {
     width: 40px;
     height: 40px;
   }
-}
 
-.vote-icon {
-
-  .vote-icon-img {
+  .thread-icon-img {
     width: 100%;
     height: 100%;
     background-size: 100%;
@@ -208,19 +205,24 @@
   }
 
   .abstain {
-    background-image: image-url('../../yellow_thumb_icon_30.png');
+    background-image: image-url('../../img/yellow_thumb_icon_30.png');
 
     @media (min-width: $screen-sm-min) {
-      background-image: image-url('../../yellow_thumb_icon_40.png');
+      background-image: image-url('../../img/yellow_thumb_icon_40.png');
     }
   }
 
   .block {
-    background-image: image-url('../../red_flag_icon_30.png');
+    background-image: image-url('../../img/red_flag_icon_30.png');
 
     @media (min-width: $screen-sm-min) {
-      background-image: image-url('../../red_flag_icon_40.png');
+      background-image: image-url('../../img/red_flag_icon_40.png');
     }
+  }
+
+  .pie {
+    background-image: image-url('../../img/pie_graph_icon_30.png');
+    background-image: image-url('../../img/pie_graph_icon_40.png');
   }
 }
 

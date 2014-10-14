@@ -31,8 +31,8 @@
           .current-position{ng_show: 'currentUserVote()'}
             .vote.thread-item-minor
               .card-left-big
-                .featured-vote-icon.vote-icon
-                  .vote-icon-img{ng_class: 'currentUserVote().position'}
+                .featured-vote-icon.thread-item-icon
+                  .thread-icon-img{ng_class: 'currentUserVote().position'}
               .card-right-small.thread-item-author
                 %span.author-name {{currentUserVote().author_name()}} 
                 %span.author-statement {{ currentUserVote().statement_or_position() }}        
@@ -51,8 +51,8 @@
         .current-votes{ng_repeat: 'vote in proposal.votes()'}
           .vote.thread-item-minor{ng_hide: 'vote == currentUserVote()'}
             .card-left
-              .thread-item-vote-icon.vote-icon
-                .vote-icon-img{ng_class: 'vote.position'}
+              .thread-item-icon
+                .thread-icon-img{ng_class: 'vote.position'}
             .card-right.thread-item-author
               %span.author-name {{vote.author_name()}} 
               %span.author-statement {{ vote.statement_or_position() }}
