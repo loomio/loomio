@@ -4,6 +4,38 @@
   font-style: $style;
 }
 
+@mixin cardLeft($small:30px, $large:40px) {
+  width: $small;
+  @media (min-width: $screen-sm-min) {
+    width: $large;
+  }
+  vertical-align: top;
+  display: inline-block;
+  img {
+    width: $small;
+    height: $small;
+    @media(min-width: $screen-sm-min) {
+      width: $large;
+      height: $large;
+    }   
+  } 
+}
+
+@mixin cardRight($small:30px, $large:40px, $width:92%) {
+  @media (min-width: $screen-xs-min) {
+    width: $width;
+  }
+  vertical-align: top;
+  display: inline-block;
+  padding-left: 15px;
+  input {
+    height: $small;
+    @media(min-width: $screen-sm-min) {
+      height: $large;
+    }
+  }
+}
+
 .group-header {
   position: relative;
   height: 150px;
@@ -57,35 +89,19 @@
 }
 
 .card-left {
-  width: 30px;
-  @media (min-width: $screen-sm-min) {
-    width: 40px;
-  }  
-  vertical-align: top;
-  display: inline-block;
-  img {
-    width: 30px;
-    height: 30px;
-    @media(min-width: $screen-sm-min) {
-      width: 40px;
-      height: 40px;
-    }   
-  }
+  @include cardLeft(30px, 40px);
+}
+
+.card-left-big {
+  @include cardLeft(50px, 70px);
 }
 
 .card-right {
-  @media (min-width: $screen-xs-min) {
-    width: 92%;
-  }
-  vertical-align: top;
-  display: inline-block;
-  padding-left: 15px;
-  input {
-    height: 30px;
-    @media(min-width: $screen-sm-min) {
-      height: 40px;
-    }
-  }
+  @include cardRight(30px, 40px, 92%);
+}
+
+.card-right-small {
+  @include cardRight(50px, 70px, 87%);
 }
 
 .card-right-text {
@@ -144,15 +160,27 @@
   }
 }
 
+.featured-vote-icon {
+  width: 50px;
+  height: 50px;
+  @media (min-width: $screen-sm-min) {
+    width: 70px;
+    height: 70px;
+  }
+}
+
 .thread-item-vote-icon {
   width: 30px;
   height: 30px;
-
   @media (min-width: $screen-sm-min) {
     width: 40px;
     height: 40px;
   }
-  .vote-icon {
+}
+
+.vote-icon {
+
+  .vote-icon-img {
     width: 100%;
     height: 100%;
     background-size: 100%;
