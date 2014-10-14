@@ -1,3 +1,15 @@
-.card{ng_controller: 'NewMotionItemController'}
-  .card__content.cuke-new-proposal-item
-    {{proposal.author.name}} created a proposal: {{proposal.name}}
+.thread-item{ng_controller: 'NewProposalItemController'}
+  .thread-item-header
+    .thread-item-author
+      .card-left
+        .thread-item-vote-icon.vote-icon
+          .vote-icon-img.no
+      .card-right
+        .author-with-text
+          %span.author-name {{proposal.author_name()}} 
+          %span.author-statement started a new proposal:
+  .thread-item-body{ng_show: 'proposal.name'}
+    {{proposal.name}}
+  .thread-item-footer
+    %abbr.timeago
+      {{proposal.created_at | timeFromNowInWords}}

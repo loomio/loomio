@@ -10,5 +10,6 @@
           %span.author-statement voted on the proposal
   .thread-item-body{ng_show: 'vote.statement'}
     {{vote.statement}}
-  %abbr.timeago
-    {{vote.created_at | timeFromNowInWords}}
+  .thread-item-footer
+    %abbr.timeago
+      {{vote.created_at | timeFromNowInWords}}

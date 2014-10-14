@@ -16,13 +16,7 @@
           .card-content-body
             {{ discussion.description}}
 
-      .card.card-thread-items
-        .card-options-menu.pull-right
-          %i.fa.fa-chevron-down
-        .card-meta-header
-          %h1 Proposal
-        .card-content.card-content-primary
-          %proposal{proposal: 'discussion.active_proposal()', discussion: 'discussion', currentUser: 'currentUser'}
+      %proposal{proposal: 'discussion.active_proposal()', discussion: 'discussion', currentUser: 'currentUser'}
 
       .card.card-thread-items
         .card-meta-header
