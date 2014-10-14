@@ -10,7 +10,7 @@
       {{proposal.description}}
     .proposal-closing-at
       %i.fa.fa-clock-o
-      Closes {{proposal.closing_at | exactDateWithTime }}
+      %span.bump Closes {{proposal.closing_at | exactDateWithTime }}
     .pie-graph-container.row
       .col-xs-6.test-me
         %canvas.pie-graph{tc-chartjs-pie:true, chart-data:'proposal.pie_chart_data', chart-options:'pie_chart_options'}
@@ -19,7 +19,7 @@
 
     .card-meta-header
       %a.edit-position.pull-right{ng_show: 'currentUserVote()', href: '#'}
-        Edit
+        %span.bump Edit
         %i.fa.fa-pencil
       %h3 Your Position
       .current-position{ng_show: 'currentUserVote()'}

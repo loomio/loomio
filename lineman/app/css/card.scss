@@ -1,5 +1,5 @@
 @mixin loomioFont($weight:normal, $style:normal) {
-  font-family: HelveticaNeue;
+  font-family: OpenSans;
   font-weight: $weight;
   font-style: $style;
 }
@@ -37,6 +37,10 @@
       height: $large;
     }
   }
+}
+
+.bump {
+  margin: 0 5px;
 }
 
 .group-header {
@@ -86,7 +90,7 @@
     font-size: 14px;
     color: #888888;
     line-height: 20px;
-    margin: 0;
+    margin: 0 0 10px 0;
     padding: 0;
   }
 }
@@ -96,7 +100,7 @@
 }
 
 .card-left-big {
-  @include cardLeft(50px, 70px);
+  @include cardLeft(60px, 80px);
 }
 
 .card-right {
@@ -104,7 +108,7 @@
 }
 
 .card-right-small {
-  @include cardRight(50px, 70px, 83%, 87%);
+  @include cardRight(60px, 80px, 80%, 84%);
 }
 
 .card-right-text {
