@@ -23,6 +23,10 @@ When /^I enter a statement$/ do
   find('#submit-vote').click
 end
 
+When /^I enter a statement which is too long$/ do
+  fill_in 'vote_statement', with: "wh#{'e' * 300}"
+end
+
 When /^I enter a statement for my block$/ do
   fill_in 'vote_statement', with: "I dont want this to go ahead!"
   find('#submit-vote').click

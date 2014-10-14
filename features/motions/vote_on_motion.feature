@@ -62,3 +62,13 @@ Feature: User votes on a motion
     And I have voted on the proposal
     And I follow a vote link from an email
     Then I should see my existing vote
+
+  @javascript
+  Scenario: As a logged in member I should be notified if my statement is too long
+    Given I am logged in
+    And there is a discussion in a group I belong to
+    And the discussion has an open proposal
+    When I visit the discussion page
+    And I click the 'yes' vote button
+    And I enter a statement which is too long
+    Then I should see "is too long (maximum 250 characters)"

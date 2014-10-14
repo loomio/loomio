@@ -12,12 +12,12 @@ $ -> # Character counter for limiting input
 
 display_count = (num, object) -> # Display charcaters left
   if(num >= 0)
-    object.parent().find(".character-counter").text(pluralize_characters(num) + " left")
-    object.parent().removeClass("error")
+    object.closest('.character-counter-parent').find(".character-counter").text(pluralize_characters(num) + " left")
+    object.closest('.character-counter-parent').removeClass("error")
   else
     num = num * (-1)
-    object.parent().find(".character-counter").text(pluralize_characters(num) + " too long")
-    object.parent().addClass("error")
+    object.closest('.character-counter-parent').find(".character-counter").text(pluralize_characters(num) + " too long")
+    object.closest('.character-counter-parent').addClass("error")
 
 pluralize_characters = (num) ->
   if(num == 1)
