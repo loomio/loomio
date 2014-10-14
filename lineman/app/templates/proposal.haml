@@ -10,21 +10,24 @@
       .proposal-description
         {{proposal.description}}
       .proposal-closing-at
-        %i{class: 'fa fa-clock'}
+        %i.fa.fa-clock-o
         Closes {{proposal.closing_at | exactDateWithTime }}
-      .pie-graph{'pie-chart': true, ng_model: 'proposal'}
+      .pie-graph{id: 'proposal-{{proposal.id}}', 'pie-chart': true, ng_model: 'proposal'}
 
       .card-meta-header
+        %a.edit-position.pull-right{ng_show: 'currentUserVote()', href: '#'}
+          %i.fa.fa-pencil
+          Edit
         %h3 Your Position
-        .current-position{ng_show: 'userHasVoted()'}
+        .current-position{ng_show: 'currentUserVote()'}
           .vote.thread-item-minor
-            .card-left
-              .thread-item-vote-icon
-                .vote-icon{ng_class: 'vote.position'}
-            .card-right.thread-item-author
-              %span.author-name {{vote.author_name()}} 
-              %span.author-statement {{ vote.statement_or_position() }}        
-        .proposal-positions{ng_hide: 'userHasVoted()'}
+            .card-left-big
+              .featured-vote-icon.vote-icon
+                .vote-icon-img{ng_class: 'currentUserVote().position'}
+            .card-right-small.thread-item-author
+              %span.author-name {{currentUserVote().author_name()}} 
+              %span.author-statement {{ currentUserVote().statement_or_position() }}        
+        .proposal-positions{ng_hide: 'currentUserVote()'}
           .col-xs-3.agree{ng_click: 'selectPosition("yes")'}
             %img{src: '/img/yes.png'}
           .col-xs-3.abstain{ng_click: 'selectPosition("abstain")'}
@@ -37,10 +40,10 @@
       .card-meta-header 
         %h3 Positions
       .current-votes{ng_repeat: 'vote in proposal.votes()'}
-        .vote.thread-item-minor
+        .vote.thread-item-minor{ng_hide: 'vote == currentUserVote()'}
           .card-left
-            .thread-item-vote-icon
-              .vote-icon{ng_class: 'vote.position'}
+            .thread-item-vote-icon.vote-icon
+              .vote-icon-img{ng_class: 'vote.position'}
           .card-right.thread-item-author
             %span.author-name {{vote.author_name()}} 
             %span.author-statement {{ vote.statement_or_position() }}
