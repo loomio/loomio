@@ -3,13 +3,7 @@
     -#.vote-icon{class: vote.position_verb}
 
   .thread-item-activity-description
-    %span{ng_bind_html: "'new_vote_item.user_agreed' | translate: translationData"}
-  -#.thread-item-activity-description{ng_show: 'vote.isDisagree()'}
-    -#{{ 'new_vote_item.user_disagreed' | translate: translationData }}
-  -#.thread-item-activity-description{ng_show: 'vote.isAbstain()'}
-    -#{{ 'new_vote_item.user_abstained' | translate: translationData }}
-  -#.thread-item-activity-description{ng_show: 'vote.isBlock()'}
-    -#{{ 'new_vote_item.user_blocked' | translate: translationData }}
-
+    %span{translate: "new_vote_item.user_agreed", translate_values: '{name: vote.author_name()}'}
+    hi
   .thread-item-body.thread-item-vote-statement
     {{ vote.statement }}
