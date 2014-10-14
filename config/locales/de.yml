@@ -958,6 +958,7 @@ de:
       ignore: "Wenn Du nicht angefragt hast dieser Loomio Gruppe beizutreten, ignoriere diese eMail."
   meta_tags:
     default_title: "Loomio | Gemeinschaftliche Entscheidungsfindung"
+    default_description: Loomio ist einfach benutzbares Online Werkzeug für Entscheidungsfindung in Gruppen. Es erlaubt verstreuten Gruppen schnell Entscheidungen zu treffen und konstruktiv umzusetzen.
   about_loomio: "Über Loomio"
   ago: "vor %{quantity_of_time}"
   approve: "Zustimmen"
