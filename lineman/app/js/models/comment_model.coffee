@@ -25,7 +25,8 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
     discussion: ->
       RecordStoreService.get('discussions', @discussion_id)
 
-
     author_name: ->
       @author().name
 
+    author_avatar: ->
+      @author().avatar_url

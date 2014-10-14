@@ -9,7 +9,7 @@
             %h1 {{discussion.title}}
             .author-name.card-meta-text
               Started by
-              %strong {{discussion.author().name}}
+              %strong.bump {{discussion.author().name}}
             .published-at.card-meta-text
               %abbr.timeago
                 {{discussion.created_at | timeFromNowInWords}}
