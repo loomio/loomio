@@ -12,12 +12,17 @@
       .proposal-closing-at
         %i.fa.fa-clock-o
         Closes {{proposal.closing_at | exactDateWithTime }}
-      .pie-graph{id: 'proposal-{{proposal.id}}', 'pie-chart': true, ng_model: 'proposal'}
+      .row
+        .col-xs-6.test-me
+          %canvas.pie-graph{tc-chartjs-pie:true, chart-data:'proposal.pie_chart_data', chart-options:'pie_chart_options'}
+
+        .col-xs-5.proposal-participation
+          X of X members have participated
 
       .card-meta-header
         %a.edit-position.pull-right{ng_show: 'currentUserVote()', href: '#'}
-          %i.fa.fa-pencil
           Edit
+          %i.fa.fa-pencil
         %h3 Your Position
         .current-position{ng_show: 'currentUserVote()'}
           .vote.thread-item-minor
