@@ -1,4 +1,6 @@
 en:
-  testing: 'hello world'
-  new_vote:
-    user_abstained_on_proposal: '<strong>{{name}}</strong> abstained on the proposal:'
+  new_vote_item:
+    user_agreed: '<strong>{{name}}</strong> agreed on the proposal:'
+    user_abstained: '<strong>{{name}}</strong> abstained on the proposal:'
+    user_disagreed: '<strong>{{name}}</strong> disagreed on the proposal:'
+    user_blocked: '<strong>{{name}}</strong> blocked the proposal:'

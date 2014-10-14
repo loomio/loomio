@@ -21,3 +21,15 @@ angular.module('loomioApp').factory 'VoteModel', (RecordStoreService) ->
     author_name: ->
       @author().name
 
+    isAgree: ->
+      @position == 'yes'
+
+    isDisagree: ->
+      @position == 'no'
+
+    isAbstain: ->
+      @position == 'abstain'
+
+    isBlock: ->
+      @position == 'block'
+
