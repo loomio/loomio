@@ -93,6 +93,9 @@ class ThreadMailer < BaseMailer
     @utm_hash = utm_hash
 
     headers[message_id_header] = message_id
+    headers['Precedence'] = 'bulk'
+    headers['X-Auto-Response-Suppress'] = 'OOF'
+    headers['Auto-Submitted'] = 'auto-generated'
 
     locale = locale_fallback(@recipient.locale, @author.locale)
     I18n.with_locale(locale) do
