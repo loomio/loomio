@@ -1,3 +1,9 @@
+@mixin loomioFont($weight:normal, $style:normal) {
+  font-family: HelveticaNeue;
+  font-weight: $weight;
+  font-style: $style;
+}
+
 .group-header {
   position: relative;
   height: 150px;
@@ -8,7 +14,7 @@
   h1 {
     color: #fff;
     a {
-      font-family: HelveticaNeue-Bold;
+      @include loomioFont(bold);
       font-size: 30px;
       color: #fff;
       line-height: 32px;
@@ -40,8 +46,8 @@
 }
 
 .card-meta-header {
-  h1 {
-    font-family: HelveticaNeue-Bold;
+  h1, h2, h3 {
+    @include loomioFont(bold);
     font-size: 14px;
     color: #888888;
     line-height: 20px;
@@ -73,7 +79,7 @@
   }
   vertical-align: top;
   display: inline-block;
-  padding-left: 10px;
+  padding-left: 15px;
   input {
     height: 30px;
     @media(min-width: $screen-sm-min) {
@@ -93,7 +99,7 @@
 }
 
 .card-meta-text {
-  font-family: HelveticaNeue;
+  @include loomioFont;
   font-size: 14px;
   color: #777777;
   line-height: 20px;
@@ -101,7 +107,7 @@
 
 .card-content-primary {
   h1 {
-    font-family: HelveticaNeue-Bold;
+    @include loomioFont(bold);
     font-size: 24px;
     color: #333333;
     line-height: 25px;
@@ -112,6 +118,10 @@
 
 .thread-item {
   margin: 0 0 30px 0;
+}
+
+.thread-item-minor {
+  margin: 0 0 15px 0;
 }
 
 .thread-item-activity-description {
@@ -148,35 +158,35 @@
     background-size: 100%;
   }
 
-  .agree {
-    background-image: image-url('1.0/green_thumb_icon_30.png');
+  .yes {
+    background-image: image-url('../../img/yes.png');
 
     @media (min-width: $screen-sm-min) {
-      background-image: image-url('1.0/green_thumb_icon_40.png');
+      background-image: image-url('../../img/yes.png');
     }
   }
 
-  .disagree {
-    background-image: image-url('1.0/pink_thumb_icon_30.png');
+  .no {
+    background-image: image-url('../../img/no.png');
 
     @media (min-width: $screen-sm-min) {
-      background-image: image-url('1.0/pink_thumb_icon_40.png');
+      background-image: image-url('../../img/no.png');
     }
   }
 
   .abstain {
-    background-image: image-url('1.0/yellow_thumb_icon_30.png');
+    background-image: image-url('../../yellow_thumb_icon_30.png');
 
     @media (min-width: $screen-sm-min) {
-      background-image: image-url('1.0/yellow_thumb_icon_40.png');
+      background-image: image-url('../../yellow_thumb_icon_40.png');
     }
   }
 
   .block {
-    background-image: image-url('1.0/red_flag_icon_30.png');
+    background-image: image-url('../../red_flag_icon_30.png');
 
     @media (min-width: $screen-sm-min) {
-      background-image: image-url('1.0/red_flag_icon_40.png');
+      background-image: image-url('../../red_flag_icon_40.png');
     }
   }
 }
@@ -250,10 +260,10 @@
   }
 
   .author-name {
-    font-family: HelveticaNeue-Bold;
+    @include loomioFont(bold);
     font-size: 14px;
     color: #333333;
-    line-height: 13px;
+    line-height: 16px;
     @media (min-width: $screen-sm-min) {
       line-height: 20px;
       display: inline;
@@ -272,6 +282,12 @@
       margin-top: 0;
       display: inline;
     }
+  }
+
+  .author-statement {
+    font-family: HelveticaNeue;
+    line-height: 16px;
+    padding-left: 8px;
   }
 }
 

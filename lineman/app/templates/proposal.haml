@@ -13,19 +13,37 @@
         %i{class: 'fa fa-clock'}
         Closes {{proposal.closing_at | exactDateWithTime }}
       .pie-graph{'pie-chart': true, ng_model: 'proposal'}
-      
-      .positions
-        .agree{ng_click: 'selectPosition("yes")'}
-          %img{src: '/img/yes.png'}
-        .abstain{ng_click: 'selectPosition("abstain")'}
-          %img{src: '/img/abstain.png'}
-        .disagree{ng_click: 'selectPosition("no")'}
-          %img{src: '/img/no.png'}
-        .block{ng_click: 'selectPosition("block")'}
-          %img{src: '/img/block.png'}
-      .card-details
-        {{proposal.votes_count}} votes
-      .agree{ng_click: 'selectPosition("yes")'}
+
+      .card-meta-header
+        %h3 Your Position
+        .current-position{ng_show: 'userHasVoted()'}
+          .vote.thread-item-minor
+            .card-left
+              .thread-item-vote-icon
+                .vote-icon{ng_class: 'vote.position'}
+            .card-right.thread-item-author
+              %span.author-name {{vote.author_name()}} 
+              %span.author-statement {{ vote.statement_or_position() }}        
+        .proposal-positions{ng_hide: 'userHasVoted()'}
+          .col-xs-3.agree{ng_click: 'selectPosition("yes")'}
+            %img{src: '/img/yes.png'}
+          .col-xs-3.abstain{ng_click: 'selectPosition("abstain")'}
+            %img{src: '/img/abstain.png'}
+          .col-xs-3.disagree{ng_click: 'selectPosition("no")'}
+            %img{src: '/img/no.png'}
+          .col-xs-3.block{ng_click: 'selectPosition("block")'}
+            %img{src: '/img/block.png'}
+
+      .card-meta-header 
+        %h3 Positions
+      .current-votes{ng_repeat: 'vote in proposal.votes()'}
+        .vote.thread-item-minor
+          .card-left
+            .thread-item-vote-icon
+              .vote-icon{ng_class: 'vote.position'}
+          .card-right.thread-item-author
+            %span.author-name {{vote.author_name()}} 
+            %span.author-statement {{ vote.statement_or_position() }}
 
     .l-row.statement-form{ng_show: 'voteFormIsExpanded'}
       %form{ng_submit: 'submitVote()'}
