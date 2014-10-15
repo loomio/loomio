@@ -13,6 +13,8 @@
     "faye": "latest",
     "d3": "~3.4.0",
     "angular-translate": "~2.4.0",
-    "angular-translate-loader-url": "~2.4.0"
+    "angular-translate-loader-url": "~2.4.0",
+    "tc-angular-chartjs": "~1.0.9",
+    "chartjs": "~0.2.0"
   }
 }

@@ -1,15 +1,18 @@
 .card-row#create-a-proposal{ng_hide: 'isHidden'}
   .card.cover
-    .card__header
-      %h3 Ready to make a decision?
-    .card__content
-      %a.cuke-show-new-proposal-form-btn{href: '#', ng_click: 'showForm()'}
-        Create a proposal
+    .card-left
+      .card-pie-graph-icon
+    .card-right.card-right-text
+      .card-header 
+        %h3.no-header-styles Ready to make a decision?
+      .card-content
+        %a.cuke-show-new-proposal-form-btn{href: '#', ng_click: 'showForm()'}
+          Create a proposal
   .card.form
-    .card__header
+    .card-header
       %h3 Start a proposal
 
-    .card__content
+    .card-content
       .errors{ng_hide: 'errorMessages.length == 0'}
         Oh no there were some errors:
         .error{ng_repeat: 'error in errorMessages'}

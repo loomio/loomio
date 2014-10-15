@@ -15,6 +15,9 @@ angular.module('loomioApp').factory 'VoteModel', (RecordStoreService, $sanitize)
     proposal: ->
       RecordStoreService.get('proposals', @proposal_id)
 
+    statement_or_position: ->
+      @statement || @position
+
     author_name: ->
       @author().name
 

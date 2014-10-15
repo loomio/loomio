@@ -1,3 +1,10 @@
 @import "unstructured/index";
 @import "jquery.atwho";
 @import "lib/bootstrap-datetimepicker";
+
+
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }

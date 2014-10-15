@@ -1,0 +1,3 @@
+zh-HK:
+  google: "Google"
+  # non-empty translations ensures :be is an 'available_locale', allowing fallback to :'be-BY'

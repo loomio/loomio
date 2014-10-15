@@ -38,7 +38,6 @@
 
         %p.code
           - # not quite honest
-          / - binding.pry
           - browser_accepted_locales.each_with_index do |locale,i|
             - if detectable_locales.include?(locale)
               = link_to locale, root_path(locale: locale), title: t(locale)

@@ -3,13 +3,14 @@
     .card-options-menu.pull-right
       %i.fa.fa-chevron-down
 
-  .thread-item-author
-    .card-author-photo.pull-left
-      %div{'ng-include' => "'generated/templates/user/avatar.html'", 'ng-init' => "user = comment.author()"}
-    .author-details
-      .author-name
-        {{comment.author_name()}}
-
+    .thread-item-author
+      .card-left
+        .card-author-photo
+          %img{ng-src: "{{comment.author_avatar()}}"}
+      .card-right
+        .author-name-only
+          .author-name
+            {{comment.author_name()}}
   .thread-item-body
     {{ comment.body }}
 
@@ -21,7 +22,7 @@
       %a.cuke-unlike-comment-btn{href: '#', ng_click: 'unlike()', ng_show: 'currentUserLikesIt()'}
         Unlike
 
-      %a.cuke-reply-to-comment-btn{href: '#', ng_click: 'reply()'}
+      %a.bump.cuke-reply-to-comment-btn{href: '#', ng_click: 'reply()'}
         Reply
       %abbr.timeago
         {{comment.created_at | timeFromNowInWords}}
