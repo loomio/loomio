@@ -1,3 +1,48 @@
+@mixin loomioFont($weight:normal, $style:normal) {
+  font-family: Open Sans;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+@mixin cardLeft($small:30px, $large:40px) {
+  width: $small;
+  @media (min-width: $screen-sm-min) {
+    width: $large;
+  }
+  vertical-align: top;
+  display: inline-block;
+  img {
+    width: $small;
+    height: $small;
+    @media(min-width: $screen-sm-min) {
+      width: $large;
+      height: $large;
+    }   
+  } 
+}
+
+@mixin cardRight($small:30px, $large:40px, $widthSmall: 90%, $widthLarge:92%) {
+  @media (max-width: $screen-xs-min) {
+    width: $widthSmall
+  }
+  @media (min-width: $screen-xs-min) {
+    width: $widthLarge;
+  }
+  vertical-align: top;
+  display: inline-block;
+  padding-left: 10px;
+  input {
+    height: $small;
+    @media(min-width: $screen-sm-min) {
+      height: $large;
+    }
+  }
+}
+
+.bump {
+  margin: 0 5px;
+}
+
 .group-header {
   position: relative;
   height: 150px;
@@ -8,7 +53,7 @@
   h1 {
     color: #fff;
     a {
-      font-family: HelveticaNeue-Bold;
+      @include loomioFont(bold);
       font-size: 30px;
       color: #fff;
       line-height: 32px;
@@ -40,13 +85,35 @@
 }
 
 .card-meta-header {
-  h1 {
-    font-family: HelveticaNeue-Bold;
+  h1, h2, h3 {
+    @include loomioFont(bold);
     font-size: 14px;
     color: #888888;
     line-height: 20px;
-    margin: 0 0 20px 0;
+    margin: 0 0 10px 0;
     padding: 0;
+  }
+}
+
+.card-left {
+  @include cardLeft(30px, 40px);
+}
+
+.card-left-big {
+  @include cardLeft(60px, 80px);
+}
+
+.card-right {
+  @include cardRight(30px, 40px, 84%, 91%);
+}
+
+.card-right-small {
+  @include cardRight(60px, 80px, 80%, 84%);
+}
+
+.card-right-text {
+  @media (min-width: $screen-sm-min) {
+    margin-top: 5px;
   }
 }
 
@@ -55,15 +122,15 @@
 }
 
 .card-meta-text {
-  font-family: HelveticaNeue;
+  @include loomioFont;
   font-size: 14px;
   color: #777777;
   line-height: 20px;
 }
 
-.card-thread-context {
+.card-content-primary {
   h1 {
-    font-family: HelveticaNeue-Bold;
+    @include loomioFont(bold);
     font-size: 24px;
     color: #333333;
     line-height: 25px;
@@ -76,11 +143,13 @@
   margin: 0 0 30px 0;
 }
 
+.thread-item-minor {
+  margin: 0 0 15px 0;
+}
+
 .thread-item-activity-description {
-  margin-left: 40px;
   margin-bottom: 5px;
   @media (min-width: $screen-sm-min) {
-    margin-left: 50px;
     margin-bottom: 4px;
   }
   color: #777;
@@ -96,50 +165,64 @@
   }
 }
 
-.thread-item-vote-icon {
+.featured-vote-icon {
+  width: 60px !important;
+  height: 60px !important;
+  @media (min-width: $screen-sm-min) {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+
+.thread-item-icon {
   width: 30px;
   height: 30px;
-
   @media (min-width: $screen-sm-min) {
     width: 40px;
     height: 40px;
   }
-  .vote-icon {
+
+  .thread-icon-img {
     width: 100%;
     height: 100%;
     background-size: 100%;
   }
 
-  .agree {
-    background-image: image-url('1.0/green_thumb_icon_30.png');
+  .yes {
+    background-image: image-url('../../img/yes.png');
 
     @media (min-width: $screen-sm-min) {
-      background-image: image-url('1.0/green_thumb_icon_40.png');
+      background-image: image-url('../../img/yes.png');
     }
   }
 
-  .disagree {
-    background-image: image-url('1.0/pink_thumb_icon_30.png');
+  .no {
+    background-image: image-url('../../img/no.png');
 
     @media (min-width: $screen-sm-min) {
-      background-image: image-url('1.0/pink_thumb_icon_40.png');
+      background-image: image-url('../../img/no.png');
     }
   }
 
   .abstain {
-    background-image: image-url('1.0/yellow_thumb_icon_30.png');
+    background-image: image-url('../../img/yellow_thumb_icon_30.png');
 
     @media (min-width: $screen-sm-min) {
-      background-image: image-url('1.0/yellow_thumb_icon_40.png');
+      background-image: image-url('../../img/yellow_thumb_icon_40.png');
     }
   }
 
   .block {
-    background-image: image-url('1.0/red_flag_icon_30.png');
+    background-image: image-url('../../img/red_flag_icon_30.png');
 
     @media (min-width: $screen-sm-min) {
-      background-image: image-url('1.0/red_flag_icon_40.png');
+      background-image: image-url('../../img/red_flag_icon_40.png');
     }
+  }
+
+  .pie {
+    background-image: image-url('../../img/pie_graph_icon_30.png');
+    background-image: image-url('../../img/pie_graph_icon_40.png');
   }
 }
 
@@ -152,16 +235,13 @@
   }
 }
 
-.card-start-proposal {
-}
-
 .card-pie-graph-icon {
-  background-image: image_url('1.0/pie_graph_icon_30.png');
+  background-image: url('../img/pie_graph_icon_30.png');
   height: 30px;
   width: 30px;
 
   @media (min-width: $screen-sm-min) {
-    background-image: image_url('1.0/pie_graph_icon_40.png');
+    background-image: url('../img/pie_graph_icon_40.png');
     height: 40px;
     width: 40px;
   }
@@ -205,43 +285,43 @@
 }
 
 .thread-item-author {
-  .author-details {
-    margin-left: 40px;
-    margin-bottom: 10px;
+
+  .author-name-only {
+    .author-name {
+      line-height: 30px;
+      @media (min-width: $screen-sm-min) {
+        line-height: 40px;
+      }
+    }
+  }
+
+  .author-with-text {
+    height: 30px;
     @media (min-width: $screen-sm-min) {
-      margin-left: 50px;
-      margin-bottom: 4px;
+      height: 40px;
     }
   }
 
   .author-name {
-    font-family: HelveticaNeue-Bold;
+    @include loomioFont(bold);
     font-size: 14px;
     color: #333333;
-    line-height: 13px;
+    line-height: 16px;
     @media (min-width: $screen-sm-min) {
       line-height: 20px;
       display: inline;
     }
   }
 
-  .author-role {
-    font-family: HelveticaNeue;
-    font-size: 12px;
-    color: #777777;
-    line-height: 13px;
-    margin-top: 4px;
-    @media (min-width: $screen-sm-min) {
-      font-size: 14px;
-      line-height: 20px;
-      margin-top: 0;
-      display: inline;
-    }
+  .author-statement {
+    @include loomioFont;
+    line-height: 16px;
+    padding-left: 8px;
   }
 }
 
 .thread-item-body {
-  font-family: HelveticaNeue;
+  @include loomioFont;
   font-size: 14px;
   color: #333333;
   line-height: 20px;
@@ -252,7 +332,7 @@
 }
 
 .thread-item-footer {
-  font-family: HelveticaNeue;
+  @include loomioFont;
   font-size: 12px;
   color: #777777;
   line-height: 15px;
