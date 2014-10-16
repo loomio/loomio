@@ -1,9 +1,37 @@
 gl:
+  users:
+    email_preferences:
+      edit:
+        title: 'Preferencias de correo'
+        when_do_you_want_emails: 'Escríbeme:'
+        email_missed_yesterday: "'Onte en Loomio' - un resumo diario das actividades perdidas"
+        email_when_mentioned: "Cando se me @menciona"
+        email_followed_threads: "Cando hai actividade en fíos que sigo."
+        email_when_proposal_closing_soon: "24 horas antes do peche dunha proposta"
+        email_new_discussions_and_proposals: 'Novos debates e propostas'
+        for_these_groups: "Para estes grupos:"
+        submit: "Gardar preferenzas"
+  explore:
+    header: "Explora grupos públicos"
+  try_it:
+    header: "Proba Loomio"
+    start_a_group: "Comeza un grupo para a toma de decisións na túa comunidade."
+    join_the_community: "Únete ao grupo da comunidade Loomio"
+    loomio_community_info: "Aquí é onde debatemos e tomamos decisións sobre Loomio."
+    explore_groups: "Explora outros grupos en Loomio"
+    explore_groups_info: "Revisa todos estes interesantes grupos en Loomio e únete a eles!"
+  activerecord:
+    errors:
+      messages:
+        blank: "Non pode ficar en branco"
   errors:
     messages:
-      email: "No é un enderezo de correo válido"
+      email: "Non é un enderezo de correo válido"
+  attachment:
+    error:
+      too_large: "O arquivo que estás a tentar engadir é maior de 50MB, por favor, téntao cun máis cativo."
   error:
-    cant_join_subgroup: "No podes unirte a un subgrupo se non pertences ao seu grupo superior."
+    cant_join_subgroup: "Non podes unirte a un subgrupo se non pertences ao seu grupo de nivel superior."
     cant_modify_position: "Esta proposta xa finalizou."
     cant_state_position: "Esta proposta xa finalizou."
     discussion_not_created: "Non se puido crear o debate."

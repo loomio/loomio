@@ -9,6 +9,8 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService) ->
       @event_ids = data.event_ids
       @title = data.title
       @description = data.description
+      @created_at = data.created_at
+      @active_proposal_id = data.active_proposal_id
 
     plural: 'discussions'
 
@@ -20,3 +22,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService) ->
 
     comments: ->
       RecordStoreService.getAll('comments', @comment_ids)
+
+    active_proposal: ->
+      RecordStoreService.get('proposals', @active_proposal_id)

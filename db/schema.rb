@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140921234434) do
+ActiveRecord::Schema.define(version: 20141006011358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -418,7 +418,7 @@ ActiveRecord::Schema.define(version: 20140921234434) do
     t.datetime "updated_at"
     t.datetime "closed_at"
     t.integer  "discussion_id"
-    t.string   "outcome"
+    t.text     "outcome"
     t.datetime "last_vote_at"
     t.boolean  "uses_markdown",       default: true, null: false
     t.integer  "yes_votes_count",     default: 0,    null: false

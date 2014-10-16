@@ -1,0 +1,16 @@
+-#%span{translate: "new_vote_item.user_agreed", translate_values: '{name: vote.author_name()}'}
+.thread-item{ng_controller: 'NewVoteItemController'}
+  .thread-item-header
+    .thread-item-author
+      .card-left
+        .thread-item-icon
+          .thread-icon-img{ng_class: 'vote.position'}
+      .card-right
+        .author-with-text
+          %span.author-name {{vote.author_name()}}
+          %span.author-statement voted on the proposal
+  .thread-item-body{ng_show: 'vote.statement'}
+    {{vote.statement}}
+  .thread-item-footer
+    %abbr.timeago
+      {{vote.created_at | timeFromNowInWords}}

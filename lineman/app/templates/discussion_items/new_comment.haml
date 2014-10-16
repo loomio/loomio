@@ -1,32 +1,30 @@
-.card__discussion-item{ng_controller: 'NewCommentItemController'}
-  .card__header
-    .media
-      .media__img.media__img--card
-        %div{'ng-include' => "'generated/templates/user/avatar.html'", 'ng-init' => "user = comment.author()"}
-      .media__text
-        %h4.media__title{ng_click: 'alert("hello")'}
-          {{comment.author().name}}
-        .media__details
-          {{comment.created_at | date:'medium' }}
-          %span.in-reply-to{ng_show: 'isAReply()'}
-            in reply to {{ comment.parent().author_name }}
+.thread-item{ng_controller: 'NewCommentItemController'}
+  .thread-item-header
+    .card-options-menu.pull-right
+      %i.fa.fa-chevron-down
 
-  .card__content.comment-body
+    .thread-item-author
+      .card-left
+        .card-author-photo
+          %img{ng-src: "{{comment.author_avatar()}}"}
+      .card-right
+        .author-name-only
+          .author-name
+            {{comment.author_name()}}
+  .thread-item-body
     {{ comment.body }}
-    .toolbar
-      .toolbar__button{ng_show: '!currentUserLikesIt()'}
-        %a.cuke-like-comment-btn{href: '#', ng_click: 'like()'}
-          -#%span.icon-thumbsup
-          Like
-      .toolbar__button{ng_show: 'currentUserLikesIt()'}
-        %a.cuke-unlike-comment-btn{href: '#', ng_click: 'unlike()'}
-          -#%span.icon-thumbsdown
-          Unlike
-      .toolbar__button.reply
-        %a.cuke-reply-to-comment-btn{href: '#', ng_click: 'reply()'}
-          -#%span.icon-ios7-chatbubble
-          Reply
 
-  .cuke-liked-by-names{ng_show: 'anybodyLikesIt()'}
-    Liked by {{ comment.liker_names().join(', ') }}
+  .thread-item-footer
+    .like-reply-age
+      %a.cuke-like-comment-btn{ng_show: '!currentUserLikesIt()', href: '#', ng_click: 'like()'}
+        Like
 
+      %a.cuke-unlike-comment-btn{href: '#', ng_click: 'unlike()', ng_show: 'currentUserLikesIt()'}
+        Unlike
+
+      %a.bump.cuke-reply-to-comment-btn{href: '#', ng_click: 'reply()'}
+        Reply
+      %abbr.timeago
+        {{comment.created_at | timeFromNowInWords}}
+    .liked-by.cuke-liked-by-names{ng_show: 'anybodyLikesIt()'}
+      Liked by {{ comment.liker_names().join(', ') }}

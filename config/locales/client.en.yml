@@ -1,0 +1,6 @@
+en:
+  new_vote_item:
+    user_agreed: '<strong>{{name}}</strong> agreed on the proposal:'
+    user_abstained: '<strong>{{name}}</strong> abstained on the proposal:'
+    user_disagreed: '<strong>{{name}}</strong> disagreed on the proposal:'
+    user_blocked: '<strong>{{name}}</strong> blocked the proposal:'
