@@ -4,12 +4,12 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
       @id = data.id
       @name = data.name
       @description = data.description
-      @created_at = data.created_at
-      @closing_at = data.closing_at
-      @author_id = data.author_id
-      @discussion_id = data.discussion_id
-      @vote_ids = data.vote_ids
-      @votes_count = data.votes_count
+      @createdAt = data.created_at
+      @closingAt = data.closing_at
+      @authorId = data.author_id
+      @discussionId = data.discussion_id
+      @voteIds = data.vote_ids
+      @votesCount = data.votes_count
       @pie_chart_data = [
         { value: data.yes_votes_count, color: '#90D490', label: 'Agree' },
         { value: data.abstain_votes_count, color: '#F0BB67', label: 'Abstain' }
@@ -20,13 +20,13 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
     plural: 'proposals'
 
     author: ->
-      RecordStoreService.get('users', @author_id)
+      RecordStoreService.get('users', @authorId)
 
     discussion: ->
-      RecordStoreService.get('discussions', @discussion_id)
+      RecordStoreService.get('discussions', @discussionId)
 
     votes: ->
-      RecordStoreService.getAll('votes', @vote_ids)
+      RecordStoreService.getAll('votes', @voteIds)
 
-    author_name: ->
+    authorName: ->
       @author().name
