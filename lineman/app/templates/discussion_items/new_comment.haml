@@ -1,30 +1,18 @@
-.thread-item{ng_controller: 'NewCommentItemController'}
-  .thread-item-header
-    .card-options-menu.pull-right
-      %i.fa.fa-chevron-down
-
-    .thread-item-author
-      .card-left
-        .card-author-photo
-          %img{ng-src: "{{comment.author_avatar()}}"}
-      .card-right
-        .author-name-only
-          .author-name
-            {{comment.author_name()}}
-  .thread-item-body
+.thread-event.thread-comment{ng_controller: 'NewCommentItemController'}
+  .thread-comment-author.media
+    .pull-left{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = comment.author()'}
+    .thread-comment-author-name.media-body
+      {{comment.authorName()}}
+  .thread-event-body
     {{ comment.body }}
 
-  .thread-item-footer
-    .like-reply-age
-      %a.cuke-like-comment-btn{ng_show: '!currentUserLikesIt()', href: '#', ng_click: 'like()'}
-        Like
-
-      %a.cuke-unlike-comment-btn{href: '#', ng_click: 'unlike()', ng_show: 'currentUserLikesIt()'}
-        Unlike
-
-      %a.bump.cuke-reply-to-comment-btn{href: '#', ng_click: 'reply()'}
-        Reply
-      %abbr.timeago
-        {{comment.created_at | timeFromNowInWords}}
-    .liked-by.cuke-liked-by-names{ng_show: 'anybodyLikesIt()'}
-      Liked by {{ comment.liker_names().join(', ') }}
+  .thread-actions-and-meta
+    %a{translate: 'common.action.like', ng-show: '!currentUserLikesIt()', href: '#', ng_click: 'like()'}>
+    %a{translate: 'common.action.unlike', href: '#', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
+    ·
+    %a{translate: 'common.action.reply', href: '#', ng_click: 'reply()'}>
+    ·
+    %abbr.timeago>
+      {{comment.createdAt | timeFromNowInWords}}
+    .liked-by{ng_show: 'anybodyLikesIt()'}
+      Liked by {{ comment.likerNames().join(', ') }}

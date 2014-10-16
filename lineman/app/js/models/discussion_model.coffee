@@ -3,25 +3,32 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService) ->
     constructor: (data = {}) ->
       @id = data.id
       @key = data.key
-      @author_id = data.author_id
-      @group_id = data.group_id
-      @comment_ids = data.comment_ids
-      @event_ids = data.event_ids
+      @authorId = data.author_id
+      @groupId = data.group_id
+      @commentIds = data.comment_ids
+      @eventIds = data.event_ids
       @title = data.title
       @description = data.description
-      @created_at = data.created_at
-      @active_proposal_id = data.active_proposal_id
+      @createdAt = data.created_at
+      @activeProposalId = data.active_proposal_id
+      @private = data.private
 
     plural: 'discussions'
 
+    group: ->
+      RecordStoreService.get('groups', @groupId)
+
     events: ->
-      RecordStoreService.getAll('events', @event_ids)
+      RecordStoreService.getAll('events', @eventIds)
 
     author: ->
-      RecordStoreService.get('users', @author_id)
+      RecordStoreService.get('users', @authorId)
+
+    authorName: ->
+      @author().name
 
     comments: ->
-      RecordStoreService.getAll('comments', @comment_ids)
+      RecordStoreService.getAll('comments', @commentIds)
 
-    active_proposal: ->
-      RecordStoreService.get('proposals', @active_proposal_id)
+    currentProposal: ->
+      RecordStoreService.get('proposals', @activeProposalId)

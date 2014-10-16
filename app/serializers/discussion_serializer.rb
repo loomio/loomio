@@ -7,10 +7,12 @@ class DiscussionSerializer < ActiveModel::Serializer
              :created_at,
              :updated_at,
              :items_count,
-             :comments_count
+             :comments_count,
+             :private
 
   has_one :current_user, serializer: UserSerializer, root: 'users'
   has_one :author, serializer: UserSerializer, root: 'users'
+  has_one :group, serializer: GroupSerializer, root: 'groups'
   has_one :active_proposal, serializer: MotionSerializer, root: :proposals
   has_many :events, serializer: EventSerializer
   has_many :comments, serialier: CommentSerializer

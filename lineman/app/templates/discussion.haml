@@ -1,28 +1,40 @@
 .container
   .row
     .col-xs-12
-      .card.card-thread-context
-        .card-content.card-content-primary
-          .card-content-header
-            .card-options-menu.pull-right
-              %i.fa.fa-chevron-down
-            %h1 {{discussion.title}}
-            .author-name.card-meta-text
-              Started by
-              %strong.bump {{discussion.author().name}}
-            .published-at.card-meta-text
-              %abbr.timeago
-                {{discussion.created_at | timeFromNowInWords}}
-          .card-content-body
-            {{ discussion.description}}
+      .thread-container
+        .thread-discussion
+          %h1 {{discussion.title}}
+          .media.thread-origin
+            .pull-left.thread-origin-icon
+              %img{src: 'http://placehold.it/30'}
+            .media-body.thread-origin-details
+              {{discussion.group().fullName()}}
+              %br
+              %span{translate: 'discussion.started_by', translate-value-name: '{{discussion.authorName()}}'}
 
-      %proposal{proposal: 'discussion.active_proposal()', discussion: 'discussion', currentUser: 'currentUser'}
+          .thread-discussion-context
+            {{discussion.description}}
 
-      .card.card-thread-items
-        .card-meta-header
-          %h1 Discussion
-        .card-content
+          .thread-actions-and-meta
+            %a{href: '#', translate: 'common.action.reply'}>
+            ·
+            %a{href: '#', translate: 'common.action.edit'}>
+            ·
+            %span.time-ago>
+              {{discussion.createdAt | timeFromNowInWords}}
+            ·
+            %span.discussion-privacy__is-private{ng-show: 'discussion.private'}>
+              %i.fa.fa-lock>
+              %span{translate: 'common.state.private'}
+            %span.discussion-privacy__is-public{ng-show: '!discussion.private'}>
+              %i.fa.fa-globe>
+              %span{translate: 'common.state.public'}
+
+        .thread-proposals
+          %proposal{proposal: 'discussion.currentProposal()', discussion: 'discussion', currentUser: 'currentUser'}
+
+        .thread-events
           %div{ng_repeat: 'event in discussion.events()', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
 
-      %start_proposal{discussion: 'discussion'}
-      %add_comment{discussion: 'discussion'}
+        %start_proposal{discussion: 'discussion'}
+        %add_comment{discussion: 'discussion'}
