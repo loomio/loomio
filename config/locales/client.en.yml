@@ -1,4 +1,20 @@
 en:
+  common:
+    state:
+      private: 'Private'
+      public: 'Public'
+    action:
+      reply: 'Reply'
+      edit: 'Edit'
+      like: 'Like'
+      unlike: 'Unlike'
+
+  proposal:
+    started_by: 'Started by <strong>{{name}}</strong>'
+
+  discussion:
+    started_by: 'Started by <strong>{{name}}</strong>'
+
   new_vote_item:
     user_agreed: '<strong>{{name}}</strong> agreed on the proposal:'
     user_abstained: '<strong>{{name}}</strong> abstained on the proposal:'

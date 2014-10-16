@@ -1,0 +1,114 @@
+$meta-text-color: #888;
+$thread-border-color: #ddd;
+
+@mixin fontSmall {
+  font-size: 12px;
+  line-height: 14px;
+}
+@mixin fontMainHeadingSize {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+@mixin fontSubHeadingSize {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+@mixin fontHelveticaBold {
+  font-family: "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold",
+    "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold', "Helvetica", "Tahoma",
+    "Geneva", "Arial", sans-serif;
+  font-weight:600;
+  font-stretch:normal;
+}
+
+@mixin fontHelvetica {
+  font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman",
+    "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular',
+    "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-weight:400;
+  font-stretch:normal;
+}
+
+@mixin metaText {
+  color: $meta-text-color;
+  @include fontSmall;
+}
+
+.thread-container {
+  border: 1px solid $thread-border-color;
+}
+
+.thread-discussion {
+  padding: 15px;
+  background-color: #fff;
+  h1 {
+    @include fontHelveticaBold;
+    @include fontMainHeadingSize;
+    padding: 0;
+    margin: 0;
+    color: #333333;
+  }
+}
+
+.thread-origin {
+  @include fontHelvetica;
+  @include fontSmall;
+  color: #777777;
+}
+
+.thread-origin-icon{}
+.thread-origin-details{}
+
+.thread-discussion-context {
+
+}
+
+.thread-actions-and-meta {
+  @include fontSmall();
+  color: $meta-text-color;
+}
+
+.thread-proposals {
+  background-color: #fff;
+  border-top: 1px solid $thread-border-color;
+  h2 {
+    @include fontSubHeadingSize;
+    @include fontHelveticaBold;
+  }
+}
+
+.thread-proposal {
+  padding: 15px;
+  background-color: #fff;
+}
+
+.thread-proposal-started-by {
+  @include metaText
+}
+
+.thread-proposal-description {
+}
+
+.thread-events {
+  padding: 15px;
+  background-color: #F5F5F5;
+  border-top: 1px solid $thread-border-color;
+}
+
+.thread-event {
+  margin-bottom: 10px;
+}
+
+.thread-comment-author {
+  .avatar-initials{
+    width: 40px;
+    height: 40px;
+  }
+  .avatar-image img{
+    width: 40px;
+    height: 40px;
+  }
+
+}
