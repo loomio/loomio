@@ -7,8 +7,4 @@ angular.module('loomioApp').factory 'UserModel', (RecordStoreService) ->
       @avatarUrl = data.avatar_url
       @avatarInitials = data.avatar_initials
 
-
-    avatarOrInitials: ->
-      @avatarUrl or @avatarInitials
-
     plural: 'users'

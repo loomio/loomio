@@ -1,4 +1,11 @@
-angular.module('loomioApp', ['ngRoute', 'jmdobry.angular-cache', 'ui.bootstrap.datetimepicker','pascalprecht.translate', 'tc.chartjs', 'ngSanitize']).config ($httpProvider) ->
+angular.module('loomioApp', ['ngRoute', 
+                             'jmdobry.angular-cache', 
+                             'ui.bootstrap.datetimepicker',
+                             'pascalprecht.translate', 
+                             'tc.chartjs', 
+                             'ngSanitize',
+                             'btford.markdown']).config ($httpProvider) ->
+
   # consume the csrf token from the page
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
