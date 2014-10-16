@@ -3,7 +3,8 @@ angular.module('loomioApp', ['ngRoute',
                              'ui.bootstrap.datetimepicker',
                              'pascalprecht.translate', 
                              'tc.chartjs', 
-                             'ngSanitize']).config ($httpProvider) ->
+                             'ngSanitize',
+                             'btford.markdown']).config ($httpProvider) ->
 
   # consume the csrf token from the page
   authToken = $("meta[name=\"csrf-token\"]").attr("content")

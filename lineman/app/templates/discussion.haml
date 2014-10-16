@@ -13,7 +13,7 @@
               %span{translate: 'discussion.started_by', translate-value-name: '{{discussion.authorName()}}'}
 
           .thread-discussion-context
-            {{discussion.description}}
+            .thread-discussion-description{btf-markdown: 'discussion.description' }
 
           .thread-actions-and-meta
             %a{href: '#', translate: 'common.action.reply'}>
