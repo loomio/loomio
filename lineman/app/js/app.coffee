@@ -16,6 +16,7 @@ angular.module('loomioApp').config ($translateProvider) ->
 
 # setup the RecordStoreService so that it knows about all the models we care about
 angular.module('loomioApp').run (RecordStoreService,
+                                 GroupModel,
                                  UserModel,
                                  CommentModel,
                                  DiscussionModel,
@@ -23,6 +24,7 @@ angular.module('loomioApp').run (RecordStoreService,
                                  EventModel,
                                  VoteModel) ->
 
+  RecordStoreService.registerModel(GroupModel)
   RecordStoreService.registerModel(UserModel)
   RecordStoreService.registerModel(ProposalModel)
   RecordStoreService.registerModel(DiscussionModel)

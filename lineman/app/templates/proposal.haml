@@ -1,66 +1,60 @@
-.card.card-thread-items{ng_hide: 'proposal == null'}
-  .card-options-menu.pull-right
-    %i.fa.fa-chevron-down
-  .card-meta-header
-    %h1 Proposal
-  .card-content.card-content-primary
-    .l-row#cuke-current-proposal
-      %h1.card-header 
-        {{proposal.name}}
-      %span.card-details
-        %a{ href: '#' }
-      .card-details
-        %abbr.timeago
-          Proposed by {{proposal.author_name()}} {{proposal.created_at | timeFromNowInWords }}
-        .proposal-description
-          {{proposal.description}}
-        .proposal-closing-at
-          %i.fa.fa-clock-o
-          %span.bump Closes {{proposal.closing_at | exactDateWithTime }}
-        .pie-graph-container.row
-          .col-xs-6.test-me
-            %canvas.pie-graph{tc-chartjs-pie:true, chart-data:'proposal.pie_chart_data', chart-options:'pie_chart_options'}
-          .col-xs-5.proposal-participation
-            %a{href: '#'} {{proposal.votes_count}} of X members have participated
+.thread-proposal{ng_show: 'proposal'}
+  %h2 {{proposal.name}}
+  .thread-proposal-started-by
+    %span{translate: 'proposal.started_by', translate-value-name: '{{proposal.authorName()}}'}
+    %span.time-ago>
+      {{discussion.createdAt | timeFromNowInWords}}
 
-        .card-meta-header
-          %a.edit-position.pull-right{ng_show: 'currentUserVote()', href: '#'}
-            %span.bump Edit
-            %i.fa.fa-pencil
-          %h3 Your Position
-          .current-position{ng_show: 'currentUserVote()'}
-            .vote.thread-item-minor
-              .card-left-big
-                .featured-vote-icon.thread-item-icon
-                  .thread-icon-img{ng_class: 'currentUserVote().position'}
-              .card-right-small.thread-item-author
-                %span.author-name {{currentUserVote().author_name()}} 
-                %span.author-statement {{ currentUserVote().statement_or_position() }}        
-          .proposal-positions{ng_hide: 'currentUserVote()'}
-            .col-xs-3.agree{ng_click: 'selectPosition("yes")'}
-              %img{src: '/img/yes.png'}
-            .col-xs-3.abstain{ng_click: 'selectPosition("abstain")'}
-              %img{src: '/img/abstain.png'}
-            .col-xs-3.disagree{ng_click: 'selectPosition("no")'}
-              %img{src: '/img/no.png'}
-            .col-xs-3.block{ng_click: 'selectPosition("block")'}
-              %img{src: '/img/block.png'}
+  .thread-proposal-description
+    {{proposal.description}}
 
-        .card-meta-header 
-          %h3 Positions
-        .current-votes{ng_repeat: 'vote in proposal.votes()'}
-          .vote.thread-item-minor{ng_hide: 'vote == currentUserVote()'}
-            .card-left
-              .thread-item-icon
-                .thread-icon-img{ng_class: 'vote.position'}
-            .card-right.thread-item-author
-              %span.author-name {{vote.author_name()}} 
-              %span.author-statement {{ vote.statement_or_position() }}
+  .thread-proposal-closing-at
+    %i.fa.fa-clock-o
+    %span.bump Closes {{proposal.closing_at | exactDateWithTime }}
+  .pie-graph-container.row
+    .col-xs-6.test-me
+      %canvas.pie-graph{tc-chartjs-pie:true, chart-data:'proposal.pie_chart_data', chart-options:'pie_chart_options'}
+    .col-xs-5.proposal-participation
+      %a{href: '#'} {{proposal.votes_count}} of X members have participated
 
-      .l-row.statement-form{ng_show: 'voteFormIsExpanded'}
-        %form{ng_submit: 'submitVote()'}
-          %fieldset{ng_disable: 'voteFormIsDisabled'}
-            .form-group
-              %textarea{ng_model: 'newVote.statement'}
-              %button.btn.btn-primary{type: 'submit'}
-                Vote
+      -#.card-meta-header
+        -#%a.edit-position.pull-right{ng_show: 'currentUserVote()', href: '#'}
+          -#%span.bump Edit
+          -#%i.fa.fa-pencil
+        -#%h3 Your Position
+        -#.current-position{ng_show: 'currentUserVote()'}
+          -#.vote.thread-item-minor
+            -#.card-left-big
+              -#.featured-vote-icon.thread-item-icon
+                -#.thread-icon-img{ng_class: 'currentUserVote().position'}
+            -#.card-right-small.thread-item-author
+              -#%span.author-name {{currentUserVote().author_name()}} 
+              -#%span.author-statement {{ currentUserVote().statement_or_position() }}        
+        -#.proposal-positions{ng_hide: 'currentUserVote()'}
+          -#.col-xs-3.agree{ng_click: 'selectPosition("yes")'}
+            -#%img{src: '/img/yes.png'}
+          -#.col-xs-3.abstain{ng_click: 'selectPosition("abstain")'}
+            -#%img{src: '/img/abstain.png'}
+          -#.col-xs-3.disagree{ng_click: 'selectPosition("no")'}
+            -#%img{src: '/img/no.png'}
+          -#.col-xs-3.block{ng_click: 'selectPosition("block")'}
+            -#%img{src: '/img/block.png'}
+
+      -#.card-meta-header 
+        -#%h3 Positions
+      -#.current-votes{ng_repeat: 'vote in proposal.votes()'}
+        -#.vote.thread-item-minor{ng_hide: 'vote == currentUserVote()'}
+          -#.card-left
+            -#.thread-item-icon
+              -#.thread-icon-img{ng_class: 'vote.position'}
+          -#.card-right.thread-item-author
+            -#%span.author-name {{vote.author_name()}} 
+            -#%span.author-statement {{ vote.statement_or_position() }}
+
+    -#.l-row.statement-form{ng_show: 'voteFormIsExpanded'}
+      -#%form{ng_submit: 'submitVote()'}
+        -#%fieldset{ng_disable: 'voteFormIsDisabled'}
+          -#.form-group
+            -#%textarea{ng_model: 'newVote.statement'}
+            -#%button.btn.btn-primary{type: 'submit'}
+              -#Vote

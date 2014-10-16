@@ -2,31 +2,33 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
   class CommentModel
     constructor: (data = {}) ->
       @id = data.id
-      @author_id = data.author_id
-      @parent_id = data.parent_id
+      @authorId = data.author_id
+      @parentId = data.parent_id
       @body = data.body
-      @liker_ids = data.liker_ids
+      @likerIds = data.liker_ids
+      @createdAt = data.created_at
+      @updatedAt = data.updated_at
 
     plural: 'comments'
 
-    liker_names: ->
+    likerNames: ->
       _.map @likers(), (user) ->
         user.name
 
     likers: ->
-      RecordStoreService.getAll('users', @liker_ids)
+      RecordStoreService.getAll('users', @likerIds)
 
     author: ->
-      RecordStoreService.get('users', @author_id)
+      RecordStoreService.get('users', @authorId)
 
     parent: ->
-      RecordStoreService.get('comments', @parent_id)
+      RecordStoreService.get('comments', @parentId)
 
     discussion: ->
-      RecordStoreService.get('discussions', @discussion_id)
+      RecordStoreService.get('discussions', @discussionId)
 
-    author_name: ->
+    authorName: ->
       @author().name
 
-    author_avatar: ->
-      @author().avatar_or_initials()
+    authorAvatar: ->
+      @author().avatarOrInitials()
