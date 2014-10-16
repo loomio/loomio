@@ -11,6 +11,7 @@ Loomio is a collaborative decision-making tool that makes it easy for anyone to 
 - To see what's being worked on and what's planned, vote on development priorities, and find tasks to pick up, check out the [Loomio Roadmap](https://www.loomio.org/roadmap). To participate in discussions about the app, potential features, and more, [join the Loomio Community group on Loomio](https://www.loomio.org/g/WmPCB3IR/loomio-community).
 
 ### Contact
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/loomio/loomio?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 If you have any questions or feedback, get in touch via [contact@loomio.org](mailto:contact@loomio.org).
 <br />
