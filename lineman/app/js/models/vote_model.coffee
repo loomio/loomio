@@ -2,23 +2,20 @@ angular.module('loomioApp').factory 'VoteModel', (RecordStoreService, $sanitize)
   class VoteModel
     constructor: (data = {}) ->
       @id = data.id
-      @author_id = data.author_id
-      @proposal_id = data.proposal_id
+      @authorId = data.author_id
+      @proposalId = data.proposal_id
       @position = data.position
       @statement = data.statement
 
     plural: 'votes'
 
     author: ->
-      RecordStoreService.get('users', @author_id)
+      RecordStoreService.get('users', @authorId)
 
     proposal: ->
-      RecordStoreService.get('proposals', @proposal_id)
+      RecordStoreService.get('proposals', @proposalId)
 
-    statement_or_position: ->
-      @statement || @position
-
-    author_name: ->
+    authorName: ->
       @author().name
 
     isAgree: ->
