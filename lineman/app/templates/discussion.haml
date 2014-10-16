@@ -1,35 +1,28 @@
 .container
   .row
     .col-xs-12
-      .group-header
-        .group-header-title
-          %h1
-            {{discussion.group_name()}}
-      .thread-settings
-        .privacy.btn.btn-default
-          %i.fa.fa-lock
-          Private
-
       .card.card-thread-context
-        .card-content
+        .card-content.card-content-primary
           .card-content-header
             .card-options-menu.pull-right
               %i.fa.fa-chevron-down
-              %h1
-                {{discussion.title}}
+            %h1 {{discussion.title}}
             .author-name.card-meta-text
               Started by
-              %strong
-                {{@discussion.author().name}}
+              %strong.bump {{discussion.author().name}}
             .published-at.card-meta-text
               %abbr.timeago
-                30 minutes ago
-
+                {{discussion.created_at | timeFromNowInWords}}
           .card-content-body
-            {{discussion.description}}
+            {{ discussion.description}}
+
+      %proposal{proposal: 'discussion.active_proposal()', discussion: 'discussion', currentUser: 'currentUser'}
 
       .card.card-thread-items
         .card-meta-header
           %h1 Discussion
-        .card-content{ng_repeat: 'event in discussion.events()', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
+        .card-content
+          %div{ng_repeat: 'event in discussion.events()', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
 
+      %start_proposal{discussion: 'discussion'}
+      %add_comment{discussion: 'discussion'}

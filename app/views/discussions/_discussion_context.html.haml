@@ -22,7 +22,7 @@
           link_class: 'user-name')
       -if @discussion.has_previous_versions?
         .last-edited-by
-          = link_to t(:"discussion_context.edited", when: time_ago_in_words(@discussion.last_versioned_at)), show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
+          = link_to t(:"common.edited", when: time_ago_in_words(@discussion.last_versioned_at)), show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
       - if can? :follow, @discussion
         .following-status
           - if @discussion_reader.following?

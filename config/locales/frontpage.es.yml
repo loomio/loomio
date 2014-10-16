@@ -1,6 +1,6 @@
 es:
   frontpage:
-    view_this_in_your_language: 'Vea esta página en %{language}'
+    view_this_in_your_language: 'Haz click aquí para usar Loomio en %{language}'
     title:
       collaborative_decision_making: Toma de decisiones colectiva
     link:
@@ -29,28 +29,28 @@ es:
         desc: 'Empieza una discusión en cualquier tema, e invita a las personas que quieras. Comparte perspectivas diversas y desarrolla las ideas en conjunto.'
       step2:
         header: '2. Construir un acuerdo'
-        desc: 'Todos pueden proponer un curso de acción. Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear –de esa manera podrás ver cómo se siente el grupo y por qué-.'
+        desc: 'Cualquier persona puede proponer una discusión. Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear –de esa manera podrás ver cómo se siente el grupo y por qué-.'
       step3:
         header: '3. Decidir juntos'
-        desc: 'Desarrolla la propuesta colectivamente para que funcione para todos. Cada decisión posee una fecha limite, siempre obteniendo un resultado claro.'
+        desc: 'Desarrolla la propuesta colectivamente para que funcione para todos. Cada decisión posee una fecha límite, siempre obteniendo un resultado claro.'
     crowdfunding:
       header: 'Estamos en el proceso de financiación colectiva para poder construir esta nueva plataforma y poder regalarse al mundo.'
     prototype:
       header_html: "Ya hemos construido un prototipo, y personas de todo el mundo están haciendo cosas asombrosas con el."
       subhead_html: '<a href="%{try_loomio_link}">Prueba Loomio Beta</a> ahora. O puedes <a href="%{donate_link}">apoyar al proyecto</a> para ayudar a financiar Loomio 1.0'
     mobile:
-      header_html: 'Loomio 1.0 funciona con cualquier aparato, construido con lo mejor en <strong> tecnología abierta de móvil.</strong>'
+      header_html: 'Loomio 1.0 funciona en cualquier dispositivo, construido con lo mejor en <strong>tecnología abierta para móviles.</strong>'
     quote:
       header:
         rushkoff_html: '«Loomio <strong>libera el potencial de Internet</strong> para acercar a las personas al consenso en vez de al debate polarizado».<div class="attributation"> (<a href="http://rushkoff.com">Douglas Rushkoff</a>, autor del libro <em>Present Shock</em>).</div>'
         sifry_html: '«Loomio alcanza un punto óptimo entre <strong>voz individual</strong> y <strong>decisión colectiva</strong>». <div class="attributation">(Micah Sifry, editor de <em><a href="http://techpresident.com">TechPresident</a></em>)</div>'
     team:
       header: 'Acerca de Loomio'
-      desc: 'Somos un pequeño grupo de desarolladores open-source y activistas comunitarios que trabajamos en Ensipral en Aotearoa, Nueva Zelanda, con una gran comunidad de amigos, voluntarios y asesores alrededor del mundo.'
+      desc: 'Somos un pequeño equipo de desarrolladores de código abierto y activistas de justicia social que trabajamos en Enspiral, en Nueva Zelanda, con una amplia red de amigos, simpatizantes y asesores alrededor del mundo.'
     ideals:
       community:
         header: 'Cooperativa comunitaria'
-        desc: 'Loomio es construido por una cooperativa propiedad de los trabajadores. Somos una empresa social trabajando para maximizar el cambio social de una manera positiva sin fines de lucro.'
+        desc: 'Loomio está diseñado por una cooperativa propiedad de sus trabajadores. Somos una empresa social que trabaja para maximizar un impacto social positivo, sin fines de lucro.'
       independent:
         header: 'Independiente y neutral'
         desc: 'Tenemos espacio para cualquier grupo que sea independiente de partidos políticos o interés corporativo. Nunca venderemos tu información.'
@@ -59,6 +59,6 @@ es:
         desc: 'El código de Loomio es público y cualquiera puede ejecutarlo, leerlo y aprender de él, modificarlo y redistribuirlo.'
       gift:
         header: 'Economía del regalo'
-        desc: 'Loomio es financiada por aquellos que contribuyen de acuerdo a sus recursos. Esto mantiene la plataforma libre de propagandas comerciales y accesible a grupos sin recursos financieros.'
+        desc: 'Loomio se financia por medio de aquellos que contribuyen de acuerdo a sus recursos. Esto mantiene la plataforma libre de publicidad y accesible a grupos sin recursos financieros.'
     vision:
       header: 'Ayúdanos a transformar esta visión en realidad.'

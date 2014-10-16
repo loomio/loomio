@@ -2,7 +2,7 @@ de:
   users:
     email_preferences:
       edit:
-        title: 'eMail Einstellungen'
+        title: 'eMail-Einstellungen'
         when_do_you_want_emails: 'Sende mir:'
         email_missed_yesterday: "\"Yesterday on Loomio\" - eine tägliche Zusammenfassung aller Aktivitäten, die ich verpasst habe"
         email_when_mentioned: "Wenn ich @erwähnt wurde"
@@ -26,7 +26,7 @@ de:
         blank: "kann nicht freigelassen werden"
   errors:
     messages:
-      email: "Keine gültige eMail-Adresse"
+      email: "Keine gültige E-Mail-Adresse"
   attachment:
     error:
       too_large: "Die Datei, die Du anhängen möchtest, ist größer als 50 MB. Bitte wähle eine kleinere Datei aus."
@@ -178,6 +178,8 @@ de:
         other: "%{count} Jahre"
   organisation:
     name: "Loomio"
+  sr:
+    toggle_navigation: "Navigation umschalten"
   footer:
     about: 'Über Loomio'
     blog: 'Blog'
@@ -186,8 +188,13 @@ de:
     public_groups: 'Öffentliche Gruppen'
     terms: 'Bedingungen'
   inbox:
+    clear: 'Leeren'
+    title: 'Posteingang'
+    preferences: 'Posteingangs-Optionen'
+    what_you_have_not_read_yet: "Hier sind alle Aktivitäten, die Du noch nicht gelesen hast."
     dropdown-btn: 'Eingang'
     empty: Du bist auf dem neuesten Stand! Es gibt keine Kommentare, die Du noch nicht gesehen hast.
+    preferences_instructions_html: '<strong>Ziehe die Objekte</strong> Um sie neu zu ordnen.  <strong>Deaktivieren</strong> um es aus der inbox zu entfernen.'
   notifications:
     header: "Benachrichtigungen"
     new_discussion: "begann eine Diskussion"
@@ -276,7 +283,7 @@ de:
     motions_can_be_edited: Auch nach Beginn der Abstimmung die eigenen Vorschläge bearbeiten
     visible_to:
       label: Wer kann diese Gruppe sehen?
-      public_html: 'JedeR <span>Gruppe öffentlich listen</span>'
+      public_html: 'Jeder <span>Gruppe öffentlich listen</span>'
       parent_members_html: 'Mitglieder von %{parent_group_name} <span>nur sichtbar für Mitglieder von %{parent_group_name}</span>'
       members_html: 'Nur für Mitglieder <span>die Gruppe wird nicht aufgelistet</span>'
     membership_granted_upon:
@@ -289,7 +296,7 @@ de:
       invitation_html: Nur auf Einladung <span>Neumitglieder müssen eingeladen werden</span>
     parent_members_can_see_discussions:
       label: Diskussionssphäre
-      'true': 'JedeR in %{parent_group_name} kann Diskussionen sehen'
+      'true': 'Jeder in %{parent_group_name} kann Diskussionen sehen'
       'false': Nur Mitglieder können Diskussionen sehen
     discussion_privacy_options:
       label: Wer kann Diskussionen sehen?
@@ -323,12 +330,15 @@ de:
     m7: Jederzeit ihre eigenen Kommentare bearbeiten.
     m8: Vorschläge einbringen und daran teilnehmen.
     optional_restrictions: "Optional können Koordinator/innen Mitgliederrechte beschränken."
+  discussion_privacy:
+    public: Diese Diskussion ist öffentlich im Web
+    private: Diese Diskussion ist nur für Gruppenmitglieder lesbar
   group_privacy:
     visible_to:
       public: Öffentlich gelistete Gruppe
       parent_members: 'Nichtöffentlich gelistete Gruppe. Nur für Mitglieder und Teilnehmer von %{parent_group_name} sichtbar.'
       members: Versteckte Gruppe. Nur für Mitglieder sichtbar.
-      public_html: 'JedeR <span>die Gruppe öffentlich auflisten</span>'
+      public_html: 'Jeder <span>die Gruppe öffentlich auflisten</span>'
       parent_members_html: 'Menschen in %{parent_group_name} <span>nur sichtbar für Mitglieder von %{parent_group_name}</span>'
       members_html: 'Nur für Mitglieder <span>die Gruppe wird nicht aufgelistet</span>'
   setup_steps_title: "Nächste Schritte:"
@@ -351,6 +361,7 @@ de:
   message_placeholder: "Schreibe eine Nachricht an die Mitglieder von %{which_group}."
   email_group_members: "eMail an Gruppenmitglieder verfassen"
   edit_group_settings: "Gruppeneinstellungen bearbeiten"
+  manage_members: "Mitglieder organisieren"
   leave_group: "Gruppe verlassen"
   confirm_leave_hidden_group: "Bist Du sicher, dass Du die Gruppe %{which_group} verlassen möchtest? Damit verlässt Du auch alle Untergruppen."
   confirm_leave_group: "Bist Du sicher, dass Du %{which_group} verlassen möchtest?"
@@ -411,6 +422,8 @@ de:
     beta_request_header: "Gründe eine Gruppe auf Loomio Beta"
     beta_request_description: "Um Entscheidungen auf Loomio Beta zu treffen, musst Du zuerst eine Gruppe gründen"
     neighbourhood_support_group: "z. B. Nachbarschaftshilfe"
+    commercial_use_option: in einem Unternehmen, einer formellen Organsation oder Arbeit
+    non_commercial_use_option: in einer Gruppe oder einem informellen Netzwerk
     please_select_an_option: Bitte wähle eine Option
     confirmation:
       title: Du bist fast fertig! Prüfe Deine eMails.
@@ -436,11 +449,13 @@ de:
   previous_decisions: "Bisherige Entscheidungen"
   see_previous_decisions: "Bisherige Entscheidungen ansehen"
   see_more: "Mehr erfahren"
+  create_new_proposal: "Vorschlag erstellen"
   empty_decision_list_html: "Gib der Diskussion eine neue Richtung. Mach einen gänzlich anderen oder einen verfeinerten Vorschlag."
   empty_decision_index: "Diese Gruppe hat noch keine Entscheidungen getroffen."
   empty_discussion_list: "Es gibt noch keine Aktivitäten in dieser Diskussion."
   go_to_add_comment_html: "Um zu kommentieren: <a href='%{href}'>gehe zum Ende der Diskusison</a>."
   comment_by: "Kommentar von %{comment_author}"
+  read_up_to: "Bis hierher hast Du bereits gelesen."
   discussion_list:
     clear_filters: "Filter löschen: alle Diskussionen anzeigen"
     filter_unread:
@@ -757,7 +772,7 @@ de:
       will_be_private: "Die Diskussion wird nur für Gruppenmitglieder sichtbar sein."
       will_be_private_to_group: "Die Diskussion wird nur für Mitglieder von %{group_name} sichtbar sein."
       will_be_private_to_parent_group: "Die Diskussion wird nur für Mitglieder von %{parent_group_name} und von %{group_name} sichtbar sein."
-      will_be_public: "JedeR kann die Diskussion sehen."
+      will_be_public: "Jeder kann die Diskussion sehen."
   motion_history:
     title: "Vorschlagsänderungen"
   motion_form:
@@ -781,6 +796,7 @@ de:
   new_user_form:
     create_an_account: "Konto erstellen"
   profile_form:
+    view: "Profil anzeigen"
     profile: "Profil bearbeiten"
     picture: "Bild"
     use_initials: 'Initialen benutzen'
@@ -925,6 +941,9 @@ de:
       summary: "Zusammenfassung"
     thread_mailer:
       footer_text: "Antworte auf diese eMail sofort oder auf Loomio ansehen:"
+      reply_or_view_online_html: "Antworte auf diese eMail sofort oder <a href='%{url}'>auf Loomio ansehen</a>."
+      unfollow_discussion_html: "<a href='%{unfollow_url}'>Nicht mehr folgen</a> beendet die eMail-Benachrichtigung über diese Diskussion."
+      change_email_preferences_html: "Ändere Deine <a href='%{email_preferences_url}'>eMail-Einstellungen</a> um weniger Loomio eMails zu erhalten."
       change_preferences: "Ändere Deine eMail Einstellungen:"
       new_motion: "%{who} schlägt vor:"
       motion_closing_soon: "Vorschlag endet in 24 Stunden:"
@@ -937,6 +956,8 @@ de:
       header: "Du bist fast fertig!"
       intro: "Bitte klicke auf diesen Link zur Verifizierung, um Deine Anfrage abzuschließen:"
       ignore: "Wenn Du nicht angefragt hast dieser Loomio Gruppe beizutreten, ignoriere diese eMail."
+  meta_tags:
+    default_title: "Loomio | Gemeinschaftliche Entscheidungsfindung"
   about_loomio: "Über Loomio"
   ago: "vor %{quantity_of_time}"
   approve: "Zustimmen"
@@ -1006,11 +1027,12 @@ de:
   google: "Google"
   persona: "Persona"
   common:
+    settings: Einstellungen
     dashboard: Schreibtisch
     unread: Ungelesen
     filter: 'Filter:'
-    following: Thema folgen
-    not_following: Thema nicht mehr folgen
+    following: Gefolgt
+    not_following: Nicht gefolgt
     back_to_discussion: "Zurück zur Diskussion"
     edited: Bearbeitet
     groups: "Gruppen"
@@ -1073,6 +1095,7 @@ de:
     please_wait: "Bitte warte"
     privacy: "Privatsphäre"
     private: "Privat"
+    permissions: "Berechtigungen"
     public: "Öffentlich"
     email: "eMail"
     start_group: "Starte die Gruppe!"
