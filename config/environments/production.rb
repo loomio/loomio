@@ -51,7 +51,7 @@ Loomio::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Enable threaded mode
-  # config.threadsafe!
+  config.threadsafe!
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
