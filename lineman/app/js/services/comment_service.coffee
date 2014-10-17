@@ -3,9 +3,8 @@ angular.module('loomioApp').service 'CommentService',
     constructor: (@$http, @EventService) ->
     # i am here.. then append to discussion?
     add: (comment, saveSuccess, saveError) ->
-      @$http.post('/api/v1/comments', comment).then (response) =>
-        @EventService.consumeEventFromResponseData(response.data)
-        saveSuccess(response.data.event)
+      @$http.post('/api/v1/comments', comment).then (response) ->
+        saveSuccess()
       , (response) ->
         saveError(response.data.error)
 

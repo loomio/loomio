@@ -1,9 +1,9 @@
-angular.module('loomioApp').controller 'DiscussionController', ($scope, discussion, eventSubscription, currentUser, EventService) ->
+angular.module('loomioApp').controller 'DiscussionController', ($scope, discussion, eventSubscription, currentUser, EventService, RecordStoreService) ->
   $scope.currentUser = currentUser
   $scope.discussion = discussion
 
-  $scope.onNewEventReceived = (event) =>
-    $scope.$apply()
+  $scope.onNewEventReceived = (event) ->
+    $scope.discussion.eventIds.push event.id
 
   EventService.subscribeTo(eventSubscription, $scope.onNewEventReceived)
 
@@ -12,4 +12,3 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, discussi
 
   $scope.$on 'replyToCommentClicked', (event, originalComment) ->
     $scope.$broadcast('showReplyToCommentForm', originalComment)
-
