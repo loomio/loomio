@@ -19,9 +19,8 @@ angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentS
     $scope.newComment.parent_id = originalComment.id
     $scope.expand()
 
-  $scope.saveSuccess = (event) ->
+  $scope.saveSuccess = ->
     # close form
-    console.log event
 
   $scope.saveError = (error) ->
     # show errors
