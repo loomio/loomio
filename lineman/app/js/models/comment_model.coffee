@@ -11,10 +11,6 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
 
     plural: 'comments'
 
-    likerNames: ->
-      _.map @likers(), (user) ->
-        user.name
-
     likers: ->
       RecordStoreService.getAll('users', @likerIds)
 

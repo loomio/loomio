@@ -15,4 +15,4 @@
     %abbr.timeago>
       {{comment.createdAt | timeFromNowInWords}}
     .liked-by{ng_show: 'anybodyLikesIt()'}
-      Liked by {{ comment.likerNames().join(', ') }}
+      {{ likedBySentence }}
