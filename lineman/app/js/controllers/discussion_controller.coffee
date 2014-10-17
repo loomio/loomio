@@ -3,7 +3,7 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, discussi
   $scope.discussion = discussion
 
   $scope.onNewEventReceived = (event) ->
-    $scope.discussion.eventIds.push event.id
+    $scope.$apply()
 
   EventService.subscribeTo(eventSubscription, $scope.onNewEventReceived)
 
