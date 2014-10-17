@@ -8,22 +8,33 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, Comm
     CommentService.unlike($scope.comment)
 
   $scope.currentUserLikesIt = ->
-    _.contains($scope.comment.liker_ids, $scope.currentUser.id)
+    _.contains($scope.comment.likerIds, $scope.currentUser.id)
 
   $scope.anybodyLikesIt = ->
-    _.size($scope.comment.liker_ids) > 0
+    _.size($scope.comment.likerIds) > 0
 
-  $scope.whoLikesIt = ->
-    names = _.without(_.values($scope.comment.liker_names()), $scope.currentUser.name)
-    if $scope.currentUserLikesIt()
-      names.push('You')
-    names
+  $scope.likedBySentence = ->
+    otherIds = _.without($scope.comment.likerIds, $scope.currentUser.id)
+    otherUsers = _.filter $scope.comment.likers(), (user) -> 
+      _.contains(otherIds, user.id)
+
+    names = _.first(otherUsers, 3)
+    names.unshift('You') if $scope.currentUserLikesIt()
+
+    result = names.join(', ')
+    
+    if $scope.comment.likerIds.length == 0
+      suffix = ""
+    else if !$scope.currentUserLikesIt() and otherIds.length == 1
+      suffix = " likes this."
+    else
+      suffix = " like this."
+
+    result + suffix
 
   $scope.reply = ->
     $scope.$emit 'replyToCommentClicked', $scope.comment
 
   $scope.isAReply = ->
     _.isObject($scope.comment.parent())
-
-
 
