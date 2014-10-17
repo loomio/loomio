@@ -11,5 +11,7 @@ angular.module('loomioApp').service 'EventService',
 
     consume: (data) ->
       event = new @EventModel(data.event)
+
+      event.discussion().eventIds.push event.id
       @RecordStoreService.put(event)
       @RecordStoreService.importRecords(data)
