@@ -21,13 +21,13 @@ class API::CommentsController < API::BaseController
   #end
 
   def like
-    @comment = Comment.published.find(params[:id])
+    @comment = Comment.find(params[:id])
     DiscussionService.like_comment(current_user, @comment)
-    render json: {id: current_user.id, name: current_user.name}
+    render json: {id: current_user.id}
   end
 
   def unlike
-    @comment = Comment.published.find(params[:id])
+    @comment = Comment.find(params[:id])
     DiscussionService.unlike_comment(current_user, @comment)
     render json: {id: current_user.id}
   end
