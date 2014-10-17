@@ -20,7 +20,8 @@ angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentS
     $scope.expand()
 
   $scope.saveSuccess = ->
-    # close form
+    $scope.newComment.body = ''
+    $scope.isExpanded = false
 
   $scope.saveError = (error) ->
     # show errors
