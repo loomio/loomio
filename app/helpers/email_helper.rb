@@ -8,7 +8,7 @@ module EmailHelper
   end
 
   def reply_to_address_with_group_name(discussion: discussion, user: user)
-    "#{discussion.group.full_name} <#{reply_to_address(discussion: discussion, user: user)}>"
+    "\"#{discussion.group.full_name}\" <#{reply_to_address(discussion: discussion, user: user)}>"
   end
 
   def render_email_plaintext(text)
