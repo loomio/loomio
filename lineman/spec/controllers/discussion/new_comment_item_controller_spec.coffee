@@ -40,21 +40,44 @@ describe 'Discussion/NewCommentItemController', ->
 
     describe 'when current user likes it', ->
       beforeEach ->
-        $scope.currentUser = users[0]
-        $scope.comment.likerIds = [1]
-        $scope.comment.likers = -> _.first(users)
+        $scope.currentUser = { id: 1, name: 'BillWithers' }
+        $scope.comment.likers = -> [{ id: 1, name: 'BillWithers' }]
+        $scope.comment.likerIds = _.map $scope.comment.likers(), (user) -> user.id
 
       it 'returns "You like this"', ->
         expect($scope.likedBySentence()).toEqual 'You like this.'
-    
+
     describe 'when one user likes it', ->
       beforeEach ->
-        $scope.currentUser = users[1]
-        $scope.comment.likerIds = [1]
-        $scope.comment.likers = -> _.first(users)
+        $scope.currentUser = { id: 2, name: 'JamesWithers' }
+        $scope.comment.likers = -> [{ id: 1, name: 'BillWithers' }]
+        $scope.comment.likerIds = _.map $scope.comment.likers(), (user) -> user.id
 
-      it 'returns "You like this"', ->
+      it 'returns "BillWithers like this"', ->
         expect($scope.likedBySentence()).toEqual "BillWithers likes this."
+
+    describe 'when you and another person like it', ->
+      beforeEach ->
+        $scope.currentUser = { id: 1, name: 'BillWithers' }
+        $scope.comment.likers = -> [{ id: 1, name: 'BillWithers' },
+                                    { id: 2, name: 'JamesWithers' }]
+        $scope.comment.likerIds = _.map $scope.comment.likers(), (user) -> user.id
+
+      it ' returns "You and JamesWithers like this."', ->
+        expect($scope.likedBySentence()).toEqual "You and JamesWithers like this."
+
+    describe 'when you and 2 other people like it', ->
+      beforeEach ->
+        $scope.currentUser = { id: 1, name: 'BillWithers' }
+        $scope.comment.likers = -> [{ id: 1, name: 'BillWithers' },
+                                    { id: 2, name: 'JamesWithers' },
+                                    { id: 3, name: 'RobWithers' }]
+        $scope.comment.likerIds = _.map $scope.comment.likers(), (user) -> user.id
+
+      it ' returns "You, JamesWithers and RobWithers like this."', ->
+        expect($scope.likedBySentence()).toEqual "You, JamesWithers and RobWithers like this."
+
+
   #   describe 'when one person likes it' ->
 
   # it 'knows its comment id', ->
