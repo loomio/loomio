@@ -1,6 +1,6 @@
 class CommentSerializer < ActiveModel::Serializer
   embed :ids, include: true
-  attributes :id, :body, :discussion_id, :created_at, :updated_at, :liker_ids_and_names
+  attributes :id, :body, :discussion_id, :created_at, :updated_at
 
   has_one :author, serializer: UserSerializer, root: 'users'
   has_many :likers, serializer: UserSerializer, root: 'users'

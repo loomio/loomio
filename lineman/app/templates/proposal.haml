@@ -5,8 +5,7 @@
     %span.time-ago>
       {{discussion.createdAt | timeFromNowInWords}}
 
-  .thread-proposal-description
-    {{proposal.description}}
+  .thread-proposal-description{btf-markdown: 'proposal.description' }
 
   .thread-proposal-closing-at
     %i.fa.fa-clock-o
