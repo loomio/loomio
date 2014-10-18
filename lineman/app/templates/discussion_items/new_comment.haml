@@ -3,16 +3,17 @@
     .pull-left{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = comment.author()'}
     .thread-comment-author-name.media-body
       {{comment.authorName()}}
-  .thread-event-body
-    {{ comment.body }}
+  .thread-event-body{btf-markdown: 'comment.body' }
+    -#{{ comment.body }}
 
-  .thread-actions-and-meta
-    %a{translate: 'common.action.like', ng-show: '!currentUserLikesIt()', href: '#', ng_click: 'like()'}>
-    %a{translate: 'common.action.unlike', href: '#', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
-    ·
-    %a{translate: 'common.action.reply', href: '#', ng_click: 'reply()'}>
-    ·
-    %abbr.timeago>
-      {{comment.createdAt | timeFromNowInWords}}
-    .liked-by{ng_show: 'anybodyLikesIt()'}
-      {{ likedBySentence }}
+  .thread-event-footer
+    .thread-actions-and-meta
+      %a{translate: 'common.action.like', ng-show: '!currentUserLikesIt()', href: '#', ng_click: 'like()'}>
+      %a{translate: 'common.action.unlike', href: '#', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
+      ·
+      %a{translate: 'common.action.reply', href: '#', ng_click: 'reply()'}>
+      ·
+      %abbr.timeago>
+        {{comment.createdAt | timeFromNowInWords}}
+    .thread-liked-by-sentence{ng_show: 'anybodyLikesIt()'}
+      {{ likedBySentence() }}

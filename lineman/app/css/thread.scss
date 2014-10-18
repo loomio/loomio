@@ -30,6 +30,12 @@
 .thread-actions-and-meta {
   @include fontSmall();
   color: $meta-text-color;
+  margin-bottom: 5px;
+}
+
+.thread-liked-by-sentence {
+  @include fontSmall();
+  color: $meta-text-color;
 }
 
 .thread-proposals {
@@ -60,7 +66,7 @@
 }
 
 .thread-event {
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 }
 
 .thread-event-body {

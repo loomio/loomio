@@ -12,7 +12,7 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
           response.data
       currentUser: ($http) ->
         $http.get('/api/v1/faye/who_am_i').then (response) ->
-          response.data
+          response.data.user
   #.when '/',
     #templateUrl: '/templates/hello'
   .otherwise

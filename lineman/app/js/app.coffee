@@ -1,8 +1,8 @@
-angular.module('loomioApp', ['ngRoute', 
-                             'jmdobry.angular-cache', 
+angular.module('loomioApp', ['ngRoute',
+                             'jmdobry.angular-cache',
                              'ui.bootstrap.datetimepicker',
-                             'pascalprecht.translate', 
-                             'tc.chartjs', 
+                             'pascalprecht.translate',
+                             'tc.chartjs',
                              'ngSanitize',
                              'btford.markdown']).config ($httpProvider) ->
 

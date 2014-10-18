@@ -11,7 +11,7 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, Comm
     _.contains($scope.comment.likerIds, $scope.currentUser.id)
 
   $scope.anybodyLikesIt = ->
-    _.size($scope.comment.likerIds) > 0
+    $scope.comment.likerIds.length > 0
 
   $scope.likedBySentence = ->
     num_likers = $scope.comment.likers().length
@@ -22,7 +22,7 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, Comm
       if $scope.currentUserLikesIt()
         "You like this."
       else
-        "#{$scope.comment.likers()[0].name} likes this."
+        "Liked by #{$scope.comment.likers()[0].name}."
     else
       otherIds = _.without($scope.comment.likerIds, $scope.currentUser.id)
       otherUsers = _.filter $scope.comment.likers(), (user) ->
@@ -33,9 +33,9 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, Comm
 
       names.unshift('You') if $scope.currentUserLikesIt()
       if names.length == 2
-        names.join(' and ') + ' like this.'
+        "Liked by " + names.join(' and ') + '.'
       else
-        names.slice(0, -1).join(', ') + ' and ' + names.splice(-1) + " like this."
+        "Liked by " + names.slice(0, -1).join(', ') + ' and ' + names.splice(-1) + "."
 
   $scope.reply = ->
     $scope.$emit 'replyToCommentClicked', $scope.comment
