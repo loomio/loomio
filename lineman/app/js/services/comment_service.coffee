@@ -11,7 +11,9 @@ angular.module('loomioApp').service 'CommentService',
     like: (comment, success, failure) ->
       @$http.post("/api/v1/comments/#{comment.id}/like").then (response) ->
         comment.likerIds.push response.data.id
+        success()
 
-    unlike: (comment) ->
+    unlike: (comment, success, failure) ->
       @$http.post("/api/v1/comments/#{comment.id}/unlike").then (response) ->
         comment.likerIds = _.without(comment.likerIds, response.data.id)
+        success()

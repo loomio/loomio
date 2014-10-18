@@ -1,11 +1,11 @@
-angular.module('loomioApp').controller 'NewCommentItemController', ($scope, CommentService) ->
+angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $translate, CommentService) ->
   $scope.comment = $scope.event.comment()
 
   $scope.like = ->
-    CommentService.like($scope.comment)
+    CommentService.like($scope.comment, renderLikedBySentence)
 
   $scope.unlike = ->
-    CommentService.unlike($scope.comment)
+    CommentService.unlike($scope.comment, renderLikedBySentence)
 
   $scope.currentUserLikesIt = ->
     _.contains($scope.comment.likerIds, $scope.currentUser.id)
@@ -13,29 +13,45 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, Comm
   $scope.anybodyLikesIt = ->
     $scope.comment.likerIds.length > 0
 
-  $scope.likedBySentence = ->
-    num_likers = $scope.comment.likers().length
+  updateLikedBySentence = (sentence) ->
+    $scope.likedBySentence = sentence
 
-    if num_likers == 0
-      ''
-    else if num_likers == 1
-      if $scope.currentUserLikesIt()
-        "You like this."
-      else
-        "Liked by #{$scope.comment.likers()[0].name}."
+  renderLikedBySentence = ->
+    otherIds = _.without($scope.comment.likerIds, $scope.currentUser.id)
+    otherUsers = _.filter $scope.comment.likers(), (user) -> _.contains(otherIds, user.id)
+    otherNames = _.map otherUsers, (user) -> user.name
+
+    if $scope.currentUserLikesIt()
+      switch otherNames.length
+        when 0
+          # You like this.
+          $translate('discussion.you_like_this').then updateLikedBySentence
+        when 1
+          # liked by you and Rebeka.
+          $translate('discussion.liked_by_you_and_someone',
+                     name: otherNames[0]).then updateLikedBySentence
+        else
+          # liked by you, Rebeka and Joshua.
+          joinedNames = otherNames.slice(0, -1).join(', ')
+          name = otherNames.slice(-1)[0]
+          $translate('discussion.liked_by_you_and_others',
+                     joinedNames: joinedNames, name: name).then updateLikedBySentence
     else
-      otherIds = _.without($scope.comment.likerIds, $scope.currentUser.id)
-      otherUsers = _.filter $scope.comment.likers(), (user) ->
-        _.contains(otherIds, user.id)
-
-      names = _.map otherUsers, (user) ->
-        user.name
-
-      names.unshift('You') if $scope.currentUserLikesIt()
-      if names.length == 2
-        "Liked by " + names.join(' and ') + '.'
-      else
-        "Liked by " + names.slice(0, -1).join(', ') + ' and ' + names.splice(-1) + "."
+      switch otherNames.length
+        when 0
+          updateLikedBySentence('this should not happen')
+        when 1
+          # Liked by Rebeka.
+          $translate('discussion.liked_by_someone', name: otherNames[0]).then updateLikedBySentence
+        when 2
+          # Liked by Rebeka and Joshua.
+          $translate('discussion.liked_by_two_others', name_1: otherNames[0], name_2: otherNames[1]).then updateLikedBySentence
+        else
+          # Liked by Rebeka, Someone and Joshua
+          joinedNames = otherNames.slice(0, -1).join(', ')
+          name = otherNames.slice(-1)[0]
+          $translate('discussion.liked_by_many_others', joinedNames: joinedNames, name: name).then updateLikedBySentence
+  renderLikedBySentence()
 
   $scope.reply = ->
     $scope.$emit 'replyToCommentClicked', $scope.comment
