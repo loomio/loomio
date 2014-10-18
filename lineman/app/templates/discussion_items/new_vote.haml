@@ -1,12 +1,14 @@
 -#%span{translate: "new_vote_item.user_agreed", translate_values: '{name: vote.author_name()}'}
 .thread-event.thread-vote{ng-controller: 'NewVoteItemController'}
-  .media
-    .pull-left.vote-icon{ng-class: 'vote-icon-{{vote.position}}'}
-    .thread-vote-author-action
-      %span.author-name {{vote.authorName()}}
-      %span.author-statement voted on the proposal
-  .thread-item-body{ng_show: 'vote.statement'}
+  .thread-event-header.media
+    .pull-left.vote-icon{class: 'vote-icon-{{vote.position}}'}
+    .thread-vote-author-action{ng-show: 'vote.isYes()', translate: 'new_vote_item.user_agreed', translate-value-name: '{{vote.authorName()}}'}
+    .thread-vote-author-action{ng-show: 'vote.isNo()', translate: 'new_vote_item.user_disagreed', translate-value-name: '{{vote.authorName()}}'}
+    .thread-vote-author-action{ng-show: 'vote.isAbstain()', translate: 'new_vote_item.user_abstained', translate-value-name: '{{vote.authorName()}}'}
+    .thread-vote-author-action{ng-show: 'vote.isBlock()', translate: 'new_vote_item.user_blocked', translate-value-name: '{{vote.authorName()}}'}
+  .thread-event-body{ng_show: 'vote.statement'}
     {{vote.statement}}
-  .thread-item-footer
-    %abbr.timeago
-      {{vote.created_at | timeFromNowInWords}}
+  .thread-event-footer
+    .thread-actions-and-meta
+      %abbr.timeago
+        {{vote.createdAt | timeFromNowInWords}}
