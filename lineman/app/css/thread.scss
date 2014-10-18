@@ -27,16 +27,6 @@
 
 }
 
-.thread-actions-and-meta {
-  @include fontSmall();
-  color: $meta-text-color;
-  margin-bottom: 5px;
-}
-
-.thread-liked-by-sentence {
-  @include fontSmall();
-  color: $meta-text-color;
-}
 
 .thread-proposals {
   background-color: #fff;
@@ -56,9 +46,6 @@
   @include metaText
 }
 
-.thread-proposal-description {
-}
-
 .thread-events {
   padding: 15px;
   background-color: #F5F5F5;
@@ -69,12 +56,14 @@
   margin-bottom: 25px;
 }
 
-.thread-event-body {
-  margin-bottom: 10px;
-}
+.thread-event-header {
+  strong {
+    color: $text-color;
+    @include fontHelveticaBold;
+  }
+  color: $meta-text-color;
+  margin-bottom: 5px;
 
-.thread-comment-author {
-  margin-bottom: 10px;
   .avatar-initials{
     width: 30px;
     height: 30px;
@@ -83,9 +72,40 @@
     width: 30px;
     height: 30px;
   }
+}
 
+.thread-event-body {
+  margin-bottom: 10px;
 }
-.thread-comment-author-name {
-  @include fontHelveticaBold;
-  color: #333333;
+
+.thread-event-footer {
+  @include fontSmall();
+  color: $meta-text-color;
 }
+
+.thread-actions-and-meta {
+  margin-bottom: 5px;
+}
+
+.vote-icon {
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.vote-icon-yes {
+  background-image: url(/img/green_thumb_22.png);
+}
+
+.vote-icon-abstain {
+  background-image: url(/img/yellow_thumb_22.png);
+}
+
+.vote-icon-no {
+  background-image: url(/img/pink_thumb_22.png);
+}
+
+.vote-icon-block {
+  background-image: url(/img/red_flag_22.png);
+}
+

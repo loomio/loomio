@@ -1,8 +1,8 @@
 .thread-event.thread-comment{ng_controller: 'NewCommentItemController'}
-  .thread-comment-author.media
+  .thread-event-header.media
     .pull-left{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = comment.author()'}
-    .thread-comment-author-name.media-body
-      {{comment.authorName()}}
+    .media-body
+      %strong {{comment.authorName()}}
   .thread-event-body{btf-markdown: 'comment.body' }
     -#{{ comment.body }}
 
