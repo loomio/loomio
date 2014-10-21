@@ -10,5 +10,4 @@
     {{vote.statement}}
   .thread-event-footer
     .thread-actions-and-meta
-      %abbr.timeago
-        {{vote.createdAt | timeFromNowInWords}}
+      %timeago{timestamp: 'vote.createdAt'}

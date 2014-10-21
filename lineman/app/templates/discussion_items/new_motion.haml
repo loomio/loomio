@@ -11,5 +11,5 @@
   .thread-item-body{ng_show: 'proposal.name'}
     {{proposal.name}}
   .thread-item-footer
-    %abbr.timeago
-      {{proposal.created_at | timeFromNowInWords}}
+    %timeago{timestamp: 'proposal.createdAt' }
+
