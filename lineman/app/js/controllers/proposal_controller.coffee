@@ -7,7 +7,7 @@ angular.module('loomioApp').controller 'ProposalController', ($scope, $window, P
 
   $scope.currentUserVote = ->
     if $scope.proposal?
-      index = $scope.proposal.votes().map((vote) -> vote.author_id).indexOf($scope.$parent.currentUser.user.id)
+      index = $scope.proposal.votes().map((vote) -> vote.authorId).indexOf($scope.$parent.currentUser.id)
       $scope.proposal.votes()[index] if index?
 
   $scope.selectPosition = (position) ->
