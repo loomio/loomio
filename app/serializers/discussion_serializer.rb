@@ -17,7 +17,6 @@ class DiscussionSerializer < ActiveModel::Serializer
   has_many :events, serializer: EventSerializer
   has_many :comments, serialier: CommentSerializer
   has_many :proposals, serializer: MotionSerializer
-  has_many :attachments, serializer: AttachmentSerializer
 
   def author
     object.author
