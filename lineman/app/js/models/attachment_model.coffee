@@ -5,7 +5,7 @@ angular.module('loomioApp').factory 'AttachmentModel', (RecordStoreService) ->
       @filename = data.filename
       @location = data.location
       @filesize = data.filesize
-      @authorId = data.author_id
+      @authorId = data.user_id
       @commentId = data.comment_id
 
     plural: 'attachments'
