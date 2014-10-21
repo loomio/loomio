@@ -22,3 +22,12 @@ Feature: User creates discussion
     And I select the group from the groups dropdown
     And I fill in the discussion details and submit the form
     Then a discussion should be created
+
+  @javascript
+  Scenario: Hebrew user starting a discussion
+    Given my selected locale is "he"
+    When I visit the group page
+    And I choose to create a discussion
+    Then the new discussion form should be right-to-left
+    When I fill in the discussion details and submit the form
+    Then the discussion should be displayed right-to-left

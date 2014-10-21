@@ -75,3 +75,13 @@ end
 Then /^my global markdown preference should now be 'enabled'$/ do
   step 'comment markdown should now be on by default'
 end
+
+Then(/^the new discussion form should be right\-to\-left$/) do
+  page.should have_css("#discussion_title[dir='RTL']")
+  page.should have_css("#discussion_description[dir='RTL']")
+end
+
+Then(/^the discussion should be displayed right\-to\-left$/) do
+  page.should have_css(".description-body[dir='RTL']")
+end
+

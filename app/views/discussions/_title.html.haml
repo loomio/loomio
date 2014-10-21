@@ -1,7 +1,7 @@
 .row.discussion-header-container
   .col-xs-12
     .discussion-title-container
-      %h2#discussion-title
+      %h2#discussion-title.text-left{dir: text_direction(discussion)}
         - if can?(:edit, discussion) || can?(:move, discussion) || can?(:destroy, discussion)
           =render "discussions/options", discussion: discussion
         = discussion.title
