@@ -14,46 +14,46 @@
     .col-xs-6.test-me
       %canvas.pie-graph{tc-chartjs-pie:true, chart-data:'proposal.pie_chart_data', chart-options:'pie_chart_options'}
     .col-xs-5.proposal-participation
-      %a{href: '#'} {{proposal.votes_count}} of X members have participated
+      %a{href: '#'} {{proposal.votesCount}} of X members have participated
 
-      -#.card-meta-header
-        -#%a.edit-position.pull-right{ng_show: 'currentUserVote()', href: '#'}
-          -#%span.bump Edit
-          -#%i.fa.fa-pencil
-        -#%h3 Your Position
-        -#.current-position{ng_show: 'currentUserVote()'}
-          -#.vote.thread-item-minor
-            -#.card-left-big
-              -#.featured-vote-icon.thread-item-icon
-                -#.thread-icon-img{ng_class: 'currentUserVote().position'}
-            -#.card-right-small.thread-item-author
-              -#%span.author-name {{currentUserVote().author_name()}} 
-              -#%span.author-statement {{ currentUserVote().statement_or_position() }}        
-        -#.proposal-positions{ng_hide: 'currentUserVote()'}
-          -#.col-xs-3.agree{ng_click: 'selectPosition("yes")'}
-            -#%img{src: '/img/yes.png'}
-          -#.col-xs-3.abstain{ng_click: 'selectPosition("abstain")'}
-            -#%img{src: '/img/abstain.png'}
-          -#.col-xs-3.disagree{ng_click: 'selectPosition("no")'}
-            -#%img{src: '/img/no.png'}
-          -#.col-xs-3.block{ng_click: 'selectPosition("block")'}
-            -#%img{src: '/img/block.png'}
+  .card-meta-header
+    %a.edit-position.pull-right{ng_show: 'currentUserVote()', href: '#'}
+      %span.bump Edit
+      %i.fa.fa-pencil
+    %h3 Your Position
+    .current-position{ng_show: 'currentUserVote()'}
+      .vote.thread-item-minor
+        .card-left-big
+          .featured-vote-icon.thread-item-icon
+            .thread-icon-img{ng_class: 'currentUserVote().position'}
+        .card-right-small.thread-item-author
+          %span.author-name {{currentUserVote().author_name()}} 
+          %span.author-statement {{ currentUserVote().statement_or_position() }}        
+    .proposal-positions{ng_hide: 'currentUserVote()'}
+      .col-xs-3.agree{ng_click: 'selectPosition("yes")'}
+        %img{src: '/img/yes.png'}
+      .col-xs-3.abstain{ng_click: 'selectPosition("abstain")'}
+        %img{src: '/img/abstain.png'}
+      .col-xs-3.disagree{ng_click: 'selectPosition("no")'}
+        %img{src: '/img/no.png'}
+      .col-xs-3.block{ng_click: 'selectPosition("block")'}
+        %img{src: '/img/block.png'}
 
-      -#.card-meta-header 
-        -#%h3 Positions
-      -#.current-votes{ng_repeat: 'vote in proposal.votes()'}
-        -#.vote.thread-item-minor{ng_hide: 'vote == currentUserVote()'}
-          -#.card-left
-            -#.thread-item-icon
-              -#.thread-icon-img{ng_class: 'vote.position'}
-          -#.card-right.thread-item-author
-            -#%span.author-name {{vote.author_name()}} 
-            -#%span.author-statement {{ vote.statement_or_position() }}
+  .card-meta-header 
+    %h3 Positions
+  .current-votes{ng_repeat: 'vote in proposal.votes()'}
+    .vote.thread-item-minor{ng_hide: 'vote == currentUserVote()'}
+      .card-left
+        .thread-item-icon
+          .thread-icon-img{ng_class: 'vote.position'}
+      .card-right.thread-item-author
+        %span.author-name {{vote.author_name()}} 
+        %span.author-statement {{ vote.statement_or_position() }}
 
-    -#.l-row.statement-form{ng_show: 'voteFormIsExpanded'}
-      -#%form{ng_submit: 'submitVote()'}
-        -#%fieldset{ng_disable: 'voteFormIsDisabled'}
-          -#.form-group
-            -#%textarea{ng_model: 'newVote.statement'}
-            -#%button.btn.btn-primary{type: 'submit'}
-              -#Vote
+  .l-row.statement-form{ng_show: 'voteFormIsExpanded'}
+    %form{ng_submit: 'submitVote()'}
+      %fieldset{ng_disable: 'voteFormIsDisabled'}
+        .form-group
+          %textarea{ng_model: 'newVote.statement'}
+          %button.btn.btn-primary{type: 'submit'}
+            Vote

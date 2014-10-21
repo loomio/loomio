@@ -6,7 +6,7 @@ angular.module('loomioApp').controller 'StartProposalController', ($scope, Propo
 
   $scope.showDatetimepicker = false
   $scope.isExpanded = false
-  $scope.isHidden = $scope.discussion.active_proposal?
+  $scope.isHidden = $scope.discussion.activeProposal?
   $scope.isDisabled = false
   $scope.errorMessages = []
 
@@ -30,16 +30,15 @@ angular.module('loomioApp').controller 'StartProposalController', ($scope, Propo
       $scope.isExpanded = false
 
   $scope.submitProposal = ->
+    ProposalService.create $scope.proposal, $scope.success, $scope.error
     $scope.isDisabled = true
-    ProposalService.create($scope.proposal, $scope.saveSuccess, $scope.saveError)
 
-  $scope.saveSuccess = (event) ->
-    $scope.discussion.events.push(event)
-    $scope.isHidden = true
+  $scope.success = (proposal) ->
+    $scope.discussion.activeProposalId = proposal.id
     $scope.isDisabled = false
-    $scope.discussion.active_proposal = event.proposal
+    $scope.isExpanded = false
 
-  $scope.saveError = (error) ->
+  $scope.error = (error) ->
     $scope.isDisabled = false
     $scope.errorMessages = error.error_messages
 
