@@ -1,7 +1,7 @@
 .row
   .col-sm-8
     .description-container
-      .description-body
+      .description-body{dir: text_direction(@discussion)}
         .long-description
           = render_rich_text(@discussion.description, @discussion.uses_markdown)
         .translation-spacer.translated
