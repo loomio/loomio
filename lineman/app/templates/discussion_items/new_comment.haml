@@ -15,5 +15,10 @@
       ·
       %timeago{timestamp: 'comment.createdAt' }>
 
+    .thread-attachments
+      .thread-attachment{ng-repeat: 'attachment in comment.attachments()'}
+        %a{ng-href: '{{attachment.location}}', target: '_blank'} 
+          {{ attachment.filename }}
+
     .thread-liked-by-sentence{ng_show: 'anybodyLikesIt()'}
       {{ likedBySentence }}
