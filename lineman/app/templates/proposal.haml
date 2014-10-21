@@ -22,13 +22,9 @@
       %i.fa.fa-pencil
     %h3 Your Position
     .current-position{ng_show: 'currentUserVote()'}
-      .vote.thread-item-minor
-        .card-left-big
-          .featured-vote-icon.thread-item-icon
-            .thread-icon-img{ng_class: 'currentUserVote().position'}
-        .card-right-small.thread-item-author
-          %span.author-name {{currentUserVote().author_name()}} 
-          %span.author-statement {{ currentUserVote().statement_or_position() }}        
+      .pull-left.vote-icon{ng_class: 'currentUserVote().position'}
+      %strong.author-name {{currentUserVote().authorName()}}
+      %span.author-statement : {{ currentUserVote().statement }}        
     .proposal-positions{ng_hide: 'currentUserVote()'}
       .col-xs-3.agree{ng_click: 'selectPosition("yes")'}
         %img{src: '/img/yes.png'}
