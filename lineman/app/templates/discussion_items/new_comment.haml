@@ -13,7 +13,7 @@
       ·
       %a{translate: 'common.action.reply', href: '#', ng_click: 'reply()'}>
       ·
-      %abbr.timeago>
-        {{comment.createdAt | timeFromNowInWords}}
+      %timeago{timestamp: 'comment.createdAt' }>
+
     .thread-liked-by-sentence{ng_show: 'anybodyLikesIt()'}
       {{ likedBySentence }}
