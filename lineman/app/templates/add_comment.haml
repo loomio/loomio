@@ -1,13 +1,17 @@
-.card-row
-  .card
-    .card-left
-      %img{src: 'http://placehold.it/40x40'}
-    .card-right 
-      %form{name: 'addCommentForm', ng_submit: 'processForm()'}
-        .card-row.fake
-          %input.form-control{placeholder: "Write a comment...", ng_focus: "expand()", id: 'fake_comment_input'}
-        .card-row.real
-          .left
-            %textarea#comment-field.form-control{name: 'body', rows: 5, placeholder: "Say something...", ng_blur: "collapseIfEmpty()", ng_model: 'newComment.body'}
-          .right
-            %button#post-comment-btn.btn.btn-default.btn-block.submit{type: 'submit'} Post
+.add-comment
+  .pull-left
+    %img{src: 'http://placehold.it/40x40'}
+  %form{name: 'addCommentForm', ng_submit: 'processForm()'}
+    .card-row.fake
+      %input.form-control{placeholder: "Write a comment...", ng_focus: "expand()", id: 'fake_comment_input'}
+    .card-row.real
+      .left
+        %textarea#comment-field.form-control{name: 'body', rows: 5, placeholder: "Say something...", ng_blur: "collapseIfEmpty()", ng_model: 'newComment.body'}
+      .right
+        %button#post-comment-btn.btn.btn-default.btn-block.submit{type: 'submit'} Post
+
+    %add_attachment{comment: 'newComment'}
+    
+    .attachment{{ng_repeat: '{{attachment in newComment.attachments()}}'}}
+      .attachment-filename {{attachment.filename}}
+      %button.close.cancel-upload{ng_click: 'removeAttachment(attachment.id)'} &times;
