@@ -9,7 +9,7 @@ module UploadHelper
   end
 
   class S3Uploader
-    def initialize(options)
+    def initialize(options = {})
       @options = options.reverse_merge(
         id: "fileupload",
         aws_access_key_id:     Rails.application.secrets.aws_access_key_id,
@@ -37,6 +37,7 @@ module UploadHelper
 
     def fields
       {
+        :url => url,
         :key => key,
         'Content-Type' => "",
         :acl => @options[:acl],

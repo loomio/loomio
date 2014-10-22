@@ -1,0 +1,8 @@
+.attachments
+  .attachments-add
+    %input{type: 'file', ng_file_select: 'upload($files)'}
+  .attachment-in-progress{ng_show: 'isAttaching'}
+    .attachment-filename {{ newAttachment.filename }}
+    .progress.active
+      .progress-bar
+    %button.close.cancel-upload{ng_click: 'abort()'} &times;
