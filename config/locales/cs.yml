@@ -3,6 +3,7 @@ cs:
     email_preferences:
       edit:
         title: 'Nastavení emailu'
+        for_these_groups: "Pro tyto skupiny:"
         submit: "Uložit nastavení"
   explore:
     header: "Prozkoumejte veřejné skupiny"
@@ -59,6 +60,7 @@ cs:
     group_request_already_accepted: "Omlouváme se. Tato pozvánka je neplatná nebo už byla přijata."
     group_private_or_not_found: "Skupina nenalezena.\n\nTato skupina by mohla být soukromá. Pokud vám někdo poslal tento odkaz, požádejte jí/ho, aby vás do skupiny pozval(a)."
     group_already_setup: "Skupina, kterou se snažíte vytvořit, už existuje."
+    passwords_did_not_match: "Heslo se neshoduje s potvrzením"
     proposal_already_exists: "V této diskuzi už je otevřený návrh."
     user_with_email_address_already_in_group: "Uživatel s touto emailovou adresou už patří do této skupiny."
     you_have_already_requested_membership: "Už jste zažádal(a) o členství v této skupině."
@@ -170,10 +172,15 @@ cs:
     public_groups: 'Veřejné skupiny'
     terms: 'Podmínky'
   inbox:
+    clear: 'Vyčistit'
+    title: 'Doručná'
+    preferences: 'Doručená - nastavení'
     dropdown-btn: 'Příchozí'
     empty: Jste dobře informován(a)! Nejsou žádné komentáře, které jste neviděl(a).
   notifications:
     header: "Upozornění"
+    new_discussion: "zahájil(a) diskusi"
+    new_motion: "vytvořil(a) návrh"
     motion_closed:
       by_user: "uzavřel(a) návrh"
       by_expiry: "Návrh byl uzavřen"
@@ -234,6 +241,8 @@ cs:
     name: "Název skupiny"
     description: "Popis"
     category: "Kategorie"
+    confirm_all_discussions_will_be_made_private_message: "Pokud budete pokračovat, budou všechny veřejné diskuze převedeny na soukromé."
+    confirm_all_discussions_will_be_made_public_message: "Jste si jisti? Pokud budete pokračovat, budou všechny soukromé diskuse zveřejněny."
     what_can_members_do: "Co mohou členové dělat?"
     members_can:
       add_members: Pozvat a schválit nové členy
@@ -434,6 +443,9 @@ cs:
       'no': "nesouhlasil(a)"
       abstain: "se zdržel(a)"
       block: "zamítl(a)"
+  unable_to_vote:
+    permission_denied: "Nemáte oprávnění k hlasování o tomto návrhu"
+    motion_closed: "Tento návrh byl již uzavřen"
   edit_comment:
     edit_comment: "Upravit komentář"
   help:
@@ -513,6 +525,7 @@ cs:
   log_in_to_your_loomio_account: "Přihlaste se ke svému účtu na Loomio a propojte jej s %{provider_name}."
   confirmation_not_received: "Nepřišly vám pokyny k potvrzení?"
   unlock_not_received: "Nepřišly vám pokyny k odemčení?"
+  create_an_account_html: 'Vytvořte si účet na Loomio Beta'
   log_in: "Přihlásit se"
   join_group:
     log_in: "Napište nám, abyste se přidal(a) k %{group_name}"
@@ -631,6 +644,7 @@ cs:
         admin_name: "Jaké je vaše jméno?"
         admin_email: "Jaká je vaše e-mailová adresa?"
         name: "Jaký je název vaší skupiny?"
+        description: "Máte-li chvilku, řekněte nám něco o vaší skupině"
         is_commercial: "Kde plánujete používat Loomio?"
     placeholders:
       membership_request:
@@ -641,6 +655,8 @@ cs:
       user:
         email: "E-mail"
         password: "Heslo"
+      group_request:
+        description: "Rádi bychom se dozvěděli něco o vaší skupině a proč chcete použít Loomio."
   helpers:
     submit:
       discussion:
@@ -679,6 +695,7 @@ cs:
       intro: "Zobrazuje se, co se dělo ve vašich Loomio skupinách během posledních 24 hodin"
       subject: "Loomio -- Souhrn posledních 24 hodin"
     missed_yesterday:
+      subject: "Včera na Loomio"
       mark_as_read: Označit jako přečtené
     group_email:
       intro: "%{who} oznámil(a) skupině %{group}:"
@@ -717,7 +734,9 @@ cs:
       headline: "návrh %{author} v %{group} se brzy uzavírá:"
       summary: "Shrnutí"
     thread_mailer:
+      change_preferences: "Změna nastavení e-mailu:"
       motion_closing_soon: "Návrhy uzavřené během 24 hodin:"
+      proposal_closed: "Návrh uzavřen:"
     verification:
       header: "jste skoro hotov(a)!"
       intro: "Prosím klikněte na tento ověřovací odkaz pro dokončení vaší žádosti:"
@@ -787,11 +806,15 @@ cs:
   google: "Google"
   persona: "Persona"
   common:
+    settings: Nastavení
     dashboard: Ovládací panel
     unread: Nepřečteno
     filter: 'Filtr:'
+    back_to_discussion: "Zpět do diskuze"
     groups: "Skupiny"
+    select_error: Prosím, vyberte jednu z možností
     today: Dnes
+    select: Prosím, vyberte
     months:
       january: Leden
       february: Únor
@@ -858,6 +881,7 @@ cs:
     education: "Vzdělání"
     family: "Rodina"
     local_government: "Místní samospráva"
+    event: "Událost"
     open_source_software: "Open source software"
     political_initiative: "Politické iniciativy"
     science: "Věda"
