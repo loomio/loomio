@@ -1,0 +1,24 @@
+fa-IR:
+  datetime:
+    distance_in_words:
+      x_seconds:
+        other: "%{count} ثانیه"
+      less_than_x_minutes:
+        other: "%{count} دقیقه"
+      x_minutes:
+        other: "%{count} دقیقه"
+      about_x_hours:
+        other: "%{count} ساعت"
+      x_days:
+        other: "%{count} روز"
+      about_x_months:
+        other: "%{count} ماه"
+      x_months:
+        other: "%{count} ماه"
+      about_x_years:
+        other: "%{count} سال"
+      over_x_years:
+        other: "%{count} سال"
+      almost_x_years:
+        other: "%{count} سال"
+

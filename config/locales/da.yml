@@ -62,6 +62,7 @@ da:
     motion_closing_inputs: "Ugyldig slut-dato"
     motion_outcome_not_created: "Kan ikke offentliggøre resultatet."
     motion_outcome_not_updated: "Kan ikke opdatere resultatet"
+    only_group_coordinator_destroy: "Du kan ikke forlade denne gruppe fordi du er den eneste koordinator. Du kan deaktivere din gruppe via menuens punkter eller  <a href='%{add_coordinator}'>tilføje en ny koordinator</a> til gruppen."
     only_group_coordinator_remove_admin: "Gruppen skal have en koordinator. Vil du tilføje en anden koordinator til gruppen?"
     permission_to_invite: "Du har ikke adgang til at invitere ny medlemmer."
     position_not_updated: "Kunne ikke opdatere standpunktet."
