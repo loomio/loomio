@@ -13,7 +13,7 @@ class API::MotionsController < API::BaseController
     params[:vote] = {position: params[:position], statement: params[:statement]}
     @vote = Vote.new(permitted_params.vote)
     @vote.user = current_user
-    @vote.motion = Motion.find(params[:motion_id])
+    @vote.motion = Motion.find(params[:id])
     @event = VoteService.cast(@vote)
 
     render_event_or_model_error(@event, @vote)

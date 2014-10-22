@@ -4,7 +4,12 @@
     .media-body
       %strong {{comment.authorName()}}
   .thread-event-body{btf-markdown: 'comment.body' }
-    -#{{ comment.body }}
+
+  .thread-attachments
+    .thread-attachment{ng-repeat: 'attachment in comment.attachments()'}
+      %a{ng-href: '{{attachment.location}}', target: '_blank'} 
+        {{ attachment.filename }} 
+      ({{attachment.filesize | fileSize}})
 
   .thread-event-footer
     .thread-actions-and-meta
@@ -13,7 +18,7 @@
       ·
       %a{translate: 'common.action.reply', href: '#', ng_click: 'reply()'}>
       ·
-      %abbr.timeago>
-        {{comment.createdAt | timeFromNowInWords}}
+      %timeago{timestamp: 'comment.createdAt' }>
+
     .thread-liked-by-sentence{ng_show: 'anybodyLikesIt()'}
       {{ likedBySentence }}

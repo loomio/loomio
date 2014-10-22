@@ -6,6 +6,7 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
       @parentId = data.parent_id
       @body = data.body
       @likerIds = data.liker_ids
+      @attachmentIds = data.attachment_ids
       @createdAt = data.created_at
       @updatedAt = data.updated_at
 
@@ -13,6 +14,9 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
 
     likers: ->
       RecordStoreService.get('users', @likerIds)
+
+    attachments: ->
+      RecordStoreService.getAll('attachments', @attachmentIds)
 
     author: ->
       RecordStoreService.get('users', @authorId)

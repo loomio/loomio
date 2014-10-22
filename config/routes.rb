@@ -31,6 +31,9 @@ Loomio::Application.routes.draw do
       post :like, on: :member
       post :unlike, on: :member
     end
+    resources :motions, only: :create do
+      post :vote, on: :member
+    end
     resources :translations, only: :show
     namespace :faye do
       get :subscribe
