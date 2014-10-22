@@ -7,11 +7,8 @@ angular.module('loomioApp').service 'EventService',
       PrivatePub.subscribe "/events", (data, channel) =>
         @consume(data, callback) if data.event?
 
-    consume: (data, callback) ->
+    consume: (data, onConsumed) ->
       event = new @EventModel(data.event)
-
-      event.discussion().eventIds.push event.id
       @RecordStoreService.put(event)
       @RecordStoreService.importRecords(data)
-
-      callback()
+      onConsumed()

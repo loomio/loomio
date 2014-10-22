@@ -9,6 +9,15 @@ en:
       like: 'Like'
       unlike: 'Unlike'
 
+  proposal_form:
+    start_a_proposal: 'Start a proposal'
+    what_does_a_proposal_do: 'Proposals allow you to see how everyone feels about a particular course of action. Find out more.'
+    title_placeholder: 'Eg: Go to the moon'
+    title_label: 'Title'
+    closes_at_label: 'Closes at'
+    details_label: 'Details'
+    details_placeholder: "Give enough detail so everyone knows exactly what it means to agree or disagree or whatever"
+
   proposal:
     started_by: 'Started by <strong>{{name}}</strong>'
 

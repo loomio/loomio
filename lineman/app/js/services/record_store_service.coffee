@@ -12,37 +12,59 @@ angular.module('loomioApp').service 'RecordStoreService', class RecordStoreServi
 
     importRecords: (responseData) ->
       _.each @collectionNames(), (collectionName) =>
-        #console.log collectionName
         if responseData[collectionName]?
-          console.log("importing #{responseData[collectionName].length} #{collectionName} records")
           _.each responseData[collectionName], (record_data) =>
-            #console.log "record data: #{collectionName} #{JSON.stringify(record_data)}"
             record = new @models[collectionName](record_data)
             @put(record)
 
     recordKey: (record) ->
-      "#{record.plural}/#{record.id}"
-
-    get: (collectionName, id) ->
-      @cache.get "#{collectionName}/#{id}"
+      "#{record.plural}/id/#{record.id}"
 
     altRecordKey: (record) ->
-      "#{record.plural}/key-#{record.key}"
+      "#{record.plural}/key/#{record.key}"
+
+    allKeysIn: (collectionName) ->
+      _.filter @cache.keys(), (key) ->
+        key.match("^#{collectionName}/id/")
+
+    allRecordsIn: (collectionName) ->
+      _.map @allKeysIn(collectionName), (key) =>
+        @cache.get(key)
+
+    # works in the following variations
+    #
+    # get 'comments', 5
+    # get 'discussions', 'dtft67ygy8u'
+    # get 'comments', [5,10,15]
+    # get 'motions', ['e3d', 'd3e3e']
+    # get 'comments', (comment) -> comment.id == discussion_id
+    #
+    get: (collectionName, idsOrFn) ->
+      if idsOrFn == undefined
+        @allRecordsIn(collectionName)
+      else if _.isArray(idsOrFn)
+        _.map idsOrFn, (id) =>
+          @getOne(collectionName, id)
+      else if _.isFunction(idsOrFn)
+        _.filter @allRecordsIn(collectionName), idsOrFn
+      else
+        @getOne(collectionName, idsOrFn)
+
+    getOne: (collectionName, idOrKey) ->
+      if _.isNumber(idOrKey)
+        @getById(collectionName, idOrKey)
+      else
+        @getByKey(collectionName, idOrKey)
+
+    getById: (collectionName, id) ->
+      @cache.get "#{collectionName}/id/#{id}"
 
     getByKey: (collectionName, key) ->
-      #console.log "getting #{collectionName}/key-#{key}"
-      @cache.get "#{collectionName}/key-#{key}"
-
-
-    getAll: (collectionName, ids) ->
-      _.map ids, (id) =>
-        #console.log "getting: #{collectionName}/#{id}"
-        @cache.get "#{collectionName}/#{id}"
+      @cache.get "#{collectionName}/key/#{key}"
 
     put: (record) ->
       key = @recordKey(record)
       existing_record = @cache.get(key)
-      #console.log "puttng: #{key} : #{JSON.stringify(record)}"
       if existing_record?
         angular.extend(existing_record, record)
       else

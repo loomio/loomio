@@ -3,21 +3,21 @@ angular.module('loomioApp').factory 'EventModel', (RecordStoreService) ->
     constructor: (data = {}) ->
       @id = data.id
       @kind = data.kind
-      @comment_id = data.comment_id
-      @discussion_id = data.discussion_id
-      @proposal_id = data.proposal_id
-      @vote_id = data.vote_id
+      @commentId = data.comment_id
+      @discussionId = data.discussion_id
+      @proposalId = data.proposal_id
+      @voteId = data.vote_id
 
     plural: 'events'
 
     discussion: ->
-      RecordStoreService.get('discussions', @discussion_id)
+      RecordStoreService.get('discussions', @discussionId)
 
     comment: ->
-      RecordStoreService.get('comments', @comment_id)
+      RecordStoreService.get('comments', @commentId)
 
     proposal: ->
-      RecordStoreService.get('proposals', @proposal_id)
+      RecordStoreService.get('proposals', @proposalId)
 
     vote: ->
-      RecordStoreService.get('votes', @vote_id)
+      RecordStoreService.get('votes', @voteId)
