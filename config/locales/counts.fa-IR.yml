@@ -2,23 +2,23 @@ fa-IR:
   datetime:
     distance_in_words:
       x_seconds:
-        other: "%{count} ثانیه"
+        one: "1 ثانیه"
       less_than_x_minutes:
-        other: "%{count} دقیقه"
+        one: "1 دقیقه"
       x_minutes:
-        other: "%{count} دقیقه"
+        one: "1 دقیقه"
       about_x_hours:
-        other: "%{count} ساعت"
+        one: "1 ساعت"
       x_days:
-        other: "%{count} روز"
+        one: "1 روز"
       about_x_months:
-        other: "%{count} ماه"
+        one: "1 ماه"
       x_months:
-        other: "%{count} ماه"
+        one: "1 ماه"
       about_x_years:
-        other: "%{count} سال"
+        one: "1 سال"
       over_x_years:
-        other: "%{count} سال"
+        one: "1 سال"
       almost_x_years:
-        other: "%{count} سال"
+        one: "1 سال"
 
