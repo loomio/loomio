@@ -1,9 +1,6 @@
 angular.module('loomioApp').controller 'DiscussionController', ($scope, discussion, eventSubscription, currentUser, EventService, RecordStoreService) ->
   $scope.currentUser = currentUser
   $scope.discussion = discussion
-  console.log discussion
-  console.log RecordStoreService.get('events')
-  console.log discussion.events()
 
   eventReceived = (event) ->
     console.log('hey we gots da event')
