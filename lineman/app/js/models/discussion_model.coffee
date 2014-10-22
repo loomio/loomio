@@ -5,21 +5,16 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService) ->
       @key = data.key
       @authorId = data.author_id
       @groupId = data.group_id
-      @commentIds = data.comment_ids
-      @eventIds = data.event_ids
+      #@commentIds = data.comment_ids
+      #@eventIds = data.event_ids
+      #@proposalIds = data.proposal_ids
+      #@activeProposalId = data.active_proposal_id
       @title = data.title
       @description = data.description
       @createdAt = data.created_at
-      @activeProposalId = data.active_proposal_id
       @private = data.private
 
     plural: 'discussions'
-
-    group: ->
-      RecordStoreService.get('groups', @groupId)
-
-    events: ->
-      RecordStoreService.getAll('events', @eventIds)
 
     author: ->
       RecordStoreService.get('users', @authorId)
@@ -27,8 +22,20 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService) ->
     authorName: ->
       @author().name
 
-    comments: ->
-      RecordStoreService.getAll('comments', @commentIds)
+    group: ->
+      RecordStoreService.get 'groups', @groupId
 
-    currentProposal: ->
-      RecordStoreService.get('proposals', @activeProposalId)
+    events: ->
+      RecordStoreService.get 'events', (event) =>
+        event.discussionId == @id
+
+    comments: ->
+      RecordStoreService.get 'comments', (comment) =>
+        comment.discussionId == @id
+
+    proposals: ->
+      RecordStoreService.get 'proposals', (proposal) =>
+        proposal.discussionId == @id
+
+    activeProposal: ->
+      _.first(_.filter(@proposals(), (proposal) -> proposal.isActive()))

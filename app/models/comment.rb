@@ -118,29 +118,33 @@ class Comment < ActiveRecord::Base
   end
 
   private
-    def parent_comment_belongs_to_same_discussion
-      if self.parent.present?
-        unless discussion_id == parent.discussion_id
-          errors.add(:parent, "Needs to have same discussion id")
-        end
+  def send_discussion_comment_deleted!
+    discussion.comment_deleted!
+  end
+
+  def parent_comment_belongs_to_same_discussion
+    if self.parent.present?
+      unless discussion_id == parent.discussion_id
+        errors.add(:parent, "Needs to have same discussion id")
       end
     end
+  end
 
-    def set_defaults
-      self.liker_ids_and_names ||= {}
-    end
+  def set_defaults
+    self.liker_ids_and_names ||= {}
+  end
 
-    def attachments_owned_by_author
-      if attachments.present?
-        if attachments.map(&:user_id).uniq != [user.id]
-          errors.add(:attachments, "Attachments must be owned by author")
-        end
+  def attachments_owned_by_author
+    if attachments.present?
+      if attachments.map(&:user_id).uniq != [user.id]
+        errors.add(:attachments, "Attachments must be owned by author")
       end
     end
+  end
 
-    def has_body_or_attachment
-      if body.blank? && attachments.blank?
-        errors.add(:body, "Comment cannot be empty")
-      end
+  def has_body_or_attachment
+    if body.blank? && attachments.blank?
+      errors.add(:body, "Comment cannot be empty")
     end
+  end
 end

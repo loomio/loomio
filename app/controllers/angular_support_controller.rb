@@ -53,7 +53,7 @@ class AngularSupportController < ApplicationController
   end
 
   def redirect_to_discussion
-    redirect_to "http://localhost:8000/discussions/#{testing_discussion.id}"
+    redirect_to "http://localhost:8000/discussions/#{testing_discussion.key}"
   end
 
   def patrick
@@ -92,6 +92,6 @@ class AngularSupportController < ApplicationController
     jennifer.reload
     group.reload
 
-    Discussion.create!(title: DISCUSSION_TITLE, group: group, author: jennifer, private: false)
+    Discussion.create!(title: DISCUSSION_TITLE, group: group, author: jennifer, private: true)
   end
 end

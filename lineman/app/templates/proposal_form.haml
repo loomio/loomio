@@ -1,0 +1,29 @@
+%form{ng-submit: 'submit()'}
+  .modal-header
+    %h1{translate: 'proposal_form.start_a_proposal'}
+
+  .modal-body
+    %p{translate: 'proposal_form.what_does_a_proposal_do'}
+
+      %fieldset{ng-disabled: 'isDisabled'}
+        .form-group
+          %label{for: 'proposal-title-field', translate: 'proposal_form.title_label'}
+          %input#proposal-title-field.form-control{placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: 'proposal.name', ng-required: 'true'}
+
+        .form-group
+          %label{for: 'proposal-close-date-field', translate: 'proposal_form.closes_at_label'}
+          .datetimeselect
+            %input.form-control{ng-model: 'proposal.closingAt', ng-focus: 'showClosingAtPicker()', ng-required: 'true'}
+            %i.fa.fa-calendar{ng-click: 'toggleClosingAtPicker()'}
+
+            %datetimepicker{ng-model: 'proposal.closingAt', datetimepicker_config: "{ startView:'day', minView:'hour'}", on-set-time: 'hideClosingAtPicker()', ng-show: 'closingAtPickerIsActive'}
+
+        .form-group
+          %label{for: 'proposal-details-field', translate: 'proposal_form.details_label'}
+          %textarea#proposal-details-field.form-control{ng-model: 'proposal.description', placeholder: "{{ 'proposal_form.details_placeholder' | translate }}"}
+
+  .modal-footer
+    %button.btn.btn-primary{type: 'submit'}
+      Submit
+    %button.btn.btn-warning{ng-click: 'closeForm()', value: 'Cancel'}
+      Cancel
