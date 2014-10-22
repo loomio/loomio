@@ -4,9 +4,12 @@ zh-TW:
       edit:
         title: 'Email 偏好設定'
         when_do_you_want_emails: 'Email 給我：'
-        email_missed_yesterday: "「昨日 Loomio」— 每日我錯過的活動摘要"
+        email_missed_yesterday: "「昨日 Loomio」— 每日我錯過的動態摘要"
+        email_when_mentioned: "當我被 @提到"
+        email_followed_threads: "當我跟隨的討論主題有新的動態。"
         email_when_proposal_closing_soon: "24 小時前提議定案。"
         email_new_discussions_and_proposals: '新的討論串與提案'
+        for_these_groups: "對於這些群組："
         submit: "儲存偏好設定"
   explore:
     header: "探索公開群組"
@@ -68,6 +71,7 @@ zh-TW:
     group_request_invalid_token: "抱歉！這是無效的邀請碼"
     group_private_or_not_found: "找不到群組。\n\n此群組可能是私密群組。如果有人給您這個連結，要求他邀請您加入這個群組。"
     group_already_setup: "您想設置的群組已存在。"
+    passwords_did_not_match: "密碼與確認密碼並不相符"
     proposal_already_exists: "在這個討論串中已有一個開啟狀態的提案。"
     user_with_email_address_already_in_group: "該電子郵件使用者已屬於本群組。"
     you_have_already_requested_membership: "您已經申請此群組的成員資格。"
@@ -172,6 +176,7 @@ zh-TW:
     clear: '清除'
     title: '收件匣'
     preferences: '收件匣偏好設定'
+    what_you_have_not_read_yet: "這裡是您還未讀取的動態。"
     dropdown-btn: '收件匣'
     empty: 您跟上了進度！意見通通都看過了。
   notifications:
@@ -231,11 +236,14 @@ zh-TW:
     back: "回到我的簡歷"
     change_password: "變更您的密碼"
     deactivate_account: "凍結群組"
-    about_deactivation: "這會是甚麼意思？"
+    about_deactivation: "這是甚麼意思？"
     confirm_account_deactivation: "您確定您想要凍結您的帳號？"
     deactivation:
       title: "正在凍結您的帳號"
+      only_coordinator: "群組必須至少有一位協作者。您目前是以下跟隨群組中唯一的協作者："
+      info_title: "凍結您的群組是甚麼意思？"
       group_contributions: "您在群組中作出的意見、提案與討論串會留下，但我們會從中移除您的大名。"
+      emails: "我們會停止寄送給您有關 Loomio 的電子郵件。"
   group_form:
     name: "群組名稱"
     description: "描述"
@@ -300,6 +308,9 @@ zh-TW:
     m6: 啟動子群組，他們會成為子群組的協作者。
     m7: 任何時候都能編輯他們自己的意見。
     m8: 發起並且參與提案。
+  discussion_privacy:
+    public: 本討論串在網路上公開
+    private: 本討論串屬於私密群組的成員
   group_privacy:
     visible_to:
       public: 公開陳列群組。
@@ -383,10 +394,14 @@ zh-TW:
     follow:
       click_to_follow: "點此跟隨群組"
       click_to_unfollow: "點此取消跟隨群組"
+      following_details: "此群組一有新的討論主題您將會被通知。"
+      not_following_details: "您參與的討論主題一有新的意見您將會被通知。"
   group_request:
     beta_request_header: "在 Loomio Beta 上啟動群組"
     beta_request_description: "要開始在 Loomio Beta 上作決策，第一步是啟動群組"
     neighbourhood_support_group: "例如：守望相助支援群組"
+    commercial_use_option: 在公司、正式組織或是職場
+    non_commercial_use_option: 在社群群組中或是非正式的網絡
     please_select_an_option: 請選出一個選項
     confirmation:
       title: 您就快完成了！請確認您的 Email 信箱。
@@ -419,10 +434,13 @@ zh-TW:
   go_to_add_comment_html: "<a href='%{href}'>前往討論串的底部</a>增加意見。"
   comment_by: "%{comment_author} 的意見"
   discussion_list:
+    clear_filters: "清除過濾：查看所有討論串"
     filter_unread:
       enable: "僅顯示未讀的討論串"
+      disable: "查看已讀與未讀的討論串"
     filter_followed:
       enable: "僅顯示跟隨的討論串"
+      disable: "查看跟隨與未跟隨的討論串"
     empty:
       no_discussions: "您的群組尚未有任何的討論串。"
       no_discussions_in_group: "這個群組還未有任何的討論串。"
@@ -437,6 +455,10 @@ zh-TW:
     last_edited_html: "最後由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在%{when}前編輯"
     see_revision_history: "查看修訂歷史紀錄"
     see_history: "查看歷史紀錄"
+    click_to_follow: "點此跟隨討論主題"
+    click_to_unfollow: "點此取消跟隨討論主題"
+    following_details: "此討論主題一有新的意見您將會被通知。"
+    not_following_details: "在此討論主題的動態您將不會被通知。"
   description_history:
     header: "修訂歷史"
     subheader: "版本"
@@ -455,6 +477,7 @@ zh-TW:
   edit_discussion: "編輯討論串"
   move_discussion: "移動討論串"
   move_discussion_to_hidden_group: "這則討論串目前是公開的。將它移至一個隱藏群組將會使它成為私人討論串。"
+  move_discussion_to_public_group: "此討論串目前是私密的。移動討論串到這個公開的群組會使其公開。"
   move_discussion_where: "您想要把這則討論串移至？"
   delete_discussion: "刪除討論串"
   confirm_delete_discussion: "您確定要永久刪除這個討論串嗎？"
@@ -507,7 +530,7 @@ zh-TW:
     different_ways: '各種使用 Loomio 的方式'
     engaging_html: |
       <h2>激動人心的群組小技巧</h2>
-      <p>當一個吸引人的提案出現時，夥伴會很興奮地加入討論一個開誠布公的好提案，可幫助夥伴直接知道要支持或是站在反對的立場。
+      <p>當一個吸引人的提案出現時，夥伴會很興奮地加入討論，一個開誠布公的好提案，可幫助夥伴直接知道要支持或是站在反對的立場。
       想想看，在面對面的討論或在信件的討論串中的討論狀況，您會發現在 Loomio 參與討論或決策容易得多。</p>
       <p>如果您的群組才剛開始經營，您可以從比較輕鬆的決策開始討論，
       如此一來，大家都有機會使用 Loomio 工具發表意見、參與整個決策制定的過程。</p>
@@ -551,7 +574,7 @@ zh-TW:
     keep_up_to_date: "持續跟進"
     keep_up_to_date_html: |
       <p>點擊您畫面上方的群組名稱以進入群組頁面，頁面中您可看到該群組的討論與決定清單。
-      若您加入一個以上的群組，您可在首頁看到所有您加入的群組及其所有活動。 </p>
+      若您加入一個以上的群組，您可在首頁看到所有您加入的群組及其所有動態。 </p>
       <p>當您的群組有要事發生時，您將會收到通知信。您可<a href="%{link}"">於此</a>更改您的 email 偏好設定。</p>
     make_a_decision: "作出決策"
     make_a_decision_description: "當群組準備好制定決策時，任何人都可以提案。替行動方案做出概要以及提供一些背景資料，讓每個人都能明確知道贊成與否所代表的真正意義。"
@@ -685,6 +708,7 @@ zh-TW:
     copy: "若您並未收到邀請信件，您可以自行複製連結並且寄給您想邀請的人！"
     pending_invitations: '擱置中的邀請函'
     no_pending_invitations: "目前沒有擱置的邀請函。"
+    import_contacts_html: "記不得電子郵件地址？從 %{google_link} 匯入您的通訊錄"
   search:
     description: "以下是標題或描述中包含 %{query} 的討論或提案的列表"
     header: "%{query} 的搜尋結果"
@@ -754,6 +778,9 @@ zh-TW:
     view: "觀看簡歷"
     profile: "編輯簡歷"
     picture: "照片"
+    use_initials: '使用大名的第一個字'
+    use_uploaded: '使用上傳過的圖片'
+    use_gravtar: '使用 Gravatar 的大頭貼'
     upload_new_image: "上傳新的圖片"
   group_setup:
     set_up_your_group: 設置您的群組
@@ -793,6 +820,7 @@ zh-TW:
         admin_email: "您的電子郵件地址是？"
         name: "您的群組的名稱是？"
         description: "如果您有空的話，多告訴我們一些有關您群組的事"
+        is_commercial: "您打算在哪裡使用 Loomio？"
     placeholders:
       membership_request:
         introduction: "簡單幾句話告訴我們您是誰和為甚麼想要加入「%{group_name}」。"
@@ -835,6 +863,8 @@ zh-TW:
     view_discussion: "點擊此處，您可以看到這條討論串。"
     view_group: "點擊此處檢視 Loomio 上的群組"
     view_proposal: "在 Loomio 上觀看這項提案。"
+    create_discussion:
+      intro: "%{who} 在 %{which_group} 啟動了新的討論串："
     create_proposal:
       intro: "在您所屬的 Loomio 群組中，有一個新的提案！"
       closes_in: "即將結束。"
@@ -865,6 +895,7 @@ zh-TW:
       subject: "%{who} 申請加入 %{which_group}"
       view_group: "您可點此批准或拒絕申請"
     mentioned:
+      context: "%{author_name} 在討論「%{discussion_title}」時提到您"
       subject: "%{who}在 Loomio %{which}群組中提到您"
     new_motion_created:
       subject: "提案：%{proposal_title}"
@@ -887,6 +918,9 @@ zh-TW:
       headline: "%{author} 在 %{group} 群組的提案很快就要定案了："
       summary: "摘要"
     thread_mailer:
+      footer_text: "直接回覆此 email，或是在 Loomio 上觀看："
+      reply_or_view_online_html: "直接回覆此 email，或是<a href='%{url}'>在 Loomio 上觀看</a>。"
+      unfollow_discussion_html: "<a href='%{unfollow_url}'>取消跟隨</a>以停止接收有關此討論的電子郵件。"
       change_email_preferences_html: "變更您的 <a href='%{email_preferences_url}'>email 偏好設定</a>以取消訂閱來自 Loomio 的電子郵件。"
       change_preferences: "變更您的電子郵件偏好設定："
       new_motion: "%{who} 的提議："
@@ -895,6 +929,7 @@ zh-TW:
       specify_outcome_html: "您的提議已經定案。<a href='%{link}'>具體說明成果</a>讓每個人都能知道提案的結果。"
       specify_outcome: "您的提議已經定案。請具體說明成果，讓每個人都能知道提案的結果："
       outcome_created: "%{who} 確立了提案成果："
+      you_agreed: "您%{past_tense_position}"
     verification:
       header: "您就快完成了！"
       intro: "為了完成您的申請，請點擊此認證連結："
@@ -932,7 +967,7 @@ zh-TW:
   loading: "讀取中⋯"
   message: "訊息"
   name: "名字"
-  new_activity: "新活動"
+  new_activity: "新的動態"
   next: "下一個"
   other: "其他"
   outcome: "成果"
@@ -1032,6 +1067,9 @@ zh-TW:
       fr: 五
       sa: 六
       su: 日
+    meridians:
+      am: 'am'
+      pm: 'pm'
     please_wait: "請稍候"
     privacy: "隱私"
     private: "私密"
