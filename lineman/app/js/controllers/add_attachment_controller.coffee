@@ -12,12 +12,14 @@ angular.module('loomioApp').controller 'AddAttachmentController', ($scope, $uplo
 
   $scope.success = ->
     $scope.isAttaching = false
+    console.log "Success!"
 
   $scope.failure = (error) ->
     $scope.isAttaching = false
     console.log error
 
   $scope.progress = (progress) ->
+    console.log "In progress:"
     console.log progress
 
   $scope.abort = ->

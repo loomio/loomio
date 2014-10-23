@@ -15,10 +15,10 @@ angular.module('loomioApp').service 'FileUploadService',
       method: 'POST'
       file:   attachment
       data:
+        utf8:           '✓',
         acl:            @acl,
         policy:         @policy,
         signature:      @signature,
         AWSAccessKeyId: @accessKey,
-        key:            @key.replace '${filename}', attachment.name,
-        filename:       attachment.name
+        key:            @key.replace('${filename}', attachment.name),
         "Content-Type": attachment.type or 'application/octet-stream'
