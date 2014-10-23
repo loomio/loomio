@@ -1,8 +1,6 @@
-angular.module('loomioApp').controller 'AddAttachmentController', ($scope, AttachmentService) ->
+angular.module('loomioApp').controller 'AddAttachmentController', ($scope, AttachmentService, AttachmentModel) ->
 
-  $scope.isAttaching = false
-  $scope.percentComplete = 0
-  $scope.uploadingFilename = ''
+  $scope.comment.attachments = []
 
   $scope.upload = ($files) ->
     $scope.isAttaching = true
@@ -12,8 +10,7 @@ angular.module('loomioApp').controller 'AddAttachmentController', ($scope, Attac
 
   $scope.success = (attachment) ->
     $scope.reset()
-    $scope.comment.attachmentIds.push attachment.attachment_id
-    console.log 'Upload success!'
+    $scope.comment.attachments.push new AttachmentModel(attachment)
 
   $scope.failure = (error) ->
     $scope.reset()
@@ -26,6 +23,7 @@ angular.module('loomioApp').controller 'AddAttachmentController', ($scope, Attac
     $scope.isAttaching = false
     $scope.percentComplete = 0
     $scope.uploadingFilename = ''
+  $scope.reset()
 
   $scope.remove = (attachment) ->
     AttachmentService.remove(attachment.id)

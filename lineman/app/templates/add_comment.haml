@@ -10,8 +10,9 @@
       .right
         %button#post-comment-btn.btn.btn-default.btn-block.submit{type: 'submit'} Post
 
+    .comment-row.comment-attachments{ng_repeat: 'attachment in newComment.attachments'}
+      %a.attachment-link{ng_href: '{{attachment.location}}', target: '_blank'}
+        {{ attachment.filename }}
+      %span.attachment-filesize  
+        ({{ attachment.filesize | fileSize }})
     %add_attachment{comment: 'newComment'}
-    
-    .attachment{{ng_repeat: '{{attachment in newComment.attachments()}}'}}
-      .attachment-filename {{attachment.filename}}
-      %button.close.cancel-upload{ng_click: 'removeAttachment(attachment.id)'} &times;
