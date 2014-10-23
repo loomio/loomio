@@ -2,6 +2,7 @@ angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentS
   $scope.newComment =
     discussion_id: $scope.discussion.id
     body: ''
+    attachmentIds: []
 
   $scope.isExpanded = false
 

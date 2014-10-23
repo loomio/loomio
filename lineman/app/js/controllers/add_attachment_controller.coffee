@@ -12,6 +12,7 @@ angular.module('loomioApp').controller 'AddAttachmentController', ($scope, Attac
 
   $scope.success = (attachment) ->
     $scope.reset()
+    $scope.comment.attachmentIds.push attachment.attachment_id
     console.log 'Upload success!'
 
   $scope.failure = (error) ->
