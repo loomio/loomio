@@ -1,7 +1,5 @@
 .attachments
-  .attachments-current
-    Attachment Ids: {{ comment.attachmentIds }}
-  .attachments-add{ng_hide: 'isAttaching'}
+  .attachment-new{ng_hide: 'isAttaching'}
     %input{type: 'file', ng_file_select: 'upload($files)'}
   .attachment-in-progress{ng_show: 'isAttaching'}
     .attachment-filename {{ uploadingFilename }}

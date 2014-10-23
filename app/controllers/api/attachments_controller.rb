@@ -6,10 +6,10 @@ class API::AttachmentsController < API::BaseController
 
     if attachment.save
       Measurement.increment('attachments.create.success')
-      render json: { saved: true, attachment_id: attachment.id }
+      render json: attachment, root: false
     else
       Measurement.increment('attachments.create.error')
-      render json: { saved: false }
+      render json: attachment.errors, root: false
     end
   end
 
