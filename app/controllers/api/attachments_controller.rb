@@ -1,7 +1,6 @@
 class API::AttachmentsController < API::BaseController
 
   def create
-    binding.pry
     attachment = Attachment.new(permitted_params.attachment)
     attachment.user = current_user
 
