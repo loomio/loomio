@@ -3,16 +3,18 @@ angular.module('loomioApp').service 'ProposalService',
     constructor: (@$http) ->
 
     create: (proposal, success, failure) ->
-      @$http.post('/api/v1/motions', proposal).then (response) ->
-        success(response.data.proposals[0])
-      , (response) ->
-        failure(response.data.error)
-
-    saveVote: (vote, success, failure) ->
-      @$http.post("/api/v1/motions/#{vote.proposalId}/vote", vote).then (response) ->
+      @$http.post('/api/v1/motions', proposal.params()).then (response) ->
         success()
       , (response) ->
         failure(response.data.error)
+
+    #saveVote: (vote, success, failure) ->
+      #console.log(vote)
+      #vote.motion_id = vote.proposal_id
+      #@$http.post("/api/v1/motions/#{vote.proposalId}/vote", vote).then (response) ->
+        #success(response.data.event)
+      #, (response) ->
+        #failure(response.data.error)
 
 
 

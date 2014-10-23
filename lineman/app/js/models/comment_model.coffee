@@ -13,10 +13,10 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
     plural: 'comments'
 
     likers: ->
-      RecordStoreService.getAll('users', @likerIds)
+      RecordStoreService.get('users', @likerIds)
 
     attachments: ->
-      RecordStoreService.getAll('attachments', @attachmentIds)
+      RecordStoreService.get('attachments', @attachmentIds)
 
     author: ->
       RecordStoreService.get('users', @authorId)

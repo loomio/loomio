@@ -26,6 +26,7 @@ Loomio::Application.routes.draw do
 
   namespace :api, path: '/api/v1' do
     resources :discussions, only: :show
+    resources :motions, only: :create
     resources :comments, only: :create do
       post :like, on: :member
       post :unlike, on: :member

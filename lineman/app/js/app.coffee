@@ -1,5 +1,6 @@
 angular.module('loomioApp', ['ngRoute',
                              'jmdobry.angular-cache',
+                             'ui.bootstrap',
                              'ui.bootstrap.datetimepicker',
                              'pascalprecht.translate',
                              'tc.chartjs',
