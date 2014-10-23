@@ -2,7 +2,11 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, discussi
   $scope.currentUser = currentUser
   $scope.discussion = discussion
 
-  EventService.subscribeTo(eventSubscription)
+  eventReceived = (event) ->
+    console.log('hey we gots da event')
+    #$scope.$apply()
+
+  EventService.subscribeTo(eventSubscription, eventReceived)
 
   $scope.safeEvent = (kind) ->
     _.contains ['new_comment', 'new_motion', 'new_vote'], kind

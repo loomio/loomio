@@ -6,13 +6,6 @@
 .thread-discussion {
   padding: 15px;
   background-color: #fff;
-  h1 {
-    @include fontHelveticaBold;
-    @include fontGrande;
-    padding: 0;
-    margin: 0;
-    color: #333333;
-  }
 }
 
 .thread-origin {
@@ -26,7 +19,6 @@
 .thread-discussion-context {
 
 }
-
 
 .thread-proposals {
   background-color: #fff;
@@ -109,3 +101,9 @@
   background-image: url(/img/red_flag_22.png);
 }
 
+.thread-start-proposal-card {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid $thread-border-color;
+}

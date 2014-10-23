@@ -30,11 +30,14 @@
               %span{translate: 'common.state.public'}
 
         .thread-proposals
-          %proposal{proposal: 'discussion.currentProposal()', discussion: 'discussion', currentUser: 'currentUser'}
+          %proposal{proposal: 'discussion.activeProposal()', discussion: 'discussion', currentUser: 'currentUser'}
 
         .thread-events
           %div{ng_repeat: 'event in discussion.events()', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
 
-        .start-proposal{ng_hide: 'discussion.activeProposalId'}
-          %start_proposal{discussion: 'discussion'}
         %add_comment{discussion: 'discussion'}
+
+      .thread-start-proposal-card{ng_controller: 'StartProposalCardController', ng-show: '!discussion.activeProposal()'}
+        %h3 Ready to make a decision?
+        %a{href: '#', ng_click: 'openForm()'}
+          Create a proposal
