@@ -16,7 +16,7 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
       RecordStoreService.get('users', @likerIds)
 
     attachments: ->
-      RecordStoreService.getAll('attachments', @attachmentIds)
+      RecordStoreService.get('attachments', @attachmentIds)
 
     author: ->
       RecordStoreService.get('users', @authorId)
