@@ -17,6 +17,12 @@ angular.module('loomioApp').controller 'ProposalFormController', ($translate, $s
     $scope.isDisabled = true
     ProposalService.create($scope.proposal, $scope.saveSuccess, $scope.saveError)
 
+  $scope.dropdownIsOpen = false
+
+  $scope.onSetTime = ->
+    console.log($scope.dropdownIsOpen)
+    $scope.dropdownIsOpen = false
+
   $scope.cancel = ->
     $modalInstance.dismiss('cancel');
 
