@@ -30,7 +30,7 @@
               %span{translate: 'common.state.public'}
 
         .thread-proposals
-          %proposal{proposal: 'discussion.activeProposal()', discussion: 'discussion', currentUser: 'currentUser'}
+          %proposal_card{proposal: 'discussion.activeProposal()'}
 
         .thread-events
           %div{ng_repeat: 'event in discussion.events()', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}

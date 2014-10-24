@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProposalController', ($scope, $window, ProposalService) ->
+angular.module('loomioApp').controller 'ProposalCardController', ($scope, $window, ProposalService, UserAuthService) ->
   $scope.voteFormIsDisabled = false
   $scope.voteFormIsExpanded = false
 
@@ -7,7 +7,7 @@ angular.module('loomioApp').controller 'ProposalController', ($scope, $window, P
 
   $scope.currentUserVote = ->
     if $scope.proposal?
-      index = $scope.proposal.votes().map((vote) -> vote.authorId).indexOf($scope.$parent.currentUser.id)
+      index = $scope.proposal.votes().map((vote) -> vote.authorId).indexOf(UserAuthService.currentUser.id)
       $scope.proposal.votes()[index] if index?
 
   $scope.selectPosition = (position) ->

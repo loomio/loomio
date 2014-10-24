@@ -8,18 +8,6 @@
   background-color: #fff;
 }
 
-.thread-origin {
-  @include fontSmall;
-  color: #777777;
-}
-
-.thread-origin-icon{}
-.thread-origin-details{}
-
-.thread-discussion-context {
-
-}
-
 .thread-proposals {
   background-color: #fff;
   border-top: 1px solid $thread-border-color;
@@ -29,13 +17,15 @@
   }
 }
 
-.thread-proposal {
-  padding: 15px;
-  background-color: #fff;
+.thread-origin {
+  @include fontSmall;
+  color: #777777;
 }
 
-.thread-proposal-started-by {
-  @include metaText
+.thread-origin-icon{}
+.thread-origin-details{}
+
+.thread-discussion-context {
 }
 
 .thread-events {

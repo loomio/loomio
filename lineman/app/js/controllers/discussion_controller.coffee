@@ -1,5 +1,4 @@
-angular.module('loomioApp').controller 'DiscussionController', ($scope, discussion, eventSubscription, currentUser, EventService, RecordStoreService, FileUploadService) ->
-  $scope.currentUser = currentUser
+angular.module('loomioApp').controller 'DiscussionController', ($scope, discussion, eventSubscription, EventService, RecordStoreService, FileUploadService, UserAuthService) ->
   $scope.discussion = discussion
 
   eventReceived = (event) ->

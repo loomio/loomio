@@ -25,7 +25,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/tc-angular-chartjs/dist/tc-angular-chartjs.js",
              "vendor/bower_components/showdown/src/showdown.js",
              "vendor/bower_components/angular-markdown-directive/markdown.js",
-             "vendor/bower_components/ng-file-upload/angular-file-upload.js"
+             "vendor/bower_components/ng-file-upload/angular-file-upload.js",
              "vendor/js/private_pub.js"]
 
     app: ["app/js/app.js"

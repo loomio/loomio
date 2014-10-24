@@ -1,15 +1,15 @@
-.thread-proposal{ng_show: 'proposal'}
+.proposal-card{ng-show: 'proposal'}
   %h2 {{proposal.name}}
-  .thread-proposal-started-by
+  .proposal-card-started-by
     %span{translate: 'proposal.started_by', translate-value-name: '{{proposal.authorName()}}'}
     %span.time-ago>
       {{discussion.createdAt | timeFromNowInWords}}
 
-  .thread-proposal-description{btf-markdown: 'proposal.description' }
+  .proposal-card-description{btf-markdown: 'proposal.description' }
 
-  .thread-proposal-closing-at
+  .proposal-card-closing-at
     %i.fa.fa-clock-o
-    %span.bump Closes {{proposal.closing_at | exactDateWithTime }}
+    %span.bump Closes {{proposal.closingAt | exactDateWithTime }}
   .pie-graph-container.row
     .col-xs-6.test-me
       %canvas.pie-graph{tc-chartjs-pie:true, chart-data:'proposal.pie_chart_data', chart-options:'pie_chart_options'}

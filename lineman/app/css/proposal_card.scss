@@ -1,0 +1,33 @@
+.proposal-card {
+  padding: 15px;
+  background-color: #fff;
+}
+
+.proposal-card-started-by {
+  @include metaText
+}
+
+.proposal-card-closing-at {
+
+}
+
+.proposal-card-vote-btn {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+}
+.proposal-card-vote-yes-btn {
+  background-image: url(/img/green_thumb_button_60.png);
+}
+
+.proposal-card-vote-no-btn {
+  background-image: url(/img/pink_thumb_button_60.png);
+}
+
+.proposal-card-vote-abstain-btn {
+  background-image: url(/img/red_thumb_button_60.png);
+}
+
+.proposal-card-vote-block-btn {
+  background-image: url(/img/red_flag_button_60.png);
+}

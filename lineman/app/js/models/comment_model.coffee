@@ -33,3 +33,10 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
 
     authorAvatar: ->
       @author().avatarOrInitials()
+
+    addLiker: (user) ->
+      @likerIds.push user.id
+
+    removeLiker: (user) ->
+      @likerIds = _.without(@likerIds, user.id)
+
