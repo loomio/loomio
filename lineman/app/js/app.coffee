@@ -5,7 +5,8 @@ angular.module('loomioApp', ['ngRoute',
                              'pascalprecht.translate',
                              'tc.chartjs',
                              'ngSanitize',
-                             'btford.markdown']).config ($httpProvider) ->
+                             'btford.markdown',
+                             'angularFileUpload']).config ($httpProvider) ->
 
   # consume the csrf token from the page
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
