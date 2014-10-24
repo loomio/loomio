@@ -8,8 +8,10 @@ en:
       edit: 'Edit'
       like: 'Like'
       unlike: 'Unlike'
+      cancel: 'Cancel'
 
   proposal_form:
+    start_proposal: 'Start proposal'
     start_a_proposal: 'Start a proposal'
     what_does_a_proposal_do: 'Proposals allow you to see how everyone feels about a particular course of action. Find out more.'
     title_placeholder: 'Eg: Go to the moon'
@@ -18,6 +20,7 @@ en:
     details_label: 'Details'
     details_placeholder: "Give enough detail so everyone knows exactly what it means to agree or disagree or whatever"
 
+  #proposal widget/card maybe
   proposal:
     started_by: 'Started by <strong>{{name}}</strong>'
 
