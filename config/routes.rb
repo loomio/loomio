@@ -31,6 +31,7 @@ Loomio::Application.routes.draw do
       post :like, on: :member
       post :unlike, on: :member
     end
+    resources :attachments, only: :create
     resources :motions, only: :create do
       post :vote, on: :member
     end
@@ -39,6 +40,7 @@ Loomio::Application.routes.draw do
       get :subscribe
       get :who_am_i
     end
+    post '/attachments/credentials', to: 'attachments#credentials'
   end
 
   get "/explore", to: 'explore#index', as: :explore

@@ -1,6 +1,6 @@
 angular.module('loomioApp').service 'CommentService',
   class CommentService
-    constructor: (@$http, @EventService) ->
+    constructor: (@$http) ->
     # i am here.. then append to discussion?
     add: (comment, success, failure) ->
       @$http.post('/api/v1/comments', comment).then (response) ->

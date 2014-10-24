@@ -1,7 +1,14 @@
 angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentService) ->
   $scope.newComment =
-    discussion_id: $scope.discussion.id
+    discussionId: $scope.discussion.id
+    parentId: null
     body: ''
+    attachments: []
+    params: ->
+      comment:
+        discussion_id: $scope.discussion.id
+        body: @body
+        attachment_ids: _.pluck(@attachments, 'id')
 
   $scope.isExpanded = false
 
@@ -13,17 +20,17 @@ angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentS
       $scope.isExpanded = false
 
   $scope.processForm = () ->
-    CommentService.add($scope.newComment, $scope.saveSuccess, $scope.saveError)
+    CommentService.add($scope.newComment.params(), $scope.success, $scope.error)
 
   $scope.$on 'showReplyToCommentForm', (event, originalComment) ->
-    $scope.newComment.parent_id = originalComment.id
+    $scope.newComment.parentId = originalComment.id
     $scope.expand()
 
-  $scope.saveSuccess = ->
+  $scope.success = ->
     $scope.newComment.body = ''
+    $scope.newComment.attachments = []
     $scope.isExpanded = false
 
-  $scope.saveError = (error) ->
+  $scope.error = (error) ->
     # show errors
     console.log error
-

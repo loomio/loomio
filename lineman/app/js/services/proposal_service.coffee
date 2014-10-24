@@ -1,6 +1,6 @@
 angular.module('loomioApp').service 'ProposalService',
   class ProposalService
-    constructor: (@$http, @EventService) ->
+    constructor: (@$http) ->
 
     create: (proposal, success, failure) ->
       @$http.post('/api/v1/motions', proposal.params()).then (response) ->
