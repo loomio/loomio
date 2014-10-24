@@ -28,9 +28,8 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
       RecordStoreService.get('discussions', @discussionId)
 
     votes: ->
-      [{createdAt: moment().year(2001), proposalId: 1} ]
-      #RecordStoreService.get 'votes', (vote) =>
-        #vote.proposalId == @id
+      RecordStoreService.get 'votes', (vote) =>
+        vote.proposalId == @id
 
     authorName: ->
       @author().name
