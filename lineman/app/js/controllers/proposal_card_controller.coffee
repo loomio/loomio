@@ -2,8 +2,11 @@ angular.module('loomioApp').controller 'ProposalCardController', ($scope, $windo
   $scope.voteFormIsDisabled = false
   $scope.voteFormIsExpanded = false
 
-  if $scope.proposal?
-    $scope.newVote = {position: null, statement: null, proposalId: $scope.proposal.id}
+  $scope.newVote = {position: null, statement: null, proposalId: $scope.proposal.id}
+
+  $scope.currentUserHasVoted = ->
+    $scope.proposal.userHasVoted(UserAuthService.currentUser)
+
 
   $scope.currentUserVote = ->
     if $scope.proposal?

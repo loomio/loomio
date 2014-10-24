@@ -1,10 +1,16 @@
 .proposal-card {
   padding: 15px;
   background-color: #fff;
+
+  h3 {
+    @include fontHelveticaBold;
+    @include fontMedium;
+    color: $meta-text-color;
+  }
 }
 
 .proposal-card-started-by {
-  @include metaText
+  @include metaText;
 }
 
 .proposal-card-closing-at {
@@ -16,6 +22,7 @@
   width: 60px;
   height: 60px;
 }
+
 .proposal-card-vote-yes-btn {
   background-image: url(/img/green_thumb_button_60.png);
 }
@@ -25,7 +32,7 @@
 }
 
 .proposal-card-vote-abstain-btn {
-  background-image: url(/img/red_thumb_button_60.png);
+  background-image: url(/img/yellow_thumb_button_60.png);
 }
 
 .proposal-card-vote-block-btn {
