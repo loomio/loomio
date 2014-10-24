@@ -6,16 +6,13 @@ class MotionSerializer < ActiveModel::Serializer
              :description,
              :outcome,
              :votes_count,
-             :yes_votes_count,
-             :no_votes_count,
-             :abstain_votes_count,
-             :block_votes_count,
              :did_not_votes_count,
              :created_at,
              :updated_at,
              :closing_at,
              :closed_at,
-             :last_vote_at
+             :last_vote_at,
+             :vote_counts
 
   has_one :author, serializer: UserSerializer, root: 'users'
   has_one :outcome_author, serializer: UserSerializer, root: 'users'

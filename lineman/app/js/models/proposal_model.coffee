@@ -9,8 +9,8 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
       @closedAt = data.closed_at
       @authorId = data.author_id
       @discussionId = data.discussion_id
-      @voteIds = data.vote_ids
-      @votesCount = data.votes_count
+      #@voteIds = data.vote_ids
+      @voteCounts = data.vote_counts
 
     params: ->
       id: @id
@@ -28,7 +28,9 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
       RecordStoreService.get('discussions', @discussionId)
 
     votes: ->
-      RecordStoreService.get('votes', @voteIds)
+      [{createdAt: moment().year(2001), proposalId: 1} ]
+      #RecordStoreService.get 'votes', (vote) =>
+        #vote.proposalId == @id
 
     authorName: ->
       @author().name
@@ -36,10 +38,17 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
     isActive: ->
       @closedAt == null
 
+    userHasVoted: (user) ->
+      _.any @votes, (vote) ->
+        vote.userId == user.id
+
+    lastVoteByUser: (user) ->
+      _.first(_.sortBy(@votes, (vote) -> vote.createdAt))
+
     pieChartData: ->
       [
-        { value: data.yes_votes_count, color: '#90D490', label: 'Agree' },
-        { value: data.abstain_votes_count, color: '#F0BB67', label: 'Abstain' }
-        { value: data.no_votes_count, color: '#D49090', label: 'Disagree' }
-        { value: data.block_votes_count, color: '#DD0000', label: 'Block' }
+        { value: @voteCounts.yes, color: '#90D490', label: 'Agree' },
+        { value: @voteCounts.abstain, color: '#F0BB67', label: 'Abstain' }
+        { value: @voteCounts.no, color: '#D49090', label: 'Disagree' }
+        { value: @voteCounts.block, color: '#DD0000', label: 'Block' }
       ]

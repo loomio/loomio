@@ -1,7 +1,7 @@
 .proposal-card{ng-show: 'proposal'}
   %h2 {{proposal.name}}
   .proposal-card-started-by
-    %span{translate: 'proposal.started_by', translate-value-name: '{{proposal.authorName()}}'}
+    %span{translate: 'proposal_card.started_by', translate-value-name: '{{proposal.authorName()}}'}
     %span.time-ago>
       {{discussion.createdAt | timeFromNowInWords}}
 
@@ -10,32 +10,33 @@
   .proposal-card-closing-at
     %i.fa.fa-clock-o
     %span.bump Closes {{proposal.closingAt | exactDateWithTime }}
-  .pie-graph-container.row
-    .col-xs-6.test-me
-      %canvas.pie-graph{tc-chartjs-pie:true, chart-data:'proposal.pie_chart_data', chart-options:'pie_chart_options'}
-    .col-xs-5.proposal-participation
-      %a{href: '#'} {{proposal.votesCount}} of X members have participated
+
+  -#.pie-graph-container.row
+    -#.col-xs-6.test-me
+      -#%canvas.pie-graph{tc-chartjs-pie:true, chart-data:'proposal.pieChartData()', chart-options:'pie_chart_options'}
+    -#.col-xs-5.proposal-participation
+      -#%a{href: '#'} {{proposal.votesCount}} of X members have participated
+
+  .proposal-vote-buttons{ng-hide: 'currentUserHasVoted()'}
+    %h3{translate: 'proposal_card.have_your_say'}
+    .proposal-card-vote-btn.proposal-card-vote-yes-btn{ng-click: 'openVoteForm({position: "yes"})'}
+    .proposal-card-vote-btn.proposal-card-vote-abstain-btn{ng-click: 'openVoteForm({position: "yes"})'}
+    .proposal-card-vote-btn.proposal-card-vote-no-btn{ng-click: 'openVoteForm({position: "yes"})'}
+    .proposal-card-vote-btn.proposal-card-vote-block-btn{ng-click: 'openVoteForm({position: "yes"})'}
+
+  .proposal-your-position{ng-show: 'currentUserHasVoted()'}
+    %h3{translate: 'proposal_card.your_position'}
+
+    %a.edit-position.pull-right
+      %span.bump{translate: 'common.action.edit'}
+      %i.fa.fa-pencil
+    .current-position
+      -#.pull-left.vote-icon{ng_class: 'currentUserVote().position'}
+      %strong.author-name {{currentUserVote().authorName()}}
+      %span.author-statement : {{ currentUserVote().statement }}
+
 
   .card-meta-header
-    %a.edit-position.pull-right{ng_show: 'currentUserVote()', href: '#'}
-      %span.bump Edit
-      %i.fa.fa-pencil
-    %h3 Your Position
-    .current-position{ng_show: 'currentUserVote()'}
-      .pull-left.vote-icon{ng_class: 'currentUserVote().position'}
-      %strong.author-name {{currentUserVote().authorName()}}
-      %span.author-statement : {{ currentUserVote().statement }}        
-    .proposal-positions{ng_hide: 'currentUserVote()'}
-      .col-xs-3.agree{ng_click: 'selectPosition("yes")'}
-        %img{src: '/img/yes.png'}
-      .col-xs-3.abstain{ng_click: 'selectPosition("abstain")'}
-        %img{src: '/img/abstain.png'}
-      .col-xs-3.disagree{ng_click: 'selectPosition("no")'}
-        %img{src: '/img/no.png'}
-      .col-xs-3.block{ng_click: 'selectPosition("block")'}
-        %img{src: '/img/block.png'}
-
-  .card-meta-header 
     %h3 Positions
   .current-votes{ng_repeat: 'vote in proposal.votes()'}
     .vote.thread-item-minor{ng_hide: 'vote == currentUserVote()'}

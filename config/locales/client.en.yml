@@ -20,8 +20,9 @@ en:
     details_label: 'Details'
     details_placeholder: "Give enough detail so everyone knows exactly what it means to agree or disagree or whatever"
 
-  #proposal widget/card maybe
-  proposal:
+  proposal_card:
+    your_position: 'Your Position'
+    have_your_say: 'Have your say'
     started_by: 'Started by <strong>{{name}}</strong>'
 
   discussion:
