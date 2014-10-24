@@ -15,7 +15,7 @@
     "angular-translate-loader-url": "~2.4.0",
     "tc-angular-chartjs": "~1.0.9",
     "angular-markdown-directive": "~0.3.0",
-    "angular-bootstrap": "~0.11.2"
-    "angular-file-upload": "latest"
+    "angular-bootstrap": "latest",
+    "ng-file-upload": "latest"
   }
 }

@@ -10,9 +10,8 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
       eventSubscription: ($http) ->
         $http.get('/api/v1/faye/subscribe').then (response) ->
           response.data
-      currentUser: ($http) ->
-        $http.get('/api/v1/faye/who_am_i').then (response) ->
-          response.data.user
+      currentUser: ($http, UserAuthService, UserModel) ->
+        UserAuthService.fetchCurrentUser()
   #.when '/',
     #templateUrl: '/templates/hello'
   .otherwise
