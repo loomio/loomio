@@ -80,6 +80,7 @@ zh-TW:
   alert:
     duplicate_email: "%{which_email} 已經在群組中。"
   notice:
+    new_contacts_imported: "可以使用！您能在以下的欄位當中輸入名稱，我們會建議 email 地址。"
     admin_rights_removed: "%{which_user} 的協作者權利已經被移除。"
     user_added: "%{user_email_or_name} 已經被加入至這個群組。"
     new_user_added: "%{user_email_or_name} 將會在他們申請 Loomio 帳號後被加入群組。"
@@ -179,6 +180,7 @@ zh-TW:
     what_you_have_not_read_yet: "這裡是您還未讀取的動態。"
     dropdown-btn: '收件匣'
     empty: 您跟上了進度！意見通通都看過了。
+    preferences_instructions_html: '<strong>拖拉項目</strong>可以重新排序。 <strong>取消選取</strong>可以從收件匣中移除。'
   notifications:
     header: "通知"
     new_discussion: "啟動了群組"
@@ -226,6 +228,7 @@ zh-TW:
     message: "<p>這裡是 <strong>群組頁面</strong>。左邊是這個群組內所有的討論。</p><p>當您希望群組開始討論另一個主題時，只要建立新的討論串就行了。</p>"
   dashboard_helper_text:
     header: "歡迎來到您的首頁"
+    message: "<p>首頁顯示所有您為群組成員的群組所有其目前的討論串。</p>\n<p>您點擊「啟動討論串」就能啟動新的主題。</p>"
   prompt_visitor_to_authenticate:
     header: "登入或加入群組以參與"
     body: "如果您是這個群組的成員，請登入以參與。"
@@ -238,10 +241,14 @@ zh-TW:
     deactivate_account: "凍結群組"
     about_deactivation: "這是甚麼意思？"
     confirm_account_deactivation: "您確定您想要凍結您的帳號？"
+    reactivation_html: "您會需要<a href='%{link}'>聯絡我們</a>以重新啟用您的帳號。"
     deactivation:
       title: "正在凍結您的帳號"
+      query: "您可以告訴我們為何您現在要凍結您的帳號嗎？"
       only_coordinator: "群組必須至少有一位協作者。您目前是以下跟隨群組中唯一的協作者："
+      instructions: "為了凍結您的帳號，您需要增加其他的協作者，或是凍結群組。"
       info_title: "凍結您的群組是甚麼意思？"
+      memberships: "在您目前隸屬的任何群組中您將不再被列為成員。"
       group_contributions: "您在群組中作出的意見、提案與討論串會留下，但我們會從中移除您的大名。"
       emails: "我們會停止寄送給您有關 Loomio 的電子郵件。"
   group_form:
@@ -308,6 +315,7 @@ zh-TW:
     m6: 啟動子群組，他們會成為子群組的協作者。
     m7: 任何時候都能編輯他們自己的意見。
     m8: 發起並且參與提案。
+    optional_restrictions: "可選擇性，協作者能限制成員能作些甚麼。"
   discussion_privacy:
     public: 本討論串在網路上公開
     private: 本討論串屬於私密群組的成員
@@ -433,8 +441,9 @@ zh-TW:
   empty_discussion_list: "這條討論串中尚未有動態。"
   go_to_add_comment_html: "<a href='%{href}'>前往討論串的底部</a>增加意見。"
   comment_by: "%{comment_author} 的意見"
+  read_up_to: "您上次仔細閱讀到這個地方"
   discussion_list:
-    clear_filters: "清除過濾：查看所有討論串"
+    clear_filters: "清除過濾條件：查看所有討論串"
     filter_unread:
       enable: "僅顯示未讀的討論串"
       disable: "查看已讀與未讀的討論串"
@@ -444,6 +453,7 @@ zh-TW:
     empty:
       no_discussions: "您的群組尚未有任何的討論串。"
       no_discussions_in_group: "這個群組還未有任何的討論串。"
+      no_discussions_matching_filters_html: "沒有討論串符合這些過濾條件。 <a href='%{link}'>清除過濾條件</a>。"
       no_public_discussions: "這個群組中沒有公開的討論串。"
       discussions_are_private: "在此群組中所有的討論串都是私密的。"
       request_membership_html: "<a href='%{href}'>申請加入此群組</a>來看到私密的討論串。"
@@ -672,6 +682,7 @@ zh-TW:
   now_that_your_logged_in: "現在您已以 %{provider_name} 登入，請確認您的詳細訊息以建立 Loomio 帳戶"
   confirmation_not_received: "沒有收到帳號確認程序？"
   unlock_not_received: "沒有收到帳號解鎖程序？"
+  inactive_html: "此帳號已經被凍結。假如您有任何疑問，請<a href='%{path_to_contact}'>聯繫我們</a>。"
   create_an_account_html: '建立 Loomio Beta 帳號'
   log_in: "登入"
   join_group:
@@ -778,7 +789,7 @@ zh-TW:
     view: "觀看簡歷"
     profile: "編輯簡歷"
     picture: "照片"
-    use_initials: '使用大名的第一個字'
+    use_initials: '使用縮寫'
     use_uploaded: '使用上傳過的圖片'
     use_gravtar: '使用 Gravatar 的大頭貼'
     upload_new_image: "上傳新的圖片"
@@ -877,6 +888,7 @@ zh-TW:
       subject: "昨日 Loomio"
       mark_as_read: 設為已讀
       thanks_for_reading: 感謝您的閱讀，祝您有美好的一天！
+      click_here_to_mark_all_as_read_html: "這些是昨日 Loomio 發生的大小事。 \n一旦您讀過，點擊<a href=\"%{link}\">設為已讀</a>就能從您的 Loomio 收件箱中移除。 \n"
       marked_as_read_success: "電子郵件所列的討論串現在設為已讀了"
     group_email:
       intro: "%{who} 在 %{group}裡發布了一則公告："
@@ -936,6 +948,7 @@ zh-TW:
       ignore: "若您並未申請加入 Loomio，請忽略此郵件。"
   meta_tags:
     default_title: "Loomio | 協同決策制定利器"
+    default_description: Loomio 是簡單易用的線上群組決策制定工具。讓分散型的社群得以快速作出決定進而付諸實行。
   about_loomio: "關於 Loomio"
   ago: "%{quantity_of_time}前"
   approve: "批准"
@@ -978,7 +991,7 @@ zh-TW:
   prev: "上一個"
   more: "詳細⋯"
   translate: "協助翻譯 Loomio！"
-  translate_field: "看看翻譯"
+  translate_field: "翻譯內容"
   loading_translation: "載入翻譯中⋯"
   translate_this_string: "翻譯成 %{language}"
   failed_translation: "翻譯無法完成"
@@ -1008,7 +1021,7 @@ zh-TW:
     settings: 設定
     dashboard: 儀表板
     unread: 未讀
-    filter: '過濾：'
+    filter: '過濾條件：'
     following: 正在跟隨
     not_following: 尚未跟隨
     back_to_discussion: "回到討論串"
