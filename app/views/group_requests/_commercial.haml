@@ -1,14 +1,16 @@
 .container.commercial-page{ :id => 'commercial' }
   .col-xs-10
-    %h1.buffer-bottom Sign up for your free Loomio trial
+    %h1.buffer-bottom Loomio for organisations
     .wrapper
-      .col-xs-2.text-center.buffer-bottom
-        = image_tag 'people/ross.png', class: 'img-circle'
       .col-xs-8
-        .quote.buffer-bottom
-          %p "Loomio is a tool that gives everybody a voice. Decisions are being made by the people affected by them."
+        .row
+          .col-xs-2.text-center.buffer-bottom
+            = image_tag 'people/ross.png', class: 'img-circle'
+          .col-xs-10
+            .quote.buffer-bottom
+              %p "Loomio is a tool that gives everybody a voice. Decisions are being made by the people affected by them."
 
-          %p - Ross Phillips, Pathways
+              %p - Ross Phillips, Pathways
         %ul.features.buffer-bottom
           %li $2/person/month
           %li 30-day free trial

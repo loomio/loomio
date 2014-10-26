@@ -2,12 +2,14 @@
   .col-xs-10
     .wrapper
       %h1.buffer-bottom Free for non-commercial use
-      .col-xs-2.text-center.buffer-bottom
-        = image_tag 'people/jimmy.png', class: 'img-circle'
       .col-xs-8
-        .quote.buffer-bottom
-          %p "Loomio is fast and flexible, so we can give more volunteers a stake, and make better informed decisions."
-          %p= "- Jimmy Green, #{link_to 'Generation Zero', 'http://www.generationzero.org/', target: 'blank'}".html_safe
+        .row
+          .col-xs-2.text-center.buffer-bottom
+            = image_tag 'people/jimmy.png', class: 'img-circle'
+          .col-xs-10
+            .quote.buffer-bottom
+              %p "Loomio is fast and flexible, so we can give more volunteers a stake, and make better informed decisions."
+              %p= "- Jimmy Green, #{link_to 'Generation Zero', 'http://www.generationzero.org/', target: 'blank'}".html_safe
         %p.features.buffer-bottom
           If your community doesn't have the resources to pay for software, we |
           want you to use Loomio free. It's our gift to you.
