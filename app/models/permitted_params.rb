@@ -1,11 +1,20 @@
 class PermittedParams < Struct.new(:params, :user)
 
-  %w[user vote subscription motion membership membership_request
+  kinds = %w[user vote subscription motion membership membership_request
    invitation group_request group discussion comment announcement_dismissal
-   attachment contact_message theme user_deactivation_response].each do |kind|
+   attachment contact_message theme user_deactivation_response]
+
+  kinds.each do |kind|
     define_method(kind) do
       permitted_attributes = self.send("#{kind}_attributes")
       params.require(kind).permit(*permitted_attributes)
+    end
+  end
+
+  kinds.each do |kind|
+    define_method("api_#{kind}") do
+      permitted_attributes = self.send("#{kind}_attributes")
+      params.permit(*permitted_attributes)
     end
   end
 

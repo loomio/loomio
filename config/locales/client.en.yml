@@ -46,7 +46,7 @@ en:
     started_by: 'Started by <strong>{{name}}</strong>'
 
   new_vote_item:
-    user_agreed: '<strong>{{name}}</strong> agreed on the proposal:'
-    user_abstained: '<strong>{{name}}</strong> abstained on the proposal:'
-    user_disagreed: '<strong>{{name}}</strong> disagreed on the proposal:'
-    user_blocked: '<strong>{{name}}</strong> blocked the proposal:'
+    agree_on_proposal: '<strong>{{name}}</strong> agreed on the proposal:'
+    abstain_on_proposal: '<strong>{{name}}</strong> abstained on the proposal:'
+    disagree_on_proposal: '<strong>{{name}}</strong> disagreed on the proposal:'
+    block_on_proposal: '<strong>{{name}}</strong> blocked the proposal:'

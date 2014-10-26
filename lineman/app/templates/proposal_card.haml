@@ -17,46 +17,36 @@
     -#.col-xs-6.test-me
     -#.col-xs-5.proposal-participation
       -#%a{href: '#'} {{proposal.votesCount}} of X members have participated
-  .votes
-    -#{{ proposal.votesSortedByCreatedAt() }}
-    -#{{currentUser}}
-    {{lastVoteByCurrentUser()}}
-    -#.vote{ng-repeat: 'vote in proposal.votes()'}
-      -#{{vote.author().name}}
-
-      -#{{vote.position}}
-
-      -#{{vote.statement}}
 
   .proposal-vote-buttons{ng-hide: 'currentUserHasVoted()'}
     %h3{translate: 'proposal_card.have_your_say'}
-    .proposal-card-vote-btn.proposal-card-vote-yes-btn{ng-click: 'castVote("yes")'}
-    .proposal-card-vote-btn.proposal-card-vote-abstain-btn{ng-click: 'castVote("abstain")'}
-    .proposal-card-vote-btn.proposal-card-vote-no-btn{ng-click: 'castVote("no")'}
-    .proposal-card-vote-btn.proposal-card-vote-block-btn{ng-click: 'castVote("block")'}
+    .proposal-card-vote-button.proposal-card-vote-button-yes{ng-click: 'castVote("yes")'}
+    .proposal-card-vote-button.proposal-card-vote-button-abstain{ng-click: 'castVote("abstain")'}
+    .proposal-card-vote-button.proposal-card-vote-button-no{ng-click: 'castVote("no")'}
+    .proposal-card-vote-button.proposal-card-vote-button-block{ng-click: 'castVote("block")'}
 
-  .proposal-your-position{ng-show: 'currentUserHasVoted()'}
+  .proposal-card-your-position{ng-show: 'currentUserHasVoted()'}
     %h3{translate: 'proposal_card.your_position'}
 
     %a.edit-position.pull-right
       %span.bump{translate: 'common.action.edit'}
       %i.fa.fa-pencil
-    .current-position
-      -#.pull-left.vote-icon{ng_class: 'currentUserVote().position'}
-      %strong.author-name {{currentUserVote().authorName()}}
-      %span.author-statement : {{ currentUserVote().statement }}
+
+    .current-position.media
+      .pull-left.proposal-card-your-position-icon{class: 'proposal-card-your-position-icon-{{lastVoteByCurrentUser().position}}'}
+      .media-body
+        %span.author-statement
+          {{ lastVoteByCurrentUser().statement }}
 
 
   .card-meta-header
     %h3 Positions
-  .current-votes{ng_repeat: 'vote in proposal.votes()'}
-    .vote.thread-item-minor{ng_hide: 'vote == currentUserVote()'}
-      .card-left
-        .thread-item-icon
-          .thread-icon-img{ng_class: 'vote.position'}
-      .card-right.thread-item-author
-        %span.author-name {{vote.author_name()}} 
-        %span.author-statement {{ vote.statement_or_position() }}
+  .proposal-card-votes{ng_repeat: 'vote in proposal.votes()'}
+    .proposal-card-vote.media{ng_hide: 'vote == lastVoteByCurrentUser()'}
+      .pull-left.thread-event-vote-icon{class: 'thread-event-vote-icon-{{vote.position}}'}
+      .media-body
+        %strong {{vote.authorName()}}
+        %span.author-statement {{ vote.statement }}
 
   .l-row.statement-form{ng_show: 'voteFormIsExpanded'}
     %form{ng_submit: 'submitVote()'}

@@ -1,6 +1,6 @@
 class API::VotesController < API::BaseController
   def create
-    @vote = Vote.new(permitted_params.vote)
+    @vote = Vote.new(permitted_params.api_vote)
     @vote.user = current_user
     @vote.motion = Motion.find(@vote.motion_id)
     @event = MotionService.cast_vote(@vote)
