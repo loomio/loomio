@@ -307,5 +307,7 @@ Loomio::Application.routes.draw do
   get '/community'  => redirect('https://www.loomio.org/g/WmPCB3IR/loomio-community')
   get '/timeline'   => redirect('http://www.tiki-toki.com/timeline/entry/313361/Loomio')
 
+  get '/community', to: "groups#show", id: "WmPCB3IR", as: :community if Rails.env.production?
+
   get '/robots'     => 'robots#show'
 end
