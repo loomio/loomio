@@ -8,6 +8,12 @@ angular.module('loomioApp').factory 'VoteModel', (RecordStoreService, $sanitize)
       @statement = data.statement
       @createdAt = data.created_at
 
+    params: ->
+      id: @id
+      proposal_id: @proposalId
+      position: @position
+      statement: @statement
+
     plural: 'votes'
 
     author: ->
@@ -19,10 +25,16 @@ angular.module('loomioApp').factory 'VoteModel', (RecordStoreService, $sanitize)
     authorName: ->
       @author().name
 
-    isYes: ->
+    positionVerb: ->
+      switch @position
+        when 'yes' then 'agree'
+        when 'no' then 'disagree'
+        else @position # abstain and block are the same
+
+    isAgree: ->
       @position == 'yes'
 
-    isNo: ->
+    isDisagree: ->
       @position == 'no'
 
     isAbstain: ->

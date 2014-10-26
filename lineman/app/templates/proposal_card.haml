@@ -11,18 +11,29 @@
     %i.fa.fa-clock-o
     %span.bump Closes {{proposal.closingAt | exactDateWithTime }}
 
-  -#.pie-graph-container.row
+  .pie-graph-container
+    -#{{ pieChartData}}
+    -#%canvas.pie-graph{tc-chartjs: '', chart-type: 'pie', chart-data:'pieChartData'}
     -#.col-xs-6.test-me
-      -#%canvas.pie-graph{tc-chartjs-pie:true, chart-data:'proposal.pieChartData()', chart-options:'pie_chart_options'}
     -#.col-xs-5.proposal-participation
       -#%a{href: '#'} {{proposal.votesCount}} of X members have participated
+  .votes
+    -#{{ proposal.votesSortedByCreatedAt() }}
+    -#{{currentUser}}
+    {{lastVoteByCurrentUser()}}
+    -#.vote{ng-repeat: 'vote in proposal.votes()'}
+      -#{{vote.author().name}}
+
+      -#{{vote.position}}
+
+      -#{{vote.statement}}
 
   .proposal-vote-buttons{ng-hide: 'currentUserHasVoted()'}
     %h3{translate: 'proposal_card.have_your_say'}
-    .proposal-card-vote-btn.proposal-card-vote-yes-btn{ng-click: 'openVoteForm({position: "yes"})'}
-    .proposal-card-vote-btn.proposal-card-vote-abstain-btn{ng-click: 'openVoteForm({position: "yes"})'}
-    .proposal-card-vote-btn.proposal-card-vote-no-btn{ng-click: 'openVoteForm({position: "yes"})'}
-    .proposal-card-vote-btn.proposal-card-vote-block-btn{ng-click: 'openVoteForm({position: "yes"})'}
+    .proposal-card-vote-btn.proposal-card-vote-yes-btn{ng-click: 'castVote("yes")'}
+    .proposal-card-vote-btn.proposal-card-vote-abstain-btn{ng-click: 'castVote("abstain")'}
+    .proposal-card-vote-btn.proposal-card-vote-no-btn{ng-click: 'castVote("no")'}
+    .proposal-card-vote-btn.proposal-card-vote-block-btn{ng-click: 'castVote("block")'}
 
   .proposal-your-position{ng-show: 'currentUserHasVoted()'}
     %h3{translate: 'proposal_card.your_position'}

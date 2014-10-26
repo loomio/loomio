@@ -1,6 +1,5 @@
 angular.module('loomioApp').controller 'ProposalFormController', ($translate, $scope, $modalInstance, proposal, ProposalService) ->
   $scope.proposal = proposal
-  console.log(proposal)
 
   $scope.closingAtPickerIsActive = false
 
@@ -23,7 +22,8 @@ angular.module('loomioApp').controller 'ProposalFormController', ($translate, $s
     console.log($scope.dropdownIsOpen)
     $scope.dropdownIsOpen = false
 
-  $scope.cancel = ->
+  $scope.cancel = ($event) ->
+    $event.preventDefault()
     $modalInstance.dismiss('cancel');
 
   $scope.saveSuccess = () ->

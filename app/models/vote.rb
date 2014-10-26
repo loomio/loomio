@@ -50,6 +50,10 @@ class Vote < ActiveRecord::Base
   after_save :update_motion_vote_counts
   after_destroy :update_motion_vote_counts
 
+  def proposal_id=(id)
+    self.motion_id = id
+  end
+
   def author
     user
   end

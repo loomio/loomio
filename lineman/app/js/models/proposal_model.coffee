@@ -38,16 +38,16 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
       @closedAt == null
 
     userHasVoted: (user) ->
-      _.any @votes, (vote) ->
-        vote.userId == user.id
+      _.any @votes(), (vote) ->
+        vote.authorId == user.id
+
+    votesSortedByCreatedAt: ->
+      _.sortBy @votes(), (vote) -> moment(vote.createdAt).unix()
+
+    votesByUser: (user) ->
+      _.filter @votesSortedByCreatedAt(), (vote) ->
+        vote.authorId == user.id
 
     lastVoteByUser: (user) ->
-      _.first(_.sortBy(@votes, (vote) -> vote.createdAt))
+      _.last(@votesByUser(user))
 
-    pieChartData: ->
-      [
-        { value: @voteCounts.yes, color: '#90D490', label: 'Agree' },
-        { value: @voteCounts.abstain, color: '#F0BB67', label: 'Abstain' }
-        { value: @voteCounts.no, color: '#D49090', label: 'Disagree' }
-        { value: @voteCounts.block, color: '#DD0000', label: 'Block' }
-      ]

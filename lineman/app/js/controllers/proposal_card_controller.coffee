@@ -1,39 +1,25 @@
-angular.module('loomioApp').controller 'ProposalCardController', ($scope, $window, ProposalService, UserAuthService) ->
-  $scope.voteFormIsDisabled = false
-  $scope.voteFormIsExpanded = false
+angular.module('loomioApp').controller 'ProposalCardController', ($scope, $modal, ProposalService, UserAuthService, VoteModel) ->
 
-  $scope.newVote = {position: null, statement: null, proposalId: $scope.proposal.id}
+  $scope.currentUser = UserAuthService.currentUser
+
+  openVoteForm = (vote) ->
+    modalInstance = $modal.open
+      templateUrl: 'generated/templates/vote_form.html'
+      controller: 'VoteFormController'
+      resolve:
+        vote: -> vote
+
+  $scope.castVote = (position) ->
+    vote = new VoteModel(proposal_id: $scope.proposal.id, position: position)
+    openVoteForm(vote)
 
   $scope.currentUserHasVoted = ->
     $scope.proposal.userHasVoted(UserAuthService.currentUser)
 
+  $scope.lastVoteByCurrentUser = ->
+    $scope.proposal.lastVoteByUser(UserAuthService.currentUser)
 
-  $scope.currentUserVote = ->
-    if $scope.proposal?
-      index = $scope.proposal.votes().map((vote) -> vote.authorId).indexOf(UserAuthService.currentUser.id)
-      $scope.proposal.votes()[index] if index?
+  #$scope.submitVote = ->
+    #$scope.voteFormIsDisabled = true
+    #ProposalService.saveVote($scope.newVote, $scope.success, $scope.failure)
 
-  $scope.selectPosition = (position) ->
-    $scope.newVote.position = position
-    $scope.voteFormIsExpanded = true
-
-    console.log $scope.proposal, position
-    newProposal = angular.copy($scope.proposal)
-    key = position + '_votes_count'
-    newProposal[key] += 1
-    newProposal.votes_count +=1
-
-  $scope.submitVote = ->
-    $scope.voteFormIsDisabled = true
-    ProposalService.saveVote($scope.newVote, $scope.success, $scope.failure)
-
-  $scope.success = (event) ->
-    $scope.voteFormIsExpanded = false
-    $scope.voteFormIsDisabled = false
-
-  $scope.failure = (error) ->
-    $scope.voteFormIsDisabled = false
-    $scope.voteErrorMessages = error.messages
-
-  $window.onresize = ->
-    $scope.$apply()
