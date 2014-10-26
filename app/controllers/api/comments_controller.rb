@@ -4,21 +4,13 @@ class API::CommentsController < API::BaseController
   respond_to :json
 
   def create
+    # this should be permitted_params.api_comment when we get around to it.
     comment = Comment.new(permitted_params.comment)
     comment.author = current_user
     comment.discussion = Discussion.find(params[:comment][:discussion_id])
     event = DiscussionService.add_comment(comment)
     head :ok
   end
-
-  #def create
-    #@comment = Comment.new(permitted_params.comment)
-    #@comment.author = current_user
-    #@comment.discussion = Discussion.find(@comment.discussion_id)
-    #@event = DiscussionService.add_comment(@comment)
-
-    #render_event_or_model_error(@event, @comment)
-  #end
 
   def like
     @comment = Comment.find(params[:id])

@@ -7,7 +7,7 @@
     %fieldset
       .form-group
         %label{for: 'vote-statement-field', translate: 'vote_form.i_{{vote.positionVerb()}}'}
-        %textarea#vote-statement-field.form-control
+        %textarea#vote-statement-field.form-control{ng-model: 'vote.statement'}
 
   .modal-footer
     %button.btn.btn-primary{type: 'submit', translate: 'vote_form.submit_position'}

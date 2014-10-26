@@ -69,25 +69,26 @@
   margin-bottom: 5px;
 }
 
-.vote-icon {
+.thread-event-vote-icon {
   width: 30px;
   height: 30px;
   background-repeat: no-repeat;
   background-position: center;
 }
-.vote-icon-yes {
+
+.thread-event-vote-icon-yes {
   background-image: url(/img/green_thumb_22.png);
 }
 
-.vote-icon-abstain {
+.thread-event-vote-icon-abstain {
   background-image: url(/img/yellow_thumb_22.png);
 }
 
-.vote-icon-no {
+.thread-event-vote-icon-no {
   background-image: url(/img/pink_thumb_22.png);
 }
 
-.vote-icon-block {
+.thread-event-vote-icon-block {
   background-image: url(/img/red_flag_22.png);
 }
 
