@@ -20,7 +20,7 @@ module Loomio
 
 
     # only for display purposes, please don't depend on this in the system
-    TEST_LOCALES = %i( ar cmn hr fi gl he ga-IE km mk mi fa-IR pl pt-PT ru sl te )
+    TEST_LOCALES = %i( an ar cmn hr fi gl he ga-IE km mk mi fa-IR pl pt-PT ru sl te )
     #
   end
 end
