@@ -41,6 +41,9 @@ Loomio::Application.routes.draw do
       get :subscribe
       get :who_am_i
     end
+    devise_scope :user do
+      resources :sessions, only: [:create, :destroy]
+    end
     post '/attachments/credentials', to: 'attachments#credentials'
   end
 
