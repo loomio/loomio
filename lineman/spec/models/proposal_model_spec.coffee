@@ -24,7 +24,6 @@ describe 'ProposalModel', ->
 
     beforeEach ->
       modelInstance = new modelClass
-      console.log(modelInstance)
 
     it 'returns the most recent vote by the user', ->
       expect(modelInstance.lastVoteByUser()).toBe(vote2003)

@@ -10,6 +10,14 @@ en:
       unlike: 'Unlike'
       cancel: 'Cancel'
 
+  vote_form:
+    i_agree: 'I agree'
+    i_abstain: 'I abstain'
+    i_disagree: 'I disagree'
+    i_block: 'I block'
+
+    submit_position: 'Submit position'
+
   proposal_form:
     start_proposal: 'Start proposal'
     start_a_proposal: 'Start a proposal'
