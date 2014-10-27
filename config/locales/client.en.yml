@@ -17,6 +17,7 @@ en:
     i_block: 'I block'
     submit_position: 'Submit position'
     change_position: 'Change position'
+    statement_placeholder: 'Share your thoughts with the group.'
 
   proposal_form:
     start_proposal: 'Start proposal'

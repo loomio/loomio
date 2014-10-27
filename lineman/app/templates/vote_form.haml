@@ -1,7 +1,5 @@
-.vote-form-card
-  {{ vote.statement }}
-  {{ isEditing }}
-  .vote-form{ng-show: '!hasVoted() || isEditing'}
+.thing
+  .vote-form{ng-show: '!lastVote || editing'}
     %h3{translate: 'proposal_card.have_your_say'}
     .position-buttons
       .position-button.position-button-yes{ng-click: 'selectPosition("yes")'}
@@ -10,27 +8,25 @@
       .position-button.position-button-block{ng-click: 'selectPosition("block")'}
 
 
-    %form{ng-submit: 'submit()', ng-show: 'showForm' }
+    %form{ng-submit: 'submit()', ng-show: 'newVote.position' }
       %fieldset
         .form-group
           %label{for: 'vote-statement-field'}
-            {{ 'vote_form.i_'+ vote.positionVerb() | translate }}
-          %textarea#vote-statement-field.form-control{ng-model: 'vote.statement'}
+            {{ 'vote_form.i_'+ newVote.positionVerb() | translate }}
+          %textarea#vote-statement-field.form-control{ng-model: 'newVote.statement', placeholder: '{{ "vote_form.statement_placeholder" | translate }}'}
 
       %button.btn.btn-primary{type: 'submit', translate: 'vote_form.submit_position'}
       %button.btn.btn-warning{ng-click: 'cancel($event)', translate: 'common.action.cancel'}
 
-  .your-position{ng-show: 'hasVoted() && !isEditing'}
-    {{ vote }}
+  .your-position{ng-show: 'lastVote && !editing'}
     %h3{translate: 'proposal_card.your_position'}
 
-    %a.change-position.pull-right{ng-click: 'changePosition()'}
+    %a.change-position.pull-right{ng-click: 'changePosition()', href: '#'}
       %span{translate: 'vote_form.change_position'}
       %i.fa.fa-pencil
 
     .current-position.media
-      .pull-left.your-position-icon{ng_class: '"your-position-icon-{{vote.position}}"'}
+      .pull-left.your-position-icon{class: 'your-position-icon-{{lastVote.position}}'}
       .media-body
         %span.author-statement
-          {{ vote.statement }}
-
+          {{ lastVote.statement }}

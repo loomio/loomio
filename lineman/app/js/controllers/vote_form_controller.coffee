@@ -1,50 +1,44 @@
 angular.module('loomioApp').controller 'VoteFormController', ($scope, VoteModel, VoteService, UserAuthService) ->
-  # buttons only
-  # buttons and form
-  # YourPosition
+  # if lastVote and !editing
+    # form mode
+    # always a new vote
+    # buttons only
+    #   click position to open form. cancel closes form
+    # buttons and form
+  
+  # display mode
+    # show lastVote if there is one
 
-  #$scope.showForm = ->
-    #$scope.vote.anyPosition()
+  $scope.lastVote = null
 
-  $scope.hasVoted = ->
-    return false unless $scope.proposal
-    $scope.proposal.userHasVoted(UserAuthService.currentUser)
+  if $scope.proposal
+    $scope.lastVote = $scope.proposal.lastVoteByUser(UserAuthService.currentUser)
 
-  $scope.isEditing = false
+  $scope.editing = false
 
   $scope.changePosition = ->
-    $scope.vote = new VoteModel(proposal_id: $scope.proposal.id)
-    $scope.isEditing = true
+    $scope.editing = true
 
-
-  currentOrNewVote = ->
-    return false unless $scope.proposal
-    if $scope.hasVoted()
-      $scope.proposal.lastVoteByUser(UserAuthService.currentUser)
-    else
-      new VoteModel(proposal_id: $scope.proposal.id)
-
-  $scope.vote = currentOrNewVote()
-  console.log $scope.vote
+  $scope.newVote = new VoteModel(proposal_id: $scope.proposal.id)
 
   $scope.selectPosition = (position) ->
-    $scope.vote.position = position
-    console.log 'position change to: '+$scope.vote.positionVerb()
-    $scope.showForm = true
+    $scope.newVote.position = position
 
   $scope.submit = ->
     $scope.isDisabled = true
-    VoteService.create($scope.vote, saveSuccess, saveError)
+    VoteService.create($scope.newVote, saveSuccess, saveError)
 
   $scope.cancel = ($event) ->
-    $scope.isEditing = false
-    $scope.vote = currentOrNewVote()
+    $scope.editing = false
+    #$scope.vote = currentOrNewVote()
     $event.preventDefault();
     #$modalInstance.dismiss('cancel');
 
   saveSuccess = ->
+    $scope.lastVote = $scope.newVote
+    $scope.newVote = new VoteModel(proposal_id: $scope.proposal.id)
     $scope.isDisabled = false
-    $scope.isEditing = false
+    $scope.editing = false
     #$modalInstance.close();
 
   saveError = (error) ->
