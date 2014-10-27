@@ -8,6 +8,7 @@ angular.module('loomioApp').service 'EventService',
         @consume(data) if data.event?
 
     consume: (data) ->
-      event = new @EventModel(data.event)
-      @RecordStoreService.put(event)
+      if data.event?
+        event = new @EventModel(data.event)
+        @RecordStoreService.put(event)
       @RecordStoreService.importRecords(data)

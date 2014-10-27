@@ -22,8 +22,8 @@
 
   .card-meta-header
     %h3 Positions
-  .proposal-card-votes{ng_repeat: 'vote in proposal.votes()'}
-    .proposal-card-vote.media{ng_hide: 'vote == lastVoteByCurrentUser()'}
+  .proposal-card-votes{ng_repeat: 'vote in curatedVotes()'}
+    .proposal-card-vote.media
       .pull-left.thread-event-vote-icon{class: 'thread-event-vote-icon-{{vote.position}}'}
       .media-body
         %strong {{vote.authorName()}}
