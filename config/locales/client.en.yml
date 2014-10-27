@@ -15,8 +15,8 @@ en:
     i_abstain: 'I abstain'
     i_disagree: 'I disagree'
     i_block: 'I block'
-
     submit_position: 'Submit position'
+    change_position: 'Change position'
 
   proposal_form:
     start_proposal: 'Start proposal'

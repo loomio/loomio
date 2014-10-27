@@ -1,0 +1,47 @@
+.vote-form {
+
+}
+
+.position-button {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+}
+
+.position-button-yes{
+  background-image: url(/img/green_thumb_button_60.png);
+}
+
+.position-button-no {
+  background-image: url(/img/pink_thumb_button_60.png);
+}
+
+.position-button-abstain {
+  background-image: url(/img/yellow_thumb_button_60.png);
+}
+
+.position-button-block {
+  background-image: url(/img/red_flag_button_60.png);
+}
+
+.your-position-icon {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+}
+
+.your-position-icon-yes {
+  background-image: url(/img/green_thumb_icon_60.png);
+}
+
+.your-position-icon-no {
+  background-image: url(/img/pink_thumb_icon_60.png);
+}
+
+.your-position-icon-abstain {
+  background-image: url(/img/yellow_thumb_icon_60.png);
+}
+
+.your-position-icon-block {
+  background-image: url(/img/red_flag_icon_60.png);
+}
