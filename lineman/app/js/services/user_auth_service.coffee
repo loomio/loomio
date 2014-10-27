@@ -4,7 +4,7 @@ angular.module('loomioApp').factory 'UserAuthService', (RecordStoreService, User
       @currentUser = null
 
     fetchCurrentUser: ->
-      $http.get('/api/v1/faye/who_am_i').then (response) =>
+      $http.get('/api/v1/sessions/current').then (response) =>
         user = new UserModel(response.data.user)
         RecordStoreService.put(user)
         @currentUser = user

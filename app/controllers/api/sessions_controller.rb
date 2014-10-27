@@ -1,21 +1,26 @@
-class API::SessionsController < API::BaseController
-  include OmniauthAuthenticationHelper
+class API::SessionsController < Devise::SessionsController
 
-  respond_to :json
-  
   def create
-    resource = User.find_by_email params[:email]
-    if resource.try :valid_password?, params[:password]
-      sign_in "User", resource
-      head :ok
-    else
-      warden.custom_failure!
-      head :unauthorized
-    end
-  end
-  
-  def destroy
-    sign_out(resource_name)
+    authenticate
+    head :ok
   end
 
+  def destroy
+    authenticate && sign_out
+    head :ok
+  end
+
+  def current
+    render json: current_user, serializer: UserSerializer
+  end
+
+  def unauthorized
+    head :unauthorized
+  end
+
+  private
+
+  def authenticate
+    warden.authenticate! scope: resource_name
+  end
 end
