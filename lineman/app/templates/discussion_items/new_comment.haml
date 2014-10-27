@@ -1,0 +1,24 @@
+.thread-event.thread-comment{ng_controller: 'NewCommentItemController'}
+  .thread-event-header.media
+    .pull-left{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = comment.author()'}
+    .media-body
+      %strong {{comment.authorName()}}
+  .thread-event-body{btf-markdown: 'comment.body' }
+
+  .thread-attachments
+    .thread-attachment{ng-repeat: 'attachment in comment.attachments()'}
+      %a{ng-href: '{{attachment.location}}', target: '_blank'}
+        {{ attachment.filename }}
+      ({{attachment.filesize | fileSize}})
+
+  .thread-event-footer
+    .thread-actions-and-meta
+      %a{translate: 'common.action.like', ng-show: '!currentUserLikesIt()', href: '#', ng_click: 'like()'}>
+      %a{translate: 'common.action.unlike', href: '#', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
+      ·
+      %a{translate: 'common.action.reply', href: '#', ng_click: 'reply()'}>
+      ·
+      %timeago{timestamp: 'comment.createdAt' }>
+
+    .thread-liked-by-sentence{ng_show: 'anybodyLikesIt()'}
+      {{ likedBySentence }}

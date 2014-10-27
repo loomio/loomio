@@ -1,2 +1,3 @@
-web:     bundle exec puma -C config/puma.rb
-worker:  bundle exec rake jobs:work
+web:     bundle exec puma -C config/puma.rb -p 3000
+# worker:  bundle exec rake jobs:work
+faye:    rackup private_pub.ru -s puma -E production

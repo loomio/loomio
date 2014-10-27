@@ -1,0 +1,52 @@
+en:
+  common:
+    state:
+      private: 'Private'
+      public: 'Public'
+    action:
+      reply: 'Reply'
+      edit: 'Edit'
+      like: 'Like'
+      unlike: 'Unlike'
+      cancel: 'Cancel'
+
+  vote_form:
+    i_agree: 'I agree'
+    i_abstain: 'I abstain'
+    i_disagree: 'I disagree'
+    i_block: 'I block'
+    submit_position: 'Submit position'
+    change_position: 'Change position'
+
+  proposal_form:
+    start_proposal: 'Start proposal'
+    start_a_proposal: 'Start a proposal'
+    what_does_a_proposal_do: 'Proposals allow you to see how everyone feels about a particular course of action. Find out more.'
+    title_placeholder: 'Eg: Go to the moon'
+    title_label: 'Title'
+    closes_at_label: 'Closes at'
+    details_label: 'Details'
+    details_placeholder: "Give enough detail so everyone knows exactly what it means to agree or disagree or whatever"
+
+  proposal_card:
+    your_position: 'Your Position'
+    have_your_say: 'Have your say'
+    started_by: 'Started by <strong>{{name}}</strong>'
+
+  discussion:
+    you_like_this: 'You like this.'
+    liked_by_you_and_someone: 'You and {{name}} like this.'
+    liked_by_you_and_others: 'Liked by you, {{joinedNames}} and {{name}}.'
+    liked_by_someone: '{{name}} likes this.'
+    liked_by_two_others: '{{name_1}} and {{name_2}} like this.'
+    liked_by_many_others: 'Liked by {{joinedNames}} and {{name}}.'
+
+    liked_by_name: 'Liked by {{name}}.'
+    liked_by_names_and_name: 'Liked by {{joinedNames}} and {{name}}.'
+    started_by: 'Started by <strong>{{name}}</strong>'
+
+  new_vote_item:
+    agree_on_proposal: '<strong>{{name}}</strong> agreed on the proposal:'
+    abstain_on_proposal: '<strong>{{name}}</strong> abstained on the proposal:'
+    disagree_on_proposal: '<strong>{{name}}</strong> disagreed on the proposal:'
+    block_on_proposal: '<strong>{{name}}</strong> blocked the proposal:'

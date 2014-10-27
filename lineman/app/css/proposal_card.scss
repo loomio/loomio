@@ -1,0 +1,19 @@
+.proposal-card {
+  padding: 15px;
+  background-color: #fff;
+
+  h3 {
+    @include fontHelveticaBold;
+    @include fontMedium;
+    color: $meta-text-color;
+  }
+}
+
+.proposal-card-started-by {
+  @include metaText;
+}
+
+.proposal-card-closing-at {
+
+}
+
