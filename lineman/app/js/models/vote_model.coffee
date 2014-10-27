@@ -31,6 +31,9 @@ angular.module('loomioApp').factory 'VoteModel', (RecordStoreService, $sanitize)
         when 'no' then 'disagree'
         else @position # abstain and block are the same
 
+    anyPosition: ->
+      @position
+
     isAgree: ->
       @position == 'yes'
 

@@ -1,14 +1,5 @@
-angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentService) ->
-  $scope.newComment =
-    discussionId: $scope.discussion.id
-    parentId: null
-    body: ''
-    attachments: []
-    params: ->
-      comment:
-        discussion_id: $scope.discussion.id
-        body: @body
-        attachment_ids: _.pluck(@attachments, 'id')
+angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentModel, CommentService) ->
+  $scope.comment = new CommentModel(discussion_id: $scope.discussion.id)
 
   $scope.isExpanded = false
 
@@ -16,21 +7,19 @@ angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentS
     $scope.isExpanded = true
 
   $scope.collapseIfEmpty = ->
-    if ($scope.newComment.body.length == 0)
+    if ($scope.comment.body.length == 0)
       $scope.isExpanded = false
 
-  $scope.processForm = () ->
-    CommentService.add($scope.newComment.params(), $scope.success, $scope.error)
+  $scope.submit = () ->
+    CommentService.create($scope.comment, $scope.success, $scope.error)
 
-  $scope.$on 'showReplyToCommentForm', (event, originalComment) ->
-    $scope.newComment.parentId = originalComment.id
+  $scope.$on 'showReplyToCommentForm', (event, parentComment) ->
+    $scope.comment.parentId = parentComment.id
     $scope.expand()
 
   $scope.success = ->
-    $scope.newComment.body = ''
-    $scope.newComment.attachments = []
+    $scope.comment = new CommentModel(discussion_id: $scope.discussion.id)
     $scope.isExpanded = false
 
   $scope.error = (error) ->
-    # show errors
     console.log error
