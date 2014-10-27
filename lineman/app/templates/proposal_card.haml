@@ -18,26 +18,7 @@
     -#.col-xs-5.proposal-participation
       -#%a{href: '#'} {{proposal.votesCount}} of X members have participated
 
-  .proposal-vote-buttons{ng-hide: 'currentUserHasVoted()'}
-    %h3{translate: 'proposal_card.have_your_say'}
-    .proposal-card-vote-button.proposal-card-vote-button-yes{ng-click: 'castVote("yes")'}
-    .proposal-card-vote-button.proposal-card-vote-button-abstain{ng-click: 'castVote("abstain")'}
-    .proposal-card-vote-button.proposal-card-vote-button-no{ng-click: 'castVote("no")'}
-    .proposal-card-vote-button.proposal-card-vote-button-block{ng-click: 'castVote("block")'}
-
-  .proposal-card-your-position{ng-show: 'currentUserHasVoted()'}
-    %h3{translate: 'proposal_card.your_position'}
-
-    %a.edit-position.pull-right
-      %span.bump{translate: 'common.action.edit'}
-      %i.fa.fa-pencil
-
-    .current-position.media
-      .pull-left.proposal-card-your-position-icon{class: 'proposal-card-your-position-icon-{{lastVoteByCurrentUser().position}}'}
-      .media-body
-        %span.author-statement
-          {{ lastVoteByCurrentUser().statement }}
-
+  %vote_form{proposal: 'proposal'}
 
   .card-meta-header
     %h3 Positions
