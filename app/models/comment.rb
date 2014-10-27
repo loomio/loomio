@@ -39,6 +39,7 @@ class Comment < ActiveRecord::Base
 
   alias_method :author, :user
   alias_method :author=, :user=
+  attr_accessor :new_attachment_ids
 
   def published_at
     created_at

@@ -2,13 +2,21 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
   class CommentModel
     constructor: (data = {}) ->
       @id = data.id
+      @discussionId = data.discussion_id
       @authorId = data.author_id
       @parentId = data.parent_id
       @body = data.body
       @likerIds = data.liker_ids
-      #@attachmentIds = data.attachment_ids
+      @newAttachmentIds = []
       @createdAt = data.created_at
       @updatedAt = data.updated_at
+
+    params: ->
+      author_id: @authorId
+      parent_id: @parentId
+      discussion_id: @discussionId
+      body: @body
+      new_attachment_ids: @newAttachmentIds
 
     plural: 'comments'
 
@@ -17,7 +25,7 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
 
     attachments: ->
       RecordStoreService.get 'attachments', (attachment) =>
-        attachment.commentId = @id
+        attachment.commentId == @id
 
     author: ->
       RecordStoreService.get('users', @authorId)
@@ -39,4 +47,3 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
 
     removeLiker: (user) ->
       @likerIds = _.without(@likerIds, user.id)
-

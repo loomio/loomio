@@ -5,9 +5,9 @@ class API::CommentsController < API::BaseController
 
   def create
     # this should be permitted_params.api_comment when we get around to it.
-    comment = Comment.new(permitted_params.comment)
+    comment = Comment.new(permitted_params.api_comment)
     comment.author = current_user
-    comment.discussion = Discussion.find(params[:comment][:discussion_id])
+    comment.discussion = Discussion.find(params[:discussion_id])
     event = DiscussionService.add_comment(comment)
     head :ok
   end
