@@ -1,0 +1,15 @@
+.thread-item{ng_controller: 'NewProposalItemController'}
+  .thread-item-header
+    .thread-item-author
+      .card-left
+        .thread-item-icon
+          .thread-icon-img.pie
+      .card-right
+        .author-with-text
+          %span.author-name {{proposal.author_name()}} 
+          %span.author-statement started a new proposal:
+  .thread-item-body{ng_show: 'proposal.name'}
+    {{proposal.name}}
+  .thread-item-footer
+    %timeago{timestamp: 'proposal.createdAt' }
+

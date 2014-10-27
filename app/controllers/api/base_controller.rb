@@ -1,7 +1,18 @@
 class API::BaseController < ActionController::Base
+  include CurrentUserHelper
+  skip_after_filter :intercom_rails_auto_include
   after_filter :increment_measurement
+  respond_to :json
 
   protected
+  def render_event_or_model_error(event, model)
+    if event
+      render json: event, serializer: EventSerializer
+    else
+      render json: model, serializer: ModelErrorSerializer, status: 400, root: :error
+    end
+  end
+
   def increment_measurement
     Measurement.increment(measurement_name)
   end
@@ -24,12 +35,7 @@ class API::BaseController < ActionController::Base
     @current_user = User.where(id: user_id, email_api_key: key).first
   end
 
-  def current_user
-    @current_user
-  end
-
   def current_ability
     @current_ability ||= AccountAbility.new(current_user)
   end
 end
-

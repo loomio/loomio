@@ -170,7 +170,8 @@ class Ability
       user_is_member_of?(discussion.group_id)
     end
 
-    can :manage, Comment do |comment|
+    # was manage.. but thats fucked
+    can :create, Comment do |comment|
       user_is_author_of?(comment) and comment.can_be_edited?
     end
 
@@ -195,6 +196,10 @@ class Ability
       motion.voting? &&
       ((discussion.group.members_can_vote? && user_is_member_of?(discussion.group_id)) ||
         user_is_admin_of?(discussion.group_id) )
+    end
+
+    can [:close, :edit_close_date], Motion do |motion|
+      motion.voting? && ((motion.author_id == user.id) || user_is_admin_of?(motion.discussion.group_id))
     end
 
     can [:close], Motion do |motion|

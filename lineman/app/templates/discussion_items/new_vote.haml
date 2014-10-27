@@ -1,0 +1,14 @@
+.thread-event.thread-vote{ng-controller: 'NewVoteItemController'}
+  .thread-event-header.media
+    .pull-left.thread-event-vote-icon{class: 'thread-event-vote-icon-{{vote.position}}'}
+    .media-body
+      %span{translate: "new_vote_item.{{vote.positionVerb()}}_on_proposal", translate-value-name: '{{vote.authorName()}}'}
+    .thread-vote-author-action{ng-show: 'vote.isYes()', translate: 'new_vote_item.user_agreed', translate-value-name: '{{vote.authorName()}}'}
+    .thread-vote-author-action{ng-show: 'vote.isNo()', translate: 'new_vote_item.user_disagreed', translate-value-name: '{{vote.authorName()}}'}
+    .thread-vote-author-action{ng-show: 'vote.isAbstain()', translate: 'new_vote_item.user_abstained', translate-value-name: '{{vote.authorName()}}'}
+    .thread-vote-author-action{ng-show: 'vote.isBlock()', translate: 'new_vote_item.user_blocked', translate-value-name: '{{vote.authorName()}}'}
+  .thread-event-body{ng_show: 'vote.statement'}
+    {{vote.statement}}
+  .thread-event-footer
+    .thread-actions-and-meta
+      %timeago{timestamp: 'vote.createdAt'}

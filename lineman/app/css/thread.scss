@@ -1,0 +1,100 @@
+
+.thread-container {
+  border: 1px solid $thread-border-color;
+}
+
+.thread-discussion {
+  padding: 15px;
+  background-color: #fff;
+}
+
+.thread-proposals {
+  background-color: #fff;
+  border-top: 1px solid $thread-border-color;
+  h2 {
+    @include fontLarge;
+    @include fontHelveticaBold;
+  }
+}
+
+.thread-origin {
+  @include fontSmall;
+  color: #777777;
+}
+
+.thread-origin-icon{}
+.thread-origin-details{}
+
+.thread-discussion-context {
+}
+
+.thread-events {
+  padding: 15px;
+  background-color: #F5F5F5;
+  border-top: 1px solid $thread-border-color;
+}
+
+.thread-event {
+  margin-bottom: 25px;
+}
+
+.thread-event-header {
+  strong {
+    color: $text-color;
+    @include fontHelveticaBold;
+  }
+  color: $meta-text-color;
+  margin-bottom: 5px;
+
+  .avatar-initials{
+    width: 30px;
+    height: 30px;
+  }
+  .avatar-image img{
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.thread-event-body {
+  margin-bottom: 10px;
+}
+
+.thread-event-footer {
+  @include fontSmall();
+  color: $meta-text-color;
+}
+
+.thread-actions-and-meta {
+  margin-bottom: 5px;
+}
+
+.thread-event-vote-icon {
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.thread-event-vote-icon-yes {
+  background-image: url(/img/green_thumb_22.png);
+}
+
+.thread-event-vote-icon-abstain {
+  background-image: url(/img/yellow_thumb_22.png);
+}
+
+.thread-event-vote-icon-no {
+  background-image: url(/img/pink_thumb_22.png);
+}
+
+.thread-event-vote-icon-block {
+  background-image: url(/img/red_flag_22.png);
+}
+
+.thread-start-proposal-card {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid $thread-border-color;
+}

@@ -1,0 +1,14 @@
+angular.module('loomioApp').controller 'DiscussionController', ($scope, discussion, eventSubscription, EventService, RecordStoreService, FileUploadService, UserAuthService) ->
+  $scope.discussion = discussion
+
+  eventReceived = (event) ->
+    console.log('hey we gots da event')
+    #$scope.$apply()
+
+  EventService.subscribeTo(eventSubscription, eventReceived)
+
+  $scope.safeEvent = (kind) ->
+    _.contains ['new_comment', 'new_motion', 'new_vote'], kind
+
+  $scope.$on 'replyToCommentClicked', (event, originalComment) ->
+    $scope.$broadcast('showReplyToCommentForm', originalComment)

@@ -1,0 +1,43 @@
+.container
+  .row
+    .col-xs-12
+      .thread-container
+        .thread-discussion
+          %h1 {{discussion.title}}
+          .media.thread-origin
+            .pull-left.thread-origin-icon
+              %img{src: 'http://placehold.it/30'}
+            .media-body.thread-origin-details
+              {{discussion.group().fullName()}}
+              %br
+              %span{translate: 'discussion.started_by', translate-value-name: '{{discussion.authorName()}}'}
+
+          .thread-discussion-context
+            .thread-discussion-description{btf-markdown: 'discussion.description' }
+
+          .thread-actions-and-meta
+            %a{href: '#', translate: 'common.action.reply'}>
+            ·
+            %a{href: '#', translate: 'common.action.edit'}>
+            ·
+            %timeago{timestamp: 'discussion.createdAt' }>
+            ·
+            %span.discussion-privacy__is-private{ng-show: 'discussion.private'}>
+              %i.fa.fa-lock>
+              %span{translate: 'common.state.private'}
+            %span.discussion-privacy__is-public{ng-show: '!discussion.private'}>
+              %i.fa.fa-globe>
+              %span{translate: 'common.state.public'}
+
+        .thread-proposals
+          %proposal_card{proposal: 'discussion.activeProposal()'}
+
+        .thread-events
+          %div{ng_repeat: 'event in discussion.events()', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
+
+        %add_comment{discussion: 'discussion'}
+
+      .thread-start-proposal-card{ng_controller: 'StartProposalCardController', ng-show: '!discussion.activeProposal()'}
+        %h3 Ready to make a decision?
+        %a{href: '#', ng_click: 'openForm()'}
+          Create a proposal
