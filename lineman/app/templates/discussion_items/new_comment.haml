@@ -7,8 +7,8 @@
 
   .thread-attachments
     .thread-attachment{ng-repeat: 'attachment in comment.attachments()'}
-      %a{ng-href: '{{attachment.location}}', target: '_blank'} 
-        {{ attachment.filename }} 
+      %a{ng-href: '{{attachment.location}}', target: '_blank'}
+        {{ attachment.filename }}
       ({{attachment.filesize | fileSize}})
 
   .thread-event-footer
