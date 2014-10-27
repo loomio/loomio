@@ -124,6 +124,7 @@ class Group < ActiveRecord::Base
            class_name: 'Invitation'
 
   after_initialize :set_defaults
+  after_save :set_creator
 
   alias :users :members
 
@@ -133,6 +134,7 @@ class Group < ActiveRecord::Base
   has_many :motions, through: :discussions
 
   belongs_to :parent, class_name: 'Group'
+  belongs_to :creator, class_name: 'User'
   belongs_to :category
   belongs_to :theme
 
@@ -151,6 +153,7 @@ class Group < ActiveRecord::Base
   delegate :users, to: :parent, prefix: true
   delegate :members, to: :parent, prefix: true
   delegate :name, to: :parent, prefix: true
+  delegate :locale, to: :creator
 
   paginates_per 20
 
@@ -338,7 +341,7 @@ class Group < ActiveRecord::Base
 
   def add_admin!(user, inviter = nil)
     membership = find_or_create_membership(user, inviter)
-    membership.make_admin!
+    membership.make_admin! && save
     membership
   end
 
@@ -517,6 +520,10 @@ class Group < ActiveRecord::Base
   def set_defaults
     self.discussion_privacy_options ||= 'public_or_private'
     self.membership_granted_upon ||= 'approval'
+  end
+
+  def set_creator
+    update_attribute :creator, admins.first if creator.blank? && admins.any?      
   end
 
   def calculate_full_name
