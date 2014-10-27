@@ -41,6 +41,10 @@ Loomio::Application.routes.draw do
       get :subscribe
       get :who_am_i
     end
+    namespace :sessions do
+      get :current
+      get :unauthorized
+    end
     devise_scope :user do
       resources :sessions, only: [:create, :destroy]
     end
