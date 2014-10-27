@@ -9,13 +9,10 @@ angular.module('loomioApp').controller 'VoteFormController', ($scope, $translate
     $event.preventDefault();
     $modalInstance.dismiss('cancel');
 
-  saveSuccess = () ->
+  saveSuccess = ->
     $scope.isDisabled = false
     $modalInstance.close();
 
   saveError = (error) ->
     $scope.isDisabled = false
     $scope.errorMessages = error.error_messages
-
-
-  # something
