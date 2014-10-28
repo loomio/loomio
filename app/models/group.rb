@@ -124,7 +124,6 @@ class Group < ActiveRecord::Base
            class_name: 'Invitation'
 
   after_initialize :set_defaults
-  after_save :set_creator
 
   alias :users :members
 
@@ -175,6 +174,24 @@ class Group < ActiveRecord::Base
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
+
+  before_save :set_creator_if_blank
+
+  def set_creator_if_blank
+    if self[:creator_id].blank? and admins.any?
+      self.creator = admins.first
+    end
+  end
+
+  alias_method :real_creator, :creator
+
+  def creator
+    self.real_creator || admins.first || members.first
+  end
+
+  def creator_id
+    self[:creator_id] || creator.id
+  end
 
   def coordinators
     admins
@@ -520,10 +537,6 @@ class Group < ActiveRecord::Base
   def set_defaults
     self.discussion_privacy_options ||= 'public_or_private'
     self.membership_granted_upon ||= 'approval'
-  end
-
-  def set_creator
-    update_attribute :creator, admins.first if creator.blank? && admins.any?      
   end
 
   def calculate_full_name
