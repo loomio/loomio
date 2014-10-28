@@ -28,11 +28,14 @@ en:
     closes_at_label: 'Closes at'
     details_label: 'Details'
     details_placeholder: "Give enough detail so everyone knows exactly what it means to agree or disagree or whatever"
+    
 
   proposal_card:
     your_position: 'Your Position'
     have_your_say: 'Have your say'
     started_by: 'Started by <strong>{{name}}</strong>'
+    no_votes_yet: 'Nobody has voted on this proposal yet.'
+    only_voter_is_you: 'No other members have voted yet.'
 
   discussion:
     you_like_this: 'You like this.'
@@ -51,3 +54,6 @@ en:
     abstain_on_proposal: '<strong>{{name}}</strong> abstained on the proposal:'
     disagree_on_proposal: '<strong>{{name}}</strong> disagreed on the proposal:'
     block_on_proposal: '<strong>{{name}}</strong> blocked the proposal:'
+
+  new_proposal_item:
+    author_created_proposal: '<strong>{{name}}</strong> created a proposal:'

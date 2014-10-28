@@ -1,15 +1,6 @@
 angular.module('loomioApp').controller 'VoteFormController', ($scope, VoteModel, VoteService, UserAuthService) ->
-  # if lastVote and !editing
-    # form mode
-    # always a new vote
-    # buttons only
-    #   click position to open form. cancel closes form
-    # buttons and form
-  
-  # display mode
-    # show lastVote if there is one
-
   $scope.lastVote = null
+  $scope.newVote = new VoteModel
 
   if $scope.proposal
     $scope.lastVote = $scope.proposal.lastVoteByUser(UserAuthService.currentUser)
@@ -19,27 +10,24 @@ angular.module('loomioApp').controller 'VoteFormController', ($scope, VoteModel,
   $scope.changePosition = ->
     $scope.editing = true
 
-  $scope.newVote = new VoteModel(proposal_id: $scope.proposal.id)
-
   $scope.selectPosition = (position) ->
     $scope.newVote.position = position
 
   $scope.submit = ->
     $scope.isDisabled = true
+    $scope.newVote.proposalId = $scope.proposal.id
     VoteService.create($scope.newVote, saveSuccess, saveError)
 
   $scope.cancel = ($event) ->
     $scope.editing = false
-    #$scope.vote = currentOrNewVote()
     $event.preventDefault();
-    #$modalInstance.dismiss('cancel');
 
   saveSuccess = ->
     $scope.lastVote = $scope.newVote
     $scope.newVote = new VoteModel(proposal_id: $scope.proposal.id)
     $scope.isDisabled = false
     $scope.editing = false
-    #$modalInstance.close();
+    $scope.$emit('newVote')
 
   saveError = (error) ->
     $scope.isDisabled = false
