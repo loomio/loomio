@@ -19,6 +19,9 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
       description: @description
       closing_at: @closingAt
 
+    positionVerbs: ['agree', 'abstain', 'disagree', 'block']
+    positions: ['yes', 'abstain', 'no', 'block']
+
     plural: 'proposals'
 
     author: ->

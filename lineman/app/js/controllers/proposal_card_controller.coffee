@@ -1,22 +1,29 @@
 angular.module('loomioApp').controller 'ProposalCardController', ($scope, $modal, ProposalService, UserAuthService, VoteModel) ->
   currentUser = UserAuthService.currentUser
 
-  $scope.pieChartData = []
+  $scope.pieChartData = [
+    { value : 0, color : "#90D490" },
+    { value : 0, color : "#F0BB67" },
+    { value : 0, color : "#D49090" },
+    { value : 0, color : "#dd0000"}
+  ]
 
-  $scope.pieChartOptions =  {}
+  $scope.pieChartOptions =
+    animation: false
+    segmentShowStroke : false
+    responsive: true
 
   refreshPieChartData = ->
+    return unless $scope.proposal
     counts = $scope.proposal.voteCounts
-    $scope.pieChartData = [
-      { value : counts.yes, color : "#90D490" },
-      { value : counts.abstain, color : "#F0BB67" },
-      { value : counts.no, color : "#D49090" },
-      { value : counts.block, color : "#dd0000"}
-    ]
+    $scope.pieChartData[0].value = counts.yes
+    $scope.pieChartData[1].value = counts.abstain
+    $scope.pieChartData[2].value = counts.no
+    $scope.pieChartData[3].value = counts.block
+
   refreshPieChartData()
 
   $scope.$on 'newVote', ->
-    alert('new vote emitted')
     refreshPieChartData()
 
   filteredVotes = ->

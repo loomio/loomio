@@ -11,9 +11,14 @@
     %i.fa.fa-clock-o
     %span.bump Closes {{proposal.closingAt | exactDateWithTime }}
 
-  .proposal-card-pie-cart
-    hi
-    %canvas{tc-chartjs-doughnut: '', chart-data: "pieChartData", chart-options: "pieChartOptions", width: "350", height: "350"}
+  .proposal-card-pie-chart
+    .row
+      .col-xs-6
+        %canvas{tc-chartjs-pie: '', chart-data: "pieChartData", chart-options: "pieChartOptions", width: "350", height: "350"}
+      .col-xs-6
+        .pie-chart-legend
+          .pie-chart-legend-item{class: 'pie-chart-legend-item-{{position}}', ng-repeat: 'position in proposal.positions'}
+            {{ "proposal_position_"+position | translate}} ({{ proposal.voteCounts[position] }})
 
   %vote_form{proposal: 'proposal'}
 
