@@ -50,9 +50,6 @@ Loomio::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
-  # Enable threaded mode
-  # config.threadsafe!
-
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 

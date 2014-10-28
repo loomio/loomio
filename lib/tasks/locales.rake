@@ -137,10 +137,7 @@ def update(locale, resource)
   if response.present? && content = response['content']
     content = content.gsub(/^#{locale}:/, "#{fixed_locale}:")
 
-    current_hash = YAML.load(File.read("config/locales/#{filename}"))
-    new_hash = YAML.load(content)
-
-    if current_hash != new_hash
+    if should_update? filename, content
       target = File.open("config/locales/#{filename}", 'w')
       target.write(content)
       target.close()
@@ -151,6 +148,15 @@ def update(locale, resource)
   else
     puts "ERROR!! -- #{locale} - #{filename}"
   end
+end
+
+def should_update?(filename, content)
+  return true if !File.exist?("config/locales/#{filename}")
+
+  current_hash = YAML.load(File.read("config/locales/#{filename}"))
+  new_hash = YAML.load(content)
+
+  current_hash != new_hash
 end
 
 def print_status(locale, language_stats)

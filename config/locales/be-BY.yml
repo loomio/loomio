@@ -178,6 +178,8 @@ be-BY:
         other: "%{count} гадоў"
   organisation:
     name: "Loomio"
+  sr:
+    toggle_navigation: "Уключыць навігацыю"
   footer:
     about: 'Пра нас'
     blog: 'Блог'
@@ -186,8 +188,13 @@ be-BY:
     public_groups: 'Публічныя групы'
     terms: 'Умовы'
   inbox:
+    clear: 'Ачысціць'
+    title: 'Паведамленні'
+    preferences: 'Налады паведамленняў'
+    what_you_have_not_read_yet: "Тое, што вы яшчэ не прачыталі"
     dropdown-btn: 'Паведамленні'
     empty: Вы ў курсе ўсіх падзей! Каментароў, якія трэба праглядзець, больш не засталося.
+    preferences_instructions_html: '<strong>Перацягніце паведамленні</strong> каб змяніць іх парадак.  <strong>Зняміце адзнаку</strong> каб убраць іх са спіса.'
   notifications:
     header: "Апавяшчэнні"
     new_discussion: "распачаў абмеркаванне"
@@ -323,6 +330,9 @@ be-BY:
     m7: У любы час рэдагаваць свае каментары.
     m8: Ствараць і абмяркоўваць прапановы.
     optional_restrictions: "Дадаткова, каардынатары здольны абмяжоўваць правы ўдзельнікаў."
+  discussion_privacy:
+    public: Гэта абмеркаванне бачна ўсім у інтернеце
+    private: Гэта абмеркаванне даступна толькі ўдзельнікам групы
   group_privacy:
     visible_to:
       public: Публічныя група.
@@ -351,6 +361,7 @@ be-BY:
   message_placeholder: "Напісаць паведамленне удзельнікам %{which_group}."
   email_group_members: "Напісаць email удзельнікам групы"
   edit_group_settings: "Рэдагаваць наладкі групы"
+  manage_members: "Рэдагаваць удзельнікаў"
   leave_group: "Выйсці з групы"
   confirm_leave_hidden_group: "Вы ўпэўнены, што хаціце выйсці з %{which_group}? Вы таксама аўтаматычна выйдзіце з усіх падгруп."
   confirm_leave_group: "Вы ўпэўнены, што хаціце выйсці з %{which_group}?"
@@ -378,7 +389,7 @@ be-BY:
   confirm_ignore_membership_request: "Вы ўпэўнены, што хачаце ігнараваць запыт чалецтва %{which_user}?"
   membership_requested: "Запыт чалецтва"
   request_membership: "Запытаць чалецтва"
-  ask_to_join_group: "Дашліце запыт каб далучыцца да групы"
+  ask_to_join_group: "Запытаць далучэння да групы"
   confirm_remove_membership_request: "Вы ўпэўнены, што хочаце адмяніць свой запыт чалецчтва у гэтай групе?"
   no_pending_membership_requests: "На дадзены момант няма неразгледжаных запытаў на чалецтва ў групе."
   subgroups: "Падгрупы"
@@ -438,11 +449,13 @@ be-BY:
   previous_decisions: "Папярэднія рашэнні"
   see_previous_decisions: "Паглядзець папярэднія рашэнні"
   see_more: "Даведацца больш"
+  create_new_proposal: "Стварыць прапанову"
   empty_decision_list_html: "Гатовы прыняць вырашанне? <br> Хто ўгодна можа стварыць прапанову."
   empty_decision_index: "Гэта група пакуль не зрабіла ніякіх вырашэнняў."
   empty_discussion_list: "У гэтым абмеркаванні пакуль няма ніякай актыўнасці."
   go_to_add_comment_html: "Каментар можна дадаць <a href='%{href}'>унізе абмеркавання</a>."
   comment_by: "Каментар %{comment_author}"
+  read_up_to: "У апошні раз вы скончылі чытаць тут"
   discussion_list:
     clear_filters: "Убраць фільтры: бачыць усе абмеркаванні"
     filter_unread:
@@ -801,6 +814,7 @@ be-BY:
   new_user_form:
     create_an_account: "Стварыць акаўнт"
   profile_form:
+    view: "Праглядзець профіль"
     profile: "Рэдагаваць профіль"
     picture: "Фота"
     use_initials: 'Выкарыстоўваць ініцыялы'
@@ -889,7 +903,7 @@ be-BY:
     view_group: "Націсніце тут, каб перайсці да гэтай групы на Loomio"
     view_proposal: "Праглядзець гэту прапанову на Loomio"
     create_discussion:
-      intro: "Карыстальнік %{who} распачаў абмеркаванне ў гурпе %{which_group}:"
+      intro: "Карыстальнік %{who} распачаў абмеркаванне ў групе %{which_group}:"
     create_proposal:
       intro: "У групе на Loomio, у якой вы ўдзельнічаеце, была створана новая прапанова."
       closes_in: "Закрываецца праз"
@@ -962,6 +976,9 @@ be-BY:
       header: "Вы амаль скончылі!"
       intro: "Калі ласка, націсніце на гэтую спасылку праверкі, каб завяршыць запыт:"
       ignore: "Калі вы не запытвалі, каб далучыцца да Loomio ігнаруйце гэта паведамленне."
+  meta_tags:
+    default_title: "Loomio | Сумеснае прыняцце рашэнняў"
+    default_description: Loomio - лёгкі для карыстання анлайн інструмент для прыняцця групавых рашэнняў. Ён дазваляе раззасяроджаным групам хутка прымаць рашэнні і, як вынік, канструктыўна дзейнічаць.
   about_loomio: "Аб Loomio"
   ago: "%{quantity_of_time} таму"
   approve: "Пацвердзіць"
@@ -1031,6 +1048,7 @@ be-BY:
   google: "Google"
   persona: "Persona"
   common:
+    settings: Налады
     dashboard: Галоўная
     unread: Непрачытаныя
     filter: 'Фільтр:'
@@ -1098,6 +1116,7 @@ be-BY:
     please_wait: "Пачакайце, калі ласка"
     privacy: "Канфідэнцыяльнасць"
     private: "Прыватна"
+    permissions: "Дазволы"
     public: "Адкрыта"
     email: "Email"
     start_group: "Стварыць групу!"

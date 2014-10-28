@@ -186,6 +186,7 @@ it:
     public_groups: 'Gruppi pubblici'
     terms: 'Termini'
   inbox:
+    preferences: 'Opzioni posta in arrivo'
     dropdown-btn: 'Posta in arrivo'
     empty: Aggiornato! Non ci sono commenti che non hai letto.
   notifications:

@@ -188,8 +188,13 @@ pt-BR:
     public_groups: 'Grupos públicos'
     terms: 'Termos'
   inbox:
+    clear: 'Limpar'
+    title: 'Caixa de entrada'
+    preferences: 'Preferências de Caixa de Entrada'
+    what_you_have_not_read_yet: "Aqui está a atividade que você não leu ainda."
     dropdown-btn: 'Caixa de entrada'
     empty: Você está em dia! Não há comentários não lidos.
+    preferences_instructions_html: '<strong>Arraste os itens</strong> para reordená-los. <strong>Desmarque</strong> para remover da caixa de entrada.'
   notifications:
     header: "Notificações"
     new_discussion: "iniciou uma discussão"
@@ -938,6 +943,9 @@ pt-BR:
       header: "Você está quase terminando!"
       intro: "Por favor, clique neste link de verificação para finalizar sua solicitação:"
       ignore: "Se você não pediu para entrar no Loomio, por favor ignore esta mensagem."
+  meta_tags:
+    default_title: "Loomio | Processo Decisório Colaborativo"
+    default_description: Loomio é uma ferramenta on-line fácil de usar para tomada de decisão em grupo. Ele permite que grupos dispersos tomem decisões rapidamente e façam açõe construtivas.
   about_loomio: "Sobre o Loomio"
   ago: "há %{quantity_of_time}"
   approve: "Aprovar"
@@ -1007,6 +1015,7 @@ pt-BR:
   google: "Google"
   persona: "Persona"
   common:
+    settings: Configurações
     dashboard: Painel
     unread: Não lida
     filter: 'Filtro:'
