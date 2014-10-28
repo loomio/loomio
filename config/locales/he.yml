@@ -1,1 +1,50 @@
-he: {}
+he:
+  users:
+    email_preferences:
+      edit:
+        title: 'העדפות דואל'
+        when_do_you_want_emails: 'שלח לי דואל:'
+        email_missed_yesterday: "'אתמול בלומיו' - סיכום יומי של הפעילויות שהחמצתי"
+        email_when_mentioned: "כשאני @מאוזכר"
+        email_followed_threads: "כשיש פעילות בשיחות שאני עוקב"
+        email_when_proposal_closing_soon: "24 שעות לפני סגירת הצעה"
+        email_new_discussions_and_proposals: 'דיונים והצעות חדשים'
+        for_these_groups: "לקבוצות הללו:"
+        submit: "שמירת העדפות"
+  explore:
+    header: "גלו קבוצות ציבוריות"
+  try_it:
+    header: "נסו את לומיו"
+    start_a_group: "צרו קבוצה וקבלו החלטות בקהילה שלכם"
+    join_the_community: "הצטרפו לקבוצת הקהילה של לומיו"
+    loomio_community_info: "כאן אנו מתדיינים ומקבלים החלטות בנוגע ללומיו"
+    explore_groups: "גלו קבוצות אחרות בלומיו"
+    explore_groups_info: "בדקו את כל הקבוצות המדהימות בלומיו והצטרפו אליהן!"
+  activerecord:
+    errors:
+      messages:
+        blank: "לא יכול להיות ריק"
+  errors:
+    messages:
+      email: "כתובת דואל לא תקינה"
+  attachment:
+    error:
+      too_large: "לא ניתן לצרף קובץ הגדול מ50 מגה-בייטים. נא לבחור קובץ קטן יותר"
+  time:
+    formats:
+      for_today: '%l:%M %P'
+  date:
+    formats:
+      for_this_year: '%e %b'
+      for_another_year: '%-d/%-m/%y'
+  devise:
+    invitations:
+      send_instructions: 'הזמנה נשלחה ל%{email}.'
+      invitation_token_invalid: 'פג תוקף ההזמנה!'
+      updated: 'החשבון נוצר'
+      no_invitations_remaining: "לא נותרו הזמנות"
+    mailer:
+      invitation_instructions:
+        subject: 'מישהו הזמין אותך להצטרף לקבוצת הלומיו שלו'
+  error:
+    access_denied: "אין לך הרשאות לעשות זאת."
