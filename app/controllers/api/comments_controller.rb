@@ -9,18 +9,18 @@ class API::CommentsController < API::BaseController
     comment.author = current_user
     comment.discussion = Discussion.find(params[:discussion_id])
     event = DiscussionService.add_comment(comment)
-    head :ok
+    render_event_or_model_error(event, comment)
   end
 
   def like
     @comment = Comment.find(params[:id])
     DiscussionService.like_comment(current_user, @comment)
-    render json: {id: current_user.id}
+    head :ok
   end
 
   def unlike
     @comment = Comment.find(params[:id])
     DiscussionService.unlike_comment(current_user, @comment)
-    render json: {id: current_user.id}
+    head :ok
   end
 end
