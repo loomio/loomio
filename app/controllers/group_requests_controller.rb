@@ -21,6 +21,11 @@ class GroupRequestsController < BaseController
 
   private
 
+  def using_commercial_page?
+    ENV['SHOW_COMMERCIAL_PAGE'].present?
+  end
+  helper_method :using_commercial_page?
+
   def build_group_request
     @group_request = GroupRequest.new
     if user_signed_in?
