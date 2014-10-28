@@ -61,4 +61,29 @@ body.group_requests {
       line-height: 1.2;
     }
   }
+  .commercial-page {
+    display: none;
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    padding-top: 35px;
+
+    .buffer-bottom { padding-bottom: 35px; }
+
+    ul.features {
+      list-style-type: none;
+      li:before {
+        content: "\f00c";
+        color: green;
+        padding-right: 5px;
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+      }
+    }
+  }
 }
