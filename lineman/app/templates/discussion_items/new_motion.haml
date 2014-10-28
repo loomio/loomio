@@ -1,15 +1,13 @@
-.thread-item{ng_controller: 'NewProposalItemController'}
-  .thread-item-header
-    .thread-item-author
-      .card-left
-        .thread-item-icon
-          .thread-icon-img.pie
-      .card-right
-        .author-with-text
-          %span.author-name {{proposal.author_name()}} 
-          %span.author-statement started a new proposal:
-  .thread-item-body{ng_show: 'proposal.name'}
+.thread-event.thread-vote{ng-controller: 'NewProposalItemController'}
+  .thread-event-header.media
+    .pull-left
+      proposal-icon
+    .media-body
+      %span{translate: "new_proposal_item.author_created_proposal", translate-value-name: '{{proposal.authorName()}}'}
+  .thread-event-body
     {{proposal.name}}
-  .thread-item-footer
-    %timeago{timestamp: 'proposal.createdAt' }
+
+  .thread-event-footer
+    .thread-actions-and-meta
+      %timeago{timestamp: 'proposal.createdAt'}
 

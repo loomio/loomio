@@ -11,28 +11,20 @@
     %i.fa.fa-clock-o
     %span.bump Closes {{proposal.closingAt | exactDateWithTime }}
 
-  .pie-graph-container
-    -#{{ pieChartData}}
-    -#%canvas.pie-graph{tc-chartjs: '', chart-type: 'pie', chart-data:'pieChartData'}
-    -#.col-xs-6.test-me
-    -#.col-xs-5.proposal-participation
-      -#%a{href: '#'} {{proposal.votesCount}} of X members have participated
+  .proposal-card-pie-cart
+    hi
+    %canvas{tc-chartjs-doughnut: '', chart-data: "pieChartData", chart-options: "pieChartOptions", width: "350", height: "350"}
 
   %vote_form{proposal: 'proposal'}
 
-  .card-meta-header
+  .proposal-card-votes
     %h3 Positions
-  .proposal-card-votes{ng_repeat: 'vote in curatedVotes()'}
-    .proposal-card-vote.media
+    .proposal-card-no-votes{ng-show: 'onlyVoterIsYou()', translate: 'proposal_card.only_voter_is_you'}
+
+    .proposal-card-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_card.no_votes_yet'}
+
+    .proposal-card-vote.media{ng_repeat: 'vote in curatedVotes()'}
       .pull-left.thread-event-vote-icon{class: 'thread-event-vote-icon-{{vote.position}}'}
       .media-body
         %strong {{vote.authorName()}}
         %span.author-statement {{ vote.statement }}
-
-  .l-row.statement-form{ng_show: 'voteFormIsExpanded'}
-    %form{ng_submit: 'submitVote()'}
-      %fieldset{ng_disable: 'voteFormIsDisabled'}
-        .form-group
-          %textarea{ng_model: 'newVote.statement'}
-          %button.btn.btn-primary{type: 'submit'}
-            Vote

@@ -35,19 +35,19 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
       @author().name
 
     isActive: ->
-      @closedAt == null
+      !@closedAt?
 
-    userHasVoted: (user) ->
-      _.any @votes(), (vote) ->
-        vote.authorId == user.id
+    uniqueVotesByUserId: ->
+      votesByUserId = {}
+      _.each _.sortBy(@votes(), 'createdAt'), (vote) ->
+        votesByUserId[vote.authorId] = vote
+      votesByUserId
 
-    votesSortedByCreatedAt: ->
-      _.sortBy @votes(), (vote) -> moment(vote.createdAt).unix()
-
-    votesByUser: (user) ->
-      _.filter @votesSortedByCreatedAt(), (vote) ->
-        vote.authorId == user.id
+    uniqueVotes: ->
+      _.values @uniqueVotesByUserId()
 
     lastVoteByUser: (user) ->
-      _.last(@votesByUser(user))
+      @uniqueVotesByUserId()[user.id]
 
+    userHasVoted: (user) ->
+      @lastVoteByUser(user)?
