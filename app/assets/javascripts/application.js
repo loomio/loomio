@@ -28,6 +28,7 @@
 //= require invitations
 //= require validations
 //= require groups
+//= require group_requests
 //= require discussions
 //= require motions
 //= require users

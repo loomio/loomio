@@ -207,8 +207,14 @@ ul, ol, li {
   background: #aaa;
 }
 
-.field_with_errors { display: inline; }
-
+.field_with_errors {
+  display: inline;
+}
+span.error {
+  color: $error-color;
+  display: block;
+  margin-bottom: 1em;
+}
 .inline-help { color: $error-color; }
 .hint {
   clear: both;
