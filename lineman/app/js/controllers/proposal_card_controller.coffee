@@ -16,6 +16,7 @@ angular.module('loomioApp').controller 'ProposalCardController', ($scope, $modal
   refreshPieChartData = ->
     return unless $scope.proposal
     counts = $scope.proposal.voteCounts
+    # yeah - this is done to preseve the view binding on the pieChartData
     $scope.pieChartData[0].value = counts.yes
     $scope.pieChartData[1].value = counts.abstain
     $scope.pieChartData[2].value = counts.no
