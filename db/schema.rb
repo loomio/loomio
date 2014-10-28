@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140911225702) do
+ActiveRecord::Schema.define(version: 20141027212152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,15 @@ ActiveRecord::Schema.define(version: 20140911225702) do
     t.datetime "updated_at",             null: false
     t.integer  "position",   default: 0, null: false
   end
+
+  create_table "comment_hierarchies", id: false, force: true do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "tag_anc_desc_udx", unique: true, using: :btree
+  add_index "comment_hierarchies", ["descendant_id"], name: "tag_desc_idx", using: :btree
 
   create_table "comment_votes", force: true do |t|
     t.integer  "comment_id"
@@ -323,6 +332,7 @@ ActiveRecord::Schema.define(version: 20140911225702) do
     t.boolean  "members_can_vote",                   default: true,           null: false
     t.boolean  "members_can_start_discussions",      default: true,           null: false
     t.boolean  "members_can_create_subgroups",       default: true,           null: false
+    t.integer  "creator_id"
   end
 
   add_index "groups", ["archived_at", "id"], name: "index_groups_on_archived_at_and_id", using: :btree
@@ -409,7 +419,7 @@ ActiveRecord::Schema.define(version: 20140911225702) do
     t.datetime "updated_at"
     t.datetime "closed_at"
     t.integer  "discussion_id"
-    t.string   "outcome"
+    t.text     "outcome"
     t.datetime "last_vote_at"
     t.boolean  "uses_markdown",       default: true, null: false
     t.integer  "yes_votes_count",     default: 0,    null: false

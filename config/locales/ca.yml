@@ -1,4 +1,25 @@
 ca:
+  users:
+    email_preferences:
+      edit:
+        title: 'Preferències del correu electrònic'
+        when_do_you_want_emails: 'Envia''m un mail'
+        email_missed_yesterday: "\"Ahir a Loomio\" - Un resum diari de l'activitat que t'has perdut"
+        email_when_mentioned: "Quan sóc @mencionat"
+        email_followed_threads: "Quan hi ha activitat als fils que segueixo."
+        email_when_proposal_closing_soon: "24 hores abans que la proposta tanqui."
+        email_new_discussions_and_proposals: 'Noves discussions i propostes'
+        for_these_groups: "Per aquests grups:"
+        submit: "Desar preferències"
+  explore:
+    header: "Explorar grups públics"
+  try_it:
+    header: "Prova Loomio"
+    start_a_group: "Comença un grup per prendre decissions a la teva propia comunitat"
+    join_the_community: "Uneix-te al grup de la Comunitat Loomio"
+    loomio_community_info: "Aquí és on discutim i decidim sobre Loomio"
+    explore_groups: "Explorar altres grups a Loomio"
+    explore_groups_info: "Mira tots els fantàstics grups de Loomio i uneix-te!"
   activerecord:
     errors:
       messages:
@@ -19,6 +40,7 @@ ca:
   devise:
     invitations:
       send_instructions: 'S''ha enviat una invitació a %{email}.'
+      invitation_token_invalid: 'La invitació ja no és vàlida!'
       updated: 'S''ha creat un compte.'
       no_invitations_remaining: "No et queden invitacions"
     mailer:
@@ -216,6 +238,11 @@ ca:
   confirm_remove_member: 'Estàs segur que vols eliminar aquest membre del grup?'
   want_to_invite_html: "Vols <a href='%{link}'>convidar gent</a> a aquest grup?"
   membership_requests: "Sol·licituds d'afiliació"
+  previous_requests: Sol·licituds anteriors
+  approved_by_person: Aprovat per %{person}
+  ignored_by_perosn: Ignorat per %{person}
+  join_group_btn: Uneix-te al grup
+  you_have_joined_group: T'has unit a  %{group_name}
   confirm_approve_membership_request: "Estàs segur que vols afegir %{which_user} al grup?"
   cancel_membership_request: "Cancel·lar sol·licitud"
   ignore_request: "Ignorar sol·licitud"
@@ -246,7 +273,19 @@ ca:
   group_description: "Descripció del grup"
   edit_group_description: "Edita la descripció del grup"
   group_subscription: "Subscripció del grup"
+  groups:
+    follow:
+      click_to_follow: "Clicka per seguir el grup"
+      click_to_unfollow: "Clicka per deixar de seguir el grup"
+      following_details: "Se't notificarà sobre tots els fils del grup."
+      not_following_details: "Se't notificarà sobre els fils en els que participes."
   group_request:
+    beta_request_header: "Comença un grup a Loomio Beta"
+    beta_request_description: "Per començar a prendre decissions a Loomio Beta, el primer pas és crear un grup"
+    neighbourhood_support_group: "p. ex. Grup de Suport del Barri"
+    commercial_use_option: a una empresa, organització o lloc de treball
+    non_commercial_use_option: a un grup comunitari o una xarxa informal
+    please_select_an_option: Sel·lecciona una opció
     confirmation:
       title: Ja quasi ho tens! Comprova el teu correu electrònic.
       body_html: "T'hem enviat un correu electrònic amb una invitació per començar el teu grup. \n\nSi no apareix res a la safata d'entrada en pocs minuts, envia'ns un correu a  <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
@@ -265,9 +304,24 @@ ca:
   current_decision: "Decisió actual"
   previous_decisions: "Decisions anteriors"
   see_previous_decisions: "Veure decisions anteriors"
+  see_more: "Veure més"
+  create_new_proposal: "Crea una proposta"
   empty_decision_list_html: "Preparat per prendre una decisió? <br> Qualsevol pot crear una propsta."
   empty_decision_index: "Aquest grup encara no ha decidit res."
   empty_discussion_list: "Encara no hi ha activitat en aquesta discussió."
+  go_to_add_comment_html: "Per fer un comentari, <a href='%{href}'>ves al final de la discussió</a>."
+  comment_by: "Comentari per %{comment_author}"
+  read_up_to: "El darrer cop vas llegir fins aquí"
+  discussion_list:
+    clear_filters: "Esborrar filtres: veure totes les discussions"
+    filter_unread:
+      enable: "Mostra només discussions no llegides"
+      disable: "Veure discussions llegides i no-llegides"
+    filter_followed:
+      enable: "Mostra només discussions que segueixo"
+      disable: "Mostra les discussions que segueixo i les que no segueixo"
+    empty:
+      no_discussions: "No hi ha discussions a cap dels teus grups."
   discussion_context:
     started_html: "Começat fa %{when} per <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Darrera modificació fa %{when} per <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -690,7 +744,109 @@ ca:
   unlike: "No m'agrada"
   update: "Actualitzar"
   facebook: "Facebook"
+  yahoo: "Yahoo"
   google: "Google"
   persona: "Persona"
   common:
+    settings: Configuració
+    dashboard: Panell
+    unread: No llegit
+    filter: 'Filtre:'
+    following: Seguint
+    not_following: No seguint
+    back_to_discussion: "Torna a la discussió"
+    edited: Editat
+    groups: "Grups"
+    select_error: Sel·lecciona una opció
+    today: Avui
+    select: Sel·lecciona
+    months:
+      january: Gener
+      february: Febrer
+      march: Març
+      april: Abril
+      may: Maig
+      june: Juny
+      july: Juliol
+      august: Agost
+      september: Setembre
+      october: Octubre
+      november: Novembre
+      december: Decembre
+    abbr_months:
+      jan: Gen
+      feb: Feb
+      mar: Mar
+      apr: Abr
+      may: Mai
+      jun: Jun
+      jul: Jul
+      aug: Ago
+      sep: Sep
+      oct: Oct
+      nov: Nov
+      dec: Dec
+    days:
+      monday: Dilluns
+      tuesday: Dimarts
+      wednesday: Dimecres
+      thursday: Dijous
+      friday: Divendres
+      saturday: Dissabte
+      sunday: Diumenge
+    abbr_days:
+      mon: DL
+      tue: DM
+      wed: DX
+      thu: DJ
+      fri: DV
+      sat: DS
+      sun: DG
+    tiny_days:
+      mo: DL
+      tu: DM
+      we: DM
+      th: DJ
+      fr: DV
+      sa: DS
+      su: DG
+    meridians:
+      am: 'am'
+      pm: 'pm'
+    please_wait: "Espera siusplau"
+    privacy: "Prvacitat"
+    private: "Privat"
+    permissions: "Permisos"
+    public: "Public"
     email: "Correu electrònic"
+    start_group: "Comença un grup"
+  group_categories:
+    all: "Tot"
+    blank: "Sense categoria"
+    economics: "Economia"
+    activist: "Activista"
+    arts: "Art"
+    business: "Empresa"
+    collective: "Col·lectiu"
+    community_group: "Comunitat"
+    co_operative: "Cooperativa"
+    democratic_organisation: "Organització democràtica"
+    education: "Educació"
+    environmental_group: "Grup mediambiental"
+    family: "Familia"
+    local_government: "Govern local"
+    online_community: "Comunitat online"
+    religious_group: "Religió/Espiritualitat"
+    event: "Esdeveniment"
+    open_source_software: "Programari lliure"
+    political_initiative: "Iniciativa política"
+    social_enterprise: "Acció social"
+    social_justice: "Justicia social"
+    advocacy_group: "Advocacia"
+    science: "Ciència"
+    technology: "Tecnologia"
+    sports: "Esports"
+    youth: "Joventut"
+    women: "Dones"
+    media: "Media"
+    health: "Salut"

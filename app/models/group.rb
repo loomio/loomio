@@ -16,7 +16,6 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :payment_plan, in: PAYMENT_PLANS
   validates_inclusion_of :discussion_privacy_options, in: DISCUSSION_PRIVACY_OPTIONS
   validates_inclusion_of :membership_granted_upon, in: MEMBERSHIP_GRANTED_UPON_OPTIONS
-  validates :description, length: { maximum: 250 }
   validates :name, length: { maximum: 250 }
 
   validate :limit_inheritance
@@ -134,6 +133,7 @@ class Group < ActiveRecord::Base
   has_many :motions, through: :discussions
 
   belongs_to :parent, class_name: 'Group'
+  belongs_to :creator, class_name: 'User'
   belongs_to :category
   belongs_to :theme
 
@@ -152,6 +152,7 @@ class Group < ActiveRecord::Base
   delegate :users, to: :parent, prefix: true
   delegate :members, to: :parent, prefix: true
   delegate :name, to: :parent, prefix: true
+  delegate :locale, to: :creator
 
   paginates_per 20
 
@@ -173,6 +174,24 @@ class Group < ActiveRecord::Base
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
+
+  before_save :set_creator_if_blank
+
+  def set_creator_if_blank
+    if self[:creator_id].blank? and admins.any?
+      self.creator = admins.first
+    end
+  end
+
+  alias_method :real_creator, :creator
+
+  def creator
+    self.real_creator || admins.first || members.first
+  end
+
+  def creator_id
+    self[:creator_id] || creator.id
+  end
 
   def coordinators
     admins
@@ -339,7 +358,7 @@ class Group < ActiveRecord::Base
 
   def add_admin!(user, inviter = nil)
     membership = find_or_create_membership(user, inviter)
-    membership.make_admin!
+    membership.make_admin! && save
     membership
   end
 
