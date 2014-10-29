@@ -12,6 +12,12 @@ en:
   inbox:
     latest_threads: 'Latest threads'
 
+  session_form:
+    email_label: 'Email:'
+    password_label: 'Password:'
+    remember_me: 'Remember Me'
+    sign_in: 'Login'
+
   vote_form:
     i_agree: 'I agree'
     i_abstain: 'I abstain'
