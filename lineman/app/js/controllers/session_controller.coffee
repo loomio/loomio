@@ -1,8 +1,10 @@
 angular.module('loomioApp').controller 'SessionController', ($scope, UserAuthService)->
 
   $scope.credentials =
-    email: ''
-    password: ''
+    user:
+      email: ''
+      password: ''
+      remember_me: ''
 
   $scope.login = ->
     UserAuthService.login($scope.credentials)
