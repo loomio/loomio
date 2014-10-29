@@ -186,6 +186,9 @@ fr:
     public_groups: 'Groupes publics'
     terms: 'Conditions d''utilisation'
   inbox:
+    clear: 'Vider'
+    title: 'Boite de réception '
+    preferences: 'Préférences de la boite de réception'
     dropdown-btn: 'Boîte de réception'
     empty: Vous êtes à jour ! Il n'y a aucun commentaire que vous n'avez pas vu.
   notifications:

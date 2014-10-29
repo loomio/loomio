@@ -20,6 +20,9 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
 
     plural: 'comments'
 
+    isReply: ->
+      @parentId?
+
     likers: ->
       RecordStoreService.get('users', @likerIds)
 
@@ -38,6 +41,10 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
 
     authorName: ->
       @author().name
+
+    parentAuthorName: ->
+      return null unless @parentId
+      @parent().authorName()
 
     authorAvatar: ->
       @author().avatarOrInitials()

@@ -23,6 +23,7 @@ Scenario: Guest creates group
   And I sign up as a new user
   And I setup the group
   Then I should see the group page
+  And I should be the creator of the group
 
 @javascript
 Scenario: User creates group
@@ -30,6 +31,7 @@ Scenario: User creates group
   When I go to start a new group from the navbar
   And I complete and submit the form
   Then I should be taken to the new group
+  And I should be the creator of the group
 
 @javascript
  Scenario: Logged out user creates group
@@ -43,3 +45,4 @@ Scenario: User creates group
   And I sign in to Loomio
   And I setup the group
   Then I should see the group page
+  And I should be the creator of the group

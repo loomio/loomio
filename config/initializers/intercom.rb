@@ -74,6 +74,8 @@ if Rails.application.secrets.intercom_app_id
     #   :is_interesting => :is_interesting?
     # }
     config.company.custom_data = {
+        creator_id: :creator_id,
+        language: :locale,
         discussions: :organisation_discussions_count,
         proposals: :organisation_motions_count,
         description: :description,

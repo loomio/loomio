@@ -3,8 +3,8 @@ angular.module('loomioApp', ['ngRoute',
                              'ui.bootstrap',
                              'ui.bootstrap.datetimepicker',
                              'pascalprecht.translate',
-                             'tc.chartjs',
                              'ngSanitize',
+                             'tc.chartjs',
                              'btford.markdown',
                              'angularFileUpload']).config ($httpProvider) ->
 
