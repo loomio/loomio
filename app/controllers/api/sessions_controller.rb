@@ -1,17 +1,13 @@
 class API::SessionsController < Devise::SessionsController
 
   def create
-    authenticate
+    sign_in resource_name, resource
     head :ok
   end
 
   def destroy
-    authenticate && sign_out
+    sign_out resource_name
     head :ok
-  end
-
-  def current
-    render json: current_user, serializer: UserSerializer
   end
 
   def unauthorized
@@ -20,7 +16,7 @@ class API::SessionsController < Devise::SessionsController
 
   private
 
-  def authenticate
+  def resource
     warden.authenticate! recall: "#{controller_path}#unauthorized"
   end
 end
