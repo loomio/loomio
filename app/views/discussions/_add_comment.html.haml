@@ -4,7 +4,7 @@
     = render 'avatar', user: current_user_or_visitor
     #comment-input{ data: {group: @group.id, autocomplete_path: members_autocomplete_group_path(@group) } }
       .form-container
-        = text_area_tag 'comment', "", id: 'new-comment', class: 'js-warn-before-navigating-away', placeholder: t(:comment_form_placeholder)
+        = text_area_tag 'comment', "", id: 'new-comment', class: 'js-warn-before-navigating-away', placeholder: t(:comment_form_placeholder), dir: text_direction(current_user_or_visitor)
         #attachment-container
 
       = hidden_field_tag 'uses_markdown', @uses_markdown, {id: 'global-uses-markdown'}

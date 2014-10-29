@@ -13,7 +13,7 @@ class DiscussionsController < GroupBaseController
   end
 
   def new
-    @discussion = Discussion.new
+    @discussion = Discussion.new user: current_user
     @discussion.uses_markdown = current_user.uses_markdown
     @group = Group.find_by_id params[:group_id]
     @discussion.group = @group

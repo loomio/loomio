@@ -7,8 +7,8 @@
           = f.collection_select :group_id, current_user.groups_discussions_can_be_started_in, :id, :full_name, {include_blank: true}, class: 'form-control'
         - else
           = f.input :group_id, :as => :hidden
-      = f.input :title, autofocus: true, input_html: {class: 'js-warn-before-navigating-away'}
-      = f.input :description, input_html: {class: 'js-warn-before-navigating-away'}
+      = f.input :title, autofocus: true, input_html: {class: 'js-warn-before-navigating-away', dir: text_direction(discussion)}
+      = f.input :description, input_html: {class: 'js-warn-before-navigating-away', dir: text_direction(discussion)}
       .dropdown#discussion-markdown-dropdown.global-markdown-setting
         %a.dropdown-toggle{href:'#discussion-markdown-dropdown', id:'discussion-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
           = markdown_img(discussion.uses_markdown)
