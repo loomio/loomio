@@ -188,6 +188,10 @@ tr:
     public_groups: 'Genel gruplar'
     terms: 'Şartlar'
   inbox:
+    clear: 'Temizle'
+    title: 'Gelen kutusu'
+    preferences: 'Gelen kutusu seçenekleri'
+    what_you_have_not_read_yet: "Henüz okumadığınız aktiviteniz işte burada."
     dropdown-btn: 'Gelen kutusu'
     empty: Güncelsiniz! Görmediğiniz yorum yok.
   notifications:
@@ -231,7 +235,7 @@ tr:
   generic_confirm: "Emin misiniz?"
   discussion_helper_text:
     header: "İlk müzakerene hoşgeldin"
-    message: "<p>Konu, altında bağlamı ile sayfanın üst kısmında yer alır.</p><p>Müzakere solda, kararlar sağda belirir. Eğer grubun bir karar vermek için hazır olduğunu düşünüyorsan, grubun göz önüne alması için bir öneri yapabilirsin.</p>"
+    message: "<p>Konu, altında içeriği ile sayfanın üst kısmında yer alır.</p><p>Müzakere solda, kararlar ise sağda belirir. Eğer, grubun bir karar vermek için hazır olduğunu düşünüyorsan, grubun göz önüne alması için bir öneri yapabilirsin.</p>"
   group_helper_text:
     header: "Yeni grubuna hoşgeldin!"
     message: "<p>Bu <strong>grup sayfası</strong>. Soldaki bu gruptaki tüm müzakerelerin bir listesidir.</p><p>Grubun başka bir konuyu tartışmasını istediğin, yeni bir müzakere başlatabilirsin.</p>"
@@ -270,7 +274,7 @@ tr:
     members_can:
       add_members: Yeni üyeleri davet edin ve onaylayın.
       edit_comments: İstediğiniz zaman onların yorumlarını düzenleyin
-      edit_discussions: Grup dahilindeki herhangi bir müzakarenin temasını düzenleyin
+      edit_discussions: Grup dahilindeki herhangi bir müzakarenin içeriğini düzenleyin
       start_discussions: Müzakereler başlatın
       raise_motions: Öneriler üretin
       vote: Önerileri oylayın
@@ -295,6 +299,32 @@ tr:
       'false': Sadece üyeler müzakereleri görebilir
     discussion_privacy_options:
       label: Kim müzakereleri izleyebilir?
+      hint: Genel müzakereler herkes tarafından görüntülenebilir.
+      public_only_html: Sadece genel müzakereler
+      public_or_private_html: Genel ve gizli müzakerelere izin ver
+      private_only_html: Sadece gizli müzakereler
+    learn_about_permissions: Grup izinleri hakkında daha fazla bilgiye sahip ol
+  group_permissions:
+    header: Grup izinleri
+    c1: Grup ayarlarını değiştir
+    c2: Herhangi bir müzakere'nin içerik ve başlığını düzenle.
+    c3: Gruplar arasında müzakereleri taşı.
+    c4: Yeni üyeler davet et ve onayla.
+    c5: Bütün grup üyelerine bir duyuru e-postası gönder.
+    c6: Bir grubu devre dışı bırak.
+    c7: Başka koordinatörler ekle/sil.
+    c8: Müzakereleri sil.
+    c9: Yorumları sil.
+    c10: Alt gruplar oluştur.
+    c11: Müzakereleri başlat.
+    c12: Önerileri arttır.
+    c13: Önerileri oyla.
+    m5: Herhangi bir müzakere'nin içerik ve başlığını düzenle.
+    m6: Kullanıcıların, koordinatör olabileceği bir alt grup başlatın.
+  group_privacy:
+    visible_to:
+      members: Gizli grup. Sadece üyeler görebilir.
+      members_html: 'Sadece üyeler için <span>Grup listelenmeyecek</span>'
   setup_steps_title: "Sonraki adımlar:"
   setup_step_1: "Örnek müzakereye göz at"
   setup_step_2: "İlk müzakereni başlat"
@@ -315,6 +345,7 @@ tr:
   message_placeholder: "%{which_group} üyelerine bir mesaj yaz."
   email_group_members: "E-posta grup üyeleri"
   edit_group_settings: "Grup ayarlarını düzenle"
+  manage_members: "Üyeleri düzenle"
   leave_group: "Gruptan ayrıl"
   confirm_leave_hidden_group: "%{which_group} grubundan ayrılmak istediğine emin misin? Ayrıca tüm alt gruplardan da kaldırılacaksın."
   confirm_leave_group: "%{which_group},undan ayrılmak istediğinize emin misiniz?"
@@ -330,6 +361,11 @@ tr:
   confirm_remove_member: 'Bu üyeyi gruptan çıkartmak istediğinden emin misin?'
   want_to_invite_html: "Bu gruba birlerini <a href='%{link}'>davet etmek</a> ister misin?"
   membership_requests: "Üyelik istekleri"
+  previous_requests: Önceki istekler
+  approved_by_person: '%{person} tarafından onaylandı'
+  ignored_by_perosn: '%{person} tarafından engellendi'
+  join_group_btn: Gruba katıl
+  you_have_joined_group: '%{group_name} grubuna katıldınız'
   confirm_approve_membership_request: "%{which_user} üyesini gruba eklemek istediğine emin misin?"
   cancel_membership_request: "Talebi iptal et"
   ignore_request: "İsteği yok say"
@@ -360,7 +396,13 @@ tr:
   group_description: "Grup açıklaması"
   edit_group_description: "Grup açıklamasını düzenle"
   group_subscription: "Grup aboneliği"
+  groups:
+    follow:
+      click_to_follow: "Grubu takip etmek için tıkla"
+      click_to_unfollow: "Grubu takip etmeyi bırakmak için tıkla"
   group_request:
+    neighbourhood_support_group: "Örnek: Komşu Destek Grubu"
+    please_select_an_option: Lütfen, bir opsiyon seçin
     confirmation:
       title: Neredeyse bitti! E-postanızı kontrol edin.
       body_html: |
@@ -378,20 +420,39 @@ tr:
     motion_outcome_updated: "önerinin sonucunu güncelledi"
     discussion_title_edited: "tartışma başlığını değiştirdi"
     discussion_description_edited: "tartışma açıklamasını değiştirdi"
+    motion_name_edited: 'Öneri başlığı düzenlendi'
+    motion_description_edited: 'Öneri tanımı düzenlendi'
   discussion: "Müzakere"
   current_decision: "Güncel karar"
   previous_decisions: "Önceki tartışma"
   see_previous_decisions: "Önceki kararları görüntüle"
   see_more: "Daha fazlasını görün"
+  create_new_proposal: "Bir öneri yarat"
   empty_decision_list_html: "Bir karar vermek için hazır mısın? <br> Herkes bir öneri başlatabilir."
   empty_decision_index: "Bu grup henüz bir karar vermiş değil."
   empty_discussion_list: "Henüz bu müzakerede hiçbir faaliyet yok."
+  go_to_add_comment_html: "Bir yorum eklemek için, <a href='%{href}'>müzakerenin sonuna gidiniz</a>."
   comment_by: "%{comment_author} tarafından yapılan yorum"
+  read_up_to: "En son öğrendiğiniz burada"
+  discussion_list:
+    clear_filters: "Filtreleri temizle: bütün müzakereleri göster"
+    filter_unread:
+      enable: "Sadece okunmamış müzakereleri göster"
+      disable: "Okunmuş ve okunmamış müzakereleri göster"
+    filter_followed:
+      enable: "Sadece takip edilen müzakereleri göster"
+      disable: "Takip edilen ve takibi bırakılmış müzakereleri göster"
+    empty:
+      no_discussions: "Gruplarınızın herhangi birinde hiçbir müzakere bulunmamaktadır."
+      no_discussions_in_group: "Bu grup henüz hiçbir müzakereye sahip değildir."
+      discussions_are_private: "Bu gruptaki tüm müzakereler gizlidir."
   discussion_context:
     started_html: "%{when} önce <a href='%{link}' class='%{link_class}'>%{who}</a> tarafından başlatıldı"
     last_edited_html: "En son %{when} önce <a href='%{link}' class='%{link_class}'>%{who}</a> tarafından güncellendi"
     see_revision_history: "Revizyon geçmişini görüntüle"
     see_history: "Geçmişi görüntüle"
+    click_to_follow: "Konuyu takip etmek için tıkla"
+    click_to_unfollow: "Konuyu takip etmeyi bırakmak için tıkla"
   description_history:
     header: "Revizyon geçmişi"
     subheader: "Versiyon"
@@ -409,6 +470,7 @@ tr:
   markdown_settings_more_info: "Daha fazla bilgi..."
   edit_discussion: "Müzakereyi düzenle"
   move_discussion: "Müzakereyi taşı"
+  move_discussion_where: "Bu müzakereyi nereye taşımak istersiniz?"
   delete_discussion: "Müzakereyi sil"
   confirm_delete_discussion: "Bu müzakereyi kalıcı olarak silmek istediğinden emin misin?"
   new_proposal: "Yeni Öneri"
@@ -447,7 +509,11 @@ tr:
       'no': "katılmadın"
       abstain: "çekimser kaldın"
       block: "itiraz ettin"
+  unable_to_vote:
+    permission_denied: "Bu önergeye oy vermek için yetkiniz yoktur"
+    motion_closed: "Bu önerge zaten kapatılmış"
   edit_comment:
+    comment_changes: "Yorum değişiklikleri"
     edit_comment: "Yorumu düzenle"
   help:
     coordinating: 'Loomio grubunu koordine etmek'
@@ -585,8 +651,20 @@ tr:
       header: "Bir müzakere başlat"
     edit:
       header: "Müzakereyi düzenle"
+    privacy:
+      will_be_public: "Herkes müzakereyi görebilir."
+  motion_history:
+    title: "Öneri değişiklikleri"
   motion_form:
+    new:
+      header: "Yeni öneri"
+      submit: 'Öneri yarat'
+    edit:
+      header: "Öneri düzenle"
+      submit: 'Öneri güncelle'
+      only_closing_at: 'Oylama başladıktan sonra, öneri ismini veya tanımını değiştiremezsiniz'
     name_helper: "Başlığı mümkün olduğunca kısa ve öz tut."
+    close_proposal_heading: "Öneri kapanışını erkene mi almak istiyorsunuz?"
   vote_form:
     header: "Konumunu belirt"
     edit: "Konumunu düzenle"
@@ -597,6 +675,12 @@ tr:
     update: "Konumunu güncelle"
   new_user_form:
     create_an_account: "Bir hesap oluştur"
+  profile_form:
+    view: "Profili görüntüle"
+    profile: "Profili düzenle"
+    picture: "Resim"
+    use_uploaded: 'Yüklenmiş resim kullan'
+    upload_new_image: "Yeni bir resim yükle"
   group_setup:
     set_up_your_group: Grubunu kur
     desc_header: "Neredeyse geldik!"
@@ -616,7 +700,7 @@ tr:
     labels:
       discussion:
         title: "Başlık"
-        description: "Bağlam"
+        description: "İçerik"
       membership_request:
         introduction: "Kendini tanıt"
       motion:
