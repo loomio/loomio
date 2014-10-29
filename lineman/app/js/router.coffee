@@ -15,6 +15,8 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
   ).when('/users/login',
     templateUrl: 'generated/templates/login.html'
     controller: 'SessionController'
-    resolve: {}
+  ).when('/dashboard',
+    templateUrl: 'generated/templates/dashboard.html'
+    controller: 'DashboardController'
   ).otherwise
     redirectTo: '/'
