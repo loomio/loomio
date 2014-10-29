@@ -31,8 +31,9 @@ class GroupsController < GroupBaseController
     authorize!(:create, @group)
     if @group.save
       @group.mark_as_setup!
-      Measurement.increment('groups.create.success')
       @group.add_admin! current_user
+      @group.creator = current_user
+      Measurement.increment('groups.create.success')
       flash[:success] = t("success.group_created")
       redirect_to @group
     elsif @group.is_subgroup?

@@ -4,7 +4,7 @@ ar:
       edit:
         title: 'إعدادات البريد الإلكتروني'
         when_do_you_want_emails: 'راسلني على البريد الإلكتروني:'
-        email_missed_yesterday: "'أحداث الأمس في Loomio' - ملخص يومي حول أية نشاطات فوتها"
+        email_missed_yesterday: "'أحداث الأمس في Loomio' - ملخص يومي حول أية نشاطات فاتتك"
         email_when_mentioned: "عندما يتم ذكر @إسمي"
         email_followed_threads: "عندما يحدث نشاط في المواضيع التي أتابعها."
         email_when_proposal_closing_soon: "24 ساعة قبل إغلاق أي من المقترحات."
@@ -15,9 +15,9 @@ ar:
     header: "إستكشف مجموعات عامة"
   try_it:
     header: "جرّب Loomio"
-    start_a_group: "تبدأ مجموعة لاتخاذ القرارات في مجتمعك."
-    join_the_community: "ضمّ إلى مجموعة Loomio المجتمع"
-    loomio_community_info: "هذا هو المكان الذي نناقش ونتخذ القرارات بشأن Loomio."
+    start_a_group: "كون مجموعة لاتخاذ القرارات في تجمعك."
+    join_the_community: "إنضمّ إلى مجموعة Loomio تجمع"
+    loomio_community_info: "هذا هو المكان الذي نناقش ونتخذ القرارات فيه بشأن Loomio."
     explore_groups: "إستكشف مجموعات أخرى على Loomio"
     explore_groups_info: "إطلع على المجموعات الرائعة في Loomio وانضم لها!"
   activerecord:
@@ -35,20 +35,28 @@ ar:
       send_instructions: 'تم إرسال دعوة إلى %{email}.'
       invitation_token_invalid: 'هذه الدعوة لم تعد صالحة.'
       updated: 'تم إنشاء الحساب.'
+      no_invitations_remaining: "لم يعد لديك دعوات"
     mailer:
       invitation_instructions:
         subject: 'لقد تمت دعوتك للإنضمام إلى مجموعة على Loomio'
   error:
-    access_denied: "ليس لديك سماحية للقيام بذلك."
+    access_denied: "ليس لديك صلاحية للقيام بذلك."
     cant_join_subgroup: "لا يمكنك الانضمام إلى مجموعة فرعية إذا لم تكن عضوا في المجموعة الأم."
     cant_modify_position: "لقد تم إغلاق هذا الإقتراح."
     cant_state_position: "لقد تم إغلاق هذا الإقتراح."
     cant_view_member_profile: "لا يمكنك عرض الملف الشخصي للعضو لأنك لست في نفس المجموعة."
+    contribution: "رجاءا التسجيل لأمكانك تقديم مساهمة مالية"
     discussion_not_created: "تعذر إنشاء المناقشة."
+    discussion_not_moved: "ليس لديك صلاحية لنقل هذا النقاش الى %{destination_group.name}."
     group_not_archived: "تعذرت أرشفة المجموعة."
     invalid_close_date: "تاريخ الإغلاق غير صالح، يرجى التأكد من هذا التاريخ لم يمر."
     invalid_email: "الرجاء إدخال عنوان بريد إلكتروني صالح واحد على الأقل."
     image_upload_fail: "تعذر تحميل الصورة. يرجى التأكد من أن حجم الصورة أقل من ١ميغابايت وأن الملف بصيغة jpeg أو png أو gif."
+    motion_closing_inputs: "تاريخ اغلاق غير صالح"
+    motion_outcome_not_created: "غير ممكن النشر."
+    motion_outcome_not_updated: "ليس من الممكن التحديث."
+    only_group_coordinator_destroy: "ليس بإمكانك ترك المجموعه لأنك المنسق الوحيد لها. يمنك إلغاء المجموعه عن طريق الخيارات أو إضافة منسق لها   <a href='%{add_coordinator}'>"
+    only_group_coordinator_remove_admin: "يجب ان يكون للمجموعة منسق واحد على الأقل. هل تود إضافة منسق آخر لها؟"
     permission_to_invite: "ليس لديك سماحية لدعوة أعضاء جدد."
     position_not_updated: "تعذر تحديث الموقف."
     settings_not_updated: "لم يتم تحديث إعداداتك."
@@ -56,11 +64,19 @@ ar:
     group_request_invalid_token: "عذرا! رمز الصلاحية غير صالح"
     group_private_or_not_found: "لم يتم إيجاد المجموعة.\n\nهذه المجموعة قد تكون خاصة. إن كان شخص ما قد أعطاك هذا الرابط، اطلب منه أن يدعوك إلى المجموعة."
     group_already_setup: "المجموعة التي تحاول إعدادها موجودة بالفعل."
+    passwords_did_not_match: "كلمة السر لم تتطابق"
     proposal_already_exists: "هناك بالفعل اقتراحا مفتوحا مسبقا في هذه المناقشة."
+    user_with_email_address_already_in_group: "مشترك بنفس الأيميل ينتمي للمجموعة."
+    you_have_already_requested_membership: "لديك طلب انضمام للمجموعه من قبل."
+    you_are_already_a_member_of_this_group: "انت عضو سابق في هذه المجموعه."
+    not_found: "البند غير موجود. من الممكن انه محذوف. "
   alert:
     duplicate_email: " إن %{which_email} موجود أصلا بالفعل في المجموعة."
   notice:
+    new_contacts_imported: "لقد تمت! يمكنك كتابة الأسماء في الحقل أدناه وسنقوم باقتراح البريد الألكتروني المناسب."
     admin_rights_removed: "تم إزالة صلاحيات المنسق من %{which_user}."
+    user_added: "تمت اضافته الى المجموعة %{user_email_or_name}."
+    new_user_added: "سيتم إضافته الى المجموعة بعد اعداد الحساب %{user_email_or_name}."
     member_removed: "تم حذف العضو."
     membership_approved: "تم قبل العضوية."
     membership_request_canceled: "تم إلغاء طلب العضوية."

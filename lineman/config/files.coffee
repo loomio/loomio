@@ -21,11 +21,11 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/angular-translate-loader-url/angular-translate-loader-url.js",
              "vendor/bower_components/angular-bootstrap/ui-bootstrap.js",
              "vendor/bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
-             "vendor/bower_components/Chart.js/Chart.js",
-             "vendor/bower_components/tc-angular-chartjs/dist/tc-angular-chartjs.js",
              "vendor/bower_components/showdown/src/showdown.js",
              "vendor/bower_components/angular-markdown-directive/markdown.js",
              "vendor/bower_components/ng-file-upload/angular-file-upload.js",
+             "vendor/bower_components/Chart.js/Chart.js",
+             "vendor/bower_components/tc-angular-chartjs/dist/tc-angular-chartjs.js",
              "vendor/js/private_pub.js"]
 
     app: ["app/js/app.js"

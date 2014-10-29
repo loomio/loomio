@@ -17,6 +17,8 @@ en:
     i_block: 'I block'
     submit_position: 'Submit position'
     change_position: 'Change position'
+    select_position: 'Select position'
+    statement_placeholder: 'Share your thoughts with the group.'
 
   proposal_form:
     start_proposal: 'Start proposal'
@@ -32,6 +34,13 @@ en:
     your_position: 'Your Position'
     have_your_say: 'Have your say'
     started_by: 'Started by <strong>{{name}}</strong>'
+    no_votes_yet: 'Nobody has voted on this proposal yet.'
+    only_voter_is_you: 'No other members have voted yet.'
+
+  proposal_position_yes: 'Agree'
+  proposal_position_abstain: 'Abstain'
+  proposal_position_no: 'No'
+  proposal_position_block: 'Block'
 
   discussion:
     you_like_this: 'You like this.'
@@ -45,8 +54,13 @@ en:
     liked_by_names_and_name: 'Liked by {{joinedNames}} and {{name}}.'
     started_by: 'Started by <strong>{{name}}</strong>'
 
+  new_comment_item:
+    in_reply_to: '<strong>{{author}}</strong> in reply to <strong>{{recipient}}</strong>'
   new_vote_item:
     agree_on_proposal: '<strong>{{name}}</strong> agreed on the proposal:'
     abstain_on_proposal: '<strong>{{name}}</strong> abstained on the proposal:'
     disagree_on_proposal: '<strong>{{name}}</strong> disagreed on the proposal:'
     block_on_proposal: '<strong>{{name}}</strong> blocked the proposal:'
+
+  new_proposal_item:
+    author_created_proposal: '<strong>{{name}}</strong> created a proposal:'

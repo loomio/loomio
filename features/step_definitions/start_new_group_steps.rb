@@ -76,6 +76,12 @@ Then(/^I should be taken to the new group$/) do
   page.should have_css("body.groups.show")
 end
 
+Then(/^I should be the creator of the group$/) do
+  @group = Group.where(name: @group_name).first
+  @group.creator.id.should eq @user.id
+end
+
+
 Then(/^I should see the start group form with errors$/) do
   page.should have_content 'can\'t be blank'
 end
