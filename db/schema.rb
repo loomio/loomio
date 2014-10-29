@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006011358) do
+ActiveRecord::Schema.define(version: 20141027212152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -332,6 +332,7 @@ ActiveRecord::Schema.define(version: 20141006011358) do
     t.boolean  "members_can_vote",                   default: true,           null: false
     t.boolean  "members_can_start_discussions",      default: true,           null: false
     t.boolean  "members_can_create_subgroups",       default: true,           null: false
+    t.integer  "creator_id"
   end
 
   add_index "groups", ["archived_at", "id"], name: "index_groups_on_archived_at_and_id", using: :btree

@@ -285,6 +285,16 @@ tr:
       label: İnsanlar nasıl katılabilir?
       hidden_parent:
         request_html: '<span>%{parent_group_name} üyelerine</span> açık'
+        approval_html: '<span> %{parent_group_name} üyelerinden gelen </span> İstek ile'
+      request_html: Açık <span>Herkes gruba katılabilir</span>
+      approval_html: İstek ile <span>katılmak için herkes istekte bulunabilir</span>
+      invitation_html: Sadece davet <span>yeni üyelerin davet edilmesi zorunludur</span>
+    parent_members_can_see_discussions:
+      label: Müzakere gizliliği
+      'true': '%{parent_group_name} grubunda bulunan herkes müzakereleri görebilir'
+      'false': Sadece üyeler müzakereleri görebilir
+    discussion_privacy_options:
+      label: Kim müzakereleri izleyebilir?
   setup_steps_title: "Sonraki adımlar:"
   setup_step_1: "Örnek müzakereye göz at"
   setup_step_2: "İlk müzakereni başlat"
@@ -639,14 +649,28 @@ tr:
         create: "Hesap oluştur"
         update: "Ayarları güncelle"
   email:
+    by_who: "%{person} tarafından"
+    reply_to_this_discussion: Bu müzakereyi yanıtla
+    to_join_discussion:
+      subject: "%{who} , Loomio'da senin bir müzakereye katılmanı istiyor "
+      content: "Müzakere'de yer almanız için davet edildiniz : %{discussion}"
+      message_intro: "%{who} diyor ki:"
+      link: "Müzakereye katıl"
+    to_join_group:
+      subject: "%{member} , Loomio'da sizi  %{group_name} grubuna katılmaya davet etti"
     to_start_group:
       subject: "Yeni Loomio grubunu aç: %{group_name}"
+    user_added_to_a_group:
+      subject: "%{who} sizi %{which_group} grubuna ekledi"
+      content: "%{who}, Loomio'da sizi %{which_group} grubuna ekledi. Gruba gitmek için buraya tıklayınız:"
     unsubscribe: "Aboneliğini iptal et ya da e-posta tercihlerini değiştir:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aboneliğini iptal etmek ya da e-posta tercihlerini değiştirmek için."
     view_comment: "Bu yorumu Loomio'da görüntülemek için buraya tıkla"
     view_discussion: "Bu müzakereyi görüntülemek için buraya tıkla"
     view_group: "Bu grubu Loomio'da görüntülemek için buraya tıkla"
     view_proposal: "Bu öneriyi Loomio üzerinde görüntüle"
+    create_discussion:
+      intro: "%{who} , %{which_group} grubunda bir müzakere başlattı:"
     create_proposal:
       intro: "Ait olduğunuz bir Loomio grubunda yeni bir öneri oluşturuldu."
       closes_in: "içinde kapanacak"
@@ -655,6 +679,11 @@ tr:
       heading: "Loomio Aktiviten"
       intro: "Son 24 saat içinde Loomio gruplarınızda neler olduğunu gösterir"
       subject: "Loomio - Son 24 saatin özeti"
+    missed_yesterday:
+      subject: "Loomio'da dün"
+      mark_as_read: Okundu olarak işaretle
+      thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
+      marked_as_read_success: "E-posta'daki herşey okundu olarak isaretlendi"
     group_email:
       intro: "%{who} %{group} grubunda yeni bir duyuru yaptı:"
     group_membership_approved:
@@ -671,7 +700,8 @@ tr:
       subject: "%{who} %{which_group} grubuna katılmak için talep gönderdi"
       view_group: "Burada isteği onaylayabilir ya da reddedebilirsin"
     mentioned:
-      subject: "Loomio da %{who}  %{which} grubunda siz bahsetti."
+      context: "\"%{discussion_title}\" isimli müzakere'de %{author_name} sizden bahsetti"
+      subject: "Loomio da %{who}  %{which} grubunda sizden bahsetti"
     proposal_closed:
       specify_outcome_and_notify_group: "Bir sonuç oluştur ve grubuna gönder!"
       specify_outcome_and_notify_group_html: "Bir sonuç oluştur ve grubuna gönder!"

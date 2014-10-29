@@ -1,0 +1,12 @@
+$navbarGrey: #CCC;
+
+.menu-icon  { 
+  padding: 10px 12px;
+  margin: 5px 0;
+  color: $navbarGrey
+}
+.menu-image { padding: 15px; }
+.bordered-icon { 
+  border: 1px solid $navbarGrey;
+  border-radius: 5px;
+}

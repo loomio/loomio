@@ -5,6 +5,7 @@ en:
     ca: Català
     cs: čeština
     'zh-TW': 正體中文
+    da: Dansk
     de: Deutsch
     en: English
     el: ελληνικά
@@ -13,13 +14,13 @@ en:
     fr: Français
     id: Indonesian
     it: Italiano
-    hu: magyar
+    hu: Magyar
     ja: 日本語
     ko: 한국어
     ml: മലയാളം
     'nl-NL': Nederlands
     'pt-BR': Português (Brasil)
-    ro: română
+    ro: Română
     sr: Srpski - Latinica
     'sr-RS': Srpski - Ćirilica
     sv: Svenska
@@ -35,10 +36,10 @@ en:
 
     # experimental
 
+    an: aragonés
     ar: العربية/عربي
     cmn: 官話
     hr: hrvatski
-    da: dansk
     fi: Suomen kieli
     gl: galego
     'ga-IE': Gaeilge
