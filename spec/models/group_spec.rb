@@ -6,6 +6,18 @@ describe Group do
   let(:group) { create(:group) }
   let(:discussion) { create :discussion }
 
+  context "group creator" do
+    it "stores the admin as a creator" do
+      group.creator.should == group.admins.first
+    end
+
+    it "delegates language to the group creator" do
+      @user = create :user, selected_locale: :fr
+      group = create :group, creator: @user
+      group.locale.should == group.creator.locale
+    end
+  end
+
   context "children counting" do
 
     describe "#motions_count" do

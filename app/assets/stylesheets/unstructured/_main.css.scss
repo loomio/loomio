@@ -26,6 +26,18 @@ form {
     margin-bottom: 0;
     height: 200px;
   }
+  .error{
+    color: $error-color;
+  }
+  .field_with_errors label {
+    color: $error-color
+  }
+  .field_with_errors input {
+    border-color: $error-color
+  }
+  .field_with_errors textarea {
+    border-color: $error-color
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -195,8 +207,14 @@ ul, ol, li {
   background: #aaa;
 }
 
-.field_with_errors { display: inline; }
-
+.field_with_errors {
+  display: inline;
+}
+span.error {
+  color: $error-color;
+  display: block;
+  margin-bottom: 1em;
+}
 .inline-help { color: $error-color; }
 .hint {
   clear: both;
