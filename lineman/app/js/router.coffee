@@ -12,7 +12,7 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
           response.data
       currentUser: ($http, UserAuthService, UserModel) ->
         UserAuthService.fetchCurrentUser()
-  ).when('/users/login',
+  ).when('/users/sign_in',
     templateUrl: 'generated/templates/login.html'
     controller: 'SessionController'
   ).when('/dashboard',
