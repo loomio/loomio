@@ -1,12 +1,69 @@
 $navbarGrey: #CCC;
 
-.menu-icon  { 
-  padding: 10px 12px;
-  margin: 5px 0;
-  color: $navbarGrey
-}
 .menu-image { padding: 15px; }
 .bordered-icon { 
   border: 1px solid $navbarGrey;
   border-radius: 5px;
 }
+
+.loomio-nav {
+  color: $navbarGrey;
+  line-height: 1em;
+}
+
+.loomio-nav-logo {
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(/img/lbow_square_30.png);
+}
+
+.loomio-nav-dropdown {
+
+}
+.drawer {
+  min-width: 320px;
+  list-style-type: none;
+  padding: 0;
+  height: 600px;
+  overflow-y:scroll;
+}
+
+.drawer-header {
+  padding: 0 15px;
+}
+.drawer-item {
+  border-top: 1px solid #ddd;
+  padding: 15px;
+}
+
+.drawer-item-proposal {
+  .time-left {
+    color: #FAA82C;
+    @include fontHelvetica;
+    @include fontSmall;
+  }
+}
+
+.drawer-item-discussion-title {
+  color: $text-color;
+  @include fontHelvetica;
+  @include fontMedium;
+  margin-bottom: 5px;
+}
+
+.drawer-item-propostal-details {
+  color: $meta-text-color;
+  @include fontHelvetica;
+  @include fontMedium;
+  margin-bottom: 5px;
+}
+
+.drawer-item-group-name {
+  color: $meta-text-color;
+  @include fontHelvetica;
+  @include fontSmall;
+}
+
+body { padding-top: 70px; }

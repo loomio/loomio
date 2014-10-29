@@ -16,6 +16,7 @@
     "angular-markdown-directive": "~0.3.0",
     "angular-bootstrap": "latest",
     "ng-file-upload": "latest",
-    "tc-angular-chartjs": "~1.0.9"
+    "tc-angular-chartjs": "~1.0.9",
+    "ngInfiniteScroll": "~1.1.2"
   }
 }

@@ -1,13 +1,9 @@
-
 body {
   @include fontHelvetica;
   @include fontMedium;
   background-color: #f1f1f1;
 }
 
-.time-ago {
-  border: 0;
-}
 
 h1 {
   @include fontHelveticaBold;

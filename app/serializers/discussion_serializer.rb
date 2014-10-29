@@ -4,37 +4,30 @@ class DiscussionSerializer < ActiveModel::Serializer
              :key,
              :title,
              :description,
+             :last_activity_at,
              :created_at,
              :updated_at,
              :items_count,
              :comments_count,
              :private
 
-  has_one :current_user, serializer: UserSerializer, root: 'users'
   has_one :author, serializer: UserSerializer, root: 'users'
   has_one :group, serializer: GroupSerializer, root: 'groups'
-  has_many :events, serializer: EventSerializer
-  has_many :comments, serialier: CommentSerializer
-  has_many :proposals, serializer: MotionSerializer, root: 'proposals'
+  has_one :active_proposal, serializer: MotionSerializer, root: 'proposals'
+  #has_many :events, serializer: EventSerializer
+  #has_many :comments, serialier: CommentSerializer
+  #has_many :proposals, serializer: MotionSerializer, root: 'proposals'
 
   def author
     object.author
   end
   
-  def events
-    object.items
-  end
-
-  def proposals
-    object.motions
-  end
+  #def proposals
+    #object.motions
+  #end
 
   def active_proposal
     object.current_motion
-  end
-
-  def current_user
-    scope
   end
 
   def filter(keys)
