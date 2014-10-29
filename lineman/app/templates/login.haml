@@ -1,5 +1,6 @@
 .user.sessions.new
   %form{ng_submit: 'login()'}
-    %input#session-username-field.form-control{ng_model: 'credentials.email', ng_required: 'true'}
-    %input#session-password-field.form-control{ng_model: 'credentials.password', ng_required: 'true'}
+    %input#session-username-field.form-control{ng_model: 'credentials.user.email', ng_required: 'true'}
+    %input#session-password-field.form-control{ng_model: 'credentials.user.password', ng_required: 'true'}
+    %input#session-remember-me-field{ng_model: 'credentials.user.remember_me', type: 'checkbox', label: 'Remember Me'}
     %button.btn.btn-primary{type: 'submit', translate: 'sign_in'}
