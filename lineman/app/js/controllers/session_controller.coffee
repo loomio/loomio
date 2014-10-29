@@ -1,13 +1,13 @@
-angular.module('loomioApp').controller 'SessionController', ($scope, UserAuthService)->
+angular.module('loomioApp').controller 'SessionController', ($scope, $location, SessionService, SessionModel)->
 
-  $scope.credentials =
-    user:
-      email: ''
-      password: ''
-      remember_me: ''
+  $scope.showErrors = false
+  $scope.session = new SessionModel()
 
   $scope.login = ->
-    UserAuthService.login($scope.credentials)
+    SessionService.create $scope.session, $scope.redirectToDashboard, $scope.failure
 
-  $scope.logout = ->
-    UserAuthService.logout()
+  $scope.redirectToDashboard = ->
+    $location.path '/dashboard'
+
+  $scope.failure = ->
+    $scope.showErrors = true

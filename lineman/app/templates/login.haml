@@ -1,6 +1,14 @@
 .user.sessions.new
   %form{ng_submit: 'login()'}
-    %input#session-username-field.form-control{ng_model: 'credentials.user.email', ng_required: 'true'}
-    %input#session-password-field.form-control{ng_model: 'credentials.user.password', ng_required: 'true'}
-    %input#session-remember-me-field{ng_model: 'credentials.user.remember_me', type: 'checkbox', label: 'Remember Me'}
-    %button.btn.btn-primary{type: 'submit', translate: 'sign_in'}
+    .login-error{ng_show: 'showErrors'}
+      Invalid email or password
+    .session-email
+      %label{for: 'session-username-field', translate: 'session_form.email_label'}
+      %input#session-username-field.form-control{ng_model: 'session.email', ng_required: 'true'}
+    .session-password
+      %label{for: 'session-password-field', translate: 'session_form.password_label'}
+      %input#session-password-field.form-control{ng_model: 'session.password', ng_required: 'true', type: 'password'}
+    .remember-me
+      %input#session-remember-me-field{ng_model: 'session.remember_me', type: 'checkbox'}
+      %label{for: 'session-remember-me-field', translate: 'session_form.remember_me'}
+    %button.btn.btn-primary{type: 'submit', translate: 'session_form.sign_in'}
