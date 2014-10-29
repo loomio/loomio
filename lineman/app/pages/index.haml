@@ -6,7 +6,6 @@
     %meta{content: 'IE=Edge', 'http-equiv': 'X-UA-Compatible'}
     %meta{content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name: "viewport"}
     %link{href: '/css/app.css', media: 'screen', rel: 'stylesheet', type: 'text/css'}
-    %link{href: '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', rel: 'stylesheet'}
 
     %base{href: '/'}
     <!--[if lt IE 9]>
@@ -15,21 +14,26 @@
     <![endif]-->
   %body
     %header#header
-      %nav.navbar.navbar-default.navbar-static-top
+      %nav.navbar.navbar-default.navbar-fixed-top{role: 'nagivation'}
         .container
-          .navbar-header.text-center
-            .col-xs-2
-              %img.menu-image{src: 'img/logo.jpg'}
-            .col-xs-1
-            .col-xs-2
-              %i.fa.fa-2x.fa-inbox.menu-icon
-            .col-xs-2
-              %i.fa.fa-2x.fa-search.menu-icon
-            .col-xs-2
-              %i.fa.fa-2x.fa-users.menu-icon
-            .col-xs-1
-            .col-xs-2
-              %i.fa.fa-2x.fa-bars.menu-icon.bordered-icon
+          .navbar-header.loomio-nav
+            .navbar-brand
+              .loomio-nav-logo
+
+          .collapse.navbar-collapse.loomio-nav
+            %ul.nav.navbar-nav
+              %li{dropdown: '', is-open: 'inboxIsOpen'}
+                %a.navbar-btn.dropdown-toggle{ng-click: 'toggleInbox()'}
+                  %i.fa.fa-lg.fa-fw.fa-inbox
+                  %span.hide Inbox
+                .dropdown-menu{role: 'menu'}
+                  %inbox
+              %li
+                %a.navbar-btn
+                  %i.fa.fa-lg.fa-fw.fa-search
+              %li
+                %a.navbar-btn
+                  %i.fa.fa-lg.fa-fw.fa-users
 
     %main{ng_view: ''}
 

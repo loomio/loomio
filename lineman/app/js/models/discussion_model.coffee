@@ -12,6 +12,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService) ->
       @title = data.title
       @description = data.description
       @createdAt = data.created_at
+      @lastActivityAt = data.last_activity_at
       @private = data.private
 
     plural: 'discussions'

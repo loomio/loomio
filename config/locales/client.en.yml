@@ -9,6 +9,8 @@ en:
       like: 'Like'
       unlike: 'Unlike'
       cancel: 'Cancel'
+  inbox:
+    latest_threads: 'Latest threads'
 
   vote_form:
     i_agree: 'I agree'

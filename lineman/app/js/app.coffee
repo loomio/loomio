@@ -6,6 +6,7 @@ angular.module('loomioApp', ['ngRoute',
                              'ngSanitize',
                              'tc.chartjs',
                              'btford.markdown',
+                             'infinite-scroll',
                              'angularFileUpload']).config ($httpProvider) ->
 
   # consume the csrf token from the page

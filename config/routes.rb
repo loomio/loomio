@@ -25,6 +25,8 @@ Loomio::Application.routes.draw do
   end
 
   namespace :api, path: '/api/v1' do
+    resource :inbox, only: :show, controller: 'inbox'
+    resources :events, only: :index
     resources :discussions, only: :show
     resources :motions, only: :create
     resources :votes, only: :create

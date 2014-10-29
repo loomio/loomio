@@ -46,9 +46,11 @@ $thread-border-color: #ddd;
   @include fontSmall;
 }
 
+
 @import 'base';
 @import 'layout';
 @import 'thread';
 @import 'proposal_card';
+@import 'proposal_pie_chart';
 @import 'vote_form';
-@import 'pie_chart_legend';
+@import 'time_ago';
