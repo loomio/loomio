@@ -32,7 +32,7 @@
         .proposals-card
           %proposal_card{proposal: 'discussion.activeProposal()'}
 
-        .thread-events{infinite-scroll: "getNextPage()", infinite-scroll-distance:"2"}
+        .thread-events{infinite-scroll: "getNextPage()", infinite-scroll-distance: 2, infinite-scroll-disabled: 'lastPage'}
           %div{ng_repeat: 'event in wrap.events', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
 
         %add_comment{discussion: 'discussion'}
