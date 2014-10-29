@@ -21,6 +21,6 @@ class API::SessionsController < Devise::SessionsController
   private
 
   def authenticate
-    warden.authenticate! scope: resource_name
+    warden.authenticate! recall: "#{controller_path}#unauthorized"
   end
 end
