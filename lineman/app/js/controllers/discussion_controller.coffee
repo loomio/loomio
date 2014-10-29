@@ -2,7 +2,6 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, discussi
   $scope.discussion = discussion
 
   $scope.wrap = {}
-  $scope.wrap.events = []
   nextPage = 1
 
   busy = false
@@ -14,7 +13,6 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, discussi
     busy = true
     EventService.fetch {discussion_id: discussion.id, page: nextPage}, (events) ->
       $scope.lastPage = true if events.length == 0
-      $scope.wrap.events = discussion.events()
       nextPage = nextPage + 1
       busy = false
 
