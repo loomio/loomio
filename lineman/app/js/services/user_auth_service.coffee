@@ -8,3 +8,7 @@ angular.module('loomioApp').factory 'UserAuthService', (RecordStoreService, User
         user = new UserModel(response.data.user)
         RecordStoreService.put(user)
         @currentUser = user
+
+    logout: ->
+      $http.delete('/api/vi/sessions').then (response) ->
+        console.log(response)
