@@ -15,3 +15,11 @@ Feature: User creates proposal
     And I fill in the proposal details and submit the form
     Then a new proposal should be created
     And I should see the proposal details
+
+  Scenario: Group member creates proposal with custom vote text
+    When I visit the discussion page
+    And I click "Create new proposal"
+    And I fill in some custom vote text
+    And I fill in the proposal details and submit the form
+    Then a new proposal should be created
+    And it should have stored the custom vote text

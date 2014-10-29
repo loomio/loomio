@@ -4,6 +4,6 @@
                     alt: t(position_key)),
           new_motion_vote_path(motion, position: position),
           title: t(position_key),
-          "data-content" => t("#{position}_details"),
+          "data-content" => motion.send("#{position}_text"),
           class: "position btn vote-#{position}",
           id: "#{position}-vote"

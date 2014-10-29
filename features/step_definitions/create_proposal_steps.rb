@@ -6,6 +6,17 @@ When /^I fill in the proposal details and submit the form$/ do
   click_on 'proposal-submit'
 end
 
+When /^I fill in some custom vote text$/ do
+  @yes_text     = Faker::Lorem.sentence
+  @abstain_text = Faker::Lorem.sentence
+  @no_text      = Faker::Lorem.sentence
+  @block_text   = Faker::Lorem.sentence
+  fill_in 'motion_yes_text', with: @yes_text
+  fill_in 'motion_abstain_text', with: @abstain_text
+  fill_in 'motion_no_text', with: @no_text
+  fill_in 'motion_block_text', with: @block_text
+end
+
 Then /^I should see the create proposal page$/ do
   page.should have_css("#motion-form")
 end
@@ -17,6 +28,14 @@ end
 
 Then /^a new proposal should be created$/ do
   Motion.where(:name => @proposal_name).should exist
+end
+
+Then(/^it should have stored the custom vote text$/) do
+  motion = Motion.where(name: @proposal_name).first
+  motion.yes_text.should eq @yes_text
+  motion.abstain_text.should eq @abstain_text
+  motion.no_text.should eq @no_text
+  motion.block_text.should eq @block_text
 end
 
 When /^I am on a group page$/ do

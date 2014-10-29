@@ -2,13 +2,25 @@
   .col-md-5
     #motion-form
       = simple_form_for @motion, validate: true do |f|
-        = f.input :name, id: "motion-name", input_html: {class: 'js-warn-before-navigating-away'}, hint: t('motion_form.name_helper'), disabled: !@motion.can_be_edited?
+        %ul.nav.nav-tabs#group-form-tabs
+          %li.active
+            %a{href: '#default'}= t :"motion.info"
+          %li
+            %a{href: '#custom_vote_text'}= t :"motion.custom_vote_text"
 
-        = f.input :closing_at, as: :string, input_html: {value: @motion.closing_at.strftime('%Y-%m-%d %H:%M'), class: 'form_datetime'}
-        .timezone= "#{Time.zone.now.strftime('%Z')} (GMT #{Time.zone.formatted_offset})"
+        .tab-content
+          .tab-pane.active#default
+            = f.input :name, id: "motion-name", input_html: {class: 'js-warn-before-navigating-away'}, hint: t('motion_form.name_helper'), disabled: !@motion.can_be_edited?
+            .timezone= "#{Time.zone.now.strftime('%Z')} (GMT #{Time.zone.formatted_offset})"
+            = f.input :closing_at, as: :string, input_html: {value: @motion.closing_at.strftime('%Y-%m-%d %H:%M'), class: 'form_datetime'}
+            = f.input :description, input_html: {class: 'js-warn-before-navigating-away'}, disabled: !@motion.can_be_edited?
+            = f.input :discussion_id, as: :hidden, input_html: {value: @motion.discussion_id}
+          .tab-pane#custom_vote_text
+            = f.input :yes_text
+            = f.input :abstain_text
+            = f.input :no_text
+            = f.input :block_text
 
-        = f.input :description, input_html: {class: 'js-warn-before-navigating-away'}, disabled: !@motion.can_be_edited?
-        = f.input :discussion_id, as: :hidden, input_html: {value: @motion.discussion_id}
         - if action == :update
           = f.submit submit_text,
             :class => "btn btn-info",
