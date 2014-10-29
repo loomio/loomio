@@ -5,7 +5,7 @@
       %span{ng-hide: 'vote.hasStatement()', translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-name: '{{vote.authorName()}}'}
       %span{ng-show: 'vote.hasStatement()', translate: "new_vote_item.{{vote.positionVerb()}}_and_why", translate-value-name: '{{vote.authorName()}}'}
   .thread-event-body{ng_show: 'vote.statement'}
-    {{vote.statement}}
+    {{::vote.statement}}
   .thread-event-footer
     .thread-actions-and-meta
       %timeago{timestamp: 'vote.createdAt'}

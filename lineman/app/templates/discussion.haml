@@ -8,9 +8,9 @@
             .pull-left.thread-origin-icon
               %img{src: 'http://placehold.it/30'}
             .media-body.thread-origin-details
-              {{discussion.group().fullName()}}
+              {{::discussion.group().fullName()}}
               %br
-              %span{translate: 'discussion.started_by', translate-value-name: '{{discussion.authorName()}}'}
+              %span{translate: 'discussion.started_by', translate-value-name: '{{::discussion.authorName()}}'}
 
           .thread-discussion-context
             .thread-discussion-description{btf-markdown: 'discussion.description' }
@@ -20,7 +20,7 @@
             ·
             %a{href: '#', translate: 'common.action.edit'}>
             ·
-            %timeago{timestamp: 'discussion.createdAt' }>
+            %timeago{timestamp: '::discussion.createdAt' }>
             ·
             %span.discussion-privacy__is-private{ng-show: 'discussion.private'}>
               %i.fa.fa-lock>
@@ -29,7 +29,7 @@
               %i.fa.fa-globe>
               %span{translate: 'common.state.public'}
 
-        .thread-proposals
+        .proposals-card
           %proposal_card{proposal: 'discussion.activeProposal()'}
 
         .thread-events
