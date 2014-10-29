@@ -1,7 +1,7 @@
 .proposal-card{ng-show: 'proposal'}
-  %h2 {{proposal.name}}
+  %h2 {{::proposal.name}}
   .proposal-card-started-by
-    %span{translate: 'proposal_card.started_by', translate-value-name: '{{proposal.authorName()}}'}
+    %span{translate: 'proposal_card.started_by', translate-values: '::{name: proposal.authorName()}'}
     %span.time-ago>
       {{discussion.createdAt | timeFromNowInWords}}
 
@@ -31,5 +31,5 @@
     .proposal-card-vote.media{ng_repeat: 'vote in curatedVotes()'}
       .pull-left.thread-event-vote-icon{class: 'thread-event-vote-icon-{{vote.position}}'}
       .media-body
-        %strong {{vote.authorName()}}
-        %span.author-statement {{ vote.statement }}
+        %strong {{::vote.authorName()}}
+        %span.author-statement {{:: vote.statement }}
