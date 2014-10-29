@@ -16,12 +16,21 @@ class Admin::StatsController < Admin::BaseController
     render layout: false
   end
 
-  def group_metrics
+  def group_activity
     @metrics = []
-    group = Group.find params[:id]
-    @metrics << group_metrics_counts(group)
-    group.subgroups.each do |g|
-      @metrics << group_metrics_counts(g)
+    groups = []
+    if params[:id].present?
+      groups << Group.find(params[:id])
+    elsif params[:from].present? and params[:until].present?
+      groups = Group.parents_only.where('created_at > ? and created_at < ?',  params[:from], params[:until])
+    end
+    groups.each do |group|
+      unless (group.memberships.count == 0)
+        @metrics << group_metrics_counts(group)
+        group.subgroups.each do |g|
+          @metrics << group_metrics_counts(g)
+        end
+      end
     end
     render layout: false
   end
@@ -106,7 +115,7 @@ class Admin::StatsController < Admin::BaseController
     end
     active_users = voters | motion_authors | discussion_authors | comment_authors
     outcomes_count = g.motions.where('outcome IS NOT NULL').count
-    {id: g.id, name: g.name,
+    {id: g.id, name: g.full_name,
       discussions: g.discussions.count,
       comments: comments_count,
       motions: g.motions.count,
@@ -119,7 +128,11 @@ class Admin::StatsController < Admin::BaseController
       active_users: active_users.count,
       created_at: g.created_at,
       last_activity_at: last_activity_at,
-      coordinators: g.coordinators.map(&:name)}
+      coordinators: g.coordinators.map(&:name),
+      creator_id: g.creator_id,
+      locale: g.locale,
+      financial_nature: g.financial_nature
+    }
   end
 
   def format_percents(float)

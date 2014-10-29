@@ -3,6 +3,7 @@
     %tr
       %th ID
       %th Name
+      %th Financial nature
       %th Discussions
       %th Comments
       %th Proposals
@@ -16,11 +17,13 @@
       %th Created at
       %th Last activity at
       %th Coordinators
-      %th Active members
+      %th Creator ID
+      %th Locale
     - @metrics.each do |m|
       %tr
         %td= m.fetch(:id)
         %td= m.fetch(:name)
+        %td= m.fetch(:financial_nature)
         %td= m.fetch(:discussions)
         %td= m.fetch(:comments)
         %td= m.fetch(:motions)
@@ -33,4 +36,6 @@
         %td= m.fetch(:voters)
         %td= m.fetch(:created_at).strftime("%d-%m-%y")
         %td= m.fetch(:last_activity_at).strftime("%d-%m-%y")
-        %td=m.fetch(:coordinators).join(', ')
+        %td= m.fetch(:coordinators).join(', ')
+        %td= m.fetch(:creator_id)
+        %td= m.fetch(:locale)
