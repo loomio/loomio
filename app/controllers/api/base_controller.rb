@@ -1,5 +1,6 @@
 class API::BaseController < ActionController::Base
   include CurrentUserHelper
+  include ::ProtectedFromForgery
   skip_after_filter :intercom_rails_auto_include
   after_filter :increment_measurement
   respond_to :json
