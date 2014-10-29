@@ -435,3 +435,7 @@ form{
 }
 
 .tooltip.bottom .tooltip-arrow{ top: 0 !important; }
+
+[dir='RTL'] { text-align: right; }
+[dir='LTR'] { text-align: left; }
+.text-left[dir='RTL'] { text-align: left; }
