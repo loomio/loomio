@@ -33,6 +33,7 @@ class Vote < ActiveRecord::Base
   is_translatable on: :statement
 
   scope :for_user, lambda {|user_id| where(:user_id => user_id)}
+  scope :by_discussion, ->(discussion_id = nil) { joins(:motion).where("motions.discussion_id = ? OR ? IS NULL", discussion_id, discussion_id) }
   scope :most_recent, -> { where age: 0  }
 
   delegate :name, :to => :user, :prefix => :user # deprecated
@@ -50,9 +51,7 @@ class Vote < ActiveRecord::Base
   after_save :update_motion_vote_counts
   after_destroy :update_motion_vote_counts
 
-  def proposal_id=(id)
-    self.motion_id = id
-  end
+  alias :author= :user=
 
   def author
     user

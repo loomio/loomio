@@ -17,11 +17,12 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
       @updatedAt = data.updated_at
 
     params: ->
-      author_id: @authorId
-      parent_id: @parentId
-      discussion_id: @discussionId
-      body: @body
-      new_attachment_ids: @newAttachmentIds
+      comment:
+        author_id: @authorId
+        parent_id: @parentId
+        discussion_id: @discussionId
+        body: @body
+        new_attachment_ids: @newAttachmentIds
 
     plural: 'comments'
 

@@ -6,7 +6,7 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
     controller: 'DiscussionController'
     resolve:
       discussion: ($route, DiscussionService) ->
-        DiscussionService.fetchByKey($route.current.params.id)
+        DiscussionService.fetchOne($route.current.params.id)
       eventSubscription: ($http) ->
         $http.get('/api/v1/faye/subscribe').then (response) ->
           response.data

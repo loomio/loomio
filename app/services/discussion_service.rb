@@ -37,6 +37,11 @@ class DiscussionService
     comment.destroy
   end
 
+  def self.edit_comment(user, params, comment)
+    user.ability.authorize! :create, comment
+    comment.update body: params[:body], edited_at: Time.zone.now
+  end
+
   def self.start_discussion(discussion)
     user = discussion.author
     discussion.inherit_group_privacy!

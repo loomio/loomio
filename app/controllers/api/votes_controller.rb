@@ -1,19 +1,20 @@
-class API::VotesController < API::BaseController
-  
+class API::VotesController < API::RestfulController
+
   def index
-    @votes = Vote.joins(:motion)
-                 .where("motions.discussion_id = ?", params[:discussion_id])
-                 .for_user(params[:user_id])
-                 .where(age: 0)
-    render json: @votes
+    @votes = Vote.where(motion: @motion)
+                 .most_recent
+                 .order(:created_at)
+    respond_with_collection
   end
 
   def create
-    @vote = Vote.new(permitted_params.api_vote)
-    @vote.user = current_user
-    @vote.motion = Motion.find(@vote.motion_id)
-    @event = MotionService.cast_vote(@vote)
-    render_event_or_model_error(@event, @motion)
+    MotionService.cast_vote @vote
+    respond_with_resource
   end
-end
 
+  def my_votes
+    @votes = @discussion.votes.most_recent.for_user(current_user)
+    respond_with_collection
+  end
+
+end
