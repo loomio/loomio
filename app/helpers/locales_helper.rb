@@ -9,6 +9,10 @@ module LocalesHelper
     Loomio::I18n::DETECTABLE_LOCALES
   end
 
+  def rtl_locales
+    Loomio::I18n::RTL_LOCALES
+  end
+
   def locale_name(locale)
     I18n.t(locale.to_sym, scope: :native_language_name)
   end
@@ -48,7 +52,7 @@ module LocalesHelper
   end
 
   def language_dir(locale)
-    Loomio::I18n::RTL_LOCALES.include?(locale) ? 'RTL' : 'LTR'
+    rtl_locales.include?(locale) ? 'RTL' : 'LTR'
   end
 
   # View helper methods for language selector dropdown
@@ -60,9 +64,17 @@ module LocalesHelper
   end
 
   def language_options
-    selectable_locales.map do |locale|
+    supported_options = selectable_locales.map do |locale|
       [locale_name(locale), locale]
     end
+
+    extra_options = (rtl_locales - selectable_locales).map do |locale|
+      ["incomplete: " + locale_name(locale), locale]
+    end
+
+    supported_options +
+    [['---------------------------------', 'disabled_option']] +
+    extra_options
   end
 
   def selected_language_option
