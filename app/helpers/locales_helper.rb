@@ -44,7 +44,10 @@ module LocalesHelper
 
   def text_direction(object)
     locale = object.try(:locale).try(:to_sym)
+    language_dir(locale)
+  end
 
+  def language_dir(locale)
     Loomio::I18n::RTL_LOCALES.include?(locale) ? 'RTL' : 'LTR'
   end
 

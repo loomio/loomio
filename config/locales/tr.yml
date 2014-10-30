@@ -321,6 +321,8 @@ tr:
     c13: Önerileri oyla.
     m5: Herhangi bir müzakere'nin içerik ve başlığını düzenle.
     m6: Kullanıcıların, koordinatör olabileceği bir alt grup başlatın.
+  discussion_privacy:
+    private: Bu müzakere, grup üyelerine özeldir
   group_privacy:
     visible_to:
       members: Gizli grup. Sadece üyeler görebilir.
@@ -400,6 +402,7 @@ tr:
     follow:
       click_to_follow: "Grubu takip etmek için tıkla"
       click_to_unfollow: "Grubu takip etmeyi bırakmak için tıkla"
+      following_details: "Bu grupta ki her konu hakkında bilgilendirileceksiniz."
   group_request:
     neighbourhood_support_group: "Örnek: Komşu Destek Grubu"
     please_select_an_option: Lütfen, bir opsiyon seçin
