@@ -1,13 +1,14 @@
 angular.module('loomioApp').controller 'ProposalsController', ($scope, VoteService, ProposalService, ProposalModel, UserAuthService) ->
-  $scope.active = $scope.discussion.activeProposal()
-  currentUser = UserAuthService.currentUser
 
-  ProposalService.fetchByDiscussion $scope.discussion.id, (proposals) ->
-    $scope.proposals = _.map proposals, (proposal) -> new ProposalModel(proposal)
-    VoteService.fetchByCurrentUserAndDiscussion(currentUser.id, $scope.discussion.id)
+  ProposalService.fetchByDiscussion $scope.discussion, ->
+    VoteService.fetchMyVotes($scope.discussion)
 
-  $scope.isActive = (proposal) ->
-    proposal.id == $scope.active.id
+  $scope.isSelectedProposal = (proposal) ->
+    if $scope.selectedProposal? and proposal?
+      $scope.selectedProposal.id == proposal.id
 
-  $scope.setActive = (proposal) ->
-    $scope.active = proposal
+  $scope.setSelectedProposal = (proposal) ->
+    $scope.selectedProposal = proposal
+    VoteService.fetchByProposal(proposal)
+  if $scope.discussion.activeProposal()?
+    $scope.setSelectedProposal $scope.discussion.activeProposal()

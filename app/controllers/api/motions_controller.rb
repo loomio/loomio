@@ -1,16 +1,24 @@
-class API::MotionsController < API::BaseController
+class API::MotionsController < API::RestfulController
   
   def index
-    @motions = Motion.where(discussion_id: params[:discussion_id])
-    render json: @motions, root: :proposals
+    @motions = visible_records.where(discussion: @discussion).order(:created_at)
+    respond_with_collection
   end
 
   def create
-    @motion = Motion.new(permitted_params.api_motion)
-    @motion.author = current_user
-    @motion.discussion = Discussion.find(@motion.discussion_id)
-    @event = MotionService.create(@motion)
-
-    render_event_or_model_error(@event, @motion)
+    MotionService.create @motion
+    respond_with_resource
   end
+
+  def update
+    MotionService.update_motion motion: @motion, params: permitted_params, user: current_user
+    respond_with_resource
+  end
+
+  private
+
+  def visible_records
+    Queries::VisibleMotions.new(user: current_user)
+  end
+
 end

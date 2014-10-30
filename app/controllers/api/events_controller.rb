@@ -1,7 +1,6 @@
-class API::EventsController < API::BaseController
+class API::EventsController < API::RestfulController
   def index
-    events = Event.where(discussion_id: params[:discussion_id]).order('id').page(params[:page]).per(10).to_a
-    #raise events.inspect
-    render json: events
+    @events = Event.where(discussion: @discussion).order(:created_at).page(params[:page]).per(10).to_a
+    respond_with_collection
   end
 end
