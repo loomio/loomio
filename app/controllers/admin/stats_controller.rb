@@ -39,7 +39,7 @@ class Admin::StatsController < Admin::BaseController
     @metrics = []
     groups = []
     if params[:from].present? and params[:until].present?
-      date_range = params[:from]..params[:until]
+      date_range = (params[:from].to_date)..(params[:until].to_date)
       if params[:group_ids].present?
         group_ids = params[:group_ids].split(',')
         groups = Group.where(id: group_ids.map(&:to_i))
