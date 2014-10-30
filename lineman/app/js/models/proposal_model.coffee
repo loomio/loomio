@@ -8,6 +8,7 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
       @closingAt = data.closing_at
       @closedAt = data.closed_at
       @authorId = data.author_id
+      @outcome = data.outcome
       @discussionId = data.discussion_id
       #@voteIds = data.vote_ids
       @voteCounts = data.vote_counts
