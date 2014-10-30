@@ -49,7 +49,7 @@ class Admin::StatsController < Admin::BaseController
       days = date_range.to_a
       groups.each do |group|
         days.each do |day|
-          unless (group.memberships.count == 0)
+          if (group.memberships.where('created_at <= ?', day).count > 0)
             @metrics << group_metrics_daily_counts(group, day)
           end
         end
