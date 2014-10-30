@@ -1,5 +1,6 @@
 en:
   native_language_name:
+    an: aragonés
     'be-BY': беларуская мова
     'bg-BG': български
     ca: Català
@@ -37,7 +38,6 @@ en:
 
     # experimental
 
-    an: aragonés
     ar: العربية/عربي
     cmn: 官話
     hr: hrvatski
@@ -53,3 +53,5 @@ en:
     ru: русский язык
     sl: slovenski jezik
     te: తెలుగు
+    ur: اُردُو
+    'ur-PK': اُردُو (Pakistan)
