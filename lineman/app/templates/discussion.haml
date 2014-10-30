@@ -29,8 +29,7 @@
               %i.fa.fa-globe>
               %span{translate: 'common.state.public'}
 
-        .proposals-card
-          %proposal_card{proposal: 'discussion.activeProposal()'}
+        %proposals{discussion: 'discussion', active: 'discussion.activeProposal()'}
 
         .thread-events{infinite-scroll: "getNextPage()", infinite-scroll-distance: 2, infinite-scroll-disabled: 'lastPage'}
           %div{ng_repeat: 'event in discussion.events()', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
