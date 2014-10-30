@@ -48,4 +48,15 @@ he:
         subject: 'מישהו הזמין אותך להצטרף לקבוצת הLoomio שלו'
   error:
     access_denied: "אין לך הרשאות לעשות זאת."
+    cant_join_subgroup: "לא ניתן להצטרף לתת-קבוצה ללא חברות בקבוצה הראשית."
+    cant_modify_position: "ההצעה נסגרה."
+    cant_state_position: "ההצעה נסגרה."
+    cant_view_member_profile: "לא ניתן לצפות בפרטי המשתמש מכיוון שאינכם משתייכים לאותה הקבוצה."
+    contribution: "יש להתחבר על מנת לתרום."
+    discussion_not_created: "לא ניתן לפתוח בדיון."
+    discussion_not_moved: "אין לך הרשאות להעביר את השיחה ל%{destination_group.name}"
+    group_not_archived: "לא ניתן לארכב קבוצה זו"
+    invalid_close_date: "תאריך סגירה לא תקין, נא לוודא כי התאריך עתידי."
+    invalid_email: "נא להזין לפחות כתובת דואל תקינה אחת"
+    image_upload_fail: "לא ניתן לטעון תמונה. נא לוודא שגודל הקובץ קטן מ1 מגהבייט ומסוג .jpeg, .png, או .gif "
   translate: "עזרו בתרגום Loomio!"
