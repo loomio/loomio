@@ -64,7 +64,10 @@ class Admin::StatsController < Admin::BaseController
     group_ids = params[:group_ids].split(',')
     groups = Group.where(id: group_ids.map(&:to_i))
     groups.each do |group|
-      date_range = (group.created_at.to_date..(group.created_at.to_date + 30.days))
+      start = group.created_at.to_date
+      thirty_days_later = group.created_at.to_date + 30.days
+      finish = Date.today < thirty_days_later ? Date.today : thirty_days_later
+      date_range = (start..finish)
       days = date_range.to_a
       days.each do |day|
         if (group.memberships.where('created_at <= ?', day).count > 0)
