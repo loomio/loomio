@@ -1,13 +1,13 @@
 source 'http://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.1.4'
 
-gem 'rails', '~> 4.1.6'
+gem 'rails', '~> 4.1.7'
 gem 'rake'
 gem 'pg', '~> 0.17.1'
 gem 'pg_search', '~> 0.7.8'
 gem 'haml-rails'
-gem 'devise', '~> 3.2.4'
+gem 'devise', '~> 3.4.1'
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-google-oauth2', '~> 0.2.5'
 gem 'omniauth-facebook', '~> 1.6.0'

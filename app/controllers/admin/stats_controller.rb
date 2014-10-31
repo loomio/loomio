@@ -39,7 +39,7 @@ class Admin::StatsController < Admin::BaseController
     @metrics = []
     groups = []
     if params[:from].present? and params[:until].present?
-      date_range = params[:from]..params[:until]
+      date_range = (params[:from].to_date)..(params[:until].to_date)
       if params[:group_ids].present?
         group_ids = params[:group_ids].split(',')
         groups = Group.where(id: group_ids.map(&:to_i))
@@ -49,9 +49,29 @@ class Admin::StatsController < Admin::BaseController
       days = date_range.to_a
       groups.each do |group|
         days.each do |day|
-          unless (group.memberships.count == 0)
+          if (group.memberships.where('created_at <= ?', day).count > 0)
             @metrics << group_metrics_daily_counts(group, day)
           end
+        end
+      end
+    end
+    render layout: false
+  end
+
+  def first_30_days
+    @metrics = []
+    groups = []
+    group_ids = params[:group_ids].split(',')
+    groups = Group.where(id: group_ids.map(&:to_i))
+    groups.each do |group|
+      start = group.created_at.to_date
+      thirty_days_later = group.created_at.to_date + 30.days
+      finish = Date.today < thirty_days_later ? Date.today : thirty_days_later
+      date_range = (start..finish)
+      days = date_range.to_a
+      days.each do |day|
+        if (group.memberships.where('created_at <= ?', day).count > 0)
+          @metrics << daily_activity_counts(group, day)
         end
       end
     end
@@ -181,6 +201,33 @@ class Admin::StatsController < Admin::BaseController
       daily_votes: daily_votes_count,
       outcomes: org_outcomes_count,
       members: org_memberships.where('created_at <= ?', day).count,
+      financial_nature: group.financial_nature,
+      creator_id: group.creator_id,
+      locale: group.locale
+    }
+  end
+
+  def daily_activity_counts(group, day)
+    discussions = Discussion.where(group_id: [group.org_group_ids]).where('author_id != 5562').where('created_at <= ?', day)
+    comments_count = Comment.where(discussion_id: discussions.map(&:id)).where('created_at <= ?', day).count
+    motions = Motion.where(discussion_id: discussions.map(&:id)).where('author_id != 5562').where('created_at <= ?', day)
+    votes_count = 0
+    motions.each do |m|
+      votes_count += Vote.where(motion_id: m.id).where('created_at <= ?', day).count
+    end
+    members_count = Membership.where(group_id: [group.org_group_ids]).where('created_at <= ?', day).count
+    outcomes_count = motions.where('outcome IS NOT NULL').where('created_at <= ?', day).count
+    {
+      day: day,
+      id: group.id,
+      name: group.full_name,
+      subgroups: group.subgroups.where('created_at <= ?', day).count,
+      discussions: discussions.count,
+      comments: comments_count,
+      motions: motions.count,
+      daily_votes: votes_count,
+      outcomes: outcomes_count,
+      members: members_count,
       financial_nature: group.financial_nature,
       creator_id: group.creator_id,
       locale: group.locale
