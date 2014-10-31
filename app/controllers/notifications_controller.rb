@@ -6,7 +6,7 @@ class NotificationsController < BaseController
   def dropdown_items
     @unviewed_notifications = current_user.unviewed_notifications.order('created_at DESC')
     @notifications = recent_notifications.order('created_at DESC')
-    preload_associations
+    #preload_associations
     render layout: false
   end
 
@@ -15,7 +15,7 @@ class NotificationsController < BaseController
     @notifications = current_user.notifications.order('created_at DESC')
                      .includes(:event => [:eventable, :user])
                      .page(params[:page]).per(15)
-    preload_associations
+    #preload_associations
   end
 
   def mark_as_viewed
@@ -36,14 +36,14 @@ class NotificationsController < BaseController
     end
   end
 
-  def preload_associations
-    motions = @notifications.select { |n| n.eventable.kind_of? Motion }.map(&:eventable)
-    ActiveRecord::Associations::Preloader.new.preload(motions, [{discussion: :group }, :author])
+  #def preload_associations
+    #motions = @notifications.select { |n| n.eventable.kind_of? Motion }.map(&:eventable)
+    #ActiveRecord::Associations::Preloader.new.preload(motions, [{discussion: :group }, :author])
 
-    discussions = @notifications.select { |n| n.eventable.kind_of? Discussion }.map(&:eventable)
-    ActiveRecord::Associations::Preloader.new.preload(discussions, [:group, :author])
+    #discussions = @notifications.select { |n| n.eventable.kind_of? Discussion }.map(&:eventable)
+    #ActiveRecord::Associations::Preloader.new.preload(discussions, [:group, :author])
 
-    comments = @notifications.select { |n| n.eventable.kind_of? Comment }.map(&:eventable)
-    ActiveRecord::Associations::Preloader.new.preload(comments, [{:discussion => :group}, :user])
-  end
+    #comments = @notifications.select { |n| n.eventable.kind_of? Comment }.map(&:eventable)
+    #ActiveRecord::Associations::Preloader.new.preload(comments, [{:discussion => :group}, :user])
+  #end
 end
