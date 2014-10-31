@@ -20,13 +20,13 @@ an:
       privacy: 'Privacidat'
       services: 'Servicios'
     hero:
-      head_html: 'O mundo ameneste millors camins ta <strong>prener decisions en conchunto.</strong>'
+      head_html: 'O mundo ameneste una millor traza de <strong>prener decisions de conchunta.</strong>'
       desc_html: 'Loomio ye software libre y de <a href="https://github.com/loomio/loomio">codigo ubierto</a> ta que qualsiquiera persona, en qualsiquier parte, participe en as decisions que los afecten.'
     product:
       header_html: 'Quan escuitamos <strong>todas as voces</strong>, prenemos <strong>millors decisions. </strong>'
       step1:
         header: '1. Discutir a fondo as cosetas'
-        desc: 'Empecipia una discusión en qualsiquier tema, y convida a las personas que quieras. Comparte perspectivas diversas y desembolica las ideyas en conchunto.'
+        desc: 'Empecipia una discusión en qualsiquier tema, y convida a las personas que quieras. Comparte perspectivas diversas y desembolica las ideyas de conchunta.'
       step2:
         header: '2. Construir un alcuerdo'
         desc: 'Qualsequiera puede proposar una forma d''actuar. A chent puede estar d''alcuerdo, abstener-se, no estar d''alcuerdo u blocar-la, pa que totz sepa qué piensa cadaún, y por qué.'
@@ -42,7 +42,7 @@ an:
       header_html: 'Loomio 1.0 funciona en qualsiquier dispositivo, construiu con lo millor en <strong>tecnolochía ubierta ta mobils.</strong>'
     quote:
       header:
-        rushkoff_html: '“Loomio <strong>fa serivr o potencial d''internet</strong> ta trayer a las personas enta un consenso en cuenta de enta un debat polarizau.”<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, authr de <em>Present Shock</em></div>'
+        rushkoff_html: '“Loomio <strong>fa servir o potencial d''internet</strong> ta trayer a las personas enta un consenso en cuenta de enta un debat polarizau.”<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, authr de <em>Present Shock</em></div>'
         sifry_html: '«Loomio aconsigue un punto optimo entre a <strong>voz individual</strong> y a <strong>decisión colectiva</strong>». <div class="attributation"> - Micah Sifry, editor de <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: 'Arredol de Loomio'

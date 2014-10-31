@@ -5,9 +5,10 @@ module Loomio
 
     DETECTABLE_LOCALES = SELECTABLE_LOCALES + %i( be pt zh zh-HK )
 
-    FALLBACKS = { :ca      => :es,
-                  :'pt-PT' => :'pt-BR',
+    FALLBACKS = { :an      => :es,
                   :be      => :'be-BY',
+                  :ca      => :es,
+                  :'pt-PT' => :'pt-BR',
                   :pt      => :'pt-BR',
                   :zh      => :'zh-TW',
                   :'zh-HK' => :'zh-TW'

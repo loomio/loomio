@@ -194,7 +194,7 @@ an:
     what_you_have_not_read_yet: "Isto ye o que no has leyiu."
     dropdown-btn: 'Servilla de dentrada'
     empty: Yes a o día! No i hai comentarios que no haigas visto.
-    preferences_instructions_html: '<strong>Arrociega os elementos</strong> ta reordenar-los. <strong>Deselecciónalos</strong> ta borrar-los d''a tuya servilla de dentrada.'
+    preferences_instructions_html: '<strong>Arrociega os elementos</strong> ta reordenar-los. <strong>Deselecciona-los</strong> ta borrar-los d''a tuya servilla de dentrada.'
   notifications:
     header: "Notificacions"
     new_discussion: "ha empecipiau una discusión"
@@ -450,39 +450,39 @@ an:
   see_previous_decisions: "Veyer decisions anteriors"
   see_more: "Veyer mas"
   create_new_proposal: "Crear una propuesta"
-  empty_decision_list_html: "Yes listo ta prener una decisión? <br> Qualsiquiera puede empecipiar una propuesta."
+  empty_decision_list_html: "Yes presto ta prener una decisión? <br> Qualsiquiera puede empecipiar una propuesta."
   empty_decision_index: " Iste grupo no ha preso garra decisión encara."
-  empty_discussion_list: "Encara no i hai actividat en ista discusión."
-  go_to_add_comment_html: "Ta adhibir un comentario,  <a href='%{href}'> veye a la fin d''a discusión </a>."
+  empty_discussion_list: "Encara no i hai garra actividat en ista discusión."
+  go_to_add_comment_html: "Ta adhibir un comentario,  <a href='%{href}'> ves ta la fin d'a discusión </a>."
   comment_by: "Comentario de %{comment_author}"
   read_up_to: "Dica aquí leyió en a suya zaguera visita"
   discussion_list:
     clear_filters: "Limpiar filtros:Veyer todas as discusions"
     filter_unread:
-      enable: "Solament amostrar discusions no leitas"
-      disable: "Leyer discusions leidas y no leidas"
+      enable: "Nomás amostrar discusions no leyidas"
+      disable: "Leyer discusions leyidas y no leyidas"
     filter_followed:
-      enable: "Solament amostrar discusions que sigo"
-      disable: "Leyer discusions leidas y no leidas"
+      enable: "Nomás amostrar discusions que sigo"
+      disable: "Leyer discusions leyidas y no leyidas"
     empty:
-      no_discussions: "No i hai discusions en garra d''os tuyos grupos."
-      no_discussions_in_group: "Iste grupo no tiene discusions encara."
-      no_discussions_matching_filters_html: "No s''han trobau discusions. <a href='%{link}'>Limpiar filtros</a>."
-      no_public_discussions: "No i hai discusions publicas en iste grupo."
+      no_discussions: "No i hai discusions en garra d'os tuyos grupos."
+      no_discussions_in_group: "Iste grupo no tiene encara garra discusions."
+      no_discussions_matching_filters_html: "No s'ha trobau discusions. <a href='%{link}'>Limpiar filtros</a>."
+      no_public_discussions: "No i hai garra discusión publica en iste grupo."
       discussions_are_private: "Todas as discusions en iste grupo son privadas."
       request_membership_html: "Ta veyer discusions privadas, <a href='%{href}'>solicita unir-te a o grupo.</a>"
-      membership_is_invitation_only: "Ta unir-te a iste grupo amenestes estar convidau por un miembro."
+      membership_is_invitation_only: "Ta unir-te a iste grupo amenestes estar convidau por bell miembro."
       membership_is_invitation_by_admin_only: "Ta unir-te a iste grupo amenestes estar convidau por un coordinador."
       log_in_html: "Si yes un miembro, <a href='%{href}'>encieta sesión</a> ta veyer as discusions privadas."
   discussion_context:
     started_html: "Encetau fa %{when} por <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Zaguera edición fa %{when} por <a href='%{link}' class='%{link_class}'>%{who}</a>"
-    see_revision_history: "Veyer historial de revisión"
-    see_history: "Veyer historia"
-    click_to_follow: "Clic ta seguir o grupo"
-    click_to_unfollow: "Clic ta deixar de seguir o grupo"
-    following_details: "Se le notificará de l''actividat en iste filo."
-    not_following_details: "No se le notificará de l''actividat en iste filo."
+    see_revision_history: "Veyer historial de revisions"
+    see_history: "Veyer historial"
+    click_to_follow: "Fe clic ta seguir o grupo"
+    click_to_unfollow: "Fe clic ta deixar de seguir o grupo"
+    following_details: "Se le notificará de l'actividat en iste filo."
+    not_following_details: "No se le notificará de l'actividat en iste filo."
   description_history:
     header: "Historial de revisión"
     subheader: "Versión"
@@ -502,7 +502,7 @@ an:
   move_discussion: "Mover discusión"
   move_discussion_to_hidden_group: "Actualment, ista discusión ye publica. Tresladar-la a un grupo amagau la convertirá en privada."
   move_discussion_to_public_group: "Actualment, ista discusión ye privada. Tresladar-la a un grupo publico la convertirá en publica."
-  move_discussion_where: "A án te fería goyo tresladar ista discusión?"
+  move_discussion_where: "Ta ón te fería goyo tresladar ista discusión?"
   delete_discussion: "Eliminar discusión"
   confirm_delete_discussion: "Yes seguro que quiers eliminar permanentment ista discusión?"
   new_proposal: "Nueva propuesta"
@@ -512,7 +512,7 @@ an:
   change_proposal_close_date: "Cambiar calendata de zarre"
   change_proposal_close_date_header: "Cambiar a calendata ta zarrar a propuesta '%{which}'"
   proposal: Propuesta
-  proposal_close_date_error: "Por favor, indique una calendata futura"
+  proposal_close_date_error: "Por favor, indica bella calendata futura"
   proposal_closing_when: "Zarra en %{when}"
   proposal_closed_when: "Zarrau dende fa %{when}"
   proposed_when_by_who: "Proposau fa %{when} por %{who}"
@@ -520,43 +520,46 @@ an:
   engagement_on_closed_proposal: "%{percent}%% de miembros ha manifestau a suya posición (%{numerator}/%{denominator})"
   state_your_position: "Estableix a tuya posición"
   positions: "Posicions"
-  yes_position: "Soi d''alcuerdo"
-  yes_details: "Soi d''alcuerdo con isto y quiero que siga abance."
+  yes_position: "Soi d'alcuerdo"
+  yes_details: "Soi d'alcuerdo con isto y quiero que siga abanzando."
   abstain_position: "M'abstiengo"
   abstain_details: "Soi contento con o que o grupo decida sin yo."
-  no_position: "No soi d''alcuerdo"
-  no_details: " Creigo que podemos fer-lo millor, pero si a resta d''o grupo siente que ye o millor curso d''acción, alavez yo soi d''alcuerdo con que siga abance."
-  block_position: "Bloqueyo"
-  block_details: "Tiengo fuertes obcheccions a ista propuesta y no soi d''alcuerdo con que siga abance."
+  no_position: "No soi d'alcuerdo"
+  no_details: " Creigo que podemos fer-lo millor, pero si a resta d'o grupo siente que ye o millor curso d''acción, alavez yo soi d''alcuerdo con que siga abance."
+  block_position: "Bloco"
+  block_details: "Tiengo fuertes obcheccions a ista propuesta y no soi d'alcuerdo con que siga ta debant."
   not_voted: "[Amostrar os miembros que encara no han decidiu]"
   outcome_placeholder: "Quál estió o resultau d'ista propuesta?"
-  outcome_submit: "Publicar resultau"
+  outcome_submit: "Publicar o resultau"
   position_verbs:
-    'yes': "i soi d'alcuerdo"
-    'no': "en desacuerdo"
-    abstain: "M'abstiengo"
-    block: "Bloqueyo"
+    'yes': "d'alcuerdo"
+    'no': "en desalcuerdo"
+    abstain: "abstención"
+    block: "blocar"
     past_tense:
       'yes': "ye d'alcuerdo"
-      'no': "No soi d''alcuerdo"
-      abstain: "M'abstiengo"
-      block: "Bloqueyo"
+      'no': "no ye d'alcuerdo"
+      abstain: "s'abstién"
+      block: "ha blocau"
   unable_to_vote:
     permission_denied: "No tiens permiso ta votar en ista propuesta."
-    motion_closed: "Ista propuesta ya s''ha zarrau"
+    motion_closed: "Ista propuesta ya s'ha zarrau"
   edit_comment:
-    comment_changes: "Comentar cambeos"
+    comment_changes: "Comentar os cambios"
     edit_comment: "Editar comentario"
   help:
-    coordinating: 'Coordinando o tuyo grupo en Loomio'
+    coordinating: 'Cómo coordinar o tuyo grupo en Loomio'
     coordinating_details: |
-      Como co-ordinador, yes responsable d'encetar o tuyo grupo y convidar⏎
-      a totz a participar. Ademas d''aprender a usar una nueva ferramienta de software, o tuyo grupo⏎
-      será aprendendo nuevos procesos ta colaborar pero efectivament y prenendo buenas decisions⏎
-      chuntos. Aquí puetz trobar qualques consellos ta que o tuyo grupo tienga muito exito:⏎
+      Como co-ordinador, yes responsable d'encetar o tuyo grupo y convidar
+      a totz a participar. Ademas d'aprender a usar una nueva ferramienta de software, o tuyo grupo
+      será aprendendo nuevos procesos ta colaborar mas efectivament y prenendo buenas decisions
+      chuntos. Aquí puetz trobar qualques consellos ta que o tuyo grupo tienga muito exito:
     different_ways: 'Trazas diferents d''usar Loomio'
     engaging_html: |
-      ASDSADSAD
+      <h2>Trucos ta embrecar a o grupo</h2>
+      <p>A chent se gosa animar a participar quan i hai una propuesta interesant en a mesa. Una buena propuesta contién un plan d'acción ta o grupo, que fa obvio saber qué significa estar d'alcuerdo u en desalcuerdo. Piensa en cómo puetz identificar discusions/decisions que o grupo ye fendo presencialment u por correo, pero que serían de millor fer en Loomio.</p>
+      <p>Si o grupo ye empecipiando, puetz empecipiar con una decisión que no chenere controversias grieus, ta dar a totz a oportunidat de chugar con a ferramienta y veyer en acción o proceso de decisión.</p>
+      <p>Unatra traza d'animar a la chent a embrecar-se en una discusión ye fer servir a caracteristica @mention ta avisar a chent determinada; asinas se les ninviará un correu pa decir-les que se les ha mencionau en un comentario.</p>
     example1_html: |
       <h3>O grupo ha de discutir sobre un tema amplio y desembolicar una solucion conchunta</h3>
       <p>Estratechia: Discutir o tema entre un tiempo antes d'empecipiar una propuesta.</p>
@@ -565,30 +568,30 @@ an:
       empieza a participar en o proceso, ye muito mas prebable que sigan satisfeitos con
       o resultau u decision final.</p>
     example2_html: |
-      <h3>Tiens ya en mente una propuesta, y quiers aconseguir un refrendo d''o grupo ta seguir abance.</h3>
-      <p>Estratechia: Prencipia una discusión sobre una decisión especifica y creya immediatament una propuesta.</p>
+      <h3>Tiens ya en mente una propuesta, y quiers aconseguir un refrendo d'o grupo ta seguir abance.</h3>
+      <p>Estratechia: Prencipia una discusión sobre una decisión especifica y crea de camín una propuesta.</p>
       <p>Si tiens en mente un resultau claro pero quiers asegurar-te que no i hai garra problema critico,
       puetz usar a propuesta ta obtener una rapida contribución en a decisión.</p>
       <p>Puetz fer cosetas como finalizar un documento, aprebar una solicitut, u refrendar una obra realizada.</p>
     get_in_touch: "Mete-te en contacto"
-    get_in_touch_description_html: "Si tiens preguntas u sucherencias, <a href='%{link}'> escribir a</a>."
+    get_in_touch_description_html: "Si tiens preguntas u sucherencias, <a href='%{link}'> escribe a</a>."
     getting_started: "Primers pasos"
-    getting_started_description: "A la cucha, o grupo debat un tema, intercambiando ideyas y información. Quan cal prener una decisión, amaneixe a la dreita."
-    getting_the_most: 'Aprofitando a o maximo l''uso de Loomio'
-    have_your_say: "Die a tuya opinión "
-    have_your_say_details_html: |-
-      <p>Quan sías listo ta decidir, clica en un d''os quatro botons de decisión.</p>⏎
-      <p>Una vegada haigas decidiu, da una breu explicación. Debaixo d''o grafico circular⏎
-      puetz veyer o que piensan os de demás, facilitando una rapida comprensión d''o estau d''a discusión.⏎
-      A medida que se vaiga adhibindo nueva informacón puetz ir cambiando a tuya decisión en qualsiquier momento</p>⏎\n
+    getting_started_description: "A la zurda, o grupo debate un tema, intercambiando ideyas y información. Quan cal prener una decisión, amaneixe a la dreita."
+    getting_the_most: 'Aprofitando o maximo de Loomio'
+    have_your_say: "Da a tuya opinión "
+    have_your_say_details_html: |
+      <p>Quan sigas presto ta decidir, clica en un d'os quatro botons de decisión.</p>
+      <p>Malas que haigas decidiu, da una breu explicación. Debaixo d'o grafico circular
+      puetz veyer o que piensan os de demás, facilitando una rapida comprensión d'o estau d''a discusión.
+      A medida que se vaiga adhibindo nueva informacón puetz ir cambiando a tuya decisión en qualsiquier momento</p>
     have_a_discussion: "Discutir un tema"
-    have_a_discussion_description: "O tema y qualsiquier atra información relevant se sitúan en a parte superior d''a pachina. Utiliza o quadro de comentario ta adhibir a tuya voz a dita discusión."
+    have_a_discussion_description: "O tema y qualsiquier atra información relevant se troban en a parte superior d''a pachina. Fe servir o quadro de comentario ta adhibir a tuya voz en dita discusión."
     help: "Aduya"
     how_it_works: "Cómo funciona"
     invitation_html: |
       <h2>Redactar una buena invitación</h2>
-      <p>A primera pregunta que tot nuevo miembro se ferá ye «A qué se dedica iste grupo?»</p>
-      <p>Piensa en a forma mas sencilla con la puedas describir a o grupo: Qué queretz aconseguir chuntos? Qué tipo de decisions prendretz? Quí serán involucrados?</p>
+      <p>A primera pregunta que tot nuevo miembro se fará ye «A qué s'adedica iste grupo?»</p>
+      <p>Piensa en a forma mas sencilla con la puedas describir a o grupo: Qué queretz aconseguir chuntos? Qué tipo de decisions prendretz? Quí serán embrecaus?</p>
       <p>Podría estar buena ideya charrar en primeras con o tuyo grupo, antes de convidar-les a Loomio.</p>
       <p>As personas querrán saber por qué han estau convidadas, qué s'aspera d'ellas,
       y por qué mereixe o suyo tiempo aprender a usar una nueva ferramienta.</p>
@@ -596,61 +599,61 @@ an:
     join_the_community_description_html: "Totz son bienvenius en \"Loomio Community\", an charramos de cómo aprofitar de tot a ferramienta y de cómo amillorar-la.<br /><br /><a href=\"https://www.loomio.org/groups/3\">Preta aquí ta ir a o grupo \"Loomio Community\" group</a>, an puetz solicitar estar-ne miembro."
     images_and_text_formatting: "Imagenes y formato de texto"
     images_and_text_formatting_html: |
-      <p>Loomio usa «marcadors» ta la inclusión d'imachens y o formateo de texto.
-      Puetz activar marcadors con o chicot icono griso baixo o quadro de comentarios.</p>
+      <p>Loomio fa servir «marcadors» ta incluir imachens y formato de texto.
+      Puetz activar marcadors con o chicot icono griso que i hai debaixo d'o quadro de comentarios.</p>
       <p><a href='https://www.loomio.org/discussions/1124'>Preta aquí</a>
       ta información sobre cómo usar marcadors.</p>
-    keep_up_to_date: "Mantente informau"
+    keep_up_to_date: "Mantiene-te informau"
     keep_up_to_date_html: |
-      <p>Pretando o nombre d''o tuyo grupo a o prencipio d''a pantalla, irás a la pachina d''o tuyo grupo,
-      an podrás veyer una lista de todas as discusions y decisions d'ixe grupo. Si yes en mas d''un grupo, en a pachina d'inicio puetz veyer d''una sola vegada toda l''actividat de totz os tuyos grupos.</p>
-      <p>Recibirás un correu electronico quan ocurran cosetas importants en o tuyo grupo.
+      <p>Pretando en o cobalto d'a pachina o nombre d'o tuyo grupo, irás ta la pachina d'o tuyo grupo,
+      an que podrás veyer una lista de todas as discusions y decisions d'ixe grupo. Si yes en mas d'un grupo, en a pachina d'inicio puetz veyer d'una sola vegada toda l'actividat de totz os tuyos grupos.</p>
+      <p>Recibirás un correu electronico quan ocurran fetas importants en o tuyo grupo.
       Puetz modificar as tuyas preferencias de correu electronico <a href="%{link}"">aquí</a>.</p>
     make_a_decision: "Prene una decisión"
-    make_a_decision_description: "Quan a conversación leva establida un tiempo determinau, qualsiquiera puede encetar una propuesta. Quan sías listo ta dar a tuya opinión, fe clic en un d''os quatro botons de decisión:"
-    prompt_people_details: "Si quiers ficacio d''una persona especifica en o tuyo grupo, escribe «@» seguiu d''o nombre d''a persona, y recibirá un correu electronico deixando-le saber que l'has mencionau en un comentario."
-    prompt_people_html: "Clama o ficacio d''una persona con <span class='blue'>@nombre</span>"
-    positions_agree_description: "<span>Yes d''alcuerdo</span> y quiers que siga a debant."
-    positions_abstain_description: "<span>T'abstiens</span>, significa que yes indeciso, u que te pareixe bien que o grupo decida sin tu."
-    positions_disagree_description: "<span>No yes d''alcuerdo</span>, significa que piensas que i hai una millor alternativa, pero yes disposau a seguir con a decisión d''o grupo."
-    positions_block_description: "<span>Blocar</span>, significa que tiens serias obcheccions y serías extremadament en desacuerdo si a propuesta seguise abance."
+    make_a_decision_description: "Quan a conversa tien establida un tiempo determinau, qualsiquiera puede encetar una propuesta. Quan sías presto ta dar a tuya opinión, fe clic en un d'os quatro botons de decisión:"
+    prompt_people_details: "Si quiers l'atención d'una persona especifica en o tuyo grupo, escribe «@» seguiu d'o nombre d'a persona, y recibirá un correu electronico fendo-le saber que l'has mencionau en un comentario."
+    prompt_people_html: "Clama l'atención d'una persona con <span class='blue'>@nombre</span>"
+    positions_agree_description: "<span>D'alcuerdo</span> significa que te fa goyo a propuesta."
+    positions_abstain_description: "<span>Abstención</span>, significa que yes indeciso, u que te pareixe bien que o grupo decida sin tu."
+    positions_disagree_description: "<span>En desalcuerdo</span>, significa que piensas que i hai una millor alternativa, pero no tiens problema con seguir a decisión d'o grupo."
+    positions_block_description: "<span>Blocar</span>, significa que tiens serias obcheccions y no te faría brenca goyo si a propuesta seguise enta debant."
     start_discussion: "Empecipiar una discusión participativa"
     start_discussion_html: |
-      <p>Quan prencipias una discusión, asegura-te que o titol transmite succintament l''afer.
+      <p>Quan prencipias una discusión, asegura-te que o titol transmite succintament l'afer.
       Usa o panel de contexto ta aportar tot o trasfondo necesario ta que o grupo tienga una discusión productiva y bien fundamentada.</p>
       <p>Entre a discusión, o panel de contexto puede actualizar-se seguntes salga a la luz nueva información. Amás de clarificar o tema, puetz usar iste espacio ta compartir recursos, recapitular a discusión seguntes progresa, u resumir os protocolos de prene de decisions que ye usando o tuyo grupo.</p>
-    start_proposal: "Creyar una propuesta clara"
+    start_proposal: "Crear una propuesta clara"
     start_proposal_html: |
-      <p> Si creigas un titol claro y succinto, a personas sabrán de forma immediata qué significa exactament estar d''alcuerdo u disentir.</p>
-      <p>No resulta a fin d''o mundo si una propuesta no obtiene un claro alcuerdo immediatament.
-      Si a o grupo no le fa goyo a primera propuesta, qualsiquiera puede prencipiar una nueva propuesta ta abordar os problemas surtius y mantener l''abance d''o proceso.</p>
-      <p>A traviés d'este proceso dinamico, a sabiduría colectiva d''o tuyo grupo puede chenerar millors ideyas que as que dengún por ell solament podría fer surtir.</p>
-      <p>A calendata de finalización d''una propuesta puede estar enamplada en qualsiquier momento, si pareixese que a decisión ameneste bell poquet mas d'espacio. Totz recibirán un correu electronico 24 horas antes que una propuesta finalice.</p>
+      <p> Si fas un titol claro y succinto, a chent sabrán de camín qué significa exactament estar u no d'alcuerdo.</p>
+      <p>No ye a fin d'o mundo si una propuesta no tien un claro alcuerdo immediatament.
+      Si a o grupo no le fa goyo a primer propuesta, qualsiquiera puede prencipiar una nueva propuesta ta abordar os problemas surtius y mantener l'abance d''o proceso.</p>
+      <p>A traviés d'iste proceso dinamico, a sabiduría colectiva d'o tuyo grupo puede chenerar millors ideyas que as que a dengún solet le podrían ocurrir.</p>
+      <p>A calendata de finalización d'una propuesta puede estar enamplada en qualsiquier momento, si pareixese que a decisión ameneste bell poquet mas d'espacio. Totz recibirán un correu electronico 24 horas antes que una propuesta finalice.</p>
     video_id: "67765444"
-    video_tutorial: "Video tutorial"
-    video_tutorial_description: "Mira o video ta una demostración rapida."
+    video_tutorial: "Tutorial de video"
+    video_tutorial_description: "Mira-te o video ta una demostración rapida."
   hint:
     context: 'Consellos ta usar o panel de contexto'
     discussion: 'Consellos ta empecipiar una discusión participativa'
     invitation: 'Consellos ta redactar una buena invitación'
     proposal: 'Consellos ta redactar una propuesta clara'
-    vote: 'Puetz cambiar a tuya posición en qualsiquier momento'
+    vote: 'Puetz cambiar a tuya posición en qualsiquier inte'
   pricing_page:
     intro: |
       Os grupos con presupuesto aportan una conduta por usar a ferramienta.
-      Os grupos sin meyos ta una conduta utilizan o modelo «Aporta o que puedas»: os suyos miembros son convidaus a realizar una contribución voluntaria. A tuya contribución implica que podamos mantener Loomio independient, libre de publicidat, y endrezau por a nuestra comunidat.
+      Os grupos sin medios ta una conduta fan servir o modelo «Aporta o que puedas»: os suyos miembros son convidaus a realizar una contribución voluntaria. A tuya contribución fa que podamos mantener Loomio independient, libre de publicidat, y endrezau por a nuestra comunidat.
     organisations: 'Organizacions '
     organisations_examples: eix. interpresas, achencias de gubierno, organizacions comunitarias
-    informal_groups: Grupo informal
-    informal_groups_desc: A os miembros d''o tuyo grupo se les pedirá que contribuigan con o que puedan
-    informal_groups_examples: eix. familias, movimientos socials, grupos colectivos
+    informal_groups: Grupos informals
+    informal_groups_desc: A os miembros d'o tuyo grupo se les pedirá que contribuigan con o que puedan
+    informal_groups_examples: p. eix. familias, movimientos socials, grupos colectivos
   contribution:
-    any_amount: 'Qualsiquier contribución sola '
+    any_amount: u una contribución puntual de
     currency_desc: A suma ye en dolars americans
-    monthly_html: Me fería goyo de fer una contribución mensual de
-    one_time_html: Me fería goyo de fer una sola contribución de
+    monthly_html: Querría fer una contribución mensual de
+    one_time_html: Querría fer una contribución puntual de
     submit: Contribuir
-    tooltip: Aprende sobre o nuestro prochecto de fondo financiero comunitario.
+    tooltip: Conoixe mas cosas sobre o nuestro modelo de financiamiento comunitario.
     thought_about_contributing: A tuya oportunidat de contribuir
     thought_about_contributing_description: |
       Loomio ye una interpresa social cooperativa que treballa ta facilitar a totz o participar en decisions que les afectan.
@@ -661,99 +664,93 @@ an:
 
       Gracias por fer-lo posible!
     thank_you_title: Gracias por contribuir con Loomio!
-    thank_you_body: |
-      a suya contribución nos aduya a ofrir decisions colaborativas y facils en o mundo. ⏎
-      ⏎
-      Vusté recibirá un correu electronico en breu con un recibimiento por a suya contribución. ⏎
-      ⏎
-      Totz ye bienveniu a unir-se a la Comunidat Loomio, an se charra de cómo aprofitar a o maximo d''a ferramienta y cómo se puede amillorar. ⏎
-      ⏎
-      <a href='https://www.loomio.org/groups/3'> Leva-me a o grupo comunitario Loomio »</a> ⏎
+    thank_you_body: "A tuya contribución nos aduya a ofrir decisions colaborativas y facils en o mundo. \n\nRecibirás un correu electronico en breu con un recibimiento por a tuya contribución. \n\nTotz son bienvenius a unir-se a la Comunidat Loomio, an se charra de cómo aprofitar a o maximo d''a ferramienta y cómo se puede amillorar. \n\n<a href='https://www.loomio.org/groups/3'> Leva-me a o grupo comunitario Loomio »</a> \n"
     making_a_donation: Fer una donación
-    making_a_donation_description: "Loomio ye una interpresa social cooperativa que treballa ta facilitar a totz o participar en decisions que les afectan.\n\nTu contribución implica que podamos mantener Loomio independient, libre d''anuncios, y disponible librement ta grupos que fan grans cosetas en as suyas comunidatz. \n\nGracias por fer-lo posible!\n"
-  resend_confirmation: "Tornar a ninviar confirmación"
+    making_a_donation_description: "Loomio ye una interpresa social cooperativa que treballa ta facilitar a totz o participar en decisions que les afectan.\n\nTu contribución implica que podamos mantener Loomio independient, libre d'anuncios, y disposable librement ta grupos que fan grans cosetas en as suyas comunidatz. \n\nMersi por fer-lo posible!\n"
+  resend_confirmation: "Tornar a ninviar as instruccions de confirmación"
   new_password: "Nueva clau"
   confirm_new_password: "Confirmar nueva clau"
   change_your_password: "Cambiar clau"
   change_my_password: "Cambiar a mía clau"
-  send_password_reset: "me Ninvien instruccions ta restablimiento de clau"
-  blank_details: "(deixar en blanco si no deseyas cambiar-la)"
-  password_confirmation: "Confirmación d''a clau"
+  send_password_reset: "Me ninvien instruccions ta restablir a clau"
+  blank_details: "(deixa-lo en blanco si no deseyas cambiar-la)"
+  password_confirmation: "Confirmación d'a clau"
   current_password: "Clau actual"
-  password_details: "(amenestemos a tuya clau actual ta confirmar os cambeos)"
+  password_details: "(nos cal a tuya clau actual ta confirmar os cambeos)"
   confirm_password: "Confirma a clau"
   cancel_my_account: "Cancelar a mía cuenta"
-  remember_me: "Recuerda-me"
+  remember_me: "Alcorda-te de yo"
   signing_in: "Dentrar"
   or: "u"
-  forgot_your_password: "Ixuplidés a tuya clau?"
+  forgot_your_password: "Has ixuplidau a tuya clau?"
   dont_have_an_account: "No tiens una cuenta?"
-  create_one_now: "Creya un agora"
-  link_it_up_instead: "En o suyo puesto, fe que se vinculen"
-  sign_up_via: "Accedeix vía"
+  create_one_now: "Crea-ne una agora"
+  link_it_up_instead: "Vincula-la en cuenta"
+  sign_up_via: "Accedeixe vía"
   or_fill_in_this_form: "u replena iste formulario"
   already_have_account: "Ya tiens una cuenta en Loomio?"
   confirm_your_details: "Confirma os tuyos datos"
   link_up_your_account: "Vincula a tuya cuenta"
-  log_in_to_your_loomio_account: "Accedeix a la tuya cuenta Loomio vinculando-la con %{provider_name}."
-  now_that_your_logged_in: "Agora que has dentrau con %{provider_name}, por favor, confirma os tuyos datos ta creyar una cuenta Loomio."
+  log_in_to_your_loomio_account: "Accedeixe ta la tuya cuenta Loomio vinculando-la con %{provider_name}."
+  now_that_your_logged_in: "Agora que has dentrau con %{provider_name}, por favor, confirma os tuyos datos ta crear una cuenta Loomio."
   confirmation_not_received: "No has recibiu as instruccions de confirmación?"
   unlock_not_received: "No has recibiu instruccions de desbloqueyo?"
-  inactive_html: "Ista cuenta ha estau desactivada. Si tu tiens bella pregunta, por favor <a href='%{path_to_contact}'>se meta en contacto con nusatros."
-  create_an_account_html: 'Creyar una cuenta Loomio Beta'
+  inactive_html: "Ista cuenta ha estau desactivada. Si tu tiens bella pregunta, por favor <a href='%{path_to_contact}'>mete-te contacto con nusatros."
+  create_an_account_html: 'Crear una cuenta Loomio Beta'
   log_in: "Dentrar"
   join_group:
-    log_in: "Dentrar ta unir-te a %{group_name}"
-    create_account_to_join_group: "Creya una cuenta ta accedir a %{group_name}"
+    log_in: "Dentra ta unir-te a %{group_name}"
+    create_account_to_join_group: "Crea una cuenta ta accedir ta %{group_name}"
   start_group:
-    log_in: "Encieta sesión ta configurar o tuyo grupo."
-    create_account_to_start_group: "Por favor creya una cuenta ta empecipiar o tuyo grupo %{group_name}"
-    create_account: "Por favor, creya una cuenta"
+    log_in: "Dentra ta configurar o tuyo grupo."
+    create_account_to_start_group: "Por favor crea una cuenta ta empecipiar o tuyo grupo %{group_name}"
+    create_account: "Por favor, crea una cuenta"
   invitation:
     alternate: "Como alternativa, comparte iste vinclo y qualsiquiera podrá solicitar unir-se:"
-    by_email: "Convidar vía correu electronico "
+    by_email: "Convidar por correu electronico "
     no_invitations_left: "Ya no tiens mas invitacions"
     no_invitations_left_get_more: "Por favor, ninvia-nos un correu a contact@loomio.org y veyeremos cómo podemos aduyar-te"
-    invitation_not_found: 'No se podió trobar invitación. Por favor, pida una nueva invitación.'
-    invitation_cancelled: 'Ista invitación ha estau cancelada. Contacta a o remitente si creyes que i hai habiu una error.'
-    invitation_already_used: 'Ista invitación ya ha estau usada. Encieta sesión ta dentrar a o tuyo grupo.'
+    invitation_not_found: 'No s''ha puesto trobar garra invitación. Por favor, pide una nueva invitación.'
+    invitation_cancelled: 'Ista invitación s''ha cancelau. Contacta a o remitent si creyes que i hai habiu bella error.'
+    invitation_already_used: 'Ista invitación ya s''ha usau. Encieta sesión ta dentrar a o tuyo grupo.'
     recipients: "Escribe as adrezas de correu electronico, deseparadas por comas: "
-    invitees_placeholder: "Nombre d''usuario <user1@example.com>, user2@example.com"
-    subject: "Por favor, forma parte d''o nuestro nuevo grupo en Loomio, %{group}"
+    invitees_placeholder: "Nombre d'usuario <user1@example.com>, user2@example.com"
+    subject: "Te convidamos a fer parte d'o nuestro nuevo grupo en Loomio, %{group}"
     invite_people: "Convidar a personas"
     invite_to_discussion: "Convidar a ista discusión"
-    invite_to_discussion_info: "Al adhibir a personas a ista discusión se les ninviará una invitación a o tuyo grupo. Quan la accepten, serán endrezadas a ista discusión."
+    invite_to_discussion_info: "En adhibir personas en ista discusión se les ninviará una invitación a o tuyo grupo. Quan l'accepten, serán endrezadas a ista discusión."
     select_members: "Adhibir miembros de %{group_name}"
     body_editable: |+
-      Ola, viene a prener decisions con nusatros! Somos usando una ferramienta ta la prene de decisions colectiva gritada Loomio.
+      Ola! viene-te-ne a prener decisions con nusatros! Somos usando una ferramienta ta la presa de decisions colectiva que se diz Loomio.
 
     body_editable_discussion: |
-      Ola, veyen y unir a la discusión!
+      Ep! viene-te-ne y une-te a la discusión!
     message_body: "Mensache d'invitación"
-    invites_more_help2: "<p>Puetz convidar a personas a o tuyo grupo en qualsiquier momento.</p><p>Podrías convidar a totz os miembros d''o grupo d''una sola vegada, u puetz empecipiar convidando solament a os quals treballan con tu diariament.</p>"
-    invitation_link: "Vinclo a la invitación"
+    invites_more_help2: "<p>Puetz convidar a personas a o tuyo grupo en qualsiquier momento.</p><p>Podrías convidar a totz os miembros d'o grupo d'una sola vegada, u puetz empecipiar convidando nomás a os que treballan con tu diariament.</p>"
+    invitation_link: "Vinclo ta la invitación"
     discussion_link: "Participa en a discusión:"
     link_help: "Fe clic en iste vinclo ta unir-te a %{group} en loomio:"
-    copy: "Si belún no ha recibiu a invitación electronica, no dubdes en copiar o vinclo d''alto y ninviar-lo personalment."
+    copy: "Si belún no ha recibiu a invitación electronica, no dubdes en copiar o vinclo d'alto y ninviar-le-ne personalment."
     pending_invitations: 'Invitacions pendients'
     no_pending_invitations: "Actualment, no i hai invitacions pendients"
     import_contacts_html: "No recuerdas un correu electronico? Importa os tuyos contactos dende %{google_link}"
   search:
-    description: "Contino s'amuestra una lista d''as discusions y propuestas que contienen «%{query}» en o suyo titol u descripción."
+    description: "Contino s'amuestra una lista d'as discusions y propuestas que contienen «%{query}» en o suyo titol u descripción."
     header: "Buscar resultaus «%{query}»"
     placeholder: "Buscar"
-    empty_search: 'Busca vueda'
-    please_enter_a_search: 'Por favor, introduz una consulta en a barra de busca superior'
-    no_match: 'No habió resultaus que coincidan con o tuyo consulta'
+    empty_search: 'Busca sin resultaus'
+    please_enter_a_search: 'Por favor, escribe una consulta en a barra de busca superior'
+    no_match: 'No i ha habiu resultaus que coincidan con a tuya consulta'
   example_discussion:
     title: "Discusión d'eixemplo: Bienvenida y introducción a Loomio"
-    description: "Bienvenius a Loomio, una ferramienta ta la prene de decisions en grupo.⏎ \nAl participar en un tema, discutindo diferents puntos de vista y información, fendo frent a qualsiquier problema que se present, o tuyo grupo puede chuntar-se  y trobar o millor camín a seguir. ⏎\nPuedes utilizar a discusión d'eixemplo y chugar con as d''a ferramienta. ⏎\n"
+    description: "Bienvenius a Loomio, una ferramienta ta la presa de decisions en grupo.\nEn participar en un tema, discutindo diferents puntos de vista y información, fendo frent a qualsiquier problema que se presente, o tuyo grupo puede unir-se y trobar o millor camín a seguir. \nPuedes utilizar a discusión d'eixemplo y chugar con as d''a ferramienta.\nTa empecipiar, o Loomio Helper Bot piensa que sería una buena ideya que o tuyo grupo se prenese\
+      \ unas vacanzas chuntos. A tarta d'a dreita amuestra o que piensa o tuyo grupo d'a propuesta. Puetz decir a tuya fendo clic en uno d'os botons de decisión d'o cobaixo.\n"
   example_motion:
-    name: "Habríanos d'ir-nos de vacancias a la luna!"
-    description: "Loomio Helper Bot ye muit interesau en que o tuyo grupo invierta en un viache a la luna. Por o que pareix, o espacio queso ye delicioso. Pero as implicacions por o sinyal de carbono son preocupants. ⏎\nYe una buena ideya? Loomio Helper Bot quiere saber o que piensas! ⏎\nSi yes convenciu d''a tuya posición, fe clic en un d''os iconos d''abaixo (preta o cursor sobre os botons de decisions ta una descripción d''o que cada un d'ells significa).\
-      \ ⏎\nSe te pedirá que realices una breu declaración sobre a razón d''a tuya decisión. Isto fa que sía facil de veyer en forma de resumen d''o que totz piensan y por qué. Puetz cambiar d''opinión y editar a tuya decisión librement dica que a propuesta se zarra. ⏎ \n"
+    name: "Habríanos d'ir-nos de vacanzas ta la luna!"
+    description: "Loomio Helper Bot ye muit interesau en que o tuyo grupo invierta en un viache a la luna. Por o que pareix, o queso d'o espacio ye sobrebueno. Pero as implicacions medioambientals son preocupants. \nYe una buena ideya? Loomio Helper Bot quiere saber o que piensas! \nSi yes convenciu d'a tuya posición, fe clic en un d'os iconos d''abaixo (preta o cursor sobre os botons de decisions ta una descripción d'o que cada un d'ells significa).\
+      \ \nSe te pedirá que faigas una breu declaración sobre a razón d'a tuya decisión. Isto fa que sía facil de veyer en forma de resumen d''o que totz piensan y por qué. Puetz cambiar d'opinión y editar a tuya decisión librement dica que a propuesta se zarra.\n"
   contact_page:
-    contact_us: 'Contacta-nos'
+    contact_us: 'Contacta con nusatros'
     labels:
       name: 'O tuyo nombre'
       email: 'O tuyo correu electronico'
@@ -765,12 +762,12 @@ an:
   discussion_form:
     new:
       header: "Empecipiar una discusión"
-      who: "En qué grupo te fería goyo encetar ista discusión?"
+      who: "En qué grupo te faría goyo d'encetar ista discusión?"
     edit:
       header: "Editar discusión "
     privacy:
-      will_be_private: "A discusión solament será visible ta miembros d''o grupo"
-      will_be_private_to_group: "A discusión solament será visible ta miembros de %{group_name}."
+      will_be_private: "A discusión nomás será visible ta miembros d''o grupo"
+      will_be_private_to_group: "A discusión nomás será visible ta miembros de %{group_name}."
       will_be_private_to_parent_group: "A discusión será visible ta miembros de %{parent_group_name} y miembros de %{group_name}."
       will_be_public: "Qualsiquiera puede veyer a discusión."
   motion_history:
@@ -778,23 +775,23 @@ an:
   motion_form:
     new:
       header: "Nueva propuesta"
-      submit: 'Creyar propuesta'
+      submit: 'Crear una propuesta'
     edit:
       header: "Editar propuesta"
-      submit: 'Actualizar propuesta'
+      submit: 'Esviellar propuesta'
       only_closing_at: 'No puetz cambiar o nombre u descripción d''a propuesta dimpués que a votación haiga empecipiau'
-    name_helper: " Fe o titol lo mas claro y conciso posible ta que a chent saba exactament o que quiers decir quan sían d''alcuerdo u en desacuerdo con a propuesta."
+    name_helper: " Fe o titol lo mas claro y conciso posible ta que a chent saba exactament o que quiers decir quan sían d'alcuerdo u en desalcuerdo con a propuesta."
     close_proposal_heading: "Quiéres zarrar a propuesta agora?"
   vote_form:
-    header: "Estableix a tuya posición"
+    header: "Estableixe a tuya posición"
     edit: "Modifica a tuya posición"
     placeholder: "Da una razón ta la tuya decisión (opcional)"
     your_position: "A tuya posición"
-    your_statement: "A tuya opinión u enunciación"
-    submit: "Remitir posición"
-    update: "Actualizar posición"
+    your_statement: "A tuya opinión u declaración"
+    submit: "Ninviar posición"
+    update: "Esviellar posición"
   new_user_form:
-    create_an_account: "Creyar una cuenta"
+    create_an_account: "Crear una cuenta"
   profile_form:
     view: "Veyer perfil"
     profile: "Editar perfil"
@@ -806,12 +803,12 @@ an:
   group_setup:
     set_up_your_group: Establir grupo
     desc_header: "Ya quasi has rematau!"
-    desc_html: "Como coordinador de grupo, yes responsable d''a configuración y mantenimiento d''o tuyo grupo Loomio. Dimpués de trigar unas pocas caracteristicas, puetz dentrar en o tuyo nuevo grupo, prencipiar una u dos discusions, y ninviar qualques invitacions. <p>Quan pienses en a forma mas sencilla de describir o tuyo grupo, pregunta-te: Qué queremos aconseguir chuntos? Qué tipo de decisions queremos prener? Quí seremos implicaus?</p>"
-    submit: "Ir a o mío grupo!"
+    desc_html: "Como coordinador de grupo, yes responsable d'a configuración y mantenimiento d'o tuyo grupo de Loomio. Dimpués de trigar unas pocas caracteristicas, puetz dentrar en o tuyo nuevo grupo, prencipiar una u dos discusions, y ninviar qualques invitacions. <p>Quan pienses en a forma mas sencilla de describir o tuyo grupo, pregunta-te: Qué queremos aconseguir chuntos? Qué tipo de decisions queremos prener? Quí seremos implicaus?</p>"
+    submit: "Ir ta o mío grupo!"
     payment_model:
-      header: Loomio ye ta totz/as!
-      info: Tenemos modelos d''aportación que s'adaptan a qualsiquier grupo, mesmo aquells sin diners
-      link: Mas...
+      header: Loomio ye ta totz y todas!
+      info: Tenemos modelos d'aportación que s'adaptan a qualsiquier grupo, mesmo os que no tienen diners :)
+      link: Saber-ne mas...
   simple_form:
     'yes': 'Sí'
     'no': 'No'
@@ -835,24 +832,24 @@ an:
         email: "Correu electronico"
         password: "Clau"
         password_confirmation: "Confirmar clau"
-        language_preference: "Luengache"
+        language_preference: "Idioma"
       group_request:
         admin_name: "Quál ye o tuyo nombre?"
         admin_email: "Quál ye o tuyo correu electronico?"
-        name: "Quál ye o nombre d''o tuyo grupo?"
-        description: "Si tiens un momento, charra-nos d''o tuyo grupo"
-        is_commercial: "Án yes planiando utilizar Loomio?"
+        name: "Quál ye o nombre d'o tuyo grupo?"
+        description: "Si tiens un momento, charra-nos d'o tuyo grupo"
+        is_commercial: "Án tiens plans de fer servir Loomio?"
     placeholders:
       membership_request:
         introduction: "Escribe qualques parolas sobre quí yes y por qué quiers adhibir-te a %{group_name}."
       motion:
-        name: "Quál ye a tuya propuesta de plan d''acción?"
+        name: "Quál ye a tuya propuesta de plan d'acción?"
         description: "Da información suficient ta que qualsiquier persona en o tuyo grupo pueda prener una decisión bien informada."
       user:
         email: "Correu electronico"
         password: "Clau"
       group_request:
-        description: "Nos encantaría saber d''o tuyo grupo y por qué deseyan usar Loomio."
+        description: "Nos encantaría de saber d'o tuyo grupo y por qué quieren usar Loomio."
   helpers:
     submit:
       discussion:
@@ -861,7 +858,7 @@ an:
       motion:
         create: "Empecipiar propuesta"
       user:
-        create: "Creyar cuenta"
+        create: "Crear una cuenta"
         update: "Actualizar preferencias"
   email:
     by_who: "por %{person}"
@@ -878,7 +875,7 @@ an:
     user_added_to_a_group:
       subject: "%{who} t'ha adhibiu a %{which_group}"
       content: "%{who} t'ha adhibiu a %{which_group} en Loomio. Preta aquí ta ir a o grupo:"
-    unsubscribe: "Da de baixa u cambeya as preferencias d''o tuyo correu electronico:   "
+    unsubscribe: "Da de baixa u cambea as preferencias d'o tuyo correu electronico:   "
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> ta dar de baixa u cambiar as preferencias de correu electronico."
     view_comment: "Fe clic aquí ta veyer o comentario en Loomio"
     view_discussion: "Fe clic aquí ta veyer ista discusión "
@@ -887,13 +884,13 @@ an:
     create_discussion:
       intro: "%{who} empecipió una discusión en %{which_group}:"
     create_proposal:
-      intro: "Una nueva propuesta estió creyada en un grupo de Loomio a o que o tuyo perteneixes."
-      closes_in: "Zarra en"
+      intro: "Una nueva propuesta estió creada en un grupo de Loomio a lo qual perteneixes."
+      closes_in: "Se zarrará en"
       subject: "Nueva propuesta: %{which}"
     daily_activity:
       heading: "A tuya actividat en Loomio"
       intro: "Isto ye o que ha pasau en as zagueras 24 horas en os tuyos grupos de Loomio"
-      subject: "Loomio - Resumen d''as zagueras 24 horas"
+      subject: "Loomio - Resumen d'as zagueras 24 horas"
     missed_yesterday:
       subject: "Ahiere en Loomio"
       mark_as_read: Marcar como leyiu
@@ -905,60 +902,62 @@ an:
     group_email:
       intro: "%{who} fació un anuncio en %{group}:"
     group_membership_approved:
-      intro: "O tuyo pediu ta accedir a o grupo '%{group_name}' en Loomio ha estau aprebau."
+      intro: "A tuya petición ta accedir ta o grupo '%{group_name}' en Loomio ha estau aprebau."
       subject: "Pertenencia aprebada"
     invitation:
       hi: "Ola %{name},"
-      intro: "Fe clic en o vinclo d''abaixo ta configurar o tuyo grupo %{group_name}:"
-      closing_message: "Si tiens bella pregunta u i hai qualsiquier coseta con a quala te podamos aduyar a mantener-te en marcha, nos encantará saber de tu; tant solament responde a iste correu electronico."
-      thanks: "Gracias!⏎\nEl Equipo de Loomio⏎ \n"
+      intro: "Fe clic en o vinclo d'abaixo ta configurar o tuyo grupo %{group_name}:"
+      closing_message: "Si tiens garra pregunta u i hai qualsiquier coseta con a qualate podamos aduyar a mantener-te en marcha, nos fará goyo de saber de tu; nomás has de responder a iste correu electronico."
+      thanks: |
+        Gracias!
+        El Equipo de Loomio
     membership_request:
       intro: "%{name} (%{email}) ha pediu acceso a un d''os tuyos grupos de Loomio."
-      subject: "%{who} pidió acceso a %{which_group}"
-      view_group: "Puetz acceptar u denegar o pediu aquí"
+      subject: "%{who} ha pediu acceso a %{which_group}"
+      view_group: "Puetz acceptar u refusar a petición aquí"
     mentioned:
-      context: "%{author_name} le mencionó en a discusión  \"%{discussion_title}\""
+      context: "%{author_name} te mencionó en a discusión  \"%{discussion_title}\""
       subject: "%{who} te mencionó en o grupo de Loomio %{which} "
     new_motion_created:
       subject: "Propuesta: %{proposal_title}"
-      context: "%{author} ha creyau una propuesta en %{group_full_name}:"
+      context: "%{author} ha creau una propuesta en %{group_full_name}:"
     proposal_closed:
       proposal_has_closed: 'A propuesta s''ha zarrau'
-      specify_outcome_and_notify_group: "Creyar un resultau y ninvia-lo a o tuyo grupo!"
-      specify_outcome_and_notify_group_html: "Creyar un resultau y ninvia-lo a o tuyo grupo!"
+      specify_outcome_and_notify_group: "Crearr un resultau y ninviar-lo a o tuyo grupo!"
+      specify_outcome_and_notify_group_html: "Crear un resultau y ninviar-lo a o tuyo grupo!"
       subject: "Propuesta zarrada - %{which}"
     proposal_outcome:
-      subject: "Resultau d''a propuesta"
+      subject: "Resultau d'a propuesta"
     proposal_blocked:
       intro: "Una propuesta que yes facilitando ha estau blocada."
       subject: "Propuesta blocada - %{which}"
     proposal_closing_soon:
-      closes_on: "Zarra en"
-      closes_at: "Zarra a as"
-      closes_in: "Zarra en"
-      subject: "Zarra en 24 Horas: %{proposal_title}"
-      headline: "A propuesta de %{author} en %{group} zarrará pronto:"
+      closes_on: "Se zarrará en"
+      closes_at: "Se zarrará a las"
+      closes_in: "Se zarrará en"
+      subject: "Se zarrará en 24 Horas: %{proposal_title}"
+      headline: "A propuesta de %{author} en %{group} se zarrará luego:"
       summary: "Resumen"
     thread_mailer:
-      footer_text: "Responder a iste correu electronico dreitament u veyer-lo en Loomio:"
-      reply_or_view_online_html: "Responder a iste correu electronico dreitament u <a href='%{url}'> veyer-lo en Loomio </a>."
-      unfollow_discussion_html: "<a href='%{unfollow_url}'> Deixar de seguir </a> ta aturar correus electronicos sobre ista discusión."
-      change_email_preferences_html: "Cambeya os tuyos<a href='%{email_preferences_url}'> preferencias de correu electronico </a> ta dar-se de baixa d''os correus electronicos de  Loomio."
-      change_preferences: "Cambiar as suyas preferencias d'email"
-      new_motion: "%{who} proposó:"
-      motion_closing_soon: "Zarra en 24 Horas"
-      proposal_closed: "Proposición zarrada:"
-      specify_outcome_html: "A tuya propuesta s''ha zarrau. <a href='%{link}'>Especifica un resultau </a> ta que totz los conoixcan."
-      specify_outcome: " A suya propuesta ha zarrau. Especifique un resultau ta que totz lo conoixcan:"
-      outcome_created: "%{who} anunció o resultau d''a propuesta "
-      you_agreed: "Tu %{past_tense_position}"
+      footer_text: "Responde a iste correu electronico dreitament u leyer-lo en Loomio:"
+      reply_or_view_online_html: "Responder a iste correu electronico dreitament u <a href='%{url}'> veyer-lo en Loomio</a>."
+      unfollow_discussion_html: "<a href='%{unfollow_url}'>Deixar de seguir</a> ta deixar de recibir correus electronicos sobre ista discusión."
+      change_email_preferences_html: "Cambia os tuyos<a href='%{email_preferences_url}'> preferencias de correu electronico </a> ta dar-se de baixa d'os correus electronicos de Loomio."
+      change_preferences: "Cambiar as tuyas preferencias d'email:"
+      new_motion: "%{who} ha proposau:"
+      motion_closing_soon: "A propuesta se zarrará en 24 horas"
+      proposal_closed: "Propuesta zarrada:"
+      specify_outcome_html: "A tuya propuesta s'ha zarrau. <a href='%{link}'>Especifica un resultau</a> ta que totz en sigan sabedors."
+      specify_outcome: " A tuya propuesta ha zarrau. Especifica un resultau ta que totz en sigan sabedors:"
+      outcome_created: "%{who} ha anunciau o resultau d'a propuesta "
+      you_agreed: "%{past_tense_position}"
     verification:
       header: "Ya quasi rematas!"
-      intro: "Por favor, fe clic en o vinclo de verificación ta finalizar a tuya solicitut:"
-      ignore: "Si no has pediu estar parte de Loomio ignora iste correu electronico. "
+      intro: "Por favor, fe clic en o vinclo de verificación ta finalizar a tuya demanda:"
+      ignore: "Si no has demandau estar parte de Loomio ignora iste correu electronico. "
   meta_tags:
-    default_title: "Loomio | Prene de decisions colaborativa"
-    default_description: Loomio ye una ferramienta online facil d''usar ta la prene de decisions en grupo. Permite a grupos dispersos prener decisions rapidament y executar accions constructivas.
+    default_title: "Loomio | Presa de decisions colaborativa"
+    default_description: Loomio ye una ferramienta online de buen usar ta la presa de decisions en grupo. Permite a grupos dispersos prener decisions rapidament y executar accions constructivas.
   about_loomio: "Sobre Loomio"
   ago: "en fa %{quantity_of_time}"
   approve: "Aprebar"
