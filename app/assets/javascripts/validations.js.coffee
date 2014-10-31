@@ -6,8 +6,7 @@ $ -> # Character counter for limiting input
     if(remaining >= 0)
       $(".character-counter").text(pluralize_characters(remaining) + " left")
     else
-      num = num * (-1)
-      $(".character-counter").text(pluralize_characters(remaining) + " too long")
+      $(".character-counter").text(pluralize_characters(-remaining) + " too long")
 
 pluralize_characters = (num) ->
   if(num == 1)

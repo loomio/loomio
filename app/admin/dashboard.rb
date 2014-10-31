@@ -59,7 +59,8 @@ ActiveAdmin.register_page "Dashboard" do
           div { link_to "Retention calculator", admin_stats_retention_path }
           div { link_to "Weekly activity calculator", admin_stats_weekly_activity_path }
           div { link_to "Activity calculator for one group", admin_stats_group_activity_path(id: 25) }
-          div { link_to "Activity calculator for date range", admin_stats_daily_activity_path(from: 1.day.ago.strftime('%Y-%m-%d'), until: Time.now.strftime('%Y-%m-%d'), group_ids: '3, 25') }
+          div { link_to "Activity calculator for date range", admin_stats_daily_activity_path(from: 1.day.ago.strftime('%Y-%m-%d'), until: Time.now.strftime('%Y-%m-%d'), group_ids: '3,25') }
+          div { link_to "Activity calculator for first 30 days", admin_stats_first_30_days_path(group_ids: '3,25') }
         end
       end
       column do
