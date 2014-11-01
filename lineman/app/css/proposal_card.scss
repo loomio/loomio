@@ -13,6 +13,27 @@
   @include metaText;
 }
 
+.proposal-card {
+  border-top: 1px solid #ccc;
+}
+
+.proposal-card-body {
+  padding-left: 5px;
+  white-space: nowrap;
+}
+
+.proposal-closed {
+  padding: 3px;
+  margin: 0 5px;
+  background: #ccc;
+  border-radius: 5px;
+}
+
+.proposal-card-vote-icon {
+  width: 23px;
+  height: 23px;
+}
+
 .proposal-card-closing-at {
 
 }
