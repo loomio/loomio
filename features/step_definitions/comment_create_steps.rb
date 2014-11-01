@@ -70,3 +70,17 @@ end
 Then /^the comment should include appropriate new lines$/ do
   page.should have_css(".activity-item-header p")
 end
+
+Given(/^my selected locale is "(.*?)"$/) do |arg1|
+  @user.update_attribute(:selected_locale, arg1)
+end
+
+Then(/^the comment should be displayed right\-to\-left$/) do
+  page.should have_css(".activity-item-header[dir='RTL']")
+end
+
+Then(/^the comment should be displayed left\-to\-right$/) do
+  page.should have_css(".activity-item-header[dir='LTR']")
+end
+
+

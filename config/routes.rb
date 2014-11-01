@@ -13,7 +13,9 @@ Loomio::Application.routes.draw do
 
   namespace :admin do
     namespace :stats do
-      get :group_metrics
+      get :group_activity
+      get :daily_activity
+      get :first_30_days
       get :retention
       get :events
       get :weekly_activity
