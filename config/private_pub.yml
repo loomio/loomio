@@ -5,6 +5,6 @@ test:
   server: "http://localhost:9292/faye"
   secret_token: "secret"
 production:
-  server: "<%= ENV['CANONICAL_HOST'] %>/faye"
+  server: "<%= ENV['CANONICAL_HOST'] %>:9292/faye"
   secret_token: "<%= ENV['SECRET_COOKIE_TOKEN'] %>"
   signature_expiration: 7200
