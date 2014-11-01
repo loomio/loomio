@@ -1,4 +1,10 @@
 class API::MotionsController < API::BaseController
+  
+  def index
+    @motions = Motion.where(discussion_id: params[:discussion_id])
+    render json: @motions, root: :proposals
+  end
+
   def create
     @motion = Motion.new(permitted_params.api_motion)
     @motion.author = current_user

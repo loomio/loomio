@@ -24,3 +24,8 @@ angular.module('loomioApp').controller 'ProposalCardController', ($scope, $modal
     return false unless $scope.proposal
     $scope.proposal.userHasVoted(currentUser)
 
+  $scope.currentUserVote = ->
+    return false unless $scope.proposal
+    $scope.proposal.lastVoteByUser(currentUser)
+
+

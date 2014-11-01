@@ -30,8 +30,8 @@ Loomio::Application.routes.draw do
     resource :inbox, only: :show, controller: 'inbox'
     resources :events, only: :index
     resources :discussions, only: :show
-    resources :motions, only: :create
-    resources :votes, only: :create
+    resources :motions, only: [:show, :index, :create], path: :proposals
+    resources :votes, only: [:show, :index, :create]
     resources :comments, only: :create do
       post :like, on: :member
       post :unlike, on: :member
