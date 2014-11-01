@@ -1,12 +1,6 @@
 source 'http://rubygems.org'
 
-<<<<<<< HEAD
-ruby '2.0.0'
-||||||| merged common ancestors
-ruby '2.1.3'
-=======
 ruby '2.1.4'
->>>>>>> a0dc212f871d4e48e442db70c4f9d5ba2b8c215f
 
 gem 'rails', '~> 4.1.7'
 gem 'rake'
