@@ -1,13 +1,14 @@
 module Loomio
   module I18n
 
-    SELECTABLE_LOCALES = %i( en be-BY bg-BG ca cs zh-TW da de eo es el fr id it hu ja ko ml nl-NL pt-BR ro sr sr-RS sv vi tr uk )
+    SELECTABLE_LOCALES = %i( en an be-BY bg-BG ca cs zh-TW da de eo es el fr id it he hu ja ko ml nl-NL pt-BR ro sr sr-RS sv vi tr uk )
 
     DETECTABLE_LOCALES = SELECTABLE_LOCALES + %i( be pt zh zh-HK )
 
-    FALLBACKS = { :ca      => :es,
-                  :'pt-PT' => :'pt-BR',
+    FALLBACKS = { :an      => :es,
                   :be      => :'be-BY',
+                  :ca      => :es,
+                  :'pt-PT' => :'pt-BR',
                   :pt      => :'pt-BR',
                   :zh      => :'zh-TW',
                   :'zh-HK' => :'zh-TW'
@@ -18,9 +19,10 @@ module Loomio
     #  ii) FALLBACKS
     # iii) a dummy yaml e.g. config/locales/fallback.zh-HK.yml
 
+    RTL_LOCALES = %i( ar he fa-IR ml ur ur-PK )
 
     # only for display purposes, please don't depend on this in the system
-    TEST_LOCALES = %i( ar an cmn hr fi gl he ga-IE km mk mi fa-IR pl pt-PT ru sl te ur ur-PK )
+    TEST_LOCALES = %i( ar cmn hr fi gl ga-IE km mk mi fa-IR pl pt-PT ru sl te ur ur-PK )
 
     #
   end

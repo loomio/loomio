@@ -4,7 +4,7 @@ he:
       edit:
         title: 'העדפות דואל'
         when_do_you_want_emails: 'שלח לי דואל:'
-        email_missed_yesterday: "'אתמול בלומיו' - סיכום יומי של הפעילויות שהחמצתי"
+        email_missed_yesterday: "'אתמול בLoomio' - סיכום יומי של הפעילויות שהחמצתי"
         email_when_mentioned: "כשאני @מאוזכר"
         email_followed_threads: "כשיש פעילות בשיחות שאני עוקב"
         email_when_proposal_closing_soon: "24 שעות לפני סגירת הצעה"
@@ -14,12 +14,12 @@ he:
   explore:
     header: "גלו קבוצות ציבוריות"
   try_it:
-    header: "נסו את לומיו"
+    header: "נסו את Loomio"
     start_a_group: "צרו קבוצה וקבלו החלטות בקהילה שלכם"
-    join_the_community: "הצטרפו לקבוצת הקהילה של לומיו"
-    loomio_community_info: "כאן אנו מתדיינים ומקבלים החלטות בנוגע ללומיו"
-    explore_groups: "גלו קבוצות אחרות בלומיו"
-    explore_groups_info: "בדקו את כל הקבוצות המדהימות בלומיו והצטרפו אליהן!"
+    join_the_community: "הצטרפו לקבוצת הקהילה של Loomio"
+    loomio_community_info: "כאן אנו מתדיינים ומקבלים החלטות בנוגע לLoomio"
+    explore_groups: "גלו קבוצות אחרות בLoomio"
+    explore_groups_info: "בדקו את כל הקבוצות המדהימות בLoomio והצטרפו אליהן!"
   activerecord:
     errors:
       messages:
@@ -45,6 +45,55 @@ he:
       no_invitations_remaining: "לא נותרו הזמנות"
     mailer:
       invitation_instructions:
-        subject: 'מישהו הזמין אותך להצטרף לקבוצת הלומיו שלו'
+        subject: 'מישהו הזמין אותך להצטרף לקבוצת הLoomio שלו'
   error:
     access_denied: "אין לך הרשאות לעשות זאת."
+    cant_join_subgroup: "לא ניתן להצטרף לתת-קבוצה ללא חברות בקבוצה הראשית."
+    cant_modify_position: "ההצעה נסגרה."
+    cant_state_position: "ההצעה נסגרה."
+    cant_view_member_profile: "לא ניתן לצפות בפרטי המשתמש מכיוון שאינכם משתייכים לאותה הקבוצה."
+    contribution: "יש להתחבר על מנת לתרום."
+    discussion_not_created: "לא ניתן לפתוח בדיון."
+    discussion_not_moved: "אין לך הרשאות להעביר את השיחה ל%{destination_group.name}"
+    group_not_archived: "לא ניתן לארכב קבוצה זו"
+    invalid_close_date: "תאריך סגירה לא תקין, נא לוודא כי התאריך עתידי."
+    invalid_email: "נא להזין לפחות כתובת דואל תקינה אחת"
+    image_upload_fail: "לא ניתן לטעון תמונה. נא לוודא שגודל הקובץ קטן מ1 מגהבייט ומסוג .jpeg, .png, או .gif "
+    motion_closing_inputs: "תאריך סגירה לא חוקי"
+    motion_outcome_not_created: "לא ניתן לפרסם תוצאה."
+    motion_outcome_not_updated: "לא ניתן לעדכן תוצאה."
+    only_group_coordinator_destroy: "לא ניתן לעזוב את הקבוצה מכיוון שאז היא תיוותר ללא מתאם. ניתן להשהות את הקבוצה באמצעות האפשרויות בתפריט או <a href='%{add_coordinator}'>להוסיף מתאם חדש</a>."
+    only_group_coordinator_remove_admin: "לכל קבוצה צריך להיות לפחות מתאם אחד. להוסיף מתאם נוסף לקבוצה?"
+    permission_to_invite: "אין לך הרשאות להזמין חברים חדשים."
+    position_not_updated: "לא ניתן לעדכן עמדה."
+    settings_not_updated: "ההגדרות לא עודכנו."
+    group_request_already_accepted: "אנחנו מצטערים! ההזמנה הזאת לא תקינה או שכבר אושרה בעבר."
+    group_request_invalid_token: "אנחנו מצטערים! הקוד איננו תקין"
+    group_private_or_not_found: "קבוצה לא נמצאה.\nייתכן והקבוצה פרטית. אם מישהו נתן לך קישור זה, יש לבקש ממנו לשלוח לך הזמנה לקבוצה."
+    group_already_setup: "הקבוצה הזאת כבר קיימת."
+    passwords_did_not_match: "הסיסמאות לא מתאימות"
+    proposal_already_exists: "כבר יש הצעה פתוחה בדיון הזה."
+    user_with_email_address_already_in_group: "משתמש עם דואל שציינת כבר שייך לקבוצה זאת."
+    you_have_already_requested_membership: "כבר ביקשתם חברות לקבוצה זו."
+    you_are_already_a_member_of_this_group: "אתם כבר שייכים לקבוצה זו."
+    not_found: "הפריט לא נמצא. ייתכן ונמחק."
+  alert:
+    duplicate_email: "%{which_email} כבר בקבוצה."
+  notice:
+    new_contacts_imported: "זה עבד! ניתן להזין שמות לשדה ואנחנו נציע כתובת דואל."
+    admin_rights_removed: "זכויות המתאם של %{which_user} הוסרו."
+    user_added: "%{user_email_or_name} כבר התווספ/ה לקבוצה"
+    new_user_added: "%{user_email_or_name} יתווסף/תתווסף לקבוצה אחרי שהם ייצרו חשבון בLoomio."
+    member_removed: "המתשתמש הוסר."
+    membership_approved: "השתייכות אושרה."
+    membership_request_canceled: "בקשת השתייכות בוטלה."
+    membership_request_ignored: "בקשת השתייכות נדחתה."
+    settings_updated: "הגדרותייך עודכנו."
+    user_made_admin: "%{which_user} עכשיו מתאם."
+    you_have_left_group: "עזבת את %{which_group}."
+    comment_deleted: "התגובה נמחקה."
+    invitations:
+      auto_added:
+        one: "משתתף אחד צורף"
+        other: "%{count} משתתפים צורפו"
+  translate: "עזרו בתרגום Loomio!"
