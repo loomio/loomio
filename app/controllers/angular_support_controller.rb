@@ -16,6 +16,10 @@ class AngularSupportController < ApplicationController
   def connect_private_pub
   end
 
+  def boot
+    render file: Rails.root.join('public', 'angular.html'), layout: false
+  end
+
   def setup_for_add_comment
     reset_database
     sign_in patrick
