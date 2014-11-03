@@ -96,4 +96,20 @@ he:
       auto_added:
         one: "משתתף אחד צורף"
         other: "%{count} משתתפים צורפו"
+      existing_member:
+        one: "משתתף יחיד בקבוצה"
+        other: "%{count} משתתפים בקבוצה"
+      sent:
+        one: "הזמנה אחת נשלחה"
+        other: "%{count} הזמנות נשלחו"
+      auto_added_and_sent: "%{auto_added_text} ו%{sent_text}"
+  tooltip:
+    cover_photo_upload: "טעינת תמונת רקע חדשה"
+    logo_upload: "טעינת לוגו חדש"
+    edit_description: "עריכת תיאור"
+    group_category: "מצאו קבוצות דומות לזו"
+  views:
+    pagination:
+      previous: "הקודם"
+      next: "הבא"
   translate: "עזרו בתרגום Loomio!"
