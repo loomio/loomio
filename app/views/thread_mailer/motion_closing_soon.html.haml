@@ -1,10 +1,9 @@
 %p= t(:"email.thread_mailer.motion_closing_soon")
-%h4= link_to @motion.name, motion_url(@motion, @utm_hash)
 
 %table
   %tr
     %td
-      = render 'motion_pie', motion: @motion
+      = render 'motion_with_positions', motion: @motion
     %td
       = render_rich_text(@motion.description, false)
 
