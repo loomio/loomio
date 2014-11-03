@@ -29,7 +29,7 @@ class DiscussionReader < ActiveRecord::Base
 
   def following?
     if self[:following].nil?
-      membership.following_by_default
+      membership.try(:following_by_default)
     else
       self[:following]
     end
