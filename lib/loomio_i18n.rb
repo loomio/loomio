@@ -1,7 +1,7 @@
 module Loomio
   module I18n
 
-    SELECTABLE_LOCALES = %i( en an be-BY bg-BG ca cs zh-TW da de eo es el fr id it he hu ja ko ml nl-NL pt-BR ro sr sr-RS sv vi tr uk )
+    SELECTABLE_LOCALES = %i( en an be-BY bg-BG ca cs zh-TW da de eo es el fr id it he hu ja ko ml nl-NL pt-BR ro sr sr-RS sk sv vi tr uk )
 
     DETECTABLE_LOCALES = SELECTABLE_LOCALES + %i( be pt zh zh-HK )
 
