@@ -22,6 +22,16 @@ namespace :loomio do
     raise "Testing error reporting for rake tasks. Chill, no action requied if you see this"
   end
 
+  task refresh_likes: :environment do
+    progress_bar = ProgressBar.create( format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: Comment.count )
+
+    Comment.find_each do |c|
+      progress_bar.increment
+      c.refresh_liker_ids_and_names
+      c.save
+    end
+  end
+
   task fix_unread: :environment do
     puts "Recounting discussion reader counts"
     progress_bar = ProgressBar.create( format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: DiscussionReader.count )
