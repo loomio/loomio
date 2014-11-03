@@ -25,7 +25,7 @@ class Comment < ActiveRecord::Base
   delegate :name, to: :user, prefix: :author
   delegate :email, to: :user, prefix: :user
   delegate :participants, to: :discussion, prefix: :discussion
-  delegate :group, to: 'discussion'
+  delegate :group, to: :discussion
   delegate :full_name, to: :group, prefix: :group
   delegate :title, to: :discussion, prefix: :discussion
   delegate :locale, to: :user
