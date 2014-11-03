@@ -24,5 +24,5 @@ Then /^I should not see the delete link on another users comment$/ do
 end
 
 Then(/^I should be told the comment was deleted$/) do
-  page.should have_content(I18n.t(:"notice.comment_deleted"))
+  page.should have_content('Comment deleted.')
 end
