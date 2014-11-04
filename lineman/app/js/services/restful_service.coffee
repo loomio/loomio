@@ -10,7 +10,7 @@ angular.module('loomioApp').factory 'RestfulService', ($http, EventService, Reco
 
     constructor: ->
 
-    fetchOne: (key, success, failure) ->
+    fetchByKey: (key, success, failure) ->
       $http.get(@showPath(key)).then (response) =>
         RecordStoreService.importRecords(response.data)
         RecordStoreService.get(@resource_plural, key)
