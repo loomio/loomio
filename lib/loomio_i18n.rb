@@ -19,7 +19,7 @@ module Loomio
     #  ii) FALLBACKS
     # iii) a dummy yaml e.g. config/locales/fallback.zh-HK.yml
 
-    RTL_LOCALES = %i( ar he fa-IR ml ur ur-PK )
+    RTL_LOCALES = %i( ar he fa-IR ur ur-PK )
 
     # only for display purposes, please don't depend on this in the system
     TEST_LOCALES = %i( ar cmn hr fi gl ga-IE km mk mi fa-IR pl pt-PT ru sl te ur ur-PK )
