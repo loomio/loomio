@@ -55,7 +55,7 @@ class Ability
     end
 
 
-    can [:members_autocomplete, :follow, :unfollow], Group do |group|
+    can [:members_autocomplete, :follow, :unfollow, :see_members], Group do |group|
       user_is_member_of?(group.id)
     end
 
