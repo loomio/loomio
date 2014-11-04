@@ -16,7 +16,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       port: 3000
       prefix: 'api'
 
-  loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ngmin", "grunt-haml", 'grunt-sass', 'grunt-cucumber', 'grunt-contrib-copy']
+  loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ng-annotate", "grunt-haml", 'grunt-sass', 'grunt-cucumber', 'grunt-contrib-copy']
 
   removeTasks:
     common: ["handlebars", "jst", 'less', 'pages:dev']
@@ -24,7 +24,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
     dist: ['pages:dev']
 
   prependTasks:
-    dist: ["ngmin"] # ngmin should run in dist only
+    dist: ["ngannotate"] # ng-annotate should run in dist only
     common: ["haml", "ngtemplates"] # ngtemplates runs in dist and dev
 
   # swaps concat_sourcemap in place of vanilla concat
@@ -85,7 +85,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       dest: "generated/angular/template-cache.js"
 
   # configuration for grunt-ngmin, this happens _after_ concat once, which is the ngmin ideal :)
-  ngmin:
+  ngannotate:
     js:
       src: "<%= files.js.concatenated %>"
       dest: "<%= files.js.concatenated %>"
