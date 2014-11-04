@@ -58,7 +58,3 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
 
   $scope.reply = ->
     $scope.$emit 'replyToCommentClicked', $scope.comment
-
-  $scope.isAReply = ->
-    _.isObject($scope.comment.parent())
-

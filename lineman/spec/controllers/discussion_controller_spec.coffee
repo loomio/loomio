@@ -1,70 +1,58 @@
-#describe 'Discussion Controller', ->
-  #beforeEach module 'loomioApp'
+describe 'Discussion Controller', ->
+  beforeEach module 'loomioApp'
 
-  #$scope = null
-  #controller = null
+  $scope = null
+  controller = null
 
-  #comment =
-    #body: 'I am a comment'
-    #id: 1
-    #created_at: new Date()
-    #liker_ids_and_names: []
-    #author:
-      #id: 3
-      #name: 'Gilbert'
+  mockDiscussion = null
 
-  #mockDiscussion =
-    #id: 1
-    #title: 'title text'
-    #description: 'description text'
-    #current_user:
-      #id: 1
-      #name: 'Bill Withers'
-    #author:
-      #id: 2
-      #name: 'hurbert'
-    #events: [
-      #id: 1000
-      #sequence_id: 1
-      #kind: 'new_comment'
-      #eventable: comment
-    #]
+  mockEventService =
+    subscribeTo: (subscription, onNewEvent) ->
+    fetch: ->
+      true
 
-  #mockEventService =
-    #subscribeTo: (subscription, onNewEvent) ->
+  mockEventSubscription =
+    channel: '/events'
 
-  #mockEventSubscription =
-    #channel: '/events'
+  mockCurentUser =
+    id: 1
 
-  #mockCurentUser =
-    #id: 1
+  beforeEach inject ($rootScope, $controller, DiscussionModel) ->
+    mockDiscussion = new DiscussionModel
+      id: 1
+      title: 'title text'
+      description: 'description text'
+      author: ->
+        id: 2
+        name: 'hurbert'
+      events: -> [
+        id: 1000
+        sequence_id: 1
+        kind: 'new_comment'
+        eventable: comment
+      ]
+    spyOn(mockEventService, 'subscribeTo')
 
-  #beforeEach inject ($rootScope, $controller) ->
-    #spyOn(mockEventService, 'subscribeTo')
+    $scope = $rootScope.$new()
 
-    #$scope = $rootScope.$new()
+    controller = $controller 'DiscussionController',
+      $scope: $scope
+      discussion: mockDiscussion
+      eventSubscription: mockEventSubscription
+      EventService: mockEventService
 
-    #controller = $controller 'DiscussionController',
-      #$scope: $scope
-      #discussion: mockDiscussion
-      #eventSubscription: mockEventSubscription
-      #currentUser: mockCurentUser
-      #EventService: mockEventService
+  describe "initialization", ->
+    it "subscribes to the event channel", ->
+      expect(mockEventService.subscribeTo).toHaveBeenCalled()
 
-  #describe "initialization", ->
-    #it "subscribes to the event channel", ->
-      #expect(mockEventService.subscribeTo).toHaveBeenCalledWith(mockEventSubscription, $scope.onNewEventReceived)
+    it "assigns $scope.discussion", ->
+      expect($scope.discussion).toBe(mockDiscussion)
 
-    #it "assigns $scope.currentUser", ->
-      #expect($scope.currentUser).toBe(mockCurentUser)
-
-    #it "assigns $scope.discussion", ->
-      #expect($scope.discussion).toBe(mockDiscussion)
-
-  #describe 'a replyToCommentClicked event occurs', ->
-    #it 'broadcasts startCommentReply', ->
-      #subscope = $scope.$new()
-      #spyOn($scope, '$broadcast')
-      #subscope.$emit 'replyToCommentClicked', comment
-      #expect($scope.$broadcast).toHaveBeenCalledWith 'showReplyToCommentForm', comment
+  describe 'a replyToCommentClicked event occurs', ->
+    it 'broadcasts startCommentReply', ->
+      subscope = $scope.$new()
+      spyOn($scope, '$broadcast')
+      comment = {thing: 'ok'}
+      subscope.$emit 'replyToCommentClicked', comment
+      expect($scope.$broadcast).toHaveBeenCalledWith 'showReplyToCommentForm', comment
 
