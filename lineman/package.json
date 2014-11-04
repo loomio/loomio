@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "grunt-angular-templates": "0.3.8",
-    "grunt-ngmin": "~0.0.3",
+    "grunt-ng-annotate": "latest",
     "protractor": ">=0.8.0",
     "jasmine-given": "~2.1.0",
     "grunt": "~0.4.1",
