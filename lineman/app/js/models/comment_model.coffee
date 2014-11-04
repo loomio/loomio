@@ -5,7 +5,12 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
       @discussionId = data.discussion_id
       @authorId = data.author_id
       @parentId = data.parent_id
-      @body = data.body
+
+      if data.body?
+        @body = data.body
+      else
+        @body = ''
+
       @likerIds = data.liker_ids
       @newAttachmentIds = []
       @createdAt = data.created_at

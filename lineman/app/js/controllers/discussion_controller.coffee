@@ -9,7 +9,6 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, discussi
 
   $scope.getNextPage = ->
     return false if busy or $scope.lastPage
-    console.log 'getting next page'
     busy = true
     EventService.fetch {discussion_id: discussion.id, page: nextPage}, (events) ->
       $scope.lastPage = true if events.length == 0
