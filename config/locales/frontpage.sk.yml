@@ -2,7 +2,7 @@ sk:
   frontpage:
     view_this_in_your_language: 'Zobraziť stránku v %{language}'
     title:
-      collaborative_decision_making: Společné rozhodování
+      collaborative_decision_making: Kolaboratívne rozhodovanie
     link:
       blog: 'Blog'
       contact: 'Kontakt'
@@ -20,7 +20,7 @@ sk:
       privacy: 'Súkromie'
       services: 'Služby'
     hero:
-      head_html: 'Svet potrebuje lepší spôsob, ako <strong>společne rozhodovať</strong>.'
+      head_html: 'Svet potrebuje lepší spôsob, ako <strong>spoločne rozhodovať</strong>.'
       desc_html: 'Loomio je slobodne použiteľný,  <a href="https://github.com/loomio/loomio">open source</a> program ktorý umožňuje každému a kdekoľvek, aby sa podieľal na rozhodnutiach, které sa ho týkajú.'
     product:
       header_html: 'Keď si vypočujeme <strong>všetky hlasy</strong>, robíme <strong>lepšie rozhodnutia</strong>.'

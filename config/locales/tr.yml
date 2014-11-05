@@ -868,5 +868,18 @@ tr:
   thanks: "Teşekkürler!"
   unlike: "Beğenmekten vazgeç"
   update: "Güncelleme"
+  facebook: "Facebook"
+  yahoo: "Yahoo"
+  google: "Google"
   common:
+    groups: "Gruplar"
+    privacy: "Gizlilik"
     email: "E-posta"
+  group_categories:
+    all: "Hepsi"
+    economics: "Ekonomi"
+    arts: "Sanat"
+    science: "Bilim"
+    technology: "Teknoloji"
+    sports: "Spor"
+    media: "Medya"
