@@ -28,7 +28,7 @@ class Attachment < ActiveRecord::Base
                                 provider: 'AWS'})
     
     bucket = storage.directories.get(ENV['AWS_ATTACHMENTS_BUCKET'])
-    filename = URI.decode(URI(self.location).path).gsub(/^\//, '')
+    filename = URI(self.location).path.gsub(/^\//, '')
     file = bucket.files.get(filename)
     file.destroy
   end
