@@ -25,6 +25,17 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
 
     plural: 'comments'
 
+    group: ->
+      @discussion.group()
+
+    canBeEditedByAuthor: ->
+      @group.membersCanEditComments or @isMostRecent()
+
+    isMostRecent: ->
+      newerComments = RecordStoreService.get 'comments', (comment) =>
+        (comment.discussionId == @discussionId) && (@comment.createdAt > @createdAt)
+      newerComments.length == 0
+
     isReply: ->
       @parentId?
 

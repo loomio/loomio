@@ -37,6 +37,14 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
 
   $scope.comment = $scope.event.comment()
 
+  $scope.showEditComment = ->
+  $scope.canEditComment = ->
+    UserAuthService.currentUser.id == $scope.comment.authorId
+
+  %scope.deleteComment = ->
+    # if confirm delete comment
+    # delete comment via service
+
   $scope.like = ->
     CommentService.like($scope.comment, renderLikedBySentence)
 

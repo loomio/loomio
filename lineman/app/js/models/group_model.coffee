@@ -1,12 +1,15 @@
 angular.module('loomioApp').factory 'GroupModel', (RecordStoreService) ->
   class GroupModel
     constructor: (data = {}) ->
-      @id = data.id
-      @key = data.key
-      @name = data.name
-      @description = data.description
-      @parentId = data.parent_id
-      @createdAt = data.created_at
+      @id =                     data.id
+      @key =                    data.key
+      @name =                   data.name
+      @description =            data.description
+      @parentId =               data.parent_id
+      @createdAt =              data.created_at
+      @membersCanEditComments = data.members_can_edit_comments
+      @membersCanRaiseMotions = data.members_can_raise_motions
+      @membersCanVote =         data.members_can_vote
 
     plural: 'groups'
 

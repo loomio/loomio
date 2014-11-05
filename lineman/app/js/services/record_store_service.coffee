@@ -1,6 +1,7 @@
-angular.module('loomioApp').service 'RecordStoreService', class RecordStoreService
-    constructor: (@$http, @$angularCacheFactory) ->
-      @cache = @$angularCacheFactory 'recordStore'
+angular.module('loomioApp').factory 'RecordStoreService', ($angularCacheFactory) ->
+  new class RecordStoreService
+    constructor: ->
+      @cache = $angularCacheFactory 'recordStore'
       @models = {}
 
     registerModel: (model) ->
