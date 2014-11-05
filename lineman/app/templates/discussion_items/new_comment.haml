@@ -1,5 +1,11 @@
 .thread-event.thread-comment{ng_controller: 'NewCommentItemController'}
-
+  .thread-event-context-menu.dropdown.pull-right
+    %a.dropdown-toggle{href:''}
+      %i.fa.fa-chevron-down
+    %ul.dropdown-menu
+      %li
+        %a{href: '', ng-click: 'showEditComment()', ng-if: '::canEditComment()'} Edit comment
+        %a{href: ''} Delete comment
   .thread-event-header.media
     .pull-left{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = comment.author()'}
     .media-body

@@ -170,8 +170,7 @@ class Ability
       user_is_member_of?(discussion.group_id)
     end
 
-    # was manage.. but thats fucked
-    can :create, Comment do |comment|
+    can [:create, :update], Comment do |comment|
       user_is_author_of?(comment) and comment.can_be_edited?
     end
 

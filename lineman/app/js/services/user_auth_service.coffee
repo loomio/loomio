@@ -12,3 +12,5 @@ angular.module('loomioApp').factory 'UserAuthService', (RecordStoreService, User
     logout: ->
       $http.delete('/api/vi/sessions').then (response) ->
         console.log(response)
+
+    can: (action, object) ->
