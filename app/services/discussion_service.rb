@@ -33,7 +33,7 @@ class DiscussionService
 
   def self.delete_comment(comment: comment, actor: actor)
     actor.ability.authorize!(:destroy, comment)
-    comment.destroy
+    comment.delay.destroy
   end
 
   def self.start_discussion(discussion)
