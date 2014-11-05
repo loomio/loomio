@@ -26,9 +26,11 @@ class Attachment < ActiveRecord::Base
     storage = Fog::Storage.new({aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
                                 aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
                                 provider: 'AWS'})
+    
     bucket = storage.directories.get(ENV['AWS_ATTACHMENTS_BUCKET'])
     file = bucket.files.get(URI(URI.encode(self.location)).path.gsub(/^\//, ''))
-    file.destroy
+    file.destroy if file
+    true
   end
 
 end
