@@ -169,7 +169,7 @@ sk:
       x_days:
         one: "dňom"
         few: "%{count} dni"
-        other: "%{count} dni"
+        other: "%{count} dňami"
       about_x_months:
         one: "mesiacom"
         few: "%{count} mesiacami"
@@ -289,7 +289,7 @@ sk:
     members_can:
       add_members: Pozvať a schváliť nových členov
       edit_comments: Upraviť kedykoľvek svoje komentáre
-      edit_discussions: Aktualizujte obsah akejkoľvek diskusie v skupine.
+      edit_discussions: Aktualizujte popis akejkoľvek diskusie v skupine.
       start_discussions: Zahájiť diskusie
       raise_motions: Prezentujte návrhy
       vote: Hlasovať o návrhoch
@@ -323,7 +323,7 @@ sk:
     header: Oprávnenia skupiny
     coordinators_can: "Koordinátori môžu:"
     c1: Zmeniť nastavenia skupiny
-    c2: Aktualizovať názov a obsah akejkoľvek diskusie.
+    c2: Aktualizovať názov a popis akejkoľvek diskusie.
     c3: Presunúť diskusie medzi skupinami.
     c4: Pozvať a schváliť nových členov.
     c5: Poslať e-mailom oznámenia všetkým členom skupiny.
@@ -339,7 +339,7 @@ sk:
     m1: Odstrániť svoje vlastné komentáre.
     m3: Aktualizovať názov a popis návrhov ktoré začali, kým niekto nezverejnil svoj postoj.
     m4: Aktualizovať dátum uzatvorenia návrhov ktoré začnú, pokým nie sú uzatvorené.
-    m5: Aktualizovať názov a obsah akejkoľvek diskusie.
+    m5: Aktualizovať názov a popis akejkoľvek diskusie.
     m6: Vytvoriť podskupinu, ktorej sa stane koordinátorom.
     m7: Kedykoľvek aktualizovať vlastné komentáre.
     m8: Predložiť a prispievať do návrhov.
@@ -1010,7 +1010,7 @@ sk:
   start_a_group: "Vytvoriť skupinu"
   starting: "Zahajuje sa"
   subject: "Téma"
-  terms_of_service_html: "Kliknutím do štvorčeka %{button_text}, vyjadrujete svoj súhlas s <a href='%{link_path}' target='_blank'>Loomio servisnými podmienkami</a>"
+  terms_of_service_html: "Kliknutím na %{button_text}, vyjadrujete svoj súhlas s <a href='%{link_path}' target='_blank'>Loomio servisnými podmienkami</a>"
   thanks: "Ďakujeme!"
   unlike: "To sa mi nepáči"
   time_until_close: "%{quantity_of_time} do ukončenia"
@@ -1024,7 +1024,7 @@ sk:
     dashboard: Ovládací panel
     unread: Neprečítané
     filter: 'Filter:'
-    following: Sledovaný
+    following: Sledované
     not_following: Nesledovaný
     back_to_discussion: "Späť do diskusie"
     edited: Aktualizovaný
