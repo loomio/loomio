@@ -11,7 +11,7 @@ class Comment < ActiveRecord::Base
   has_many :comment_votes, -> { joins('INNER JOIN users ON comment_votes.user_id = users.id AND users.deactivated_at IS NULL' )}, dependent: :destroy
 
   has_many :events, as: :eventable, dependent: :destroy
-  has_many :attachments
+  has_many :attachments, dependent: :destroy
 
   validates_presence_of :user
   validate :has_body_or_attachment
