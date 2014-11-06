@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $translate, CommentService, UserAuthService) ->
+angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $translate, $modal, CommentService, UserAuthService) ->
   renderLikedBySentence = ->
     otherIds = _.without($scope.comment.likerIds, UserAuthService.currentUser.id)
     otherUsers = _.filter $scope.comment.likers(), (user) -> _.contains(otherIds, user.id)
@@ -37,12 +37,25 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
 
   $scope.comment = $scope.event.comment()
 
-  $scope.showEditComment = ->
+  $scope.editComment = ->
+    modalInstance = $modal.open
+      templateUrl: 'generated/templates/edit_comment.html'
+      controller: 'EditCommentController'
+      resolve:
+        comment: ->
+          $scope.comment
+
+    modalInstance.result.then (something) ->
+      # probably unused
+
   $scope.canEditComment = ->
+    # should be:
+    # currentUser.can('edit', $scope.comment)
     UserAuthService.currentUser.id == $scope.comment.authorId
 
-  %scope.deleteComment = ->
+  $scope.deleteComment = ->
     # if confirm delete comment
+    # if currentUser.can('delete', $scope.comment)
     # delete comment via service
 
   $scope.like = ->
