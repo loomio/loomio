@@ -30,7 +30,12 @@ class Attachment < ActiveRecord::Base
     bucket = storage.directories.get(ENV['AWS_ATTACHMENTS_BUCKET'])
     filename = URI.decode(URI(URI.encode(self.location)).path).gsub(/^\//, '')
     file = bucket.files.get(filename)
-    file.destroy
+
+    if file
+      file.destroy
+    else
+      raise "attachment filename not found within bucket: #{filename}"
+    end
   end
 
 end
