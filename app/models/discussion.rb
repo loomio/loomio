@@ -120,7 +120,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def participants
-    participants = commenters.all
+    participants = group.members.where(id: commenters.pluck(:id))
     participants << author
     participants += motion_authors
     participants.uniq

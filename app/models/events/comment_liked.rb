@@ -17,6 +17,4 @@ class Events::CommentLiked < Event
       notify!(comment_vote.comment_user)
     end
   end
-
-  handle_asynchronously :notify_users!
 end
