@@ -9,7 +9,8 @@ class Comment < ActiveRecord::Base
   belongs_to :discussion, counter_cache: true
   belongs_to :user
 
-  has_many :comment_votes, dependent: :destroy
+  has_many :comment_votes, -> { joins('INNER JOIN users ON comment_votes.user_id = users.id AND users.deactivated_at IS NULL' )}, dependent: :destroy
+
   has_many :events, as: :eventable, dependent: :destroy
   has_many :attachments, dependent: :destroy
   has_many :likers, through: :comment_votes, source: :user
@@ -30,7 +31,7 @@ class Comment < ActiveRecord::Base
   delegate :name, to: :user, prefix: :author
   delegate :email, to: :user, prefix: :user
   delegate :participants, to: :discussion, prefix: :discussion
-  delegate :group, to: 'discussion'
+  delegate :group, to: :discussion
   delegate :full_name, to: :group, prefix: :group
   delegate :title, to: :discussion, prefix: :discussion
   delegate :locale, to: :user
@@ -88,6 +89,14 @@ class Comment < ActiveRecord::Base
     liker_ids_and_names.delete(user.id)
     comment_votes.where(:user_id => user.id).each(&:destroy)
     save
+  end
+  
+  def refresh_liker_ids_and_names
+    hash = {}
+    self.liker_ids_and_names = comment_votes.each do |cv|
+      hash[cv.user_id] = cv.user.name
+    end
+    self.liker_ids_and_names = hash
   end
 
   def mentioned_group_members

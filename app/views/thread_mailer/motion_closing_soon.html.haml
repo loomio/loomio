@@ -1,12 +1,6 @@
 %p= t(:"email.thread_mailer.motion_closing_soon")
-%h4= link_to @motion.name, motion_url(@motion, @utm_hash)
 
-%table
-  %tr
-    %td
-      = render 'motion_pie', motion: @motion
-    %td
-      = render_rich_text(@motion.description, false)
+= render 'motion_with_positions'
 
 - unless @motion.user_has_voted?(@recipient)
   %h4= t(:"help.have_your_say")

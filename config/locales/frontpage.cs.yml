@@ -6,10 +6,11 @@ cs:
     link:
       blog: 'Blog'
       contact: 'Kontakt'
+      donate: 'Přispějte ještě dnes'
       press: 'Tisk'
       try_it: 'Vyzkoušejte to'
       log_in: 'PŘIHLÁSIT SE'
-      video: "Dozvěďte se více o tom, jak Loomio funguje"
+      video: "Více o tom, jak Loomio funguje"
       try_loomio_beta: 'Vyzkoušejte Loomio beta'
       check_out_loomio_beta: 'Podívejte se na Loomio beta'
       more: 'Více'
@@ -36,6 +37,13 @@ cs:
       header: 'Crowdfundujeme, abychom mohli dobudovat tuto novou platformu a poskytnout ji světu.'
     prototype:
       header_html: "Již jsme postavili prototyp, a lidé na celém světě s ním dělají úžasné věci"
+      subhead_html: '<a href="%{try_loomio_link}">Vyzkoušejte Loomio Beta</a> hned. Můžete také <a href="%{donate_link}">podpořit projekt finančně</a> a pomoci tak při tvorbě Loomio verze 1.0'
+    mobile:
+      header_html: 'Loomio 1.0 bude fungovat na libovolném zařízení, je vytvářený pomocí nejlepší <strong> otevřené mobilní technologie.</strong>'
+    quote:
+      header:
+        rushkoff_html: '“Loomio <strong> využívá naplno potenciál internetu</strong>, místo polarizování debaty se snaží spíše přivést lidi ke konsenzu.”<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, author of <em>Present Shock</em></div>'
+        sifry_html: '“Loomio nabízí rovnováhu mezi <strong>hlasem jednotlivce</strong> a <strong>kolektivním rozhodnutím</strong>.”<div class="attributation">– Micah Sifry, Editor, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: 'O Loomiu'
       desc: 'Jsme malý tým open-source vývojářů a aktivistů za sociální spravedlnost pracující pro Enspiral v Aotearoa Novém Zélandu, se širší sítí přátel, příznivců a poradců po celém světě.'

@@ -159,15 +159,26 @@ describe Discussion do
 
   describe "#participants" do
     before do
-      @user1, @user2, @user3, @user4 =
-        create(:user), create(:user), create(:user), create(:user)
+      @user1, @user2, @user3, @user4, @user_left_group =
+        create(:user), create(:user), create(:user), create(:user), create(:user)
       @discussion = create :discussion, author: @user1
       @group = @discussion.group
       @group.add_member! @user2
       @group.add_member! @user3
       @group.add_member! @user4
+<<<<<<< HEAD
       CommentService.create(comment: Comment.new(discussion: @discussion, body: 'hi'), actor: @user2)
       CommentService.create(comment: Comment.new(discussion: @discussion, body: 'hi'), actor: @user3)
+||||||| merged common ancestors
+      DiscussionService.add_comment(build :comment, user: @user2, discussion: @discussion)
+      DiscussionService.add_comment(build :comment, user: @user3, discussion: @discussion)
+=======
+      @group.add_member! @user_left_group
+      DiscussionService.add_comment(build :comment, user: @user2, discussion: @discussion)
+      DiscussionService.add_comment(build :comment, user: @user3, discussion: @discussion)
+      DiscussionService.add_comment(build :comment, user: @user_left_group, discussion: @discussion)
+      @group.membership_for(@user_left_group).destroy
+>>>>>>> master
     end
 
     it "should include users who have commented on discussion" do
@@ -194,6 +205,10 @@ describe Discussion do
 
     it "should not include users who have not commented on discussion" do
       @discussion.participants.should_not include(@user4)
+    end
+
+    it "should not include users who have since left the group" do
+      @discussion.participants.should_not include(@user_left_group)
     end
   end
 

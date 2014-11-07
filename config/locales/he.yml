@@ -96,4 +96,101 @@ he:
       auto_added:
         one: "משתתף אחד צורף"
         other: "%{count} משתתפים צורפו"
+      existing_member:
+        one: "משתתף יחיד בקבוצה"
+        other: "%{count} משתתפים בקבוצה"
+      sent:
+        one: "הזמנה אחת נשלחה"
+        other: "%{count} הזמנות נשלחו"
+      auto_added_and_sent: "%{auto_added_text} ו%{sent_text}"
+  tooltip:
+    cover_photo_upload: "טעינת תמונת רקע חדשה"
+    logo_upload: "טעינת לוגו חדש"
+    edit_description: "עריכת תיאור"
+    group_category: "מצאו קבוצות דומות לזו"
+  views:
+    pagination:
+      previous: "הקודם"
+      next: "הבא"
+  warning:
+    cant_remove_last_admin: "מעצם היותך המתאם האחרון לא ניתן להסירך"
+    membership_request_already_approved: "בקשת ההשתייכות כבר אושרה."
+    membership_request_already_ignored: "בקשת ההשתייכות כבר נדחתה."
+    membership_request_already_canceled: "בקשת ההשתייכות כבר בוטלה."
+    position_not_submitted: "לא ניתן להגיש את עמדתך."
+    proposal_not_created: "יצירת ההצעה נכשלה."
+    user_already_admin: "%{which_user} כבר מתאם לקבוצה זאת."
+    user_already_member: "%{which_user} כבר מתאם חבר בקבוצה זאת."
+    user_not_admin: "סליחה, %{which_user} חייב להיות מתאם הקבוצה על מנת לגשת אליה."
+  success:
+    added_to_group: "צורפת ל%{which_group}."
+    close_date_changed: "תאריך הסגירה עודכן בהצלחה."
+    discussion_created: "הדיון נוצר בהצלחה."
+    discussion_deleted: "הדיון נמחק בהצלחה."
+    discussion_moved: "הדיון הועבר בהצלחה ל%{group_name}."
+    emails_sending: "הדואל נשלח כעת."
+    group_archived: "הקבוצה אורכבה בהצלחה."
+    group_created: "הקבוצה נוצרה בהצלחה."
+    members_added: "משתתפים התווספו לקבוצה."
+    membership_requested: "ביקשת להצטרף ל%{which_group}. הודעה תשלח אליך ברגע שהבקשה תאושר."
+    motion_closed: "ההצעה סגורה. ניתן לקבוע תוצאה בתחתית ולשלוח לקבוצה שלך."
+    motion_outcome_created: "ברכותינו! יצרת תוצאות-הצעה וחברי הקבוצה קיבלו התרעה על כך."
+    motion_outcome_updated: "תוצאות ההצעה עודכנו."
+    password_updated: "סיסמתך שונתה בהצלחה."
+    position_submitted: "העמדה הוגשה"
+    position_updated: "העמדה עודכנה."
+    proposal_created: "ההצעה נוצרה בהצלחה."
+    proposal_deleted: "ההצעה נמחקה."
+  datetime:
+    distance_in_words:
+      less_than_x_seconds:
+        one: "1 שניה"
+        other: "%{count} שניות"
+      x_seconds:
+        one: "1 שניה"
+        other: "%{count} שניות"
+      less_than_x_minutes:
+        one: "1 דקה"
+        other: "%{count} דקות"
+      x_minutes:
+        one: "1 דקה"
+        other: "%{count} דקות"
+      about_x_hours:
+        one: "1 שעה"
+        other: "%{count} שעות"
+      x_days:
+        one: "1 יום"
+        other: "%{count} ימים"
+      about_x_months:
+        one: "1 חודש"
+        other: "%{count} חודשים"
+      x_months:
+        one: "1 חודש"
+        other: "%{count} חודשים"
+      about_x_years:
+        one: "1 שנה"
+        other: "%{count} שנים"
+      over_x_years:
+        one: "1 שנה"
+        other: "%{count} שנים"
+      almost_x_years:
+        one: "1 שנה"
+        other: "%{count} שנים"
+  organisation:
+    name: "Loomio"
+  sr:
+    toggle_navigation: "הסתרת/הצגת ניווט"
+  footer:
+    about: 'אודות'
+    blog: 'בלוג'
+    contact: 'יצירת קשר'
+    privacy: 'פרטיות'
+    public_groups: 'קבוצות ציבוריות'
+    terms: 'תנאי שימוש'
+  inbox:
+    clear: 'נקה/י'
+    title: 'דואר נכנס'
+    preferences: 'העדפות דואר נכנס'
+    what_you_have_not_read_yet: "להלן פעילויות שטרם נקראו"
+    dropdown-btn: 'דואר נכנס'
   translate: "עזרו בתרגום Loomio!"
