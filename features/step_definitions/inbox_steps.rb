@@ -6,7 +6,7 @@ Given(/^I belong to a group with a discussion$/) do
   @group = FactoryGirl.create :group
   @group.add_member!(@user)
   @discussion = FactoryGirl.build :discussion, group: @group
-  DiscussionService.start_discussion(@discussion)
+  DiscussionService.create(discussion: @discussion, actor: @user)
 end
 
 When(/^I click to view the discussion$/) do
@@ -65,9 +65,9 @@ Given(/^I belong to a group with several discussions$/) do
   @group = FactoryGirl.create :group
   @group.add_member!(@user)
   @discussion = FactoryGirl.build :discussion, group: @group
-  DiscussionService.start_discussion(@discussion)
+  DiscussionService.create(discussion: @discussion, actor: @user)
   @discussion2 = FactoryGirl.build :discussion, group: @group
-  DiscussionService.start_discussion(@discussion2)
+  DiscussionService.create(discussion: @discussion2, actor: @user)
 end
 
 When(/^I click 'Clear'$/) do
@@ -87,7 +87,7 @@ Given(/^I have read the discussion but there is a new comment$/) do
   @discussion.group.add_member!(@discussion.author)
   DiscussionReader.for(user:@user, discussion: @discussion).viewed!
   @comment = FactoryGirl.build(:comment, discussion: @discussion)
-  DiscussionService.add_comment(@comment)
+  CommentService.create(comment: @comment, actor: @user)
 end
 
 Given(/^I belong to a group with more than max per inbox group discussions$/) do
@@ -96,7 +96,7 @@ Given(/^I belong to a group with more than max per inbox group discussions$/) do
   Inbox::UNREAD_PER_GROUP_LIMIT = 3
   4.times do
     @discussion = FactoryGirl.build :discussion, group: @group
-    DiscussionService.start_discussion(@discussion)
+    DiscussionService.create(discussion: @discussion, actor: @user)
   end
 end
 

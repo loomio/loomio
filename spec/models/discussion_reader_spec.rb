@@ -54,8 +54,13 @@ describe DiscussionReader do
 
         discussion.reload
         reader.viewed!
-        CommentService.create comment: build(:comment, discussion: discussion), actor: user
 
+        comment = Comment.create! discussion: discussion, author: user, body: 'hi'
+
+        Events::NewComment.create!(kind: 'new_comment',
+                                   eventable: comment,
+                                   discussion: comment.discussion,
+                                   created_at: comment.created_at)
         discussion.reload
       end
 

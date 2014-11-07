@@ -1,5 +1,5 @@
 class VotesController < BaseController
-  before_filter :require_user_can_vote
+  before_filter :require_motion_voting
 
   def new
     @vote = motion.most_recent_vote_of(current_user) || Vote.new
@@ -26,13 +26,9 @@ class VotesController < BaseController
   end
 
   private
-    def require_user_can_vote
-      unless can?(:vote, motion)
-        if motion.closed?
-          flash[:notice] = t(:"unable_to_vote.motion_closed")
-        else
-          flash[:notice] = t(:"unable_to_vote.permission_denied")
-        end
+    def require_motion_voting
+      if motion.closed?
+        flash[:notice] = t(:"unable_to_vote.motion_closed")
         redirect_to dashboard_path
       end
     end
