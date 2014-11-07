@@ -208,29 +208,35 @@ class Admin::StatsController < Admin::BaseController
   end
 
   def daily_activity_counts(group, day)
-    discussions = Discussion.where(group_id: [group.org_group_ids]).where('author_id != 5562').where('created_at <= ?', day)
-    comments_count = Comment.where(discussion_id: discussions.map(&:id)).where('created_at <= ?', day).count
-    motions = Motion.where(discussion_id: discussions.map(&:id)).where('author_id != 5562').where('created_at <= ?', day)
     votes_count = 0
+    discussions       = Discussion.where(group_id: [group.org_group_ids]).where('author_id != 5562').where('created_at <= ?', day)
+    comments_count    = Comment.where(discussion_id: discussions.map(&:id)).where('created_at <= ?', day).count
+    motions           = Motion.where(discussion_id: discussions.map(&:id)).where('author_id != 5562').where('created_at <= ?', day)
     motions.each do |m|
-      votes_count += Vote.where(motion_id: m.id).where('created_at <= ?', day).count
+      votes_count    += Vote.where(motion_id: m.id).where('created_at <= ?', day).count
     end
-    members_count = Membership.where(group_id: [group.org_group_ids]).where('created_at <= ?', day).count
-    outcomes_count = motions.where('outcome IS NOT NULL').where('created_at <= ?', day).count
+    members_count     = Membership.where(group_id: [group.org_group_ids]).where('created_at <= ?', day).count
+    outcomes_count    = motions.where('outcome IS NOT NULL').where('created_at <= ?', day).count
+    subgroups_count   = group.subgroups.where('created_at <= ?', day).count
+    days_old          = (day.to_date - group.created_at.to_date).to_i
+    motions_count     = motions.count
+    discussions_count = discussions.count
     {
       day: day,
+      days_old: days_old,
       id: group.id,
       name: group.full_name,
-      subgroups: group.subgroups.where('created_at <= ?', day).count,
-      discussions: discussions.count,
+      subgroups: subgroups_count,
+      discussions: discussions_count,
       comments: comments_count,
-      motions: motions.count,
+      motions: motions_count,
       daily_votes: votes_count,
       outcomes: outcomes_count,
       members: members_count,
       financial_nature: group.financial_nature,
       creator_id: group.creator_id,
-      locale: group.locale
+      locale: group.locale,
+      total: subgroups_count + discussions_count + comments_count + motions_count + votes_count + outcomes_count + members_count
     }
   end
 

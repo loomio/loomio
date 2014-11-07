@@ -187,8 +187,10 @@ it:
     terms: 'Termini'
   inbox:
     preferences: 'Opzioni posta in arrivo'
+    what_you_have_not_read_yet: "Ecco le attività che non hai ancora letto."
     dropdown-btn: 'Posta in arrivo'
     empty: Aggiornato! Non ci sono commenti che non hai letto.
+    preferences_instructions_html: '<strong>Trascina gli oggetti</strong> per cambiarne l''ordine.  <strong>Togli la spunta</strong> per rimuovere dalla inbox.'
   notifications:
     header: "Notifiche"
     new_discussion: "ha iniziato una discussione"
@@ -252,6 +254,13 @@ it:
     reactivation_html: "Dovrai <a href='%{link}'>contattarci</a> per riattivare il tuo account."
     deactivation:
       title: "Disattivazione del tuo account"
+      query: "Se non ti dispiace ci diresti perché stai disattivando il tuo account?"
+      only_coordinator: "Un gruppo deve avere almeno un coordinatore. Attualmente se l'unico coordinatore di questi gruppi:"
+      instructions: "Per disattivare il tuo account, devi aggiungere un altro coordinatore oppure disattivare i gruppi."
+      info_title: "Cosa comporterà la disattivazione del tuo account?"
+      memberships: "Non sarai più elencato tra i membri di ciascun gruppo a cui attualmente appartieni."
+      group_contributions: "I commenti, le proposte e le discussioni che hai creato nei gruppi rimarranno, ma rimuoveremo il tuo nome da questi elementi."
+      emails: "Non riceverai più email da Loomio."
   group_form:
     name: "Nome gruppo"
     description: "Descrizione"
@@ -317,6 +326,9 @@ it:
     m7: Modificare i propri commenti in qualsiasi momento.
     m8: Avanzare e partecipare alle proposte
     optional_restrictions: "A scelta, i coordinatori possono limitare le possibilità dei membri."
+  discussion_privacy:
+    public: Questa discussione è pubblica sul web.
+    private: Questa discussione è privata tra i membri del gruppo
   group_privacy:
     visible_to:
       public: Gruppi elencati pubblicamente.
@@ -345,6 +357,7 @@ it:
   message_placeholder: "Scrivi un messaggio ai membri di %{which_group}."
   email_group_members: "Invia una mail ai membri del gruppo"
   edit_group_settings: "Modifica le impostazioni del gruppo"
+  manage_members: "Gestisci i membri"
   leave_group: "Abbandona il gruppo"
   confirm_leave_hidden_group: "Sei sicuro di voler lasciare %{which_group}? Sarai rimosso da ogni sottogruppo."
   confirm_leave_group: "Sei sicuro di voler abbandonare %{which_group}?"
@@ -395,6 +408,11 @@ it:
   group_description: "Descrizione del gruppo"
   edit_group_description: "Modifica la descrizione del gruppo"
   group_subscription: "Sottoscrizione gruppo"
+  groups:
+    follow:
+      click_to_follow: "Clicca per seguire questo gruppo"
+      click_to_unfollow: "Clicca per smettere di seguire questo gruppo"
+      following_details: "Riceverai una notifica per ogni thread in questo gruppo."
   group_request:
     beta_request_header: "Inizia un gruppo in Loomio Beta"
     beta_request_description: "Per iniziare a prendere decisioni su Loomio Beta, il primo passo e di iniziare un gruppo."

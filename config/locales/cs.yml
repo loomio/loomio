@@ -3,12 +3,21 @@ cs:
     email_preferences:
       edit:
         title: 'Nastavení emailu'
+        when_do_you_want_emails: 'Poslat mi e-mail:'
+        email_missed_yesterday: "'Včera na Loomio' - denní souhrn aktivit, které jsem zmeškal"
+        email_when_mentioned: "Pokud jsem  @zmíněný"
+        email_followed_threads: "Pokud je v diskusních vláknech, které sleduji nějaká aktivita."
+        email_when_proposal_closing_soon: "24 hodin před uzavřením návrhu."
+        email_new_discussions_and_proposals: 'Nové diskuse a návrhy'
         for_these_groups: "Pro tyto skupiny:"
         submit: "Uložit nastavení"
   explore:
     header: "Prozkoumejte veřejné skupiny"
   try_it:
     header: "Vyzkoušejte Loomio"
+    start_a_group: "Spustit skupinu pro vytvoření rozhodnutí ve své vlastní komunitě."
+    join_the_community: "Přidejte se ke skupině komunity Loomio"
+    loomio_community_info: "Zde diskutujeme a vytváříme rozhodnutí o programu Loomio"
     explore_groups: "Prozkoumejte další skupiny na Loomio"
     explore_groups_info: "Podívejte se na všechny ty úžasné skupiny na Loomio a připojte se k nim!"
   activerecord:
@@ -31,6 +40,7 @@ cs:
   devise:
     invitations:
       send_instructions: 'Pozvánka byla odeslána na %{email}.'
+      invitation_token_invalid: 'Tato pozvánka již není platná!'
       updated: 'Účet vytvořen.'
       no_invitations_remaining: "Nezbývají žádné pozvánky"
     mailer:
@@ -58,6 +68,7 @@ cs:
     position_not_updated: "Nepodařilo se aktualizovat postoj."
     settings_not_updated: "Vaše nastavení nebyla aktualizována."
     group_request_already_accepted: "Omlouváme se. Tato pozvánka je neplatná nebo už byla přijata."
+    group_request_invalid_token: "Promiňte! Tento token je již neplatný"
     group_private_or_not_found: "Skupina nenalezena.\n\nTato skupina by mohla být soukromá. Pokud vám někdo poslal tento odkaz, požádejte jí/ho, aby vás do skupiny pozval(a)."
     group_already_setup: "Skupina, kterou se snažíte vytvořit, už existuje."
     passwords_did_not_match: "Heslo se neshoduje s potvrzením"
@@ -164,6 +175,8 @@ cs:
         other: "%{count} lety"
   organisation:
     name: "Loomio"
+  sr:
+    toggle_navigation: "Přepnout navigaci"
   footer:
     about: 'O nás'
     blog: 'Blog'
@@ -175,8 +188,10 @@ cs:
     clear: 'Vyčistit'
     title: 'Doručná'
     preferences: 'Doručená - nastavení'
+    what_you_have_not_read_yet: "Zde jsou aktivity, které jste ještě nečetli."
     dropdown-btn: 'Příchozí'
     empty: Jste dobře informován(a)! Nejsou žádné komentáře, které jste neviděl(a).
+    preferences_instructions_html: '<strong>Přetažením položek</strong> dojde k jejich přeskupení. <strong>Zrušte zaškrtnutí políčka</strong> k odstranění z doručené pošty.'
   notifications:
     header: "Upozornění"
     new_discussion: "zahájil(a) diskusi"
@@ -248,10 +263,13 @@ cs:
       add_members: Pozvat a schválit nové členy
       edit_comments: Upravit kdykoliv své komentáře
       start_discussions: Zahájit diskuze
+      raise_motions: Prezentujte návrhy
       vote: Hlasovat o návrzích
       create_subgroups: Vytvořit podskupiny
     visible_to:
       label: Kdo může najít tuto skupinu?
+    membership_granted_upon:
+      label: Jak se lidé připojí?
     discussion_privacy_options:
       label: Kdo může vidět diskuze?
       hint: Veřejné diskuze může zobrazit kdokoli.
@@ -583,12 +601,15 @@ cs:
       header: "Upravit diskuzi"
     privacy:
       will_be_public: "Každý může vidět diskuzi."
+  motion_history:
+    title: "Změny v návrhu"
   motion_form:
     new:
       header: "Nový návrh"
       submit: 'Vytvořit návrh'
     edit:
       header: "Upravit návrh"
+      submit: 'Aktualizovat návrh'
     name_helper: "Vyberte co nejjasnější a nejstručnější název."
   vote_form:
     header: "Konstatujte svůj postoj"
@@ -668,6 +689,8 @@ cs:
         create: "Vytvořit účet"
         update: "Aktualizovat nastavení"
   email:
+    by_who: "od %{person}"
+    reply_to_this_discussion: Odpovědět na této diskusi
     to_join_discussion:
       subject: "%{who} chce, aby ses zapojil(a) do diskuze na Loomio"
       content: "Byl(a) jste pozván(a), abyste se zapojil(a) do diskuze: %{discussion}"
@@ -697,6 +720,7 @@ cs:
     missed_yesterday:
       subject: "Včera na Loomio"
       mark_as_read: Označit jako přečtené
+      thanks_for_reading: Děkujeme za přečtení a přejeme hezký den!
     group_email:
       intro: "%{who} oznámil(a) skupině %{group}:"
     group_membership_approved:
@@ -870,20 +894,28 @@ cs:
       pm: 'odp.'
     please_wait: "Prosím vyčkejte"
     permissions: "Oprávnění"
+    public: "Veřejnost"
     email: "E-mail"
     start_group: "Vytvořit skupinu!"
   group_categories:
     all: "Vše"
     blank: "Nezařazeno"
     economics: "Ekonomika"
+    activist: "Aktivista"
     arts: "Umění"
     business: "Obchod"
+    collective: "Sdružení"
     education: "Vzdělání"
+    environmental_group: "Skupina pro životní prostředí"
     family: "Rodina"
     local_government: "Místní samospráva"
+    online_community: "Online komunita"
+    religious_group: "Náboženství/duchovno"
     event: "Událost"
     open_source_software: "Open source software"
     political_initiative: "Politické iniciativy"
+    social_enterprise: "Sociální podnik"
+    social_justice: "Sociální spravedlnost"
     science: "Věda"
     technology: "Technologie"
     sports: "Sporty"

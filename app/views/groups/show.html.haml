@@ -105,4 +105,4 @@
           = link_to t(:see_more), group_motions_path(@group)
 
     = render 'membership_requests', group: @group
-    = render 'members', group: @group
+    = render 'members', group: @group if can?(:see_members, @group)

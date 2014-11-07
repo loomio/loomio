@@ -59,7 +59,6 @@ class MotionsController < GroupBaseController
   end
 
   def destroy
-    resource
     @motion.destroy
     redirect_to group_url(@motion.group)
     flash[:success] = t("success.proposal_deleted")

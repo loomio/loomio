@@ -1,9 +1,13 @@
 require 'rails_helper'
 
 describe Comment do
-  let(:user) { stub_model(User) }
+  let(:user) { create(:user) }
   let(:discussion) { create :discussion }
   let(:comment) { create(:comment, discussion: discussion) }
+
+  before do
+    discussion.group.add_member!(user)
+  end
 
   it { should have_many(:events).dependent(:destroy) }
   it { should respond_to(:uses_markdown) }
