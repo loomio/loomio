@@ -106,9 +106,9 @@ describe API::VotesController do
       end
 
       let(:another_user)          { create :user }
-      it "responds with an error when the user is unauthorized" do
+      it "responds with an error when the user is unauthorized", focus: true do
         sign_in another_user
-        expect { post :create, vote: vote_params }.to raise_error
+        expect { post :create, vote: vote_params }.to raise_error CanCan::AccessDenied
       end
 
       it "responds with validation errors when they exist" do

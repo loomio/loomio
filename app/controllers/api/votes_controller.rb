@@ -22,6 +22,4 @@ class API::VotesController < API::RestfulController
   def vote_params
     params.require(:vote).permit(:position, :statement, :motion_id)
   end
-
-
 end

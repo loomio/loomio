@@ -112,7 +112,7 @@ describe 'DiscussionService' do
       it 'returns false' do
         DiscussionService.update(discussion: discussion,
                                  params: discussion_params,
-                                 actor: user).should be_false
+                                 actor: user).should == false
       end
     end
   end
