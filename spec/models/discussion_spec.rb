@@ -166,19 +166,12 @@ describe Discussion do
       @group.add_member! @user2
       @group.add_member! @user3
       @group.add_member! @user4
-<<<<<<< HEAD
       CommentService.create(comment: Comment.new(discussion: @discussion, body: 'hi'), actor: @user2)
       CommentService.create(comment: Comment.new(discussion: @discussion, body: 'hi'), actor: @user3)
-||||||| merged common ancestors
-      DiscussionService.add_comment(build :comment, user: @user2, discussion: @discussion)
-      DiscussionService.add_comment(build :comment, user: @user3, discussion: @discussion)
-=======
+
       @group.add_member! @user_left_group
-      DiscussionService.add_comment(build :comment, user: @user2, discussion: @discussion)
-      DiscussionService.add_comment(build :comment, user: @user3, discussion: @discussion)
-      DiscussionService.add_comment(build :comment, user: @user_left_group, discussion: @discussion)
+      CommentService.create(comment: Comment.new(discussion: @discussion, body: 'hi'), actor: @user_left_group)
       @group.membership_for(@user_left_group).destroy
->>>>>>> master
     end
 
     it "should include users who have commented on discussion" do
