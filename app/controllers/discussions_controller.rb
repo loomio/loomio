@@ -23,7 +23,9 @@ class DiscussionsController < GroupBaseController
   end
 
   def update
-    if DiscussionService.edit_discussion(current_user, permitted_params.discussion, @discussion)
+    if DiscussionService.update(discussion: @discussion,
+                                params: permitted_params.discussion,
+                                actor: current_user)
       flash[:notice] = 'Discussion was successfully updated.'
       redirect_to @discussion
     else
@@ -34,7 +36,9 @@ class DiscussionsController < GroupBaseController
 
   def create
     build_discussion
-    if DiscussionService.start_discussion(@discussion)
+    if DiscussionService.create(discussion: @discussion,
+                                actor: current_user)
+      user.update_attributes(uses_markdown: @discussion.uses_markdown)
       flash[:success] = t("success.discussion_created")
       redirect_to @discussion
     else
@@ -103,12 +107,14 @@ class DiscussionsController < GroupBaseController
   end
 
   def follow
-    DiscussionReader.for(discussion: @discussion, user: current_user).follow!
+    DiscussionReader.for(discussion: @discussion,
+                         user: current_user).follow!
     redirect_to discussion_url @discussion
   end
 
   def unfollow
-    DiscussionReader.for(discussion: @discussion, user: current_user).unfollow!
+    DiscussionReader.for(discussion: @discussion,
+                         user: current_user).unfollow!
     redirect_to discussion_url @discussion
   end
 
@@ -129,8 +135,10 @@ class DiscussionsController < GroupBaseController
 
   def add_comment
     build_comment
-    if DiscussionService.add_comment(@comment)
-      current_user.update_attributes(uses_markdown: params[:uses_markdown])
+    if CommentService.create(comment: @comment, actor: current_user)
+      if params[:uses_markdown]
+        current_user.update_attributes(uses_markdown: params[:uses_markdown])
+      end
       respond_to do |format|
         format.js
         format.html { redirect_to discussion_path(@discussion) }

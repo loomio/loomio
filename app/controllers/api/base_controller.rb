@@ -5,14 +5,9 @@ class API::BaseController < ActionController::Base
   after_filter :increment_measurement
   respond_to :json
 
+  before_filter :authorize_group, :authorize_discussion, :authorize_motion
+
   protected
-  def render_event_or_model_error(event, model)
-    if event
-      render json: event, serializer: EventSerializer
-    else
-      render json: model, serializer: ModelErrorSerializer, status: 400, root: :error
-    end
-  end
 
   def increment_measurement
     Measurement.increment(measurement_name)
@@ -36,7 +31,24 @@ class API::BaseController < ActionController::Base
     @current_user = User.where(id: user_id, email_api_key: key).first
   end
 
-  def current_ability
-    @current_ability ||= Ability.new(current_user)
+  def authorize_group
+    if params[:group_id].present?
+      @group = Group.find(params[:group_id])
+      authorize! :show, @group
+    end
+  end
+
+  def authorize_discussion
+    if params[:discussion_id].present?
+      @discussion = Discussion.find(params[:discussion_id])
+      authorize! :show, @discussion
+    end
+  end
+
+  def authorize_motion
+    if params[:motion_id].present?
+      @motion = Motion.find(params[:motion_id])
+      authorize! :show, @motion
+    end
   end
 end

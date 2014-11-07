@@ -1,9 +1,10 @@
-angular.module('loomioApp').factory 'VoteService', ($http, RestfulService) ->
+angular.module('loomioApp').factory 'VoteService', ($http, RestfulService, RecordStoreService) ->
   new class VoteService extends RestfulService
     resource_plural: 'votes'
 
-    fetchByCurrentUserAndDiscussion: (user_id, discussion_id, success, failure) ->
-      @fetch({user_id: user_id, discussion_id: discussion_id}, success, failure)
+    fetchMyVotes: (discussion) ->
+      $http.get("/api/v1/votes/my_votes", params: { discussion_id: discussion.id }).then (response) ->
+        RecordStoreService.importRecords(response.data)
 
-    fetchByProposal: (proposal_id, success, failure) ->
-      @fetch({proposal_ids: [proposal_id]}, success, failure)
+    fetchByProposal: (proposal, success, failure) ->
+      @fetch({motion_id: proposal.id}, success, failure)

@@ -1,26 +1,30 @@
-class API::CommentsController < API::BaseController
+class API::CommentsController < API::RestfulController
   before_filter :authenticate_user_by_email_api_key, only: :create
   before_filter :require_authenticated_user
-  respond_to :json
+  load_resource only: [:create, :update, :like, :unlike]
 
   def create
-    # this should be permitted_params.api_comment when we get around to it.
-    comment = Comment.new(permitted_params.api_comment)
-    comment.author = current_user
-    comment.discussion = Discussion.find(params[:discussion_id])
-    event = DiscussionService.add_comment(comment)
-    render_event_or_model_error(event, comment)
+    CommentService.create(comment: @comment, actor: current_user)
+    respond_with_resource
+  end
+
+  def update
+    CommentService.update(comment: @comment, params: comment_params, actor: current_user)
+    respond_with_resource
   end
 
   def like
-    @comment = Comment.find(params[:id])
-    DiscussionService.like_comment(current_user, @comment)
-    head :ok
+    CommentService.like(comment: @comment, actor: current_user)
+    respond_with_resource
   end
 
   def unlike
-    @comment = Comment.find(params[:id])
-    DiscussionService.unlike_comment(current_user, @comment)
-    head :ok
+    CommentService.unlike(comment: @comment, actor: current_user)
+    respond_with_resource
+  end
+
+  private
+  def comment_params
+    params.require(:comment).permit([:body, :new_attachment_ids, :uses_markdown, :discussion_id, :parent_id, {new_attachment_ids: []}])
   end
 end

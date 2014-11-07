@@ -1,13 +1,9 @@
 class VoteService
-  def self.cast(vote)
-    vote.user.ability.authorize!(:vote, vote.motion)
-
-    if vote.save
-      if vote.position == 'block'
-        Events::MotionBlocked.publish!(vote)
-      else
-        Events::NewVote.publish!(vote)
-      end
-    end
+  def self.create(vote: vote, actor: actor)
+    vote.author = actor
+    return false unless vote.valid?
+    actor.ability.authorize! :create, vote
+    vote.save!
+    Events::NewVote.publish!(vote)
   end
 end

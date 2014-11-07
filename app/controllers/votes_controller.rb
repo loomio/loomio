@@ -9,9 +9,9 @@ class VotesController < BaseController
   def create
     @vote = Vote.new(permitted_params.vote)
     @vote.motion = motion
-    @vote.user = current_user
+    @vote.author = current_user
 
-    if MotionService.cast_vote(@vote)
+    if VoteService.create(vote: @vote, actor: current_user)
       Measurement.increment('votes.create.success')
       flash[:success] = t("success.position_submitted")
       redirect_to @vote.motion.discussion

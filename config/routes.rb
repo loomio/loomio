@@ -28,13 +28,15 @@ Loomio::Application.routes.draw do
 
   get '/discussions/:key' => 'angular_support#boot'
 
-  namespace :api, path: '/api/v1' do
+  namespace :api, path: '/api/v1', defaults: {format: :json} do
     resource :inbox, only: :show, controller: 'inbox'
     resources :events, only: :index
-    resources :discussions, only: :show
-    resources :motions, only: [:show, :index, :create], path: :proposals
-    resources :votes, only: [:show, :index, :create]
-    resources :comments, only: :create do
+    resources :discussions, only: [:show, :index, :create, :update, :destroy]
+    resources :motions,     only: [       :index, :create, :update], path: :proposals
+    resources :votes,       only: [       :index, :create, :update] do
+      get :my_votes, on: :collection
+    end
+    resources :comments,    only: [       :index, :create, :update, :destroy] do
       post :like, on: :member
       post :unlike, on: :member
     end

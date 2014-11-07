@@ -163,7 +163,6 @@ class Ability
 
     can [:unfollow,
          :follow,
-         :add_comment,
          :new_proposal,
          :show_description_history,
          :preview_version], Discussion do |discussion|
@@ -171,7 +170,7 @@ class Ability
     end
 
     can [:create, :update], Comment do |comment|
-      user_is_author_of?(comment) and comment.can_be_edited?
+      user_is_member_of?(comment.group.id) && user_is_author_of?(comment) && comment.can_be_edited?
     end
 
     can :like, Comment do |comment|
@@ -190,7 +189,8 @@ class Ability
         user_is_admin_of?(discussion.group_id) )
     end
 
-    can [:vote], Motion do |motion|
+    can [:create], Vote do |vote|
+      motion = vote.motion
       discussion = motion.discussion
       motion.voting? &&
       ((discussion.group.members_can_vote? && user_is_member_of?(discussion.group_id)) ||
@@ -229,6 +229,7 @@ class Ability
     can [:show], Vote do |vote|
       can?(:show, vote.motion)
     end
+
   end
 end
 
