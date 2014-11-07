@@ -1,6 +1,6 @@
 .proposals
-  .proposal{ng_repeat: 'proposal in proposals'}
-    .active-proposal{ng_show: 'isActive(proposal)'}
+  .proposal{ng_repeat: 'proposal in discussion.proposals()'}
+    .active-proposal{ng_show: 'isSelectedProposal(proposal)'}
       %proposal_card{proposal: 'proposal'}
-    .inactive-proposal{ng_hide: 'isActive(proposal)', ng_click: 'setActive(proposal)'}
+    .inactive-proposal{ng_hide: 'isSelectedProposal(proposal)', ng_click: 'setSelectedProposal(proposal)'}
       %proposal_card_collapsed{proposal: 'proposal'}

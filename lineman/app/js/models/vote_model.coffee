@@ -3,16 +3,17 @@ angular.module('loomioApp').factory 'VoteModel', (RecordStoreService, $sanitize)
     constructor: (data = {}) ->
       @id = data.id
       @authorId = data.author_id
-      @proposalId = data.proposal_id
+      @proposalId = data.motion_id
       @position = data.position
       @statement = data.statement
       @createdAt = data.created_at
 
     params: ->
-      id: @id
-      proposal_id: @proposalId
-      position: @position
-      statement: @statement
+      vote:
+        id: @id
+        motion_id: @proposalId
+        position: @position
+        statement: @statement
 
     plural: 'votes'
 

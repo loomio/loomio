@@ -10,15 +10,15 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
       @authorId = data.author_id
       @outcome = data.outcome
       @discussionId = data.discussion_id
-      #@voteIds = data.vote_ids
       @voteCounts = data.vote_counts
 
     params: ->
-      id: @id
-      discussion_id: @discussionId
-      name: @name
-      description: @description
-      closing_at: @closingAt
+      motion:
+        id: @id
+        discussion_id: @discussionId
+        name: @name
+        description: @description
+        closing_at: @closingAt
 
     positionVerbs: ['agree', 'abstain', 'disagree', 'block']
     positions: ['yes', 'abstain', 'no', 'block']

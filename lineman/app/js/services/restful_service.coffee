@@ -2,20 +2,28 @@ angular.module('loomioApp').factory 'RestfulService', ($http, EventService, Reco
   class RestfulService
     resource_plural: 'undefined'
 
-    endpoint_path: ->
-      "/api/v1/#{@resource_plural}"
+    indexPath: ->
+      "/api/v1/#{@resource_plural}.json"
+
+    showPath: (id) ->
+      "/api/v1/#{@resource_plural}/#{id}.json"
 
     constructor: ->
 
-    fetch: (params, success, failure) ->
-      $http.get(@endpoint_path(), { params: $.extend({ format: 'json' }, params) }).then (response) =>
+    fetchByKey: (key, success, failure) ->
+      $http.get(@showPath(key)).then (response) =>
+        RecordStoreService.importRecords(response.data)
+        RecordStoreService.get(@resource_plural, key)
+
+    fetch: (filters, success, failure) ->
+      $http.get(@indexPath(), { params: filters }).then (response) =>
         RecordStoreService.importRecords(response.data)
         success(response.data[@resource_plural]) if success?
       , (response) ->
-        failure(response.data.error)
+        failure(response.data.error) if failure?
 
     create: (obj, success, failure) ->
-      $http.post(@endpoint_path(), obj.params()).then (response) ->
+      $http.post(@indexPath(), obj.params()).then (response) ->
         EventService.consume(response.data)
         success()
       , (response) ->

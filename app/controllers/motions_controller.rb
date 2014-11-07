@@ -9,10 +9,10 @@ class MotionsController < GroupBaseController
       redirect_to @discussion
       flash[:error] = t(:"error.proposal_already_exists")
     else
-      @motion = current_user.authored_motions.new(permitted_params.motion)
       @group = @motion.group
 
-      if MotionService.start_motion(@motion)
+      if MotionService.create(motion: @motion,
+                              actor: current_user)
         Measurement.increment('motions.create.success')
         flash[:success] = t("success.proposal_created")
         redirect_to @discussion
@@ -45,9 +45,9 @@ class MotionsController < GroupBaseController
   end
 
   def update
-    MotionService.update_motion(motion: @motion,
-                                params: permitted_params.motion,
-                                user: current_user)
+    MotionService.update(motion: @motion,
+                         params: permitted_params.motion,
+                         actor: current_user)
     redirect_to @motion
   end
 
@@ -55,12 +55,7 @@ class MotionsController < GroupBaseController
   end
 
   def show
-    discussion = @motion.discussion
-    if @motion == discussion.current_motion
-      redirect_to discussion_url(discussion)
-    else
-      redirect_to discussion_url(discussion, proposal: @motion)
-    end
+    redirect_to discussion_url(@motion.discussion, proposal: @motion)
   end
 
   def destroy
@@ -77,10 +72,9 @@ class MotionsController < GroupBaseController
   end
 
   def create_outcome
-    @motion.outcome_author = current_user
-    @motion.outcome = permitted_params.motion[:outcome]
-
-    if MotionService.create_outcome(@motion)
+    if MotionService.create_outcome(motion: @motion,
+                                    params: permitted_params.motion,
+                                    actor: current_user)
       Measurement.increment('motions.create_outcome.success')
       flash[:success] = t("success.motion_outcome_created")
     else
@@ -91,10 +85,8 @@ class MotionsController < GroupBaseController
   end
 
   def update_outcome
-    @motion.outcome_author = current_user
-    @motion.outcome = permitted_params.motion[:outcome]
 
-    if MotionService.update_outcome(@motion)
+    if MotionService.update_outcome(motion: @motion, params: params, actor: current_user)
       Measurement.increment('motions.update_outcome.success')
       flash[:success] = t("success.motion_outcome_updated")
     else

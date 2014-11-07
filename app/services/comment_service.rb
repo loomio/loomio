@@ -1,0 +1,36 @@
+class CommentService
+  def self.unlike(comment: comment, actor: actor)
+    actor.ability.authorize!(:like, comment)
+    comment.unlike(actor)
+  end
+
+  def self.like(comment: comment, actor: actor)
+    actor.ability.authorize!(:like, comment)
+    comment_vote = comment.like(actor)
+    DiscussionReader.for(discussion: comment.discussion, user: actor).follow!
+    Events::CommentLiked.publish!(comment_vote)
+  end
+
+  def self.create(comment: comment, actor: actor)
+    comment.author = actor
+    return false unless comment.valid?
+    actor.ability.authorize! :create, comment
+    comment.save!
+    comment.discussion.update_attribute(:last_comment_at, comment.created_at)
+    DiscussionReader.for(user: actor, discussion: comment.discussion).viewed!(comment.created_at)
+    Events::NewComment.publish!(comment)
+  end
+
+  def self.delete(comment: comment, actor: actor)
+    actor.ability.authorize!(:destroy, comment)
+    comment.destroy
+  end
+
+  def self.update(comment: comment, params: params, actor: actor)
+    comment.edited_at = Time.zone.now
+    comment.body = params[:body]
+    return false unless comment.valid?
+    actor.ability.authorize! :create, comment
+    comment.save!
+  end
+end
