@@ -9,7 +9,8 @@ class MotionsController < GroupBaseController
       redirect_to @discussion
       flash[:error] = t(:"error.proposal_already_exists")
     else
-      @group = @motion.group
+      @motion = Motion.new(permitted_params.motion)
+      @group = @discussion.group
 
       if MotionService.create(motion: @motion,
                               actor: current_user)
