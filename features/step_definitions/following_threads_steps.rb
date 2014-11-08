@@ -1,6 +1,6 @@
 When(/^someone else creates a discussion in my group$/) do
   @discussion = FactoryGirl.build(:discussion, group: @group)
-  DisucssionService.create(discussion: @discussion, actor: @discussion.author)
+  DiscussionService.create(discussion: @discussion, actor: @discussion.author)
 end
 
 Then(/^I should not be following the discussion$/) do
@@ -11,7 +11,7 @@ end
 
 When(/^I create a discussion in my group$/) do
   @discussion = FactoryGirl.build(:discussion, group: @group, author: @user)
-  DisucssionService.create(discussion: @discussion, actor: @discussion.author)
+  DiscussionService.create(discussion: @discussion, actor: @discussion.author)
 end
 
 Then(/^I should be following the discussion$/) do
@@ -64,7 +64,7 @@ Then(/^Rich should be following the discussion$/) do
 end
 
 Given(/^I update the title$/) do
-  DiscussionService.edit(discussion: @discussion, actor: @user, params: {title: "updated"})
+  DiscussionService.update(discussion: @discussion, actor: @user, params: {title: "updated"})
 end
 
 Then(/^my followed threads should include the discussion$/) do
@@ -78,7 +78,7 @@ end
 
 When(/^there is a discussion created by someone in the group$/) do
   @discussion = FactoryGirl.build(:discussion, group: @group)
-  DisucssionService.create(discussion: @discussion, actor: @discussion.author)
+  DiscussionService.create(discussion: @discussion, actor: @discussion.author)
 end
 
 Given(/^I have set my preferences to email me activity I'm following$/) do
@@ -115,7 +115,7 @@ end
 
 Given(/^there is a discussion I have never seen before$/) do
   @discussion = FactoryGirl.build :discussion, group: @group
-  DisucssionService.create(discussion: @discussion, actor: @discussion.author)
+  DiscussionService.create(discussion: @discussion, actor: @discussion.author)
 end
 
 Given(/^there are no emails waiting for me$/) do
@@ -137,13 +137,13 @@ end
 
 Given(/^there is a discussion I have unfollowed$/) do
   @discussion = FactoryGirl.build :discussion, group: @group
-  DisucssionService.create(discussion: @discussion, actor: @discussion.author)
+  DiscussionService.create(discussion: @discussion, actor: @discussion.author)
   DiscussionReader.for(discussion: @discussion, user: @user).unfollow!
 end
 
 Given(/^there is a discussion I am following$/) do
   @discussion = FactoryGirl.build :discussion, group: @group
-  DisucssionService.create(discussion: @discussion, actor: @discussion.author)
+  DiscussionService.create(discussion: @discussion, actor: @discussion.author)
   DiscussionReader.for(discussion: @discussion, user: @user).follow!
 end
 
@@ -168,7 +168,7 @@ end
 
 Given(/^there is a discussion I am not following$/) do
   @discussion = FactoryGirl.build :discussion, group: @group
-  DisucssionService.create(discussion: @discussion, actor: @discussion.author)
+  DiscussionService.create(discussion: @discussion, actor: @discussion.author)
 end
 
 Given(/^I click 'Not Following' on the discussion page$/) do
@@ -251,7 +251,7 @@ end
 When(/^I start a new discussion$/) do
   reset_mailer
   @discussion = FactoryGirl.build :discussion, author: @user, group: @group
-  @event = DisucssionService.create(discussion: @discussion, actor: @discussion.author)
+  @event = DiscussionService.create(discussion: @discussion, actor: @discussion.author)
 end
 
 Then(/^"(.*?)" should be emailed$/) do |name|
@@ -317,7 +317,7 @@ When(/^I start a new proposal$/) do
   step 'I start a new discussion'
   reset_mailer
   @motion = FactoryGirl.build :motion, discussion: @discussion, author: @user
-  @start_motion_event = MotionService.start(motion: @motion, actor: @user)
+  @start_motion_event = MotionService.create(motion: @motion, actor: @user)
 end
 
 When(/^I vote on the proposal$/) do
@@ -382,5 +382,5 @@ When(/^I set a proposal outcome$/) do
   @motion = FactoryGirl.create :motion, discussion: @discussion
   @motion.outcome = "success"
   @motion.outcome_author = @user
-  MotionService.create_outcome(motion: @motion, actor: @motion.author)
+  MotionService.create_outcome(motion: @motion, actor: @motion.author, params: {outcome: 'yes ok'})
 end
