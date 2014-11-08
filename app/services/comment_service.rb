@@ -11,13 +11,15 @@ class CommentService
     Events::CommentLiked.publish!(comment_vote)
   end
 
-  def self.create(comment: comment, actor: actor)
+  def self.create(comment: comment, actor: actor, mark_as_read: true)
     comment.author = actor
     return false unless comment.valid?
     actor.ability.authorize! :create, comment
     comment.save!
     comment.discussion.update_attribute(:last_comment_at, comment.created_at)
-    DiscussionReader.for(user: actor, discussion: comment.discussion).viewed!(comment.created_at)
+    if mark_as_read
+      DiscussionReader.for(user: actor, discussion: comment.discussion).viewed!(comment.created_at)
+    end
     Events::NewComment.publish!(comment)
   end
 

@@ -171,6 +171,8 @@ Loomio::Application.routes.draw do
     delete ':id(/:slug)', action: 'destroy'
   end
 
+  get '/localisation/datetime_input_translations' => 'localisation#datetime_input_translations', format: 'js'
+
   resources :discussions, path: 'd', only: [:new, :edit, :create] do
     get :activity_counts, on: :collection
     resources :invitations, only: [:new]

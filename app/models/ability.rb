@@ -177,6 +177,10 @@ class Ability
       user_is_member_of?(comment.group.id)
     end
 
+    can :add_comment, Discussion do |discussion|
+      user_is_member_of?(discussion.group_id)
+    end
+
     can [:destroy], Comment do |comment|
       user_is_author_of?(comment) or user_is_admin_of?(comment.discussion.group_id)
     end
@@ -189,12 +193,16 @@ class Ability
         user_is_admin_of?(discussion.group_id) )
     end
 
-    can [:create], Vote do |vote|
-      motion = vote.motion
+    can [:vote], Motion do |motion|
       discussion = motion.discussion
       motion.voting? &&
       ((discussion.group.members_can_vote? && user_is_member_of?(discussion.group_id)) ||
         user_is_admin_of?(discussion.group_id) )
+    end
+
+    can [:create], Vote do |vote|
+      motion = vote.motion
+      can? :vote, motion
     end
 
     can [:close, :edit_close_date], Motion do |motion|

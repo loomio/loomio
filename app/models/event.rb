@@ -29,6 +29,7 @@ class Event < ActiveRecord::Base
   end
 
   def publish_event
+    return if Rails.env.test?
     if self.discussion.present?
       serializer = EventSerializer.new(self)
       PrivatePub.publish_to "/events", serializer
