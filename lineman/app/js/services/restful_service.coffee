@@ -36,6 +36,13 @@ angular.module('loomioApp').factory 'RestfulService', ($http, EventService, Reco
       , (response) ->
         failure(response.data.error)
 
+    delete: (obj, success, failure) ->
+      $http.delete(@showPath(obj.id), obj.params()).then (response) ->
+        RecordStoreService.delete(obj)
+        success()
+      , (response) ->
+        failure(response.data.error)
+
     save: (obj, success, failure) ->
       console.log 'isnew', obj.isNew()
       if obj.isNew()
