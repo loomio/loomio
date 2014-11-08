@@ -38,7 +38,7 @@ class DiscussionsController < GroupBaseController
     build_discussion
     if DiscussionService.create(discussion: @discussion,
                                 actor: current_user)
-      user.update_attributes(uses_markdown: @discussion.uses_markdown)
+      current_user.update_attributes(uses_markdown: @discussion.uses_markdown)
       flash[:success] = t("success.discussion_created")
       redirect_to @discussion
     else
