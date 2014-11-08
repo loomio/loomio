@@ -3,10 +3,10 @@ angular.module('loomioApp').factory 'RestfulService', ($http, EventService, Reco
     resource_plural: 'undefined'
 
     indexPath: ->
-      "/api/v1/#{@resource_plural}.json"
+      "/api/v1/#{@resource_plural}"
 
     showPath: (id) ->
-      "/api/v1/#{@resource_plural}/#{id}.json"
+      "/api/v1/#{@resource_plural}/#{id}"
 
     constructor: ->
 
@@ -28,3 +28,17 @@ angular.module('loomioApp').factory 'RestfulService', ($http, EventService, Reco
         success()
       , (response) ->
         failure(response.data.error)
+
+    update: (obj, success, failure) ->
+      $http.patch(@showPath(obj.id), obj.params()).then (response) ->
+        EventService.consume(response.data)
+        success()
+      , (response) ->
+        failure(response.data.error)
+
+    save: (obj, success, failure) ->
+      console.log 'isnew', obj.isNew()
+      if obj.isNew()
+        @create(obj, success, failure)
+      else
+        @update(obj, success, failure)
