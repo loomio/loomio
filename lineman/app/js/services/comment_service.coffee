@@ -1,6 +1,7 @@
 angular.module('loomioApp').factory 'CommentService', ($http, UserAuthService, RestfulService) ->
   new class CommentService extends RestfulService
     resource_plural: 'comments'
+    resource_singular: 'comment'
 
     like: (comment, success, failure) ->
       comment.addLiker(UserAuthService.currentUser)

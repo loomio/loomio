@@ -1,5 +1,5 @@
-angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
-  class CommentModel
+angular.module('loomioApp').factory 'CommentModel', (RecordStoreService, BaseModel) ->
+  class CommentModel extends BaseModel
     constructor: (data = {}) ->
       @id = data.id
       @discussionId = data.discussion_id
@@ -18,7 +18,6 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService) ->
 
     params: ->
       comment:
-        author_id: @authorId
         parent_id: @parentId
         discussion_id: @discussionId
         body: @body

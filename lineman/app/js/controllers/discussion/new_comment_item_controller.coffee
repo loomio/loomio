@@ -43,14 +43,14 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
       controller: 'EditCommentController'
       resolve:
         comment: ->
-          $scope.comment
+          angular.copy($scope.comment)
 
     modalInstance.result.then (something) ->
       # probably unused
 
   $scope.canEditComment = ->
     # should be:
-    # currentUser.can('edit', $scope.comment)
+    # currentUser.abilies().can('edit', $scope.comment)
     UserAuthService.currentUser.id == $scope.comment.authorId
 
   $scope.deleteComment = ->
