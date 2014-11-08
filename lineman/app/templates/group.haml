@@ -1,0 +1,19 @@
+.container
+  .row
+    .col-xs-12
+      .group-container
+        .group-cover
+        .group-name
+          %h1 {{group.name}}
+        .group-description
+          %h2 Description
+          {{ group.description }}
+        .group-threads
+          %h2 Threads
+          %discussions{group: 'group'}
+        .group-members
+          %h2 Members
+          %members{group: 'group'}
+        .group-subgroups
+          %h2 Subgroups
+          %subgroups{group: 'group'}
