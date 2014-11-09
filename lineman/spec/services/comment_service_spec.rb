@@ -28,9 +28,9 @@ describe 'CommentService' do
                          author: user) }
   let(:event) { double(:event) }
 
-  describe 'delete' do
+  describe 'destroy' do
     after do
-      CommentService.delete(comment: comment, actor: user)
+      CommentService.destroy(comment: comment, actor: user)
     end
 
     it 'checks the actor has permission' do
