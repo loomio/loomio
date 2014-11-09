@@ -37,11 +37,11 @@ angular.module('loomioApp').factory 'RestfulService', ($http, EventService, Reco
         failure(response.data.error)
 
     delete: (obj, success, failure) ->
-      console.log('comment service delete start')
       $http.delete(@showPath(obj.id), obj.params()).then (response) ->
         RecordStoreService.delete(obj)
         success()
       , (response) ->
+        console.log response
         failure(response.data.error)
 
     save: (obj, success, failure) ->

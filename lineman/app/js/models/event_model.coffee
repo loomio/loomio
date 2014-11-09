@@ -10,6 +10,16 @@ angular.module('loomioApp').factory 'EventModel', (RecordStoreService) ->
 
     plural: 'events'
 
+    destroy: ->
+      eventable.destroy()
+
+    eventable: ->
+      switch @kind
+        when 'new_comment' then @comment()
+        when 'new_discussion' then @discussion()
+        when 'new_vote' then @vote()
+        when 'new_motion' then @proposal()
+
     discussion: ->
       RecordStoreService.get('discussions', @discussionId)
 

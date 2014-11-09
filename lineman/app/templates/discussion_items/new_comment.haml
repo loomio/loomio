@@ -10,7 +10,7 @@
   .thread-event-header.media
     .pull-left{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = comment.author()'}
     .media-body
-      %span{ng-show: 'comment.parentId', translate: 'new_comment_item.in_reply_to', translate-values: '::{author: comment.authorName(), recipient: comment.parentAuthorName()}'}
+      %span{ng-show: 'comment.parentId', translate: 'new_comment_item.in_reply_to', translate-values: '{author: comment.authorName(), recipient: comment.parentAuthorName()}'}
       %span{ng-hide: 'comment.parentId'}
         %strong {{::comment.authorName()}}
   .thread-event-body{btf-markdown: 'comment.body' }
