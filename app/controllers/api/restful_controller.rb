@@ -1,6 +1,13 @@
 class API::RestfulController < API::BaseController
   @@resource_name = nil
+  @@resource_plural = nil
   @@service_class = nil
+
+  class << self
+    attr_writer :resource_name
+    attr_writer :resource_plural
+    attr_writer :service_class
+  end
 
   load_resource only: [:create, :update, :destroy]
 
@@ -20,20 +27,16 @@ class API::RestfulController < API::BaseController
   def destroy
     service.destroy({resource_symbol => resource,
                      actor: current_user})
-    head :ok
+    respond_with_command Commands::DeleteRecord.new(resource)
   end
 
   private
+  def respond_with_command(command)
+    render json: {command: command.to_json}
+  end
+
   def resource_params
     permitted_params.send resource_name
-  end
-
-  def self.set_service(service_class)
-    @@service_class = service_class
-  end
-
-  def self.set_resource_name(name)
-    @@resource_name = name
   end
 
   def resource_symbol
@@ -42,6 +45,10 @@ class API::RestfulController < API::BaseController
 
   def resource_name
     @@resource_name || controller_name.singularize
+  end
+
+  def resource_plural
+    @@resource_plural || controller_name
   end
 
   def service
@@ -61,7 +68,7 @@ class API::RestfulController < API::BaseController
   end
 
   def collection
-    instance_variable_get :"@#{controller_name}"
+    instance_variable_get :"@#{resource_plural}"
   end
 
   def resource
