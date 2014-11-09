@@ -36,7 +36,7 @@ Loomio::Application.routes.draw do
     resources :votes,       only: [       :index, :create, :update] do
       get :my_votes, on: :collection
     end
-    resources :comments,    only: [       :index, :create, :update, :destroy] do
+    resources :comments,    only: [:create, :update, :destroy] do
       post :like, on: :member
       post :unlike, on: :member
     end

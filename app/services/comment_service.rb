@@ -23,7 +23,7 @@ class CommentService
     Events::NewComment.publish!(comment)
   end
 
-  def self.delete(comment: comment, actor: actor)
+  def self.destroy(comment: comment, actor: actor)
     actor.ability.authorize!(:destroy, comment)
     comment.destroy
   end

@@ -2,7 +2,7 @@ class CommentsController < BaseController
   load_and_authorize_resource
 
   def destroy
-    CommentService.delete(comment: @comment, actor: current_user)
+    CommentService.destroy(comment: @comment, actor: current_user)
     flash[:notice] = t(:"notice.comment_deleted")
     redirect_to discussion_url(@comment.discussion)
   end
