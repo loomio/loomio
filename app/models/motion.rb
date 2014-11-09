@@ -248,6 +248,12 @@ class Motion < ActiveRecord::Base
   end
 
   private
+    def one_motion_voting_at_a_time
+      if voting? and discussion.current_motion.present? and discussion.current_motion != self
+        errors.add(:discussion, 'already has a motion in progress')
+      end
+    end
+
   def set_default_closing_at
     self.closing_at ||= (Time.zone.now + 3.days).at_beginning_of_hour
   end

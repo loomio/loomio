@@ -1,0 +1,3 @@
+%form{name: 'commentForm', ng_submit: 'submit()'}
+  %textarea#comment-field.form-control{focus-on: 'focusCommentField', name: 'body', rows: 5, placeholder: "Say something...", ng_blur: "collapseIfEmpty()", ng_model: 'comment.body', ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 200, 'blur': 0} }"}
+  %button#post-comment-btn.btn.btn-default.btn-block.submit{type: 'submit'} Post

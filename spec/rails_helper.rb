@@ -45,6 +45,9 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
   config.before(:each) do
+
+    stub_request(:post, "http://localhost:9292/faye").to_return(status: 200)
+
     stub_request(:head, /www.gravatar.com/).
       with(headers: {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
       to_return(status: 200, body: "stubbed response", headers: {})

@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe 'DiscussionService' do
-  let(:comment_vote) { double(:comment_vote) }
   let(:ability) { double(:ability, :authorize! => true, can?: true) }
   let(:user) { double(:user, ability: ability, update_attributes: true) }
   let(:discussion) { double(:discussion, author: user,
+                                         'author=' => user,
                                          save!: true,
                                          valid?: true,
                                          title_changed?: false,
@@ -39,141 +39,43 @@ describe 'DiscussionService' do
     allow(DiscussionReader).to receive(:for) { discussion_reader }
   end
 
-  describe '.delete_comment' do
-    after do
-      DiscussionService.delete_comment(comment: comment, actor: user)
-    end
 
-    it 'checks the actor has permission' do
-      ability.should_receive(:authorize!).with(:destroy, comment)
-    end
-
-    it 'deletes the comment' do
-      comment.should_receive :destroy
-    end
-  end
-
-  describe 'unlike_comment' do
-    after do
-      DiscussionService.unlike_comment(user, comment)
-    end
-
-    it 'calls unlike on the comment' do
-      comment.should_receive(:unlike).with(user)
-    end
-  end
-
-  describe 'like_comment' do
-    before do
-      Events::CommentLiked.stub(:publish!)
-      ability.stub(:authorize!)
-      comment.stub(:like).and_return(comment_vote)
-    end
-
-    after do
-      DiscussionService.like_comment(user, comment)
-    end
-
-    it 'checks the user can like the comment' do
-      ability.should_receive(:authorize!).with(:like, comment)
-    end
-
-    it 'creates a comment vote' do
-      comment.should_receive(:like).with(user).and_return(comment_vote)
-    end
-
-    it 'enfollows the liker' do
-      expect(discussion_reader).to receive(:follow!)
-    end
-    it 'publishes a like comment event' do
-      Events::CommentLiked.should_receive(:publish!).with(comment_vote)
-    end
-  end
-
-  describe 'add_comment' do
-    before do
-      Events::NewComment.stub(:publish!).and_return(event)
-    end
-
-    after do
-      DiscussionService.add_comment(comment)
-    end
-
-    it 'authorizes that the user can add the comment' do
-      ability.should_receive(:authorize!).with(:add_comment, discussion)
-    end
-
-    it 'saves the comment' do
-      comment.should_receive(:save!).and_return(true)
-    end
-
-    context 'comment is valid' do
-      before do
-        comment.stub(:valid?).and_return(true)
-      end
-
-      it 'fires a NewComment event' do
-        Events::NewComment.should_receive(:publish!).with(comment)
-      end
-
-      it 'returns the event created' do
-        DiscussionService.add_comment(comment).should == event
-      end
-    end
-
-    context 'comment is invalid' do
-      before do
-        comment.stub(:valid?).and_return(false)
-      end
-
-      it 'returns false' do
-        DiscussionService.add_comment(comment).should == false
-      end
-
-      it 'does not create new comment event' do
-        Events::NewComment.should_not_receive(:publish!)
-      end
-
-      it 'does not update discussion' do
-        discussion.should_not_receive(:update_attribute)
-      end
-    end
-  end
-
-  describe '.start_discussion' do
+  describe 'create' do
     it 'authorizes the user can create the discussion' do
       ability.should_receive(:authorize!).with(:create, discussion)
-      DiscussionService.start_discussion(discussion)
+      DiscussionService.create(discussion: discussion,
+                               actor: user)
     end
 
     it 'saves the discussion' do
       discussion.should_receive(:save!).and_return(true)
-      DiscussionService.start_discussion(discussion)
+      DiscussionService.create(discussion: discussion,
+                               actor: user)
     end
 
     context 'the discussion is valid' do
       before { discussion.stub(:valid?).and_return(true) }
 
-      it 'updates user markdown-preference' do
-        user.should_receive(:update_attributes).with(uses_markdown: discussion.uses_markdown).and_return(true)
-        DiscussionService.start_discussion(discussion)
-      end
-
       it 'fires a NewDiscussion event' do
         Events::NewDiscussion.should_receive(:publish!).with(discussion).and_return(true)
-        DiscussionService.start_discussion(discussion)
+        DiscussionService.create(discussion: discussion,
+                                 actor: user)
       end
 
       it 'returns the event created' do
-        DiscussionService.start_discussion(discussion).should == event
+        DiscussionService.create(discussion: discussion,
+                                 actor: user).should == event
       end
     end
   end
 
-  describe '.edit-discussion' do
+  describe 'update' do
     it 'authorizes the user can update the discussion' do
       ability.should_receive(:authorize!).with(:update, discussion)
-      DiscussionService.edit_discussion(user, discussion_params, discussion)
+
+      DiscussionService.update discussion: discussion,
+                               params: discussion_params,
+                               actor: user
     end
 
     it 'sets params' do
@@ -181,12 +83,17 @@ describe 'DiscussionService' do
       discussion.should_receive(:title=).with(discussion_params[:title])
       discussion.should_receive(:description=).with(discussion_params[:description])
       discussion.should_receive(:uses_markdown=).with(discussion_params[:uses_markdown])
-      DiscussionService.edit_discussion(user, discussion_params, discussion)
+
+      DiscussionService.update discussion: discussion,
+                               params: discussion_params,
+                               actor: user
     end
 
     it 'saves the discussion' do
       discussion.should_receive(:save!).and_return(true)
-      DiscussionService.edit_discussion(user, discussion_params, discussion)
+      DiscussionService.update discussion: discussion,
+                               params: discussion_params,
+                               actor: user
     end
 
     context 'the discussion is valid' do
@@ -194,21 +101,19 @@ describe 'DiscussionService' do
 
       it 'updates user markdown-preference' do
         user.should_receive(:update_attributes).with(uses_markdown: discussion.uses_markdown).and_return(true)
-        DiscussionService.edit_discussion(user, discussion_params, discussion)
+        DiscussionService.update discussion: discussion,
+                                 params: discussion_params,
+                                 actor: user
       end
     end
 
     context 'the discussion is invalid' do
       before { discussion.stub(:valid?).and_return(false) }
       it 'returns false' do
-        DiscussionService.edit_discussion(user, discussion_params, discussion).should == false
+        DiscussionService.update(discussion: discussion,
+                                 params: discussion_params,
+                                 actor: user).should == false
       end
-
-      it 'does not update the user markdown-preference' do
-        user.should_not_receive(:update_attributes)
-        DiscussionService.edit_discussion(user, discussion_params, discussion)
-      end
-
     end
   end
 end

@@ -1,27 +1,4 @@
 require 'rails_helper'
-#require_relative '../../app/services/motion_service'
-#require 'active_support/all'
-
-#module Events
-  #class MotionOutcomeCreated
-  #end
-  #class MotionOutcomeUpdated
-  #end
-  #class MotionClosed
-  #end
-  #class MotionClosedByUser
-  #end
-  #class NewVote
-  #end
-  #class NewMotion
-  #end
-#end
-
-#class Motion
-#end
-
-#class DiscussionReader
-#end
 
 describe 'MotionService' do
   let(:group) { double(:group, present?: true) }
@@ -30,12 +7,12 @@ describe 'MotionService' do
                         discussion: discussion,
                         outcome: "",
                         author: user,
+                        'author=' => true,
                         group: group,
                         valid?: true,
                         :outcome= => true,
                         :outcome_author= => true,
-                        :save! => true,
-                        save: true }
+                        :save! => true }
   let(:ability) { double(:ability, :authorize! => true) }
   let(:user) { double(:user, ability: ability) }
   let(:outcome_string) { double(:outcome_string) }
@@ -49,13 +26,13 @@ describe 'MotionService' do
     Events::MotionOutcomeUpdated.stub(:publish!) { event }
   end
 
-  describe '#start_motion', focus: true do
+  describe '#create', focus: true do
     before do
       allow(Events::NewMotion).to receive(:publish!)
     end
 
     after do
-      MotionService.start_motion(motion)
+      MotionService.create(motion: motion, actor: user)
     end
 
     it "authorises the action" do
@@ -70,7 +47,7 @@ describe 'MotionService' do
       end
 
       it "saves the motion" do
-        expect(motion).to receive(:save)
+        expect(motion).to receive(:save!)
       end
 
       it "enfollows the author" do
@@ -82,7 +59,7 @@ describe 'MotionService' do
       end
 
       it "returns an event" do 
-        expect(MotionService.start_motion(motion)).to be event
+        expect(MotionService.create(motion: motion, actor: user)).to be event
       end
     end
 
@@ -90,44 +67,11 @@ describe 'MotionService' do
       before { allow(motion).to receive(:valid?) {false}}
 
       it "returns false" do
-        expect(MotionService.start_motion(motion)).to be false
+        expect(MotionService.create(motion: motion, actor: user)).to be false
       end
 
       it "does not save the motion" do
-        expect(motion).to_not receive(:save)
-      end
-    end
-  end
-
-  describe '.cast_vote' do
-    let(:vote) { double(:vote, motion: motion, user: user, save: false) }
-
-    it "authorizes the action" do
-      ability.should_receive(:authorize!).with(:vote, motion)
-      MotionService.cast_vote(vote)
-    end
-
-    context 'vote is valid' do
-      after do
-        MotionService.cast_vote(vote)
-      end
-
-      before do
-        vote.should_receive(:save).and_return(true)
-      end
-
-      it 'fires a new vote event' do
-        Events::NewVote.should_receive(:publish!).with(vote)
-      end
-    end
-
-    context 'vote is invalid' do
-      before do
-        vote.should_receive(:save).and_return false
-      end
-
-      it 'returns nil' do
-        MotionService.cast_vote(vote).should == nil
+        expect(motion).to_not receive(:save!)
       end
     end
   end
@@ -230,23 +174,23 @@ describe 'MotionService' do
 
     it 'authorizes the user can set the outcome' do
       ability.should_receive(:authorize!).with(:create_outcome, motion)
-      motion.should_receive(:save)
+      motion.should_receive(:save!)
       Events::MotionOutcomeCreated.should_receive(:publish!).with(motion, user)
-      MotionService.create_outcome(motion)
+      MotionService.create_outcome(motion: motion, params: {}, actor: user)
     end
 
     context 'outcome is invalid' do
       before do
-        motion.stub(:save).and_return false
+        motion.stub(:valid?).and_return false
       end
 
       it 'returns false' do
-        MotionService.create_outcome(motion).should == false
+        MotionService.create_outcome(motion: motion, params: {}, actor: user).should == false
       end
 
       it 'does not create an event' do
         Events::MotionOutcomeCreated.should_not_receive(:publish!)
-        MotionService.create_outcome(motion)
+        MotionService.create_outcome(motion: motion, params: {}, actor: user)
       end
     end
   end

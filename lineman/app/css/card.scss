@@ -1,0 +1,399 @@
+@mixin loomioFont($weight:normal, $style:normal) {
+  font-family: Open Sans;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+@mixin cardLeft($small:30px, $large:40px) {
+  width: $small;
+  @media (min-width: $screen-sm-min) {
+    width: $large;
+  }
+  vertical-align: top;
+  display: inline-block;
+  img {
+    width: $small;
+    height: $small;
+    @media(min-width: $screen-sm-min) {
+      width: $large;
+      height: $large;
+    }   
+  } 
+}
+
+@mixin cardRight($small:30px, $large:40px, $widthSmall: 90%, $widthLarge:92%) {
+  @media (max-width: $screen-xs-min) {
+    width: $widthSmall
+  }
+  @media (min-width: $screen-xs-min) {
+    width: $widthLarge;
+  }
+  vertical-align: top;
+  display: inline-block;
+  padding-left: 10px;
+  input {
+    height: $small;
+    @media(min-width: $screen-sm-min) {
+      height: $large;
+    }
+  }
+}
+
+.bump {
+  margin: 0 5px;
+}
+
+.group-header {
+  position: relative;
+  height: 150px;
+  margin: 0 0 10px 0;
+}
+
+.group-header-title {
+  h1 {
+    color: #fff;
+    a {
+      @include loomioFont(bold);
+      font-size: 30px;
+      color: #fff;
+      line-height: 32px;
+      text-shadow: 0px 2px 4px rgba(0,0,0,0.50);
+    }
+  }
+
+  position: absolute;
+  margin: 0 0 0 10px;
+  bottom: 0;
+}
+
+.thread-settings {
+  margin-bottom: 10px;
+}
+.card-options-menu {
+  margin-top: -5px;
+}
+
+.card {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.card-options-menu {
+  font-size: 18px;
+  color: #ddd;
+}
+
+.card-meta-header {
+  h1, h2, h3 {
+    @include loomioFont(bold);
+    font-size: 14px;
+    color: #888888;
+    line-height: 20px;
+    margin: 0 0 10px 0;
+    padding: 0;
+  }
+}
+
+.card-left {
+  @include cardLeft(30px, 40px);
+}
+
+.card-left-big {
+  @include cardLeft(60px, 80px);
+}
+
+.card-right {
+  @include cardRight(30px, 40px, 84%, 91%);
+}
+
+.card-right-small {
+  @include cardRight(60px, 80px, 80%, 84%);
+}
+
+.card-right-text {
+  @media (min-width: $screen-sm-min) {
+    margin-top: 5px;
+  }
+}
+
+.card-content-header {
+  margin: 0 0 10px 0;
+}
+
+.card-meta-text {
+  @include loomioFont;
+  font-size: 14px;
+  color: #777777;
+  line-height: 20px;
+}
+
+.card-content-primary {
+  h1 {
+    @include loomioFont(bold);
+    font-size: 24px;
+    color: #333333;
+    line-height: 25px;
+    margin: 0 0 20px 0;
+    /* Implementing the 90-: */
+  }
+}
+
+.thread-item {
+  margin: 0 0 30px 0;
+}
+
+.thread-item-minor {
+  margin: 0 0 15px 0;
+}
+
+.thread-item-activity-description {
+  margin-bottom: 5px;
+  @media (min-width: $screen-sm-min) {
+    margin-bottom: 4px;
+  }
+  color: #777;
+  strong {
+    color: #333;
+  }
+}
+
+.thread-item-vote-statement {
+  clear: left;
+  @media (min-width: $screen-sm-min) {
+    clear: none;
+  }
+}
+
+.featured-vote-icon {
+  width: 60px !important;
+  height: 60px !important;
+  @media (min-width: $screen-sm-min) {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+
+.thread-item-icon {
+  width: 30px;
+  height: 30px;
+  @media (min-width: $screen-sm-min) {
+    width: 40px;
+    height: 40px;
+  }
+
+  .thread-icon-img {
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+  }
+
+  .yes {
+    background-image: image-url('../../img/yes.png');
+
+    @media (min-width: $screen-sm-min) {
+      background-image: image-url('../../img/yes.png');
+    }
+  }
+
+  .no {
+    background-image: image-url('../../img/no.png');
+
+    @media (min-width: $screen-sm-min) {
+      background-image: image-url('../../img/no.png');
+    }
+  }
+
+  .abstain {
+    background-image: image-url('../../img/yellow_thumb_icon_30.png');
+
+    @media (min-width: $screen-sm-min) {
+      background-image: image-url('../../img/yellow_thumb_icon_40.png');
+    }
+  }
+
+  .block {
+    background-image: image-url('../../img/red_flag_icon_30.png');
+
+    @media (min-width: $screen-sm-min) {
+      background-image: image-url('../../img/red_flag_icon_40.png');
+    }
+  }
+
+  .pie {
+    background-image: image-url('../../img/pie_graph_icon_30.png');
+    background-image: image-url('../../img/pie_graph_icon_40.png');
+  }
+}
+
+.thread-item-header {
+  margin-bottom: 15px;
+
+
+  .media-body {
+    margin-left: 10px;
+  }
+}
+
+.card-pie-graph-icon {
+  background-image: url('../img/pie_graph_icon_30.png');
+  height: 30px;
+  width: 30px;
+
+  @media (min-width: $screen-sm-min) {
+    background-image: url('../img/pie_graph_icon_40.png');
+    height: 40px;
+    width: 40px;
+  }
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.card-author-photo {
+  .initials {
+    background-color: #ccc;
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    height: 100%;
+  }
+
+  height: 30px;
+  width: 30px;
+  @media (min-width: $screen-sm-min) {
+    height: 40px;
+    width: 40px;
+  }
+
+  img {
+    height: 30px;
+    width: 30px;
+
+    @media (min-width: $screen-sm-min) {
+      height: 40px;
+      width: 40px;
+    }
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+}
+
+.thread-item-author {
+
+  .author-name-only {
+    .author-name {
+      line-height: 30px;
+      @media (min-width: $screen-sm-min) {
+        line-height: 40px;
+      }
+    }
+  }
+
+  .author-with-text {
+    height: 30px;
+    @media (min-width: $screen-sm-min) {
+      height: 40px;
+    }
+  }
+
+  .author-name {
+    @include loomioFont(bold);
+    font-size: 14px;
+    color: #333333;
+    line-height: 16px;
+    @media (min-width: $screen-sm-min) {
+      line-height: 20px;
+      display: inline;
+    }
+  }
+
+  .author-statement {
+    @include loomioFont;
+    line-height: 16px;
+    padding-left: 8px;
+  }
+}
+
+.thread-item-body {
+  @include loomioFont;
+  font-size: 14px;
+  color: #333333;
+  line-height: 20px;
+  margin-bottom: 10px;
+  @media (min-width: $screen-sm-min) {
+    margin-left: 50px;
+  }
+}
+
+.thread-item-footer {
+  @include loomioFont;
+  font-size: 12px;
+  color: #777777;
+  line-height: 15px;
+  @media (min-width: $screen-sm-min) {
+    margin-left: 50px;
+  }
+
+  .like-reply-age {
+    margin-bottom: 5px;
+  }
+}
+
+.card-add-comment-header {
+  font-family: HelveticaNeue-Bold;
+  font-size: 14px;
+  color: #888888;
+  line-height: 20px;
+  margin-bottom: 10px;
+
+  i {
+    font-size: 22px;
+  }
+}
+
+.card-add-comment {
+  .privacy-hint {
+    font-family: HelveticaNeue-Italic;
+    font-size: 12px;
+    color: #777777;
+    line-height: 15px;
+    font-style: italic;
+  }
+
+  .button-bar {
+    margin-bottom: 10px;
+  }
+  .card-author-photo{
+    margin-top: 1px;
+  }
+
+  .collapsed {
+    input{
+      height: 32px;
+      padding: 5px 12px;
+    }
+  }
+
+  textarea {
+    margin-bottom: 10px;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .card-author-photo{
+      margin-top: 0px;
+    }
+    .collapsed {
+      input{
+        margin-top: 3px;
+        height: 34px;
+        padding: 6px 12px;
+      }
+    }
+  }
+}

@@ -33,29 +33,34 @@ describe DiscussionReader do
 
     context '0 read, 1 unread' do
       before do
-        DiscussionService.add_comment build(:comment, discussion: discussion)
+        CommentService.create comment: build(:comment, discussion: discussion), actor: user
       end
       it {should == 1}
     end
 
     context '1 read, 1 unread' do
       before do
-        DiscussionService.add_comment build(:comment, discussion: discussion)
+        CommentService.create comment: build(:comment, discussion: discussion), actor: user
         reader.viewed!
-        DiscussionService.add_comment build(:comment, discussion: discussion)
+        CommentService.create comment: build(:comment, discussion: discussion), actor: user
       end
       it {should == 1}
     end
 
     context '2 read, 1 unread', focus: true do
       before do
-        DiscussionService.add_comment build(:comment, discussion: discussion)
-        DiscussionService.add_comment build(:comment, discussion: discussion)
+        CommentService.create comment: build(:comment, discussion: discussion), actor: user
+        CommentService.create comment: build(:comment, discussion: discussion), actor: user
 
         discussion.reload
         reader.viewed!
-        DiscussionService.add_comment build(:comment, discussion: discussion)
 
+        comment = Comment.create! discussion: discussion, author: user, body: 'hi'
+
+        Events::NewComment.create!(kind: 'new_comment',
+                                   eventable: comment,
+                                   discussion: comment.discussion,
+                                   created_at: comment.created_at)
         discussion.reload
       end
 

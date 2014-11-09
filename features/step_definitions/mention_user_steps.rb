@@ -21,7 +21,7 @@ When /^a comment exists mentioning "(.*?)"$/ do |text|
   @comment = Comment.new(body: "Hey #{text}")
   @comment.author = @user
   @comment.discussion = @discussion
-  DiscussionService.add_comment(@comment)
+  CommentService.create(comment: @comment, actor: @comment.author)
 end
 
 When /^I submit a comment mentioning "(.*?)"$/ do |mention|
