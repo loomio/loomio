@@ -7,7 +7,8 @@ angular.module('loomioApp', ['ngRoute',
                              'tc.chartjs',
                              'btford.markdown',
                              'infinite-scroll',
-                             'angularFileUpload']).config ($httpProvider) ->
+                             'angularFileUpload',
+                             'mentio']).config ($httpProvider) ->
 
   # consume the csrf token from the page
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
@@ -27,7 +28,8 @@ angular.module('loomioApp').run (RecordStoreService,
                                  DiscussionModel,
                                  ProposalModel,
                                  EventModel,
-                                 VoteModel) ->
+                                 VoteModel,
+                                 MembershipModel) ->
 
   RecordStoreService.registerModel(GroupModel)
   RecordStoreService.registerModel(UserModel)
@@ -37,3 +39,4 @@ angular.module('loomioApp').run (RecordStoreService,
   RecordStoreService.registerModel(AttachmentModel)
   RecordStoreService.registerModel(EventModel)
   RecordStoreService.registerModel(VoteModel)
+  RecordStoreService.registerModel(MembershipModel)
