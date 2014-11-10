@@ -21,6 +21,13 @@ angular.module('loomioApp').factory 'GroupModel', (RecordStoreService) ->
       RecordStoreService.get 'groups', (group) =>
         group.parentId == @id
 
+    memberships: ->
+      RecordStoreService.get 'memberships', (membership) =>
+        membership.groupId == @id
+
+    members: ->
+      RecordStoreService.get('users', _.map(@memberships(), (membership) -> membership.userId))
+
     fullName: (separator = '>') ->
       if @parentId?
         "#{@parent().name} #{separator} #{@name}"
