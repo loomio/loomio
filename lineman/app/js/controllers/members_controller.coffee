@@ -1,2 +1,2 @@
-angular.module('loomioApp').controller 'MembersController', ($scope, UserService) ->
-  # UserService.fetchByGroup $scope.group
+angular.module('loomioApp').controller 'MembersController', ($scope, MembershipService) ->
+  MembershipService.fetchByGroup $scope.group.id

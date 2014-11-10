@@ -7,7 +7,7 @@
           %h1 {{group.name}}
         .group-description
           %h2 Description
-          {{ group.description }}
+          .group-description{btf-markdown: 'group.description' }
         .group-threads
           %h2 Threads
           %discussions{group: 'group'}
