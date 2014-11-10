@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'commentForm', ->
-  scope: {comment: '='}
+  scope: {comment: '=', discussion: '='}
   restrict: 'E'
   templateUrl: 'generated/templates/comment_form.html'
   replace: true
