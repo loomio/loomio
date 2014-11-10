@@ -1,3 +1,3 @@
 %form{name: 'commentForm', ng_submit: 'submit()'}
-  %textarea#comment-field.form-control{focus-on: 'focusCommentField', name: 'body', rows: 5, placeholder: "Say something...", ng_blur: "collapseIfEmpty()", ng_model: 'comment.body', ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 200, 'blur': 0} }"}
+  %textarea#comment-field.form-control{name: 'body', rows: 5, placeholder: "Say something...", ng_blur: "collapseIfEmpty()", ng_model: 'comment.body', mentio: true, mentio-trigger-char: "'@'", mentio_items: 'mentionables', mentio-template-url: 'generated/templates/mentio_menu.html', mentio-search: 'getMentionables(term)', mentio-typed-term: 'typedTerm', mentio-id: 'comment-field'}
   %button#post-comment-btn.btn.btn-default.btn-block.submit{type: 'submit'} Post
