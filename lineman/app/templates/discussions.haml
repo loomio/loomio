@@ -2,6 +2,6 @@
   .discussion{ng_repeat: 'discussion in group.discussions()'}
     {{ discussion.title }}
   .discussions-show-more
-    %a{ng-hide: 'lastPage', ng-click: 'getNextPage()', href: '#'} Show More...
+    %a{ng-hide: 'lastPage', ng-click: 'getNextPage()', href: '#'} {{ 'group.show_more' | translate }}
   .discussions-new-thread
-    %a New Thread
+    %a {{ 'group.new_thread' | translate }}
