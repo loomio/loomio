@@ -1,7 +1,7 @@
 angular.module('loomioApp').controller 'CommentFormController', ($scope, CommentModel, CommentService, MembershipService, RecordStoreService) ->
-  $scope.mentionables = $scope.group.members()
   discussion = $scope.comment.discussion()
   group = discussion.group()
+  $scope.mentionables = group.members()
 
   $scope.getMentionables = (fragment) ->
     MembershipService.fetchByNameFragment fragment, group.id, ->
