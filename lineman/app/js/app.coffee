@@ -7,7 +7,8 @@ angular.module('loomioApp', ['ngRoute',
                              'tc.chartjs',
                              'btford.markdown',
                              'infinite-scroll',
-                             'angularFileUpload']).config ($httpProvider) ->
+                             'angularFileUpload',
+                             'mentio']).config ($httpProvider) ->
 
   # consume the csrf token from the page
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
