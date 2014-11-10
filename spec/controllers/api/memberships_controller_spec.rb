@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::UsersController do
+describe API::MembershipsController do
 
   let(:user) { create :user }
   let(:another_user) { create :user }
@@ -20,23 +20,25 @@ describe API::UsersController do
     sign_in user
   end
 
-  describe 'members' do
-
+  describe 'autocomplete' do
     context 'success' do
       it 'returns users filtered by query' do
-        get :members, group_id: group.id, q: 'biff', format: :json
+        get :autocomplete, group_id: group.id, q: 'biff', format: :json
         json = JSON.parse(response.body)
+        expect(json.keys).to include *(%w[users memberships groups])
         users = json['users'].map { |c| c['id'] }
+        groups = json['groups'].map { |g| g['id'] }
         expect(users).to include user_named_biff.id
         expect(users).to_not include user_named_bang.id
         expect(users).to_not include alien_named_biff.id
+        expect(groups).to include group.id
       end
     end
 
     context 'failure' do
       it 'does not allow access to an unauthorized group' do
         cant_see_me = create :group
-        expect { get :index, group_id: cant_see_me.id, format: :json }.to raise_error
+        expect { get :autocomplete, group_id: cant_see_me.id, format: :json }.to raise_error CanCan::AccessDenied
       end
     end
   end
