@@ -1,3 +1,7 @@
 .subgroups
   .subgroup{ng-repeat: 'subgroup in group.subgroups()'}
     {{ subgroup.name }}
+  .subgroups-show-more.show-more
+    %a{href: '#'} Show More...
+  .subgroups-invite
+    %a{href: '#'} Invite members
