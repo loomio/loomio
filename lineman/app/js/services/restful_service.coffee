@@ -2,11 +2,17 @@ angular.module('loomioApp').factory 'RestfulService', ($http, EventService, Reco
   class RestfulService
     resource_plural: 'undefined'
 
+    apiPrefix: "api/v1"
+
     indexPath: ->
-      "/api/v1/#{@resource_plural}"
+      "#{@apiPrefix}/#{@resource_plural}" 
 
     showPath: (id) ->
-      "/api/v1/#{@resource_plural}/#{id}"
+      "#{@apiPrefix}/#{@resource_plural}/#{id}"
+
+    customPath: (path) ->
+      if path?
+        "#{@apiPrefix}/#{@resource_plural}/#{path}"
 
     constructor: ->
 
@@ -15,8 +21,9 @@ angular.module('loomioApp').factory 'RestfulService', ($http, EventService, Reco
         RecordStoreService.importRecords(response.data)
         RecordStoreService.get(@resource_plural, key)
 
-    fetch: (filters, success, failure) ->
-      $http.get(@indexPath(), { params: filters }).then (response) =>
+    fetch: (filters, success, failure, path) ->
+      path = @customPath(path) or @indexPath()
+      $http.get(path, { params: filters }).then (response) =>
         RecordStoreService.importRecords(response.data)
         success(response.data[@resource_plural]) if success?
       , (response) ->
