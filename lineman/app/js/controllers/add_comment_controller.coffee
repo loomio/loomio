@@ -1,6 +1,5 @@
-angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentModel, CommentService) ->
+angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentModel) ->
   $scope.comment = new CommentModel(discussion_id: $scope.discussion.id)
-
   $scope.isExpanded = false
 
   $scope.expand = ->
@@ -14,4 +13,3 @@ angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentM
   $scope.$on 'showReplyToCommentForm', (event, parentComment) ->
     $scope.comment.parentId = parentComment.id
     $scope.expand()
-
