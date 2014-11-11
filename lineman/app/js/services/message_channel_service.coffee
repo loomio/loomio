@@ -15,7 +15,7 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, RecordStore
       if data.memo?
         console.log 'new memo!', data.memo
         memo = data.memo
-        if memo.kind == 'CommentDestroyed'
+        if memo.kind == 'comment_destroyed'
           if comment = RecordStoreService.get('comments', memo.comment_id)
             comment.destroy()
 
