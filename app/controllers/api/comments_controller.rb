@@ -13,11 +13,4 @@ class API::CommentsController < API::RestfulController
     CommentService.unlike(comment: @comment, actor: current_user)
     respond_with_resource
   end
-
-  def destroy
-    load_resource
-    command = service.destroy({resource_symbol => resource,
-                              actor: current_user})
-    respond_with_command command
-  end
 end
