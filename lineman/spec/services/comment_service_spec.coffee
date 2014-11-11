@@ -10,18 +10,14 @@
     #saveError: (error) ->
       #{error_messages: []}
 
-  #comment =
+  #comment = new CommentModel
     #id: 1
     #body: 'hi'
     #discussion_id: 1
-    #liker_ids_and_names: {}
 
-  #discussion =
-    #events: []
+  #discussion = new DiscussionModel
 
   #mockEventService =
-    #consumeEventFromResponseData: ->
-    #play: ->
 
   #beforeEach module 'loomioApp'
 
@@ -38,7 +34,7 @@
     #httpBackend.verifyNoOutstandingExpectation()
     #httpBackend.verifyNoOutstandingRequest()
 
-  #describe 'add', ->
+  #describe 'create', ->
     #beforeEach ->
       #response =
         #event:
@@ -49,8 +45,8 @@
             #discussion_id: 1
 
     #it 'posts the comment to the server', ->
-      #httpBackend.expectPOST('/api/comments', comment).respond(200, response)
-      #service.add(comment, callbacks.saveSuccess, callbacks.saveError)
+      #httpBackend.expectPOST('/api/v1/comments', comment).respond(200, response)
+      #service.create(comment, callbacks.saveSuccess, callbacks.saveError)
       #httpBackend.flush()
 
     #it 'calls saveSuccess with the event in the response', ->

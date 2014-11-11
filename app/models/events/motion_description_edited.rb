@@ -4,4 +4,8 @@ class Events::MotionDescriptionEdited < Event
             eventable: motion,
             user: editor)
   end
+
+  def motion
+    eventable
+  end
 end

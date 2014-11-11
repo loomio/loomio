@@ -11,14 +11,3 @@ angular.module('loomioApp').factory 'EventService', ($http, RecordStoreService, 
         success(events)
       , (response) ->
         failure(response.data.error)
-
-    subscribeTo: (eventSubscription) ->
-      PrivatePub.sign(eventSubscription)
-      PrivatePub.subscribe "/events", (data, channel) =>
-        @consume(data) if data.event?
-
-    consume: (data) ->
-      if data.event?
-        event = new EventModel(data.event)
-        RecordStoreService.put(event)
-      RecordStoreService.importRecords(data)

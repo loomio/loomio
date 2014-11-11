@@ -26,6 +26,10 @@ class CommentService
   def self.destroy(comment: comment, actor: actor)
     actor.ability.authorize!(:destroy, comment)
     comment.destroy
+
+    command = Memos::CommentDestroyed.new(comment)
+    command.publish
+    command
   end
 
   def self.update(comment: comment, params: params, actor: actor)

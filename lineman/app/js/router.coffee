@@ -7,9 +7,6 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
     resolve:
       discussion: ($route, DiscussionService) ->
         DiscussionService.fetchByKey($route.current.params.id)
-      eventSubscription: ($http) ->
-        $http.get('/api/v1/faye/subscribe').then (response) ->
-          response.data
       currentUser: ($http, UserAuthService, UserModel) ->
         UserAuthService.fetchCurrentUser()
   ).when('/users/sign_in',

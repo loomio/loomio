@@ -1,6 +1,6 @@
 class EventSerializer < ActiveModel::Serializer
   embed :ids, include: true
-  attributes :id, :sequence_id, :kind, :discussion_id
+  attributes :id, :sequence_id, :kind, :discussion_id, :created_at
 
   has_one :comment, serializer: CommentSerializer
   has_one :proposal, serializer: MotionSerializer, root: :proposals

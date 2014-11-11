@@ -75,10 +75,10 @@ angular.module('loomioApp').factory 'RecordStoreService', ($angularCacheFactory)
           altKey = @altRecordKey(record)
           @cache.put altKey, record
 
-    delete: (record) ->
+    remove: (record) ->
       key = @recordKey(record)
       @cache.remove(key)
       if record.key?
         altKey = @altRecordKey(record)
-        @cache.delete(altKey)
+        @cache.remove(altKey)
 

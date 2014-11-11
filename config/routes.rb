@@ -49,7 +49,7 @@ Loomio::Application.routes.draw do
     end
     resources :translations, only: :show
     namespace :faye do
-      get :subscribe
+      post :subscribe
       get :who_am_i
     end
     namespace :sessions do

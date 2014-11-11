@@ -1,4 +1,12 @@
-angular.module('loomioApp').controller 'DiscussionController', ($scope, discussion, eventSubscription, EventService, RecordStoreService, FileUploadService, UserAuthService) ->
+angular.module('loomioApp').controller 'DiscussionController', ($scope, discussion, MessageChannelService, EventService, RecordStoreService, FileUploadService, UserAuthService) ->
+
+  onMessageReceived = ->
+    console.log 'on message received called, yay'
+    $scope.$digest()
+
+  MessageChannelService.subscribeTo("/discussion-#{discussion.id}", onMessageReceived)
+  #MessageChannelService.subscribeTo("/events", onMessageReceived)
+
   $scope.discussion = discussion
 
   $scope.wrap = {}
@@ -16,12 +24,6 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, discussi
       busy = false
 
   $scope.getNextPage()
-
-  eventReceived = (event) ->
-    console.log('hey we gots da event')
-    #$scope.$apply()
-
-  EventService.subscribeTo(eventSubscription, eventReceived)
 
   $scope.safeEvent = (kind) ->
     _.contains ['new_comment', 'new_motion', 'new_vote'], kind
