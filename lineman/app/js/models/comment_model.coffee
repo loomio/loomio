@@ -69,7 +69,10 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService, BaseMod
       @likerIds.push user.id
 
     removeLiker: (user) ->
-      @likerIds = _.without(@likerIds, user.id)
+      @removeLikerId(user.id)
+
+    removeLikerId: (id) ->
+      @likerIds = _.without(@likerIds, id)
 
     destroy: ->
       events = RecordStoreService.get 'events', (event) =>

@@ -91,7 +91,11 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
   updateLikedBySentence = (sentence) ->
     $scope.likedBySentence = sentence
 
-  renderLikedBySentence()
+  $scope.$watch 'comment.likerIds', ->
+    renderLikedBySentence()
+
+
+  #renderLikedBySentence()
 
   $scope.reply = ->
     $scope.$emit 'replyToCommentClicked', $scope.comment
