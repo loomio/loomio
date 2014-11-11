@@ -30,11 +30,15 @@ class Event < ActiveRecord::Base
 
   def publish_event
     return if Rails.env.test?
-    if self.discussion.present?
+    if message_channel
       serializer = EventSerializer.new(self)
-      PrivatePub.publish_to "/events", serializer
-      #PrivatePub.publish_to "/events/group_#{discussion.group_id}/#{self.kind}", :event => self
+      puts "publishing to: #{message_channel}"
+      PrivatePub.publish_to message_channel, serializer
     end
+  end
+
+  def message_channel
+    nil
   end
 
   private

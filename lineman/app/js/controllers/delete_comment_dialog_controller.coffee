@@ -10,7 +10,7 @@ angular.module('loomioApp').controller 'DeleteCommentDialogController', ($scope,
   $scope.ok = ->
     console.log 'dialog controller submit'
     # disable form.. maybe display a loading thing
-    CommentService.delete(comment, success, failure)
+    CommentService.destroy(comment, success, failure)
 
   $scope.cancel = ->
     console.log 'cancel'

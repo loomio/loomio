@@ -50,16 +50,15 @@ describe 'RecordStoreService', ->
     it 'looks up items by function', ->
       expect(service.get('things', (thing) -> thing.id == 1 )).toEqual([thing])
 
-  describe 'delete', ->
+  describe 'remove', ->
     beforeEach ->
       thing = new ThingModel({id: 1, key: 'a'})
-      service.put thing
 
-    it 'returns removes the object from the store', ->
-      expect(service.get('things', service.recordKey(thing))).toEqual(thing)
-      console.log service.get(service.recordKey(thing))
-      service.delete(thing)
-      expect(service.get('things')).toBe(undefined)
+    it 'removes the object from the store', ->
+      service.put thing
+      expect(service.get('things', thing.id)).toEqual(thing)
+      service.remove(thing)
+      expect(service.get('things', thing.id)).toBe(undefined)
 
   describe 'importRecords', ->
     beforeEach ->

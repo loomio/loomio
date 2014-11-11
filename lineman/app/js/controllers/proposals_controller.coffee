@@ -10,5 +10,6 @@ angular.module('loomioApp').controller 'ProposalsController', ($scope, VoteServi
   $scope.setSelectedProposal = (proposal) ->
     $scope.selectedProposal = proposal
     VoteService.fetchByProposal(proposal)
+
   if $scope.discussion.activeProposal()?
     $scope.setSelectedProposal $scope.discussion.activeProposal()
