@@ -1,15 +1,16 @@
 .thread-event.thread-comment{ng_controller: 'NewCommentItemController'}
-  .thread-event-context-menu.dropdown.pull-right
+  .thread-event-context-menu.dropdown.pull-right{ng-if: 'showContextMenu()'}
     %a.dropdown-toggle{href:''}
       %i.fa.fa-chevron-down
     %ul.dropdown-menu
       %li
-        %a{href: '', ng-click: 'editComment()', ng-if: '::canEditComment()'} Edit comment
-        %a{href: ''} Delete comment
+        %a{href: '', ng-click: 'editComment()', ng-if: '::canEditComment()', translate: 'new_comment_item.context_menu.edit_comment'}
+        %a{href: '', ng-click: 'deleteComment()', ng-if: '::canDeleteComment()',  translate: 'new_comment_item.context_menu.delete_comment'}
+
   .thread-event-header.media
     .pull-left{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = comment.author()'}
     .media-body
-      %span{ng-show: 'comment.parentId', translate: 'new_comment_item.in_reply_to', translate-values: '::{author: comment.authorName(), recipient: comment.parentAuthorName()}'}
+      %span{ng-show: 'comment.parentId', translate: 'new_comment_item.in_reply_to', translate-values: '{author: comment.authorName(), recipient: comment.parentAuthorName()}'}
       %span{ng-hide: 'comment.parentId'}
         %strong {{::comment.authorName()}}
   .thread-event-body{btf-markdown: 'comment.body' }

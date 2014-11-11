@@ -45,18 +45,34 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
         comment: ->
           angular.copy($scope.comment)
 
+  $scope.deleteComment = ->
+    # if confirm delete comment
+    # if currentUser.can('delete', $scope.comment)
+    # delete comment via service
+    console.log 'delete commet'
+    modalInstance = $modal.open
+      templateUrl: 'generated/templates/delete_comment_dialog.html'
+      controller: 'DeleteCommentDialogController'
+      resolve:
+        comment: ->
+          $scope.comment
     modalInstance.result.then (something) ->
       # probably unused
+
+  $scope.showContextMenu = ->
+    $scope.canEditComment() or $scope.canDeleteComment()
+
+
 
   $scope.canEditComment = ->
     # should be:
     # currentUser.abilies().can('edit', $scope.comment)
     UserAuthService.currentUser.id == $scope.comment.authorId
 
-  $scope.deleteComment = ->
-    # if confirm delete comment
-    # if currentUser.can('delete', $scope.comment)
-    # delete comment via service
+  $scope.canDeleteComment = ->
+    # should be:
+    # currentUser.abilies().can('edit', $scope.comment)
+    UserAuthService.currentUser.id == $scope.comment.authorId
 
   $scope.like = ->
     CommentService.like($scope.comment, renderLikedBySentence)
@@ -75,7 +91,11 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
   updateLikedBySentence = (sentence) ->
     $scope.likedBySentence = sentence
 
-  renderLikedBySentence()
+  $scope.$watch 'comment.likerIds', ->
+    renderLikedBySentence()
+
+
+  #renderLikedBySentence()
 
   $scope.reply = ->
     $scope.$emit 'replyToCommentClicked', $scope.comment

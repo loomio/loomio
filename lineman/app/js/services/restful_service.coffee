@@ -1,11 +1,11 @@
-angular.module('loomioApp').factory 'RestfulService', ($http, EventService, RecordStoreService) ->
+angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelService, RecordStoreService) ->
   class RestfulService
     resource_plural: 'undefined'
 
     apiPrefix: "api/v1"
 
     indexPath: ->
-      "#{@apiPrefix}/#{@resource_plural}" 
+      "#{@apiPrefix}/#{@resource_plural}"
 
     showPath: (id) ->
       "#{@apiPrefix}/#{@resource_plural}/#{id}"
@@ -31,19 +31,28 @@ angular.module('loomioApp').factory 'RestfulService', ($http, EventService, Reco
 
     create: (obj, success, failure) ->
       $http.post(@indexPath(), obj.params()).then (response) ->
-        EventService.consume(response.data)
+        MessageChannelService.messageReceived(response.data)
         success()
       , (response) ->
         failure(response.data.error)
 
     update: (obj, success, failure) ->
       $http.patch(@showPath(obj.id), obj.params()).then (response) ->
-        EventService.consume(response.data)
+        MessageChannelService.messageReceived(response.data)
         success()
       , (response) ->
         failure(response.data.error)
 
+    destroy: (obj, success, failure) ->
+      $http.delete(@showPath(obj.id), obj.params()).then (response) ->
+        MessageChannelService.messageReceived(response.data)
+        success()
+      , (response) ->
+        console.log response
+        failure(response.data.error)
+
     save: (obj, success, failure) ->
+      console.log 'saving'
       console.log 'isnew', obj.isNew()
       if obj.isNew()
         @create(obj, success, failure)

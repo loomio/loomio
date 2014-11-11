@@ -9,7 +9,7 @@ describe API::CommentsController do
   let(:another_comment) { create :comment, discussion: discussion, author: another_user }
 
   before do
-    group.admins << user
+    group.members << user
     sign_in user
   end
 
@@ -24,7 +24,7 @@ describe API::CommentsController do
     context 'failure' do
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
-        expect { post :like, id: comment.id }.to raise_error
+        expect { post :like, id: comment.id }.to raise_error CanCan::AccessDenied
       end
     end
   end
@@ -41,7 +41,7 @@ describe API::CommentsController do
     context 'failure' do
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
-        expect { post :unlike, id: comment.id }.to raise_error
+        expect { post :unlike, id: comment.id }.to raise_error CanCan::AccessDenied
       end
     end
   end
@@ -60,11 +60,11 @@ describe API::CommentsController do
     context 'failures' do
       it "responds with an error when there are unpermitted params" do
         comment_params[:dontmindme] = 'wild wooly byte virus'
-        expect { put :update, id: comment.id, comment: comment_params}.to raise_error
+        expect { put :update, id: comment.id, comment: comment_params}.to raise_error ActionController::UnpermittedParameters
       end
 
       it "responds with an error when the user is unauthorized" do
-        expect { put :update, {id: another_comment.id, comment: comment_params} }.to raise_error
+        expect { put :update, {id: another_comment.id, comment: comment_params} }.to raise_error CanCan::AccessDenied
       end
 
       it "responds with validation errors when they exist" do
@@ -118,4 +118,20 @@ describe API::CommentsController do
     end
   end
 
+  describe 'destroy' do
+    context 'allowed to delete' do
+      it "destroys a comment" do
+        delete :destroy, id: comment.id
+        expect(response).to be_success
+        expect(Comment.where(id: comment.id).count).to be 0
+      end
+    end
+
+    context 'not allowed to delete' do
+      it "gives error of some kind" do
+        expect { delete(:destroy, id: another_comment.id) }.to raise_error CanCan::AccessDenied
+        expect(Comment.where(id: another_comment.id)).to exist
+      end
+    end
+  end
 end

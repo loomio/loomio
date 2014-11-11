@@ -1,6 +1,7 @@
 angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService) ->
   class DiscussionModel
     constructor: (data = {}) ->
+      @callcount = 0
       @id = data.id
       @key = data.key
       @authorId = data.author_id
@@ -27,8 +28,12 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService) ->
       RecordStoreService.get 'groups', @groupId
 
     events: ->
+      _.sortBy(@unsortedEvents(), 'sequenceId')
+
+    unsortedEvents: ->
       RecordStoreService.get 'events', (event) =>
         event.discussionId == @id
+
 
     comments: ->
       RecordStoreService.get 'comments', (comment) =>
@@ -39,4 +44,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService) ->
         proposal.discussionId == @id
 
     activeProposal: ->
+      #@callcount = @callcount + 1
+      #console.log('called activeProposal', @callcount)
       _.first(_.filter(@proposals(), (proposal) -> proposal.isActive()))
