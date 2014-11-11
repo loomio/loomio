@@ -1,7 +1,9 @@
 class CommentService
   def self.unlike(comment: comment, actor: actor)
     actor.ability.authorize!(:like, comment)
+    comment_vote = CommentVote.where(user_id: actor.id, comment_id: comment.id).first
     comment.unlike(actor)
+    Memos::CommentUnliked.publish!(comment_vote)
   end
 
   def self.like(comment: comment, actor: actor)
@@ -27,9 +29,7 @@ class CommentService
     actor.ability.authorize!(:destroy, comment)
     comment.destroy
 
-    command = Memos::CommentDestroyed.new(comment)
-    command.publish
-    command
+    Memos::CommentDestroyed.publish!(comment)
   end
 
   def self.update(comment: comment, params: params, actor: actor)
@@ -38,5 +38,6 @@ class CommentService
     return false unless comment.valid?
     actor.ability.authorize! :create, comment
     comment.save!
+    Memos::CommentUpdated.publish!(comment)
   end
 end

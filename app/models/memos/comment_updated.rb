@@ -1,4 +1,4 @@
-class Memos::CommentDestroyed < Memo
+class Memos::CommentUpdated < Memo
   def self.publish!(comment)
     memo = new(comment)
     memo.publish!
@@ -10,11 +10,11 @@ class Memos::CommentDestroyed < Memo
   end
 
   def kind
-    'comment_destroyed'
+    'comment_updated'
   end
 
   def data
-    {comment_id: @comment.id}
+    CommentSerializer.new(@comment).as_json
   end
 
   def message_channel

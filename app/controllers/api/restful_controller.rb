@@ -79,10 +79,6 @@ class API::RestfulController < API::BaseController
     @@service_class || "#{resource_name}_service".camelize.constantize
   end
 
-  def respond_with_command(command)
-    render json: {command: command.to_json}
-  end
-
   def respond_with_collection
     render json: collection
   end
