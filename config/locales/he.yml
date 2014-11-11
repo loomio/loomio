@@ -193,4 +193,15 @@ he:
     preferences: 'העדפות דואר נכנס'
     what_you_have_not_read_yet: "להלן פעילויות שטרם נקראו"
     dropdown-btn: 'דואר נכנס'
+    empty: אין תגובות שטרם קראת.
+    preferences_instructions_html: 'ניתן <strong>לגרור</strong> פריטים על מנת לסדר אותם ו<strong>להסיר אתר הסימון</strong> מכדי להסיר אותם מתיבת הדואר הנכנס..'
+  notifications:
+    header: "התרעות"
+    new_discussion: "פתח/ה בדיון"
+    new_motion: "יצר/ה הצעה"
+    motion_closed:
+      by_user: "סגר/ה הצעה"
+      by_expiry: "ההצעה נסגרה"
+    new_vote: "%{position} להצעה"
+    new_comment: "הגיב/ה בדיון"
   translate: "עזרו בתרגום Loomio!"

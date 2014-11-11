@@ -42,7 +42,7 @@ Loomio::Application.routes.draw do
     resources :votes,       only: [       :index, :create, :update] do
       get :my_votes, on: :collection
     end
-    resources :comments,    only: [       :index, :create, :update, :destroy] do
+    resources :comments,    only: [:create, :update, :destroy] do
       post :like, on: :member
       post :unlike, on: :member
     end
@@ -52,7 +52,7 @@ Loomio::Application.routes.draw do
     end
     resources :translations, only: :show
     namespace :faye do
-      get :subscribe
+      post :subscribe
       get :who_am_i
     end
     namespace :sessions do

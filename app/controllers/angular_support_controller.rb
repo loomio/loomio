@@ -31,9 +31,9 @@ class AngularSupportController < ApplicationController
     sign_in patrick
 
 
-    DiscussionService.add_comment(Comment.new(author: jennifer,
-                                              discussion: testing_discussion,
-                                              body: 'Hi Patrick, lets go dancing'))
+    CommentService.create(comment: Comment.new(author: jennifer,
+                                      discussion: testing_discussion,
+                                      body: 'Hi Patrick, lets go dancing'), actor: jennifer)
 
     redirect_to_discussion
   end
@@ -42,10 +42,11 @@ class AngularSupportController < ApplicationController
     reset_database
     sign_in patrick
 
-    MotionService.create(Motion.new(author: jennifer,
-                                    name: 'lets go hiking',
-                                    closing_at: 3.days.from_now,
-                                    discussion: testing_discussion))
+    MotionService.create(comment: Motion.new(author: jennifer,
+                                             name: 'lets go hiking',
+                                             closing_at: 3.days.from_now,
+                                             discussion: testing_discussion),
+                        actor: jennifer)
 
 
     redirect_to_discussion

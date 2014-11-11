@@ -15,6 +15,7 @@ angular.module('loomioApp').controller 'CommentFormController', ($scope, Comment
     console.log error
 
   $scope.submit = ->
-    CommentService.create($scope.comment, saveSuccess, saveError)
+    console.log $scope.comment
+    CommentService.save($scope.comment, saveSuccess, saveError)
 
 
