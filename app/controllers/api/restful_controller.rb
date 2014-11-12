@@ -79,8 +79,8 @@ class API::RestfulController < API::BaseController
     @@service_class || "#{resource_name}_service".camelize.constantize
   end
 
-  def respond_with_collection
-    render json: collection
+  def respond_with_collection(options = {})
+    render options.merge json: collection
   end
 
   def respond_with_resource
