@@ -1,7 +1,8 @@
 class InvitableSerializer < ActiveModel::Serializer
   attributes :name,
              :subtitle,
-             :image 
+             :image,
+             :recipients
 
   def subtitle
     case object
@@ -15,7 +16,15 @@ class InvitableSerializer < ActiveModel::Serializer
     case object
     when Group   then object.logo.try(:url, :original, false)
     when Contact then "http://placehold.it/40x40"
-    when User    then object.avatar.try(:url, :original, false)
+    when User    then object.avatar_url
+    end
+  end
+
+  def recipients
+    case object
+    when Group   then object.members.map(&:email)
+    when Contact then [object.email]
+    when User    then [object.email]
     end
   end
 
