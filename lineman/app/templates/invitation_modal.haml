@@ -1,10 +1,20 @@
 %form{ng-submit: 'submit()'}
   .modal-header
-    Header
+    %h3 {{ 'invitation.invite_people' | translate }}
 
   .modal-body
-    Body
+    %h4 {{ 'invitation.find_people' | translate }}
+    %input.form-control{ng-model: 'fragment', typeahead: 'invitable for invitable in getInvitables($viewValue)', typeahead-template-url: 'generated/templates/invitable_menu.html', typeahead-on-select: 'addInvitation($item)', typeahead-wait-ms: '300'}
+    .invitation-instructions{ng_hide: 'hasInvitations()'}
+      {{ 'invitation.instructions' | translate }}
+    .current-invitations{ng_show: 'hasInvitations()'}
+      %h4 {{ 'invitation.to' | translate }}:
+      .current-invitations{ng_repeat: 'invitation in invitations'}
+        {{::invitation.name}} ({{::invitation.subtitle}})
+
+      %h4 {{ 'invitation.invitation_message' | translate }}
+      %textarea.form-control
 
   .modal-footer
-    %button.btn.btn-primary{type: 'submit', translate: 'proposal_form.start_proposal'}
+    %button.btn.btn-primary{type: 'submit', translate: 'invitation.send_invite'}
     %button.btn.btn-warning{ng-click: 'cancel($event)', translate: 'common.action.cancel'}

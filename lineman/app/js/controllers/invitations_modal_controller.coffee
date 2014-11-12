@@ -1,6 +1,18 @@
-angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $modalInstance, group) ->
+angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $modalInstance, group, InvitableService) ->
   $scope.group = group
+  $scope.fragment = ''
   $scope.invitations = []
+
+  $scope.hasInvitations = ->
+    $scope.invitations.length > 0
+
+  $scope.getInvitables = (fragment) ->
+    InvitableService.fetchByNameFragment fragment, $scope.group.id, (invitables) ->
+      invitables
+
+  $scope.addInvitation = (invitation) ->
+    $scope.fragment = ''
+    $scope.invitations.push invitation
 
   $scope.submit = ->
     $scope.isDisabled = true
@@ -8,11 +20,11 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
 
   $scope.cancel = ($event) ->
     $event.preventDefault()
-    $modalInstance.dismiss('cancel');
+    $modalInstance.dismiss('cancel')
 
   $scope.saveSuccess = () ->
     $scope.isDisabled = false
-    $modalInstance.close();
+    $modalInstance.close()
 
   $scope.saveError = (error) ->
     $scope.isDisabled = false
