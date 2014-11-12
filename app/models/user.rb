@@ -66,7 +66,12 @@ class User < ActiveRecord::Base
   has_many :groups,
            -> { where archived_at: nil },
            through: :memberships
-           
+
+  has_many :relations, 
+           through: :groups, 
+           class_name: 'User', 
+           source: :members
+
   has_many :discussions,
            through: :groups
 
