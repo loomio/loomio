@@ -1,0 +1,19 @@
+.container
+  .row
+    .col-xs-12
+      .group-container
+        .group-cover
+        .group-name
+          %h1 {{group.name}}
+        .group-description
+          %h2 {{ 'group.description' | translate }}
+          .group-description{btf-markdown: 'group.description' }
+        .group-threads
+          %h2 {{ 'group.discussions' | translate }}
+          %discussions{group: 'group'}
+        .group-members
+          %h2 {{ 'group.members' | translate }}
+          %members{group: 'group'}
+        .group-subgroups
+          %h2 {{ 'group.subgroups' | translate }}
+          %subgroups{group: 'group'}
