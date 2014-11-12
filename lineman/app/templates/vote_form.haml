@@ -1,6 +1,4 @@
 .thing
-  lastVote: {{ lastVote() }}
-  activityCount: {{ proposal.activityCount }}
   .vote-form{ng-show: '!lastVote() || editing'}
     %h3{translate: 'proposal_card.have_your_say'}
     .position-buttons
