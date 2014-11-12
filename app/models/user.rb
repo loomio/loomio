@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
               large: "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
               medlarge: "#{User::MED_LARGE_IMAGE}x#{User::MED_LARGE_IMAGE}#",
               medium: "#{User::MEDIUM_IMAGE}x#{User::MEDIUM_IMAGE}#",
-              small: "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#"
+              small: "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#",
             }
   validates_attachment :uploaded_avatar,
     size: { in: 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },

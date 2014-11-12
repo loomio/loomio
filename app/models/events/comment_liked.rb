@@ -10,6 +10,10 @@ class Events::CommentLiked < Event
     eventable
   end
 
+  def message_channel
+    "/discussion-#{comment_vote.comment.discussion_id}" #/#{kind}"
+  end
+
   private
 
   def notify_users!

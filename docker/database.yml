@@ -1,7 +1,0 @@
-production:
-  adapter: postgresql
-  host: <%= ENV['APP_DB_HOST'] %>
-  port: <%= ENV['APP_DB_PORT'] || "3306" %>
-  database: <%= ENV['APP_DB_DATABASE'] %>
-  username: <%= ENV['APP_DB_USERNAME'] %>
-  password: <%= ENV['APP_DB_PASSWORD'] %>

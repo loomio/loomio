@@ -1,6 +1,6 @@
 Given(/^I have a comment on the discussion$/) do
   @comment = FactoryGirl.build(:comment, discussion: @discussion, user: @user)
-  DiscussionService.add_comment @comment
+  CommentService.create(comment: @comment, actor: @comment.author)
 end
 
 When(/^I edit my comment$/) do
@@ -16,7 +16,7 @@ end
 
 Given(/^there is an edited comment in the discussion$/) do
   @comment = FactoryGirl.build(:comment, discussion: @discussion, user: @user, body: 'I do declare')
-  DiscussionService.add_comment @comment
+  CommentService.create(comment: @comment, actor: @comment.author)
   @comment.update_attributes(body: 'I never declare!', edited_at: Time.zone.now)
 end
 

@@ -1,21 +1,4 @@
 class Vote < ActiveRecord::Base
-  class UserCanVoteValidator < ActiveModel::EachValidator
-    def validate_each(object, attribute, value)
-      unless value && object.motion.can_be_voted_on_by?(User.find(value))
-        object.errors.add attribute, "does not have permission to vote on motion."
-      end
-    end
-  end
-
-  class ClosableValidator < ActiveModel::EachValidator
-    def validate_each(object, attribute, value)
-      if object.motion && (not object.motion.voting?)
-        object.errors.add attribute,
-          "can only be modified while the motion is in voting phase."
-      end
-    end
-  end
-
   POSITIONS = %w[yes abstain no block]
   default_scope { includes(:previous_vote) }
   belongs_to :motion, counter_cache: true, touch: :last_vote_at
@@ -26,16 +9,16 @@ class Vote < ActiveRecord::Base
   validates_presence_of :motion, :user, :position
   validates_inclusion_of :position, in: POSITIONS
   validates_length_of :statement, maximum: 250
-  validates :user_id, user_can_vote: true
-  validates :position, :statement, closable: true
 
   include Translatable
   is_translatable on: :statement
 
   scope :for_user, lambda {|user_id| where(:user_id => user_id)}
+  scope :by_discussion, ->(discussion_id = nil) { joins(:motion).where("motions.discussion_id = ? OR ? IS NULL", discussion_id, discussion_id) }
   scope :most_recent, -> { where age: 0  }
 
-  delegate :name, :to => :user, :prefix => :user
+  delegate :name, :to => :user, :prefix => :user # deprecated
+  delegate :name, :to => :user, :prefix => :author
   delegate :group, :discussion, :to => :motion
   delegate :users, :to => :group, :prefix => :group
   delegate :author, :to => :motion, :prefix => :motion
@@ -48,6 +31,8 @@ class Vote < ActiveRecord::Base
 
   after_save :update_motion_vote_counts
   after_destroy :update_motion_vote_counts
+
+  alias :author= :user=
 
   def author
     user
@@ -65,8 +50,21 @@ class Vote < ActiveRecord::Base
     current_user && user == current_user
   end
 
+  def author
+    user
+  end
+
+  def position_verb
+    case position
+    when 'yes' then 'agree'
+    when 'no' then 'disagree'
+    when 'abstain' then 'abstain'
+    when 'block' then 'block'
+    end
+  end
+
   def position_to_s
-    I18n.t(self.position, scope: [:position_verbs, :past_tense])
+    return I18n.t(self.position, scope: [:position_verbs, :past_tense])
   end
 
   def previous_position
@@ -86,6 +84,7 @@ class Vote < ActiveRecord::Base
   end
 
   private
+
   def associate_previous_vote
     self.previous_vote = motion.votes.where(user_id: user_id, age: age + 1).first
   end

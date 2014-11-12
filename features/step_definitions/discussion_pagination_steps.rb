@@ -1,7 +1,7 @@
 Given(/^a discussion has over (\d+) posts$/) do |arg1|
   51.times do
     comment = FactoryGirl.build(:comment, discussion: @discussion)
-    DiscussionService.add_comment(comment)
+    CommentService.create(comment: comment, actor: comment.author)
   end
 end
 

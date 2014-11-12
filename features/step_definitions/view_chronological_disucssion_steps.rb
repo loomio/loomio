@@ -12,9 +12,8 @@ Given(/^there are two comments$/) do
   @second_comment = Comment.new(body: 'new comment')
   @second_comment.author = @commenter
   @second_comment.discussion = @discussion
-  DiscussionService.add_comment @first_comment
-  DiscussionService.add_comment @second_comment
-
+  CommentService.create(comment: @first_comment, actor: @first_comment.author)
+  CommentService.create(comment: @second_comment, actor: @second_comment.author)
   @discussion.reload
 end
 
@@ -31,7 +30,7 @@ end
 
 Given(/^there has been new activity$/) do
   @third_comment = FactoryGirl.build :comment, user: @commenter, discussion: @discussion
-  DiscussionService.add_comment(@third_comment)
+  CommentService.create(comment: @third_comment, actor: @third_comment.author)
 end
 
 
@@ -50,7 +49,7 @@ Given(/^there is a two page discussion$/) do
     comment = Comment.new(body: "#{i} bottles of beer")
     comment.author = @commenter
     comment.discussion = @discussion
-    DiscussionService.add_comment(comment)
+    CommentService.create(comment: comment, actor: comment.author)
   end
 end
 
@@ -62,7 +61,7 @@ end
 Given(/^now there is new activity$/) do
   10.times do
     comment = FactoryGirl.build(:comment, discussion: @discussion, user: @commenter)
-    DiscussionService.add_comment(comment)
+    CommentService.create(comment: comment, actor: comment.author)
   end
 end
 
