@@ -3,6 +3,12 @@
     %h3 {{ 'invitation.invite_people' | translate }}
 
   .modal-body
+    .alert.alert-success{ng_show: 'showContactImportMessage'}
+      %button.close{ng-click: 'dismissContactImportMessage()', type: 'button'} ×
+      .contact-flash-header
+        %strong {{ 'invitation.import_contacts_header' | translate }}
+      .contact-flash-message
+        {{ 'invitation.import_contacts_message' | translate }}
     %h4 {{ 'invitation.find_people' | translate }}
     %input.form-control{ng-model: 'fragment', typeahead: 'invitable for invitable in getInvitables($viewValue)', typeahead-template-url: 'generated/templates/invitable_menu.html', typeahead-on-select: 'addInvitation($item)', typeahead-wait-ms: '300'}
     .invitation-instructions{ng_hide: 'hasInvitations()'}

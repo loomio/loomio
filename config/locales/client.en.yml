@@ -67,6 +67,8 @@ en:
   invitation:
     invite_people: 'Invite People'
     find_people: 'Find people'
+    import_contacts_header: 'Connect your address book'
+    import_contacts_message: 'Inviting people to Loomio is much easier if you import your contacts from Google.'
     import_contacts: 'Import contacts'
     instructions: 'Type names or email addresses for people you want to invite'
     invitation_message: 'Invitation Message'

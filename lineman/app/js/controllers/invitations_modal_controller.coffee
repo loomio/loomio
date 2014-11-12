@@ -2,12 +2,16 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
   $scope.group = group
   $scope.fragment = ''
   $scope.invitations = []
+  $scope.showContactImportMessage = true
 
   invitationsModel =
     params: ->
       invitations: $scope.invitations
       group_id: $scope.group.id
       message: $scope.message
+
+  $scope.dismissContactImportMessage = ->
+    $scope.showContactImportMessage = false
 
   $scope.hasInvitations = ->
     $scope.invitations.length > 0
