@@ -1,6 +1,6 @@
 When(/^someone else creates a discussion in my group$/) do
   @discussion = FactoryGirl.build(:discussion, group: @group)
-  DiscussionService.start_discussion(@discussion)
+  DiscussionService.create(discussion: @discussion, actor: @discussion.author)
 end
 
 Then(/^I should not be following the discussion$/) do
@@ -11,7 +11,7 @@ end
 
 When(/^I create a discussion in my group$/) do
   @discussion = FactoryGirl.build(:discussion, group: @group, author: @user)
-  DiscussionService.start_discussion(@discussion)
+  DiscussionService.create(discussion: @discussion, actor: @discussion.author)
 end
 
 Then(/^I should be following the discussion$/) do
@@ -29,12 +29,12 @@ end
 
 When(/^I comment in the discussion$/) do
   @comment = FactoryGirl.build(:comment, discussion: @discussion, author: @user)
-  DiscussionService.add_comment(@comment)
+  CommentService.create(comment: @comment, actor: @user)
 end
 
 When(/^I like a comment in the discussion$/) do
   @comment = FactoryGirl.create(:comment, discussion: @discussion)
-  DiscussionService.like_comment(@user, @comment)
+  CommentService.like(comment: @comment, actor: @user)
 end
 
 When(/^I comment on the discussion, mentioning Rich$/) do
@@ -44,7 +44,7 @@ When(/^I comment on the discussion, mentioning Rich$/) do
                                discussion: @discussion,
                                author: @user,
                                body: 'hi @rich')
-  DiscussionService.add_comment(@comment)
+  CommentService.create(comment: @comment, actor: @user)
 end
 
 Then(/^I should be following it$/) do
@@ -64,7 +64,7 @@ Then(/^Rich should be following the discussion$/) do
 end
 
 Given(/^I update the title$/) do
-  DiscussionService.edit_discussion(@user, {title: "updated"}, @discussion)
+  DiscussionService.update(discussion: @discussion, actor: @user, params: {title: "updated"})
 end
 
 Then(/^my followed threads should include the discussion$/) do
@@ -78,7 +78,7 @@ end
 
 When(/^there is a discussion created by someone in the group$/) do
   @discussion = FactoryGirl.build(:discussion, group: @group)
-  DiscussionService.start_discussion(@discussion)
+  DiscussionService.create(discussion: @discussion, actor: @discussion.author)
 end
 
 Given(/^I have set my preferences to email me activity I'm following$/) do
@@ -115,7 +115,7 @@ end
 
 Given(/^there is a discussion I have never seen before$/) do
   @discussion = FactoryGirl.build :discussion, group: @group
-  DiscussionService.start_discussion @discussion
+  DiscussionService.create(discussion: @discussion, actor: @discussion.author)
 end
 
 Given(/^there are no emails waiting for me$/) do
@@ -132,24 +132,24 @@ end
 
 Given(/^I get mentioned in a discussion$/) do
   @comment = FactoryGirl.build(:comment, discussion: @discussion, body: "hi @#{@user.username}")
-  DiscussionService.add_comment(@comment)
+  CommentService.create(comment: @comment, actor: @comment.author)
 end
 
 Given(/^there is a discussion I have unfollowed$/) do
   @discussion = FactoryGirl.build :discussion, group: @group
-  DiscussionService.start_discussion @discussion
+  DiscussionService.create(discussion: @discussion, actor: @discussion.author)
   DiscussionReader.for(discussion: @discussion, user: @user).unfollow!
 end
 
 Given(/^there is a discussion I am following$/) do
   @discussion = FactoryGirl.build :discussion, group: @group
-  DiscussionService.start_discussion @discussion
+  DiscussionService.create(discussion: @discussion, actor: @discussion.author)
   DiscussionReader.for(discussion: @discussion, user: @user).follow!
 end
 
 When(/^there is a subsequent comment in the discussion$/) do
   @comment = FactoryGirl.build(:comment, discussion: @discussion, body: "yea i know")
-  DiscussionService.add_comment(@comment)
+  CommentService.create(comment: @comment, actor: @comment.author)
 end
 
 Then(/^I should be emailed the comment$/) do
@@ -168,7 +168,7 @@ end
 
 Given(/^there is a discussion I am not following$/) do
   @discussion = FactoryGirl.build :discussion, group: @group
-  DiscussionService.start_discussion @discussion
+  DiscussionService.create(discussion: @discussion, actor: @discussion.author)
 end
 
 Given(/^I click 'Not Following' on the discussion page$/) do
@@ -251,7 +251,7 @@ end
 When(/^I start a new discussion$/) do
   reset_mailer
   @discussion = FactoryGirl.build :discussion, author: @user, group: @group
-  @event = DiscussionService.start_discussion @discussion
+  @event = DiscussionService.create(discussion: @discussion, actor: @discussion.author)
 end
 
 Then(/^"(.*?)" should be emailed$/) do |name|
@@ -273,7 +273,7 @@ When(/^I add a comment$/) do
   step 'I start a new discussion'
   reset_mailer
   @comment = FactoryGirl.build :comment, discussion: @discussion, body: "yea i know", author: @user
-  @add_comment_event = DiscussionService.add_comment @comment
+  @add_comment_event = CommentService.create(comment: @comment, actor: @user)
 end
 
 When(/^I mention Master Mentions Only$/) do
@@ -281,7 +281,7 @@ When(/^I mention Master Mentions Only$/) do
   reset_mailer
   @comment = FactoryGirl.build :comment, discussion: @discussion, author: @user,
                                body: "yea @#{@master_mentions_only.username}"
-  @add_comment_event = DiscussionService.add_comment(@comment)
+  @add_comment_event = CommentService.create(comment: @comment, actor: @user)
 
   @user_mentioned_event = Event.where(kind: 'user_mentioned').last
 end
@@ -317,20 +317,20 @@ When(/^I start a new proposal$/) do
   step 'I start a new discussion'
   reset_mailer
   @motion = FactoryGirl.build :motion, discussion: @discussion, author: @user
-  @start_motion_event = MotionService.start_motion(@motion)
+  @start_motion_event = MotionService.create(motion: @motion, actor: @user)
 end
 
 When(/^I vote on the proposal$/) do
   step 'I start a new proposal'
   reset_mailer
   @vote = FactoryGirl.build :vote, motion: @motion, user: @user
-  @cast_vote_event = MotionService.cast_vote @vote
+  @cast_vote_event = VoteService.create vote: @vote, actor: @user
 end
   
 When(/^my proposal is about to close$/) do
   step 'I start a new discussion'
   @motion = FactoryGirl.build :motion, discussion: @discussion, author: @user
-  MotionService.start_motion(@motion)
+  MotionService.create(motion: @motion, actor: @user)
   reset_mailer
   @motion_closing_soon_event = Events::MotionClosingSoon.publish! @motion
 end
@@ -370,7 +370,7 @@ end
 
 When(/^there is a new comment in the thread$/) do
   @comment = FactoryGirl.build(:comment, discussion: @discussion)
-  DiscussionService.add_comment(@comment)
+  CommentService.create(comment: @comment, actor: @comment.author)
 end
 
 Then(/^I should not see anything in my unread threads$/) do
@@ -382,5 +382,5 @@ When(/^I set a proposal outcome$/) do
   @motion = FactoryGirl.create :motion, discussion: @discussion
   @motion.outcome = "success"
   @motion.outcome_author = @user
-  MotionService.create_outcome(@motion)
+  MotionService.create_outcome(motion: @motion, actor: @motion.author, params: {outcome: 'yes ok'})
 end

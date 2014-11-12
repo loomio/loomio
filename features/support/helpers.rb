@@ -4,7 +4,7 @@ include Warden::Test::Helpers
 def create_discussion( options={} )
   options[:private] = true unless options.has_key?(:private)
   discussion = FactoryGirl.build(:discussion, options)
-  DiscussionService.start_discussion(discussion)
+  DiscussionService.create(discussion: discussion, actor: discussion.author)
   discussion
 end
 

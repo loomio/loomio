@@ -1,0 +1,4 @@
+.avatar-initials{ng-show: 'user.avatarKind == "initials"'}
+  {{user.initials}}
+.avatar-image{ng-show: 'user.avatarKind == "gravatar"'}
+  %img{alt: "...", src: '{{user.avatarUrl}}'}

@@ -4,7 +4,7 @@ Given /^someone comments on the discussion$/ do
   @comment = Comment.new(body: "hey there")
   @comment.author = @commenter
   @comment.discussion = @discussion
-  DiscussionService.add_comment(@comment)
+  CommentService.create(comment: @comment, actor: @comment.author)
 end
 
 When /^I visit the dashboard$/ do

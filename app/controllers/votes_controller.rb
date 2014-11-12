@@ -1,5 +1,5 @@
 class VotesController < BaseController
-  before_filter :require_user_can_vote
+  before_filter :require_motion_voting
 
   def new
     @vote = motion.most_recent_vote_of(current_user) || Vote.new
@@ -9,12 +9,12 @@ class VotesController < BaseController
   def create
     @vote = Vote.new(permitted_params.vote)
     @vote.motion = motion
-    @vote.user = current_user
+    @vote.author = current_user
 
-    if MotionService.cast_vote(@vote)
+    if VoteService.create(vote: @vote, actor: current_user)
       Measurement.increment('votes.create.success')
       flash[:success] = t("success.position_submitted")
-      redirect_to @motion
+      redirect_to @vote.motion.discussion
     else
       Measurement.increment('votes.create.errors')
       render :new
@@ -26,13 +26,9 @@ class VotesController < BaseController
   end
 
   private
-    def require_user_can_vote
-      unless can?(:vote, motion)
-        if motion.closed?
-          flash[:notice] = t(:"unable_to_vote.motion_closed")
-        else
-          flash[:notice] = t(:"unable_to_vote.permission_denied")
-        end
+    def require_motion_voting
+      if motion.closed?
+        flash[:notice] = t(:"unable_to_vote.motion_closed")
         redirect_to dashboard_path
       end
     end

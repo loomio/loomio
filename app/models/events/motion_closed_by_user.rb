@@ -7,6 +7,10 @@ class Events::MotionClosedByUser < Events::MotionClosed
             user: closer)
   end
 
+  def motion
+    eventable
+  end
+
   private
 
   def notify_users!

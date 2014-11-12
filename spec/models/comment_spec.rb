@@ -20,7 +20,7 @@ describe Comment do
     context "a newer comment exists" do
       before do
         comment
-        DiscussionService.add_comment(build :comment, discussion: discussion)
+        CommentService.create(comment: build(:comment, discussion: discussion), actor: user)
       end
       it { should be false }
     end

@@ -23,4 +23,8 @@ class Events::NewComment < Event
   def comment
     eventable
   end
+
+  def message_channel
+    "/discussion-#{comment.discussion_id}" #/#{kind}"
+  end
 end

@@ -16,8 +16,8 @@ describe "User abilities" do
   let(:other_members_invitation) { InvitationService.create_invite_to_join_group(recipient_email: "h@h.com",
                                                                                  group: group,
                                                                                  inviter: other_user) }
-  it { should     be_able_to(:create, group) }
-  
+  it { should be_able_to(:create, group) }
+
   context "in relation to a group" do
     describe "is_visible_to_public?" do
       context "true" do
@@ -168,15 +168,16 @@ describe "User abilities" do
       describe "members_can_vote" do
         let(:discussion) { FactoryGirl.create(:discussion, group: group, author: user) }
         let(:motion) { FactoryGirl.create(:motion, discussion: discussion) }
+        let(:vote) { FactoryGirl.build(:vote, motion: motion, position: 'yes', author: user) }
 
         context "true" do
           before { group.update_attribute(:members_can_vote, true) }
-          it {should be_able_to(:vote, motion)}
+          it {should be_able_to(:create, vote)}
         end
 
         context "false" do
           before { group.update_attribute(:members_can_vote, false) }
-          it {should_not be_able_to(:vote, motion)}
+          it {should_not be_able_to(:create, vote)}
         end
       end
 
@@ -238,10 +239,11 @@ describe "User abilities" do
     let(:subgroup_for_another_group) { build(:group, parent: create(:group)) }
     let(:membership_request) { create(:membership_request, group: group, requestor: non_member) }
     let(:discussion) { create :discussion, group: group }
+    let(:comment) { build :comment, discussion: discussion, author: user }
     let(:user_discussion) { create :discussion, group: group, author: user }
     let(:new_discussion) { user.authored_discussions.new(
                            group: group, title: "new discussion") }
-    let(:user_comment) { create :comment, discussion: discussion, user: user }
+    let(:user_comment) { create :comment, discussion: discussion, author: user }
     let(:another_user_comment) { create :comment, discussion: discussion }
     let(:user_motion) { create(:motion, author: user, discussion: discussion) }
     let(:user_vote) { create(:vote, user: user, motion: user_motion)}
@@ -256,8 +258,8 @@ describe "User abilities" do
     end
 
     context "members_can_edit_comments"do
-      it { should be_able_to(:manage, user_comment) }
-      it { should_not be_able_to(:manage, another_user_comment) }
+      it { should be_able_to(:update, user_comment) }
+      it { should_not be_able_to(:update, another_user_comment) }
     end
 
     context "members_can_not_edit_comments" do
@@ -265,14 +267,14 @@ describe "User abilities" do
         group.members_can_edit_comments = false
       end
       context "is most recent comment" do
-        it { should be_able_to(:manage, user_comment) }
+        it { should be_able_to(:update, user_comment) }
       end
       context "is not most recent comment" do
         before do
           user_comment
           FactoryGirl.create(:comment, discussion: discussion, author: other_user)
         end
-        it { should_not be_able_to(:manage, user_comment) }
+        it { should_not be_able_to(:update, user_comment) }
       end
     end
 
@@ -351,7 +353,7 @@ describe "User abilities" do
     it { should_not be_able_to(:view_payment_details, group) }
     it { should_not be_able_to(:choose_subscription_plan, group) }
     it { should     be_able_to(:new_proposal, discussion) }
-    it { should     be_able_to(:add_comment, discussion) }
+    it { should     be_able_to(:create, comment) }
     it { should     be_able_to(:show_description_history, discussion) }
     it { should     be_able_to(:preview_version, discussion) }
     it { should_not be_able_to(:update_version, discussion) }
@@ -377,9 +379,9 @@ describe "User abilities" do
     it { should_not be_able_to(:close, other_users_motion) }
     it { should_not be_able_to(:create_outcome, other_users_motion) }
 
-    it { should     be_able_to(:vote, user_motion) }
-    it { should     be_able_to(:vote, other_users_motion) }
-    it { should_not be_able_to(:vote, closed_motion) }
+    it { should     be_able_to(:create, build(:vote, motion: user_motion, author: user)) }
+    it { should     be_able_to(:create, build(:vote, motion: other_users_motion, author: user)) }
+    it { should_not be_able_to(:create, build(:vote, motion: closed_motion, author: user)) }
 
     it { should     be_able_to(:cancel, own_invitation) }
     it { should_not be_able_to(:cancel, other_members_invitation) }
@@ -466,99 +468,98 @@ describe "User abilities" do
     end
   end
 
-  context "non-member of a group" do
+  context 'non member of hidden group' do
+    let(:group) { create(:group, is_visible_to_public: false) }
+    let(:discussion) { create :discussion, group: group, private: true }
+    let(:new_motion) { Motion.new(discussion_id: discussion.id) }
+    let(:motion) { create(:motion, discussion: discussion) }
+    let(:another_user_vote) { create(:vote, user: discussion.author, motion: motion) }
+    let(:new_discussion) { Discussion.new(group: group, author: user, title: 'title') }
+    let(:user_comment) { Comment.new discussion: discussion, author: user }
+    let(:another_user_comment) { create :comment, discussion: discussion, author: other_user }
+    let(:my_membership_request) { create(:membership_request, group: group, requestor: user) }
+    let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }
 
-    context 'hidden group' do
-      let(:group) { create(:group, is_visible_to_public: false) }
-      let(:discussion) { create :discussion, group: group, private: true }
-      let(:new_motion) { Motion.new(discussion_id: discussion.id) }
-      let(:motion) { create(:motion, discussion: discussion) }
-      let(:vote) { create(:vote, user: discussion.author, motion: motion) }
-      let(:new_discussion) { user.authored_discussions.new(
-                             group: group, title: "new discussion") }
-      let(:another_user_comment) { create :comment, discussion: discussion }
-      let(:my_membership_request) { create(:membership_request, group: group, requestor: user) }
-      let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }
+    it { should_not be_able_to(:show, group) }
+    it { should_not be_able_to(:update, group) }
+    it { should_not be_able_to(:email_members, group) }
+    it { should_not be_able_to(:add_subgroup, group) }
+    it { should_not be_able_to(:add_members, group) }
+    it { should_not be_able_to(:hide_next_steps, group) }
+    it { should_not be_able_to(:unfollow, group) }
+    it { should_not be_able_to(:create, new_discussion) }
+    it { should_not be_able_to(:show, discussion) }
+    it { should_not be_able_to(:new_proposal, discussion) }
+    it { should_not be_able_to(:create, user_comment) }
+    it { should_not be_able_to(:move, discussion) }
+    it { should_not be_able_to(:destroy, discussion) }
+    it { should_not be_able_to(:like, another_user_comment) }
+    it { should_not be_able_to(:create, new_motion) }
+    it { should_not be_able_to(:close, motion) }
+    it { should_not be_able_to(:edit_close_date, motion) }
+    it { should_not be_able_to(:open, motion) }
+    it { should_not be_able_to(:update, motion) }
+    it { should_not be_able_to(:destroy, motion) }
+    it { should_not be_able_to(:destroy, another_user_comment) }
+    it { should_not be_able_to(:vote, motion) }
+    it { should_not be_able_to(:show, another_user_comment) }
+    it { should_not be_able_to(:show, motion) }
+    it { should_not be_able_to(:show, another_user_vote) }
+  end
 
-      it { should_not be_able_to(:show, group) }
-      it { should_not be_able_to(:update, group) }
-      it { should_not be_able_to(:email_members, group) }
-      it { should_not be_able_to(:add_subgroup, group) }
-      it { should_not be_able_to(:add_members, group) }
-      it { should_not be_able_to(:hide_next_steps, group) }
-      it { should_not be_able_to(:unfollow, group) }
-      it { should_not be_able_to(:create, new_discussion) }
-      it { should_not be_able_to(:show, discussion) }
-      it { should_not be_able_to(:new_proposal, discussion) }
-      it { should_not be_able_to(:add_comment, discussion) }
-      it { should_not be_able_to(:move, discussion) }
-      it { should_not be_able_to(:destroy, discussion) }
-      it { should_not be_able_to(:like_comments, discussion) }
-      it { should_not be_able_to(:create, new_motion) }
-      it { should_not be_able_to(:close, motion) }
-      it { should_not be_able_to(:edit_close_date, motion) }
-      it { should_not be_able_to(:open, motion) }
-      it { should_not be_able_to(:update, motion) }
-      it { should_not be_able_to(:destroy, motion) }
-      it { should_not be_able_to(:destroy, another_user_comment) }
-      it { should_not be_able_to(:vote, motion) }
-      it { should_not be_able_to(:show, another_user_comment) }
-      it { should_not be_able_to(:show, motion) }
-      it { should_not be_able_to(:show, vote) }
-    end
+  context "non member of public group" do
+    let(:group) { create(:group, is_visible_to_public: true) }
+    let(:private_discussion) { create :discussion, group: group, private: true }
+    let(:comment_in_private_discussion) { Comment.new discussion: private_discussion, author: user, body: 'hi' }
+    let(:public_discussion) { create :discussion, group: group, private: false }
+    let(:comment_in_public_discussion) { Comment.new discussion: public_discussion, author: user, body: 'hi' }
+    let(:new_motion) { Motion.new(discussion_id: private_discussion.id) }
+    let(:motion) { create(:motion, discussion: private_discussion) }
+    let(:new_discussion) { user.authored_discussions.new(
+                           group: group, title: "new discussion") }
+    let(:another_user_comment) { create :comment, discussion: private_discussion }
+    let(:my_membership_request) { create(:membership_request, group: group, requestor: user) }
+    let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }
 
-    context "public group" do
-      let(:group) { create(:group, is_visible_to_public: true) }
-      let(:private_discussion) { create :discussion, group: group, private: true }
-      let(:public_discussion) { create :discussion, group: group, private: false }
-      let(:new_motion) { Motion.new(discussion_id: private_discussion.id) }
-      let(:motion) { create(:motion, discussion: private_discussion) }
-      let(:new_discussion) { user.authored_discussions.new(
-                             group: group, title: "new discussion") }
-      let(:another_user_comment) { create :comment, discussion: private_discussion }
-      let(:my_membership_request) { create(:membership_request, group: group, requestor: user) }
-      let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }
+    it { should     be_able_to(:show, group) }
+    it { should_not be_able_to(:view_payment_details, group) }
+    it { should_not be_able_to(:choose_subscription_plan, group) }
+    it { should_not be_able_to(:update, group) }
+    it { should_not be_able_to(:email_members, group) }
+    it { should_not be_able_to(:add_subgroup, group) }
+    it { should_not be_able_to(:add_members, group) }
+    it { should_not be_able_to(:manage_membership_requests, group) }
+    it { should_not be_able_to(:hide_next_steps, group) }
+    it { should_not be_able_to(:unfollow, group) }
 
-      it { should     be_able_to(:show, group) }
-      it { should_not be_able_to(:view_payment_details, group) }
-      it { should_not be_able_to(:choose_subscription_plan, group) }
-      it { should_not be_able_to(:update, group) }
-      it { should_not be_able_to(:email_members, group) }
-      it { should_not be_able_to(:add_subgroup, group) }
-      it { should_not be_able_to(:add_members, group) }
-      it { should_not be_able_to(:manage_membership_requests, group) }
-      it { should_not be_able_to(:hide_next_steps, group) }
-      it { should_not be_able_to(:unfollow, group) }
+    it { should     be_able_to(:cancel, my_membership_request) }
+    it { should_not be_able_to(:cancel, other_membership_request) }
+    it { should_not be_able_to(:approve, other_membership_request) }
+    it { should_not be_able_to(:ignore, other_membership_request) }
 
-      it { should     be_able_to(:cancel, my_membership_request) }
-      it { should_not be_able_to(:cancel, other_membership_request) }
-      it { should_not be_able_to(:approve, other_membership_request) }
-      it { should_not be_able_to(:ignore, other_membership_request) }
+    it { should_not be_able_to(:create, new_discussion) }
+    it { should_not be_able_to(:show, private_discussion) }
+    it { should_not be_able_to(:new_proposal, private_discussion) }
+    it { should_not be_able_to(:create, comment_in_private_discussion) }
+    it { should_not be_able_to(:move, private_discussion) }
+    it { should_not be_able_to(:destroy, private_discussion) }
 
-      it { should_not be_able_to(:create, new_discussion) }
-      it { should_not be_able_to(:show, private_discussion) }
-      it { should_not be_able_to(:new_proposal, private_discussion) }
-      it { should_not be_able_to(:add_comment, private_discussion) }
-      it { should_not be_able_to(:move, private_discussion) }
-      it { should_not be_able_to(:destroy, private_discussion) }
+    it { should     be_able_to(:show, public_discussion) }
+    it { should_not be_able_to(:new_proposal, public_discussion) }
+    it { should_not be_able_to(:create, comment_in_public_discussion) }
+    it { should_not be_able_to(:move, public_discussion) }
+    it { should_not be_able_to(:destroy, public_discussion) }
 
-      it { should     be_able_to(:show, public_discussion) }
-      it { should_not be_able_to(:new_proposal, public_discussion) }
-      it { should_not be_able_to(:add_comment, public_discussion) }
-      it { should_not be_able_to(:move, public_discussion) }
-      it { should_not be_able_to(:destroy, public_discussion) }
+    it { should_not be_able_to(:destroy, another_user_comment) }
+    it { should_not be_able_to(:like, another_user_comment) }
+    it { should_not be_able_to(:unlike, another_user_comment) }
 
-      it { should_not be_able_to(:destroy, another_user_comment) }
-      it { should_not be_able_to(:like, another_user_comment) }
-      it { should_not be_able_to(:unlike, another_user_comment) }
-
-      it { should_not be_able_to(:create, new_motion) }
-      it { should_not be_able_to(:close, motion) }
-      it { should_not be_able_to(:edit_close_date, motion) }
-      it { should_not be_able_to(:open, motion) }
-      it { should_not be_able_to(:update, motion) }
-      it { should_not be_able_to(:destroy, motion) }
-    end
+    it { should_not be_able_to(:create, new_motion) }
+    it { should_not be_able_to(:close, motion) }
+    it { should_not be_able_to(:edit_close_date, motion) }
+    it { should_not be_able_to(:open, motion) }
+    it { should_not be_able_to(:update, motion) }
+    it { should_not be_able_to(:destroy, motion) }
   end
 
   context "Loomio admin deactivates other_user" do
