@@ -9,8 +9,8 @@ class API::InvitationsController < API::RestfulController
     MembershipService.add_users_to_group membership_params
     InvitationService.invite_to_group    invitation_params
 
-    Measurement.measure 'invitations.invite_members',    members_to_add.size
-    Measurement.measure 'invitations.invite_new_emails', emails_to_invite.size
+    Measurement.measure 'invitations.invite_members',    members_emails.size
+    Measurement.measure 'invitations.invite_new_emails', non_member_emails.size
 
     respond_with_collection
   end
@@ -18,22 +18,22 @@ class API::InvitationsController < API::RestfulController
   private
 
   def membership_params
-    @membership_params ||= common_params.merge users: members_to_add
+    @membership_params ||= common_params.merge users: User.where(email: members_emails)
   end
   def invitation_params
-    @invitation_params ||= common_params.merge recipient_emails: emails_to_invite
+    @invitation_params ||= common_params.merge recipient_emails: non_member_emails
   end
 
   def common_params
     @common_params ||= { group: @group, inviter: current_user, message: params[:invite_message] }
   end
 
-  def members_to_add
-    @members_to_add ||= User.where id: @invitations.map { |i| i[:user_id] }.compact
+  def members_emails
+    @invitations.select { |i| i[:is_loomio_member] }.map { |i| i[:recipients] }.flatten.compact
   end
 
-  def emails_to_invite
-    @emails_to_invite ||= @invitations.map { |i| i[:recipients] }.compact.flatten
+  def non_member_emails
+    @invitations.reject { |i| i[:is_loomio_member] }.map { |i| i[:recipients] }.flatten.compact
   end
 
 end
