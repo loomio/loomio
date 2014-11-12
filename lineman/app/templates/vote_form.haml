@@ -1,5 +1,7 @@
 .thing
-  .vote-form{ng-show: '!lastVote || editing'}
+  lastVote: {{ lastVote() }}
+  activityCount: {{ proposal.activityCount }}
+  .vote-form{ng-show: '!lastVote() || editing'}
     %h3{translate: 'proposal_card.have_your_say'}
     .position-buttons
       .position-button.position-button-yes{ng-click: 'selectPosition("yes")'}
@@ -20,7 +22,7 @@
 
       %button.btn.btn-default{ng-click: 'cancel($event)', translate: 'common.action.cancel'}>
 
-  .your-position{ng-show: 'lastVote && !editing'}
+  .your-position{ng-show: 'lastVote() && !editing'}
     %h3{translate: 'proposal_card.your_position'}
 
     %a.change-position.pull-right{ng-click: 'changePosition()', href: '#'}
@@ -28,7 +30,7 @@
       %i.fa.fa-pencil
 
     .current-position.media
-      .pull-left.your-position-icon{class: 'your-position-icon-{{lastVote.position}}'}
+      .pull-left.your-position-icon{class: 'your-position-icon-{{lastVote().position}}'}
       .media-body
         %span.author-statement
-          {{ lastVote.statement }}
+          {{ lastVote().statement }}

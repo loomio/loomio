@@ -5,8 +5,12 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
     templateUrl: 'generated/templates/discussion.html'
     controller: 'DiscussionController'
     resolve:
-      discussion: ($route, DiscussionService) ->
-        DiscussionService.fetchByKey($route.current.params.id)
+      discussion: ($route, DiscussionService, RecordStoreService) ->
+        promise = DiscussionService.fetchByKey($route.current.params.id)
+        if discussion = RecordStoreService.get('discussions', $route.current.params.id)
+          discussion
+        else
+          promise
       currentUser: ($http, UserAuthService, UserModel) ->
         UserAuthService.fetchCurrentUser()
   ).when('/users/sign_in',
