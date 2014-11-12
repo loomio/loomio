@@ -3,5 +3,5 @@
     {{ member.name }}
   .members-show-more.show-more
     %a{href: '#'} {{ 'group.show_more' | translate }}
-  .members-invite
-    %a{href: '#'} {{ 'group.invite_members' | translate }}
+  .members-invite{ng_controller: 'InvitationsController'}
+    %a{href: '#', ng_click: 'openForm()'} {{ 'group.invite_members' | translate }}
