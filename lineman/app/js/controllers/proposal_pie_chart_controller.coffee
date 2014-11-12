@@ -23,7 +23,7 @@ angular.module('loomioApp').controller 'ProposalPieChartController', ($scope) ->
 
   #$scope.$watch 'proposal', ->
     #console.log 'refreshing pie chart data'
-    #refreshPieChartData()
+  refreshPieChartData()
 
   # might be better to scope this down to newVoteOnProposal, id
   $scope.$on 'newVote', ->
