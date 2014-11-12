@@ -1,0 +1,7 @@
+.members
+  .member{ng-repeat: 'member in group.members()'}
+    {{ member.name }}
+  .members-show-more.show-more
+    %a{href: '#'} {{ 'group.show_more' | translate }}
+  .members-invite
+    %a{href: '#'} {{ 'group.invite_members' | translate }}

@@ -30,7 +30,10 @@ Loomio::Application.routes.draw do
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resource :inbox, only: :show, controller: 'inbox'
-    resources :memberships, only: [] do
+    resources :groups, only: :show do
+      get :subgroups, on: :collection
+    end
+    resources :memberships, only: [:index] do
       get :autocomplete, on: :collection
     end
     resources :invitables, only: :index
