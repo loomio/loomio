@@ -1,9 +1,16 @@
 class InvitableSerializer < ActiveModel::Serializer
   attributes :name,
+             :is_loomio_member,
              :subtitle,
              :image,
-             :recipients,
-             :user_id
+             :recipients
+
+  def is_loomio_member
+    case object
+    when Group, User then true
+    when Contact then false
+    end
+  end
 
   def subtitle
     case object
@@ -23,14 +30,8 @@ class InvitableSerializer < ActiveModel::Serializer
 
   def recipients
     case object
-    when Group   then object.members.map(&:email)
-    when Contact then [object.email]
-    end
-  end
-
-  def user_id
-    case object
-    when User   then object.id
+    when Group then object.members.map(&:email)
+    when Contact, User then [object.email]
     end
   end
 
