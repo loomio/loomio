@@ -13,7 +13,7 @@
         {{::invitation.name}} ({{::invitation.subtitle}})
 
       %h4 {{ 'invitation.invitation_message' | translate }}
-      %textarea.form-control
+      %textarea.form-control{ng-model: 'message'}
 
   .modal-footer
     %button.btn.btn-primary{type: 'submit', translate: 'invitation.send_invite'}

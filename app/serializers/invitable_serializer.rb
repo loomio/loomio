@@ -2,7 +2,8 @@ class InvitableSerializer < ActiveModel::Serializer
   attributes :name,
              :subtitle,
              :image,
-             :recipients
+             :recipients,
+             :user_id
 
   def subtitle
     case object
@@ -24,7 +25,12 @@ class InvitableSerializer < ActiveModel::Serializer
     case object
     when Group   then object.members.map(&:email)
     when Contact then [object.email]
-    when User    then [object.email]
+    end
+  end
+
+  def user_id
+    case object
+    when User   then object.id
     end
   end
 
