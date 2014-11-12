@@ -26,6 +26,7 @@
 
     .proposal-card-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_card.no_votes_yet'}
 
+    -#.proposal-card-vote.media{ng_repeat: 'vote in curatedVotes()'}
     .proposal-card-vote.media{ng_repeat: 'vote in curatedVotes()'}
       .pull-left.thread-event-vote-icon{class: 'thread-event-vote-icon-{{vote.position}}'}
       .media-body

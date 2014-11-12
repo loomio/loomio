@@ -11,6 +11,7 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
       @outcome = data.outcome
       @discussionId = data.discussion_id
       @voteCounts = data.vote_counts
+      @activityCount = data.activity_count
 
     params: ->
       motion:
