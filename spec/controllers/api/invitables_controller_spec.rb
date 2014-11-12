@@ -7,6 +7,7 @@ describe API::InvitablesController do
   let(:contact_email_biff) { create :contact, user: user, email: "biff@wark.com" }
   let(:user_named_biff) { create :user, name: "Biff Bones" }
   let(:user_named_bang) { create :user, name: "Bang Whamfist" }
+  let(:user_email_biff) { create :user, email: "biff@wark.com" }
   let(:alien_named_biff) { create :user, name: "Biff Beef" }
   let(:group) { create :group }
   let(:group_named_biff) { create :group, name: "Biff Arang" }
@@ -17,7 +18,7 @@ describe API::InvitablesController do
     stub_request(:post, "http://localhost:9292/faye").to_return(status: 200)
     group.admins << user
     group.users  << user_named_biff
-    group_named_biff.users << user
+    group_named_biff.users << [user, user_named_biff, user_named_bang, user_email_biff]
     group_named_bang.users << user
     sign_in user
   end
@@ -26,11 +27,8 @@ describe API::InvitablesController do
 
     context 'success' do
 
-      before do
-        contact_named_biff; contact_named_bang; contact_email_biff; group_named_biff; group_named_bang;
-      end
-
       it 'returns a users contacts filtered by query on name' do
+        contact_named_biff; contact_named_bang
         get :index, group_id: group.id, q: 'biff', format: :json
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[invitables])
@@ -43,6 +41,7 @@ describe API::InvitablesController do
       end
 
       it 'returns a users contacts filtered by query on email' do
+        contact_email_biff; contact_named_bang
         get :index, group_id: group.id, q: 'biff', format: :json
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[invitables])
@@ -63,7 +62,33 @@ describe API::InvitablesController do
 
         expect(names).to     include group_named_biff.name
         expect(names).to_not include group_named_bang.name
-        expect(subtitles).to include "#{group_named_biff.members.count} members"
+        expect(subtitles).to include "Add all members (#{group_named_biff.members.count})"
+      end
+
+      it 'returns a users relations filtered by query on name' do
+        user_named_biff; user_named_bang
+        get :index, group_id: group.id, q: 'biff', format: :json
+        json = JSON.parse(response.body)
+        expect(json.keys).to include *(%w[invitables])
+        names     = json['invitables'].map { |i| i['name'] }
+        subtitles = json['invitables'].map { |i| i['subtitle'] }
+
+        expect(names).to     include user_named_biff.name
+        expect(names).to_not include user_named_bang.name
+        expect(subtitles).to include "I'm a user!"
+      end
+
+      it 'returns a users relations filtered by query on email' do
+        user_email_biff; user_named_bang
+        get :index, group_id: group.id, q: 'biff', format: :json
+        json = JSON.parse(response.body)
+        expect(json.keys).to include *(%w[invitables])
+        names     = json['invitables'].map { |i| i['name'] }
+        subtitles = json['invitables'].map { |i| i['subtitle'] }
+
+        expect(names).to     include user_email_biff.name
+        expect(names).to_not include user_named_bang.name
+        expect(subtitles).to include "I'm a user!"
       end
     end
 
