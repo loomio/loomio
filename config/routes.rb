@@ -33,6 +33,7 @@ Loomio::Application.routes.draw do
     resources :memberships, only: [] do
       get :autocomplete, on: :collection
     end
+    resources :invitables, only: :index
     resources :events, only: :index
     resources :discussions, only: [:show, :index, :create, :update, :destroy]
     resources :motions,     only: [       :index, :create, :update], path: :proposals
