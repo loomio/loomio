@@ -85,7 +85,7 @@ hr:
     new_user_added: "%{user_email_or_name} bit će dodan/a u grupu kad otvori Loomio račun."
     member_removed: "Članstvo maknuto."
     membership_approved: "Članstvo odobreno."
-    membership_request_canceled: "Zahtjev za članstvo poništen."
+    membership_request_canceled: "Zahtjev za članstvom poništen."
     membership_request_ignored: "Zahtjev za članstvom ignoriran."
     settings_updated: "Postavke ažurirane."
     user_made_admin: "%{which_user} postao je koordinator"
