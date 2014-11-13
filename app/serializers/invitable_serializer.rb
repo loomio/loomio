@@ -1,15 +1,12 @@
 class InvitableSerializer < ActiveModel::Serializer
-  attributes :name,
-             :is_loomio_member,
+  attributes :id,
+             :type,
+             :name,
              :subtitle,
-             :image,
-             :recipients
+             :image
 
-  def is_loomio_member
-    case object
-    when Group, User then true
-    when Contact then false
-    end
+  def type
+    object.class.to_s
   end
 
   def subtitle
@@ -25,13 +22,6 @@ class InvitableSerializer < ActiveModel::Serializer
     when Group   then object.logo.try(:url, :original, false)
     when Contact then "http://placehold.it/40x40"
     when User    then object.avatar_url
-    end
-  end
-
-  def recipients
-    case object
-    when Group then object.members.map(&:email)
-    when Contact, User then [object.email]
     end
   end
 
