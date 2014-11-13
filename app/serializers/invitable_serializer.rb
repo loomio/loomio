@@ -13,7 +13,7 @@ class InvitableSerializer < ActiveModel::Serializer
     case object
     when Group   then "Add all members (#{object.members.count})"
     when Contact then "<#{object.email}>"
-    when User    then "I'm a user!"
+    when User    then "@#{object.username}"
     end
   end           
 
