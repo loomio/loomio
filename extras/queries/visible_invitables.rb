@@ -16,21 +16,24 @@ class Queries::VisibleInvitables < Delegator
   end
 
   def contacts
-    @user.contacts.where("name ilike '%#{@query}%' or email ilike '%#{@query}%'")
+    @user.contacts.where("name ilike #{search_term} or email ilike #{search_term}")
                   .limit(@limit)
   end
 
   def groups
-    @user.groups.where("name ilike '%#{@query}%'")
+    @user.groups.where("name ilike #{search_term}")
                 .where('groups.id != ?', @group.id)
                 .limit(@limit)
   end
 
   def visible_members
-    @user.relations.where("users.name ilike '%#{@query}%' or users.username ilike '%#{@query}%'")
-                   .where('groups.id != ?', @group.id)
-                   .uniq
-                   .limit(@limit)
+    Queries::VisibleMembers.new(user: @user, group: @group, query: @query, limit: @limit)
+  end
+
+  private
+
+  def search_term
+    @like_term ||= "'%#{@query}%'"
   end
 
 end

@@ -7,6 +7,7 @@ describe API::InvitablesController do
   let(:contact_email_biff) { create :contact, user: user, email: "biff@wark.com" }
   let(:user_named_biff) { create :user, name: "Biff Bones" }
   let(:user_last_named_biff) { create :user, name: "Bones Biff" }
+  let(:same_group_biff) { create :user, name: "Biff Bomb" }
   let(:user_username_biff) { create :user, username: 'biffcake' }
   let(:user_named_bang) { create :user, name: "Bang Whamfist" }
   let(:alien_named_biff) { create :user, name: "Biff Beef" }
@@ -18,7 +19,7 @@ describe API::InvitablesController do
   before do
     stub_request(:post, "http://localhost:9292/faye").to_return(status: 200)
     group.admins << user
-    group.users  << user_named_biff
+    group.users << same_group_biff
     group_named_biff.users << [user, user_named_biff, user_named_bang, user_last_named_biff, user_username_biff]
     group_named_bang.users << user
     sign_in user
@@ -79,7 +80,15 @@ describe API::InvitablesController do
         names = invitation_names_from response
         expect(names).to     include user_username_biff.name
         expect(names).to_not include user_named_bang.name
-      end       
+      end 
+
+      it "does not returns users from the same group" do
+        same_group_biff
+        get :index, group_id: group.id, q: 'biff', format: :json
+
+        names = invitation_names_from response
+        expect(names).to_not include same_group_biff.name
+      end      
     end
 
     context 'failure' do
