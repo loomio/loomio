@@ -4,7 +4,7 @@ class API::InvitationsController < API::RestfulController
     @group = Group.find(params[:group_id])
     authorize! :invite_people, @group
 
-    parse_invitations
+    @invitations = parse_invitations
 
     MembershipService.add_users_to_group membership_params
     InvitationService.invite_to_group    invitation_params
