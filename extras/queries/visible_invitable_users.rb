@@ -17,12 +17,12 @@ class Queries::VisibleInvitableUsers < Delegator
   private
 
   def visible_users_filtered
-    User.where(id: visible_user_ids)
+    User.where(id: visible_member_ids)
         .where("name ilike #{search_term} or username ilike #{search_term}")
         .limit(@limit)
   end
 
-  def visible_user_ids
+  def visible_member_ids
     @visible_member_ids ||= @user.groups.flat_map { |g| g.member_ids }
                                         .reject   { |id| group_member_ids.include? id }
                                         .uniq
