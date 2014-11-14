@@ -15,26 +15,35 @@ class API::InvitationsController < API::RestfulController
   private
 
   def parse_invitations
-    @user_ids, @contact_ids = [],[]
+    @user_ids, @contact_ids, @new_emails = [],[],[]
     params[:invitations].each do |invitation|
       case invitation[:type]
       when 'User'    then @user_ids    << invitation[:id]
       when 'Group'   then @user_ids    << Group.find(invitation[:id]).members.pluck(:id)
       when 'Contact' then @contact_ids << invitation[:id]
+      when 'Email'   then @new_emails  << invitation[:email]
       end
     end
   end
 
   def membership_params
-    @membership_params ||= common_params.merge users: User.find(@user_ids.flatten)
+    @membership_params ||= common_params.merge users: new_members
   end
 
   def invitation_params
-    @invitation_params ||= common_params.merge recipient_emails: Contact.find(@contact_ids).map(&:email)
+    @invitation_params ||= common_params.merge recipient_emails: new_invitations
   end
 
   def common_params
     @common_params ||= { group: @group, inviter: current_user, message: params[:invite_message] }
+  end
+
+  def new_members
+    User.find(@user_ids.flatten)
+  end
+
+  def new_invitations
+    Contact.where(id: @contact_ids).pluck(:email) + @new_emails
   end
 
 end

@@ -39,6 +39,13 @@ describe API::InvitationsController do
         expect(assigns :contact_ids).to include contact.id
       end
 
+      it 'creates an invitation email for a new email address' do
+        expect(InvitationService).to receive(:invite_to_group)
+        invitable = { type: 'Email', email: "biff@enspiral.org" }
+        post :create, group_id: group.id, invitations: [invitable], invite_message: 'An email message', format: :json
+        expect(assigns :new_emails).to include invitable[:email]
+      end
+
     end
 
     context 'failure' do
