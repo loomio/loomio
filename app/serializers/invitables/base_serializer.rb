@@ -1,4 +1,4 @@
-class InvitableSerializer < ActiveModel::Serializer
+class Invitables::BaseSerializer < ActiveModel::Serializer
   attributes :id,
              :type,
              :name,
@@ -10,6 +10,7 @@ class InvitableSerializer < ActiveModel::Serializer
   end
 
   def subtitle
+    raise NotImplementedError.new
     case object
     when Group   then "Add all members (#{object.members.count})"
     when Contact then "<#{object.email}>"
@@ -18,6 +19,7 @@ class InvitableSerializer < ActiveModel::Serializer
   end           
 
   def image
+    raise NotImplementedError.new
     case object
     when Group   then object.logo.try(:url, :original, false)
     when Contact then "http://placehold.it/40x40"
