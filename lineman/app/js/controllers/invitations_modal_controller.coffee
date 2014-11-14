@@ -18,7 +18,13 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
 
   $scope.getInvitables = (fragment) ->
     InvitableService.fetchByNameFragment fragment, $scope.group.id, (invitables) ->
-      invitables
+      invitables.concat $scope.currentEmailInput()
+
+  $scope.currentEmailInput = ->
+    if angular.element('#invitable-email').hasClass('ng-valid-email')
+      [{ name: $scope.fragment, type: 'Email', email: $scope.fragment }]
+    else
+      []
 
   $scope.addInvitation = (invitation) ->
     $scope.fragment = ''
