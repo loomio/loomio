@@ -4,7 +4,6 @@ class Queries::VisibleMemberships < Delegator
     @user, @group, @query, @limit = user, group, query, limit
     @relation = @group.memberships.joins(:user)
                       .where("users.name ilike #{search_term} or users.username ilike #{search_term}")
-                      .where("users.id != ?", user.id)
                       .limit(limit)
     super @relation
   end
