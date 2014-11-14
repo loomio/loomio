@@ -3,7 +3,7 @@ class Queries::VisibleInvitables < Delegator
   def initialize(query: nil, group: nil, user: nil, limit: nil)
     @user, @group, @query, @limit = user, group, query, limit
 
-    @relation = (groups + contacts + visible_members)
+    @relation = (contacts + groups + users)
     super @relation
   end
 
@@ -14,6 +14,8 @@ class Queries::VisibleInvitables < Delegator
   def __setobj__(obj)
     @relation = obj
   end
+
+  private
 
   def contacts
     @user.contacts.where("name ilike #{search_term} or email ilike #{search_term}")
@@ -26,14 +28,12 @@ class Queries::VisibleInvitables < Delegator
                 .limit(@limit)
   end
 
-  def visible_members
-    Queries::VisibleMembers.new(user: @user, group: @group, query: @query, limit: @limit)
+  def users
+    Queries::VisibleInvitableUsers.new(user: @user, group: @group, query: @query, limit: @limit)
   end
 
-  private
-
   def search_term
-    @like_term ||= "'%#{@query}%'"
+    @search_term ||= "'%#{@query}%'"
   end
 
 end

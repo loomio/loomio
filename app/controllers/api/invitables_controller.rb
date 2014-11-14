@@ -7,7 +7,7 @@ class API::InvitablesController < API::RestfulController
     @invitables = Queries::VisibleInvitables.new(query: params[:q],
                                                  group: @group,
                                                  user: current_user,
-                                                 limit: 10)
+                                                 limit: 5)
     respond_with_collection each_serializer: InvitableSerializer
   end
 
