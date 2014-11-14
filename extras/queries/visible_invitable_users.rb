@@ -1,8 +1,8 @@
-class Queries::VisibleMembers < Delegator
+class Queries::VisibleInvitableUsers < Delegator
 
   def initialize(user: nil, group: nil, query: nil, limit: nil)
     @user, @group, @query, @limit = user, group, query, limit
-    @relation = visible_members_filtered
+    @relation = visible_users_filtered
     super @relation
   end
 
@@ -16,13 +16,13 @@ class Queries::VisibleMembers < Delegator
 
   private
 
-  def visible_members_filtered
-    User.where(id: visible_member_ids)
+  def visible_users_filtered
+    User.where(id: visible_user_ids)
         .where("name ilike #{search_term} or username ilike #{search_term}")
         .limit(@limit)
   end
 
-  def visible_member_ids
+  def visible_user_ids
     @visible_member_ids ||= @user.groups.flat_map { |g| g.member_ids }
                                         .reject   { |id| group_member_ids.include? id }
                                         .uniq
