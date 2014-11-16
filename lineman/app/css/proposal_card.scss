@@ -1,6 +1,11 @@
+
 .proposal-card {
   padding: 15px;
   background-color: #fff;
+  h2 {
+    @include fontHelveticaBold;
+    @include fontLarge;
+  }
 
   h3 {
     @include fontHelveticaBold;
@@ -11,10 +16,6 @@
 
 .proposal-card-started-by {
   @include metaText;
-}
-
-.proposal-card {
-  border-top: 1px solid #ccc;
 }
 
 .proposal-card-body {

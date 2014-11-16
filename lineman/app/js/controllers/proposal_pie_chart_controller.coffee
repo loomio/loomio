@@ -21,8 +21,5 @@ angular.module('loomioApp').controller 'ProposalPieChartController', ($scope) ->
     $scope.pieChartData[2].value = counts.no
     $scope.pieChartData[3].value = counts.block
 
-  refreshPieChartData()
-
-  # might be better to scope this down to newVoteOnProposal, id
-  $scope.$on 'newVote', ->
+  $scope.$watch 'proposal.voteCounts', ->
     refreshPieChartData()

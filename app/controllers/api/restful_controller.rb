@@ -31,7 +31,7 @@ class API::RestfulController < API::BaseController
     load_resource
     service.destroy({resource_symbol => resource,
                      actor: current_user})
-    head :ok
+    render json: {success: 'success'}
   end
 
   private
