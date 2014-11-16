@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'VoteModel', (RecordStoreService, $sanitize)
     constructor: (data = {}) ->
       @id = data.id
       @authorId = data.author_id
-      @proposalId = data.motion_id
+      @proposalId = data.proposal_id
       @position = data.position
       @statement = data.statement
       @createdAt = data.created_at

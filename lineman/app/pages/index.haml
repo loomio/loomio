@@ -13,27 +13,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   %body
-    %header#header
-      %nav.navbar.navbar-default.navbar-fixed-top{role: 'nagivation'}
-        .container
-          .navbar-header.loomio-nav
-            .navbar-brand
-              .loomio-nav-logo
-
-          .collapse.navbar-collapse.loomio-nav
-            %ul.nav.navbar-nav
-              %li{dropdown: '', is-open: 'inboxIsOpen'}
-                %a.navbar-btn.dropdown-toggle{ng-click: 'toggleInbox()'}
-                  %i.fa.fa-lg.fa-fw.fa-inbox
-                  %span.hide Inbox
-                .dropdown-menu{role: 'menu'}
-                  %inbox
-              %li
-                %a.navbar-btn
-                  %i.fa.fa-lg.fa-fw.fa-search
-              %li
-                %a.navbar-btn
-                  %i.fa.fa-lg.fa-fw.fa-users
+    %navbar
 
     %main{ng_view: ''}
 

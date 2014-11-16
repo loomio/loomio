@@ -1,5 +1,8 @@
 %form{ng-submit: 'submit()'}
   .modal-header
+    %button{type: 'button', class: 'close', ng-click: 'cancel()'}
+      %span{aria-hidden: true} &times;
+      %span.sr-only{translate: 'common.action.cancel'}
     %h1{translate: 'proposal_form.start_a_proposal'}
 
   .modal-body
