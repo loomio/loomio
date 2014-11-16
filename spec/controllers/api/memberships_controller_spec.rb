@@ -20,6 +20,21 @@ describe API::MembershipsController do
     sign_in user
   end
 
+  describe 'index' do 
+    context 'success' do
+      it 'returns users filtered by group' do
+        get :index, group_id: group.id, format: :json
+        json = JSON.parse(response.body)
+        expect(json.keys).to include *(%w[users memberships groups])
+        users = json['users'].map { |c| c['id'] }
+        groups = json['groups'].map { |g| g['id'] }
+        expect(users).to include user_named_biff.id
+        expect(users).to_not include alien_named_biff.id
+        expect(groups).to include group.id
+      end
+    end
+  end
+
   describe 'autocomplete' do
     context 'success' do
       it 'returns users filtered by query' do
