@@ -290,9 +290,8 @@ class User < ActiveRecord::Base
     I18n.t(:inactive_html, path_to_contact: '/contact').html_safe
   end
 
-  def avatar_url(size=nil, kind=nil)
+  def avatar_url(size=nil)
     size = size ? size.to_sym : :medium
-    kind = avatar_kind if kind.nil?
     case size
     when :small
       pixels = User::SMALL_IMAGE
@@ -305,9 +304,10 @@ class User < ActiveRecord::Base
     else
       pixels = User::SMALL_IMAGE
     end
-    if kind == "gravatar"
+
+    if avatar_kind == "gravatar"
       gravatar_url(:size => pixels)
-    elsif kind == "uploaded"
+    else
       uploaded_avatar.url(size)
     end
   end
