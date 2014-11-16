@@ -1,10 +1,4 @@
 class Memos::CommentUpdated < Memo
-  def self.publish!(comment)
-    memo = new(comment)
-    memo.publish!
-    memo
-  end
-
   def initialize(comment)
     @comment = comment
   end
