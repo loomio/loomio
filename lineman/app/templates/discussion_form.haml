@@ -1,0 +1,23 @@
+%form{name: 'discussionForm', ng_submit: 'submit()'}
+  .modal-header
+    %button{type: 'button', class: 'close', ng-click: 'cancel()'}
+      %span{aria-hidden: true} &times;
+      %span.sr-only{translate: 'common.action.cancel'}
+    %h1.modal-title{translate: 'discussion_form.new_discussion_title', ng-if: 'discussion.isNew()'}
+    %h1.modal-title{translate: 'discussion_form.edit_discussion_title', ng-unless: 'discussion.isNew()'}
+
+  .modal-body
+    .form-group
+      %label{for: 'discussion-title-field', translate: 'discussion_form.title_label'}
+      %input#discussion-title-field.form-control{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: 'discussion.title', ng-required: 'true'}
+
+    .form-group
+      %label{for: 'discussion-context-field', translate: 'discussion_form.context_label'}
+      %textarea#discussion-context-field.form-control{ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
+
+    .form-group
+      privacy here
+
+  .modal-footer
+    %button.btn.btn-primary{type: 'submit', translate: 'proposal_form.start_proposal'}
+    %button.btn.btn-warning{ng-click: 'cancel($event)', translate: 'common.action.cancel'}
