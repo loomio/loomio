@@ -1,21 +1,17 @@
 %header#header
-  %nav.navbar.navbar-default.navbar-fixed-top{role: 'nagivation'}
-    .container
-      .navbar-header.loomio-nav
-        .navbar-brand
-          .loomio-nav-logo
-
-      .collapse.navbar-collapse.loomio-nav
-        %ul.nav.navbar-nav
-          %li{dropdown: '', on-toggle: 'toggled(open)'}
-            %a.navbar-btn.dropdown-toggle
-              %i.fa.fa-lg.fa-fw.fa-inbox
-              %span.hide Inbox
-            .dropdown-menu{role: 'menu'}
-              %inbox{ng-if: 'inboxIsOpen'}
-          %li
-            %a.navbar-btn
-              %i.fa.fa-lg.fa-fw.fa-search
-          %li
-            %a.navbar-btn
-              %i.fa.fa-lg.fa-fw.fa-users
+  .container
+    %nav.loomio-nav{role: 'navigation'}
+      .loomio-nav-logo
+      %ul.loomio-nav-items
+        %li{dropdown: '', on-toggle: 'toggled(open)'}
+          %a.navbar-btn.dropdown-toggle
+            %i.fa.fa-lg.fa-fw.fa-inbox
+            %span.hide Inbox
+          .dropdown-menu{role: 'menu'}
+            %inbox{ng-if: 'inboxIsOpen'}
+        %li
+          %a.navbar-btn
+            %i.fa.fa-lg.fa-fw.fa-search
+        %li
+          %a.navbar-btn
+            %i.fa.fa-lg.fa-fw.fa-users

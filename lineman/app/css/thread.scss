@@ -1,6 +1,6 @@
-
 .thread-container {
   border: 1px solid $thread-border-color;
+  max-width: $thread-max-width;
 }
 
 .thread-discussion {
