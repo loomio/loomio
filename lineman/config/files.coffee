@@ -4,7 +4,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
 
   css:
     app: ['app/css/main.css']
-    vendor: ['vendor/bower_components/font-awesome/css/font-awesome.css',
+    vendor: ['vendor/bower_components/components-font-awesome/css/font-awesome.css',
              'vendor/bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css']
 
   js:
@@ -33,5 +33,10 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
     app: ["app/js/app.js"
           "app/js/**/*.js"]
 
-  webfonts:
-    root: 'webfonts'
+  #webfonts:
+    #vendor: ['vendor/bower_components/components-font-awesome/fonts/FontAwesome.otf',
+             #'vendor/bower_components/components-font-awesome/fonts/fontawesome-webfont.eot',
+             #'vendor/bower_components/components-font-awesome/fonts/fontawesome-webfont.svg',
+             #'vendor/bower_components/components-font-awesome/fonts/fontawesome-webfont.ttf',
+             #'vendor/bower_components/components-font-awesome/fonts/fontawesome-webfont.woff']
+    #root: 'fonts'
