@@ -4,7 +4,7 @@ class GroupSerializer < ActiveModel::Serializer
              :key,
              :name,
              :created_at,
-             :updated_at,
+             :description,
              :members_can_edit_comments,
              :members_can_raise_motions,
              :members_can_vote
