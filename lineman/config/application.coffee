@@ -24,7 +24,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
     dist: ['pages:dev']
 
   prependTasks:
-    dist: ["ngannotate"] # ng-annotate should run in dist only
+    dist: ["ngAnnotate"] # ng-annotate should run in dist only
     common: ["haml", "ngtemplates"] # ngtemplates runs in dist and dev
 
   # swaps concat_sourcemap in place of vanilla concat
@@ -54,20 +54,21 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       ]
 
   copy:
-    common:
+    dev:
       files:
         [
           expand: true
-          cwd: 'vendor/bower_components/font-awesome/fonts/'
-          src: ['*']
+          cwd: 'vendor/bower_components/components-font-awesome/fonts'
+          src: ['*.*']
           dest: 'generated/fonts'
-          flatten: true
-        ,
+        ]
+    dist:
+      files:
+        [
           expand: true
-          cwd: 'vendor/bower_components/sass-bootstrap/fonts'
-          src: ['*']
+          cwd: 'vendor/bower_components/components-font-awesome/fonts'
+          src: ['*.*']
           dest: 'generated/fonts'
-          flatten: true
         ]
 
   sass:
@@ -85,7 +86,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       dest: "generated/angular/template-cache.js"
 
   # configuration for grunt-ngmin, this happens _after_ concat once, which is the ngmin ideal :)
-  ngannotate:
+  ngAnnotate:
     js:
       src: "<%= files.js.concatenated %>"
       dest: "<%= files.js.concatenated %>"
@@ -143,4 +144,4 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
 
     webfonts:
       files: "<%= files.webfonts.vendor %>"
-      tasks: ["webfonts:dev"]
+      tasks: ["copy"]
