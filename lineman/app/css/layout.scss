@@ -6,14 +6,44 @@ $navbarGrey: #CCC;
   border-radius: 5px;
 }
 
+#header{
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  background: white;
+  height: 44px;
+  border-bottom: 1px solid $thread-border-color;
+}
+
+main{
+  padding-top: 70px;
+  z-index: 0;
+}
+
 .loomio-nav {
   color: $navbarGrey;
-  line-height: 1em;
+  margin-top: 7px;
+}
+
+.loomio-nav-items{
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.loomio-nav-items li{
+  float: left;
+}
+
+.loomio-nav-items i{
+  font-size: 40px;
 }
 
 .loomio-nav-logo {
   width: 30px;
   height: 30px;
+  float: left;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(/img/lbow_square_30.png);
@@ -69,5 +99,3 @@ $navbarGrey: #CCC;
   @include fontHelvetica;
   @include fontSmall;
 }
-
-body { padding-top: 70px; }
