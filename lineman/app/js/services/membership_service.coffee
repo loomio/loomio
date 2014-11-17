@@ -4,3 +4,6 @@ angular.module('loomioApp').factory 'MembershipService', ($http, RestfulService)
 
     fetchByNameFragment: (fragment, groupId, success, failure) ->
       @fetch({q: fragment, group_id: groupId}, success, failure, 'autocomplete')
+
+    fetchByGroup: (groupId, success, failure) ->
+      @fetch({group_id: groupId}, success, failure)

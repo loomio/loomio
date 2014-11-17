@@ -25,6 +25,13 @@ FactoryGirl.define do
     end
   end
 
+  factory :contact do
+    user
+    sequence(:email) { Faker::Internet.email }
+    sequence(:name) { Faker::Name.name }
+    source 'gmail'
+  end
+
   factory :group do
     sequence(:name) { Faker::Name.name }
     description 'A description for this group'

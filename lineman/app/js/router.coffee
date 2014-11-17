@@ -13,6 +13,14 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
           promise
       currentUser: ($http, UserAuthService, UserModel) ->
         UserAuthService.fetchCurrentUser()
+  ).when('/groups/:id',
+    templateUrl: 'generated/templates/group.html',
+    controller: 'GroupController',
+    resolve:
+      group: ($route, GroupService) ->
+        GroupService.fetchByKey($route.current.params.id)
+      currentUser: ($http, UserAuthService, UserModel) ->
+        UserAuthService.fetchCurrentUser()
   ).when('/users/sign_in',
     templateUrl: 'generated/templates/login.html'
     controller: 'SessionController'

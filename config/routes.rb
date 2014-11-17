@@ -30,9 +30,14 @@ Loomio::Application.routes.draw do
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resource :inbox, only: :show, controller: 'inbox'
-    resources :memberships, only: [] do
+    resources :groups, only: :show do
+      get :subgroups, on: :collection
+    end
+    resources :memberships, only: [:index] do
       get :autocomplete, on: :collection
     end
+    resources :invitables, only: :index
+    resources :invitations, only: :create
     resources :events, only: :index
     resources :discussions, only: [:show, :index, :create, :update, :destroy]
     resources :motions,     only: [       :index, :create, :update], path: :proposals
@@ -59,7 +64,9 @@ Loomio::Application.routes.draw do
     devise_scope :user do
       resources :sessions, only: [:create, :destroy]
     end
-    post '/attachments/credentials', to: 'attachments#credentials'
+    post '/attachments/credentials',     to: 'attachments#credentials'
+    get  '/contacts/import',             to: 'contacts#import'
+    get  '/contacts/:importer/callback', to: 'contacts#callback'
   end
 
   get "/explore", to: 'explore#index', as: :explore
