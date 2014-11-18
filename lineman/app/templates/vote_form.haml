@@ -24,11 +24,11 @@
     %h3{translate: 'proposal_card.your_position'}
 
     %a.change-position.pull-right{ng-click: 'changePosition()', href: '#'}
-      %span{translate: 'common.action.edit'}
+      %span{translate: 'common.action.edit'}>
       %i.fa.fa-pencil
 
     .current-position.media
-      .pull-left.your-position-icon{class: 'your-position-icon-{{lastVote().position}}'}
+      .media-left.your-position-icon{class: 'your-position-icon-{{lastVote().position}}'}
       .media-body
         %span.author-statement
           {{ lastVote().statement }}

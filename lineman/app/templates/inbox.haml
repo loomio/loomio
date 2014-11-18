@@ -11,7 +11,7 @@
       .drawer-item-discussion-title
         {{discussion.title}}
       .drawer-item-proposal.media{ng-if: 'discussion.activeProposal()', ng-init: 'proposal = discussion.activeProposal()'}
-        .pull-left
+        .media-left
           %mini_proposal_pie_chart{proposal: 'proposal'}
         .drawer-item-proposal-details.media-body
           {{ proposal.name }}
@@ -26,7 +26,7 @@
       -#Mon
     -#.drawer-item-discussion-title Where should we go on vactation this summer?
     -#.drawer-item-proposal.media
-      -#.pull-left
+      -#.media-left
         -#%i.fa.fa-fw.fa-2x.fa-star
       -#.drawer-item-proposal-details.media-body
         -#Weekend trip to Coromandel Peninsula with mum, dad and the cool kids.

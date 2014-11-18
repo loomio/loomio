@@ -1,21 +1,11 @@
 
 .proposal-card {
-  padding: 15px;
   background-color: #fff;
-  h2 {
-    @include fontHelveticaBold;
-    @include fontLarge;
-  }
-
-  h3 {
-    @include fontHelveticaBold;
-    @include fontMedium;
-    color: $meta-text-color;
-  }
 }
 
 .proposal-card-started-by {
   @include metaText;
+  margin-bottom: 5px;
 }
 
 .proposal-card-body {
@@ -51,6 +41,7 @@
   color: $meta-text-color;
   @include fontMedium;
   @include fontHelvetica;
+  margin-top: 15px;
 }
 
 .pie-chart-legend-item{

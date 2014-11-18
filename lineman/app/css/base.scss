@@ -12,3 +12,15 @@ h1 {
   margin: 0;
   color: #333333;
 }
+
+h2 {
+  @include fontHelveticaBold;
+  @include fontLarge;
+  margin: 0;
+}
+
+h3 {
+  @include fontHelveticaBold;
+  @include fontMedium;
+  color: $meta-text-color;
+}
