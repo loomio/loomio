@@ -32,24 +32,23 @@
 }
 
 .your-position-icon {
-  display: inline-block;
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   background-repeat: no-repeat;
 }
 
 .your-position-icon-yes {
-  background-image: url(/img/green_thumb_icon_60.png);
+  background-image: url(/img/green_thumb_30.png);
 }
 
 .your-position-icon-no {
-  background-image: url(/img/pink_thumb_icon_60.png);
+  background-image: url(/img/pink_thumb_30.png);
 }
 
 .your-position-icon-abstain {
-  background-image: url(/img/yellow_thumb_icon_60.png);
+  background-image: url(/img/yellow_thumb_30.png);
 }
 
 .your-position-icon-block {
-  background-image: url(/img/red_flag_icon_60.png);
+  background-image: url(/img/red_flag_30.png);
 }

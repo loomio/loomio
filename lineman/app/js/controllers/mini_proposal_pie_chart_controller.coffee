@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProposalPieChartController', ($scope) ->
+angular.module('loomioApp').controller 'MiniProposalPieChartController', ($scope) ->
 
   $scope.pieChartData = [
     { value : 0, color : "#90D490" },
@@ -9,8 +9,7 @@ angular.module('loomioApp').controller 'ProposalPieChartController', ($scope) ->
 
   $scope.pieChartOptions =
     animation: false
-    segmentShowStroke: true
-    segmentStrokeColor: "#fff"
+    segmentShowStroke: false
     responsive: false
 
   refreshPieChartData = ->

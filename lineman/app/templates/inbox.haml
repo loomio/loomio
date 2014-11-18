@@ -10,7 +10,7 @@
         .time-ago{timestamp: 'discussion.lastActivityAt'}
       .drawer-item-discussion-title
         {{discussion.title}}
-      .drawer-item-proposal.media{ng-if: 'discussion.activeProposal()', ng-init: 'proposal = discussion.activeProposal()'}
+      .media.drawer-item-proposal{ng-if: 'discussion.activeProposal()', ng-init: 'proposal = discussion.activeProposal()'}
         .media-left
           %mini_proposal_pie_chart{proposal: 'proposal'}
         .drawer-item-proposal-details.media-body
@@ -21,18 +21,3 @@
         .fa.fa-star
       .drawer-item-group-name
         {{::discussion.group().fullName()}}
-  -#%li.drawer-item
-    -#.brief-time.pull-right
-      -#Mon
-    -#.drawer-item-discussion-title Where should we go on vactation this summer?
-    -#.drawer-item-proposal.media
-      -#.media-left
-        -#%i.fa.fa-fw.fa-2x.fa-star
-      -#.drawer-item-proposal-details.media-body
-        -#Weekend trip to Coromandel Peninsula with mum, dad and the cool kids.
-        -#.time-left
-          -#3 hours left
-    -#.pull-right
-      -#.fa.fa-star
-    -#.drawer-item-group-name Cool Kids Travel Club
-
