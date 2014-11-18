@@ -272,7 +272,6 @@ Loomio::Application.routes.draw do
   get '/deactivation_instructions' => 'users#deactivation_instructions'
   get '/about_deactivation' => 'users#about_deactivation'
 
-  match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement', via: [:get, :post]
   post '/translate/:model/:id', to: 'translations#create', as: :translate
 
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}

@@ -48,6 +48,7 @@ nl-NL:
     ideals:
       community:
         header: 'Samenwerking gedreven door de gemeenschap'
+        desc: 'Loomio wordt gemaakt door een coöperatie in eigendom van de medewerkers. We zijn een sociale onderneming die hard werkt aan het maximaliseren van positieve sociale impact, niet winst.'
       independent:
         header: 'Onafhankelijk en neutraal'
         desc: 'We bieden een mogelijkheid om samen te komen voor welke groep dan ook, onafhankelijk van politieke- of bedrijfsbelangen. We zullen je gegevens nooit verkopen.'
