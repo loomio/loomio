@@ -1,10 +1,8 @@
 class PermittedParams < Struct.new(:params, :user)
 
-  kinds = %w[user vote subscription motion proposal membership membership_request
-   invitation group_request group discussion comment announcement_dismissal
-   attachment contact_message theme user_deactivation_response]
-
-  kinds.each do |kind|
+  %w[user vote subscription motion membership_request
+   invitation group_request group discussion comment
+   attachment contact_message theme user_deactivation_response].each do |kind|
     define_method(kind) do
       permitted_attributes = self.send("#{kind}_attributes")
       params.require(kind).permit(*permitted_attributes)
@@ -67,10 +65,6 @@ class PermittedParams < Struct.new(:params, :user)
     [:body, :new_attachment_ids, :uses_markdown, :discussion_id, :parent_id, {new_attachment_ids: []}]
   end
 
-  def announcement_dismissal_attributes
-    [:announcement_id]
-  end
-
   def attachment_attributes
     [:filename, :location, :filesize, :redirect]
   end
@@ -82,5 +76,4 @@ class PermittedParams < Struct.new(:params, :user)
   def user_deactivation_response_attributes
     [:body]
   end
-
 end

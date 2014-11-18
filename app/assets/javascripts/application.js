@@ -35,7 +35,6 @@
 //= require notifications
 //= require votes
 //= require tooltips
-//= require announcements
 //= require autodetect_time_zone
 //= require inbox
 //= require searches

@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
   def subdomain
-    request.subdomain.gsub(/^www./, '')
+    request.subdomain.gsub(/^#{ENV['DEFAULT_SUBDOMAIN']}./, '')
   end
 
   def increment_measurement

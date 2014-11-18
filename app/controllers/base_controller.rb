@@ -6,7 +6,6 @@ class BaseController < ApplicationController
 
   before_filter :check_for_omniauth_authentication,
                 :check_for_invitation,
-                #:load_announcements,
                 :initialize_search_form,
                 :ensure_user_name_present,
                 :set_time_zone_from_javascript, unless: :ajax_request?
@@ -32,12 +31,6 @@ class BaseController < ApplicationController
   def initialize_search_form
     @search_form = SearchForm.new(current_user)
   end
-
-  #def load_announcements
-    #if current_user and not request.xhr?
-      #@current_and_not_dismissed_announcements = Announcement.current_and_not_dismissed_by(current_user)
-    #end
-  #end
 
   def check_for_invitation
     if session[:invitation_token]
