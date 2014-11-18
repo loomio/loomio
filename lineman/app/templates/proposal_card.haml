@@ -8,11 +8,11 @@
   .proposal-card-description{btf-markdown: 'proposal.description' }
 
   .proposal-card-closing-at
-    %i.fa.fa-clock-o
+    %i.fa.fa-clock-o>
     %span.bump Closes {{proposal.closingAt | exactDateWithTime }}
 
   .pie-chart.media
-    .pie-chart-pie.pull-left
+    .pie-chart-pie.media-left
       %proposal_pie_chart{proposal: 'proposal', width: '100', height: '100'}
     .pie-chart-legend.media-body
       .pie-chart-legend-item{class: 'pie-chart-legend-item-{{position}}', ng-repeat: 'position in proposal.positions'}
@@ -28,7 +28,7 @@
 
     -#.proposal-card-vote.media{ng_repeat: 'vote in curatedVotes()'}
     .proposal-card-vote.media{ng_repeat: 'vote in curatedVotes()'}
-      .pull-left.thread-event-vote-icon{class: 'thread-event-vote-icon-{{vote.position}}'}
+      .media-left.thread-event-vote-icon{class: 'thread-event-vote-icon-{{vote.position}}'}
       .media-body
-        %strong {{::vote.authorName()}}
+        %strong> {{::vote.authorName()}}
         %span.author-statement {{:: vote.statement }}

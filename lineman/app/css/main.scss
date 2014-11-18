@@ -45,6 +45,7 @@ $thread-max-width: 540px;
 @mixin metaText {
   color: $meta-text-color;
   @include fontSmall;
+  line-height: 20px;
 }
 
 

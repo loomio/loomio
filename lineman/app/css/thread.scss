@@ -9,17 +9,23 @@
 }
 
 .thread-proposals {
+  padding: 10px 15px 15px 15px;
   background-color: #fff;
-  border-top: 1px solid $thread-border-color;
-  h2 {
-    @include fontLarge;
-    @include fontHelveticaBold;
-  }
+}
+.thread-divider{
+  background-color: #fff;
+  margin: 0;
+  padding: 0 15px 10px 15px;
+  border-bottom: 1px solid $thread-border-color;
 }
 
+.media.thread-origin{
+  margin-top: 12px
+}
 .thread-origin {
   @include fontSmall;
   color: #777777;
+  margin-bottom: 10px;
 }
 
 .thread-origin-icon{}
@@ -27,7 +33,6 @@
 
 .thread-discussion-context {
 }
-
 .thread-events {
   padding: 15px;
   background-color: #F5F5F5;
@@ -45,10 +50,15 @@
   }
   color: $meta-text-color;
   margin-bottom: 5px;
-
+  .media-body{
+    vertical-align: middle;
+  }
   .avatar-initials{
     width: 30px;
     height: 30px;
+    background: $thread-border-color;
+    text-align: center;
+    line-height: 30px;
   }
   .avatar-image img{
     width: 30px;
@@ -74,6 +84,12 @@
   height: 30px;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.thread-event-proposal-icon{
+  width: 30px;
+  height: 30px;
+  background-image: url(/img/proposal_icon_30.png);
 }
 
 .thread-event-vote-icon-yes {

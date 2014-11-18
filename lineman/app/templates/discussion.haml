@@ -5,7 +5,7 @@
         .thread-discussion
           %h1 {{discussion.title}}
           .media.thread-origin
-            .pull-left.thread-origin-icon
+            .media-left.thread-origin-icon
               %img{src: 'http://placehold.it/30'}
             .media-body.thread-origin-details
               {{::discussion.group().fullName()}}
@@ -29,6 +29,7 @@
               %i.fa.fa-globe>
               %span{translate: 'common.state.public'}
 
+        %h3.thread-divider Proposals
         %proposals{discussion: 'discussion'}
 
         .thread-events{infinite-scroll: "getNextPage()", infinite-scroll-distance: 1, infinite-scroll-disabled: 'lastPage'}
