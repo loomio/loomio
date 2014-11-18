@@ -86,12 +86,6 @@ class User < ActiveRecord::Base
   has_many :votes, dependent: :destroy
   has_many :comment_votes, dependent: :destroy
 
-  has_many :announcement_dismissals, dependent: :destroy
-
-  has_many :dismissed_announcements,
-           through: :announcement_dismissals,
-           source: :announcement
-
   has_many :discussion_readers, dependent: :destroy
   has_many :motion_readers, dependent: :destroy
   has_many :omniauth_identities, dependent: :destroy
