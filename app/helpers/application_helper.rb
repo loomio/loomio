@@ -131,14 +131,6 @@ module ApplicationHelper
     end
   end
 
-  def render_announcements?
-    if user_signed_in?
-      not %w[group_requests group_setup].include? controller_name
-    else
-      false
-    end
-  end
-
   def navbar_contribute
     ENV["NAVBAR_CONTRIBUTE"] or "show"
   end
