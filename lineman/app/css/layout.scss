@@ -6,22 +6,56 @@ $navbarGrey: #CCC;
   border-radius: 5px;
 }
 
+
+#sidebar{
+  width: 320px;
+  float: left;
+}
+#sidebar .drawer{
+ height: 100%;
+ overflow: scroll;
+ position: fixed;
+ width: 320px;
+ background: white;
+ border-right: 1px solid $thread-border-color;
+}
 #header{
-  position: fixed;
-  width: 100%;
   z-index: 1000;
   background: white;
   height: 44px;
-  border-bottom: 1px solid $thread-border-color;
+  border-bottom: 1px solid #bbb;
+  box-shadow: 0 0 10px #aaa;
 }
-
+.open-sidebar #header{
+  position: fixed;
+  float: left;
+  margin-left: 320px;
+}
 main{
-  padding-top: 70px;
+  padding-top: 54px;
   z-index: 0;
+}
+.open-sidebar main{
+  width: 720px;
+  float: left;
+}
+.open-sidebar main .container{
+  padding-left: 330px;
 }
 
 .loomio-nav {
   margin-top: 7px;
+  position: relative;
+}
+
+.loomio-nav-dropdown{
+  top: 34px;
+  margin: 0 -10px;
+  min-width: 320px;
+  @media (min-width: $screen-xs-min){
+    margin: 0;
+    width: 320px;
+  }
 }
 
 .loomio-nav-items{
@@ -51,12 +85,7 @@ main{
   background-image: url(/img/lbow_square_30.png);
 }
 
-.loomio-nav-dropdown {
-
-}
-
 .drawer {
-  min-width: 320px;
   list-style-type: none;
   padding: 0;
   height: 600px;
@@ -76,6 +105,7 @@ main{
 }
 
 .drawer-item-proposal {
+  margin: 5px 0;
   .time-left {
     color: #FAA82C;
     @include fontHelvetica;
@@ -90,11 +120,12 @@ main{
   margin-bottom: 5px;
 }
 
-.drawer-item-propostal-details {
+a .drawer-item-proposal-details {
   color: $meta-text-color;
   @include fontHelvetica;
-  @include fontMedium;
+  @include fontSmall;
   margin-bottom: 5px;
+  line-height: 16px;
 }
 
 .drawer-item-group-name {

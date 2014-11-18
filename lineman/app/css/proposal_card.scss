@@ -26,7 +26,7 @@
 }
 
 .proposal-card-closing-at {
-
+  @include metaText;
 }
 
 .pie-chart {
@@ -38,10 +38,8 @@
   height: 120px;
 }
 .pie-chart-legend {
-  color: $meta-text-color;
-  @include fontMedium;
-  @include fontHelvetica;
-  margin-top: 15px;
+  @include metaText;
+  padding-top: 13px;
 }
 
 .pie-chart-legend-item{

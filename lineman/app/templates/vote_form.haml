@@ -28,7 +28,8 @@
       %i.fa.fa-pencil
 
     .current-position.media
-      .media-left.your-position-icon{class: 'your-position-icon-{{lastVote().position}}'}
+      .media-left
+        .your-position-icon{class: 'your-position-icon-{{lastVote().position}}'}
       .media-body
         %span.author-statement
           {{ lastVote().statement }}

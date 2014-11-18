@@ -50,13 +50,14 @@
   }
   color: $meta-text-color;
   margin-bottom: 5px;
-  .media-body{
+  .media-body, .media-left{
     vertical-align: middle;
   }
   .avatar-initials{
     width: 30px;
     height: 30px;
     background: $thread-border-color;
+    border: 1px solid #aaa;
     text-align: center;
     line-height: 30px;
   }
@@ -80,10 +81,9 @@
 }
 
 .thread-event-vote-icon {
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
   background-repeat: no-repeat;
-  background-position: center;
 }
 
 .thread-event-proposal-icon{

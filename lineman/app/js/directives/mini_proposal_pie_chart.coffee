@@ -3,5 +3,5 @@ angular.module('loomioApp').directive 'miniProposalPieChart', ->
   restrict: 'E'
   templateUrl: 'generated/templates/mini_proposal_pie_chart.html'
   replace: true
-  controller: 'ProposalPieChartController'
+  controller: 'MiniProposalPieChartController'
   link: (scope, element, attrs) ->
