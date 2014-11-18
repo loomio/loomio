@@ -29,7 +29,7 @@ class Event < ActiveRecord::Base
   end
 
   def publish_event
-    return if Rails.env.test?
+    return unless ENV['FAYE_ENABLED']
     if message_channel
       serializer = EventSerializer.new(self)
       puts "publishing to: #{message_channel}"
