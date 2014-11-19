@@ -1,7 +1,12 @@
-.discussions
+.group-page-discussions
   .discussion{ng_repeat: 'discussion in group.discussions()'}
     {{ discussion.title }}
   .discussions-show-more
-    %a{ng-hide: 'lastPage', ng-click: 'getNextPage()', href: '#'} {{ 'group.show_more' | translate }}
+    %a{ng-hide: 'lastPage', ng-click: 'getNextPage()', href: '#', translate: 'common.action.show_more'}
   .discussions-new-thread
-    %a {{ 'group.new_thread' | translate }}
+    .row
+      .col-xs-12.col-sm-6
+        %a.btn.btn-success.btn-block.btn-icon{ href: '#' }
+          %i.fa.fa-lg.fa-plus>
+          %span{translate: 'common.action.new_thread' }
+

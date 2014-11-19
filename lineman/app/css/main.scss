@@ -9,7 +9,7 @@ $loomio-orange: #F6A82B;
 /* let's come up with a good naming scheme for the greys once we lock them in*/
 $light-grey: #F5F5F5;
 
-$thread-max-width: 500px;
+$thread-max-width: 510px;
 $sidebar-width: 320px;
 $container-max-width: $thread-max-width;
 $expanded-container-max-width: $thread-max-width + $sidebar-width + 10px;
@@ -34,7 +34,6 @@ $expanded-container-max-width: $thread-max-width + $sidebar-width + 10px;
   line-height: 20px;
 }
 
-
 @mixin fontHelveticaBold {
   font-family: "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold",
     "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold', "Helvetica", "Tahoma",
@@ -57,6 +56,15 @@ $expanded-container-max-width: $thread-max-width + $sidebar-width + 10px;
   line-height: 20px;
 }
 
+@mixin card{
+  border: 1px solid $thread-border-color;
+  padding: 15px;
+  background: #fff;
+  margin-bottom: 10px;
+  h3 {
+    margin: 0 0 5px 0;
+  }
+}
 
 @import 'base';
 @import 'layout';
@@ -65,3 +73,4 @@ $expanded-container-max-width: $thread-max-width + $sidebar-width + 10px;
 @import 'proposal_pie_chart';
 @import 'vote_form';
 @import 'time_ago';
+@import 'group_page';

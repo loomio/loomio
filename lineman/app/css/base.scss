@@ -4,7 +4,6 @@ body {
   background-color: #f1f1f1;
 }
 
-
 h1 {
   @include fontHelveticaBold;
   @include fontGrande;
@@ -23,4 +22,8 @@ h3 {
   @include fontHelveticaBold;
   @include fontMedium;
   color: $meta-text-color;
+}
+
+.btn-icon{
+  text-align: left;
 }
