@@ -16,6 +16,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService, Base
 
     params: ->
       discussion:
+        group_id: @groupId
         discussion_id: @discussionId
         title: @title
         description: @description
