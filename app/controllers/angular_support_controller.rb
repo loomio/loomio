@@ -1,5 +1,5 @@
 class AngularSupportController < ApplicationController
-  before_filter :prevent_production_destruction
+  before_filter :prevent_production_destruction, except: :boot
 
   USER_PARAMS = {name: 'Patrick Swayze',
                  email: 'patrick_swayze@loomio.org',
