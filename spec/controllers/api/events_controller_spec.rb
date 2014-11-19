@@ -23,9 +23,9 @@ describe API::EventsController do
         get :index, discussion_id: discussion.id, format: :json
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[events])
-        events = json['events'].map { |v| v['id'] }
-        expect(events).to include @event.id
-        expect(events).to_not include @another_event.id
+        event_ids = json['events'].map { |v| v['id'] }
+        expect(event_ids).to include @event.id
+        expect(event_ids).to_not include @another_event.id
       end
     end
   end
