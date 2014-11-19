@@ -19,5 +19,6 @@
       privacy here
 
   .modal-footer
-    %button.btn.btn-primary{type: 'submit', translate: 'proposal_form.start_proposal'}
+    %button.btn.btn-primary{type: 'submit', translate: 'discussion_form.start_discussion_submit', ng-if: 'discussion.isNew()' }
+    %button.btn.btn-primary{type: 'submit', translate: 'discussion_form.edit_discussion_submit', ng-unless: 'discussion.isNew()' }
     %button.btn.btn-warning{ng-click: 'cancel($event)', translate: 'common.action.cancel'}

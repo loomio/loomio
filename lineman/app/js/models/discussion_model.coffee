@@ -1,15 +1,11 @@
-angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService) ->
-  class DiscussionModel
+angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService, BaseModel) ->
+  class DiscussionModel extends BaseModel
     constructor: (data = {}) ->
       @callcount = 0
       @id = data.id
       @key = data.key
       @authorId = data.author_id
       @groupId = data.group_id
-      #@commentIds = data.comment_ids
-      #@eventIds = data.event_ids
-      #@proposalIds = data.proposal_ids
-      #@activeProposalId = data.active_proposal_id
       @title = data.title
       @description = data.description
       @createdAt = data.created_at
@@ -17,6 +13,13 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService) ->
       @private = data.private
 
     plural: 'discussions'
+
+    params: ->
+      discussion:
+        discussion_id: @discussionId
+        title: @title
+        description: @description
+        private: @private
 
     author: ->
       RecordStoreService.get('users', @authorId)

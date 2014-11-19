@@ -43,13 +43,15 @@ en:
     details_placeholder: "Give enough detail so everyone knows exactly what it means to agree or disagree or whatever"
 
   discussion_form:
-    new_discussion_title: 'Start a thread'
-    edit_discussion_title: 'Edit discussion'
+    new_discussion_title: 'Start new thread'
+    edit_discussion_title: 'Edit thread'
     title_label: 'Title'
     title_placeholder: 'What is the topic you want to discuss?'
     context_label: 'Context'
     context_placeholder: 'Give enough background information for the group to have a productive discussion. This can be updated as the discussion progresses'
     privacy_label: 'Privacy'
+    new_discussion_submit: 'Start thread'
+    edit_discussion_submit: 'Edit thread'
 
   proposal_card:
     your_position: 'Your Position'
