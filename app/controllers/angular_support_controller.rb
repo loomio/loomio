@@ -1,5 +1,5 @@
 class AngularSupportController < ApplicationController
-  before_filter :prevent_production_destruction, except: :boot
+  before_filter :prevent_production_destruction
 
   USER_PARAMS = {name: 'Patrick Swayze',
                  email: 'patrick_swayze@loomio.org',
@@ -14,10 +14,6 @@ class AngularSupportController < ApplicationController
   DISCUSSION_TITLE = 'What star sign are you?'
 
   def connect_private_pub
-  end
-
-  def boot
-    render file: Rails.root.join('public', 'angular.html'), layout: false
   end
 
   def setup_for_add_comment
