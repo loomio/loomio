@@ -93,7 +93,7 @@ describe API::MotionsController do
           name
           description
           outcome
-          votes_count
+          activity_count
           did_not_votes_count
           created_at
           updated_at
