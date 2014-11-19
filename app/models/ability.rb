@@ -206,7 +206,7 @@ class Ability
     end
 
     can [:close, :edit_close_date], Motion do |motion|
-      motion.voting? && ((motion.author_id == user.id) || user_is_admin_of?(motion.discussion.group_id))
+      motion.persisted? && motion.voting? && ((motion.author_id == user.id) || user_is_admin_of?(motion.discussion.group_id))
     end
 
     can [:close], Motion do |motion|
