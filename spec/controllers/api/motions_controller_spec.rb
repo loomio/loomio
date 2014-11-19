@@ -31,17 +31,9 @@ describe API::MotionsController do
         get :index, discussion_id: discussion.id, format: :json
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[motions])
-        motions = json['motions'].map { |v| v['id'] }
-        expect(motions).to include motion.id
-        expect(motions).to_not include another_motion.id
-      end
-
-      it 'does not show motion not visible to the current user' do
-        cant_see_me = create :motion
-        get :index, format: :json
-        json = JSON.parse(response.body)
-        motion = json['motions'].map { |v| v['id'] }
-        expect(motion).to_not include cant_see_me.id
+        motion_ids = json['motions'].map { |v| v['id'] }
+        expect(motion_ids).to include motion.id
+        expect(motion_ids).to_not include another_motion.id
       end
     end
   end
@@ -63,7 +55,7 @@ describe API::MotionsController do
 
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
-        expect { put :update, id: motion.id, motion: motion_params, format: :json }.to raise_error
+        expect { put :update, id: motion.id, motion: motion_params, format: :json }.to raise_error CanCan::AccessDenied
       end
 
       it "responds with validation errors when they exist" do
@@ -107,12 +99,12 @@ describe API::MotionsController do
     context 'failures' do
       it "responds with an error when there are unpermitted params" do
         motion_params[:dontmindme] = 'wild wooly byte virus'
-        expect { post :create, motion: motion_params, format: :json }.to raise_error 
+        expect { post :create, motion: motion_params, format: :json }.to raise_error ActionController::UnpermittedParameters
       end
 
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
-        expect { post :create, motion: motion_params, format: :json }.to raise_error
+        expect { post :create, motion: motion_params, format: :json }.to raise_error CanCan::AccessDenied
       end
 
       it "responds with validation errors when they exist" do
