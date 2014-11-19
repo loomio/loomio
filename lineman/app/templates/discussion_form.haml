@@ -15,8 +15,19 @@
       %label{for: 'discussion-context-field', translate: 'discussion_form.context_label'}
       %textarea#discussion-context-field.form-control{ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
 
-    .form-group
-      privacy here
+    .form-group{ng_show: 'discussion.isNew()'}
+      .privacy-form{ng_show: 'discussion.groupHasFlexibleDiscussionPrivacy()'}
+        .privacy-form-option
+          %input{type: 'radio', ng-model: 'private', value: 'true'}
+          %label{translate: 'common.state.public' }
+        .privacy-form-option
+          %input{type: 'radio', ng-model: 'private', value: 'false'}
+          %label{translate: 'common.state.private'} 
+      .privacy-notice{ng_hide: 'discussion.groupHasFlexibleDiscussionPrivacy()'}
+        .public-discussion{ng_show: 'discussion.groupAllowsPublicDiscussions()'}
+          IS PUBLIC
+        .private-discussion{ng_hide: 'discussion.groupAllowsPublicDiscussions()'}
+          IS PRIVATE
 
   .modal-footer
     %button.btn.btn-primary{type: 'submit', translate: 'discussion_form.new_discussion_submit', ng_show: 'discussion.isNew()' }
