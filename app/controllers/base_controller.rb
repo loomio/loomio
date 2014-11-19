@@ -4,6 +4,8 @@ class BaseController < ApplicationController
 
   before_filter :authenticate_user!
 
+  before_filter :boot_angular_ui, if: :use_angular_ui?
+
   before_filter :check_for_omniauth_authentication,
                 :check_for_invitation,
                 :initialize_search_form,
@@ -13,7 +15,16 @@ class BaseController < ApplicationController
   helper_method :time_zone
   helper_method :permitted_params
 
+
+  def boot_angular_ui
+    render file: Rails.root.join('public', 'angular.html'), layout: false
+  end
+
   protected
+  def use_angular_ui?
+    user_signed_in? && current_user.angular_ui_enabled?
+  end
+
   def ajax_request?
     request.xhr? or not user_signed_in?
   end
