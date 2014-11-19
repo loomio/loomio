@@ -45,6 +45,7 @@ en:
   discussion_form:
     new_discussion_title: 'Start new thread'
     edit_discussion_title: 'Edit thread'
+    group_label: 'Group'
     title_label: 'Title'
     title_placeholder: 'What is the topic you want to discuss?'
     context_label: 'Context'
