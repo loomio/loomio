@@ -1,7 +1,9 @@
 .subgroups
-  .subgroup{ng-repeat: 'subgroup in group.subgroups()'}
-    {{ subgroup.name }}
-  .subgroups-show-more.show-more
-    %a{href: '#'} {{ 'group.show_more' | translate }}
+  .media.subgroup{ng-repeat: 'subgroup in group.subgroups()'}
+    .media-left
+      .subgroup-logo
+    .media-body
+      .subgroup-name {{ subgroup.name }}
+      .subgroup-description {{ subgroup.description }}
   .subgroups-invite
-    %a{href: '#'} {{ 'group.add_subgroup' | translate }}
+    %a{href: '#', translate: 'common.action.add_subgroup' }

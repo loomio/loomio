@@ -2,6 +2,14 @@
   .member{ng-repeat: 'member in group.members()'}
     {{ member.name }}
   .members-show-more.show-more
-    %a{href: '#'} {{ 'group.show_more' | translate }}
+    %a{href: '#', translate: 'common.action.show_more'}
   .members-invite{ng_controller: 'InvitationsController'}
-    %a{href: '#', ng_click: 'openForm()'} {{ 'group.invite_members' | translate }}
+    .row
+      .col-xs-12.col-sm-6
+        %a.btn.btn-success.btn-block.btn-icon{href: '#', ng_click: 'openForm()'}
+          %i.fa.fa-lg.fa-plus>
+          %span{translate: 'group_page.invite_members' }
+
+
+
+
