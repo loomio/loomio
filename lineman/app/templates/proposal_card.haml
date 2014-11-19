@@ -1,0 +1,35 @@
+.proposal-card{ng-show: 'proposal'}
+  %h2 {{::proposal.name}}
+  .proposal-card-started-by
+    %span{translate: 'proposal_card.started_by', translate-values: '::{name: proposal.authorName()}'}
+    %span.time-ago>
+      {{discussion.createdAt | timeFromNowInWords}}
+
+  .proposal-card-description{btf-markdown: 'proposal.description' }
+
+  .proposal-card-closing-at
+    %i.fa.fa-clock-o>
+    %span.bump Closes {{proposal.closingAt | exactDateWithTime }}
+
+  .pie-chart.media
+    .pie-chart-pie.media-left
+      %proposal_pie_chart{proposal: 'proposal', width: '100', height: '100'}
+    .pie-chart-legend.media-body
+      .pie-chart-legend-item{class: 'pie-chart-legend-item-{{position}}', ng-repeat: 'position in proposal.positions'}
+        {{ "proposal_position_"+position | translate}} ({{ proposal.voteCounts[position] }})
+
+  %vote_form{proposal: 'proposal'}
+
+  .proposal-card-votes
+    %h3 Positions
+    .proposal-card-no-votes{ng-show: 'onlyVoterIsYou()', translate: 'proposal_card.only_voter_is_you'}
+
+    .proposal-card-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_card.no_votes_yet'}
+
+    -#.proposal-card-vote.media{ng_repeat: 'vote in curatedVotes()'}
+    .proposal-card-vote.media{ng_repeat: 'vote in curatedVotes()'}
+      .media-left
+        .thread-event-vote-icon{class: 'thread-event-vote-icon-{{vote.position}}'}
+      .media-body
+        %strong> {{::vote.authorName()}}
+        %span.author-statement {{:: vote.statement }}

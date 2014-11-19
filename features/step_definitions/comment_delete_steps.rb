@@ -4,7 +4,7 @@ Given(/^the discussion has a comment$/) do
   @comment = Comment.new(body: 'post to be deleted')
   @comment.author = @commenter
   @comment.discussion = @discussion
-  DiscussionService.add_comment(@comment)
+  CommentService.create(comment: @comment, actor: @comment.author)
 end
 
 When /^I click the delete button on a post$/ do

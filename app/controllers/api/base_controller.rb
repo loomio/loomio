@@ -1,7 +1,13 @@
 class API::BaseController < ActionController::Base
+  include CurrentUserHelper
+  include ::ProtectedFromForgery
+  before_filter :require_authenticated_user
+
+  skip_after_filter :intercom_rails_auto_include
   after_filter :increment_measurement
 
   protected
+
   def increment_measurement
     Measurement.increment(measurement_name)
   end
@@ -23,13 +29,4 @@ class API::BaseController < ActionController::Base
     key = request.headers['Loomio-Email-API-Key']
     @current_user = User.where(id: user_id, email_api_key: key).first
   end
-
-  def current_user
-    @current_user
-  end
-
-  def current_ability
-    @current_ability ||= AccountAbility.new(current_user)
-  end
 end
-

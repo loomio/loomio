@@ -1,12 +1,13 @@
 class PermittedParams < Struct.new(:params, :user)
 
-  %w[user vote subscription motion membership membership_request
+  %w[user vote subscription motion membership_request
    invitation group_request group discussion comment
    attachment contact_message theme user_deactivation_response].each do |kind|
     define_method(kind) do
       permitted_attributes = self.send("#{kind}_attributes")
       params.require(kind).permit(*permitted_attributes)
     end
+    alias_method :"api_#{kind}", kind.to_sym
   end
 
   def theme_attributes
@@ -23,7 +24,7 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def vote_attributes
-    [:position, :statement]
+    [:position, :statement, :motion_id]
   end
 
   def subscription_attributes
@@ -33,6 +34,7 @@ class PermittedParams < Struct.new(:params, :user)
   def motion_attributes
     [:name, :description, :discussion_id, :closing_at, :outcome]
   end
+  alias_method :proposal_attributes, :motion_attributes
 
   def membership_request_attributes
     [:name, :email, :introduction]
@@ -60,7 +62,7 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def comment_attributes
-    [:body, :uses_markdown, :attachment_ids, :discussion_id]
+    [:body, :new_attachment_ids, :uses_markdown, :discussion_id, :parent_id, {new_attachment_ids: []}]
   end
 
   def attachment_attributes

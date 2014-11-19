@@ -1,0 +1,162 @@
+$navbarGrey: #CCC;
+
+.menu-image { padding: 15px; }
+.bordered-icon { 
+  border: 1px solid $navbarGrey;
+  border-radius: 5px;
+}
+
+#header{
+  z-index: 1000;
+  background: white;
+  height: 48px;
+  border-bottom: 1px solid #bbb;
+  box-shadow: 0 0 10px #aaa;
+  width: 100%;
+  position: fixed;
+}
+.container{
+  max-width: $container-max-width;
+}
+.sidebar-is-open .container{
+  max-width: $expanded-container-max-width;
+}
+.sidebar-is-open #header .container{
+  margin-left: 0;
+}
+#sidebar{
+  width: $sidebar-width;
+  float: left;
+}
+main{
+  padding-top: 54px;
+  z-index: 0;
+}
+.sidebar-is-open main{
+  max-width: 720px;
+  float: left;
+}
+.sidebar-is-open main .container{
+  padding-left: 330px;
+}
+
+
+.loomio-nav {
+  position: relative;
+}
+.loomio-nav-items{
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+.loomio-nav-items li{
+  float: left;
+}
+a.loomio-nav-btn{
+  width: 40px;
+  height: 40px;
+  margin: 4px;
+  display: block;
+}
+.loomio-nav-items i{
+  color: $navbarGrey;
+  font-size: 26px;
+  line-height: 40px;
+}
+.loomio-nav-logo {
+  width: 40px;
+  height: 40px;
+  float: left;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(/img/lbow_round_34.png);
+}
+.loomio-nav-dropdown{
+  top: 46px;
+  margin: 0 -10px;
+  min-width: 320px;
+  @media (min-width: $screen-xs-min){
+    margin: 0;
+    width: 320px;
+  }
+}
+.loomio-nav-btn.has-badge{
+  position: relative;
+}
+.loomio-nav-btn.has-badge .badge{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #4A90E2;
+}
+
+
+.drawer {
+  list-style-type: none;
+  padding: 0;
+  height: 600px;
+  overflow-y:scroll;
+  width: 100%;
+}
+#sidebar .drawer{
+ height: 100%;
+ overflow: scroll;
+ position: fixed;
+ width: 320px;
+ background: white;
+ border-right: 1px solid $thread-border-color;
+}
+#sidebar .drawer{
+  padding-top: 54px;
+}
+.drawer-header {
+  padding: 0 15px;
+}
+.drawer-item {
+  a:hover{
+    text-decoration: none;
+  }
+  border-top: 1px solid #ddd;
+  padding: 15px;
+  width: 100%;
+}
+.drawer-item.is-active{
+  background-color: $item-highlight-color;
+  border-left: 4px solid $loomio-orange;
+}
+.drawer-item.is-read{
+  background-color: $light-grey;
+}
+.drawer-item-proposal {
+  margin: 5px 0;
+  .time-left {
+    color: #FAA82C;
+    @include fontHelvetica;
+    @include fontSmall;
+  }
+}
+.drawer-item-discussion-title {
+  color: $text-color;
+  @include fontHelvetica;
+  @include fontMedium;
+  margin-bottom: 5px;
+}
+.is-unread .drawer-item-discussion-title{
+  font-weight: bold;
+}
+a .drawer-item-proposal-details {
+  color: $meta-text-color;
+  @include fontHelvetica;
+  @include fontSmall;
+  margin-bottom: 5px;
+  line-height: 16px;
+}
+.drawer-item-group-name {
+  color: $meta-text-color;
+  @include fontHelvetica;
+  @include fontSmall;
+}
+

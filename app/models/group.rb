@@ -142,6 +142,7 @@ class Group < ActiveRecord::Base
            class_name: 'Group',
            foreign_key: 'parent_id'
 
+  # maybe change this to just archived_subgroups
   has_many :all_subgroups,
            class_name: 'Group',
            foreign_key: :parent_id

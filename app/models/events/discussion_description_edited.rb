@@ -4,4 +4,8 @@ class Events::DiscussionDescriptionEdited < Event
             eventable: discussion,
             user: editor)
   end
+
+  def discussion
+    eventable
+  end
 end

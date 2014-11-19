@@ -42,7 +42,6 @@ class Discussion < ActiveRecord::Base
   has_many :comment_likes, through: :comments, source: :comment_votes
   has_many :commenters, -> { uniq }, through: :comments, source: :user
 
-
   has_many :events, -> { includes :user }, as: :eventable, dependent: :destroy
   has_many :items, -> { includes(eventable: :user).order(created_at: :asc) }, class_name: 'Event'
 
@@ -66,6 +65,10 @@ class Discussion < ActiveRecord::Base
   delegate :locale, to: :author
 
   before_create :set_last_comment_at
+
+  def published_at
+    created_at
+  end
 
   def followers
     User.
@@ -109,6 +112,8 @@ class Discussion < ActiveRecord::Base
   def current_motion_closing_at
     current_motion.closing_at
   end
+
+  alias_method :current_proposal, :current_motion
 
   def number_of_comments_since(time)
     comments.where('comments.created_at > ?', time).count

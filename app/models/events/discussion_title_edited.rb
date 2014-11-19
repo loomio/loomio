@@ -4,4 +4,8 @@ class Events::DiscussionTitleEdited < Event
             eventable: discussion,
             user: editor)
   end
+
+  def discussion
+    eventable
+  end
 end

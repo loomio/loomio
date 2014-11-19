@@ -68,7 +68,7 @@ describe "DiscussionHeadline" do
       context "with 1 commenter" do
 
         before do
-          DiscussionService.add_comment(comment)
+          CommentService.create(comment: comment, actor: comment_author)
         end
 
         it {should == "Discussion Author and Comment Author started discussing: Discussion Title"}
@@ -76,8 +76,8 @@ describe "DiscussionHeadline" do
 
       context "with 2 commenters" do
         before do
-          DiscussionService.add_comment(comment)
-          DiscussionService.add_comment(another_comment)
+          CommentService.create(comment: comment, actor: comment_author)
+          CommentService.create(comment: another_comment, actor: another_author)
         end
         it {should == "Discussion Author and 2 others started discussing: Discussion Title"}
       end
@@ -91,7 +91,7 @@ describe "DiscussionHeadline" do
       context "with 1 commenter" do
 
         before do
-          DiscussionService.add_comment(comment)
+          CommentService.create(comment: comment, actor: comment_author)
         end
 
         it {should == "Comment Author discussed: Discussion Title"}
@@ -99,17 +99,17 @@ describe "DiscussionHeadline" do
 
       context "with 2 commenters" do
         before do
-          DiscussionService.add_comment(comment)
-          DiscussionService.add_comment(another_comment)
+          CommentService.create(comment: comment, actor: comment_author)
+          CommentService.create(comment: another_comment, actor: another_author)
         end
         it {should == "Comment Author and Another Author discussed: Discussion Title"}
       end
 
       context "with 3 commenters" do
         before do
-          DiscussionService.add_comment(comment)
-          DiscussionService.add_comment(another_comment)
-          DiscussionService.add_comment(yet_another_comment)
+          CommentService.create(comment: comment, actor: comment_author)
+          CommentService.create(comment: another_comment, actor: another_author)
+          CommentService.create(comment: yet_another_comment, actor: yet_another_author)
         end
         it {should == "Comment Author and 2 others discussed: Discussion Title"}
       end
