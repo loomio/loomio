@@ -47,21 +47,20 @@ describe DiscussionReader do
       it {should == 1}
     end
 
-    context '2 read, 1 unread', focus: true do
+    context '2 read' do
       before do
         CommentService.create comment: build(:comment, discussion: discussion), actor: user
         CommentService.create comment: build(:comment, discussion: discussion), actor: user
+      end
 
-        discussion.reload
-        reader.viewed!
+      it {should == 1}
+    end
 
-        comment = Comment.create! discussion: discussion, author: user, body: 'hi'
-
-        Events::NewComment.create!(kind: 'new_comment',
-                                   eventable: comment,
-                                   discussion: comment.discussion,
-                                   created_at: comment.created_at)
-        discussion.reload
+    context '2 read, 1 unread' do
+      before do
+        CommentService.create comment: build(:comment, discussion: discussion), actor: user
+        CommentService.create comment: build(:comment, discussion: discussion), actor: user
+        CommentService.create comment: build(:comment, discussion: discussion), actor: user, mark_as_read: false
       end
 
       it {should == 2}
