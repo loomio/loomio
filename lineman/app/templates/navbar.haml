@@ -1,17 +1,24 @@
 %header#header
   .container
     %nav.loomio-nav{role: 'navigation'}
-      .loomio-nav-logo
       %ul.loomio-nav-items
+        %li
+          %a.loomio-nav-btn{href: '#'}
+            .loomio-nav-logo
+        / don't load this li if the sidebar is open
         %li{dropdown: '', on-toggle: 'toggled(open)'}
-          %a.navbar-btn.dropdown-toggle
+          %a.loomio-nav-btn.has-badge.dropdown-toggle{href: '#'}
+            %span.badge 2
             %i.fa.fa-lg.fa-fw.fa-inbox
             %span.hide Inbox
           .loomio-nav-dropdown.dropdown-menu{role: 'menu'}
             %inbox{ng-if: 'inboxIsOpen'}
         %li
-          %a.navbar-btn
+          %a.loomio-nav-btn{href: '#'}
             %i.fa.fa-lg.fa-fw.fa-search
-        %li
-          %a.navbar-btn
-            %i.fa.fa-lg.fa-fw.fa-users
+        %li.pull-right
+          %a.loomio-nav-btn{href: '#'}
+            %i.fa.fa-lg.fa-fw.fa-navicon
+        %li.pull-right
+          %a.loomio-nav-btn{href: '#'}
+            %i.fa.fa-lg.fa-fw.fa-bell

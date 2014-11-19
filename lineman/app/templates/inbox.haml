@@ -1,9 +1,8 @@
 %ul.drawer
   %li.drawer-header{ng-click: 'logDiscussions()'}
     %h5{translate: 'inbox.latest_threads'}
-
-
   -#%div{infinite-scroll: "getNextPage()", infinite-scroll-distance:"1"}
+  / use styling flags: is-read, is-unread, is-active
   %li.drawer-item{ng-repeat: 'discussion in discussions'}
     %a{href: '/discussions/{{ discussion.key}}'}
       .brief-time.pull-right
@@ -21,3 +20,8 @@
         .fa.fa-star
       .drawer-item-group-name
         {{::discussion.group().fullName()}}
+
+  %li.drawer-item
+    %a{href: '#'}
+      Keep this menu open
+      / Close this menu

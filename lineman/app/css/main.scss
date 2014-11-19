@@ -3,7 +3,16 @@
 
 $meta-text-color: #888;
 $thread-border-color: #ddd;
-$thread-max-width: 540px;
+$item-highlight-color: #FFFFE8;
+$loomio-orange: #F6A82B;
+
+/* let's come up with a good naming scheme for the greys once we lock them in*/
+$light-grey: #F5F5F5;
+
+$thread-max-width: 500px;
+$sidebar-width: 320px;
+$container-max-width: $thread-max-width;
+$expanded-container-max-width: $thread-max-width + $sidebar-width + 10px;
 
 @mixin fontSmall {
   font-size: 12px;
