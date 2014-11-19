@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101023026) do
+ActiveRecord::Schema.define(version: 20141119084535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -546,6 +546,7 @@ ActiveRecord::Schema.define(version: 20141101023026) do
     t.string   "email_api_key"
     t.boolean  "email_new_discussions_and_proposals",             default: true,       null: false
     t.boolean  "email_when_mentioned",                            default: true,       null: false
+    t.boolean  "angular_ui_enabled",                              default: false,      null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
