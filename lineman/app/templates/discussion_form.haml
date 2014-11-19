@@ -8,6 +8,10 @@
 
   .modal-body
     .form-group
+      %label{for: 'discussion-group-field', translate: 'discussion_form.group_label'}
+      %select.form-control{ng-model: 'discussion.groupId', ng-required: 'true' ng-options: 'group.name for group in currentUser.groups()'}
+
+    .form-group
       %label{for: 'discussion-title-field', translate: 'discussion_form.title_label'}
       %input#discussion-title-field.form-control{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: 'discussion.title', ng-required: 'true'}
 
