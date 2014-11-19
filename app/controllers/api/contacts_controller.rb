@@ -1,5 +1,4 @@
 class API::ContactsController < API::RestfulController
-  
   def import
     redirect_to "/contacts/#{params[:from]}" if params[:from]
   end

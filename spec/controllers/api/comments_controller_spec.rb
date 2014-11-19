@@ -10,127 +10,156 @@ describe API::CommentsController do
 
   before do
     group.members << user
-    sign_in user
   end
 
-  describe 'like' do
-    context 'success' do
-      it "likes the comment" do
-        post :like, id: comment.id
-        expect(comment.reload.likers).to include user
-      end
-    end
+  describe "auth by write only api key" do
+    describe 'create' do
+      let(:comment_params) { {discussion_id: discussion.id, body: 'content'} }
 
-    context 'failure' do
-      it "responds with an error when the user is unauthorized" do
-        sign_in another_user
-        expect { post :like, id: comment.id }.to raise_error CanCan::AccessDenied
+      context 'success', focus: true do
+        it "creates a comment" do
+          request.headers['Loomio-User-Id'] = user.id
+          request.headers['Loomio-Email-API-Key'] = user.email_api_key
+          post :create, comment: comment_params
+          expect(response).to be_success
+          expect(Comment.where(body: comment_params[:body],
+                               user_id: user.id)).to exist
+        end
       end
-    end
-  end
 
-  describe 'unlike' do
-    context 'success' do
-      it "unlikes the comment" do
-        comment.likers << user
-        post :unlike, id: comment.id
-        expect(comment.reload.likers).to_not include user
-      end
-    end
-
-    context 'failure' do
-      it "responds with an error when the user is unauthorized" do
-        sign_in another_user
-        expect { post :unlike, id: comment.id }.to raise_error CanCan::AccessDenied
+      context 'failures' do
+        it "responds with an error when the user is unauthorized" do
+          sign_in another_user
+          expect { post :create, comment: comment_params }.to raise_error CanCan::AccessDenied
+        end
       end
     end
   end
 
-  describe 'update' do
-    let(:comment_params) { {body: 'updated content'} }
+  describe "signed in" do
+    before do
+      sign_in user
+    end
 
-    context 'success' do
-      it "updates a comment" do
-        post :update, id: comment.id, comment: comment_params
-        expect(response).to be_success
-        expect(comment.reload.body).to eq comment_params[:body]
+    describe 'like' do
+      context 'success' do
+        it "likes the comment" do
+          post :like, id: comment.id
+          expect(comment.reload.likers).to include user
+        end
+      end
+
+      context 'failure' do
+        it "responds with an error when the user is unauthorized" do
+          sign_in another_user
+          expect { post :like, id: comment.id }.to raise_error CanCan::AccessDenied
+        end
       end
     end
 
-    context 'failures' do
-      it "responds with an error when there are unpermitted params" do
-        comment_params[:dontmindme] = 'wild wooly byte virus'
-        expect { put :update, id: comment.id, comment: comment_params}.to raise_error ActionController::UnpermittedParameters
+    describe 'unlike' do
+      context 'success' do
+        it "unlikes the comment" do
+          comment.likers << user
+          post :unlike, id: comment.id
+          expect(comment.reload.likers).to_not include user
+        end
       end
 
-      it "responds with an error when the user is unauthorized" do
-        expect { put :update, {id: another_comment.id, comment: comment_params} }.to raise_error CanCan::AccessDenied
-      end
-
-      it "responds with validation errors when they exist" do
-        comment_params[:body] = ''
-        put :update, id: comment.id, comment: comment_params
-        expect(response.status).to eq 400
-
-        json = JSON.parse(response.body)
-        expect(json['errors']['body']).to include 'Comment cannot be empty'
-      end
-    end
-  end
-
-  describe 'create' do
-    let(:comment_params) { {discussion_id: discussion.id,
-                            body: 'original content'} }
-
-    context 'success' do
-      it "creates a comment" do
-        post :create, comment: comment_params
-        expect(response).to be_success
-        expect(Comment.where(body: comment_params[:body],
-                             user_id: user.id)).to exist
-      end
-
-      it 'responds with json' do
-        post :create, comment: comment_params
-        json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[users attachments comments])
+      context 'failure' do
+        it "responds with an error when the user is unauthorized" do
+          sign_in another_user
+          expect { post :unlike, id: comment.id }.to raise_error CanCan::AccessDenied
+        end
       end
     end
 
-    context 'failures' do
-      it "responds with an error when there are unpermitted params" do
-        comment_params[:dontmindme] = 'wild wooly byte virus'
-        expect { post :create, comment: comment_params }.to raise_error
+    describe 'update' do
+      let(:comment_params) { {body: 'updated content'} }
+
+      context 'success' do
+        it "updates a comment" do
+          post :update, id: comment.id, comment: comment_params
+          expect(response).to be_success
+          expect(comment.reload.body).to eq comment_params[:body]
+        end
       end
 
-      it "responds with an error when the user is unauthorized" do
-        sign_in another_user
-        expect { post :create, comment: comment_params }.to raise_error
-      end
+      context 'failures' do
+        it "responds with an error when there are unpermitted params" do
+          comment_params[:dontmindme] = 'wild wooly byte virus'
+          expect { put :update, id: comment.id, comment: comment_params}.to raise_error ActionController::UnpermittedParameters
+        end
 
-      it "responds with validation errors when they exist" do
-        comment_params[:body] = ''
-        post :create, comment: comment_params
-        json = JSON.parse(response.body)
-        expect(response.status).to eq 400
-        expect(json['errors']['body']).to include 'Comment cannot be empty'
+        it "responds with an error when the user is unauthorized" do
+          expect { put :update, {id: another_comment.id, comment: comment_params} }.to raise_error CanCan::AccessDenied
+        end
+
+        it "responds with validation errors when they exist" do
+          comment_params[:body] = ''
+          put :update, id: comment.id, comment: comment_params
+          expect(response.status).to eq 400
+
+          json = JSON.parse(response.body)
+          expect(json['errors']['body']).to include 'Comment cannot be empty'
+        end
       end
     end
-  end
 
-  describe 'destroy' do
-    context 'allowed to delete' do
-      it "destroys a comment" do
-        delete :destroy, id: comment.id
-        expect(response).to be_success
-        expect(Comment.where(id: comment.id).count).to be 0
+    describe 'create' do
+      let(:comment_params) { {discussion_id: discussion.id,
+                              body: 'original content'} }
+
+      context 'success' do
+        it "creates a comment" do
+          post :create, comment: comment_params
+          expect(response).to be_success
+          expect(Comment.where(body: comment_params[:body],
+                               user_id: user.id)).to exist
+        end
+
+        it 'responds with json' do
+          post :create, comment: comment_params
+          json = JSON.parse(response.body)
+          expect(json.keys).to include *(%w[users attachments comments])
+        end
+      end
+
+      context 'failures' do
+        it "responds with an error when there are unpermitted params" do
+          comment_params[:dontmindme] = 'wild wooly byte virus'
+          expect { post :create, comment: comment_params }.to raise_error ActionController::UnpermittedParameters
+        end
+
+        it "responds with an error when the user is unauthorized" do
+          sign_in another_user
+          expect { post :create, comment: comment_params }.to raise_error CanCan::AccessDenied
+        end
+
+        it "responds with validation errors when they exist" do
+          comment_params[:body] = ''
+          post :create, comment: comment_params
+          json = JSON.parse(response.body)
+          expect(response.status).to eq 400
+          expect(json['errors']['body']).to include 'Comment cannot be empty'
+        end
       end
     end
 
-    context 'not allowed to delete' do
-      it "gives error of some kind" do
-        expect { delete(:destroy, id: another_comment.id) }.to raise_error CanCan::AccessDenied
-        expect(Comment.where(id: another_comment.id)).to exist
+    describe 'destroy' do
+      context 'allowed to delete' do
+        it "destroys a comment" do
+          delete :destroy, id: comment.id
+          expect(response).to be_success
+          expect(Comment.where(id: comment.id).count).to be 0
+        end
+      end
+
+      context 'not allowed to delete' do
+        it "gives error of some kind" do
+          expect { delete(:destroy, id: another_comment.id) }.to raise_error CanCan::AccessDenied
+          expect(Comment.where(id: another_comment.id)).to exist
+        end
       end
     end
   end

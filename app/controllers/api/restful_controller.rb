@@ -35,6 +35,16 @@ class API::RestfulController < API::BaseController
   end
 
   private
+  def load_and_authorize_group
+    @group = Group.find(params[:group_id])
+    authorize! :show, @group
+  end
+
+  def load_and_authorize_discussion
+    @discussion = Discussion.find(params[:discussion_id])
+    authorize! :show, @discussion
+  end
+
   def collection
     instance_variable_get :"@#{resource_plural}"
   end

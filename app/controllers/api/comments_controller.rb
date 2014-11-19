@@ -1,4 +1,6 @@
 class API::CommentsController < API::RestfulController
+  skip_before_filter :require_authenticated_user
+
   before_filter :authenticate_user_by_email_api_key, only: :create
   before_filter :require_authenticated_user
 
