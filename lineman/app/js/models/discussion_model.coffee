@@ -31,6 +31,12 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService, Base
     group: ->
       RecordStoreService.get 'groups', @groupId
 
+    groupAllowsPublicDiscussions: ->
+      @group().allowPublicDiscussions
+
+    groupHasFlexibleDiscussionPrivacy: ->
+      @group().flexibleDiscussionPrivacy
+
     events: ->
       _.sortBy(@unsortedEvents(), 'sequenceId')
 

@@ -19,4 +19,5 @@ angular.module('loomioApp').controller 'DiscussionsController', ($scope, $modal,
       templateUrl: 'generated/templates/discussion_form.html'
       controller: 'DiscussionFormController'
       resolve:
-        discussion: -> new DiscussionModel(group_id: $scope.group.id)
+        discussion: -> 
+          new DiscussionModel(group_id: $scope.group.id, private: !$scope.group.allowPublicDiscussions)
