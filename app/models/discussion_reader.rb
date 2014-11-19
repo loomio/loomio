@@ -58,7 +58,7 @@ class DiscussionReader < ActiveRecord::Base
 
   def has_read?(event)
     if last_read_at.present?
-      self.last_read_at >= event.updated_at
+      self.last_read_at >= event.created_at
     else
       false
     end
@@ -81,13 +81,9 @@ class DiscussionReader < ActiveRecord::Base
       age_of_last_read_item = discussion.last_activity_at
     end
 
-    if last_read_at.nil? or last_read_at < age_of_last_read_item
-      self.read_comments_count = count_read_comments(age_of_last_read_item)
-      self.read_items_count = count_read_items(age_of_last_read_item)
-      self.last_read_at = age_of_last_read_item
-    end
-
-    save
+    update(read_comments_count: count_read_comments(age_of_last_read_item),
+           read_items_count: count_read_items(age_of_last_read_item),
+           last_read_at: age_of_last_read_item)
   end
 
   def reset_counts!
@@ -115,10 +111,10 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def count_read_comments(since)
-    discussion.comments.where('created_at <= ?', since).count
+    discussion.comments.where('comments.created_at <= ?', since).count
   end
 
   def count_read_items(since)
-    discussion.items.where('created_at <= ?', since).count
+    discussion.items.where('events.created_at <= ?', since).count
   end
 end

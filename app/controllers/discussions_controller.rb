@@ -216,7 +216,7 @@ class DiscussionsController < GroupBaseController
   end
 
   def mark_as_read
-    @discussion_reader.viewed!(@discussion.last_activity_at) if @discussion_reader
+    @discussion_reader.viewed! if @discussion_reader
     @motion_reader.viewed! if @motion_reader
   end
 
