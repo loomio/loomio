@@ -106,7 +106,7 @@ Given /^there is a public group with a discussion with a comment$/ do
   @discussion ||= FactoryGirl.create :discussion, group: @group, private: false
   @group.add_member! @user
   @comment = FactoryGirl.create :comment, author: @user, discussion: @discussion
-  DiscussionService.add_comment @comment
+  CommentService.create comment: @comment, actor: @comment.author
 end
 
 Given /^there is a discussion in a private group$/ do

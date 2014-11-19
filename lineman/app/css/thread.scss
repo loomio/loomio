@@ -1,0 +1,116 @@
+.thread-container {
+  border: 1px solid $thread-border-color;
+  max-width: $thread-max-width;
+}
+
+.thread-discussion {
+  padding: 15px;
+  background-color: #fff;
+}
+
+.thread-proposals {
+  padding: 10px 15px 15px 15px;
+  background-color: #fff;
+}
+.thread-divider{
+  background-color: #fff;
+  margin: 0;
+  padding: 0 15px 10px 15px;
+  border-bottom: 1px solid $thread-border-color;
+}
+
+.media.thread-origin{
+  margin-top: 12px
+}
+.thread-origin {
+  @include fontSmall;
+  color: #777777;
+  margin-bottom: 10px;
+}
+
+.thread-origin-icon{}
+.thread-origin-details{}
+
+.thread-discussion-context {
+}
+.thread-events {
+  padding: 15px;
+  background-color: #F5F5F5;
+  border-top: 1px solid $thread-border-color;
+}
+
+.thread-event {
+  margin-bottom: 25px;
+}
+
+.thread-event-header {
+  strong {
+    color: $text-color;
+    @include fontHelveticaBold;
+  }
+  color: $meta-text-color;
+  margin-bottom: 5px;
+  .media-body, .media-left{
+    vertical-align: middle;
+  }
+  .avatar-initials{
+    width: 30px;
+    height: 30px;
+    background: $thread-border-color;
+    border: 1px solid #aaa;
+    text-align: center;
+    line-height: 30px;
+  }
+  .avatar-image img{
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.thread-event-body {
+  margin-bottom: 10px;
+}
+
+.thread-event-footer {
+  @include fontSmall();
+  color: $meta-text-color;
+}
+
+.thread-actions-and-meta {
+  margin-bottom: 5px;
+}
+
+.thread-event-vote-icon {
+  width: 22px;
+  height: 22px;
+  background-repeat: no-repeat;
+}
+
+.thread-event-proposal-icon{
+  width: 30px;
+  height: 30px;
+  background-image: url(/img/proposal_icon_30.png);
+}
+
+.thread-event-vote-icon-yes {
+  background-image: url(/img/green_thumb_22.png);
+}
+
+.thread-event-vote-icon-abstain {
+  background-image: url(/img/yellow_thumb_22.png);
+}
+
+.thread-event-vote-icon-no {
+  background-image: url(/img/pink_thumb_22.png);
+}
+
+.thread-event-vote-icon-block {
+  background-image: url(/img/red_flag_22.png);
+}
+
+.thread-start-proposal-card {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid $thread-border-color;
+}

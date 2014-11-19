@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
               large: "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
               medlarge: "#{User::MED_LARGE_IMAGE}x#{User::MED_LARGE_IMAGE}#",
               medium: "#{User::MEDIUM_IMAGE}x#{User::MEDIUM_IMAGE}#",
-              small: "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#"
+              small: "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#",
             }
   validates_attachment :uploaded_avatar,
     size: { in: 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
   has_many :groups,
            -> { where archived_at: nil },
            through: :memberships
-           
+
   has_many :discussions,
            through: :groups
 
@@ -284,9 +284,8 @@ class User < ActiveRecord::Base
     I18n.t(:inactive_html, path_to_contact: '/contact').html_safe
   end
 
-  def avatar_url(size=nil, kind=nil)
+  def avatar_url(size=nil)
     size = size ? size.to_sym : :medium
-    kind = avatar_kind if kind.nil?
     case size
     when :small
       pixels = User::SMALL_IMAGE
@@ -299,9 +298,10 @@ class User < ActiveRecord::Base
     else
       pixels = User::SMALL_IMAGE
     end
-    if kind == "gravatar"
+
+    if avatar_kind == "gravatar"
       gravatar_url(:size => pixels)
-    elsif kind == "uploaded"
+    else
       uploaded_avatar.url(size)
     end
   end

@@ -12,10 +12,7 @@ describe VotesController do
   end
 
   describe "casting a vote" do
-    it 'requires the user can vote' do
-      VotesController.any_instance.should_receive(:require_user_can_vote)
-      post :create, motion_id: motion.id, vote: {position: 'yes'}
-    end
+    let(:vote) { Vote.new(motion: motion, user: user, position: 'yes') }
 
     it "flashes a motion closed message when the motion is closed" do
       motion.update_attribute :closed_at, Date.yesterday
@@ -23,24 +20,16 @@ describe VotesController do
       flash[:notice].should =~ /motion has already closed/
     end
 
-    it "flashes a permission denied message when the user does not have permission" do
-      other_user = create :user
-      sign_in other_user
-      post :create, motion_id: motion.id, vote: { position: 'yes' }
-
-      flash[:notice].should =~ /You do not have permission/
+    it 'calls MotionService::cast_vote', focus: true do
+      VoteService.should_receive :create
+      post :create, {motion_id: motion.id, vote: {position: 'yes'}}
     end
 
-    it 'calls MotionService::cast_vote' do
-      expect(MotionService).to receive(:cast_vote)
-      post :create, motion_id: motion.id, vote: {position: 'yes'}
-    end
-
-    it "assigns flash and redirects to motion" do
-      post :create, motion_id: motion.id, vote: {position: 'yes'}
+    it "assigns flash and redirects to discussion" do
+      post :create, {motion_id: motion.id, vote: {position: 'yes'}}
 
       flash[:success].should =~ /Position submitted/
-      response.should redirect_to motion
+      response.should redirect_to motion.discussion
     end
   end
 end

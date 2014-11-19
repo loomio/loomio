@@ -1,0 +1,65 @@
+
+.proposal-card {
+  background-color: #fff;
+}
+
+.proposal-card-started-by {
+  @include metaText;
+  margin-bottom: 5px;
+}
+
+.proposal-card-body {
+  padding-left: 5px;
+  white-space: nowrap;
+}
+
+.proposal-closed {
+  padding: 3px;
+  margin: 0 5px;
+  background: #ccc;
+  border-radius: 5px;
+}
+
+.proposal-card-vote-icon {
+  width: 23px;
+  height: 23px;
+}
+
+.proposal-card-closing-at {
+  @include metaText;
+}
+
+.pie-chart {
+
+}
+
+.pie-chart-pie {
+  width: 120px;
+  height: 120px;
+}
+.pie-chart-legend {
+  @include metaText;
+  padding-top: 13px;
+}
+
+.pie-chart-legend-item{
+  margin: 5px;
+  padding-left: 5px;
+  line-height: 15px;
+}
+
+.pie-chart-legend-item-yes{
+  border-left: 15px solid #90D490;
+}
+
+.pie-chart-legend-item-abstain{
+  border-left: 15px solid #F0BB67;
+}
+
+.pie-chart-legend-item-no{
+  border-left: 15px solid #D49090;
+}
+
+.pie-chart-legend-item-block{
+  border-left: 15px solid #dd0000;
+}

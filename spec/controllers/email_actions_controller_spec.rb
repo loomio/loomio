@@ -8,7 +8,7 @@ describe EmailActionsController do
       @group.add_member!(@user)
 
       @discussion = FactoryGirl.build(:discussion, group: @group)
-      DiscussionService.start_discussion(@discussion)
+      DiscussionService.create(discussion: @discussion, actor: @user)
       DiscussionReader.for(discussion: @discussion, user: @user).follow!
     end
 
@@ -26,7 +26,7 @@ describe EmailActionsController do
       @group.add_member!(@user)
 
       @discussion = FactoryGirl.build(:discussion, group: @group)
-      @event = DiscussionService.start_discussion(@discussion)
+      @event = DiscussionService.create(discussion: @discussion, actor: @user)
     end
 
     it 'marks the discussion as read at event created_at' do

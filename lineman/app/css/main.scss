@@ -1,0 +1,67 @@
+@import 'bootstrap_overrides';
+@import 'bootstrap';
+
+$meta-text-color: #888;
+$thread-border-color: #ddd;
+$item-highlight-color: #FFFFE8;
+$loomio-orange: #F6A82B;
+
+/* let's come up with a good naming scheme for the greys once we lock them in*/
+$light-grey: #F5F5F5;
+
+$thread-max-width: 500px;
+$sidebar-width: 320px;
+$container-max-width: $thread-max-width;
+$expanded-container-max-width: $thread-max-width + $sidebar-width + 10px;
+
+@mixin fontSmall {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+@mixin fontMedium {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@mixin fontLarge {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+@mixin fontGrande {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+
+@mixin fontHelveticaBold {
+  font-family: "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold",
+    "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold', "Helvetica", "Tahoma",
+    "Geneva", "Arial", sans-serif;
+  font-weight:600;
+  font-stretch:normal;
+}
+
+@mixin fontHelvetica {
+  font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman",
+    "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular',
+    "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-weight:400;
+  font-stretch:normal;
+}
+
+@mixin metaText {
+  color: $meta-text-color;
+  @include fontSmall;
+  line-height: 20px;
+}
+
+
+@import 'base';
+@import 'layout';
+@import 'thread';
+@import 'proposal_card';
+@import 'proposal_pie_chart';
+@import 'vote_form';
+@import 'time_ago';

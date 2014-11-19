@@ -1,7 +1,7 @@
 Given /^there is a comment in the discussion$/ do
   comment_author = FactoryGirl.create :user
   @comment = FactoryGirl.create :comment, discussion: @discussion, user: comment_author, body: "Test comment!"
-  DiscussionService.add_comment @comment
+  CommentService.create(comment: @comment, actor: @comment.author)
 end
 
 Given /^the comment is written by an English speaker$/ do

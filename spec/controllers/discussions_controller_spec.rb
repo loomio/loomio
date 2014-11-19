@@ -137,17 +137,15 @@ describe DiscussionsController do
 
       context 'invalid comment' do
         it 'does not add a comment' do
-          DiscussionService.should_receive(:add_comment).and_return(false)
-          user.should_not_receive(:update_attributes)
+          CommentService.should_receive(:create).and_return(false)
           xhr :post, :add_comment, comment: "", id: discussion.key, uses_markdown: false
         end
       end
 
       context 'valid comment' do
         it 'adds a comment' do
-          DiscussionService.should_receive(:add_comment).
-            with(comment).and_return(true)
-          user.should_receive(:update_attributes)
+          CommentService.should_receive(:create).
+            with(comment: comment, actor: user).and_return(true)
           xhr :post, :add_comment, comment: "", id: discussion.key, uses_markdown: false, attachments: [2]
         end
       end

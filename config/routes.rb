@@ -1,5 +1,12 @@
 Loomio::Application.routes.draw do
 
+  scope '/angular_support', controller: 'angular_support', path: 'angular_support', as: 'angular_support' do
+    get 'setup_for_add_comment'
+    get 'setup_for_like_comment'
+    get 'setup_for_vote_on_proposal'
+  end
+
+
   slug_regex = /[a-z0-9\-\_]*/i
 
   ActiveAdmin.routes(self)
@@ -15,10 +22,52 @@ Loomio::Application.routes.draw do
     end
   end
 
-  namespace :api, path: '/api/v1' do
-    resources :comments, only: :create
+  namespace :style_guide do
+    get 'discussion/:key', action: :discussion
   end
 
+  get '/discussions/:key' => 'angular_support#boot'
+
+  namespace :api, path: '/api/v1', defaults: {format: :json} do
+    resource :inbox, only: :show, controller: 'inbox'
+    resources :groups, only: :show do
+      get :subgroups, on: :collection
+    end
+    resources :memberships, only: [:index] do
+      get :autocomplete, on: :collection
+    end
+    resources :invitables, only: :index
+    resources :invitations, only: :create
+    resources :events, only: :index
+    resources :discussions, only: [:show, :index, :create, :update, :destroy]
+    resources :motions,     only: [       :index, :create, :update], path: :proposals
+    resources :votes,       only: [       :index, :create, :update] do
+      get :my_votes, on: :collection
+    end
+    resources :comments,    only: [:create, :update, :destroy] do
+      post :like, on: :member
+      post :unlike, on: :member
+    end
+    resources :attachments, only: :create
+    resources :motions, only: :create do
+      post :vote, on: :member
+    end
+    resources :translations, only: :show
+    namespace :faye do
+      post :subscribe
+      get :who_am_i
+    end
+    namespace :sessions do
+      get :current
+      get :unauthorized
+    end
+    devise_scope :user do
+      resources :sessions, only: [:create, :destroy]
+    end
+    post '/attachments/credentials',     to: 'attachments#credentials'
+    get  '/contacts/import',             to: 'contacts#import'
+    get  '/contacts/:importer/callback', to: 'contacts#callback'
+  end
 
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
@@ -132,6 +181,8 @@ Loomio::Application.routes.draw do
     delete ':id(/:slug)', action: 'destroy'
   end
 
+  get '/localisation/datetime_input_translations' => 'localisation#datetime_input_translations', format: 'js'
+
   resources :discussions, path: 'd', only: [:new, :edit, :create] do
     get :activity_counts, on: :collection
     resources :invitations, only: [:new]
@@ -176,7 +227,7 @@ Loomio::Application.routes.draw do
     end
   end
 
-  get '/localisation/datetime_input_translations' => 'localisation#datetime_input_translations', format: 'js'
+  get '/localisation/:locale' => 'localisation#show', format: 'js'
 
   resources :users, path: 'u', only: [:new] do
     member do
