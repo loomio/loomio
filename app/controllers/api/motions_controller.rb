@@ -2,6 +2,7 @@ class API::MotionsController < API::RestfulController
   load_resource only: [:create, :update]
 
   def index
+    load_and_authorize_discussion
     @motions = visible_records.where(discussion: @discussion).order(:created_at)
     respond_with_collection
   end

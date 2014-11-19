@@ -3,9 +3,7 @@ class API::DiscussionsController < API::RestfulController
   load_resource only: [:create, :update]
 
   def index
-    @group = Group.find(params[:group_id])
-    authorize! :show, @group
-
+    load_and_authorize_group
     @discussions = visible_records.page(params[:page]).per(5).to_a
     respond_with_collection
   end
