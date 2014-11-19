@@ -1,4 +1,11 @@
 namespace :loomio do
+  task :prepare_angular do
+    puts "building angular and copying into public"
+    puts `cd lineman; lineman build`
+    puts `cp -R lineman/dist/* public/`
+    puts `mv public/index.html public/angular.html`
+  end
+
   task tail_call: :environment do
     RubyVM::InstructionSequence.compile_option = {
       :tailcall_optimization => true,
