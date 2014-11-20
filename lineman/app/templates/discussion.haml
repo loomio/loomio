@@ -10,25 +10,24 @@
             {{::discussion.group().fullName()}}
             %br
             %span{translate: 'discussion.started_by', translate-value-name: '{{::discussion.authorName()}}'}
+            %timeago{timestamp: '::discussion.createdAt' }>
+            ·
+            %span.discussion-privacy__is-private{ng-show: 'discussion.private'}>
+              %i.fa.fa-lock>
+              %span{translate: 'common.state.private'}
+            %span.discussion-privacy__is-public{ng-show: '!discussion.private'}>
+              %i.fa.fa-globe>
+              %span{translate: 'common.state.public'}
 
         .thread-discussion-context
           .thread-discussion-description{btf-markdown: 'discussion.description' }
 
-        .thread-actions-and-meta
-          %a{href: '#', translate: 'common.action.reply'}>
-          ·
-          %a{href: '#', translate: 'common.action.edit', ng-click: 'editDiscussion()'}>
-          ·
-          %timeago{timestamp: '::discussion.createdAt' }>
-          ·
-          %span.discussion-privacy__is-private{ng-show: 'discussion.private'}>
-            %i.fa.fa-lock>
-            %span{translate: 'common.state.private'}
-          %span.discussion-privacy__is-public{ng-show: '!discussion.private'}>
-            %i.fa.fa-globe>
-            %span{translate: 'common.state.public'}
+        / .thread-actions-and-meta
+        /   %a{href: '#', translate: 'common.action.reply'}>
+        /   ·
+        /   %a{href: '#', translate: 'common.action.edit', ng-click: 'editDiscussion()'}>
 
-      %h3.thread-divider Proposals
+
       %proposals{discussion: 'discussion'}
 
       .thread-events{infinite-scroll: "getNextPage()", infinite-scroll-distance: 1, infinite-scroll-disabled: 'lastPage'}

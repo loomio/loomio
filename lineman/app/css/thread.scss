@@ -13,26 +13,14 @@
   padding: 10px 15px 15px 15px;
   background-color: #fff;
 }
-.thread-divider{
-  background-color: #fff;
-  margin: 0;
-  padding: 0 15px 10px 15px;
-  border-bottom: 1px solid $thread-border-color;
-}
 
 .media.thread-origin{
-  margin-top: 12px
+  margin-top: 8px;
 }
 .thread-origin {
   @include fontSmall;
   color: #777777;
   margin-bottom: 10px;
-}
-
-.thread-origin-icon{}
-.thread-origin-details{}
-
-.thread-discussion-context {
 }
 .thread-events {
   padding: 15px;

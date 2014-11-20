@@ -1,6 +1,3 @@
-/ .container
-/   .row
-/     .col-xs-12
 .group-page-container
   .group-page-header
     .group-page-cover
@@ -20,16 +17,16 @@
   .group-page-description
     .context-menu.pull-right
       %i.fa.fa-lg.fa-chevron-down
-    %h3{ translate: 'group_page.description' }
+    %h3.first{ translate: 'group_page.description' }
     .group-description.card-strip-margin{ btf-markdown: 'group.description' }
   .group-page-threads
-    %h3{ translate: 'group_page.discussions' }
+    %h3.first{ translate: 'group_page.discussions' }
     %discussions{group: 'group'}
   .group-page-members
     .context-menu.pull-right
       %i.fa.fa-lg.fa-chevron-down
-    %h3{ translate: 'group_page.members' }
+    %h3.first{ translate: 'group_page.members' }
     %members{group: 'group'}
   .group-page-subgroups
-    %h3{ translate: 'group_page.subgroups' }
+    %h3.first{ translate: 'group_page.subgroups' }
     %subgroups{group: 'group'}

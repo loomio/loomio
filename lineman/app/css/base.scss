@@ -5,7 +5,7 @@ body {
 }
 
 h1 {
-  @include fontHelveticaBold;
+  @include fontHelveticaLight;
   @include fontGrande;
   padding: 0;
   margin: 0;
@@ -13,13 +13,22 @@ h1 {
 }
 
 h2 {
-  @include fontHelveticaBold;
+  @include fontHelveticaLight;
   @include fontLarge;
-  margin: 0;
+  margin: 8px 0;
 }
 
-h3 {
-  @include fontHelveticaBold;
-  @include fontMedium;
-  color: $meta-text-color;
+h3, h4 {
+  @include fontHelveticaMedium;
+  @include fontSmall;
+  text-transform: uppercase;
+  color: #545454;
+  margin-top: 22px;
+}
+h3.first{
+  margin: 0 0 5px 0;
+}
+
+h4{
+  text-transform: none;
 }
