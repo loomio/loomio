@@ -26,6 +26,7 @@ class DiscussionsController < GroupBaseController
     if DiscussionService.update(discussion: @discussion,
                                 params: permitted_params.discussion,
                                 actor: current_user)
+      current_user.update_attributes(uses_markdown: @discussion.uses_markdown)
       flash[:notice] = 'Discussion was successfully updated.'
       redirect_to @discussion
     else
@@ -204,7 +205,7 @@ class DiscussionsController < GroupBaseController
 
   def build_comment
     @comment = Comment.new(body: params[:comment],
-                           uses_markdown: params[:uses_markdown])
+                           uses_markdown: params[:uses_markdown].present?)
 
     attachment_ids = Array(params[:attachments]).map(&:to_i)
 
