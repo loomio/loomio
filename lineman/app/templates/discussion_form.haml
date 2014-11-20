@@ -20,17 +20,17 @@
       %textarea#discussion-context-field.form-control{ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
 
     .form-group{ng_show: 'discussion.isNew()'}
-      .privacy-form{ng_show: 'discussion.groupHasFlexibleDiscussionPrivacy()'}
+      .privacy-form{ng_show: 'showPrivacyForm()'}
         .privacy-form-option
           %input{type: 'radio', ng-model: 'private', value: 'true'}
           %label{translate: 'common.state.public' }
         .privacy-form-option
           %input{type: 'radio', ng-model: 'private', value: 'false'}
           %label{translate: 'common.state.private'} 
-      .privacy-notice{ng_hide: 'discussion.groupHasFlexibleDiscussionPrivacy()'}
-        .public-discussion{ng_show: 'discussion.groupAllowsPublicDiscussions()'}
+      .privacy-notice{ng_hide: 'showPrivacyForm()'}
+        .public-discussion{ng_hide: 'discussion.private'}
           IS PUBLIC
-        .private-discussion{ng_hide: 'discussion.groupAllowsPublicDiscussions()'}
+        .private-discussion{ng_hide: 'discussion.private'}
           IS PRIVATE
 
   .modal-footer
