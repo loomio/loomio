@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'AddAttachmentController', ($scope, AttachmentService, AttachmentModel) ->
+angular.module('loomioApp').controller 'AttachmentFormController', ($scope, AttachmentService, AttachmentModel) ->
 
   $scope.comment.attachments = []
 
