@@ -72,7 +72,7 @@ en:
     discussions: 'Threads'
     members: 'Members'
     subgroups: 'Subgroups'
-    invite_members: 'Invite Members'
+    invite_people: 'Invite people'
 
   invitation:
     invite_people: 'Invite People'

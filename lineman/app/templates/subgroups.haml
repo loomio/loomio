@@ -1,11 +1,11 @@
-.subgroups
-  .media.subgroup{ng-repeat: 'subgroup in group.subgroups()'}
+.subgroup-list
+  .media.subgroup-list-item{ng-repeat: 'subgroup in group.subgroups()'}
     .media-left
-      .subgroup-logo
+      .subgroup-list-item-logo
     .media-body
-      .subgroup-name {{ subgroup.name }}
+      .subgroup-list-item-name {{ subgroup.name }}
       / this should be truncated down to a few dozen chars
-      .subgroup-description {{ subgroup.description }}
+      .subgroup-list-item-description {{ subgroup.description }}
   .subgroups-invite.card-minor-action
     %a{href: '#'}
       %span>+
