@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 ruby '2.1.5'
 
-gem 'rails', '~> 4.1.7'
+gem 'rails', '~> 4.1.8'
 gem 'rake'
 gem 'pg', '~> 0.17.1'
 gem 'pg_search', '~> 0.7.8'
