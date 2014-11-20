@@ -1,7 +1,6 @@
-.members
-  .media.member{ng-repeat: 'member in group.members()'}
-    .media-left{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = member'}
-    .media-body {{ member.name }}
+.group-member-list
+  .group-member-list-item{ng-repeat: 'member in group.members()'}
+    .group-member-list-avatar.lg{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = member'}
   .members-show-more.show-more.card-minor-action
     %a{href: '#', translate: 'common.action.show_more'}
   .members-invite{ng_controller: 'InvitationsController'}
