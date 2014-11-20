@@ -9,10 +9,12 @@
           = f.input :group_id, :as => :hidden
       = f.input :title, autofocus: true, input_html: {class: 'js-warn-before-navigating-away', dir: text_direction(discussion)}
       = f.input :description, input_html: {class: 'js-warn-before-navigating-away', dir: text_direction(discussion)}
-      .dropdown#discussion-markdown-dropdown.global-markdown-setting
-        %a.dropdown-toggle{href:'#discussion-markdown-dropdown', id:'discussion-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
-          = markdown_img(discussion.uses_markdown)
-        = render 'markdown_setting', target: current_user
+
+      .markdown-label.pull-right
+        = f.check_box :uses_markdown
+        = f.label :uses_markdown, 'Markdown'
+        = surround '(', ')' do
+          = link_to 'Help', "https://help.github.com/articles/markdown-basics/", title: t(:'common.markdown_help_tooltip'), class: 'js-tooltip-left', target: '_blank'
 
       - if discussion.group.present? and discussion.group.beta_feature_enabled?('discussion_iframe') and can?(:update, discussion.group)
         =f.input :iframe_src

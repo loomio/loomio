@@ -7,16 +7,16 @@
         = text_area_tag 'comment', "", id: 'new-comment', class: 'js-warn-before-navigating-away', placeholder: t(:comment_form_placeholder), dir: text_direction(current_user_or_visitor)
         #attachment-container
 
-      = hidden_field_tag 'uses_markdown', @uses_markdown, {id: 'global-uses-markdown'}
-      = submit_tag t(:comment_form_submit_button), class: "btn btn-primary submit", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}
-    - if user_signed_in?
-      .comment-toolbar
-        -unless browser.ie? && browser.version.to_i < 10
-          .attachment-icon#add-attachment-icon
-        .dropdown#comment-markdown-dropdown.global-markdown-setting
-          %a.dropdown-toggle{href:'#comment-markdown-dropdown', id:'comment-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
-            = markdown_img(@uses_markdown)
-          = render 'markdown_setting', target: current_user_or_visitor
+      .form-group.comment-toolbar
+        = submit_tag t(:comment_form_submit_button), class: "btn btn-primary submit", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)} 
+        - if user_signed_in?
+          -unless browser.ie? && browser.version.to_i < 10
+            .btn.attachment-icon#add-attachment-icon
+          .markdown-label.pull-right
+            = check_box_tag 'uses_markdown', 1, current_user.uses_markdown
+            = label_tag :uses_markdown, 'Markdown'
+            = surround '(', ')' do
+              = link_to 'Help', "https://help.github.com/articles/markdown-basics/", title: t(:'common.markdown_help_tooltip'), class: 'js-tooltip-left', target: '_blank'
 
   - if user_signed_in?
     -unless browser.ie? && browser.version.to_i < 10
