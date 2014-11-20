@@ -1,11 +1,7 @@
 .group-member-list
   .group-member-list-item{ng-repeat: 'member in group.members()'}
     .group-member-list-avatar.lg{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = member'}
-<<<<<<< HEAD
   .group-member-list-show-more.show-more.card-minor-action
-=======
-  .members-show-more.show-more.card-minor-action
->>>>>>> ef22ee95f0312317adcb26b65ca1c1ce822050ab
     %a{href: '#', translate: 'common.action.show_more'}
   .members-invite{ng_controller: 'InvitationsController'}
     .row
