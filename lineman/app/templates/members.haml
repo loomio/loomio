@@ -1,7 +1,8 @@
 .members
-  .member{ng-repeat: 'member in group.members()'}
-    {{ member.name }}
-  .members-show-more.show-more
+  .media.member{ng-repeat: 'member in group.members()'}    
+    .media-left{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = member'}
+    .media-body {{ member.name }}
+  .members-show-more.show-more.card-minor-action
     %a{href: '#', translate: 'common.action.show_more'}
   .members-invite{ng_controller: 'InvitationsController'}
     .row

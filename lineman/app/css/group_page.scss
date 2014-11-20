@@ -6,7 +6,7 @@
 .group-page-cover{
   width: $thread-max-width;
   height: 100px;
-  background: url('http://placehold.it/500x100');
+  background: url('http://placehold.it/500x100') no-repeat;
 }
 .group-page-logo{
   width: 108px;
@@ -33,7 +33,12 @@
 .members-invite{
   margin-top: 10px;
 }
-
+.group-page-container{
+  /* over-riding bootstrap */
+  .media:first-child{
+    margin-top: 10px;
+  }
+}
 .group-page-subgroups{
   .subgroup-logo{
     width: 50px;

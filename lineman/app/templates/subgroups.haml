@@ -4,6 +4,9 @@
       .subgroup-logo
     .media-body
       .subgroup-name {{ subgroup.name }}
+      / this should be truncated down to a few dozen chars
       .subgroup-description {{ subgroup.description }}
-  .subgroups-invite
-    %a{href: '#', translate: 'common.action.add_subgroup' }
+  .subgroups-invite.card-minor-action
+    %a{href: '#'}
+      %span>+
+      %span{ translate: 'common.action.add_subgroup' }
