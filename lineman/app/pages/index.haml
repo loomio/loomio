@@ -19,8 +19,9 @@
     / only load this if the sidebar is open
     %sidebar#sidebar
       %inbox
-
-    %main{ng_view: ''}
+    .sidebar-spacer
+      .container#main
+        %main{ng_view: ''}
 
 
     %script{src: '/js/app.js', type: 'text/javascript'}
