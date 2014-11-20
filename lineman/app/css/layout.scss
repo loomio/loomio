@@ -18,7 +18,18 @@
   @media (min-width: $screen-md-min){ max-width: $container-md - $sidebar-width; }
   @media (min-width: $screen-lg-min){ max-width: $container-lg - $sidebar-width; }
 }
+<<<<<<< HEAD
 .container#main{
+=======
+.sidebar-is-open #header .container{
+  margin-left: 0;
+}
+#sidebar{
+  width: $sidebar-width;
+  float: left;
+}
+main{
+>>>>>>> ef22ee95f0312317adcb26b65ca1c1ce822050ab
   padding-top: 48px;
   z-index: 0;
   min-width: 320px;

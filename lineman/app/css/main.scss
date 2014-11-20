@@ -12,9 +12,6 @@ $light-grey: #F5F5F5;
 $thread-max-width: 500px;
 $group-page-max-width: 640px;
 $sidebar-width: 320px;
-$container-min-width: 200px;
-$container-max-width: 960px;
-/*$expanded-container-max-width: $thread-max-width + $sidebar-width + 10px;*/
 
 @mixin fontSmall {
   font-size: 12px;
@@ -85,7 +82,10 @@ $container-max-width: 960px;
 }
 .btn-success.btn-icon i.fa{ color: #fff; }
 .btn-icon i.fa{ padding-right: 2px; }
+<<<<<<< HEAD
 .btn.btn-icon{ padding: 6px 12px 6px 9px;}
+=======
+>>>>>>> ef22ee95f0312317adcb26b65ca1c1ce822050ab
 
 .avatar-initials{
   width: 30px;
