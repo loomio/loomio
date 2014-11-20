@@ -1,7 +1,7 @@
 .group-page-discussions
   .discussion{ng_repeat: 'discussion in group.discussions()'}
     {{ discussion.title }}
-  .discussions-show-more
+  .discussions-show-more.card-minor-action
     %a{ng-hide: 'lastPage', ng-click: 'getNextPage()', href: '#', translate: 'common.action.show_more'}
   .discussions-new-thread
     .row

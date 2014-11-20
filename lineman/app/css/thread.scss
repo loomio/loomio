@@ -53,18 +53,6 @@
   .media-body, .media-left{
     vertical-align: middle;
   }
-  .avatar-initials{
-    width: 30px;
-    height: 30px;
-    background: $thread-border-color;
-    border: 1px solid #aaa;
-    text-align: center;
-    line-height: 30px;
-  }
-  .avatar-image img{
-    width: 30px;
-    height: 30px;
-  }
 }
 
 .thread-event-body {
