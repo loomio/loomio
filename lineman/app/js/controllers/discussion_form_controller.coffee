@@ -1,14 +1,24 @@
-angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $modalInstance, DiscussionService, discussion, UserAuthService) ->
+angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $modalInstance, DiscussionService, discussion, UserAuthService, MembershipService) ->
   currentUser = UserAuthService.currentUser
+  MembershipService.fetchMyMemberships()
   $scope.discussion = discussion
 
   $scope.availableGroups = ->
+    _.filter currentUser.groups(), (group) ->
+      group.membersCanStartDiscussions or group.admins().include? currentUser
+
+  $scope.getCurrentPrivacy = ->
+    $scope.discussion.group().discussionPrivacyOptions
+
+  $scope.setCurrentPrivacy = ->
+    if $scope.discussion.isNew()
+      $scope.discussion.private = $scope.getCurrentPrivacy() == 'private_only'
+  $scope.setCurrentPrivacy()
 
   $scope.showPrivacyForm = ->
-    $scope.discussion.group().discussionPrivacyOptions == 'public_or_private_discussions'
+    $scope.getCurrentPrivacy() == 'public_or_private'
 
   $scope.saveSuccess = ->
-    console.log 'saved the discussion'
     $modalInstance.close()
 
   $scope.saveError = (error) ->
