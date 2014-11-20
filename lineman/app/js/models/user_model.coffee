@@ -9,3 +9,9 @@ angular.module('loomioApp').factory 'UserModel', (RecordStoreService) ->
       @avatarInitials = data.avatar_initials
 
     plural: 'users'
+
+    memberships: ->
+      RecordStoreService.get 'memberships', (membership) => membership.userId == @id
+
+    groups: ->
+      RecordStoreService.get('groups', _.map(@memberships(), (membership) -> membership.groupId))

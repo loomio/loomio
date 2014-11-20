@@ -9,29 +9,34 @@
   .modal-body
     .form-group
       %label{for: 'discussion-group-field', translate: 'discussion_form.group_label'}
-      %select.form-control{ng-model: 'discussion.groupId', ng-required: 'true' ng-options: 'group.name for group in currentUser.groups()'}
+      %select.form-control{ng-model: 'discussion.groupId', ng-required: 'true' ng-options: 'group.id as group.name for group in availableGroups()', ng-change: 'setCurrentPrivacy()'}
 
-    .form-group
-      %label{for: 'discussion-title-field', translate: 'discussion_form.title_label'}
-      %input#discussion-title-field.form-control{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: 'discussion.title', ng-required: 'true'}
+    .discussion-group-selected{ng_show: 'discussion.groupId'}
+      .form-group
+        %label{for: 'discussion-title-field', translate: 'discussion_form.title_label'}
+        %input#discussion-title-field.form-control{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: 'discussion.title', ng-required: 'true'}
 
-    .form-group
-      %label{for: 'discussion-context-field', translate: 'discussion_form.context_label'}
-      %textarea#discussion-context-field.form-control{ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
+      .form-group
+        %label{for: 'discussion-context-field', translate: 'discussion_form.context_label'}
+        %textarea#discussion-context-field.form-control{ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
 
-    .form-group{ng_show: 'discussion.isNew()'}
-      .privacy-form{ng_show: 'showPrivacyForm()'}
-        .privacy-form-option
-          %input{type: 'radio', ng-model: 'private', value: 'true'}
-          %label{translate: 'common.state.public' }
-        .privacy-form-option
-          %input{type: 'radio', ng-model: 'private', value: 'false'}
-          %label{translate: 'common.state.private'} 
-      .privacy-notice{ng_hide: 'showPrivacyForm()'}
-        .public-discussion{ng_hide: 'discussion.private'}
-          IS PUBLIC
-        .private-discussion{ng_hide: 'discussion.private'}
-          IS PRIVATE
+      .form-group{ng_show: 'discussion.isNew()'}
+        .privacy-form{ng_show: 'showPrivacyForm()'}
+          .privacy-form-option
+            %input{type: 'radio', ng-model: 'private', value: 'true'}
+            %label{translate: 'common.state.public' }
+          .privacy-form-option
+            %input{type: 'radio', ng-model: 'private', value: 'false'}
+            %label{translate: 'common.state.private'} 
+        .privacy-notice{ng_hide: 'showPrivacyForm()'}
+          .public-discussion{ng_hide: 'discussion.private'}
+            %i.fa.fa-globe
+            %strong{translate: 'common.state.public'}
+            IS PUBLIC
+          .private-discussion{ng_show: 'discussion.private'}
+            %i.fa.fa-lock
+            %strong{translate: 'common.state.private'}
+            IS PRIVATE
 
   .modal-footer
     %button.btn.btn-primary{type: 'submit', translate: 'discussion_form.new_discussion_submit', ng_show: 'discussion.isNew()' }
