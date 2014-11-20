@@ -10,8 +10,9 @@ angular.module('loomioApp').factory 'GroupModel', (RecordStoreService) ->
       @membersCanEditComments = data.members_can_edit_comments
       @membersCanRaiseMotions = data.members_can_raise_motions
       @membersCanVote =         data.members_can_vote
-      @flexibleDiscussionPrivacy = data.flexible_discussion_privacy
-      @allowPublicDiscussions    = data.allow_public_discussions
+      @membersCanStartDiscussions = data.members_can_start_discussions
+      @discussionPrivacyOptions   = data.discussion_privacy_options
+      @isVisibleToParentMembers   = data.is_visible_to_parent_members
 
     plural: 'groups'
 
