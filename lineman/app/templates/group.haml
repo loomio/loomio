@@ -5,9 +5,21 @@
         .group-page-header
           .group-page-cover
           .group-page-logo
+          .group-page-buttons.pull-right
+            %a.btn.btn-icon.btn-default.btn-block{href: '#'}
+              %i.fa.fa-lg.fa-eye>
+              Notifications
+            %a.btn.btn-icon.btn-default.btn-block{href: '#'}
+              %i.fa.fa-lg.fa-cog>
+              Options
           .group-page-name
             %h1 {{group.name}}
+          .group-page-privacy
+            %i.fa.fa-lg.fa-lock>
+            Private
         .group-page-description
+          .context-menu.pull-right
+            %i.fa.fa-lg.fa-chevron-down
           %h3{ translate: 'group_page.description' }
           .group-description.card-strip-margin{ btf-markdown: 'group.description' }
         .group-page-threads
