@@ -1,4 +1,6 @@
 .group-page-container{
+  max-width: $group-page-max-width;
+  margin: 0 auto;
   /* over-riding bootstrap */
   .media:first-child{
     margin-top: 10px;
