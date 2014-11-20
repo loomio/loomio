@@ -118,7 +118,7 @@ sl:
     invite_people: "Povabi osebe v svojo skupino"
     invite_to_discussion: "Povabi osebe k tej razpravi"
   search:
-    header: "Rezultati iskanja za \"% {query}\""
+    header: "Rezultati iskanja za \"%{query}\""
     placeholder: "Išči"
     please_enter_a_search: 'Prosimo vnesite poizvedbo v iskalno vrstico zgoraj'
   example_discussion:
