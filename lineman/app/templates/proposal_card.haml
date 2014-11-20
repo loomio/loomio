@@ -4,12 +4,14 @@
     %span{translate: 'proposal_card.started_by', translate-values: '::{name: proposal.authorName()}'}
     %span.time-ago>
       {{discussion.createdAt | timeFromNowInWords}}
+    ·
+    / this should be time from now
+    %timeago{timestamp: 'proposal.closingAt' }>
+    / %span.time-ago>
+    /   {{proposal.closingAt | exactDateWithTime }}
 
   .proposal-card-description{btf-markdown: 'proposal.description' }
 
-  .proposal-card-closing-at
-    %i.fa.fa-clock-o>
-    %span.bump Closes {{proposal.closingAt | exactDateWithTime }}
 
   .pie-chart.media
     .pie-chart-pie.media-left
@@ -21,7 +23,7 @@
   %vote_form{proposal: 'proposal'}
 
   .proposal-card-votes
-    %h3 Positions
+    %h4 Positions
     .proposal-card-no-votes{ng-show: 'onlyVoterIsYou()', translate: 'proposal_card.only_voter_is_you'}
 
     .proposal-card-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_card.no_votes_yet'}

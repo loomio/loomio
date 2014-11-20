@@ -1,13 +1,13 @@
-.proposal-card.proposal-card-collapsed{ng-show: 'proposal'}
-  %mini-proposal-pie-chart.media-left{proposal: 'proposal'}
-  .proposal-card-body.media-left
-    .proposal-card-title
-      %strong.proposal-card-name {{::proposal.name}}
-      %span.proposal-closed{ng_show: 'proposal.closedAt'} Closed
-    .proposal-card-vote{ng_show: 'currentUserHasVoted()'}
-      .media-left.thread-event-vote-icon{class: 'thread-event-vote-icon-{{currentUserVote().position}}'}
-      .proposal-card-vote-statement {{ currentUserVote().statement }}
-    .proposal-card-outcome{ng_show: 'proposal.outcome'}
-      Outcome: {{::proposal.outcome}}
-  %timeago.pull-right{timestamp: 'proposal.createdAt'}
-  .clearfix
+.proposal-card-collapsed{ng-show: 'proposal'}
+  .media
+    %timeago.pull-right{timestamp: 'proposal.createdAt'}
+    %mini-proposal-pie-chart.media-left{proposal: 'proposal'}
+    .proposal-card-collapsed-body.media-body
+      .proposal-card-title
+        %h2.proposal-card-name {{::proposal.name}}
+        %span.proposal-closed{ng_show: 'proposal.closedAt'}
+      / .proposal-card-vote{ng_show: 'currentUserHasVoted()'}
+      /   .media-left.thread-event-vote-icon{class: 'thread-event-vote-icon-{{currentUserVote().position}}'}
+      /   .proposal-card-vote-statement {{ currentUserVote().statement }}
+      .proposal-card-outcome{ng_show: 'proposal.outcome'}
+        Outcome: {{::proposal.outcome}}

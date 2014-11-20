@@ -14,8 +14,8 @@ $group-page-max-width: 640px;
 $sidebar-width: 320px;
 
 @mixin fontSmall {
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 13px;
+  line-height: 15px;
 }
 
 @mixin fontMedium {
@@ -24,15 +24,26 @@ $sidebar-width: 320px;
 }
 
 @mixin fontLarge {
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 @mixin fontGrande {
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 22px;
+  line-height: 27px;
 }
 
+
+@mixin fontHelvetica {
+  font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-weight:400;
+  font-stretch:normal;
+}
+@mixin fontHelveticaLight {
+  font-family: "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-weight:300;
+  font-stretch:normal;
+}
 @mixin fontHelveticaBold {
   font-family: "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold",
     "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold', "Helvetica", "Tahoma",
@@ -40,12 +51,9 @@ $sidebar-width: 320px;
   font-weight:600;
   font-stretch:normal;
 }
-
-@mixin fontHelvetica {
-  font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman",
-    "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular',
-    "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
-  font-weight:400;
+@mixin fontHelveticaMedium{
+  font-family: "HelveticaNeueMedium", "HelveticaNeue-Medium", "Helvetica Neue Medium", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-weight:500;
   font-stretch:normal;
 }
 
@@ -60,9 +68,6 @@ $sidebar-width: 320px;
   padding: 15px;
   background: #fff;
   margin-bottom: 10px;
-  h3 {
-    margin: 0 0 5px 0;
-  }
   i{
     color: $meta-text-color;
   }
