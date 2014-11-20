@@ -9,8 +9,9 @@ $loomio-orange: #F6A82B;
 /* let's come up with a good naming scheme for the greys once we lock them in*/
 $light-grey: #F5F5F5;
 
-$thread-max-width: 510px;
+$thread-max-width: 640px;
 $sidebar-width: 320px;
+$container-min-width: 320px;
 $container-max-width: $thread-max-width;
 $expanded-container-max-width: $thread-max-width + $sidebar-width + 10px;
 
@@ -63,6 +64,9 @@ $expanded-container-max-width: $thread-max-width + $sidebar-width + 10px;
   margin-bottom: 10px;
   h3 {
     margin: 0 0 5px 0;
+  }
+  i{
+    color: $meta-text-color;
   }
   .card-minor-action{
     margin: 10px 0 0 0;

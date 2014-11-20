@@ -1,10 +1,5 @@
-$navbarGrey: #CCC;
 
 .menu-image { padding: 15px; }
-.bordered-icon { 
-  border: 1px solid $navbarGrey;
-  border-radius: 5px;
-}
 
 #header{
   z-index: 1000;
@@ -17,6 +12,7 @@ $navbarGrey: #CCC;
 }
 .container{
   max-width: $container-max-width;
+  min-width: $container-min-width;
 }
 .sidebar-is-open .container{
   max-width: $expanded-container-max-width;
@@ -29,7 +25,7 @@ $navbarGrey: #CCC;
   float: left;
 }
 main{
-  padding-top: 54px;
+  padding-top: 58px;
   z-index: 0;
 }
 .sidebar-is-open main{
@@ -62,10 +58,9 @@ a.loomio-nav-btn{
   display: block;
 }
 .loomio-nav-items i{
-  color: $navbarGrey;
+  color: $meta-text-color;
   font-size: 26px;
   line-height: 40px;
-  text-shadow: 0px 1px #888;
 }
 .loomio-nav-logo {
   width: 40px;

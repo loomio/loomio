@@ -1,5 +1,5 @@
 .members
-  .media.member{ng-repeat: 'member in group.members()'}    
+  .media.member{ng-repeat: 'member in group.members()'}
     .media-left{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = member'}
     .media-body {{ member.name }}
   .members-show-more.show-more.card-minor-action
