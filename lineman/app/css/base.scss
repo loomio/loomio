@@ -2,6 +2,7 @@ body {
   @include fontHelvetica;
   @include fontMedium;
   background-color: #f1f1f1;
+  word-wrap: break-word;
 }
 
 h1 {
@@ -17,6 +18,7 @@ h2 {
   @include fontLarge;
   margin: 8px 0;
 }
+/* use .first if your heading is the first child */
 h2.first{
   margin-top: 0;
 }
@@ -29,7 +31,7 @@ h3, h4 {
   margin-top: 22px;
 }
 h3.first{
-  margin: 0 0 5px 0;
+  margin-top: 0;
 }
 
 h4{

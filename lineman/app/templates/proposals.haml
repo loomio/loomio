@@ -3,6 +3,7 @@
     .active-proposal{ng-show: 'isSelectedProposal(proposal)'}
       %h3.first Proposal
       %proposal_card{proposal: 'proposal'}
-      %h3 Previous proposals
+
     .inactive-proposal{ng-hide: 'isSelectedProposal(proposal)', ng_click: 'setSelectedProposal(proposal)'}
+      %h3 Previous proposals
       %proposal_card_collapsed{proposal: 'proposal'}
