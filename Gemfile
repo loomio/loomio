@@ -63,6 +63,10 @@ gem 'jquery-fileupload-rails'
 gem 'momentjs-rails'
 gem 'ruby-progressbar'
 
+# consider uncommenting these when we want to mess around with json parsing
+#gem 'oj'
+#gem 'oj_mimic_json'
+
 group :development, :test do
   gem 'minitest'
   gem 'timecop'

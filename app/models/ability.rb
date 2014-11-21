@@ -169,7 +169,11 @@ class Ability
       user_is_member_of?(discussion.group_id)
     end
 
-    can [:create, :update], Comment do |comment|
+    can [:create], Comment do |comment|
+      user_is_member_of?(comment.group.id) && user_is_author_of?(comment)
+    end
+
+    can [:update], Comment do |comment|
       user_is_member_of?(comment.group.id) && user_is_author_of?(comment) && comment.can_be_edited?
     end
 
