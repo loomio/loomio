@@ -15,6 +15,7 @@
   max-width: $group-page-max-width;
   height: 100px;
   background: url('http://placehold.it/640x100') no-repeat;
+  @media(max-width: $screen-xs-max){ margin: 0 -15px; }
 }
 .group-page-logo{
   width: 108px;
@@ -27,10 +28,13 @@
 }
 .group-page-privacy{
   margin-top: 10px;
+  a{color: $primary-text-color;}
+  a:hover{text-decoration: none;}
+  a:hover span{text-decoration: underline;}
 }
 .group-page-name-and-privacy{
   margin: 10px 0;
-  @media (min-width: $screen-xs-max) { margin-left: 128px; }
+  @media(min-width: $screen-xs-max){ margin-left: 128px; }
 }
 .group-page-buttons{
   margin-top: 10px;
@@ -67,6 +71,9 @@
   padding-top: 10px;
 }
 
+.subgroup-list-item{
+  clear: both;
+}
 .subgroup-list-item-logo{
   width: 50px;
   height: 50px;

@@ -15,7 +15,7 @@
 
   .pie-chart.media
     .pie-chart-pie.media-left
-      %proposal_pie_chart{proposal: 'proposal', width: '100', height: '100'}
+      %proposal_pie_chart{proposal: 'proposal'}
     .pie-chart-legend.media-body
       .pie-chart-legend-item{class: 'pie-chart-legend-item-{{position}}', ng-repeat: 'position in proposal.positions'}
         {{ "proposal_position_"+position | translate}} ({{ proposal.voteCounts[position] }})

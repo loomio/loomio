@@ -11,12 +11,12 @@
   position: fixed;
 }
 .sidebar-is-open .sidebar-spacer{
-  @media(min-width: $screen-sm-min){ margin-left: $sidebar-width; }
+  @media (min-width: $screen-sm-min){ margin-left: $sidebar-width; }
 }
 .sidebar-is-open .container#main{
-  @media(min-width: $screen-sm-min){ max-width: $container-sm - $sidebar-width; }
-  @media(min-width: $screen-md-min){ max-width: $container-md - $sidebar-width; }
-  @media(min-width: $screen-lg-min){ max-width: $container-lg - $sidebar-width; }
+  @media (min-width: $screen-sm-min){ max-width: $container-sm - $sidebar-width; }
+  @media (min-width: $screen-md-min){ max-width: $container-md - $sidebar-width; }
+  @media (min-width: $screen-lg-min){ max-width: $container-lg - $sidebar-width; }
 }
 .container#main{
   padding-top: 48px;
@@ -60,6 +60,7 @@ a.loomio-nav-btn{
 .loomio-nav-dropdown{
   top: 46px;
   left: 60px;
+  padding: 0;
   margin: 0 -10px;
   min-width: 320px;
   @media (min-width: $screen-xs-min){

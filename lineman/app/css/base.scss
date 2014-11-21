@@ -2,7 +2,7 @@ body {
   @include fontHelvetica;
   @include fontMedium;
   background-color: #f1f1f1;
-  word-wrap: break-word;
+  word-break: break-word;
 }
 
 h1 {
@@ -18,11 +18,6 @@ h2 {
   @include fontLarge;
   margin: 8px 0;
 }
-/* use .first if your heading is the first child */
-h2.first{
-  margin-top: 0;
-}
-
 h3, h4 {
   @include fontHelveticaMedium;
   @include fontSmall;
@@ -30,10 +25,18 @@ h3, h4 {
   color: #545454;
   margin-top: 22px;
 }
-h3.first{
-  margin-top: 0;
-}
 
 h4{
   text-transform: none;
+}
+
+/* use .first if your heading is the first child */
+.first{
+  margin-top: 0;
+}
+.last{
+  /* utility class to use when you want to fix up
+     the margins on your card, e.g. if the last
+     element in the card is a paragraph */
+  margin-bottom: -10px;
 }

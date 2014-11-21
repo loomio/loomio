@@ -77,20 +77,14 @@ $sidebar-width: 320px;
     margin: 10px 0 0 0;
     clear: both;
   }
-  .card-strip-margin{
-    /* utility class to use when you want to fix up
-       the margins on your card, e.g. if the last
-       element in the card is a paragraph */
-    margin-bottom: -10px;
-  }
 }
+
 .btn-icon{
   text-align: left;
 }
 .btn-success.btn-icon i.fa{ color: #fff; }
 .btn-icon i.fa{ padding-right: 2px; }
 .btn.btn-icon{ padding: 6px 12px 6px 9px;}
-
 .avatar-initials{
   width: 30px;
   height: 30px;
@@ -110,6 +104,31 @@ $sidebar-width: 320px;
 .timeago{
   @include metaText;
 }
+.dropdown-menu.with-labels{
+  padding: 15px;
+  width: 300px;
+}
+.dropdown-menu-items{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.dropdown-menu-item{
+  margin-bottom: 10px;
+}
+.dropdown-menu-item.last{
+  margin-bottom: 0;
+}
+.dropdown-menu-item-label{
+  font-weight: bold;
+  line-height: 24px;
+  i{ font-weight: normal; }
+}
+h3.dropdown-heading{
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid $thread-border-color;
+}
+
 @import 'base';
 @import 'layout';
 @import 'thread';
