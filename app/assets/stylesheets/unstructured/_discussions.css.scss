@@ -1,5 +1,9 @@
 @import "marketing/media_queries";
 
+.markdown-label {
+  font-weight: normal !important;
+}
+
 .discussion-iframe {
   margin: 0;
   padding: 0;
@@ -321,17 +325,17 @@ body.discussions.show {
     }
 
     .comment-toolbar {
-      float: right;
-      margin-top: -38px;
-      margin-right: -8px;
-      width: 78px;
+      .markdown-label {
+        margin-top: 8px;
+      }
+      margin-right: 12px;
       .attachment-icon {
         cursor: pointer;
         margin-top: 6px;
       }
     }
 
-    .comment-toolbar > * { display: inline-block; }
+    /*.comment-toolbar > * { display: inline-block; }*/
 
     #comment-markdown-dropdown { margin-right: 11px }
     .markdown-setting-dropdown {
@@ -361,10 +365,12 @@ body.discussions.show {
     #align-button{
       margin-top: -4px;
     }
+
     #post-new-comment {
       margin: 8px 5px 5px 45px;
       width: 160px;
     }
+
     /** Code block padding (Stops avatars destroying indentation) */
     pre {
       display: block;
