@@ -11,12 +11,12 @@
   position: fixed;
 }
 .sidebar-is-open .sidebar-spacer{
-  @media (min-width: $screen-md-min){ margin-left: $sidebar-width; }
+  @media(min-width: $screen-sm-min){ margin-left: $sidebar-width; }
 }
 .sidebar-is-open .container#main{
-  @media (min-width: $screen-sm-min){ max-width: $container-sm - $sidebar-width; }
-  @media (min-width: $screen-md-min){ max-width: $container-md - $sidebar-width; }
-  @media (min-width: $screen-lg-min){ max-width: $container-lg - $sidebar-width; }
+  @media(min-width: $screen-sm-min){ max-width: $container-sm - $sidebar-width; }
+  @media(min-width: $screen-md-min){ max-width: $container-md - $sidebar-width; }
+  @media(min-width: $screen-lg-min){ max-width: $container-lg - $sidebar-width; }
 }
 .container#main{
   padding-top: 48px;
@@ -59,11 +59,15 @@ a.loomio-nav-btn{
 }
 .loomio-nav-dropdown{
   top: 46px;
+  left: 60px;
   margin: 0 -10px;
   min-width: 320px;
   @media (min-width: $screen-xs-min){
     margin: 0;
     width: 320px;
+  }
+  @media (max-width: 380px){
+    left: 0;
   }
 }
 .loomio-nav-btn.has-badge{
@@ -82,7 +86,7 @@ a.loomio-nav-btn{
   padding: 0;
   height: 600px;
   overflow-y:scroll;
-  width: 100%;
+  /*width: 100%;*/
 }
 #sidebar .drawer{
  height: 100%;
@@ -99,11 +103,18 @@ a.loomio-nav-btn{
   padding: 0 15px;
 }
 .drawer-item {
+  a{
+    display: block;
+    margin: -15px;
+    padding: 15px;
+  }
   a:hover{
     text-decoration: none;
+    background-color: $list-hover-color;
   }
   border-top: 1px solid #ddd;
   padding: 15px;
+  @media (max-width: 320px){ padding: 15px 20px; }
   width: 100%;
 }
 .drawer-item.is-active{
