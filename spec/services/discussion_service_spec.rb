@@ -82,7 +82,6 @@ describe 'DiscussionService' do
       discussion.should_receive(:private=).with(discussion_params[:private])
       discussion.should_receive(:title=).with(discussion_params[:title])
       discussion.should_receive(:description=).with(discussion_params[:description])
-      discussion.should_receive(:uses_markdown=).with(discussion_params[:uses_markdown])
 
       DiscussionService.update discussion: discussion,
                                params: discussion_params,
@@ -100,7 +99,6 @@ describe 'DiscussionService' do
       before { discussion.stub(:valid?).and_return(true) }
 
       it 'updates user markdown-preference' do
-        user.should_receive(:update_attributes).with(uses_markdown: discussion.uses_markdown).and_return(true)
         DiscussionService.update discussion: discussion,
                                  params: discussion_params,
                                  actor: user

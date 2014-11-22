@@ -37,7 +37,7 @@ module UploadHelper
 
     def fields
       {
-        :url => url,
+        #:url => url,
         :key => key,
         'Content-Type' => "",
         :acl => @options[:acl],
