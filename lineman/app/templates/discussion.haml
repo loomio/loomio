@@ -35,7 +35,7 @@
         .thread-events{infinite-scroll: "getNextPage()", infinite-scroll-distance: 1, infinite-scroll-disabled: 'lastPage'}
           %div{ng_repeat: 'event in discussion.events()', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
 
-        %add_comment{discussion: 'discussion'}
+        %comment_form{discussion: 'discussion'}
 
       .thread-start-proposal-card{ng_controller: 'StartProposalCardController', ng-show: '!discussion.activeProposal()'}
         %h3 Ready to make a decision?

@@ -1,8 +1,0 @@
-.add-comment.media
-  .media-left
-    %img{src: 'http://placehold.it/40x40'}
-  .media-body
-    .card-row.fake{ng-hide: 'isExpanded'}
-      %input.form-control{placeholder: "Write a comment...", ng_focus: "expand()", id: 'fake_comment_input'}
-    .card-row.real{ng-show: 'isExpanded'}
-      %comment_form{comment: 'comment'}
