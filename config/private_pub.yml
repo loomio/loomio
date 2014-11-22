@@ -1,10 +1,13 @@
+common: &common
+  server: "<%= ENV.fetch('FAYE_URL', 'http://localhost:9292/faye') %>"
+  #server: <%= ENV['FAYE_URL'] %>
+  secret_token: "<%= ENV.fetch('PRIVATE_PUB_SECRET_TOKEN', 'secret') %>"
+
 development:
-  server: "http://localhost:9292/faye"
-  secret_token: "secret"
+  <<: *common
 test:
-  server: "http://localhost:9292/faye"
-  secret_token: "secret"
+  <<: *common
+
 production:
-  server: "<%= ENV['CANONICAL_HOST'] %>:9292/faye"
-  secret_token: "<%= ENV['SECRET_COOKIE_TOKEN'] %>"
+  <<: *common
   signature_expiration: 7200
