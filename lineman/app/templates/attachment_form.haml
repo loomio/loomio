@@ -1,6 +1,8 @@
 .attachments
   .attachment-new{ng_hide: 'isAttaching'}
     %input{type: 'file', ng_file_select: 'upload($files)'}
+    .cover-up
+      %i.fa.fa-paperclip
   .attachment-in-progress{ng_show: 'isAttaching'}
     .attachment-filename {{ uploadingFilename }}
     .progress.active
