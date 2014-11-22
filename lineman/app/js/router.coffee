@@ -28,4 +28,4 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
     templateUrl: 'generated/templates/dashboard.html'
     controller: 'DashboardController'
   ).otherwise
-    redirectTo: '/'
+    redirectTo: '/discussions/M1BADlbN'
