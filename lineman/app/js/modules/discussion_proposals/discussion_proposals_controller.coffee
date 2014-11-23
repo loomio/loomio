@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProposalsController', ($scope, VoteService, ProposalService, ProposalModel, UserAuthService) ->
+angular.module('loomioApp').controller 'DiscussionProposalsController', ($scope, VoteService, ProposalService, ProposalModel, UserAuthService) ->
   ProposalService.fetchByDiscussion $scope.discussion, ->
     VoteService.fetchMyVotes($scope.discussion)
 

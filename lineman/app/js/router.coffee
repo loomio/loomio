@@ -2,7 +2,7 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
   $locationProvider.html5Mode(true)
 
   $routeProvider.when('/discussions/:id',
-    templateUrl: 'generated/templates/discussion.html'
+    templateUrl: 'generated/templates/discussion_page.html'
     controller: 'DiscussionPageController'
     resolve:
       discussion: ($route, DiscussionService, RecordStoreService) ->

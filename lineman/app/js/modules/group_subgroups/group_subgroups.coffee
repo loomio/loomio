@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'group_subgroups', ->
+angular.module('loomioApp').directive 'groupSubgroups', ->
   scope: {group: '='}
   restrict: 'E'
   templateUrl: 'generated/templates/group_subgroups.html'
