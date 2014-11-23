@@ -1,7 +1,6 @@
 angular.module('loomioApp').directive 'newMotion', ->
-  scope: {event: '='}
+  scope: {proposal: '='}
   restrict: 'E'
   templateUrl: 'generated/templates/new_motion.html'
   replace: true
-  controller: 'NewMotionController'
   link: (scope, element, attrs) ->

@@ -1,4 +1,5 @@
 angular.module('loomioApp').controller 'NewCommentController', ($scope, $translate, $modal, CommentService, UserAuthService) ->
+
   renderLikedBySentence = ->
     otherIds = _.without($scope.comment.likerIds, UserAuthService.currentUser.id)
     otherUsers = _.filter $scope.comment.likers(), (user) -> _.contains(otherIds, user.id)
@@ -35,12 +36,10 @@ angular.module('loomioApp').controller 'NewCommentController', ($scope, $transla
           name = otherNames.slice(-1)[0]
           $translate('discussion.liked_by_many_others', joinedNames: joinedNames, name: name).then updateLikedBySentence
 
-  $scope.comment = $scope.event.comment()
-
   $scope.editComment = ->
     modalInstance = $modal.open
-      templateUrl: 'generated/templates/edit_comment.html'
-      controller: 'EditCommentController'
+      templateUrl: 'generated/templates/edit_comment_form.html'
+      controller: 'EditCommentFormController'
       resolve:
         comment: ->
           angular.copy($scope.comment)
@@ -48,7 +47,7 @@ angular.module('loomioApp').controller 'NewCommentController', ($scope, $transla
   $scope.deleteComment = ->
     $modal.open
       templateUrl: 'generated/templates/delete_comment_form.html'
-      controller: 'DeleteCommentForm'
+      controller: 'DeleteCommentFormController'
       resolve:
         comment: ->
           angular.copy($scope.comment)
