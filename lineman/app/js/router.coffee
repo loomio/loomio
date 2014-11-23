@@ -14,7 +14,7 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
       currentUser: ($http, UserAuthService, UserModel) ->
         UserAuthService.fetchCurrentUser()
   ).when('/groups/:id',
-    templateUrl: 'generated/templates/group.html',
+    templateUrl: 'generated/templates/group_page.html',
     controller: 'GroupController',
     resolve:
       group: ($route, GroupService) ->
@@ -22,10 +22,10 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
       currentUser: ($http, UserAuthService, UserModel) ->
         UserAuthService.fetchCurrentUser()
   ).when('/users/sign_in',
-    templateUrl: 'generated/templates/login.html'
+    templateUrl: 'generated/templates/login_page.html'
     controller: 'SessionController'
   ).when('/dashboard',
-    templateUrl: 'generated/templates/dashboard.html'
+    templateUrl: 'generated/templates/dashboard_page.html'
     controller: 'DashboardController'
   ).otherwise
     redirectTo: '/'
