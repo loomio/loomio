@@ -46,23 +46,15 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
           angular.copy($scope.comment)
 
   $scope.deleteComment = ->
-    # if confirm delete comment
-    # if currentUser.can('delete', $scope.comment)
-    # delete comment via service
-    console.log 'delete commet'
-    modalInstance = $modal.open
-      templateUrl: 'generated/templates/delete_comment_dialog.html'
-      controller: 'DeleteCommentDialogController'
+    $modal.open
+      templateUrl: 'generated/templates/delete_comment_form.html'
+      controller: 'DeleteCommentForm'
       resolve:
         comment: ->
-          $scope.comment
-    modalInstance.result.then (something) ->
-      # probably unused
+          angular.copy($scope.comment)
 
   $scope.showContextMenu = ->
     $scope.canEditComment() or $scope.canDeleteComment()
-
-
 
   $scope.canEditComment = ->
     # should be:
@@ -93,9 +85,6 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
 
   $scope.$watch 'comment.likerIds', ->
     renderLikedBySentence()
-
-
-  #renderLikedBySentence()
 
   $scope.reply = ->
     $scope.$emit 'replyToCommentClicked', $scope.comment

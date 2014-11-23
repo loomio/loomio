@@ -3,7 +3,7 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
 
   $routeProvider.when('/discussions/:id',
     templateUrl: 'generated/templates/discussion.html'
-    controller: 'DiscussionController'
+    controller: 'DiscussionPageController'
     resolve:
       discussion: ($route, DiscussionService, RecordStoreService) ->
         promise = DiscussionService.fetchByKey($route.current.params.id)
@@ -15,7 +15,7 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
         UserAuthService.fetchCurrentUser()
   ).when('/groups/:id',
     templateUrl: 'generated/templates/group_page.html',
-    controller: 'GroupController',
+    controller: 'GroupPageController',
     resolve:
       group: ($route, GroupService) ->
         GroupService.fetchByKey($route.current.params.id)
@@ -23,9 +23,9 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
         UserAuthService.fetchCurrentUser()
   ).when('/users/sign_in',
     templateUrl: 'generated/templates/login_page.html'
-    controller: 'SessionController'
+    controller: 'LoginPageController'
   ).when('/dashboard',
     templateUrl: 'generated/templates/dashboard_page.html'
-    controller: 'DashboardController'
+    controller: 'DashboardPageController'
   ).otherwise
     redirectTo: '/'
