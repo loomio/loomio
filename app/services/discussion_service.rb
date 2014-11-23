@@ -31,7 +31,6 @@ class DiscussionService
       Events::DiscussionDescriptionEdited.publish!(discussion, actor)
     end
 
-    actor.update_attributes(uses_markdown: discussion.uses_markdown)
     DiscussionReader.for(discussion: discussion, user: actor).follow!
   end
 end
