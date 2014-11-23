@@ -1,7 +1,19 @@
-.discussions
-  .discussion{ng_repeat: 'discussion in group.discussions()'}
-    {{ discussion.title }}
-  .discussions-show-more
-    %a{ng-hide: 'lastPage', ng-click: 'getNextPage()', href: '#'} {{ 'group.show_more' | translate }}
+.group-thread-list
+  .group-thread-list-item{ng_repeat: 'discussion in group.discussions()'}
+    .time-and-icon.pull-right
+      %timeago.group-thread-list-time{timestamp: 'discussion.lastActivityAt' }>
+      %span.group-thread-list-icon
+        %i.fa.fa-lg.fa-comments
+
+    .group-thread-list-thread-title {{ discussion.title }}
+    /should be discussion.group.name but not sure how to make it go
+    .group-thread-list-group-name {{ group.name }}
+
+  .discussions-show-more.card-minor-action
+    %a{ng-hide: 'lastPage', ng-click: 'getNextPage()', href: '#', translate: 'common.action.show_more'}
   .discussions-new-thread
-    %a{href: '#', ng_click: 'openForm()'} {{ 'group.new_thread' | translate }}
+    .row
+      .col-xs-12.col-sm-6
+        %a.btn.btn-success.btn-block.btn-icon{ href: '#' }
+          %i.fa.fa-lg.fa-plus>
+          %a{href: '#', ng_click: 'openForm()', translate: 'common.action.new_thread' }

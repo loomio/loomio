@@ -1,10 +1,5 @@
-$navbarGrey: #CCC;
 
 .menu-image { padding: 15px; }
-.bordered-icon { 
-  border: 1px solid $navbarGrey;
-  border-radius: 5px;
-}
 
 #header{
   z-index: 1000;
@@ -15,31 +10,19 @@ $navbarGrey: #CCC;
   width: 100%;
   position: fixed;
 }
-.container{
-  max-width: $container-max-width;
+.sidebar-is-open .sidebar-spacer{
+  @media (min-width: $screen-sm-min){ margin-left: $sidebar-width; }
 }
-.sidebar-is-open .container{
-  max-width: $expanded-container-max-width;
+.sidebar-is-open .container#main{
+  @media (min-width: $screen-sm-min){ max-width: $container-sm - $sidebar-width; }
+  @media (min-width: $screen-md-min){ max-width: $container-md - $sidebar-width; }
+  @media (min-width: $screen-lg-min){ max-width: $container-lg - $sidebar-width; }
 }
-.sidebar-is-open #header .container{
-  margin-left: 0;
-}
-#sidebar{
-  width: $sidebar-width;
-  float: left;
-}
-main{
-  padding-top: 54px;
+.container#main{
+  padding-top: 48px;
   z-index: 0;
+  min-width: 320px;
 }
-.sidebar-is-open main{
-  max-width: 720px;
-  float: left;
-}
-.sidebar-is-open main .container{
-  padding-left: 330px;
-}
-
 
 .loomio-nav {
   position: relative;
@@ -62,7 +45,7 @@ a.loomio-nav-btn{
   display: block;
 }
 .loomio-nav-items i{
-  color: $navbarGrey;
+  color: $meta-text-color;
   font-size: 26px;
   line-height: 40px;
 }
@@ -76,11 +59,16 @@ a.loomio-nav-btn{
 }
 .loomio-nav-dropdown{
   top: 46px;
+  left: 60px;
+  padding: 0;
   margin: 0 -10px;
   min-width: 320px;
   @media (min-width: $screen-xs-min){
     margin: 0;
     width: 320px;
+  }
+  @media (max-width: 380px){
+    left: 0;
   }
 }
 .loomio-nav-btn.has-badge{
@@ -99,7 +87,7 @@ a.loomio-nav-btn{
   padding: 0;
   height: 600px;
   overflow-y:scroll;
-  width: 100%;
+  /*width: 100%;*/
 }
 #sidebar .drawer{
  height: 100%;
@@ -107,7 +95,7 @@ a.loomio-nav-btn{
  position: fixed;
  width: 320px;
  background: white;
- border-right: 1px solid $thread-border-color;
+ border: 1px solid $thread-border-color;
 }
 #sidebar .drawer{
   padding-top: 54px;
@@ -116,11 +104,18 @@ a.loomio-nav-btn{
   padding: 0 15px;
 }
 .drawer-item {
+  a{
+    display: block;
+    margin: -15px;
+    padding: 15px;
+  }
   a:hover{
     text-decoration: none;
+    background-color: $list-hover-color;
   }
   border-top: 1px solid #ddd;
   padding: 15px;
+  @media (max-width: 320px){ padding: 15px 20px; }
   width: 100%;
 }
 .drawer-item.is-active{

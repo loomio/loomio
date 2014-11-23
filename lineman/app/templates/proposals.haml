@@ -1,6 +1,9 @@
 .thread-proposals
   %div{ng_repeat: 'proposal in discussion.proposals()'}
     .active-proposal{ng-show: 'isSelectedProposal(proposal)'}
+      %h3.first Proposal
       %proposal_card{proposal: 'proposal'}
+
     .inactive-proposal{ng-hide: 'isSelectedProposal(proposal)', ng_click: 'setSelectedProposal(proposal)'}
+      %h3 Previous proposals
       %proposal_card_collapsed{proposal: 'proposal'}
