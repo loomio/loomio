@@ -118,7 +118,7 @@ class GroupsController < GroupBaseController
 
   def members_autocomplete
     users = @group.users.where('username ilike :term or name ilike :term ', {term: "%#{params[:q]}%"})
-    render json: users.map{|u| {name: "#{u.name} #{u.username}", username: u.username, real_name: u.name} }
+    render json: users.map{|u| {name: "#{u.name} #{u.username}", username: u.username, real_name: u.name} }, root: false  
   end
 
   def follow

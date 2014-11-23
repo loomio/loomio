@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119084535) do
+ActiveRecord::Schema.define(version: 20141120213103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -187,7 +187,7 @@ ActiveRecord::Schema.define(version: 20141119084535) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "uses_markdown",    default: true,  null: false
+    t.boolean  "uses_markdown",    default: false, null: false
     t.integer  "total_views",      default: 0,     null: false
     t.boolean  "is_deleted",       default: false, null: false
     t.integer  "comments_count",   default: 0,     null: false
@@ -537,7 +537,7 @@ ActiveRecord::Schema.define(version: 20141119084535) do
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
     t.integer  "memberships_count",                               default: 0,          null: false
-    t.boolean  "uses_markdown",                                   default: false
+    t.boolean  "uses_markdown",                                   default: false,      null: false
     t.string   "selected_locale"
     t.string   "time_zone"
     t.string   "key"

@@ -433,6 +433,15 @@ pt-BR:
         Se você não encontrar nada em sua caixa de entrada em alguns minutos, mande-nos
         um e-mail em <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
 
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> concordou com a proposta."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> absteve-se sobre a proposta."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> discordou sobre a proposta."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> bloqueou a proposta."
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> concordou com a proposta:"
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> absteve-se sobre a proposta:"
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> discordou sobre a proposta:"
+    user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> bloqueou a proposta:"
   discussion_items:
     new_discussion: "criou a discussão"
     new_motion: "criou uma proposição"
