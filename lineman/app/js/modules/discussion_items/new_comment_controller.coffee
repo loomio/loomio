@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $translate, $modal, CommentService, UserAuthService) ->
+angular.module('loomioApp').controller 'NewCommentController', ($scope, $translate, $modal, CommentService, UserAuthService) ->
   renderLikedBySentence = ->
     otherIds = _.without($scope.comment.likerIds, UserAuthService.currentUser.id)
     otherUsers = _.filter $scope.comment.likers(), (user) -> _.contains(otherIds, user.id)

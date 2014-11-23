@@ -1,2 +1,2 @@
-angular.module('loomioApp').controller 'NewVoteItemController', ($scope) ->
+angular.module('loomioApp').controller 'NewVoteController', ($scope) ->
   $scope.vote = $scope.event.vote()
