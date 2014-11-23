@@ -1,0 +1,6 @@
+.thread-proposals
+  %div{ng_repeat: 'proposal in discussion.proposals()'}
+    .active-proposal{ng-show: 'isSelectedProposal(proposal)'}
+      %discussion_proposal{proposal: 'proposal'}
+    .inactive-proposal{ng-hide: 'isSelectedProposal(proposal)', ng_click: 'setSelectedProposal(proposal)'}
+      %discussion_proposal_collapsed{proposal: 'proposal'}

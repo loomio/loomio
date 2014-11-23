@@ -41,7 +41,8 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
     dist:
       files: [
         expand: true
-        cwd: "app/templates/"
+        flatten: true
+        cwd: "app/js/modules/"
         src: "**/*.haml"
         dest: "generated/templates"
         ext: ".html"
@@ -120,7 +121,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
   # watch target concat with concat_sourcemap
   watch:
     ngtemplates:
-      files: "app/templates/**/*.haml"
+      files: "app/js/modules/**/*.haml"
       tasks: ["haml", "ngtemplates", "concat_sourcemap:js"]
 
     js:

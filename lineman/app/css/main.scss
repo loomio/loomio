@@ -60,8 +60,9 @@ $expanded-container-max-width: $thread-max-width + $sidebar-width + 10px;
 
 @import 'base';
 @import 'layout';
-@import 'thread';
-@import 'proposal_card';
-@import 'proposal_pie_chart';
-@import 'vote_form';
-@import 'time_ago';
+// This kinda sucks; must be a better way.
+@import '../js/modules/discussion_page/discussion_page';
+@import '../js/modules/discussion_proposal/discussion_proposal';
+@import '../js/modules/proposal_pie_chart/proposal_pie_chart';
+@import '../js/modules/vote_form/vote_form';
+@import '../js/modules/timeago/timeago';
