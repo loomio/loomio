@@ -5,7 +5,7 @@
     .card-row.fake{ng-hide: 'isExpanded'}
       %input.form-control{placeholder: "Write a comment...", ng_focus: "expand()", id: 'fake_comment_input'}
     .card-row.real{ng-show: 'isExpanded'}
-      %comment_form{comment: 'comment'}
+      %comment_create_form{comment: 'comment'}
 
       -#.comment-row.comment-attachments{ng_repeat: 'attachment in comment.attachments()'}
         -#%a.attachment-link{ng_href: '{{attachment.location}}', target: '_blank'}
