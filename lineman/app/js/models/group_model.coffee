@@ -10,6 +10,9 @@ angular.module('loomioApp').factory 'GroupModel', (RecordStoreService) ->
       @membersCanEditComments = data.members_can_edit_comments
       @membersCanRaiseMotions = data.members_can_raise_motions
       @membersCanVote =         data.members_can_vote
+      @membersCanStartDiscussions = data.members_can_start_discussions
+      @discussionPrivacyOptions   = data.discussion_privacy_options
+      @isVisibleToParentMembers   = data.is_visible_to_parent_members
 
     plural: 'groups'
 
@@ -28,11 +31,17 @@ angular.module('loomioApp').factory 'GroupModel', (RecordStoreService) ->
     members: ->
       RecordStoreService.get('users', _.map(@memberships(), (membership) -> membership.userId))
 
+    admins: ->
+      RecordStoreService.get('users', _.map(@memberships(), (membership) -> membership.userId if membership.admin))
+
     fullName: (separator = '>') ->
       if @parentId?
-        "#{@parent().name} #{separator} #{@name}"
+        "#{@parentName()} #{separator} #{@name}"
       else
         @name
 
     parent: ->
       RecordStoreService.get('groups', @parentId)
+
+    parentName: ->
+      @parent().name if @parentId?
