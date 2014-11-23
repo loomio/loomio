@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'DiscussionPageController', ($scope, $modal, discussion, MessageChannelService, EventService, RecordStoreService, FileUploadService, UserAuthService) ->
+angular.module('loomioApp').controller 'DiscussionPageController', ($scope, $modal, discussion, MessageChannelService, EventService, RecordStoreService, FileUploadService, UserAuthService, ProposalModel) ->
 
   onMessageReceived = ->
     console.log 'on message received called, yay'
