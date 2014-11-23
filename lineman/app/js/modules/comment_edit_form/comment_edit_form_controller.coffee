@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'EditCommentFormController', ($scope, $modalInstance, CommentModel, CommentService, comment) ->
+angular.module('loomioApp').controller 'CommentEditFormController', ($scope, $modalInstance, CommentModel, CommentService, comment) ->
   $scope.comment = comment
 
   $scope.cancel = ->
