@@ -36,9 +36,12 @@ angular.module('loomioApp').factory 'GroupModel', (RecordStoreService) ->
 
     fullName: (separator = '>') ->
       if @parentId?
-        "#{@parent().name} #{separator} #{@name}"
+        "#{@parentName()} #{separator} #{@name}"
       else
         @name
 
     parent: ->
       RecordStoreService.get('groups', @parentId)
+
+    parentName: ->
+      @parent().name if @parentId?

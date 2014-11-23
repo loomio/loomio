@@ -31,6 +31,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService, Base
     group: ->
       RecordStoreService.get 'groups', @groupId
 
+    groupName: ->
+      @group().name
+
     events: ->
       _.sortBy(@unsortedEvents(), 'sequenceId')
 
