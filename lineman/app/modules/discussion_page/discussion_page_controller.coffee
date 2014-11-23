@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, discussion, MessageChannelService, EventService, RecordStoreService, FileUploadService, UserAuthService) ->
+angular.module('loomioApp').controller 'DiscussionPageController', ($scope, $modal, discussion, MessageChannelService, EventService, RecordStoreService, FileUploadService, UserAuthService) ->
 
   onMessageReceived = ->
     console.log 'on message received called, yay'
@@ -15,15 +15,21 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
   busy = false
   $scope.lastPage = false
 
-  $scope.editDiscussion = ->
-    modalInstance = $modal.open
+  $scope.openProposalForm = ->
+    $modal.open
+      templateUrl: 'generated/templates/proposal_form.html'
+      controller: 'ProposalFormController'
+      resolve:
+        proposal: ->
+          new ProposalModel(discussion_id: $scope.discussion.id)
+
+  $scope.openEditDiscussionForm = ->
+    $modal.open
       templateUrl: 'generated/templates/discussion_form.html',
       controller: 'DiscussionFormController',
       resolve:
         discussion: ->
           angular.copy($scope.discussion)
-
-
 
   $scope.getNextPage = ->
     return false if busy or $scope.lastPage

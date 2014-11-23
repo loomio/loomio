@@ -1,7 +1,7 @@
-angular.module('loomioApp').directive 'subgroups', ->
+angular.module('loomioApp').directive 'group_subgroups', ->
   scope: {group: '='}
   restrict: 'E'
-  templateUrl: 'generated/templates/subgroups.html'
+  templateUrl: 'generated/templates/group_subgroups.html'
   replace: true
-  controller: 'SubgroupsController'
+  controller: 'GroupSubgroupsController'
   link: (scope, element, attrs) ->

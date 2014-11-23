@@ -1,7 +1,7 @@
-angular.module('loomioApp').directive 'addAttachment', ->
+angular.module('loomioApp').directive 'attachmentForm', ->
   scope: {comment: '='}
   restrict: 'E'
-  templateUrl: 'generated/templates/add_attachment.html'
+  templateUrl: 'generated/templates/attachment_form.html'
   replace: true
-  controller: 'AddAttachmentController'
+  controller: 'AttachmentFormController'
   link: (scope, element, attrs) ->

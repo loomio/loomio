@@ -1,4 +1,5 @@
-.avatar-initials{ng-if: 'user.avatarKind == "initials"'}
-  {{user.avatarInitials}}
-.avatar-image{ng-if: 'user.avatarKind != "initials"'}
-  %img{alt: "...", src: '{{user.avatarUrl}}'}
+.user-avatar
+  .user-avatar-initials{ng-if: 'user.avatarKind == "initials"'}
+    {{user.avatarInitials}}
+  .user-avatar-image{ng-if: 'user.avatarKind != "initials"'}
+    %img{alt: "...", src: '{{user.avatarUrl}}'}

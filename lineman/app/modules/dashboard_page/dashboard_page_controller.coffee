@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'DashboardController', ($scope, $location, UserAuthService) ->
+angular.module('loomioApp').controller 'DashboardPageController', ($scope, $location, UserAuthService) ->
   
   logout: ->
     UserAuthService.logout($scope.loggedOut)

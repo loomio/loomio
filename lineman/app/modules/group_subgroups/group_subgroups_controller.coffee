@@ -1,2 +1,2 @@
-angular.module('loomioApp').controller 'SubgroupsController', ($scope, GroupService, RecordStoreService) ->
+angular.module('loomioApp').controller 'GroupSubgroupsController', ($scope, GroupService, RecordStoreService) ->
   GroupService.fetchByParent $scope.group

@@ -37,7 +37,7 @@
 
         %add_comment{discussion: 'discussion'}
 
-      .thread-start-proposal-card{ng_controller: 'StartProposalCardController', ng-show: '!discussion.activeProposal()'}
+      .thread-start-proposal-card{ng_show: '!discussion.activeProposal()'}
         %h3 Ready to make a decision?
-        %a{href: '#', ng_click: 'openForm()'}
+        %a{href: '#', ng_click: 'openProposalForm()'}
           Create a proposal

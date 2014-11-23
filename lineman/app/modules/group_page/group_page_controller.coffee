@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'GroupController', ($scope, group, MessageChannelService) ->
+angular.module('loomioApp').controller 'GroupPageController', ($scope, group, MessageChannelService) ->
   $scope.group = group
 
   onMessageReceived = ->

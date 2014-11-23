@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProposalCardController', ($scope, $modal, ProposalService, UserAuthService, VoteModel, VoteService) ->
+angular.module('loomioApp').controller 'DiscussionProposalController', ($scope, $modal, ProposalService, UserAuthService, VoteModel, VoteService) ->
   currentUser = UserAuthService.currentUser
 
   filteredVotes = ->

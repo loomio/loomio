@@ -1,7 +1,7 @@
-angular.module('loomioApp').directive 'discussions', ->
+angular.module('loomioApp').directive 'group_discussions', ->
   scope: {group: '='}
   restrict: 'E'
-  templateUrl: 'generated/templates/discussions.html'
+  templateUrl: 'generated/templates/group_discussions.html'
   replace: true
-  controller: 'DiscussionsController'
+  controller: 'GroupDiscussionsController'
   link: (scope, element, attrs) ->

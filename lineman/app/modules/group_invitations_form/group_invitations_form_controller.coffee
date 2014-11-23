@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $modalInstance, group, InvitableService, InvitationService) ->
+angular.module('loomioApp').controller 'GroupInvitationsFormController', ($scope, $modalInstance, group, InvitableService, InvitationService) ->
   $scope.group = group
   $scope.fragment = ''
   $scope.invitations = []
