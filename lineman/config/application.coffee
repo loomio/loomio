@@ -42,7 +42,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       files: [
         expand: true
         flatten: true
-        cwd: "app/modules/"
+        cwd: "app/js/modules/"
         src: "**/*.haml"
         dest: "generated/templates"
         ext: ".html"
