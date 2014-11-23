@@ -7,39 +7,38 @@
   @include metaText;
   margin-bottom: 5px;
 }
-
-.proposal-card-body {
-  padding-left: 5px;
-  white-space: nowrap;
+.proposal-card-collapsed{
+  a{
+    display: block;
+    color: $primary-text-color;
+    margin: 0 -15px;
+    padding: 15px;
+  }
+  a:hover{
+    background-color: $list-hover-color;
+    text-decoration: none;
+  }
 }
-
-.proposal-closed {
-  padding: 3px;
-  margin: 0 5px;
-  background: #ccc;
-  border-radius: 5px;
+.proposal-card-collapsed h2{
+  font-size: 18px;
+  line-height: 20px;
 }
-
-.proposal-card-vote-icon {
-  width: 23px;
-  height: 23px;
+.proposal-card-collapsed-outcome{
+  color: $meta-text-color;
 }
-
-.proposal-card-closing-at {
+.proposal-card-collapsed-expand{
+  clear: both;
+  margin-top: 1em;
   @include metaText;
+  text-decoration: underline;
 }
-
-.pie-chart {
-
-}
-
 .pie-chart-pie {
   width: 120px;
   height: 120px;
 }
 .pie-chart-legend {
   @include metaText;
-  padding-top: 13px;
+  padding-top: 36px;
 }
 
 .pie-chart-legend-item{

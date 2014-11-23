@@ -9,6 +9,10 @@ en:
       like: 'Like'
       unlike: 'Unlike'
       cancel: 'Cancel'
+      show_more: "Show more"
+      new_thread: "New thread"
+      add_subgroup: 'Add subgroup'
+
 
   inbox:
     latest_threads: 'Latest threads'
@@ -71,15 +75,12 @@ en:
   proposal_position_no: 'No'
   proposal_position_block: 'Block'
 
-  group:
+  group_page:
     description: 'Description'
     discussions: 'Threads'
     members: 'Members'
     subgroups: 'Subgroups'
-    new_thread: 'New Thread...'
-    add_subgroup: 'Add Subgroup'
-    invite_members: 'Invite Members'
-    show_more: 'Show more...'
+    invite_people: 'Invite people'
 
   invitation:
     invite_people: 'Invite People'
