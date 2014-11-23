@@ -11,6 +11,7 @@ class CommentsController < BaseController
   end
 
   def update
+    @comment.uses_markdown = params[:comment].has_key? "uses_markdown"
     if CommentService.update(comment: @comment,
                              params: permitted_params.comment,
                              actor: current_user)

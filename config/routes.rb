@@ -26,8 +26,6 @@ Loomio::Application.routes.draw do
     get 'discussion/:key', action: :discussion
   end
 
-  get '/discussions/:key' => 'angular_support#boot'
-
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resource :inbox, only: :show, controller: 'inbox'
     resources :groups, only: :show do

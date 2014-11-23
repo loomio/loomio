@@ -169,7 +169,11 @@ class Ability
       user_is_member_of?(discussion.group_id)
     end
 
-    can [:create, :update], Comment do |comment|
+    can [:create], Comment do |comment|
+      user_is_member_of?(comment.group.id) && user_is_author_of?(comment)
+    end
+
+    can [:update], Comment do |comment|
       user_is_member_of?(comment.group.id) && user_is_author_of?(comment) && comment.can_be_edited?
     end
 
@@ -206,7 +210,7 @@ class Ability
     end
 
     can [:close, :edit_close_date], Motion do |motion|
-      motion.voting? && ((motion.author_id == user.id) || user_is_admin_of?(motion.discussion.group_id))
+      motion.persisted? && motion.voting? && ((motion.author_id == user.id) || user_is_admin_of?(motion.discussion.group_id))
     end
 
     can [:close], Motion do |motion|

@@ -1239,6 +1239,7 @@ en:
   persona: "Persona"
 
   common:
+    markdown_help_tooltip: 'Learn the basics of formatting your text with Markdown'
     settings: Settings
     dashboard: Dashboard
     unread: Unread

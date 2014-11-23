@@ -34,6 +34,7 @@ ActiveAdmin.register User do
       f.input :email
       f.input :username
       f.input :is_admin
+      f.input :angular_ui_enabled
     end
     f.actions
   end
@@ -44,6 +45,7 @@ ActiveAdmin.register User do
     user.email = params[:user][:email]
     user.username = params[:user][:username]
     user.is_admin = params[:user][:is_admin]
+    user.angular_ui_enabled = params[:user][:angular_ui_enabled]
     user.save
     redirect_to admin_users_url, :notice => "User updated"
   end
@@ -76,8 +78,8 @@ ActiveAdmin.register User do
     panel("Memberships") do
       table_for user.memberships.each do |m|
         column :group_id
-        column :group_name do |m|
-          Group.find(m.group_id).full_name
+        column :group_name do |g|
+          Group.find(g.group_id).full_name
         end
       end
     end
