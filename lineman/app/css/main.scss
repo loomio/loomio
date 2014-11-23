@@ -60,8 +60,8 @@ $expanded-container-max-width: $thread-max-width + $sidebar-width + 10px;
 
 @import 'base';
 @import 'layout';
-@import 'thread';
-@import 'proposal_card';
-@import 'proposal_pie_chart';
-@import 'vote_form';
-@import 'time_ago';
+@import '../modules/discussion_page/discussion_page';
+@import '../modules/discussion_proposal/discussion_proposal';
+@import '../modules/proposal_pie_chart/proposal_pie_chart';
+@import '../modules/vote_form/vote_form';
+@import '../modules/timeago/timeago';
