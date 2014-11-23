@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProposalPieChartControllerMini', ($scope) ->
+angular.module('loomioApp').controller 'ProposalPieChartMiniController', ($scope) ->
 
   $scope.pieChartData = [
     { value : 0, color : "#90D490" },
