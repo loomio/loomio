@@ -36,3 +36,7 @@ $ ->
 $ ->
   $('.js-tooltip').tooltip
     placement: "bottom"
+
+$ ->
+  $('.js-tooltip-left').tooltip
+    placement: "left"

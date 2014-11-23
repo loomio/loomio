@@ -20,8 +20,8 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
 
   removeTasks:
     common: ["handlebars", "jst", 'less', 'pages:dev']
-    dev: ["pages:dev"]
-    dist: ['pages:dev']
+    dev: ["pages:dev", 'pages:dist']
+    dist: ['pages:dev', 'pages:dist']
 
   prependTasks:
     dist: ["ngAnnotate"] # ng-annotate should run in dist only
@@ -69,6 +69,11 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
           cwd: 'vendor/bower_components/components-font-awesome/fonts'
           src: ['*.*']
           dest: 'generated/fonts'
+        ,
+          expand: true
+          cwd: 'generated/'
+          src: ['*.html']
+          dest: 'dist/'
         ]
 
   sass:
