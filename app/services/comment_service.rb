@@ -40,5 +40,7 @@ class CommentService
     actor.ability.authorize! :create, comment
     comment.save!
     Memos::CommentUpdated.publish!(comment)
+
+    true
   end
 end
