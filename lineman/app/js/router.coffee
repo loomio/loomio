@@ -19,7 +19,15 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
     resolve:
       group: ($route, GroupService) ->
         GroupService.fetchByKey($route.current.params.id)
-      currentUser: ($http, UserAuthService, UserModel) ->
+      currentUser: ($http, UserAuthService) ->
+        UserAuthService.fetchCurrentUser()
+  ).when('/groups/:id/settings',
+    templateUrl: 'generated/templates/group_form.html',
+    controller: 'GroupFormController',
+    resolve:
+      group: ($route, GroupService) ->
+        GroupService.fetchByKey($route.current.params.id)
+      currentUser: ($http, UserAuthService) ->
         UserAuthService.fetchCurrentUser()
   ).when('/users/sign_in',
     templateUrl: 'generated/templates/login.html'

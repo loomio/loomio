@@ -7,33 +7,33 @@
         .group-page-buttons.pull-right
           %a.btn.btn-icon.btn-default.btn-block{href: '#'}
             %i.fa.fa-lg.fa-eye>
-            Notifications
-          %a.btn.btn-icon.btn-default.btn-block{href: '#'}
+            %span{translate: 'group_page.notifications'}
+          %a.btn.btn-icon.btn-default.btn-block{href: '#/groups/{{::group.key}}/settings', ng_click: 'goToEditForm()', translate: 'group_page.options'}
             %i.fa.fa-lg.fa-cog>
-            Options
+            %span{translate: 'group_page.options'}
         .group-page-name-and-privacy
           .group-page-name
             %h1 {{group.name}}
           .group-page-privacy{dropdown: '', on-toggle: 'toggled(open)'}
             %a.dropdown-toggle{href: '#'}
               %i.fa.fa-lg.fa-lock>
-              %span Private
+              %span{translate: 'common.state.private'}
             .dropdown-menu.with-labels{role: 'menu'}
-              %h3.dropdown-heading Visibility
+              %h3.dropdown-heading{translate: 'group_page.visibility'}
               %ul.dropdown-menu-items
                 %li.dropdown-menu-item
                   .dropdown-menu-item-label
                     %i.fa.fa-lg.fa-lock>
-                    %span> Private
+                    %span{translate: 'common.state.private'}
                     %i.fa.fa-lg.fa-check
                   .dropdown-menu-item-details
-                    This group is only visible to members.
+                    %span{translate: 'group_page.privacy.private'}
                 %li.dropdown-menu-item.last
                   .dropdown-menu-item-label
                     %i.fa.fa-lg.fa-globe>
-                    %span> Public
+                    %span{translate: 'common.state.public'}
                   .dropdown-menu-item-details
-                    This group is visible on the web.
+                    %span{translate: 'group_page.privacy.public'}
       .group-page-description
         .context-menu.pull-right
           %i.fa.fa-lg.fa-chevron-down
