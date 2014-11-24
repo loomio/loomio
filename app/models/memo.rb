@@ -9,8 +9,8 @@ class Memo
   end
 
   def publish!
-    return unless ENV['FAYE_ENABLED']
+    return unless ENV['FAYE_ENABLED'] # remove this soon
     #puts "PrivatePub.publish_to #{message_channel}, #{ as_hash.inspect }"
-    PrivatePub.publish_to message_channel, as_hash
+    PrivatePub.delay.publish_to message_channel, as_hash
   end
 end

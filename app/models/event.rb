@@ -33,7 +33,7 @@ class Event < ActiveRecord::Base
     if message_channel
       serializer = EventSerializer.new(self)
       puts "publishing to: #{message_channel}"
-      PrivatePub.publish_to message_channel, serializer
+      PrivatePub.delay.publish_to message_channel, serializer
     end
   end
 
