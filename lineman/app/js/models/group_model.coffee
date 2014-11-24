@@ -32,6 +32,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, RecordStoreService
         members_can_edit_comments:     @membersCanEditComments
         members_can_raise_motions:     @membersCanRaiseMotions
         members_can_vote:              @membersCanVote
+        membership_granted_upon:       @membershipGrantedUpon
         discussion_privacy_options:    @discussionPrivacyOptions
         visible_to:                    @visibleTo
 
