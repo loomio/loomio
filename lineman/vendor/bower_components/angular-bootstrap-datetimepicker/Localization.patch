@@ -1,0 +1,1457 @@
+Index: package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- package.json	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ package.json	(revision )
+@@ -10,6 +10,7 @@
+   "devDependencies": {
+     "bower": "latest",
+     "grunt": "^0.4.4",
++    "grunt-complexity": "^0.1.7",
+     "grunt-contrib-jshint": "^0.10.0",
+     "grunt-istanbul-coverage": "^0.0.5",
+     "grunt-karma": "^0.8.2",
+Index: Gruntfile.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Gruntfile.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ Gruntfile.js	(revision )
+@@ -7,7 +7,7 @@
+   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+ 
+   // Default task.
+-  grunt.registerTask('default', ['jshint', 'karma', 'coverage']);
++  grunt.registerTask('default', ['jshint', 'complexity', 'karma', 'coverage']);
+ 
+   var testConfig = function (configFile, customOptions) {
+     var options = { configFile: configFile, keepalive: true };
+@@ -21,6 +21,19 @@
+ 
+   // Project configuration.
+   grunt.initConfig({
++    complexity: {
++      generic: {
++        src: ['src/**/*.js'],
++        options: {
++          breakOnErrors: false,
++          jsLintXML: 'complexity/report.xml',         // create XML JSLint-like report
++          errorsOnly: false,               // show only maintainability errors
++          cyclomatic: [3, 7, 12],          // or optionally a single value, like 3
++          halstead: [8, 13, 20],           // or optionally a single value, like 8
++          maintainability: 100
++        }
++      }
++    },
+     coverage: {
+       options: {
+         thresholds: {
+\ No newline at end of file
+Index: test/minView.spec.js
+===================================================================
+--- test/minView.spec.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ test/configuration/minView.spec.js	(revision )
+@@ -1,0 +1,0 @@
+Index: test/view/de/day_de.spec.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- test/view/de/day_de.spec.js	(revision )
++++ test/view/de/day_de.spec.js	(revision )
+@@ -0,0 +1,66 @@
++/*globals describe, beforeEach, it, expect, module, inject, jQuery, moment */
++
++/**
++ * @license angular-bootstrap-datetimepicker
++ * (c) 2013 Knight Rider Consulting, Inc. http://www.knightrider.com
++ * License: MIT
++ */
++
++/**
++ *
++ *    @author        Dale "Ducky" Lotts
++ *    @since        7/21/13
++ */
++
++describe('German day view with initial date of 2013-01-22', function () {
++  'use strict';
++  var $rootScope, element;
++  beforeEach(module('ui.bootstrap.datetimepicker'));
++  beforeEach(inject(function (_$compile_, _$rootScope_) {
++    moment.locale('de');
++    $rootScope = _$rootScope_;
++    $rootScope.date = moment("2013-01-22T00:00:00.000").toDate();
++    element = _$compile_('<datetimepicker data-datetimepicker-config="{ startView: \'day\'}" data-ng-model="date"></datetimepicker>')($rootScope);
++    $rootScope.$digest();
++  }));
++  it('has `.switch` element with a value of 2013-1', function () {
++    expect(jQuery('.switch', element).text()).toBe('2013-Jan.');
++  });
++  it('has 42 `.day` elements', function () {
++    expect(jQuery('.day', element).length).toBe(42);
++  });
++  it('has 1 `.past` elements', function () {
++    expect(jQuery('.past', element).length).toBe(1);
++  });
++  it('has 10 `.future` elements', function () {
++    expect(jQuery('.future', element).length).toBe(10);
++  });
++  it('has 1 `.active` element with a value of 22', function () {
++    expect(jQuery('.active', element).text()).toBe('22');
++  });
++});
++
++
++describe('day with initial date of "2020-01-01T00:00:00.000" and minView="day"', function () {
++  'use strict';
++  var $rootScope, element;
++  beforeEach(module('ui.bootstrap.datetimepicker'));
++  beforeEach(inject(function (_$compile_, _$rootScope_) {
++    $rootScope = _$rootScope_;
++    $rootScope.date = moment("2020-01-01T00:00:00.000").toDate();
++    element = _$compile_('<datetimepicker data-datetimepicker-config="{ startView: \'day\', minView: \'day\' }" data-ng-model="date"></datetimepicker>')($rootScope);
++    $rootScope.$digest();
++  }));
++  it('clicking the 14th `.day` element will set the date value to 2020-01-11T00:00:00.000"', function () {
++    expect(jQuery('.switch', element).text()).toBe('2020-Jan.');
++
++    expect(jQuery('.active', element).length).toBe(1);
++    expect(jQuery('.day', element).length).toBe(42);
++
++    var selectedElement = jQuery(jQuery('.day', element)[13]);
++    selectedElement.trigger('click');
++
++    expect(jQuery('.active', element).text()).toBe('12');
++    expect($rootScope.date).toEqual(moment("2020-01-12T00:00:00.000").toDate());
++  });
++});
+\ No newline at end of file
+Index: test/onSetTime.spec.js
+===================================================================
+--- test/onSetTime.spec.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ test/configuration/onSetTime.spec.js	(revision )
+@@ -1,0 +1,0 @@
+Index: demo/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- demo/index.html	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ demo/index.html	(revision )
+@@ -75,7 +75,7 @@
+                         </div>
+                     </a>
+                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+-                        <datetimepicker data-ng-model="data.inputCalendar"
++                        <datetimepicker data-ng-model="data.dateDropDownInput"
+                                         data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"></datetimepicker>
+                     </ul>
+                 </div>
+\ No newline at end of file
+Index: test/model/modelValidatieon.spec.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- test/model/modelValidatieon.spec.js	(revision )
++++ test/model/modelValidatieon.spec.js	(revision )
+@@ -0,0 +1,1 @@
++
+\ No newline at end of file
+Index: test/day.spec.js
+===================================================================
+--- test/day.spec.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ test/view/en/day.spec.js	(revision )
+@@ -12,11 +12,12 @@
+  *    @since        7/21/13
+  */
+ 
+-describe('day view with initial date of 2013-01-22', function () {
++describe('English day view with initial date of 2013-01-22', function () {
+   'use strict';
+   var $rootScope, element;
+   beforeEach(module('ui.bootstrap.datetimepicker'));
+   beforeEach(inject(function (_$compile_, _$rootScope_) {
++    moment.locale("en");
+     $rootScope = _$rootScope_;
+     $rootScope.date = moment("2013-01-22T00:00:00.000").toDate();
+     element = _$compile_('<datetimepicker data-datetimepicker-config="{ startView: \'day\'}" data-ng-model="date"></datetimepicker>')($rootScope);
+@@ -61,5 +62,33 @@
+ 
+     expect(jQuery('.active', element).text()).toBe('11');
+     expect($rootScope.date).toEqual(moment("2020-01-11T00:00:00.000").toDate());
++  });
++});
++
++
++describe('day with initial date of "2008-02-01T00:00:00.000" (leap year) and minView="day"', function () {
++  'use strict';
++  var $rootScope, element;
++  beforeEach(module('ui.bootstrap.datetimepicker'));
++  beforeEach(inject(function (_$compile_, _$rootScope_) {
++    $rootScope = _$rootScope_;
++    $rootScope.date = moment("2008-02-01T00:00:00.000").toDate();
++    element = _$compile_('<datetimepicker data-datetimepicker-config="{ startView: \'day\', minView: \'day\' }" data-ng-model="date"></datetimepicker>')($rootScope);
++    $rootScope.$digest();
++  }));
++  it('clicking the 34th `.day` element will set the date value to 2008-29-11T00:00:00.000"', function () {
++    expect(jQuery('.switch', element).text()).toBe('2008-Feb');
++
++    expect(jQuery('.active', element).length).toBe(1);
++    expect(jQuery('.active', element).text()).toBe('1');
++    expect(jQuery('.day', element).length).toBe(42);
++    expect(jQuery('.past', element).length).toBe(5);
++
++    expect(jQuery('.future', element).length).toBe(8);
++    var selectedElement = jQuery(jQuery('.day', element)[33]);
++
++    selectedElement.trigger('click');
++    expect(jQuery('.active', element).text()).toBe('29');
++    expect($rootScope.date).toEqual(moment("2008-02-29T00:00:00.000").toDate());
+   });
+ });
+\ No newline at end of file
+Index: test/minute.spec.js
+===================================================================
+--- test/minute.spec.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ test/view/en/minute.spec.js	(revision )
+@@ -18,6 +18,7 @@
+   var $rootScope, $compile, element;
+   beforeEach(module('ui.bootstrap.datetimepicker'));
+   beforeEach(inject(function (_$compile_, _$rootScope_) {
++    moment.locale("en");
+     $compile = _$compile_;
+     $rootScope = _$rootScope_;
+     $rootScope.date = moment("2013-01-22T00:00:00.000").toDate();
+@@ -25,7 +26,7 @@
+     $rootScope.$digest();
+   }));
+   it('has `.switch` element with a value of 2013-Jan-22 0:00', function () {
+-    expect(jQuery('.switch', element).text()).toBe('2013-Jan-22 0:00');
++    expect(jQuery('.switch', element).text()).toBe('Jan 22, 2013 12:00 AM');
+   });
+   it('has 12 `.minute` elements', function () {
+     expect(jQuery('.minute', element).length).toBe(12);
+@@ -34,7 +35,7 @@
+     expect(jQuery('.active', element).length).toBe(1);
+   });
+   it('`.active` element with a value of 0:00', function () {
+-    expect(jQuery('.active', element).text()).toBe('0:00');
++    expect(jQuery('.active', element).text()).toBe('12:00 AM');
+   });
+ });
+ 
+@@ -51,21 +52,21 @@
+     $rootScope.$digest();
+   }));
+   it('has `.switch` element with a value of 2013-Jan-22 1:00', function () {
+-    expect(jQuery('.switch', element).text()).toBe('2013-Jan-22 1:00');
++    expect(jQuery('.switch', element).text()).toBe('Jan 22, 2013 1:00 AM');
+   });
+   it('has 4 `.minute` elements', function () {
+     expect(jQuery('.minute', element).length).toBe(4);
+   });
+   it('has 1 `.active` element with a value of 1:15', function () {
+-    expect(jQuery('.active', element).text()).toBe('1:15');
++    expect(jQuery('.active', element).text()).toBe('1:15 AM');
+   });
+   it('changes date/time to 1:00 to when clicking first `.minute` element with a value of 0:00', function () {
+-    expect(jQuery('.active', element).text()).toBe('1:15');
++    expect(jQuery('.active', element).text()).toBe('1:15 AM');
+ 
+     var selectedElement = jQuery(jQuery('.minute', element)[0]);
+     selectedElement.trigger('click');
+ 
+-    expect(jQuery('.active', element).text()).toBe('1:00');
++    expect(jQuery('.active', element).text()).toBe('1:00 AM');
+     expect($rootScope.date).toEqual(moment("2013-01-22T01:00:00.000").toDate());
+   });
+ });
+\ No newline at end of file
+Index: test/configurationValidation.spec.js
+===================================================================
+--- test/configurationValidation.spec.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ test/configuration/configurationValidation.spec.js	(revision )
+@@ -1,0 +1,0 @@
+Index: test/month.spec.js
+===================================================================
+--- test/month.spec.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ test/view/en/month.spec.js	(revision )
+@@ -18,6 +18,7 @@
+   var $rootScope, $compile, element;
+   beforeEach(module('ui.bootstrap.datetimepicker'));
+   beforeEach(inject(function (_$compile_, _$rootScope_) {
++    moment.locale("en");
+     $compile = _$compile_;
+     $rootScope = _$rootScope_;
+     $rootScope.date = moment("2010-10-01").toDate();
+\ No newline at end of file
+Index: demo/index_de.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- demo/index_de.html	(revision )
++++ demo/index_de.html	(revision )
+@@ -0,0 +1,129 @@
++<!DOCTYPE html>
++<!--[if lt IE 7]>
++<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
++<!--[if IE 7]>
++<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
++<!--[if IE 8]>
++<html class="no-js lt-ie9"> <![endif]-->
++<!--[if gt IE 8]><!-->
++<html class="no-js"> <!--<![endif]-->
++<head>
++    <meta charset="utf-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
++    <title>Angular Bootstrap - Date Time Picker Demo</title>
++    <base href=".."></base>
++    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
++    <link rel="stylesheet" href="src/css/datetimepicker.css">
++    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
++    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
++    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
++    <script type="text/javascript" src="bower_components/moment/moment.js"></script>
++    <script type="text/javascript" src="bower_components/moment/locale/de.js"></script>
++    <script type="text/javascript" src="src/js/datetimepicker.js"></script>
++</head>
++<body ng-app="ui.bootstrap.datetimepicker">
++<div class="container">
++
++    <div class="row">
++        <div class="col-sm-6">
++            <h3>Embedded calendar</h3>
++
++            <p><code>startView: 'year'</code> and <code>minView: 'year'</code>.</p>
++
++            <div class="well">
++                <p>Formatted Date: {{ data.embeddedYear | date:'yyyy-MM-dd' }}</p>
++
++                <datetimepicker data-ng-model="data.embeddedYear"
++                                data-datetimepicker-config="{ startView: 'year', minView: 'year'}"></datetimepicker>
++            </div>
++        </div>
++        <div class="col-sm-6">
++            <h3>Drop-down using text link</h3>
++
++            <p>Default configuration.</p>
++
++            <div class="well">
++                <p>Formatted Date: {{ data.linkCalendar | date:'medium' }}</p>
++
++                <div class="dropdown">
++                    <a class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown" data-target="#"
++                       href="#">
++                        Click here to show calendar
++                    </a>
++                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
++                        <datetimepicker data-ng-model="data.linkCalendar"></datetimepicker>
++                    </ul>
++                </div>
++            </div>
++        </div>
++    </div>
++
++    <div class="row">
++        <div class="col-sm-6">
++            <h3>Drop-down Datetime with input box</h3>
++
++            <p><code>dropdownSelector: '#dropdown2'</code> to toggle the dropdown.</p>
++
++            <div class="well">
++                <p>Formatted Date: {{ data.inputCalendar | date:'medium' }}</p>
++
++                <div class="dropdown">
++                    <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#"
++                       href="#">
++                        <div class="input-group">
++                            <input type="text" class="form-control" data-ng-model="data.dateDropDownInput">
++                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
++                        </div>
++                    </a>
++                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
++                        <datetimepicker data-ng-model="data.dateDropDownInput"
++                                        data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"></datetimepicker>
++                    </ul>
++                </div>
++            </div>
++
++
++        </div>
++        <div class="col-sm-6">
++            <h3>Show / hide with check box</h3>
++
++            <p><code>startView: 'day'</code> and <code>minuteStep: 15</code></p>
++
++            <div class="well">
++                <p>Formatted Date: {{ data.checkboxCalendar | date:'medium' }}</p>
++                Click me to show/hide via ng-show: <input type="checkbox" data-ng-model="data.checked"><br/>
++                <datetimepicker data-ng-model="data.checkboxCalendar" data-ng-show="data.checked"
++                                data-datetimepicker-config="{ startView: 'day', minuteStep: 15 }"></datetimepicker>
++            </div>
++        </div>
++    </div>
++
++    <div class="row">
++        <div class="col-sm-6">
++            <h3>Embedded calendar starting on Monday</h3>
++
++            <p><code>weekStart: 1</code>
++
++            <div class="well">
++                <p>Formatted Date: {{ data.embeddedYear | date:'yyyy-MM-dd' }}</p>
++
++                <datetimepicker data-ng-model="data.embeddedYear"
++                                data-datetimepicker-config="{ weekStart: 1}"></datetimepicker>
++            </div>
++        </div>
++        <div class="col-sm-6">
++            <h3>Embedded calendar starting on Friday</h3>
++
++            <p><code>weekStart: 5</code>
++
++            <div class="well">
++                <p>Formatted Date: {{ data.embeddedYear | date:'yyyy-MM-dd' }}</p>
++
++                <datetimepicker data-ng-model="data.embeddedYear"
++                                data-datetimepicker-config="{ weekStart: 5}"></datetimepicker>
++            </div>
++        </div>
++    </div>
++</div>
++</body>
++</html>
+\ No newline at end of file
+Index: src/js/datetimepicker.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/js/datetimepicker.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ src/js/datetimepicker.js	(revision )
+@@ -64,15 +64,15 @@
+         throw ("weekStart must be numeric");
+       }
+       if (configuration.weekStart < 0 || configuration.weekStart > 6) {
+-        throw ("weekStart must be greater than or equal to zero and less than 7");
++        throw ("weekStart must be greater than or equal to zero and less than 7, current value is " + configuration.weekStart);
+       }
+     };
+ 
+     return {
+       restrict: 'E',
+       require: 'ngModel',
+-      template: "<div class='datetimepicker'>" +
+-        "<table class='table-condensed'>" +
++      template: "<div class='datetimepicker table-responsive'>" +
++        "<table class='table table-striped'>" +
+         "   <thead>" +
+         "       <tr>" +
+         "           <th class='left'" +
+@@ -119,6 +119,7 @@
+           directiveConfig = scope.$eval(attrs.datetimepickerConfig);
+         }
+ 
++
+         var configuration = {};
+ 
+         angular.extend(configuration, defaultConfig, directiveConfig);
+@@ -197,7 +198,7 @@
+             var startOfMonth = moment.utc(selectedDate).startOf('month');
+             var endOfMonth = moment.utc(selectedDate).endOf('month');
+ 
+-            var startDate = moment.utc(startOfMonth).subtract(Math.abs(startOfMonth.weekday() - configuration.weekStart), 'days');
++            var startDate = moment.utc(startOfMonth).subtract(Math.abs(startOfMonth.weekday()), 'days');
+ 
+             var activeDate = scope.ngModel ? moment(scope.ngModel).format('YYYY-MMM-DD') : '';
+ 
+@@ -214,7 +215,7 @@
+             };
+ 
+ 
+-            for (var dayNumber = configuration.weekStart; dayNumber < configuration.weekStart + 7; dayNumber++) {
++            for (var dayNumber = 0; dayNumber < 7; dayNumber++) {
+               result.dayNames.push(moment.utc().weekday(dayNumber).format('dd'));
+             }
+ 
+@@ -247,7 +248,7 @@
+               'currentView': 'hour',
+               'nextView': configuration.minView === 'hour' ? 'setTime' : 'minute',
+               'currentDate': selectedDate.valueOf(),
+-              'title': selectedDate.format('YYYY-MMM-DD'),
++              'title': selectedDate.format('ll'),
+               'leftDate': moment.utc(selectedDate).subtract(1, 'days').valueOf(),
+               'rightDate': moment.utc(selectedDate).add(1, 'days').valueOf(),
+               'dates': []
+@@ -257,7 +258,7 @@
+               var hourMoment = moment.utc(selectedDate).add(i, 'hours');
+               var dateValue = {
+                 'date': hourMoment.valueOf(),
+-                'display': hourMoment.format('H:00'),
++                'display': hourMoment.format('LT'),
+                 'active': hourMoment.format('YYYY-MM-DD H') === activeFormat
+               };
+ 
+@@ -277,7 +278,7 @@
+               'currentView': 'minute',
+               'nextView': 'setTime',
+               'currentDate': selectedDate.valueOf(),
+-              'title': selectedDate.format('YYYY-MMM-DD H:mm'),
++              'title': selectedDate.format('lll'),
+               'leftDate': moment.utc(selectedDate).subtract(1, 'hours').valueOf(),
+               'rightDate': moment.utc(selectedDate).add(1, 'hours').valueOf(),
+               'dates': []
+@@ -289,7 +290,7 @@
+               var hourMoment = moment.utc(selectedDate).add(i * configuration.minuteStep, 'minute');
+               var dateValue = {
+                 'date': hourMoment.valueOf(),
+-                'display': hourMoment.format('H:mm'),
++                'display': hourMoment.format('LT'),
+                 'active': hourMoment.format('YYYY-MM-DD H:mm') === activeFormat
+               };
+ 
+\ No newline at end of file
+Index: test/hour.spec.js
+===================================================================
+--- test/hour.spec.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ test/view/en/hour.spec.js	(revision )
+@@ -18,6 +18,7 @@
+   var $rootScope, $compile, element;
+   beforeEach(module('ui.bootstrap.datetimepicker'));
+   beforeEach(inject(function (_$compile_, _$rootScope_) {
++    moment.locale("en");
+     $compile = _$compile_;
+     $rootScope = _$rootScope_;
+     $rootScope.date = moment("2013-01-22").toDate();
+@@ -25,13 +26,13 @@
+     $rootScope.$digest();
+   }));
+   it('has `.switch` element with a value of 2013-1-22', function () {
+-    expect(jQuery('.switch', element).text()).toBe('2013-Jan-22');
++    expect(jQuery('.switch', element).text()).toBe('Jan 22, 2013');
+   });
+   it('has 24 `.hour` elements', function () {
+     expect(jQuery('.hour', element).length).toBe(24);
+   });
+   it('has 1 `.active` element with a value of 0:00', function () {
+-    expect(jQuery('.active', element).text()).toBe(moment($rootScope.date).format('H:mm'));
++    expect(jQuery('.active', element).text()).toBe(moment($rootScope.date).format('LT'));
+   });
+ });
+ 
+@@ -48,7 +49,7 @@
+     $rootScope.$digest();
+   }));
+   it('clicking the 4th `.hour` element will set the date value to 2020-01-01T03:00:00.000"', function () {
+-    expect(jQuery('.switch', element).text()).toBe('2020-Jan-01');
++    expect(jQuery('.switch', element).text()).toBe('Jan 1, 2020');
+ 
+     expect(jQuery('.active', element).length).toBe(1);
+     expect(jQuery('.hour', element).length).toBe(24);
+@@ -56,7 +57,7 @@
+     var selectedElement = jQuery(jQuery('.hour', element)[3]);
+     selectedElement.trigger('click');
+ 
+-    expect(jQuery('.active', element).text()).toBe('3:00');
++    expect(jQuery('.active', element).text()).toBe('3:00 AM');
+     expect($rootScope.date).toEqual(moment("2020-01-01T03:00:00.000").toDate());
+   });
+ });
+\ No newline at end of file
+Index: src/css/datetimepicker.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/css/datetimepicker.css	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ src/css/datetimepicker.css	(revision )
+@@ -5,170 +5,193 @@
+  */
+ 
+ .datetimepicker {
+-  padding: 4px;
+-  margin-top: 1px;
+-  -webkit-border-radius: 4px;
+-  -moz-border-radius: 4px;
+-  border-radius: 4px;
+-  direction: ltr;
++    padding: 4px;
++    margin-top: 1px;
++    -webkit-border-radius: 4px;
++    -moz-border-radius: 4px;
++    border-radius: 4px;
++    direction: ltr;
+-  /*.dow {
+-		border-top: 1px solid #ddd !important;
+-	}*/
+-
++    width: 300px;
+ }
+-.datetimepicker-inline {
+-  width: 220px;
+-}
++
+ .datetimepicker.datetimepicker-rtl {
+-  direction: rtl;
++    direction: rtl;
+ }
++
+ .datetimepicker.datetimepicker-rtl table tr td span {
+-  float: right;
++    float: right;
+ }
++
+ .datetimepicker-dropdown, .datetimepicker-dropdown-left {
+-  top: 0;
+-  left: 0;
++    top: 0;
++    left: 0;
+ }
++
+ [class*=" datetimepicker-dropdown"]:before {
+-  content: '';
+-  display: inline-block;
+-  border-left: 7px solid transparent;
+-  border-right: 7px solid transparent;
+-  border-bottom: 7px solid #ccc;
+-  border-bottom-color: rgba(0, 0, 0, 0.2);
+-  position: absolute;
++    content: '';
++    display: inline-block;
++    border-left: 7px solid transparent;
++    border-right: 7px solid transparent;
++    border-bottom: 7px solid #ccc;
++    border-bottom-color: rgba(0, 0, 0, 0.2);
++    position: absolute;
+ }
++
+ [class*=" datetimepicker-dropdown"]:after {
+-  content: '';
+-  display: inline-block;
+-  border-left: 6px solid transparent;
+-  border-right: 6px solid transparent;
+-  border-bottom: 6px solid #ffffff;
+-  position: absolute;
++    content: '';
++    display: inline-block;
++    border-left: 6px solid transparent;
++    border-right: 6px solid transparent;
++    border-bottom: 6px solid #ffffff;
++    position: absolute;
+ }
++
+ [class*=" datetimepicker-dropdown-top"]:before {
+-  content: '';
+-  display: inline-block;
+-  border-left: 7px solid transparent;
+-  border-right: 7px solid transparent;
+-  border-top: 7px solid #ccc;
+-  border-top-color: rgba(0, 0, 0, 0.2);
+-  border-bottom: 0;
++    content: '';
++    display: inline-block;
++    border-left: 7px solid transparent;
++    border-right: 7px solid transparent;
++    border-top: 7px solid #ccc;
++    border-top-color: rgba(0, 0, 0, 0.2);
++    border-bottom: 0;
+ }
++
+ [class*=" datetimepicker-dropdown-top"]:after {
+-  content: '';
+-  display: inline-block;
+-  border-left: 6px solid transparent;
+-  border-right: 6px solid transparent;
+-  border-top: 6px solid #ffffff;
+-  border-bottom: 0;
++    content: '';
++    display: inline-block;
++    border-left: 6px solid transparent;
++    border-right: 6px solid transparent;
++    border-top: 6px solid #ffffff;
++    border-bottom: 0;
+ }
++
+ .datetimepicker-dropdown-bottom-left:before {
+-  top: -7px;
+-  right: 6px;
++    top: -7px;
++    right: 6px;
+ }
++
+ .datetimepicker-dropdown-bottom-left:after {
+-  top: -6px;
+-  right: 7px;
++    top: -6px;
++    right: 7px;
+ }
++
+ .datetimepicker-dropdown-bottom-right:before {
+-  top: -7px;
+-  left: 6px;
++    top: -7px;
++    left: 6px;
+ }
++
+ .datetimepicker-dropdown-bottom-right:after {
+-  top: -6px;
+-  left: 7px;
++    top: -6px;
++    left: 7px;
+ }
++
+ .datetimepicker-dropdown-top-left:before {
+-  bottom: -7px;
+-  right: 6px;
++    bottom: -7px;
++    right: 6px;
+ }
++
+ .datetimepicker-dropdown-top-left:after {
+-  bottom: -6px;
+-  right: 7px;
++    bottom: -6px;
++    right: 7px;
+ }
++
+ .datetimepicker-dropdown-top-right:before {
+-  bottom: -7px;
+-  left: 6px;
++    bottom: -7px;
++    left: 6px;
+ }
++
+ .datetimepicker-dropdown-top-right:after {
+-  bottom: -6px;
+-  left: 7px;
++    bottom: -6px;
++    left: 7px;
+ }
++
+ .datetimepicker > div {
+-  display: none;
++    display: none;
+ }
++
+ .datetimepicker.minutes div.datetimepicker-minutes {
+     display: block;
+ }
++
+ .datetimepicker.hours div.datetimepicker-hours {
+     display: block;
+ }
++
+ .datetimepicker.days div.datetimepicker-days {
+     display: block;
+ }
++
+ .datetimepicker.months div.datetimepicker-months {
+-  display: block;
++    display: block;
+ }
++
+ .datetimepicker.years div.datetimepicker-years {
+-  display: block;
++    display: block;
+ }
++
+ .datetimepicker table {
+-  margin: 0;
++    margin: 0;
+ }
+-.datetimepicker  td,
+-.datetimepicker th {
++
++.datetimepicker .table td,
++.datetimepicker .table th {
+-  text-align: center;
++    text-align: center;
+-  width: 20px;
++    width: 14.6%;
+-  height: 20px;
+-  -webkit-border-radius: 4px;
+-  -moz-border-radius: 4px;
+-  border-radius: 4px;
+-  border: none;
++    height: 20px;
++    -webkit-border-radius: 4px;
++    -moz-border-radius: 4px;
++    border-radius: 4px;
++    border: none;
+ }
+-.table-striped .datetimepicker table tr td,
+-.table-striped .datetimepicker table tr th {
++.datetimepicker .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > td,
++.datetimepicker .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+   background-color: transparent;
+ }
+ .datetimepicker table tr td.minute:hover {
+     background: #eeeeee;
+     cursor: pointer;
+ }
++
+ .datetimepicker table tr td.hour:hover {
+     background: #eeeeee;
+     cursor: pointer;
+ }
++
+ .datetimepicker table tr td.day:hover {
+     background: #eeeeee;
+     cursor: pointer;
+ }
++
+ .datetimepicker table tr td.past,
+ .datetimepicker table tr td.future {
+-  color: #999999;
++    color: #999999;
+ }
++
+ .datetimepicker table tr td.disabled,
+ .datetimepicker table tr td.disabled:hover {
+-  background: none;
+-  color: #999999;
+-  cursor: default;
++    background: none;
++    color: #999999;
++    cursor: default;
+ }
++
+ .datetimepicker table tr td.today,
+ .datetimepicker table tr td.today:hover,
+ .datetimepicker table tr td.today.disabled,
+ .datetimepicker table tr td.today.disabled:hover {
+-  background-color: #fde19a;
+-  background-image: -moz-linear-gradient(top, #fdd49a, #fdf59a);
+-  background-image: -ms-linear-gradient(top, #fdd49a, #fdf59a);
+-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fdd49a), to(#fdf59a));
+-  background-image: -webkit-linear-gradient(top, #fdd49a, #fdf59a);
+-  background-image: -o-linear-gradient(top, #fdd49a, #fdf59a);
+-  background-image: linear-gradient(top, #fdd49a, #fdf59a);
+-  background-repeat: repeat-x;
+-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdd49a', endColorstr='#fdf59a', GradientType=0);
+-  border-color: #fdf59a #fdf59a #fbed50;
+-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
++    background-color: #fde19a;
++    background-image: -moz-linear-gradient(top, #fdd49a, #fdf59a);
++    background-image: -ms-linear-gradient(top, #fdd49a, #fdf59a);
++    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fdd49a), to(#fdf59a));
++    background-image: -webkit-linear-gradient(top, #fdd49a, #fdf59a);
++    background-image: -o-linear-gradient(top, #fdd49a, #fdf59a);
++    background-image: linear-gradient(top, #fdd49a, #fdf59a);
++    background-repeat: repeat-x;
++    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdd49a', endColorstr='#fdf59a', GradientType=0);
++    border-color: #fdf59a #fdf59a #fbed50;
++    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
++    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+ }
++
+ .datetimepicker table tr td.today:hover,
+ .datetimepicker table tr td.today:hover:hover,
+ .datetimepicker table tr td.today.disabled:hover,
+@@ -189,8 +212,9 @@
+ .datetimepicker table tr td.today:hover[disabled],
+ .datetimepicker table tr td.today.disabled[disabled],
+ .datetimepicker table tr td.today.disabled:hover[disabled] {
+-  background-color: #fdf59a;
++    background-color: #fdf59a;
+ }
++
+ .datetimepicker table tr td.today:active,
+ .datetimepicker table tr td.today:hover:active,
+ .datetimepicker table tr td.today.disabled:active,
+@@ -199,27 +223,29 @@
+ .datetimepicker table tr td.today:hover.active,
+ .datetimepicker table tr td.today.disabled.active,
+ .datetimepicker table tr td.today.disabled:hover.active {
+-  background-color: #fbf069 \9;
++    background-color: #fbf069 \9;
+ }
++
+ .datetimepicker table tr td.active,
+ .datetimepicker table tr td.active:hover,
+ .datetimepicker table tr td.active.disabled,
+ .datetimepicker table tr td.active.disabled:hover {
+-  background-color: #006dcc;
+-  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+-  background-image: -ms-linear-gradient(top, #0088cc, #0044cc);
+-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+-  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+-  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+-  background-image: linear-gradient(top, #0088cc, #0044cc);
+-  background-repeat: repeat-x;
+-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0044cc', GradientType=0);
+-  border-color: #0044cc #0044cc #002a80;
+-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+-  color: #fff;
+-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
++    background-color: #006dcc;
++    background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
++    background-image: -ms-linear-gradient(top, #0088cc, #0044cc);
++    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
++    background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
++    background-image: -o-linear-gradient(top, #0088cc, #0044cc);
++    background-image: linear-gradient(top, #0088cc, #0044cc);
++    background-repeat: repeat-x;
++    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0044cc', GradientType=0);
++    border-color: #0044cc #0044cc #002a80;
++    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
++    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
++    color: #fff;
++    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+ }
++
+ .datetimepicker table tr td.active:hover,
+ .datetimepicker table tr td.active:hover:hover,
+ .datetimepicker table tr td.active.disabled:hover,
+@@ -240,8 +266,9 @@
+ .datetimepicker table tr td.active:hover[disabled],
+ .datetimepicker table tr td.active.disabled[disabled],
+ .datetimepicker table tr td.active.disabled:hover[disabled] {
+-  background-color: #0044cc;
++    background-color: #0044cc;
+ }
++
+ .datetimepicker table tr td.active:active,
+ .datetimepicker table tr td.active:hover:active,
+ .datetimepicker table tr td.active.disabled:active,
+@@ -250,65 +277,63 @@
+ .datetimepicker table tr td.active:hover.active,
+ .datetimepicker table tr td.active.disabled.active,
+ .datetimepicker table tr td.active.disabled:hover.active {
+-  background-color: #003399 \9;
++    background-color: #003399 \9;
+ }
++
+ .datetimepicker table tr td span {
+-  display: block;
+-  width: 23%;
+-  height: 54px;
+-  line-height: 54px;
+-  float: left;
+-  margin: 1%;
+-  cursor: pointer;
+-  -webkit-border-radius: 4px;
+-  -moz-border-radius: 4px;
+-  border-radius: 4px;
++    display: block;
++    width: 23%;
++    height: 54px;
++    line-height: 54px;
++    float: left;
++    margin: 1%;
++    cursor: pointer;
++    -webkit-border-radius: 4px;
++    -moz-border-radius: 4px;
++    border-radius: 4px;
+ }
++
+ .datetimepicker span.hour {
+-  height: 26px;
+-  line-height: 26px;
++    height: 26px;
++    line-height: 26px;
+ }
+-.datetimepicker .datetimepicker-hours table tr td span.hour_am,
+-.datetimepicker .datetimepicker-hours table tr td span.hour_pm {
+-  width: 14.6%;
+-}
+-.datetimepicker .datetimepicker-hours fieldset legend,
+-.datetimepicker .datetimepicker-minutes fieldset legend {
+-  margin-bottom: inherit;
+-  line-height: 30px;
+-}
++
+ .datetimepicker span.minute {
+-  height: 26px;
+-  line-height: 26px;
++    height: 26px;
++    line-height: 26px;
+ }
++
+ .datetimepicker table tr td span:hover {
+-  background: #eeeeee;
++    background: #eeeeee;
+ }
++
+ .datetimepicker table tr td span.disabled,
+ .datetimepicker table tr td span.disabled:hover {
+-  background: none;
+-  color: #999999;
+-  cursor: default;
++    background: none;
++    color: #999999;
++    cursor: default;
+ }
++
+ .datetimepicker table tr td span.active,
+ .datetimepicker table tr td span.active:hover,
+ .datetimepicker table tr td span.active.disabled,
+ .datetimepicker table tr td span.active.disabled:hover {
+-  background-color: #006dcc;
+-  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+-  background-image: -ms-linear-gradient(top, #0088cc, #0044cc);
+-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+-  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+-  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+-  background-image: linear-gradient(top, #0088cc, #0044cc);
+-  background-repeat: repeat-x;
+-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0044cc', GradientType=0);
+-  border-color: #0044cc #0044cc #002a80;
+-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+-  color: #fff;
+-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
++    background-color: #006dcc;
++    background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
++    background-image: -ms-linear-gradient(top, #0088cc, #0044cc);
++    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
++    background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
++    background-image: -o-linear-gradient(top, #0088cc, #0044cc);
++    background-image: linear-gradient(top, #0088cc, #0044cc);
++    background-repeat: repeat-x;
++    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0044cc', GradientType=0);
++    border-color: #0044cc #0044cc #002a80;
++    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
++    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
++    color: #fff;
++    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+ }
++
+ .datetimepicker table tr td span.active:hover,
+ .datetimepicker table tr td span.active:hover:hover,
+ .datetimepicker table tr td span.active.disabled:hover,
+@@ -329,8 +354,9 @@
+ .datetimepicker table tr td span.active:hover[disabled],
+ .datetimepicker table tr td span.active.disabled[disabled],
+ .datetimepicker table tr td span.active.disabled:hover[disabled] {
+-  background-color: #0044cc;
++    background-color: #0044cc;
+ }
++
+ .datetimepicker table tr td span.active:active,
+ .datetimepicker table tr td span.active:hover:active,
+ .datetimepicker table tr td span.active.disabled:active,
+@@ -339,26 +365,22 @@
+ .datetimepicker table tr td span.active:hover.active,
+ .datetimepicker table tr td span.active.disabled.active,
+ .datetimepicker table tr td span.active.disabled:hover.active {
+-  background-color: #003399 \9;
++    background-color: #003399 \9;
+ }
++
+ .datetimepicker table tr td span.past,
+ .datetimepicker table tr td span.future {
+-  color: #999999;
++    color: #999999;
+ }
+-.datetimepicker th.switch {
+-  width: 145px;
+-}
++
++
++
+ .datetimepicker thead tr:first-child th,
+ .datetimepicker tfoot tr:first-child th {
+-  cursor: pointer;
++    cursor: pointer;
+ }
++
+ .datetimepicker thead tr:first-child th:hover,
+ .datetimepicker tfoot tr:first-child th:hover {
+-  background: #eeeeee;
++    background: #eeeeee;
+-}
+-.input-append.date .add-on i,
+-.input-prepend.date .add-on i {
+-  cursor: pointer;
+-  width: 14px;
+-  height: 14px;
+ }
+\ No newline at end of file
+Index: bower.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- bower.json	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ bower.json	(revision )
+@@ -20,12 +20,12 @@
+     "package.json"
+   ],
+   "dependencies": {
+-    "angular": "^1.2.16",
++    "angular": "^1.2.26",
+     "bootstrap": "^3.1.1",
+-    "moment": "^2.6.0"
++    "moment": "^2.8.3"
+   },
+   "devDependencies": {
+-    "angular-mocks": "^1.2.16",
++    "angular-mocks": "^1.2.26",
+     "jquery": "^2.1.1"
+   }
+ }
+Index: test/startView.spec.js
+===================================================================
+--- test/startView.spec.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ test/configuration/startView.spec.js	(revision )
+@@ -1,0 +1,0 @@
+Index: karma.conf.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- karma.conf.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ karma.conf.js	(revision )
+@@ -29,11 +29,12 @@
+     files: [
+       'bower_components/jquery/dist/jquery.js',
+       'bower_components/moment/moment.js',
++      'bower_components/moment/locale/*.js',
+       'bower_components/bootstrap/dist/js/bootstrap.js',
+       'bower_components/angular/angular.js',
+       'bower_components/angular-mocks/angular-mocks.js',
+       'src/js/datetimepicker.js',
+-      'test/*.spec.js'
++      'test/**/*.spec.js'
+     ],
+ 
+     // list of files to exclude
+\ No newline at end of file
+Index: test/minuteStep.spec.js
+===================================================================
+--- test/minuteStep.spec.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ test/configuration/minuteStep.spec.js	(revision )
+@@ -1,0 +1,0 @@
+Index: test/year.spec.js
+===================================================================
+--- test/year.spec.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ test/view/en/year.spec.js	(revision )
+@@ -17,6 +17,7 @@
+   var $rootScope, $compile, element;
+   beforeEach(module('ui.bootstrap.datetimepicker'));
+   beforeEach(inject(function (_$compile_, _$rootScope_) {
++    moment.locale("en");
+     $compile = _$compile_;
+     $rootScope = _$rootScope_;
+     $rootScope.date = null;
+@@ -202,12 +203,12 @@
+     it('changes to hour view after clicking a `.past` element', function () {
+       var selectedElement = jQuery(jQuery('.past', element)[0]);
+       selectedElement.trigger('click');
+-      expect(jQuery('.switch', element).text()).toBe('2010-Sep-26');
++      expect(jQuery('.switch', element).text()).toBe('Sep 26, 2010');
+     });
+     it('changes to hour view after clicking a `.future` element', function () {
+       var selectedElement = jQuery(jQuery('.future', element)[0]);
+       selectedElement.trigger('click');
+-      expect(jQuery('.switch', element).text()).toBe('2010-Nov-01');
++      expect(jQuery('.switch', element).text()).toBe('Nov 1, 2010');
+     });
+     it('has 42 `.day` elements when date is oct-2010', function () {
+       expect(jQuery('.day', element).length).toBe(42);
+@@ -235,17 +236,17 @@
+     }));
+     it('has one `.active` element with a value of 0:00 when view is hour and date is 2010-Oct-01 00:00', function () {
+       expect(jQuery('.active', element).length).toBe(1);
+-      expect(jQuery('.active', element).text()).toBe(moment($rootScope.date).format('H:mm'));
++      expect(jQuery('.active', element).text()).toBe(moment($rootScope.date).format('LT'));
+     });
+     it('changes the view to the previous day when `.left` element is clicked', function () {
+       var selectedElement = jQuery('.left', element);
+       selectedElement.trigger('click');
+-      expect(jQuery('.switch', element).text()).toBe('2010-Sep-30');
++      expect(jQuery('.switch', element).text()).toBe('Sep 30, 2010');
+     });
+     it('changes the view to the next day when `.right` element is clicked', function () {
+       var selectedElement = jQuery('.right', element);
+       selectedElement.trigger('click');
+-      expect(jQuery('.switch', element).text()).toBe('2010-Oct-02');
++      expect(jQuery('.switch', element).text()).toBe('Oct 2, 2010');
+     });
+     it('changes the view to day view when `.switch` element is clicked', function () {
+       var selectedElement = jQuery('.switch', element);
+\ No newline at end of file
+Index: test/weekStart.spec.js
+===================================================================
+--- test/weekStart.spec.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ test/weekStart.spec.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
+@@ -1,231 +0,0 @@
+-/*globals describe, beforeEach, it, expect, module, inject, jQuery, moment */
+-
+-/**
+- * @license angular-bootstrap-datetimepicker
+- * (c) 2013 Knight Rider Consulting, Inc. http://www.knightrider.com
+- * License: MIT
+- */
+-
+-/**
+- *
+- *    @author        Anton Trushkevich
+- *    @since         12/11/13
+- */
+-
+-describe('weekStart', function () {
+-  'use strict';
+-  var $rootScope, $compile;
+-  beforeEach(module('ui.bootstrap.datetimepicker'));
+-  beforeEach(inject(function (_$compile_, _$rootScope_) {
+-    $compile = _$compile_;
+-    $rootScope = _$rootScope_;
+-    $rootScope.date = null;
+-  }));
+-
+-  describe('throws exception', function () {
+-    it('if value is less than zero', function () {
+-      function compile() {
+-        $compile('<datetimepicker data-ng-model="date" data-datetimepicker-config="{ weekStart: -1 }"></datetimepicker>')($rootScope);
+-      }
+-
+-      expect(compile).toThrow("weekStart must be greater than or equal to zero and less than 7");
+-    });
+-    it('if value is 7', function () {
+-      function compile() {
+-        $compile('<datetimepicker data-ng-model="date" data-datetimepicker-config="{ weekStart: 7 }"></datetimepicker>')($rootScope);
+-      }
+-
+-      expect(compile).toThrow("weekStart must be greater than or equal to zero and less than 7");
+-    });
+-    it('if value is greater 7', function () {
+-      function compile() {
+-        $compile('<datetimepicker data-ng-model="date" data-datetimepicker-config="{ weekStart: 8 }"></datetimepicker>')($rootScope);
+-      }
+-
+-      expect(compile).toThrow("weekStart must be greater than or equal to zero and less than 7");
+-    });
+-    it('if value is not numeric', function () {
+-      function compile() {
+-        $compile('<datetimepicker data-ng-model="date" data-datetimepicker-config="{ weekStart: \'5\' }"></datetimepicker>')($rootScope);
+-      }
+-
+-      expect(compile).toThrow("weekStart must be numeric");
+-    });
+-  });
+-  describe('does NOT throw exception', function () {
+-    it('if value is between 0 and 6', function () {
+-      for (var i = 0; i < 7; i++) {
+-        $compile('<datetimepicker data-ng-model="date" data-datetimepicker-config="{ weekStart: ' + i + ' }"></datetimepicker>')($rootScope);
+-      }
+-    });
+-  });
+-  describe('with a value of 0', function () {
+-    var element;
+-    beforeEach(inject(function () {
+-      element = $compile('<datetimepicker data-ng-model="date" data-datetimepicker-config="{ weekStart: 0 }"></datetimepicker>')($rootScope);
+-      $rootScope.$digest();
+-      $rootScope.date = moment("2010-10-01").toDate();
+-      $rootScope.$digest();
+-    }));
+-    it('has seven `.dow` elements', function () {
+-      expect(jQuery('.dow', element).length).toBe(7);
+-    });
+-    it('the first `.dow` element has a value of Su', function () {
+-      expect(jQuery(jQuery('.dow', element)[0]).text()).toBe('Su');
+-    });
+-    it('there are 42 `.day` elements', function () {
+-      expect(jQuery('.day', element).length).toBe(42);
+-    });
+-    it('the first `.day` element has a value of 26', function () {
+-      expect(jQuery(jQuery('.day', element)[0]).text()).toBe('26');
+-    });
+-    it('the last `.day` element has a value of 6', function () {
+-      expect(jQuery(jQuery('.day', element)[41]).text()).toBe('6');
+-    });
+-  });
+-  describe('with a value of 1', function () {
+-    var element;
+-    beforeEach(inject(function () {
+-      element = $compile('<datetimepicker data-ng-model="date" data-datetimepicker-config="{ weekStart: 1 }"></datetimepicker>')($rootScope);
+-      $rootScope.$digest();
+-      $rootScope.date = moment("2010-10-01").toDate();
+-      $rootScope.$digest();
+-    }));
+-    it('has seven `.dow` elements', function () {
+-      expect(jQuery('.dow', element).length).toBe(7);
+-    });
+-    it('the first `.dow` element has a value of Mo', function () {
+-      expect(jQuery(jQuery('.dow', element)[0]).text()).toBe('Mo');
+-    });
+-    it('there are 42 `.day` elements', function () {
+-      expect(jQuery('.day', element).length).toBe(42);
+-    });
+-    it('the first `.day` element has a value of 27', function () {
+-      expect(jQuery(jQuery('.day', element)[0]).text()).toBe('27');
+-    });
+-    it('the last `.day` element has a value of 7', function () {
+-      expect(jQuery(jQuery('.day', element)[41]).text()).toBe('7');
+-    });
+-  });
+-  describe('with a value of 2', function () {
+-    var element;
+-    beforeEach(inject(function () {
+-      element = $compile('<datetimepicker data-ng-model="date" data-datetimepicker-config="{ weekStart: 2 }"></datetimepicker>')($rootScope);
+-      $rootScope.$digest();
+-      $rootScope.date = moment("2010-10-01").toDate();
+-      $rootScope.$digest();
+-    }));
+-    it('has seven `.dow` elements', function () {
+-      expect(jQuery('.dow', element).length).toBe(7);
+-    });
+-    it('the first `.dow` element has a value of tu', function () {
+-      expect(jQuery(jQuery('.dow', element)[0]).text()).toBe('Tu');
+-    });
+-    it('there are 42 `.day` elements', function () {
+-      expect(jQuery('.day', element).length).toBe(42);
+-    });
+-    it('the first `.day` element has a value of 28', function () {
+-      expect(jQuery(jQuery('.day', element)[0]).text()).toBe('28');
+-    });
+-    it('the last `.day` element has a value of 8', function () {
+-      expect(jQuery(jQuery('.day', element)[41]).text()).toBe('8');
+-    });
+-  });
+-
+-  describe('with a value of 3', function () {
+-    var element;
+-    beforeEach(inject(function () {
+-      element = $compile('<datetimepicker data-ng-model="date" data-datetimepicker-config="{ weekStart: 3 }"></datetimepicker>')($rootScope);
+-      $rootScope.$digest();
+-      $rootScope.date = moment("2010-10-01").toDate();
+-      $rootScope.$digest();
+-    }));
+-    it('has seven `.dow` elements', function () {
+-      expect(jQuery('.dow', element).length).toBe(7);
+-    });
+-    it('the first `.dow` element has a value of We', function () {
+-      expect(jQuery(jQuery('.dow', element)[0]).text()).toBe('We');
+-    });
+-    it('there are 42 `.day` elements', function () {
+-      expect(jQuery('.day', element).length).toBe(42);
+-    });
+-    it('the first `.day` element has a value of 29', function () {
+-      expect(jQuery(jQuery('.day', element)[0]).text()).toBe('29');
+-    });
+-    it('the last `.day` element has a value of 9', function () {
+-      expect(jQuery(jQuery('.day', element)[41]).text()).toBe('9');
+-    });
+-  });
+-  describe('with a value of 4', function () {
+-    var element;
+-    beforeEach(inject(function () {
+-      element = $compile('<datetimepicker data-ng-model="date" data-datetimepicker-config="{ weekStart: 4 }"></datetimepicker>')($rootScope);
+-      $rootScope.$digest();
+-      $rootScope.date = moment("2010-10-01").toDate();
+-      $rootScope.$digest();
+-    }));
+-    it('has seven `.dow` elements', function () {
+-      expect(jQuery('.dow', element).length).toBe(7);
+-    });
+-    it('the first `.dow` element has a value of Th', function () {
+-      expect(jQuery(jQuery('.dow', element)[0]).text()).toBe('Th');
+-    });
+-    it('there are 42 `.day` elements', function () {
+-      expect(jQuery('.day', element).length).toBe(42);
+-    });
+-    it('the first `.day` element has a value of 30', function () {
+-      expect(jQuery(jQuery('.day', element)[0]).text()).toBe('30');
+-    });
+-    it('the last `.day` element has a value of 10', function () {
+-      expect(jQuery(jQuery('.day', element)[41]).text()).toBe('10');
+-    });
+-  });
+-  describe('with a value of 5', function () {
+-    var element;
+-    beforeEach(inject(function () {
+-      element = $compile('<datetimepicker data-ng-model="date" data-datetimepicker-config="{ weekStart: 5 }"></datetimepicker>')($rootScope);
+-      $rootScope.$digest();
+-      $rootScope.date = moment("2010-10-01").toDate();
+-      $rootScope.$digest();
+-    }));
+-    it('has seven `.dow` elements', function () {
+-      expect(jQuery('.dow', element).length).toBe(7);
+-    });
+-    it('the first `.dow` element has a value of Fr', function () {
+-      expect(jQuery(jQuery('.dow', element)[0]).text()).toBe('Fr');
+-    });
+-    it('there are 42 `.day` elements', function () {
+-      expect(jQuery('.day', element).length).toBe(42);
+-    });
+-    it('the first `.day` element has a value of 31', function () {
+-      expect(jQuery(jQuery('.day', element)[0]).text()).toBe('1');
+-    });
+-    it('the last `.day` element has a value of 10', function () {
+-      expect(jQuery(jQuery('.day', element)[41]).text()).toBe('11');
+-    });
+-  });
+-  describe('with a value of 6', function () {
+-    var element;
+-    beforeEach(inject(function () {
+-      element = $compile('<datetimepicker data-ng-model="date" data-datetimepicker-config="{ weekStart: 6 }"></datetimepicker>')($rootScope);
+-      $rootScope.$digest();
+-      $rootScope.date = moment("2010-10-01").toDate();
+-      $rootScope.$digest();
+-    }));
+-    it('has seven `.dow` elements', function () {
+-      expect(jQuery('.dow', element).length).toBe(7);
+-    });
+-    it('the first `.dow` element has a value of Sa', function () {
+-      expect(jQuery(jQuery('.dow', element)[0]).text()).toBe('Sa');
+-    });
+-    it('there are 42 `.day` elements', function () {
+-      expect(jQuery('.day', element).length).toBe(42);
+-    });
+-    it('the first `.day` element has a value of 30', function () {
+-      expect(jQuery(jQuery('.day', element)[0]).text()).toBe('30');
+-    });
+-    it('the last `.day` element has a value of 10', function () {
+-      expect(jQuery(jQuery('.day', element)[41]).text()).toBe('10');
+-    });
+-  });
+-});
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .gitignore	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ .gitignore	(revision )
+@@ -1,5 +1,6 @@
+ .idea
+ coverage/*
++complexity/*
+ lib-cov
+ bower_components/*
+ node_modules/*
+Index: test/i18n.spec.js
+===================================================================
+--- test/i18n.spec.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ test/i18n.spec.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
+@@ -1,14 +0,0 @@
+-/**
+- * @license angular-bootstrap-datetimepicker
+- * (c) 2013 Knight Rider Consulting, Inc. http://www.knightrider.com
+- * License: MIT
+- */
+-
+-/**
+- *
+- *    @author        Dale "Ducky" Lotts
+- *    @since        7/21/13
+- */
+-
+-
+-// ToDo: Test multiple languages
+\ No newline at end of file
+Index: test/dropdownSelector.spec.js
+===================================================================
+--- test/dropdownSelector.spec.js	(revision a799d37752200b176c49a66e6d556eef453ae17c)
++++ test/configuration/dropdownSelector.spec.js	(revision )
+@@ -1,0 +1,0 @@
