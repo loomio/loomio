@@ -17,10 +17,11 @@
     %navbar
 
     / only load this if the sidebar is open
-    %sidebar#sidebar
+    %sidebar#sidebar.hidden-xs
       %inbox
-
-    %main{ng_view: ''}
+    .sidebar-spacer
+      .container#main
+        %main{ng_view: ''}
 
     = javascript_include_tag "/js/app"
     %script{src: "#{ENV['FAYE_URL']}/client.js", type: 'text/javascript'}

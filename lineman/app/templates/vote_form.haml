@@ -1,6 +1,6 @@
 .thing
   .vote-form{ng-show: '!lastVote() || editing'}
-    %h3{translate: 'proposal_card.have_your_say'}
+    %h4{translate: 'proposal_card.have_your_say'}
     .position-buttons
       .position-button.position-button-yes{ng-click: 'selectPosition("yes")'}
       .position-button.position-button-abstain{ng-click: 'selectPosition("abstain")'}
@@ -21,7 +21,7 @@
       %button.btn.btn-default{ng-click: 'cancel($event)', translate: 'common.action.cancel'}>
 
   .your-position{ng-show: 'lastVote() && !editing'}
-    %h3{translate: 'proposal_card.your_position'}
+    %h4{translate: 'proposal_card.your_position'}
 
     %a.change-position.pull-right{ng-click: 'changePosition()', href: '#'}
       %span{translate: 'common.action.edit'}>
