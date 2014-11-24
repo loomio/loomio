@@ -48,7 +48,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, RecordStoreService
       RecordStoreService.get('groups', @parentId)
 
     parentName: ->
-      @parent().name if @parentId?
+      @parent().name if @parent()?
 
     visibleToPublic: ->       @visibleTo == 'public'
     visibleToOrganization: -> @visibleTo == 'parent_members'

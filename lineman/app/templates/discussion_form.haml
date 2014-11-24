@@ -27,21 +27,21 @@
         .privacy-form{ng_show: 'showPrivacyForm()'}
           .privacy-form-option
             %input{type: 'radio', ng-model: 'private', value: 'true'}
-            %label{translate: 'common.state.public' }
+            %label{translate: 'common.privacy.public' }
             %span{translate: 'discussion_form.privacy.will_be_public'}
           .privacy-form-option
             %input{type: 'radio', ng-model: 'private', value: 'false'}
-            %label{translate: 'common.state.private'}
+            %label{translate: 'common.privacy.private'}
             %span{ng_show: 'discussion.group().isVisibleToParentMembers', translate: '{{discussion_form.privacy.will_be_private_to_parent_group}}', translate-value-group-name: 'discussion.groupName()', translate-value-parent-group-name: '{{discussion.group().parentName()}}'}
             %span{ng_hide: 'discussion.group().isVisibleToParentMembers', translate: 'discussion_form.privacy.will_be_private_to_group', translate-value-group-name: '{{discussion.groupName()}}'}
         .privacy-notice{ng_hide: 'showPrivacyForm()'}
           .public-discussion{ng_hide: 'discussion.private'}
             %i.fa.fa-globe
-            %strong{translate: 'common.state.public'}
+            %strong{translate: 'common.privacy.public'}
             %span{translate: 'discussion_form.privacy.will_be_public'}
           .private-discussion{ng_show: 'discussion.private'}
             %i.fa.fa-lock
-            %strong{translate: 'common.state.private'}
+            %strong{translate: 'common.privacy.private'}
             %span{ng_show: 'discussion.group().isVisibleToParentMembers', translate: 'discussion_form.privacy.will_be_private_to_parent_group', translate-value-group-name: '{{::discussion.groupName()}}', translate-value-parent-group-name: '{{discussion.group().parentName()}}'}
             %span{ng_hide: 'discussion.group().isVisibleToParentMembers', translate: 'discussion_form.privacy.will_be_private_to_group', translate-value-group-name: '{{discussion.groupName()}}'}
   .modal-footer

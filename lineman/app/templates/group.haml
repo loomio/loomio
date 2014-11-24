@@ -5,53 +5,14 @@
         .group-page-cover
         .group-page-logo.hidden-xs
         .group-page-buttons.pull-right
-          %a.btn.btn-icon.btn-default.btn-block{href: '#'}
-            %i.fa.fa-lg.fa-eye>
-            %span{translate: 'group_page.notifications'}
-          %a.btn.btn-icon.btn-default.btn-block{href: '#groups/{{::group.key}}/settings', translate: 'group_page.options'}
+          %group_notifications_dropdown{group: 'group'}
+          %a.btn.btn-icon.btn-default.btn-block{href: '#groups/{{::group.key}}/settings'}
             %i.fa.fa-lg.fa-cog>
-            %span{translate: 'group_page.options'}
+            %span{translate: 'group_page.options_label'}
         .group-page-name-and-privacy
           .group-page-name
             %h1 {{group.name}}
-          .group-page-privacy{dropdown: '', on-toggle: 'toggled(open)'}
-            %a.dropdown-toggle{href: '#'}
-              .group-visibility-public{ng_show: 'group.visibleToPublic()'}
-                %i.fa.fa-lg.fa-globe>
-                %span{translate: 'common.privacy.public'}
-              .group-visibility-organization{ng_show: 'group.visibleToOrganization()'}
-                %i.fa.fa-lg.fa-users>
-                %span{translate: 'common.privacy.organization'}
-              .group-visibility-private{ng_show: 'group.visibleToMembers()'}
-                %i.fa.fa-lg.fa-lock>
-                %span{translate: 'common.privacy.private'}
-            .dropdown-menu.with-labels{role: 'menu'}
-              %h3.dropdown-heading{translate: 'group_page.visibility'}
-              %ul.dropdown-menu-items
-
-                %li.dropdown-menu-item{ng_click: 'setPrivacy("members")'}
-                  .dropdown-menu-item-label
-                    %i.fa.fa-lg.fa-lock>
-                    %span{translate: 'common.privacy.private'}
-                    %i.fa.fa-lg.fa-check{ng_show: 'group.visibleToMembers()'}
-                  .dropdown-menu-item-details
-                    %span{translate: 'group_page.privacy.private'}
-
-                %li.dropdown-menu-item{ng_show: 'group.parentId', ng_click: 'setPrivacy("parent_members")'}
-                  .dropdown-menu-item-label
-                    %i.fa.fa-lg.fa-users>
-                    %span{translate: 'common.privacy.organization'}
-                    %i.fa.fa-lg.fa-check{ng_show: 'group.visibleToOrganization()'}
-                  .dropdown-menu-item-details
-                    %span{translate: 'group_page.privacy.parent_members', translate-value-group-name: '{{group.name}}', translate-value-parent-group-name: '{{group.parentName()}}'}
-
-                %li.dropdown-menu-item.last{ng_click: 'setPrivacy("public")'}
-                  .dropdown-menu-item-label
-                    %i.fa.fa-lg.fa-globe>
-                    %span{translate: 'common.privacy.public'}
-                    %i.fa.fa-lg.fa-check{ng_show: 'group.visibleToPublic()'}
-                  .dropdown-menu-item-details
-                    %span{translate: 'group_page.privacy.public'}
+          %group_privacy_dropdown{group: 'group'}
       .group-page-description
         .context-menu.pull-right
           %i.fa.fa-lg.fa-chevron-down
