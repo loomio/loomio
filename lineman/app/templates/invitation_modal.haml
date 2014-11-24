@@ -4,15 +4,7 @@
     %a.close.pull-right{href: '#', ng-click: 'cancel($event)'} ×
     .clearfix
   .modal-body
-    .alert.alert-success{ng_show: 'showContactImportMessage'}
-      %a.close{href: '#', ng-click: 'dismissContactImportMessage()'} ×
-      .contact-flash-header
-        %strong {{ 'invitation.import_contacts_header' | translate }}
-      .contact-flash-message
-        {{ 'invitation.import_contacts_message' | translate }}
-    %h4.pull-left {{ 'invitation.find_people' | translate }}
-    %a.pull-right{href: '#'} 
-      {{ 'invitation.import_contacts' | translate }}
+    %h4{translate: 'invitation.find_people'}
     %input.form-control#invitable-email{type: 'email', ng-model: 'fragment', typeahead: 'invitable for invitable in getInvitables($viewValue)', typeahead-template-url: 'generated/templates/invitable_menu.html', typeahead-on-select: 'addInvitation($item)', typeahead-wait-ms: '300'}
     .invitation-instructions{ng_hide: 'hasInvitations()'}
       {{ 'invitation.instructions' | translate }}
