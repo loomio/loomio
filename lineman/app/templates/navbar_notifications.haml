@@ -1,0 +1,4 @@
+.navbar-notifications-container
+  .navbar-notifications{infinite-scroll: 'getNextPage()', infinite-scroll-distance: 1, infinite-scroll-disabled: 'lastPage'}
+    .navbar-notification{ng_repeat: 'notification in currentNotifications()'}
+        {{ notification.eventId }}
