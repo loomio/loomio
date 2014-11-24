@@ -11,8 +11,15 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
           discussion
         else
           promise
-      currentUser: ($http, UserAuthService, UserModel) ->
+      currentUser: ($http, UserAuthService) ->
         UserAuthService.fetchCurrentUser()
+  ).when('/groups/new',
+    templateUrl: 'generated/templates/group_form.html',
+    controller: 'GroupFormController',
+    resolve:
+      group: ($route, GroupService, GroupModel, RecordStoreService) ->
+        GroupService.fetchByKey($route.current.params.parent_id).then(->
+          new GroupModel(parent_id: RecordStoreService.get('groups', $route.current.params.parent_id).id))
   ).when('/groups/:id',
     templateUrl: 'generated/templates/group.html',
     controller: 'GroupController',
@@ -21,7 +28,7 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
         GroupService.fetchByKey($route.current.params.id)
       currentUser: ($http, UserAuthService) ->
         UserAuthService.fetchCurrentUser()
-  ).when('/groups/:id/settings',
+  ).when('/groups/:id/edit',
     templateUrl: 'generated/templates/group_form.html',
     controller: 'GroupFormController',
     resolve:
