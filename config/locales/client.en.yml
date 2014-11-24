@@ -1,8 +1,9 @@
 en:
   common:
-    state:
+    privacy:
       private: 'Private'
       public: 'Public'
+      organization: 'Organization'
     action:
       reply: 'Reply'
       edit: 'Edit'
@@ -86,7 +87,22 @@ en:
     options: 'Options'
     privacy:
       private: 'This group is only visible to members'
+      parent_members: 'This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
       public: 'This group is visible on the web'
+
+  group_form:
+    new_group_title: 'Create a New Group'
+    edit_group_title: 'Group Settings'
+    profile_label: 'Profile'
+    name_label: 'Name'
+    name_placeholder: 'Enter the name of your group'
+    description_label: 'Description'
+    description_placeholder: 'Describe your group'
+    category_label: 'Category'
+    privacy_label: 'Privacy'
+    permissions_label: 'Permissions'
+    edit_group_submit:  'Update Settings'
+    new_group_submit: 'Create Group'
 
   invitation:
     invite_people: 'Invite People'

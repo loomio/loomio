@@ -263,6 +263,7 @@ class Group < ActiveRecord::Base
     when 'members'
       self.is_visible_to_public = false
       self.is_visible_to_parent_members = false
+      self.parent_members_can_see_discussions = false
       self.discussion_privacy_options = 'private_only'
       self.membership_granted_upon = 'invitation'
     else

@@ -28,7 +28,7 @@ Loomio::Application.routes.draw do
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resource :inbox, only: :show, controller: 'inbox'
-    resources :groups, only: :show do
+    resources :groups, only: [:update, :show] do
       get :subgroups, on: :collection
     end
     resources :memberships, only: [:index] do

@@ -10,7 +10,7 @@ class GroupSerializer < ActiveModel::Serializer
              :members_can_vote,
              :members_can_start_discussions,
              :discussion_privacy_options,
-             :is_visible_to_parent_members
+             :visible_to
 
   has_one :parent, serializer: GroupSerializer, root: 'groups'
 end
