@@ -134,7 +134,6 @@ h3.dropdown-heading{
   right: 0;
 }
 
-
 .label-with-details{
   font-weight: bold;
 }
@@ -147,6 +146,20 @@ h3.dropdown-heading{
 
 .fa-volume-off-padded{margin: 0 6px 0 3px;}
 
+.form-card{
+  @include card;
+  max-width: 480px;
+  margin: 10px auto;
+}
+.form-group{
+  margin-top: 20px;
+}
+input, select{
+  margin-bottom: 10px;
+}
+textarea{
+  min-height: 100px;
+}
 @import 'base';
 @import 'layout';
 @import 'thread';
