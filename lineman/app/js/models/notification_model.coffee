@@ -4,6 +4,7 @@ angular.module('loomioApp').factory 'NotificationModel', (RecordStoreService, Ba
       @id = data.id
       @eventId = data.event_id
       @userId = data.user_id
+      @viewedAt = data.viewed_at
 
     plural: 'notifications'
 

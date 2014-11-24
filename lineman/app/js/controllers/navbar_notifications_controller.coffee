@@ -1,8 +1,7 @@
 angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope, NotificationService, UserAuthService) ->
-  currentUser = UserAuthService.currentUser
 
   $scope.currentNotifications = ->
-    currentUser.notifications() if currentUser?
+    UserAuthService.currentUser.notifications() if UserAuthService.currentUser?
 
   nextPage = 1
   busy = false
