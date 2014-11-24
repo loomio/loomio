@@ -52,6 +52,7 @@ Loomio::Application.routes.draw do
       post :vote, on: :member
     end
     resources :translations, only: :show
+    resources :notifications, only: :index
     namespace :faye do
       post :subscribe
       get :who_am_i
