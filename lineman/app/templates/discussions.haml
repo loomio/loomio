@@ -4,4 +4,4 @@
   .discussions-show-more
     %a{ng-hide: 'lastPage', ng-click: 'getNextPage()', href: '#'} {{ 'group.show_more' | translate }}
   .discussions-new-thread
-    %a {{ 'group.new_thread' | translate }}
+    %a{href: '#', ng_click: 'openForm()'} {{ 'group.new_thread' | translate }}

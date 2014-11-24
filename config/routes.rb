@@ -35,6 +35,7 @@ Loomio::Application.routes.draw do
     end
     resources :memberships, only: [:index] do
       get :autocomplete, on: :collection
+      get :my_memberships, on: :collection
     end
     resources :invitables, only: :index
     resources :invitations, only: :create
