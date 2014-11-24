@@ -36,9 +36,15 @@
   margin: 10px 0;
   @media(min-width: $screen-xs-max){ margin-left: 128px; }
 }
+
 .group-page-buttons{
   margin-top: 10px;
 }
+.group-notifications-button{
+  margin-bottom: 5px;
+}
+
+
 .group-page-description,
 .group-page-threads,
 .group-page-members,

@@ -129,6 +129,16 @@ h3.dropdown-heading{
   border-bottom: 1px solid $thread-border-color;
 }
 
+.label-with-details{
+  font-weight: bold;
+}
+.label-with-details-label:after{
+  content: ": ";
+}
+.label-with-details-details{
+  font-weight: normal;
+}
+
 @import 'base';
 @import 'layout';
 @import 'thread';
