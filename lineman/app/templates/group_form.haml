@@ -1,4 +1,4 @@
-%form{name: 'groupForm', ng_submit: 'submit()'}
+%form.form-card{name: 'groupForm', ng_submit: 'submit()'}
   %h1{ng_show: 'group.isNew() && !group.parentId', translate: 'group_form.new_group_title'}
   %h1{ng_show: 'group.isNew() && group.parentId', translate: 'group_form.new_subgroup_title', translate-value-parent-group-name: '{{group.parentName()}}'} 
   %h1{ng_show: '!group.isNew()', translate: 'group_form.edit_group_title'}
@@ -34,41 +34,41 @@
 
   .form-group
     %h2{translate: 'group_form.permissions.label'}
-    %h4{translate: 'group_form.permissions.helptext'}
+    %strong{translate: 'group_form.permissions.helptext'}
 
     .checkbox
       %label{for: 'group-members-can-add-members'}
-        %input{type: 'checkbox', ng_model: 'group.membersCanAddMembers'}
+        %input#group-members-can-add-members{type: 'checkbox', ng_model: 'group.membersCanAddMembers'}
         %span{translate: 'group_form.permissions.members_can_add_members'}
 
     .checkbox
       %label{for: 'group-members-can-create-subgroups'}
-        %input{type: 'checkbox', ng_model: 'group.membersCanCreateSubgroups'}
+        %input#group-members-can-create-subgroups{type: 'checkbox', ng_model: 'group.membersCanCreateSubgroups'}
         %span{translate: 'group_form.permissions.members_can_create_subgroups'}
 
     .checkbox
       %label{for: 'group-members-can-start-discussions'}
-        %input{type: 'checkbox', ng_model: 'group.membersCanStartDiscussions'}
+        %input#group-members-can-start-discussions{type: 'checkbox', ng_model: 'group.membersCanStartDiscussions'}
         %span{translate: 'group_form.permissions.members_can_start_discussions'}
 
     .checkbox
       %label{for: 'group-members-can-edit-discussions'}
-        %input{type: 'checkbox', ng_model: 'group.membersCanEditDiscussions'}
+        %input#group-members-can-edit-discussions{type: 'checkbox', ng_model: 'group.membersCanEditDiscussions'}
         %span{translate: 'group_form.permissions.members_can_edit_discussions'}
 
     .checkbox
       %label{for: 'group-members-can-edit-comments'}
-        %input{type: 'checkbox', ng_model: 'group.membersCanEditComments'}
+        %input#group-members-can-edit-comments{type: 'checkbox', ng_model: 'group.membersCanEditComments'}
         %span{translate: 'group_form.permissions.members_can_edit_comments'}
 
     .checkbox
       %label{for: 'group-members-can-raise-motions'}
-        %input{type: 'checkbox', ng_model: 'group.membersCanRaiseMotions'}
+        %input#group-members-can-raise-motions{type: 'checkbox', ng_model: 'group.membersCanRaiseMotions'}
         %span{translate: 'group_form.permissions.members_can_raise_motions'}
 
     .checkbox
       %label{for: 'group-members-can-vote'}
-        %input{type: 'checkbox', ng_model: 'group.membersCanVote'}
+        %input#group-members-can-vote{type: 'checkbox', ng_model: 'group.membersCanVote'}
         %span{translate: 'group_form.permissions.members_can_vote'}
 
   %button.btn.btn-primary{type: 'submit', translate: 'group_form.new_group_submit', ng_show: 'group.isNew()'}

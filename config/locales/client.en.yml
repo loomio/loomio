@@ -29,9 +29,13 @@ en:
 
   vote_form:
     i_agree: 'I agree'
+    i_agree_details: 'I support this and want it to go ahead.'
     i_abstain: 'I abstain'
+    i_abstain_details: 'I am happy for the group to decide without me.'
     i_disagree: 'I disagree'
+    i_disagree_details: 'I think we can probably do better.'
     i_block: 'I block'
+    i_block_details: 'I have strong objections to this proposal and am not OK with it going ahead.'
     submit_position: 'Submit position'
     change_position: 'Change position'
     select_position: 'Select position'
