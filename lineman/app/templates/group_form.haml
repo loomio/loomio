@@ -15,21 +15,21 @@
     %h2{translate: 'group_form.privacy.label'}
 
     %label{for: 'group-visible-to-members', translate: 'group_form.privacy.visible_to_members'}
-    %select#group-visible-to-members-field.form-control{ng_model: 'group.visible_to_members', ng_required: true}    
+    %select#group-visible-to-members-field.form-control{ng_model: 'group.visibleTo', ng_required: true}    
       %option{value: 'public', ng_show: '!group.parentIsHidden()', translate: 'group_form.privacy.public_visibility'}
-      %option{value: 'parent_members', ng_show: 'group.parentId', translate: 'group_form.privacy.organization_visibility'}
+      %option{value: 'parent_members', ng_show: 'group.parent()', translate: 'group_form.privacy.organization_visibility'}
       %option{value: 'members', translate: 'group_form.privacy.private_visibility'}
 
     %label{for: 'group-membership-granted-upon', translate: 'group_form.privacy.membership_granted_upon'}
-    %select#group-membership-granted-upon-field.form-control{ng_model: 'group.membership_granted_upon', ng_required: true}  
+    %select#group-membership-granted-upon-field.form-control{ng_model: 'group.membershipGrantedUpon', ng_required: true}  
       %option{value: 'request', translate: 'group_form.privacy.membership_by_request'}
       %option{value: 'approval', translate: 'group_form.privacy.membership_by_approval'}
       %option{value: 'invitation', translate: 'group_form.privacy.membership_by_invitation'}
 
     %label{for: 'group-discussion-privacy-options', translate: 'group_form.privacy.discussion_privacy_options'}
-    %select#group-discussion-privacy-options-field.form-control{ng_model: 'group.discussion_privacy_options', ng_required: true, ng_init: 'group.discussion_privacy_options'}
-      %option{value: 'public_only', translate: 'group_form.privacy.public_discussions'}
-      %option{value: 'public_or_private', translate: 'group_form.privacy.public_or_private_discussions'}
+    %select#group-discussion-privacy-options-field.form-control{ng_model: 'group.discussionPrivacyOptions', ng_required: true}
+      %option{value: 'public_only', translate: 'group_form.privacy.public_discussions' }
+      %option{value: 'public_or_private', translate: 'group_form.privacy.public_or_private_discussions' }
       %option{value: 'private_only', translate: 'group_form.privacy.private_discussions'}
 
   .form-group

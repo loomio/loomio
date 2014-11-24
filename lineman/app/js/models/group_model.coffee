@@ -14,6 +14,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, RecordStoreService
       @membersCanEditComments         = data.members_can_edit_comments
       @membersCanRaiseMotions         = data.members_can_raise_motions
       @membersCanVote                 = data.members_can_vote
+      @membershipGrantedUpon          = data.membership_granted_upon
       @discussionPrivacyOptions       = data.discussion_privacy_options
       @visibleTo                      = data.visible_to
 
@@ -32,7 +33,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, RecordStoreService
         members_can_raise_motions:     @membersCanRaiseMotions
         members_can_vote:              @membersCanVote
         discussion_privacy_options:    @discussionPrivacyOptions
-        visible_to: @visibleTo
+        visible_to:                    @visibleTo
 
     discussions: ->
       RecordStoreService.get 'discussions', (discussion) =>
