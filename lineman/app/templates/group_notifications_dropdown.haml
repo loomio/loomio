@@ -1,8 +1,8 @@
 .group-page-privacy{dropdown: '', on-toggle: 'toggled(open)'}
   %a.btn.btn-icon.btn-default.btn-block.dropdown-toggle{href: '#'}
     .group-notification-button
-      %i.fa.fa-lg.fa-volume-up{ng_show: true}>
-      %i.fa.fa-lg.fa-volume-off{ng_show: false}>
+      %i.fa.fa-lg.fa-volume-up{ng_show: 'membership.followingByDefault'}>
+      %i.fa.fa-lg.fa-volume-off{ng_hide: 'membership.followingByDefault'}>
       %span{translate: 'group_page.notifications_label'}
   .dropdown-menu.with-labels{role: 'menu'}
     %h3.dropdown-heading{translate: 'group_page.notifications_label'}
@@ -12,7 +12,7 @@
         .dropdown-menu-item-label
           %i.fa.fa-lg.fa-volume-up>
           %span{translate: 'group_page.notifications.following'}
-          %i.fa.fa-lg.fa-check{ng_show: true}
+          %i.fa.fa-lg.fa-check{ng_show: 'membership.followingByDefault'}
         .dropdown-menu-item-details
           %span{translate: 'group_page.notifications.following_details'}
 
@@ -20,6 +20,6 @@
         .dropdown-menu-item-label
           %i.fa.fa-lg.fa-volume-off>
           %span{translate: 'group_page.notifications.not_following'}
-          %i.fa.fa-lg.fa-check{ng_show: false}
+          %i.fa.fa-lg.fa-check{ng_hide: 'membership.followingByDefault'}
         .dropdown-menu-item-details
           %span{translate: 'group_page.notifications.not_following_details'}

@@ -1,11 +1,13 @@
-angular.module('loomioApp').controller 'GroupNotificationsDropdownController', ($scope, GroupService, MessageChannelService) ->
+angular.module('loomioApp').controller 'GroupNotificationsDropdownController', ($scope, GroupService, MessageChannelService, MembershipService, UserAuthService) ->
+  MembershipService.fetchMyMemberships ->
+    $scope.membership = UserAuthService.currentUser.membershipFor($scope.group)
 
-  $scope.setNotificationLevel = (level) ->
-    #$scope.group.visibleTo = privacy
-    #GroupService.save($scope.group, $scope.saveNotificationLevelSuccess, $scope.saveNotificationLevelFailure)
-
-  $scope.saveNotificationLevelSuccess = ->
+  $scope.followGroup = (following) ->
+    $scope.membership.followingByDefault = following
+    MembershipService.save $scope.membership, $scope.saveMembershipSuccess, $scope.saveMembershipFailure
+ 
+  $scope.saveMembershipSuccess = ->
     console.log('success!')
 
-  $scope.saveNotificationLevelFailure = ->
+  $scope.saveMembershipFailure = ->
     console.log('failure...')
