@@ -154,10 +154,3 @@ a .drawer-item-proposal-details {
   @include fontSmall;
 }
 
-
-.container#main.generic-container{
-  @include card;
-  max-width: 600px;
-  padding-top: 58px;
-}
-
