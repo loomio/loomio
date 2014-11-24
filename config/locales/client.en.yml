@@ -82,9 +82,14 @@ en:
     members: 'Members'
     subgroups: 'Subgroups'
     invite_people: 'Invite people'
-    visibility: 'Visibility'
-    notifications: 'Notifications'
-    options: 'Options'
+    visibility_label: 'Visibility'
+    notifications_label: 'Notifications'
+    options_label: 'Options'
+    notifications:
+      following: 'Following'
+      following_details: 'You''ll be notified about all activity in this group'
+      not_following: 'Not following'
+      not_following_details: 'You''ll be notified about threads you are participating in'
     privacy:
       private: 'This group is only visible to members'
       parent_members: 'This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
