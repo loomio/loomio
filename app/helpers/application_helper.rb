@@ -1,6 +1,22 @@
 #encoding: UTF-8
 module ApplicationHelper
 
+  def lineman_js_path
+    if Rails.env.production?
+      "/assets/lineman/app.js"
+    else
+      "/js/app.js"
+    end
+  end
+
+  def lineman_css_path
+    if Rails.env.production?
+      "/assets/lineman/app.css"
+    else
+      "/css/app.css"
+    end
+  end
+
   def time_formatted_relative_to_age(time)
     current_time = Time.zone.now
     if time.to_date == Time.zone.now.to_date
