@@ -31,7 +31,7 @@ Loomio::Application.routes.draw do
     resources :groups, only: [:update, :show] do
       get :subgroups, on: :collection
     end
-    resources :memberships, only: [:index] do
+    resources :memberships, only: [:update, :index] do
       get :autocomplete, on: :collection
       get :my_memberships, on: :collection
     end
