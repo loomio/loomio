@@ -14,7 +14,12 @@ class GroupSerializer < ActiveModel::Serializer
              :members_can_vote,
              :visible_to,
              :membership_granted_upon,
-             :discussion_privacy_options
+             :discussion_privacy_options,
+             :logo_url_small
 
   has_one :parent, serializer: GroupSerializer, root: 'groups'
+
+  def logo_url_small
+    object.logo.url(:medium)
+  end
 end
