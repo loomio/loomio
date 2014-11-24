@@ -1,2 +1,4 @@
 .navbar-search
-  NAVBAR_SEARCH
+  %input.form-control{ng_model: 'query'}
+  .navbar-group{ng_repeat: 'group in availableGroups() | filter:query'}
+    {{group.name}}
