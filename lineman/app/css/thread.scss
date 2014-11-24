@@ -1,6 +1,7 @@
 .thread-container {
   border: 1px solid $thread-border-color;
   max-width: $thread-max-width;
+  margin: 10px auto;
 }
 
 .thread-discussion {
@@ -12,31 +13,18 @@
   padding: 10px 15px 15px 15px;
   background-color: #fff;
 }
-.thread-divider{
-  background-color: #fff;
-  margin: 0;
-  padding: 0 15px 10px 15px;
-  border-bottom: 1px solid $thread-border-color;
-}
 
 .media.thread-origin{
-  margin-top: 12px
+  margin-top: 8px;
 }
 .thread-origin {
   @include fontSmall;
   color: #777777;
   margin-bottom: 10px;
 }
-
-.thread-origin-icon{}
-.thread-origin-details{}
-
-.thread-discussion-context {
-}
 .thread-events {
   padding: 15px;
-  background-color: #F5F5F5;
-  border-top: 1px solid $thread-border-color;
+  background-color: #fff;
 }
 
 .thread-event {
@@ -52,18 +40,6 @@
   margin-bottom: 5px;
   .media-body, .media-left{
     vertical-align: middle;
-  }
-  .avatar-initials{
-    width: 30px;
-    height: 30px;
-    background: $thread-border-color;
-    border: 1px solid #aaa;
-    text-align: center;
-    line-height: 30px;
-  }
-  .avatar-image img{
-    width: 30px;
-    height: 30px;
   }
 }
 
