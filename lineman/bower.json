@@ -19,5 +19,8 @@
     "tc-angular-chartjs": "~1.0.9",
     "ngInfiniteScroll": "~1.1.2",
     "ment.io": "~0.9.15"
+  },
+  "resolutions": {
+    "angular": ">=1.1.3"
   }
 }
