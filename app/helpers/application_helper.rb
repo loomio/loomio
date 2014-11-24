@@ -5,7 +5,7 @@ module ApplicationHelper
     if Rails.env.production?
       "lineman/app"
     else
-      "/js/app"
+      "/js/app.js"
     end
   end
 
@@ -13,7 +13,7 @@ module ApplicationHelper
     if Rails.env.production?
       "lineman/app"
     else
-      "/css/app"
+      "/css/app.css"
     end
   end
 
