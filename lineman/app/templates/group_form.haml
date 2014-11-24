@@ -1,6 +1,7 @@
 %form{name: 'groupForm', ng_submit: 'submit()'}
-  %h1{translate: 'group_form.new_group_title'}
-  %h1{translaet: 'group_form.edit_group_title'}
+  %h1{ng_show: 'group.isNew() && !group.parentId', translate: 'group_form.new_group_title'}
+  %h1{ng_show: 'group.isNew() && group.parentId', translate: 'group_form.new_subgroup_title', translate-value-parent-group-name: '{{group.parentName()}}'} 
+  %h1{ng_show: '!group.isNew()', translate: 'group_form.edit_group_title'}
   .form-group
     %h2{translate: 'group_form.profile_label'}
 
@@ -10,14 +11,65 @@
     %label{for: 'group-description-field', translate: 'group_form.description_label'}
     %textarea#group-description-field.form-control{placeholder: "{{ 'group_form.description_placeholder' | translate }}", ng_model: 'group.description'}
 
-    %label{for: 'group-category-field', translate: 'group_form.category_label'}
-    %select#group-category-field.form-control{placeholder: "{{ 'group_form.title_placeholder' | translate }}", ng-model: 'proposal.category'}
+  .form-group
+    %h2{translate: 'group_form.privacy.label'}
+
+    %label{for: 'group-visible-to-members', translate: 'group_form.privacy.visible_to_members'}
+    %select#group-visible-to-members-field.form-control{ng_model: 'group.visible_to_members', ng_required: true}    
+      %option{value: 'public', ng_show: '!group.parentIsHidden()', translate: 'group_form.privacy.public_visibility'}
+      %option{value: 'parent_members', ng_show: 'group.parentId', translate: 'group_form.privacy.organization_visibility'}
+      %option{value: 'members', translate: 'group_form.privacy.private_visibility'}
+
+    %label{for: 'group-membership-granted-upon', translate: 'group_form.privacy.membership_granted_upon'}
+    %select#group-membership-granted-upon-field.form-control{ng_model: 'group.membership_granted_upon', ng_required: true}  
+      %option{value: 'request', translate: 'group_form.privacy.membership_by_request'}
+      %option{value: 'approval', translate: 'group_form.privacy.membership_by_approval'}
+      %option{value: 'invitation', translate: 'group_form.privacy.membership_by_invitation'}
+
+    %label{for: 'group-discussion-privacy-options', translate: 'group_form.privacy.discussion_privacy_options'}
+    %select#group-discussion-privacy-options-field.form-control{ng_model: 'group.discussion_privacy_options', ng_required: true, ng_init: 'group.discussion_privacy_options'}
+      %option{value: 'public_only', translate: 'group_form.privacy.public_discussions'}
+      %option{value: 'public_or_private', translate: 'group_form.privacy.public_or_private_discussions'}
+      %option{value: 'private_only', translate: 'group_form.privacy.private_discussions'}
 
   .form-group
-    %h2{translate: 'group_form.privacy_label'}
+    %h2{translate: 'group_form.permissions.label'}
+    %h4{translate: 'group_form.permissions.helptext'}
 
-  .form-group
-    %h2{translate: 'group_form.permissions_label'}
+    .checkbox
+      %label{for: 'group-members-can-add-members'}
+        %input{type: 'checkbox', ng_model: 'group.membersCanAddMembers'}
+        %span{translate: 'group_form.permissions.members_can_add_members'}
+
+    .checkbox
+      %label{for: 'group-members-can-create-subgroups'}
+        %input{type: 'checkbox', ng_model: 'group.membersCanCreateSubgroups'}
+        %span{translate: 'group_form.permissions.members_can_create_subgroups'}
+
+    .checkbox
+      %label{for: 'group-members-can-start-discussions'}
+        %input{type: 'checkbox', ng_model: 'group.membersCanStartDiscussions'}
+        %span{translate: 'group_form.permissions.members_can_start_discussions'}
+
+    .checkbox
+      %label{for: 'group-members-can-edit-discussions'}
+        %input{type: 'checkbox', ng_model: 'group.membersCanEditDiscussions'}
+        %span{translate: 'group_form.permissions.members_can_edit_discussions'}
+
+    .checkbox
+      %label{for: 'group-members-can-edit-comments'}
+        %input{type: 'checkbox', ng_model: 'group.membersCanEditComments'}
+        %span{translate: 'group_form.permissions.members_can_edit_comments'}
+
+    .checkbox
+      %label{for: 'group-members-can-raise-motions'}
+        %input{type: 'checkbox', ng_model: 'group.membersCanRaiseMotions'}
+        %span{translate: 'group_form.permissions.members_can_raise_motions'}
+
+    .checkbox
+      %label{for: 'group-members-can-vote'}
+        %input{type: 'checkbox', ng_model: 'group.membersCanVote'}
+        %span{translate: 'group_form.permissions.members_can_vote'}
 
   %button.btn.btn-primary{type: 'submit', translate: 'group_form.new_group_submit', ng_show: 'group.isNew()'}
   %button.btn.btn-primary{type: 'submit', translate: 'group_form.edit_group_submit', ng_hide: 'group.isNew()'}

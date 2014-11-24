@@ -6,7 +6,7 @@
         .group-page-logo.hidden-xs
         .group-page-buttons.pull-right
           %group_notifications_dropdown{group: 'group'}
-          %a.btn.btn-icon.btn-default.btn-block{href: '#groups/{{::group.key}}/settings'}
+          %a.btn.btn-icon.btn-default.btn-block{href: '/groups/{{::group.key}}/edit'}
             %i.fa.fa-lg.fa-cog>
             %span{translate: 'group_page.options_label'}
         .group-page-name-and-privacy
