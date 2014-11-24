@@ -115,6 +115,7 @@ $sidebar-width: 320px;
 }
 .dropdown-menu-item{
   margin-bottom: 10px;
+  cursor: pointer;
 }
 .dropdown-menu-item.last{
   margin-bottom: 0;
@@ -128,6 +129,11 @@ h3.dropdown-heading{
   margin: 0 0 10px 0;
   border-bottom: 1px solid $thread-border-color;
 }
+.dropdown-menu-right{
+  /*left: auto;*/
+  right: 0;
+}
+
 
 .label-with-details{
   font-weight: bold;
@@ -138,6 +144,8 @@ h3.dropdown-heading{
 .label-with-details-details{
   font-weight: normal;
 }
+
+.fa-volume-off-padded{margin: 0 6px 0 3px;}
 
 @import 'base';
 @import 'layout';

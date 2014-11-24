@@ -28,6 +28,7 @@
 }
 .group-page-privacy{
   margin-top: 10px;
+  position: relative;
   a{color: $primary-text-color;}
   a:hover{text-decoration: none;}
   a:hover span{text-decoration: underline;}
@@ -40,7 +41,8 @@
 .group-page-buttons{
   margin-top: 10px;
 }
-.group-notifications-button{
+.group-page-notifications{
+  position: relative;
   margin-bottom: 5px;
 }
 
