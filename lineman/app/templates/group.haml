@@ -11,7 +11,12 @@
             %span{translate: 'group_page.options_label'}
         .group-page-name-and-privacy
           .group-page-name
-            %h1 {{group.name}}
+            %h1 
+              %a{ng_show: 'group.parentId', href: '/groups/{{group.parent().key}}'} 
+                {{group.parentName()}} 
+              %span{ng_show: 'group.parentId'}> > 
+              %a{href: '/groups/{{group.key}}'} 
+                {{group.name}}
           %group_privacy_dropdown{group: 'group'}
       .group-page-description
         .context-menu.pull-right

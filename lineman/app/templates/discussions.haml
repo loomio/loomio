@@ -5,8 +5,10 @@
       %span.group-thread-list-icon
         %i.fa.fa-lg.fa-comments
 
-    .group-thread-list-thread-title {{ discussion.title }}
-    .group-thread-list-group-name {{ discussion.groupName() }}
+    .group-thread-list-thread-title
+      %a{href: '/discussions/{{discussion.key}}'} {{ discussion.title }}
+    .group-thread-list-group-name 
+      %a{href: '/groups/{{discussion.group().key}}'} {{ discussion.groupName() }}
 
   .discussions-show-more.card-minor-action
     %a{ng-hide: 'lastPage', ng-click: 'getNextPage()', href: '#', translate: 'common.action.show_more'}
