@@ -81,6 +81,12 @@ en:
     members: 'Members'
     subgroups: 'Subgroups'
     invite_people: 'Invite people'
+    visibility: 'Visibility'
+    notifications: 'Notifications'
+    options: 'Options'
+    privacy:
+      private: 'This group is only visible to members'
+      public: 'This group is visible on the web'
 
   invitation:
     invite_people: 'Invite People'
