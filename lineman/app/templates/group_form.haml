@@ -2,22 +2,22 @@
   %h1{translate: 'group_form.new_group_title'}
   %h1{translaet: 'group_form.edit_group_title'}
   .form-group
-    %h2{translate: 'group_form.profile'}
+    %h2{translate: 'group_form.profile_label'}
 
     %label{for: 'group-name-field', translate: 'group_form.name_label'}
     %input#group-name-field.form-control{placeholder: "{{ 'group_form.name_placeholder' | translate }}", ng-model: 'group.name', ng_required: 'true'}
 
-    %label{for: 'group-name-field', translate: 'group_form.name_label'}
+    %label{for: 'group-description-field', translate: 'group_form.description_label'}
     %textarea#group-description-field.form-control{placeholder: "{{ 'group_form.description_placeholder' | translate }}", ng_model: 'group.description'}
 
     %label{for: 'group-category-field', translate: 'group_form.category_label'}
     %select#group-category-field.form-control{placeholder: "{{ 'group_form.title_placeholder' | translate }}", ng-model: 'proposal.category'}
 
   .form-group
-    %h2{translate: 'group_form.privacy'}
+    %h2{translate: 'group_form.privacy_label'}
 
   .form-group
-    %h2{translate: 'group_form.permissions'}
+    %h2{translate: 'group_form.permissions_label'}
 
   %button.btn.btn-primary{type: 'submit', translate: 'group_form.new_group_submit', ng_show: 'group.isNew()'}
   %button.btn.btn-primary{type: 'submit', translate: 'group_form.edit_group_submit', ng_hide: 'group.isNew()'}

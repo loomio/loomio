@@ -1,5 +1,5 @@
-angular.module('loomioApp').factory 'GroupModel', (RecordStoreService) ->
-  class GroupModel
+angular.module('loomioApp').factory 'GroupModel', (BaseModel, RecordStoreService) ->
+  class GroupModel extends BaseModel
     constructor: (data = {}) ->
       @id =                     data.id
       @key =                    data.key
@@ -10,11 +10,15 @@ angular.module('loomioApp').factory 'GroupModel', (RecordStoreService) ->
       @membersCanEditComments = data.members_can_edit_comments
       @membersCanRaiseMotions = data.members_can_raise_motions
       @membersCanVote =         data.members_can_vote
-      @membersCanStartDiscussions = data.members_can_start_discussions
-      @discussionPrivacyOptions   = data.discussion_privacy_options
-      @isVisibleToParentMembers   = data.is_visible_to_parent_members
+      @membersCanStartDiscussions     = data.members_can_start_discussions
+      @discussionPrivacyOptions       = data.discussion_privacy_options
+      @visibleTo = data.visible_to
 
     plural: 'groups'
+
+    params: ->
+      group:
+        visible_to: @visibleTo
 
     discussions: ->
       RecordStoreService.get 'discussions', (discussion) =>
@@ -45,3 +49,7 @@ angular.module('loomioApp').factory 'GroupModel', (RecordStoreService) ->
 
     parentName: ->
       @parent().name if @parentId?
+
+    visibleToPublic: ->       @visibleTo == 'public'
+    visibleToOrganization: -> @visibleTo == 'parent_members'
+    visibleToMembers: ->      @visibleTo == 'members'
