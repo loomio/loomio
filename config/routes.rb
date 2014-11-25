@@ -47,7 +47,7 @@ Loomio::Application.routes.draw do
       post :like, on: :member
       post :unlike, on: :member
     end
-    resources :attachments, only: :create
+    resources :attachments, only: [:create, :destroy]
     resources :motions, only: :create do
       post :vote, on: :member
     end

@@ -1,18 +1,12 @@
-.add-comment.media
-  .media-left
-    %img{src: 'http://placehold.it/40x40'}
-  .media-body
-    .card-row.fake{ng-hide: 'isExpanded'}
-      %input.form-control{placeholder: "Write a comment...", ng_focus: "expand()", id: 'fake_comment_input'}
-    .card-row.real{ng-show: 'isExpanded'}
-      %form{name: 'commentForm', ng_submit: 'submit()'}
-        %textarea#comment-field.form-control{name: 'body', rows: 5, placeholder: "Say something...", ng_blur: "collapseIfEmpty()", ng_model: 'comment.body', mentio: true, mentio-trigger-char: "'@'", mentio_items: 'mentionables', mentio-template-url: 'generated/templates/mentio_menu.html', mentio-search: 'getMentionables(term)', mentio-typed-term: 'typedTerm', mentio-id: 'comment-field', ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 300, 'blur': 0} }"}
-        .comment-row.comment-attachments{ng_repeat: 'attachment in comment.attachments()'}
-          %a.attachment-link{ng_href: '{{attachment.location}}', target: '_blank'}
-            {{ attachment.filename }}
-          %span.attachment-filesize
-            ({{ attachment.filesize | fileSize }})
-        .actions
-          %button#post-comment-btn.btn.btn-default.btn-primary.pull-left.submit{type: 'submit'} Post
-          %attachment_form.pull-left{comment: 'comment'}
-          %button.btn.pull-right{ng-click: 'collapse($event)', translate: 'common.action.cancel'}
+%form{name: 'commentForm', ng_submit: 'submit()'}
+  %textarea#comment-field.form-control{name: 'body', rows: 5, placeholder: "Say something...", ng_blur: "collapseIfEmpty()", ng_model: 'comment.body', mentio: true, mentio-trigger-char: "'@'", mentio_items: 'mentionables', mentio-template-url: 'generated/templates/mentio_menu.html', mentio-search: 'getMentionables(term)', mentio-typed-term: 'typedTerm', mentio-id: 'comment-field', ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 300, 'blur': 0} }"}
+  .comment-row.comment-attachments{ng_repeat: 'attachment in comment.newAttachments()'}
+    %a.attachment-link{ng_href: '{{attachment.location}}', target: '_blank'}
+      {{ attachment.filename }}
+    %span.attachment-filesize
+      ({{ attachment.filesize | fileSize }})
+    %a.close.remove-upload{href: '#', ng_click: 'removeAttachment(attachment)'} &times;
+  .thread-comment-form-actions
+    %button#post-comment-btn.btn.btn-default.btn-primary.pull-left.submit{type: 'submit'} Post
+    %add_attachment.pull-left{comment: 'comment'}
+    %button#post-comment-cancel.btn.btn-default.pull-right{translate: 'common.action.cancel', ng-click: 'cancel($event)'}
