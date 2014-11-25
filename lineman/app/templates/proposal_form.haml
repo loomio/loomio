@@ -1,14 +1,15 @@
 %form{ng-submit: 'submit()'}
   .modal-header
-    %button{type: 'button', class: 'close', ng-click: 'cancel()'}
+    %button{type: 'button', class: 'close', ng-click: 'cancel($event)'}
       %span{aria-hidden: true} &times;
       %span.sr-only{translate: 'common.action.cancel'}
-    %h1{translate: 'proposal_form.start_a_proposal'}
+    %h1{ng-if: 'proposal.isNew()', translate: 'proposal_form.start_a_proposal'}
+    %h1{ng-if: '!proposal.isNew()', translate: 'proposal_form.edit_a_proposal', translate-value-proposal-name: '{{::proposal.name}}'}
 
   .modal-body
-    %p{translate: 'proposal_form.what_does_a_proposal_do'}
+    %p{ng-if: 'proposal.isNew()', translate: 'proposal_form.what_does_a_proposal_do'}
 
-    %fieldset{ng-disabled: 'isDisabled'}
+    %fieldset{ng-disabled: 'isUneditable'}
       .form-group
         %label{for: 'proposal-title-field', translate: 'proposal_form.title_label'}
         %input#proposal-title-field.form-control{placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: 'proposal.name', ng-required: 'true'}
@@ -17,6 +18,7 @@
         %label{for: 'proposal-details-field', translate: 'proposal_form.details_label'}
         %textarea#proposal-details-field.form-control{ng-model: 'proposal.description', placeholder: "{{ 'proposal_form.details_placeholder' | translate }}"}
 
+    %fieldset{ng-disabled: 'isDisabled'}      
       .form-group{dropdown: '', is-open: 'dropdownIsOpen'}
         .input-group.dropdown-toggle
           %label{for: 'proposal-close-date-field', translate: 'proposal_form.closes_at_label'}
@@ -27,5 +29,6 @@
           %datetimepicker{ng-model: 'proposal.closingAt', data-datetimepicker-config: "{ startView:'day', minView:'hour'}", on-set-time: 'onSetTime()'}
 
   .modal-footer
-    %button.btn.btn-primary{type: 'submit', translate: 'proposal_form.start_proposal'}
+    %button.btn.btn-primary{ng-if: 'proposal.isNew()', type: 'submit', translate: 'proposal_form.start_proposal'}
+    %button.btn.btn-primary{ng-if: '!proposal.isNew()', type: 'submit', translate: 'proposal_form.edit_proposal'}
     %button.btn.btn-warning{ng-click: 'cancel($event)', translate: 'common.action.cancel'}

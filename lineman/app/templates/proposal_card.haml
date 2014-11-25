@@ -1,4 +1,5 @@
 .proposal-card{ng-show: 'proposal'}
+  %proposal_card_dropdown{proposal: 'proposal'}
   %h2 {{::proposal.name}}
   .proposal-card-started-by
     %span{translate: 'proposal_card.started_by', translate-values: '::{name: proposal.authorName()}'}

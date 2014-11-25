@@ -1,5 +1,5 @@
-angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
-  class ProposalModel
+angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService, BaseModel) ->
+  class ProposalModel extends BaseModel
     constructor: (data = {}) ->
       @id = data.id
       @name = data.name
@@ -15,11 +15,11 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
 
     params: ->
       motion:
-        id: @id
         discussion_id: @discussionId
         name: @name
         description: @description
         closing_at: @closingAt
+        closed_at: @closedAt
 
     positionVerbs: ['agree', 'abstain', 'disagree', 'block']
     positions: ['yes', 'abstain', 'no', 'block']

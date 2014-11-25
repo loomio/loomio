@@ -1,5 +1,6 @@
-angular.module('loomioApp').controller 'ProposalFormController', ($translate, $scope, $modalInstance, proposal, ProposalService) ->
+angular.module('loomioApp').controller 'ProposalFormController', ($scope, $modalInstance, proposal, ProposalService) ->
   $scope.proposal = proposal
+  $scope.proposalHasVotes = proposal.votes()?
 
   $scope.closingAtPickerIsActive = false
 
@@ -25,6 +26,9 @@ angular.module('loomioApp').controller 'ProposalFormController', ($translate, $s
   $scope.cancel = ($event) ->
     $event.preventDefault()
     $modalInstance.dismiss('cancel');
+
+  $scope.isUneditable = ->
+    $scope.isDisabled or $scope.proposalHasVotes
 
   $scope.saveSuccess = () ->
     $scope.isDisabled = false
