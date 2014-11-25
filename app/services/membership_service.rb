@@ -1,4 +1,10 @@
 class MembershipService
+
+  def self.update(membership: membership, params: params, actor: actor)
+    actor.ability.authorize! :follow_by_default, membership
+    membership.update! params
+  end
+
   def self.join_group(user: nil, group: nil)
     user.ability.authorize! :join, group
     membership = group.add_member!(user)

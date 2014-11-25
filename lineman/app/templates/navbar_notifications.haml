@@ -1,0 +1,6 @@
+.navbar-notifications-container
+  .navbar-notifications
+    %ul.selector-list
+      %li.selector-list-header
+        %h3{translate: "notifications.header"}
+      %li.selector-list-item.media{ng_repeat: 'notification in notifications()', ng_include: "'generated/templates/notification_items/'+ notification.event().kind + '.html'" }

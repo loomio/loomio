@@ -5,16 +5,16 @@
       %span.group-thread-list-icon
         %i.fa.fa-lg.fa-comments
 
-    .group-thread-list-thread-title {{ discussion.title }}
-    /should be discussion.group.name but not sure how to make it go
-    .group-thread-list-group-name {{ group.name }}
+    .group-thread-list-thread-title
+      %a{href: '/discussions/{{discussion.key}}'} {{ discussion.title }}
+    .group-thread-list-group-name 
+      %a{href: '/groups/{{discussion.group().key}}'} {{ discussion.groupName() }}
 
   .discussions-show-more.card-minor-action
     %a{ng-hide: 'lastPage', ng-click: 'getNextPage()', href: '#', translate: 'common.action.show_more'}
   .discussions-new-thread
     .row
       .col-xs-12.col-sm-6
-        %a.btn.btn-success.btn-block.btn-icon{ href: '#' }
+        %a.btn.btn-success.btn-block.btn-icon{href: '#', ng_click: 'openForm()'}
           %i.fa.fa-lg.fa-plus>
           %span{translate: 'common.action.new_thread' }
-
