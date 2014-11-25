@@ -1,5 +1,6 @@
 en:
   common:
+    groups: 'Groups'
     privacy:
       private: 'Private'
       public: 'Public'
@@ -26,6 +27,9 @@ en:
 
   comment_form:
     edit_comment: 'Edit comment'
+
+  navbar:
+    search_placeholder: 'Search for groups or threads'
 
   vote_form:
     i_agree: 'I agree'

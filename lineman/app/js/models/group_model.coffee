@@ -17,6 +17,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, RecordStoreService
       @membershipGrantedUpon          = data.membership_granted_upon
       @discussionPrivacyOptions       = data.discussion_privacy_options
       @visibleTo                      = data.visible_to
+      @logoUrlSmall                   = data.logo_url_small
 
     plural: 'groups'
 
