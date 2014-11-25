@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'CommentFormController', ($scope, CommentModel, CommentService, MembershipService, RecordStoreService) ->
+angular.module('loomioApp').controller 'CommentFormController', ($scope, CommentModel, CommentService, MembershipService) ->
   discussion = $scope.comment.discussion()
   group = discussion.group()
   $scope.mentionables = group.members()
