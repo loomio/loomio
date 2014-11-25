@@ -1,7 +1,7 @@
 class API::FayeController < API::BaseController
   def subscribe
     if discussion_channel? and current_user.can?(:show, discussion)
-      render json: PrivatePub.subscription(channel: params[:channel])
+      render json: PrivatePub.subscription(channel: params[:channel], server: ENV['FAYE_URL'])
     else
       raise "unrecognised channel: #{params[:channel]}"
     end

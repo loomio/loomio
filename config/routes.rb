@@ -6,6 +6,8 @@ Loomio::Application.routes.draw do
     get 'setup_for_vote_on_proposal'
   end
 
+  get '/angular' => 'base#boot_angular_ui'
+
 
   slug_regex = /[a-z0-9\-\_]*/i
 

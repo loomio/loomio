@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html ng-app="mentio-demo">
+<head>
+    <meta charset="utf-8" />
+    <title>{{title}}</title>
+    <link data-require="bootstrap-css@3.1.1" data-semver="3.1.1" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.min.js"></script>
+    <script src="/dist/mentio.js"></script>
+    <script src="scripts.js"></script>
+</head>
+<body ng-controller="mentio-demo-ctrl">
+<div>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" ng-href="#">ment.io</a>
+                <ul class="nav navbar-nav">
+                    <li ng-class="{active: tab === 'examples' }"><a ng-href="#/examples">Demo</a></li>
+                    <li ng-class="{active: tab === 'documentation' }"><a ng-href="#/documentation">Documentation</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div ng-view></div>
+
+    <script type="text/ng-template" id="examples.html">
+        <form action="#">
+        <div class="container">
+            <div class="row">
+                <header class="text-center">
+                    <h1 class="heading">Ment.io</h1>
+                    <h6 class="text-muted">(Angular @mentions with macros)</h6>
+                </header>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="form-group">
+                        <h3>Content Editable:</h3>
+                        <div contenteditable mentio
+                            mentio-typed-term="typedTerm"
+                            mentio-macros="macros"
+                            mentio-require-leading-space="true"
+                            class="editor form-control"
+                            mentio-id="'htmlContent'"
+                            id="htmlContent"
+                            ng-model="htmlContent"
+                            >
+                        </div>
+                        <span class="caption small">Mentioned: {{typedTerm}}</span>
+                    </div>
+
+                    <mentio-menu
+                                mentio-for="'htmlContent'"
+                                mentio-trigger-char="'@'"
+                                mentio-items="people"
+                                mentio-template-url="/people-mentions.tpl"
+                                mentio-search="searchPeople(term)"
+                                mentio-select="getPeopleText(item)"
+                                ></mentio-menu>
+
+                    <div class="form-group">
+                        <h3>Text Area:</h3>
+                        <textarea mentio
+
+                                mentio-macros="macros"
+                                mentio-trigger-char="'@'"
+                                mentio-items="people"
+                                mentio-template-url="/people-mentions.tpl"
+                                mentio-search="searchPeople(term)"
+                                mentio-select="getPeopleTextRaw(item)"
+                                mentio-typed-term="typedTerm2"
+
+                                class="editor form-control"
+                                mentio-id="'theTextArea'"
+                                ng-model="theTextArea"
+                                ng-trim="false"
+                                rows="6">
+                        </textarea>
+                        <span class="caption small">Mentioned: {{typedTerm2}}</span>
+                   </div>
+
+                    <mentio-menu
+
+                                mentio-for="'theTextArea'"
+                                mentio-trigger-char="'#'"
+                                mentio-items="products"
+                                mentio-template-url="/product-mentions.tpl"
+                                mentio-search="searchProducts(term)"
+                                mentio-select="getProductTextRaw(item)"></mentio-menu>
+
+                    <div class="form-group">
+                        <h3>Text Input:</h3>
+                        <!--Note the use of an angular expression for the ID.  This can be done within ng-repeat using $index-->
+                        <input mentio
+
+                                ng-model="theText"
+                                mentio-id="'theText' + myIndexValue"
+                                type="text"
+                                class="form-control"
+                                ng-trim="false"
+                                size="100"/>
+                    </div>
+
+                    <mentio-menu
+                                mentio-for="'theText' + myIndexValue"
+                                mentio-trigger-char="'#'"
+                                mentio-items="products"
+                                mentio-template-url="/product-mentions.tpl"
+                                mentio-search="searchProducts(term)"
+                                mentio-select="getProductTextRaw(item)"></mentio-menu>
+                    <mentio-menu
+                                mentio-for="'theText' + myIndexValue"
+                                mentio-trigger-char="'@'"
+                                mentio-items="people"
+                                mentio-template-url="/people-mentions.tpl"
+                                mentio-search="searchPeople(term)"
+                                mentio-select="getPeopleTextRaw(item)"></mentio-menu>
+
+
+                    <div class="form-group">
+                        <h3>Minimal:</h3>
+                        <!--Note no need for external mentio-menu elements because there is only one trigger character needed-->
+                        <input type="text" mentio mentio-typed-text="typedTerm" mentio-items="simplePeople | filter:label:typedTerm" class="form-control" ng-model="theTextArea2"
+                                  size="100"/>
+                        </textarea>
+                    </div>
+
+                    <div class="form-group">
+                         <input type="submit">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </script>
+
+    <script type="text/ng-template" id="/product-mentions.tpl">
+        <ul class="list-group product-search demo-scrollable-menu">
+            <li mentio-menu-item="product" ng-repeat="product in items" class="list-group-item clearfix">
+                <div class="row">
+                    <div class="col-xs-2 text-center">
+                        <img ng-src="{{product.imageUrl}}" class="product-photo">
+                    </div>
+                    <div class="col-xs-10">
+                        <h4 class="list-group-item-heading">{{product.title | words:5}}</h4>
+                        <p class="list-group-item-text">{{product.description | words:7}}</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </script>
+
+    <script type="text/ng-template" id="/people-mentions.tpl">
+        <ul class="list-group user-search">
+            <li mentio-menu-item="person" ng-repeat="person in items" class="list-group-item">
+                <img ng-src="{{person.imageUrl}}" class="user-photo">
+                <span class="text-primary" ng-bind-html="person.name | mentioHighlight:typedTerm:'menu-highlighted' | unsafe"></span>
+                <em class="text-muted" ng-bind="person.bio | words:5"></em>
+            </li>
+        </ul>
+    </script>
+
+    <script type="text/ng-template" id="documentation.html">
+        <div class="container">
+            <div class="row">
+                <header class="text-center">
+                    <h1 class="heading">Ment.io</h1>
+                    <h6 class="text-muted">(Angular @mentions with macros)</h6>
+                </header>
+                <h3 class="section-heading">Overview</h3>
+                The <code>mentio</code> directive is applied to any element that accepts selectable text input and exposes 
+                an <code>ngModel</code>.
+                The <code>mentio</code> directive watches the <code>ngModel</code> of the element for changes.  If the user enters
+                a sequence of non-wihtespace characters starting with a <em>trigger character</em>, a typeahead menu appears.
+                <p></p>
+                To get started, use
+                <p></p>
+                <pre>bower install ment.io --save</pre>
+                or
+                <p></p>
+                <pre>npm install ment.io --save</pre>
+
+                <h3 class="section-heading">Directives</h3>
+                <header class="documentation-element">
+                    <code>
+                    mentio
+                    </code>
+                </header>
+
+                For the mentio directive, specification of options can either be done inline, within
+                the same element for one triggering character, or using a series of configurations if there are a multiple applicable
+                triggering characters.</p>
+
+                <p>
+                When detecting user input that should show a typeahead menu, the following rules apply:
+                <ul>
+                    <li>A specified <em>trigger character</em> is present in the text preceding the current caret location (e.g. @)</li>
+                    <li>A space precedes the trigger character</li>
+                    <li>The text following the trigger character contains no spaces up to the current caret location</li>
+                </ul>
+                When a match is found, the current text after the trigger character is assigned to the scope property specified in the
+                <code>mentio-typed-term</code> attribute if present.
+                It is only possible for one trigger character to cause a menu to show at a time.  Also, only one menu will display on a given page
+                at a time.
+                </p>
+
+                <p>Definition of menu behavior for each desired trigger character can be specified
+                with separate <code>mentio-menu</code> directives.
+                However the <code>mentio</code> directive does not require separate <code>mentio-menu</code> directives.
+                If only one trigger character
+                is needed, the <code>mentio-trigger-char</code>, <code>mentio-items</code>, <code>mentio-template-url</code>, <code>mentio-search</code>,
+                and <code>mentio-select</code> attributes from the <code>mentio-menu</code> directive can be specified directly along side
+                the <code>mentio</code> directive.
+                </p>
+
+                <p>To support macro expansion, a translation table to use for macros can be assigned through the <code>macros</code>
+                attribute which will expand typed sequences of characters into predefined strings of HTML or text.
+                </p>
+
+                <h4 class="section-heading">Attributes</h4>
+
+                <header class="text-primary documentation-attr">ng-model</header>
+                <strong>Required.</strong> An <code>ngModel</code> is required on the element for mentio to be able to operate.
+
+                <header class="text-primary documentation-attr">mentio-id</header>
+                <strong>Optional.</strong> An angular expression representing the ID of the <code>mentio</code> element.  This value
+                is matched by the <code>mentio-for</code> attribute on any separate <code>mentio-menu</code> elements.  
+                If no <code>mentio-id</code> is specified, the <code>id</code>
+                html attribute will be used to match <code>mentio-for</code>.  The <code>mentio-id</code> is unnecessary if there
+                is only one trigger character and all attributes are specified on the <code>mentio</code> directive.
+
+                <header class="text-primary documentation-attr">mentio-typed-term</header>
+                <strong>Optional.</strong> If specified, binds a scope property that will be assigned
+                the current value of the typed term when the <code>mentio</code> menu is active.
+
+                <header class="text-primary documentation-attr">mentio-macros</header>
+                <strong>Optional.</strong> Specifies a JSON map of macro translations.  The key should be a simple sequence of characters, not including spaces.  The key
+                will be matched case-insensitive.  When a match is detected, the value in the macro table will be expanded in place of the
+                macro the user typed.
+                <p></p>
+                An example from the sample demo in <code>scripts.js</code>:
+                <p></p>
+                <pre>
+                    $scope.macros = {
+                        'brb': 'Be right back',
+                        'omw': 'On my way',
+                        '(smile)' : '&lt;img src="http://a248.e.akamai.net/assets.github.com/images/icons/emoji/smile.png"' +
+                                ' height="20" width="20"&gt;'
+                    };</pre>
+
+                <header class="text-primary documentation-attr">mentio-require-leading-space</header>
+                <strong>Optional.</strong> When <code>true</code>, specifies that the menu will only be displayed if the trigger character is 
+                preceded by a space.  This option can benefit the user by 
+                disambiguating typeahead text from other text that might normally
+                contain the configured trigger character, but for some languages like Chinese, spaces cannot be required.
+                <p></p>
+ 
+                 <h4 class="section-heading">Provided Scope Properties</h4>
+
+                <header class="text-primary documentation-attr">typedTerm</header>
+                The <code>typedTerm</code> scope property is bound to the text currently after the trigger char.  
+                This can be referenced from within the
+                <code>mentio-menu</code> template to highlight text when presenting menu items.
+
+                <p></p>
+ 
+                <strong>Special note for contenteditable:</strong> To see the ment.io directive operate in a contenteditable, 
+                you must have set up the contenteditable to update the <code>ngModel</code> as per the AngularJS examples here:
+                <a href="https://docs.angularjs.org/api/ng/type/ngModel.NgModelController">
+                https://docs.angularjs.org/api/ng/type/ngModel.NgModelController</a>.  The approach of creating a custom
+                <code>contenteditable</code> directive is demonstrated in the ment.io demo code.
+
+                <header class="text-primary documentation-attr">mentio-trigger-char, mentio-items, mentio-template-url, mentio-search,
+                mentio-select </header>
+                <strong>Optional.</strong> If only one trigger char is needed, these attribtues can be used on the <code>mentio</code>
+                directive.  See the description of these attributes in <code>mentio-menu</code> below for details. 
+
+                <header class="documentation-element">
+                    <code>
+                    mentio-menu
+                    </code>
+                </header>
+                <p>The <code>mentio-menu</code> element defines a menu for each a trigger
+                character that the <code>mentio</code> directive
+                should respond to.  The <code>mentio-menu</code> identifies which <code>mentio</code> directive it is targeting
+                by referring to the element <code>id</code> of the element containing the <code>mentio</code> directive.
+                </p>
+                <p>Each menu must specify the trigger character, a data collection,
+                the template to use to render the menu, a search
+                function, and a select function.  Based on the specified attributes,
+                the specified menu will display whenever text in the target
+                text element is changed.  </p>
+                <h4 class="section-heading">Attributes</h4>
+
+                If only one trigger character
+                is needed, the <code>mentio-trigger-char</code>, <code>mentio-items</code>, <code>mentio-template-url</code>, <code>mentio-search</code>,
+                and <code>mentio-select</code> attributes can be placed on the same element with the <code>mentio</code> directive.
+
+
+                <header class="text-primary documentation-attr">mentio-for</header>
+                <strong>Required.</strong> The string literal <code>id</code> of the element containing a
+                <code>mentio</code> directive that this <code>mentio-menu</code> should attach to.
+
+                <header class="text-primary documentation-attr">mentio-items</header>
+                <strong>Required.</strong> The data list to bind the menu to.  This must be a reference to a value in current scope.
+                Since a <code>mentio-menu</code> has
+                isolate scope, the list referenced by the <code>items</code> attribute will
+                be passed down through the child scope contexts to the template used in the <code>mention-rule</code>, which then allows it to
+                be refrenced in an angular expression that drives an <code>ng-repeat</code>.  Note the reference to <code>items</code> in
+                the example below.
+                <p></p>
+                <pre>
+                &lt;mentio-menu mentio-for="'theText'" mentio-trigger-char="@" mentio-items="people" mentio-template-url="<b>/people-mentions.tpl</b>"
+                             mentio-search="searchPeople(term)" mentio-select="getPeopleTextRaw(item)"&gt&lt;/mentio-menu&gt
+
+                &lt;script type="text/ng-template" id="<b>/people-mentions.tpl</b>"&gt;
+                    &lt;ul class="list-group user-search"&gt;
+                        &lt;i mentio-menu-item="person" ng-repeat="person in <b>items</b>" class="list-group-item"&gt;
+                            &lt;mg ng-src=" { {person.imageUrl} }" class="user-photo"&gt;
+                            &lt;span class="text-primary"
+                                ng-bind-html="person.name | mentioHighlight:typedTerm:'menu-highlighted' | unsafe">&lt;/span&gt;
+                            &lt;em class="text-muted" ng-bind="person.bio | words:5">&lt;/em&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/script&gt;</pre>
+
+                <strong>Node</strong> The mentio directive watches the collection 
+                referenced by <code>mentio-items</code>.  If the values in this list are cached and never change, the menu 
+                will not appear.  Make sure in your <code>mentio-search</code> function to modify the items list in some way.
+
+                <header class="text-primary documentation-attr">mentio-trigger-char</header>
+                <strong>Optional.</strong> The character that should trigger the menu behavior.  In the example, '@' and '#'s are used. 
+                The default value is '@'.
+
+                <header class="text-primary documentation-attr">mentio-template-url</header>
+                <strong>Optional.</strong>
+                Specifies the template url to use to render the select menu.  The template should iterate the <code>items</code> list to
+                present a menu of choices.  The <code>items</code> scope property from the <code>mentio-menu</code> is available to iterate
+                within an <code>ng-repeat</code>. The <code>typedTerm</code> scope property
+                from the <code>mentio-menu</code> can be accessed in order
+                to highlight text in the menu.  The default template presents a simple menu, and assumes that each object has a property
+                called <code>label</code>.
+
+                <header class="text-primary documentation-attr">mentio-search</header>
+                <strong>Optional.</strong>
+                Specifies a function call to invoke when the trigger char 
+                has been entered into the target text element.  The currently active
+                typed term after the trigger char is bound as the <code>term</code> argument in the expression.
+                <p></p>
+                The implementation of the search function should populate the data collection referenced by the <code>mentio-items</code>
+                attribute with data.  The scope property referenced by <code>items</code> can be a promise.  No return is expected from
+                the search fucntion.
+                <p></p>
+                If no search function is specified, the list of objects in <code>mentio-items</code> will 
+                be scanned and the <code>label</code> property will be matched against the typed term.  Alternatively, the expression
+                for <code>mentio-items</code> can just be specified using a filter, as in this example:
+                <p></p>
+
+                <pre>
+                    &lt;input type="text" mentio mentio-typed-text="typedTerm" 
+                        mentio-items=<strong>"simplePeople | filter:label:typedTerm"</strong> class="form-control" 
+                        ng-model="theTextArea2" size="100"/&gt;               
+                </pre>
+
+                <header class="text-primary documentation-attr">mentio-select</header>
+                <strong>Optional.</strong>
+                Specifies a function call to invoke when the user has picked an item in the menu.  The item in <code>mentio-items</code>
+                corresponding to the selected item in the menu is bound to the <code>item</code> parameter of the select function.  The
+                select function may return a string or a <code>Promise</code> that returns a string value to use to replace the 
+                current trigger char and mention text.
+                <p></p>
+                If no select function is specified, the trigger char is prepended to the <code>label</code> property of the current item.
+
+                <h4 class="section-heading">Provided Scope Properties</h4>
+
+                <header class="text-primary documentation-attr">items</header>
+                The name <code>items</code> is made available within the scope of the <code>mentio-menu</code> template. It is a mapping
+                from the <code>mentio-items</code> attribute specified on the <code>mentio-menu</code> or <code>mentio</code> directives.
+
+                <header class="documentation-element">
+                    <code>
+                    mentio-menu-item
+                    </code>
+                </header>
+                A <code>mentio-menu-item</code> must be contained within a <code>mentio-menu</code> template.
+                When applied to an element in this context, the <code>mentio-menu-item</code> directive will add or remove the
+                class <code>active</code> to highlight an item in the menu when it is considered selected by the <code>mentio-menu</code>,
+                including during mouse-enter events.  If the user
+                clicks an element with the <code>mentio-menu-item</code> directive, the item corresponding to the currently
+                active <code>mentio-menu-item</code> will be selected by invoking the <code>select</code> function provided in the
+                <code>mentio-search</code> attribute of the <code>mentio-menu</code>.
+
+                <h3 class="section-heading">Filters</h3>
+                <header class="documentation-element">
+                    <code>
+                    mentioHighlight
+                    </code>
+                </header>
+                A filter that can be used to replace text with a span having an arbitrary class.  The class must be passed as an extended
+                second argument to the filter.  In the following example, text that matches the mentioned text after the trigger char will
+                be replaced with a <code>span</code> element with the class <code>menu-highlighted</code>:
+
+                <p></p>
+                <pre>person.name | mentioHighlight:typedTerm:'menu-highlighted'</pre>
+                The filter is useful within the <code>mentio-menu</code> template when iterating the items in the select menu for the user
+                to pick.
+               <p></p>
+           </div>
+        </div>
+    </script>
+
+
+    <a href="https://github.com/jeff-collins/ment.io"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    </div>
+</body>
+
+</html>
