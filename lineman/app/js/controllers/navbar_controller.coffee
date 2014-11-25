@@ -1,8 +1,7 @@
 angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, DiscussionModel) ->
-  $scope.inboxIsOpen = false
-
-  $scope.toggled = (open) ->
-    $scope.inboxIsOpen = open
+  $scope.showInbox = false
+  $scope.showSearch = false
+  $scope.showNotifications = false 
 
   $scope.openDiscussionForm = ->
     modalInstance = $modal.open
@@ -10,3 +9,9 @@ angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Disc
       controller: 'DiscussionFormController'
       resolve:
         discussion: -> new DiscussionModel
+
+  $scope.toggleInbox =         (open) -> $scope.showInbox = open
+  $scope.toggleSearch =        (open) -> 
+    $scope.showSearch = open
+    console.log('Toggle search: ' + open)
+  $scope.toggleNotifications = (open) -> $scope.showNotifications = open 

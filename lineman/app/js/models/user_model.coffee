@@ -10,8 +10,14 @@ angular.module('loomioApp').factory 'UserModel', (RecordStoreService) ->
 
     plural: 'users'
 
+    membershipFor: (group) ->
+      _.find @memberships(), (membership) -> membership.groupId == group.id
+
     memberships: ->
       RecordStoreService.get 'memberships', (membership) => membership.userId == @id
+
+    notifications: ->
+      RecordStoreService.get 'notifications', (notification) => notification.userId == @id
 
     groups: ->
       RecordStoreService.get('groups', _.map(@memberships(), (membership) -> membership.groupId))

@@ -1,8 +1,10 @@
 en:
   common:
-    state:
+    groups: 'Groups'
+    privacy:
       private: 'Private'
       public: 'Public'
+      organization: 'Organization'
     action:
       reply: 'Reply'
       edit: 'Edit'
@@ -25,6 +27,9 @@ en:
 
   comment_form:
     edit_comment: 'Edit comment'
+
+  navbar:
+    search_placeholder: 'Search for groups or threads'
 
   vote_form:
     i_agree: 'I agree'
@@ -85,6 +90,55 @@ en:
     members: 'Members'
     subgroups: 'Subgroups'
     invite_people: 'Invite people'
+    visibility_label: 'Visibility'
+    notifications_label: 'Notifications'
+    options_label: 'Options'
+    notifications:
+      following: 'Following'
+      following_details: 'You''ll be notified about all activity in this group'
+      not_following: 'Not following'
+      not_following_details: 'You''ll be notified about threads you are participating in'
+    privacy:
+      private: 'This group is only visible to members'
+      parent_members: 'This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
+      public: 'This group is visible on the web'
+
+  group_form:
+    new_group_title: 'Create a New Group'
+    new_subgroup_title: 'Create a New Subgroup of {{parentGroupName}}'
+    edit_group_title: 'Group Settings'
+    profile_label: 'Profile'
+    name_label: 'Name'
+    name_placeholder: 'Enter the name of your group'
+    description_label: 'Description'
+    description_placeholder: 'Describe your group'
+    category_label: 'Category'
+    privacy:
+      label: 'Privacy'
+      visible_to_members: 'Who can find this group?'
+      public_visibility: 'Anyone - list the group publicly'
+      organization_visibility: 'Members of this organization'
+      private_visibility: 'Members only - the group will not be listed'
+      membership_granted_upon: 'How do people join?'
+      membership_by_request: 'Open - anyone can join the group'
+      membership_by_approval: 'By request - anyone can request to join'
+      membership_by_invitation: 'Invitation only - new members must be invited'
+      discussion_privacy_options: 'Who can view threads?'
+      public_discussions: 'Public threads only'
+      public_or_private_discussions: 'Allow public and private threads'
+      private_discussions: 'Private discussions only'
+    permissions:
+      label: 'Permissions'
+      helptext: 'What can members do?'
+      members_can_add_members: 'Invite and approve new members'
+      members_can_create_subgroups: 'Create subgroups'
+      members_can_start_discussions: 'Start threads'
+      members_can_edit_discussions: 'Edit the title and context of any thread'
+      members_can_edit_comments: 'Edit their comments at any time'
+      members_can_raise_motions: 'Start proposals'
+      members_can_vote: 'Vote on proposals'
+    edit_group_submit:  'Update Settings'
+    new_group_submit: 'Create Group'
 
   invitation:
     invite_people: 'Invite People'
