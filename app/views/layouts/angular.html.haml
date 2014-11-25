@@ -1,11 +1,12 @@
+-# seems like we have to have a production layout and a devel layout (found in lineman/app/pages/index.html)
 !!!
-%html{ng-app: 'loomioApp'}
+%html{'ng-app' => 'loomioApp'}
   %head
     %title Loomio
     %meta{charset: 'utf-8'}
-    %meta{content: 'IE=Edge', 'http-equiv': 'X-UA-Compatible'}
+    %meta{content: 'IE=Edge', 'http-equiv' => 'X-UA-Compatible'}
     %meta{content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name: "viewport"}
-    %link{href: '/css/app.css', media: 'screen', rel: 'stylesheet', type: 'text/css'}
+    = stylesheet_link_tag lineman_css_path
 
     %base{href: '/'}
     <!--[if lt IE 9]>
@@ -13,7 +14,6 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   %body.sidebar-is-open
-
     %navbar
 
     / only load this if the sidebar is open
@@ -23,6 +23,5 @@
       .container#main
         %main{ng_view: ''}
 
-
-    %script{src: '/js/app.js', type: 'text/javascript'}
-    %script{src: 'http://localhost:9292/faye/client.js', type: 'text/javascript'}
+    = javascript_include_tag lineman_js_path
+    %script{src: "#{ENV['FAYE_URL']}/client.js", type: 'text/javascript'}

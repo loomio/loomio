@@ -1,7 +1,7 @@
-angular.module('loomioApp').service 'FileUploadService',
-  class FileUploadService
-    constructor: (@$http) ->
-      @$http.post("/api/v1/attachments/credentials").then (response) =>
+angular.module('loomioApp').factory 'FileUploadService', ($http) ->
+  new class FileUploadService
+    constructor: () ->
+      $http.post("/api/v1/attachments/credentials").then (response) =>
         data = response.data
         @url       = data.url
         @acl       = data.acl

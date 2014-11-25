@@ -7,14 +7,10 @@
 module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application",
   enableSass: true
 
-  # html5push state simulation
   server:
-    pushState: true
-
     apiProxy:
       enabled: true
       port: 3000
-      prefix: 'api'
 
   loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ng-annotate", "grunt-haml", 'grunt-sass', 'grunt-cucumber', 'grunt-contrib-copy']
 
@@ -84,6 +80,9 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
     options:
       includePaths: ['vendor/bower_components/']
 
+  #uglify:
+    #options:
+      #mangle: false
 
   ngtemplates:
     loomioApp:
@@ -150,3 +149,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
     webfonts:
       files: "<%= files.webfonts.vendor %>"
       tasks: ["copy"]
+
+  plugins:
+    rails:
+      namespace: "lineman"
