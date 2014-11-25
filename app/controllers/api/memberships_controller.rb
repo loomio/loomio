@@ -8,6 +8,11 @@ class API::MembershipsController < API::RestfulController
     respond_with_collection
   end
 
+  def my_memberships
+    @memberships = current_user.memberships
+    respond_with_collection
+  end
+
   def autocomplete
     @group = Group.find(params[:group_id])
     authorize! :members_autocomplete, @group

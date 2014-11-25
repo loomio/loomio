@@ -28,6 +28,7 @@
 }
 .group-page-privacy{
   margin-top: 10px;
+  position: relative;
   a{color: $primary-text-color;}
   a:hover{text-decoration: none;}
   a:hover span{text-decoration: underline;}
@@ -36,9 +37,16 @@
   margin: 10px 0;
   @media(min-width: $screen-xs-max){ margin-left: 128px; }
 }
+
 .group-page-buttons{
   margin-top: 10px;
 }
+.group-page-notifications{
+  position: relative;
+  margin-bottom: 5px;
+}
+
+
 .group-page-description,
 .group-page-threads,
 .group-page-members,
