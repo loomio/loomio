@@ -19,7 +19,6 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService, BaseMo
         name: @name
         description: @description
         closing_at: @closingAt
-        closed_at: @closedAt
 
     positionVerbs: ['agree', 'abstain', 'disagree', 'block']
     positions: ['yes', 'abstain', 'no', 'block']
