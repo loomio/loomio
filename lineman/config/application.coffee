@@ -16,7 +16,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       port: 3000
       prefix: 'api'
 
-  loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ng-annotate", "grunt-haml", 'grunt-sass', 'grunt-cucumber', 'grunt-contrib-copy']
+  loadNpmTasks: ['grunt-bower-task', "grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ng-annotate", "grunt-haml", 'grunt-sass', 'grunt-cucumber', 'grunt-contrib-copy']
 
   removeTasks:
     common: ["handlebars", "jst", 'less', 'pages:dev']
