@@ -1,14 +1,20 @@
 en:
   common:
-    state:
+    groups: 'Groups'
+    privacy:
       private: 'Private'
       public: 'Public'
+      organization: 'Organization'
     action:
       reply: 'Reply'
       edit: 'Edit'
       like: 'Like'
       unlike: 'Unlike'
       cancel: 'Cancel'
+      show_more: "Show more"
+      new_thread: "New thread"
+      add_subgroup: 'Add subgroup'
+
 
   inbox:
     latest_threads: 'Latest threads'
@@ -22,11 +28,18 @@ en:
   comment_form:
     edit_comment: 'Edit comment'
 
+  navbar:
+    search_placeholder: 'Search for groups or threads'
+
   vote_form:
     i_agree: 'I agree'
+    i_agree_details: 'I support this and want it to go ahead.'
     i_abstain: 'I abstain'
+    i_abstain_details: 'I am happy for the group to decide without me.'
     i_disagree: 'I disagree'
+    i_disagree_details: 'I think we can probably do better.'
     i_block: 'I block'
+    i_block_details: 'I have strong objections to this proposal and am not OK with it going ahead.'
     submit_position: 'Submit position'
     change_position: 'Change position'
     select_position: 'Select position'
@@ -43,13 +56,21 @@ en:
     details_placeholder: "Give enough detail so everyone knows exactly what it means to agree or disagree or whatever"
 
   discussion_form:
-    new_discussion_title: 'Start a thread'
-    edit_discussion_title: 'Edit discussion'
+    new_discussion_title: 'Start new thread'
+    edit_discussion_title: 'Edit thread'
+    discussion_helptext: 'The thread is where everyone can discuss a topic and make decisions together.'
+    group_label: 'Group'
     title_label: 'Title'
     title_placeholder: 'What is the topic you want to discuss?'
     context_label: 'Context'
     context_placeholder: 'Give enough background information for the group to have a productive discussion. This can be updated as the discussion progresses'
     privacy_label: 'Privacy'
+    privacy:
+      will_be_private_to_group: 'The thread will only be visible to members of {{groupName}}.'
+      will_be_private_to_parent_group: 'The thread will be visible to members of {{parentGroupName}} and members of {{groupName}}.'
+      will_be_public: 'Anyone can see the thread.'
+    new_discussion_submit: 'Start thread'
+    edit_discussion_submit: 'Edit thread'
 
   proposal_card:
     your_position: 'Your Position'
@@ -63,15 +84,61 @@ en:
   proposal_position_no: 'No'
   proposal_position_block: 'Block'
 
-  group:
+  group_page:
     description: 'Description'
     discussions: 'Threads'
     members: 'Members'
     subgroups: 'Subgroups'
-    new_thread: 'New Thread...'
-    add_subgroup: 'Add Subgroup'
-    invite_members: 'Invite Members'
-    show_more: 'Show more...'
+    invite_people: 'Invite people'
+    visibility_label: 'Visibility'
+    notifications_label: 'Notifications'
+    options_label: 'Options'
+    notifications:
+      following: 'Following'
+      following_details: 'You''ll be notified about all activity in this group'
+      not_following: 'Not following'
+      not_following_details: 'You''ll be notified about threads you are participating in'
+    privacy:
+      private: 'This group is only visible to members'
+      parent_members: 'This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
+      public: 'This group is visible on the web'
+
+  group_form:
+    new_group_title: 'Create a New Group'
+    new_subgroup_title: 'Create a New Subgroup of {{parentGroupName}}'
+    edit_group_title: 'Group Settings'
+    profile_label: 'Profile'
+    name_label: 'Name'
+    name_placeholder: 'Enter the name of your group'
+    description_label: 'Description'
+    description_placeholder: 'Describe your group'
+    category_label: 'Category'
+    privacy:
+      label: 'Privacy'
+      visible_to_members: 'Who can find this group?'
+      public_visibility: 'Anyone - list the group publicly'
+      organization_visibility: 'Members of this organization'
+      private_visibility: 'Members only - the group will not be listed'
+      membership_granted_upon: 'How do people join?'
+      membership_by_request: 'Open - anyone can join the group'
+      membership_by_approval: 'By request - anyone can request to join'
+      membership_by_invitation: 'Invitation only - new members must be invited'
+      discussion_privacy_options: 'Who can view threads?'
+      public_discussions: 'Public threads only'
+      public_or_private_discussions: 'Allow public and private threads'
+      private_discussions: 'Private discussions only'
+    permissions:
+      label: 'Permissions'
+      helptext: 'What can members do?'
+      members_can_add_members: 'Invite and approve new members'
+      members_can_create_subgroups: 'Create subgroups'
+      members_can_start_discussions: 'Start threads'
+      members_can_edit_discussions: 'Edit the title and context of any thread'
+      members_can_edit_comments: 'Edit their comments at any time'
+      members_can_raise_motions: 'Start proposals'
+      members_can_vote: 'Vote on proposals'
+    edit_group_submit:  'Update Settings'
+    new_group_submit: 'Create Group'
 
   invitation:
     invite_people: 'Invite People'
