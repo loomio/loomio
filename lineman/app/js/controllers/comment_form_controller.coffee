@@ -1,6 +1,7 @@
-angular.module('loomioApp').controller 'CommentFormController', ($scope, CommentModel, CommentService, MembershipService, RecordStoreService) ->
-  $scope.comment = new CommentModel(discussion_id: $scope.discussion.id)
-  group = $scope.discussion.group()
+angular.module('loomioApp').controller 'CommentFormController', ($scope, CommentModel, CommentService, MembershipService) ->
+  discussion = $scope.comment.discussion()
+  group = discussion.group()
+
   $scope.mentionables = group.members()
   $scope.isExpanded = false
 
