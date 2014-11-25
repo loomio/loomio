@@ -1,4 +1,10 @@
 ru:
+  users:
+    email_preferences:
+      edit:
+        title: 'Посылаете препочтения '
+        when_do_you_want_emails: 'Посылаете меня емаил:'
+        for_these_groups: "Для этих групп:"
   errors:
     messages:
       email: "Проверьте правильность введённого адреса электронной почты"
@@ -15,6 +21,8 @@ ru:
     permission_to_invite: "У вас недостаточно прав для приглашения новых участников."
     position_not_updated: "Невозможно изменить этот пункт"
     settings_not_updated: "Ваши настройки не обновлены"
+    you_are_already_a_member_of_this_group: "Вы уже член этих группи"
+    not_found: "Пункт не нашил. Он вычеркнул."
   alert:
     duplicate_email: "%{which_email} уже в группе. "
   notice:
@@ -110,6 +118,8 @@ ru:
   tagline: "Создавая мир, в котором каждому легко принимать участие в принятии решений, влияющих на них."
   click_to_dismiss: "Нажмите сюда, чтобы отклонить это сообщение"
   generic_confirm: "Вы уверены?"
+  group_form:
+    what_can_members_do: "Что члены могут делать?"
   add_new_member: "Добавить нового участника"
   invite_members_to_group: "Пригласить участника в %{which_group}"
   remaining_invites: "оставшиеся приглашения"
