@@ -1,0 +1,23 @@
+{
+  "name": "lokijs",
+  "main": "[\"src/LokiJS.js\"]",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/techfort/LokiJS",
+  "_release": "d2853eac22",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "d2853eac2211021fef8a5ba3e1c72db0b65ca077"
+  },
+  "_source": "git://github.com/techfort/LokiJS.git",
+  "_target": "*",
+  "_originalSource": "lokijs",
+  "_direct": true
+}
