@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'CommentFormController', ($scope, CommentModel, CommentService, MembershipService) ->
+angular.module('loomioApp').controller 'CommentFormController', ($scope, CommentModel, CommentService, MembershipService, AttachmentService) ->
   discussion = $scope.comment.discussion()
   group = discussion.group()
 
@@ -36,3 +36,8 @@ angular.module('loomioApp').controller 'CommentFormController', ($scope, Comment
   $scope.$on 'showReplyToCommentForm', (event, parentComment) ->
     $scope.comment.parentId = parentComment.id
     $scope.expand()
+
+  $scope.removeAttachment = (attachment) ->
+    AttachmentService.destroy attachment, ->
+      ids = $scope.comment.newAttachmentIds
+      ids.splice ids.indexOf(attachment.id), 1

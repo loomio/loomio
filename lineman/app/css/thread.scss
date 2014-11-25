@@ -90,3 +90,38 @@
   background-color: #fff;
   border: 1px solid $thread-border-color;
 }
+
+.thread-comment-form-actions {
+  padding: 10px 0;
+}
+
+.attachments {
+  margin: 0 10px;
+}
+
+.attachment-new {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #CCC;
+}
+
+.attachment-new input {
+  width: 34px;
+  opacity: 0;
+  padding: 5px;
+  cursor: pointer;
+  display: block;
+  overflow: hidden;
+}
+
+.cover-file-upload {
+  pointer-events: none;
+  position: relative;
+  bottom: 38px;
+  padding: 0px;
+  left: 4px;
+}
+
+.progress.active {
+  float: left;
+}

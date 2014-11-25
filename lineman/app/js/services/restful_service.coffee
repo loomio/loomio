@@ -44,7 +44,7 @@ angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelServ
         failure(response.data.error)
 
     destroy: (obj, success, failure) ->
-      $http.delete(@showPath(obj.id), obj.params()).then (response) ->
+      $http.delete(@showPath(obj.id)).then (response) ->
         MessageChannelService.messageReceived(response.data)
         success()
       , (response) ->
