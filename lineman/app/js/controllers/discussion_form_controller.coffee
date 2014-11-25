@@ -1,6 +1,5 @@
 angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $modalInstance, DiscussionService, discussion, UserAuthService, MembershipService) ->
   currentUser = UserAuthService.currentUser
-  MembershipService.fetchMyMemberships()
   $scope.discussion = discussion
 
   $scope.availableGroups = ->

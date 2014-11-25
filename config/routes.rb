@@ -28,10 +28,10 @@ Loomio::Application.routes.draw do
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resource :inbox, only: :show, controller: 'inbox'
-    resources :groups, only: :show do
+    resources :groups, only: [:show, :create, :update] do
       get :subgroups, on: :collection
     end
-    resources :memberships, only: [:index] do
+    resources :memberships, only: [:update, :index] do
       get :autocomplete, on: :collection
       get :my_memberships, on: :collection
     end
@@ -52,6 +52,7 @@ Loomio::Application.routes.draw do
       post :vote, on: :member
     end
     resources :translations, only: :show
+    resources :notifications, only: :index
     namespace :faye do
       post :subscribe
       get :who_am_i
