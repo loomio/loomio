@@ -29,7 +29,8 @@ angular.module('loomioApp').run (RecordStoreService,
                                  ProposalModel,
                                  EventModel,
                                  VoteModel,
-                                 MembershipModel) ->
+                                 MembershipModel,
+                                 NotificationModel) ->
 
   RecordStoreService.registerModel(GroupModel)
   RecordStoreService.registerModel(UserModel)
@@ -40,3 +41,4 @@ angular.module('loomioApp').run (RecordStoreService,
   RecordStoreService.registerModel(EventModel)
   RecordStoreService.registerModel(VoteModel)
   RecordStoreService.registerModel(MembershipModel)
+  RecordStoreService.registerModel(NotificationModel)

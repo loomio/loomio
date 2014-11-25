@@ -10,11 +10,10 @@
     %form{ng-submit: 'submit()', ng-show: 'newVote.position || editing' }
       %fieldset
         .form-group
-          %label{for: 'vote-statement-field'}
-            %span.vote-form-label{ng-show: 'newVote.position'}
+          %label.label-with-details{for: 'vote-statement-field'}
+            %span.label-with-details-label{ng-show: 'newVote.position'}
               {{ 'vote_form.i_'+ newVote.positionVerb() | translate }}
-            :
-            %span.vote-form-details{ng-show: 'newVote.position'}>
+            %span.label-with-details-details{ng-show: 'newVote.position'}>
               {{ 'vote_form.i_'+ newVote.positionVerb() +'_details' | translate }}
             %span{translate: 'vote_form.select_position', ng-show: '!newVote.position'}
           %textarea#vote-statement-field.form-control{ng-model: 'newVote.statement', placeholder: '{{ "vote_form.statement_placeholder" | translate }}'}

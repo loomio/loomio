@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'UserAuthService', (RecordStoreService, UserModel, $http) ->
+angular.module('loomioApp').factory 'UserAuthService', (RecordStoreService, UserModel, MembershipService, $http) ->
   new class UserAuthService
     constructor: ->
       @currentUser = null
@@ -8,6 +8,7 @@ angular.module('loomioApp').factory 'UserAuthService', (RecordStoreService, User
         user = new UserModel(response.data.user)
         RecordStoreService.put(user)
         @currentUser = user
+        MembershipService.fetchMyMemberships()
 
     logout: ->
       $http.delete('/api/vi/sessions').then (response) ->

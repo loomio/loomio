@@ -162,7 +162,7 @@ class Group < ActiveRecord::Base
                        default_url: 'default-cover-photo.png'
 
   has_attached_file    :logo,
-                       styles: { card: "67x67", medium: "100x100" },
+                       styles: { small: "32x32", card: "67x67", medium: "100x100" },
                        default_url: 'default-logo-:style.png'
 
   validates_attachment :cover_photo,
@@ -263,6 +263,7 @@ class Group < ActiveRecord::Base
     when 'members'
       self.is_visible_to_public = false
       self.is_visible_to_parent_members = false
+      self.parent_members_can_see_discussions = false
       self.discussion_privacy_options = 'private_only'
       self.membership_granted_upon = 'invitation'
     else
