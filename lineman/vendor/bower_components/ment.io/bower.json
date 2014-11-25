@@ -1,0 +1,27 @@
+{
+  "name": "ment.io",
+  "version": "0.9.15",
+  "homepage": "https://github.com/jeff-collins/ment.io",
+  "authors": [
+    "jeff-collins <i.am.jeff.collins@gmail.com>",
+    "adamayres <magicaj@gmail.com>"
+  ],
+  "description": "Mentions for Angular",
+  "keywords": [
+    "angular",
+    "mentions",
+    "ment.io"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.2.18",
+    "angular-mocks": "~1.2.18"
+  }
+}

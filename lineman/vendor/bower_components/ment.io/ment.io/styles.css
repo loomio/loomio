@@ -1,0 +1,93 @@
+.editor {
+	height: auto;
+    min-height: 140px;
+}
+
+.menu-highlighted {
+    font-weight: bold;
+}
+
+.product-search, .user-search {
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    background-clip: padding-box;
+    outline: 0;
+}
+
+.product-search {
+    max-width: 500px;
+}
+
+.product-search .list-group-item.active {
+    background-color: #f5f5f5;
+}
+
+.product-search:hover, .user-search:hover {
+    cursor: pointer;
+}
+
+.product-search .product-photo-container {
+    float: left;
+    width: 100px;
+}
+
+.product-search .product-photo {
+    max-width: 80px;
+    max-height: 50px;
+    border-radius: 3px;
+    margin: auto;
+}
+
+.product-search .list-group-item-heading, .product-search .list-group-item-text {
+    margin-left: 10px;
+}
+
+.user-search .list-group-item.active {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #428bca;
+}
+
+.user-search .list-group-item.active .text-muted {
+    color: #ccc;
+}
+
+.user-search .list-group-item.active .text-primary {
+    color: #fff;
+}
+
+.user-search .list-group-item {
+    padding: 5px;
+}
+
+.user-search .user-photo {
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 15px;
+}
+
+.documentation-attr {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.documentation-element {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.section-heading {
+    margin-top: 30px;
+}
+
+.demo-scrollable-menu {
+    height: auto;
+    max-height: 300px;
+    overflow-y: auto;
+}
+

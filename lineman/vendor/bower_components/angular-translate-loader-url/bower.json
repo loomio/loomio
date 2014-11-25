@@ -1,0 +1,9 @@
+{
+  "name": "angular-translate-loader-url",
+  "version": "2.4.2",
+  "main": "./angular-translate-loader-url.js",
+  "dependencies": {
+    "angular-translate": "~2.4.2"
+  },
+  "ignore": []
+}

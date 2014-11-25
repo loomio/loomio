@@ -1,0 +1,48 @@
+{
+  "name": "tc-angular-chartjs",
+  "version": "1.0.9",
+  "description": "Add Chart.js charts to your angular application",
+  "homepage": "http://carlcraig.github.io/tc-angular-chartjs/",
+  "author": "Carl Craig <carlcraig@3c-studios.com>",
+  "main": "dist/tc-angular-chartjs.min.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "demo",
+    "src",
+    "bower_components",
+    "test",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "angular": "~1.x",
+    "Chart.js": "^1.0.0-beta"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.x"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/carlcraig/tc-angular-chartjs/master/LICENSE-MIT"
+    },
+    {
+      "type": "Apache-2.0",
+      "url": "https://raw.github.com/carlcraig/tc-angular-chartjs/master/LICENSE-APACHE-2.0"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carlcraig/tc-angular-chartjs.git"
+  },
+  "_release": "1.0.9",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.9",
+    "commit": "15269c4370dda4d9570daa10cdaebca7226fb71c"
+  },
+  "_source": "git://github.com/carlcraig/tc-angular-chartjs.git",
+  "_target": "~1.0.9",
+  "_originalSource": "tc-angular-chartjs"
+}
