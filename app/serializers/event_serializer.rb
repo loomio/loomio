@@ -4,44 +4,67 @@ class EventSerializer < ActiveModel::Serializer
 
   has_one :comment, serializer: CommentSerializer
   has_one :discussion, serializer: DiscussionSerializer
-  has_one :proposal, serializer: MotionSerializer, root: :proposals
+  has_one :proposal, serializer: MotionSerializer, root: 'proposals'
   has_one :vote, serializer: VoteSerializer
-  has_one :comment_vote, serializer: CommentVoteSerializer
   has_one :actor, serializer: UserSerializer, root: 'users'
 
-  %w[comment motion vote comment_vote].each do |kind|
-    define_method kind do
-      object.eventable if object.eventable_type == kind.classify
-    end
+  def group_kinds
+    ['new_discussion', 'user_added_to_group', 'membership_request', 'membership_request_approved']
   end
 
-  def proposal
-    motion
+  def group
+    object.eventable.try(:group) || object.group
   end
 
-  def comment
-    case object.kind
-    when 'comment_liked' then object.eventable.comment
-    when 'new_comment' then object.eventable
-    end
+  def discussion_kinds
+    ['comment_liked', 'new_discussion', 'new_motion', 'new_comment', 'user_mentioned']
   end
 
   def discussion
-    comment.discussion if comment.present?
+    object.eventable.try(:discussion) || object.eventable
   end
 
-  def filter(keys)
-    keys.delete(:comment)       unless ["Comment", "CommentVote"].include? object.eventable_type
-    keys.delete(:discussion)    unless ["Comment", "CommentVote"].include? object.eventable_type
-    keys.delete(:proposal)      unless object.eventable_type == 'Motion'
-    keys.delete(:vote)          unless object.eventable_type == 'Vote'
-    keys.delete(:comment_vote)  unless object.eventable_type == 'CommentVote'
-    keys
+  def include_discussion?
+    discussion_kinds.include? object.kind
+  end
+
+  def comment_kinds
+    ['comment_liked', 'new_comment']
+  end
+
+  def comment
+    object.eventable.try(:comment) || object.eventable
+  end
+
+  def include_comment?
+    comment_kinds.include? object.kind
+  end
+
+  def proposal_kinds
+    ['motion_blocked', 'motion_closing_soon', 'motion_outcome_created', 'motion_outcome_updated', 'new_motion', 'new_vote']
+  end
+
+  def proposal
+    object.eventable.try(:motion) || object.eventable
+  end
+
+  def include_proposal?
+    proposal_kinds.include? object.kind
+  end
+
+  def vote_kinds
+    ['new_vote']
+  end
+
+  def vote
+    object.eventable
+  end
+
+  def include_vote?
+    vote_kinds.include? object.kind
   end
 
   def actor
-    case object.kind
-    when 'comment_liked' then object.eventable.user
-    end
+    object.eventable.try(:user)
   end
 end
