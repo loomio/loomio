@@ -1,16 +1,14 @@
 angular.module('loomioApp').controller 'AddAttachmentController', ($scope, AttachmentService, AttachmentModel) ->
 
-  $scope.comment.attachments = []
-
   $scope.upload = ($files) ->
     $scope.isAttaching = true
     for file in $files
-      $scope.uploadingFilename = file.filename
+      $scope.uploadingFilename = file.name
       AttachmentService.upload(file, $scope.progress, $scope.success, $scope.failure)
 
   $scope.success = (attachment) ->
+    $scope.comment.newAttachmentIds.push attachment.id
     $scope.reset()
-    $scope.comment.attachments.push new AttachmentModel(attachment)
 
   $scope.failure = (error) ->
     $scope.reset()
