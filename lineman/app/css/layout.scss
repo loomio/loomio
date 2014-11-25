@@ -85,7 +85,7 @@ a.loomio-nav-btn{
   padding: 0;
 }
 .dropdown-menu .selector-list{
-  height: 600px;
+  max-height: 600px;
   overflow-y:scroll;
 }
 #sidebar .selector-list{
