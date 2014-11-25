@@ -1,18 +1,7 @@
-angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope, NotificationService, UserAuthService) ->
+angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope, NotificationService, UserAuthService, RecordStoreService) ->
+  NotificationService.fetch {}
 
-  $scope.currentNotifications = ->
-    UserAuthService.currentUser.notifications() if UserAuthService.currentUser?
+  $scope.notifications = ->
+    RecordStoreService.get 'notifications', (notification) ->
+      _.contains ['comment_liked'], notification.event().kind
 
-  nextPage = 1
-  busy = false
-  $scope.lastPage = false
-
-  $scope.getNextPage = ->
-    return false if busy or $scope.lastPage
-    busy = true
-    NotificationService.fetch {page: nextPage}, (notifications) ->
-      $scope.lastPage = true if notifications.length == 0
-      nextPage = nextPage + 1
-      busy = false
-
-  $scope.getNextPage()
