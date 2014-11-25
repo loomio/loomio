@@ -11,8 +11,11 @@
       %fieldset
         .form-group
           %label{for: 'vote-statement-field'}
-            %span{ng-show: 'newVote.position'}
+            %span.vote-form-label{ng-show: 'newVote.position'}
               {{ 'vote_form.i_'+ newVote.positionVerb() | translate }}
+            :
+            %span.vote-form-details{ng-show: 'newVote.position'}>
+              {{ 'vote_form.i_'+ newVote.positionVerb() +'_details' | translate }}
             %span{translate: 'vote_form.select_position', ng-show: '!newVote.position'}
           %textarea#vote-statement-field.form-control{ng-model: 'newVote.statement', placeholder: '{{ "vote_form.statement_placeholder" | translate }}'}
 
