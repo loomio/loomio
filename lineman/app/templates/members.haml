@@ -3,7 +3,7 @@
     .group-member-list-avatar.lg{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = member'}
   .group-member-list-show-more.show-more.card-minor-action
     %a{href: '#', translate: 'common.action.show_more'}
-  .members-invite{ng_controller: 'InvitationsController'}
+  .members-invite{ng_controller: 'InvitationsController', ng-if: '::canAddMembers()'}
     .row
       .col-xs-12.col-sm-6
         %a.btn.btn-success.btn-block.btn-icon{href: '#', ng_click: 'openForm()'}
