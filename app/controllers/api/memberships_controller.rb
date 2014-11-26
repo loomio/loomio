@@ -9,7 +9,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def my_memberships
-    @memberships = current_user.memberships
+    @memberships = current_user.memberships.joins(:group).order('groups.full_name ASC')
     respond_with_collection
   end
 
