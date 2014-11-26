@@ -12,6 +12,7 @@ en:
       unlike: 'Unlike'
       cancel: 'Cancel'
       show_more: "Show more"
+      view_all: "View All"
       new_thread: "New thread"
       add_subgroup: 'Add subgroup'
 
@@ -169,6 +170,16 @@ en:
     invitation_message: 'Invitation Message'
     send_invite: 'Send invites'
     to: 'to'
+
+  memberships_page:
+    members: 'Members'
+    name_label: 'Name'
+    email_label: 'Email'
+    coordinator_label: 'Coordinator'
+    remove_member_label: 'Remove'
+    add_coordinator: 'Make Coordinator'
+    remove_coordinator: 'Remove Coordinator'
+    remove_member: 'Remove'
 
   discussion:
     you_like_this: 'You like this.'

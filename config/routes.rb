@@ -31,9 +31,11 @@ Loomio::Application.routes.draw do
     resources :groups, only: [:show, :create, :update] do
       get :subgroups, on: :collection
     end
-    resources :memberships, only: [:update, :index] do
+    resources :memberships, only: [:index, :update, :destroy] do
       get :autocomplete, on: :collection
       get :my_memberships, on: :collection
+      patch :make_admin, on: :member
+      patch :remove_admin, on: :member
     end
     resources :invitables, only: :index
     resources :invitations, only: :create
