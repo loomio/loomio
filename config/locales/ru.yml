@@ -4,23 +4,53 @@ ru:
       edit:
         title: 'Посылаете препочтения '
         when_do_you_want_emails: 'Посылаете меня емаил:'
+        email_when_proposal_closing_soon: "24 часа до закрытия предложения."
+        email_new_discussions_and_proposals: 'Новые дискуссии и предложения'
         for_these_groups: "Для этих групп:"
+        submit: "Сохранить предпочтения"
+  explore:
+    header: "Публичные группы"
+  try_it:
+    header: "Попробуйте Loomio"
+    start_a_group: "Создйте группу для принятия решений в собственном сообществе."
+    join_the_community: "Вступите в группу Сообщество Loomio"
+    loomio_community_info: "То место, где мы обсуждаем и принимаем рещения о Loomio."
+    explore_groups: "Найдите другие группы"
+  activerecord:
+    errors:
+      messages:
+        blank: "не может быть пустым"
   errors:
     messages:
       email: "Проверьте правильность введённого адреса электронной почты"
+  devise:
+    invitations:
+      send_instructions: 'Приглашение было выслано на %{email}.'
+      invitation_token_invalid: 'Срок приглашения вышел!'
+      updated: 'Учетная запись создана.'
+      no_invitations_remaining: "У вас нет пришлашений"
+    mailer:
+      invitation_instructions:
+        subject: 'Кто-то пригласил вас вступить в группу'
   error:
     access_denied: "У вас недостаточно прав"
     cant_join_subgroup: "Вы не можете присоединиться к подгруппе, если вы не являетесь участником основной группы."
     cant_modify_position: "Обсуждение этого предложения закрыто"
     cant_state_position: "Обсуждение этого предложения закрыто"
+    cant_view_member_profile: "Вы не можете видеть профиль этого участника так как вы не в одной с ним группе."
+    contribution: "Пожалуйста, войдите."
     discussion_not_created: "Невозможно создать дискуссию. "
+    discussion_not_moved: "У вас недостаточно прав, чтобы перенести это обсуждение в %{destination_group.name}"
     group_not_archived: "Группу невозможно архивировать."
     invalid_close_date: "Недействительная дата окончания, пожалуйста, проверьте, что это число еще не наступило."
     invalid_email: "Пожалуйста, введите хотя бы один действующий email."
     image_upload_fail: "Невозможно загрузить картинку. Убедитесь что картинка весит меньше 1 МБ и имеет формат .jpeg, .png, или .gif "
+    motion_closing_inputs: "Неверная дата закрытия"
     permission_to_invite: "У вас недостаточно прав для приглашения новых участников."
     position_not_updated: "Невозможно изменить этот пункт"
     settings_not_updated: "Ваши настройки не обновлены"
+    group_already_setup: "Такая группа уже существует."
+    passwords_did_not_match: "Пароли не совпадают"
     you_are_already_a_member_of_this_group: "Вы уже член этих группи"
     not_found: "Пункт не нашил. Он вычеркнул."
   alert:
@@ -34,8 +64,23 @@ ru:
     settings_updated: "Ваши настройки обновлены. "
     user_made_admin: "Пользователь %{which_user} стал координатором."
     you_have_left_group: "Вы покинули %{which_group}. "
+    comment_deleted: "Комментарий удален."
+    invitations:
+      auto_added:
+        one: "1 участник добавлен"
+        few: "Несколько участников добавлено"
+        other: "%{count} участников добавлено"
+  tooltip:
+    logo_upload: "Загрузить логотип"
+    edit_description: "Редактировать описание"
+    group_category: "Нйти похожие группы"
+  views:
+    pagination:
+      previous: "Пред."
+      next: "След."
   warning:
     cant_remove_last_admin: "Вы не можете быть удалены, так как вы последний координатор."
+    membership_request_already_approved: "Заявка на участие уже была подтверждена."
     membership_request_already_ignored: "Заявка на участие уже была проигнорирована."
     membership_request_already_canceled: "Заявка на участие уже была закрыта."
     position_not_submitted: "Ваша позиция не может быть добавлена"
@@ -48,16 +93,22 @@ ru:
     close_date_changed: "Дата окончания успешно изменена. "
     discussion_created: "Дискуссия успешно создана. "
     discussion_deleted: "Дискуссия успешно удалена. "
+    discussion_moved: "Обсуждение перенесено в %{group_name}"
     emails_sending: "Письма отправляются."
     group_archived: "Группа успешно архивирована. "
     group_created: "Группа успешно создана."
     members_added: "Участники добавлены в группу."
+    password_updated: "Пароль был успешно изменен"
     position_submitted: "Позиция добавлена"
     position_updated: "Позиция обновлена."
     proposal_created: "Предложение успешно создано. "
     proposal_deleted: "Предложение удалено."
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: "1 секунда"
+        few: "Несколько секунд"
+        other: "%{count} секунд"
       x_seconds:
         one: "1 секунда"
         few: "секунды"
@@ -98,8 +149,23 @@ ru:
         one: "1 год"
         few: "года"
         other: "%{count} лет"
+  organisation:
+    name: "Loomio"
+  footer:
+    about: 'О нас'
+    blog: 'Блог'
+    contact: 'Контакты'
+    privacy: 'Конфиденциальность'
+    public_groups: 'Общедоступные группы'
+    terms: 'Условия'
+  inbox:
+    clear: 'Очистить'
+    title: 'Входящие'
+    preferences: 'Настройки'
+    dropdown-btn: 'Входящие'
   notifications:
     header: "Уведомления"
+    new_discussion: "создано обсуждение"
     motion_closed:
       by_user: "предложение закрыто"
       by_expiry: "Предложение было закрыто"
