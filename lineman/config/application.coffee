@@ -9,12 +9,9 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
 
   # html5push state simulation
   server:
-    pushState: true
-
     apiProxy:
       enabled: true
       port: 3000
-      prefix: 'api'
 
   loadNpmTasks: ['grunt-bower-task', "grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ng-annotate", "grunt-haml", 'grunt-sass', 'grunt-cucumber', 'grunt-contrib-copy']
 

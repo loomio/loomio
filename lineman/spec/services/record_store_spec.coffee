@@ -20,3 +20,8 @@ describe 'RecordStore', ->
   it 'registers new collections', ->
     recordStore.addCollection(mockModel)
     expect(recordStore.mocks?).toBe(true)
+
+  it 'imports records', ->
+    recordStore.addCollection(mockModel)
+    recordStore.import({mocks: [{id:9 , key:'z'}]})
+    expect(recordStore.mocks.get(9).key).toBe('z')
