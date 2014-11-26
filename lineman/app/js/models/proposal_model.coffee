@@ -1,7 +1,8 @@
-angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
-  class ProposalModel
-    constructor: (data = {}) ->
-      @id = data.id
+angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
+  class ProposalModel extends BaseModel
+    plural: 'proposals'
+
+    hydrate: (data) ->
       @name = data.name
       @description = data.description
       @createdAt = data.created_at
@@ -15,7 +16,7 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
 
     params: ->
       motion:
-        id: @id
+        id: @primaryId
         discussion_id: @discussionId
         name: @name
         description: @description
@@ -24,17 +25,15 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
     positionVerbs: ['agree', 'abstain', 'disagree', 'block']
     positions: ['yes', 'abstain', 'no', 'block']
 
-    plural: 'proposals'
 
     author: ->
-      RecordStoreService.get('users', @authorId)
+      @recordStore.users.get(@authorId)
 
     discussion: ->
-      RecordStoreService.get('discussions', @discussionId)
+      @recordStore.discussions.get(@discussionId)
 
     votes: ->
-      RecordStoreService.get 'votes', (vote) =>
-        vote.proposalId == @id
+      @recordStore.votes.find(proposalId: @primaryId)
 
     authorName: ->
       @author().name

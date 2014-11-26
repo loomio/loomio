@@ -1,19 +1,18 @@
-angular.module('loomioApp').factory 'NotificationModel', (RecordStoreService, BaseModel) ->
+angular.module('loomioApp').factory 'NotificationModel', (BaseModel) ->
   class NotificationModel extends BaseModel
-    constructor: (data = {}) ->
-      @id = data.id
+    plural: 'notifications'
+
+    hydrate: (data) ->
       @eventId = data.event_id
       @userId = data.user_id
       @viewedAt = data.viewed_at
-
-    plural: 'notifications'
 
     createdAt: ->
       @event().createdAt
 
     event: ->
-      RecordStoreService.get('events', @eventId)
+      @recordStore.events.get(@eventId)
 
     user: ->
-      RecordStoreService.get('user', @userId)
+      @recordStore.users.get(@userId)
 

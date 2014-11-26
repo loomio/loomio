@@ -1,11 +1,17 @@
-angular.module('loomioApp').factory 'BaseModel', (RecordStoreService) ->
+angular.module('loomioApp').factory 'BaseModel', (MainRecordStore) ->
   class BaseModel
-    isNew: ->
-      not @id?
-
-    key_or_id: ->
-      if @key?
-        @key
+    constructor: (recordStoreOrData, data) ->
+      if data?
+        @recordStore = recordStoreOrData
       else
-        @id
+        @recordStore = MainRecordStore
+        data = recordStoreOrData
+
+      @primaryId = data.id
+      @hydrate(data)
+
+    viewName: -> "#{@plural}-#{@primaryId}"
+
+    isNew: ->
+      not @primaryId?
 
