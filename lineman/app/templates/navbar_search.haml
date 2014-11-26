@@ -1,9 +1,9 @@
-%li{dropdown: '', on-toggle: 'toggleSearch(open)'}
+%li{dropdown: ''}
   %a.loomio-nav-btn.dropdown-toggle{href: '#'}
     %i.fa.fa-lg.fa-fw.fa-search
   .dropdown-menu.loomio-nav-dropdown#search-dropdown{role: 'menu'}
     .navbar-search-input
-      %input.form-control{ng_model: 'query', placeholder: "{{ 'navbar.search_placeholder' | translate }}"}
+      %input.form-control{ng_model: 'query', placeholder: "{{ 'navbar.search_placeholder' | translate }}", ng_focus: 'toggleSearch(open)'}
     %ul.selector-list
       %li.selector-list-header
         %h3{translate: "common.groups"}
