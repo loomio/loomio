@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'UserModel', ->
+angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
   class UserModel extends BaseModel
     plural: 'users'
 
