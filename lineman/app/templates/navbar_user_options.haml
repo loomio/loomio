@@ -4,7 +4,9 @@
   .loomio-nav-dropdown.dropdown-menu#user-options-dropdown
     %ul.selector-list
       %li.selector-list-item.visible-xs
-        New thread
+        %a{href: '#', ng_click: 'openDiscussionForm()'}
+          %i.fa.fa-lg.fa-fw.fa-plus
+          New thread
       %li.selector-list-item
         Profile
       %li.selector-list-item
