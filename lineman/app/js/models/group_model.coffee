@@ -49,11 +49,20 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, RecordStoreService
       RecordStoreService.get 'memberships', (membership) =>
         membership.groupId == @id
 
+    membershipFor: (user) ->
+      _.find @memberships(), (membership) -> membership.userId == user.id
+
     members: ->
       RecordStoreService.get('users', _.map(@memberships(), (membership) -> membership.userId))
 
-    admins: ->
-      RecordStoreService.get('users', _.map(@memberships(), (membership) -> membership.userId if membership.admin))
+    memberIds: ->
+      _.map @memberships(), (membership) -> membership.userId
+
+    adminMemberships: ->
+      _.filter @memberships(), (membership) -> membership.admin
+
+    adminIds: ->
+      _.map @adminMemberships(), (membership) -> membership.userId
 
     fullName: (separator = '>') ->
       if @parentId?

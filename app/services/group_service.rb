@@ -9,4 +9,9 @@ class GroupService
     actor.ability.authorize! :update, group
     group.update! params
   end
+
+  def self.archive(group: group, actor: actor)
+    actor.ability.authorize! :archive, group
+    group.archive!
+  end
 end

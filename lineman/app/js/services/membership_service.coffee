@@ -10,3 +10,9 @@ angular.module('loomioApp').factory 'MembershipService', ($http, RestfulService)
 
     fetchByGroup: (groupId, success, failure) ->
       @fetch({group_id: groupId}, success, failure)
+
+    makeAdmin: (membership, success, failure) ->
+      @save(membership, success, failure, 'make_admin')
+
+    removeAdmin: (membership, success, failure) ->
+      @save(membership, success, failure, 'remove_admin')
