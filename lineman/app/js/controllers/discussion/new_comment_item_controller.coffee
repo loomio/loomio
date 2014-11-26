@@ -60,19 +60,13 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
       # probably unused
 
   $scope.showContextMenu = ->
-    $scope.canEditComment() or $scope.canDeleteComment()
-
-
+    $scope.canEditComment($scope.comment) or $scope.canDeleteComment($scope.comment)
 
   $scope.canEditComment = ->
-    # should be:
-    # currentUser.abilies().can('edit', $scope.comment)
-    UserAuthService.currentUser.id == $scope.comment.authorId
+    UserAuthService.currentUser.canEditComment($scope.comment)
 
   $scope.canDeleteComment = ->
-    # should be:
-    # currentUser.abilies().can('edit', $scope.comment)
-    UserAuthService.currentUser.id == $scope.comment.authorId
+    UserAuthService.currentUser.canDeleteComment($scope.comment)
 
   $scope.like = ->
     CommentService.like($scope.comment, renderLikedBySentence)
