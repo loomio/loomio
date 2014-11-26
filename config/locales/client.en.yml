@@ -16,6 +16,15 @@ en:
       new_thread: "New thread"
       add_subgroup: 'Add subgroup'
 
+  flash:
+    group_page:
+      privacy:
+        members: 'This group is now visible only to members'
+        parent_members: 'This group is now visible only to members of your organization'
+        public: 'This group is now visible to the public'
+      notifications:
+        follow_group: 'You will now receive notifications from all threads in this group'
+        unfollow_group: 'You will now receive notifications only from threads you are participating in'
 
   inbox:
     latest_threads: 'Latest threads'
