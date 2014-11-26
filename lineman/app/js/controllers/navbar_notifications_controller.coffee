@@ -23,3 +23,5 @@ angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope,
   $scope.notifications = ->
     RecordStoreService.get 'notifications', (notification) ->
       _.contains validKinds, notification.event().kind
+
+  $scope.toggleNotifications = (open) -> $scope.showNotifications = open
