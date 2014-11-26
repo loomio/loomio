@@ -5,6 +5,7 @@ angular.module('loomioApp').factory 'MembershipModel', (RecordStoreService, Base
       @groupId = data.group_id
       @userId = data.user_id
       @followingByDefault = data.following_by_default
+      @admin = data.admin
 
     params: ->
       membership:
@@ -16,4 +17,4 @@ angular.module('loomioApp').factory 'MembershipModel', (RecordStoreService, Base
       RecordStoreService.get('groups', @groupId)
 
     user: ->
-      RecordStoreService.get('user', @userId)
+      RecordStoreService.get('users', @userId)

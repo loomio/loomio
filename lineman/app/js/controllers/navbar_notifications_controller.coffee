@@ -1,18 +1,25 @@
-angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope, NotificationService, UserAuthService) ->
+angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope, NotificationService, UserAuthService, RecordStoreService) ->
+  NotificationService.fetch {}
 
-  $scope.currentNotifications = ->
-    UserAuthService.currentUser.notifications() if UserAuthService.currentUser?
+  validKinds = [
+    'comment_liked',
+    'motion_closing_soon',
+    'new_discussion',
+    'new_motion',
+    'motion_closed',
+    'new_vote',
+    'new_comment',
+    'comment_liked',
+    'user_mentioned',
+    'membership_requested',
+    'membership_request_approved',
+    'user_added_to_group',
+    'motion_closing_soon',
+    'motion_blocked',
+    'motion_outcome_created',
+    'motion_outcome_updated',
+  ]
 
-  nextPage = 1
-  busy = false
-  $scope.lastPage = false
-
-  $scope.getNextPage = ->
-    return false if busy or $scope.lastPage
-    busy = true
-    NotificationService.fetch {page: nextPage}, (notifications) ->
-      $scope.lastPage = true if notifications.length == 0
-      nextPage = nextPage + 1
-      busy = false
-
-  $scope.getNextPage()
+  $scope.notifications = ->
+    RecordStoreService.get 'notifications', (notification) ->
+      _.contains validKinds, notification.event().kind
