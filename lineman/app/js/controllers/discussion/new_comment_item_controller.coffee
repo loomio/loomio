@@ -46,18 +46,12 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
           angular.copy($scope.comment)
 
   $scope.deleteComment = ->
-    # if confirm delete comment
-    # if currentUser.can('delete', $scope.comment)
-    # delete comment via service
-    console.log 'delete commet'
     modalInstance = $modal.open
       templateUrl: 'generated/templates/delete_comment_dialog.html'
       controller: 'DeleteCommentDialogController'
       resolve:
         comment: ->
-          $scope.comment
-    modalInstance.result.then (something) ->
-      # probably unused
+          angular.copy($scope.comment)
 
   $scope.showContextMenu = ->
     $scope.canEditComment($scope.comment) or $scope.canDeleteComment($scope.comment)

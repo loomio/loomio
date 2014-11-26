@@ -40,7 +40,8 @@
         %h3.first Activity
         %div{ng_repeat: 'event in discussion.events()', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
 
-      %add_comment{discussion: 'discussion'}
+      %comment_form{discussion: 'discussion'}
+
 
     .thread-container{ng_controller: 'StartProposalCardController', ng-if: 'canStartProposals()'}
       .thread-start-proposal-card

@@ -49,6 +49,9 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, RecordStoreService
       RecordStoreService.get 'memberships', (membership) =>
         membership.groupId == @id
 
+    membershipFor: (user) ->
+      _.find @memberships(), (membership) -> membership.userId == user.id
+
     members: ->
       RecordStoreService.get('users', _.map(@memberships(), (membership) -> membership.userId))
 

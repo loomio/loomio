@@ -20,5 +20,5 @@ angular.module('loomioApp').factory 'AttachmentService', ($http, $upload, FileUp
                   success(attachment)
                 , failure(response)
 
-    remove: (attachment) ->
-      $http.delete("/api/v1/attachments/#{attachment.id}").then (response) ->
+    abort: ->
+      $upload.abort()

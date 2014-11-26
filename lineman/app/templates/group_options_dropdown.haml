@@ -7,16 +7,17 @@
     %ul.dropdown-menu-items
       %li.dropdown-menu-item{ng-if: 'canEditGroup()'}
         %a{href: '/groups/{{::group.key}}/edit'}
-          .dropdown-menu-item-label
-            Edit group settings
+          .dropdown-menu-item-label{translate: 'group_page.options.edit_group'}
           .dropdown-menu-item-details
       %li.dropdown-menu-item
-        .dropdown-menu-item-label
-          Leave group
+        %a{href: '#', ng-click: 'openLeaveGroupModal()'}
+          .dropdown-menu-item-label{translate: 'group_page.options.leave_group'}
+            Leave group
         .dropdown-menu-item-details
-      %li.dropdown-menu-item{ng-if: 'canEditGroup()'}
-        .dropdown-menu-item-label
-          De-activate group
+      %li.dropdown-menu-item{ng-if: 'canDeactivateGroup()'}
+        %a{href: '#', ng-click: 'openDeactivateGroupModel()'}
+          .dropdown-menu-item-label{translate: 'group_page.options.deactivate_group'}
+            De-activate group
         .dropdown-menu-item-details
 
 
