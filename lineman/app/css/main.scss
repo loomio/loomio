@@ -10,7 +10,7 @@ $loomio-orange: #F6A82B;
 
 /* let's come up with a good naming scheme for the greys once we lock them in*/
 $light-grey: #F5F5F5;
-
+$kinda-dark-grey: #545454;
 $thread-max-width: 640px;
 $group-page-max-width: 640px;
 $sidebar-width: 320px;
@@ -117,6 +117,9 @@ $sidebar-width: 320px;
   margin-bottom: 10px;
   cursor: pointer;
 }
+.disabled .dropdown-menu-item{
+  cursor: auto;
+}
 .dropdown-menu-item.last{
   margin-bottom: 0;
 }
@@ -125,6 +128,10 @@ $sidebar-width: 320px;
   line-height: 24px;
   i{ font-weight: normal; }
 }
+.disabled .dropdown-menu-item{
+  color: $kinda-dark-grey;
+}
+
 h3.dropdown-heading{
   margin: 0 0 10px 0;
   border-bottom: 1px solid $thread-border-color;

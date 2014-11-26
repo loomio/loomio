@@ -9,7 +9,7 @@
     .group-visibility-private{ng_show: 'group.visibleToMembers()'}
       %i.fa.fa-lg.fa-lock>
       %span{translate: 'common.privacy.private'}
-  .dropdown-menu.dropdown-menu-with-labels{role: 'menu'}
+  .dropdown-menu.dropdown-menu-with-labels{role: 'menu', ng-class: '{disabled: !canEditGroup()}'}
     %h3.dropdown-heading{translate: 'group_page.visibility_label'}
     %ul.dropdown-menu-items
 
