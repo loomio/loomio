@@ -36,3 +36,6 @@ angular.module('loomioApp').factory 'UserModel', (RecordStoreService) ->
 
     isAdminOf: (group) ->
       _.contains(group.adminIds(), @id)
+
+    isMemberOf: (group) ->
+      _.contains(group.memberIds(), @id)
