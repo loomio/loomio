@@ -3,6 +3,8 @@ angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Disc
     UserAuthService.currentUser?
 
   $scope.showInbox = false
+  $scope.showSearch = false
+  $scope.showNotifications = false
 
   $scope.openDiscussionForm = ->
     modalInstance = $modal.open
