@@ -14,3 +14,7 @@ angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Disc
         discussion: -> new DiscussionModel
 
   $scope.toggleInbox =         (open) -> $scope.showInbox = open
+  $scope.toggleSearch =        (open) -> 
+    $scope.showSearch = open
+    console.log('Toggle search: ' + open)
+  $scope.toggleNotifications = (open) -> $scope.showNotifications = open 
