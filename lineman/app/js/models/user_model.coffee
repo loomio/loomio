@@ -21,3 +21,18 @@ angular.module('loomioApp').factory 'UserModel', (RecordStoreService) ->
 
     groups: ->
       RecordStoreService.get('groups', _.map(@memberships(), (membership) -> membership.groupId))
+
+    canEditComment: (comment) ->
+      @isAuthorOf(comment) && comment.group().membersCanEditComments
+
+    canDeleteComment: (comment) ->
+      @isAuthorOf(comment) or @isAdminOf(comment.group())
+
+    canEditDiscussion: (discussion) ->
+      @isAuthorOf(discussion) or @isAdminOf(discussion.group()) or discussion.group().membersCanEditDiscussions
+
+    isAuthorOf: (object) ->
+      @id == object.authorId
+
+    isAdminOf: (group) ->
+      _.contains(group.adminIds(), @id)
