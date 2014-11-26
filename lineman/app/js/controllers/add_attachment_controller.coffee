@@ -25,3 +25,6 @@ angular.module('loomioApp').controller 'AddAttachmentController', ($scope, Attac
 
   $scope.remove = (attachment) ->
     AttachmentService.remove(attachment.id)
+
+  $scope.openFileUploadDialog = ->
+    $('input:file').trigger('click')

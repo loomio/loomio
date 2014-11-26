@@ -1,7 +1,10 @@
-angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, DiscussionModel) ->
+angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, DiscussionModel, UserAuthService) ->
+  $scope.userLoggedIn = ->
+    UserAuthService.currentUser?
+
   $scope.showInbox = false
   $scope.showSearch = false
-  $scope.showNotifications = false 
+  $scope.showNotifications = false
 
   $scope.openDiscussionForm = ->
     modalInstance = $modal.open
