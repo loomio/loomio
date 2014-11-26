@@ -9,6 +9,7 @@ angular.module('loomioApp').factory 'EventModel', (RecordStoreService) ->
       @proposalId = data.proposal_id
       @voteId = data.vote_id
       @createdAt = data.created_at
+      @actorId = data.actor_id
 
     plural: 'events'
 
@@ -33,3 +34,10 @@ angular.module('loomioApp').factory 'EventModel', (RecordStoreService) ->
 
     vote: ->
       RecordStoreService.get('votes', @voteId)
+
+    actor: ->
+      RecordStoreService.get('users', @actorId)
+
+    link: ->
+      switch @kind
+        when 'comment_liked' then "/discussions/#{@comment().discussion().key}##{@commentId}"

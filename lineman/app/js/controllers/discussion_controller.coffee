@@ -40,3 +40,10 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
 
   $scope.$on 'replyToCommentClicked', (event, originalComment) ->
     $scope.$broadcast('showReplyToCommentForm', originalComment)
+
+
+  $scope.canEditDiscussion = ->
+    UserAuthService.currentUser.canEditDiscussion($scope.discussion)
+
+  $scope.showContextMenu = ->
+    $scope.canEditDiscussion()
