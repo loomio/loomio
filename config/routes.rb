@@ -30,6 +30,7 @@ Loomio::Application.routes.draw do
     resource :inbox, only: :show, controller: 'inbox'
     resources :groups, only: [:show, :create, :update] do
       get :subgroups, on: :collection
+      patch :archive, on: :member
     end
     resources :memberships, only: [:index, :update, :destroy] do
       get :autocomplete, on: :collection
