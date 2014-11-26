@@ -1,0 +1,9 @@
+.flash{ng-if: 'flash.message', class: 'alert-{{flash.level}}'}
+  %ul.flash-messages{ng-if: 'flash.hasManyMessages()'}
+    %li.flash-message{ng-repeat: 'message in flash.message'}
+      {{ message }}
+  .flash-message{ng-if: '!flash.hasManyMessages()'}
+    {{ flash.message }}
+  %button.close.dismiss-flash.pull-right{type: 'button', ng-click: 'dismiss()'}
+    %span{aria-hidden: true} &times;
+    %span.sr-only{translate: 'common.action.dismiss'}
