@@ -4,7 +4,7 @@ class BaseController < ApplicationController
 
   before_filter :authenticate_user!
 
-  before_filter :boot_angular_ui, if: :use_angular_ui?
+  #before_filter :boot_angular_ui, if: :use_angular_ui?
 
   before_filter :check_for_omniauth_authentication,
                 :check_for_invitation,
@@ -17,7 +17,7 @@ class BaseController < ApplicationController
 
 
   def boot_angular_ui
-    render file: Rails.root.join('public', 'angular.html'), layout: false
+    render 'layouts/angular', layout: false
   end
 
   protected

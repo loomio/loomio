@@ -8,7 +8,11 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, Records, Co
 
     subscribeTo: (channel, onMessageReceived) ->
       $http.post('/api/v1/faye/subscribe', channel: channel).then (response) =>
-        @subscribeSuccess(response.data, onMessageReceived)
+          subscription = response.data
+          PrivatePub.sign(subscription)
+          console.log 'subscribed response:', response
+          PrivatePub.subscribe subscription.channel, (data, channel) =>
+            @messageReceived(data, onMessageReceived)
 
     messageReceived: (data, onMessageReceived) ->
       console.log 'message received: ', data

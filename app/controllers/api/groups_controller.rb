@@ -5,6 +5,12 @@ class API::GroupsController < API::RestfulController
     respond_with_resource
   end
 
+  def archive
+    load_resource
+    GroupService.archive(group: @group, actor: current_user)
+    respond_with_resource
+  end
+
   def subgroups
     @group = Group.find(params[:parent_id])
     authorize! :show, @group

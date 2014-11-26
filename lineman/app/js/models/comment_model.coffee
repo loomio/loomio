@@ -43,6 +43,9 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
     likers: ->
       @recordStore.users.get(@likerIds)
 
+    newAttachments: ->
+      RecordStoreService.get 'attachments', @newAttachmentIds
+
     attachments: ->
       @attachmentsView.data()
 

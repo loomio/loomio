@@ -11,6 +11,13 @@ angular.module('loomioApp').factory 'AttachmentModel', (BaseModel) ->
       @authorId = data.user_id
       @commentId = data.comment_id
 
+    serialize: ->
+      filename: @filename
+      location: @location
+      filesize: @filesize
+      user_id: @userId
+      comment_id: @commentId
+
     author: ->
       @recordStore.users.get(@authorId)
 

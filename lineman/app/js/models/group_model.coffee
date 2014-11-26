@@ -23,9 +23,6 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       @visibleTo                      = data.visible_to
       @logoUrlSmall                   = data.logo_url_small
 
-      #@discussionsView = RecordStore.discussions.belongingTo(@)
-      #@subgroupsView = RecordStore.groups.belongingTo(owner: @, foreignKey: 'parentId')
-
     serialize: ->
       group:
         name:                          @name
@@ -51,17 +48,25 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
     memberships: ->
       @recordStore.memberships.find(groupId: @id)
 
-    adminMemberships: ->
-      _.filter memberships(), (membership) ->
-        membership.groupId = @id
+    membershipFor: (user) ->
+      _.find @memberships(), (membership) -> membership.userId == user.id
 
     members: ->
       memberIds = _.map(@memberships(), (membership) -> membership.userId)
       @recordStore.users.find(id: {$in: memberIds})
 
+    adminMemberships: ->
+      _.filter @memberships(), (membership) -> membership.admin
+
     admins: ->
       adminIds = _.map(@adminMemberships(), (membership) -> membership.userId)
       @recordStore.users.find(id: {$in: adminIds})
+
+    memberIds: ->
+      _.map @memberships(), (membership) -> membership.userId
+
+    adminIds: ->
+      _.map @adminMemberships(), (membership) -> membership.userId
 
     fullName: (separator = '>') ->
       if @parentId?

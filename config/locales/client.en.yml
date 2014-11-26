@@ -12,6 +12,7 @@ en:
       unlike: 'Unlike'
       cancel: 'Cancel'
       show_more: "Show more"
+      view_all: "View All"
       new_thread: "New thread"
       add_subgroup: 'Add subgroup'
 
@@ -112,6 +113,18 @@ en:
     visibility_label: 'Visibility'
     notifications_label: 'Notifications'
     options_label: 'Options'
+    options:
+      edit_group: 'Edit Group Settings'
+      leave_group: 'Leave Group'
+      deactivate_group: 'Deactivate Group'
+    deactivate_group:
+      title: 'Deactivate group'
+      question: 'Are you sure you want to deactivate this group?'
+      submit: 'Yes, Deactivate this group'
+    leave_group:
+      title: 'Leave group'
+      question: 'Are you sure you want to leave this group?'
+      submit: 'Yes, leave this group'
     notifications:
       following: 'Following'
       following_details: 'You''ll be notified about all activity in this group'
@@ -169,6 +182,16 @@ en:
     invitation_message: 'Invitation Message'
     send_invite: 'Send invites'
     to: 'to'
+
+  memberships_page:
+    members: 'Members'
+    name_label: 'Name'
+    email_label: 'Email'
+    coordinator_label: 'Coordinator'
+    remove_member_label: 'Remove'
+    add_coordinator: 'Make Coordinator'
+    remove_coordinator: 'Remove Coordinator'
+    remove_member: 'Remove'
 
   discussion:
     you_like_this: 'You like this.'

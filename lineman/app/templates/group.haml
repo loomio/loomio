@@ -23,14 +23,7 @@
         /   %i.fa.fa-lg.fa-chevron-down
         %h3.first{ translate: 'group_page.description' }
         .group-description.last{ btf-markdown: 'group.description' }
-      .group-page-threads
-        %h3.first{ translate: 'group_page.discussions' }
-        %discussions{group: 'group'}
-      .group-page-members
-        .context-menu.pull-right
-          %i.fa.fa-lg.fa-chevron-down
-        %h3.first{ translate: 'group_page.members' }
-        %members{group: 'group'}
-      .group-page-subgroups{ng_show: '!group.parentId'}
-        %h3.first{ translate: 'group_page.subgroups' }
-        %subgroups{group: 'group'}
+      %discussions{group: 'group'}
+      %members{group: 'group'}
+      %subgroups{group: 'group'}
+

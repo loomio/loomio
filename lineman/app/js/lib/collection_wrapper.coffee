@@ -15,7 +15,14 @@ angular.module('loomioApp').factory 'CollectionWrapper', ->
       @collection.chain()
 
     new: (data) ->
-      new @model(@recordStore, data)
+      if @model.singular == 'group'
+        console.log 'putting', @model.singular, data
+
+      model = new @model(@recordStore, data)
+
+      if @model.singular == 'group'
+        console.log 'aftwards:', model
+      model
 
     get: (q) ->
       if q?

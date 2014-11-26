@@ -3,7 +3,7 @@ angular.module('loomioApp').controller 'ProposalCardController', ($scope, $modal
 
   filteredVotes = ->
     return [] unless $scope.proposal
-    _.filter $scope.proposal.votes(), (vote) ->
+    _.filter $scope.proposal.uniqueVotes(), (vote) ->
       vote.authorId != currentUser.id
 
   $scope.onlyVoterIsYou = ->
