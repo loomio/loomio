@@ -9,6 +9,7 @@ angular.module('loomioApp').factory 'MembershipModel', (BaseModel) ->
       @groupId = data.group_id
       @userId = data.user_id
       @followingByDefault = data.following_by_default
+      @admin = data.admin
 
     serialize: ->
       membership:

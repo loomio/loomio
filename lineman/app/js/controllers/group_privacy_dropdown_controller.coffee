@@ -1,6 +1,7 @@
-angular.module('loomioApp').controller 'GroupPrivacyDropdownController', ($scope, GroupService, MessageChannelService) ->
+angular.module('loomioApp').controller 'GroupPrivacyDropdownController', ($scope, GroupService, MessageChannelService, UserAuthService) ->
 
   $scope.setPrivacy = (privacy) ->
+    return true unless $scope.canEditGroup()
     $scope.group.visibleTo = privacy
     GroupService.save($scope.group, $scope.savePrivacySuccess, $scope.savePrivacyFailure)
 
@@ -9,3 +10,6 @@ angular.module('loomioApp').controller 'GroupPrivacyDropdownController', ($scope
 
   $scope.savePrivacyFailure = ->
     console.log('failure...')
+
+  $scope.canEditGroup = ->
+    UserAuthService.currentUser.isAdminOf($scope.group)

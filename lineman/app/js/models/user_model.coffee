@@ -23,3 +23,24 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
     groups: ->
       group_ids = _.map(@memberships(), (membership) -> membership.groupId) 
       @recordStore.groups.get(group_ids)
+
+    canEditComment: (comment) ->
+      @isAuthorOf(comment) && comment.group().membersCanEditComments
+
+    canDeleteComment: (comment) ->
+      @isAuthorOf(comment) or @isAdminOf(comment.group())
+
+    canEditDiscussion: (discussion) ->
+      @isAuthorOf(discussion) or @isAdminOf(discussion.group()) or discussion.group().membersCanEditDiscussions
+
+    canStartProposals: (discussion) ->
+      @isAdminOf(discussion.group()) or discussion.group().membersCanStartProposals
+
+    isAuthorOf: (object) ->
+      @id == object.authorId
+
+    isAdminOf: (group) ->
+      _.contains(group.adminIds(), @id)
+
+    isMemberOf: (group) ->
+      _.contains(group.memberIds(), @id)
