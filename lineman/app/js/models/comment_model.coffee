@@ -26,7 +26,7 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService, BaseMod
     plural: 'comments'
 
     group: ->
-      @discussion.group()
+      @discussion().group()
 
     canBeEditedByAuthor: ->
       @group.membersCanEditComments or @isMostRecent()
@@ -41,6 +41,9 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService, BaseMod
 
     likers: ->
       RecordStoreService.get('users', @likerIds)
+
+    newAttachments: ->
+      RecordStoreService.get 'attachments', @newAttachmentIds
 
     attachments: ->
       RecordStoreService.get 'attachments', (attachment) =>

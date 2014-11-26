@@ -1,6 +1,12 @@
 .row
   .col-xs-12
     .thread-container
+      .dropdown.pull-right{ng-if: 'showContextMenu()'}
+        %a.dropdown-toggle{href:''}
+          %i.fa.fa-chevron-down
+        %ul.dropdown-menu
+          %li
+            %a{href: '', ng-click: 'editDiscussion()', translate: 'common.action.edit', ng-if: '::canEditDiscussion($scope.discussion)'}
       .thread-discussion
         %h1 {{discussion.title}}
         .media.thread-origin
@@ -37,7 +43,8 @@
       %comment_form{discussion: 'discussion'}
 
 
-    .thread-start-proposal-card{ng_controller: 'StartProposalCardController', ng-show: '!discussion.activeProposal()'}
-      %h3 Ready to make a decision?
-      %a{href: '#', ng_click: 'openForm()'}
+    .thread-container{ng_controller: 'StartProposalCardController', ng-if: 'canStartProposals()'}
+      .thread-start-proposal-card
+        %h3.first Ready to make a decision?
+        %a{href: '#', ng_click: 'openForm()'}
         Create a proposal

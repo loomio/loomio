@@ -12,13 +12,13 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  %body.sidebar-is-open
+  %body.sidebar-is-not-open
 
     %navbar
 
     / only load this if the sidebar is open
-    %sidebar#sidebar.hidden-xs
-      %inbox
+    / %sidebar#sidebar.hidden-xs
+    /   %inbox
     .sidebar-spacer
       .container#main
         %main{ng_view: ''}
