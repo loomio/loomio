@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     plural: 'discussions'
     foreignKey: 'discussionId'
 
-    constructor: (data) ->
+    hydrate: (data) ->
       @key = data.key
       @authorId = data.author_id
       @groupId = data.group_id
@@ -45,7 +45,11 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       @eventsView.data()
 
     comments: ->
-      @commentsView.data()
+      @recordStore.comments
+                  .chain()
+                  .find(discussionId: @primaryId)
+                  .simplesort('createdAt')
+                  .data()
 
     proposals: ->
       @proposalsView.data()

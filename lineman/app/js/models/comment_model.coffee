@@ -32,7 +32,7 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
       @group.membersCanEditComments or @isMostRecent()
 
     isMostRecent: ->
-      _.last(@discussion().comments()).primaryId == @primaryId
+      _.last(@discussion().comments()) == @
 
     isReply: ->
       @parentId?

@@ -4,10 +4,16 @@ angular.module('loomioApp').factory 'BaseCollection', ->
       @db = db
       @collection = @db.addCollection(@collectionName)
 
+    find: (args) ->
+      @collection.find(args)
+
+    chain: () ->
+      @collection.chain()
+
     get: (q) ->
       if q?
         if _.isNumber(q)
-          @collection.get(q)
+          @collection.find(primaryId: q)[0]
         else if _.isString(q)
           @collection.find(key: q)[0]
         else if _.isArray(q)
@@ -16,7 +22,7 @@ angular.module('loomioApp').factory 'BaseCollection', ->
           else if _.isString(q[0])
             @collection.find(key: {$in: q})
           else if _.isNumber(q[0])
-            @collection.find(id: {$in: q})
+            @collection.find(primaryId: {$in: q})
       else
         @collection.find()
 

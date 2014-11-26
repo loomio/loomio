@@ -2,16 +2,20 @@ describe 'DiscussionModel', ->
   discussionModel = null
   discussion = null
   author = null
+  recordStore = null
 
   beforeEach module 'loomioApp'
 
   beforeEach ->
-    inject (DiscussionModel, UserModel) ->
+    inject (RecordStore, DiscussionModel, UserModel) ->
       discussionModel = DiscussionModel
-      discussion = new DiscussionModel(id: 1, title: 'Hi')
-      author = new UserModel(id: 1, name: 'Sam')
+      db = new loki('test.db')
+      recordStore = new RecordStore(db)
+      discussion = new DiscussionModel(recordStore, {id: 1, title: 'Hi'})
+      author = new UserModel(recordStore, {id: 1, name: 'Sam'})
 
   describe 'author()', ->
     it 'returns the discussion author', ->
+      console.log author
       discussion.authorId = author.primaryId
       expect(discussion.author()).toBe(author)
