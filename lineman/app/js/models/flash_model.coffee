@@ -4,5 +4,5 @@ angular.module('loomioApp').factory 'FlashModel', ->
       @message = data.message
       @level = data.level
 
-    hasManyMessages: ->
+    messageIsArray: ->
       Array.isArray @message

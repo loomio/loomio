@@ -6,8 +6,6 @@ angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Disc
   $scope.showSearch = false
   $scope.showNotifications = false
 
-  FlashService.setFlash('message', 'info')
-
   $scope.openDiscussionForm = ->
     modalInstance = $modal.open
       templateUrl: 'generated/templates/discussion_form.html'

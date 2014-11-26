@@ -30,7 +30,7 @@ angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelServ
         RecordStoreService.importRecords(response.data)
         success(response.data[@resource_plural]) if success?
       , (response) ->
-        failure(response.data.error) if failure?
+        failure(response.data) if failure?
 
     create: (obj, success, failure, path) ->
       path = @customPath(path) or @indexPath()
@@ -38,7 +38,7 @@ angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelServ
         MessageChannelService.messageReceived(response.data)
         success(response.data) if success?
       , (response) ->
-        failure(response.data.error) if failure?
+        failure(response.data) if failure?
 
     update: (obj, success, failure, path) ->
       path = @customPath(path, obj.id) or @showPath(obj.id)
@@ -46,15 +46,14 @@ angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelServ
         MessageChannelService.messageReceived(response.data)
         success(response.data) if success?
       , (response) ->
-        failure(response.data.error) if failure?
+        failure(response.data) if failure?
 
     destroy: (obj, success, failure) ->
       $http.delete(@showPath(obj.id)).then (response) ->
         MessageChannelService.messageReceived(response.data)
         success(response.data) if success?
       , (response) ->
-        console.log response
-        failure(response.data.error) if failure?
+        failure(response.data) if failure?
 
     save: (obj, success, failure, path) ->
       if obj.isNew()

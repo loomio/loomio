@@ -4,10 +4,18 @@ angular.module('loomioApp').factory 'FlashService', (FlashModel) ->
     constructor: ->
       @currentFlash = new FlashModel
 
-    setFlash: (message, level) ->
-      @currentFlash.message = message
-      @currentFlash.level = level
+    success: (message) ->
+      set(@currentFlash, message, 'success')
+
+    failure: (message) ->
+      set(@currentFlash, message, 'danger')
+
+    info: (message) ->
+      set(@currentFlash, message, 'info')
 
     clear: -> 
-      @currentFlash.level = null
-      @currentFlash.message = null
+      set(@currentFlash, null, null)
+
+    set = (flash, message, level) ->
+      flash.message = message
+      flash.level = level
