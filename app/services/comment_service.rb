@@ -1,5 +1,6 @@
 class CommentService
   def self.unlike(comment: comment, actor: actor)
+    return false unless comment.likers.include? actor
     actor.ability.authorize!(:like, comment)
     comment_vote = CommentVote.where(user_id: actor.id, comment_id: comment.id).first
     comment.unlike(actor)

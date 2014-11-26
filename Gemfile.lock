@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: git://github.com/loomio/private_pub.git
-  revision: df3c33b02f072b05c50ce3ecf8ab997760a23944
+  revision: 875b3de1711b200ce070d4a6d0f83b88fb66f5b0
   specs:
     private_pub (1.0.3)
       faye
@@ -609,6 +609,7 @@ DEPENDENCIES
   delayed_job (~> 4.0.2)
   delayed_job_active_record (~> 4.0.1)
   devise (~> 3.4.1)
+  dotenv
   email_spec
   factory_girl_rails
   faker

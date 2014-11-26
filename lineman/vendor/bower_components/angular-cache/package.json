@@ -1,0 +1,49 @@
+{
+  "name": "angular-cache",
+  "description": "angular-cache is a very useful replacement for Angular's $cacheFactory.",
+  "version": "2.1.1",
+  "homepage": "http://jmdobry.github.io/angular-cache",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jmdobry/angular-cache.git"
+  },
+  "author": {
+    "name": "Jason Dobry",
+    "url": "http://www.pseudobry.com",
+    "email": "jason.dobry@gmail.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jmdobry/angular-cache/blob/master/LICENSE"
+    }
+  ],
+  "postinstall": "bower install",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "karma": "~0.10.2",
+    "grunt-karma": "~0.6.2",
+    "grunt-cli": "~0.1.8",
+    "phantomjs": "~1.9.2-2",
+    "karma-script-launcher": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma-chrome-launcher": "~0.1.0",
+    "karma-firefox-launcher": "~0.1.0",
+    "karma-html2js-preprocessor": "~0.1.0",
+    "karma-jasmine": "~0.1.3",
+    "karma-requirejs": "~0.1.0",
+    "karma-coffee-preprocessor": "~0.1.0",
+    "karma-coverage": "~0.1.0",
+    "time-grunt": "~0.1.1",
+    "load-grunt-tasks": "~0.2.0",
+    "grunt-karma-coveralls": "~2.0.2"
+  },
+  "scripts": {
+    "test": "node node_modules/grunt-cli/bin/grunt build",
+    "test_travis": "node node_modules/grunt-cli/bin/grunt travis"
+  }
+}
