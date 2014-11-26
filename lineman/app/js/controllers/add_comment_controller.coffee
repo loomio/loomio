@@ -1,5 +1,5 @@
-angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentModel) ->
-  $scope.comment = new CommentModel(discussion_id: $scope.discussion.id)
+angular.module('loomioApp').controller 'AddCommentController', ($scope, Records) ->
+  $scope.comment = Records.comments.new(discussion_id: $scope.discussion.id)
   $scope.isExpanded = false
 
   $scope.expand = ->

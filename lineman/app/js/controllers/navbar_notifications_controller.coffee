@@ -1,7 +1,5 @@
-angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope, NotificationService, UserAuthService, MainRecordStore) ->
+angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope, NotificationService, UserAuthService) ->
   NotificationService.fetch {}
 
   $scope.notifications = ->
-    MainRecordStore.notifications.get (notification) ->
-      _.contains ['comment_liked'], notification.event().kind
-
+    UserAuthService.currentUser.notifications()

@@ -1,21 +1,22 @@
-angular.module('loomioApp').factory 'VoteModel', ->
-  class VoteModel
-    plural: 'votes'
+angular.module('loomioApp').factory 'VoteModel', (BaseModel) ->
+  class VoteModel extends BaseModel
+    @singular: 'vote'
+    @plural: 'votes'
 
-    hydrate: (data) ->
+    initialize: (data) ->
+      @id = data.id
       @authorId = data.author_id
       @proposalId = data.proposal_id
       @position = data.position
       @statement = data.statement
       @createdAt = data.created_at
 
-    params: ->
+    serialize: ->
       vote:
         id: @id
         motion_id: @proposalId
         position: @position
         statement: @statement
-
 
     author: ->
       @recordStore.users.get(@authorId)

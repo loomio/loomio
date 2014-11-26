@@ -1,8 +1,10 @@
 angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
   class UserModel extends BaseModel
-    plural: 'users'
+    @singular: 'user'
+    @plural: 'users'
 
-    hydrate: (data) ->
+    initialize: (data) ->
+      @id = data.id
       @name = data.name
       @label = data.username
       @avatarKind = data.avatar_kind
@@ -13,10 +15,10 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       _.find @memberships(), (membership) -> membership.groupId == group.id
 
     memberships: ->
-      @recordStore.memberships.find(userId: @primaryId)
+      @recordStore.memberships.find(userId: @id)
 
     notifications: ->
-      @recordStore.notifications.find(userId: @primaryId)
+      @recordStore.notifications.find(userId: @id)
 
     groups: ->
       group_ids = _.map(@memberships(), (membership) -> membership.groupId) 
