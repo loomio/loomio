@@ -1,6 +1,12 @@
 .row
   .col-xs-12
     .thread-container
+      .dropdown.pull-right{ng-if: '::showContextMenu()'}
+        %a.dropdown-toggle{href:''}
+          %i.fa.fa-chevron-down
+        %ul.dropdown-menu
+          %li
+            %a{href: '', ng-click: 'editDiscussion()', translate: 'common.action.edit', ng-if: '::canEditDiscussion($scope.discussion)'}
       .thread-discussion
         %h1 {{discussion.title}}
         .media.thread-origin
