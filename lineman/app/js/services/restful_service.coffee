@@ -10,9 +10,12 @@ angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelServ
     showPath: (id) ->
       "#{@apiPrefix}/#{@resource_plural}/#{id}"
 
-    customPath: (path) ->
+    customPath: (path, id) ->
       if path?
-        "#{@apiPrefix}/#{@resource_plural}/#{path}"
+        if id?
+          "#{@apiPrefix}/#{@resource_plural}/#{id}/#{path}"
+        else
+          "#{@apiPrefix}/#{@resource_plural}/#{path}"
 
     constructor: ->
 
@@ -29,15 +32,17 @@ angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelServ
       , (response) ->
         failure(response.data.error) if failure?
 
-    create: (obj, success, failure) ->
-      $http.post(@indexPath(), obj.params()).then (response) ->
+    create: (obj, success, failure, path) ->
+      path = @customPath(path) or @indexPath()
+      $http.post(path, obj.params()).then (response) ->
         MessageChannelService.messageReceived(response.data)
         success(response.data) if success?
       , (response) ->
         failure(response.data.error) if failure?
 
-    update: (obj, success, failure) ->
-      $http.patch(@showPath(obj.id), obj.params()).then (response) ->
+    update: (obj, success, failure, path) ->
+      path = @customPath(path, obj.id) or @showPath(obj.id)
+      $http.patch(path, obj.params()).then (response) ->
         MessageChannelService.messageReceived(response.data)
         success(response.data) if success?
       , (response) ->
@@ -51,8 +56,8 @@ angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelServ
         console.log response
         failure(response.data.error) if failure?
 
-    save: (obj, success, failure) ->
+    save: (obj, success, failure, path) ->
       if obj.isNew()
-        @create(obj, success, failure)
+        @create(obj, success, failure, path)
       else
-        @update(obj, success, failure)
+        @update(obj, success, failure, path)
