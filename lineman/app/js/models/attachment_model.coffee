@@ -1,8 +1,10 @@
-angular.module('loomioApp').factory 'AttachmentModel',  ->
+angular.module('loomioApp').factory 'AttachmentModel', (BaseModel) ->
   class AttachmentModel extends BaseModel
-    plural: 'attachments'
+    @singular: 'attachment'
+    @plural: 'attachments'
 
-    hydrate: (data) ->
+    initialize: (data) ->
+      @id       = data.id
       @filename = data.filename
       @location = data.location
       @filesize = data.filesize

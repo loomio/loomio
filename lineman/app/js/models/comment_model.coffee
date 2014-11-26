@@ -1,9 +1,12 @@
 angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
   class CommentModel extends BaseModel
-    plural: 'comments'
-    foreignKey: 'commentId'
+    @singular: 'comment'
+    @plural: 'comments'
+    @foreignKey: 'commentId'
+    @indexes: ['discussionId', 'authorId']
 
-    hydrate: (data) ->
+    initialize: (data) ->
+      @id = data.id
       @discussionId = data.discussion_id
       @authorId = data.author_id
       @parentId = data.parent_id
@@ -18,7 +21,7 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
       @createdAt = data.created_at
       @updatedAt = data.updated_at
 
-    params: ->
+    serialize: ->
       comment:
         parent_id: @parentId
         discussion_id: @discussionId
@@ -26,10 +29,10 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
         new_attachment_ids: @newAttachmentIds
 
     group: ->
-      @discussion.group()
+      @discussion().group()
 
     canBeEditedByAuthor: ->
-      @group.membersCanEditComments or @isMostRecent()
+      @group().membersCanEditComments or @isMostRecent()
 
     isMostRecent: ->
       _.last(@discussion().comments()) == @

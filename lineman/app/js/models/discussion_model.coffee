@@ -1,9 +1,12 @@
 angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
   class DiscussionModel extends BaseModel
-    plural: 'discussions'
-    foreignKey: 'discussionId'
+    @singular: 'discussion'
+    @plural: 'discussions'
+    @foreignKey: 'discussionId'
+    @indexes: ['groupId']
 
-    hydrate: (data) ->
+    initialize: (data) ->
+      @id = data.id
       @key = data.key
       @authorId = data.author_id
       @groupId = data.group_id
@@ -13,15 +16,20 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       @lastActivityAt = data.last_activity_at
       @private = data.private
 
-      #@commentsView = RecordStore.comments.belongingTo(@)
+    setupViews: ->
+      @commentsView = @recordStore.comments.addDynamicView(@viewName())
+      @commentsView.applyFind(discussionId: @id)
+      @commentsView.applySimpleSort('createdAt')
 
-      #@eventsView = RecordStore.events.belongingTo(@)
-      #@eventsView.applySimpleSort('sequenceId')
+      @eventsView = @recordStore.events.addDynamicView(@viewName())
+      @eventsView.applyFind(discussionId: @id)
+      @eventsView.applySimpleSort('sequenceId')
 
-      #@proposalsView = RecordStore.proposals.belongingTo(@)
-      #@proposalsView.applySimpleSort('createdAt')
+      @proposalsView = @recordStore.proposals.addDynamicView(@viewName())
+      @proposalsView.applyFind(discussionId: @id)
+      @proposalsView.applySimpleSort('createdAt')
 
-    params: ->
+    serialize: ->
       discussion:
         group_id: @groupId
         discussion_id: @discussionId
@@ -45,11 +53,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       @eventsView.data()
 
     comments: ->
-      @recordStore.comments
-                  .chain()
-                  .find(discussionId: @primaryId)
-                  .simplesort('createdAt')
-                  .data()
+      @commentsView.data()
 
     proposals: ->
       @proposalsView.data()

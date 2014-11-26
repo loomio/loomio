@@ -1,8 +1,10 @@
 angular.module('loomioApp').factory 'NotificationModel', (BaseModel) ->
   class NotificationModel extends BaseModel
-    plural: 'notifications'
+    @singular: 'notification'
+    @plural: 'notifications'
 
-    hydrate: (data) ->
+    initialize: (data) ->
+      @id = data.id
       @eventId = data.event_id
       @userId = data.user_id
       @viewedAt = data.viewed_at

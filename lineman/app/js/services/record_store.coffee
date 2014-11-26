@@ -1,7 +1,10 @@
-angular.module('loomioApp').factory 'RecordStore', (CommentCollection, DiscussionCollection, UserCollection) ->
+angular.module('loomioApp').factory 'RecordStore', (CollectionWrapper) ->
   class RecordStore
     constructor: (db) ->
       @db = db
-      @comments = new CommentCollection(db)
-      @discussions =  new DiscussionCollection(db)
-      @users = new UserCollection(db)
+
+    addCollection: (model) ->
+      unwrappedCollection = @db.addCollection(model.plural)
+      collection = @[model.plural] = new CollectionWrapper(@, unwrappedCollection, model)
+      collection
+

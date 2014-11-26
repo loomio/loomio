@@ -1,20 +1,16 @@
-angular.module('loomioApp').factory 'BaseModel', (MainRecordStore) ->
+angular.module('loomioApp').factory 'BaseModel', ->
   class BaseModel
-    constructor: (recordStoreOrData, data) ->
-      if data?
-        recordStore = recordStoreOrData
-      else
-        data = recordStoreOrData
-        recordStore = MainRecordStore
-
+    constructor: (recordStore, data) ->
       Object.defineProperty(@, 'recordStore', value: recordStore, enumerable: false)
+      @initialize(data)
+      @setupViews() if @setupViews?
+      recordStore[@constructor.plural].put @
 
-      @primaryId = data.id
-      @hydrate(data)
-      @recordStore[@plural].put(@)
+    initialize: ->
+    setupViews: ->
 
-    viewName: -> "#{@plural}-#{@primaryId}"
+    viewName: -> "#{@constructor.plural}#{@id}"
 
     isNew: ->
-      not @primaryId?
+      not @id?
 

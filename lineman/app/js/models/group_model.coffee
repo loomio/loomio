@@ -1,8 +1,11 @@
 angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
   class GroupModel extends BaseModel
-    plural: 'groups'
+    @singluar: 'group'
+    @plural: 'groups'
+    @indexes: ['parentId']
 
-    hydrate: (data) ->
+    initialize: (data) ->
+      @id                             = data.id
       @key                            = data.key
       @name                           = data.name
       @description                    = data.description
@@ -23,7 +26,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       #@discussionsView = RecordStore.discussions.belongingTo(@)
       #@subgroupsView = RecordStore.groups.belongingTo(owner: @, foreignKey: 'parentId')
 
-    params: ->
+    serialize: ->
       group:
         name:                          @name
         description:                   @description
@@ -40,17 +43,17 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
         visible_to:                    @visibleTo
 
     discussions: ->
-      @recordStore.discussions.find(groupId: @primaryId)
+      @recordStore.discussions.find(groupId: @id)
 
     subgroups: ->
-      @recordStore.groups.find(parentId: @primaryId)
+      @recordStore.groups.find(parentId: @id)
 
     memberships: ->
-      @recordStore.memberships.find(groupId: @primaryId)
+      @recordStore.memberships.find(groupId: @id)
 
     adminMemberships: ->
       _.filter memberships(), (membership) ->
-        membership.groupId = @primaryId
+        membership.groupId = @id
 
     members: ->
       memberIds = _.map(@memberships(), (membership) -> membership.userId)

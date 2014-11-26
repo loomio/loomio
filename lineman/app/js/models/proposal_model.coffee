@@ -1,8 +1,10 @@
 angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
   class ProposalModel extends BaseModel
-    plural: 'proposals'
+    @singular: 'proposal'
+    @plural: 'proposals'
 
-    hydrate: (data) ->
+    initialize: (data) ->
+      @id = data.id
       @name = data.name
       @description = data.description
       @createdAt = data.created_at
@@ -14,9 +16,14 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
       @voteCounts = data.vote_counts
       @activityCount = data.activity_count
 
-    params: ->
+    setupViews: ->
+      @votesView = @recordStore.votes.addDynamicView(@viewName())
+      @votesView.applyFind(proposalId: @id)
+      @votesView.applySimpleSort('id')
+
+    serialize: ->
       motion:
-        id: @primaryId
+        id: @id
         discussion_id: @discussionId
         name: @name
         description: @description
@@ -33,7 +40,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
       @recordStore.discussions.get(@discussionId)
 
     votes: ->
-      @recordStore.votes.find(proposalId: @primaryId)
+      @votesView.data()
 
     authorName: ->
       @author().name

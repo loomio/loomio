@@ -1,9 +1,11 @@
-angular.module('loomioApp').factory 'EventModel', () ->
+angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
   class EventModel extends BaseModel
-    plural: 'events'
-    foreignKey: 'eventId'
+    @singular: 'event'
+    @plural: 'events'
+    @foreignKey: 'eventId'
 
-    hydrate: (data) ->
+    initialize: (data) ->
+      @id = data.id
       @kind = data.kind
       @sequenceId = data.sequence_id
       @commentId = data.comment_id
@@ -13,7 +15,7 @@ angular.module('loomioApp').factory 'EventModel', () ->
       @createdAt = data.created_at
       @actorId = data.actor_id
 
-    eventable: ->
+    serialize: ->
       switch @kind
         when 'new_comment' then @comment()
         when 'new_discussion' then @discussion()
