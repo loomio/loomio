@@ -113,6 +113,18 @@ en:
     visibility_label: 'Visibility'
     notifications_label: 'Notifications'
     options_label: 'Options'
+    options:
+      edit_group: 'Edit Group Settings'
+      leave_group: 'Leave Group'
+      deactivate_group: 'Deactivate Group'
+    deactivate_group:
+      title: 'Deactivate group'
+      question: 'Are you sure you want to deactivate this group?'
+      submit: 'Yes, Deactivate this group'
+    leave_group:
+      title: 'Leave group'
+      question: 'Are you sure you want to leave this group?'
+      submit: 'Yes, leave this group'
     notifications:
       following: 'Following'
       following_details: 'You''ll be notified about all activity in this group'
