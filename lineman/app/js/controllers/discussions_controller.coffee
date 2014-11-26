@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'DiscussionsController', ($scope, $modal, DiscussionService, DiscussionModel) ->
+angular.module('loomioApp').controller 'DiscussionsController', ($scope, $modal, DiscussionService, DiscussionModel, UserAuthService) ->
   DiscussionService.fetchByGroup $scope.group
 
   nextPage = 1
@@ -21,3 +21,7 @@ angular.module('loomioApp').controller 'DiscussionsController', ($scope, $modal,
       resolve:
         discussion: -> 
           new DiscussionModel(group_id: $scope.group.id)
+
+  $scope.canStartDiscussions = ->
+    UserAuthService.currentUser.isMemberOf($scope.group) and
+      ($scope.group.membersCanStartDiscussions or UserAuthService.currentUser.isAdminOf($scope.group))
