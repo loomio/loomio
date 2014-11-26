@@ -31,6 +31,9 @@ angular.module('loomioApp').factory 'UserModel', (RecordStoreService) ->
     canEditDiscussion: (discussion) ->
       @isAuthorOf(discussion) or @isAdminOf(discussion.group()) or discussion.group().membersCanEditDiscussions
 
+    canStartProposals: (discussion) ->
+      @isAdminOf(discussion.group()) or discussion.group().membersCanStartProposals
+
     isAuthorOf: (object) ->
       @id == object.authorId
 
