@@ -32,24 +32,24 @@ angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelServ
     create: (obj, success, failure) ->
       $http.post(@indexPath(), obj.params()).then (response) ->
         MessageChannelService.messageReceived(response.data)
-        success()
+        success(response.data) if success?
       , (response) ->
-        failure(response.data.error)
+        failure(response.data.error) if failure?
 
     update: (obj, success, failure) ->
       $http.patch(@showPath(obj.id), obj.params()).then (response) ->
         MessageChannelService.messageReceived(response.data)
-        success()
+        success(response.data) if success?
       , (response) ->
-        failure(response.data.error)
+        failure(response.data.error) if failure?
 
     destroy: (obj, success, failure) ->
       $http.delete(@showPath(obj.id)).then (response) ->
         MessageChannelService.messageReceived(response.data)
-        success()
+        success(response.data) if success?
       , (response) ->
         console.log response
-        failure(response.data.error)
+        failure(response.data.error) if failure?
 
     save: (obj, success, failure) ->
       if obj.isNew()

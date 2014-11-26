@@ -20,7 +20,7 @@
       %li.pull-right
         %a.loomio-nav-btn{href: '#'}
           %i.fa.fa-lg.fa-fw.fa-navicon
-      %li.pull-right{dropdown: '', on-toggle: 'toggleNotifications(open)'}
+      %li.pull-right{dropdown: '', on-toggle: 'toggleNotifications(open)', ng-if: 'userLoggedIn()'}
         %a.loomio-nav-btn.dropdown-toggle{href: '#'}
           %i.fa.fa-lg.fa-fw.fa-bell
         .loomio-nav-dropdown.dropdown-menu{role: 'menu'}

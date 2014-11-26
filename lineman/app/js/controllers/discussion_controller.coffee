@@ -23,8 +23,6 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
         discussion: ->
           angular.copy($scope.discussion)
 
-
-
   $scope.getNextPage = ->
     return false if busy or $scope.lastPage
     busy = true
@@ -40,3 +38,12 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
 
   $scope.$on 'replyToCommentClicked', (event, originalComment) ->
     $scope.$broadcast('showReplyToCommentForm', originalComment)
+
+  $scope.canStartProposals = ->
+    !discussion.activeProposal() and UserAuthService.currentUser.canStartProposals($scope.discussion)
+
+  $scope.canEditDiscussion = ->
+    UserAuthService.currentUser.canEditDiscussion($scope.discussion)
+
+  $scope.showContextMenu = ->
+    $scope.canEditDiscussion()

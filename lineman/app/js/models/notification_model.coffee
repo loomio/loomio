@@ -16,3 +16,4 @@ angular.module('loomioApp').factory 'NotificationModel', (RecordStoreService, Ba
 
     user: ->
       RecordStoreService.get('user', @userId)
+

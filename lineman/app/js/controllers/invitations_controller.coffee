@@ -5,3 +5,4 @@ angular.module('loomioApp').controller 'InvitationsController', ($scope, $modal)
       controller: 'InvitationsModalController'
       resolve:
         group: -> $scope.group
+

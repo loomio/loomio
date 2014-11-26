@@ -1,14 +1,20 @@
-.group-member-list
-  .group-member-list-item{ng-repeat: 'member in group.members()'}
-    .group-member-list-avatar.lg{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = member'}
-  .group-member-list-show-more.show-more.card-minor-action
-    %a{href: '#', translate: 'common.action.show_more'}
-  .members-invite{ng_controller: 'InvitationsController'}
-    .row
-      .col-xs-12.col-sm-6
-        %a.btn.btn-success.btn-block.btn-icon{href: '#', ng_click: 'openForm()'}
-          %i.fa.fa-lg.fa-plus>
-          %span{translate: 'group_page.invite_people' }
+.group-page-members
+  .context-menu.pull-right{ng-if: 'canAddMembers()'}
+    %i.fa.fa-lg.fa-chevron-down
+
+  %h3.first{ translate: 'group_page.members' }
+
+  .group-member-list
+    .group-member-list-item{ng-repeat: 'member in group.members()'}
+      .group-member-list-avatar.lg{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = member'}
+    .group-member-list-show-more.show-more.card-minor-action
+      %a{href: '#', translate: 'common.action.show_more'}
+    .members-invite{ng_controller: 'InvitationsController', ng-if: '::canAddMembers()'}
+      .row
+        .col-xs-12.col-sm-6
+          %a.btn.btn-success.btn-block.btn-icon{href: '#', ng_click: 'openForm()'}
+            %i.fa.fa-lg.fa-plus>
+            %span{translate: 'group_page.invite_people' }
 
 
 

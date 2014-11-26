@@ -1,16 +1,14 @@
 .thread-container {
-  border: 1px solid $thread-border-color;
-  max-width: $thread-max-width;
   margin: 10px auto;
+  max-width: $thread-max-width;
+  @include card;
 }
 
 .thread-discussion {
-  padding: 15px;
-  background-color: #fff;
 }
 
 .thread-proposals {
-  padding: 10px 15px 15px 15px;
+  padding: 10px 0px 15px 0px;
   background-color: #fff;
 }
 
@@ -21,10 +19,6 @@
   @include fontSmall;
   color: #777777;
   margin-bottom: 10px;
-}
-.thread-events {
-  padding: 15px;
-  background-color: #fff;
 }
 
 .thread-event {
@@ -84,11 +78,11 @@
   background-image: url(/img/red_flag_22.png);
 }
 
-.thread-start-proposal-card {
-  margin-top: 30px;
-  padding: 15px;
-  background-color: #fff;
-  border: 1px solid $thread-border-color;
+.comment-form-container{
+  width: 100%;
+}
+.comment-form-attachments{
+  display: inline;
 }
 
 .thread-comment-form-actions {
@@ -124,4 +118,8 @@
 
 .progress.active {
   float: left;
+}
+#comment-form-attachment-button{
+  padding: 9px 10px 10px 8px;
+  margin-left: 10px;
 }

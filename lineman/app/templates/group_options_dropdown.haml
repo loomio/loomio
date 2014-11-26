@@ -5,20 +5,16 @@
   .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
     %h3.dropdown-heading{translate: 'group_page.options_label'}
     %ul.dropdown-menu-items
-      %li.dropdown-menu-item
+      %li.dropdown-menu-item{ng-if: 'canEditGroup()'}
         %a{href: '/groups/{{::group.key}}/edit'}
           .dropdown-menu-item-label
             Edit group settings
           .dropdown-menu-item-details
       %li.dropdown-menu-item
         .dropdown-menu-item-label
-          Manage group members
-        .dropdown-menu-item-details
-      %li.dropdown-menu-item
-        .dropdown-menu-item-label
           Leave group
         .dropdown-menu-item-details
-      %li.dropdown-menu-item
+      %li.dropdown-menu-item{ng-if: 'canEditGroup()'}
         .dropdown-menu-item-label
           De-activate group
         .dropdown-menu-item-details
