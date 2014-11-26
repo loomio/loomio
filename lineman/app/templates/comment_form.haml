@@ -5,5 +5,8 @@
       {{ attachment.filename }}
     %span.attachment-filesize
       ({{ attachment.filesize | fileSize }})
-  %button#post-comment-btn.btn.btn-primary.submit{type: 'submit'} Post comment
-  %add_attachment{comment: 'comment'}
+    %a.close.remove-upload{href: '#', ng_click: 'removeAttachment(attachment)'} &times;
+  .thread-comment-form-actions.clearfix
+    %button#post-comment-btn.btn.btn-default.btn-primary.pull-left.submit{type: 'submit'} Post
+    %attachment_form.pull-left{comment: 'comment'}
+    %button#post-comment-cancel.btn.btn-default.pull-right{translate: 'common.action.cancel', ng-click: 'cancel($event)'}
