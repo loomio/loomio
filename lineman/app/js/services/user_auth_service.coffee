@@ -1,12 +1,11 @@
-angular.module('loomioApp').factory 'UserAuthService', (MainRecordStore, UserModel, MembershipService, $http) ->
+angular.module('loomioApp').factory 'UserAuthService', (Records, UserModel, MembershipService, $http) ->
   new class UserAuthService
     constructor: ->
       @currentUser = null
 
     fetchCurrentUser: ->
       $http.get('/api/v1/faye/who_am_i').then (response) =>
-        user = new UserModel(response.data.user)
-        MainRecordStore.users.put(user)
+        user = Records.users.new(response.data.user)
         @currentUser = user
         MembershipService.fetchMyMemberships()
 

@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelService, MainRecordStore) ->
+angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelService, Records) ->
   class RestfulService
     resource_plural: 'undefined'
 
@@ -18,13 +18,13 @@ angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelServ
 
     fetchByKey: (key, success, failure) ->
       $http.get(@showPath(key)).then (response) =>
-        MainRecordStore.importRecords(response.data)
-        MainRecordStore[@resource_plural].get(key)
+        Records.import(response.data)
+        Records[@resource_plural].get(key)
 
     fetch: (filters, success, failure, path) ->
       path = @customPath(path) or @indexPath()
       $http.get(path, { params: filters }).then (response) =>
-        MainRecordStore.importRecords(response.data)
+        Records.import(response.data)
         success(response.data[@resource_plural]) if success?
       , (response) ->
         failure(response.data.error) if failure?
