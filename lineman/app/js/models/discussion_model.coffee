@@ -1,8 +1,9 @@
-angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService, BaseModel) ->
+angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
   class DiscussionModel extends BaseModel
-    constructor: (data = {}) ->
-      @callcount = 0
-      @id = data.id
+    plural: 'discussions'
+    foreignKey: 'discussionId'
+
+    constructor: (data) ->
       @key = data.key
       @authorId = data.author_id
       @groupId = data.group_id
@@ -12,7 +13,13 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService, Base
       @lastActivityAt = data.last_activity_at
       @private = data.private
 
-    plural: 'discussions'
+      #@commentsView = RecordStore.comments.belongingTo(@)
+
+      #@eventsView = RecordStore.events.belongingTo(@)
+      #@eventsView.applySimpleSort('sequenceId')
+
+      #@proposalsView = RecordStore.proposals.belongingTo(@)
+      #@proposalsView.applySimpleSort('createdAt')
 
     params: ->
       discussion:
@@ -23,34 +30,29 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService, Base
         private: @private
 
     author: ->
-      RecordStoreService.get('users', @authorId)
+      @recordStore.users.get(@authorId)
 
     authorName: ->
       @author().name
 
     group: ->
-      RecordStoreService.get 'groups', @groupId
+      @recordStore.groups.get(@groupId)
 
     groupName: ->
       @group().name
 
     events: ->
-      _.sortBy(@unsortedEvents(), 'sequenceId')
-
-    unsortedEvents: ->
-      RecordStoreService.get 'events', (event) =>
-        event.discussionId == @id
-
+      @eventsView.data()
 
     comments: ->
-      RecordStoreService.get 'comments', (comment) =>
-        comment.discussionId == @id
+      @commentsView.data()
 
     proposals: ->
-      RecordStoreService.get 'proposals', (proposal) =>
-        proposal.discussionId == @id
+      @proposalsView.data()
 
     activeProposal: ->
-      #@callcount = @callcount + 1
-      #console.log('called activeProposal', @callcount)
-      _.first(_.filter(@proposals(), (proposal) -> proposal.isActive()))
+      proposal = _.last(@proposals)
+      if proposal and proposal.isActive()
+        proposal
+      else
+        null

@@ -1,7 +1,8 @@
-angular.module('loomioApp').factory 'VoteModel', (RecordStoreService, $sanitize) ->
+angular.module('loomioApp').factory 'VoteModel', ->
   class VoteModel
-    constructor: (data = {}) ->
-      @id = data.id
+    plural: 'votes'
+
+    hydrate: (data) ->
       @authorId = data.author_id
       @proposalId = data.proposal_id
       @position = data.position
@@ -15,13 +16,12 @@ angular.module('loomioApp').factory 'VoteModel', (RecordStoreService, $sanitize)
         position: @position
         statement: @statement
 
-    plural: 'votes'
 
     author: ->
-      RecordStoreService.get('users', @authorId)
+      @recordStore.users.get(@authorId)
 
     proposal: ->
-      RecordStoreService.get('proposals', @proposalId)
+      @recordStore.proposals.get(@proposalId)
 
     authorName: ->
       @author().name

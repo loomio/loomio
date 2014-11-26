@@ -1,23 +1,23 @@
-angular.module('loomioApp').factory 'UserModel', (RecordStoreService) ->
-  class UserModel
-    constructor: (data = {}) ->
-      @id = data.id
+angular.module('loomioApp').factory 'UserModel', ->
+  class UserModel extends BaseModel
+    plural: 'users'
+
+    hydrate: (data) ->
       @name = data.name
       @label = data.username
       @avatarKind = data.avatar_kind
       @avatarUrl = data.avatar_url
       @avatarInitials = data.avatar_initials
 
-    plural: 'users'
-
     membershipFor: (group) ->
       _.find @memberships(), (membership) -> membership.groupId == group.id
 
     memberships: ->
-      RecordStoreService.get 'memberships', (membership) => membership.userId == @id
+      @recordStore.memberships.find(userId: @primaryId)
 
     notifications: ->
-      RecordStoreService.get 'notifications', (notification) => notification.userId == @id
+      @recordStore.notifications.find(userId: @primaryId)
 
     groups: ->
-      RecordStoreService.get('groups', _.map(@memberships(), (membership) -> membership.groupId))
+      group_ids = _.map(@memberships(), (membership) -> membership.groupId) 
+      @recordStore.groups.get(group_ids)

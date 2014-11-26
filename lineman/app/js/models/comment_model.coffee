@@ -1,7 +1,9 @@
-angular.module('loomioApp').factory 'CommentModel', (RecordStoreService, BaseModel) ->
+angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
   class CommentModel extends BaseModel
-    constructor: (data = {}) ->
-      @id = data.id
+    plural: 'comments'
+    foreignKey: 'commentId'
+
+    hydrate: (data) ->
       @discussionId = data.discussion_id
       @authorId = data.author_id
       @parentId = data.parent_id
@@ -23,8 +25,6 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService, BaseMod
         body: @body
         new_attachment_ids: @newAttachmentIds
 
-    plural: 'comments'
-
     group: ->
       @discussion.group()
 
@@ -32,28 +32,25 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService, BaseMod
       @group.membersCanEditComments or @isMostRecent()
 
     isMostRecent: ->
-      newerComments = RecordStoreService.get 'comments', (comment) =>
-        (comment.discussionId == @discussionId) && (@comment.createdAt > @createdAt)
-      newerComments.length == 0
+      _.last(@discussion().comments()).primaryId == @primaryId
 
     isReply: ->
       @parentId?
 
     likers: ->
-      RecordStoreService.get('users', @likerIds)
+      @recordStore.users.get(@likerIds)
 
     attachments: ->
-      RecordStoreService.get 'attachments', (attachment) =>
-        attachment.commentId == @id
+      @attachmentsView.data()
 
     author: ->
-      RecordStoreService.get('users', @authorId)
+      @recordStore.users.get(@authorId)
 
     parent: ->
-      RecordStoreService.get('comments', @parentId)
+      @recordStore.comments.get(@parentId)
 
     discussion: ->
-      RecordStoreService.get('discussions', @discussionId)
+      @recordStore.discussions.get(@discussionId)
 
     authorName: ->
       @author().name
@@ -75,10 +72,7 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService, BaseMod
       @likerIds = _.without(@likerIds, id)
 
     destroy: ->
-      events = RecordStoreService.get 'events', (event) =>
-        (event.kind == 'new_comment') && (event.commentId == @id)
+      _.each @events, (event) ->
+        @recordStore.events.remove(event)
 
-      _.each events, (event) ->
-        RecordStoreService.remove(event)
-
-      RecordStoreService.remove(@)
+      @recordStore.comments.remove(@)
