@@ -47,5 +47,10 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
   ).when('/dashboard',
     templateUrl: 'generated/templates/dashboard.html'
     controller: 'DashboardController'
+  ).when('/help',
+    templateUrl: 'generated/templates/help_page.html'
+  ).when('/contact',
+    templateUrl: 'generated/templates/contact_page.html',
+    controller: 'ContactPageController'
   ).otherwise
     redirectTo: '/g/WmPCB3IR'
