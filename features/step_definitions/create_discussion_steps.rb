@@ -4,6 +4,7 @@ Given /^I am viewing a discussion titled "(.*?)" in "(.*?)"$/ do |disc_title, gr
 end
 
 When /^I choose to create a discussion$/ do
+  view_screenshot
   click_on('Start a discussion')
 end
 
