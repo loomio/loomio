@@ -11,7 +11,7 @@
         %h1 {{discussion.title}}
         .media.thread-origin
           .media-left.thread-origin-icon
-            %img{src: 'http://placehold.it/30'}
+            %img.thread-origin-group-logo{src: "{{discussion.group().logoUrlSmall}}"}
           .media-body.thread-origin-details
             {{::discussion.group().fullName()}}
             %br
