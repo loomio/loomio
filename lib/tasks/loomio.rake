@@ -1,6 +1,7 @@
 namespace :loomio do
   task :lineman_build do
     puts "building angular and copying into public"
+    puts `cd lineman; bower install`
     puts `cd lineman; lineman build`
     puts `cp -R lineman/dist/* public/`
   end
