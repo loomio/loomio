@@ -22,6 +22,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       @discussionPrivacyOptions       = data.discussion_privacy_options
       @visibleTo                      = data.visible_to
       @logoUrlSmall                   = data.logo_url_small
+      @coverUrlSmall                  = data.cover_url_small
 
     serialize: ->
       group:
