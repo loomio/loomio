@@ -3,7 +3,7 @@ module ApplicationHelper
 
   def lineman_js_path
     if Rails.env.production?
-      "/js/app.js"
+      "/js/app.js?#{Time.now.to_i}"
     else
       "/js/app.js"
     end
@@ -11,7 +11,7 @@ module ApplicationHelper
 
   def lineman_css_path
     if Rails.env.production?
-      "/css/app.css"
+      "/css/app.css?#{Time.now.to_i}"
     else
       "/css/app.css"
     end
