@@ -27,7 +27,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
 
       @proposalsView = @recordStore.proposals.addDynamicView(@viewName())
       @proposalsView.applyFind(discussionId: @id)
-      @proposalsView.applySimpleSort('createdAt')
+      @proposalsView.applySimpleSort('id')
 
     serialize: ->
       discussion:
@@ -56,11 +56,10 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       @commentsView.data()
 
     proposals: ->
-      #@recordStore.proposals.find(discussionId: @id)
       @proposalsView.data()
 
     activeProposal: ->
-      proposal = _.last(@proposals)
+      proposal = _.last(@proposals())
       if proposal and proposal.isActive()
         proposal
       else
