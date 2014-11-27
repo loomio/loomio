@@ -10,10 +10,10 @@
         .group-page-name-and-privacy
           .group-page-name
             %h1
-              %a{ng_show: 'group.parentId', href: '/groups/{{group.parent().key}}'} 
+              %a{ng_show: 'group.parentId', href: '/g/{{group.parent().key}}'} 
                 {{group.parentName()}} 
               %span{ng_show: 'group.parentId'}> > 
-              %a{href: '/groups/{{group.key}}'} 
+              %a{href: '/g/{{group.key}}'} 
                 {{group.name}}
           %group_privacy_dropdown{group: 'group'}
       .group-page-description
