@@ -4,10 +4,11 @@ angular.module('loomioApp').factory 'FormService', (FlashService) ->
     applyForm: (scope, method, object, modal) ->
       scope.isDisabled = false
 
-      success = (result) ->
+      success = (response) ->
         scope.isDisabled = false
         FlashService.success scope.successMessage()
-        scope.successCallback(result[object.constructor.plural][0]) if scope.successCallback?
+        results = response[object.constructor.plural] or []
+        scope.successCallback(results[0]) if scope.successCallback?
 
       failure = (errors) ->
         scope.isDisabled = false
