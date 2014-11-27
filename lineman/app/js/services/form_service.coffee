@@ -1,7 +1,7 @@
 angular.module('loomioApp').factory 'FormService', (FlashService) ->
   new class FormService
 
-    applyForm: (scope, service, object, modal) ->
+    applyForm: (scope, method, object, modal) ->
       scope.isDisabled = false
 
       success = (result) ->
@@ -21,11 +21,9 @@ angular.module('loomioApp').factory 'FormService', (FlashService) ->
         else
           "flash.#{singular}_form.update_#{singular}"
 
-
-
       scope.submit = ->
         scope.isDisabled = true
-        service.save object, success, failure
+        method object, success, failure
 
       if modal?
         scope.successCallback = ->
