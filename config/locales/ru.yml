@@ -4,6 +4,8 @@ ru:
       edit:
         title: 'Посылаете препочтения '
         when_do_you_want_emails: 'Посылаете меня емаил:'
+        email_missed_yesterday: "'Вчера на Loomio' - ежедневник пропущеных событий"
+        email_when_mentioned: "Когда меня упомянули"
         email_when_proposal_closing_soon: "24 часа до закрытия предложения."
         email_new_discussions_and_proposals: 'Новые дискуссии и предложения'
         for_these_groups: "Для этих групп:"
@@ -177,15 +179,32 @@ ru:
     motion_closing_soon: "Предложение скоро закрывается"
     motion_blocked: "блокировал предложение"
   request_new_group: "Создать группу"
+  start_new_group: "Создайте новую группу"
+  start_new_group_hint: "Чтобы начать принятие решений"
+  find_a_group: "Найти группу"
+  search_for_group: "Искать группу"
+  no_group_header: "Добро пожаловать!"
   empty_notifications: "У вас пока нет уведомлений."
   see_all_notifications: "Просмотреть все уведомления"
+  profile: "Профиль"
+  email_settings: "Настройки email"
   sign_out: "Выйти"
   sign_in: "Войти"
   tagline: "Создавая мир, в котором каждому легко принимать участие в принятии решений, влияющих на них."
   click_to_dismiss: "Нажмите сюда, чтобы отклонить это сообщение"
   generic_confirm: "Вы уверены?"
+  user_profile:
+    change_password: "Измените пароль"
+    deactivate_account: "Деактивировать учетную запись"
+    about_deactivation: "К чему это приведет?"
+    confirm_account_deactivation: "Вы уверены?"
   group_form:
+    name: "Название группы"
+    description: "Описание"
+    category: "Категория"
     what_can_members_do: "Что члены могут делать?"
+  group_permissions:
+    header: Разрешения
   add_new_member: "Добавить нового участника"
   invite_members_to_group: "Пригласить участника в %{which_group}"
   remaining_invites: "оставшиеся приглашения"
@@ -205,10 +224,13 @@ ru:
   confirm_remove_user: "Вы уверены что хотите удалить %{which_user} из группы?"
   membership_requests: "Заявка на участие"
   confirm_approve_membership_request: "Вы уверены что хотите добавить %{which_user} в группу?"
+  cancel_membership_request: "Отозвать запрос"
   ignore_request: "Игнорировать заявку"
+  ignore: "Игнорировать"
   confirm_ignore_membership_request: "Вы уверены что хотите игнорировать заявку на участие от %{which_user}?"
   membership_requested: "Заявка на участие"
   request_membership: "Запросить участие"
+  ask_to_join_group: "Подать заявку на вступление"
   confirm_remove_membership_request: "Вы уверены что хотите отменить заявку на участие в это группе?"
   subgroups: "Подгруппы"
   create_a_subgroup: "Создать подгруппу"
@@ -218,6 +240,7 @@ ru:
   new_subgroup: "Новые подгруппы"
   create_subgroup: "Создать подгруппу"
   creating_subgroup: "Создание подгруппы"
+  hidden: "Скрытый"
   new_group: "Новая группа"
   create_group: "Создать группу"
   creating_group: "Создание группы"
@@ -261,6 +284,7 @@ ru:
   confirm_close_proposal: "Вы уверены что хотите закрыть это предложение?"
   change_proposal_close_date: "Изменить дату окончания"
   change_proposal_close_date_header: "Изменить даут окончания предложения '%{which}'"
+  proposal: Предложение
   yes_position: "Я согласен"
   yes_details: "Я согласен с этим и с тем, что из этого следует"
   no_position: "Я не соласен"
