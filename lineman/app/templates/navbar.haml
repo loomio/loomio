@@ -4,27 +4,8 @@
       %li
         %a.loomio-nav-btn{href: '#'}
           .loomio-nav-logo
-      / don't load this li if the sidebar is open
-      %li{dropdown: '', on-toggle: 'toggleInbox(open)'}
-        %a.loomio-nav-btn.has-badge.dropdown-toggle{href: '#'}
-          %span.badge 2
-          %i.fa.fa-lg.fa-fw.fa-inbox
-          %span.hide Inbox
-        .loomio-nav-dropdown.dropdown-menu{role: 'menu'}
-          %inbox{ng_show: 'showInbox'}
-      %li{dropdown: '', on-toggle: 'toggleSearch(open)'}
-        %a.loomio-nav-btn.dropdown-toggle{href: '#'}
-          %i.fa.fa-lg.fa-fw.fa-search
-        .loomio-nav-dropdown.dropdown-menu{role: 'menu'}
-          %navbar_search{ng_show: 'showSearch'}
-      %li.pull-right
-        %a.loomio-nav-btn{href: '#'}
-          %i.fa.fa-lg.fa-fw.fa-navicon
-      %li.pull-right{dropdown: '', on-toggle: 'toggleNotifications(open)', ng-if: 'userLoggedIn()'}
-        %a.loomio-nav-btn.dropdown-toggle{href: '#'}
-          %i.fa.fa-lg.fa-fw.fa-bell
-        .loomio-nav-dropdown.dropdown-menu{role: 'menu'}
-          %navbar_notifications{ng_show: 'showNotifications'}
-      %li.pull-right
-        %a.loomio-nav-btn{href: '#', ng_click: 'openDiscussionForm()'}
-          %i.fa.fa-lg.fa-fw.fa-plus
+      %navbar_inbox
+      %navbar_search
+      %navbar_user_options
+      %navbar_notifications
+      %navbar_start_discussion
