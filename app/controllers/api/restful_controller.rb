@@ -114,7 +114,7 @@ class API::RestfulController < API::BaseController
   end
 
   def respond_with_error
-    render json: ['common.errors.aw_crap'], root: false, status: 400
+    render json: ['flash.errors.aw_crap'], root: false, status: 400
   end
 
 end
