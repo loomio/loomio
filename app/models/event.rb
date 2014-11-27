@@ -31,10 +31,12 @@ class Event < ActiveRecord::Base
   def publish_event
     if message_channel
       serializer = EventSerializer.new(self)
-      if ENV['DELAY_FAYE']
-        PrivatePub.delay(priority: 10).publish_to(message_channel, serializer)
-      else
-        PrivatePub.publish_to(message_channel, serializer)
+      if ENV['FAYE_ENABLED']
+        if ENV['DELAY_FAYE']
+          PrivatePub.delay(priority: 10).publish_to(message_channel, serializer)
+        else
+          PrivatePub.publish_to(message_channel, serializer)
+        end
       end
     end
   end
