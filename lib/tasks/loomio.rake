@@ -1,9 +1,8 @@
 namespace :loomio do
-  task :prepare_angular do
+  task :lineman_build do
     puts "building angular and copying into public"
     puts `cd lineman; lineman build`
     puts `cp -R lineman/dist/* public/`
-    puts `mv public/index.html public/angular.html`
   end
 
   task tail_call: :environment do
