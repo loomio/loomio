@@ -1,21 +1,18 @@
-angular.module('loomioApp').factory 'FlashService', (FlashModel) ->
+angular.module('loomioApp').factory 'FlashService', ($timeout, FlashModel) ->
   new class FlashService
 
     constructor: ->
       @currentFlash = new FlashModel
 
-    success: (message) ->
-      set(@currentFlash, message, 'success')
+    success: (message) => @set(message, 'success')
+    failure: (message) => @set(message, 'danger')
+    info:    (message) => @set(message, 'info')
 
-    failure: (message) ->
-      set(@currentFlash, message, 'danger')
+    clear: =>
+      @currentFlash.message = null
+      @currentFlash.level = null
 
-    info: (message) ->
-      set(@currentFlash, message, 'info')
-
-    clear: -> 
-      set(@currentFlash, null, null)
-
-    set = (flash, message, level) ->
-      flash.message = message
-      flash.level = level
+    set: (message, level) =>
+      @currentFlash.message = message
+      @currentFlash.level = level
+      $timeout @clear, 4000

@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'DiscussionsController', ($scope, $modal, DiscussionService, Records) ->
+angular.module('loomioApp').controller 'DiscussionsController', ($scope, $modal, DiscussionService, Records, UserAuthService) ->
   DiscussionService.fetchByGroup $scope.group
 
   nextPage = 1
