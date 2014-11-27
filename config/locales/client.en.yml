@@ -25,11 +25,15 @@ en:
       notifications:
         follow_group: 'You will now receive notifications from all threads in this group'
         unfollow_group: 'You will now receive notifications only from threads you are participating in'
+      leave_group_success: 'You have successfully left this group'
+      deactivate_group_success: 'You have successfully deactivated this group'
     group_form:
       new_group: 'Successfully created your group'
       updated_group: 'Changes saved'
+    discussion_form:
       new_discussion: 'Successfully created your thread'
       updated_discussion: 'Changes saved'
+    proposal_form:
       new_proposal: 'Successfully created your proposal'
       updated_proposal: 'Changes saved'
     errors:
