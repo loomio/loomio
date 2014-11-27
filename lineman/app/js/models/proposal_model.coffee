@@ -23,7 +23,6 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
 
     serialize: ->
       motion:
-        id: @id
         discussion_id: @discussionId
         name: @name
         description: @description

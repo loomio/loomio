@@ -1,5 +1,6 @@
 angular.module('loomioApp').controller 'ProposalFormController', ($scope, $modalInstance, proposal, ProposalService, FormService) ->
   $scope.proposal = proposal
+  $scope.proposalHasVotes = proposal.votes()?
   $scope.closingAtPickerIsActive = false
   
   $scope.successMessage = ->
@@ -29,5 +30,8 @@ angular.module('loomioApp').controller 'ProposalFormController', ($scope, $modal
 
   $scope.cancel = ($event) ->
     $event.preventDefault()
-    $modalInstance.close('dismiss')
+    $modalInstance.dismiss('cancel');
+
+  $scope.isUneditable = ->
+    $scope.isDisabled or $scope.proposalHasVotes
 
