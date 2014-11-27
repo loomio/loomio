@@ -2,7 +2,7 @@ angular.module('loomioApp').controller 'ProposalFormController', ($scope, $modal
   $scope.proposal = proposal
   proposalHasVotes = proposal.votes()?
   
-  FormService.applyForm($scope, ProposalService, proposal, $modalInstance)
+  FormService.applyForm $scope, ProposalService.save, proposal, $modalInstance
 
   $scope.onSetTime = -> $scope.dropdownIsOpen = false
 

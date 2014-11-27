@@ -55,7 +55,7 @@ angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelServ
       , (response) ->
         failure(response.data) if failure?
 
-    save: (obj, success, failure, path) ->
+    save: (obj, success, failure, path) =>
       if obj.isNew()
         @create(obj, success, failure, path)
       else
