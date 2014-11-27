@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope, NotificationService, UserAuthService, RecordStoreService) ->
+angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope, NotificationService, UserAuthService, Records) ->
   NotificationService.fetch {}
 
   $scope.userLoggedIn = ->
@@ -24,5 +24,4 @@ angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope,
   ]
 
   $scope.notifications = ->
-    RecordStoreService.get 'notifications', (notification) ->
-      _.contains validKinds, notification.event().kind
+    Records.notifications.find(userId: UserAuthService.currentUser.id)

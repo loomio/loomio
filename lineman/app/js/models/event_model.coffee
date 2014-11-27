@@ -1,6 +1,10 @@
-angular.module('loomioApp').factory 'EventModel', (RecordStoreService) ->
-  class EventModel
-    constructor: (data = {}) ->
+angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
+  class EventModel extends BaseModel
+    @singular: 'event'
+    @plural: 'events'
+    @foreignKey: 'eventId'
+
+    initialize: (data) ->
       @id = data.id
       @kind = data.kind
       @sequenceId = data.sequence_id
@@ -11,12 +15,7 @@ angular.module('loomioApp').factory 'EventModel', (RecordStoreService) ->
       @createdAt = data.created_at
       @actorId = data.actor_id
 
-    plural: 'events'
-
-    destroy: ->
-      eventable.destroy()
-
-    eventable: ->
+    serialize: ->
       switch @kind
         when 'new_comment' then @comment()
         when 'new_discussion' then @discussion()
@@ -24,19 +23,19 @@ angular.module('loomioApp').factory 'EventModel', (RecordStoreService) ->
         when 'new_motion' then @proposal()
 
     discussion: ->
-      RecordStoreService.get('discussions', @discussionId)
+      @recordStore.discussions.get(@discussionId)
 
     comment: ->
-      RecordStoreService.get('comments', @commentId)
+      @recordStore.comments.get(@commentId)
 
     proposal: ->
-      RecordStoreService.get('proposals', @proposalId)
+      @recordStore.proposals.get(@proposalId)
 
     vote: ->
-      RecordStoreService.get('votes', @voteId)
+      @recordStore.votes.get(@voteId)
 
     actor: ->
-      RecordStoreService.get('users', @actorId)
+      @recordStore.users.get(@actorId)
 
     link: ->
       switch @kind
