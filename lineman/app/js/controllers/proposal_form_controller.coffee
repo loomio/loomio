@@ -1,8 +1,16 @@
-angular.module('loomioApp').controller 'ProposalFormController', ($translate, $scope, $modalInstance, proposal, ProposalService, FlashService) ->
+angular.module('loomioApp').controller 'ProposalFormController', ($scope, $modalInstance, proposal, ProposalService, FormService) ->
   $scope.proposal = proposal
-  $scope.service = FlashService
-
   $scope.closingAtPickerIsActive = false
+  
+  $scope.successMessage = ->
+    if $scope.proposal.isNew?
+      'flash.proposal_form.new_proposal'
+    else
+      'flash.proposal_form.update_proposal'
+  $scope.successCallback = ->
+    $modalInstance.dismiss('success')
+
+  FormService.applyForm($scope, ProposalService, $scope.proposal)
 
   $scope.showClosingAtPicker = ->
     $scope.closingAtPickerIsActive = true
@@ -13,10 +21,6 @@ angular.module('loomioApp').controller 'ProposalFormController', ($translate, $s
   $scope.toggleClosingAtPicker = ->
     $scope.closingAtPickerIsActive = !$scope.closingAtPickerIsActive
 
-  $scope.submit = ->
-    $scope.isDisabled = true
-    ProposalService.create($scope.proposal, $scope.saveSuccess, $scope.saveError)
-
   $scope.dropdownIsOpen = false
 
   $scope.onSetTime = ->
@@ -25,13 +29,5 @@ angular.module('loomioApp').controller 'ProposalFormController', ($translate, $s
 
   $scope.cancel = ($event) ->
     $event.preventDefault()
-    $modalInstance.dismiss('cancel');
-
-  $scope.saveSuccess = () ->
-    $scope.isDisabled = false
-    $modalInstance.close();
-
-  $scope.saveError = (error) ->
-    $scope.isDisabled = false
-    $scope.errorMessages = error.error_messages
+    $modalInstance.close('dismiss')
 
