@@ -1,6 +1,9 @@
 angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope, NotificationService, UserAuthService, Records) ->
   NotificationService.fetch {}
 
+  $scope.userLoggedIn = ->
+    UserAuthService.currentUser?
+
   validKinds = [
     'comment_liked',
     'motion_closing_soon',

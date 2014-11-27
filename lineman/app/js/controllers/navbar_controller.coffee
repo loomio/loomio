@@ -1,10 +1,5 @@
-angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Records, UserAuthService) ->
-  $scope.userLoggedIn = ->
-    UserAuthService.currentUser?
-
+angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Records) ->
   $scope.showInbox = false
-  $scope.showSearch = false
-  $scope.showNotifications = false
 
   $scope.openDiscussionForm = ->
     modalInstance = $modal.open
@@ -13,8 +8,4 @@ angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Reco
       resolve:
         discussion: -> Records.discussions.new
 
-  $scope.toggleInbox =         (open) -> $scope.showInbox = open
-  $scope.toggleSearch =        (open) -> 
-    $scope.showSearch = open
-    console.log('Toggle search: ' + open)
-  $scope.toggleNotifications = (open) -> $scope.showNotifications = open 
+  $scope.toggleInbox = (open) -> $scope.showInbox = open
