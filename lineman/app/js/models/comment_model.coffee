@@ -1,6 +1,11 @@
-angular.module('loomioApp').factory 'CommentModel', (RecordStoreService, BaseModel) ->
+angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
   class CommentModel extends BaseModel
-    constructor: (data = {}) ->
+    @singular: 'comment'
+    @plural: 'comments'
+    @foreignKey: 'commentId'
+    @indexes: ['discussionId', 'authorId']
+
+    initialize: (data) ->
       @id = data.id
       @discussionId = data.discussion_id
       @authorId = data.author_id
@@ -16,47 +21,42 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService, BaseMod
       @createdAt = data.created_at
       @updatedAt = data.updated_at
 
-    params: ->
+    serialize: ->
       comment:
         parent_id: @parentId
         discussion_id: @discussionId
         body: @body
         new_attachment_ids: @newAttachmentIds
 
-    plural: 'comments'
-
     group: ->
       @discussion().group()
 
     canBeEditedByAuthor: ->
-      @group.membersCanEditComments or @isMostRecent()
+      @group().membersCanEditComments or @isMostRecent()
 
     isMostRecent: ->
-      newerComments = RecordStoreService.get 'comments', (comment) =>
-        (comment.discussionId == @discussionId) && (@comment.createdAt > @createdAt)
-      newerComments.length == 0
+      _.last(@discussion().comments()) == @
 
     isReply: ->
       @parentId?
 
     likers: ->
-      RecordStoreService.get('users', @likerIds)
+      @recordStore.users.get(@likerIds)
 
     newAttachments: ->
-      RecordStoreService.get 'attachments', @newAttachmentIds
+      @recordStore.attachments.get @newAttachmentIds
 
     attachments: ->
-      RecordStoreService.get 'attachments', (attachment) =>
-        attachment.commentId == @id
+      @recordStore.attachments.find(commentId: @id)
 
     author: ->
-      RecordStoreService.get('users', @authorId)
+      @recordStore.users.get(@authorId)
 
     parent: ->
-      RecordStoreService.get('comments', @parentId)
+      @recordStore.comments.get(@parentId)
 
     discussion: ->
-      RecordStoreService.get('discussions', @discussionId)
+      @recordStore.discussions.get(@discussionId)
 
     authorName: ->
       @author().name
@@ -78,10 +78,7 @@ angular.module('loomioApp').factory 'CommentModel', (RecordStoreService, BaseMod
       @likerIds = _.without(@likerIds, id)
 
     destroy: ->
-      events = RecordStoreService.get 'events', (event) =>
-        (event.kind == 'new_comment') && (event.commentId == @id)
+      _.each @events, (event) ->
+        @recordStore.events.remove(event)
 
-      _.each events, (event) ->
-        RecordStoreService.remove(event)
-
-      RecordStoreService.remove(@)
+      @recordStore.comments.remove(@)

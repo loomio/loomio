@@ -236,4 +236,46 @@ he:
   generic_confirm: "בטוחים?"
   discussion_helper_text:
     header: "ברוכים הבאים לדיון הראשון שלכם"
+    message: "<p>הנושא מוצג בראש הדף ואילו התוכן תחתיו</p><p>הדיון מופיע משמאל ואילו החלטות מופיעות מימין. אם לדעתך הקבוצה מוכנה להחלטה, ניתן להציע הצעה לשיקול הקבוצה</p>"
+  group_helper_text:
+    header: "ברוכים הבאים לקבוצה החדשה שלכם!"
+    message: "<p>זהו <strong>דף הקבוצה</strong>. משמאל מופיעים כל הדיונים של הקבוצה.</p><p>ניתן לפתוח דיון חדש אם אתם מעוניינים לדון בנושא אחר.</p>"
+  dashboard_helper_text:
+    header: "ברכוכים הבאים לדף הבית שלכם"
+    message: "<p>דף הבית מציג את כל הדיונים הנוכחים בהם אתם נוטלים חלק כרגע</p><p>ניתן להתחיל דיון על בנושא חדש בלחיצה על הכפתור \"התחלת דיון\"</p>"
+  prompt_visitor_to_authenticate:
+    header: "התחברו או הצטרפו לקבוצה כדי להשתתף"
+    body: "אם אתם חברים בקבוצה זו, עליכם להתחבר על מנת להשתתף."
+  group_form:
+    members_can:
+      start_discussions: התחלת דיונים
+  group_permissions:
+    c11: התחלת דיונים.
+  setup_step_2: "התחילו בדיון הראשון שלכם"
+  start_a_discussion: "התחלת דיון"
+  description_history:
+    subheader: "גירסא"
+    current: "(נוכחי)"
+    restore: "(שחזור גירסא)"
+    applying_changes: "(מחיל שינויים...)"
+    previous: "הקודם"
+    next: "הבא"
+  comment_form_placeholder: "תגידו משהו..."
+  comment_form_submit_button: "שלחו תגובה"
+  delete_comment: "מחקו תגובה"
+  help:
+    start_discussion: "מתחיל בדיון מרתק"
+  hint:
+    discussion: 'טיפים להתחלת דיון מרתק'
+  discussion_form:
+    new:
+      header: "התחילו בדיון"
+      who: "באיזו קבוצה תרצו להתחיל את הדיון?"
+  helpers:
+    submit:
+      discussion:
+        create: "התחלת דיון"
+  email:
+    create_discussion:
+      intro: "%{who} התחילו דיון ב%{which_group}:"
   translate: "עזרו בתרגום Loomio!"

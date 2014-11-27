@@ -1,20 +1,22 @@
-angular.module('loomioApp').factory 'MembershipModel', (RecordStoreService, BaseModel) ->
+angular.module('loomioApp').factory 'MembershipModel', (BaseModel) ->
   class MembershipModel extends BaseModel
-    constructor: (data = {}) ->
+    @singular: 'membership'
+    @plural: 'memberships'
+    @indexes: ['userId', 'groupId']
+
+    initialize: (data) ->
       @id = data.id
       @groupId = data.group_id
       @userId = data.user_id
       @followingByDefault = data.following_by_default
       @admin = data.admin
 
-    params: ->
+    serialize: ->
       membership:
         following_by_default: @followingByDefault
 
-    plural: 'memberships'
-
     group: ->
-      RecordStoreService.get('groups', @groupId)
+      @recordStore.groups.get(@groupId)
 
     user: ->
-      RecordStoreService.get('users', @userId)
+      @recordStore.users.get(@userId)

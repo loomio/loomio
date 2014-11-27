@@ -1,6 +1,9 @@
-angular.module('loomioApp').factory 'UserModel', (RecordStoreService) ->
-  class UserModel
-    constructor: (data = {}) ->
+angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
+  class UserModel extends BaseModel
+    @singular: 'user'
+    @plural: 'users'
+
+    initialize: (data) ->
       @id = data.id
       @name = data.name
       @label = data.username
@@ -8,19 +11,34 @@ angular.module('loomioApp').factory 'UserModel', (RecordStoreService) ->
       @avatarUrl = data.avatar_url
       @avatarInitials = data.avatar_initials
 
-    plural: 'users'
+    setupViews: ->
+      @membershipsView = @recordStore.memberships.addDynamicView(@viewName())
+      @membershipsView.applyFind(userId: @id)
+      @membershipsView.applySimpleSort('id')
+
+
+    groupIds: ->
+      _.map(@memberships(), 'groupId')
 
     membershipFor: (group) ->
       _.find @memberships(), (membership) -> membership.groupId == group.id
 
     memberships: ->
-      RecordStoreService.get 'memberships', (membership) => membership.userId == @id
+      @membershipsView.data()
 
     notifications: ->
-      RecordStoreService.get 'notifications', (notification) => notification.userId == @id
+      @recordStore.notifications.find(userId: @id)
 
     groups: ->
-      RecordStoreService.get('groups', _.map(@memberships(), (membership) -> membership.groupId))
+      groupSort = (first, second) ->
+         return 0 if (first.fullName() == second.fullName())
+         return 1 if (first.fullName() > second.fullName())
+         return -1 if (first.fullName() < second.fullName())
+
+      @recordStore.groups.chain()
+                         .find(id: {'$in': @groupIds()})
+                         .sort(groupSort)
+                         .data()
 
     canEditComment: (comment) ->
       @isAuthorOf(comment) && comment.group().membersCanEditComments

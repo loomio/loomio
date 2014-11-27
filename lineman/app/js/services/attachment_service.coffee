@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'AttachmentService', ($http, $upload, FileUploadService, RestfulService, AttachmentModel) ->
+angular.module('loomioApp').factory 'AttachmentService', ($http, $upload, FileUploadService, RestfulService, Records) ->
   new class AttachmentService extends RestfulService
     resource_plural: 'attachments'
 
@@ -9,14 +9,14 @@ angular.module('loomioApp').factory 'AttachmentService', ($http, $upload, FileUp
         filesize: params.file.size
         location: params.url + params.data.key
       )
-  
+
       $upload.upload(params)
              .progress(progress)
              .error(failure)
              .abort(failure)
              .success (response, status, xhr, data) =>
                 @save @newAttachment, (response) ->
-                  attachment = new AttachmentModel(response['attachments'][0])
+                  attachment = Records.attachements.new(response['attachments'][0])
                   success(attachment)
                 , failure(response)
 

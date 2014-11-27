@@ -9,18 +9,21 @@
   width: 100%;
   position: fixed;
 }
-.sidebar-is-open .sidebar-spacer{
-  @media (min-width: $screen-sm-min){ margin-left: $sidebar-width; }
-}
-.sidebar-is-open .container#main{
-  @media (min-width: $screen-sm-min){ max-width: $container-sm - $sidebar-width; }
-  @media (min-width: $screen-md-min){ max-width: $container-md - $sidebar-width; }
-  @media (min-width: $screen-lg-min){ max-width: $container-lg - $sidebar-width; }
-}
 .container#main{
   padding-top: 48px;
   z-index: 0;
   min-width: 320px;
+}
+.container#main.inboxPinned {
+  @media (min-width: $screen-sm-min){
+    margin-left: $sidebar-width;
+    max-width: $container-sm - $sidebar-width; }
+  @media (min-width: $screen-md-min){
+    max-width: $container-md - $sidebar-width;
+  }
+  @media (min-width: $screen-lg-min){
+    max-width: $container-lg - $sidebar-width;
+  }
 }
 
 .loomio-nav {
@@ -37,13 +40,15 @@
 .loomio-nav-items li{
   float: left;
 }
+.loomio-nav-items li.open a{ border-bottom: 4px solid $loomio-orange; }
+.loomio-nav-items li.open li a{ border-bottom: none; }
 a.loomio-nav-btn{
   width: 40px;
   height: 40px;
   margin: 4px;
   display: block;
 }
-.loomio-nav-items i{
+.loomio-nav-btn i{
   color: $meta-text-color;
   font-size: 26px;
   line-height: 40px;
@@ -57,8 +62,7 @@ a.loomio-nav-btn{
   background-image: url(/img/lbow_round_34.png);
 }
 .loomio-nav-dropdown{
-  top: 46px;
-  left: 60px;
+  top: 44px;
   padding: 0;
   margin: 0 -10px;
   min-width: 320px;
@@ -66,10 +70,29 @@ a.loomio-nav-btn{
     margin: 0;
     width: 320px;
   }
-  @media (max-width: 380px){
-    left: 0;
-  }
 }
+
+#inbox-dropdown{ left: 49px; }
+#search-dropdown{ left: 96px; }
+.inboxPinned #search-dropdown{ left: 48px; }
+#notifications-dropdown{ right: 47px; }
+@media (max-width: 380px){
+  #inbox-dropdown, #search-dropdown{ left: 0; }
+  #notifications-dropdown, #user-options-dropdown{right: 10px;}
+}
+
+.fa-xlg{ font-size: 26px; }
+#user-options-dropdown a{
+  color: $kinda-dark-grey;
+}
+#user-options-dropdown .media-left{
+  width: 40px;
+  vertical-align: middle;
+  text-align: center;
+}
+#user-options-dropdown .media-body{ vertical-align: middle; }
+
+
 .loomio-nav-btn.has-badge{
   position: relative;
 }
@@ -101,9 +124,11 @@ a.loomio-nav-btn{
 }
 .selector-list-header {
   padding: 0 15px;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
 }
 .selector-list-item {
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   padding: 8px;
   @media (max-width: 320px){ padding: 15px 20px; }
   width: 100%;

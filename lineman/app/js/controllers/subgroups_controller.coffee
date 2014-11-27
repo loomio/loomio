@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'SubgroupsController', ($scope, GroupService, RecordStoreService, UserAuthService) ->
+angular.module('loomioApp').controller 'SubgroupsController', ($scope, GroupService, UserAuthService) ->
   GroupService.fetchByParent $scope.group
 
   $scope.canCreateSubgroups = ->
