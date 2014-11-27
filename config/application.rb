@@ -62,6 +62,5 @@ module Loomio
 
     config.quiet_assets = true
     config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
-    config.rails_lineman.lineman_project_location = "lineman"
   end
 end
