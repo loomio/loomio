@@ -29,13 +29,16 @@ en:
       deactivate_group_success: 'You have successfully deactivated this group'
     group_form:
       new_group: 'Successfully created your group'
-      updated_group: 'Changes saved'
+      update_group: 'Changes saved'
     discussion_form:
       new_discussion: 'Successfully created your thread'
-      updated_discussion: 'Changes saved'
+      update_discussion: 'Changes saved'
     proposal_form:
       new_proposal: 'Successfully created your proposal'
-      updated_proposal: 'Changes saved'
+      update_proposal: 'Changes saved'
+    vote_form:
+      new_vote: 'Your vote counts!'
+      update_vote: 'Successfully changed your position'
     errors:
       aw_crap: 'We''re sorry, but something went wrong. Please try again'
 

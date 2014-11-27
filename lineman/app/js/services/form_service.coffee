@@ -17,7 +17,7 @@ angular.module('loomioApp').factory 'FormService', (FlashService) ->
 
       scope.successMessage = scope.successMessage or ->
         singular = object.constructor.singular
-        if object.isNew()?
+        if object.isNew()
           "flash.#{singular}_form.new_#{singular}"
         else
           "flash.#{singular}_form.update_#{singular}"
