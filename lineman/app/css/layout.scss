@@ -71,9 +71,10 @@ a.loomio-nav-btn{
 
 #inbox-dropdown{ left: 49px; }
 #search-dropdown{ left: 96px; }
+#notifications-dropdown{ right: 47px; }
 @media (max-width: 380px){
   #inbox-dropdown, #search-dropdown{ left: 0; }
-  .pull-right > .loomio-nav-dropdown{ right: 10px }
+  #notifications-dropdown, #user-options-dropdown{right: 10px;}
 }
 
 .fa-xlg{ font-size: 26px; }
@@ -122,7 +123,6 @@ a.loomio-nav-btn{
   width: 100%;
   border-bottom: 1px solid #ddd;
 }
-.selector-list-header h3{ margin-top: 12px; }
 .selector-list-item {
   border-bottom: 1px solid #ddd;
   padding: 8px;
