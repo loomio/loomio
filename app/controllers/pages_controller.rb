@@ -11,6 +11,9 @@ class PagesController < ApplicationController
   def blog
   end
 
+  def crowdfunding_celebration
+  end
+
   def privacy
   end
 
