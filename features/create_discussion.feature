@@ -8,12 +8,12 @@ Feature: User creates discussion
     And I am a member of a group
     And my global markdown preference is 'disabled'
 
-  #@javascript
-  #Scenario: Group member creates discussion from group page
-    #When I visit the group page
-    #And I choose to create a discussion
-    #And I fill in the discussion details and submit the form
-    #Then a discussion should be created
+  @javascript
+  Scenario: Group member creates discussion from group page
+    When I visit the group page
+    And I choose to create a discussion
+    And I fill in the discussion details and submit the form
+    Then a discussion should be created
 
   @javascript
   Scenario: Group member creates discussion from dashboard
