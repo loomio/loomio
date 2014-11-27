@@ -214,6 +214,9 @@ cs:
   request_new_group: "Vytvořit skupinu"
   start_new_group: "Vytvořit novou skupinu"
   find_a_group: "Najít skupinu"
+  find_a_group_hint: "Prozkoumat veřejné skupiny"
+  search_for_group: "Hledat skupinu ..."
+  no_groups_found: "Nebyly nalezeny žádné skupiny s takovýmto jménem!"
   no_group_header: "Vítejte na Loomio Beta"
   empty_notifications: "Nemáte zatím žádná upozornění."
   see_all_notifications: "Zobrazit všechna upozornění"
@@ -399,6 +402,8 @@ cs:
     filter_unread:
       enable: "Zobrazit pouze nepřečtené diskuze"
       disable: "Zobrazit přečtené i nepřečtené diskuze"
+    filter_followed:
+      enable: "Zobrazit pouze sledované diskuse"
   discussion_context:
     started_html: "Zahájil(a) <a href='%{link}' class='%{link_class}'>%{who}</a> před %{when}"
     last_edited_html: "Naposledy upravil(a) <a href='%{link}' class='%{link_class}'>%{who}</a> před %{when}"

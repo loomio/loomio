@@ -1,6 +1,6 @@
 /**
- * @license angular-bootstrap-datetimepicker  v0.3.0
- * (c) 2013 Knight Rider Consulting, Inc. http://www.knightrider.com
+ * @license angular-bootstrap-datetimepicker  version: 0.3.7
+ * (c) 2013-2014 Knight Rider Consulting, Inc. http://www.knightrider.com
  * License: MIT
  */
 
@@ -143,8 +143,8 @@
     border-radius: 4px;
     border: none;
 }
-.datetimepicker .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > td,
-.datetimepicker .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+.datetimepicker .table-striped > tbody > tr:nth-child(odd) > td, .datetimepicker .table-striped > tbody > tr:nth-child(odd) > td,
+.datetimepicker .table-striped > tbody > tr:nth-child(odd) > td, .datetimepicker .table-striped > tbody > tr:nth-child(odd) > th {
   background-color: transparent;
 }
 .datetimepicker table tr td.minute:hover {

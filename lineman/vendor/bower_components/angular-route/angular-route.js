@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.3.0
+ * @license AngularJS v1.3.4
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -39,9 +39,9 @@ var ngRouteModule = angular.module('ngRoute', ['ng']).
  * ## Dependencies
  * Requires the {@link ngRoute `ngRoute`} module to be installed.
  */
-function $RouteProvider(){
+function $RouteProvider() {
   function inherit(parent, extra) {
-    return angular.extend(new (angular.extend(function() {}, {prototype:parent}))(), extra);
+    return angular.extend(Object.create(parent), extra);
   }
 
   var routes = {};
@@ -146,26 +146,44 @@ function $RouteProvider(){
    * Adds a new route definition to the `$route` service.
    */
   this.when = function(path, route) {
+    //copy original route object to preserve params inherited from proto chain
+    var routeCopy = angular.copy(route);
+    if (angular.isUndefined(routeCopy.reloadOnSearch)) {
+      routeCopy.reloadOnSearch = true;
+    }
+    if (angular.isUndefined(routeCopy.caseInsensitiveMatch)) {
+      routeCopy.caseInsensitiveMatch = this.caseInsensitiveMatch;
+    }
     routes[path] = angular.extend(
-      {reloadOnSearch: true},
-      route,
-      path && pathRegExp(path, route)
+      routeCopy,
+      path && pathRegExp(path, routeCopy)
     );
 
     // create redirection for trailing slashes
     if (path) {
-      var redirectPath = (path[path.length-1] == '/')
-            ? path.substr(0, path.length-1)
-            : path +'/';
+      var redirectPath = (path[path.length - 1] == '/')
+            ? path.substr(0, path.length - 1)
+            : path + '/';
 
       routes[redirectPath] = angular.extend(
         {redirectTo: path},
-        pathRegExp(redirectPath, route)
+        pathRegExp(redirectPath, routeCopy)
       );
     }
 
     return this;
   };
+
+  /**
+   * @ngdoc property
+   * @name $routeProvider#caseInsensitiveMatch
+   * @description
+   *
+   * A boolean property indicating if routes defined
+   * using this provider should be matched using a case sensitive
+   * algorithm. Defaults to `false`.
+   */
+  this.caseInsensitiveMatch = false;
 
    /**
     * @param path {string} path
@@ -188,7 +206,7 @@ function $RouteProvider(){
 
     path = path
       .replace(/([().])/g, '\\$1')
-      .replace(/(\/)?:(\w+)([\?\*])?/g, function(_, slash, key, option){
+      .replace(/(\/)?:(\w+)([\?\*])?/g, function(_, slash, key, option) {
         var optional = option === '?' ? option : null;
         var star = option === '*' ? option : null;
         keys.push({ name: key, optional: !!optional });
@@ -442,7 +460,7 @@ function $RouteProvider(){
            * {@link ng.$location $location} hasn't changed.
            *
            * As a result of that, {@link ngRoute.directive:ngView ngView}
-           * creates new scope, reinstantiates the controller.
+           * creates new scope and reinstantiates the controller.
            */
           reload: function() {
             forceReload = true;
@@ -635,11 +653,11 @@ function $RouteProvider(){
      */
     function interpolate(string, params) {
       var result = [];
-      angular.forEach((string||'').split(':'), function(segment, i) {
+      angular.forEach((string || '').split(':'), function(segment, i) {
         if (i === 0) {
           result.push(segment);
         } else {
-          var segmentMatch = segment.match(/(\w+)(.*)/);
+          var segmentMatch = segment.match(/(\w+)(?:[?*])?(.*)/);
           var key = segmentMatch[1];
           result.push(params[key]);
           result.push(segmentMatch[2] || '');
@@ -870,7 +888,7 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
  * Emitted every time the ngView content is reloaded.
  */
 ngViewFactory.$inject = ['$route', '$anchorScroll', '$animate'];
-function ngViewFactory(   $route,   $anchorScroll,   $animate) {
+function ngViewFactory($route, $anchorScroll, $animate) {
   return {
     restrict: 'ECA',
     terminal: true,
@@ -887,16 +905,16 @@ function ngViewFactory(   $route,   $anchorScroll,   $animate) {
         update();
 
         function cleanupLastView() {
-          if(previousLeaveAnimation) {
+          if (previousLeaveAnimation) {
             $animate.cancel(previousLeaveAnimation);
             previousLeaveAnimation = null;
           }
 
-          if(currentScope) {
+          if (currentScope) {
             currentScope.$destroy();
             currentScope = null;
           }
-          if(currentElement) {
+          if (currentElement) {
             previousLeaveAnimation = $animate.leave(currentElement);
             previousLeaveAnimation.then(function() {
               previousLeaveAnimation = null;
@@ -920,7 +938,7 @@ function ngViewFactory(   $route,   $anchorScroll,   $animate) {
             // function is called before linking the content, which would apply child
             // directives to non existing elements.
             var clone = $transclude(newScope, function(clone) {
-              $animate.enter(clone, null, currentElement || $element).then(function onNgViewEnter () {
+              $animate.enter(clone, null, currentElement || $element).then(function onNgViewEnter() {
                 if (angular.isDefined(autoScrollExp)
                   && (!autoScrollExp || scope.$eval(autoScrollExp))) {
                   $anchorScroll();

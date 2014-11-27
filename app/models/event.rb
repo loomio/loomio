@@ -29,11 +29,13 @@ class Event < ActiveRecord::Base
   end
 
   def publish_event
-    return unless ENV['FAYE_ENABLED']
     if message_channel
       serializer = EventSerializer.new(self)
-      puts "publishing to: #{message_channel}"
-      PrivatePub.delay(priority: 10).publish_to message_channel, serializer
+      if ENV['DELAY_FAYE']
+        PrivatePub.delay(priority: 10).publish_to(message_channel, serializer)
+      else
+        PrivatePub.publish_to(message_channel, serializer)
+      end
     end
   end
 

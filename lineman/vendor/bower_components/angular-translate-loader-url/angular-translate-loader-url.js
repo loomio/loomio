@@ -1,6 +1,6 @@
 /*!
- * angular-translate - v2.4.1 - 2014-10-03
- * http://github.com/PascalPrecht/angular-translate
+ * angular-translate - v2.4.2 - 2014-10-21
+ * http://github.com/angular-translate/angular-translate
  * Copyright (c) 2014 ; Licensed MIT
  */
 angular.module('pascalprecht.translate').factory('$translateUrlLoader', [

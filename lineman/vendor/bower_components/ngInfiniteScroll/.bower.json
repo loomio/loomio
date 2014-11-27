@@ -14,6 +14,5 @@
   },
   "_source": "git://github.com/sroze/ngInfiniteScroll.git",
   "_target": "~1.1.2",
-  "_originalSource": "ngInfiniteScroll",
-  "_direct": true
+  "_originalSource": "ngInfiniteScroll"
 }

@@ -14,7 +14,7 @@
             .media-left.thread-origin-icon
               %img.thread-origin-group-logo{src: "{{discussion.group().logoUrlSmall}}"}
             .media-body.thread-origin-details
-              {{::discussion.group().fullName()}}
+              %a{href: '/groups/{{discussion.group().key}}'} {{::discussion.group().fullName()}}
               %br
               %span{translate: 'discussion.started_by', translate-value-name: '{{::discussion.authorName()}}'}
               %timeago{timestamp: '::discussion.createdAt' }>
