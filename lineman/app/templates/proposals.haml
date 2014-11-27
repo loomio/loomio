@@ -1,7 +1,6 @@
 .thread-proposals
   %h3.first Proposal
 
-  {{ proposalIds() }}
   %div{ng_repeat: 'proposal in discussion.proposals()'}
     .active-proposal{ng-show: 'isSelectedProposal(proposal)'}
       %proposal_card{proposal: 'proposal'}

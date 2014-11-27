@@ -1,4 +1,15 @@
-angular.module('loomioApp').controller 'InboxController', ($scope, InboxService) ->
+angular.module('loomioApp').controller 'InboxController', ($scope, InboxService, UserAuthService) ->
+
+  $scope.inboxPinned = ->
+    UserAuthService.inboxPinned
+
+  $scope.openInbox = ->
+    UserAuthService.inboxPinned = true
+    console.log UserAuthService.inboxPinned
+
+  $scope.closeInbox = ->
+    UserAuthService.inboxPinned = false
+    console.log UserAuthService.inboxPinned
 
   #$scope.images = [1, 2, 3, 4, 5, 6, 7, 8];
   #$scope.moreImages = ->

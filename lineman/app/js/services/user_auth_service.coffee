@@ -2,6 +2,7 @@ angular.module('loomioApp').factory 'UserAuthService', (Records, UserModel, Memb
   new class UserAuthService
     constructor: ->
       @currentUser = null
+      @inboxPinned = false
 
     fetchCurrentUser: ->
       $http.get('/api/v1/faye/who_am_i').then (response) =>
