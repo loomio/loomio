@@ -17,7 +17,8 @@
 .container#main.inboxPinned {
   @media (min-width: $screen-sm-min){
     margin-left: $sidebar-width;
-    max-width: $container-sm - $sidebar-width; }
+    max-width: $container-sm - $sidebar-width;
+  }
   @media (min-width: $screen-md-min){
     max-width: $container-md - $sidebar-width;
   }

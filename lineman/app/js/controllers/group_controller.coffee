@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'GroupController', ($scope, group, MessageChannelService) ->
+angular.module('loomioApp').controller 'GroupController', ($scope, group, MessageChannelService, UserAuthService) ->
   $scope.group = group
 
   onMessageReceived = ->
@@ -6,3 +6,6 @@ angular.module('loomioApp').controller 'GroupController', ($scope, group, Messag
     $scope.$digest()
 
   MessageChannelService.subscribeTo("/group-#{group.id}", onMessageReceived)
+
+  $scope.inboxPinned = ->
+    UserAuthService.inboxPinned
