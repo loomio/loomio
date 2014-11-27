@@ -8,3 +8,18 @@
   right: 5px;
   top: 5px;
 }
+
+.flash-container.ng-enter {
+  -webkit-transition:0.5s linear all;
+  -moz-transition:0.5s linear all;
+  -o-transition:0.5s linear all;
+  transition:0.5s linear all;
+  opacity:0;
+  border: 1px solid red;
+}
+
+.flash
+
+.flash.ng-enter.ng-show-active {
+  opacity:1;
+}
