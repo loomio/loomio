@@ -9,7 +9,7 @@
     %timeago{timestamp: 'proposal.closingAt' }>
     / %span.time-ago>
     /   {{proposal.closingAt | exactDateWithTime }}
-
+    .badge.pull-right{ng-show: 'proposal.closedAt'} Closed
   .proposal-card-description{btf-markdown: 'proposal.description' }
 
 

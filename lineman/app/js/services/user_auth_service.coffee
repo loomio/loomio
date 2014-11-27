@@ -1,13 +1,14 @@
-angular.module('loomioApp').factory 'UserAuthService', (RecordStoreService, UserModel, $http) ->
+angular.module('loomioApp').factory 'UserAuthService', (Records, UserModel, MembershipService, $http) ->
   new class UserAuthService
     constructor: ->
       @currentUser = null
+      @inboxPinned = false
 
     fetchCurrentUser: ->
       $http.get('/api/v1/faye/who_am_i').then (response) =>
-        user = new UserModel(response.data.user)
-        RecordStoreService.put(user)
+        user = Records.users.new(response.data.user)
         @currentUser = user
+        MembershipService.fetchMyMemberships()
 
     logout: ->
       $http.delete('/api/vi/sessions').then (response) ->

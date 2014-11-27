@@ -1,24 +1,24 @@
-angular.module('loomioApp').factory 'AttachmentService', ($http, $upload, FileUploadService) ->
-  new class AttachmentService
-    upload: (attachment, progress, success, failure) ->
-      params = FileUploadService.getParams(attachment)
-      @success = success
-      @failure = failure
-      @newAttachment =
-        attachment:
-          filename: params.file.name
-          filesize: params.file.size
-          location: params.url + params.data.key
+angular.module('loomioApp').factory 'AttachmentService', ($http, $upload, FileUploadService, RestfulService, Records) ->
+  new class AttachmentService extends RestfulService
+    resource_plural: 'attachments'
+
+    upload: (file, progress, success, failure) ->
+      params = FileUploadService.getParams(file)
+      @newAttachment = new AttachmentModel(
+        filename: params.file.name
+        filesize: params.file.size
+        location: params.url + params.data.key
+      )
 
       $upload.upload(params)
              .progress(progress)
              .error(failure)
              .abort(failure)
              .success (response, status, xhr, data) =>
-               $http.post("/api/v1/attachments", @newAttachment).then (response) =>
-                 @success(response.data)
-               , (response) ->
-                 @failure(response.data.errors)
+                @save @newAttachment, (response) ->
+                  attachment = Records.attachements.new(response['attachments'][0])
+                  success(attachment)
+                , failure(response)
 
-    remove: (attachment) ->
-      $http.delete("/api/v1/attachments/#{attachment.id}").then (response) ->
+    abort: ->
+      $upload.abort()

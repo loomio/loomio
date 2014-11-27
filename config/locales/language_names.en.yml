@@ -34,10 +34,12 @@ en:
   ar: Arabic
   cmn: Chinese (Mandarin)
   hr: Croatian
+  it-CH: Italian (Switzerland)
   fi: Finnish
   gl: Galician
   'ga-IE': Gaelic (Ireland)
   km: Khmer
+  lv: Latvian
   mk: Macedonian
   mi: Maori
   'fa-IR': Persian (Iran)
@@ -46,6 +48,8 @@ en:
   ru: Russian
   sl: Slovenian
   te: Telugu
+  ur: Urdu
+  ur-PK: Urdu (Pakistan)
 
 #'just redirect' languages
   be: Belarusian

@@ -18,6 +18,7 @@ class CommentService
     comment.author = actor
     return false unless comment.valid?
     actor.ability.authorize! :create, comment
+    comment.attachment_ids = [comment.attachment_ids, comment.new_attachment_ids].compact.flatten
     comment.save!
     comment.discussion.update_attribute(:last_comment_at, comment.created_at)
     event = Events::NewComment.publish!(comment)

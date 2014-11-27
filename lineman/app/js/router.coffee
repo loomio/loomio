@@ -5,21 +5,41 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
     templateUrl: 'generated/templates/discussion.html'
     controller: 'DiscussionController'
     resolve:
-      discussion: ($route, DiscussionService, RecordStoreService) ->
-        promise = DiscussionService.fetchByKey($route.current.params.id)
-        if discussion = RecordStoreService.get('discussions', $route.current.params.id)
-          discussion
-        else
-          promise
-      currentUser: ($http, UserAuthService, UserModel) ->
+      discussion: ($route, DiscussionService) ->
+        DiscussionService.fetchByKey($route.current.params.id)
+      currentUser: ($http, UserAuthService) ->
         UserAuthService.fetchCurrentUser()
+  ).when('/groups/new',
+    templateUrl: 'generated/templates/group_form.html',
+    controller: 'GroupFormController',
+    resolve:
+      group: ($route, GroupService, GroupModel, MainRecordStore) ->
+        GroupService.fetchByKey($route.current.params.parent_id).then(->
+          new GroupModel(parent_id: MainRecordStore.get('groups', $route.current.params.parent_id).id))
   ).when('/groups/:id',
     templateUrl: 'generated/templates/group.html',
     controller: 'GroupController',
     resolve:
       group: ($route, GroupService) ->
+        console.log 'resolving group'
         GroupService.fetchByKey($route.current.params.id)
-      currentUser: ($http, UserAuthService, UserModel) ->
+      currentUser: ($http, UserAuthService) ->
+        UserAuthService.fetchCurrentUser()
+  ).when('/groups/:id/edit',
+    templateUrl: 'generated/templates/group_form.html',
+    controller: 'GroupFormController',
+    resolve:
+      group: ($route, GroupService) ->
+        GroupService.fetchByKey($route.current.params.id)
+      currentUser: ($http, UserAuthService) ->
+        UserAuthService.fetchCurrentUser()
+  ).when('/groups/:id/memberships',
+    templateUrl: 'generated/templates/memberships_page.html',
+    controller: 'MembershipsPageController',
+    resolve:
+      group: ($route, GroupService) ->
+        GroupService.fetchByKey($route.current.params.id)
+      currentUser: ($http, UserAuthService) ->
         UserAuthService.fetchCurrentUser()
   ).when('/users/sign_in',
     templateUrl: 'generated/templates/login.html'
