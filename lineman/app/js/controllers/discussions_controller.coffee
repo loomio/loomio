@@ -20,7 +20,7 @@ angular.module('loomioApp').controller 'DiscussionsController', ($scope, $modal,
       controller: 'DiscussionFormController'
       resolve:
         discussion: ->
-          Records.discussions.get(group_id: $scope.group.id)
+          Records.discussions.new(group_id: $scope.group.id)
 
   $scope.canStartDiscussions = ->
     UserAuthService.currentUser.isMemberOf($scope.group) and
