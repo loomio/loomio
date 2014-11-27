@@ -13,3 +13,8 @@ angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Disc
 
   $scope.currentUser = ->
     UserAuthService.currentUser
+
+  
+
+  $scope.hello = ->
+    alert "hey"
