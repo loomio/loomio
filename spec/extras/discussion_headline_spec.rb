@@ -62,7 +62,7 @@ describe "DiscussionHeadline" do
 
     context "new discussion" do
       context "and no comments" do
-        it {should == "Discussion Author started a discussion: Discussion Title"}
+        it {should == "Discussion Title started by Discussion Author"}
       end
 
       context "with 1 commenter" do
@@ -71,7 +71,7 @@ describe "DiscussionHeadline" do
           CommentService.create(comment: comment, actor: comment_author)
         end
 
-        it {should == "Discussion Author and Comment Author started discussing: Discussion Title"}
+        it {should == "Discussion Title started by Discussion Author and Comment Author"}
       end
 
       context "with 2 commenters" do
@@ -79,7 +79,7 @@ describe "DiscussionHeadline" do
           CommentService.create(comment: comment, actor: comment_author)
           CommentService.create(comment: another_comment, actor: another_author)
         end
-        it {should == "Discussion Author and 2 others started discussing: Discussion Title"}
+        it {should == "Discussion Title started by Discussion Author and 2 others"}
       end
     end
 
@@ -94,7 +94,7 @@ describe "DiscussionHeadline" do
           CommentService.create(comment: comment, actor: comment_author)
         end
 
-        it {should == "Comment Author discussed: Discussion Title"}
+        it {should == "Discussion Title discussed by Comment Author"}
       end
 
       context "with 2 commenters" do
@@ -102,7 +102,7 @@ describe "DiscussionHeadline" do
           CommentService.create(comment: comment, actor: comment_author)
           CommentService.create(comment: another_comment, actor: another_author)
         end
-        it {should == "Comment Author and Another Author discussed: Discussion Title"}
+        it {should == "Discussion Title discussed by Comment Author and Another Author"}
       end
 
       context "with 3 commenters" do
@@ -111,7 +111,7 @@ describe "DiscussionHeadline" do
           CommentService.create(comment: another_comment, actor: another_author)
           CommentService.create(comment: yet_another_comment, actor: yet_another_author)
         end
-        it {should == "Comment Author and 2 others discussed: Discussion Title"}
+        it {should == "Discussion Title discussed by Comment Author and 2 others"}
       end
     end
   end

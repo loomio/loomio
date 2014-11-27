@@ -12,22 +12,22 @@ class DiscussionHeadline
     if new_discussion?
       case participants.size
       when 1
-        "#{participants.first.name} started a discussion: #{linked_discussion_title(discussion)}"
+        "#{linked_discussion_title(discussion)} started by #{participants.first.name}"
       when 2
-        "#{participants.first.name} and #{participants.second.name} started discussing: #{linked_discussion_title(discussion)}"
+        "#{linked_discussion_title(discussion)} started by #{participants.first.name} and #{participants.second.name}"
       else
-        "#{participants.first.name} and #{participants.size - 1} others started discussing: #{linked_discussion_title(discussion)}"
+        "#{linked_discussion_title(discussion)} started by #{participants.first.name} and #{participants.size - 1} others"
       end
     else
       case participants.size
       when 0
         ''
       when 1
-        "#{participants.first.name} discussed: #{linked_discussion_title(discussion)}"
+        "#{linked_discussion_title(discussion)} discussed by #{participants.first.name}"
       when 2
-        "#{participants.first.name} and #{participants.second.name} discussed: #{linked_discussion_title(discussion)}"
+        "#{linked_discussion_title(discussion)} discussed by #{participants.first.name} and #{participants.second.name}"
       else
-        "#{participants.first.name} and #{participants.size - 1} others discussed: #{linked_discussion_title(discussion)}"
+        "#{linked_discussion_title(discussion)} discussed by #{participants.first.name} and #{participants.size - 1} others"
       end
     end
   end
@@ -56,7 +56,7 @@ class DiscussionHeadline
 
   def render
     if motion_synopsis.present?
-      "#{discussion_synopsis} and #{motion_synopsis}"
+      "#{discussion_synopsis}. #{motion_synopsis}"
     else
       discussion_synopsis
     end
