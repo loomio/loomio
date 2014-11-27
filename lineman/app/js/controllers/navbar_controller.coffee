@@ -1,6 +1,4 @@
-angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, DiscussionModel, UserAuthService) ->
-  $scope.userLoggedIn = ->
-    UserAuthService.currentUser?
+angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, DiscussionModel) ->
 
   $scope.showInbox = false
 
