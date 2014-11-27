@@ -7,13 +7,12 @@
 module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application",
   enableSass: true
 
-  # html5push state simulation
   server:
     apiProxy:
       enabled: true
       port: 3000
 
-  loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ng-annotate", "grunt-haml", 'grunt-sass', 'grunt-cucumber', 'grunt-contrib-copy']
+  loadNpmTasks: ['grunt-bower-task', "grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ng-annotate", "grunt-haml", 'grunt-sass', 'grunt-cucumber', 'grunt-contrib-copy']
 
   removeTasks:
     common: ["handlebars", "jst", 'less', 'pages:dev']
@@ -81,6 +80,9 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
     options:
       includePaths: ['vendor/bower_components/']
 
+  #uglify:
+    #options:
+      #mangle: false
 
   ngtemplates:
     loomioApp:

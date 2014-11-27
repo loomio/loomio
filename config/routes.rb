@@ -30,12 +30,15 @@ Loomio::Application.routes.draw do
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resource :inbox, only: :show, controller: 'inbox'
-    resources :groups, only: :show do
+    resources :groups, only: [:show, :create, :update] do
       get :subgroups, on: :collection
+      patch :archive, on: :member
     end
-    resources :memberships, only: [:index] do
+    resources :memberships, only: [:index, :update, :destroy] do
       get :autocomplete, on: :collection
       get :my_memberships, on: :collection
+      patch :make_admin, on: :member
+      patch :remove_admin, on: :member
     end
     resources :invitables, only: :index
     resources :invitations, only: :create
@@ -49,11 +52,12 @@ Loomio::Application.routes.draw do
       post :like, on: :member
       post :unlike, on: :member
     end
-    resources :attachments, only: :create
+    resources :attachments, only: [:create, :destroy]
     resources :motions, only: :create do
       post :vote, on: :member
     end
     resources :translations, only: :show
+    resources :notifications, only: :index
     namespace :faye do
       post :subscribe
       get :who_am_i

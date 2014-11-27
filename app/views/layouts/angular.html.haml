@@ -6,7 +6,7 @@
     %meta{charset: 'utf-8'}
     %meta{content: 'IE=Edge', 'http-equiv' => 'X-UA-Compatible'}
     %meta{content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name: "viewport"}
-    = stylesheet_link_tag "/css/app"
+    = stylesheet_link_tag lineman_css_path
 
     %base{href: '/'}
     <!--[if lt IE 9]>
@@ -17,11 +17,11 @@
     %navbar
 
     / only load this if the sidebar is open
-    %sidebar#sidebar.hidden-xs
-      %inbox
+    / %sidebar#sidebar.hidden-xs
+    /   %inbox
     .sidebar-spacer
       .container#main
         %main{ng_view: ''}
 
-    = javascript_include_tag "/js/app"
+    = javascript_include_tag lineman_js_path
     %script{src: "#{ENV['FAYE_URL']}/client.js", type: 'text/javascript'}

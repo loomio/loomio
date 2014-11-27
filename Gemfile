@@ -63,6 +63,7 @@ gem 'jquery-fileupload-rails'
 gem 'momentjs-rails'
 gem 'ruby-progressbar'
 gem 'rails-lineman'
+gem 'dotenv'# , :require => 'dotenv/rails-now'
 
 # consider uncommenting these when we want to mess around with json parsing
 #gem 'oj'
