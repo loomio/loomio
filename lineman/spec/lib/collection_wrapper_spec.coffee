@@ -43,7 +43,7 @@ describe 'CollectionWrapper', ->
       expect(collection.get(1)).toEqual(mock)
 
     it 'returns null if nothing found for single', ->
-      expect(collection.get(7)).toBe(null)
+      expect(collection.get(7)).toBe(undefined)
 
     it 'returns [] if nothing found for many', ->
       expect(collection.get([7]).length).toBe(0)
