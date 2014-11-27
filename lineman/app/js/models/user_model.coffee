@@ -11,18 +11,34 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       @avatarUrl = data.avatar_url
       @avatarInitials = data.avatar_initials
 
+    setupViews: ->
+      @membershipsView = @recordStore.memberships.addDynamicView(@viewName())
+      @membershipsView.applyFind(userId: @id)
+      @membershipsView.applySimpleSort('id')
+
+
+    groupIds: ->
+      _.map(@memberships(), 'groupId')
+
     membershipFor: (group) ->
       _.find @memberships(), (membership) -> membership.groupId == group.id
 
     memberships: ->
-      @recordStore.memberships.find(userId: @id)
+      @membershipsView.data()
 
     notifications: ->
       @recordStore.notifications.find(userId: @id)
 
     groups: ->
-      group_ids = _.map(@memberships(), (membership) -> membership.groupId) 
-      @recordStore.groups.get(group_ids)
+      groupSort = (first, second) ->
+         return 0 if (first.fullName() == second.fullName())
+         return 1 if (first.fullName() > second.fullName())
+         return -1 if (first.fullName() < second.fullName())
+
+      @recordStore.groups.chain()
+                         .find(id: {'$in': @groupIds()})
+                         .sort(groupSort)
+                         .data()
 
     canEditComment: (comment) ->
       @isAuthorOf(comment) && comment.group().membersCanEditComments

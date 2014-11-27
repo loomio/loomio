@@ -21,6 +21,7 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
     controller: 'GroupController',
     resolve:
       group: ($route, GroupService) ->
+        console.log 'resolving group'
         GroupService.fetchByKey($route.current.params.id)
       currentUser: ($http, UserAuthService) ->
         UserAuthService.fetchCurrentUser()
