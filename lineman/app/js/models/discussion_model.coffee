@@ -1,7 +1,11 @@
-angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService, BaseModel) ->
+angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
   class DiscussionModel extends BaseModel
-    constructor: (data = {}) ->
-      @callcount = 0
+    @singular: 'discussion'
+    @plural: 'discussions'
+    @foreignKey: 'discussionId'
+    @indexes: ['groupId']
+
+    initialize: (data) ->
       @id = data.id
       @key = data.key
       @authorId = data.author_id
@@ -12,9 +16,20 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService, Base
       @lastActivityAt = data.last_activity_at
       @private = data.private
 
-    plural: 'discussions'
+    setupViews: ->
+      @commentsView = @recordStore.comments.addDynamicView(@viewName())
+      @commentsView.applyFind(discussionId: @id)
+      @commentsView.applySimpleSort('createdAt')
 
-    params: ->
+      @eventsView = @recordStore.events.addDynamicView(@viewName())
+      @eventsView.applyFind(discussionId: @id)
+      @eventsView.applySimpleSort('sequenceId')
+
+      @proposalsView = @recordStore.proposals.addDynamicView(@viewName())
+      @proposalsView.applyFind(discussionId: @id)
+      @proposalsView.applySimpleSort('id')
+
+    serialize: ->
       discussion:
         group_id: @groupId
         discussion_id: @discussionId
@@ -23,34 +38,29 @@ angular.module('loomioApp').factory 'DiscussionModel', (RecordStoreService, Base
         private: @private
 
     author: ->
-      RecordStoreService.get('users', @authorId)
+      @recordStore.users.get(@authorId)
 
     authorName: ->
       @author().name
 
     group: ->
-      RecordStoreService.get 'groups', @groupId
+      @recordStore.groups.get(@groupId)
 
     groupName: ->
       @group().name
 
     events: ->
-      _.sortBy(@unsortedEvents(), 'sequenceId')
-
-    unsortedEvents: ->
-      RecordStoreService.get 'events', (event) =>
-        event.discussionId == @id
-
+      @eventsView.data()
 
     comments: ->
-      RecordStoreService.get 'comments', (comment) =>
-        comment.discussionId == @id
+      @commentsView.data()
 
     proposals: ->
-      RecordStoreService.get 'proposals', (proposal) =>
-        proposal.discussionId == @id
+      @proposalsView.data()
 
     activeProposal: ->
-      #@callcount = @callcount + 1
-      #console.log('called activeProposal', @callcount)
-      _.first(_.filter(@proposals(), (proposal) -> proposal.isActive()))
+      proposal = _.last(@proposals())
+      if proposal and proposal.isActive()
+        proposal
+      else
+        null

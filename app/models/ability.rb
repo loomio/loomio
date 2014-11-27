@@ -92,6 +92,10 @@ class Ability
       @admin_group_ids.include?(membership.group_id)
     end
 
+    can [:follow_by_default], Membership do |membership|
+      membership.user.id == @user.id      
+    end
+
     can [:remove_admin,
          :destroy], Membership do |membership|
       if membership.group.members.size == 1
@@ -187,6 +191,10 @@ class Ability
 
     can [:destroy], Comment do |comment|
       user_is_author_of?(comment) or user_is_admin_of?(comment.discussion.group_id)
+    end
+
+    can [:destroy], Attachment do |attachment|
+      attachment.user_id == user.id
     end
 
     can [:create], Motion do |motion|

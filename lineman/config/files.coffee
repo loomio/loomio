@@ -15,7 +15,6 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/angular/angular.js",
              "vendor/bower_components/angular-sanitize/angular-sanitize.js",
              "vendor/bower_components/angular-route/angular-route.js",
-             "vendor/bower_components/angular-cache/dist/angular-cache.js",
              "vendor/bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js",
              "vendor/bower_components/angular-translate/angular-translate.js",
              "vendor/bower_components/angular-translate-loader-url/angular-translate-loader-url.js",
@@ -28,7 +27,8 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/tc-angular-chartjs/dist/tc-angular-chartjs.js",
              "vendor/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js",
              "vendor/bower_components/ment.io/dist/mentio.js",
-             "vendor/js/private_pub.js"]
+             "vendor/js/private_pub.js",
+             "vendor/bower_components/lokijs/src/lokijs.js"]
 
     app: ["app/js/app.js"
           "app/js/**/*.js"]

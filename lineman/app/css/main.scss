@@ -10,7 +10,7 @@ $loomio-orange: #F6A82B;
 
 /* let's come up with a good naming scheme for the greys once we lock them in*/
 $light-grey: #F5F5F5;
-
+$kinda-dark-grey: #545454;
 $thread-max-width: 640px;
 $group-page-max-width: 640px;
 $sidebar-width: 320px;
@@ -104,7 +104,7 @@ $sidebar-width: 320px;
 .timeago{
   @include metaText;
 }
-.dropdown-menu.with-labels{
+.dropdown-menu-with-labels{
   padding: 15px;
   width: 300px;
 }
@@ -115,6 +115,10 @@ $sidebar-width: 320px;
 }
 .dropdown-menu-item{
   margin-bottom: 10px;
+  cursor: pointer;
+}
+.disabled .dropdown-menu-item{
+  cursor: auto;
 }
 .dropdown-menu-item.last{
   margin-bottom: 0;
@@ -124,9 +128,48 @@ $sidebar-width: 320px;
   line-height: 24px;
   i{ font-weight: normal; }
 }
+.disabled .dropdown-menu-item{
+  color: $kinda-dark-grey;
+}
+
 h3.dropdown-heading{
   margin: 0 0 10px 0;
   border-bottom: 1px solid $thread-border-color;
+}
+.dropdown-menu-right{
+  /*left: auto;*/
+  right: 0;
+}
+
+.label-with-details{
+  font-weight: bold;
+}
+.label-with-details-label:after{
+  content: ": ";
+}
+.label-with-details-details{
+  font-weight: normal;
+}
+
+.fa-volume-off-padded{margin: 0 6px 0 3px;}
+
+.form-card{
+  @include card;
+  max-width: 480px;
+  margin: 10px auto;
+}
+.form-group{
+  margin-top: 20px;
+}
+input, select, textarea{
+  margin-bottom: 10px;
+}
+textarea{
+  min-height: 100px;
+}
+input[type="file"]{
+  /*This is a hack for now to fix the mobile layout. The file input should be hidden.*/
+  max-width: 200px;
 }
 
 @import 'base';

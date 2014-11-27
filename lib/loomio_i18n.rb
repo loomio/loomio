@@ -22,7 +22,7 @@ module Loomio
     RTL_LOCALES = %i( ar he fa-IR ur ur-PK )
 
     # only for display purposes, please don't depend on this in the system
-    TEST_LOCALES = %i( ar cmn hr fi gl ga-IE it-CH km mk mi fa-IR pl pt-PT ru sl te ur ur-PK )
+    TEST_LOCALES = %i( ar cmn hr fi gl ga-IE it-CH km lv mk mi fa-IR pl pt-PT ru sl te ur ur-PK )
 
     #
   end

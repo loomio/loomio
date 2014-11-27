@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'MessageChannelService', ($http, RecordStoreService, CommentModel, EventModel) ->
+angular.module('loomioApp').factory 'MessageChannelService', ($http, Records, CommentModel, EventModel) ->
   new class MessageChannelService
     subscribeSuccess: (subscription, onMessageReceived) ->
       PrivatePub.sign(subscription)
@@ -20,21 +20,20 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, RecordStore
         console.log 'new memo!', data.memo
         memo = data.memo
         if memo.kind == 'comment_destroyed'
-          if comment = RecordStoreService.getOne('comments', memo.data.comment_id)
+          if comment = Records.comments.get(memo.data.comment_id)
             comment.destroy()
         if memo.kind == 'comment_updated'
-          comment = new CommentModel(memo.data.comment)
-          RecordStoreService.put(comment)
-          RecordStoreService.importRecords(memo.data)
+          Records.comments.new(memo.data.comment)
+          Records.import(memo.data)
         if memo.kind == 'comment_unliked'
-          if comment = RecordStoreService.getOne('comments', memo.data.comment_id)
+          if comment = MainRecordStore.comments.get(memo.data.comment_id)
             comment.removeLikerId(memo.data.user_id)
 
       if data.event?
         console.log 'new event', data.event
-        event = new EventModel(data.event)
-        RecordStoreService.put(event)
+        Records.events.new(data.event)
 
-      RecordStoreService.importRecords(data)
+      # maybe indent this one
+      Records.import(data)
       onMessageReceived(data) if onMessageReceived?
 

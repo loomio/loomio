@@ -1,16 +1,14 @@
 .thread-container {
-  border: 1px solid $thread-border-color;
-  max-width: $thread-max-width;
   margin: 10px auto;
+  max-width: $thread-max-width;
+  @include card;
 }
 
 .thread-discussion {
-  padding: 15px;
-  background-color: #fff;
 }
 
 .thread-proposals {
-  padding: 10px 15px 15px 15px;
+  padding: 10px 0px 15px 0px;
   background-color: #fff;
 }
 
@@ -22,9 +20,9 @@
   color: #777777;
   margin-bottom: 10px;
 }
-.thread-events {
-  padding: 15px;
-  background-color: #fff;
+.thread-origin-group-logo{
+  width: 30px;
+  height: 30px; 
 }
 
 .thread-event {
@@ -84,9 +82,51 @@
   background-image: url(/img/red_flag_22.png);
 }
 
-.thread-start-proposal-card {
-  margin-top: 30px;
-  padding: 15px;
-  background-color: #fff;
-  border: 1px solid $thread-border-color;
+.comment-form-container{
+  width: 100%;
+}
+.comment-form-attachments{
+  display: inline;
+}
+
+.thread-comment-form-actions {
+  padding: 10px 0;
+}
+
+.attachments {
+  margin: 0 10px;
+}
+
+.attachment-new {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #CCC;
+}
+
+.attachment-new input {
+  width: 34px;
+  opacity: 0;
+  padding: 5px;
+  cursor: pointer;
+  display: block;
+  overflow: hidden;
+}
+
+.cover-file-upload {
+  pointer-events: none;
+  position: relative;
+  bottom: 38px;
+  padding: 0px;
+  left: 4px;
+}
+
+.progress.active {
+  float: left;
+}
+#comment-form-attachment-button{
+  margin-left: 10px;
+}
+
+.comment-form-attachments input {
+  display: none;
 }

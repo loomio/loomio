@@ -1,27 +1,30 @@
-%ul.drawer
-  %li.drawer-header{ng-click: 'logDiscussions()'}
+%ul.selector-list
+  %li.selector-list-header{ng-click: 'logDiscussions()'}
     %h3{translate: 'inbox.latest_threads'}
   -#%div{infinite-scroll: "getNextPage()", infinite-scroll-distance:"1"}
   / use styling flags: is-read, is-unread, is-active
-  %li.drawer-item{ng-repeat: 'discussion in discussions'}
-    %a{href: '/discussions/{{ discussion.key}}'}
+  %li.selector-list-item{ng-repeat: 'discussion in discussions'}
+    %a.selector-list-item-link{href: '/discussions/{{ discussion.key}}'}
       .brief-time.pull-right
         .time-ago{timestamp: 'discussion.lastActivityAt'}
-      .drawer-item-discussion-title
+      .selector-list-item-discussion-title
         {{discussion.title}}
-      .media.drawer-item-proposal{ng-if: 'discussion.activeProposal()', ng-init: 'proposal = discussion.activeProposal()'}
+      .media.selector-list-item-proposal{ng-if: 'discussion.activeProposal()', ng-init: 'proposal = discussion.activeProposal()'}
         .media-left
           %mini_proposal_pie_chart{proposal: 'proposal'}
-        .drawer-item-proposal-details.media-body
+        .selector-list-item-proposal-details.media-body
           {{ proposal.name }}
           .time-left
             3 hours left
       .pull-right
         .fa.fa-star
-      .drawer-item-group-name
+      .selector-list-item-thread-group-name
         {{::discussion.group().fullName()}}
 
-  %li.drawer-item
+  %li.selector-list-item.hidden-xs{ng-hide: 'inboxPinned()', ng-click: 'openInbox()'}
     %a{href: '#'}
       Keep this menu open
-      / Close this menu
+
+  %li.selector-list-item.hidden-xs{ng-show: 'inboxPinned()', ng-click: 'closeInbox()'}
+    %a{href: '#'}
+      Close this menu

@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'DeleteCommentDialogController', ($scope, $modalInstance, CommentModel, CommentService, comment) ->
+angular.module('loomioApp').controller 'DeleteCommentDialogController', ($scope, $modalInstance, CommentService, comment) ->
   $scope.comment = comment
 
   success = ->
