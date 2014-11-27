@@ -1,6 +1,11 @@
-angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $modalInstance, DiscussionService, discussion, UserAuthService, MembershipService) ->
+angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $modalInstance, FormService, DiscussionService, discussion, UserAuthService, MembershipService) ->
   currentUser = UserAuthService.currentUser
   $scope.discussion = discussion
+
+  FormService.applyForm $scope, DiscussionService, discussion, $modalInstance
+
+  $scope.saveSuccess = ->
+    $location.path "/discussions/#{$scope.discussion.key}"
 
   $scope.availableGroups = ->
     _.filter currentUser.groups(), (group) ->
@@ -16,16 +21,3 @@ angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $mod
 
   $scope.showPrivacyForm = ->
     $scope.getCurrentPrivacy() == 'public_or_private'
-
-  $scope.saveSuccess = ->
-    $modalInstance.close()
-
-  $scope.saveError = (error) ->
-    console.log error
-
-  $scope.cancel = ($event) ->
-    $event.preventDefault()
-    $modalInstance.dismiss('cancel')
-
-  $scope.submit = ->
-    DiscussionService.save($scope.discussion, $scope.saveSuccess, $scope.saveError)
