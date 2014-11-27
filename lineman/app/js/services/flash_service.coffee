@@ -15,4 +15,5 @@ angular.module('loomioApp').factory 'FlashService', ($timeout, FlashModel) ->
     set: (message, level) =>
       @currentFlash.message = message
       @currentFlash.level = level
-      $timeout @clear, 4000
+      $timeout.cancel @pending if @pending?
+      @pending = $timeout @clear, 4000
