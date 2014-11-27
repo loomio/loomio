@@ -9,18 +9,21 @@
   width: 100%;
   position: fixed;
 }
-.sidebar-is-open .sidebar-spacer{
-  @media (min-width: $screen-sm-min){ margin-left: $sidebar-width; }
-}
-.sidebar-is-open .container#main{
-  @media (min-width: $screen-sm-min){ max-width: $container-sm - $sidebar-width; }
-  @media (min-width: $screen-md-min){ max-width: $container-md - $sidebar-width; }
-  @media (min-width: $screen-lg-min){ max-width: $container-lg - $sidebar-width; }
-}
 .container#main{
   padding-top: 48px;
   z-index: 0;
   min-width: 320px;
+}
+.container#main.inboxPinned {
+  @media (min-width: $screen-sm-min){
+    margin-left: $sidebar-width;
+    max-width: $container-sm - $sidebar-width; }
+  @media (min-width: $screen-md-min){
+    max-width: $container-md - $sidebar-width;
+  }
+  @media (min-width: $screen-lg-min){
+    max-width: $container-lg - $sidebar-width;
+  }
 }
 
 .loomio-nav {
@@ -71,6 +74,7 @@ a.loomio-nav-btn{
 
 #inbox-dropdown{ left: 49px; }
 #search-dropdown{ left: 96px; }
+.inboxPinned #search-dropdown{ left: 48px; }
 #notifications-dropdown{ right: 47px; }
 @media (max-width: 380px){
   #inbox-dropdown, #search-dropdown{ left: 0; }
