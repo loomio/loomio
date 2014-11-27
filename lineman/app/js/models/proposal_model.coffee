@@ -17,9 +17,9 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
       @activityCount = data.activity_count
 
     setupViews: ->
-      @votesView = @recordStore.votes.addDynamicView(@viewName())
-      @votesView.applyFind(proposalId: @id)
-      @votesView.applySimpleSort('id')
+      #@votesView = @recordStore.votes.addDynamicView(@viewName())
+      #@votesView.applyFind(proposalId: @id)
+      #@votesView.applySimpleSort('id')
 
     serialize: ->
       motion:
@@ -40,7 +40,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
       @recordStore.discussions.get(@discussionId)
 
     votes: ->
-      @votesView.data()
+      @recordStore.votes.find(proposalId: @id)
 
     authorName: ->
       @author().name

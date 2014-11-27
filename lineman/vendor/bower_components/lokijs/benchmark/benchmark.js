@@ -29,11 +29,21 @@ function initializeDB() {
 	var totalTimes = [];
 	var totalMS = 0.0;
 
-	samplecoll = db.addCollection('samplecoll');
+	samplecoll = db.addCollection('samplecoll');  
+  /*
+    {
+      asyncListeners: true,
+      disableChangesApi: true,
+      transactional: false,
+      clone: false 
+    }
+  ); 
+  */
     
 	for (var idx=0; idx < arraySize; idx++) {
-    	var v1 = genRandomVal();
-        var v2 = genRandomVal();
+   	var v1 = genRandomVal();
+    var v2 = genRandomVal();
+    
 		start = process.hrtime();
     	samplecoll.insert({ 
 			customId: idx, 
@@ -55,6 +65,56 @@ function initializeDB() {
 	var rate = arraySize * 1000 / totalMS;
 	rate = rate.toFixed(2);
     console.log("load (insert) : " + totalMS + "ms (" + rate + ") ops/s");
+}
+
+/**
+ * initializeWithEval : repeat of insert bench with a dynamic view registered.
+ *    All inserts will be passed into the view's evaluateDocument() method.
+ *    This test is an attempt to gauge the level of impact of that overhead.
+ */
+function initializeWithEval() {
+	var dbTest = new loki('perfInsertWithEval');
+  
+	var start, end, totalTime;
+	var totalTimes = [];
+	var totalMS = 0.0;
+
+	var coll = dbTest.addCollection('samplecoll', 
+    {
+      indices: ['customId'],
+      asyncListeners: false,
+      disableChangesApi: true,
+      transactional: false,
+      clone: false
+    }
+  );
+  
+  var dv = coll.addDynamicView('test');
+  dv.applyFind({'customId': {'$lt': arraySize/4 }});
+    
+	for (var idx=0; idx < arraySize; idx++) {
+    var v1 = genRandomVal();
+    var v2 = genRandomVal();
+    
+		start = process.hrtime();
+   	coll.insert({ 
+			customId: idx, 
+			val: v1, 
+			val2: v2, 
+			val3: "more data 1234567890"
+		});
+		end = process.hrtime(start);
+ 		totalTimes.push(end);
+   }
+    
+	for(var idx=0; idx < totalTimes.length; idx++) {
+		totalMS += totalTimes[idx][0] * 1e3 + totalTimes[idx][1]/1e6;
+	}
+
+	totalMS = totalMS.toFixed(2);
+	var rate = arraySize * 1000 / totalMS;
+	rate = rate.toFixed(2);
+    console.log("load (insert with dynamic view registered) : " + totalMS + "ms (" + rate + ") ops/s");
 }
 
 function testperfGet() {
@@ -188,6 +248,7 @@ function testperfDV(multiplier) {
 }
 
 initializeDB();
+//initializeWithEval();
 
 testperfGet();	// get bechmark on id field
 
@@ -199,7 +260,7 @@ testperfDV();	// dataview find benchmarks on unindexed customid field
 
 console.log("");
 console.log("-- ADDING BINARY INDEX to query column and repeating benchmarks --");
-samplecoll.ensureBinaryIndex("customId");
+samplecoll.ensureIndex("customId");
 testperfFind(20);
 testperfRS(15);
 testperfDV(15);

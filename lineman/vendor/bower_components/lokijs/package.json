@@ -1,14 +1,11 @@
 {
   "name": "lokijs",
-  "version": "1.0.3",
+  "version": "1.0.2",
   "description": "A document oriented javascript in-memory database",
   "homepage": "http://lokijs.org",
   "main": "src/lokijs.js",
   "directories": {
     "example": "examples"
-  },
-  "scripts": {
-    "test": "node tests/test.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +20,9 @@
     "lokijs",
     "in-memory"
   ],
+  "scripts": {
+    "test": "make test && istanbul cover tests/"
+  },
   "author": "Joe Minichino <joe.minichino@gmail.com>",
   "contributors": [{
     "name": "Dave",
@@ -33,11 +33,17 @@
     "url": "https://github.com/techfort/LokiJS/issues"
   },
   "dependencies": {
-    "gordian": "0.0.7"
+    "gordian": "0.0.7",
+    "istanbul": "^0.3.2",
+    "mocha": "^2.0.1"
   },
   "devDependencies": {
-    "gulp-uglify": "^0.3.1",
-    "gulp": "^3.8.6",
-    "gulp-concat": "^2.3.4"
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.1",
+    "gulp-uglify": "^1.0.1",
+    "istanbul": "^0.3.2",
+    "mocha": "^2.0.1",
+    "should": "^4.3.0",
+    "uglify-js": "^2.4.15"
   }
 }

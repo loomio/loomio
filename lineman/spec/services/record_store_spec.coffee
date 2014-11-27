@@ -23,5 +23,6 @@ describe 'RecordStore', ->
 
   it 'imports records', ->
     recordStore.addCollection(mockModel)
-    recordStore.import({mocks: [{id:9 , key:'z'}]})
+    recordStore.import({mocks: [{id: 9, key:'z'}]})
+    console.log recordStore.mocks.find()[0]
     expect(recordStore.mocks.get(9).key).toBe('z')

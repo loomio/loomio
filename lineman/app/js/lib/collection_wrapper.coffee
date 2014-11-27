@@ -14,34 +14,45 @@ angular.module('loomioApp').factory 'CollectionWrapper', ->
     chain: () ->
       @collection.chain()
 
+    proposalModel: ->
+      @model.plural == 'proposals'
+
     new: (data) ->
-      if @model.singular == 'group'
-        console.log 'putting', @model.singular, data
-
-      model = new @model(@recordStore, data)
-
-      if @model.singular == 'group'
-        console.log 'aftwards:', model
-      model
-
-    get: (q) ->
-      if q?
-        if _.isNumber(q)
-          @collection.find(id: q)[0]
-        else if _.isString(q)
-          @collection.find(key: q)[0]
-        else if _.isArray(q)
-          if q.length == 0
-            []
-          else if _.isString(q[0])
-            @collection.find(key: {$in: q})
-          else if _.isNumber(q[0])
-            @collection.find(id: {$in: q})
+      existingRecord = @collection.find(id: data.id)[0]
+      if data.id? and existingRecord?
+        existingRecord.initialize(data)
+        existingRecord
       else
-        @collection.find()
+        record = new @model(@recordStore, data)
+        @collection.insert(record)
+        record
 
-    put: (record) ->
-      @collection.insert(record)
+    findById: (id) ->
+      @collection.find(id: id)[0]
+
+    findByKey: (key) ->
+      @collection.find(key: key)[0]
+
+    findByIds: (ids) ->
+      @collection.find(id: {'$in': ids})
+
+    findByKeys: (keys) ->
+      @collection.find(key: {'$in': keys})
+
+    get: (q, debug = false) ->
+      if _.isNumber(q)
+        @findById(q)
+      else if _.isString(q)
+        @findByKey(q)
+      else if _.isArray(q)
+        if q.length == 0
+          []
+        else if _.isString(q[0])
+          @findByKeys(q)
+        else if _.isNumber(q[0])
+          @findByIds(q)
+      else
+        'weird input'
 
     remove: (record) ->
       @collection.remove(record)

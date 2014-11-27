@@ -56,6 +56,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       @commentsView.data()
 
     proposals: ->
+      #@recordStore.proposals.find(discussionId: @id)
       @proposalsView.data()
 
     activeProposal: ->

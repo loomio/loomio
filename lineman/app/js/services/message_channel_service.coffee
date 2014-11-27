@@ -34,6 +34,6 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, Records, Co
         Records.events.new(data.event)
 
       # maybe indent this one
-      RecordStore.import(data)
+      Records.import(data)
       onMessageReceived(data) if onMessageReceived?
 

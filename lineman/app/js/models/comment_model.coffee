@@ -44,10 +44,10 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
       @recordStore.users.get(@likerIds)
 
     newAttachments: ->
-      RecordStoreService.get 'attachments', @newAttachmentIds
+      @recordStore.attachments.get @newAttachmentIds
 
     attachments: ->
-      @attachmentsView.data()
+      @recordStore.attachments.find(commentId: @id)
 
     author: ->
       @recordStore.users.get(@authorId)

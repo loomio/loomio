@@ -22,19 +22,31 @@ describe 'CollectionWrapper', ->
       recordStore = new RecordStore(db)
       collection = recordStore.addCollection(MockModel)
 
-    mock = new mockModel(recordStore, {id: 1, key: 'a'})
-    othermock = new mockModel(recordStore, {id: 2, key:'b'})
+
+  describe 'new', ->
+    it 'inserts new items into the collection', ->
+      mock = collection.new({id:1})
+      expect(collection.get(1)).toBe(mock)
+
+    it 'updates existing items in the collection', ->
+      mock = collection.new({id:1})
+      collection.new({id:1, key: 'a'})
+      expect(mock.key).toBe('a')
+      expect(collection.find().length).toBe(1)
 
   describe 'get', ->
-
-    it 'returns a whole collection', ->
-      expect(collection.get()).toContain(mock, otherMock)
+    beforeEach ->
+      mock =  recordStore.mocks.new {id: 1, key: 'a'}
+      othermock = recordStore.mocks.new {id: 2, key:'b'}
 
     it 'looks up item by id', ->
       expect(collection.get(1)).toEqual(mock)
 
-    it 'returns null if nothing found', ->
-      expect(collection.get(7)).toBeFalsy()
+    it 'returns null if nothing found for single', ->
+      expect(collection.get(7)).toBe(null)
+
+    it 'returns [] if nothing found for many', ->
+      expect(collection.get([7]).length).toBe(0)
 
     it 'looks up item by key', ->
       expect(collection.get('a')).toEqual(mock)
@@ -49,6 +61,9 @@ describe 'CollectionWrapper', ->
       #expect(collection.get( (discussion) -> discussion.id == 1 )).toEqual([discussion])
 
   describe 'remove', ->
+    beforeEach ->
+      mock =  recordStore.mocks.new {id: 1, key: 'a'}
+
     it 'removes the object from the collection', ->
       expect(collection.get(mock.id)).toEqual(mock)
       collection.remove(mock)
