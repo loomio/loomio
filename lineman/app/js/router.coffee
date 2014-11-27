@@ -13,9 +13,9 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
     templateUrl: 'generated/templates/group_form.html',
     controller: 'GroupFormController',
     resolve:
-      group: ($route, GroupService, GroupModel, MainRecordStore) ->
+      group: ($route, GroupService, GroupModel, Records) ->
         GroupService.fetchByKey($route.current.params.parent_id).then(->
-          new GroupModel(parent_id: MainRecordStore.get('groups', $route.current.params.parent_id).id))
+          new GroupModel(parent_id: Records.groups.get($route.current.params.parent_id).id))
   ).when('/groups/:id',
     templateUrl: 'generated/templates/group.html',
     controller: 'GroupController',

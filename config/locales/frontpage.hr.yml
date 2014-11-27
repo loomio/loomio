@@ -20,7 +20,7 @@ hr:
       privacy: 'Privatnost'
       services: 'Usluge'
     hero:
-      head_html: 'Svijetu je potreban nov naćin <strong>zajedničkog donošenja odluka</strong>.'
+      head_html: 'Svijetu je potreban nov način <strong>zajedničkog donošenja odluka</strong>.'
       desc_html: 'Loomio je besplatan i slobodan softver <a href="https://github.com/loomio/loomio">otvorenog koda</a> za sudjelovanje u donošenju odluka naimijenjen svima i svuda. '
     product:
       header_html: 'Kad čujemo <strong>sve glasove</strong>, donosimo <strong<bolje odluke</strong>.'
@@ -32,28 +32,28 @@ hr:
         desc: 'Svatko može predložiti tok akcije. Sudionici se mogu slagati, biti suzdržani / e ili blokirati - tako se jasno vide svačiji stavovi i njihov razlog.'
       step3:
         header: '3. Zajedno odlučujte'
-        desc: 'Zajedno razvijte prijedlog podoban svima Svaka odluka ima jasan rok, kako bi uvijek imali jasan ishod.'
+        desc: 'Zajedno razvijte prijedlog podoban svima. Svaka odluka ima jasan rok, kako bi uvijek imali jasan ishod.'
     crowdfunding:
       header: 'Vršimo crowdfunding kampanju kako bi završili ovu novu platformu i dali je svijetu.'
     prototype:
       header_html: "Već smo sagradili prototip i ljudi diljem svijeta s njime rade nevjerojatne stvari."
       subhead_html: '<a href="%{try_loomio_link}">Isprobajte Loomio Beta</a> sada.  Ili možete <a href="%{donate_link}"> podržati projekt</a> kako bi pomogli financirati Loomio 1.0'
     mobile:
-      header_html: 'Loomio 1.0 radi na bilo kojem uređaju i izgrađen najboljom <strong>otvorenom mobilnom tehnologijom</strong>'
+      header_html: 'Loomio 1.0 radi na bilo kojem uređaju, izgrađen najboljom <strong>otvorenom mobilnom tehnologijom</strong>'
     quote:
       header:
         rushkoff_html: '"Loomio <strong>oslobađa potencijal interneta</strong>za dovođenje ljudskih rasprava konsenzusu, a ne polariziranoj raspravi."<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, autor <em>Present Shocka</em></div>'
-        sifry_html: '“Loomio kombinira jak <strong>glas pojedinca</strong> i <strong>kolektivno odluku</strong>.”<div class="attributation">– Micah Sifry, Urednik <em><a href="http://techpresident.com">TechPresident</a></em></div>'
+        sifry_html: '“Loomio kombinira jak <strong>glas pojedinca</strong> i <strong>kolektivnu odluku</strong>.”<div class="attributation">– Micah Sifry, Urednik <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: 'O Loomiu'
-      desc: 'Mi smo mali tim developera softvera otvorenog koda i aktivista socijalne pravde zaposlen u Enspiralu u Aotearoi u Novom Zelandu, sa širom mrežom prijatelja, podržavatelja i savjetnika iz cijelog svijeta.'
+      desc: 'Mi smo mali tim developera softvera otvorenog koda i aktivista socijalne pravde zaposleni u Enspiralu u Aotearoi u Novom Zelandu, sa širom mrežom prijatelja, podržavatelja i savjetnika iz cijelog svijeta.'
     ideals:
       community:
         header: 'Zadruga pogonjena zajednicom'
-        desc: 'Loomio gradi zadruga u vlasništvu radnika Mi smo društveni poduzetnici koji rade na maksimizaciji pozitivnog društvenog učinka, a ne profita. '
+        desc: 'Loomio gradi zadruga u vlasništvu radnika. Mi smo društveni poduzetnici koji rade na maksimizaciji pozitivnog društvenog učinka, a ne profita. '
       independent:
         header: 'Nezavisni i neutralni'
-        desc: 'Održavamo prostor za ukupljanje bilo koje grupe koja je nezavisna od političkog i korporativnog interesa. Ne prodajemo vaše podatke. '
+        desc: 'Održavamo prostor za okupljanje bilo koje grupe koja je nezavisna od političkog i korporativnog interesa. Ne prodajemo vaše podatke. '
       open:
         header: 'Slobodan i otvoreni softver'
         desc: 'Loomiov kod je javno dobro koje bilo tko može pokretati, čitati, učiti iz njega, modificirati i redistribuirati. '
