@@ -1,0 +1,161 @@
+/* line 1, ../sass/style.scss */
+body {
+  background-color: #fff;
+  text-align: center;
+  max-width: 560px;
+  margin: 30px auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* line 12, ../sass/style.scss */
+::-webkit-scrollbar {
+  background: transparent;
+  overflow: visible;
+  width: 15px;
+}
+
+/* line 17, ../sass/style.scss */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: solid #fff;
+}
+
+/* line 21, ../sass/style.scss */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* line 24, ../sass/style.scss */
+::-webkit-scrollbar-thumb:horizontal {
+  border-width: 4px 6px;
+  min-width: 40px;
+}
+
+/* line 28, ../sass/style.scss */
+::-webkit-scrollbar-thumb:vertical {
+  border-width: 6px 4px;
+  min-height: 40px;
+}
+
+/* line 32, ../sass/style.scss */
+::-webkit-scrollbar-track-piece {
+  background-color: #fff;
+}
+
+/* line 35, ../sass/style.scss */
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* line 38, ../sass/style.scss */
+::-webkit-scrollbar-thumb {
+  background-color: #DDD;
+}
+
+/* line 41, ../sass/style.scss */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
+}
+
+/* line 45, ../sass/style.scss */
+header {
+  font-family: 'Bad Script', cursive;
+}
+
+/* line 49, ../sass/style.scss */
+header h2 {
+  text-align: center;
+  font-size: 40px;
+  color: #555;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* line 57, ../sass/style.scss */
+header small {
+  font-size: 20px;
+  color: #777;
+  font-weight: 300;
+}
+
+/* line 63, ../sass/style.scss */
+ol, ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 69, ../sass/style.scss */
+.btn {
+  display: inline-block;
+  padding: 15px 20px;
+  margin: 0 10px 10px 0;
+  border-radius: 8px;
+  color: #333;
+  background-color: #eee;
+  cursor: pointer;
+}
+/* line 77, ../sass/style.scss */
+.btn.block {
+  display: block;
+}
+/* line 80, ../sass/style.scss */
+.btn.active, .btn:hover {
+  background-color: #ccc;
+}
+/* line 83, ../sass/style.scss */
+.btn.red {
+  color: white;
+  border: 1px solid #CC363B;
+  background-color: #CC363B;
+}
+/* line 87, ../sass/style.scss */
+.btn.red.active, .btn.red:hover {
+  background-color: #a52a2e;
+}
+
+/* line 93, ../sass/style.scss */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  padding: 10px;
+  width: 250px;
+  background-color: white;
+  overflow-y: scroll;
+}
+
+/* line 104, ../sass/style.scss */
+.controls {
+  margin: 0 0 30px;
+}
+
+/* line 108, ../sass/style.scss */
+.item-container {
+  width: 560px;
+}
+/* line 110, ../sass/style.scss */
+.item-container .item {
+  /*display: inline-block;*/
+  background-color: #00BB87;
+  padding: 25px;
+  margin: 10px 0;
+  border-radius: 8px;
+  color: white;
+}
+/* line 119, ../sass/style.scss */
+.item-container.list .item {
+  float: left;
+  display: inline-block;
+  margin: 10px;
+  padding: 65px;
+}
+
+/* line 128, ../sass/style.scss */
+.item:hover {
+  cursor: pointer;
+  background-color: rgba(0, 187, 135, 0.9);
+}

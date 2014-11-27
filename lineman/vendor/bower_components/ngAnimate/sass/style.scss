@@ -1,0 +1,131 @@
+body {
+	background-color: #fff;
+	text-align: center;
+	max-width: 560px;
+	margin: 30px auto;
+	overflow-y:scroll; 
+	overflow-x: hidden;
+	font-family: Arial, sans-serif;
+}
+
+// Scrollbar style
+::-webkit-scrollbar {
+  background:transparent;
+  overflow:visible;
+  width:15px;
+}
+::-webkit-scrollbar-thumb {
+  background-color:rgba(0,0,0,0.2);
+  border:solid #fff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background:rgba(0,0,0,0.4);
+}
+::-webkit-scrollbar-thumb:horizontal {
+  border-width:4px 6px;
+  min-width:40px;
+}
+::-webkit-scrollbar-thumb:vertical {
+  border-width:6px 4px;
+  min-height:40px;
+}
+::-webkit-scrollbar-track-piece{ 
+  background-color:#fff;
+}
+::-webkit-scrollbar-corner {
+  background:transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #DDD;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
+}
+
+header {
+	font-family: 'Bad Script', cursive;
+}
+
+header h2 {	
+	text-align: center;
+	font-size: 40px;
+	color: #555;
+	font-weight: normal;
+	margin: 0;
+}
+
+header small {
+	font-size: 20px;
+	color: #777;
+	font-weight: 300;
+}
+
+ol, ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.btn {
+	display: inline-block;
+	padding: 15px 20px;
+	margin: 0 10px 10px 0;
+	border-radius: 8px;
+	color: #333;
+	background-color: #eee;
+	cursor: pointer;
+	&.block {
+		display: block;
+	}
+	&.active, &:hover {
+		background-color: #ccc;
+	}
+	&.red {
+		color: white;
+		border: 1px solid #CC363B;
+		background-color: #CC363B;
+		&.active, &:hover {
+			background-color: darken(#CC363B, 10%);
+		}
+	}
+}
+
+.sidebar {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	padding: 10px;
+	width: 250px;
+	background-color: white;
+	overflow-y: scroll;
+}
+
+.controls {
+	margin: 0 0 30px;
+}
+
+.item-container {
+	width: 560px;
+	.item {
+		/*display: inline-block;*/
+		background-color: #00BB87;
+		padding: 25px;
+		margin: 10px 0;
+		border-radius: 8px;
+		color: white;
+	}
+	&.list {
+		.item {
+			float: left;
+			display: inline-block;
+			margin: 10px;
+			padding: 65px;
+		}
+	}
+}
+
+.item:hover {
+	cursor: pointer;
+	background-color: rgba(0, 187, 135, 0.9);
+}
