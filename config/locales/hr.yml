@@ -334,3 +334,14 @@ hr:
     m6: Otvarati podgrupe kojih sami postaju koordinatori.
     m7: Bilo kada ažurirati vlastite komentare.
     m8: Predlagati i prisustvovati prijedlozima.
+    optional_restrictions: "Koordinatori imaju mogućnost ograničavanja mogućnosti ostalim korisnicima."
+  discussion_privacy:
+    public: Ova je rasprava javna na internetu
+    private: Ova je rasprava privatna među članovima grupe
+  group_privacy:
+    visible_to:
+      public: Javna grupa.
+      parent_members: 'Privatna grupa. Vidljiva isključivo članovima i ljudima u  %{parent_group_name}.'
+      members: Skrivena grupa. Vidljiva isključivo članovima.
+      public_html: 'Bilo tko <span>javno prikazati grupu</span>'
+      parent_members_html: 'ljudi  u %{parent_group_name} <span>nisu prikazani javnosti, ali su vidljivi članovima %{parent_group_name}</span>'

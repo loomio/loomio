@@ -1,16 +1,17 @@
-angular.module('loomioApp').factory 'AttachmentModel', (RecordStoreService, BaseModel) ->
+angular.module('loomioApp').factory 'AttachmentModel', (BaseModel) ->
   class AttachmentModel extends BaseModel
-    constructor: (data = {}) ->
-      @id = data.id
+    @singular: 'attachment'
+    @plural: 'attachments'
+
+    initialize: (data) ->
+      @id       = data.id
       @filename = data.filename
       @location = data.location
       @filesize = data.filesize
       @authorId = data.user_id
       @commentId = data.comment_id
 
-    plural: 'attachments'
-
-    params: ->
+    serialize: ->
       filename: @filename
       location: @location
       filesize: @filesize
@@ -18,7 +19,7 @@ angular.module('loomioApp').factory 'AttachmentModel', (RecordStoreService, Base
       comment_id: @commentId
 
     author: ->
-      RecordStoreService.get('user', @authorId)
+      @recordStore.users.get(@authorId)
 
     comment: ->
-      RecordStoreService.get('comment', @commentId)
+      @recordStore.comments.get(@commentId)

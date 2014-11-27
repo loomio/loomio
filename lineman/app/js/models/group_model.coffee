@@ -1,6 +1,10 @@
-angular.module('loomioApp').factory 'GroupModel', (BaseModel, RecordStoreService) ->
+angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
   class GroupModel extends BaseModel
-    constructor: (data = {}) ->
+    @singluar: 'group'
+    @plural: 'groups'
+    @indexes: ['parentId']
+
+    initialize: (data) ->
       @id                             = data.id
       @key                            = data.key
       @name                           = data.name
@@ -19,9 +23,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, RecordStoreService
       @visibleTo                      = data.visible_to
       @logoUrlSmall                   = data.logo_url_small
 
-    plural: 'groups'
-
-    params: ->
+    serialize: ->
       group:
         name:                          @name
         description:                   @description
@@ -38,28 +40,30 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, RecordStoreService
         visible_to:                    @visibleTo
 
     discussions: ->
-      RecordStoreService.get 'discussions', (discussion) =>
-        discussion.groupId == @id
+      @recordStore.discussions.find(groupId: @id)
 
     subgroups: ->
-      RecordStoreService.get 'groups', (group) =>
-        group.parentId == @id
+      @recordStore.groups.find(parentId: @id)
 
     memberships: ->
-      RecordStoreService.get 'memberships', (membership) =>
-        membership.groupId == @id
+      @recordStore.memberships.find(groupId: @id)
 
     membershipFor: (user) ->
       _.find @memberships(), (membership) -> membership.userId == user.id
 
     members: ->
-      RecordStoreService.get('users', _.map(@memberships(), (membership) -> membership.userId))
-
-    memberIds: ->
-      _.map @memberships(), (membership) -> membership.userId
+      memberIds = _.map(@memberships(), (membership) -> membership.userId)
+      @recordStore.users.find(id: {$in: memberIds})
 
     adminMemberships: ->
       _.filter @memberships(), (membership) -> membership.admin
+
+    admins: ->
+      adminIds = _.map(@adminMemberships(), (membership) -> membership.userId)
+      @recordStore.users.find(id: {$in: adminIds})
+
+    memberIds: ->
+      _.map @memberships(), (membership) -> membership.userId
 
     adminIds: ->
       _.map @adminMemberships(), (membership) -> membership.userId
@@ -71,7 +75,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, RecordStoreService
         @name
 
     parent: ->
-      RecordStoreService.get('groups', @parentId)
+      @recordStore.groups.get(@parentId)
 
     parentName: ->
       @parent().name if @parent()?
