@@ -4,4 +4,4 @@ angular.module('loomioApp').controller 'GroupFormController', ($scope, $location
   FormService.applyForm $scope, GroupService, group
 
   $scope.saveSuccess = ->
-    $location.path "/groups/#{$scope.group.key}"
+    $location.path "/g/#{$scope.group.key}"

@@ -4,7 +4,7 @@
   -#%div{infinite-scroll: "getNextPage()", infinite-scroll-distance:"1"}
   / use styling flags: is-read, is-unread, is-active
   %li.selector-list-item{ng-repeat: 'discussion in discussions'}
-    %a.selector-list-item-link{href: '/discussions/{{ discussion.key}}'}
+    %a.selector-list-item-link{href: '/d/{{ discussion.key}}'}
       .brief-time.pull-right
         .time-ago{timestamp: 'discussion.lastActivityAt'}
       .selector-list-item-discussion-title
