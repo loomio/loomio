@@ -1,7 +1,7 @@
 %li{dropdown: ''}
   %a.loomio-nav-btn.dropdown-toggle
     %i.fa.fa-lg.fa-fw.fa-search
-  .dropdown-menu.loomio-nav-dropdown#search-dropdown{role: 'menu', href: '#', ng-click: "$event.stopPropagation()"}
+  .dropdown-menu.loomio-nav-dropdown#search-dropdown{role: 'menu'}
     .navbar-search-input
       %input.form-control{ng_model: 'query', placeholder: "{{ 'navbar.search_placeholder' | translate }}"}
     %ul.selector-list
@@ -11,4 +11,4 @@
         %a.selector-list-item-link{href: '/groups/{{group.key}}'}
           .media-left
             %img.selector-list-item-group-logo{src: "{{group.logoUrlSmall}}"}
-          .selector-list-item-group-name.media-body {{group.name}}
+          .selector-list-item-group-name.media-body {{group.fullName()}}
