@@ -43,7 +43,7 @@ a.loomio-nav-btn{
   margin: 4px;
   display: block;
 }
-.loomio-nav-items i{
+.loomio-nav-btn i{
   color: $meta-text-color;
   font-size: 26px;
   line-height: 40px;
@@ -73,6 +73,18 @@ a.loomio-nav-btn{
   #inbox-dropdown, #search-dropdown{ left: 0; }
   .pull-right > .loomio-nav-dropdown{ right: 10px }
 }
+
+.fa-xlg{ font-size: 26px; }
+#user-options-dropdown a{
+  color: $kinda-dark-grey;
+}
+#user-options-dropdown .media-left{
+  width: 40px;
+  vertical-align: middle;
+  text-align: center;
+}
+#user-options-dropdown .media-body{ vertical-align: middle; }
+
 
 .loomio-nav-btn.has-badge{
   position: relative;

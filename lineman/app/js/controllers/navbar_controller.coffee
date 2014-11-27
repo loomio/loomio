@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Records) ->
+angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Records, UserAuthService) ->
   $scope.showInbox = false
 
   $scope.openDiscussionForm = ->
@@ -8,4 +8,7 @@ angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Reco
       resolve:
         discussion: -> Records.discussions.new
 
-  $scope.toggleInbox = (open) -> $scope.showInbox = open
+  $scope.toggleInbox =         (open) -> $scope.showInbox = open
+
+  $scope.currentUser = ->
+    UserAuthService.currentUser()
