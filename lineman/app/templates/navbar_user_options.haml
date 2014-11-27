@@ -3,17 +3,38 @@
     %i.fa.fa-lg.fa-fw.fa-navicon
   .loomio-nav-dropdown.dropdown-menu#user-options-dropdown
     %ul.selector-list
-      %li.selector-list-item.visible-xs
+      %li.media.selector-list-item.visible-xs
         %a{href: '#', ng_click: 'openDiscussionForm()'}
-          %i.fa.fa-lg.fa-fw.fa-plus
-          New thread
+          .media-left
+            %i.fa.fa-xlg.fa-plus
+          .media-body New thread
       %li.selector-list-item
-        Profile
+        %a{href: ''}
+          .media-left
+            %user_avatar{user: "currentUser"}
+          .media-body
+            Profile
       %li.selector-list-item
-        Email settings
+        %a{href: ''}
+          .media-left
+            %i.fa.fa-xlg.fa-envelope-o
+          .media-body
+            Email settings
       %li.selector-list-item
-        Help
+        %a{href: ''}
+          .media-left
+            %i.fa.fa-xlg.fa-info
+          .media-body
+            Help
       %li.selector-list-item
-        Contact us
+        %a{href: ''}
+          .media-left
+            %i.fa.fa-xlg.fa-question-circle
+          .media-body
+            Contact us
       %li.selector-list-item
-        Sign out
+        %a{href: ''}
+          .media-left
+            %i.fa.fa-xlg.fa-sign-out
+          .media-body
+            Sign out
