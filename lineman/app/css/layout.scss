@@ -37,6 +37,8 @@
 .loomio-nav-items li{
   float: left;
 }
+.loomio-nav-items li.open a{ border-bottom: 4px solid $loomio-orange; }
+.loomio-nav-items li.open li a{ border-bottom: none; }
 a.loomio-nav-btn{
   width: 40px;
   height: 40px;
@@ -57,7 +59,7 @@ a.loomio-nav-btn{
   background-image: url(/img/lbow_round_34.png);
 }
 .loomio-nav-dropdown{
-  top: 42px;
+  top: 44px;
   padding: 0;
   margin: 0 -10px;
   min-width: 320px;
@@ -67,8 +69,8 @@ a.loomio-nav-btn{
   }
 }
 
-#inbox-dropdown{ left: 60px; }
-#search-dropdown{ left: 100px; }
+#inbox-dropdown{ left: 49px; }
+#search-dropdown{ left: 96px; }
 @media (max-width: 380px){
   #inbox-dropdown, #search-dropdown{ left: 0; }
   .pull-right > .loomio-nav-dropdown{ right: 10px }
