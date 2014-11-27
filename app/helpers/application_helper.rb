@@ -3,7 +3,7 @@ module ApplicationHelper
 
   def lineman_js_path
     if Rails.env.production?
-      "lineman/app"
+      "/js/app.js"
     else
       "/js/app.js"
     end
@@ -11,7 +11,7 @@ module ApplicationHelper
 
   def lineman_css_path
     if Rails.env.production?
-      "lineman/app"
+      "/css/app.css"
     else
       "/css/app.css"
     end

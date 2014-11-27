@@ -26,7 +26,7 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, Records, Co
           Records.comments.new(memo.data.comment)
           Records.import(memo.data)
         if memo.kind == 'comment_unliked'
-          if comment = MainRecordStore.comments.get(memo.data.comment_id)
+          if comment = Records.comments.get(memo.data.comment_id)
             comment.removeLikerId(memo.data.user_id)
 
       if data.event?
