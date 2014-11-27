@@ -46,3 +46,6 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
 
   $scope.showContextMenu = ->
     $scope.canEditDiscussion()
+
+  $scope.inboxPinned = ->
+    UserAuthService.inboxPinned
