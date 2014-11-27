@@ -222,6 +222,7 @@ angular.module('mentio', [])
             },
             link: function (scope, element, attrs) {
                 scope.triggerCharMap = {};
+
                 scope.targetElement = element;
                 attrs.$set('autocomplete','off');
 
@@ -300,9 +301,11 @@ angular.module('mentio', [])
                             ) 
                         {
                             /** save selection info about the target control for later re-selection */
-                            scope.targetElement = mentionInfo.mentionSelectedElement;
-                            scope.targetElementPath = mentionInfo.mentionSelectedPath;
-                            scope.targetElementSelectedOffset = mentionInfo.mentionSelectedOffset;
+                            if (mentionInfo.mentionSelectedElement) {
+                                scope.targetElement = mentionInfo.mentionSelectedElement;
+                                scope.targetElementPath = mentionInfo.mentionSelectedPath;
+                                scope.targetElementSelectedOffset = mentionInfo.mentionSelectedOffset;
+                            }
 
                             /* publish to external ngModel */
                             scope.setTriggerText(mentionInfo.mentionText);

@@ -49,7 +49,6 @@ gulp.task('site', ['dist'], function () {
 
 gulp.task('dist', ['tpl'], function () {
     return gulp.src([
-//        'bower_components/textarea-caret-position/index.js',
         'src/mentio.directive.js',
         'src/mentio.service.js',
         'src/templates.js'
@@ -58,9 +57,6 @@ gulp.task('dist', ['tpl'], function () {
     .pipe(gjshint.reporter(stylish))
     .pipe(ngAnnotate())
     .pipe(concat('mentio.js'))
-//    // hack to make componentjs libs to work
-//    .pipe(wrap('(function () {\n\n\'use strict\';\n\nvar Package = \'\';' +
-//        '\n\nvar getCaretCoordinates ;\n\n<%= contents %>\n\n})();'))
     .pipe(gulp.dest('dist'))
     .pipe(uglify())
     .pipe(concat('mentio.min.js'))
