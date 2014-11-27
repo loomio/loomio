@@ -1,11 +1,12 @@
 %form{ng-submit: 'submit()'}
   .modal-header
-    %button{type: 'button', class: 'close', ng-click: 'cancel()'}
+    %button{type: 'button', class: 'close', ng-click: 'cancel($event)'}
       %span{aria-hidden: true} &times;
       %span.sr-only{translate: 'common.action.cancel'}
     %h1{translate: 'proposal_form.start_a_proposal'}
 
   .modal-body
+    %flash{modal: true}
     %p{translate: 'proposal_form.what_does_a_proposal_do'}
 
     %fieldset{ng-disabled: 'isDisabled'}

@@ -1,5 +1,6 @@
-angular.module('loomioApp').controller 'ProposalFormController', ($translate, $scope, $modalInstance, proposal, ProposalService) ->
+angular.module('loomioApp').controller 'ProposalFormController', ($translate, $scope, $modalInstance, proposal, ProposalService, FlashService) ->
   $scope.proposal = proposal
+  $scope.service = FlashService
 
   $scope.closingAtPickerIsActive = false
 

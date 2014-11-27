@@ -4,7 +4,6 @@
       %li
         %a.loomio-nav-btn{href: '#'}
           .loomio-nav-logo
-      / don't load this li if the sidebar is open
       %li{dropdown: '', on-toggle: 'toggleInbox(open)'}
         %a.loomio-nav-btn.has-badge.dropdown-toggle{href: '#'}
           %span.badge 2
@@ -28,4 +27,4 @@
       %li.pull-right
         %a.loomio-nav-btn{href: '#', ng_click: 'openDiscussionForm()'}
           %i.fa.fa-lg.fa-fw.fa-plus
-  %flash
+  %flash{modal: false}
