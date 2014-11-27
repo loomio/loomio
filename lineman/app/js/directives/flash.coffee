@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'flash', ->
-  scope: {}
+  scope: {modal: '='}
   restrict: 'E'
   templateUrl: 'generated/templates/flash.html'
   replace: true

@@ -1,4 +1,4 @@
-.flash-container{ng-show: 'flash.message', class: 'alert-{{flash.level}}'}
+.flash-container{ng-show: 'display()', class: 'alert-{{flash.level}}'}
   %ul.flash-messages{ng-if: 'flash.messageIsArray()'}
     %li.flash-message{ng-repeat: 'item in flash.message'}
       {{item | translate}}
