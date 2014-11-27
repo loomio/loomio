@@ -12,7 +12,7 @@ Given /^I am an existing Loomio user$/ do
 end
 
 Given /^I am logged in$/ do
-  @user ||= FactoryGirl.create :user
+  @user ||= FactoryGirl.create :user, selected_locale: :en
   login_automatically @user
 end
 

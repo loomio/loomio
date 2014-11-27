@@ -2,11 +2,11 @@ hr:
   users:
     email_preferences:
       edit:
-        title: 'Postavke emaila'
-        when_do_you_want_emails: 'Pošalji mi email:'
+        title: 'Postavke e-maila'
+        when_do_you_want_emails: 'Pošalji mi e-mail:'
         email_missed_yesterday: "\"Jučer na Loomiu\" - dnevni prikaz propuštenih aktivnosti"
         email_when_mentioned: "Kada me @mentioned"
-        email_followed_threads: "Kad se pojavi aktivnost u nitima razgovora koje pratim. "
+        email_followed_threads: "Kad se pojavi aktivnost u temi razgovora koje pratim. "
         email_when_proposal_closing_soon: "24 sata prije zatvaranja prijedloga. "
         email_new_discussions_and_proposals: 'Nove rasprave i prijedolozi.'
         for_these_groups: "Za ove grupe:"
@@ -16,10 +16,10 @@ hr:
   try_it:
     header: "Isprobaj Loomio"
     start_a_group: "Započni grupu za donošenje odluka u vlastitoj zajednici."
-    join_the_community: "Pridruži se grupi Lommio  zajednice"
+    join_the_community: "Pridruži se grupi Loomio zajednice"
     loomio_community_info: "Ovdje raspravljamo i donosimo odluke o Loomiu."
     explore_groups: "Istraži druge grupe na Loomiu."
-    explore_groups_info: "Pregledaj odlične Loomio grupe i priduži se!"
+    explore_groups_info: "Pregledaj odlične Loomio grupe i pridruži se!"
   activerecord:
     errors:
       messages:
@@ -29,7 +29,7 @@ hr:
       email: "Nije ispravna email adresa"
   attachment:
     error:
-      too_large: "Datoteka je veća od 50MB, odaberi manju"
+      too_large: "Datoteka je veća od 50MB, odaberi manju."
   time:
     formats:
       for_today: '%l:%M %P'
@@ -45,31 +45,31 @@ hr:
       no_invitations_remaining: "Nije preostalo pozivnica"
     mailer:
       invitation_instructions:
-        subject: 'Netko te zove u svoju Loomio grupu.'
+        subject: 'Netko te zove u svoju Loomio grupu'
   error:
     access_denied: "Nepostojeća dozvola za izvršenje."
     cant_join_subgroup: "Nije se moguće pridružiti podgrupi bez članstva u roditeljskoj grupi."
     cant_modify_position: "Ovaj je prijedlog zatvoren."
     cant_state_position: "Ovaj je prijedlog zatvoren."
     cant_view_member_profile: "Nije moguće prikazati korisnikov profil bez članstva u istoj grupi."
-    contribution: "Molim ulogirajte se kaok bi pridonijeli."
+    contribution: "Molim ulogirajte se kako bi pridonijeli."
     discussion_not_created: "Nije moguće stvoriti raspravu."
     discussion_not_moved: "Nema dozvole za premještanje rasprave u %{destination_group.name}"
     group_not_archived: "Nije moguće arhivirati grupu."
     invalid_close_date: "Netočan datum zatvaranja, molim provjeriti da li je datum prošao."
     invalid_email: "Molim unesite barem jednu ispravnu email adresu"
-    image_upload_fail: "Nije moguće postaviti sliku. Slika mora imati manje od 1 MB i biri .jpeg,  png, ili .gif datoteka."
+    image_upload_fail: "Nije moguće postaviti sliku. Slika mora imati manje od 1 MB i biti .jpeg,  png, ili .gif datoteka."
     motion_closing_inputs: "Neispravan datum zatvaranja"
     motion_outcome_not_created: "Nije moguće objaviti ishod."
     motion_outcome_not_updated: "Nije moguće ažurirati ishod."
-    only_group_coordinator_destroy: "Nije moguće napustiti ovu grupu jer ste joj jedini koordinator. Grupu je moguće dekativbirati kroz izbornik postavki ili je u nju potrebno dodati <a href='%{add_coordinator}'> novog koordinatora</a>."
-    only_group_coordinator_remove_admin: "Grupi je potreban jedan koordinator. Želite li dodati još koordinatora u grupu*"
+    only_group_coordinator_destroy: "Nije moguće napustiti ovu grupu jer ste joj jedini koordinator. Grupu je moguće deaktivirati kroz izbornik postavki ili je u nju potrebno dodati <a href='%{add_coordinator}'> novog koordinatora</a>."
+    only_group_coordinator_remove_admin: "Grupi je potreban jedan koordinator. Želite li dodati još koordinatora u grupu?"
     permission_to_invite: "Nemate dozvolu za pozivanje novih članova."
     position_not_updated: "Nije moguće ažurirati poziciju."
     settings_not_updated: "Postavke nisu ažurirane."
-    group_request_already_accepted: "Pozivnica neispravna ili već prihvačena.ano"
-    group_request_invalid_token: "Tok nije ispravan"
-    group_private_or_not_found: "Grupa nije pronađena\n\nOva bi grupa mogla biti privatna, ako vam je netko dao link, recite im da vas pozovu u grupu."
+    group_request_already_accepted: "Pozivnica neispravna ili već prihvaćena."
+    group_request_invalid_token: "Token nije ispravan"
+    group_private_or_not_found: "Grupa nije pronađena\n\nOva bi grupa mogla biti privatna. Ako vam je netko dao link, recite im da vas pozovu u grupu."
     group_already_setup: "Grupa koju pokušavate postaviti već postoji."
     passwords_did_not_match: "Lozinke nisu iste"
     proposal_already_exists: "U raspravi je već otvoren prijedlog."
@@ -80,7 +80,7 @@ hr:
   alert:
     duplicate_email: "%{which_email} je već u grupi."
   notice:
-    new_contacts_imported: "Ovo je radilo! Možete unositi imena u polje ispod i preporučit ćemo vam email adrese."
+    new_contacts_imported: "Upalilo je! Možete unositi imena u polje ispod i preporučit ćemo vam email adrese."
     admin_rights_removed: "%{which_user} je izgubio / la koordinatorska prava."
     user_added: "%{user_email_or_name} obrisan/a je iz grupe."
     new_user_added: "%{user_email_or_name} bit će dodan/a u grupu kad otvori Loomio račun."
@@ -113,8 +113,8 @@ hr:
     group_category: "Pronađi još sličnih grupa"
   views:
     pagination:
-      previous: "Prošla"
-      next: "Slijedeća "
+      previous: "Prethodno"
+      next: "Slijedeće"
   warning:
     cant_remove_last_admin: "Vi ste zadnji koordinator i nije vas moguće odstraniti."
     membership_request_already_approved: "Zahtjev za članstvom već je odobren."
@@ -136,7 +136,7 @@ hr:
     group_created: "Grupa je uspješno kreirana."
     members_added: "Članovi dodani u grupu."
     membership_requested: "Zatražili ste članstvo u %{which_group}. Bit ćete obaviješteni po odobrenju zahtjeva."
-    motion_closed: "Priejdlog je zatvoren. Ako želite, ispod možete podesiti ishod i poslati ga svojoj grupi."
+    motion_closed: "Prijedlog je zatvoren. Ako želite, ispod možete podesiti ishod i poslati ga svojoj grupi."
     motion_outcome_created: "Čestitamo, kreirali ste ishod prijedloga i članovi vaše grupe su obaviješteni."
     motion_outcome_updated: "Ishod prijedloga je ažuriran."
     password_updated: "Vaša lozinka uspješno je izmijenjena."
@@ -197,7 +197,7 @@ hr:
   footer:
     about: 'O nama'
     blog: 'Blog'
-    contact: 'Konakt'
+    contact: 'Kontakt'
     privacy: 'Privatnost'
     public_groups: 'Javne grupe'
     terms: 'Uvjeti'
@@ -245,7 +245,7 @@ hr:
   honeypot_warning: "Nije moguće kreirati račun. Ako koristite čitač ekrana, molimo da se pobrinete da zadnje (skriveno) polje formulara bude prazno."
   tagline: "Stvaranje svijeta u kojem svatko može sudjelovati u odlukama koje na njih imaju utjecaja."
   or_sign_in_html: "Ukoliko već posjedujete Loomio račun, <a href='%{link}' class='%{link_class}'>prijavite se ovdje</a>"
-  or_link_account_html: "Ukoliko već posjedujete Loomio račun, <a href='%{link}'spojite ga</a>"
+  or_link_account_html: "Ukoliko već posjedujete Loomio račun, <a href='%{link}'>spojite ga</a>"
   click_to_dismiss: "Kliknite ovdje za otpust poruke"
   generic_confirm: "Jeste li sigurni?"
   discussion_helper_text:
@@ -269,12 +269,12 @@ hr:
     deactivate_account: "Deaktiviraj račun"
     about_deactivation: "Što će to značiti?"
     confirm_account_deactivation: "Jeste li sigurni da želite deaktivirati svoj račun?"
-    reactivation_html: "Morate nas <a href='%{link}'>kontaktirati</a> kako bi reaktivirali račun-"
+    reactivation_html: "Morate nas <a href='%{link}'>kontaktirati</a> kako biste reaktivirali račun."
     deactivation:
       title: "Deaktivacija računa"
       query: "Možete li nam reći zašto tražite isključivanje svog računa?"
       only_coordinator: "Grupa mora imati barem jednog koordinatora. Trenutačno ste jedini koordinator ovih grupa:"
-      instructions: "Kako bi deaktivirali račun, potrebno je dodati drugog koordinatora ili deaktivirati grupe."
+      instructions: "Kako biste deaktivirali račun, potrebno je dodati drugog koordinatora ili deaktivirati grupe."
       info_title: "Što će deaktivacija računa značiti?"
       memberships: "Više nećete biti na popisu članova grupa kojima trenutačno pripadate."
       group_contributions: "Komentari, prijedlozi i rasprave koje ste napravili ostat će u grupi, ali će s njih biti maknuto vaše ime."
@@ -290,7 +290,7 @@ hr:
       add_members: Pozivati i odobravati nove članove
       edit_comments: Bili kada ažurirati komentare
       edit_discussions: Ažurirati kontekst bilo koje rasprave u grupi
-      start_discussions: Zapoćinjati rasprave
+      start_discussions: Započinjati rasprave
       raise_motions: Podizati prijedloge
       vote: Glasati o prijedlozima
       create_subgroups: Stvarati podgrupe
@@ -298,7 +298,7 @@ hr:
     visible_to:
       label: Tko može naći ovu grupu?
       public_html: 'Bilo tko <span>javna objava grupe</span>'
-      parent_members_html: 'Pojedinci u %{parent_group_name} <span>nevidljivo javnosti, ali vidljivo članovima grupe %{parent_group_name}</span>'
+      parent_members_html: 'Pojedinci u %{parent_group_name} <span>nevidljivi javnosti, ali vidljivi članovima grupe %{parent_group_name}</span>'
       members_html: 'Samo članovi <span>grupe neće biti na popisu</span>'
     membership_granted_upon:
       label: Kako se pridružiti?
@@ -325,8 +325,8 @@ hr:
     c1: Mijenjati postavke grupe
     c2: Ažurirati naslov i kontekst bilo koje rasprave.
     c3: Seliti rasprave između grupa.
-    c4: Pozivati i odobravati nove ćlanove.
-    c5: Poslati emailom objavu svim članovima grupe.
+    c4: Pozivati i odobravati nove članove.
+    c5: Poslati e-mailom objavu svim članovima grupe.
     c6: Deaktivirati grupu.
     c7: Dodavati i micati druge koordinatore.
     c8: Brisati rasprave.
@@ -353,12 +353,12 @@ hr:
       parent_members: 'Privatna grupa. Vidljiva isključivo članovima i ljudima u  %{parent_group_name}.'
       members: Skrivena grupa. Vidljiva isključivo članovima.
       public_html: 'Bilo tko <span>javno prikazati grupu</span>'
-      parent_members_html: 'ljudi  u %{parent_group_name} <span>nisu prikazani javnosti, ali su vidljivi članovima %{parent_group_name}</span>'
+      parent_members_html: 'Ljudi  u %{parent_group_name} <span>nisu prikazani javnosti, ali su vidljivi članovima %{parent_group_name}</span>'
       members_html: 'Samo za članove <span>ova grupa neće biti na popisu</span>'
-  setup_steps_title: "Iduči koraci:"
+  setup_steps_title: "Idući koraci:"
   setup_step_1: "Pogledaj primjer rasprave"
   setup_step_2: "Započni svoju prvu rapravu"
-  setup_step_3: "Pozvi ljude u svoju grupu"
+  setup_step_3: "Pozovi ljude u svoju grupu"
   invite_people: "Pozovi ljude"
   no_invitations_button: "Nije ostalo pozivnica"
   number_pending: '%{pending} obrada'
@@ -380,7 +380,7 @@ hr:
   confirm_leave_hidden_group: "Jeste li sigurni da želite napustiti %{which_group}? Napustit ćete i podgrupe."
   confirm_leave_group: "Jeste li sigurni da želite napustiti %{which_group}?"
   deactivate_group: "Dektivacija grupe"
-  confirm_deactivate_group: "Samo malo!!! Jeste li sigurni da želite deaktivirati %{which_group}? Nećete biti u mogučnosti pratiti grupu. Grupu možete reaktivirati slanjem poruke  a contact@loomio.org"
+  confirm_deactivate_group: "Samo malo!!! Jeste li sigurni da želite deaktivirati %{which_group}? Nećete biti u mogućnosti pratiti grupu. Grupu možete reaktivirati slanjem poruke  a contact@loomio.org"
   invited_users: "Pozvani članovi"
   members: "Članovi"
   confirm_remove_user: "Jeste li sigurni da želite %{which_user} maknuti iz grupe?"
@@ -404,7 +404,7 @@ hr:
   membership_requested: "Članstvo zatraženo"
   request_membership: "Zatraži članstvo"
   ask_to_join_group: "Zahtjev za pridruženjem grupi"
-  confirm_remove_membership_request: "Jeste li sigurni da želite povuči zahtjev za članstvom u ovoj grupi?"
+  confirm_remove_membership_request: "Jeste li sigurni da želite povući zahtjev za članstvom u ovoj grupi?"
   no_pending_membership_requests: "Ova grupa trentuno nema zahtjeva za članstvom u obradi."
   subgroups: "Podgrupe"
   create_a_subgroup: "Napravi podgrupu"
@@ -415,7 +415,7 @@ hr:
   create_subgroup: "Napravi podgrupu"
   creating_subgroup: "Stvaranje podgrupe"
   hidden: "Skriveno"
-  public: "javno"
+  public: "Javno"
   new_group: "Nova grupa"
   create_group: "Napravi grupu"
   creating_group: "Stvaranje grupe"
@@ -434,7 +434,7 @@ hr:
       not_following_details: "Dobivat ćete obavijesti o temama u kojima sudjelujete."
   group_request:
     beta_request_header: "Započni grupu na Loomio Beta"
-    beta_request_description: "Kako bi započeli s donsiti odluke na Loomio Beta, prvo trebate napraviti grupu"
+    beta_request_description: "Kako bi započeli s donositi odluke na Loomio Beta, prvo trebate napraviti grupu"
     neighbourhood_support_group: "npr. Grupa za suzbijanje obiteljskog naslija"
     commercial_use_option: U tvrki, formalnoj organizaciji ili radnom mjestu
     non_commercial_use_option: U lokalnoj zajednici ili neformalnoj mreži
@@ -444,7 +444,7 @@ hr:
       body_html: |
         Poslali smo vam email s pozivom da započnete svoju grupu.
 
-        Ako ne dobijete poruku u narednih par minute, pošaljite nam emial na <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
+        Ako ne dobijete poruku u narednih par minute, pošaljite nam e-mail na <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> slaže se s prijedlogom."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> suzdržani su od prijedloga."
@@ -471,14 +471,14 @@ hr:
   current_decision: "Trenutna odluka"
   previous_decisions: "Prijašnje odluke"
   see_previous_decisions: "Pregledaj prijašnje odluke"
-  see_more: "Još"
+  see_more: "Više"
   create_new_proposal: "Napravi prijedlog"
   empty_decision_list_html: "Spremni za donošenje odluke? <br> Bilo tko može napraviti prijedlog."
   empty_decision_index: "Ova grupa nije još donijela nijednu odluku."
   empty_discussion_list: "Ova rasprava još nije aktivna."
   go_to_add_comment_html: "Za dodavanje komentara, <a href='%{href}'>idi na kraj rasprave</a>."
   comment_by: "Komentar od %{comment_author}"
-  read_up_to: "Ovdje sta zadnji put stali s čitanjem"
+  read_up_to: "Ovdje ste zadnji put stali s čitanjem"
   discussion_list:
     clear_filters: "Očisti filtere: pregled svih rasprava "
     filter_unread:
@@ -488,7 +488,7 @@ hr:
       enable: "Prikaži samo praćene rasprave"
       disable: "Prikaži praćene i nepraćene rasprave"
     empty:
-      no_discussions: "Nema rasprava u niti jednoj grupi."
+      no_discussions: "Nema rasprava niti u jednoj grupi."
       no_discussions_in_group: "Ova grupa još nema rasprava."
       no_discussions_matching_filters_html: "Nema rasprava pod tim filterima. <a href='%{link}'>Očisti filtere</a>."
       no_public_discussions: "U ovoj grupi nema javnih rasprava."
@@ -499,7 +499,7 @@ hr:
       log_in_html: "Ako ste član / ica, <a href='%{href}'>prijavite se</a> kako bi vidjeli privatne rasprave."
   discussion_context:
     started_html: "Započeo / la <a href='%{link}' class='%{link_class}'>%{who}</a> prije %{when}"
-    last_edited_html: "Last edited %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>\n\nZadnje ažuriranje <a href='%{link}' class='%{link_class}'>%{who}</a> prije %{when}"
+    last_edited_html: "Zadnje ažuriranje <a href='%{link}' class='%{link_class}'>%{who}</a> prije %{when}"
     see_revision_history: "Prikaži povijest izmjena"
     see_history: "Prikaži povijest"
     click_to_follow: "Klikni za praćenje teme"
@@ -507,14 +507,14 @@ hr:
     following_details: "Dobivat ćete notifikacije o aktivnosti u ovoj temi."
     not_following_details: "Nećete dobivati notifikacije o aktivnosti u ovoj temi."
   description_history:
-    header: "Povijest izmejna"
+    header: "Povijest izmjena"
     subheader: "Verzija"
     edited_by: "Ažurirao / la %{who} prije %{when}"
     current: "(trenutačno)"
     restore: "(Vrati ovu verziju)"
     applying_changes: "(Primjenjivanje postavki...)"
     previous: "Pret"
-    next: "Idu"
+    next: "Slij"
   comment_form_placeholder: "Recite nešto..."
   comment_form_submit_button: "Komentiraj"
   liked_by: "%{who} se sviđa"
@@ -541,7 +541,7 @@ hr:
   proposed_when_by_who: "Predložio / la %{who} prije %{when}"
   engagement_on_open_proposal: "%{percent}%% članova / ca iznijeli su svoj stav (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}%% članova / ca su iznijeli svoje stavove (%{numerator}/%{denominator})"
-  state_your_position: "Iznesi svoj položaj"
+  state_your_position: "Iznesi svoj stav"
   positions: "Stavovi"
   yes_position: "Slažem se"
   yes_details: "Slažem se s ovim i želim da prođe."
@@ -561,7 +561,7 @@ hr:
     block: "blokiraj"
     past_tense:
       'yes': "prihvaćeno"
-      'no': "odbaćeno"
+      'no': "odbačeno"
       abstain: "suzdržano"
       block: "blokirano"
   unable_to_vote:
@@ -572,3 +572,11 @@ hr:
     edit_comment: "Ažuriranje komentara"
   help:
     coordinating: 'Koordinacije vaše Loomio grupe'
+    coordinating_details: |
+      Kao koordinator / ica, odgovorni ste za postavljanje vaše Loomio grupe i pozivanje
+      članova. Također se morate naučiti koristiti novi softver, pa će i vaša grupa učinkovitije učiti nove procese kolaboracije i zajedno donositi bolje odluke. Ovo su neke smjernice za bolji uspjeh vaše grupe:
+    different_ways: 'Različiti načini korištenja Loomia'
+    get_in_touch: "Stupite u kontakt"
+    get_in_touch_description_html: "Ako imate pitanje ili prijedlog, <a href='%{link}'>javite nam se</a>."
+    getting_started: "Početak rada"
+    getting_started_description: "S lijeve strane grupa raspravlja o temi razmjenjujući ideje i informacije. Kad grupa mora donijeti odluku, ona se pojavljuje s desne strane."

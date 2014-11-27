@@ -9,10 +9,12 @@ class Memo
   end
 
   def publish!
-    if ENV['DELAY_FAYE']
-      PrivatePub.delay(priority: 10).publish_to(message_channel, as_hash)
-    else
-      PrivatePub.publish_to(message_channel, as_hash)
+    if ENV['FAYE_ENABLED']
+      if ENV['DELAY_FAYE']
+        PrivatePub.delay(priority: 10).publish_to(message_channel, as_hash)
+      else
+        PrivatePub.publish_to(message_channel, as_hash)
+      end
     end
   end
 end

@@ -14,7 +14,7 @@
     "angular-translate": "~2.4.0",
     "angular-translate-loader-url": "~2.4.0",
     "angular-markdown-directive": "~0.3.0",
-    "angular-bootstrap": "latest",
+    "angular-bootstrap": "0.11.2",
     "ng-file-upload": "latest",
     "tc-angular-chartjs": "~1.0.9",
     "ngInfiniteScroll": "~1.1.2",
