@@ -1,9 +1,9 @@
-angular.module('loomioApp').controller 'ProposalCardController', ($scope, $modal, ProposalService, UserAuthService, VoteModel, VoteService) ->
+angular.module('loomioApp').controller 'ProposalCardController', ($scope, $modal, UserAuthService) ->
   currentUser = UserAuthService.currentUser
 
   filteredVotes = ->
     return [] unless $scope.proposal
-    _.filter $scope.proposal.votes(), (vote) ->
+    _.filter $scope.proposal.uniqueVotes(), (vote) ->
       vote.authorId != currentUser.id
 
   $scope.onlyVoterIsYou = ->

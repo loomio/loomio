@@ -1,0 +1,8 @@
+%li{dropdown: '', on-toggle: 'toggleInbox(open)', ng-if: '!inboxPinned()'}
+  %a.loomio-nav-btn.has-badge.dropdown-toggle{href: '#'}
+    / lets put unread counts in here:
+    %span.badge
+    %i.fa.fa-lg.fa-fw.fa-inbox
+    %span.hide Inbox
+  .dropdown-menu.loomio-nav-dropdown#inbox-dropdown{role: 'menu'}
+    %inbox{ng_show: 'showInbox'}

@@ -1,6 +1,9 @@
-angular.module('loomioApp').factory 'VoteModel', (RecordStoreService, $sanitize) ->
-  class VoteModel
-    constructor: (data = {}) ->
+angular.module('loomioApp').factory 'VoteModel', (BaseModel) ->
+  class VoteModel extends BaseModel
+    @singular: 'vote'
+    @plural: 'votes'
+
+    initialize: (data) ->
       @id = data.id
       @authorId = data.author_id
       @proposalId = data.proposal_id
@@ -8,20 +11,18 @@ angular.module('loomioApp').factory 'VoteModel', (RecordStoreService, $sanitize)
       @statement = data.statement
       @createdAt = data.created_at
 
-    params: ->
+    serialize: ->
       vote:
         id: @id
         motion_id: @proposalId
         position: @position
         statement: @statement
 
-    plural: 'votes'
-
     author: ->
-      RecordStoreService.get('users', @authorId)
+      @recordStore.users.get(@authorId)
 
     proposal: ->
-      RecordStoreService.get('proposals', @proposalId)
+      @recordStore.proposals.get(@proposalId)
 
     authorName: ->
       @author().name

@@ -1,26 +1,11 @@
 %header#header
-  %nav.loomio-nav{role: 'navigation'}
+  %nav.loomio-nav{role: 'navigation', ng-class: '{inboxPinned: inboxPinned()}'}
     %ul.loomio-nav-items
       %li
         %a.loomio-nav-btn{href: '#'}
           .loomio-nav-logo
-      / don't load this li if the sidebar is open
-      %li{dropdown: '', on-toggle: 'toggled(open)'}
-        %a.loomio-nav-btn.has-badge.dropdown-toggle{href: '#'}
-          %span.badge 2
-          %i.fa.fa-lg.fa-fw.fa-inbox
-          %span.hide Inbox
-        .loomio-nav-dropdown.dropdown-menu{role: 'menu'}
-          %inbox{ng-if: 'inboxIsOpen'}
-      %li
-        %a.loomio-nav-btn{href: '#'}
-          %i.fa.fa-lg.fa-fw.fa-search
-      %li.pull-right
-        %a.loomio-nav-btn{href: '#'}
-          %i.fa.fa-lg.fa-fw.fa-navicon
-      %li.pull-right
-        %a.loomio-nav-btn{href: '#'}
-          %i.fa.fa-lg.fa-fw.fa-bell
-      %li.pull-right
-        %a.loomio-nav-btn{href: '#'}
-          %i.fa.fa-lg.fa-fw.fa-plus
+      %navbar_inbox
+      %navbar_search
+      %navbar_user_options
+      %navbar_notifications{ng-controller: 'NavbarNotificationsController'}
+      %navbar_start_discussion
