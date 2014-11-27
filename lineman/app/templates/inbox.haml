@@ -21,7 +21,10 @@
       .selector-list-item-thread-group-name
         {{::discussion.group().fullName()}}
 
-  %li.selector-list-item
+  %li.selector-list-item{ng-hide: 'inboxPinned()', ng-click: 'openInbox()'}
     %a{href: '#'}
       Keep this menu open
-      / Close this menu
+
+  %li.selector-list-item{ng-show: 'inboxPinned()', ng-click: 'closeInbox()'}
+    %a{href: '#'}
+      Close this menu
