@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'GroupService', ($http, RestfulService, RecordStoreService) ->
+angular.module('loomioApp').factory 'GroupService', ($http, RestfulService) ->
   new class GroupService extends RestfulService
     resource_plural: 'groups'
 

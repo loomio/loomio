@@ -1,6 +1,9 @@
-angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
-  class ProposalModel
-    constructor: (data = {}) ->
+angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
+  class ProposalModel extends BaseModel
+    @singular: 'proposal'
+    @plural: 'proposals'
+
+    initialize: (data) ->
       @id = data.id
       @name = data.name
       @description = data.description
@@ -13,7 +16,12 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
       @voteCounts = data.vote_counts
       @activityCount = data.activity_count
 
-    params: ->
+    setupViews: ->
+      #@votesView = @recordStore.votes.addDynamicView(@viewName())
+      #@votesView.applyFind(proposalId: @id)
+      #@votesView.applySimpleSort('id')
+
+    serialize: ->
       motion:
         id: @id
         discussion_id: @discussionId
@@ -24,17 +32,15 @@ angular.module('loomioApp').factory 'ProposalModel', (RecordStoreService) ->
     positionVerbs: ['agree', 'abstain', 'disagree', 'block']
     positions: ['yes', 'abstain', 'no', 'block']
 
-    plural: 'proposals'
 
     author: ->
-      RecordStoreService.get('users', @authorId)
+      @recordStore.users.get(@authorId)
 
     discussion: ->
-      RecordStoreService.get('discussions', @discussionId)
+      @recordStore.discussions.get(@discussionId)
 
     votes: ->
-      RecordStoreService.get 'votes', (vote) =>
-        vote.proposalId == @id
+      @recordStore.votes.find(proposalId: @id)
 
     authorName: ->
       @author().name

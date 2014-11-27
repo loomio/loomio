@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelService, RecordStoreService) ->
+angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelService, Records) ->
   class RestfulService
     resource_plural: 'undefined'
 
@@ -21,20 +21,20 @@ angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelServ
 
     fetchByKey: (key, success, failure) ->
       $http.get(@showPath(key)).then (response) =>
-        RecordStoreService.importRecords(response.data)
-        RecordStoreService.get(@resource_plural, key)
+        Records.import(response.data)
+        Records[@resource_plural].get(key)
 
     fetch: (filters, success, failure, path) ->
       path = @customPath(path) or @indexPath()
       $http.get(path, { params: filters }).then (response) =>
-        RecordStoreService.importRecords(response.data)
+        Records.import(response.data)
         success(response.data[@resource_plural]) if success?
       , (response) ->
         failure(response.data.error) if failure?
 
     create: (obj, success, failure, path) ->
       path = @customPath(path) or @indexPath()
-      $http.post(path, obj.params()).then (response) ->
+      $http.post(path, obj.serialize()).then (response) ->
         MessageChannelService.messageReceived(response.data)
         success(response.data) if success?
       , (response) ->
@@ -42,7 +42,7 @@ angular.module('loomioApp').factory 'RestfulService', ($http, MessageChannelServ
 
     update: (obj, success, failure, path) ->
       path = @customPath(path, obj.id) or @showPath(obj.id)
-      $http.patch(path, obj.params()).then (response) ->
+      $http.patch(path, obj.serialize()).then (response) ->
         MessageChannelService.messageReceived(response.data)
         success(response.data) if success?
       , (response) ->

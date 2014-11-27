@@ -1,5 +1,7 @@
-angular.module('loomioApp').controller 'CommentFormController', ($scope, CommentModel, CommentService, MembershipService, AttachmentService) ->
-  $scope.comment = $scope.comment or new CommentModel(discussion_id: $scope.discussion.id)
+angular.module('loomioApp').controller 'CommentFormController', ($scope, Records, CommentService, MembershipService) ->
+  $scope.comment = $scope.comment or Records.comments.new(discussion_id: $scope.discussion.id)
+  console.log 'discussion', $scope.discussion
+  console.log 'group', _.map Records.groups.get(), 'name'
   group = $scope.discussion.group()
 
   $scope.mentionables = group.members()
@@ -24,7 +26,7 @@ angular.module('loomioApp').controller 'CommentFormController', ($scope, Comment
         ~member.label.search(new RegExp(fragment, 'i')))
 
   saveSuccess = ->
-    $scope.comment = new CommentModel(discussion_id: $scope.discussion.id)
+    $scope.comment = Records.comments.new(discussion_id: $scope.discussion.id)
     $scope.$emit('commentSaveSuccess')
 
   saveError = (error) ->

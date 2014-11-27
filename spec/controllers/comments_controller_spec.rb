@@ -33,21 +33,5 @@ describe CommentsController do
       end
     end
 
-    context "user unlikes a comment" do
-      before do
-        comment.stub(:like).with({'like' => 'false'})
-      end
-
-      it "checks permissions" do
-        comment.should_receive(:unlike).with(user) #hack? -PS
-        post :like, id: comment.id, like: 'false', format: :js
-      end
-
-      it "removes like from comment model" do
-        comment.should_receive(:unlike).with(user)
-        post :like, id: comment.id, like: 'false', format: :js
-      end
-
-    end
   end
 end
