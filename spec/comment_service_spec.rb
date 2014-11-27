@@ -1,3 +1,4 @@
+require 'rails_helper'
 describe 'CommentService' do
   let(:ability) { double(:ability, :authorize! => true, can?: true) }
   let(:user) { double(:user, ability: ability, update_attributes: true) }
@@ -44,7 +45,8 @@ describe 'CommentService' do
 
   describe 'unlike' do
     after do
-      CommentService.unlike(comment: comment, actor: actor)
+      comment.stub(:likers){[user]}
+      CommentService.unlike(comment: comment, actor: user)
     end
 
     it 'calls unlike on the comment' do
@@ -56,7 +58,7 @@ describe 'CommentService' do
     before do
       Events::CommentLiked.stub(:publish!)
       ability.stub(:authorize!)
-      comment.stub(:like).and_return(comment_vote)
+      #comment.stub(:like).and_return(comment_vote)
     end
 
     after do
@@ -86,7 +88,7 @@ describe 'CommentService' do
     end
 
     after do
-      CommentService.create(comment: comment, actor: actor)
+      CommentService.create(comment: comment, actor: user)
     end
 
     it 'authorizes that the user can add the comment' do

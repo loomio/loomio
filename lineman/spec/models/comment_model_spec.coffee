@@ -32,20 +32,24 @@ describe 'CommentModel', ->
       expect(comment.isMostRecent()).toBe(false)
 
   describe 'canBeEditedByAuthor', ->
-    describe 'group allows members to edit comments', ->
+    describe 'members Can Edit', ->
       it 'is true', ->
         group.membersCanEditComments = true
         expect(comment.canBeEditedByAuthor()).toBe(true)
 
-    describe 'group disallows members to edit comments', ->
+    describe 'members Cannot edit', ->
       beforeEach ->
         group.membersCanEditComments = false
 
       it 'is true when is most recent comment', ->
+        console.log 'comments', comment.discussion().comments()
+        expect(comment.isMostRecent()).toBe(true)
         expect(comment.canBeEditedByAuthor()).toBe(true)
 
       it 'is false when is is not most recent comment', ->
-        newComment = recordStore.comments.new(id: 8, discussion_id: 1, created_at: "2000-04-01T00:00:20")
+        newComment = recordStore.comments.new(id: 9, discussion_id: 1, created_at: "2000-04-01T00:00:20")
+        console.log 'notmostrecent', comment.discussion().comments()
+        expect(comment.isMostRecent()).toBe(false)
         expect(comment.canBeEditedByAuthor()).toBe(false)
 
 

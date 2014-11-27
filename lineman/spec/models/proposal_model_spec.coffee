@@ -28,8 +28,13 @@ describe 'ProposalModel', ->
 
 
   describe 'isActive', ->
-    it 'is true when closedAt is falsy'
-    it 'is true when closedAt is truthy'
+    it 'is true when closedAt', ->
+      proposal.closedAt = "2014-11-18T00:49:39.046Z"
+      expect(proposal.isActive()).toBe(false)
+
+    it 'is true when closedAt', ->
+      proposal.closedAt = null
+      expect(proposal.isActive()).toBe(true)
 
   describe 'userHasVoted', ->
     it 'is false when the user has not voted', ->
