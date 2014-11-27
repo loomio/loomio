@@ -3,8 +3,8 @@ angular.module('loomioApp').factory 'BaseModel', ->
     constructor: (recordStore, data) ->
       Object.defineProperty(@, 'recordStore', value: recordStore, enumerable: false)
       @initialize(data)
-      @setupViews() if @setupViews?
-      recordStore[@constructor.plural].put @
+      @setupViews() if @setupViews? and @id?
+      #recordStore[@constructor.plural].insert @
 
     initialize: ->
     setupViews: ->
