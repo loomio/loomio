@@ -19,7 +19,7 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
       templateUrl: 'generated/templates/discussion_form.html',
       controller: 'DiscussionFormController',
       resolve:
-        discussion: -> new $scope.discussion.copy()
+        discussion: -> $scope.discussion.copy()
 
   $scope.getNextPage = ->
     return false if busy or $scope.lastPage
