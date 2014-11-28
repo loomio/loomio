@@ -11,11 +11,3 @@ angular.module('loomioApp').factory 'CommentService', ($http, UserAuthService, R
       comment.removeLiker(UserAuthService.currentUser)
       $http.post("/api/v1/comments/#{comment.id}/unlike").then (response) ->
         success()
-
-    destroy: (obj, success, failure) ->
-      $http.delete(@showPath(obj.id), obj.params()).then (response) ->
-        obj.destroy()
-        success()
-      , (response) ->
-        console.log response
-        failure(response.data.error)

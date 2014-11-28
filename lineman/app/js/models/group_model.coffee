@@ -40,8 +40,13 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
         discussion_privacy_options:    @discussionPrivacyOptions
         visible_to:                    @visibleTo
 
+    setupViews: ->
+      @discussionsView = @recordStore.discussions.addDynamicView(@viewName())
+      @discussionsView.applyFind(groupId: @id)
+      @discussionsView.applySimpleSort('createdAt', true)
+
     discussions: ->
-      @recordStore.discussions.find(groupId: @id)
+      @discussionsView.data()
 
     subgroups: ->
       @recordStore.groups.find(parentId: @id)
@@ -82,7 +87,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       @parent().name if @parent()?
 
     parentIsHidden: ->
-      @parent().visibleToPublic() if @parent()?
+      @parent().visibleToPublic() if @parentId?
 
     visibleToPublic: ->       @visibleTo == 'public'
     visibleToOrganization: -> @visibleTo == 'parent_members'
