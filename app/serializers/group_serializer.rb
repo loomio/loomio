@@ -15,11 +15,17 @@ class GroupSerializer < ActiveModel::Serializer
              :visible_to,
              :membership_granted_upon,
              :discussion_privacy_options,
-             :logo_url_small
+             :logo_url_small,
+             :cover_url_small
 
   has_one :parent, serializer: GroupSerializer, root: 'groups'
 
   def logo_url_small
     object.logo.url(:medium)
   end
+
+  def cover_url_small
+    object.cover_photo.url(:card)
+  end
+
 end
