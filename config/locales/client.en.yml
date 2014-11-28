@@ -151,6 +151,7 @@ en:
       edit_group: 'Edit Group Settings'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
+      manage_members: 'Manage members'
     deactivate_group:
       title: 'Deactivate group'
       question: 'Are you sure you want to deactivate this group?'
