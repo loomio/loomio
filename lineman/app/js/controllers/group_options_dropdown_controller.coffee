@@ -11,13 +11,11 @@ angular.module('loomioApp').controller 'GroupOptionsDropdownController', ($scope
       templateUrl: 'generated/templates/leave_group.html'
       controller: 'LeaveGroupController'
       resolve:
-        group: ->
-          angular.copy($scope.group)
+        group: -> $scope.group
 
   $scope.openDeactivateGroupModel = ->
     $modal.open
       templateUrl: 'generated/templates/deactivate_group.html'
       controller: 'DeactivateGroupController'
       resolve:
-        group: ->
-          angular.copy($scope.group)
+        group: -> $scope.group

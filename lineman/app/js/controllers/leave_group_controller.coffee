@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'LeaveGroupController', ($scope, $modalInstance, group, MembershipService, UserAuthService) ->
+angular.module('loomioApp').controller 'LeaveGroupController', ($scope, $modalInstance, group, MembershipService, UserAuthService, FormService) ->
   $scope.group = group
   membership = group.membershipFor(UserAuthService.currentUser)
 

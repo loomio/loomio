@@ -39,7 +39,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
       @recordStore.discussions.get(@discussionId)
 
     votes: ->
-      @votesView.data()
+      @votesView.data() unless @isNew()
 
     authorName: ->
       @author().name
