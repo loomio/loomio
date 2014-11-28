@@ -1,33 +1,16 @@
-angular.module('loomioApp').controller 'VoteFormController', ($scope, Records, VoteService, UserAuthService) ->
-  $scope.newVote = Records.votes.new
+angular.module('loomioApp').controller 'VoteFormController', ($scope, Records, VoteService, UserAuthService, FormService) ->
+  $scope.vote = Records.votes.new({proposal_id: $scope.proposal.id})
+
+  FormService.applyForm $scope, VoteService.save, $scope.vote
 
   $scope.lastVote = ->
     $scope.proposal.lastVoteByUser(UserAuthService.currentUser)
-
-  $scope.editing = false
 
   $scope.changePosition = ->
     $scope.editing = true
 
   $scope.selectPosition = (position) ->
-    $scope.newVote.position = position
+    $scope.vote.position = position
 
-  $scope.submit = ->
-    $scope.isDisabled = true
-    $scope.newVote.proposalId = $scope.proposal.id
-    VoteService.create($scope.newVote, saveSuccess, saveError)
-
-  $scope.cancel = ($event) ->
+  $scope.cancel = ->
     $scope.editing = false
-    $event.preventDefault();
-
-  saveSuccess = ->
-    $scope.newVote = Records.votes.new(proposal_id: $scope.proposal.id)
-    $scope.isDisabled = false
-    $scope.editing = false
-    $scope.$emit('newVote')
-
-  saveError = (error) ->
-    $scope.isDisabled = false
-    $scope.errorMessages = error.error_messages
-
