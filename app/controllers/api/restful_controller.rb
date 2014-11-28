@@ -97,7 +97,7 @@ class API::RestfulController < API::BaseController
     if resource.errors.empty?
       render json: [resource]
     else
-      render json: { errors: resource.errors }, status: 400
+      render json: resource.errors.full_messages, root: false, status: 400
     end
   end
 

@@ -44,7 +44,9 @@ Loomio::Application.routes.draw do
     resources :invitations, only: :create
     resources :events, only: :index
     resources :discussions, only: [:show, :index, :create, :update, :destroy]
-    resources :motions,     only: [       :index, :create, :update], path: :proposals
+    resources :motions,     only: [       :index, :create, :update], path: :proposals do
+      post :close, on: :member
+    end
     resources :votes,       only: [       :index, :create, :update] do
       get :my_votes, on: :collection
     end

@@ -4,3 +4,9 @@ angular.module('loomioApp').factory 'ProposalService', ($http, RestfulService) -
 
     fetchByDiscussion: (discussion, success, failure) ->
       @fetch({discussion_id: discussion.id}, success, failure)
+
+    close: (proposal, success, failure) ->
+      $http.post("#{@showPath(proposal.id)}/close").then (response) ->
+        success() if success?
+      , (response) ->
+        failure() if failure?

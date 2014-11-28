@@ -4,7 +4,7 @@ class API::DiscussionsController < API::RestfulController
 
   def index
     load_and_authorize_group
-    @discussions = visible_records.page(params[:page]).per(5).to_a
+    @discussions = visible_records.page(params[:page]).per(25).to_a
     respond_with_collection
   end
 
