@@ -49,7 +49,7 @@
     #group-actions
       .btn-toolbar
       - if can? :create, @discussion
-        = link_to new_discussion_path(:group_id => @group.id), class: 'btn btn-block btn-primary btn-left cuke-start-discussion' do
+        = link_to new_discussion_path(:group_id => @group.id), id: 'start-new-discussion', class: 'btn btn-block btn-primary btn-left cuke-start-discussion' do
           %i.fa.fa-comments
           = t(:start_a_discussion)
       - if can?(:add_members, @group)
