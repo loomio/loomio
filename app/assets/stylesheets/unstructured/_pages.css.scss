@@ -885,6 +885,9 @@ body.pages.crowdfunding_celebration {
     border-radius: 4px;
     background: white;
   }
+  .indented-list {
+    padding-left: 40px;
+  }
   .contribution-level {
     margin-bottom: 20px;
   }
@@ -892,7 +895,6 @@ body.pages.crowdfunding_celebration {
     border-radius: 8px;
     margin-bottom: 10px;
   }
-  .img-francios { border-radius: 4px; }
   .intro {
     margin-top: 20px;
   }
@@ -904,6 +906,19 @@ body.pages.crowdfunding_celebration {
     font-weight: 300;
     margin-top: 36px;
   }
+  img.img-artwork {
+    text-align: center;
+    height: 350px
+  }
+  img.img-francios {
+    border-radius: 4px 4px 0 0;
+    width: 120px;
+    height: 120px;
+  }
+  img.img-pyxis {
+    border-radius: 0 0 4px 4px;
+    width: 120px;
+  }
   h1 {
     margin-top: 7px;
     font-size: 36px;
@@ -914,4 +929,7 @@ body.pages.crowdfunding_celebration {
     font-size: 16px;
     text-transform: uppercase;
   }
+  p { padding: 5px 0; }
+  p.blockquote { font-style: italic; padding: 0 40px; }
+  li { padding: 10px 0; }
 }
