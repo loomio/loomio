@@ -1,7 +1,7 @@
 angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
   $locationProvider.html5Mode(true)
 
-  $routeProvider.when('/discussions/:id',
+  $routeProvider.when('/d/:id',
     templateUrl: 'generated/templates/discussion.html'
     controller: 'DiscussionController'
     resolve:
@@ -9,14 +9,14 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
         DiscussionService.fetchByKey($route.current.params.id)
       currentUser: ($http, UserAuthService) ->
         UserAuthService.fetchCurrentUser()
-  ).when('/groups/new',
+  ).when('/g/new',
     templateUrl: 'generated/templates/group_form.html',
     controller: 'GroupFormController',
     resolve:
-      group: ($route, GroupService, GroupModel, MainRecordStore) ->
-        GroupService.fetchByKey($route.current.params.parent_id).then(->
-          new GroupModel(parent_id: MainRecordStore.get('groups', $route.current.params.parent_id).id))
-  ).when('/groups/:id',
+      group: ($route, GroupService, GroupModel, Records) ->
+        GroupService.fetchByKey($route.current.params.parent_id).then (group) ->
+          Records.groups.new(parent_id: group.id)
+  ).when('/g/:id',
     templateUrl: 'generated/templates/group.html',
     controller: 'GroupController',
     resolve:
@@ -25,7 +25,7 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
         GroupService.fetchByKey($route.current.params.id)
       currentUser: ($http, UserAuthService) ->
         UserAuthService.fetchCurrentUser()
-  ).when('/groups/:id/edit',
+  ).when('/g/:id/edit',
     templateUrl: 'generated/templates/group_form.html',
     controller: 'GroupFormController',
     resolve:
@@ -33,7 +33,7 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
         GroupService.fetchByKey($route.current.params.id)
       currentUser: ($http, UserAuthService) ->
         UserAuthService.fetchCurrentUser()
-  ).when('/groups/:id/memberships',
+  ).when('/g/:id/memberships',
     templateUrl: 'generated/templates/memberships_page.html',
     controller: 'MembershipsPageController',
     resolve:
@@ -48,4 +48,4 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
     templateUrl: 'generated/templates/dashboard.html'
     controller: 'DashboardController'
   ).otherwise
-    redirectTo: '/discussions/M1BADlbN'
+    redirectTo: '/g/WmPCB3IR'

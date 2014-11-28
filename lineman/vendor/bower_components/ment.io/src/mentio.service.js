@@ -82,14 +82,16 @@ angular.module('mentio')
         function selectElement (targetElement, path, offset) {
             var range;
             var elem = targetElement;
-            for (var i = 0; i < path.length; i++) {
-                elem = elem.childNodes[path[i]];
-                if (elem === undefined) {
-                    return;
-                }
-                while (elem.length < offset) {
-                    offset -= elem.length;
-                    elem = elem.nextSibling;
+            if (path) {
+                for (var i = 0; i < path.length; i++) {
+                    elem = elem.childNodes[path[i]];
+                    if (elem === undefined) {
+                        return;
+                    }
+                    while (elem.length < offset) {
+                        offset -= elem.length;
+                        elem = elem.nextSibling;
+                    }
                 }
             }
             if (document.selection && document.selection.createRange) {

@@ -7,7 +7,8 @@
     %h1.modal-title{translate: 'discussion_form.edit_discussion_title', ng_hide: 'discussion.isNew()'}
 
   .modal-body
-
+    %flash{modal: 'true'}
+    
     .thread-helptext{translate: 'discussion_form.discussion_helptext', ng_show: 'discussion.isNew()'}  
 
     .form-group

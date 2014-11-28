@@ -1,15 +1,10 @@
-angular.module('loomioApp').controller 'GroupFormController', ($scope, $location, GroupService, group, UserAuthService) ->
+angular.module('loomioApp').controller 'GroupFormController', ($scope, $location, GroupService, group, FormService, UserAuthService) ->
   $scope.group = group
 
-  $scope.saveSuccess = ->
-    $location.path "/groups/#{$scope.group.key}"
-    console.log 'success!'
+  FormService.applyForm $scope, GroupService.save, group
 
-  $scope.saveError = (error) ->
-    console.log error
-
-  $scope.submit = ->
-    GroupService.save($scope.group, $scope.saveSuccess, $scope.saveError)
+  $scope.successCallback = (newGroup) ->
+    $location.path "/g/#{newGroup.key}"
 
   $scope.inboxPinned = ->
     UserAuthService.inboxPinned
