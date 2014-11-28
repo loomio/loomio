@@ -24,7 +24,7 @@ angular.module('loomioApp').factory 'CollectionWrapper', ->
         existingRecord
       else
         record = new @model(@recordStore, data)
-        @collection.insert(record)
+        @collection.insert(record) if data.id?
         record
 
     findById: (id) ->

@@ -23,7 +23,6 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
 
     serialize: ->
       motion:
-        id: @id
         discussion_id: @discussionId
         name: @name
         description: @description
@@ -40,7 +39,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
       @recordStore.discussions.get(@discussionId)
 
     votes: ->
-      @votesView.data()
+      @votesView.data() unless @isNew()
 
     authorName: ->
       @author().name

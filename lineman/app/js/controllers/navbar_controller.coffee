@@ -6,9 +6,9 @@ angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Reco
       templateUrl: 'generated/templates/discussion_form.html'
       controller: 'DiscussionFormController'
       resolve:
-        discussion: -> Records.discussions.new
+        discussion: -> Records.discussions.new({})
 
-  $scope.toggleInbox =         (open) -> $scope.showInbox = open
+  $scope.toggleInbox = (open) -> $scope.showInbox = open
 
   $scope.currentUser = ->
     UserAuthService.currentUser
