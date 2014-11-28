@@ -33,6 +33,9 @@ en:
     discussion_form:
       new_discussion: 'Successfully created your thread'
       update_discussion: 'Changes saved'
+    comment_form:
+      update_comment: 'Changes saved'
+      destroy_comment: 'You comment has been deleted' 
     proposal_form:
       new_proposal: 'Successfully created your proposal'
       update_proposal: 'Changes saved'
