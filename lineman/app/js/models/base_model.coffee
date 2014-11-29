@@ -1,5 +1,9 @@
 angular.module('loomioApp').factory 'BaseModel', ->
   class BaseModel
+    @service: 'undefinedService'
+    @singular: 'undefinedSingular'
+    @plural: 'undefinedPlural'
+
     constructor: (recordStore, data) ->
       Object.defineProperty(@, 'recordStore', value: recordStore, enumerable: false)
       @initialize(data)
@@ -14,3 +18,5 @@ angular.module('loomioApp').factory 'BaseModel', ->
     isNew: ->
       not @id?
 
+    save: (s, f) ->
+      @constructor.service.save(@, s, f)

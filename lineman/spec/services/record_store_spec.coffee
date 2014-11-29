@@ -5,7 +5,7 @@ describe 'RecordStore', ->
 
   beforeEach ->
     db = new loki('test.db')
-    inject (RecordStore, BaseModel) ->
+    inject (RecordStore, BaseModel, BaseRecordsInterface) ->
       class MockModel extends BaseModel
         @singular: 'mock'
         @plural: 'mocks'
@@ -14,15 +14,15 @@ describe 'RecordStore', ->
           @id = data.id
           @key = data.key
 
-      recordStore = new RecordStore(db)
-      mockModel = MockModel
+      class MockRecordsInterface extends BaseRecordsInterface
+        @model: MockModel
 
-  it 'registers new collections', ->
-    recordStore.addCollection(mockModel)
+      recordStore = new RecordStore(db)
+      recordStore.addRecordsInterface(MockRecordsInterface)
+
+  it 'adds record interfaces correctly', ->
     expect(recordStore.mocks?).toBe(true)
 
   it 'imports records', ->
-    recordStore.addCollection(mockModel)
     recordStore.import({mocks: [{id: 9, key:'z'}]})
-    console.log recordStore.mocks.find()[0]
     expect(recordStore.mocks.get(9).key).toBe('z')

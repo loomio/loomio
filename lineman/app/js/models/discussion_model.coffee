@@ -17,15 +17,18 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       @private = data.private
 
     setupViews: ->
-      @commentsView = @recordStore.comments.addDynamicView(@viewName())
+      #@dynamicView('comments')
+      ##@hasMany('comments', discussionId: @id)
+      #@recordStore.comments.addD
+      @commentsView = @recordStore.comments.collection.addDynamicView(@viewName())
       @commentsView.applyFind(discussionId: @id)
       @commentsView.applySimpleSort('createdAt')
 
-      @eventsView = @recordStore.events.addDynamicView(@viewName())
+      @eventsView = @recordStore.events.collection.addDynamicView(@viewName())
       @eventsView.applyFind(discussionId: @id)
       @eventsView.applySimpleSort('sequenceId')
 
-      @proposalsView = @recordStore.proposals.addDynamicView(@viewName())
+      @proposalsView = @recordStore.proposals.collection.addDynamicView(@viewName())
       @proposalsView.applyFind(discussionId: @id)
       @proposalsView.applySimpleSort('id')
 

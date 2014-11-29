@@ -63,10 +63,10 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
     UserAuthService.currentUser.canDeleteComment($scope.comment)
 
   $scope.like = ->
-    CommentService.like($scope.comment, renderLikedBySentence)
+    CommentService.like(UserAuthService.currentUser, $scope.comment, renderLikedBySentence)
 
   $scope.unlike = ->
-    CommentService.unlike($scope.comment, renderLikedBySentence)
+    CommentService.unlike(UserAuthService.currentUser, $scope.comment, renderLikedBySentence)
 
   $scope.currentUserLikesIt = ->
     _.contains($scope.comment.likerIds, UserAuthService.currentUser.id)

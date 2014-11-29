@@ -2,7 +2,7 @@ angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $mod
   currentUser = UserAuthService.currentUser
   $scope.discussion = discussion
 
-  FormService.applyForm $scope, DiscussionService.save, discussion, $modalInstance
+  FormService.applyForm $scope, discussion, $modalInstance
 
   $scope.successCallback = (result) ->
     $modalInstance.dismiss('success')

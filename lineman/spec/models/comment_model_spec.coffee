@@ -13,6 +13,7 @@ describe 'CommentModel', ->
     inject (Records, DiscussionModel) ->
       recordStore = Records
       discussionModel = DiscussionModel
+      console.log 'recordStore', recordStore
       group = recordStore.groups.new(id: 1, name: 'group')
       discussion = recordStore.discussions.new(id: 1, group_id: group.id, title: 'discussion')
       comment = recordStore.comments.new(id: 8, title: 'Hi', discussion_id: discussion.id, created_at: "2000-01-01T00:00:00")

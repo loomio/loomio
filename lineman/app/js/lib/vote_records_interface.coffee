@@ -1,6 +1,6 @@
-angular.module('loomioApp').factory 'VoteService', ($http, RestfulService) ->
-  new class VoteService extends RestfulService
-    resource_plural: 'votes'
+angular.module('loomioApp').factory 'VoteRecordsInterface', (BaseRecordsInterface, VoteModel) ->
+  class VoteRecordsInterface extends BaseRecordsInterface
+    @model: VoteModel
 
     fetchMyVotes: (discussion, success, failure) ->
       @fetch({ discussion_id: discussion.id }, success, failure, 'my_votes')
