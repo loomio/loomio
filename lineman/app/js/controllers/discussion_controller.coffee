@@ -7,12 +7,21 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
   #MessageChannelService.subscribeTo("/events", onMessageReceived)
 
   $scope.discussion = discussion
+  $scope.discussionCopy = discussion.copy()
 
   $scope.wrap = {}
   nextPage = 1
 
   busy = false
   $scope.lastPage = false
+  $scope.editingInline = false
+
+  $scope.editInline = -> 
+    $scope.editingInline = true
+
+  $scope.$on 'editInlineComplete', -> 
+    $scope.editingInline = false
+    $scope.discussionCopy = $scope.discussion
 
   $scope.editDiscussion = ->
     modalInstance = $modal.open

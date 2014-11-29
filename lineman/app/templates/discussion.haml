@@ -25,15 +25,14 @@
               %span.nowrap.discussion-privacy__is-public{ng-show: '!discussion.private'}>
                 %i.fa.fa-globe>
                 %span{translate: 'common.privacy.public'}
+              %span.edit-discussion-inline{ng-if: 'canEditDiscussion(discussion)'}>
+                ·
+                %a{translate: 'common.action.edit', href: '#', ng-click: 'editInline()'}
 
-          .thread-discussion-context
+          .thread-discussion-context{ng-if: '!editingInline'}
             .thread-discussion-description{btf-markdown: 'discussion.description' }
-
-          / .thread-actions-and-meta
-          /   %a{href: '#', translate: 'common.action.reply'}>
-          /   ·
-          /   %a{href: '#', translate: 'common.action.edit', ng-click: 'editDiscussion()'}>
-
+          .thread-discussion-edit-context{ng-if: 'editingInline'}
+            %edit_discussion_context{discussion: 'discussionCopy'}
 
         %proposals{discussion: 'discussion'}
 
