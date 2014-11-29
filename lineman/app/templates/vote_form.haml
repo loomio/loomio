@@ -7,7 +7,7 @@
       .position-button.position-button-no{ng-click: 'selectPosition("no")'}
       .position-button.position-button-block{ng-click: 'selectPosition("block")'}
 
-    %form{ng-submit: 'submit()', ng-show: 'vote.position || editing' }
+    %form{ng-submit: 'submit()', ng-show: 'vote.position' }
       %fieldset
         .form-group
           %label.label-with-details{for: 'vote-statement-field'}
@@ -25,7 +25,7 @@
   .your-position{ng-show: 'lastVote() && !editing'}
     %h4{translate: 'proposal_card.your_position'}
 
-    %a.change-position.pull-right{ng-click: 'changePosition()', href: '#'}
+    %a.change-position.pull-right{ng-click: 'edit()', href: '#'}
       %span{translate: 'common.action.edit'}>
       %i.fa.fa-pencil
 
