@@ -431,6 +431,15 @@ el:
         Σας έχουμε στείλει ηλεκτρονικό μήνυμα με πρόσκληση για να ξεκινήσετε την ομάδα σας.
 
         Εάν δεν βλέπετε τίποτα στα εισερχόμενα σας σε λίγα λεπτά, στείλτε μας ηλεκτρονικό μήνυμα στο <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> συμφώνησε στην πρόταση."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> απείχε στην πρόταση."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> διαφώνησε στην πρόταση."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> έβαλε βέτο στην πρόταση."
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> συμφώνησε στην πρόταση:"
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> απείχε στην πρόταση:"
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> διαφώνησε στην πρόταση:"
+    user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> έβαλε βέτο στην πρόταση:"
   discussion_items:
     new_discussion: "Η συζήτηση δημιουργήθηκε"
     new_motion: "Η πρόταση δημιουργήθηκε"
@@ -1031,6 +1040,7 @@ el:
   google: "Google"
   persona: "Persona"
   common:
+    markdown_help_tooltip: 'Μάθετε τα βασικά της διαμόρφωσης του κειμένου σας με το Markdown'
     settings: Ρυθμίσεις
     dashboard: Πίνακας Εργαλείων
     unread: Αδιάβαστα

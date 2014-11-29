@@ -555,8 +555,6 @@ es:
       estará aprendiendo nuevos procesos para colaborar mas efectivamente y tomando buenas decisiones⏎
       juntos. Aquí puedes encontrar algunos consejos para que tu grupo tenga mucho éxito:⏎
     different_ways: 'Maneras diferentes de usar Loomio'
-    engaging_html: |
-      ASDSADSAD
     example1_html: "<h3>El grupo debe discutir sobre un tema amplio y desarrollar una solucion conjunta</h3>⏎\n<p>Estrategia: Discutir el tema durante un tiempo antes de iniciar una propuesta.</p>⏎\n<p>A menudo, las discusiones obtienen los mejores resultados si se crea un entendimiento⏎ \ncompartido sobre el problema antes de decantarse por una solucion concreta. Cuando la gente⏎\nempieza a participar en el proceso, es mucho mas probable\
       \ que esten satisfechos con⏎\nel resultado o decision final.⏎</p>\\n"
     example2_html: |
@@ -588,7 +586,7 @@ es:
       <p>Las personas querrán saber por qué han sido invitadas, qué se espera de ellas,
       y por qué merece su tiempo aprender a usar una nueva herramienta.</p>
     join_the_community: "Únete a la comunidad"
-    join_the_community_description_html: "Todos son bienvenidos en \"Loomio Community\", donde hablamos de cómo aprovechar la herramienta al máximo y de cómo mejorarla.<br /><br /><a href=\"https://www.loomio.org/groups/3\">Pulsa aquí para ir al grupo \"Loomio Community\" group</a>, donde puedes solicitar membresía."
+    join_the_community_description_html: "Todos son bienvenidos en \"Loomio Community\", donde hablamos de cómo aprovechar la herramienta al máximo y de cómo mejorarla.<br /><br /><a href='https://www.loomio.org/groups/3'>Pulsa aquí para ir al grupo \"Loomio Community\" group</a>, donde puedes solicitar membresía."
     images_and_text_formatting: "Imagenes y formato de texto"
     images_and_text_formatting_html: |
       <p>Loomio usa «marcadores» para la inclusión de imágenes y el formateo de texto.
@@ -656,14 +654,7 @@ es:
 
       ¡Gracias por hacerlo posible!
     thank_you_title: ¡Gracias por contribuir con Loomio!
-    thank_you_body: |
-      su contribución nos ayuda a ofrecer decisiones colaborativas y fáciles en el mundo. ⏎
-      ⏎
-      Usted recibirá un correo electrónico en breve con un recibo por su contribución. ⏎
-      ⏎
-      Todo el mundo es bienvenido a unirse a la Comunidad Loomio, donde se habla de cómo aprovechar al máximo de la herramienta y cómo se puede mejorar. ⏎
-      ⏎
-      <a href='https://www.loomio.org/groups/3'> Llévame al grupo comunitario Loomio »</ a> ⏎
+    thank_you_body: "su contribución nos ayuda a ofrecer decisiones colaborativas y fáciles en el mundo. \n\nUsted recibirá un correo electrónico en breve con un recibo por su contribución. \n\nTodo el mundo es bienvenido a unirse a la Comunidad Loomio, donde se habla de cómo aprovechar al máximo de la herramienta y cómo se puede mejorar. \n\n<a href='https://www.loomio.org/groups/3'> Llévame al grupo comunitario Loomio »</a>\n"
     making_a_donation: Hacer una donación
     making_a_donation_description: "Loomio es una empresa social cooperativa que trabaja para facilitar a todos el participar en decisiones que les afectan.\n\nTu contribución implica que podamos mantener Loomio independiente, libre de anuncios, y disponible libremente para grupos que hacen grandes cosas en sus comunidades. \n\n¡Gracias por hacerlo posible!\n"
   resend_confirmation: "Volver a enviar confirmación"
@@ -694,7 +685,7 @@ es:
   now_that_your_logged_in: "Ahora que has entrado con %{provider_name}, por favor, confirma tus datos para crear una cuenta Loomio."
   confirmation_not_received: "¿No has recibido las instrucciones de confirmación?"
   unlock_not_received: "¿No has recibido instrucciones de desbloqueo?"
-  inactive_html: "Esta cuenta ha sido desactivada. Si tú tienes alguna pregunta, por favor <a href='%{path_to_contact}'>póngase en contacto con nosotros."
+  inactive_html: "Esta cuenta ha sido desactivada. Si tú tienes alguna pregunta, por favor <a href='%{path_to_contact}'>póngase en contacto</a> con nosotros."
   create_an_account_html: 'Crear una cuenta Loomio Beta'
   log_in: "Entrar"
   join_group:

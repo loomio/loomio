@@ -595,7 +595,7 @@ eo:
       <p>Oni volas scii kial ili estis invititaj, kion oni atendas de ili, kaj kial indas ilia tempo por lerni
       kiel uzi la novan ilon.</p>
     join_the_community: "Aliĝi al la komunumo"
-    join_the_community_description_html: "Ĉiuj bonvenas aliĝi al la komunumo de Loomio, kie ni parolas pri kiel plej bonigi la ilon, kaj kiel ĝi povas esti plibonigata.<br /><br /><a href='https://www.loomio.org/groups/3'>Klaku ĉi tie por iri al la grupo de la Loomio-komunumo."
+    join_the_community_description_html: "Ĉiuj bonvenas aliĝi al la komunumo de Loomio, kie ni parolas pri kiel plej bonigi la ilon, kaj kiel ĝi povas esti plibonigata.<br /><br /><a href='https://www.loomio.org/groups/3'>Klaku ĉi tie por iri al la grupo de la Loomio-komunumo</a>."
     images_and_text_formatting: "Bildoj kaj teksta formatado"
     images_and_text_formatting_html: |
       <p>Loomio uzas 'Markdown' por bildenmetado kaj tekstformatado.
@@ -608,7 +608,7 @@ eo:
       kaj tie vi povas vidi liston da ĉiuj diskutoj kaj decidoj de tiu grupo. Se vi estas en
       pli ol unu grupo, vi povas vidi ĉiujn aktivecojn de ĉiuj viaj grupoj kune en la hejmpaĝo.</p>
       <p>Vi ricevos retpoŝtajn sciigojn kiam gravaj aferoj okazas en via grupo.
-      Vi povas ŝanĝi viajn retpoŝtajn preferojn <a href="%{link}">ĉi tie</a>.</p>
+      Vi povas ŝanĝi viajn retpoŝtajn preferojn <a href="%{link}"">ĉi tie</a>.</p>
     make_a_decision: "Fari decidon"
     make_a_decision_description: "Kiam la grupo pretas por fari decidon, ĉiuj povas fari proponon. Desegnu klaran agoplanon kaj donu iom da fono por ke ĉiuj sciu ekzakte kion volas diri konsento aŭ malkonsento."
     prompt_people_details: "Se vi volas voki la atenton de specifa persono en via grupo, tajpu '@' sekve de ties nomo. Tiu persono ricevos retpoŝtaĵon sciigante ilin ke vi menciis ilin en komento."
