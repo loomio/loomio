@@ -42,8 +42,8 @@ pt-BR:
       header_html: 'Loomio 1.0 vai funcionar em qualquer dispositivo, construído com o melhor em <strong>tecnologia móvel aberta.</strong>'
     quote:
       header:
-        rushkoff_html: '“O Loomio <strong>libera o potencial da internet</strong> para levar as pessoas em direção ao consenso em vez do debate polarizado.” <br />– <a href="http://rushkoff.com">Douglas Rushkoff</a>, autor de <em>Present Shock</em>'
-        sifry_html: '“O Loomio está alcançado o ponto doce entre <strong>a voz individual</strong> e <strong>a decisão coletiva</strong>.” <br />– Micah Sifry, Editor, <em><a href="http://techpresident.com">TechPresident</em>'
+        rushkoff_html: '“O Loomio <strong>libera o potencial da internet</strong> para levar as pessoas em direção ao consenso em vez do debate polarizado.” <div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, autor de <em>Present Shock</em></div>'
+        sifry_html: '“O Loomio está alcançado o ponto doce entre <strong>a voz individual</strong> e <strong>a decisão coletiva</strong>.” <div class="attributation">– Micah Sifry, Editor, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: 'Sobre o Loomio'
       desc: 'Somos uma pequena equipe de desenvolvedores de código aberto e ativistas de justiça social que trabalham na Enspiral em Aotearoa, Nova Zelândia, com uma ampla rede de amigos, apoiadores e conselheiros de todo o mundo.'

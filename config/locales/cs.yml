@@ -404,6 +404,7 @@ cs:
       disable: "Zobrazit přečtené i nepřečtené diskuze"
     filter_followed:
       enable: "Zobrazit pouze sledované diskuse"
+      disable: "Zobrazit sledované a nesledované diskuse"
   discussion_context:
     started_html: "Zahájil(a) <a href='%{link}' class='%{link_class}'>%{who}</a> před %{when}"
     last_edited_html: "Naposledy upravil(a) <a href='%{link}' class='%{link_class}'>%{who}</a> před %{when}"
@@ -770,6 +771,8 @@ cs:
       header: "jste skoro hotov(a)!"
       intro: "Prosím klikněte na tento ověřovací odkaz pro dokončení vaší žádosti:"
       ignore: "Pokud jste nezažádal(a) o členství na Loomio, prosím ignorujte tento email."
+  meta_tags:
+    default_title: "Loomio | Společné rozhodování"
   about_loomio: "O Loomio"
   ago: "před %{quantity_of_time}"
   approve: "Schválit"
@@ -807,6 +810,7 @@ cs:
   outcome: "Výsledek"
   password: "Heslo"
   leave_this_field_blank: "nechte toto pole prázdné"
+  photo: 'Foto'
   pricing: 'Ceník'
   prev: "Předch."
   more: "Více..."
@@ -839,6 +843,8 @@ cs:
     dashboard: Ovládací panel
     unread: Nepřečteno
     filter: 'Filtr:'
+    following: Sledované
+    not_following: Nesledované
     back_to_discussion: "Zpět do diskuze"
     groups: "Skupiny"
     select_error: Prosím, vyberte jednu z možností

@@ -62,7 +62,7 @@ ca:
     motion_closing_inputs: "Data de tancament no vàlida"
     motion_outcome_not_created: "No s'ha pogut publicar el resultat"
     motion_outcome_not_updated: "No s'ha pogut actualitzar el resultat"
-    only_group_coordinator_destroy: "No pots deixar aquest grup perquè ets l'únic/a coordinador/a. Pots desactivar el grup al desplegable d'opcions o <a href='%{add_coordinator}'> afegir un/a nou/nova coordinador/a </ a> per al grup."
+    only_group_coordinator_destroy: "No pots deixar aquest grup perquè ets l'únic/a coordinador/a. Pots desactivar el grup al desplegable d'opcions o <a href='%{add_coordinator}'> afegir un/a nou/nova coordinador/a </a> per al grup."
     only_group_coordinator_remove_admin: "El grup ha de tenir un/a coordinador/a. T'agradaria afegir un altre coordinador/a per al grup?"
     permission_to_invite: "No tens els permisos per invitar nous membres."
     position_not_updated: "No s'ha pogut actualitzar la posició."
@@ -391,8 +391,8 @@ ca:
       junts. Aquí tens algunes claus per tal que el grup funcioni:
     different_ways: 'Diferents maneres d''emprar Loomio'
     engaging_html: "<h2> Claus per engrescar el teu grup </h2>\n<p>La gent estarà emocionada d'entrar i començar a participar quan hi ha una\nproposta estimulant sobre la taula. Una bona proposta conté un pla d'acció per al grup, en \nel que quedi clar què significa estar d'acord o en desacord. Pensa en com\npot identificar debats / decisions que el grup està duent a terme en persona o per\ncorreu electrònic\
-      \ i que seria més fàcil si estiguessin a Loomio. </p>\n<p> Si el grup està començant, pots començar per una decisió simple, per donar\na tothom l'oportunitat de jugar amb l'eina i experimentar el procés de presa de decisions. </p>\n<p> Una altra forma senzilla d'animar gent a participar en una discussió és utilitzar la @menció\na persones específiques, als quals els arribarà un correu electrònic dient que\
-      \ han estat\nesmentats en un comentari. </p>\n"
+      \ i que seria més fàcil si estiguessin a Loomio. </p>\n<p> Si el grup està començant, pots començar per una decisió simple, per donar\na tothom l'oportunitat de jugar amb l'eina i experimentar el procés de presa de decisions. </p>\n<p> Una altra forma senzilla d'animar gent a participar en una discussió és utilitzar la @menció\na persones específiques, als quals els arribarà un correu electrònic dient\
+      \ que han estat\nesmentats en un comentari. </p>\n"
     example1_html: "<h3> Necessites que el grup discuteixi un tema molt ampli i desenvolupar una solució col·lectiva </h3>\n<p> Estratègia: Debatre un tema per un temps abans de crear una proposta </p>\n<p> Les discussions sovint arriben als millors resultats si es construeix una comprensió compartida\nsobre el problema abans d'abordar una solució específica. Quan la gent participa en el procés, \nés més propensa\
       \ a arribar a un acord amb el resultat. </p>\n"
     example2_html: "<h3> Ja tens una proposta en ment, i vols aconseguir la conclusió del grup per seguir endavant. </h3> \n<p> Estratègia: Enceta un debat sobre una decisió específica i fes una proposta immediatament </p>\n<p> Si tens un resultat clar en ment, però vol assegurar-te que no hi ha postures crítiques, pots utilitzar la proposta per obtenir una anàlisi ràpid de la decisió. </p> \n<p> Pots fer coses\
@@ -422,7 +422,7 @@ ca:
       <p> La gent voldrà saber per què han estat convidats, que s'espera d'ells,
       i per què paga la pena aprendre a utilitzar una nova eina. </p>
     join_the_community: "Unir-se a la comunitat"
-    join_the_community_description_html: "Tothom és benvingut a unir-se a la Comunitat Loomio, on es parla de com aprofitar al màxim l'eina i com es pot millorar. <br /> <br /> <a href='https://www.loomio.org/groups/3'> Fes clic aquí per anar al grup \"Loomio Community\" </ a>."
+    join_the_community_description_html: "Tothom és benvingut a unir-se a la Comunitat Loomio, on es parla de com aprofitar al màxim l'eina i com es pot millorar. <br /> <br /> <a href='https://www.loomio.org/groups/3'> Fes clic aquí per anar al grup \"Loomio Community\" </a>."
     images_and_text_formatting: "Format d'imatges i textos"
     images_and_text_formatting_html: |
       <p>Loomio utilitza 'Markdown' per incrustar imatges i formatar el text.
@@ -504,6 +504,7 @@ ca:
   already_have_account: "Ja tens un compte a Loomio?"
   confirmation_not_received: "No has rebut les instruccions de confirmació_"
   unlock_not_received: "No has rebut les instruccions de desbloqueig?"
+  inactive_html: "Ho sentim, aquest compte es troba inactiu. Si tens alguna pregunta, sisplau <a href='%{path_to_contact}'> posa't en contacte </a>."
   log_in: "Inicia la sessió"
   join_group:
     log_in: "Inicia sessió per unir-te a %{group_name}"
@@ -575,7 +576,7 @@ ca:
   group_setup:
     set_up_your_group: Configura el teu grup
     desc_header: "Ja quasi ho tens!"
-    desc_html: "Com a coordinador del grup, ets responsable de la creació i la gestió del teu grup de Loomio. Després de triar algunes opcions de configuració, pots entrar al grup nou, iniciar un debat o dos, i enviar unes invitacions. <p> Quan pensis en la manera més simple per descriure el grup, pregunta't: Què és el que volem aconseguir junts? Quin tipus de decisions farem? ¿Qui participarà? </ P>"
+    desc_html: "Com a coordinador del grup, ets responsable de la creació i la gestió del teu grup de Loomio. Després de triar algunes opcions de configuració, pots entrar al grup nou, iniciar un debat o dos, i enviar unes invitacions. <p> Quan pensis en la manera més simple per descriure el grup, pregunta't: Què és el que volem aconseguir junts? Quin tipus de decisions farem? ¿Qui participarà? </p>"
     submit: "Porta'm al meu grup!"
     payment_model:
       header: Loomio és per a tothom!
