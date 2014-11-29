@@ -39,7 +39,7 @@ ja:
     motion_closing_inputs: "無効な締切日です"
     motion_outcome_not_created: "結論を公表することができません"
     motion_outcome_not_updated: "結論をアップデートすることができません"
-    only_group_coordinator_destroy: "あなたは唯一のコーディネーターなのでこのグループを去ることはできません。\nドロップダウンのオプションから、またはグループにa href='%{add_coordinator}'>新しいコーディネーターを加える</a>ことによってあなたのグループを非アクティブ化することができます。"
+    only_group_coordinator_destroy: "あなたは唯一のコーディネーターなのでこのグループを去ることはできません。\nドロップダウンのオプションから、またはグループに<a href='%{add_coordinator}'>新しいコーディネーターを加える</a>ことによってあなたのグループを非アクティブ化することができます。"
     only_group_coordinator_remove_admin: "グループはコーディネーターを一人持たなければいけません。グループにコーディネーターを一人追加したいですか？"
     permission_to_invite: "新しいメンバーを招待する許可がありません"
     position_not_updated: "意見をアップデートできません"
@@ -174,7 +174,7 @@ ja:
     message: "<p>トピックはページのトップに、内容はその下にあります</p><p>ディスッカションは左側にあり、決定は右側に現れます。\nもしグループはすでに決定を行う準備ができていると考える場合、提案をすることができます</p>"
   group_helper_text:
     header: "新しいグループへようこそ！"
-    message: "<p>これは<strong>グループページ<strong>です。左側はこのグループのディスカッション全ての一覧です</p>\n<p>グループが違うトピックに関して話し合いたい時には、新しいディスカッションを開始してください</p>"
+    message: "<p>これは<strong>グループページ</strong>です。左側はこのグループのディスカッション全ての一覧です</p>\n<p>グループが違うトピックに関して話し合いたい時には、新しいディスカッションを開始してください</p>"
   dashboard_helper_text:
     header: "ホームページにようこそ！"
   prompt_visitor_to_authenticate:
@@ -196,7 +196,7 @@ ja:
       hidden_parent:
         request_html: '<span>%{parent_group_name}のメンバーに</span>オープン'
         approval_html: '<span>%{parent_group_name}からの</span>リクエストによって'
-      request_html: オープン <span>誰でもグループに参加できる/span>
+      request_html: オープン <span>誰でもグループに参加できる</span>
       approval_html: リクエストによって<span>誰でも参加のリクエストを送ることができる</span>
       invitation_html: 招待のみ<span>新しいメンバーは招待される必要がある</span>
     parent_members_can_see_discussions:
@@ -307,7 +307,7 @@ ja:
   previous_decisions: "過去の提案"
   see_previous_decisions: "過去の提案を見る"
   see_more: "詳細を見る"
-  empty_decision_list_html: "決定を行う準備はできましたか？\n誰でも提案を開始することができます。"
+  empty_decision_list_html: "決定を行う準備はできましたか？ <br>\n誰でも提案を開始することができます。"
   empty_decision_index: "このグループはまだ提案を終了していません"
   empty_discussion_list: "コメントはまだありません"
   discussion_list:

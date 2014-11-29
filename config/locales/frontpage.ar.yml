@@ -39,10 +39,10 @@ ar:
       header_html: "لقد قمنا بالفعل ببناء نموذج أولي، وهناك ناس من جميع أنحاء العالم يستخدمونه لإنجاز أشياء رائعة."
       subhead_html: '<a href="%{try_loomio_link}">جرّب Loomio Beta</a> الآن. كما يمكنك <a href="%{donate_link}">دعم المشروع</a> للمساعدة على تمويل Loomio 1.0'
     mobile:
-      header_html: 'سيعمل Loomio 1.0 على مختلف الأجهزة، وسيكون مبنيا على أفضل <strong>التقنيات المفتوحة للأجهزة النقالة.<strong>'
+      header_html: 'سيعمل Loomio 1.0 على مختلف الأجهزة، وسيكون مبنيا على أفضل <strong>التقنيات المفتوحة للأجهزة النقالة.</strong>'
     quote:
       header:
-        rushkoff_html: '"Loomio <strong>يحرر إمكانات الإنترنت</strong> لجلب الناس سوية نحو توافق الآراء بدلا من الجدل المستقطب."<div class="attributation">– <a href="http://rushkoff.com">دوغلاس رشكوف</a>، مؤلف كتاب  <em>صدمة الحاضر</em>'
+        rushkoff_html: '"Loomio <strong>يحرر إمكانات الإنترنت</strong> لجلب الناس سوية نحو توافق الآراء بدلا من الجدل المستقطب."<div class="attributation">– <a href="http://rushkoff.com">دوغلاس رشكوف</a>، مؤلف كتاب  <em>صدمة الحاضر</em></div>'
         sifry_html: '"يحقق Loomio توازنا جميلا بين <strong>الرأي الفردي</strong> و<strong>القرار الجماعي</strong>."<div class="attributation">– مايكا سيفري، محررة <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: 'عن Loomio'
