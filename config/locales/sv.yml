@@ -433,11 +433,11 @@ sv:
     positions_disagree_description: "<span>Håller inte med</span> innebär att du tror att det kan finnas ett bättre alternativ, men att du kan tänka dig att foga dig i gruppens beslut."
     positions_block_description: "<span>Blockerar</span> innebär att du har allvarliga invändningar och att du skulle bli mycket missnöjd om detta förslag gick igenom."
     start_discussion: "Starta en engagerande diskussion"
-    start_discussion_html: "<p>När du startar en ny diskussion, se till att titeln förmedlar ämnet kortfattat .\nAnvänd Context Panel för att ge all bakgrundsinformation som är nödvändig \nför att gruppen ska få en produktiv och givande diskussion.</p>\n<p>Under diskussionens gång kan Context Panel uppdateras närhelst ny information\ntillkommer. Förutom att klargöra ämnet, kan\
-      \ du använda detta utrymme till att\ndela resurser, summera diskussionens utveckling, eller beskriva de beslutssätt\ndin grupp använder.</p>\n"
+    start_discussion_html: "<p>När du startar en ny diskussion, se till att titeln förmedlar ämnet kortfattat .\nAnvänd Context Panel för att ge all bakgrundsinformation som är nödvändig \nför att gruppen ska få en produktiv och givande diskussion.</p>\n<p>Under diskussionens gång kan Context Panel uppdateras närhelst ny information\ntillkommer. Förutom att klargöra ämnet, kan du\
+      \ använda detta utrymme till att\ndela resurser, summera diskussionens utveckling, eller beskriva de beslutssätt\ndin grupp använder.</p>\n"
     start_proposal: "Hur du skriver ett tydligt förslag"
-    start_proposal_html: "<p>Om titeln är tydlig och kortfattad kommer deltagarna direkt att förstå \nvad det är ni ska bli överens eller inte överens om. </p>\n<p>Det gör inget att ett förslag inte skulle komma direkt till en tydlig överenskommelse.\nOm gruppen inte gillar det första förslaget, kan vem som helst komma med ett nytt förslag för att\nta med uppkomna invändningar\
-      \ och föra processen framåt. </p>\n<p>Genom denna dynamiska process kan gruppens kollektiva intelligens generera bättre idéer\nän någon skulle kunnat ha gjort på egen hand.</p>\n<p>Tidsfristen för ett förslag kan utökas när som helst, om det ser ut som beslutet skulle behöva mer tid.\nAlla kommer att få ett email 24 timmar innan ett förslag stängs.</p>\n"
+    start_proposal_html: "<p>Om titeln är tydlig och kortfattad kommer deltagarna direkt att förstå \nvad det är ni ska bli överens eller inte överens om. </p>\n<p>Det gör inget att ett förslag inte skulle komma direkt till en tydlig överenskommelse.\nOm gruppen inte gillar det första förslaget, kan vem som helst komma med ett nytt förslag för att\nta med uppkomna invändningar och\
+      \ föra processen framåt. </p>\n<p>Genom denna dynamiska process kan gruppens kollektiva intelligens generera bättre idéer\nän någon skulle kunnat ha gjort på egen hand.</p>\n<p>Tidsfristen för ett förslag kan utökas när som helst, om det ser ut som beslutet skulle behöva mer tid.\nAlla kommer att få ett email 24 timmar innan ett förslag stängs.</p>\n"
     video_id: "52025402"
     video_tutorial: "Videotutorial"
     video_tutorial_description: "Se videon för en snabb demonstration av hur Loomio fungerar."
@@ -596,7 +596,7 @@ sv:
   group_setup:
     set_up_your_group: Starta din grupp
     desc_header: "Du är nästan klar!"
-    desc_html: "Som gruppens koordinator är du ansvarig för att administrera din Loomiogrupp. När du har valt inställningar, kan du komma åt din nya grupp, starta diskussioner, samt skicka inbjudningar! <p>För att på enklast möjliga sätt beskriva din grupp, fråga dig själv: Vad vill ni uppnå tillsammans? Vilka typer av beslut kommer ni att fatta? Vem kommer att delta?"
+    desc_html: "Som gruppens koordinator är du ansvarig för att administrera din Loomiogrupp. När du har valt inställningar, kan du komma åt din nya grupp, starta diskussioner, samt skicka inbjudningar! <p>För att på enklast möjliga sätt beskriva din grupp, fråga dig själv: Vad vill ni uppnå tillsammans? Vilka typer av beslut kommer ni att fatta? Vem kommer att delta?</p>"
     submit: "Ta mig till min grupp!"
     payment_model:
       header: Lommio är till för alla!

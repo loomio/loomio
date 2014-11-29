@@ -42,8 +42,8 @@ fr:
       header_html: 'Loomio 1.0 fonctionnera avec n''importe quel machine, mais sera élaboré avec le meilleur des <strong>technologies mobiles libres.</strong>'
     quote:
       header:
-        rushkoff_html: '«Loomio <strong> libère le potentiel d''internet </ strong> pour favoriser l''émergence du consensus au lieu d''un débat polarisé.» <br />– <a href="http://rushkoff.com">Douglas Rushkoff</a>, auteur de <em>Present Shock</em>'
-        sifry_html: '«Loomio trouve le juste équilibre entre <strong>la voix de l''individu</strong> et <strong>la décision collective</strong>.» <br />– Micah Sifry, éditeur, <em><a href="http://techpresident.com">TechPresident</em>'
+        rushkoff_html: '«Loomio <strong> libère le potentiel d''internet </strong> pour favoriser l''émergence du consensus au lieu d''un débat polarisé.» <div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, auteur de <em>Present Shock</em></div>'
+        sifry_html: '«Loomio trouve le juste équilibre entre <strong>la voix de l''individu</strong> et <strong>la décision collective</strong>.» <div class="attributation">– Micah Sifry, éditeur, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: 'À propos de Loomio'
       desc: 'Nous sommes une petite équipe de développeurs open-source et de militants pour la justice sociale. Nous travaillons à Enspiral en Aotearoa, Nouvelle-Zélande, avec un vaste réseau d''amis, de soutiens et de conseillers partout dans le monde.'
