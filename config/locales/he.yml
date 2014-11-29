@@ -231,7 +231,7 @@ he:
   honeypot_warning: "לא ניתן לייצר חשבון. עבור קוראי-מסך, יש לוודא שהשדה האחרון (הנסתר) נשאר ריק."
   tagline: "יוצרים עולם בו קל לכל אחד ליטול חלק בהחלטות שמשפיעות עליו."
   or_sign_in_html: "אם כבר יש לכם חשבון בLoomio, <a href='%{link}' class='%{link_class}'>התחברו כאן</a>"
-  or_link_account_html: "אם כבר יש לכם חשבון בLoomio, <a href='%{link}' class='%{link_class}'>קשרו אליו</a>"
+  or_link_account_html: "אם כבר יש לכם חשבון בLoomio, <a href='%{link}'>קשרו אליו</a>"
   click_to_dismiss: "לחצו כאן לביטול ההודעה"
   generic_confirm: "בטוחים?"
   discussion_helper_text:
