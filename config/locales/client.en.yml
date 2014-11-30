@@ -47,6 +47,7 @@ en:
 
   inbox:
     latest_threads: 'Latest threads'
+    closing_in: 'Closing '
 
   session_form:
     email_label: 'Email:'
