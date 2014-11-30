@@ -19,10 +19,10 @@
         %label{for: 'proposal-details-field', translate: 'proposal_form.details_label'}
         %textarea#proposal-details-field.form-control{ng-model: 'proposal.description', placeholder: "{{ 'proposal_form.details_placeholder' | translate }}"}
 
-    %fieldset{ng-disabled: 'isDisabled'}      
+    %fieldset{ng-disabled: 'isDisabled'}
       .form-group{dropdown: '', is-open: 'dropdownIsOpen'}
+        %label{for: 'proposal-close-date-field', translate: 'proposal_form.closes_at_label'}
         .input-group.dropdown-toggle
-          %label{for: 'proposal-close-date-field', translate: 'proposal_form.closes_at_label'}
           %input.form-control{ng-model: 'proposal.closingAt', ng-required: 'true'}
           %span.input-group-addon
             %i.fa.fa-calendar
