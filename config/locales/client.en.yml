@@ -103,7 +103,7 @@ en:
     start_a_proposal: 'Start a proposal'
     edit_proposal: 'Edit proposal'
     edit_a_proposal: 'Edit {{proposalName}}'
-    what_does_a_proposal_do: 'Proposals allow you to see how everyone feels about a particular course of action. Find out more.'
+    what_does_a_proposal_do: 'Proposals let you see how everyone feels about a particular course of action.'
     title_placeholder: 'Eg: Go to the moon'
     title_label: 'Title'
     closes_at_label: 'Closes at'
