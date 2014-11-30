@@ -3,7 +3,7 @@ module Loomio
 
     SELECTABLE_LOCALES = %i( en an be-BY bg-BG ca cs zh-TW da de eo es el fr id it he hu ja ko ml nl-NL pt-BR ro sr sr-RS sk sv vi tr uk )
 
-    DETECTABLE_LOCALES = SELECTABLE_LOCALES + %i( be pt zh zh-HK )
+    DETECTABLE_LOCALES = SELECTABLE_LOCALES + %i( be pt zh zh-HK es-ES)
 
     FALLBACKS = { :an      => :es,
                   :be      => :'be-BY',
@@ -11,7 +11,8 @@ module Loomio
                   :'pt-PT' => :'pt-BR',
                   :pt      => :'pt-BR',
                   :zh      => :'zh-TW',
-                  :'zh-HK' => :'zh-TW'
+                  :'zh-HK' => :'zh-TW',
+                  :'es-ES' => :es
                  }
 
     # for locales which are only serving as redirects, make sure to add to  :
