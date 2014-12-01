@@ -1024,6 +1024,7 @@ pt-BR:
   google: "Google"
   persona: "Persona"
   common:
+    markdown_help_tooltip: 'Aprenda os conceitos básicos de formatação do seu texto com Markdown'
     settings: Configurações
     dashboard: Painel
     unread: Não lida

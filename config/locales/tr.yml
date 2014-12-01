@@ -255,7 +255,7 @@ tr:
     deactivate_account: "Hesabınızı devre dışı bırakın"
     about_deactivation: "Bu ne anlama gelir?"
     confirm_account_deactivation: "Hesabınızı devre dışı bırakmak istediğinizden emin misiniz?"
-    reactivation_html: "Hesabınızı yeniden etkinleştirmek için href='%{link}'>bize ulaşmanız</a> gerekir."
+    reactivation_html: "Hesabınızı yeniden etkinleştirmek için <a href='%{link}'>bize ulaşmanız</a> gerekir."
     deactivation:
       title: "Hesabınızın devre dışı bırakılması"
       query: "Hesabınızı neden devre dışı bıraktığınızı bizimle paylaşır mısınız?"
@@ -283,7 +283,7 @@ tr:
     motions_can_be_edited: Oylama başladıktan sonra onların önerilerini düzenleyin
     visible_to:
       label: Kimler bu grubu bulabilir?
-      public_html: 'Herkes <span>grubu genel olarak listele</ span>'
+      public_html: 'Herkes <span>grubu genel olarak listele</span>'
       parent_members_html: '%{parent_group_name} grubundaki kişiler <span>genel listelenmemiş, ancak %{parent_group_name} üyelerine görünür</span>'
       members_html: 'Sadece üyeler için <span>grup listelenmeyecek</span>'
     membership_granted_upon:
@@ -338,8 +338,8 @@ tr:
       public: Kamuya açık olarak listelenen grup.
       parent_members: 'Özel olarak listelenen grup. Sadece üyeler ve %{parent_group_name}deki insanlar tarafından görülebilir.'
       members: Gizli grup. Sadece üyeler görebilir.
-      public_html: 'Herhangi biri <span> kamusal olarak grubu listeleyebilir<span>'
-      parent_members_html: '%{parent_group_name} <span>deki insanlar kamuya listelenmekten çıkarıldı ancak %{parent_group_name} <span>deki üyelere görünür oldu.'
+      public_html: 'Herhangi biri <span> kamusal olarak grubu listeleyebilir</span>'
+      parent_members_html: '%{parent_group_name} <span>deki insanlar kamuya listelenmekten çıkarıldı ancak %{parent_group_name} </span>deki üyelere görünür oldu.'
       members_html: 'Sadece üyeler için <span>Grup listelenmeyecek</span>'
   setup_steps_title: "Sonraki adımlar:"
   setup_step_1: "Örnek müzakereye göz at"
@@ -470,10 +470,10 @@ tr:
       no_discussions_matching_filters_html: "Bu filtrelere uyan tartışma bulunmamaktadır. <a href='%{link}'>Filtreleri temizle</a>."
       no_public_discussions: "Bu grupta kamusal tartışma bulunmamaktadır."
       discussions_are_private: "Bu gruptaki tüm müzakereler gizlidir."
-      request_membership_html: "Özel tartışmaları görmek için, gruba katılım talebinde bulun <a href='%{href}'>. </a>"
+      request_membership_html: "Özel tartışmaları görmek için, gruba <a href='%{href}'>katılım talebinde bulun </a>."
       membership_is_invitation_only: "Bu gruba katılmak için bir üye tarafından davet edilmelisin."
       membership_is_invitation_by_admin_only: "Bu gruba katılmak için koordinatör tarafından davet edilmelisin."
-      log_in_html: "Eğer üye isen, <a href='%{href}' herhangi bir özel tartışmayı görmek için giriş yap <a href='%{href}'."
+      log_in_html: "Eğer üye isen, herhangi bir özel tartışmayı görmek <a href='%{href}'> için giriş yap </a>."
   discussion_context:
     started_html: "%{when} önce <a href='%{link}' class='%{link_class}'>%{who}</a> tarafından başlatıldı"
     last_edited_html: "En son %{when} önce <a href='%{link}' class='%{link_class}'>%{who}</a> tarafından güncellendi"
@@ -578,14 +578,14 @@ tr:
     help: "Yardım"
     how_it_works: "Nasıl çalışıyor"
     invitation_html: |+
-      <h2>İyi bir davet yazmak<h2>
-      <p>Her yeni üyenin ilk sorusu 'Bu grup ne için?' olacaktır.<p>
+      <h2>İyi bir davet yazmak</h2>
+      <p>Her yeni üyenin ilk sorusu 'Bu grup ne için?' olacaktır./<p>
       <p>Grubu tanımlaman için en basit yolu düşün. Birlikte neyi
-      elde etmek istiyorsun? Ne tür kararşar alacaksınız? Kim dahil olacak?<p>
+      elde etmek istiyorsun? Ne tür kararşar alacaksınız? Kim dahil olacak?</p>
       <p>Onlar Loomio'ya davet etmeden önce grubunla konuşmak iyi bir fikir olabilir.
-      <p>
+      </p>
       <p>İnsanlar neden davet edildiklerini ve onlardan nelerin beklendiğini,
-      ve yeni bir aracı kullanmayı öğrenmek için zamanlarından harcamaya değip değimediğini bilmek isteyecek.<p>
+      ve yeni bir aracı kullanmayı öğrenmek için zamanlarından harcamaya değip değimediğini bilmek isteyecek.</p>
 
     join_the_community: "Topluluğa katıl"
     join_the_community_description_html: "Loomio'yu nasıl geliştirilebiliriz ve nasıl en iyi şekilde kullanabiliriz konularını konuştuğumuz Loomio Topluluğuna herkes katılmakta özgürdür. <br /><br /><a href='https://www.loomio.org/groups/3'>Loomio Topluluğu grubuna gitmek için tıklayın.</a>."

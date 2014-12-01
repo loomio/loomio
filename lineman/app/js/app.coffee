@@ -17,4 +17,4 @@ angular.module('loomioApp', ['ngRoute',
 angular.module('loomioApp').config ($translateProvider) ->
   $translateProvider.
     useUrlLoader('/api/v1/translations/en').
-    preferredLanguage('en');
+    preferredLanguage('en')

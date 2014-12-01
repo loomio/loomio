@@ -47,7 +47,7 @@ ro:
     motion_closing_inputs: "Data de inchidere nevalida"
     motion_outcome_not_created: "Nu se poate publica rezultatul."
     motion_outcome_not_updated: "Nu se poate actualiza rezultatul."
-    only_group_coordinator_destroy: "Nu poti parasi acest grup deoarece esti unicul coordonator. Poti dezactiva acest grup alegand o optiune din meniu sau <a href='%{add_coordinator}'>adauga un nou coordonator acestui grup."
+    only_group_coordinator_destroy: "Nu poti parasi acest grup deoarece esti unicul coordonator. Poti dezactiva acest grup alegand o optiune din meniu sau <a href='%{add_coordinator}'>adauga un nou coordonator</a> acestui grup."
     only_group_coordinator_remove_admin: "Grupul trebuie sa aiba un coordonator. Doresti sa adaugi un coordonator acestui grup?"
     permission_to_invite: "Nu ai dreptul sa inviti noi membri."
     position_not_updated: "Modificarea votului nu a reusit."

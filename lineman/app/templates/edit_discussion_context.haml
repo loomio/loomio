@@ -1,6 +1,0 @@
-%form{name: 'discussionForm', ng_submit: 'submit()'}
-
-  %textarea#discussion-context-field.form-control{ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
-
-  %button.btn.btn-primary{type: 'submit', translate: 'discussion_form.edit_discussion_submit' }
-  %button.btn.btn-warning{ng-click: 'cancel($event)', translate: 'common.action.cancel'}
