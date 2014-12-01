@@ -114,12 +114,12 @@ class API::RestfulController < API::BaseController
   end
 
   def respond_with_collection
-    render json: collection
+    render json: collection, root: serializer_root
   end
 
   def respond_with_resource
     if resource.errors.empty?
-      render json: [resource]
+      render json: [resource], root: serializer_root
     else
       render json: resource.errors.full_messages, root: false, status: 400
     end
@@ -127,6 +127,10 @@ class API::RestfulController < API::BaseController
 
   def respond_with_error
     render json: ['flash.errors.aw_crap'], root: false, status: 400
+  end
+
+  def serializer_root
+    controller_name
   end
 
 end

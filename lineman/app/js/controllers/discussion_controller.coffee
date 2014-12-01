@@ -12,13 +12,21 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
 
   busy = false
   $scope.lastPage = false
+  $scope.editingInline = false
+
+  $scope.editInline = ->
+    $scope.editingInline = true
+
+  $scope.$on 'editInlineComplete', ->
+    $scope.editingInline = false
+    $scope.discussionCopy = $scope.discussion
 
   $scope.editDiscussion = ->
     modalInstance = $modal.open
       templateUrl: 'generated/templates/discussion_form.html',
       controller: 'DiscussionFormController',
       resolve:
-        discussion: -> $scope.discussion
+        discussion: -> $scope.discussion.copy()
 
   $scope.getNextPage = ->
     return false if busy or $scope.lastPage

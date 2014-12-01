@@ -18,4 +18,8 @@ class API::MotionsController < API::RestfulController
     Queries::VisibleMotions.new(user: current_user)
   end
 
+  def serializer_root 
+    :proposals
+  end
+
 end

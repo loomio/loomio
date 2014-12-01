@@ -9,7 +9,7 @@
 
       .group-thread-list-thread-title
         %a{href: '/d/{{discussion.key}}'} {{ discussion.title }}
-      .group-thread-list-group-name
+      .group-thread-list-group-name{ng-if: 'discussion.group().isSubgroup()'}
         %a{href: '/g/{{discussion.group().key}}'} {{ discussion.groupName() }}
 
     .discussions-show-more.card-minor-action
