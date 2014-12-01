@@ -20,5 +20,5 @@ angular.module('loomioApp').factory 'AttachmentRecordsInterface', ($upload, Base
                   success(attachment)
                 , failure(response)
 
-    abort: ->
+    abortUpload: ->
       $upload.abort()

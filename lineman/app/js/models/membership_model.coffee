@@ -17,7 +17,7 @@ angular.module('loomioApp').factory 'MembershipModel', (BaseModel) ->
         following_by_default: @followingByDefault
 
     group: ->
-      @recordStore.groups.get(@groupId)
+      @recordStore.groups.find(@groupId)
 
     user: ->
-      @recordStore.users.get(@userId)
+      @recordStore.users.find(@userId)

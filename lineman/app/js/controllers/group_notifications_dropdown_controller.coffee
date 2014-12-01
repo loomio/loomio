@@ -1,16 +1,16 @@
 angular.module('loomioApp').controller 'GroupNotificationsDropdownController', ($scope, MessageChannelService, UserAuthService, FlashService) ->
   $scope.membership = UserAuthService.currentUser.membershipFor($scope.group)
 
-  $scope.followGroup = (following) ->
-    $scope.membership.followingByDefault = following
-    $scope.membership.save $scope.saveMembershipSuccess, $scope.saveMembershipFailure
- 
-  $scope.saveMembershipSuccess = ->
+  onFailure = (errors) ->
+    FlashService.error(errors)
+
+  onSuccess = ->
     if $scope.membership.followingByDefault
-      message = 'flash.group_page.notifications.follow_group'
+      message = 'group_page.messages.notifications.follow_group'
     else
-      message = 'flash.group_page.notifications.unfollow_group'
+      message = 'group_page.messages.notifications.unfollow_group'
     FlashService.success(message)
 
-  $scope.saveMembershipFailure = (errors) ->
-    FlashService.error(errors)
+  $scope.followGroup = (following) ->
+    $scope.membership.followingByDefault = following
+    $scope.membership.save().then onSuccess, onFailure

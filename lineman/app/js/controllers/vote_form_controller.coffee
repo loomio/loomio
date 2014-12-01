@@ -1,7 +1,10 @@
 angular.module('loomioApp').controller 'VoteFormController', ($scope, Records, UserAuthService, FormService) ->
   $scope.vote = Records.votes.initialize({proposal_id: $scope.proposal.id})
 
-  FormService.applyForm $scope, Records.votes.save, $scope.vote
+  onSuccess = ->
+    $scope.editing = false
+
+  FormService.applyForm $scope, $scope.vote, onSuccess
 
   $scope.lastVote = ->
     $scope.proposal.lastVoteByUser(UserAuthService.currentUser)
@@ -14,9 +17,3 @@ angular.module('loomioApp').controller 'VoteFormController', ($scope, Records, U
 
   $scope.edit = ->
     $scope.editing = true
-
-  $scope.onSuccess = ->
-    $scope.editing = false
-
-  $scope.cancel = ($event) ->
-    $scope.editing = false

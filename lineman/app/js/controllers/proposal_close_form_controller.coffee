@@ -2,15 +2,8 @@ angular.module('loomioApp').controller 'ProposalCloseFormController', ($scope, $
   $scope.proposal = proposal
 
   $scope.submit = ->
-    $scope.proposal.closedAt = Date.now
-    ProposalService.close $scope.proposal, $scope.saveSuccess, $scope.saveFailure
-
-  $scope.saveSuccess = ->
-    $modalInstance.close()
-
-  $scope.saveFailure = (errors) ->
-    console.log(errors)
+    scope.proposal.close().then ->
+      $modalInstance.close()
 
   $scope.cancel = ($event) ->
-    $event.preventDefault()
     $modalInstance.dismiss('cancel')

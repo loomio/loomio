@@ -1,8 +1,6 @@
 angular.module('loomioApp').controller 'MembershipsPageController', ($scope, group, UserAuthService) ->
-  Records.groups.fetchByKey(groupKey)
-  Records.memberships.fetchByGroupKey groupKey
-
-  $scope.group = Records.groups.getOrInitialize(key: groupKey)
+  $scope.group = group
+  Records.memberships.fetchByGroup group
 
   $scope.userIsAdmin = ->
     UserAuthService.currentUser.isAdminOf($scope.group)

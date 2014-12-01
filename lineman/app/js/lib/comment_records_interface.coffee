@@ -4,8 +4,8 @@ angular.module('loomioApp').factory 'CommentRecordsInterface', (BaseRecordsInter
 
     like: (user, comment, success) ->
       comment.addLiker(user)
-      @restfulClient.post "#{comment.id}/like"
+      @restfulClient.postMember comment.id, "like"
 
     unlike: (user, comment, success) ->
       comment.removeLiker(user)
-      @restfulClient.post "#{comment.id}/unlike"
+      @restfulClient.postMember comment.id, "unlike"

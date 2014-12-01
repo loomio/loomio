@@ -23,7 +23,7 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
         when 'new_motion' then @proposal()
 
     discussion: ->
-      @recordStore.discussions.get(@discussionId)
+      @recordStore.discussions.find(@discussionId)
 
     comment: ->
       @recordStore.comments.find(@commentId)

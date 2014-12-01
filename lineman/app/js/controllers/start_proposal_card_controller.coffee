@@ -5,8 +5,7 @@ angular.module('loomioApp').controller 'StartProposalCardController', ($scope, $
       controller: 'ProposalFormController'
       resolve:
         proposal: ->
-          Records.proposals.new(discussion_id: $scope.discussion.id)
-
+          Records.proposals.initialize(discussion_id: $scope.discussion.id)
 
     modalInstance.result.then ->
       # something
