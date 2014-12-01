@@ -6,12 +6,6 @@ angular.module('loomioApp').factory 'RestfulClient', ($http) ->
 
     apiPrefix: "api/v1"
 
-    paramsAsQuery: (params) ->
-      parts = _.map _.keys(params, (key) -> params[key])
-
-    encodeUriQuery = (s) ->
-      s
-
     buildUrl: (url, params) ->
       return url unless params?
       url + "?" + window.jQuery.param(params)
