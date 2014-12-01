@@ -5,7 +5,7 @@ angular.module('loomioApp').factory 'AttachmentRecordsInterface', ($upload, Base
     upload: (file, progress, success, failure) ->
       params = FileUploadService.getParams(file)
 
-      @newAttachment = @recordStore.attachments.build
+      @newAttachment = @recordStore.attachments.initialize
         filename: params.file.name
         filesize: params.file.size
         location: params.url + params.data.key
