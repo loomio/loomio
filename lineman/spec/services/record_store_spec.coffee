@@ -15,7 +15,7 @@ describe 'RecordStore', ->
           @key = data.key
 
       class MockRecordsInterface extends BaseRecordsInterface
-        @model: MockModel
+        model: MockModel
 
       recordStore = new RecordStore(db)
       recordStore.addRecordsInterface(MockRecordsInterface)
@@ -25,4 +25,4 @@ describe 'RecordStore', ->
 
   it 'imports records', ->
     recordStore.import({mocks: [{id: 9, key:'z'}]})
-    expect(recordStore.mocks.get(9).key).toBe('z')
+    expect(recordStore.mocks.find(9).key).toBe('z')

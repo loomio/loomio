@@ -1,10 +1,10 @@
-angular.module('loomioApp').controller 'ProposalsController', ($scope, Records, VoteService, ProposalService) ->
+angular.module('loomioApp').controller 'ProposalsController', ($scope, Records) ->
 
   $scope.proposalIds = ->
     _.map($scope.discussion.proposals(), 'id')
 
-  ProposalService.fetchByDiscussion $scope.discussion, ->
-    VoteService.fetchMyVotes($scope.discussion)
+  Records.proposals.fetchByDiscussion $scope.discussion
+  Records.votes.fetchMyVotesByDiscussion($scope.discussion)
 
   $scope.isSelectedProposal = (proposal) ->
     if $scope.selectedProposal? and proposal?
@@ -12,7 +12,6 @@ angular.module('loomioApp').controller 'ProposalsController', ($scope, Records, 
 
   $scope.setSelectedProposal = (proposal) ->
     $scope.selectedProposal = proposal
-    VoteService.fetchByProposal(proposal)
 
   if $scope.discussion.activeProposal()?
     $scope.setSelectedProposal $scope.discussion.activeProposal()

@@ -1,64 +1,102 @@
 angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient) ->
   class BaseRecordsInterface
-    @model: 'undefinedModel'
-    @restfulClient: 'undefinedRestfulClient'
+    model: 'undefinedModel'
+    restfulClient: 'undefinedRestfulClient'
 
     constructor: (recordStore) ->
       @recordStore = recordStore
-      @collection = @recordStore.db.addCollection(@constructor.model.plural)
-      @constructor.restfulClient = new RestfulClient(@constructor.model.plural)
+      @collection = @recordStore.db.addCollection(@model.plural)
+      @restfulClient = new RestfulClient(@model.plural)
 
-    restfulClient: ->
-      @constructor.restfulClient
-
-    # this method should only be called by model instances
-    save: (record) ->
-      if record.isNew()
-        @restfulClient.create()
-
-    put: (data) ->
+    initialize: (data) ->
       if data.key?
-        existingRecord = @get(data.key)
+        existingRecord = @find(data.key)
       else if data.id?
-        existingRecord = @get(data.id)
+        existingRecord = @find(data.id)
 
       if existingRecord?
-        @update(data)
+        existingRecord.initialize(data)
+        existingRecord
       else
-        @new(data)
+        record = new @model(@, data)
+        @collection.insert(record) if data.id?
+        record
 
-    update: (data) ->
-      existingRecord.initialize(data)
-      existingRecord
+    findOrFetchByKey: (key) ->
+      if record = @find(key)
+        console.log 'found record', record
+        @fetchByKey(key)
+        record
+      else
+        console.log 'fetching record', key
+        @fetchByKey(key)
 
-    new: (data) ->
-      record = new @constructor.model(@recordStore, data)
-      @collection.insert(record) if data.id?
-      record
+    fetchByKey: (key, success, failure) ->
+      @restfulClient.getMember key,
+        (data) => # success
+          console.log 'importing: ', data
+          @recordStore.import(data)
+          success() if success?
+          @find(key)
+      ,
+        (response) -> # failure
+          console.log 'fetch failed', params
+          failure() if failure?
 
-    get: (q) ->
+    fetch: (params, success, failure) ->
+      @restfulClient.getCollection params,
+        (data) => # success
+          @recordStore.import(data)
+          success(data)
+      ,
+        (response) -> # failure
+          console.log 'fetch failed', params, response
+          failure(response)
+
+    save: (record, s, f) ->
+      if record.isNew()
+        @restfulClient.create(record.serialize(), s, f)
+      else
+        @restfulClient.update(record.keyOrId(), record.serialize(), s, f)
+
+    destroy: (record, s, f) ->
+      @restfulClient.destroy(record.id, s, f)
+
+    update: (record, s, f) ->
+      @restfulClient.update(record.id, record.serialize(), s, f)
+
+    find: (q) ->
       if _.isNumber(q)
-        @getById(q)
+        @findById(q)
       else if _.isString(q)
-        @getByKey(q)
+        @findByKey(q)
       else if _.isArray(q)
         if q.length == 0
           []
         else if _.isString(q[0])
-          @getByKeys(q)
+          @findByKeys(q)
         else if _.isNumber(q[0])
-          @getByIds(q)
+          @findByIds(q)
       else
-        'weird input'
+        @collection.find(q)
 
-    getById: (id) ->
+    findById: (id) ->
       @collection.find(id: id)[0]
 
-    getByKey: (key) ->
+    findByKey: (key) ->
       @collection.find(key: key)[0]
 
-    getByIds: (ids) ->
+    findByIds: (ids) ->
       @collection.find(id: {'$in': ids})
 
-    getByKeys: (keys) ->
+    findByKeys: (keys) ->
       @collection.find(key: {'$in': keys})
+
+    importAndInvoke: (callback) ->
+      (data) =>
+        @recordStore.import(data)
+        callback(data) if callback?
+
+    importResponseData: ->
+      (data) =>
+        @recordStore.import(data)

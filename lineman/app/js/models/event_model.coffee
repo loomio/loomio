@@ -26,16 +26,16 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       @recordStore.discussions.get(@discussionId)
 
     comment: ->
-      @recordStore.comments.get(@commentId)
+      @recordStore.comments.find(@commentId)
 
     proposal: ->
-      @recordStore.proposals.get(@proposalId)
+      @recordStore.proposals.find(@proposalId)
 
     vote: ->
-      @recordStore.votes.get(@voteId)
+      @recordStore.votes.find(@voteId)
 
     actor: ->
-      @recordStore.users.get(@actorId)
+      @recordStore.users.find(@actorId)
 
     link: ->
       switch @kind

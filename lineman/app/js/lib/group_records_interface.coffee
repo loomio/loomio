@@ -1,9 +1,9 @@
 angular.module('loomioApp').factory 'GroupRecordsInterface', (BaseRecordsInterface, GroupModel) ->
   class GroupRecordsInterface extends BaseRecordsInterface
-    @model: GroupModel
+    model: GroupModel
 
-    fetchByParent: (parent, success, failure) ->
-      @restfulClient().fetch({parent_id: parent.id}, success, failure, 'subgroups')
+    fetchByParent: (parentGroup, success, failure) ->
+      @restfulClient.get "#{parentGroup.id}/subgroups", {}, @importAndInvoke(success), failure
 
     archive: (group, success, failure) =>
-      @save(group, success, failure, 'archive')
+      @restfulClient.post "#{group.key}/archive", {}, @importAndInvoke(success), failure

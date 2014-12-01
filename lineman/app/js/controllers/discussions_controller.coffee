@@ -1,6 +1,4 @@
-angular.module('loomioApp').controller 'DiscussionsController', ($scope, $modal, DiscussionService, Records, UserAuthService) ->
-  DiscussionService.fetchByGroup $scope.group
-
+angular.module('loomioApp').controller 'DiscussionsController', ($scope, $modal, Records, UserAuthService) ->
   nextPage = 1
   busy = false
   $scope.lastPage = false
@@ -8,10 +6,12 @@ angular.module('loomioApp').controller 'DiscussionsController', ($scope, $modal,
   $scope.getNextPage = ->
     return false if busy or $scope.lastPage
     busy = true
-    DiscussionService.fetchByGroup $scope.group, nextPage, (discussions) ->
+    Records.discussions.fetchByGroupKeyAndPage $scope.group.key, nextPage, (data) ->
+      discussions = data.discussions
       $scope.lastPage = true if discussions.length < 5
       nextPage = nextPage + 1
       busy = false
+
   $scope.getNextPage()
 
   $scope.openForm = ->
@@ -20,7 +20,7 @@ angular.module('loomioApp').controller 'DiscussionsController', ($scope, $modal,
       controller: 'DiscussionFormController'
       resolve:
         discussion: ->
-          Records.discussions.new(group_id: $scope.group.id)
+          Records.discussions.initialize(group_id: $scope.group.id)
 
   $scope.canStartDiscussions = ->
     UserAuthService.currentUser.isMemberOf($scope.group) and

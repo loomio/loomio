@@ -1,7 +1,5 @@
-angular.module('loomioApp').controller 'CommentFormController', ($scope, Records, CommentService, MembershipService) ->
-  $scope.comment = $scope.comment or Records.comments.new(discussion_id: $scope.discussion.id)
-  console.log 'discussion', $scope.discussion
-  console.log 'group', _.map Records.groups.get(), 'name'
+angular.module('loomioApp').controller 'CommentFormController', ($scope, Records) ->
+  $scope.comment = $scope.comment or Records.comments.initialize(discussion_id: $scope.discussion.id)
   group = $scope.discussion.group()
 
   $scope.mentionables = group.members()
@@ -20,20 +18,20 @@ angular.module('loomioApp').controller 'CommentFormController', ($scope, Records
     $scope.collapse() if $scope.comment.body.length == 0
 
   $scope.getMentionables = (fragment) ->
-    MembershipService.fetchByNameFragment fragment, group.id, ->
+    Records.members.fetchByNameFragment fragment, group.id, ->
       $scope.mentionables = _.filter(group.members(), (member) ->
         ~member.name.search(new RegExp(fragment, 'i')) or \
         ~member.label.search(new RegExp(fragment, 'i')))
 
   saveSuccess = ->
-    $scope.comment = Records.comments.new(discussion_id: $scope.discussion.id)
+    $scope.comment = Records.comments.initialize(discussion_id: $scope.discussion.id)
     $scope.$emit('commentSaveSuccess')
 
   saveError = (error) ->
     console.log error
 
   $scope.submit = ->
-    CommentService.save($scope.comment, saveSuccess, saveError)
+    $scope.comment.save(saveSuccess, saveError)
 
   $scope.$on 'showReplyToCommentForm', (event, parentComment) ->
     $scope.comment.parentId = parentComment.id

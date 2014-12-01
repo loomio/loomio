@@ -19,10 +19,10 @@ angular.module('loomioApp').factory 'VoteModel', (BaseModel) ->
         statement: @statement
 
     author: ->
-      @recordStore.users.get(@authorId)
+      @recordStore.users.find(@authorId)
 
     proposal: ->
-      @recordStore.proposals.get(@proposalId)
+      @recordStore.proposals.find(@proposalId)
 
     authorName: ->
       @author().name

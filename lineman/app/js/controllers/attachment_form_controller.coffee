@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'AttachmentFormController', ($scope, AttachmentService, AttachmentModel) ->
+angular.module('loomioApp').controller 'AttachmentFormController', ($scope, AttachmentService) ->
 
   $scope.upload = ($files) ->
     $scope.isAttaching = true

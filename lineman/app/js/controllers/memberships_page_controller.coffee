@@ -1,15 +1,17 @@
-angular.module('loomioApp').controller 'MembershipsPageController', ($scope, group, MembershipService, UserAuthService) ->
-  $scope.group = group
-  MembershipService.fetchByGroup group.id
+angular.module('loomioApp').controller 'MembershipsPageController', ($scope, group, UserAuthService) ->
+  Records.groups.fetchByKey(groupKey)
+  Records.memberships.fetchByGroupKey groupKey
+
+  $scope.group = Records.groups.getOrInitialize(key: groupKey)
 
   $scope.userIsAdmin = ->
-    UserAuthService.currentUser.isAdminOf(group)
+    UserAuthService.currentUser.isAdminOf($scope.group)
 
   $scope.toggleMembershipAdmin = (membership) ->
     if membership.admin
-      MembershipService.removeAdmin(membership)
+      membership.removeAdmin()
     else
-      MembershipService.makeAdmin(membership)
+      membership.makeAdmin()
 
   $scope.destroyMembership = (membership) ->
-    MembershipService.destroy(membership)
+    membership.destroy()

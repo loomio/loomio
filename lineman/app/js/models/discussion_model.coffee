@@ -41,13 +41,13 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
         private: @private
 
     author: ->
-      @recordStore.users.get(@authorId)
+      @recordStore.users.find(@authorId)
 
     authorName: ->
       @author().name
 
     group: ->
-      @recordStore.groups.get(@groupId)
+      @recordStore.groups.find(@groupId)
 
     groupName: ->
       @group().name
