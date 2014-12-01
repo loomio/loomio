@@ -14,14 +14,6 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
 
   busy = false
   $scope.lastPage = false
-  $scope.editingInline = false
-
-  $scope.editInline = -> 
-    $scope.editingInline = true
-
-  $scope.$on 'editInlineComplete', -> 
-    $scope.editingInline = false
-    $scope.discussionCopy = $scope.discussion
 
   $scope.editDiscussion = ->
     modalInstance = $modal.open
@@ -49,11 +41,11 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
   $scope.canStartProposals = ->
     !discussion.activeProposal() and UserAuthService.currentUser.canStartProposals($scope.discussion)
 
+  $scope.showContextMenu = ->
+    $scope.canEditDiscussion($scope.discussion)
+
   $scope.canEditDiscussion = ->
     UserAuthService.currentUser.canEditDiscussion($scope.discussion)
-
-  $scope.showContextMenu = ->
-    $scope.canEditDiscussion()
 
   $scope.inboxPinned = ->
     UserAuthService.inboxPinned
