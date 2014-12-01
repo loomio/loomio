@@ -30,8 +30,8 @@ describe API::MotionsController do
       it 'returns motion filtered by discussion' do
         get :index, discussion_id: discussion.id, format: :json
         json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[motions])
-        motion_ids = json['motions'].map { |v| v['id'] }
+        expect(json.keys).to include *(%w[proposals])
+        motion_ids = json['proposals'].map { |v| v['id'] }
         expect(motion_ids).to include motion.id
         expect(motion_ids).to_not include another_motion.id
       end
@@ -79,8 +79,8 @@ describe API::MotionsController do
       it 'responds with json' do
         post :create, motion: motion_params, format: :json
         json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[users motions])
-        expect(json['motions'][0].keys).to include *(%w[
+        expect(json.keys).to include *(%w[users proposals])
+        expect(json['proposals'][0].keys).to include *(%w[
           discussion_id
           name
           description

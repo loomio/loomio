@@ -151,6 +151,10 @@ h3.dropdown-heading{
   font-weight: normal;
 }
 
+label.label-with-details{
+  margin-left: 5px;
+}
+
 .fa-volume-off-padded{margin: 0 6px 0 3px;}
 
 .form-card{
@@ -176,6 +180,7 @@ input[type="file"]{
 @import 'layout';
 @import 'flash';
 @import 'thread';
+@import 'profile';
 @import 'proposal_card';
 @import 'proposal_pie_chart';
 @import 'vote_form';
