@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'GroupController', ($scope, group, MessageChannelService, UserAuthService) ->
+angular.module('loomioApp').controller 'GroupController', ($scope, group, MessageChannelService, MembershipService, UserAuthService, Records) ->
   $scope.group = group
 
   onMessageReceived = ->
@@ -9,3 +9,10 @@ angular.module('loomioApp').controller 'GroupController', ($scope, group, Messag
 
   $scope.inboxPinned = ->
     UserAuthService.inboxPinned
+
+  $scope.isMember = ->
+    UserAuthService.currentUser.membershipFor($scope.group)?
+
+  $scope.joinGroup = ->
+    membership = Records.memberships.new(group_id: $scope.group.id)
+    MembershipService.create(membership)

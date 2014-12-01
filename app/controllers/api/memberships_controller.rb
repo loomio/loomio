@@ -8,6 +8,13 @@ class API::MembershipsController < API::RestfulController
     respond_with_collection
   end
 
+  def create
+    params[:group_id] = params[:membership][:group_id]
+    load_and_authorize_group
+    event = MembershipService.join_group group: @group, user: current_user
+    @membership = event.eventable
+    respond_with_resource
+  end
 
   def my_memberships
     @memberships = current_user.memberships.joins(:group).order('groups.full_name ASC')
