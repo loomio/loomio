@@ -21,8 +21,8 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       @membershipGrantedUpon          = data.membership_granted_upon
       @discussionPrivacyOptions       = data.discussion_privacy_options
       @visibleTo                      = data.visible_to
-      @logoUrlSmall                   = data.logo_url_small
-      @coverUrlSmall                  = data.cover_url_small
+      @logoUrlMedium                  = data.logo_url_medium
+      @coverUrlDesktop                = data.cover_url_desktop
 
     serialize: ->
       group:
@@ -40,8 +40,13 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
         discussion_privacy_options:    @discussionPrivacyOptions
         visible_to:                    @visibleTo
 
+    setupViews: ->
+      @discussionsView = @recordStore.discussions.collection.addDynamicView(@viewName())
+      @discussionsView.applyFind(groupId: @id)
+      @discussionsView.applySimpleSort('createdAt', true)
+
     discussions: ->
-      @recordStore.discussions.find(groupId: @id)
+      @discussionsView.data()
 
     subgroups: ->
       @recordStore.groups.find(parentId: @id)
@@ -82,8 +87,29 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       @parent().name if @parent()?
 
     parentIsHidden: ->
-      @parent().visibleToPublic() if @parent()?
+      @parent().visibleToPublic() if @parentId?
 
     visibleToPublic: ->       @visibleTo == 'public'
     visibleToOrganization: -> @visibleTo == 'parent_members'
     visibleToMembers: ->      @visibleTo == 'members'
+
+    userDefinedLogo: ->
+      !_.contains(@logoUrlMedium, 'default-logo')
+
+    userDefinedCover: ->
+      !_.contains(@coverUrlDesktop, 'default-cover')
+
+    isSubgroup: ->
+      @parentId?
+
+    logoUrl: ->
+      if @isSubgroup() && !@userDefinedLogo()
+        @parent().logoUrlMedium
+      else
+        @logoUrlMedium
+
+    coverUrl: ->
+      if @isSubgroup() && !@userDefinedCover()
+        @parent().coverUrlDesktop
+      else
+        @coverUrlDesktop

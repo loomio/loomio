@@ -1,11 +1,10 @@
 angular.module('loomioApp').controller 'GroupFormController', ($scope, $location, group, FormService, UserAuthService) ->
-  Records.groups.fetchByKey(groupKey)
-  group = Records.groups.getOrInitialize(key: groupKey)
+  group = Records.groups.findOrFetch(groupKey)
   $scope.group = group
 
   FormService.applyForm $scope, group
 
-  $scope.successCallback = (newGroup) ->
+  $scope.onSuccess = (newGroup) ->
     $location.path "/g/#{newGroup.key}"
 
   $scope.inboxPinned = ->

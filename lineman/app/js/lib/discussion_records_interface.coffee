@@ -4,3 +4,6 @@ angular.module('loomioApp').factory 'DiscussionRecordsInterface', (BaseRecordsIn
 
     fetchByGroupKeyAndPage: (groupKey, page, success, failure) ->
       @restfulClient.getCollection({group_key: groupKey, page: page}, @importAndInvoke(success), failure)
+
+    fetchInbox: ->
+      @restfulClient.get 'inbox', @importResponseData

@@ -20,3 +20,8 @@ angular.module('loomioApp').factory 'BaseModel', ->
 
     save: (s, f) ->
       @recordsInterface.save(@, s, f)
+
+    copy: =>
+      cloner = ->
+      cloner.prototype = @constructor.prototype
+      angular.extend new cloner(), _.clone(@), recordStore: @recordStore

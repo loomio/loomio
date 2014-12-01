@@ -55,5 +55,8 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
   ).when('/contact',
     templateUrl: 'generated/templates/contact_page.html',
     controller: 'ContactPageController'
+  ).when('/profile',
+    templateUrl: 'generated/templates/profile_page.html',
+    controller: 'ProfilePageController'
   ).otherwise
     redirectTo: '/g/WmPCB3IR'

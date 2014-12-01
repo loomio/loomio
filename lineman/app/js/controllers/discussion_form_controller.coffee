@@ -4,7 +4,7 @@ angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $mod
 
   FormService.applyForm $scope, discussion, $modalInstance
 
-  $scope.successCallback = (result) ->
+  $scope.onSuccess = (result) ->
     $modalInstance.dismiss('success')
     $location.path "/d/#{result.key}"
 

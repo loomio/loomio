@@ -10,5 +10,5 @@
       %li.selector-list-item.media{ng_repeat: 'group in availableGroups() | filter:query', class: 'is-subgroup-{{group.parentId != null}}'}
         %a.selector-list-item-link{href: '/g/{{group.key}}'}
           .media-left
-            %img.selector-list-item-group-logo{src: "{{group.logoUrlSmall}}"}
+            %img.selector-list-item-group-logo{src: "{{group.logoUrl()}}"}
           .selector-list-item-group-name.media-body {{group.fullName()}}
