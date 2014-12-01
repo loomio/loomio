@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'GroupOptionsDropdownController', ($scope, $modal, GroupService, UserAuthService) ->
+angular.module('loomioApp').controller 'GroupOptionsDropdownController', ($scope, $modal, UserAuthService) ->
 
   $scope.canEditGroup = ->
     UserAuthService.currentUser.isAdminOf($scope.group)

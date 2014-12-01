@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'AttachmentRecordsInterface', ($upload, BaseRecordsInterface, FileUploadService, AttachmentModel) ->
   class AttachmentRecordsInterface extends BaseRecordsInterface
-    @model: AttachmentModel
+    model: AttachmentModel
 
     upload: (file, progress, success, failure) ->
       params = FileUploadService.getParams(file)

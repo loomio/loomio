@@ -32,10 +32,10 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     positions: ['yes', 'abstain', 'no', 'block']
 
     author: ->
-      @recordStore.users.get(@authorId)
+      @recordStore.users.find(@authorId)
 
     discussion: ->
-      @recordStore.discussions.get(@discussionId)
+      @recordStore.discussions.find(@discussionId)
 
     votes: ->
       @votesView.data() unless @isNew()

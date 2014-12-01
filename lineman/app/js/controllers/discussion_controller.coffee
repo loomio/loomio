@@ -1,12 +1,11 @@
-angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, discussion, MessageChannelService, EventService, FileUploadService, UserAuthService) ->
+angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, discussion, Records, MessageChannelService, FileUploadService, UserAuthService) ->
+  $scope.discussion = discussion
+
   onMessageReceived = ->
     console.log 'on message received called, yay'
     $scope.$digest()
 
-  MessageChannelService.subscribeTo("/discussion-#{discussion.id}", onMessageReceived)
-  #MessageChannelService.subscribeTo("/events", onMessageReceived)
-
-  $scope.discussion = discussion
+  MessageChannelService.subscribeTo("/discussion-#{discussion.key}", onMessageReceived)
 
   $scope.wrap = {}
   nextPage = 1
@@ -24,7 +23,8 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
   $scope.getNextPage = ->
     return false if busy or $scope.lastPage
     busy = true
-    EventService.fetch {discussion_id: discussion.id, page: nextPage}, (events) ->
+    Records.events.fetch {discussion_key: discussion.key, page: nextPage}, (data) ->
+      events = data.events
       $scope.lastPage = true if events.length == 0
       nextPage = nextPage + 1
       busy = false

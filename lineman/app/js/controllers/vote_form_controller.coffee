@@ -1,7 +1,7 @@
-angular.module('loomioApp').controller 'VoteFormController', ($scope, Records, VoteService, UserAuthService, FormService) ->
-  $scope.vote = Records.votes.new({proposal_id: $scope.proposal.id})
+angular.module('loomioApp').controller 'VoteFormController', ($scope, Records, UserAuthService, FormService) ->
+  $scope.vote = Records.votes.initialize({proposal_id: $scope.proposal.id})
 
-  FormService.applyForm $scope, VoteService.save, $scope.vote
+  FormService.applyForm $scope, Records.votes.save, $scope.vote
 
   $scope.lastVote = ->
     $scope.proposal.lastVoteByUser(UserAuthService.currentUser)

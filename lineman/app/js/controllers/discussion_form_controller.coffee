@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $modalInstance, $location, FormService, DiscussionService, discussion, UserAuthService) ->
+angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $modalInstance, $location, FormService, discussion, UserAuthService) ->
   currentUser = UserAuthService.currentUser
   $scope.discussion = discussion
 

@@ -1,61 +1,70 @@
 angular.module('loomioApp').factory 'RestfulClient', ($http) ->
   class RestfulClient
-    constructor: (resource_plural) ->
-      @resource_plural = resource_plural
-
-    resource_plural: 'undefined'
+    resourcePlural: 'undefined'
+    constructor: (resourcePlural) ->
+      @resourcePlural = resourcePlural
 
     apiPrefix: "api/v1"
 
-    indexPath: ->
-      "#{@apiPrefix}/#{@resource_plural}"
+    paramsAsQuery: (params) ->
+      parts = _.map _.keys(params, (key) -> params[key])
 
-    showPath: (id) ->
-      "#{@apiPrefix}/#{@resource_plural}/#{id}"
+    encodeUriQuery = (s) ->
+      s
 
-    customPath: (path, id) ->
-      if path?
-        if id?
-          "#{@apiPrefix}/#{@resource_plural}/#{id}/#{path}"
-        else
-          "#{@apiPrefix}/#{@resource_plural}/#{path}"
+    buildUrl: (url, params) ->
+      return url unless params?
+      url + "?" + window.jQuery.param(params)
 
-    fetchByKey: (key, success, failure) ->
-      $http.get(@showPath(key)).then (response) ->
+    collectionPath: (params) ->
+      "#{@apiPrefix}/#{@resourcePlural}"
+
+    memberPath: (id, params) ->
+      "#{@apiPrefix}/#{@resourcePlural}/#{id}"
+
+    customPath: (path, params) ->
+      "#{@apiPrefix}/#{@resourcePlural}/#{path}"
+
+    get: (path, params, success, failure) ->
+      url = @buildUrl(@customPath(path), params)
+      $http.get(url).then (response) ->
         success(response.data) if success?
       , (response) ->
         failure(response.data) if failure?
 
-
-    fetch: (filters, success, failure, path) ->
-      path = @customPath(path) or @indexPath()
-      $http.get(path, { params: filters }).then (response) ->
+    post: (path, params, success, failure) ->
+      $http.post(@customPath(path), params).then (response) ->
         success(response.data) if success?
       , (response) ->
         failure(response.data) if failure?
 
-    create: (obj, success, failure, path) ->
-      path = @customPath(path) or @indexPath()
-      $http.post(path, obj.serialize()).then (response) ->
+    getMember: (keyOrId, success, failure) ->
+      $http.get(@memberPath(keyOrId)).then (response) ->
         success(response.data) if success?
       , (response) ->
         failure(response.data) if failure?
 
-    update: (obj, success, failure, path) ->
-      path = @customPath(path, obj.id) or @showPath(obj.id)
-      $http.patch(path, obj.serialize()).then (response) ->
+    getCollection: (params, success, failure) ->
+      url = @buildUrl(@collectionPath(), params)
+      $http.get(url).then (response) ->
         success(response.data) if success?
       , (response) ->
         failure(response.data) if failure?
 
-    destroy: (obj, success, failure) =>
-      $http.delete(@showPath(obj.id)).then (response) ->
+    create: (params, success, failure) ->
+      $http.post(@collectionPath(), params).then (response) ->
         success(response.data) if success?
       , (response) ->
         failure(response.data) if failure?
 
-    save: (obj, success, failure, path) =>
-      if obj.isNew()
-        @create(obj, success, failure, path)
-      else
-        @update(obj, success, failure, path)
+    update: (id, params, success, failure) ->
+      $http.patch(@memberPath(id), params).then (response) ->
+        success(response.data) if success?
+      , (response) ->
+        failure(response.data) if failure?
+
+    destroy: (id, success, failure) =>
+      $http.delete(@memberPath(id)).then (response) ->
+        success(response.data) if success?
+      , (response) ->
+        failure(response.data) if failure?

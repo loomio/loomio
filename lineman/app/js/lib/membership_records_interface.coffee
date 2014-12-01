@@ -1,18 +1,23 @@
 angular.module('loomioApp').factory 'MembershipRecordsInterface', (BaseRecordsInterface, MembershipModel) ->
   class MembershipRecordsInterface extends BaseRecordsInterface
-    @model: MembershipModel
+    model: MembershipModel
 
     fetchMyMemberships: (success, failure) ->
-      @restfulClient.fetch({}, success, failure, 'my_memberships')
+      @restfulClient.get 'my_memberships', {},
+        (data) ->
+          @recordStore.import(data)
+          success()
+      , failure
 
-    fetchByNameFragment: (fragment, groupId, success, failure) ->
-      @restfulClient.fetch({q: fragment, group_id: groupId}, success, failure, 'autocomplete')
+    fetchByNameFragment: (fragment, groupKey, success, failure) ->
+      @restfulClient.get 'autocomplete', {q: fragment, group_key: groupKey}, @importAndInvoke(success), failure
 
-    fetchByGroup: (groupId, success, failure) ->
-      @restfulClient.fetch({group_id: groupId}, success, failure)
+    fetchByGroupKey: (groupKey, success, failure) ->
+      @restfulClient.getCollection {group_key: groupKey}, @importAndInvoke(success), failure
 
     makeAdmin: (membership, success, failure) ->
-      @save(membership, success, failure, 'make_admin')
+      @restfulClient.post "#{membership.id}/make_admin", {}, @importAndInvoke(success), failure
 
     removeAdmin: (membership, success, failure) ->
-      @save(membership, success, failure, 'remove_admin')
+      @restfulClient.post "#{membership.id}/remove_admin", {}, @importAndInvoke(success), failure
+

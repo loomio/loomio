@@ -14,10 +14,10 @@ describe 'CommentModel', ->
       recordStore = Records
       discussionModel = DiscussionModel
       console.log 'recordStore', recordStore
-      group = recordStore.groups.new(id: 1, name: 'group')
-      discussion = recordStore.discussions.new(id: 1, group_id: group.id, title: 'discussion')
-      comment = recordStore.comments.new(id: 8, title: 'Hi', discussion_id: discussion.id, created_at: "2000-01-01T00:00:00")
-      author = recordStore.users.new(id: 1, name: 'sam')
+      group = recordStore.groups.initialize(id: 1, name: 'group')
+      discussion = recordStore.discussions.initialize(id: 1, group_id: group.id, title: 'discussion')
+      comment = recordStore.comments.initialize(id: 8, title: 'Hi', discussion_id: discussion.id, created_at: "2000-01-01T00:00:00")
+      author = recordStore.users.initialize(id: 1, name: 'sam')
 
   describe 'author()', ->
     it 'returns the comment author', ->
@@ -29,7 +29,7 @@ describe 'CommentModel', ->
       expect(comment.isMostRecent()).toBe(true)
 
     it 'is false when newer comments exist in the discussion', ->
-      newComment = recordStore.comments.new(id: 6, discussion_id: 1, created_at: "2000-01-01T00:00:10")
+      newComment = recordStore.comments.initialize(id: 6, discussion_id: 1, created_at: "2000-01-01T00:00:10")
       expect(comment.isMostRecent()).toBe(false)
 
   describe 'canBeEditedByAuthor', ->
@@ -48,7 +48,7 @@ describe 'CommentModel', ->
         expect(comment.canBeEditedByAuthor()).toBe(true)
 
       it 'is false when is is not most recent comment', ->
-        newComment = recordStore.comments.new(id: 9, discussion_id: 1, created_at: "2000-04-01T00:00:20")
+        newComment = recordStore.comments.initialize(id: 9, discussion_id: 1, created_at: "2000-04-01T00:00:20")
         console.log 'notmostrecent', comment.discussion().comments()
         expect(comment.isMostRecent()).toBe(false)
         expect(comment.canBeEditedByAuthor()).toBe(false)

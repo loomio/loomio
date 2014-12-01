@@ -76,7 +76,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
         @name
 
     parent: ->
-      @recordStore.groups.get(@parentId)
+      @recordStore.groups.find(@parentId)
 
     parentName: ->
       @parent().name if @parent()?

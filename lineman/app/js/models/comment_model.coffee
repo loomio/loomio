@@ -2,7 +2,6 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
   class CommentModel extends BaseModel
     @singular: 'comment'
     @plural: 'comments'
-    @foreignKey: 'commentId'
     @indexes: ['discussionId', 'authorId']
 
     initialize: (data) ->
@@ -41,22 +40,22 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
       @parentId?
 
     likers: ->
-      @recordStore.users.get(@likerIds)
+      @recordStore.users.find(@likerIds)
 
     newAttachments: ->
-      @recordStore.attachments.get @newAttachmentIds
+      @recordStore.attachments.find(@newAttachmentIds)
 
     attachments: ->
       @recordStore.attachments.find(commentId: @id)
 
     author: ->
-      @recordStore.users.get(@authorId)
+      @recordStore.users.find(@authorId)
 
     parent: ->
-      @recordStore.comments.get(@parentId)
+      @recordStore.comments.find(@parentId)
 
     discussion: ->
-      @recordStore.discussions.get(@discussionId)
+      @recordStore.discussions.find(@discussionId)
 
     authorName: ->
       @author().name

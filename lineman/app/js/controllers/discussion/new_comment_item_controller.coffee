@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $translate, $modal, CommentService, UserAuthService) ->
+angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $translate, $modal, Records, UserAuthService) ->
   renderLikedBySentence = ->
     otherIds = _.without($scope.comment.likerIds, UserAuthService.currentUser.id)
     otherUsers = _.filter $scope.comment.likers(), (user) -> _.contains(otherIds, user.id)
@@ -63,10 +63,10 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
     UserAuthService.currentUser.canDeleteComment($scope.comment)
 
   $scope.like = ->
-    CommentService.like(UserAuthService.currentUser, $scope.comment, renderLikedBySentence)
+    Records.comments.like(UserAuthService.currentUser, $scope.comment, renderLikedBySentence)
 
   $scope.unlike = ->
-    CommentService.unlike(UserAuthService.currentUser, $scope.comment, renderLikedBySentence)
+    Records.comments.unlike(UserAuthService.currentUser, $scope.comment, renderLikedBySentence)
 
   $scope.currentUserLikesIt = ->
     _.contains($scope.comment.likerIds, UserAuthService.currentUser.id)
