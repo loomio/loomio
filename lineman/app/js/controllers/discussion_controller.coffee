@@ -39,7 +39,7 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
     $scope.$broadcast('showReplyToCommentForm', originalComment)
 
   $scope.canStartProposals = ->
-    !discussion.activeProposal() and UserAuthService.currentUser.canStartProposals($scope.discussion)
+    !discussion.hasActiveProposal() and UserAuthService.currentUser.canStartProposals($scope.discussion)
 
   $scope.showContextMenu = ->
     $scope.canEditDiscussion($scope.discussion)
