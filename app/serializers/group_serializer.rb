@@ -10,7 +10,7 @@ class GroupSerializer < ActiveModel::Serializer
              :members_can_start_discussions,
              :members_can_edit_discussions,
              :members_can_edit_comments,
-             :members_can_raise_motions,
+             :members_can_raise_proposals,
              :members_can_vote,
              :visible_to,
              :membership_granted_upon,
@@ -26,6 +26,10 @@ class GroupSerializer < ActiveModel::Serializer
 
   def cover_url_desktop
     object.cover_photo.url(:desktop)
+  end
+
+  def members_can_raise_proposals
+    object.members_can_raise_motions
   end
 
 end
