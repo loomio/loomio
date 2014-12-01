@@ -51,7 +51,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       @isAuthorOf(discussion) or @isAdminOf(discussion.group()) or discussion.group().membersCanEditDiscussions
 
     canStartProposals: (discussion) ->
-      @isAdminOf(discussion.group()) or discussion.group().membersCanStartProposals
+      @isAdminOf(discussion.group()) or discussion.group().membersCanRaiseProposals
 
     isAuthorOf: (object) ->
       @id == object.authorId
