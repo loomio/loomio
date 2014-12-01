@@ -12,7 +12,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       @avatarInitials = data.avatar_initials
 
     setupViews: ->
-      @membershipsView = @recordStore.memberships.addDynamicView(@viewName())
+      @membershipsView = @recordStore.memberships.collection.addDynamicView(@viewName())
       @membershipsView.applyFind(userId: @id)
       @membershipsView.applySimpleSort('id')
 
@@ -35,7 +35,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
          return 1 if (first.fullName() > second.fullName())
          return -1 if (first.fullName() < second.fullName())
 
-      @recordStore.groups.chain()
+      @recordStore.groups.collection.chain()
                          .find(id: {'$in': @groupIds()})
                          .sort(groupSort)
                          .data()

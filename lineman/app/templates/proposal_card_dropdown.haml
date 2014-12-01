@@ -1,0 +1,11 @@
+.proposal-card-edit.pull-right{dropdown: '', on-toggle: 'toggled(open)'}
+  %a.dropdown-toggle{href: '#'}
+    %i.fa.fa-chevron-down
+  .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
+    %ul.dropdown-menu-items
+      %li.dropdown-menu-item{ng_click: 'editProposal()'}
+        .dropdown-menu-item-label
+          %span{translate: 'proposal_card.edit_proposal'}
+      %li.dropdown-menu-item{ng_click: 'closeProposal()'}
+        .dropdown-menu-item-label
+          %span{translate: 'proposal_card.close_proposal'}

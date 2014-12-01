@@ -1,11 +1,10 @@
-angular.module('loomioApp').controller 'GroupController', ($scope, group, MessageChannelService, UserAuthService) ->
+angular.module('loomioApp').controller 'GroupController', ($scope, groupKey, group, Records, MessageChannelService, UserAuthService) ->
+  console.log 'resolved promise', group
+  console.log Records.groups.find(groupKey)
   $scope.group = group
 
-  onMessageReceived = ->
-    console.log 'on message received called, yay'
-    $scope.$digest()
-
-  MessageChannelService.subscribeTo("/group-#{group.id}", onMessageReceived)
+  console.log 'group', group
+  MessageChannelService.subscribeTo("/group-#{group.key}")
 
   $scope.inboxPinned = ->
     UserAuthService.inboxPinned

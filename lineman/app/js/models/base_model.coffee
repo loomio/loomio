@@ -1,12 +1,16 @@
 angular.module('loomioApp').factory 'BaseModel', ->
   class BaseModel
-    constructor: (recordStore, data) ->
-      Object.defineProperty(@, 'recordStore', value: recordStore, enumerable: false)
+    @singular: 'undefinedSingular'
+    @plural: 'undefinedPlural'
+
+    constructor: (recordsInterface, data) ->
+      Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: false)
+      Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: false)
       @initialize(data)
       @setupViews() if @setupViews? and @id?
-      #recordStore[@constructor.plural].insert @
 
     initialize: ->
+
     setupViews: ->
 
     viewName: -> "#{@constructor.plural}#{@id}"
@@ -14,3 +18,5 @@ angular.module('loomioApp').factory 'BaseModel', ->
     isNew: ->
       not @id?
 
+    save: (s, f) ->
+      @recordsInterface.save(@, s, f)

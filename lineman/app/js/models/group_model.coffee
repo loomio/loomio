@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
   class GroupModel extends BaseModel
-    @singluar: 'group'
+    @singular: 'group'
     @plural: 'groups'
     @indexes: ['parentId']
 
@@ -22,6 +22,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       @discussionPrivacyOptions       = data.discussion_privacy_options
       @visibleTo                      = data.visible_to
       @logoUrlSmall                   = data.logo_url_small
+      @coverUrlSmall                  = data.cover_url_small
 
     serialize: ->
       group:
@@ -75,7 +76,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
         @name
 
     parent: ->
-      @recordStore.groups.get(@parentId)
+      @recordStore.groups.find(@parentId)
 
     parentName: ->
       @parent().name if @parent()?

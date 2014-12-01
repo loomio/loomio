@@ -8,7 +8,7 @@ angular.module('loomioApp').factory 'InboxService', ($http, Records) ->
         # return discussions in the order they arrived
         ids = _.map response.data.discussions, (discussion) -> discussion.id
         console.log ids
-        discussions = Records.discussions.get(ids)
+        discussions = Records.discussions.find(ids)
         success(discussions)
       , (response) ->
         failure(response.data.error)

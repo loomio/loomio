@@ -13,35 +13,59 @@ class API::RestfulController < API::BaseController
 
 
   def create
-    instantiate_resouce
-    service.create({resource_symbol => resource,
-                    actor: current_user})
-    respond_with_resource
+    begin
+      instantiate_resouce
+      service.create({resource_symbol => resource,
+                      actor: current_user})
+      respond_with_resource
+    rescue
+      respond_with_error
+    end
   end
 
   def update
-    load_resource
-    service.update({resource_symbol => resource,
-                    params: resource_params,
-                    actor: current_user})
-    respond_with_resource
+    begin
+      load_resource
+      service.update({resource_symbol => resource,
+                      params: resource_params,
+                      actor: current_user})
+      respond_with_resource
+    rescue
+      respond_with_error
+    end
   end
 
   def destroy
-    load_resource
-    service.destroy({resource_symbol => resource,
-                     actor: current_user})
-    render json: {success: 'success'}
+    begin
+      load_resource
+      service.destroy({resource_symbol => resource,
+                       actor: current_user})
+      render json: {success: 'success'}
+    rescue
+      respond_with_error
+    end
   end
 
   private
   def load_and_authorize_group
-    @group = Group.find(params[:group_id])
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+    elsif params[:group_key]
+      @group = Group.find_by_key!(params[:group_key])
+    elsif params[:id]
+      @group = Group.friendly.find(params[:id])
+    end
     authorize! :show, @group
   end
 
   def load_and_authorize_discussion
-    @discussion = Discussion.find(params[:discussion_id])
+    if params[:discussion_id]
+      @discussion = Discussion.find(params[:discussion_id])
+    elsif params[:discussion_key]
+      @discussion = Discussion.find_by_key!(params[:discussion_key])
+    elsif params[:id]
+      @discussion = Discussion.friendly.find(params[:id])
+    end
     authorize! :show, @discussion
   end
 
@@ -97,8 +121,12 @@ class API::RestfulController < API::BaseController
     if resource.errors.empty?
       render json: [resource]
     else
-      render json: { errors: resource.errors }, status: 400
+      render json: resource.errors.full_messages, root: false, status: 400
     end
+  end
+
+  def respond_with_error
+    render json: ['flash.errors.aw_crap'], root: false, status: 400
   end
 
 end

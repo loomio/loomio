@@ -1,5 +1,5 @@
-angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope, NotificationService, UserAuthService, Records) ->
-  NotificationService.fetch {}
+angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope, UserAuthService, Records) ->
+  Records.notifications.fetch
 
   $scope.userLoggedIn = ->
     UserAuthService.currentUser?
@@ -24,4 +24,4 @@ angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope,
   ]
 
   $scope.notifications = ->
-    Records.notifications.find(userId: UserAuthService.currentUser.id)
+    UserAuthService.currentUser.notifications()

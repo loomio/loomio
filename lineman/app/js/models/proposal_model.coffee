@@ -17,13 +17,12 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
       @activityCount = data.activity_count
 
     setupViews: ->
-      @votesView = @recordStore.votes.addDynamicView(@viewName())
+      @votesView = @recordStore.votes.collection.addDynamicView(@viewName())
       @votesView.applyFind(proposalId: @id)
       @votesView.applySimpleSort('id')
 
     serialize: ->
       motion:
-        id: @id
         discussion_id: @discussionId
         name: @name
         description: @description
@@ -32,15 +31,14 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     positionVerbs: ['agree', 'abstain', 'disagree', 'block']
     positions: ['yes', 'abstain', 'no', 'block']
 
-
     author: ->
-      @recordStore.users.get(@authorId)
+      @recordStore.users.find(@authorId)
 
     discussion: ->
-      @recordStore.discussions.get(@discussionId)
+      @recordStore.discussions.find(@discussionId)
 
     votes: ->
-      @votesView.data()
+      @votesView.data() unless @isNew()
 
     authorName: ->
       @author().name
