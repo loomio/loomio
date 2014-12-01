@@ -65,6 +65,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       else
         null
 
+    hasActiveProposal: ->
+      @activeProposal()?
+
     activeProposalClosedAt: ->
       proposal = @activeProposal()
       proposal.closedAt if proposal?
