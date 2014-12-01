@@ -64,12 +64,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
           expand: true
           cwd: 'vendor/bower_components/components-font-awesome/fonts'
           src: ['*.*']
-          dest: 'generated/fonts'
-        ,
-          expand: true
-          cwd: 'generated/'
-          src: ['*.html']
-          dest: 'dist/'
+          dest: 'dist/fonts'
         ]
 
   sass:
