@@ -7,6 +7,9 @@
     %meta{content: 'IE=Edge', 'http-equiv' => 'X-UA-Compatible'}
     %meta{content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name: "viewport"}
     = stylesheet_link_tag lineman_css_path
+    :javascript
+      window.Loomio = {};
+      window.Loomio.defaultRoute = "#{ENV['ANGULAR_HOMEPAGE']}";
 
     %base{href: '/'}
     <!--[if lt IE 9]>
