@@ -1,5 +1,4 @@
 class API::MotionsController < API::RestfulController
-  load_resource only: [:create, :update]
 
   def index
     load_and_authorize_discussion
@@ -7,23 +6,20 @@ class API::MotionsController < API::RestfulController
     respond_with_collection
   end
 
-  def create
-    MotionService.create motion: @motion, actor: current_user
-    respond_with_resource
-  end
-
-  def update
-    MotionService.update motion: @motion, params: motion_params, actor: current_user
+  def close
+    load_resource
+    MotionService.close_by_user(@motion, current_user)
     respond_with_resource
   end
 
   private
-  def motion_params
-    params.require(:motion).permit([:name, :description, :discussion_id, :closing_at, :outcome])
-  end
 
   def visible_records
     Queries::VisibleMotions.new(user: current_user)
+  end
+
+  def serializer_root 
+    :proposals
   end
 
 end

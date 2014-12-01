@@ -34,7 +34,7 @@ Loomio::Application.routes.draw do
       get :subgroups, on: :collection
       patch :archive, on: :member
     end
-    resources :memberships, only: [:index, :update, :destroy] do
+    resources :memberships, only: [:index, :create, :update, :destroy] do
       get :autocomplete, on: :collection
       get :my_memberships, on: :collection
       patch :make_admin, on: :member
@@ -44,7 +44,9 @@ Loomio::Application.routes.draw do
     resources :invitations, only: :create
     resources :events, only: :index
     resources :discussions, only: [:show, :index, :create, :update, :destroy]
-    resources :motions,     only: [       :index, :create, :update], path: :proposals
+    resources :motions,     only: [       :index, :create, :update], path: :proposals do
+      post :close, on: :member
+    end
     resources :votes,       only: [       :index, :create, :update] do
       get :my_votes, on: :collection
     end
@@ -58,6 +60,7 @@ Loomio::Application.routes.draw do
     end
     resources :translations, only: :show
     resources :notifications, only: :index
+    resources :contact_messages, only: :create
     namespace :faye do
       post :subscribe
       get :who_am_i

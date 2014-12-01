@@ -12,19 +12,6 @@ class API::DiscussionsController < API::RestfulController
     respond_with_resource
   end
 
-  def create
-    DiscussionService.create discussion: @discussion,
-                             actor: current_user
-    respond_with_resource
-  end
-
-  def update
-    DiscussionService.update discussion: @discussion,
-                             params: discussion_params,
-                             actor: current_user
-    respond_with_resource
-  end
-
   private
 
   def discussion_params

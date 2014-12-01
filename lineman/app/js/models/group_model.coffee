@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
   class GroupModel extends BaseModel
-    @singluar: 'group'
+    @singular: 'group'
     @plural: 'groups'
     @indexes: ['parentId']
 
@@ -16,12 +16,13 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       @membersCanStartDiscussions     = data.members_can_start_discussions
       @membersCanEditDiscussions      = data.members_can_edit_discussions
       @membersCanEditComments         = data.members_can_edit_comments
-      @membersCanRaiseMotions         = data.members_can_raise_motions
+      @membersCanRaiseProposals       = data.members_can_raise_proposals
       @membersCanVote                 = data.members_can_vote
       @membershipGrantedUpon          = data.membership_granted_upon
       @discussionPrivacyOptions       = data.discussion_privacy_options
       @visibleTo                      = data.visible_to
-      @logoUrlSmall                   = data.logo_url_small
+      @logoUrlMedium                  = data.logo_url_medium
+      @coverUrlDesktop                = data.cover_url_desktop
 
     serialize: ->
       group:
@@ -33,14 +34,19 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
         members_can_start_discussions: @membersCanStartDiscussions
         members_can_edit_discussions:  @membersCanEditDiscussions
         members_can_edit_comments:     @membersCanEditComments
-        members_can_raise_motions:     @membersCanRaiseMotions
+        members_can_raise_proposals:   @membersCanRaiseProposals
         members_can_vote:              @membersCanVote
         membership_granted_upon:       @membershipGrantedUpon
         discussion_privacy_options:    @discussionPrivacyOptions
         visible_to:                    @visibleTo
 
+    setupViews: ->
+      @discussionsView = @recordStore.discussions.addDynamicView(@viewName())
+      @discussionsView.applyFind(groupId: @id)
+      @discussionsView.applySimpleSort('createdAt', true)
+
     discussions: ->
-      @recordStore.discussions.find(groupId: @id)
+      @discussionsView.data()
 
     subgroups: ->
       @recordStore.groups.find(parentId: @id)
@@ -81,8 +87,29 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       @parent().name if @parent()?
 
     parentIsHidden: ->
-      @parent().visibleToPublic() if @parent()?
+      @parent().visibleToPublic() if @parentId?
 
     visibleToPublic: ->       @visibleTo == 'public'
     visibleToOrganization: -> @visibleTo == 'parent_members'
     visibleToMembers: ->      @visibleTo == 'members'
+
+    userDefinedLogo: ->
+      !_.contains(@logoUrlMedium, 'default-logo')
+
+    userDefinedCover: ->
+      !_.contains(@coverUrlDesktop, 'default-cover')
+
+    isSubgroup: ->
+      @parentId?
+
+    logoUrl: ->
+      if @isSubgroup() && !@userDefinedLogo()
+        @parent().logoUrlMedium
+      else
+        @logoUrlMedium
+
+    coverUrl: ->
+      if @isSubgroup() && !@userDefinedCover()
+        @parent().coverUrlDesktop
+      else
+        @coverUrlDesktop

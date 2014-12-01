@@ -42,8 +42,8 @@ tr:
       header_html: 'Loomio 1.0, en iyi <strong>açık kaynak mobil teknoloji</strong> ile ve herhangi bir cihaz üzerinde çalışacak şekilde geliştiriliyor.'
     quote:
       header:
-        rushkoff_html: '"Loomio insanları kutuplaşmış tartışmalardan ziyade fikir birliğine doğru getirmek için <strong>internetin potansiyelini ortaya çıkarıyor.<strong>"<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, yazar, <em>Present Shock</em></div>'
-        sifry_html: '"Loomio <strong>bireysel seslerin<strong> ve <strong>kolektif kararların<strong> arasında tatlı bir noktada duruyor."<div class="attributation">– Micah Sifry, Editör, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
+        rushkoff_html: '"Loomio insanları kutuplaşmış tartışmalardan ziyade fikir birliğine doğru getirmek için <strong>internetin potansiyelini ortaya çıkarıyor.</strong>"<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, yazar, <em>Present Shock</em></div>'
+        sifry_html: '"Loomio <strong>bireysel seslerin</strong> ve <strong>kolektif kararların</strong> arasında tatlı bir noktada duruyor."<div class="attributation">– Micah Sifry, Editör, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: 'Loomio hakkında'
       desc: 'Biz, Yeni Zelanda merkezli Enspiral''da çalışan, açık-kaynak programcıları ve sosyal adalet aktivistlerinden oluşan ve dünyanın her yerinde arkadaşları, destekçileri ve danışmanlarının olduğu küçük bir ekibiz.'

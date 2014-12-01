@@ -14,9 +14,6 @@ angular.module('loomioApp').factory 'CollectionWrapper', ->
     chain: () ->
       @collection.chain()
 
-    proposalModel: ->
-      @model.plural == 'proposals'
-
     new: (data) ->
       existingRecord = @collection.find(id: data.id)[0]
       if data.id? and existingRecord?
@@ -24,7 +21,7 @@ angular.module('loomioApp').factory 'CollectionWrapper', ->
         existingRecord
       else
         record = new @model(@recordStore, data)
-        @collection.insert(record)
+        @collection.insert(record) if data.id?
         record
 
     findById: (id) ->

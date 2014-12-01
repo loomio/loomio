@@ -7,6 +7,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       @id = data.id
       @name = data.name
       @label = data.username
+      @profileUrl = data.profile_url
       @avatarKind = data.avatar_kind
       @avatarUrl = data.avatar_url
       @avatarInitials = data.avatar_initials
@@ -50,7 +51,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       @isAuthorOf(discussion) or @isAdminOf(discussion.group()) or discussion.group().membersCanEditDiscussions
 
     canStartProposals: (discussion) ->
-      @isAdminOf(discussion.group()) or discussion.group().membersCanStartProposals
+      @isAdminOf(discussion.group()) or discussion.group().membersCanRaiseProposals
 
     isAuthorOf: (object) ->
       @id == object.authorId

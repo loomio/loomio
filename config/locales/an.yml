@@ -596,7 +596,7 @@ an:
       <p>As personas querrán saber por qué han estau convidadas, qué s'aspera d'ellas,
       y por qué mereixe o suyo tiempo aprender a usar una nueva ferramienta.</p>
     join_the_community: "Unir a la comunidat"
-    join_the_community_description_html: "Totz son bienvenius en \"Loomio Community\", an charramos de cómo aprofitar de tot a ferramienta y de cómo amillorar-la.<br /><br /><a href=\"https://www.loomio.org/groups/3\">Preta aquí ta ir a o grupo \"Loomio Community\" group</a>, an puetz solicitar estar-ne miembro."
+    join_the_community_description_html: "Totz son bienvenius en \"Loomio Community\", an charramos de cómo aprofitar de tot a ferramienta y de cómo amillorar-la.<br /><br /><a href='https://www.loomio.org/groups/3'>Preta aquí ta ir a o grupo \"Loomio Community\" group</a>, an puetz solicitar estar-ne miembro."
     images_and_text_formatting: "Imagenes y formato de texto"
     images_and_text_formatting_html: |
       <p>Loomio fa servir «marcadors» ta incluir imachens y formato de texto.
@@ -695,7 +695,7 @@ an:
   now_that_your_logged_in: "Agora que has dentrau con %{provider_name}, por favor, confirma os tuyos datos ta crear una cuenta Loomio."
   confirmation_not_received: "No has recibiu as instruccions de confirmación?"
   unlock_not_received: "No has recibiu instruccions de desbloqueyo?"
-  inactive_html: "Ista cuenta ha estau desactivada. Si tu tiens bella pregunta, por favor <a href='%{path_to_contact}'>mete-te contacto con nusatros."
+  inactive_html: "Ista cuenta ha estau desactivada. Si tu tiens bella pregunta, por favor <a href='%{path_to_contact}'>mete-te contacto</a> con nusatros."
   create_an_account_html: 'Crear una cuenta Loomio Beta'
   log_in: "Dentrar"
   join_group:
