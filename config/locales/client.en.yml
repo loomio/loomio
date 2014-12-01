@@ -33,6 +33,9 @@ en:
     discussion_form:
       new_discussion: 'Successfully created your thread'
       update_discussion: 'Changes saved'
+    comment_form:
+      update_comment: 'Changes saved'
+      destroy_comment: 'You comment has been deleted' 
     proposal_form:
       new_proposal: 'Successfully created your proposal'
       update_proposal: 'Changes saved'
@@ -44,6 +47,7 @@ en:
 
   inbox:
     latest_threads: 'Latest threads'
+    closing_in: 'Closing '
 
   session_form:
     email_label: 'Email:'
@@ -100,7 +104,7 @@ en:
     start_a_proposal: 'Start a proposal'
     edit_proposal: 'Edit proposal'
     edit_a_proposal: 'Edit {{proposalName}}'
-    what_does_a_proposal_do: 'Proposals allow you to see how everyone feels about a particular course of action. Find out more.'
+    what_does_a_proposal_do: 'Proposals let you see how everyone feels about a particular course of action.'
     title_placeholder: 'Eg: Go to the moon'
     title_label: 'Title'
     closes_at_label: 'Closes at'
@@ -112,6 +116,7 @@ en:
     edit_discussion_title: 'Edit thread'
     discussion_helptext: 'The thread is where everyone can discuss a topic and make decisions together.'
     group_label: 'Group'
+    group_placeholder: 'Select a group'
     title_label: 'Title'
     title_placeholder: 'What is the topic you want to discuss?'
     context_label: 'Context'
@@ -151,6 +156,7 @@ en:
       edit_group: 'Edit Group Settings'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
+      manage_members: 'Manage members'
     deactivate_group:
       title: 'Deactivate group'
       question: 'Are you sure you want to deactivate this group?'
@@ -226,6 +232,9 @@ en:
     add_coordinator: 'Make Coordinator'
     remove_coordinator: 'Remove Coordinator'
     remove_member: 'Remove'
+
+  profile_page:
+    my_groups: Groups
 
   discussion:
     you_like_this: 'You like this.'

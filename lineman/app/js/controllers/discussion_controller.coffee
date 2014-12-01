@@ -7,6 +7,7 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
   #MessageChannelService.subscribeTo("/events", onMessageReceived)
 
   $scope.discussion = discussion
+  $scope.discussionCopy = discussion.copy()
 
   $scope.wrap = {}
   nextPage = 1
@@ -19,7 +20,7 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
       templateUrl: 'generated/templates/discussion_form.html',
       controller: 'DiscussionFormController',
       resolve:
-        discussion: -> $scope.discussion
+        discussion: -> $scope.discussion.copy()
 
   $scope.getNextPage = ->
     return false if busy or $scope.lastPage
@@ -40,11 +41,11 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
   $scope.canStartProposals = ->
     !discussion.activeProposal() and UserAuthService.currentUser.canStartProposals($scope.discussion)
 
+  $scope.showContextMenu = ->
+    $scope.canEditDiscussion($scope.discussion)
+
   $scope.canEditDiscussion = ->
     UserAuthService.currentUser.canEditDiscussion($scope.discussion)
-
-  $scope.showContextMenu = ->
-    $scope.canEditDiscussion()
 
   $scope.inboxPinned = ->
     UserAuthService.inboxPinned

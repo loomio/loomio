@@ -14,7 +14,8 @@
 .group-page-cover{
   max-width: $group-page-max-width;
   height: 100px;
-  background: url('http://placehold.it/640x100') no-repeat;
+  background: url('http://placehold.it/640x100') no-repeat center center;
+  background-size: cover;
   @media(max-width: $screen-xs-max){ margin: 0 -15px; }
 }
 .group-page-logo{
@@ -23,7 +24,7 @@
   position: absolute;
   top: 75px;
   left: 10px;
-  background: url('http://placehold.it/100x100');
+  background: url('http://placehold.it/100x100') no-repeat top center white;
   border: 4px solid #fff;
 }
 .group-page-privacy{

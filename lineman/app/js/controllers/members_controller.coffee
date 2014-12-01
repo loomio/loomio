@@ -3,3 +3,6 @@ angular.module('loomioApp').controller 'MembersController', ($scope, MembershipS
 
   $scope.canAddMembers = ->
     $scope.group.membersCanAddMembers or UserAuthService.currentUser.isAdminOf($scope.group)
+
+  $scope.isAdminOf = ->
+    UserAuthService.currentUser.isAdminOf($scope.group)

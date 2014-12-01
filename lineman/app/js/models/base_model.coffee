@@ -4,7 +4,6 @@ angular.module('loomioApp').factory 'BaseModel', ->
       Object.defineProperty(@, 'recordStore', value: recordStore, enumerable: false)
       @initialize(data)
       @setupViews() if @setupViews? and @id?
-      #recordStore[@constructor.plural].insert @
 
     initialize: ->
     setupViews: ->
@@ -14,3 +13,7 @@ angular.module('loomioApp').factory 'BaseModel', ->
     isNew: ->
       not @id?
 
+    copy: =>
+      cloner = ->
+      cloner.prototype = @constructor.prototype 
+      angular.extend new cloner(), _.clone(@), recordStore: @recordStore

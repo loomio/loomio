@@ -3,18 +3,18 @@
     .col-xs-12
       .group-page-container
         .group-page-header
-          .group-page-cover{style:'background:url({{group.coverUrlSmall}})'}
-          .group-page-logo.hidden-xs{style:'background:url({{group.logoUrlSmall}})'}
+          .group-page-cover{style:'background-image:url({{group.coverUrl()}})'}
+          .group-page-logo.hidden-xs{style:'background-image:url({{group.logoUrl()}})'}
           .group-page-buttons.pull-right
             %group_notifications_dropdown{group: 'group'}
             %group_options_dropdown{group: 'group'}
           .group-page-name-and-privacy
             .group-page-name
               %h1
-                %a{ng_show: 'group.parentId', href: '/g/{{group.parent().key}}'} 
-                  {{group.parentName()}} 
-                %span{ng_show: 'group.parentId'}> > 
-                %a{href: '/g/{{group.key}}'} 
+                %a{ng_show: 'group.parentId', href: '/g/{{group.parent().key}}'}
+                  {{group.parentName()}}
+                %span{ng_show: 'group.parentId'}> >
+                %a{href: '/g/{{group.key}}'}
                   {{group.name}}
             %group_privacy_dropdown{group: 'group'}
         .group-page-description

@@ -26,13 +26,7 @@
                 %i.fa.fa-globe>
                 %span{translate: 'common.privacy.public'}
 
-          .thread-discussion-context
-            .thread-discussion-description{btf-markdown: 'discussion.description' }
-
-          / .thread-actions-and-meta
-          /   %a{href: '#', translate: 'common.action.reply'}>
-          /   ·
-          /   %a{href: '#', translate: 'common.action.edit', ng-click: 'editDiscussion()'}>
+          .thread-discussion-description{btf-markdown: 'discussion.description' }
 
 
         %proposals{discussion: 'discussion'}
@@ -42,7 +36,6 @@
           %div{ng_repeat: 'event in discussion.events()', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
 
         %comment_form{discussion: 'discussion'}
-
 
       .thread-container{ng_controller: 'StartProposalCardController', ng-if: 'canStartProposals()'}
         .thread-start-proposal-card

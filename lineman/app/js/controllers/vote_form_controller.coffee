@@ -6,11 +6,15 @@ angular.module('loomioApp').controller 'VoteFormController', ($scope, Records, V
   $scope.lastVote = ->
     $scope.proposal.lastVoteByUser(UserAuthService.currentUser)
 
-  $scope.changePosition = ->
-    $scope.editing = true
-
   $scope.selectPosition = (position) ->
     $scope.vote.position = position
 
-  $scope.cancel = ->
+  $scope.edit = -> 
+    $scope.editing = true
+
+  $scope.successCallback = -> 
+    $scope.editing = false
+
+  $scope.cancel = ($event) ->
+    $event.preventDefault()
     $scope.editing = false
