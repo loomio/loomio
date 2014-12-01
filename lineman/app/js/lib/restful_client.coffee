@@ -22,7 +22,6 @@ angular.module('loomioApp').factory 'RestfulClient', ($http) ->
       else
         "#{@apiPrefix}/#{@resourcePlural}/#{id}"
 
-
     customPath: (path) ->
       "#{@apiPrefix}/#{@resourcePlural}/#{path}"
 
