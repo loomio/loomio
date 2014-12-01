@@ -16,7 +16,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       @membersCanStartDiscussions     = data.members_can_start_discussions
       @membersCanEditDiscussions      = data.members_can_edit_discussions
       @membersCanEditComments         = data.members_can_edit_comments
-      @membersCanRaiseMotions         = data.members_can_raise_motions
+      @membersCanRaiseProposals       = data.members_can_raise_proposals
       @membersCanVote                 = data.members_can_vote
       @membershipGrantedUpon          = data.membership_granted_upon
       @discussionPrivacyOptions       = data.discussion_privacy_options
@@ -34,7 +34,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
         members_can_start_discussions: @membersCanStartDiscussions
         members_can_edit_discussions:  @membersCanEditDiscussions
         members_can_edit_comments:     @membersCanEditComments
-        members_can_raise_motions:     @membersCanRaiseMotions
+        members_can_raise_proposals:   @membersCanRaiseProposals
         members_can_vote:              @membersCanVote
         membership_granted_upon:       @membershipGrantedUpon
         discussion_privacy_options:    @discussionPrivacyOptions

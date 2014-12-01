@@ -25,14 +25,9 @@
               %span.nowrap.discussion-privacy__is-public{ng-show: '!discussion.private'}>
                 %i.fa.fa-globe>
                 %span{translate: 'common.privacy.public'}
-              %span.edit-discussion-inline{ng-if: 'canEditDiscussion(discussion)'}>
-                ·
-                %a{translate: 'common.action.edit', href: '#', ng-click: 'editInline()'}
 
-          .thread-discussion-context{ng-if: '!editingInline'}
-            .thread-discussion-description{btf-markdown: 'discussion.description' }
-          .thread-discussion-edit-context{ng-if: 'editingInline'}
-            %edit_discussion_context{discussion: 'discussionCopy'}
+          .thread-discussion-description{btf-markdown: 'discussion.description' }
+
 
         %proposals{discussion: 'discussion'}
 
@@ -41,7 +36,6 @@
           %div{ng_repeat: 'event in discussion.events()', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
 
         %comment_form{discussion: 'discussion'}
-
 
       .thread-container{ng_controller: 'StartProposalCardController', ng-if: 'canStartProposals()'}
         .thread-start-proposal-card

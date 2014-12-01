@@ -59,4 +59,4 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
     templateUrl: 'generated/templates/profile_page.html',
     controller: 'ProfilePageController'
   ).otherwise
-    redirectTo: '/g/WmPCB3IR'
+    redirectTo: window.Loomio.defaultRoute

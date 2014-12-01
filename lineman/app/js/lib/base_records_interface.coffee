@@ -54,10 +54,21 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient) ->
           failure(response)
 
     save: (record, s, f) ->
-      if record.isNew()
-        @restfulClient.create(record.serialize(), s, f)
+      if !record.initialize?
+        # record is just a hash of params
+        @restfulClient.create(record, s, f)
       else
-        @restfulClient.update(record.keyOrId(), record.serialize(), s, f)
+        if record.isNew()
+          @restfulClient.create(record.serialize(), s, f)
+        else
+          @restfulClient.update(record.keyOrId(), record.serialize(), s, f)
+
+    create: (record, s, f) ->
+      if !record.initialize?
+        # record is just a hash of params
+        @restfulClient.create(record, s, f)
+      else
+        @restfulClient.create(record.serialize(), s, f)
 
     destroy: (record, s, f) ->
       @restfulClient.destroy(record.id, s, f)
