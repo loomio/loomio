@@ -2,8 +2,7 @@ angular.module('loomioApp').controller 'LeaveGroupController', ($scope, $modalIn
   $scope.group = group
   membership = group.membershipFor(UserAuthService.currentUser)
 
-  $scope.onSuccess (membership) ->
-    membership.destroy()
+  $scope.onSuccess (membership) -> membership.destroy()
 
   $scope.successMessage = 'group_page.messages.leave_group_success'
 

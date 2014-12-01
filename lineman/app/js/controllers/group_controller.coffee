@@ -1,7 +1,7 @@
 angular.module('loomioApp').controller 'GroupController', ($scope, group, Records, MessageChannelService, UserAuthService) ->
+  console.log 'group', group
   $scope.group = group
 
-  console.log 'hi'
   MessageChannelService.subscribeTo("/group-#{group.key}")
 
   $scope.inboxPinned = ->

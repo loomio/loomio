@@ -13,8 +13,8 @@ angular.module('loomioApp').factory 'NotificationModel', (BaseModel) ->
       @event().createdAt
 
     event: ->
-      @recordStore.events.get(@eventId)
+      @recordStore.events.find(@eventId)
 
     user: ->
-      @recordStore.users.get(@userId)
+      @recordStore.users.find(@userId)
 

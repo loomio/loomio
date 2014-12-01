@@ -6,7 +6,7 @@ angular.module('loomioApp').controller 'DiscussionsController', ($scope, $modal,
   $scope.getNextPage = ->
     return false if busy or $scope.lastPage
     busy = true
-    Records.discussions.fetchByGroupKeyAndPage $scope.group.key, nextPage, (data) ->
+    Records.discussions.fetchByGroupAndPage($scope.group, nextPage).then (data) ->
       discussions = data.discussions
       $scope.lastPage = true if discussions.length < 5
       nextPage = nextPage + 1

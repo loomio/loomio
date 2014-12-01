@@ -1,13 +1,12 @@
-angular.module('loomioApp').controller 'AttachmentFormController', ($scope, AttachmentService) ->
-
+angular.module('loomioApp').controller 'AttachmentFormController', ($scope, Records) ->
   $scope.upload = ($files) ->
     $scope.isAttaching = true
     for file in $files
       $scope.uploadingFilename = file.name
-      AttachmentService.upload(file, $scope.progress, $scope.success, $scope.failure)
+      Records.attachments.upload(file, $scope.progress, $scope.success, $scope.failure)
 
   $scope.abort = ->
-    AttachmentService.abort()
+    Records.attachments.abortUpload()
 
   $scope.success = (attachment) ->
     $scope.comment.newAttachmentIds.push attachment.id

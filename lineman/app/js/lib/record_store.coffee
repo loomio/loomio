@@ -15,3 +15,4 @@ angular.module('loomioApp').factory 'RecordStore', () ->
         if data[name]?
           _.each data[name], (record_data) =>
             @[name].initialize(record_data)
+      data

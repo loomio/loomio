@@ -18,8 +18,17 @@ angular.module('loomioApp').factory 'BaseModel', ->
     isNew: ->
       not @id?
 
-    save: (s, f) ->
-      @recordsInterface.save(@, s, f)
+    save: ->
+      if @isNew()
+        @restfulClient.create(record.serialize())
+      else
+        @restfulClient.update(record.keyOrId(), record.serialize())
+
+    destroy: ->
+      @restfulClient.destroy(record.id)
+
+    update: (record) ->
+      @restfulClient.update(record.id, record.serialize())
 
     copy: =>
       cloner = ->

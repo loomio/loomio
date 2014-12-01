@@ -1,12 +1,18 @@
 angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient) ->
   class BaseRecordsInterface
     model: 'undefinedModel'
-    restfulClient: 'undefinedRestfulClient'
 
     constructor: (recordStore) ->
       @recordStore = recordStore
       @collection = @recordStore.db.addCollection(@model.plural)
       @restfulClient = new RestfulClient(@model.plural)
+
+      @restfulClient.onSuccess = (response) =>
+        @recordStore.import(response.data)
+
+      @restfulClient.onFailure = (response) ->
+        console.log('request failure!', response)
+        response
 
     initialize: (data) ->
       if data.key?
@@ -23,58 +29,15 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient) ->
         record
 
     findOrFetchByKey: (key) ->
-      if record = @find(key)
-        console.log 'found record', record
-        @fetchByKey(key)
-        record
-      else
-        console.log 'fetching record', key
-        @fetchByKey(key)
+      promise = @fetchByKey(key).then => @find(key)
+      record = @find(key)
+      record or promise
 
-    fetchByKey: (key, success, failure) ->
-      @restfulClient.getMember key,
-        (data) => # success
-          console.log 'importing: ', data
-          @recordStore.import(data)
-          success() if success?
-          @find(key)
-      ,
-        (response) -> # failure
-          console.log 'fetch failed', params
-          failure() if failure?
+    fetchByKey: (key) ->
+      @restfulClient.getMember(key)
 
-    fetch: (params, success, failure) ->
-      @restfulClient.getCollection params,
-        (data) => # success
-          @recordStore.import(data)
-          success(data)
-      ,
-        (response) -> # failure
-          console.log 'fetch failed', params, response
-          failure(response)
-
-    save: (record, s, f) ->
-      if !record.initialize?
-        # record is just a hash of params
-        @restfulClient.create(record, s, f)
-      else
-        if record.isNew()
-          @restfulClient.create(record.serialize(), s, f)
-        else
-          @restfulClient.update(record.keyOrId(), record.serialize(), s, f)
-
-    create: (record, s, f) ->
-      if !record.initialize?
-        # record is just a hash of params
-        @restfulClient.create(record, s, f)
-      else
-        @restfulClient.create(record.serialize(), s, f)
-
-    destroy: (record, s, f) ->
-      @restfulClient.destroy(record.id, s, f)
-
-    update: (record, s, f) ->
-      @restfulClient.update(record.id, record.serialize(), s, f)
+    fetch: (params) ->
+      @restfulClient.getCollection(params)
 
     find: (q) ->
       if _.isNumber(q)
@@ -102,12 +65,3 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient) ->
 
     findByKeys: (keys) ->
       @collection.find(key: {'$in': keys})
-
-    importAndInvoke: (callback) ->
-      (data) =>
-        @recordStore.import(data)
-        callback(data) if callback?
-
-    importResponseData: ->
-      (data) =>
-        @recordStore.import(data)

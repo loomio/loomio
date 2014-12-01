@@ -3,21 +3,17 @@ angular.module('loomioApp').factory 'MembershipRecordsInterface', (BaseRecordsIn
     model: MembershipModel
 
     fetchMyMemberships: (success, failure) ->
-      @restfulClient.get 'my_memberships', {},
-        (data) ->
-          @recordStore.import(data)
-          success()
-      , failure
+      @restfulClient.get 'my_memberships'
 
     fetchByNameFragment: (fragment, groupKey, success, failure) ->
-      @restfulClient.get 'autocomplete', {q: fragment, group_key: groupKey}, @importAndInvoke(success), failure
+      @restfulClient.get 'autocomplete', {q: fragment, group_key: groupKey}
 
-    fetchByGroupKey: (groupKey, success, failure) ->
-      @restfulClient.getCollection {group_key: groupKey}, @importAndInvoke(success), failure
+    fetchByGroup: (group, success, failure) ->
+      @restfulClient.getCollection {group_id: group.id}
 
     makeAdmin: (membership, success, failure) ->
-      @restfulClient.post "#{membership.id}/make_admin", {}, @importAndInvoke(success), failure
+      @restfulClient.postMember membership.id "make_admin"
 
     removeAdmin: (membership, success, failure) ->
-      @restfulClient.post "#{membership.id}/remove_admin", {}, @importAndInvoke(success), failure
+      @restfulClient.postMember membership.id "remove_admin"
 

@@ -113,3 +113,6 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
         @parent().coverUrlDesktop
       else
         @coverUrlDesktop
+
+    archive: ->
+      @restfulClient.postMember(group.key, 'archive')

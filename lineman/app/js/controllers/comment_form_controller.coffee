@@ -31,7 +31,7 @@ angular.module('loomioApp').controller 'CommentFormController', ($scope, Records
     console.log error
 
   $scope.submit = ->
-    $scope.comment.save(saveSuccess, saveError)
+    $scope.comment.save().then(saveSuccess, saveError)
 
   $scope.$on 'showReplyToCommentForm', (event, parentComment) ->
     $scope.comment.parentId = parentComment.id

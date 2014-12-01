@@ -2,11 +2,11 @@ angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $mod
   currentUser = UserAuthService.currentUser
   $scope.discussion = discussion
 
-  FormService.applyForm $scope, discussion, $modalInstance
-
-  $scope.onSuccess = (result) ->
+  onSuccess = (result) ->
     $modalInstance.dismiss('success')
     $location.path "/d/#{result.key}"
+
+  FormService.applyModalForm $scope, discussion, $modalInstance
 
   $scope.availableGroups = ->
     _.filter currentUser.groups(), (group) ->

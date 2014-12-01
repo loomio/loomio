@@ -23,9 +23,8 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
     resolve:
       group: (Records, $route) ->
         key = $route.current.params.key
-        record = Records.groups.findOrFetchByKey(key)
-        console.log 'promise?', record
-        record
+        console.log 'key',  key
+        Records.groups.findOrFetchByKey(key)
       groupKey: ($route) ->
         console.log 'router:', $route.current.params.id
         $route.current.params.id

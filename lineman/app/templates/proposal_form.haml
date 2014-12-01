@@ -32,4 +32,4 @@
   .modal-footer
     %button.btn.btn-primary{ng-if: 'proposal.isNew()', type: 'submit', translate: 'proposal_form.start_proposal'}
     %button.btn.btn-primary{ng-if: '!proposal.isNew()', type: 'submit', translate: 'proposal_form.edit_proposal'}
-    %button.btn.btn-warning{ng-click: 'cancel($event)', translate: 'common.action.cancel'}
+    %button.btn.btn-warning{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}

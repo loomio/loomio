@@ -23,7 +23,7 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
   $scope.getNextPage = ->
     return false if busy or $scope.lastPage
     busy = true
-    Records.events.fetch {discussion_key: discussion.key, page: nextPage}, (data) ->
+    Records.events.fetch(discussion_key: discussion.key, page: nextPage).then (data) ->
       events = data.events
       $scope.lastPage = true if events.length == 0
       nextPage = nextPage + 1
