@@ -45,6 +45,10 @@
   margin-bottom: 10px;
 }
 
+.thread-event-body img {
+  max-width: 100%;
+}
+
 .thread-event-footer {
   @include fontSmall();
   color: $meta-text-color;

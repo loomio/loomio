@@ -6,7 +6,7 @@
     %h3.dropdown-heading{translate: 'group_page.options_label'}
     %ul.dropdown-menu-items
       %li.dropdown-menu-item{ng-if: 'canEditGroup()'}
-        %a{href: '/groups/{{::group.key}}/edit'}
+        %a{href: '/g/{{::group.key}}/edit'}
           .dropdown-menu-item-label{translate: 'group_page.options.edit_group'}
           .dropdown-menu-item-details
       %li.dropdown-menu-item

@@ -28,8 +28,8 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js",
              "vendor/bower_components/ment.io/dist/mentio.js",
              "vendor/js/private_pub.js",
+             "vendor/bower_components/angular-animate/angular-animate.js",
              "vendor/bower_components/lokijs/src/lokijs.js"]
-
     app: ["app/js/app.js"
           "app/js/**/*.js"]
 

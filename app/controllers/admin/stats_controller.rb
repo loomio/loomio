@@ -184,7 +184,7 @@ class Admin::StatsController < Admin::BaseController
     org_comments = Comment.where(discussion_id: org_discussions.map(&:id))
     org_motions = Motion.where(discussion_id: org_discussions.map(&:id)).where('author_id != 5562')
     org_outcomes_count = org_motions.where('outcome IS NOT NULL').count
-    org_memberships = Membership.where(group_id: [group.org_group_ids])
+    org_memberships = Membership.where(group_id: [group.org_group_ids]).select(:user_id).distinct
     daily_votes_count = 0
     org_motions.each do |m|
       org_votes = Vote.where(motion_id: m.id)
@@ -215,7 +215,8 @@ class Admin::StatsController < Admin::BaseController
     motions.each do |m|
       votes_count    += Vote.where(motion_id: m.id).where('created_at <= ?', day).count
     end
-    members_count     = Membership.where(group_id: [group.org_group_ids]).where('created_at <= ?', day).count
+    memberships       = Membership.where(group_id: [group.org_group_ids]).where('created_at <= ?', day)
+    members_count     = memberships.select(:user_id).distinct.count
     outcomes_count    = motions.where('outcome IS NOT NULL').where('created_at <= ?', day).count
     subgroups_count   = group.subgroups.where('created_at <= ?', day).count
     days_old          = (day.to_date - group.created_at.to_date).to_i

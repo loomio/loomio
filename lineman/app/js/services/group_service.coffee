@@ -5,5 +5,5 @@ angular.module('loomioApp').factory 'GroupService', ($http, RestfulService) ->
     fetchByParent: (parent, success, failure) ->
       @fetch({parent_id: parent.id}, success, failure, 'subgroups')
 
-    archive: (group, success, failure) ->
+    archive: (group, success, failure) =>
       @save(group, success, failure, 'archive')

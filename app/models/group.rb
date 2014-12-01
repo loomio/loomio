@@ -162,7 +162,7 @@ class Group < ActiveRecord::Base
                        default_url: 'default-cover-photo.png'
 
   has_attached_file    :logo,
-                       styles: { small: "32x32", card: "67x67", medium: "100x100" },
+                       styles: { card: "67x67", medium: "100x100" },
                        default_url: 'default-logo-:style.png'
 
   validates_attachment :cover_photo,
@@ -185,6 +185,14 @@ class Group < ActiveRecord::Base
   end
 
   alias_method :real_creator, :creator
+
+  def members_can_raise_proposals
+    members_can_raise_motions
+  end
+
+  def members_can_raise_proposals=(value)
+    members_can_raise_motions = value
+  end
 
   def creator
     self.real_creator || admins.first || members.first

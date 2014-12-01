@@ -1,19 +1,5 @@
-angular.module('loomioApp').controller 'DeactivateGroupController', ($scope, $modalInstance, group, GroupService, UserAuthService) ->
+angular.module('loomioApp').controller 'DeactivateGroupController', ($scope, $modalInstance, group, GroupService, UserAuthService, FormService) ->
   $scope.group = group
 
-  $scope.submit = ->
-    $scope.isDisabled = true
-    GroupService.archive $scope.group, $scope.saveSuccess, $scope.saveError
-
-  $scope.cancel = ($event) ->
-    $event.preventDefault()
-    $modalInstance.dismiss('cancel');
-
-  $scope.saveSuccess = () ->
-    $scope.isDisabled = false
-    $modalInstance.close();
-
-  $scope.saveError = (error) ->
-    $scope.isDisabled = false
-    $scope.errorMessages = error.error_messages
-
+  $scope.successMessage = 'flash.group_page.deactivate_group_success'
+  FormService.applyForm $scope, GroupService.archive, group, $modalInstance

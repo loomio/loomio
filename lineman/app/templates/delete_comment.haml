@@ -1,0 +1,13 @@
+.modal-header
+  %button{type: 'button', class: 'close', ng-click: 'cancel($event)'}
+    %span{aria-hidden: true} &times;
+    %span.sr-only{translate: 'common.action.cancel'}
+  %h3.modal-title{translate: 'delete_comment_dialog.title'}
+
+.modal-body
+  %flash{modal: 'true'}
+  %span{translate: 'delete_comment_dialog.question'}
+
+.modal-footer
+  %button.btn.btn-primary{ng-click: 'submit()', translate: 'delete_comment_dialog.confirm'}
+  %button.btn.btn-primary{ng-click: 'cancel($event)', translate: 'common.action.cancel'}

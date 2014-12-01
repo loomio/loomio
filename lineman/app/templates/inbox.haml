@@ -1,10 +1,8 @@
 %ul.selector-list
   %li.selector-list-header{ng-click: 'logDiscussions()'}
     %h3{translate: 'inbox.latest_threads'}
-  -#%div{infinite-scroll: "getNextPage()", infinite-scroll-distance:"1"}
-  / use styling flags: is-read, is-unread, is-active
-  %li.selector-list-item{ng-repeat: 'discussion in discussions'}
-    %a.selector-list-item-link{href: '/discussions/{{ discussion.key}}'}
+  %li.selector-list-item{ng-repeat: 'discussion in discussions | orderBy:["activeProposalClosedAt", "-lastActivityAt"]'}
+    %a.selector-list-item-link{href: '/d/{{ discussion.key}}'}
       .brief-time.pull-right
         .time-ago{timestamp: 'discussion.lastActivityAt'}
       .selector-list-item-discussion-title
@@ -15,11 +13,11 @@
         .selector-list-item-proposal-details.media-body
           {{ proposal.name }}
           .time-left
-            3 hours left
-      .pull-right
-        .fa.fa-star
+            %span{translate: 'inbox.closing_in'}>
+            %timeago{timestamp: 'proposal.closingAt'}>
       .selector-list-item-thread-group-name
         {{::discussion.group().fullName()}}
+      %timeago{timestamp: 'discussion.lastActivityAt'}>
 
   %li.selector-list-item.hidden-xs{ng-hide: 'inboxPinned()', ng-click: 'openInbox()'}
     %a{href: '#'}

@@ -7,16 +7,16 @@
       .position-button.position-button-no{ng-click: 'selectPosition("no")'}
       .position-button.position-button-block{ng-click: 'selectPosition("block")'}
 
-    %form{ng-submit: 'submit()', ng-show: 'newVote.position || editing' }
+    %form{ng-submit: 'submit()', ng-show: 'vote.position' }
       %fieldset
         .form-group
           %label.label-with-details{for: 'vote-statement-field'}
-            %span.label-with-details-label{ng-show: 'newVote.position'}
-              {{ 'vote_form.i_'+ newVote.positionVerb() | translate }}
-            %span.label-with-details-details{ng-show: 'newVote.position'}>
-              {{ 'vote_form.i_'+ newVote.positionVerb() +'_details' | translate }}
-            %span{translate: 'vote_form.select_position', ng-show: '!newVote.position'}
-          %textarea#vote-statement-field.form-control{ng-model: 'newVote.statement', placeholder: '{{ "vote_form.statement_placeholder" | translate }}'}
+            %span.label-with-details-label{ng-show: 'vote.position'}
+              {{ 'vote_form.i_'+ vote.positionVerb() | translate }}
+            %span.label-with-details-details{ng-show: 'vote.position'}>
+              {{ 'vote_form.i_'+ vote.positionVerb() +'_details' | translate }}
+            %span{translate: 'vote_form.select_position', ng-show: '!vote.position'}
+          %textarea#vote-statement-field.form-control{ng-model: 'vote.statement', placeholder: '{{ "vote_form.statement_placeholder" | translate }}'}
 
       %button.btn.btn-primary{type: 'submit', translate: 'vote_form.submit_position'}>
 
@@ -25,7 +25,7 @@
   .your-position{ng-show: 'lastVote() && !editing'}
     %h4{translate: 'proposal_card.your_position'}
 
-    %a.change-position.pull-right{ng-click: 'changePosition()', href: '#'}
+    %a.change-position.pull-right{ng-click: 'edit()', href: '#'}
       %span{translate: 'common.action.edit'}>
       %i.fa.fa-pencil
 
