@@ -30,7 +30,8 @@ describe API::CommentsController do
       context 'failures' do
         it "responds with an error when the user is unauthorized" do
           sign_in another_user
-          expect { post :create, comment: comment_params }.to raise_error CanCan::AccessDenied
+          post :create, comment: comment_params
+          expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
         end
       end
     end
@@ -52,7 +53,8 @@ describe API::CommentsController do
       context 'failure' do
         it "responds with an error when the user is unauthorized" do
           sign_in another_user
-          expect { post :like, id: comment.id }.to raise_error CanCan::AccessDenied
+          post :like, id: comment.id
+          expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
         end
       end
     end
@@ -65,13 +67,6 @@ describe API::CommentsController do
           expect(comment.reload.likers).to_not include user
         end
       end
-
-      #context 'failure' do
-        #it "responds with an error when the user is unauthorized" do
-          #sign_in another_user
-          #expect { post :unlike, id: comment.id }.to raise_error CanCan::AccessDenied
-        #end
-      #end
     end
 
     describe 'update' do
@@ -88,11 +83,15 @@ describe API::CommentsController do
       context 'failures' do
         it "responds with an error when there are unpermitted params" do
           comment_params[:dontmindme] = 'wild wooly byte virus'
-          expect { put :update, id: comment.id, comment: comment_params}.to raise_error ActionController::UnpermittedParameters
+          put :update, id: comment.id, comment: comment_params
+          expect(response.status).to eq 400
+          expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
         end
 
         it "responds with an error when the user is unauthorized" do
-          expect { put :update, {id: another_comment.id, comment: comment_params} }.to raise_error CanCan::AccessDenied
+          put :update, {id: another_comment.id, comment: comment_params}
+          expect(response.status).to eq 400
+          expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
         end
 
         it "responds with validation errors when they exist" do
@@ -128,12 +127,14 @@ describe API::CommentsController do
       context 'failures' do
         it "responds with an error when there are unpermitted params" do
           comment_params[:dontmindme] = 'wild wooly byte virus'
-          expect { post :create, comment: comment_params }.to raise_error ActionController::UnpermittedParameters
+          put :update, id: comment.id, comment: comment_params
+          expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
         end
 
         it "responds with an error when the user is unauthorized" do
           sign_in another_user
-          expect { post :create, comment: comment_params }.to raise_error CanCan::AccessDenied
+          put :update, id: comment.id, comment: comment_params
+          expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
         end
 
         it "responds with validation errors when they exist" do
@@ -157,7 +158,8 @@ describe API::CommentsController do
 
       context 'not allowed to delete' do
         it "gives error of some kind" do
-          expect { delete(:destroy, id: another_comment.id) }.to raise_error CanCan::AccessDenied
+          delete(:destroy, id: another_comment.id)
+          expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
           expect(Comment.where(id: another_comment.id)).to exist
         end
       end

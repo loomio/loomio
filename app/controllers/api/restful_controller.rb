@@ -11,42 +11,38 @@ class API::RestfulController < API::BaseController
     attr_writer :resource_class
   end
 
+  rescue_from StandardError do |e|
+    if [CanCan::AccessDenied, ActionController::UnpermittedParameters].include? e.class
+      render json: {exception: e.class.to_s}, root: false, status: 400
+    else
+      raise e
+    end
+  end
 
   def create
-    begin
-      instantiate_resouce
-      service.create({resource_symbol => resource,
-                      actor: current_user})
-      respond_with_resource
-    rescue
-      respond_with_error
-    end
+    instantiate_resouce
+    service.create({resource_symbol => resource,
+                    actor: current_user})
+    respond_with_resource
   end
 
   def update
-    begin
-      load_resource
-      service.update({resource_symbol => resource,
-                      params: resource_params,
-                      actor: current_user})
-      respond_with_resource
-    rescue
-      respond_with_error
-    end
+    load_resource
+    service.update({resource_symbol => resource,
+                    params: resource_params,
+                    actor: current_user})
+    respond_with_resource
   end
 
   def destroy
-    begin
-      load_resource
-      service.destroy({resource_symbol => resource,
-                       actor: current_user})
-      render json: {success: 'success'}
-    rescue
-      respond_with_error
-    end
+    load_resource
+    service.destroy({resource_symbol => resource,
+                     actor: current_user})
+    render json: {success: 'success'}
   end
 
   private
+
   def load_and_authorize_group
     @group = Group.find(params[:group_id])
     authorize! :show, @group
@@ -109,16 +105,11 @@ class API::RestfulController < API::BaseController
     if resource.errors.empty?
       render json: [resource], root: serializer_root
     else
-      render json: resource.errors.full_messages, root: false, status: 400
+      render json: {errors: resource.errors.as_json()}, root: false, status: 400
     end
-  end
-
-  def respond_with_error
-    render json: ['flash.errors.aw_crap'], root: false, status: 400
   end
 
   def serializer_root
     controller_name
   end
-
 end
