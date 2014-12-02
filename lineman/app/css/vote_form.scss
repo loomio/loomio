@@ -11,6 +11,7 @@
   margin-bottom: 5px;
 }
 .position-button {
+  @include loltate;
   display: inline-block;
   width: 60px;
   height: 60px;
@@ -37,6 +38,7 @@
 }
 
 .your-position-icon {
+  @include loltate;
   width: 30px;
   height: 30px;
   background-repeat: no-repeat;
