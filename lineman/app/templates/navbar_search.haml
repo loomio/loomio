@@ -3,11 +3,11 @@
     %i.fa.fa-lg.fa-fw.fa-search
   .dropdown-menu.loomio-nav-dropdown#search-dropdown{role: 'menu'}
     .navbar-search-input
-      %input.form-control{ng_model: 'query', placeholder: "{{ 'navbar.search_placeholder' | translate }}"}
+      %input.form-control{ng-click: '$event.stopPropagation()', ng-model: 'query', placeholder: "{{ 'navbar.search_placeholder' | translate }}"}
     %ul.selector-list
       %li.selector-list-header
         %h3{translate: "common.groups"}
-      %li.selector-list-item.media{ng_repeat: 'group in availableGroups() | filter:query', class: 'is-subgroup-{{group.parentId != null}}'}
+      %li.selector-list-item.media{ng_repeat: 'group in availableGroups() | filter: { name: query } | orderBy: "fullName()"', class: 'is-subgroup-{{group.parentId != null}}'}
         %a.selector-list-item-link{href: '/g/{{group.key}}'}
           .media-left
             %img.selector-list-item-group-logo{src: "{{group.logoUrl()}}"}
