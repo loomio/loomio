@@ -1,8 +1,8 @@
-%a.selector-list-item-link{ng-href: '{{notification.event().link()}}'}
+%a.selector-list-item-link{ng-href: '{{::notification.event().link()}}'}
   .media-left
     %user_avatar{user: "notification.event().actor()"}
   .media-body
-    %span> {{ notification.event().actor().name }}
+    %span> {{ ::notification.event().actor().name }}
     %span{translate:  "notifications.membership_request_approved" }>
-    %span> {{ notification.event().group().title }}
+    %span> {{ ::notification.event().group().title }}
 

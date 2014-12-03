@@ -10,7 +10,8 @@
 
   .group-member-list
     .group-member-list-item{ng-repeat: 'member in group.members()'}
-      .group-member-list-avatar.lg{ng-include: "'generated/templates/user/avatar.html'", ng-init: 'user = member'}
+      .group-member-list-avatar.lg
+        %user_avatar{user: 'member'}
     .group-member-list-show-more.show-more.card-minor-action
       %a{href: '/g/{{group.key}}/memberships', translate: 'common.action.show_more'}
     .members-invite{ng_controller: 'InvitationsController', ng-if: '::canAddMembers()'}
