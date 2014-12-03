@@ -126,10 +126,9 @@ a.loomio-nav-btn{
 .selector-list-header {
   padding: 0 15px;
   width: 100%;
-  border-bottom: 1px solid #ddd;
 }
 .selector-list-item {
-  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
   padding: 8px;
   @media (max-width: 320px){ padding: 15px 20px; }
   width: 100%;
@@ -152,8 +151,14 @@ a.loomio-nav-btn{
   background-color: $item-highlight-color;
   border-left: 4px solid $loomio-orange;
 }
+.selector-list-item.is-subgroup-false {
+  font-weight: bold;
+}
+.selector-list-item.is-subgroup-true {
+  border-top: none;
+}
 .is-subgroup-true .selector-list-item-link{
-  padding-left: 40px;
+  padding-left: 50px;
 }
 .selector-list-item.is-read{
   background-color: $light-grey;
