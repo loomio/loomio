@@ -23,6 +23,7 @@
 
     = javascript_include_tag lineman_js_path
     :javascript
-      window.currentUserData = #{UserSerializer.new(current_user).to_json}
+      window.Loomio.currentUserId = #{current_user.id};
+      window.Loomio.seedRecords = #{CurrentUserSerializer.new(current_user).to_json}
 
     %script{src: "#{ENV['FAYE_URL']}/client.js", type: 'text/javascript'}

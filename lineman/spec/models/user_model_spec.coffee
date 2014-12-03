@@ -18,6 +18,11 @@ describe 'UserModel', ->
     it 'lists users memberships', ->
       expect(user.memberships()).toContain(membership)
 
+  describe 'membershipFor', ->
+    it 'returns the membership of the user and group', ->
+      expect(user.membershipFor(group)).toBe(membership)
+
+
   describe 'groups', ->
     it 'returns groups the user belongs to', ->
       console.log 'groups', user.groups()

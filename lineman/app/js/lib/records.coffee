@@ -6,6 +6,7 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
                                                 EventRecordsInterface,
                                                 GroupRecordsInterface,
                                                 MembershipRecordsInterface,
+                                                MembershipRequestRecordsInterface,
                                                 NotificationRecordsInterface,
                                                 ProposalRecordsInterface,
                                                 UserRecordsInterface,
@@ -18,6 +19,7 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
   recordStore.addRecordsInterface(EventRecordsInterface)
   recordStore.addRecordsInterface(GroupRecordsInterface)
   recordStore.addRecordsInterface(MembershipRecordsInterface)
+  recordStore.addRecordsInterface(MembershipRequestRecordsInterface)
   recordStore.addRecordsInterface(NotificationRecordsInterface)
   recordStore.addRecordsInterface(ProposalRecordsInterface)
   recordStore.addRecordsInterface(UserRecordsInterface)

@@ -1,4 +1,6 @@
 angular.module('loomioApp').controller 'InboxController', ($scope, Records, UserAuthService) ->
+  $scope.currentUser = UserAuthService.currentUser
+
   Records.discussions.fetchInbox()
 
   $scope.inboxPinned = ->
@@ -12,4 +14,3 @@ angular.module('loomioApp').controller 'InboxController', ($scope, Records, User
     UserAuthService.inboxPinned = false
     console.log UserAuthService.inboxPinned
 
-  $scope.discussions = UserAuthService.currentUser.inboxDiscussions()

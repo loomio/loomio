@@ -1,7 +1,7 @@
 %ul.selector-list
   %li.selector-list-header{ng-click: 'logDiscussions()'}
     %h3{translate: 'inbox.latest_threads'}
-  %li.selector-list-item{ng-repeat: 'discussion in discussions | orderBy:["activeProposalClosedAt", "-lastActivityAt"]'}
+  %li.selector-list-item{ng-repeat: 'discussion in currentUser.inboxDiscussions() | orderBy:["activeProposalClosedAt", "-lastActivityAt"]'}
     %a.selector-list-item-link{href: '/d/{{ discussion.key}}'}
       .brief-time.pull-right
         .time-ago{timestamp: 'discussion.lastActivityAt'}

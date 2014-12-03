@@ -1,4 +1,9 @@
 angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
+  defaultRoute = if window? and window.Loomio?
+    window.Loomio.defaultRoute
+  else
+    '/'
+
   $locationProvider.html5Mode(true)
 
   $routeProvider.when('/d/:key',
@@ -58,4 +63,4 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
     templateUrl: 'generated/templates/profile_page.html',
     controller: 'ProfilePageController'
   ).otherwise
-    redirectTo: window.Loomio.defaultRoute
+    redirectTo: defaultRoute

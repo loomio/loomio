@@ -39,6 +39,18 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient) ->
     fetch: (params) ->
       @restfulClient.getCollection(params)
 
+    where: (params) ->
+      @collection.chain().find(params).data()
+
+    # creates and maintains a view. consider costs of this vs where
+    # you'll need to call .data() yourself. that's why this is a view
+    belongingTo: (params) ->
+      @collection.addDynamicView(@viewName(params))
+                 .applyFind(params)
+
+    viewName: (params) ->
+      _.keys(params).join() + _.values(params).join()
+
     find: (q) ->
       if _.isNumber(q)
         @findById(q)

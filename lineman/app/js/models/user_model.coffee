@@ -13,39 +13,27 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       @avatarInitials = data.avatar_initials
 
     setupViews: ->
-      @membershipsView = @recordStore.memberships.collection.addDynamicView(@viewName())
-      @membershipsView.applyFind(userId: @id)
-      @membershipsView.applySimpleSort('id')
-
+      @membershipsView = @recordStore.memberships.belongingTo(userId: @id)
+      @notificationsView = @recordStore.notifications.belongingTo(userId: @id)
 
     groupIds: ->
       _.map(@memberships(), 'groupId')
 
     membershipFor: (group) ->
-      _.find @memberships(), (membership) -> membership.groupId == group.id
+      _.first @recordStore.memberships
+                          .where(groupId: group.id, userId: @id)
 
     memberships: ->
       @membershipsView.data()
 
     inboxDiscussions: ->
-      @recordStore.discussions.collection.chain()
-                  .find(groupId: {$in: @groupIds()})
-                  .simplesort('lastUpdateAt')
-                  .data()
+      @recordStore.discussions.where(groupId: {$in: @groupIds()})
 
     notifications: ->
-      @recordStore.notifications.find(userId: @id)
+      @notificationsView.data()
 
     groups: ->
-      groupSort = (first, second) ->
-         return 0 if (first.fullName() == second.fullName())
-         return 1 if (first.fullName() > second.fullName())
-         return -1 if (first.fullName() < second.fullName())
-
-      @recordStore.groups.collection.chain()
-                         .find(id: {'$in': @groupIds()})
-                         .sort(groupSort)
-                         .data()
+      @recordStore.groups.where(id: {'$in': @groupIds()})
 
     canEditComment: (comment) ->
       @isAuthorOf(comment) && comment.group().membersCanEditComments
@@ -54,10 +42,13 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       @isAuthorOf(comment) or @isAdminOf(comment.group())
 
     canEditDiscussion: (discussion) ->
-      @isAuthorOf(discussion) or @isAdminOf(discussion.group()) or discussion.group().membersCanEditDiscussions
+      @isAuthorOf(discussion) or
+      @isAdminOf(discussion.group()) or
+      discussion.group().membersCanEditDiscussions
 
     canStartProposals: (discussion) ->
-      @isAdminOf(discussion.group()) or discussion.group().membersCanRaiseProposals
+      @isAdminOf(discussion.group()) or
+      discussion.group().membersCanRaiseProposals
 
     isAuthorOf: (object) ->
       @id == object.authorId
