@@ -3,7 +3,7 @@
   .subgroup-list
     .media.subgroup-list-item{ng-repeat: 'subgroup in group.subgroups()'}
       .media-left
-        .subgroup-list-item-logo
+        .subgroup-list-item-logo{style:'background-image:url({{subgroup.logoUrl()}})'}
       .media-body
         .subgroup-list-item-name
           %a{href: '/g/{{subgroup.key}}'} {{ subgroup.name }}
