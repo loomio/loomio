@@ -5,8 +5,8 @@ angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel) ->
 
     initialize: (data) ->
       @id = data.id
-      @name = data.name
-      @email = data.email
+      @requestorName = data.name
+      @requestorEmail = data.email
       @introduction = data.introduction
       @groupId = data.group_id
       @createdAt = data.createdAt
@@ -22,16 +22,16 @@ angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel) ->
     requestor: -> @recordStore.users.find(@requestorId)
     responder: -> @recordStore.users.find(@responderId)
 
+    actor: ->
+      if @byExistingUser()
+        @requestor()
+      else
+        @fakeUser()
+
     byExistingUser: -> @requestorId?
 
     fakeUser: ->
-      name: @name
-      email: @email
+      name: @requestorName
+      email: @requestorEmail
       avatarKind: 'initials'
       avatarInitials: 'NA'
-
-    requestorName: ->
-      if @byExistingUser()
-        @requestor().name
-      else
-        @name

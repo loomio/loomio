@@ -3,4 +3,3 @@ angular.module('loomioApp').directive 'userAvatar', ->
   restrict: 'E'
   templateUrl: 'generated/templates/user_avatar.html'
   replace: true
-  link: (scope, element, attrs) ->
