@@ -19,3 +19,8 @@ angular.module('loomioApp').config ($translateProvider) ->
     useUrlLoader('/api/v1/translations/en').
     preferredLanguage('en')
 
+angular.module('loomioApp').run (Records, UserAuthService) ->
+  if window? and window.Loomio?
+    Records.import(window.Loomio.seedRecords)
+    UserAuthService.currentUser = Records.users.find(window.Loomio.currentUserId)
+
