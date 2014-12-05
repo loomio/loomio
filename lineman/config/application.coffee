@@ -75,7 +75,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
 
   ngtemplates:
     loomioApp:
-      src: "generated/templates/**/*.html"
+      src: "generated/**/*.html"
       dest: "generated/angular/template-cache.js"
 
   # configuration for grunt-ngmin, this happens _after_ concat once, which is the ngmin ideal :)
