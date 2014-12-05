@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'proposals', ->
   scope: {discussion: '='}
   restrict: 'E'
-  templateUrl: 'generated/templates/proposals.html'
+  templateUrl: 'generated/js/modules/discussion_page/proposals_card/proposals_card.html'
   replace: true
-  controller: 'ProposalsController'
+  controller: 'ProposalsCardController'
   link: (scope, element, attrs) ->

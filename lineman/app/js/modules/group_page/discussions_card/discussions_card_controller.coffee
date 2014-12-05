@@ -17,7 +17,7 @@ angular.module('loomioApp').controller 'DiscussionsCardController', ($scope, $mo
   # hey this should send a signal to the top? open new discussion form with this group id?
   $scope.openForm = ->
     modalInstance = $modal.open
-      templateUrl: 'generated/templates/discussion_form.html'
+      templateUrl: 'generated/js/modules/discussion_page/discussion_form.html'
       controller: 'DiscussionFormController'
       resolve:
         discussion: ->
