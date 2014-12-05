@@ -1,7 +1,7 @@
-angular.module('loomioApp').directive 'proposalCardDropdown', ->
+angular.module('loomioApp').directive 'proposalActionsDropdown', ->
   scope: {proposal: '='}
   restrict: 'E'
-  templateUrl: 'generated/templates/proposal_card_dropdown.html'
+  templateUrl: 'generated/js/modules/discussion_page/proposals_card/proposal_actions_dropdown.html'
   replace: true
-  controller: 'ProposalCardDropdownController'
+  controller: 'ProposalActionsDropdownController'
   link: (scope, element, attrs) ->

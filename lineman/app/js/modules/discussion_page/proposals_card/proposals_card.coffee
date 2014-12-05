@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'proposals', ->
+angular.module('loomioApp').directive 'proposalsCard', ->
   scope: {discussion: '='}
   restrict: 'E'
   templateUrl: 'generated/js/modules/discussion_page/proposals_card/proposals_card.html'
