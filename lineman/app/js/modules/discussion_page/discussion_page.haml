@@ -29,11 +29,11 @@
           .thread-discussion-description{btf-markdown: 'discussion.description' }
 
 
-        %proposals{discussion: 'discussion'}
+        %proposals_card{discussion: 'discussion'}
 
         .thread-events{infinite-scroll: "getNextPage()", infinite-scroll-distance: 1, infinite-scroll-disabled: 'lastPage'}
           %h3.first Activity
-          %div{ng_repeat: 'event in discussion.events()', ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
+          %div{ng_repeat: 'event in discussion.events()', ng_include: "'generated/js/modules/discussion_page/discussion_items/'+ event.kind + '.html'"}
 
         %comment_form{discussion: 'discussion'}
 

@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProposalsController', ($scope, Records) ->
+angular.module('loomioApp').controller 'ProposalsCardController', ($scope, Records) ->
   Records.proposals.fetchByDiscussion $scope.discussion
   Records.votes.fetchMyVotesByDiscussion $scope.discussion
 

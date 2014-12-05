@@ -6,5 +6,5 @@
       %ul.selector-list
         %li.selector-list-header
           %h3{translate: "notifications.header"}
-          %li.selector-list-item.media{ng_repeat: 'notification in currentUser.notifications()', ng-controller: "NotificationItemController", ng-include: "'generated/js/modules/notification_items/'+notification.event().kind+'.html'" }
+          %li.selector-list-item.media{ng_repeat: 'notification in currentUser.notifications()', ng-controller: "NotificationItemController", ng-include: "'generated/js/modules/navbar/notification_items/'+notification.event().kind+'.html'" }
 
