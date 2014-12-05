@@ -64,14 +64,10 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
   sass:
     common:
       files:
-        'generated/css/main.css': 'app/css/main.scss'
+        'generated/main.css': 'app/main.scss'
 
     options:
       includePaths: ['vendor/bower_components/']
-
-  #uglify:
-    #options:
-      #mangle: false
 
   ngtemplates:
     loomioApp:
@@ -91,8 +87,12 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
     options:
       sourcesContent: true
 
-    js:
-      src: ["<%= files.js.vendor %>", "<%= files.js.app %>", "<%= files.coffee.generated %>", "<%= files.ngtemplates.dest %>"]
+    vendorjs:
+      src: ["<%= files.js.vendor %>"]
+      dest: "generated/js/vendor.js"
+
+    appjs:
+      src: ["<%= files.js.app %>", "<%= files.coffee.generated %>", "<%= files.ngtemplates.dest %>"]
       dest: "<%= files.js.concatenated %>"
 
     spec:
