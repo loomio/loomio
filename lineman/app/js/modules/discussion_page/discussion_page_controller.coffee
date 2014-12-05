@@ -15,7 +15,7 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
 
   $scope.editDiscussion = ->
     modalInstance = $modal.open
-      templateUrl: 'generated/templates/discussion_form.html',
+      templateUrl: 'generated/js/modules/discussion_page/discussion_form.html',
       controller: 'DiscussionFormController',
       resolve:
         discussion: -> $scope.discussion.copy()

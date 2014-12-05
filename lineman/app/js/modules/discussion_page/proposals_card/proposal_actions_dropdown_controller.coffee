@@ -2,14 +2,14 @@ angular.module('loomioApp').controller 'ProposalCardDropdownController', ($scope
 
   $scope.editProposal = ->
     $modal.open
-      templateUrl: 'generated/templates/proposal_form.html',
+      templateUrl: 'generated/js/modules/discussion_page/proposals_card/proposal_form.html',
       controller: 'ProposalFormController',
       resolve:
         proposal: -> $scope.proposal
 
   $scope.closeProposal = ->
     $modal.open
-      templateUrl: 'generated/templates/proposal_close_form.html',
+      templateUrl: 'generated/js/modules/discussion_page/proposals_card/close_proposal_form.html',
       controller: 'ProposalCloseFormController',
       resolve:
         proposal: -> $scope.proposal
