@@ -178,11 +178,11 @@ input[type="file"]{
 
 @import 'base';
 @import 'layout';
-@import 'flash';
-@import 'thread';
-@import 'profile';
-@import 'proposal_card';
-@import 'proposal_pie_chart';
-@import 'vote_form';
-@import 'time_ago';
-@import 'group_page';
+@import '../js/modules/flash/flash';
+@import '../js/modules/discussion_page/thread';
+@import '../js/modules/profile_page/profile_page';
+@import '../js/modules/discussion_page/proposals_card/proposals_card';
+@import '../js/modules/discussion_page/proposals_card/proposal_pie_chart';
+@import '../js/modules/discussion_page/proposals_card/vote_form';
+@import '../js/modules/timeago/timeago';
+@import '../js/modules/group_page/group_page';
