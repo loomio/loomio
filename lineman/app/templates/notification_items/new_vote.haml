@@ -1,7 +1,0 @@
-%a.selector-list-item-link{ng-href: '{{notification.event().link()}}'}
-  .media-left
-    %user_avatar{user: "notification.event().actor()"}
-  .media-body
-    %span> {{ notification.event().actor().name }}
-    %span{translate:  "notifications.new_vote", translate-value-position: 'notification.event().vote().position' }>
-    %span> {{ notification.event().vote().proposal().name }}

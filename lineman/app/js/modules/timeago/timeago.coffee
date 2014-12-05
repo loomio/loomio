@@ -1,6 +1,6 @@
 angular.module('loomioApp').directive 'timeago', ->
   scope: {timestamp: '='}
   restrict: 'E'
-  templateUrl: 'generated/templates/timeago.html'
+  templateUrl: 'generated/js/modules/timeago/timeago.html'
   replace: true
   link: (scope, element, attrs) ->

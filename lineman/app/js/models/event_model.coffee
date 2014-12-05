@@ -23,6 +23,9 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
         #when 'new_discussion' then @discussion()
         #when 'new_vote' then @vote()
         #when 'new_motion' then @proposal()
+        #
+    camelKind: ->
+      $.camelCase(@kind.replace('_', '-'))
 
     membershipRequest: ->
       @recordStore.membership_requests.find(@membershipRequestId)

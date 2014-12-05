@@ -42,9 +42,8 @@ en:
     header: "Notifications"
     new_discussion: "started a discussion"
     new_motion: "created a proposal"
-    motion_closed:
-      by_user: "closed the proposal"
-      by_expiry: "Proposal has closed"
+    motion_closed_by_user: "closed the proposal"
+    motion_closed_by_expiry: "Proposal has closed"
     new_vote: "%{position} on the proposal"
     new_comment: "commented on the discussion"
     comment_liked: "liked your comment in the discussion"
