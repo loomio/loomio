@@ -32,11 +32,3 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/lokijs/src/lokijs.js"]
     app: ["app/js/app.js"
           "app/js/**/*.js"]
-
-  #webfonts:
-    #vendor: ['vendor/bower_components/components-font-awesome/fonts/FontAwesome.otf',
-             #'vendor/bower_components/components-font-awesome/fonts/fontawesome-webfont.eot',
-             #'vendor/bower_components/components-font-awesome/fonts/fontawesome-webfont.svg',
-             #'vendor/bower_components/components-font-awesome/fonts/fontawesome-webfont.ttf',
-             #'vendor/bower_components/components-font-awesome/fonts/fontawesome-webfont.woff']
-    #root: 'fonts'

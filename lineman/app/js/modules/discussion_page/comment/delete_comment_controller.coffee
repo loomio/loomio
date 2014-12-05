@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'DeleteCommentController', ($scope, $modalInstance, CommentService, FormService, comment) ->
+angular.module('loomioApp').controller 'DeleteCommentController', ($scope, $modalInstance, FormService, comment) ->
   $scope.comment = comment
 
   onSubmit = (comment) ->
