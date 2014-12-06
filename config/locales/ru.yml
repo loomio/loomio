@@ -205,6 +205,20 @@ ru:
     what_can_members_do: "Что члены могут делать?"
   group_permissions:
     header: Разрешения
+    c7: Добавлять/удалять координаторов.
+    c8: Удалять дискуссии.
+    c9: Удалять комментарии.
+  group_privacy:
+    visible_to:
+      members: Скрытая группа. Видна только участникам.
+  setup_steps_title: "Следующие шаги:"
+  setup_step_2: "Начните ваше первое обсуждение"
+  setup_step_3: "Пригласите людей в вашу группу"
+  invite_people: "Пригласите людей"
+  no_invitations_button: "У вас не осталось пришлашений"
+  number_pending: '%{pending} осталось'
+  and_number_pending: 'и %{pending} осталось'
+  edit_memberships: 'Редактировать участников'
   add_new_member: "Добавить нового участника"
   invite_members_to_group: "Пригласить участника в %{which_group}"
   remaining_invites: "оставшиеся приглашения"
@@ -216,13 +230,18 @@ ru:
   message_placeholder: "Написать сообщение участникам %{which_group}."
   email_group_members: "Написать письмо участникам группы "
   edit_group_settings: "Редактировать настройки группы"
+  manage_members: "Управление участниками"
   leave_group: "Покинуть группу"
+  confirm_leave_hidden_group: "Вы уверены, что хотите покинуть %{which_group}? Вы также будете удалены из всех подгрупп."
+  confirm_leave_group: "Вы уверены, что хотите покинуть %{which_group}?"
   deactivate_group: "Деактивировать группу"
   confirm_deactivate_group: "Подождите!!! Вы уверены что хотите деактивировать %{which_group}? Вы больше не сможете просматривать  эту группу. Тем не менее, если вы пожелаете вернуть группу, вы можете попросить нас снова активировать ее для вас просто отправив нам письмо на "
   invited_users: "Пригласить участников"
   members: "Участники"
   confirm_remove_user: "Вы уверены что хотите удалить %{which_user} из группы?"
+  remove_coordinator: "Удалить координатора."
   membership_requests: "Заявка на участие"
+  join_group_btn: Вступить в группу
   confirm_approve_membership_request: "Вы уверены что хотите добавить %{which_user} в группу?"
   cancel_membership_request: "Отозвать запрос"
   ignore_request: "Игнорировать заявку"
@@ -306,4 +325,195 @@ ru:
   unlock_not_received: "Не получили инструкций по разблокировке?"
   group_setup:
     set_up_your_group: Настройки вашей группы
+  simple_form:
+    'yes': 'Да'
+    'no': 'Нет'
+    labels:
+      discussion:
+        title: "Название"
+        description: "Описание"
+      membership_request:
+        introduction: "Представьтесь"
+      motion:
+        name: "Название"
+        description: "Детали"
+      user:
+        name: "Полное имя"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+        language_preference: "Язык"
+    placeholders:
+      user:
+        password: "Пароль"
+  email:
+    to_join_discussion:
+      message_intro: "%{who} сказал(а):"
+    missed_yesterday:
+      subject: "Вчера на Loomio"
+      mark_as_read: Отметить прочитанным
+    group_membership_approved:
+      subject: "Участие подтверждено. "
+    invitation:
+      hi: "Здравствуйте, %{name},"
+    thread_mailer:
+      change_preferences: "Измените настройки уведомлений:"
+      new_motion: "%{who} предложил:"
+      motion_closing_soon: "Предложение закроется через 24 часа:"
+      proposal_closed: "Предложение закрыто"
+    verification:
+      header: "Почти готово!"
+  about_loomio: "О Loomio"
+  ago: "%{quantity_of_time} назад"
+  approve: "Подтвердить"
+  author: "Автор"
+  back: "Назад"
+  cancel: "Отмена"
+  change: "Изменить"
+  change_language: "Кликните, чтобы изменить язык на %{language}"
+  changing: "Изменяется"
+  click_here: "Кликните здесь"
+  close: "Закрыть"
+  closing: "Закрывается"
+  closed: "Закрыто"
+  coordinator: "Координатор"
+  decisions: "Решения"
+  delete: "Удалить"
+  details: "Детали"
+  discussions: "Обсуждения"
+  edit: "Редактировать"
+  email_address: "Электронный адрес"
+  enable: "Включить"
+  participation: "Участие"
+  disable: "Отключить"
+  group: "Группа"
+  group_admin: "Координатор группы"
+  home: "Главная"
+  like: "Нравится"
+  loading: "Загрузка..."
+  message: "Сообщение"
+  name: "Имя"
+  next: "След."
   outcome: "Итог"
+  password: "Пароль"
+  leave_this_field_blank: "оставьте это поле пустым"
+  photo: 'Фото'
+  pricing: 'Цены'
+  prev: "Пред."
+  more: "Больше..."
+  translate: "Помогите с переводом!"
+  translate_field: "Перевод"
+  loading_translation: "Загрузка перевода..."
+  translate_this_string: "Перевсти на %{language}"
+  options: "Опции"
+  rss_subscribe: "Подписаться"
+  remove: "Удалить"
+  save: "Сохранить"
+  subject: "Заголовок"
+  thanks: "Спасибо!"
+  time_until_close: "%{quantity_of_time} до закрытия"
+  update: "Обновить"
+  facebook: "Facebook"
+  yahoo: "Yahoo"
+  google: "Google"
+  persona: "Персона"
+  common:
+    settings: Настройки
+    dashboard: Кабинет
+    unread: Непрочитанные
+    filter: 'Фильтр:'
+    following: Отслеживаю
+    not_following: Не отслеживаю
+    back_to_discussion: "Назад к обсуждению"
+    edited: Изменено
+    groups: "Группы"
+    today: Сегодня
+    months:
+      january: Январь
+      february: Февраль
+      march: Март
+      april: Апрель
+      may: Май
+      june: Июнь
+      july: Июль
+      august: Август
+      september: Сентябрь
+      october: Октябрь
+      november: Ноябрь
+      december: Декабрь
+    abbr_months:
+      jan: Янв
+      feb: Фев
+      mar: Мар
+      apr: Апр
+      may: Май
+      jun: Июн
+      jul: Июл
+      aug: Авг
+      sep: Сен
+      oct: Окт
+      nov: Нов
+      dec: Дек
+    days:
+      monday: Понедельник
+      tuesday: Вторник
+      wednesday: Среда
+      thursday: Четверг
+      friday: Пятница
+      saturday: Суббота
+      sunday: Воскресенье
+    abbr_days:
+      mon: Пон
+      tue: Вто
+      wed: Сре
+      thu: Чет
+      fri: Пят
+      sat: Суб
+      sun: Вос
+    tiny_days:
+      mo: Пн
+      tu: Вт
+      we: Ср
+      th: Чт
+      fr: Пт
+      sa: Сб
+      su: Вс
+    meridians:
+      am: 'дп'
+      pm: 'пп'
+    please_wait: "Пожалуйста, подождите"
+    privacy: "Конфиденциальность"
+    private: "Приватная"
+    permissions: "Разрешения"
+    public: "Публичная"
+    email: "Email"
+    start_group: "Создайте группу!"
+  group_categories:
+    all: "Все"
+    blank: "Вне категорий"
+    economics: "Экономика"
+    activist: "Активисты"
+    arts: "Искусство"
+    business: "Бизнес"
+    collective: "Коллективы"
+    community_group: "Общественные группы"
+    co_operative: "Объединения"
+    democratic_organisation: "Организации"
+    education: "Образование"
+    environmental_group: "Окружающая среда"
+    family: "Семья"
+    local_government: "Правительство"
+    online_community: "Интернет-сообщества"
+    religious_group: "Религия"
+    event: "Мероприятия"
+    open_source_software: "Открытые программные продукты"
+    political_initiative: "Политические инициативы"
+    social_enterprise: "Социально-ориентированные предприятия"
+    social_justice: "Социальная справедливость"
+    advocacy_group: "Адвокатура"
+    science: "Наука"
+    technology: "Технологии"
+    sports: "Спорт"
+    youth: "Молодежь"
+    women: "Женщины"
+    media: "Медиа"
+    health: "Здоровье"
