@@ -33,4 +33,4 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/angular-animate/angular-animate.js",
              "vendor/bower_components/lokijs/src/lokijs.js"]
     app: ["app/app.js"
-          "app/**/*.js" ]
+          "app/**/*.js"]
