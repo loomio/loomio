@@ -283,15 +283,15 @@ be-BY:
     motions_can_be_edited: Рэдагаваць іх прапановы пасля пачатку галасавання
     visible_to:
       label: Хто можа знайсці гэту групу?
-      public_html: 'Для ўсіх <span>зрабіць групу публічнай</span>'
+      public_html: 'Усе <span>зрабіць групу публічнай</span>'
       parent_members_html: 'Удзельнікі %{parent_group_name} <span>скрытая для ўсіх, але бачная для ўдзельнікаў %{parent_group_name}</span>'
-      members_html: 'Толькі для ўдзельнікаў <span>група не будзе бачнай</span>'
+      members_html: 'Толькі ўдзельнікі <span>група не будзе бачнай</span>'
     membership_granted_upon:
       label: Як людзі могуць далучыцца?
       hidden_parent:
         request_html: 'Адкрыта <span>для ўдзельнікаў %{parent_group_name}</span>'
         approval_html: 'Па запыту <span>удзельнікаў %{parent_group_name}</span>'
-      request_html: Адкрытая <span>хто ўгодна можа далучыцца да групы</span>
+      request_html: Вольна <span>хто ўгодна можа далучыцца да групы</span>
       approval_html: Па запыту <span>хто ўгодна можа запытаць далучэння</span>
       invitation_html: Толькі па запрашэнням <span>новых удзельнікаў трэба запрашаць</span>
     parent_members_can_see_discussions:
@@ -1011,7 +1011,7 @@ be-BY:
   message: "Паведамленне"
   name: "Імя"
   new_activity: "Новая дзейнасць"
-  next: "Наступнае"
+  next: "Далей"
   other: "Іншы"
   outcome: "Вынік"
   password: "Пароль"

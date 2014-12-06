@@ -431,6 +431,15 @@ an:
         T'hemos ninviau un correu electronico con una invitación a prencipiar o tuyo grupo.
 
         Si no veyes cosa en a tuya servilla de dentrada en bells menutos, escribe a <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> ye d'alcuerdo con a propuesta."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> s'ha absteniu en a propuesta."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> no ye d'acuerdo con a propuesta."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> ha blocau a propuesta."
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> ye d'alcuerdo con a propuesta:"
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong>  s'ha absteniu en a propuesta:"
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> no ye d'acuerdo con a propuesta:"
+    user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong>  ha blocau a propuesta:"
   discussion_items:
     new_discussion: "s'ha creau a discusión"
     new_motion: "s'ha creau una propuesta"
@@ -1027,6 +1036,7 @@ an:
   google: "Google"
   persona: "Persona"
   common:
+    markdown_help_tooltip: 'Conoixe o basico d''o formateyo de texto con Markdown'
     settings: Achustes
     dashboard: Panel de control
     unread: No leyiu

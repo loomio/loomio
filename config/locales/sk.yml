@@ -135,7 +135,7 @@ sk:
     group_archived: "Skupina bola úspešne archivovaná"
     group_created: "Skupina bola úspešne vytvorená"
     members_added: "Členovia boli pridaní do skupiny."
-    membership_requested: "Požiadal(a) ste o členstvo v %{which_group}. Budete upozornený(á), akonáhle bude vaša žiadosť schválená."
+    membership_requested: "Požiadal/a ste o členstvo v skupine %{which_group}. Budete upozornený/á, akonáhle bude vaša žiadosť schválená."
     motion_closed: "Návrh uzavretý. Pokiaľ chcete, môžte opísať výsledok nižšie a poslať ho svojej skupine."
     motion_outcome_created: "Gratulujeme, vytvoril(a) ste výsledek návrhu a členom vašej skupiny to bylo oznámené."
     motion_outcome_updated: "Výsledok návrhu byl aktualiziovaný."
@@ -169,7 +169,7 @@ sk:
       x_days:
         one: "dňom"
         few: "%{count} dni"
-        other: "%{count} dňami"
+        other: "%{count} dni"
       about_x_months:
         one: "mesiacom"
         few: "%{count} mesiacami"
@@ -289,9 +289,9 @@ sk:
     members_can:
       add_members: Pozvať a schváliť nových členov
       edit_comments: Upraviť kedykoľvek svoje komentáre
-      edit_discussions: Aktualizujte popis akejkoľvek diskusie v skupine.
+      edit_discussions: Aktualizovať popis akejkoľvek diskusie v skupine.
       start_discussions: Zahájiť diskusie
-      raise_motions: Prezentujte návrhy
+      raise_motions: Predkladať návrhy
       vote: Hlasovať o návrhoch
       create_subgroups: Vytvoriť podskupiny
     motions_can_be_edited: Aktualizujte návrhy po tom, čo bolo začaté hlasovanie
@@ -562,7 +562,7 @@ sk:
     past_tense:
       'yes': "súhlasil(a)"
       'no': "nesúhlasil(a)"
-      abstain: "se zdržel(a)"
+      abstain: "sa zdržal(a)"
       block: "zamietol(la)"
   unable_to_vote:
     permission_denied: "Nemáte oprávnenie k hlasovaniu o tomto návrhu"
@@ -714,7 +714,7 @@ sk:
     no_invitations_left_get_more: "Prosím emailujte contact@loomio.org a uvidíme, čo môžme urobiť, aby sme vám pomohli"
     invitation_not_found: 'Nedarí sa nám nájsť pozvánku s touto adresou. Skúste si vyžiadať novú pozvánku od jej odosielateľa.'
     invitation_cancelled: 'Tato pozvánka bola zrušená. Prosím kontaktujte odesieľateľa tejto pozvánky pokiaľ si myslíte, že došlo ku chybe.'
-    invitation_already_used: 'Tato pozvánka už bola použitá. Prosím prihláste sa, aby ste pokračoval(a) do svojej skupiny.'
+    invitation_already_used: 'Tato pozvánka už bola použitá. Prosím prihláste sa, aby ste mohli pokračovať do svojej skupiny.'
     recipients: "Zadajte emailové adresy, oddelené čiarkami:"
     invitees_placeholder: "Užívateľské meno <uzivatel1@priklad.sk>, uzivatel1@priklad.sk"
     subject: "Prosím pridajte sa do našej novej skupiny %{group} na Loomio"
@@ -1035,7 +1035,7 @@ sk:
     unread: Neprečítané
     filter: 'Filter:'
     following: Sledované
-    not_following: Nesledovaný
+    not_following: Nesledujem
     back_to_discussion: "Späť do diskusie"
     edited: Aktualizovaný
     groups: "Skupiny"
