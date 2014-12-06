@@ -102,13 +102,15 @@ describe API::VotesController do
     context 'failures' do
       it "responds with an error when there are unpermitted params" do
         vote_params[:dontmindme] = 'wild wooly byte virus'
-        expect { post :create, vote: vote_params }.to raise_error ActionController::UnpermittedParameters
+        post :create, vote: vote_params
+        expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
       end
 
       let(:another_user)          { create :user }
       it "responds with an error when the user is unauthorized", focus: true do
         sign_in another_user
-        expect { post :create, vote: vote_params }.to raise_error CanCan::AccessDenied
+        post :create, vote: vote_params
+        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
       end
 
       it "responds with validation errors when they exist" do
