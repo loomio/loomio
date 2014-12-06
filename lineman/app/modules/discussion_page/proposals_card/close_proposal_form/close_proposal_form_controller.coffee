@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProposalCloseFormController', ($scope, $modalInstance, proposal, ProposalService) ->
+angular.module('loomioApp').controller 'CloseProposalFormController', ($scope, $modalInstance, proposal) ->
   $scope.proposal = proposal
 
   $scope.submit = ->

@@ -15,17 +15,14 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
   loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ng-annotate", "grunt-haml", 'grunt-sass', 'grunt-cucumber', 'grunt-contrib-copy']
 
   removeTasks:
-    common: ["handlebars", "jst", 'less', 'pages:dev']
-    dev: ["pages:dev", 'pages:dist']
-    dist: ['pages:dev', 'pages:dist']
+    common: ["handlebars", "jst", 'less', 'pages', 'concat_sourcemap', 'pages:dev']
 
   prependTasks:
-    dist: ["ngAnnotate"] # ng-annotate should run in dist only
-    common: ["haml", "ngtemplates"] # ngtemplates runs in dist and dev
+    dist: ["ngAnnotate"]
+    common: ["haml", "ngtemplates"]
 
-  # swaps concat_sourcemap in place of vanilla concat
   appendTasks:
-    common: ["concat_sourcemap"]
+    common: ["concat_sourcemap:css", "concat_sourcemap:app", "concat_sourcemap:vendor", "concat_sourcemap:spec"]
 
   cucumberjs:
     src: 'features/*.feature'
@@ -62,9 +59,9 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
         ]
 
   sass:
-    common:
+    dist:
       files:
-        'generated/main.css': 'app/main.scss'
+        'generated/css/main.css': 'app/css/main.scss'
 
     options:
       includePaths: ['vendor/bower_components/']
@@ -72,7 +69,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
   ngtemplates:
     loomioApp:
       src: "generated/**/*.html"
-      dest: "generated/angular/template-cache.js"
+      dest: "<%= files.ngtemplates.dest %>"
 
   # configuration for grunt-ngmin, this happens _after_ concat once, which is the ngmin ideal :)
   ngAnnotate:
@@ -87,21 +84,21 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
     options:
       sourcesContent: true
 
-    vendorjs:
+    css:
+      src: ["<%= files.css.app %>", "<%= files.css.vendor %>"]
+      dest: "generated/css/app.css"
+
+    vendor:
       src: ["<%= files.js.vendor %>"]
       dest: "generated/js/vendor.js"
 
-    appjs:
+    app:
       src: ["<%= files.js.app %>", "<%= files.coffee.generated %>", "<%= files.ngtemplates.dest %>"]
       dest: "<%= files.js.concatenated %>"
 
     spec:
       src: ["<%= files.js.specHelpers %>", "<%= files.coffee.generatedSpecHelpers %>", "<%= files.js.spec %>", "<%= files.coffee.generatedSpec %>"]
       dest: "<%= files.js.concatenatedSpec %>"
-
-    css:
-      src: ["<%= files.sass.generatedVendor %>", "<%= files.css.vendor %>", "<%= files.sass.generatedApp %>", "<%= files.css.app %>"]
-      dest: "<%= files.css.concatenated %>"
 
   # configures grunt-watch-nospawn to listen for changes to
   # and recompile angular templates, also swaps lineman default
@@ -113,11 +110,11 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
 
     js:
       files: ["<%= files.js.vendor %>", "<%= files.js.app %>"]
-      tasks: ["concat_sourcemap:js"]
+      tasks: ["concat_sourcemap:app"]
 
     coffee:
       files: "<%= files.coffee.app %>"
-      tasks: ["coffee", "concat_sourcemap:js"]
+      tasks: ["coffee", "concat_sourcemap:app"]
 
     jsSpecs:
       files: ["<%= files.js.specHelpers %>", "<%= files.js.spec %>"]
@@ -129,7 +126,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
 
     sass:
       files: ["<%= files.sass.vendor %>", "<%= files.sass.app %>"]
-      tasks: ["sass", "concat_sourcemap:css"]
+      tasks: ["sass"]
 
     webfonts:
       files: "<%= files.webfonts.vendor %>"
