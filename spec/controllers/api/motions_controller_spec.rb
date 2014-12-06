@@ -50,12 +50,14 @@ describe API::MotionsController do
     context 'failures' do
       it "responds with an error when there are unpermitted params" do
         motion_params[:dontmindme] = 'wild wooly byte virus'
-        expect { put :update, id: motion.id, motion: motion_params, format: :json }.to raise_error 
+        put :update, id: motion.id, motion: motion_params
+        expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
       end
 
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
-        expect { put :update, id: motion.id, motion: motion_params, format: :json }.to raise_error CanCan::AccessDenied
+        put :update, id: motion.id, motion: motion_params
+        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
       end
 
       it "responds with validation errors when they exist" do
@@ -99,12 +101,14 @@ describe API::MotionsController do
     context 'failures' do
       it "responds with an error when there are unpermitted params" do
         motion_params[:dontmindme] = 'wild wooly byte virus'
-        expect { post :create, motion: motion_params, format: :json }.to raise_error ActionController::UnpermittedParameters
+        post :create, motion: motion_params
+        expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
       end
 
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
-        expect { post :create, motion: motion_params, format: :json }.to raise_error CanCan::AccessDenied
+        post :create, motion: motion_params
+        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
       end
 
       it "responds with validation errors when they exist" do
