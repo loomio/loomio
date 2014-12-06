@@ -93,7 +93,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       dest: "generated/js/vendor.js"
 
     app:
-      src: ["<%= files.js.app %>", "<%= files.coffee.generated %>", "<%= files.ngtemplates.dest %>"]
+      src: ["<%= files.js.app %>", "<%= files.coffee.generated %>", "generated/angular/template-cache.js"]
       dest: "<%= files.js.concatenated %>"
 
     spec:
