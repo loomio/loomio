@@ -2,6 +2,9 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
   ngtemplates:
     dest: "generated/angular/template-cache.js"
 
+  sass:
+    app:   ['app/**/*.scss']
+
   css:
     app:    ['generated/css/main.css']
     vendor: ['vendor/bower_components/components-font-awesome/css/font-awesome.css',
