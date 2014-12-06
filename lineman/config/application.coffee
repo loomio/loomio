@@ -6,6 +6,7 @@
 #
 module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application",
   enableSass: true
+  #enableAssetFingerprint: true
 
   server:
     apiProxy:
@@ -23,6 +24,11 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
 
   appendTasks:
     common: ["concat_sourcemap:css", "concat_sourcemap:app", "concat_sourcemap:vendor", "concat_sourcemap:spec"]
+
+  uglify:
+    js:
+      files:
+        "dist/js/vendor.js": "generated/js/vendor.js"
 
   cucumberjs:
     src: 'features/*.feature'
@@ -131,7 +137,3 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
     webfonts:
       files: "<%= files.webfonts.vendor %>"
       tasks: ["copy"]
-
-  plugins:
-    rails:
-      namespace: "lineman"
