@@ -3,9 +3,11 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
     dest: "generated/angular/template-cache.js"
 
   css:
-    app: ['app/css/main.css']
+    app:    ['app/css/main.css']
     vendor: ['vendor/bower_components/components-font-awesome/css/font-awesome.css',
              'vendor/bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css']
+  coffee:
+    app: "app/**/*.coffee"
 
   js:
     vendor: ["vendor/bower_components/lodash/dist/lodash.js",
@@ -30,5 +32,5 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/js/private_pub.js",
              "vendor/bower_components/angular-animate/angular-animate.js",
              "vendor/bower_components/lokijs/src/lokijs.js"]
-    app: ["app/js/app.js"
-          "app/js/**/*.js"]
+    app: ["app/app.js"
+          "app/**/*.js"]
