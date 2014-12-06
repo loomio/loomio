@@ -1,7 +1,7 @@
 angular.module('loomioApp').controller 'StartProposalCardController', ($scope, $translate, $modal, Records) ->
   $scope.openForm = ->
     modalInstance = $modal.open
-      templateUrl: 'generated/modules/discussion_page/proposals_card/proposal_form.html'
+      templateUrl: 'generated/modules/discussion_page/proposals_card/proposal_form/proposal_form.html'
       controller: 'ProposalFormController'
       resolve:
         proposal: ->

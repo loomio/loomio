@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProposalCardController', ($scope, $modal, Records, UserAuthService) ->
+angular.module('loomioApp').controller 'ProposalExpandedController', ($scope, $modal, Records, UserAuthService) ->
   Records.votes.fetchByProposal($scope.proposal)
   currentUser = UserAuthService.currentUser
 

@@ -73,7 +73,7 @@ en:
     select_position: 'Select position'
     statement_placeholder: 'Share your thoughts with the group.'
 
-  proposal_close_form:
+  close_proposal_form:
     close_proposal: 'Close {{proposalName}}'
     helptext: 'Are you sure you want to close this proposal now?'
     close_proposal_submit: 'Close proposal early'
