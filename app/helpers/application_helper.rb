@@ -1,7 +1,15 @@
 #encoding: UTF-8
 module ApplicationHelper
 
-  def lineman_js_path
+  def lineman_vendorjs_path
+    if Rails.env.production?
+      "/js/vendor.js?#{Time.now.to_i}"
+    else
+      "/js/vendor.js"
+    end
+  end
+
+  def lineman_appjs_path
     if Rails.env.production?
       "/js/app.js?#{Time.now.to_i}"
     else

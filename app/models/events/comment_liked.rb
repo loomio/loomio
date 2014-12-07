@@ -11,7 +11,7 @@ class Events::CommentLiked < Event
   end
 
   def message_channel
-    "/discussion-#{comment_vote.comment.discussion_id}" #/#{kind}"
+    "/discussion-#{comment_vote.comment.discussion.key}" #/#{kind}"
   end
 
   private
