@@ -34,7 +34,6 @@ describe 'MockRecordsInterface', ->
     beforeEach ->
       mock =  {id: 1, key: 'a'}
       otherMock = {id: 2, key:'b'}
-      console.log 'mocks ri', recordStore.mocks
       recordStore.mocks.initialize(mock)
       recordStore.mocks.initialize(otherMock)
 
