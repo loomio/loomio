@@ -16,33 +16,7 @@ en:
       new_thread: "New thread"
       add_subgroup: 'Add subgroup'
 
-  flash:
-    group_page:
-      privacy:
-        members: 'This group is now visible only to members'
-        parent_members: 'This group is now visible only to members of your organization'
-        public: 'This group is now visible to the public'
-      notifications:
-        follow_group: 'You will now receive notifications from all threads in this group'
-        unfollow_group: 'You will now receive notifications only from threads you are participating in'
-      leave_group_success: 'You have successfully left this group'
-      deactivate_group_success: 'You have successfully deactivated this group'
-    group_form:
-      new_group: 'Successfully created your group'
-      update_group: 'Changes saved'
-    discussion_form:
-      new_discussion: 'Successfully created your thread'
-      update_discussion: 'Changes saved'
-    comment_form:
-      update_comment: 'Changes saved'
-      destroy_comment: 'You comment has been deleted' 
-    proposal_form:
-      new_proposal: 'Successfully created your proposal'
-      update_proposal: 'Changes saved'
-    vote_form:
-      new_vote: 'Your vote counts!'
-      update_vote: 'Successfully changed your position'
-    errors:
+    messages:
       aw_crap: 'We''re sorry, but something went wrong. Please try again'
 
   inbox:
@@ -56,6 +30,9 @@ en:
     sign_in: 'Login'
 
   comment_form:
+    flash_messages:
+      update_comment: 'Changes saved'
+      destroy_comment: 'You comment has been deleted' 
     edit_comment: 'Edit comment'
 
   navbar:
@@ -65,9 +42,8 @@ en:
     header: "Notifications"
     new_discussion: "started a discussion"
     new_motion: "created a proposal"
-    motion_closed:
-      by_user: "closed the proposal"
-      by_expiry: "Proposal has closed"
+    motion_closed_by_user: "closed the proposal"
+    motion_closed_by_expiry: "Proposal has closed"
     new_vote: "%{position} on the proposal"
     new_comment: "commented on the discussion"
     comment_liked: "liked your comment in the discussion"
@@ -81,6 +57,9 @@ en:
     motion_outcome_updated: "updated the outcome for the proposal"
 
   vote_form:
+    messages:
+      new_vote: 'Your vote counts!'
+      update_vote: 'Successfully changed your position'
     i_agree: 'I agree'
     i_agree_details: 'I support this and want it to go ahead.'
     i_abstain: 'I abstain'
@@ -94,12 +73,15 @@ en:
     select_position: 'Select position'
     statement_placeholder: 'Share your thoughts with the group.'
 
-  proposal_close_form:
+  close_proposal_form:
     close_proposal: 'Close {{proposalName}}'
     helptext: 'Are you sure you want to close this proposal now?'
     close_proposal_submit: 'Close proposal early'
 
   proposal_form:
+    messages:
+      new_proposal: 'Successfully created your proposal'
+      update_proposal: 'Changes saved'
     start_proposal: 'Start proposal'
     start_a_proposal: 'Start a proposal'
     edit_proposal: 'Edit proposal'
@@ -112,6 +94,9 @@ en:
     details_placeholder: "Give enough detail so everyone knows exactly what it means to agree or disagree or whatever"
 
   discussion_form:
+    messages:
+      new_discussion: 'Successfully created your thread'
+      update_discussion: 'Changes saved'
     new_discussion_title: 'Start new thread'
     edit_discussion_title: 'Edit thread'
     discussion_helptext: 'The thread is where everyone can discuss a topic and make decisions together.'
@@ -144,6 +129,16 @@ en:
   proposal_position_block: 'Block'
 
   group_page:
+    messages:
+      privacy:
+        members: 'This group is now visible only to members'
+        parent_members: 'This group is now visible only to members of your organization'
+        public: 'This group is now visible to the public'
+      notifications:
+        follow_group: 'You will now receive notifications from all threads in this group'
+        unfollow_group: 'You will now receive notifications only from threads you are participating in'
+      leave_group_success: 'You have successfully left this group'
+      deactivate_group_success: 'You have successfully deactivated this group'
     description: 'Description'
     discussions: 'Threads'
     members: 'Members'
@@ -177,6 +172,9 @@ en:
       public: 'This group is visible on the web'
 
   group_form:
+    messages:
+      new_group: 'Successfully created your group'
+      update_group: 'Changes saved'
     new_group_title: 'Create a New Group'
     new_subgroup_title: 'Create a New Subgroup of {{parentGroupName}}'
     edit_group_title: 'Group Settings'

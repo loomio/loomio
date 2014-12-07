@@ -12,9 +12,7 @@ class API::GroupsController < API::RestfulController
   end
 
   def subgroups
-    @group = Group.find(params[:parent_id])
-    authorize! :show, @group
-
+    load_and_authorize_group
     @groups = @group.subgroups.select{|g| can? :show, g }
     respond_with_collection
   end
