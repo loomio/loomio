@@ -42,14 +42,14 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
       templateUrl: 'generated/modules/discussion_page/comment_form/edit_comment.html'
       controller: 'EditCommentController'
       resolve:
-        comment: -> $scope.comment.copy()
+        comment: -> angular.copy($scope.comment)
 
   $scope.deleteComment = ->
     modalInstance = $modal.open
       templateUrl: 'generated/modules/discussion_page/comment_form/delete_comment.html'
       controller: 'DeleteCommentController'
       resolve:
-        comment: -> $scope.comment.copy()
+        comment: -> angular.copy($scope.comment)
 
   $scope.showContextMenu = ->
     $scope.canEditComment($scope.comment) or $scope.canDeleteComment($scope.comment)
@@ -79,9 +79,6 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
 
   $scope.$watch 'comment.likerIds', ->
     renderLikedBySentence()
-
-
-  #renderLikedBySentence()
 
   $scope.reply = ->
     $scope.$emit 'replyToCommentClicked', $scope.comment

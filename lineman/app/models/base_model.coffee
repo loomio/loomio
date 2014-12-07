@@ -4,9 +4,9 @@ angular.module('loomioApp').factory 'BaseModel', ->
     @plural: 'undefinedPlural'
 
     constructor: (recordsInterface, data) ->
-      Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: false)
-      Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: false)
-      Object.defineProperty(@, 'restfulClient', value: recordsInterface.restfulClient, enumerable: false)
+      Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: true)
+      Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: true)
+      Object.defineProperty(@, 'restfulClient', value: recordsInterface.restfulClient, enumerable: true)
       @initialize(data)
       @setupViews() if @setupViews? and @id?
 
@@ -36,8 +36,3 @@ angular.module('loomioApp').factory 'BaseModel', ->
 
     update: (record) ->
       @restfulClient.update(@keyOrId(), @serialize())
-
-    copy: =>
-      cloner = ->
-      cloner.prototype = @constructor.prototype
-      angular.extend new cloner(), _.clone(@), recordStore: @recordStore
