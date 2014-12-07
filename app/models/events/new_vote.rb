@@ -21,6 +21,6 @@ class Events::NewVote < Event
   end
 
   def message_channel
-    "/discussion-#{vote.motion.discussion_id}" #/#{kind}"
+    "/discussion-#{vote.motion.discussion.key}" #/#{kind}"
   end
 end

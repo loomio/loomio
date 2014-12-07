@@ -1,0 +1,13 @@
+%a.selector-list-item-link{ng-href: '{{event.link()}}'}
+  -#requestor: {{ notification.event().membershipRequest().requestor() }}
+    -#user by that id?: {{ notification.event().membershipRequest().requestorId }}
+  -#.a{ng-if: "!notification.event().membershipRequest().requestorId"}
+    -#anon request: {{notification.event().membershipRequest().name}}
+  -#{{ ::notification.event().membershipRequest().actor() }}
+  .media-left
+    %user_avatar{user: "event.membershipRequest().actor()", ng-if: "event.membershipRequest().byExistingUser()"}
+  .media-body
+    %span> {{ event.membershipRequest().actor().name }}
+    %span{translate:  "notifications.membership_requested" }>
+    %span> {{ event.membershipRequest().group().fullName() }}
+

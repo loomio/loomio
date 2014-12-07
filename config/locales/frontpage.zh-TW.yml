@@ -42,8 +42,8 @@ zh-TW:
       header_html: '以最棒的<strong>開源行動技術</strong>所打造的 Loomio 1.0 可以在任何的裝置上運作。'
     quote:
       header:
-        rushkoff_html: '「Loomio <strong>釋放了網際網路的潛力</strong>，讓夥伴達成了共識而不是極端的爭論。」<div class="attributation">— <a href="http://rushkoff.com">Douglas Rushkoff</a>，<b>《Present Shock》</b>的作者</div>'
-        sifry_html: '「Loomio 正中<strong>個別聲音</strong>與<strong>集體決策</strong>的好球帶。」<div class="attributation">— Micah Sifry，<b><a href="http://techpresident.com">TechPresident</a></b> 的編輯</div>'
+        rushkoff_html: '「Loomio <strong>釋放了網際網路的潛力</strong>，讓夥伴達成了共識而不是極端的爭論。」<div class="attributation">— <a href="http://rushkoff.com">Douglas Rushkoff</a>，<em>《Present Shock》</em>的作者</div>'
+        sifry_html: '「Loomio 正中<strong>個別聲音</strong>與<strong>集體決策</strong>的好球帶。」<div class="attributation">— Micah Sifry，<em><a href="http://techpresident.com">TechPresident</a></em> 的編輯</div>'
     team:
       header: '關於 Loomio'
       desc: '我們是開放源碼的開發者與社會正義運動者所組成的小型團隊，我們在長白雲之境（Aotearoa），也就是紐西蘭（New Zealand）一家名叫 Enspiral 的組織中工作，我們的朋友、支持者與專家顧問來自世界各地。'

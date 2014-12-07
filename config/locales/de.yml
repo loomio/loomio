@@ -450,7 +450,7 @@ de:
   see_previous_decisions: "Bisherige Entscheidungen ansehen"
   see_more: "Mehr erfahren"
   create_new_proposal: "Vorschlag erstellen"
-  empty_decision_list_html: "Gib der Diskussion eine neue Richtung. Mach einen gänzlich anderen oder einen verfeinerten Vorschlag."
+  empty_decision_list_html: "Gib der Diskussion eine neue Richtung. <br> Mach einen gänzlich anderen oder einen verfeinerten Vorschlag."
   empty_decision_index: "Diese Gruppe hat noch keine Entscheidungen getroffen."
   empty_discussion_list: "Es gibt noch keine Aktivitäten in dieser Diskussion."
   go_to_add_comment_html: "Um zu kommentieren: <a href='%{href}'>gehe zum Ende der Diskusison</a>."

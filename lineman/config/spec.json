@@ -3,6 +3,7 @@
   "launch_in_dev" : ["Firefox"],
   "launch_in_ci" : ["PhantomJS"],
   "src_files" : [
+    "generated/js/vendor.js",
     "generated/js/app.js",
     "generated/js/spec.js"
   ]

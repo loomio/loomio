@@ -53,6 +53,7 @@ $sidebar-width: 320px;
   font-weight:600;
   font-stretch:normal;
 }
+
 @mixin fontHelveticaMedium{
   font-family: "HelveticaNeueMedium", "HelveticaNeue-Medium", "Helvetica Neue Medium", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   font-weight:500;
@@ -162,6 +163,7 @@ label.label-with-details{
   max-width: 480px;
   margin: 10px auto;
 }
+
 .form-group{
   margin-top: 20px;
 }
@@ -178,11 +180,14 @@ input[type="file"]{
 
 @import 'base';
 @import 'layout';
-@import 'flash';
-@import 'thread';
-@import 'profile';
-@import 'proposal_card';
-@import 'proposal_pie_chart';
-@import 'vote_form';
-@import 'time_ago';
-@import 'group_page';
+
+@import '../modules/timeago/timeago.scss';
+@import '../modules/profile_page/profile_page.scss';
+@import '../modules/group_page/group_page.scss';
+@import '../modules/flash/flash.scss';
+@import '../modules/discussion_page/thread.scss';
+@import '../modules/discussion_page/proposals_card/vote_form/vote_form.scss';
+@import '../modules/discussion_page/proposals_card/proposals_card.scss';
+@import '../modules/discussion_page/proposals_card/proposal_pie_chart/proposal_pie_chart.scss';
+@import '../modules/discussion_page/proposals_card/proposal_expanded/proposal_expanded.scss';
+@import '../modules/discussion_page/proposals_card/proposal_collapsed/proposal_collapsed.scss';

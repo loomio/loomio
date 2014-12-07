@@ -1,0 +1,25 @@
+.proposal-card-collapsed{
+  a{
+    display: block;
+    color: $primary-text-color;
+    margin: 0 -15px;
+    padding: 15px;
+  }
+  a:hover{
+    background-color: $list-hover-color;
+    text-decoration: none;
+  }
+}
+.proposal-card-collapsed h2{
+  font-size: 18px;
+  line-height: 20px;
+}
+.proposal-card-collapsed-outcome{
+  color: $meta-text-color;
+}
+.proposal-card-collapsed-expand{
+  clear: both;
+  margin-top: 1em;
+  @include metaText;
+  text-decoration: underline;
+}
