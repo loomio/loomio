@@ -25,7 +25,6 @@ describe 'UserModel', ->
 
   describe 'groups', ->
     it 'returns groups the user belongs to', ->
-      console.log 'groups', user.groups()
       expect(user.groups()).toContain(group)
       expect(user.groups().length).toBe 1
 

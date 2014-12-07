@@ -2,7 +2,7 @@
   %li.selector-list-header{ng-click: 'logDiscussions()'}
     %h3{translate: 'inbox.latest_threads'}
   %li.selector-list-item{ng-repeat: 'discussion in currentUser.inboxDiscussions() | orderBy:["activeProposalClosedAt", "-lastActivityAt"]'}
-    %a.selector-list-item-link{href: '/d/{{ discussion.key}}'}
+    %a.cuke-inbox-item.selector-list-item-link{href: '/d/{{ discussion.key}}'}
       .brief-time.pull-right
         .time-ago{timestamp: 'discussion.lastActivityAt'}
       .selector-list-item-discussion-title

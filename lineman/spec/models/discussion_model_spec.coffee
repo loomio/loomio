@@ -35,9 +35,6 @@ describe 'DiscussionModel', ->
   describe 'proposals()', ->
     beforeEach ->
       proposal = recordStore.proposals.initialize(id:7, discussion_id: discussion.id)
-      console.log 'foundprop', foundprop
-      console.log 'dprops', discussion.proposals()
-      console.log !!(foundprop = recordStore.proposals.find(7))
       #proposal = recordStore.proposals.initialize(id:7, discussion_id: discussion.id)
       #proposal = recordStore.proposals.initialize(id:7, discussion_id: discussion.id)
       #console.log proposal

@@ -30,12 +30,6 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       files:
         "dist/js/vendor.js": "generated/js/vendor.js"
 
-  cucumberjs:
-    src: 'features/*.feature'
-    options:
-      steps: 'features/step_definitions'
-      coffee: true
-
   haml:
     dist:
       files: [

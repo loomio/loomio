@@ -54,7 +54,7 @@ class AngularSupportController < ApplicationController
   end
 
   def redirect_to_discussion
-    redirect_to "http://localhost:8000/discussions/#{testing_discussion.key}"
+    redirect_to "http://localhost:8000/angular"
   end
 
   def patrick
