@@ -27,4 +27,3 @@ screenshots/
 /lineman/generated
 /lineman/vendor/bower_components
 .powenv
-deploy.sh

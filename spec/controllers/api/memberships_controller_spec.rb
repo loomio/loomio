@@ -53,7 +53,8 @@ describe API::MembershipsController do
     context 'failure' do
       it 'does not allow access to an unauthorized group' do
         cant_see_me = create :group
-        expect { get :autocomplete, group_id: cant_see_me.id, format: :json }.to raise_error CanCan::AccessDenied
+        get :autocomplete, group_id: cant_see_me.id
+        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
       end
     end
   end

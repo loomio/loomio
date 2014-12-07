@@ -872,3 +872,64 @@ body.pages.translation {
   p.code { padding-left: 16px; }
   td { padding: 0 10px; }
 }
+
+body.pages.crowdfunding_celebration {
+  font-size: 18px;
+  font-weight: 300;
+  .container {
+    background: transparent;
+  }
+  .crowdfunding-celebration-container {
+    margin-top: 27px;
+    padding-top: 20px;
+    border-radius: 4px;
+    background: white;
+  }
+  .indented-list {
+    padding-left: 40px;
+  }
+  .contribution-level {
+    margin-bottom: 20px;
+  }
+  .img-team {
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .intro {
+    margin-top: 20px;
+  }
+  .special-artwork {
+    margin-top: 10px;
+  }
+  .img-center {margin:0 auto; display: block;}
+  h1, h2, h3, h4 {
+    font-weight: 300;
+    margin-top: 36px;
+  }
+  img.img-artwork {
+    text-align: center;
+    height: 500px
+  }
+  img.img-francios {
+    border-radius: 4px 4px 0 0;
+    width: 120px;
+    height: 120px;
+  }
+  img.img-pyxis {
+    border-radius: 0 0 4px 4px;
+    width: 120px;
+  }
+  h1 {
+    margin-top: 7px;
+    font-size: 36px;
+  }
+  h2 { font-size: 30px; }
+  h3 { font-size: 26px; }
+  h4 {
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+  p { padding: 5px 0; }
+  p.blockquote { font-style: italic; padding: 0 40px; }
+  li { padding: 10px 0; }
+}

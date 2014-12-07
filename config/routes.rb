@@ -305,6 +305,7 @@ Loomio::Application.routes.draw do
       get :translation
       get :wallets
       get :browser_not_supported
+      get :crowdfunding_celebration
     end
   end
 
