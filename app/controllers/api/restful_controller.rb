@@ -69,6 +69,17 @@ class API::RestfulController < API::BaseController
     authorize! :show, @discussion
   end
 
+  def load_and_authorize_motion
+    if params[:motion_id]
+      @motion = Motion.find(params[:motion_id])
+    elsif params[:motion_key]
+      @motion = Motion.find_by_key!(params[:motion_key])
+    elsif params[:id]
+      @motion = Motion.friendly.find(params[:id])
+    end
+    authorize! :show, @motion
+  end
+
   def collection
     instance_variable_get :"@#{resource_plural}"
   end
