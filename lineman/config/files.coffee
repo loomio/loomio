@@ -2,10 +2,15 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
   ngtemplates:
     dest: "generated/angular/template-cache.js"
 
+  sass:
+    app:   ['app/**/*.scss']
+
   css:
-    app: ['app/css/main.css']
+    app:    ['generated/css/main.css']
     vendor: ['vendor/bower_components/components-font-awesome/css/font-awesome.css',
              'vendor/bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css']
+  coffee:
+    app: "app/**/*.coffee"
 
   js:
     vendor: ["vendor/bower_components/lodash/dist/lodash.js",
@@ -30,13 +35,5 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/js/private_pub.js",
              "vendor/bower_components/angular-animate/angular-animate.js",
              "vendor/bower_components/lokijs/src/lokijs.js"]
-    app: ["app/js/app.js"
-          "app/js/**/*.js"]
-
-  #webfonts:
-    #vendor: ['vendor/bower_components/components-font-awesome/fonts/FontAwesome.otf',
-             #'vendor/bower_components/components-font-awesome/fonts/fontawesome-webfont.eot',
-             #'vendor/bower_components/components-font-awesome/fonts/fontawesome-webfont.svg',
-             #'vendor/bower_components/components-font-awesome/fonts/fontawesome-webfont.ttf',
-             #'vendor/bower_components/components-font-awesome/fonts/fontawesome-webfont.woff']
-    #root: 'fonts'
+    app: ["app/app.js"
+          "app/**/*.js"]

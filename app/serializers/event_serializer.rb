@@ -7,6 +7,7 @@ class EventSerializer < ActiveModel::Serializer
   has_one :proposal, serializer: MotionSerializer, root: 'proposals'
   has_one :vote, serializer: VoteSerializer
   has_one :actor, serializer: UserSerializer, root: 'users'
+  has_one :membership_request, serializer: MembershipRequestSerializer, root: 'membership_requests'
 
   def group_kinds
     ['new_discussion', 'user_added_to_group', 'membership_request', 'membership_request_approved']
@@ -50,6 +51,14 @@ class EventSerializer < ActiveModel::Serializer
 
   def include_proposal?
     proposal_kinds.include? object.kind
+  end
+
+  def include_membership_request?
+    ['membership_requested', 'membership_request_approved'].include? object.kind
+  end
+
+  def membership_request
+    object.eventable
   end
 
   def vote_kinds

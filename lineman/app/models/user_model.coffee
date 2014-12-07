@@ -1,0 +1,60 @@
+angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
+  class UserModel extends BaseModel
+    @singular: 'user'
+    @plural: 'users'
+
+    initialize: (data) ->
+      @id = data.id
+      @name = data.name
+      @label = data.username
+      @profileUrl = data.profile_url
+      @avatarKind = data.avatar_kind
+      @avatarUrl = data.avatar_url
+      @avatarInitials = data.avatar_initials
+
+    setupViews: ->
+      @membershipsView = @recordStore.memberships.belongingTo(userId: @id)
+      @notificationsView = @recordStore.notifications.belongingTo(userId: @id)
+
+    groupIds: ->
+      _.map(@memberships(), 'groupId')
+
+    membershipFor: (group) ->
+      _.first @recordStore.memberships
+                          .where(groupId: group.id, userId: @id)
+
+    memberships: ->
+      @membershipsView.data()
+
+    inboxDiscussions: ->
+      @recordStore.discussions.where(groupId: {$in: @groupIds()})
+
+    notifications: ->
+      @notificationsView.data()
+
+    groups: ->
+      @recordStore.groups.where(id: {'$in': @groupIds()})
+
+    canEditComment: (comment) ->
+      @isAuthorOf(comment) && comment.group().membersCanEditComments
+
+    canDeleteComment: (comment) ->
+      @isAuthorOf(comment) or @isAdminOf(comment.group())
+
+    canEditDiscussion: (discussion) ->
+      @isAuthorOf(discussion) or
+      @isAdminOf(discussion.group()) or
+      discussion.group().membersCanEditDiscussions
+
+    canStartProposals: (discussion) ->
+      @isAdminOf(discussion.group()) or
+      discussion.group().membersCanRaiseProposals
+
+    isAuthorOf: (object) ->
+      @id == object.authorId
+
+    isAdminOf: (group) ->
+      _.contains(group.adminIds(), @id)
+
+    isMemberOf: (group) ->
+      _.contains(group.memberIds(), @id)
