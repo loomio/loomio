@@ -1,2 +1,2 @@
-angular.module('loomioApp').controller 'proposalCollapsedController', ($scope) ->
+angular.module('loomioApp').controller 'ProposalCollapsedController', ($scope) ->
 

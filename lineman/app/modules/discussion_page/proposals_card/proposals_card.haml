@@ -2,9 +2,9 @@
   %h3.first Proposal
 
   %div{ng_repeat: 'proposal in discussion.proposals()'}
-    .active-proposal{ng-show: 'isSelectedProposal(proposal)'}
-      %proposal_card{proposal: 'proposal'}
+    .active-proposal{ng-show: 'isExpanded(proposal)'}
+      %proposal_expanded{proposal: 'proposal'}
       %h3{ng-show: "discussion.proposals().length > 1"} Previous proposals
 
-    .inactive-proposal{ng-hide: 'isSelectedProposal(proposal)', ng_click: 'setSelectedProposal(proposal)'}
-      %proposal_card_collapsed{proposal: 'proposal'}
+    .inactive-proposal{ng-hide: 'isExpanded(proposal)', ng_click: 'expand(proposal)'}
+      %proposal_collapsed{proposal: 'proposal'}

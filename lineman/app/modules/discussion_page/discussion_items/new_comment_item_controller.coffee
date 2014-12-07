@@ -39,14 +39,14 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
 
   $scope.editComment = ->
     modalInstance = $modal.open
-      templateUrl: 'generated/modules/discussion_page/comment/edit_comment.html'
+      templateUrl: 'generated/modules/discussion_page/comment_form/edit_comment.html'
       controller: 'EditCommentController'
       resolve:
         comment: -> $scope.comment.copy()
 
   $scope.deleteComment = ->
     modalInstance = $modal.open
-      templateUrl: 'generated/modules/discussion_page/comment/delete_comment.html'
+      templateUrl: 'generated/modules/discussion_page/comment_form/delete_comment.html'
       controller: 'DeleteCommentController'
       resolve:
         comment: -> $scope.comment.copy()

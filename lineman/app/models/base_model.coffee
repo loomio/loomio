@@ -6,6 +6,7 @@ angular.module('loomioApp').factory 'BaseModel', ->
     constructor: (recordsInterface, data) ->
       Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: false)
       Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: false)
+      Object.defineProperty(@, 'restfulClient', value: recordsInterface.restfulClient, enumerable: false)
       @initialize(data)
       @setupViews() if @setupViews? and @id?
 
@@ -18,17 +19,23 @@ angular.module('loomioApp').factory 'BaseModel', ->
     isNew: ->
       not @id?
 
+    keyOrId: ->
+      if @key?
+        @key
+      else
+        @id
+
     save: ->
       if @isNew()
-        @restfulClient.create(record.serialize())
+        @restfulClient.create(@serialize())
       else
-        @restfulClient.update(record.keyOrId(), record.serialize())
+        @restfulClient.update(@keyOrId(), @serialize())
 
     destroy: ->
-      @restfulClient.destroy(record.id)
+      @restfulClient.destroy(@keyOrId())
 
     update: (record) ->
-      @restfulClient.update(record.id, record.serialize())
+      @restfulClient.update(@keyOrId(), @serialize())
 
     copy: =>
       cloner = ->

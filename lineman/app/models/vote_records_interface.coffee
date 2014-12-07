@@ -2,8 +2,8 @@ angular.module('loomioApp').factory 'VoteRecordsInterface', (BaseRecordsInterfac
   class VoteRecordsInterface extends BaseRecordsInterface
     model: VoteModel
 
-    fetchMyVotesByDiscussion: (discussion, success, failure) ->
+    fetchMyVotesByDiscussion: (discussion) ->
       @restfulClient.get('my_votes', discussion_key: discussion.key)
 
-    fetchByProposal: (proposal, success, failure) ->
+    fetchByProposal: (proposal) ->
       @restfulClient.getCollection(motion_id: proposal.id)

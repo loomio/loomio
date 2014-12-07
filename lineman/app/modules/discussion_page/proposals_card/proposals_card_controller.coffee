@@ -2,12 +2,13 @@ angular.module('loomioApp').controller 'ProposalsCardController', ($scope, Recor
   Records.proposals.fetchByDiscussion $scope.discussion
   Records.votes.fetchMyVotesByDiscussion $scope.discussion
 
-  $scope.isSelectedProposal = (proposal) ->
-    if $scope.selectedProposal? and proposal?
-      $scope.selectedProposal.id == proposal.id
+  $scope.isExpanded = (proposal) ->
+    if $scope.expandedProposal? and proposal?
+      $scope.expandedProposal.id == proposal.id
 
-  $scope.setSelectedProposal = (proposal) ->
-    $scope.selectedProposal = proposal
+  $scope.expand = (proposal) ->
+    Records.votes.fetchByProposal(proposal)
+    $scope.expandedProposal = proposal
 
   if $scope.discussion.activeProposal()?
-    $scope.setSelectedProposal $scope.discussion.activeProposal()
+    $scope.expand($scope.discussion.activeProposal())

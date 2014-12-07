@@ -112,15 +112,19 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
   watch:
     ngtemplates:
       files: "app/**/*.haml"
-      tasks: ["haml", "ngtemplates", "concat_sourcemap:js"]
-
-    js:
-      files: ["<%= files.js.vendor %>", "<%= files.js.app %>"]
-      tasks: ["concat_sourcemap:app"]
+      tasks: ["haml", "ngtemplates", "concat_sourcemap:app"]
 
     coffee:
       files: "<%= files.coffee.app %>"
       tasks: ["coffee", "concat_sourcemap:app"]
+
+    appjs:
+      files: ["<%= files.js.app %>"]
+      tasks: ["concat_sourcemap:app"]
+
+    vendorjs:
+      files: ["<%= files.js.vendor %>"]
+      tasks: ["concat_sourcemap:vendor"]
 
     jsSpecs:
       files: ["<%= files.js.specHelpers %>", "<%= files.js.spec %>"]
