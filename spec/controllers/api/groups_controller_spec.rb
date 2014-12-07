@@ -24,7 +24,7 @@ describe API::GroupsController do
         parent_id
         created_at
         members_can_edit_comments
-        members_can_raise_motions
+        members_can_raise_proposals
         members_can_vote])
     end
   end

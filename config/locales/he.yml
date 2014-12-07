@@ -2,8 +2,8 @@ he:
   users:
     email_preferences:
       edit:
-        title: 'העדפות דואל'
-        when_do_you_want_emails: 'שלח לי דואל:'
+        title: 'העדפות דוא״ל'
+        when_do_you_want_emails: 'שלח לי דוא״ל:'
         email_missed_yesterday: "'אתמול בLoomio' - סיכום יומי של הפעילויות שהחמצתי"
         email_when_mentioned: "כשאני @מאוזכר"
         email_followed_threads: "כשיש פעילות בשיחות שאני עוקב"
@@ -26,7 +26,7 @@ he:
         blank: "לא יכול להיות ריק"
   errors:
     messages:
-      email: "כתובת דואל לא תקינה"
+      email: "כתובת דוא\"ל לא תקינה"
   attachment:
     error:
       too_large: "לא ניתן לצרף קובץ הגדול מ50 מגה-בייטים. נא לבחור קובץ קטן יותר"
@@ -57,7 +57,7 @@ he:
     discussion_not_moved: "אין לך הרשאות להעביר את השיחה ל%{destination_group.name}"
     group_not_archived: "לא ניתן לארכב קבוצה זו"
     invalid_close_date: "תאריך סגירה לא תקין, נא לוודא כי התאריך עתידי."
-    invalid_email: "נא להזין לפחות כתובת דואל תקינה אחת"
+    invalid_email: "נא להזין לפחות כתובת דוא\"ל תקינה אחת"
     image_upload_fail: "לא ניתן לטעון תמונה. נא לוודא שגודל הקובץ קטן מ1 מגהבייט ומסוג .jpeg, .png, או .gif "
     motion_closing_inputs: "תאריך סגירה לא חוקי"
     motion_outcome_not_created: "לא ניתן לפרסם תוצאה."
@@ -73,16 +73,16 @@ he:
     group_already_setup: "הקבוצה הזאת כבר קיימת."
     passwords_did_not_match: "הסיסמאות לא מתאימות"
     proposal_already_exists: "כבר יש הצעה פתוחה בדיון הזה."
-    user_with_email_address_already_in_group: "משתמש עם דואל שציינת כבר שייך לקבוצה זאת."
+    user_with_email_address_already_in_group: "משתמש עם דוא\"ל שציינת כבר שייך לקבוצה זאת."
     you_have_already_requested_membership: "כבר ביקשתם חברות לקבוצה זו."
     you_are_already_a_member_of_this_group: "אתם כבר שייכים לקבוצה זו."
     not_found: "הפריט לא נמצא. ייתכן ונמחק."
   alert:
     duplicate_email: "%{which_email} כבר בקבוצה."
   notice:
-    new_contacts_imported: "זה עבד! ניתן להזין שמות לשדה ואנחנו נציע כתובת דואל."
+    new_contacts_imported: "זה עבד! ניתן להזין שמות לשדה ואנחנו נציע כתובת דוא״ל."
     admin_rights_removed: "זכויות המתאם של %{which_user} הוסרו."
-    user_added: "%{user_email_or_name} כבר התווספ/ה לקבוצה"
+    user_added: "%{user_email_or_name} כבר בקבוצה"
     new_user_added: "%{user_email_or_name} יתווסף/תתווסף לקבוצה אחרי שהם ייצרו חשבון בLoomio."
     member_removed: "המתשתמש הוסר."
     membership_approved: "השתייכות אושרה."
@@ -128,7 +128,7 @@ he:
     discussion_created: "הדיון נוצר בהצלחה."
     discussion_deleted: "הדיון נמחק בהצלחה."
     discussion_moved: "הדיון הועבר בהצלחה ל%{group_name}."
-    emails_sending: "הדואל נשלח כעת."
+    emails_sending: "הדוא״ל נשלח כעת."
     group_archived: "הקבוצה אורכבה בהצלחה."
     group_created: "הקבוצה נוצרה בהצלחה."
     members_added: "משתתפים התווספו לקבוצה."
@@ -225,7 +225,7 @@ he:
   empty_notifications: "אין לך התרעות כרגע."
   see_all_notifications: "צפו בכל ההתרעות"
   profile: "פרופיל"
-  email_settings: "הגדרות דואל"
+  email_settings: "הגדרות דוא״ל"
   sign_out: "התנתקות"
   sign_in: "התחברות"
   honeypot_warning: "לא ניתן לייצר חשבון. עבור קוראי-מסך, יש לוודא שהשדה האחרון (הנסתר) נשאר ריק."
@@ -246,15 +246,52 @@ he:
   prompt_visitor_to_authenticate:
     header: "התחברו או הצטרפו לקבוצה כדי להשתתף"
     body: "אם אתם חברים בקבוצה זו, עליכם להתחבר על מנת להשתתף."
+  prompt_user_to_join:
+    header: "הצטרפות לקבוצה כדי להשתתף"
+  user_profile:
+    back: "חזרה לפרופיל שלי"
+    change_password: "שינוי סיסמא"
+    deactivate_account: "השהיית חשבון"
+    about_deactivation: "מה הכוונה?"
+    confirm_account_deactivation: "בטוחים שאתם מעוניינים להשהות את החשבון?"
+    reactivation_html: "יש <a href='%{link}'>ליצור עמנו קשר</a> על מנת להפעיל מחדש את החשבון"
+    deactivation:
+      title: "משהה חשבון"
+      query: "נשמע לדעת מדוע בחרת להשהות את החשבון שלך"
+      only_coordinator: "כל קבוצה חייבת לפחות מתאם אחד. כרגע את/ה המתאם היחידי לקבוצות הבאות:"
+      instructions: "על מנת להשהות את החשבון יש להוסיף מתאמים נוספים לקבוצות או להשהות אותן"
+      info_title: "מה משמעות השהיית החשבון?"
   group_form:
+    name: "שם הקבוצה"
+    description: "תיאור"
+    category: "קרטגוריה"
     members_can:
       start_discussions: התחלת דיונים
+      create_subgroups: צרו תת-קבוצה
   group_permissions:
     c11: התחלת דיונים.
   setup_step_2: "התחילו בדיון הראשון שלכם"
+  join_group_btn: הצטרפו לקבוצה
+  cancel_membership_request: "ביטול בקשה"
+  subgroups: "תת-קבוצות"
+  create_a_subgroup: "צרו תת-קבוצה"
+  new_subgroup: "תת-קבוצה חדשה"
+  create_subgroup: "צרו תת-קבוצה"
+  new_group: "קבוצה חדשה"
   start_a_discussion: "התחלת דיון"
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> הסכימ/ה להצעה."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> לא הסכימ/ה להצעה."
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> הסכימ/ה להצעה."
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> לא הסכימ/ה להצעה."
+  discussion_items:
+    new_motion: "יצר/ה הצעה"
+  discussion_context:
+    started_html: "התחיל לפני %{when} על ידי <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    last_edited_html: "נערך לאחרונה לפני %{when} על ידי <a href='%{link}' class='%{link_class}'>%{who}</a>"
   description_history:
     subheader: "גירסא"
+    edited_by: "נערך לפני כ%{when} על ידי %{who}"
     current: "(נוכחי)"
     restore: "(שחזור גירסא)"
     applying_changes: "(מחיל שינויים...)"
@@ -263,6 +300,14 @@ he:
   comment_form_placeholder: "תגידו משהו..."
   comment_form_submit_button: "שלחו תגובה"
   delete_comment: "מחקו תגובה"
+  confirm_delete_comment: "למחוק את התגובה? בטוחים?"
+  markdown_settings_more_info: "מידע נוסף..."
+  proposal_closed_when: "נסגר לפני %{when}"
+  proposed_when_by_who: "הוצע על ידי %{who} לפני %{when}"
+  position_verbs:
+    past_tense:
+      'yes': "הסכימו"
+      'no': "לא הסכימו"
   help:
     start_discussion: "מתחיל בדיון מרתק"
   hint:
@@ -271,6 +316,38 @@ he:
     new:
       header: "התחילו בדיון"
       who: "באיזו קבוצה תרצו להתחיל את הדיון?"
+  group_setup:
+    payment_model:
+      header: Loomio הוא לכולם!
+  simple_form:
+    'yes': 'כן'
+    'no': 'לא'
+    required:
+      mark: '*'
+    labels:
+      discussion:
+        title: "כותרת"
+        description: "קונטקסט"
+      membership_request:
+        introduction: "הצג/י את עצמך"
+      motion:
+        name: "תואר"
+        description: "פרטים"
+        close_at_date: "סוגר"
+      user:
+        name: "שם מלא"
+        email: "דוא״ל"
+        password: "סיסמא"
+        password_confirmation: "סיסמא בשנית"
+        language_preference: "שפה"
+      group_request:
+        admin_name: "מה שמך?"
+        admin_email: "מה הדואל שלך?"
+        name: "מה שם הקבוצה שלך?"
+    placeholders:
+      user:
+        email: "דוא״ל"
+        password: "סיסמא"
   helpers:
     submit:
       discussion:
@@ -278,4 +355,53 @@ he:
   email:
     create_discussion:
       intro: "%{who} התחילו דיון ב%{which_group}:"
+    create_proposal:
+      intro: "הצעה חדשה נוצרה בקבוצה אליה את/ה משויכ/ת."
+    missed_yesterday:
+      subject: "אתמול בLoomio"
+      mark_as_read: סמן כנקרא
+    invitation:
+      hi: "שלום %{name},"
+    new_motion_created:
+      context: "%{author} יצר/ה הצעה ב %{group_full_name}:"
+    verification:
+      header: "כמעט סיימת!"
+  about_loomio: "אודות Loomio"
+  ago: "לפני %{quantity_of_time}"
+  approve: "אישור"
+  author: "מחבר"
+  back: "חזרה"
+  cancel: "ביטול"
+  change: "שינוי"
+  change_language: "לחצו כאן להשתמש בLoomi ב%{language}"
+  changing: "משנה"
+  click_here: "הקליקו כאן"
+  close: "סגירה"
+  closing: "סוגר"
+  closed: "סגור"
+  coordinator: "מתאם"
+  decisions: "החלטות"
+  delete: "מחיקה"
+  details: "פרטים"
+  discussions: "דיונים"
+  edit: "עריכה"
+  email_address: "כתובת דואל"
+  enable: "הפעלה"
+  participation: "השתתפות"
+  disable: "השבתה"
+  group: "קבוצה"
+  group_admin: "מתאם קבוצה"
+  home: "בית"
+  id: "id"
+  like: "אהבתי"
+  loading: "טוען..."
+  message: "הודעה"
+  name: "שם"
+  new_activity: "פעילות חדשה"
+  next: "הבא"
+  other: "אחר"
+  outcome: "תוצאה"
   translate: "עזרו בתרגום Loomio!"
+  common:
+    not_following: ללא מעקב
+    edited: נערך
