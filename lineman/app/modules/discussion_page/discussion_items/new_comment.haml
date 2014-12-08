@@ -11,7 +11,7 @@
     .media-left
       %user_avatar{user: "comment.author()"}
     .media-body
-      %span{ng-show: 'comment.parentId', translate: 'new_comment_item.in_reply_to', translate-values: '{author: comment.authorName(), recipient: comment.parentAuthorName()}'}
+      %span.cuke-in-reply-to{ng-show: 'comment.parentId', translate: 'new_comment_item.in_reply_to', translate-values: '{author: comment.authorName(), recipient: comment.parentAuthorName()}'}
       %span{ng-hide: 'comment.parentId'}
         %strong {{::comment.authorName()}}
   .thread-event-body{btf-markdown: 'comment.body' }
@@ -23,10 +23,10 @@
 
   .thread-event-footer
     .thread-actions-and-meta
-      %a{translate: 'common.action.like', ng-show: '!currentUserLikesIt()', href: '#', ng_click: 'like()'}>
+      %a.cuke-comment-like-btn{translate: 'common.action.like', ng-show: '!currentUserLikesIt()', href: '#', ng_click: 'like()'}>
       %a{translate: 'common.action.unlike', href: '#', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
       ·
-      %a{translate: 'common.action.reply', href: '#', ng_click: 'reply()'}>
+      %a.cuke-comment-reply-btn{translate: 'common.action.reply', href: '#', ng_click: 'reply()'}>
       ·
       %timeago{timestamp: 'comment.createdAt' }>
 
