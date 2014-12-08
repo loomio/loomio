@@ -1,15 +1,15 @@
-.proposal-card-collapsed
+.proposal-collapsed
   %a.media{href: "#"}
     %timeago.pull-right{timestamp: 'proposal.createdAt'}
-    .proposal-card-collapsed-expand.pull-right Expand
+    .proposal-collapsed-expand.pull-right Expand
     %mini-proposal-pie-chart.media-left{proposal: 'proposal'}
-    .proposal-card-collapsed-body.media-body
-      .proposal-card-collapsed-title
-        %h2.first.proposal-card-name {{proposal.name}}
+    .proposal-collapsed-body.media-body
+      .proposal-collapsed-title
+        %h2.first {{proposal.name}}
         / %span.proposal-closed{ng_show: 'proposal.closedAt'}
       / .proposal-card-vote{ng_show: 'currentUserHasVoted()'}
       /   .media-left.thread-event-vote-icon{class: 'thread-event-vote-icon-{{currentUserVote().position}}'}
       /   .proposal-card-vote-statement {{ currentUserVote().statement }}
-      .proposal-card-collapsed-outcome{ng_show: 'proposal.outcome'}
+      .proposal-collapsed-outcome{ng_show: 'proposal.outcome'}
         Outcome: {{proposal.outcome}}
     .clearfix

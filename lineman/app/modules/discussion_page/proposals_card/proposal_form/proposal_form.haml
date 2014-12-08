@@ -1,16 +1,15 @@
-%form{ng-submit: 'submit()'}
+%form.proposal-form{ng-submit: 'submit()'}
   .modal-header
     %button{type: 'button', class: 'close', ng-click: 'cancel($event)'}
       %span{aria-hidden: true} &times;
       %span.sr-only{translate: 'common.action.cancel'}
     %h1{ng-if: 'proposal.isNew()', translate: 'proposal_form.start_a_proposal'}
-    %h1{ng-if: '!proposal.isNew()', translate: 'proposal_form.edit_a_proposal', translate-value-proposal-name: '{{::proposal.name}}'}
+    %h1{ng-if: '!proposal.isNew()', translate: 'proposal_form.edit_a_proposal', translate-value-proposal-name: '{{proposal.name}}'}
 
   .modal-body
-    %flash{modal: 'true'}
     %p{ng-if: 'proposal.isNew()', translate: 'proposal_form.what_does_a_proposal_do'}
 
-    %fieldset{ng-disabled: 'isUneditable()'}
+    %fieldset{ng-disabled: 'isDisabled || proposal.hasVotes()'}
       .form-group
         %label{for: 'proposal-title-field', translate: 'proposal_form.title_label'}
         %input#proposal-title-field.form-control{placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: 'proposal.name', ng-required: 'false'}
@@ -27,9 +26,9 @@
           %span.input-group-addon
             %i.fa.fa-calendar
         .dropdown-menu{role: 'menu'}
-          %datetimepicker{ng-model: 'proposal.closingAt', data-datetimepicker-config: "{ startView:'day', minView:'hour'}", on-set-time: 'onSetTime()'}
+          %datetimepicker{ng-model: 'proposal.closingAt', data-datetimepicker-config: "{ startView:'day', minView:'hour'}", on-set-time: 'closeDateTimePicker()'}
 
   .modal-footer
     %button.btn.btn-primary.cuke-start-proposal-btn{ng-if: 'proposal.isNew()', type: 'submit', translate: 'proposal_form.start_proposal'}
-    %button.btn.btn-primary{ng-if: '!proposal.isNew()', type: 'submit', translate: 'proposal_form.edit_proposal'}
-    %button.btn.btn-warning{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}
+    %button.btn.btn-primary{ng-if: '!proposal.isNew()', type: 'submit', translate: 'common.action.save'}
+    %button.btn.btn-warning.cuke-cancel-proposal-btn{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}

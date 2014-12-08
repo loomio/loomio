@@ -2,13 +2,15 @@ angular.module('loomioApp').controller 'ProposalsCardController', ($scope, Recor
   Records.proposals.fetchByDiscussion $scope.discussion
   Records.votes.fetchMyVotesByDiscussion $scope.discussion
 
+  # if no selected proposal then any active proposal should be expanded
+  # if selected proposal then that should be expanded
+  # if no active or selected proposal... then all should be collapsed
   $scope.isExpanded = (proposal) ->
-    if $scope.expandedProposal? and proposal?
-      $scope.expandedProposal.id == proposal.id
+    if $scope.selectedProposal?
+      proposal.id == $scope.selectedProposal.id
+    else
+      proposal.isActive()
 
-  $scope.expand = (proposal) ->
-    Records.votes.fetchByProposal(proposal)
-    $scope.expandedProposal = proposal
-
-  if $scope.discussion.activeProposal()?
-    $scope.expand($scope.discussion.activeProposal())
+  $scope.selectProposal = (proposal) ->
+    #Records.votes.fetchByProposal(proposal)
+    $scope.selectedProposal = proposal

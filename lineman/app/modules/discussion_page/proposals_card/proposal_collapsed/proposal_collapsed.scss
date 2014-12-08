@@ -1,4 +1,4 @@
-.proposal-card-collapsed{
+.proposal-collapsed{
   a{
     display: block;
     color: $primary-text-color;
@@ -10,14 +10,14 @@
     text-decoration: none;
   }
 }
-.proposal-card-collapsed h2{
+.proposal-collapsed h2{
   font-size: 18px;
   line-height: 20px;
 }
-.proposal-card-collapsed-outcome{
+.proposal-collapsed-outcome{
   color: $meta-text-color;
 }
-.proposal-card-collapsed-expand{
+.proposal-collapsed-expand{
   clear: both;
   margin-top: 1em;
   @include metaText;
