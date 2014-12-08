@@ -1,14 +1,10 @@
-.proposal-card {
+.proposal-expanded {
   background-color: #fff;
 }
 
-.proposal-card-started-by {
+.proposal-expanded-started-by {
   @include metaText;
   margin-bottom: 5px;
-}
-
-.proposal-card-edit {
-  position: relative;
 }
 
 .pie-chart-pie {

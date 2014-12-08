@@ -1,7 +1,7 @@
-.proposal-card.proposal-expanded{ng-show: 'proposal'}
-  %proposal_card_dropdown{proposal: 'proposal'}
+.proposal-expanded{ng-show: 'proposal'}
+  %proposal_actions_dropdown{proposal: 'proposal'}
   %h2 {{::proposal.name}}
-  .proposal-card-started-by
+  .proposal-expanded-started-by
     %span{translate: 'proposal_card.started_by', translate-values: '::{name: proposal.authorName()}'}
     %span.time-ago>
       {{discussion.createdAt | timeFromNowInWords}}
@@ -11,7 +11,7 @@
     / %span.time-ago>
     /   {{proposal.closingAt | exactDateWithTime }}
     .badge.pull-right{ng-show: 'proposal.closedAt'} Closed
-  .proposal-card-description{btf-markdown: 'proposal.description' }
+  .proposal-expanded-description{btf-markdown: 'proposal.description' }
 
 
   .pie-chart.media
@@ -23,14 +23,14 @@
 
   %vote_form{proposal: 'proposal'}
 
-  .proposal-card-votes
+  .proposal-expanded-votes
     %h4 Positions
-    .proposal-card-no-votes{ng-show: 'onlyVoterIsYou()', translate: 'proposal_card.only_voter_is_you'}
+    .proposal-expanded-no-votes{ng-show: 'onlyVoterIsYou()', translate: 'proposal_card.only_voter_is_you'}
 
-    .proposal-card-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_card.no_votes_yet'}
+    .proposal-expanded-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_card.no_votes_yet'}
 
-    -#.proposal-card-vote.media{ng_repeat: 'vote in curatedVotes()'}
-    .proposal-card-vote.media{ng_repeat: 'vote in curatedVotes()'}
+    -#.proposal-expanded-vote.media{ng_repeat: 'vote in curatedVotes()'}
+    .proposal-expanded-vote.media{ng_repeat: 'vote in curatedVotes()'}
       .media-left
         .thread-event-vote-icon{class: 'thread-event-vote-icon-{{vote.position}}'}
       .media-body

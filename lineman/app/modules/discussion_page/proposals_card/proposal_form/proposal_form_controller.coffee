@@ -1,10 +1,17 @@
-angular.module('loomioApp').controller 'ProposalFormController', ($scope, $modalInstance, proposal, FormService) ->
+angular.module('loomioApp').controller 'ProposalFormController', ($scope, $modalInstance, proposal, FlashService) ->
   $scope.proposal = proposal
-  proposalHasVotes = proposal.votes()?
 
-  FormService.applyForm $scope, proposal, $modalInstance
+  $scope.closeDateTimePicker = ->
+    $scope.dropdownIsOpen = false
 
-  $scope.onSetTime = -> $scope.dropdownIsOpen = false
+  $scope.submit = ->
+    $scope.isDisabled = true
+    proposal.save().then (records) ->
+      FlashService.success 'proposal_form.messages.proposal_created'
+      $modalInstance.close()
+    , (errors) ->
+      $scope.formErrors = errors
+      $scope.isDisabled = false
 
-  $scope.isUneditable = -> $scope.isDisabled or proposalHasVotes
-
+  $scope.cancel = ->
+    $modalInstance.dismiss()

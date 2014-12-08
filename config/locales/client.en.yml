@@ -6,6 +6,7 @@ en:
       public: 'Public'
       organization: 'Organization'
     action:
+      save: 'Save'
       reply: 'Reply'
       edit: 'Edit'
       like: 'Like'
@@ -80,7 +81,7 @@ en:
 
   proposal_form:
     messages:
-      new_proposal: 'Successfully created your proposal'
+      proposal_created: 'Successfully created your proposal'
       update_proposal: 'Changes saved'
     start_proposal: 'Start proposal'
     start_a_proposal: 'Start a proposal'
