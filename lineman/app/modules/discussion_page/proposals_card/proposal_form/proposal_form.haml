@@ -30,6 +30,6 @@
           %datetimepicker{ng-model: 'proposal.closingAt', data-datetimepicker-config: "{ startView:'day', minView:'hour'}", on-set-time: 'onSetTime()'}
 
   .modal-footer
-    %button.btn.btn-primary{ng-if: 'proposal.isNew()', type: 'submit', translate: 'proposal_form.start_proposal'}
+    %button.btn.btn-primary.cuke-start-proposal-btn{ng-if: 'proposal.isNew()', type: 'submit', translate: 'proposal_form.start_proposal'}
     %button.btn.btn-primary{ng-if: '!proposal.isNew()', type: 'submit', translate: 'proposal_form.edit_proposal'}
     %button.btn.btn-warning{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}

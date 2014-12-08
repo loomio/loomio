@@ -46,22 +46,17 @@ To run the integration tests, you'll need Protractor and Webdriver-manager
   `$ npm install -g protractor`
   `$ webdriver-manager update --standalone`
 
-## Running the cucmber tests
+## Running e2e tests
 
-To run the cucumber tests, you need a bit of environment running. It's
+To run the e2e tests, you need a bit of environment running. It's
 probably easiest if you run these each in their own terminal window.
 
-  From the project root:
+  From the loomio folder:
   `$ rails s`
 
-  From the lineman folder:
+  From the loomio/lineman folder:
   `$ lineman run`
   `$ webdriver-manager start`
 
   Then finally to run the tests:
-  `$ lineman grunt cucumberjs`
-
-  grunt-cucumberjs does not support the coffeescript flag in the
-  latest version of cucumber.js Sooo.. rather than the above line..
-  I have an alias for: 'node node_modules/cucumber/bin/cucumber.js --require features/step_definitions --coffee'
-  In my shell profile, so I can run the cukes with "cjs" from the command line in my workflow and get coffeescript pending step definitations
+  `$ lineman grunt spec-e2e`
