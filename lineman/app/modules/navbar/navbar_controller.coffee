@@ -2,11 +2,7 @@ angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Reco
   $scope.showInbox = false
 
   $scope.openDiscussionForm = ->
-    modalInstance = $modal.open
-      templateUrl: 'modules/discussion_page/discussion_form'
-      controller: 'DiscussionFormController'
-      resolve:
-        discussion: -> Records.discussions.initialize()
+    DiscussionFormService.openNewDiscussionModal()
 
   $scope.toggleInbox = (open) -> $scope.showInbox = open
 

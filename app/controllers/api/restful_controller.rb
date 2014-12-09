@@ -21,9 +21,9 @@ class API::RestfulController < API::BaseController
 
   def create
     instantiate_resouce
-    service.create({resource_symbol => resource,
+    @event = service.create({resource_symbol => resource,
                     actor: current_user})
-    respond_with_resource
+    respond_with_resource_or_event
   end
 
   def update
@@ -122,6 +122,14 @@ class API::RestfulController < API::BaseController
 
   def respond_with_collection
     render json: collection, root: serializer_root
+  end
+
+  def respond_with_resource_or_event
+    if resource.valid? and @event and @event.is_a? Event
+      render json: [@event], each_serializer: EventSerializer, root: 'events'
+    else
+      respond_with_resource
+    end
   end
 
   def respond_with_resource
