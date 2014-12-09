@@ -17,7 +17,7 @@ angular.module('loomioApp').factory 'FormService', (FlashService) ->
 
       scope.submit = ->
         scope.isDisabled = true
-        object.save success, failure
+        object.save().then(success, failure)
 
       if modal?
         scope.onSuccess = ->
