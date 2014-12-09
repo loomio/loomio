@@ -3,7 +3,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
     dest: "generated/angular/template-cache.js"
 
   sass:
-    app:   ['app/**/*.scss']
+    app:   ['app/modules/**/*.scss']
 
   css:
     app:    ['generated/css/main.css']

@@ -1,0 +1,91 @@
+#sidebar .selector-list{
+ height: 100%;
+ overflow: scroll;
+ position: fixed;
+ width: 320px;
+ background: white;
+ border: 1px solid $thread-border-color;
+}
+#sidebar .selector-list{
+  padding-top: 54px;
+}
+
+.selector-list{
+  list-style-type: none;
+  padding: 0;
+}
+.dropdown-menu .selector-list{
+  max-height: 600px;
+  overflow-y:scroll;
+}
+.selector-list-header {
+  padding: 0 15px;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+.selector-list-item {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  @media (max-width: 320px){ padding: 15px 20px; }
+  width: 100%;
+  clear: both;
+}
+.selector-list-item-link{
+  display: block;
+  margin: -8px;
+  padding: 8px;
+  color: $primary-text-color;
+}
+.selector-list-item-link:hover{
+  display: block;
+  text-decoration: none;
+  background-color: $list-hover-color;
+}
+.selector-list .media{ margin-top: 0; }
+.selector-list .media-left { margin-right: 8px; }
+.selector-list-item.is-active{
+  background-color: $item-highlight-color;
+  border-left: 4px solid $loomio-orange;
+}
+.is-subgroup-true .selector-list-item-link{
+  padding-left: 40px;
+}
+.selector-list-item.is-read{
+  background-color: $light-grey;
+}
+.selector-list-item-proposal {
+  margin: 5px 0;
+  .time-left {
+    color: #FAA82C;
+    @include fontHelvetica;
+    @include fontSmall;
+  }
+}
+.selector-list-item-discussion-title {
+  color: $text-color;
+  @include fontHelvetica;
+  @include fontMedium;
+  margin-bottom: 5px;
+}
+.is-unread .selector-list-item-discussion-title{
+  font-weight: bold;
+}
+a .selector-list-item-proposal-details {
+  color: $meta-text-color;
+  @include fontHelvetica;
+  @include fontSmall;
+  margin-bottom: 5px;
+  line-height: 16px;
+}
+.selector-list-item-group-name{
+  vertical-align: middle;
+}
+.selector-list-item-group-logo{
+  width: 32px;
+  height: 32px;
+}
+.selector-list-item-thread-group-name{
+  color: $meta-text-color;
+  @include fontHelvetica;
+  @include fontSmall;
+}
