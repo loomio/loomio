@@ -12,9 +12,9 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient) ->
 
       @restfulClient.onFailure = (response) ->
         console.log('request failure!', response)
-        response
+        throw response
 
-    initialize: (data) ->
+    initialize: (data = {}) ->
       if data.key?
         existingRecord = @find(data.key)
       else if data.id?

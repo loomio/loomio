@@ -6,18 +6,18 @@ describe 'Discussion Page', ->
   beforeEach ->
     page.load()
 
-  #it 'add a comment', ->
-    #page.addComment('hi this is my comment')
-    #expect(page.mostRecentComment().getText()).toContain('hi this is my comment')
+  it 'add a comment', ->
+    page.addComment('hi this is my comment')
+    expect(page.mostRecentComment().getText()).toContain('hi this is my comment')
 
-  #it 'reply to a comment', ->
-    #page.addComment('original comment right heerrr')
-    #page.mostRecentComment().element(By.css('.cuke-comment-reply-btn')).click()
-    #page.addComment('hi this is my comment')
-    #expect(page.mostRecentComment().element(By.css('.cuke-in-reply-to')).getText()).toContain('in reply to')
+  it 'reply to a comment', ->
+    page.addComment('original comment right heerrr')
+    page.mostRecentComment().element(By.css('.cuke-comment-reply-btn')).click()
+    page.addComment('hi this is my comment')
+    expect(page.mostRecentComment().element(By.css('.cuke-in-reply-to')).getText()).toContain('in reply to')
 
-  #it 'like a comment', ->
-    #page.addComment('hi')
-    #page.mostRecentComment().element(By.css('.cuke-comment-like-btn')).click()
-    #expect(element(By.css('.thread-liked-by-sentence')).getText()).toContain('You like this.')
+  it 'like a comment', ->
+    page.addComment('hi')
+    page.mostRecentComment().element(By.css('.cuke-comment-like-btn')).click()
+    expect(element(By.css('.thread-liked-by-sentence')).getText()).toContain('You like this.')
 
