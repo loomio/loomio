@@ -169,7 +169,7 @@ sk:
       x_days:
         one: "dňom"
         few: "%{count} dni"
-        other: "%{count} dni"
+        other: "%{count} dní"
       about_x_months:
         one: "mesiacom"
         few: "%{count} mesiacami"
@@ -394,7 +394,7 @@ sk:
   previous_requests: Predošlé žiadosti
   approved_by_person: Schválil %{person}
   ignored_by_perosn: Ignorovaná členom %{person}
-  join_group_btn: Pripojiť ku skupine
+  join_group_btn: Pripojiť sa ku skupine
   you_have_joined_group: Pripojili ste sa k %{group_name}
   confirm_approve_membership_request: "Skutočne chcete pridať %{which_user} do skupiny?"
   cancel_membership_request: "Zrušit žiadosť"
@@ -542,7 +542,7 @@ sk:
   engagement_on_open_proposal: "%{percent}%% členov vyjadrilo svoj názor (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}%% členov vyjadrilo svoj názor (%{numerator}/%{denominator})"
   state_your_position: "Konštatujte svoj postoj"
-  positions: "Postoje"
+  positions: "Hlasy"
   yes_position: "Súhlasím"
   yes_details: "Súhlasím s tým a chcem, aby to prešlo."
   abstain_position: "Zdržujem sa"
