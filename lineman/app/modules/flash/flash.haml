@@ -1,6 +1,6 @@
 .flash-root
   .flash-container{ng-show: 'display()', ng-animate: "'enter'", class: 'alert-{{flash.level}}'}
-    .flash-message {{ flash.message | translate:'options' }}
+    .flash-message {{ flash.message | translate:flashOptions }}
     %button.close.dismiss-flash.pull-right{type: 'button', ng-click: 'dismiss()'}
       %span{aria-hidden: true} &times;
       %span.sr-only{translate: 'common.action.dismiss'}
