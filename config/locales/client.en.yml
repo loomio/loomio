@@ -94,6 +94,10 @@ en:
     details_label: 'Details'
     details_placeholder: "Give enough detail so everyone knows exactly what it means to agree or disagree or whatever"
 
+  discussion_record:
+    created: 'The thread {{title}} was successfully created in {{groupName}}'
+    updated: 'Saved changes to {{title}}'
+
   discussion_form:
     messages:
       created: 'Successfully created your thread'
