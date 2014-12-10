@@ -9,11 +9,11 @@ angular.module('loomioApp').controller 'FormController', ($scope, record, FlashS
   $scope.destroy = ->
     record.destroy().then($scope.onDestroySuccess, $scope.onFailure)
 
-  $scope.onCreateSuccess  = -> onSuccess 'created'
-  $scope.onUpdateSuccess  = -> onSuccess 'updated'
-  $scope.onDestroySuccess = -> onSuccess 'destroyed'
+  $scope.onCreateSuccess  = -> $scope.onSuccess 'created'
+  $scope.onUpdateSuccess  = -> $scope.onSuccess 'updated'
+  $scope.onDestroySuccess = -> $scope.onSuccess 'destroyed'
   $scope.onFailure        = (errors) -> console.log 'i am an errorconda:', errors
 
-  onSuccess = (action) ->
+  $scope.onSuccess = (action) ->
     $scope.$close() if $scope.$close?
     FlashService.success record.constructor.singular, action, record.translationOptions()
