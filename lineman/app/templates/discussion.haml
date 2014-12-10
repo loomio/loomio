@@ -2,12 +2,40 @@
   .row
     .col-xs-12
       .thread-container
-        .dropdown.pull-right{ng-if: 'showContextMenu()'}
-          %a.dropdown-toggle{href:''}
-            %i.fa.fa-chevron-down
-          %ul.dropdown-menu
-            %li
-              %a{href: '', ng-click: 'editDiscussion()', translate: 'common.action.edit', ng-if: '::canEditDiscussion($scope.discussion)'}
+        .thread-actions.pull-right
+          .dropdown.thread-notification-level
+            %a.dropdown-toggle{href:''}
+              %i.fa.fa-lg.fa-volume-down>
+            .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right
+              %h3.dropdown-heading{translate: 'notifications.header'}
+              %ul.dropdown-menu-items
+                %li.dropdown-menu-item
+                  .dropdown-menu-item-label
+                    %i.fa.fa-lg.fa-envelope>
+                    %span{translate: 'common.email'}
+                  .dropdown-menu-item-details
+                    %span{translate: 'discussion.notifications.email'}
+                %li.dropdown-menu-item
+                  .dropdown-menu-item-label
+                    %i.fa.fa-lg.fa-volume-down>
+                    %span{translate: 'common.normal'}
+                    %i.fa.fa-lg.fa-check
+                  .dropdown-menu-item-details
+                    %span{translate: 'discussion.notifications.normal'}
+                %li.dropdown-menu-item
+                  .dropdown-menu-item-label
+                    %i.fa.fa-lg.fa-volume-off>
+                    %span{translate: 'common.mute'}
+                  .dropdown-menu-item-details
+                    %span{translate: 'discussion.notifications.mute'}
+
+          .dropdown{ng-if: 'showContextMenu()'}
+            %a.dropdown-toggle{href:''}
+              %i.fa.fa-chevron-down
+            %ul.dropdown-menu.dropdown-menu-right
+              %li
+                %a{href: '', ng-click: 'editDiscussion()', translate: 'common.action.edit', ng-if: '::canEditDiscussion($scope.discussion)'}
+
         .thread-discussion
           %h1 {{discussion.title}}
           .media.thread-origin

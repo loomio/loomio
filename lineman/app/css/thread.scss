@@ -4,9 +4,22 @@
   @include card;
 }
 
-.thread-discussion {
+.thread-actions {
+  position: relative;
 }
-
+.thread-actions .dropdown{
+  float: left;
+  position: static;
+}
+.thread-container .dropdown-menu-right{
+  right: -16px;
+}
+.thread-notification-level .dropdown-toggle{
+  width: 30px;
+  height: 30px;
+  display: block;
+  text-align: center;
+}
 .thread-proposals {
   padding: 10px 0px 15px 0px;
   background-color: #fff;
@@ -22,7 +35,7 @@
 }
 .thread-origin-group-logo{
   width: 30px;
-  height: 30px; 
+  height: 30px;
 }
 
 .thread-event {
