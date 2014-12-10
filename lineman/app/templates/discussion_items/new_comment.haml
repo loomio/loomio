@@ -2,7 +2,7 @@
   .thread-event-context-menu.dropdown.pull-right{ng-if: 'showContextMenu()'}
     %a.dropdown-toggle{href:''}
       %i.fa.fa-chevron-down
-    %ul.dropdown-menu
+    %ul.dropdown-menu.dropdown-menu-right
       %li
         %a{href: '', ng-click: 'editComment()', ng-if: '::canEditComment()', translate: 'new_comment_item.context_menu.edit_comment'}
         %a{href: '', ng-click: 'deleteComment()', ng-if: '::canDeleteComment()',  translate: 'new_comment_item.context_menu.delete_comment'}

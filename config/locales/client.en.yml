@@ -1,5 +1,8 @@
 en:
   common:
+    email: 'Email'
+    normal: 'Normal'
+    mute: 'Mute'
     groups: 'Groups'
     privacy:
       private: 'Private'
@@ -244,10 +247,13 @@ en:
     liked_by_someone: '{{name}} likes this.'
     liked_by_two_others: '{{name_1}} and {{name_2}} like this.'
     liked_by_many_others: 'Liked by {{joinedNames}} and {{name}}.'
-
     liked_by_name: 'Liked by {{name}}.'
     liked_by_names_and_name: 'Liked by {{joinedNames}} and {{name}}.'
     started_by: 'Started by <strong>{{name}}</strong>'
+    notifications:
+      email: Activity in this thread will be emailed to you as it happens.
+      normal: This thread will be in your inbox when it has new activity.
+      mute: 'This thread will not be in your inbox, unless you participate or someone mentions you.'
 
   delete_comment_dialog:
     title: 'Delete comment'
