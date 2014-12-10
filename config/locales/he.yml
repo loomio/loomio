@@ -265,27 +265,113 @@ he:
     name: "שם הקבוצה"
     description: "תיאור"
     category: "קרטגוריה"
+    confirm_all_discussions_will_be_made_private_message: "אם תמשיכו, כל דיון פתוח לציבור יהפוך לפרטי"
+    confirm_all_discussions_will_be_made_public_message: "בטוח? אם תמשיכו כל דיון פרטי יהפוך פתוח לציבור."
+    what_can_members_do: "מה חברים יכולים לעשות?"
     members_can:
+      add_members: הזמנה ואישור של חברים חדשים
+      edit_comments: עריכת ההערות שלהם בכל עת
       start_discussions: התחלת דיונים
+      raise_motions: הוספת הצעה
+      vote: הצבעה על הצעה
       create_subgroups: צרו תת-קבוצה
+    motions_can_be_edited: ערכו את הצעותיהם אחרי שההצבעה החלה
+    visible_to:
+      label: מי יכול למצא קבוצה זו?
+    membership_granted_upon:
+      label: איך מצטרפים?
+    parent_members_can_see_discussions:
+      label: פרטיות הדיון
+      'true': 'כל אחד בקבוצת %{parent_group_name} יכול לראות את הדיונים'
+      'false': רק חברים יכולים לראות את הדיונים
+    discussion_privacy_options:
+      label: מי יכול לראות דיונים?
+      hint: דיונים ציבוריים ניתנים לצפיה על ידי כולם
+      public_only_html: דיונים פתוחים לציבור בלבד
+      public_or_private_html: מאפשר דיונים פרטיים וציבוריים
+      private_only_html: דיונים פרטיים בלבד
+    learn_about_permissions: מידע נוסף על הרשאות בקבוצה/
   group_permissions:
+    header: הרשאות בקבוצה
+    c1: שינוי הגדרות קבוצה
+    c3: העברת דיונים בין קבוצות.
+    c4: הזמנה ואישור של חברים חדשים
+    c5: שליחת הודעה אנונימית לכל חברי הקבוצה
+    c8: מחיקת דיונים.
+    c9: ' למחוק הערות.'
+    c10: ליצור תת-קבוצות
     c11: התחלת דיונים.
+    c12: הוספת הצעה.
+    c13: הצבעה על הצעה.
+    members_defaults: "בהגדרות ברירת המחדל, חברים יוכלו:"
+    m1: למחוק את ההערות של עצמם
+    m8: הוספת הצעות והשתתפות.
+  discussion_privacy:
+    public: הדיון הזה פתוח לציבור באתר
+    private: הדיון הזה פרטי, לחברי הקבוצה בלבד
+  group_privacy:
+    visible_to:
+      public: קבוצה שאינה מוסתרת
+  setup_steps_title: "הצעדים הבאים:"
+  setup_step_1: "ראה דיון לדוגמא"
   setup_step_2: "התחילו בדיון הראשון שלכם"
+  setup_step_3: "הזמינו אנשים לקבוצה שלך"
+  invite_people: "הזמינו אנשים"
+  leave_group: "עזיבת הקבוצה"
+  members: "חברים"
   join_group_btn: הצטרפו לקבוצה
   cancel_membership_request: "ביטול בקשה"
+  ignore: "התעלמ/י"
+  ask_to_join_group: "בקשת הצטרפות לקבוצה"
   subgroups: "תת-קבוצות"
   create_a_subgroup: "צרו תת-קבוצה"
+  invite_members: "הזמנת חברים"
   new_subgroup: "תת-קבוצה חדשה"
   create_subgroup: "צרו תת-קבוצה"
+  public: "פתוח לציבור"
   new_group: "קבוצה חדשה"
   start_a_discussion: "התחלת דיון"
+  group_description: "תיאור קבוצה"
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> הסכימ/ה להצעה."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> נמנע/ה לגבי ההצעה."
     user_disagreed_on_proposal_html: "<strong>%{name}</strong> לא הסכימ/ה להצעה."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> חסמ/ה את ההצעה."
     user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> הסכימ/ה להצעה."
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> נמנע/ה לגבי ההצעה:"
     user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> לא הסכימ/ה להצעה."
   discussion_items:
+    new_discussion: "הדיון נוצר"
     new_motion: "יצר/ה הצעה"
+    motion_closed:
+      by_user: "סגרו את ההצבעה"
+      by_expiry: "ההצעה סגורה"
+    motion_close_date_edited: "שינו את מועד הסגירה של ההצעה"
+    motion_outcome_created: "פרסמ/ה תוצאה לגבי ההצעה"
+    motion_outcome_updated: "עדכנ/ה את התוצאה לגבי ההצעה"
+    discussion_title_edited: "כותרת הדיון שונתה"
+    discussion_description_edited: "תיאור הדיון שונה;"
+    motion_name_edited: 'ערכ/ה את כותרת ההצעה'
+    motion_description_edited: 'ערכ/ה את תיאור ההצעה'
+  discussion: "דיון"
+  current_decision: "החלטה נוכחית"
+  create_new_proposal: "יצירת הצעה"
+  empty_decision_list_html: "מוכנים להחלטה? <br> כולם יכולים להוסיף הצעה."
+  empty_discussion_list: "עדיין אין פעילות בדיון זה."
+  go_to_add_comment_html: "להוספת הערה, <a href='%{href}'>רדו לתחתית הדיון</a>."
+  discussion_list:
+    clear_filters: "הורדת סינונים: הצגת כל הדיונים"
+    filter_unread:
+      enable: "הצגת דיונים שטרם נקראו בלבד"
+      disable: "הצגת דיונים שנקראו ושטרם נקראו"
+    filter_followed:
+      enable: "הצגת דיונים במעקב בלבד"
+      disable: "הצגת דיונים במעקב ושלא במעקב"
+    empty:
+      no_discussions: "אין דיונים באף אחת מקבוצתיך."
+      no_discussions_in_group: "הקבוצה עדיין לא מכילה דיונים."
+      no_public_discussions: "אין דיונים הפתוחים לציבור בקבוצה זו."
+      discussions_are_private: "כל הדיונים בקבוצה הם פרטיים."
   discussion_context:
     started_html: "התחיל לפני %{when} על ידי <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "נערך לאחרונה לפני %{when} על ידי <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -299,23 +385,63 @@ he:
     next: "הבא"
   comment_form_placeholder: "תגידו משהו..."
   comment_form_submit_button: "שלחו תגובה"
+  liked_by: "%{who} אהב/ה"
   delete_comment: "מחקו תגובה"
   confirm_delete_comment: "למחוק את התגובה? בטוחים?"
   markdown_settings_more_info: "מידע נוסף..."
+  edit_discussion: "עריכת דיונים"
+  move_discussion: "העברת דיונים"
+  delete_discussion: "מחיקת דיון"
+  confirm_delete_discussion: "האם אתם בטוחים שאתם רוצים למחוק את הדיון לצמיתות?"
+  new_proposal: "הצעה חדשה"
+  edit_proposal: "עריכת הצעה"
+  close_proposal: "סגירת הצעה"
+  confirm_close_proposal: "בטוחים שתרצו לסגור את ההצעה הזו?"
+  change_proposal_close_date_header: "שינוי תאריך הסגירה של ההצעה '%{which}'"
+  proposal: הצעה
   proposal_closed_when: "נסגר לפני %{when}"
   proposed_when_by_who: "הוצע על ידי %{who} לפני %{when}"
+  outcome_placeholder: "מה היתה התוצאה לגבי הצעה זו?"
   position_verbs:
     past_tense:
       'yes': "הסכימו"
       'no': "לא הסכימו"
   help:
+    getting_started: "מתחילים"
+    help: "עזרה"
     start_discussion: "מתחיל בדיון מרתק"
   hint:
     discussion: 'טיפים להתחלת דיון מרתק'
+  pricing_page:
+    informal_groups_desc: חברי הקבוצה שלך יתבקשו לשלם כפי יכולתם
+  invitation:
+    alternate: "לחליפין, שיתוף הקישור הזה יאפשר לכל אחד לבקש להצטרף"
+    invitation_not_found: 'לא נמצאה הזמנה, אנא בקשו שישלחו לכם הזמנה חדשה.'
+    invite_to_discussion: "הזמנת אנשים לדיון זה"
+    body_editable_discussion: |
+      הי, בואו הצטרפו לדיון!
+    discussion_link: "השתתפו בדיון:"
+  contact_page:
+    contact_us: 'צרו קשר'
   discussion_form:
     new:
       header: "התחילו בדיון"
       who: "באיזו קבוצה תרצו להתחיל את הדיון?"
+    edit:
+      header: "עריכת דיון"
+    privacy:
+      will_be_public: "הדיון פתוח לכולם."
+  motion_history:
+    title: "שינויי הצעה"
+  motion_form:
+    new:
+      header: "הצעה חדשה"
+      submit: 'יצירת הצעה'
+    edit:
+      header: "עריכת הצעה"
+      submit: 'עדכון הצעה'
+      only_closing_at: 'לא ניתן לשנות את שם או פירוט ההצעה לאחר שההצבעה החלה'
+    close_proposal_heading: "מעוניינים לסגור את ההצעה לפני הזמן?"
   group_setup:
     payment_model:
       header: Loomio הוא לכולם!
@@ -352,11 +478,20 @@ he:
     submit:
       discussion:
         create: "התחלת דיון"
+        update: "עידכון הדיון"
+      motion:
+        create: "התחלת הצעה"
   email:
+    reply_to_this_discussion: השיבו לדיון זה
+    to_join_discussion:
+      link: "הצטרפות לדיון"
+    view_discussion: "לחצו כאן להצגת דיון זה"
+    view_proposal: "הצגת הצעה זו ב Loomio"
     create_discussion:
       intro: "%{who} התחילו דיון ב%{which_group}:"
     create_proposal:
       intro: "הצעה חדשה נוצרה בקבוצה אליה את/ה משויכ/ת."
+      subject: "הצעה חדשה %{which}"
     missed_yesterday:
       subject: "אתמול בLoomio"
       mark_as_read: סמן כנקרא
@@ -364,6 +499,10 @@ he:
       hi: "שלום %{name},"
     new_motion_created:
       context: "%{author} יצר/ה הצעה ב %{group_full_name}:"
+    proposal_outcome:
+      subject: "תוצאת ההצעה"
+    thread_mailer:
+      proposal_closed: "ההצעה נסגרה:"
     verification:
       header: "כמעט סיימת!"
   about_loomio: "אודות Loomio"
@@ -401,7 +540,49 @@ he:
   next: "הבא"
   other: "אחר"
   outcome: "תוצאה"
+  password: "סיסמא"
+  leave_this_field_blank: "שדה זה צריך להשאר ריק"
+  photo: 'תמונה'
+  pricing: 'תמחור'
+  prev: "קודם"
+  more: "עוד..."
   translate: "עזרו בתרגום Loomio!"
+  translate_field: "ראו תרגום"
+  loading_translation: "טוען תרגום..."
+  translate_this_string: "תרגם ל%{language}"
+  failed_translation: "לא ניתן להשלים תרגום"
+  options: "אפשרויות"
+  rss_subscribe: "הרשמה לפיד"
+  ok_got_it: "אוקי, הבנתי!"
+  remove: "הסרה"
+  save: "שמירה"
+  saving: "שומר"
+  sending: "שולח"
+  send_invite: "שליחת הזמנה"
+  send_email: "שליחת דואל"
+  show_more: "הצג עוד"
+  start_a_group: "יצירת קבוצה"
+  starting: "מתחיל"
+  subject: "נושא"
+  thanks: "תודה!"
+  unlike: "ביטול לייק"
+  time_until_close: "%{quantity_of_time} עד סגירה"
+  update: "עדכון"
+  facebook: "פייסבוק"
+  yahoo: "יאהו"
+  google: "גוגל"
+  persona: "פרסונה"
   common:
+    markdown_help_tooltip: 'צעדי בסיס בלימוד עיצוב הטקסט באמצעות Markdown'
+    settings: הגדרות
+    dashboard: לוח מכוונים
+    unread: לא-נקרא
+    filter: 'מסנן:'
+    following: עוקבים
     not_following: ללא מעקב
+    back_to_discussion: "בחזרה לדיון"
     edited: נערך
+    groups: "קבוצות"
+    select_error: יש לבחור אפשרות
+    today: היום
+    public: "פתוח לציבור"

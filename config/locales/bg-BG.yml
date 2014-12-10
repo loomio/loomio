@@ -1,4 +1,18 @@
 bg-BG:
+  users:
+    email_preferences:
+      edit:
+        title: 'Известия'
+        when_do_you_want_emails: 'Да получавам писма:'
+        email_missed_yesterday: "'Вчера в Loomio' - ежедневно обощаване на всичко, което съм пропуснал(а)."
+        email_when_mentioned: "Когато съм @споменат(а)"
+        email_followed_threads: "При активност в дискусии, които следя."
+        email_when_proposal_closing_soon: "24 часа преди края на гласуване"
+        email_new_discussions_and_proposals: 'Нови дискусии и гласувания'
+        for_these_groups: "в следните групи:"
+        submit: "Запази настройките"
+  try_it:
+    loomio_community_info: "Това е мястото, където дискутираме и вземаме решения относно Loomio."
   activerecord:
     errors:
       messages:
@@ -6,20 +20,28 @@ bg-BG:
   errors:
     messages:
       email: "Невалиден e-mail адрес"
+  attachment:
+    error:
+      too_large: "Файлът който се опитвате да прикачите е по-голям от 50MB, моля изберете по-малък."
   time:
     formats:
-      for_today: '%l:%M %P'
+      for_today: '%H:%M'
   date:
     formats:
       for_this_year: '%e %b'
-      for_another_year: '%-d/%-m/%y'
+      for_another_year: '%d.%m.%Y'
+  devise:
+    invitations:
+      send_instructions: 'Изпратена е покана до %{email}.'
+      invitation_token_invalid: 'Тази покана вече не е валидна!'
   error:
     access_denied: "Нямате права да правите това."
     cant_join_subgroup: "Не можете да се присъедините към подгрупа ако не сте член на родителската група."
     cant_modify_position: "Това предложение е затворено."
     cant_state_position: "Това предложение е затворено."
-    cant_view_member_profile: "Не можете да разглеждате профила на този потребител понеже не сте в една и съща група."
-    discussion_not_created: "Дискусията не можa да бъде създадена."
+    cant_view_member_profile: "Не можете да разглеждате профила на този потребител, понеже не сте в една и съща група."
+    discussion_not_created: "Дискусията не може да бъде създадена."
+    discussion_not_moved: "Нямате право да преместите тази дискусия в %{destination_group.name}"
     group_not_archived: "Групата не можа да бъде архивирана."
     invalid_close_date: "Невалидна крайна дата, моля проверете дали тази дата не е минала."
     invalid_email: "Моля въведете поне един валиден e-mail адрес"
@@ -28,7 +50,7 @@ bg-BG:
     permission_to_invite: "Нямате разрешение да каните нови членове."
     position_not_updated: "Позицията не можа да бъде обновена. "
     settings_not_updated: "Вашите настройки не бяха обновени."
-    group_request_already_accepted: "Sorry! Тази покана е невалидна или вече е била приета."
+    group_request_already_accepted: "Tази покана е невалидна или вече е била приета."
     group_request_invalid_token: "Съжалявам! Този код е невалиден"
     group_private_or_not_found: "Групата не е намерена. \n\nВъзможно е тази група да е частна. Ако някой ви е дал този линк, помолете го да ви покани в групата."
     group_already_setup: "Групата, която се опитвате да създадете вече съществува."
@@ -50,6 +72,18 @@ bg-BG:
     settings_updated: "Вашите настройки бяха обновени."
     user_made_admin: "%{which_user} беше направен координатор."
     you_have_left_group: "Вие напуснахте %{which_group}."
+    comment_deleted: "Коментарът е изтрит."
+    invitations:
+      auto_added:
+        one: "1 нов член бе добавен"
+        other: "%{count} нови члена бяха добавени"
+      existing_member:
+        one: "Има 1 член в групата"
+        other: "Има %{count} члена в групата"
+      sent:
+        one: "1 покана бе изпратена"
+        other: "%{count} покани бяха изпратени"
+      auto_added_and_sent: "%{auto_added_text} и %{sent_text}"
   warning:
     cant_remove_last_admin: "Вие сте последния координатор и не може да бъдете отстранявани."
     membership_request_already_approved: "Заявката за члеснтво вече е била одобрена."

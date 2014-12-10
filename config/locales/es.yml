@@ -431,6 +431,15 @@ es:
         Te hemos enviado un correo electrónico con una invitación a comenzar tu grupo.
 
         Si no ves nada en tu bandeja de entrada en unos minutos, escríbenos a <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> apoyó la propuesta."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> se abstuvo en la propuesta."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> no estuvo de acuerdo con la propuesta."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> bloqueó la propuesta."
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> apoyó la propuesta:"
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> se abstuvo en la propuesta:"
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> no estuvo de acuerdo con la propuesta:"
+    user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> bloqueó la propuesta:"
   discussion_items:
     new_discussion: "se ha creado la discusión"
     new_motion: "se ha creado una propuesta"
@@ -555,8 +564,13 @@ es:
       estará aprendiendo nuevos procesos para colaborar mas efectivamente y tomando buenas decisiones⏎
       juntos. Aquí puedes encontrar algunos consejos para que tu grupo tenga mucho éxito:⏎
     different_ways: 'Maneras diferentes de usar Loomio'
-    example1_html: "<h3>El grupo debe discutir sobre un tema amplio y desarrollar una solucion conjunta</h3>⏎\n<p>Estrategia: Discutir el tema durante un tiempo antes de iniciar una propuesta.</p>⏎\n<p>A menudo, las discusiones obtienen los mejores resultados si se crea un entendimiento⏎ \ncompartido sobre el problema antes de decantarse por una solucion concreta. Cuando la gente⏎\nempieza a participar en el proceso, es mucho mas probable\
-      \ que esten satisfechos con⏎\nel resultado o decision final.⏎</p>\\n"
+    engaging_html: |
+      <h2>Consejos para implicar a tu grupo</h2>
+      <p>La gente estará motivada a entrar y comenzar a participar cuando haya una propuesta interesante sobre la mesa. Una buena propuesta contiene un plan de acción para el grupo, asi que se hace obvio lo que significa estar de acuerdo o en desacuerdo. Piensa en como puedes identificar las discusiones/decisiones en las que el grupo esta involucrado actualmente en persona o por correo, que pudieran hacerse más fáciles si estuvieran en Loomio.</p>
+      <p>Si tu grupo esta apenas comenzando, puedes iniciar una decisión ligera, para darle a todos la oportunidad de jugar con la herramienta y ver en acción el proceso de toma de decisiones.</p>
+      <p>Otra manera sencilla de animar a las personas a implicarse en una discusión es usando la característica de @mention para aludir a determinadas personas; esto les enviará un correo avisándoles que han sido mencionados en un comentario.</p>
+    example1_html: "<h3>El grupo debe discutir sobre un tema amplio y desarrollar una solucion conjunta</h3>⏎\n<p>Estrategia: Discutir el tema durante un tiempo antes de iniciar una propuesta.</p>⏎\n<p>A menudo, las discusiones obtienen los mejores resultados si se crea un entendimiento⏎ \ncompartido sobre el problema antes de decantarse por una solucion concreta. Cuando la gente⏎\nempieza a participar en el proceso, es mucho mas probable que esten satisfechos con⏎\n\
+      el resultado o decision final.⏎</p>\\n"
     example2_html: |
       <h3>Tienes ya en mente una propuesta, y quieres alcanzar un refrendo del grupo para seguir adelante.</h3>
       <p>Estrategia: Comienza una discusión sobre una decisión específica y crea inmediatamente una propuesta.</p>
@@ -736,8 +750,8 @@ es:
     description: "Bienvenidos a Loomio, una herramienta para la toma de decisiones en grupo.⏎ \nAl participar en un tema, discutiendo diferentes puntos de vista e información, haciendo frente a cualquier problema que se presente, tu grupo puede juntarse  y encontrar el mejor camino a seguir. ⏎\nPuedes utilizar la discusión de ejemplo y jugar con las de la herramienta. ⏎\n"
   example_motion:
     name: "¡Deberíamos irnos de vacaciones a la luna!"
-    description: "Loomio Helper Bot está muy interesado en que tu grupo invierta en un viaje a la luna. Al parecer, el espacio queso es delicioso. Pero las implicaciones por la huella de carbono son preocupantes. ⏎\n¿Es una buena idea? Loomio Helper Bot quiere saber lo que piensas! ⏎\nSi estás convencido de tu posición, haz clic en uno de los iconos de abajo (pulsa el cursor sobre los botones de decisiones para una descripción de lo que cada\
-      \ uno de ellos significa). ⏎\nSe te pedirá que realices una breve declaración sobre la razón de tu decisión. Esto hace que sea fácil de ver en forma de resumen de lo que todos piensan y por qué. Puedes cambiar de opinión y editar tu decisión libremente hasta que la propuesta se cierra. ⏎ \n"
+    description: "Loomio Helper Bot está muy interesado en que tu grupo invierta en un viaje a la luna. Al parecer, el espacio queso es delicioso. Pero las implicaciones por la huella de carbono son preocupantes. ⏎\n¿Es una buena idea? Loomio Helper Bot quiere saber lo que piensas! ⏎\nSi estás convencido de tu posición, haz clic en uno de los iconos de abajo (pulsa el cursor sobre los botones de decisiones para una descripción de lo que cada uno de ellos significa). ⏎\n\
+      Se te pedirá que realices una breve declaración sobre la razón de tu decisión. Esto hace que sea fácil de ver en forma de resumen de lo que todos piensan y por qué. Puedes cambiar de opinión y editar tu decisión libremente hasta que la propuesta se cierra. ⏎ \n"
   contact_page:
     contact_us: 'Contáctanos'
     labels:
@@ -1014,6 +1028,7 @@ es:
   google: "Google"
   persona: "Persona"
   common:
+    markdown_help_tooltip: 'Aprende lo básico sobre el formato de tu texto usando Markdown'
     settings: Ajustes
     dashboard: Panel de control
     unread: No leído
