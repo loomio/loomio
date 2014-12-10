@@ -1,4 +1,4 @@
-class MotionSerializer < ActiveModel::Serializer
+class MotionSerializer < EventableSerializer
   embed :ids, include: true
   attributes :id,
              :discussion_id,

@@ -1,4 +1,4 @@
-class DiscussionSerializer < ActiveModel::Serializer
+class DiscussionSerializer < EventableSerializer
   embed :ids, include: true
   attributes :id,
              :key,
