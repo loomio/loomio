@@ -74,6 +74,9 @@ h4{
   padding: 15px;
   width: 300px;
 }
+.dropdown-menu-with-labels .fa-check{
+  margin-left: 5px;
+}
 .dropdown-menu-items{
   list-style: none;
   padding: 0;
@@ -89,10 +92,14 @@ h4{
 .dropdown-menu-item.last{
   margin-bottom: 0;
 }
-.dropdown-menu-item-label{
+li .dropdown-menu-item-label{
   font-weight: bold;
   line-height: 24px;
-  i{ font-weight: normal; }
+  i{
+    font-weight: normal;
+    width: 18px;
+    color: $primary-text-color;
+  }
 }
 .disabled .dropdown-menu-item{
   color: $kinda-dark-grey;
@@ -103,7 +110,6 @@ h3.dropdown-heading{
   border-bottom: 1px solid $thread-border-color;
 }
 .dropdown-menu-right{
-  /*left: auto;*/
   right: 0;
 }
 
