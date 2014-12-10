@@ -29,37 +29,37 @@ describe 'Proposals', ->
 
   # descirbe 'editing a proposal'
 
-  #describe 'starting a proposal', ->
-    #beforeEach ->
-      #page.load()
-      #page.startProposalLink().click()
+  describe 'starting a proposal', ->
+    beforeEach ->
+      page.load()
+      page.startProposalLink().click()
 
-    #describe 'then cancelling', ->
-      #beforeEach ->
-        #page.cancelProposalBtn().click()
+    describe 'then cancelling', ->
+      beforeEach ->
+        page.cancelProposalBtn().click()
 
-      #it 'closes the modal', ->
-        #expect(page.modal().isPresent()).toBe(false)
+      it 'closes the modal', ->
+        expect(page.modal().isPresent()).toBe(false)
 
-    #describe 'successfully', ->
-      #beforeEach ->
-        #page.fillInProposalForm('test proposal', 'the details are in the details')
-        #page.submitProposalForm()
+    describe 'successfully', ->
+      beforeEach ->
+        page.fillInProposalForm('test proposal', 'the details are in the details')
+        page.submitProposalForm()
 
-      #it 'closes the modal', ->
-        #expect(page.modal().isPresent()).toBe(false)
+      it 'closes the modal', ->
+        expect(page.modal().isPresent()).toBe(false)
 
-      ## not too sure why this one does not work
-      ## it 'displays a flash message', ->
-        ##expect(page.flashMessageText()).toContain('created your proposal')
+      # not too sure why this one does not work
+      # it 'displays a flash message', ->
+        #expect(page.flashMessageText()).toContain('created your proposal')
 
-      #it 'shows the new proposal as the expanded current proposal', ->
-        #expect(page.expandedProposalTitleText()).toContain('test proposal')
+      it 'shows the new proposal as the expanded current proposal', ->
+        expect(page.expandedProposalTitleText()).toContain('test proposal')
 
-    #describe 'invalid due to another proposal already started', ->
-      #it "does not close the modal", ->
-        #expect(page.modal().isPresent()).toBe(true)
+    describe 'invalid due to another proposal already started', ->
+      it "does not close the modal", ->
+        expect(page.modal().isPresent()).toBe(true)
 
-      ## pending
-      ##it "displays the validation errors", ->
-        ##expect(element(By.css('.proposal-form .form-errors')).getText()).toContain('Another proposal is already active')
+      # pending
+      #it "displays the validation errors", ->
+        #expect(element(By.css('.proposal-form .form-errors')).getText()).toContain('Another proposal is already active')

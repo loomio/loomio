@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, discussion, Records, MessageChannelService, FileUploadService, UserAuthService) ->
+angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, discussion, Records, MessageChannelService, UserAuthService, DiscussionFormService) ->
   $scope.discussion = discussion
 
   onMessageReceived = ->
@@ -14,11 +14,7 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, $modal, 
   $scope.lastPage = false
 
   $scope.editDiscussion = ->
-    modalInstance = $modal.open
-      templateUrl: 'generated/modules/discussion_page/discussion_form.html',
-      controller: 'DiscussionFormController',
-      resolve:
-        discussion: -> $scope.discussion.copy()
+    DiscussionFormService.openEditDiscussionModal(discussion)
 
   $scope.getNextPage = ->
     return false if busy or $scope.lastPage

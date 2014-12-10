@@ -31,6 +31,12 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     positionVerbs: ['agree', 'abstain', 'disagree', 'block']
     positions: ['yes', 'abstain', 'no', 'block']
 
+    canBeEdited: ->
+      !@hasVotes()
+
+    hasVotes: ->
+      @votes().length > 0
+
     author: ->
       @recordStore.users.find(@authorId)
 

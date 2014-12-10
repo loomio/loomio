@@ -81,7 +81,7 @@ describe API::DiscussionsController do
         discussion_params[:title] = ''
         put :update, id: discussion.id, discussion: discussion_params, format: :json
         json = JSON.parse(response.body)
-        expect(response.status).to eq 400
+        expect(response.status).to eq 422
         expect(json['errors']['title']).to include 'can\'t be blank'
       end
     end
@@ -134,7 +134,7 @@ describe API::DiscussionsController do
         discussion_params[:title] = ''
         post :create, discussion: discussion_params, format: :json
         json = JSON.parse(response.body)
-        expect(response.status).to eq 400
+        expect(response.status).to eq 422
         expect(json['errors']['title']).to include 'can\'t be blank'
       end
     end
