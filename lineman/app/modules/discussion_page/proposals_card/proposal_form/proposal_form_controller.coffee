@@ -4,14 +4,20 @@ angular.module('loomioApp').controller 'ProposalFormController', ($scope, $modal
   $scope.closeDateTimePicker = ->
     $scope.dropdownIsOpen = false
 
+  onCreateSuccess = (records) ->
+    $modalInstance.close()
+    proposal = records.proposals[0]
+    FlashService.success 'proposal_form.messages.created'
+
+  onUpdateSuccess = (records) ->
+    FlashService.success 'proposal_form.messages.updated'
+    $modalInstance.close()
+
   $scope.submit = ->
-    $scope.isDisabled = true
-    proposal.save().then (records) ->
-      FlashService.success 'proposal_form.messages.proposal_created'
-      $modalInstance.close()
-    , (errors) ->
-      $scope.formErrors = errors
-      $scope.isDisabled = false
+    if proposal.isNew()
+      proposal.save().then onCreateSuccess
+    else
+      proposal.save().then onUpdateSuccess
 
   $scope.cancel = ->
     $modalInstance.dismiss()

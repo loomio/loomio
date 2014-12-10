@@ -26,7 +26,6 @@ describe 'ProposalModel', ->
     it 'returns votes', ->
       expect(proposal.votes()).toContain(vote1, vote2)
 
-
   describe 'isActive', ->
     it 'is true when closedAt', ->
       proposal.closedAt = "2014-11-18T00:49:39.046Z"
