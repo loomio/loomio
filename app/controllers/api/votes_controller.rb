@@ -1,6 +1,7 @@
 class API::VotesController < API::RestfulController
 
   def index
+    load_and_authorize_motion
     @votes = Vote.where(motion: @motion)
                  .most_recent
                  .order(:created_at)

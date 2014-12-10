@@ -15,12 +15,12 @@ class API::FayeController < API::BaseController
     channel_parts.first.split('-').first == 'discussion'
   end
 
-  def discussion_id
-    channel_parts.first.split('-').last.to_i
+  def discussion_key
+    channel_parts.first.split('-').last
   end
 
   def discussion
-    Discussion.find(discussion_id)
+    Discussion.find_by(key: discussion_key)
   end
 
   def who_am_i

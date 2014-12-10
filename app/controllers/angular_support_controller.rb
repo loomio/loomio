@@ -38,7 +38,7 @@ class AngularSupportController < ApplicationController
     reset_database
     sign_in patrick
 
-    MotionService.create(comment: Motion.new(author: jennifer,
+    MotionService.create(motion: Motion.new(author: jennifer,
                                              name: 'lets go hiking',
                                              closing_at: 3.days.from_now,
                                              discussion: testing_discussion),
@@ -54,7 +54,7 @@ class AngularSupportController < ApplicationController
   end
 
   def redirect_to_discussion
-    redirect_to "http://localhost:8000/discussions/#{testing_discussion.key}"
+    redirect_to "http://localhost:8000/angular"
   end
 
   def patrick

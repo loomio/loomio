@@ -6,18 +6,6 @@ class API::CommentsController < API::RestfulController
 
   load_resource only: [:like, :unlike]
 
-  def create
-    instantiate_resouce
-    event = service.create({resource_symbol => resource,
-                    actor: current_user})
-
-    if resource.valid?
-      render json: [event], each_serializer: EventSerializer, root: 'events'
-    else
-      render json: { errors: resource.errors }, status: 400
-    end
-  end
-
   def like
     CommentService.like(comment: @comment, actor: current_user)
     respond_with_resource

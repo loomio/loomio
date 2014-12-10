@@ -17,6 +17,9 @@ class BaseController < ApplicationController
 
 
   def boot_angular_ui
+    #@initialRecords = {}
+    #@initialRecords{memberships: current_user.memberships.as_json}
+    #@initialRecords{memberships: current_user.memberships.as_json}
     render 'layouts/angular', layout: false
   end
 

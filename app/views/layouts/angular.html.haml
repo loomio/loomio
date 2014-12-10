@@ -21,5 +21,10 @@
     %sidebar
     %main{ng_view: ''}
 
-    = javascript_include_tag lineman_js_path
+    = javascript_include_tag lineman_vendorjs_path
+    = javascript_include_tag lineman_appjs_path
+    :javascript
+      window.Loomio.currentUserId = #{current_user.id};
+      window.Loomio.seedRecords = #{CurrentUserSerializer.new(current_user).to_json}
+
     %script{src: "#{ENV['FAYE_URL']}/client.js", type: 'text/javascript'}
