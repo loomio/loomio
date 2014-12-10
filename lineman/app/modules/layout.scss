@@ -1,0 +1,16 @@
+.menu-image { padding: 15px; }
+
+#header{
+  z-index: 1000;
+  background: white;
+  height: 48px;
+  border-bottom: 1px solid #bbb;
+  box-shadow: 0 0 10px #aaa;
+  width: 100%;
+  position: fixed;
+}
+.container#main{
+  padding-top: 48px;
+  z-index: 0;
+  min-width: 320px;
+}

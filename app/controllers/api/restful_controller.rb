@@ -21,9 +21,9 @@ class API::RestfulController < API::BaseController
 
   def create
     instantiate_resouce
-    service.create({resource_symbol => resource,
+    @event = service.create({resource_symbol => resource,
                     actor: current_user})
-    respond_with_resource
+    respond_with_resource_or_event
   end
 
   def update
@@ -44,13 +44,36 @@ class API::RestfulController < API::BaseController
   private
 
   def load_and_authorize_group
-    @group = Group.find(params[:group_id])
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+    elsif params[:group_key]
+      @group = Group.find_by_key!(params[:group_key])
+    elsif params[:id]
+      @group = Group.friendly.find(params[:id])
+    end
     authorize! :show, @group
   end
 
   def load_and_authorize_discussion
-    @discussion = Discussion.find(params[:discussion_id])
+    if params[:discussion_id]
+      @discussion = Discussion.find(params[:discussion_id])
+    elsif params[:discussion_key]
+      @discussion = Discussion.find_by_key!(params[:discussion_key])
+    elsif params[:id]
+      @discussion = Discussion.friendly.find(params[:id])
+    end
     authorize! :show, @discussion
+  end
+
+  def load_and_authorize_motion
+    if params[:motion_id]
+      @motion = Motion.find(params[:motion_id])
+    elsif params[:motion_key]
+      @motion = Motion.find_by_key!(params[:motion_key])
+    elsif params[:id]
+      @motion = Motion.friendly.find(params[:id])
+    end
+    authorize! :show, @motion
   end
 
   def collection
@@ -99,6 +122,14 @@ class API::RestfulController < API::BaseController
 
   def respond_with_collection
     render json: collection, root: serializer_root
+  end
+
+  def respond_with_resource_or_event
+    if resource.valid? and @event and @event.is_a? Event
+      render json: [@event], each_serializer: EventSerializer, root: 'events'
+    else
+      respond_with_resource
+    end
   end
 
   def respond_with_resource
