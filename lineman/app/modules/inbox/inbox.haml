@@ -18,11 +18,3 @@
       .selector-list-item-thread-group-name
         {{::discussion.group().fullName()}}
       %timeago{timestamp: 'discussion.lastActivityAt'}>
-
-  %li.selector-list-item.hidden-xs{ng-hide: 'inboxPinned()', ng-click: 'openInbox()'}
-    %a{href: '#'}
-      Keep this menu open
-
-  %li.selector-list-item.hidden-xs{ng-show: 'inboxPinned()', ng-click: 'closeInbox()'}
-    %a{href: '#'}
-      Close this menu
