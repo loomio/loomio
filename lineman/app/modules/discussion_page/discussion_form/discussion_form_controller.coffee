@@ -4,6 +4,11 @@ angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $con
 
   $controller('FormController', {$scope: $scope, record: discussion });
 
+  $scope.onCreateSuccess = (records) ->
+    $scope.onSuccess 'created'
+    discussion = records.discussions[0]
+    $location.path "/d/#{discussion.key}"
+
   $scope.availableGroups = ->
     _.filter currentUser.groups(), (group) ->
       group.membersCanStartDiscussions or group.admins().include? currentUser
