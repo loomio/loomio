@@ -70,42 +70,6 @@ h4{
 .timeago{
   @include metaText;
 }
-.dropdown-menu-with-labels{
-  padding: 15px;
-  width: 300px;
-}
-.dropdown-menu-items{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.dropdown-menu-item{
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-.disabled .dropdown-menu-item{
-  cursor: auto;
-}
-.dropdown-menu-item.last{
-  margin-bottom: 0;
-}
-.dropdown-menu-item-label{
-  font-weight: bold;
-  line-height: 24px;
-  i{ font-weight: normal; }
-}
-.disabled .dropdown-menu-item{
-  color: $kinda-dark-grey;
-}
-
-h3.dropdown-heading{
-  margin: 0 0 10px 0;
-  border-bottom: 1px solid $thread-border-color;
-}
-.dropdown-menu-right{
-  /*left: auto;*/
-  right: 0;
-}
 
 .label-with-details{
   font-weight: bold;
