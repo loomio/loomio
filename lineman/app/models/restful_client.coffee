@@ -4,7 +4,8 @@ angular.module('loomioApp').factory 'RestfulClient', ($http) ->
 
     # override these to set default actions
     onSuccess: (response) -> response
-    onFailure: (response) -> response
+
+    onFailure: (response) -> throw response
 
     constructor: (resourcePlural) ->
       @resourcePlural = resourcePlural

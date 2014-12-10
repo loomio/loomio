@@ -75,19 +75,19 @@ en:
     statement_placeholder: 'Share your thoughts with the group.'
 
   close_proposal_form:
-    close_proposal: 'Close {{proposalName}}'
+    close_proposal: 'Close proposal'
     helptext: 'Are you sure you want to close this proposal now?'
     close_proposal_submit: 'Close proposal early'
 
   proposal_form:
     messages:
-      proposal_created: 'Successfully created your proposal'
-      update_proposal: 'Changes saved'
+      created: 'Successfully created your proposal'
+      updated: 'Proposal updated'
     start_proposal: 'Start proposal'
     start_a_proposal: 'Start a proposal'
     edit_proposal: 'Edit proposal'
-    edit_a_proposal: 'Edit {{proposalName}}'
     what_does_a_proposal_do: 'Proposals let you see how everyone feels about a particular course of action.'
+    editing_title_and_description_forbidden: 'You cannot change the title or description of a proposal after people have voted. If details have changed, please close the proposal and start another'
     title_placeholder: 'Eg: Go to the moon'
     title_label: 'Title'
     closes_at_label: 'Closes at'
@@ -96,8 +96,8 @@ en:
 
   discussion_form:
     messages:
-      new_discussion: 'Successfully created your thread'
-      update_discussion: 'Changes saved'
+      created: 'Successfully created your thread'
+      updated: 'Discussion Updated'
     new_discussion_title: 'Start new thread'
     edit_discussion_title: 'Edit thread'
     discussion_helptext: 'The thread is where everyone can discuss a topic and make decisions together.'

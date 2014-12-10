@@ -1,4 +1,4 @@
-%form{name: 'discussionForm', ng_submit: 'submit()'}
+%form{name: 'discussionForm', ng_submit: 'submit()', ng-disabled: 'discussion.saving'}
   .modal-header
     %button{type: 'button', class: 'close', ng-click: 'cancel($event)'}
       %span{aria-hidden: true} &times;
@@ -7,7 +7,7 @@
     %h1.modal-title{translate: 'discussion_form.edit_discussion_title', ng_hide: 'discussion.isNew()'}
 
   .modal-body
-    %flash{modal: 'true'}
+    %form_errors{record: 'discussion'}
 
     .thread-helptext{translate: 'discussion_form.discussion_helptext', ng_show: 'discussion.isNew()'}
 
@@ -53,4 +53,4 @@
   .modal-footer
     %button.btn.btn-primary{type: 'submit', translate: 'discussion_form.new_discussion_submit', ng_show: 'discussion.isNew()' }
     %button.btn.btn-primary{type: 'submit', translate: 'discussion_form.edit_discussion_submit', ng_hide: 'discussion.isNew()' }
-    %button.btn.btn-warning{ng-click: 'cancel($event)', translate: 'common.action.cancel'}
+    %button.btn.btn-warning{type: 'button', ng-click: 'cancel($event)', translate: 'common.action.cancel'}
