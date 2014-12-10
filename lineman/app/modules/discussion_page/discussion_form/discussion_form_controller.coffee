@@ -1,12 +1,20 @@
-angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $modalInstance, $location, FormService, discussion, UserAuthService) ->
+angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $modalInstance, $location, FlashService, discussion, UserAuthService) ->
   currentUser = UserAuthService.currentUser
+
   $scope.discussion = discussion
 
-  onSuccess = (result) ->
-    $modalInstance.dismiss('success')
-    $location.path "/d/#{result.key}"
+  onCreateSuccess = (records) ->
+    $modalInstance.close()
+    discussion = records.discussions[0]
+    FlashService.success 'discussion_form.messages.created'
+    $location.path "/d/#{discussion.key}"
 
-  FormService.applyModalForm $scope, discussion, $modalInstance
+  onUpdateSuccess = (records) ->
+    FlashService.success 'discussion_form.messages.updated'
+    $modalInstance.close()
+
+  onFailure = (errors) ->
+    console.log 'i am an errorconda:', errors
 
   $scope.availableGroups = ->
     _.filter currentUser.groups(), (group) ->
@@ -18,7 +26,17 @@ angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $mod
   $scope.setCurrentPrivacy = ->
     if $scope.discussion.isNew()
       $scope.discussion.private = $scope.getCurrentPrivacy() == 'private_only'
+
   $scope.setCurrentPrivacy()
 
   $scope.showPrivacyForm = ->
     $scope.getCurrentPrivacy() == 'public_or_private'
+
+  $scope.cancel = ->
+    $modalInstance.dismiss()
+
+  $scope.submit = ->
+    if discussion.isNew()
+      discussion.save().then(onCreateSuccess, onFailure)
+    else
+      discussion.save().then(onUpdateSuccess, onFailure)

@@ -1,5 +1,5 @@
 .thing
-  .vote-form{ng-show: '!lastVote() || editing'}
+  .vote-form{ng-show: '!lastVote() || editing', ng-disabled: 'vote.saving'}
     %h4{translate: 'proposal_card.have_your_say'}
     .position-buttons
       .position-button.position-button-yes{ng-click: 'selectPosition("yes")'}
@@ -7,7 +7,9 @@
       .position-button.position-button-no{ng-click: 'selectPosition("no")'}
       .position-button.position-button-block{ng-click: 'selectPosition("block")'}
 
-    %form{ng-submit: 'submit()', ng-show: 'vote.position' }
+    %form{ng-submit: 'submit()', ng-show: 'vote.position', ng-disabled: 'vote.saving' }
+      %form_errors{record: 'vote'}
+
       %fieldset
         .form-group
           %label.label-with-details{for: 'vote-statement-field'}
