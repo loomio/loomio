@@ -1,8 +1,9 @@
 en:
   common:
-    email: 'Email'
-    normal: 'Normal'
-    mute: 'Mute'
+    notifications:
+      email: 'Email'
+      normal: 'Normal'
+      mute: 'Mute'
     groups: 'Groups'
     privacy:
       private: 'Private'

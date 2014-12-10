@@ -12,20 +12,20 @@
                 %li.dropdown-menu-item
                   .dropdown-menu-item-label
                     %i.fa.fa-lg.fa-envelope>
-                    %span{translate: 'common.email'}
+                    %span{translate: 'common.notifications.email'}
                   .dropdown-menu-item-details
                     %span{translate: 'discussion.notifications.email'}
                 %li.dropdown-menu-item
                   .dropdown-menu-item-label
                     %i.fa.fa-lg.fa-volume-down>
-                    %span{translate: 'common.normal'}
+                    %span{translate: 'common.notifications.normal'}
                     %i.fa.fa-lg.fa-check
                   .dropdown-menu-item-details
                     %span{translate: 'discussion.notifications.normal'}
                 %li.dropdown-menu-item
                   .dropdown-menu-item-label
                     %i.fa.fa-lg.fa-volume-off>
-                    %span{translate: 'common.mute'}
+                    %span{translate: 'common.notifications.mute'}
                   .dropdown-menu-item-details
                     %span{translate: 'discussion.notifications.mute'}
 
@@ -35,7 +35,6 @@
             %ul.dropdown-menu.dropdown-menu-right
               %li
                 %a{href: '', ng-click: 'editDiscussion()', translate: 'common.action.edit', ng-if: '::canEditDiscussion($scope.discussion)'}
-
 
         .thread-discussion
           %h1 {{discussion.title}}
