@@ -31,8 +31,17 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     positionVerbs: ['agree', 'abstain', 'disagree', 'block']
     positions: ['yes', 'abstain', 'no', 'block']
 
+    canBeEdited: ->
+      @isNew() or !@hasVotes()
+
+    hasVotes: ->
+      @votes().length > 0
+
     author: ->
       @recordStore.users.find(@authorId)
+
+    group: ->
+      @discussion().group()
 
     discussion: ->
       @recordStore.discussions.find(@discussionId)
@@ -62,4 +71,5 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
       @lastVoteByUser(user)?
 
     close: ->
-      @restfulClient.post("#{proposal.id}/close")
+      @saving = true
+      @restfulClient.postMember(@id, "close").then(@saveSuccess, @saveFailure)

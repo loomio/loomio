@@ -1,15 +1,18 @@
-%form.proposal-form{ng-submit: 'submit()'}
+%form.proposal-form{ng-submit: 'submit()', ng-disabled: 'proposal.saving'}
   .modal-header
     %button{type: 'button', class: 'close', ng-click: 'cancel($event)'}
       %span{aria-hidden: true} &times;
       %span.sr-only{translate: 'common.action.cancel'}
     %h1{ng-if: 'proposal.isNew()', translate: 'proposal_form.start_a_proposal'}
-    %h1{ng-if: '!proposal.isNew()', translate: 'proposal_form.edit_a_proposal', translate-value-proposal-name: '{{proposal.name}}'}
+    %h1{ng-if: '!proposal.isNew()', translate: 'proposal_form.edit_proposal'}
 
   .modal-body
     %p{ng-if: 'proposal.isNew()', translate: 'proposal_form.what_does_a_proposal_do'}
+    %p{ng-if: '!proposal.isNew()', translate: 'proposal_form.editing_title_and_description_forbidden'}
 
-    %fieldset{ng-disabled: 'isDisabled || proposal.hasVotes()'}
+    %form_errors{record: 'proposal'}
+
+    %fieldset{ng-disabled: '!proposal.canBeEdited()'}
       .form-group
         %label{for: 'proposal-title-field', translate: 'proposal_form.title_label'}
         %input#proposal-title-field.form-control{placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: 'proposal.name', ng-required: 'false'}
@@ -18,17 +21,9 @@
         %label{for: 'proposal-details-field', translate: 'proposal_form.details_label'}
         %textarea#proposal-details-field.form-control{ng-model: 'proposal.description', placeholder: "{{ 'proposal_form.details_placeholder' | translate }}"}
 
-    %fieldset{ng-disabled: 'isDisabled'}
-      .form-group{dropdown: '', is-open: 'dropdownIsOpen'}
-        %label{for: 'proposal-close-date-field', translate: 'proposal_form.closes_at_label'}
-        .input-group.dropdown-toggle
-          %input.form-control{ng-model: 'proposal.closingAt', ng-required: 'true'}
-          %span.input-group-addon
-            %i.fa.fa-calendar
-        .dropdown-menu{role: 'menu'}
-          %datetimepicker{ng-model: 'proposal.closingAt', data-datetimepicker-config: "{ startView:'day', minView:'hour'}", on-set-time: 'closeDateTimePicker()'}
+    .thing{ng-include: '"generated/modules/discussion_page/proposals_card/proposal_form/closing_at_field.html"'}
 
   .modal-footer
-    %button.btn.btn-primary.cuke-start-proposal-btn{ng-if: 'proposal.isNew()', type: 'submit', translate: 'proposal_form.start_proposal'}
-    %button.btn.btn-primary{ng-if: '!proposal.isNew()', type: 'submit', translate: 'common.action.save'}
+    %button.btn.btn-primary.cuke-save-proposal-btn{ng-if: 'proposal.isNew()', type: 'submit', translate: 'proposal_form.start_proposal'}
+    %button.btn.btn-primary.cuke-save-proposal-btn{ng-if: '!proposal.isNew()', type: 'submit', translate: 'common.action.save'}
     %button.btn.btn-warning.cuke-cancel-proposal-btn{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}

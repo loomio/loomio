@@ -1,13 +1,15 @@
-.thing
-  .vote-form{ng-show: '!lastVote() || editing'}
-    %h4{translate: 'proposal_card.have_your_say'}
+.vote-form-and-your-position
+  .vote-form{ng-show: 'proposal.isActive() && (!lastVote() || editing)', ng-disabled: 'vote.saving'}
+    %h4{translate: 'vote_form.have_your_say'}
     .position-buttons
       .position-button.position-button-yes{ng-click: 'selectPosition("yes")'}
       .position-button.position-button-abstain{ng-click: 'selectPosition("abstain")'}
       .position-button.position-button-no{ng-click: 'selectPosition("no")'}
       .position-button.position-button-block{ng-click: 'selectPosition("block")'}
 
-    %form{ng-submit: 'submit()', ng-show: 'vote.position' }
+    %form{ng-submit: 'submit()', ng-show: 'vote.position', ng-disabled: 'vote.saving' }
+      %form_errors{record: 'vote'}
+
       %fieldset
         .form-group
           %label.label-with-details{for: 'vote-statement-field'}
@@ -23,9 +25,9 @@
       %button.btn.btn-default{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}>
 
   .your-position{ng-show: 'lastVote() && !editing'}
-    %h4{translate: 'proposal_card.your_position'}
+    %h4{translate: 'proposal_expanded.your_position'}
 
-    %a.change-position.pull-right{ng-click: 'edit()', href: '#'}
+    %a.cuke-edit-position-btn.pull-right{ng-show: 'proposal.isActive()', ng-click: 'edit()', href: '#'}
       %span{translate: 'common.action.edit'}>
       %i.fa.fa-pencil
 

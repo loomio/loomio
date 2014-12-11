@@ -2,7 +2,7 @@ angular.module('loomioApp').controller 'CloseProposalFormController', ($scope, $
   $scope.proposal = proposal
 
   $scope.submit = ->
-    scope.proposal.close().then ->
+    $scope.proposal.close().then ->
       $modalInstance.close()
 
   $scope.cancel = ($event) ->

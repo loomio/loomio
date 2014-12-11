@@ -1,12 +1,13 @@
-angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $modalInstance, $location, FormService, discussion, UserAuthService) ->
+angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $controller, $location, discussion, UserAuthService) ->
   currentUser = UserAuthService.currentUser
   $scope.discussion = discussion
 
-  onSuccess = (result) ->
-    $modalInstance.dismiss('success')
-    $location.path "/d/#{result.key}"
+  $controller('FormController', {$scope: $scope, record: discussion });
 
-  FormService.applyModalForm $scope, discussion, $modalInstance
+  $scope.onCreateSuccess = (records) ->
+    $scope.onSuccess 'created'
+    discussion = records.discussions[0]
+    $location.path "/d/#{discussion.key}"
 
   $scope.availableGroups = ->
     _.filter currentUser.groups(), (group) ->
@@ -18,6 +19,7 @@ angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $mod
   $scope.setCurrentPrivacy = ->
     if $scope.discussion.isNew()
       $scope.discussion.private = $scope.getCurrentPrivacy() == 'private_only'
+
   $scope.setCurrentPrivacy()
 
   $scope.showPrivacyForm = ->
