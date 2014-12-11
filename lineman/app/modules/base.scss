@@ -44,6 +44,24 @@ h4{
 .nowrap{
   white-space: nowrap;
 }
+.fat-finger{
+  /*utility class to increase the target size of a link*/
+  width: 30px;
+  height: 30px;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.action{
+  color: $kinda-dark-grey;
+  text-decoration: underline;
+}
+.small-action{
+  color: $kinda-dark-grey;
+  text-decoration: underline;
+  @include fontSmall;
+}
 
 .btn-icon{
   text-align: left;

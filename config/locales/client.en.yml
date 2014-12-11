@@ -25,7 +25,9 @@ en:
       aw_crap: 'We''re sorry, but something went wrong. Please try again'
 
   inbox:
-    latest_threads: 'Latest threads'
+    clear: 'Clear'
+    latest: 'Latest'
+    unread: 'Unread'
     closing_in: 'Closing '
 
   session_form:
