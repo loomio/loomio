@@ -38,11 +38,10 @@ class AngularSupportController < ApplicationController
     reset_database
     sign_in patrick
 
-    MotionService.create(motion: Motion.new(author: jennifer,
-                                             name: 'lets go hiking',
-                                             closing_at: 3.days.from_now,
-                                             discussion: testing_discussion),
-                        actor: jennifer)
+    MotionService.create(motion: Motion.new(name: 'lets go hiking',
+                                            closing_at: 3.days.from_now,
+                                            discussion: testing_discussion),
+                        actor: patrick)
 
 
     redirect_to_discussion

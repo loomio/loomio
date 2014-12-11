@@ -7,7 +7,7 @@ describe 'Proposals', ->
     beforeEach ->
       page.loadWithActiveProposal()
 
-    describe 'first vote on a proposal', ->
+    describe 'vote on a proposal', ->
       beforeEach ->
         page.agreeButton().click()
         page.voteStatementInput().sendKeys('I do agree')
@@ -20,14 +20,13 @@ describe 'Proposals', ->
       it 'appends your vote to the discussion thread', ->
         expect(page.newVoteDiscussionItem().getText()).toContain('I do agree')
 
-    #describe 'cancelling before voting', ->
-      #beforeEach ->
-        #page.agreeButton().click()
-        #page.voteStatementInput().sendKeys('I do agree')
-      #it 'closes the vote form'
-      #it 'does not have a current vote for you'
+      it 'lets you change position', ->
+        page.editPositionButton().click()
+        page.abstainButton().click()
+        page.voteStatementInput().clear().sendKeys('now im iffy')
+        page.submitPositionButton().click()
+        expect(page.yourVoteStatement().getText()).toContain('now im iffy')
 
-  # descirbe 'editing a proposal'
 
   describe 'starting a proposal', ->
     beforeEach ->
@@ -49,17 +48,40 @@ describe 'Proposals', ->
       it 'closes the modal', ->
         expect(page.modal().isPresent()).toBe(false)
 
-      # not too sure why this one does not work
-      # it 'displays a flash message', ->
-        #expect(page.flashMessageText()).toContain('created your proposal')
-
       it 'shows the new proposal as the expanded current proposal', ->
         expect(page.expandedProposalTitleText()).toContain('test proposal')
 
-    describe 'invalid due to another proposal already started', ->
-      it "does not close the modal", ->
-        expect(page.modal().isPresent()).toBe(true)
+  describe 'editing propsal', ->
+    beforeEach ->
+      page.loadWithActiveProposal()
 
-      # pending
-      #it "displays the validation errors", ->
-        #expect(element(By.css('.proposal-form .form-errors')).getText()).toContain('Another proposal is already active')
+    it 'lets you edit proposal when there are no votes', ->
+      page.proposalActionsDropdown().click()
+      page.proposalActionsDropdownEdit().click()
+      page.fillInProposalForm('updated title', 'the details are not the same')
+      page.submitProposalForm()
+      expect(page.modal().isPresent()).toBe(false)
+      expect(page.expandedProposalTitleText()).toContain('updated title')
+
+  describe 'closing propsal', ->
+    beforeEach ->
+      page.loadWithActiveProposal()
+
+    iit 'closes the proposal', ->
+      page.proposalActionsDropdown().click()
+      page.proposalActionsDropdownClose().click()
+      page.closeProposalButton().click()
+      expect(page.modal().isPresent()).toBe(false)
+      page.firstCollpasedProposal().click()
+      expect(page.proposalClosedBadge().isPresent()).toBe(true)
+
+  describe 'changing close time', ->
+    beforeEach ->
+      page.loadWithActiveProposal()
+      page.agreeWithProposal('yes why not')
+
+    it 'lets admin change close time', ->
+      page.proposalActionsDropdown().click()
+      page.proposalActionsDropdownChangeCloseTime().click()
+      # something about updating the time
+

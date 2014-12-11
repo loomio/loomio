@@ -6,12 +6,11 @@ angular.module('loomioApp').controller 'ProposalFormController', ($scope, $modal
 
   onCreateSuccess = (records) ->
     $modalInstance.close()
-    proposal = records.proposals[0]
     FlashService.success 'proposal_form.messages.created'
 
   onUpdateSuccess = (records) ->
-    FlashService.success 'proposal_form.messages.updated'
     $modalInstance.close()
+    FlashService.success 'proposal_form.messages.updated'
 
   $scope.submit = ->
     if proposal.isNew()
