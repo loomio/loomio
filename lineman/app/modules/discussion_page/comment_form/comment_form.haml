@@ -9,4 +9,4 @@
   .thread-comment-form-actions.clearfix
     %button#post-comment-btn.btn.btn-default.btn-primary.pull-left.submit.cuke-comment-submit{type: 'submit'} Post
     %attachment_form.pull-left{comment: 'comment'}
-    %button#post-comment-cancel.btn.btn-default.pull-right{translate: 'common.action.cancel', ng-click: 'cancel($event)'}
+    %button#post-comment-cancel.btn.btn-default.pull-right{type: 'button', translate: 'common.action.cancel', ng-click: 'cancel($event)', ng-hide: 'comment.isNew()'}
