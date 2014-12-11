@@ -1,12 +1,25 @@
 %ul.selector-list
   %li.selector-list-header{ng-click: 'logDiscussions()'}
-    %h3{translate: 'inbox.latest_threads'}
-  %li.selector-list-item{ng-repeat: 'discussion in currentUser.inboxDiscussions() | orderBy:["activeProposalClosedAt", "-lastActivityAt"]'}
+    %a.action.pull-right{href: ''}
+      4 unread
+    .dropdown.inbox-filter
+      %a.action.dropdown-toggle{href: ''}
+        %span{translate: 'inbox.latest'}>
+        %i.fa.fa-lg.fa-caret-down
+      .dropdown-menu.dropdown-menu-with-labels
+        %ul.dropdown-menu-items
+          %li.dropdown-menu-item
+            %span{translate: 'inbox.latest'}
+          %li.dropdown-menu-item
+            %span{translate: 'inbox.unread'}
+
+  %li.selector-list-item.is-read{ng-repeat: 'discussion in currentUser.inboxDiscussions() | orderBy:["activeProposalClosedAt", "-lastActivityAt"]'}
     %a.cuke-inbox-item.selector-list-item-link{href: '/d/{{ discussion.key}}'}
-      .brief-time.pull-right
-        .time-ago{timestamp: 'discussion.lastActivityAt'}
-      .selector-list-item-discussion-title
-        {{discussion.title}}
+      .selector-list-item-time-and-title
+        .pull-right
+          %timeago{timestamp: 'discussion.lastActivityAt'}
+        .selector-list-item-discussion-title
+          {{discussion.title}}
       .media.selector-list-item-proposal{ng-if: 'discussion.activeProposal()', ng-init: 'proposal = discussion.activeProposal()'}
         .media-left
           %mini_proposal_pie_chart{proposal: 'proposal'}
@@ -17,4 +30,3 @@
             %timeago{timestamp: 'proposal.closingAt'}>
       .selector-list-item-thread-group-name
         {{::discussion.group().fullName()}}
-      %timeago{timestamp: 'discussion.lastActivityAt'}>
