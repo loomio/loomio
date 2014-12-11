@@ -7,14 +7,14 @@
             %i.fa.fa-chevron-down
           %ul.dropdown-menu
             %li
-              %a{href: '', ng-click: 'editDiscussion()', translate: 'common.action.edit', ng-if: '::canEditDiscussion($scope.discussion)'}
+              %a{href: '', ng-click: 'editDiscussion()', translate: 'common.action.edit', ng-if: 'canEditDiscussion($scope.discussion)'}
         .thread-discussion
           %h1 {{discussion.title}}
           .media.thread-origin
             .media-left.thread-origin-icon
               %img.thread-origin-group-logo{src: "{{discussion.group().logoUrlSmall}}"}
             .media-body.thread-origin-details
-              %a{href: '/g/{{discussion.group().key}}'} {{::discussion.group().fullName()}}
+              %a{href: '/g/{{discussion.group().key}}'} {{discussion.group().fullName()}}
               %br
               %span{translate: 'discussion.started_by', translate-value-name: '{{::discussion.authorName()}}'}
               %timeago.nowrap{timestamp: '::discussion.createdAt' }>
