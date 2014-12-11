@@ -34,8 +34,8 @@ module.exports = class DiscussionPage
     element(By.css('.cuke-start-proposal-btn')).click()
 
   fillInProposalForm: (name, description) ->
-    element(By.model('proposal.name')).sendKeys(name)
-    element(By.model('proposal.description')).sendKeys(description)
+    element(By.model('proposal.name')).clear().sendKeys(name)
+    element(By.model('proposal.description')).clear().sendKeys(description)
     element(By.css('i.fa-calendar')).click()
     element(By.css('th.right')).click()
     element(By.css('th.right')).click()
@@ -43,7 +43,7 @@ module.exports = class DiscussionPage
     element.all(By.css('span.hour')).last().click()
 
   submitProposalForm: ->
-    element(By.css('.cuke-start-proposal-btn')).click()
+    element(By.css('.cuke-save-proposal-btn')).click()
 
   modal: ->
     element(By.css('.modal-dialog'))
@@ -57,14 +57,25 @@ module.exports = class DiscussionPage
   flashMessageText: ->
     element(By.css('.flash-container')).getText()
 
+  agreeWithProposal: (statement) ->
+    @agreeButton().click()
+    @voteStatementInput().sendKeys(statement)
+    @submitPositionButton().click()
+
   agreeButton: ->
     element(By.css('.position-button-yes'))
+
+  abstainButton: ->
+    element(By.css('.position-button-abstain'))
 
   voteStatementInput: ->
     element(By.model('vote.statement'))
 
   submitPositionButton: ->
     element(By.css('.cuke-submit-position'))
+
+  editPositionButton: ->
+    element(By.css('.cuke-edit-position-btn'))
 
   yourPositionIcon: ->
     element(By.css('.your-position-icon'))
@@ -74,4 +85,22 @@ module.exports = class DiscussionPage
 
   newVoteDiscussionItem: ->
     element(By.css('.thread-new-vote-item'))
+
+  proposalActionsDropdown: ->
+    element(By.css('.cuke-proposal-actions-dropdown-btn'))
+
+  proposalActionsDropdownEdit: ->
+    element(By.css('.proposal-actions-dropdown')).element(By.css('.cuke-edit-proposal'))
+
+  proposalActionsDropdownClose: ->
+    element(By.css('.proposal-actions-dropdown')).element(By.css('.cuke-close-proposal'))
+
+  closeProposalButton: ->
+    element(By.css('.cuke-close-proposal-btn'))
+
+  proposalClosedBadge: ->
+    element(By.css('.cuke-proposal-closed-badge'))
+
+  firstCollpasedProposal: ->
+    element(By.css('.proposal-collapsed a'))
 

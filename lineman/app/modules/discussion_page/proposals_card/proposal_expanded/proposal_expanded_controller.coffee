@@ -2,6 +2,9 @@ angular.module('loomioApp').controller 'ProposalExpandedController', ($scope, $m
   Records.votes.fetchByProposal($scope.proposal)
   currentUser = UserAuthService.currentUser
 
+  $scope.showActionsDropdown = ->
+    currentUser.canCloseOrExtendProposal($scope.proposal)
+
   filteredVotes = ->
     return [] unless $scope.proposal
     _.filter $scope.proposal.uniqueVotes(), (vote) ->
@@ -17,7 +20,7 @@ angular.module('loomioApp').controller 'ProposalExpandedController', ($scope, $m
     $scope.proposal.votes().length == 0
 
   $scope.curatedVotes = ->
-    positionValues = {yes: 0, abstain: 1, no: 3, block: 3}
+    positionValues = {yes: 0, abstain: 1, no: 2, block: 3}
     _.sortBy filteredVotes(), (vote) ->
       positionValues[vote.position]
 

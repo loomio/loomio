@@ -58,6 +58,7 @@ en:
     motion_outcome_updated: "updated the outcome for the proposal"
 
   vote_form:
+    have_your_say: 'Have your say'
     messages:
       new_vote: 'Your vote counts!'
       update_vote: 'Successfully changed your position'
@@ -115,14 +116,15 @@ en:
     new_discussion_submit: 'Start thread'
     edit_discussion_submit: 'Edit thread'
 
-  proposal_card:
+  proposal_expanded:
     your_position: 'Your Position'
-    have_your_say: 'Have your say'
     started_by: 'Started by <strong>{{name}}</strong>'
     no_votes_yet: 'Nobody has voted on this proposal yet.'
     only_voter_is_you: 'No other members have voted yet.'
+    extend_proposal: 'Change closing time'
     edit_proposal: 'Edit proposal'
     close_proposal: 'Close proposal'
+
 
   proposal_position_yes: 'Agree'
   proposal_position_abstain: 'Abstain'
