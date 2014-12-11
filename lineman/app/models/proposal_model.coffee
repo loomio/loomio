@@ -71,5 +71,5 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
       @lastVoteByUser(user)?
 
     close: ->
-      @saving = true
+      @processing = true
       @restfulClient.postMember(@id, "close").then(@saveSuccess, @saveFailure)
