@@ -21,3 +21,11 @@ angular.module('loomioApp').factory 'ProposalFormService', ($modal, Records) ->
         controller: 'CloseProposalFormController',
         resolve:
           proposal: -> proposal
+
+    openExtendProposalModal: (proposal) ->
+      $modal.open
+        templateUrl: 'generated/modules/discussion_page/proposals_card/extend_proposal_form/extend_proposal_form.html',
+        controller: 'ExtendProposalFormController',
+        resolve:
+          proposal: -> angular.copy(proposal)
+

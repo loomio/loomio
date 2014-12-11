@@ -11,3 +11,6 @@ angular.module('loomioApp').controller 'ProposalActionsDropdownController', ($sc
 
   $scope.closeProposal = ->
     ProposalFormService.openCloseProposalModal($scope.proposal)
+
+  $scope.extendProposal = ->
+    ProposalFormService.openExtendProposalModal($scope.proposal)

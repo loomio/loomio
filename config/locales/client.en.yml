@@ -80,6 +80,11 @@ en:
     helptext: 'Are you sure you want to close this proposal now?'
     close_proposal_submit: 'Close proposal early'
 
+  extend_proposal_form:
+    title: 'Change close time'
+    success: 'Proposal close time updated'
+    submit: 'Update closing time'
+
   proposal_form:
     messages:
       created: 'Successfully created your proposal'

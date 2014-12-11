@@ -1,0 +1,9 @@
+%fieldset
+  .form-group{dropdown: '', is-open: 'dropdownIsOpen'}
+    %label{for: 'proposal-close-date-field', translate: 'proposal_form.closes_at_label'}
+    .input-group.dropdown-toggle
+      %input.form-control{ng-model: 'proposal.closingAt', ng-required: 'true'}
+      %span.input-group-addon
+        %i.fa.fa-calendar
+    .dropdown-menu{role: 'menu'}
+      %datetimepicker{ng-model: 'proposal.closingAt', data-datetimepicker-config: "{ startView:'day', minView:'hour'}", on-set-time: 'closeDateTimePicker()'}
