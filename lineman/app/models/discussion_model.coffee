@@ -32,6 +32,10 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       @proposalsView.applyFind(discussionId: @id)
       @proposalsView.applySimpleSort('id')
 
+    translationOptions: ->
+      title:     @title
+      groupName: @groupName()
+
     serialize: ->
       discussion:
         group_id: @groupId

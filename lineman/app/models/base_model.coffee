@@ -2,6 +2,8 @@ angular.module('loomioApp').factory 'BaseModel', ->
   class BaseModel
     @singular: 'undefinedSingular'
     @plural: 'undefinedPlural'
+    errors: {}
+    processing: false
 
     constructor: (recordsInterface, data) ->
       Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: true)
@@ -13,6 +15,8 @@ angular.module('loomioApp').factory 'BaseModel', ->
     initialize: ->
 
     setupViews: ->
+
+    translationOptions: ->
 
     viewName: -> "#{@constructor.plural}#{@id}"
 
@@ -26,13 +30,25 @@ angular.module('loomioApp').factory 'BaseModel', ->
         @id
 
     save: ->
+      @errors = {}
+      @processing = true
       if @isNew()
-        @restfulClient.create(@serialize())
+        @restfulClient.create(@serialize()).then(@saveSuccess, @saveFailure)
       else
-        @restfulClient.update(@keyOrId(), @serialize())
+        @restfulClient.update(@keyOrId(), @serialize()).then(@saveSuccess, @saveFailure)
 
     destroy: ->
-      @restfulClient.destroy(@keyOrId())
+      @processing = true
+      @restfulClient.destroy(@keyOrId()).then(@saveSuccess, @saveFailure)
 
-    update: (record) ->
-      @restfulClient.update(@keyOrId(), @serialize())
+    saveSuccess: (records) ->
+      @processing = false
+      records
+
+    saveFailure: (errors) ->
+      @processing = false
+      @errors = errors
+      throw errors
+
+    isValid: ->
+      @errors.length > 0

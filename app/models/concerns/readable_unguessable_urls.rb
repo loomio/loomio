@@ -5,7 +5,7 @@ module ReadableUnguessableUrls
 
   included do |base|
     base.extend FriendlyId
-    base.send :friendly_id, :key
+    base.send :friendly_id, :key, use: [:finders]
     base.send :before_validation, :set_key
     base.send :validates, :key, uniqueness: true, presence: true
   end

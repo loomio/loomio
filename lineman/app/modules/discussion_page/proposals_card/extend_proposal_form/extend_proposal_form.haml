@@ -3,11 +3,11 @@
     %button{type: 'button', class: 'close', ng-click: 'cancel()'}
       %span{aria-hidden: true} &times;
       %span.sr-only{translate: 'common.action.cancel'}
-    %h1{translate: 'close_proposal_form.close_proposal'}
+    %h1{translate: 'extend_proposal_form.title'}
 
   .modal-body
-    %span{translate: 'close_proposal_form.helptext'}
+    .thing{ng-include: '"generated/modules/discussion_page/proposals_card/proposal_form/closing_at_field.html"'}
 
   .modal-footer
-    %button.btn.btn-primary.cuke-close-proposal-btn{type: 'submit', translate: 'close_proposal_form.close_proposal_submit'}
+    %button.btn.btn-primary.cuke-extend-proposal-btn{type: 'submit', translate: 'extend_proposal_form.submit'}
     %button.btn.btn-warning{type: 'button', ng-click: 'cancel($event)', translate: 'common.action.cancel'}
