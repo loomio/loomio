@@ -1,5 +1,5 @@
 .vote-form-and-your-position
-  .vote-form{ng-show: 'proposal.isActive() && (!lastVote() || editing)', ng-disabled: 'vote.saving'}
+  .vote-form{ng-show: 'proposal.isActive() && (!lastVote() || editing)', ng-disabled: 'vote.processing'}
     %h4{translate: 'vote_form.have_your_say'}
     .position-buttons
       .position-button.position-button-yes{ng-click: 'selectPosition("yes")'}
@@ -7,7 +7,7 @@
       .position-button.position-button-no{ng-click: 'selectPosition("no")'}
       .position-button.position-button-block{ng-click: 'selectPosition("block")'}
 
-    %form{ng-submit: 'submit()', ng-show: 'vote.position', ng-disabled: 'vote.saving' }
+    %form{ng-submit: 'submit()', ng-show: 'vote.position', ng-disabled: 'vote.processing' }
       %form_errors{record: 'vote'}
 
       %fieldset
