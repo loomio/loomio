@@ -4,16 +4,23 @@ angular.module('loomioApp').factory 'FlashService', ($timeout, FlashModel) ->
     constructor: ->
       @currentFlash = new FlashModel
 
-    success: (message) => @set(message, 'success')
-    failure: (message) => @set(message, 'danger')
-    info:    (message) => @set(message, 'info')
+    success: (recordName, action, options = {}) =>
+      @set "#{recordName}_record.#{action}", "success", options
+
+    info:    (message, options = {}) =>
+      @set(message, 'info', options)
+
+    failure: (errors, options = {}) =>
+      @set(errors, 'danger', options)
 
     clear: =>
       @currentFlash.message = null
-      @currentFlash.level = null
+      @currentFlash.level   = null
+      @currentFlash.options = null
 
-    set: (message, level) =>
+    set: (message, level, options = {}) =>
       @currentFlash.message = message
-      @currentFlash.level = level
+      @currentFlash.level   = level
+      @currentFlash.options = options
       $timeout.cancel @pending if @pending?
       @pending = $timeout @clear, 4000
