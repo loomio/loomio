@@ -1,4 +1,4 @@
-class CommentSerializer < ActiveModel::Serializer
+class CommentSerializer < EventableSerializer
   include Twitter::Autolink
 
   embed :ids, include: true
