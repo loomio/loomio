@@ -56,6 +56,8 @@ en:
     mailer:
       invitation_instructions:
         subject: 'Someone has invited you to join their Loomio group'
+    registrations:
+      sign_up: 'Create account'
     sessions:
       signed_out: ''
 
