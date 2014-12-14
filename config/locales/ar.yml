@@ -233,7 +233,6 @@ ar:
   edit_memberships: 'عدّل العضويات'
   add_new_member: "أضف عضوا جديدا"
   invite_members_to_group: "قم بدعوة أعضاء إلى %{which_group}"
-  remaining_invites: "الدعوات المتبقية"
   get_in_touch_link: "تواصل معنا"
   email_members_in_group: "أرسل بريدا إلكترونيا إلى أعضاء %{which_group}"
   subject_error: "يرجى ملء حقل العنوان"

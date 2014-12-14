@@ -8,7 +8,7 @@ gl:
         email_when_mentioned: "Cando me @mencionan"
         email_followed_threads: "Cando hai actividade nos fíos que sigo."
         email_when_proposal_closing_soon: "24 horas antes do peche dunha proposta"
-        email_new_discussions_and_proposals: 'Debates e propostas novos'
+        email_new_discussions_and_proposals: 'Novos debates e propostas'
         for_these_groups: "Para estes grupos:"
         submit: "Gardar as preferencias"
   explore:
@@ -32,6 +32,7 @@ gl:
       too_large: "O arquivo que tentas subir supera os 50MB, por favor, téntao con un máis pequeno."
   devise:
     invitations:
+      send_instructions: 'Unha invitación foi enviada a %{email}'
       invitation_token_invalid: 'Esta invitación xa non é válida!'
       updated: 'Conta creada.'
       no_invitations_remaining: "Non fican invitacións"
@@ -88,18 +89,129 @@ gl:
       auto_added:
         one: "Engadiuse 1 membro"
         other: "Engadíronse %{count} membros"
+      sent:
+        one: "1 invitación enviada"
+        other: "%{count} invitacións enviadas"
+  tooltip:
+    cover_photo_upload: "Sube unha nova foto de portada"
+    logo_upload: "Sube un novo logo"
+    edit_description: "Edita a descripción"
+    group_category: "Busca máis grupos coma este"
+  views:
+    pagination:
+      previous: "Anterior"
+      next: "Seguinte"
+  warning:
+    cant_remove_last_admin: "Eres o último coordinador e non pode ser eliminado"
   success:
+    added_to_group: "Acabas de ser engadido a %{which_group}."
     discussion_created: "Debate creado correctamente."
     discussion_deleted: "Debate eliminado correctamente."
+    discussion_moved: "O debate foi movido satisfactoriamente a %{group_name}"
+    emails_sending: "Enviado correos"
+    group_archived: "O grupo foi arquivado correctamente"
+    group_created: "Grupo creado correctamente"
+    members_added: "Membras engadidas ao grupo"
+    membership_requested: "Preguntache para entrar en %{which_group}. Notificarémoscho unha vez que a túa petición sexa aprobada."
+    password_updated: "O teu contrasinal foi cambiado correctamente"
+  datetime:
+    distance_in_words:
+      less_than_x_seconds:
+        one: "1 segundo"
+        other: "%{count} segundos"
+      x_seconds:
+        one: "1 segundo"
+        other: "%{count} segundos"
+      less_than_x_minutes:
+        one: "1 minuto"
+        other: "%{count} minutos"
+      x_minutes:
+        one: "1 minuto"
+        other: "%{count} minutos"
+      about_x_hours:
+        one: "1 hora"
+        other: "%{count} horas"
+      x_days:
+        one: "1 día"
+        other: "%{count} días"
+      about_x_months:
+        one: "1 mes"
+        other: "%{count} meses"
+      x_months:
+        one: "1 mes"
+        other: "%{count} meses"
+      about_x_years:
+        one: "1 ano"
+        other: "%{count} anos"
+      over_x_years:
+        one: "1 ano"
+        other: "%{count} anos"
+      almost_x_years:
+        one: "1 ano"
+        other: "%{count} anos"
+  organisation:
+    name: "Loomio"
+  footer:
+    about: 'Acerca de'
+    blog: 'Blogue'
+    contact: 'Contacto'
+    privacy: 'Privacidade'
+    terms: 'Termos de uso'
+  inbox:
+    title: 'Caixa de entrada'
+    preferences: 'Axustes da caixa de entrada'
+    what_you_have_not_read_yet: "Aquí está a actividade que aínda non liches"
+    dropdown-btn: 'Caixa de entrada'
   notifications:
+    header: "Notificacións"
     new_comment: "comentado no debate"
     comment_liked: "gustou do teu comentario no debate"
+    user_mentioned: "Mencionaronte nun comentario en"
+    user_added_to_group: "engadiute ao grupo"
   edit_discussion_context: "Editar o contexto do debate"
+  request_new_group: "Comeza un grupo"
+  start_new_group: "Comeza un novo grupo"
+  find_a_group: "Busca un grupo"
+  find_a_group_hint: "Explorar grupos públicos"
+  search_for_group: "Busca un grupo"
+  no_groups_found: "Ningún grupo atopado con este nome"
+  no_group_header: "Benvido a Loomio Beta"
+  empty_notifications: "Non tes notificacións neste momento"
+  see_all_notifications: "Ver todas as notificacións"
+  profile: "Perfil"
+  email_settings: "Opcións do correo"
+  sign_out: "Pechar sesión"
+  sign_in: "Identifícate"
+  or_sign_in_html: "Se xa tes unha conta de Loomio, <a href='%{link}' class='%{link_class}'>identifícate aquí</a>"
+  click_to_dismiss: "Fai clic aquí para descartar esta mensaxe"
+  generic_confirm: "Estás seguro?"
   discussion_helper_text:
     header: "Noraboa polo teu primeiro debate"
     message: "<p>O asunto vai no alto da páxina, co contexto xusto debaixo.</p><p>O debate vai na esquerda, as decisións aparecen na dereita. Se pensas que o grupo está preparado para tomar unha decisión, podes facer unha proposta para que o grupo a teña en consideración.</p>"
   group_helper_text:
+    header: "Benvido ao teu novo grupo!"
     message: "<p>Esta é a <strong>páxina do grupo</strong>. Na esquerda está a lista de todos os debates neste grupo.</p><p>Se queres que o grupo debata outro asunto, inicia un novo debate.</p>"
+  dashboard_helper_text:
+    header: "Benvido á túa páxina inicial"
+  user_profile:
+    back: "Voltar ao meu perfil"
+    change_password: "Cambiar o contrasinal"
+    deactivate_account: "Elimina a túa conta"
+    about_deactivation: "Que carallo significa isto?"
+    confirm_account_deactivation: "Estás seguro de querer eliminar a túa conta?"
+    deactivation:
+      title: "Eliminando a túa conta"
+      query: "Poderíasnos dicir por que estás a desactivar a túa conta?"
+  group_form:
+    name: "Nome do grupo"
+    description: "Descripción"
+    category: "Categoría"
+    what_can_members_do: "Que poden facer os membros?"
+    members_can:
+      add_members: Invita e aproba novos membros
+      edit_comments: Edita os seus comentarios en calquera momento
+      start_discussions: Comeza debates
+      create_subgroups: Crea subgrupos
   setup_step_1: "Bótalle un ollo ao debate de exemplo"
   setup_step_2: "Iniciar o teu primeiro debate"
   start_a_discussion: "Comezar un debate"
