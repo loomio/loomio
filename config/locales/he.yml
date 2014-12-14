@@ -248,6 +248,7 @@ he:
     body: "אם אתם חברים בקבוצה זו, עליכם להתחבר על מנת להשתתף."
   prompt_user_to_join:
     header: "הצטרפות לקבוצה כדי להשתתף"
+    body: "כדי להוסיף הערה או דעה עליך להיות חבר בקבוצה"
   user_profile:
     back: "חזרה לפרופיל שלי"
     change_password: "שינוי סיסמא"
@@ -261,6 +262,9 @@ he:
       only_coordinator: "כל קבוצה חייבת לפחות מתאם אחד. כרגע את/ה המתאם היחידי לקבוצות הבאות:"
       instructions: "על מנת להשהות את החשבון יש להוסיף מתאמים נוספים לקבוצות או להשהות אותן"
       info_title: "מה משמעות השהיית החשבון?"
+      memberships: "הרישום לכל הקבוצות להן אתם רשומים יבוטל."
+      group_contributions: "ההערות, ההצעות והשיחות שהוספת לקבוצה לא ימחקו, אבל נסיר את שמך מהם."
+      emails: "נפסיק לשלוח לך דוא״ל הקשור ל Loomio."
   group_form:
     name: "שם הקבוצה"
     description: "תיאור"
@@ -271,6 +275,7 @@ he:
     members_can:
       add_members: הזמנה ואישור של חברים חדשים
       edit_comments: עריכת ההערות שלהם בכל עת
+      edit_discussions: עריכת ההקשר של שיחה כלשהי בקבוצה
       start_discussions: התחלת דיונים
       raise_motions: הוספת הצעה
       vote: הצבעה על הצעה
@@ -294,6 +299,7 @@ he:
   group_permissions:
     header: הרשאות בקבוצה
     c1: שינוי הגדרות קבוצה
+    c2: עריכת הנושא וההקשר של שיחה כלשהי
     c3: העברת דיונים בין קבוצות.
     c4: הזמנה ואישור של חברים חדשים
     c5: שליחת הודעה אנונימית לכל חברי הקבוצה
@@ -305,6 +311,7 @@ he:
     c13: הצבעה על הצעה.
     members_defaults: "בהגדרות ברירת המחדל, חברים יוכלו:"
     m1: למחוק את ההערות של עצמם
+    m5: עריכת הנושא וההקשר של שיחה כלשהי
     m8: הוספת הצעות והשתתפות.
   discussion_privacy:
     public: הדיון הזה פתוח לציבור באתר
@@ -317,6 +324,13 @@ he:
   setup_step_2: "התחילו בדיון הראשון שלכם"
   setup_step_3: "הזמינו אנשים לקבוצה שלך"
   invite_people: "הזמינו אנשים"
+  no_invitations_button: "לא נותרו הזמנות"
+  number_pending: '%{pending} בהמתנה'
+  and_number_pending: 'ו%{pending} בהמתנה'
+  edit_memberships: 'עריכת חברויות'
+  add_new_member: "הוספת חבר חדש"
+  email_members_in_group: "שלחו דוא״ל לחברים בקבוצה %{which_group}"
+  email_group_members: "שלחו דוא״ל לחברי הקבוצה"
   leave_group: "עזיבת הקבוצה"
   members: "חברים"
   join_group_btn: הצטרפו לקבוצה
@@ -332,6 +346,13 @@ he:
   new_group: "קבוצה חדשה"
   start_a_discussion: "התחלת דיון"
   group_description: "תיאור קבוצה"
+  groups:
+    follow:
+      following_details: "תקבלו הודעה על כל שיחה בקבוצה זו"
+      not_following_details: "תקבלו הודעה על שיחות בהן השתתפתם"
+  group_request:
+    confirmation:
+      title: כמעט סיימת. הודעה נשלחה לתיבת הדוא״ל שלך.
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> הסכימ/ה להצעה."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> נמנע/ה לגבי ההצעה."
@@ -375,6 +396,10 @@ he:
   discussion_context:
     started_html: "התחיל לפני %{when} על ידי <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "נערך לאחרונה לפני %{when} על ידי <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    click_to_follow: "לחצו למעקב אחר השיחה"
+    click_to_unfollow: "לחצו להפסיק מעקב אחר השיחה"
+    following_details: "תקבלו הודעה על פעילות בשיחה זו"
+    not_following_details: "תקבלו הודעה על פעילות בשיחה זו"
   description_history:
     subheader: "גירסא"
     edited_by: "נערך לפני כ%{when} על ידי %{who}"
@@ -406,6 +431,8 @@ he:
     past_tense:
       'yes': "הסכימו"
       'no': "לא הסכימו"
+  unable_to_vote:
+    permission_denied: "אין לך הרשאות להצביע על הצעה זו"
   help:
     getting_started: "מתחילים"
     help: "עזרה"
@@ -414,15 +441,23 @@ he:
     discussion: 'טיפים להתחלת דיון מרתק'
   pricing_page:
     informal_groups_desc: חברי הקבוצה שלך יתבקשו לשלם כפי יכולתם
+  cancel_my_account: "בטל את החשבון שלי"
   invitation:
     alternate: "לחליפין, שיתוף הקישור הזה יאפשר לכל אחד לבקש להצטרף"
+    by_email: "הזמנה בדוא״ל"
+    no_invitations_left_get_more: "נא פנו ל contact@loomio.org (עדיף באנגלית) ואנחנו נבדוק איך נוכל לעזור"
     invitation_not_found: 'לא נמצאה הזמנה, אנא בקשו שישלחו לכם הזמנה חדשה.'
+    invitation_cancelled: 'הזמנה זו בוטלה. נא ליצור קשר עם השולח אם זו נראית לך טעות.'
+    recipients: "נא להזין כתובות דוא״ל, מופרדות בפסיקים:"
     invite_to_discussion: "הזמנת אנשים לדיון זה"
     body_editable_discussion: |
       הי, בואו הצטרפו לדיון!
     discussion_link: "השתתפו בדיון:"
+    import_contacts_html: "לא זוכרים כתובת דוא״ל? ניתן לייבא אנשי קשר מ %{google_link}"
   contact_page:
     contact_us: 'צרו קשר'
+    labels:
+      email: 'כתובת הדוא״ל שלך'
   discussion_form:
     new:
       header: "התחילו בדיון"
@@ -453,7 +488,7 @@ he:
     labels:
       discussion:
         title: "כותרת"
-        description: "קונטקסט"
+        description: "הקשר"
       membership_request:
         introduction: "הצג/י את עצמך"
       motion:
@@ -492,19 +527,28 @@ he:
     create_proposal:
       intro: "הצעה חדשה נוצרה בקבוצה אליה את/ה משויכ/ת."
       subject: "הצעה חדשה %{which}"
+    daily_activity:
+      subject: "Loomio - סיכום 24 השעות האחרונות"
     missed_yesterday:
       subject: "אתמול בLoomio"
       mark_as_read: סמן כנקרא
+      thanks_for_reading: תודה שקראת. יום טוב!
+    group_membership_approved:
+      subject: "החברות אושרה"
     invitation:
       hi: "שלום %{name},"
     new_motion_created:
       context: "%{author} יצר/ה הצעה ב %{group_full_name}:"
     proposal_outcome:
       subject: "תוצאת ההצעה"
+    proposal_closing_soon:
+      summary: "סיכום"
     thread_mailer:
+      change_preferences: "שינוי העדפות הדוא״ל שלך:"
       proposal_closed: "ההצעה נסגרה:"
     verification:
       header: "כמעט סיימת!"
+      ignore: "אם לא ביקשת להצטרף ל-Loomio נא להתעלם מהודעה זו."
   about_loomio: "אודות Loomio"
   ago: "לפני %{quantity_of_time}"
   approve: "אישור"
@@ -585,4 +629,94 @@ he:
     groups: "קבוצות"
     select_error: יש לבחור אפשרות
     today: היום
+    select: נא לבחור
+    months:
+      january: ינואר
+      february: פברואר
+      march: מרץ
+      april: אפריל
+      may: מאי
+      june: יוני
+      july: יולי
+      august: אוגוסט
+      september: ספטמבר
+      october: אוקטובר
+      november: נובמבר
+      december: דצמבר
+    abbr_months:
+      jan: ינואר
+      feb: פבר
+      mar: מרץ
+      apr: אפר
+      may: מאי
+      jun: יוני
+      jul: יולי
+      aug: אוג
+      sep: ספט
+      oct: אוק
+      nov: נוב
+      dec: דצמ
+    days:
+      monday: יום שני
+      tuesday: יום שלישי
+      wednesday: יום רביעי
+      thursday: יום חמישי
+      friday: יום שישי
+      saturday: יום שבת
+      sunday: יום ראשון
+    abbr_days:
+      mon: שני
+      tue: שלישי
+      wed: רביעי
+      thu: חמישי
+      fri: שישי
+      sat: שבת
+      sun: ראשון
+    tiny_days:
+      mo: ב
+      tu: ג
+      we: ד
+      th: ה
+      fr: ו
+      sa: ש
+      su: א
+    meridians:
+      am: 'am'
+      pm: 'pm'
+    please_wait: "נא להמתין"
+    privacy: "פרטיות"
+    private: "פרטי"
+    permissions: "הרשאות"
     public: "פתוח לציבור"
+    email: "דואל"
+    start_group: "יצירת קבוצה!"
+  group_categories:
+    all: "הכל"
+    blank: "ללא קטגוריה"
+    economics: "כלכלה"
+    activist: "פעיל"
+    arts: "אומנות"
+    business: "עסק"
+    collective: "קולקטיב"
+    community_group: "קבוצה קהילתית"
+    co_operative: "קואופורטיב"
+    democratic_organisation: "אירגון דמוקרטי"
+    education: "חינוך"
+    environmental_group: "קבוצה סביבתית"
+    family: "משפחה"
+    local_government: "ממשל מקומי"
+    online_community: "קהילה מקוונת"
+    religious_group: "דתי/רוחני"
+    event: "אירוע"
+    open_source_software: "תוכנת קוד פתוח"
+    political_initiative: "יזמות פוליטית"
+    social_enterprise: "יזמות חברתית"
+    social_justice: "צדק חברתי"
+    advocacy_group: "קבוצות לחץ"
+    science: "מדע"
+    technology: "טכנולוגיה"
+    sports: "ספורט"
+    youth: "נוער"
+    women: "נשים"
+    media: "מדיה"
+    health: "בריאות"

@@ -352,7 +352,6 @@ be-BY:
   edit_memberships: 'Рэдагаваць чалецтва'
   add_new_member: "Дадаць новага ўдзельніка"
   invite_members_to_group: "Запрасіць удзельніка ў %{which_group}"
-  remaining_invites: "запрашэнняў засталася"
   get_in_touch_link: "звязацца з намі"
   email_members_in_group: "Разаслаць email удзельнікам  %{which_group}"
   subject_error: "Калі ласка, увядзіце назву тэмы"
