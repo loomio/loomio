@@ -24,10 +24,6 @@ Loomio::Application.routes.draw do
     end
   end
 
-  namespace :style_guide do
-    get 'discussion/:key', action: :discussion
-  end
-
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resources :groups, only: [:show, :create, :update] do
       get :subgroups, on: :member
