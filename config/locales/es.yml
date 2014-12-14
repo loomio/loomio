@@ -352,7 +352,6 @@ es:
   edit_memberships: 'Editar membresías'
   add_new_member: "Adherir Nuevo miembro"
   invite_members_to_group: "Invitar miembros a %{which_group}"
-  remaining_invites: "invitaciones restantes"
   get_in_touch_link: "ponerse en contacto"
   email_members_in_group: "Enviar correo electrónico a los miembros de %{which_group}"
   subject_error: "Por favor escriba un título"

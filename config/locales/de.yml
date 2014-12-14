@@ -189,12 +189,12 @@ de:
     terms: 'Bedingungen'
   inbox:
     clear: 'Leeren'
-    title: 'Posteingang'
-    preferences: 'Posteingangs-Optionen'
+    title: 'Eingang'
+    preferences: 'Eingangs-Optionen'
     what_you_have_not_read_yet: "Hier sind alle Aktivitäten, die Du noch nicht gelesen hast."
     dropdown-btn: 'Eingang'
     empty: Du bist auf dem neuesten Stand! Es gibt keine Kommentare, die Du noch nicht gesehen hast.
-    preferences_instructions_html: '<strong>Ziehe die Objekte</strong> Um sie neu zu ordnen.  <strong>Deaktivieren</strong> um es aus der inbox zu entfernen.'
+    preferences_instructions_html: '<strong>Ziehe die Objekte</strong> um sie neu zu ordnen.  <strong>Deaktivieren</strong> um es aus der inbox zu entfernen.'
   notifications:
     header: "Benachrichtigungen"
     new_discussion: "begann eine Diskussion"
@@ -251,11 +251,11 @@ de:
     body: "Um Kommentare abzugeben oder abzustimmen musst Du in dieser Gruppe Mitglied sein."
   user_profile:
     back: "Zurück zu meinem Profil"
-    change_password: "Ändere Dein Passwort"
+    change_password: "Passwort ändern"
     deactivate_account: "Konto deaktivieren"
-    about_deactivation: "Was bedeutet dies?"
+    about_deactivation: "Was bedeutet das?"
     confirm_account_deactivation: "Bist du sicher, dass du Dein Konto deaktivieren willst?"
-    reactivation_html: "Du wirst <a href='%{link}'>uns kontaktieren</a> müssen, um Dein Konto zu reaktivieren."
+    reactivation_html: "Du wirst uns <a href='%{link}'>kontaktieren</a> müssen, um Dein Konto zu reaktivieren."
     deactivation:
       title: "Konto deaktivieren"
       query: "Würdest Du uns bitte mitteilen, warum Du Dein Konto deaktivierst?"
@@ -352,7 +352,7 @@ de:
   edit_memberships: 'Mitgliedschaften bearbeiten'
   add_new_member: "Neues Mitglied hinzufügen"
   invite_members_to_group: "Mitglieder zu %{which_group} einladen"
-  remaining_invites: "verbleibende Einladungen"
+  remaining_invites_count: "%{count} verbleibende Einladungen"
   get_in_touch_link: "Melde dich bei uns"
   email_members_in_group: "Benachrichtige die Mitglieder in %{which_group} per eMail"
   subject_error: "Bitte füge einen Betreff hinzu"
@@ -431,6 +431,15 @@ de:
         Wir haben Dir eine eMail mit einer Einladung zum Gründen deiner Gruppe geschickt.
 
         Solltest Du in ein paar Minuten noch keine Nachricht erhalten haben, dann schreibe uns eine eMail an <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> stimmte dem Vorschlag zu."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> hat sich der Stimme enthalten."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> stimmt mit dem Vorschlag nicht überein."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> lehnt den Vorschlag strikt ab."
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> stimmte dem Vorschlag zu:"
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> hat sich der Stimme enthalten: "
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> stimmt mit dem Vorschlag nicht überein:"
+    user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> lehnt den Vorschlag strikt ab:"
   discussion_items:
     new_discussion: "hat eine Diskussion erstellt"
     new_motion: "hat einen Vorschlag gemacht"
@@ -681,6 +690,7 @@ de:
   remember_me: "Angemeldet bleiben"
   signing_in: "Anmelden"
   or: "oder"
+  invalid_email: Die eingegebene eMail-Adresse ist ungültig, bitte gib eine gültige eMail-Adresse an
   forgot_your_password: "Passwort vergessen?"
   dont_have_an_account: "Du hast noch kein Konto?"
   create_one_now: "Erstelle jetzt einen "
@@ -1028,6 +1038,7 @@ de:
   google: "Google"
   persona: "Persona"
   common:
+    markdown_help_tooltip: 'Lerne die Grundlagen des Textformatierens mit Markdown'
     settings: Einstellungen
     dashboard: Schreibtisch
     unread: Ungelesen
@@ -1105,17 +1116,17 @@ de:
     blank: "Unkategorisiert"
     economics: "Wirtschaft"
     activist: "Aktivist"
-    arts: "Künste"
+    arts: "Kunst"
     business: "Business"
     collective: "Gemeinschaft"
     community_group: "Community-Gruppe"
-    co_operative: "Kooperative / Genossenschaft"
+    co_operative: "Kooperative/Genossenschaft"
     democratic_organisation: "Demokratische Organisation"
     education: "Bildung"
     environmental_group: "Umweltschutz-Gruppe"
     family: "Familie"
     local_government: "Kommunalverwaltung"
-    online_community: "Online community"
+    online_community: "Online Community"
     religious_group: "Religiös/spirituell"
     event: "Veranstaltung"
     open_source_software: "Open Source Software"
@@ -1130,3 +1141,4 @@ de:
     women: "Frauen"
     media: "Medien"
     health: "Gesundheit"
+  start_your_group: Starte Deine Gruppe

@@ -1,4 +1,16 @@
 sr-RS:
+  users:
+    email_preferences:
+      edit:
+        title: 'Особине еПорука'
+        when_do_you_want_emails: 'Обавести ме:'
+        email_missed_yesterday: "'Јуче на Лумију' - дневни извештај свих активности које сте пропустили"
+        email_when_mentioned: "Када сам @поменут/а"
+        email_followed_threads: "Када има активности у областима које пратим."
+        email_when_proposal_closing_soon: "24 часа пре истека предлога."
+        email_new_discussions_and_proposals: 'Нове дискусије и предлози'
+        for_these_groups: "За ове групе:"
+        submit: "Сачувај подешавања"
   explore:
     header: "Истражи јавне групe"
   try_it:
@@ -28,6 +40,7 @@ sr-RS:
   devise:
     invitations:
       send_instructions: 'Позив је послат на %{email}.'
+      invitation_token_invalid: 'Ова позивница не важи више!'
       updated: 'Налог креиран.'
       no_invitations_remaining: "Нема више позивница"
     mailer:
@@ -58,6 +71,7 @@ sr-RS:
     group_request_invalid_token: "Извините! Ово је неважећи објект"
     group_private_or_not_found: "Група није пронађена.\n\nОва група је можда приватна. Ако Вам је неко дао овај линк, замолите да Вас позове у групу."
     group_already_setup: "Група коју покушавате да направите већ постоји."
+    passwords_did_not_match: "Лозинка се не поклапа са потврдном"
     proposal_already_exists: "Овде је већ један отворен предлог у дискусији."
     user_with_email_address_already_in_group: "Корисник са овом адресом еПоште већ припада овој групи."
     you_have_already_requested_membership: "Већ сте затражили чланство у овој групи."
@@ -125,6 +139,7 @@ sr-RS:
     motion_closed: "Предлог је истекао. Ако желите, можете подесити исход испод и послати га својој групи."
     motion_outcome_created: "Честитамо, креирали сте исход предлога и Ваши чланови групе су обавештени."
     motion_outcome_updated: "Исход предлога је промењен."
+    password_updated: "Ваша лозинка је успешно промењена"
     position_submitted: "Позиција је послата."
     position_updated: "Позиција је ажурирана."
     proposal_created: "Предлог је успешно креиран."
@@ -177,6 +192,8 @@ sr-RS:
         other: "%{count} година"
   organisation:
     name: "Лумио"
+  sr:
+    toggle_navigation: "Приказ навигације"
   footer:
     about: 'О нама'
     blog: 'Блог'
@@ -185,10 +202,17 @@ sr-RS:
     public_groups: 'Јавне групе'
     terms: 'Услови'
   inbox:
+    clear: 'Очисти'
+    title: 'Поруке'
+    preferences: 'Особине долазних порука'
+    what_you_have_not_read_yet: "Ево активности које још увек нисте прочитали."
     dropdown-btn: 'Пријем'
     empty: Све сте видели! Нема коментара које нисте видели.
+    preferences_instructions_html: '<strong>Превуци ставке</strong> да их распоредиш.  <strong>Дештиклирај</strong> да их уклониш.'
   notifications:
     header: "Обавештења"
+    new_discussion: "покренуо/ла дискусију"
+    new_motion: "креирао/ла предлог"
     motion_closed:
       by_user: "затворио/ла предлог"
       by_expiry: "Предлог је затворен"
@@ -239,6 +263,22 @@ sr-RS:
   prompt_user_to_join:
     header: "Придружи се групи како би учествовао"
     body: "Да коментаришете или гласате, морате бити члан ове групе."
+  user_profile:
+    back: "Назад на мој профил"
+    change_password: "Промени своју лозинку"
+    deactivate_account: "Деактивирај налог"
+    about_deactivation: "Шта ће ово значити?"
+    confirm_account_deactivation: "Да ли сте сигурни да желите деактивирати свој налог?"
+    reactivation_html: "Мораћете <a href='%{link}'>контактирати нас</a> да реактивирате свој налог."
+    deactivation:
+      title: "Деактивирање Вашег налога"
+      query: "Можете ли нам рећи зашто деактивирате свој налог?"
+      only_coordinator: "Група мора имати најмање једног координатора. Ви сте тренутно једини координатор следећих група:"
+      instructions: "Да деактивирате свој налог, морате или додати другог координатора или деактивирати групе."
+      info_title: "Шта ће деактивирање Вашег налога значити?"
+      memberships: "Нећете више бити приказани као члан ни једне групе којима тренутно припадате."
+      group_contributions: "Коментари, предлози и дискусије које сте направили у групама ће остати, али ћемо уклонити Ваше име са њих."
+      emails: "Престаћемо да Вам шаљемо Лумио еПоруке."
   group_form:
     name: "Назив групе"
     description: "Опис"
@@ -304,6 +344,9 @@ sr-RS:
     m7: 'Мењати своје коментаре у било које време. '
     m8: 'Истицати и придружити се предлозима. '
     optional_restrictions: "Опционо, координатори могу одредити ближе шта чланови могу радити. "
+  discussion_privacy:
+    public: Ова дискусија је јавна на мрежи
+    private: Ова дискусија је приватна за чланове групе
   group_privacy:
     visible_to:
       public: Јавно доступна група.
@@ -323,7 +366,7 @@ sr-RS:
   edit_memberships: 'Уреди чланства'
   add_new_member: "Додај новог члана"
   invite_members_to_group: "Позови чланове у %{which_group}"
-  remaining_invites: "преостали позиви"
+  remaining_invites_count: "%{count} преостале позивнице"
   get_in_touch_link: "останите у контакту"
   email_members_in_group: "Пошаљите еПоруку члановима %{which_group}"
   subject_error: "Молим унесите тему"
@@ -332,6 +375,7 @@ sr-RS:
   message_placeholder: "Напишите поруку члановима у %{which_group}."
   email_group_members: "Пошаљи еПоруку члановима групе"
   edit_group_settings: "Промени особине групе"
+  manage_members: "Управљање члановима"
   leave_group: "Напусти групу"
   confirm_leave_hidden_group: "Да ли сте сигурни да желите да напустите %{which_group}? Бићете уклоњени и из свих подгрупа."
   confirm_leave_group: "Да ли сте сигурни да желите да напустите групу %{which_group}?"
@@ -382,16 +426,34 @@ sr-RS:
   group_description: "Опис групе"
   edit_group_description: "Уреди опис групе"
   group_subscription: "Праћење групе"
+  groups:
+    follow:
+      click_to_follow: "Шкљоцни да пратиш групу"
+      click_to_unfollow: "Шкљоцни да престанеш пратити групу"
+      following_details: "Бићете обавештени о свакој активности у овој групи."
+      not_following_details: "Бићете обавештени о активностима којима се прикључите."
   group_request:
     beta_request_header: "Покрените групу на Лумио Бета"
     beta_request_description: "Да бисте почели да доносите одлуке на Лумио Бета, први корак је да покренете групу."
     neighbourhood_support_group: "нпр. Комшијска Група Подршке"
+    commercial_use_option: у компанији, формалној организацији или радном месту
+    non_commercial_use_option: у групи заједнице или информативној мрежи
+    please_select_an_option: Молим одаберите једну опцију
     confirmation:
       title: Још мало па готово! Проверите еПошту.
       body_html: |
         Послали смо вам једну еПоруку са позивницом за покретање Ваше групе.
 
         Ако кроз пар минута не видите еПоруку у вашем сандучету, контактирајте нас на <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> се слаже са предлогом."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> се суздржава о предлогу."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> се не слаже са предлогом."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> блокира предлог."
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> се слаже са предлогом:"
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> се суздржава о предлогу:"
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> се не слаже са предлогом:"
+    user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> блокира предлог:"
   discussion_items:
     new_discussion: "креирао/ла расправу"
     new_motion: "је направио/ла предлог"
@@ -410,15 +472,25 @@ sr-RS:
   previous_decisions: "Претходне одлуке"
   see_previous_decisions: "Погледај претходне одлуке"
   see_more: "Види више"
+  create_new_proposal: "Креирај предлог"
   empty_decision_list_html: "Спремни да донесете одлуку? <br> Свако може покренути предлог."
   empty_decision_index: "Ова група није донела никакву одлуку још увек."
   empty_discussion_list: "Нема активности у овој дискусији још."
   go_to_add_comment_html: "Да додате коментар, <a href='%{href}'>Идите на крај дискусије</a>."
   comment_by: "Коментар од %{comment_author}"
+  read_up_to: "Овде сте стали са читањем"
   discussion_list:
+    clear_filters: "Очисти филтер: види све дискусије"
+    filter_unread:
+      enable: "Прикажи само непрочитане дискусије"
+      disable: "Види прочитане и непрочитане дискусије"
+    filter_followed:
+      enable: "Прикажи само праћене дискусије"
+      disable: "Прикажи праћене и не праћене дискусије "
     empty:
       no_discussions: "Нема дискусија ни у једној од Ваших група."
       no_discussions_in_group: "Ова група још увек нема дискусије."
+      no_discussions_matching_filters_html: "Нема дискусија које се поклапају са овим филтером. <a href='%{link}'>Очисти филтер</a>."
       no_public_discussions: "Нема јавних дискусија у овој групи."
       discussions_are_private: "Све дискусије у овој групи су приватне."
       request_membership_html: "Да бисте видели приватне дискусије, <a href='%{href}'>захтевајте придруживање групи.</a>"
@@ -430,6 +502,10 @@ sr-RS:
     last_edited_html: "Последњи пут промењено пре %{when} од стране <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Види историју ревизија"
     see_history: "Види историју"
+    click_to_follow: "Шкљоцни да пратиш"
+    click_to_unfollow: "Шкљоцни да не пратиш"
+    following_details: "Бићете обавештавани о активностима овде."
+    not_following_details: "Нећете бити обавештавани о активностима овде."
   description_history:
     header: "Ревизија историје"
     subheader: "Верзија"
@@ -650,6 +726,7 @@ sr-RS:
   remember_me: "Запамти ме"
   signing_in: "Пријављивање"
   or: "или"
+  invalid_email: Адреса еПоште коју сте унели је неправилна, молим унесите исправну адресу еПоште
   forgot_your_password: "Заборавили сте лозинку?"
   dont_have_an_account: "Немате налог?"
   create_one_now: "Направи један сада"
@@ -663,6 +740,7 @@ sr-RS:
   now_that_your_logged_in: "Сада када сте се пријавили са %{provider_name}, молим потврдите своје детаље како бисте креирали Лумио налог."
   confirmation_not_received: "Нисте примили инструкције потврђивања?"
   unlock_not_received: "Нисте добили инструкције о откључавању?"
+  inactive_html: "Овај налог је деактивиран. Ако имате било каква питања молимо <a href='%{path_to_contact}'>јавите нам се</a>."
   create_an_account_html: 'Направите Лумио Бета налог'
   log_in: "Пријави се"
   join_group:
@@ -765,8 +843,12 @@ sr-RS:
   new_user_form:
     create_an_account: "Направи један налог"
   profile_form:
+    view: "Види профил"
     profile: "Уреди профил"
     picture: "Слика"
+    use_initials: 'Користи иницијале'
+    use_uploaded: 'Користи прослеђену слику'
+    use_gravtar: 'Користи Граватар'
     upload_new_image: "Проследи нову слику"
   group_setup:
     set_up_your_group: Оснуј групу
@@ -806,6 +888,7 @@ sr-RS:
         admin_email: "Која је Ваша адреса еПоште?"
         name: "Како се зове твоја група?"
         description: "Ако имаш времена, реци нам о твојој групи"
+        is_commercial: "Где планирате да користите Лумио?"
     placeholders:
       membership_request:
         introduction: "Напишите неколико речи о томе ко сте и зашто желите да се придружите %{group_name}."
@@ -848,6 +931,8 @@ sr-RS:
     view_discussion: "Шкљоцни овде да видиш ову дискусију"
     view_group: "Шкљоцни овде да видиш групу на Лумију"
     view_proposal: "Погледајте овај предлог на Лумију"
+    create_discussion:
+      intro: "%{who} почео/ла дискусију у %{which_group}:"
     create_proposal:
       intro: "Нови предлог је покренут у Лумио групи којој припадате"
       closes_in: "Затвара се"
@@ -881,10 +966,13 @@ sr-RS:
       subject: "%{who} је затражио/ла да се придружи %{which_group}"
       view_group: "Овде можете одобрити или одбити захтев"
     mentioned:
+      context: "%{author_name} Вас је поменуо/ла током дискусије \"%{discussion_title}\""
       subject: "%{who} те је поменуо/ла у групи %{which} на Лумију"
     new_motion_created:
+      subject: "Предлог: %{proposal_title}"
       context: "%{author} је предложио/ла у %{group_full_name}:"
     proposal_closed:
+      proposal_has_closed: 'Предлог је истекао.'
       specify_outcome_and_notify_group: "Одредите исход и пошаљите то својој групи!"
       specify_outcome_and_notify_group_html: "Одредите исход и пошаљите то својој групи!"
       subject: "Предлог закључен - %{which}"
@@ -897,8 +985,12 @@ sr-RS:
       closes_on: "Затвара се"
       closes_at: "Затвара се "
       closes_in: "Истиче"
+      subject: "Истиче кроз 24 сата: %{proposal_title}"
       headline: "%{author} предлог у групи %{group} ускоро истиче:"
       summary: "Резиме"
+    thread_mailer:
+      footer_text: "Одговори на ову поруку директно или је погледај на Лумију:"
+      reply_or_view_online_html: "Одговори на ову поруку директно или <a href='%{url}'>погледај је на Лумију</a>."
     verification:
       header: "Скоро сте завршили!"
       intro: "Молим шкљоцните на верификациони линк да завршите свој захтев:"

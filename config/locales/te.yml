@@ -115,7 +115,6 @@ te:
   edit_memberships: 'సభ్యత్వాలను సవరించండి'
   add_new_member: "కొత్త సభ్యున్ని చేర్చండి"
   invite_members_to_group: "%{which_group} కు సభ్యులను ఆహ్వానించండి"
-  remaining_invites: "మిగిలిన ఆహ్వానాలు"
   subject_error: "దయచేసి ఒక విషయాన్ని పూరించండి"
   subject_placeholder: "ఒక విషయాన్ని వ్రాయండి"
   message_error: "దయచేసి ఒక సందేశాన్ని పూరించండి"

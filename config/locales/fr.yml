@@ -349,7 +349,6 @@ fr:
   edit_memberships: 'Modifier les adhésions'
   add_new_member: "Ajouter un nouveau membre"
   invite_members_to_group: "Inviter des membres à %{which_group}"
-  remaining_invites: "invitations restantes"
   get_in_touch_link: "Restons en contact"
   email_members_in_group: "Envoyer un e-mail aux membres dans %{which_group}"
   subject_error: "Merci de renseigner un sujet"
