@@ -46,6 +46,8 @@ he:
     mailer:
       invitation_instructions:
         subject: 'מישהו הזמין אותך להצטרף לקבוצת הLoomio שלו'
+    registrations:
+      sign_up: 'יצירת חשבון'
   error:
     access_denied: "אין לך הרשאות לעשות זאת."
     cant_join_subgroup: "לא ניתן להצטרף לתת-קבוצה ללא חברות בקבוצה הראשית."
@@ -497,10 +499,16 @@ he:
       הי, בואו הצטרפו לדיון!
     discussion_link: "השתתפו בדיון:"
     import_contacts_html: "לא זוכרים כתובת דוא״ל? ניתן לייבא אנשי קשר מ %{google_link}"
+  search:
+    placeholder: "חיפוש"
+    empty_search: 'חיפוש ריק'
   contact_page:
     contact_us: 'צרו קשר'
     labels:
+      name: 'שמך'
       email: 'כתובת הדוא״ל שלך'
+      message: 'ההודעה שלך'
+      submit: 'שלח הודעה'
   discussion_form:
     new:
       header: "התחילו בדיון"
@@ -520,6 +528,9 @@ he:
       submit: 'עדכון הצעה'
       only_closing_at: 'לא ניתן לשנות את שם או פירוט ההצעה לאחר שההצבעה החלה'
     close_proposal_heading: "מעוניינים לסגור את ההצעה לפני הזמן?"
+  profile_form:
+    view: "צפייה בפרופיל"
+    picture: "תמונה"
   group_setup:
     payment_model:
       header: Loomio הוא לכולם!
@@ -527,6 +538,7 @@ he:
     'yes': 'כן'
     'no': 'לא'
     required:
+      text: 'נדרש'
       mark: '*'
     labels:
       discussion:
