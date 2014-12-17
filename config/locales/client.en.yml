@@ -153,6 +153,7 @@ en:
     notifications_label: 'Notifications'
     options_label: 'Options'
     join_group: 'Join Group'
+    request_membership: 'Ask to join group'
     options:
       edit_group: 'Edit Group Settings'
       leave_group: 'Leave Group'

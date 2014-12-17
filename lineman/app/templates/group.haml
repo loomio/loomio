@@ -9,10 +9,13 @@
             .group-member-options{ng-if: 'isMember()'}
               %group_notifications_dropdown{group: 'group'}
               %group_options_dropdown{group: 'group'}
-            .group-nonmember-options{ng-if: '!isMember()'}
-              %a.btn.btn-success.btn-block.btn-icon{href: '#', ng-click: 'joinGroup()'}
+            .group-nonmember-options{ng-if: 'showNonMemberOptions()'}
+              %a.btn.btn-success.btn-block.btn-icon{href: '#', ng-click: 'joinGroup()' ng-if: 'canJoin()'}
                 %i.fa.fa-lg.fa-plus>
                 %span{translate: 'group_page.join_group' }
+              %a.btn.btn-success.btn-block.btn-icon{href: '#', ng-click: 'requestMembership()' ng-if: 'canRequestMembership()'}
+                %i.fa.fa-lg.fa-plus>
+                %span{translate: 'group_page.request_membership' }
           .group-page-name-and-privacy
             .group-page-name
               %h1
