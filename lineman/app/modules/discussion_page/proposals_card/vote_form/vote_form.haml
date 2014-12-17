@@ -19,7 +19,8 @@
               {{ 'vote_form.i_'+ vote.positionVerb() +'_details' | translate }}
             %span{translate: 'vote_form.select_position', ng-show: '!vote.position'}
           %textarea#vote-statement-field.form-control{ng-model: 'vote.statement', placeholder: '{{ "vote_form.statement_placeholder" | translate }}'}
-
+          .chars-left.pull-right{ng-class: '{ overlimit: vote.overCharLimit() }' }
+            {{ vote.charsLeft() }}
       %button.btn.btn-primary.cuke-submit-position{type: 'submit', translate: 'vote_form.submit_position'}>
 
       %button.btn.btn-default{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}>
