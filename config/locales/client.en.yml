@@ -164,8 +164,9 @@ en:
     invite_people: 'Invite people'
     visibility_label: 'Visibility'
     notifications_label: 'Notifications'
+    join_group: 'Join group'
+    request_membership: 'Ask to join group'
     options_label: 'Options'
-    join_group: 'Join Group'
     options:
       edit_group: 'Edit Group Settings'
       leave_group: 'Leave Group'
