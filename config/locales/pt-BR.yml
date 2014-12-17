@@ -46,6 +46,8 @@ pt-BR:
     mailer:
       invitation_instructions:
         subject: 'Alguém convidou você para um grupo no Loomio'
+    registrations:
+      sign_up: 'Criar conta'
   error:
     access_denied: "Você não tem permissão para fazer isso."
     cant_join_subgroup: "Você não pode entrar em um subgrupo se não é membro do grupo principal."
