@@ -329,10 +329,21 @@ he:
   and_number_pending: 'ו%{pending} בהמתנה'
   edit_memberships: 'עריכת חברויות'
   add_new_member: "הוספת חבר חדש"
+  get_in_touch_link: "שמרו על קשר"
   email_members_in_group: "שלחו דוא״ל לחברים בקבוצה %{which_group}"
+  subject_error: "נא למלא נושא"
+  subject_placeholder: "כתבו נושא"
+  message_error: "כתבו הודעה"
+  message_placeholder: "כתבו הודעה לחברי הקבוצה %{which_group}."
   email_group_members: "שלחו דוא״ל לחברי הקבוצה"
+  edit_group_settings: "עריכת הגדרות הקבוצה"
+  manage_members: "ניהול חברים"
   leave_group: "עזיבת הקבוצה"
+  invited_users: "חברים מוזמנים"
   members: "חברים"
+  remove_coordinator: "הסרת מתאם"
+  make_coordinator: "הפיכה למתאם"
+  previous_requests: בקשןת קודמות
   join_group_btn: הצטרפו לקבוצה
   cancel_membership_request: "ביטול בקשה"
   ignore: "התעלמ/י"
@@ -342,8 +353,15 @@ he:
   invite_members: "הזמנת חברים"
   new_subgroup: "תת-קבוצה חדשה"
   create_subgroup: "צרו תת-קבוצה"
+  creating_subgroup: "יוצר תת-קבוצה"
+  hidden: "מוסתר"
   public: "פתוח לציבור"
   new_group: "קבוצה חדשה"
+  create_group: "יצירת קבוצה"
+  creating_group: "יוצר קבוצה"
+  edit_group: "עריכת קבוצה"
+  update_group: "עדכון קבוצה"
+  updating_group: "מעדכן קבוצה"
   start_a_discussion: "התחלת דיון"
   group_description: "תיאור קבוצה"
   groups:
@@ -351,6 +369,7 @@ he:
       following_details: "תקבלו הודעה על כל שיחה בקבוצה זו"
       not_following_details: "תקבלו הודעה על שיחות בהן השתתפתם"
   group_request:
+    please_select_an_option: נא לבחור אפשרות
     confirmation:
       title: כמעט סיימת. הודעה נשלחה לתיבת הדוא״ל שלך.
   thread_item:
@@ -376,6 +395,9 @@ he:
     motion_description_edited: 'ערכ/ה את תיאור ההצעה'
   discussion: "דיון"
   current_decision: "החלטה נוכחית"
+  previous_decisions: "החלטות קודמות"
+  see_previous_decisions: "צפייה בהחלטות קודמות"
+  see_more: "עוד"
   create_new_proposal: "יצירת הצעה"
   empty_decision_list_html: "מוכנים להחלטה? <br> כולם יכולים להוסיף הצעה."
   empty_discussion_list: "עדיין אין פעילות בדיון זה."
@@ -396,11 +418,14 @@ he:
   discussion_context:
     started_html: "התחיל לפני %{when} על ידי <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "נערך לאחרונה לפני %{when} על ידי <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    see_revision_history: "צפייה בהיסטוריית עדכונים"
+    see_history: "צפייה בהיסטוריה"
     click_to_follow: "לחצו למעקב אחר השיחה"
     click_to_unfollow: "לחצו להפסיק מעקב אחר השיחה"
     following_details: "תקבלו הודעה על פעילות בשיחה זו"
     not_following_details: "תקבלו הודעה על פעילות בשיחה זו"
   description_history:
+    header: "היסטוריית עדכונים"
     subheader: "גירסא"
     edited_by: "נערך לפני כ%{when} על ידי %{who}"
     current: "(נוכחי)"
@@ -422,10 +447,20 @@ he:
   edit_proposal: "עריכת הצעה"
   close_proposal: "סגירת הצעה"
   confirm_close_proposal: "בטוחים שתרצו לסגור את ההצעה הזו?"
+  change_proposal_close_date: "שינוי תאריך סגירה"
   change_proposal_close_date_header: "שינוי תאריך הסגירה של ההצעה '%{which}'"
   proposal: הצעה
   proposal_closed_when: "נסגר לפני %{when}"
   proposed_when_by_who: "הוצע על ידי %{who} לפני %{when}"
+  state_your_position: "הצהר/י עמדתך"
+  positions: "עמדות"
+  yes_position: "אני מסכימ/ה"
+  yes_details: "אני מסכימ/ה ואשמח להמשיך הלאה"
+  abstain_position: "אני נמנע/ת"
+  abstain_details: "אעדיף שהקבוצה תחליט בלעדיי"
+  no_position: "אני לא מסכימ/ה"
+  no_details: "אני מאמינ/ה שאנחנו יכולים למצוא פתרון טוב יותר"
+  block_position: "אני חוסמ/ת"
   outcome_placeholder: "מה היתה התוצאה לגבי הצעה זו?"
   position_verbs:
     past_tense:
@@ -441,6 +476,14 @@ he:
     discussion: 'טיפים להתחלת דיון מרתק'
   pricing_page:
     informal_groups_desc: חברי הקבוצה שלך יתבקשו לשלם כפי יכולתם
+  new_password: "סיסמא חדשה"
+  confirm_new_password: "אישרור סיסמא חדשה"
+  change_your_password: "שינוי סיסמא"
+  change_my_password: "שינוי סיסמא"
+  send_password_reset: "שלח לי הוראות לאיפוס סיסמא"
+  password_confirmation: "אישרור סיסמא"
+  current_password: "סיסמא נוכחית"
+  confirm_password: "אישרור סיסמא"
   cancel_my_account: "בטל את החשבון שלי"
   invitation:
     alternate: "לחליפין, שיתוף הקישור הזה יאפשר לכל אחד לבקש להצטרף"
