@@ -4,9 +4,6 @@ angular.module('loomioApp').controller 'GroupController', ($scope, group, Record
 
   MessageChannelService.subscribeTo("/group-#{group.key}")
 
-  $scope.inboxPinned = ->
-    UserAuthService.inboxPinned
-
   $scope.isMember = ->
     UserAuthService.currentUser.membershipFor($scope.group)?
 

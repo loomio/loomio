@@ -1,7 +1,7 @@
-.container#main{ng-class: '{inboxPinned: inboxPinned()}'}
+.container#main
   %form.form-card{name: 'groupForm', ng_submit: 'submit()'}
     %h1{ng_show: 'group.isNew() && !group.parentId', translate: 'group_form.new_group_title'}
-    %h1{ng_show: 'group.isNew() && group.parentId', translate: 'group_form.new_subgroup_title', translate-value-parent-group-name: '{{group.parentName()}}'} 
+    %h1{ng_show: 'group.isNew() && group.parentId', translate: 'group_form.new_subgroup_title', translate-value-parent-group-name: '{{group.parentName()}}'}
     %h1{ng_show: '!group.isNew()', translate: 'group_form.edit_group_title'}
     .form-group
       %h2{translate: 'group_form.profile_label'}
@@ -16,13 +16,13 @@
       %h2{translate: 'group_form.privacy.label'}
 
       %label{for: 'group-visible-to-members', translate: 'group_form.privacy.visible_to_members'}
-      %select#group-visible-to-members-field.form-control{ng_model: 'group.visibleTo', ng_required: true}    
+      %select#group-visible-to-members-field.form-control{ng_model: 'group.visibleTo', ng_required: true}
         %option{value: 'public', ng_show: '!group.parentIsHidden()', translate: 'group_form.privacy.public_visibility'}
         %option{value: 'parent_members', ng_show: 'group.parent()', translate: 'group_form.privacy.organization_visibility'}
         %option{value: 'members', translate: 'group_form.privacy.private_visibility'}
 
       %label{for: 'group-membership-granted-upon', translate: 'group_form.privacy.membership_granted_upon'}
-      %select#group-membership-granted-upon-field.form-control{ng_model: 'group.membershipGrantedUpon', ng_required: true}  
+      %select#group-membership-granted-upon-field.form-control{ng_model: 'group.membershipGrantedUpon', ng_required: true}
         %option{value: 'request', translate: 'group_form.privacy.membership_by_request'}
         %option{value: 'approval', translate: 'group_form.privacy.membership_by_approval'}
         %option{value: 'invitation', translate: 'group_form.privacy.membership_by_invitation'}
