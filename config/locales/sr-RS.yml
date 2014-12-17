@@ -46,6 +46,8 @@ sr-RS:
     mailer:
       invitation_instructions:
         subject: 'Неко Вас је позвао да се придружите Лумио групи'
+    registrations:
+      sign_up: 'Направи налог'
   error:
     access_denied: "Немате дозволу да ово урадите."
     cant_join_subgroup: "Не можете се придружити подгрупи ако нисте члан главне групе."
@@ -991,10 +993,23 @@ sr-RS:
     thread_mailer:
       footer_text: "Одговори на ову поруку директно или је погледај на Лумију:"
       reply_or_view_online_html: "Одговори на ову поруку директно или <a href='%{url}'>погледај је на Лумију</a>."
+      unfollow_discussion_html: "<a href='%{unfollow_url}'>Не прати</a> да зауставиш еПоруке о овој дискусији."
+      change_email_preferences_html: "Промени <a href='%{email_preferences_url}'>особине еПорука</a> да се одјавиш са Лумио еПоруке."
+      change_preferences: "Промени особине својих еПорука:"
+      new_motion: "%{who} предлаже:"
+      motion_closing_soon: "Предлог истиче кроз 24 часа:"
+      proposal_closed: "Предлог истекао:"
+      specify_outcome_html: "Ваш предлог је истекао. <a href='%{link}'>Одредите један исход</a> да сви знају који је резултат."
+      specify_outcome: "Ваш предлог је истекао. Одредите један исход да сви виде који је резултат:"
+      outcome_created: "%{who} је поставио/ла исход предлога:"
+      you_agreed: "Ви %{past_tense_position}"
     verification:
       header: "Скоро сте завршили!"
       intro: "Молим шкљоцните на верификациони линк да завршите свој захтев:"
       ignore: "Ако нисте захтевали да се придружите Лумију молим игноришите ову еПоруку."
+  meta_tags:
+    default_title: "Лумио | Заједничко Одлучивање"
+    default_description: Лумио је алат за групно доношење одлука који је једноставан за употребу. Он омогућава групама да досегну одлуке брзо и предузму конструктивну акцију.
   about_loomio: "О Лумију"
   ago: "пре %{quantity_of_time} "
   approve: "Одобри"
@@ -1064,9 +1079,19 @@ sr-RS:
   google: "Google"
   persona: "Особа"
   common:
+    markdown_help_tooltip: 'Научи основе уређивања свог текста са Markdown'
+    settings: Подешавања
+    dashboard: Радна табла
+    unread: Непрочитано
+    filter: 'Филтер:'
+    following: Прати се
+    not_following: Не прати се
     back_to_discussion: "Назад на дискусију"
     edited: Измењено
+    groups: "Групе"
+    select_error: Молим одаберите једну опцију
     today: Данас
+    select: Молим одаберите
     months:
       january: Јануар
       february: Фебруар
@@ -1117,9 +1142,13 @@ sr-RS:
       fr: Пе
       sa: Су
       su: Не
+    meridians:
+      am: 'ам'
+      pm: 'пм'
     please_wait: "Молим сачекајте"
     privacy: "Приватност"
     private: "Приватно"
+    permissions: "Дозволе"
     public: "Јавно"
     email: "еПорука"
     start_group: "Покрени групу!"
@@ -1153,3 +1182,4 @@ sr-RS:
     women: "Жена"
     media: "Медији"
     health: "Здравство"
+  start_your_group: Оснуј своју групу
