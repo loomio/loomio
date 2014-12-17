@@ -8,6 +8,3 @@ angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Reco
 
   $scope.currentUser = ->
     UserAuthService.currentUser
-
-  $scope.inboxPinned = ->
-    UserAuthService.inboxPinned

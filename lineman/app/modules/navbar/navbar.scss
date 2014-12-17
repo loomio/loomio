@@ -45,8 +45,12 @@ a.loomio-nav-btn{
 }
 
 #inbox-dropdown{ left: 49px; }
-#search-dropdown{ left: 96px; }
-.inboxPinned #search-dropdown{ left: 48px; }
+#search-dropdown{
+  left: 48px;
+  @media (max-width: $screen-xs-max){
+    left: 96px;
+  }
+}
 #notifications-dropdown{ right: 47px; }
 @media (max-width: 380px){
   #inbox-dropdown, #search-dropdown{ left: 0; }
