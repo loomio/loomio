@@ -71,17 +71,4 @@ Loomio::Application.configure do
   }
 
   config.action_mailer.raise_delivery_errors = true
-
-  # Store avatars on Amazon S3
-  config.paperclip_defaults = {
-    :storage => :fog,
-    :fog_credentials => {
-      :provider => 'AWS',
-      :aws_access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :aws_secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-    },
-    :fog_directory => ENV['AWS_UPLOADS_BUCKET'],
-    :fog_public => true,
-    :fog_host => ENV['FOG_HOST']
-  }
 end

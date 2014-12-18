@@ -1,4 +1,25 @@
 hu:
+  users:
+    email_preferences:
+      edit:
+        title: 'E-mail beállítások'
+        when_do_you_want_emails: 'Írj egy e-mailt nekem:'
+        email_missed_yesterday: "'Tegnap a Loomio-n' - összegző a napi tevékenységről amit nem láttam"
+        email_when_mentioned: "Amikor @említve vagyok"
+        email_followed_threads: "Amikor aktivitás van a követett beszélgetésekben."
+        email_when_proposal_closing_soon: "24 órával a javaslat lezárása előtt."
+        email_new_discussions_and_proposals: 'Új viták és javaslatok'
+        for_these_groups: "Ezeknek a csoportoknak:"
+        submit: "Beállítások mentése"
+  explore:
+    header: "Keresés a nyilvános csoportok között"
+  try_it:
+    header: "Próbáld ki a Loomio-t"
+    start_a_group: "Indíts egy csoportot hogy hozzatok döntést a közösségetekben."
+    join_the_community: "Csatlakozz a Loomio Közösségi csoporthoz"
+    loomio_community_info: "Itt vitázunk és hozunk döntéseket a Loomio-ról."
+    explore_groups: "Keress más csoportokat a Loomio-n"
+    explore_groups_info: "Nézd meg az összes érdekes csoportot a Loomio-n és csatlakozz hozzájuk!"
   activerecord:
     errors:
       messages:
@@ -6,6 +27,9 @@ hu:
   errors:
     messages:
       email: "Hibás e-mail cím"
+  attachment:
+    error:
+      too_large: "A fájl amit csatolni próbáltál nagyobb mint 50MB, válassz egy kisebbet."
   time:
     formats:
       for_today: '%l:%M %P'
@@ -13,17 +37,32 @@ hu:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%-nap/%-hónap/%év'
+  devise:
+    invitations:
+      send_instructions: 'Egy meghívót küldtünk a %{email} címre.'
+      invitation_token_invalid: 'Ez a meghívó már nem érvényes!'
+      updated: 'Fiók létrehozva.'
+      no_invitations_remaining: "Nem maradt meghívó"
+    mailer:
+      invitation_instructions:
+        subject: 'Valaki meghívott hogy csatlakozz a Loomio csoporjukhoz'
+    registrations:
+      sign_up: 'Fiók létrehozása'
   error:
     access_denied: "Ehhez nincs jogosultságod."
     cant_join_subgroup: "Nem csatlakozhatsz egy alcsoporthoz, ha nem vagy ragja a csoportnak"
     cant_modify_position: "Ez a javaslat lezárult."
     cant_state_position: "Ez a javaslat lezárult."
     cant_view_member_profile: "Nem láthatod az adatait mert nem vagytok ugyanannak a csoportnak a tagjai."
+    contribution: "Jelentkezz be, hogy hozzászólhass"
     discussion_not_created: "Nem tudtuk létrehozni a témát."
     group_not_archived: "Nem tudtuk archiválni a csoportot."
     invalid_close_date: "Érvénytelen a határidő, lehet, hogy a megadott időpont már elmúlt."
     invalid_email: "legalább egy érvényes e-mail címet adj meg"
     image_upload_fail: "Nem tudtuk feltölteni a képet. A kép legfeljebb 1 MB lehet és .jpeg, .png vagy .gif típusú."
+    motion_closing_inputs: "Érvénytelen záró határidő"
+    motion_outcome_not_created: "Nem lehet az eredményt megjeleníteni."
+    motion_outcome_not_updated: "Nem lehet az eredményt frissíteni."
     permission_to_invite: "Nincs hozzá engedélyed, hogy új tagokat hívj meg."
     position_not_updated: "Nem tudtuk megváltoztatni az álláspontodat."
     settings_not_updated: "A beállításaidat nem frissültek."
@@ -141,7 +180,6 @@ hu:
   edit_memberships: 'Tagság szerkesztése'
   add_new_member: "Új tag hozzáadása"
   invite_members_to_group: "Tagok meghívása a %{which_group} csoportba"
-  remaining_invites: "fennmaradó meghívók"
   get_in_touch_link: "kapcsolat"
   email_members_in_group: "E-mail küldése a(z) %{which_group} csoport tagjainak"
   subject_error: "Töltsd ki a témát"
