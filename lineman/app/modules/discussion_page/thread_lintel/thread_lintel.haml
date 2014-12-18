@@ -1,0 +1,9 @@
+.thread-lintel.media
+  %div{ng-if: 'discussion.proposals().length > 0'}
+    .thread-lintel-pie.media-left
+      %mini-proposal-pie-chart{proposal: 'discussion.proposals()[0]'}
+    .media-body
+      %h2.thread-lintel-title {{discussion.proposals()[0].name}}
+  %div{ng-if: 'discussion.proposals().length == 0'}
+    .media-body
+      %h2.thread-lintel-title {{discussion.title}}

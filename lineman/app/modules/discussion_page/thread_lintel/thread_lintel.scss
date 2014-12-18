@@ -1,0 +1,28 @@
+.thread-lintel{
+  background: white;
+  padding: 5px;
+  border: 1px solid $thread-border-color;
+  position: fixed;
+  z-index: 1;
+  /*
+    I think we should set width with JS.
+    This version works on a 320px screen and on desktop but not intermediates.
+  */
+  @media (max-width: $screen-sm-min){
+    width: 300px;
+  }
+  @media (min-width: $screen-sm-min){
+    width: $thread-max-width - 20px;
+  }
+  @media (min-width: $screen-lg-min){
+    width: $thread-max-width;
+  }
+  margin: -16px;
+}
+.thread-lintel-title{
+  margin: 5px 0 0 0;
+}
+.thread-lintel.media:first-child{
+  /*override bootstrap*/
+  margin-top: -27px;
+}

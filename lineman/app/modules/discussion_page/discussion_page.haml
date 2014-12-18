@@ -2,6 +2,7 @@
   .row
     .col-xs-12
       .thread-container
+        %thread_lintel{discussion: 'discussion'}
         .thread-actions.pull-right
           %thread_notification_level_dropdown{discussion: 'discussion'}
           .dropdown{ng-if: 'showContextMenu()'}
