@@ -1,4 +1,16 @@
 sr:
+  users:
+    email_preferences:
+      edit:
+        title: 'Podešavanje ePoruka'
+        when_do_you_want_emails: 'Obavesti me:'
+        email_missed_yesterday: "'Juče na Lumiju' - dnevni pregled svih propuštenih aktivnosti"
+        email_when_mentioned: "Kada sam @pomenut/a"
+        email_followed_threads: "Kada postoji aktivnost u oblastima koje pratim."
+        email_when_proposal_closing_soon: "24 sata pre isteka predloga."
+        email_new_discussions_and_proposals: 'Nove diskusije i predlozi'
+        for_these_groups: "Za ove grupe:"
+        submit: "Sačuvaj podešavanja"
   explore:
     header: "Istraži javne grupe"
   try_it:
@@ -28,11 +40,14 @@ sr:
   devise:
     invitations:
       send_instructions: 'Poziv je poslat na %{email}.'
+      invitation_token_invalid: 'Ova pozivnica više ne važi!'
       updated: 'Nalog kreiran.'
       no_invitations_remaining: "Nema više pozivnica"
     mailer:
       invitation_instructions:
         subject: 'Neko Vas je pozvao da se pridružite Lumio grupi'
+    registrations:
+      sign_up: 'Napravi nalog'
   error:
     access_denied: "Nemate dozvolu da ovo uradite."
     cant_join_subgroup: "Ne možete se pridružiti podgrupi ako niste član glavne grupe."
@@ -58,6 +73,7 @@ sr:
     group_request_invalid_token: "Izvinite! Ovo je nevažeći objekt"
     group_private_or_not_found: "Grupa nije pronađena.\n\nOva grupa je možda privatna. Ako Vam je neko dao ovaj link, zamolite da Vas pozove u grupu."
     group_already_setup: "Grupa koju pokušavate da napravite već postoji."
+    passwords_did_not_match: "Lozinka se ne poklapa sa potvrdom"
     proposal_already_exists: "Ovde je već jedan otvoreni predlog u diskusiji."
     user_with_email_address_already_in_group: "Korisnik sa ovom adresom ePošte već pripada ovoj grupi."
     you_have_already_requested_membership: "Već ste zatražili članstvo u ovoj grupi."
@@ -125,6 +141,7 @@ sr:
     motion_closed: "Predlog je istekao. Ako želite, možete podesiti ishod ispod i poslati ga svojoj grupi."
     motion_outcome_created: "Čestitamo, kreirali ste ishod predloga i Vaši članovi grupe su obavešteni."
     motion_outcome_updated: "Ishod predloga je promenjen."
+    password_updated: "Vaša lozinka je uspešno promenjena"
     position_submitted: "Pozicija je poslata."
     position_updated: "Pozicija je ažurirana."
     proposal_created: "Predlog je uspešno kreiran."
@@ -177,6 +194,8 @@ sr:
         other: "%{count} godina"
   organisation:
     name: "Lumio"
+  sr:
+    toggle_navigation: "Prebaci navigaciju"
   footer:
     about: 'O nama'
     blog: 'Blog'
@@ -185,10 +204,17 @@ sr:
     public_groups: 'Javne grupe'
     terms: 'Uslovi'
   inbox:
+    clear: 'Očisti'
+    title: 'ePoruke'
+    preferences: 'Podešavanje ePoruka'
+    what_you_have_not_read_yet: "Evo aktivnosti koje još niste pročitali."
     dropdown-btn: 'Prijem'
     empty: Sve ste videli! Nema komentara koje niste videli.
+    preferences_instructions_html: '<strong>Prevuci stavke</strong> da ih preurediš.  <strong>Deštikliraj</strong> da ih ukloniš iz sandučeta.'
   notifications:
     header: "Obaveštenja"
+    new_discussion: "počeo/la diskusiju"
+    new_motion: "kreirao/la predlog"
     motion_closed:
       by_user: "zatvorio/la predlog"
       by_expiry: "Predlog je zatvoren"
@@ -239,6 +265,22 @@ sr:
   prompt_user_to_join:
     header: "Pridruži se grupi kako bi učestvovao"
     body: "Da komentarišete ili glasate, morate biti član ove grupe."
+  user_profile:
+    back: "Nazad na moj profil"
+    change_password: "Promeni svoju lozinku"
+    deactivate_account: "Deaktiviraj nalog"
+    about_deactivation: "Šta će ovo značiti?"
+    confirm_account_deactivation: "Da li ste sigurni da želite deaktivirati svoj nalog?"
+    reactivation_html: "Moraćete da <a href='%{link}'>nas kontaktirate</a> da reaktivirate svoj nalog."
+    deactivation:
+      title: "Deaktiviranje Vašeg naloga"
+      query: "Da li bi mogli da kažete zažto deaktivirate svoj nalog?"
+      only_coordinator: "Grupa mora imati najmanje jednog koordinatora. Vi ste trenutno jedini koordinator sledećih grupa:"
+      instructions: "Da bi deaktivirali svoj nalog, morate ili dodati drugog koordinatora ili deaktivirati grupe."
+      info_title: "Šta će deaktiviranje Vašeg naloga značiti?"
+      memberships: "Nećete više biti prikazivani kao deo bilo koje grupe u kojima ste trenutno član."
+      group_contributions: "Komentari, predlozi i diskusije koje ste napravili u grupama će ostati, ali ćemo ukloniti Vaše ime sa njih."
+      emails: "Prestaćemo da Vam šaljemo ePoruke u vezi sa Lumijem."
   group_form:
     name: "Naziv grupe"
     description: "Opis"
@@ -304,6 +346,9 @@ sr:
     m7: Menjati svoje komentare u bilo koje vreme.
     m8: Isticati i pridružiti se predlozima.
     optional_restrictions: "Opciono, koordinatori mogu odrediti bliže šta članovi mogu raditi."
+  discussion_privacy:
+    public: Ova diskusija je javna na mreži
+    private: Ova diskusija je privatna za članove grupe
   group_privacy:
     visible_to:
       public: Javno dostupna grupa.
@@ -323,7 +368,7 @@ sr:
   edit_memberships: 'Uredi članstva'
   add_new_member: "Dodaj novog člana"
   invite_members_to_group: "Pozovi članove u %{which_group}"
-  remaining_invites: "preostali pozivi"
+  remaining_invites_count: "%{count} pozivnice/a je preostalo"
   get_in_touch_link: "ostanite u kontaktu"
   email_members_in_group: "Pošaljite ePoruku članovima %{which_group}"
   subject_error: "Molim unesite temu"
@@ -332,6 +377,7 @@ sr:
   message_placeholder: "Napišite poruku članovima u %{which_group}."
   email_group_members: "Pošalji ePoruku članovima grupe"
   edit_group_settings: "Promeni osobine grupe"
+  manage_members: "Upravljanje članovima"
   leave_group: "Napusti grupu"
   confirm_leave_hidden_group: "Da li ste sigurni da želite da napustite %{which_group}? Bićete uklonjeni i iz svih podgrupa."
   confirm_leave_group: "Da li ste sigurni da želite da napustite grupu %{which_group}?"
@@ -382,16 +428,34 @@ sr:
   group_description: "Opis grupe"
   edit_group_description: "Uredi opis grupe"
   group_subscription: "Praćenje grupe"
+  groups:
+    follow:
+      click_to_follow: "Škljocni da pratiš grupu"
+      click_to_unfollow: "Škljocni da prestaneš da pratiš grupu"
+      following_details: "Bićete obavešteni o svakom dešavanju u ovoj grupi."
+      not_following_details: "Bićete obavešteni o svemu čemu se priključite."
   group_request:
     beta_request_header: "Pokrenite grupu na Lumio Beta"
     beta_request_description: "Da biste počeli da donosite odluke na Lumio Beta, prvi korak je da pokrenete grupu."
     neighbourhood_support_group: "npr. Komšijska Grupa Podrške"
+    commercial_use_option: u kompaniji, formalnoj organizaciji radnom mestu
+    non_commercial_use_option: u grupi zajednice ili informativnoj mreži
+    please_select_an_option: Molim odaberite jednu opciju
     confirmation:
       title: Još malo pa gotovo! Proverite ePoštu.
       body_html: |
         Poslali smo vam jednu ePoruku sa pozivnicom za pokretanje Vaše grupe.
 
         Ako kroz par minuta ne vidite ePoruku u vašem sandučetu, kontaktirajte nas na <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> se slaže sa predlogom."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> se suzdržao/la o predlogu."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> se ne slaže sa predlogom."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> blokira predlog."
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> se slaže sa predlogom:"
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> se suzdržao/la o predlogu:"
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> se ne slaže sa predlogom:"
+    user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> blokira predlog:"
   discussion_items:
     new_discussion: "kreirao/la raspravu"
     new_motion: "je napravio/la predlog"
@@ -410,15 +474,25 @@ sr:
   previous_decisions: "Prethodne odluke"
   see_previous_decisions: "Pogledaj prethodne odluke"
   see_more: "Vidi više"
+  create_new_proposal: "Kreiraj predlog"
   empty_decision_list_html: "Spemni da donesete odluku? <br> Svako može pokrenuti predlog."
   empty_decision_index: "Ova grupa nije donela nikakvu odluku još uvek."
   empty_discussion_list: "Nema aktivnosti u ovoj diskusiji još."
   go_to_add_comment_html: "Da dodate komentar, <a href='%{href}'>Idite na kraj diskusije</a>."
   comment_by: "Komentar od %{comment_author}"
+  read_up_to: "Ovde ste stali sa čitanjem prošli put"
   discussion_list:
+    clear_filters: "Ukloni filtere: vidi sve diskusije"
+    filter_unread:
+      enable: "Prikaži samo nepročitane diskusije"
+      disable: "Vidi pročitane i nepročitane diskusije"
+    filter_followed:
+      enable: "Prikaži samo diskusije koje pratim"
+      disable: "Vidi praćene i nepraćene diskusije"
     empty:
       no_discussions: "Nema diskusija ni u jednoj od Vaših grupa."
       no_discussions_in_group: "Ova grupa još uvek nema diskusije."
+      no_discussions_matching_filters_html: "Nema diskusija koje odgovaraju pravilima filtera. <a href='%{link}'>Ukloni filtere</a>."
       no_public_discussions: "Nema javnih diskusija u ovoj grupi."
       discussions_are_private: "Sve diskusije u ovoj grupi su privatne."
       request_membership_html: "Da biste videli privatne diskusije, <a href='%{href}'>zahtevajte pridruživanje grupi.</a>"
@@ -430,6 +504,10 @@ sr:
     last_edited_html: "Poslednji put promenjeno pre %{when} od strane <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Vidi istoriju revizija"
     see_history: "Vidi istoriju"
+    click_to_follow: "Škljocni da pratiš grupu"
+    click_to_unfollow: "Škljocni da prestaneš da pratiš grupu"
+    following_details: "Bićete obavešteni o aktivnostima ovde."
+    not_following_details: "Nećete biti obaveštavani o aktivnostima ovde."
   description_history:
     header: "Revizija istorije"
     subheader: "Verzija"
@@ -647,6 +725,7 @@ sr:
   remember_me: "Zapamti me"
   signing_in: "Prijavljivanje"
   or: "ili"
+  invalid_email: Adresa ePošte koju ste uneli je nepravilna, molim unesite ispravnu adresu ePošte
   forgot_your_password: "Zaboravili ste lozinku?"
   dont_have_an_account: "Nemate nalog?"
   create_one_now: "Napravi jedan sada"
@@ -660,6 +739,7 @@ sr:
   now_that_your_logged_in: "Sada kada ste se prijavili sa %{provider_name}, molim potvrdite svoje detalje kako biste kreirali Lumio nalog."
   confirmation_not_received: "Niste primili instrukcije potvrđivanja?"
   unlock_not_received: "Niste dobili instrukcije o otključavanju?"
+  inactive_html: "Ovaj nalog je deaktiviran.  Ukoliko imate pitanja molimo <a href='%{path_to_contact}'>kontaktirajte nas</a>."
   create_an_account_html: 'Napravite Lumio Beta nalog'
   log_in: "Prijavi se"
   join_group:
@@ -759,8 +839,12 @@ sr:
   new_user_form:
     create_an_account: "Napravi jedan nalog"
   profile_form:
+    view: "Vidi profil"
     profile: "Uredi profil"
     picture: "Slika"
+    use_initials: 'Koristi inicijale'
+    use_uploaded: 'Koristi prosleđenu sliku'
+    use_gravtar: 'Koristi Gravatar'
     upload_new_image: "Prosledi novu sliku"
   group_setup:
     set_up_your_group: Osnuj grupu
@@ -800,6 +884,7 @@ sr:
         admin_email: "Koja je Vaša adresa ePošte?"
         name: "Kako se zove tvoja grupa?"
         description: "Ako imaš vremena, reci nam o tvojoj grupi"
+        is_commercial: "Gde planirate da koristite Lumio?"
     placeholders:
       membership_request:
         introduction: "Napišite nekoliko reči o tome ko ste i zašto želite da se pridružite %{group_name}."
@@ -842,6 +927,8 @@ sr:
     view_discussion: "Škljocni ovde da vidiš ovu diskusiju"
     view_group: "Škljocni ovde da vidiš grupu na Lumiju"
     view_proposal: "Pogledajte ovaj predlog na Lumiju"
+    create_discussion:
+      intro: "%{who} je pokrenuo/la diskusiju u %{which_group}:"
     create_proposal:
       intro: "Novi predlog je pokrenut u Lumio grupi kojoj pripadate"
       closes_in: "Zatvara se"
@@ -875,10 +962,13 @@ sr:
       subject: "%{who} je zatražio da se pridruži %{which_group}"
       view_group: "Ovde možete odobriti ili odbiti zahtev"
     mentioned:
+      context: "%{author_name} Vas je pomenuo/la tokom diskusije \"%{discussion_title}\""
       subject: "%{who} te je pomenuo/la u grupi %{which} na Lumiju"
     new_motion_created:
+      subject: "Predlog: %{proposal_title}"
       context: "%{author} je predložio/la u %{group_full_name}:"
     proposal_closed:
+      proposal_has_closed: 'Predlog je okončan.'
       specify_outcome_and_notify_group: "Odredite ishod i pošaljite to svojoj grupi!"
       specify_outcome_and_notify_group_html: "Odredite ishod i pošaljite to svojoj grupi!"
       subject: "Predlog zaključen - %{which}"
@@ -891,12 +981,29 @@ sr:
       closes_on: "Zatvara se"
       closes_at: "Zatvara se "
       closes_in: "Ističe"
+      subject: "Završava se kroz 24 časa: %{proposal_title}"
       headline: "%{author}ov/in predlog u grupi %{group} uskoro ističe:"
       summary: "Rezime"
+    thread_mailer:
+      footer_text: "Odgovori na ovu poruku direktno ili je pogledaj na Lumiju:"
+      reply_or_view_online_html: "Odgovori na ovu poruku direktno ili <a href='%{url}'>pogledaj je na Lumiju</a>."
+      unfollow_discussion_html: "<a href='%{unfollow_url}'>Ne prati</a> da zaustaviš obaveštenja o ovoj diskusiji."
+      change_email_preferences_html: "Promeni svoja <a href='%{email_preferences_url}'>podešavanja o ePorukama</a> da prestaneš da primaš Lumio ePoruke."
+      change_preferences: "Promeni svoja podešavanja o ePorukama:"
+      new_motion: "%{who} predlaže:"
+      motion_closing_soon: "Predlog ističe kroz 24 časa:"
+      proposal_closed: "Predlog je istekao:"
+      specify_outcome_html: "Vaš predlog je istekao. <a href='%{link}'>Odredite ishod</a> da izvestite ostale o rezultatu."
+      specify_outcome: "Vaš predlog je istekao. Odredite ishod da obavestite ostale o rezultatu:"
+      outcome_created: "%{who} je odredio/la ishod predloga:"
+      you_agreed: "Vi %{past_tense_position}"
     verification:
       header: "Skoro ste završili!"
       intro: "Molim škljocnite na verifikacioni link da završite svoj zahtev:"
       ignore: "Ako niste zahtevali da se pridružite Lumiju molim ignorišite ovu ePoruku."
+  meta_tags:
+    default_title: "Lumio | Zajedničko Donošenje Odluka"
+    default_description: Lumio je jednostavan alat za zajedničko donošenje odluka. On omogućava rasutim grupama da dostignu odluke brzo i preduzmu konstruktivnu akciju.
   about_loomio: "O Lumiju"
   ago: "pre %{quantity_of_time} "
   approve: "Odobri"
@@ -966,9 +1073,19 @@ sr:
   google: "Google"
   persona: "Osoba"
   common:
+    markdown_help_tooltip: 'Naučite osnove formatiranja teksta pomoću Markdown-a'
+    settings: Podešavanja
+    dashboard: Tabla
+    unread: Nepročitano
+    filter: 'Filter:'
+    following: Praćenje
+    not_following: Bez praćenja
     back_to_discussion: "Nazad na diskusiju"
     edited: Izmenjeno
+    groups: "Grupe"
+    select_error: Molim odaberite jednu opciju
     today: Danas
+    select: Molim odaberite
     months:
       january: Januar
       february: Februar
@@ -1019,9 +1136,13 @@ sr:
       fr: Pe
       sa: Su
       su: Ne
+    meridians:
+      am: 'am'
+      pm: 'pm'
     please_wait: "Molim sačekajte"
     privacy: "Privatnost"
     private: "Privatno"
+    permissions: "Dozvole"
     public: "Javno"
     email: "ePoruka"
     start_group: "Pokreni grupu!"
@@ -1055,3 +1176,4 @@ sr:
     women: "Žena"
     media: "Mediji"
     health: "Zdravstvo"
+  start_your_group: Započnite svoju grupu

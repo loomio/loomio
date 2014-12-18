@@ -56,6 +56,8 @@ en:
     mailer:
       invitation_instructions:
         subject: 'Someone has invited you to join their Loomio group'
+    registrations:
+      sign_up: 'Create account'
     sessions:
       signed_out: ''
 
@@ -406,7 +408,7 @@ en:
 
   add_new_member: "Add new member"
   invite_members_to_group: "Invite members to %{which_group}"
-  remaining_invites: "remaining invites"
+  remaining_invites_count: "%{count} remaining invites"
   get_in_touch_link: "get in touch"
 
   email_members_in_group: "Email the members in %{which_group}"
@@ -830,6 +832,7 @@ en:
   remember_me: "Remember me"
   signing_in: "Signing in"
   or: "or"
+  invalid_email: The email address you have entered is invalid, please enter a valid email address
   forgot_your_password: "Forgot your password?"
   dont_have_an_account: "Don't have an account?"
   create_one_now: "Create one now"
@@ -1349,3 +1352,5 @@ en:
     women: "Women"
     media: "Media"
     health: "Health"
+
+  start_your_group: Start your group

@@ -157,7 +157,6 @@ ga-IE:
   no_invitations_button: "Níl aon chuireadh fágtha"
   number_pending: '%{pending} ar feitheamh'
   add_new_member: "Cuir comhalta nua leis"
-  remaining_invites: "cuirí atá fágtha"
   get_in_touch_link: "déan teagmháil"
   subject_error: "Cuir ábhar leis le do thoil"
   subject_placeholder: "Scríobh ábhar"

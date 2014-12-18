@@ -46,6 +46,8 @@ pt-BR:
     mailer:
       invitation_instructions:
         subject: 'Alguém convidou você para um grupo no Loomio'
+    registrations:
+      sign_up: 'Criar conta'
   error:
     access_denied: "Você não tem permissão para fazer isso."
     cant_join_subgroup: "Você não pode entrar em um subgrupo se não é membro do grupo principal."
@@ -352,7 +354,7 @@ pt-BR:
   edit_memberships: 'Gerenciar integrantes'
   add_new_member: "Adicionar novo membro"
   invite_members_to_group: "Convidar membros para %{which_group}"
-  remaining_invites: "convites restantes"
+  remaining_invites_count: "%{count} convites restantes"
   get_in_touch_link: "entre em contato"
   email_members_in_group: "Envie e-mail para os membros em %{which_group}"
   subject_error: "Por favor, preencha o assunto"
@@ -673,6 +675,7 @@ pt-BR:
   remember_me: "Lembre-se de mim"
   signing_in: "Entrando"
   or: "ou"
+  invalid_email: O endereço de e-mail que você digitou é inválido. Por favor, digite um endereço de e-mail válido.
   forgot_your_password: "Esqueceu sua senha?"
   dont_have_an_account: "Não tem uma conta?"
   create_one_now: "Criar um agora"
@@ -1127,3 +1130,4 @@ pt-BR:
     women: "Mulheres"
     media: "Mídia"
     health: "Saúde"
+  start_your_group: Inicie o seu grupo
