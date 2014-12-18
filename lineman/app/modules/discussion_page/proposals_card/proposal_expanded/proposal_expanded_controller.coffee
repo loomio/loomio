@@ -1,6 +1,7 @@
 angular.module('loomioApp').controller 'ProposalExpandedController', ($scope, $modal, Records, UserAuthService) ->
   Records.votes.fetchByProposal($scope.proposal)
   currentUser = UserAuthService.currentUser
+  $scope.showVotes = false
 
   $scope.showActionsDropdown = ->
     currentUser.canCloseOrExtendProposal($scope.proposal)
@@ -32,4 +33,8 @@ angular.module('loomioApp').controller 'ProposalExpandedController', ($scope, $m
     return false unless $scope.proposal
     $scope.proposal.lastVoteByUser(currentUser)
 
+  $scope.showVoteToggle = ->
+    $scope.curatedVotes().length > 0 and !$scope.showVotes
 
+  $scope.applyVoteToggle = ->
+    $scope.showVotes = !$scope.showVotes
