@@ -6,6 +6,9 @@
   max-height: 600px;
   overflow-y:scroll;
 }
+.selector-list .timeago{
+  @include metaText;
+}
 .selector-list-header {
   padding: 0 10px;
   width: 100%;
