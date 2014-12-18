@@ -22,7 +22,6 @@ angular.module('loomioApp').controller 'CommentFormController', ($scope, Records
 
   $scope.$on 'showReplyToCommentForm', (event, parentComment) ->
     $scope.comment.parentId = parentComment.id
-    $scope.comment.body = $scope.comment.body or "@#{parentComment.authorUsername()}"
 
   $scope.removeAttachment = (attachment) ->
     AttachmentService.destroy attachment, ->
