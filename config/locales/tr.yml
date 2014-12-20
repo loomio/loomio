@@ -46,6 +46,8 @@ tr:
     mailer:
       invitation_instructions:
         subject: 'Birisi seni Loomio grubuna katılmaya davet etti'
+    registrations:
+      sign_up: 'Hesap oluştur'
   error:
     access_denied: "Bunu yapmaya yetkin bulunmuyor."
     cant_join_subgroup: "Eğer ana gruba üye değilsen, bir alt gruba katılamazsın."
@@ -352,6 +354,7 @@ tr:
   edit_memberships: 'Üyeliği düzenle'
   add_new_member: "Yeni üye ekle"
   invite_members_to_group: "%{which_group}'na üye davet et"
+  remaining_invites_count: "%{count} davetiye mevcut"
   get_in_touch_link: "irtibata geç"
   email_members_in_group: "%{which_group}'undaki üyelere e-posta gönder"
   subject_error: "Lütfen bir konuyu doldurun"
@@ -430,6 +433,15 @@ tr:
         Sana grup başlatma daveti içeren bir e-posta gönderdik.
 
         Eğer gelen kutusunda birkaç dakika içerisinde göremezseniz <a href='mailto:contact@loomio.org'>contact@loomio.org</a> adresine e-posta göndererek bize ulaşabilirsin.
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> teklife katılıyor."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> teklif üzerinde çekimser kaldı."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> teklife katılmıyor."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> teklifi engelledi."
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> teklife katılıyor:"
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> teklif üzerinde çekimser kaldı:"
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> teklife katılmıyor:"
+    user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> teklifi engelledi:"
   discussion_items:
     new_discussion: "müzakereyi oluşturdu"
     new_motion: "bir öneri oluşturdu"
@@ -548,15 +560,13 @@ tr:
     edit_comment: "Yorumu düzenle"
   help:
     coordinating: 'Loomio grubunu koordine etmek'
-    coordinating_details: "Koordinatör olarak, Loomio grubunu düzenlemek ve kişileri davet etmekten \nsen sorumlusun. Yeni bir yazılımın nasıl kullanıldığını öğrenmenin yanı sıra, grubun\ndaha etkili işbirliği ve birlikte iyi kararlar almak için yeni süreçler öğrenecek.\nİşte grubunun başarılı olmasını\
-      \ desteklemen için bazı ipuçları:\n"
+    coordinating_details: "Koordinatör olarak, Loomio grubunu düzenlemek ve kişileri davet etmekten \nsen sorumlusun. Yeni bir yazılımın nasıl kullanıldığını öğrenmenin yanı sıra, grubun\ndaha etkili işbirliği ve birlikte iyi kararlar almak için yeni süreçler öğrenecek.\nİşte grubunun başarılı olmasını desteklemen için bazı ipuçları:\n"
     different_ways: 'Loomio''yu kullanmanın çeşitli yolları'
-    engaging_html: "<h2>Grubunla etkileşime girmen için ipuçları</h2>\n<p>Kişiler masada etkileşimli bir öneri olduğu zaman katkıda bulunmak için istekli olurlar. İyi bir öneri grup için bir eylem planı içerir, bu yüzden\ngrubun aynı fikirde olup olmadığı ve bunun ne anlama geldiği hemen belli olacaktır.\
-      \ Eğer kişilerin yüzyüze \nya da email aracılığıyla yürüttüğü müzakereler ve aldığı kararlar Loomio aracılığıyla yapılıyor olsaydı\nbunları tanımlamak çok daha kolay olurdu.</p>\n<p>Eğer grubun henüz yeni ise, herkesin Loomio aracıyla oynaması için bir şans vermek ve karar verme sürecini  görebilmesine\
-      \ olanak tanımak için endişe yaratmayacak bir karar ile işe başlayabilirsin.</p>\n<p>Kişilerin müzakerelere dahil olmasını teşvik etmenin diğer bir kolay yolu ise \n@bahset özelliğini kullanarak onları davet etmek; bu özellik kişilere bir yorumda onlardan bahsedildiğini haber veren\nbir e-posta\
-      \ gönderir.</p>\n"
-    example1_html: "<h3>Grubunun geniş bir konuyu müzakere ederek birlikte bir çözüm geliştirmesine ihtiyacın var</h3>\n<p>Strateji: Bir öneri oluşturmadan önce bir süre için konuyu tartışın.</p>\n<p>Eğer belirli bir çözüme varmadan önce grup içinde soruna karşı ortak bir anlayış geliştirirsen, \nmüzakereler\
-      \ genellikle en iyi sonuca ulaşır. Kişiler bu sürece\nkatılım gösterdileri sürece, sonuç hakkında fikir birliğinde olmaları daha olasıdır.</p>\n"
+    engaging_html: "<h2>Grubunla etkileşime girmen için ipuçları</h2>\n<p>Kişiler masada etkileşimli bir öneri olduğu zaman katkıda bulunmak için istekli olurlar. İyi bir öneri grup için bir eylem planı içerir, bu yüzden\ngrubun aynı fikirde olup olmadığı ve bunun ne anlama geldiği hemen belli olacaktır. Eğer kişilerin yüzyüze \nya da email aracılığıyla yürüttüğü müzakereler ve aldığı kararlar Loomio aracılığıyla yapılıyor olsaydı\n\
+      bunları tanımlamak çok daha kolay olurdu.</p>\n<p>Eğer grubun henüz yeni ise, herkesin Loomio aracıyla oynaması için bir şans vermek ve karar verme sürecini  görebilmesine olanak tanımak için endişe yaratmayacak bir karar ile işe başlayabilirsin.</p>\n<p>Kişilerin müzakerelere dahil olmasını teşvik etmenin diğer bir kolay yolu ise \n@bahset özelliğini kullanarak onları davet etmek; bu özellik kişilere bir yorumda onlardan\
+      \ bahsedildiğini haber veren\nbir e-posta gönderir.</p>\n"
+    example1_html: "<h3>Grubunun geniş bir konuyu müzakere ederek birlikte bir çözüm geliştirmesine ihtiyacın var</h3>\n<p>Strateji: Bir öneri oluşturmadan önce bir süre için konuyu tartışın.</p>\n<p>Eğer belirli bir çözüme varmadan önce grup içinde soruna karşı ortak bir anlayış geliştirirsen, \nmüzakereler genellikle en iyi sonuca ulaşır. Kişiler bu sürece\nkatılım gösterdileri sürece, sonuç hakkında fikir birliğinde olmaları\
+      \ daha olasıdır.</p>\n"
     example2_html: |
       <h3>Aklında bir fikir var ve gruptan onay alıp ilerlemek istiyorsun.</h3>
       <p>Strateji: Almak istediğin karar hakkında bir tartışma başlat ve hemen teklif yap.</p>
@@ -589,7 +599,12 @@ tr:
     join_the_community: "Topluluğa katıl"
     join_the_community_description_html: "Loomio'yu nasıl geliştirilebiliriz ve nasıl en iyi şekilde kullanabiliriz konularını konuştuğumuz Loomio Topluluğuna herkes katılmakta özgürdür. <br /><br /><a href='https://www.loomio.org/groups/3'>Loomio Topluluğu grubuna gitmek için tıklayın.</a>."
     images_and_text_formatting: "Resimler ve metin biçimlendirme"
+    images_and_text_formatting_html: |
+      <p>Loomio, resim gömme ve metin biçimlendirme amacıyla ‘Markdown’ dilini kullanıyor.
+      Markdown desteğini yorum kısmının üzerindeki ufak gri simge ile açıp kapayabilirsiniz.</p>
+      <p>Markdown kullanımı hakkında daha fazla bilgi için <a href='https://www.loomio.org/discussions/1124'>burayı tıklayın.</a></p>
     keep_up_to_date: "Güncel tutun"
+    keep_up_to_date_html: "<p>Ekranın üst kısmındaki grup adını tıklamak sizi grup içindeki müzakereleri\nve kararları görüntüleyebileceğiniz Grup Sayfasına götürür. Eğer\nbirden fazla gruba dahilseniz, bu gruplardaki tüm aktiviteleri \nAna Sayfada tek bir seferde görebilirsiniz.\n<p>Grubunuzda önemli şeyler olduğunda e-posta bildirimi alırsınız.\nE-posta tercihlerinizi <a href=\"%{link}\"\">buradan</a> değiştirebilirsiniz.</p>\n"
     make_a_decision: "Bir karar ver"
     make_a_decision_description: "Grup karar vermeye hazır olduğunda herkes teklifte bulunabilir. Kararın ne getireceğini açık bir şekilde anlat ve insanlara onaylamanın veya reddetmenin ne anlama geleceğini anlamaları için gerekli bilgileri ver."
     prompt_people_details: "Eğer, grubunuzdaki belirli bir kişinin dikkatini çekmek istiyorsanız, onun rumuz ismi'ni ‘@’ ile beraber yazın. Sonrasında, sizin, bir yorumda ondan bahsettiğinizi bildirecek bir e-posta o kişinin tarafına gönderilecektir."
@@ -599,7 +614,11 @@ tr:
     positions_disagree_description: "<span>Katılmıyorum</span> means daha iyi bir alternatif olabileceğini düşündüğün, ancak grubun aldığı karara uyduğun anlamına gelir."
     positions_block_description: "<span>İtiraz ediyorum</span> öneriye şiddetle karşı çıktığın ve hayata geçirilmesine razı olmadığın anlamına gelir."
     start_discussion: "İlgi çekici bir müzakere başlatma"
+    start_discussion_html: "<p>Bir müzakere başladığınızda, başlığınızın ana konuyu kısa ve öz bir şekilde aktardığından emin olun.\nGrubun üretken ve bilgilendirilmiş bir durumda müzakere\nedebilmesini sağlayacak olan tüm temel verileri girmek için \nİçerik Panelini kullanın.</p>\n<p>Müzakere esnasında yeni bilgiler ortaya çıktıkça İçerik Paneli güncellenebilir.\nBu alanda; ana konuyu açıklığa kavuşturmanın yanı sıra kaynak paylaşımı\
+      \ yapabilir, \nmüzakere ilerledikçe özet bilgileri yayınlayabilir ya da \ngrubunuzun kullandığı karar verme protokollerini paylaşabilirsin.</p>\n"
     start_proposal: "Anlaşılır bir öneri yazma"
+    start_proposal_html: "<p>Eğer başlığınız açık ve öz ise, kişiler katılıyorum ya da\nkatılmıyorum demenin tam olarak ne anlama geldiğini anında bilirler.</p>\n<p> Eğer bir öneride anında net bir anlaşma sağlanamazsa bu dünyanın sonu demek değil.\nEğer grup ilk öneriyi beğenmediyse, herhangi biri endişeleri \ngidermek için yeni bir öneri başlatabilir ve ilerleme süreci devam eder.</p>\n<p>Bu dinamik süreçte, grubunuzun ortak bilgeliği,\
+      \ kişilerin tek\nbaşına bulabileceğinden daha iyi fikirler üretir.</p>\n<p>Eğer kararın bulunması zaman alacak gibi görünüyorsa, önerinin teslim tarihi her an ileriye atılabilir.\nBir önerinin süresi dolmadan 24 saat önce herkes bir e-posta bildirimi alır.</p>\n\n"
     video_id: "52025402"
     video_tutorial: "Eğitim videosu"
     video_tutorial_description: "Loomio nasıl kullanılır tanıtım videosuna göz at."
@@ -610,20 +629,30 @@ tr:
     proposal: 'Anlaşılır bir öneri yazmak için ipuçları'
     vote: 'Konumunu istediğin zaman değiştirebilirsin'
   pricing_page:
+    intro: "Bütçeye sahip gruplar aracı kullanmak icin bir abonelik ücreti öderler.\nBütçesi olmayan gruplar Ödeyebilgin Kadar Öde modelini kullanırlar. Bu modelde grubun kendi üyeleri gönüllü katkı yapmaya davet edilir. \nKatkılarınız bizlere Loomiyo'yu bağımsız ve reklamsız tutmamız ve kendi topluluğumuz tarafından yönlendirilebilmemiz için olanak sağlıyor.\n"
     organisations: Kuruluşlar
     organisations_examples: örneğin; şirketler, devlet kuruluşları, sivil organizasyonlar
     informal_groups: İnformal gruplar
     informal_groups_desc: Grubunuzdaki üyelerden yapabilecekleri kadar ödeme yapmaları istenilecek
     informal_groups_examples: örneğin aileler, sosyal hareketler, kolektifler
   contribution:
+    any_amount: ya da bir seferlik şu şekilde kişisel katkı yapın
     currency_desc: Tutarlar ABD doları cinsindendir
     monthly_html: Ayda bir katkıda bulunmak istiyorum
     one_time_html: Bir defaya mahsus katkıda bulunmak istiyorum
     submit: Katkıda bulun
     tooltip: Topluğumuzun finansman modeli hakkında bilgi alın
     thought_about_contributing: 'Katkı sunmak için fırsatın '
+    thought_about_contributing_description: "Loomio işbirliğine dayalı bir sosyal girişimdir ve herkesin kendilerini etkileyen kararlara kolayca katılabilmesini hedefler.\n\nPara işbirliğine dayalı karar verme süreci için bir engel teşkil etmemeli. Loomio, kullanıcı topluluklarının bağışları ve resmi organizasyonların ödedikleri abonelik ücretleri tarafından finanse edilmektedir.\n\nKatkılarınız; Loomiyo'yu bağımsız, reklamsız,\
+      \ ve kendi topluluklarında büyük işler başaran gruplara serbest ve erişilebilir tutmamız için bizlere olanak sağlıyor. \n\nBu mümkün kıldığınız için teşekkür ederiz!\n"
     thank_you_title: Loomio'ya katkı sağladığınız için teşekkür ederiz!
     making_a_donation: Bağışta bulunmak
+    making_a_donation_description: |
+      Loomio işbirliğine dayalı bir sosyal girişimdir ve herkesin kendilerini etkileyen kararlara kolayca katılabilmesini hedefler.
+
+      Katkılarınız; Loomiyo'yu bağımsız, reklamsız, ve kendi topluluklarında büyük işler başaran gruplara serbest ve erişilebilir tutmamız için bizlere olanak sağlıyor.
+
+      Bu mümkün kıldığınız için teşekkür ederiz!
   resend_confirmation: "Onay bilgilerini tekrar gönder"
   new_password: "Yeni şifre"
   confirm_new_password: "Yeni şifreyi doğrulayın"
@@ -639,9 +668,11 @@ tr:
   remember_me: "Beni hatırla"
   signing_in: "Oturum açmak"
   or: "veya"
+  invalid_email: Girdiğiniz e-posta adresi geçersiz, lütfen geçerli bir e-posta adresi giriniz
   forgot_your_password: "Şifrenizi mi unuttunuz?"
   dont_have_an_account: "Bir Hesabınız yok mu?"
   create_one_now: "Yeni birtane oluştur"
+  link_it_up_instead: "Bunun yerine bağlantı kurun"
   sign_up_via: "Yoluyla üye ol"
   or_fill_in_this_form: "veya bu formu doldurun"
   already_have_account: "Zaten bir Loomio hesabınız var mı?"
@@ -651,6 +682,7 @@ tr:
   now_that_your_logged_in: "%{provider_name} ile giriş yaptınız, bir Loomio hesabı oluşturmak için lütfen bilgilerinizi onaylayınız."
   confirmation_not_received: "Onay talimatları eline ulaşmadı mı?"
   unlock_not_received: "Yeniden açma talimatları eline ulaşmadı mı?"
+  inactive_html: "Bu hesap devre dışı bırakılmıştır. Eğer, herhangi bir sorunuz var ise lütfen <a href='%{path_to_contact}'>buradan bağlantıya geçiniz</a>."
   create_an_account_html: 'Bir Loomio Beta hesabı oluşturun'
   log_in: "Oturum aç"
   join_group:
@@ -673,16 +705,21 @@ tr:
     subject: "Lütfen yeni Loomio grubumuza katıl, %{group}"
     invite_people: "Kişileri grubuna davet et"
     invite_to_discussion: "Bu müzakereye insanları davet edin"
+    invite_to_discussion_info: "Bu tartışmaya kişi eklemek onlara grubunuza katılmanız için bir davet gönderecektir. Kabul ettiklerinde bu tartışmaya yönlendirilecekler."
     select_members: "%{group_name} grubundan üyeleri ekle"
     body_editable: |
       Hey oradaki, gel bizimle birlikte karar ver! Biz Loomio denilen işbirliğine dayalı bir karar verme aracı kullanıyoruz.
+    body_editable_discussion: |
+      Hey oradaki, gel ve tartışmaya katıl!
     message_body: "Davetiye mesajı"
     invites_more_help2: "<p>İstediğin zaman kişileri grubuna davet edebilirsin.</p><p>İstersen tüm üyeleri hemen davet edebilir ya da sadece yakın calıştığın kişileri davet etmekle başlayabilirsin.</p>"
     invitation_link: "Davetiye linki"
+    discussion_link: "Tartışmaya katıl:"
     link_help: "Loomio üzerineki %{group} grubuna katılmak için bu linki tıkla:"
     copy: "Eğer gönderdiğin kişi davetiye e-postasını almadıysa, aşağıdaki davetiye linkini kopyalayarak bu kişiye tekrar gönderebilirsin."
     pending_invitations: 'Bekleyen davetler'
     no_pending_invitations: "Şu anda bekleyen hiçbir davetiye bulunmamaktadır."
+    import_contacts_html: "E-posta adresini hatırlamıyor musun? %{google_link} üzerinden kişilerini aktarabilirsin"
   search:
     description: "Başlığında ya da tanımında '%{query}' kelimesinin geçtiği müzakere ve önerilerin listesi aşağıdadır."
     header: "'%{query}' için arama sonuçları"
@@ -714,13 +751,17 @@ tr:
       submit: 'Mesaj gönder'
     messages:
       email_html: "Bu forumu doldurun, ya da <a href='mailto:%{email}'>%{email}</a> adresine bir E-posta gönderin"
+      social_html: "Değişik platformlar üzerinden bize katılabilirsin<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: "Bir müzakere başlat"
+      who: "Bu müzakereyi hangi grupta başlatmak istersiniz?"
     edit:
       header: "Müzakereyi düzenle"
     privacy:
       will_be_private: "Müzakere yalnızca üyelere görünür olacaktır."
+      will_be_private_to_group: "Müzakere yalnızca %{group_name} üyelerine görünür olacaktır."
+      will_be_private_to_parent_group: "Müzakere %{parent_group_name} ve %{group_name} gruplarının üyelerine görünür olacaktır."
       will_be_public: "Herkes müzakereyi görebilir."
   motion_history:
     title: "Öneri değişiklikleri"
@@ -748,11 +789,14 @@ tr:
     view: "Profili görüntüle"
     profile: "Profili düzenle"
     picture: "Resim"
+    use_initials: 'Baş harfleri kullan'
     use_uploaded: 'Yüklenmiş resim kullan'
+    use_gravtar: 'Gravatar kullan'
     upload_new_image: "Yeni bir resim yükle"
   group_setup:
     set_up_your_group: Grubunu kur
     desc_header: "Neredeyse geldik!"
+    desc_html: "Grup koordinatörü olarak, Loomio grubunuzu kurmaktan ve onun yönetiminden siz sorumlusunuz. Birkaç ayar seçtikten sonra, yeni grubunuza girebilir, bir veya daha fazla müzakere başlatabilir ve kişilere davet gönderebilirsiniz! <p>Eğer grubunuzu tanımlamanın en basit yolunu düşünüyorsanız kendinize şu soruları sorun: Birlikte neyi başarmak istiyorsunuz? Ne tür kararlar alacaksınız? Kimler dahil olacak?</p>"
     submit: "Beni grubuma götür!"
     payment_model:
       header: Loomio herkes için!
@@ -844,6 +888,9 @@ tr:
       subject: "Loomio'da dün"
       mark_as_read: Okundu olarak işaretle
       thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
+      click_here_to_mark_all_as_read_html: |
+        İşte dün Loomio'da neler oldu.
+        Bunu okuduktan sonra Loomio gelen kutusundan çıkarmak için <a href="%{link}">okundu olarak işaretle</a> linkine tıklayınız.
       marked_as_read_success: "E-posta'daki herşey okundu olarak isaretlendi"
     group_email:
       intro: "%{who} %{group} grubunda yeni bir duyuru yaptı:"
@@ -853,6 +900,7 @@ tr:
     invitation:
       hi: "Merhaba %{name},"
       intro: "%{group_name} grubunu açmak için aşağıdaki linki tıkla:"
+      closing_message: "Herhangi bir sorunuz varsa ya da size yardımcı olabileceğimiz herhangi bir konu varsa, bu e-postayı yanıtlamanız yeterli. Sizlerden haber almak bizi memnun edecektir."
       thanks: |
         Teşekkürler!
         Loomio Takımı
@@ -865,6 +913,7 @@ tr:
       subject: "Loomio da %{who}  %{which} grubunda sizden bahsetti"
     new_motion_created:
       subject: "Öneri: %{proposal_title}"
+      context: "%{author} %{group_full_name} grubunda bir öneri oluşturdu:"
     proposal_closed:
       proposal_has_closed: 'Öneri kapatıldı.'
       specify_outcome_and_notify_group: "Bir sonuç oluştur ve grubuna gönder!"
@@ -880,11 +929,28 @@ tr:
       closes_at: "de kapanır"
       closes_in: "içinde kapanacak"
       subject: "24 saat içinde kapanıyor: %{proposal_title}"
+      headline: "%{author}'nin %{group} grubundaki önerisi yakında kapanacak:"
       summary: "Özet"
+    thread_mailer:
+      footer_text: "Bu e-postayı doğrudan yanıtlayın veya Loomio üzerinde görüntüleyin:"
+      reply_or_view_online_html: "Bu e-postayı doğrudan yanıtlayın veya <a href='%{url}'>Loomio üzerinde görüntüleyin</a>."
+      unfollow_discussion_html: "Bu müzakere hakkında e-posta almayı durdurmak için <a href='%{unfollow_url}'>Takibi Bırakın</a>."
+      change_email_preferences_html: "Loomio e-posta aboneliğinizi iptal etmek için <a href='%{email_preferences_url}'>e-posta tercihlerinizi</a> değiştirin."
+      change_preferences: "E-posta tercihlerini değiştir:"
+      new_motion: "%{who} teklif etti:"
+      motion_closing_soon: "Teklif 24 saat içinde kapanıyor:"
+      proposal_closed: "Öneri kapandı:"
+      specify_outcome_html: "Sizin öneriniz kapandı. Herkesin bilmesi için <a href='%{link}'>bir sonuç belirtin</a>."
+      specify_outcome: "Sizin öneriniz kapandı. Herkesin bilmesi için bir sonuç belirtin:"
+      outcome_created: "%{who} bir öneri sonucu belirledi"
+      you_agreed: "Sen %{past_tense_position}"
     verification:
       header: "Neredeyse bitti!"
       intro: "Talebinizi sonuçlandırmak için lütfen bu doğrulama linkine tıklayın:"
       ignore: "Eğer Loomio'ya katılmayı talep etmediysen lütfen bu e-postayı görmezden gel."
+  meta_tags:
+    default_title: "Loomio | İşbirliğine Dayalı Karar Verme"
+    default_description: Loomio kullanımı kolay ve çevrimiçi bir grup içi karar verme aracıdır. Dağınık grupların kararlara çabuk ulaşmasına ve yapıcı eylemde bulunmasına olanak sağlar.
   about_loomio: "Loomio Hakkında"
   ago: "%{quantity_of_time} önce"
   approve: "Onayla"
@@ -921,12 +987,18 @@ tr:
   other: "Diğer"
   outcome: "Sonuç"
   password: "Şifre"
+  leave_this_field_blank: "bu alanı boş bırakın"
+  photo: 'Fotoğraf'
   pricing: 'Fiyatlandırma'
   prev: "Önceki"
   more: "Daha fazla..."
   translate: "Loomio'nun çevirisine yardımcı ol!"
+  translate_field: "Çeviriye bakın"
+  loading_translation: "Çeviri yükleniyor..."
   translate_this_string: "%{language} dilinde çeviri yap"
+  failed_translation: "Çeviri tamamlanamıyor"
   options: "Seçenekler"
+  rss_subscribe: "Akışa abone ol"
   ok_got_it: "Tamam, anladım!"
   remove: "Kaldır"
   save: "Kaydet"
@@ -941,19 +1013,114 @@ tr:
   terms_of_service_html: "Bunu tıklayarak %{button_text}, Loomio'nun <a href='%{link_path}' target='_blank'>Hizmet Koşullarını</a>kabul etmiş sayılırsınız"
   thanks: "Teşekkürler!"
   unlike: "Beğenmekten vazgeç"
+  time_until_close: "Kapanmasına %{quantity_of_time} kaldı"
   update: "Güncelleme"
   facebook: "Facebook"
   yahoo: "Yahoo"
   google: "Google"
+  persona: "Karakter"
   common:
+    markdown_help_tooltip: 'Markdown ile metin biçimlendirme temellerini öğrenin'
+    settings: Ayarlar
+    dashboard: Kontrol paneli
+    unread: Okunmamış
+    filter: 'Filtrele:'
+    following: Takiptekiler
+    not_following: Takip edilmiyor
+    back_to_discussion: "Müzakereye dön"
+    edited: Düzenlendi
     groups: "Gruplar"
+    select_error: Bir seçenek seçiniz
+    today: Bugün
+    select: Lütfen seçiniz
+    months:
+      january: Ocak
+      february: Şubat
+      march: Mart
+      april: Nisan
+      may: Mayıs
+      june: Haziran
+      july: Temmuz
+      august: Ağustos
+      september: Eylül
+      october: Ekim
+      november: Kasım
+      december: Aralık
+    abbr_months:
+      jan: Ock
+      feb: Şbt
+      mar: Mrt
+      apr: Nis
+      may: May
+      jun: Hzrn
+      jul: Tem
+      aug: Ağu
+      sep: Eyl
+      oct: Ekim
+      nov: Kas
+      dec: Ara
+    days:
+      monday: Pazartesi
+      tuesday: Salı
+      wednesday: Çarşamba
+      thursday: Perşembe
+      friday: Cuma
+      saturday: Cumartesi
+      sunday: Pazar
+    abbr_days:
+      mon: Pzt
+      tue: Sl
+      wed: Çrş
+      thu: Prş
+      fri: Cm
+      sat: Cts
+      sun: Pz
+    tiny_days:
+      mo: Pzt
+      tu: Sl
+      we: Çr
+      th: Pe
+      fr: Cm
+      sa: Cmt
+      su: Pa
+    meridians:
+      am: 'am'
+      pm: 'pm'
+    please_wait: "Lütfen bekleyin"
     privacy: "Gizlilik"
+    private: "Özel"
+    permissions: "İzinler"
+    public: "Genel"
     email: "E-posta"
+    start_group: "Grup başlat!"
   group_categories:
     all: "Hepsi"
+    blank: "Kategorilenmemiş"
     economics: "Ekonomi"
+    activist: "Eylemci"
     arts: "Sanat"
+    business: "İş hayatı"
+    collective: "Kollektif"
+    community_group: "Topluluk grubu"
+    co_operative: "İşbirliği"
+    democratic_organisation: "Demokratik organizasyon"
+    education: "Eğitim"
+    environmental_group: "Çevreci grup"
+    family: "Aile"
+    local_government: "Yerel yönetim"
+    online_community: "Çevrimiçi topluluk"
+    religious_group: "Manevi / dini"
+    event: "Etkinlik"
+    open_source_software: "Açık kaynak yazılım"
+    political_initiative: "Siyasi girişim"
+    social_enterprise: "Sosyal girişim"
+    social_justice: "Sosyal adalet"
+    advocacy_group: "Sözcülük grubu"
     science: "Bilim"
     technology: "Teknoloji"
     sports: "Spor"
+    youth: "Gençlik"
+    women: "Kadınlar"
     media: "Medya"
+    health: "Sağlık"
+  start_your_group: Grubunu başlat
