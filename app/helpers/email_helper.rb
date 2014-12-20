@@ -38,7 +38,7 @@ module EmailHelper
   end
 
   def vote_icon_paths_helper(position)
-    asset_path "hand-#{position}-18.png"
+    asset_url "hand-#{position}-18.png"
 
     #case position
      #when 'yes'
