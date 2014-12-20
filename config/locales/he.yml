@@ -571,9 +571,13 @@ he:
         update: "עידכון הדיון"
       motion:
         create: "התחלת הצעה"
+      user:
+        create: "יצירת חשבון"
+        update: "עדכון הגדרות"
   email:
     reply_to_this_discussion: השיבו לדיון זה
     to_join_discussion:
+      message_intro: "%{who} אמר/ה:"
       link: "הצטרפות לדיון"
     view_discussion: "לחצו כאן להצגת דיון זה"
     view_proposal: "הצגת הצעה זו ב Loomio"
