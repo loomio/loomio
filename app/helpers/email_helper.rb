@@ -39,17 +39,6 @@ module EmailHelper
 
   def vote_icon_paths_helper(position)
     asset_url "hand-#{position}-18.png"
-
-    #case position
-     #when 'yes'
-       #"https://loomio-attachments.s3.amazonaws.com/themes/pages_logos/000/000/005/original/hand-yes-18.png?1403064691"
-     #when 'no'
-       #"https://loomio-attachments.s3.amazonaws.com/themes/app_logos/000/000/005/original/hand-no-18.png?1403064711"
-     #when 'block'
-       #"https://loomio-attachments.s3.amazonaws.com/themes/pages_logos/000/000/004/original/hand-block-18.png?1403064137"
-     #when 'abstain'
-       #"https://loomio-attachments.s3.amazonaws.com/themes/app_logos/000/000/004/original/hand-abstain-18.png?1403064137"
-     #end
   end
 
   def motion_closing_time_for(user)
