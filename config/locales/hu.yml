@@ -56,6 +56,7 @@ hu:
     cant_view_member_profile: "Nem láthatod az adatait mert nem vagytok ugyanannak a csoportnak a tagjai."
     contribution: "Jelentkezz be, hogy hozzászólhass"
     discussion_not_created: "Nem tudtuk létrehozni a témát."
+    discussion_not_moved: "Nincs jogod áthelyezni ezt a vitát ide %{destination_group.name}"
     group_not_archived: "Nem tudtuk archiválni a csoportot."
     invalid_close_date: "Érvénytelen a határidő, lehet, hogy a megadott időpont már elmúlt."
     invalid_email: "legalább egy érvényes e-mail címet adj meg"
@@ -63,6 +64,8 @@ hu:
     motion_closing_inputs: "Érvénytelen záró határidő"
     motion_outcome_not_created: "Nem lehet az eredményt megjeleníteni."
     motion_outcome_not_updated: "Nem lehet az eredményt frissíteni."
+    only_group_coordinator_destroy: "Nem hagyhatod el ezt a csoportot mivel te vagy az egyetlen koodinátor.  Deaktiválhatod a csoportot a legördülő menüből vagy <a href='%{add_coordinator}'>új koordinátor hozzáadása</a> a csoporthoz."
+    only_group_coordinator_remove_admin: "A csoportnak kell legyen egy koordinátora. Szeretnél hozzáadni egy koordinátort a csoporthoz?"
     permission_to_invite: "Nincs hozzá engedélyed, hogy új tagokat hívj meg."
     position_not_updated: "Nem tudtuk megváltoztatni az álláspontodat."
     settings_not_updated: "A beállításaidat nem frissültek."
@@ -70,6 +73,7 @@ hu:
     group_request_invalid_token: "Bocs! érvénytelen kód"
     group_private_or_not_found: "Nincs ilyen csoport.⏎\n⏎\nLehet, hogy ez a csoport zárt. Ha valakitől kaptad a csoport linkjét, kérd meg, hogy vegyen fel a csoportba."
     group_already_setup: "Már van ilyen csoport."
+    passwords_did_not_match: "A két jelszó nem azonos"
     proposal_already_exists: "Ebben a témában már van aktív javaslat."
     user_with_email_address_already_in_group: "Az evvel az e-mail címmel rendelkező felhasználó már tagja ennek a csoportnak."
     you_have_already_requested_membership: "Már kérted a tagságot ebbe a csoportba."
@@ -78,6 +82,8 @@ hu:
   alert:
     duplicate_email: "%{which_email} már tagja a csoportnak."
   notice:
+    new_contacts_imported: "Ez működött! Neveket írhatsz az alábbi mezőbe és javasolni fogjuk az e-mail címet."
+    admin_rights_removed: "%{which_user} koordinátor jogai vissza lettek vonva."
     user_added: "%{user_email_or_name}-t hozzáadtuk a csoporthoz."
     new_user_added: "%{user_email_or_name}-t hozzáadjuk a csoporthoz, miután regisztrált a Loomión."
     member_removed: "A tagot eltávolítottuk."
@@ -85,29 +91,63 @@ hu:
     membership_request_canceled: "A tagfelvételi kérelmet visszavonták."
     membership_request_ignored: "A tagfelvételi kérelmet nem bírálták el."
     settings_updated: "A beállításaidat frissítettük."
+    user_made_admin: "%{which_user} koordinátor lett."
     you_have_left_group: "Kiléptél a(z) %{which_group} csoportból."
+    comment_deleted: "Bejegyzés törölve."
+    invitations:
+      auto_added:
+        one: "1 tag hozzáadva"
+        other: "%{count} tag hozzáadva"
+      existing_member:
+        one: "1 tag már a csoportban van"
+        other: "%{count} tag már a csoportban van"
+      sent:
+        one: "1 meghívó kiküldve"
+        other: "%{count} meghívó kiküldve"
+      auto_added_and_sent: "%{auto_added_text} és %{sent_text}"
+  tooltip:
+    cover_photo_upload: "Tölts fel új borítóképet"
+    logo_upload: "Tölts fel új logót"
+    edit_description: "Leírás szerkesztése"
+    group_category: "Fedezz fel ehhez hasonló csoportokat"
+  views:
+    pagination:
+      previous: "Előző"
+      next: "Következő"
   warning:
+    cant_remove_last_admin: "Te vagy az utolsó koordinátor s azt nem lehet eltávolítani."
     membership_request_already_approved: "A tagfelvételi kérelmet már jóváhagytuk."
     membership_request_already_ignored: "A tagfelvételi kérelmet már figyelmen kívül hagyták."
     membership_request_already_canceled: "A tagfelvételi kérelmet már visszavonták."
     position_not_submitted: "Nem tudtuk rögzíteni az álláspontodat"
     proposal_not_created: "AóNem tudtuk létrehozni a javaslatot"
+    user_already_admin: "%{which_user} már koordinátor a csoportban."
     user_already_member: "%{which_user} már tagja a csoportnak."
+    user_not_admin: "Elnézést, %{which_user} koordinátor kell legyen hogy ehhez hozzáférjen."
   success:
     added_to_group: "Tagja lettél a(z) %{which_group} csoprotnak."
     close_date_changed: "Megváltoztattad a határidőt."
     discussion_created: "Létrehoztad a témát."
     discussion_deleted: "Törölted a témát."
+    discussion_moved: "A vita sikeresen át lett helyezve ide: %{group_name}"
     emails_sending: "Küldjük az e-maileket."
     group_archived: "A csoportot archiváltuk."
     group_created: "A csoportot létrehoztuk."
     members_added: "A tagokat hozzáadtuk a csoporthoz."
+    membership_requested: "Kérted hogy csatlakozhass a %{which_group} csoporthoz. Értesítünk, amint jóváhagyják."
+    motion_closed: "Javaslat lezárva. Ha gondolod beállíthatsz egy javaslat eredményt és kiküldheted a csoportodnak."
+    motion_outcome_created: "Gratulálunk, létrehoztál egy javaslat eredményt és a csoportod tagjait értesítettük."
+    motion_outcome_updated: "A javaslat eredménye frissítve lett."
+    password_updated: "Jelszavad sikeresen megváltozott."
     position_submitted: "Rögzítettük az álláspontodat."
     position_updated: "Frissítettük az álláspontodat."
     proposal_created: "Létrehoztuk a javaslatot."
     proposal_deleted: "Töröltük a javaslatot."
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: "1 másodperc"
+        other: "%{count} másodperc"
       x_seconds:
         one: "1 másodperc"
         other: "%{count} másodperc"
@@ -138,11 +178,29 @@ hu:
       almost_x_years:
         one: "1 év"
         other: "%{count} év"
+  organisation:
+    name: "Loomio"
+  sr:
+    toggle_navigation: "Navigáció váltó"
+  footer:
+    about: 'Rólunk'
+    blog: 'Blog'
+    contact: 'Kapcsolat'
+    privacy: 'Adatvédelem'
+    public_groups: 'Nyilvános csoportok'
+    terms: 'Feltételek'
   inbox:
+    clear: 'Töröl'
+    title: 'Bejövő fiók'
+    preferences: 'Bejövő fiók beállításai'
+    what_you_have_not_read_yet: "Még nem olvasott tevékenységek."
     dropdown-btn: 'Bejövő üzenetek'
     empty: Naprakész vagy! Minden hozzászólást láttál már.
+    preferences_instructions_html: '<strong>Húzd</strong> hogy átrendezd. <strong>Kijelölés megszüntetése</strong> hogy eltávolítsd a bejövő fiókból.'
   notifications:
     header: "Értesítések"
+    new_discussion: "egy vitát kezdeményezett"
+    new_motion: "egy javaslatot hozott létre"
     motion_closed:
       by_user: "lezárta a javaslatot"
       by_expiry: "A javaslat lezárult"
@@ -151,14 +209,31 @@ hu:
     comment_liked: "kedvelte a hozzászólásodat a témához"
     user_mentioned: "megemlített egy hozzászólásban"
     membership_requested: "tag szeretne lenni"
+    membership_request_approved: 'jóváhagyta a csatlakozási kérelmet'
     user_added_to_group: "hozzáadott a csoporthoz"
     motion_closing_soon: "Hamarosan zárul a javaslat"
     motion_blocked: "blokkolta a javaslatot"
+    motion_outcome_created: "megjelenített egy javaslat eredményt"
+    motion_outcome_updated: "frissítette a javaslat eredményét"
   edit_discussion_context: "A téma leírásának szerkesztése"
+  request_new_group: "Csoport létrehozása"
+  start_new_group: "Új csoport létrehozása"
+  start_new_group_hint: "döntések kezdése"
+  find_a_group: "Keress csoportot"
+  find_a_group_hint: "Keresés a nyilvános csoportok között"
+  search_for_group: "Keress csoportot ..."
+  no_groups_found: "Nem találtunk ilyen nevű csoportot!"
+  no_group_header: "Üdvözlünk a Loomio Beta verzióján"
   empty_notifications: "Még nincsenek értesítéseid."
   see_all_notifications: "Az összes értesítés megtekintése"
+  profile: "Profil"
+  email_settings: "E-mail beállítások"
   sign_out: "Kijelentkezés"
+  sign_in: "Bejelentkezés"
+  honeypot_warning: "Nem hozható létre a fiókod. Ha képernyő olvasót használsz, kérjük bizonyosodj meg arról hogy az utolsó (rejtett) mező az űrlapon üres."
   tagline: "Olyan világot teremtünk, ahol mindenki részt vehet a döntésekben és alakíthatja is azokat."
+  or_sign_in_html: "Ha már van Loomio fiókod, <a href='%{link}' class='%{link_class}'>jelentkezz be itt</a> "
+  or_link_account_html: "Ha már van Loomiom fiókod, <a href='%{link}'>kapcsold össze</a>"
   click_to_dismiss: "Ide kattintva eltűnik ez az üzenet"
   generic_confirm: "Biztos?"
   discussion_helper_text:
@@ -169,6 +244,105 @@ hu:
     message: "<p>Ez a <strong>csoportoldal</strong> Bal oldalon vannak a csoport témái.</p><p>Ha szerinted valami mást is meg kellene tárgyalni, indíts új témát.</p>"
   dashboard_helper_text:
     header: "Üdvözlet a nyitólapodon!"
+    message: "<p>A nyitólapon láthatod az összes témakört a csoportjaidból. <p></p>Új vitát indíthatsz a \"Vita indítása\" gombra kattintva.</p>"
+  prompt_visitor_to_authenticate:
+    header: "Bejelentkezés vagy csatlakozás a csoporthoz a bekapcsolódáshoz"
+    body: "Ha tagja vagy a csoportnak be kell jelentkezned a bekapcsolódáshoz"
+  prompt_user_to_join:
+    header: "Bekapcsolódáshoz csatlakozz a csoporthoz"
+    body: "Szavazáshoz illetve hozzászóláshoz tagja kell légy e csoportnak."
+  user_profile:
+    back: "Vissza a profilomhoz"
+    change_password: "Jelszó megváltoztatása"
+    deactivate_account: "Fiók deaktiválása"
+    about_deactivation: "Ez mit fog jelenteni?"
+    confirm_account_deactivation: "Biztosan deaktiválni akarod a fiókod?"
+    reactivation_html: "<a href='%{link}'>Kapcsolatba kell lépned velünk</a> hogy újra aktiváljuk a fiókod."
+    deactivation:
+      title: "Deaktiváljuk a fiókod"
+      query: "Megmondanád nekünk miért deaktiválod a fiókodat?"
+      only_coordinator: "A csoportnak kell legyen legalább egy koordinátora. Jelenleg te vagy az egyetlen koordinátor a következő csoportokban:"
+      instructions: "Ha deaktiválni szeretnéd a fiókodat vagy deaktiválod a csoportokat vagy más koodinátort nevezel ki."
+      info_title: "Mit fog lejenteni a fiókod deaktiválása?"
+      memberships: "Nem leszel tagja többé egyetlen csoportnak sem amelyhez most tartozol."
+      group_contributions: "A bejegyzéseid, javaslataid és vitáid megmaradnak a csoportban, de a neved nem jelenik meg majd mellettük."
+      emails: "Nem fogunk további e-maileket küldeni a Loomio-val kapcsolatban."
+  group_form:
+    name: "Csoport neve"
+    description: "Leírás"
+    category: "Katgória"
+    confirm_all_discussions_will_be_made_private_message: "Ha folytatod, minden nyilvános vita zártkörűvé válik."
+    confirm_all_discussions_will_be_made_public_message: "Biztos vagy ebben? Ha folytatod, minden zártkörű vita nyilvánossá válik."
+    what_can_members_do: "Mit tehetnek a tagok?"
+    members_can:
+      add_members: Hivj meg és hagyd jóvá az új tagok csatlakozását
+      edit_comments: Szerkeszti a hozzászólásaikat bármikor
+      edit_discussions: Szerkeszti a viták összegzését a csoportban
+      start_discussions: Vitákat kezdeményez
+      raise_motions: Javaslatokat indít
+      vote: Szavaz a javaslatokon
+      create_subgroups: Alcsoportokat hoz létre
+    motions_can_be_edited: Szerkeszti a javaslatokat miután a szavazás megkezdődött
+    visible_to:
+      label: Ki találhatja meg ezt a csoportot?
+      public_html: 'Bárki <span>láthatja a csoportot nyilvánosan</span>'
+      parent_members_html: 'A %{parent_group_name} csoport tagjai <span>nem láthatók nyilvánosan, de láthatók a %{parent_group_name}</span> csoport tagjai számára'
+      members_html: 'Csak tagok számára <span>a csoport nem lesz nyilvános</span>'
+    membership_granted_upon:
+      label: Hogy lehet csatlakozni?
+      hidden_parent:
+        request_html: 'Nyitott <span>a %{parent_group_name}</span> csoport tagjainak'
+        approval_html: 'Kérés alapján <span>a %{parent_group_name}</span> csoport tagjai'
+      request_html: Nyitott <span>bárki csatlakozhat</span>
+      approval_html: Kérés alapján <span>bárki csatlakozhat</span>
+      invitation_html: Meghívásos alapon <span>az új tagoknak meghívót kell küldeni</span>
+    parent_members_can_see_discussions:
+      label: Beszélgetések titkosítása
+      'true': 'Bárki a %{parent_group_name} csoportból láthatja a vitákat'
+      'false': Csak tagok láthatják a vitákat
+    discussion_privacy_options:
+      label: Ki láthatja a vitákat?
+      hint: A nyivános vitákat mindenki láthatja
+      public_only_html: Csak nyilvános viták
+      public_or_private_html: Nyilvános és zártkörű viták engedélyezése
+      private_only_html: 'Csak zártkörű viták '
+    learn_about_permissions: Fedezz fel többet a csoport engedélyezésekről
+  group_permissions:
+    header: Csoport engedélyezések
+    coordinators_can: "A koordonátorok tudnak:"
+    c1: A csoport beállításainak módosítása.
+    c2: Szerkeszti a viták összegzését a csoportban
+    c3: Viták mozgatása csoportok között
+    c4: Hivj meg és hagyd jóvá az új tagok csatlakozását
+    c5: Küldj egy körlevelet e-mailben a csoporttagoknak
+    c6: Csoport deaktiválása
+    c7: Koordinátor hozzáadása/törlése
+    c8: Viták törlése
+    c9: Hozzászólások törlése
+    c10: Alcsoportokat hoz létre.
+    c11: Vitákat kezdeményez.
+    c12: Javaslatokat indít.
+    c13: Szavaz a javaslatokon.
+    members_defaults: "Alap beállításokkal a tagok jogosultak:"
+    m1: Törölhetik saját hozzászólásaikat.
+    m3: Szerkeszthetik a javaslatok címét és leírását amelyeket maguk kezdeményeztek, amíg valaki az álláspontját kinyilvánítja.
+    m4: Szerkeszthetik a javaslataik záró dátumát amíg az lejár.
+    m5: Szerkeszthetik a címét és összegzéset bármely vtának.
+    m6: Al-csoportot indíthatnak, amelynek ők lesznek a koordinátoraik.
+    m7: Saját bejegyzéseiket bármikor módosíthatják.
+    m8: Javaslatot tehetnek és részt vehetnek a javaslatok tételében.
+    optional_restrictions: "Opcinálisan, a koordonátorok korlátozkatják amit a tagok tehetnek."
+  discussion_privacy:
+    public: Ez a vita nyilvános a neten.
+    private: Ez a vita zártkörű a csopot tagjainak.
+  group_privacy:
+    visible_to:
+      public: Nyilvánosan listázott csoport.
+      parent_members: 'Zártkörűnek listázott csoport. Csak tagoknak és a %{parent_group_name} csoport számára látható.'
+      members: Zártkörű csoport. Csak tagok számára látható.
+      public_html: 'Bárki <span>nyilvánossá teheti a csoportot</span>'
+      parent_members_html: 'A %{parent_group_name} csoport tagjai <span>nem láthatók nyilvánosan, de láthatók a %{parent_group_name}</span> csoport tagjai számára'
+      members_html: 'Csak tagok számára <span>a csoport nem lesz nyilvános</span>'
   setup_steps_title: "Következő lépések:"
   setup_step_1: "Nézd meg a példa témát"
   setup_step_2: "Indítsd az első témádat"
@@ -180,6 +354,7 @@ hu:
   edit_memberships: 'Tagság szerkesztése'
   add_new_member: "Új tag hozzáadása"
   invite_members_to_group: "Tagok meghívása a %{which_group} csoportba"
+  remaining_invites_count: "%{count} megmaradt meghívók"
   get_in_touch_link: "kapcsolat"
   email_members_in_group: "E-mail küldése a(z) %{which_group} csoport tagjainak"
   subject_error: "Töltsd ki a témát"
@@ -188,14 +363,27 @@ hu:
   message_placeholder: "Üzenet írása a(z) %{which_group} csoport tagjainak."
   email_group_members: "E-mail a csoport tagjainak."
   edit_group_settings: "A csoport beállításainak módosítása."
+  manage_members: "Tagok menedzselése"
   leave_group: "kilépés a csoportból"
+  confirm_leave_hidden_group: "Biztosan ki szeretnél lépni a %{which_group} csoportból? Az alcsoportokból is törlődsz."
   confirm_leave_group: "Biztosan kilépsz a(z) %{which_group} csoportból?"
   deactivate_group: "Csoport deaktiválása"
   confirm_deactivate_group: "Várj!!! Biztosan deaktiválni akarod a(z) %{which_group} csoportot? Többet nem jelenik meg neked a csoport. Ha azonban mégis vissza szeretnéd kapni a csoportot, reaktiválhatjuk, ha a contact@loomio.org címre küldesz egy kérést."
   invited_users: "Meghívott tagok"
   members: "Tagok"
   confirm_remove_user: "Biztosan el akarod távolítani %{which_user}-t a csoportból?"
+  remove_coordinator: "Koordinátor törlése"
+  confirm_remove_coordinator: "Biztos, hogy törölni akarod %{which_user} csoport koordinátori jogát?"
+  make_coordinator: "Koordonátori jogok megadása"
+  confirm_make_coordinator: "Biztos, hogy %{which_user} felhasználónak koordinátori jogokat adsz?"
+  confirm_remove_member: 'Biztosan el akarod távolítani ezt a felhasználót a csoportból?'
+  want_to_invite_html: "Szeretnél <a href='%{link}'>meghívni</a> ebbe a csoportba?"
   membership_requests: "Tagkérelmek"
+  previous_requests: Korábbi kérések
+  approved_by_person: Jóváhagyta %{person}
+  ignored_by_perosn: Figyelmen kívül hagyta %{person}
+  join_group_btn: Kapcsolódj a csoporthoz
+  you_have_joined_group: Kapcsolódtál a %{group_name} csoporthoz
   confirm_approve_membership_request: "Biztos, hogy hozzá akarod adni %{which_user}-t a csoporthoz?"
   cancel_membership_request: "Kérelem törlése"
   ignore_request: "Kérelem figyelmen kívül hagyása"
@@ -203,7 +391,9 @@ hu:
   confirm_ignore_membership_request: "Biztos, hogy figyelmen kívül hagyod %{which_user} tagfelvételi kérelmét?"
   membership_requested: "Felvétel kérve"
   request_membership: "Felvétel kérése"
+  ask_to_join_group: "Kérj belépőt a csoportba"
   confirm_remove_membership_request: "Biztosan vissza akarod vonni a tagfelvételi kérelmedet ebből a csoportból?"
+  no_pending_membership_requests: "Jelenleg nincs csatlakozási kérés a csoporthoz."
   subgroups: "Alcsoportok"
   create_a_subgroup: "Alcsoport létrehozása"
   select_members_to_add: "Válaszd ki a %{which_group}-hoz adott tagokat"
@@ -212,6 +402,8 @@ hu:
   new_subgroup: "Új alcsoport"
   create_subgroup: "Alcsoport létrehozása"
   creating_subgroup: "Hozom létre az alcsoportot"
+  hidden: "Zártkörű"
+  public: "Nyilvános"
   new_group: "Új csoport"
   create_group: "Csoport létrehozása"
   creating_group: "Hozom létre a csoportot"
@@ -221,6 +413,35 @@ hu:
   start_a_discussion: "Téma indítása"
   group_description: "A csoport leírása"
   edit_group_description: "A csoport leírásának szerkesztése"
+  group_subscription: "Csoport felíratkozás"
+  groups:
+    follow:
+      click_to_follow: "Klikk, kövesd a csoportot"
+      click_to_unfollow: "Klikk, a követés törlése"
+      following_details: "Értesítést kapsz minden esményről a csoportban."
+      not_following_details: "Értesítést kapsz az eseményekről amelyekben részt veszel."
+  group_request:
+    beta_request_header: "Indíts csoportot a Loomio beta vezión"
+    beta_request_description: "A döntéshozatalhoz a Loomio Beta verzión, előbb indíts egy csoportot"
+    neighbourhood_support_group: "pl. Szomszédok Közössége Csoport"
+    commercial_use_option: egy cégnél, hivatalos szervezet vagy munkahely
+    non_commercial_use_option: egy közösségi csoportban vagy nem formális hálózatban
+    please_select_an_option: Válassz egy opciót
+    confirmation:
+      title: Mindjárt kész! Ellenőrizd az e-mailed.
+      body_html: |
+        Mehívót küldtünk e-mailben a csoport létrehozása érdekében.
+
+        Ha nem látsz semmit az e-mail fiókodban pár percen belül, írj nekünk a <a href='mailto:contact@loomio.org'>contact@loomio.org</a> címre.
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> egyetértett a javaslattal."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> tartózkodott a javaslattal kapcsolatban."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> nem értett egyet a javaslattal."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> blokkolta a javaslatot."
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> egyetértett a javaslattal:"
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> tartózkodott a javaslattal kapcsolatban:"
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> nem értett egyet a javaslattal:"
+    user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> blokkolta a javaslatot:"
   discussion_items:
     new_discussion: "létrehozta a témát"
     new_motion: "létrehozta a javaslatot"
@@ -228,19 +449,51 @@ hu:
       by_user: "lezártuk a javaslatot"
       by_expiry: "A javaslat lezárva"
     motion_close_date_edited: "megváltoztattuk a javaslat határidejét"
+    motion_outcome_created: "megjelenített egy javaslat eredményt"
+    motion_outcome_updated: "frissítette a javaslat eredményét"
     discussion_title_edited: "megváltoztattuk a téma címét"
     discussion_description_edited: "megváltoztattuk a téma leírását"
+    motion_name_edited: 'módosította a javaslatot'
+    motion_description_edited: 'módosította a javaslat leírását'
   discussion: "Téma"
   current_decision: "Jelenlegi döntés"
   previous_decisions: "Korábbi döntések"
   see_previous_decisions: "Korábbi döntések megtekintése"
+  see_more: "Tovább"
+  create_new_proposal: "Hozz létre egy javaslatot"
   empty_decision_list_html: "Itt az ideje a döntésnek?  <br> Bárki tehet javaslatot."
   empty_decision_index: "Ez a csoport még nem hozott döntést."
   empty_discussion_list: "Ebben a témában még nincs semmilyen hozzászólás."
+  go_to_add_comment_html: "Hozzászólás érdekében, <a href='%{href}'>lépj a beszélgetés végére</a>."
+  comment_by: "%{comment_author} bejegyzése"
+  read_up_to: "Eddig olvastad legutóbb"
+  discussion_list:
+    clear_filters: "Szűrők törlése: minden téma jelenjen meg"
+    filter_unread:
+      enable: "Csak az olvasatlan témák megjelenítése."
+      disable: "Megjelenít olvasott és olvasatlan témákat"
+    filter_followed:
+      enable: "Csak az követett témák megjelenítése."
+      disable: "Megjelenít követett és nem követett témákat"
+    empty:
+      no_discussions: "Egyik csoportodban sincsen semmilyen felvetett téma."
+      no_discussions_in_group: "Ennek a csoportnak még nincsenek felvetett témái."
+      no_discussions_matching_filters_html: "Nincs a szűrőknek megfelelő témakör. <a href='%{link}'>Szűrők törlése</a>."
+      no_public_discussions: "Nincs nyilvános témakör ebben a csoportban."
+      discussions_are_private: "Ebben a csoportban minden téma zártkörű."
+      request_membership_html: "Zártkörű témák megtekintéséhez, <a href='%{href}'>kérj belépőt a csoportba.</a>"
+      membership_is_invitation_only: "A belépéshez meghívóra van szükséged egy csoporttagtól."
+      membership_is_invitation_by_admin_only: "A belépéshez egy koordinátor meghívójára van szükséged."
+      log_in_html: "Ha tag vagy <a href='%{href}'>Lépj be</a> hogy megtekinthesd a zártkörű témákat."
   discussion_context:
     started_html: "<a href='%{link}' class='%{link_class}'>%{who}</a> indította, az indítástól eltelt idő: %{when}"
     last_edited_html: "Legútóbb módosította: <a href='%{link}' class='%{link_class}'>%{who}</a>, a módosítás óta eltelt idő: %{when}"
     see_revision_history: "A korábbi változatok megtekintése"
+    see_history: "Előzmények"
+    click_to_follow: "Klikk, kövesd a szálat"
+    click_to_unfollow: "Klikk, a követés törlése"
+    following_details: "Értesítést kapsz minden eseményről ezen a szálon."
+    not_following_details: "Nem kapsz értesítést a tevékenységről ezen a szálon."
   description_history:
     header: "Korábbi változatok"
     subheader: "Verzió"
@@ -256,9 +509,15 @@ hu:
   delete_comment: "Hozzászólás törlése"
   confirm_delete_comment: "Biztosan törölni akarod ezt a hozzászólást?"
   markdown_settings_more_info: "További információ..."
+  edit_discussion: "A téma szerkesztése"
+  move_discussion: "Téma áthelyezése"
+  move_discussion_to_hidden_group: "Ez a vita jelenleg nyilvános. Az áthelyezés egy titkos csoportba zártkörűvé változtatja."
+  move_discussion_to_public_group: "Ez a vita jelenleg zártkörű. Az áthelyezés egy nyilvános csoportba nyilvánossá változtatja."
+  move_discussion_where: "Hová szeretné áthelyezni ezt a témakört?"
   delete_discussion: "A téma törlése"
   confirm_delete_discussion: "Biztosan törölni akarod ezt a témát?"
   new_proposal: "Új javaslat"
+  edit_proposal: "Javaslat szerkesztése"
   close_proposal: "Javaslat lezárása"
   confirm_close_proposal: "Biztosan le akarod zárni ezt a javaslatot?"
   change_proposal_close_date: "A határidő módosítása"
@@ -280,6 +539,22 @@ hu:
   block_details: "Komoly ellenvetéseim vannak a javaslattal szemben és nem szeretném, hogy így döntsünk."
   not_voted: "[Kik nem foglaltak még állást]"
   outcome_placeholder: "Mi lett ennek a javaslatnak az eredménye?"
+  outcome_submit: "Eredmény közlése"
+  position_verbs:
+    'yes': "egyetért"
+    'no': "nem ért egyet"
+    abstain: "tartózkodik"
+    block: "blokkol"
+    past_tense:
+      'yes': "egyetértve"
+      'no': "nem egyetértve"
+      abstain: "tartózkodva"
+      block: "blokkolva"
+  unable_to_vote:
+    permission_denied: "Nincs jogod szavazni ebben a javaslatban"
+    motion_closed: "Ez a javaslat már lezárult."
+  edit_comment:
+    edit_comment: "Hozzászólást módosít"
   help:
     coordinating: 'Koordináljuk a Loomio csoportodat'
     coordinating_details: |+
@@ -314,6 +589,7 @@ hu:
 
     have_a_discussion: "Mi a véleményed?"
     have_a_discussion_description: "A téma és a legfontosabb információk róla az oldal tetején találhatók. A hozzászólással tudod elmondani a véleményedet a témáról."
+    help: "Segítség"
     how_it_works: "Mi ez az egész?"
     invitation_html: |+
       <h2>Hogyan írjunk jó meghívót</h2>
@@ -362,7 +638,12 @@ hu:
     invitation: 'Hogyan írj jó meghívót'
     proposal: 'Hogyan írj egyértelmű javaslatot'
     vote: 'Bármikor megváltoztathatod az álláspontodat'
+  pricing_page:
+    organisations: Szervezetek
+    informal_groups: Kötetlen csoportok
   contribution:
+    currency_desc: Az értékek US dollárban
+    submit: Támogass
     thank_you_title: Köszönjük, hogy támogatod a Loomiót!
   resend_confirmation: "Küld újra a megerősítő utasításokat"
   new_password: "Új jelszó"
@@ -374,13 +655,31 @@ hu:
   password_confirmation: "Jelszó megerősítése"
   current_password: "Aktuális jelszó"
   password_details: "(szükségünk van az aktuális jelszóra, hogy jóváhagyjuk a változtatásokat)"
+  confirm_password: "Jelszó megerősítése"
   cancel_my_account: "Fiók törlése"
   remember_me: "Emlékezzen rám"
   signing_in: "Belépés"
+  or: "vagy"
   forgot_your_password: "Elfelejtetted a jelszót?"
+  dont_have_an_account: "Nincs fiókod?"
+  create_one_now: "Hozz létre egyet"
+  link_it_up_instead: "Inkább kösd össze"
+  sign_up_via: "Bejelentkezés ezzel"
+  or_fill_in_this_form: "vagy töltsd ki ezt az űrlapot"
+  already_have_account: "Már van egy Loomio fiókod?"
+  confirm_your_details: "Részletek megerősítése"
+  link_up_your_account: "Kapcsold össze a fiókokat"
   confirmation_not_received: "Nem kaptad meg a megerősítő instrukciókat?"
   unlock_not_received: "Nem kaptad meg a feloldási instrukciókat?"
+  create_an_account_html: 'Hozz létre egy Loomio Beta fiókot'
+  log_in: "Bejelentkezés"
+  join_group:
+    log_in: "Bejelentkezés a %{group_name} csoportba"
+  start_group:
+    log_in: "Bejelentkezés a csoport szerkesztéséhez"
+    create_account: "Hozz létre egy fiókot"
   invitation:
+    by_email: "Hívj meg e-mailben"
     no_invitations_left: "Bocs, nincs már meghívód"
     no_invitations_left_get_more: "Írj a contact@loomio.org címre, hátha segíthetünk"
     invitation_not_found: 'nem találtunk meghívót ezzel a kóddal. Kérj új meghívót!'
@@ -396,6 +695,9 @@ hu:
     invitation_link: "Meghívó link"
     link_help: "Kattints erre a linkre, hogy csatlakozz a(z) %{group} csoporthoz a Loomión:"
     copy: "Ha valaki nem kapta meg a meghívóját, nyugodtan küld el neki a meghívó linket magad."
+  search:
+    placeholder: "Keresés"
+    empty_search: 'Eredménytelen'
   example_discussion:
     title: "Példa téma: Üdvözlet és bevezetés a Loomióba"
     description: |+
@@ -418,7 +720,30 @@ hu:
 
       lehetőséged van arra is, hogy megindokold a választásodat, így könnyen átlátható, hogy ki mit és miért gondol a javaslatról. A javaslat lezárulta előtt még lehetőséged van változtatni az álláspontodon.
 
+  contact_page:
+    contact_us: 'Értesíts minket'
+    labels:
+      name: 'Neved'
+      email: 'E-mail címed'
+      message: 'Üzeneted'
+      submit: 'Üzenet küldése'
+  discussion_form:
+    new:
+      header: "Téma indítása"
+      who: "Melyik csoportban akarod indítani ezt a témát?"
+    edit:
+      header: "A téma szerkesztése"
+    privacy:
+      will_be_public: "Bárki láthatja a vitát."
+  motion_history:
+    title: "Javaslat változások"
   motion_form:
+    new:
+      header: "Új javaslat"
+      submit: 'Hozz létre javaslatot'
+    edit:
+      header: "Javaslat szerkesztése"
+      submit: 'Javaslat frissítése'
     name_helper: "A cím legyen egyértelmű és tömör"
   vote_form:
     header: "Add meg az álláspontodat"
@@ -430,9 +755,25 @@ hu:
     update: "Álláspont frissítése"
   new_user_form:
     create_an_account: "Fiók létrehozása"
+  profile_form:
+    view: "Profil megtekintése"
+    profile: "Profil szerkesztése"
+    picture: "Kép"
+    use_uploaded: 'Használj egy feltöltött képet'
+    use_gravtar: 'Használj Gravatart'
+    upload_new_image: "Új kép feltöltése"
   group_setup:
+    set_up_your_group: Csoportod beállításai
+    desc_header: "Mindjárt kész!"
     submit: "Megnézem a csoportom!"
+    payment_model:
+      link: Fedezz fel többet
   simple_form:
+    'yes': 'Igen'
+    'no': 'Nem'
+    required:
+      text: 'kötelező'
+      mark: '*'
     labels:
       discussion:
         title: "Cím"
@@ -442,28 +783,43 @@ hu:
       motion:
         name: "Cím"
         description: "Részletek"
+        close_at_date: "Záródik"
       user:
         name: "Teljes név"
         email: "E-mail"
         password: "Jelszó"
         password_confirmation: "Jelszó megerősítése"
         language_preference: "Nyelv"
+      group_request:
+        admin_name: "Neved?"
+        admin_email: "E-mail címed?"
+        name: "Csoportod neve?"
+        description: "Ha van egy perced, mesélj a csoportodról"
+        is_commercial: "Hol tervezed használni a Loomio-t?"
     placeholders:
       membership_request:
         introduction: "Írj egy pár szót magadról és arról, miért akarsz a %{group_name} csoporthoz csatlakozni."
       motion:
         name: "Mit javasolsz?"
         description: "Adj elég információt, hogy pontosan tudhassák mit jelent, ha egyetértenek vagy ha ellenzik."
+      user:
+        email: "E-mail"
+        password: "Jelszó"
   helpers:
     submit:
       discussion:
         create: "Téma indítása"
+        update: "Téma frissítése"
       motion:
         create: "Javaslat indítása"
       user:
         create: "Fiók létrehozása"
         update: "beállítások frissítése"
   email:
+    reply_to_this_discussion: Válaszolj erre a témára
+    to_join_discussion:
+      message_intro: "%{who} mondta:"
+      link: "Bekapcsolódás a vitába"
     unsubscribe: "Leiratkozás vagy az e-mail beállítások megváltoztatása:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, hogy leiratkozz vagy megváltoztasd az e-mail beállításaidat."
     view_comment: "Kattints ide, hogy megnézd a hozzászólást a Loomión."
@@ -472,21 +828,31 @@ hu:
     create_proposal:
       intro: "Új javaslatot hoztak létre egy Loomio csoportodban."
       closes_in: "Lezáródik"
+      subject: "Új javaslat: %{which}"
     daily_activity:
       heading: "A Loomio tevékenységed"
       intro: "Megmutatjuk, mi történt a Loomio csoportjaidban az elmúlt 24 órában"
       subject: "Loomio - az elmúlt 24 óra összefoglalása"
+    missed_yesterday:
+      subject: "Tegnap a Loomio-n"
+      mark_as_read: Olvasottként jelöl
     group_email:
       intro: "%{who} bejelentést tett a(z)  %{group} csoportban:"
     group_membership_approved:
       intro: "Jóváhagták a kérésedet, hogy csatlakozz a '%{group_name}' Loomio csoporthoz."
       subject: "A tagfelvételt jóváhagytuk"
+    invitation:
+      hi: "Helló %{name}!"
+      thanks: |
+        Köszi!
+        A Loomio Csapat
     membership_request:
       intro: "%{name} (%{email}) hozzáférést kért egy Loomio csoportodhoz."
       view_group: "Jóváhagyhatod vagy elvetheted a kérelmet itt."
     mentioned:
       subject: "%{who} megemlített téged a %{which} Loomio csoportban"
     proposal_closed:
+      proposal_has_closed: 'Ez a javaslat lezárult.'
       subject: "A javaslat lezárult - %{which}"
     proposal_blocked:
       intro: "Az általad kezelt javaslatot blokkolták."
@@ -509,6 +875,7 @@ hu:
   close: "Bezárás"
   closing: "Zárom"
   closed: "Zárva"
+  coordinator: "Koordonátor"
   decisions: "Döntések"
   delete: "Törlés"
   details: "Részletek"
@@ -519,7 +886,9 @@ hu:
   participation: "Részvétel"
   disable: "Kikapcsolás"
   group: "Csoport"
+  group_admin: "Csoport Koordinátor"
   home: "Nyitólap"
+  id: "id"
   like: "Tetszik"
   loading: "Töltés..."
   message: "Üzenet"
@@ -529,18 +898,135 @@ hu:
   other: "Egyéb"
   outcome: "Eredmény"
   password: "Jelszó"
+  leave_this_field_blank: "hagyd ezt a mezőt üresen"
+  photo: 'Kép'
+  pricing: 'Árak'
   prev: "Előző"
+  more: "Tovább ..."
+  translate: "Segíts fordítani a Loomio-t!"
+  translate_field: "Fordítás megtekintése"
+  loading_translation: "Fordítás betöltése ..."
   options: "Lehetőségek"
+  rss_subscribe: "Felíratkozok"
   ok_got_it: "Oké, megvan!"
+  remove: "Visszavonás"
   save: "Mentés"
   saving: "Mentem"
   sending: "Küldöm"
   send_invite: "Meghívók köldése"
   send_email: "E-mail küldése"
   show_more: "Több"
+  start_a_group: "Csoport létrehozása"
   starting: "Kezdem"
   subject: "Téma"
+  thanks: "Köszi!"
   unlike: "Nem tetszik"
   update: "Frissítés"
+  facebook: "Facebook"
+  yahoo: "Yahoo"
+  google: "Google"
+  persona: "Persona"
   common:
+    settings: Beállítások
+    dashboard: Műszerfal
+    unread: Olvasatlan
+    filter: 'Szűrő:'
+    following: Követés
+    not_following: Nem követ
+    back_to_discussion: "Vissza a témához"
+    edited: Modosítva
+    groups: "Csoportok"
+    select_error: Válassz egy opciót
+    today: Ma
+    select: Válassz
+    months:
+      january: Január
+      february: Február
+      march: Március
+      april: Április
+      may: Május
+      june: Június
+      july: Július
+      august: Augusztus
+      september: Szeptember
+      october: Október
+      november: November
+      december: December
+    abbr_months:
+      jan: Jan
+      feb: Feb
+      mar: Már
+      apr: Ápr
+      may: Máj
+      jun: Jún
+      jul: Júl
+      aug: Aug
+      sep: Szep
+      oct: Okt
+      nov: Nov
+      dec: Dec
+    days:
+      monday: Hétfő
+      tuesday: Kedd
+      wednesday: Szerda
+      thursday: Csütörtök
+      friday: Péntek
+      saturday: Szombat
+      sunday: Vasárnap
+    abbr_days:
+      mon: Hét
+      tue: Ked
+      wed: Sze
+      thu: Csü
+      fri: Pén
+      sat: Szo
+      sun: Vas
+    tiny_days:
+      mo: Hé
+      tu: Ke
+      we: Sze
+      th: Cs
+      fr: Pé
+      sa: Szo
+      su: Va
+    meridians:
+      am: 'de'
+      pm: 'du'
+    please_wait: "Pillanat"
+    privacy: "Adatvédelem"
+    private: "Zártkörű"
+    permissions: "Engedélyek"
+    public: "Nyilvános"
     email: "E-mail"
+    start_group: "Csoport indítása!"
+  group_categories:
+    all: "Minden"
+    blank: "Vegyes"
+    economics: "Gazdasági"
+    activist: "Aktivista"
+    arts: "Művészet"
+    business: "Üzleti"
+    collective: "Közösségi"
+    community_group: "Közösségi csoport"
+    co_operative: "Közreműködési"
+    democratic_organisation: "Demokratikus szövetség"
+    education: "Oktatás"
+    environmental_group: "Környezetvédelmi csoport"
+    family: "Család"
+    local_government: "Helyi közigazgatás"
+    online_community: "Online közösség"
+    religious_group: "Vallásos/Szellemi"
+    event: "Esemény"
+    open_source_software: "Nyílt forráskodú szoftwer"
+    political_initiative: "Politikai kezdeményezés"
+    social_enterprise: "Közösségi vállalkozás"
+    social_justice: "Társadalmi igazság"
+    advocacy_group: "Érdekvédelmi csoport"
+    science: "Tudomány"
+    technology: "Technológia"
+    sports: "Sport"
+    youth: "Ifi"
+    women: "Női"
+    media: "Média"
+    health: "Egészségügyi"
+  start_your_group: Indítsd el a saját csoportodat
