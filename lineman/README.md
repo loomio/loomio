@@ -4,7 +4,7 @@ AngularJS parts of Loomio. It is assumed that you have the rails parts
 of loomio running already.
 
 # Installing Node
-Install the latest version of node.js for your system. Go find out how.
+Install the latest version of node.js for your system. (some of us quite like [nvm](https://github.com/creationix/nvm))
 
 # Installing Bower & Lineman
 
