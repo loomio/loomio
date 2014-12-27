@@ -30,9 +30,6 @@ sl:
   attachment:
     error:
       too_large: "Pripeti dokument je večji od 50 MB, izberite manjšega."
-  date:
-    formats:
-      for_another_year: '%-d/%-m/%l'
   devise:
     invitations:
       send_instructions: 'Vabilo je bilo poslano na %{email}.'
@@ -67,13 +64,29 @@ sl:
     settings_not_updated: "Nastavitve niso bile posodobljene."
     group_request_already_accepted: "To vabilo žal ni več veljavno ali pa je že bilo sprejeto."
     group_request_invalid_token: "Podatki za dostop so neveljavni."
-    user_with_email_address_already_in_group: "Uporabnik s tem email naslovom že pripada tej skupini."
+    group_private_or_not_found: "Skupine ni bilo mogoče najti. \n\nMorda je zaprta. Če ste od nekoga prejeli povezavo, ga prosite, da vas povabi vanjo."
+    group_already_setup: "Skupina, ki jo želite ustvariti, že obstaja."
+    passwords_did_not_match: "Geslo se ne ujema s potrditvijo."
+    proposal_already_exists: "V tej razpravi je predlog že odprt."
+    user_with_email_address_already_in_group: "Uporabnik s tem naslovom e-pošte je že član te skupine."
+    you_have_already_requested_membership: "Za članstvo v tej skupini ste že zaprosili."
+    you_are_already_a_member_of_this_group: "Tej skupini ste se že pridružili."
+    not_found: "Članka ni bilo mogoče najti. Morda je bil izbrisan."
   alert:
     duplicate_email: "%{which_email} je že v skupini."
   notice:
+    new_contacts_imported: "Uspelo je! V polje spodaj lahko vtipkate imena in ponujeni vam bodo naslovi e-pošte."
+    admin_rights_removed: "Član/-ica z imenom %{which_user} nima več koordinatorskih pravic."
+    user_added: "%{user_email_or_name} je bil/-a dodan/-a v skupino."
+    new_user_added: "%{user_email_or_name} bo dodan/-a v skupino, ko ustvari svoj Loomio račun."
+    member_removed: "Član/-ica je bil/-a odstranjen/-a."
     membership_approved: "Članstvo odobreno."
     membership_request_canceled: "Zahteva za članstvo je bila preklicana."
     membership_request_ignored: "Zahteva za članstvo ni bila upoštevana."
+    settings_updated: "Vaše nastvitve so bile posodobljene."
+    user_made_admin: "%{which_user} je zdaj koordinator/-ka."
+    you_have_left_group: "Zapustili ste %{which_group}."
+    comment_deleted: "Komentar izbrisan."
     invitations:
       auto_added:
         one: "1 član dodan"
@@ -85,10 +98,49 @@ sl:
         two: "%{count} člana sta že v skupini"
         few: "%{count} člani so že v skupini"
         other: "%{count} članov je že v skupini"
+      sent:
+        one: "%{count} poslano vabilo"
+        two: "%{count} poslani vabili"
+        few: "%{count} poslana vabila"
+        other: "%{count} poslanih vabil"
+      auto_added_and_sent: "%{auto_added_text} in %{sent_text}"
+  tooltip:
+    cover_photo_upload: "Nalaganje nove naslovne slike"
+    logo_upload: "Nalaganje novega logotipa"
+    edit_description: "Urejanje opisa"
+    group_category: "Iskanje podobnih skupin"
+  views:
+    pagination:
+      previous: "Nazaj"
+      next: "Naprej"
   warning:
+    cant_remove_last_admin: "Ste zadnji koordinator, zato ne morete biti odstranjeni"
     membership_request_already_approved: "Zahteva za članstvo je bila že odobrena."
     membership_request_already_ignored: "Zahteva za članstvo je bila že prezrta."
     membership_request_already_canceled: "Zahteva za članstvo je bila že zavrnjena."
+    position_not_submitted: "Vašega mnenja ni bilo mogoče dodati"
+    proposal_not_created: "Predloga ni bilo mogoče ustvariti"
+    user_already_admin: "%{which_user} je že koordinator/-ka te skupine."
+    user_already_member: "%{which_user} je že član/-ica te skupine."
+    user_not_admin: "%{which_user} ni koordinator te skupine, zato nima dostopa do nje."
+  success:
+    added_to_group: "Dodani ste bili v %{which_group}."
+    close_date_changed: "Končni datum je bil uspešno spremenjen."
+    discussion_created: "Razprava je bila uspešno ustvarjena."
+    discussion_deleted: "Razprava je bila uspešno zbrisana."
+    discussion_moved: "Razprava je bila uspešno premaknjena v %{group_name}"
+    group_archived: "Skupina uspešno arhivirana."
+    group_created: "Skupina uspešno ustvarjena."
+    members_added: "Člani dodani v skupino."
+    membership_requested: "Zaprosili ste za članstvo v %{which_group}. Ob odobritvi zahteve boste obveščeni."
+    motion_closed: "Predlog zaprt. Če želite, lahko spodaj zabeležite izid in ga pošljete svoji skupini."
+    motion_outcome_created: "Izid predloga je bil ustvarjen, člani vaše skupine pa so bili o njem obveščeni."
+    motion_outcome_updated: "Izid predloga je bil posodobljen."
+    password_updated: "Vaše geslo je bilo uspešno spremenjeno."
+    position_submitted: "Mnenje dodano"
+    position_updated: "Mnenje posodobljeno."
+    proposal_created: "Predlog uspešno ustvarjen."
+    proposal_deleted: "Predlog izbrisan."
   datetime:
     distance_in_words:
       about_x_months:
@@ -103,6 +155,7 @@ sl:
         other: "%{count} mesecev"
   footer:
     about: 'O nas'
+    blog: 'Blog'
     contact: 'Kontakt'
     privacy: 'Zasebnost'
     public_groups: 'Javne skupine'
@@ -116,8 +169,12 @@ sl:
   email_settings: "Nastavitve e-pošte"
   sign_out: "Odjava"
   user_profile:
-    back: "Nazaj na svoj profil"
-    reactivation_html: "Za ponovno aktiviranje svojega računa nas boste morali <a href='%{link}'>kontaktirati</a>."
+    back: "Nazaj na moj profil"
+    change_password: "Sprememba gesla"
+    deactivate_account: "Deaktiviraj račun"
+    about_deactivation: "Kaj to pomeni?"
+    confirm_account_deactivation: "Ali ste prepričani, da želite deaktivirati svoj račun?"
+    reactivation_html: "Za ponovno aktivacijo vašega računa nas <a href='%{link}'>kontaktirajte</a>."
   group_form:
     parent_members_can_see_discussions:
       label: Zasebnost razprave

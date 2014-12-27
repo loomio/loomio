@@ -32,18 +32,18 @@ sl:
         desc: 'Vsakdo lahko predlaga novo pobudo. Drugi sodelujoči se lahko strinjajo, vzdržijo, ne strinjajo ali zavrnejo predlog - tako lahko vidite, kaj menijo o pobudi in zakaj.'
       step3:
         header: '3. Odloči se skupaj z drugimi'
-        desc: 'Razvijte predlog skupaj tako, da ustreza vsem. Vsaka odločitev ima določen skrajni rok za sprejetje, zato je rezultat izid vedno nedvoumen.'
+        desc: 'Razvijte predlog skupaj tako, da ustreza vsem. Vsaka odločitev ima določen skrajni rok za sprejetje, zato je izid vedno nedvoumen.'
     crowdfunding:
       header: 'Da bi do konca postavili to platformo in jo delili s svetom, sredstva množično zbiramo prek spleta.'
     prototype:
       header_html: "Ustvarili smo prototip in ljudje po vsem svetu z njim počnejo osupljive reči"
-      subhead_html: '<a href="%{try_loomio_link}">Preizkusi Loomio</a> now. Ali pa <a href="%{donate_link}">podpri projekt</a> in pomagaj zagnati Loomio 1.0'
+      subhead_html: '<a href="%{try_loomio_link}">Preizkusi Loomio</a> zdaj. Ali pa <a href="%{donate_link}">podpri projekt</a> in pomagaj zagnati Loomio 1.0'
     mobile:
       header_html: 'Loomio 1.0 deluje na vseh napravah, saj smo ga razvili s pomočjo najboljših <strong>prenosljivih mobilnih tehnologij.</strong>'
     quote:
       header:
-        rushkoff_html: '“Loomio <strong>s pomočjo interneta</strong>ljudi združuje pri doseganju konsenza, namesto da bi jih razdvajal.”<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, avtor knjige <em>Present Shock</em></div>'
-        sifry_html: '“Loomio uspešno združuje <strong>individualna mnenja</strong> v <strong>skupnostne odločitve</strong>.”<div class="attributation">– Micah Sifry, Editor, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
+        rushkoff_html: '“Loomio <strong>s pomočjo interneta</strong> ljudi združuje pri doseganju konsenza, namesto da bi jih razdvajal.”<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, avtor knjige <em>Present Shock</em></div>'
+        sifry_html: '“Loomio uspešno združuje <strong>mnenja posameznikov</strong> v <strong>skupnostne odločitve</strong>.”<div class="attributation">– Micah Sifry, urednik, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: 'O nas'
       desc: 'Smo majhna skupina odprtokodnih razvijalcev in družbenih aktivistov, ki delujejo v coworking prostoru Enspiral z Nove Zelandije. Našo širšo mrežo prijateljev, podpornikov in svetovalcev tvorijo posamezniki z vsega sveta.'
@@ -59,6 +59,6 @@ sl:
         desc: 'Loomiova koda je javna dobrina, ki jo lahko poganja, bere, se iz nje uči, spreminja in deli kdorkoli. '
       gift:
         header: 'Ekonomija donacij'
-        desc: 'Loomio finančno podpirajo tisti, ki prispevajo po svojih zmožnostih. Tako platforma ostaja prosta oglasov in dostopna skupinam brez finačnih sredstev.'
+        desc: 'Loomio finančno podpirajo tisti, ki prispevajo po svojih zmožnostih. Tako platforma ostaja prosta oglasov in dostopna skupinam brez finančnih sredstev.'
     vision:
       header: 'Pomagajte nam uresničiti vizijo.'

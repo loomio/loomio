@@ -12,6 +12,7 @@ nl-NL:
       log_in: 'LOG IN'
       video: "Bekijk meer over hoe Loomio werkt"
       try_loomio_beta: 'Probeer Loomio beta'
+      check_out_loomio_beta: 'Bekijk Loomio beta'
       more: 'Meer'
       top: 'Naar boven'
       public_groups: 'Openbare groepen'
@@ -42,6 +43,7 @@ nl-NL:
     quote:
       header:
         rushkoff_html: '“Loomio <strong>laat de potentie van het internet los</strong> om mensen richting consensus te bewegen in plaats van gepolariseerd debat.”<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, auteur van <em>Present Shock</em></div>'
+        sifry_html: '“Loomio raakt de ''sweet spot'' tussen <strong>individuele stemmen</strong> en <strong>collectieve besluitvorming</strong>.”<div class="attributation">– Micah Sifry, Redacteur, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: 'Over Loomio'
       desc: 'We zijn een klein team van open-source ontwikkelaars en mensenrechtenactivisten die bij Enspiral in Aotearoa, Nieuw Zeeland, werken, met een groot netwerk van vrienden, hulp en adviseurs van over de hele wereld.'
@@ -54,6 +56,7 @@ nl-NL:
         desc: 'We bieden een mogelijkheid om samen te komen voor welke groep dan ook, onafhankelijk van politieke- of bedrijfsbelangen. We zullen je gegevens nooit verkopen.'
       open:
         header: 'Vrije en open software'
+        desc: 'De broncode van Loomio is openbaar, zodat die iedereen die kan uitvoeren, lezen, ervan leren, aanpassen en doorgeven.'
       gift:
         header: 'Weggeef economie'
         desc: 'Loomio wordt ondersteund door mensen die bijdragen naar wat ze kunnen betalen. Dit houdt het platform vrij van advertenties en toegankelijk voor groepen die geen geld hebben.'
