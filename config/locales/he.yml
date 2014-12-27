@@ -331,6 +331,7 @@ he:
   and_number_pending: 'ו%{pending} בהמתנה'
   edit_memberships: 'עריכת חברויות'
   add_new_member: "הוספת חבר חדש"
+  remaining_invites_count: "%{count} הזמנות נותרו"
   get_in_touch_link: "שמרו על קשר"
   email_members_in_group: "שלחו דוא״ל לחברים בקבוצה %{which_group}"
   subject_error: "נא למלא נושא"
@@ -465,9 +466,15 @@ he:
   block_position: "אני חוסמ/ת"
   outcome_placeholder: "מה היתה התוצאה לגבי הצעה זו?"
   position_verbs:
+    'yes': "מסכימ/ה"
+    'no': "לא מסכימ/ה"
+    abstain: "נמנע/ת"
+    block: "חסום"
     past_tense:
       'yes': "הסכימו"
       'no': "לא הסכימו"
+      abstain: "נמנע/ה"
+      block: "חסום"
   unable_to_vote:
     permission_denied: "אין לך הרשאות להצביע על הצעה זו"
   help:
@@ -487,6 +494,8 @@ he:
   current_password: "סיסמא נוכחית"
   confirm_password: "אישרור סיסמא"
   cancel_my_account: "בטל את החשבון שלי"
+  sign_up_via: "הרשמה דרך"
+  confirm_your_details: "אישרור הפרטים"
   invitation:
     alternate: "לחליפין, שיתוף הקישור הזה יאפשר לכל אחד לבקש להצטרף"
     by_email: "הזמנה בדוא״ל"
@@ -528,10 +537,24 @@ he:
       submit: 'עדכון הצעה'
       only_closing_at: 'לא ניתן לשנות את שם או פירוט ההצעה לאחר שההצבעה החלה'
     close_proposal_heading: "מעוניינים לסגור את ההצעה לפני הזמן?"
+  vote_form:
+    your_position: "עמדתך"
+    your_statement: "הצהרתך"
+    submit: "הגשת עמדה"
+    update: "עדכון עמדה"
+  new_user_form:
+    create_an_account: "יצירת חשבון"
   profile_form:
     view: "צפייה בפרופיל"
+    profile: "עריכת פרופיל"
     picture: "תמונה"
+    use_initials: 'שימוש באותיות הראשונות'
+    use_uploaded: 'שימוש בתמונה שנטענה'
+    use_gravtar: 'שימוש בGravatar'
+    upload_new_image: "טעינת תמונה חדשה"
   group_setup:
+    set_up_your_group: הגדרת קבוצה
+    desc_header: "כמעט סיימתם!"
     payment_model:
       header: Loomio הוא לכולם!
   simple_form:

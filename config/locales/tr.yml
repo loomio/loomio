@@ -646,6 +646,14 @@ tr:
     thought_about_contributing_description: "Loomio işbirliğine dayalı bir sosyal girişimdir ve herkesin kendilerini etkileyen kararlara kolayca katılabilmesini hedefler.\n\nPara işbirliğine dayalı karar verme süreci için bir engel teşkil etmemeli. Loomio, kullanıcı topluluklarının bağışları ve resmi organizasyonların ödedikleri abonelik ücretleri tarafından finanse edilmektedir.\n\nKatkılarınız; Loomiyo'yu bağımsız, reklamsız,\
       \ ve kendi topluluklarında büyük işler başaran gruplara serbest ve erişilebilir tutmamız için bizlere olanak sağlıyor. \n\nBu mümkün kıldığınız için teşekkür ederiz!\n"
     thank_you_title: Loomio'ya katkı sağladığınız için teşekkür ederiz!
+    thank_you_body: |
+      Katkılarınız, dünyaya kolay ve işbirliğine dayalı karar verme sürecini iletmemize yardımcı oluyor.
+
+      Kısa bir süre icinde yaptığınız katkı için bir makbuzun bulunduğu bir e-posta alacaksınız.
+
+      Loomio'yu nasıl geliştirilebiliriz ve nasıl en iyi şekilde kullanabiliriz konularını konuştuğumuz Loomio Topluluğuna herkes katılmakta özgürdür.
+
+      <a href='https://www.loomio.org/groups/3'>Beni Loomio Toplulugu grubuna götür &raquo;</a>
     making_a_donation: Bağışta bulunmak
     making_a_donation_description: |
       Loomio işbirliğine dayalı bir sosyal girişimdir ve herkesin kendilerini etkileyen kararlara kolayca katılabilmesini hedefler.

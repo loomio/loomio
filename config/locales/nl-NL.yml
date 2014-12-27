@@ -46,6 +46,8 @@ nl-NL:
     mailer:
       invitation_instructions:
         subject: 'Iemand heeft je uitgenodigd tot hun Loomio groep'
+    registrations:
+      sign_up: 'Maak een account'
   error:
     access_denied: "Je bent niet gemachtigd om dit te doen."
     cant_join_subgroup: "Je kunt je niet aansluiten bij een subgroep als je geen lid bent van de hoofdgroep."
@@ -188,8 +190,13 @@ nl-NL:
     public_groups: 'Openbare groepen'
     terms: 'Voorwaarden'
   inbox:
+    clear: 'Leegmaken'
+    title: 'Inbox'
+    preferences: 'Inbox voorkeuren'
+    what_you_have_not_read_yet: "Hier de activiteiten die je nog niet hebt gelezen."
     dropdown-btn: 'Inbox'
     empty: Je bent helemaal bij! Er zijn geen ongelezen reacties.
+    preferences_instructions_html: '<strong>Sleep onderwerpen</strong> om te orderen.  <strong>Uitvinken</strong> om te verwijderen uit de inbox.'
   notifications:
     header: "Meldingen"
     new_discussion: "begon een discussie"
@@ -347,6 +354,7 @@ nl-NL:
   edit_memberships: 'Bewerk lidmaatschappen'
   add_new_member: "Nieuw lid toevoegen"
   invite_members_to_group: "Nodig leden uit voor %{which_group}"
+  remaining_invites_count: "%{count} resterende uitnodigingen"
   get_in_touch_link: "neem contact op"
   email_members_in_group: "E-mail de leden in %{which_group}"
   subject_error: "Vul een onderwerp in"
@@ -425,6 +433,15 @@ nl-NL:
         We hebben je een e-mail gestuurd met een uitnodiging om jouw groep te beginnen.
 
         Als je niet binnen een paar minuten iets in je inbox ziet, e-mail ons dan op<a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> ging akkoord met het voorstel."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> had geen mening over het voorstel."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> ging niet akkoord met het voorstel."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> blokkeerde het voorstel."
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> ging akkoord met het voorstel:"
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> had geen mening over het voorstel:"
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> ging niet akkoord met het voorstel:"
+    user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> blokkeerde het voorstel:"
   discussion_items:
     new_discussion: "begon de discussie"
     new_motion: "maakte een voorstel"
@@ -676,6 +693,7 @@ nl-NL:
   remember_me: "Onthoud mij"
   signing_in: "Aanmelden"
   or: "of"
+  invalid_email: Het opgegeven e-mailadres is ongeldig, geef een geldig e-mailadres op
   forgot_your_password: "Wachtwoord vergeten?"
   dont_have_an_account: "Heb je geen account?"
   create_one_now: "Maak er nu een"
@@ -954,6 +972,9 @@ nl-NL:
       header: "Je bent bijna klaar!"
       intro: "Klik op deze verificatielink om je aanvraag te voltooien:"
       ignore: "Je kan deze e-mail negeren als je geen aanvraag hebt ingediend om lid te worden van Loomio."
+  meta_tags:
+    default_title: "Loomio | Samen besluiten nemen"
+    default_description: Loomio is een eenvoudig te gebruiken hulpmiddel voor gezamenlijke besluitvorming. Het maakt het verspreide groepen mogelijk om snel beslissingen te nemen en constructieve acties te starten.
   about_loomio: "Over Loomio"
   ago: "%{quantity_of_time} geleden"
   approve: "Goedkeuren"
@@ -1023,6 +1044,8 @@ nl-NL:
   google: "Google"
   persona: "Persoonsgegevens"
   common:
+    markdown_help_tooltip: 'Leer de beginselen van tekstopmaak met Markdown'
+    settings: Instellingen
     dashboard: Dashboard
     unread: Ongelezen
     filter: 'Filter:'
@@ -1124,3 +1147,4 @@ nl-NL:
     women: "Vrouwen"
     media: "Media"
     health: "Gezondheid"
+  start_your_group: Begin je groep

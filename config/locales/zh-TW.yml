@@ -2,8 +2,8 @@ zh-TW:
   users:
     email_preferences:
       edit:
-        title: 'Email 偏好設定'
-        when_do_you_want_emails: 'Email 給我：'
+        title: '電子郵件偏好設定'
+        when_do_you_want_emails: '寄電子郵件給我：'
         email_missed_yesterday: "「昨日 Loomio」— 每日我錯過的動態摘要"
         email_when_mentioned: "當我被 @提到"
         email_followed_threads: "當我跟隨的討論主題有新的動態。"
@@ -26,7 +26,7 @@ zh-TW:
         blank: "不能留白"
   errors:
     messages:
-      email: "您輸入的不是有效的 Email 地址"
+      email: "您輸入的不是有效的電子郵件地址"
   attachment:
     error:
       too_large: "您打算附加的檔案超過 50MB，請選擇較小的檔案。"
@@ -46,6 +46,8 @@ zh-TW:
     mailer:
       invitation_instructions:
         subject: '有人邀請您加入他們的 Loomio 群組'
+    registrations:
+      sign_up: '建立帳號'
   error:
     access_denied: "您沒有足夠的權限。"
     cant_join_subgroup: "假如您不是父群組的成員，您就不能加入子群組。"
@@ -57,7 +59,7 @@ zh-TW:
     discussion_not_moved: "您沒有將這則討論串移至 %{destination_group.name} 的權限"
     group_not_archived: "無法封存這個群組。"
     invalid_close_date: "不合法的定案日期，請檢查日期是否正確。"
-    invalid_email: "請輸入至少一個合法的 Email 地址"
+    invalid_email: "請至少輸入一組合法的電子郵件地址"
     image_upload_fail: "無法上傳圖片。請確認圖片檔案小於 1MB 並且是 .jpeg 、 .png 或 .gif 格式。"
     motion_closing_inputs: "不合法的定案日期"
     motion_outcome_not_created: "無法發表成果。"
@@ -80,7 +82,7 @@ zh-TW:
   alert:
     duplicate_email: "%{which_email} 已經在群組中。"
   notice:
-    new_contacts_imported: "可以使用！您能在以下的欄位當中輸入名稱，我們會建議 email 地址。"
+    new_contacts_imported: "可以使用！您能在以下的欄位當中輸入名稱，我們會建議電子郵件地址。"
     admin_rights_removed: "%{which_user} 的協作者權利已經被移除。"
     user_added: "%{user_email_or_name} 已經被加入至這個群組。"
     new_user_added: "%{user_email_or_name} 將會在他們申請 Loomio 帳號後被加入群組。"
@@ -125,7 +127,7 @@ zh-TW:
     discussion_created: "成功建立討論串。"
     discussion_deleted: "成功刪除討論串。"
     discussion_moved: "討論串成功移至 %{group_name}"
-    emails_sending: "email 傳送中。"
+    emails_sending: "正在傳送這些電子郵件。"
     group_archived: "群組已成功封存。"
     group_created: "成功建立群組。"
     members_added: "成員已加入群組。"
@@ -211,7 +213,7 @@ zh-TW:
   empty_notifications: "您目前沒有新的通知。"
   see_all_notifications: "查看所有通知"
   profile: "簡歷"
-  email_settings: "Email 設定"
+  email_settings: "電子郵件設定"
   sign_out: "登出"
   sign_in: "登入"
   honeypot_warning: "無法建立您的帳號。假如您正在使用螢幕閱讀器，請確保表單最後一個 (隱藏) 欄位是留白的。"
@@ -338,6 +340,7 @@ zh-TW:
   edit_memberships: '編輯成員資格'
   add_new_member: "增加新成員"
   invite_members_to_group: "邀請成員到%{which_group}群組"
+  remaining_invites_count: "還可邀請  %{count}  位"
   get_in_touch_link: "聯繫"
   email_members_in_group: "寄信給%{which_group}群組成員"
   subject_error: "請填寫主旨"
@@ -351,7 +354,7 @@ zh-TW:
   confirm_leave_hidden_group: "您確定希望離開 %{which_group}？您也會從子群組中被移除。"
   confirm_leave_group: "您確定要離開 %{which_group} 群組嗎？"
   deactivate_group: "凍結群組"
-  confirm_deactivate_group: "等一下！！！您確定要停用 %{which_group} 嗎？您將無法觀看這個群組。但是，如果您希望把這個群組取回，您可以要求我們重新啟用它，只要送一封 email 給 contact@loomio.org。"
+  confirm_deactivate_group: "等一下！！！您確定要停用 %{which_group} 嗎？您將無法觀看這個群組。但是，如果您希望把這個群組取回，您可以要求我們重新啟用它，只要送一封電子郵件給 contact@loomio.org。"
   invited_users: "邀請成員"
   members: "成員"
   confirm_remove_user: "您確定要將 %{which_user} 移出群組嗎？"
@@ -411,7 +414,7 @@ zh-TW:
     non_commercial_use_option: 在社群群組中或是非正式的網絡
     please_select_an_option: 請選出一個選項
     confirmation:
-      title: 您就快完成了！請確認您的 Email 信箱。
+      title: 您就快完成了！請確認您的電子郵件信箱。
       body_html: |
         我們已寄出一封邀請函，邀請您建立屬於您的群組。
 
@@ -553,7 +556,7 @@ zh-TW:
       <p>如果您的群組才剛開始經營，您可以從比較輕鬆的決策開始討論，
       如此一來，大家都有機會使用 Loomio 工具發表意見、參與整個決策制定的過程。</p>
       <p>另一個經營討論的方法是，在提到夥伴時，使用 @夥伴 這個功能，
-      一旦某人被提及，就會收到一封 email，通知他們在討論串中被提到了。</p>
+      一旦某人被提及，就會收到一封 Email，通知他們在討論串中被提到了。</p>
     example1_html: |
       <h3>您需要群組去討論廣泛的主題並一同發展解決方案</h3>
       <p>策略：在建立提案之前先花點時間討論主題。</p>
@@ -593,10 +596,10 @@ zh-TW:
     keep_up_to_date_html: |
       <p>點擊您畫面上方的群組名稱以進入群組頁面，頁面中您可看到該群組的討論與決定清單。
       若您加入一個以上的群組，您可在首頁看到所有您加入的群組及其所有動態。 </p>
-      <p>當您的群組有要事發生時，您將會收到通知信。您可<a href="%{link}"">於此</a>更改您的 email 偏好設定。</p>
+      <p>當您的群組有要事發生時，您將會收到通知信。您可<a href="%{link}"">於此</a>更改您的電子郵件偏好設定。</p>
     make_a_decision: "作出決策"
     make_a_decision_description: "當群組準備好制定決策時，任何人都可以提案。替行動方案做出概要以及提供一些背景資料，讓每個人都能明確知道贊成與否所代表的真正意義。"
-    prompt_people_details: "假如您想得到群組內特定人士的注意，先按下「@」緊接著輸入他們的大名。他們會收到一封 email，提醒他們在某則討論串中被提及。"
+    prompt_people_details: "假如您想得到群組內特定人士的注意，先按下「@」緊接著輸入他們的大名。他們會收到一封電子郵件，提醒他們在某則討論串中被提及。"
     prompt_people_html: "提到夥伴時請用 <span class='blue'>@夥伴</span>"
     positions_agree_description: "<span>贊成</span>代表您滿意這個提案。"
     positions_abstain_description: "<span>棄權</span>代表您並不是很確定，或是您很樂意群組的決定沒有您的參與。"
@@ -677,6 +680,7 @@ zh-TW:
   remember_me: "記住登入資訊"
   signing_in: "登入中"
   or: "或者"
+  invalid_email: 您所輸入的電子郵件地址無效，請輸入有效的電子郵件地址
   forgot_your_password: "忘記密碼？"
   dont_have_an_account: "還沒有帳號？"
   create_one_now: "現在就建立帳號"
@@ -754,7 +758,7 @@ zh-TW:
     contact_us: '聯絡我們'
     labels:
       name: '您的大名'
-      email: '您的 Email 地址'
+      email: '您的電子郵件地址'
       message: '您的訊息'
       submit: '寄送訊息'
     messages:
@@ -830,7 +834,7 @@ zh-TW:
         close_at_date: "定案"
       user:
         name: "完整姓名"
-        email: "Email"
+        email: "電子郵件"
         password: "密碼"
         password_confirmation: "確認密碼"
         language_preference: "語言"
@@ -847,7 +851,7 @@ zh-TW:
         name: "請問您提議的行動方針是?"
         description: "請提供足夠的資訊，讓每個人都能明確表示贊成或是反對。"
       user:
-        email: "Email"
+        email: "電子郵件"
         password: "密碼"
       group_request:
         description: "我們很樂意聽到您的群組為甚麼想要使用 Loomio。"
@@ -876,8 +880,8 @@ zh-TW:
     user_added_to_a_group:
       subject: "%{who} 將您加入至 %{which_group}"
       content: "%{who} 將您加入至 Loomio 的 %{which_group} 。點選這裡前往群組："
-    unsubscribe: "取消訂閱或者變更您的 email 偏好設定："
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消訂閱或者變更您的 email 偏好設定。"
+    unsubscribe: "取消訂閱或者變更您的電子郵件偏好設定："
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消訂閱或者變更您的電子郵件偏好設定。"
     view_comment: "點擊此處，您可以看到在 Loomio 上的意見。"
     view_discussion: "點擊此處，您可以看到這條討論串。"
     view_group: "點擊此處檢視 Loomio 上的群組"
@@ -938,8 +942,8 @@ zh-TW:
       headline: "%{author} 在 %{group} 群組的提案很快就要定案了："
       summary: "摘要"
     thread_mailer:
-      footer_text: "直接回覆此 email，或是在 Loomio 上觀看："
-      reply_or_view_online_html: "直接回覆此 email，或是<a href='%{url}'>在 Loomio 上觀看</a>。"
+      footer_text: "直接回覆本電子郵件，或是到 Loomio 上觀看："
+      reply_or_view_online_html: "直接回覆此 Email，或是<a href='%{url}'>在 Loomio 上觀看</a>。"
       unfollow_discussion_html: "<a href='%{unfollow_url}'>取消跟隨</a>以停止接收有關此討論的電子郵件。"
       change_email_preferences_html: "變更您的 <a href='%{email_preferences_url}'>email 偏好設定</a>以取消訂閱來自 Loomio 的電子郵件。"
       change_preferences: "變更您的電子郵件偏好設定："
@@ -1011,7 +1015,7 @@ zh-TW:
   saving: "儲存中"
   sending: "寄送中"
   send_invite: "寄送邀請"
-  send_email: "寄送 Email"
+  send_email: "寄送電子郵件"
   show_more: "顯示詳細內容"
   start_a_group: "啟動群組"
   starting: "正在啟動"
@@ -1097,7 +1101,7 @@ zh-TW:
     private: "私密"
     permissions: "權限"
     public: "公開"
-    email: "Email"
+    email: "電子郵件"
     start_group: "啟動群組！"
   group_categories:
     all: "全部"
@@ -1129,3 +1133,4 @@ zh-TW:
     women: "女性"
     media: "媒體"
     health: "健康"
+  start_your_group: 啟動您的群組
