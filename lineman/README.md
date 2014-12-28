@@ -4,7 +4,7 @@ AngularJS parts of Loomio. It is assumed that you have the rails parts
 of loomio running already.
 
 # Installing Node
-Install the latest version of node.js for your system. (some of us quite like [nvm](https://github.com/creationix/nvm))
+Install the latest version of node.js for your system. (Some of us quite like [NVM](https://github.com/creationix/nvm))
 
 # Installing Bower & Lineman
 
@@ -28,7 +28,8 @@ Then start lineman
 
 
 # Browsing
-First go to the rails app (localhost:3000) and sign in. Now you can use the javascript app at localhost:8000. Just navigate to a discussion (e.g. localhost:8000/discussions/325).
+First go to the rails app [localhost:3000](localhost:3000) and sign in. Now you can use the javascript app at [localhost:8000](localhost:8000). Just navigate to a discussion (e.g. localhost:8000/discussions/325).
+*NB, currently you can also visit [localhost:8000/angular](localhost:8000/angular) to visit the javascript app.*
 
 # Unit Testing
 We're going for high test coverage of our JS frontend here.
