@@ -143,6 +143,36 @@ sl:
     proposal_deleted: "Predlog izbrisan."
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: "%{count} sekunda"
+        two: "%{count} sekundi"
+        few: "%{count} sekunde"
+        other: "%{count} sekund"
+      x_seconds:
+        one: "%{count} sekunda"
+        two: "%{count} sekundi"
+        few: "%{count} sekunde"
+        other: "%{count} sekund"
+      less_than_x_minutes:
+        one: "%{count} minuta"
+        two: "%{count} minuti"
+        few: "%{count} minute"
+        other: "%{count} minut"
+      x_minutes:
+        one: "%{count} minuta"
+        two: "%{count} minuti"
+        few: "%{count} minute"
+        other: "%{count} minut"
+      about_x_hours:
+        one: "%{count} ura"
+        two: "%{count} uri"
+        few: "%{count} ure"
+        other: "%{count} ur"
+      x_days:
+        one: "%{count} dan"
+        two: "%{count} dneva"
+        few: "%{count} dnevi"
+        other: "%{count} dni"
       about_x_months:
         one: "%{count} mesec"
         two: "%{count} meseca"
@@ -153,6 +183,25 @@ sl:
         two: "%{count} meseca"
         few: "%{count} meseci"
         other: "%{count} mesecev"
+      about_x_years:
+        one: "%{count} leto"
+        two: "%{count} leti"
+        few: "%{count} leta"
+        other: "%{count} let"
+      over_x_years:
+        one: "%{count} leto"
+        two: "%{count} leti"
+        few: "%{count} leta"
+        other: "%{count} let"
+      almost_x_years:
+        one: "%{count} leto"
+        two: "%{count} leti"
+        few: "%{count} leta"
+        other: "%{count} let"
+  organisation:
+    name: "Loomio"
+  sr:
+    toggle_navigation: "Krmarjenje"
   footer:
     about: 'O nas'
     blog: 'Blog'
@@ -160,7 +209,16 @@ sl:
     privacy: 'Zasebnost'
     public_groups: 'Javne skupine'
     terms: 'Pogoji'
+  inbox:
+    clear: 'Počisti'
+    title: 'Nabiralnik'
+    preferences: 'Nastavitve nabiralnika'
+    what_you_have_not_read_yet: "Neprebrane dejavnosti"
+    dropdown-btn: 'Nabiralnik'
+    empty: Nimate neprebranih komentarjev!
+    preferences_instructions_html: '<strong>Povlecite predmete</strong>, da jih preuredite. <strong>Odstranite oznako</strong>, da jih izbrišete iz nabiralnika.'
   notifications:
+    header: "Obvestila"
     membership_requested: "zahteva članstvo v"
   request_new_group: "Ustvari skupino"
   start_new_group: "Ustvari novo skupino"

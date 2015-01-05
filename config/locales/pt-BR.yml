@@ -829,6 +829,7 @@ pt-BR:
         close_at_date: "Encerrando"
       user:
         name: "Nome completo"
+        username: "Nome de usuário"
         email: "E-mail"
         password: "Senha"
         password_confirmation: "Confirme sua senha"
