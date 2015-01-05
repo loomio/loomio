@@ -1,6 +1,6 @@
 ru:
   frontpage:
-    view_this_in_your_language: 'Переключить на %{language}'
+    view_this_in_your_language: 'Переключить язык на %{language}'
     title:
       collaborative_decision_making: Совместное принятие решений
     link:
@@ -38,7 +38,7 @@ ru:
     crowdfunding:
       header: 'Мы работаем по принципу краудфандинга, и таким образом достроим эту новую платформу и отдадим eё в мир.'
     prototype:
-      header_html: "Мы уже создали пробную версию, и множество людей со всего мира делают множество интересных вещей с помощью Лумио."
+      header_html: "Мы уже создали пробную версию и множество людей со всего мира делают множество интересных вещей с ее помощью."
       subhead_html: '<a href="%{try_loomio_link}">Попробуйте Loomio Beta</a>. <a href="%{donate_link}">Поддержите нас</a>, чтобы помочь в создании Loomio 1.0'
     mobile:
       header_html: 'Loomio 1.0, построенный на лучших открытых решениях, будет работать на <strong>любом мобильном устройстве</strong>.'
