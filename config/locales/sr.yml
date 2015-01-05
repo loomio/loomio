@@ -875,6 +875,7 @@ sr:
         close_at_date: "Zatvara se"
       user:
         name: "Puno ime"
+        username: "Korisničko Ime"
         email: "ePošta"
         password: "Lozinka"
         password_confirmation: "Potvrdi lozinku"

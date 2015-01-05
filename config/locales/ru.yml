@@ -2,10 +2,11 @@ ru:
   users:
     email_preferences:
       edit:
-        title: 'Посылаете препочтения '
-        when_do_you_want_emails: 'Посылаете меня емаил:'
+        title: 'Настройки уведомлений'
+        when_do_you_want_emails: 'Email'
         email_missed_yesterday: "'Вчера на Loomio' - ежедневник пропущеных событий"
         email_when_mentioned: "Когда меня упомянули"
+        email_followed_threads: "Когда есть активность в ветке, за которой я слежу."
         email_when_proposal_closing_soon: "24 часа до закрытия предложения."
         email_new_discussions_and_proposals: 'Новые дискуссии и предложения'
         for_these_groups: "Для этих групп:"
@@ -18,13 +19,24 @@ ru:
     join_the_community: "Вступите в группу Сообщество Loomio"
     loomio_community_info: "То место, где мы обсуждаем и принимаем рещения о Loomio."
     explore_groups: "Найдите другие группы"
+    explore_groups_info: "Найдите замечательные группы  и вступите в них!"
   activerecord:
     errors:
       messages:
         blank: "не может быть пустым"
   errors:
     messages:
-      email: "Проверьте правильность введённого адреса электронной почты"
+      email: "Неправильный email"
+  attachment:
+    error:
+      too_large: "Размер файла превышает 50MB, пожалуйста выберите другой."
+  time:
+    formats:
+      for_today: '%l:%M %P'
+  date:
+    formats:
+      for_this_year: '%e %b'
+      for_another_year: '%-d/%-m/%y'
   devise:
     invitations:
       send_instructions: 'Приглашение было выслано на %{email}.'
@@ -34,6 +46,8 @@ ru:
     mailer:
       invitation_instructions:
         subject: 'Кто-то пригласил вас вступить в группу'
+    registrations:
+      sign_up: 'Создать учетную запись'
   error:
     access_denied: "У вас недостаточно прав"
     cant_join_subgroup: "Вы не можете присоединиться к подгруппе, если вы не являетесь участником основной группы."
@@ -48,11 +62,17 @@ ru:
     invalid_email: "Пожалуйста, введите хотя бы один действующий email."
     image_upload_fail: "Невозможно загрузить картинку. Убедитесь что картинка весит меньше 1 МБ и имеет формат .jpeg, .png, или .gif "
     motion_closing_inputs: "Неверная дата закрытия"
+    motion_outcome_not_created: "Результаты не опубликованы."
+    motion_outcome_not_updated: "Результаты не обновлены."
     permission_to_invite: "У вас недостаточно прав для приглашения новых участников."
     position_not_updated: "Невозможно изменить этот пункт"
     settings_not_updated: "Ваши настройки не обновлены"
+    group_private_or_not_found: "Группа не найдена.\n\nОна может быть приватной. Попросите того, кто дал вам ссылку на нее выслать вам приглашение."
     group_already_setup: "Такая группа уже существует."
     passwords_did_not_match: "Пароли не совпадают"
+    proposal_already_exists: "В этом обсуждении уже есть открытое предложение."
+    user_with_email_address_already_in_group: "Этот пользователь уже является участником группы."
+    you_have_already_requested_membership: "Вы уже запрашивали участие в этой группе."
     you_are_already_a_member_of_this_group: "Вы уже член этих группи"
     not_found: "Пункт не нашил. Он вычеркнул."
   alert:
@@ -72,7 +92,17 @@ ru:
         one: "1 участник добавлен"
         few: "Несколько участников добавлено"
         other: "%{count} участников добавлено"
+      existing_member:
+        one: "1 участник в группе"
+        few: "%{count} участника в группе"
+        other: "%{count} участников в группе"
+      sent:
+        one: "1 приглашение отослано"
+        few: "%{count} приглашения отослано"
+        other: "%{count} приглашений отослано"
+      auto_added_and_sent: "%{auto_added_text} и %{sent_text}"
   tooltip:
+    cover_photo_upload: "Загрузите новое изображение для обложки"
     logo_upload: "Загрузить логотип"
     edit_description: "Редактировать описание"
     group_category: "Нйти похожие группы"
@@ -100,6 +130,8 @@ ru:
     group_archived: "Группа успешно архивирована. "
     group_created: "Группа успешно создана."
     members_added: "Участники добавлены в группу."
+    membership_requested: "Вы послали запрос на вступление в %{which_group}. Вы получите уведомление когда он будет удовлетворен."
+    motion_closed: "Предложение закрыто. Вы можете установить результаты и отослать их в свою группу."
     password_updated: "Пароль был успешно изменен"
     position_submitted: "Позиция добавлена"
     position_updated: "Позиция обновлена."
@@ -153,6 +185,8 @@ ru:
         other: "%{count} лет"
   organisation:
     name: "Loomio"
+  sr:
+    toggle_navigation: "Toggle navigation"
   footer:
     about: 'О нас'
     blog: 'Блог'
@@ -164,13 +198,18 @@ ru:
     clear: 'Очистить'
     title: 'Входящие'
     preferences: 'Настройки'
+    what_you_have_not_read_yet: "Список того, что вы еще не прочли."
     dropdown-btn: 'Входящие'
+    empty: Нет непрочтенных коментариев.
+    preferences_instructions_html: 'Вы можете сортировать сообщения мышкой. Снимите выделение для того, что бы убрать сообщение.'
   notifications:
     header: "Уведомления"
     new_discussion: "создано обсуждение"
+    new_motion: "создано предложение"
     motion_closed:
       by_user: "предложение закрыто"
       by_expiry: "Предложение было закрыто"
+    new_vote: "%{position} по предложению"
     new_comment: "новый комментарий в дискуссии"
     comment_liked: "понравился ваш комментарий в обсуждении"
     user_mentioned: "упоминание о вас в комментарии"
@@ -182,7 +221,9 @@ ru:
   start_new_group: "Создайте новую группу"
   start_new_group_hint: "Чтобы начать принятие решений"
   find_a_group: "Найти группу"
+  find_a_group_hint: "Список общедоступных групп"
   search_for_group: "Искать группу"
+  no_groups_found: "Группы с таким именем не найдены!"
   no_group_header: "Добро пожаловать!"
   empty_notifications: "У вас пока нет уведомлений."
   see_all_notifications: "Просмотреть все уведомления"
@@ -193,16 +234,47 @@ ru:
   tagline: "Создавая мир, в котором каждому легко принимать участие в принятии решений, влияющих на них."
   click_to_dismiss: "Нажмите сюда, чтобы отклонить это сообщение"
   generic_confirm: "Вы уверены?"
+  discussion_helper_text:
+    header: "Добро пожаловать в ваше первое обсуждение"
+  group_helper_text:
+    header: "Добро пожаловать в вашу первую группу!"
+  dashboard_helper_text:
+    header: "Добро пожаловать!"
+  prompt_visitor_to_authenticate:
+    header: "Войдите, или вступите в группу для участия"
   user_profile:
+    back: "Вернуться к профилю"
     change_password: "Измените пароль"
     deactivate_account: "Деактивировать учетную запись"
     about_deactivation: "К чему это приведет?"
     confirm_account_deactivation: "Вы уверены?"
+    deactivation:
+      title: "Деактивация учетной записи"
   group_form:
     name: "Название группы"
     description: "Описание"
     category: "Категория"
-    what_can_members_do: "Что члены могут делать?"
+    what_can_members_do: "Участники могут:"
+    members_can:
+      add_members: Пригласите новых участников
+      edit_comments: Редактировать свои коментарии
+      start_discussions: Создавать обсуждения
+      raise_motions: Создавать предложения
+      vote: Голосовать
+      create_subgroups: Создавать подгруппы
+    motions_can_be_edited: Редактировать предложения после начала голосования
+    visible_to:
+      label: Кто может видеть эту группу?
+      public_html: 'Все <span>общедоступная группа</span>'
+      members_html: 'Только участники <span>невидима в поиске</span>'
+    membership_granted_upon:
+      label: Как люди вступают в группу?
+      hidden_parent:
+        request_html: 'Открытая <span>для участников %{parent_group_name}</span>'
+        approval_html: 'По запросу <span>участников %{parent_group_name}</span>'
+      request_html: Открытая <span>любой может присоединиться</span>
+      approval_html: По запросу <span>любой может запросить участие</span>
+      invitation_html: По приглашениям <span>новые участники должны быть приглашены</span>
   group_permissions:
     header: Разрешения
     c7: Добавлять/удалять координаторов.
@@ -239,8 +311,11 @@ ru:
   members: "Участники"
   confirm_remove_user: "Вы уверены что хотите удалить %{which_user} из группы?"
   remove_coordinator: "Удалить координатора."
+  make_coordinator: "Сделать координатором"
   membership_requests: "Заявка на участие"
+  previous_requests: Предыдущие запросы
   join_group_btn: Вступить в группу
+  you_have_joined_group: Вы стали участником %{group_name}
   confirm_approve_membership_request: "Вы уверены что хотите добавить %{which_user} в группу?"
   cancel_membership_request: "Отозвать запрос"
   ignore_request: "Игнорировать заявку"
@@ -267,6 +342,21 @@ ru:
   updating_group: "Обновление группы"
   start_a_discussion: "Начать дискуссию"
   group_description: "Описание группы"
+  edit_group_description: "Редактировать описание"
+  group_subscription: "Подписка"
+  groups:
+    follow:
+      click_to_follow: "Отслеживать группу"
+      click_to_unfollow: "Не отслеживать группу"
+  group_request:
+    please_select_an_option: Пожалуйста, выберите вариант
+    confirmation:
+      title: Почти готово! Проверьте почту.
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> согласился с предложением."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> воздержался."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> не согласен с предложением."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> блокировал предложение."
   discussion_items:
     new_discussion: "создана дискуссия"
     new_motion: "создано предложение"
@@ -279,8 +369,12 @@ ru:
   current_decision: "Текущее решение"
   previous_decisions: "Предыдущие решения"
   see_previous_decisions: "Посмотреть прошлые решения"
+  create_new_proposal: "Создать предложение"
   empty_decision_index: "Эта группа пока не приняла никаких решений."
   empty_discussion_list: "В этой дискуссии пока не было активности."
+  discussion_context:
+    see_revision_history: "История"
+    see_history: "История"
   description_history:
     subheader: "Версия"
     edited_by: "Редактировал примерно %{when} назад %{who}"
@@ -295,9 +389,12 @@ ru:
   delete_comment: "Удалить комментарий"
   confirm_delete_comment: "Вы уверены что хотите удалить комментарий?"
   markdown_settings_more_info: "Больше информации..."
+  edit_discussion: "Редактировать обсуждение"
+  move_discussion: "Перенести обсуждение"
   delete_discussion: "Удалить дискуссию"
   confirm_delete_discussion: "Вы уверены, что хотите навсегда удалить эту дискуссию?"
   new_proposal: "Новое предложение"
+  edit_proposal: "Редактировать предложение"
   close_proposal: "Закрыть предложение"
   confirm_close_proposal: "Вы уверены что хотите закрыть это предложение?"
   change_proposal_close_date: "Изменить дату окончания"
@@ -308,6 +405,9 @@ ru:
   no_position: "Я не соласен"
   block_position: "Я блокирую"
   not_voted: "[Показать членов группы, которые ещё не определились]"
+  help:
+    help: "Помощь"
+    how_it_works: "Как это работает"
   new_password: "Новый пароль"
   confirm_new_password: "Повторите новый пароль"
   change_your_password: "Измените ваш пароль"
@@ -387,6 +487,7 @@ ru:
   group: "Группа"
   group_admin: "Координатор группы"
   home: "Главная"
+  id: "id"
   like: "Нравится"
   loading: "Загрузка..."
   message: "Сообщение"
@@ -407,6 +508,8 @@ ru:
   rss_subscribe: "Подписаться"
   remove: "Удалить"
   save: "Сохранить"
+  show_more: "Больше"
+  start_a_group: "Создать группу"
   subject: "Заголовок"
   thanks: "Спасибо!"
   time_until_close: "%{quantity_of_time} до закрытия"
@@ -425,7 +528,9 @@ ru:
     back_to_discussion: "Назад к обсуждению"
     edited: Изменено
     groups: "Группы"
+    select_error: Пожалуйста, выберите вариант
     today: Сегодня
+    select: Пожалуйста, выберите
     months:
       january: Январь
       february: Февраль
@@ -516,3 +621,4 @@ ru:
     women: "Женщины"
     media: "Медиа"
     health: "Здоровье"
+  start_your_group: Создать группу

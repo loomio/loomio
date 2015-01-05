@@ -881,6 +881,7 @@ sr-RS:
         close_at_date: "Затвара се"
       user:
         name: "Пуно име"
+        username: "Корисничко Име"
         email: "еПошта"
         password: "Лозинка"
         password_confirmation: "Потврди лозинку"

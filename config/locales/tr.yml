@@ -830,6 +830,7 @@ tr:
         close_at_date: "Kapanış"
       user:
         name: "Ad ve soyad"
+        username: "Kullanıcı adı"
         email: "E-posta"
         password: "Şifre"
         password_confirmation: "Şifreyi onayla"
