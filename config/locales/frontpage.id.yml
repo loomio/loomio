@@ -1,34 +1,34 @@
 id:
   frontpage:
-    view_this_in_your_language: 'Lihat situs ini dalam bahasa %{language}'
+    view_this_in_your_language: "Lihat situs ini dalam bahasa %{language}"
     link:
-      blog: 'Blog'
-      contact: 'Kontak'
-      donate: 'Berikan donasi hari ini'
-      press: 'Pers'
-      try_it: 'Coba'
-      log_in: 'LOG IN'
-      try_loomio_beta: 'Coba Loomio beta'
-      check_out_loomio_beta: 'Lihat Loomio beta'
-      more: 'Selanjutnya'
-      top: 'Bagian atas'
-      public_groups: 'Kelompok umum'
-      terms: 'Ketentuan'
-      privacy: 'Kebijakan Privasi'
-      services: 'Layanan'
+      blog: Blog
+      contact: Kontak
+      donate: Berikan donasi hari ini
+      press: Pers
+      try_it: Coba
+      log_in: LOG IN
+      try_loomio_beta: Coba Loomio beta
+      check_out_loomio_beta: Lihat Loomio beta
+      more: Selanjutnya
+      top: Bagian atas
+      public_groups: Kelompok umum
+      terms: Ketentuan
+      privacy: Kebijakan Privasi
+      services: Layanan
     product:
       step1:
-        header: '1. Bicarakan semua hal'
+        header: 1. Bicarakan semua hal
       step2:
-        header: '2. Temukan persetujuan'
+        header: 2. Temukan persetujuan
       step3:
-        header: '3. Buat keputusan bersama'
+        header: 3. Buat keputusan bersama
     team:
-      header: 'Tentang Loomio'
+      header: Tentang Loomio
     ideals:
       independent:
-        header: 'Independen dan netral'
+        header: Independen dan netral
       open:
-        header: 'Perangkat lunak gratis dan terbuka'
+        header: Perangkat lunak gratis dan terbuka
     vision:
-      header: 'Bantu kami untuk mewujudkan visi menjadi kenyataan.'
+      header: Bantu kami untuk mewujudkan visi menjadi kenyataan.
