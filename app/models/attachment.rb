@@ -31,11 +31,8 @@ class Attachment < ActiveRecord::Base
     filename = URI.decode(URI(URI.encode(self.location)).path).gsub(/^\//, '')
     file = bucket.files.get(filename)
 
-    if file
-      file.destroy
-    else
-      raise "attachment filename not found within bucket: #{filename}"
-    end
+    file.destroy if file
+    true # return no true no matter what.
   end
 
 end
