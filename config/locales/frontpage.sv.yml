@@ -1,63 +1,63 @@
 sv:
   frontpage:
-    view_this_in_your_language: 'Se denna siten på %{language}'
+    view_this_in_your_language: "Se denna siten på %{language}"
     title:
       collaborative_decision_making: Kollaborativt beslutsfattande
     link:
-      blog: 'Blogg'
-      contact: 'Kontakt'
-      donate: 'Gör en donation redan idag'
-      press: 'Press'
-      try_it: 'Pröva det'
-      log_in: 'LOGGA IN'
-      video: "Läs mer om hur Loomio fungerar"
-      try_loomio_beta: 'Prova Loomio Beta'
-      check_out_loomio_beta: 'Kolla in Loomio Beta'
-      more: 'Mer'
-      top: 'Överst'
-      public_groups: 'Öppna grupper'
-      terms: 'Villkor'
-      privacy: 'Integritet'
-      services: 'Tjänster'
+      blog: Blogg
+      contact: Kontakt
+      donate: Gör en donation redan idag
+      press: Press
+      try_it: Pröva det
+      log_in: LOGGA IN
+      video: Läs mer om hur Loomio fungerar
+      try_loomio_beta: Prova Loomio Beta
+      check_out_loomio_beta: Kolla in Loomio Beta
+      more: Mer
+      top: Överst
+      public_groups: Öppna grupper
+      terms: Villkor
+      privacy: Integritet
+      services: Tjänster
     hero:
-      head_html: 'Världen behöver ett bättre sätt att <strong>fatta beslut tillsammans</strong>.'
+      head_html: "Världen behöver ett bättre sätt att <strong>fatta beslut tillsammans</strong>."
     product:
-      header_html: 'När vi lyssnar <strong>all voices</strong>, fattar vi <strong>bättre beslut</strong>.'
+      header_html: "När vi lyssnar <strong>all voices</strong>, fattar vi <strong>bättre beslut</strong>."
       step1:
-        header: '1. Prata igenom saken'
-        desc: 'Börja en diskussion inom valfritt ämne, och få med rätt personer. Utforska de olika perspektiven och börja generera idéer tillsammans.'
+        header: 1. Prata igenom saken
+        desc: "Börja en diskussion inom valfritt ämne, och få med rätt personer. Utforska de olika perspektiven och börja generera idéer tillsammans."
       step2:
-        header: '2. Bygg en gemensam förståelse'
-        desc: 'Vem som helst kan komma med föreslag till handlingsplan. Deltagarna kan hålla med, avstå, inte hålla med, eller blockera - så du kan lätt se hur alla känner inför förslaget och varför.'
+        header: 2. Bygg en gemensam förståelse
+        desc: "Vem som helst kan komma med föreslag till handlingsplan. Deltagarna kan hålla med, avstå, inte hålla med, eller blockera - så du kan lätt se hur alla känner inför förslaget och varför."
       step3:
-        header: '3. Fatta beslut tillsammans'
-        desc: 'Utveckla förslaget tillsamman så att alla kan ställa sig bakom det. Varje beslut har en tydlig dead-line, så att ni alltid når ett konkret resultat.'
+        header: 3. Fatta beslut tillsammans
+        desc: "Utveckla förslaget tillsamman så att alla kan ställa sig bakom det. Varje beslut har en tydlig dead-line, så att ni alltid når ett konkret resultat."
     crowdfunding:
-      header: 'Vi crowdfunar så att vi kan avlusta bygget av denna nya plattform och ge den som en gåva till världen.'
+      header: Vi crowdfunar så att vi kan avlusta bygget av denna nya plattform och ge den som en gåva till världen.
     prototype:
       header_html: "Vi har redan gjort en prototyp, och folk över hela världen gör fantastiska saker med den"
-      subhead_html: '<a href="%{try_loomio_link}">Prova Loomio Beta</a> nu. Eller så kan du <a href="%{donate_link}"> stödja projektet</a> så vi kan skapa Loomio 1.0'
+      subhead_html: "<a href=\"%{try_loomio_link}\">Prova Loomio Beta</a> nu. Eller så kan du <a href=\"%{donate_link}\"> stödja projektet</a> så vi kan skapa Loomio 1.0"
     mobile:
-      header_html: 'Loomio 1.0 kommer att fungera på alla plattformar, och är byggd med det bästa från <strong>öppen mobil teknologi.</strong>'
+      header_html: "Loomio 1.0 kommer att fungera på alla plattformar, och är byggd med det bästa från <strong>öppen mobil teknologi.</strong>"
     quote:
       header:
-        rushkoff_html: '“Loomio <strong>släpper loss internets potential</strong> för att få människor att nå konsensus snarare än polariserade debatter.”<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, författare till <em>Present Shock</em></div>'
-        sifry_html: '“Loomio träffar mitt i prick mellan <strong>individens röst</strong> och <strong>kollektiva beslut</strong>.”<div class="attributation">– Micah Sifry, Redaktör, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
+        rushkoff_html: "“Loomio <strong>släpper loss internets potential</strong> för att få människor att nå konsensus snarare än polariserade debatter.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, författare till <em>Present Shock</em></div>"
+        sifry_html: "“Loomio träffar mitt i prick mellan <strong>individens röst</strong> och <strong>kollektiva beslut</strong>.”<div class=\"attributation\">– Micah Sifry, Redaktör, <em><a href=\"http://techpresident.com\">TechPresident</a></em></div>"
     team:
-      header: 'Om Loomio'
-      desc: 'Vi är ett litet team av open-source-utvecklare och sociala entreprenörer som arbetar på Enspiral i Aotearoa New Zealand, med ett brett nätverk av vänner, supportrar och rådgivare från hela världen.'
+      header: Om Loomio
+      desc: "Vi är ett litet team av open-source-utvecklare och sociala entreprenörer som arbetar på Enspiral i Aotearoa New Zealand, med ett brett nätverk av vänner, supportrar och rådgivare från hela världen."
     ideals:
       community:
-        header: 'Ett communitydrivet kooperativ'
-        desc: 'Loomio är byggt av ett medarbetarägt kollektiv. Vi är ett socialt företag som arbetar för att maximera vår positiva sociala påverkan, inte vår vinst.'
+        header: Ett communitydrivet kooperativ
+        desc: "Loomio är byggt av ett medarbetarägt kollektiv. Vi är ett socialt företag som arbetar för att maximera vår positiva sociala påverkan, inte vår vinst."
       independent:
-        header: 'oberoende och neutral'
-        desc: 'Vi har plats för alla grupperings att möta, som är oberoende av politiska- eller företagsintressen. Vi kommer aldrig att sälja vidare dina uppgifter.'
+        header: oberoende och neutral
+        desc: "Vi har plats för alla grupperings att möta, som är oberoende av politiska- eller företagsintressen. Vi kommer aldrig att sälja vidare dina uppgifter."
       open:
-        header: 'Fri och öppen mjukvara'
-        desc: 'Loomios kod är öppen för vem som helst att köra, läsa, lära från, modifiera och återdistribuera.'
+        header: Fri och öppen mjukvara
+        desc: "Loomios kod är öppen för vem som helst att köra, läsa, lära från, modifiera och återdistribuera."
       gift:
-        header: 'Gåvoekonomin'
-        desc: 'Loomio stöds av dem som betalar efter förmåga. Detta möjliggör att plattformen kan hållas fri från annonser och tillgänglig för grupper med få egna medel.'
+        header: Gåvoekonomin
+        desc: Loomio stöds av dem som betalar efter förmåga. Detta möjliggör att plattformen kan hållas fri från annonser och tillgänglig för grupper med få egna medel.
     vision:
-      header: 'Hjälp oss omvandla denna vision till verklighet.'
+      header: Hjälp oss omvandla denna vision till verklighet.

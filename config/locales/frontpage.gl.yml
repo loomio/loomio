@@ -1,6 +1,6 @@
 gl:
   frontpage:
     link:
-      blog: 'Blogue'
-      contact: 'Contacto'
-      log_in: 'Identifícate'
+      blog: Blogue
+      contact: Contacto
+      log_in: Identifícate
