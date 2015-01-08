@@ -11,7 +11,7 @@ Then /^I should be logged in$/ do
 end
 
 Then /^I should not be logged in$/ do
-  page.should have_content "Invalid email address or password"
+  page.should have_content "Invalid"
 end
 
 When /^I login as "(.*?)" with an incorrect password$/ do |email|
