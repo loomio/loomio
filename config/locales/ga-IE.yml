@@ -2,146 +2,146 @@ ga-IE:
   users:
     email_preferences:
       edit:
-        title: 'Sainroghanna ríomhphoist'
-        when_do_you_want_emails: 'Seol ríomhphost chugam:'
+        title: Sainroghanna ríomhphoist
+        when_do_you_want_emails: "Seol ríomhphost chugam:"
         email_missed_yesterday: "\"Inné ar Loomio\" - achoimre laethúil de na himeachtaí nach bhfaca mé"
-        email_when_mentioned: "Nuair a luaitear mé"
-        email_when_proposal_closing_soon: "24 uair sula dhúntar togra."
-        email_new_discussions_and_proposals: 'Plé agus tograí nua'
+        email_when_mentioned: Nuair a luaitear mé
+        email_when_proposal_closing_soon: 24 uair sula dhúntar togra.
+        email_new_discussions_and_proposals: Plé agus tograí nua
         for_these_groups: "Do na baiclí seo:"
-        submit: "Coimeád na sainroghanna"
+        submit: Coimeád na sainroghanna
   try_it:
-    header: "Bain triail as Loomio"
-    explore_groups: "Féach baiclí eile ar Loomio"
+    header: Bain triail as Loomio
+    explore_groups: Féach baiclí eile ar Loomio
     explore_groups_info: "Féach na baiclí iontacha uile ar Loomio agus cláraigh leo!"
   activerecord:
     errors:
       messages:
-        blank: "ní féidir leis a bheith bán"
+        blank: ní féidir leis a bheith bán
   errors:
     messages:
-      email: "Tá an seoladh ríomhphoist neamhbhailí."
+      email: Tá an seoladh ríomhphoist neamhbhailí.
   attachment:
     error:
-      too_large: "Tá an comhad a rinne tú iarracht ceangail níos mó ná 50MB. Roghnaigh comhad níos lú ná sin le do thoil."
+      too_large: Tá an comhad a rinne tú iarracht ceangail níos mó ná 50MB. Roghnaigh comhad níos lú ná sin le do thoil.
   time:
     formats:
-      for_today: '%l:%M %P'
+      for_today: "%l:%M %P"
   date:
     formats:
-      for_this_year: '%e %b'
-      for_another_year: '%-d/%-m/%y'
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
   devise:
     invitations:
-      send_instructions: 'Seoladh cuireadh chuig %{email}.'
-      invitation_token_invalid: 'Ní ann don chuireadh seo a thuilleadh!'
-      updated: 'Cruthaíodh cuntas.'
-      no_invitations_remaining: "Níl cuirí fágtha"
+      send_instructions: "Seoladh cuireadh chuig %{email}."
+      invitation_token_invalid: "Ní ann don chuireadh seo a thuilleadh!"
+      updated: Cruthaíodh cuntas.
+      no_invitations_remaining: Níl cuirí fágtha
     mailer:
       invitation_instructions:
-        subject: 'Thug duine éigin cuireadh duit clárú ina b(h)aicle ar Loomio'
+        subject: Thug duine éigin cuireadh duit clárú ina b(h)aicle ar Loomio
   error:
-    access_denied: "Níl cead agat é sin a dhéanamh."
-    cant_join_subgroup: "Ní féidir leat a bheith páirteach i bhfo-ghrúpa más rud é nach bhfuil tú i do bhall den ghrúpa tuismitheora."
-    cant_modify_position: "Tá an togra seo dúnta."
-    cant_state_position: "Tá an togra seo dúnta."
-    discussion_not_created: "Ní fhéadfaí plé a chruthú."
-    group_not_archived: "Níorbh fhéidir an Grúpa a chur i gcartlann."
+    access_denied: Níl cead agat é sin a dhéanamh.
+    cant_join_subgroup: Ní féidir leat a bheith páirteach i bhfo-ghrúpa más rud é nach bhfuil tú i do bhall den ghrúpa tuismitheora.
+    cant_modify_position: Tá an togra seo dúnta.
+    cant_state_position: Tá an togra seo dúnta.
+    discussion_not_created: Ní fhéadfaí plé a chruthú.
+    group_not_archived: Níorbh fhéidir an Grúpa a chur i gcartlann.
     invalid_close_date: "An dáta deiridh neamhbhailí, seiceáil le do thoil nach bhfuil an dáta sin caite."
     invalid_email: "Cuir isteach seoladh ríomhphost bhailí amháin ar a laghad le do thoil. "
     image_upload_fail: "Ní féidir pictiúr a uaslódáil. Déan cinnte go bhfuil an pictiúr faoi 1 MB agus is comhad .jpeg, .Png, nó .Gif é."
-    motion_outcome_not_created: "Ní féidir an toradh a fhoilsiú."
-    motion_outcome_not_updated: "Ní féidir an toradh a nuashonrú."
+    motion_outcome_not_created: Ní féidir an toradh a fhoilsiú.
+    motion_outcome_not_updated: Ní féidir an toradh a nuashonrú.
     permission_to_invite: "Níl cead agat cuireadh a thabhairt do chomhaltaí nua. "
-    position_not_updated: "Ní fhéadfaí do shuíomh a nuashonrú"
-    settings_not_updated: "Níor nuashonraíodh do shocruithe."
-    group_already_setup: "Tá an bhaicle atá tú ag iarraidh a chur ar bun ann cheana féin."
-    proposal_already_exists: "Tá togra oscailte sa phlé seo cheana féin."
-    you_are_already_a_member_of_this_group: "Is comhalta den bhaicle seo thú cheana féin."
+    position_not_updated: Ní fhéadfaí do shuíomh a nuashonrú
+    settings_not_updated: Níor nuashonraíodh do shocruithe.
+    group_already_setup: Tá an bhaicle atá tú ag iarraidh a chur ar bun ann cheana féin.
+    proposal_already_exists: Tá togra oscailte sa phlé seo cheana féin.
+    you_are_already_a_member_of_this_group: Is comhalta den bhaicle seo thú cheana féin.
     not_found: "Níor aimsíodh an mhír sin. B'fhéidir scriosadh í."
   alert:
     duplicate_email: "Tá %{which_email} sa bhaicle cheana féin."
   notice:
-    member_removed: "Baineadh an comhalta."
-    membership_approved: "Ceadaíodh an bhallraíocht."
-    membership_request_canceled: "Iarratas ballraíochta cealaithe"
-    membership_request_ignored: "Neamhaird tugtha don iarratas ballraíochta"
-    settings_updated: "Nuashonraíodh do roghanna."
+    member_removed: Baineadh an comhalta.
+    membership_approved: Ceadaíodh an bhallraíocht.
+    membership_request_canceled: Iarratas ballraíochta cealaithe
+    membership_request_ignored: Neamhaird tugtha don iarratas ballraíochta
+    settings_updated: Nuashonraíodh do roghanna.
     you_have_left_group: "D'fhág tú %{which_group}."
-    comment_deleted: "Scriosadh an trácht."
+    comment_deleted: Scriosadh an trácht.
   tooltip:
-    edit_description: "Leasaigh an cur síos"
-    group_category: "Aimsigh baiclí eile cosúil leis an gceann seo"
+    edit_description: Leasaigh an cur síos
+    group_category: Aimsigh baiclí eile cosúil leis an gceann seo
   views:
     pagination:
-      previous: "Roimhe"
-      next: "Ar aghaidh"
+      previous: Roimhe
+      next: Ar aghaidh
   warning:
-    membership_request_already_ignored: "Tá neamhaird tugtha don iarratas ballraíochta cheana féin"
-    membership_request_already_canceled: "Tá an iarratas ballraíochta cealaithe cheana féin"
-    position_not_submitted: "Ní fhéadfaí do shuíomh a áitiú"
-    proposal_not_created: "Níorbh fhéidir an togra a chruthú"
+    membership_request_already_ignored: Tá neamhaird tugtha don iarratas ballraíochta cheana féin
+    membership_request_already_canceled: Tá an iarratas ballraíochta cealaithe cheana féin
+    position_not_submitted: Ní fhéadfaí do shuíomh a áitiú
+    proposal_not_created: Níorbh fhéidir an togra a chruthú
     user_already_member: "Is comhalta cheana féin den bhaicle seo é %{which_user}."
   success:
     added_to_group: "Cuireadh le %{which_group} thú."
-    close_date_changed: "Athraíodh an dáta dúnta go rathúil."
-    discussion_created: "Cruthaíodh an plé go rathúil."
-    discussion_deleted: "Scriosadh an plé go rathúil."
+    close_date_changed: Athraíodh an dáta dúnta go rathúil.
+    discussion_created: Cruthaíodh an plé go rathúil.
+    discussion_deleted: Scriosadh an plé go rathúil.
     discussion_moved: "Bogadh an comhrá go dtí %{group_name}"
-    emails_sending: "Ríomhphoist á sheoladh"
+    emails_sending: Ríomhphoist á sheoladh
     group_archived: "Cartlannú rathúil déanta ar an ngrúpa "
-    group_created: "Grúpa cruthaithe go rathúil"
-    members_added: "Baill curtha leis an ngrúpa"
+    group_created: Grúpa cruthaithe go rathúil
+    members_added: Baill curtha leis an ngrúpa
     motion_closed: "Tá an togra dúnta. Más mian leat, tig leat an toradh a shocrú thíos agus é a sheoladh chuig do bhaicle."
     password_updated: "Athraíodh d'fhocal faire."
     position_submitted: "suíomh aighnithe / post aighnithe (if position relates to job use the second translation, first one relates to the position of something)"
-    position_updated: "Nuashonraíodh an seasamh."
-    proposal_created: "Cruthaíodh an togra go rathúil."
-    proposal_deleted: "Scriosadh an togra"
+    position_updated: Nuashonraíodh an seasamh.
+    proposal_created: Cruthaíodh an togra go rathúil.
+    proposal_deleted: Scriosadh an togra
   organisation:
-    name: "Loomio"
+    name: Loomio
   footer:
-    about: 'Maidir linn'
-    blog: 'Blag'
-    contact: 'Déan Teagmháil'
-    privacy: 'Príobháideachas'
-    public_groups: 'Grúpaí poiblí'
-    terms: 'Coinníollacha'
+    about: Maidir linn
+    blog: Blag
+    contact: Déan Teagmháil
+    privacy: Príobháideachas
+    public_groups: Grúpaí poiblí
+    terms: Coinníollacha
   inbox:
-    dropdown-btn: 'Bosca Isteach'
+    dropdown-btn: Bosca Isteach
   notifications:
-    header: "Fógraí"
-    new_discussion: "tús le plé"
+    header: Fógraí
+    new_discussion: tús le plé
     motion_closed:
-      by_user: "togra dúnta"
-      by_expiry: "Dúnadh an togra"
+      by_user: togra dúnta
+      by_expiry: Dúnadh an togra
     new_vote: "%{position} ar an dtogra"
-    motion_closing_soon: "Dúnfar an togra go luath"
-  request_new_group: "Cuir baicle ar bun"
-  start_new_group: "Cuir baicle nua ar bun"
-  find_a_group: "Aimsigh baicle"
-  search_for_group: "Cuardaigh i gcomhair baicle"
-  no_group_header: "Fáilte go dtí Loomio Beta"
-  empty_notifications: "Níl aon fhógra agat fós."
-  see_all_notifications: "Féach ar gach fógra"
-  profile: "Beathaisnéisín"
-  email_settings: "Socruithe ríomhphoist"
-  sign_out: "Scoir"
-  sign_in: "Logáil isteach"
+    motion_closing_soon: Dúnfar an togra go luath
+  request_new_group: Cuir baicle ar bun
+  start_new_group: Cuir baicle nua ar bun
+  find_a_group: Aimsigh baicle
+  search_for_group: Cuardaigh i gcomhair baicle
+  no_group_header: Fáilte go dtí Loomio Beta
+  empty_notifications: Níl aon fhógra agat fós.
+  see_all_notifications: Féach ar gach fógra
+  profile: Beathaisnéisín
+  email_settings: Socruithe ríomhphoist
+  sign_out: Scoir
+  sign_in: Logáil isteach
   tagline: "Ag cruthú domhan ina bhfuil sé easca ar gach duine cinneadh a dhéanamh ar rudaí a théann i bhfeidhm orthu. "
-  click_to_dismiss: "Brúigh anseo chun fáil réidh leis an teachtaireacht seo"
-  generic_confirm: "An bhfuil tú cinnte?"
+  click_to_dismiss: Brúigh anseo chun fáil réidh leis an teachtaireacht seo
+  generic_confirm: An bhfuil tú cinnte?
   discussion_helper_text:
-    header: "Fáilte go dtí do chéad phlé"
+    header: Fáilte go dtí do chéad phlé
   dashboard_helper_text:
-    header: "Fáilte go dtí do leathanach Baile"
+    header: Fáilte go dtí do leathanach Baile
   user_profile:
     change_password: "Déan d'fhocal faire a athrú"
-    about_deactivation: "Cad is brí le seo?"
+    about_deactivation: Cad is brí le seo?
   group_form:
-    description: "Cur síos"
-    category: "Aicme"
-    what_can_members_do: "Cad is féidir leis na baill a dhéanamh?"
+    description: Cur síos
+    category: Aicme
+    what_can_members_do: Cad is féidir leis na baill a dhéanamh?
     members_can:
       start_discussions: Cuir tús le plé
     visible_to:
@@ -152,242 +152,242 @@ ga-IE:
     c8: Scrios an plé.
     c12: Tóg tograí.
   setup_steps_title: "Na chéad céimeanna eile:"
-  setup_step_2: "Cuir tús le do chéad phlé"
-  invite_people: "Tabhair cuirí do dhaoine"
-  no_invitations_button: "Níl aon chuireadh fágtha"
-  number_pending: '%{pending} ar feitheamh'
-  add_new_member: "Cuir comhalta nua leis"
-  get_in_touch_link: "déan teagmháil"
-  subject_error: "Cuir ábhar leis le do thoil"
-  subject_placeholder: "Scríobh ábhar"
-  message_error: "Cuir teachtaireacht isteach ann le do thoil"
-  leave_group: "Fág an dream seo"
+  setup_step_2: Cuir tús le do chéad phlé
+  invite_people: Tabhair cuirí do dhaoine
+  no_invitations_button: Níl aon chuireadh fágtha
+  number_pending: "%{pending} ar feitheamh"
+  add_new_member: Cuir comhalta nua leis
+  get_in_touch_link: déan teagmháil
+  subject_error: Cuir ábhar leis le do thoil
+  subject_placeholder: Scríobh ábhar
+  message_error: Cuir teachtaireacht isteach ann le do thoil
+  leave_group: Fág an dream seo
   confirm_leave_group: "An bhfuil tú cinnte gur miean leat %{which_group} a fhágáil?"
-  invited_users: "Na comhaltaí a bhfuair cuirí"
-  members: "Comhaltaí"
+  invited_users: Na comhaltaí a bhfuair cuirí
+  members: Comhaltaí
   confirm_remove_user: "An bhfuil tú cinnte go bhfuil fonn ort %{which_user} a bhaint ón ngrúpa?"
-  confirm_remove_member: 'An bhfuil tú cinnte gur mian leat an comhalta seo a bhaint as an mbaicle?'
+  confirm_remove_member: An bhfuil tú cinnte gur mian leat an comhalta seo a bhaint as an mbaicle?
   membership_requests: "Iarratas ballraíocht "
-  approved_by_person: Ceadaithe ag %{person}
+  approved_by_person: "Ceadaithe ag %{person}"
   confirm_approve_membership_request: "An bhfuil tú cinnte go bhfuil fonn ort %{which_user} a chur sa ghrúpa?"
-  cancel_membership_request: "Cealaigh an t-iarratas"
-  ignore_request: "Déan neamhaird den iarratas"
-  ignore: "Déan neamhaird de"
-  membership_requested: "Iarratas ballraíocht déanta"
-  invite_members: "Tabhair cuirí do dhaoine bheith mar chomhaltaí"
-  hidden: "I bhfolach"
-  public: "Poiblí"
-  new_group: "Baicle nua"
-  create_group: "Cruthaigh grúpa"
-  start_a_discussion: "Cuir tús le plé"
-  group_description: "Cur síos ar an mbaicle"
+  cancel_membership_request: Cealaigh an t-iarratas
+  ignore_request: Déan neamhaird den iarratas
+  ignore: Déan neamhaird de
+  membership_requested: Iarratas ballraíocht déanta
+  invite_members: Tabhair cuirí do dhaoine bheith mar chomhaltaí
+  hidden: I bhfolach
+  public: Poiblí
+  new_group: Baicle nua
+  create_group: Cruthaigh grúpa
+  start_a_discussion: Cuir tús le plé
+  group_description: Cur síos ar an mbaicle
   group_request:
     confirmation:
-      title: Tá beagnach críochnaithe agat! Féach do ríomhphoist.
+      title: "Tá beagnach críochnaithe agat! Féach do ríomhphoist."
   discussion_items:
     motion_closed:
-      by_expiry: "Tá an togra dúnta"
-  discussion: "Plé"
-  current_decision: "An cinneadh reatha"
-  previous_decisions: "Cinntí roimhe seo"
-  see_previous_decisions: "Féach na cinntí roimhe seo"
-  see_more: "Féach tuilleadh"
+      by_expiry: Tá an togra dúnta
+  discussion: Plé
+  current_decision: An cinneadh reatha
+  previous_decisions: Cinntí roimhe seo
+  see_previous_decisions: Féach na cinntí roimhe seo
+  see_more: Féach tuilleadh
   empty_decision_list_html: "An bhfuil tú réidh chun cinneadh a dhéanamh? <br> Tig le haon duine tús a chur le togra."
-  empty_discussion_list: "Níl aon ghníomhaíocht sa phlé seo fós."
+  empty_discussion_list: Níl aon ghníomhaíocht sa phlé seo fós.
   comment_by: "Trácht ó %{comment_author}"
   description_history:
-    subheader: "Leagan"
-    current: "(reatha)"
-    restore: "(Cuir an leagan seo ar ais)"
-    applying_changes: "(Tá na hathruithe á gcur i bhfeidhm...)"
-    previous: "Roimhe"
-    next: "Ar aghaidh"
-  comment_form_placeholder: "Scríobh rud éigin..."
-  comment_form_submit_button: "Foilsigh trácht"
-  delete_comment: "Scrios an trácht"
-  confirm_delete_comment: "An bhfuil tú cinnte go dteastaíonn uait an trácht seo a scriosadh?"
-  markdown_settings_more_info: "Tuilleadh eolais..."
-  edit_discussion: "Déan eagarthóireacht ar an bplé"
-  move_discussion: "Bog an plé"
-  move_discussion_where: "Cár mhaith leat an plé seo a bhogadh go dtí?"
-  delete_discussion: "Scrios an plé"
-  confirm_delete_discussion: "An bhfuil tú cinnte go dteastaíonn uait an plé seo a scriosadh?"
-  new_proposal: "Togra Nua"
-  close_proposal: "Dún an togra"
-  confirm_close_proposal: "An bhfuil tú cinnte go dteastaíonn uait an togra seo a dhúnadh?"
-  change_proposal_close_date: "Athraigh an dáta ar a dhúnfar é"
+    subheader: Leagan
+    current: (reatha)
+    restore: (Cuir an leagan seo ar ais)
+    applying_changes: (Tá na hathruithe á gcur i bhfeidhm...)
+    previous: Roimhe
+    next: Ar aghaidh
+  comment_form_placeholder: Scríobh rud éigin...
+  comment_form_submit_button: Foilsigh trácht
+  delete_comment: Scrios an trácht
+  confirm_delete_comment: An bhfuil tú cinnte go dteastaíonn uait an trácht seo a scriosadh?
+  markdown_settings_more_info: Tuilleadh eolais...
+  edit_discussion: Déan eagarthóireacht ar an bplé
+  move_discussion: Bog an plé
+  move_discussion_where: Cár mhaith leat an plé seo a bhogadh go dtí?
+  delete_discussion: Scrios an plé
+  confirm_delete_discussion: An bhfuil tú cinnte go dteastaíonn uait an plé seo a scriosadh?
+  new_proposal: Togra Nua
+  close_proposal: Dún an togra
+  confirm_close_proposal: An bhfuil tú cinnte go dteastaíonn uait an togra seo a dhúnadh?
+  change_proposal_close_date: Athraigh an dáta ar a dhúnfar é
   change_proposal_close_date_header: "Athraigh an dáta a dhúnfar an togra '%{which}'"
   proposal: Togra
-  proposal_close_date_error: "Cuir isteach an dáta ar a dhúnfar é"
+  proposal_close_date_error: Cuir isteach an dáta ar a dhúnfar é
   proposal_closing_when: "Ag dúnadh i gceann %{when}"
   proposal_closed_when: "Dúnadh %{when} ó shin é"
   proposed_when_by_who: "Molta ag %{who} %{when} ó shin"
-  state_your_position: "Cuir do thuairim in iúl"
-  positions: "Seasaimh"
-  yes_position: "Aontaíom"
-  yes_details: "Aontaíom le seo agus is mian liom go rachfaidh sé ar aghaidh."
-  no_position: "Ní aontaíom"
+  state_your_position: Cuir do thuairim in iúl
+  positions: Seasaimh
+  yes_position: Aontaíom
+  yes_details: Aontaíom le seo agus is mian liom go rachfaidh sé ar aghaidh.
+  no_position: Ní aontaíom
   no_details: "Dar liom, tig linn rud éigin níos fearr a dhéanamh."
-  block_position: "Crosaim é"
-  outcome_submit: "Foilsigh an toradh"
+  block_position: Crosaim é
+  outcome_submit: Foilsigh an toradh
   position_verbs:
-    'yes': "aontaíom"
-    'no': "ní aontaíom"
-    block: "cros é"
+    "yes": aontaíom
+    "no": ní aontaíom
+    block: cros é
   unable_to_vote:
-    motion_closed: "Dúnadh an rún seo cheana féin"
+    motion_closed: Dúnadh an rún seo cheana féin
   edit_comment:
-    edit_comment: "Déan eagarthóireacht ar an trácht"
+    edit_comment: Déan eagarthóireacht ar an trácht
   help:
-    different_ways: 'Bealaí éagsúla chun feidhm a bhaint as Loomio'
-    get_in_touch: "Déan teagmháil"
+    different_ways: Bealaí éagsúla chun feidhm a bhaint as Loomio
+    get_in_touch: Déan teagmháil
     get_in_touch_description_html: "Má tá aon cheist nó aiseolas agat dúinn, <a href='%{link}'>cuir teachtaireacht chugainn</a>."
-    getting_started: "Ag tosú ar dtús báire"
-    getting_the_most: 'Bain an leas is fearr as Loomio'
-    have_your_say: "Abair leat"
-    have_a_discussion: "Bíodh plé ann"
-    help: "Cabhair"
-    how_it_works: "Conas mar a fheidhmíonn sé"
-    join_the_community: "Bí sa phobal"
-    keep_up_to_date: "Fan ar an eolas"
-    make_a_decision: "Déan cinneadh"
+    getting_started: Ag tosú ar dtús báire
+    getting_the_most: Bain an leas is fearr as Loomio
+    have_your_say: Abair leat
+    have_a_discussion: Bíodh plé ann
+    help: Cabhair
+    how_it_works: Conas mar a fheidhmíonn sé
+    join_the_community: Bí sa phobal
+    keep_up_to_date: Fan ar an eolas
+    make_a_decision: Déan cinneadh
     positions_agree_description: "Ciallaíonn <span>Aontaíom</span> go bhfuil tú sásta leis an dtogra."
     video_id: "52025402"
-    video_tutorial: "Físeán teagaisc"
+    video_tutorial: Físeán teagaisc
   pricing_page:
     organisations: Eagraíochtaí
-    organisations_examples: m.sh. gnólachtaí, gníomhaireachtaí rialtais, eagraíochtaí pobail
+    organisations_examples: "m.sh. gnólachtaí, gníomhaireachtaí rialtais, eagraíochtaí pobail"
   contribution:
     making_a_donation: Bronn airgead
-  new_password: "Focal faire nua"
-  confirm_new_password: "Deimhnigh an focal faire nua"
+  new_password: Focal faire nua
+  confirm_new_password: Deimhnigh an focal faire nua
   change_your_password: "Athraigh d'fhocal faire"
   change_my_password: "Athraigh m'fhocal faire"
-  blank_details: "(fág bán é mura mian leat é a athrú)"
-  password_confirmation: "Deimhniú an fhocail fhaire"
-  current_password: "An focal faire reatha"
-  password_details: "(tá do fhocal faire reatha de dhíth orainn le go féidir linn na hathruithe a rinne tú a dheimhniú)"
-  confirm_password: "Deimhnigh an focal faire"
-  cancel_my_account: "Cuir mo chuntas ar ceal"
-  remember_me: "Cuimhnigh orm"
-  signing_in: "Ag cur tús le dreas"
-  or: "nó"
+  blank_details: (fág bán é mura mian leat é a athrú)
+  password_confirmation: Deimhniú an fhocail fhaire
+  current_password: An focal faire reatha
+  password_details: (tá do fhocal faire reatha de dhíth orainn le go féidir linn na hathruithe a rinne tú a dheimhniú)
+  confirm_password: Deimhnigh an focal faire
+  cancel_my_account: Cuir mo chuntas ar ceal
+  remember_me: Cuimhnigh orm
+  signing_in: Ag cur tús le dreas
+  or: nó
   forgot_your_password: "Ar dhearmad tú d'fhocal faire?"
-  dont_have_an_account: "Nach bhfuil cuntas agat?"
-  create_one_now: "Cruthaigh ceann anois"
-  or_fill_in_this_form: "nó líon an fhoirm seo"
-  already_have_account: "An bhfuil cuntas Loomio agat cheana féin?"
-  confirm_your_details: "Deimhnigh do shonraí"
-  link_up_your_account: "Ceangail do chuntas le"
+  dont_have_an_account: Nach bhfuil cuntas agat?
+  create_one_now: Cruthaigh ceann anois
+  or_fill_in_this_form: nó líon an fhoirm seo
+  already_have_account: An bhfuil cuntas Loomio agat cheana féin?
+  confirm_your_details: Deimhnigh do shonraí
+  link_up_your_account: Ceangail do chuntas le
   start_group:
-    create_account: "Cruthaigh cuntas le do thoil"
+    create_account: Cruthaigh cuntas le do thoil
   invitation:
-    no_invitations_left: "Is dona linn ach níl aon chuireadh fágtha agat"
+    no_invitations_left: Is dona linn ach níl aon chuireadh fágtha agat
     no_invitations_left_get_more: "Seol ríomhphost chuig contact@loomio.org agus déanaimid ár ndícheall chun cabhrú leat"
-    message_body: "Teachtaireacht an chuiridh"
-    invitation_link: "Nasc an chuiridh"
-    pending_invitations: 'Cuirí ar feitheamh'
-    no_pending_invitations: "Níl aon chuireadh ar feitheamh faoi láthair."
+    message_body: Teachtaireacht an chuiridh
+    invitation_link: Nasc an chuiridh
+    pending_invitations: Cuirí ar feitheamh
+    no_pending_invitations: Níl aon chuireadh ar feitheamh faoi láthair.
   search:
     header: "Torthaí an chuardaigh i gcomhair '%{query}'"
-    placeholder: "Cuardaigh"
-    empty_search: 'Cuardach folamh'
-    please_enter_a_search: 'Cuir aon cheist sa bharra cuardach thuas'
-    no_match: 'Ní raibh aon torthaí beachta ar do cheist'
+    placeholder: Cuardaigh
+    empty_search: Cuardach folamh
+    please_enter_a_search: Cuir aon cheist sa bharra cuardach thuas
+    no_match: Ní raibh aon torthaí beachta ar do cheist
   contact_page:
-    contact_us: 'Déan teagmháil linn'
+    contact_us: Déan teagmháil linn
     labels:
-      name: 'D''ainm'
-      email: 'Do sheoladh ríomhphoist'
-      message: 'Do theachtaireacht'
-      submit: 'Seol an teachtaireacht'
+      name: "D'ainm"
+      email: Do sheoladh ríomhphoist
+      message: Do theachtaireacht
+      submit: Seol an teachtaireacht
     messages:
       email_html: "Líon an fhoirm seo, nó seol ríomhphost chuig <a href='mailto:%{email}'>%{email}</a>"
   discussion_form:
     new:
-      header: "Cuir tús le plé"
+      header: Cuir tús le plé
     edit:
-      header: "Déan eagarthóireacht ar an bplé"
+      header: Déan eagarthóireacht ar an bplé
     privacy:
-      will_be_public: "Tig le cách an plé a fheiceáil"
+      will_be_public: Tig le cách an plé a fheiceáil
   motion_form:
     new:
-      header: "Togra nua"
-      submit: 'Cruthaigh togra'
+      header: Togra nua
+      submit: Cruthaigh togra
     edit:
-      header: "Leasaigh an togra"
-      submit: 'Nuashonraigh an togra'
-    name_helper: "Bíodh an teideal chomh soiléir agus gonta is ar féidir."
-    close_proposal_heading: "Ar mhaith leat an togra a dhúnadh go luath?"
+      header: Leasaigh an togra
+      submit: Nuashonraigh an togra
+    name_helper: Bíodh an teideal chomh soiléir agus gonta is ar féidir.
+    close_proposal_heading: Ar mhaith leat an togra a dhúnadh go luath?
   vote_form:
-    header: "Cuir do thuairim in iúl"
-    edit: "Leasaigh do thuairim"
-    placeholder: "Mínigh cén fáth a rinne tú an cinneadh sin (is rogha seo)"
-    your_position: "Do sheasamh"
-    your_statement: "Do ráiteas"
-    submit: "Cuir seasamh isteach"
-    update: "Nuashonraigh an seasamh"
+    header: Cuir do thuairim in iúl
+    edit: Leasaigh do thuairim
+    placeholder: Mínigh cén fáth a rinne tú an cinneadh sin (is rogha seo)
+    your_position: Do sheasamh
+    your_statement: Do ráiteas
+    submit: Cuir seasamh isteach
+    update: Nuashonraigh an seasamh
   new_user_form:
-    create_an_account: "Cruthaigh cuntas"
+    create_an_account: Cruthaigh cuntas
   profile_form:
-    profile: "Cuir do bheathaisnéisín in eagar"
-    picture: "Grianghraf"
-    use_uploaded: 'Bain feidhm as íomhá atá uasluchtaithe'
-    use_gravtar: 'Bain feidhm as Gravatar'
-    upload_new_image: "Uasluchtaigh íomhá nua"
+    profile: Cuir do bheathaisnéisín in eagar
+    picture: Grianghraf
+    use_uploaded: Bain feidhm as íomhá atá uasluchtaithe
+    use_gravtar: Bain feidhm as Gravatar
+    upload_new_image: Uasluchtaigh íomhá nua
   group_setup:
     set_up_your_group: Cuir do bhaicle ar bun
     desc_header: "Tá beagnach críochnaithe agat!"
     submit: "Tabhair chuig mo bhaicle mé!"
     payment_model:
-      header: Is do chách é Loomio!
-      info: Tá samhail íocaíochta againn a oireann d'aon ghrúpa, fiú iad siúd gan aon airgid :)
+      header: "Is do chách é Loomio!"
+      info: "Tá samhail íocaíochta againn a oireann d'aon ghrúpa, fiú iad siúd gan aon airgid :)"
       link: Cuir tuilleadh eolais air
   simple_form:
     required:
-      text: 'de dhíth'
-      mark: '*'
+      text: de dhíth
+      mark: "*"
     error_notification:
       default_message: "Féach ar na fadhbanna thíos:"
     labels:
       discussion:
-        title: "Teideal"
-        description: "Comhthéacs"
+        title: Teideal
+        description: Comhthéacs
       membership_request:
-        introduction: "Cuir tú féin in aithne do dhaoine"
+        introduction: Cuir tú féin in aithne do dhaoine
       motion:
-        name: "Teideal"
-        description: "Sonraí"
-        close_at_date: "Ag dúnadh"
+        name: Teideal
+        description: Sonraí
+        close_at_date: Ag dúnadh
       user:
-        name: "An t-ainm iomlán"
-        email: "Seoladh ríomhphoist"
-        password: "Focal faire"
-        password_confirmation: "Deimhnigh an focal faire"
-        language_preference: "Teanga"
+        name: An t-ainm iomlán
+        email: Seoladh ríomhphoist
+        password: Focal faire
+        password_confirmation: Deimhnigh an focal faire
+        language_preference: Teanga
       group_request:
-        admin_name: "Cad is ainm duit?"
-        admin_email: "Cad é do sheoladh ríomhphoist?"
-        name: "Cad is ainm den bhaicle seo agatsa?"
+        admin_name: Cad is ainm duit?
+        admin_email: Cad é do sheoladh ríomhphoist?
+        name: Cad is ainm den bhaicle seo agatsa?
         description: "Má tá an t-am agat, déan cur síos ar an mbaicle seo agatsa"
     placeholders:
       membership_request:
         introduction: "Scríobh fút féin chun tú féin a chur in iúl agus mínigh cén fáth ar mhaith leat bheith mar chomhalta de %{group_name}."
       user:
-        email: "Seoladh ríomhphoist"
-        password: "Focal faire"
+        email: Seoladh ríomhphoist
+        password: Focal faire
       group_request:
-        description: "Ba bhreá linn eolas a chur ar do bhaicle agus cén fáth ar mhaith libh feidhm a bhaint as Loomio."
+        description: Ba bhreá linn eolas a chur ar do bhaicle agus cén fáth ar mhaith libh feidhm a bhaint as Loomio.
   helpers:
     submit:
       discussion:
-        create: "Cuir tús le plé"
-        update: "Nuashonraigh an plé"
+        create: Cuir tús le plé
+        update: Nuashonraigh an plé
       motion:
-        create: "Tosaigh an togra"
+        create: Tosaigh an togra
       user:
-        create: "Cruthaigh cuntas"
-        update: "Nuashonraigh na roghanna"
+        create: Cruthaigh cuntas
+        update: Nuashonraigh na roghanna
   email:
     by_who: "ag %{person}"
     reply_to_this_discussion: Freagraigh an plé seo
@@ -395,103 +395,101 @@ ga-IE:
       subject: "Ba mhaith le %{who} go gcuirfeá do ladar i bplé ar Loomio"
       content: "Tugadh cuireadh duit bheith rannpháirteach sa phlé seo: %{discussion}"
       message_intro: "Deireann %{who}:"
-      link: "Bí istigh sa phlé"
+      link: Bí istigh sa phlé
     to_start_group:
       subject: "Cuir do bhaicle Loomio nua ar bun: %{group_name}"
     user_added_to_a_group:
       subject: "Chuir %{who} thú le %{which_group}"
-    view_discussion: "Brúigh anseo chun an plé seo a fheiceáil"
-    view_proposal: "Féach an togra seo ar Loomio"
+    view_discussion: Brúigh anseo chun an plé seo a fheiceáil
+    view_proposal: Féach an togra seo ar Loomio
     create_proposal:
-      closes_in: "Dúnann sé i gceann"
+      closes_in: Dúnann sé i gceann
       subject: "Togra nua: %{which}"
     daily_activity:
-      heading: "Do Ghníomhaíocht Loomio"
-      subject: "Loomio - Achoimre ar an 24 uair is déanaí"
+      heading: Do Ghníomhaíocht Loomio
+      subject: Loomio - Achoimre ar an 24 uair is déanaí
     missed_yesterday:
-      subject: "Inné ar Loomio"
+      subject: Inné ar Loomio
       mark_as_read: Rianaigh mar léite
-      thanks_for_reading: Go raibh maith agat as ucht é a léamh. Bíodh lá den scoth agat!
+      thanks_for_reading: "Go raibh maith agat as ucht é a léamh. Bíodh lá den scoth agat!"
     invitation:
       hi: "Hóra a %{name},"
-      thanks: |
-        Go raibh maith agat!
-        Lucht Loomio
+      thanks: "Go raibh maith agat!\nLucht Loomio\n"
     membership_request:
       subject: "D'iarr %{who} cead dul isteach i %{which_group}"
-      view_group: "Tig leat an t-iarratas a cheadú nó diúltú dó anseo"
+      view_group: Tig leat an t-iarratas a cheadú nó diúltú dó anseo
     proposal_closed:
-      proposal_has_closed: 'Dúnadh an togra.'
+      proposal_has_closed: Dúnadh an togra.
       subject: "Togra dúnta - %{which}"
     proposal_closing_soon:
-      closes_on: "Dúnann sé ar an"
-      closes_at: "Dúnann sé ag a"
-      closes_in: "Dúnann sé i gceann"
-      summary: "Achoimre"
+      closes_on: Dúnann sé ar an
+      closes_at: Dúnann sé ag a
+      closes_in: Dúnann sé i gceann
+      summary: Achoimre
     thread_mailer:
       new_motion: "Mhol %{who}:"
       proposal_closed: "Tá an togra dúnta:"
     verification:
       header: "Tá beagnach críochnaithe agat!"
-  about_loomio: "Maidir le Loomio"
+  about_loomio: Maidir le Loomio
   ago: "%{quantity_of_time} ó shin"
-  approve: "Ceadaigh"
-  author: "Údar"
-  back: "Siar"
-  cancel: "Cealaigh"
-  change: "Athraigh"
+  approve: Ceadaigh
+  author: Údar
+  back: Siar
+  cancel: Cealaigh
+  change: Athraigh
   change_language: "Brúigh anseo chun feidhm a bhaint as Loomio in %{language}"
-  changing: "Ag athrú"
-  click_here: "Brúigh anseo"
-  close: "Dún"
-  closing: "Ag dúnadh"
-  closed: "Dúnta"
-  decisions: "Cinntí"
-  delete: "Scrios"
-  details: "Sonraí"
-  discussions: "Pléití"
-  edit: "Cuir in eagar é"
-  email_address: "Seoladh ríomhphoist"
-  enable: "Cumasaigh"
-  disable: "Díchumasaigh"
-  group: "Baicle"
-  home: "Baile"
-  loading: "Ag luchtú..."
-  message: "Teachtaireacht"
-  name: "Ainm"
-  new_activity: "Gníomhaíocht nua"
-  next: "Ar aghaidh"
-  other: "Eile"
-  outcome: "Toradh"
-  password: "Focal faire"
-  leave_this_field_blank: "fág an réimse seo bán"
-  photo: 'Grianghraf'
-  prev: "Roimhe"
-  more: "Tuilleadh..."
+  changing: Ag athrú
+  click_here: Brúigh anseo
+  close: Dún
+  closing: Ag dúnadh
+  closed: Dúnta
+  decisions: Cinntí
+  delete: Scrios
+  details: Sonraí
+  discussions: Pléití
+  edit: Cuir in eagar é
+  email_address: Seoladh ríomhphoist
+  enable: Cumasaigh
+  disable: Díchumasaigh
+  group: Baicle
+  home: Baile
+  loading: Ag luchtú...
+  message: Teachtaireacht
+  name: Ainm
+  new_activity: Gníomhaíocht nua
+  next: Ar aghaidh
+  other: Eile
+  outcome: Toradh
+  password: Focal faire
+  leave_this_field_blank: fág an réimse seo bán
+  photo: Grianghraf
+  prev: Roimhe
+  more: Tuilleadh...
   translate: "Cabhraigh Loomio! a aistriú"
-  loading_translation: "Ag luchtú an aistriúcháin..."
+  loading_translation: Ag luchtú an aistriúcháin...
   translate_this_string: "Aistrigh chuig %{language}"
-  options: "Roghanna"
+  options: Roghanna
   ok_got_it: "Tuigim é!"
-  remove: "Bain é"
-  save: "Taisc"
-  saving: "Ag taisceadh"
-  sending: "Ag seoladh"
-  send_invite: "Seol cuireadh"
-  send_email: "Seol ríomhphost"
-  show_more: "Taispeáin Tuilleadh"
-  start_a_group: "Cuir baicle ar bun"
-  starting: "Ag tosú"
-  subject: "Ábhar"
+  remove: Bain é
+  save: Taisc
+  saving: Ag taisceadh
+  sending: Ag seoladh
+  send_invite: Seol cuireadh
+  send_email: Seol ríomhphost
+  show_more: Taispeáin Tuilleadh
+  start_a_group: Cuir baicle ar bun
+  starting: Ag tosú
+  subject: Ábhar
   thanks: "Go raibh maith agat!"
-  update: "Nuashonraigh é"
-  facebook: "Facebook"
-  google: "Google"
+  update: Nuashonraigh é
+  facebook: Facebook
+  google: Google
   common:
     unread: Neamhléite
-    filter: 'Scagaire:'
+    filter: "Scagaire:"
     edited: Curtha in eagar
-    groups: "Baiclí"
+    groups: Baiclí
     today: Inniu
     months:
       january: Eanáir
@@ -520,24 +518,24 @@ ga-IE:
       fr: Ao
       sa: Sa
       su: Do
-    please_wait: "Fan le do thoil"
-    private: "Príobháideach"
-    public: "Poiblí"
+    please_wait: Fan le do thoil
+    private: Príobháideach
+    public: Poiblí
     start_group: "Cuir baicle ar bun!"
   group_categories:
-    all: "Uile"
-    blank: "Gan aicmiú"
-    economics: "An geilleagar"
-    activist: "Gníomhaí"
-    arts: "Ealaíon"
-    business: "Gnó"
-    co_operative: "Comharchumann"
-    education: "Oideachas"
-    family: "Teaghlach"
-    local_government: "Rialtas áitiúil"
-    event: "Imeacht"
-    science: "Eolaíocht"
-    youth: "An tAos Óg"
-    women: "Mná"
-    media: "Na Meáin Chumarsáide"
-    health: "Sláinte"
+    all: Uile
+    blank: Gan aicmiú
+    economics: An geilleagar
+    activist: Gníomhaí
+    arts: Ealaíon
+    business: Gnó
+    co_operative: Comharchumann
+    education: Oideachas
+    family: Teaghlach
+    local_government: Rialtas áitiúil
+    event: Imeacht
+    science: Eolaíocht
+    youth: An tAos Óg
+    women: Mná
+    media: Na Meáin Chumarsáide
+    health: Sláinte
