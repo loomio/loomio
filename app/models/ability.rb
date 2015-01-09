@@ -156,7 +156,7 @@ class Ability
 
     can [:destroy,
          :move], Discussion do |discussion|
-      user_is_admin_of?(discussion.group_id)
+      user_is_author_of?(discussion) or user_is_admin_of?(discussion.group_id)
     end
 
     can :create, Discussion do |discussion|
