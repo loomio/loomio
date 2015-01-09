@@ -28,3 +28,7 @@ screenshots/
 /lineman/vendor/bower_components
 .powenv
 /lineman/app/css/modules.scss
+
+/lib/tasks/locales/node_modules
+/lib/tasks/locales/npm-debug.log
+
