@@ -72,5 +72,5 @@
           %input#group-members-can-vote{type: 'checkbox', ng_model: 'group.membersCanVote'}
           %span{translate: 'group_form.permissions.members_can_vote'}
 
-    %button.btn.btn-primary{type: 'submit', translate: 'group_form.new_group_submit', ng_show: 'group.isNew()'}
-    %button.btn.btn-primary{type: 'submit', translate: 'group_form.edit_group_submit', ng_hide: 'group.isNew()'}
+    %button.btn.btn-primary{type: 'submit', translate: 'group_form.new_group_submit', ng_show: 'group.isNew()', ng_disabled: 'isDisabled'}
+    %button.btn.btn-primary{type: 'submit', translate: 'group_form.edit_group_submit', ng_hide: 'group.isNew()', ng_disabled: 'isDisabled'}
