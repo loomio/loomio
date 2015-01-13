@@ -1,0 +1,144 @@
+ar:
+  frontpage: 100
+  main: 48
+an:
+  frontpage: 100
+  main: 99
+be_BY:
+  frontpage: 100
+  main: 98
+bg_BG:
+  frontpage: 18
+  main: 44
+ca:
+  frontpage: 81
+  main: 83
+cmn:
+  frontpage: 0
+  main: 31
+zh_TW:
+  frontpage: 100
+  main: 100
+hr:
+  frontpage: 100
+  main: 50
+cs:
+  frontpage: 100
+  main: 84
+da:
+  frontpage: 100
+  main: 99
+nl_NL:
+  frontpage: 100
+  main: 99
+eo:
+  frontpage: 100
+  main: 97
+fi:
+  frontpage: 0
+  main: 7
+fr:
+  frontpage: 100
+  main: 98
+gl:
+  frontpage: 6
+  main: 28
+de:
+  frontpage: 100
+  main: 99
+el:
+  frontpage: 100
+  main: 100
+he:
+  frontpage: 100
+  main: 71
+hu:
+  frontpage: 100
+  main: 99
+id:
+  frontpage: 51
+  main: 57
+ga_IE:
+  frontpage: 37
+  main: 48
+it:
+  frontpage: 100
+  main: 98
+it_CH:
+  frontpage: 0
+  main: 0
+ja:
+  frontpage: 62
+  main: 68
+km:
+  frontpage: 0
+  main: 52
+ko:
+  frontpage: 97
+  main: 61
+lv:
+  frontpage: 0
+  main: 0
+mk:
+  frontpage: 100
+  main: 58
+ml:
+  frontpage: 0
+  main: 56
+mi:
+  frontpage: 2
+  main: 0
+fa_IR:
+  frontpage: 100
+  main: 13
+pl:
+  frontpage: 100
+  main: 13
+pt_BR:
+  frontpage: 100
+  main: 100
+pt_PT:
+  frontpage: 25
+  main: 10
+ro:
+  frontpage: 100
+  main: 99
+ru:
+  frontpage: 100
+  main: 56
+sr:
+  frontpage: 100
+  main: 100
+sr_RS:
+  frontpage: 100
+  main: 100
+sk:
+  frontpage: 100
+  main: 100
+sl:
+  frontpage: 100
+  main: 21
+es:
+  frontpage: 100
+  main: 99
+sv:
+  frontpage: 97
+  main: 68
+te:
+  frontpage: 18
+  main: 28
+tr:
+  frontpage: 100
+  main: 100
+uk:
+  frontpage: 83
+  main: 64
+ur:
+  frontpage: 0
+  main: 0
+ur_PK:
+  frontpage: 0
+  main: 0
+vi:
+  frontpage: 0
+  main: 46
