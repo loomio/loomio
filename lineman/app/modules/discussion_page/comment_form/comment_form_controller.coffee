@@ -38,6 +38,6 @@ angular.module('loomioApp').controller 'CommentFormController', ($scope, Records
     $scope.expand()
 
   $scope.removeAttachment = (attachment) ->
-    AttachmentService.destroy attachment, ->
-      ids = $scope.comment.newAttachmentIds
-      ids.splice ids.indexOf(attachment.id), 1
+    ids = $scope.comment.newAttachmentIds
+    ids.splice ids.indexOf(attachment.id), 1
+    Records.attachments.destroy(attachment.id)

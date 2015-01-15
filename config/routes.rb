@@ -72,7 +72,7 @@ Loomio::Application.routes.draw do
     devise_scope :user do
       resources :sessions, only: [:create, :destroy]
     end
-    post '/attachments/credentials',     to: 'attachments#credentials'
+    get '/attachments/credentials',      to: 'attachments#credentials'
     get  '/contacts/import',             to: 'contacts#import'
     get  '/contacts/:importer/callback', to: 'contacts#callback'
   end
