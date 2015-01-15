@@ -5,3 +5,5 @@ angular.module('loomioApp').directive 'attachmentForm', ->
   replace: true
   controller: 'AttachmentFormController'
   link: (scope, element, attrs) ->
+    element.find('#comment-form-attachment-button').on 'click', ->
+      element.find('input[type="file"]').click()
