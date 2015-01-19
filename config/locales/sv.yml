@@ -4,7 +4,10 @@ sv:
       edit:
         title: E-postinställningar
         when_do_you_want_emails: "E-posta mig:"
+        email_missed_yesterday: "\"Igår på Loomio\" - en daglig summering av aktiviteter jag missat"
         email_when_mentioned: "När jag @nämnts"
+        email_followed_threads: När det är aktivitet i det trådar jag följer
+        email_when_proposal_closing_soon: 24 timmar innan dead-line för ett förslag.
         email_new_discussions_and_proposals: Nya diskussioner och förslag
         for_these_groups: "För dessa grupper:"
         submit: Spara inställningar
@@ -37,6 +40,7 @@ sv:
   devise:
     invitations:
       send_instructions: "En inbjudan har skickats till %{email}."
+      invitation_token_invalid: "Denna inbjudan är inte längre giltig!"
       updated: Konto skapat.
       no_invitations_remaining: Inga fler inbjudningar återstår.
     mailer:
@@ -69,6 +73,7 @@ sv:
     group_request_invalid_token: "Tyvärr! Detta är ingen giltig token"
     group_private_or_not_found: "Kunde inte hitta gruppen. \n\nDenna grupp kan vara sluten. Om du fick detta av någon per länk, be dem att bjuda in dig till gruppen."
     group_already_setup: Gruppen du försöker skapa finns redan.
+    passwords_did_not_match: Lösenordet matchar inte konfirmationen
     proposal_already_exists: Det finns redan ett öppet förslag för denna diskussionen.
     user_with_email_address_already_in_group: En användare med den emailadressen finns redan i denna gruppen.
     you_have_already_requested_membership: Du har redan begärt medlemskap i denna gruppen.
@@ -77,6 +82,7 @@ sv:
   alert:
     duplicate_email: "%{which_email} finns redan i gruppen."
   notice:
+    new_contacts_imported: "Det lyckades! Du kan skriva namn i fältet nedanför och vi kommer att föreslå e-mailadressen."
     admin_rights_removed: "%{which_user} koordinatorrättigheter har tagits bort."
     user_added: "%{user_email_or_name} har lagts till denna gruppen."
     new_user_added: "%{user_email_or_name} läggs till denna gruppen så fort de har skapat ett Loomiokonto."
@@ -89,7 +95,21 @@ sv:
     you_have_left_group: "Du har lämnat %{which_group}."
     comment_deleted: Kommentaren borttagen
     invitations:
+      auto_added:
+        one: 1 medlem tillagd
+        other: "%{count} medlemmar tillagda"
+      existing_member:
+        one: Medlemmen är redan med i gruppen
+        other: "%{count} medlemmar redan med i gruppen"
+      sent:
+        one: Inbjudan skickad
+        other: "%{count} inbjudan skickad"
       auto_added_and_sent: "%{auto_added_text} och %{sent_text}"
+  tooltip:
+    cover_photo_upload: Ladda upp nytt omslagsfoto
+    logo_upload: Ladda upp ny logga
+    edit_description: Lägg till beskrivning
+    group_category: Hitta flera liknande grupper
   views:
     pagination:
       previous: Tidigare
@@ -118,12 +138,16 @@ sv:
     motion_closed: "Förslaget är stängt. Om du vill, kan du ange ett resultat nedan och skicka till din grupp."
     motion_outcome_created: "Grattis, du har progress på ditt förslag och medlemmarna i din grupp har notifierats."
     motion_outcome_updated: Förslagets status har uppdaterats.
+    password_updated: Ditt lösenord är ändrat
     position_submitted: Ståndpunkt skickad
     position_updated: Ståndpunkten är uppdaterad.
     proposal_created: Förslaget är skapat.
     proposal_deleted: Förslaget är raderat.
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: En sekund
+        other: "%{count} sekunder"
       x_seconds:
         one: 1 sekund
         other: "%{count} sekunder"
@@ -156,6 +180,8 @@ sv:
         other: "%{count} år"
   organisation:
     name: Loomio
+  sr:
+    toggle_navigation: Byt navigation
   footer:
     about: Om
     blog: Blogga
@@ -164,11 +190,15 @@ sv:
     public_groups: Öppna grupper
     terms: Villkor
   inbox:
+    title: Inbox
     preferences: Inkorgsinställningar
+    what_you_have_not_read_yet: Här är all oläst aktivitet.
     dropdown-btn: Inbox
     empty: "Du är fullt uppdaterad! Det finns inga olästa nya kommentarer."
+    preferences_instructions_html: "<strong>Drag</strong> för att ändra ordning. <strong>Bocka av</strong> för att ta bort från inbox."
   notifications:
     header: Notifieringar
+    new_discussion: startade en diskusison
     new_motion: skapade ett förslag
     motion_closed:
       by_user: har stängt förslaget
@@ -190,6 +220,8 @@ sv:
   start_new_group_hint: För att börja fatta beslut
   find_a_group: Hitta en grupp
   find_a_group_hint: För att utforska öppna grupper
+  search_for_group: Leta efter en grupp...
+  no_groups_found: "Hittade ingen grupp med det namnet!"
   no_group_header: Välkommen till Loomio Beta
   empty_notifications: Du har inte fått några notifieringar ännu.
   see_all_notifications: Se alla notifieringar
@@ -211,15 +243,41 @@ sv:
     message: "<p>Detta är <strong>Gruppsidan</strong>. Till vänster finns en lista på gruppens alla diskussioner.</p><p>När du vill att gruppen ska diskutera ett annat ämne, starta en ny diskussion.</p>"
   dashboard_helper_text:
     header: Välkommen till din startsida
+    message: "<p>På hemsidan ser du alla nuvarande diskussioner i alla grupper du är medlem i.</p><p>Du kan börja en diskussion med ett nytt ämne genom att klicka på knappen \"Börja diskussion\".</p>"
   prompt_visitor_to_authenticate:
     header: Logga in eller gå med i gruppen för att delta
     body: "Om du är medlem i denna gruppen, behöver du logga in för att delta."
   prompt_user_to_join:
     header: Gå med i gruppen för att delta
     body: "För att lämna en kommentar eller rösta, behöver du vara medlem i denna gruppen."
+  user_profile:
+    back: Tillbaka till min profil
+    change_password: Byt lösenord
+    deactivate_account: Avaktivera kontot
+    about_deactivation: Vad innebär detta?
+    confirm_account_deactivation: Är du säker på att du vill avaktivera ditt konto?
+    reactivation_html: "Du måste <a href='%{link}'>kontakta oss</a> för att återaktivera ditt konto."
+    deactivation:
+      title: Avaktiverar ditt konto
+      query: Skulle du vilja berätta för oss varför du avaktiverar ditt konto?
+      only_coordinator: "En grupp måste ha minst en koordinatör. Du är för närvarande den enda koordinatören i följande grupper:"
+      instructions: "För att kunna avaktivera ditt konto måste du antingen lägga till en annan koordinatör eller ta bort grupperna. "
+      info_title: Vad innebär det att avaktivera ditt konto?
+      memberships: "Du kommer inte längre vara listad som medlem i någon av grupperna du tillhör. "
+      group_contributions: "Alla kommentarer och förslag du kommit med kommer att fortsätta synas, men vi tar bort ditt namn från dem. "
+      emails: "Vi komer att sluta skicka Loomio-relaterade mail. "
   group_form:
     name: Gruppnamn
+    description: Beskrivning
+    category: Kategori
+    confirm_all_discussions_will_be_made_private_message: "Om du fortsätter kommer alla öppna diskussioner att bli privata. "
+    confirm_all_discussions_will_be_made_public_message: "Är du säker? Om du fortsätter kommer alla privata diskussioner att bli öppna. "
+    what_can_members_do: Vad kan medlemmar göra?
     members_can:
+      add_members: Bjud in och godkänn nya medlemmar
+      edit_comments: Redigera deras kommentarer när som helst
+      edit_discussions: Redigera kontexten i någon av gruppens diskussioner
+      start_discussions: Påbörja diskussioner
       vote: Rösta på förslag
   group_permissions:
     c13: Rösta på förslag.

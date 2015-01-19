@@ -2,11 +2,11 @@ zh-TW:
   users:
     email_preferences:
       edit:
-        title: 電子郵件偏好設定
+        title: 電子郵件設定
         when_do_you_want_emails: 寄電子郵件給我：
-        email_missed_yesterday: 「昨日 Loomio」— 每日我錯過的動態摘要
-        email_when_mentioned: "當我被 @提到"
-        email_followed_threads: 當我跟隨的討論主題有新的動態。
+        email_missed_yesterday: 「昨天在Loomio上」— 每日我錯過的動態
+        email_when_mentioned: 當我被標記
+        email_followed_threads: 當我跟隨的討論主題有新動態。
         email_when_proposal_closing_soon: 24 小時前提議定案。
         email_new_discussions_and_proposals: 新的討論串與提案
         for_these_groups: 對於這些群組：
