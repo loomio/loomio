@@ -344,3 +344,107 @@ gl:
     proposal_closing_soon:
       summary: Resumo
   discussions: Debates
+  common:
+    settings: Configuración
+    dashboard: Panel de control
+    unread: Sin ler
+    filter: "Filtro:"
+    following: Seguindo
+    not_following: Non seguindo
+    back_to_discussion: Voltar á discusión
+    edited: Editado
+    groups: Grupos
+    select_error: "Seleccione unha opción, por favor"
+    today: Hoxe
+    select: "Seleccione, por favor"
+    months:
+      january: Xaneiro
+      february: Febreiro
+      march: Marzo
+      april: Abril
+      may: Maio
+      june: Xuño
+      july: Xullo
+      august: Agosto
+      september: Septembro
+      october: Outubro
+      november: Novembro
+      december: Decembro
+    abbr_months:
+      jan: Xan
+      feb: Feb
+      mar: Mar
+      apr: Abr
+      may: Mai
+      jun: Xuñ
+      jul: Xul
+      aug: Ago
+      sep: Set
+      oct: Out
+      nov: Nov
+      dec: Dec
+    days:
+      monday: Luns
+      tuesday: Martes
+      wednesday: Mércores
+      thursday: Xoves
+      friday: Venres
+      saturday: Sábado
+      sunday: Domingo
+    abbr_days:
+      mon: Lun
+      tue: Mar
+      wed: Mer
+      thu: Xov
+      fri: Ven
+      sat: Sab
+      sun: Dom
+    tiny_days:
+      mo: Lu
+      tu: Ma
+      we: Me
+      th: Xo
+      fr: Ve
+      sa: Sa
+      su: Do
+    meridians:
+      am: am
+      pm: pm
+    please_wait: "Agarde, por favor"
+    privacy: Privacidade
+    private: Privado
+    permissions: Permisos
+    public: Público
+    email: Correo Electrónico
+    start_group: "Comezar Grupo!"
+  group_categories:
+    all: Todo
+    blank: Sen Categoría
+    economics: Económicas
+    activist: Activista
+    arts: Arte
+    business: Negocio
+    collective: Colectivo
+    community_group: Comunidade
+    co_operative: Cooperativo
+    democratic_organisation: Organización Democrática
+    education: Educación
+    environmental_group: Grupo Ecolóxico
+    family: Familia
+    local_government: Goberno Local
+    online_community: Comunidade En Liña
+    religious_group: Relixioso/Espiritual
+    event: Evento
+    open_source_software: Aplicación de Código Aberto
+    political_initiative: Iniciativa Política
+    social_enterprise: Empresa pública
+    social_justice: Xustiza pública
+    advocacy_group: "Grupo de Abogad@s"
+    science: Ciencia
+    technology: Tecnoloxía
+    sports: Deportes
+    youth: Xuventude
+    women: Mulleres
+    media: Multimedia
+    health: Saúde
+  start_your_group: Comeza un grupo
