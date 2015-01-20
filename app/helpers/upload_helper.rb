@@ -14,7 +14,7 @@ module UploadHelper
         id: "fileupload",
         aws_access_key_id:     Rails.application.secrets.aws_access_key_id,
         aws_secret_access_key: Rails.application.secrets.aws_secret_access_key,
-        bucket:                Rails.application.secrets.aws_attachments_bucket,
+        bucket:                Rails.application.secrets.aws_bucket,
         acl: "public-read",
         expiration: 10.hours.from_now.utc,
         max_file_size: 100.megabytes,
