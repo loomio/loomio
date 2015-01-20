@@ -1,64 +1,64 @@
 fr:
   frontpage:
-    view_this_in_your_language: 'Voir ce site en %{language}'
+    view_this_in_your_language: "Voir ce site en %{language}"
     title:
       collaborative_decision_making: Prise de décision collaborative
     link:
-      blog: 'Blog'
-      contact: 'Contact'
-      donate: 'Donner aujourd''hui'
-      press: 'Presse'
-      try_it: 'Essayez'
-      log_in: 'SE CONNECTER'
-      video: "Apprenez-en plus sur le fonctionnement de Loomio"
-      try_loomio_beta: 'Essayez Loomio Beta'
-      check_out_loomio_beta: 'Jetez un œil à Loomio Beta'
-      more: 'Plus'
-      top: 'Haut'
-      public_groups: 'Groupes publiques'
-      terms: 'Termes'
-      privacy: 'Vie privée'
-      services: 'Services'
+      blog: Blog
+      contact: Contact
+      donate: "Donner aujourd'hui"
+      press: Presse
+      try_it: Essayez
+      log_in: SE CONNECTER
+      video: Apprenez-en plus sur le fonctionnement de Loomio
+      try_loomio_beta: Essayez Loomio Beta
+      check_out_loomio_beta: Jetez un œil à Loomio Beta
+      more: Plus
+      top: Haut
+      public_groups: Groupes publiques
+      terms: Termes
+      privacy: Vie privée
+      services: Services
     hero:
-      head_html: 'Le monde a besoin d''un meilleur moyen de <strong>prendre des décisions ensemble</strong>.'
-      desc_html: 'Loomio est un logiciel libre et <a href="https://github.com/loomio/loomio">open source</a>  permettant à chacun, où qu''il se trouve, de participer aux décisions qui le concernent'
+      head_html: "Le monde a besoin d'un meilleur moyen de <strong>prendre des décisions ensemble</strong>."
+      desc_html: "Loomio est un logiciel libre et <a href=\"https://github.com/loomio/loomio\">open source</a>  permettant à chacun, où qu'il se trouve, de participer aux décisions qui le concernent"
     product:
-      header_html: 'Quand nous écoutons <strong>toutes les voix</strong>, nous prenons <strong>de meilleures décisions</strong>.'
+      header_html: "Quand nous écoutons <strong>toutes les voix</strong>, nous prenons <strong>de meilleures décisions</strong>."
       step1:
-        header: '1. Débattre'
-        desc: 'Lancez une discussion sur n’importe quel sujet, et invitez les bonnes personnes. Partagez divers points de vue et développez ensemble les idées.'
+        header: 1. Débattre
+        desc: "Lancez une discussion sur n’importe quel sujet, et invitez les bonnes personnes. Partagez divers points de vue et développez ensemble les idées."
       step2:
-        header: '2. Se mettre d''accord'
-        desc: 'Tout le monde peut proposer un plan d''action. Les gens peuvent se mettre d’accord, s’abstenir, exprimer un désaccord, voir poser un veto. Ainsi, vous pouvez savoir comment chacun se positionne et comprendre pourquoi.'
+        header: "2. Se mettre d'accord"
+        desc: "Tout le monde peut proposer un plan d'action. Les gens peuvent se mettre d’accord, s’abstenir, exprimer un désaccord, voir poser un veto. Ainsi, vous pouvez savoir comment chacun se positionne et comprendre pourquoi."
       step3:
-        header: '3. Décider ensemble'
-        desc: 'Détailler ensemble la proposition de sorte que cela fonctionne pour tout le monde. Chaque décision a une échéance claire, pour que vous obteniez toujours un résultat clair.'
+        header: 3. Décider ensemble
+        desc: "Détailler ensemble la proposition de sorte que cela fonctionne pour tout le monde. Chaque décision a une échéance claire, pour que vous obteniez toujours un résultat clair."
     crowdfunding:
-      header: 'Nous avons choisi le financement participatif – crowdfunding – afin que nous puissions finir de construire cette nouvelle plateforme et la donner au monde.'
+      header: Nous avons choisi le financement participatif – crowdfunding – afin que nous puissions finir de construire cette nouvelle plateforme et la donner au monde.
     prototype:
       header_html: "Nous avons déjà élaboré un prototype, et les personnes tout autour du monde l'utilise pour des choses fantastiques"
-      subhead_html: '<a href="%{try_loomio_link}">Essayez Loomio Beta</a> maintenant. Ou vous pouvez <a href="%{donate_link}">supporter le projet</a> pour aider à financer Loomio 1.0'
+      subhead_html: "<a href=\"%{try_loomio_link}\">Essayez Loomio Beta</a> maintenant. Ou vous pouvez <a href=\"%{donate_link}\">supporter le projet</a> pour aider à financer Loomio 1.0"
     mobile:
-      header_html: 'Loomio 1.0 fonctionnera avec n''importe quel machine, mais sera élaboré avec le meilleur des <strong>technologies mobiles libres.</strong>'
+      header_html: "Loomio 1.0 fonctionnera avec n'importe quel machine, mais sera élaboré avec le meilleur des <strong>technologies mobiles libres.</strong>"
     quote:
       header:
-        rushkoff_html: '«Loomio <strong> libère le potentiel d''internet </strong> pour favoriser l''émergence du consensus au lieu d''un débat polarisé.» <div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, auteur de <em>Present Shock</em></div>'
-        sifry_html: '«Loomio trouve le juste équilibre entre <strong>la voix de l''individu</strong> et <strong>la décision collective</strong>.» <div class="attributation">– Micah Sifry, éditeur, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
+        rushkoff_html: "«Loomio <strong> libère le potentiel d'internet </strong> pour favoriser l'émergence du consensus au lieu d'un débat polarisé.» <div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, auteur de <em>Present Shock</em></div>"
+        sifry_html: "«Loomio trouve le juste équilibre entre <strong>la voix de l'individu</strong> et <strong>la décision collective</strong>.» <div class=\"attributation\">– Micah Sifry, éditeur, <em><a href=\"http://techpresident.com\">TechPresident</a></em></div>"
     team:
-      header: 'À propos de Loomio'
-      desc: 'Nous sommes une petite équipe de développeurs open-source et de militants pour la justice sociale. Nous travaillons à Enspiral en Aotearoa, Nouvelle-Zélande, avec un vaste réseau d''amis, de soutiens et de conseillers partout dans le monde.'
+      header: À propos de Loomio
+      desc: "Nous sommes une petite équipe de développeurs open-source et de militants pour la justice sociale. Nous travaillons à Enspiral en Aotearoa, Nouvelle-Zélande, avec un vaste réseau d'amis, de soutiens et de conseillers partout dans le monde."
     ideals:
       community:
-        header: 'Coopérative communautaire'
-        desc: 'Loomio est construit par une coopérative appartenant à ses salariés. Nous sommes une entreprise sociale travaillant à maximiser le bénéfice social, pas le profit.'
+        header: Coopérative communautaire
+        desc: "Loomio est construit par une coopérative appartenant à ses salariés. Nous sommes une entreprise sociale travaillant à maximiser le bénéfice social, pas le profit."
       independent:
-        header: 'Indépendant et neutre'
-        desc: 'Nous maintenons un espace pour tout groupe qui souhaite se réunir, indépendamment de l''intérêt politique ou économique. Nous ne vendrons jamais vos données.'
+        header: Indépendant et neutre
+        desc: "Nous maintenons un espace pour tout groupe qui souhaite se réunir, indépendamment de l'intérêt politique ou économique. Nous ne vendrons jamais vos données."
       open:
-        header: 'Logiciel libre et ouvert'
-        desc: 'Le code de Loomio est une ressource publique que n''importe qui peut exécuter, lire, analyser, modifier et redistribuer.'
+        header: Logiciel libre et ouvert
+        desc: "Le code de Loomio est une ressource publique que n'importe qui peut exécuter, lire, analyser, modifier et redistribuer."
       gift:
-        header: 'Économie du don'
-        desc: 'Loomio est soutenu par ceux qui paient, selon leurs moyens. Cela permet à la plateforme de ne pas imposer de publicité et d''être accessible aux groupes sans moyens.'
+        header: Économie du don
+        desc: "Loomio est soutenu par ceux qui paient, selon leurs moyens. Cela permet à la plateforme de ne pas imposer de publicité et d'être accessible aux groupes sans moyens."
     vision:
-      header: 'Aidez-nous à faire de cette vision une réalité.'
+      header: Aidez-nous à faire de cette vision une réalité.
