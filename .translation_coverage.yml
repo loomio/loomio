@@ -47,7 +47,7 @@ ga_IE:
   main: 48
   frontpage: 37
 gl:
-  main: 38
+  main: 75
   frontpage: 51
 he:
   main: 71
@@ -56,7 +56,7 @@ hr:
   main: 50
   frontpage: 100
 hu:
-  main: 99
+  main: 100
   frontpage: 100
 id:
   main: 57
