@@ -98,9 +98,13 @@ gl:
       auto_added:
         one: Engadiuse 1 membro
         other: "Engadíronse %{count} membros"
+      existing_member:
+        one: 1 membro tamén no grupo
+        other: "%{count} membros tamén no grupo"
       sent:
         one: 1 invitación enviada
         other: "%{count} invitacións enviadas"
+      auto_added_and_sent: "%{auto_added_text} e %{sent_text}"
   tooltip:
     cover_photo_upload: Sube unha nova foto de portada
     logo_upload: Sube un novo logo
@@ -118,6 +122,8 @@ gl:
     position_not_submitted: A túa posición non puido ser enviada
     proposal_not_created: A proposta non puido ser creada
     user_already_admin: "%{which_user} xa é coordinador deste grupo."
+    user_already_member: "%{which_user} tamén é membro do grupo"
+    user_not_admin: "O sinto, %{which_user} debe ser coordinador/a do grupo para acceder a el."
   success:
     added_to_group: "Acabas de ser engadido a %{which_group}."
     close_date_changed: A data de peche foi cambiada de xeito correcto.
@@ -190,6 +196,7 @@ gl:
     what_you_have_not_read_yet: Aquí está a actividade que aínda non liches
     dropdown-btn: Caixa de entrada
     empty: "Estás ao día! Non hai comentarios que non viras."
+    preferences_instructions_html: "<strong>Arrastre os elementos</strong> para reordealos. <strong>Desmarque</strong> para borralos da entrada."
   notifications:
     header: Notificacións
     new_discussion: Comezar un debate
@@ -197,6 +204,7 @@ gl:
     motion_closed:
       by_user: Pechar unha proposta
       by_expiry: A proposta foi pechada
+    new_vote: "%{position} na proposta"
     new_comment: comentado no debate
     comment_liked: gustou do teu comentario no debate
     user_mentioned: Mencionaronte nun comentario en
@@ -236,6 +244,7 @@ gl:
     message: "<p>Esta é a <strong>páxina do grupo</strong>. Na esquerda está a lista de todos os debates neste grupo.</p><p>Se queres que o grupo debata outro asunto, inicia un novo debate.</p>"
   dashboard_helper_text:
     header: Benvido á túa páxina inicial
+    message: "<p>A páxina de inicio mostra todas as discusións dos grupos nos que és membro.</p><p>Podes comezar un debate nun novo tema pulsando o botón \"Comezar debate\".</p>"
   prompt_visitor_to_authenticate:
     header: Indentifícate ou entra nun grupo para participar
     body: "Se eres membro deste grupo, tes que acceder a túa conta para participar"
@@ -248,6 +257,7 @@ gl:
     deactivate_account: Elimina a túa conta
     about_deactivation: Que carallo significa isto?
     confirm_account_deactivation: Estás seguro de querer eliminar a túa conta?
+    reactivation_html: "Necesitarás <a href='%{link}'>contactarnos</a> para reactivar a conta."
     deactivation:
       title: Eliminando a túa conta
       query: Poderíasnos dicir por que estás a desactivar a túa conta?
@@ -255,16 +265,19 @@ gl:
       instructions: "Co fin de desactivar a túa conta, é preciso ou ben agregar outro coordinador ou desactivar os grupos."
       info_title: Que significa a desactivación da túa conta?
       memberships: Xa non serás listado como membro en calquera dos grupos aos que pertences na actualidade.
+      group_contributions: "Os comentarios, propostas e debates que fagas nos grupos permanecerán, pero borraremos o teu nome deles."
       emails: Deixaremos de mandarche correos relacionados con Loomio.
   group_form:
     name: Nome do grupo
     description: Descripción
     category: Categoría
     confirm_all_discussions_will_be_made_private_message: "Se continúas, as discusións públicas faranse privadas."
+    confirm_all_discussions_will_be_made_public_message: "Seguro? Se procede, os debates privados serán públicos."
     what_can_members_do: Que poden facer os membros?
     members_can:
       add_members: Invita e aproba novos membros
       edit_comments: Edita os seus comentarios en calquera momento
+      edit_discussions: Editar o contexto de calquer debate no grupo
       start_discussions: Comeza debates
       raise_motions: Facer propostas
       vote: Votar nas propostas
@@ -272,10 +285,20 @@ gl:
     motions_can_be_edited: Edita as propostas despois de que a votación comece
     visible_to:
       label: Quen pode atopar este grupo?
+      public_html: "Calquera <span>lista o grupo publicamente</span>"
+      parent_members_html: "Persoas en %{parent_group_name} <span> non aparecen para o público , pero son visibles para @s membr@s de %{parent_group_name} </span>"
+      members_html: "Só participantes <span> o grupo non se listará</span>"
     membership_granted_upon:
       label: Como fai a xente para entrar?
+      hidden_parent:
+        request_html: "Aberto <span>a membros de %{parent_group_name}</span>"
+        approval_html: "Por petición <span>para membros de %{parent_group_name}</span>"
+      request_html: "Aberto<span>calquea pode unirse ó grupo</span>"
+      approval_html: "Por petición <span>calquera pode pedir unirse</span>"
+      invitation_html: "Só por invitación <span>novos membros deben ser invitados</span>"
     parent_members_can_see_discussions:
       label: Privacidade do debate
+      "true": "Calquera en %{parent_group_name} pode ver os debates"
       "false": Tan só os membros poden ver os debates
     discussion_privacy_options:
       label: Quen pode ver o debate?
@@ -302,49 +325,411 @@ gl:
     c13: Votar en propostas.
     members_defaults: "Cos axustes por defecto, os membros poden:"
     m1: Elimina os seus propios comentarios
+    m3: "Editar o título e a descripción dos debater que empezaron, ata que alguén estableza a súa posición."
+    m4: "Editar a data de peche dos debates comezados, ata que se pechen"
+    m5: Editar o título e o contexto de calquera debate
+    m6: "Comezar un subgrupo, do cal faránse coa cordinación"
+    m7: Editar comentarios propios en calqueira momento
     m8: Fai propostas e participa nelas.
+    optional_restrictions: "Opcionalmente, a coordinación poderá restrinxir que membros poden facelo"
   discussion_privacy:
     public: O debate é público na web
     private: Este debate é privado para os membros do grupo
+  group_privacy:
+    visible_to:
+      public: Grupo público
+  setup_steps_title: "Próximos pasos:"
   setup_step_1: Bótalle un ollo ao debate de exemplo
   setup_step_2: Iniciar o teu primeiro debate
+  setup_step_3: Invitar xente ó teu grupo
+  invite_people: Invitar xente
+  no_invitations_button: Non quedan invitacións
+  number_pending: "%{pending} pendente"
+  and_number_pending: "e %{pending} pendente"
+  add_new_member: Engadir novo membro
+  remaining_invites_count: "%{count} invitacións pendentes"
+  subject_placeholder: Escriba o asunto
+  email_group_members: Enviar correo electrónico ós membros do grupo
+  edit_group_settings: Editar configuración do grupo
+  manage_members: Xestionar membros
+  leave_group: Deixar grupo
+  deactivate_group: Desactivar grupo
+  invited_users: Membros invitados
+  members: Membros
+  remove_coordinator: Eliminar coordinador/a
+  make_coordinator: Facer coordinador/a
+  membership_requests: Peticións de adhesión
+  previous_requests: Peticións anteriores
+  approved_by_person: "Aprobad@ por %{person}"
+  ignored_by_perosn: "Ignorad@ por %{person}"
+  join_group_btn: Unirse ó grupo
+  you_have_joined_group: "Únícheste a %{group_name}"
+  cancel_membership_request: Cancelar petición
+  ignore_request: Ignorar petición
+  ignore: ignorar
+  membership_requested: Admisión solicitada
+  request_membership: Solicitar admisión
+  ask_to_join_group: Pedir unirse ó grupo
+  subgroups: Subgrupos
+  create_a_subgroup: Crear un subgrupo
+  select_members_to_add: "Seleccionar membros para engadir a %{which_group}"
+  empty_parent_group: "Engada os membros ó grupo pai primeiro, por favor"
+  invite_members: Invitar membros
+  new_subgroup: Novo subgrupo
+  create_subgroup: Crear subgrupo
+  creating_subgroup: Creando subgrupo
+  hidden: Oculto
+  public: Público
+  new_group: Novo grupo
+  create_group: Crear grupo
+  creating_group: Creando grupo
+  edit_group: Editar Grupo
+  update_group: Actualizar grupo
+  updating_group: Actualizando grupo
   start_a_discussion: Comezar un debate
+  group_description: Descripción do grupo
+  edit_group_description: Editar a descripción do grupo
+  group_subscription: Suscripción do grupo
+  groups:
+    follow:
+      click_to_follow: Pinche para seguir o grupo
+      click_to_unfollow: Pinche para non seguir o grupo
+  group_request:
+    beta_request_header: Comezar un grupo en Loomio Beta
+    please_select_an_option: "Seleccione unha opción, por favor"
+    confirmation:
+      title: "Case estás! Comproba o teu correo electrónico."
   discussion_items:
     new_discussion: creou o debate
+    motion_closed:
+      by_expiry: Proposta pechada
     discussion_title_edited: cambiou o título do debate
     discussion_description_edited: cambiou a descripción do debate
+    motion_name_edited: editar título da proposta
+    motion_description_edited: editar a descripción da proposta
   discussion: Debate
+  current_decision: Decisión actual
+  previous_decisions: Decisións anteriores
+  see_previous_decisions: Ver decisións anteriores
+  see_more: Ver máis
+  create_new_proposal: Crear proposta
   empty_discussion_list: Todavía sen actividade neste debate.
+  discussion_context:
+    see_revision_history: Ver a revisión do histórico
+    see_history: Ver histórico
+    click_to_follow: Pinchar para seguir o fío
+    click_to_unfollow: Pinchar para deixar de seguir o fío
+  description_history:
+    header: Revisión do histórico
+    subheader: Versión
+    current: (actual)
+    restore: (Restaurar esta versión)
+    applying_changes: (Aplicando cambios...)
+    previous: Anterior
+    next: Seguinte
+  comment_form_placeholder: Dicir algo...
+  comment_form_submit_button: Facer comentario
+  liked_by: "Gusta ó %{who}"
+  delete_comment: Borrar comentario
+  markdown_settings_more_info: Máis información...
+  edit_discussion: Editar debate
   move_discussion: Mover debate
   delete_discussion: Eliminar debate
   confirm_delete_discussion: Estás seguro de querer eliminar este debate para sempre?
+  new_proposal: Nova proposta
+  edit_proposal: Editar proposta
+  close_proposal: Pechar proposta
+  change_proposal_close_date: Cambiar data de peche
+  proposal: Proposta
+  state_your_position: Mostra a túa postura
+  positions: Postura
+  yes_position: Estou de acordo
+  yes_details: Estou de acordo e quero que siga adiante
+  abstain_position: Abstéñome
+  abstain_details: Paréceme ben que o grupo decida por min
+  no_position: Estou en desacordo
+  no_details: Penso que o podemos facer mellor
+  block_position: O bloqueo
+  position_verbs:
+    "yes": De acordo
+    "no": En desacordo
+    abstain: Absterse
+    block: bloquear
+    past_tense:
+      "yes": De acordo
+      "no": En desacordo
+      abstain: Absterse
+      block: bloqueado
+  unable_to_vote:
+    permission_denied: Non tes permiso para votar esta moción
+    motion_closed: Esta moción xa está pechada
+  edit_comment:
+    comment_changes: Comentar trocos
+    edit_comment: Editar commentario
   help:
+    coordinating: Coordinando o teu grupo de Loomio
+    different_ways: Formas diferentes de empregar Loomio
+    getting_started: Comezando
     have_a_discussion: Ter un debate
     have_a_discussion_description: O asunto e calquera información relevante van no alto da páxina. Usa a caixa de comentario para dicir algo no debate.
+    help: Axuda
+    how_it_works: Como funciona
+    join_the_community: Unirse á comunidade
+    images_and_text_formatting: Formato de texto e imaxes
+    keep_up_to_date: Manter ó día
+    make_a_decision: Tomar unha decisión
     start_discussion: Comezar un debate aberto
+    video_id: "52025402"
+    video_tutorial: Videotutorial
   hint:
     discussion: Recomendacións para comezar un debate aberto
+    proposal: Trucos para escribir unha proposta clara
+    vote: Podes cambiar a proposta en calquera momento
+  pricing_page:
+    organisations: Organizacións
+    informal_groups: Grupos informais
+  contribution:
+    submit: Cooperar
+    thought_about_contributing: A túa oportunidade de cooperar
+    thank_you_title: "Grazas por cooperar con Loomio!"
+    making_a_donation: Facer doazón
+  new_password: Novo contrasinal
+  confirm_new_password: Confirmar contrasinal
+  change_your_password: Cambiar o contrasinal
+  change_my_password: Cambiar o meu contrasinal
+  send_password_reset: Envíeme instruccións de cambio de contrasinal
+  blank_details: (deixar en branco se non o queres cambiar)
+  password_confirmation: Confirmar contrasinal
+  current_password: Contrasinal actual
+  password_details: (necesitaos o contrasinal actual para confirmar os cambios)
+  confirm_password: Confirmar contrasinal
+  cancel_my_account: Cancelar a conta
+  remember_me: Lémbrame
+  signing_in: Firmando
+  or: ou
+  forgot_your_password: Esqueceches o contrasinal?
+  dont_have_an_account: Non tes conta?
+  create_one_now: Crear un agora
+  sign_up_via: Firma vía
+  or_fill_in_this_form: ou cubre neste formulario
+  confirm_your_details: Confirme os detalles
+  link_up_your_account: Enlace a súa conta
+  create_an_account_html: Crear unha conta Beta en Loomio
+  log_in: Iniciar sesión
+  join_group:
+    log_in: "Inicie sesión para unirse a %{group_name}"
+  start_group:
+    log_in: Inicie sesión para configurar o grupo
+    create_account: "Cree unha conta, por favor"
+  invitation:
+    by_email: Convidar por correo electrónico
+    subject: "Únete ó noso novo grupo de Loomio %{group}, por favor"
+    invite_people: Convidar xente ó teu grupo
+    invite_to_discussion: Convidar xente a este debate
+    select_members: "Engadir de %{group_name}"
+    body_editable_discussion: "Oes, ven e únite ó debate!\n"
+    message_body: Mensaxe de invitación
+    invitation_link: Enlace da invitación
+    discussion_link: "Participar no debate:"
+    link_help: "Pinche neste enlace para unirse a %{group} en Loomio"
+    pending_invitations: Invitacións pendentes
+    no_pending_invitations: Non hai invitacións pendentes.
   search:
     description: "Debaixo hai unha listaxe de debates e propostas que ten '%{query}' no seu título ou descripción."
+    header: "Resultados da búsqueda para '%{query}'"
+    placeholder: Buscar
+    empty_search: Búsqueda baldeira
   example_discussion:
     title: "Debate de exemplo: Benvida e introdución a Loomio"
     description: "Benvido a Loomio, unha nova ferramenta para a toma de decisións en grupo.\nParticipando nun asunto, debatendo varias perspectivas e información, atallando cal-quera problema que apareza, o teu grupo pode pór os seus maxíns xuntos para atopar o mellor camiño a seguir.\nPodes usar este debate de exemplo para probar as capacidades da ferramenta.\nPara empezar a rodar, Loomio Helper Bot pensa que sería unha boa idea para o teu grupo que fixera unha excursión. O gráfico de tarta na dereita amosa como se sinte o grupo xobre a proposta. Podes dicir o que pensas premendo un dos botóns de decisión de embaixo.\n"
   example_motion:
+    name: "Deberíamos ter unhas vacacións na lúa!"
     description: "Loomio Helper Bot está moi interesado en que o teu grupo invirta nunha viaxe á lúa. Semella que o queixo no espacio é delicioso. Pero as implicacións pola túa pegada de carbono son preocupantes.\nÉ unha boa idea? Loomio Helper Bot quere saber o que estás a pensar!\nSe andas seguro do teu posicionamento, fai click nunha das iconas de embaixo (pasa por enriba dos botóns de decisión para ver unha descripción do que veñen significando).\nPediráseche que fagas unha pequena declaración sobre a razón da túa decisión. Isto fai que sexa doado de ver un resumo do que cadaquén pensa e por que. Podes trocar de opinión e editar a túa decisión libremente ata que a proposta sexa pechada.\n"
+  contact_page:
+    contact_us: Contáctenos
+    labels:
+      name: O teu nome
+      email: A túa dirección de correo electrónico
+      message: A túa mensaxe
+      submit: Enviar mensaxe
+  discussion_form:
+    new:
+      header: Comezar debate
+      who: En que grupo che gustaría comezar o debate?
+    edit:
+      header: Editar debate
+    privacy:
+      will_be_public: Calquera pode ver o debate
+  motion_history:
+    title: Cambios da proposta
+  motion_form:
+    new:
+      header: Nova proposta
+      submit: Crear proposta
+    edit:
+      header: Editar proposta
+      submit: Actualizar proposta
+  vote_form:
+    header: Manifestar a túa posición
+    edit: Editar a túa posición
+    placeholder: Dar unha razón da túa decisión (opcional)
+    your_position: A túa posición
+    your_statement: Enviar declaración
+    submit: Enviar posición
+    update: Actualizar posición
+  new_user_form:
+    create_an_account: Crear conta
+  profile_form:
+    view: Ver perfíl
+    profile: Editar perfíl
+    picture: Imaxe
+    use_initials: Usar iniciais
+    use_uploaded: Usar imaxe subida
+    use_gravtar: Usar Gravatar
+    upload_new_image: Actualizar a imaxe
   group_setup:
+    set_up_your_group: Configura o teu grupo
+    desc_header: "Case estás!"
     desc_html: "Como coordinador de grupo, es o responsable de preparar e manter o teu grupo Loomio. Logo de seleccionar unhas opcións, podes ir ao teu novo grupo, comezar un debate ou dous, e enviar algunha invitación! <p>Cando penses nun xeito sinxelo de describir o teu grupo, pregúntache: Que queres que acaden xuntos? Que tipos de decisións tomaredes? Quen vai estar implicado?</p>"
+    submit: "Lévame ó meu grupo!"
+    payment_model:
+      header: "Loomio é para toda a xente!"
+      link: Atopar máis
+  simple_form:
+    "yes": Si
+    "no": Non
+    required:
+      text: requerido
+      mark: "*"
+    error_notification:
+      default_message: "Bótalle un ollo ós seguinte problemas, por favor:"
+    labels:
+      discussion:
+        title: Título
+        description: Contexto
+      membership_request:
+        introduction: Introdúcete
+      motion:
+        name: Título
+        description: Detalles
+        close_at_date: Pechando
+      user:
+        name: Nome completo
+        username: Usuario
+        email: Correo electrónico
+        password: Contrasinal
+        password_confirmation: Confirmar Contrasinal
+        language_preference: Lingua
+      group_request:
+        admin_name: Cal é o teu nome?
+        admin_email: Cal é a túa dirección de correo electrónico?
+        name: Cal é o nome do teu grupo?
+        description: "Se tes un intre, fálanos do teu grupo"
+        is_commercial: Onde pensas utilizar o Loomio?
+    placeholders:
+      user:
+        email: Correo electrónico
+        password: Contrasinal
   helpers:
     submit:
       discussion:
         create: Comezar debate
+        update: Actualizar debate
+      motion:
+        create: Comezar proposta
+      user:
+        create: Crear conta
+        update: Actualizar configuración
   email:
+    by_who: "por %{person}"
+    reply_to_this_discussion: Respostar a este debate
+    to_join_discussion:
+      message_intro: "%{who} dixo:"
+      link: Unirse ó debate
     view_discussion: Preme aquí para este debate
     daily_activity:
       subject: Loomio - Resumo das últimas 24 horas
     proposal_closing_soon:
       summary: Resumo
+    thread_mailer:
+      change_preferences: "Cambiar as preferencias de correo:"
+      new_motion: "%{who} propuxo:"
+      motion_closing_soon: "Propostas que vencen en 24 horas:"
+      proposal_closed: "Propostas pechadas:"
+      outcome_created: "%{who} propuxo dar por feita a proposta:"
+      you_agreed: "Ti %{past_tense_position}"
+    verification:
+      header: "Case está!"
+  about_loomio: Sobre Loomio
+  ago: "van %{quantity_of_time}"
+  approve: Dar o visto bo
+  author: Autor/a
+  back: Volver
+  cancel: Cancelar
+  change: Cmabiar
+  change_language: "Picha aquí para usar Loomio en %{language}"
+  changing: Cambiando
+  click_here: Pincha aquí
+  close: Pechar
+  closing: Pechando
+  closed: Pechado
+  coordinator: Coordinador/a
+  decisions: Decisións
+  delete: Borrar
+  details: Detalles
   discussions: Debates
+  edit: Editar
+  email_address: Dirección de correo electrónico
+  enable: Activado
+  participation: Participación
+  disable: Desactivado
+  group: Grupo
+  group_admin: Coordinador/a de Grupo
+  home: Inicio
+  id: id
+  like: Gústame
+  loading: Cargando...
+  message: Mensaxe
+  name: Nome
+  new_activity: Nova actividade
+  next: Seguinte
+  other: Outro
+  outcome: Resultado
+  password: Contrasinal
+  leave_this_field_blank: deixar en branco
+  photo: Foto
+  pricing: Custo
+  prev: Ant.
+  more: Máis...
+  translate: "Axudar a traducir Loomio!"
+  translate_field: Ver tradución
+  loading_translation: Cargando tradución...
+  translate_this_string: "Traducir ó %{language}"
+  failed_translation: Incapaz de completar a tradución
+  options: Opcións
+  rss_subscribe: Inscribirse ó fío
+  ok_got_it: "Ok, téñoo!"
+  remove: Borrar
+  save: Gardar
+  saving: Gardando
+  sending: Enviando
+  send_invite: Enviar convite
+  send_email: Enviar correo electrónico
+  show_more: Mostrar Máis
+  start_a_group: Comezar un grupo
+  starting: Comezando
+  subject: Tema
+  terms_of_service_html: "Pinchando %{button_text}, estás de acordo coas <a href='%{link_path}' target='_blank'>Condicións do Servizo de Loomio</a>"
+  thanks: "Grazas!"
+  unlike: Desgustar
+  time_until_close: "%{quantity_of_time} ata o peche"
+  update: Actualizar
+  facebook: Facebook
+  yahoo: Yahoo
+  google: Google
+  persona: Persoa
   common:
+    markdown_help_tooltip: Aprender o básico de formatear os textos con Markdown
     settings: Configuración
     dashboard: Panel de control
     unread: Sin ler

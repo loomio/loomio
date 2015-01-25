@@ -46,6 +46,8 @@ cs:
     mailer:
       invitation_instructions:
         subject: Někdo vás pozval do své Loomio skupiny
+    registrations:
+      sign_up: Vytvořit účet
   error:
     access_denied: K této akci nemáte oprávnění.
     cant_join_subgroup: "Nemůžete se přidat k podskupině, pokud nejste členem rodičovské skupiny."
@@ -839,6 +841,7 @@ cs:
     following: Sledované
     not_following: Nesledované
     back_to_discussion: Zpět do diskuze
+    edited: Upraveno
     groups: Skupiny
     select_error: "Prosím, vyberte jednu z možností"
     today: Dnes
