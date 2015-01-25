@@ -779,6 +779,7 @@ hu:
         close_at_date: Záródik
       user:
         name: Teljes név
+        username: Felhasználónév
         email: E-mail
         password: Jelszó
         password_confirmation: Jelszó megerősítése
@@ -1066,8 +1067,8 @@ hu:
     event: Esemény
     open_source_software: Nyílt forráskodú szoftwer
     political_initiative: Politikai kezdeményezés
-    social_enterprise: Közösségi vállalkozás
-    social_justice: Társadalmi igazság
+    social_enterprise: Társadalmi vállalkozás
+    social_justice: Társadalmi igazságosság
     advocacy_group: Érdekvédelmi csoport
     science: Tudomány
     technology: Technológia
