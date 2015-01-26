@@ -7,6 +7,7 @@ describe API::MembershipsController do
   let(:user_named_bang) { create :user, name: "Bang Whamfist" }
   let(:alien_named_biff) { create :user, name: "Biff Beef" }
   let(:group) { create :group }
+  let(:biggroup) { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:comment_params) {{
     body: 'Yo dawg those kittens be trippin for some dippin',
@@ -18,6 +19,11 @@ describe API::MembershipsController do
     group.admins << user
     group.users  << user_named_biff
     sign_in user
+
+    # group will be created with one member already, so by adding 1 admin
+    # and 4 others, we should end with 6.
+    biggroup.admins << user
+    biggroup.users << [another_user, user_named_biff, user_named_bang, alien_named_biff]
   end
 
   describe 'index' do 
@@ -31,6 +37,17 @@ describe API::MembershipsController do
         expect(users).to include user_named_biff.id
         expect(users).to_not include alien_named_biff.id
         expect(groups).to include group.id
+      end
+      it 'returns all members of a big group' do
+        get :index, group_id: biggroup.id, format: :json
+        json = JSON.parse(response.body)
+        puts json['users']
+        expect(json['users'].length).to eq 6
+      end
+      it 'limits members when limited' do
+        get :index, group_id: biggroup.id, limit: 2, format: :json
+        json = JSON.parse(response.body)
+        expect(json['users'].length).to eq 2
       end
     end
   end

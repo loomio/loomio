@@ -4,7 +4,9 @@ class API::MembershipsController < API::RestfulController
     @group = Group.find(params[:group_id])
     authorize! :show, @group
 
-    @memberships = Queries::VisibleMemberships.new(user: current_user, group: @group, limit: 5)
+    @memberships = Queries::VisibleMemberships.new(user: current_user,
+                                                   group: @group,
+                                                   limit: params[:limit] || 1000)
     respond_with_collection
   end
 
