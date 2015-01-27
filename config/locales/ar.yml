@@ -39,6 +39,8 @@ ar:
     mailer:
       invitation_instructions:
         subject: لقد تمت دعوتك للإنضمام إلى مجموعة على Loomio
+    registrations:
+      sign_up: أنشئ حسابا
   error:
     access_denied: ليس لديك صلاحية للقيام بذلك.
     cant_join_subgroup: لا يمكنك الانضمام إلى مجموعة فرعية إذا لم تكن عضوا في المجموعة الأم.
@@ -84,6 +86,13 @@ ar:
     settings_updated: تم تحديث إعداداتك.
     user_made_admin: "تم جعل %{which_user} منسقا."
     you_have_left_group: "لقد قمت بمغادرة %{which_group}."
+    comment_deleted: تم حذف التعليق.
+  tooltip:
+    logo_upload: تحميل شعار جديد
+  views:
+    pagination:
+      previous: السابق
+      next: التالي
   warning:
     cant_remove_last_admin: أنت آخر منسق في المجموعة ولا يمكن إزالتك.
     membership_request_already_ignored: تم تجاهل طلب العضوية بالفعل مسبقا.
@@ -102,6 +111,7 @@ ar:
     group_archived: تم أرشفة المجموعة بنجاح.
     group_created: تم إنشاء المجموعة بنجاح.
     members_added: تم إضافة الأعضاء للمجموعة.
+    password_updated: لقد تم تعديل كلمتك السرية بنجاح
     position_submitted: تم إرسال الموقف.
     position_updated: تم تحديث الموقف.
     proposal_created: تم إنشاء الإقتراح بنجاح.
@@ -122,6 +132,9 @@ ar:
         few: "%{count} ثوان"
         many: "%{count} ثوان"
         other: "%{count} ثوان"
+  footer:
+    about: حول
+    privacy: خصوصية
   notifications:
     header: التنبيهات
     motion_closed:
@@ -137,8 +150,10 @@ ar:
     motion_blocked: إعترض على الإقتراح
   edit_discussion_context: عدل سياق النقاش
   request_new_group: ابدأ مجموعة
+  no_group_header: مرحبا بك في لوميو التجريبية
   empty_notifications: ليس لديك أية تنبيهات بعد
   see_all_notifications: اعرض جميع التنبيهات
+  email_settings: إعدادت البريد الإلكتروني
   sign_out: تسجيل الخروج
   sign_in: تسجيل الدخول
   tagline: إنشاء عالم يكون فيه من السهل لأي كان المشاركة في قرارات تؤثر عليهم.
@@ -229,6 +244,7 @@ ar:
     m6: بدء مجموعة فرعية بحيث يصبحون منسقين فيها.
     m7: تحرير التعليقات الخاصة بهم في أي وقت.
     m8: طرح المقترحات والمشاركة بها.
+  setup_steps_title: "الخطوة التالية:"
   invite_people: قم بدعوة الناس
   edit_memberships: عدّل العضويات
   add_new_member: أضف عضوا جديدا
@@ -251,6 +267,7 @@ ar:
   membership_requests: طلبات الإنضمام
   confirm_approve_membership_request: "هل أنت متأكد من أنك تريد إضافة %{which_user} إلى المجموعة؟"
   ignore_request: تجاهل الطلب
+  ignore: تجاهل
   confirm_ignore_membership_request: "هل أنت متأكد من أنك تريد تجاهل طلب الإنضمام من %{which_user}؟"
   membership_requested: تم طلب الإنضمام
   request_membership: قم بطلب الإنضمام
@@ -365,7 +382,16 @@ ar:
   unlock_not_received: لم تصلك تعليمات فتح القفل؟
   invitation:
     recipients: "يرجى إدخال عناوين بريد إلكتروني تفصل بينها فواصل:"
+  discussion_form:
+    edit:
+      header: تعديل المحادثة
   motion_form:
+    new:
+      header: اقتراح جديد
+      submit: أنشئ إقتراحا
+    edit:
+      header: تعديل الإقتراح
+      submit: تحديث الإقتراح
     name_helper: اجعل العنوان واضحا وموجزا قدر الإمكان.
   vote_form:
     header: قم بإبداء موقفك
@@ -387,8 +413,10 @@ ar:
         description: التفاصيل
       user:
         name: الإسم الكامل
+        username: إسم المستخدم
         email: البريد الإلكتروني
         password: كلمة السر
+        password_confirmation: تأكيد كلمة السر
         language_preference: اللغة
     placeholders:
       motion:
@@ -461,9 +489,12 @@ ar:
   group: المجموعة
   like: يعجبني
   loading: جار التحميل
+  name: الإسم
   new_activity: نشاط جديد
+  next: التالي
   outcome: النتيجة
   password: كلمة السر
+  photo: صورة
   options: الخيارات
   save: حفظ
   saving: جار الحفظ
@@ -488,6 +519,19 @@ ar:
       october: أكتوبر
       november: نوفمبر
       december: ديسمبر
+    abbr_months:
+      jan: يناير
+      feb: فبراير
+      mar: مارس
+      apr: أبريل
+      may: ماي
+      jun: يونيو
+      jul: يوليوز
+      aug: غشت
+      sep: شتنبر
+      oct: أكتوبر
+      nov: نونبر
+      dec: دجنبر
     days:
       monday: الإثنين
       tuesday: الثلاثاء
@@ -496,10 +540,20 @@ ar:
       friday: الجمعة
       saturday: السبت
       sunday: الأحد
+    abbr_days:
+      mon: الإثنين
+      tue: الثلاثاء
+      wed: الأربعاء
+      thu: الخميس
+      fri: الجمعة
+      sat: السبت
+      sun: الأحد
     please_wait: الرجاء الإنتظار
     privacy: الخصوصية
+    email: البريد الإلكتروني
     start_group: "ابدأ مجموعة!"
   group_categories:
+    all: الكل
     blank: غير مصنف
     economics: إقتصاد
     activist: نشاط ونضال

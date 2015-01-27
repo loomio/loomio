@@ -1,4 +1,18 @@
 sv:
+  users:
+    email_preferences:
+      edit:
+        title: E-postinställningar
+        when_do_you_want_emails: "E-posta mig:"
+        email_missed_yesterday: "\"Igår på Loomio\" - en daglig summering av aktiviteter jag missat"
+        email_when_mentioned: "När jag @nämnts"
+        email_followed_threads: När det är aktivitet i det trådar jag följer
+        email_when_proposal_closing_soon: 24 timmar innan dead-line för ett förslag.
+        email_new_discussions_and_proposals: Nya diskussioner och förslag
+        for_these_groups: "För dessa grupper:"
+        submit: Spara inställningar
+  explore:
+    header: Utforska publika grupper
   try_it:
     header: Prova Loomio
     start_a_group: "Starta en grupp för att ta beslut tillsammans med dina medarbetare. "
@@ -26,11 +40,14 @@ sv:
   devise:
     invitations:
       send_instructions: "En inbjudan har skickats till %{email}."
+      invitation_token_invalid: "Denna inbjudan är inte längre giltig!"
       updated: Konto skapat.
       no_invitations_remaining: Inga fler inbjudningar återstår.
     mailer:
       invitation_instructions:
         subject: Någon har bjudit in dig till sin Loomiogrupp.
+    registrations:
+      sign_up: Skapa konto
   error:
     access_denied: Du saknar behörighet att göra detta.
     cant_join_subgroup: Du kan inte gå med i en undergrupp om du inte är medlem i huvudgruppen.
@@ -56,6 +73,7 @@ sv:
     group_request_invalid_token: "Tyvärr! Detta är ingen giltig token"
     group_private_or_not_found: "Kunde inte hitta gruppen. \n\nDenna grupp kan vara sluten. Om du fick detta av någon per länk, be dem att bjuda in dig till gruppen."
     group_already_setup: Gruppen du försöker skapa finns redan.
+    passwords_did_not_match: Lösenordet matchar inte konfirmationen
     proposal_already_exists: Det finns redan ett öppet förslag för denna diskussionen.
     user_with_email_address_already_in_group: En användare med den emailadressen finns redan i denna gruppen.
     you_have_already_requested_membership: Du har redan begärt medlemskap i denna gruppen.
@@ -64,6 +82,7 @@ sv:
   alert:
     duplicate_email: "%{which_email} finns redan i gruppen."
   notice:
+    new_contacts_imported: "Det lyckades! Du kan skriva namn i fältet nedanför och vi kommer att föreslå e-mailadressen."
     admin_rights_removed: "%{which_user} koordinatorrättigheter har tagits bort."
     user_added: "%{user_email_or_name} har lagts till denna gruppen."
     new_user_added: "%{user_email_or_name} läggs till denna gruppen så fort de har skapat ett Loomiokonto."
@@ -76,7 +95,21 @@ sv:
     you_have_left_group: "Du har lämnat %{which_group}."
     comment_deleted: Kommentaren borttagen
     invitations:
+      auto_added:
+        one: 1 medlem tillagd
+        other: "%{count} medlemmar tillagda"
+      existing_member:
+        one: Medlemmen är redan med i gruppen
+        other: "%{count} medlemmar redan med i gruppen"
+      sent:
+        one: Inbjudan skickad
+        other: "%{count} inbjudan skickad"
       auto_added_and_sent: "%{auto_added_text} och %{sent_text}"
+  tooltip:
+    cover_photo_upload: Ladda upp nytt omslagsfoto
+    logo_upload: Ladda upp ny logga
+    edit_description: Lägg till beskrivning
+    group_category: Hitta flera liknande grupper
   views:
     pagination:
       previous: Tidigare
@@ -105,12 +138,16 @@ sv:
     motion_closed: "Förslaget är stängt. Om du vill, kan du ange ett resultat nedan och skicka till din grupp."
     motion_outcome_created: "Grattis, du har progress på ditt förslag och medlemmarna i din grupp har notifierats."
     motion_outcome_updated: Förslagets status har uppdaterats.
+    password_updated: Ditt lösenord är ändrat
     position_submitted: Ståndpunkt skickad
     position_updated: Ståndpunkten är uppdaterad.
     proposal_created: Förslaget är skapat.
     proposal_deleted: Förslaget är raderat.
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: En sekund
+        other: "%{count} sekunder"
       x_seconds:
         one: 1 sekund
         other: "%{count} sekunder"
@@ -143,6 +180,8 @@ sv:
         other: "%{count} år"
   organisation:
     name: Loomio
+  sr:
+    toggle_navigation: Byt navigation
   footer:
     about: Om
     blog: Blogga
@@ -151,10 +190,16 @@ sv:
     public_groups: Öppna grupper
     terms: Villkor
   inbox:
+    title: Inbox
+    preferences: Inkorgsinställningar
+    what_you_have_not_read_yet: Här är all oläst aktivitet.
     dropdown-btn: Inbox
     empty: "Du är fullt uppdaterad! Det finns inga olästa nya kommentarer."
+    preferences_instructions_html: "<strong>Drag</strong> för att ändra ordning. <strong>Bocka av</strong> för att ta bort från inbox."
   notifications:
     header: Notifieringar
+    new_discussion: startade en diskusison
+    new_motion: skapade ett förslag
     motion_closed:
       by_user: har stängt förslaget
       by_expiry: Förslaget är stängt
@@ -175,6 +220,8 @@ sv:
   start_new_group_hint: För att börja fatta beslut
   find_a_group: Hitta en grupp
   find_a_group_hint: För att utforska öppna grupper
+  search_for_group: Leta efter en grupp...
+  no_groups_found: "Hittade ingen grupp med det namnet!"
   no_group_header: Välkommen till Loomio Beta
   empty_notifications: Du har inte fått några notifieringar ännu.
   see_all_notifications: Se alla notifieringar
@@ -196,12 +243,44 @@ sv:
     message: "<p>Detta är <strong>Gruppsidan</strong>. Till vänster finns en lista på gruppens alla diskussioner.</p><p>När du vill att gruppen ska diskutera ett annat ämne, starta en ny diskussion.</p>"
   dashboard_helper_text:
     header: Välkommen till din startsida
+    message: "<p>På hemsidan ser du alla nuvarande diskussioner i alla grupper du är medlem i.</p><p>Du kan börja en diskussion med ett nytt ämne genom att klicka på knappen \"Börja diskussion\".</p>"
   prompt_visitor_to_authenticate:
     header: Logga in eller gå med i gruppen för att delta
     body: "Om du är medlem i denna gruppen, behöver du logga in för att delta."
   prompt_user_to_join:
     header: Gå med i gruppen för att delta
     body: "För att lämna en kommentar eller rösta, behöver du vara medlem i denna gruppen."
+  user_profile:
+    back: Tillbaka till min profil
+    change_password: Byt lösenord
+    deactivate_account: Avaktivera kontot
+    about_deactivation: Vad innebär detta?
+    confirm_account_deactivation: Är du säker på att du vill avaktivera ditt konto?
+    reactivation_html: "Du måste <a href='%{link}'>kontakta oss</a> för att återaktivera ditt konto."
+    deactivation:
+      title: Avaktiverar ditt konto
+      query: Skulle du vilja berätta för oss varför du avaktiverar ditt konto?
+      only_coordinator: "En grupp måste ha minst en koordinatör. Du är för närvarande den enda koordinatören i följande grupper:"
+      instructions: "För att kunna avaktivera ditt konto måste du antingen lägga till en annan koordinatör eller ta bort grupperna. "
+      info_title: Vad innebär det att avaktivera ditt konto?
+      memberships: "Du kommer inte längre vara listad som medlem i någon av grupperna du tillhör. "
+      group_contributions: "Alla kommentarer och förslag du kommit med kommer att fortsätta synas, men vi tar bort ditt namn från dem. "
+      emails: "Vi komer att sluta skicka Loomio-relaterade mail. "
+  group_form:
+    name: Gruppnamn
+    description: Beskrivning
+    category: Kategori
+    confirm_all_discussions_will_be_made_private_message: "Om du fortsätter kommer alla öppna diskussioner att bli privata. "
+    confirm_all_discussions_will_be_made_public_message: "Är du säker? Om du fortsätter kommer alla privata diskussioner att bli öppna. "
+    what_can_members_do: Vad kan medlemmar göra?
+    members_can:
+      add_members: Bjud in och godkänn nya medlemmar
+      edit_comments: Redigera deras kommentarer när som helst
+      edit_discussions: Redigera kontexten i någon av gruppens diskussioner
+      start_discussions: Påbörja diskussioner
+      vote: Rösta på förslag
+  group_permissions:
+    c13: Rösta på förslag.
   setup_steps_title: "Nästa steg:"
   setup_step_1: Titta på diksussionsexemplet
   setup_step_2: Starta din första diskussion
@@ -214,12 +293,12 @@ sv:
   add_new_member: Lägg till ny medlem
   invite_members_to_group: "Bjud in medlemmar till %{which_group}"
   get_in_touch_link: få kontakt med
-  email_members_in_group: "Emaila medlemmarna i %{which_group}"
+  email_members_in_group: "E-posta medlemmarna i %{which_group}"
   subject_error: Ange ett ämne
   subject_placeholder: Skriv ett ämne
   message_error: Ange meddelande
   message_placeholder: "Skriv ett meddelande till medlemmarna i %{which_group}."
-  email_group_members: Emaila medlemmarna i gruppen
+  email_group_members: E-posta medlemmarna i gruppen
   edit_group_settings: Redigera gruppinställningarna
   leave_group: Lämna gruppen
   confirm_leave_hidden_group: "Är du säker på att du vill lämna %{which_group}? Du kommer även att tas bort från alla undergrupper."
@@ -287,11 +366,14 @@ sv:
     motion_outcome_updated: uppdaterade en ny status för förslaget
     discussion_title_edited: ändrade diskussionstiteln
     discussion_description_edited: ändrade diskussionsbeskrivningen
+    motion_name_edited: redigerade förslagets titel
+    motion_description_edited: redigerade förslagets beskrivning
   discussion: Diskussion
   current_decision: Nuvarande beslut
   previous_decisions: Tidigare beslut
   see_previous_decisions: Se tidigare beslut
   see_more: Läs mer
+  create_new_proposal: Skapa ett förslag
   empty_decision_list_html: "Är ni redo att fatta beslut? <br> Vem som helst kan starta ett förslag."
   empty_decision_index: Denna grupp har ännu inte fattat några beslut.
   empty_discussion_list: Det finns ännu inga aktiviteter i denna diskussionen.
@@ -322,6 +404,7 @@ sv:
   delete_discussion: Ta bort diskussionen
   confirm_delete_discussion: Är du säker på att du vill ta bort denna diskussionen permament?
   new_proposal: Nytt förslag
+  edit_proposal: Redigera förslag
   close_proposal: Stäng förslag
   confirm_close_proposal: Är du säker på att du vill stänga detta förslag?
   change_proposal_close_date: Ändra slutdatum
@@ -493,6 +576,7 @@ sv:
     name: "Vi borde åka på semester till månen!"
     description: "Loomios Hjälpbot tycker verkligen att din grupp borde åka till månen. Det sägs att rymdosten där är riktigt god. Men konsekvenserna för er klimatpåverkan är oroande. \nÄr detta en bra idé? Loomios Hjälpbot vill veta vad du tycker! \nOm du vet din ståndpunkt, klicka på någon av ikonerna nedan (hovra över beslutsknapparna för en beskrivning av vad var och en betyder). \nDu blir ombedd att göra ett kort uttalande om orsaken till ditt beslut. Detta gör det lätt att se en sammanfattning av vad alla tycker och varför. Du kan ångra dig eller ändra ditt beslut när som fram till att förslaget stängs.\n"
   contact_page:
+    contact_us: Kontakta oss
     labels:
       name: Ditt namn
       email: Din emailadress
@@ -595,7 +679,7 @@ sv:
     user_added_to_a_group:
       subject: "%{who} har lagt till dig i %{which_group}"
       content: "%{who} har lagt till dig i %{which_group} i Loomio. Klicka här för att gå till gruppen:"
-    unsubscribe: "Avregistrera dig eller ändra dina emailinställningar:"
+    unsubscribe: "Avregistrera dig eller ändra dina e-postinställningar:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> för att avregistrera eller ändra dina emailinställnignar."
     view_comment: Klicka här för att se kommentaren på Loomio
     view_discussion: Klicka här för att se denna diskussionen
@@ -626,6 +710,7 @@ sv:
     mentioned:
       subject: "%{who} nämnde dig i %{which}gruppen i Loomio"
     new_motion_created:
+      subject: "Förslag: %{proposal_title}"
       context: "%{author} skapade ett förslag i %{group_full_name}:"
     proposal_closed:
       specify_outcome_and_notify_group: "Skapa ett resultat och skicka det till din grupp!"
@@ -640,8 +725,12 @@ sv:
       closes_on: Stänger den
       closes_at: Stänger vid
       closes_in: Stänger om
+      subject: "Stänger inom 24 timmar: %{proposal_title}"
       headline: "%{author}s förslag i %{group} stänger snart:"
       summary: Sammanfattning
+    thread_mailer:
+      motion_closing_soon: "Förslag som stänger inom 24 timmar:"
+      proposal_closed: "Förslag som är stängt:"
     verification:
       header: "Du är nästan klar!"
       intro: "Klicka på denna verifieringslänk för att slutföra din begäran:"
@@ -673,7 +762,7 @@ sv:
   group_admin: Gruppkoordinator
   home: Startsida
   id: id
-  like: Gillar
+  like: Gilla
   loading: Laddar...
   message: Meddelande
   name: Namn
@@ -706,11 +795,17 @@ sv:
   subject: Ämne
   terms_of_service_html: "Genom att klicka på %{button_text}, godkänner du Loomios <a href='%{link_path}' target='_blank'>användarvillkor</a>"
   thanks: "Tack!"
-  unlike: Skild från
+  unlike: Sluta gilla
   time_until_close: "%{quantity_of_time} återstår till stängning"
   update: Uppdatera
   facebook: Facebook
   google: Google
   persona: Persona
   common:
+    following: Följer
+    not_following: Följer inte
+    edited: Redigerad
+    groups: Grupper
     email: Email
+    start_group: "Starta en grupp!"
+  start_your_group: Starta din grupp

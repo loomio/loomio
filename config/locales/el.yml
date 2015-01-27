@@ -779,6 +779,7 @@ el:
         close_at_date: Κλείνει
       user:
         name: Πλήρες Όνοματεπώνυμο
+        username: Όνομα χρήστη
         email: Ηλεκτρονική Διεύθυνση
         password: Κωδικός
         password_confirmation: Επιβεβαίωση κωδικού

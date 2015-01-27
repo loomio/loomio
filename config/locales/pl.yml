@@ -1,22 +1,85 @@
 pl:
+  users:
+    email_preferences:
+      edit:
+        title: Ustawienia poczty
+        when_do_you_want_emails: "Napisz do mnie:"
+        email_missed_yesterday: "'Wczoraj w Loomio' - dzienne podsumowanie aktywności które Ci umknęły"
+        email_when_mentioned: Kiedy mnie cytowano
+        email_followed_threads: "Kiedy znaleziono aktywności w wątkach, które śledzę."
+        email_when_proposal_closing_soon: 24 godziny przed zamknięciem propozycji.
+        email_new_discussions_and_proposals: Nowe dyskusje i propozycje
+        for_these_groups: "Dla poniższych grup:"
+        submit: Zapis ustawień
+  explore:
+    header: Przegląd grup publicznych
+  try_it:
+    header: Wypróbuj Loomio
+    start_a_group: Utwórz grupę dla podejmowania decyzji w Twojej społeczności.
+    join_the_community: Dołącz do grupy Społeczność Loomio
+    loomio_community_info: Tutaj dyskutujemy i podejmujemy decyzję o Loomio.
+    explore_groups: Przegląd innych grup na Loomio
+    explore_groups_info: "Sprawdź wszystkie fantastyczne grupy na Loomio i dołącz do nich!"
+  activerecord:
+    errors:
+      messages:
+        blank: nie może być puste
   errors:
     messages:
       email: Nieprawidłowy adres e-mail
+  attachment:
+    error:
+      too_large: "Plik, który probowałeś/aś załączyć jest większy niż 50MB, wybierz mniejszy plik."
+  devise:
+    invitations:
+      send_instructions: "Zaproszenie zostało wysłane do %{email}"
+      invitation_token_invalid: "To zaproszenie nie jest już aktualne!"
+      updated: Utworzono konto.
+      no_invitations_remaining: Brak innych zaproszeń
+    mailer:
+      invitation_instructions:
+        subject: Ktoś zaprosił Cię aby dołączyć do grupy na platformie Loomio
+    registrations:
+      sign_up: Utwórz konto
   error:
+    access_denied: Nie masz uprawnień aby to wykonać.
     cant_join_subgroup: Nie możesz dołączyć do podgrupy jeśli nie jesteś członkiem grupy.
     cant_modify_position: Ta propozycja jest zamknięta.
     cant_state_position: Ta propozycja jest zamknięta.
+    cant_view_member_profile: Nie możesz zobaczyć profili członków ponieważ nie jesteś w tej samej grupie.
+    contribution: Zaloguj  się aby brać udział.
     discussion_not_created: Dyskusja nie została utworzona.
+    discussion_not_moved: "Nie masz uprawnień aby przenieść tę dyskusję do %{destination_group.name}"
     group_not_archived: "Grupa nie może zostać zarchiwizowana. "
     invalid_close_date: "Nieprawidłowa data zamknięcia, sprawdź czy termin nie upłynął."
+    invalid_email: Wpisz conajmniej jeden poprawny adres e-mail
     image_upload_fail: "Nie można przesłać zdjęcie. Upewnij się, że obraz jest mniejszy niż 1 MB i że to plik .jpeg, .png, lub .gif."
+    motion_closing_inputs: Niepoprawna data zamknięcia.
+    motion_outcome_not_created: Nie można opublikować wpisu.
+    motion_outcome_not_updated: Nie można uaktualnić wpisu.
+    only_group_coordinator_destroy: "Nie możesz opuścić tej grupy ponieważ jesteś jedynym koordynatorem. Możesz wyłączyć Twoją grupę za pomocą opcji rozwijalnego menu lub <a href='%{add_coordinator}'>dodaj nowego koordynatora</a> do grupy."
+    only_group_coordinator_remove_admin: Grupa musi mieć koordynatora. Czy chcesz dodać innego koordynatora do grupy?
     permission_to_invite: "Nie masz uprawnień, żeby zapraszać członków."
     position_not_updated: Nie można zaktualizować stanowiska.
     settings_not_updated: Twoje ustawienia nie zostało zaktualizowane.
+    group_request_already_accepted: "Przepraszamy! To zaproszenie nie jest juz aktualne albo zostało już zaakceptowane."
+    group_request_invalid_token: "Przepraszamy! Ten token jest niepoprawny"
+    group_private_or_not_found: "Nie znaleziono grupy.\nTa grupa może być prywatna. Jeśli ktoś przekazał Ci ten link, poproś go o zaproszenie do grupy."
+    group_already_setup: Grupa o takiej nazwie już istnieje.
+    passwords_did_not_match: Hasła nie są takie same
+    proposal_already_exists: Dyskusja ma już otwartą propozycję.
+    user_with_email_address_already_in_group: Użytkownik z tym adresem e-mail należy już do tej grupy.
+    you_have_already_requested_membership: Wysłałeś/aś już prośbę o dostęp do tej grupy.
+    you_are_already_a_member_of_this_group: Jesteś już członkiem tej grupy.
+    not_found: "Nie znaleziono elementu. Możliwe, że został usunięty."
   alert:
-    duplicate_email: "%{which_email} is already in the group."
+    duplicate_email: "%{which_email} znajduje się już w grupie."
   notice:
+    admin_rights_removed: "Usunięto uprawnienia koordynatora dla %{which_user}."
+    user_added: "%{user_email_or_name} został dodany do grupy."
+    new_user_added: "%{user_email_or_name} zostanie dodany do grupy po utworzeniu konta w Loomio."
     member_removed: Członek usunięty.
+    membership_approved: Członkostwo zaakceptowane.
     membership_request_canceled: Prośba o członkostwo anulowana.
     membership_request_ignored: Prośba o członkostwo zignorowana.
     settings_updated: Twoje ustawienia zostały zaktualizowane.
@@ -164,6 +227,15 @@ pl:
     invitation:
       hi: "Witaj %{name},"
       thanks: "Dziękujemy!\nZespół Loomio\n"
+    proposal_closing_soon:
+      summary: Podsumowanie
+    thread_mailer:
+      footer_text: "Odpowiedz na tę wiadomość bezpośrednio lub zobacz ją na Loomio:"
+      reply_or_view_online_html: "Odpowiedz na tę wiadomość bezpośrednio albo  <a href='%{url}'>zobacz ją na Loomio</a>."
+      change_preferences: Zmiana ustawień poczty.
+      new_motion: "%{who} zaproponował/ła:"
+      motion_closing_soon: "Zamknięcie propozycji w ciągu 24 godzin:"
+      proposal_closed: "Propozycja zamknięta:"
   author: Autor
   decisions: Decyzje
   details: Szczegóły

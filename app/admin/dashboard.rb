@@ -63,11 +63,16 @@ ActiveAdmin.register_page "Dashboard" do
           div { link_to "Activity calculator for first 30 days", admin_stats_first_30_days_path(group_ids: '3,25') }
         end
       end
-      column do
-        panel "Monthly Active Users" do
-          div { print_active_users().html_safe }
-        end
-      end
+
+      # RDB: I've commented this line out because it makes /admin crash if your db is empty,
+      # and it means that /admin takes ages to load and/or times out
+      # I suggest putting it back in on its own view, like I have done with the stats_controller stuff
+
+      # column do
+      #   panel "Monthly Active Users" do
+      #     div { print_active_users().html_safe }
+      #   end
+      # end
       column do
         panel "Groups" do
           h1 { Group.count }
