@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Discussion do
   let(:discussion) { create :discussion }
 
+  it_behaves_like Searchable
 
   describe ".followers" do
     let(:follower) { FactoryGirl.create(:user) }
