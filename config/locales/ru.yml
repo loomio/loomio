@@ -242,6 +242,8 @@ ru:
     header: "Добро пожаловать!"
   prompt_visitor_to_authenticate:
     header: "Войдите, или вступите в группу для участия"
+  prompt_user_to_join:
+    header: Присоединитесь к группе
   user_profile:
     back: Вернуться к профилю
     change_password: Измените пароль
@@ -275,6 +277,8 @@ ru:
       request_html: "Открытая <span>любой может присоединиться</span>"
       approval_html: "По запросу <span>любой может запросить участие</span>"
       invitation_html: "По приглашениям <span>новые участники должны быть приглашены</span>"
+    parent_members_can_see_discussions:
+      "false": Только участники могут видеть обсуждения
   group_permissions:
     header: Разрешения
     c7: Добавлять/удалять координаторов.
@@ -372,10 +376,17 @@ ru:
   create_new_proposal: Создать предложение
   empty_decision_index: Эта группа пока не приняла никаких решений.
   empty_discussion_list: В этой дискуссии пока не было активности.
+  discussion_list:
+    clear_filters: "Сбросить фильтр: все обсуждения"
+    filter_unread:
+      enable: Показывать только непрочтенные
   discussion_context:
     see_revision_history: История
     see_history: История
+    click_to_follow: Отслеживать обсуждение
+    click_to_unfollow: Не отслеживать обсуждение
   description_history:
+    header: История
     subheader: Версия
     edited_by: "Редактировал примерно %{when} назад %{who}"
     current: (текущее)
@@ -405,7 +416,10 @@ ru:
   no_position: Я не соласен
   block_position: Я блокирую
   not_voted: "[Показать членов группы, которые ещё не определились]"
+  edit_comment:
+    edit_comment: Редактировать коментарий
   help:
+    getting_started: С чего начать
     help: Помощь
     how_it_works: Как это работает
   new_password: Новый пароль
@@ -417,11 +431,17 @@ ru:
   password_confirmation: Подтверждение пароля
   current_password: Действующий пароль
   password_details: "(нам нужен ваш действующий пароль для того, чтобы подтвердить произведённые изменения)"
+  confirm_password: Подтверждение пароля
+  cancel_my_account: Деактивировать учетную запись
   remember_me: Запомнить меня
   signing_in: Войти
+  or: или
   forgot_your_password: Забыли пароль?
   confirmation_not_received: Вы не получили инструкций пожтверждения?
   unlock_not_received: Не получили инструкций по разблокировке?
+  log_in: Войти
+  start_group:
+    create_account: Создайте учетную запись
   group_setup:
     set_up_your_group: Настройки вашей группы
   simple_form:
@@ -459,6 +479,8 @@ ru:
       new_motion: "%{who} предложил:"
       motion_closing_soon: "Предложение закроется через 24 часа:"
       proposal_closed: Предложение закрыто
+      outcome_created: "%{who} подвел итоги:"
+      you_agreed: "Вы %{past_tense_position}"
     verification:
       header: "Почти готово!"
   about_loomio: О Loomio
