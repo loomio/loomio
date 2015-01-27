@@ -9,6 +9,6 @@
         %h3{translate: "common.groups"}
       %li.selector-list-item.media{ng_repeat: 'group in availableGroups() | filter:query', class: 'is-subgroup-{{group.parentId != null}}'}
         %a.selector-list-item-link{href: '/g/{{group.key}}'}
-          .media-left
+          .media-left{ng-if: "!group.isSubgroup()"}
             %img.selector-list-item-group-logo{src: "{{group.logoUrl()}}"}
-          .selector-list-item-group-name.media-body {{group.fullName()}}
+          .selector-list-item-group-name.media-body {{group.name}}
