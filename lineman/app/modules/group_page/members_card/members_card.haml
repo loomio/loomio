@@ -10,7 +10,7 @@
 
   .group-member-list
     .group-member-list-item{ng-repeat: 'member in group.members()'}
-      .group-member-list-avatar.lg
+      .group-member-list-avatar.lg{data-username: '{{member.label}}' }
         %user_avatar{user: 'member'}
     .group-member-list-show-more.show-more.card-minor-action
       %a{href: '/g/{{group.key}}/memberships', translate: 'common.action.show_more'}
@@ -19,4 +19,4 @@
         .col-xs-12.col-sm-6
           %a.btn.btn-success.btn-block.btn-icon{href: '#', ng_click: 'openForm()'}
             %i.fa.fa-lg.fa-plus>
-            %span{translate: 'group_page.invite_people' }
+            %span.cuke-group-invite-people{translate: 'group_page.invite_people' }
