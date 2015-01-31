@@ -25,13 +25,20 @@ describe Events::MembershipRequested do
   end
 
   context "after event has been published" do
-    let(:admin) { double(:admin, email: 'hello@kitty.com', locale: 'en', name_and_email: 'Kitty <hello@kitty.com>') }
+    let(:admin) { mock_model(User, email: 'hello@kitty.com', locale: 'en',
+                             name_and_email: 'Kitty <hello@kitty.com>', is_admin: true) }
     let(:event) { Events::MembershipRequested.new(kind: "new_comment",
                                                      eventable: membership_request) }
     before {
       membership_request.stub(:group_admins) { double(active: [admin]) }
       User.stub(:find_by_email).and_return(admin)
+      GroupMailer.stub(:new_membership_request)
     }
+
+    it 'notifies the rest of the group' do
+      GroupMailer.should_receive(:new_membership_request).with(membership_request)
+      event.save
+    end
 
     it 'notifies group admins' do
       event.should_receive(:notify!).with(admin)

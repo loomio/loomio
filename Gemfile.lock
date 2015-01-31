@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: 3f916d6bee73393e379aa57aa4b46b0baf803b9e
+  revision: b3a9f4b3e4051447d011c59649a73f876989a199
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -27,37 +27,42 @@ GEM
   remote: http://rubygems.org/
   specs:
     CFPropertyList (2.3.0)
-    actionmailer (4.1.9)
-      actionpack (= 4.1.9)
-      actionview (= 4.1.9)
+    actionmailer (4.2.0)
+      actionpack (= 4.2.0)
+      actionview (= 4.2.0)
+      activejob (= 4.2.0)
       mail (~> 2.5, >= 2.5.4)
-    actionpack (4.1.9)
-      actionview (= 4.1.9)
-      activesupport (= 4.1.9)
-      rack (~> 1.5.2)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+    actionpack (4.2.0)
+      actionview (= 4.2.0)
+      activesupport (= 4.2.0)
+      rack (~> 1.6.0)
       rack-test (~> 0.6.2)
-    actionview (4.1.9)
-      activesupport (= 4.1.9)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.1)
+    actionview (4.2.0)
+      activesupport (= 4.2.0)
       builder (~> 3.1)
       erubis (~> 2.7.0)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.1)
     active_model_serializers (0.8.3)
       activemodel (>= 3.0)
-    activemodel (4.1.9)
-      activesupport (= 4.1.9)
+    activejob (4.2.0)
+      activesupport (= 4.2.0)
+      globalid (>= 0.3.0)
+    activemodel (4.2.0)
+      activesupport (= 4.2.0)
       builder (~> 3.1)
-    activerecord (4.1.9)
-      activemodel (= 4.1.9)
-      activesupport (= 4.1.9)
-      arel (~> 5.0.0)
-    activerecord-postgres-hstore (0.7.7)
-      activerecord (>= 3.1)
-      pg-hstore (>= 1.1.5)
-      rake
-    activesupport (4.1.9)
-      i18n (~> 0.6, >= 0.6.9)
+    activerecord (4.2.0)
+      activemodel (= 4.2.0)
+      activesupport (= 4.2.0)
+      arel (~> 6.0)
+    activesupport (4.2.0)
+      i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
-      thread_safe (~> 0.1)
+      thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.7)
     aggregate (0.2.2)
@@ -69,8 +74,8 @@ GEM
       nokogiri
     arbre (1.0.3)
       activesupport (>= 3.0.0)
-    arel (5.0.1.20140414130214)
-    autoprefixer-rails (5.1.5)
+    arel (6.0.0)
+    autoprefixer-rails (5.1.0)
       execjs
       json
     awesome_print (1.6.1)
@@ -118,7 +123,7 @@ GEM
       execjs
     coffee-script-source (1.9.0)
     cookiejar (0.3.2)
-    countries (0.9.3)
+    countries (0.10.0)
       currencies (~> 0.4.2)
     country_select (2.1.1)
       countries (>= 0.9.3, < 0.10.0)
@@ -289,6 +294,8 @@ GEM
       activerecord (>= 4.0.0)
     gherkin (2.12.2)
       multi_json (~> 1.3)
+    globalid (0.3.0)
+      activesupport (>= 4.1.0)
     gravtastic (3.2.6)
     gyoku (1.2.2)
       builder (>= 2.1.2)
@@ -358,6 +365,8 @@ GEM
       activesupport (>= 3.0)
       librato-rack (~> 0.4.2)
       railties (>= 3.0)
+    loofah (2.0.1)
+      nokogiri (>= 1.5.9)
     macaddr (1.7.1)
       systemu (~> 2.6.2)
     mail (2.6.3)
@@ -446,7 +455,7 @@ GEM
       rack (>= 1.1, < 2.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
-    rack (1.5.2)
+    rack (1.6.0)
     rack-canonical-host (0.1.0)
       addressable
       rack (~> 1.0)
@@ -455,24 +464,33 @@ GEM
     rack_session_access (0.1.1)
       builder (>= 2.0.0)
       rack (>= 1.0.0)
-    rails (4.1.9)
-      actionmailer (= 4.1.9)
-      actionpack (= 4.1.9)
-      actionview (= 4.1.9)
-      activemodel (= 4.1.9)
-      activerecord (= 4.1.9)
-      activesupport (= 4.1.9)
+    rails (4.2.0)
+      actionmailer (= 4.2.0)
+      actionpack (= 4.2.0)
+      actionview (= 4.2.0)
+      activejob (= 4.2.0)
+      activemodel (= 4.2.0)
+      activerecord (= 4.2.0)
+      activesupport (= 4.2.0)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.1.9)
-      sprockets-rails (~> 2.0)
+      railties (= 4.2.0)
+      sprockets-rails
+    rails-deprecated_sanitizer (1.0.3)
+      activesupport (>= 4.2.0.alpha)
+    rails-dom-testing (1.0.5)
+      activesupport (>= 4.2.0.beta, < 5.0)
+      nokogiri (~> 1.6.0)
+      rails-deprecated_sanitizer (>= 1.0.1)
+    rails-html-sanitizer (1.0.1)
+      loofah (~> 2.0)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
     rails_serve_static_assets (0.0.4)
     rails_stdout_logging (0.0.3)
-    railties (4.1.9)
-      actionpack (= 4.1.9)
-      activesupport (= 4.1.9)
+    railties (4.2.0)
+      actionpack (= 4.2.0)
+      activesupport (= 4.2.0)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
@@ -483,8 +501,8 @@ GEM
       i18n
       polyamorous (~> 1.1)
     redcarpet (3.1.2)
-    responders (1.1.2)
-      railties (>= 3.2, < 4.2)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     rinku (1.7.3)
     rmagick (2.13.4)
     roadie (3.0.3)
@@ -621,7 +639,6 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.8.1)
   activeadmin!
-  activerecord-postgres-hstore
   airbrake
   autoprefixer-rails
   awesome_print
@@ -688,11 +705,12 @@ DEPENDENCIES
   quiet_assets
   rack-canonical-host
   rack_session_access
-  rails (~> 4.1.8)
+  rails (~> 4.2.0)
   rails_12factor
   rails_serve_static_assets
   rake
   redcarpet (~> 3.1.2)
+  responders (~> 2.0)
   rinku
   rmagick (~> 2.13.3)
   roadie-rails (~> 1.0.2)
