@@ -1,6 +1,6 @@
 Loomio::Application.configure do
   config.cache_classes = true
-  config.serve_static_assets = true
+  config.serve_static_files = true
 
   # Log error messages when you accidentally call methods on nil
   config.whiny_nils = true
