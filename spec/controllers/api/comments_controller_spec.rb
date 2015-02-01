@@ -97,7 +97,7 @@ describe API::CommentsController do
         it "responds with validation errors when they exist" do
           comment_params[:body] = ''
           put :update, id: comment.id, comment: comment_params
-          expect(response.status).to eq 400
+          expect(response.status).to eq 422
 
           json = JSON.parse(response.body)
           expect(json['errors']['body']).to include 'Comment cannot be empty'
@@ -141,7 +141,7 @@ describe API::CommentsController do
           comment_params[:body] = ''
           post :create, comment: comment_params
           json = JSON.parse(response.body)
-          expect(response.status).to eq 400
+          expect(response.status).to eq 422
           expect(json['errors']['body']).to include 'Comment cannot be empty'
         end
       end

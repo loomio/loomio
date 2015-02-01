@@ -64,7 +64,7 @@ describe API::MotionsController do
         motion_params[:name] = ''
         put :update, id: motion.id, motion: motion_params, format: :json
         json = JSON.parse(response.body)
-        expect(response.status).to eq 400
+        expect(response.status).to eq 422
         expect(json['errors']['name']).to include 'can\'t be blank'
       end
     end
@@ -113,9 +113,9 @@ describe API::MotionsController do
 
       it "responds with validation errors when they exist" do
         motion_params[:name] = ''
-        post :create, motion: motion_params, format: :json
+        post :create, motion: motion_params
         json = JSON.parse(response.body)
-        expect(response.status).to eq 400
+        expect(response.status).to eq 422
         expect(json['errors']['name']).to include 'can\'t be blank'
       end
 
