@@ -117,7 +117,7 @@ describe API::VotesController do
         vote_params[:position] = ''
         post :create, vote: vote_params
         json = JSON.parse(response.body)
-        expect(response.status).to eq 400
+        expect(response.status).to eq 422
         expect(json['errors']['position']).to include 'can\'t be blank'
       end
 
