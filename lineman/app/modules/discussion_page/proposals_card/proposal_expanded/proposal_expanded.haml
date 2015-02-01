@@ -19,13 +19,15 @@
 
   %vote_form{proposal: 'proposal'}
 
-  .proposal-expanded-votes
-    %h4 Positions
-    .proposal-expanded-no-votes{ng-show: 'onlyVoterIsYou()', translate: 'proposal_expanded.only_voter_is_you'}
+  .proposal-expanded-votes-trigger{ng-show: 'showVoteToggle()', ng-click: 'applyVoteToggle()'}
+    %i.fa.fa-thumbs-up>
+    %span.action{translate: 'proposal_expanded.votes_count', translate-values: '{count: {{curatedVotes().length}} }'}
+  .proposal-expanded-no-votes{ng-show: 'onlyVoterIsYou()', translate: 'proposal_expanded.only_voter_is_you'}
+  .proposal-expanded-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_expanded.no_votes_yet'}
 
-    .proposal-expanded-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_expanded.no_votes_yet'}
+  .proposal-expanded-votes{ng-show: 'showVotes'}
+    %h4{translate: 'proposal_expanded.positions'}
 
-    -#.proposal-expanded-vote.media{ng_repeat: 'vote in curatedVotes()'}
     .proposal-expanded-vote.media{ng_repeat: 'vote in curatedVotes()'}
       .media-left
         .thread-event-vote-icon{class: 'thread-event-vote-icon-{{vote.position}}'}
