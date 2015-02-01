@@ -136,9 +136,11 @@ en:
     started_by: 'Started by <strong>{{name}}</strong>'
     no_votes_yet: 'Nobody has voted on this proposal yet.'
     only_voter_is_you: 'No other members have voted yet.'
+    positions: 'Positions'
     extend_proposal: 'Change closing time'
     edit_proposal: 'Edit proposal'
     close_proposal: 'Close proposal'
+    votes_count: '{{count}} other votes'
 
 
   proposal_position_yes: 'Agree'
