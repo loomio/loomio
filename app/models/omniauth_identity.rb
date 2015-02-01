@@ -14,6 +14,7 @@ class OmniauthIdentity < ActiveRecord::Base
     when 'facebook' then 'Facebook'
     when 'google' then 'Google'
     when 'browser_id' then 'Persona'
+    when 'twitter' then 'Twitter'
     else
       'Provider'
     end

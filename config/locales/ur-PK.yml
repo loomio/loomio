@@ -2,5 +2,5 @@ ur-PK:
   users:
     email_preferences:
       edit:
-        title: 'ایمیل ترجیحات'
-  google: "Google"
+        title: ایمیل ترجیحات
+  google: Google
