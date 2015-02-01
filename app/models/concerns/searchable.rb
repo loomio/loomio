@@ -12,7 +12,7 @@ module Searchable
     end
 
     def search_vector_class
-      @search_vector_class ||= "SearchVectors::#{to_s}".constantize
+      @search_vector_class ||= "SearchVector::#{to_s}".constantize
     end
   end
 

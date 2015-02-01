@@ -19,5 +19,9 @@ class AddSearchVectors < ActiveRecord::Migration
     execute("create index motion_search_vector_index on motion_search_vectors using gin(search_vector)")
     execute("create index comment_search_vector_index on comment_search_vectors using gin(search_vector)")
 
+    Discussion.rebuild_search_index!
+    Motion.rebuild_search_index!
+    Comment.rebuild_search_index!
+
   end
 end
