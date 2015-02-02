@@ -13,14 +13,14 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       enabled: true
       port: 3000
 
-  loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ng-annotate", "grunt-haml", 'grunt-sass', 'grunt-cucumber', 'grunt-contrib-copy', 'grunt-shell']
+  loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ng-annotate", "grunt-haml", 'grunt-sass', 'grunt-cucumber', 'grunt-contrib-copy', 'grunt-exec']
 
   removeTasks:
     common: ["handlebars", "jst", 'less', 'pages', 'concat_sourcemap', 'pages:dev']
 
   prependTasks:
     dist: ["ngAnnotate"]
-    common: ["haml", "ngtemplates", "shell:updateScss"]
+    common: ["haml", "ngtemplates", "exec:updateScss"]
 
   appendTasks:
     common: ["concat_sourcemap:css", "concat_sourcemap:app", "concat_sourcemap:vendor", "concat_sourcemap:spec"]
@@ -58,12 +58,10 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
           dest: 'dist/fonts'
         ]
 
-  shell:
+  exec:
     updateScss:
       command: 'ruby print_scss_includes.rb > modules.scss'
-      options:
-        execOptions:
-          cwd: 'app/css/'
+      cwd: 'app/css'
 
   sass:
     dist:
@@ -137,7 +135,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
 
     sass:
       files: ["<%= files.sass.vendor %>", "<%= files.sass.app %>"]
-      tasks: ["shell:updateScss", "sass", "concat_sourcemap:css"]
+      tasks: ["exec:updateScss", "sass", "concat_sourcemap:css"]
 
     webfonts:
       files: "<%= files.webfonts.vendor %>"

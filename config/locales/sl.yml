@@ -2,46 +2,95 @@ sl:
   users:
     email_preferences:
       edit:
-        title: 'E-poštne nastavitve'
-        email_missed_yesterday: "\"Včeraj na Loomio\" - dnevni povzetek vseh zamujenih dejavnosti"
+        title: Nastavitve prejemanja e-pošte
+        when_do_you_want_emails: "Obvesti me:"
+        email_missed_yesterday: Včeraj na Loomiu - dnevni povzetek vseh spregledanih dejavnosti
         email_when_mentioned: "Ko sem @omenjen"
-        email_followed_threads: "Ko je dejavnost v temi katero spremljam."
-        email_when_proposal_closing_soon: "24 ur predno se predlog zaključi."
-        email_new_discussions_and_proposals: 'Nove razprave in predlogi'
+        email_followed_threads: "Ob dejavnosti v temi, ki jo spremljam"
+        email_when_proposal_closing_soon: 24 ur pred zaprtjem predloga.
+        email_new_discussions_and_proposals: Nove razprave in predlogi
         for_these_groups: "Za te skupine:"
-        submit: "Shrani nastavitve"
+        submit: Shrani nastavitve
   explore:
-    header: "Razišči javne skupine"
+    header: Razišči javne skupine
   try_it:
-    start_a_group: "Ustvarite skupino in pričnite sprejemati odločitve v vaši skupnosti"
-    join_the_community: "Pridruži se skupini Loomio Skupnosti"
+    header: Preizkusi Loomio
+    start_a_group: Ustvarite skupino in pričnite sprejemati odločitve v vaši skupnosti.
+    join_the_community: Pridruži se skupini Loomio skupnosti.
+    loomio_community_info: Tu razpravljamo in se odločamo glede Loomia.
+    explore_groups: Razišči druge skupine na Loomiu.
+    explore_groups_info: "Razišči vse mega skupine in se jim pridruži!"
+  activerecord:
+    errors:
+      messages:
+        blank: polje ne sme ostati prazno
   errors:
     messages:
-      email: "Neveljaven email naslov"
+      email: Neveljaven naslov e-pošte
+  attachment:
+    error:
+      too_large: "Pripeti dokument je večji od 50 MB, izberite manjšega."
   devise:
     invitations:
-      send_instructions: 'Vabilo je bilo poslano na %{email}.'
+      send_instructions: "Vabilo je bilo poslano na %{email}."
+      invitation_token_invalid: "To vabilo ni več veljavno!"
+      updated: Račun je bil ustvarjen.
+      no_invitations_remaining: Na voljo nimate več vabil
+    mailer:
+      invitation_instructions:
+        subject: "Povabljeni ste bili, da se pridružite skupini na Loomiu"
+    registrations:
+      sign_up: Ustvari račun
   error:
-    access_denied: "Nimate dovoljenja za to."
+    access_denied: Nimate dovoljenja za to.
     cant_join_subgroup: "Ne morete se pridružiti podskupini, če niste član nadrejene skupine."
-    cant_modify_position: "Ta predlog je zaprt."
-    cant_state_position: "Ta predlog je zaprt."
-    cant_view_member_profile: "Nemorete si ogledati profila člana, ker niste v isti skupini."
-    discussion_not_created: "Razprave ni bilo mogoče ustvariti."
-    group_not_archived: "Skupine ni bilo mogoče arhivirati."
-    invalid_email: "Prosimo vnesite vsaj en veljaven email naslov"
-    permission_to_invite: "Nimate dovoljenja za vabljenje novih članov."
-    user_with_email_address_already_in_group: "Uporabnik s tem email naslovom že pripada tej skupini."
+    cant_modify_position: Ta predlog je zaprt.
+    cant_state_position: Ta predlog je zaprt.
+    cant_view_member_profile: "Ne morete si ogledati profila člana, ker niste v isti skupini."
+    contribution: "Da bi lahko prispevali, se morate prijaviti."
+    discussion_not_created: Razprave ni bilo mogoče ustvariti.
+    discussion_not_moved: "Nimate dovoljenja, da to razpravo premaknete v %{destination_group.name}"
+    group_not_archived: Skupine ni bilo mogoče arhivirati.
+    invalid_close_date: "Neveljaven končni datum, izberite datum, ki še ni minil."
+    invalid_email: Prosimo vnesite vsaj en veljaven naslov e-pošte
+    image_upload_fail: "Slike ni bilo mogoče naložiti. Preverite, če je slika manjša od 1 MB in v formatu .jpeg, .png ali .gif."
+    motion_closing_inputs: Neveljaven končni datum
+    motion_outcome_not_created: Izida ni mogoče objaviti.
+    motion_outcome_not_updated: Izida ni mogoče posodobiti.
+    only_group_coordinator_destroy: "Skupine ne morete zapustiti, ker ste edini koordinator. Skupino lahko deaktivirate z izbiro s spustnega menija ali <a href='%{add_coordinator}'>dodate novega koordinatorja</a> skupine."
+    only_group_coordinator_remove_admin: Skupina mora imeti koordinatorja. Želite skupini dodati še enega koordinatorja?
+    permission_to_invite: Nimate dovoljenja za vabljenje novih članov.
+    position_not_updated: Stališča ni bilo mogoče posodobiti.
+    settings_not_updated: Nastavitve niso bile posodobljene.
+    group_request_already_accepted: To vabilo žal ni več veljavno ali pa je že bilo sprejeto.
+    group_request_invalid_token: Podatki za dostop so neveljavni.
+    group_private_or_not_found: "Skupine ni bilo mogoče najti. \n\nMorda je zaprta. Če ste od nekoga prejeli povezavo, ga prosite, da vas povabi vanjo."
+    group_already_setup: "Skupina, ki jo želite ustvariti, že obstaja."
+    passwords_did_not_match: Geslo se ne ujema s potrditvijo.
+    proposal_already_exists: V tej razpravi je predlog že odprt.
+    user_with_email_address_already_in_group: Uporabnik s tem naslovom e-pošte je že član te skupine.
+    you_have_already_requested_membership: Za članstvo v tej skupini ste že zaprosili.
+    you_are_already_a_member_of_this_group: Tej skupini ste se že pridružili.
+    not_found: Članka ni bilo mogoče najti. Morda je bil izbrisan.
   alert:
     duplicate_email: "%{which_email} je že v skupini."
   notice:
-    membership_approved: "Članstvo odobreno."
-    membership_request_canceled: "Zahteva za članstvo je bila preklicana."
-    membership_request_ignored: "Zahteva za članstvo ni bila upoštevana."
+    new_contacts_imported: "Uspelo je! V polje spodaj lahko vtipkate imena in ponujeni vam bodo naslovi e-pošte."
+    admin_rights_removed: "Član/-ica z imenom %{which_user} nima več koordinatorskih pravic."
+    user_added: "%{user_email_or_name} je bil/-a dodan/-a v skupino."
+    new_user_added: "%{user_email_or_name} bo dodan/-a v skupino, ko ustvari svoj Loomio račun."
+    member_removed: Član/-ica je bil/-a odstranjen/-a.
+    membership_approved: Članstvo odobreno.
+    membership_request_canceled: Zahteva za članstvo je bila preklicana.
+    membership_request_ignored: Zahteva za članstvo ni bila upoštevana.
+    settings_updated: Vaše nastvitve so bile posodobljene.
+    user_made_admin: "%{which_user} je zdaj koordinator/-ka."
+    you_have_left_group: "Zapustili ste %{which_group}."
+    comment_deleted: Komentar izbrisan.
     invitations:
       auto_added:
-        one: "1 član dodan"
-        two: "2 člana dodana"
+        one: 1 član dodan
+        two: 2 člana dodana
         few: "%{count} člani dodani"
         other: "%{count} članov dodanih"
       existing_member:
@@ -49,12 +98,81 @@ sl:
         two: "%{count} člana sta že v skupini"
         few: "%{count} člani so že v skupini"
         other: "%{count} članov je že v skupini"
+      sent:
+        one: "%{count} poslano vabilo"
+        two: "%{count} poslani vabili"
+        few: "%{count} poslana vabila"
+        other: "%{count} poslanih vabil"
+      auto_added_and_sent: "%{auto_added_text} in %{sent_text}"
+  tooltip:
+    cover_photo_upload: Nalaganje nove naslovne slike
+    logo_upload: Nalaganje novega logotipa
+    edit_description: Urejanje opisa
+    group_category: Iskanje podobnih skupin
+  views:
+    pagination:
+      previous: Nazaj
+      next: Naprej
   warning:
-    membership_request_already_approved: "Zahteva za članstvo je bila že odobrena."
-    membership_request_already_ignored: "Zahteva za članstvo je bila že prezrta."
-    membership_request_already_canceled: "Zahteva za članstvo je bila že zavrnjena."
+    cant_remove_last_admin: "Ste zadnji koordinator, zato ne morete biti odstranjeni"
+    membership_request_already_approved: Zahteva za članstvo je bila že odobrena.
+    membership_request_already_ignored: Zahteva za članstvo je bila že prezrta.
+    membership_request_already_canceled: Zahteva za članstvo je bila že zavrnjena.
+    position_not_submitted: Vašega mnenja ni bilo mogoče dodati
+    proposal_not_created: Predloga ni bilo mogoče ustvariti
+    user_already_admin: "%{which_user} je že koordinator/-ka te skupine."
+    user_already_member: "%{which_user} je že član/-ica te skupine."
+    user_not_admin: "%{which_user} ni koordinator te skupine, zato nima dostopa do nje."
+  success:
+    added_to_group: "Dodani ste bili v %{which_group}."
+    close_date_changed: Končni datum je bil uspešno spremenjen.
+    discussion_created: Razprava je bila uspešno ustvarjena.
+    discussion_deleted: Razprava je bila uspešno zbrisana.
+    discussion_moved: "Razprava je bila uspešno premaknjena v %{group_name}"
+    group_archived: Skupina uspešno arhivirana.
+    group_created: Skupina uspešno ustvarjena.
+    members_added: Člani dodani v skupino.
+    membership_requested: "Zaprosili ste za članstvo v %{which_group}. Ob odobritvi zahteve boste obveščeni."
+    motion_closed: "Predlog zaprt. Če želite, lahko spodaj zabeležite izid in ga pošljete svoji skupini."
+    motion_outcome_created: "Izid predloga je bil ustvarjen, člani vaše skupine pa so bili o njem obveščeni."
+    motion_outcome_updated: Izid predloga je bil posodobljen.
+    password_updated: Vaše geslo je bilo uspešno spremenjeno.
+    position_submitted: Mnenje dodano
+    position_updated: Mnenje posodobljeno.
+    proposal_created: Predlog uspešno ustvarjen.
+    proposal_deleted: Predlog izbrisan.
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: "%{count} sekunda"
+        two: "%{count} sekundi"
+        few: "%{count} sekunde"
+        other: "%{count} sekund"
+      x_seconds:
+        one: "%{count} sekunda"
+        two: "%{count} sekundi"
+        few: "%{count} sekunde"
+        other: "%{count} sekund"
+      less_than_x_minutes:
+        one: "%{count} minuta"
+        two: "%{count} minuti"
+        few: "%{count} minute"
+        other: "%{count} minut"
+      x_minutes:
+        one: "%{count} minuta"
+        two: "%{count} minuti"
+        few: "%{count} minute"
+        other: "%{count} minut"
+      about_x_hours:
+        one: "%{count} ura"
+        two: "%{count} uri"
+        few: "%{count} ure"
+        other: "%{count} ur"
+      x_days:
+        one: "%{count} dan"
+        two: "%{count} dneva"
+        few: "%{count} dnevi"
+        other: "%{count} dni"
       about_x_months:
         one: "%{count} mesec"
         two: "%{count} meseca"
@@ -65,92 +183,117 @@ sl:
         two: "%{count} meseca"
         few: "%{count} meseci"
         other: "%{count} mesecev"
+      about_x_years:
+        one: "%{count} leto"
+        two: "%{count} leti"
+        few: "%{count} leta"
+        other: "%{count} let"
+      over_x_years:
+        one: "%{count} leto"
+        two: "%{count} leti"
+        few: "%{count} leta"
+        other: "%{count} let"
+      almost_x_years:
+        one: "%{count} leto"
+        two: "%{count} leti"
+        few: "%{count} leta"
+        other: "%{count} let"
+  organisation:
+    name: Loomio
+  sr:
+    toggle_navigation: Krmarjenje
   footer:
-    about: 'O nas'
-    contact: 'Kontakt'
-    privacy: 'Zasebnost'
-    public_groups: 'Javne skupine'
-    terms: 'Pogoji'
+    about: O nas
+    blog: Blog
+    contact: Kontakt
+    privacy: Zasebnost
+    public_groups: Javne skupine
+    terms: Pogoji
+  inbox:
+    clear: Počisti
+    title: Nabiralnik
+    preferences: Nastavitve nabiralnika
+    what_you_have_not_read_yet: Neprebrane dejavnosti
+    dropdown-btn: Nabiralnik
+    empty: "Nimate neprebranih komentarjev!"
+    preferences_instructions_html: "<strong>Povlecite predmete</strong>, da jih preuredite. <strong>Odstranite oznako</strong>, da jih izbrišete iz nabiralnika."
   notifications:
-    membership_requested: "zahteva članstvo v"
-  request_new_group: "Ustvari skupino"
-  start_new_group: "Ustvari novo skupino"
-  search_for_group: "Najdi skupino"
-  profile: "Profil"
-  email_settings: "Nastavitve e-pošte"
-  sign_out: "Odjava"
+    header: Obvestila
+    membership_requested: zahteva članstvo v
+  request_new_group: Ustvari skupino
+  start_new_group: Ustvari novo skupino
+  search_for_group: Najdi skupino
+  profile: Profil
+  email_settings: Nastavitve e-pošte
+  sign_out: Odjava
   user_profile:
-    back: "Nazaj na svoj profil"
-    reactivation_html: "Za ponovno aktiviranje svojega računa nas boste morali <a href='%{link}'>kontaktirati</a>."
+    back: Nazaj na moj profil
+    change_password: Sprememba gesla
+    deactivate_account: Deaktiviraj račun
+    about_deactivation: Kaj to pomeni?
+    confirm_account_deactivation: "Ali ste prepričani, da želite deaktivirati svoj račun?"
+    reactivation_html: "Za ponovno aktivacijo vašega računa nas <a href='%{link}'>kontaktirajte</a>."
   group_form:
     parent_members_can_see_discussions:
       label: Zasebnost razprave
   setup_steps_title: "Naslednji koraki:"
-  setup_step_1: "Oglejte si primer razprave"
-  setup_step_2: "Ustvarite svojo prvo razpravo"
-  setup_step_3: "Povabi osebe v svojo skupino"
-  invite_people: "Povabite ljudi"
-  edit_memberships: 'Urejanje članstev'
+  setup_step_1: Oglejte si primer razprave
+  setup_step_2: Ustvarite svojo prvo razpravo
+  setup_step_3: Povabi osebe v svojo skupino
+  invite_people: Povabite ljudi
+  edit_memberships: Urejanje članstev
   confirm_deactivate_group: "Pozor!!! Ali ste prepričani da želite deaktivirati %{which_group}? Skupine si ne boste mogli več ogledati. Vendar, če želite obnoviti skupino nas lahko prosite za vnovično aktivacijo tako, da nam pošljete e-sporočilo na contact@loomio.org."
-  members: "Člani"
+  members: Člani
   want_to_invite_html: "Ali želite <a href='%{link}'>povabiti ljudi</a> v to skupino?"
-  membership_requests: "Zahteve za članstvo"
-  subgroups: "Podskupine"
-  create_a_subgroup: "Ustvari podskupino"
-  invite_members: "Povabi člane"
-  new_subgroup: "Nova podskupina"
-  create_subgroup: "Ustvari podskupino"
-  creating_subgroup: "Ustvarjanje podskupine"
-  start_a_discussion: "Začni razpravo"
+  membership_requests: Zahteve za članstvo
+  subgroups: Podskupine
+  create_a_subgroup: Ustvari podskupino
+  invite_members: Povabi člane
+  new_subgroup: Nova podskupina
+  create_subgroup: Ustvari podskupino
+  creating_subgroup: Ustvarjanje podskupine
+  start_a_discussion: Začni razpravo
   group_request:
     confirmation:
-      body_html: |
-        Poslali smo vam e-sporočilo z vabilom k ustvarjanju svoje skupine.
-
-        Če ne vidite ničesar v vašem poštnem predalu v nekaj minutah, nam pišite na <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
-  previous_decisions: "Pretekle odločitve"
-  see_previous_decisions: "Oglej si pretekle odločitve"
+      body_html: "Poslali smo vam e-sporočilo z vabilom k ustvarjanju svoje skupine.\n\nČe ne vidite ničesar v vašem poštnem predalu v nekaj minutah, nam pišite na <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  previous_decisions: Pretekle odločitve
+  see_previous_decisions: Oglej si pretekle odločitve
   help:
-    help: "Pomoč"
-    keep_up_to_date_html: "<p>Klik na ime skupine na vrhu zaslona vas popelje na Stran Skupine,\nkjer lahko vidite seznam vseh razprav in odločitev za to skupino. Če\nste v več kot eni skupini, lahko vidite vso dejavnost v vseh vaših skupinah \nhkrati na Domači Strani.</p>\n\
-      <p>Prejeli boste e-sporočila, ko se pomembne reči dogajajo v vaši skupini.\nSvoje E-poštne nastavitve lahko spremeniš <a href=\"%{link}\"\">tu</a>.</p>\n"
+    help: Pomoč
+    keep_up_to_date_html: "<p>Klik na ime skupine na vrhu zaslona vas popelje na Stran Skupine,\nkjer lahko vidite seznam vseh razprav in odločitev za to skupino. Če\nste v več kot eni skupini, lahko vidite vso dejavnost v vseh vaših skupinah \nhkrati na Domači Strani.</p>\n<p>Prejeli boste e-sporočila, ko se pomembne reči dogajajo v vaši skupini.\nSvoje E-poštne nastavitve lahko spremeniš <a href=\"%{link}\"\">tu</a>.</p>\n"
   invitation:
-    invite_people: "Povabi osebe v svojo skupino"
-    invite_to_discussion: "Povabi osebe k tej razpravi"
+    invite_people: Povabi osebe v svojo skupino
+    invite_to_discussion: Povabi osebe k tej razpravi
   search:
     header: "Rezultati iskanja za \"%{query}\""
-    placeholder: "Išči"
-    please_enter_a_search: 'Prosimo vnesite poizvedbo v iskalno vrstico zgoraj'
+    placeholder: Išči
+    please_enter_a_search: Prosimo vnesite poizvedbo v iskalno vrstico zgoraj
   example_discussion:
     title: "Primer razprave: Pozdrav in predstavitev Loomia"
-    description: |
-      Dobrodošli v Loomio, novo orodje za skupinsko odločanje.
-      S sodelovanjem na temi, razpravljanjem o različnih perspektivah in informacijah ter obravnavanjem vprašanj, ki se porajajo, lahko vaša skupina strni svoje glave in najde najboljši način naprej.
-      Vzorčni primer razprave lahko uporabite za raziskovanje funkcij tega orodja.
-      Za začetek Loomio Asistent misli, da bi bila izvrstna ideja za vašo skupino, da greste skupaj na počitnice. Tortni diagram na desni prikazuje kaj vaša skupina meni o predlogu. Svoje mnenje lahko sporočite s klikom na enega od gumbov spodaj.
+    description: "Dobrodošli v Loomio, novo orodje za skupinsko odločanje.\nS sodelovanjem na temi, razpravljanjem o različnih perspektivah in informacijah ter obravnavanjem vprašanj, ki se porajajo, lahko vaša skupina strni svoje glave in najde najboljši način naprej.\nVzorčni primer razprave lahko uporabite za raziskovanje funkcij tega orodja.\nZa začetek Loomio Asistent misli, da bi bila izvrstna ideja za vašo skupino, da greste skupaj na počitnice. Tortni diagram na desni prikazuje kaj vaša skupina meni o predlogu. Svoje mnenje lahko sporočite s klikom na enega od gumbov spodaj.\n"
   contact_page:
-    contact_us: 'Kontakt'
+    contact_us: Kontakt
   profile_form:
-    view: "Ogled profila"
-    profile: "Urejanje profila"
+    view: Ogled profila
+    profile: Urejanje profila
   email:
     unsubscribe: "Odjavi se ali spremeni svoje E-poštne nastavitve:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavo ali spremembo svojih E-poštnih nastavitev."
     group_membership_approved:
-      subject: "Članstvo odobreno"
+      subject: Članstvo odobreno
     thread_mailer:
       change_email_preferences_html: "Spremeni svoje <a href='%{email_preferences_url}'>E-poštne nastavitve</a>za odjavo od Loomio sporočil."
       change_preferences: "Spremeni svoje E-poštne nastavitve:"
   ago: "pred %{quantity_of_time}"
   translate: "Pomagajte prevesti Loomio!"
-  options: "Možnosti"
+  options: Možnosti
   terms_of_service_html: "S klikom na %{button_text} soglašate s <a href='%{link_path}' target='_blank'>Pogoji storitve</a> Loomia"
   time_until_close: "%{quantity_of_time} do zaprtja"
   common:
     dashboard: Nadzorna plošča
     unread: Neprebrano
     following: Slediš
-    groups: "Skupine"
-    privacy: "Zasebnost"
+    groups: Skupine
+    privacy: Zasebnost
   group_categories:
-    community_group: "Skupina skupnosti"
+    community_group: Skupina skupnosti

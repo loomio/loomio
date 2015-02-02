@@ -442,6 +442,12 @@ body.discussions.show {
             position: relative;
             top: -12px;
             margin-bottom: -12px;
+          }
+          ul {
+            clear: left;
+            position: relative;
+            top: -12px;
+            margin-bottom: -12px;
         }}
         ol, p, ul {
           color: $text-black;

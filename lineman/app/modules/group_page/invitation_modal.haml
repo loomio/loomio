@@ -5,7 +5,7 @@
     .clearfix
   .modal-body
     %h4{translate: 'invitation.find_people'}
-    %input.form-control#invitable-email{type: 'email', ng-model: 'fragment', typeahead: 'invitable for invitable in getInvitables($viewValue)', typeahead-template-url: 'generated/templates/invitable_menu.html', typeahead-on-select: 'addInvitation($item)', typeahead-wait-ms: '300'}
+    %input.form-control#invitable-email{type: 'email', ng-model: 'fragment', typeahead: 'invitable for invitable in getInvitables($viewValue)', typeahead-template-url: 'generated/modules/group_page/invitable_menu.html', typeahead-on-select: 'addInvitation($item)', typeahead-wait-ms: '300'}
     .invitation-instructions{ng_hide: 'hasInvitations()'}
       {{ 'invitation.instructions' | translate }}
     .current-invitations{ng_show: 'hasInvitations()'}
@@ -17,5 +17,5 @@
       %textarea.form-control{ng-model: 'message'}
 
   .modal-footer
-    %button.btn.btn-primary{type: 'submit', translate: 'invitation.send_invite'}
+    %button.btn.btn-primary.cuke-group-invitation-submit{type: 'submit', translate: 'invitation.send_invite'}
     %button.btn.btn-warning{ng-click: 'cancel($event)', translate: 'common.action.cancel'}

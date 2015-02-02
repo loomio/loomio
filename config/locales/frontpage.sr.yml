@@ -1,64 +1,64 @@
 sr:
   frontpage:
-    view_this_in_your_language: 'Jezik %{language}'
+    view_this_in_your_language: "Jezik %{language}"
     title:
       collaborative_decision_making: Zajedničko Odlučivanje
     link:
-      blog: 'Blog'
-      contact: 'Kontakt'
-      donate: 'Doniraj danas'
-      press: 'Za Medije'
-      try_it: 'Probaj'
-      log_in: 'PRIJAVI SE'
-      video: "Vidi više o tome kako Lumio radi"
-      try_loomio_beta: 'Probaj Lumio Beta'
-      check_out_loomio_beta: 'Pogledaj Lumio Beta'
-      more: 'Još'
-      top: 'Vrh'
-      public_groups: 'Javne grupe'
-      terms: 'Uslovi'
-      privacy: 'Privatnost'
-      services: 'Usluge'
+      blog: Blog
+      contact: Kontakt
+      donate: Doniraj danas
+      press: Za Medije
+      try_it: Probaj
+      log_in: PRIJAVI SE
+      video: Vidi više o tome kako Lumio radi
+      try_loomio_beta: Probaj Lumio Beta
+      check_out_loomio_beta: Pogledaj Lumio Beta
+      more: Još
+      top: Vrh
+      public_groups: Javne grupe
+      terms: Uslovi
+      privacy: Privatnost
+      services: Usluge
     hero:
-      head_html: 'Svetu je potreban bolji način da <strong>donosi odluke zajedno</strong>.'
-      desc_html: 'Loomio je besplatan softver <a href="https://github.com/loomio/loomio">otvorenog izvora</a> za svakog, svuda, da učestvuje u odlukama koje utiču na život'
+      head_html: "Svetu je potreban bolji način da <strong>donosi odluke zajedno</strong>."
+      desc_html: "Loomio je besplatan softver <a href=\"https://github.com/loomio/loomio\">otvorenog izvora</a> za svakog, svuda, da učestvuje u odlukama koje utiču na život"
     product:
-      header_html: 'Kada čujemo <strong>sva mišljenja</strong>, donosimo <strong>ispravnije odluke</strong>.'
+      header_html: "Kada čujemo <strong>sva mišljenja</strong>, donosimo <strong>ispravnije odluke</strong>."
       step1:
-        header: '1. Razgovarajte o svemu'
-        desc: 'Počni diskusiju o bilo kojoj temi i dovedi prave ljude. Razmeni različite perspektive i razvij ideje sa njima.'
+        header: 1. Razgovarajte o svemu
+        desc: Počni diskusiju o bilo kojoj temi i dovedi prave ljude. Razmeni različite perspektive i razvij ideje sa njima.
       step2:
-        header: '2. Gradite sporazum'
-        desc: 'Svako može predložiti tok akcije. Ljudi se mogu složiti, biti uzdržani, ne slagati se ili blokirati tok - tako da možete videti kako se svako oseća i zašto.'
+        header: 2. Gradite sporazum
+        desc: "Svako može predložiti tok akcije. Ljudi se mogu složiti, biti uzdržani, ne slagati se ili blokirati tok - tako da možete videti kako se svako oseća i zašto."
       step3:
-        header: '3. Odlučujte zajedno'
-        desc: 'Razvijanje predloga zajednički tako da funkcioniše za svakog. Svaka odluka ima jasan rok, tako da je uvek kristalno jasan ishod.'
+        header: 3. Odlučujte zajedno
+        desc: "Razvijanje predloga zajednički tako da funkcioniše za svakog. Svaka odluka ima jasan rok, tako da je uvek kristalno jasan ishod."
     crowdfunding:
-      header: 'Mi smo dobili sredstva od zajednice tako da možemo završiti razvoj ove nove platforme i dati je nazad zajednici.'
+      header: Mi smo dobili sredstva od zajednice tako da možemo završiti razvoj ove nove platforme i dati je nazad zajednici.
     prototype:
-      header_html: "Već smo izgradili prototip i ljudi iz celog sveta rade neverovatne stvari sa njim"
-      subhead_html: '<a href="%{try_loomio_link}">Probaj Lumio Beta</a> odmah. Ili možeš <a href="%{donate_link}">podržati projekat</a> i pomoći donacijom Lumio 1.0'
+      header_html: Već smo izgradili prototip i ljudi iz celog sveta rade neverovatne stvari sa njim
+      subhead_html: "<a href=\"%{try_loomio_link}\">Probaj Lumio Beta</a> odmah. Ili možeš <a href=\"%{donate_link}\">podržati projekat</a> i pomoći donacijom Lumio 1.0"
     mobile:
-      header_html: 'Lumio 1.0 će raditi na svakom uređaju, izgrađen je najboljom <strong>otvorenom mobilnom tehnologijom.</strong>'
+      header_html: "Lumio 1.0 će raditi na svakom uređaju, izgrađen je najboljom <strong>otvorenom mobilnom tehnologijom.</strong>"
     quote:
       header:
-        rushkoff_html: '“Lumio <strong>oslobađa potencijal interneta</strong> da približi ljude samom koncenzusu umesto polarizovanoj debati.”<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, autor <em>Present Shock</em></div>'
-        sifry_html: '“Loomio je popunio prostor između <strong>individualnog glasa</strong> i <strong>kolektivnog odlučivanja</strong>.”<div class="attributation">– Micah Sifry, Urednik, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
+        rushkoff_html: "“Lumio <strong>oslobađa potencijal interneta</strong> da približi ljude samom koncenzusu umesto polarizovanoj debati.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autor <em>Present Shock</em></div>"
+        sifry_html: "“Loomio je popunio prostor između <strong>individualnog glasa</strong> i <strong>kolektivnog odlučivanja</strong>.”<div class=\"attributation\">– Micah Sifry, Urednik, <em><a href=\"http://techpresident.com\">TechPresident</a></em></div>"
     team:
-      header: 'O Lumiju'
-      desc: 'Mi smo mali tim programera otvorenog izvora i aktivista koji zastupaju socijalnu pravdu, koji rade u Enspiral u Aoteri na Novom Zelandu, sa širom mrežom prijatelja, simpatizera i savetnika širom sveta.'
+      header: O Lumiju
+      desc: "Mi smo mali tim programera otvorenog izvora i aktivista koji zastupaju socijalnu pravdu, koji rade u Enspiral u Aoteri na Novom Zelandu, sa širom mrežom prijatelja, simpatizera i savetnika širom sveta."
     ideals:
       community:
-        header: 'Zajednicom vođena kooperacija'
-        desc: 'Loomio je građen od strane onih koji ga poseduju i njihovom kooperacijom. Mi smo društvena kompanija koja radi na optimizaciji društvenog uticaja, ne profita. '
+        header: Zajednicom vođena kooperacija
+        desc: "Loomio je građen od strane onih koji ga poseduju i njihovom kooperacijom. Mi smo društvena kompanija koja radi na optimizaciji društvenog uticaja, ne profita. "
       independent:
-        header: 'Nezavisno i neutralno'
-        desc: 'Obezbeđujemo prostor za okupljanje bilo koje grupe, koja je nezavisna od političkih ili korporativnih interesa. Mi nikada nećemo prodati vaše podatke.'
+        header: Nezavisno i neutralno
+        desc: "Obezbeđujemo prostor za okupljanje bilo koje grupe, koja je nezavisna od političkih ili korporativnih interesa. Mi nikada nećemo prodati vaše podatke."
       open:
-        header: 'Besplatno i otvorenog koda'
-        desc: 'Lumijev izvorni kod je javni resurs koji svako može pokretati, čitati, učiti iz njega, menjati i redistribuirati.'
+        header: Besplatno i otvorenog koda
+        desc: "Lumijev izvorni kod je javni resurs koji svako može pokretati, čitati, učiti iz njega, menjati i redistribuirati."
       gift:
-        header: 'Ekonomija poklona'
-        desc: 'Lumio je podržan od strane onih koji plaćaju prema svojim mogućnostima. Ovo čini platformu slobodnom od oglašavanja i pristupačnom grupama bez novca.'
+        header: Ekonomija poklona
+        desc: Lumio je podržan od strane onih koji plaćaju prema svojim mogućnostima. Ovo čini platformu slobodnom od oglašavanja i pristupačnom grupama bez novca.
     vision:
-      header: 'Pomozi da preokrenemo ovu viziju u realnost.'
+      header: Pomozi da preokrenemo ovu viziju u realnost.

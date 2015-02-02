@@ -14,7 +14,7 @@ Then(/^my password should be reset and I should be logged in$/) do
   fill_in 'New password', with: 'hellothere'
   fill_in 'Confirm new password', with: 'hellothere'
   click_on 'Change my password'
-  page.should have_content 'Your password was changed successfully. You are now signed in.'
+  page.should have_content 'Your password has been changed successfully. You are now signed in.'
 end
 
 When(/^I click the change password link$/) do

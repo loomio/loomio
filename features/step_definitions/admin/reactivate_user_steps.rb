@@ -20,7 +20,7 @@ Then(/^the user's memberships should be restored$/) do
 end
 
 Then(/^they should see the dashboard$/) do
-  page.should have_content('Logged in successfully')
+  page.should have_content('Signed in successfully')
 end
 
 Then(/^they should be able to view their groups$/) do

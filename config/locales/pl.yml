@@ -1,44 +1,107 @@
 pl:
+  users:
+    email_preferences:
+      edit:
+        title: Ustawienia poczty
+        when_do_you_want_emails: "Napisz do mnie:"
+        email_missed_yesterday: "'Wczoraj w Loomio' - dzienne podsumowanie aktywności które Ci umknęły"
+        email_when_mentioned: Kiedy mnie cytowano
+        email_followed_threads: "Kiedy znaleziono aktywności w wątkach, które śledzę."
+        email_when_proposal_closing_soon: 24 godziny przed zamknięciem propozycji.
+        email_new_discussions_and_proposals: Nowe dyskusje i propozycje
+        for_these_groups: "Dla poniższych grup:"
+        submit: Zapis ustawień
+  explore:
+    header: Przegląd grup publicznych
+  try_it:
+    header: Wypróbuj Loomio
+    start_a_group: Utwórz grupę dla podejmowania decyzji w Twojej społeczności.
+    join_the_community: Dołącz do grupy Społeczność Loomio
+    loomio_community_info: Tutaj dyskutujemy i podejmujemy decyzję o Loomio.
+    explore_groups: Przegląd innych grup na Loomio
+    explore_groups_info: "Sprawdź wszystkie fantastyczne grupy na Loomio i dołącz do nich!"
+  activerecord:
+    errors:
+      messages:
+        blank: nie może być puste
   errors:
     messages:
-      email: "Nieprawidłowy adres e-mail"
+      email: Nieprawidłowy adres e-mail
+  attachment:
+    error:
+      too_large: "Plik, który probowałeś/aś załączyć jest większy niż 50MB, wybierz mniejszy plik."
+  devise:
+    invitations:
+      send_instructions: "Zaproszenie zostało wysłane do %{email}"
+      invitation_token_invalid: "To zaproszenie nie jest już aktualne!"
+      updated: Utworzono konto.
+      no_invitations_remaining: Brak innych zaproszeń
+    mailer:
+      invitation_instructions:
+        subject: Ktoś zaprosił Cię aby dołączyć do grupy na platformie Loomio
+    registrations:
+      sign_up: Utwórz konto
   error:
-    cant_join_subgroup: "Nie możesz dołączyć do podgrupy jeśli nie jesteś członkiem grupy."
-    cant_modify_position: "Ta propozycja jest zamknięta."
-    cant_state_position: "Ta propozycja jest zamknięta."
-    discussion_not_created: "Dyskusja nie została utworzona."
+    access_denied: Nie masz uprawnień aby to wykonać.
+    cant_join_subgroup: Nie możesz dołączyć do podgrupy jeśli nie jesteś członkiem grupy.
+    cant_modify_position: Ta propozycja jest zamknięta.
+    cant_state_position: Ta propozycja jest zamknięta.
+    cant_view_member_profile: Nie możesz zobaczyć profili członków ponieważ nie jesteś w tej samej grupie.
+    contribution: Zaloguj  się aby brać udział.
+    discussion_not_created: Dyskusja nie została utworzona.
+    discussion_not_moved: "Nie masz uprawnień aby przenieść tę dyskusję do %{destination_group.name}"
     group_not_archived: "Grupa nie może zostać zarchiwizowana. "
     invalid_close_date: "Nieprawidłowa data zamknięcia, sprawdź czy termin nie upłynął."
+    invalid_email: Wpisz conajmniej jeden poprawny adres e-mail
     image_upload_fail: "Nie można przesłać zdjęcie. Upewnij się, że obraz jest mniejszy niż 1 MB i że to plik .jpeg, .png, lub .gif."
+    motion_closing_inputs: Niepoprawna data zamknięcia.
+    motion_outcome_not_created: Nie można opublikować wpisu.
+    motion_outcome_not_updated: Nie można uaktualnić wpisu.
+    only_group_coordinator_destroy: "Nie możesz opuścić tej grupy ponieważ jesteś jedynym koordynatorem. Możesz wyłączyć Twoją grupę za pomocą opcji rozwijalnego menu lub <a href='%{add_coordinator}'>dodaj nowego koordynatora</a> do grupy."
+    only_group_coordinator_remove_admin: Grupa musi mieć koordynatora. Czy chcesz dodać innego koordynatora do grupy?
     permission_to_invite: "Nie masz uprawnień, żeby zapraszać członków."
-    position_not_updated: "Nie można zaktualizować stanowiska."
-    settings_not_updated: "Twoje ustawienia nie zostało zaktualizowane."
+    position_not_updated: Nie można zaktualizować stanowiska.
+    settings_not_updated: Twoje ustawienia nie zostało zaktualizowane.
+    group_request_already_accepted: "Przepraszamy! To zaproszenie nie jest juz aktualne albo zostało już zaakceptowane."
+    group_request_invalid_token: "Przepraszamy! Ten token jest niepoprawny"
+    group_private_or_not_found: "Nie znaleziono grupy.\nTa grupa może być prywatna. Jeśli ktoś przekazał Ci ten link, poproś go o zaproszenie do grupy."
+    group_already_setup: Grupa o takiej nazwie już istnieje.
+    passwords_did_not_match: Hasła nie są takie same
+    proposal_already_exists: Dyskusja ma już otwartą propozycję.
+    user_with_email_address_already_in_group: Użytkownik z tym adresem e-mail należy już do tej grupy.
+    you_have_already_requested_membership: Wysłałeś/aś już prośbę o dostęp do tej grupy.
+    you_are_already_a_member_of_this_group: Jesteś już członkiem tej grupy.
+    not_found: "Nie znaleziono elementu. Możliwe, że został usunięty."
   alert:
-    duplicate_email: "%{which_email} is already in the group."
+    duplicate_email: "%{which_email} znajduje się już w grupie."
   notice:
-    member_removed: "Członek usunięty."
-    membership_request_canceled: "Prośba o członkostwo anulowana."
-    membership_request_ignored: "Prośba o członkostwo zignorowana."
-    settings_updated: "Twoje ustawienia zostały zaktualizowane."
+    admin_rights_removed: "Usunięto uprawnienia koordynatora dla %{which_user}."
+    user_added: "%{user_email_or_name} został dodany do grupy."
+    new_user_added: "%{user_email_or_name} zostanie dodany do grupy po utworzeniu konta w Loomio."
+    member_removed: Członek usunięty.
+    membership_approved: Członkostwo zaakceptowane.
+    membership_request_canceled: Prośba o członkostwo anulowana.
+    membership_request_ignored: Prośba o członkostwo zignorowana.
+    settings_updated: Twoje ustawienia zostały zaktualizowane.
     you_have_left_group: "Opuściłeś %{which_group}."
   warning:
-    membership_request_already_ignored: "Prośba o członkostwo została już zignorowana."
-    membership_request_already_canceled: "Prośba o członkostwo została już anulowana."
-    position_not_submitted: "Twoje stanowisko nie może zostać wysłane."
+    membership_request_already_ignored: Prośba o członkostwo została już zignorowana.
+    membership_request_already_canceled: Prośba o członkostwo została już anulowana.
+    position_not_submitted: Twoje stanowisko nie może zostać wysłane.
     proposal_not_created: "Propozycja nie może być utworzona. "
   success:
     added_to_group: "Zostałeś dodany do %{which_group}."
-    close_date_changed: "Data zamknięcia zmieniona."
-    discussion_created: "Dyskusja została utworzona."
-    discussion_deleted: "Dyskusja została usunięta."
+    close_date_changed: Data zamknięcia zmieniona.
+    discussion_created: Dyskusja została utworzona.
+    discussion_deleted: Dyskusja została usunięta.
     emails_sending: "Wysyłanie emaili. "
-    group_archived: "Grupa została zarchiwizowana pomyślnie."
-    group_created: "Grupa została utworzona pomyślnie."
-    members_added: "Nowe osoby dodane do grupy."
-    position_submitted: "Stanowisko zostało przesłane."
-    position_updated: "Stanowisko zostało zaktualizowane."
-    proposal_created: "Propozycja utworzona pomyślnie."
-    proposal_deleted: "Propozycja usunięta."
+    group_archived: Grupa została zarchiwizowana pomyślnie.
+    group_created: Grupa została utworzona pomyślnie.
+    members_added: Nowe osoby dodane do grupy.
+    position_submitted: Stanowisko zostało przesłane.
+    position_updated: Stanowisko zostało zaktualizowane.
+    proposal_created: Propozycja utworzona pomyślnie.
+    proposal_deleted: Propozycja usunięta.
   datetime:
     distance_in_words:
       x_seconds:
@@ -46,136 +109,143 @@ pl:
         few: "%{count} sekundy"
         other: "%{count} sekund"
       less_than_x_minutes:
-        one: "minuta"
+        one: minuta
         few: "%{count} minut"
         other: "%{count} minut"
       x_minutes:
-        one: "minuta"
+        one: minuta
         few: "%{count} minut"
         other: "%{count} minut"
       about_x_hours:
-        one: "godzina"
+        one: godzina
         few: "%{count} godzin"
         other: "%{count} godzin"
       x_days:
-        one: "dzień"
+        one: dzień
         few: "%{count} dni"
         other: "%{count} dni"
       about_x_years:
-        one: "rok"
+        one: rok
         few: "%{count} lata"
         other: "%{count} lat"
       over_x_years:
-        one: "rok"
+        one: rok
         few: "%{count} lata"
         other: "%{count} lat"
       almost_x_years:
-        one: "rok"
+        one: rok
         few: "%{count} lata"
         other: "%{count} lat"
   footer:
-    blog: 'Blog'
-    contact: 'Kontakt'
-    privacy: 'Prywatność'
+    blog: Blog
+    contact: Kontakt
+    privacy: Prywatność
   notifications:
-    header: "Powiadomienia"
+    header: Powiadomienia
     motion_closed:
-      by_user: "zamknij propozycję"
-      by_expiry: "Propozycja została zamknięta"
-  see_all_notifications: "Zobacz wszystkie powiadomienia"
-  sign_out: "Wyloguj się"
-  generic_confirm: "Czy jesteś pewien?"
-  invite_people: "Zaproś ludzi"
-  add_new_member: "Dodaj nowego członka"
-  edit_group_settings: "Edycja ustawień grupy"
-  leave_group: "Opuść grupę"
-  invited_users: "Zaproszeni członkowie"
-  members: "Członkowie"
-  ignore_request: "Ignoruj prośbę"
-  ignore: "Ignoruj"
-  subgroups: "Podgrupy"
-  create_a_subgroup: "Utwórz podgrupę"
-  invite_members: "Zaproś członków"
-  new_subgroup: "Nowa podgrupa"
-  create_subgroup: "Utwórz podgrupę"
-  creating_subgroup: "Tworzenie podgrupy"
-  new_group: "Nowa grupa"
-  create_group: "Utwórz grupę"
-  creating_group: "Tworzenie grupy"
-  edit_group: "Edycja grupy"
-  update_group: "Aktualizacja grupy"
-  updating_group: "Aktualizowanie grupy"
-  start_a_discussion: "Rozpocznij dyskusję"
-  group_description: "Opis grupy"
+      by_user: zamknij propozycję
+      by_expiry: Propozycja została zamknięta
+  see_all_notifications: Zobacz wszystkie powiadomienia
+  sign_out: Wyloguj się
+  generic_confirm: Czy jesteś pewien?
+  invite_people: Zaproś ludzi
+  add_new_member: Dodaj nowego członka
+  edit_group_settings: Edycja ustawień grupy
+  leave_group: Opuść grupę
+  invited_users: Zaproszeni członkowie
+  members: Członkowie
+  ignore_request: Ignoruj prośbę
+  ignore: Ignoruj
+  subgroups: Podgrupy
+  create_a_subgroup: Utwórz podgrupę
+  invite_members: Zaproś członków
+  new_subgroup: Nowa podgrupa
+  create_subgroup: Utwórz podgrupę
+  creating_subgroup: Tworzenie podgrupy
+  new_group: Nowa grupa
+  create_group: Utwórz grupę
+  creating_group: Tworzenie grupy
+  edit_group: Edycja grupy
+  update_group: Aktualizacja grupy
+  updating_group: Aktualizowanie grupy
+  start_a_discussion: Rozpocznij dyskusję
+  group_description: Opis grupy
   discussion_items:
     motion_closed:
-      by_expiry: "Propozycja zamknięta"
-  discussion: "Dyskusja"
-  current_decision: "Obecna decyzja"
-  previous_decisions: "Wcześniejsze decyzje"
+      by_expiry: Propozycja zamknięta
+  discussion: Dyskusja
+  current_decision: Obecna decyzja
+  previous_decisions: Wcześniejsze decyzje
   description_history:
-    subheader: "Wersja"
-  comment_form_placeholder: "Powiedz coś..."
-  delete_comment: "Usuń komentarz"
-  delete_discussion: "Usuń dyskusję"
-  new_proposal: "Nowa propozycja"
-  close_proposal: "Zamknij propozycję"
-  change_proposal_close_date: "Zmień datę zamknięcia"
-  state_your_position: "Podaj swoje stanowisko"
-  positions: "Stanowiska"
-  yes_position: "Zgadzam się"
-  no_position: "Nie zgadzam się"
+    subheader: Wersja
+  comment_form_placeholder: Powiedz coś...
+  delete_comment: Usuń komentarz
+  delete_discussion: Usuń dyskusję
+  new_proposal: Nowa propozycja
+  close_proposal: Zamknij propozycję
+  change_proposal_close_date: Zmień datę zamknięcia
+  state_your_position: Podaj swoje stanowisko
+  positions: Stanowiska
+  yes_position: Zgadzam się
+  no_position: Nie zgadzam się
   help:
-    help: "Pomoc"
-    how_it_works: "Jak to działa"
-    join_the_community: "Dołącz do społeczności"
-    make_a_decision: "Podejmij decyzję"
+    help: Pomoc
+    how_it_works: Jak to działa
+    join_the_community: Dołącz do społeczności
+    make_a_decision: Podejmij decyzję
   hint:
-    vote: 'W każdej chwili możesz zmienić swoje stanowisko'
-  new_password: "Nowe hasło"
-  current_password: "Obecne hasło"
-  remember_me: "Zapamiętaj mnie"
-  forgot_your_password: "Zapomniałeś hasła?"
+    vote: W każdej chwili możesz zmienić swoje stanowisko
+  new_password: Nowe hasło
+  current_password: Obecne hasło
+  remember_me: Zapamiętaj mnie
+  forgot_your_password: Zapomniałeś hasła?
   search:
-    placeholder: "Szukaj"
+    placeholder: Szukaj
   vote_form:
-    header: "Podaj swoje stanowisko"
-    edit: "Edycja Twego stanowiska"
-    your_position: "Twoje stanowisko"
-    submit: "Prześlij stanowisko"
-    update: "Zaktualizuj stanowisko"
+    header: Podaj swoje stanowisko
+    edit: Edycja Twego stanowiska
+    your_position: Twoje stanowisko
+    submit: Prześlij stanowisko
+    update: Zaktualizuj stanowisko
   simple_form:
-    'yes': 'Tak'
-    'no': 'Nie'
+    "yes": Tak
+    "no": Nie
     labels:
       membership_request:
-        introduction: "Przedstaw się"
+        introduction: Przedstaw się
       user:
-        password_confirmation: "Potwierdź hasło"
-        language_preference: "Język"
+        password_confirmation: Potwierdź hasło
+        language_preference: Język
     placeholders:
       user:
-        password: "Hasło"
+        password: Hasło
   helpers:
     submit:
       user:
-        update: "Zaktualizuj ustawienia"
+        update: Zaktualizuj ustawienia
   email:
     invitation:
       hi: "Witaj %{name},"
-      thanks: |
-        Dziękujemy!
-        Zespół Loomio
-  author: "Autor"
-  decisions: "Decyzje"
-  details: "Szczegóły"
-  discussions: "Dyskusje"
-  group: "Grupa"
-  password: "Hasło"
-  pricing: 'Opłaty'
-  options: "Opcje"
-  save: "Zapisz"
-  saving: "Zapisywanie"
+      thanks: "Dziękujemy!\nZespół Loomio\n"
+    proposal_closing_soon:
+      summary: Podsumowanie
+    thread_mailer:
+      footer_text: "Odpowiedz na tę wiadomość bezpośrednio lub zobacz ją na Loomio:"
+      reply_or_view_online_html: "Odpowiedz na tę wiadomość bezpośrednio albo  <a href='%{url}'>zobacz ją na Loomio</a>."
+      change_preferences: Zmiana ustawień poczty.
+      new_motion: "%{who} zaproponował/ła:"
+      motion_closing_soon: "Zamknięcie propozycji w ciągu 24 godzin:"
+      proposal_closed: "Propozycja zamknięta:"
+  author: Autor
+  decisions: Decyzje
+  details: Szczegóły
+  discussions: Dyskusje
+  group: Grupa
+  password: Hasło
+  pricing: Opłaty
+  options: Opcje
+  save: Zapisz
+  saving: Zapisywanie
   thanks: "Dziękujemy!"
   common:
-    email: "E-mail"
+    email: E-mail
