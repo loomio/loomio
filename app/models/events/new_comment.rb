@@ -8,6 +8,8 @@ class Events::NewComment < Event
     DiscussionReader.for(user: comment.author,
                          discussion: comment.discussion).follow!
 
+    Events::CommentRepliedTo.publish! comment if comment.is_reply?
+
     comment.mentioned_group_members.each do |mentioned_user|
       Events::UserMentioned.publish!(comment, mentioned_user)
     end

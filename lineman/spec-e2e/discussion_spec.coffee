@@ -15,6 +15,8 @@ describe 'Discussion Page', ->
     page.mostRecentComment().element(By.css('.cuke-comment-reply-btn')).click()
     page.addComment('hi this is my comment')
     expect(page.mostRecentComment().element(By.css('.cuke-in-reply-to')).getText()).toContain('in reply to')
+    page.openNotificationDropdown()
+    expect(page.notificationDropdown().getText()).toContain('replied to your comment')
 
   it 'like a comment', ->
     page.addComment('hi')

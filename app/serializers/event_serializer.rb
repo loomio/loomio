@@ -30,7 +30,7 @@ class EventSerializer < ActiveModel::Serializer
   end
 
   def discussion_kinds
-    ['comment_liked', 'new_discussion', 'new_motion', 'new_comment', 'user_mentioned']
+    ['comment_liked', 'comment_replied_to', 'new_discussion', 'new_motion', 'new_comment', 'user_mentioned']
   end
 
   def discussion
@@ -42,7 +42,7 @@ class EventSerializer < ActiveModel::Serializer
   end
 
   def comment_kinds
-    ['comment_liked', 'new_comment']
+    ['comment_liked', 'new_comment', 'comment_replied_to']
   end
 
   def comment

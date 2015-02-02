@@ -3,19 +3,6 @@ angular.module('loomioApp').controller 'CommentFormController', ($scope, Records
   group = $scope.discussion.group()
 
   $scope.mentionables = group.members()
-  $scope.isExpanded = false
-
-  $scope.expand = ->
-    $scope.isExpanded = true
-    $scope.$broadcast 'expandCommentField'
-
-  $scope.collapse = (event) ->
-    event.preventDefault()
-    $scope.isExpanded = false
-    $scope.$broadcast 'collapseCommentField'
-
-  $scope.collapseIfEmpty = ->
-    $scope.collapse() if $scope.comment.body.length == 0
 
   $scope.getMentionables = (fragment) ->
     Records.members.fetchByNameFragment fragment, group.id, ->
@@ -35,7 +22,6 @@ angular.module('loomioApp').controller 'CommentFormController', ($scope, Records
 
   $scope.$on 'showReplyToCommentForm', (event, parentComment) ->
     $scope.comment.parentId = parentComment.id
-    $scope.expand()
 
   $scope.removeAttachment = (attachment) ->
     AttachmentService.destroy attachment, ->

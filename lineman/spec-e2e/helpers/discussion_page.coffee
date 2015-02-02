@@ -13,6 +13,12 @@ module.exports = class DiscussionPage
     element(By.css('.cuke-comment-field')).sendKeys('hi this is my comment')
     element(By.css('.cuke-comment-submit')).click()
 
+  openNotificationDropdown: ->
+    element(By.css('.dropdown-toggle')).click()
+
+  notificationDropdown: ->
+    element(By.css('.navbar-notifications')).first()
+
   mostRecentComment: ->
     element.all(By.css('.thread-comment')).last()
 
