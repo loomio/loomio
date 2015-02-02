@@ -1,9 +1,9 @@
 .row
   .col-md-4.offset3
-    %h2 Forgot your password?
+    %h2= t(:forgot_your_password)
     = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
       - if resource.errors.any?
-        %p The email address you have entered is invalid, please enter a valid email address
+        %p= t(:invalid_email)
       .padding
         = f.label :email, t(:email)
         = f.email_field :email

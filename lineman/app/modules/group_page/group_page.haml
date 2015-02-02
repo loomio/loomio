@@ -16,10 +16,10 @@
           .group-page-name-and-privacy
             .group-page-name
               %h1
-                %a{ng_show: 'group.parentId', href: '/g/{{group.parent().key}}'}
+                %a.cuke-group-parent-name{ng_show: 'group.parentId', href: '/g/{{group.parent().key}}'}
                   {{group.parentName()}}
                 %span{ng_show: 'group.parentId'}> >
-                %a{href: '/g/{{group.key}}'}
+                %a.cuke-group-name{href: '/g/{{group.key}}'}
                   {{group.name}}
             %group_privacy_dropdown{group: 'group'}
         .group-page-description

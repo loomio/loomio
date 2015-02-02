@@ -62,5 +62,17 @@ module Loomio
 
     config.quiet_assets = true
     config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
+
+    # Store avatars on Amazon S3
+    config.paperclip_defaults = {
+      :storage => :fog,
+      :fog_credentials => {
+        :provider => 'AWS',
+        :aws_access_key_id => Rails.application.secrets.aws_access_key_id,
+        :aws_secret_access_key => Rails.application.secrets.aws_secret_access_key
+      },
+      :fog_directory => Rails.application.secrets.aws_bucket,
+      :fog_public => true
+    }
   end
 end

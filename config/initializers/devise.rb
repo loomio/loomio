@@ -208,6 +208,7 @@ Devise.setup do |config|
   config.omniauth 'google_oauth2', Rails.application.secrets.google_key, Rails.application.secrets.google_secret, name: 'google'
   config.omniauth :facebook, Rails.application.secrets.facebook_key, Rails.application.secrets.facebook_secret
   config.omniauth :browser_id
+  config.omniauth :twitter, Rails.application.secrets.twitter_key, Rails.application.secrets.twitter_secret
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

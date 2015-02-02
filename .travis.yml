@@ -9,11 +9,12 @@ branches:
     - 'production'
     - /^[0-9]+\.[0-9]+$/
 rvm:
-  - 2.1.5
+  - 2.2.0
 before_script:
   - "cp config/database.yml.$DB config/database.yml"
   - "bundle exec rake db:create RAILS_ENV=test"
-  - "bundle exec rake db:schema:load RAILS_ENV=test"
+  - "bundle exec rake db:migrate RAILS_ENV=test"
+  #- "bundle exec rake db:schema:load RAILS_ENV=test"
   - "bundle exec rake db:seed RAILS_ENV=test"
   - "sh -e /etc/init.d/xvfb start"
 script: "bundle exec rake travis"
