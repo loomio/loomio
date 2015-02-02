@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
              motion_closing_soon motion_closed motion_closed_by_user motion_outcome_created motion_outcome_updated
              membership_requested invitation_accepted user_added_to_group user_joined_group
              membership_request_approved
-             comment_liked user_mentioned]
+             comment_liked comment_replied_to user_mentioned]
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
