@@ -2,7 +2,4 @@
   .media-left
     %user_avatar{user: "actor"}
   .media-body
-    %span> {{ actor.name }}
-    %span{translate:  "notifications.motion_blocked" }>
-    %span> {{ event.proposal().name }}
-
+    %span{translate: 'notifications.motion_blocked', translate-value-name: '{{actor.name}}', translate-value-proposal: '{{event.proposal().title}}' }
