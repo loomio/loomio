@@ -42,7 +42,7 @@ class Event < ActiveRecord::Base
   end
 
   def message_channel
-    nil
+    :undefined_message_channel
   end
 
   private
