@@ -22,7 +22,7 @@ class API::RestfulController < API::BaseController
   def create
     instantiate_resouce
     @event = service.create({resource_symbol => resource,
-                    actor: current_user})
+                            actor: current_user})
     respond_with_resource
   end
 
@@ -126,10 +126,18 @@ class API::RestfulController < API::BaseController
 
   def respond_with_resource
     if resource.errors.empty?
-      render json: [resource], root: serializer_root, scope: { event: @event }
+      if @event
+        render json: [@event], root: 'events', each_serializer: EventSerializer
+      else
+        render json: [resource], root: serializer_root
+      end
     else
-      render json: {errors: resource.errors.as_json()}, root: false, status: 422
+      respond_with_errors
     end
+  end
+
+  def respond_with_errors
+    render json: {errors: resource.errors.as_json()}, root: false, status: 422
   end
 
   def serializer_root
