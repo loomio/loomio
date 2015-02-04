@@ -18,7 +18,7 @@ class SearchVector::Comment < SearchVector::Base
     "ts_rank_cd(search_vector, :query)"
   end
 
-  def self.visible_results_for(user)
-    Queries::VisibleComments.new(user: user).pluck(:id)
+  def self.visibility_column
+    :discussion_id
   end
 end

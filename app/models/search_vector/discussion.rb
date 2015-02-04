@@ -19,7 +19,4 @@ class SearchVector::Discussion < SearchVector::Base
     "ts_rank_cd(search_vector, :query)"
   end
 
-  def self.visible_results_for(user)
-    Queries::VisibleDiscussions.new(user: user).pluck(:id)
-  end
 end
