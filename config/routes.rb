@@ -60,6 +60,7 @@ Loomio::Application.routes.draw do
     end
     resources :translations, only: :show
     resources :notifications, only: :index
+    resources :search_results, only: :index
     resources :contact_messages, only: :create
     namespace :faye do
       post :subscribe
