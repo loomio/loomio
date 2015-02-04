@@ -41,6 +41,7 @@ en:
       update_comment: 'Changes saved'
       destroy_comment: 'You comment has been deleted'
     edit_comment: 'Edit comment'
+    in_reply_to: "In reply to <strong>{{name}}</strong>:"
 
   navbar:
     search_placeholder: 'Search for groups or threads'
