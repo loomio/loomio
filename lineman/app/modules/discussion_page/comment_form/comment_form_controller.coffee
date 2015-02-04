@@ -2,23 +2,6 @@ angular.module('loomioApp').controller 'CommentFormController', ($scope, Records
   $scope.comment = $scope.comment or Records.comments.initialize(discussion_id: $scope.discussion.id)
   group = $scope.discussion.group()
 
-  $scope.mentionables = group.members()
-
-  # im pretty sure this is ment to be baleted
-  #$scope.isExpanded = false
-
-  #$scope.expand = ->
-    #$scope.isExpanded = true
-    #$scope.$broadcast 'expandCommentField'
-
-  #$scope.collapse = (event) ->
-    #event.preventDefault()
-    #$scope.isExpanded = false
-    #$scope.$broadcast 'collapseCommentField'
-
-  #$scope.collapseIfEmpty = ->
-    #$scope.collapse() if $scope.comment.body.length == 0
-
   $scope.getMentionables = (fragment) ->
     Records.memberships.fetchByNameFragment(fragment, group.key).then ->
       $scope.mentionables = _.filter(group.members(), (member) ->
