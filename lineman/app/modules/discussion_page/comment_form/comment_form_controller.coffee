@@ -2,7 +2,6 @@ angular.module('loomioApp').controller 'CommentFormController', ($scope, Records
   $scope.comment = $scope.comment or Records.comments.initialize(discussion_id: $scope.discussion.id)
   group = $scope.discussion.group()
 
-  $scope.mentionables = group.members()
   $scope.isExpanded = false
 
   $scope.expand = ->
@@ -18,7 +17,7 @@ angular.module('loomioApp').controller 'CommentFormController', ($scope, Records
     $scope.collapse() if $scope.comment.body.length == 0
 
   $scope.getMentionables = (fragment) ->
-    Records.members.fetchByNameFragment fragment, group.id, ->
+    Records.memberships.fetchByNameFragment(fragment, group.key).then ->
       $scope.mentionables = _.filter(group.members(), (member) ->
         ~member.name.search(new RegExp(fragment, 'i')) or \
         ~member.label.search(new RegExp(fragment, 'i')))
