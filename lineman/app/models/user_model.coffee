@@ -16,6 +16,9 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       @membershipsView = @recordStore.memberships.belongingTo(userId: @id)
       @notificationsView = @recordStore.notifications.belongingTo(userId: @id)
 
+    username: ->
+      @label
+
     groupIds: ->
       _.map(@memberships(), 'groupId')
 

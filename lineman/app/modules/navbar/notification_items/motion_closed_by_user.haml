@@ -2,6 +2,4 @@
   .media-left
     %user_avatar{user: "actor"}
   .media-body
-    %span> {{ actor.name }}
-    %span{translate:  "notifications.motion_closed_by_user" }>
-    %span> {{ event.proposal().name }}
+    %span{translate: 'notifications.motion_closed_by_user', translate-value-name: '{{actor.name}}', translate-value-proposal: '{{event.proposal().name}}' }

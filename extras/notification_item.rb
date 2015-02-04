@@ -20,6 +20,8 @@ class NotificationItem
         NotificationItems::NewComment.new(notification)
       when "comment_liked"
         NotificationItems::CommentLiked.new(notification)
+      when "comment_replied_to"
+        NotificationItems::CommentRepliedTo.new(notification)
       when "membership_requested"
         NotificationItems::MembershipRequested.new(notification)
       when "membership_request_approved"

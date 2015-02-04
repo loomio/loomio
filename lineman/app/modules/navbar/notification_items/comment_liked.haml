@@ -2,6 +2,4 @@
   .media-left
     %user_avatar{user: "actor"}
   .media-body
-    %span> {{ actor.name }}
-    %span{translate:  "notifications.comment_liked" }>
-    %span> {{ event.discussion().title }}
+    %span{translate: 'notifications.comment_liked', translate-value-name: '{{actor.name}}', translate-value-discussion: '{{event.discussion().title}}' }
