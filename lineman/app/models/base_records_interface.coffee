@@ -77,3 +77,6 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient) ->
 
     findByKeys: (keys) ->
       @collection.find(key: {'$in': keys})
+
+    destroy: (id) ->
+      @restfulClient.destroy(id)
