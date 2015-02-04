@@ -4,7 +4,7 @@
     %a.attachment-link{ng_href: '{{attachment.location}}', target: '_blank'}
       {{ attachment.filename }}
     %span.attachment-filesize
-      ({{ attachment.filesize | fileSize }})
+      {{ attachment.filesize | fileSize }}
     %a.close.remove-upload{href: '#', ng_click: 'removeAttachment(attachment)'} &times;
   .thread-comment-form-actions.clearfix
     %button#post-comment-btn.btn.btn-default.btn-primary.pull-left.submit.cuke-comment-submit{type: 'submit'} Post
