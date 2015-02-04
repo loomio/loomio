@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120213103) do
+ActiveRecord::Schema.define(version: 20150108030729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,13 @@ ActiveRecord::Schema.define(version: 20141120213103) do
 
   add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "tag_anc_desc_udx", unique: true, using: :btree
   add_index "comment_hierarchies", ["descendant_id"], name: "tag_desc_idx", using: :btree
+
+  create_table "comment_search_vectors", force: true do |t|
+    t.integer  "comment_id"
+    t.tsvector "search_vector"
+  end
+
+  add_index "comment_search_vectors", ["search_vector"], name: "comment_search_vector_index", using: :gin
 
   create_table "comment_votes", force: true do |t|
     t.integer  "comment_id"
@@ -178,6 +185,13 @@ ActiveRecord::Schema.define(version: 20141120213103) do
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
   add_index "discussion_readers", ["user_id", "discussion_id"], name: "index_discussion_read_logs_on_user_id_and_discussion_id", using: :btree
   add_index "discussion_readers", ["user_id"], name: "index_motion_read_logs_on_user_id", using: :btree
+
+  create_table "discussion_search_vectors", force: true do |t|
+    t.integer  "discussion_id"
+    t.tsvector "search_vector"
+  end
+
+  add_index "discussion_search_vectors", ["search_vector"], name: "discussion_search_vector_index", using: :gin
 
   create_table "discussions", force: true do |t|
     t.integer  "group_id"
@@ -410,6 +424,13 @@ ActiveRecord::Schema.define(version: 20141120213103) do
   end
 
   add_index "motion_readers", ["user_id", "motion_id"], name: "index_motion_readers_on_user_id_and_motion_id", using: :btree
+
+  create_table "motion_search_vectors", force: true do |t|
+    t.integer  "motion_id"
+    t.tsvector "search_vector"
+  end
+
+  add_index "motion_search_vectors", ["search_vector"], name: "motion_search_vector_index", using: :gin
 
   create_table "motions", force: true do |t|
     t.string   "name"

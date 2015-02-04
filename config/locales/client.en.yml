@@ -43,7 +43,13 @@ en:
     edit_comment: 'Edit comment'
 
   navbar:
-    search_placeholder: 'Search for groups or threads'
+    search:
+      placeholder: 'Search for groups or threads'
+      loading: 'Loading results...'
+      discussions: 'Threads'
+      proposals: 'Proposals'
+      comments: 'Comments'
+      no_results: 'No results found'
 
   notifications:
     header: "Notifications"
