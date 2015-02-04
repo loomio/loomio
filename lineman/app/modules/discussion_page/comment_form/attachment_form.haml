@@ -1,10 +1,9 @@
 .comment-form-attachments
-  %button.btn.btn-default#comment-form-attachment-button{ng-hide: 'isAttaching', ng-click: 'openFileUploadDialog()'}
+  %button.btn.btn-default#comment-form-attachment-button{type: 'button', ng-hide: 'files'}
     %i.fa.fa-lg.fa-paperclip
-   %input.hidden{type: 'file', ng_file_select: 'upload($files)'}
-  .attachment-in-progress{ng_show: 'isAttaching'}
-    .attachment-filename {{ uploadingFilename }}
-    .progress.active
-      %progressbar.progress-striped.active{ng_attr_value: 'percentComplete'}
-        {{ percentComplete }} %
-    %button.close.cancel-upload{ng_click: 'abort()'} &times;
+   %input.hidden{type: 'file', ng-model: 'files', ng_file_select: 'upload(files)'}
+  .attachment-form-in-progress{ng-repeat: 'file in files'}
+    .progress.active.attachment-form-progress-field
+      %span.attachment-form-progress-text {{ file.name }}: {{ percentComplete }} %
+      %progressbar.attachment-form-progress-bar.progress-striped.active{ng_attr_value: 'percentComplete'}
+    %button.close.attachment-form-cancel.cancel-upload{type: 'button', ng_click: 'file.upload.abort()'} &times;

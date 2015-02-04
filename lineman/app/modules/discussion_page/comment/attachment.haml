@@ -1,0 +1,8 @@
+.attachment-display
+  .attachment-header
+    %i.fa.fa-paperclip
+    %a{ng-href: '{{attachment.location}}', target: '_blank'}
+      {{attachment.filename }}
+    %span {{attachment.filesize | fileSize}}
+  .attachment-content
+    %img{src: '{{attachment.location}}'}
