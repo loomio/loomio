@@ -71,6 +71,10 @@ class Comment < ActiveRecord::Base
     group.members_can_edit_comments? or is_most_recent?
   end
 
+  def is_reply?
+    parent.present?
+  end
+
   def liker_names(max: 3)
     comment_votes.last(max).map(&:user_name)
   end

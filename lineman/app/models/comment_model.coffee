@@ -60,6 +60,9 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
     authorName: ->
       @author().name
 
+    authorUsername: ->
+      @author().username()
+
     parentAuthorName: ->
       return null unless @parentId
       @parent().authorName()
