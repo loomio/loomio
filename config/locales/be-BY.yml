@@ -46,6 +46,8 @@ be-BY:
     mailer:
       invitation_instructions:
         subject: Хтосці запрасіў вас далучыцца да іх групы на Loomio
+    registrations:
+      sign_up: Стварыць акаўнт
   error:
     access_denied: У вас няма дазволу на гэтае дзеянне.
     cant_join_subgroup: "Вы не можаце далучыцца да падгрупы не з'яўляючыся удзельнікам зыходнай групы."
@@ -352,6 +354,7 @@ be-BY:
   edit_memberships: Рэдагаваць чалецтва
   add_new_member: Дадаць новага ўдзельніка
   invite_members_to_group: "Запрасіць удзельніка ў %{which_group}"
+  remaining_invites_count: "%{count} запрашэнняў засталася"
   get_in_touch_link: звязацца з намі
   email_members_in_group: "Разаслаць email удзельнікам  %{which_group}"
   subject_error: "Калі ласка, увядзіце назву тэмы"
@@ -427,6 +430,15 @@ be-BY:
     confirmation:
       title: "Вы амаль што скончылі! Праверце сваю потшту."
       body_html: "Мы накіравалі вам ліст з запрашэннем распачаць сваю групу.\n\nКалі праз некалькі хвілін на сваёй пошце вы нічога не знайшлі, дашліце нам ліст на <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> згадзіўся з прапановай."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> устрымаўся."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> не згадзіўся з прапановай."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> блакаваў прапанову."
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> згадзіўся з прапановай:"
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> устрымаўся на конт прапановы:"
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> не згадзіўся з прапановай:"
+    user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> блакаваў прапанову:"
   discussion_items:
     new_discussion: стварыў абмеркаванне
     new_motion: стварыў прапанову
@@ -624,6 +636,7 @@ be-BY:
   remember_me: Запомніць мяне
   signing_in: Заходзім
   or: альбо
+  invalid_email: "Вы ввялі нячлушны email адрас, калі ласка, увядзіце, дзеясны email адрас"
   forgot_your_password: Забылі Ваш пароль?
   dont_have_an_account: Яшчэ не маеце акаунта?
   create_one_now: Стварыць новы
@@ -766,6 +779,7 @@ be-BY:
         close_at_date: Закрываецца
       user:
         name: Поўнае імя
+        username: Імя карыстальніка
         email: Электронная пошта
         password: Пароль
         password_confirmation: Пацвердзіце пароль
@@ -960,6 +974,7 @@ be-BY:
   google: Google
   persona: Persona
   common:
+    markdown_help_tooltip: Даведайцеся асновы фарматавання тэксту з дапамогай Markdown
     settings: Налады
     dashboard: Галоўная
     unread: Непрачытаныя

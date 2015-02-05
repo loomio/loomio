@@ -190,6 +190,7 @@ sv:
     public_groups: Öppna grupper
     terms: Villkor
   inbox:
+    clear: Klar
     title: Inbox
     preferences: Inkorgsinställningar
     what_you_have_not_read_yet: Här är all oläst aktivitet.
@@ -278,9 +279,49 @@ sv:
       edit_comments: Redigera deras kommentarer när som helst
       edit_discussions: Redigera kontexten i någon av gruppens diskussioner
       start_discussions: Påbörja diskussioner
+      raise_motions: Höja förslag
       vote: Rösta på förslag
+      create_subgroups: Skapa undergrupper
+    motions_can_be_edited: Redigera sina förslag efter omröstning har startat
+    visible_to:
+      label: Vem kan hitta denna grupp?
+      public_html: "Någon <span>lista gruppen offentligt</span>"
+      parent_members_html: "Personer i %{parent_group_name} <span>onoterade för allmänheten, men synlig för medlemmar i %{parent_group_name}</span>"
+      members_html: "Endast medlemmar <span>gruppen kommer inte att listas</span>"
+    membership_granted_upon:
+      label: Hur gör människor går?
+      hidden_parent:
+        request_html: "Öppet <span>för medlemmar i %{parent_group_name}</span>"
+        approval_html: "På begäran <span>från medlemmar i %{parent_group_name}</span>"
+      request_html: "Öppet <span>vem som helst kan gå med i gruppen</span>"
+      approval_html: "På begäran <span>vem som helst kan gå med i gruppen</span>"
+    parent_members_can_see_discussions:
+      label: Diskussion sekretess
+      "false": Endast medlemmar kan se diskussioner
+    discussion_privacy_options:
+      label: Som kan se diskussioner?
+      hint: Offentliga diskussioner kan ses av vem som helst
+      public_only_html: Endast offentliga diskussioner
+      public_or_private_html: Låta offentliga och privata diskussioner
+      private_only_html: Endast privata diskussioner
+    learn_about_permissions: Reda på mer om grupptillstånd
   group_permissions:
+    header: Gruppbehörigheter
+    coordinators_can: "Koordinerare kan:"
+    c1: Ändra gruppinställningarna
+    c2: Redigera titel och sammanhang någon diskussion.
+    c3: Flytta diskussioner mellan grupper.
+    c4: Bjuda in och godkänna nya medlemmar.
+    c6: Deaktivera gruppen.
+    c8: Ta bort diskussioner.
+    c9: Ta bort kommentarer.
+    c10: Skapa undergrupper.
+    c11: Starta diskussioner.
+    c12: Höja förslag.
     c13: Rösta på förslag.
+    m1: Ta bort sina egna kommentarer.
+    m5: Redigera titel och sammanhang någon diskussion.
+    m7: Redigera sina egna kommentarer som helst.
   setup_steps_title: "Nästa steg:"
   setup_step_1: Titta på diksussionsexemplet
   setup_step_2: Starta din första diskussion
@@ -300,6 +341,7 @@ sv:
   message_placeholder: "Skriv ett meddelande till medlemmarna i %{which_group}."
   email_group_members: E-posta medlemmarna i gruppen
   edit_group_settings: Redigera gruppinställningarna
+  manage_members: Hantera medlemmar
   leave_group: Lämna gruppen
   confirm_leave_hidden_group: "Är du säker på att du vill lämna %{which_group}? Du kommer även att tas bort från alla undergrupper."
   confirm_leave_group: "Är du säker på att du vill lämna %{which_group}?"
@@ -318,6 +360,8 @@ sv:
   previous_requests: Tidigare önskemål
   approved_by_person: "Godkänd av %{person}"
   ignored_by_perosn: "Ignorerad av %{person}"
+  join_group_btn: Bli medlem i gruppen
+  you_have_joined_group: "Du har gått %{group_name}"
   confirm_approve_membership_request: "Är du säker på att du vill lägga till %{which_user} i gruppen?"
   cancel_membership_request: Begäran att ångra
   ignore_request: Ignorera förfrågan
@@ -348,10 +392,15 @@ sv:
   group_description: Gruppbeskrivning
   edit_group_description: Redigera gruppdiskussionen
   group_subscription: Gruppabonnemang
+  groups:
+    follow:
+      click_to_follow: Klicka för att följa gruppen
+      click_to_unfollow: Klicka för att sluta följa gruppen
   group_request:
     beta_request_header: Starta en grupp på Loomio Beta
     beta_request_description: Att starta en grupp är första steget i att börja ta beslut på Loomio Beta
     neighbourhood_support_group: t. ex. Stödgrupp i Grannskapet
+    please_select_an_option: Vänligen välj ett alternativ
     confirmation:
       title: "Du är nästan klar! Kolla din email."
       body_html: "Vi har skickat ett email till dig med en inbjudan att starta din grupp.\n\nOm du inte har fått något i din inbox inom några minuter, emaila oss på <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n\n"
@@ -377,11 +426,18 @@ sv:
   empty_decision_list_html: "Är ni redo att fatta beslut? <br> Vem som helst kan starta ett förslag."
   empty_decision_index: Denna grupp har ännu inte fattat några beslut.
   empty_discussion_list: Det finns ännu inga aktiviteter i denna diskussionen.
+  discussion_list:
+    filter_unread:
+      enable: Bara visa olästa diskussioner
+    filter_followed:
+      enable: Bara visa följde diskussioner
   discussion_context:
     started_html: "Startades %{when} av <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Redigerades senast %{when} av <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: Se revisionsloggen
     see_history: Se historik
+    click_to_follow: Klicka för att följa tråden
+    click_to_unfollow: Klicka för att sluta följa tråden
   description_history:
     header: Revisionslogg
     subheader: Version
@@ -439,6 +495,8 @@ sv:
       "no": höll inte med
       abstain: avstod
       block: blockerade
+  edit_comment:
+    edit_comment: Edit kommentar
   help:
     coordinating: Koordinera din Loomiogrupp
     coordinating_details: "Som koordinator är du ansvarig att administrera din Loomiogrupp och bjuda in\nalla deltagare. Förutom att lära sig använda en ny mjukvara, kommer din grupp \natt lära sig nya processer att samarbeta mer effektivt samt att fatta bra beslut \ntillsammans. Här är några tips för att hjälpa din grupp att lyckas:\n"
@@ -537,6 +595,8 @@ sv:
   join_group:
     log_in: "Logga in för att gå med i %{group_name}"
     create_account_to_join_group: "Skapa ett konto för att gå med i %{group_name}"
+  start_group:
+    create_account: Skapa ett konto
   invitation:
     alternate: "Alternativt, dela denna länken och vem som helst kan gå med:"
     by_email: Bjud in per email
@@ -592,6 +652,12 @@ sv:
     edit:
       header: Redigera diskussionen
   motion_form:
+    new:
+      header: Nytt förslag
+      submit: Skapa ett förslag
+    edit:
+      header: Redigera förslag
+      submit: Uppdatera förslag
     name_helper: Skriv rubriken så kort och tydligt som möjligt.
   vote_form:
     header: Ange din ståndpunkt
@@ -604,6 +670,7 @@ sv:
   new_user_form:
     create_an_account: Skapa ett konto
   profile_form:
+    view: Visa profil
     profile: Ändra profilen
     picture: Bild
     upload_new_image: Ladda upp en ny bild
@@ -693,6 +760,8 @@ sv:
       heading: Dina aktiviter i Loomio
       intro: Visar dig vad som har hänt i dina Loomiogrupper under de senaste 24 timmarna
       subject: Loomio - Sammanställning för de senaste 24 timmarna
+    missed_yesterday:
+      thanks_for_reading: "Tack för läsning, ha en bra dag!"
     group_email:
       intro: "%{who} gjorde ett upprop till  %{group}:"
     group_membership_approved:
@@ -713,6 +782,7 @@ sv:
       subject: "Förslag: %{proposal_title}"
       context: "%{author} skapade ett förslag i %{group_full_name}:"
     proposal_closed:
+      proposal_has_closed: Förslaget är stängt.
       specify_outcome_and_notify_group: "Skapa ett resultat och skicka det till din grupp!"
       specify_outcome_and_notify_group_html: "Skapa ett resultat och skicka det till din grupp!"
       subject: "Förslaget stängt - %{which}"
@@ -799,13 +869,67 @@ sv:
   time_until_close: "%{quantity_of_time} återstår till stängning"
   update: Uppdatera
   facebook: Facebook
+  yahoo: Yahoo
   google: Google
   persona: Persona
   common:
+    settings: Inställningar
+    dashboard: Instrumentbräda
     following: Följer
     not_following: Följer inte
+    back_to_discussion: Tillbaka till diskussion
     edited: Redigerad
     groups: Grupper
+    select_error: Vänligen välj ett alternativ
+    today: I dag
+    select: Vänligen välj
+    months:
+      january: Januari
+      february: Februari
+      march: Mars
+      april: April
+      may: Maj
+      june: Juni
+      july: Juli
+      august: Augusti
+      september: September
+      october: Oktober
+      november: November
+      december: December
+    days:
+      monday: Måndag
+      tuesday: Tisdag
+      wednesday: Onsdag
+      thursday: Torsdag
+      friday: Fredag
+      saturday: Lördag
+      sunday: Söndag
+    please_wait: Vänlig vänta
+    privacy: Sekretesspolicy
+    private: Privat
+    permissions: Behörigheter
+    public: Offentlig
     email: Email
     start_group: "Starta en grupp!"
+  group_categories:
+    economics: Ekonomi
+    activist: Aktivist
+    arts: Konst
+    business: Företag
+    democratic_organisation: Demokratisk organisation
+    education: Utbildning
+    family: Familj
+    local_government: Lokala regeringen
+    open_source_software: Öppen källkod
+    political_initiative: Politiskt initiativ
+    social_enterprise: Socialt företagande
+    social_justice: Social rättvisa
+    advocacy_group: Stödgrupp
+    science: Vetenskap
+    technology: Teknik
+    sports: Sport
+    youth: Ungdom
+    women: Kvinnor
+    media: Medier
+    health: Hälsa
   start_your_group: Starta din grupp

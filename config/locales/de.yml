@@ -2,7 +2,7 @@ de:
   users:
     email_preferences:
       edit:
-        title: eMail-Einstellungen
+        title: E-Mail Einstellungen
         when_do_you_want_emails: "Sende mir:"
         email_missed_yesterday: "\"Yesterday on Loomio\" - eine tägliche Zusammenfassung aller Aktivitäten, die ich verpasst habe"
         email_when_mentioned: "Wenn ich @erwähnt wurde"
@@ -46,6 +46,8 @@ de:
     mailer:
       invitation_instructions:
         subject: Jemand hat dich eingeladen einer Loomio-Gruppe beizutreten
+    registrations:
+      sign_up: Konto erstellen
   error:
     access_denied: "Du bist nicht berechtigt, das zu tun."
     cant_join_subgroup: "Du kannst keiner Untergruppe beitreten, solange Du kein Mitglied der Hauptgruppe bist."
@@ -189,8 +191,8 @@ de:
     terms: Bedingungen
   inbox:
     clear: Leeren
-    title: Eingang
-    preferences: Eingangs-Optionen
+    title: Posteingang
+    preferences: Posteingangs-Einstellungen
     what_you_have_not_read_yet: "Hier sind alle Aktivitäten, die Du noch nicht gelesen hast."
     dropdown-btn: Eingang
     empty: "Du bist auf dem neuesten Stand! Es gibt keine Kommentare, die Du noch nicht gesehen hast."
@@ -777,6 +779,7 @@ de:
         close_at_date: Wird geschlossen
       user:
         name: Vollständiger Name
+        username: Benutzername
         email: eMail
         password: Passwort
         password_confirmation: Passwort bestätigen
