@@ -3,12 +3,29 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     @singular: 'event'
     @plural: 'events'
     @foreignKey: 'eventId'
+    @eventTypeMap: {
+      'user_added_to_group':         'group',
+      'membership_request_approved': 'group',
+      'membership_requested':        'group',
+      'new_discussion':              'discussion',
+      'new_motion':                  'proposal',
+      'motion_closed':               'proposal',
+      'motion_closed_by_user':       'proposal',
+      'new_vote':                    'proposal',
+      'motion_closing_soon':         'proposal',
+      'motion_outcome_created':      'proposal',
+      'new_comment':                 'comment',
+      'comment_liked':               'comment',
+      'comment_replied_to':          'comment',
+      'user_mentioned':              'comment'
+    }
 
     initialize: (data) ->
       @id = data.id
       @kind = data.kind
       @sequenceId = data.sequence_id
       @commentId = data.comment_id
+      @groupId = data.group_id
       @discussionId = data.discussion_id
       @proposalId = data.proposal_id
       @membershipRequestId = data.membership_request_id
@@ -30,6 +47,9 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     membershipRequest: ->
       @recordStore.membership_requests.find(@membershipRequestId)
 
+    group: ->
+      @recordStore.groups.find(@groupId)
+
     discussion: ->
       @recordStore.discussions.find(@discussionId)
 
@@ -46,5 +66,8 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       @recordStore.users.find(@actorId)
 
     link: ->
-      switch @kind
-        when 'comment_liked' then "/discussions/#{@comment().discussion().key}##{@commentId}"
+      switch @constructor.eventTypeMap[@kind]
+        when 'group'      then "/g/#{@group().key}"
+        when 'discussion' then "/d/#{@discussion().key}"
+        when 'proposal'   then "/d/#{@proposal().discussion().key}#proposal-#{@proposalId}"
+        when 'comment'    then "/d/#{@comment().discussion().key}#comment-#{@commentId}"

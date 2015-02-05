@@ -1,29 +1,22 @@
-%li{dropdown: ''}
-  %a.loomio-nav-btn.dropdown-toggle
-    %i.fa.fa-lg.fa-fw.fa-search
-  .dropdown-menu.loomio-nav-dropdown#search-dropdown{role: 'menu'}
-    .navbar-search-input
-      %input.form-control{ng-click: '$event.stopPropagation()', ng-model: 'query', ng-change: 'getSearchResults(query)', ng-model-options: "{debounce: 300}", placeholder: "{{ 'navbar.search.placeholder' | translate }}"}
-    %ul.selector-list
-      %li.selector-list-header{ng-show: '(availableGroups() | filter: { name: query }).length > 0'}
+%li.navbar-search
+  .navbar-search-input
+    %input.form-control{ng-click: '$event.stopPropagation()', ng-model: 'query', ng-change: 'getSearchResults(query)', placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: 'showDropdown()', ng-blur: 'hideDropdown()'}
+    %i.fa.fa-lg.fa-fw.fa-search.navbar-search-input-icon{ng-hide: 'query'}
+    %i.fa.fa-lg.fa-fw.fa-times.navbar-search-input-icon{ng-show: 'query', ng-click: 'clear(true)'}
+  .navbar-search-results{ng-show: 'dropdown || query'}
+    %ul.group-selector-list.selector-list
+      %li.navbar-search-list-item.selector-list-header{ng-show: '(availableGroups() | filter: { name: query }).length > 0'}
         %h3{translate: "common.groups"}
-      %li.selector-list-item.media{ng_repeat: 'group in availableGroups() | filter: { name: query } | orderBy: "fullName()"', class: 'is-subgroup-{{group.parentId != null}}'}
+      %li.navbar-search-list-item.selector-list-item.media{ng-repeat: 'group in availableGroups() | filter: { name: query } | orderBy: "fullName()"', class: 'is-subgroup-{{group.parentId != null}}', ng-click: 'clear(false)'}
         %a.selector-list-item-link{href: '/g/{{group.key}}'}
           .media-left
             %img.selector-list-item-group-logo{src: "{{group.logoUrl()}}"}
           .selector-list-item-group-name.media-body {{group.fullName()}}
-      %li.selector-list-item.search-loading{ng-show: 'searching', translate: 'navbar.search.loading'}
-      %li.selector-list-item.no-results-found{ng-show: 'noResultsFound()', translate: 'navbar.search.no_results'}
+    %ul.thread-list.selector-list{ng-show: 'query'}
+      %li.navbar-search-list-item.selector-list-item.search-loading{ng-show: 'searching', translate: 'navbar.search.loading'}
+      %li.navbar-search-list-item.selector-list-item.no-results-found{ng-show: 'noResultsFound()', translate: 'navbar.search.no_results'}
       %div{ng-hide: 'searching || noResultsFound()'}
-        %li.selector-list-header{ng-show: 'discussions.length > 0'}
+        %li.navbar-search-list-item.selector-list-header{ng-show: 'searchResults'}
           %h3{translate: "navbar.search.discussions"}
-        %li.selector-list-item.media{ng-hide: 'searching', ng-repeat: 'searchResult in discussions | orderBy: "priority"'}
-          %navbar_search_discussion{discussion: 'searchResult.result()'}
-        %li.selector-list-header{ng-show: 'proposals.length > 0'}
-          %h3{translate: "navbar.search.proposals"}
-        %li.selector-list-item.media{ng-hide: 'searching', ng-repeat: 'searchResult in proposals | orderBy: "priority"'}
-          %navbar_search_proposal{proposal: 'searchResult.result()'}
-        %li.selector-list-header{ng-show: 'comments.length > 0'}
-          %h3{translate: "navbar.search.comments"}
-        %li.selector-list-item.media{ng-hide: 'searching', ng-repeat: 'searchResult in comments | orderBy: "priority"'}
-          %navbar_search_comment{comment: 'searchResult.result()'}
+        %li.navbar-search-list-item.selector-list-item.media{ng-hide: 'searching', ng-repeat: 'searchResult in searchResults | orderBy:priority'}
+          %navbar_search_result{result: 'searchResult'}

@@ -4,13 +4,14 @@ class MotionService
     actor.ability.authorize! :create, motion
     return false unless motion.valid?
     motion.save!
+    SearchService.sync! motion.discussion_id
     DiscussionReader.for(discussion: motion.discussion, user: actor).follow!
     Events::NewMotion.publish!(motion)
   end
 
   def self.update(motion:, params:, actor:)
 
-    if motion.closing_at.to_s == Time.zone.parse(params[:closing_at]).to_s
+    if params[:closing_at] && motion.closing_at.to_s == Time.zone.parse(params[:closing_at]).to_s
       params.delete(:closing_at)
     end
 
@@ -19,6 +20,8 @@ class MotionService
     actor.ability.authorize! :update, motion
 
     if motion.valid?
+      sync_search_vector = motion.name_changed? || motion.description_changed?
+
       if motion.name_changed?
         Events::MotionNameEdited.publish!(motion, actor)
       end
@@ -30,7 +33,9 @@ class MotionService
       if motion.closing_at_changed?
         Events::MotionCloseDateEdited.publish!(motion, actor)
       end
+
       motion.save
+      SearchService.sync! motion.discussion_id if sync_search_vector
     else
       false
     end

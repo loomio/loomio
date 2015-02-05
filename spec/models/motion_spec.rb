@@ -3,8 +3,6 @@ require 'rails_helper'
 describe Motion do
   let(:discussion) { create :discussion }
 
-  it_behaves_like Searchable
-
   describe "#unique_votes" do
     it "returns only the most recent votes of a user for a motion" do
       user = FactoryGirl.create :user

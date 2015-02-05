@@ -1,10 +1,20 @@
-angular.module('loomioApp').controller 'NavbarSearchController', ($scope, UserAuthService, Records, SearchResultModel) ->
+angular.module('loomioApp').controller 'NavbarSearchController', ($scope, $timeout, UserAuthService, Records, SearchResultModel) ->
   $scope.searchResults = []
-  $scope.discussions   = []
-  $scope.proposals     = []
-  $scope.comments      = []
-
   $scope.searching = false
+
+  $scope.clear = (showDropdown) ->
+    $scope.query = null
+    if showDropdown
+      angular.element('.navbar-search-input input').focus()
+      $scope.showDropdown()
+    else
+      $scope.hideDropdown()
+
+  $scope.showDropdown = ->
+    $scope.dropdown = true
+
+  $scope.hideDropdown = ->
+    $timeout (-> $scope.dropdown = false), 100
 
   $scope.noResultsFound = ->
     !$scope.searching && $scope.searchResults.length == 0
@@ -14,11 +24,10 @@ angular.module('loomioApp').controller 'NavbarSearchController', ($scope, UserAu
 
   $scope.getSearchResults = (query) ->
     if query?
+      $scope.currentSearchQuery = query
       $scope.searching = true
       Records.search_results.fetchByFragment($scope.query).then (response) ->
         $scope.searchResults = _.map response.search_results, (result) ->
           Records.search_results.initialize result
-        $scope.discussions = _.filter $scope.searchResults, (result) -> result.isDiscussion()
-        $scope.proposals   = _.filter $scope.searchResults, (result) -> result.isProposal()
-        $scope.comments    = _.filter $scope.searchResults, (result) -> result.isComment()
-        $scope.searching = false
+        if $scope.currentSearchQuery == query
+          $scope.searching = false

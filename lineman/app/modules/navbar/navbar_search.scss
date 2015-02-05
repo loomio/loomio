@@ -1,0 +1,27 @@
+.navbar-search {
+  position: relative;
+}
+
+.navbar-search-input {
+  position: relative;
+  width: 300px;
+}
+
+.navbar-search-input-icon {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+
+.navbar-search-results {
+  position: absolute;
+  top: 48px;
+  left: 5px;
+  text-align: left;
+  min-width: 500px;
+  box-shadow: 2px 2px 2px #ccc;
+}
+
+.navbar-search-list-item {
+  background: white;
+}

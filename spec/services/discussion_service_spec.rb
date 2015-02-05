@@ -38,6 +38,12 @@ describe 'DiscussionService' do
     context 'the discussion is valid' do
       before { discussion.stub(:valid?).and_return(true) }
 
+      it 'syncs the discussion search vector' do
+        SearchService.should_receive(:sync!).with(discussion.id)
+        DiscussionService.create(discussion: discussion,
+                                 actor: user)
+      end
+
       it 'fires a NewDiscussion event' do
         Events::NewDiscussion.should_receive(:publish!).with(discussion).and_return(true)
         DiscussionService.create(discussion: discussion,
@@ -95,6 +101,13 @@ describe 'DiscussionService' do
 
       it 'publishes a description changed event' do
         expect(Events::DiscussionTitleEdited).to receive :publish!
+        DiscussionService.update discussion: discussion,
+                                 params: discussion_params,
+                                 actor: user
+      end
+
+      it 'syncs the discussion search vector' do
+        SearchService.should_receive(:sync!).with(discussion.id)
         DiscussionService.update discussion: discussion,
                                  params: discussion_params,
                                  actor: user

@@ -1,7 +1,6 @@
 class Comment < ActiveRecord::Base
   include Twitter::Extractor
   include Translatable
-  include Searchable
 
   has_paper_trail
   acts_as_tree

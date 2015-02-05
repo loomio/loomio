@@ -3,15 +3,10 @@ describe API::SearchResultsController do
 
   let(:user)    { create :user }
   let(:group)   { create :group }
-  let(:find_me_discussion) { create :discussion, group: group, title: 'find_me_discussion_title', description: 'find_me_discussion_desc' }
-  let(:miss_me_discussion) { create :discussion, group: group, title: 'miss_me_discussion_title', description: 'miss_me_discussion_desc' }
-  let(:find_me_motion) { create :motion, discussion: find_me_discussion, name: 'find_me_motion_title', description: 'find_me_motion_desc'}
-  let(:miss_me_motion) { create :motion, discussion: find_me_discussion, name: 'miss_me_motion_title', description: 'miss_me_motion_desc'}
-  let(:find_me_comment) { create :comment, discussion: find_me_discussion, body: 'find_me_comment_body'}
-  let(:miss_me_comment) { create :comment, discussion: find_me_discussion, body: 'miss_me_comment_bidy'}
-  let(:secure_discussion) { create :discussion, title: 'miss_me_discussion_secure' }
-  let(:secure_motion) { create :motion, name: 'miss_me_motion_secure' }
-  let(:secure_comment) { create :comment, body: 'miss_me_comment_secure' }
+  let(:discussion) { create :discussion, group: group }
+  let(:active_motion) { create :current_motion, discussion: discussion }
+  let(:closed_motion) { create :motion, discussion: discussion, closed_at: 2.days.ago }
+  let(:comment) { create :comment, discussion: discussion }
 
   describe 'index' do
     before do
@@ -19,48 +14,97 @@ describe API::SearchResultsController do
       sign_in user
     end
 
-    it "filters by discussion" do
-      find_me_discussion; miss_me_discussion
-      get :index, q: 'find', format: :json
-      json = JSON.parse(response.body)
-      expect(json.keys).to include *(%w[discussions search_results])
-      discussion_ids        = fields_for(json, 'discussions', 'id')
-
-      expect(discussion_ids).to include find_me_discussion.id
-      expect(discussion_ids).to_not include miss_me_discussion.id
+    it 'does not find irrelevant threads' do
+      json = search_for('find')
+      discussion_ids = fields_for(json, 'search_results', 'discussion').map { |d| d['id'].to_i }
+      expect(@discussion_ids).to_not include discussion.id
     end
 
-    it "filters by motion" do
-      find_me_motion; miss_me_motion
-      get :index, q: 'find', format: :json
-      json = JSON.parse(response.body)
-      expect(json.keys).to include *(%w[proposals search_results])
-      proposal_ids        = fields_for(json, 'proposals', 'id')
+    it "can find a discussion by title" do
+      DiscussionService.update discussion: discussion, params: { title: 'find me' }, actor: user
+      search_for('find')
 
-      expect(proposal_ids).to include find_me_motion.id
-      expect(proposal_ids).to_not include miss_me_motion.id
+      expect(@discussion_ids).to include discussion.id
+      expect(@priorities).to include 1
     end
 
-    it "filters by comment" do
-      find_me_comment; miss_me_comment
-      get :index, q: 'find', format: :json
-      json = JSON.parse(response.body)
-      expect(json.keys).to include *(%w[comments search_results])
-      comment_ids        = fields_for(json, 'comments', 'id')
+    it "can find a discussion by description" do
+      DiscussionService.update discussion: discussion, params: { description: 'find me' }, actor: user
+      search_for('find')
 
-      expect(comment_ids).to include find_me_comment.id
-      expect(comment_ids).to_not include miss_me_comment.id
+      expect(@discussion_ids).to include discussion.id
+      expect(@priorities).to include 0.2
+    end
+
+    it "can find a discussion by active proposal name" do
+      active_motion.update name: 'find me'
+      SearchService.sync! active_motion.discussion_id
+      search_for('find')
+
+      expect(@discussion_ids).to include discussion.id
+      expect(@motion_ids).to include active_motion.id
+      expect(@priorities).to include 0.4
+    end
+
+    it "can find a discussion by active proposal description" do
+      active_motion.update description: 'find me'
+      SearchService.sync! closed_motion.discussion_id
+      search_for('find')
+
+      expect(@discussion_ids).to include discussion.id
+      expect(@motion_ids).to include active_motion.id
+      expect(@priorities).to include 0.2
+    end
+
+    it "can find a discussion by closed proposal name" do
+      closed_motion.update name: 'find me'
+      SearchService.sync! closed_motion.discussion_id
+      search_for('find')
+
+      expect(@discussion_ids).to include discussion.id
+      expect(@motion_ids).to include closed_motion.id
+      expect(@priorities).to include 0.2
+    end
+
+    it "can find a discussion by closed proposal description" do
+      closed_motion.update description: 'find me'
+      SearchService.sync! closed_motion.discussion_id
+      search_for('find')
+
+      expect(@discussion_ids).to include discussion.id
+      expect(@motion_ids).to include closed_motion.id
+      expect(@priorities).to include 0.1
+    end
+
+    it "can find a discussion by comment body" do
+      comment.update body: 'find me'
+      SearchService.sync! comment.discussion_id
+      result = search_for('find')
+      expect(@discussion_ids).to include discussion.id
+      expect(@comment_ids).to include comment.id
+      expect(@priorities).to include 0.1
     end
 
     it "does not display content the user does not have access to" do
-      secure_discussion; secure_motion; secure_comment
-      get :index, q: 'secure', format: :json
-      json = JSON.parse(response.body)
-      expect(json['search_results']).to eq []
+      DiscussionService.update discussion: discussion, params: { group: create(:group) }, actor: user
+      search_for('find')
+
+      expect(@discussion_ids).to_not include discussion.id
     end
   end
 end
 
 def fields_for(json, name, field)
   json[name].map { |f| f[field] }
+end
+
+def search_for(term)
+  get :index, q: term, format: :json
+  JSON.parse(response.body).tap do |json|
+    expect(json.keys).to include *(%w[search_results])
+    @discussion_ids = fields_for(json, 'search_results', 'discussion').map { |d| d['id'].to_i }
+    @motion_ids     = fields_for(json, 'search_results', 'proposals').flatten.map { |p| p['id'].to_i }
+    @comment_ids    = fields_for(json, 'search_results', 'comments').flatten.map { |c| c['id'].to_i }
+    @priorities     = fields_for(json, 'search_results', 'priority').map(&:to_f)
+  end
 end
