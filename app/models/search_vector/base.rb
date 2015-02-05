@@ -2,6 +2,8 @@ class SearchVector::Base < ActiveRecord::Base
   self.abstract_class = true
 
   def self.search_for(query, user: nil, limit: 5)
+    return [] if (visible_results = visible_results_for(user)).empty?
+
     connection.execute(sanitize_sql_array [
       "SELECT     id, #{ranking_algorithm} as rank, :query as query
        FROM (
@@ -10,7 +12,7 @@ class SearchVector::Base < ActiveRecord::Base
           WHERE   search_vector @@ to_tsquery(:query)
        ) vectors
        INNER JOIN #{model_table_name} model ON model.id = vectors.#{resource_class_id}
-       AND        model.#{visibility_column} IN (#{visible_results_for(user).join(',')})
+       AND        model.#{visibility_column} IN (#{visible_results.join(',')})
        ORDER BY   rank, created_at DESC
        LIMIT      :limit", query: query, limit: limit
     ]).map { |result| build_search_result result }

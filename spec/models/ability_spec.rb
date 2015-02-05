@@ -264,7 +264,7 @@ describe "User abilities" do
 
     context "members_can_not_edit_comments" do
       before do
-        group.members_can_edit_comments = false
+        group.update members_can_edit_comments: false
       end
       context "is most recent comment" do
         it { should be_able_to(:update, user_comment) }
@@ -281,14 +281,14 @@ describe "User abilities" do
 
     context "members_can_edit_discussions" do
       before do
-        group.members_can_edit_discussions = true
+        group.update members_can_edit_discussions: true
       end
       it { should be_able_to(:update, discussion) }
     end
 
     context "members_can_not_edit_discussions" do
       before do
-        group.members_can_edit_discussions = false
+        group.update members_can_edit_discussions: false
       end
       it { should_not be_able_to(:update, discussion) }
     end
