@@ -13,6 +13,7 @@ describe TranslationsController do
       app_controller.stub(:authorize!).and_return(true)
       TranslationService.any_instance.stub(:translate).and_return(translation)
       TranslationService.stub(:available?).and_return(true)
+      Discussion.stub(:find_by_key!).and_return(discussion)
     end
 
     it "successfully translates a comment" do
