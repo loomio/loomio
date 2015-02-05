@@ -90,6 +90,7 @@ class Vote < ActiveRecord::Base
   end
 
   def age_previous_votes
+    Vote.connection.execute("SET CONSTRAINTS vote_age_per_user_per_motion DEFERRED")
     motion.votes.where(user_id: user_id).update_all('age = age + 1')
   end
 
