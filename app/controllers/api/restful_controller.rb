@@ -126,7 +126,7 @@ class API::RestfulController < API::BaseController
 
   def respond_with_resource
     if resource.errors.empty?
-      if @event
+      if @event.is_a? Event
         render json: [@event], root: 'events', each_serializer: EventSerializer
       else
         render json: [resource], root: serializer_root
