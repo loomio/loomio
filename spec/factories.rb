@@ -179,4 +179,6 @@ FactoryGirl.define do
     fields {{ body: 'Successful translation' }}
   end
 
+  factory :search_result
+
 end

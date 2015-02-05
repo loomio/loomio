@@ -30,7 +30,7 @@ describe Comment do
 
   describe "#destroy" do
     it "calls discussion.commented_deleted!" do
-      discussion.should_receive(:comment_deleted!)
+      expect(comment.discussion).to receive(:comment_deleted!)
       comment.destroy
     end
   end

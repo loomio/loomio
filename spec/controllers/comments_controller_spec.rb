@@ -11,24 +11,17 @@ describe CommentsController do
     before do
       sign_in user
       group.add_member! user
-      Comment.stub(:find).and_return(comment)
     end
 
-
     context "user likes a comment" do
-      before do
-        @comment_vote = mock_model(CommentVote)
-        comment.stub(:like, :like => true).and_return(@comment_vote)
-        Events::CommentLiked.stub(:publish!)
-      end
-
       it "adds like to comment model" do
-        comment.should_receive(:like).with(user)
+        expect(comment.likes_count).to eq 0
         post :like, id: comment.id, like: 'true', format: :js
+        expect(comment.reload.likes_count).to eq 1
       end
 
       it "fires comment_liked! event" do
-        Events::CommentLiked.should_receive(:publish!).with(@comment_vote)
+        Events::CommentLiked.should_receive(:publish!)
         post :like, id: comment.id, like: 'true', format: :js
       end
     end

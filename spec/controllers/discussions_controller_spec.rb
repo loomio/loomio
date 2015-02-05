@@ -86,10 +86,10 @@ describe DiscussionsController do
           d = FactoryGirl.create :discussion, group: g1
           Group.stub(:find).with(g2.key).and_return(g2)
           Discussion.stub_chain(:published, :find_by_key!).with(d.key).and_return(d)
-          
-          g1.stub(:admins).and_return([user])
-          g2.stub(:admins).and_return([other_user])
-          g2.stub(:members).and_return([user])
+
+          g1.admins << user
+          g2.admins << other_user
+          g2.members << user
 
           post :move, id: d.key, destination_group_id: g2.key
 
