@@ -1,11 +1,25 @@
 uk:
+  users:
+    email_preferences:
+      edit:
+        title: Налаштування електронної пошти
+        when_do_you_want_emails: "Напишіть мені:"
+        email_missed_yesterday: "\"Вчора на Loomio\" - щоденний підсумок пропущеної активності"
+        email_when_mentioned: "Коли мене @згадують"
+        email_followed_threads: "Коли в обговореннях, за якими я слідкую, є активність."
+        email_when_proposal_closing_soon: За 24 години до закриття пропозиції
+        email_new_discussions_and_proposals: Нові обговорення та пропозиції
+        for_these_groups: "Для таких груп:"
+        submit: Зберегти налаштування
   explore:
-    header: Перегляньте публічні групи
+    header: Переглянути відкриті групи
   try_it:
-    header: Спробуйте Луміо
+    header: Спробуйте Loomio
     start_a_group: Створіть групу для прийняття рішень у вашій спільноті.
+    join_the_community: Долучитися то Групи спільноти Loomio
     loomio_community_info: "Саме тут ми обоговорюємо питання, та приймаємо рішення щодо Луміо."
     explore_groups: Перегляньте інші групи на Луміо
+    explore_groups_info: "Знайдіть багато чудових груп на Loomio та приєднуйтеся до них!"
   activerecord:
     errors:
       messages:
@@ -26,11 +40,14 @@ uk:
   devise:
     invitations:
       send_instructions: "Запрошення було надіслане до %{email}."
+      invitation_token_invalid: "Це запрошення більше не діє!"
       updated: Обліковий запис створено.
       no_invitations_remaining: Запрошень більше немає
     mailer:
       invitation_instructions:
         subject: Дехто запросив Вас приєднатися до групи в Loomio
+    registrations:
+      sign_up: Створити обліковий запис
   error:
     access_denied: Бракує прав для цієї дії.
     cant_join_subgroup: "Якщо Ви не є членом головної групи, ви не можете приєднатися до підгрупи"
@@ -56,6 +73,7 @@ uk:
     group_request_invalid_token: "Вибачте! Цей номер не валідний"
     group_private_or_not_found: "Груап не знайдена\n\n\nГрупа може бути приватна. Якщо хтось надав вам це посилання, попросіть його (її) запросити Вас до цієї групи."
     group_already_setup: "Група, що Ви намагаєтесь створити, вже існує"
+    passwords_did_not_match: Пароль і підтвердження не співпадають
     proposal_already_exists: В цьому обговоренні вже є відкрита пропозиція
     user_with_email_address_already_in_group: Учасник з такой адресою електронної пошти вже присутній у цій групі
     you_have_already_requested_membership: Ви вже надіслали запит на участь у цій групі.
@@ -64,6 +82,7 @@ uk:
   alert:
     duplicate_email: "%{which_email} вже входить у групу."
   notice:
+    new_contacts_imported: "Все працює! Почніть вводити імена в полі нижче, а ми підкажемо адреси електронної пошти."
     admin_rights_removed: "%{which_user} більше не координатор."
     user_added: "%{user_email_or_name} було додано до групи."
     new_user_added: "%{user_email_or_name} буде доданий до групи після створення Loomio акаунта."
@@ -77,6 +96,11 @@ uk:
     comment_deleted: Коментар видалено.
     invitations:
       auto_added_and_sent: "%{auto_added_text} та %{sent_text}"
+  tooltip:
+    cover_photo_upload: Додати нове фото на обкладинку
+    logo_upload: Завантажити новий логотип
+    edit_description: Змінити опис
+    group_category: Знайти ще подібних груп
   views:
     pagination:
       previous: Попередня
@@ -105,6 +129,7 @@ uk:
     motion_closed: "Пропозицію закрито. Якщо ви хочете, нижче ви можете оголосити результат та надіслати його до вашої групи."
     motion_outcome_created: "Поздоровляємо! Ви визначили результат пропозиції та члени вашої групи були повідомлені про це."
     motion_outcome_updated: Результат пропозиції було оновлено
+    password_updated: Ваш пароль успішно змінено
     position_submitted: Ставлення збережено.
     position_updated: Ставлення оновлено.
     proposal_created: Пропозицію створено успішно.
@@ -151,6 +176,10 @@ uk:
         one: "%{count} рік"
         few: "%{count} роки"
         other: "%{count} років"
+  organisation:
+    name: Loomio
+  sr:
+    toggle_navigation: Увімкнути навігацію
   footer:
     about: Про Loomio
     blog: Блог
@@ -159,10 +188,16 @@ uk:
     public_groups: Публічні групи
     terms: Умови
   inbox:
+    clear: Очистити
+    title: Вхідні
+    preferences: Налаштування вхідних повідомлень
+    what_you_have_not_read_yet: "Ось активність, яку ви ще не бачили"
     dropdown-btn: Поштова скринька
     empty: "Усі повідомлення преглянуті!"
   notifications:
     header: Оповіщення
+    new_discussion: почав(ла) дискусію
+    new_motion: створив(ла) пропозицію
     motion_closed:
       by_user: закрив(ла) пропозицію
       by_expiry: Пропозицію закрито
@@ -183,6 +218,8 @@ uk:
   start_new_group_hint: Почати прийняття рішень
   find_a_group: Знайти групу
   find_a_group_hint: Переглянути відкриті групи
+  search_for_group: Шукати групу...
+  no_groups_found: "Груп із таким іменем не знайдено!"
   no_group_header: Ласкаво просимо до Loomio Beta
   empty_notifications: У Вас немає наразі жодних оповіщень.
   see_all_notifications: Переглянути всі оповіщення
@@ -204,12 +241,54 @@ uk:
     message: "<p>Це <strong>сторінка групи</strong>. Зліва - список дискуссій групи.</p><p>Якщо Ви хочете обговорити іншу тему, почніть нову дискусію.</p>"
   dashboard_helper_text:
     header: Ласкаво просимо до твоєї домашньої сторінки
+    message: "<p>Домашня сторінка відображає усі поточні дискусії у всіх групах, де ви є учасником.</p> \n<p>Ви можете почати дискусію з новою темою, натиснувши кнопку \"Початок дискусії\".</p>"
   prompt_visitor_to_authenticate:
     header: "Авторизуйтесь або долучіться до групи, щоб приймати участь у дискусіях"
     body: "Якщо ви є членом цієї групи, вам потрібно авторизуватись, щоб приймати участь у дискусіях."
   prompt_user_to_join:
     header: "Приєднуйтесь до групи, щоб брати участь у дискусіях"
     body: "Щоб коментувати або голосувати, вам потрібно бути членом цієї групи."
+  user_profile:
+    back: Повернутися до мого профілю
+    change_password: Змінити пароль
+    deactivate_account: Деактивувати обліковий запис
+    about_deactivation: Що це означатиме?
+    confirm_account_deactivation: "Ви впевнені, що хочете деактивувати ваш запис?"
+    deactivation:
+      title: Деактивація облікового запису
+      query: "Чи могли б ви розповісти, чому ви хочете деактивувати обліковий запис?"
+      only_coordinator: "Група повинна мати хоча б одного координатора. Ви — єдиний координатор наступних груп:"
+      instructions: "Щоб деактивувати ваш обліковий запис, вам потрібно додати по одному координатору в кожну групу, або деактивувати їх."
+      info_title: Що означатиме деактивація облікового запису?
+      memberships: "Ви більше не знаходитиметесь серед учасників будь-яких груп, в яких ви нині є членом."
+      group_contributions: "Коментарі, пропозиції та обговорення, які ви зробили в групах, залишаться, але з них зникне ваше ім’я."
+      emails: "Ми білше не будемо висилати вам розсилки, пов’язані з Loomio."
+  group_form:
+    name: Назва групи
+    description: Опис
+    category: Категорія
+    confirm_all_discussions_will_be_made_private_message: "Якщо ви продовжите, всі ваші відкриті обговорення стануть приватними."
+    confirm_all_discussions_will_be_made_public_message: "Ви впевнені? Якщо ви продовжите, всі ваші відкриті обговорення стануть приватними."
+    what_can_members_do: Що можуть робити учасники?
+    members_can:
+      add_members: Запрошувати та затверджувати інших учасників.
+      edit_comments: Редагувати свої коментарі будь-коли
+      edit_discussions: Редагувати контекст будь-якого обговорення в групі
+      start_discussions: Розпочинати обговорення
+      raise_motions: Вносити пропозиції
+      vote: Голосувати за пропозиції
+      create_subgroups: Створювати підгрупи
+    motions_can_be_edited: Редагувати пропозиції після початку голосування
+    visible_to:
+      label: Хто може знайти цю групу?
+    membership_granted_upon:
+      label: Як прийняти участь?
+    parent_members_can_see_discussions:
+      label: Приватність обговорення
+      "true": "Будь-хто із групи %{parent_group_name} може бачити обговорення"
+      "false": Тільки учасники бачать обговорення
+    discussion_privacy_options:
+      label: Хто може бачити обговорення?
   setup_steps_title: "Наступні кроки:"
   setup_step_1: Переглянути приклад дискусії
   setup_step_2: Розпочати Вашу першу дискусію
@@ -295,6 +374,7 @@ uk:
   previous_decisions: Попереднє рішення
   see_previous_decisions: Переглянути попередні рішення
   see_more: Дізнатись більше
+  create_new_proposal: Створити пропозицію
   empty_decision_list_html: "Готові приймати рішення? <br> Будь-хто може розпочати з пропозиції"
   empty_decision_index: Ця група ще не прийняла жодного рішення
   empty_discussion_list: Жодних подій в цьому обговоренні
@@ -302,6 +382,7 @@ uk:
     started_html: "<a href='%{link}' class='%{link_class}'>%{who}</a> почав цю дискусію %{when} тому"
     last_edited_html: "<a href='%{link}' class='%{link_class}'>%{who}</a> вніс останні зміни %{when} тому"
     see_revision_history: Переглянути історію правок
+    see_history: Переглянути історію
   description_history:
     header: Історія правок
     subheader: Версія
@@ -522,8 +603,12 @@ uk:
   new_user_form:
     create_an_account: Створити обліковий запис
   profile_form:
+    view: Переглянути профіль
     profile: Редагувати профіль
     picture: Картинка
+    use_initials: Використовувати ініціали
+    use_uploaded: Використати завантажене зображення
+    use_gravtar: Використати Gravatar
     upload_new_image: Завантажити нове зображення
   group_setup:
     set_up_your_group: Настройки групи
@@ -554,6 +639,7 @@ uk:
         close_at_date: Закривається
       user:
         name: Повне Ім’я
+        username: Ім’я користувача
         email: Електронна пошта
         password: Пароль
         password_confirmation: Підтвердити пароль
@@ -563,6 +649,7 @@ uk:
         admin_email: Ваша email-адреса?
         name: Назва вашої групи?
         description: "Якщо маєте час, розкажіть нам про свою групу"
+        is_commercial: Де ви плануєте використовувати Loomio?
     placeholders:
       membership_request:
         introduction: "Напишіть декілька слів про себе і про те, чому ви хочете долучитися до %{group_name}."
@@ -585,6 +672,8 @@ uk:
         create: Створити обліковий запис
         update: Оновити налаштування
   email:
+    by_who: "користувачем %{person}"
+    reply_to_this_discussion: Відповісти в цьому обговоренні
     to_join_discussion:
       subject: "%{who} запрошує вас приєднатись до дискусії у Loomio"
       content: "Вас було запрошено до дискусії: %{discussion}"
@@ -603,6 +692,8 @@ uk:
     view_discussion: Натисніть тут для перегляду дискусії
     view_group: Натисніть тут щоб переглянути групу на Loomio
     view_proposal: Переглянути цю пропозицію на Loomio
+    create_discussion:
+      intro: "%{who} почав(ла) дискусію у %{which_group}:"
     create_proposal:
       intro: "В групі на Loomio, де ви є учасником, створено нову пропозицію."
       closes_in: Закривається через
@@ -611,6 +702,10 @@ uk:
       heading: Ваші дії на Loomio
       intro: "Відображає, що відбулося у твоїй Loomio групі за останні 24 років"
       subject: Loomio - Підсумки останніх 24 годин
+    missed_yesterday:
+      subject: Вчора на Loomio
+      mark_as_read: Відмітити як прочитане
+      thanks_for_reading: "Дякуємо за читання, гарного дня!"
     group_email:
       intro: "%{who} опублікував оголошення в %{group}:"
     group_membership_approved:
@@ -644,10 +739,17 @@ uk:
       closes_in: Буде закрито через
       headline: "Пропозицію %{author} у групі %{group} скоро буде закрито:"
       summary: Підсумок
+    thread_mailer:
+      change_preferences: "Змінити Ваші налаштування електронної пошти:"
+      new_motion: "%{who} запропонував(ла)"
+      motion_closing_soon: Пропозиція закривається через 24 години
+      proposal_closed: "Пропозиція закрита:"
     verification:
       header: "Ви майже впоралися!"
       intro: "Будь ласка натисніть на посилання підтвердження щоб завершити Ваш запит:"
       ignore: "Якщо Ви не намагалися приєднатись до Loomio, не звертайте уваги на це повідомлення"
+  meta_tags:
+    default_title: "Loomio | Спільне прийняття рішень"
   about_loomio: Про Loomio
   ago: "%{quantity_of_time} назад"
   approve: Підтримую
@@ -690,8 +792,12 @@ uk:
   prev: Попередня
   more: Бiльше...
   translate: "Допоможіть перекласти Loomio!"
+  translate_field: Подивитись переклад
+  loading_translation: Завантаження перекладу...
   translate_this_string: "Перекласти на %{language}"
+  failed_translation: Неможливо виконати переклад
   options: Опції
+  rss_subscribe: Підписатися на стрічку
   ok_got_it: "Зрозуміло!"
   remove: Видалити
   save: Зберегти
@@ -706,9 +812,114 @@ uk:
   terms_of_service_html: "Натиснувши на %{button_text}, ви погоджуєтесь із <a href='%{link_path}' target='_blank'>Умовами використання</a> Loomio"
   thanks: "Дякуємо!"
   unlike: Не подобається
+  time_until_close: "%{quantity_of_time} до закриття"
   update: Оновити
   facebook: Facebook
+  yahoo: Yahoo
   google: Google
   persona: Персона
   common:
+    markdown_help_tooltip: Навчіться основам форматування тексту за допомогою мови Markdown
+    settings: Налаштування
+    dashboard: Майстерня
+    unread: Непрочитані
+    filter: "Фільтр:"
+    following: Відслідковується
+    not_following: Не відслідковується
+    back_to_discussion: Назад до обговорення
+    edited: Відредаговано
+    groups: Групи
+    select_error: "Будь ласка, оберіть опцію"
+    today: Сьогодні
+    select: "Будь ласка, оберіть"
+    months:
+      january: Січень
+      february: Лютий
+      march: Березень
+      april: Квітень
+      may: Травень
+      june: Червень
+      july: Липень
+      august: Серпень
+      september: Вересень
+      october: Жовтень
+      november: Листопад
+      december: Грудень
+    abbr_months:
+      jan: січ
+      feb: лют
+      mar: бер
+      apr: кві
+      may: тра
+      jun: чер
+      jul: лип
+      aug: сер
+      sep: вер
+      oct: жов
+      nov: лис
+      dec: гру
+    days:
+      monday: Понеділок
+      tuesday: Вівторок
+      wednesday: Середа
+      thursday: Четвер
+      friday: "П'ятниця"
+      saturday: Субота
+      sunday: Неділя
+    abbr_days:
+      mon: Пон
+      tue: Вів
+      wed: Сер
+      thu: Чет
+      fri: Пят
+      sat: Суб
+      sun: Нед
+    tiny_days:
+      mo: Пн
+      tu: Вт
+      we: Ср
+      th: Чт
+      fr: Пт
+      sa: Сб
+      su: Нд
+    meridians:
+      am: дп
+      pm: пп
+    please_wait: Просимо зачекати
+    privacy: Приватність
+    private: Приватно
+    permissions: Права
+    public: Публічно
     email: Електронна пошта
+    start_group: "Створити групу!"
+  group_categories:
+    all: Всі
+    blank: Некатигоризовані
+    economics: Економіка
+    activist: Активіст
+    arts: Мистецтво
+    business: Бізнес
+    collective: Колектив
+    community_group: Громадська група
+    co_operative: Кооператив
+    democratic_organisation: Демократична організація
+    education: Освіта
+    environmental_group: Екологічна група
+    family: "Сім'я"
+    local_government: Місцеве самоврядування
+    online_community: Он-лайн спільнота
+    religious_group: Релігія/духовність
+    event: Подія
+    open_source_software: Відкрите програмне забезпечення
+    political_initiative: Політична ініціатива
+    social_enterprise: Соціальне підприємство
+    social_justice: Соціальна справедливість
+    advocacy_group: Група інтересів
+    science: Наука
+    technology: Технології
+    sports: Спорт
+    youth: Молодь
+    women: Жіноцтво
+    media: ЗМІ
+    health: "Охорона здоров'я"
+  start_your_group: Створити свою групу

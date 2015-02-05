@@ -46,6 +46,8 @@ fr:
     mailer:
       invitation_instructions:
         subject: Vous avez été invité à rejoindre un groupe Loomio
+    registrations:
+      sign_up: Créer un compte
   error:
     access_denied: "Vous n'avez pas la permission de faire cela."
     cant_join_subgroup: "Vous ne pouvez pas rejoindre un sous-groupe si vous n'êtes pas membre du groupe parent."
@@ -178,6 +180,8 @@ fr:
         other: "%{count} ans"
   organisation:
     name: Loomio
+  sr:
+    toggle_navigation: Basculer la navigation
   footer:
     about: À propos
     blog: Blog
@@ -347,6 +351,7 @@ fr:
   edit_memberships: Modifier les adhésions
   add_new_member: Ajouter un nouveau membre
   invite_members_to_group: "Inviter des membres à %{which_group}"
+  remaining_invites_count: "%{count} invitations restantes"
   get_in_touch_link: Restons en contact
   email_members_in_group: "Envoyer un e-mail aux membres dans %{which_group}"
   subject_error: Merci de renseigner un sujet
@@ -425,9 +430,11 @@ fr:
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> accepte la proposition."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> s'abstient sur la proposition"
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> désaprouve la proposition."
     user_blocked_on_proposal_html: "<strong>%{name}</strong> bloque la proposition."
     user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> accepte la proposition :"
     user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> s'abstient sur la proposition :"
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> désaprouve la proposition :"
     user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> bloque la proposition :"
   discussion_items:
     new_discussion: a créé la discussion
@@ -626,6 +633,7 @@ fr:
   remember_me: Se souvenir de moi
   signing_in: Se connecter
   or: ou
+  invalid_email: "L'adresse email que vous avez entré n'est pas valide, s'il vous plaît veuillez saisir une adresse email valide"
   forgot_your_password: Mot de passe oublié ?
   dont_have_an_account: Pas de compte ?
   create_one_now: En créer un maintenant
