@@ -2,7 +2,7 @@ hu:
   frontpage:
     view_this_in_your_language: "Olvasd ezt az oldalt %{language} nyelven."
     title:
-      collaborative_decision_making: Közreműködéses Döntéshozatal
+      collaborative_decision_making: Közreműködéses döntéshozatal
     link:
       blog: Blog
       contact: Kapcsolat
