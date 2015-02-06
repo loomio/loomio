@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: b3a9f4b3e4051447d011c59649a73f876989a199
+  revision: 41043fa9aecc47f04eefc6322eea89a7bd4b0876
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -15,6 +15,16 @@ GIT
       rails (>= 3.2, < 5.0)
       ransack (~> 1.3)
       sass-rails
+
+GIT
+  remote: git://github.com/jakub-/schema_plus_pg_indexes.git
+  revision: 3883c3d6dd6160bdfb60411a38a096e2df6dd1de
+  branch: deferrable_unique_constraints
+  specs:
+    schema_plus_pg_indexes (0.1.2)
+      activerecord (~> 4.2)
+      schema_monkey (~> 1.0, >= 1.0.1)
+      schema_plus_indexes (~> 0.1)
 
 GIT
   remote: git://github.com/loomio/private_pub.git
@@ -64,7 +74,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.3.6)
+    addressable (2.3.7)
     aggregate (0.2.2)
     airbrake (4.1.0)
       builder
@@ -75,7 +85,7 @@ GEM
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.0)
-    autoprefixer-rails (5.1.0)
+    autoprefixer-rails (5.1.3.1)
       execjs
       json
     awesome_print (1.6.1)
@@ -123,10 +133,10 @@ GEM
       execjs
     coffee-script-source (1.9.0)
     cookiejar (0.3.2)
-    countries (0.10.0)
+    countries (0.9.3)
       currencies (~> 0.4.2)
-    country_select (2.1.0)
-      countries (~> 0.9, >= 0.9.3)
+    country_select (2.1.1)
+      countries (>= 0.9.3, < 0.10.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     css_parser (1.3.6)
@@ -177,10 +187,11 @@ GEM
     email_spec (1.6.0)
       launchy (~> 2.1)
       mail (~> 2.2)
+    enumerable_hashify (0.0.2)
     erubis (2.7.0)
-    eventmachine (1.0.4)
-    excon (0.44.0)
-    execjs (2.2.2)
+    eventmachine (1.0.6)
+    excon (0.44.1)
+    execjs (2.3.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -226,7 +237,7 @@ GEM
     fog-atmos (0.1.0)
       fog-core
       fog-xml
-    fog-aws (0.0.8)
+    fog-aws (0.1.0)
       fog-core (~> 1.27)
       fog-json (~> 1.0)
       fog-xml (~> 0.1)
@@ -292,7 +303,7 @@ GEM
       activerecord (>= 4.0.0)
     gherkin (2.12.2)
       multi_json (~> 1.3)
-    globalid (0.3.0)
+    globalid (0.3.2)
       activesupport (>= 4.1.0)
     gravtastic (3.2.6)
     gyoku (1.2.2)
@@ -308,7 +319,9 @@ GEM
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
-    hashie (3.3.2)
+    hash_keyword_args (0.1.1)
+      enumerable_hashify
+    hashie (3.4.0)
     heroku-deflater (0.5.3)
       rack (>= 1.4.5)
     hike (1.2.3)
@@ -336,6 +349,7 @@ GEM
     intercom-rails (0.2.27)
       activesupport (> 3.0)
     ipaddress (0.8.0)
+    its-it (1.1.1)
     jquery-atwho-rails (0.4.11)
     jquery-fileupload-rails (0.4.4)
       actionpack (>= 3.1)
@@ -351,6 +365,7 @@ GEM
     kaminari (0.16.2)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    key_struct (0.4.2)
     launchy (2.4.3)
       addressable (~> 2.3)
     librato-metrics (1.5.0)
@@ -431,11 +446,11 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pg (0.17.1)
-    pg_search (0.7.8)
+    pg_search (0.7.9)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
-    poltergeist (1.5.1)
+    poltergeist (1.6.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
@@ -502,7 +517,7 @@ GEM
       railties (>= 4.2.0, < 5)
     rinku (1.7.3)
     rmagick (2.13.4)
-    roadie (3.0.2)
+    roadie (3.0.3)
       css_parser (~> 1.3.4)
       nokogiri (~> 1.6.0)
     roadie-rails (1.0.4)
@@ -514,29 +529,30 @@ GEM
       rspec-mocks (>= 2.99, < 4.0)
     rspec-collection_matchers (1.1.2)
       rspec-expectations (>= 2.99.0.beta1)
-    rspec-core (3.1.7)
-      rspec-support (~> 3.1.0)
-    rspec-expectations (3.1.2)
+    rspec-core (3.2.0)
+      rspec-support (~> 3.2.0)
+    rspec-expectations (3.2.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.1.0)
+      rspec-support (~> 3.2.0)
     rspec-its (1.1.0)
       rspec-core (>= 3.0.0)
       rspec-expectations (>= 3.0.0)
-    rspec-mocks (3.1.3)
-      rspec-support (~> 3.1.0)
-    rspec-rails (3.1.0)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      railties (>= 3.0)
-      rspec-core (~> 3.1.0)
-      rspec-expectations (~> 3.1.0)
-      rspec-mocks (~> 3.1.0)
-      rspec-support (~> 3.1.0)
-    rspec-support (3.1.2)
+    rspec-mocks (3.2.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.2.0)
+    rspec-rails (3.2.0)
+      actionpack (>= 3.0, <= 4.2)
+      activesupport (>= 3.0, <= 4.2)
+      railties (>= 3.0, <= 4.2)
+      rspec-core (~> 3.2.0)
+      rspec-expectations (~> 3.2.0)
+      rspec-mocks (~> 3.2.0)
+      rspec-support (~> 3.2.0)
+    rspec-support (3.2.1)
     ruby-progressbar (1.7.1)
     ruby_parser (3.6.4)
       sexp_processor (~> 4.1)
-    rubyzip (1.1.6)
+    rubyzip (1.1.7)
     safe_yaml (1.0.4)
     sass (3.4.11)
     sass-rails (5.0.1)
@@ -554,6 +570,18 @@ GEM
       nori (~> 2.4)
       uuid (~> 2.3.7)
       wasabi (= 3.3.0)
+    schema_monkey (1.0.1)
+      activerecord (~> 4.2)
+      hash_keyword_args
+      its-it
+      key_struct
+    schema_monkey_rails (0.1.1)
+      activerecord (~> 4.2)
+      rails
+      schema_monkey (~> 1.0)
+    schema_plus_indexes (0.1.1)
+      activerecord (~> 4.2)
+      schema_monkey (~> 1.0)
     selenium-webdriver (2.44.0)
       childprocess (~> 0.5)
       multi_json (~> 1.0)
@@ -716,6 +744,8 @@ DEPENDENCIES
   rspec-rails
   ruby-progressbar
   sass-rails (>= 3.2)
+  schema_monkey_rails
+  schema_plus_pg_indexes!
   selenium-webdriver
   sequenced (~> 1.6.0)
   shoulda-matchers

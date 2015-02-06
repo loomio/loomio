@@ -71,13 +71,13 @@ gem 'responders', '~> 2.0'
 #gem 'oj_mimic_json'
 
 group :development, :test do
+  gem 'rspec-its'
   gem 'minitest'
   gem 'timecop'
   gem 'pry-rails'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-rails'
-  gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'
   gem 'shoulda-matchers'
@@ -118,3 +118,6 @@ group :production do
   gem 'newrelic_rpm'
   gem 'heroku-deflater'
 end
+
+gem 'schema_plus_pg_indexes', :github => 'jakub-/schema_plus_pg_indexes', :branch => 'deferrable_unique_constraints'
+gem 'schema_monkey_rails'
