@@ -1,29 +1,19 @@
 module Loomio
-  module I18n
+  class I18n
+    require 'yaml'
+    config = YAML.load_file('config/loomio_i18n.yml')['loomio_i18n']
 
-    SELECTABLE_LOCALES = %i( en an be-BY bg-BG ca cs zh-TW da de eo es el fr id it he hu ja ko ml nl-NL pt-BR ro sr sr-RS sk sl sv vi tr uk )
+    SELECTABLE_LOCALES = Array(config['selectable_locales']).map(&:to_sym)
+    DETECTABLE_LOCALES = Array(config['additional_detectable_locales']).map(&:to_sym) + SELECTABLE_LOCALES
 
-    DETECTABLE_LOCALES = SELECTABLE_LOCALES + %i( be pt zh zh-HK )
+    RTL_LOCALES  = Array(config['rtl_locales']).map(&:to_sym)
+    TEST_LOCALES = Array(config['test_locales']).map(&:to_sym)
 
-    FALLBACKS = { :an      => :es,
-                  :be      => :'be-BY',
-                  :ca      => :es,
-                  :'pt-PT' => :'pt-BR',
-                  :pt      => :'pt-BR',
-                  :zh      => :'zh-TW',
-                  :'zh-HK' => :'zh-TW'
-                 }
+    FALLBACKS = Hash(config['fallbacks']).inject({}) do |new_hash, (k,v)| 
+      new_hash[k.to_sym] = v.to_sym
+      new_hash
+    end
 
-    # for locales which are only serving as redirects, make sure to add to  :
-    #   i) DETECTABLE_LOCALES
-    #  ii) FALLBACKS
-    # iii) a dummy yaml e.g. config/locales/fallback.zh-HK.yml
-
-    RTL_LOCALES = %i( ar he fa-IR ur ur-PK )
-
-    # only for display purposes, please don't depend on this in the system
-    TEST_LOCALES = %i( ar cmn hr fi gl ga-IE it-CH km lv mk mi fa-IR pl pt-PT ru te ur ur-PK )
-
-    #
   end
 end
+
