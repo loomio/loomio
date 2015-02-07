@@ -10,7 +10,7 @@ describe Vote do
     let(:vote) { Vote.create(user: user, motion: motion, position: "no") }
     subject { vote }
 
-    its(:age) { should == 0 }
+    its(:age) { is_expected.to eq 0 }
 
     context 'user changes their position' do
       let(:vote2) { Vote.create(user: user, motion: motion, position: "yes") }
@@ -20,15 +20,39 @@ describe Vote do
       end
 
       subject { vote2 }
-      its(:age) { should == 0 }
+      its(:age) { is_expected.to eq 0 }
 
       it "should age the first vote" do
         vote.reload
-        vote.age.should == 1
+        expect(vote.age).to eq 1
       end
 
       it 'the second vote should associate the first as the previous' do
-        vote2.previous_vote_id.should == vote.id
+        expect(vote2.previous_vote_id).to eq vote.id
+      end
+
+      context 'user changes their position again' do
+        let(:vote3) { Vote.create(user: user, motion: motion, position: "no") }
+        before do
+          vote3
+        end
+
+        subject { vote3 }
+        its(:age) { is_expected.to eq 0 }
+
+        it "should age the first vote" do
+          vote.reload
+          expect(vote.age).to eq  2
+        end
+
+        it "should age the second vote" do
+          vote2.reload
+          expect(vote2.age).to eq  1
+        end
+
+        it 'the second vote should associate the first as the previous' do
+          expect(vote3.previous_vote_id).to eq vote2.id
+        end
       end
     end
   end
@@ -43,7 +67,7 @@ describe Vote do
     vote = Vote.new(position: "yes", statement: "This is what I think about the motion")
     vote.motion = motion
     vote.user = user
-    vote.should be_valid
+    expect(vote).to be_valid
   end
 
   it 'cannot have a statement over 250 chars' do
@@ -51,7 +75,7 @@ describe Vote do
     vote.motion = create(:motion, discussion: discussion)
     vote.user = user
     vote.statement = "a"*251
-    vote.should_not be_valid
+    expect(vote).to_not be_valid
   end
 
   it 'updates motion last_vote_at on create' do
@@ -60,7 +84,7 @@ describe Vote do
     vote.user = user
     vote.save!
     motion.reload
-    motion.last_vote_at.to_s.should == vote.created_at.to_s
+    expect(motion.last_vote_at.to_s).to eq vote.created_at.to_s
   end
 
   describe 'other_group_members' do
@@ -71,11 +95,11 @@ describe Vote do
     end
 
     it 'returns members in the group' do
-      @vote.other_group_members.should include @user1
+      expect(@vote.other_group_members).to include @user1
     end
 
     it 'does not return the voter' do
-      @vote.other_group_members.should_not include user
+      expect(@vote.other_group_members).to_not include user
     end
   end
 
@@ -92,7 +116,7 @@ describe Vote do
       vote2.user = user
       vote2.save!
 
-      vote2.previous_vote.id.should == vote.id
+      expect(vote2.previous_vote.id).to eq vote.id
     end
   end
 end
