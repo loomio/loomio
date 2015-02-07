@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 ruby '2.2.0'
 
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'rails', '~> 4.1.8'
 gem 'rake'
 gem 'pg', '~> 0.17.1'
@@ -64,7 +65,6 @@ gem 'modernizr-rails'
 gem 'jquery-fileupload-rails'
 gem 'momentjs-rails'
 gem 'ruby-progressbar'
-gem 'dotenv'# , :require => 'dotenv/rails-now'
 
 # consider uncommenting these when we want to mess around with json parsing
 #gem 'oj'
