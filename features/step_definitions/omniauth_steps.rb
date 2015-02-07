@@ -17,7 +17,7 @@ end
 When(/^I log in with my exising loomio account details$/) do
   visit new_user_session_path
   fill_in 'Email', with: 'bill@example.com'
-  fill_in 'Password', with: 'password'
+  fill_in 'Password', with: 'complex_password'
   click_on 'Log in'
 end
 

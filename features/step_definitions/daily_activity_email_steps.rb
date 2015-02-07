@@ -2,7 +2,7 @@ Given /^there is a user "(.*?)"$/ do |arg1|
   @user_email = "#{arg1}@example.org"
   FactoryGirl.create :user, name: arg1,
                             email: @user_email,
-                            password: 'password'
+                            password: 'complex_password'
 end
 
 Given /^"(.*?)" is subscribed to daily activity emails$/ do |arg1|

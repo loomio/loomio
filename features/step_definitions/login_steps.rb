@@ -1,9 +1,9 @@
 Given /^I am logged in as "(.*?)"$/ do |email|
-  login(email, 'password')
+  login(email, 'complex_password')
 end
 
 When /^I login as "(.*?)"$/ do |email|
-  login(email, 'password')
+  login(email, 'complex_password')
 end
 
 Then /^I should be logged in$/ do
@@ -24,7 +24,7 @@ end
 
 When(/^I log in$/) do
   fill_in 'user_email', with: @user.email
-  fill_in 'user_password', :with => 'password'
+  fill_in 'user_password', :with => 'complex_password'
   click_on 'sign-in-btn'
 end
 

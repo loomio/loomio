@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :blacklisted_password do
+    string "MyString"
+  end
+
   factory :membership do |m|
     m.user { |u| u.association(:user)}
     m.group { |g| g.association(:group)}
@@ -7,7 +11,7 @@ FactoryGirl.define do
   factory :user do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
-    password 'password'
+    password 'complex_password'
     time_zone "Pacific/Tarawa"
 
     after(:build) do |user|
@@ -18,7 +22,7 @@ FactoryGirl.define do
   factory :admin_user, class: User do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
-    password 'password'
+    password 'complex_password'
     is_admin {true}
     after(:build) do |user|
       user.generate_username
