@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 ruby '2.2.0'
 
-gem 'rails', '~> 4.1.8'
+gem 'rails', '~> 4.2.0'
 gem 'rake'
 gem 'pg', '~> 0.17.1'
 gem 'pg_search', '~> 0.7.8'
@@ -49,7 +49,6 @@ gem 'closure_tree', '~> 4.6.3'
 gem 'bing_translator'
 gem 'librato-rails'
 gem 'http_accept_language'
-gem 'activerecord-postgres-hstore'
 gem 'intercom'
 gem 'intercom-rails'
 gem 'underscore-rails'
@@ -65,19 +64,20 @@ gem 'jquery-fileupload-rails'
 gem 'momentjs-rails'
 gem 'ruby-progressbar'
 gem 'dotenv'# , :require => 'dotenv/rails-now'
+gem 'responders', '~> 2.0'
 
 # consider uncommenting these when we want to mess around with json parsing
 #gem 'oj'
 #gem 'oj_mimic_json'
 
 group :development, :test do
+  gem 'rspec-its'
   gem 'minitest'
   gem 'timecop'
   gem 'pry-rails'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-rails'
-  gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'
   gem 'shoulda-matchers'
@@ -118,3 +118,6 @@ group :production do
   gem 'newrelic_rpm'
   gem 'heroku-deflater'
 end
+
+gem 'schema_plus_pg_indexes', :github => 'jakub-/schema_plus_pg_indexes', :branch => 'deferrable_unique_constraints'
+gem 'schema_monkey_rails'

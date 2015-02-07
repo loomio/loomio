@@ -52,7 +52,7 @@ class Group < ActiveRecord::Base
              more_than_n_discussions(3).
              order('discussions.last_comment_at') }
 
-  scope :include_admins, includes(:admins)
+  scope :include_admins, -> { includes(:admins) }
 
   scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
 
