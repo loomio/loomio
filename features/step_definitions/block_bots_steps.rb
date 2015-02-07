@@ -5,8 +5,8 @@ end
 Given(/^I fill in all the fields including the honeypot$/) do
   fill_in 'user_name', with: 'some Bot'
   fill_in 'user_email', with: 'some.Bot@bots_r_us.com'
-  fill_in 'user_password', with: 'password'
-  fill_in 'user_password_confirmation', with: 'password'
+  fill_in 'user_password', with: 'complex_password'
+  fill_in 'user_password_confirmation', with: 'complex_password'
   fill_in 'user_honeypot', with: 'something?'
 end
 

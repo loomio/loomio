@@ -35,6 +35,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username, allow_blank: true
   validates_length_of :username, maximum: 30, allow_blank: true
 
+  validates_length_of :password, minimum: 8, :allow_nil => true
+  validates :password, nontrivial_password: true, :allow_nil => true
+
   include Gravtastic
   gravtastic  :rating => 'pg',
               :default => 'none'

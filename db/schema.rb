@@ -63,6 +63,14 @@ ActiveRecord::Schema.define(version: 20150210220716) do
 
   add_index "attachments", ["comment_id"], name: "index_attachments_on_comment_id", using: :btree
 
+  create_table "blacklisted_passwords", force: true do |t|
+    t.string   "string"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blacklisted_passwords", ["string"], name: "index_blacklisted_passwords_on_string", using: :hash
+
   create_table "campaigns", force: true do |t|
     t.string   "showcase_url"
     t.datetime "created_at",    null: false
@@ -212,7 +220,6 @@ ActiveRecord::Schema.define(version: 20150210220716) do
     t.string   "iframe_src"
     t.datetime "last_activity_at"
     t.integer  "motions_count",    default: 0
-    t.integer  "last_sequence_id", default: 0,     null: false
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
