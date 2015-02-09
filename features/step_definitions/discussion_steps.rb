@@ -27,5 +27,6 @@ end
 Then /^the xml feed should have the comment$/ do 
   response = Hash.from_xml page.body
   response['feed']['entry']['title'].should match /#{@comment.author.name}/
+  response['feed']['entry']['author']['uri'].should match /#{@comment.author.key}/
   response['feed']['entry']['content'].should eq @comment.body
 end
