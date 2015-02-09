@@ -46,6 +46,8 @@ an:
     mailer:
       invitation_instructions:
         subject: "Belún t'ha convidau a participar d'o suyo grupo en Loomio"
+    registrations:
+      sign_up: Creyar cuenta
   error:
     access_denied: No tiens permisos ta fer isto.
     cant_join_subgroup: "No puetz unir-te a un subgrupo si no yes miembro d'o grupo superior."
@@ -352,6 +354,7 @@ an:
   edit_memberships: Editar pertenencias
   add_new_member: Adhibir un nuevo miembro
   invite_members_to_group: "Convidar miembros a %{which_group}"
+  remaining_invites_count: "quedan %{count} invitacions"
   get_in_touch_link: meter-se en contacto
   email_members_in_group: "Ninviar un correu-e a os miembros de %{which_group}"
   subject_error: Por favor escribe un titol
@@ -633,6 +636,7 @@ an:
   remember_me: Alcorda-te de yo
   signing_in: Dentrar
   or: u
+  invalid_email: "L'adreza de correu ye invalida, escribe una adreza de correu valida"
   forgot_your_password: Has ixuplidau a tuya clau?
   dont_have_an_account: No tiens una cuenta?
   create_one_now: Crea-ne una agora
@@ -775,6 +779,7 @@ an:
         close_at_date: Zarrando
       user:
         name: Nombre completo
+        username: "Nombre d'usuario"
         email: Correu electronico
         password: Clau
         password_confirmation: Confirmar clau
@@ -1072,3 +1077,4 @@ an:
     women: Muller
     media: Medios de comunicación
     health: Salut
+  start_your_group: Empecipia a tuya colla
