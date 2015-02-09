@@ -1,26 +1,8 @@
 require 'rails_helper'
 
 describe 'DiscussionService' do
-  let(:ability) { double(:ability, :authorize! => true, can?: true) }
-  let(:user) { double(:user, ability: ability, update_attributes: true) }
-  let(:discussion) { double(:discussion, author: user,
-                                         'author=' => user,
-                                         save!: true,
-                                         valid?: true,
-                                         title_changed?: false,
-                                         description_changed?: false,
-                                         :title= => true,
-                                         :description= => true,
-                                         :private= => true,
-                                         :uses_markdown= => true,
-                                         inherit_group_privacy!: nil,
-                                         uses_markdown: true,
-                                         :iframe_src= => true,
-                                         update_attribute: true,
-                                         update_attributes: true,
-                                         group: true,
-                                         private: true,
-                                         created_at: Time.now) }
+  let(:user) { create(:user) }
+  let(:discussion) { create(:discussion, author: user) }
   let(:comment) { double(:comment,
                          save!: true,
                          valid?: true,
@@ -31,7 +13,7 @@ describe 'DiscussionService' do
                          author: user) }
   let(:event) { double(:event) }
   let(:discussion_reader) { double(:discussion_reader, follow!: true, viewed!: true) }
-  let(:discussion_params) { {title: "new title", description: "", private: true, uses_markdown: true} }
+  let(:discussion_params) { {title: "new title", description: "new description", private: true, uses_markdown: true} }
 
 
   before do
@@ -42,7 +24,7 @@ describe 'DiscussionService' do
 
   describe 'create' do
     it 'authorizes the user can create the discussion' do
-      ability.should_receive(:authorize!).with(:create, discussion)
+      user.ability.should_receive(:authorize!).with(:create, discussion)
       DiscussionService.create(discussion: discussion,
                                actor: user)
     end
@@ -71,7 +53,7 @@ describe 'DiscussionService' do
 
   describe 'update' do
     it 'authorizes the user can update the discussion' do
-      ability.should_receive(:authorize!).with(:update, discussion)
+      user.ability.should_receive(:authorize!).with(:update, discussion)
 
       DiscussionService.update discussion: discussion,
                                params: discussion_params,
@@ -99,6 +81,20 @@ describe 'DiscussionService' do
       before { discussion.stub(:valid?).and_return(true) }
 
       it 'updates user markdown-preference' do
+        DiscussionService.update discussion: discussion,
+                                 params: discussion_params,
+                                 actor: user
+      end
+
+      it 'publishes a title changed event' do
+        expect(Events::DiscussionTitleEdited).to receive :publish!
+        DiscussionService.update discussion: discussion,
+                                 params: discussion_params,
+                                 actor: user
+      end
+
+      it 'publishes a description changed event' do
+        expect(Events::DiscussionTitleEdited).to receive :publish!
         DiscussionService.update discussion: discussion,
                                  params: discussion_params,
                                  actor: user
