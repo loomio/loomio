@@ -295,8 +295,10 @@ sv:
         approval_html: "På begäran <span>från medlemmar i %{parent_group_name}</span>"
       request_html: "Öppet <span>vem som helst kan gå med i gruppen</span>"
       approval_html: "På begäran <span>vem som helst kan gå med i gruppen</span>"
+      invitation_html: "Endast för inbjudna <span>nya medlemmar måste bjudas in</span>"
     parent_members_can_see_discussions:
       label: Diskussion sekretess
+      "true": "Vem som helst i %{parent_group_name} kan se denna diskussionen"
       "false": Endast medlemmar kan se diskussioner
     discussion_privacy_options:
       label: Som kan se diskussioner?
@@ -312,16 +314,34 @@ sv:
     c2: Redigera titel och sammanhang någon diskussion.
     c3: Flytta diskussioner mellan grupper.
     c4: Bjuda in och godkänna nya medlemmar.
+    c5: Skicka ett meddelande mail till alla gruppmedlemmar.
     c6: Deaktivera gruppen.
+    c7: Lägg till/ta bort andra koordinatorer.
     c8: Ta bort diskussioner.
     c9: Ta bort kommentarer.
     c10: Skapa undergrupper.
     c11: Starta diskussioner.
     c12: Höja förslag.
     c13: Rösta på förslag.
+    members_defaults: "Med standardinställningarna, medlemmar kan:"
     m1: Ta bort sina egna kommentarer.
+    m3: "Redigera titel och beskrivning av förslag de börjar, tills någon har förklarat sin ståndpunkt."
+    m4: "Redigera slutdatum förslag de börjar, tills de stänger."
     m5: Redigera titel och sammanhang någon diskussion.
+    m6: "Starta en undergrupp, som de blir koordinator för."
     m7: Redigera sina egna kommentarer som helst.
+    m8: Höja och delta i förslagen.
+    optional_restrictions: Eventuellt kan samordnarna begränsar vad medlemmar kan göra.
+  discussion_privacy:
+    public: Denna diskussion är offentligt på webben
+    private: Denna diskussion är privat till gruppmedlemmar
+  group_privacy:
+    visible_to:
+      public: Börsnoterad grupp.
+      parent_members: "Privat listade grupp. Visas endast för medlemmar och personer i %{parent_group_name}."
+      members: Dold grupp. Visas endast för medlemmar.
+      public_html: "Någon <span>lista gruppen offentligt</span>"
+      members_html: "Medlemmar bara <span>gruppen kommer inte att listas</span>"
   setup_steps_title: "Nästa steg:"
   setup_step_1: Titta på diksussionsexemplet
   setup_step_2: Starta din första diskussion
@@ -333,6 +353,7 @@ sv:
   edit_memberships: Redigera medlemskap
   add_new_member: Lägg till ny medlem
   invite_members_to_group: "Bjud in medlemmar till %{which_group}"
+  remaining_invites_count: "%{count} återstående inbjudningar"
   get_in_touch_link: få kontakt med
   email_members_in_group: "E-posta medlemmarna i %{which_group}"
   subject_error: Ange ett ämne
@@ -396,14 +417,27 @@ sv:
     follow:
       click_to_follow: Klicka för att följa gruppen
       click_to_unfollow: Klicka för att sluta följa gruppen
+      following_details: Du kommer att meddelas om varje tråd i denna grupp.
+      not_following_details: Du kommer att meddelas om trådar som du deltar i.
   group_request:
     beta_request_header: Starta en grupp på Loomio Beta
     beta_request_description: Att starta en grupp är första steget i att börja ta beslut på Loomio Beta
     neighbourhood_support_group: t. ex. Stödgrupp i Grannskapet
+    commercial_use_option: "i ett företag, formell organisation eller arbetsplats"
+    non_commercial_use_option: i ett samhälle grupp eller informellt nätverk
     please_select_an_option: Vänligen välj ett alternativ
     confirmation:
       title: "Du är nästan klar! Kolla din email."
       body_html: "Vi har skickat ett email till dig med en inbjudan att starta din grupp.\n\nOm du inte har fått något i din inbox inom några minuter, emaila oss på <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n\n"
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> kom överens om förslaget."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> avstod om förslaget."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> höll inte om förslaget."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> blockerade om förslaget."
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> kom överens om förslaget:"
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> avstod om förslaget:"
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> höll inte om förslaget:"
+    user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> blockerade om förslaget:"
   discussion_items:
     new_discussion: skapade diskussionen
     new_motion: skapade ett förslag
@@ -426,11 +460,27 @@ sv:
   empty_decision_list_html: "Är ni redo att fatta beslut? <br> Vem som helst kan starta ett förslag."
   empty_decision_index: Denna grupp har ännu inte fattat några beslut.
   empty_discussion_list: Det finns ännu inga aktiviteter i denna diskussionen.
+  go_to_add_comment_html: "För att lägga till en kommentar, <a href='%{href}'>gå till slutet av diskussionen</a>."
+  comment_by: "Kommentaren av %{comment_author}"
+  read_up_to: Här är där du läsa upp till förra gången
   discussion_list:
+    clear_filters: "Tydliga filter: visa alla diskussioner"
     filter_unread:
       enable: Bara visa olästa diskussioner
+      disable: Se lästa och olästa diskussioner
     filter_followed:
       enable: Bara visa följde diskussioner
+      disable: Se följt och inte följt diskussioner
+    empty:
+      no_discussions: Det finns inga diskussioner i någon av dina grupper.
+      no_discussions_in_group: Denna grupp har inga diskussioner än.
+      no_discussions_matching_filters_html: "Det finns inga diskussioner som matchar dessa filter. <a href='%{link}'>Tydliga filter</a>."
+      no_public_discussions: Det finns inga offentliga diskussioner i den här gruppen.
+      discussions_are_private: Alla diskussioner i denna grupp är privata.
+      request_membership_html: "För att se privata diskussioner, <a href='%{href}'>begäran till gruppen</a>."
+      membership_is_invitation_only: För att gå med i denna grupp måste du bli inbjuden av en medlem.
+      membership_is_invitation_by_admin_only: För att gå med i denna grupp måste du bli inbjuden av en koordinator.
+      log_in_html: "Om du är medlem, <a href='%{href}'>logga in</a> att se några privata diskussioner."
   discussion_context:
     started_html: "Startades %{when} av <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Redigerades senast %{when} av <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -438,6 +488,8 @@ sv:
     see_history: Se historik
     click_to_follow: Klicka för att följa tråden
     click_to_unfollow: Klicka för att sluta följa tråden
+    following_details: Du kommer att meddelas av aktivitet i den här tråden.
+    not_following_details: Du kommer inte att meddelas av aktivitet i den här tråden.
   description_history:
     header: Revisionslogg
     subheader: Version
@@ -456,6 +508,7 @@ sv:
   edit_discussion: Redigera diskussionen
   move_discussion: Flytta diskussionen
   move_discussion_to_hidden_group: Denna diskussion är för närvarande öppen. Flyttas den till denna dolda grupp blir den sluten.
+  move_discussion_to_public_group: Denna diskussion är för tillfället privat. Flytta den till denna offentliga gruppen kommer att göra det offentligt.
   move_discussion_where: Vart vill du flytta denna diskussionen?
   delete_discussion: Ta bort diskussionen
   confirm_delete_discussion: Är du säker på att du vill ta bort denna diskussionen permament?
@@ -495,7 +548,11 @@ sv:
       "no": höll inte med
       abstain: avstod
       block: blockerade
+  unable_to_vote:
+    permission_denied: Du har inte behörighet att rösta om denna motion
+    motion_closed: Denna rörelse har redan stängt
   edit_comment:
+    comment_changes: Kommentera förändringarna
     edit_comment: Edit kommentar
   help:
     coordinating: Koordinera din Loomiogrupp
@@ -578,8 +635,10 @@ sv:
   remember_me: Kom ihåg mig
   signing_in: Loggar in
   or: eller
+  invalid_email: "Den e-postadress du har angett är ogiltig, ange en giltig e-postadress"
   forgot_your_password: Har du glömt ditt lösenord?
   dont_have_an_account: Har du inte något konto?
+  create_one_now: Skapa ett nu
   link_it_up_instead: Länka det istället till
   sign_up_via: Skriv in dig via
   or_fill_in_this_form: eller fyll i detta formulär
@@ -590,12 +649,15 @@ sv:
   now_that_your_logged_in: "Nu när du har logga in med %{provider_name}, konfirmera dina uppgifter för att skapa ett Loomiokonto."
   confirmation_not_received: Fick du inte instruktionerna för att kunna konfirmera?
   unlock_not_received: Fick du inte instruktionerna för att kunna låsa upp?
+  inactive_html: "Detta konto har avaktiverats. Om du har några frågor vänligen <a href='%{path_to_contact}'>kontakta oss</a>."
   create_an_account_html: Skapa ett Loomio Betakonto
   log_in: Logga in
   join_group:
     log_in: "Logga in för att gå med i %{group_name}"
     create_account_to_join_group: "Skapa ett konto för att gå med i %{group_name}"
   start_group:
+    log_in: Logga in för att ställa in din grupp
+    create_account_to_start_group: "Vänligen skapa ett konto för att starta din grupp %{group_name}"
     create_account: Skapa ett konto
   invitation:
     alternate: "Alternativt, dela denna länken och vem som helst kan gå med:"
@@ -622,6 +684,7 @@ sv:
     copy: "Om någon inte skulle ha fått sitt email med en inbjudan, kopiera då länken ovan och ge direkt till mottagaren."
     pending_invitations: Utestående inbjudningar
     no_pending_invitations: Det finns för närvarande inga utestående inbjudningar.
+    import_contacts_html: "Kommer inte ihåg en e-postadress? Importera dina kontakter från %{google_link}"
   search:
     description: "Nedan finns en lista över de diskussioner och förslag som har '%{query}' i sin rubrik eller beskrivning."
     header: "Sökresultat för '%{query}'"
@@ -651,6 +714,13 @@ sv:
       who: Inom vilken grupp vill du starta denna diskussionen?
     edit:
       header: Redigera diskussionen
+    privacy:
+      will_be_private: Diskussionen kommer endast att vara synlig för medlemmar i gruppen.
+      will_be_private_to_group: "Diskussionen kommer endast att vara synlig för medlemmar i %{group_name}."
+      will_be_private_to_parent_group: "Diskussionen kommer att vara synlig för medlemmar i %{parent_group_name} och medlemmar i %{group_name}."
+      will_be_public: Vem som helst kan se diskussionen.
+  motion_history:
+    title: Förändringar i förslaget
   motion_form:
     new:
       header: Nytt förslag
@@ -658,7 +728,9 @@ sv:
     edit:
       header: Redigera förslag
       submit: Uppdatera förslag
+      only_closing_at: Du kan inte ändra namnet eller beskrivningen förslag efter omröstning har startat
     name_helper: Skriv rubriken så kort och tydligt som möjligt.
+    close_proposal_heading: Vill stänga förslaget tidigt?
   vote_form:
     header: Ange din ståndpunkt
     edit: Redigera din ståndpunkt
@@ -673,6 +745,9 @@ sv:
     view: Visa profil
     profile: Ändra profilen
     picture: Bild
+    use_initials: Använd initialer
+    use_uploaded: Använd uppladdad bild
+    use_gravtar: Använd Gravatar
     upload_new_image: Ladda upp en ny bild
   group_setup:
     set_up_your_group: Starta din grupp
@@ -703,6 +778,7 @@ sv:
         close_at_date: Stänger
       user:
         name: Fullständigt namn
+        username: Användarnamn
         email: Email
         password: Lösenord
         password_confirmation: Konfirmera lösenordet
@@ -712,6 +788,7 @@ sv:
         admin_email: Vad har du för emailadress?
         name: Vad heter din grupp?
         description: "Om du har möjlighet, berätta lite om din grupp för oss"
+        is_commercial: Var är du planerar att använda Loomio?
     placeholders:
       membership_request:
         introduction: "Skriv några rader om om vem du är och varför du vill gå med i %{group_name}."
@@ -734,6 +811,8 @@ sv:
         create: Skapa ett konto
         update: Uppdatera inställningar
   email:
+    by_who: "av %{person}"
+    reply_to_this_discussion: Svara på denna diskussion
     to_join_discussion:
       subject: "%{who} vill att du går med en diskussion i Loomio"
       content: "Du har blivit inbjuden att delta i diskussionen: %{discussion}"
@@ -752,6 +831,8 @@ sv:
     view_discussion: Klicka här för att se denna diskussionen
     view_group: Klicka här för att se gruppen på Loomio
     view_proposal: Visa detta förslag på Loomio
+    create_discussion:
+      intro: "%{who} startade en diskussion i %{which_group}:"
     create_proposal:
       intro: Ett nytt förslag skapades i en Loomiogrupp som du är med i.
       closes_in: Stänger om
@@ -761,7 +842,10 @@ sv:
       intro: Visar dig vad som har hänt i dina Loomiogrupper under de senaste 24 timmarna
       subject: Loomio - Sammanställning för de senaste 24 timmarna
     missed_yesterday:
+      subject: I går på Loomio
+      mark_as_read: Markera som läst
       thanks_for_reading: "Tack för läsning, ha en bra dag!"
+      marked_as_read_success: Allt från mail har markerats som läst
     group_email:
       intro: "%{who} gjorde ett upprop till  %{group}:"
     group_membership_approved:
@@ -777,6 +861,7 @@ sv:
       subject: "%{who} har begärt att få gå med %{which_group}"
       view_group: Du kan godkänna eller avslå begäran här
     mentioned:
+      context: "%{author_name} nämnde dig medan diskutera \"%{discussion_title}\""
       subject: "%{who} nämnde dig i %{which}gruppen i Loomio"
     new_motion_created:
       subject: "Förslag: %{proposal_title}"
@@ -799,8 +884,18 @@ sv:
       headline: "%{author}s förslag i %{group} stänger snart:"
       summary: Sammanfattning
     thread_mailer:
+      footer_text: "Svara på detta mail direkt eller visa det på Loomio:"
+      reply_or_view_online_html: "Svara på detta mail direkt eller <a href='%{url}'>visa den på Loomio</a>."
+      unfollow_discussion_html: "<a href='%{unfollow_url}'>Sluta följa</a> för att stoppa e-postmeddelanden om denna diskussion."
+      change_email_preferences_html: "Ändra din <a href='%{email_preferences_url}'>e-postinställningar</a> att avsluta prenumerationen Loomio mejl."
+      change_preferences: "Ändra dina e-postinställningar:"
+      new_motion: "%{who} föreslog:"
       motion_closing_soon: "Förslag som stänger inom 24 timmar:"
       proposal_closed: "Förslag som är stängt:"
+      specify_outcome_html: "Ert förslag har stängt. <a href='%{link}'>Ange ett utfall</a> att låta alla veta vad resultatet blir."
+      specify_outcome: "Ert förslag har stängt. Ange ett utfall för att låta alla veta vad resultatet är:"
+      outcome_created: "%{who} satt ett förslag utfall:"
+      you_agreed: "Du %{past_tense_position}"
     verification:
       header: "Du är nästan klar!"
       intro: "Klicka på denna verifieringslänk för att slutföra din begäran:"
@@ -852,6 +947,7 @@ sv:
   translate_this_string: "Översätt till %{language}"
   failed_translation: Gick inte att utföra översättning
   options: Alternativ
+  rss_subscribe: Prenumerera på foder
   ok_got_it: "OK, jag förstår!"
   remove: Ta bort
   save: Spara
@@ -873,8 +969,11 @@ sv:
   google: Google
   persona: Persona
   common:
+    markdown_help_tooltip: Lär dig grunderna i att formatera din text med Wiki
     settings: Inställningar
     dashboard: Instrumentbräda
+    unread: Olästa
+    filter: "Filter:"
     following: Följer
     not_following: Följer inte
     back_to_discussion: Tillbaka till diskussion
@@ -896,6 +995,19 @@ sv:
       october: Oktober
       november: November
       december: December
+    abbr_months:
+      jan: Jan
+      feb: Feb
+      mar: Mar
+      apr: Apr
+      may: Maj
+      jun: Jun
+      jul: Jul
+      aug: Aug
+      sep: Sep
+      oct: Okt
+      nov: Nov
+      dec: Dec
     days:
       monday: Måndag
       tuesday: Tisdag
@@ -904,6 +1016,22 @@ sv:
       friday: Fredag
       saturday: Lördag
       sunday: Söndag
+    abbr_days:
+      mon: Mån
+      tue: Tis
+      wed: Ons
+      thu: Tor
+      fri: Fre
+      sat: Lör
+      sun: Sön
+    tiny_days:
+      mo: M
+      tu: Ti
+      we: O
+      th: To
+      fr: F
+      sa: L
+      su: S
     please_wait: Vänlig vänta
     privacy: Sekretesspolicy
     private: Privat
@@ -912,14 +1040,23 @@ sv:
     email: Email
     start_group: "Starta en grupp!"
   group_categories:
+    all: Alla
+    blank: Okategoriserat
     economics: Ekonomi
     activist: Aktivist
     arts: Konst
     business: Företag
+    collective: Kollektivet
+    community_group: Gemenskap grupp
+    co_operative: Kooperativ
     democratic_organisation: Demokratisk organisation
     education: Utbildning
+    environmental_group: Miljögrupp
     family: Familj
     local_government: Lokala regeringen
+    online_community: Onlinegrupp
+    religious_group: Religiösa/andliga
+    event: Händelse
     open_source_software: Öppen källkod
     political_initiative: Politiskt initiativ
     social_enterprise: Socialt företagande
