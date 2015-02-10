@@ -58,7 +58,7 @@ ActiveAdmin.register Group do
     attributes_table do
       row :group_request
       group.attributes.each do |k,v|
-        row k.to_sym if v.present?
+        row k.to_sym
       end
     end
 
