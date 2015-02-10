@@ -14,7 +14,10 @@ atom_feed do |feed|
       entry.title t(:comment_by, comment_author: item.author_name)
       entry.content item.body, type: :text
       entry.published item.created_at
-      entry.author { |author| author.name item.author_name }
+      entry.author do |author|
+        author.name item.author_name
+        author.uri  user_url(item.author)
+      end
       entry.link discussion_url(@discussion)
     end
   end
