@@ -748,7 +748,7 @@ pt-BR:
     picture: Imagem
     use_initials: Use iniciais
     use_uploaded: Use imagem enviada
-    use_gravtar: Use Gravatar
+    use_gravatar: Use Gravatar
     upload_new_image: Envie uma nova imagem
   group_setup:
     set_up_your_group: Configure seu grupo

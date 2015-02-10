@@ -730,7 +730,7 @@ eo:
     picture: Bildo
     use_initials: Uzi unuajn literojn de nomo
     use_uploaded: Uzi alŝutitan bildon
-    use_gravtar: Uzi Gravataron
+    use_gravatar: Uzi Gravataron
     upload_new_image: Alŝuti novan bildon
   group_setup:
     set_up_your_group: Konfiguri vian grupon

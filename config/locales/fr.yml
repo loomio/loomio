@@ -745,7 +745,7 @@ fr:
     picture: Image
     use_initials: Utiliser les initiales
     use_uploaded: Utiliser une image téléversée
-    use_gravtar: Utiliser Gravatar
+    use_gravatar: Utiliser Gravatar
     upload_new_image: Charger une nouvelle image
   group_setup:
     set_up_your_group: Paramétrer votre groupe

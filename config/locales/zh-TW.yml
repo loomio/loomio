@@ -734,7 +734,7 @@ zh-TW:
     picture: 照片
     use_initials: 使用縮寫
     use_uploaded: 使用上傳過的圖片
-    use_gravtar: 使用 Gravatar 的大頭貼
+    use_gravatar: 使用 Gravatar 的大頭貼
     upload_new_image: 上傳新的圖片
   group_setup:
     set_up_your_group: 設置您的群組
