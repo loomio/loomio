@@ -88,7 +88,9 @@ ActiveAdmin.register Group do
 
     panel("Subgroups") do
       table_for group.subgroups.each do |subgroup|
-        column :name
+        column :name do |g|
+          link_to g.name, admin_group_path(g)
+        end
         column :id
       end
     end
