@@ -1,16 +1,16 @@
 class MembershipService
 
-  def self.update(membership: membership, params: params, actor: actor)
+  def self.update(membership:, params:, actor:)
     actor.ability.authorize! :follow_by_default, membership
     membership.update! following_by_default: params[:following_by_default]
   end
 
-  def self.make_admin(membership: membership, params: params, actor: actor)
+  def self.make_admin(membership:, params:, actor:)
     actor.ability.authorize! :make_admin, membership
     membership.update admin: true
   end
 
-  def self.remove_admin(membership: membership, params: params, actor: actor)
+  def self.remove_admin(membership:, params:, actor:)
     actor.ability.authorize! :remove_admin, membership
     membership.update admin: false
   end
@@ -30,12 +30,12 @@ class MembershipService
     end
   end
 
-  def self.destroy(membership: membership, actor: actor)
+  def self.destroy(membership:, actor:)
     actor.ability.authorize! :destroy, membership
     membership.destroy
   end
 
-  def self.suspend_membership!(membership: membership)
+  def self.suspend_membership!(membership:)
     membership.suspend!
   end
 end
