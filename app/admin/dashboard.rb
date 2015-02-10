@@ -75,7 +75,7 @@ ActiveAdmin.register_page "Dashboard" do
       # end
       column do
         panel "Groups" do
-          h1 { Group.count }
+          h1 { Group.parents_only.published.count }
           div { "New today: #{Group.where('parent_id IS NULL AND created_at >= ?', 24.hours.ago).count}"}
           div { print_month_totals("groups").html_safe}
           div { link_to "See all groups", admin_groups_path }
