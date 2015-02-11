@@ -1,5 +1,5 @@
 class CommentService
-  def self.unlike(comment: comment, actor: actor)
+  def self.unlike(comment:, actor:)
     return false unless comment.likers.include? actor
     actor.ability.authorize!(:like, comment)
     comment_vote = CommentVote.where(user_id: actor.id, comment_id: comment.id).first
@@ -7,14 +7,14 @@ class CommentService
     Memos::CommentUnliked.publish!(comment_vote)
   end
 
-  def self.like(comment: comment, actor: actor)
+  def self.like(comment:, actor:)
     actor.ability.authorize!(:like, comment)
     comment_vote = comment.like(actor)
     DiscussionReader.for(discussion: comment.discussion, user: actor).follow!
     Events::CommentLiked.publish!(comment_vote)
   end
 
-  def self.create(comment: comment, actor: actor, mark_as_read: true)
+  def self.create(comment:, actor:, mark_as_read: true)
     comment.author = actor
     return false unless comment.valid?
     actor.ability.authorize! :create, comment
@@ -28,14 +28,14 @@ class CommentService
     event
   end
 
-  def self.destroy(comment: comment, actor: actor)
+  def self.destroy(comment:, actor:)
     actor.ability.authorize!(:destroy, comment)
     comment.destroy
 
     Memos::CommentDestroyed.publish!(comment)
   end
 
-  def self.update(comment: comment, params: params, actor: actor)
+  def self.update(comment:, params:, actor:)
     comment.edited_at = Time.zone.now
     comment.body = params[:body]
     return false unless comment.valid?

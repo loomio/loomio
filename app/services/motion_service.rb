@@ -1,5 +1,5 @@
 class MotionService
-  def self.create(motion: motion, actor: actor)
+  def self.create(motion:, actor:)
     motion.author = actor
     actor.ability.authorize! :create, motion
     return false unless motion.valid?
@@ -8,7 +8,7 @@ class MotionService
     Events::NewMotion.publish!(motion)
   end
 
-  def self.update(motion: motion, params: params, actor: actor)
+  def self.update(motion:, params:, actor:)
 
     if motion.closing_at.to_s == Time.zone.parse(params[:closing_at]).to_s
       params.delete(:closing_at)
@@ -67,7 +67,7 @@ class MotionService
     Events::MotionClosedByUser.publish!(motion, user)
   end
 
-  def self.create_outcome(motion: motion, params: params, actor: actor)
+  def self.create_outcome(motion:, params:, actor:)
     motion.outcome_author = actor
     motion.outcome = params[:outcome]
 
@@ -78,7 +78,7 @@ class MotionService
     Events::MotionOutcomeCreated.publish!(motion, actor)
   end
 
-  def self.update_outcome(motion: motion, params: params, actor: actor)
+  def self.update_outcome(motion:, params:, actor:)
     motion.outcome_author = actor
     motion.outcome = params[:outcome]
 
