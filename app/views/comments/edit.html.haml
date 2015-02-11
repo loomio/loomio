@@ -2,6 +2,16 @@
   .col-sm-6
     %h1= t :"edit_comment.edit_comment"
     - if can? :edit, @comment
+      #markdown-buttons
+        %button.mdbtn.btn.btn-md.btn-default.bold.fa.fa-fw.fa-header{"data-action" => "header"}
+        %button.mdbtn.btn.btn-md.btn-default.bold.fa.fa-fw.fa-bold{"data-action" => "bold"}
+        %button.mdbtn.btn.btn-md.btn-default.italic.fa.fa-fw.fa-italic{"data-action" => "italic"}
+        %button.mdbtn.btn.btn-md.btn-default.strike.fa.fa-fw.fa-strikethrough{"data-action" => "strike"}
+        %button.mdbtn.btn.btn-md.btn-default.ullist.fa.fa-fw.fa-list-ul{"data-action" => "ul"}
+        %button.mdbtn.btn.btn-md.btn-default.ollist.fa.fa-fw.fa-list-ol{"data-action" => "ol"}
+        %button.mdbtn.btn.btn-md.btn-default.link.fa.fa-fw.fa-link{"data-action" => "link"}
+        %button.mdbtn.btn.btn-md.btn-default.l.fa-fwink.fa.fa-fw.fa-image{"data-action" => "image"}
+        %button.mdbtn.btn.btn-md.btn-default.fa-fw.hr.fa.fa-minus{"data-action" => "hr"}
       = simple_form_for @comment do |f|
         =f.input :body, label: false, input_html: {class: 'js-warn-before-navigating-away'}
         =f.submit t(:update), class: "btn btn-info"
