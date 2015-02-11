@@ -758,6 +758,12 @@ en:
     video_id: "52025402"
     video_tutorial: "Video tutorial"
     video_tutorial_description: "Check out the video for a quick demonstration of how to use Loomio."
+    what_is_loomio: "What is Loomio?"
+    what_is_loomio_description_html: |
+      <p> Loomio is a simple, user-friendly online tool for collaborative decision-making.
+          Loomio allows you to host discussions online, invite the right people to participate,
+          come to timely decisions and transform deliberation into real-world action. </p>
+      <p> Loomio is free and open source software being developed by a worker-owned cooperative based in Wellington, New Zealand. </p>
 
   hint:
     context: 'Tips for using the context panel'

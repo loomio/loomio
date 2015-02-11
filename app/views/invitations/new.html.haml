@@ -26,4 +26,3 @@
   .row
     .col-sm-5.invitation-submit
       = f.submit t("invite_people"), :class => "btn btn-primary btn-lg run-validations", :id => "invite-to-group", :data => { disable_with: t("invite_people") }
-      =render "application/hint", text: t(:"hint.invitation"), anchor: 'writing-a-great-invitation'

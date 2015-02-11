@@ -11,4 +11,3 @@
     .character-counter
   = f.submit vote_submit_button_text, id: "submit-vote", class: "btn btn-primary run-validations", :data => { :disable_with => vote_submit_button_text }
   = link_to t(:cancel), motion_path(motion), class: "btn btn-default"
-  =render "application/hint", text: t(:"hint.vote"), anchor: 'no-link'

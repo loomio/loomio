@@ -200,4 +200,8 @@ module ApplicationHelper
   def followed_toggle_class
     'active' if sifting_followed?
   end
+
+  def render_help_container
+    ' help-container' if controller_name == 'help'
+  end
 end

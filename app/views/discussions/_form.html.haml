@@ -63,4 +63,3 @@
                 = f.radio_button :private, true
                 = discussion_privacy_collection(discussion)[1][0]
       = f.submit :class => "btn btn-lg btn-primary", id: "discussion-submit", :data => {:disable_with => t(:saving)}
-      = render 'application/hint', text: t(:"hint.discussion"), anchor: 'starting-an-engaging-discussion'
