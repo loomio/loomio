@@ -1,5 +1,5 @@
 class DiscussionService
-  def self.create(discussion: discussion, actor: actor)
+  def self.create(discussion:, actor:)
     discussion.author = actor
     discussion.inherit_group_privacy!
     return false unless discussion.valid?
@@ -9,7 +9,7 @@ class DiscussionService
     Events::NewDiscussion.publish!(discussion)
   end
 
-  def self.update(discussion: discussion, params: params, actor: actor)
+  def self.update(discussion:, params:, actor:)
     actor.ability.authorize! :update, discussion
 
     [:private, :title, :description, :uses_markdown].each do |attr|
