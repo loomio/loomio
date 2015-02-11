@@ -5,4 +5,4 @@
 
     .col-xs-11
       %span.title= item.title
-      %span.description= "- #{truncate(item.description, length: 180, omission: '...', separator: " ")}" unless item.description.blank?
+      %span.description= truncate(render_rich_text(item.description,item.uses_markdown), length: 180, omission: '...', separator: " ", :escape => false) unless item.description.blank?
