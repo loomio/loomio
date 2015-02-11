@@ -284,7 +284,7 @@ class User < ActiveRecord::Base
     I18n.t(:inactive_html, path_to_contact: '/contact').html_safe
   end
 
-  def avatar_url(size=nil)
+  def avatar_url(size=nil,avatar_kind=nil)
     size = size ? size.to_sym : :medium
     case size
     when :small
