@@ -1,8 +1,8 @@
 <h1><a href="https://www.loomio.org"> <img src="app/assets/images/logo-orange.png" alt="Loomio"/></a> </h1>
  
-[![Build Status](https://travis-ci.org/loomio/loomio.png?branch=master)](https://travis-ci.org/loomio/loomio) 
-[![Code Climate](https://codeclimate.com/github/loomio/loomio.png)](https://codeclimate.com/github/loomio/loomio) 
-[![Dependency Status](https://gemnasium.com/loomio/loomio.png)](https://gemnasium.com/loomio/loomio) 
+[![Build Status](https://img.shields.io/travis/loomio/loomio.svg)](https://travis-ci.org/loomio/loomio) 
+[![Code Climate](https://img.shields.io/codeclimate/github/loomio/loomio.svg)](https://codeclimate.com/github/loomio/loomio) 
+[![Dependency Status](https://img.shields.io/gemnasium/loomio/loomio.svg)](https://gemnasium.com/loomio/loomio) 
 
 Loomio is a collaborative decision-making tool that makes it easy for anyone to participate in decisions which affect them. If you'd like to find out more, check out [Loomio.org](https://www.loomio.org).
 
