@@ -1,0 +1,70 @@
+%section#group-settings
+  %h1 Group settings
+  .row
+    .col-sm-7
+      %p Starting a new Loomio group can be done at any time. When you first start your group you will be given the opportunity to determine how you want the group to function by filling out three forms relating to different aspects of your group’s settings; <strong>Profile</strong>, <strong>Privacy</strong> and <strong>Permissions</strong>. The settings for each of these are explained in more detail below. If you wish to change your group settings you can do so by clicking the <strong>“Options”</strong> button on the top right-hand corner of the group page, and selecting the <strong>“Edit group settings”</strong> option. This will only be visible to group coordinators.
+      %h3.anchor#group-profile Group profile
+      %p Your group profile setup requires you to choose a name for your group, and write a group description. Describe what the group is set up to do, for example "A public group for gallery coordinators to approve requests for use of the gallery space" or "The space for our board members to consider budget proposals". The purpose of your group can change over time but it's helpful if the description gives new members a clear understanding of what that group is for. You are also able to choose your group category. If you are a public group and you want people to be able to join the conversation, it's helpful to choose a category so others can use this to search on the the <a href="http://loomio.org/explore">Explore page</a>.
+    .col-sm-5
+      =image_tag "group-settings.png", class: "screenshot"
+  =image_tag "explore-page.png", class: "screenshot"
+  %h3.anchor#group-privacy Group privacy
+  .row
+    .col-sm-7
+      %p Your privacy settings determine who can see what you’re doing in your group, and who can gain membership to your group. When you set up your group you will need to choose between a few options.
+      %h4 Who can find this group?
+      %p If you select <strong>“Anyone”</strong>, the group will be listed on the publicly searchable <a href="http://loomio.org/explore">Explore page</a>, and other search  engines. This makes it easy for people to find your group, without you having to send them a personal invitation. This can be useful for getting large numbers of people who don’t already know each other into a group.
+      %p If you select <strong>“Members only”</strong> the group will not be searchable. Only group members will be able to access to the group. Selecting this option also affects how people join your group, and who can see your group’s discussions. Selecting <strong>“Members only”</strong> ensures that membership is by invitation only, and that you will only be able to have private discussions in your group.
+    .col-sm-5
+      =image_tag "group-privacy.png", class: "screenshot"
+  %h4 How do people join?
+  .row
+    .col-sm-8
+      %p Selecting the <strong>“Open”</strong> option means anyone with a Loomio account can join the group. People will see a <strong>"Join group"</strong> button on the right-hand side of the group page. If someone with an existing Loomio account clicks this button they will be added to the group. If someone without an existing Loomio account clicks this button then they will be prompted to create an account before they are able to join. (Note: the <strong>“Open”</strong> option is not applicable if you have selected the <strong>“Members only”</strong> option from the <strong>“Who can find this group?”</strong> section)
+    .col-sm-4
+      =image_tag "join-group.png", class: "screenshot"
+  .row
+    .col-sm-8
+      %p Selecting the <strong>“By request”</strong> option means anyone can ask to join the group. People will see an <strong>"Ask to join group"</strong> button on the right-hand side of your group page. When this button is clicked, the person will have the opportunity to introduce themselves, and a membership request will be sent to the group coordinators.
+    .col-sm-4
+      =image_tag "ask-to-join-group.png", class: "screenshot"
+  .row
+    .col-sm-5
+      =image_tag "request-membership.png", class: "screenshot"
+    .col-sm-7
+      %p Membership requests can be approved or ignored. (Note: the <strong>“By request”</strong> option is not applicable if you have selected the <strong>“Members only”</strong> option from the <strong>“Who can find this group?”</strong> section.)
+      =image_tag "pending-request.png", class: "screenshot"
+  %p If you select <strong>“Invitation only”</strong>, no-one can join the group without being individually invited. Invitations are sent from the <a href="#inviting-members">"Invite people”</a> page.
+  %h4 Who can see discussions?
+  %p Selecting the <strong>“Public discussions only”</strong> option means the content of all discussions will be publicly viewable. Members of the public who are not signed in to Loomio will be able to read your content, though they will not be able to write comments or participate in discussions. This can be helpful if you’re running an open conversation and you want to encourage people to participate. (Note: the <strong>“Public discussions only”</strong> option is not applicable if you have selected the <strong>“Members only”</strong> option from the <strong>“Who can find this group?”</strong> section.)
+  %p Selecting the <strong>“Allow public and private discussions”</strong> option means members of your group can choose whether discussions they start are public or private. This allows discretion around some topics which might be more sensitive, which might be helpful if you only want people who have joined the group to be able to read those conversations. (Note: the <strong>“Allow public and private discussions”</strong> option is not applicable if you have selected the <strong>“Members only”</strong> option from the <strong>“Who can find this group?”</strong> section.)
+  %p If you select <strong>“Private discussions only”</strong>, no one outside of your group will be able to see the content of your discussions.
+  %h3.anchor#group-permissions Group permissions
+  .row
+    .col-sm-7
+      %p This helps you manage which functions of Loomio you allow the members of your group to use. When you start, you will need to consider whether the group members have decision-making power, whether you want them to be able to raise issues or only comment on the issues you raise, etc. Being able to control this means that consultation, supervision, reporting and other situations in which you might use Loomio with some participants and some “observers” can be easier to manage.
+      %p If you want only some people in your group to have the ability to vote, comment, or start discussions, make those people coordinators and deselect the boxes so non-coordinator members do not have these permissions.
+    .col-sm-5
+      =image_tag "group-permissions.png", class: "screenshot"
+  %h4 What can members do?
+  %p.permissions-subhead Invite and approve new members
+  %p Do you want people in your group to be able to <a href="#inviting-members">invite people to join</a>, and, depending on your group privacy settings, approve membership requests? When this checkbox is selected everyone in your group will be able to invite new people in, and approve any membership requests. When it is deselected only group coordinators will be able to invite and approve new members.
+  %p.permissions-subhead Create sub-groups
+  %p Do you want members to be able to start a new <a href="#subgroups">sub-group</a> within your Loomio group? When this checkbox is selected then everyone in your group will be able to create sub-groups. When it is deselected only group coordinators will be able to create sub-groups.
+  %p.permissions-subhead Start discussions
+  %p Do you want anyone in the group to be able to start <a href="#starting-discussions">new discussions</a>? If this checkbox is selected everyone in your group will be able to start discussions. When it is deselected only group coordinators will be able to start discussions.
+  %p.permissions-subhead Edit the context of any discussion in the group
+  %p Do you want people to be able to change the <a href="#providing-context">context panel</a> of discussions? This is the outline of the discussion topic and it can be useful to update as new information emerges. When this box is selected everyone in your group will be able to edit the context of any discussion. When it is deselected only group coordinators will be able to edit the discussion contexts. (Discussion authors can always edit their own discussion contexts.)
+  %p.permissions-subhead Edit their comments at any time
+  .row
+    .col-sm-6
+      %p Do you want to allow people to change what they have written in their comments? When this box is selected everyone in your group will be able to <a href="#editing-comments">edit their comments</a> at any time. When it is deselected, a comment can only be edited until someone else participates in the discussion. Comments that have been edited display the word <strong>“Edited”</strong> beneath them. Clicking that will display all previous versions of the comment.
+    .col-sm-6
+      =image_tag "edited-comment.png", class: "screenshot"
+  %p.permissions-subhead Raise proposals
+  %p Do you want anyone in the group to be able to <a href="#starting-proposals">raise proposals</a> for the group to vote on?  When this box is selected then anyone in your group will be able to raise a proposal within a discussion. When this box is deselected only group coordinators will be able to raise proposals.
+  %p.permissions-subhead Vote on proposals
+  %p Do you want all members of the group to be able to <a href="#stating-positions">state their position on proposals</a>? Or would you prefer if some people could only observe?  When this box is selected then anyone in your group will be able to state their position on proposals. When it is deselected only group coordinators will be able to state their position on proposals.
+  .row#back-to-top
+    .col-sm-12
+      %a{:href => "#contents"} ^ Back to top

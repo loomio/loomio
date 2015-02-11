@@ -1,22 +1,39 @@
 .help {
   h1 {
     font-size: 36px;
-    margin-top: 2em;
+    margin: 1em 0;
     border-bottom: 1px solid;
   }
   h2 {
     font-size: 28px;
+    margin: 2em 0;
   }
   h3{
     font-size: 18px;
     line-height: 1.2;
-    margin-bottom: 0.3em
+    margin: 1em 0;
+  }
+  h4 {
+    color: #999999;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 1em;
   }
   p {
     font-size: 15px;
-    margin-bottom: 2em;
+    margin-bottom: 1.5em;
     line-height: 1.4;
   }
+  section {
+    padding-top: 30px;
+    margin-top: -30px;
+  }
+
+  .anchor {
+    padding-top: 70px;
+    margin-top: -50px;
+  }
+
   #sidenav {
     .nav.nav-tabs {
       max-width: 230px;
@@ -43,13 +60,63 @@
       }
     }
   }
+  #help-header { margin-top: 10px; }
+
+  #get-started {
+    list-style: decimal;
+    margin: 0 0 30px 20px;
+    li {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  }
+  #what-is-loomio {
+    padding-top: 75px;
+    margin-top: -75px;
+  }
+
+  #how-to { margin-bottom: 50px; }
+
+  #contents {
+    padding-top: 55px;
+    margin-top: -55px;
+    ul { margin-bottom: 24px; }
+    .single-item {
+      font-size: 16px;
+      font-weight: 600;
+      a { margin-bottom: 10px; }
+    }
+    li { margin-bottom: 10px; }
+    .top-level {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    margin-bottom: 20px;
+  }
+
+  .screenshot { margin-bottom: 30px; }
+
+
+  .permissions-subhead { font-style: italic; }
+
+  .import-contacts-permission { float: right; }
+
+  .deactivation {
+    li { margin-bottom: 10px }
+    font-size: 15px;
+    list-style: circle;
+    margin-left: 20px;
+  }
+
+  #back-to-top { margin: 30px 0 0 0; }
 }
+
+.help-container { padding: 0 40px; }
 /*Styles applied to both in-app help and marketing site*/
 .help, .pages.purpose{
   #help-content {
     h2 {
       margin-bottom: .3em;
-      margin-top: 2em;
       .blue{ color: #0088cc; }
     }
     iframe { margin-top: 0; }
@@ -59,14 +126,13 @@
     }
     .example, .extra-margin{ margin-top: 32px}
     .positions {
-      margin-top: 92px;
       img {
         border: none;
         margin: 0 4px 15px 0;
         width: 30px;
       }
-      p { margin-bottom: 1em; }
       span { font-weight: 700; }
+      margin-bottom: 50px;
     }
   }
 }

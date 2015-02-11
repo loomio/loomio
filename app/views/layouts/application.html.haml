@@ -22,7 +22,7 @@
     - analytics_scope do
       = render 'google_tag_manager'
     = render 'application/header'
-    .container.main-container
+    .container.main-container{ class: render_help_container }
       - unless (controller_name == 'groups') && (action_name == 'show')
         = render 'application/flash_messages', :flash => flash, :on_landing_page => false
       .page-container
