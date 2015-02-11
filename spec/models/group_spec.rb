@@ -205,24 +205,12 @@ describe Group do
 
   describe "parent_members_can_see_discussions_is_valid?" do
     context "parent_members_can_see_discussions = true" do
-      it "errors for a parent group" do
-        expect { create(:group,
-                        parent_members_can_see_discussions: true) }.to raise_error
-      end
 
       it "errors for a hidden_from_everyone subgroup" do
         expect { create(:group,
                         is_visible_to_public: false,
                         is_visible_to_parent_members: false,
                         parent: create(:group),
-                        parent_members_can_see_discussions: true) }.to raise_error
-      end
-
-      it "errors for a visible_to_public subgroup" do
-        expect { create(:group,
-                        is_visible_to_public: true,
-                        parent: create(:group,
-                                       is_visible_to_public: true),
                         parent_members_can_see_discussions: true) }.to raise_error
       end
 
