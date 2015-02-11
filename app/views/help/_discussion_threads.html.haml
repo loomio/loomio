@@ -1,0 +1,44 @@
+%section#discussion-threads
+  %h1 Discussion threads
+  .row
+    .col-sm-6
+      %p Discussion threads are where your group gets together to discuss a topic, exchange ideas and information, and make decisions.
+      %p At the top of the page is the title of the thread, followed by the context panel. Discussion takes place on the left-hand side of the page. When there’s a decision for the group to make, it comes up on the right.
+      %p The group creator sets discussion permissions when they set up their group, and any group coordinators can edit those settings at any point.
+    .col-sm-6
+      =image_tag "example-discussion.png", class: "screenshot"
+  %h3.anchor#starting-discussions Starting a discussion
+  .row
+    .col-sm-8
+      %p If you wish to start a new discussion you can do so from the <a href="#dashboard">dashboard</a>, or from your group page, by clicking on the <strong>"Start a discussion"</strong> button right-hand side of either page. If you start a discussion from the dashboard you’ll be asked to chose the group in which the discussion should take place.
+    .col-sm-4
+      =image_tag "start-discussion.png", class: "screenshot"
+  %h3.anchor#providing-context Providing context
+  .row
+    .col-sm-7
+      %p When you create a new discussion the form requires you to provide a <strong>title</strong> and <strong>context</strong> for your discussion. Make sure the title conveys the topic succinctly – what is the core message? Long discussion titles will be truncated on the dashboard.
+      %p The context field allows you to elaborate on the title and provide any relevant background information. Try to provide all the background information someone might need to meaningfully participate – everything required for the group to have a productive and informed discussion.
+      %p The discussion title and the information you provide for the context field will sit in a panel at the top of the discussion page.
+      %p As the discussion progresses, the context panel can be updated as new information comes to light. As well as clarifying the topic, you can use this space for sharing resources, summarising the discussion as it progresses, or outlining the decision-making protocols your group is using.
+      %h3.anchor#discussion-privacy Discussion privacy
+      %p Discussion privacy is determined by group privacy. If you are starting a discussion in a public group then you can choose whether your discussion is public (i.e. it is searchable and anyone can see it), or private (it will only be visible to members of your group).
+    .col-sm-5
+      =image_tag "new-discussion-form.png", class: "screenshot"
+  %h3.anchor#editing-discussions Editing a discussion
+  .row
+    .col-sm-8
+      %p At any time, group members can edit the title, context and privacy of any discussion they have started. Group coordinators can always edit the title, context and privacy of any discussion. The group creator (and any other coordinators) can also determine whether or not group members can edit each others’ discussions (see <a href="#group-settings">group settings</a>).
+      %p If you have the correct permissions to edit a discussion then you will see <strong>“Edit discussion”</strong> when you click the cog icon at the top right of the discussion page.
+    .col-sm-4
+      =image_tag "edit-discussion.png", class: "screenshot"
+  %h3.anchor#moving-discussions Moving a discussion
+  .row
+    .col-sm-7
+      %p If you want to move a discussion into another group you must be a member of both groups and you must be a coordinator of the group in which the discussion was created. On the discussion page, click the cog icon and then <strong>“Move discussion”</strong>. You will be asked to choose the group to move the discussion to. If you move a public discussion into a group with discussions set to <strong>“Private only”</strong> then the discussion will be made private.
+    .col-sm-5
+      =image_tag "move-discussion.png", class: "screenshot"
+  %h3.anchor#deleting-discussions Deleting a discussion
+  %p Only group coordinators can delete discussions. When a discussion is deleted it is removed and cannot be restored. If you are a group coordinator and you wish to delete a discussion, visit the discussion, click the cog icon and then <strong>“Delete discussion”</strong>.
+  .row#back-to-top
+    .col-sm-12
+      %a{:href => "#contents"} ^ Back to top
