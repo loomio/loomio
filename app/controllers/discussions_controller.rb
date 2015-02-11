@@ -222,7 +222,7 @@ class DiscussionsController < GroupBaseController
   end
 
   def assign_meta_data
-    if @group.privacy == 'public'
+    if @group.is_visible_to_public?
       @meta_title = @discussion.title
       @meta_description = @discussion.description
     end
