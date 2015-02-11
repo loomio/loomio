@@ -74,3 +74,125 @@ $ ->
   $(".js-prompt-user-to-join-or-authenticate").on "click", (e) ->
     $('#prompt-user-to-join-or-authenticate').modal('show')
 
+
+# markdown button controller
+# see app/views/disccussions/_add_comment.html.haml
+# see app/views/comments/edit.html.haml
+
+$ ->
+  $('#uses_markdown').click ->
+    if $('input[name="uses_markdown"]:checked').length > 0
+      $('#markdown-buttons').show()
+    else
+      $('#markdown-buttons').hide()
+$ ->
+  $('#comment_uses_markdown').click ->
+    if $('input[name="comment[uses_markdown]"]:checked').length > 0
+      $('#markdown-buttons').show()
+    else
+      $('#markdown-buttons').hide()
+$ ->
+  $("button.mdbtn").click (event) ->
+    caret = Markdown.getCaret()
+    Markdown.appendAtCaret($(this).attr('data-action'),caret)
+    $(this).blur()
+    $('textarea').focus()
+    event.preventDefault()
+
+Markdown =
+
+  getCaret: () ->
+    if $("textarea").prop("selectionStart")
+      return $("textarea").prop("selectionStart")
+    else if document.selection
+      $("textarea").focus()
+      r = document.selection.createRange()
+      return 0 unless r?
+      re = $("textarea").createTextRange()
+      rc = re.duplicate()
+      re.moveToBookmark r.getBookmark()
+      rc.setEndPoint "EndToStart", re
+      return rc.text.length
+
+  appendAtCaret: (type, caret) ->
+    beg = ""
+    end = ""
+    infix = ""
+    $value = ""
+    $target = $("textarea")
+    value = $target.val()
+    startPos = $target.prop("selectionStart")
+    endPos = $target.prop("selectionEnd")
+    scrollTop = $target.scrollTop
+    infix = value.substring(startPos, endPos)
+    lastChar = infix.substring(-1)
+    # remove last newline if it is there
+    newLine = /[\r\n]/g
+    if newLine.test(lastChar)
+      endPos = endPos - 1
+      infix = value.substring(startPos, endPos)
+
+    #split the list into lines according to our regex
+    list = infix.split(newLine)
+
+    count = 1
+    clear = false
+    switch type
+      when "header"
+        beg = "# "
+        end = "\n"
+      when "bold"
+        beg = "**"
+        end = "**"
+      when "italic"
+        beg = "*"
+        end = "*"
+      when "strike"
+        beg = "~~"
+        end = "~~"
+      when "ul"
+        for line in list
+          do ->
+            beg = beg + "\n- " + line
+        end = "\n"
+        clear = true
+      when "ol"
+        for line in list
+          do ->
+            beg = beg + "\n " + count + ". " + line
+            count++
+        end = "\n"
+        clear = true
+      when "link"
+        beg = "[link text]("
+        end = ")"
+      when "image"
+        beg = "![image alt text]("
+        end = ")"
+      when "hr"
+        beg = "\n\n***\n\n"
+        end = ""
+    unless caret is value.length
+      if clear is true
+        infix = ""
+      if caret is undefined
+        caret = 0
+      $target.val value.substring(0, caret) + beg + infix + end + value.substring(endPos, value.length)
+      $target.prop "selectionStart", startPos
+      $target.prop "selectionEnd", startPos + beg.length + end.length + value.substring(startPos, endPos).length
+      $target.scrollTop = scrollTop
+    else if caret is 0
+      if type is "hr"
+        $target.val value.substring(0, caret) + beg + value.substring(startPos, endPos) + end + value.substring(endPos, value.length)
+        $target.prop "selectionStart", startPos
+        $target.prop "selectionEnd", startPos + beg.length + end.length + value.substring(startPos, endPos).length
+        $target.scrollTop = scrollTop
+    else
+      if type is "hr"
+        $target.val value.substring(0, caret) + beg + value.substring(startPos, endPos) + end + value.substring(endPos, value.length)
+        $target.prop "selectionStart", startPos
+        $target.prop "selectionEnd", startPos + beg.length + end.length + value.substring(startPos, endPos).length
+        $target.scrollTop = scrollTop
+      else
+        $target.val value + " " + $value
+    return
