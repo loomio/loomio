@@ -529,18 +529,26 @@ class Group < ActiveRecord::Base
   end
 
   def parent_members_can_see_discussions_is_valid?
-    if parent_members_can_see_discussions?
-      is_visible_to_parent_members?
-    else
+    if is_visible_to_public?
       true
+    else
+      if parent_members_can_see_discussions?
+        is_visible_to_parent_members?
+      else
+        true
+      end
     end
   end
 
   def visible_to_parent_members_is_valid?
-    if is_visible_to_parent_members?
-      is_hidden_from_public? and is_subgroup?
-    else
+    if is_visible_to_public?
       true
+    else
+      if is_visible_to_parent_members?
+        is_hidden_from_public? and is_subgroup?
+      else
+        true
+      end
     end
   end
 
