@@ -25,7 +25,7 @@ class ExploreController < ApplicationController
 
   def category_names_and_paths
     @categories = Category.all
-    names_and_paths = @categories.map{|c| [I18n.t(c.translatable_name), category_explore_path(c)]}
+    names_and_paths = @categories.map{|c| [I18n.t(c.translatable_name,default: c.name), category_explore_path(c)]}
     names_and_paths.prepend [t(:"group_categories.all"), category_explore_path(:all)]
     names_and_paths.prepend ["", explore_path]
   end
