@@ -1,144 +1,144 @@
 an:
-  main: 100
   frontpage: 100
+  main: 100
 ar:
+  frontpage: 100
   main: 53
-  frontpage: 100
 be_BY:
-  main: 100
   frontpage: 100
+  main: 100
 bg_BG:
+  frontpage: 18
   main: 44
-  frontpage: 18
 ca:
-  main: 83
   frontpage: 81
+  main: 83
 cmn:
+  frontpage: 0
   main: 31
-  frontpage: 0
 cs:
-  main: 84
   frontpage: 100
+  main: 84
 da:
-  main: 99
   frontpage: 100
+  main: 99
 de:
-  main: 100
   frontpage: 100
+  main: 100
 el:
-  main: 100
   frontpage: 100
+  main: 100
 eo:
+  frontpage: 100
   main: 97
-  frontpage: 100
 es:
-  main: 99
   frontpage: 100
+  main: 99
 fa_IR:
+  frontpage: 100
   main: 13
-  frontpage: 100
 fi:
+  frontpage: 0
   main: 7
-  frontpage: 0
 fr:
-  main: 99
   frontpage: 100
+  main: 99
 ga_IE:
-  main: 48
   frontpage: 37
+  main: 48
 gl:
+  frontpage: 51
   main: 75
-  frontpage: 51
 he:
+  frontpage: 100
   main: 71
-  frontpage: 100
 hr:
+  frontpage: 100
   main: 50
-  frontpage: 100
 hu:
-  main: 100
   frontpage: 100
+  main: 100
 id:
-  main: 57
   frontpage: 51
+  main: 57
 it:
+  frontpage: 100
   main: 98
-  frontpage: 100
 it_CH:
-  main: 0
   frontpage: 0
+  main: 0
 ja:
-  main: 68
   frontpage: 62
+  main: 68
 km:
+  frontpage: 0
   main: 52
-  frontpage: 0
 ko:
-  main: 61
   frontpage: 97
-lv:
-  main: 0
-  frontpage: 0
-mi:
-  main: 0
-  frontpage: 2
-mk:
-  main: 58
-  frontpage: 100
-ml:
-  main: 56
-  frontpage: 0
-nl_NL:
-  main: 99
-  frontpage: 100
-pl:
-  main: 19
-  frontpage: 100
-pt_BR:
-  main: 100
-  frontpage: 100
-pt_PT:
-  main: 10
-  frontpage: 25
-ro:
-  main: 99
-  frontpage: 100
-ru:
   main: 61
+lv:
+  frontpage: 0
+  main: 0
+mi:
+  frontpage: 2
+  main: 0
+mk:
   frontpage: 100
-sk:
-  main: 100
+  main: 58
+ml:
+  frontpage: 0
+  main: 56
+nl_NL:
   frontpage: 100
-sl:
-  main: 70
-  frontpage: 100
-sr:
-  main: 100
-  frontpage: 100
-sr_RS:
-  main: 100
-  frontpage: 100
-sv:
   main: 99
+pl:
   frontpage: 100
+  main: 19
+pt_BR:
+  frontpage: 100
+  main: 100
+pt_PT:
+  frontpage: 25
+  main: 10
+ro:
+  frontpage: 100
+  main: 99
+ru:
+  frontpage: 100
+  main: 61
+sk:
+  frontpage: 100
+  main: 100
+sl:
+  frontpage: 100
+  main: 90
+sr:
+  frontpage: 100
+  main: 100
+sr_RS:
+  frontpage: 100
+  main: 100
+sv:
+  frontpage: 100
+  main: 99
 te:
-  main: 28
   frontpage: 18
+  main: 28
 tr:
-  main: 100
   frontpage: 100
+  main: 100
 uk:
+  frontpage: 100
   main: 84
-  frontpage: 100
 ur:
-  main: 0
   frontpage: 0
+  main: 0
 ur_PK:
+  frontpage: 0
   main: 0
-  frontpage: 0
 vi:
-  main: 46
   frontpage: 0
+  main: 46
 zh_TW:
-  main: 100
   frontpage: 100
+  main: 100
