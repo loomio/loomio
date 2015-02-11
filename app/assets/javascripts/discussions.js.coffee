@@ -76,9 +76,6 @@ $ ->
 
 
 # markdown button controller
-# see app/views/disccussions/_add_comment.html.haml
-# see app/views/comments/edit.html.haml
-
 $ ->
   $('#uses_markdown').click ->
     if $('input[name="uses_markdown"]:checked').length > 0
