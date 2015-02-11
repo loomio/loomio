@@ -3,5 +3,5 @@ When(/^I visit the help page$/) do
 end
 
 Then(/^I should see some help$/) do
-  page.should have_css("#how-it-works")
+  page.should have_css("#help-content")
 end
