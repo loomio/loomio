@@ -838,7 +838,7 @@ en:
   remember_me: "Remember me"
   signing_in: "Signing in"
   or: "or"
-  invalid_email: The email address you have entered is invalid, please enter a valid email address
+  invalid_email: The email address you entered was not recognised. Verify it is entered correctly or try another email address.
   forgot_your_password: "Forgot your password?"
   dont_have_an_account: "Don't have an account?"
   create_one_now: "Create one now"
