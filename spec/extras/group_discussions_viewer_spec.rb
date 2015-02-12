@@ -4,7 +4,7 @@ describe GroupDiscussionsViewer do
 
   let(:user) { create :user }
 
-  def groups_displayed(user: user, group: group)
+  def groups_displayed(user: , group: )
     GroupDiscussionsViewer.groups_displayed(user: user, group: group)
   end
 
