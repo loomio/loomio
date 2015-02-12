@@ -1,5 +1,5 @@
 module EmailHelper
-  def reply_to_address(discussion: discussion, user: user)
+  def reply_to_address(discussion: , user: )
     pairs = []
     {d: discussion.id, u: user.id, k: user.email_api_key}.each do |key, value|
       pairs << "#{key}=#{value}"
@@ -7,7 +7,7 @@ module EmailHelper
     pairs.join('&')+"@#{ENV['REPLY_HOSTNAME']}"
   end
 
-  def reply_to_address_with_group_name(discussion: discussion, user: user)
+  def reply_to_address_with_group_name(discussion: , user: )
     "\"#{discussion.group.full_name}\" <#{reply_to_address(discussion: discussion, user: user)}>"
   end
 
