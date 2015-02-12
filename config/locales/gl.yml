@@ -585,7 +585,7 @@ gl:
     picture: Imaxe
     use_initials: Usar iniciais
     use_uploaded: Usar imaxe subida
-    use_gravtar: Usar Gravatar
+    use_gravatar: Usar Gravatar
     upload_new_image: Actualizar a imaxe
   group_setup:
     set_up_your_group: Configura o teu grupo

@@ -748,7 +748,7 @@ el:
     picture: Εικόνα
     use_initials: Χρησιμοποιήστε αρχικά
     use_uploaded: Χρησιμοποιήστε ανεβασμένη εικόνα
-    use_gravtar: Χρησιμοποιήστε Gravatar
+    use_gravatar: Χρησιμοποιήστε Gravatar
     upload_new_image: Ανεβάστε νέα εικόνα
   group_setup:
     set_up_your_group: Ρυθμίστε την ομάδα σας

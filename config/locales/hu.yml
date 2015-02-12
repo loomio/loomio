@@ -748,7 +748,7 @@ hu:
     picture: Kép
     use_initials: Használj kezőbetűket
     use_uploaded: Használj egy feltöltött képet
-    use_gravtar: Használj Gravatart
+    use_gravatar: Használj Gravatart
     upload_new_image: Új kép feltöltése
   group_setup:
     set_up_your_group: Csoportod beállításai

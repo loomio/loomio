@@ -748,7 +748,7 @@ nl-NL:
     picture: Afbeelding
     use_initials: Gebruik initialen
     use_uploaded: Gebruik geuploade afbeelding
-    use_gravtar: Gebruik Gravatar
+    use_gravatar: Gebruik Gravatar
     upload_new_image: Upload nieuwe afbeelding
   group_setup:
     set_up_your_group: Stel je groep in

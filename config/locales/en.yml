@@ -995,7 +995,7 @@ en:
     picture: "Picture"
     use_initials: 'Use initials'
     use_uploaded: 'Use uploaded image'
-    use_gravtar: 'Use Gravatar'
+    use_gravatar: 'Use Gravatar'
     upload_new_image: "Upload a new image"
 
   group_setup:

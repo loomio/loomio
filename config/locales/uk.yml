@@ -608,7 +608,7 @@ uk:
     picture: Картинка
     use_initials: Використовувати ініціали
     use_uploaded: Використати завантажене зображення
-    use_gravtar: Використати Gravatar
+    use_gravatar: Використати Gravatar
     upload_new_image: Завантажити нове зображення
   group_setup:
     set_up_your_group: Настройки групи

@@ -744,7 +744,7 @@ es:
     picture: Imagen
     use_initials: Usar iniciales
     use_uploaded: Subir nueva imagen
-    use_gravtar: Usar Gravatar
+    use_gravatar: Usar Gravatar
     upload_new_image: Cargar nueva imagen
   group_setup:
     set_up_your_group: Establecer grupo

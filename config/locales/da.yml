@@ -744,7 +744,7 @@ da:
     picture: Billede
     use_initials: Brug initialer
     use_uploaded: Brug uploadet billede
-    use_gravtar: Brug Gravatar
+    use_gravatar: Brug Gravatar
     upload_new_image: Upload et nyt billede
   group_setup:
     set_up_your_group: Sæt din gruppe op

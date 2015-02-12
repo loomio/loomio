@@ -549,7 +549,7 @@ he:
     picture: תמונה
     use_initials: שימוש באותיות הראשונות
     use_uploaded: שימוש בתמונה שנטענה
-    use_gravtar: שימוש בGravatar
+    use_gravatar: שימוש בGravatar
     upload_new_image: טעינת תמונה חדשה
   group_setup:
     set_up_your_group: הגדרת קבוצה

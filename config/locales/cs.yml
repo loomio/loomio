@@ -630,7 +630,7 @@ cs:
     picture: Fotka
     use_initials: Použít iniciály
     use_uploaded: Použít nahraný obrázek
-    use_gravtar: Použít Gravatar
+    use_gravatar: Použít Gravatar
     upload_new_image: Nahrát novou fotku
   group_setup:
     set_up_your_group: Zřiďte si skupinu

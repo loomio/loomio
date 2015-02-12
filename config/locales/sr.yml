@@ -762,7 +762,7 @@ sr:
     picture: Slika
     use_initials: Koristi inicijale
     use_uploaded: Koristi prosleđenu sliku
-    use_gravtar: Koristi Gravatar
+    use_gravatar: Koristi Gravatar
     upload_new_image: Prosledi novu sliku
   group_setup:
     set_up_your_group: Osnuj grupu

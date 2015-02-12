@@ -762,7 +762,7 @@ sk:
     picture: Fotka
     use_initials: Použiť iniciály
     use_uploaded: Použiť nahraný obrázok
-    use_gravtar: Použiť Gravatar
+    use_gravatar: Použiť Gravatar
     upload_new_image: Nahrať novú fotku
   group_setup:
     set_up_your_group: Zriaďte si skupinu

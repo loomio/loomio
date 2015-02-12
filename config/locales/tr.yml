@@ -748,7 +748,7 @@ tr:
     picture: Resim
     use_initials: Baş harfleri kullan
     use_uploaded: Yüklenmiş resim kullan
-    use_gravtar: Gravatar kullan
+    use_gravatar: Gravatar kullan
     upload_new_image: Yeni bir resim yükle
   group_setup:
     set_up_your_group: Grubunu kur

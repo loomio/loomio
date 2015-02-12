@@ -762,7 +762,7 @@ ro:
     picture: Fotografie
     use_initials: Foloseste initiale
     use_uploaded: Foloseste o imagine incarcata
-    use_gravtar: Foloseste Gravatar
+    use_gravatar: Foloseste Gravatar
     upload_new_image: Încărcare imagine
   group_setup:
     set_up_your_group: Creeaza grupul tau

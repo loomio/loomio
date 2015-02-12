@@ -762,7 +762,7 @@ sr-RS:
     picture: Слика
     use_initials: Користи иницијале
     use_uploaded: Користи прослеђену слику
-    use_gravtar: Користи Граватар
+    use_gravatar: Користи Граватар
     upload_new_image: Проследи нову слику
   group_setup:
     set_up_your_group: Оснуј групу

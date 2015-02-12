@@ -747,7 +747,7 @@ sv:
     picture: Bild
     use_initials: Använd initialer
     use_uploaded: Använd uppladdad bild
-    use_gravtar: Använd Gravatar
+    use_gravatar: Använd Gravatar
     upload_new_image: Ladda upp en ny bild
   group_setup:
     set_up_your_group: Starta din grupp
