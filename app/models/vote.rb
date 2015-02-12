@@ -90,7 +90,12 @@ class Vote < ActiveRecord::Base
   end
 
   def age_previous_votes
-    motion.votes.where(user_id: user_id).update_all('age = age + 1')
+    Vote.transaction do
+      motion.votes.order('age desc').each do |vote|
+        vote.update_attribute(:age, vote.age + 1)
+      end
+    end
+    #motion.votes.where(user_id: user_id).update_all('age = age + 1')
   end
 
   def update_motion_vote_counts
