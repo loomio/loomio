@@ -115,12 +115,6 @@ module GroupsHelper
     render('groups/label_and_description', label: label, description: description)
   end
 
-  def user_sees_private_discussions_message?(user, group)
-    group.privacy == 'private' &&
-    group.members.exclude?(user) &&
-    group.discussions.where('private = ?', false).empty?
-  end
-
   def use_parent_if_blank(group, method)
     if group.is_subgroup? && group.send(method).blank?
       group.parent.send(method)
