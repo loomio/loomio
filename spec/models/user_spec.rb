@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe User do
+  before(:all) {
+    BlacklistedPassword.create(string: 'qwerty12')
+    BlacklistedPassword.create(string: 'qwerty123')
+  }
+
   let(:user) { create(:user) }
   let(:group) { create(:group) }
   let(:restrictive_group) { create(:group, members_can_start_discussions: false) }
@@ -15,6 +20,35 @@ describe User do
   it "cannot have invalid avatar_kinds" do
     user.avatar_kind = 'bad'
     user.should have(1).errors_on(:avatar_kind)
+  end
+
+  it "should require the password to be at least 8 characters long" do
+    user.password = 'PSWD'
+    user.should have(1).errors_on(:password)
+  end
+
+  it "should only require the password to be valid when it's being updated" do
+    user.password = 'qwerty123'
+    user.save!(:validate => false)
+    user_id = user.id
+    user = User.find_by_id(user_id)
+    user.save!
+    user.should have(0).errors_on(:password)
+  end
+
+  it "should require the password to be non-trivial" do
+    user.password = 'qwerty123'
+    user.should have(1).errors_on(:password)
+  end
+
+  it "should require the password to be non-trivial regardless of the case" do
+    user.password = 'QwerTy12'
+    user.should have(1).errors_on(:password)
+  end
+
+  it "should otherwise accept any password" do
+    user.password = 'hey_this_is_fairly_complex'
+    user.save!
   end
 
   it "sets the avatar_kind to gravatar if user has one" do
@@ -257,8 +291,8 @@ describe User do
 
   describe "usernames" do
     before do
-      @user1 = User.new(name: "Test User", email: "test1@example.com", password: "password")
-      @user2 = User.new(name: "Test User", email: "test2@example.com", password: "password")
+      @user1 = User.new(name: "Test User", email: "test1@example.com", password: "passwordXYZ123")
+      @user2 = User.new(name: "Test User", email: "test2@example.com", password: "passwordXYZ123")
     end
     it "generates a unique username" do
       @user1.generate_username

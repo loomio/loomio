@@ -19,7 +19,7 @@ def login(user_or_email, password = nil)
   if password.nil?
     #assume email is a user object and password is password
     email = user_or_email.email
-    password = 'password'
+    password = 'complex_password'
   else
     email = user_or_email
   end
@@ -33,7 +33,7 @@ end
 def login_automatically(user)
   visit "/users/sign_in"
   fill_in 'user_email', with: user.email
-  fill_in 'user_password', :with => 'password'
+  fill_in 'user_password', :with => 'complex_password'
   click_on 'sign-in-btn'
 end
 

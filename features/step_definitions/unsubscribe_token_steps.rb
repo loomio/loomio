@@ -1,7 +1,7 @@
 Given /^I have a user account but not I'm logged in$/ do
   @user = FactoryGirl.create :user, name: 'User Guy',
                                     email: "user@example.org",
-                                    password: 'password'
+                                    password: 'complex_password'
 
 end
 

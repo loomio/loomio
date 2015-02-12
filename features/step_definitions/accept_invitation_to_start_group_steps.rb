@@ -35,7 +35,7 @@ end
 When /^I fill in and submit the new user form$/ do
   fill_in "user_name", with: "My name"
   fill_in "user_email", with: @admin_email
-  fill_in "user_password", with: "password"
+  fill_in "user_password", with: "complex_password"
   click_on "submit"
 end
 

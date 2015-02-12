@@ -62,8 +62,8 @@ end
 When(/^I sign up as a new user$/) do
   fill_in :user_name, with: 'Jim Jameson'
   fill_in :user_email, with: 'jim@jam.com'
-  fill_in :user_password, with: 'password'
-  fill_in :user_password_confirmation, with: 'password'
+  fill_in :user_password, with: 'complex_password'
+  fill_in :user_password_confirmation, with: 'complex_password'
   find('input[name=commit]').click()
   @user = User.find_by_email('jim@jam.com')
 end
