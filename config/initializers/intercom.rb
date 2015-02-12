@@ -81,7 +81,7 @@ if Rails.application.secrets.intercom_app_id
         description: :description,
         group_request_description: :group_request_description,
         financial_nature: :financial_nature,
-        privacy: :privacy,
+        visible_to: :visible_to,
         plan: :payment_plan
     }
 
