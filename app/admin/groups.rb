@@ -21,7 +21,6 @@ ActiveAdmin.register Group do
   filter :payment_plan, as: :select, collection: Group::PAYMENT_PLANS
   filter :memberships_count
   filter :created_at
-  filter :privacy
 
   scope :parents_only
   scope :engaged
@@ -45,7 +44,6 @@ ActiveAdmin.register Group do
     column "Discussions", :discussions_count
     column "Motions", :motions_count
     column :created_at
-    column :privacy
     column :description, :sortable => :description do |group|
       group.description
     end
