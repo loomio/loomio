@@ -88,19 +88,7 @@ module LocalesHelper
   end
 
   def best_locale
-    if user_signed_in?
-      best_available_locale
-    else
-      best_cachable_locale
-    end
-  end
-
-  def best_available_locale
     selected_locale || detected_locale || default_locale
-  end
-
-  def best_cachable_locale
-    selected_locale || default_locale
   end
 
   # 2 of 2 places untrusted user input can enter system
