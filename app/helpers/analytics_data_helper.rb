@@ -20,7 +20,7 @@ module AnalyticsDataHelper
         "group_parent_id" => (@group.parent_id.to_s ? @group.parent_id.to_s : 'undefined'),
         "top_group" => (@group.parent_id.to_s ? @group.parent_id.to_s : @group.id.to_s),
         "group_memberships_count" => @group.memberships_count.to_s,
-        "group_privacy" => @group.privacy,
+        "group_visible_to" => @group.visible_to,
         "group_cohort" => @group.created_at.strftime("%Y-%m")
       })
     end
