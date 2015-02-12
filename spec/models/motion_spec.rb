@@ -75,8 +75,6 @@ describe Motion do
       motion.group.add_member! user
       vote1 = create :vote, :motion => motion, :position => "yes", :user => user
       vote2 = create :vote, :motion => motion, :position => "no", :user => user
-      p vote1, vote2
-      motion.reload
       motion.members_not_voted_count.should == motion.group_members.count - 1
     end
 
