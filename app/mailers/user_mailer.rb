@@ -54,7 +54,7 @@ class UserMailer < BaseMailer
       mail to: user.email,
            from: from_user_via_loomio(inviter),
            reply_to: inviter.name_and_email,
-           subject: t("email.user_added_to_a_group.subject", which_group: group.name, who: inviter.name)
+           subject: t("email.user_added_to_a_group.subject", which_group: group.full_name, who: inviter.name)
     end
   end
 end
