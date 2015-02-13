@@ -32,4 +32,18 @@ describe UserMailer do
       @mail.body.encoded.should match("http://localhost:3000/g/#{@group.key}")
     end
   end
+
+  context 'sending email on being added to group' do
+    before :each do
+      @user = create(:user)
+      @inviter = create(:user)
+      @group = build(:group, full_name: "Group full name")
+      @mail = UserMailer.added_to_group(user: @user, inviter: @inviter, group: @group)
+    end
+
+    it 'renders the subject' do
+      expect(@mail.subject).to eq "#{@inviter.name} has added you to #{@group.full_name}"
+    end
+  end
+
 end
