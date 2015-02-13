@@ -8,10 +8,13 @@
   %br
   = t(:'email.thread_mailer.reply_or_view_online_html', url: link)
 
+  %br
   - if @following
-    %br
     - unfollow_url = email_actions_unfollow_discussion_url(discussion_id: @discussion.id, unsubscribe_token: @recipient.unsubscribe_token)
     = t :'email.thread_mailer.unfollow_discussion_html', unfollow_url: unfollow_url
+  - else 
+    - follow_url = email_actions_follow_discussion_url(discussion_id: @discussion.id, unsubscribe_token: @recipient.unsubscribe_token)
+    = t :'email.thread_mailer.follow_discussion_html', follow_url: follow_url
 
   %br
   = t :"email.thread_mailer.change_email_preferences_html", email_preferences_url: email_preferences_url(@utm_hash.merge(unsubscribe_token: @recipient.unsubscribe_token))

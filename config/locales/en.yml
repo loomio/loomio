@@ -243,6 +243,10 @@ en:
     motion_outcome_created: "published an outcome for the proposal"
     motion_outcome_updated: "updated the outcome for the proposal"
 
+    email_actions:
+      following_thread: "You are now following the thread: %{thread_title}"
+      not_following_thread: "You are no longer following the thread: %{thread_title}"
+
   edit_discussion_context: "Edit discussion context"
   request_new_group: "Start a group"
   start_new_group: "Start a new group"
@@ -1154,6 +1158,7 @@ en:
       #footer_html: "Reply to this email directly or <a href='%{app_link}'>view it on Loomio</a>. Change your <a href='%{preferences_link}'>email preferences</a>."
       reply_or_view_online_html: "Reply to this email directly or <a href='%{url}'>view it on Loomio</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Unfollow</a> to stop emails about this discussion."
+      follow_discussion_html: "<a href='%{follow_url}'>Follow</a> to receive emails about this discussion."
       change_email_preferences_html: "Change your <a href='%{email_preferences_url}'>email preferences</a> to unsubscribe from Loomio emails."
       change_preferences: "Change your email preferences:"
       new_motion: "%{who} proposed:"
