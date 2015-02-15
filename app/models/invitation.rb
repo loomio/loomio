@@ -42,7 +42,7 @@ class Invitation < ActiveRecord::Base
   def invitable_name
     case invitable_type
     when 'Group'
-      invitable.name
+      invitable.full_name
     when 'Discussion'
       invitable.title
     end
