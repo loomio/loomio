@@ -8,13 +8,13 @@ describe Group do
 
   context "group creator" do
     it "stores the admin as a creator" do
-      group.creator.should == group.admins.first
+      expect(group.creator).to eq group.admins.first
     end
 
     it "delegates language to the group creator" do
       @user = create :user, selected_locale: :fr
       group = create :group, creator: @user
-      group.locale.should == group.creator.locale
+      expect(group.locale).to eq group.creator.locale
     end
   end
 
@@ -29,7 +29,7 @@ describe Group do
       end
 
       it "returns a count of motions" do
-        @group.reload.motions_count.should == 1
+        expect(@group.reload.motions_count).to eq 1
       end
 
       it "updates correctly after creating a motion" do
@@ -72,7 +72,7 @@ describe Group do
 
       it "updates correctly after archiving a discussion" do
         @group.discussions.create(attributes_for(:discussion).merge({ author: @user }))
-        @group.reload.discussions_count.should == 1
+        expect(@group.reload.discussions_count).to eq 1
         expect {
           @group.discussions.first.archive!
         }.to change { @group.reload.discussions_count }.by(-1)
@@ -80,7 +80,7 @@ describe Group do
 
       it "updates correctly after deleting a discussion" do
         @group.discussions.create(attributes_for(:discussion).merge({ author: @user }))
-        @group.reload.discussions_count.should == 1
+        expect(@group.reload.discussions_count).to eq 1
         expect {
           @group.discussions.first.destroy
         }.to change { @group.reload.discussions_count }.by(-1)
@@ -123,14 +123,14 @@ describe Group do
 
     context "subgroup.full_name" do
       it "contains parent name" do
-        @subgroup.full_name.should == "#{@group.name} - #{@subgroup.name}"
+        expect(@subgroup.full_name).to eq "#{@group.name} - #{@subgroup.name}"
       end
 
       it "updates if parent_name changes" do
         @group.name = "bluebird"
         @group.save!
         @subgroup.reload
-        @subgroup.full_name.should == "#{@group.name} - #{@subgroup.name}"
+        expect(@subgroup.full_name).to eq "#{@group.name} - #{@subgroup.name}"
       end
     end
   end

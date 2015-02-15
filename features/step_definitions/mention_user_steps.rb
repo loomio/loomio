@@ -67,11 +67,11 @@ Given /^harry wants to be emailed when mentioned$/ do
 end
 
 Then /^the user should be notified that they were mentioned$/ do
-  Event.where(:kind => "user_mentioned").count.should == 1
+  expect(Event.where(:kind => "user_mentioned").count).to eq 1
 end
 
 Then /^the user should not be notified that they were mentioned$/ do
-  Event.where(:kind => "user_mentioned").count.should == 0
+  expect(Event.where(:kind => "user_mentioned").count).to eq 0
 end
 
 Given /^I wait (\d+) seconds?$/ do |sec|

@@ -88,6 +88,6 @@ end
 
 Then(/^the example content should be created$/) do
   @group = Group.where(name: @group_name).first
-  @group.discussions.first.title.should == I18n.t('example_discussion.title')
-  @group.motions.first.name.should == I18n.t('example_motion.name')
+  expect(@group.discussions.first.title).to eq I18n.t('example_discussion.title')
+  expect(@group.motions.first.name).to eq I18n.t('example_motion.name')
 end

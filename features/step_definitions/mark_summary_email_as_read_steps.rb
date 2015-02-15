@@ -20,9 +20,9 @@ Given(/^I am a logged out user with an unread discussion$/) do
   @motion.reload
   @discussion.reload
 
-  DiscussionReader.for(user: @user, discussion: @discussion).unread_comments_count.should == 2
-  MotionReader.for(user: @user, motion: @motion).unread_votes_count.should == 1
-  MotionReader.for(user: @user, motion: @motion).unread_activity_count.should == 2
+  expect(DiscussionReader.for(user: @user, discussion: @discussion).unread_comments_count).to eq 2
+  expect(MotionReader.for(user: @user, motion: @motion).unread_votes_count).to eq 1
+  expect(MotionReader.for(user: @user, motion: @motion).unread_activity_count).to eq 2
 end
 
 When(/^I mark the email as read$/) do
@@ -46,11 +46,11 @@ Then(/^the discussion should be marked as read when the email was generated$/) d
   @motion.reload
   @discussion.reload
 
-  DiscussionReader.for(user: @user, discussion: @discussion).
-                   unread_comments_count.should == 1
+  expect(DiscussionReader.for(user: @user, discussion: @discussion).
+                   unread_comments_count).to eq 1
 
-  MotionReader.for(user: @user, motion: @motion).unread_votes_count.should == 1
-  MotionReader.for(user: @user, motion: @motion).unread_activity_count.should == 1
+  expect(MotionReader.for(user: @user, motion: @motion).unread_votes_count).to eq 1
+  expect(MotionReader.for(user: @user, motion: @motion).unread_activity_count).to eq 1
 end
 
 

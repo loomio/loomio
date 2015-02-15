@@ -11,7 +11,7 @@ describe ApplicationHelper do
     context 'when time is same day' do
       it 'displays hours, minutes and meridian' do
         Timecop.freeze("2013-01-02 12:00:00 UTC") do
-          subject.should == ' 4:55 pm'
+          expect(subject).to eq ' 4:55 pm'
         end
       end
     end
@@ -19,7 +19,7 @@ describe ApplicationHelper do
     context 'when it is not the same day' do
       it 'displays date only' do
         Timecop.freeze("2013-01-01 12:00:00 UTC") do
-          subject.should == ' 2 Jan'
+          expect(subject).to eq ' 2 Jan'
         end
       end
     end
@@ -27,7 +27,7 @@ describe ApplicationHelper do
     context 'when it is not the same year' do
       it 'displays date and year' do
         Timecop.freeze("2014-01-01 12:00:00 UTC") do
-          subject.should == '2/1/13'
+          expect(subject).to eq '2/1/13'
         end
       end
     end
@@ -35,10 +35,10 @@ describe ApplicationHelper do
 
   describe "display_title" do
     it "shows Loomio name" do
-      helper.display_title(double(:size => 0)).should == "Loomio"
+      expect(helper.display_title(double(:size => 0))).to eq "Loomio"
     end
     it "shows notifications in paranthensis (if any)" do
-      helper.display_title(double(:size => 2)).should == "(2) Loomio"
+      expect(helper.display_title(double(:size => 2))).to eq "(2) Loomio"
     end
   end
   describe "set_title" do
@@ -77,7 +77,7 @@ describe ApplicationHelper do
       helper.analytics_scope do
         executed = true
       end    
-      executed.should eq true
+      expect(executed).to eq  true
     end
 
     it "executes block in staging" do
@@ -86,7 +86,7 @@ describe ApplicationHelper do
       helper.analytics_scope do
         executed = true
       end    
-      executed.should eq true
+      expect(executed).to eq  true
     end
 
     it "does not execute block in other environments" do
@@ -95,7 +95,7 @@ describe ApplicationHelper do
       helper.analytics_scope do
         executed = true
       end    
-      executed.should eq false
+      expect(executed).to eq  false
     end
 
     it "does not execute block in the searches controller" do
@@ -105,7 +105,7 @@ describe ApplicationHelper do
       helper.analytics_scope do
         executed = true
       end    
-      executed.should eq false
+      expect(executed).to eq  false
     end
   end
 end

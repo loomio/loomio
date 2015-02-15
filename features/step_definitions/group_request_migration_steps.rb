@@ -18,10 +18,10 @@ end
 
 Then(/^there should be an invitation to start that group$/) do
   @invitation = Invitation.find_by_token(@group_request.token)
-  @invitation.intent.should == 'start_group'
-  @invitation.recipient_email.should == @group_request.admin_email
-  @invitation.token.should == @group_request.token
-  @invitation.invitable.should == @group_request.group
+  expect(@invitation.intent).to eq 'start_group'
+  expect(@invitation.recipient_email).to eq @group_request.admin_email
+  expect(@invitation.token).to eq @group_request.token
+  expect(@invitation.invitable).to eq @group_request.group
 end
 
 When(/^I visit a GroupRequest\#start new group$/) do
@@ -42,5 +42,5 @@ When(/^I visit a GroupRequest\#start new group$/) do
 end
 
 Then(/^I should be redirected to invitations with the same token$/) do
-  current_path.should == invitation_path(@invitation)
+  expect(current_path).to eq invitation_path(@invitation)
 end

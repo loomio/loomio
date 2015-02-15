@@ -10,7 +10,7 @@ describe LocalesHelper do
     end
 
     it 'gives the correct language preference' do
-      helper.send(:browser_accepted_locales).should == [:'pt-BR', :'pt', :'en-US', :'en', :'es']
+      expect(helper.send(:browser_accepted_locales)).to eq [:'pt-BR', :'pt', :'en-US', :'en', :'es']
     end
   end
 end

@@ -43,7 +43,7 @@ describe GroupsController do
 
     it "create subgroup" do
       post :create, :group => {parent_id: group.id, name: 'subgroup', is_visible_to_public: false}
-      assigns(:group).parent.should eq(group)
+      expect(assigns(:group).parent).to eq (group)
       assigns(:group).admins.should include(user)
       response.should redirect_to(group_url(assigns(:group)))
     end
@@ -54,7 +54,7 @@ describe GroupsController do
       it "update" do
         expected_new_path = group_path(group).gsub(group.full_name.parameterize, 'new-name')
         post :update, id: group.key, group: { name: "New name!" }
-        flash[:notice].should == "Group was successfully updated."
+        expect(flash[:notice]).to eq "Group was successfully updated."
         response.should redirect_to expected_new_path
       end
 

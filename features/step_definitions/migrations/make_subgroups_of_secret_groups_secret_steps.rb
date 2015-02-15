@@ -11,5 +11,5 @@ end
 
 Then(/^the public subgroup should be secret$/) do
   @sub_group.reload
-  @sub_group.privacy.should == 'secret'
+  expect(@sub_group.privacy).to eq 'secret'
 end

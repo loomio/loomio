@@ -10,7 +10,7 @@ describe AcceptInvitation do
     end
 
     it 'sets accepted_by to the user' do
-      invitation.accepted_by.should == user
+      expect(invitation.accepted_by).to eq user
     end
 
     it 'sets accepted_at' do
@@ -34,7 +34,7 @@ describe AcceptInvitation do
     end
 
     it 'notifies the invitor of acceptance' do
-      Event.last.kind.should == 'invitation_accepted'
+      expect(Event.last.kind).to eq 'invitation_accepted'
     end
   end
 end

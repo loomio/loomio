@@ -14,7 +14,7 @@ end
 And(/^I am the only coordinator of a group$/) do
   @group = FactoryGirl.create :group
   @user = @group.admins.first
-  @group.admins.count.should == 1
+  expect(@group.admins.count).to eq 1
 end
 
 Then(/^I should see that I can't leave the group$/) do

@@ -19,11 +19,11 @@ describe MotionReader do
 
     context 'not called' do
       it "should have 1 unread vote" do
-        reader.unread_votes_count.should == 1
+        expect(reader.unread_votes_count).to eq 1
       end
 
       it "should have 2 unread activity" do
-        reader.unread_activity_count.should == 2
+        expect(reader.unread_activity_count).to eq 2
       end
     end
 
@@ -33,11 +33,11 @@ describe MotionReader do
       end
 
       it 'marks all unique votes as read' do
-        reader.unread_votes_count.should == 0
+        expect(reader.unread_votes_count).to eq 0
       end
 
       it 'marks all vote activity as read' do
-        reader.unread_activity_count.should == 0
+        expect(reader.unread_activity_count).to eq 0
       end
     end
 
@@ -47,11 +47,11 @@ describe MotionReader do
       end
 
       it 'marks all unique votes before time as read' do
-        reader.unread_votes_count.should == 1
+        expect(reader.unread_votes_count).to eq 1
       end
 
       it 'marks all vote activity before time as read' do
-        reader.unread_activity_count.should == 1
+        expect(reader.unread_activity_count).to eq 1
       end
     end
   end

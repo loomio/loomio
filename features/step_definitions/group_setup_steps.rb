@@ -32,7 +32,7 @@ Given(/^I am an admin of a group that has not completed setup$/) do
 end
 
 Then(/^I should be redirected to the group setup$/) do
-  current_path.should == setup_group_path(@group)
+  expect(current_path).to eq setup_group_path(@group)
 end
 
 Given(/^I am an admin of a parent group that has not completed setup$/) do
@@ -59,7 +59,7 @@ Then(/^I should have received the Welcome to Loomio email$/) do
   address = @user.email
   subject = "Welcome to Loomio"
   amount = 1
-  unread_emails_for(address).select { |m| m.subject =~ Regexp.new(subject) }.size.should == parse_email_count(amount)
+  expect(unread_emails_for(address).select { |m| m.subject =~ Regexp.new(subject) }.size).to eq parse_email_count(amount)
 end
 
 Then(/^I should see the subgroup page$/) do

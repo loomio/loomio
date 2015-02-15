@@ -23,30 +23,30 @@ describe AvatarInitials do
     it "sets avatar_initials to 'DU' if deactivated_at is true (a date is present)" do
       user.deactivated_at = "20/12/2002"
       user.set_avatar_initials
-      user.avatar_initials.should == "DU"
+      expect(user.avatar_initials).to eq "DU"
     end
 
     it "sets avatar_initials to the first two characters in all caps of the email if the user's name is email" do
       user.set_avatar_initials
-      user.avatar_initials.should == "RG"
+      expect(user.avatar_initials).to eq "RG"
     end
 
     it "returns the first three initials of the stored name" do
       user.name = "Bob bobby sinclair deebop"
       user.set_avatar_initials
-      user.avatar_initials.should == "BBS"
+      expect(user.avatar_initials).to eq "BBS"
     end
 
     it "returns the first two characters of their email if they have no name" do
       user.name = nil
       user.set_avatar_initials
-      user.avatar_initials.should == "RO"
+      expect(user.avatar_initials).to eq "RO"
     end
 
     it "works for strange characters" do
       user.name = "D'Angelo (Loco)"
       user.set_avatar_initials
-      user.avatar_initials.should == "D("
+      expect(user.avatar_initials).to eq "D("
     end
   end
 end
