@@ -20,7 +20,7 @@ describe Events::MembershipRequested do
     end
 
     it 'returns an event' do
-      Events::MembershipRequested.publish!(membership_request).should == event
+      expect(Events::MembershipRequested.publish!(membership_request)).to eq event
     end
   end
 

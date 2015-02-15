@@ -17,7 +17,7 @@ describe Events::MotionClosedByUser do
     end
 
     it 'returns an event' do
-      Events::MotionClosedByUser.publish!(motion, closer).should == event
+      expect(Events::MotionClosedByUser.publish!(motion, closer)).to eq event
     end
   end
 end

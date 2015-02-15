@@ -23,21 +23,21 @@ describe SubscriptionForm do
     context "when preset_amount == 'custom'" do
       it "returns custom_amount" do
         form = SubscriptionForm.new('preset_amount' => 'custom', 'custom_amount' => '23')
-        form.amount.should eq('23')
+        expect(form.amount).to eq ('23')
       end
     end
 
     context "when preset_amount is blank" do
       it "returns custom_amount" do
         form = SubscriptionForm.new('preset_amount' => '', 'custom_amount' => '23')
-        form.amount.should eq('23')
+        expect(form.amount).to eq ('23')
       end
     end
 
     context "when both preset_amount and custom_amount have numeric values" do
       it "returns preset_amount" do
         form = SubscriptionForm.new('preset_amount' => '52', 'custom_amount' => '23')
-        form.amount.should eq('52')
+        expect(form.amount).to eq ('52')
       end
     end
   end
@@ -46,9 +46,9 @@ describe SubscriptionForm do
     it "always returns amount with two decimal places" do
       form = SubscriptionForm.new
       form.stub amount: '2.5'
-      form.amount_with_cents.should eq('2.50')
+      expect(form.amount_with_cents).to eq ('2.50')
       form.stub amount: '12'
-      form.amount_with_cents.should eq('12.00')
+      expect(form.amount_with_cents).to eq ('12.00')
     end
   end
 end

@@ -13,9 +13,9 @@ describe Motion do
       vote1 = Vote.create(motion_id: motion.id, user_id: user.id, position: "no")
       vote2 = Vote.create(motion_id: motion.id, user_id: user.id, position: "yes")
 
-      motion.votes.count.should == 2
-      motion.unique_votes.count.should == 1
-      motion.unique_votes.first.should == vote2
+      expect(motion.votes.count).to eq 2
+      expect(motion.unique_votes.count).to eq 1
+      expect(motion.unique_votes.first).to eq vote2
     end
   end
 
@@ -43,7 +43,7 @@ describe Motion do
       @vote.user = @user
       @vote.motion = @motion
       @vote.save!
-      @motion.user_has_voted?(@user).should == true
+      expect(@motion.user_has_voted?(@user)).to be true
     end
   end
 
@@ -51,7 +51,7 @@ describe Motion do
     before { @user = create(:user) }
     it "returns user's motions that match the query string" do
       motion = create(:motion, name: "jam toast", author: @user, discussion: discussion)
-      @user.motions.search("jam").should == [motion]
+      expect(@user.motions.search("jam")).to eq [motion]
     end
     it "does not return discussions that don't belong to the user" do
       motion = create(:motion, name: "sandwich crumbs", discussion: discussion)
@@ -67,7 +67,7 @@ describe Motion do
       motion.group.add_member! user
       create :vote, :motion => motion, :position => "yes", :user => user
       motion.reload
-      motion.members_not_voted_count.should == motion.group_members.count - 1
+      expect(motion.members_not_voted_count).to eq motion.group_members.count - 1
     end
 
     it "still works if the same user votes multiple times" do
@@ -75,7 +75,7 @@ describe Motion do
       motion.group.add_member! user
       vote1 = create :vote, :motion => motion, :position => "yes", :user => user
       vote2 = create :vote, :motion => motion, :position => "no", :user => user
-      motion.members_not_voted_count.should == motion.group_members.count - 1
+      expect(motion.members_not_voted_count).to eq motion.group_members.count - 1
     end
 
     context "for a closed motion" do
@@ -84,7 +84,7 @@ describe Motion do
       it "returns the number of members who did not vote" do
         motion.should be_closed
         motion.stub(:did_not_votes_count).and_return(99)
-        motion.members_not_voted_count.should == 99
+        expect(motion.members_not_voted_count).to eq 99
       end
     end
   end
@@ -119,7 +119,7 @@ describe Motion do
     it "returns the pecentage of users that have voted" do
       @motion.stub(:members_not_voted_count).and_return(10)
       @motion.stub(:group_size_when_voting).and_return(20)
-      @motion.percent_voted.should == 50
+      expect(@motion.percent_voted).to eq 50
     end
   end
 
@@ -145,10 +145,10 @@ describe Motion do
 
       context 'after updating the vote_counts' do
         it 'has counts of 1' do
-          motion.yes_votes_count.should == 1
-          motion.no_votes_count.should == 1
-          motion.abstain_votes_count.should == 1
-          motion.block_votes_count.should == 1
+          expect(motion.yes_votes_count).to eq 1
+          expect(motion.no_votes_count).to eq 1
+          expect(motion.abstain_votes_count).to eq 1
+          expect(motion.block_votes_count).to eq 1
         end
       end
     end

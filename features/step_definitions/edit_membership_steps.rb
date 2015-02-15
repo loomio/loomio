@@ -12,7 +12,7 @@ end
 
 Then(/^I should see the memberships index$/) do
   page.should have_css('body.memberships.index')
-  current_path.should == group_memberships_path(@group)
+  expect(current_path).to eq group_memberships_path(@group)
 end
 
 Given(/^there is another group member$/) do

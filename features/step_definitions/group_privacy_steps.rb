@@ -261,7 +261,7 @@ end
 
 Then(/^the group should be set to private$/) do
   @group.reload
-  @group.privacy.should == 'private'
+  expect(@group.privacy).to eq 'private'
 end
 
 Given(/^a private group exists$/) do

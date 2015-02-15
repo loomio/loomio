@@ -3,11 +3,11 @@ require "rails_helper"
 describe UserMailer do
   shared_examples_for 'email_meta' do
     it 'renders the receiver email' do
-      @mail.to.should == [@user.email]
+      expect(@mail.to).to eq [@user.email]
     end
 
     it 'renders the sender email' do
-      @mail.from.should == ['notifications@loomio.org']
+      expect(@mail.from).to eq ['notifications@loomio.org']
     end
   end
 
@@ -21,11 +21,11 @@ describe UserMailer do
     it_behaves_like 'email_meta'
 
     it 'assigns correct reply_to' do
-      @mail.reply_to.should == [@group.admin_email]
+      expect(@mail.reply_to).to eq [@group.admin_email]
     end
 
     it 'renders the subject' do
-      @mail.subject.should == "[Loomio: #{@group.full_name}] Membership approved"
+      expect(@mail.subject).to eq "[Loomio: #{@group.full_name}] Membership approved"
     end
 
     it 'assigns confirmation_url for email body' do

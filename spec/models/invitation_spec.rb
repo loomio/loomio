@@ -48,7 +48,7 @@ describe Invitation do
     end
 
     it 'sets attribute canceller' do
-      @invitation.canceller.should == @admin_user
+      expect(@invitation.canceller).to eq @admin_user
     end
 
     it 'should be cancelled' do
@@ -70,11 +70,11 @@ describe Invitation do
     end
 
     it 'specifies the recpient email' do
-      @invitation.recipient_email.should == 'jon@lemmon.com'
+      expect(@invitation.recipient_email).to eq 'jon@lemmon.com'
     end
 
     it 'specifies the group' do
-      @invitation.invitable.should == group
+      expect(@invitation.invitable).to eq group
     end
 
     it 'is to join as an admin' do
@@ -95,11 +95,11 @@ describe Invitation do
     end
 
     it 'specifies the recpient email' do
-      @invitation.recipient_email.should == 'jon@lemmon.com'
+      expect(@invitation.recipient_email).to eq 'jon@lemmon.com'
     end
 
     it 'specifies the group' do
-      @invitation.invitable.should == group
+      expect(@invitation.invitable).to eq group
     end
 
     it 'is to join as an admin' do

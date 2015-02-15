@@ -3,5 +3,5 @@ When(/^I convert "(.*?)"$/) do |iana_string|
 end
 
 Then(/^the city is "(.*?)"$/) do |city|
-  @city.should == city
+  expect(@city).to eq city
 end

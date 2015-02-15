@@ -106,8 +106,8 @@ end
 
 Then(/^the group name and description should be changed$/) do
   @group.reload
-  @group.name.should == 'changed'
-  @group.description.should == 'changed'
+  expect(@group.name).to eq 'changed'
+  expect(@group.description).to eq 'changed'
 end
 
 

@@ -29,7 +29,7 @@ describe Membership do
     membership = user.memberships.new(:group_id => group.id)
     membership.inviter = user2
     membership.save!
-    membership.inviter.should == user2
+    expect(membership.inviter).to eq user2
   end
 
   context "destroying a membership" do
@@ -70,7 +70,7 @@ describe Membership do
 
       it "removes user's open votes for the group" do
         @membership.destroy
-        @motion.votes.count.should == 0
+        expect(@motion.votes.count).to eq 0
       end
 
       it "does not remove user's open votes for other groups" do
@@ -83,7 +83,7 @@ describe Membership do
         vote.motion = motion2
         vote.save!
         @membership.destroy
-        motion2.votes.count.should == 1
+        expect(motion2.votes.count).to eq 1
       end
 
       it "does not fail if motion no longer exists" do

@@ -9,26 +9,26 @@ describe DiscussionItems::MotionClosed do
     before { item.stub_chain(:event, :user).and_return(nil) }
 
     it "#actor returns an empty string" do
-      item.actor.should == ""
+      expect(item.actor).to eq ""
     end
 
     it "#header returns a string" do
-      item.header.should == I18n.t('discussion_items.motion_closed.by_expiry') + ": "
+      expect(item.header).to eq I18n.t('discussion_items.motion_closed.by_expiry') + ": "
     end
   end
 
   it "#group returns the discussion's group" do
     item.stub_chain(:motion, :group).and_return("goob")
-    item.group.should == item.motion.group
+    expect(item.group).to eq item.motion.group
   end
 
   it "#body returns the motion's name with a space at front" do
     item.stub_chain(:motion, :name).and_return("goob")
-    item.body.should == " #{item.motion.name}"
+    expect(item.body).to eq " #{item.motion.name}"
   end
 
   it "#time returns the time the motion was closed" do
     item.stub_chain(:event, :created_at).and_return("blah")
-    item.time.should == item.event.created_at
+    expect(item.time).to eq item.event.created_at
   end
 end

@@ -24,21 +24,20 @@ describe GroupMailer do
     end
 
     it 'renders the subject' do
-      @mail.subject.should ==
-        "#{@membership_request.name} has requested to join #{@group.full_name}"
+      expect(@mail.subject).to eq "#{@membership_request.name} has requested to join #{@group.full_name}"
     end
 
     it "sends email to group admins" do
-      @mail.to.should == [@admin.email]
+      expect(@mail.to).to eq [@admin.email]
     end
 
     context "requestor is an existing loomio user" do
       it 'renders the sender email' do
-        @mail.from.should == ['notifications@loomio.org']
+        expect(@mail.from).to eq ['notifications@loomio.org']
       end
 
       it 'assigns correct reply_to' do
-        @mail.reply_to.should == [@membership_request.email]
+        expect(@mail.reply_to).to eq [@membership_request.email]
       end
 
       it 'assigns confirmation_url for email body' do

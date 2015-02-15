@@ -8,8 +8,8 @@ describe DiscussionItem do
       it "delagates to a NewDiscussion discussion item" do
         event.stub(:kind).and_return("new_discussion")
         event.stub(:eventable).and_return(double(:Discussion))
-        DiscussionItem.new(event).
-          item.class.should == DiscussionItems::NewDiscussion
+        expect(DiscussionItem.new(event).
+          item.class).to eq DiscussionItems::NewDiscussion
       end
     end
 
@@ -17,8 +17,8 @@ describe DiscussionItem do
       it "delagates to a NewMotion discussion item" do
         event.stub(:kind).and_return("new_motion")
         event.stub(:eventable).and_return(double(:Motion))
-        DiscussionItem.new(event).
-          item.class.should == DiscussionItems::NewMotion
+        expect(DiscussionItem.new(event).
+          item.class).to eq DiscussionItems::NewMotion
       end
     end
 
@@ -26,8 +26,8 @@ describe DiscussionItem do
       it "delagates to a NewVote discussion item" do
         event.stub(:kind).and_return("new_vote")
         event.stub(:eventable).and_return(double(:Vote))
-        DiscussionItem.new(event).
-          item.class.should == DiscussionItems::NewVote
+        expect(DiscussionItem.new(event).
+          item.class).to eq DiscussionItems::NewVote
       end
     end
 
@@ -35,8 +35,8 @@ describe DiscussionItem do
       it "delagates to a MotionClosed discussion item" do
         event.stub(:kind).and_return("motion_closed")
         event.stub(:eventable).and_return(double(:Motion))
-        DiscussionItem.new(event).
-          item.class.should == DiscussionItems::MotionClosed
+        expect(DiscussionItem.new(event).
+          item.class).to eq DiscussionItems::MotionClosed
       end
     end
 
@@ -44,8 +44,8 @@ describe DiscussionItem do
       it "delagates to a MotionCloseDateEdited discussion item" do
         event.stub(:kind).and_return("motion_close_date_edited")
         event.stub(:eventable).and_return(double(:Motion))
-        DiscussionItem.new(event).
-          item.class.should == DiscussionItems::MotionCloseDateEdited
+        expect(DiscussionItem.new(event).
+          item.class).to eq DiscussionItems::MotionCloseDateEdited
       end
     end
 
@@ -53,8 +53,8 @@ describe DiscussionItem do
       it "delagates to a DiscussionTitleEdited discussion item" do
         event.stub(:kind).and_return("discussion_title_edited")
         event.stub(:eventable).and_return(double(:Motion))
-        DiscussionItem.new(event).
-          item.class.should == DiscussionItems::DiscussionTitleEdited
+        expect(DiscussionItem.new(event).
+          item.class).to eq DiscussionItems::DiscussionTitleEdited
       end
     end
 
@@ -62,8 +62,8 @@ describe DiscussionItem do
       it "delagates to a DiscussionDescriptionEdited discussion item" do
         event.stub(:kind).and_return("discussion_description_edited")
         event.stub(:eventable).and_return(double(:Motion))
-        DiscussionItem.new(event).
-          item.class.should == DiscussionItems::DiscussionDescriptionEdited
+        expect(DiscussionItem.new(event).
+          item.class).to eq DiscussionItems::DiscussionDescriptionEdited
       end
     end
 

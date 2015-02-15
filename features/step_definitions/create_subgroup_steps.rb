@@ -10,7 +10,7 @@ end
 
 Then(/^a totally open subgroup should be created$/) do
   group = Group.find_by_name('subgroup')
-  group.description.should == 'description'
+  expect(group.description).to eq 'description'
   group.should be_is_visible_to_public
   group.should be_public_discussions_only
 end
@@ -26,7 +26,7 @@ end
 
 Then(/^a locked down subgroup should be created$/) do
   group = Group.find_by_name('subgroup')
-  group.description.should == 'description'
+  expect(group.description).to eq 'description'
   group.should_not be_is_visible_to_public
   group.should be_private_discussions_only
   group.should_not be_is_visible_to_parent_members
@@ -34,7 +34,7 @@ end
 
 Then(/^a visible to parent members subgroup should be created$/) do
   group = Group.find_by_name('subgroup')
-  group.description.should == 'description'
+  expect(group.description).to eq 'description'
   group.should be_is_visible_to_parent_members
   group.should be_parent_members_can_see_discussions
 end

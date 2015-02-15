@@ -55,14 +55,14 @@ describe User do
     user = User.new attributes_for(:user)
     user.stub(:has_gravatar? => true)
     user.save!
-    user.avatar_kind.should == "gravatar"
+    expect(user.avatar_kind).to eq "gravatar"
   end
 
   it "does not set avatar_kind if user does not have gravatar" do
     user = User.new attributes_for(:user)
     user.stub(:has_gravatar?).and_return(false)
     user.save!
-    user.avatar_kind.should == 'initials'
+    expect(user.avatar_kind).to eq 'initials'
   end
 
   it "email can have an apostrophe" do
@@ -152,7 +152,7 @@ describe User do
     end
 
     it "marks all notifications before given notification id as viewed" do
-      user.unviewed_notifications.count.should == 1
+      expect(user.unviewed_notifications.count).to eq 1
       @notif1.reload
       @notif1.viewed_at.should_not be_nil
     end
@@ -182,21 +182,21 @@ describe User do
   describe "#using_initials?" do
     it "returns true if user avatar_kind is 'initials'" do
       user.avatar_kind = "initials"
-      user.using_initials?.should == true
+      expect(user.using_initials?).to be true
     end
     it "returns false if user avatar_kind is something else" do
       user.avatar_kind = "uploaded"
-      user.using_initials?.should == false
+      expect(user.using_initials?).to be false
     end
   end
 
   describe "#has_uploaded_image?" do
     it "returns true if user has uploaded an image" do
       user.stub_chain(:uploaded_avatar, :url).and_return('/uploaded_avatars/medium/pants.png')
-      user.has_uploaded_image?.should == true
+      expect(user.has_uploaded_image?).to be true
     end
     it "returns false if user has not uploaded an image" do
-      user.has_uploaded_image?.should == false
+      expect(user.has_uploaded_image?).to be false
     end
   end
 
@@ -209,7 +209,7 @@ describe User do
     it "returns gravatar url if avatar_kind is 'gravatar'" do
       user.should_receive(:gravatar_url).and_return('www.gravatar/spike')
       user.avatar_kind = 'gravatar'
-      user.avatar_url(:small).should == 'www.gravatar/spike'
+      expect(user.avatar_url(:small)).to eq 'www.gravatar/spike'
     end
 
     context "where avatar_kind is 'uploaded'" do
@@ -220,22 +220,22 @@ describe User do
       it "returns medium url if no size is specified" do
         @uploaded_avatar.should_receive(:url).with(:medium).and_return('www.gravatar/uploaded/mike')
         user.avatar_kind = 'uploaded'
-        user.avatar_url(:medium).should == 'www.gravatar/uploaded/mike'
+        expect(user.avatar_url(:medium)).to eq 'www.gravatar/uploaded/mike'
       end
       it "returns large url if large size is specified" do
         @uploaded_avatar.should_receive(:url).with(:large).and_return('www.gravatar/uploaded/mike')
         user.avatar_kind = 'uploaded'
-        user.avatar_url(:large).should == 'www.gravatar/uploaded/mike'
+        expect(user.avatar_url(:large)).to eq 'www.gravatar/uploaded/mike'
       end
       it "returns medium url if medium size is specified" do
         @uploaded_avatar.should_receive(:url).with(:medium).and_return('www.gravatar/uploaded/mike')
         user.avatar_kind = 'uploaded'
-        user.avatar_url(:medium).should == 'www.gravatar/uploaded/mike'
+        expect(user.avatar_url(:medium)).to eq 'www.gravatar/uploaded/mike'
       end
       it "returns small url if small size is specified" do
         @uploaded_avatar.should_receive(:url).with(:small).and_return('www.gravatar/uploaded/mike')
         user.avatar_kind = 'uploaded'
-        user.avatar_url(:small).should == 'www.gravatar/uploaded/mike'
+        expect(user.avatar_url(:small)).to eq 'www.gravatar/uploaded/mike'
       end
     end
   end
@@ -278,14 +278,14 @@ describe User do
     it "returns notifications that the user has not viewed yet" do
       notification = Notification.create!(:event => mock_model(Event),
                                           :user => user)
-      user.unviewed_notifications.first.id.should == notification.id
+      expect(user.unviewed_notifications.first.id).to eq notification.id
     end
     it "does not return notifications that the user has viewed" do
       notification = Notification.new(:event => mock_model(Event),
                                       :user => user)
       notification.viewed_at = Time.now
       notification.save
-      user.unviewed_notifications.count.should == 0
+      expect(user.unviewed_notifications.count).to eq 0
     end
   end
 
@@ -323,21 +323,21 @@ describe User do
       user = User.new
       user.name = "R!chard D. Bar_tle*tt$"
       user.generate_username
-      user.username.should == "rcharddbartlett"
+      expect(user.username).to eq "rcharddbartlett"
     end
 
     it "changes non ASCII characters to their ASCII counterparts" do
       user = User.new
       user.name = "Kæsper Nørdskov _^25*/\!"
       user.generate_username
-      user.username.should == "kaespernordskov25"
+      expect(user.username).to eq "kaespernordskov25"
     end
 
     it "usernames radical should be 18 characters max" do
       user = User.new
       user.name = "Wow this is quite long as a name"
       user.generate_username
-      user.username.length.should equal(18)
+      expect(user.username.length).to eq 18
     end
   end
 
@@ -346,12 +346,12 @@ describe User do
       group.add_member!(user)
       other_user = FactoryGirl.create :user
       group.add_member!(other_user)
-      user.in_same_group_as?(other_user).should == true
+      expect(user.in_same_group_as?(other_user)).to be true
     end
     it "returns false if user and other_user do not share any groups" do
       group.add_member!(user)
       other_user = FactoryGirl.create :user
-      user.in_same_group_as?(other_user).should == false
+      expect(user.in_same_group_as?(other_user)).to be false
     end
   end
 

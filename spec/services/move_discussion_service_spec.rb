@@ -82,7 +82,7 @@ describe MoveDiscussionService do
     it "moves the discussion from source to destination" do
       discussion.should_receive(:save!)
       @mover.move!
-      discussion.group.should == destination_group
+      expect(discussion.group).to eq destination_group
     end
   end
 

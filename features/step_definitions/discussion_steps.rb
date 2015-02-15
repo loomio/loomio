@@ -20,13 +20,13 @@ end
 
 Then /^I should see a discussion xml feed$/ do                                                                                                                            
   response = Hash.from_xml page.body
-  response['feed']['title'].should eq @discussion.title
-  response['feed']['subtitle'].should eq @discussion.description
+  expect(response['feed']['title']).to eq  @discussion.title
+  expect(response['feed']['subtitle']).to eq  @discussion.description
 end
 
 Then /^the xml feed should have the comment$/ do 
   response = Hash.from_xml page.body
   response['feed']['entry']['title'].should match /#{@comment.author.name}/
   response['feed']['entry']['author']['uri'].should match /#{@comment.author.key}/
-  response['feed']['entry']['content'].should eq @comment.body
+  expect(response['feed']['entry']['content']).to eq  @comment.body
 end

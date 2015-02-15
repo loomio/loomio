@@ -33,8 +33,8 @@ Given(/^I am a current user$/) do
 end
 
 Then(/^I should see my name and email pre\-filled$/) do
-  find_field('Your name').value.should eq "Bob"
-  find_field('Your email address').value.should eq "bob@log.com"
+  expect(find_field('Your name').value).to eq  "Bob"
+  expect(find_field('Your email address').value).to eq  "bob@log.com"
 end
 
 Then(/^the message should be saved to the database with my user id$/) do

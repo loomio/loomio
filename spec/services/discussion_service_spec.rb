@@ -63,8 +63,8 @@ describe 'DiscussionService' do
       end
 
       it 'returns the event created' do
-        DiscussionService.create(discussion: discussion,
-                                 actor: user).should == event
+        expect(DiscussionService.create(discussion: discussion,
+                                 actor: user)).to eq event
       end
     end
   end
@@ -108,9 +108,9 @@ describe 'DiscussionService' do
     context 'the discussion is invalid' do
       before { discussion.stub(:valid?).and_return(false) }
       it 'returns false' do
-        DiscussionService.update(discussion: discussion,
+        expect(DiscussionService.update(discussion: discussion,
                                  params: discussion_params,
-                                 actor: user).should == false
+                                 actor: user)).to be false
       end
     end
   end

@@ -20,7 +20,7 @@ describe Events::CommentRepliedTo do
     end
 
     it 'returns an event' do
-      Events::CommentRepliedTo.publish!(comment).should == event
+      expect(Events::CommentRepliedTo.publish!(comment)).to eq event
     end
   end
 end

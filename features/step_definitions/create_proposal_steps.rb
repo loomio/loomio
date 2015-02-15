@@ -32,7 +32,7 @@ Then /^I should see the proposal details$/ do
 end
 
 Then(/^the time zone should match my time zone setting$/) do
-  find('#motion_close_at_time_zone option[selected]').value.should == @user.time_zone_city
+  expect(find('#motion_close_at_time_zone option[selected]').value).to eq @user.time_zone_city
 end
 
 Given(/^"(.*?)" is the author of the proposal$/) do |arg1|
