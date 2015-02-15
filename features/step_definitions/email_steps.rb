@@ -111,7 +111,7 @@ Then /^(?:I|they) should see "([^"]*?)" in the email body$/ do |text|
 end
 
 Then /^(?:I|they) should see \/([^"]*?)\/ in the email body$/ do |text|
-  current_email.default_part_body.to_s.should =~ Regexp.new(text)
+  expect(current_email.default_part_body.to_s).to match(Regexp.new(text))
 end
 
 Then /^(?:I|they) should see the email delivered from "([^"]*?)"$/ do |text|

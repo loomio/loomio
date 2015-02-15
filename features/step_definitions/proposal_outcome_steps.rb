@@ -51,7 +51,7 @@ end
 
 Then(/^my group members should not receive an email with subject "(.*?)"$/) do |arg1|
   last_email = ActionMailer::Base.deliveries.last
-  last_email.subject.should_not =~ /arg1/
+  expect(last_email.subject).not_to match(/arg1/)
 end
 
 Then(/^they should recieve a notification that an outcome has been created$/) do

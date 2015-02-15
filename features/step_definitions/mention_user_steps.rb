@@ -31,7 +31,7 @@ end
 
 Then /^I should see "(.*?)" added to the "(.*?)" field$/ do |text, field|
   input = find_field(field)
-  input.value.should =~ /#{text}/
+  expect(input.value).to match(/#{text}/)
 end
 
 Then /^I should see a link to "(.*?)"\s user$/ do |user|

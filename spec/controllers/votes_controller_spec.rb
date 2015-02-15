@@ -17,7 +17,7 @@ describe VotesController do
     it "flashes a motion closed message when the motion is closed" do
       motion.update_attribute :closed_at, Date.yesterday
       post :create, motion_id: motion.id, vote: { position: 'yes' }
-      flash[:notice].should =~ /motion has already closed/
+      expect(flash[:notice]).to match(/motion has already closed/)
     end
 
     it 'calls MotionService::cast_vote', focus: true do
@@ -28,7 +28,7 @@ describe VotesController do
     it "assigns flash and redirects to discussion" do
       post :create, {motion_id: motion.id, vote: {position: 'yes'}}
 
-      flash[:success].should =~ /Position submitted/
+      expect(flash[:success]).to match(/Position submitted/)
       response.should redirect_to motion.discussion
     end
   end

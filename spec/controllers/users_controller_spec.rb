@@ -17,12 +17,12 @@ describe UsersController do
     it "displays a success message" do
       user.stub(:save).and_return(true)
       post :update, :id => 999, :user => {:name => "Peter Chilltooth"}
-      flash[:notice].should =~ /Your settings have been updated./
+      expect(flash[:notice]).to match(/Your settings have been updated./)
     end
     it "displays an error message" do
       user.stub(:save).and_return(false)
       post :update, :id => 999, :user => {:name => "Peter Chilltooth"}
-      flash[:error].should =~ /Your settings did not get updated./
+      expect(flash[:error]).to match(/Your settings did not get updated./)
     end
     it "redirects to dashboard on success" do
       user.stub(:save).and_return(true)
@@ -51,7 +51,7 @@ describe UsersController do
     it "displays an unsupported file-type message on failure" do
       @user.stub(:save).and_return(false)
       post :upload_new_avatar, :id => 999, :uploaded_avatar => "www.peter_chilltooth.jpg"
-      flash[:error].should =~ /Unable to upload picture. Make sure the picture is under 1 MB and is a .jpeg, .png, or .gif file./
+      expect(flash[:error]).to match(/Unable to upload picture. Make sure the picture is under 1 MB and is a .jpeg, .png, or .gif file./)
     end
     it "redirects to profile" do
       @user.stub(:save).and_return(true)

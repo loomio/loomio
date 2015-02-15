@@ -30,7 +30,7 @@ end
 
 Then /^the proposal author should recieve an email with subject "(.*?)"$/ do |subject|
   last_email = ActionMailer::Base.deliveries.last
-  last_email.subject.should =~ /Proposal blocked/
+  expect(last_email.subject).to match(/Proposal blocked/)
 end
 
 Then /^I should see my vote in the list of positions$/ do

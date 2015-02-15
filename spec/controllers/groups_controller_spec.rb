@@ -66,7 +66,7 @@ describe GroupsController do
         end
 
         it "sets flash and redirects to the dashboard" do
-          flash[:success].should =~ /Group archived successfully/
+          expect(flash[:success]).to match(/Group archived successfully/)
           response.should redirect_to '/dashboard'
         end
       end
