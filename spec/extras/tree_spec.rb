@@ -6,9 +6,9 @@ describe Tree do
       parent, value, children = double(:parent), double(:value), double(:children)
       root = Tree.new(parent: parent, value: value,
                                 children: children)
-      root.parent.should == parent
-      root.value.should == value
-      root.children.should == children
+      expect(root.parent).to eq parent
+      expect(root.value).to eq value
+      expect(root.children).to eq children
     end
   end
 
@@ -21,10 +21,10 @@ describe Tree do
       children[0].children = [grandchild]
       root.children = children
       enumerator = root.each
-      enumerator.next.should == root
-      enumerator.next.should == children[0]
-      enumerator.next.should == grandchild
-      enumerator.next.should == children[1]
+      expect(enumerator.next).to eq root
+      expect(enumerator.next).to eq children[0]
+      expect(enumerator.next).to eq grandchild
+      expect(enumerator.next).to eq children[1]
     end
   end
 

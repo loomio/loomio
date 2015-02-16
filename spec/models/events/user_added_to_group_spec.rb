@@ -16,7 +16,7 @@ describe Events::UserAddedToGroup do
     end
 
     it 'returns an event' do
-      Events::UserAddedToGroup.publish!(membership, inviter).should == event
+      expect(Events::UserAddedToGroup.publish!(membership, inviter)).to eq event
     end
   end
 

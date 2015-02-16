@@ -67,7 +67,7 @@ describe Discussion do
     before { @user = create(:user) }
     it "returns user's discussions that match the query string" do
       discussion = create :discussion, title: "jam toast", author: @user
-      @user.discussions.search("jam").should == [discussion]
+      expect(@user.discussions.search("jam")).to eq [discussion]
     end
     it "does not return discussions that don't belong to the user" do
       discussion = create :discussion, title: "sandwich crumbs"
@@ -79,7 +79,7 @@ describe Discussion do
     it "returns the time the discussion was created at if no previous version exists" do
       Timecop.freeze do
         discussion = create :discussion
-        discussion.last_versioned_at.iso8601.should == discussion.created_at.iso8601
+        expect(discussion.last_versioned_at.iso8601).to eq discussion.created_at.iso8601
       end
     end
     it "returns the time the previous version was created at" do
@@ -87,7 +87,7 @@ describe Discussion do
       discussion.stub :has_previous_versions? => true
       discussion.stub_chain(:previous_version, :version, :created_at)
                 .and_return 12345
-      discussion.last_versioned_at.should == 12345
+      expect(discussion.last_versioned_at).to eq 12345
     end
   end
 
@@ -118,7 +118,7 @@ describe Discussion do
     end
 
     it "returns a count of motions" do
-      @discussion.reload.motions_count.should == 1
+      expect(@discussion.reload.motions_count).to eq 1
     end
 
     it "updates correctly after creating a motion" do
@@ -211,9 +211,9 @@ describe Discussion do
       @discussion = create :discussion
     end
     it "increases the total_views by 1" do
-      @discussion.total_views.should == 0
+      expect(@discussion.total_views).to eq 0
       @discussion.viewed!
-      @discussion.total_views.should == 1
+      expect(@discussion.total_views).to eq 1
     end
   end
 

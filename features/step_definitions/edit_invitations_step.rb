@@ -51,7 +51,7 @@ When(/^I cancel the pending invitation$/) do
 end
 
 Then(/^there should be no more pending invitations$/) do
-  @group.pending_invitations.count.should == 0
+  expect(@group.pending_invitations.count).to eq 0
 end
 
 Then(/^the flash notice should confirm the cancellation$/) do

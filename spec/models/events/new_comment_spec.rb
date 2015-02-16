@@ -18,7 +18,7 @@ describe Events::NewComment do
     end
 
     it 'returns an event' do
-      Events::NewComment.publish!(comment).should == event
+      expect(Events::NewComment.publish!(comment)).to eq event
     end
 
     it 'does not publish a comment replied to event if there is no parent' do

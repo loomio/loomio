@@ -21,7 +21,7 @@ describe InboxPreferencesForm do
       end
 
       it 'returns empty array if user has no memberships' do
-        subject.should == []
+        expect(subject).to eq []
       end
 
       it 'returns membership selected to appear in inbox' do
@@ -34,7 +34,7 @@ describe InboxPreferencesForm do
         blue_group = FactoryGirl.create(:group)
         m1 = create_membership_with_position(user, red_group, 1)
         m0 = create_membership_with_position(user, blue_group, 0)
-        subject.should == [m0.group, m1.group]
+        expect(subject).to eq [m0.group, m1.group]
       end
     end
   end
@@ -46,15 +46,15 @@ describe InboxPreferencesForm do
       m1 = create_membership_with_position(user, red_group, 5)
       m0 = create_membership_with_position(user, blue_group, 6)
       subject.submit({groups: [m0.group_id, m1.group_id]})
-      m0.reload.inbox_position.should == 0
-      m1.reload.inbox_position.should == 1
+      expect(m0.reload.inbox_position).to eq 0
+      expect(m1.reload.inbox_position).to eq 1
     end
 
     it 'removes groups you dont want to see' do
       red_group = FactoryGirl.create(:group)
       m0 = create_membership_with_position(user, red_group, 6)
       subject.submit({groups: []})
-      m0.reload.inbox_position.should == nil
+      expect(m0.reload.inbox_position).to eq nil
     end
   end
 

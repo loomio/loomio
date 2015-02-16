@@ -42,8 +42,8 @@ describe TranslationsController do
 
     it "does not translate when passed a bogus model" do
       post :create, model: :bogus, id: comment.id, format: :js
-      response.body.strip.should eq ""
-      response.status.should eq 400
+      expect(response.body.strip).to eq  ""
+      expect(response.status).to eq  400
     end
   end
 end

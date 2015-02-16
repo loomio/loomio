@@ -96,10 +96,10 @@ describe MembershipRequest do
       membership_request.approve!(responder)
     end
     it "sets response to approved" do
-      membership_request.response.should == 'approved'
+      expect(membership_request.response).to eq 'approved'
     end
     it "sets responder" do
-      membership_request.responder.should == responder
+      expect(membership_request.responder).to eq responder
     end
     it "sets response_at" do
       membership_request.responded_at.should_not be_blank

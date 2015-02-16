@@ -22,13 +22,13 @@ end
 
 Then(/^bill and jane should both have invitations to join$/) do
   emails = ActionMailer::Base.deliveries.map(&:to).flatten.sort
-  emails.should == %w[bill@example.org jane@example.org]
+  expect(emails).to eq %w[bill@example.org jane@example.org]
 end
 
 Then(/^"(.*?)" should get an invitation to join the group$/) do |arg1|
   last_email = ActionMailer::Base.deliveries.last
-  last_email.to.should == [arg1]
-  last_email.reply_to.should == [@group_admin.email]
+  expect(last_email.to).to eq [arg1]
+  expect(last_email.reply_to).to eq [@group_admin.email]
 end
 
 Given(/^there is a user called "(.*?)" with email "(.*?)"$/) do |arg1, arg2|
@@ -229,7 +229,7 @@ end
 
 Then(/^"(.*?)" should receive a notification that they have been added$/) do |arg1|
   user = User.find_by_name(arg1)
-  Notification.where(user_id: user.id).last.event.kind.should == 'user_added_to_group'
+  expect(Notification.where(user_id: user.id).last.event.kind).to eq 'user_added_to_group'
 end
 
 When(/^I enter "(.*?)" in the invitations field$/) do |arg1|
@@ -238,7 +238,7 @@ end
 
 Then(/^"(.*?)" should be invited to join the subgroup$/) do |arg1|
   last_email = ActionMailer::Base.deliveries.last
-  last_email.to.should == [arg1]
+  expect(last_email.to).to eq [arg1]
   last_email.subject.should =~ /invited you to join/
 end
 
@@ -265,7 +265,7 @@ end
 
 Then (/^"(.*?)" should get an invitation to join the discussion$/) do |arg1|
   last_email = ActionMailer::Base.deliveries.last
-  last_email.to.should == [arg1]
+  expect(last_email.to).to eq [arg1]
 end
 
 Given(/^I am invited to join a discussion$/) do

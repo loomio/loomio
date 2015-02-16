@@ -14,7 +14,7 @@ describe Events::InvitationAccepted do
     end
 
     it 'returns an event' do
-      Events::InvitationAccepted.publish!(membership).should == event
+      expect(Events::InvitationAccepted.publish!(membership)).to eq event
     end
   end
 end

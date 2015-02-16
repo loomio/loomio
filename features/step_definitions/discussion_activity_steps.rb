@@ -12,5 +12,5 @@ Given(/^I edit a discussion description twice in quick succession$/) do
 end
 
 Then(/^I should only see one activity item in the discussion activity feed$/) do
-  page.all(".discussion-icon").count.should == 3
+  expect(page.all(".discussion-icon").count).to eq 3
 end
