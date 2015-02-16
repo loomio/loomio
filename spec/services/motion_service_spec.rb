@@ -185,7 +185,7 @@ describe 'MotionService' do
       end
 
       it 'returns false' do
-        MotionService.create_outcome(motion: motion, params: {}, actor: user).should == false
+        expect(MotionService.create_outcome(motion: motion, params: {}, actor: user)).to be false
       end
 
       it 'does not create an event' do

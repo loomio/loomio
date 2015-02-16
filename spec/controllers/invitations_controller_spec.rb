@@ -52,7 +52,7 @@ describe InvitationsController do
       end
 
       it "sets session attribute of the invitation token" do
-        session[:invitation_token].should == "AaBC1256"
+        expect(session[:invitation_token]).to eq "AaBC1256"
       end
 
       it "redirects to sign up" do

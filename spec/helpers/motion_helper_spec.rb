@@ -12,13 +12,13 @@ describe MotionsHelper do
     context "motion closed" do
       before { @motion.stub(:voting?).and_return(false) }
       it "returns false" do
-        display_vote_buttons?(@motion, @user).should == false
+        expect(display_vote_buttons?(@motion, @user)).to be false
       end
     end
     context "user has voted" do
       before { @motion.stub(:user_has_voted?).and_return(true) }
       it "returns false" do
-        display_vote_buttons?(@motion, @user).should == false
+        expect(display_vote_buttons?(@motion, @user)).to be false
       end
     end
   end

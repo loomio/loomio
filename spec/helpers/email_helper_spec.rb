@@ -9,7 +9,7 @@ describe EmailHelper do
     it "gives correct format" do
       output = helper.reply_to_address(discussion: discussion,
                                           user: user)
-      output.should == "d=d1&u=1&k=abc123@replyhostname.com"
+      expect(output).to eq "d=d1&u=1&k=abc123@replyhostname.com"
     end
   end
 end

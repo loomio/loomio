@@ -8,20 +8,20 @@ describe DiscussionItems::MotionCloseDateEdited do
   it "#actor returns the user who edited the close date" do
     actor = double(:actor)
     item.stub_chain(:event, :user).and_return(actor)
-    item.actor.should == item.event.user
+    expect(item.actor).to eq item.event.user
   end
 
   it "#header returns a string" do
-    item.header.should == I18n.t('discussion_items.motion_close_date_edited')
+    expect(item.header).to eq I18n.t('discussion_items.motion_close_date_edited')
   end
 
   it "#group returns the discussion's group" do
     item.stub_chain(:motion, :group).and_return("goob")
-    item.group.should == item.motion.group
+    expect(item.group).to eq item.motion.group
   end
 
   it "#time returns the time the close date was edited" do
     item.stub_chain(:event, :created_at).and_return("blah")
-    item.time.should == item.event.created_at
+    expect(item.time).to eq item.event.created_at
   end
 end

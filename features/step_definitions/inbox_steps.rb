@@ -106,5 +106,5 @@ end
 
 Then(/^all the discussions in the group should be marked as read$/) do
   sleep(1)
-  Queries::VisibleDiscussions.new(user: @user, groups: [@group]).unread.size.should == 0
+  expect(Queries::VisibleDiscussions.new(user: @user, groups: [@group]).unread.size).to eq 0
 end

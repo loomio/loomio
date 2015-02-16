@@ -105,7 +105,7 @@ end
 
 Then(/^I should get an email about the new discussion$/) do
   ActionMailer::Base.deliveries.last.to.should include @user.email
-  ActionMailer::Base.deliveries.last.subject.should == @discussion.title
+  expect(ActionMailer::Base.deliveries.last.subject).to eq @discussion.title
 end
 
 Then(/^I should not get an email about the new discussion$/) do
@@ -123,11 +123,11 @@ Given(/^there are no emails waiting for me$/) do
 end
 
 Then(/^I should be following new discussions by default$/) do
-  @group.membership_for(@user).following_by_default.should == true
+  expect(@group.membership_for(@user).following_by_default).to be true
 end
 
 Then(/^I should not be following discussions by default$/) do
-  @group.membership_for(@user).following_by_default.should == false
+  expect(@group.membership_for(@user).following_by_default).to be false
 end
 
 Given(/^I get mentioned in a discussion$/) do
@@ -163,7 +163,7 @@ Given(/^I click 'Following' on the discussion page$/) do
 end
 
 Then(/^I should get a mentioned notification$/) do
-  @user.notifications.last.event.kind.should == 'user_mentioned'
+  expect(@user.notifications.last.event.kind).to eq 'user_mentioned'
 end
 
 Given(/^there is a discussion I am not following$/) do

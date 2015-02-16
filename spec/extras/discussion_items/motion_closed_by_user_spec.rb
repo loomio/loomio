@@ -12,7 +12,7 @@ describe NotificationItems::MotionClosedByUser do
 
   context "user closed motion" do
     it "#action_text returns a string" do
-      item.action_text.should == I18n.t('notifications.motion_closed.by_user')
+      expect(item.action_text).to eq I18n.t('notifications.motion_closed.by_user')
     end
   end
 end

@@ -51,11 +51,11 @@ describe Comment do
     end
 
     it "increases like count" do
-      comment.comment_votes.count.should == 1
+      expect(comment.comment_votes.count).to eq 1
     end
 
     it "returns a CommentVote object" do
-      @like.class.name.should == "CommentVote"
+      expect(@like.class.name).to eq "CommentVote"
     end
 
     context "liked again by the same user" do
@@ -64,7 +64,7 @@ describe Comment do
       end
 
       it "does not increase like count" do
-        comment.comment_votes.count.should == 1
+        expect(comment.comment_votes.count).to eq 1
       end
     end
   end
@@ -76,7 +76,7 @@ describe Comment do
     end
 
     it "decreases like count" do
-      comment.comment_votes.count.should == 0
+      expect(comment.comment_votes.count).to eq 0
     end
 
     context "unliked again by the same user" do
@@ -85,7 +85,7 @@ describe Comment do
       end
 
       it "does not decrease like count" do
-        comment.comment_votes.count.should == 0
+        expect(comment.comment_votes.count).to eq 0
       end
     end
   end
