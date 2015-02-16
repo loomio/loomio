@@ -22,7 +22,6 @@ class DiscussionService
 
     return false unless discussion.valid?
 
-    discussion.save!
     if discussion.title_changed?
       Events::DiscussionTitleEdited.publish!(discussion, actor)
     end
@@ -30,6 +29,7 @@ class DiscussionService
     if discussion.description_changed?
       Events::DiscussionDescriptionEdited.publish!(discussion, actor)
     end
+    discussion.save!
 
     DiscussionReader.for(discussion: discussion, user: actor).follow!
   end

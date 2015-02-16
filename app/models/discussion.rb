@@ -211,11 +211,4 @@ class Discussion < ActiveRecord::Base
     self.last_comment_at ||= Time.now
   end
 
-  def fire_edit_title_event(user)
-    Events::DiscussionTitleEdited.publish!(self, user)
-  end
-
-  def fire_edit_description_event(user)
-    Events::DiscussionDescriptionEdited.publish!(self, user)
-  end
 end
