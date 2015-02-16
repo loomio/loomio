@@ -206,6 +206,10 @@
   .votes-table {
     padding-bottom: 10px;
 
+    .activity-icon {
+      margin-right: 0.4em;
+    }
+
     .btn {
       float: right;
       font-size: $font-tiny;
