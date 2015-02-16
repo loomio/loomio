@@ -1,13 +1,13 @@
 an:
   frontpage: 100
-  main: 100
+  main: 99
 ar:
   frontpage: 100
   main: 53
-be_BY:
+be-BY:
   frontpage: 100
-  main: 100
-bg_BG:
+  main: 99
+bg-BG:
   frontpage: 18
   main: 44
 ca:
@@ -24,17 +24,17 @@ da:
   main: 99
 de:
   frontpage: 100
-  main: 100
+  main: 99
 el:
   frontpage: 100
-  main: 100
+  main: 99
 eo:
   frontpage: 100
   main: 97
 es:
   frontpage: 100
-  main: 99
-fa_IR:
+  main: 100
+fa-IR:
   frontpage: 100
   main: 13
 fi:
@@ -43,9 +43,9 @@ fi:
 fr:
   frontpage: 100
   main: 99
-ga_IE:
+ga-IE:
   frontpage: 37
-  main: 48
+  main: 47
 gl:
   frontpage: 51
   main: 75
@@ -57,14 +57,14 @@ hr:
   main: 50
 hu:
   frontpage: 100
-  main: 100
+  main: 99
 id:
   frontpage: 51
   main: 57
 it:
   frontpage: 100
   main: 98
-it_CH:
+it-CH:
   frontpage: 0
   main: 0
 ja:
@@ -87,17 +87,17 @@ mk:
   main: 58
 ml:
   frontpage: 0
-  main: 56
-nl_NL:
+  main: 55
+nl-NL:
   frontpage: 100
   main: 99
 pl:
   frontpage: 100
   main: 19
-pt_BR:
+pt-BR:
   frontpage: 100
   main: 100
-pt_PT:
+pt-PT:
   frontpage: 25
   main: 10
 ro:
@@ -105,19 +105,19 @@ ro:
   main: 99
 ru:
   frontpage: 100
-  main: 61
+  main: 62
 sk:
   frontpage: 100
-  main: 100
+  main: 99
 sl:
   frontpage: 100
   main: 90
 sr:
   frontpage: 100
-  main: 100
-sr_RS:
+  main: 99
+sr-RS:
   frontpage: 100
-  main: 100
+  main: 99
 sv:
   frontpage: 100
   main: 99
@@ -126,19 +126,19 @@ te:
   main: 28
 tr:
   frontpage: 100
-  main: 100
+  main: 99
 uk:
   frontpage: 100
   main: 84
 ur:
   frontpage: 0
   main: 0
-ur_PK:
+ur-PK:
   frontpage: 0
   main: 0
 vi:
   frontpage: 0
   main: 46
-zh_TW:
+zh-TW:
   frontpage: 100
-  main: 100
+  main: 99

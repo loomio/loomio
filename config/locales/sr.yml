@@ -650,7 +650,6 @@ sr:
   remember_me: Zapamti me
   signing_in: Prijavljivanje
   or: ili
-  invalid_email: "Adresa ePošte koju ste uneli je nepravilna, molim unesite ispravnu adresu ePošte"
   forgot_your_password: Zaboravili ste lozinku?
   dont_have_an_account: Nemate nalog?
   create_one_now: Napravi jedan sada

@@ -635,7 +635,6 @@ sv:
   remember_me: Kom ihåg mig
   signing_in: Loggar in
   or: eller
-  invalid_email: "Den e-postadress du har angett är ogiltig, ange en giltig e-postadress"
   forgot_your_password: Har du glömt ditt lösenord?
   dont_have_an_account: Har du inte något konto?
   create_one_now: Skapa ett nu

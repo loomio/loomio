@@ -46,6 +46,8 @@ es:
     mailer:
       invitation_instructions:
         subject: Alguien te ha invitado a participar de su grupo en Loomio
+    registrations:
+      sign_up: Crear cuenta
   error:
     access_denied: No tienes permisos para hacer esto.
     cant_join_subgroup: No puedes unirte a un subgrupo si no eres miembro del grupo superior.
@@ -352,6 +354,7 @@ es:
   edit_memberships: Editar membresías
   add_new_member: Adherir Nuevo miembro
   invite_members_to_group: "Invitar miembros a %{which_group}"
+  remaining_invites_count: "%{count} invitaciones restantes"
   get_in_touch_link: ponerse en contacto
   email_members_in_group: "Enviar correo electrónico a los miembros de %{which_group}"
   subject_error: Por favor escriba un título
@@ -592,6 +595,8 @@ es:
     video_id: "67765444"
     video_tutorial: Vídeo tutorial
     video_tutorial_description: Mira el vídeo para una demostración rápida.
+    what_is_loomio: Que es Loomio?
+    what_is_loomio_description_html: "<p>Loomio es una simple y fácil de usar herramienta en linea para toma de decisiones colaborativas. \nLoomio te permite crear discusiones en linea, invitar a la gente indicada a participar, llegar a la toma de decisiones y transformar deliberaciones en acciones en el mundo real.</p>\n<p>Loomio es un software gratuito y de código abierto que esta siendo creado por una cooperativa de trabajadores con base en Wellington, Nueva Zelanda. </p>\n"
   hint:
     context: Consejos para usar el panel de contexto
     discussion: Consejos para empezar una discusión participativa
@@ -633,6 +638,7 @@ es:
   remember_me: Recuérdame
   signing_in: Entrar
   or: o
+  invalid_email: "No se puede reconocer la dirección de correo electrónico que haz ingresado. Verifica que ha sido ingresada correctamente o intenta con otra dirección de correo electrónico. "
   forgot_your_password: ¿Olvidaste tu contraseña?
   dont_have_an_account: ¿No tienes una cuenta?
   create_one_now: Crea uno ahora
@@ -775,6 +781,7 @@ es:
         close_at_date: Cerrando
       user:
         name: Nombre completo
+        username: Nombre de usuario
         email: Correo electrónico
         password: Contraseña
         password_confirmation: Confirmar contraseña
@@ -1072,3 +1079,4 @@ es:
     women: Mujer
     media: Medios de comunicación
     health: Salud
+  start_your_group: Empieza un grupo

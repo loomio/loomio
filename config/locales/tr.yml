@@ -595,6 +595,7 @@ tr:
     video_id: "52025402"
     video_tutorial: Eğitim videosu
     video_tutorial_description: Loomio nasıl kullanılır tanıtım videosuna göz at.
+    what_is_loomio: Loomio nedir?
   hint:
     context: İçerik panelini kullanmak için ipuçları
     discussion: İlgi çekici bir müzakere başlatmak için ipuçları
@@ -636,7 +637,6 @@ tr:
   remember_me: Beni hatırla
   signing_in: Oturum açmak
   or: veya
-  invalid_email: "Girdiğiniz e-posta adresi geçersiz, lütfen geçerli bir e-posta adresi giriniz"
   forgot_your_password: Şifrenizi mi unuttunuz?
   dont_have_an_account: Bir Hesabınız yok mu?
   create_one_now: Yeni birtane oluştur
