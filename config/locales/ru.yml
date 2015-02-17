@@ -346,6 +346,7 @@ ru:
   make_coordinator: Сделать координатором
   membership_requests: Заявка на участие
   previous_requests: Предыдущие запросы
+  approved_by_person: "Одобрено %{person}"
   join_group_btn: Вступить в группу
   you_have_joined_group: "Вы стали участником %{group_name}"
   confirm_approve_membership_request: "Вы уверены что хотите добавить %{which_user} в группу?"
@@ -578,10 +579,14 @@ ru:
   rss_subscribe: Подписаться
   remove: Удалить
   save: Сохранить
+  send_invite: Пригласить
+  send_email: Послать Email
   show_more: Больше
   start_a_group: Создать группу
   subject: Заголовок
+  terms_of_service_html: "Нажимая %{button_text}, вы соглашаетесь с <a href='%{link_path}' target='_blank'>Условиями использования</a>"
   thanks: "Спасибо!"
+  unlike: Не нравится
   time_until_close: "%{quantity_of_time} до закрытия"
   update: Обновить
   facebook: Facebook
@@ -589,6 +594,7 @@ ru:
   google: Google
   persona: Персона
   common:
+    markdown_help_tooltip: Основы форматирования текста
     settings: Настройки
     dashboard: Кабинет
     unread: Непрочитанные
