@@ -51,9 +51,9 @@ describe DiscussionsController do
           d = FactoryGirl.create :discussion, private: false
           Group.stub(:find).with(g.key).and_return(g)
           Discussion.stub_chain(:published, :find_by_key!).with(d.key).and_return(d)
-          
-          d.group.stub(:admins).and_return([user])
-          g.stub(:members).and_return([user])
+
+          d.group.admins << user
+          g.members << user
 
           post :move, id: d.key, destination_group_id: g.key
 
@@ -69,8 +69,8 @@ describe DiscussionsController do
           Group.stub(:find).with(g.key).and_return(g)
           Discussion.stub_chain(:published, :find_by_key!).with(d.key).and_return(d)
           
-          d.group.stub(:admins).and_return([user])
-          g.stub(:members).and_return([user])
+          d.group.admins << user
+          g.members << user
 
           post :move, id: d.key, destination_group_id: g.key
 
