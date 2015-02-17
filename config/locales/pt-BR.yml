@@ -595,6 +595,8 @@ pt-BR:
     video_id: "52025402"
     video_tutorial: Vídeo-tutorial
     video_tutorial_description: Assista ao vídeo para uma rápida demonstração de como usar o Loomio.
+    what_is_loomio: O que é Loomio?
+    what_is_loomio_description_html: "<p> Loomio é uma ferramenta on-line simples e fácil de usar para a tomada de decisão colaborativa.\nLoomio permite que você hospede discussões on-line, convide as pessoas certas para participar,\nchegue às decisões oportunas e transforme deliberação em ação no mundo real. </p>\n<p> Loomio é um programa gratuito de código aberto que está sendo desenvolvido por uma cooperativa de propriedade do trabalhador com base em Wellington, Nova Zelândia. </p>\n"
   hint:
     context: Dicas para usar o painel de contexto
     discussion: Dicas para iniciar uma discussão envolvente
@@ -636,7 +638,7 @@ pt-BR:
   remember_me: Lembre-se de mim
   signing_in: Entrando
   or: ou
-  invalid_email: "O endereço de e-mail que você digitou é inválido. Por favor, digite um endereço de e-mail válido."
+  invalid_email: O endereço de e-mail que você inseriu não foi reconhecido. Verifique se foi digitado corretamente ou tente outro endereço de e-mail.
   forgot_your_password: Esqueceu sua senha?
   dont_have_an_account: Não tem uma conta?
   create_one_now: Criar um agora

@@ -279,6 +279,7 @@ fr:
       edit_comments: Modifier leurs commentaires à tout moment
       edit_discussions: Éditer le contexte de chaque discussion du groupe
       start_discussions: Commencer les discussions
+      raise_motions: Créer des propositions
       vote: Voter pour des propositions
       create_subgroups: Créer des sous-groupes
     motions_can_be_edited: Éditer ses propositions après que le vote a commencé
@@ -320,6 +321,7 @@ fr:
     c9: Supprimer les commentaires.
     c10: Créer des sous-groupes.
     c11: Commencer les discussions.
+    c12: Créez des propositions.
     c13: Vote sur les propositions.
     members_defaults: "Avec les paramètres par défaut, les membres peuvent :"
     m1: Supprimer leurs propres commentaires.
@@ -328,6 +330,7 @@ fr:
     m5: Modifier le titre et le contexte de toute discussion.
     m6: "Démarrer un sous-groupe, dont ils deviennent le coordinateur."
     m7: "Modifier leurs propres commentaires à n'importe quel moment."
+    m8: Créez et participez à des propositions.
     optional_restrictions: "Éventuellement, les coordonnateurs peuvent restreindre ce que les membres peuvent faire."
   discussion_privacy:
     public: Cette discussion est publique sur le web
@@ -592,6 +595,8 @@ fr:
     video_id: "52025402"
     video_tutorial: Tutoriel vidéo
     video_tutorial_description: Regardez la vidéo pour une rapide démonstration de la manière dont Loomio fonctionne.
+    what_is_loomio: "Loomio, qu'est-ce que c'est ?"
+    what_is_loomio_description_html: "<p> Loomio est un outil en ligne, simple, facile à utiliser, pour collaborer dans les prises de décisions.\n    Loomio accueille vos discussions en ligne et permet d'inviter les bonnes personnes à participer,\n    pour atteindre des décisions en temps voulu et transformer des délibérations en actions réelles sur le terrain. </p>\n<p> Loomio est un logiciel gratuit et en source libre, développé par une coopérative de travailleurs indépendants basée à Wellington en Nouvelle-Zélande. </p>\n"
   hint:
     context: "Conseils pour l'utilisation de la zone de contexte"
     discussion: Conseils pour démarrer une discussion stimulante
@@ -633,7 +638,6 @@ fr:
   remember_me: Se souvenir de moi
   signing_in: Se connecter
   or: ou
-  invalid_email: "L'adresse email que vous avez entré n'est pas valide, s'il vous plaît veuillez saisir une adresse email valide"
   forgot_your_password: Mot de passe oublié ?
   dont_have_an_account: Pas de compte ?
   create_one_now: En créer un maintenant

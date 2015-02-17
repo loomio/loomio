@@ -7,9 +7,9 @@ sl:
         email_missed_yesterday: "'Včeraj na Loomiu' - dnevni povzetek spregledanih aktivnosti"
         email_when_mentioned: "Ko sem @omenjen/-a"
         email_followed_threads: "Ob dejavnosti v temi, ki jo spremljam"
-        email_when_proposal_closing_soon: 24 ur pred zaprtjem predloga.
+        email_when_proposal_closing_soon: 24 ur pred zaprtjem predloga
         email_new_discussions_and_proposals: Nove razprave in predlogi
-        for_these_groups: "Za te skupine:"
+        for_these_groups: "Za sledeče skupine:"
         submit: Shrani nastavitve
   explore:
     header: Razišči javne skupine
@@ -762,7 +762,7 @@ sl:
       subject: "Vzpostavi svojo novo skupino na Loomiu: %{group_name}"
     user_added_to_a_group:
       subject: "%{who} te je dodal/a v %{which_group}"
-      content: "%{who} te je dodal/a v %{which_group} na Loomiu. Klikni sem za vstop v skupino:"
+      content: "%{who} te je dodal/a v %{which_group} na Loomiu. Za vstop v skupino klikni na spodnjo povezavo:"
     unsubscribe: "Odjavi se ali spremeni svoje email nastavitve:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavo ali spremembo svojih email nastavitev."
     view_comment: Klikni sem za ogled komentarja na Loomiu
@@ -849,9 +849,9 @@ sl:
   back: Nazaj
   cancel: Prekliči
   change: Spremeni
-  change_language: "Klikni tukaj za uporabo Loomia v %{language}"
+  change_language: "Klikni sem za uporabo Loomia v %{language}"
   changing: Spreminjam
-  click_here: Klikni tukaj
+  click_here: Klikni sem
   close: Zapri
   closing: Zapiram
   closed: Zaprto
@@ -883,7 +883,7 @@ sl:
   pricing: Cene
   prev: Nazaj
   more: Več...
-  translate: "Pomagajte prevesti Loomio!"
+  translate: "Pomagaj prevesti Loomio!"
   translate_field: Poglej prevod
   loading_translation: Nalagam prevod...
   translate_this_string: "Prevedi v %{language}"
