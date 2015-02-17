@@ -359,6 +359,7 @@ describe "User abilities" do
     it { should_not be_able_to(:update_version, discussion) }
     it { should     be_able_to(:update_version, user_discussion) }
     it { should_not be_able_to(:move, discussion) }
+    it { should     be_able_to(:move, user_discussion) }
     it { should     be_able_to(:update, user_discussion) }
     it { should     be_able_to(:show, Discussion) }
     it { should     be_able_to(:unfollow, Discussion) }
