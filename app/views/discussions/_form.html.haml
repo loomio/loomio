@@ -3,8 +3,11 @@
     = simple_form_for discussion, :validate => true do |f|
       .form-group
         - if params[:group_id].blank?
-          %p= t "discussion_form.new.who"
-          = f.collection_select :group_id, current_user.groups_discussions_can_be_started_in, :id, :full_name, {include_blank: true}, class: 'form-control'
+          - if discussion.new_record?
+            %p= t "discussion_form.new.who"
+            = f.collection_select :group_id, current_user.groups_discussions_can_be_started_in, :id, :full_name, {include_blank: true}, class: 'form-control'
+          - else
+            %strong= discussion.group.full_name
         - else
           = f.input :group_id, :as => :hidden
       = f.input :title, autofocus: true, input_html: {class: 'js-warn-before-navigating-away', dir: text_direction(discussion)}
