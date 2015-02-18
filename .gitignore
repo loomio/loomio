@@ -19,8 +19,8 @@ Session.vim
 *.dump
 *.log
 screenshots/
-.env
 .idea
+.env
 
 /lineman/node_modules
 /lineman/dist
