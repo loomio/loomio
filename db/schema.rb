@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210220716) do
+ActiveRecord::Schema.define(version: 20150218210234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -528,7 +528,7 @@ ActiveRecord::Schema.define(version: 20150210220716) do
     t.datetime "updated_at",        null: false
   end
 
-  add_index "translations", ["fields"], name: "translations_gin_fields", using: :gin
+  add_index "translations", ["translatable_type", "translatable_id"], name: "index_translations_on_translatable_type_and_translatable_id", using: :btree
 
   create_table "user_deactivation_responses", force: true do |t|
     t.integer "user_id"
