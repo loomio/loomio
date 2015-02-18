@@ -1,6 +1,8 @@
 class MarketingController < ApplicationController
   def index
-    if stale?(1) # bump this when we change the frontpage
+    if user_signed_in?
+      redirect_to dashboard_path
+    else
       render layout: false
     end
   end
