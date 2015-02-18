@@ -611,10 +611,24 @@ sl:
     make_a_decision: Odloči se
     make_a_decision_description: "Ko je skupina pripravljena sprejeti odločitev, lahko vsak pripravi predlog. Opiši jasen postopek in navedi dovolj informacij, da bodo vsi točno vedeli, kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo."
     prompt_people_details: "Če želiš dobiti pozornost določene osebe v skupini, vtipkaj ‘@’, kateri sledi še ime te osebe. Prejeli bodo email s sporočilom, da si jih omenil/a v komentarju."
+    positions_agree_description: "<span>Strinjam se</span> pomeni, da predlog podpiraš."
+    positions_abstain_description: "<span>Vzdržan/a</span> pomeni, da nisi odločen/a, oziroma, da zaupaš skupini, da se odloči brez tebe."
+    positions_disagree_description: "<span>Ne strinjam se</span> pomeni, da bi po tvojem mnenju lahko našli boljšo rešitev, a si pripravljen/a sprejeti odločitev večine."
     positions_block_description: "<span>Ugovarjam</span> pomeni, da imaš resna nasprotovanja in boš skrajno nesrečen/na, če bo predlog sprejet."
+    start_discussion: Kako začeti angažirano razpravo?
     start_discussion_html: "<p>Ko začneš razpravo, poskrbi da naslov jedrnato izraža temo.\nV Opis vnesi vse potrebne informacije, da bo\nskupina lahko imela produktivno in informirano razpravo. </p>\n<p>Med razpravo je možno posodobiti Opis, če pride do novih informacij. Poleg razjasnitve teme, lahko ta prostor uporabiš za\ndeljenje virov, povzemanje razprave tekom njenega napredovanja, ali za opisovanje\nodločevalskih protokolov, ki jih skupina uporablja.</p>\n"
     start_proposal: Kako napisati jasen predlog
     start_proposal_html: "<p> Če napišeš jasen in jedrnat naslov, bodo vsi točno vedeli,\nkaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo.</p>\n<p>Ni konec sveta, če predlog ne dobi jasnega odobravanja takoj.\nČe skupina ni navdušena nad prvim predlogom, lahko vsak začne nov predlog, da\nnaslovi vse pomisleke in da proces vodi naprej.</p>\n<p>S tem dinamičnim procesom lahko kolektivna modrost skupine ustvarja boljše\nideje, kot bi jih posamezniki. </p>\n<p>Rok na predlog se lahko kadarkoli podaljša, če odločitev\npotrebuje nekaj več prostora. Vsi boste dobili email obvestilo 24 ur pred zaprtjem predloga.</p>\n"
+    video_id: "52025402"
+    video_tutorial: Video z navodili
+    video_tutorial_description: "Oglej si video, ki na kratko prikazuje, kako uporabljati Loomio."
+    what_is_loomio: Kaj je Loomio?
+    what_is_loomio_description_html: "<p>Loomio je enostavno, uporabniku prijazno spletno orodje za skupinsko soodločanje.\nLoomio ponuja spletni prostor za razpravo, kamor lahko povabiš prave ljudi,\ns katerimi pravočasno sprejmete odločitve in tako razmišljanja spremenite v dejanja.</p>\n<p>Loomio je brezplačen in odprtokoden program, ki ga razvija zadruga v lasti zaposlenih, v Wellingtonu na Novi Zelandiji.</p>\n"
+  hint:
+    discussion: Nasveti za začetek angažirane razprave
+    invitation: Nasveti za pisanje prepričljivih vabil
+    proposal: Nasveti za pisanje jasnih predlogov
+    vote: Svojo odločitev lahko spremeniš kadarkoli
   pricing_page:
     intro: "Skupine s finančnimi sredstvi plačujejo naročnino za uporabo orodja.\nSkupine brez finančnih sredstev za plačilo naročnine uporabljajo model\n\"Plačaj, kolikor lahko\": njihovi člani so vabljeni, da prispevajo prostovoljne donacije. Vaš prispevek nam pomaga, da ohranimo Loomio neodvisen, brez oglasov in v lasti celotne skupnosti.\n"
     organisations: Organizacije
@@ -631,8 +645,13 @@ sl:
     tooltip: Spoznaj naš model skupnostnega financiranja
     thought_about_contributing: "Tvoja priložnost, da prispevaš"
     thought_about_contributing_description: "Loomio je zadružno socialno podjetje, ki si prizadeva omogočiti vsem, da bi sodelovali pri odločitvah, ki jih zadevajo.\n\nPri skupnostnemu sprejemanju odločitev denar ne bi smel biti ovira. Loomio se financira s prispevki uporabnikov v skupnosti in naročninami formalnih organizacij, ki ga uporabljajo.\n\nVaš prispevek pomeni, da lahko Loomio ohranimo neodvisen, brez oglasov in prosto dostopen skupinam, ki ustvarjajo odlične stvari v svojih skupnostih.\n\nHvala, da to omogočate!\n"
+    thank_you_title: "Hvala za tvoj prispevek Loomiu!"
     thank_you_body: "Tvoj prispevek nam pomaga zagotoviti enostavno so-odločanje za ves svet.\n\nV kratkem boš prejel/a email z računom za tvoj prispevek.\n\nVsak je dobrodošel, da se pridruži Loomio Skupnosti, kjer debatiramo o tem, kako lahko s tem orodjem naredimo največ in kako ga lahko izboljšamo.\n\n<a href='https://www.loomio.org/groups/3'>Želim vstopiti vskupino Loomio Skupnost &raquo;</a>\n"
     making_a_donation_description: "Loomio je zadružno socialno podjetje, ki si prizadeva omogočiti vsem, da bi sodelovali pri odločitvah, ki jih zadevajo.\n\nVaš prispevek pomeni, da lahko Loomio ohranimo neodvisen, brez oglasov in prosto dostopen skupinam, ki ustvarjajo odlične stvari v svojih skupnostih.\n\nHvala, da to omogočate!\n"
+  new_password: Novo geslo
+  confirm_new_password: Potrdi novo geslo
+  change_your_password: Spremeni svoje geslo
+  change_my_password: Spremeni moje geslo
   invitation:
     no_invitations_left: Žal nimaš nobenih vabil več
     invite_people: Povabi še koga v svojo skupino

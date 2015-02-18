@@ -46,6 +46,8 @@ it:
     mailer:
       invitation_instructions:
         subject: Qualcuno ti ha invitato a far parte del suo gruppo di Loomio.
+    registrations:
+      sign_up: Crea account
   error:
     access_denied: "Non hai l'autorizzazione per farlo."
     cant_join_subgroup: Non puoi unirti a un sotto-gruppo se non sei membro del gruppo genitore.
@@ -427,6 +429,11 @@ it:
     confirmation:
       title: "Hai quasi finito! Controlla la tua email."
       body_html: "Ti abbiamo inviato una email con un invito per avviare il tuo gruppo.\n\nSe non trovi nulla nella tua posta in arrivo entro pochi minuti, inviaci una email a <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  thread_item:
+    user_agreed_on_proposal_html: "<strong>%{name}</strong> si è detto/a favorevole alla proposta."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> si è astenuto/a sulla proposta."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> è in disaccordo con la proposta."
+    user_blocked_on_proposal_html: "<strong>%{name}</strong> è completamente in disaccordo (blocco) con la proposta."
   discussion_items:
     new_discussion: ha creato la discussione
     new_motion: ha creato una proposta
@@ -583,6 +590,7 @@ it:
     video_id: "52025402"
     video_tutorial: Tutorial video
     video_tutorial_description: Guarda il video per una dimostrazione veloce di come funziona Loomio.
+    what_is_loomio: "Cos'è Loomio?"
   hint:
     context: Consigli per utilizzare il pannello contestuale
     discussion: Consigli per iniziare una discussione coinvolgente
@@ -624,6 +632,7 @@ it:
   remember_me: Ricordami
   signing_in: Accedendo
   or: o
+  invalid_email: "L'indirizzo email inserito non è stato riconosciuto dal sistema. Verificare che sia stato inserito correttamente o tentare con un indirizzo email diverso."
   forgot_your_password: Dimenticato la password?
   dont_have_an_account: Non hai un account?
   create_one_now: Crea una nuova
