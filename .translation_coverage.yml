@@ -63,7 +63,7 @@ id:
   main: 57
 it:
   frontpage: 100
-  main: 98
+  main: 99
 it-CH:
   frontpage: 0
   main: 0
@@ -111,7 +111,7 @@ sk:
   main: 99
 sl:
   frontpage: 100
-  main: 90
+  main: 92
 sr:
   frontpage: 100
   main: 99
