@@ -2,10 +2,10 @@ require 'rails_helper'
 #require_relative '../../app/services/move_discussion_service'
 
 describe MoveDiscussionService do
-  let(:discussion) { double(:discussion, group: source_group) }
-  let(:source_group) { double(:source_group, admins: [], parent: nil) }
-  let(:destination_group) { double(:destination_group, members: [], parent: nil) }
-  let(:user) { double(:user) }
+  let(:discussion) { create(:discussion, group: source_group) }
+  let(:source_group) { create(:group) }
+  let(:destination_group) { create(:group) }
+  let(:user) { create(:user) }
 
   before do
     @mover = MoveDiscussionService.new(discussion: discussion,
@@ -13,59 +13,28 @@ describe MoveDiscussionService do
                                        user: user)
   end
 
-  context "#user_is_admin_of_source?" do
-    subject { @mover.user_is_admin_of_source? }
-
-    context "user is admin" do
-      before { source_group.admins << user }
-      it {should be true}
-    end
-
-    context "user is not admin" do
-      it {should be false}
-    end
-  end
-
-  context "#user_is_member_of_destination?" do
-    subject { @mover.user_is_member_of_destination? }
-
-    context "user is member" do
-      before { destination_group.members << user }
-      it {should be true}
-    end
-
-    context "user is not member" do
-      it {should be false}
-    end
-  end
-
   context "valid?" do
-    before do
-      @mover.stub(:user_is_admin_of_source?).and_return(true)
-      @mover.stub(:user_is_member_of_destination?).and_return(true)
-      @mover.stub(:destination_group_is_related_to_source_group?).and_return(true)
+
+    it "is false if user is not admin of source or author of the discussion" do
+      destination_group.members << user
+      expect(@mover.valid?).to eq false
     end
 
-    subject do
-      @mover.valid?
+    it "is false user is not member of destination" do
+      source_group.admins << user
+      expect(@mover.valid?).to eq false
     end
 
-    context "user is not admin of source" do
-      before do
-        @mover.stub(:user_is_admin_of_source?).and_return(false)
-      end
-      it {should be false}
+    it "is true if user is admin of source group" do
+      destination_group.members << user
+      source_group.admins << user
+      expect(@mover.valid?).to eq true
     end
 
-    context "user is not member of destination" do
-      before do
-        @mover.stub(:user_is_member_of_destination?).and_return(false)
-      end
-      it {should be false}
-    end
-
-    context "all conditions are true" do
-      it {should be true}
+    it "is true if user is author of discussion" do
+      discussion.update author: user
+      destination_group.members << user
+      expect(@mover.valid?).to eq true
     end
   end
 
