@@ -10,17 +10,8 @@ class MoveDiscussionService
     @user = user
   end
 
-
-  def user_is_admin_of_source?
-    discussion.group.admins.include? user
-  end
-
-  def user_is_member_of_destination?
-    destination_group.members.include? user
-  end
-
   def valid?
-    user_is_admin_of_source? && user_is_member_of_destination?
+    user.ability.can?(:move, discussion) && destination_group.members.include?(user)
   end
 
   def move!
