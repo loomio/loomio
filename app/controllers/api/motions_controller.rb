@@ -1,11 +1,5 @@
 class API::MotionsController < API::RestfulController
 
-  def index
-    load_and_authorize_discussion
-    @motions = visible_records.where(discussion: @discussion).order(:created_at)
-    respond_with_collection
-  end
-
   def close
     load_resource
     MotionService.close_by_user(@motion, current_user)
@@ -15,7 +9,10 @@ class API::MotionsController < API::RestfulController
   private
 
   def visible_records
+    load_and_authorize_discussion
     Queries::VisibleMotions.new(user: current_user)
+                           .where(discussion: @discussion)
+                           .order(:created_at)
   end
 
   def serializer_root 
