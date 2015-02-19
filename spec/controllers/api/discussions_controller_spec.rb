@@ -10,7 +10,7 @@ describe API::DiscussionsController do
     title: 'Did Charlie Bite You?',
     description: 'From the dawn of internet time...',
     group_id: group.id,
-    private: 'private'
+    private: true
   }}
 
   before do
