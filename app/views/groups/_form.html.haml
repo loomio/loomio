@@ -73,10 +73,11 @@
           = label_tag "group_members_can_add_members" do
             = f.check_box :members_can_add_members
             = t(:'group_form.members_can.add_members')
-        .checkbox
-          = label_tag 'group_members_can_create_subgroups' do
-            = f.check_box :members_can_create_subgroups
-            = t(:'group_form.members_can.create_subgroups')
+        - if group.is_parent?
+          .checkbox
+            = label_tag 'group_members_can_create_subgroups' do
+              = f.check_box :members_can_create_subgroups
+              = t(:'group_form.members_can.create_subgroups')
         .checkbox
           = label_tag "group_members_can_start_discussions" do
             = f.check_box :members_can_start_discussions
