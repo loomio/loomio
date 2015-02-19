@@ -23,7 +23,7 @@ describe Groups::MembershipsController do
       it 'can add an admin' do
         @membership = @group.add_member!(@new_user)
         post :make_admin, :id => @membership.id, group_id: @group.id
-        flash[:notice].should =~ /#{@new_user.name} has been made a coordinator./
+        expect(flash[:notice]).to match(/#{@new_user.name} has been made a coordinator./)
         response.should redirect_to(group_memberships_path(@group))
         assigns(:membership).admin.should be true
         @group.admins.should include(@new_user)
@@ -35,7 +35,7 @@ describe Groups::MembershipsController do
           @membership = @group.memberships.find_by_user_id(@new_user.id)
           delete :destroy, :id => @membership.id, :group_id => @group.id
         end
-        it { flash[:notice].should =~ /Member removed/ }
+        it { expect(flash[:notice]).to match(/Member removed/) }
         it { response.should redirect_to group_memberships_path(@membership.group)}
         it { @group.users.should_not include(@new_user) }
       end
@@ -43,7 +43,7 @@ describe Groups::MembershipsController do
       it 'cannot remove an admin' do
         @membership = @group.add_admin!(@new_user)
         post :remove_admin, :id => @membership.id, group_id: @group.id
-        flash[:notice].should =~ /#{@membership.user_name}'s coordinator rights have been removed./
+        expect(flash[:notice]).to match(/#{@membership.user_name}'s coordinator rights have been removed./)
         response.should redirect_to(group_memberships_path(@group))
         assigns(:membership).admin.should be false
         @group.admins.should_not include(@new_user)

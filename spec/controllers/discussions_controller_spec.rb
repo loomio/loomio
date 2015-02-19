@@ -39,7 +39,7 @@ describe DiscussionsController do
       end
       it "gives flash success message" do
         delete :destroy, id: discussion.key
-        flash[:success].should =~ /Discussion successfully deleted/
+        expect(flash[:success]).to match(/Discussion successfully deleted/)
       end
     end
 
@@ -107,7 +107,7 @@ describe DiscussionsController do
         end
         it "displays a proposal already exists message" do
           get :new_proposal, id: discussion.key
-          flash[:notice].should =~ /A current proposal already exists for this discussion./
+          expect(flash[:notice]).to match(/A current proposal already exists for this discussion./)
         end
       end
       context "where no current proposal exists" do

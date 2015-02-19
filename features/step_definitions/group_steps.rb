@@ -197,7 +197,7 @@ end
 
 Then /^memberships should get an email with subject "(.*?)"$/ do |subject|
   last_email = ActionMailer::Base.deliveries.last
-  last_email.subject.should =~ /Message to group/
+  expect(last_email.subject).to match(/Message to group/)
 end
 
 Given /^the group has a subgroup$/ do
@@ -229,6 +229,6 @@ end
 
 Then /^I should see an xml feed$/ do                                                                                                                            
     response = Hash.from_xml page.body
-    response['feed']['title'].should =~ /#{@group.name}/
-    response['feed']['subtitle'].should =~ /#{@group.description}/
+    expect(response['feed']['title']).to match(/#{@group.name}/)
+    expect(response['feed']['subtitle']).to match(/#{@group.description}/)
 end

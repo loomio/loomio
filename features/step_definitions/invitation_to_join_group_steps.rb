@@ -220,7 +220,7 @@ end
 
 Then /^I should get an email with subject "(.*?)"$/ do |arg1|
   last_email = ActionMailer::Base.deliveries.last
-  last_email.subject.should =~ /Membership approved/
+  expect(last_email.subject).to match(/Membership approved/)
 end
 
 When(/^I confirm the selection$/) do
@@ -239,7 +239,7 @@ end
 Then(/^"(.*?)" should be invited to join the subgroup$/) do |arg1|
   last_email = ActionMailer::Base.deliveries.last
   expect(last_email.to).to eq [arg1]
-  last_email.subject.should =~ /invited you to join/
+  expect(last_email.subject).to match(/invited you to join/)
 end
 
 Given(/^I am a coordinator of a hidden subgroup with hidden parent$/) do

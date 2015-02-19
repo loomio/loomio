@@ -60,7 +60,7 @@ describe MotionsController do
       end
       it "gives flash success message" do
         delete :destroy, id: motion.key
-        flash[:success].should =~ /Proposal deleted/
+        expect(flash[:success]).to match(/Proposal deleted/)
       end
     end
   end

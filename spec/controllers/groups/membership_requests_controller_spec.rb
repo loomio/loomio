@@ -23,7 +23,7 @@ describe Groups::MembershipRequestsController do
       end
       it "redirects them to group page with success flash" do
         post :cancel, id: membership_request.id
-        flash[:success].should =~ /Membership request canceled/i
+        expect(flash[:success]).to match(/Membership request canceled/i)
       end
     end
 
