@@ -20,3 +20,8 @@
   Scenario: Create hidden, private only, no inheritance, admins invite subgroup
     When I create a locked down subgroup
     Then a locked down subgroup should be created
+
+  @javascript
+  Scenario: Subgroups do not have permissions around creating subgroups
+    When I view the subgroup permissions tab
+    Then I should not see an option to give members permission to create subgroups

@@ -49,3 +49,11 @@ When(/^I create a visible to parent members subgroup$/) do
   click_on 'group_form_submit'
 end
 
+
+When(/^I view the subgroup permissions tab$/) do
+  click_on 'Permissions'
+end
+
+Then(/^I should not see an option to give members permission to create subgroups$/) do
+  page.should_not have_content 'Create subgroups'
+end
