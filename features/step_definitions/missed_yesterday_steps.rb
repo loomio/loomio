@@ -12,7 +12,7 @@ end
 
 When(/^the missed yesterday email is sent$/) do
   ActionMailer::Base.deliveries = []
-  UserMailer.missed_yesterday(@user).deliver
+  UserMailer.missed_yesterday(@user).deliver_now
 end
 
 Then(/^I should get an email updating me of the content$/) do

@@ -1,9 +1,9 @@
 class GroupMailer < BaseMailer
-  def new_membership_request(membership_request)
+  def self.new_membership_request(membership_request)
     @membership_request = membership_request
     @group = membership_request.group
     @group.admins.each do |admin|
-      GroupMailer.delay.membership_request(admin, @membership_request)
+      GroupMailer.membership_request(admin, @membership_request).deliver_later
     end
   end
 
@@ -31,11 +31,10 @@ class GroupMailer < BaseMailer
     end
   end
 
-
-  def deliver_group_email(group, sender, subject, message)
+  def self.deliver_group_email(group, sender, subject, message)
     group.users.each do |user|
       unless user == sender
-        GroupMailer.delay.group_email(group, sender, subject, message, user)
+        GroupMailer.group_email(group, sender, subject, message, user).deliver_later
       end
     end
   end

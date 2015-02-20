@@ -8,7 +8,7 @@ describe GroupMailer do
       @membership_request = create(:membership_request, group: @group, name: 'bob jones', email: "bobby@jones.org")
       mailer = double "mailer"
 
-      mailer.should_receive(:deliver)
+      mailer.should_receive(:deliver_later)
       GroupMailer.should_receive(:membership_request).with(@group.admins.first, @membership_request).
         and_return(mailer)
       GroupMailer.new_membership_request(@membership_request)
@@ -59,7 +59,7 @@ describe GroupMailer do
       email_body = "goobly"
       mailer = double "mailer"
 
-      mailer.should_receive(:deliver)
+      mailer.should_receive(:deliver_later)
       GroupMailer.should_receive(:group_email).
         with(group, sender, email_subject, email_body, member).
         and_return(mailer)
