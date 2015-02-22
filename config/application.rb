@@ -6,6 +6,7 @@ Bundler.require(*Rails.groups)
 
 module Loomio
   class Application < Rails::Application
+    config.active_job.queue_adapter = :delayed_job
 
     config.generators do |g|
       g.template_engine :haml
@@ -74,5 +75,7 @@ module Loomio
       :fog_directory => Rails.application.secrets.aws_bucket,
       :fog_public => true
     }
+
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

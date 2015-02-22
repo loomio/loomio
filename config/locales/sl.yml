@@ -172,15 +172,15 @@ sl:
         few: "%{count} minute"
         other: "%{count} minut"
       about_x_hours:
-        one: "%{count} ura"
-        two: "%{count} uri"
-        few: "%{count} ure"
-        other: "%{count} ur"
+        one: "%{count} uro"
+        two: "%{count} urama"
+        few: "%{count} urami"
+        other: "%{count} urami"
       x_days:
-        one: "%{count} dan"
-        two: "%{count} dneva"
+        one: "%{count} dnevom"
+        two: "%{count} dnevoma"
         few: "%{count} dnevi"
-        other: "%{count} dni"
+        other: "%{count} dnevi"
       about_x_months:
         one: "%{count} mesec"
         two: "%{count} meseca"
@@ -486,7 +486,7 @@ sl:
   see_previous_decisions: Oglej si pretekle odločitve
   see_more: Poglej več
   create_new_proposal: Ustvari predlog
-  empty_decision_list_html: "Si pripravljen/a sprejeti odločitev? <br> Vsak lahko začne predlog."
+  empty_decision_list_html: "Smo pripravljeni sprejeti odločitev? <br> Vsak lahko začne predlog."
   empty_decision_index: Ta skupina ni izvedla še nobene odločitve.
   empty_discussion_list: V tej razpravi še ni dejavnosti.
   go_to_add_comment_html: "Če želiš dodati komentar, <a href='%{href}'>pojdi na konec razprave</a>."
