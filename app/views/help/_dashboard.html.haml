@@ -2,6 +2,8 @@
   %h1 Your dashboard
   %p Your dashboard is your home page. It gives you an overview of what is happening in your groups. It is the page you see when you first log in to Loomio. Your dashboard displays content from your groups in a prioritised list. Open proposals are at the top, followed by all of the discussion threads from all of the groups you are a member of, sorted by most recent activity.
   =image_tag "dashboard-screenshot.png", class: "screenshot"
-  .row#back-to-top
-    .col-sm-12
-      %a{:href => "#contents"} ^ Back to top
+  .row#bottom-links
+    .col-sm-6
+      %a.back-to-top{:href => "#contents"} ^ Back to top
+    .col-sm-6
+      %a.feedback-discussion-link{:href => "https://www.loomio.org/d/Yl5D3EC0/new-help-documentation-we-want-your-feedback"} Think this explanation could be clearer? Give us your feedback >
