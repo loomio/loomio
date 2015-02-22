@@ -1,8 +1,6 @@
 class NotificationItems::NewDiscussion < NotificationItem
   attr_accessor :notification
 
-  delegate :url_helpers, to: 'Rails.application.routes'
-
   def initialize(notification)
     @notification = notification
   end
@@ -20,6 +18,6 @@ class NotificationItems::NewDiscussion < NotificationItem
   end
 
   def link
-    url_helpers.discussion_path(@notification.eventable)
+    Routing.discussion_path(@notification.eventable)
   end
 end

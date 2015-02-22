@@ -1,7 +1,6 @@
 class NotificationItems::MotionClosed < NotificationItem
   attr_accessor :notification
 
-  delegate :url_helpers, to: 'Rails.application.routes'
 
   def initialize(notification)
     @notification = notification
@@ -20,7 +19,7 @@ class NotificationItems::MotionClosed < NotificationItem
   end
 
   def link
-    url_helpers.motion_path(@notification.eventable)
+    Routing.motion_path(@notification.eventable)
   end
 
   def avatar
