@@ -30,6 +30,6 @@ class NotificationItems::MembershipRequested < NotificationItem
   end
 
   def link
-    group_membership_requests_path(notification.eventable.group)
+    Routing.group_membership_requests_path(notification.eventable.group)
   end
 end
