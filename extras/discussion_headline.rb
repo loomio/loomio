@@ -63,7 +63,7 @@ class DiscussionHeadline
   end
 
   def linked_discussion_title(discussion)
-    ActionController::Base.helpers.link_to(discussion.title, discussion_url(discussion)).html_safe
+    ActionController::Base.helpers.link_to(discussion.title, Routing.discussion_url(discussion)).html_safe
   end
 
   def new_motion?
