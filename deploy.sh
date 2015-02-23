@@ -14,4 +14,4 @@ git push loomio-production $BRANCH:master -f
 heroku run rake db:migrate -a loomio-production
 rm -r public/img public/css public/js
 git checkout master
-git br -D $BRANCH
+git branch -D $BRANCH
