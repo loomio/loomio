@@ -125,6 +125,8 @@ en:
     logo_upload: "Upload new logo"
     edit_description: "Edit description"
     group_category: "Find more groups like this"
+    unread_comments: "Unread comments"
+    new_votes: "New votes"
 
   views:
     pagination:
@@ -1100,6 +1102,7 @@ en:
       subject: "Loomio - Summary of the last 24 hours"
     missed_yesterday:
       subject: "Yesterday on Loomio"
+      headlines: Headlines
       mark_as_read: Mark as read
       thanks_for_reading: Thanks for reading, have a great day!
       click_here_to_mark_all_as_read_html: |
