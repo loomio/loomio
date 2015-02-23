@@ -110,6 +110,8 @@ pt-BR:
     logo_upload: Carregar novo logotipo
     edit_description: Editar descrição
     group_category: Encontre mais grupos como este
+    unread_comments: Comentários não lidos
+    new_votes: Novos votos
   views:
     pagination:
       previous: Anterior
@@ -846,6 +848,7 @@ pt-BR:
       subject: Loomio - Resumo das últimas 24 horas
     missed_yesterday:
       subject: Ontem no Loomio
+      headlines: Em destaque
       mark_as_read: Marcar como lida
       thanks_for_reading: "Obrigado por ler, tenha um ótimo dia!"
       click_here_to_mark_all_as_read_html: "Aconteceu no Loomio ontem.\nDepois de ler, clique em <a href=\"%{link}\">marcar como lida</a> para remover da caixa de entrada do seu Loomio.\n"
