@@ -29,7 +29,7 @@
           .motion-sparkline
             = motion_sparkline(motion)
           - if motion.voting? && motion_reader.unread_activity_count > 0
-            %span.activity-count.label.label-info
+            %span.activity-count.label.label-info.unread-comments-count{title: t(:'tooltip.new_votes')}
               = motion_reader.unread_activity_count
       - else
         .large-icon.pie-icon.activity-icon
@@ -38,7 +38,7 @@
         .large-icon.discussion-icon.activity-icon.disabled-icon
       -else
         .large-icon.discussion-icon.activity-icon.enabled-icon
-          %span.activity-count.label.label-info.unread-comments-count
+          %span.activity-count.label.label-info.unread-comments-count{title: t(:'tooltip.unread_comments')}
             = unread_comments_count
 
       .discussion-date-info.hidden-xs

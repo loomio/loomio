@@ -3,7 +3,7 @@
     .col-xs-2.col-sm-1
       .icon
         .activity-container
-          %span.count.unread-votes-count
+          %span.count.unread-votes-count{title: t(:'tooltip.new_votes')}
             - count = @motion_reader_cache.get_for(item).unread_activity_count
             - if count != 0
               =count

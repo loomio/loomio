@@ -8,7 +8,7 @@
         %em
           %small= t(:'email.missed_yesterday.click_here_to_mark_all_as_read_html',
                     link: mark_summary_as_read_url_for(@user))
-      %h1 Headlines
+      %h1= t(:'email.missed_yesterday.headlines')
       .toc
         =render 'user_mailer/missed_yesterday/headlines'
       %hr
