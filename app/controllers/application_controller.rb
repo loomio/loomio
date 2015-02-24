@@ -49,14 +49,6 @@ class ApplicationController < ActionController::Base
     "#{controller_name}.#{action_name}"
   end
 
-  def default_url_options
-    if params.has_key?(:locale)
-      super.merge({locale: selected_locale})
-    else
-      super
-    end
-  end
-
   def dashboard_or_root_path
     if user_signed_in?
       dashboard_path

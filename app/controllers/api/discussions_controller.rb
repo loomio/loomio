@@ -13,12 +13,6 @@ class API::DiscussionsController < API::RestfulController
     respond_with_collection
   end
 
-  def index
-    load_and_authorize_group
-    @discussions = visible_records.page(params[:page]).per(25).to_a
-    respond_with_collection
-  end
-
   def show
     respond_with_resource
   end
@@ -34,9 +28,8 @@ class API::DiscussionsController < API::RestfulController
                                         :iframe_src])
   end
 
-  private
-
   def visible_records
+    load_and_authorize_group
     if @group
       GroupDiscussionsViewer.for(user: current_user, group: @group)
     else

@@ -1,7 +1,8 @@
 #!/bin/bash
 echo "building angular and copying into public"
-git checkout production # should be new branch each time
-git merge master
+BRANCH=production-$(date +%Y%m%d)
+git checkout master
+git checkout -b $BRANCH # should be new branch each time
 cd lineman
 bower install
 lineman build
@@ -9,7 +10,8 @@ cd ..
 cp -R lineman/dist/* public/
 git add public/img public/css/app.css public/js/app.js public/js/vendor.js public/fonts
 git commit -m "production build commit"
-git push loomio-production production:master -f
+git push loomio-production $BRANCH:master -f
 heroku run rake db:migrate -a loomio-production
 rm -r public/img public/css public/js
 git checkout master
+git branch -D $BRANCH

@@ -1,11 +1,5 @@
 class API::MembershipsController < API::RestfulController
 
-  def index
-    load_and_authorize_group
-    @memberships = Queries::VisibleMemberships.new(user: current_user, group: @group, limit: 5)
-    respond_with_collection
-  end
-
   def create
     params[:group_id] = params[:membership][:group_id]
     load_and_authorize_group
@@ -40,6 +34,17 @@ class API::MembershipsController < API::RestfulController
     load_resource
     MembershipService.remove_admin(membership: @membership, actor: current_user)
     respond_with_resource
+  end
+
+  private
+
+  def visible_records
+    load_and_authorize_group
+    Queries::VisibleMemberships.new(user: current_user, group: @group)
+  end
+
+  def default_page_size
+    5
   end
 
 end

@@ -1,7 +1,6 @@
 class NotificationItems::MembershipRequestApproved < NotificationItem
   attr_accessor :notification
 
-  delegate :url_helpers, to: 'Rails.application.routes'
 
   def initialize(notification)
     @notification = notification
@@ -16,7 +15,7 @@ class NotificationItems::MembershipRequestApproved < NotificationItem
   end
 
   def link
-    url_helpers.group_path(@notification.eventable.group)
+    Routing.group_path(@notification.eventable.group)
   end
 
   def actor

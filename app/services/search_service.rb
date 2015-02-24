@@ -1,16 +1,19 @@
 class SearchService
 
   class << self
-    def sync!(*discussion_ids)
+    def sync!(discussion_ids)
       SearchVector.where(discussion_id: discussion_ids).delete_all
-      discussion_ids.each { |id| SearchVector.execute_search_query SearchAlgorithms.sync, id: id }
+      discussion_ids.each do |id|
+        SearchVector.execute_search_query SearchAlgorithms.sync, id: id
+        yield
+      end
     end
 
     handle_asynchronously :sync!
   end
 
   def self.rebuild_search_index!
-    sync_without_delay! *Discussion.all.pluck(:id)
+    sync_without_delay! Discussion.all.pluck(:id)
   end
 
   def self.search_for(query, user: nil, limit: 10)

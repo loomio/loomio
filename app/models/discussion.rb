@@ -36,7 +36,7 @@ class Discussion < ActiveRecord::Base
   belongs_to :user, foreign_key: 'author_id'
   has_many :motions, dependent: :destroy
   has_one :current_motion, -> { where('motions.closed_at IS NULL').order('motions.closed_at ASC') }, class_name: 'Motion'
-  has_one :most_recent_motion, class_name: 'Motion', order: 'motions.created_at desc'
+  has_one :most_recent_motion, -> { order('motions.created_at DESC') }, class_name: 'Motion'
   has_many :votes, through: :motions
   has_many :comments, dependent: :destroy
   has_many :comment_likes, through: :comments, source: :comment_votes

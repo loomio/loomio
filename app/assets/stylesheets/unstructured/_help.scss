@@ -99,6 +99,8 @@
 
   .permissions-subhead { font-style: italic; }
 
+  .after-group-setup { margin-top: 40px; }
+
   .import-contacts-permission { float: right; }
 
   .deactivation {
@@ -108,7 +110,9 @@
     margin-left: 20px;
   }
 
-  #back-to-top { margin: 30px 0 0 0; }
+  #bottom-links { margin: 30px 0 0 0; }
+
+  .feedback-discussion-link { float: right; }
 }
 
 .help-container { padding: 0 40px; }

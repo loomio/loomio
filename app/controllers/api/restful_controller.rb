@@ -19,6 +19,11 @@ class API::RestfulController < API::BaseController
     end
   end
 
+  def index
+    instantiate_collection
+    respond_with_collection
+  end
+
   def create
     instantiate_resouce
     @event = service.create({resource_symbol => resource,
@@ -88,8 +93,26 @@ class API::RestfulController < API::BaseController
     instance_variable_set :"@#{resource_name}", obj
   end
 
+  def collection=(obj)
+    instance_variable_set :"@#{resource_name.pluralize}", obj
+  end
+
   def instantiate_resouce
     self.resource = resource_class.new(resource_params)
+  end
+
+  def instantiate_collection
+    self.collection = visible_records.page(params[:page])
+                                     .per(params[:per] || default_page_size)
+                                     .to_a
+  end
+
+  def visible_records
+    raise NotImplementedError.new
+  end
+
+  def default_page_size
+    10
   end
 
   def load_resource
