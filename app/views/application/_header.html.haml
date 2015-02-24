@@ -7,6 +7,7 @@
   .container
     .navbar-header
       - if user_signed_in?
+        #Intercom
         %button.navbar-toggle{type: 'button', data: {toggle: 'collapse', target: '#navbar-collapse'}}
           %span.sr-only= t :"sr.toggle_navigation"
           %span.icon-bar
