@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20150218210234) do
   add_index "attachments", ["comment_id"], name: "index_attachments_on_comment_id", using: :btree
 
   create_table "blacklisted_passwords", force: :cascade do |t|
-    t.string   "string"
+    t.string   "string",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
