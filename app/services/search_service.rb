@@ -2,10 +2,11 @@ class SearchService
 
   class << self
     def sync!(discussion_ids)
+      discussion_ids = Array(discussion_ids)
       SearchVector.where(discussion_id: discussion_ids).delete_all
       discussion_ids.each do |id|
         SearchVector.execute_search_query SearchAlgorithms.sync, id: id
-        yield
+        yield if block_given?
       end
     end
 
