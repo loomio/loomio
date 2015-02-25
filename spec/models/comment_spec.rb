@@ -5,8 +5,6 @@ describe Comment do
   let(:discussion) { create :discussion }
   let(:comment) { create(:comment, discussion: discussion) }
 
-  it_behaves_like Searchable
-
   before do
     discussion.group.add_member!(user)
   end
