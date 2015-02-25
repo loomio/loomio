@@ -1,5 +1,4 @@
 class Inbox
-  UNREAD_PER_GROUP_LIMIT = 20
   attr_reader :size
   attr_reader :grouped_items
 
@@ -24,25 +23,12 @@ class Inbox
 
     @unread_discussions_count_per_group = {}
     groups.each do |group|
-      discussions = @grouped_unread_discussions[group]
-
-      next if discussions.nil?
-
-      limited_discussions = discussions.first(unread_per_group_limit)
-      @unread_discussions_count_per_group[group] = discussions.size
+      discussions = @grouped_unread_discussions.fetch(group, [])
       motions = @grouped_unread_motions.fetch(group, [])
 
-      next if limited_discussions.empty? && motions.empty?
+      next if discussions.empty? && motions.empty?
 
-      aligned_items = []
-
-      motions.each do |motion|
-        aligned_items << motion
-        aligned_items << motion.discussion if discussions.include?(motion.discussion)
-      end
-
-      other_discussions = limited_discussions - aligned_items
-      @grouped_items[group] = aligned_items + other_discussions
+      @grouped_items[group] = motions + discussions
     end
 
     update_size
@@ -70,22 +56,6 @@ class Inbox
     @grouped_items.each_pair do |group, discussions|
       yield group, discussions
     end
-  end
-
-  def unread_count_for(group)
-    @unread_discussions_count_per_group[group]
-  end
-
-  def unread_per_group_limit
-    UNREAD_PER_GROUP_LIMIT
-  end
-
-  def unread_items_exceeds_max_for(group)
-    unread_count_for(group) > unread_per_group_limit
-  end
-
-  def items_not_shown_count_for(group)
-    unread_count_for(group) - unread_per_group_limit
   end
 
   def groups
