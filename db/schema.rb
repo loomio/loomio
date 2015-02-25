@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223201536) do
+ActiveRecord::Schema.define(version: 20150225033812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,13 +94,6 @@ ActiveRecord::Schema.define(version: 20150223201536) do
 
   add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "tag_anc_desc_udx", unique: true, using: :btree
   add_index "comment_hierarchies", ["descendant_id"], name: "tag_desc_idx", using: :btree
-
-  create_table "comment_search_vectors", force: :cascade do |t|
-    t.integer  "comment_id"
-    t.tsvector "search_vector"
-  end
-
-  add_index "comment_search_vectors", ["search_vector"], name: "comment_search_vector_index", using: :gin
 
   create_table "comment_votes", force: :cascade do |t|
     t.integer  "comment_id"
@@ -436,13 +429,6 @@ ActiveRecord::Schema.define(version: 20150223201536) do
   end
 
   add_index "motion_readers", ["user_id", "motion_id"], name: "index_motion_readers_on_user_id_and_motion_id", using: :btree
-
-  create_table "motion_search_vectors", force: :cascade do |t|
-    t.integer  "motion_id"
-    t.tsvector "search_vector"
-  end
-
-  add_index "motion_search_vectors", ["search_vector"], name: "motion_search_vector_index", using: :gin
 
   create_table "motions", force: :cascade do |t|
     t.string   "name",                limit: 255
