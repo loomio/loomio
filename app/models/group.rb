@@ -375,10 +375,12 @@ class Group < ActiveRecord::Base
   end
 
   def find_or_create_membership(user, inviter)
-    membership = memberships.where(user_id: user.id).first
-    membership ||= Membership.create!(group: self,
-                                      user: user,
-                                      inviter: inviter)
+    Membership.transaction do
+      membership = memberships.where(user_id: user.id).first
+      membership ||= Membership.create!(group: self,
+                                        user: user,
+                                        inviter: inviter)
+    end
   end
 
   def user_membership_or_request_exists? user
