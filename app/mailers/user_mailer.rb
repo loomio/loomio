@@ -13,11 +13,11 @@ class UserMailer < BaseMailer
       @discussions = Queries::VisibleDiscussions.new(user: user,
                                                      groups: user.inbox_groups).
                                                      unread.
-                                                     active_since(@time_start)
+                                                     last_activity_after(@time_start)
     else
       @discussions = Queries::VisibleDiscussions.new(user: user,
                                                      groups: user.inbox_groups).
-                                                     active_since(@time_start)
+                                                     last_activity_after(@time_start)
     end
 
     unless @discussions.empty? or @user.inbox_groups.empty?

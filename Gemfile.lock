@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: ed1fbca8c64af827616c58f274d7be256ca513b6
+  revision: a0bf8da21b7a6f37e1ad28790187e0244a0d5466
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -75,7 +75,7 @@ GEM
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.0)
-    autoprefixer-rails (5.1.5)
+    autoprefixer-rails (5.1.7)
       execjs
       json
     awesome_print (1.6.1)
@@ -90,11 +90,15 @@ GEM
       savon (~> 2.0)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
-    bourbon (4.2.0)
+    bourbon (4.2.1)
       sass (~> 3.4)
       thor
     browser (0.8.0)
     builder (3.2.2)
+    byebug (3.5.1)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     cancancan (1.10.1)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -122,6 +126,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1)
+    columnize (0.9.0)
     cookiejar (0.3.2)
     countries (0.9.3)
       currencies (~> 0.4.2)
@@ -147,6 +152,7 @@ GEM
     daemons (1.1.9)
     dalli (2.7.2)
     database_cleaner (1.4.0)
+    debugger-linecache (1.2.0)
     delayed-plugins-airbrake (1.1.0)
       airbrake
       delayed_job
@@ -190,7 +196,7 @@ GEM
       i18n (~> 0.5)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
-    faye (1.1.0)
+    faye (1.1.1)
       cookiejar (>= 0.3.0)
       em-http-request (>= 0.3.0)
       eventmachine (>= 0.12.0)
@@ -204,7 +210,7 @@ GEM
     ffi (1.9.6)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
-    fog (1.27.0)
+    fog (1.28.0)
       fog-atmos
       fog-aws (~> 0.0)
       fog-brightbox (~> 0.4)
@@ -213,6 +219,7 @@ GEM
       fog-json
       fog-profitbricks
       fog-radosgw (>= 0.0.2)
+      fog-riakcs
       fog-sakuracloud (>= 0.0.4)
       fog-serverlove
       fog-softlayer
@@ -235,7 +242,7 @@ GEM
       fog-core (~> 1.22)
       fog-json
       inflecto (~> 0.0.2)
-    fog-core (1.28.0)
+    fog-core (1.29.0)
       builder
       excon (~> 0.38)
       formatador (~> 0.2)
@@ -255,6 +262,10 @@ GEM
       fog-core (>= 1.21.0)
       fog-json
       fog-xml (>= 0.0.1)
+    fog-riakcs (0.1.0)
+      fog-core
+      fog-json
+      fog-xml
     fog-sakuracloud (1.0.0)
       fog-core
       fog-json
@@ -347,7 +358,7 @@ GEM
     jquery-ui-rails (5.0.3)
       railties (>= 3.2.16)
     json (1.8.2)
-    jwt (1.2.1)
+    jwt (1.3.0)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -514,7 +525,7 @@ GEM
       rspec-mocks (>= 2.99, < 4.0)
     rspec-collection_matchers (1.1.2)
       rspec-expectations (>= 2.99.0.beta1)
-    rspec-core (3.2.0)
+    rspec-core (3.2.1)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -522,18 +533,18 @@ GEM
     rspec-its (1.2.0)
       rspec-core (>= 3.0.0)
       rspec-expectations (>= 3.0.0)
-    rspec-mocks (3.2.0)
+    rspec-mocks (3.2.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
-    rspec-rails (3.2.0)
-      actionpack (>= 3.0, <= 4.2)
-      activesupport (>= 3.0, <= 4.2)
-      railties (>= 3.0, <= 4.2)
+    rspec-rails (3.2.1)
+      actionpack (>= 3.0, < 4.3)
+      activesupport (>= 3.0, < 4.3)
+      railties (>= 3.0, < 4.3)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
       rspec-mocks (~> 3.2.0)
       rspec-support (~> 3.2.0)
-    rspec-support (3.2.1)
+    rspec-support (3.2.2)
     ruby-progressbar (1.7.1)
     ruby_parser (3.6.4)
       sexp_processor (~> 4.1)
@@ -560,7 +571,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
-    sequenced (1.6.0)
+    sequenced (2.0.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
     sexp_processor (4.4.5)
@@ -597,7 +608,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
-    timecop (0.7.1)
+    timecop (0.7.3)
     twitter-text (1.11.0)
       unf (~> 0.1.0)
     tzinfo (1.2.2)
@@ -621,9 +632,9 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
     websocket (1.2.1)
-    websocket-driver (0.5.1)
+    websocket-driver (0.5.3)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.1)
+    websocket-extensions (0.1.2)
     with_advisory_lock (3.0.0)
       activerecord (>= 3.2)
       thread_safe
@@ -643,6 +654,7 @@ DEPENDENCIES
   bing_translator
   bootstrap-sass (~> 3.2.0)
   browser
+  byebug
   cancancan
   capybara
   closure_tree (~> 4.6.3)
@@ -718,7 +730,7 @@ DEPENDENCIES
   ruby-progressbar
   sass-rails (>= 3.2)
   selenium-webdriver
-  sequenced (~> 1.6.0)
+  sequenced (~> 2.0.0)
   shoulda-matchers
   simple_form (= 3.1.0)
   spring

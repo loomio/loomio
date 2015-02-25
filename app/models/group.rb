@@ -65,7 +65,9 @@ class Group < ActiveRecord::Base
   scope :less_than_n_discussions, ->(count) { where('discussions_count < ?', count) }
 
   scope :no_active_discussions_since, ->(time) {
-    includes(:discussions).where('discussions.last_comment_at < ? OR groups.discussions_count = 0', time).references(:discussions)
+    includes(:discussions).where('(last_comment_at IS NULL and discussions.created_at < :time) OR
+                                   last_comment_at < :time OR
+                                   groups.discussions_count = 0', time: time).references(:discussions)
   }
 
   scope :active_discussions_since, ->(time) {
@@ -373,10 +375,12 @@ class Group < ActiveRecord::Base
   end
 
   def find_or_create_membership(user, inviter)
-    membership = memberships.where(user_id: user.id).first
-    membership ||= Membership.create!(group: self,
-                                      user: user,
-                                      inviter: inviter)
+    Membership.transaction do
+      membership = memberships.where(user_id: user.id).first
+      membership ||= Membership.create!(group: self,
+                                        user: user,
+                                        inviter: inviter)
+    end
   end
 
   def user_membership_or_request_exists? user

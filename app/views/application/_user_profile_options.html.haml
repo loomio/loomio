@@ -10,9 +10,10 @@
   %a{href: help_path}
     %i.fa.fa-star
     = t :"help.help"
+
 - if ENV["INTERCOM_APP_ID"].present?
   %li
-    %a{href: "mailto:#{ENV["INTERCOM_APP_ID"]}@incoming.intercom.io", id: "Intercom"}
+    %a.intercom-proxy{href: "mailto:#{ENV["INTERCOM_APP_ID"]}@incoming.intercom.io"}
       %i.fa.fa-question-circle
       = t :"contact_page.contact_us"
 %li

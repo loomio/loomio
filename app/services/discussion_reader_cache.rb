@@ -2,10 +2,17 @@ class DiscussionReaderCache
   attr_accessor :user
   attr_accessor :readers
 
-  def initialize(user, readers)
+  def initialize(user: nil, discussions: [])
     @user = user
-    @readers = readers
     @readers_by_discussion_id = {}
+
+    if user
+      @readers = DiscussionReader.where(user_id: user.id,
+                                        discussion_id: discussions.map(&:id)).includes(:discussion)
+    else
+      @readers = []
+    end
+
     @readers.each do |reader|
       @readers_by_discussion_id[reader.discussion_id] = reader
     end
@@ -18,9 +25,9 @@ class DiscussionReaderCache
   private
 
   def new_reader_for(discussion)
-    dr = DiscussionReader.new
-    dr.discussion = discussion
-    dr.user = user
-    dr
+    DiscussionReader.new do |dr|
+      dr.discussion = discussion
+      dr.user = user
+    end
   end
 end

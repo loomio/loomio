@@ -1,13 +1,13 @@
-.thread-event.thread-new-proposal-item{ng-controller: 'NewProposalItemController'}
-  .thread-event-header.media
+.thread-item{ng-controller: 'NewProposalItemController'}
+  .thread-item-header.media
     .media-left
-      .thread-event-proposal-icon
+      .thread-item-proposal-icon
     .media-body
       %span{translate: "new_proposal_item.author_created_proposal", translate-value-name: '{{proposal.authorName()}}'}
-  .thread-event-body
+  .thread-item-body
     {{proposal.name}}
 
-  .thread-event-footer
+  .thread-item-footer
     .thread-actions-and-meta
       %timeago{timestamp: 'proposal.createdAt'}
 

@@ -1,4 +1,8 @@
 window.Application ||= {}
+$ ->
+  $('.intercom-proxy').on 'click', (e) ->
+    e.preventDefault()
+    $('#Intercom').trigger('click')
 
 # keyboard shortcuts
 $ ->

@@ -6,15 +6,21 @@ Given(/^I am a logged out user with an unread discussion$/) do
   @group.add_member!(@voter)
   @time_start = 1.hour.ago
 
-  @discussion = FactoryGirl.create(:discussion, group: @group, created_at: @time_start)
-  @motion = FactoryGirl.create(:motion, discussion: @discussion, created_at: @time_start)
+  @discussion = FactoryGirl.build(:discussion, group: @group, created_at: @time_start)
+  DiscussionService.create(discussion: @discussion, actor: @discussion.author)
 
-  Vote.create!(motion: @motion, user: @voter, position: 'yes', created_at: @time_start)
+  @motion = FactoryGirl.build(:motion, discussion: @discussion, created_at: @time_start)
+  MotionService.create(motion: @motion, actor: @discussion.author)
+
+  @vote = Vote.new(motion: @motion, user: @voter, position: 'yes', created_at: @time_start)
+  VoteService.create(vote: @vote, actor: @vote.author)
 
   @motion.reload
   @discussion.reload
 
-  @comment = FactoryGirl.create(:comment, discussion: @discussion)
+  @comment = FactoryGirl.build(:comment, discussion: @discussion)
+  CommentService.create(comment: @comment, actor: @discussion.author)
+
   Vote.create!(motion: @motion, user: @voter, position: 'no')
 
   @motion.reload

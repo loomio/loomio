@@ -2,19 +2,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
   class DiscussionModel extends BaseModel
     @singular: 'discussion'
     @plural: 'discussions'
-    @foreignKey: 'discussionId'
-    @indexes: ['groupId']
-
-    initialize: (data) ->
-      @id = data.id
-      @key = data.key
-      @authorId = data.author_id
-      @groupId = data.group_id
-      @title = data.title
-      @description = data.description
-      @createdAt = data.created_at
-      @lastActivityAt = data.last_activity_at
-      @private = data.private
+    @indices: ['groupId', 'authorId']
 
     setupViews: ->
       #@dynamicView('comments')
@@ -35,14 +23,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     translationOptions: ->
       title:     @title
       groupName: @groupName()
-
-    serialize: ->
-      discussion:
-        group_id: @groupId
-        discussion_id: @discussionId
-        title: @title
-        description: @description
-        private: @private
 
     author: ->
       @recordStore.users.find(@authorId)
@@ -78,3 +58,27 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     activeProposalClosedAt: ->
       proposal = @activeProposal()
       proposal.closedAt if proposal?
+
+    activeProposalLastVoteAt: ->
+      proposal = @activeProposal()
+      proposal.lastVoteAt if proposal?
+
+    reader: ->
+      @recordStore.discussionReaders.initialize(id: @id)
+
+    unreadItemsCount: ->
+      @itemsCount - @reader().readItemsCount
+
+    markAsRead: (sequenceId) ->
+      if @reader().lastReadSequenceId < sequenceId
+        @restfulClient.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})
+
+
+    ## time of most recent thing out of last vote, last comment, created at
+    #lastActivityAt: ->
+      #times = []
+      #times.push moment(@activeProposal().lastVoteAt) if @activeProposal()?
+      #times.push moment(@lastCommentAt) if @lastCommentAt?
+      #times.push moment(@createdAt)
+      #_.max(_.compact(times))
+

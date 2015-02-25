@@ -4,7 +4,7 @@ class DiscussionReader < ActiveRecord::Base
   belongs_to :discussion
 
   validates_presence_of :discussion, :user
-  validates_uniqueness_of :user_id, :scope => :discussion_id
+  validates_uniqueness_of :user_id, scope: :discussion_id
 
   scope :for_user, -> (user) { where(user_id: user.id) }
 
@@ -45,7 +45,7 @@ class DiscussionReader < ActiveRecord::Base
 
   def unread_comments_count
     #we count the discussion itself as a comment.. but it is comment 0
-    if read_comments_count.nil?
+    if last_read_at.blank?
       discussion.comments_count.to_i + 1
     else
       discussion.comments_count.to_i - read_comments_count
@@ -64,33 +64,47 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
-  def unread_content_exists?
-    unread_items_count > 0
+  def unread_activity?
+    last_read_at.nil? || (discussion.last_activity_at > last_read_at)
   end
-
-  def returning_user_and_unread_content_exist?
-    last_read_at.present? and unread_content_exists?
-  end
-
 
   def viewed!(age_of_last_read_item = nil)
     return if user.nil?
-    discussion.viewed!
+    self.last_read_at = age_of_last_read_item || discussion.last_activity_at
+    reset_counts!
+  end
 
-    if age_of_last_read_item.nil?
-      age_of_last_read_item = discussion.last_activity_at
-    end
 
-    update(read_comments_count: count_read_comments(age_of_last_read_item),
-           read_items_count: count_read_items(age_of_last_read_item),
-           last_read_at: age_of_last_read_item)
+  def reset_comment_counts
+    self.read_comments_count = read_comments.count
+  end
+
+  def reset_comment_counts!
+    reset_comment_counts
+    save!(validate: false)
+  end
+
+  def reset_non_comment_counts
+    self.read_items_count = read_items.count
+    self.read_salient_items_count = read_salient_items.count
+    self.last_read_sequence_id = if read_items_count == 0
+                                   0
+                                 else
+                                   read_items.last.sequence_id
+                                 end
+  end
+
+  def reset_non_comment_counts!
+    reset_non_comment_counts
+    save!(validate: false)
   end
 
   def reset_counts!
-    self.read_comments_count = count_read_comments(last_read_at)
-    self.read_items_count = count_read_items(last_read_at)
-    self.save!
+    reset_comment_counts
+    reset_non_comment_counts
+    save!(validate: false)
   end
+
 
   def first_unread_page
     per_page = Discussion::PER_PAGE
@@ -105,16 +119,22 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
+  def read_comments(time = nil)
+    discussion.comments.where('comments.created_at <= ?', time || last_read_at).chronologically
+  end
+
+  def read_items(time = nil)
+    discussion.items.where('events.created_at <= ?', time || last_read_at).chronologically
+  end
+
+  def read_salient_items(time = nil)
+    discussion.salient_items.where('events.created_at <= ?', time || last_read_at).chronologically
+  end
+
+  # read_salient_items might be what you want in the future
+
   private
   def membership
     discussion.group.membership_for(user)
-  end
-
-  def count_read_comments(since)
-    discussion.comments.where('comments.created_at <= ?', since).count
-  end
-
-  def count_read_items(since)
-    discussion.items.where('events.created_at <= ?', since).count
   end
 end

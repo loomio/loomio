@@ -5,6 +5,7 @@ describe API::DiscussionsController do
   let(:another_user) { create :user }
   let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
+  let(:comment) { create :comment, discussion: discussion}
   let(:proposal) { create :motion, discussion: discussion, author: user }
   let(:discussion_params) {{
     title: 'Did Charlie Bite You?',
@@ -14,17 +15,36 @@ describe API::DiscussionsController do
   }}
 
   before do
-    group.admins << user
+    group.add_admin! user
     sign_in user
   end
 
   describe 'show' do
     it 'returns the discussion json' do
       proposal
-      get :show, id: discussion.key, format: :json
+      get :show, id: discussion.key
       json = JSON.parse(response.body)
       expect(json.keys).to include *(%w[users groups proposals discussions])
-      expect(json['discussions'][0].keys).to include *(%w[id key title description last_activity_at created_at updated_at items_count comments_count private author_id group_id active_proposal_id])
+      expect(json['discussions'][0].keys).to include *(%w[id key title description last_item_at last_comment_at created_at updated_at items_count comments_count private author_id group_id active_proposal_id])
+    end
+  end
+
+  describe 'mark_as_read' do
+    it "Marks context/discusion as read" do
+      patch :mark_as_read, id: discussion.key, sequence_id: 0
+      dr = DiscussionReader.for(discussion: discussion,
+                                user: user)
+      expect(dr.last_read_at).to eq discussion.created_at
+      expect(dr.last_read_sequence_id).to eq 0
+    end
+
+    it "Marks thread item as read", focus: true do
+      event = CommentService.create(comment: comment, actor: discussion.author)
+      patch :mark_as_read, id: discussion.key, sequence_id: event.sequence_id
+
+      dr = DiscussionReader.for(discussion: discussion, user: user)
+      expect(dr.last_read_at).to eq event.created_at
+      expect(dr.last_read_sequence_id).to eq 1
     end
   end
 
@@ -104,7 +124,8 @@ describe API::DiscussionsController do
           key
           title
           description
-          last_activity_at
+          last_item_at
+          last_comment_at
           created_at
           updated_at
           items_count

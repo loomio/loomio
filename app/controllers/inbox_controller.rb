@@ -10,7 +10,7 @@ class InboxController < BaseController
             new(groups: current_user.inbox_groups,
                 user: current_user).
             unread.
-            last_comment_after(3.months.ago).
+            last_activity_after(3.months.ago).
             count
 
     if size > 100
@@ -82,18 +82,16 @@ class InboxController < BaseController
     end
 
     if current_user
-      @discussion_readers = DiscussionReader.where(user_id: current_user.id,
-                                                    discussion_id: @discussions.map(&:id)).includes(:discussion)
       @motion_readers = MotionReader.where(user_id: current_user.id,
                                            motion_id: @motions.map(&:id) ).includes(:motion)
       @last_votes = Vote.most_recent.where(user_id: current_user, motion_id: @motions.map(&:id))
     else
-      @discussion_readers =[]
       @motion_readers = []
       @last_votes = []
     end
 
-    @discussion_reader_cache = DiscussionReaderCache.new(current_user, @discussion_readers)
+    @discussion_reader_cache = DiscussionReaderCache.new(user: current_user,
+                                                         discussions: @discussions)
     @motion_reader_cache = MotionReaderCache.new(current_user, @motion_readers)
 
     @last_vote_cache = VoteCache.new(current_user, @last_votes)

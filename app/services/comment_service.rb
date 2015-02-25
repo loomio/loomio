@@ -32,7 +32,6 @@ class CommentService
   def self.destroy(comment:, actor:)
     actor.ability.authorize!(:destroy, comment)
     comment.destroy
-
     Memos::CommentDestroyed.publish!(comment)
   end
 

@@ -3,19 +3,6 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     @singular: 'proposal'
     @plural: 'proposals'
 
-    initialize: (data) ->
-      @id = data.id
-      @name = data.name
-      @description = data.description
-      @createdAt = data.created_at
-      @closingAt = data.closing_at
-      @closedAt = data.closed_at
-      @authorId = data.author_id
-      @outcome = data.outcome
-      @discussionId = data.discussion_id
-      @voteCounts = data.vote_counts
-      @activityCount = data.activity_count
-
     setupViews: ->
       @votesView = @recordStore.votes.collection.addDynamicView(@viewName())
       @votesView.applyFind(proposalId: @id)

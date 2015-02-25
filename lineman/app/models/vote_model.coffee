@@ -3,21 +3,6 @@ angular.module('loomioApp').factory 'VoteModel', (BaseModel) ->
     @singular: 'vote'
     @plural: 'votes'
 
-    initialize: (data) ->
-      @id = data.id
-      @authorId = data.author_id
-      @proposalId = data.proposal_id
-      @position = data.position
-      @statement = data.statement
-      @createdAt = data.created_at
-
-    serialize: ->
-      vote:
-        id: @id
-        motion_id: @proposalId
-        position: @position
-        statement: @statement
-
     author: ->
       @recordStore.users.find(@authorId)
 

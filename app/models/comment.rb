@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
   acts_as_tree
   is_translatable on: :body
 
-  belongs_to :discussion, counter_cache: true
+  belongs_to :discussion
   belongs_to :user
 
   has_many :comment_votes, -> { joins('INNER JOIN users ON comment_votes.user_id = users.id AND users.deactivated_at IS NULL' )}, dependent: :destroy
@@ -21,11 +21,12 @@ class Comment < ActiveRecord::Base
   validate :parent_comment_belongs_to_same_discussion
 
   after_initialize :set_defaults
-  after_destroy :send_discussion_comment_deleted!
+  after_destroy :call_comment_destroyed
 
   default_scope { includes(:user).includes(:attachments).includes(:discussion) }
 
   #scope :published, -> { where(published: true) }
+  scope :chronologically, -> { order('created_at asc') }
 
   delegate :name, to: :user, prefix: :user
   delegate :name, to: :user, prefix: :author
@@ -94,7 +95,7 @@ class Comment < ActiveRecord::Base
     comment_votes.where(:user_id => user.id).each(&:destroy)
     save
   end
-  
+
   def refresh_liker_ids_and_names
     hash = {}
     self.liker_ids_and_names = comment_votes.each do |cv|
@@ -132,8 +133,8 @@ class Comment < ActiveRecord::Base
   end
 
   private
-  def send_discussion_comment_deleted!
-    discussion.comment_deleted!
+  def call_comment_destroyed
+    discussion.comment_destroyed!(self)
   end
 
   def parent_comment_belongs_to_same_discussion

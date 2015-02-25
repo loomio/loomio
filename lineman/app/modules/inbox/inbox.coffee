@@ -3,5 +3,6 @@ angular.module('loomioApp').directive 'inbox', ->
   restrict: 'E'
   templateUrl: 'generated/modules/inbox/inbox.html'
   replace: true
-  controller: 'InboxController'
-  link: (scope, element, attrs) ->
+  controller: ($scope, Records, UserAuthService) ->
+    $scope.currentUser = UserAuthService.currentUser
+    Records.discussions.fetchInbox()

@@ -2,30 +2,22 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
   class CommentModel extends BaseModel
     @singular: 'comment'
     @plural: 'comments'
-    @indexes: ['discussionId', 'authorId']
+    @indices: ['discussionId', 'authorId']
 
     initialize: (data) ->
-      @id = data.id
-      @discussionId = data.discussion_id
-      @authorId = data.author_id
-      @parentId = data.parent_id
+      @updateFromJSON(data)
 
       if data.body?
         @body = data.body
       else
         @body = ''
 
-      @likerIds = data.liker_ids
       @newAttachmentIds = []
-      @createdAt = data.created_at
-      @updatedAt = data.updated_at
 
     serialize: ->
-      comment:
-        parent_id: @parentId
-        discussion_id: @discussionId
-        body: @body
-        new_attachment_ids: @newAttachmentIds
+      data = baseSerialize()
+      data[new_attachment_ids] = @newAttachmentIds
+      data
 
     group: ->
       @discussion().group()
@@ -61,7 +53,7 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
       @author().name
 
     authorUsername: ->
-      @author().username()
+      @author().username
 
     parentAuthorName: ->
       return null unless @parentId

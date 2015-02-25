@@ -107,9 +107,10 @@ class Inbox
     Queries::VisibleDiscussions.
       new(user: @user, groups: group_or_groups).
       unread.
-      last_comment_after(3.months.ago).
+      last_activity_after(3.months.ago).
       includes(:group).
-      order_by_latest_comment.readonly(false).limit(100)
+      order_by_latest_activity.
+      readonly(false).limit(100)
   end
 
   def unvoted_motions_for(group)
