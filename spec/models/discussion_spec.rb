@@ -284,6 +284,8 @@ describe Discussion do
       before do
         @comment = build(:comment, discussion: discussion)
         @event = CommentService.create(comment: @comment, actor: discussion.author)
+
+        @event.reload
         discussion.reload
       end
 
@@ -303,6 +305,7 @@ describe Discussion do
       before do
         @comment = build(:comment, discussion: discussion)
         @event = CommentService.create(comment: @comment, actor: discussion.author)
+        @event.reload
         discussion.reload
         @comment.reload
         @comment.destroy
@@ -331,6 +334,8 @@ describe Discussion do
         @comment2 = build(:comment, discussion: discussion)
         @event2 = CommentService.create(comment: @comment2, actor: discussion.author)
 
+        @event1.reload
+        @event2.reload
         discussion.reload
         @comment1.reload
         @comment2.reload
@@ -359,6 +364,9 @@ describe Discussion do
         @comment2 = build(:comment, discussion: discussion)
         @event2 = CommentService.create(comment: @comment2, actor: discussion.author)
 
+
+        @event1.reload
+        @event2.reload
         discussion.reload
         @comment1.reload
         @comment2.reload

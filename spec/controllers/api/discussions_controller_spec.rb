@@ -17,6 +17,7 @@ describe API::DiscussionsController do
   before do
     group.add_admin! user
     sign_in user
+    discussion.reload
   end
 
   describe 'show' do
