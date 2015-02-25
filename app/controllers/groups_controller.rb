@@ -34,6 +34,9 @@ class GroupsController < GroupBaseController
       @group.add_admin! current_user
       @group.creator = current_user
       Measurement.increment('groups.create.success')
+      if @group.is_parent?
+        SetupGroup.create_example_discussion(@group)
+      end
       flash[:success] = t("success.group_created")
       redirect_to @group
     elsif @group.is_subgroup?

@@ -25,3 +25,8 @@
   Scenario: Subgroups do not have permissions around creating subgroups
     When I view the subgroup permissions tab
     Then I should not see an option to give members permission to create subgroups
+
+  @javascript
+  Scenario: Example content is not generated for subgroups
+    When I create a new subgroup
+    Then the example content should not be created
