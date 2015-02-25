@@ -6,13 +6,8 @@ class InboxController < BaseController
   end
 
   def size
-    size = Queries::VisibleDiscussions.
-            new(groups: current_user.inbox_groups,
-                user: current_user).
-            unread.
-            last_activity_after(6.weeks.ago).
-            order_by_latest_activity.
-            count
+    load_inbox
+    size = @inbox.items_count
 
     if size > 100
       render text: '100+'

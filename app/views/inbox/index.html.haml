@@ -30,25 +30,6 @@
           -if item.is_a? Motion
             =render 'motion_line_item', item: item
 
-        -if @inbox.unread_items_exceeds_max_for(group)
-          %li
-            .row
-              .col-xs-1
-              .col-xs-11
-                =@inbox.items_not_shown_count_for(group)
-                more unread items.
-                =link_to 'Visit the group', group, class: 'more-unread-items'
-                ,
-                =link_to 'mark them all as read',
-                  inbox_mark_all_as_read_path(group.id),
-                  class: 'mark-all-as-read-btn more-unread-items',
-                  method: :post
-                or
-                =link_to 'remove the group from your inbox',
-                  inbox_preferences_path,
-                  class: 'more-unread-items'
-
-
 
 - if @inbox.empty?
   =t(:'inbox.empty')
