@@ -45,7 +45,7 @@ class DiscussionReader < ActiveRecord::Base
 
   def unread_comments_count
     #we count the discussion itself as a comment.. but it is comment 0
-    if read_comments_count.nil?
+    if last_read_at.blank?
       discussion.comments_count.to_i + 1
     else
       discussion.comments_count.to_i - read_comments_count

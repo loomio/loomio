@@ -185,7 +185,7 @@ ActiveRecord::Schema.define(version: 20150223201536) do
     t.datetime "updated_at"
     t.integer  "discussion_id"
     t.datetime "last_read_at"
-    t.integer  "read_comments_count"
+    t.integer  "read_comments_count",      default: 0, null: false
     t.integer  "read_items_count",         default: 0, null: false
     t.boolean  "following"
     t.integer  "last_read_sequence_id",    default: 0, null: false
