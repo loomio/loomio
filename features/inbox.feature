@@ -6,6 +6,7 @@ Feature: Inbox
   Background:
     Given I am logged in
 
+  @javascript
   Scenario: User views discussion in inbox
     Given I belong to a group with a discussion
     When I visit the inbox
