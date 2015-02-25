@@ -56,6 +56,14 @@ class DiscussionReader < ActiveRecord::Base
     discussion.items_count - read_items_count
   end
 
+  def unread_activity_count
+    if last_read_at.blank?
+      discussion.salient_items_count + 1
+    else
+      discussion.salient_items_count - read_salient_items_count
+    end
+  end
+
   def has_read?(event)
     if last_read_at.present?
       self.last_read_at >= event.created_at

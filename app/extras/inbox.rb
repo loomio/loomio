@@ -16,8 +16,8 @@ class Inbox
 
   def load
     @grouped_items = {}
-    @discussions = unread_discussions_for(groups)
     @motions = unread_motions_for(groups)
+    @discussions = unread_discussions_for(groups, exclude_ids: @motions.pluck(:discussion_id))
 
     @grouped_unread_discussions = @discussions.group_by { |d| d.group }
     @grouped_unread_motions = @motions.group_by { |m| m.group }
@@ -103,10 +103,11 @@ class Inbox
     end
   end
 
-  def unread_discussions_for(group_or_groups)
+  def unread_discussions_for(group_or_groups, exclude_ids: [])
     Queries::VisibleDiscussions.
       new(user: @user, groups: group_or_groups).
       unread.
+      where('discussions.id not in (?)', exclude_ids).
       last_activity_after(3.months.ago).
       includes(:group).
       order_by_latest_activity.
