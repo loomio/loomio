@@ -4,7 +4,8 @@
       .icon
         .activity-container
           %span.count.unread-votes-count{title: t(:'tooltip.new_votes')}
-            - count = @motion_reader_cache.get_for(item).unread_activity_count
+            - count = DiscussionReader.for(discussion: item.discussion, user: current_user).unread_activity_count
+            -#- count = @motion_reader_cache.get_for(item).unread_activity_count
             - if count != 0
               =count
         .motion-sparkline
