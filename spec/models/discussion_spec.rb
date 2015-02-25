@@ -286,6 +286,7 @@ describe Discussion do
         @event = CommentService.create(comment: @comment, actor: discussion.author)
 
         @event.reload
+        @comment.reload
         discussion.reload
       end
 
