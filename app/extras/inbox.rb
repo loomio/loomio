@@ -108,7 +108,7 @@ class Inbox
       new(user: @user, groups: group_or_groups).
       unread.
       where('discussions.id not in (?)', exclude_ids).
-      last_activity_after(3.months.ago).
+      last_activity_after(6.weeks.ago).
       includes(:group).
       order_by_latest_activity.
       readonly(false).limit(100)

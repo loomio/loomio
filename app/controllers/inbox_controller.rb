@@ -10,7 +10,8 @@ class InboxController < BaseController
             new(groups: current_user.inbox_groups,
                 user: current_user).
             unread.
-            last_activity_after(3.months.ago).
+            last_activity_after(6.weeks.ago).
+            order_by_latest_activity.
             count
 
     if size > 100
