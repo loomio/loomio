@@ -10,8 +10,10 @@ class DiscussionSerializer < ActiveModel::Serializer
              :created_at,
              :updated_at,
              :items_count,
+             :salient_items_count,
              :comments_count,
              :private,
+             :archived_at,
              :created_at,
              :updated_at
 
