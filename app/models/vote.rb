@@ -3,8 +3,8 @@ class Vote < ActiveRecord::Base
   default_scope { includes(:previous_vote) }
   belongs_to :motion, counter_cache: true, touch: :last_vote_at
   belongs_to :user
-  belongs_to :previous_vote, class_name: 'Vote'  
-  has_many :events, :as => :eventable, :dependent => :destroy
+  belongs_to :previous_vote, class_name: 'Vote'
+  has_many :events, as: :eventable, dependent: :destroy
 
   validates_presence_of :motion, :user, :position
   validates_inclusion_of :position, in: POSITIONS
@@ -13,26 +13,45 @@ class Vote < ActiveRecord::Base
   include Translatable
   is_translatable on: :statement
 
-  scope :for_user, lambda {|user_id| where(:user_id => user_id)}
-  scope :by_discussion, ->(discussion_id = nil) { joins(:motion).where("motions.discussion_id = ? OR ? IS NULL", discussion_id, discussion_id) }
+  scope :for_user, lambda {|user_id| where(user_id: user_id)}
+  scope :by_discussion, -> (discussion_id = nil) { joins(:motion).where("motions.discussion_id = ? OR ? IS NULL", discussion_id, discussion_id) }
   scope :most_recent, -> { where age: 0  }
 
-  delegate :name, :to => :user, :prefix => :user # deprecated
-  delegate :name, :to => :user, :prefix => :author
-  delegate :group, :discussion, :to => :motion
-  delegate :users, :to => :group, :prefix => :group
-  delegate :author, :to => :motion, :prefix => :motion
-  delegate :author, :to => :discussion, :prefix => :discussion
-  delegate :name, :to => :motion, :prefix => :motion
-  delegate :name, :full_name, :to => :group, :prefix => :group
-  delegate :locale, :to => :user
+  delegate :name, to: :user, prefix: :user # deprecated
+  delegate :name, to: :user, prefix: :author
+  delegate :group, :discussion, to: :motion
+  delegate :users, to: :group, prefix: :group
+  delegate :author, to: :motion, prefix: :motion
+  delegate :author, to: :discussion, prefix: :discussion
+  delegate :name, to: :motion, prefix: :motion
+  delegate :name, :full_name, to: :group, prefix: :group
+  delegate :locale, to: :user
 
   before_create :age_previous_votes, :associate_previous_vote
 
   after_create :update_motion_vote_counts
   after_destroy :update_motion_vote_counts
 
-  alias :author= :user=
+  # alias_method does not work for the following obvious methods
+  def author=(obj)
+    self.user = obj
+  end
+
+  def proposal_id
+    motion_id
+  end
+
+  def proposal_id=(id)
+    self.motion_id=id
+  end
+
+  def proposal
+    motion
+  end
+
+  def proposal=(obj)
+    self.motion = obj
+  end
 
   def author
     user

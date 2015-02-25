@@ -1,6 +1,6 @@
 class Discussion < ActiveRecord::Base
-
   PER_PAGE = 50
+  SALIENT_ITEM_KINDS = %w[new_comment new_motion new_vote motion_outcome_created]
   paginates_per PER_PAGE
 
   include ReadableUnguessableUrls
@@ -10,9 +10,9 @@ class Discussion < ActiveRecord::Base
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil, is_deleted: false) }
 
-  scope :active_since, -> (time) { where('last_activity_at > ?', time) }
-  scope :last_comment_after, -> (time) { where('last_comment_at > ?', time) }
-  scope :order_by_latest_comment, -> { order('last_comment_at DESC') }
+  scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
+  scope :order_by_latest_activity, -> { order('discussions.last_activity_at DESC') }
+  scope :order_by_closing_soon_then_latest_activity, -> { order('motions.closing_at ASC, discussions.last_activity_at DESC') }
 
   scope :visible_to_public, -> { published.where(private: false) }
   scope :not_visible_to_public, -> { where(private: true) }
@@ -44,7 +44,9 @@ class Discussion < ActiveRecord::Base
   has_many :commenters, -> { uniq }, through: :comments, source: :user
 
   has_many :events, -> { includes :user }, as: :eventable, dependent: :destroy
-  has_many :items, -> { includes(eventable: :user).order(created_at: :asc) }, class_name: 'Event'
+
+  has_many :items, -> { includes(eventable: :user).order('created_at ASC') }, class_name: 'Event'
+  has_many :salient_items, -> { includes(eventable: :user).where(kind: SALIENT_ITEM_KINDS).order('created_at ASC') }, class_name: 'Event'
 
   has_many :discussion_readers
 
@@ -65,7 +67,7 @@ class Discussion < ActiveRecord::Base
   delegate :name_and_email, to: :author, prefix: :author
   delegate :locale, to: :author
 
-  before_create :set_last_comment_at
+  after_create :set_last_activity_at_to_created_at
 
   def published_at
     created_at
@@ -110,20 +112,7 @@ class Discussion < ActiveRecord::Base
     group.users.where(User.arel_table[:id].not_eq(author_id))
   end
 
-  def current_motion_closing_at
-    current_motion.closing_at
-  end
-
   alias_method :current_proposal, :current_motion
-
-  def number_of_comments_since(time)
-    comments.where('comments.created_at > ?', time).count
-  end
-
-  def viewed!
-    Discussion.increment_counter(:total_views, id)
-    self.total_views += 1
-  end
 
   def participants
     participants = group.members.where(id: commenters.pluck(:id))
@@ -152,22 +141,66 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  def activity
-    items
-  end
-
   def delayed_destroy
     self.update_attribute(:is_deleted, true)
     self.delay.destroy
   end
 
-  def most_recent_comment
-    comments.order("created_at DESC").first
+  def thread_item_created!(item)
+    self.items_count += 1
+    self.last_item_at = item.created_at
+
+    if SALIENT_ITEM_KINDS.include? item.kind
+      self.salient_items_count += 1
+      self.last_activity_at = item.created_at
+    end
+
+    if item.kind == 'new_comment'
+      self.comments_count += 1
+      self.last_comment_at = item.created_at
+    end
+
+    if self.first_sequence_id == 0
+      self.first_sequence_id = item.sequence_id
+    end
+
+    self.last_sequence_id = item.sequence_id
+
+    save!(validate: false)
   end
 
-  def comment_deleted!
-    refresh_last_comment_at!
-    discussion_readers.each(&:reset_counts!)
+  def thread_item_destroyed!(item)
+    self.items_count -= 1
+    self.salient_items_count -= 1 if SALIENT_ITEM_KINDS.include? item.kind
+
+    if item.sequence_id == first_sequence_id
+      self.first_sequence_id = sequence_id_or_0(items.sequenced.first)
+    end
+
+    if item.sequence_id == last_sequence_id
+      last_item = items.sequenced.last
+      self.last_sequence_id = sequence_id_or_0(last_item)
+      self.last_item_at = last_item.try(:created_at)
+      self.last_activity_at = salient_items.last.try(:created_at) || created_at
+    end
+
+    save!(validate: false)
+
+    discussion_readers.
+      where('last_read_at <= ?', item.created_at).
+      each(&:reset_non_comment_counts!)
+
+    true
+  end
+
+  def comment_destroyed!(comment)
+    self.comments_count -= 1
+    self.last_comment_at = comments.maximum(:created_at)
+
+    save!(validate: false)
+    discussion_readers.
+      where('last_read_at <= ?', comment.created_at).
+      each(&:reset_comment_counts!)
   end
 
   def public?
@@ -181,14 +214,12 @@ class Discussion < ActiveRecord::Base
   end
 
   private
+  def set_last_activity_at_to_created_at
+    update_attribute(:last_activity_at, created_at)
+  end
 
-  def refresh_last_comment_at!
-    if comments.exists?
-      last_comment_time = most_recent_comment.created_at
-    else
-      last_comment_time = created_at
-    end
-    update_attribute(:last_comment_at, last_comment_time)
+  def sequence_id_or_0(item)
+    item.try(:sequence_id) || 0
   end
 
   def private_is_not_nil
@@ -205,10 +236,4 @@ class Discussion < ActiveRecord::Base
       errors.add(:private, "must be public in this group")
     end
   end
-
-  def set_last_comment_at
-    self.last_activity_at ||= Time.now
-    self.last_comment_at ||= Time.now
-  end
-
 end

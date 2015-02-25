@@ -1,10 +1,18 @@
 - discussion_reader = @discussion_reader_cache.get_for(discussion)
 - unread_comments_count = discussion_reader.unread_comments_count
 - motion = discussion.current_motion
-- motion_reader = @motion_reader_cache.get_for(motion) if motion
-- last_vote = @last_vote_cache.get_for(motion) if motion
+
+- if motion
+  - motion_reader = @motion_reader_cache.get_for(motion)
+  - last_vote = @last_vote_cache.get_for(motion)
+  - unread_votes_count = motion_reader.unread_activity_count
+
+- class_names = []
+- class_names << 'showing-group' unless @group == discussion.group
+- class_names << 'unread' if discussion_reader.unread_activity?
+
 .clearfix
-  %div.discussion-preview{ class: css_classes_for_discussion_preview(discussion, discussion_reader) }
+  %div.discussion-preview{ class: class_names.join(' ') }
     %a.selector-discussion-link{ href: discussion_path(discussion) }
       - if user_signed_in? && motion
         .vote-icon
@@ -45,4 +53,4 @@
         -if motion
           .proposal-close-date= t( :time_until_close, quantity_of_time: time_ago_in_words(motion.closing_at) )
         - else
-          .latest-comment-time= t( :ago, quantity_of_time: time_ago_in_words(discussion.last_comment_at) )
+          .latest-comment-time= t( :ago, quantity_of_time: time_ago_in_words(discussion.last_activity_at) )

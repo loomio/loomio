@@ -7,12 +7,14 @@ angular.module('loomioApp').factory 'RecordStore', () ->
     addRecordsInterface: (recordsInterfaceClass) ->
       recordsInterface = new recordsInterfaceClass(@)
       name = recordsInterface.model.plural
-      @[name] = recordsInterface
+      @[_.camelCase(name)] = recordsInterface
       @collectionNames.push name
 
     import: (data) ->
       _.each @collectionNames, (name) =>
-        if data[name]?
-          _.each data[name], (record_data) =>
-            @[name].initialize(record_data)
+        snakeName = _.snakeCase(name)
+        camelName = _.camelCase(name)
+        if data[snakeName]?
+          _.each data[snakeName], (recordData) =>
+            @[camelName].initialize(recordData)
       data

@@ -24,7 +24,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     Queries::VisibleDiscussions.new(user: user,
                                     groups: user.inbox_groups).
                                     unread.
-                                    active_since(time_start).each do |discussion|
+                                    last_activity_after(time_start).each do |discussion|
       DiscussionReader.for(user: user, discussion: discussion).viewed!(time_finish)
       if motion = discussion.motions.voting_or_closed_after(time_start).first
         MotionReader.for(user: user, motion: motion).viewed!(time_finish)

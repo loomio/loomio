@@ -3,10 +3,29 @@ require 'rails_helper'
 describe Queries::VisibleDiscussions do
   let(:user) { create :user }
   let(:group) { create :group, discussion_privacy_options: 'public_or_private' }
-  let(:discussion) { create :discussion, group: group, private: true }
+  let(:author) { create :user }
+  let(:discussion) { create :discussion, group: group, author: author, private: true }
 
   subject do
     Queries::VisibleDiscussions.new(user: user, groups: [group])
+  end
+
+  describe 'unread', focus: true do
+    before do
+      group.add_member! author
+      group.add_member! user
+      #group.add_member! uses
+      #comment = FactoryGirl.build(:comment, discussion: discussion, author: discussion.author)
+      #CommentService.create(comment: comment, actor: discussion.author)
+    end
+
+    it 'unread discussions with no comments' do
+      #user.discussions.should include discussion
+      subject.unread.should include discussion
+    end
+
+    it 'shows unread discussions with comments'
+    it 'shows unread discussions with some read comments'
   end
 
   describe 'discussion privacy' do

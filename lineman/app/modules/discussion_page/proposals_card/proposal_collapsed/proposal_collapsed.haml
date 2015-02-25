@@ -8,7 +8,7 @@
         %h2.first {{proposal.name}}
         / %span.proposal-closed{ng_show: 'proposal.closedAt'}
       / .proposal-card-vote{ng_show: 'currentUserHasVoted()'}
-      /   .media-left.thread-event-vote-icon{class: 'thread-event-vote-icon-{{currentUserVote().position}}'}
+      /   .media-left.thread-item-vote-icon{class: 'thread-event-vote-icon-{{currentUserVote().position}}'}
       /   .proposal-card-vote-statement {{ currentUserVote().statement }}
       .proposal-collapsed-outcome{ng_show: 'proposal.outcome'}
         Outcome: {{proposal.outcome}}

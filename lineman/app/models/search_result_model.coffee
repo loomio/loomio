@@ -3,12 +3,6 @@ angular.module('loomioApp').factory 'SearchResultModel', (BaseModel) ->
     @singular: 'search_result'
     @plural: 'search_results'
 
-    initialize: (data) ->
-      @query = data.query
-      @priority = data.priority
-      @resultId = data.result_id
-      @resultType = data.result_type
-
     isDiscussion: -> @resultType == 'Discussion'
     isProposal:   -> @resultType == 'Proposal'
     isComment:    -> @resultType == 'Comment'

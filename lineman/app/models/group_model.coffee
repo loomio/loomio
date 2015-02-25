@@ -2,43 +2,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
   class GroupModel extends BaseModel
     @singular: 'group'
     @plural: 'groups'
-    @indexes: ['parentId']
-
-    initialize: (data) ->
-      @id                             = data.id
-      @key                            = data.key
-      @name                           = data.name
-      @description                    = data.description
-      @parentId                       = data.parent_id
-      @createdAt                      = data.created_at
-      @membersCanAddMembers           = data.members_can_add_members
-      @membersCanCreateSubgroups      = data.members_can_create_subgroups
-      @membersCanStartDiscussions     = data.members_can_start_discussions
-      @membersCanEditDiscussions      = data.members_can_edit_discussions
-      @membersCanEditComments         = data.members_can_edit_comments
-      @membersCanRaiseProposals       = data.members_can_raise_proposals
-      @membersCanVote                 = data.members_can_vote
-      @membershipGrantedUpon          = data.membership_granted_upon
-      @discussionPrivacyOptions       = data.discussion_privacy_options
-      @visibleTo                      = data.visible_to
-      @logoUrlMedium                  = data.logo_url_medium
-      @coverUrlDesktop                = data.cover_url_desktop
-
-    serialize: ->
-      group:
-        name:                          @name
-        description:                   @description
-        parent_id:                     @parentId
-        members_can_add_members:       @membersCanAddMembers
-        members_can_create_subgroups:  @membersCanCreateSubgroups
-        members_can_start_discussions: @membersCanStartDiscussions
-        members_can_edit_discussions:  @membersCanEditDiscussions
-        members_can_edit_comments:     @membersCanEditComments
-        members_can_raise_proposals:   @membersCanRaiseProposals
-        members_can_vote:              @membersCanVote
-        membership_granted_upon:       @membershipGrantedUpon
-        discussion_privacy_options:    @discussionPrivacyOptions
-        visible_to:                    @visibleTo
+    @indices: ['parentId']
 
     setupViews: ->
       @discussionsView = @recordStore.discussions.collection.addDynamicView(@viewName())

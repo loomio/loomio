@@ -6,6 +6,11 @@ class Attachment < ActiveRecord::Base
 
   before_destroy :delete_from_storage
 
+  alias_method :author, :user
+  alias_method :author=, :user=
+  #alias_method :author_id, :user_id
+  #alias_method :author_id=, :user_id=
+
   def is_an_image?
     %w[jpg jpeg png gif].include?(filetype)
   end

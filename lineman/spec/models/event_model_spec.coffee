@@ -10,7 +10,7 @@ describe 'EventModel', ->
 
     event = recordStore.events.initialize(id: 1, kind: 'comment_liked')
 
-  describe 'camelKind', ->
-    it 'returns a camelcased kind', ->
-      expect(event.camelKind()).toBe('commentLiked')
+  #describe 'camelKind', ->
+    #it 'returns a camelcased kind', ->
+      #expect(event.camelKind()).toBe('commentLiked')
 

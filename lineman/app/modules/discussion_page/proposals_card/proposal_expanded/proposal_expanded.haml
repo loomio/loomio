@@ -30,7 +30,7 @@
 
     .proposal-expanded-vote.media{ng_repeat: 'vote in curatedVotes()'}
       .media-left
-        .thread-event-vote-icon{class: 'thread-event-vote-icon-{{vote.position}}'}
+        .thread-item-vote-icon{class: 'thread-event-vote-icon-{{vote.position}}'}
       .media-body
         %strong> {{::vote.authorName()}}
         %span.author-statement {{vote.statement }}

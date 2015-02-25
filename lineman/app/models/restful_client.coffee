@@ -35,6 +35,9 @@ angular.module('loomioApp').factory 'RestfulClient', ($http) ->
     postMember: (keyOrId, action, params) ->
       $http.post(@memberPath(keyOrId, action), params).then @onSuccess, @onFailure
 
+    patchMember: (keyOrId, action, params) ->
+      $http.patch(@memberPath(keyOrId, action), params).then @onSuccess, @onFailure
+
     getMember: (keyOrId, action) ->
       $http.get(@memberPath(keyOrId, action)).then @onSuccess, @onFailure
 

@@ -8,7 +8,7 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
 
   $routeProvider.when('/d/:key',
     templateUrl: 'generated/modules/discussion_page/discussion_page.html'
-    controller: 'DiscussionController'
+    controller: 'DiscussionPageController'
     resolve:
       discussion: (Records, $route) ->
         key = $route.current.params.key
