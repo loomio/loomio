@@ -4,12 +4,11 @@
     "angular": "~> 1.3.0",
     "angular-sanitize": "~> 1.3.0",
     "jquery": "~> 2.1.1",
-    "lodash": "~> 2.4.1",
+    "lodash": "~> 3.1.0",
     "angular-route": "~> 1.3.0",
     "bootstrap-sass-official": "~> 3.3.0",
     "components-font-awesome": "~> 4.2.0",
     "angular-bootstrap-datetimepicker": "latest",
-    "angular-cache": "~>2.1.0",
     "faye": "latest",
     "angular-translate": "~2.4.0",
     "angular-translate-loader-url": "~2.4.0",
@@ -17,10 +16,10 @@
     "angular-bootstrap": "0.11.2",
     "ng-file-upload": "latest",
     "tc-angular-chartjs": "~1.0.9",
-    "ngInfiniteScroll": "~1.1.2",
     "ment.io": "~0.9.15",
     "lokijs": "techfort/lokijs#v1.1.0",
-    "angular-animate": "1.3.0"
+    "angular-animate": "1.3.0",
+    "angular-inview": "~> 1.5.0"
   },
   "resolutions": {
     "angular": "~> 1.3.0"

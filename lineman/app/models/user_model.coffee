@@ -4,20 +4,12 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
     @plural: 'users'
 
     initialize: (data) ->
-      @id = data.id
-      @name = data.name
+      @updateFromJSON(data)
       @label = data.username
-      @profileUrl = data.profile_url
-      @avatarKind = data.avatar_kind
-      @avatarUrl = data.avatar_url
-      @avatarInitials = data.avatar_initials
 
     setupViews: ->
       @membershipsView = @recordStore.memberships.belongingTo(userId: @id)
       @notificationsView = @recordStore.notifications.belongingTo(userId: @id)
-
-    username: ->
-      @label
 
     groupIds: ->
       _.map(@memberships(), 'groupId')
@@ -25,7 +17,6 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
     membershipFor: (group) ->
       _.first @recordStore.memberships
                           .where(groupId: group.id, userId: @id)
-
     memberships: ->
       @membershipsView.data()
 

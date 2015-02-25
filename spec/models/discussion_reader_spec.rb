@@ -66,5 +66,7 @@ describe DiscussionReader do
       it {should == 2}
     end
   end
+
+
 end
 

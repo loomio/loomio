@@ -55,13 +55,8 @@
 
           .thread-discussion-description{btf-markdown: 'discussion.description' }
 
-
         %proposals_card{discussion: 'discussion'}
-
-        .thread-events{infinite-scroll: "getNextPage()", infinite-scroll-distance: 3, infinite-scroll-disabled: 'lastPage'}
-          %h3.first Activity
-          %div{ng_repeat: 'event in discussion.events()', ng_include: "'generated/modules/discussion_page/discussion_items/'+ event.kind+ '.html'"}
-
+        %thread_card{discussion: 'discussion'}
         %comment_form{discussion: 'discussion'}
 
       .thread-container{ng_controller: 'StartProposalCardController', ng-if: 'canStartProposals()'}

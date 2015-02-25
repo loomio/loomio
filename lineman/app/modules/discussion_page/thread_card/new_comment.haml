@@ -1,5 +1,5 @@
-.thread-event.thread-comment{ng_controller: 'NewCommentItemController'}
-  .thread-event-context-menu.dropdown.pull-right{ng-if: 'showContextMenu()'}
+.thread-item{ng_controller: 'NewCommentItemController'}
+  .thread-item-context-menu.dropdown.pull-right{ng-if: 'showContextMenu()'}
     %a.dropdown-toggle{href:''}
       %i.fa.fa-chevron-down
     %ul.dropdown-menu.dropdown-menu-right
@@ -7,20 +7,20 @@
         %a{href: '', ng-click: 'editComment()', ng-if: '::canEditComment()', translate: 'new_comment_item.context_menu.edit_comment'}
         %a{href: '', ng-click: 'deleteComment()', ng-if: '::canDeleteComment()',  translate: 'new_comment_item.context_menu.delete_comment'}
 
-  .thread-event-header.media
+  .thread-item-header.media
     .media-left
       %user_avatar{user: "comment.author()"}
     .media-body
       %span.cuke-in-reply-to{ng-show: 'comment.parentId', translate: 'new_comment_item.in_reply_to', translate-values: '{author: comment.authorName(), recipient: comment.parentAuthorName()}'}
       %span{ng-hide: 'comment.parentId'}
         %strong {{::comment.authorName()}}
-  .thread-event-body{btf-markdown: 'comment.body' }
+  .thread-item-body{btf-markdown: 'comment.body' }
 
-  .thread-attachments
+  .thread-item-attachments
     .thread-attachment{ng-repeat: 'attachment in comment.attachments()'}
       %attachment{attachment: 'attachment'}
 
-  .thread-event-footer
+  .thread-item-footer
     .thread-actions-and-meta
       %a.cuke-comment-like-btn{translate: 'common.action.like', ng-show: '!currentUserLikesIt()', href: '#', ng_click: 'like()'}>
       %a{translate: 'common.action.unlike', href: '#', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>

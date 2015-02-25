@@ -117,7 +117,7 @@ class Motion < ActiveRecord::Base
   def can_be_edited?
     !persisted? || (voting? && (!has_votes? || group.motions_can_be_edited?))
   end
-  
+
   # number of final votes
   def total_votes_count
     vote_counts.values.sum

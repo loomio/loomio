@@ -34,23 +34,6 @@ describe Discussion do
     it {should_not include non_member }
   end
 
-  describe ".comment_deleted!" do
-    after do
-      discussion.comment_deleted!
-    end
-
-    it "resets last_comment_at" do
-      discussion.should_receive(:refresh_last_comment_at!)
-    end
-
-    it "calls reset_counts on all discussion readers" do
-      dr = DiscussionReader.for(discussion: discussion, user: discussion.author)
-      dr.viewed!
-      discussion.stub(:discussion_readers).and_return([dr])
-      dr.should_receive(:reset_counts!)
-    end
-  end
-
   describe "archive!" do
     let(:discussion) { create :discussion }
 
@@ -206,17 +189,6 @@ describe Discussion do
     end
   end
 
-  describe "#viewed!" do
-    before do
-      @discussion = create :discussion
-    end
-    it "increases the total_views by 1" do
-      expect(@discussion.total_views).to eq 0
-      @discussion.viewed!
-      expect(@discussion.total_views).to eq 1
-    end
-  end
-
   describe "#delayed_destroy" do
     it 'sets deleted_at before calling destroy and then destroys everything' do
       @motion = create(:motion, discussion: discussion)
@@ -288,6 +260,130 @@ describe Discussion do
         discussion.valid?
       end
       it {should have(1).errors_on(:private)}
+    end
+  end
+
+  describe "creating and destroying thread items" do
+    let(:discussion) { create :discussion }
+
+    describe "new discussion" do
+      it "has the right values to begin with" do
+        expect(discussion.items_count).to be 0
+        expect(discussion.comments_count).to be 0
+        expect(discussion.salient_items_count).to be 0
+        expect(discussion.last_item_at).to be nil
+        expect(discussion.last_comment_at).to be nil
+        expect(discussion.last_activity_at).to eq discussion.created_at
+        expect(discussion.first_sequence_id).to be 0
+        expect(discussion.last_sequence_id).to be 0
+      end
+    end
+
+    describe "create comment" do
+      # ensure that items count and comments count are incremented
+      # ensure that last_activity etc are all managed properly
+      # last sequence too
+      before do
+        @comment = build(:comment, discussion: discussion)
+        @event = CommentService.create(comment: @comment, actor: discussion.author)
+        discussion.reload
+      end
+
+      it "increments corrently" do
+        expect(discussion.items_count).to be 1
+        expect(discussion.comments_count).to be 1
+        expect(discussion.salient_items_count).to be 1
+        expect(discussion.last_item_at).to eq @comment.created_at
+        expect(discussion.last_comment_at).to eq @comment.created_at
+        expect(discussion.last_activity_at).to eq @comment.created_at
+        expect(discussion.first_sequence_id).to be @event.sequence_id
+        expect(discussion.last_sequence_id).to be @event.sequence_id
+      end
+    end
+
+    describe "delete only comment" do
+      before do
+        @comment = build(:comment, discussion: discussion)
+        @event = CommentService.create(comment: @comment, actor: discussion.author)
+        discussion.reload
+        @comment.reload
+        @comment.destroy
+        discussion.reload
+      end
+
+      it "decrements correctly", focus: true do
+        expect(discussion.items_count).to be 0
+        expect(discussion.comments_count).to be 0
+        expect(discussion.salient_items_count).to be 0
+        expect(discussion.last_item_at).to eq nil
+        p discussion.comments.all
+        expect(discussion.last_comment_at).to eq nil
+        expect(discussion.last_activity_at).to eq discussion.created_at
+        expect(discussion.last_sequence_id).to be 0
+        expect(discussion.first_sequence_id).to be 0
+        expect(discussion.last_sequence_id).to be 0
+      end
+    end
+
+    describe "delete first comment of 2" do
+      before do
+        @comment1 = build(:comment, discussion: discussion)
+        @event1 = CommentService.create(comment: @comment1, actor: discussion.author)
+
+        @comment2 = build(:comment, discussion: discussion)
+        @event2 = CommentService.create(comment: @comment2, actor: discussion.author)
+
+        discussion.reload
+        @comment1.reload
+        @comment2.reload
+
+        @comment1.destroy
+        discussion.reload
+      end
+
+      it "decrements correctly" do
+        expect(discussion.items_count).to be 1
+        expect(discussion.comments_count).to be 1
+        expect(discussion.salient_items_count).to be 1
+        expect(discussion.last_item_at).to eq @comment2.created_at
+        expect(discussion.last_comment_at).to eq @comment2.created_at
+        expect(discussion.last_activity_at).to eq @comment2.created_at
+        expect(discussion.first_sequence_id).to be @event2.sequence_id
+        expect(discussion.last_sequence_id).to be @event2.sequence_id
+      end
+    end
+
+    describe "delete last comment of 2" do
+      before do
+        @comment1 = build(:comment, discussion: discussion)
+        @event1 = CommentService.create(comment: @comment1, actor: discussion.author)
+
+        @comment2 = build(:comment, discussion: discussion)
+        @event2 = CommentService.create(comment: @comment2, actor: discussion.author)
+
+        discussion.reload
+        @comment1.reload
+        @comment2.reload
+
+        @comment2.destroy
+        discussion.reload
+      end
+
+      it "creates items correctly" do
+        expect(@comment1.created_at).to eq @event1.created_at
+        expect(@comment2.created_at).to eq @event2.created_at
+      end
+
+      it "decrements correctly" do
+        expect(discussion.items_count).to be 1
+        expect(discussion.comments_count).to be 1
+        expect(discussion.salient_items_count).to be 1
+        expect(discussion.last_item_at).to eq @comment1.created_at
+        expect(discussion.last_comment_at).to eq @comment1.created_at
+        expect(discussion.last_activity_at).to eq @comment1.created_at
+        expect(discussion.first_sequence_id).to be @event1.sequence_id
+        expect(discussion.last_sequence_id).to be @event1.sequence_id
+      end
     end
   end
 end

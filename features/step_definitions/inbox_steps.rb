@@ -4,9 +4,11 @@ end
 
 Given(/^I belong to a group with a discussion$/) do
   @group = FactoryGirl.create :group
+  @author = FactoryGirl.create :user
   @group.add_member!(@user)
+  @group.add_member!(@author)
   @discussion = FactoryGirl.build :discussion, group: @group
-  DiscussionService.create(discussion: @discussion, actor: @user)
+  DiscussionService.create(discussion: @discussion, actor: @author)
 end
 
 When(/^I click to view the discussion$/) do

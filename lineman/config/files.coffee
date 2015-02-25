@@ -13,7 +13,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
     app: "app/**/*.coffee"
 
   js:
-    vendor: ["vendor/bower_components/lodash/dist/lodash.js",
+    vendor: ["vendor/bower_components/lodash/lodash.js",
              "vendor/bower_components/moment/moment.js",
              "vendor/bower_components/jquery/dist/jquery.js",
              "vendor/bower_components/ng-file-upload/angular-file-upload-shim.js"
@@ -30,10 +30,10 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/ng-file-upload/angular-file-upload.js",
              "vendor/bower_components/Chart.js/Chart.js",
              "vendor/bower_components/tc-angular-chartjs/dist/tc-angular-chartjs.js",
-             "vendor/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js",
              "vendor/bower_components/ment.io/dist/mentio.js",
              "vendor/js/private_pub.js",
              "vendor/bower_components/angular-animate/angular-animate.js",
-             "vendor/bower_components/lokijs/src/lokijs.js"]
+             "vendor/bower_components/lokijs/src/lokijs.js",
+             "vendor/bower_components/angular-inview/angular-inview.js"]
     app: ["app/app.js"
           "app/**/*.js"]

@@ -10,7 +10,7 @@
         = item.title
 
       .col-xs-3.hidden-xs.time{title: 'Last comment at'}
-        = time_formatted_relative_to_age(item.last_comment_at)
+        = time_formatted_relative_to_age(item.last_comment_at || item.created_at)
       -#.col-xs-1
         -#.unfollow-btn
           -#= link_to 'h', inbox_unfollow_path({class: item.class.to_s, id: item.id}), remote: true, method: :post, id: 'unfollow-btn'

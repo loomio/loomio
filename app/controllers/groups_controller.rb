@@ -85,7 +85,7 @@ class GroupsController < GroupBaseController
 
     @discussions = @discussions.joined_to_current_motion.
                                 preload(:current_motion, {:group => :parent}).
-                                order('motions.closing_at ASC, last_activity_at DESC').
+                                order_by_closing_soon_then_latest_activity.
                                 page(params[:page]).per(20)
 
     @closed_motions = Queries::VisibleMotions.new(user: current_user, groups: @group).order('closed_at desc')

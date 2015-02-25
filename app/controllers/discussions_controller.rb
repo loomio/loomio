@@ -101,7 +101,7 @@ class DiscussionsController < GroupBaseController
 
     @uses_markdown = current_user_or_visitor.uses_markdown?
 
-    @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
+    @activity = @discussion.items.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
     assign_meta_data
 
     @feed_url = discussion_url @discussion, format: :xml if @discussion.public?

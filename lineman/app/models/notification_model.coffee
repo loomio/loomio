@@ -3,12 +3,6 @@ angular.module('loomioApp').factory 'NotificationModel', (BaseModel) ->
     @singular: 'notification'
     @plural: 'notifications'
 
-    initialize: (data) ->
-      @id = data.id
-      @eventId = data.event_id
-      @userId = data.user_id
-      @viewedAt = data.viewed_at
-
     createdAt: ->
       @event().createdAt
 

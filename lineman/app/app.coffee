@@ -5,12 +5,12 @@ angular.module('loomioApp', ['ngRoute',
                              'ngSanitize',
                              'tc.chartjs',
                              'btford.markdown',
-                             'infinite-scroll',
                              'angularFileUpload',
                              'mentio',
-                             'ngAnimate']).config ($httpProvider) ->
+                             'ngAnimate',
+                             'angular-inview']).config ($httpProvider) ->
 
-  # consume the csrf token from the page
+  # consume the csrf token from the page so form submissions can work
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
 

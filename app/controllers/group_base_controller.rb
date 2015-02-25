@@ -6,18 +6,15 @@ class GroupBaseController < BaseController
     @current_motion_ids = @discussions.map(&:current_motion).compact.map(&:id)
 
     if current_user
-      @discussion_readers = DiscussionReader.where(user_id: current_user.id,
-                                                   discussion_id: @discussions.map(&:id)).includes(:discussion)
       @motion_readers = MotionReader.where(user_id: current_user.id,
                                            motion_id: @current_motion_ids ).includes(:motion)
       @last_votes = Vote.most_recent.where(user_id: current_user, motion_id: @current_motion_ids)
     else
-      @discussion_readers =[]
       @motion_readers = []
       @last_votes = []
     end
 
-    @discussion_reader_cache = DiscussionReaderCache.new(current_user, @discussion_readers)
+    @discussion_reader_cache = DiscussionReaderCache.new(user: current_user, discussions: @discussions)
     @motion_reader_cache = MotionReaderCache.new(current_user, @motion_readers)
 
     @last_vote_cache = VoteCache.new(current_user, @last_votes)

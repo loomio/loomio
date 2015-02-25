@@ -95,6 +95,10 @@ GEM
       thor
     browser (0.8.0)
     builder (3.2.2)
+    byebug (3.5.1)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     cancancan (1.10.1)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -122,6 +126,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1)
+    columnize (0.9.0)
     cookiejar (0.3.2)
     countries (0.9.3)
       currencies (~> 0.4.2)
@@ -147,6 +152,7 @@ GEM
     daemons (1.1.9)
     dalli (2.7.2)
     database_cleaner (1.4.0)
+    debugger-linecache (1.2.0)
     delayed-plugins-airbrake (1.1.0)
       airbrake
       delayed_job
@@ -560,7 +566,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
-    sequenced (1.6.0)
+    sequenced (2.0.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
     sexp_processor (4.4.5)
@@ -643,6 +649,7 @@ DEPENDENCIES
   bing_translator
   bootstrap-sass (~> 3.2.0)
   browser
+  byebug
   cancancan
   capybara
   closure_tree (~> 4.6.3)
@@ -718,7 +725,7 @@ DEPENDENCIES
   ruby-progressbar
   sass-rails (>= 3.2)
   selenium-webdriver
-  sequenced (~> 1.6.0)
+  sequenced (~> 2.0.0)
   shoulda-matchers
   simple_form (= 3.1.0)
   spring

@@ -13,13 +13,13 @@
           %li.dropdown-menu-item
             %span{translate: 'inbox.unread'}
 
-  %li.selector-list-item.is-read{ng-repeat: 'discussion in currentUser.inboxDiscussions() | orderBy:["activeProposalClosedAt", "-lastActivityAt"]'}
+  %li.selector-list-item.is-read{ng-repeat: 'discussion in currentUser.inboxDiscussions() | orderBy: "-lastActivityAt"'}
     %a.cuke-inbox-item.selector-list-item-link{href: '/d/{{ discussion.key}}'}
       .selector-list-item-time-and-title
         .pull-right
           %timeago{timestamp: 'discussion.lastActivityAt'}
         .selector-list-item-discussion-title
-          {{discussion.title}}
+          {{discussion.title}} {{discussion.unreadItemsCount()}}
       .media.selector-list-item-proposal{ng-if: 'discussion.activeProposal()', ng-init: 'proposal = discussion.activeProposal()'}
         .media-left
           %mini_proposal_pie_chart{proposal: 'proposal'}

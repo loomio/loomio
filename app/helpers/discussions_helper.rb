@@ -52,13 +52,6 @@ module DiscussionsHelper
     end
   end
 
-  def css_classes_for_discussion_preview(discussion, discussion_reader)
-    class_names = []
-    class_names << 'showing-group' unless @group == discussion.group
-    class_names << 'unread' if discussion_reader.unread_content_exists?
-    class_names.join(' ')
-  end
-
   def add_mention_links(comment)
     auto_link_usernames_or_lists(comment, :username_url_base => "#", :username_include_symbol => true)
   end

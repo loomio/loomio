@@ -1,0 +1,3 @@
+.thread-card
+  %h3.first Activity
+  %div{ng_repeat: 'event in discussion.events()', ng_include: "'generated/modules/discussion_page/thread_card/'+ event.kind+ '.html'", in-view: '($inview&&threadItemVisible(event)) || (!$inview&&threadItemHidden(event))', in-view-options: '{debounce: 200}'}

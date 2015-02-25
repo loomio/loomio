@@ -4,7 +4,7 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient) ->
 
     constructor: (recordStore) ->
       @recordStore = recordStore
-      @collection = @recordStore.db.addCollection(@model.plural)
+      @collection = @recordStore.db.addCollection(@model.plural, {indices: @model.indices})
       @restfulClient = new RestfulClient(@model.plural)
 
       @restfulClient.onSuccess = (response) =>
@@ -15,17 +15,20 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient) ->
         throw response
 
     initialize: (data = {}) ->
+      @baseInitialize(data)
+
+    baseInitialize: (data = {}) ->
       if data.key?
         existingRecord = @find(data.key)
       else if data.id?
         existingRecord = @find(data.id)
 
       if existingRecord?
-        existingRecord.initialize(data)
+        existingRecord.updateFromJSON(data)
         existingRecord
       else
         record = new @model(@, data)
-        @collection.insert(record) if data.id?
+        @collection.insert(record)
         record
 
     findOrFetchByKey: (key) ->

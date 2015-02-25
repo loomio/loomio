@@ -353,7 +353,7 @@ When(/^I join and follow the group$/) do
 end
 
 Then(/^I should not see anything in my followed threads$/) do
-  Queries::VisibleDiscussions.new(user: @user, groups: [@group]).following.should be_empty
+  Queries::VisibleDiscussions.new(user: @user, groups: [@group]).following.discussion_newer_than_membership.should be_empty
 end
 
 When(/^there is a new thread started in the group$/) do
@@ -374,7 +374,7 @@ When(/^there is a new comment in the thread$/) do
 end
 
 Then(/^I should not see anything in my unread threads$/) do
-  Queries::VisibleDiscussions.new(user: @user, groups: [@group]).unread.should be_empty
+  Queries::VisibleDiscussions.new(user: @user, groups: [@group]).unread.discussion_newer_than_membership.should be_empty
 end
 
 When(/^I set a proposal outcome$/) do
