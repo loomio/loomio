@@ -57,3 +57,12 @@ end
 Then(/^I should not see an option to give members permission to create subgroups$/) do
   page.should_not have_content 'Create subgroups'
 end
+
+When(/^I create a new subgroup$/) do
+  step 'I create a totally open subgroup'
+end
+
+Then(/^the example content should not be created$/) do
+  group = Group.find_by_name('subgroup')
+  expect(group.discussions.first).to eq nil
+end

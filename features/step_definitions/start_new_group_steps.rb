@@ -86,7 +86,7 @@ Then(/^I should see the start group form with errors$/) do
   page.should have_content 'can\'t be blank'
 end
 
-Then(/^the example content should be created$/) do
+Then(/^the example content should be present$/) do
   @group = Group.where(name: @group_name).first
   expect(@group.discussions.first.title).to eq I18n.t('example_discussion.title')
   expect(@group.motions.first.name).to eq I18n.t('example_motion.name')
