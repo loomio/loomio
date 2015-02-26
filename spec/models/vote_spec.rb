@@ -83,6 +83,7 @@ describe Vote do
     vote.motion = motion
     vote.user = user
     vote.save!
+    vote.reload
     motion.reload
     expect(motion.last_vote_at.to_s).to eq vote.created_at.to_s
   end
