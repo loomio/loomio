@@ -10,6 +10,12 @@ angular.module('loomioApp').controller 'NavbarSearchController', ($scope, $timeo
     else
       $scope.hideDropdown()
 
+  $scope.queryEmpty = ->
+    !$scope.query? or $scope.query.length == 0
+
+  $scope.queryPresent = ->
+    $scope.query? and $scope.query.length > 0
+
   $scope.showDropdown = ->
     $scope.dropdown = true
 

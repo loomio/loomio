@@ -3,15 +3,23 @@
     %input.form-control{ng-click: '$event.stopPropagation()', ng-model: 'query', ng-change: 'getSearchResults(query)', placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: 'showDropdown()', ng-blur: 'hideDropdown()'}
     %i.fa.fa-lg.fa-fw.fa-search.navbar-search-input-icon{ng-hide: 'query'}
     %i.fa.fa-lg.fa-fw.fa-times.navbar-search-input-icon{ng-show: 'query', ng-click: 'clear(true)'}
+
   .navbar-search-results{ng-show: 'dropdown || query'}
     %ul.group-selector-list.selector-list
       %li.navbar-search-list-item.selector-list-header{ng-show: '(availableGroups() | filter: { name: query }).length > 0'}
         %h3{translate: "common.groups"}
-      %li.navbar-search-list-item.selector-list-item.media{ng-repeat: 'group in availableGroups() | filter: { name: query } | orderBy: "fullName()"', class: 'is-subgroup-{{group.parentId != null}}', ng-click: 'clear(false)'}
+      %li.navbar-search-list-item.selector-list-item.media{ng-repeat: 'group in availableGroups() | filter: { name: query } | orderBy: "fullName()"', ng-click: 'clear(false)'}
+
         %a.selector-list-item-link{href: '/g/{{group.key}}'}
           .media-left
-            %img.selector-list-item-group-logo{src: "{{group.logoUrl()}}"}
-          .selector-list-item-group-name.media-body {{group.fullName()}}
+            .selector-list-item-group-logo{ng-if: 'group.isSubgroup() && queryEmpty()'}
+            %img.selector-list-item-group-logo{ng-if: 'group.isParent() || queryPresent()', src: "{{group.logoUrl()}}"}
+          .selector-list-item-group-name.media-body
+            .noop{ng-if: 'queryPresent()' }
+              {{ group.fullName() }}
+            .noop{ng-if: 'queryEmpty()', ng-class: '{"font-bold": group.isParent()}' }
+              {{ group.name }}
+
     %ul.thread-list.selector-list{ng-show: 'query'}
       %li.navbar-search-list-item.selector-list-item.search-loading{ng-show: 'searching', translate: 'navbar.search.loading'}
       %li.navbar-search-list-item.selector-list-item.no-results-found{ng-show: 'noResultsFound()', translate: 'navbar.search.no_results'}

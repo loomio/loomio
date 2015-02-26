@@ -25,3 +25,19 @@
 .navbar-search-list-item {
   background: white;
 }
+
+.search-result {
+  padding: 10px;
+}
+
+.search-result-discusion-title {
+}
+.search-result-group-name {
+  @include fontSmall;
+  color: $kinda-dark-grey;
+}
+
+.search-result-discussion-blurb {
+  @include fontSmall;
+  color: $kinda-dark-grey;
+}

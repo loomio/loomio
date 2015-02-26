@@ -161,11 +161,11 @@ class Group < ActiveRecord::Base
 
   has_attached_file    :cover_photo,
                        styles: { desktop: "970x200#", card: "460x94#"},
-                       default_url: 'default-cover-photo.png'
+                       default_url: '/images/default-cover-photo.png'
 
   has_attached_file    :logo,
                        styles: { card: "67x67", medium: "100x100" },
-                       default_url: 'default-logo-:style.png'
+                       default_url: '/images/default-logo-:style.png'
 
   validates_attachment :cover_photo,
     size: { in: 0..10.megabytes },

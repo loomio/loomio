@@ -66,6 +66,9 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
     isSubgroup: ->
       @parentId?
 
+    isParent: ->
+      !@parentId?
+
     logoUrl: ->
       if @isSubgroup() && !@userDefinedLogo()
         @parent().logoUrlMedium

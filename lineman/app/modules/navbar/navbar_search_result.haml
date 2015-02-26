@@ -1,12 +1,15 @@
-.navbar-search-result
-  .navbar-search-discussion
-    .navbar-search-discussion-title{btf-markdown: 'result.discussion.title'}
-    .navbar-search-discussion-blurb{btf-markdown: 'result.discussion.blurb'}
-  .navbar-search-proposals{ng-repeat: 'proposal in result.proposals'}
-    .navbar-search-proposal-title{btf-markdown: 'proposal.name'}
-    .navbar-search-proposal-blurb{btf-markdown: 'proposal.blurb'}
-  .navbar-search-comments{ng-repeat: 'comment in result.comments'}
+.search-result
+  .search-result-discussion-title {{result.discussion.title}}
+  .search-result-group-name {{result.discussion.group_full_name }}
+  .search-result-discussion-blurb {{result.discussion.blurb}}
+
+  .search-result-proposals{ng-repeat: 'proposal in result.proposals'}
+    .search-result-proposal-title {{proposal.name'}}
+    .search-result-proposal-blurb{btf-markdown: 'proposal.blurb'}
+
+  .search-result-comments{ng-repeat: 'comment in result.comments'}
     .navbar-search-comment-blurb{btf-markdown: 'comment.blurb'}
     .navbar-search-comment-author{btf-markdown: 'comment.author'}
-  .navbar-search-priority Priority {{ result.priority }}
-  .navbar-search-query Query {{ result.query }}
+
+  -#.navbar-search-priority Priority {{ result.priority }}
+  -#.navbar-search-query Query {{ result.query }}
