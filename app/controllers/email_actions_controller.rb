@@ -2,7 +2,13 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   def unfollow_discussion
     discussion = Discussion.find(params[:discussion_id])
     DiscussionReader.for(discussion: discussion, user: user).unfollow!
-    redirect_to dashboard_or_root_path, notice: "You are no longer following the discussion: #{discussion.title}"
+    redirect_to dashboard_or_root_path, notice: t(:'notifications.email_actions.not_following_thread', thread_title: discussion.title)
+  end
+
+  def follow_discussion
+    discussion = Discussion.find(params[:discussion_id])
+    DiscussionReader.for(discussion: discussion, user: user).follow!
+    redirect_to dashboard_or_root_path, notice: t(:'notifications.email_actions.following_thread', thread_title: discussion.title)
   end
 
   def mark_discussion_as_read
