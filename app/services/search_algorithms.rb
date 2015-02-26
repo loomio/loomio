@@ -6,18 +6,18 @@ class SearchAlgorithms
      FROM        discussions
      LEFT JOIN (
        SELECT string_agg(name, ',')        AS active_motion_names,
-              string_agg(description, ',') AS active_motion_descriptions
+              LEFT(string_agg(description, ','), 10000) AS active_motion_descriptions
        FROM   motions
        WHERE  discussion_id = :id
        AND    motions.closed_at IS NULL) active ON :id = id
      LEFT JOIN (
        SELECT string_agg(name, ',')        AS closed_motion_names,
-              string_agg(description, ',') AS closed_motion_descriptions
+              LEFT(string_agg(description, ','), 10000) AS closed_motion_descriptions
        FROM   motions
        WHERE  discussion_id = :id
        AND    motions.closed_at IS NOT NULL) closed ON :id = id
      LEFT JOIN (
-       SELECT string_agg(body, ',') AS comment_bodies
+       SELECT LEFT(string_agg(body, ','), 200000) AS comment_bodies
        FROM   comments
        WHERE  discussion_id = :id) comments ON :id = id
      WHERE    id = :id"
