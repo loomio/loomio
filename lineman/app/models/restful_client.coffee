@@ -7,7 +7,7 @@ angular.module('loomioApp').factory 'RestfulClient', ($http) ->
     onFailure: (response) -> throw response
 
     constructor: (resourcePlural) ->
-      @resourcePlural = resourcePlural
+      @resourcePlural = _.snakeCase(resourcePlural)
 
     buildUrl: (url, params) ->
       return url unless params?
