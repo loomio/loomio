@@ -6,6 +6,7 @@ angular.module('loomioApp').factory 'DiscussionReaderModel', (BaseModel) ->
 
     initialize: (data) ->
       @readItemsCount = 0
+      @readSalientItemsCount = 0
       @readCommentsCount = 0
       @lastReadAt = null
       @following = null

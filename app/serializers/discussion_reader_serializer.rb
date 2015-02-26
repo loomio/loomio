@@ -7,6 +7,7 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
              :last_read_at,
              :read_comments_count,
              :read_items_count,
+             :read_salient_items_count,
              :last_read_sequence_id,
              :following
 end

@@ -42,9 +42,14 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     actor: ->
       @recordStore.users.find(@actorId)
 
+    relevantRecordType: ->
+      @constructor.eventTypeMap[@kind]
+
     link: ->
       switch @constructor.eventTypeMap[@kind]
         when 'group'      then "/g/#{@group().key}"
         when 'discussion' then "/d/#{@discussion().key}"
-        when 'proposal'   then "/d/#{@proposal().discussion().key}#proposal-#{@proposalId}"
-        when 'comment'    then "/d/#{@comment().discussion().key}#comment-#{@commentId}"
+        when 'proposal'   then "/d/#proposal-#{@proposalId}"
+        when 'comment'    then "/d/#comment-#{@commentId}"
+        #when 'proposal'   then "/d/#{@proposal().discussion().key}#proposal-#{@proposalId}"
+        #when 'comment'    then "/d/#{@comment().discussion().key}#comment-#{@commentId}"

@@ -69,6 +69,12 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     unreadItemsCount: ->
       @itemsCount - @reader().readItemsCount
 
+    unreadActivityCount: ->
+      @salientItemsCount - @reader().readSalientItemsCount
+
+    unreadCommentsCount: ->
+      @commentsCount - @reader().readCommentsCount
+
     markAsRead: (sequenceId) ->
       if @reader().lastReadSequenceId < sequenceId
         @restfulClient.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})

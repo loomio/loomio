@@ -21,6 +21,7 @@ class CommentService
     comment.attachment_ids = [comment.attachment_ids, comment.new_attachment_ids].compact.flatten
     comment.save!
     comment.discussion.update_attribute(:last_comment_at, comment.created_at)
+    SearchService.sync! comment.discussion_id
     event = Events::NewComment.publish!(comment)
     if mark_as_read
       DiscussionReader.for(user: actor, discussion: comment.discussion).viewed!(comment.created_at)
@@ -39,6 +40,7 @@ class CommentService
     comment.body = params[:body]
     return false unless comment.valid?
     actor.ability.authorize! :create, comment
+    SearchService.sync! comment.discussion_id
     comment.save!
     Memos::CommentUpdated.publish!(comment)
     true

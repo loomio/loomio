@@ -2,9 +2,10 @@ require 'rails_helper'
 
 describe 'MotionService' do
   let(:group) { double(:group, present?: true) }
-  let(:discussion) { double :discussion }
+  let(:discussion) { double :discussion, id: 1 }
   let(:motion) { double :motion,
                         discussion: discussion,
+                        discussion_id: discussion.id,
                         outcome: "",
                         author: user,
                         'author=' => true,
@@ -48,6 +49,10 @@ describe 'MotionService' do
 
       it "saves the motion" do
         expect(motion).to receive(:save!)
+      end
+
+      it "syncs the discussion's search vector" do
+        expect(SearchService).to receive(:sync!).with(motion.discussion_id)
       end
 
       it "enfollows the author" do

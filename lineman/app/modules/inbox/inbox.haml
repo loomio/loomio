@@ -19,7 +19,8 @@
         .pull-right
           %timeago{timestamp: 'discussion.lastActivityAt'}
         .selector-list-item-discussion-title
-          {{discussion.title}} {{discussion.unreadItemsCount()}}
+          {{discussion.lastActivityAt}}
+          {{discussion.title}} {{discussion.unreadActivityCount()}}
       .media.selector-list-item-proposal{ng-if: 'discussion.activeProposal()', ng-init: 'proposal = discussion.activeProposal()'}
         .media-left
           %mini_proposal_pie_chart{proposal: 'proposal'}
