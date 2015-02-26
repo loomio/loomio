@@ -14,6 +14,8 @@
       = render 'google_tag_manager'
     = render 'flash_messages'
 
+
+
     .container-fluid
       %nav.navbar.navbar-default
         .content
@@ -41,16 +43,15 @@
                 %i.fa.fa-facebook
             %li.hidden-xs= link_to t(:'frontpage.link.blog'), blog_path, class: 'blog'
             %li= link_to t(:'frontpage.link.contact'), contact_path, class: 'contact'
-            %li= link_to t(:'frontpage.link.try_it'), new_group_request_path, class: 'try-it', id: 'try-it-nav'
             %li.pull-right= link_to t(:'frontpage.link.log_in'), new_user_session_path, class: 'btn btn-orange'
-
       .row.hero
         .content
           =image_tag 'globe.png', class: 'image'
-          %h1.header= t(:'frontpage.hero.head_html')
-          %p.hero-text.description= t(:'frontpage.hero.desc_html', default: :'frontpage.hero.desc')
+          %h1.header= t :'frontpage.hero.header_html'
+          %p.hero-text.description= t :'frontpage.hero.lead_html'
+
           =link_to new_group_request_path, class: 'btn btn-teal btn-lg hero-text js-not-yet-button', id: 'try-it-main' do
-            = t(:'frontpage.link.try_loomio_beta')
+            = t :'frontpage.link.try_loomio'
             %i.fa.fa-angle-right
 
       .row.product
@@ -88,14 +89,6 @@
               %i.fa.fa-angle-right
             =link_to 'https://www.youtube.com/watch?v=ZipyebSY2Lo', class: 'video hero-text' do
               = t(:'frontpage.link.video')
-
-      .row.crowdfunding
-        = link_to new_group_request_path, class: 'block-link js-not-yet-row' do
-          .content
-            %h1= t(:'frontpage.prototype.header_html')
-            %h2
-              = t(:'frontpage.link.check_out_loomio_beta')
-              %i.fa.fa-angle-right
 
       .row.prototype
         #prototype-carousel.content.prototype-carousel.carousel.slide{"data-ride" => 'carousel'}
@@ -153,7 +146,6 @@
               = image_tag 'nvc-logo.png', alt: "Generation Zero"
       .row.links
         .content
-          %p.hero-text= t(:'frontpage.prototype.subhead_html', try_loomio_link: new_group_request_path, donate_link: 'https://love.loomio.org')
 
       .row.quote
         .content.rushkoff
@@ -162,7 +154,7 @@
       .row.mobile
         .content
           .col-md-6.mobile-header
-            %h1=t(:'frontpage.mobile.header_html')
+            %h1= t(:'frontpage.mobile.lead_html')
 
       .row.quote
         .content.sifry
@@ -203,13 +195,6 @@
               %h2= t(:'frontpage.ideals.gift.header')
               %p.gift= t(:'frontpage.ideals.gift.desc')
 
-      .row.vision
-        = link_to 'https://love.loomio.org', class: 'block-link js-not-yet-row' do
-          .content
-            %h1= t(:'frontpage.vision.header')
-            %h2
-              = t(:'frontpage.link.donate')
-              %i.fa.fa-angle-right
 
       .row.media
         .content

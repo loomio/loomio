@@ -490,9 +490,11 @@ en:
   # GROUP REQUESTS
   #
 
+
+
   group_request:
-    beta_request_header: "Start a group on Loomio Beta"
-    beta_request_description: "To start making decisions on Loomio Beta, the first step is to start a group"
+    header: 'Start a group'
+    desc: 'To start making decisions on Loomio, the first step is to start a group:'
     neighbourhood_support_group: "e.g. Neighbourhood Support Group"
     commercial_use_option: in a company, formal organisation or workplace
     non_commercial_use_option: in a community group or informal network
