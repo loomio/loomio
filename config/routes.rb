@@ -301,6 +301,7 @@ Loomio::Application.routes.draw do
       get :privacy
       get :purpose
       get :services
+      get :pricing
       get :terms_of_service
       get :third_parties
       get :try_it

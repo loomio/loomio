@@ -13,36 +13,14 @@
     - analytics_scope do
       = render 'google_tag_manager'
     = render 'flash_messages'
-
-
+    = render 'fork_me_on_github'
 
     .container-fluid
       %nav.navbar.navbar-default
-        .content
+        .navbar-content
           .navbar-header
             = link_to image_tag("logo-orange.png"), root_path, class: 'navbar-brand', alt: 'Loomio'
-            %ul.nav.navbar-nav
-              %li.visible-xs
-                %a{href: 'https://github.com/loomio/loomio'}
-                  %i.fa.fa-github
-              %li.visible-xs
-                %a{href: 'https://twitter.com/Loomio'}
-                  %i.fa.fa-twitter
-              %li.visible-xs
-                %a{href: 'https://www.facebook.com/Loomio'}
-                  %i.fa.fa-facebook
           %ul.nav.navbar-nav.navbar-right
-            %li.hidden-xs
-              %a{href: 'https://github.com/loomio/loomio'}
-                %i.fa.fa-github
-            %li.hidden-xs
-              %a{href: 'https://twitter.com/Loomio'}
-                %i.fa.fa-twitter
-            %li.hidden-xs
-              %a{href: 'https://www.facebook.com/Loomio'}
-                %i.fa.fa-facebook
-            %li.hidden-xs= link_to t(:'frontpage.link.blog'), blog_path, class: 'blog'
-            %li= link_to t(:'frontpage.link.contact'), contact_path, class: 'contact'
             %li.pull-right= link_to t(:'frontpage.link.log_in'), new_user_session_path, class: 'btn btn-orange'
       .row.hero
         .content
@@ -216,10 +194,15 @@
         .content
           %ul
             %li
-              %a{href: '#'}
-                = t :'frontpage.link.top'
-                %i.fa.fa-angle-up
-          %ul.pull-right
+              %a{href: 'https://twitter.com/Loomio'}
+                %i.fa.fa-twitter
+            %li
+              %a{href: 'https://www.facebook.com/Loomio'}
+                %i.fa.fa-facebook
+            %li= link_to t(:'frontpage.link.blog'), blog_path, class: 'blog'
+            %li= link_to t(:'frontpage.link.contact'), contact_path, class: 'contact'
+
+            %li= link_to t('footer.pricing'), pricing_path
             %li= link_to t(:'frontpage.link.public_groups'), explore_path
             %li= link_to t(:'frontpage.link.terms'), terms_of_service_path
             %li= link_to t(:'frontpage.link.privacy'), privacy_path
