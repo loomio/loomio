@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include LocalesHelper
   include CurrentUserHelper
+  include ApplicationHelper
   include ReadableUnguessableUrlsHelper
   include ProtectedFromForgery
 
@@ -81,7 +82,7 @@ class ApplicationController < ActionController::Base
   end
 
   def invalid_return_urls
-    [nil, root_url, new_user_password_url]
+    [nil, root_url, new_user_password_url, profile_url]
   end
 
   def user_time_zone(&block)

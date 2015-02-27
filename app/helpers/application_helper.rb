@@ -1,4 +1,3 @@
-#encoding: UTF-8
 module ApplicationHelper
 
   def lineman_vendorjs_path
@@ -127,22 +126,6 @@ module ApplicationHelper
     Redcarpet::Render::SmartyPants.render(output).html_safe
   end
 
-  def show_contribution_icon?
-    current_user && !current_user.belongs_to_manual_subscription_group?
-  end
-
-  def can_ask_for_contribution?(group)
-    !group.has_manual_subscription? || !group.is_paying?
-  end
-
-  def hide_beta_logo?
-    current_user_or_visitor.belongs_to_manual_subscription_group?
-  end
-
-  def hide_crowdfunding_banner?
-    hide_beta_logo? || session[:hide_banner] == true
-  end
-
   def visitor?
     !user_signed_in?
   end
@@ -153,10 +136,6 @@ module ApplicationHelper
         yield
       end
     end
-  end
-
-  def navbar_contribute
-    ENV["NAVBAR_CONTRIBUTE"] or "show"
   end
 
   def toggle_unread_path
@@ -203,5 +182,29 @@ module ApplicationHelper
 
   def render_help_container
     ' help-container' if controller_name == 'help'
+  end
+
+  def show_loomio_org_marketing
+    ENV['SHOW_LOOMIO_ORG_MARKETING']
+  end
+
+  def site_hostname
+    ENV['CANONICAL_HOST'] || request.host
+  end
+
+  def logo_path
+    if ENV['APP_LOGO_PATH']
+      ENV['APP_LOGO_PATH']
+    else
+      if hide_beta_logo?
+        image_url("navbar-logo.png")
+      else
+        image_url("navbar-logo-beta.jpg")
+      end
+    end
+  end
+
+  def hide_beta_logo?
+    current_user_or_visitor.belongs_to_manual_subscription_group?
   end
 end

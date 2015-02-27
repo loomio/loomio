@@ -6,7 +6,7 @@
 %p{style: 'font-size:small;-webkit-text-size-adjust:none;color:#666;'}
   &mdash;
   %br
-  = t(:'email.thread_mailer.reply_or_view_online_html', url: link)
+  = t(:'email.thread_mailer.reply_or_view_online_html', url: link, hostname: ENV['CANONICAL_HOST'])
 
   %br
   - if @following

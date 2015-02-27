@@ -3,6 +3,6 @@
   =f.input :name
   =f.input :email
 
-  .terms-of-service-text=t(:terms_of_service_html, button_text: t(:"devise.registrations.sign_up"), link_path: terms_of_service_path)
+  .terms-of-service-text=t(:terms_of_service_html, button_text: t(:"devise.registrations.sign_up"), link_path: terms_of_service_path) if show_loomio_org_marketing
   -sign_up = t(:"devise.registrations.sign_up")
   =f.submit sign_up, class: "btn btn-info btn-lg", :data => {:disable_with => sign_up}
