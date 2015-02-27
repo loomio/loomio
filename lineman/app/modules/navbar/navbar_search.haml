@@ -1,6 +1,6 @@
 %li.navbar-search
   .navbar-search-input
-    %input.form-control{ng-click: '$event.stopPropagation()', ng-model: 'query', ng-change: 'getSearchResults(query)', placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: 'showDropdown()', ng-blur: 'hideDropdown()'}
+    %input.form-control{ng-click: '$event.stopPropagation()', ng-model: 'query', ng-model-options: '{debounce: {default: 500, blur: 0}}', ng-change: 'getSearchResults(query)', placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: 'showDropdown()', ng-blur: 'hideDropdown()'}
     %i.fa.fa-lg.fa-fw.fa-search.navbar-search-input-icon{ng-hide: 'query'}
     %i.fa.fa-lg.fa-fw.fa-times.navbar-search-input-icon{ng-show: 'query', ng-click: 'clear(true)'}
 

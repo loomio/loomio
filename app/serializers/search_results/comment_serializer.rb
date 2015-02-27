@@ -1,7 +1,7 @@
 class SearchResults::CommentSerializer < SearchResults::BaseSerializer
-  attributes :author
+  has_one :author, serializer: UserSerializer
 
   def author
-    object.result.author_name
+    User.find(object.user_id)
   end
 end
