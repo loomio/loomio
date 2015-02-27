@@ -34,7 +34,7 @@ Then /^debugger$/ do
   debugger
 end
 
-When(/^[I\s]+debug$/) do
+When(/^[I\s]?debug$/) do
   binding.pry
 end
 

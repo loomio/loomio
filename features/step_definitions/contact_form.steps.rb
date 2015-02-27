@@ -13,6 +13,10 @@ Then(/^I should be redirected to the home page$/) do
   page.should have_css("body.marketing.index")
 end
 
+Then(/^I should be redirected to the sign in page$/) do
+  page.should have_css("body.pages.sessions.new")
+end
+
 Then(/^I should see a thank you flash message$/) do
   page.should have_content("Thanks! Someone from our team will get back to you shortly!")
 end

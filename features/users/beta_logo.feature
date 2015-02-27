@@ -1,15 +1,18 @@
-Feature: No beta logo for manual subscription users
-  As a user
-  So I can feel like I'm getting value from a professional tool
-  I want to see the non-beta logo in-app
+Feature: App logo is set appropriately in banner 
 
   Background:
     Given I am logged in
 
-  Scenario: Manual Subscription user doesn't see beta logo
-    When I am a member a manual subcription group
+  Scenario: Manual Subscription user doesn't see beta logo on loomio.org
+    And I am a member a manual subcription group
     Then I should not see the beta logo
 
-  Scenario: All other users see beta logo
-    When I am not a member of a manual subcription group
+  Scenario: non-subscription users see beta logo on loomio.org
+    And I am not a member of a manual subcription group
     Then I should see the beta logo
+
+  Scenario: private installation of loomio see there own logo
+    And I am not a member of a manual subcription group
+    And my system admin defined us a custom logo
+    Then I should see our custom logo instead of any loomio logo
+

@@ -215,6 +215,7 @@ en:
     pricing: 'Pricing'
     public_groups: 'Public groups'
     terms: 'Terms'
+    independent_install_html: '%{hostname} is running an independent copy of Loomio: <a href="http://github.com/loomio/loomio">find out more</a>.'
 
   inbox:
     clear: 'Clear'
@@ -1157,15 +1158,13 @@ en:
       headline: "%{author}'s proposal in %{group} is closing soon:"
       summary: "Summary"
     thread_mailer:
-      footer_text: "Reply to this email directly or view it on Loomio:"
-      #footer_html: "Reply to this email directly or <a href='%{app_link}'>view it on Loomio</a>. Change your <a href='%{preferences_link}'>email preferences</a>."
-      reply_or_view_online_html: "Reply to this email directly or <a href='%{url}'>view it on Loomio</a>."
+      footer_text: "Reply to this email directly or view it on %{hostname}:"
+      reply_or_view_online_html: "Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Unfollow</a> to stop emails about this discussion."
       unfollow_discussion_text: "Visit the following link to stop emails about this discussion: %{unfollow_url}"
       follow_discussion_html: "<a href='%{follow_url}'>Follow</a> to receive emails about this discussion."
       follow_discussion_text: "Visit the following link to receive emails about this discussion: %{follow_url}"
-      
-      change_email_preferences_html: "Change your <a href='%{email_preferences_url}'>email preferences</a> to unsubscribe from Loomio emails."
+      change_email_preferences_html: "Change your <a href='%{email_preferences_url}'>email preferences</a> to unsubscribe from these emails."
       change_preferences: "Change your email preferences:"
       new_motion: "%{who} proposed:"
       motion_closing_soon: "Proposal closing in 24 hours:"
