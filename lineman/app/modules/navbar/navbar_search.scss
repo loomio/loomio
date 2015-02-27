@@ -21,7 +21,7 @@
   min-width: 500px;
   box-shadow: 2px 2px 2px #ccc;
   overflow-y: scroll;
-  height: 800px;
+  max-height: 800px;
 }
 
 .navbar-search-list-item {
@@ -52,10 +52,6 @@
 }
 
 .search-result-blurb {
-  @include fontSmall;
-}
-
-.search-result-proposal-title {
   @include fontSmall;
   color: $kinda-dark-grey;
 }

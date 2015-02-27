@@ -1,6 +1,6 @@
 .search-result
   .search-result-item
-    %a.search-result-title{ng-href: '/d/{{result.discussion.key}}'}
+    %a.search-result-title{ng-href: '/d/{{result.discussion.key}}', ng-click: 'clear(false)'}
       {{result.discussion.title}}
     .search-result-group-name {{result.discussion.group_full_name }}
     .search-result-blurb{ng-bind-html: 'result.discussion.blurb'}

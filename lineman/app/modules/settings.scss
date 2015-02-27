@@ -11,6 +11,10 @@ $kinda-dark-grey: #545454;
 $thread-max-width: 640px;
 $group-page-max-width: 640px;
 $sidebar-width: 320px;
+@mixin fontTiny {
+  font-size: 12px;
+  line-height: 14px;
+}
 
 @mixin fontSmall {
   font-size: 13px;
