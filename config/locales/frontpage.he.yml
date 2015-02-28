@@ -6,22 +6,17 @@ he:
     link:
       blog: בלוג
       contact: יצירת קשר
-      donate: תרמו היום
       press: לחצו
       try_it: נסו כעת
       log_in: התחברות
       video: צפו כיצד Loomio פועל
       try_loomio_beta: קחו את Loomio לנסיעת מבחן
-      check_out_loomio_beta: נסו את Loomio בטא
       more: עוד
       top: למעלה
       public_groups: קבוצות ציבוריות
       terms: תנאי שימוש
       privacy: פרטיות
       services: שירותים
-    hero:
-      head_html: "העולם זקוק לדרך טובה יותר <strong>לקבל החלטות ביחד</strong>."
-      desc_html: "Loomio הוא תוכנה חינמית <a href=\"https://github.com/loomio/loomio\">מבוססת קוד פתוח</a> שנועדה לאפשר לכל אחד, בכל מקום, להשתתף בהחלטות שמשפיעות עליו או עליה"
     product:
       header_html: "כשאנחנו שומעים <strong>את כל הקולות </strong>, אנחנו מקבלים <strong>החלטות טובות יותר</strong>."
       step1:
@@ -35,11 +30,6 @@ he:
         desc: פתחו את ההצעה יחדיו כך שתתאים לכולם. לכל החלטה יש זמן קצוב ומוגדר מראש כך שתמיד תקבלו תוצאה חד-משמעית
     crowdfunding:
       header: אנחנו נעזרים במימון ציבורי על מנת לסיים לבנות את המערכת החדשה ולהעניק אותה לעולם
-    prototype:
-      header_html: "כבר בנינו אבטיפוס, ואנשים מכל רחבי העולם עושים דברים מדהימים איתו"
-      subhead_html: "<a href=\"%{try_loomio_link}\">נסו את Loomio בטא</a> כעת. אתם יכולים גם <a href=\"%{donate_link}\">לתמוך בפרוייקט</a> ולעזור במימון לומיו 1.0"
-    mobile:
-      header_html: "Loomio 1.0 יעבוד על כל מכשיר עם  <strong>טכלוגיית קוד פתוח לניידים</strong> הטובה ביותר"
     quote:
       header:
         rushkoff_html: "“Loomio <strong>ממצה את את הפוטנציאל של האינטרנט </strong> להביא אנשים לידי קונצנזוס במקום לדיון מקוטב”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">דאגלאס ראשקוף</a>, מחבר <em>Present Shock</em></div>"
@@ -60,5 +50,3 @@ he:
       gift:
         header: כלכלת מתנות
         desc: Loomio נתמכת על ידי אלו שידם משגת ובכך אנחנו שומרים על המערכת נקייה מפרסומות וזמינה לכל הקבוצות ללא עלות
-    vision:
-      header: עזרו לנו להפוך חזון זה למציאות

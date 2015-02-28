@@ -6,22 +6,17 @@ sr:
     link:
       blog: Blog
       contact: Kontakt
-      donate: Doniraj danas
       press: Za Medije
       try_it: Probaj
       log_in: PRIJAVI SE
       video: Vidi više o tome kako Lumio radi
       try_loomio_beta: Probaj Lumio Beta
-      check_out_loomio_beta: Pogledaj Lumio Beta
       more: Još
       top: Vrh
       public_groups: Javne grupe
       terms: Uslovi
       privacy: Privatnost
       services: Usluge
-    hero:
-      head_html: "Svetu je potreban bolji način da <strong>donosi odluke zajedno</strong>."
-      desc_html: "Loomio je besplatan softver <a href=\"https://github.com/loomio/loomio\">otvorenog izvora</a> za svakog, svuda, da učestvuje u odlukama koje utiču na život"
     product:
       header_html: "Kada čujemo <strong>sva mišljenja</strong>, donosimo <strong>ispravnije odluke</strong>."
       step1:
@@ -35,11 +30,6 @@ sr:
         desc: "Razvijanje predloga zajednički tako da funkcioniše za svakog. Svaka odluka ima jasan rok, tako da je uvek kristalno jasan ishod."
     crowdfunding:
       header: Mi smo dobili sredstva od zajednice tako da možemo završiti razvoj ove nove platforme i dati je nazad zajednici.
-    prototype:
-      header_html: Već smo izgradili prototip i ljudi iz celog sveta rade neverovatne stvari sa njim
-      subhead_html: "<a href=\"%{try_loomio_link}\">Probaj Lumio Beta</a> odmah. Ili možeš <a href=\"%{donate_link}\">podržati projekat</a> i pomoći donacijom Lumio 1.0"
-    mobile:
-      header_html: "Lumio 1.0 će raditi na svakom uređaju, izgrađen je najboljom <strong>otvorenom mobilnom tehnologijom.</strong>"
     quote:
       header:
         rushkoff_html: "“Lumio <strong>oslobađa potencijal interneta</strong> da približi ljude samom koncenzusu umesto polarizovanoj debati.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autor <em>Present Shock</em></div>"
@@ -60,5 +50,3 @@ sr:
       gift:
         header: Ekonomija poklona
         desc: Lumio je podržan od strane onih koji plaćaju prema svojim mogućnostima. Ovo čini platformu slobodnom od oglašavanja i pristupačnom grupama bez novca.
-    vision:
-      header: Pomozi da preokrenemo ovu viziju u realnost.

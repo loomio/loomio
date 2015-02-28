@@ -6,21 +6,17 @@ ko:
     link:
       blog: 블로그
       contact: 연락처
-      donate: 기부하기
       press: 언론보도
       try_it: 사용해보기
       log_in: 로그인
       video: 루미오가 어떻게 동작하는지 더 알고 싶어요
       try_loomio_beta: 루미오 베타 써보기
-      check_out_loomio_beta: 루미오 베타를 알아보세요
       more: 자세히
       top: 상단으로
       public_groups: 공개 그룹
       terms: 약관
       privacy: 개인정보
       services: 서비스
-    hero:
-      head_html: "우리에게는 더 나은 <strong>협력적 의사 결정</strong> 방법이 필요합니다."
     product:
       header_html: "<strong>모두의 의견</strong>이 반영될 때, <strong>더 나은 결론</strong>을 이끌어낼 수 있습니다."
       step1:
@@ -34,11 +30,6 @@ ko:
         desc: "모두가 함께 참여한 제안을 만들어보세요. 모든 크고 작은 결정 사항마다 분명한 기한이 있으니, 언제나 명확한 결과를 얻을 수 있어요."
     crowdfunding:
       header: 루미오는 현재 세상 모든 사람들이 루미오를 누릴 수 있도록 개방과 완성을 목표로 크라우드펀딩 중입니다.
-    prototype:
-      header_html: 먼저 나온 프로토타입만으로 전 세계 구석구석에서 멋진 일이 벌어지고 있어요
-      subhead_html: "지금, <a href=\"%{try_loomio_link}\">루미오 베타를 이용해보세요</a>. <a href=\"%{donate_link}\">기부하기</a>에서 루미오 1.0 에 도움을 보태주실 수도 있어요."
-    mobile:
-      header_html: "루미오 1.0은 어떤 디바이스에서나 실행될 예정입니다. 특히, <strong>오픈 모바일 테크놀로지</strong>에 최적화될 예정입니다."
     quote:
       header:
         rushkoff_html: "“루미오는 양극단으로 치닫는 토론 대신 함께 의견을 모으는 <strong>인터넷의 가능성을 해방시켰습니다.</strong>\" <div class=\"attributation\">– <a href=\"http://rushkoff.com\">더글라스 러시코프 (Douglas Rushkoff)</a>, <em>Present Shock</em>의 저자</div>"
@@ -59,5 +50,3 @@ ko:
       gift:
         header: 선물경제
         desc: "루미오는 자발적으로 기부해주시는 분들의 도움을 받고 있습니다. 여러분의 기부가 광고 없는 루미오, 경제적 약자가 자유롭게 이용할 수 있는 루미오를 만듭니다."
-    vision:
-      header: 우리가 이 비전을 현실로 만들 수 있도록 도와주세요.

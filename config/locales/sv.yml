@@ -420,8 +420,6 @@ sv:
       following_details: Du kommer att meddelas om varje tråd i denna grupp.
       not_following_details: Du kommer att meddelas om trådar som du deltar i.
   group_request:
-    beta_request_header: Starta en grupp på Loomio Beta
-    beta_request_description: Att starta en grupp är första steget i att börja ta beslut på Loomio Beta
     neighbourhood_support_group: t. ex. Stödgrupp i Grannskapet
     commercial_use_option: "i ett företag, formell organisation eller arbetsplats"
     non_commercial_use_option: i ett samhälle grupp eller informellt nätverk
@@ -883,10 +881,7 @@ sv:
       headline: "%{author}s förslag i %{group} stänger snart:"
       summary: Sammanfattning
     thread_mailer:
-      footer_text: "Svara på detta mail direkt eller visa det på Loomio:"
-      reply_or_view_online_html: "Svara på detta mail direkt eller <a href='%{url}'>visa den på Loomio</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Sluta följa</a> för att stoppa e-postmeddelanden om denna diskussion."
-      change_email_preferences_html: "Ändra din <a href='%{email_preferences_url}'>e-postinställningar</a> att avsluta prenumerationen Loomio mejl."
       change_preferences: "Ändra dina e-postinställningar:"
       new_motion: "%{who} föreslog:"
       motion_closing_soon: "Förslag som stänger inom 24 timmar:"

@@ -189,8 +189,10 @@ pt-BR:
     blog: Blog
     contact: Contato
     privacy: Privacidade
+    pricing: Preço
     public_groups: Grupos públicos
     terms: Termos
+    independent_install_html: "%{hostname} está executando uma cópia independente do Loomio: <a href=\"http://github.com/loomio/loomio\">saiba mais</a>."
   inbox:
     clear: Limpar
     title: Caixa de entrada
@@ -217,6 +219,9 @@ pt-BR:
     motion_blocked: bloqueou a proposição
     motion_outcome_created: publicou um resultado para a proposição
     motion_outcome_updated: atualizou o resultado da proposição
+    email_actions:
+      following_thread: "Você agora está seguindo o tópico: %{thread_title}"
+      not_following_thread: "Você não está seguindo mais o tópico: %{thread_title}"
   edit_discussion_context: Editar contexto da discussão
   request_new_group: Iniciar um grupo
   start_new_group: Iniciar um novo grupo
@@ -423,8 +428,8 @@ pt-BR:
       following_details: Você será notificado sobre todos os tópicos nesse grupo
       not_following_details: Você será notificado sobre os tópicos que está participando
   group_request:
-    beta_request_header: Iniciar um grupo no Loomio Beta
-    beta_request_description: "Para começar a tomar decisões no Loomio Beta, o primeiro passo é iniciar um grupo"
+    header: Iniciar um grupo
+    desc: "Para começar a tomar decisões no Loomio, o primeiro passo é iniciar um grupo:"
     neighbourhood_support_group: e.g. Grupo de Apoio do Bairro
     commercial_use_option: "em uma empresa, organização formal ou local de trabalho"
     non_commercial_use_option: em um grupo comunitário ou rede informal
@@ -891,10 +896,13 @@ pt-BR:
       headline: "A proposição de %{author} no grupo %{group} encerrará em breve:"
       summary: Resumo
     thread_mailer:
-      footer_text: "Responda este e-mail diretamente ou veja no Loomio:"
-      reply_or_view_online_html: "Responda a este e-mail diretamente ou <a href='%{url}'>veja-o no Loomio</a>."
+      footer_text: "Responda este e-mail diretamente ou veja em %{hostname}:"
+      reply_or_view_online_html: "Responda a este e-mail diretamente ou <a href='%{url}'>veja em %{hostname}</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Deixar de seguir</a> para não receber mais e-mails sobre essa discussão."
-      change_email_preferences_html: "Modifique suas <a href='%{email_preferences_url}'>preferências de e-mail</a> para cancelar subscrições de e-mails do Loomio."
+      unfollow_discussion_text: "Visite o link a seguir para parar e-mails sobre essa discussão: %{unfollow_url}"
+      follow_discussion_html: "<a href='%{follow_url}'>Siga</a> para receber e-mails sobre essa discussão."
+      follow_discussion_text: "Visite o seguinte link para receber e-mails sobre essa discussão: %{follow_url}"
+      change_email_preferences_html: "Modifique suas <a href='%{email_preferences_url}'>preferências de e-mail</a> para cancelar subscrições destes e-mails."
       change_preferences: "Modifique suas preferências de e-mail:"
       new_motion: "%{who} propôs:"
       motion_closing_soon: "Proposta encerra em 24 horas:"

@@ -113,6 +113,8 @@ ru:
     logo_upload: Загрузить логотип
     edit_description: Редактировать описание
     group_category: Нйти похожие группы
+    unread_comments: Непрочтенные коментарии
+    new_votes: Нет голосов
   views:
     pagination:
       previous: Пред.
@@ -200,6 +202,7 @@ ru:
     blog: Блог
     contact: Контакты
     privacy: Конфиденциальность
+    pricing: Цены
     public_groups: Общедоступные группы
     terms: Условия
   inbox:
@@ -281,7 +284,7 @@ ru:
     confirm_all_discussions_will_be_made_public_message: "Вы уверены? Если Вы продолжите, все частные обсуждения станут публичными."
     what_can_members_do: "Участники могут:"
     members_can:
-      add_members: Пригласите новых участников
+      add_members: Приглашать новых участников
       edit_comments: Редактировать свои коментарии
       edit_discussions: Менять описание любого обсуждения в группе
       start_discussions: Создавать обсуждения
@@ -327,7 +330,11 @@ ru:
     c11: Начинать обсуждения.
     c12: Создавать предложения.
     c13: Голосовать.
+    members_defaults: "По умолчанию, участники могут:"
+    m1: Удалять свои комментарии.
     m5: Редактировать заголовок и контекст любого обсуждения.
+    m7: Редактировать свои комментарии в любое время.
+    m8: Создавать предложения и голосовать.
   discussion_privacy:
     public: Это обсуждение является публичным в сети.
   group_privacy:
@@ -344,6 +351,7 @@ ru:
   edit_memberships: Редактировать участников
   add_new_member: Добавить нового участника
   invite_members_to_group: "Пригласить участника в %{which_group}"
+  remaining_invites_count: "Осталось %{count}  приглашений."
   get_in_touch_link: Оставаться на связи
   email_members_in_group: "Написать письмо участникам %{which_group}"
   subject_error: "Пожалуйста, заполните тему"
@@ -403,8 +411,7 @@ ru:
       click_to_follow: Отслеживать группу
       click_to_unfollow: Не отслеживать группу
   group_request:
-    beta_request_header: "Создайте новую группу на Loomio!"
-    beta_request_description: "Чтобы начать принимать решения на Loomio, нужно сначала создать группу"
+    header: Создать группу
     please_select_an_option: "Пожалуйста, выберите вариант"
     confirmation:
       title: "Почти готово! Проверьте почту."
@@ -425,6 +432,7 @@ ru:
   current_decision: Текущее решение
   previous_decisions: Предыдущие решения
   see_previous_decisions: Посмотреть прошлые решения
+  see_more: Показать еще
   create_new_proposal: Создать предложение
   empty_decision_index: Эта группа пока не приняла никаких решений.
   empty_discussion_list: В этой дискуссии пока не было активности.
@@ -448,7 +456,7 @@ ru:
     previous: Пред.
     next: След.
   comment_form_placeholder: Скажите что-нибудь...
-  comment_form_submit_button: Опубликовать комментарий
+  comment_form_submit_button: Опубликовать
   liked_by: "Понравилось %{who} "
   delete_comment: Удалить комментарий
   confirm_delete_comment: Вы уверены что хотите удалить комментарий?
@@ -534,6 +542,8 @@ ru:
   log_in: Войти
   start_group:
     create_account: Создайте учетную запись
+  example_discussion:
+    title: "Пример обсуждения: Добро пожаловать!"
   group_setup:
     set_up_your_group: Настройки вашей группы
   simple_form:

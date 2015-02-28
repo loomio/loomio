@@ -418,8 +418,6 @@ da:
       following_details: Du vil blive gjort opmærksom på alle tråde i denne gruppe.
       not_following_details: "Du vil blive gjort opmærksom på tråde, som du deltager i."
   group_request:
-    beta_request_header: Start en gruppe på Loomio Beta
-    beta_request_description: For at begynde at træffe beslutninger med Loomio Beta er første skridt at starte en gruppe
     neighbourhood_support_group: f.eks. naboskabsstøttegruppe
     commercial_use_option: "i et firma, formel organisation eller arbejdsplads"
     non_commercial_use_option: i en lokalgruppe eller uformelt netværk
@@ -881,10 +879,7 @@ da:
       headline: "%{author}'s forslag i %{group} lukker snart:"
       summary: Opsummering
     thread_mailer:
-      footer_text: "Svar direkte på denne e-mail eller se det på Loomio:"
-      reply_or_view_online_html: "Svar direkte på denne e-mail eller <a href='%{url}'>se det på Loomio</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Stop med at følge</a> for at stoppe e-mails om denne diskussion."
-      change_email_preferences_html: "Rediger dine <a href='%{email_preferences_url}'>email-indstillinger</a> for at afmelde Loomio-mails."
       change_preferences: "Rediger dine e-mail-indstillinger:"
       new_motion: "%{who} foreslog:"
       motion_closing_soon: "Forslag lukket om 24 timer:"

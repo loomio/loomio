@@ -6,13 +6,12 @@ sl:
     link:
       blog: Blog
       contact: Kontakt
-      donate: Prispevaj še danes
       press: Mediji
       try_it: Preizkusi
       log_in: Prijava
       video: "Več o tem, kako Loomio deluje"
+      try_loomio: Preizkusi Loomio
       try_loomio_beta: Preizkusi Loomio beta
-      check_out_loomio_beta: Preizkusi Loomio beta
       more: Več
       top: Nazaj na vrh
       public_groups: Javne skupine
@@ -20,8 +19,8 @@ sl:
       privacy: Zasebnost
       services: Storitve
     hero:
-      head_html: "Svet potrebuje boljši način za <strong> sprejemanje skupnih odločitev</strong>."
-      desc_html: "Loomio je prosta, <a href=\"https://github.com/loomio/loomio\">odprtokodna</a> programska oprema, ki vsem omogoča sprejemanje odločitev, ki vplivajo nanje, kjerkoli že so."
+      header_html: "Loomio je najlažji način za <br /> <strong>sprejemanje skupnih odločitev</strong>."
+      lead_html: "Loomio omogoča organizacijam in skupnostim, da preidejo <strong>od razprav k dejanjem</strong>, ne glede na to, kje se člani nahajajo."
     product:
       header_html: "Ko slišimo <strong>vse glasove</strong>, sprejemamo  <strong>boljše odločitve</strong>."
       step1:
@@ -35,11 +34,8 @@ sl:
         desc: "Razvijte predlog skupaj tako, da ustreza vsem. Vsaka odločitev ima določen skrajni rok za sprejetje, zato je izid vedno nedvoumen."
     crowdfunding:
       header: "Da bi do konca postavili to platformo in jo delili s svetom, sredstva množično zbiramo prek spleta."
-    prototype:
-      header_html: Ustvarili smo prototip in ljudje po vsem svetu z njim počnejo osupljive reči
-      subhead_html: "<a href=\"%{try_loomio_link}\">Preizkusi Loomio</a> zdaj. Ali pa <a href=\"%{donate_link}\">podpri projekt</a> in pomagaj zagnati Loomio 1.0"
     mobile:
-      header_html: "Loomio 1.0 deluje na vseh napravah, saj smo ga razvili s pomočjo najboljših <strong>prenosljivih mobilnih tehnologij.</strong>"
+      lead_html: "<strong>Loomio deluje na vsaki napravi,</strong><br />odločaj se kjerkoli, kadarkoli."
     quote:
       header:
         rushkoff_html: "“Loomio <strong>s pomočjo interneta</strong> ljudi združuje pri doseganju konsenza, namesto da bi jih razdvajal.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, avtor knjige <em>Present Shock</em></div>"
@@ -60,5 +56,3 @@ sl:
       gift:
         header: Ekonomija donacij
         desc: "Loomio finančno podpirajo tisti, ki prispevajo po svojih zmožnostih. Tako platforma ostaja prosta oglasov in dostopna skupinam brez finančnih sredstev."
-    vision:
-      header: Pomagajte nam uresničiti vizijo.

@@ -15,8 +15,6 @@ ca:
       terms: Condicions
       privacy: Privacitat
       services: Serveis
-    hero:
-      head_html: "El món necessita una manera millor per <strong>prendre decisions plegats.</strong>"
     product:
       header_html: "Quan escoltem <strong>totes les veus</strong>, prenem <strong>millors decisions</strong>."
       step1:
@@ -50,5 +48,3 @@ ca:
       gift:
         header: Economia del regal
         desc: Loomio és suportat per aquells que paguen en relació a les seves possibilitats. Així es manté la plataforma lliure de publicitat i accessible per grups sense diners.
-    vision:
-      header: Ajuda’ns a convertir aquesta visió en una realitat.

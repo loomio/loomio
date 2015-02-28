@@ -421,8 +421,6 @@ hu:
       following_details: Értesítést kapsz minden esményről a csoportban.
       not_following_details: Értesítést kapsz az eseményekről amelyekben részt veszel.
   group_request:
-    beta_request_header: Indíts csoportot a Loomio beta vezión
-    beta_request_description: "A döntéshozatalhoz a Loomio Beta verzión, előbb indíts egy csoportot"
     neighbourhood_support_group: pl. Szomszédok Közössége Csoport
     commercial_use_option: "egy cégnél, hivatalos szervezet vagy munkahely"
     non_commercial_use_option: egy közösségi csoportban vagy nem formális hálózatban
@@ -885,10 +883,7 @@ hu:
       headline: "%{author} javaslata a %{group} csoportban hamarosan lezáródik:"
       summary: Összefoglalás
     thread_mailer:
-      footer_text: "Válaszolj erre az e-mailre vagy nézd meg a Loomio-n:"
-      reply_or_view_online_html: "Válaszolj erre az e-mailre vagy <a href='%{url}'>nézd meg a Loomio-n</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Leíratkozás</a>, nem kérek több értesítést erről a témáról."
-      change_email_preferences_html: "Változtasd meg az <a href='%{email_preferences_url}'>e-mail beállításokat</a> hogy ne kapj több üzenetet a Loomio-tól."
       change_preferences: "E-mail beállítások megváltoztatása:"
       new_motion: "%{who} javaslata:"
       motion_closing_soon: "24 órán belül lezáródó javaslat:"

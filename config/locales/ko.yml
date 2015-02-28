@@ -251,8 +251,6 @@ ko:
   edit_group_description: 그룹 설명 편집
   group_subscription: 그룹 토론
   group_request:
-    beta_request_header: 루미오 베타에서 그룹시작하기
-    beta_request_description: "루미오 베타에서 의사결정을 시작하기 위해서, 첫번째 단계는 그룹을 만드는것입니다."
     neighbourhood_support_group: 예. 이웃을 돕는 그룹
     confirmation:
       title: 거의 다 되었습니다. 이메일을 확인해 주세요.

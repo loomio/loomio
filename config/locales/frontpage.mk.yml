@@ -6,22 +6,17 @@ mk:
     link:
       blog: Блог
       contact: Контакт
-      donate: Донирај денеска
       press: Притисни
       try_it: Пробај го
       log_in: Најави се
       video: Погледај повеќе како Loomio работи
       try_loomio_beta: Пробај го Loomio beta
-      check_out_loomio_beta: Провери го Loomio beta
       more: Повеќе
       top: Врв
       public_groups: Јавни групи
       terms: Услови
       privacy: Приватност
       services: Сервиси
-    hero:
-      head_html: "На светот му е потребен подобар начин <strong>за донесување на заеднички одлуки</strong>."
-      desc_html: "Loomio е бесплатен <a href=\"https://github.com/loomio/loomio\">open source</a> софтвер за сите и секаде, да допринесете во неговата изградба."
     product:
       header_html: "Кога ги слушаме <strong>сите гласови</strong>, ние правиме <strong>подобар избор</strong>."
       step1:
@@ -35,11 +30,6 @@ mk:
         desc: "Донесете одлука заедно така што ке одговара на сите. Секоја одлука има јасен рок, па секогаш ке имате јасен исход."
     crowdfunding:
       header: Ние добивме средства од заедницата така да можеме да го завршиме развојот на оваа платформа и да ја доставиме назад до заедницата.
-    prototype:
-      header_html: "Ние направивме прототип, и сите луѓе во светот можат да прават зачудувачки работи со него."
-      subhead_html: "<a href=\"%{try_loomio_link}\">Пробај го Loomio Beta</a> сега. Или можете <a href=\"%{donate_link}\">да го подржите проектот</a> за помош на Loomio 1.0"
-    mobile:
-      header_html: "Loomio 1.0 ке работи на сите уреди, направен со најдоброто во <strong>отворена мобилна технологија</strong>"
     quote:
       header:
         rushkoff_html: "“Loomio <strong>го ослободува интернет потенцијалот</strong> за да ги доведе луѓето до консензус, немсто до поларизирана дебата”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, Уредник <em>Present Shock</em></div>"
@@ -60,5 +50,3 @@ mk:
       gift:
         header: Економија на подарок
         desc: Loomio е подржан од доброволни донации од истомисленици. Ова овозможува на платформата да е без реклами и да има подржан влез на групи без плаќање.
-    vision:
-      header: Помогнете ни да ја претвориме визијата во реалност.

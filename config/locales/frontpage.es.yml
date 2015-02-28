@@ -6,22 +6,17 @@ es:
     link:
       blog: Blog
       contact: Contacto
-      donate: Haz una donación hoy
       press: Prensa
       try_it: Pruébalo
       log_in: Entrar
       video: Más sobre cómo funciona Loomio
       try_loomio_beta: Prueba Loomio beta
-      check_out_loomio_beta: Echa un vistazo a Loomio beta
       more: Más
       top: Arriba
       public_groups: Grupos Públicos
       terms: Términos
       privacy: Privacidad
       services: Servicios
-    hero:
-      head_html: "El mundo necesita mejores caminos para <strong>tomar decisiones en conjunto.</strong>"
-      desc_html: "Loomio es software libre y de <a href=\"https://github.com/loomio/loomio\">código abierto</a> para cualquiera persona, en cualquier parte, para participar en decisiones que los afecten."
     product:
       header_html: "Cuando escuchamos <strong>todas las voces</strong>, tomamos <strong>mejores decisiones. </strong>"
       step1:
@@ -35,11 +30,6 @@ es:
         desc: "Desarrolla la propuesta colectivamente para que funcione para todos. Cada decisión posee una fecha límite, siempre obteniendo un resultado claro."
     crowdfunding:
       header: Estamos en el proceso de financiación colectiva para poder construir esta nueva plataforma y poder regalarse al mundo.
-    prototype:
-      header_html: "Ya hemos construido un prototipo, y personas de todo el mundo están haciendo cosas asombrosas con el."
-      subhead_html: "<a href=\"%{try_loomio_link}\">Prueba Loomio Beta</a> ahora. O puedes <a href=\"%{donate_link}\">apoyar al proyecto</a> para ayudar a financiar Loomio 1.0"
-    mobile:
-      header_html: "Loomio 1.0 funciona en cualquier dispositivo, construido con lo mejor en <strong>tecnología abierta para móviles.</strong>"
     quote:
       header:
         rushkoff_html: "«Loomio <strong>libera el potencial de Internet</strong> para acercar a las personas al consenso en vez de al debate polarizado».<div class=\"attributation\"> (<a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autor del libro <em>Present Shock</em>).</div>"
@@ -60,5 +50,3 @@ es:
       gift:
         header: Economía del regalo
         desc: Loomio se financia por medio de aquellos que contribuyen de acuerdo a sus recursos. Esto mantiene la plataforma libre de publicidad y accesible a grupos sin recursos financieros.
-    vision:
-      header: Ayúdanos a transformar esta visión en realidad.
