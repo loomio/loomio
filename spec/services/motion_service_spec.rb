@@ -52,7 +52,7 @@ describe 'MotionService' do
       end
 
       it "syncs the discussion's search vector" do
-        expect(SearchService).to receive(:sync!).with(motion.discussion_id)
+        expect(ThreadSearchService).to receive(:index!).with(motion.discussion_id)
       end
 
       it "enfollows the author" do
