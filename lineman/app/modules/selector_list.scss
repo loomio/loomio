@@ -24,6 +24,13 @@
   width: 100%;
   clear: both;
 }
+.selector-list-item-top-line {
+  border-top: 1px solid #eee;
+}
+.selector-list-item-no-bottom-line {
+  border-bottom: none;
+}
+
 .selector-list-item i{
   color: $meta-text-color;
 }

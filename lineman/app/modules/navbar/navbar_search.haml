@@ -1,15 +1,14 @@
 %li.navbar-search
   .navbar-search-input
-    %input.form-control{ng-click: '$event.stopPropagation()', ng-model: 'query', ng-model-options: '{debounce: {default: 500, blur: 0}}', ng-change: 'getSearchResults(query)', placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: 'showDropdown()', ng-blur: 'hideDropdown()'}
+    %input.form-control{ng-click: '$event.stopPropagation()', ng-model: 'query', ng-model-options: '{debounce: {default: 300, blur: 100}}', ng-change: 'getSearchResults(query)', placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: 'setFocused(true)', ng-blur: 'setFocused(false)'}
     %i.fa.fa-lg.fa-fw.fa-search.navbar-search-input-icon{ng-hide: 'query'}
-    %i.fa.fa-lg.fa-fw.fa-times.navbar-search-input-icon{ng-show: 'query', ng-click: 'clear(true)'}
+    %i.fa.fa-lg.fa-fw.fa-times.navbar-search-input-icon{ng-show: 'query', ng-click: 'clearAndFocusInput()'}
 
-  .navbar-search-results{ng-show: 'dropdown || query'}
+  .navbar-search-results{ng-show: 'showDropdown()'}
     %ul.group-selector-list.selector-list
-      %li.navbar-search-list-item.selector-list-header{ng-show: '(availableGroups() | filter: { name: query }).length > 0'}
+      %li.navbar-search-list-item.selector-list-header{ng-show: 'groups().length > 0'}
         %h3{translate: "common.groups"}
-      %li.navbar-search-list-item.selector-list-item.media{ng-repeat: 'group in availableGroups() | filter: { name: query } | orderBy: "fullName()"', ng-click: 'clear(false)'}
-
+      %li.navbar-search-list-item.selector-list-item.media{ng-repeat: 'group in groups() | orderBy: "fullName()"', ng-class:'{"selector-list-item-no-bottom-line": (queryEmpty()), "selector-list-item-top-line": (queryEmpty() && group.isParent())}'}
         %a.selector-list-item-link{href: '/g/{{group.key}}'}
           .media-left
             .selector-list-item-group-logo{ng-if: 'group.isSubgroup() && queryEmpty()'}
