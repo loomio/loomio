@@ -1,7 +1,3 @@
-- if hide_beta_logo?
-  - logo_class = 'app-logo'
-- else
-  - logo_class = 'app-logo beta'
 
 %nav.navbar.navbar-default.navbar-fixed-top
   .container
@@ -13,7 +9,8 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a.navbar-brand{class: logo_class, href: dashboard_or_root_path, title: t(:"organisation.name")}
+
+        %a.navbar-brand.app-logo{ href: dashboard_or_root_path, title: t(:"organisation.name"), style: "background-image: url(#{logo_path})" }
 
         %ul.nav.navbar-nav
           %li#inbox-container
@@ -53,7 +50,7 @@
           = render 'user_dropdown'
 
       - else
-        %a.navbar-brand{class: logo_class, href: dashboard_or_root_path, title: t(:"organisation.name")}
+        %a.navbar-brand.app-logo{href: dashboard_or_root_path, title: t(:"organisation.name")}
         %nav
           %ul.nav.navbar-nav.navbar-right.pull-right
             - unless controller_name == "group_requests"

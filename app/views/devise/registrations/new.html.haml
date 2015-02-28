@@ -26,4 +26,4 @@
               = render 'devise/shared/omniauth_buttons'
               %h3= t :or_fill_in_this_form
               = render "form"
-          .terms= t(:terms_of_service_html, button_text: t(:'devise.registrations.sign_up'), link_path: terms_of_service_path)
+          .terms= t(:terms_of_service_html, button_text: t(:'devise.registrations.sign_up'), link_path: terms_of_service_path) if show_loomio_org_marketing

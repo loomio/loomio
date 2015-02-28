@@ -22,4 +22,4 @@
                 = t :or
             = render "form"
           .terms
-            =t(:terms_of_service_html, button_text: t(:'devise.sessions.sign_in'), link_path: terms_of_service_path)
+            =t(:terms_of_service_html, button_text: t(:'devise.sessions.sign_in'), link_path: terms_of_service_path) if show_loomio_org_marketing

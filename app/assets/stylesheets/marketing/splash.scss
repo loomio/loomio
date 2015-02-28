@@ -90,13 +90,17 @@ a:hover { text-decoration: none; }
   border: none;
   background-color: white;
   margin-bottom: 0;
-  .content {
-    padding: 15px 0 0;
-    margin-bottom: 0;
-    @include screen-size(medium-up) {
-      padding: 15px 0 36px;
-      margin-bottom: 25px;
-    }
+  height: 70px;
+  .navbar-content {
+    padding: 15px 0;
+    max-width: 970px;
+    margin: 0 auto;
+  }
+  .navbar-nav{
+    margin: 0;
+  }
+  .navbar-header{
+    float: left;
   }
   .nav {
     li { float: left; }
@@ -110,14 +114,6 @@ a:hover { text-decoration: none; }
     color: white;
     padding: 6px 20px;
     margin: 4px 10px 0 0;
-    @include screen-size(medium-up) {
-      margin: 10px 0 10px 10px;
-    }
-  }
-  li.visible-xs{
-    width: 40px;
-    margin-top: -4px;
-    margin-left: 6px
   }
 
   &.navbar-default .navbar-nav > li > a.btn:hover {
@@ -131,7 +127,6 @@ a:hover { text-decoration: none; }
 
 .navbar-brand {
   padding: 0 15px;
-  img { padding: 4px 0 0 0; }
 }
 
 .hero {
@@ -628,7 +623,6 @@ a:hover { text-decoration: none; }
   background-color: $slate;
   background-color: #37362F;
   color: $disabled;
-  height: 82px;
   .content { padding: 0; }
   .enspiral { padding: 17px 20px 8px; }
   ul {
