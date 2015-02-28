@@ -395,7 +395,6 @@ gl:
       click_to_follow: Pinche para seguir o grupo
       click_to_unfollow: Pinche para non seguir o grupo
   group_request:
-    beta_request_header: Comezar un grupo en Loomio Beta
     please_select_an_option: "Seleccione unha opción, por favor"
     confirmation:
       title: "Case estás! Comproba o teu correo electrónico."

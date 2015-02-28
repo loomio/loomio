@@ -6,22 +6,17 @@ an:
     link:
       blog: Blog
       contact: Contacto
-      donate: Fe una donación hue
       press: Prensa
       try_it: Preba-lo
       log_in: Dentrar
       video: Conoixer millor o funcionamiento de Loomio
       try_loomio_beta: Preba Loomio beta
-      check_out_loomio_beta: Fe una gollada a Loomio beta
       more: Mas
       top: Alto
       public_groups: Grupos Publicos
       terms: Termens
       privacy: Privacidat
       services: Servicios
-    hero:
-      head_html: "O mundo ameneste una millor traza de <strong>prener decisions de conchunta.</strong>"
-      desc_html: "Loomio ye software libre y de <a href=\"https://github.com/loomio/loomio\">codigo ubierto</a> ta que qualsiquiera persona, en qualsiquier parte, participe en as decisions que los afecten."
     product:
       header_html: "Quan escuitamos <strong>todas as voces</strong>, prenemos <strong>millors decisions. </strong>"
       step1:
@@ -35,11 +30,6 @@ an:
         desc: "Desembolica a propuesta colectivament ta que funcione ta totz. Cada decisión tien una calendata final, pa poder obtener siempre un resultau claro."
     crowdfunding:
       header: Somos en un proceso de financiamiento colectivo ta poder construir ista nueva plataforma y poder ofrir-la a o mundo.
-    prototype:
-      header_html: "Ya hemos construiu un prototipo, y personas de tot o mundo son fendo cosetas increyibles con ell."
-      subhead_html: "<a href=\"%{try_loomio_link}\">Preba Loomio Beta</a> agora. U tamién puetz <a href=\"%{donate_link}\">emparar o prochecto</a> ta aduyar a financiar Loomio 1.0"
-    mobile:
-      header_html: "Loomio 1.0 funciona en qualsiquier dispositivo, construiu con lo millor en <strong>tecnolochía ubierta ta mobils.</strong>"
     quote:
       header:
         rushkoff_html: "“Loomio <strong>fa servir o potencial d'internet</strong> ta trayer a las personas enta un consenso en cuenta de enta un debat polarizau.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, authr de <em>Present Shock</em></div>"
@@ -60,5 +50,3 @@ an:
       gift:
         header: "Economía d'o regalo"
         desc: "Loomio se financia gracias a es que contribuyen d'alcuerdo a os suyos recursos. Isto mantiene a plataforma libre de publicidat y accesible a grupos sin recursos financiers."
-    vision:
-      header: Aduya-nos a transformar ista visión en una realidat.

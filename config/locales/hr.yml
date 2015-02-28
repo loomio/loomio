@@ -432,8 +432,6 @@ hr:
       following_details: Dobivat ćete obavijesti o svakoj temi u ovoj grupi.
       not_following_details: Dobivat ćete obavijesti o temama u kojima sudjelujete.
   group_request:
-    beta_request_header: Započni grupu na Loomio Beta
-    beta_request_description: "Kako bi započeli s donositi odluke na Loomio Beta, prvo trebate napraviti grupu"
     neighbourhood_support_group: npr. Grupa za suzbijanje obiteljskog naslija
     commercial_use_option: "U tvrki, formalnoj organizaciji ili radnom mjestu"
     non_commercial_use_option: U lokalnoj zajednici ili neformalnoj mreži

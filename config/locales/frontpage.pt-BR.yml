@@ -6,13 +6,12 @@ pt-BR:
     link:
       blog: Blog
       contact: Contato
-      donate: Doe hoje
       press: Imprensa
       try_it: Experimente
       log_in: Entrar
       video: Saiba mais sobre como Loomio funciona
+      try_loomio: Experimente Loomio
       try_loomio_beta: Experimente Loomio beta
-      check_out_loomio_beta: Confira Loomio beta
       more: Mais
       top: Início
       public_groups: Grupos públicos
@@ -20,8 +19,8 @@ pt-BR:
       privacy: Privacidade
       services: Serviços
     hero:
-      head_html: "O mundo precisa de um jeito melhor para <strong>tomar decisões em conjunto.</strong>"
-      desc_html: "Loomio é um programa gratuito e de <a href=\"https://github.com/loomio/loomio\">código aberto</a> para qualquer pessoa, em qualquer lugar, participar de decisões."
+      header_html: "Loomio é a maneira mais fácil para<br /> <strong>tomar decisões em conjunto</strong>."
+      lead_html: "Loomio capacita organizações e comunidades para transformar <strong>discussão em ação</strong>, onde as pessoas estiverem."
     product:
       header_html: "Quandos nós ouvimos <strong>todas as vozes</strong>, nós tomamos <strong>decisões melhores</strong>."
       step1:
@@ -35,11 +34,8 @@ pt-BR:
         desc: "Desenvolva a proposta em conjunto para que ela funciona para todo mundo. Toda decisão tem um prazo claro, para que você sempre tenha um resultado claro."
     crowdfunding:
       header: Estamos buscando o financiamento coletivo para que possamos terminar de construir esta nova plataforma e entregá-la para o mundo.
-    prototype:
-      header_html: Já construímos um protótipo e pessoas de todo o mundo estão fazendo coisas incríveis com ele
-      subhead_html: "<a href=\"%{try_loomio_link}\">Experimente Loomio Beta</a> agora. Ou você pode <a href=\"%{donate_link}\">apoiar o projeto</a> para ajudar a financiar o Loomio 1.0"
     mobile:
-      header_html: "Loomio 1.0 vai funcionar em qualquer dispositivo, construído com o melhor em <strong>tecnologia móvel aberta.</strong>"
+      lead_html: "<strong>Loomio funciona em qualquer dispositivo,</strong><br />tome decisões em qualquer lugar, a qualquer hora."
     quote:
       header:
         rushkoff_html: "“O Loomio <strong>libera o potencial da internet</strong> para levar as pessoas em direção ao consenso em vez do debate polarizado.” <div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autor de <em>Present Shock</em></div>"
@@ -60,5 +56,3 @@ pt-BR:
       gift:
         header: Economia do Presente
         desc: O Loomio é apoiado por aqueles que pagam de acordo com suas possibilidades. Isso mantém a plataforma livre de publicidade e acessível a grupos sem dinheiro.
-    vision:
-      header: Ajude-nos a transformar essa visão em realidade.

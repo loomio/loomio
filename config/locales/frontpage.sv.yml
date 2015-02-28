@@ -6,22 +6,17 @@ sv:
     link:
       blog: Blogg
       contact: Kontakt
-      donate: Gör en donation redan idag
       press: Press
       try_it: Pröva det
       log_in: LOGGA IN
       video: Läs mer om hur Loomio fungerar
       try_loomio_beta: Prova Loomio Beta
-      check_out_loomio_beta: Kolla in Loomio Beta
       more: Mer
       top: Överst
       public_groups: Öppna grupper
       terms: Villkor
       privacy: Integritet
       services: Tjänster
-    hero:
-      head_html: "Världen behöver ett bättre sätt att <strong>fatta beslut tillsammans</strong>."
-      desc_html: "Loomio är en gratis <a href=\"https://github.com/loomio/loomio\">open-source</a> mjukvara som vem som helst, var som helst, kan använda för att delta i beslut som berör dem. "
     product:
       header_html: "När vi lyssnar till<strong>alla röster</strong>, fattar vi <strong>bättre beslut</strong>."
       step1:
@@ -35,11 +30,6 @@ sv:
         desc: "Utveckla förslaget tillsamman så alla kan ställa sig bakom det. Varje beslut har en tydlig dead-line, så att ni alltid når ett konkret resultat."
     crowdfunding:
       header: Vi använder oss av crowdfunding så vi kan färdigställa bygget av vår nya plattform och ge den som en gåva till världen.
-    prototype:
-      header_html: "Vi har redan gjort en prototyp, och folk över hela världen gör fantastiska saker med den"
-      subhead_html: "<a href=\"%{try_loomio_link}\">Prova Loomio Beta</a> nu. Eller så kan du <a href=\"%{donate_link}\"> stödja projektet</a> så vi kan skapa Loomio 1.0"
-    mobile:
-      header_html: "Loomio 1.0 kommer att fungera på alla plattformar, och är byggd med det bästa inom <strong>öppen mobil teknologi.</strong>"
     quote:
       header:
         rushkoff_html: "“Loomio <strong>släpper loss internets potential</strong> för att få människor att nå konsensus snarare än genom polariserade debatter.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, författare till <em>Present Shock</em></div>"
@@ -60,5 +50,3 @@ sv:
       gift:
         header: Gåvoekonomi
         desc: Loomio är möjlig tack vara att alla ger gåvor efter förmåga. På så sätt kan plattformen hållas fri från annonser och vara tillgänglig för grupper med små medel.
-    vision:
-      header: Hjälp oss omvandla denna vision till verklighet.

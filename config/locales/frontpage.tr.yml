@@ -6,22 +6,17 @@ tr:
     link:
       blog: Blog
       contact: İletişim
-      donate: Bugün bağış yap
       press: Basın
       try_it: Deneyin
       log_in: Oturum aç
       video: "Loomio'nun nasıl çalıştığı hakkında daha fazla bilgi edin"
       try_loomio_beta: "Loomio beta'yı deneyin"
-      check_out_loomio_beta: "Loomio beta'ya göz atın"
       more: Daha fazla
       top: Sayfa başı
       public_groups: Genel gruplar
       terms: Şartlar
       privacy: Gizlilik
       services: Hizmetler
-    hero:
-      head_html: "Dünya'nın <strong>birlikte karar verebilmek</strong> için daha iyi bir yola ihtiyacı var."
-      desc_html: "Loomio herkes için, her yerde, kendilerini etkileyen kararlara katılmaları için ücretsiz ve <a href=\"https://github.com/loomio/loomio\">açık kaynak kodlu</a> bir yazılımdır."
     product:
       header_html: "<strong>Bütün sesler</strong> duyulduğunda, <strong>daha iyi kararlar</strong> alırız."
       step1:
@@ -35,11 +30,6 @@ tr:
         desc: "Öneriyi birlikte geliştirirsiniz, böylece herkes için çalışır. Her kararın bir teslim süresi vardır, böylece her zaman net bir sonuç alırsınız."
     crowdfunding:
       header: Yeni platformumuzu kurarak dünyaya hediye edebilmek icin bağış topluyoruz.
-    prototype:
-      header_html: Biz şimdiden bir prototip geliştirdik ve dünyanın her yanından insanlar onunla inanılmaz şeyler yapıyor.
-      subhead_html: "<a href=\"%{try_loomio_link}\">Loomio Beta</a>'yı şimdi deneyin. Ya da Loomio 1.0'a fon oluşturmamızda bize yardım etmek için <a href=\"%{donate_link}\">projeye destek olun.</a>"
-    mobile:
-      header_html: "Loomio 1.0, en iyi <strong>açık kaynak mobil teknoloji</strong> ile ve herhangi bir cihaz üzerinde çalışacak şekilde geliştiriliyor."
     quote:
       header:
         rushkoff_html: "\"Loomio insanları kutuplaşmış tartışmalardan ziyade fikir birliğine doğru getirmek için <strong>internetin potansiyelini ortaya çıkarıyor.</strong>\"<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, yazar, <em>Present Shock</em></div>"
@@ -60,5 +50,3 @@ tr:
       gift:
         header: Hediye ekonomisi
         desc: Loomio kendi isteklerine göre ödeme yapanlar tarafından desteklenmektedir. Bu durum platformu reklamlardan arındırılmış ve parası olmayan her grup için erişilebilir kılar.
-    vision:
-      header: Bu vizyonu gerçekleştirmemize yardımcı olun.

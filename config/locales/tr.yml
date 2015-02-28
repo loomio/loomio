@@ -421,8 +421,6 @@ tr:
       following_details: Bu grupta ki her konu hakkında bilgilendirileceksiniz.
       not_following_details: İştirak ettiğiniz konular hakkında bilgilendirileceksiniz.
   group_request:
-    beta_request_header: "Loomio Beta'da bir grup başlat."
-    beta_request_description: "Loomio Beta'da karar vermeye başlamak için, ilk adım bir grup başlatmaktır."
     neighbourhood_support_group: "Örnek: Komşu Destek Grubu"
     commercial_use_option: "bir şirkette, formel örgütte ya da işyerinde"
     non_commercial_use_option: bir topluluk grubunda ya da enformel bir ağda
@@ -886,10 +884,7 @@ tr:
       headline: "%{author}'nin %{group} grubundaki önerisi yakında kapanacak:"
       summary: Özet
     thread_mailer:
-      footer_text: "Bu e-postayı doğrudan yanıtlayın veya Loomio üzerinde görüntüleyin:"
-      reply_or_view_online_html: "Bu e-postayı doğrudan yanıtlayın veya <a href='%{url}'>Loomio üzerinde görüntüleyin</a>."
       unfollow_discussion_html: "Bu müzakere hakkında e-posta almayı durdurmak için <a href='%{unfollow_url}'>Takibi Bırakın</a>."
-      change_email_preferences_html: "Loomio e-posta aboneliğinizi iptal etmek için <a href='%{email_preferences_url}'>e-posta tercihlerinizi</a> değiştirin."
       change_preferences: "E-posta tercihlerini değiştir:"
       new_motion: "%{who} teklif etti:"
       motion_closing_soon: "Teklif 24 saat içinde kapanıyor:"

@@ -6,11 +6,9 @@ ja:
     link:
       blog: ブログ
       contact: お問い合わせ
-      donate: 今日、寄付する
       log_in: ログイン
       video: Loomioがどのように動くか、更に詳細を見る
       try_loomio_beta: Loomio beta を試す
-      check_out_loomio_beta: Loomio beta をチェックする
       more: 更に詳細
       top: トップ
       public_groups: 公開グループ
@@ -28,8 +26,6 @@ ja:
         desc: 皆に機能するように、提案を一緒に発展させましょう。すべての決定が明確な締め切りを持つので、常に明確な結果を得るでしょう。
     crowdfunding:
       header: 私たちは、この新しいプラットフォームを築き終えるために、そして世界に広めるためにクラウドファンディングをしています。
-    mobile:
-      header_html: "Loomio 1.0はどのデバイスでも動きますが、 <strong>オープン・モバイル・テクノロジー.</strong>で最も良く動きます。"
     team:
       header: Loomioについて
     ideals:

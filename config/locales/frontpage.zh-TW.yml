@@ -6,13 +6,12 @@ zh-TW:
     link:
       blog: 部落格
       contact: 聯絡資訊
-      donate: 今天就贊助
       press: 懶人包
       try_it: 來試試吧
       log_in: 登入
       video: 來看看 Loomio 是怎樣辦到的
+      try_loomio: 試試 Loomio
       try_loomio_beta: 試試看 Loomio beta
-      check_out_loomio_beta: 看看 Loomio beta
       more: 瞭解更多
       top: 回到頁面頂端
       public_groups: 公開群組
@@ -20,8 +19,8 @@ zh-TW:
       privacy: 隱私權政策
       services: 服務
     hero:
-      head_html: "這個世界需要更好的方法來<strong>共同參與決策</strong>。"
-      desc_html: "Loomio 是一套自由、<a href=\"https://github.com/loomio/loomio\">開放源碼</a>的軟體，讓任何人不論在任何地方，都能參與影響他人的決策。"
+      header_html: "<strong>一同參與決策<br /></strong>最簡單的方式就是 Loomio。"
+      lead_html: "Loomio 使組織與社群得以<strong>讓討論變成行動</strong>，無論夥伴在哪裡。"
     product:
       header_html: "當我們聽到<strong>所有的聲音</strong>時，我們可以作出<strong>更好的決策</strong>。"
       step1:
@@ -35,11 +34,8 @@ zh-TW:
         desc: 一同發展提案，讓每個人都能適用。每個決策都有明確的期限，因此您總是有明確的成果。
     crowdfunding:
       header: 我們運用群眾募資來打造這個嶄新的平台並推廣給全世界。
-    prototype:
-      header_html: 我們已經打造出試作版，來自世界各地的夥伴正在運用並做出令人驚豔的事情
-      subhead_html: "現在就<a href=\"%{try_loomio_link}\">試試 Loomio Beta</a>。或者您能資助 Loomio 1.0，<a href=\"%{donate_link}\">支持這個專案</a>"
     mobile:
-      header_html: "以最棒的<strong>開源行動技術</strong>所打造的 Loomio 1.0 可以在任何的裝置上運作。"
+      lead_html: "<strong>Loomio 能在任何的裝置上執行，</strong><br />隨時隨地作決策。"
     quote:
       header:
         rushkoff_html: "「Loomio <strong>釋放了網際網路的潛力</strong>，讓夥伴達成了共識而不是極端的爭論。」<div class=\"attributation\">— <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>，<em>《Present Shock》</em>的作者</div>"
@@ -60,5 +56,3 @@ zh-TW:
       gift:
         header: 禮物經濟學
         desc: 使用者各自依自己的能力來付費支持 Loomio 。大家的贊助能維持平台的運作、免除廣告的干擾，讓沒有資金的團體也能來隨意運用。
-    vision:
-      header: 幫助我們，讓此願景成為現實。

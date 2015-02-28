@@ -421,8 +421,6 @@ an:
       following_details: "Serás notificau sobre totz os temas d'iste grupo"
       not_following_details: Se te notificará sobre os temas en os quals yes participando.
   group_request:
-    beta_request_header: Empecipiar un grupo en Loomio Beta
-    beta_request_description: "Ta prener decisions en Loomio Beta, o primer paso ye encetar un grupo."
     neighbourhood_support_group: "p. eix. Grupo d'emparo a o vecindario"
     commercial_use_option: "en una interpresa, organización formal u puesto de treballo"
     non_commercial_use_option: En una comunidat u grupo informal
@@ -885,10 +883,7 @@ an:
       headline: "A propuesta de %{author} en %{group} se zarrará luego:"
       summary: Resumen
     thread_mailer:
-      footer_text: "Responde a iste correu electronico dreitament u leyer-lo en Loomio:"
-      reply_or_view_online_html: "Responder a iste correu electronico dreitament u <a href='%{url}'> veyer-lo en Loomio</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Deixar de seguir</a> ta deixar de recibir correus electronicos sobre ista discusión."
-      change_email_preferences_html: "Cambia os tuyos<a href='%{email_preferences_url}'> preferencias de correu electronico </a> ta dar-se de baixa d'os correus electronicos de Loomio."
       change_preferences: "Cambiar as tuyas preferencias d'email:"
       new_motion: "%{who} ha proposau:"
       motion_closing_soon: A propuesta se zarrará en 24 horas

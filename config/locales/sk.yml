@@ -435,8 +435,6 @@ sk:
       following_details: Budete upozornený/á na každú diskusiu v tejto skupine.
       not_following_details: Budete upozornený/á na dianí v diskusiách na ktorých sa zúčastňujete.
   group_request:
-    beta_request_header: Vytvorte skupinu na Loomio Beta
-    beta_request_description: "Ak chcete začať rozhodovanie na Loomio Beta, prvým krokom je vytvorenie skupiny"
     neighbourhood_support_group: napr. komunitná podporná organizácia
     commercial_use_option: "ve firme, formálnej organizácii alebo na pracovisku"
     non_commercial_use_option: v komunitnej skupine alebo neformálnom zoskupení
@@ -899,10 +897,7 @@ sk:
       headline: "návrh %{author} v %{group} sa čoskoro uzatvára:"
       summary: Zhrnutie
     thread_mailer:
-      footer_text: "Odpovedzte na tento email priamo, alebo v diskusii na Loomio:"
-      reply_or_view_online_html: "Odpovedzte na tento email priamo, alebo <a href='%{url}'>v diskusii na Loomio</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Ukončiť sledovanie</a> na zastavenie príjmu emailov z tejto diskusie."
-      change_email_preferences_html: "Zmeňte svoje <a href='%{email_preferences_url}'>nastavenia emailu</a> ak chcete prestať s prijímaním emailov z Loomia."
       change_preferences: "Zmena nastavenia e-mailu:"
       new_motion: "%{who} navrhol:"
       motion_closing_soon: "Návrhy uzatvorené behom 24 hodin:"

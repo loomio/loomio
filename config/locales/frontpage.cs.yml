@@ -6,22 +6,17 @@ cs:
     link:
       blog: Blog
       contact: Kontakt
-      donate: Přispějte ještě dnes
       press: Tisk
       try_it: Vyzkoušejte to
       log_in: PŘIHLÁSIT SE
       video: "Více o tom, jak Loomio funguje"
       try_loomio_beta: Vyzkoušejte Loomio beta
-      check_out_loomio_beta: Podívejte se na Loomio beta
       more: Více
       top: Začátek
       public_groups: Veřejné skupiny
       terms: Podmínky
       privacy: Soukromí
       services: Služby
-    hero:
-      head_html: "Svět potřebuje lepší způsob, jak <strong>společně rozhodovat</strong>."
-      desc_html: "Loomio je svobodný,  <a href=\"https://github.com/loomio/loomio\">open source</a> software umožňující každému a kdekoliv, aby se podílel na rozhodnutích, které se ho týkají."
     product:
       header_html: "Když vyslechneme <strong>všechny hlasy</strong>, činíme <strong>lepší rozhodnutí</strong>."
       step1:
@@ -35,11 +30,6 @@ cs:
         desc: "Vypracujte návrh společně, aby vyhovoval všem. Každé rozhodnutí má jasnou lhůtu, takže vždy získáte jasné rozhodnutí."
     crowdfunding:
       header: "Crowdfundujeme, abychom mohli dobudovat tuto novou platformu a poskytnout ji světu."
-    prototype:
-      header_html: "Již jsme postavili prototyp, a lidé na celém světě s ním dělají úžasné věci"
-      subhead_html: "<a href=\"%{try_loomio_link}\">Vyzkoušejte Loomio Beta</a> hned. Můžete také <a href=\"%{donate_link}\">podpořit projekt finančně</a> a pomoci tak při tvorbě Loomio verze 1.0"
-    mobile:
-      header_html: "Loomio 1.0 bude fungovat na libovolném zařízení, je vytvářený pomocí nejlepší <strong> otevřené mobilní technologie.</strong>"
     quote:
       header:
         rushkoff_html: "“Loomio <strong> využívá naplno potenciál internetu</strong>, místo polarizování debaty se snaží spíše přivést lidi ke konsenzu.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, author of <em>Present Shock</em></div>"
@@ -60,5 +50,3 @@ cs:
       gift:
         header: Ekonomika darů
         desc: "Loomio je podporován lidmi, kteří platí podle svých možností. To udržuje platformu bez reklam a přístuptupnou skupinám bez peněz."
-    vision:
-      header: Pomozte nám zrealizovat tuto vizi.

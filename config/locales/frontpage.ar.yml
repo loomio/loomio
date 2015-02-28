@@ -6,22 +6,17 @@ ar:
     link:
       blog: مدونة
       contact: تواصل معنا
-      donate: تبرع اليوم
       press: صحافة
       try_it: جرّب Loomio
       log_in: تسجيل الدخول
       video: أنظر المزيد حول كيفية عمل Loomio
       try_loomio_beta: جرّب Loomio Beta
-      check_out_loomio_beta: اطّلع على Loomio beta
       more: المزيد
       top: أعلى الصفحة
       public_groups: المجموعات المفتوحة للعموم
       terms: شروط الخدمة
       privacy: الخصوصية
       services: الخدمات
-    hero:
-      head_html: "يحتاج العالم إلى طريقة أفضل <strong>لاتخاذ القرارات بشكل جماعي</strong>."
-      desc_html: "Loomio برمجية حرة و<a href=\"https://github.com/loomio/loomio\">مفتوحة المصدر</a> تتيح للجميع المشاركة في القرارات التي تعنيهم."
     product:
       header_html: "عندما نستمع <strong>لكل الآراء</strong> فإننا نتخذ <strong>قرارات أفضل</strong>."
       step1:
@@ -35,11 +30,6 @@ ar:
         desc: طوروا الإقتراح سوية حتى يصبح مناسبا للجميع. كل قرار له مهلة محددة، وبذلك يمكن ضمان التوصل لنتيجة محددة.
     crowdfunding:
       header: نقوم حاليا بطلب تمويل جمعي لنستطيع إنهاء بناء هذه المنصة الجديدة وجعلها متاحة للعالم.
-    prototype:
-      header_html: لقد قمنا بالفعل ببناء نموذج أولي، وهناك ناس من جميع أنحاء العالم يستخدمونه لإنجاز أشياء رائعة.
-      subhead_html: "<a href=\"%{try_loomio_link}\">جرّب Loomio Beta</a> الآن. كما يمكنك <a href=\"%{donate_link}\">دعم المشروع</a> للمساعدة على تمويل Loomio 1.0"
-    mobile:
-      header_html: "سيعمل Loomio 1.0 على مختلف الأجهزة، وسيكون مبنيا على أفضل <strong>التقنيات المفتوحة للأجهزة النقالة.</strong>"
     quote:
       header:
         rushkoff_html: "\"Loomio <strong>يحرر إمكانات الإنترنت</strong> لجلب الناس سوية نحو توافق الآراء بدلا من الجدل المستقطب.\"<div class=\"attributation\">– <a href=\"http://rushkoff.com\">دوغلاس رشكوف</a>، مؤلف كتاب  <em>صدمة الحاضر</em></div>"
@@ -60,5 +50,3 @@ ar:
       gift:
         header: اقتصاد العطاء
         desc: Loomio مدعوم من قبل من يدفعون حسب إمكانياتهم. هذا يحافظ على حرية المنصة من الإعلانات التجارية ويجعلها في متناول المجموعات التي ليس لديها موارد مالية.
-    vision:
-      header: ساعدونا لنحول هذه الرؤية إلى واقع.

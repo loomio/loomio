@@ -4,12 +4,10 @@ id:
     link:
       blog: Blog
       contact: Kontak
-      donate: Berikan donasi hari ini
       press: Pers
       try_it: Coba
       log_in: LOG IN
       try_loomio_beta: Coba Loomio beta
-      check_out_loomio_beta: Lihat Loomio beta
       more: Selanjutnya
       top: Bagian atas
       public_groups: Kelompok umum
@@ -30,5 +28,3 @@ id:
         header: Independen dan netral
       open:
         header: Perangkat lunak gratis dan terbuka
-    vision:
-      header: Bantu kami untuk mewujudkan visi menjadi kenyataan.

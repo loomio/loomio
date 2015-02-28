@@ -421,8 +421,6 @@ es:
       following_details: "Serás notificado sobre cada tema en este grupo "
       not_following_details: Serás notificado sobre los temas en los que estás participando.
   group_request:
-    beta_request_header: Empezar un grupo en Loomio Beta
-    beta_request_description: "Para tomar decisiones en Loomio Beta, el primer paso es iniciar un grupo."
     neighbourhood_support_group: ej. Grupo de apoyo al vecindario
     commercial_use_option: "en una empresa, organización formal o lugar de trabajo"
     non_commercial_use_option: En una comunidad o grupo informal
@@ -888,10 +886,7 @@ es:
       headline: "La propuesta de %{author} en %{group} cerrará pronto:"
       summary: Resumen
     thread_mailer:
-      footer_text: "Responder a este correo electrónico directamente o verlo en Loomio:"
-      reply_or_view_online_html: "Responder a este correo electrónico directamente o <a href='%{url}'> verlo en Loomio </a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'> Dejar de seguir </a> para detener correos electrónicos acerca de esta discusión."
-      change_email_preferences_html: "Cambia tus<a href='%{email_preferences_url}'> preferencias de correo electrónico </a> para darse de baja de los correos electrónicos de  Loomio."
       change_preferences: Cambiar sus preferencias de email
       new_motion: "%{who} propuso:"
       motion_closing_soon: Cierra en 24 Horas
