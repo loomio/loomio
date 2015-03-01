@@ -4,8 +4,7 @@ describe API::SearchResultsController do
   let(:user)    { create :user }
   let(:group)   { create :group }
   let(:discussion) { create :discussion, group: group }
-  let(:active_motion) { create :current_motion, discussion: discussion }
-  let(:closed_motion) { create :motion, discussion: discussion, closed_at: 2.days.ago }
+  let(:motion) { create :current_motion, discussion: discussion }
   let(:comment) { create :comment, discussion: discussion }
 
   describe 'index' do
@@ -17,7 +16,7 @@ describe API::SearchResultsController do
     it 'does not find irrelevant threads' do
       json = search_for('find')
       discussion_ids = fields_for(json, 'search_results', 'discussion').map { |d| d['id'].to_i }
-      expect(@discussion_ids).to_not include discussion.id
+      expect(discussion_ids).to_not include discussion.id
     end
 
     it "can find a discussion by title" do
@@ -36,49 +35,29 @@ describe API::SearchResultsController do
       expect(@priorities).to include 0.2
     end
 
-    it "can find a discussion by active proposal name" do
-      active_motion.update name: 'find me'
-      SearchService.sync! active_motion.discussion_id
+    it "can find a discussion by proposal name" do
+      motion.update name: 'find me'
+      ThreadSearchService.index! motion.discussion_id
       search_for('find')
 
       expect(@discussion_ids).to include discussion.id
-      expect(@motion_ids).to include active_motion.id
+      expect(@motion_ids).to include motion.id
       expect(@priorities).to include 0.4
     end
 
-    it "can find a discussion by active proposal description" do
-      active_motion.update description: 'find me'
-      SearchService.sync! closed_motion.discussion_id
+    it "can find a discussion by proposal description" do
+      motion.update description: 'find me'
+      ThreadSearchService.index! motion.discussion_id
       search_for('find')
 
       expect(@discussion_ids).to include discussion.id
-      expect(@motion_ids).to include active_motion.id
+      expect(@motion_ids).to include motion.id
       expect(@priorities).to include 0.2
-    end
-
-    it "can find a discussion by closed proposal name" do
-      closed_motion.update name: 'find me'
-      SearchService.sync! closed_motion.discussion_id
-      search_for('find')
-
-      expect(@discussion_ids).to include discussion.id
-      expect(@motion_ids).to include closed_motion.id
-      expect(@priorities).to include 0.2
-    end
-
-    it "can find a discussion by closed proposal description" do
-      closed_motion.update description: 'find me'
-      SearchService.sync! closed_motion.discussion_id
-      search_for('find')
-
-      expect(@discussion_ids).to include discussion.id
-      expect(@motion_ids).to include closed_motion.id
-      expect(@priorities).to include 0.1
     end
 
     it "can find a discussion by comment body" do
       comment.update body: 'find me'
-      SearchService.sync! comment.discussion_id
+      ThreadSearchService.index! comment.discussion_id
       result = search_for('find')
       expect(@discussion_ids).to include discussion.id
       expect(@comment_ids).to include comment.id

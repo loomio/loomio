@@ -14,7 +14,7 @@ class DiscussionService
 
     actor.ability.authorize! :create, discussion
     discussion.save!
-    SearchService.sync! discussion.id
+    ThreadSearchService.index! discussion.id
     Events::NewDiscussion.publish!(discussion)
   end
 
@@ -42,7 +42,7 @@ class DiscussionService
     end
     discussion.save!
 
-    SearchService.sync! discussion.id if update_search_vector
+    ThreadSearchService.index! discussion.id if update_search_vector
     DiscussionReader.for(discussion: discussion, user: actor).follow!
   end
 end

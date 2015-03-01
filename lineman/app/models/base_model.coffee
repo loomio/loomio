@@ -4,7 +4,6 @@ angular.module('loomioApp').factory 'BaseModel', ->
     @plural: 'undefinedPlural'
     @indices: []
     @attributeNames: []
-    @moments: []
 
     constructor: (recordsInterface, data) ->
       @errors = {}
@@ -24,15 +23,20 @@ angular.module('loomioApp').factory 'BaseModel', ->
     # copy rails snake_case hash, into camelCase object properties
     # also initialize attributes that end in _at or are listed as moments
     updateFromJSON: (data) ->
+      @scrapeAttributeNames(data)
+      @importData(data, @)
+
+    scrapeAttributeNames: (data) ->
+      @constructor.attributeNames = _.map _.keys(data), (key) -> _.camelCase(key)
+
+    importData: (data, dest) ->
       _.each _.keys(data), (key) =>
         attributeName = _.camelCase(key)
-        if /At$/.test(attributeName) or _.include(@constructor.moments, attributeName)
-          @[attributeName] = moment(data[key])
+        if /At$/.test(attributeName)
+          dest[attributeName] = moment(data[key])
         else
-          @[attributeName] = data[key]
-
-        unless _.contains(@constructor.attributeNames, attributeName)
-          @constructor.attributeNames.push attributeName
+          dest[attributeName] = data[key]
+        return
 
     # copy camcelCase attributes to snake_case object for rails
     serialize: ->

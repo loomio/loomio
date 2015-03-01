@@ -1,12 +1,24 @@
-.navbar-search-result
-  .navbar-search-discussion
-    .navbar-search-discussion-title{btf-markdown: 'result.discussion.title'}
-    .navbar-search-discussion-blurb{btf-markdown: 'result.discussion.blurb'}
-  .navbar-search-proposals{ng-repeat: 'proposal in result.proposals'}
-    .navbar-search-proposal-title{btf-markdown: 'proposal.name'}
-    .navbar-search-proposal-blurb{btf-markdown: 'proposal.blurb'}
-  .navbar-search-comments{ng-repeat: 'comment in result.comments'}
-    .navbar-search-comment-blurb{btf-markdown: 'comment.blurb'}
-    .navbar-search-comment-author{btf-markdown: 'comment.author'}
-  .navbar-search-priority Priority {{ result.priority }}
-  .navbar-search-query Query {{ result.query }}
+.search-result
+  .search-result-item
+    %a.search-result-title{ng-href: '/d/{{result.discussion.key}}', ng-click: 'clear(false)'}
+      {{result.discussion.title}}
+    .search-result-group-name {{result.discussion.group_full_name }}
+    .search-result-blurb{ng-bind-html: 'result.discussion.blurb'}
+
+  .search-result-item.media{ng-repeat: 'proposal in result.proposals'}
+    .media-left{ng-init: 'proposal.voteCounts = proposal.vote_counts'}
+      %mini_proposal_pie_chart{proposal: 'proposal'}
+    .media-body
+      .search-result-child-title {{proposal.name}}
+      .search-result-blurb{ng-bind-html: 'proposal.blurb'}
+
+  .search-result-item.media{ng-repeat: 'comment in result.comments'}
+    .media-left
+      .user-avatar
+        .avatar-initials{ng-if: '::(comment.author.avatar_kind == "initials")'}
+          {{::comment.author.avatar_initials}}
+        .avatar-image{ng-if: '::(comment.author.avatar_kind != "initials")'}
+          %img{alt: "{{::comment.author.name}}", src: '{{::comment.author.avatar_url}}'}
+    .media-body
+      .search-result-child-title {{comment.author.name}}
+      .search-result-blurb{ng-bind-html: 'comment.blurb'}

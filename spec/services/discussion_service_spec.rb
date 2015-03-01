@@ -39,7 +39,7 @@ describe 'DiscussionService' do
       before { discussion.stub(:valid?).and_return(true) }
 
       it 'syncs the discussion search vector' do
-        SearchService.should_receive(:sync!).with(discussion.id)
+        ThreadSearchService.should_receive(:index!).with(discussion.id)
         DiscussionService.create(discussion: discussion,
                                  actor: user)
       end
@@ -107,7 +107,7 @@ describe 'DiscussionService' do
       end
 
       it 'syncs the discussion search vector' do
-        SearchService.should_receive(:sync!).with(discussion.id)
+        ThreadSearchService.should_receive(:index!).with(discussion.id)
         DiscussionService.update discussion: discussion,
                                  params: discussion_params,
                                  actor: user

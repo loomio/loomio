@@ -24,6 +24,13 @@
   width: 100%;
   clear: both;
 }
+.selector-list-item-top-line {
+  border-top: 1px solid #eee;
+}
+.selector-list-item-no-bottom-line {
+  border-bottom: none;
+}
+
 .selector-list-item i{
   color: $meta-text-color;
 }
@@ -38,14 +45,16 @@
   text-decoration: none;
   background-color: $list-hover-color;
 }
+
 .selector-list .media{ margin-top: 0; }
 .selector-list .media-left { margin-right: 8px; }
 .selector-list-item.is-active{
   background-color: $item-highlight-color;
   border-left: 4px solid $loomio-orange;
 }
+
 .is-subgroup-true .selector-list-item-link{
-  padding-left: 40px;
+  padding-left: 53px;
 }
 .selector-list-item.is-read{
   background-color: $light-grey;
@@ -81,12 +90,16 @@ a .selector-list-item-proposal-details {
 .selector-list-item-group-name{
   vertical-align: middle;
 }
+
 .selector-list-item-group-logo{
   width: 32px;
   height: 32px;
 }
+
 .selector-list-item-thread-group-name{
   color: $meta-text-color;
   @include fontHelvetica;
   @include fontSmall;
 }
+
+

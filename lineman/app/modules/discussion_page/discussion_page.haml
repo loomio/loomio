@@ -39,9 +39,13 @@
           %h1 {{discussion.title}}
           .media.thread-origin
             .media-left.thread-origin-icon
-              %img.thread-origin-group-logo{src: "{{discussion.group().logoUrlSmall}}"}
+              %img.thread-origin-group-logo{src: "group.logoUrlSmall}}"}
             .media-body.thread-origin-details
-              %a{href: '/g/{{discussion.group().key}}'} {{discussion.group().fullName()}}
+              %a.cuke-group-parent-name{ng_show: 'group.parentId', href: '/g/{{group.parent().key}}'}
+                {{group.parentName()}}
+              %span{ng_show: 'group.parentId'}> >
+              %a.cuke-group-name{href: '/g/{{group.key}}'}
+                {{group.name}}
               %br
               %span{translate: 'discussion.started_by', translate-value-name: '{{::discussion.authorName()}}'}
               %timeago.nowrap{timestamp: '::discussion.createdAt' }>

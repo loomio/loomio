@@ -20,8 +20,38 @@
   text-align: left;
   min-width: 500px;
   box-shadow: 2px 2px 2px #ccc;
+  overflow-y: scroll;
+  max-height: 800px;
 }
 
 .navbar-search-list-item {
   background: white;
+}
+
+.search-result {
+  padding: 10px;
+}
+.search-result-item {
+  padding-bottom: 10px;
+}
+
+.search-result-group-name {
+  @include fontSmall;
+  color: $kinda-dark-grey;
+  padding-bottom: 5px;
+}
+
+.search-result-title {
+  @include fontMedium;
+  padding-bottom: 5px;
+}
+
+.search-result-child-title {
+  @include fontSmall;
+  padding-bottom: 5px;
+}
+
+.search-result-blurb {
+  @include fontSmall;
+  color: $kinda-dark-grey;
 }

@@ -1,5 +1,6 @@
 angular.module('loomioApp').controller 'DiscussionPageController', ($scope, $modal, discussion, Records, MessageChannelService, UserAuthService, DiscussionFormService) ->
   $scope.discussion = discussion
+  $scope.group = discussion.group()
 
   # maybe not needed
   onMessageReceived = ->

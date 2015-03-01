@@ -4,7 +4,7 @@ class MotionService
     actor.ability.authorize! :create, motion
     return false unless motion.valid?
     motion.save!
-    SearchService.sync! motion.discussion_id
+    ThreadSearchService.index! motion.discussion_id
     DiscussionReader.for(discussion: motion.discussion, user: actor).follow!
     Events::NewMotion.publish!(motion)
   end
@@ -35,7 +35,7 @@ class MotionService
       end
 
       motion.save
-      SearchService.sync! motion.discussion_id if sync_search_vector
+      ThreadSearchService.index! motion.discussion_id if sync_search_vector
     else
       false
     end
