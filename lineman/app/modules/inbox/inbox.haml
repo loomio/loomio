@@ -1,5 +1,5 @@
 %ul.selector-list
-  %li.selector-list-header{ng-click: 'logDiscussions()'}
+  %li.selector-list-header
     %a.action.pull-right{href: ''}
       4 unread
     .dropdown.inbox-filter
@@ -13,7 +13,7 @@
           %li.dropdown-menu-item
             %span{translate: 'inbox.unread'}
 
-  %li.selector-list-item.is-read{ng-repeat: 'discussion in currentUser.inboxDiscussions() | orderBy: "-lastActivityAt"'}
+  %li.selector-list-item.is-read{ng-repeat: 'discussion in currentThreads'}
     %a.cuke-inbox-item.selector-list-item-link{href: '/d/{{ discussion.key}}'}
       .selector-list-item-time-and-title
         .pull-right

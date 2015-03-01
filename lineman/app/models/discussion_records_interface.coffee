@@ -5,5 +5,9 @@ angular.module('loomioApp').factory 'DiscussionRecordsInterface', (BaseRecordsIn
     fetchByGroupAndPage: (group, page, success, failure) ->
       @restfulClient.getCollection group_id: group.id, page: page
 
-    fetchInbox: ->
-      @restfulClient.get 'inbox'
+    fetchInboxCurrent: ->
+      @restfulClient.get 'inbox_current'
+
+    fetchInboxUnread: ->
+      @restfulClient.get 'inbox_unread'
+
