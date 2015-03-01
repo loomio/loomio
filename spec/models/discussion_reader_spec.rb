@@ -4,14 +4,19 @@ describe DiscussionReader do
 
   let(:user) { FactoryGirl.create :user }
   let(:other_user) { FactoryGirl.create :user }
-  let(:discussion) { FactoryGirl.create :discussion }
+  let(:group) { FactoryGirl.create :group }
+  let(:discussion) { FactoryGirl.create :discussion, group: group }
+  let(:membership) { FactoryGirl.create :membership, user: user, group: group, volume: :normal }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
 
-  describe "#follow!" do
-    it "sets following to true" do
-      reader.following.should be nil
-      reader.follow!
-      reader.following.should be true
+  describe 'volume' do
+    it 'can change its volume' do
+      reader.change_volume! :email
+      expect(reader.reload.volume.to_sym).to eq :email
+    end
+
+    it 'defaults to the memberships volume when nil' do
+      expect(membership.volume).to eq reader.volume
     end
   end
 

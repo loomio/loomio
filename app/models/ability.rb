@@ -92,8 +92,12 @@ class Ability
       @admin_group_ids.include?(membership.group_id)
     end
 
-    can [:follow_by_default], Membership do |membership|
-      membership.user.id == @user.id      
+    can [:update], DiscussionReader do |reader|
+      reader.user.id == @user.id
+    end
+
+    can [:update], Membership do |membership|
+      membership.user.id == @user.id
     end
 
     can [:remove_admin,

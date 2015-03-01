@@ -49,11 +49,6 @@ class Discussion < ActiveRecord::Base
 
   has_many :discussion_readers
 
-  has_many :explicit_followers,
-           -> { where('discussion_readers.following = ?', true) },
-           through: :discussion_readers
-
-
   include PgSearch
   pg_search_scope :search, against: [:title, :description],
     using: {tsearch: {dictionary: "english"}}
@@ -77,7 +72,7 @@ class Discussion < ActiveRecord::Base
       active.
       joins("LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id = #{id})").
       joins("LEFT OUTER JOIN memberships m ON (m.user_id = users.id AND m.group_id = #{group_id})").
-      where('dr.following = TRUE OR (dr.following IS NULL AND m.following_by_default = TRUE)')
+      where('dr.volume = :email OR (dr.volume IS NULL AND m.volume = :email)', { email: DiscussionReader.volumes[:email] })
   end
 
   def followers_without_author

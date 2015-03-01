@@ -27,7 +27,10 @@ angular.module('loomioApp').factory 'BaseModel', ->
       @importData(data, @)
 
     scrapeAttributeNames: (data) ->
-      @constructor.attributeNames = _.map _.keys(data), (key) -> _.camelCase(key)
+      _.each _.keys(data), (key) =>
+        camelKey = _.camelCase(key)
+        unless _.contains @constructor.attributeNames, camelKey
+          @constructor.attributeNames.push camelKey
 
     importData: (data, dest) ->
       _.each _.keys(data), (key) =>
@@ -43,10 +46,12 @@ angular.module('loomioApp').factory 'BaseModel', ->
       @baseSerialize()
 
     baseSerialize: ->
+      wrapper = {}
       data = {}
-      _.each @attributeNames, (attributeName) ->
-        data[_.snakeCase(attributeName)] = this[attributeName]
-      data
+      _.each @constructor.attributeNames, (attributeName) =>
+        data[_.snakeCase(attributeName)] = @[attributeName]
+      wrapper[@constructor.singular] = data
+      wrapper
 
     setupViews: ->
 

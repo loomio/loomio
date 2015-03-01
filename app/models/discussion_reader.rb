@@ -1,4 +1,5 @@
 class DiscussionReader < ActiveRecord::Base
+  include HasVolume
 
   belongs_to :user
   belongs_to :discussion
@@ -19,20 +20,20 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
+  def volume
+    super || membership.volume
+  end
+
   def follow!
-    update_attribute(:following, true)
+    change_volume! :email # deprecated, use change_volume! :email directly
   end
 
   def unfollow!
-    update_attribute(:following, false)
+    change_volume! :normal # deprecated, use change_volume! :normal directly
   end
 
   def following?
-    if self[:following].nil?
-      membership.try(:following_by_default)
-    else
-      self[:following]
-    end
+    volume == 'email' # following? is deprecated; please use volume == 'email' instead
   end
 
   def first_read?
@@ -81,7 +82,6 @@ class DiscussionReader < ActiveRecord::Base
     self.last_read_at = age_of_last_read_item || discussion.last_activity_at
     reset_counts!
   end
-
 
   def reset_comment_counts
     self.read_comments_count = read_comments.count
@@ -138,8 +138,6 @@ class DiscussionReader < ActiveRecord::Base
   def read_salient_items(time = nil)
     discussion.salient_items.where('events.created_at <= ?', time || last_read_at).chronologically
   end
-
-  # read_salient_items might be what you want in the future
 
   private
   def membership

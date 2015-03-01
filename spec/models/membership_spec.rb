@@ -92,4 +92,24 @@ describe Membership do
       end
     end
   end
+
+  describe 'volume' do
+    before do
+      @membership = create :membership, user: user, group: group, volume: :normal
+    end
+
+    it 'validates the presence of a volume' do
+      @membership.volume = nil
+      expect(@membership.valid?).to eq false
+    end
+
+    it 'responds to volume' do
+      expect(@membership.volume.to_sym).to eq :normal
+    end
+
+    it 'can change its volume' do
+      @membership.change_volume! :email
+      expect(@membership.reload.volume.to_sym).to eq :email
+    end
+  end
 end

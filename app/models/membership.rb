@@ -1,6 +1,7 @@
 class Membership < ActiveRecord::Base
+  include HasVolume
 
-  validates_presence_of :group, :user
+  validates_presence_of :group, :user, :volume
   validates_uniqueness_of :user_id, scope: :group_id
 
   belongs_to :group, counter_cache: true
@@ -45,11 +46,11 @@ class Membership < ActiveRecord::Base
   end
 
   def follow_by_default!
-    update_attribute(:following_by_default, true)
+    change_volume! :email # I am deprecated; please use change_volume directly instead
   end
 
   def dont_follow_by_default!
-    update_attribute(:following_by_default, false)
+    change_volume! :normal # I am deprecated; please use change_volume directly instead
   end
 
   def group_has_multiple_admins?

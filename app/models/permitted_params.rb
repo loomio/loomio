@@ -1,7 +1,7 @@
 class PermittedParams < Struct.new(:params, :user)
 
   %w[user vote subscription motion membership_request membership
-   invitation group_request group discussion comment
+   invitation group_request group discussion discussion_reader comment
    attachment contact_message theme user_deactivation_response].each do |kind|
     define_method(kind) do
       permitted_attributes = self.send("#{kind}_attributes")
@@ -41,7 +41,11 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def membership_attributes
-    [:following_by_default]
+    [:volume]
+  end
+
+  def discussion_reader_attributes
+    [:discussion_id, :volume]
   end
 
   def invitation_attributes

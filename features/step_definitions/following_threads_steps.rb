@@ -22,9 +22,7 @@ Then(/^I should be following the discussion$/) do
 end
 
 Given(/^I am autofollowing new discussions in my group$/) do
-  @membership = @user.memberships.find_by(group_id: @group.id)
-  @membership.following_by_default = true
-  @membership.save!
+  @user.memberships.find_by_group_id(@group.id).change_volume! :email
 end
 
 When(/^I comment in the discussion$/) do
@@ -73,7 +71,7 @@ Then(/^my followed threads should include the discussion$/) do
 end
 
 Given(/^I am following by default in a group$/) do
-  @group.membership_for(@user).update_attribute(:following_by_default, true)
+  @group.membership_for(@user).change_volume! :email
 end
 
 When(/^there is a discussion created by someone in the group$/) do
@@ -86,11 +84,11 @@ Given(/^I have set my preferences to email me activity I'm following$/) do
 end
 
 Given(/^I am following the group$/) do
-  @group.membership_for(@user).update_attribute(:following_by_default, true)
+  @group.membership_for(@user).change_volume! :email
 end
 
 Given(/^I am not following the group$/) do
-  @group.membership_for(@user).update_attribute(:following_by_default, false)
+  @group.membership_for(@user).change_volume! :normal
 end
 
 Given(/^I click "(.*?)" on the group page$/) do |arg1|
@@ -123,11 +121,11 @@ Given(/^there are no emails waiting for me$/) do
 end
 
 Then(/^I should be following new discussions by default$/) do
-  expect(@group.membership_for(@user).following_by_default).to be true
+  expect(@group.membership_for(@user).volume).to eq 'email'
 end
 
 Then(/^I should not be following discussions by default$/) do
-  expect(@group.membership_for(@user).following_by_default).to be false
+  expect(@group.membership_for(@user).volume).to eq 'normal'
 end
 
 Given(/^I get mentioned in a discussion$/) do
@@ -204,7 +202,7 @@ Given(/^Dr Follow By Email wants to be emailed new threads and activity he is fo
 end
 
 Given(/^Dr Follow By Email is following everything in this group$/) do
-  @dr_follow_by_email.memberships.last.update_attribute(:following_by_default, true)
+  @dr_follow_by_email.memberships.last.change_volume! :email
 end
 
 Given(/^Mr New Threads Only only wants to be emailed about new discussions and proposals$/) do

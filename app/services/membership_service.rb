@@ -1,8 +1,8 @@
 class MembershipService
 
   def self.update(membership:, params:, actor:)
-    actor.ability.authorize! :follow_by_default, membership
-    membership.update! following_by_default: params[:following_by_default]
+    actor.ability.authorize! :update, membership
+    membership.change_volume! params[:volume]
   end
 
   def self.make_admin(membership:, params:, actor:)

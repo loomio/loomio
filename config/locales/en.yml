@@ -29,6 +29,7 @@ en:
     errors:
       messages:
         blank: "can't be blank"
+        invalid: "is not a valid value"
 
   errors:
     messages:

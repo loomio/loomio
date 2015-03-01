@@ -1,5 +1,6 @@
 en:
   common:
+    notifications_label: 'Notifications'
     notifications:
       email: 'Email'
       normal: 'Normal'
@@ -162,9 +163,6 @@ en:
         members: 'This group is now visible only to members'
         parent_members: 'This group is now visible only to members of your organization'
         public: 'This group is now visible to the public'
-      notifications:
-        follow_group: 'You will now receive notifications from all threads in this group'
-        unfollow_group: 'You will now receive notifications only from threads you are participating in'
       leave_group_success: 'You have successfully left this group'
       deactivate_group_success: 'You have successfully deactivated this group'
     description: 'Description'
@@ -173,7 +171,6 @@ en:
     subgroups: 'Subgroups'
     invite_people: 'Invite people'
     visibility_label: 'Visibility'
-    notifications_label: 'Notifications'
     options_label: 'Options'
     join_group: 'Join Group'
     options:
@@ -190,10 +187,9 @@ en:
       question: 'Are you sure you want to leave this group?'
       submit: 'Yes, leave this group'
     notifications:
-      following: 'Following'
-      following_details: 'You''ll be notified about all activity in this group'
-      not_following: 'Not following'
-      not_following_details: 'You''ll be notified about threads you are participating in'
+      email: 'You will receive notifications from all threads in this group'
+      normal: 'You will receive notifications only from threads you are participating in'
+      mute: 'Threads from this group will not appear in your inbox'
     privacy:
       private: 'This group is only visible to members'
       parent_members: 'This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
