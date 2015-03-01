@@ -50,5 +50,6 @@ angular.module('loomioApp').controller 'NavbarSearchController', ($scope, $timeo
       Records.searchResults.fetchByFragment($scope.query).then (response) ->
         $scope.searchResults = _.map response.search_results, (result) ->
           Records.searchResults.initialize result
+
         if $scope.currentSearchQuery == query
           $scope.searching = false

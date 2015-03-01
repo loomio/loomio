@@ -25,5 +25,5 @@
       %div{ng-hide: 'searching || noResultsFound()'}
         %li.navbar-search-list-item.selector-list-header{ng-show: 'searchResults'}
           %h3{translate: "navbar.search.discussions"}
-        %li.navbar-search-list-item.selector-list-item.media{ng-hide: 'searching', ng-repeat: 'searchResult in searchResults | orderBy:priority'}
+        %li.navbar-search-list-item.selector-list-item.media{ng-hide: 'searching', ng-repeat: 'searchResult in searchResults | orderBy: ["-priority"]'}
           %navbar_search_result{result: 'searchResult'}
