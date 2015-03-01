@@ -281,8 +281,6 @@ ja:
   edit_group_description: グループ情報を編集する
   group_subscription: グループ購読
   group_request:
-    beta_request_header: Loomio betaでグループを開始する
-    beta_request_description: Loomio Betaで意思決定を開始するための第一歩は、グループを開始することです
     neighbourhood_support_group: 例：地域サポートグループ
     confirmation:
       title: もう少しで完了です！メールをチェックしてください

@@ -6,22 +6,17 @@ da:
     link:
       blog: Blog
       contact: Kontakt os
-      donate: Donér nu
       press: Presse
       try_it: Prøv det
       log_in: LOG IND
       video: "Se mere om, hvordan Loomio fungerer"
       try_loomio_beta: Prøv beta-versionen af Loomio
-      check_out_loomio_beta: Tjek lige Loomio beta
       more: Mere
       top: Toppen af siden.
       public_groups: Offentlige grupper
       terms: Betingelser
       privacy: Personoplysninger
       services: Faciliteter
-    hero:
-      head_html: "Verdenen behøver en bedre måde at <strong>lave fælles beslutninger</strong>."
-      desc_html: "Loomio er fri og <a href=\"https://github.com/loomio/loomio\">open source</a> software så alle, uanset hvor de er, kan være med til at tage beslutninger der påvirker dem."
     product:
       header_html: "Når vi hører <strong>alle stemmer</strong>, så opnår vi <strong>bedre beslutninger</strong>."
       step1:
@@ -35,11 +30,6 @@ da:
         desc: "Udvikl forslaget sammen så  alle kan acceptere det. Alle forslag har en tydelig deadline, hvorfor du altid får et tideligt resultat."
     crowdfunding:
       header: "Vi er crowdfunded. Det betyder, at vi kan færdigbygge denne nye softwareplatform og give den til verdenen."
-    prototype:
-      header_html: We har allerede lavet en prototype og der er folk over hele verden der laver fantastiske ting med den
-      subhead_html: "<a href=\"%{try_loomio_link}\">Prøv Loomio Beta</a> nu. Du kan også <a href=\"%{donate_link}\">støtte projektet</a> og være med til at finansiere Loomio 1.0"
-    mobile:
-      header_html: "Loomio 1.0 vil fungere på alle enheder og bliver bygget med brug af det bedste indenfor <strong>åben mobilteknologi.</strong>"
     quote:
       header:
         rushkoff_html: "\"Loomio <strong>frigører internettets potentiale</strong> for at opnå konsensus mellem mennesker frem for at polarisere debatten.\"<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, forfatter af <em>Present Shock</em></div>"
@@ -60,5 +50,3 @@ da:
       gift:
         header: Gaveøkonomi
         desc: "Loomio er finansieret af dem, der betaler efter evne. Det betyder at platformen kan være fri for reklamer og tilgængelig for grupper uden penge."
-    vision:
-      header: Hjælp os med at gøre denne vision til virkelighed.

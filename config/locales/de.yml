@@ -421,8 +421,6 @@ de:
       following_details: Du wirst über jede Diskussion in dieser Gruppe informiert.
       not_following_details: Du wirst über Diskussionen informiert an denen Du beteiligt bist.
   group_request:
-    beta_request_header: Gründe eine Gruppe auf Loomio Beta
-    beta_request_description: "Um Entscheidungen auf Loomio Beta zu treffen, musst Du zuerst eine Gruppe gründen"
     neighbourhood_support_group: z. B. Nachbarschaftshilfe
     commercial_use_option: "in einem Unternehmen, einer formellen Organsation oder Arbeit"
     non_commercial_use_option: in einer Gruppe oder einem informellen Netzwerk
@@ -885,10 +883,7 @@ de:
       headline: "%{author}s Vorschlag in %{group} endet bald:"
       summary: Zusammenfassung
     thread_mailer:
-      footer_text: "Antworte auf diese eMail sofort oder auf Loomio ansehen:"
-      reply_or_view_online_html: "Antworte auf diese eMail sofort oder <a href='%{url}'>auf Loomio ansehen</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Nicht mehr folgen</a> beendet die eMail-Benachrichtigung über diese Diskussion."
-      change_email_preferences_html: "Ändere Deine <a href='%{email_preferences_url}'>eMail-Einstellungen</a> um weniger Loomio eMails zu erhalten."
       change_preferences: "Ändere Deine eMail Einstellungen:"
       new_motion: "%{who} schlägt vor:"
       motion_closing_soon: "Vorschlag endet in 24 Stunden:"

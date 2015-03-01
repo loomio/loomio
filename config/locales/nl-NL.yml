@@ -4,7 +4,7 @@ nl-NL:
       edit:
         title: E-mail voorkeuren
         when_do_you_want_emails: "E-mail mij:"
-        email_missed_yesterday: "'Gisteren op Loomio' - een dagelijkse samenvatting van wat er gebeurd is"
+        email_missed_yesterday: "'Gisteren op Loomio' - een dagelijkse samenvatting van wat ik gemist heb"
         email_when_mentioned: "Als ik een @benoeming krijg"
         email_followed_threads: Als er activiteit is in gesprekken die ik volg.
         email_when_proposal_closing_soon: 24 uur voordat een voorstel sluit.
@@ -40,7 +40,7 @@ nl-NL:
   devise:
     invitations:
       send_instructions: "Een uitnodiging is verstuurd naar %{email}."
-      invitation_token_invalid: "Deze uitnodiging is niet langer geldig!"
+      invitation_token_invalid: "Deze uitnodiging is niet meer geldig!"
       updated: Account gemaakt.
       no_invitations_remaining: Geen uitnodigingen over
     mailer:
@@ -110,6 +110,8 @@ nl-NL:
     logo_upload: Upload nieuw logo
     edit_description: Bewerk omschrijving
     group_category: Vind meer groepen als deze
+    unread_comments: Ongelezen reacties
+    new_votes: Nieuwe stemmen
   views:
     pagination:
       previous: Vorige
@@ -187,16 +189,18 @@ nl-NL:
     blog: Blog
     contact: Contact
     privacy: Privacy
+    pricing: Prijsplan
     public_groups: Openbare groepen
     terms: Voorwaarden
+    independent_install_html: "%{hostname} draait als een onafhankelijke kopie van Loomio: <a href=\"http://github.com/loomio/loomio\">meer informatie</a>."
   inbox:
     clear: Leegmaken
     title: Inbox
     preferences: Inbox voorkeuren
-    what_you_have_not_read_yet: Hier de activiteiten die je nog niet hebt gelezen.
+    what_you_have_not_read_yet: Hier zijn je ongelezen activiteiten.
     dropdown-btn: Inbox
     empty: "Je bent helemaal bij! Er zijn geen ongelezen reacties."
-    preferences_instructions_html: "<strong>Sleep onderwerpen</strong> om te orderen.  <strong>Uitvinken</strong> om te verwijderen uit de inbox."
+    preferences_instructions_html: "<strong>Sleep onderwerpen</strong> om te orderen.\n<strong>Vink uit</strong> om te verwijderen uit de inbox."
   notifications:
     header: Meldingen
     new_discussion: begon een discussie
@@ -215,6 +219,9 @@ nl-NL:
     motion_blocked: blokkeerde het voorstel
     motion_outcome_created: heeft een uitkomst van het voorstel gepubliceerd
     motion_outcome_updated: werkte de uitkomst van het voorstel bij
+    email_actions:
+      following_thread: "Je volgt nu het gesprek: %{thread_title}"
+      not_following_thread: "Je volgt niet langer het gesprek: %{thread_title}"
   edit_discussion_context: Bewerk discussie beschrijving
   request_new_group: Begin een groep
   start_new_group: Begin een nieuwe groep
@@ -259,13 +266,13 @@ nl-NL:
     confirm_account_deactivation: Weet je zeker dat je je account wil deactiveren?
     reactivation_html: "Neem <a href='%{link}'>contact</a> met ons op om je account te heractiveren."
     deactivation:
-      title: Account wordt uitgeschakeld
+      title: Account wordt gedeactiveerd
       query: Zou je ons willen vertellen waarom je je account deactiveert?
-      only_coordinator: "Een groep moet minimaal een coördinator hebben. Je bent momenteel de enige coordinator van de volgende groepen:"
+      only_coordinator: "Een groep moet minimaal één coördinator hebben. Je bent momenteel de enige coördinator van de volgende groepen:"
       instructions: "Om je account te deactiveren, moet je ofwel een andere coördinator toevoegen of de groepen deactiveren."
       info_title: Wat betekent het deactiveren van je account?
       memberships: Je zal niet langer worden weergegeven als lid in de groepen waar je lid van bent.
-      group_contributions: "De reacties, voorstellen en discussies die je in groepen hebt gemaakt zullen blijven, maar we halen je naam wel overal weg."
+      group_contributions: "De reacties, voorstellen en discussies die je in groepen hebt gemaakt zullen blijven staan, maar we halen je naam wel overal weg."
       emails: Je zal geen Loomio gerelateerde e-mails meer van ons krijgen.
   group_form:
     name: Groepsnaam
@@ -301,14 +308,14 @@ nl-NL:
       "true": "Iedereen in %{parent_group_name} kan discussies zien"
       "false": Alleen leden kunnen discussies zien
     discussion_privacy_options:
-      label: Wie kunnen discussies zien?
+      label: Zichtbaarheid van discussies
       hint: Openbare discussies kunnen bekeken worden door iedereen.
       public_only_html: Alleen openbare discussies
       public_or_private_html: Sta zowel openbare als besloten discussies toe
       private_only_html: Alleen besloten discussies
-    learn_about_permissions: Ontdek meer over groepspermissies
+    learn_about_permissions: Ontdek meer over groepsmachtigingen
   group_permissions:
-    header: Groepspermissies
+    header: Groepsmachtigingen
     coordinators_can: "Coördinatoren kunnen:"
     c1: De groepsinstellingen veranderen
     c2: De titel en context van een discussie bewerken.
@@ -421,10 +428,10 @@ nl-NL:
       following_details: Je wordt op de hoogte gesteld van elk gesprek in deze groep.
       not_following_details: Je wordt op de hoogte gesteld van gesprekken waar je aan deelneemt.
   group_request:
-    beta_request_header: Begin een groep op Loomio Beta
-    beta_request_description: "Om te beginnen met het maken van beslissingen op Loomio Beta, is het maken van een groep de eerste stap"
+    header: Begin een groep
+    desc: "Om besluitvorming op Loomio te starten is de eerste stap het maken van een groep:"
     neighbourhood_support_group: b.v. Buurt Steungroep
-    commercial_use_option: "in een bedrijf, formele organisatie of werkplek"
+    commercial_use_option: "in een bedrijf,  organisatie of werkplek"
     non_commercial_use_option: en een gemeenschapsgroep of informeel netwerk
     please_select_an_option: Selecteer een optie
     confirmation:
@@ -432,12 +439,12 @@ nl-NL:
       body_html: "We hebben je een e-mail gestuurd met een uitnodiging om jouw groep te beginnen.\n\nAls je niet binnen een paar minuten iets in je inbox ziet, e-mail ons dan op<a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> ging akkoord met het voorstel."
-    user_abstained_on_proposal_html: "<strong>%{name}</strong> had geen mening over het voorstel."
-    user_disagreed_on_proposal_html: "<strong>%{name}</strong> ging niet akkoord met het voorstel."
+    user_abstained_on_proposal_html: "<strong>%{name}</strong> onthield zich van het voorstel."
+    user_disagreed_on_proposal_html: "<strong>%{name}</strong> wat het oneens met het voorstel."
     user_blocked_on_proposal_html: "<strong>%{name}</strong> blokkeerde het voorstel."
-    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> ging akkoord met het voorstel:"
-    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> had geen mening over het voorstel:"
-    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> ging niet akkoord met het voorstel:"
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> was het eens met het voorstel:"
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> onthield zich van het voorstel:"
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> wat het oneens met het voorstel:"
     user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> blokkeerde het voorstel:"
   discussion_items:
     new_discussion: begon de discussie
@@ -470,7 +477,7 @@ nl-NL:
       enable: Bekijk alleen ongelezen discussies
       disable: Bekijk gelezen en ongelezen discussies
     filter_followed:
-      enable: Laat alleen gevolgde discussies zien
+      enable: Laat alleen discussies zien die je volgt
       disable: Bekijk gevolgde en niet gevolgde discussies
     empty:
       no_discussions: Er zijn geen discussies in jouw groepen.
@@ -489,8 +496,8 @@ nl-NL:
     see_history: Bekijk geschiedenis
     click_to_follow: Klik om gesprek te volgen
     click_to_unfollow: Klik om gesprek niet meer te volgen
-    following_details: Je wordt op de hoogte gesteld van wat er in dit gesprek gebeurt.
-    not_following_details: Je wordt niet op de hoogte gesteld van wat er in dit gesprek gebeurt.
+    following_details: Je wordt op de hoogte gesteld van elke activiteit in gesprek.
+    not_following_details: Je wordt niet op de hoogte gesteld van activiteit in dit gesprek.
   description_history:
     header: Mutatie geschiedenis
     subheader: Versie
@@ -509,7 +516,7 @@ nl-NL:
   edit_discussion: Bewerk discussie
   move_discussion: Verplaats discussie
   move_discussion_to_hidden_group: "Deze discussie is op het moment openbaar. Door de discussie te verplaatsen naar een verborgen groep, zal deze afgeschermd worden."
-  move_discussion_to_public_group: De discussie is momenteel besloten. Door de discussie naar een openbare groep te verplaatsen wordt deze openbaar.
+  move_discussion_to_public_group: Deze discussie is momenteel besloten. Door de discussie naar een openbare groep te verplaatsen wordt deze openbaar.
   move_discussion_where: Waar wil je de discussie naartoe verplaatsen?
   delete_discussion: Verwijder discussie
   confirm_delete_discussion: Weet je zeker dat je deze discussie permanent wilt verwijderen?
@@ -550,7 +557,7 @@ nl-NL:
       abstain: onthouden
       block: geblokkeerd
   unable_to_vote:
-    permission_denied: Je hebt geen rechten om op deze motie te stemmen
+    permission_denied: Je bent niet gemachtigd om op deze motie te stemmen
     motion_closed: Deze motie is al gesloten
   edit_comment:
     comment_changes: Reactie wijzigingen
@@ -559,7 +566,7 @@ nl-NL:
     coordinating: Coördineer jouw Loomio groep
     coordinating_details: "Als coördinator ben je verantwoordelijk voor het instellen van je Loomio groep en het\nuitnodigen van iedereen. Evenals het leren te gebruiken van een nieuw stukje software, leert je groep nieuwe processen om efficiënter samen te werken en goede beslissingen samen te nemen.\nHier zijn wat tips om jouw groep te laten slagen:\n"
     different_ways: Verschillende manieren waarop je Loomio kunt gebruiken
-    engaging_html: "<h2>Tips voor het betrekken van jouw groep</h2>\n<p>Mensen zullen enthousiast mee willen doen als er een boeiend voorstel op tafel ligt.  Een goed voorstel bevat een plan van aanpak voor de groep, zodat het meteen duidelijk is wat het betekent om het eens of oneens te zijn. Denk na over hoe je discussies kan herkennen die je groepsleden nu persoonlijk of via e-mail proberen te voeren en die makkelijker zouden gaan wanneer ze op Loomio plaatsvonden.</p>\n<p>Als je groep net begint, kan je starten met een luchtige beslissing om iedereen wat te laten spelen met dit instrument en het in actie te zien.</p>\n<p>Een andere manier om mensen te betrekken bij een discussie is het gebruik van de \"@gebruikersnaam\" manier om mensen direct een melding te geven; ze krijgen een e-mail waarin staat dat ze genoemd zijn in een reactie.</p>\n"
+    engaging_html: "<h2>Tips voor het betrekken van jouw groep</h2>\n<p>Mensen zullen enthousiast mee willen doen als er een boeiend voorstel op tafel ligt.  Een goed voorstel bevat een plan van aanpak voor de groep, zodat het meteen duidelijk is wat het betekent om het eens of oneens te zijn. Denk na over hoe je discussies kan herkennen die je groepsleden nu persoonlijk of via e-mail proberen te voeren en die makkelijker zouden gaan wanneer ze op Loomio plaatsvonden.</p>\n<p>Als je groep net begint, kan je starten met een luchtige beslissing om iedereen wat te laten spelen met dit instrument en het in actie te zien.</p>\n<p>Een andere manier om mensen te betrekken bij een discussie is het gebruik van de \"@gebruikersnaam\" optie om mensen direct een melding te geven; ze krijgen een e-mail waarin staat dat ze genoemd zijn in een reactie.</p>\n"
     example1_html: "<h3>Je hebt de groep nodig om een breed onderwerp te bespreken en om samen tot een oplossing te komen</h3>\n<p>Strategie: Begin een tijdje met discussiëren voor er een voorstel wordt gemaakt.</p>\n<p>Discussies hebben vaak de beste uitkomst als er een gedeeld begrip is met betrekking tot het probleem alvorens tot een oplossing te komen. Als mensen betrokken zijn bij het proces, zullen ze eerder geneigd zijn dit resultaat te steunen.</p>\n"
     example2_html: "<h3>Je hebt al een voorstel in gedachten en je wilt een besluit van de groep om verder te kunnen.</h3>\n<p>Strategie: Begin een discussie over een specifieke beslissing en maak meteen een voorstel.</p>\n<p>Als je reeds een heldere uitkomst in gedachten hebt, maar je wilt er zeker van zijn dat niemand bezwaar heeft, \nkan je het voorstel gebruiken om snelle feedback te krijgen met betrekking tot een beslissing.</p>\n<p>Je kan dingen doen als een document afronden, een aanvraag goedkeuren of een streep zetten onder een klus.</p>\n"
     get_in_touch: Neem contact op
@@ -595,6 +602,8 @@ nl-NL:
     video_id: "52025402"
     video_tutorial: Video uitleg
     video_tutorial_description: Bekijk de video voor een snelle demonstratie van hoe Loomio te gebruiken.
+    what_is_loomio: Wat is Loomio?
+    what_is_loomio_description_html: "<p> Loomio is een simpel, gebruikersvriendelijk online gereedschap voor het maken van beslissingen.\nLoomio geeft je de mogelijkheid om online discussies te voeren, mensen uit te nodigen om deel te nemen, tijdig een beslissing te nemen en beraadslaging om te zetten naar actie in real-life.</p>\n<p> Loomio is vrije en open source software dat ontwikkeld wordt door een coöperatieve gemeenschap in Wellington, Nieuw Zeeland. </p>\n"
   hint:
     context: Tips voor het gebruik van het omschrijvingenveld
     discussion: Tips voor het beginnen van een boeiende discussie
@@ -636,6 +645,7 @@ nl-NL:
   remember_me: Onthoud mij
   signing_in: Aanmelden
   or: of
+  invalid_email: Het ingevoerde e-mail adres werd niet herkend. Controleer of je het goed hebt ingevoerd of probeer een ander e-mail adres.
   forgot_your_password: Wachtwoord vergeten?
   dont_have_an_account: Heb je geen account?
   create_one_now: Maak er nu een
@@ -746,7 +756,7 @@ nl-NL:
     profile: Bewerk profiel
     picture: Afbeelding
     use_initials: Gebruik initialen
-    use_uploaded: Gebruik geuploade afbeelding
+    use_uploaded: Gebruik geüploade afbeelding
     use_gravtar: Gebruik Gravatar
     upload_new_image: Upload nieuwe afbeelding
   group_setup:
@@ -778,6 +788,7 @@ nl-NL:
         close_at_date: Sluit op
       user:
         name: Volledige naam
+        username: Gebruikersnaam
         email: E-mail
         password: Wachtwoord
         password_confirmation: Bevestig wachtwoord
@@ -842,6 +853,7 @@ nl-NL:
       subject: Loomio - Samenvatting van de laatste 24 uur
     missed_yesterday:
       subject: Gisteren op Loomio
+      headlines: Nieuws
       mark_as_read: Markeer als gelezen
       thanks_for_reading: "Bedankt voor het lezen, een fijne dag gewenst!"
       click_here_to_mark_all_as_read_html: "Hier zie je wat er gisteren op Loomio gebeurde.\nAls je het hebt gelezen, klik <a href=\"%{link}\">markeer als gelezen</a> om het te verwijderen uit je Loomio Inbox.\n"
@@ -884,25 +896,28 @@ nl-NL:
       headline: "Het voorstel van %{author} in %{group} sluit binnenkort: "
       summary: Samenvatting
     thread_mailer:
-      footer_text: "Reageer direct op deze e-mail of bekijk het op Loomio:"
-      reply_or_view_online_html: "Reageer direct op deze e-mail of <a href='%{url}'>bekijk hem op Loomio</a>."
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Ontvolg</a> om geen e-mails meer te ontvangen over deze discussie."
-      change_email_preferences_html: "Verander je <a href='%{email_preferences_url}'>e-mail voorkeuren</a> om je uit te schrijven van Loomio e-mails."
+      footer_text: "Beantwoord deze e-mail direct of bekijk op %{hostname}:"
+      reply_or_view_online_html: "Beantwoord deze e-mail direct of <a href='%{url}'>bekijk deze op %{hostname}</a>."
+      unfollow_discussion_html: "<a href='%{unfollow_url}'>Niet meer volgen</a> om geen e-mails meer te ontvangen over deze discussie."
+      unfollow_discussion_text: "Bezoek de volgende link om e-mails over deze discussie te stoppen: %{unfollow_url}"
+      follow_discussion_html: "<a href='%{follow_url}'>Volg</a> om e-mails te ontvangen over deze discussie."
+      follow_discussion_text: "Bezoek de volgende link om e-mails over deze discussie te ontvangen: %{follow_url}"
+      change_email_preferences_html: "Verander jouw <a href='%{email_preferences_url}'>e-mail voorkeuren</a> om je uit te schrijven van deze e-mails."
       change_preferences: "Verander je e-mail voorkeuren:"
       new_motion: "%{who} stelde voor:"
       motion_closing_soon: "Voorstel sluit binnen 24 uur:"
       proposal_closed: "Voorstel sloot:"
       specify_outcome_html: "Je voorstel is gesloten. <a href='%{link}'>Specificeer een uitkomst</a> om iedereen te laten weten wat het resultaat is."
       specify_outcome: "Je voorstel is gesloten. Specificeer een uitkomst om iedereen te laten weten wat het resultaat is:"
-      outcome_created: "%{who} heeft een uitkomst van een voorstel geschreven:"
+      outcome_created: "%{who} heeft een uitkomst van een voorstel opgesteld:"
       you_agreed: "Je %{past_tense_position}"
     verification:
       header: "Je bent bijna klaar!"
       intro: "Klik op deze verificatielink om je aanvraag te voltooien:"
       ignore: Je kan deze e-mail negeren als je geen aanvraag hebt ingediend om lid te worden van Loomio.
   meta_tags:
-    default_title: "Loomio | Samen besluiten nemen"
-    default_description: Loomio is een eenvoudig te gebruiken hulpmiddel voor gezamenlijke besluitvorming. Het maakt het verspreide groepen mogelijk om snel beslissingen te nemen en constructieve acties te starten.
+    default_title: "Loomio | Gezamenlijke Besluitvorming"
+    default_description: Loomio is een eenvoudig te gebruiken online gereedschap voor gezamenlijke besluitvorming. Het maakt het verspreide groepen mogelijk om snel beslissingen te nemen en constructieve acties te starten.
   about_loomio: Over Loomio
   ago: "%{quantity_of_time} geleden"
   approve: Goedkeuren
@@ -950,7 +965,7 @@ nl-NL:
   translate_this_string: "Vertalen naar %{language}"
   failed_translation: Vertaling voltooien mislukt
   options: Opties
-  rss_subscribe: Meld aan voor feed
+  rss_subscribe: Meld je aan voor feed
   ok_got_it: "Okee, ik snap 't!"
   remove: Verwijder
   save: Bewaar
@@ -1041,7 +1056,7 @@ nl-NL:
     please_wait: Even geduld
     privacy: Privacy
     private: Besloten
-    permissions: Rechten
+    permissions: Machtigingen
     public: Openbaar
     email: E-mail
     start_group: "Begin groep!"
@@ -1054,7 +1069,7 @@ nl-NL:
     business: Zakelijk
     collective: Collectief
     community_group: Community groep
-    co_operative: "Coöperatief "
+    co_operative: Coöperatie
     democratic_organisation: Democratische organisatie
     education: Educatie
     environmental_group: Milieubeweging
@@ -1066,7 +1081,7 @@ nl-NL:
     open_source_software: Open source software
     political_initiative: Politiek initiatief
     social_enterprise: Sociale onderneming
-    social_justice: Sociale gerechtigheid
+    social_justice: Sociaal juridisch
     advocacy_group: Lobbygroep
     science: Wetenschap
     technology: Technologie

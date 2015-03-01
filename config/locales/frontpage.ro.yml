@@ -6,22 +6,17 @@ ro:
     link:
       blog: Blog
       contact: Contact
-      donate: Doneaza acum
       press: Apasa
       try_it: Incearca-l
       log_in: AUTENTIFICARE
       video: Vezi mai mult despre cum functioneaza Loomio
       try_loomio_beta: Incearca Loomio beta
-      check_out_loomio_beta: Verifica Loomio beta
       more: Mai mult
       top: Sus
       public_groups: Grupuri publice
       terms: Termeni
       privacy: Confidentialitate
       services: Servicii
-    hero:
-      head_html: "Lumea are nevoie de un mijloc mai bun pentru <strong>a lua decizii impreuna</strong>."
-      desc_html: "Loomio este un program liber si <a href=\"https://github.com/loomio/loomio\">sursa deschisa</a> la dispozitia celor care vor sa participe la luarea deciziilor care ii afecteaza. "
     product:
       header_html: "Cand se aud <strong>toate vocile</strong>, se iau <strong>decizii mai bune</strong>."
       step1:
@@ -35,11 +30,6 @@ ro:
         desc: "Dezvoltati propunerile impreuna astfel incat sa functioneze pentru toata lumea. Fiecare propunere are un termen clar astfel veti obtine un rezutat clar. "
     crowdfunding:
       header: Adunam fonduri astfel incat sa putem construi aceasta noua platforma si sa o punem la dispozitia tuturor.
-    prototype:
-      header_html: Am construit deja un prototip iar oamenii de pretutindeni fac lucruri uimitoare cu ajutorul lui
-      subhead_html: "<a href=\"%{try_loomio_link}\">Incearca Loomio Beta</a> acum. Sau poți <a href=\"%{donate_link}\">sprijini proiectul</a> donand pentru Loomio 1.0"
-    mobile:
-      header_html: "Loomio 1.0 va functiona pe orice dispozitiv, fiind construit in <strong>cea mai buna tehnologie open mobile.</strong>"
     quote:
       header:
         rushkoff_html: "“Loomio <strong>dezlantuie potentialul internetului</strong> prin aducerea oamenilor spre consens, mai degraba decat spre dezbatere polarizata.” &quot; <div class=\"attributation\"> - <a href=\"http://rushkoff.com\">Douglas Rushkoff</a> , autor al cartii <em>Socul Prezent</em> </div>"
@@ -60,5 +50,3 @@ ro:
       gift:
         header: Finantare prin donatii
         desc: Loomio este sustinut de cei care platesc în acord cu posibilitatile lor. Acest lucru pastreaza platforma libera de reclame si accesibila grupurilor fara bani.
-    vision:
-      header: Ajuta-ne sa transformam aceasta viziune in realitate.

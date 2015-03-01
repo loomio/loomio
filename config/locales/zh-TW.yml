@@ -107,6 +107,8 @@ zh-TW:
     logo_upload: 上傳新的 logo
     edit_description: 編輯描述
     group_category: 尋找更多類似的群組
+    unread_comments: 未讀的意見
+    new_votes: 新的投票
   views:
     pagination:
       previous: 上一頁
@@ -173,6 +175,7 @@ zh-TW:
     blog: 部落格
     contact: 聯絡我們
     privacy: 隱私設定
+    pricing: 價格
     public_groups: 公開群組
     terms: 聲明
   inbox:
@@ -201,6 +204,9 @@ zh-TW:
     motion_blocked: 提案已阻擋
     motion_outcome_created: 已發表此提案的成果
     motion_outcome_updated: 更新此提案的結果
+    email_actions:
+      following_thread: "您正在跟隨此討論串：「%{thread_title}」"
+      not_following_thread: "您不再跟隨此討論串：「%{thread_title}」"
   edit_discussion_context: 編輯論述
   request_new_group: 啟動群組
   start_new_group: 啟動新的群組
@@ -407,8 +413,8 @@ zh-TW:
       following_details: 此群組一有新的討論主題您將會被通知。
       not_following_details: 您參與的討論主題一有新的意見您將會被通知。
   group_request:
-    beta_request_header: 在 Loomio Beta 上啟動群組
-    beta_request_description: 要開始在 Loomio Beta 上作決策，第一步是啟動群組
+    header: 啟動群組
+    desc: 開始在 Loomio 作決策，第一步是啟動群組：
     neighbourhood_support_group: 例如：守望相助支援群組
     commercial_use_option: 在公司、正式組織或是職場
     non_commercial_use_option: 在社群群組中或是非正式的網絡
@@ -581,6 +587,8 @@ zh-TW:
     video_id: "52025402"
     video_tutorial: 影片教學
     video_tutorial_description: 點閱一段簡單示範的影片以瞭解如何使用 Loomio。
+    what_is_loomio: Loomio 是？
+    what_is_loomio_description_html: "<p> Loomio 是一套簡單、人性化的線上協同決策制定利器。\nLoomio 讓您能在線上主持討論、邀請對的人來參與，即時作出討論，進而在深思熟慮後轉變為現實世界的行動。</p>\n<p> Loomio 是自由、開源的軟體，由紐西蘭威靈頓的一家合作社（worker-owned cooperative）所發展。</p>\n"
   hint:
     context: 使用論述控制板的小提示
     discussion: 發起一段激動人心討論的小提示
@@ -622,6 +630,7 @@ zh-TW:
   remember_me: 記住登入資訊
   signing_in: 登入中
   or: 或者
+  invalid_email: 您所輸入的電子郵件無法辨識。檢查輸入是否正確或是嘗試別的電子郵件地址。
   forgot_your_password: 忘記密碼？
   dont_have_an_account: 還沒有帳號？
   create_one_now: 現在就建立帳號
@@ -829,6 +838,7 @@ zh-TW:
       subject: Loomio — 過去 24 小時的摘要
     missed_yesterday:
       subject: 昨日 Loomio
+      headlines: 頭條
       mark_as_read: 設為已讀
       thanks_for_reading: 感謝您的閱讀，祝您有美好的一天！
       click_here_to_mark_all_as_read_html: "這些是昨日 Loomio 發生的大小事。 \n一旦您讀過，點擊<a href=\"%{link}\">設為已讀</a>就能從您的 Loomio 收件箱中移除。 \n"
@@ -871,10 +881,10 @@ zh-TW:
       headline: "%{author} 在 %{group} 群組的提案很快就要定案了："
       summary: 摘要
     thread_mailer:
-      footer_text: 直接回覆本電子郵件，或是到 Loomio 上觀看：
-      reply_or_view_online_html: "直接回覆此 Email，或是<a href='%{url}'>在 Loomio 上觀看</a>。"
       unfollow_discussion_html: "<a href='%{unfollow_url}'>取消跟隨</a>以停止接收有關此討論的電子郵件。"
-      change_email_preferences_html: "變更您的 <a href='%{email_preferences_url}'>email 偏好設定</a>以取消訂閱來自 Loomio 的電子郵件。"
+      unfollow_discussion_text: "連到之後的連結以停止接收有關此討論串的電子郵件：%{unfollow_url}"
+      follow_discussion_html: "<a href='%{follow_url}'>跟隨</a>以接收有關此討論串的電子郵件。"
+      follow_discussion_text: "連到之後的連結以接收有關此討論串的電子郵件：%{follow_url}"
       change_preferences: 變更您的電子郵件偏好設定：
       new_motion: "%{who} 的提議："
       motion_closing_soon: 24 小時內定案的提議：

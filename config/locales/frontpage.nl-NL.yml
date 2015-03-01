@@ -6,13 +6,12 @@ nl-NL:
     link:
       blog: Blog
       contact: Contact
-      donate: Doneer vandaag
       press: Pers
       try_it: Probeer het
       log_in: LOG IN
       video: Bekijk meer over hoe Loomio werkt
+      try_loomio: Probeer Loomio uit
       try_loomio_beta: Probeer Loomio beta
-      check_out_loomio_beta: Bekijk Loomio beta
       more: Meer
       top: Naar boven
       public_groups: Openbare groepen
@@ -20,8 +19,8 @@ nl-NL:
       privacy: Privacy
       services: Diensten
     hero:
-      head_html: "De wereld heeft een betere manier nodig om <strong>samen beslissingen te nemen</strong>."
-      desc_html: "Loomio is vrije en <a href=\"https://github.com/loomio/loomio\">open software</a> voor iedereen, waar ook ter wereld, om deel te nemen aan beslissingen die hen aangaan."
+      header_html: "Loomio is de gemakkelijkste manier om<br /> <strong>samen beslissingen te maken</strong>."
+      lead_html: "Loomio stelt organisaties en gemeenschappen in staat om <strong>discussies om te zetten in actie</strong>, waar dan ook."
     product:
       header_html: "Als we <strong>alle stemmen</strong> horen, nemen we <strong>betere beslissingen</strong>."
       step1:
@@ -35,30 +34,25 @@ nl-NL:
         desc: Ontwikkel het voorstel samen zodat het voor iedereen oké is. Iedere beslissing heeft een duidelijke deadline zodat je altijd een helder resultaat krijgt.
     crowdfunding:
       header: We zijn aan het crowdfunden om dit nieuwe platform af te kunnen maken en weg te geven aan de wereld.
-    prototype:
-      header_html: "We hebben al een prototype gebouwd, en mensen over de hele wereld doen er geweldige dingen mee"
-      subhead_html: "<a href=\"%{try_loomio_link}\">Probeer Loomio Beta</a> nu. Of <a href=\"%{donate_link}\">ondersteun het project </a> om te helpen Loomio 1.0 te financieren."
     mobile:
-      header_html: "Loomio 1.0 werkt op elk apparaat, gemaakt met het beste van <strong>open mobiele technologie.</strong>"
+      lead_html: "<strong>Loomio werkt op elk apparaat,</strong><br />maak beslissingen, altijd en overal."
     quote:
       header:
         rushkoff_html: "“Loomio <strong>laat de potentie van het internet los</strong> om mensen richting consensus te bewegen in plaats van gepolariseerd debat.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, auteur van <em>Present Shock</em></div>"
-        sifry_html: "“Loomio raakt de 'sweet spot' tussen <strong>individuele stemmen</strong> en <strong>collectieve besluitvorming</strong>.”<div class=\"attributation\">– Micah Sifry, Redacteur, <em><a href=\"http://techpresident.com\">TechPresident</a></em></div>"
+        sifry_html: "“Loomio raakt de juiste snaar tussen <strong>individuele stem</strong> en <strong>collectieve besluitvorming</strong>.”<div class=\"attributation\">– Micah Sifry, Redacteur, <em><a href=\"http://techpresident.com\">TechPresident</a></em></div>"
     team:
       header: Over Loomio
       desc: "We zijn een klein team van open-source ontwikkelaars en mensenrechtenactivisten die bij Enspiral in Aotearoa, Nieuw Zeeland, werken, met een groot netwerk van vrienden, hulp en adviseurs van over de hele wereld."
     ideals:
       community:
         header: Samenwerking gedreven door de gemeenschap
-        desc: "Loomio wordt gemaakt door een coöperatie in eigendom van de medewerkers. We zijn een sociale onderneming die hard werkt aan het maximaliseren van positieve sociale impact, niet winst."
+        desc: "Loomio wordt gemaakt door een coöperatieve gemeenschap. We zijn een sociale onderneming die hard werkt aan het maximaliseren van positieve sociale impact, niet winst."
       independent:
         header: Onafhankelijk en neutraal
         desc: "We bieden een mogelijkheid om samen te komen voor welke groep dan ook, onafhankelijk van politieke- of bedrijfsbelangen. We zullen je gegevens nooit verkopen."
       open:
         header: Vrije en open software
-        desc: "De broncode van Loomio is openbaar, zodat die iedereen die kan uitvoeren, lezen, ervan leren, aanpassen en doorgeven."
+        desc: "De broncode van Loomio is openbaar, zodat die iedereen deze kan uitvoeren, lezen, ervan leren, aanpassen en doorgeven."
       gift:
         header: Weggeef economie
         desc: Loomio wordt ondersteund door mensen die bijdragen naar wat ze kunnen betalen. Dit houdt het platform vrij van advertenties en toegankelijk voor groepen die geen geld hebben.
-    vision:
-      header: Help ons deze visie in een realiteit veranderen.

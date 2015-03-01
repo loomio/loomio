@@ -110,6 +110,8 @@ it:
     logo_upload: Carica nuovo logo
     edit_description: Modifica descrizione
     group_category: Cerca altri gruppi come questo
+    unread_comments: Commenti non ancora letti
+    new_votes: Nuovi voti
   views:
     pagination:
       previous: Prec
@@ -354,6 +356,7 @@ it:
   edit_memberships: Modifica iscrizioni
   add_new_member: Aggiungi un nuovo membro
   invite_members_to_group: "Invita membri a %{which_group}"
+  remaining_invites_count: "%{count} inviti rimanenti"
   get_in_touch_link: contattaci
   email_members_in_group: "Invia una mail ai membri di %{which_group}"
   subject_error: Inserisci un oggetto
@@ -420,8 +423,6 @@ it:
       following_details: Riceverai una notifica per ogni thread in questo gruppo.
       not_following_details: Riceverai una notifica per ogni conversazione a cui stai partecipando.
   group_request:
-    beta_request_header: Inizia un gruppo in Loomio Beta
-    beta_request_description: "Per iniziare a prendere decisioni su Loomio Beta, il primo passo e di iniziare un gruppo."
     neighbourhood_support_group: es. Gruppo di supporto del quartiere
     commercial_use_option: "in un'impresa, un'organizzazione o sul posto di lavoro"
     non_commercial_use_option: in una comunità o un network informale
@@ -434,6 +435,10 @@ it:
     user_abstained_on_proposal_html: "<strong>%{name}</strong> si è astenuto/a sulla proposta."
     user_disagreed_on_proposal_html: "<strong>%{name}</strong> è in disaccordo con la proposta."
     user_blocked_on_proposal_html: "<strong>%{name}</strong> è completamente in disaccordo (blocco) con la proposta."
+    user_agreed_on_proposal_with_statement_html: "<strong>%{name}</strong> è d'accordo con la proposta:"
+    user_abstained_on_proposal_with_statement_html: "<strong>%{name}</strong> si astiene sulla proposta:"
+    user_disagreed_on_proposal_with_statement_html: "<strong>%{name}</strong> non è d'accordo con la proposta:"
+    user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> pone il veto alla proposta:"
   discussion_items:
     new_discussion: ha creato la discussione
     new_motion: ha creato una proposta
@@ -591,6 +596,7 @@ it:
     video_tutorial: Tutorial video
     video_tutorial_description: Guarda il video per una dimostrazione veloce di come funziona Loomio.
     what_is_loomio: "Cos'è Loomio?"
+    what_is_loomio_description_html: "<p> Loomio è uno strumento online facile e user-friendly per il decision-making collaborativo.\n    Loomio vi permette di condurre discussioni online, di invitare la gente coinvolta a partecipare, di raggiungere delle decisioni in tempo e di trasformare quanto deliberato in azioni efficaci nel mondo reale. </p>\n<p> Loomio è software gratuito, libero e open source software sviluppato da una cooperativa di lavoratori con base a Wellington, Nuova Zelanda. </p>\n"
   hint:
     context: Consigli per utilizzare il pannello contestuale
     discussion: Consigli per iniziare una discussione coinvolgente
@@ -775,6 +781,7 @@ it:
         close_at_date: In chiusura
       user:
         name: Nome completo
+        username: Nome Utente
         email: Email
         password: Password
         password_confirmation: Conferma la password
@@ -839,6 +846,7 @@ it:
       subject: Loomio - Riassunto delle ultime 24 ore
     missed_yesterday:
       subject: Ieri su Loomio
+      headlines: I Titoli
       mark_as_read: Contrassegnato come letto
       thanks_for_reading: "Grazie per aver letto, buona giornata!"
       click_here_to_mark_all_as_read_html: "Ecco cos'è successo su Loomio ieri.\nUna volta che l'hai letto, clicca <a href=\"%{link}\">segna come letto</a> per rimuoverlo della tua posta in arrivo di Loomio.\n"
@@ -881,10 +889,7 @@ it:
       headline: "la proposta di %{author} in %{group} sta per essere chiusa:"
       summary: Riassunto
     thread_mailer:
-      footer_text: "Rispondi direttamente a questa mail o visualizzala su Loomio:"
-      reply_or_view_online_html: "Rispondi direttamente a questa mail o <a href='%{url}'>visualizzala su Loomio</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Smetti di seguire</a> per non ricevere più mail su questa discussione."
-      change_email_preferences_html: "Cambia le tue <a href='%{email_preferences_url}'>opzioni email</a> per disiscriverti dalle mail di Loomio."
       change_preferences: "Cambia le tue opzioni email:"
       new_motion: "%{who} ha proposto:"
       motion_closing_soon: "La proposta chiude in 24 ore:"
@@ -969,6 +974,7 @@ it:
   google: Google
   persona: Persona
   common:
+    markdown_help_tooltip: Qualche nozione di base per formattare i testi con Markdown
     settings: Impostazioni
     dashboard: Dashboard
     unread: Non letto
@@ -1071,3 +1077,4 @@ it:
     women: Donne
     media: Media
     health: Salute
+  start_your_group: Crea il tuo gruppo

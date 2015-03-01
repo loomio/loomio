@@ -413,8 +413,6 @@ eo:
       following_details: Vi estos informata pri ĉiu fadeno en ĉi tiu grupo.
       not_following_details: Vi estos informata pri fadenoj en kiuj vi partoprenas.
   group_request:
-    beta_request_header: Komenci grupon en Loomio Beta
-    beta_request_description: "Por komenci fari decidojn en Loomio Beta, unua paŝo estas komenci grupon"
     neighbourhood_support_group: ekz. Subtengrupo por la najbararo
     commercial_use_option: "en entrepreno, formala organizo aŭ laborejo"
     non_commercial_use_option: en komunuma grupo aŭ neformala reto
@@ -867,10 +865,7 @@ eo:
       headline: "La propono de %{author} en %{group} baldaŭ fermiĝos:"
       summary: Resumo
     thread_mailer:
-      footer_text: "Respondi rekte al ĉi tiu retpoŝtaĵo aŭ vidi ĝin en Loomio:"
-      reply_or_view_online_html: "Respondu al ĉi tiu retpoŝtaĵo rekte aŭ <a href='%{url}'>vidu ĝin en Loomio</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Malsekvi</a> por haltigi retpoŝtaĵojn pri ĉi tiu diskuto."
-      change_email_preferences_html: "Ŝanĝu viajn <a href='%{email_preferences_url}'>retpoŝtajn preferojn</a> por malaboni Loomio-retpoŝtaĵojn."
       change_preferences: "Ŝanĝi viajn retpoŝtajn preferojn:"
       new_motion: "%{who} proponis:"
       motion_closing_soon: "Propono fermiĝos en 24 horoj:"

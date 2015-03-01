@@ -369,8 +369,6 @@ ca:
       following_details: "Se't notificarà sobre tots els fils del grup."
       not_following_details: "Se't notificarà sobre els fils en els que participes."
   group_request:
-    beta_request_header: Comença un grup a Loomio Beta
-    beta_request_description: "Per començar a prendre decissions a Loomio Beta, el primer pas és crear un grup"
     neighbourhood_support_group: p. ex. Grup de Suport del Barri
     commercial_use_option: "a una empresa, organització o lloc de treball"
     non_commercial_use_option: a un grup comunitari o una xarxa informal
@@ -731,7 +729,6 @@ ca:
       headline: "La proposta de %{author} a %{group} tancarà aviat:"
       summary: Sumari
     thread_mailer:
-      change_email_preferences_html: "Canvia les <a href='%{email_preferences_url}'>preferències de correu electrònic</a> per deixar de rebre els correus electrònics de Loomio."
       change_preferences: Canvia les preferències de correu electrònic
       proposal_closed: "Proposta tancada:"
       you_agreed: "%{past_tense_position}"

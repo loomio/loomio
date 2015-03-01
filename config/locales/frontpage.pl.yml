@@ -6,22 +6,17 @@ pl:
     link:
       blog: Blog
       contact: Kontakt
-      donate: Wspomóż dzisiaj
       press: Prasa
       try_it: Wypróbuj
       log_in: ZALOGUJ SIĘ
       video: Dowiedz się więcej jak działa Loomio
       try_loomio_beta: Wypróbuj Loomio w wersji beta
-      check_out_loomio_beta: Zobacz Loomio w wersji beta
       more: Więcej
       top: Powrót do góry storny
       public_groups: Grupy publiczne
       terms: Regulamin
       privacy: Zasady prywatności
       services: Usługi
-    hero:
-      head_html: "Świat potrzebuje lepszego sposobu na <strong>wspólne podejmowanie decyzji</strong>."
-      desc_html: "Loomio jest darmowym i <a href=\"https://github.com/loomio/loomio\">open source'owym</a> oprogramowaniem dla wszystkich, wszędzie umożliwiającym uczestniczenie w podejmowaniu decyzji ich dotyczących."
     product:
       header_html: "Gdy słyszymy <strong>wszystkie głosy</strong>, podejmujemy <strong>lepsze decyzje</strong>."
       step1:
@@ -35,11 +30,6 @@ pl:
         desc: "Wspólne stwórzcie propozycję tak, by odpowiadała każdemu. Każda decyzja ma jasno określony termin jej podjęcia, więc zawsze otrzymacie jasny wynik. "
     crowdfunding:
       header: "Korzystamy z crowdfundingu, więc możemy udostępnić tę platformę całemu światu po tym jak skończymy ją budować."
-    prototype:
-      header_html: "Stworzyliśmy już prototyp, na którym ludzie z całego świata dokonują niesamowitych rzeczy."
-      subhead_html: "<a href=\"%{try_loomio_link}\">Wypróbuj Loomio Beta</a> już teraz. Możesz także <a href=\"%{donate_link}\">wesprzeć ten projekt</a> by zasponsorować Loomio 1.0"
-    mobile:
-      header_html: "Loomio 1.0 będzie dostępne na każde urządzenie i będzie zbudowane w oparciu o najlepszą <strong>otwartą technologię mobilną.</strong>"
     quote:
       header:
         rushkoff_html: "“Loomio <strong>uwalnia potencjał internetu</strong> pozwalający ludziom osiągać konsensus zamiast mnożyć poróżniające nas kłótnie.\" <div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autor <em>Present Shock</em></div>"
@@ -60,5 +50,3 @@ pl:
       gift:
         header: Ekonomia daru
         desc: "Loomio jest wspierane przez tych, którzy wpłacają tyle ile mogą. To pozwala tej platformie pozostać wolną od reklam i dostępną dla grup nie dysponującymi pieniędzmi. "
-    vision:
-      header: Pomóż nam przemienić tę wizję w rzeczywistość.

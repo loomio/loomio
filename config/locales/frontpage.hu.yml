@@ -6,22 +6,17 @@ hu:
     link:
       blog: Blog
       contact: Kapcsolat
-      donate: Adakozz ma
       press: Sajtó
       try_it: Próbáld ki
       log_in: Bejelentkezés
       video: További információk a Loomio működéséről
       try_loomio_beta: Próbáld ki a Loomio beta veziót
-      check_out_loomio_beta: Nézd meg a Loomio beta verziót
       more: Tovább
       top: Fel
       public_groups: Nyilvános csoportok
       terms: Feltételek
       privacy: Titoktartás
       services: Szolgáltatások
-    hero:
-      head_html: "A világnak szüksége van egy jobb megoldásra a <strong>közös döntéshozatalra</strong>."
-      desc_html: "A Loomio egy szabad és <a href=\"https://github.com/loomio/loomio\">nyílt forráskodú</a> szoftwer bárki számára, bárhol, hogy részt vehessen a döntésekben amelyek befolyásolják őt."
     product:
       header_html: "Amikor  <strong>mindenkit</strong> meghallgatunk, <strong>jobb döntéseket</strong> hozunk."
       step1:
@@ -35,11 +30,6 @@ hu:
         desc: "Dolgozzunk ki egy javaslatot együtt, olyant amely mindenkinek megfelel. Minden döntésnek világos határideje van, tehát mindig lesz egy világos eredmény."
     crowdfunding:
       header: "Közzösségi finanszírozásban részesülünk, úgyhogy be tudjuk fejezni ezt az új platformot és a világnak ajándékozhatjuk."
-    prototype:
-      header_html: Készítettünk egy prototípust és az emberek szerte a világon csodálatos dolgokat alkotnak vele.
-      subhead_html: "<a href=\"%{try_loomio_link}\">Próbáld ki a Loomio Beta verziót</a> most. Vagy <a href=\"%{donate_link}\">támogasd a tervünket</a> hogy segíts finanszírozni a Loomio 1.0-t."
-    mobile:
-      header_html: "Loomio 1.0 minden eszközön működni fog, a legjobb <strong>open mobile technology</strong>-ra építve."
     quote:
       header:
         rushkoff_html: "“Loomio <strong>felszabadítja az internet potenciálját</strong> hogy az embereket a konszenzus felé vezesse és nem a sarkított vitákhoz.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, a <em>Present Shock</em></div> szerzője."
@@ -60,5 +50,3 @@ hu:
       gift:
         header: Ajándék gazdaság
         desc: A Loomio támogatását mindenki saját lehetőségei szerint teszi. Ez tartja a felületet reklámmentesen és teszi elérhetővé azon csoportok számára is amelyeknek nem rendelkeznek pénzzel.
-    vision:
-      header: "Segíts minket, hogy ezt az elképzelést valóra válthassuk."

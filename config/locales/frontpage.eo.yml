@@ -6,22 +6,17 @@ eo:
     link:
       blog: Blogo
       contact: Kontakto
-      donate: Donacu jam
       press: Gazetaro
       try_it: Provu ĝin
       log_in: ENSALUTI
       video: Vidi pli pri la funkciado de Loomio
       try_loomio_beta: Elprovi Loomion beta
-      check_out_loomio_beta: Eksperimenti Loomion beta
       more: Pli
       top: Supren
       public_groups: Publikaj grupoj
       terms: Kondiĉoj
       privacy: Privateco
       services: Servoj
-    hero:
-      head_html: "La mondo bezonas pli bonan manieron <strong>kune decidadi</strong>."
-      desc_html: "Loomio estas senpaga kaj <a href=\"https://github.com/loomio/loomio\">libera</a> programaro por kiu ajn, kie ajn, por partopreni en decidoj rilataj al ili."
     product:
       header_html: "Aŭdante <strong>ĉies voĉon</strong>, ni faras <strong>pli bonajn decidojn</strong>."
       step1:
@@ -35,11 +30,6 @@ eo:
         desc: "Disvolvu la proponon kune por ke ĝi funkciu por ĉiuj. Ĉiu decido havas klaran limdaton, do vi ĉiam havas klaran rezulton."
     crowdfunding:
       header: Ni kolektas monon por ke ni povu fini la konstruadon de ĉi tiu nova platformo kaj fordoni ĝin al la mondo.
-    prototype:
-      header_html: "Ni jam havas prototipon, kaj homoj tra la tuta mondo faras mirigajn aferojn per ĝi"
-      subhead_html: "<a href=\"%{try_loomio_link}\">Provu Loomion Beta</a> nun. Vi ankaŭ povas <a href=\"%{donate_link}\">subteni la projekton</a> por helpi fundi Loomion 1.0"
-    mobile:
-      header_html: "Loomio 1.0 funkcios en ajna aparato, konstruita per la plejbono en <strong>malferma poŝteĥnologio.</strong>"
     quote:
       header:
         rushkoff_html: "\"Loomio <strong>liberigas la povon de la interreto</strong> por kunsentigi homojn anstataŭ polusigi debaton.\"<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, aŭtoro de <em>Present Shock</em></div>"
@@ -60,5 +50,3 @@ eo:
       gift:
         header: Donac-ekonomio
         desc: Loomio estas subtenata de tiuj kiuj pagas laŭ iliaj ebloj. Tio tenas la platformon senreklama kaj uzebla de grupoj sen mono.
-    vision:
-      header: Helpu nin realigi ĉi tiun vidon.

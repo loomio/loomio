@@ -6,22 +6,17 @@ sk:
     link:
       blog: Blog
       contact: Kontakt
-      donate: Prispejte ešte dnes
       press: Tlač
       try_it: Vyskúšajte to
       log_in: PRIHLÁSIŤ SA
       video: "Zistite viac o tom, ako Loomio funguje"
       try_loomio_beta: Vyskúšajte beta verziu programu Loomio
-      check_out_loomio_beta: Pozrite sa na Loomio beta
       more: Viac
       top: Začiatok
       public_groups: Verejné skupiny
       terms: Podmienky
       privacy: Súkromie
       services: Služby
-    hero:
-      head_html: "Svet potrebuje lepší spôsob, ako <strong>spoločne rozhodovať</strong>."
-      desc_html: "Loomio je slobodne použiteľný,  <a href=\"https://github.com/loomio/loomio\">open source</a> program ktorý umožňuje každému a kdekoľvek, aby sa podieľal na rozhodnutiach, které sa ho týkajú."
     product:
       header_html: "Keď si vypočujeme <strong>všetky hlasy</strong>, robíme <strong>lepšie rozhodnutia</strong>."
       step1:
@@ -35,11 +30,6 @@ sk:
         desc: "Vypracujte návrh spoločne, aby vyhovoval všetkým. Každé rozhodnutie má jasnú lehotu, takže vždy získate jasné rozhodnutie."
     crowdfunding:
       header: "Crowdfundujeme, aby sme mohli dobudovať túto novú platformu a poskytnúť ju svetu."
-    prototype:
-      header_html: Postavili sme už prototyp a ľudia na celom svete s ním robia úžasné veci
-      subhead_html: "<a href=\"%{try_loomio_link}\">Vyskúšajte Loomio Beta</a> teraz. Môžete tiež <a href=\"%{donate_link}\">podporiť projekt finančne</a> a pomôcť tak pri tvorbe Loomio verzie 1.0"
-    mobile:
-      header_html: "Loomio 1.0 sa bude dať spustiť  na akejkoľvek platforme. Program je vytváraný pomocou <strong>otvorených mobilných technológií.</strong>"
     quote:
       header:
         rushkoff_html: "“Loomio <strong>naplno využíva potenciál internetu</strong> na to, aby ľudia mohli budovať konsenzus, namiesto polarizujúcich debát.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autor <em>Present Shock</em></div>"
@@ -60,5 +50,3 @@ sk:
       gift:
         header: Ekonomika darov
         desc: "Loomio je podporovaný ľuďmi, ktorí platia podľa svojich možností. Táto forma financovania udržuje program bez reklám a prístupný aj skupinám bez peňazí."
-    vision:
-      header: Pomôžte nám zrealizovať túto víziu.

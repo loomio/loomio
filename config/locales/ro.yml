@@ -435,8 +435,6 @@ ro:
       following_details: Vei fi anuntat despre fiecare subiect al acestui grup.
       not_following_details: Vei fi anuntat despre subiectele la care participi.
   group_request:
-    beta_request_header: Formeaza un grup in Loomio Beta
-    beta_request_description: Primul pas pentru a incepe sa initiezi decizii pe Loomio Beta este sa formeazi un grup
     neighbourhood_support_group: e.g. Grupul Suporterilor din Cartier
     commercial_use_option: "intr-o companie, organizatie sau loc de munca"
     non_commercial_use_option: intr0o comunitate dau retea informala
@@ -898,10 +896,7 @@ ro:
       headline: "Propunerea %{author} in grupul %{group} se va inchide in curand:"
       summary: Sumar
     thread_mailer:
-      footer_text: "Raspunde direct acestui email sau vezi pe Loomio:"
-      reply_or_view_online_html: "Raspunde direct acestui email sau <a href='%{url}'>vezi pe Loomio</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Dezabonare</a> pentru a opri primirea de mesaje despre aceasta discutie."
-      change_email_preferences_html: "Schimba <a href='%{email_preferences_url}'>preferintele de email</a> pentru a te dezabona de la mesageria Loomio."
       change_preferences: "Schimba preferintele de email:"
       new_motion: "%{who} au propus:"
       motion_closing_soon: "Propunerea se inchide in 24 de ore:"

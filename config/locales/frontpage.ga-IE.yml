@@ -4,7 +4,6 @@ ga-IE:
     link:
       blog: Blag
       contact: Déan Teagmháil
-      donate: Bronn airgead orainn
       press: Brúigh
       try_it: Bain triail as
       log_in: SÍNIGH ISTEACH
@@ -23,5 +22,3 @@ ga-IE:
         header: Neamhspleách agus neodrach
       open:
         header: Oideasra atá saor agus le foinse oscailte
-    vision:
-      header: Cabhraigh linn an fhís seo a fhíorú

@@ -435,8 +435,6 @@ sr-RS:
       following_details: Бићете обавештени о свакој активности у овој групи.
       not_following_details: Бићете обавештени о активностима којима се прикључите.
   group_request:
-    beta_request_header: Покрените групу на Лумио Бета
-    beta_request_description: "Да бисте почели да доносите одлуке на Лумио Бета, први корак је да покренете групу."
     neighbourhood_support_group: нпр. Комшијска Група Подршке
     commercial_use_option: "у компанији, формалној организацији или радном месту"
     non_commercial_use_option: у групи заједнице или информативној мрежи
@@ -899,10 +897,7 @@ sr-RS:
       headline: "%{author} предлог у групи %{group} ускоро истиче:"
       summary: Резиме
     thread_mailer:
-      footer_text: "Одговори на ову поруку директно или је погледај на Лумију:"
-      reply_or_view_online_html: "Одговори на ову поруку директно или <a href='%{url}'>погледај је на Лумију</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Не прати</a> да зауставиш еПоруке о овој дискусији."
-      change_email_preferences_html: "Промени <a href='%{email_preferences_url}'>особине еПорука</a> да се одјавиш са Лумио еПоруке."
       change_preferences: "Промени особине својих еПорука:"
       new_motion: "%{who} предлаже:"
       motion_closing_soon: "Предлог истиче кроз 24 часа:"
