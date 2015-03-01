@@ -1,0 +1,58 @@
+te:
+  memberships_page:
+    email_label: వేగు
+    members: సభ్యులు
+    name_label: పేరు
+    coordinator_label: సమన్వయకర్త
+    remove_member: తీసివేయి
+  common:
+    privacy:
+      public: బహిరంగం
+    action:
+      save: భద్రపరుచు
+      edit: సవరించు
+      like: ఇష్టం
+      unlike: అయిష్టం
+      cancel: రద్దుచేయి
+  session_form:
+    password_label: సంకేతపదం
+  group_page:
+    notifications_label: గమనికలు
+    invite_people: వ్యక్తులను ఆహ్వానించండి
+    options_label: ఐచ్ఛికాలు
+    leave_group:
+      title: సమూహాన్ని వదిలివెళ్ళండి
+  vote_form:
+    i_agree: నేను అంగీకరిస్తున్నాను
+    submit_position: స్థానాన్ని సమర్పించండి
+  proposal_expanded:
+    close_proposal: ప్రతిపాదనను మూసివేయి
+    positions: స్థానాలు
+  proposal_form:
+    start_proposal: ప్రతిపాదనను ప్రారంభించండి
+    details_label: వివరాలు
+  discussion_form:
+    title_label: శీర్షిక
+    group_label: సమూహం
+    context_label: సందర్భం
+  group_form:
+    privacy:
+      label: గోప్యత
+  proposal_position_no: కాదు
+  new_comment_item:
+    context_menu:
+      delete_comment: వ్యాఖ్యను తొలగించు
+  contact_message_form:
+    name_label: మీ పేరు
+    email_label: మీ ఈమెయిలు చిరునామా
+    message_placeholder: మీ సందేశం
+  help_page:
+    getting_started: ఆరంభించండి
+    help: సహాయం
+    how_it_works: ఎలా పనిచేస్తుంది
+    join_the_community: సంఘంలో చేరండి
+    make_a_decision: ఒక నిర్ణయాన్ని తీసుకోండి
+    video_id: "52025402"
+    video_tutorial: దృశ్యక ఉపశిక్షణ
+  pricing_page:
+    organisations: సంస్థలు

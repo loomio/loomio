@@ -1,0 +1,76 @@
+ar:
+  memberships_page:
+    email_label: البريد الإلكتروني
+    members: الأعضاء
+    name_label: الإسم
+  common:
+    action:
+      save: حفظ
+      edit: تحرير
+      like: يعجبني
+      unlike: أخالف هذا
+      cancel: إلغاء
+  session_form:
+    password_label: كلمة السر
+  group_page:
+    notifications_label: التنبيهات
+    invite_people: قم بدعوة الناس
+    options_label: الخيارات
+    leave_group:
+      title: غادر المجموعة
+  vote_form:
+    i_agree: موافق
+    i_abstain: أمتنع
+    i_abstain_details: أنا سعيد بترك المجموعة تقرر عني.
+    i_disagree: غير موافق
+    i_disagree_details: أظن أنه بإمكاننا العمل على قرار أفضل.
+    i_block: أعترض
+    i_block_details: لدي إعتراضات قوية على هذا الإقتراح، ولست موافقا على المضي به قدما.
+    submit_position: أرسل الموقف
+  proposal_expanded:
+    close_proposal: أغلِق الإقتراح
+    edit_proposal: تعديل الإقتراح
+    positions: مواقف الأعضاء
+  proposal_form:
+    start_proposal: إبدأ مقترحا
+    details_label: التفاصيل
+  discussion_form:
+    title_label: العنوان
+    group_label: المجموعة
+    context_label: سياق النقاش
+  group_form:
+    privacy:
+      label: الخصوصية
+      visible_to_members: من يستطيع إيجاد هذه المجموعة؟
+      membership_granted_upon: كيف يمكن للناس أن ينضموا؟
+      private_discussions: النقاشات الخاصة فقط
+    description_label: الوصف
+    category_label: التصنيف
+    permissions:
+      members_can_add_members: دعوة وقبول أعضاء جدد.
+      members_can_create_subgroups: إنشاء مجموعات فرعية.
+      members_can_edit_comments: تحرير تعليقاتهم في أي وقت
+      members_can_vote: التصويت على المقترحات.
+  new_comment_item:
+    context_menu:
+      delete_comment: احذف التعليق
+  delete_comment_dialog:
+    question: هل أنت متأكد من أنك تريد حذف هذا التعليق؟
+  help_page:
+    get_in_touch: إتصل معنا
+    get_in_touch_description_html: "إذا كان لديك أي أسئلة أو تعليقات، <a href='%{link}'>تواصل معنا</a>."
+    getting_started: من أجل البدء
+    getting_started_description: "على اليسار، تناقش المجموعة موضوعا\_وتتبادل الأفكار والمعلومات. عندما يكون هناك قرار يتعين على المجموعة اتخاذه، فإنه يظهر على اليمين."
+    have_a_discussion: أجر نقاشا
+    have_a_discussion_description: يتم وضع موضوع النقاش وأي معلومات لازمة متعلقة به في أعلى الصفحة. يمكنك استخدام مربع التعليق لإضافة صوتك في النقاش.
+    help: مساعدة
+    how_it_works: كيفية عمل Loomio
+    join_the_community: إنضم للمجتمع
+    make_a_decision: اتخذ قرارا
+    make_a_decision_description: عندما تصبح المجموعة جاهزة لاتخاذ قرار، فإنه يمكن لأي كان أن يطرح مقترحا. ضع خطا واضحا لمسار العمل وأعط ما يكفي من المعلومات بحيث يدرك الجميع مالذي تعنيه الموافقة أو عدمها.
+    positions_agree_description: "<span>\"موافق\"</span> تعني أنك راضي بالمقترح."
+    positions_abstain_description: "<span>\"امتنع\"</span> تعني أنك غير متأكد، أو أنك سعيد بترك المجموعة تقرر عنك."
+    positions_disagree_description: "<span>\"غير موافق\"</span> تعني أنك تظن أن هناك بديل أفضل، ولكنك على استعداد للمضي مع قرار المجموعة."
+    positions_block_description: "<span>\"أعترض\"</span> تعني أن لديك إعتراضات جدية وأنك ستكون غير راض إذا تم تبني المقترح."
+    video_tutorial: الفيديو التعليمي
+    video_tutorial_description: شاهد الفيديو لتحصل على عرض سريع حول كيفية استخدام Loomio.

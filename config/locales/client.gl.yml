@@ -1,0 +1,101 @@
+gl:
+  memberships_page:
+    email_label: Correo Electrónico
+    members: Membros
+    name_label: Nome
+    coordinator_label: Coordinador/a
+    remove_member: Borrar
+  profile_page:
+    my_groups: Grupos
+  common:
+    privacy:
+      private: Privado
+      public: Público
+    action:
+      save: Gardar
+      edit: Editar
+      like: Gústame
+      unlike: Desgustar
+      cancel: Cancelar
+  inbox:
+    clear: Eliminar
+    unread: Sin ler
+  session_form:
+    password_label: Contrasinal
+  new_comment_item:
+    context_menu:
+      edit_comment: Editar commentario
+      delete_comment: Borrar comentario
+  group_page:
+    notifications_label: Notificacións
+    invite_people: Invitar xente
+    options_label: Opcións
+    options:
+      manage_members: Xestionar membros
+    leave_group:
+      title: Deixar grupo
+    notifications:
+      following: Seguindo
+      not_following: Non seguindo
+  vote_form:
+    i_agree: Estou de acordo
+    i_abstain: Abstéñome
+    i_abstain_details: Paréceme ben que o grupo decida por min
+    i_disagree: Estou en desacordo
+    i_disagree_details: Penso que o podemos facer mellor
+    i_block: O bloqueo
+    submit_position: Enviar posición
+  proposal_expanded:
+    close_proposal: Pechar proposta
+    edit_proposal: Editar proposta
+    positions: Postura
+  proposal_form:
+    start_proposal: Comezar proposta
+    details_label: Detalles
+  discussion_form:
+    title_label: Título
+    group_label: Grupo
+    context_label: Contexto
+  group_form:
+    privacy:
+      label: Privacidade
+      visible_to_members: Quen pode atopar este grupo?
+      membership_granted_upon: Como fai a xente para entrar?
+      private_discussions: Tan só debates privados
+    description_label: Descripción
+    profile_label: Perfil
+    category_label: Categoría
+    permissions:
+      label: Permisos
+      helptext: Que poden facer os membros?
+      members_can_add_members: Invitar e aprobar novos membros
+      members_can_create_subgroups: Crear subgrupos
+      members_can_edit_comments: Edita os seus comentarios en calquera momento
+      members_can_vote: Votar en propostas.
+  proposal_position_no: Non
+  contact_message_form:
+    name_label: O teu nome
+    email_label: A túa dirección de correo electrónico
+    message_placeholder: A túa mensaxe
+  help_page:
+    coordinating: Coordinando o teu grupo de Loomio
+    different_ways: Formas diferentes de empregar Loomio
+    getting_started: Comezando
+    have_a_discussion: Ter un debate
+    have_a_discussion_description: O asunto e calquera información relevante van no alto da páxina. Usa a caixa de comentario para dicir algo no debate.
+    help: Axuda
+    how_it_works: Como funciona
+    join_the_community: Unirse á comunidade
+    images_and_text_formatting: Formato de texto e imaxes
+    keep_up_to_date: Manter ó día
+    make_a_decision: Tomar unha decisión
+    start_discussion: Comezar un debate aberto
+    video_id: "52025402"
+    video_tutorial: Videotutorial
+  hint:
+    discussion: Recomendacións para comezar un debate aberto
+    proposal: Trucos para escribir unha proposta clara
+    vote: Podes cambiar a proposta en calquera momento
+  pricing_page:
+    organisations: Organizacións
+    informal_groups: Grupos informais
