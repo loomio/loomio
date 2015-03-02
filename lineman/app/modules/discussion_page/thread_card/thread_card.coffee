@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'threadCard', ->
   restrict: 'E'
   templateUrl: 'generated/modules/discussion_page/thread_card/thread_card.html'
   replace: true
-  controller: ($scope, $rootScope, Records) ->
+  controller: ($scope, Records) ->
     $scope.discussion.markAsRead(0)
 
     nextPage = 1

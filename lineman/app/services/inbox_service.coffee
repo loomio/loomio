@@ -22,15 +22,13 @@ angular.module('loomioApp').factory 'InboxService', (UserAuthService, Records) -
         console.log 'inbox current:', response
 
 
-    #subscribe: 
-
     currentThreads: ->
       @currentView.data()
 
     unreadThreads: ->
       @unreadView.data()
 
-    #fetch the records we need and subscribe via faye to new records, and if connection is broken refresh.
-  #would be good to know if we lose connection and need to refresh.
-  #consider detecting if server contact is lost via websocket.
+      #fetch the records we need and subscribe via faye to new records, and if connection is broken refresh.
+      #would be good to know if we lose connection and need to refresh.
+      #consider detecting if server contact is lost via websocket.
 

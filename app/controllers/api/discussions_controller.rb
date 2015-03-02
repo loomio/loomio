@@ -16,9 +16,8 @@ class API::DiscussionsController < API::RestfulController
   def inbox_unread
     @discussions = GroupDiscussionsViewer.for(user: current_user)
 
-    @discussions = @discussions.joined_to_current_motion.
+    @discussions = @discussions.unread.joined_to_current_motion.
                                 preload(:current_motion, {group: :parent}).
-                                unread.
                                 order('motions.closing_at ASC, last_activity_at DESC').
                                 page(params[:page]).per(20)
 

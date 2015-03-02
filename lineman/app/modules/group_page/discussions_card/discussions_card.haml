@@ -1,9 +1,9 @@
 .group-page-threads
   %h3.first{ translate: 'group_page.discussions' }
   .group-thread-list
-    .group-thread-list-item{ng_repeat: 'discussion in group.discussions()'}
+    .group-thread-list-item{ng_repeat: 'discussion in group.discussions() | orderBy: ["-createdAt"]'}
       .time-and-icon.pull-right
-        %timeago.group-thread-list-time{timestamp: 'discussion.lastActivityAt' }>
+        %smart_time.group-thread-list-time{time: 'discussion.lastActivityAt' }>
         %span.group-thread-list-icon
           %i.fa.fa-lg.fa-comments
 

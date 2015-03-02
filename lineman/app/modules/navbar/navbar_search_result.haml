@@ -1,9 +1,12 @@
 .search-result
+  .pull-right
+    %smart_time{time: 'result.discussion.last_activity_at'}>
   .search-result-item
     %a.search-result-title{ng-href: '/d/{{result.discussion.key}}', ng-click: 'clear(false)'}
       {{result.discussion.title}}
     .search-result-group-name {{result.discussion.group_full_name }}
     .search-result-blurb{ng-bind-html: 'result.discussion.blurb'}
+
 
   .search-result-item.media{ng-repeat: 'proposal in result.proposals'}
     .media-left{ng-init: 'proposal.voteCounts = proposal.vote_counts'}

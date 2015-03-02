@@ -6,8 +6,9 @@
   max-height: 600px;
   overflow-y:scroll;
 }
-.selector-list .timeago{
-  @include metaText;
+.selector-list .timeago, .smart-time{
+  color: $meta-text-color;
+  @include fontTiny;
 }
 .selector-list-header {
   padding: 0 10px;

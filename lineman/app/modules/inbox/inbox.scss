@@ -1,3 +1,7 @@
+span.activity-count {
+  margin-left: 0.5em;
+  color: $meta-text-color;
+}
 .container#main {
   @media (min-width: $screen-sm-min){
     margin-left: $sidebar-width;

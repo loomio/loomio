@@ -66,6 +66,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     reader: ->
       @recordStore.discussionReaders.initialize(id: @id)
 
+    isUnread: ->
+      @unreadActivityCount()
+
     unreadItemsCount: ->
       @itemsCount - @reader().readItemsCount
 
