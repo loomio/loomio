@@ -13,8 +13,13 @@ module LocalesHelper
     Loomio::I18n::RTL_LOCALES
   end
 
+  def incomplete_locales
+    rtl_locales - selectable_locales
+  end
+
   def locale_name(locale)
-    I18n.t(locale.to_sym, scope: :native_language_name)
+    prefix = incomplete_locales.include?(locale) ? "incomplete: " : ""
+    prefix + I18n.t(locale.to_sym, scope: :native_language_name)
   end
 
   def selected_locale
@@ -58,33 +63,12 @@ module LocalesHelper
   # View helper methods for language selector dropdown
 
   def linked_language_options
-    selectable_locales.map do |locale|
-      [locale_name(locale), current_path_with_locale(locale)]
-    end
+    @linked_language_options ||= language_options_for selectable_locales, link_values: true
   end
 
   def language_options
-    supported_options = selectable_locales.map do |locale|
-      [locale_name(locale), locale]
-    end
-
-    extra_options = (rtl_locales - selectable_locales).map do |locale|
-      ["incomplete: " + locale_name(locale), locale]
-    end
-
-    supported_options +
-    [['---------------------------------', 'disabled_option']] +
-    extra_options
+    @language_options ||= language_options_for selectable_locales, nil, incomplete_locales
   end
-
-  def selected_language_option
-    current_path_with_locale(current_locale)
-  end
-
-  def current_path_with_locale(locale)
-    url_for(locale: locale)
-  end
-
 
   private
 
@@ -126,4 +110,16 @@ module LocalesHelper
 
     ( input_locales & valid_locales ).map(&:to_sym)
   end
+
+  def language_options_for(*locales, link_values: false)
+    locales.flatten.map do |locale|
+      if locale.present?
+        value = link_values ? url_for(locale: locale) : locale
+        [locale_name(locale), value]
+      else
+        ['---------------------------------', 'disabled_option']
+      end
+    end
+  end
+
 end
