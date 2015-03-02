@@ -111,6 +111,18 @@ describe Queries::VisibleDiscussions do
         subject.should include discussion
       end
     end
+
+    context 'only members can see discussions' do
+      let(:parent_group) { create :group }
+      let(:group) { create :group,
+                           parent: parent_group,
+                           parent_members_can_see_discussions: false,
+                           is_visible_to_parent_members: true }
+
+      it 'prevents parent group members from seeing discussions' do
+        subject.should_not include discussion
+      end
+    end
   end
 
   describe 'archived' do
