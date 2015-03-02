@@ -49,6 +49,11 @@ class LoggedOutUser
     nil
   end
 
+  def angular_ui_enabled
+    false
+  end
+  alias :angular_ui_enabled? :angular_ui_enabled
+
   def ability
     @ability ||= Ability.new(self)
   end
