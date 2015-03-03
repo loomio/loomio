@@ -3,12 +3,22 @@
     = hidden_field_tag 'authenticity_token', form_authenticity_token
     = render 'avatar', user: current_user_or_visitor
     #comment-input{ data: {group: @group.id, autocomplete_path: members_autocomplete_group_path(@group) } }
+      #markdown-buttons
+        %button.mdbtn.btn.btn-xs.btn-default.bold.fa.fa-fw.fa-header{"data-action" => "header"}
+        %button.mdbtn.btn.btn-xs.btn-default.bold.fa.fa-fw.fa-bold{"data-action" => "bold"}
+        %button.mdbtn.btn.btn-xs.btn-default.italic.fa.fa-fw.fa-italic{"data-action" => "italic"}
+        %button.mdbtn.btn.btn-xs.btn-default.strike.fa.fa-fw.fa-strikethrough{"data-action" => "strike"}
+        %button.mdbtn.btn.btn-xs.btn-default.ullist.fa.fa-fw.fa-list-ul{"data-action" => "ul"}
+        %button.mdbtn.btn.btn-xs.btn-default.ollist.fa.fa-fw.fa-list-ol{"data-action" => "ol"}
+        %button.mdbtn.btn.btn-xs.btn-default.link.fa.fa-fw.fa-link{"data-action" => "link"}
+        %button.mdbtn.btn.btn-xs.btn-default.link.fa.fa-fw.fa-image{"data-action" => "image"}
+        %button.mdbtn.btn.btn-xs.btn-default.hr.fa.fa-fw.fa-minus{"data-action" => "hr"}
       .form-container
         = text_area_tag 'comment', "", id: 'new-comment', class: 'js-warn-before-navigating-away', placeholder: t(:comment_form_placeholder), dir: text_direction(current_user_or_visitor)
         #attachment-container
 
       .form-group.comment-toolbar
-        = submit_tag t(:comment_form_submit_button), class: "btn btn-primary submit", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)} 
+        = submit_tag t(:comment_form_submit_button), class: "btn btn-primary submit", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}
         - if user_signed_in?
           -unless browser.ie? && browser.version.to_i < 10
             .btn.attachment-icon#add-attachment-icon
