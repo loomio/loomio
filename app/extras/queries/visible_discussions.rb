@@ -48,19 +48,10 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
-  def discussion_newer_than_membership
-    join_to_memberships
-    unless @filtering_old_discussions
-      @relation = @relation.where('discussions.created_at > m.created_at')
-      @filtering_old_discussions = true
-    end
-    self
-  end
-
-  def following
+  def with_volume(volume)
     join_to_discussion_readers && join_to_memberships
-    @relation = @relation.where('(dv.volume = :email) OR (dv.volume IS NULL AND m.volume = :email)',
-                                {email: DiscussionReader.volumes[:email] })
+    @relation = @relation.where('(dv.volume = :volume) OR (dv.volume IS NULL AND m.volume = :volume)',
+                                {volume: DiscussionReader.volumes[volume.to_sym] })
     self
   end
 

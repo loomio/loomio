@@ -22,7 +22,9 @@ class CommentService
     comment.save!
     comment.discussion.update_attribute(:last_comment_at, comment.created_at)
     ThreadSearchService.index! comment.discussion_id
-    event = Events::NewComment.publish!(comment)
+
+    Events::NewComment.publish!(comment)
+
     if mark_as_read
       DiscussionReader.for(user: actor, discussion: comment.discussion).viewed!(comment.created_at)
     end

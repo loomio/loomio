@@ -5,11 +5,12 @@ class Events::NewVote < Event
                     discussion: vote.motion.discussion,
                     created_at: vote.created_at)
 
-    DiscussionReader.for(discussion: vote.motion.discussion,
-                         user: vote.author).follow!
+    if vote.author.email_on_participation?
+      DiscussionReader.for(discussion: vote.motion.discussion,
+                           user:       vote.author).change_volume! :email
+    end
 
-    vote.motion_followers_without_voter.
-         email_followed_threads.each do |user|
+    ThreadMailerQuery.users_to_email_new_vote(vote).each do |user|
       ThreadMailer.delay.new_vote(user, event)
     end
 

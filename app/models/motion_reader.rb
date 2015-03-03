@@ -1,6 +1,4 @@
 class MotionReader < ActiveRecord::Base
-  include HasVolume
-
   belongs_to :user
   belongs_to :motion
   validates_presence_of :last_read_at, :motion_id, :user_id
@@ -27,10 +25,6 @@ class MotionReader < ActiveRecord::Base
 
   def new_activity_exists?
     unread_activity_count > 0
-  end
-
-  def unfollow!
-    change_volume! :normal # deprecated, use change_volume! :normal directly
   end
 
   def viewed!(last_viewed_at = Time.now)
