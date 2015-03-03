@@ -3,8 +3,7 @@ class BaseController < ApplicationController
   include OmniauthAuthenticationHelper
 
   before_filter :authenticate_user!
-
-  #before_filter :boot_angular_ui, if: :use_angular_ui?
+  before_filter :boot_angular_ui, if: :use_angular_ui?
 
   before_filter :check_for_omniauth_authentication,
                 :check_for_invitation,
@@ -17,15 +16,13 @@ class BaseController < ApplicationController
 
 
   def boot_angular_ui
-    #@initialRecords = {}
-    #@initialRecords{memberships: current_user.memberships.as_json}
-    #@initialRecords{memberships: current_user.memberships.as_json}
     render 'layouts/angular', layout: false
   end
 
   protected
+
   def use_angular_ui?
-    user_signed_in? && current_user.angular_ui_enabled?
+    current_user_or_visitor.angular_ui_enabled?
   end
 
   def ajax_request?

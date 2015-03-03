@@ -1,8 +1,5 @@
 angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
-  defaultRoute = if window? and window.Loomio?
-    window.Loomio.defaultRoute
-  else
-    '/'
+  defaultRoute = '/'
 
   $locationProvider.html5Mode(true)
 
