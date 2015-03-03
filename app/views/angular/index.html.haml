@@ -1,7 +1,7 @@
 %h1= t(:"angular.title")
 - if @enabled
   = t(:"angular.now_on")
-  = button_to t(:"angular.turn_off"), angular_off_path
+  = button_to t(:"client.angular.turn_off"), angular_off_path
 - else
   = t(:"angular.now_off")
-  = button_to t(:"angular.turn_on"), angular_on_path
+  = button_to t(:"client.angular.turn_on"), angular_on_path

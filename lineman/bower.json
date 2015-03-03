@@ -10,8 +10,8 @@
     "components-font-awesome": "~> 4.2.0",
     "angular-bootstrap-datetimepicker": "latest",
     "faye": "latest",
-    "angular-translate": "~2.4.0",
-    "angular-translate-loader-url": "~2.4.0",
+    "angular-translate": "~2.6.1",
+    "angular-translate-loader-url": "~2.6.1",
     "angular-markdown-directive": "~0.3.0",
     "angular-bootstrap": "0.11.2",
     "ng-file-upload": "latest",
@@ -22,6 +22,7 @@
     "angular-inview": "~> 1.5.0"
   },
   "resolutions": {
-    "angular": "~> 1.3.0"
+    "angular": "~> 1.3.0",
+    "angular-translate": "~2.6.1"
   }
 }

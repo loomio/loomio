@@ -1,443 +1,444 @@
 en:
-  common:
-    notifications:
-      email: 'Email'
-      normal: 'Normal'
-      mute: 'Mute'
-    groups: 'Groups'
-    privacy:
-      private: 'Private'
-      public: 'Public'
-      organization: 'Organization'
-    action:
-      save: 'Save'
-      reply: 'Reply'
-      edit: 'Edit'
-      like: 'Like'
-      unlike: 'Unlike'
-      cancel: 'Cancel'
-      show_more: "Show more"
-      view_all: "View All"
-      new_thread: "New thread"
-      add_subgroup: 'Add subgroup'
-
-    messages:
-      aw_crap: 'We''re sorry, but something went wrong. Please try again'
-
-  inbox:
-    clear: 'Clear'
-    latest: 'Latest'
-    unread: 'Unread'
-    closing_in: 'Closing '
-
-  session_form:
-    email_label: 'Email:'
-    password_label: 'Password:'
-    remember_me: 'Remember Me'
-    sign_in: 'Login'
-
-  comment_form:
-    flash_messages:
-      update_comment: 'Changes saved'
-      destroy_comment: 'You comment has been deleted'
-    edit_comment: 'Edit comment'
-    in_reply_to: "In reply to <strong>{{name}}</strong>:"
-
-  navbar:
-    search:
-      placeholder: 'Search for groups or threads'
-      loading: 'Loading results...'
-      discussions: 'Threads'
-      proposals: 'Proposals'
-      comments: 'Comments'
-      no_results: 'No results found'
-
-  notifications:
-    header: "Notifications"
-    new_discussion: "<strong>{{name}}</strong> started a discussion {{discussion}}"
-    new_motion: "<strong>{{name}}</strong> created a proposal {{proposal}}"
-    motion_closed_by_user: "<strong>{{name}}</strong> closed the proposal {{proposal}}"
-    motion_closed_by_expiry: "Proposal has closed {{proposal}}"
-    new_vote: "<strong>{{name}}</strong> {{position}} on the proposal {{proposal}}"
-    new_comment: "<strong>{{name}}</strong> commented on the discussion {{discussion}}"
-    comment_replied_to: "<strong>{{name}}</strong> replied to your comment in the discussion {{discussion}}"
-    comment_liked: "<strong>{{name}}</strong> liked your comment in the discussion {{discussion}}"
-    user_mentioned: "<strong>{{name}}</strong> mentioned you in a comment in {{discussion}}"
-    membership_requested: "<strong>{{name}}</strong> requested membership to {{group}}"
-    membership_request_approved: '<strong>{{name}}</strong> approved your request to join {{group}}'
-    user_added_to_group: "<strong>{{name}}</strong> added you to the group {{group}}"
-    motion_closing_soon: "Proposal is closing soon: {{proposal}}"
-    motion_blocked: "<strong>{{name}}</strong> blocked the proposal {{proposal}}"
-    motion_outcome_created: "<strong>{{name}}</strong> published an outcome for the proposal {{proposal}}"
-    motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the proposal {{proposal}}"
-
-  vote_form:
-    have_your_say: 'Have your say'
-    messages:
-      new_vote: 'Your vote counts!'
-      update_vote: 'Successfully changed your position'
-    i_agree: 'I agree'
-    i_agree_details: 'I support this and want it to go ahead.'
-    i_abstain: 'I abstain'
-    i_abstain_details: 'I am happy for the group to decide without me.'
-    i_disagree: 'I disagree'
-    i_disagree_details: 'I think we can probably do better.'
-    i_block: 'I block'
-    i_block_details: 'I have strong objections to this proposal and am not OK with it going ahead.'
-    submit_position: 'Submit position'
-    change_position: 'Change position'
-    select_position: 'Select position'
-    statement_placeholder: 'Share your thoughts with the group.'
-
-  close_proposal_form:
-    close_proposal: 'Close proposal'
-    helptext: 'Are you sure you want to close this proposal now?'
-    close_proposal_submit: 'Close proposal early'
-
-  extend_proposal_form:
-    title: 'Change close time'
-    success: 'Proposal close time updated'
-    submit: 'Update closing time'
-
-  proposal_form:
-    messages:
-      created: 'Successfully created your proposal'
-      updated: 'Proposal updated'
-    start_proposal: 'Start proposal'
-    start_a_proposal: 'Start a proposal'
-    edit_proposal: 'Edit proposal'
-    what_does_a_proposal_do: 'Proposals let you see how everyone feels about a particular course of action.'
-    editing_title_and_description_forbidden: 'You cannot change the title or description of a proposal after people have voted. If details have changed, please close the proposal and start another'
-    title_placeholder: 'Eg: Go to the moon'
-    title_label: 'Title'
-    closes_at_label: 'Closes at'
-    details_label: 'Details'
-    details_placeholder: "Give enough detail so everyone knows exactly what it means to agree or disagree or whatever"
-
-  discussion_record:
-    created: 'The thread {{title}} was successfully created in {{groupName}}'
-    updated: 'Saved changes to {{title}}'
-
-  discussion_form:
-    messages:
-      created: 'Successfully created your thread'
-      updated: 'Discussion Updated'
-    new_discussion_title: 'Start new thread'
-    edit_discussion_title: 'Edit thread'
-    discussion_helptext: 'The thread is where everyone can discuss a topic and make decisions together.'
-    group_label: 'Group'
-    group_placeholder: 'Select a group'
-    title_label: 'Title'
-    title_placeholder: 'What is the topic you want to discuss?'
-    context_label: 'Context'
-    context_placeholder: 'Give enough background information for the group to have a productive discussion. This can be updated as the discussion progresses'
-    privacy_label: 'Privacy'
-    privacy:
-      will_be_private_to_group: 'The thread will only be visible to members of {{groupName}}.'
-      will_be_private_to_parent_group: 'The thread will be visible to members of {{parentGroupName}} and members of {{groupName}}.'
-      will_be_public: 'Anyone can see the thread.'
-    new_discussion_submit: 'Start thread'
-    edit_discussion_submit: 'Edit thread'
-
-  proposal_expanded:
-    your_position: 'Your Position'
-    started_by: 'Started by <strong>{{name}}</strong>'
-    no_votes_yet: 'Nobody has voted on this proposal yet.'
-    only_voter_is_you: 'No other members have voted yet.'
-    positions: 'Positions'
-    extend_proposal: 'Change closing time'
-    edit_proposal: 'Edit proposal'
-    close_proposal: 'Close proposal'
-    votes_count: '{{count}} other votes'
-
-
-  proposal_position_yes: 'Agree'
-  proposal_position_abstain: 'Abstain'
-  proposal_position_no: 'No'
-  proposal_position_block: 'Block'
-
-  group_page:
-    messages:
-      privacy:
-        members: 'This group is now visible only to members'
-        parent_members: 'This group is now visible only to members of your organization'
-        public: 'This group is now visible to the public'
+  client:
+    common:
       notifications:
-        follow_group: 'You will now receive notifications from all threads in this group'
-        unfollow_group: 'You will now receive notifications only from threads you are participating in'
-      leave_group_success: 'You have successfully left this group'
-      deactivate_group_success: 'You have successfully deactivated this group'
-    description: 'Description'
-    discussions: 'Threads'
-    members: 'Members'
-    subgroups: 'Subgroups'
-    invite_people: 'Invite people'
-    visibility_label: 'Visibility'
-    notifications_label: 'Notifications'
-    options_label: 'Options'
-    join_group: 'Join Group'
-    options:
-      edit_group: 'Edit Group Settings'
-      leave_group: 'Leave Group'
-      deactivate_group: 'Deactivate Group'
-      manage_members: 'Manage members'
-    deactivate_group:
-      title: 'Deactivate group'
-      question: 'Are you sure you want to deactivate this group?'
-      submit: 'Yes, Deactivate this group'
-    leave_group:
-      title: 'Leave group'
-      question: 'Are you sure you want to leave this group?'
-      submit: 'Yes, leave this group'
-    notifications:
-      following: 'Following'
-      following_details: 'You''ll be notified about all activity in this group'
-      not_following: 'Not following'
-      not_following_details: 'You''ll be notified about threads you are participating in'
-    privacy:
-      private: 'This group is only visible to members'
-      parent_members: 'This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
-      public: 'This group is visible on the web'
+        email: 'Email'
+        normal: 'Normal'
+        mute: 'Mute'
+      groups: 'Groups'
+      privacy:
+        private: 'Private'
+        public: 'Public'
+        organization: 'Organization'
+      action:
+        save: 'Save'
+        reply: 'Reply'
+        edit: 'Edit'
+        like: 'Like'
+        unlike: 'Unlike'
+        cancel: 'Cancel'
+        show_more: "Show more"
+        view_all: "View All"
+        new_thread: "New thread"
+        add_subgroup: 'Add subgroup'
 
-  group_form:
-    messages:
-      new_group: 'Successfully created your group'
-      update_group: 'Changes saved'
-    new_group_title: 'Create a New Group'
-    new_subgroup_title: 'Create a New Subgroup of {{parentGroupName}}'
-    edit_group_title: 'Group Settings'
-    profile_label: 'Profile'
-    name_label: 'Name'
-    name_placeholder: 'Enter the name of your group'
-    description_label: 'Description'
-    description_placeholder: 'Describe your group'
-    category_label: 'Category'
-    privacy:
-      label: 'Privacy'
-      visible_to_members: 'Who can find this group?'
-      public_visibility: 'Anyone - list the group publicly'
-      organization_visibility: 'Members of this organization'
-      private_visibility: 'Members only - the group will not be listed'
-      membership_granted_upon: 'How do people join?'
-      membership_by_request: 'Open - anyone can join the group'
-      membership_by_approval: 'By request - anyone can request to join'
-      membership_by_invitation: 'Invitation only - new members must be invited'
-      discussion_privacy_options: 'Who can view threads?'
-      public_discussions: 'Public threads only'
-      public_or_private_discussions: 'Allow public and private threads'
-      private_discussions: 'Private discussions only'
-    permissions:
-      label: 'Permissions'
-      helptext: 'What can members do?'
-      members_can_add_members: 'Invite and approve new members'
-      members_can_create_subgroups: 'Create subgroups'
-      members_can_start_discussions: 'Start threads'
-      members_can_edit_discussions: 'Edit the title and context of any thread'
-      members_can_edit_comments: 'Edit their comments at any time'
-      members_can_raise_motions: 'Start proposals'
-      members_can_vote: 'Vote on proposals'
-    edit_group_submit:  'Update Settings'
-    new_group_submit: 'Create Group'
+      messages:
+        aw_crap: 'We''re sorry, but something went wrong. Please try again'
 
-  invitation:
-    invite_people: 'Invite People'
-    find_people: 'Find people'
-    import_contacts_header: 'Connect your address book'
-    import_contacts_message: 'Inviting people to Loomio is much easier if you import your contacts from Google.'
-    import_contacts: 'Import contacts'
-    instructions: 'Type names or email addresses for people you want to invite'
-    invitation_message: 'Invitation Message'
-    send_invite: 'Send invites'
-    to: 'to'
+    inbox:
+      clear: 'Clear'
+      latest: 'Latest'
+      unread: 'Unread'
+      closing_in: 'Closing '
 
-  memberships_page:
-    members: 'Members'
-    name_label: 'Name'
-    email_label: 'Email'
-    coordinator_label: 'Coordinator'
-    remove_member_label: 'Remove'
-    add_coordinator: 'Make Coordinator'
-    remove_coordinator: 'Remove Coordinator'
-    remove_member: 'Remove'
+    session_form:
+      email_label: 'Email:'
+      password_label: 'Password:'
+      remember_me: 'Remember Me'
+      sign_in: 'Login'
 
-  profile_page:
-    my_groups: Groups
-
-  discussion:
-    you_like_this: 'You like this.'
-    liked_by_you_and_someone: 'You and {{name}} like this.'
-    liked_by_you_and_others: 'Liked by you, {{joinedNames}} and {{name}}.'
-    liked_by_someone: '{{name}} likes this.'
-    liked_by_two_others: '{{name_1}} and {{name_2}} like this.'
-    liked_by_many_others: 'Liked by {{joinedNames}} and {{name}}.'
-    liked_by_name: 'Liked by {{name}}.'
-    liked_by_names_and_name: 'Liked by {{joinedNames}} and {{name}}.'
-    started_by: 'Started by <strong>{{name}}</strong>'
-    notifications:
-      email: Activity in this thread will be emailed to you as it happens.
-      normal: This thread will be in your inbox when it has new activity.
-      mute: 'This thread will not be in your inbox, unless you participate or someone mentions you.'
-
-  delete_comment_dialog:
-    title: 'Delete comment'
-    question: 'Are you sure you want to delete this comment?'
-    confirm: 'Delete comment'
-
-  new_comment_item:
-    context_menu:
+    comment_form:
+      flash_messages:
+        update_comment: 'Changes saved'
+        destroy_comment: 'You comment has been deleted'
       edit_comment: 'Edit comment'
-      delete_comment: 'Delete comment'
-    in_reply_to: '<strong>{{author}}</strong> in reply to <strong>{{recipient}}</strong>'
+      in_reply_to: "In reply to <strong>{{name}}</strong>:"
 
-  new_vote_item:
-    agree: '<strong>{{name}}</strong> agreed.'
-    abstain: '<strong>{{name}}</strong> abstained.'
-    disagree: '<strong>{{name}}</strong> disagreed.'
-    block: '<strong>{{name}}</strong> blocked.'
-    agree_and_why: '<strong>{{name}}</strong> agreed:'
-    abstain_and_why: '<strong>{{name}}</strong> abstained:'
-    disagree_and_why: '<strong>{{name}}</strong> disagreed:'
-    block_and_why: '<strong>{{name}}</strong> blocked:'
+    navbar:
+      search:
+        placeholder: 'Search for groups or threads'
+        loading: 'Loading results...'
+        discussions: 'Threads'
+        proposals: 'Proposals'
+        comments: 'Comments'
+        no_results: 'No results found'
 
-  new_proposal_item:
-    author_created_proposal: '<strong>{{name}}</strong> created a proposal:'
+    notifications:
+      header: "Notifications"
+      new_discussion: "<strong>{{name}}</strong> started a discussion {{discussion}}"
+      new_motion: "<strong>{{name}}</strong> created a proposal {{proposal}}"
+      motion_closed_by_user: "<strong>{{name}}</strong> closed the proposal {{proposal}}"
+      motion_closed_by_expiry: "Proposal has closed {{proposal}}"
+      new_vote: "<strong>{{name}}</strong> {{position}} on the proposal {{proposal}}"
+      new_comment: "<strong>{{name}}</strong> commented on the discussion {{discussion}}"
+      comment_replied_to: "<strong>{{name}}</strong> replied to your comment in the discussion {{discussion}}"
+      comment_liked: "<strong>{{name}}</strong> liked your comment in the discussion {{discussion}}"
+      user_mentioned: "<strong>{{name}}</strong> mentioned you in a comment in {{discussion}}"
+      membership_requested: "<strong>{{name}}</strong> requested membership to {{group}}"
+      membership_request_approved: '<strong>{{name}}</strong> approved your request to join {{group}}'
+      user_added_to_group: "<strong>{{name}}</strong> added you to the group {{group}}"
+      motion_closing_soon: "Proposal is closing soon: {{proposal}}"
+      motion_blocked: "<strong>{{name}}</strong> blocked the proposal {{proposal}}"
+      motion_outcome_created: "<strong>{{name}}</strong> published an outcome for the proposal {{proposal}}"
+      motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the proposal {{proposal}}"
 
-  contact_message_form:
-    contact_us: 'Contact Us'
-    name_label: 'Your name'
-    name_placeholder: 'Enter your name...'
-    email_label: 'Your email address'
-    email_placeholder: 'Enter your email address...'
-    message_label: 'Your message'
-    message_placeholder: 'Your message...'
-    send_message: 'Send Message'
-    new_contact_message: 'Thanks for your message; we''ll be in touch soon!'
+    vote_form:
+      have_your_say: 'Have your say'
+      messages:
+        new_vote: 'Your vote counts!'
+        update_vote: 'Successfully changed your position'
+      i_agree: 'I agree'
+      i_agree_details: 'I support this and want it to go ahead.'
+      i_abstain: 'I abstain'
+      i_abstain_details: 'I am happy for the group to decide without me.'
+      i_disagree: 'I disagree'
+      i_disagree_details: 'I think we can probably do better.'
+      i_block: 'I block'
+      i_block_details: 'I have strong objections to this proposal and am not OK with it going ahead.'
+      submit_position: 'Submit position'
+      change_position: 'Change position'
+      select_position: 'Select position'
+      statement_placeholder: 'Share your thoughts with the group.'
 
-  help_page:
-    coordinating: 'Coordinating your Loomio group'
-    coordinating_details: |
-       As the coordinator, you’re responsible for setting up your Loomio group and inviting
-       everyone in. As well as learning how to use a new piece of software, your group will
-       be learning new processes for collaborating more effectively and making good decisions
-       together. Here are some tips for supporting your group to succeed:
-    different_ways: 'Different ways to use Loomio'
-    engaging_html: |
-      <h2>Tips for engaging your group</h2>
-      <p>People will be excited to jump in and start participating when there’s an engaging
-      proposal on the table. A good proposal contains a plan of action for the group, so
-      that it’s immediately obvious what it means to agree or disagree. Think about how you
-      can identify discussions/decisions the group is currently undertaking in person or by
-      email that would be easier if they were on Loomio.</p>
-      <p>If your group is just starting out, you could start a light-hearted decision, to give
-      everyone a chance to play with the tool and see the decision-making process in action.</p>
-      <p>Another simple way to encourage people to engage in a discussion is to use the @mention
-      feature to prompt specific people; this will send them an email to tell them they’ve been
-      mentioned in a comment.</p>
-    example1_html: |
-      <h3>You need the group to discuss a broad topic and develop a solution together</h3>
-      <p>Strategy: Discuss a topic for a while before creating a proposal.</p>
-      <p>Discussions often reach the best outcome if you build shared understanding
-      about the problem before jumping to a specific solution. When people get to
-      participate in the process, they’re much more likely to be on board with the outcome.</p>
-    example2_html: |
-      <h3>You already have a proposal in mind, and you want to get sign-off from the group to move forward.</h3>
-      <p>Strategy: Start a discussion about a specific decision and make a proposal immediately.</p>
-      <p>If you’ve got a clear outcome in mind but you want to make sure there aren’t any critical concerns,
-      you can use the proposal to get quick input into a decision.</p>
-      <p>You can do things like finalise a document, approve an application, or sign-off on a piece of work.</p>
-    get_in_touch: "Get in touch"
-    get_in_touch_description_html: "If you have any questions or feedback, <a href='%{link}'>drop us a line</a>."
-    getting_started: "Getting started"
-    getting_started_description: "On the left, the group discusses a topic, exchanging ideas and information. When there’s a decision for the group to make, it comes up on the right."
-    getting_the_most: 'Getting the most out of Loomio'
-    have_your_say: "Have your say"
-    have_your_say_details_html: |
-      <p>When you’re ready to have your say, click one of the four decision buttons.</p>
-      <p>When you’ve made your decision, give a brief explanation. Underneath the pie,
-      you can see what everyone else thinks. This makes it quick and easy to catch up
-      with the discussion. As new information comes to light, you can change your
-      position at any time.</p>
-    have_a_discussion: "Have a discussion"
-    have_a_discussion_description: "The topic and any relevant background information sit at the top of the page. Use the comment box to add your voice to the discussion."
-    help: "Help"
-    how_it_works: "How it works"
-    invitation_html: |
-      <h2>Writing a great invitation</h2>
-      <p>The first question every new member will have is ‘what is this group for?’</p>
-      <p>Think about the simplest way you can describe the group: What do you want to
-      achieve together? What types of decisions will you be making? Who will be involved?</p>
-      <p>It can be a good idea to talk to your group first before you invite them to join Loomio.</p>
-      <p>People will want to know why they’ve been invited, what’s expected of them,
-      and why it’s worth their time to learn how to use a new tool.</p>
-    join_the_community: "Join the community"
-    join_the_community_description_html: "Everyone is welcome to join the Loomio Community, where we talk about how to make the most of the tool, and how it can be improved.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Click here to go the Loomio Community group</a>."
-    images_and_text_formatting: "Images and text formatting"
-    images_and_text_formatting_html: |
-      <p>Loomio uses ‘Markdown’ for image embedding and text formatting.
-      You can switch Markdown on with the small grey icon under the comment box.</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>Click here</a>
-      for information on how to use Markdown.</p>
-    keep_up_to_date: "Keep up to date"
-    keep_up_to_date_html: |
-      <p>Clicking your group name at the top of the screen takes you to your Group Page,
-      where you can see a list of all the discussions and decisions for that group. If
-      you’re in more than one group, you can see all the activity in all of your groups
-      at once on the Home Page.</p>
-      <p>You’ll get email notifications when important things happen in your group.
-      You can change your email preferences <a href="%{link}"">here</a>.</p>
-    make_a_decision: "Make a decision"
-    make_a_decision_description: "When the group is ready to make a decision, anyone can make a proposal. Outline a clear course of action and give some background so everyone knows exactly what it means to agree or disagree."
-    prompt_people_details: "If you want to get the attention of a specific person in your group, type ‘@’ followed by their name. They’ll get an email letting them know you’ve mentioned them in a comment."
-    prompt_people_html: "Prompt people with <span class='blue'>@mentions</span>"
-    positions_agree_description: "<span>Agree</span> means you’re happy with the proposal."
-    positions_abstain_description: "<span>Abstain</span> means you’re unsure, or you’re happy for the group to decide without you."
-    positions_disagree_description: "<span>Disagree</span> means you think there might be a better alternative, but you’re willing to go with the group’s decision."
-    positions_block_description: "<span>Block</span> means you’ve got serious objections and you’ll be extremely unhappy if this proposal goes ahead."
-    start_discussion: "Starting an engaging discussion"
-    start_discussion_html:  |
-      <p>When you start a discussion, make sure the title conveys the topic succinctly.
-      Use the Context Panel to give all the background information necessary for the
-      group to have a productive and informed discussion.</p>
-      <p>During the discussion, the Context Panel can be updated as new information
-      comes to light. As well as clarifying the topic, you can use this space for
-      sharing resources, summarising the discussion as it progresses, or outlining the
-      decision-making protocols your group is using.</p>
-    start_proposal: "Writing a clear proposal"
-    start_proposal_html: |
-      <p> If you make the title clear and succinct, people will immediately know exactly
-      what it means to agree or disagree.</p>
-      <p>It’s not the end of the world if a proposal doesn’t get clear agreement immediately.
-      If the group doesn’t love the first proposal, anyone can start a new proposal to
-      address the concerns raised, and keep the process moving forward.</p>
-      <p>Through this dynamic process, the collective wisdom of your group can generate better
-      ideas than anyone would have come up with on their own.</p>
-      <p>The deadline on a proposal can be extended at any time, if it looks like the decision
-      needs some more space. Everyone will get an email notification 24 hours before a proposal closes.</p>
-    video_id: "52025402"
-    video_tutorial: "Video tutorial"
-    video_tutorial_description: "Check out the video for a quick demonstration of how to use Loomio."
+    close_proposal_form:
+      close_proposal: 'Close proposal'
+      helptext: 'Are you sure you want to close this proposal now?'
+      close_proposal_submit: 'Close proposal early'
 
-  hint:
-    context: 'Tips for using the context panel'
-    discussion: 'Tips for starting an engaging discussion'
-    invitation: 'Tips for writing a great invitation'
-    proposal: 'Tips for writing a clear proposal'
-    vote: 'You can change your position at any time'
+    extend_proposal_form:
+      title: 'Change close time'
+      success: 'Proposal close time updated'
+      submit: 'Update closing time'
 
-  pricing_page:
-    intro: |
-      Groups with a budget pay a subscription for using the tool.
-      Groups without the means to pay a subscription use the
-      Pay What You Can model: their members are invited to make a voluntary contribution.      Your contribution means we can keep Loomio independent, free of advertising, and driven by our community.
-    organisations: Organisations
-    organisations_examples: e.g. businesses, government agencies, community organisations
-    informal_groups: Informal groups
-    informal_groups_desc: Members of your group will be asked to pay what they can
-    informal_groups_examples: e.g. families, social movements, collectives
+    proposal_form:
+      messages:
+        created: 'Successfully created your proposal'
+        updated: 'Proposal updated'
+      start_proposal: 'Start proposal'
+      start_a_proposal: 'Start a proposal'
+      edit_proposal: 'Edit proposal'
+      what_does_a_proposal_do: 'Proposals let you see how everyone feels about a particular course of action.'
+      editing_title_and_description_forbidden: 'You cannot change the title or description of a proposal after people have voted. If details have changed, please close the proposal and start another'
+      title_placeholder: 'Eg: Go to the moon'
+      title_label: 'Title'
+      closes_at_label: 'Closes at'
+      details_label: 'Details'
+      details_placeholder: "Give enough detail so everyone knows exactly what it means to agree or disagree or whatever"
 
-  angular:
-    title: 'Welcome to the Angular dashboard!'
-    now_on: 'Your angular interface is currently ON'
-    turn_on: 'Turn on the angular interface'
-    now_off: 'Your angular interface is currently OFF'
-    turn_off: 'Turn off the angular interface'
+    discussion_record:
+      created: 'The thread {{title}} was successfully created in {{groupName}}'
+      updated: 'Saved changes to {{title}}'
+
+    discussion_form:
+      messages:
+        created: 'Successfully created your thread'
+        updated: 'Discussion Updated'
+      new_discussion_title: 'Start new thread'
+      edit_discussion_title: 'Edit thread'
+      discussion_helptext: 'The thread is where everyone can discuss a topic and make decisions together.'
+      group_label: 'Group'
+      group_placeholder: 'Select a group'
+      title_label: 'Title'
+      title_placeholder: 'What is the topic you want to discuss?'
+      context_label: 'Context'
+      context_placeholder: 'Give enough background information for the group to have a productive discussion. This can be updated as the discussion progresses'
+      privacy_label: 'Privacy'
+      privacy:
+        will_be_private_to_group: 'The thread will only be visible to members of {{groupName}}.'
+        will_be_private_to_parent_group: 'The thread will be visible to members of {{parentGroupName}} and members of {{groupName}}.'
+        will_be_public: 'Anyone can see the thread.'
+      new_discussion_submit: 'Start thread'
+      edit_discussion_submit: 'Edit thread'
+
+    proposal_expanded:
+      your_position: 'Your Position'
+      started_by: 'Started by <strong>{{name}}</strong>'
+      no_votes_yet: 'Nobody has voted on this proposal yet.'
+      only_voter_is_you: 'No other members have voted yet.'
+      positions: 'Positions'
+      extend_proposal: 'Change closing time'
+      edit_proposal: 'Edit proposal'
+      close_proposal: 'Close proposal'
+      votes_count: '{{count}} other votes'
+
+
+    proposal_position_yes: 'Agree'
+    proposal_position_abstain: 'Abstain'
+    proposal_position_no: 'No'
+    proposal_position_block: 'Block'
+
+    group_page:
+      messages:
+        privacy:
+          members: 'This group is now visible only to members'
+          parent_members: 'This group is now visible only to members of your organization'
+          public: 'This group is now visible to the public'
+        notifications:
+          follow_group: 'You will now receive notifications from all threads in this group'
+          unfollow_group: 'You will now receive notifications only from threads you are participating in'
+        leave_group_success: 'You have successfully left this group'
+        deactivate_group_success: 'You have successfully deactivated this group'
+      description: 'Description'
+      discussions: 'Threads'
+      members: 'Members'
+      subgroups: 'Subgroups'
+      invite_people: 'Invite people'
+      visibility_label: 'Visibility'
+      notifications_label: 'Notifications'
+      options_label: 'Options'
+      join_group: 'Join Group'
+      options:
+        edit_group: 'Edit Group Settings'
+        leave_group: 'Leave Group'
+        deactivate_group: 'Deactivate Group'
+        manage_members: 'Manage members'
+      deactivate_group:
+        title: 'Deactivate group'
+        question: 'Are you sure you want to deactivate this group?'
+        submit: 'Yes, Deactivate this group'
+      leave_group:
+        title: 'Leave group'
+        question: 'Are you sure you want to leave this group?'
+        submit: 'Yes, leave this group'
+      notifications:
+        following: 'Following'
+        following_details: 'You''ll be notified about all activity in this group'
+        not_following: 'Not following'
+        not_following_details: 'You''ll be notified about threads you are participating in'
+      privacy:
+        private: 'This group is only visible to members'
+        parent_members: 'This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
+        public: 'This group is visible on the web'
+
+    group_form:
+      messages:
+        new_group: 'Successfully created your group'
+        update_group: 'Changes saved'
+      new_group_title: 'Create a New Group'
+      new_subgroup_title: 'Create a New Subgroup of {{parentGroupName}}'
+      edit_group_title: 'Group Settings'
+      profile_label: 'Profile'
+      name_label: 'Name'
+      name_placeholder: 'Enter the name of your group'
+      description_label: 'Description'
+      description_placeholder: 'Describe your group'
+      category_label: 'Category'
+      privacy:
+        label: 'Privacy'
+        visible_to_members: 'Who can find this group?'
+        public_visibility: 'Anyone - list the group publicly'
+        organization_visibility: 'Members of this organization'
+        private_visibility: 'Members only - the group will not be listed'
+        membership_granted_upon: 'How do people join?'
+        membership_by_request: 'Open - anyone can join the group'
+        membership_by_approval: 'By request - anyone can request to join'
+        membership_by_invitation: 'Invitation only - new members must be invited'
+        discussion_privacy_options: 'Who can view threads?'
+        public_discussions: 'Public threads only'
+        public_or_private_discussions: 'Allow public and private threads'
+        private_discussions: 'Private discussions only'
+      permissions:
+        label: 'Permissions'
+        helptext: 'What can members do?'
+        members_can_add_members: 'Invite and approve new members'
+        members_can_create_subgroups: 'Create subgroups'
+        members_can_start_discussions: 'Start threads'
+        members_can_edit_discussions: 'Edit the title and context of any thread'
+        members_can_edit_comments: 'Edit their comments at any time'
+        members_can_raise_motions: 'Start proposals'
+        members_can_vote: 'Vote on proposals'
+      edit_group_submit:  'Update Settings'
+      new_group_submit: 'Create Group'
+
+    invitation:
+      invite_people: 'Invite People'
+      find_people: 'Find people'
+      import_contacts_header: 'Connect your address book'
+      import_contacts_message: 'Inviting people to Loomio is much easier if you import your contacts from Google.'
+      import_contacts: 'Import contacts'
+      instructions: 'Type names or email addresses for people you want to invite'
+      invitation_message: 'Invitation Message'
+      send_invite: 'Send invites'
+      to: 'to'
+
+    memberships_page:
+      members: 'Members'
+      name_label: 'Name'
+      email_label: 'Email'
+      coordinator_label: 'Coordinator'
+      remove_member_label: 'Remove'
+      add_coordinator: 'Make Coordinator'
+      remove_coordinator: 'Remove Coordinator'
+      remove_member: 'Remove'
+
+    profile_page:
+      my_groups: Groups
+
+    discussion:
+      you_like_this: 'You like this.'
+      liked_by_you_and_someone: 'You and {{name}} like this.'
+      liked_by_you_and_others: 'Liked by you, {{joinedNames}} and {{name}}.'
+      liked_by_someone: '{{name}} likes this.'
+      liked_by_two_others: '{{name_1}} and {{name_2}} like this.'
+      liked_by_many_others: 'Liked by {{joinedNames}} and {{name}}.'
+      liked_by_name: 'Liked by {{name}}.'
+      liked_by_names_and_name: 'Liked by {{joinedNames}} and {{name}}.'
+      started_by: 'Started by <strong>{{name}}</strong>'
+      notifications:
+        email: Activity in this thread will be emailed to you as it happens.
+        normal: This thread will be in your inbox when it has new activity.
+        mute: 'This thread will not be in your inbox, unless you participate or someone mentions you.'
+
+    delete_comment_dialog:
+      title: 'Delete comment'
+      question: 'Are you sure you want to delete this comment?'
+      confirm: 'Delete comment'
+
+    new_comment_item:
+      context_menu:
+        edit_comment: 'Edit comment'
+        delete_comment: 'Delete comment'
+      in_reply_to: '<strong>{{author}}</strong> in reply to <strong>{{recipient}}</strong>'
+
+    new_vote_item:
+      agree: '<strong>{{name}}</strong> agreed.'
+      abstain: '<strong>{{name}}</strong> abstained.'
+      disagree: '<strong>{{name}}</strong> disagreed.'
+      block: '<strong>{{name}}</strong> blocked.'
+      agree_and_why: '<strong>{{name}}</strong> agreed:'
+      abstain_and_why: '<strong>{{name}}</strong> abstained:'
+      disagree_and_why: '<strong>{{name}}</strong> disagreed:'
+      block_and_why: '<strong>{{name}}</strong> blocked:'
+
+    new_proposal_item:
+      author_created_proposal: '<strong>{{name}}</strong> created a proposal:'
+
+    contact_message_form:
+      contact_us: 'Contact Us'
+      name_label: 'Your name'
+      name_placeholder: 'Enter your name...'
+      email_label: 'Your email address'
+      email_placeholder: 'Enter your email address...'
+      message_label: 'Your message'
+      message_placeholder: 'Your message...'
+      send_message: 'Send Message'
+      new_contact_message: 'Thanks for your message; we''ll be in touch soon!'
+
+    help_page:
+      coordinating: 'Coordinating your Loomio group'
+      coordinating_details: |
+         As the coordinator, you’re responsible for setting up your Loomio group and inviting
+         everyone in. As well as learning how to use a new piece of software, your group will
+         be learning new processes for collaborating more effectively and making good decisions
+         together. Here are some tips for supporting your group to succeed:
+      different_ways: 'Different ways to use Loomio'
+      engaging_html: |
+        <h2>Tips for engaging your group</h2>
+        <p>People will be excited to jump in and start participating when there’s an engaging
+        proposal on the table. A good proposal contains a plan of action for the group, so
+        that it’s immediately obvious what it means to agree or disagree. Think about how you
+        can identify discussions/decisions the group is currently undertaking in person or by
+        email that would be easier if they were on Loomio.</p>
+        <p>If your group is just starting out, you could start a light-hearted decision, to give
+        everyone a chance to play with the tool and see the decision-making process in action.</p>
+        <p>Another simple way to encourage people to engage in a discussion is to use the @mention
+        feature to prompt specific people; this will send them an email to tell them they’ve been
+        mentioned in a comment.</p>
+      example1_html: |
+        <h3>You need the group to discuss a broad topic and develop a solution together</h3>
+        <p>Strategy: Discuss a topic for a while before creating a proposal.</p>
+        <p>Discussions often reach the best outcome if you build shared understanding
+        about the problem before jumping to a specific solution. When people get to
+        participate in the process, they’re much more likely to be on board with the outcome.</p>
+      example2_html: |
+        <h3>You already have a proposal in mind, and you want to get sign-off from the group to move forward.</h3>
+        <p>Strategy: Start a discussion about a specific decision and make a proposal immediately.</p>
+        <p>If you’ve got a clear outcome in mind but you want to make sure there aren’t any critical concerns,
+        you can use the proposal to get quick input into a decision.</p>
+        <p>You can do things like finalise a document, approve an application, or sign-off on a piece of work.</p>
+      get_in_touch: "Get in touch"
+      get_in_touch_description_html: "If you have any questions or feedback, <a href='%{link}'>drop us a line</a>."
+      getting_started: "Getting started"
+      getting_started_description: "On the left, the group discusses a topic, exchanging ideas and information. When there’s a decision for the group to make, it comes up on the right."
+      getting_the_most: 'Getting the most out of Loomio'
+      have_your_say: "Have your say"
+      have_your_say_details_html: |
+        <p>When you’re ready to have your say, click one of the four decision buttons.</p>
+        <p>When you’ve made your decision, give a brief explanation. Underneath the pie,
+        you can see what everyone else thinks. This makes it quick and easy to catch up
+        with the discussion. As new information comes to light, you can change your
+        position at any time.</p>
+      have_a_discussion: "Have a discussion"
+      have_a_discussion_description: "The topic and any relevant background information sit at the top of the page. Use the comment box to add your voice to the discussion."
+      help: "Help"
+      how_it_works: "How it works"
+      invitation_html: |
+        <h2>Writing a great invitation</h2>
+        <p>The first question every new member will have is ‘what is this group for?’</p>
+        <p>Think about the simplest way you can describe the group: What do you want to
+        achieve together? What types of decisions will you be making? Who will be involved?</p>
+        <p>It can be a good idea to talk to your group first before you invite them to join Loomio.</p>
+        <p>People will want to know why they’ve been invited, what’s expected of them,
+        and why it’s worth their time to learn how to use a new tool.</p>
+      join_the_community: "Join the community"
+      join_the_community_description_html: "Everyone is welcome to join the Loomio Community, where we talk about how to make the most of the tool, and how it can be improved.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Click here to go the Loomio Community group</a>."
+      images_and_text_formatting: "Images and text formatting"
+      images_and_text_formatting_html: |
+        <p>Loomio uses ‘Markdown’ for image embedding and text formatting.
+        You can switch Markdown on with the small grey icon under the comment box.</p>
+        <p><a href='https://www.loomio.org/discussions/1124'>Click here</a>
+        for information on how to use Markdown.</p>
+      keep_up_to_date: "Keep up to date"
+      keep_up_to_date_html: |
+        <p>Clicking your group name at the top of the screen takes you to your Group Page,
+        where you can see a list of all the discussions and decisions for that group. If
+        you’re in more than one group, you can see all the activity in all of your groups
+        at once on the Home Page.</p>
+        <p>You’ll get email notifications when important things happen in your group.
+        You can change your email preferences <a href="%{link}"">here</a>.</p>
+      make_a_decision: "Make a decision"
+      make_a_decision_description: "When the group is ready to make a decision, anyone can make a proposal. Outline a clear course of action and give some background so everyone knows exactly what it means to agree or disagree."
+      prompt_people_details: "If you want to get the attention of a specific person in your group, type ‘@’ followed by their name. They’ll get an email letting them know you’ve mentioned them in a comment."
+      prompt_people_html: "Prompt people with <span class='blue'>@mentions</span>"
+      positions_agree_description: "<span>Agree</span> means you’re happy with the proposal."
+      positions_abstain_description: "<span>Abstain</span> means you’re unsure, or you’re happy for the group to decide without you."
+      positions_disagree_description: "<span>Disagree</span> means you think there might be a better alternative, but you’re willing to go with the group’s decision."
+      positions_block_description: "<span>Block</span> means you’ve got serious objections and you’ll be extremely unhappy if this proposal goes ahead."
+      start_discussion: "Starting an engaging discussion"
+      start_discussion_html:  |
+        <p>When you start a discussion, make sure the title conveys the topic succinctly.
+        Use the Context Panel to give all the background information necessary for the
+        group to have a productive and informed discussion.</p>
+        <p>During the discussion, the Context Panel can be updated as new information
+        comes to light. As well as clarifying the topic, you can use this space for
+        sharing resources, summarising the discussion as it progresses, or outlining the
+        decision-making protocols your group is using.</p>
+      start_proposal: "Writing a clear proposal"
+      start_proposal_html: |
+        <p> If you make the title clear and succinct, people will immediately know exactly
+        what it means to agree or disagree.</p>
+        <p>It’s not the end of the world if a proposal doesn’t get clear agreement immediately.
+        If the group doesn’t love the first proposal, anyone can start a new proposal to
+        address the concerns raised, and keep the process moving forward.</p>
+        <p>Through this dynamic process, the collective wisdom of your group can generate better
+        ideas than anyone would have come up with on their own.</p>
+        <p>The deadline on a proposal can be extended at any time, if it looks like the decision
+        needs some more space. Everyone will get an email notification 24 hours before a proposal closes.</p>
+      video_id: "52025402"
+      video_tutorial: "Video tutorial"
+      video_tutorial_description: "Check out the video for a quick demonstration of how to use Loomio."
+
+    hint:
+      context: 'Tips for using the context panel'
+      discussion: 'Tips for starting an engaging discussion'
+      invitation: 'Tips for writing a great invitation'
+      proposal: 'Tips for writing a clear proposal'
+      vote: 'You can change your position at any time'
+
+    pricing_page:
+      intro: |
+        Groups with a budget pay a subscription for using the tool.
+        Groups without the means to pay a subscription use the
+        Pay What You Can model: their members are invited to make a voluntary contribution.      Your contribution means we can keep Loomio independent, free of advertising, and driven by our community.
+      organisations: Organisations
+      organisations_examples: e.g. businesses, government agencies, community organisations
+      informal_groups: Informal groups
+      informal_groups_desc: Members of your group will be asked to pay what they can
+      informal_groups_examples: e.g. families, social movements, collectives
+
+    angular:
+      title: 'Welcome to the Angular dashboard!'
+      now_on: 'Your angular interface is currently ON'
+      turn_on: 'Turn on the angular interface'
+      now_off: 'Your angular interface is currently OFF'
+      turn_off: 'Turn off the angular interface'
