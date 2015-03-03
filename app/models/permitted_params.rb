@@ -10,6 +10,8 @@ class PermittedParams < Struct.new(:params, :user)
     alias_method :"api_#{kind}", kind.to_sym
   end
 
+  alias :read_attribute_for_serialization :send
+
   def theme_attributes
     [:name, :style, :pages_logo, :app_logo]
   end

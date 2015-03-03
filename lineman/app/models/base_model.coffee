@@ -48,9 +48,10 @@ angular.module('loomioApp').factory 'BaseModel', ->
     baseSerialize: ->
       wrapper = {}
       data = {}
-      _.each @constructor.attributeNames, (attributeName) =>
-        data[_.snakeCase(attributeName)] = @[attributeName]
-      wrapper[@constructor.singular] = data
+      paramKey = _.snakeCase(@constructor.singular)
+      _.each window.Loomio.permittedParams[paramKey], (attributeName) =>
+        data[_.snakeCase(attributeName)] = @[_.camelCase(attributeName)]
+      wrapper[paramKey] = data
       wrapper
 
     setupViews: ->
