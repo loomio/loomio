@@ -24,7 +24,7 @@
 
       - if discussion.group.present?
         - group = discussion.group
-        - if group.is_visible_to_parent_members?
+        - if group.is_visible_to_parent_members? && group.parent_members_can_see_discussions?
           .hidden-group-discussion-privacy
             %i.fa.fa-lock
             = t :'common.private'
