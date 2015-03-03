@@ -1,4 +1,6 @@
 class AngularController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @enabled = current_user_or_visitor.angular_ui_enabled?
     render 'index', layout: false
