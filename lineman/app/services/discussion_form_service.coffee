@@ -5,7 +5,7 @@ angular.module('loomioApp').factory 'DiscussionFormService', ($modal, Records) -
         templateUrl: 'generated/modules/discussion_page/discussion_form/discussion_form.html',
         controller: 'DiscussionFormController',
         resolve:
-          discussion: -> angular.copy(discussion)
+          discussion: -> Records.discussions.find(discussion.id)
 
     openNewDiscussionModal: ->
       $modal.open
