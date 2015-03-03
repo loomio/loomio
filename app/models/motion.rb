@@ -214,11 +214,11 @@ class Motion < ActiveRecord::Base
   end
 
   def group_members_without_motion_author
-    group.users.where(User.arel_table[:id].not_eq(author.id))
+    group.members.without(author)
   end
 
   def group_members_without_outcome_author
-    group.users.where(User.arel_table[:id].not_eq(outcome_author.id))
+    group.members.without(outcome_author)
   end
 
   def store_users_that_didnt_vote

@@ -551,7 +551,7 @@ ActiveRecord::Schema.define(version: 20150228011519) do
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials",                     limit: 255
     t.string   "username",                            limit: 255
-    t.boolean  "email_followed_threads",                          default: true,       null: false
+    t.boolean  "email_on_participation",                          default: true,       null: false
     t.boolean  "email_when_proposal_closing_soon",                default: true,       null: false
     t.string   "authentication_token",                limit: 255
     t.string   "unsubscribe_token",                   limit: 255

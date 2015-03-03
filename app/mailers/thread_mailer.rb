@@ -89,7 +89,7 @@ class ThreadMailer < BaseMailer
   private
 
   def send_thread_email(alternative_subject: nil)
-    @following = DiscussionReader.for(discussion: @discussion, user: @recipient).following?
+    @following = DiscussionReader.for(discussion: @discussion, user: @recipient).volume_is_email?
     @utm_hash = utm_hash
 
     headers[message_id_header] = message_id

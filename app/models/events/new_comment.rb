@@ -5,10 +5,9 @@ class Events::NewComment < Event
                     discussion: comment.discussion,
                     created_at: comment.created_at)
 
-    if comment.author.email_on_participation?
-      DiscussionReader.for(user: comment.author,
-                           discussion: comment.discussion).change_volume! :email
-    end
+    DiscussionReader.for(user: comment.author,
+                         discussion: comment.discussion).
+                     set_volume_as_required!
 
     Events::CommentRepliedTo.publish! comment if comment.is_reply?
 
@@ -17,7 +16,7 @@ class Events::NewComment < Event
       Events::UserMentioned.publish!(comment, mentioned_user)
     end
 
-    ThreadMailerQuery.users_to_email_new_comment(comment).each do |user|
+    UsersToEmailQuery.new_comment(comment).each do |user|
       ThreadMailer.delay.new_comment(user, event)
     end
 

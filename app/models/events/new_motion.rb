@@ -4,12 +4,11 @@ class Events::NewMotion < Event
                     eventable: motion,
                     discussion: motion.discussion)
 
-    if motion.author.email_on_participation?
-      DiscussionReader.for(discussion: motion.discussion,
-                           user:       motion.author).change_volume! :email
-    end
+    DiscussionReader.for(discussion: motion.discussion,
+                         user: motion.author).
+                     set_volume_as_required!
 
-    ThreadMailerQuery.users_to_email_new_motion(motion).each do |user|
+    UsersToEmailQuery.new_motion(motion).each do |user|
       ThreadMailer.delay.new_motion(user, event)
     end
 

@@ -15,7 +15,7 @@ class Events::MotionOutcomeCreated < Event
   private
 
   def notify_users!
-    ThreadMailerQuery.users_to_email_motion_outcome(motion) do |user|
+    UsersToEmailQuery.motion_outcome(motion) do |user|
       ThreadMailer.delay.motion_outcome_created(user, self)
     end
 
