@@ -108,10 +108,6 @@ class Comment < ActiveRecord::Base
     group.users.where(username: usernames).where('users.id != ?', author.id)
   end
 
-  def non_mentioned_discussion_participants
-    (discussion.participants - mentioned_group_members) - [author]
-  end
-
   def likes_count
     comment_votes_count
   end
@@ -120,15 +116,6 @@ class Comment < ActiveRecord::Base
     if liker_ids_and_names.respond_to? :keys
       liker_ids_and_names.keys.include?(user.id)
     end
-  end
-
-  def followers_without_author
-    discussion.followers.where('users.id != ?', author_id)
-  end
-
-  def non_mentioned_followers_without_author
-    ignored_user_ids = [author.id, mentioned_group_members.pluck(:id)].flatten
-    discussion.followers.where('users.id NOT IN (?)', ignored_user_ids)
   end
 
   private

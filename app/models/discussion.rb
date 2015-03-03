@@ -86,10 +86,6 @@ class Discussion < ActiveRecord::Base
     User.find_by_id(originator.to_i)
   end
 
-  def group_members_without_discussion_author
-    group.users.without(author)
-  end
-
   alias_method :current_proposal, :current_motion
 
   def participants
