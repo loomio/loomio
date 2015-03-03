@@ -24,18 +24,6 @@ class DiscussionReader < ActiveRecord::Base
     super || membership.volume
   end
 
-  def follow!
-    change_volume! :email # deprecated, use change_volume! :email directly
-  end
-
-  def unfollow!
-    change_volume! :normal # deprecated, use change_volume! :normal directly
-  end
-
-  def following?
-    volume == 'email' # following? is deprecated; please use volume == 'email' instead
-  end
-
   def first_read?
     last_read_at.blank?
   end

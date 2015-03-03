@@ -43,13 +43,12 @@ class Comment < ActiveRecord::Base
   alias_method :author=, :user=
   attr_accessor :new_attachment_ids
 
-  def published_at
-    created_at
+  def parent_author
+    comment.parent.author if comment.is_reply?
   end
 
-  def author_role
-    #lookup role from membership of author to comment group
-    ['Program Coordinator', 'Visitor', 'Cooperative Member', 'Hat Wearer', 'Dog burger', 'Zip', 'Banana Phone User'].sample
+  def published_at
+    created_at
   end
 
   def author_name

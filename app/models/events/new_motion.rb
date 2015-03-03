@@ -4,22 +4,12 @@ class Events::NewMotion < Event
                     eventable: motion,
                     discussion: motion.discussion)
 
-    DiscussionReader.for(discussion: motion.discussion,
-                         user: motion.author).follow!
-
-    motion.followers_without_author.
-           email_followed_threads.each do |user|
-      ThreadMailer.delay.new_motion(user, event)
+    if motion.author.email_on_participation?
+      DiscussionReader.for(discussion: motion.discussion,
+                           user:       motion.author).change_volume! :email
     end
 
-    motion.followers_without_author.
-           dont_email_followed_threads.
-           email_new_proposals_for(motion.group).uniq.each do |user|
-      ThreadMailer.delay.new_motion(user, event)
-    end
-
-    motion.group_members_not_following.
-           email_new_proposals_for(motion.group).uniq.each do |user|
+    ThreadMailerQuery.users_to_email_new_motion(motion).each do |user|
       ThreadMailer.delay.new_motion(user, event)
     end
 

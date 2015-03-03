@@ -67,22 +67,6 @@ class Discussion < ActiveRecord::Base
     created_at
   end
 
-  def followers
-    User.
-      active.
-      joins("LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id = #{id})").
-      joins("LEFT OUTER JOIN memberships m ON (m.user_id = users.id AND m.group_id = #{group_id})").
-      where('dr.volume = :email OR (dr.volume IS NULL AND m.volume = :email)', { email: DiscussionReader.volumes[:email] })
-  end
-
-  def followers_without_author
-    followers.where('users.id != ?', author_id)
-  end
-
-  def group_members_not_following
-    group.members.active.where('users.id NOT IN (?)', followers.pluck(:id))
-  end
-
   def archive!
     return if is_archived?
     self.update_attribute(:archived_at, Time.now) and
@@ -103,7 +87,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def group_members_without_discussion_author
-    group.users.where(User.arel_table[:id].not_eq(author_id))
+    group.users.without(author)
   end
 
   alias_method :current_proposal, :current_motion

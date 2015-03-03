@@ -15,8 +15,7 @@ class Events::MotionOutcomeCreated < Event
   private
 
   def notify_users!
-    motion.followers_without_outcome_author.
-           email_followed_threads.each do |user|
+    ThreadMailerQuery.users_to_email_motion_outcome(motion) do |user|
       ThreadMailer.delay.motion_outcome_created(user, self)
     end
 

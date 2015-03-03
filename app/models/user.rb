@@ -114,16 +114,26 @@ class User < ActiveRecord::Base
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
-  scope :email_followed_threads, -> { active.where(email_followed_threads: true) }
-  scope :dont_email_followed_threads, -> { active.where(email_followed_threads: false) }
+
+  # move to ThreadMailerQuery
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
   scope :email_new_discussions_for, -> (group) {
-        active.
-        joins(:memberships).
-        where('memberships.group_id = ?', group.id).
-        where('users.email_new_discussions_and_proposals = ?', true).
-        where('memberships.email_new_discussions_and_proposals = ?', true) }
+    active.
+    joins(:memberships).
+    where('memberships.group_id = ?', group.id).
+    where('users.email_new_discussions_and_proposals = ?', true).
+    where('memberships.email_new_discussions_and_proposals = ?', true) }
   scope :email_new_proposals_for, -> (group) { active.email_new_discussions_for(group) }
+
+  scope :without, -> (users) {
+    users = Array(users).compact
+
+    if users.size > 0
+      where('users.id NOT IN (?)', users)
+    else
+      all
+    end
+  }
 
   def self.email_taken?(email)
     User.find_by_email(email).present?

@@ -31,7 +31,7 @@ describe EmailActionsController do
     end
 
     it 'follows the discussion' do
-      expect(DiscussionReader.for(discussion: @discussion, user: @user).following?).to eq false 
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).following?).to eq false
       get :follow_discussion, discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token
       expect(DiscussionReader.for(discussion: @discussion, user: @user).following?).to eq true
     end
