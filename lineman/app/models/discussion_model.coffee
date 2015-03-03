@@ -46,7 +46,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       @proposalsView.data()
 
     activeProposal: ->
-      return unless @id?
       proposal = _.last(@proposals())
       if proposal and proposal.isActive()
         proposal
