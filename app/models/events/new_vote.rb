@@ -9,7 +9,7 @@ class Events::NewVote < Event
                          user: vote.author).
                      set_volume_as_required!
 
-    UsersToEmailQuery.new_vote(vote).each do |user|
+    UsersToEmailQuery.new_vote(vote).find_each do |user|
       ThreadMailer.delay.new_vote(user, event)
     end
 

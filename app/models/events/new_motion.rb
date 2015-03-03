@@ -8,7 +8,7 @@ class Events::NewMotion < Event
                          user: motion.author).
                      set_volume_as_required!
 
-    UsersToEmailQuery.new_motion(motion).each do |user|
+    UsersToEmailQuery.new_motion(motion).find_each do |user|
       ThreadMailer.delay.new_motion(user, event)
     end
 

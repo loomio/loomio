@@ -12,11 +12,11 @@ class Events::NewComment < Event
     Events::CommentRepliedTo.publish! comment if comment.is_reply?
 
     comment.mentioned_group_members.
-            without(comment.parent_author).each do |mentioned_user|
+            without(comment.parent_author).find_each do |mentioned_user|
       Events::UserMentioned.publish!(comment, mentioned_user)
     end
 
-    UsersToEmailQuery.new_comment(comment).each do |user|
+    UsersToEmailQuery.new_comment(comment).find_each do |user|
       ThreadMailer.delay.new_comment(user, event)
     end
 

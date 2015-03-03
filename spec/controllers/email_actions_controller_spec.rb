@@ -9,13 +9,13 @@ describe EmailActionsController do
 
       @discussion = FactoryGirl.build(:discussion, group: @group)
       DiscussionService.create(discussion: @discussion, actor: @user)
-      DiscussionReader.for(discussion: @discussion, user: @user).follow!
+      DiscussionReader.for(discussion: @discussion, user: @user).set_volume! :email
     end
 
-    it 'unfollows the discussion' do
-      DiscussionReader.for(discussion: @discussion, user: @user).following?.should be true
+    it 'stops email notifications for the discussion' do
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).volume).to eq 'email'
       get :unfollow_discussion, discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token
-      DiscussionReader.for(discussion: @discussion, user: @user).following?.should be false
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).volume).to eq 'normal'
     end
   end
 
@@ -27,13 +27,12 @@ describe EmailActionsController do
 
       @discussion = FactoryGirl.build(:discussion, group: @group)
       DiscussionService.create(discussion: @discussion, actor: @user)
-      DiscussionReader.for(discussion: @discussion, user: @user).unfollow!
+      DiscussionReader.for(discussion: @discussion, user: @user).set_volume! :normal
     end
 
-    it 'follows the discussion' do
-      expect(DiscussionReader.for(discussion: @discussion, user: @user).following?).to eq false
+    it 'enables emails for the discussion' do
       get :follow_discussion, discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token
-      expect(DiscussionReader.for(discussion: @discussion, user: @user).following?).to eq true
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).volume).to eq 'email'
     end
   end
 

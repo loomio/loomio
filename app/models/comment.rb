@@ -44,7 +44,7 @@ class Comment < ActiveRecord::Base
   attr_accessor :new_attachment_ids
 
   def parent_author
-    comment.parent.author if is_reply?
+    parent.author if is_reply?
   end
 
   def published_at

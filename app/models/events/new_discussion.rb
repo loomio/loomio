@@ -7,9 +7,11 @@ class Events::NewDiscussion < Event
                          user: discussion.author).
                      set_volume_as_required!
 
-    UsersToEmailQuery.new_discussion(discussion).each do |user|
+    UsersToEmailQuery.new_discussion(discussion).find_each do |user|
       ThreadMailer.delay.new_discussion(user, event)
     end
+
+    event
   end
 
   def discussion

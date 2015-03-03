@@ -117,6 +117,14 @@ class User < ActiveRecord::Base
 
   # move to ThreadMailerQuery
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
+
+  scope :email_proposal_closing_soon_for, -> (group) {
+    active.
+    joins(:memberships).
+    where('memberships.group_id = ?', group.id).
+    where('users.email_when_proposal_closing_soon = ?', true)
+  }
+
   scope :email_new_discussions_for, -> (group) {
     active.
     joins(:memberships).

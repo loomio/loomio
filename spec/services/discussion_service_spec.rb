@@ -12,7 +12,7 @@ describe 'DiscussionService' do
                          destroy: true,
                          author: user) }
   let(:event) { double(:event) }
-  let(:discussion_reader) { double(:discussion_reader, follow!: true, viewed!: true) }
+  let(:discussion_reader) { double(:discussion_reader, set_volume_as_required!: true, viewed!: true) }
   let(:discussion_params) { {title: "new title", description: "new description", private: true, uses_markdown: true} }
 
 

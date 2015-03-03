@@ -15,11 +15,11 @@ class Events::MotionOutcomeCreated < Event
   private
 
   def notify_users!
-    UsersToEmailQuery.motion_outcome(motion) do |user|
+    UsersToEmailQuery.motion_outcome(motion).find_each do |user|
       ThreadMailer.delay.motion_outcome_created(user, self)
     end
 
-    motion.group_members_without_outcome_author.each do |user|
+    motion.group_members_without_outcome_author.find_each do |user|
       notify!(user)
     end
   end

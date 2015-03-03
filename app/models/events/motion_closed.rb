@@ -2,7 +2,7 @@ class Events::MotionClosed < Event
   def self.publish!(motion)
     event = create!(kind: 'motion_closed', eventable: motion)
 
-    UsersToEmailQuery.motion_closed(motion).each do |user|
+    UsersToEmailQuery.motion_closed(motion).find_each do |user|
       ThreadMailer.delay.motion_closed(user, event)
     end
 
