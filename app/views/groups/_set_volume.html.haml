@@ -1,0 +1,27 @@
+%h4 Notifications
+.following-status
+  .btn-group
+    %button{type: 'button', class:"btn btn-default dropdown-toggle", 'data-toggle': "dropdown", 'aria-expanded': false}
+      = t :"volume.#{@membership.volume}"
+      %span.caret
+    %ul.dropdown-menu{role: 'menu'}
+      %li.dropdown-menu-item
+        = link_to set_volume_group_path(@group, volume: :email), method: :post do
+          %i.fa.fa-lg.fa-envelope
+          %b Email
+          %br
+          All activity in the group will be emailed to you immediately.
+
+      %li.dropdown-menu-item
+        = link_to set_volume_group_path(@group, volume: :normal), method: :post do
+          %i.fa.fa-lg.fa-volume-up
+          %b Normal
+          %br
+          You'll see threads on your dashboard and be emailed daily.
+
+      %li.dropdown-menu-item
+        = link_to set_volume_group_path(@group, volume: :mute), method: :post do
+          %i.fa.fa-lg.fa-volume-off
+          %b Mute
+          %br
+          Hide this group from your dashboard and emails.

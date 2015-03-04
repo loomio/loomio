@@ -55,7 +55,7 @@ class Ability
     end
 
 
-    can [:members_autocomplete, :follow, :unfollow, :see_members], Group do |group|
+    can [:members_autocomplete, :set_volume, :see_members], Group do |group|
       user_is_member_of?(group.id)
     end
 
@@ -169,8 +169,7 @@ class Ability
       user_is_admin_of?(discussion.group_id)
     end
 
-    can [:unfollow,
-         :follow,
+    can [:set_volume,
          :new_proposal,
          :show_description_history,
          :preview_version], Discussion do |discussion|

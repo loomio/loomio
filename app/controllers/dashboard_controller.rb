@@ -2,16 +2,14 @@ class DashboardController <  GroupBaseController
   include ApplicationHelper
 
   def show
-    @discussions = GroupDiscussionsViewer.for(user: current_user)
+    @discussions = GroupDiscussionsViewer.for(user: current_user).not_muted
 
     if sifting_unread?
       @discussions = @discussions.unread
     end
 
-    if sifting_followed?
-      @discussions = @discussions.following
-    end
-
+    puts @discussions.joined_to_current_motion.
+                      order_by_closing_soon_then_latest_activity
     @discussions = @discussions.joined_to_current_motion.
                                 preload(:current_motion, {group: :parent}).
                                 order_by_closing_soon_then_latest_activity.

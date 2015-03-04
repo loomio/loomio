@@ -23,18 +23,48 @@
       -if @discussion.has_previous_versions?
         .last-edited-by
           = link_to t(:"common.edited", when: time_ago_in_words(@discussion.last_versioned_at)), show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
-      - if can? :follow, @discussion
+
+      - if can? :set_volume, @discussion
+        %h4 Notifications
         .following-status
-          - if @discussion_reader.following?
-            = link_to unfollow_discussion_path(@discussion), method: :post, class: "btn btn-default js-tooltip cuke-unfollow", title: t(:"discussion_context.click_to_unfollow") do
-              %i.fa.fa-volume-up
-              = t :"common.following"
-            %p= t :"discussion_context.following_details"
-          - else
-            = link_to follow_discussion_path(@discussion), method: :post, class: "btn btn-default js-tooltip cuke-follow", title: t(:"discussion_context.click_to_follow") do
-              %i.fa.fa-volume-down
-              = t :"common.not_following"
-            %p= t :"discussion_context.not_following_details"
+          .btn-group
+            %button{type: 'button', class:"btn btn-default dropdown-toggle", 'data-toggle': "dropdown", 'aria-expanded': false}
+              = t :"volume.#{@discussion_reader.volume}"
+              %span.caret
+            %ul.dropdown-menu{role: 'menu'}
+              %li.dropdown-menu-item
+                = link_to set_volume_discussion_path(@discussion, volume: :email), method: :post do
+                  %i.fa.fa-lg.fa-envelope
+                  %b Email
+                  %br
+                  Activity will be emailed to you immediately.
+
+              %li.dropdown-menu-item
+                = link_to set_volume_discussion_path(@discussion, volume: :normal), method: :post do
+                  %i.fa.fa-lg.fa-volume-up
+                  %b Normal
+                  %br
+                  You'll see activity on your dashboard and emailed daily.
+
+              %li.dropdown-menu-item
+                = link_to set_volume_discussion_path(@discussion, volume: :mute), method: :post do
+                  %i.fa.fa-lg.fa-volume-off
+                  %b Mute
+                  %br
+                  Hide the thread from your dashboard or emails - unless someone mentions you.
+
+
+        -#.following-status
+          -#- if @discussion_reader.following?
+            -#= link_to unfollow_discussion_path(@discussion), method: :post, class: "btn btn-default js-tooltip cuke-unfollow", title: t(:"discussion_context.click_to_unfollow") do
+              -#%i.fa.fa-volume-up
+              -#= t :"common.following"
+            -#%p= t :"discussion_context.following_details"
+          -#- else
+            -#= link_to follow_discussion_path(@discussion), method: :post, class: "btn btn-default js-tooltip cuke-follow", title: t(:"discussion_context.click_to_follow") do
+              -#%i.fa.fa-volume-down
+              -#= t :"common.not_following"
+            -#%p= t :"discussion_context.not_following_details"
 
 
 #description-revision-history.modal

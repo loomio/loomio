@@ -107,15 +107,9 @@ class DiscussionsController < GroupBaseController
     @feed_url = discussion_url @discussion, format: :xml if @discussion.public?
   end
 
-  def follow
+  def set_volume
     DiscussionReader.for(discussion: @discussion,
-                         user: current_user).follow!
-    redirect_to discussion_url @discussion
-  end
-
-  def unfollow
-    DiscussionReader.for(discussion: @discussion,
-                         user: current_user).unfollow!
+                         user: current_user).set_volume! params[:volume]
     redirect_to discussion_url @discussion
   end
 
