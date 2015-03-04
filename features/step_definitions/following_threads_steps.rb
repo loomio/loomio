@@ -6,7 +6,7 @@ end
 Then(/^I should not be following the discussion$/) do
   @discussion_reader = DiscussionReader.for(discussion: @discussion,
                                             user: @user)
-  @discussion_reader.following?.should be false
+  @discussion_reader.volume_is_email?.should be false
 end
 
 When(/^I create a discussion in my group$/) do
@@ -18,7 +18,7 @@ Then(/^I should be following the discussion$/) do
   @discussion.reload
   @discussion_reader = DiscussionReader.for(discussion: @discussion,
                                             user: @user)
-  @discussion_reader.following?.should be true
+  @discussion_reader.volume_is_email?.should be true
 end
 
 Given(/^I am autofollowing new discussions in my group$/) do
@@ -50,7 +50,7 @@ Then(/^I should be following it$/) do
   @discussion_reader = DiscussionReader.for(discussion: @discussion,
                                             user: @user)
 
-  @discussion_reader.following?.should be true
+  @discussion_reader.volume_is_email?.should be true
 end
 
 
@@ -58,7 +58,7 @@ Then(/^Rich should be following the discussion$/) do
   @discussion_reader = DiscussionReader.for(discussion: @discussion,
                                             user: @rich)
 
-  @discussion_reader.following?.should be true
+  @discussion_reader.volume_is_email?.should be true
 end
 
 Given(/^I update the title$/) do
@@ -66,7 +66,7 @@ Given(/^I update the title$/) do
 end
 
 Then(/^my followed threads should include the discussion$/) do
-  @discussions = GroupDiscussionsViewer.for(user: @user).following
+  @discussions = GroupDiscussionsViewer.for(user: @user).not_muted
   @discussions.should include(@discussion)
 end
 
@@ -80,7 +80,7 @@ When(/^there is a discussion created by someone in the group$/) do
 end
 
 Given(/^I have set my preferences to email me activity I'm following$/) do
-  @user.update_attribute(:email_followed_threads, true)
+  @user.update_attribute(:email_on_participation, true)
 end
 
 Given(/^I am following the group$/) do

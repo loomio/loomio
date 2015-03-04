@@ -11,7 +11,7 @@ class Events::UserMentioned < Event
     end
 
     DiscussionReader.for(discussion: comment.discussion,
-                         user: mentioned_user).follow!
+                         user: mentioned_user).set_volume! :email
 
     event.notify!(mentioned_user)
 
