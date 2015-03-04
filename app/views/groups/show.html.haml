@@ -42,6 +42,7 @@
         .edit-icon-placeholder
       .logo-placeholder.hidden-xs
       ~ render_rich_text(@group.description)
+
     = render "application/filter_discussions_buttons" if can? :set_volume, @group
     = render 'discussions/discussion_list'
 
@@ -83,8 +84,8 @@
                 %li= link_to t(:deactivate_group), archive_group_path(@group), method: 'post', data: { confirm: t(:confirm_deactivate_group, which_group: @group.name) }
 
       = join_group_button(@group)
+      = render 'set_volume', group: @group if @membership
     = render 'setup_next_steps' if show_next_steps?(@group)
-    = render 'set_volume', group: @group if @membership
 
     = render 'subgroups', group: @group
 

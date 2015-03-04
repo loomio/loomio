@@ -25,8 +25,8 @@
           = link_to t(:"common.edited", when: time_ago_in_words(@discussion.last_versioned_at)), show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
 
       - if can? :set_volume, @discussion
-        %h4 Notifications
-        .following-status
+        .notification-volume.pull-right
+          %h4 Notifications
           .btn-group
             %button{type: 'button', class:"btn btn-default dropdown-toggle", 'data-toggle': "dropdown", 'aria-expanded': false}
               %i.fa.fa-lg.fa-fw{class: icon_class_for_volume(@discussion_reader.volume)}
