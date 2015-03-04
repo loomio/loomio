@@ -24,6 +24,14 @@ module ApplicationHelper
     end
   end
 
+  def icon_class_for_volume(volume)
+    case volume.to_sym
+    when :email then 'fa-envelope'
+    when :normal then 'fa-volume-up'
+    when :mute then 'fa-volume-off'
+    end
+  end
+
   def time_formatted_relative_to_age(time)
     current_time = Time.zone.now
     if time.to_date == Time.zone.now.to_date

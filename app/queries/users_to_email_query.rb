@@ -1,8 +1,6 @@
 class UsersToEmailQuery
   def self.new_comment(comment)
-    discussion = comment.discussion
-
-    UsersByThreadVolumeQuery.email(discussion).
+    UsersByThreadVolumeQuery.email(comment.discussion).
                              without(comment.author).
                              without(comment.mentioned_group_members).
                              without(comment.parent_author)

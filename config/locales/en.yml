@@ -514,6 +514,21 @@ en:
 
         If you don't see anything in your inbox in a few minutes, email us at <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
 
+  volume:
+    email: 'Email'
+    normal: 'Normal'
+    mute: 'Mute'
+    
+  discussion_volume:
+    email_description: Activity will be emailed to you immediately.
+    normal_description: See activity from the dashboard and daily email.
+    mute_description: Hide this thread from your dashboard and emails.
+
+  group_volume:
+    email_description: Activity will be emailed to you immediately.
+    normal_description: See threads on the dashboard and in the daily email.
+    mute_description: Hide this group from your dashboard and emails.
+
   #
   # DISCUSSION PAGE
   #
