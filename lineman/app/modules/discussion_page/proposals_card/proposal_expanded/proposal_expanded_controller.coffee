@@ -1,6 +1,6 @@
 angular.module('loomioApp').controller 'ProposalExpandedController', ($scope, $modal, Records, UserAuthService) ->
   Records.votes.fetchByProposal($scope.proposal)
-  currentUser = UserAuthService.currentUser
+  currentUser = window.Loomio.currentUser
   $scope.showVotes = false
 
   $scope.showActionsDropdown = ->

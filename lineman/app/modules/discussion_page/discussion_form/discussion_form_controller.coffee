@@ -1,5 +1,5 @@
 angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $controller, $location, discussion, UserAuthService) ->
-  currentUser = UserAuthService.currentUser
+  currentUser = window.Loomio.currentUser
   $scope.discussion = discussion
 
   $controller('FormController', {$scope: $scope, record: discussion });
