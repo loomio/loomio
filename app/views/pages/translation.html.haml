@@ -7,7 +7,7 @@
         %p For details about Loomio translation, please see <a href="https://github.com/loomio/loomio/wiki/Translation">this guide</a>.
 
 
-        %h2 Supported Languages (#{selectable_locales.count})
+        %h2 Supported languages (#{selectable_locales.count})
         %table.code
           - selectable_locales.each do |locale|
             %tr
@@ -45,16 +45,21 @@
               = locale
             = ', ' unless i == browser_accepted_locales.count - 1
 
-        %p
-          The current fallback settings for loomio:
-          %br
-
+        %p The current fallback settings for loomio:
         %table.code
           - Loomio::I18n::FALLBACKS.each_pair do |k,v|
             %tr
               %td= k
               %td -->
               %td= v
+        %br
 
-
-
+        %p Registered right-to-left languages:
+        %table.code
+          - rtl_locales.each do |locale|
+            %tr
+              %td= locale
+              %td= "|"
+              %td= link_to locale_name(locale), root_path(locale: locale)
+              %td= "|"
+              %td= t(locale)
