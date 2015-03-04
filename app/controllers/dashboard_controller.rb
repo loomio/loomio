@@ -8,8 +8,6 @@ class DashboardController <  GroupBaseController
       @discussions = @discussions.unread
     end
 
-    puts @discussions.joined_to_current_motion.
-                      order_by_closing_soon_then_latest_activity
     @discussions = @discussions.joined_to_current_motion.
                                 preload(:current_motion, {group: :parent}).
                                 order_by_closing_soon_then_latest_activity.
