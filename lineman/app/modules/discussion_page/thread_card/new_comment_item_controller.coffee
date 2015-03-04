@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $translate, $modal, Records, UserAuthService) ->
+angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $translate, $modal, Records, UserAuthService, CommentFormService) ->
   renderLikedBySentence = ->
     otherIds = _.without($scope.comment.likerIds, UserAuthService.currentUser.id)
     otherUsers = _.filter $scope.comment.likers(), (user) -> _.contains(otherIds, user.id)
@@ -38,18 +38,10 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
   $scope.comment = $scope.event.comment()
 
   $scope.editComment = ->
-    modalInstance = $modal.open
-      templateUrl: 'generated/modules/discussion_page/comment_form/edit_comment.html'
-      controller: 'EditCommentController'
-      resolve:
-        comment: -> $scope.comment
+    CommentFormService.openEditCommentModal($scope.comment)
 
   $scope.deleteComment = ->
-    modalInstance = $modal.open
-      templateUrl: 'generated/modules/discussion_page/comment_form/delete_comment.html'
-      controller: 'DeleteCommentController'
-      resolve:
-        comment: -> $scope.comment
+    CommentFormService.openDeleteCommentModal($scope.comment)
 
   $scope.showContextMenu = ->
     $scope.canEditComment($scope.comment) or $scope.canDeleteComment($scope.comment)
