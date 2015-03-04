@@ -1179,7 +1179,7 @@ en:
       reply_or_view_online_html: "Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>."
       turn_off_notifications_html: "<a href='%{url}'>Turn off notifications</a> about this discussion."
       turn_off_notifications_text: "Turn off notifications for this discussion: %{url}"
-      turn_on_notifications_html: "<a href='%url}'>Turn on notifications</a> to be emailed activity in this discussion."
+      turn_on_notifications_html: "<a href='%{url}'>Turn on notifications</a> to be emailed activity in this discussion."
       turn_on_notifications_text: "Turn on notifications to be emailed activity in this discussion.: %{url}"
       change_email_preferences_html: "Change your <a href='%{email_preferences_url}'>email preferences</a> to unsubscribe from these emails."
       change_preferences: "Change your email preferences:"
