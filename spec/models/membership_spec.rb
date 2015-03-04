@@ -108,7 +108,7 @@ describe Membership do
     end
 
     it 'can change its volume' do
-      @membership.change_volume! :email
+      @membership.set_volume! :email
       expect(@membership.reload.volume.to_sym).to eq :email
     end
   end

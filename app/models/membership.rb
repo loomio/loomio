@@ -45,12 +45,14 @@ class Membership < ActiveRecord::Base
     update_attribute(:admin, false)
   end
 
+  # deprecated; please use set_volume directly
   def follow_by_default!
-    change_volume! :email # I am deprecated; please use change_volume directly instead
+    set_volume! :email
   end
 
+  # deprecated; please use set_volume directly
   def dont_follow_by_default!
-    change_volume! :normal # I am deprecated; please use change_volume directly instead
+    set_volume! :normal
   end
 
   def group_has_multiple_admins?

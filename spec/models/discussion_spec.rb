@@ -3,35 +3,6 @@ require 'rails_helper'
 describe Discussion do
   let(:discussion) { create :discussion }
 
-  describe ".followers" do
-    let(:follower) { FactoryGirl.create(:user) }
-    let(:unfollower) { FactoryGirl.create(:user) }
-    let(:group_follower) { FactoryGirl.create(:user) }
-    let(:group_member) { FactoryGirl.create(:user) }
-    let(:non_member) { FactoryGirl.create(:user) }
-    let(:group) { discussion.group }
-
-    before do
-      [follower, unfollower, group_follower, group_member].each do |user|
-        group.add_member!(user)
-      end
-
-      DiscussionReader.for(discussion: discussion, user: follower).follow!
-      DiscussionReader.for(discussion: discussion, user: unfollower).unfollow!
-      discussion.group.membership_for(group_follower).follow_by_default!
-    end
-
-    subject do
-      discussion.followers
-    end
-
-    it {should include follower}
-    it {should_not include unfollower}
-    it {should include group_follower}
-    it {should_not include group_member }
-    it {should_not include non_member }
-  end
-
   describe "archive!" do
     let(:discussion) { create :discussion }
 

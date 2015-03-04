@@ -20,6 +20,12 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
+  def set_volume_as_required!
+    if user.email_on_participation?
+      set_volume! :email unless volume_is_email?
+    end
+  end
+
   def volume
     super || membership.volume
   end

@@ -1,0 +1,15 @@
+%h4 Notifications
+.following-status
+  .btn-group
+    %button{type: 'button', class:"btn btn-default dropdown-toggle", 'data-toggle': "dropdown", 'aria-expanded': false}
+      %i.fa.fa-lg.fa-fw{class: icon_class_for_volume(@membership.volume)}
+      = t :"volume.#{@membership.volume}"
+      %span.caret
+    %ul.dropdown-menu.dropdown-menu-right{role: 'menu'}
+      - %w[email normal mute].each do |volume|
+        %li.dropdown-menu-item
+          = link_to [:set_volume, @group, volume: volume], method: :post do
+            %i.fa.fa-lg.fa-fw{class: icon_class_for_volume(volume)}
+            %b= t(:"volume.#{volume}")
+            %br
+            = t(:"group_volume.#{volume}_description")

@@ -48,10 +48,10 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
-  def with_volume(volume)
+  def not_muted
     join_to_discussion_readers && join_to_memberships
-    @relation = @relation.where('(dv.volume = :volume) OR (dv.volume IS NULL AND m.volume = :volume)',
-                                {volume: DiscussionReader.volumes[volume.to_sym] })
+    @relation = @relation.where('(dv.volume > :mute) OR (dv.volume IS NULL AND m.volume > :mute)',
+                                {mute: DiscussionReader.volumes[:mute]})
     self
   end
 

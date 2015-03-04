@@ -42,7 +42,7 @@
         .edit-icon-placeholder
       .logo-placeholder.hidden-xs
       ~ render_rich_text(@group.description)
-    = render "application/filter_discussions_buttons" if can? :follow, @group
+    = render "application/filter_discussions_buttons" if can? :set_volume, @group
     = render 'discussions/discussion_list'
 
   .col-md-3
@@ -84,7 +84,7 @@
 
       = join_group_button(@group)
     = render 'setup_next_steps' if show_next_steps?(@group)
-    = render 'follow', group: @group
+    = render 'set_volume', group: @group if @membership
 
     = render 'subgroups', group: @group
 
