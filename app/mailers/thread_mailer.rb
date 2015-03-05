@@ -31,6 +31,17 @@ class ThreadMailer < BaseMailer
                                              which: @discussion.group.full_name))
   end
 
+  def comment_replied_to(recipient, event)
+    @recipient = recipient
+    @event = event
+    @reply = event.eventable
+    @discussion = @reply.discussion
+    @author = @reply.author
+    send_thread_email(alternative_subject: t('email.comment_replied_to.subject',
+                                             who: @author.name,
+                                             which: @discussion.group.full_name))
+  end
+
   def new_vote(recipient, event)
     @recipient = recipient
     @event = event

@@ -10,12 +10,17 @@ describe Events::CommentRepliedTo do
   describe "::publish!" do
     let(:event) { double(:event, notify_users!: true) }
     before { Event.stub(:create!).and_return(event); comment }
+    before { ThreadMailer.stub_chain(:delay, :comment_replied_to) }
 
     it 'creates an event' do
       Event.should_receive(:create!).with(kind: 'comment_replied_to',
                                           eventable: comment,
-                                          user: comment.author,
                                           created_at: comment.created_at)
+      Events::CommentRepliedTo.publish!(comment)
+    end
+
+    it 'calls a method that triggers an email notification' do
+      ThreadMailer.should_receive(:delay)
       Events::CommentRepliedTo.publish!(comment)
     end
 
