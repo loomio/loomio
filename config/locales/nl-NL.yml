@@ -188,6 +188,7 @@ nl-NL:
     about: Over
     blog: Blog
     contact: Contact
+    help: Help
     privacy: Privacy
     pricing: Prijsplan
     public_groups: Openbare groepen
@@ -858,6 +859,9 @@ nl-NL:
       thanks_for_reading: "Bedankt voor het lezen, een fijne dag gewenst!"
       click_here_to_mark_all_as_read_html: "Hier zie je wat er gisteren op Loomio gebeurde.\nAls je het hebt gelezen, klik <a href=\"%{link}\">markeer als gelezen</a> om het te verwijderen uit je Loomio Inbox.\n"
       marked_as_read_success: Alles uit de e-mail is gemarkeerd als gelezen
+    comment_replied_to:
+      context: "%{author_name} reageerde op jouw reactie in de discussie \"%{discussion_title}\""
+      subject: "%{who} reageerde op jouw reactie in de %{which} groep op Loomio"
     group_email:
       intro: "%{who} maakte een aankondiging aan %{group}:"
     group_membership_approved:
