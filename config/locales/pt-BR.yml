@@ -188,6 +188,7 @@ pt-BR:
     about: Sobre
     blog: Blog
     contact: Contato
+    help: Ajuda
     privacy: Privacidade
     pricing: Preço
     public_groups: Grupos públicos
@@ -858,6 +859,9 @@ pt-BR:
       thanks_for_reading: "Obrigado por ler, tenha um ótimo dia!"
       click_here_to_mark_all_as_read_html: "Aconteceu no Loomio ontem.\nDepois de ler, clique em <a href=\"%{link}\">marcar como lida</a> para remover da caixa de entrada do seu Loomio.\n"
       marked_as_read_success: Tudo no e-mail foi marcado como lido
+    comment_replied_to:
+      context: "%{author_name} respondeu ao seu comentário na discussão \"%{discussion_title}\""
+      subject: "%{who} respondeu ao seu comentário no grupo %{which} do Loomio"
     group_email:
       intro: "%{who} anunciou para %{group}:"
     group_membership_approved:

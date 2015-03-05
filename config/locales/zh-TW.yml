@@ -174,10 +174,12 @@ zh-TW:
     about: 關於
     blog: 部落格
     contact: 聯絡我們
+    help: 教學文件
     privacy: 隱私設定
     pricing: 價格
     public_groups: 公開群組
     terms: 聲明
+    independent_install_html: "%{hostname} 運作的是 Loomio 的獨立副本：<a href=\"http://github.com/loomio/loomio\">詳細瞭解</a>。"
   inbox:
     clear: 清除
     title: 收件匣
@@ -225,7 +227,7 @@ zh-TW:
   honeypot_warning: 無法建立您的帳號。假如您正在使用螢幕閱讀器，請確保表單最後一個 (隱藏) 欄位是留白的。
   tagline: 締造一個任何人都能輕鬆參與、討論決策、影響他人的世界。
   or_sign_in_html: "如果您已經有 Loomio 帳號，<a href='%{link}' class='%{link_class}'>由此登入</a>"
-  or_link_account_html: "如果您已經有 Loomio 的帳戶，請點擊以下連結 <a href='%{link}'></a>"
+  or_link_account_html: "如果您已經有 Loomio 的帳號，請點擊以下連結 <a href='%{link}'></a>"
   click_to_dismiss: 按此關閉此訊息
   generic_confirm: 您確定嗎？
   discussion_helper_text:
@@ -246,7 +248,7 @@ zh-TW:
   user_profile:
     back: 回到我的簡歷
     change_password: 變更您的密碼
-    deactivate_account: 凍結群組
+    deactivate_account: 凍結帳號
     about_deactivation: 這是甚麼意思？
     confirm_account_deactivation: 您確定您想要凍結您的帳號？
     reactivation_html: "您會需要<a href='%{link}'>聯絡我們</a>以重新啟用您的帳號。"
@@ -255,7 +257,7 @@ zh-TW:
       query: 您可以告訴我們為何您現在要凍結您的帳號嗎？
       only_coordinator: 群組必須至少有一位協作者。您目前是以下跟隨群組中唯一的協作者：
       instructions: 為了凍結您的帳號，您需要增加其他的協作者，或是凍結群組。
-      info_title: 凍結您的群組是甚麼意思？
+      info_title: 凍結您的帳號是甚麼意思？
       memberships: 在您目前隸屬的任何群組中您將不再被列為成員。
       group_contributions: 您在群組中作出的意見、提案與討論串會留下，但我們會從中移除您的大名。
       emails: 我們會停止寄送給您有關 Loomio 的電子郵件。
@@ -640,8 +642,8 @@ zh-TW:
   already_have_account: 已經有 Loomio 帳號了？
   confirm_your_details: 確認您的細節
   link_up_your_account: 連結您的帳號
-  log_in_to_your_loomio_account: "登入您的 Loomio 帳戶以連結 %{provider_name}。"
-  now_that_your_logged_in: "現在您已以 %{provider_name} 登入，請確認您的詳細訊息以建立 Loomio 帳戶"
+  log_in_to_your_loomio_account: "登入您的 Loomio 帳號以連結 %{provider_name}。"
+  now_that_your_logged_in: "現在您已以 %{provider_name} 登入，請確認您的詳細訊息以建立 Loomio 帳號"
   confirmation_not_received: 沒有收到帳號確認程序？
   unlock_not_received: 沒有收到帳號解鎖程序？
   inactive_html: "此帳號已經被凍結。假如您有任何疑問，請<a href='%{path_to_contact}'>聯繫我們</a>。"
@@ -843,6 +845,9 @@ zh-TW:
       thanks_for_reading: 感謝您的閱讀，祝您有美好的一天！
       click_here_to_mark_all_as_read_html: "這些是昨日 Loomio 發生的大小事。 \n一旦您讀過，點擊<a href=\"%{link}\">設為已讀</a>就能從您的 Loomio 收件箱中移除。 \n"
       marked_as_read_success: 電子郵件所列的討論串現在設為已讀了
+    comment_replied_to:
+      context: "%{author_name} 在討論串「%{discussion_title}」回覆您的意見"
+      subject: "%{who} 在 Loomio %{which} 群組中回覆了您的意見"
     group_email:
       intro: "%{who} 在 %{group}裡發布了一則公告："
     group_membership_approved:
@@ -859,7 +864,7 @@ zh-TW:
       view_group: 您可點此批准或拒絕申請
     mentioned:
       context: "%{author_name} 在討論「%{discussion_title}」時提到您"
-      subject: "%{who}在 Loomio %{which}群組中提到您"
+      subject: "%{who} 在 Loomio %{which} 群組中提到您"
     new_motion_created:
       subject: "提案：%{proposal_title}"
       context: "%{author}開始一個提案在%{group_full_name}:"
@@ -881,10 +886,13 @@ zh-TW:
       headline: "%{author} 在 %{group} 群組的提案很快就要定案了："
       summary: 摘要
     thread_mailer:
+      footer_text: "直接回覆本電子郵件，或是到 %{hostname} 上觀看："
+      reply_or_view_online_html: "直接回覆此 Email，或是<a href='%{url}'>在 %{hostname} 上觀看</a>。"
       unfollow_discussion_html: "<a href='%{unfollow_url}'>取消跟隨</a>以停止接收有關此討論的電子郵件。"
       unfollow_discussion_text: "連到之後的連結以停止接收有關此討論串的電子郵件：%{unfollow_url}"
       follow_discussion_html: "<a href='%{follow_url}'>跟隨</a>以接收有關此討論串的電子郵件。"
       follow_discussion_text: "連到之後的連結以接收有關此討論串的電子郵件：%{follow_url}"
+      change_email_preferences_html: "變更您的 <a href='%{email_preferences_url}'>email 偏好設定</a>以取消訂閱這些電子郵件。"
       change_preferences: 變更您的電子郵件偏好設定：
       new_motion: "%{who} 的提議："
       motion_closing_soon: 24 小時內定案的提議：

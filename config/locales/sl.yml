@@ -62,8 +62,8 @@ sl:
     invalid_email: Vnesi vsaj en veljaven e-poštni naslov
     image_upload_fail: "Slike ni bilo mogoče naložiti. Preveri, če je slika manjša od 1 MB in v formatu .jpeg, .png ali .gif."
     motion_closing_inputs: Neveljaven datum zaključka
-    motion_outcome_not_created: Rezultata ni mogoče objaviti.
-    motion_outcome_not_updated: Rezultata ni mogoče posodobiti.
+    motion_outcome_not_created: Izida ni mogoče objaviti.
+    motion_outcome_not_updated: Izida ni mogoče posodobiti.
     only_group_coordinator_destroy: "Skupine ne moreš zapustiti, ker si edini/-a koordinator/-ka. Skupino lahko deaktiviraš z izbiro s spustnega menija ali <a href='%{add_coordinator}'>dodaš novega koordinatorja</a> skupine."
     only_group_coordinator_remove_admin: Skupina mora imeti koordinatorja/-ko. Želiš skupini dodati še enega/-o koordinatorja/-ko?
     permission_to_invite: Nimaš dovoljenja za vabljenje novih članov.
@@ -143,9 +143,9 @@ sl:
     group_created: Skupina je bila uspešno ustvarjena.
     members_added: Člani so bili dodani v skupino.
     membership_requested: "Zaprosil/a si za pridružitev v %{which_group}. Ob odobritvi zahteve boš obveščen/a."
-    motion_closed: "Predlog je zaključen. Če želiš, lahko spodaj določiš rezultat in ga pošlješ svoji skupini."
-    motion_outcome_created: "Čestitke! Ustvaril/a si cilj predloga, člani tvoje skupine pa so o njem bili obveščeni."
-    motion_outcome_updated: Cilj predloga je bil posodobljen.
+    motion_closed: "Predlog je zaključen. Če želiš, lahko spodaj zabeležiš izid in ga pošlješ svoji skupini."
+    motion_outcome_created: "Čestitke! Izid predloga je znan, člani tvoje skupine pa so bili o njem obveščeni."
+    motion_outcome_updated: Izid predloga je bil posodobljen.
     password_updated: Geslo je bilo uspešno spremenjeno.
     position_submitted: Stališče je bilo dodano
     position_updated: Stališče je bilo posodobljeno.
@@ -216,10 +216,12 @@ sl:
     about: O nas
     blog: Blog
     contact: Kontakt
+    help: Pomoč
     privacy: Zasebnost
     pricing: Cene
     public_groups: Javne skupine
     terms: Pogoji
+    independent_install_html: "%{hostname} uporablja neodvisno kopijo Loomia: <a href=\"http://github.com/loomio/loomio\">več informacij</a>."
   inbox:
     clear: Počisti
     title: Nabiralnik
@@ -244,8 +246,8 @@ sl:
     user_added_to_group: te je dodal/a v skupino
     motion_closing_soon: Predlog bo kmalu zaključen
     motion_blocked: je ugovarjal/a predlogu
-    motion_outcome_created: je objavil/a rezultat za predlog
-    motion_outcome_updated: je posodobil/a rezultat za predlog
+    motion_outcome_created: je objavil/a izid predloga
+    motion_outcome_updated: je posodobil/a izid predloga
     email_actions:
       following_thread: "Začel/a si slediti temi: %{thread_title}"
       not_following_thread: "Prenehal/a si slediti temi: %{thread_title}"
@@ -480,8 +482,8 @@ sl:
       by_user: je zaključil/a predlog
       by_expiry: Predlog je zaključen
     motion_close_date_edited: je spremenil/a datum zaključka predloga
-    motion_outcome_created: je objavil/a rezultat predloga
-    motion_outcome_updated: je posodobil/a rezultat predloga
+    motion_outcome_created: je objavil/a izid predloga
+    motion_outcome_updated: je posodobil/a izid predloga
     discussion_title_edited: je spremenil/a naslov razprave
     discussion_description_edited: je spremenil/a opis razprave
     motion_name_edited: je uredil/a ime predloga
@@ -571,8 +573,8 @@ sl:
   block_position: Ugovarjam
   block_details: Močno ugovarjam temu predlogu in nisem OK z njegovim sprejetjem.
   not_voted: "[Prikaži člane, ki se še niso odločili]"
-  outcome_placeholder: Kaj je bil rezultat tega predloga?
-  outcome_submit: Objavi rezultat
+  outcome_placeholder: Kaj je bil izid tega predloga?
+  outcome_submit: Objavi izid
   position_verbs:
     "yes": strinjam se
     "no": ne strinjam se
@@ -907,11 +909,11 @@ sl:
       context: "%{author} je ustvaril/a predlog v %{group_full_name}:"
     proposal_closed:
       proposal_has_closed: Predlog je zaprt.
-      specify_outcome_and_notify_group: "Ustvari cilj in ga pošlji svoji skupini!"
-      specify_outcome_and_notify_group_html: "Ustvari cilj in ga pošlji svoji skupini!"
+      specify_outcome_and_notify_group: "Opiši izid in ga pošlji svoji skupini!"
+      specify_outcome_and_notify_group_html: "Opiši izid in ga pošlji svoji skupini!"
       subject: "Zaključen predlog - %{which}"
     proposal_outcome:
-      subject: Cilj predloga
+      subject: Izid predloga
     proposal_blocked:
       intro: "Predlogu, ki ga podpiraš,  nekdo ugovarja."
       subject: "Predlogu nekdo ugovarja - %{which}"
@@ -923,17 +925,20 @@ sl:
       headline: "Predlog, ki ga je predlagal/a %{author} v %{group}, bo kmalu zaključen:"
       summary: Povzetek
     thread_mailer:
+      footer_text: "Odgovori na ta email, ali ga poglej na %{hostname}:"
+      reply_or_view_online_html: "Odgovori na ta email, ali <a href='%{url}'>ga poglej na %{hostname}</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Odjavi se,</a> da prenehaš prejemati emaile o tej razpravi."
       unfollow_discussion_text: "S klikom na povezavo lahko prenehaš prejemati obvestila o tej razpravi: %{unfollow_url}"
       follow_discussion_html: "<a href='%{follow_url}'>Spremljaj</a> in prejemal/a boš obvestila o tej razpravi."
       follow_discussion_text: "S klikom na povezavo boš začel/a prejemati obvestila o tej razpravi: %{follow_url}"
+      change_email_preferences_html: "Za odjavo od teh sporočil spremeni svoje <a href='%{email_preferences_url}'>email nastavitve</a>."
       change_preferences: "Spremeni svoje email nastavitve:"
       new_motion: "%{who} je predlagal/a:"
       motion_closing_soon: "Predlog se zaključi v 24 urah:"
       proposal_closed: "Zaključen predlog:"
-      specify_outcome_html: "Tvoj predlog je zaključen. <a href='%{link}'>Določi cilj</a>, da lahko vse obvestiš o rezultatu."
-      specify_outcome: "Tvoj predlog je zaključen. Določi cilj, da lahko vse obvestiš o rezultatu."
-      outcome_created: "%{who} je določil/a cilj predloga:"
+      specify_outcome_html: "Tvoj predlog je zaključen. <a href='%{link}'>Opiši izid</a> in obvesti še ostale o rezultatu."
+      specify_outcome: "Tvoj predlog je zaključen. Opiši izid, da lahko vse obvestiš o rezultatu."
+      outcome_created: "%{who} je določil/a izid predloga:"
       you_agreed: "Ti si %{past_tense_position}"
     verification:
       header: "Skoraj si opravil/a!"
@@ -976,7 +981,7 @@ sl:
   new_activity: Nova aktivnost
   next: Naprej
   other: Drugo
-  outcome: Cilj
+  outcome: Izid
   password: Geslo
   leave_this_field_blank: to polje pusti prazno
   photo: Fotografija
