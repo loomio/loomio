@@ -5,9 +5,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
     @indices: ['parentId']
 
     setupViews: ->
-      @discussionsView = @recordStore.discussions.collection.addDynamicView(@viewName())
-      @discussionsView.applyFind(groupId: @id)
-      @discussionsView.applySimpleSort('createdAt', true)
+      @setupView 'discussions', 'createdAt', true
 
     discussions: ->
       @discussionsView.data()

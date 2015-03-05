@@ -73,6 +73,6 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
 
     destroy: ->
       _.each @events, (event) ->
-        @recordStore.events.remove(event)
+        @recordStore.events.destroy(event.id)
 
-      @recordStore.comments.remove(@)
+      @recordStore.comments.destroy(@id)

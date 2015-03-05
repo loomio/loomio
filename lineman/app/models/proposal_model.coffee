@@ -4,9 +4,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     @plural: 'proposals'
 
     setupViews: ->
-      @votesView = @recordStore.votes.collection.addDynamicView(@viewName())
-      @votesView.applyFind(proposalId: @id)
-      @votesView.applySimpleSort('id')
+      @setupView 'votes'
 
     serialize: ->
       motion:
@@ -40,7 +38,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
       @author().name
 
     isActive: ->
-      !(@closedAt?)
+      !@closedAt? or !@closedAt.isValid()
 
     uniqueVotesByUserId: ->
       votesByUserId = {}

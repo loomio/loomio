@@ -56,6 +56,16 @@ angular.module('loomioApp').factory 'BaseModel', ->
 
     setupViews: ->
 
+    setupView: (view, sort, desc) ->
+      viewName = "#{view}View"
+      idOption = {}
+      idOption["#{@constructor.singular}Id"] = @id
+
+      @[viewName] = @recordStore[view].collection.addDynamicView(@viewName())
+      @[viewName].applyFind(idOption)
+      @[viewName].applyFind(id: {$gt: 0})
+      @[viewName].applySimpleSort(sort or 'createdAt', desc)
+
     translationOptions: ->
 
     viewName: -> "#{@constructor.plural}#{@id}"
