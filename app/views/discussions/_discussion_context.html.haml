@@ -14,6 +14,21 @@
         - if TranslationService.can_translate? @discussion
           = translate_link_for @discussion
   .col-sm-3.col-sm-offset-1.right-context
+    - if can? :set_volume, @discussion
+      - current_volume = @discussion_reader.volume
+      .btn-group
+        %button{type: 'button', class:"btn btn-block btn-left btn-default dropdown-toggle", 'data-toggle': "dropdown", 'aria-expanded': false}
+          %i.fa.fa-lg.fa-fw{class: icon_class_for_volume(current_volume)}
+          = t :"volume.#{current_volume}"
+          %span.caret
+        %ul.dropdown-menu.dropdown-menu-right{role: 'menu'}
+          - %w[email normal mute].each do |volume|
+            %li.dropdown-menu-item
+              = link_to [:set_volume, @discussion, volume: volume], method: :post do
+                %i.fa.fa-lg.fa-fw{class: icon_class_for_volume(volume)}
+                %b= t(:"volume.#{volume}")
+                %br
+                = t(:"discussion_volume.#{volume}_description")
     .discussion-additional-info
       = t("discussion_context.started_html",
           when: time_ago_in_words(@discussion.created_at),
@@ -24,22 +39,6 @@
         .last-edited-by
           = link_to t(:"common.edited", when: time_ago_in_words(@discussion.last_versioned_at)), show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
 
-      - if can? :set_volume, @discussion
-        .notification-volume.pull-right
-          %h4 Notifications
-          .btn-group
-            %button{type: 'button', class:"btn btn-default dropdown-toggle", 'data-toggle': "dropdown", 'aria-expanded': false}
-              %i.fa.fa-lg.fa-fw{class: icon_class_for_volume(@discussion_reader.volume)}
-              = t :"volume.#{@discussion_reader.volume}"
-              %span.caret
-            %ul.dropdown-menu.dropdown-menu-right{role: 'menu'}
-              - %w[email normal mute].each do |volume|
-                %li.dropdown-menu-item
-                  = link_to [:set_volume, @discussion, volume: volume], method: :post do
-                    %i.fa.fa-lg.fa-fw{class: icon_class_for_volume(volume)}
-                    %b= t(:"volume.#{volume}")
-                    %br
-                    = t(:"discussion_volume.#{volume}_description")
 
 
 #description-revision-history.modal

@@ -516,21 +516,20 @@ en:
 
 
   volume:
-    email: 'Email'
-    normal: 'Normal'
-    mute: 'Mute'
-    
-  discussion_volume:
     notifications: Notifications
-    email_description: Activity will be emailed to you immediately.
-    normal_description: See activity from the dashboard and daily email.
-    mute_description: Hide this thread from your dashboard and emails.
+    email: Email
+    normal: Normal
+    mute: Mute
+
+  discussion_volume:
+    email_description: Email when there is activity.
+    normal_description: Show this thread on the dashboard and in the Yesterday on Loomio email.
+    mute_description: Hide from the dashboard and do not email unless @mentioned.
 
   group_volume:
-    notifications: Notifications
-    email_description: Activity will be emailed to you immediately.
-    normal_description: See threads on the dashboard and in the daily email.
-    mute_description: Hide this group from your dashboard and emails.
+    email_description: Email when someone starts a discussion or proposal.
+    normal_description: Show on dashboard and include in the Yesterday on Loomio email.
+    mute_description: Hide this group from the dashboard and do not email unless @mentioned.
 
   #
   # DISCUSSION PAGE

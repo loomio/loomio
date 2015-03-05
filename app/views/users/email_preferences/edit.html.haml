@@ -13,24 +13,32 @@
           = f.check_box :email_when_mentioned
           = t('.email_when_mentioned')
       .checkbox
-        = label_tag "user_email_followed_threads" do
-          = f.check_box :email_followed_threads
-          = t('.email_followed_threads')
+        = label_tag "user_email_on_participation" do
+          = f.check_box :email_on_participation
+          = t('.email_on_participation')
       .checkbox
         = label_tag "user_email_when_proposal_closing_soon" do
           = f.check_box :email_when_proposal_closing_soon
           = t('.email_when_proposal_closing_soon')
-      .checkbox
-        = label_tag "user_email_new_discussions_and_proposals" do
-          = f.check_box :email_new_discussions_and_proposals, id: 'js_email_new_discussions_and_proposals'
-          = t('.email_new_discussions_and_proposals')
 
       .per-group-email-settings
-        %p= t('.for_these_groups')
-        .control-group
-          = f.collection_check_boxes(:email_new_discussions_and_proposals_group_ids,
-                                     @user.memberships.sorted_by_group_name,
-                                     :group_id,:group_full_name, {},
-                                     {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
+        %table.table
+          %thead
+            %tr
+              %th= t :group
+              %th= t :'volume.notifications'
+              %th= t('.email_new_discussions_and_proposals')
+          %tbody
+            - current_user.groups.order('full_name asc').each do |group|
+              - membership = group.membership_for(current_user)
+              - opts = Membership.volumes.keys.map { |v| [ t(:"volume.#{v}"), v ] }
+              = membership.volume
+              %tr
+                %td= group.full_name
+                %td= select_tag '', options_for_select(opts, membership.volume)
+                %td
+                  = check_box_tag ''
+
+
 
       = f.submit t('.submit'), :class => "btn btn-primary"

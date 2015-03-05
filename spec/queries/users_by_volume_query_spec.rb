@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe UsersByThreadVolumeQuery do
+describe UsersByVolumeQuery do
   let(:user_with_reader_volume_email) { FactoryGirl.create :user }
   let(:user_with_membership_volume_email) { FactoryGirl.create :user }
   let(:user_with_volume_normal) { FactoryGirl.create :user }
@@ -27,7 +27,7 @@ describe UsersByThreadVolumeQuery do
   end
 
   context "email" do
-    let(:users) { UsersByThreadVolumeQuery.email(discussion) }
+    let(:users) { UsersByVolumeQuery.email(discussion) }
 
     it "includes user_with_reader_volume_email" do
       users.should include user_with_reader_volume_email
@@ -45,7 +45,7 @@ describe UsersByThreadVolumeQuery do
   end
 
   context "normal" do
-    let(:users) { UsersByThreadVolumeQuery.normal(discussion) }
+    let(:users) { UsersByVolumeQuery.normal(discussion) }
 
     it "includes user_with_volume_normal" do
       users.should include user_with_volume_normal
@@ -60,7 +60,7 @@ describe UsersByThreadVolumeQuery do
   end
 
   context "mute" do
-    let(:users) { UsersByThreadVolumeQuery.mute(discussion) }
+    let(:users) { UsersByVolumeQuery.mute(discussion) }
 
     it "includes user_with_reader_volume_mute" do
       users.should include user_with_reader_volume_mute

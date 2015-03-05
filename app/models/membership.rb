@@ -45,16 +45,6 @@ class Membership < ActiveRecord::Base
     update_attribute(:admin, false)
   end
 
-  # deprecated; please use set_volume directly
-  def follow_by_default!
-    set_volume! :email
-  end
-
-  # deprecated; please use set_volume directly
-  def dont_follow_by_default!
-    set_volume! :normal
-  end
-
   def group_has_multiple_admins?
     group.admins.count > 1
   end
@@ -82,7 +72,7 @@ class Membership < ActiveRecord::Base
   def remove_open_votes
     return if group.nil? #necessary if group is missing (as in case of production data)
     group.motions.voting.each do |motion|
-      motion.votes.where(user_id: user.id).each(&:destroy)
+      motion.votes.where(user_id: user_id).each(&:destroy)
     end
   end
 end

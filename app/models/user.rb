@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   MAX_AVATAR_IMAGE_SIZE_CONST = 10.megabytes
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
-  attr_accessor :honeypot, :email_new_discussions_and_proposals_group_ids
+  attr_accessor :honeypot
 
   validates :email, presence: true, uniqueness: true, email: true
   validates_inclusion_of :uses_markdown, in: [true,false]
@@ -125,14 +125,6 @@ class User < ActiveRecord::Base
     where('users.email_when_proposal_closing_soon = ?', true)
   }
 
-  scope :email_new_discussions_for, -> (group) {
-    active.
-    joins(:memberships).
-    where('memberships.group_id = ?', group.id).
-    where('users.email_new_discussions_and_proposals = ?', true).
-    where('memberships.email_new_discussions_and_proposals = ?', true) }
-  scope :email_new_proposals_for, -> (group) { active.email_new_discussions_for(group) }
-
   scope :without, -> (users) {
     users = Array(users).compact
 
@@ -199,16 +191,6 @@ class User < ActiveRecord::Base
 
   def closed_motions
     motions.closed
-  end
-
-  def email_new_discussions_and_proposals_group_ids
-    memberships.where(email_new_discussions_and_proposals: true).pluck(:group_id)
-  end
-
-  def email_new_discussions_and_proposals_group_ids=(ids)
-    group_ids = ids.reject(&:empty?).map(&:to_i)
-    memberships.update_all(email_new_discussions_and_proposals: false)
-    memberships.where(group_id: group_ids).update_all('email_new_discussions_and_proposals = true')
   end
 
   def is_group_admin?(group=nil)

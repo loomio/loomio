@@ -162,6 +162,9 @@ body.groups {
       .group-link a:hover { color: $dark-grey; }
     }
 
+    .notifications-panel {
+      margin-top: 10px
+    }
     .previous-discussions-panel {
       .previous-decision-title {
         &:hover { color: $dark-grey; }

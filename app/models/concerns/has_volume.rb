@@ -19,4 +19,8 @@ module HasVolume
     volume.to_s == 'email'
   end
 
+  def volume_is_normal?
+    volume.to_s == 'normal'
+  end
+
 end
