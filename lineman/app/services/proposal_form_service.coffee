@@ -5,7 +5,7 @@ angular.module('loomioApp').factory 'ProposalFormService', ($modal, Records) ->
         templateUrl: 'generated/modules/discussion_page/proposals_card/proposal_form/proposal_form.html',
         controller: 'ProposalFormController',
         resolve:
-          proposal: -> angular.copy(proposal)
+          proposal: -> Records.proposals.find(proposal.id)
 
     openStartProposalModal: (discussion) ->
       modalInstance = $modal.open
@@ -20,12 +20,12 @@ angular.module('loomioApp').factory 'ProposalFormService', ($modal, Records) ->
         templateUrl: 'generated/modules/discussion_page/proposals_card/close_proposal_form/close_proposal_form.html',
         controller: 'CloseProposalFormController',
         resolve:
-          proposal: -> proposal
+          proposal: -> Records.proposals.find(proposal.id)
 
     openExtendProposalModal: (proposal) ->
       $modal.open
         templateUrl: 'generated/modules/discussion_page/proposals_card/extend_proposal_form/extend_proposal_form.html',
         controller: 'ExtendProposalFormController',
         resolve:
-          proposal: -> angular.copy(proposal)
+          proposal: -> Records.proposals.find(proposal.id)
 

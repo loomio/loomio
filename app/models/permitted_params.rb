@@ -26,7 +26,7 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def vote_attributes
-    [:position, :statement, :motion_id]
+    [:position, :statement, :proposal_id, :motion_id]
   end
 
   def subscription_attributes
