@@ -195,9 +195,8 @@ Given(/^Dr Follow By Email wants to be emailed new threads and activity he is fo
   @dr_follow_by_email = FactoryGirl.create(:user,
                                            name: 'Dr Follow By Email',
                                            email_missed_yesterday: false,
-                                           email_followed_threads: true,
-                                           email_when_proposal_closing_soon: false,
-                                           email_new_discussions_and_proposals: true)
+                                           email_on_participation: true,
+                                           email_when_proposal_closing_soon: false)
   @group.add_member! @dr_follow_by_email
 end
 
@@ -209,20 +208,18 @@ Given(/^Mr New Threads Only only wants to be emailed about new discussions and p
   @mr_new_threads_only = FactoryGirl.create(:user,
                                             name: 'Mr New Threads Only',
                                             email_missed_yesterday: false,
-                                            email_followed_threads: false,
-                                            email_when_proposal_closing_soon: false,
-                                            email_new_discussions_and_proposals: true)
-  @group.add_member! @mr_new_threads_only
+                                            email_on_participation: false,
+                                            email_when_proposal_closing_soon: false)
+  @group.add_member!(@mr_new_threads_only).set_volume! :email
 end
 
 Given(/^Master Mentions Only only wants to be emailed when mentioned$/) do
   @master_mentions_only = FactoryGirl.create(:user,
                                              name: 'Master Mentions Only',
                                              email_missed_yesterday: false,
-                                             email_followed_threads: false,
+                                             email_on_participation: false,
                                              email_when_mentioned: true,
-                                             email_when_proposal_closing_soon: false,
-                                             email_new_discussions_and_proposals: false)
+                                             email_when_proposal_closing_soon: false)
   @group.add_member! @master_mentions_only
 end
 
@@ -230,9 +227,8 @@ Given(/^Mrs No Email Please does not want to be emailed about anything$/) do
   @mrs_no_email_please = FactoryGirl.create(:user,
                                             name: 'Mrs No Email Please',
                                             email_missed_yesterday: false,
-                                            email_followed_threads: false,
-                                            email_when_proposal_closing_soon: false,
-                                            email_new_discussions_and_proposals: false)
+                                            email_on_participation: false,
+                                            email_when_proposal_closing_soon: false)
   @group.add_member! @mrs_no_email_please
 end
 
@@ -240,9 +236,8 @@ Given(/^Ms Prop Close Soon only wants to know about proposals that are about to 
   @ms_prop_close_soon = FactoryGirl.create(:user,
                                             name: 'Ms Prop Close Soon',
                                             email_missed_yesterday: false,
-                                            email_followed_threads: false,
-                                            email_when_proposal_closing_soon: true,
-                                            email_new_discussions_and_proposals: false)
+                                            email_on_participation: false,
+                                            email_when_proposal_closing_soon: true)
   @group.add_member! @ms_prop_close_soon
 end
 
@@ -250,6 +245,9 @@ When(/^I start a new discussion$/) do
   reset_mailer
   @discussion = FactoryGirl.build :discussion, author: @user, group: @group
   @event = DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+
+  # note that we force the good doctor to follow the discussion by email
+  DiscussionReader.for(discussion: @discussion, user: @dr_follow_by_email).set_volume! :email
 end
 
 Then(/^"(.*?)" should be emailed$/) do |name|
@@ -377,6 +375,7 @@ end
 
 When(/^I set a proposal outcome$/) do
   @discussion = FactoryGirl.create :discussion, group: @group
+  DiscussionReader.for(discussion: @discussion, user: @dr_follow_by_email).set_volume! :email
   @motion = FactoryGirl.create :motion, discussion: @discussion
   @motion.outcome = "success"
   @motion.outcome_author = @user

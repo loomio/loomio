@@ -522,14 +522,14 @@ en:
     mute: Mute
 
   discussion_volume:
-    email_description: Email when there is activity.
-    normal_description: Show this thread on the dashboard and in the Yesterday on Loomio email.
+    email_description: Email when there is activity in the thread.
+    normal_description: Show on the dashboard and in the Yesterday on Loomio email.
     mute_description: Hide from the dashboard and do not email unless @mentioned.
 
   group_volume:
-    email_description: Email when someone starts a discussion or proposal.
-    normal_description: Show on dashboard and include in the Yesterday on Loomio email.
-    mute_description: Hide this group from the dashboard and do not email unless @mentioned.
+    email_description: Email when someone starts a discussion or proposal in this group.
+    normal_description: Show threads from this group on dashboard and in the Yesterday on Loomio email.
+    mute_description: Hide this group's threads from the dashboard and do not email unless @mentioned.
 
   #
   # DISCUSSION PAGE
