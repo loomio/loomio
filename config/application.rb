@@ -53,7 +53,8 @@ module Loomio
     config.assets.version = '1.4'
 
     config.action_mailer.default_url_options = {
-      host: ENV['CANONICAL_HOST']
+      host:     ENV['CANONICAL_HOST'],
+      protocol: ENV['FORCE_SSL'] ? 'https' : 'http'
     }
 
     config.roadie.url_options = nil
