@@ -375,7 +375,7 @@ class Group < ActiveRecord::Base
   end
 
   def find_or_create_membership(user, inviter)
-    Membership.find_or_create_by(user_id: user.id) do |m|
+    Membership.find_or_create_by(user_id: user.id, group_id: id) do |m|
       m.group = self
       m.user = user
       m.inviter = inviter

@@ -1,3 +1,7 @@
+.group-notification-levels select, option {
+  font-family: 'FontAwesome',"HelveticaNeue", "Helvetica Neue", "Arial", sans-serif;
+}
+
 body.users.show {
   p.email, p.username {
     font-size: 1.4em;

@@ -1,9 +1,35 @@
 .row
-  .col-md-12
-    %h1= t('.title')
+  .col-md-8
+    %h1 Change your email settings
+    .group-notification-levels
+
+      %p
+        You can use the buttons below to change your email preferences for all of your groups at once.
+        %br
+        If you want to change your setting for just one group, visit it's group page.
+
+      %ul
+        %li
+          %label
+            %input{type: 'radio', name: 'email'}
+            Email when discussions and proposals are started
+        %li
+          %label
+            %input{type: 'radio', name: 'email'}
+            Email once per day with activity from all your groups.
+        %li
+          %label
+            %input{type: 'radio', name: 'email'}
+            Turn off all discussion emails
+
+      %input.btn.btn-primary{type: 'submit', value: 'Change email settings for all groups'}
+
+    %br
+
     =simple_form_for(@user, url: update_email_preferences_path, method: :put) do |f|
       -if params[:unsubscribe_token]
         =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
+
       .checkbox
         = label_tag "user_email_missed_yesterday" do
           = f.check_box :email_missed_yesterday
@@ -20,24 +46,6 @@
         = label_tag "user_email_when_proposal_closing_soon" do
           = f.check_box :email_when_proposal_closing_soon
           = t('.email_when_proposal_closing_soon')
-
-      .per-group-email-settings
-        %table.table
-          %thead
-            %tr
-              %th= t :group
-              %th= t :'volume.notifications'
-              %th= t('.email_new_discussions_and_proposals')
-          %tbody
-            - current_user.groups.order('full_name asc').each do |group|
-              - membership = group.membership_for(current_user)
-              - opts = Membership.volumes.keys.map { |v| [ t(:"volume.#{v}"), v ] }
-              = membership.volume
-              %tr
-                %td= group.full_name
-                %td= select_tag '', options_for_select(opts, membership.volume)
-                %td
-                  = check_box_tag ''
 
 
 

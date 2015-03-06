@@ -95,10 +95,6 @@ class DiscussionsController < GroupBaseController
       @destination_groups = current_user_or_visitor.groups.order(:full_name).uniq.reject { |g| g.id == @discussion.group_id }
     end
 
-    p "current group", @discussion.group.full_name
-    p "users groups:", current_user.groups.map(&:full_name)
-    p "dest groups:", @destination_groups.map(&:full_name)
-
     @discussion_reader = DiscussionReader.for(user: current_user_or_visitor, discussion: @discussion)
 
     @closed_motions = @discussion.closed_motions
