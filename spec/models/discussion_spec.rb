@@ -318,7 +318,6 @@ describe Discussion do
         expect(discussion.comments_count).to be 0
         expect(discussion.salient_items_count).to be 0
         expect(discussion.last_item_at).to eq nil
-        p discussion.comments.all
         expect(discussion.last_comment_at).to eq nil
         expect(discussion.last_activity_at).to eq discussion.created_at
         expect(discussion.last_sequence_id).to be 0
