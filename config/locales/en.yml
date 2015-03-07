@@ -1,17 +1,19 @@
 en:
   # view path based locale strings
-  users:
-    email_preferences:
-      edit:
-        title: 'Email preferences'
-        when_do_you_want_emails: 'Email me:'
-        email_missed_yesterday: "'Yesterday on Loomio' - a daily summary of any activity I've missed"
-        email_when_mentioned: "When I'm @mentioned"
-        email_followed_threads: "When there is activity in threads I'm following."
-        email_when_proposal_closing_soon: "24 hours before a proposal closes."
-        email_new_discussions_and_proposals: 'New discussions and proposals'
-        for_these_groups: "For these groups:"
-        submit: "Save preferences"
+  email_settings:
+    title: 'Email settings'
+    which_emails_do_you_want: 'Which emails do you want to get?'
+    new_discussions_and_proposals: New discussion and proposal emails
+    new_discussions_and_proposals_description: When someone starts a discussion or proposal you'll get an email.
+    discussion_activity: Discussion activity
+    discussion_activity_description: When you participate in a discussion you'll be emailed further activity.
+    yesterday_on_loomio: Yesterday on Loomio
+    yesterday_on_loomio_description: Sent at 6am everyday, this email contains all the unread activity from the day before.
+    email_when_mentioned: '@mention emails'
+    email_when_mentioned_description: When someone wants to get your attention, they'll @mention you. If you turn this off then people might not be able to contact you.
+    proposal_closing_soon: Proposal closing soon
+    proposal_closing_soon_description: Sent 24 hours before a proposal closes, this might be your last chance to participate in a decision.
+    submit: Update settings
 
   explore:
     header: "Explore public groups"
@@ -262,8 +264,6 @@ en:
   no_group_header: "Welcome to Loomio Beta"
   empty_notifications: "You do not have any notifications yet."
   see_all_notifications: "See all notifications"
-  profile: "Profile"
-  email_settings: "Email settings"
   sign_out: "Sign out"
   sign_in: "Log in"
   honeypot_warning: "Could not create your account. If you're using a screen reader, please make sure the last (hidden) field on the form is blank."
@@ -1285,6 +1285,8 @@ en:
   persona: "Persona"
 
   common:
+    profile: "Profile"
+    email_settings: "Email settings"
     markdown_help_tooltip: 'Learn the basics of formatting your text with Markdown'
     settings: Settings
     dashboard: Dashboard

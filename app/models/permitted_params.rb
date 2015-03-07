@@ -20,8 +20,8 @@ class PermittedParams < Struct.new(:params, :user)
     [:name, :avatar_kind, :email, :password, :password_confirmation,
      :remember_me, :uploaded_avatar, :username, :uses_markdown,
      :time_zone, :selected_locale, :email_when_mentioned,
-     :email_followed_threads, :email_missed_yesterday,
-     :email_when_proposal_closing_soon, :email_new_discussions_and_proposals,
+     :email_missed_yesterday,
+     :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation,
      {email_new_discussions_and_proposals_group_ids: []}]
   end
 

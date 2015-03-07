@@ -1,52 +1,51 @@
 .row
   .col-md-8
-    %h1 Change your email settings
+    %h1= t(:'email_settings.title')
     .group-notification-levels
-
-      %p
-        You can use the buttons below to change your email preferences for all of your groups at once.
-        %br
-        If you want to change your setting for just one group, visit it's group page.
-
-      %ul
-        %li
-          %label
-            %input{type: 'radio', name: 'email'}
-            Email when discussions and proposals are started
-        %li
-          %label
-            %input{type: 'radio', name: 'email'}
-            Email once per day with activity from all your groups.
-        %li
-          %label
-            %input{type: 'radio', name: 'email'}
-            Turn off all discussion emails
-
-      %input.btn.btn-primary{type: 'submit', value: 'Change email settings for all groups'}
-
-    %br
 
     =simple_form_for(@user, url: update_email_preferences_path, method: :put) do |f|
       -if params[:unsubscribe_token]
         =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
 
-      .checkbox
-        = label_tag "user_email_missed_yesterday" do
-          = f.check_box :email_missed_yesterday
-          = t('.email_missed_yesterday')
-      .checkbox
-        = label_tag "user_email_when_mentioned" do
-          = f.check_box :email_when_mentioned
-          = t('.email_when_mentioned')
+      %h3= t(:'email_settings.which_emails_do_you_want')
+
+      - if any_memberships_have_volume_email?
+        .checkbox
+          = label_tag "email_new_discussions_and_proposals" do
+            = check_box_tag :email_new_discussions_and_proposals, 1, true
+            = t(:'email_settings.new_discussions_and_proposals')
+          %br
+          = t(:'email_settings.new_discussions_and_proposals_description')
+
+      %br
       .checkbox
         = label_tag "user_email_on_participation" do
           = f.check_box :email_on_participation
-          = t('.email_on_participation')
+          = t(:'email_settings.discussion_activity')
+        %br
+        = t(:'email_settings.discussion_activity_description')
+      %br
+      .checkbox
+        = label_tag "user_email_missed_yesterday" do
+          = f.check_box :email_missed_yesterday
+          = t(:'email_settings.yesterday_on_loomio')
+        %br
+        = t(:'email_settings.yesterday_on_loomio_description')
+
+      %br
+      .checkbox
+        = label_tag "user_email_when_mentioned" do
+          = f.check_box :email_when_mentioned
+          = t(:'email_settings.email_when_mentioned')
+        %br
+        = t(:'email_settings.email_when_mentioned_description')
+
+      %br
       .checkbox
         = label_tag "user_email_when_proposal_closing_soon" do
           = f.check_box :email_when_proposal_closing_soon
-          = t('.email_when_proposal_closing_soon')
+          = t(:'email_settings.proposal_closing_soon')
+        %br
+        = t(:'email_settings.proposal_closing_soon_description')
 
-
-
-      = f.submit t('.submit'), :class => "btn btn-primary"
+      = f.submit t('email_settings.submit')
