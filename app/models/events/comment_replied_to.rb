@@ -1,12 +1,15 @@
 class Events::CommentRepliedTo < Event
   after_create :notify_users!
 
-  def self.publish!(reply)
-    return unless reply.parent.present?
-    create!(kind: 'comment_replied_to',
-            eventable: reply,
-            user: reply.author,
-            created_at: reply.created_at)
+  def self.publish!(comment)
+    return unless comment.parent.present?
+    event = create!(kind: 'comment_replied_to',
+                    eventable: comment,
+                    created_at: comment.created_at)
+
+    ThreadMailer.delay.comment_replied_to(comment.parent.author, event)
+
+    event
   end
 
   def comment
