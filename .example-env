@@ -88,5 +88,5 @@ callbackName
 ## find the ENV currently in use in the app using : 
 ##   grep -rIso -P "(?<=ENV)(\.fetch\(|\[).[A-Z_]+.(\)|\])" 
 
-# for a (non-uniq) list of env vars:
-##   grep -rIsoh -P "(?<=ENV)(\.fetch\(|\[).[A-Z_]+.(\)|\])" | grep -oP "[A-Z_]+" > temp  
+# for a uniq ordered list of env vars:
+##   grep -rIsoh -P "(?<=ENV)(\.fetch\(|\[).[A-Z_]+.(\)|\])" | grep -oP "[A-Z_]+" | sort -u > temp  
