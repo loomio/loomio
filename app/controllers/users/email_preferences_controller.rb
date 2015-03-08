@@ -14,6 +14,12 @@ class Users::EmailPreferencesController < AuthenticateByUnsubscribeTokenControll
                         update_all(volume: Membership.volumes[:normal])
     end
 
+    if @user.email_on_participation? and
+       params[:email_on_participation].nil?
+      @user.discussion_readers.where(volume: DiscussionReader.volumes[:email]).
+                               update_all(volume: DiscussionReader.volumes[:normal])
+    end
+
     if @user.update_attributes(permitted_params.user)
       flash[:notice] = "Your email settings have been updated."
       redirect_to dashboard_or_root_path

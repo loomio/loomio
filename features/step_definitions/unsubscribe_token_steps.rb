@@ -14,8 +14,8 @@ When /^I visit email_preferences with unsubscribe_token in the params$/ do
 end
 
 Then /^I should be able to update my email preferences$/ do
-  uncheck 'user[email_followed_threads]'
-  click_on 'Save preferences'
+  uncheck 'user[email_missed_yesterday]'
+  click_on 'Update settings'
   page.should have_content 'Your email settings have been updated.'
-  @user.reload.email_followed_threads.should be false
+  @user.reload.email_missed_yesterday.should be false
 end
