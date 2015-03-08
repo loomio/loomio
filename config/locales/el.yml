@@ -188,9 +188,12 @@ el:
     about: Σχετικά
     blog: Blog
     contact: Επικοινωνία
+    help: Βοήθεια
     privacy: Απόρρητο
+    pricing: Τιμολόγηση
     public_groups: Δημόσιες ομάδες
     terms: Όροι
+    independent_install_html: "%{hostname} τρέχει ένα ανεξάρτητο αντίγραφο του Loomio: <a href=\"http://github.com/loomio/loomio\"> μάθετε περισσότερα </a>."
   inbox:
     clear: Καθάρισμα
     title: Εισερχόμενα
@@ -426,6 +429,8 @@ el:
       following_details: Θα ειδοποιείστε σχετικά με κάθε θέμα σε αυτή την ομάδα.
       not_following_details: Θα ειδοποιηθείτε σχετικά με τα θέματα που συμμετέχετε.
   group_request:
+    header: Ξεκινήστε μια ομάδα
+    desc: "Για να ξεκινήσετε να παίρνετε αποφάσεις στo Loomio, το πρώτο βήμα είναι να ξεκινήσετε μια ομάδα"
     neighbourhood_support_group: π.χ. Ομάδα Υποστήριξης Γειτονιάς
     commercial_use_option: "Σε εταιρία, επίσημη οργάνωση ή χώρος εργασίας"
     non_commercial_use_option: Σε κοινωνική ομάδα ή άτυπο δίκτυο
@@ -854,6 +859,9 @@ el:
       thanks_for_reading: "Ευχαριστούμε που διαβάζετε, να έχετε μια υπέροχη μέρα!"
       click_here_to_mark_all_as_read_html: "Εδώ δείτε τι συνέβη εχτές στο Loomio.\nΜόλις τα διαβάσετε, πατήστε <a href=\"%{link}\">σημειώστε ως διαβασμένα</a> για να τα αφαιρέσετε από τα εισερχόμενα σας του Loomio.\n"
       marked_as_read_success: Όλα έχουν σημαδευτεί ως διαβασμένα από το ηλεκτρονικό ταχυδρομείο
+    comment_replied_to:
+      context: "%{author_name} σε ανέφερε όταν συζητούσε στο θέμα \"%{discussion_title}\""
+      subject: "%{who} σε ανέφερε στην Ομάδα %{which} στο Loomio"
     group_email:
       intro: "Ο/Η %{who} έκανε μια ανακοίνωση στην ομάδα %{group}:"
     group_membership_approved:
@@ -892,10 +900,13 @@ el:
       headline: "Η πρόταση του/της %{author} στο %{group} κλείνει σύντομα:"
       summary: Σύνοψη
     thread_mailer:
+      footer_text: "Απαντήστε σε αυτό το ηλεκτρονικό μήνυμα απευθείας ή δείτε το στο:\n%{hostname}:"
+      reply_or_view_online_html: "Απαντήστε άμεσα σε αυτό το ηλεκτρονικό μήνυμα ή <a href='%{url}'>δείτε το στο %{hostname}</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Κατάργηση παρακολούθησης</a> για να σταματήσει να λαμβάνετε ηλεκτρονικά μηνύματα σχετικά με αυτή την συζήτηση."
       unfollow_discussion_text: "Επισκεφτείτε τον ακόλουθο σύνδεσμο για να σταματήσετε τα μηνύματα ηλεκτρονικού ταχυδρομείου σχετικά με αυτή την συζήτηση: %{unfollow_url}"
       follow_discussion_html: "<a href='%{follow_url}'>Ακολουθήστε</a> για να λαμβάνετε μηνύματα ηλεκτρονικού ταχυδρομείου σχετικά με αυτή την συζήτηση."
       follow_discussion_text: "Επισκεφτείτε τον ακόλουθο σύνδεσμο για να λαμβάνετε μηνύματα ηλεκτρονικού ταχυδρομείου σχετικά με αυτή την συζήτηση: %{follow_url}"
+      change_email_preferences_html: "Αλλάξτε <a href='%{email_preferences_url}'>τις προτιμήσεις του ηλεκτρονικού ταχυδρομείου σας</a> για να διαγραφείτε από τα ηλεκτρονικά μηνύματα του Loomio."
       change_preferences: "Αλλάξτε τις προτιμήσεις του ηλεκτρονικού ταχυδρομείου σας:"
       new_motion: "%{who} πρότεινε:"
       motion_closing_soon: "Η πρόταση κλείνει σε 24 ώρες:"
