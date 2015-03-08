@@ -110,6 +110,8 @@ de:
     logo_upload: Neues Logo hochladen
     edit_description: Beschreibung bearbeiten
     group_category: Finde weitere ähnliche Gruppen
+    unread_comments: Ungelesene Kommentare
+    new_votes: Νeue Stimmen
   views:
     pagination:
       previous: Zurück
@@ -186,9 +188,12 @@ de:
     about: Über Loomio
     blog: Blog
     contact: Kontakt
+    help: Hilfe
     privacy: Privatsphäre
+    pricing: Preisgestaltung
     public_groups: Öffentliche Gruppen
     terms: Bedingungen
+    independent_install_html: "%{hostname} ist eine unabhängige Kopie Loomio läuft: <a href=\"http://github.com/loomio/loomio\"> erfahren Sie mehr </a>."
   inbox:
     clear: Leeren
     title: Posteingang
@@ -215,6 +220,9 @@ de:
     motion_blocked: hat ein Veto gegen den Vorschlag eingelegt
     motion_outcome_created: hat ein Ergebnis für den Vorschlag bekanntgegeben
     motion_outcome_updated: hat das Ergebnis für den Vorschlag aktualisiert
+    email_actions:
+      following_thread: "Ab sofort folgen Sie den Thread: %{thread_title}"
+      not_following_thread: "Ab sofort folgen Sie den Thread nicht mehr: %{thread_title}"
   edit_discussion_context: Diskussionskontext bearbeiten
   request_new_group: Gründe eine Gruppe
   start_new_group: Gründe eine Gruppe
@@ -421,6 +429,8 @@ de:
       following_details: Du wirst über jede Diskussion in dieser Gruppe informiert.
       not_following_details: Du wirst über Diskussionen informiert an denen Du beteiligt bist.
   group_request:
+    header: Gründen Sie eine Gruppe
+    desc: "Um Entscheidungen auf Loomio zu treffen, müssen Sie zuerst eine Gruppe gründen"
     neighbourhood_support_group: z. B. Nachbarschaftshilfe
     commercial_use_option: "in einem Unternehmen, einer formellen Organsation oder Arbeit"
     non_commercial_use_option: in einer Gruppe oder einem informellen Netzwerk
@@ -593,6 +603,8 @@ de:
     video_id: "52025402"
     video_tutorial: Videoanleitung
     video_tutorial_description: Sieh dir das Video an um einen Einblick in die Funktionsweise von Loomio zu bekommen.
+    what_is_loomio: Was ist Loomio?
+    what_is_loomio_description_html: "<p> Loomio ist ein einfaches benutzerfreundliches Online-Tool für die kollektive Entscheidungsfindung.\nMit Loomio können Sie Diskussionen Online hosten, laden die richtigen Leute ein sich zu beteiligen, \ngekommen, um zeitnahe Entscheidungen und verwandeln Beratung in der realen Welt Aktion. </p> \n<p> Loomio ist kostenlos und Open Source-Software, die von einer Arbeitnehmer-Genossenschaft in Wellington, Neuseeland entwickelt. </p> \n\n"
   hint:
     context: Hinweise für die Nutzung des Kontext-Felds
     discussion: Hinweise für das Starten einer mitreißenden Diskussion
@@ -634,6 +646,7 @@ de:
   remember_me: Angemeldet bleiben
   signing_in: Anmelden
   or: oder
+  invalid_email: "Die eingegebene E-Mail-Adresse wurde nicht erkannt. Stellen Sie sicher, sie richtig eingegeben wurde oder verwenden Sie eine andere E-Mail-Adresse ein."
   forgot_your_password: Passwort vergessen?
   dont_have_an_account: Du hast noch kein Konto?
   create_one_now: "Erstelle jetzt einen "
@@ -841,10 +854,14 @@ de:
       subject: Loomio - Zusammenfassung der letzten 24 Stunden
     missed_yesterday:
       subject: Gestern auf Loomio
+      headlines: Schlagzeilen
       mark_as_read: Als gelesen markieren
       thanks_for_reading: "Vielen Dank fürs Lesen. Wir wünschen einen schönen Tag!"
       click_here_to_mark_all_as_read_html: "Hier ist, was gestern auf Loomio passiert ist.\nWenn Du es gelesen hast, klicke auf <a href=\"%{link}\">als gelesen markieren</a>, um es von Deiner Loomio-Inbox zu löschen.\n"
       marked_as_read_success: Alles aus der eMail wurde als gelesen markiert
+    comment_replied_to:
+      context: "%{author_name} erwähnte Dich in \"%{discussion_title}\""
+      subject: "%{who} hat dich erwähnt in der %{which} Gruppe in Loomio"
     group_email:
       intro: "%{who} hat eine Ankündigung zu %{group}:"
     group_membership_approved:
@@ -883,7 +900,13 @@ de:
       headline: "%{author}s Vorschlag in %{group} endet bald:"
       summary: Zusammenfassung
     thread_mailer:
+      footer_text: "Antworte auf diese eMail sofort oder auf %{hostname}: ansehen:"
+      reply_or_view_online_html: "Antworte auf diese eMail sofort oder<a href='%{url}'> auf %{hostname}  ansehen</a>."
       unfollow_discussion_html: "<a href='%{unfollow_url}'>Nicht mehr folgen</a> beendet die eMail-Benachrichtigung über diese Diskussion."
+      unfollow_discussion_text: "<a href='%{unfollow_url}'>Nicht mehr folgen</a> beendet die eMail-Benachrichtigung über diese Diskussion."
+      follow_discussion_html: "<a href='%{follow_url}'>Folgen</a> beendet die eMail-Benachrichtigung über diese Diskussion."
+      follow_discussion_text: "Besuchen Sie den folgenden Link, um E-Mails über diese Diskussion erhalten: %{follow_url}"
+      change_email_preferences_html: "Ändere Deine <a href='%{email_preferences_url}'>eMail-Einstellungen</a> um weniger Loomio eMails zu erhalten."
       change_preferences: "Ändere Deine eMail Einstellungen:"
       new_motion: "%{who} schlägt vor:"
       motion_closing_soon: "Vorschlag endet in 24 Stunden:"

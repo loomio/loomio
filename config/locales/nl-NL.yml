@@ -553,10 +553,10 @@ nl-NL:
     abstain: onthouden
     block: blokkeren
     past_tense:
-      "yes": mee eens
-      "no": mee oneens
-      abstain: onthouden
-      block: geblokkeerd
+      "yes": is het eens
+      "no": is het oneens
+      abstain: onthoudt zich
+      block: geblokkeerde
   unable_to_vote:
     permission_denied: Je bent niet gemachtigd om op deze motie te stemmen
     motion_closed: Deze motie is al gesloten
