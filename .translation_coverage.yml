@@ -23,11 +23,11 @@ da:
   frontpage: 89
   main: 97
 de:
-  frontpage: 89
-  main: 97
+  frontpage: 100
+  main: 100
 el:
-  frontpage: 89
-  main: 98
+  frontpage: 100
+  main: 100
 eo:
   frontpage: 89
   main: 95
@@ -81,7 +81,7 @@ lv:
   main: 0
 mi:
   frontpage: 2
-  main: 0
+  main: 3
 mk:
   frontpage: 89
   main: 57
