@@ -172,6 +172,8 @@ GEM
     diff-lcs (1.2.5)
     docile (1.1.5)
     dotenv (2.0.0)
+    dotenv-rails (2.0.0)
+      dotenv (= 2.0.0)
     em-http-request (1.1.2)
       addressable (>= 2.3.4)
       cookiejar
@@ -668,7 +670,7 @@ DEPENDENCIES
   delayed_job_active_record (~> 4.0.1)
   devise (~> 3.4.1)
   devise-i18n
-  dotenv
+  dotenv-rails
   email_spec
   factory_girl_rails
   faker

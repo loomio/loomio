@@ -3,6 +3,7 @@ class SetupGroup
     group = Group.new
     group.name = group_request.name
     group.payment_plan = group_request.payment_plan
+    group.is_commercial = group_request.is_commercial
     group.group_request = group_request
     group.is_visible_to_public = false
     group.discussion_privacy_options = 'private_only'

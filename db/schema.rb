@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150228011519) do
+ActiveRecord::Schema.define(version: 20150309051724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20150228011519) do
   add_index "attachments", ["comment_id"], name: "index_attachments_on_comment_id", using: :btree
 
   create_table "blacklisted_passwords", force: :cascade do |t|
-    t.string   "string",     limit: 255
+    t.string   "string"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -352,6 +352,7 @@ ActiveRecord::Schema.define(version: 20150228011519) do
     t.boolean  "members_can_start_discussions",                  default: true,           null: false
     t.boolean  "members_can_create_subgroups",                   default: true,           null: false
     t.integer  "creator_id"
+    t.boolean  "is_commercial"
   end
 
   add_index "groups", ["archived_at", "id"], name: "index_groups_on_archived_at_and_id", using: :btree

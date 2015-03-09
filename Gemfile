@@ -62,7 +62,6 @@ gem 'modernizr-rails'
 gem 'jquery-fileupload-rails'
 gem 'momentjs-rails'
 gem 'ruby-progressbar'
-gem 'dotenv'# , :require => 'dotenv/rails-now'
 gem 'responders', '~> 2.0'
 
 # consider uncommenting these when we want to mess around with json parsing
@@ -82,6 +81,7 @@ group :development, :test do
   gem 'rspec-activemodel-mocks'
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'dotenv-rails', :require => 'dotenv/rails-now'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
 end

@@ -120,7 +120,6 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.about_us,
 .pages.crowd,
 .pages.wallets,
-.pages.pricing,
 .woc.index,
 .we_the_people.index {
   color: black;
@@ -920,4 +919,14 @@ body.pages.crowdfunding_celebration {
   p { padding: 5px 0; }
   p.blockquote { font-style: italic; padding: 0 40px; }
   li { padding: 10px 0; }
+}
+.pages.pricing{
+  h1{ padding-top: 1em; }
+  ul{
+    list-style: initial;
+    margin-left: 1em;
+  }
+  .content{
+    margin-top: 0;
+  }
 }
