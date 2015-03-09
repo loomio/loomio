@@ -4,9 +4,9 @@ en:
     title: 'Email settings'
     which_emails_do_you_want: 'Which emails do you want to get?'
     new_discussions_and_proposals: New discussion and proposal emails
-    new_discussions_and_proposals_description: When someone starts a discussion or proposal you'll get an email.
+    new_discussions_and_proposals_description: Uncheck this to turn off new discussion and new proposal emails for all your groups.
     discussion_activity: Discussion activity
-    discussion_activity_description: When you participate in a discussion you'll be emailed further activity.
+    discussion_activity_description: When you participate in a discussion, we'll set it to email any futher activity.
     yesterday_on_loomio: Yesterday on Loomio
     yesterday_on_loomio_description: Sent at 6am everyday, this email contains all the unread activity from the day before.
     email_when_mentioned: '@mention emails'
@@ -516,19 +516,22 @@ en:
 
 
   volume:
-    notifications: Notifications
-    email: Email
+    volume: Volume
+    loud: Loud
     normal: Normal
+    quiet: Quiet
     mute: Mute
 
   discussion_volume:
-    email_description: Email when there is activity in the thread.
-    normal_description: Include this thread in the dashboard and the 'Yesterday on Loomio' email.
+    loud_description: Email me whenever there is activity in this thread.
+    normal_description: Just email me proposal events.
+    quiet_description: Include in the daily summary email only - if enabled.
     mute_description: Hide this thread from the dashboard and do not notify unless @mentioned.
 
   group_volume:
-    email_description: Email when discussions or proposals are started.
-    normal_description: Include this group in your dashboard and the 'Yesterday on Loomio' email.
+    loud_description: Email me whenever there is activity in this group.
+    normal_description: 'Just email me important activity: New discussions and proposals, outcomes etc.'
+    quiet_description: Don't email me. Activity will be displayed on the dashboard.
     mute_description: Hide this group from the dashboard and do not notify unless @mentioned.
 
 
@@ -1183,10 +1186,10 @@ en:
     thread_mailer:
       footer_text: "Reply to this email directly or view it on %{hostname}:"
       reply_or_view_online_html: "Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>."
-      turn_off_notifications_html: "<a href='%{url}'>Turn off notifications</a> about this discussion."
-      turn_off_notifications_text: "Turn off notifications for this discussion: %{url}"
-      turn_on_notifications_html: "<a href='%{url}'>Turn on notifications</a> to be emailed activity in this discussion."
-      turn_on_notifications_text: "Turn on notifications to be emailed activity in this discussion.: %{url}"
+      turn_off_notifications_html: "<a href='%{url}'>Turn off emails</a> for this discussion."
+      turn_off_notifications_text: "Turn off emails for this discussion: %{url}"
+      turn_on_notifications_html: "<a href='%{url}'>Turn on emails for this discussion</a> to receive further activity."
+      turn_on_notifications_text: "Turn on email to receive further activity in this discussion.: %{url}"
       change_email_preferences_html: "Change your <a href='%{email_preferences_url}'>email preferences</a> to unsubscribe from these emails."
       change_preferences: "Change your email preferences:"
       new_motion: "%{who} proposed:"

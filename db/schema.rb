@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305205300) do
+ActiveRecord::Schema.define(version: 20150228011519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -410,7 +410,7 @@ ActiveRecord::Schema.define(version: 20150305205300) do
     t.integer  "inbox_position", default: 0
     t.boolean  "admin",          default: false, null: false
     t.boolean  "is_suspended",   default: false, null: false
-    t.integer  "volume",         default: 1,     null: false
+    t.integer  "volume",         default: 2,     null: false
   end
 
   add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree

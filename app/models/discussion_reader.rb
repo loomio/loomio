@@ -22,7 +22,7 @@ class DiscussionReader < ActiveRecord::Base
 
   def set_volume_as_required!
     if user.email_on_participation?
-      set_volume! :email unless volume_is_email?
+      set_volume! :loud unless volume_is_loud?
     end
   end
 

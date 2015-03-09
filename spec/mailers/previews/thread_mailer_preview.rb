@@ -12,7 +12,7 @@ class ThreadMailerPreview < ActionMailer::Preview
     group = FactoryGirl.create :group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
-    DiscussionReader.for(user: user, discussion: discussion).set_volume! :email
+    DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
     rich_text_body = "I am a comment with a **bold bit**"
     comment = FactoryGirl.create :comment, discussion: discussion, body: rich_text_body, uses_markdown: true
@@ -20,11 +20,11 @@ class ThreadMailerPreview < ActionMailer::Preview
     ThreadMailer.new_comment user, event
   end
 
-  def user_mentioned_follows_by_email
+  def user_mentioned_follows_by_loud
     group = FactoryGirl.create :group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
-    DiscussionReader.for(user: user, discussion: discussion).set_volume! :email
+    DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
     rich_text_body = "I like to talk about you online. You're the right person for this conversation to include. You know this."
     comment = FactoryGirl.create :comment, discussion: discussion, body: rich_text_body, uses_markdown: true
@@ -32,7 +32,7 @@ class ThreadMailerPreview < ActionMailer::Preview
     ThreadMailer.user_mentioned user, event
   end
 
-  def user_mentioned_does_not_follow_by_email
+  def user_mentioned_does_not_follow_by_loud
     group = FactoryGirl.create :group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
@@ -47,7 +47,7 @@ class ThreadMailerPreview < ActionMailer::Preview
     group = FactoryGirl.create :group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group
-    DiscussionReader.for(user: user, discussion: discussion).set_volume! :email
+    DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
     motion = FactoryGirl.create :motion, discussion: discussion
     vote = FactoryGirl.create :vote, motion: motion
@@ -69,7 +69,7 @@ class ThreadMailerPreview < ActionMailer::Preview
     group = FactoryGirl.create :group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group
-    DiscussionReader.for(user: user, discussion: discussion).set_volume! :email
+    DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
     motion = FactoryGirl.create :motion, discussion: discussion
     event = Events::NewMotion.create(kind: 'new_motion', eventable: motion, discussion_id: discussion)
@@ -80,7 +80,7 @@ class ThreadMailerPreview < ActionMailer::Preview
     group = FactoryGirl.create :group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group
-    DiscussionReader.for(user: user, discussion: discussion).set_volume! :email
+    DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
     motion = FactoryGirl.create :motion, discussion: discussion
 
@@ -107,7 +107,7 @@ class ThreadMailerPreview < ActionMailer::Preview
     group = FactoryGirl.create :group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group
-    DiscussionReader.for(user: user, discussion: discussion).set_volume! :email
+    DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
     motion = FactoryGirl.create :motion, discussion: discussion
     vote = FactoryGirl.create :vote, motion: motion
@@ -126,7 +126,7 @@ class ThreadMailerPreview < ActionMailer::Preview
     group = FactoryGirl.create :group
     user = FactoryGirl.create :user
     discussion = FactoryGirl.create :discussion, group: group
-    DiscussionReader.for(user: user, discussion: discussion).set_volume! :email
+    DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
     motion = FactoryGirl.create :motion, discussion: discussion, author: user
     vote = FactoryGirl.create :vote, motion: motion

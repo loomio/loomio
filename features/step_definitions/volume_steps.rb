@@ -1,3 +1,90 @@
+Given(/^Loud Larry is following everything in the group by email$/) do
+  @loud_larry = FactoryGirl.create(:user,
+                                   name: 'Loud Larry',
+                                   email_missed_yesterday: false,
+                                   email_on_participation: false,
+                                   email_when_proposal_closing_soon: false)
+
+  @group.add_member!(@loud_larry).set_volume!(:loud)
+end
+
+Given(/^Normal Norman gets important events emailed as they happen$/) do
+  @normal_norman = FactoryGirl.create(:user,
+                                      name: 'Normal Norman',
+                                      email_missed_yesterday: false,
+                                      email_on_participation: false,
+                                      email_when_proposal_closing_soon: false)
+  @group.add_member!(@normal_norman).set_volume! :normal
+end
+
+Given(/^Quiet Quincey want to catch up by digest email$/) do
+  @quiet_quincey = FactoryGirl.create(:user,
+                                      name: 'Quiet Quincey',
+                                      email_missed_yesterday: false,
+                                      email_on_participation: false,
+                                      email_when_mentioned: false,
+                                      email_when_proposal_closing_soon: false)
+  @group.add_member!(@quiet_quincey).set_volume!(:quiet)
+end
+
+Given(/^Mute megan mutes everything\.$/) do
+  @mute_megan = FactoryGirl.create(:user,
+                                   username: 'megan',
+                                   name: 'Mute Megan',
+                                   email_missed_yesterday: false,
+                                   email_on_participation: false,
+                                   email_when_mentioned: true,
+                                   email_when_proposal_closing_soon: false)
+  @group.add_member!(@mute_megan).set_volume!(:mute)
+end
+
+Given(/^Closing Soonsan mutes everything but wants to hear when proposals are closing and when mentioned\.$/) do
+  @closing_soonsan = FactoryGirl.create(:user,
+                                   name: 'Closing Soonsan',
+                                   email_missed_yesterday: false,
+                                   email_on_participation: false,
+                                   email_when_mentioned: false,
+                                   email_when_proposal_closing_soon: true)
+  @group.add_member!(@closing_soonsan).set_volume!(:mute)
+end
+
+When(/^I start a new discussion$/) do
+  reset_mailer
+  @discussion = FactoryGirl.build :discussion, author: @user, group: @group
+  @event = DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+end
+
+Then(/^"(.*?)" +should be emailed$/) do |name|
+  email = User.find_by_name(name).email
+  step "\"#{email}\" should receive an email"
+end
+
+Then(/^"(.*?)" +should not be emailed$/) do |name|
+  email = User.find_by_name(name).email
+  step "\"#{email}\" should receive no emails"
+end
+
+Then(/^I should not be emailed$/) do
+  email = @user.email
+  step "\"#{email}\" should receive no emails"
+end
+
+When(/^I add a comment$/) do
+  step 'I start a new discussion'
+  reset_mailer
+  @comment = FactoryGirl.build :comment, discussion: @discussion, body: "yea i know", author: @user
+  @add_comment_event = CommentService.create(comment: @comment, actor: @user)
+end
+
+When(/^I mention Master Mentions Only$/) do
+  step 'I start a new discussion'
+  reset_mailer
+  @comment = FactoryGirl.build :comment, discussion: @discussion, author: @user,
+                               body: "yea @#{@master_mentions_only.username}"
+  @add_comment_event = CommentService.create(comment: @comment, actor: @user)
+
+  @user_mentioned_event = Event.where(kind: 'user_mentioned').last
+end
 When(/^someone else creates a discussion in my group$/) do
   @discussion = FactoryGirl.build(:discussion, group: @group)
   DiscussionService.create(discussion: @discussion, actor: @discussion.author)
@@ -191,96 +278,6 @@ Then(/^I should only see the followed discussion$/) do
 end
 
 
-Given(/^Dr Follow By Email wants to be emailed new threads and activity he is following$/) do
-  @dr_follow_by_email = FactoryGirl.create(:user,
-                                           name: 'Dr Follow By Email',
-                                           email_missed_yesterday: false,
-                                           email_on_participation: true,
-                                           email_when_proposal_closing_soon: false)
-  @group.add_member! @dr_follow_by_email
-end
-
-Given(/^Dr Follow By Email is following everything in this group$/) do
-  @dr_follow_by_email.memberships.last.set_volume! :email
-end
-
-Given(/^Mr New Threads Only only wants to be emailed about new discussions and proposals$/) do
-  @mr_new_threads_only = FactoryGirl.create(:user,
-                                            name: 'Mr New Threads Only',
-                                            email_missed_yesterday: false,
-                                            email_on_participation: false,
-                                            email_when_proposal_closing_soon: false)
-  @group.add_member!(@mr_new_threads_only).set_volume! :email
-end
-
-Given(/^Master Mentions Only only wants to be emailed when mentioned$/) do
-  @master_mentions_only = FactoryGirl.create(:user,
-                                             name: 'Master Mentions Only',
-                                             email_missed_yesterday: false,
-                                             email_on_participation: false,
-                                             email_when_mentioned: true,
-                                             email_when_proposal_closing_soon: false)
-  @group.add_member! @master_mentions_only
-end
-
-Given(/^Mrs No Email Please does not want to be emailed about anything$/) do
-  @mrs_no_email_please = FactoryGirl.create(:user,
-                                            name: 'Mrs No Email Please',
-                                            email_missed_yesterday: false,
-                                            email_on_participation: false,
-                                            email_when_proposal_closing_soon: false)
-  @group.add_member! @mrs_no_email_please
-end
-
-Given(/^Ms Prop Close Soon only wants to know about proposals that are about to close$/) do
-  @ms_prop_close_soon = FactoryGirl.create(:user,
-                                            name: 'Ms Prop Close Soon',
-                                            email_missed_yesterday: false,
-                                            email_on_participation: false,
-                                            email_when_proposal_closing_soon: true)
-  @group.add_member! @ms_prop_close_soon
-end
-
-When(/^I start a new discussion$/) do
-  reset_mailer
-  @discussion = FactoryGirl.build :discussion, author: @user, group: @group
-  @event = DiscussionService.create(discussion: @discussion, actor: @discussion.author)
-
-  # note that we force the good doctor to follow the discussion by email
-  DiscussionReader.for(discussion: @discussion, user: @dr_follow_by_email).set_volume! :email
-end
-
-Then(/^"(.*?)" should be emailed$/) do |name|
-  email = User.find_by_name(name).email
-  step "\"#{email}\" should receive an email"
-end
-
-Then(/^"(.*?)" should not be emailed$/) do |name|
-  email = User.find_by_name(name).email
-  step "\"#{email}\" should receive no emails"
-end
-
-Then(/^I should not be emailed$/) do
-  email = @user.email
-  step "\"#{email}\" should receive no emails"
-end
-
-When(/^I add a comment$/) do
-  step 'I start a new discussion'
-  reset_mailer
-  @comment = FactoryGirl.build :comment, discussion: @discussion, body: "yea i know", author: @user
-  @add_comment_event = CommentService.create(comment: @comment, actor: @user)
-end
-
-When(/^I mention Master Mentions Only$/) do
-  step 'I start a new discussion'
-  reset_mailer
-  @comment = FactoryGirl.build :comment, discussion: @discussion, author: @user,
-                               body: "yea @#{@master_mentions_only.username}"
-  @add_comment_event = CommentService.create(comment: @comment, actor: @user)
-
-  @user_mentioned_event = Event.where(kind: 'user_mentioned').last
-end
 
 Then(/^"(.*?)" should be notified but not emailed about the new mention$/) do |name|
   step "\"#{name}\" should not be emailed"
@@ -375,9 +372,14 @@ end
 
 When(/^I set a proposal outcome$/) do
   @discussion = FactoryGirl.create :discussion, group: @group
-  DiscussionReader.for(discussion: @discussion, user: @dr_follow_by_email).set_volume! :email
   @motion = FactoryGirl.create :motion, discussion: @discussion
   @motion.outcome = "success"
   @motion.outcome_author = @user
   MotionService.create_outcome(motion: @motion, actor: @motion.author, params: {outcome: 'yes ok'})
+end
+
+When(/^I mention Mute Megan$/) do
+  @discussion = FactoryGirl.create :discussion, group: @group
+  comment = FactoryGirl.build(:comment, author: @user, discussion: @discussion, body: 'hi @megan')
+  CommentService.create(comment: comment, actor: @user)
 end

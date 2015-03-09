@@ -1,24 +1,22 @@
 class UsersByVolumeQuery
-  def self.thread_volume_email(discussion)
+  def self.normal_or_loud(discussion)
     User.
       active.
       joins("LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id = #{discussion.id})").
-      where('dr.volume = ?', DiscussionReader.volumes[:email])
-  end
-
-  def self.membership_volume_email(discussion)
-    User.
-      active.
       joins("LEFT OUTER JOIN memberships m ON (m.user_id = users.id AND m.group_id = #{discussion.group_id})").
-      where('m.volume = ?', Membership.volumes[:email])
+      where('dr.volume >= :normal OR (dr.volume IS NULL AND m.volume >= :normal)', { normal: DiscussionReader.volumes[:normal] })
   end
 
-  def self.email(discussion)
-    volume_and_discussion(:email, discussion)
+  def self.loud(discussion)
+    volume_and_discussion(:loud, discussion)
   end
 
   def self.normal(discussion)
     volume_and_discussion(:normal, discussion)
+  end
+
+  def self.quiet(discussion)
+    volume_and_discussion(:quiet, discussion)
   end
 
   def self.mute(discussion)

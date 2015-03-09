@@ -2,7 +2,7 @@ module HasVolume
   extend ActiveSupport::Concern
 
   included do
-    enum volume: [:mute, :normal, :email]
+    enum volume: [:mute, :quiet, :normal, :loud]
     scope :volume, ->(volume) { where(volume: volumes[volume]) }
   end
 
@@ -15,8 +15,8 @@ module HasVolume
     end
   end
 
-  def volume_is_email?
-    volume.to_s == 'email'
+  def volume_is_loud?
+    volume.to_s == 'loud'
   end
 
   def volume_is_normal?

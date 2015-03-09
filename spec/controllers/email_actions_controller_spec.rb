@@ -9,13 +9,13 @@ describe EmailActionsController do
 
       @discussion = FactoryGirl.build(:discussion, group: @group)
       DiscussionService.create(discussion: @discussion, actor: @user)
-      DiscussionReader.for(discussion: @discussion, user: @user).set_volume! :email
+      DiscussionReader.for(discussion: @discussion, user: @user).set_volume! :loud
     end
 
     it 'stops email notifications for the discussion' do
-      expect(DiscussionReader.for(discussion: @discussion, user: @user).volume).to eq 'email'
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).volume).to eq 'loud'
       get :unfollow_discussion, discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token
-      expect(DiscussionReader.for(discussion: @discussion, user: @user).volume).to eq 'normal'
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).volume).to eq 'quiet'
     end
   end
 
@@ -32,7 +32,7 @@ describe EmailActionsController do
 
     it 'enables emails for the discussion' do
       get :follow_discussion, discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token
-      expect(DiscussionReader.for(discussion: @discussion, user: @user).volume).to eq 'email'
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).volume).to eq 'loud'
     end
   end
 

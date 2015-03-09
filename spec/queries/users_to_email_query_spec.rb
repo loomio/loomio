@@ -2,11 +2,15 @@ require 'rails_helper'
 
 describe UsersToEmailQuery do
   let(:all_emails_disabled) { {email_when_proposal_closing_soon: false} }
-  let(:user_with_thread_volume_email) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_with_membership_volume_normal) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_with_membership_volume_mute) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_with_membership_volume_email) { FactoryGirl.create :user, all_emails_disabled }
-  let(:user_with_motion_closing_soon_notifications) { FactoryGirl.create :user, all_emails_disabled }
+  let(:user_thread_loud) { FactoryGirl.create :user, all_emails_disabled }
+  let(:user_thread_normal) { FactoryGirl.create :user, all_emails_disabled }
+  let(:user_thread_quiet) { FactoryGirl.create :user, all_emails_disabled }
+  let(:user_thread_mute) { FactoryGirl.create :user, all_emails_disabled }
+  let(:user_membership_loud) { FactoryGirl.create :user, all_emails_disabled }
+  let(:user_membership_normal) { FactoryGirl.create :user, all_emails_disabled }
+  let(:user_membership_quiet) { FactoryGirl.create :user, all_emails_disabled }
+  let(:user_membership_mute) { FactoryGirl.create :user, all_emails_disabled }
+  let(:user_motion_closing_soon) { FactoryGirl.create :user, all_emails_disabled.merge(email_when_proposal_closing_soon: true) }
 
   let(:discussion) { FactoryGirl.create :discussion }
   let(:mentioned_user) {FactoryGirl.create :user, username: 'sam' }
@@ -20,27 +24,39 @@ describe UsersToEmailQuery do
     discussion.group.add_member!(mentioned_user)
     discussion.group.add_member!(parent_comment.author)
 
-    # set thread volume email for all activity in thread
-    discussion.group.add_member!(user_with_thread_volume_email)
-    DiscussionReader.for(discussion: discussion, user: user_with_thread_volume_email).set_volume! :email
+    discussion.group.add_member!(user_thread_loud).set_volume! :mute
+    discussion.group.add_member!(user_thread_normal).set_volume! :mute
+    discussion.group.add_member!(user_thread_quiet).set_volume! :mute
+    discussion.group.add_member!(user_thread_mute).set_volume! :mute
+
+    DiscussionReader.for(discussion: discussion, user: user_thread_loud).set_volume! :loud
+    DiscussionReader.for(discussion: discussion, user: user_thread_normal).set_volume! :normal
+    DiscussionReader.for(discussion: discussion, user: user_thread_quiet).set_volume! :quiet
+    DiscussionReader.for(discussion: discussion, user: user_thread_mute).set_volume! :mute
 
     # set membership volume - email for new discussions and proposals
-    discussion.group.add_member!(user_with_membership_volume_email).set_volume! :email
-    discussion.group.add_member!(user_with_membership_volume_normal).set_volume! :normal
-    discussion.group.add_member!(user_with_membership_volume_mute).set_volume! :mute
+    discussion.group.add_member!(user_membership_loud).set_volume! :loud
+    discussion.group.add_member!(user_membership_normal).set_volume! :normal
+    discussion.group.add_member!(user_membership_quiet).set_volume! :quiet
+    discussion.group.add_member!(user_membership_mute).set_volume! :mute
 
     # set email motion closing soon
-    user_with_motion_closing_soon_notifications.update_attribute(:email_when_proposal_closing_soon, true)
-    discussion.group.add_member!(user_with_motion_closing_soon_notifications)
+    discussion.group.add_member!(user_motion_closing_soon).set_volume! :mute
   end
 
   it 'new comment' do
     users = UsersToEmailQuery.new_comment(comment)
-    users.should     include user_with_thread_volume_email
-    users.should_not include user_with_membership_volume_email
-    users.should_not include user_with_membership_volume_normal
-    users.should_not include user_with_membership_volume_mute
-    users.should_not include user_with_motion_closing_soon_notifications
+    users.should     include user_thread_loud
+    users.should     include user_membership_loud
+
+    users.should_not include user_membership_normal
+    users.should_not include user_thread_normal
+
+    users.should_not include user_membership_quiet
+    users.should_not include user_thread_quiet
+
+    users.should_not include user_membership_mute
+    users.should_not include user_thread_mute
 
     users.should_not include comment.author
     users.should_not include mentioned_user
@@ -49,61 +65,101 @@ describe UsersToEmailQuery do
 
   it 'new_vote' do
     users = UsersToEmailQuery.new_vote(vote)
-    users.should     include user_with_thread_volume_email
-    users.should_not include user_with_membership_volume_email
-    users.should_not include user_with_membership_volume_normal
-    users.should_not include user_with_membership_volume_mute
-    users.should_not include user_with_motion_closing_soon_notifications
+    users.should     include user_thread_loud
+    users.should     include user_membership_loud
+
+    users.should_not include user_membership_normal
+    users.should_not include user_thread_normal
+
+    users.should_not include user_membership_quiet
+    users.should_not include user_thread_quiet
+
+    users.should_not include user_membership_mute
+    users.should_not include user_thread_mute
 
     users.should_not include vote.author
   end
 
-  it 'new_discussion', focus: true do
+  it 'new_discussion' do
     users = UsersToEmailQuery.new_discussion(discussion)
-    users.should     include user_with_membership_volume_email
-    users.should_not include user_with_membership_volume_normal
-    users.should_not include user_with_membership_volume_mute
-    users.should_not include user_with_motion_closing_soon_notifications
+    users.should     include user_thread_loud
+    users.should     include user_membership_loud
+
+    users.should     include user_membership_normal
+    users.should     include user_thread_normal
+
+    users.should_not include user_membership_quiet
+    users.should_not include user_thread_quiet
+
+    users.should_not include user_membership_mute
+    users.should_not include user_thread_mute
 
     users.should_not include discussion.author
   end
 
   it 'new_motion' do
     users = UsersToEmailQuery.new_motion(motion)
-    users.should     include user_with_membership_volume_email
-    users.should_not include user_with_membership_volume_normal
-    users.should_not include user_with_membership_volume_mute
-    users.should_not include user_with_motion_closing_soon_notifications
+    users.should     include user_thread_loud
+    users.should     include user_membership_loud
+
+    users.should     include user_membership_normal
+    users.should     include user_thread_normal
+
+    users.should_not include user_membership_quiet
+    users.should_not include user_thread_quiet
+
+    users.should_not include user_membership_mute
+    users.should_not include user_thread_mute
+
     users.should_not include motion.author
   end
 
   it 'motion_closing_soon' do
     users = UsersToEmailQuery.motion_closing_soon(motion)
+    users.should     include user_thread_loud
+    users.should     include user_membership_loud
 
-    users.should     include user_with_thread_volume_email
-    users.should     include user_with_motion_closing_soon_notifications
+    users.should     include user_membership_normal
+    users.should     include user_thread_normal
 
-    users.should_not include user_with_membership_volume_email
-    users.should_not include user_with_membership_volume_normal
-    users.should_not include user_with_membership_volume_mute
+    users.should_not include user_membership_quiet
+    users.should_not include user_thread_quiet
+
+    users.should_not include user_membership_mute
+    users.should_not include user_thread_mute
+
+    users.should     include user_motion_closing_soon
   end
 
   it 'motion_outcome' do
     users = UsersToEmailQuery.motion_outcome(motion)
-    users.should     include user_with_thread_volume_email
+    users.should     include user_thread_loud
+    users.should     include user_membership_loud
 
-    users.should_not include user_with_membership_volume_email
-    users.should_not include user_with_membership_volume_normal
-    users.should_not include user_with_membership_volume_mute
-    users.should_not include motion.outcome_author
+    users.should     include user_membership_normal
+    users.should     include user_thread_normal
+
+    users.should_not include user_membership_quiet
+    users.should_not include user_thread_quiet
+
+    users.should_not include user_membership_mute
+    users.should_not include user_thread_mute
+
+    users.should_not include user_motion_closing_soon
   end
 
   it 'motion_closed' do
     users = UsersToEmailQuery.motion_closed(motion)
-    users.should     include user_with_thread_volume_email
+    users.should     include user_thread_loud
+    users.should     include user_membership_loud
 
-    users.should_not include user_with_membership_volume_email
-    users.should_not include user_with_membership_volume_normal
-    users.should_not include user_with_membership_volume_mute
+    users.should_not include user_membership_normal
+    users.should_not include user_thread_normal
+
+    users.should_not include user_membership_quiet
+    users.should_not include user_thread_quiet
+
+    users.should_not include user_membership_mute
+    users.should_not include user_thread_mute
   end
 end

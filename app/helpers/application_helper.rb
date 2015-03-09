@@ -26,8 +26,9 @@ module ApplicationHelper
 
   def icon_class_for_volume(volume)
     case volume.to_sym
-    when :email then 'fa-envelope'
+    when :loud then 'fa-envelope'
     when :normal then 'fa-volume-up'
+    when :quiet then 'fa-volume-down'
     when :mute then 'fa-volume-off'
     end
   end
