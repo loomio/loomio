@@ -4,8 +4,8 @@ en:
     title: 'Email settings'
     group_volume_level: 'Set all my groups to the following volume level:'
     group_volume_leve_description: To set all your groups to the same volume level at once, use this option.
-    discussion_activity: Email me activity from discussions I participate in.
-    discussion_activity_description: When you participate in a discussion, the volume setting will be changed to 'Loud'.
+    discussion_activity: Change the volume when I partipate
+    discussion_activity_description: When you participate in a discussion, the volume setting will be changed to 'Loud', so all further activity will be emailed to you.
     yesterday_on_loomio: 'Yesterday on Loomio'
     yesterday_on_loomio_description: Sent to you at 6am each day, this email contains yesterday's unread activity.
     email_when_mentioned: '@mentions'

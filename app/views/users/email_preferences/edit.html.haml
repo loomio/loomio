@@ -10,33 +10,26 @@
       .checkbox
         = label_tag "user_email_on_participation" do
           = f.check_box :email_on_participation
-          = t(:'email_settings.discussion_activity')
-        %br
-        = t(:'email_settings.discussion_activity_description')
+          %strong= t(:'email_settings.discussion_activity')
+          %p= t(:'email_settings.discussion_activity_description')
 
-      %br
       .checkbox
         = label_tag "user_email_missed_yesterday" do
           = f.check_box :email_missed_yesterday
-          = t(:'email_settings.yesterday_on_loomio')
-        %br
-        = t(:'email_settings.yesterday_on_loomio_description')
+          %strong= t(:'email_settings.yesterday_on_loomio')
+          %p= t(:'email_settings.yesterday_on_loomio_description')
 
-      %br
       .checkbox
         = label_tag "user_email_when_mentioned" do
           = f.check_box :email_when_mentioned
-          = t(:'email_settings.email_when_mentioned')
-        %br
-        = t(:'email_settings.email_when_mentioned_description')
+          %strong= t(:'email_settings.email_when_mentioned')
+          %p= t(:'email_settings.email_when_mentioned_description')
 
-      %br
       .checkbox
         = label_tag "user_email_when_proposal_closing_soon" do
           = f.check_box :email_when_proposal_closing_soon
-          = t(:'email_settings.proposal_closing_soon')
-        %br
-        = t(:'email_settings.proposal_closing_soon_description')
+          %strong= t(:'email_settings.proposal_closing_soon')
+          %p= t(:'email_settings.proposal_closing_soon_description')
 
       %br
         %button.btn.btn-default.toggle-set-group-volume
