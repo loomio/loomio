@@ -207,4 +207,12 @@ module ApplicationHelper
   def hide_beta_logo?
     current_user_or_visitor.belongs_to_manual_subscription_group?
   end
+
+  def markdown_help_url
+    if current_locale.to_s == 'en'
+      'https://help.github.com/articles/markdown-basics'
+    else
+      'http://translate.google.co.nz/translate?hl=' + current_locale.to_s + '&u=https://help.github.com/articles/markdown-basics/&prev=search'
+    end
+  end
 end
