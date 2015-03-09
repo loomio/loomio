@@ -102,9 +102,11 @@ class API::RestfulController < API::BaseController
   end
 
   def instantiate_collection
-    self.collection = visible_records.page(params[:page])
-                                     .per(params[:per] || default_page_size)
-                                     .to_a
+    self.collection = page_collection(visible_records).to_a
+  end
+
+  def page_collection(collection)
+    collection.offset(params[:from]).limit(params[:per] || default_page_size)
   end
 
   def visible_records
