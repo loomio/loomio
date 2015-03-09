@@ -2,14 +2,13 @@ en:
   # view path based locale strings
   email_settings:
     title: 'Email settings'
-    which_emails_do_you_want: 'Which emails do you want to get?'
-    new_discussions_and_proposals: New discussion and proposal emails
-    new_discussions_and_proposals_description: Uncheck this to turn off new discussion and new proposal emails for all your groups.
-    discussion_activity: Discussion activity
-    discussion_activity_description: When you participate in a discussion, we'll set it to email any futher activity.
-    yesterday_on_loomio: Yesterday on Loomio
-    yesterday_on_loomio_description: Sent at 6am everyday, this email contains all the unread activity from the day before.
-    email_when_mentioned: '@mention emails'
+    group_volume_level: 'Set all my groups to the following volume level:'
+    group_volume_leve_description: To set all your groups to the same volume level at once, use this option.
+    discussion_activity: Email me activity from discussions I participate in.
+    discussion_activity_description: When you participate in a discussion, the volume setting will be changed to 'Loud'.
+    yesterday_on_loomio: 'Yesterday on Loomio'
+    yesterday_on_loomio_description: Sent to you at 6am each day, this email contains yesterday's unread activity.
+    email_when_mentioned: '@mentions'
     email_when_mentioned_description: When someone wants to get your attention, they'll @mention you. If you turn this off then people might not be able to contact you.
     proposal_closing_soon: Proposal closing soon
     proposal_closing_soon_description: Sent 24 hours before a proposal closes, this might be your last chance to participate in a decision.

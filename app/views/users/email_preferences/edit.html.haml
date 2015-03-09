@@ -7,23 +7,13 @@
       -if params[:unsubscribe_token]
         =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
 
-      %h3= t(:'email_settings.which_emails_do_you_want')
-
-      - if any_memberships_have_volume_email?
-        .checkbox
-          = label_tag "email_new_discussions_and_proposals" do
-            = check_box_tag :email_new_discussions_and_proposals, 1, true
-            = t(:'email_settings.new_discussions_and_proposals')
-          %br
-          = t(:'email_settings.new_discussions_and_proposals_description')
-
-      %br
       .checkbox
         = label_tag "user_email_on_participation" do
           = f.check_box :email_on_participation
           = t(:'email_settings.discussion_activity')
         %br
         = t(:'email_settings.discussion_activity_description')
+
       %br
       .checkbox
         = label_tag "user_email_missed_yesterday" do
@@ -47,5 +37,27 @@
           = t(:'email_settings.proposal_closing_soon')
         %br
         = t(:'email_settings.proposal_closing_soon_description')
+
+      %br
+        %button.btn.btn-default.toggle-set-group-volume
+          Set the volume level of all your groups.
+
+        .set-group-volume
+          Volume is the setting which controls how much you hear from a group. You can set each group to have it's own volume level on the group page. If you want to change the volume for all your groups at once, go ahead.
+          %ul
+            %li
+              %label{ for: "set_group_volume_unchanged"}
+              =radio_button_tag'set_group_volume_level', ''
+              Do not change
+              %p
+                Leave each group volume level unchanged.
+
+            - ['loud', 'normal', 'quiet'].each do |level|
+              %li
+                = radio_button_tag 'set_group_volume', level
+                %label{ for: "set_group_volume_#{level}"}
+                  %i.fa.fa-fw.fa-lg{class: "fa #{icon_class_for_volume(level)}"}
+                  = t("volume.#{level}")
+                %p= t :"group_volume.#{level}_description"
 
       = f.submit t('email_settings.submit')
