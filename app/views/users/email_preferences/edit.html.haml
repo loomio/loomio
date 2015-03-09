@@ -1,11 +1,33 @@
 .row
   .col-md-8
     %h1= t(:'email_settings.title')
-    .group-notification-levels
 
     =simple_form_for(@user, url: update_email_preferences_path, method: :put) do |f|
       -if params[:unsubscribe_token]
         =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
+
+
+      %strong Group volume
+      %p
+        Volume controls how much email you get from a group.
+        Set volume for all of your groups:
+
+        .set-group-volume
+          %ul
+            - ['loud', 'normal', 'quiet'].each do |level|
+              %li
+                = radio_button_tag 'set_group_volume', level
+                %label{ for: "set_group_volume_#{level}"}
+                  = t("volume.#{level}")
+                  %span
+                    \-
+                    = t :"group_volume.#{level}_description"
+            %li
+              =radio_button_tag 'set_group_volume', 'unchanged', true
+              %label{ for: "set_group_volume_unchanged"}
+                Do not change
+          %p
+            %em To change the volume of just one of your groups, visit that group's page.
 
       .checkbox
         = label_tag "user_email_on_participation" do
@@ -31,26 +53,4 @@
           %strong= t(:'email_settings.proposal_closing_soon')
           %p= t(:'email_settings.proposal_closing_soon_description')
 
-      %br
-        %button.btn.btn-default.toggle-set-group-volume
-          Set the volume level of all your groups.
-
-        .set-group-volume
-          Volume is the setting which controls how much you hear from a group. You can set each group to have it's own volume level on the group page. If you want to change the volume for all your groups at once, go ahead.
-          %ul
-            %li
-              %label{ for: "set_group_volume_unchanged"}
-              =radio_button_tag'set_group_volume_level', ''
-              Do not change
-              %p
-                Leave each group volume level unchanged.
-
-            - ['loud', 'normal', 'quiet'].each do |level|
-              %li
-                = radio_button_tag 'set_group_volume', level
-                %label{ for: "set_group_volume_#{level}"}
-                  %i.fa.fa-fw.fa-lg{class: "fa #{icon_class_for_volume(level)}"}
-                  = t("volume.#{level}")
-                %p= t :"group_volume.#{level}_description"
-
-      = f.submit t('email_settings.submit')
+      = f.submit t('email_settings.submit'), class: 'btn btn-primary'
