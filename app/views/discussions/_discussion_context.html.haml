@@ -16,8 +16,8 @@
   .col-sm-3.col-sm-offset-1.right-context
     - if can? :set_volume, @discussion
       - current_volume = @discussion_reader.volume
-      .btn-group
-        %button{type: 'button', class:"btn btn-block btn-left btn-default dropdown-toggle", 'data-toggle': "dropdown", 'aria-expanded': false}
+      .btn-group.dropdown.volume-dropdown
+        %button{type: 'button', class:"btn btn-left btn-default dropdown-toggle", 'data-toggle': "dropdown", 'aria-expanded': false}
           %i.fa.fa-lg.fa-fw{class: icon_class_for_volume(current_volume)}
           = t :"volume.#{current_volume}"
           %span.caret
@@ -27,8 +27,7 @@
               = link_to [:set_volume, @discussion, volume: volume], method: :post do
                 %i.fa.fa-lg.fa-fw{class: icon_class_for_volume(volume)}
                 %b= t(:"volume.#{volume}")
-                %br
-                = t(:"discussion_volume.#{volume}_description")
+                %p= t(:"discussion_volume.#{volume}_description")
     .discussion-additional-info
       = t("discussion_context.started_html",
           when: time_ago_in_words(@discussion.created_at),

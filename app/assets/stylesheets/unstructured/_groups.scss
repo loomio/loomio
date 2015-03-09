@@ -6,7 +6,6 @@ body.groups {
   &.edit, &.new, &.create, &.update {
     .described-label {
       i {
-        /*font-size: 0.9em;*/
         color: $mid-grey;
       }
     }
@@ -162,22 +161,7 @@ body.groups {
       .group-link a:hover { color: $dark-grey; }
     }
 
-    .panel-notifications .dropdown-menu {
-      li > a {
-        p {
-          margin: 6px 10px -18px 10px;
-        }
-        display: inline;
-        white-space: normal;
-      }
-      width: 320px;
-      @media (max-width: 480px) {
-        margin-left: -31px;
-      }
-      @media (min-width: 992px) {
-        margin-left: -130px;
-      }
-    }
+    .panel-notifications p { margin: 5px 0 0 0;}
 
     .notifications-panel {
       margin-top: 10px
