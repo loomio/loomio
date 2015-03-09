@@ -263,6 +263,7 @@ en:
     my_groups: Groups
 
   discussion:
+    load_previous: 'Load previous thread items'
     you_like_this: 'You like this.'
     liked_by_you_and_someone: 'You and {{name}} like this.'
     liked_by_you_and_others: 'Liked by you, {{joinedNames}} and {{name}}.'
