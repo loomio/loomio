@@ -364,6 +364,10 @@ class User < ActiveRecord::Base
     !groups.cannot_start_parent_group.any?
   end
 
+  def is_organisation_coordinator?
+    adminable_groups.parents_only.any?
+  end
+
   private
 
   def set_default_avatar_kind

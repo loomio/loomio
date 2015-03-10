@@ -1,0 +1,15 @@
+- if current_user.can? :manage_membership_requests, @network
+  .pull-right= link_to 'Manage requests', network_membership_requests_path(@network), class: "btn btn-primary"
+
+%h1= @network.name
+
+%h2 all the public threads in this network
+= render 'discussions/discussion_list'
+
+%ul
+  - @network.groups.each do |g|
+    %li= link_to g.full_name, group_path(g)
+
+
+- if current_user.is_organisation_coordinator?
+  %p= link_to 'Add your group to this network', new_network_membership_request_path(@network), class: "btn btn-success"

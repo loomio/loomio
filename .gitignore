@@ -21,7 +21,7 @@ Session.vim
 screenshots/
 .idea
 .env
-
+bin/
 /lineman/node_modules
 /lineman/dist
 /lineman/generated

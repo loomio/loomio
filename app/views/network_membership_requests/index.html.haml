@@ -1,0 +1,40 @@
+%h1 Membership requests for #{@network.name}
+
+%h2 Current requests
+%table
+  %tbody
+    - @requests.pending.each do |request|
+      %tr
+        %td
+          %strong= request.requestor.name
+          %br
+          = request.requestor.email
+        %td
+          %strong= request.group.full_name
+          %br
+          = simple_format request.message
+        %td
+          = link_to 'Approve', approve_network_membership_request_path(@network, request), method: :post, class: 'btn btn-success'
+          = link_to 'Decline', decline_network_membership_request_path(@network, request), method: :post, 'data-confirm' => 'Are you sure?'
+
+%h2 Previous requests
+%table
+  %tbody
+    - @requests.not_pending.each do |request|
+      %tr
+        %td
+          %strong= request.requestor.name
+          %br
+          = request.requestor.email
+        %td
+          %strong= request.group.full_name
+          %br
+          = simple_format request.message
+        %td
+          - if request.approved?
+            %strong Approved
+          - else
+            %strong Declined
+          by
+          = request.responder.name
+
