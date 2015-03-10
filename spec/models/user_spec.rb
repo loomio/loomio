@@ -212,7 +212,7 @@ describe User do
       expect(user.avatar_url(:small)).to eq 'www.gravatar/spike'
     end
 
-    context "where avatar_kind is 'uploaded'" do
+    context "where avatar_kind is 'uploaded' but we've lost the image" do
       before do
         @uploaded_avatar = double "paperclip_image"
         user.should_receive(:uploaded_avatar).and_return(@uploaded_avatar)
