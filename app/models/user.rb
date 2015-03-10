@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   AVATAR_KINDS = %w[initials uploaded gravatar]
   IMAGE_SIZES = {
     large: 170,
-    medium_large: 70,
+    medlarge: 70,
     medium: 35,
     small: 25
   }.with_indifferent_access.freeze
@@ -22,11 +22,12 @@ class User < ActiveRecord::Base
 
   has_attached_file :uploaded_avatar,
     styles: {
-              large:    "#{IMAGE_SIZES.fetch(:large, :medium)}x#{IMAGE_SIZES.fetch(:large, :medium)}",
-              medlarge: "#{IMAGE_SIZES.fetch(:medlarge, :medium)}x#{IMAGE_SIZES.fetch(:medlarge, :medium)}",
-              medium:   "#{IMAGE_SIZES.fetch(:medium)}x#{IMAGE_SIZES.fetch(:medium)}",
-              small:    "#{IMAGE_SIZES.fetch(:small, :medium)}x#{IMAGE_SIZES.fetch(:small, :medium)}"
-            }
+              large:    "#{IMAGE_SIZES[:large]}x#{IMAGE_SIZES[:large]}",
+              medlarge: "#{IMAGE_SIZES[:medlarge]}x#{IMAGE_SIZES[:medlarge]}",
+              medium:   "#{IMAGE_SIZES[:medium]}x#{IMAGE_SIZES[:medium]}",
+              small:    "#{IMAGE_SIZES[:small]}x#{IMAGE_SIZES[:small]}"
+            },
+    default_url: "/avatars/:style/missing.png"
   validates_attachment :uploaded_avatar,
     size: { in: 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
     content_type: { content_type: /\Aimage/ },
@@ -306,7 +307,7 @@ class User < ActiveRecord::Base
   end
 
   def has_uploaded_image?
-    uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
+    uploaded_avatar.url(:medium) != '/avatars/medium/missing.png'
   end
 
   def has_gravatar?(options = {})

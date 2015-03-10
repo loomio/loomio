@@ -218,24 +218,29 @@ describe User do
         user.should_receive(:uploaded_avatar).and_return(@uploaded_avatar)
       end
       it "returns medium url if no size is specified" do
-        @uploaded_avatar.should_receive(:url).with(:medium).and_return('/uploaded_avatars/medium/missing.png')
+        @uploaded_avatar.should_receive(:url).with(:medium).and_return('/avatars/medium/missing.png')
         user.avatar_kind = 'uploaded'
-        expect(user.avatar_url(:medium)).to eq '/uploaded_avatars/medium/missing.png'
+        expect(user.avatar_url(:medium)).to eq '/avatars/medium/missing.png'
       end
       it "returns large url if large size is specified" do
-        @uploaded_avatar.should_receive(:url).with(:large).and_return('/uploaded_avatars/large/missing.png')
+        @uploaded_avatar.should_receive(:url).with(:large).and_return('/avatars/large/missing.png')
         user.avatar_kind = 'uploaded'
-        expect(user.avatar_url(:large)).to eq '/uploaded_avatars/large/missing.png'
+        expect(user.avatar_url(:large)).to eq '/avatars/large/missing.png'
       end
       it "returns medium url if medium size is specified" do
-        @uploaded_avatar.should_receive(:url).with(:medium).and_return('/uploaded_avatars/medium/missing.png')
+        @uploaded_avatar.should_receive(:url).with(:medium).and_return('/avatars/medium/missing.png')
         user.avatar_kind = 'uploaded'
-        expect(user.avatar_url(:medium)).to eq '/uploaded_avatars/medium/missing.png'
+        expect(user.avatar_url(:medium)).to eq '/avatars/medium/missing.png'
+      end
+      it "returns medlarge url if medium size is specified" do
+        @uploaded_avatar.should_receive(:url).with(:medlarge).and_return('/avatars/medlarge/missing.png')
+        user.avatar_kind = 'uploaded'
+        expect(user.avatar_url(:medlarge)).to eq '/avatars/medlarge/missing.png'
       end
       it "returns small url if small size is specified" do
-        @uploaded_avatar.should_receive(:url).with(:small).and_return('/uploaded_avatars/small/missing.png')
+        @uploaded_avatar.should_receive(:url).with(:small).and_return('/avatars/small/missing.png')
         user.avatar_kind = 'uploaded'
-        expect(user.avatar_url(:small)).to eq '/uploaded_avatars/small/missing.png'
+        expect(user.avatar_url(:small)).to eq '/avatars/small/missing.png'
       end
     end
   end
