@@ -5,32 +5,40 @@
     .col-sm-6
       %p You can add your voice to a discussion using the comment box at the bottom of a discussion page.
       %h3.anchor#markdown Markdown
-      %p Loomio uses <strong>Markdown</strong> to let you format text and embed images. Check the box next to the word <strong>“Markdown”</strong> under the comment box to turn it on. Click <a href="https://www.loomio.org/d/Wh7vHaTk/markdown-text-formatting-made-easy">here</a> for information on how to use Markdown.
+      %p Loomio uses <strong>Markdown</strong> to let you format text and embed images. To enable Markdown, check the box next to the word <strong>“Markdown”</strong> under the comment box. Click <a href="https://www.loomio.org/d/Wh7vHaTk/markdown-text-formatting-made-easy">here</a> for information on how to use Markdown.
     .col-sm-6
       =image_tag "comment-box.png", class: "screenshot"
   %h3.anchor#attaching-files Attaching files
-  %p You can attach a file to a comment by clicking the paperclip icon underneath the comment box and selecting the file from your device.
+  .row
+    .col-sm-8
+      %p Loomio allows you to attach files to comments in a discussion. You can attach a file to a comment by clicking the paperclip icon underneath the comment box at the bottom of the discussion page and selecting the file from your device.
+    .col-sm-4
+      =image_tag "attachment-icon.png", class: "screenshot"
   %h3.anchor#mentioning @mentioning group members
   .row
     .col-sm-6
-      %p If you want to get the attention of a specific person in your group, type <strong>‘@’</strong> followed by their name. Loomio will autocomplete their username. They will be notified that you’ve mentioned them in a comment.
+      %p If you want to get the attention of a specific person in your group, type <strong>‘@’</strong> into the comment box, followed by their name. Loomio will autocomplete their username. They will be notified that you’ve mentioned them in a comment.
     .col-sm-6
       =image_tag "mentioning.png", class: "screenshot"
   %h3.anchor#editing-comments Editing a comment
-  %p To allow for fixing typos, you can edit a comment after it is posted. Group coordinators can also <a href="#group-permissions">configure groups to allow users to edit their comments at any time</a>. The pencil icon for editing a comment will be visible in the right-hand corner of the comment if you have permission to edit it. If your group's settings are not configured to allow users to edit their comments, then a comment can only be edited until someone else participates in the discussion. Comments that have been edited display the word <strong>“Edited”</strong> beneath them. Clicking <strong>“Edited”</strong> will display all previous versions of the comment.
+  %p To allow for fixing typos, you can edit a comment after it is posted. By default, groups are configured so that a comment can only be edited until someone else contributes a comment to the discussion. Group coordinators can also <a href="#group-permissions">configure groups to allow users to edit their comments at any time</a>. The pencil icon for editing a comment will be visible in the right-hand corner of the comment if you have permission to edit it. Comments that have been edited display the word <strong>“Edited”</strong> beneath them. Clicking <strong>“Edited”</strong> below a comment will display all previous versions of the comment.
   %h3.anchor#liking-comments Liking a comment
   .row
     .col-sm-6
-      %p Clicking <strong>“Like”</strong> below a comment is a simple way to let other members of your group that you enjoy or understand what they’ve said without leaving a comment.
+      %p Clicking <strong>“Like”</strong> below a comment is a simple way to let other members of your group know that you appreciate or understand what they’ve said without leaving a comment.
     .col-sm-6
       =image_tag "comment-like.png", class: "screenshot"
   .row
     .col-sm-6
-      %p When you <strong>“Like”</strong> a comment, the fact that you <strong>“Liked”</strong> it will be visible below the comment. You can undo that action by clicking <strong>“Unlike”</strong> on a comment you’ve previously liked.
+      %p When you <strong>“Like”</strong> a comment, the fact that you <strong>“Liked”</strong> it will be visible below the comment. You can undo the <strong>“Like”</strong> action by clicking <strong>“Unlike”</strong> on a comment you’ve previously liked.
     .col-sm-6
       =image_tag "liked-comment.png", class: "screenshot"
   %h3.anchor#deleting-comments Deleting a comment
-  %p Members can delete their own comments at any time by clicking the <strong>"X"</strong> in the right-hand corner of the comment. Group coordinators can delete any comments posted in discussions taking place in their group.
+  .row
+    .col-sm-6
+      %p You can delete your own comments at any time by clicking the <strong>"X"</strong> in the right-hand corner of the comment. Group coordinators can delete any comments posted in discussions taking place in groups they coordinate.
+    .col-sm-6
+      =image_tag "delete-comment-icon.png", class: "screenshot"
   .row#bottom-links
     .col-sm-6
       %a.back-to-top{:href => "#contents"} ^ Back to top
