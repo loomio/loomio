@@ -1,16 +1,4 @@
 hr:
-  users:
-    email_preferences:
-      edit:
-        title: Postavke e-maila
-        when_do_you_want_emails: "Pošalji mi e-mail:"
-        email_missed_yesterday: "\"Jučer na Loomiu\" - dnevni prikaz propuštenih aktivnosti"
-        email_when_mentioned: "Kada me @mentioned"
-        email_followed_threads: "Kad se pojavi aktivnost u temi razgovora koje pratim. "
-        email_when_proposal_closing_soon: "24 sata prije zatvaranja prijedloga. "
-        email_new_discussions_and_proposals: Nove rasprave i prijedolozi.
-        for_these_groups: "Za ove grupe:"
-        submit: Spremi postavke
   explore:
     header: Istraži javne grupe
   try_it:
@@ -238,8 +226,6 @@ hr:
   no_group_header: Dobrodošli u Loomio Beta
   empty_notifications: Nemate još notifikacija.
   see_all_notifications: Vidi sve notifikacije
-  profile: Profil
-  email_settings: Postavke emaila
   sign_out: Odjava
   sign_in: Prijava
   honeypot_warning: "Nije moguće kreirati račun. Ako koristite čitač ekrana, molimo da se pobrinete da zadnje (skriveno) polje formulara bude prazno."

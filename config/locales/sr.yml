@@ -1,16 +1,4 @@
 sr:
-  users:
-    email_preferences:
-      edit:
-        title: Podešavanje ePoruka
-        when_do_you_want_emails: "Obavesti me:"
-        email_missed_yesterday: "'Juče na Lumiju' - dnevni pregled svih propuštenih aktivnosti"
-        email_when_mentioned: "Kada sam @pomenut/a"
-        email_followed_threads: Kada postoji aktivnost u oblastima koje pratim.
-        email_when_proposal_closing_soon: 24 sata pre isteka predloga.
-        email_new_discussions_and_proposals: Nove diskusije i predlozi
-        for_these_groups: "Za ove grupe:"
-        submit: Sačuvaj podešavanja
   explore:
     header: Istraži javne grupe
   try_it:
@@ -240,8 +228,6 @@ sr:
   no_group_header: Dobrodošli na Lumio Beta
   empty_notifications: Nemate nikakvih obaveštenja još uvek.
   see_all_notifications: Vidi sva obaveštenja
-  profile: Profil
-  email_settings: Podešavanja ePoruka
   sign_out: Odjavi se
   sign_in: Prijavi se
   honeypot_warning: "Nije bilo moguće napravit Vaš nalog. Ako koristite čitač ekrana, molimo da se postarate da je poslednje(skriveno) polje u formularu prazno."
@@ -897,7 +883,6 @@ sr:
       headline: "%{author}ov/in predlog u grupi %{group} uskoro ističe:"
       summary: Rezime
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Ne prati</a> da zaustaviš obaveštenja o ovoj diskusiji."
       change_preferences: "Promeni svoja podešavanja o ePorukama:"
       new_motion: "%{who} predlaže:"
       motion_closing_soon: "Predlog ističe kroz 24 časa:"

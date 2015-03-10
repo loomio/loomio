@@ -1,16 +1,4 @@
 sk:
-  users:
-    email_preferences:
-      edit:
-        title: Nastavenie emailu
-        when_do_you_want_emails: "Poslať mi email:"
-        email_missed_yesterday: "'Včera na Loomio' - denný súhrn aktivít ktoré mi ušli"
-        email_when_mentioned: "Keď som @spomenutý/á"
-        email_followed_threads: Ak sa v diskusných vláknach ktoré sledujem niečo odohrá
-        email_when_proposal_closing_soon: 24 hodín pred uzatvorením návrhu
-        email_new_discussions_and_proposals: Nové diskusie a návrhy
-        for_these_groups: "Pre tieto skupiny:"
-        submit: Uložiť nastavenia
   explore:
     header: Preskúmajte verejné skupiny
   try_it:
@@ -240,8 +228,6 @@ sk:
   no_group_header: Vítajte na Loomio Beta
   empty_notifications: Nemáte zatiaľ žiadne upozornenia.
   see_all_notifications: Zobraziť všetky upozornenia
-  profile: Profil
-  email_settings: Nastavenia emailu
   sign_out: Odhlásiť sa
   sign_in: Prihlásiť sa
   honeypot_warning: "Nepodarilo sa vytvoriť váš účet. Pokiaľ používáte screen reader, uistite sa prosím, že posledné (skryté) pole ve formulári je prázdne."
@@ -897,7 +883,6 @@ sk:
       headline: "návrh %{author} v %{group} sa čoskoro uzatvára:"
       summary: Zhrnutie
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Ukončiť sledovanie</a> na zastavenie príjmu emailov z tejto diskusie."
       change_preferences: "Zmena nastavenia e-mailu:"
       new_motion: "%{who} navrhol:"
       motion_closing_soon: "Návrhy uzatvorené behom 24 hodin:"

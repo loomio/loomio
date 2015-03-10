@@ -1,16 +1,4 @@
 de:
-  users:
-    email_preferences:
-      edit:
-        title: E-Mail Einstellungen
-        when_do_you_want_emails: "Sende mir:"
-        email_missed_yesterday: "\"Yesterday on Loomio\" - eine tägliche Zusammenfassung aller Aktivitäten, die ich verpasst habe"
-        email_when_mentioned: "Wenn ich @erwähnt wurde"
-        email_followed_threads: "Wenn es Aktivität in den Diskussionen gibt, denen ich folge."
-        email_when_proposal_closing_soon: 24 Stunden bevor der Vorschlag geschlossen wird.
-        email_new_discussions_and_proposals: Neue Diskussionen und Vorschläge
-        for_these_groups: "Für folgende Gruppen:"
-        submit: Einstellungen speichern
   explore:
     header: Erkunde öffentliche Gruppen
   try_it:
@@ -234,8 +222,6 @@ de:
   no_group_header: Willkommen bei der Loomio Beta
   empty_notifications: Du hast noch keine Benachrichtigungen.
   see_all_notifications: Alle Benachrichtigungen ansehen
-  profile: Profil
-  email_settings: eMail-Einstellungen
   sign_out: Abmelden
   sign_in: Anmelden
   honeypot_warning: "Dein Konto konnte nicht erstellt werden. Falls Du eine Vorlese-Anwendung verwendest, stelle sicher, dass das letzte (versteckte) Feld des Formulars leer ist."
@@ -902,10 +888,6 @@ de:
     thread_mailer:
       footer_text: "Antworte auf diese eMail sofort oder auf %{hostname}: ansehen:"
       reply_or_view_online_html: "Antworte auf diese eMail sofort oder<a href='%{url}'> auf %{hostname}  ansehen</a>."
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Nicht mehr folgen</a> beendet die eMail-Benachrichtigung über diese Diskussion."
-      unfollow_discussion_text: "<a href='%{unfollow_url}'>Nicht mehr folgen</a> beendet die eMail-Benachrichtigung über diese Diskussion."
-      follow_discussion_html: "<a href='%{follow_url}'>Folgen</a> beendet die eMail-Benachrichtigung über diese Diskussion."
-      follow_discussion_text: "Besuchen Sie den folgenden Link, um E-Mails über diese Diskussion erhalten: %{follow_url}"
       change_email_preferences_html: "Ändere Deine <a href='%{email_preferences_url}'>eMail-Einstellungen</a> um weniger Loomio eMails zu erhalten."
       change_preferences: "Ändere Deine eMail Einstellungen:"
       new_motion: "%{who} schlägt vor:"

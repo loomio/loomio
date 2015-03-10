@@ -1,16 +1,4 @@
 es:
-  users:
-    email_preferences:
-      edit:
-        title: "Preferencias de correo electrónico "
-        when_do_you_want_emails: "Enviarme un correo electrónico:"
-        email_missed_yesterday: "'Ayer en Loomio' - un resumen diario de toda la actividad no leída"
-        email_when_mentioned: "Cuando sea @nombrado "
-        email_followed_threads: Cuando haya actividad en los temas que sigo.
-        email_when_proposal_closing_soon: 24 horas antes del cierre de una propuesta.
-        email_new_discussions_and_proposals: Nuevas discusiones y propuestas.
-        for_these_groups: "Para estos grupos:"
-        submit: Guardar preferencias
   explore:
     header: Explorar grupos públicos
   try_it:
@@ -110,6 +98,8 @@ es:
     logo_upload: Sube un nuevo logo
     edit_description: Editar descripción
     group_category: Encuentra más grupos como éste
+    unread_comments: "Comentarios no leídos  "
+    new_votes: nuevos votos
   views:
     pagination:
       previous: Atrás
@@ -186,9 +176,12 @@ es:
     about: Acerca de Loomio
     blog: Blog
     contact: Contacto
+    help: Ayuda
     privacy: Privacidad
+    pricing: Precio
     public_groups: Grupos públicos
     terms: Términos
+    independent_install_html: "%{hostname} esta utilizando una copia independiente de Loomio: <a href=\"http://github.com/loomio/loomio\">enterate mas</a>."
   inbox:
     clear: Limpiar
     title: Bandeja de entrada
@@ -215,6 +208,9 @@ es:
     motion_blocked: bloqueó la propuesta
     motion_outcome_created: Publico una decisión para la propuesta.
     motion_outcome_updated: resultado de propuesta modificado
+    email_actions:
+      following_thread: "Estas ahora siguiendo el hilo: %{thread_title}"
+      not_following_thread: "Ya no estas siguiendo el hilo: %{thread_title}"
   edit_discussion_context: Editar información de la discusión
   request_new_group: Crear un grupo
   start_new_group: Empieza un nuevo grupo
@@ -226,8 +222,6 @@ es:
   no_group_header: "Bienvenid@ a Loomio Beta"
   empty_notifications: Todavía no tienes notificaciones.
   see_all_notifications: Ver todas tus notificaciones
-  profile: Perfil
-  email_settings: Configuración del correo electrónico
   sign_out: Salir
   sign_in: Entrar
   honeypot_warning: "No se pudo crear tu cuenta. Si usas un lector de pantallas, por favor, asegúrate de que el último campo (oculto) del formulario está en blanco."
@@ -421,6 +415,8 @@ es:
       following_details: "Serás notificado sobre cada tema en este grupo "
       not_following_details: Serás notificado sobre los temas en los que estás participando.
   group_request:
+    header: Empieza un grupo
+    desc: "Para tomar decisiones en Loomio, el primer paso es iniciar un grupo."
     neighbourhood_support_group: ej. Grupo de apoyo al vecindario
     commercial_use_option: "en una empresa, organización formal o lugar de trabajo"
     non_commercial_use_option: En una comunidad o grupo informal
@@ -844,10 +840,14 @@ es:
       subject: Loomio - Resumen de las últimas 24 horas
     missed_yesterday:
       subject: Ayer en Loomio
+      headlines: "Titulo "
       mark_as_read: Marcar como leído
       thanks_for_reading: "Gracias por leer, ¡que tengas un buen día!"
       click_here_to_mark_all_as_read_html: "Esto es lo que sucedió ayer en Loomio.\nUna vez usted lo haya leído, clic  <a href=\"%{link}\">marcar como leído</a>  para eliminarlo de tú bandeja de entrada.\n"
       marked_as_read_success: Todo el contenido del correo ha sido marcado como leído
+    comment_replied_to:
+      context: "%{author_name} respondió a tu comentario en la discusión \"%{discussion_title}\""
+      subject: "%{who} respondió a tu comentario en el grupo %{which} en Loomio."
     group_email:
       intro: "%{who} hizo un anuncio en %{group}:"
     group_membership_approved:
@@ -886,7 +886,9 @@ es:
       headline: "La propuesta de %{author} en %{group} cerrará pronto:"
       summary: Resumen
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'> Dejar de seguir </a> para detener correos electrónicos acerca de esta discusión."
+      footer_text: "Responder a este correo electrónico directamente o verlo en %{hostname}:"
+      reply_or_view_online_html: "Responde a este correo electrónico directamente o <a href='%{url}'>velo en %{hostname}</a>."
+      change_email_preferences_html: "Cambia tus <a href='%{email_preferences_url}'>preferencias de correo electrónico</a> para darte de baja de estos correos electrónicos."
       change_preferences: Cambiar sus preferencias de email
       new_motion: "%{who} propuso:"
       motion_closing_soon: Cierra en 24 Horas

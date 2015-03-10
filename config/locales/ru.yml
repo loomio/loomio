@@ -1,16 +1,4 @@
 ru:
-  users:
-    email_preferences:
-      edit:
-        title: Настройки уведомлений
-        when_do_you_want_emails: Email
-        email_missed_yesterday: "'Вчера на Loomio' - ежедневник пропущеных событий"
-        email_when_mentioned: Когда меня упомянули
-        email_followed_threads: "Когда есть активность в ветке, за которой я слежу."
-        email_when_proposal_closing_soon: 24 часа до закрытия предложения.
-        email_new_discussions_and_proposals: Новые дискуссии и предложения
-        for_these_groups: "Для этих групп:"
-        submit: Сохранить предпочтения
   explore:
     header: Публичные группы
   try_it:
@@ -239,8 +227,6 @@ ru:
   no_group_header: "Добро пожаловать!"
   empty_notifications: У вас пока нет уведомлений.
   see_all_notifications: Просмотреть все уведомления
-  profile: Профиль
-  email_settings: Настройки email
   sign_out: Выйти
   sign_in: Войти
   honeypot_warning: "Не удалось создать учетную запись. Если Вы используете программу для чтения с экрана, пожалуйста, убедитесь, что последнее (скрытое) поле формы пустое."
