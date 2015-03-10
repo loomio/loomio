@@ -522,15 +522,15 @@ en:
     mute: Mute
 
   discussion_volume:
-    loud_description: Email me whenever there is activity in this thread.
-    normal_description: Just email me proposal events.
-    quiet_description: Include in the daily summary email only - if enabled.
+    loud_description: Email whenever there is activity in this thread.
+    normal_description: Just email proposal events.
+    quiet_description: Don't email about this thread.
     mute_description: Hide this thread from the dashboard and do not notify unless @mentioned.
 
   group_volume:
-    loud_description: Email me whenever there is activity.
-    normal_description: 'Just email me important activity: New discussions and proposals, outcomes etc.'
-    quiet_description: Don't email me. Activity will be displayed on the dashboard.
+    loud_description: Email whenever there is activity.
+    normal_description: 'Just email important activity: New discussions and proposals, outcomes etc.'
+    quiet_description: Don't email about this group. Activity will be displayed on the dashboard.
     mute_description: Hide this group from the dashboard and do not notify unless @mentioned.
 
 
