@@ -9,6 +9,10 @@ class Users::EmailPreferencesController < AuthenticateByUnsubscribeTokenControll
     @user = user
 
     if @user.update_attributes(permitted_params.user)
+      if %w[loud normal quiet].include? params['set_group_volume']
+        @user.memberships.update_all(volume: Membership.volumes[params['set_group_volume']])
+      end
+
       flash[:notice] = "Your email settings have been updated."
       redirect_to dashboard_or_root_path
     else

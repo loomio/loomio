@@ -2,11 +2,16 @@ class AddVolumeOptions < ActiveRecord::Migration
   def change
     add_column :memberships, :volume, :integer, default: DiscussionReader.volumes[:normal], null: false
     add_column :discussion_readers, :volume, :integer, default: nil
+    add_column :users, :email_on_participation, :boolean, null: false, default: true
+    
+    change_column :users, :email_when_proposal_closing_soon, :boolean, default: false, null: false
+
 
     Membership.reset_column_information
     DiscussionReader.reset_column_information
     User.reset_column_information
 
+    User.where(email_followed_threads: false).update_all(email_on_participation: false)
 
     Membership.joins(:user).
                 where('users.email_new_discussions_and_proposals = FALSE OR
@@ -34,6 +39,8 @@ class AddVolumeOptions < ActiveRecord::Migration
                                                         FROM discussion_readers LEFT OUTER JOIN users ON discussion_readers.user_id = users.id
                                                         WHERE users.email_followed_threads = TRUE and discussion_readers.following = TRUE)"
 
+
+    puts "emailed_followed_threads count: #{User.where(email_followed_threads: true).count}, email_on_participation count: #{User.where(email_on_participation: true).count}"
     # verify that count of (discussion_readers where users.email_followed_threads = true and following = true)
     #        equals count of (discussion_readers where volume = email)
     #
@@ -41,6 +48,8 @@ class AddVolumeOptions < ActiveRecord::Migration
                                                 where('users.email_followed_threads = TRUE AND discussion_readers.following = TRUE').count
     volume_is_loud_count     = DiscussionReader.where(volume: DiscussionReader.volumes[:loud]).count
 
+
+    puts "total users: #{User.count}"
     puts "folloing by email count: #{following_by_email_count} and volume_is_loud_count: #{volume_is_loud_count}"
 
 
@@ -56,13 +65,6 @@ class AddVolumeOptions < ActiveRecord::Migration
     puts "follow_by_default_and_email_memberships_count: #{follow_by_default_and_email_memberships_count} and loud_membership_count: #{loud_membership_count}"
 
 
-    remove_column :memberships, :following_by_default, :boolean
-    remove_column :memberships, :email_new_discussions_and_proposals
-
-    remove_column :discussion_readers, :following, :boolean
-
-    rename_column :users, :email_followed_threads, :email_on_participation
-    remove_column :users, :email_new_discussions_and_proposals
 
   end
 end

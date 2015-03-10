@@ -10,9 +10,6 @@ class Events::UserMentioned < Event
       ThreadMailer.delay.user_mentioned(mentioned_user, event)
     end
 
-    DiscussionReader.for(discussion: comment.discussion,
-                         user: mentioned_user).set_volume! :email
-
     event.notify!(mentioned_user)
 
     event

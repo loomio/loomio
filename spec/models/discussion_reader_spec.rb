@@ -11,8 +11,8 @@ describe DiscussionReader do
 
   describe 'volume' do
     it 'can change its volume' do
-      reader.set_volume! :email
-      expect(reader.reload.volume.to_sym).to eq :email
+      reader.set_volume! :loud
+      expect(reader.reload.volume.to_sym).to eq :loud
     end
 
     it 'defaults to the memberships volume when nil' do

@@ -23,4 +23,11 @@ module HasVolume
     volume.to_s == 'normal'
   end
 
+  def volume_is_quiet?
+    volume.to_s == 'quiet'
+  end
+
+  def volume_is_mute?
+    volume.to_s == 'mute'
+  end
 end
