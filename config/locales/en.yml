@@ -1188,7 +1188,7 @@ en:
       turn_off_notifications_html: "<a href='%{url}'>Turn off emails</a> for this discussion."
       turn_off_notifications_text: "Turn off emails for this discussion: %{url}"
       turn_on_notifications_html: "<a href='%{url}'>Turn on emails for this discussion</a> to receive further activity."
-      turn_on_notifications_text: "Turn on email to receive further activity in this discussion.: %{url}"
+      turn_on_notifications_text: "Turn on email to receive further activity in this discussion: %{url}"
       change_email_preferences_html: "Change your <a href='%{email_preferences_url}'>email preferences</a> to unsubscribe from these emails."
       change_preferences: "Change your email preferences:"
       new_motion: "%{who} proposed:"
