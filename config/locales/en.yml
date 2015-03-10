@@ -523,7 +523,7 @@ en:
 
   discussion_volume:
     loud_description: Email whenever there is activity in this thread.
-    normal_description: Just email proposal events.
+    normal_description: Just email when a proposal is created, about to close, or an outcome is posted.
     quiet_description: Don't email about this thread.
     mute_description: Hide this thread from the dashboard and do not notify unless @mentioned.
 
