@@ -14,6 +14,20 @@
         - if TranslationService.can_translate? @discussion
           = translate_link_for @discussion
   .col-sm-3.col-sm-offset-1.right-context
+    - if can? :set_volume, @discussion
+      - current_volume = @discussion_reader.volume
+      .btn-group.dropdown.volume-dropdown
+        %button{type: 'button', class:"btn btn-left btn-default dropdown-toggle", 'data-toggle': "dropdown", 'aria-expanded': false}
+          %i.fa.fa-lg.fa-fw{class: icon_class_for_volume(current_volume)}
+          = t :"volume.#{current_volume}"
+          %span.caret
+        %ul.dropdown-menu.dropdown-menu-right{role: 'menu'}
+          - %w[loud normal quiet mute].each do |volume|
+            %li.dropdown-menu-item
+              = link_to [:set_volume, @discussion, volume: volume], method: :post do
+                %i.fa.fa-lg.fa-fw{class: icon_class_for_volume(volume)}
+                %b= t(:"volume.#{volume}")
+                %p= t(:"discussion_volume.#{volume}_description")
     .discussion-additional-info
       = t("discussion_context.started_html",
           when: time_ago_in_words(@discussion.created_at),
@@ -23,18 +37,7 @@
       -if @discussion.has_previous_versions?
         .last-edited-by
           = link_to t(:"common.edited", when: time_ago_in_words(@discussion.last_versioned_at)), show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
-      - if can? :follow, @discussion
-        .following-status
-          - if @discussion_reader.following?
-            = link_to unfollow_discussion_path(@discussion), method: :post, class: "btn btn-default js-tooltip cuke-unfollow", title: t(:"discussion_context.click_to_unfollow") do
-              %i.fa.fa-volume-up
-              = t :"common.following"
-            %p= t :"discussion_context.following_details"
-          - else
-            = link_to follow_discussion_path(@discussion), method: :post, class: "btn btn-default js-tooltip cuke-follow", title: t(:"discussion_context.click_to_follow") do
-              %i.fa.fa-volume-down
-              = t :"common.not_following"
-            %p= t :"discussion_context.not_following_details"
+
 
 
 #description-revision-history.modal

@@ -439,3 +439,16 @@ form{
 [dir='RTL'] { text-align: right; }
 [dir='LTR'] { text-align: left; }
 .text-left[dir='RTL'] { text-align: left; }
+
+body.groups, body.discussions {
+  .volume-dropdown .dropdown-menu {
+    li > a { white-space: normal; }
+    li > a:hover{
+      color: white;
+      background-color: #08c;
+    }
+    width: 320px;
+    @media (max-width: 480px) { margin-left: -31px; }
+    @media (min-width: 992px) { margin-left: -130px; }
+  }
+}

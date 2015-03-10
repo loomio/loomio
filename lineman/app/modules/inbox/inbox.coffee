@@ -4,5 +4,5 @@ angular.module('loomioApp').directive 'inbox', ->
   templateUrl: 'generated/modules/inbox/inbox.html'
   replace: true
   controller: ($scope, Records, UserAuthService) ->
-    $scope.currentUser = UserAuthService.currentUser
+    $scope.currentUser = window.Loomio.currentUser
     Records.discussions.fetchInbox()

@@ -26,11 +26,6 @@ Background:
     When I like a comment in the discussion
     Then I should be following the discussion
 
-  Scenario: I mention rich in a discussion
-    Given there is a discussion I am not following
-    When I comment on the discussion, mentioning Rich
-    Then Rich should be following the discussion
-
   Scenario: I update the discussion
     Given there is a discussion I am not following
     And I update the title

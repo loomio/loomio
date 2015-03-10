@@ -27,7 +27,10 @@ angular.module('loomioApp').factory 'BaseModel', ->
       @importData(data, @)
 
     scrapeAttributeNames: (data) ->
-      @constructor.attributeNames = _.map _.keys(data), (key) -> _.camelCase(key)
+      _.each _.keys(data), (key) =>
+        camelKey = _.camelCase(key)
+        unless _.contains @constructor.attributeNames, camelKey
+          @constructor.attributeNames.push camelKey
 
     importData: (data, dest) ->
       _.each _.keys(data), (key) =>
@@ -43,12 +46,25 @@ angular.module('loomioApp').factory 'BaseModel', ->
       @baseSerialize()
 
     baseSerialize: ->
+      wrapper = {}
       data = {}
-      _.each @attributeNames, (attributeName) ->
-        data[_.snakeCase(attributeName)] = this[attributeName]
-      data
+      paramKey = _.snakeCase(@constructor.singular)
+      _.each window.Loomio.permittedParams[paramKey], (attributeName) =>
+        data[_.snakeCase(attributeName)] = @[_.camelCase(attributeName)]
+      wrapper[paramKey] = data
+      wrapper
 
     setupViews: ->
+
+    setupView: (view, sort, desc) ->
+      viewName = "#{view}View"
+      idOption = {}
+      idOption["#{@constructor.singular}Id"] = @id
+
+      @[viewName] = @recordStore[view].collection.addDynamicView(@viewName())
+      @[viewName].applyFind(idOption)
+      @[viewName].applyFind(id: {$gt: 0})
+      @[viewName].applySimpleSort(sort or 'createdAt', desc)
 
     translationOptions: ->
 

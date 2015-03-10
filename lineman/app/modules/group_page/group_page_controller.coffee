@@ -5,7 +5,7 @@ angular.module('loomioApp').controller 'GroupController', ($scope, group, Record
   MessageChannelService.subscribeTo("/group-#{group.key}")
 
   $scope.isMember = ->
-    UserAuthService.currentUser.membershipFor($scope.group)?
+    window.Loomio.currentUser.membershipFor($scope.group)?
 
   $scope.joinGroup = ->
     Records.memberships.create(group_id: $scope.group.id)

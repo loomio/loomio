@@ -12,4 +12,4 @@ angular.module('loomioApp').controller 'GroupPrivacyDropdownController', ($scope
 
 
   $scope.canEditGroup = ->
-    UserAuthService.currentUser.isAdminOf($scope.group)
+    window.Loomio.currentUser.isAdminOf($scope.group)

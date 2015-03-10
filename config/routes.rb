@@ -47,6 +47,7 @@ Loomio::Application.routes.draw do
       get :inbox, on: :collection
       patch :mark_as_read, on: :member
     end
+    resources :discussion_readers, only: :update
 
     resources :motions,     only: [       :index, :create, :update], path: :proposals do
       post :close, on: :member
@@ -115,8 +116,7 @@ Loomio::Application.routes.draw do
 
   resources :groups, path: 'g', only: [:new, :create, :edit, :update] do
     member do
-      post :follow
-      post :unfollow
+      post :set_volume
       post :join
       post :add_members
       post :hide_next_steps
@@ -201,8 +201,7 @@ Loomio::Application.routes.draw do
     resources :invitations, only: [:new]
 
     member do
-      post :follow
-      post :unfollow
+      post :set_volume
       post :update_description
       post :update
       post :add_comment

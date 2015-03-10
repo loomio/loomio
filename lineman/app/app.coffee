@@ -22,5 +22,4 @@ angular.module('loomioApp').config ($translateProvider) ->
 angular.module('loomioApp').run (Records, UserAuthService) ->
   if window? and window.Loomio?
     Records.import(window.Loomio.seedRecords)
-    UserAuthService.currentUser = Records.users.find(window.Loomio.currentUserId)
-
+    window.Loomio.currentUser = Records.users.find(window.Loomio.currentUserId)

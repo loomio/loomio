@@ -1,6 +1,7 @@
 class Membership < ActiveRecord::Base
+  include HasVolume
 
-  validates_presence_of :group, :user
+  validates_presence_of :group, :user, :volume
   validates_uniqueness_of :user_id, scope: :group_id
 
   belongs_to :group, counter_cache: true
@@ -44,14 +45,6 @@ class Membership < ActiveRecord::Base
     update_attribute(:admin, false)
   end
 
-  def follow_by_default!
-    update_attribute(:following_by_default, true)
-  end
-
-  def dont_follow_by_default!
-    update_attribute(:following_by_default, false)
-  end
-
   def group_has_multiple_admins?
     group.admins.count > 1
   end
@@ -79,7 +72,7 @@ class Membership < ActiveRecord::Base
   def remove_open_votes
     return if group.nil? #necessary if group is missing (as in case of production data)
     group.motions.voting.each do |motion|
-      motion.votes.where(user_id: user.id).each(&:destroy)
+      motion.votes.where(user_id: user_id).each(&:destroy)
     end
   end
 end

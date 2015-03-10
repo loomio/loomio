@@ -92,7 +92,7 @@ class DiscussionsController < GroupBaseController
     end
 
     if can?(:move, @discussion)
-      @destination_groups = current_user_or_visitor.groups.order(:name).uniq.reject { |g| g.id == @group.id }
+      @destination_groups = current_user_or_visitor.groups.order(:full_name).uniq.reject { |g| g.id == @discussion.group_id }
     end
 
     @discussion_reader = DiscussionReader.for(user: current_user_or_visitor, discussion: @discussion)
@@ -107,15 +107,9 @@ class DiscussionsController < GroupBaseController
     @feed_url = discussion_url @discussion, format: :xml if @discussion.public?
   end
 
-  def follow
+  def set_volume
     DiscussionReader.for(discussion: @discussion,
-                         user: current_user).follow!
-    redirect_to discussion_url @discussion
-  end
-
-  def unfollow
-    DiscussionReader.for(discussion: @discussion,
-                         user: current_user).unfollow!
+                         user: current_user).set_volume! params[:volume]
     redirect_to discussion_url @discussion
   end
 

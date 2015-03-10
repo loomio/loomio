@@ -6,7 +6,6 @@ body.groups {
   &.edit, &.new, &.create, &.update {
     .described-label {
       i {
-        /*font-size: 0.9em;*/
         color: $mid-grey;
       }
     }
@@ -86,7 +85,6 @@ body.groups {
       margin: -4px;
     }
     .group-description{
-      float: left;
       margin: 16px 0 5px 0;
       width: 100%;
     }
@@ -97,7 +95,6 @@ body.groups {
     }
     .main-content{
       width: 100%;
-      float: left;
     }
     .sidebar {
       width: 220px;
@@ -107,7 +104,6 @@ body.groups {
     #group-actions {
       margin: 20px 0 15px 0;
       .options{margin: 0;}
-
     }
     .heart-icon {color: red;}
     #request-membership {
@@ -162,6 +158,11 @@ body.groups {
       .group-link a:hover { color: $dark-grey; }
     }
 
+    .panel-notifications p { margin: 5px 0 0 0;}
+
+    .notifications-panel {
+      margin-top: 10px
+    }
     .previous-discussions-panel {
       .previous-decision-title {
         &:hover { color: $dark-grey; }

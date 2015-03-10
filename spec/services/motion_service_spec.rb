@@ -18,7 +18,7 @@ describe 'MotionService' do
   let(:user) { double(:user, ability: ability) }
   let(:outcome_string) { double(:outcome_string) }
   let(:event) { double(:event) }
-  let(:discussion_reader) { double :discussion_reader, follow!: true }
+  let(:discussion_reader) { double :discussion_reader, set_volume_as_required!: true }
 
 
   before do
@@ -56,7 +56,7 @@ describe 'MotionService' do
       end
 
       it "enfollows the author" do
-        expect(discussion_reader).to receive(:follow!) {true}
+        expect(discussion_reader).to receive(:set_volume_as_required!) {true}
       end
 
       it "creates an event" do

@@ -49,11 +49,6 @@ class Discussion < ActiveRecord::Base
 
   has_many :discussion_readers
 
-  has_many :explicit_followers,
-           -> { where('discussion_readers.following = ?', true) },
-           through: :discussion_readers
-
-
   include PgSearch
   pg_search_scope :search, against: [:title, :description],
     using: {tsearch: {dictionary: "english"}}
@@ -70,22 +65,6 @@ class Discussion < ActiveRecord::Base
 
   def published_at
     created_at
-  end
-
-  def followers
-    User.
-      active.
-      joins("LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id = #{id})").
-      joins("LEFT OUTER JOIN memberships m ON (m.user_id = users.id AND m.group_id = #{group_id})").
-      where('dr.following = TRUE OR (dr.following IS NULL AND m.following_by_default = TRUE)')
-  end
-
-  def followers_without_author
-    followers.where('users.id != ?', author_id)
-  end
-
-  def group_members_not_following
-    group.members.active.where('users.id NOT IN (?)', followers.pluck(:id))
   end
 
   def archive!
@@ -105,10 +84,6 @@ class Discussion < ActiveRecord::Base
   def last_collaborator
     return nil if originator.nil?
     User.find_by_id(originator.to_i)
-  end
-
-  def group_members_without_discussion_author
-    group.users.where(User.arel_table[:id].not_eq(author_id))
   end
 
   alias_method :current_proposal, :current_motion

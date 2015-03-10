@@ -15,8 +15,8 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
       @newAttachmentIds = []
 
     serialize: ->
-      data = baseSerialize()
-      data[new_attachment_ids] = @newAttachmentIds
+      data = @baseSerialize()
+      data['comment']['new_attachment_ids'] = @newAttachmentIds
       data
 
     group: ->
@@ -73,6 +73,6 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
 
     destroy: ->
       _.each @events, (event) ->
-        @recordStore.events.remove(event)
+        @recordStore.events.destroy(event.id)
 
-      @recordStore.comments.remove(@)
+      @recordStore.comments.destroy(@id)

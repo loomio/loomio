@@ -24,5 +24,5 @@ angular.module('loomioApp').controller 'DiscussionsCardController', ($scope, $mo
           Records.discussions.initialize(group_id: $scope.group.id)
 
   $scope.canStartDiscussions = ->
-    UserAuthService.currentUser.isMemberOf($scope.group) and
-      ($scope.group.membersCanStartDiscussions or UserAuthService.currentUser.isAdminOf($scope.group))
+    window.Loomio.currentUser.isMemberOf($scope.group) and
+      ($scope.group.membersCanStartDiscussions or window.Loomio.currentUser.isAdminOf($scope.group))

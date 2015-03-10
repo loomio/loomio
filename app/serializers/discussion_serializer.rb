@@ -15,7 +15,9 @@ class DiscussionSerializer < ActiveModel::Serializer
              :private,
              :archived_at,
              :created_at,
-             :updated_at
+             :updated_at,
+             :first_sequence_id,
+             :last_sequence_id
 
   has_one :author, serializer: UserSerializer, root: 'users'
   has_one :group, serializer: GroupSerializer, root: 'groups'

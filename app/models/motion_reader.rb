@@ -27,11 +27,6 @@ class MotionReader < ActiveRecord::Base
     unread_activity_count > 0
   end
 
-  def unfollow!
-    self.following = false
-    save!
-  end
-
   def viewed!(last_viewed_at = Time.now)
     return if user.nil?
     update_viewed_attributes(last_viewed_at)

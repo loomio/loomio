@@ -9,7 +9,7 @@ angular.module('loomioApp').factory 'DiscussionReaderModel', (BaseModel) ->
       @readSalientItemsCount = 0
       @readCommentsCount = 0
       @lastReadAt = null
-      @following = null
+      @volume = null
       @lastReadSequenceId = -1 # 0 means context is read, neg 1 means never seen discussion
       data.id = data.discussion_id if data.discussion_id?
       @updateFromJSON(data)

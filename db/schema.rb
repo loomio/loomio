@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(version: 20150228011519) do
     t.boolean  "following"
     t.integer  "last_read_sequence_id",    default: 0, null: false
     t.integer  "read_salient_items_count", default: 0, null: false
+    t.integer  "volume"
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
@@ -412,6 +413,7 @@ ActiveRecord::Schema.define(version: 20150228011519) do
     t.boolean  "admin",                               default: false, null: false
     t.boolean  "is_suspended",                        default: false, null: false
     t.boolean  "following_by_default",                default: false, null: false
+    t.integer  "volume",                              default: 2,     null: false
   end
 
   add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
@@ -552,7 +554,7 @@ ActiveRecord::Schema.define(version: 20150228011519) do
     t.string   "avatar_initials",                     limit: 255
     t.string   "username",                            limit: 255
     t.boolean  "email_followed_threads",                          default: true,       null: false
-    t.boolean  "email_when_proposal_closing_soon",                default: true,       null: false
+    t.boolean  "email_when_proposal_closing_soon",                default: false,      null: false
     t.string   "authentication_token",                limit: 255
     t.string   "unsubscribe_token",                   limit: 255
     t.integer  "memberships_count",                               default: 0,          null: false
@@ -566,6 +568,7 @@ ActiveRecord::Schema.define(version: 20150228011519) do
     t.boolean  "email_new_discussions_and_proposals",             default: true,       null: false
     t.boolean  "email_when_mentioned",                            default: true,       null: false
     t.boolean  "angular_ui_enabled",                              default: false,      null: false
+    t.boolean  "email_on_participation",                          default: true,       null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
