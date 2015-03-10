@@ -4,29 +4,35 @@
   .row
     .col-sm-8
       %h3.anchor#adding-cover-photo Adding a cover photo
-      %p When your group is up and running you can add your cover photo. Your cover photo can be changed at any time. This is an easy way of helping your group members feel a little more at home on Loomio. When you hover over the grey area at the top of your Loomio group a pencil icon will appear in the top right hand corner. Click it and you will be able to select an image to upload. The best size for cover photos is 970 x 200 pixels.
+      %p When your group is up and running you can add your cover photo. This is an easy way to help your group members feel a little more at home on Loomio.
+      %p When you hover over the grey area at the top of your Loomio group page a pencil icon will appear in the top right hand corner. Click the pencil icon and you will be able to select an image to upload. The optimal size for cover photos is 970 x 200 pixels. You can change your cover photo at any time by simply uploading a new one.
     .col-sm-4
       =image_tag "cover-photo-upload.png", class: "screenshot"
   %h3.anchor#manage-membership Managing membership
   .row
     .col-sm-8
-      %p On your Loomio group page, there’s an <strong>“Options”</strong> button, which will let you choose <strong>“Manage members”</strong> if you are a group coordinator, or if the <a href="#group-permissions">group permissions</a> are set to <strong>“Members of the group can invite other people to the group”</strong>.
+      %p Group coordinators are responsible for managing the memberships within their group. This means adding and removing members, and granting and removing coordinator permissions. Coordinators can also send an email to all members of their group. These actions can be performed from the <strong>"Members"</strong> index page. On the right-hand side of your Loomio group page, there is an <strong>“Options”</strong> button. To access the <strong>"Members"</strong> page, click this button and select the <strong>“Manage members”</strong> option. You can also access the page by clicking the <strong>"More..."</strong> link in the <strong>"Members"</strong> panel on the left-hand side of your group page.
     .col-sm-4
       =image_tag "manage-members.png", class: "screenshot"
   %h4 Accepting/ignoring membership requests
-  %p If your <a href="#group-privacy">group privacy settings</a> allow people to join your group <strong>“By request”</strong>, a coordinator will need to approve each membership request. Coordinators will receive an email each time there is a request to approve. They can choose to ignore a request if they don’t want to approve someone.
+  %p If your <a href="#group-privacy">group privacy settings</a> allow people to join your group <strong>“By request”</strong>, a coordinator will need to approve each membership request. As a group coordinator you will receive an email each time there is a request to approve. Clicking the link in the notification email will take you to the <strong>"Membership requests"</strong> page, where you can approve or decline the request.
+  .row
+    .col-sm-8
+      %p If there is a pending membership request it will also be visible on your group page in a <strong>"Membership requests"</strong> panel. Clicking the link in the panel will take you to the <strong>"Membership requests"</strong> page.
+    .col-sm-4
+      =image_tag "pending-requests.png", class: "screenshot"
   =image_tag "pending-request.png", class: "screenshot"
   %h4 Emailing group members
   .row
     .col-sm-8
-      %p If you want to send an email to all members of your group, you can do so within the <strong>“Members”</strong> page, which is accessed by selecting <strong>“Manage members”</strong> from the <strong>"Options"</strong> menu. Clicking the <strong>"Email group members"</strong> button at top right of the page will let you compose and send a message to everyone in your group.
+      %p If you want to send an email to all members of your group, you can do so from the <strong>“Members”</strong> page. Clicking the <strong>"Email group members"</strong> button at top right of the page will let you compose and send a message to everyone in your group.
     .col-sm-4
       =image_tag "email-group-members.png", class: "screenshot"
   %h4 Adding/removing coordinators
-  %p Only coordinators can add and remove coordinators. If you wish to add or remove a coordinator, you can do so from the <strong>“Members”</strong> page which is accessed by selecting <strong>“Manage members”</strong> from the <strong>"Options"</strong> menu. Next to every member who is not already a coordinator, there will be a <strong>“Make coordinator”</strong> button. Clicking this will give the corresponding member coordinator permissions. Next to every coordinator there will be a <strong>“Remove coordinator”</strong> button. Clicking this removes the coordinator permissions for the corresponding coordinator.
+  %p Only coordinators can add and remove coordinators. On the <strong>“Members”</strong> page, next to every member who is not already a coordinator, there will be a <strong>“Make coordinator”</strong> button. Clicking this button will give the corresponding member coordinator permissions. Next to every coordinator there will be a <strong>“Remove coordinator”</strong> button. Clicking this button removes the coordinator permissions for the corresponding coordinator.
   =image_tag "add-remove-coordinator.png", class: "screenshot"
   %h4 Adding/removing group members
-  %p Only coordinators can remove group members. If you are a coordinator and you wish to remove a group member, you can do so from the <strong>“Members”</strong> page which is accessed by selecting <strong>“Manage members”</strong> from the <strong>"Options"</strong> menu. Next to every group member there will be a <strong>“Remove”</strong> button. Clicking this button removes them from your group.
+  %p Only coordinators can remove group members. On the <strong>“Members”</strong> page, next to every group member there will be a <strong>“Remove”</strong> button. Clicking this button removes the corresponding member from your group.
   %h3.anchor#deactivating-groups Deactivating/archiving a group
   .row
     .col-sm-8
