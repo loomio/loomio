@@ -1,16 +1,4 @@
 hu:
-  users:
-    email_preferences:
-      edit:
-        title: E-mail beállítások
-        when_do_you_want_emails: "Írj egy e-mailt nekem:"
-        email_missed_yesterday: "'Tegnap a Loomio-n' - összegző a napi tevékenységről amit nem láttam"
-        email_when_mentioned: "Amikor @említve vagyok"
-        email_followed_threads: Amikor aktivitás van a követett beszélgetésekben.
-        email_when_proposal_closing_soon: 24 órával a javaslat lezárása előtt.
-        email_new_discussions_and_proposals: Új viták és javaslatok
-        for_these_groups: "Ezeknek a csoportoknak:"
-        submit: Beállítások mentése
   explore:
     header: Keresés a nyilvános csoportok között
   try_it:
@@ -226,8 +214,6 @@ hu:
   no_group_header: Üdvözlünk a Loomio Beta verzióján
   empty_notifications: Még nincsenek értesítéseid.
   see_all_notifications: Az összes értesítés megtekintése
-  profile: Profil
-  email_settings: E-mail beállítások
   sign_out: Kijelentkezés
   sign_in: Bejelentkezés
   honeypot_warning: "Nem hozható létre a fiókod. Ha képernyő olvasót használsz, kérjük bizonyosodj meg arról hogy az utolsó (rejtett) mező az űrlapon üres."
@@ -883,7 +869,6 @@ hu:
       headline: "%{author} javaslata a %{group} csoportban hamarosan lezáródik:"
       summary: Összefoglalás
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Leíratkozás</a>, nem kérek több értesítést erről a témáról."
       change_preferences: "E-mail beállítások megváltoztatása:"
       new_motion: "%{who} javaslata:"
       motion_closing_soon: "24 órán belül lezáródó javaslat:"

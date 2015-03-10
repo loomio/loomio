@@ -1,16 +1,4 @@
 nl-NL:
-  users:
-    email_preferences:
-      edit:
-        title: E-mail voorkeuren
-        when_do_you_want_emails: "E-mail mij:"
-        email_missed_yesterday: "'Gisteren op Loomio' - een dagelijkse samenvatting van wat ik gemist heb"
-        email_when_mentioned: "Als ik een @benoeming krijg"
-        email_followed_threads: Als er activiteit is in gesprekken die ik volg.
-        email_when_proposal_closing_soon: 24 uur voordat een voorstel sluit.
-        email_new_discussions_and_proposals: Nieuwe discussies en voorstellen
-        for_these_groups: "Voor deze groepen:"
-        submit: Bewaar voorkeuren
   explore:
     header: Ontdek openbare groepen
   try_it:
@@ -234,8 +222,6 @@ nl-NL:
   no_group_header: Welkom bij Loomio Beta
   empty_notifications: Je hebt nog geen meldingen.
   see_all_notifications: Bekijk alle meldingen
-  profile: Profiel
-  email_settings: E-mail instellingen
   sign_out: Uitloggen
   sign_in: Inloggen
   honeypot_warning: "Kon je account niet maken. Als je een voorleesprogramma gebruikt, zorg dan dat het laatste (verborgen) veld op het formulier leeg is."
@@ -902,10 +888,6 @@ nl-NL:
     thread_mailer:
       footer_text: "Beantwoord deze e-mail direct of bekijk op %{hostname}:"
       reply_or_view_online_html: "Beantwoord deze e-mail direct of <a href='%{url}'>bekijk deze op %{hostname}</a>."
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Niet meer volgen</a> om geen e-mails meer te ontvangen over deze discussie."
-      unfollow_discussion_text: "Bezoek de volgende link om e-mails over deze discussie te stoppen: %{unfollow_url}"
-      follow_discussion_html: "<a href='%{follow_url}'>Volg</a> om e-mails te ontvangen over deze discussie."
-      follow_discussion_text: "Bezoek de volgende link om e-mails over deze discussie te ontvangen: %{follow_url}"
       change_email_preferences_html: "Verander jouw <a href='%{email_preferences_url}'>e-mail voorkeuren</a> om je uit te schrijven van deze e-mails."
       change_preferences: "Verander je e-mail voorkeuren:"
       new_motion: "%{who} stelde voor:"
