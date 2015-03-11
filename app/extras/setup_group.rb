@@ -7,7 +7,7 @@ class SetupGroup
     group.is_visible_to_public = false
     group.discussion_privacy_options = 'private_only'
     group.save!
-    SetupGroup.create_example_discussion(group)
+    SetupGroup.create_example_discussion(group) if group.discussion_privacy_options != 'public_only'
     send_invitation_to_start_group(group)
     group
   end
