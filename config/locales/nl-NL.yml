@@ -1,4 +1,17 @@
 nl-NL:
+  email_settings:
+    title: E-mail instellingen
+    group_volume_level: "Stel al mijn groepen in op het volgende volume:"
+    group_volume_leve_description: "Om al je groepen in een keer op hetzelfde volume in te stellen, gebruik deze optie."
+    discussion_activity: Verander discussievolume als ik deelneem
+    discussion_activity_description: "Als je in een discussie deelneemt verandert het volume naar 'Luid' zodat alle nieuwe activiteit naar je gemaild wordt."
+    yesterday_on_loomio: Gisteren op Loomio
+    yesterday_on_loomio_description: "Deze e-mail bevat de ongelezen activiteit van gisteren en wordt iedere dag om 6 uur 's ochtends naar je verstuurd."
+    email_when_mentioned: "@benoemingen"
+    email_when_mentioned_description: "Als iemand je aandacht wil, zal diegene je @benoemen. Als je dit uit zet, kunnen mensen je mogelijk niet meer bereiken."
+    proposal_closing_soon: Voorstel sluit binnenkort
+    proposal_closing_soon_description: Wordt 24 uur voor het voorstel sluit verstuurd en kan je laatste kans zijn om deel te nemen aan de discussie.
+    submit: Instellingen bijwerken
   explore:
     header: Ontdek openbare groepen
   try_it:
@@ -12,6 +25,7 @@ nl-NL:
     errors:
       messages:
         blank: kan niet leeg zijn
+        invalid: is geen geldige waarde
   errors:
     messages:
       email: Ongeldig e-mailadres
@@ -424,6 +438,22 @@ nl-NL:
     confirmation:
       title: "Je bent bijna klaar! Bekijk je e-mail."
       body_html: "We hebben je een e-mail gestuurd met een uitnodiging om jouw groep te beginnen.\n\nAls je niet binnen een paar minuten iets in je inbox ziet, e-mail ons dan op<a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    volume: Volume
+    loud: Luid
+    normal: Normaal
+    quiet: Stil
+    mute: Dempen
+  discussion_volume:
+    loud_description: E-mail altijd als er activiteit is in dit gesprek.
+    normal_description: "Alleen e-mailen wanneer er een voorstel is gemaakt, op het punt staat te sluiten of als er een uitkomst is vastgesteld."
+    quiet_description: Niet e-mail over dit gesprek.
+    mute_description: "Verberg dit gesprek van het dashboard en stuur geen notificaties tenzij @benoemd."
+  group_volume:
+    loud_description: E-mail als er activiteit is.
+    normal_description: "Alleen belangrijke activiteit e-mailen: Nieuwe discussies en voorstellen, uitkomsten, enz."
+    quiet_description: Niet e-mailen over deze groep. Activiteit wordt weergegeven op het dashboard.
+    mute_description: "Verberg deze groep van het dashboard en stuur geen notificatie tenzij @benoemd."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> ging akkoord met het voorstel."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> onthield zich van het voorstel."
@@ -888,6 +918,10 @@ nl-NL:
     thread_mailer:
       footer_text: "Beantwoord deze e-mail direct of bekijk op %{hostname}:"
       reply_or_view_online_html: "Beantwoord deze e-mail direct of <a href='%{url}'>bekijk deze op %{hostname}</a>."
+      turn_off_notifications_html: "<a href='%{url}'>Zet e-mails uit</a> voor deze discussie."
+      turn_off_notifications_text: "Zet e-mails uit voor deze discussie: %{url}"
+      turn_on_notifications_html: "<a href='%{url}'>Zet e-mails aan voor deze discussie</a> om nieuwe activiteit te ontvangen."
+      turn_on_notifications_text: "Zet e-mail aan om nieuwe activiteit binnen deze discussie te ontvangen: %{url}"
       change_email_preferences_html: "Verander jouw <a href='%{email_preferences_url}'>e-mail voorkeuren</a> om je uit te schrijven van deze e-mails."
       change_preferences: "Verander je e-mail voorkeuren:"
       new_motion: "%{who} stelde voor:"
@@ -973,6 +1007,8 @@ nl-NL:
   google: Google
   persona: Persoonsgegevens
   common:
+    profile: Profiel
+    email_settings: E-mail instellingen
     markdown_help_tooltip: Leer de beginselen van tekstopmaak met Markdown
     settings: Instellingen
     dashboard: Dashboard
