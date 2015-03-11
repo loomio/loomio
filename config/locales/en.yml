@@ -2,17 +2,20 @@ en:
   # view path based locale strings
   email_settings:
     title: 'Email settings'
-    group_volume_level: 'Set all my groups to the following volume level:'
-    group_volume_leve_description: To set all your groups to the same volume level at once, use this option.
+    group_volume: Group volume
+    group_volume_description: 'Volume controls how much email you get from a group. Set volume for all of your groups:'
+    to_change_one_group: To change the volume of just one of your groups, visit that group's page.
     discussion_activity: Change discussion volume when I participate
-    discussion_activity_description: When you participate in a discussion, the volume setting will be changed to 'Loud', so all further activity will be emailed to you.
-    yesterday_on_loomio: 'Yesterday on Loomio'
-    yesterday_on_loomio_description: Sent to you at 6am each day, this email contains yesterday's unread activity.
-    email_when_mentioned: '@mentions'
-    email_when_mentioned_description: When someone wants to get your attention, they'll @mention you. If you turn this off then people might not be able to contact you.
-    proposal_closing_soon: Proposal closing soon
-    proposal_closing_soon_description: Sent 24 hours before a proposal closes, this might be your last chance to participate in a decision.
+    discussion_activity_description: When you participate in a discussion, the volume setting will be changed to 'Loud', so all further activity will be emailed to you immediately.
+    yesterday_on_loomio: Email me a summary of activity each day
+    yesterday_on_loomio_description: Each day at 6am, send an email with yesterday's unread activity. This is a great way to catch up on your groups and it contains everything that is not muted.
+    email_when_mentioned: Email me when I am @mentioned
+    email_when_mentioned_description: When someone wants to get your attention, they'll @mention you. We recommend you leave this setting checked, so that you will get an email when this happens.
+    proposal_closing_soon: Email me before a proposal closes
+    proposal_closing_soon_description: 24 hours before a proposal closes, regardless of volume, you will get an email with the latest information about the proposal.
     submit: Update settings
+    no_change: No change
+    no_change_description: Leave the volume level of my groups as is.
 
   explore:
     header: "Explore public groups"
