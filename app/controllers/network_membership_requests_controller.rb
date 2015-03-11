@@ -6,7 +6,7 @@ class NetworkMembershipRequestsController < BaseController
   def create
     @request = NetworkMembershipRequest.new permitted_params.network_membership_request
     NetworkMembershipRequestService.create network_membership_request: @request, actor: current_user
-    flash[:notice] = "Thanks for asking to join the network. The network coordinators will review your request soon."
+    flash[:notice] = I18n.t(:'networks.request_created')
     redirect_to network_path(@request.network)
   end
 
@@ -20,7 +20,7 @@ class NetworkMembershipRequestsController < BaseController
     @network = Network.friendly.find params[:network_id]
     @request = @network.membership_requests.find params[:id]
     NetworkMembershipRequestService.approve(network_membership_request: @request, actor: current_user)
-    flash[:notice] = "Network membership request approved."
+    flash[:notice] = I18n.t(:'networks.request_approved')
     redirect_to @network
   end
 
@@ -28,7 +28,7 @@ class NetworkMembershipRequestsController < BaseController
     @network = Network.friendly.find params[:network_id]
     @request = @network.membership_requests.find params[:id]
     NetworkMembershipRequestService.decline(network_membership_request: @request, actor: current_user)
-    flash[:notice] = "Network membership request declined."
+    flash[:notice] = I18n.t(:'networks.request_declined')
     redirect_to @network
   end
 end

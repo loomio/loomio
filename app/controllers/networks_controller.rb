@@ -1,5 +1,5 @@
 class NetworksController < BaseController
-  before_filter :authenticate_user!, except: :show
+  before_filter :authenticate_user!, except: [:show, :groups]
 
   def show
     @network = Network.friendly.find params[:id]

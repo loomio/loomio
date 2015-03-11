@@ -511,6 +511,9 @@ en:
     groups: 'Groups'
     join: 'Join'
     manage: 'Manage (%{count} pending requests)'
+    request_created: "Thanks for asking to join the network. The network coordinators will review your request soon."
+    request_approved: "Network membership request approved."
+    request_declined: "Network membership request declined."
 
   #
   # GROUP REQUESTS
