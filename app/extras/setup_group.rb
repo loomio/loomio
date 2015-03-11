@@ -29,7 +29,7 @@ class SetupGroup
     example_discussion.description = I18n.t('example_discussion.description')
     example_discussion.group = group
     example_discussion.author = helper_bot
-    example_discussion.private = true
+    example_discussion.private = !!group.discussion_private_default
     example_discussion.save!
 
     example_motion = Motion.new
