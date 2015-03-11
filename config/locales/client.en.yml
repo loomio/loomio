@@ -1,9 +1,10 @@
 en:
   common:
-    notifications_label: 'Notifications'
-    notifications:
-      email: 'Email'
+    volume:
+      volume: 'Volume'
+      loud: 'Loud'
       normal: 'Normal'
+      quiet: 'Quiet'
       mute: 'Mute'
     groups: 'Groups'
     privacy:
@@ -189,10 +190,11 @@ en:
       title: 'Leave group'
       question: 'Are you sure you want to leave this group?'
       submit: 'Yes, leave this group'
-    notifications:
-      email: 'You will receive notifications from all threads in this group'
-      normal: 'You will receive notifications only from threads you are participating in'
-      mute: 'Threads from this group will not appear in your inbox'
+    volume:
+      loud: Email whenever there is activity.
+      normal: 'Just email important activity: New discussions and proposals, outcomes etc.'
+      quiet: Don't email about this group. Activity will be displayed on the dashboard.
+      mute: Hide this group from the dashboard and do not notify unless @mentioned.
     privacy:
       private: 'This group is only visible to members'
       parent_members: 'This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
@@ -273,10 +275,11 @@ en:
     liked_by_name: 'Liked by {{name}}.'
     liked_by_names_and_name: 'Liked by {{joinedNames}} and {{name}}.'
     started_by: 'Started by <strong>{{name}}</strong>'
-    notifications:
-      email: Activity in this thread will be emailed to you as it happens.
-      normal: This thread will be in your inbox when it has new activity.
-      mute: 'This thread will not be in your inbox, unless you participate or someone mentions you.'
+    volume:
+      loud: Email whenever there is activity in this thread.
+      normal: 'Just email when a proposal is created, about to close, or an outcome is posted.'
+      quiet: Don't email about this thread.
+      mute: Hide this thread from the dashboard and do not notify unless @mentioned.
 
   delete_comment_dialog:
     title: 'Delete comment'
