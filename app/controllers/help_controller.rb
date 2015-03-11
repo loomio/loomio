@@ -7,4 +7,8 @@ class HelpController < ApplicationController
       render 'help'
     end
   end
+
+  def markdown
+
+  end
 end
