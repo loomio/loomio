@@ -31,6 +31,17 @@ describe UserMailer do
     it 'assigns confirmation_url for email body' do
       @mail.body.encoded.should match("http://localhost:3000/g/#{@group.key}")
     end
+
+    it 'uses http links by default' do
+      expect(@mail.body.encoded).to match(/http:/)
+    end
+
+    it 'uses https links if action_mailer protocol is set to https' do
+      Loomio::Application.config.action_mailer.default_url_options[:protocol] = 'https'
+
+      @mail = UserMailer.group_membership_approved(@user, @group)
+      expect(@mail.body.encoded).to match(/https:/)
+    end
   end
 
   context 'sending email on being added to group' do
