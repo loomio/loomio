@@ -493,6 +493,28 @@ en:
       following_details: "You'll be notified about every thread in this group."
       not_following_details: "You'll be notified about threads you are participating in."
 
+
+  networks:
+    threads_header: 'all the public threads in this network'
+    groups_header: 'all the groups in this network'
+    members_count: '%{count} members'
+    membership_requests_header: 'Membership requests for %{network}'
+    join_header: 'Add your group to the network'
+    request_to_join: 'Request to join Network'
+    current_requests: 'Current requests'
+    previous_requests: 'Previous requests'
+    approve: 'Approve'
+    approved: 'Approved by %{name}'
+    decline: 'Decline'
+    declined: 'Declined by %{name}'
+    threads: 'Threads'
+    groups: 'Groups'
+    join: 'Join'
+    manage: 'Manage (%{count} pending requests)'
+    request_created: "Thanks for asking to join the network. The network coordinators will review your request soon."
+    request_approved: "Network membership request approved."
+    request_declined: "Network membership request declined."
+
   #
   # GROUP REQUESTS
   #

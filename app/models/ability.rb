@@ -23,6 +23,20 @@ class Ability
 
     cannot :sign_up, User
 
+    can [:approve, :decline], NetworkMembershipRequest do |request|
+      request.pending? and request.network.coordinators.include? user
+    end
+
+    can :create, NetworkMembershipRequest do |request|
+      request.group.coordinators.include?(request.requestor) and
+      request.group.is_parent? and
+      !request.network.groups.include?(request.group)
+    end
+
+    can :manage_membership_requests, Network do |network|
+      network.coordinators.include? user
+    end
+
     can :show, Group do |group|
       if group.is_archived?
         false
