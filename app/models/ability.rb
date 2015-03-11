@@ -23,6 +23,20 @@ class Ability
 
     cannot :sign_up, User
 
+    can [:approve, :decline], NetworkMembershipRequest do |request|
+      request.pending? and request.network.coordinators.include? user
+    end
+
+    can :create, NetworkMembershipRequest do |request|
+      request.group.coordinators.include?(request.requestor) and
+      request.group.is_parent? and
+      !request.network.groups.include?(request.group)
+    end
+
+    can :manage_membership_requests, Network do |network|
+      network.coordinators.include? user
+    end
+
     can :show, Group do |group|
       if group.is_archived?
         false
@@ -55,7 +69,7 @@ class Ability
     end
 
 
-    can [:members_autocomplete, :follow, :unfollow, :see_members], Group do |group|
+    can [:members_autocomplete, :set_volume, :see_members], Group do |group|
       user_is_member_of?(group.id)
     end
 
@@ -92,8 +106,12 @@ class Ability
       @admin_group_ids.include?(membership.group_id)
     end
 
-    can [:follow_by_default], Membership do |membership|
-      membership.user.id == @user.id      
+    can [:update], DiscussionReader do |reader|
+      reader.user.id == @user.id
+    end
+
+    can [:update], Membership do |membership|
+      membership.user.id == @user.id
     end
 
     can [:remove_admin,
@@ -165,8 +183,7 @@ class Ability
       user_is_admin_of?(discussion.group_id)
     end
 
-    can [:unfollow,
-         :follow,
+    can [:set_volume,
          :new_proposal,
          :show_description_history,
          :preview_version], Discussion do |discussion|

@@ -78,15 +78,15 @@ describe Vote do
     expect(vote).to_not be_valid
   end
 
-  it 'updates motion last_vote_at on create' do
-    vote = Vote.new(position: "yes")
-    vote.motion = motion
-    vote.user = user
-    vote.save!
-    vote.reload
-    motion.reload
-    expect(motion.last_vote_at.to_s).to eq vote.created_at.to_s
-  end
+  # it 'updates motion last_vote_at on create' do
+  #   vote = Vote.new(position: "yes")
+  #   vote.motion = motion
+  #   vote.user = user
+  #   vote.save!
+  #   vote.reload
+  #   motion.reload
+  #   expect(motion.last_vote_at.to_s).to eq vote.created_at.to_s
+  # end
 
   describe 'other_group_members' do
     before do

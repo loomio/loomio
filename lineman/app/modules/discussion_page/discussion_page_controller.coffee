@@ -16,10 +16,10 @@ angular.module('loomioApp').controller 'DiscussionPageController', ($scope, $mod
     $scope.$broadcast('showReplyToCommentForm', originalComment)
 
   $scope.canStartProposals = ->
-    !discussion.hasActiveProposal() and UserAuthService.currentUser.canStartProposals($scope.discussion)
+    !discussion.hasActiveProposal() and window.Loomio.currentUser.canStartProposals($scope.discussion)
 
   $scope.showContextMenu = ->
     $scope.canEditDiscussion($scope.discussion)
 
   $scope.canEditDiscussion = ->
-    UserAuthService.currentUser.canEditDiscussion($scope.discussion)
+    window.Loomio.currentUser.canEditDiscussion($scope.discussion)

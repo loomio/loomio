@@ -5,7 +5,7 @@ class MotionService
     return false unless motion.valid?
     motion.save!
     ThreadSearchService.index! motion.discussion_id
-    DiscussionReader.for(discussion: motion.discussion, user: actor).follow!
+    DiscussionReader.for(discussion: motion.discussion, user: actor).set_volume_as_required!
     Events::NewMotion.publish!(motion)
   end
 

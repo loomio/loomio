@@ -7,7 +7,7 @@
       {{discussion.createdAt | timeFromNowInWords}}
     ·
     %timeago{timestamp: 'proposal.closingAt' }>
-    .badge.pull-right.cuke-proposal-closed-badge{ng-show: 'proposal.closedAt'} Closed
+    .badge.pull-right.cuke-proposal-closed-badge{ng-show: '!proposal.isActive'} Closed
   .proposal-expanded-description{btf-markdown: 'proposal.description' }
 
   .pie-chart.media

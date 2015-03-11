@@ -1,16 +1,4 @@
 ca:
-  users:
-    email_preferences:
-      edit:
-        title: Preferències del correu electrònic
-        when_do_you_want_emails: "Envia'm un mail"
-        email_missed_yesterday: "\"Ahir a Loomio\" - Un resum diari de l'activitat que t'has perdut"
-        email_when_mentioned: "Quan sóc @mencionat"
-        email_followed_threads: Quan hi ha activitat als fils que segueixo.
-        email_when_proposal_closing_soon: 24 hores abans que la proposta tanqui.
-        email_new_discussions_and_proposals: Noves discussions i propostes
-        for_these_groups: "Per aquests grups:"
-        submit: Desar preferències
   explore:
     header: Explorar grups públics
   try_it:
@@ -223,8 +211,6 @@ ca:
   no_group_header: Benvingut a Loomio Beta
   empty_notifications: Encara no tens cap notificació.
   see_all_notifications: Veure totes les notificacions
-  profile: Perfil
-  email_settings: Configuració de correu electrònic
   sign_out: Tanca la sessió
   sign_in: Inicia la sessió
   honeypot_warning: "No s'ha pogut crear el compte. Si utilitzes un lector de pantalla assegura't de que l'última casella (amagada) del formulari està buida."

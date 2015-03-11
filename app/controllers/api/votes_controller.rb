@@ -10,7 +10,7 @@ class API::VotesController < API::RestfulController
 
   def visible_records
     load_and_authorize_motion
-    motion.votes.most_recent.order(:created_at)
+    @motion.votes.most_recent.order(:created_at)
   end
 
 end

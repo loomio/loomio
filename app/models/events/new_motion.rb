@@ -5,21 +5,10 @@ class Events::NewMotion < Event
                     discussion: motion.discussion)
 
     DiscussionReader.for(discussion: motion.discussion,
-                         user: motion.author).follow!
+                         user: motion.author).
+                     set_volume_as_required!
 
-    motion.followers_without_author.
-           email_followed_threads.each do |user|
-      ThreadMailer.delay.new_motion(user, event)
-    end
-
-    motion.followers_without_author.
-           dont_email_followed_threads.
-           email_new_proposals_for(motion.group).uniq.each do |user|
-      ThreadMailer.delay.new_motion(user, event)
-    end
-
-    motion.group_members_not_following.
-           email_new_proposals_for(motion.group).uniq.each do |user|
+    UsersToEmailQuery.new_motion(motion).find_each do |user|
       ThreadMailer.delay.new_motion(user, event)
     end
 

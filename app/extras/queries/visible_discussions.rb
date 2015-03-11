@@ -34,26 +34,24 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
+  def join_to_memberships
+    unless @joined_to_memberships
+      @relation = @relation.joins("LEFT OUTER JOIN memberships m ON m.user_id = #{@user.id} AND m.group_id = discussions.group_id")
+      @joined_to_memberships = true
+    end
+    self
+  end
+
   def unread
     join_to_discussion_readers
     @relation = @relation.where('dv.last_read_at IS NULL OR (dv.last_read_at < discussions.last_activity_at)')
     self
   end
 
-  def discussion_newer_than_membership
-    unless @filtering_old_discussions
-      @relation = @relation.joins("LEFT OUTER JOIN memberships m ON discussions.group_id = m.group_id AND m.user_id = #{@user.id}").
-                          where('discussions.created_at > m.created_at')
-      @filtering_old_discussions = true
-    end
-    self
-  end
-
-  def following
-    join_to_discussion_readers
-    followed_group_ids = @user.memberships.where(following_by_default: true).pluck(:group_id)
-    @relation = @relation.where('(dv.following = :true) OR (dv.following IS NULL and discussions.group_id IN (:followed_group_ids))',
-                                {true: true, followed_group_ids: followed_group_ids})
+  def not_muted
+    join_to_discussion_readers && join_to_memberships
+    @relation = @relation.where('(dv.volume > :mute) OR (dv.volume IS NULL AND m.volume > :mute)',
+                                {mute: DiscussionReader.volumes[:mute]})
     self
   end
 

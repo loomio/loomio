@@ -1,5 +1,6 @@
 en:
   common:
+    notifications_label: 'Notifications'
     notifications:
       email: 'Email'
       normal: 'Normal'
@@ -41,6 +42,9 @@ en:
       update_comment: 'Changes saved'
       destroy_comment: 'You comment has been deleted'
     edit_comment: 'Edit comment'
+    delete_comment: 'Delete comment'
+    confirm_delete_message: 'Are you sure you want to delete this comment?'
+    confirm_delete: 'Yes, I am sure'
     in_reply_to: "In reply to <strong>{{name}}</strong>:"
 
   navbar:
@@ -162,9 +166,6 @@ en:
         members: 'This group is now visible only to members'
         parent_members: 'This group is now visible only to members of your organization'
         public: 'This group is now visible to the public'
-      notifications:
-        follow_group: 'You will now receive notifications from all threads in this group'
-        unfollow_group: 'You will now receive notifications only from threads you are participating in'
       leave_group_success: 'You have successfully left this group'
       deactivate_group_success: 'You have successfully deactivated this group'
     description: 'Description'
@@ -173,7 +174,6 @@ en:
     subgroups: 'Subgroups'
     invite_people: 'Invite people'
     visibility_label: 'Visibility'
-    notifications_label: 'Notifications'
     options_label: 'Options'
     join_group: 'Join Group'
     options:
@@ -190,10 +190,9 @@ en:
       question: 'Are you sure you want to leave this group?'
       submit: 'Yes, leave this group'
     notifications:
-      following: 'Following'
-      following_details: 'You''ll be notified about all activity in this group'
-      not_following: 'Not following'
-      not_following_details: 'You''ll be notified about threads you are participating in'
+      email: 'You will receive notifications from all threads in this group'
+      normal: 'You will receive notifications only from threads you are participating in'
+      mute: 'Threads from this group will not appear in your inbox'
     privacy:
       private: 'This group is only visible to members'
       parent_members: 'This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
@@ -264,6 +263,7 @@ en:
     my_groups: Groups
 
   discussion:
+    load_previous: 'Load previous thread items'
     you_like_this: 'You like this.'
     liked_by_you_and_someone: 'You and {{name}} like this.'
     liked_by_you_and_others: 'Liked by you, {{joinedNames}} and {{name}}.'
@@ -434,3 +434,10 @@ en:
     informal_groups: Informal groups
     informal_groups_desc: Members of your group will be asked to pay what they can
     informal_groups_examples: e.g. families, social movements, collectives
+
+  angular:
+    title: 'Welcome to the Angular dashboard!'
+    now_on: 'Your angular interface is currently ON'
+    turn_on: 'Turn on the angular interface'
+    now_off: 'Your angular interface is currently OFF'
+    turn_off: 'Turn off the angular interface'

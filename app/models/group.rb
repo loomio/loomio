@@ -92,6 +92,8 @@ class Group < ActiveRecord::Base
                                              created_earlier_than(1.month.ago).
                                              parents_only }
 
+  scope :alphabetically, -> { order('full_name asc') }
+
   has_one :group_request
 
   has_many :memberships,
@@ -193,7 +195,7 @@ class Group < ActiveRecord::Base
   end
 
   def members_can_raise_proposals=(value)
-    members_can_raise_motions = value
+    self.members_can_raise_motions = value
   end
 
   def creator
@@ -375,11 +377,10 @@ class Group < ActiveRecord::Base
   end
 
   def find_or_create_membership(user, inviter)
-    Membership.transaction do
-      membership = memberships.where(user_id: user.id).first
-      membership ||= Membership.create!(group: self,
-                                        user: user,
-                                        inviter: inviter)
+    Membership.find_or_create_by(user_id: user.id, group_id: id) do |m|
+      m.group = self
+      m.user = user
+      m.inviter = inviter
     end
   end
 

@@ -12,14 +12,14 @@ zh-TW:
       video: 來看看 Loomio 是怎樣辦到的
       try_loomio: 試試 Loomio
       try_loomio_beta: 試試看 Loomio beta
-      more: 瞭解更多
+      more: 詳細
       top: 回到頁面頂端
       public_groups: 公開群組
       terms: 服務條款
       privacy: 隱私權政策
       services: 服務
     hero:
-      header_html: "<strong>一同參與決策<br /></strong>最簡單的方式就是 Loomio。"
+      header_html: "<strong>一同參與決策</strong><br />最簡單的方式就是 Loomio。"
       lead_html: "Loomio 使組織與社群得以<strong>讓討論變成行動</strong>，無論夥伴在哪裡。"
     product:
       header_html: "當我們聽到<strong>所有的聲音</strong>時，我們可以作出<strong>更好的決策</strong>。"

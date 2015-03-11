@@ -1,16 +1,4 @@
 tr:
-  users:
-    email_preferences:
-      edit:
-        title: E-posta tercihleri
-        when_do_you_want_emails: "Bana e-posta gönder:"
-        email_missed_yesterday: "'Dün Loomio'da' - Kaçırdığım faaliyetlerin günlük özeti"
-        email_when_mentioned: "Ben @mentioned olduğumda"
-        email_followed_threads: Takip ettiğim konularda etkinlik olduğunda.
-        email_when_proposal_closing_soon: Bir öneri kapanmadan 24 saat önce.
-        email_new_discussions_and_proposals: Yeni müzakere ve öneriler
-        for_these_groups: "Bu gruplar için:"
-        submit: Tercihleri kaydet
   explore:
     header: Genel grupları keşfedin
   try_it:
@@ -226,8 +214,6 @@ tr:
   no_group_header: "Loomio Beta'ya hoşgeldiniz"
   empty_notifications: Henüz herhangi bir bildiriminiz yok.
   see_all_notifications: Tüm bildirimleri gör
-  profile: Profil
-  email_settings: E-posta ayarları
   sign_out: Oturumu kapat
   sign_in: Oturum aç
   honeypot_warning: "Hesabınız oluşturulamadı. Eğer bir ekran okuyucusu kullanıyorsanız, form üzerindeki son (gizli) alanın boş olduğundan emin olun."
@@ -884,7 +870,6 @@ tr:
       headline: "%{author}'nin %{group} grubundaki önerisi yakında kapanacak:"
       summary: Özet
     thread_mailer:
-      unfollow_discussion_html: "Bu müzakere hakkında e-posta almayı durdurmak için <a href='%{unfollow_url}'>Takibi Bırakın</a>."
       change_preferences: "E-posta tercihlerini değiştir:"
       new_motion: "%{who} teklif etti:"
       motion_closing_soon: "Teklif 24 saat içinde kapanıyor:"

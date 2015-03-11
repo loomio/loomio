@@ -1,16 +1,4 @@
 ro:
-  users:
-    email_preferences:
-      edit:
-        title: Preferinte email
-        when_do_you_want_emails: Scrie-mi prin email
-        email_missed_yesterday: "'Ieri pe Loomio' - rezumatul zilnic al activitatilor la care am lipsit"
-        email_when_mentioned: "Cand sunt @mentionat"
-        email_followed_threads: Caand sunt activitati pe subiectele urmarite de mine.
-        email_when_proposal_closing_soon: 24 de ore inainte de inchiderea unei propuneri.
-        email_new_discussions_and_proposals: Discutii si propuneri noi.
-        for_these_groups: "Pentru aceste grupuri:"
-        submit: Salveaza preferintele
   explore:
     header: Exploreaza grupuri publice
   try_it:
@@ -240,8 +228,6 @@ ro:
   no_group_header: Bine ai venit la Loomio Beta
   empty_notifications: Nu ai inca nici o notificare.
   see_all_notifications: Vezi toate notificarile
-  profile: Profil
-  email_settings: Setarile emailului
   sign_out: Iesire
   sign_in: Autentificare
   honeypot_warning: "Nu se poate crea contul. Dacă utilizezi un screen reader, te rog să te asiguri că ultimul câmp (ascuns) de pe formular este gol."
@@ -896,7 +882,6 @@ ro:
       headline: "Propunerea %{author} in grupul %{group} se va inchide in curand:"
       summary: Sumar
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Dezabonare</a> pentru a opri primirea de mesaje despre aceasta discutie."
       change_preferences: "Schimba preferintele de email:"
       new_motion: "%{who} au propus:"
       motion_closing_soon: "Propunerea se inchide in 24 de ore:"

@@ -37,6 +37,14 @@ class LoggedOutUser
     false
   end
 
+  def can?(*args)
+    false
+  end
+
+  def is_organisation_coordinator?
+    false
+  end
+
   def belongs_to_manual_subscription_group?
     false
   end
@@ -48,6 +56,11 @@ class LoggedOutUser
   def selected_locale
     nil
   end
+
+  def angular_ui_enabled
+    false
+  end
+  alias :angular_ui_enabled? :angular_ui_enabled
 
   def ability
     @ability ||= Ability.new(self)

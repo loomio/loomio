@@ -53,18 +53,6 @@ class Motion < ActiveRecord::Base
     outcome.present?
   end
 
-  def followers_without_author
-    discussion.followers.where('users.id != ?', author_id)
-  end
-
-  def followers_without_outcome_author
-    discussion.followers.where('users.id != ?', outcome_author.id)
-  end
-
-  def group_members_not_following
-    discussion.group_members_not_following
-  end
-
   def grouped_unique_votes
     order = ['block', 'no', 'abstain', 'yes']
     unique_votes.sort do |a,b|
@@ -226,11 +214,11 @@ class Motion < ActiveRecord::Base
   end
 
   def group_members_without_motion_author
-    group.users.where(User.arel_table[:id].not_eq(author.id))
+    group.members.without(author)
   end
 
   def group_members_without_outcome_author
-    group.users.where(User.arel_table[:id].not_eq(outcome_author.id))
+    group.members.without(outcome_author)
   end
 
   def store_users_that_didnt_vote

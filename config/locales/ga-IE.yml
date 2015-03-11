@@ -1,15 +1,4 @@
 ga-IE:
-  users:
-    email_preferences:
-      edit:
-        title: Sainroghanna ríomhphoist
-        when_do_you_want_emails: "Seol ríomhphost chugam:"
-        email_missed_yesterday: "\"Inné ar Loomio\" - achoimre laethúil de na himeachtaí nach bhfaca mé"
-        email_when_mentioned: Nuair a luaitear mé
-        email_when_proposal_closing_soon: 24 uair sula dhúntar togra.
-        email_new_discussions_and_proposals: Plé agus tograí nua
-        for_these_groups: "Do na baiclí seo:"
-        submit: Coimeád na sainroghanna
   try_it:
     header: Bain triail as Loomio
     explore_groups: Féach baiclí eile ar Loomio
@@ -124,8 +113,6 @@ ga-IE:
   no_group_header: Fáilte go dtí Loomio Beta
   empty_notifications: Níl aon fhógra agat fós.
   see_all_notifications: Féach ar gach fógra
-  profile: Beathaisnéisín
-  email_settings: Socruithe ríomhphoist
   sign_out: Scoir
   sign_in: Logáil isteach
   tagline: "Ag cruthú domhan ina bhfuil sé easca ar gach duine cinneadh a dhéanamh ar rudaí a théann i bhfeidhm orthu. "

@@ -31,6 +31,17 @@ class ThreadMailer < BaseMailer
                                              which: @discussion.group.full_name))
   end
 
+  def comment_replied_to(recipient, event)
+    @recipient = recipient
+    @event = event
+    @reply = event.eventable
+    @discussion = @reply.discussion
+    @author = @reply.author
+    send_thread_email(alternative_subject: t('email.comment_replied_to.subject',
+                                             who: @author.name,
+                                             which: @discussion.group.full_name))
+  end
+
   def new_vote(recipient, event)
     @recipient = recipient
     @event = event
@@ -89,7 +100,7 @@ class ThreadMailer < BaseMailer
   private
 
   def send_thread_email(alternative_subject: nil)
-    @following = DiscussionReader.for(discussion: @discussion, user: @recipient).following?
+    @following = DiscussionReader.for(discussion: @discussion, user: @recipient).volume_is_loud?
     @utm_hash = utm_hash
 
     headers[message_id_header] = message_id
@@ -115,7 +126,8 @@ class ThreadMailer < BaseMailer
   end
 
   def thread_subject(alternative_subject)
-    if alternative_subject.nil? or (@recipient.email_followed_threads? and @following)
+    @following = DiscussionReader.for(discussion: @discussion, user: @recipient).volume_is_loud?
+    if alternative_subject.nil? or @following
       "[#{@discussion.group.full_name}] #{@discussion.title}"
     else
       alternative_subject

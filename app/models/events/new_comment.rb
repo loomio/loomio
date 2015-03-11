@@ -6,20 +6,22 @@ class Events::NewComment < Event
                     created_at: comment.created_at)
 
     DiscussionReader.for(user: comment.author,
-                         discussion: comment.discussion).follow!
+                         discussion: comment.discussion).
+                     set_volume_as_required!
 
     Events::CommentRepliedTo.publish! comment if comment.is_reply?
 
-    comment.mentioned_group_members.each do |mentioned_user|
+    comment.mentioned_group_members.
+            without(comment.parent_author).find_each do |mentioned_user|
       Events::UserMentioned.publish!(comment, mentioned_user)
     end
 
-    comment.non_mentioned_followers_without_author.
-            email_followed_threads.each do |user|
+    UsersToEmailQuery.new_comment(comment).find_each do |user|
       ThreadMailer.delay.new_comment(user, event)
     end
 
     event
+
   end
 
   def comment

@@ -1,16 +1,4 @@
 cs:
-  users:
-    email_preferences:
-      edit:
-        title: Nastavení emailu
-        when_do_you_want_emails: "Poslat mi e-mail:"
-        email_missed_yesterday: "'Včera na Loomio' - denní souhrn aktivit, které jsem zmeškal"
-        email_when_mentioned: "Pokud jsem  @zmíněný"
-        email_followed_threads: "Pokud je v diskusních vláknech, které sleduji nějaká aktivita."
-        email_when_proposal_closing_soon: 24 hodin před uzavřením návrhu.
-        email_new_discussions_and_proposals: Nové diskuse a návrhy
-        for_these_groups: "Pro tyto skupiny:"
-        submit: Uložit nastavení
   explore:
     header: Prozkoumejte veřejné skupiny
   try_it:
@@ -222,8 +210,6 @@ cs:
   no_group_header: Vítejte na Loomio Beta
   empty_notifications: Nemáte zatím žádná upozornění.
   see_all_notifications: Zobrazit všechna upozornění
-  profile: Profil
-  email_settings: Nastavení emailu
   sign_out: Odhlásit se
   sign_in: Přihlásit se
   honeypot_warning: "Nepovedlo se vytvořit váš účet. Pokud používáte screen reader, ujistěte se prosím, že poslední (skryté) pole ve formuláři je prázdné."

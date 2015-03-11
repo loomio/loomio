@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 ruby '2.2.0'
-
 gem 'rails', '~> 4.2.0'
 gem 'rake'
 gem 'pg', '~> 0.17.1'
@@ -65,6 +64,7 @@ gem 'momentjs-rails'
 gem 'ruby-progressbar'
 gem 'dotenv'# , :require => 'dotenv/rails-now'
 gem 'responders', '~> 2.0'
+gem 'activerecord_any_of'
 
 # consider uncommenting these when we want to mess around with json parsing
 #gem 'oj'

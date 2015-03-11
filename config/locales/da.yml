@@ -1,16 +1,4 @@
 da:
-  users:
-    email_preferences:
-      edit:
-        title: E-mail-indstillinger
-        when_do_you_want_emails: Send mig en mail
-        email_missed_yesterday: "'Igår på Loomio' - en daglig opsummering af al aktivitet jeg er gået glip af"
-        email_when_mentioned: "Når jeg er @omtalt"
-        email_followed_threads: Når der er aktivitet i de tråde jeg følger.
-        email_when_proposal_closing_soon: "24 timer indtil et forslag lukker. "
-        email_new_discussions_and_proposals: Nye diskussioner og forslag
-        for_these_groups: "For disse grupper:"
-        submit: "Gem indstillingerne "
   explore:
     header: Udforsk offentlige grupper
   try_it:
@@ -224,8 +212,6 @@ da:
   no_group_header: Velkommen til Loomio Beta
   empty_notifications: Du har endnu ingen meldinger.
   see_all_notifications: Vis alle meldinger
-  profile: Profil
-  email_settings: Indstillinger for email
   sign_out: Log ud
   sign_in: Log ind
   honeypot_warning: Kunne ikke oprette din konto. Hvis du bruger en skærmlæser skal du sikre dig at det sidste (hidden) felt på formularen er tomt.
@@ -879,7 +865,6 @@ da:
       headline: "%{author}'s forslag i %{group} lukker snart:"
       summary: Opsummering
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Stop med at følge</a> for at stoppe e-mails om denne diskussion."
       change_preferences: "Rediger dine e-mail-indstillinger:"
       new_motion: "%{who} foreslog:"
       motion_closing_soon: "Forslag lukket om 24 timer:"

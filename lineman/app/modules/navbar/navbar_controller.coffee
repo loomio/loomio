@@ -7,4 +7,4 @@ angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Reco
   $scope.toggleInbox = (open) -> $scope.showInbox = open
 
   $scope.currentUser = ->
-    UserAuthService.currentUser
+    window.Loomio.currentUser

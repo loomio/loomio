@@ -1,16 +1,4 @@
 eo:
-  users:
-    email_preferences:
-      edit:
-        title: Retpoŝtaj preferoj
-        when_do_you_want_emails: "Retpoŝtu min:"
-        email_missed_yesterday: "'Hieraŭ en Loomio' - ĉiutaga resumo de ĉiaj eble perditaj aktivaĵoj"
-        email_when_mentioned: "Kiam mi estas @menciata"
-        email_followed_threads: Kiam estas aktiveco en fadenoj kiujn mi sekvas.
-        email_when_proposal_closing_soon: 24 horojn antaŭ la fermo de propono.
-        email_new_discussions_and_proposals: Novaj diskutoj kaj proponoj
-        for_these_groups: "Por ĉi tiuj grupoj:"
-        submit: Konservi preferojn
   explore:
     header: Esplori publikajn grupojn
   try_it:
@@ -219,8 +207,6 @@ eo:
   no_group_header: Bonvenon al Loomio Beta
   empty_notifications: Vi ankoraŭ ne havas ajnan sciigon.
   see_all_notifications: Vidi ĉiujn sciigojn
-  profile: Profilo
-  email_settings: Retpoŝtaj agordoj
   sign_out: Eliri
   sign_in: Ensaluti
   honeypot_warning: "Ne eblis krei vian konton. Se vi uzas ekranlegilon, bonvolu certigi ke la lasta (kaŝita) kampo de la formularo estu sen enhavo."
@@ -865,7 +851,6 @@ eo:
       headline: "La propono de %{author} en %{group} baldaŭ fermiĝos:"
       summary: Resumo
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Malsekvi</a> por haltigi retpoŝtaĵojn pri ĉi tiu diskuto."
       change_preferences: "Ŝanĝi viajn retpoŝtajn preferojn:"
       new_motion: "%{who} proponis:"
       motion_closing_soon: "Propono fermiĝos en 24 horoj:"

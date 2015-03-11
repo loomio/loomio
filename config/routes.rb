@@ -7,8 +7,11 @@ Loomio::Application.routes.draw do
     get 'setup_for_vote_on_proposal'
   end
 
-  get '/angular' => 'base#boot_angular_ui'
-
+  scope '/angular', controller: 'angular', path: 'angular', as: 'angular' do
+    get '/' => 'angular#index'
+    post :on
+    post :off
+  end
 
   slug_regex = /[a-z0-9\-\_]*/i
 
@@ -45,6 +48,7 @@ Loomio::Application.routes.draw do
       get :inbox_unread,  on: :collection
       patch :mark_as_read, on: :member
     end
+    resources :discussion_readers, only: :update
 
     resources :motions,     only: [       :index, :create, :update], path: :proposals do
       post :close, on: :member
@@ -111,10 +115,22 @@ Loomio::Application.routes.draw do
 
   get "/theme_assets/:id", to: 'theme_assets#show', as: 'theme_assets'
 
+
+  resources :networks, path: 'n', only: [:show] do
+    member do
+      get :groups
+    end
+    resources :network_membership_requests, path: 'membership_requests', as: 'membership_requests', only: [:create, :new, :index] do
+      member do
+        post :approve
+        post :decline
+      end
+    end
+  end
+
   resources :groups, path: 'g', only: [:new, :create, :edit, :update] do
     member do
-      post :follow
-      post :unfollow
+      post :set_volume
       post :join
       post :add_members
       post :hide_next_steps
@@ -199,8 +215,7 @@ Loomio::Application.routes.draw do
     resources :invitations, only: [:new]
 
     member do
-      post :follow
-      post :unfollow
+      post :set_volume
       post :update_description
       post :update
       post :add_comment

@@ -1,6 +1,6 @@
-angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $translate, $modal, Records, UserAuthService) ->
+angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $translate, $modal, Records, UserAuthService, CommentFormService) ->
   renderLikedBySentence = ->
-    otherIds = _.without($scope.comment.likerIds, UserAuthService.currentUser.id)
+    otherIds = _.without($scope.comment.likerIds, window.Loomio.currentUser.id)
     otherUsers = _.filter $scope.comment.likers(), (user) -> _.contains(otherIds, user.id)
     otherNames = _.map otherUsers, (user) -> user.name
 
@@ -38,36 +38,28 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
   $scope.comment = $scope.event.comment()
 
   $scope.editComment = ->
-    modalInstance = $modal.open
-      templateUrl: 'generated/modules/discussion_page/comment_form/edit_comment.html'
-      controller: 'EditCommentController'
-      resolve:
-        comment: -> angular.copy($scope.comment)
+    CommentFormService.openEditCommentModal($scope.comment)
 
   $scope.deleteComment = ->
-    modalInstance = $modal.open
-      templateUrl: 'generated/modules/discussion_page/comment_form/delete_comment.html'
-      controller: 'DeleteCommentController'
-      resolve:
-        comment: -> angular.copy($scope.comment)
+    CommentFormService.openDeleteCommentModal($scope.comment)
 
   $scope.showContextMenu = ->
     $scope.canEditComment($scope.comment) or $scope.canDeleteComment($scope.comment)
 
   $scope.canEditComment = ->
-    UserAuthService.currentUser.canEditComment($scope.comment)
+    window.Loomio.currentUser.canEditComment($scope.comment)
 
   $scope.canDeleteComment = ->
-    UserAuthService.currentUser.canDeleteComment($scope.comment)
+    window.Loomio.currentUser.canDeleteComment($scope.comment)
 
   $scope.like = ->
-    Records.comments.like(UserAuthService.currentUser, $scope.comment, renderLikedBySentence)
+    Records.comments.like(window.Loomio.currentUser, $scope.comment, renderLikedBySentence)
 
   $scope.unlike = ->
-    Records.comments.unlike(UserAuthService.currentUser, $scope.comment, renderLikedBySentence)
+    Records.comments.unlike(window.Loomio.currentUser, $scope.comment, renderLikedBySentence)
 
   $scope.currentUserLikesIt = ->
-    _.contains($scope.comment.likerIds, UserAuthService.currentUser.id)
+    _.contains($scope.comment.likerIds, window.Loomio.currentUser.id)
 
   $scope.anybodyLikesIt = ->
     $scope.comment.likerIds.length > 0

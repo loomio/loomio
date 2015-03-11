@@ -1,16 +1,4 @@
 sr-RS:
-  users:
-    email_preferences:
-      edit:
-        title: Особине еПорука
-        when_do_you_want_emails: "Обавести ме:"
-        email_missed_yesterday: "'Јуче на Лумију' - дневни извештај свих активности које сте пропустили"
-        email_when_mentioned: "Када сам @поменут/а"
-        email_followed_threads: Када има активности у областима које пратим.
-        email_when_proposal_closing_soon: 24 часа пре истека предлога.
-        email_new_discussions_and_proposals: Нове дискусије и предлози
-        for_these_groups: "За ове групе:"
-        submit: Сачувај подешавања
   explore:
     header: Истражи јавне групe
   try_it:
@@ -240,8 +228,6 @@ sr-RS:
   no_group_header: Добродошли на Лумио Бета
   empty_notifications: Немате никаквих обавештења још увек.
   see_all_notifications: Види сва обавештења
-  profile: Профил
-  email_settings: Подешавања еПорука
   sign_out: Одјави се
   sign_in: Пријави се
   honeypot_warning: "Није било могуће направит Ваш налог. Ако користите читач екрана, молимо да се постарате да је последње(скривено) поље у формулару празно."
@@ -897,7 +883,6 @@ sr-RS:
       headline: "%{author} предлог у групи %{group} ускоро истиче:"
       summary: Резиме
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Не прати</a> да зауставиш еПоруке о овој дискусији."
       change_preferences: "Промени особине својих еПорука:"
       new_motion: "%{who} предлаже:"
       motion_closing_soon: "Предлог истиче кроз 24 часа:"

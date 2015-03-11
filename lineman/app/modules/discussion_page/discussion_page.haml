@@ -4,31 +4,7 @@
       .thread-container
         .thread-actions.pull-right
           .dropdown.thread-notification-level
-            %a.dropdown-toggle.fat-finger{href:''}
-              %i.fa.fa-lg.fa-volume-down>
-            .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right
-              %h3.dropdown-heading{translate: 'notifications.header'}
-              %ul.dropdown-menu-items
-                %li.dropdown-menu-item
-                  .dropdown-menu-item-label
-                    %i.fa.fa-lg.fa-envelope>
-                    %span{translate: 'common.notifications.email'}
-                  .dropdown-menu-item-details
-                    %span{translate: 'discussion.notifications.email'}
-                %li.dropdown-menu-item
-                  .dropdown-menu-item-label
-                    %i.fa.fa-lg.fa-volume-down>
-                    %span{translate: 'common.notifications.normal'}
-                    %i.fa.fa-lg.fa-check
-                  .dropdown-menu-item-details
-                    %span{translate: 'discussion.notifications.normal'}
-                %li.dropdown-menu-item
-                  .dropdown-menu-item-label
-                    %i.fa.fa-lg.fa-volume-off>
-                    %span{translate: 'common.notifications.mute'}
-                  .dropdown-menu-item-details
-                    %span{translate: 'discussion.notifications.mute'}
-
+            %notification_volume_dropdown{translate-root: 'discussion', discussion: 'discussion'}
           .dropdown{ng-if: 'showContextMenu()'}
             %a.dropdown-toggle{href:''}
               %i.fa.fa-chevron-down

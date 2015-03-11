@@ -42,6 +42,7 @@ class InboxController < BaseController
       motions = current_user.motions.where(id: ids)
       motions.each do |motion|
         MotionReader.for(user: current_user, motion: motion).viewed!
+        DiscussionReader.for(user: current_user, discussion: motion.discussion).viewed!
       end
     end
 

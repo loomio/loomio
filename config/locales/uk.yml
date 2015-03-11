@@ -1,16 +1,4 @@
 uk:
-  users:
-    email_preferences:
-      edit:
-        title: Налаштування електронної пошти
-        when_do_you_want_emails: "Напишіть мені:"
-        email_missed_yesterday: "\"Вчора на Loomio\" - щоденний підсумок пропущеної активності"
-        email_when_mentioned: "Коли мене @згадують"
-        email_followed_threads: "Коли в обговореннях, за якими я слідкую, є активність."
-        email_when_proposal_closing_soon: За 24 години до закриття пропозиції
-        email_new_discussions_and_proposals: Нові обговорення та пропозиції
-        for_these_groups: "Для таких груп:"
-        submit: Зберегти налаштування
   explore:
     header: Переглянути відкриті групи
   try_it:
@@ -223,8 +211,6 @@ uk:
   no_group_header: Ласкаво просимо до Loomio Beta
   empty_notifications: У Вас немає наразі жодних оповіщень.
   see_all_notifications: Переглянути всі оповіщення
-  profile: Профіль
-  email_settings: Налаштування електронної пошти
   sign_out: Вийти
   sign_in: Увійти
   honeypot_warning: "Не можливо створити ваш акаунт. Якщо ви користуєтесь читанням з екрану, будь ласка, перевірте, що останнє (приховане) поле на формі є пустим."

@@ -1,14 +1,16 @@
 class PermittedParams < Struct.new(:params, :user)
 
   %w[user vote subscription motion membership_request membership
-   invitation group_request group discussion comment
-   attachment contact_message theme user_deactivation_response].each do |kind|
+   invitation group_request group discussion discussion_reader comment
+   attachment contact_message theme user_deactivation_response network_membership_request].each do |kind|
     define_method(kind) do
       permitted_attributes = self.send("#{kind}_attributes")
       params.require(kind).permit(*permitted_attributes)
     end
     alias_method :"api_#{kind}", kind.to_sym
   end
+
+  alias :read_attribute_for_serialization :send
 
   def theme_attributes
     [:name, :style, :pages_logo, :app_logo]
@@ -18,13 +20,17 @@ class PermittedParams < Struct.new(:params, :user)
     [:name, :avatar_kind, :email, :password, :password_confirmation,
      :remember_me, :uploaded_avatar, :username, :uses_markdown,
      :time_zone, :selected_locale, :email_when_mentioned,
-     :email_followed_threads, :email_missed_yesterday,
-     :email_when_proposal_closing_soon, :email_new_discussions_and_proposals,
+     :email_missed_yesterday,
+     :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation,
      {email_new_discussions_and_proposals_group_ids: []}]
   end
 
   def vote_attributes
-    [:position, :statement, :motion_id]
+    [:position, :statement, :proposal_id, :motion_id]
+  end
+
+  def network_membership_request_attributes
+    [:group_id, :network_id, :message]
   end
 
   def subscription_attributes
@@ -41,7 +47,11 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def membership_attributes
-    [:following_by_default]
+    [:volume]
+  end
+
+  def discussion_reader_attributes
+    [:discussion_id, :volume]
   end
 
   def invitation_attributes

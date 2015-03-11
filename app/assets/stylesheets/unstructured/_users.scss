@@ -1,3 +1,7 @@
+.group-notification-levels select, option {
+  font-family: 'FontAwesome',"HelveticaNeue", "Helvetica Neue", "Arial", sans-serif;
+}
+
 body.users.show {
   p.email, p.username {
     font-size: 1.4em;
@@ -140,3 +144,8 @@ body.users {
 .per-group-email-settings.disabled{
   color: #ccc;
 }
+
+.set-group-volume span{ font-weight: normal; }
+.set-group-volume { margin: 0 0 1.5em 1.5em; }
+.set-group-volume label { line-height: 24px; margin-left: 5px; }
+

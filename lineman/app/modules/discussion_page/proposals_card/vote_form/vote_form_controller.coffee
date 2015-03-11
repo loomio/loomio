@@ -8,7 +8,7 @@ angular.module('loomioApp').controller 'VoteFormController', ($scope, Records, U
     $scope.vote.save().then(onSuccess)
 
   $scope.lastVote = ->
-    $scope.proposal.lastVoteByUser(UserAuthService.currentUser)
+    $scope.proposal.lastVoteByUser(window.Loomio.currentUser)
 
   $scope.selectPosition = (position) ->
     $scope.vote.position = position

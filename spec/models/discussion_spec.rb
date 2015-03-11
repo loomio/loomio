@@ -3,35 +3,6 @@ require 'rails_helper'
 describe Discussion do
   let(:discussion) { create :discussion }
 
-  describe ".followers" do
-    let(:follower) { FactoryGirl.create(:user) }
-    let(:unfollower) { FactoryGirl.create(:user) }
-    let(:group_follower) { FactoryGirl.create(:user) }
-    let(:group_member) { FactoryGirl.create(:user) }
-    let(:non_member) { FactoryGirl.create(:user) }
-    let(:group) { discussion.group }
-
-    before do
-      [follower, unfollower, group_follower, group_member].each do |user|
-        group.add_member!(user)
-      end
-
-      DiscussionReader.for(discussion: discussion, user: follower).follow!
-      DiscussionReader.for(discussion: discussion, user: unfollower).unfollow!
-      discussion.group.membership_for(group_follower).follow_by_default!
-    end
-
-    subject do
-      discussion.followers
-    end
-
-    it {should include follower}
-    it {should_not include unfollower}
-    it {should include group_follower}
-    it {should_not include group_member }
-    it {should_not include non_member }
-  end
-
   describe "archive!" do
     let(:discussion) { create :discussion }
 
@@ -284,7 +255,6 @@ describe Discussion do
       before do
         @comment = build(:comment, discussion: discussion)
         @event = CommentService.create(comment: @comment, actor: discussion.author)
-
         @event.reload
         @comment.reload
         discussion.reload
@@ -318,7 +288,6 @@ describe Discussion do
         expect(discussion.comments_count).to be 0
         expect(discussion.salient_items_count).to be 0
         expect(discussion.last_item_at).to eq nil
-        p discussion.comments.all
         expect(discussion.last_comment_at).to eq nil
         expect(discussion.last_activity_at).to eq discussion.created_at
         expect(discussion.last_sequence_id).to be 0
@@ -364,7 +333,6 @@ describe Discussion do
 
         @comment2 = build(:comment, discussion: discussion)
         @event2 = CommentService.create(comment: @comment2, actor: discussion.author)
-
 
         @event1.reload
         @event2.reload

@@ -7,7 +7,7 @@
           .group-page-logo.hidden-xs{style:'background-image:url({{group.logoUrl()}})'}
           .group-page-buttons.pull-right
             .group-member-options{ng-if: 'isMember()'}
-              %group_notifications_dropdown{group: 'group'}
+              %notification_volume_dropdown{translate-root: 'group_page', group: 'group'}
               %group_options_dropdown{group: 'group'}
             .group-nonmember-options{ng-if: '!isMember()'}
               %a.btn.btn-success.btn-block.btn-icon{href: '#', ng-click: 'joinGroup()'}
@@ -18,7 +18,7 @@
               %h1
                 %a.cuke-group-parent-name{ng_show: 'group.parentId', href: '/g/{{group.parent().key}}'}
                   {{group.parentName()}}
-                %span{ng_show: 'group.parentId'}> >
+                %span{ng_show: 'group.parentId'}> \-
                 %a.cuke-group-name{href: '/g/{{group.key}}'}
                   {{group.name}}
             %group_privacy_dropdown{group: 'group'}

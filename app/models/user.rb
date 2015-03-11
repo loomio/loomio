@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   MAX_AVATAR_IMAGE_SIZE_CONST = 10.megabytes
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
-  attr_accessor :honeypot, :email_new_discussions_and_proposals_group_ids
+  attr_accessor :honeypot
 
   validates :email, presence: true, uniqueness: true, email: true
   validates_inclusion_of :uses_markdown, in: [true,false]
@@ -114,16 +114,26 @@ class User < ActiveRecord::Base
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
-  scope :email_followed_threads, -> { active.where(email_followed_threads: true) }
-  scope :dont_email_followed_threads, -> { active.where(email_followed_threads: false) }
+
+  # move to ThreadMailerQuery
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
-  scope :email_new_discussions_for, -> (group) {
-        active.
-        joins(:memberships).
-        where('memberships.group_id = ?', group.id).
-        where('users.email_new_discussions_and_proposals = ?', true).
-        where('memberships.email_new_discussions_and_proposals = ?', true) }
-  scope :email_new_proposals_for, -> (group) { active.email_new_discussions_for(group) }
+
+  scope :email_proposal_closing_soon_for, -> (group) {
+    active.
+    joins(:memberships).
+    where('memberships.group_id = ?', group.id).
+    where('users.email_when_proposal_closing_soon = ?', true)
+  }
+
+  scope :without, -> (users) {
+    users = Array(users).compact
+
+    if users.size > 0
+      where('users.id NOT IN (?)', users)
+    else
+      all
+    end
+  }
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
@@ -181,16 +191,6 @@ class User < ActiveRecord::Base
 
   def closed_motions
     motions.closed
-  end
-
-  def email_new_discussions_and_proposals_group_ids
-    memberships.where(email_new_discussions_and_proposals: true).pluck(:group_id)
-  end
-
-  def email_new_discussions_and_proposals_group_ids=(ids)
-    group_ids = ids.reject(&:empty?).map(&:to_i)
-    memberships.update_all(email_new_discussions_and_proposals: false)
-    memberships.where(group_id: group_ids).update_all('email_new_discussions_and_proposals = true')
   end
 
   def is_group_admin?(group=nil)
@@ -362,6 +362,10 @@ class User < ActiveRecord::Base
 
   def show_start_group_button?
     !groups.cannot_start_parent_group.any?
+  end
+
+  def is_organisation_coordinator?
+    adminable_groups.parents_only.any?
   end
 
   private

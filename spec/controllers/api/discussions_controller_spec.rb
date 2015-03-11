@@ -50,32 +50,32 @@ describe API::DiscussionsController do
     end
   end
 
-  #describe 'index' do
-    #let(:another_discussion)    { create :group }
+  describe 'index' do
+    let(:another_discussion)    { create :discussion }
 
-    #before do
-      #discussion; another_discussion
-    #end
+    before do
+      discussion; another_discussion
+    end
 
-    #context 'success' do
-      #it 'returns discussions filtered by group' do
-        #get :index, group_id: group.id, format: :json
-        #json = JSON.parse(response.body)
-        #expect(json.keys).to include *(%w[discussions])
-        #discussions = json['discussions'].map { |v| v['id'] }
-        #expect(discussions).to include discussion.id
-        #expect(discussions).to_not include another_discussion.id
-      #end
+    context 'success' do
+      it 'returns discussions filtered by group' do
+        get :index, group_id: group.id, format: :json
+        json = JSON.parse(response.body)
+        expect(json.keys).to include *(%w[discussions])
+        discussions = json['discussions'].map { |v| v['id'] }
+        expect(discussions).to include discussion.id
+        expect(discussions).to_not include another_discussion.id
+      end
 
-      #it 'does not display discussions not visible to the current user' do
-        #cant_see_me = create :discussion
-        #get :index, format: :json
-        #json = JSON.parse(response.body)
-        #discussions = json['discussions'].map { |v| v['id'] }
-        #expect(discussions).to_not include cant_see_me.id
-      #end
-    #end
-  #end
+      it 'does not display discussions not visible to the current user' do
+        cant_see_me = create :discussion
+        get :index, group_id: group.id, format: :json
+        json = JSON.parse(response.body)
+        discussions = json['discussions'].map { |v| v['id'] }
+        expect(discussions).to_not include cant_see_me.id
+      end
+    end
+  end
 
   describe 'update' do
     context 'success' do

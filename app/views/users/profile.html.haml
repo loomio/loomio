@@ -6,7 +6,7 @@
       = f.input :name
       = f.input :username
       = f.input :email
-      = f.input :selected_locale, :collection => language_options, include_blank: false, label: t(:'simple_form.labels.user.language_preference')
+      = f.input :selected_locale, :collection => language_options, disabled: 'disabled_option', include_blank: false, label: t(:'simple_form.labels.user.language_preference')
       = f.submit :class => "btn btn-primary", id: "profile-submit", :data => {:disable_with => t("helpers.submit.user.update")}
     %p= link_to t(:'user_profile.change_password'), change_password_path, id: 'change-password'
 .row

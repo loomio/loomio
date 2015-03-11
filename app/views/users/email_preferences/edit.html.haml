@@ -1,36 +1,56 @@
 .row
-  .col-md-12
-    %h1= t('.title')
+  .col-md-8
+    %h1= t(:'email_settings.title')
+
     =simple_form_for(@user, url: update_email_preferences_path, method: :put) do |f|
       -if params[:unsubscribe_token]
         =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
+
+
+      %strong Group volume
+      %p
+        Volume controls how much email you get from a group.
+        Set volume for all of your groups:
+
+        .set-group-volume
+          %ul
+            - ['loud', 'normal', 'quiet'].each do |level|
+              %li
+                = radio_button_tag 'set_group_volume', level
+                %label{ for: "set_group_volume_#{level}"}
+                  = t("volume.#{level}")
+                  %span
+                    \-
+                    = t :"group_volume.#{level}_description"
+            %li
+              =radio_button_tag 'set_group_volume', 'unchanged', true
+              %label{ for: "set_group_volume_unchanged"}
+                Do not change
+          %p
+            %em To change the volume of just one of your groups, visit that group's page.
+
+      .checkbox
+        = label_tag "user_email_on_participation" do
+          = f.check_box :email_on_participation
+          %strong= t(:'email_settings.discussion_activity')
+          %p= t(:'email_settings.discussion_activity_description')
+
       .checkbox
         = label_tag "user_email_missed_yesterday" do
           = f.check_box :email_missed_yesterday
-          = t('.email_missed_yesterday')
+          %strong= t(:'email_settings.yesterday_on_loomio')
+          %p= t(:'email_settings.yesterday_on_loomio_description')
+
       .checkbox
         = label_tag "user_email_when_mentioned" do
           = f.check_box :email_when_mentioned
-          = t('.email_when_mentioned')
-      .checkbox
-        = label_tag "user_email_followed_threads" do
-          = f.check_box :email_followed_threads
-          = t('.email_followed_threads')
+          %strong= t(:'email_settings.email_when_mentioned')
+          %p= t(:'email_settings.email_when_mentioned_description')
+
       .checkbox
         = label_tag "user_email_when_proposal_closing_soon" do
           = f.check_box :email_when_proposal_closing_soon
-          = t('.email_when_proposal_closing_soon')
-      .checkbox
-        = label_tag "user_email_new_discussions_and_proposals" do
-          = f.check_box :email_new_discussions_and_proposals, id: 'js_email_new_discussions_and_proposals'
-          = t('.email_new_discussions_and_proposals')
+          %strong= t(:'email_settings.proposal_closing_soon')
+          %p= t(:'email_settings.proposal_closing_soon_description')
 
-      .per-group-email-settings
-        %p= t('.for_these_groups')
-        .control-group
-          = f.collection_check_boxes(:email_new_discussions_and_proposals_group_ids,
-                                     @user.memberships.sorted_by_group_name,
-                                     :group_id,:group_full_name, {},
-                                     {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
-
-      = f.submit t('.submit'), :class => "btn btn-primary"
+      = f.submit t('email_settings.submit'), class: 'btn btn-primary'
