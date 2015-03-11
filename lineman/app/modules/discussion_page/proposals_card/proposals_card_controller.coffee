@@ -12,5 +12,4 @@ angular.module('loomioApp').controller 'ProposalsCardController', ($scope, Recor
       proposal.isActive()
 
   $scope.selectProposal = (proposal) ->
-    #Records.votes.fetchByProposal(proposal)
     $scope.selectedProposal = proposal

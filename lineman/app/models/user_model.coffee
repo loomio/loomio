@@ -21,7 +21,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       @membershipsView.data()
 
     inboxDiscussions: ->
-      @recordStore.discussions.where(groupId: {$in: @groupIds()})
+      @recordStore.discussions.where(id: {$gt: 0}, groupId: {$in: @groupIds()})
 
     notifications: ->
       @notificationsView.data()

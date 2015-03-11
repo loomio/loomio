@@ -2,27 +2,28 @@
   %h1 Your user profile
   .row
     .col-sm-9
-      %p Your profile page is what other users will see when they click your name. It displays your name, profile image, username and lists the public groups you belong to. You can visit your profile page by clicking your name at the top right of the page, and then <strong>“Profile”</strong>. Preview what other users will see by clicking the <strong>“view profile”</strong> link.
+      %p Your profile page is what other users will see when they click your name. It displays your name, <a href="#profile-photo">profile image</a>, <a href="#usernames">username</a> and lists the public groups you belong to. You can visit your profile page by clicking your name at the top right of the page, and then <strong>“Profile”</strong>. Preview what other users will see by clicking the <strong>“view profile”</strong> link.
     .col-sm-3
       =image_tag "user-profile.png", class: "screenshot"
   .row
     .col-sm-6
       %h3.anchor#language-settings Language settings
-      %p Loomio is available in many languages. It will detect your browser’s language settings, or you can manually set your preferred language by visiting your profile page and selecting your language from the <strong>“Language”</strong> dropdown.
+      %p Loomio is available in many languages. It will detect your browser’s language settings, or you can manually set your preferred language by visiting your <a href="#user-profile">profile page</a> and selecting your language from the <strong>“Language”</strong> dropdown.
       %h3.anchor#usernames Usernames
-      %p Your username is the name people will use to mention (@mention) you in comments. You can change your username by editing the <strong>“Username”</strong> field on your profile page and clicking the <strong>“Update settings”</strong> button.
+      %p Your username is the name people will use to mention (<a href="#mentioning">@mention</a>) you in comments. You can change your username by editing the <strong>“Username”</strong> field on your <a href="#user-profile">profile page</a> and clicking the <strong>“Update settings”</strong> button.
       %h3.anchor#updating-personal-settings Updating your personal settings
-      %p You can update the name, username, email address and language settings associated with your account by editing the corresponding fields and clicking the <strong>“Update settings”</strong> button.
+      %p You can update the name, username, email address and language settings associated with your account by editing the corresponding fields on your <a href="#user-profile">profile page</a>, and clicking the <strong>“Update settings”</strong> button.
       %h3.anchor#profile-photo Uploading a profile photo
-      %p When you first create a Loomio account, your initials will be the default image associated with your profile. You can upload a profile photo by clicking the <strong>“Upload a new image”</strong> button in the <strong>“Picture”</strong> section of the profile page. If you have a <a href="https://en.gravatar.com">Gravatar</a> then you can use that in place of an uploaded image or the default initials by clicking <strong>“Use Gravatar”</strong>.
+      %p When you first create a Loomio account, your initials will be the default image associated with your profile. You can upload a profile photo by clicking the <strong>“Upload a new image”</strong> button in the <strong>“Picture”</strong> section of your <a href="#user-profile">profile page</a>. If you have a <a href="https://en.gravatar.com">Gravatar</a> then you can use that in place of an uploaded image or the default initials by clicking <strong>“Use Gravatar”</strong>.
     .col-sm-6
       =image_tag "profile-page.png", class: "screenshot"
   %h3.anchor#changing-passwords Changing your password
-  %p If you are logged in to Loomio you can change your password at any time by following the <strong>“Change your password”</strong> link. If you are logged out then you can use the <strong>“Forgot your password?”</strong> link on the <a href="http://loomio.org/users/sign_in">Log in page</a>.
+  %p If you are logged in to Loomio you can change your password at any time by following the <strong>“Change your password”</strong> link on your <a href="#user-profile">profile page</a>. If you are logged out then you can use the <strong>“Forgot your password?”</strong> link on the <a href="http://loomio.org/users/sign_in">Log in page</a>.
   %h3.anchor#account-deactivation Deactivating your account
   .row
     .col-sm-8
-      %p If you are not the only coordinator of any groups then you can deactivate your account at any time by clicking the <strong>“Deactivate account”</strong> button. Once your account has been deactivated:
+      %p If you want to deactive your Loomio account you must make sure that you are not the sole coordinator of any groups, otherwise you will be prevented from doing so until you appoint another group coordinator, or archive the group. If you are not the sole coordinator of any Loomio groups, then you can deactivate your account by clicking the <strong>“Deactivate account”</strong> button on your <a href="#user-profile">profile page</a>.
+      %p Once your account has been deactivated:
       %ul.deactivation
         %li you will no longer be listed as a member of any groups
         %li comments, proposals and discussions you’ve made will remain but your name will be removed from them
@@ -30,7 +31,6 @@
         %li you will need to contact us to reactive your account
     .col-sm-4
       =image_tag "deactivation-button.png", class: "screenshot"
-  %p If you are the only coordinator of one or more Loomio groups then you will need to either appoint another group coordinator or archive the group before you can deactivate your account.
   %h3.anchor#account-reactivation Reactivating your account
   %p Account reactivation can only be done by a member of the Loomio team. To reactivate your deactivated account, contact the Loomio team by sending an email to <a href="mailto:contact@loomio.org">contact@loomio.org</a>.
   .row#bottom-links

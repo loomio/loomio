@@ -3,22 +3,17 @@ class UserMailer < BaseMailer
   helper :motions
   helper :application
 
-  def missed_yesterday(user, time_since = nil, unread = true)
+  def missed_yesterday(user, time_since = nil)
     @recipient = @user = user
     @time_start = time_since || 24.hours.ago
     @time_finish = Time.zone.now
     @time_frame = @time_start...@time_finish
 
-    if unread
-      @discussions = Queries::VisibleDiscussions.new(user: user,
-                                                     groups: user.inbox_groups).
-                                                     unread.
-                                                     last_activity_after(@time_start)
-    else
-      @discussions = Queries::VisibleDiscussions.new(user: user,
-                                                     groups: user.inbox_groups).
-                                                     last_activity_after(@time_start)
-    end
+    @discussions = Queries::VisibleDiscussions.new(user: user,
+                                                   groups: user.inbox_groups).
+                                                   not_muted.
+                                                   unread.
+                                                   last_activity_after(@time_start)
 
     unless @discussions.empty? or @user.inbox_groups.empty?
       @discussions_by_group = @discussions.group_by(&:group)

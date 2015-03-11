@@ -58,6 +58,8 @@ GEM
       activemodel (= 4.2.0)
       activesupport (= 4.2.0)
       arel (~> 6.0)
+    activerecord_any_of (1.2)
+      rails (>= 3.2.13, < 5)
     activesupport (4.2.0)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
@@ -648,6 +650,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.8.1)
   activeadmin!
+  activerecord_any_of
   airbrake
   autoprefixer-rails
   awesome_print

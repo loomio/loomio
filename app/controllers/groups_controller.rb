@@ -74,16 +74,13 @@ class GroupsController < GroupBaseController
   end
 
   def show
+    @membership = @group.membership_for(current_user) if user_signed_in?
     @discussion = Discussion.new(group_id: @group.id)
 
     @discussions = GroupDiscussionsViewer.for(group: @group, user: current_user)
 
     if sifting_unread?
       @discussions = @discussions.unread
-    end
-
-    if sifting_followed?
-      @discussions = @discussions.following
     end
 
     @discussions = @discussions.joined_to_current_motion.
@@ -124,17 +121,12 @@ class GroupsController < GroupBaseController
     render json: users.map{|u| {name: "#{u.name} #{u.username}", username: u.username, real_name: u.name} }, root: false  
   end
 
-  def follow
+  def set_volume
     membership = @group.membership_for(current_user)
-    membership.follow_by_default!
+    membership.set_volume! params[:volume]
     redirect_to @group
   end
 
-  def unfollow
-    membership = @group.membership_for(current_user)
-    membership.dont_follow_by_default!
-    redirect_to @group
-  end
 
   private
     def ensure_group_is_setup

@@ -16,10 +16,10 @@
         .modal-header
           %button.close{"data-dismiss" => "modal"}×
           %h3= t :move_discussion_where
-        = form_tag move_discussion_path(discussion), method: :post, 
+        = form_tag move_discussion_path(discussion), method: :post,
           data: { public_group_ids: destination_ids_for(discussion, current_user, :public),
                   hidden_group_ids: destination_ids_for(discussion, current_user, :private),
-                  private_discussion: @discussion.private ? 1 : 0 }, 
+                  private_discussion: @discussion.private ? 1 : 0 },
           class: 'move-discussion-form' do
           .modal-body
             = select_tag :destination_group_id, options_for_select(@destination_groups.map{|g| [g.full_name, g.id]}), class: 'form-control'

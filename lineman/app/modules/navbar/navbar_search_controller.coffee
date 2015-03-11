@@ -34,11 +34,11 @@ angular.module('loomioApp').controller 'NavbarSearchController', ($scope, $timeo
   $scope.groups = ->
     if $scope.queryPresent()
       # match groups where all words are present in group name
-      _.filter UserAuthService.currentUser.groups(), (group) ->
+      _.filter window.Loomio.currentUser.groups(), (group) ->
         _.all _.words($scope.query), (word) ->
           _.contains(group.fullName().toLowerCase(), word.toLowerCase())
     else
-      UserAuthService.currentUser.groups()
+      window.Loomio.currentUser.groups()
 
   $scope.groupNames = ->
     _.map $scope.groups(), (group) -> group.fullName()

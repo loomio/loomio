@@ -2,14 +2,10 @@ class DashboardController <  GroupBaseController
   include ApplicationHelper
 
   def show
-    @discussions = GroupDiscussionsViewer.for(user: current_user)
+    @discussions = GroupDiscussionsViewer.for(user: current_user).not_muted
 
     if sifting_unread?
       @discussions = @discussions.unread
-    end
-
-    if sifting_followed?
-      @discussions = @discussions.following
     end
 
     @discussions = @discussions.joined_to_current_motion.

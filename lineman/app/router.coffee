@@ -9,16 +9,13 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
     resolve:
       discussion: (Records, $route) ->
         key = $route.current.params.key
-        #Records.events.fetchByDiscussionKey(key)
         Records.discussions.findOrFetchByKey(key)
-
   ).when('/g/new',
     templateUrl: 'generated/modules/group_page/group_form.html',
     controller: 'GroupFormController',
     resolve:
-      group: (Records, $route) ->
-        groupKey = $route.current.params.id
-        Records.groups.findOrFetchByKey(groupKey)
+      group: (Records) ->
+        Records.groups.initialize()
   ).when('/g/:key',
     templateUrl: 'generated/modules/group_page/group_page.html',
     controller: 'GroupController',
@@ -30,7 +27,6 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
       groupKey: ($route) ->
         console.log 'router:', $route.current.params.id
         $route.current.params.id
-
   ).when('/g/:key/edit',
     templateUrl: 'generated/modules/group_page/group_form.html',
     controller: 'GroupFormController',

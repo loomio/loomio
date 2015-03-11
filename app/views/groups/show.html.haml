@@ -42,12 +42,12 @@
         .edit-icon-placeholder
       .logo-placeholder.hidden-xs
       ~ render_rich_text(@group.description)
-    = render "application/filter_discussions_buttons" if can? :follow, @group
+
+    = render "application/filter_discussions_buttons" if can? :set_volume, @group
     = render 'discussions/discussion_list'
 
   .col-md-3
     #group-actions
-      .btn-toolbar
       - if can? :create, @discussion
         = link_to new_discussion_path(:group_id => @group.id), id: 'start-new-discussion', class: 'btn btn-block btn-primary btn-left cuke-start-discussion' do
           %i.fa.fa-comments
@@ -83,8 +83,8 @@
                 %li= link_to t(:deactivate_group), archive_group_path(@group), method: 'post', data: { confirm: t(:confirm_deactivate_group, which_group: @group.name) }
 
       = join_group_button(@group)
+    = render 'set_volume', group: @group if @membership
     = render 'setup_next_steps' if show_next_steps?(@group)
-    = render 'follow', group: @group
 
     = render 'subgroups', group: @group
 

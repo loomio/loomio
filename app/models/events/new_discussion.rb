@@ -3,23 +3,11 @@ class Events::NewDiscussion < Event
     event = create!(kind: 'new_discussion',
                     eventable: discussion)
 
-    group = discussion.group
     DiscussionReader.for(discussion: discussion,
-                         user: discussion.author).follow!
+                         user: discussion.author).
+                     set_volume_as_required!
 
-    discussion.followers_without_author.
-               email_followed_threads.each do |user|
-      ThreadMailer.delay.new_discussion(user, event)
-    end
-
-    discussion.followers_without_author.
-               dont_email_followed_threads.
-               email_new_discussions_for(group).uniq.each do |user|
-      ThreadMailer.delay.new_discussion(user, event)
-    end
-
-    discussion.group_members_not_following.
-               email_new_discussions_for(group).uniq.each do |user|
+    UsersToEmailQuery.new_discussion(discussion).find_each do |user|
       ThreadMailer.delay.new_discussion(user, event)
     end
 

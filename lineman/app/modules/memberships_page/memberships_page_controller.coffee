@@ -3,7 +3,7 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($scope, gro
   Records.memberships.fetchByGroup group
 
   $scope.userIsAdmin = ->
-    UserAuthService.currentUser.isAdminOf($scope.group)
+    window.Loomio.currentUser.isAdminOf($scope.group)
 
   $scope.toggleMembershipAdmin = (membership) ->
     if membership.admin

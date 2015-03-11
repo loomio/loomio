@@ -4,7 +4,7 @@ When /^I select the move discussion link from the discussion dropdown$/ do
 end
 
 When /^I select the destination subgroup$/ do
-  select @subgroup.name, from: 'destination_group_id'
+  select @subgroup.full_name, from: 'destination_group_id'
 end
 
 Then /^I should see the destination subgroup name in the page title$/ do

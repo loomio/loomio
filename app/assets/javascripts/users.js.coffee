@@ -8,6 +8,8 @@ $ ->
     $("#upload-form").submit()
 
 
+$('.toggle-set-group-volume').on 'click', ->
+  $('.set-group-volume').toggle()
 
 toggle_email_new_disussions_and_proposals = ->
   if $('#js_email_new_discussions_and_proposals').is(':checked')

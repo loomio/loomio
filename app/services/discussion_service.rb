@@ -1,5 +1,6 @@
 class DiscussionService
   def self.recount_everything!
+    # I'm not sure anyone will need this .. but it's cool sql
     ActiveRecord::Base.connection.execute(
       "UPDATE discussion_readers SET
        read_comments_count = (SELECT count(id) FROM comments WHERE discussion_id = discussion_readers.discussion_id AND comments.created_at <= discussion_readers.last_read_at ),
@@ -33,16 +34,19 @@ class DiscussionService
 
     update_search_vector = discussion.title_changed? || discussion.description_changed?
 
+    event = true
     if discussion.title_changed?
-      Events::DiscussionTitleEdited.publish!(discussion, actor)
+      event = Events::DiscussionTitleEdited.publish!(discussion, actor)
     end
 
     if discussion.description_changed?
-      Events::DiscussionDescriptionEdited.publish!(discussion, actor)
+      event = Events::DiscussionDescriptionEdited.publish!(discussion, actor)
     end
+
     discussion.save!
 
     ThreadSearchService.index! discussion.id if update_search_vector
-    DiscussionReader.for(discussion: discussion, user: actor).follow!
+    DiscussionReader.for(discussion: discussion, user: actor).set_volume_as_required!
+    event
   end
 end
