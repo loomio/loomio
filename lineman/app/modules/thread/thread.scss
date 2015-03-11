@@ -1,4 +1,4 @@
-.thread-container {
+.thread {
   margin: 10px auto;
   max-width: $thread-max-width;
   @include card;
@@ -136,6 +136,7 @@
 .progress.active {
   float: left;
 }
+
 #comment-form-attachment-button{
   margin-left: 10px;
 }

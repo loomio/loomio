@@ -1,17 +1,14 @@
-.container#main
-  .form-card
-    .container
-      .row
-        .media-left
-          %img.img-profile.img-rounded{src: '{{user.profileUrl}}'}
-        .media-body
-          %h1 {{user.name}}
-          %p.username
-            @{{user.label}}
+.profile-page
+  .media-left
+    %img.img-profile.img-rounded{src: '{{user.profileUrl}}'}
+  .media-body
+    %h1 {{user.name}}
+    %p.username
+      @{{user.label}}
 
-        %h3.clearfix{translate: 'profile_page.my_groups'}
-        .profile-group{ng-repeat: 'group in user.groups()', ng-class: '{"profile-subgroup": group.parentId}'}
-          .media-left
-            %img{src: '{{group.logoUrlSmall}}'}
-          .media-body 
-            %a{href: '/g/{{group.key}}'} {{group.name}}
+  %h3.clearfix{translate: 'profile_page.my_groups'}
+  .profile-group{ng-repeat: 'group in user.groups()', ng-class: '{"profile-subgroup": group.parentId}'}
+    .media-left
+      %img{src: '{{group.logoUrlSmall}}'}
+    .media-body 
+      %a{href: '/g/{{group.key}}'} {{group.name}}

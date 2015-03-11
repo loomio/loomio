@@ -1,6 +1,17 @@
+.lmo-navbar{
+  z-index: 1000;
+  background: white;
+  height: 48px;
+  border-bottom: 1px solid #bbb;
+  box-shadow: 0 0 10px #aaa;
+  width: 100%;
+  position: fixed;
+}
+
 .loomio-nav {
   position: relative;
 }
+
 .loomio-nav-items{
   float: left;
   list-style: none;

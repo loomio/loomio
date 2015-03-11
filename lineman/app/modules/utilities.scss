@@ -1,0 +1,98 @@
+.menu-image { padding: 15px; }
+
+.font-bold {
+  font-weight: bold;
+}
+
+/* use .first if your heading is the first child */
+.first{
+  margin-top: 0;
+}
+
+.last{
+  /* utility class to use when you want to fix up
+     the margins on your card, e.g. if the last
+     element in the card is a paragraph */
+  margin-bottom: -10px;
+}
+
+.nowrap{
+  white-space: nowrap;
+}
+
+.fat-finger{
+  /*utility class to increase the target size of a link*/
+  width: 30px;
+  height: 30px;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.action{
+  color: $kinda-dark-grey;
+  text-decoration: underline;
+}
+
+.small-action{
+  color: $kinda-dark-grey;
+  text-decoration: underline;
+  @include fontSmall;
+}
+
+.btn-icon{
+  text-align: left;
+}
+
+.btn-success.btn-icon i.fa{ color: #fff; }
+
+.btn-icon i.fa{ padding-right: 2px; }
+
+.btn.btn-icon{ padding: 6px 12px 6px 9px;}
+
+.avatar-initials{
+  width: 30px;
+  height: 30px;
+  background: $thread-border-color;
+  border: 1px solid #aaa;
+  text-align: center;
+  line-height: 30px;
+}
+
+.avatar-image img{
+  width: 30px;
+  height: 30px;
+}
+
+.lg .avatar-image img, .lg .avatar-initials{
+  width: 50px;
+  height: 50px;
+}
+
+.label-with-details{
+  font-weight: bold;
+}
+
+.label-with-details-label:after{
+  content: ": ";
+}
+
+.label-with-details-details{
+  font-weight: normal;
+}
+
+label.label-with-details{
+  margin-left: 5px;
+}
+
+.fa-volume-off-padded{margin: 0 6px 0 3px;}
+
+.form-card{
+  @include card;
+  max-width: 480px;
+  margin: 10px auto;
+}
+
+.form-group{
+  margin-top: 20px;
+}

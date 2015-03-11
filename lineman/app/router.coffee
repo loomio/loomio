@@ -4,8 +4,8 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
   $locationProvider.html5Mode(true)
 
   $routeProvider.when('/d/:key',
-    templateUrl: 'generated/modules/discussion_page/discussion_page.html'
-    controller: 'DiscussionPageController'
+    templateUrl: 'generated/modules/thread/thread.html'
+    controller: 'ThreadController'
     resolve:
       discussion: (Records, $route) ->
         key = $route.current.params.key

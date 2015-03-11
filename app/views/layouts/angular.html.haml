@@ -17,8 +17,10 @@
     <![endif]-->
   %body
     %navbar
-    %sidebar
-    %main{ng_view: ''}
+    -#%sidebar
+    %main.container.main-container
+      .row
+        .col-xs-12{ng_view: ''}
 
     = javascript_include_tag lineman_vendorjs_path
     = javascript_include_tag lineman_appjs_path
