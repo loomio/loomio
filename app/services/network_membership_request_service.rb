@@ -1,4 +1,10 @@
 class NetworkMembershipRequestService
+  def self.create(network_membership_request: , actor: )
+    network_membership_request.requestor = actor
+    actor.ability.authorize! :create, network_membership_request
+    network_membership_request.save!
+  end
+
   def self.approve(network_membership_request: , actor: )
     actor.ability.authorize! :approve, network_membership_request
 

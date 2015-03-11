@@ -1,40 +1,39 @@
-%h1 Membership requests for #{@network.name}
+%h1= t :'networks.membership_requests_header', network: @network.name
 
-%h2 Current requests
+%h2= t :'networks.current_requests'
 %table
   %tbody
     - @requests.pending.each do |request|
       %tr
-        %td
+        %td.requestor
           %strong= request.requestor.name
           %br
           = request.requestor.email
-        %td
+        %td.group
           %strong= request.group.full_name
           %br
           = simple_format request.message
-        %td
-          = link_to 'Approve', approve_network_membership_request_path(@network, request), method: :post, class: 'btn btn-success'
-          = link_to 'Decline', decline_network_membership_request_path(@network, request), method: :post, 'data-confirm' => 'Are you sure?'
+        %td.action
+          = link_to t(:'networks.approve'), approve_network_membership_request_path(@network, request), method: :post, class: 'btn btn-success'
+          = link_to t(:'networks.decline'), decline_network_membership_request_path(@network, request), method: :post, 'data-confirm' => t(:generic_confirm)
 
-%h2 Previous requests
+%h2= t :'networks.previous_requests'
+
 %table
   %tbody
     - @requests.not_pending.each do |request|
       %tr
-        %td
+        %td.requestor
           %strong= request.requestor.name
           %br
           = request.requestor.email
-        %td
+        %td.group
           %strong= request.group.full_name
           %br
           = simple_format request.message
-        %td
+        %td.action
           - if request.approved?
-            %strong Approved
+            = t(:'networks.approved', name: request.responder.name)
           - else
-            %strong Declined
-          by
-          = request.responder.name
+            = t(:'networks.declined', name: request.responder.name)
 

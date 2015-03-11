@@ -1,10 +1,14 @@
 class AddNetwork < ActiveRecord::Migration
   def change
     create_table :networks do |t|
-      t.string :name
+      t.string :name, null: false
+      t.string :slug, null: false
+      t.text :description
+      t.text :joining_criteria
       t.timestamps
     end
     add_index :networks, :name, unique: true
+    add_index :networks, :slug, unique: true
 
     create_table :network_memberships do |t|
       t.integer :group_id, null: false

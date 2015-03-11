@@ -492,12 +492,16 @@ ActiveRecord::Schema.define(version: 20150310025335) do
   add_index "network_memberships", ["group_id", "network_id"], name: "index_network_memberships_on_group_id_and_network_id", unique: true, using: :btree
 
   create_table "networks", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",             null: false
+    t.string   "slug",             null: false
+    t.text     "description"
+    t.text     "joining_criteria"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "networks", ["name"], name: "index_networks_on_name", unique: true, using: :btree
+  add_index "networks", ["slug"], name: "index_networks_on_slug", unique: true, using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"

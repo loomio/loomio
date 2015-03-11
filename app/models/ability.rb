@@ -27,6 +27,12 @@ class Ability
       request.pending? and request.network.coordinators.include? user
     end
 
+    can :create, NetworkMembershipRequest do |request|
+      request.group.coordinators.include?(request.requestor) and
+      request.group.is_parent? and
+      !request.network.groups.include?(request.group)
+    end
+
     can :manage_membership_requests, Network do |network|
       network.coordinators.include? user
     end

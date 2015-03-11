@@ -18,9 +18,8 @@ describe "User abilities" do
                                                                                  inviter: other_user) }
   it { should be_able_to(:create, group) }
 
-  context "in relation to a network", focus: true do
+  context "in relation to a network", focus: true  do
     before do
-      group.add_admin! other_user
       group.add_admin! user
     end
 
@@ -36,7 +35,7 @@ describe "User abilities" do
       end
     end
 
-    describe "approving netork membership request" do
+    describe "approving network membership request" do
       describe "network coordinator" do
         let(:network) { Network.create(name: "Podemos", coordinators: [user]) }
         let(:request) { NetworkMembershipRequest.create(requestor: other_user, group: group, network: network) }
@@ -54,6 +53,39 @@ describe "User abilities" do
     end
 
     describe "create network membership request" do
+      describe "all good" do
+        let(:network) { Network.create(name: "Podemos", coordinators: [user]) }
+        let(:request) { NetworkMembershipRequest.new(requestor: user, group: group, network: network) }
+
+        it{should be_able_to(:create, request)}
+      end
+
+      describe "not coordinator of group" do
+        let(:network) { Network.create(name: "Podemos", coordinators: [user]) }
+        let(:request) { NetworkMembershipRequest.new(requestor: other_user, group: group, network: network) }
+
+        it{should_not be_able_to(:create, request)}
+      end
+
+
+      describe "not a parent group" do
+        let(:network) { Network.create(name: "Podemos", coordinators: [user]) }
+        let(:subgroup) { create :group, parent: group }
+        let(:request) { NetworkMembershipRequest.new(requestor: user, group: subgroup, network: network) }
+
+        before do
+          subgroup.add_admin! user
+        end
+
+        it{should_not be_able_to(:create, request)}
+      end
+
+      describe "already in network" do
+        let(:network) { Network.create(name: "Podemos", coordinators: [user], groups: [group]) }
+        let(:request) { NetworkMembershipRequest.new(requestor: user, group: group, network: network) }
+
+        it{should_not be_able_to(:create, request)}
+      end
       # user needs to be a coordinator of group
       # group needs to be parent group
       # group should not be in network

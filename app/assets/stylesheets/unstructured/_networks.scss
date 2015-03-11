@@ -1,5 +1,6 @@
 body.network_membership_requests{
-  table{
-    width: 100%;
-  }
+  table{ width: 100%; }
+  .group{ max-width: 28em; }
+  td{ vertical-align: top; padding: 2em 0; border-bottom: 1px solid #eee;}
+  h2{ margin-top: 2em;  border-bottom: 1px solid #eee; }
 }
