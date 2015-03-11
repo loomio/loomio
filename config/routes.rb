@@ -114,6 +114,19 @@ Loomio::Application.routes.draw do
 
   get "/theme_assets/:id", to: 'theme_assets#show', as: 'theme_assets'
 
+
+  resources :networks, path: 'n', only: [:show] do
+    member do
+      get :groups
+    end
+    resources :network_membership_requests, path: 'membership_requests', as: 'membership_requests', only: [:create, :new, :index] do
+      member do
+        post :approve
+        post :decline
+      end
+    end
+  end
+
   resources :groups, path: 'g', only: [:new, :create, :edit, :update] do
     member do
       post :set_volume
