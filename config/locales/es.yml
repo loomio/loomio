@@ -1,4 +1,16 @@
 es:
+  email_settings:
+    title: Configuración del correo electrónico
+    group_volume_level: "Configurar todos mis grupos al siguiente volumen: "
+    group_volume_leve_description: "Para configurar todos tus grupos a la vez al mismo volumen, utiliza esta opción."
+    discussion_activity: Cambiar el volumen de las discusiones cuando participo.
+    yesterday_on_loomio: Ayer en Loomio
+    yesterday_on_loomio_description: "Enviado a las 6am de cada día, este correo electrónico contiene toda la actividad no leída del día de ayer."
+    email_when_mentioned: "@menciones "
+    email_when_mentioned_description: "Cuando alguien quiere llamar tu atención te @mencionaran. Si apagas esto puede que la gente no sea capaz de contactarte."
+    proposal_closing_soon: La propuesta está por cerrar
+    proposal_closing_soon_description: "Enviado 24 horas antes de que cierre una propuesta, esta puede ser tu ultima oportunidad de participar en una decisión."
+    submit: Actualizar configuración.
   explore:
     header: Explorar grupos públicos
   try_it:
@@ -12,6 +24,7 @@ es:
     errors:
       messages:
         blank: no puede estar en blanco
+        invalid: No es un valor valido.
   errors:
     messages:
       email: No es una dirección de correo válida
@@ -424,6 +437,18 @@ es:
     confirmation:
       title: "¡Ya casi has terminado! Revisa tu correo electrónico. "
       body_html: "Te hemos enviado un correo electrónico con una invitación a comenzar tu grupo.\n\nSi no ves nada en tu bandeja de entrada en unos minutos, escríbenos a <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    volume: "Volumen "
+    normal: Normal
+  discussion_volume:
+    loud_description: "Enviar correo electrónico cuando hay actividad en este hilo. "
+    quiet_description: No enviar correo electrónico sobre este hilo.
+    mute_description: "Ocultar este hilo en el panel de control y no notificarme a no ser que sea @mencionado."
+  group_volume:
+    loud_description: Enviar correo electrónico cuando hay actividad.
+    normal_description: "Solo enviar correo electrónico cuando hay actividad importante: nuevas discusiones y propuestas, resultados, etc."
+    quiet_description: No enviar correo electrónico acerca de este grupo. La actividad sera mostrada en el panel de control.
+    mute_description: "Ocultar este hilo en el panel de control y no notificarme a no ser que sea @mencionado."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> apoyó la propuesta."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> se abstuvo en la propuesta."
@@ -973,6 +998,8 @@ es:
   google: Google
   persona: Persona
   common:
+    profile: Perfil
+    email_settings: Configuración de correo electrónico
     markdown_help_tooltip: Aprende lo básico sobre el formato de tu texto usando Markdown
     settings: Ajustes
     dashboard: Panel de control

@@ -6,7 +6,7 @@ ar:
   main: 50
 be-BY:
   frontpage: 100
-  main: 99
+  main: 100
 bg-BG:
   frontpage: 15
   main: 42
@@ -24,16 +24,16 @@ da:
   main: 94
 de:
   frontpage: 100
-  main: 96
+  main: 100
 el:
   frontpage: 100
-  main: 96
+  main: 100
 eo:
   frontpage: 89
   main: 92
 es:
   frontpage: 100
-  main: 96
+  main: 99
 fa-IR:
   frontpage: 89
   main: 13
@@ -90,13 +90,13 @@ ml:
   main: 53
 nl-NL:
   frontpage: 100
-  main: 96
+  main: 100
 pl:
   frontpage: 89
   main: 17
 pt-BR:
   frontpage: 100
-  main: 99
+  main: 100
 pt-PT:
   frontpage: 28
   main: 9
@@ -128,7 +128,7 @@ tr:
   frontpage: 89
   main: 94
 uk:
-  frontpage: 89
+  frontpage: 100
   main: 80
 ur:
   frontpage: 0
