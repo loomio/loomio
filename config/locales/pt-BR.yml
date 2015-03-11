@@ -446,6 +446,7 @@ pt-BR:
     mute: Mudo
   discussion_volume:
     loud_description: Enviar e-mail sempre que houver atividade neste tópico.
+    normal_description: "Apenas enviar e-mail quando uma proposta for criada, estiver perto do encerramento, ou um resultado for publicado."
     quiet_description: Não enviar e-mails sobre este tópico.
     mute_description: "Esconder este tópico do painel e não notificar a não ser quando @mencionado."
   group_volume:
