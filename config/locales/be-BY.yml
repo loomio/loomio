@@ -1,16 +1,7 @@
 be-BY:
   email_settings:
     title: Налады email
-    group_volume_level: "Усталяваць усім маім групам ўзровень гучнасці:"
-    group_volume_leve_description: Гэта опцыя дапаможа ўсталяваць усім сваім групам адзіны ўзровень гучнасці.
     discussion_activity: "Змяняць узровень гучнасці абмеркаванняў, калі я ўдзельнічаю"
-    discussion_activity_description: "Пры ўдзеле ў абмеркаванні, яе гучнасць падымецца да \"Гучнай\", то бок усе далейшыя падзеі будуць дасылацца вам на пошту."
-    yesterday_on_loomio: Учора на Loomio
-    yesterday_on_loomio_description: "Дасылаецца вам у 6:00 кожны дзень і змяшчае ўчорашнія непрачытаныя падзеі."
-    email_when_mentioned: "@узгадванні"
-    email_when_mentioned_description: "Калі хтосці хоча прыцягнуць вашу ўвагу, яны @узгадаюць вас. Калі вы гэта выключыце, людзям будзе цяжэй звязацца з вамі."
-    proposal_closing_soon: Прапанова хутка зачыніцца.
-    proposal_closing_soon_description: Дасылаецца за 24 гадзіны да закрыцця прапановы і дае апошні шанец паўдзельнічаць у вырашэнні.
     submit: Абнавіць налады
   explore:
     header: Знайсці публічныя групы
@@ -921,7 +912,6 @@ be-BY:
       turn_off_notifications_html: "<a href='%{url}'>Выключыць лісты</a> пра гэта абмеркаванне."
       turn_off_notifications_text: "Выключыць лісты пра гэта абмеркаванне: %{url}"
       turn_on_notifications_html: "<a href='%{url}'>Уключыць лісты пра гэта абмеркаванне</a> каб атрымліваць далейшыя падзеі."
-      turn_on_notifications_text: "Уключыць лісты пра гэта абмеркаванне, каб атрымліваць далейшыя падзеі: %{url}"
       change_email_preferences_html: "Змяніце свае <a href='%{email_preferences_url}'>налады email</a> каб адпісацца ад гэтых лістоў."
       change_preferences: "Змяніць свае налады электроннай пошты:"
       new_motion: "Карыстальнік %{who} прапанаваў:"
