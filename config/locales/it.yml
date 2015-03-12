@@ -1,16 +1,4 @@
 it:
-  users:
-    email_preferences:
-      edit:
-        title: Opzioni email
-        when_do_you_want_emails: "Mandami un'email:"
-        email_missed_yesterday: "'Ieri su Loomio' - un riassunto quotidiano delle attività che ho perso"
-        email_when_mentioned: "Quando vengo @menzionato"
-        email_followed_threads: "Quando c'è attività negli argomenti che seguo."
-        email_when_proposal_closing_soon: 24 ore prima che la proposta chiuda.
-        email_new_discussions_and_proposals: Nuove discussioni e proposte
-        for_these_groups: "Per questi gruppi:"
-        submit: Salva le preferenze
   explore:
     header: Esplora gruppi pubblici
   try_it:
@@ -228,8 +216,6 @@ it:
   no_group_header: Benvenuto su Loomio Beta
   empty_notifications: Non hai ancora notifiche.
   see_all_notifications: Guarda tutte le notifiche
-  profile: Profilo
-  email_settings: Impostazioni Email
   sign_out: Esci
   sign_in: Accedi
   honeypot_warning: "Non siamo riusciti a creare il tuo account. Se stai usando uno \"screen reader\", per favore assicurati che l'ultimo campo (nascosto) sia vuoto."
@@ -889,7 +875,6 @@ it:
       headline: "la proposta di %{author} in %{group} sta per essere chiusa:"
       summary: Riassunto
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Smetti di seguire</a> per non ricevere più mail su questa discussione."
       change_preferences: "Cambia le tue opzioni email:"
       new_motion: "%{who} ha proposto:"
       motion_closing_soon: "La proposta chiude in 24 ore:"

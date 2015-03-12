@@ -163,8 +163,6 @@ ko:
   no_group_header: 루미오 베타에 오신것을 환영합니다.
   empty_notifications: 알림이 없습니다.
   see_all_notifications: 모든 알림 보기
-  profile: 프로필
-  email_settings: 이메일 설정
   sign_out: 로그아웃
   sign_in: 로그인
   honeypot_warning: "계정을 만들 수 없습니다. 만약 스크린 리더를 사용한다면 마지막 (숨겨진) 필드를 빈칸으로 남겨두세요. "

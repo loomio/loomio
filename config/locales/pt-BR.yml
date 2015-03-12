@@ -1,16 +1,17 @@
 pt-BR:
-  users:
-    email_preferences:
-      edit:
-        title: Preferências de e-mail
-        when_do_you_want_emails: "Envie-me um e-mail:"
-        email_missed_yesterday: "'Ontem no Loomio' - um resumo diário de qualquer atividade que perdi"
-        email_when_mentioned: "Quando sou @mencionado"
-        email_followed_threads: Quando há atividade em tópicos que estou seguindo.
-        email_when_proposal_closing_soon: 24 horas antes de uma proposta encerrar.
-        email_new_discussions_and_proposals: Novas discussões e propostas
-        for_these_groups: "Para estes grupos:"
-        submit: Salvar preferências
+  email_settings:
+    title: Configurações de e-mail
+    group_volume_level: "Definir todos os meus grupos para o seguinte nível de volume:"
+    group_volume_leve_description: "Para definir todos os seus grupos para o mesmo nível de volume, use esta opção."
+    discussion_activity: Alterar o volume da discussão quando participo
+    discussion_activity_description: "Quando você participa de uma discussão, a definição do volume será alterado para 'Alto', então todas as atividade serão enviadas para você."
+    yesterday_on_loomio: Ontem no Loomio
+    yesterday_on_loomio_description: "Enviado para você às 6h todos os dia, este e-mail contém atividades não lidas ontem."
+    email_when_mentioned: "@menções"
+    email_when_mentioned_description: "Quando alguém quer chamar sua atenção, eles vão @mencionar você. Se você desligar isso, então as pessoas talvez não consigam entrar em contato com você."
+    proposal_closing_soon: Proposta fechando em breve
+    proposal_closing_soon_description: "Enviado 24 horas antes de uma proposta fechada, esta pode ser sua última chance de participar de uma decisão."
+    submit: Atualizar configurações
   explore:
     header: Conheça grupos públicos
   try_it:
@@ -24,6 +25,7 @@ pt-BR:
     errors:
       messages:
         blank: não pode ficar em blanco
+        invalid: não é um valor válido
   errors:
     messages:
       email: Endereço de e-mail inválido
@@ -234,8 +236,6 @@ pt-BR:
   no_group_header: Bem-vindo ao Loomio Beta
   empty_notifications: Você ainda não tem notificações.
   see_all_notifications: Ver todas as notificações
-  profile: Perfil
-  email_settings: Configurações de e-mail
   sign_out: Sair
   sign_in: Entrar
   honeypot_warning: "Não foi possível criar sua conta. Se você está usando um leitor de tela, por favor assegure que o último campo (oculto) no formulário esteja em branco."
@@ -438,6 +438,22 @@ pt-BR:
     confirmation:
       title: "Você está quase lá! Verifique seu e-mail."
       body_html: "Nós te enviamos um e-mail com um convite para começar teu grupo.\n\nSe você não encontrar nada em sua caixa de entrada em alguns minutos, mande-nos\num e-mail em <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    volume: Volume
+    loud: Alto
+    normal: Normal
+    quiet: Quieto
+    mute: Mudo
+  discussion_volume:
+    loud_description: Enviar e-mail sempre que houver atividade neste tópico.
+    normal_description: "Apenas enviar e-mail quando uma proposta for criada, estiver perto do encerramento, ou um resultado for publicado."
+    quiet_description: Não enviar e-mails sobre este tópico.
+    mute_description: "Esconder este tópico do painel e não notificar a não ser quando @mencionado."
+  group_volume:
+    loud_description: Enviar e-mail sempre que houver atividade.
+    normal_description: "Enviar apenas e-mails de atividades importantes: Novas discussões e propostas, resultados, etc."
+    quiet_description: Não enviar e-mail sobre esse grupo. Atividades serão exibidas no painel.
+    mute_description: "Esconder este grupo do painel e não notificar a não ser quando @mencionado."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> concordou com a proposta."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> absteve-se sobre a proposta."
@@ -902,10 +918,10 @@ pt-BR:
     thread_mailer:
       footer_text: "Responda este e-mail diretamente ou veja em %{hostname}:"
       reply_or_view_online_html: "Responda a este e-mail diretamente ou <a href='%{url}'>veja em %{hostname}</a>."
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Deixar de seguir</a> para não receber mais e-mails sobre essa discussão."
-      unfollow_discussion_text: "Visite o link a seguir para parar e-mails sobre essa discussão: %{unfollow_url}"
-      follow_discussion_html: "<a href='%{follow_url}'>Siga</a> para receber e-mails sobre essa discussão."
-      follow_discussion_text: "Visite o seguinte link para receber e-mails sobre essa discussão: %{follow_url}"
+      turn_off_notifications_html: "<a href='%{url}'>Desligar e-mails</a> para esta discussão."
+      turn_off_notifications_text: "Desligar e-mails para esta discussão: %{url}"
+      turn_on_notifications_html: "<a href='%{url}'>Ligar e-mails nesta discussão</a> para receber atividades."
+      turn_on_notifications_text: "Ligar e-mails para receber atividades nesta discussão: %{url}"
       change_email_preferences_html: "Modifique suas <a href='%{email_preferences_url}'>preferências de e-mail</a> para cancelar subscrições destes e-mails."
       change_preferences: "Modifique suas preferências de e-mail:"
       new_motion: "%{who} propôs:"
@@ -991,6 +1007,8 @@ pt-BR:
   google: Google
   persona: Persona
   common:
+    profile: Perfil
+    email_settings: Configurações de e-mail
     markdown_help_tooltip: Aprenda os conceitos básicos de formatação do seu texto com Markdown
     settings: Configurações
     dashboard: Painel

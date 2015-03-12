@@ -8,7 +8,9 @@ class SetupGroup
     group.is_visible_to_public = false
     group.discussion_privacy_options = 'private_only'
     group.save!
-    SetupGroup.create_example_discussion(group)
+
+    # do not create example discussion if the group is public discussions only
+    SetupGroup.create_example_discussion(group) if group.discussion_privacy_options != 'public_only'
     send_invitation_to_start_group(group)
     group
   end
@@ -30,7 +32,8 @@ class SetupGroup
     example_discussion.description = I18n.t('example_discussion.description')
     example_discussion.group = group
     example_discussion.author = helper_bot
-    example_discussion.private = true
+    # dont fail when creating example discussion in public only group. Which shouldnt happen anyway now.
+    example_discussion.private = !!group.discussion_private_default
     example_discussion.save!
 
     example_motion = Motion.new

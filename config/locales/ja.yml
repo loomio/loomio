@@ -159,8 +159,6 @@ ja:
   no_group_header: Loomio Betaにようこそ
   empty_notifications: 通知はありません
   see_all_notifications: 全ての通知を見る
-  profile: プロフィール
-  email_settings: Eメール設定
   sign_out: サインアウト
   sign_in: ログイン
   honeypot_warning: "あなたのアカウントを作成することができませんでした。\nスクリーンリーダーを使っている場合、フォームの最後の(非表示)フィールドが空白になっていることを確かめてください"

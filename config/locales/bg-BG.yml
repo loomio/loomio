@@ -1,16 +1,4 @@
 bg-BG:
-  users:
-    email_preferences:
-      edit:
-        title: Известия
-        when_do_you_want_emails: "Да получавам писма:"
-        email_missed_yesterday: "'Вчера в Loomio' - ежедневно обощаване на всичко, което съм пропуснал(а)."
-        email_when_mentioned: "Когато съм @споменат(а)"
-        email_followed_threads: "При активност в дискусии, които следя."
-        email_when_proposal_closing_soon: 24 часа преди края на гласуване
-        email_new_discussions_and_proposals: Нови дискусии и гласувания
-        for_these_groups: "в следните групи:"
-        submit: Запази настройките
   try_it:
     loomio_community_info: "Това е мястото, където дискутираме и вземаме решения относно Loomio."
   activerecord:

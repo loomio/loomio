@@ -1,16 +1,4 @@
 an:
-  users:
-    email_preferences:
-      edit:
-        title: "Preferencias de correu electronico "
-        when_do_you_want_emails: "Ninviar-me un correu-e:"
-        email_missed_yesterday: "'Ahiere en Loomio' - un resumen diario de toda l'actividat no leita"
-        email_when_mentioned: "Quan siga @nombrau "
-        email_followed_threads: Quan i haiga actividat en os temas que sigo.
-        email_when_proposal_closing_soon: 24 horas antes de zarrar una propuesta.
-        email_new_discussions_and_proposals: Nuevas discusions y propuestas.
-        for_these_groups: "Ta istos grupos:"
-        submit: Alzar preferencias
   explore:
     header: Explorar grupos publicos
   try_it:
@@ -226,8 +214,6 @@ an:
   no_group_header: Bienveniu/da a Loomio Beta
   empty_notifications: Encara no tiens notificacions.
   see_all_notifications: Veyer todas as tuyas notificacions
-  profile: Perfil
-  email_settings: "Configuración d'o correu electronico"
   sign_out: Salir
   sign_in: Dentrar
   honeypot_warning: "No s'ha puesto crear a tuya cuenta. Si fas servir un lector de pantallas, por favor, asegura-te que o zaguer campo (amagau) d'o formulario ye en blanco."
@@ -883,7 +869,6 @@ an:
       headline: "A propuesta de %{author} en %{group} se zarrará luego:"
       summary: Resumen
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Deixar de seguir</a> ta deixar de recibir correus electronicos sobre ista discusión."
       change_preferences: "Cambiar as tuyas preferencias d'email:"
       new_motion: "%{who} ha proposau:"
       motion_closing_soon: A propuesta se zarrará en 24 horas

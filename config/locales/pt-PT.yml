@@ -1,14 +1,4 @@
 pt-PT:
-  users:
-    email_preferences:
-      edit:
-        title: Preferências de Email
-        when_do_you_want_emails: "Envia-me um Email:"
-        email_missed_yesterday: "'Ontem no Loomio' - um resumo da atividade que me escapou"
-        email_when_proposal_closing_soon: 24 horas antes da proposta encerrar.
-        email_new_discussions_and_proposals: Novas discussões e propostas
-        for_these_groups: "Para estes grupos:"
-        submit: Guardar preferências
   explore:
     header: Explorar grupos públicos
   try_it:

@@ -1,16 +1,17 @@
 el:
-  users:
-    email_preferences:
-      edit:
-        title: Προτιμήσεις Ηλεκτρονικού Ταχυδρομείου
-        when_do_you_want_emails: Στείλε μου μήνυμα ηλεκτρονικού ταχυδρομείου
-        email_missed_yesterday: "'Εχθές στο Loomio' - ημερήσια σύνοψη οποιασδήποτε δραστηριότητας παρέλειψα"
-        email_when_mentioned: "Όταν @αναφέρομαι"
-        email_followed_threads: Όταν υπάρχει δραστηριότητα σε θέματα που ακολουθάω.
-        email_when_proposal_closing_soon: 24 ώρες πριν η πρόταση κλείσει.
-        email_new_discussions_and_proposals: Νέες συζητήσεις και προτάσεις
-        for_these_groups: "Για αυτές τις ομάδες:"
-        submit: Αποθήκευση προτιμήσεων
+  email_settings:
+    title: Ρυθμίσεις email
+    group_volume_level: "Ρύθμιση όλων των ομάδων στο ακόλουθο επίπεδο έντασης:"
+    group_volume_leve_description: "Για να ρυθμίσετε όλες τις ομάδες στο ίδιο επίπεδο έντασης ταυτόχρονα, χρησιμοποιήστε αυτήν την επιλογή."
+    discussion_activity: Αλλαγή όγκου συζήτησης όταν συμμετέχω
+    discussion_activity_description: "Όταν συμμετέχετε σε μια συζήτηση, η ρύθμιση της έντασης θα αλλάζει σε «Δυνατα», έτσι ώστε όλες οι περαιτέρω εργασίες θα αποστέλλονται σε εσάς με email."
+    yesterday_on_loomio: Χθες στο Loomio
+    yesterday_on_loomio_description: "Αποστολή σε εσάς στις 6 το πρωί κάθε μέρα, αυτό το email περιέχει μη αναγνωσμένες δραστηριότητες απο χθες."
+    email_when_mentioned: "@αναφορές"
+    email_when_mentioned_description: "Όταν κάποιος θέλει να τραβήξει την προσοχή σας, θα κανει αναφορα. Αν απενεργοποιήσετε αυτή την επιλογή τότε ο κόσμος μπορεί να μην είναι σε θέση να επικοινωνήσει μαζί σας."
+    proposal_closing_soon: "Κλεισιμο Πρότασης σύντομα "
+    proposal_closing_soon_description: "Αποστέλλονται 24 ώρες πριν κλείσει μια πρόταση, αυτό θα μπορούσε να είναι η τελευταία σας ευκαιρία για συμμετοχη σε μια απόφαση."
+    submit: Ρυθμίσεις Ενημέρωσης
   explore:
     header: Εξερευνήστε δημόσιες ομάδες
   try_it:
@@ -24,6 +25,7 @@ el:
     errors:
       messages:
         blank: δεν μπορεί να είναι κενό
+        invalid: δεν είναι μια έγκυρη τιμή
   errors:
     messages:
       email: Μη έγκυρη ηλεκτρονική διεύθυνση
@@ -234,8 +236,6 @@ el:
   no_group_header: Καλώς ήρθατε στην δοκιμαστική έκδοση του Loomio
   empty_notifications: Δεν έχετε καμία ειδοποίηση ακόμα.
   see_all_notifications: Δείτε όλες τις ειδοποιήσεις
-  profile: Προφίλ
-  email_settings: Ρυθμίσεις ηλεκτρονικού ταχυδρομείου
   sign_out: Έξοδος
   sign_in: Είσοδος
   honeypot_warning: "Ο λογαριασμός σας δεν ήταν δυνατό να δημιουργηθεί. Αν χρησιμοποιείτε αναγνώστη οθόνης, παρακαλώ σιγουρευτείτε ότι το τελευταίο (κρυφό) πεδίο στη φόρμα είναι κενό."
@@ -438,6 +438,22 @@ el:
     confirmation:
       title: "Σχεδόν τελειώσατε! Ελέγξτε το ηλεκτρονικό ταχυδρομείο σας."
       body_html: "Σας έχουμε στείλει ηλεκτρονικό μήνυμα με πρόσκληση για να ξεκινήσετε την ομάδα σας.\n\nΕάν δεν βλέπετε τίποτα στα εισερχόμενα σας σε λίγα λεπτά, στείλτε μας ηλεκτρονικό μήνυμα στο <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    volume: Ένταση
+    loud: Δυνατά
+    normal: Κανονικα
+    quiet: Ησυχα
+    mute: Σίγαση
+  discussion_volume:
+    loud_description: Αποστολη e-mail όποτε υπάρχει δραστηριότητα σε αυτό το θεμα.
+    normal_description: "Απλο email όταν μια πρόταση δημιουργείται, για να κλείσει, ή ένα αποτέλεσμα έχει αναρτηθεί."
+    quiet_description: Καμμια αποστολη μήνυματος σχετικά με αυτό το θεμα.
+    mute_description: "Απόκρυψη αυτόυ του θέματος από το ταμπλό και καμμια κοινοποιηση "
+  group_volume:
+    loud_description: Αποστολή Email όποτε υπάρχει δραστηριότητα.
+    normal_description: "Απλο email σημαντικων δραστηριότητων: Νέες συζητήσεις και προτάσεις, αποτελέσματα κλπ"
+    quiet_description: Μην στείλετε μήνυμα για αυτή την ομάδα. Δραστηριότητα θα εμφανιστεί στο ταμπλό.
+    mute_description: Απόκρυψη αυτής της ομάδας από το ταμπλό και καμμια κοινοποιηση
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> συμφώνησε στην πρόταση."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> απείχε στην πρόταση."
@@ -902,10 +918,10 @@ el:
     thread_mailer:
       footer_text: "Απαντήστε σε αυτό το ηλεκτρονικό μήνυμα απευθείας ή δείτε το στο:\n%{hostname}:"
       reply_or_view_online_html: "Απαντήστε άμεσα σε αυτό το ηλεκτρονικό μήνυμα ή <a href='%{url}'>δείτε το στο %{hostname}</a>."
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Κατάργηση παρακολούθησης</a> για να σταματήσει να λαμβάνετε ηλεκτρονικά μηνύματα σχετικά με αυτή την συζήτηση."
-      unfollow_discussion_text: "Επισκεφτείτε τον ακόλουθο σύνδεσμο για να σταματήσετε τα μηνύματα ηλεκτρονικού ταχυδρομείου σχετικά με αυτή την συζήτηση: %{unfollow_url}"
-      follow_discussion_html: "<a href='%{follow_url}'>Ακολουθήστε</a> για να λαμβάνετε μηνύματα ηλεκτρονικού ταχυδρομείου σχετικά με αυτή την συζήτηση."
-      follow_discussion_text: "Επισκεφτείτε τον ακόλουθο σύνδεσμο για να λαμβάνετε μηνύματα ηλεκτρονικού ταχυδρομείου σχετικά με αυτή την συζήτηση: %{follow_url}"
+      turn_off_notifications_html: "<a href='%{url}'> Απενεργοποίηση email </a> για αυτή τη συζήτηση."
+      turn_off_notifications_text: "Απενεργοποίηση email για αυτή τη συζήτηση: %{url}"
+      turn_on_notifications_html: "<a href='%{url}'> Ενεργοποίηση των email για αυτό το </a> συζήτησης για να λάβετε περαιτέρω δράση."
+      turn_on_notifications_text: "Ενεργοποιήστε το ηλεκτρονικό ταχυδρομείο για να λάβετε περαιτέρω δραστηριότητα σε αυτή τη συζήτηση.: %{url}"
       change_email_preferences_html: "Αλλάξτε <a href='%{email_preferences_url}'>τις προτιμήσεις του ηλεκτρονικού ταχυδρομείου σας</a> για να διαγραφείτε από τα ηλεκτρονικά μηνύματα του Loomio."
       change_preferences: "Αλλάξτε τις προτιμήσεις του ηλεκτρονικού ταχυδρομείου σας:"
       new_motion: "%{who} πρότεινε:"
@@ -991,6 +1007,8 @@ el:
   google: Google
   persona: Persona
   common:
+    profile: Προφίλ
+    email_settings: Ρυθμίσεις email
     markdown_help_tooltip: Μάθετε τα βασικά της διαμόρφωσης του κειμένου σας με το Markdown
     settings: Ρυθμίσεις
     dashboard: Πίνακας Εργαλείων

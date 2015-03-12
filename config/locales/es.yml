@@ -1,16 +1,16 @@
 es:
-  users:
-    email_preferences:
-      edit:
-        title: "Preferencias de correo electrónico "
-        when_do_you_want_emails: "Enviarme un correo electrónico:"
-        email_missed_yesterday: "'Ayer en Loomio' - un resumen diario de toda la actividad no leída"
-        email_when_mentioned: "Cuando sea @nombrado "
-        email_followed_threads: Cuando haya actividad en los temas que sigo.
-        email_when_proposal_closing_soon: 24 horas antes del cierre de una propuesta.
-        email_new_discussions_and_proposals: Nuevas discusiones y propuestas.
-        for_these_groups: "Para estos grupos:"
-        submit: Guardar preferencias
+  email_settings:
+    title: Configuración del correo electrónico
+    group_volume_level: "Configurar todos mis grupos al siguiente volumen: "
+    group_volume_leve_description: "Para configurar todos tus grupos a la vez al mismo volumen, utiliza esta opción."
+    discussion_activity: Cambiar el volumen de las discusiones cuando participo.
+    yesterday_on_loomio: Ayer en Loomio
+    yesterday_on_loomio_description: "Enviado a las 6am de cada día, este correo electrónico contiene toda la actividad no leída del día de ayer."
+    email_when_mentioned: "@menciones "
+    email_when_mentioned_description: "Cuando alguien quiere llamar tu atención te @mencionaran. Si apagas esto puede que la gente no sea capaz de contactarte."
+    proposal_closing_soon: La propuesta está por cerrar
+    proposal_closing_soon_description: "Enviado 24 horas antes de que cierre una propuesta, esta puede ser tu ultima oportunidad de participar en una decisión."
+    submit: Actualizar configuración.
   explore:
     header: Explorar grupos públicos
   try_it:
@@ -24,6 +24,7 @@ es:
     errors:
       messages:
         blank: no puede estar en blanco
+        invalid: No es un valor valido.
   errors:
     messages:
       email: No es una dirección de correo válida
@@ -110,6 +111,8 @@ es:
     logo_upload: Sube un nuevo logo
     edit_description: Editar descripción
     group_category: Encuentra más grupos como éste
+    unread_comments: "Comentarios no leídos  "
+    new_votes: nuevos votos
   views:
     pagination:
       previous: Atrás
@@ -186,9 +189,12 @@ es:
     about: Acerca de Loomio
     blog: Blog
     contact: Contacto
+    help: Ayuda
     privacy: Privacidad
+    pricing: Precio
     public_groups: Grupos públicos
     terms: Términos
+    independent_install_html: "%{hostname} esta utilizando una copia independiente de Loomio: <a href=\"http://github.com/loomio/loomio\">enterate mas</a>."
   inbox:
     clear: Limpiar
     title: Bandeja de entrada
@@ -215,6 +221,9 @@ es:
     motion_blocked: bloqueó la propuesta
     motion_outcome_created: Publico una decisión para la propuesta.
     motion_outcome_updated: resultado de propuesta modificado
+    email_actions:
+      following_thread: "Estas ahora siguiendo el hilo: %{thread_title}"
+      not_following_thread: "Ya no estas siguiendo el hilo: %{thread_title}"
   edit_discussion_context: Editar información de la discusión
   request_new_group: Crear un grupo
   start_new_group: Empieza un nuevo grupo
@@ -226,8 +235,6 @@ es:
   no_group_header: "Bienvenid@ a Loomio Beta"
   empty_notifications: Todavía no tienes notificaciones.
   see_all_notifications: Ver todas tus notificaciones
-  profile: Perfil
-  email_settings: Configuración del correo electrónico
   sign_out: Salir
   sign_in: Entrar
   honeypot_warning: "No se pudo crear tu cuenta. Si usas un lector de pantallas, por favor, asegúrate de que el último campo (oculto) del formulario está en blanco."
@@ -421,6 +428,8 @@ es:
       following_details: "Serás notificado sobre cada tema en este grupo "
       not_following_details: Serás notificado sobre los temas en los que estás participando.
   group_request:
+    header: Empieza un grupo
+    desc: "Para tomar decisiones en Loomio, el primer paso es iniciar un grupo."
     neighbourhood_support_group: ej. Grupo de apoyo al vecindario
     commercial_use_option: "en una empresa, organización formal o lugar de trabajo"
     non_commercial_use_option: En una comunidad o grupo informal
@@ -428,6 +437,18 @@ es:
     confirmation:
       title: "¡Ya casi has terminado! Revisa tu correo electrónico. "
       body_html: "Te hemos enviado un correo electrónico con una invitación a comenzar tu grupo.\n\nSi no ves nada en tu bandeja de entrada en unos minutos, escríbenos a <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    volume: "Volumen "
+    normal: Normal
+  discussion_volume:
+    loud_description: "Enviar correo electrónico cuando hay actividad en este hilo. "
+    quiet_description: No enviar correo electrónico sobre este hilo.
+    mute_description: "Ocultar este hilo en el panel de control y no notificarme a no ser que sea @mencionado."
+  group_volume:
+    loud_description: Enviar correo electrónico cuando hay actividad.
+    normal_description: "Solo enviar correo electrónico cuando hay actividad importante: nuevas discusiones y propuestas, resultados, etc."
+    quiet_description: No enviar correo electrónico acerca de este grupo. La actividad sera mostrada en el panel de control.
+    mute_description: "Ocultar este hilo en el panel de control y no notificarme a no ser que sea @mencionado."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> apoyó la propuesta."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> se abstuvo en la propuesta."
@@ -844,10 +865,14 @@ es:
       subject: Loomio - Resumen de las últimas 24 horas
     missed_yesterday:
       subject: Ayer en Loomio
+      headlines: "Titulo "
       mark_as_read: Marcar como leído
       thanks_for_reading: "Gracias por leer, ¡que tengas un buen día!"
       click_here_to_mark_all_as_read_html: "Esto es lo que sucedió ayer en Loomio.\nUna vez usted lo haya leído, clic  <a href=\"%{link}\">marcar como leído</a>  para eliminarlo de tú bandeja de entrada.\n"
       marked_as_read_success: Todo el contenido del correo ha sido marcado como leído
+    comment_replied_to:
+      context: "%{author_name} respondió a tu comentario en la discusión \"%{discussion_title}\""
+      subject: "%{who} respondió a tu comentario en el grupo %{which} en Loomio."
     group_email:
       intro: "%{who} hizo un anuncio en %{group}:"
     group_membership_approved:
@@ -886,7 +911,9 @@ es:
       headline: "La propuesta de %{author} en %{group} cerrará pronto:"
       summary: Resumen
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'> Dejar de seguir </a> para detener correos electrónicos acerca de esta discusión."
+      footer_text: "Responder a este correo electrónico directamente o verlo en %{hostname}:"
+      reply_or_view_online_html: "Responde a este correo electrónico directamente o <a href='%{url}'>velo en %{hostname}</a>."
+      change_email_preferences_html: "Cambia tus <a href='%{email_preferences_url}'>preferencias de correo electrónico</a> para darte de baja de estos correos electrónicos."
       change_preferences: Cambiar sus preferencias de email
       new_motion: "%{who} propuso:"
       motion_closing_soon: Cierra en 24 Horas
@@ -971,6 +998,8 @@ es:
   google: Google
   persona: Persona
   common:
+    profile: Perfil
+    email_settings: Configuración de correo electrónico
     markdown_help_tooltip: Aprende lo básico sobre el formato de tu texto usando Markdown
     settings: Ajustes
     dashboard: Panel de control

@@ -44,7 +44,8 @@ Loomio::Application.routes.draw do
     resources :events, only: :index
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
-      get :inbox, on: :collection
+      get :inbox_current, on: :collection
+      get :inbox_unread,  on: :collection
       patch :mark_as_read, on: :member
     end
     resources :discussion_readers, only: :update
@@ -113,6 +114,19 @@ Loomio::Application.routes.draw do
   resources :invitations, only: [:show, :create, :destroy]
 
   get "/theme_assets/:id", to: 'theme_assets#show', as: 'theme_assets'
+
+
+  resources :networks, path: 'n', only: [:show] do
+    member do
+      get :groups
+    end
+    resources :network_membership_requests, path: 'membership_requests', as: 'membership_requests', only: [:create, :new, :index] do
+      member do
+        post :approve
+        post :decline
+      end
+    end
+  end
 
   resources :groups, path: 'g', only: [:new, :create, :edit, :update] do
     member do

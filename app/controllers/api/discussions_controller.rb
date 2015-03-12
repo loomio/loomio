@@ -2,12 +2,23 @@ class API::DiscussionsController < API::RestfulController
   load_and_authorize_resource only: [:show, :mark_as_read, :set_volume], find_by: :key
   load_resource only: [:create, :update]
 
-  def inbox
+  def inbox_current
     @discussions = GroupDiscussionsViewer.for(user: current_user)
 
     @discussions = @discussions.joined_to_current_motion.
                                 preload(:current_motion, {group: :parent}).
-                                order('motions.closing_at ASC, last_comment_at DESC').
+                                order('motions.closing_at ASC, last_activity_at DESC').
+                                page(params[:page]).per(20)
+
+    respond_with_discussions
+  end
+
+  def inbox_unread
+    @discussions = GroupDiscussionsViewer.for(user: current_user)
+
+    @discussions = @discussions.unread.joined_to_current_motion.
+                                preload(:current_motion, {group: :parent}).
+                                order('motions.closing_at ASC, last_activity_at DESC').
                                 page(params[:page]).per(20)
 
     respond_with_discussions

@@ -36,7 +36,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
     adminIds: ->
       _.map @adminMemberships(), (membership) -> membership.userId
 
-    fullName: (separator = '>') ->
+    fullName: (separator = '-') ->
       if @parentId?
         "#{@parentName()} #{separator} #{@name}"
       else

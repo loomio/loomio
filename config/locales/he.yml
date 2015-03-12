@@ -1,16 +1,4 @@
 he:
-  users:
-    email_preferences:
-      edit:
-        title: העדפות דוא״ל
-        when_do_you_want_emails: "שלח לי דוא״ל:"
-        email_missed_yesterday: "'אתמול בLoomio' - סיכום יומי של הפעילויות שהחמצתי"
-        email_when_mentioned: "כשאני @מאוזכר"
-        email_followed_threads: כשיש פעילות בשיחות שאני עוקב
-        email_when_proposal_closing_soon: 24 שעות לפני סגירת הצעה
-        email_new_discussions_and_proposals: דיונים והצעות חדשים
-        for_these_groups: "לקבוצות הללו:"
-        submit: שמירת העדפות
   explore:
     header: גלו קבוצות ציבוריות
   try_it:
@@ -226,8 +214,6 @@ he:
   no_group_header: ברוכים הבאים לLoomio Beta
   empty_notifications: אין לך התרעות כרגע.
   see_all_notifications: צפו בכל ההתרעות
-  profile: פרופיל
-  email_settings: הגדרות דוא״ל
   sign_out: התנתקות
   sign_in: התחברות
   honeypot_warning: "לא ניתן לייצר חשבון. עבור קוראי-מסך, יש לוודא שהשדה האחרון (הנסתר) נשאר ריק."

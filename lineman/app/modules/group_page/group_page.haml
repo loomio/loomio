@@ -18,7 +18,7 @@
               %h1
                 %a.cuke-group-parent-name{ng_show: 'group.parentId', href: '/g/{{group.parent().key}}'}
                   {{group.parentName()}}
-                %span{ng_show: 'group.parentId'}> >
+                %span{ng_show: 'group.parentId'}> \-
                 %a.cuke-group-name{href: '/g/{{group.key}}'}
                   {{group.name}}
             %group_privacy_dropdown{group: 'group'}

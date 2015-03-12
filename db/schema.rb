@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309051724) do
+ActiveRecord::Schema.define(version: 20150311025406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20150309051724) do
   add_index "attachments", ["comment_id"], name: "index_attachments_on_comment_id", using: :btree
 
   create_table "blacklisted_passwords", force: :cascade do |t|
-    t.string   "string"
+    t.string   "string",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -180,7 +180,6 @@ ActiveRecord::Schema.define(version: 20150309051724) do
     t.datetime "last_read_at"
     t.integer  "read_comments_count",      default: 0, null: false
     t.integer  "read_items_count",         default: 0, null: false
-    t.boolean  "following"
     t.integer  "last_read_sequence_id",    default: 0, null: false
     t.integer  "read_salient_items_count", default: 0, null: false
     t.integer  "volume"
@@ -408,13 +407,11 @@ ActiveRecord::Schema.define(version: 20150309051724) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "inviter_id"
-    t.boolean  "email_new_discussions_and_proposals", default: true
     t.datetime "archived_at"
-    t.integer  "inbox_position",                      default: 0
-    t.boolean  "admin",                               default: false, null: false
-    t.boolean  "is_suspended",                        default: false, null: false
-    t.boolean  "following_by_default",                default: false, null: false
-    t.integer  "volume",                              default: 2,     null: false
+    t.integer  "inbox_position", default: 0
+    t.boolean  "admin",          default: false, null: false
+    t.boolean  "is_suspended",   default: false, null: false
+    t.integer  "volume",         default: 2,     null: false
   end
 
   add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
@@ -459,6 +456,50 @@ ActiveRecord::Schema.define(version: 20150309051724) do
   add_index "motions", ["discussion_id", "closed_at"], name: "index_motions_on_discussion_id_and_closed_at", order: {"closed_at"=>:desc}, using: :btree
   add_index "motions", ["discussion_id"], name: "index_motions_on_discussion_id", using: :btree
   add_index "motions", ["key"], name: "index_motions_on_key", unique: true, using: :btree
+
+  create_table "network_coordinators", force: :cascade do |t|
+    t.integer  "coordinator_id", null: false
+    t.integer  "network_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "network_coordinators", ["coordinator_id", "network_id"], name: "index_network_coordinators_on_coordinator_id_and_network_id", unique: true, using: :btree
+
+  create_table "network_membership_requests", force: :cascade do |t|
+    t.integer  "requestor_id", null: false
+    t.integer  "responder_id"
+    t.integer  "group_id",     null: false
+    t.integer  "network_id",   null: false
+    t.boolean  "approved"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "network_membership_requests", ["group_id"], name: "index_network_membership_requests_on_group_id", using: :btree
+  add_index "network_membership_requests", ["network_id"], name: "index_network_membership_requests_on_network_id", using: :btree
+
+  create_table "network_memberships", force: :cascade do |t|
+    t.integer  "group_id",   null: false
+    t.integer  "network_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "network_memberships", ["group_id", "network_id"], name: "index_network_memberships_on_group_id_and_network_id", unique: true, using: :btree
+
+  create_table "networks", force: :cascade do |t|
+    t.string   "name",             null: false
+    t.string   "slug",             null: false
+    t.text     "description"
+    t.text     "joining_criteria"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "networks", ["name"], name: "index_networks_on_name", unique: true, using: :btree
+  add_index "networks", ["slug"], name: "index_networks_on_slug", unique: true, using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
@@ -532,44 +573,42 @@ ActiveRecord::Schema.define(version: 20150309051724) do
   add_index "user_deactivation_responses", ["user_id"], name: "index_user_deactivation_responses_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                               limit: 255, default: "",         null: false
-    t.string   "encrypted_password",                  limit: 128, default: ""
-    t.string   "reset_password_token",                limit: 255
+    t.string   "email",                            limit: 255, default: "",         null: false
+    t.string   "encrypted_password",               limit: 128, default: ""
+    t.string   "reset_password_token",             limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                   default: 0
+    t.integer  "sign_in_count",                                default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",                  limit: 255
-    t.string   "last_sign_in_ip",                     limit: 255
+    t.string   "current_sign_in_ip",               limit: 255
+    t.string   "last_sign_in_ip",                  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name",                                limit: 255
+    t.string   "name",                             limit: 255
     t.datetime "deactivated_at"
-    t.boolean  "is_admin",                                        default: false
-    t.string   "avatar_kind",                         limit: 255, default: "initials", null: false
-    t.string   "uploaded_avatar_file_name",           limit: 255
-    t.string   "uploaded_avatar_content_type",        limit: 255
+    t.boolean  "is_admin",                                     default: false
+    t.string   "avatar_kind",                      limit: 255, default: "initials", null: false
+    t.string   "uploaded_avatar_file_name",        limit: 255
+    t.string   "uploaded_avatar_content_type",     limit: 255
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
-    t.string   "avatar_initials",                     limit: 255
-    t.string   "username",                            limit: 255
-    t.boolean  "email_followed_threads",                          default: true,       null: false
-    t.boolean  "email_when_proposal_closing_soon",                default: false,      null: false
-    t.string   "authentication_token",                limit: 255
-    t.string   "unsubscribe_token",                   limit: 255
-    t.integer  "memberships_count",                               default: 0,          null: false
-    t.boolean  "uses_markdown",                                   default: false,      null: false
-    t.string   "selected_locale",                     limit: 255
-    t.string   "time_zone",                           limit: 255
-    t.string   "key",                                 limit: 255
-    t.string   "detected_locale",                     limit: 255
-    t.boolean  "email_missed_yesterday",                          default: true,       null: false
-    t.string   "email_api_key",                       limit: 255
-    t.boolean  "email_new_discussions_and_proposals",             default: true,       null: false
-    t.boolean  "email_when_mentioned",                            default: true,       null: false
-    t.boolean  "angular_ui_enabled",                              default: false,      null: false
-    t.boolean  "email_on_participation",                          default: true,       null: false
+    t.string   "avatar_initials",                  limit: 255
+    t.string   "username",                         limit: 255
+    t.boolean  "email_when_proposal_closing_soon",             default: false,      null: false
+    t.string   "authentication_token",             limit: 255
+    t.string   "unsubscribe_token",                limit: 255
+    t.integer  "memberships_count",                            default: 0,          null: false
+    t.boolean  "uses_markdown",                                default: false,      null: false
+    t.string   "selected_locale",                  limit: 255
+    t.string   "time_zone",                        limit: 255
+    t.string   "key",                              limit: 255
+    t.string   "detected_locale",                  limit: 255
+    t.boolean  "email_missed_yesterday",                       default: true,       null: false
+    t.string   "email_api_key",                    limit: 255
+    t.boolean  "email_when_mentioned",                         default: true,       null: false
+    t.boolean  "angular_ui_enabled",                           default: false,      null: false
+    t.boolean  "email_on_participation",                       default: true,       null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
