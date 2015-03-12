@@ -1,36 +1,36 @@
 an:
   frontpage: 89
-  main: 94
+  main: 92
 ar:
   frontpage: 89
-  main: 50
+  main: 49
 be-BY:
   frontpage: 100
-  main: 100
+  main: 96
 bg-BG:
   frontpage: 15
-  main: 42
+  main: 41
 ca:
   frontpage: 84
-  main: 79
+  main: 77
 cmn:
   frontpage: 0
-  main: 30
+  main: 29
 cs:
   frontpage: 89
-  main: 80
+  main: 78
 da:
   frontpage: 89
-  main: 94
+  main: 91
 de:
   frontpage: 100
-  main: 100
+  main: 96
 el:
   frontpage: 100
-  main: 100
+  main: 96
 eo:
   frontpage: 89
-  main: 92
+  main: 90
 es:
   frontpage: 100
   main: 99
@@ -42,40 +42,40 @@ fi:
   main: 6
 fr:
   frontpage: 89
-  main: 94
+  main: 92
 ga-IE:
   frontpage: 35
-  main: 45
+  main: 44
 gl:
   frontpage: 48
-  main: 71
+  main: 70
 he:
   frontpage: 89
-  main: 68
+  main: 66
 hr:
   frontpage: 89
-  main: 47
+  main: 46
 hu:
   frontpage: 89
-  main: 94
+  main: 92
 id:
   frontpage: 48
-  main: 55
+  main: 54
 it:
   frontpage: 89
-  main: 95
+  main: 93
 it-CH:
   frontpage: 0
   main: 0
 ja:
   frontpage: 61
-  main: 65
+  main: 64
 km:
   frontpage: 0
-  main: 51
+  main: 49
 ko:
   frontpage: 89
-  main: 59
+  main: 57
 lv:
   frontpage: 0
   main: 0
@@ -84,13 +84,13 @@ mi:
   main: 3
 mk:
   frontpage: 89
-  main: 56
+  main: 55
 ml:
   frontpage: 0
-  main: 53
+  main: 51
 nl-NL:
   frontpage: 100
-  main: 100
+  main: 96
 pl:
   frontpage: 89
   main: 17
@@ -102,34 +102,34 @@ pt-PT:
   main: 9
 ro:
   frontpage: 89
-  main: 94
+  main: 92
 ru:
   frontpage: 89
-  main: 64
+  main: 63
 sk:
   frontpage: 89
-  main: 94
+  main: 92
 sl:
   frontpage: 100
-  main: 96
+  main: 94
 sr:
   frontpage: 89
-  main: 94
+  main: 92
 sr-RS:
   frontpage: 89
-  main: 94
+  main: 92
 sv:
   frontpage: 89
-  main: 94
+  main: 91
 te:
   frontpage: 20
   main: 27
 tr:
   frontpage: 89
-  main: 94
+  main: 92
 uk:
   frontpage: 100
-  main: 80
+  main: 78
 ur:
   frontpage: 0
   main: 0
@@ -138,7 +138,7 @@ ur-PK:
   main: 0
 vi:
   frontpage: 0
-  main: 45
+  main: 43
 zh-TW:
   frontpage: 100
-  main: 97
+  main: 94

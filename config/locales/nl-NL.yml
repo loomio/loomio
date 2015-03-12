@@ -1,16 +1,7 @@
 nl-NL:
   email_settings:
     title: E-mail instellingen
-    group_volume_level: "Stel al mijn groepen in op het volgende volume:"
-    group_volume_leve_description: "Om al je groepen in een keer op hetzelfde volume in te stellen, gebruik deze optie."
     discussion_activity: Verander discussievolume als ik deelneem
-    discussion_activity_description: "Als je in een discussie deelneemt verandert het volume naar 'Luid' zodat alle nieuwe activiteit naar je gemaild wordt."
-    yesterday_on_loomio: Gisteren op Loomio
-    yesterday_on_loomio_description: "Deze e-mail bevat de ongelezen activiteit van gisteren en wordt iedere dag om 6 uur 's ochtends naar je verstuurd."
-    email_when_mentioned: "@benoemingen"
-    email_when_mentioned_description: "Als iemand je aandacht wil, zal diegene je @benoemen. Als je dit uit zet, kunnen mensen je mogelijk niet meer bereiken."
-    proposal_closing_soon: Voorstel sluit binnenkort
-    proposal_closing_soon_description: Wordt 24 uur voor het voorstel sluit verstuurd en kan je laatste kans zijn om deel te nemen aan de discussie.
     submit: Instellingen bijwerken
   explore:
     header: Ontdek openbare groepen
@@ -921,7 +912,6 @@ nl-NL:
       turn_off_notifications_html: "<a href='%{url}'>Zet e-mails uit</a> voor deze discussie."
       turn_off_notifications_text: "Zet e-mails uit voor deze discussie: %{url}"
       turn_on_notifications_html: "<a href='%{url}'>Zet e-mails aan voor deze discussie</a> om nieuwe activiteit te ontvangen."
-      turn_on_notifications_text: "Zet e-mail aan om nieuwe activiteit binnen deze discussie te ontvangen: %{url}"
       change_email_preferences_html: "Verander jouw <a href='%{email_preferences_url}'>e-mail voorkeuren</a> om je uit te schrijven van deze e-mails."
       change_preferences: "Verander je e-mail voorkeuren:"
       new_motion: "%{who} stelde voor:"

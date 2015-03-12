@@ -1,16 +1,20 @@
 es:
   email_settings:
     title: Configuración del correo electrónico
-    group_volume_level: "Configurar todos mis grupos al siguiente volumen: "
-    group_volume_leve_description: "Para configurar todos tus grupos a la vez al mismo volumen, utiliza esta opción."
+    group_volume: Volumen del grupo
+    group_volume_description: El Volumen controla cuanto correo electrónico recibes de un grupo. Configura el Volumen para todos tus grupos.
+    to_change_one_group: "Para cambiar el volumen de solo uno de tus grupo, visita la pagina del mismo."
     discussion_activity: Cambiar el volumen de las discusiones cuando participo.
-    yesterday_on_loomio: Ayer en Loomio
-    yesterday_on_loomio_description: "Enviado a las 6am de cada día, este correo electrónico contiene toda la actividad no leída del día de ayer."
-    email_when_mentioned: "@menciones "
-    email_when_mentioned_description: "Cuando alguien quiere llamar tu atención te @mencionaran. Si apagas esto puede que la gente no sea capaz de contactarte."
-    proposal_closing_soon: La propuesta está por cerrar
-    proposal_closing_soon_description: "Enviado 24 horas antes de que cierre una propuesta, esta puede ser tu ultima oportunidad de participar en una decisión."
+    discussion_activity_description: "Cuando participas en una discusión, la configuración de volumen sera cambiada a \"Alto\", toda actividad futura te sera enviada por correo electrónico. "
+    yesterday_on_loomio: "Envíenme un sumario diario de actividades "
+    yesterday_on_loomio_description: "Cada día a las 6am, envíenme un correo electrónico con las actividades no leídas del día anterior. Esta una forma muy buena de ponerte al día con tus grupos, y contiene todo lo que no esta silenciado."
+    email_when_mentioned: "Envíenme un correo electrónico cuando soy @mencionado"
+    email_when_mentioned_description: "Cuando alguien quiere llamar tu atención, te @mencionaran. Te recomendamos dejar esta configuración seleccionada, para que recibas un correo electrónico cuando esto suceda. "
+    proposal_closing_soon: Envíenme un correo electrónico antes de que cierre una propuesta
+    proposal_closing_soon_description: "24 horas antes de que cierre una propuesta, sin importar el volumen, recibirás un correo electrónico con las ultimas informaciones sobre dicha propuesta."
     submit: Actualizar configuración.
+    no_change: Sin cambio
+    no_change_description: "Dejar el nivel de volumen de mi grupo como esta. "
   explore:
     header: Explorar grupos públicos
   try_it:
@@ -427,6 +431,25 @@ es:
       click_to_unfollow: Clic para dejar de seguir el grupo
       following_details: "Serás notificado sobre cada tema en este grupo "
       not_following_details: Serás notificado sobre los temas en los que estás participando.
+  networks:
+    threads_header: todas los hilos públicos en esta red.
+    groups_header: todos los grupos en esta red
+    members_count: "%{count} miembros"
+    membership_requests_header: "Membresías solicitadas para %{network}"
+    join_header: Adhiere tu grupo a la red
+    request_to_join: Pide unirte a la Red
+    current_requests: Peticiones actuales
+    previous_requests: Peticiones anteriores
+    approve: "Aprobar "
+    approved: "Aprobado por %{name}"
+    decline: "Rechazar "
+    declined: "Rechazado por %{name}"
+    threads: Hilos
+    groups: Grupos
+    join: Unirse
+    request_created: Gracias por pedir unirte a la red. Los coordinadores de la red consideraran tu pedido en breve.
+    request_approved: "Solicitud de membresía a la red aprobada. "
+    request_declined: Solicitud de membresía a la red rechazada.
   group_request:
     header: Empieza un grupo
     desc: "Para tomar decisiones en Loomio, el primer paso es iniciar un grupo."
@@ -439,9 +462,13 @@ es:
       body_html: "Te hemos enviado un correo electrónico con una invitación a comenzar tu grupo.\n\nSi no ves nada en tu bandeja de entrada en unos minutos, escríbenos a <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
   volume:
     volume: "Volumen "
+    loud: Alto
     normal: Normal
+    quiet: Bajo
+    mute: "Silenciado "
   discussion_volume:
     loud_description: "Enviar correo electrónico cuando hay actividad en este hilo. "
+    normal_description: "Solo enviar correo electrónico cuando una propuesta es creada, esta por cerrar o se ha notificado sobre un resultado."
     quiet_description: No enviar correo electrónico sobre este hilo.
     mute_description: "Ocultar este hilo en el panel de control y no notificarme a no ser que sea @mencionado."
   group_volume:
@@ -913,6 +940,10 @@ es:
     thread_mailer:
       footer_text: "Responder a este correo electrónico directamente o verlo en %{hostname}:"
       reply_or_view_online_html: "Responde a este correo electrónico directamente o <a href='%{url}'>velo en %{hostname}</a>."
+      turn_off_notifications_html: "<a href='%{url}'>Desactivar el correo electrónico</a> para esta discusión."
+      turn_off_notifications_text: "Desactivar el correo electrónico para esta discusión: %{url}"
+      turn_on_notifications_html: "<a href='%{url}'>Activar el correo electrónico para esta discusión</a> para recibir la actividad futura."
+      turn_on_notifications_text: "Activar el correo electrónico para recibir la actividad futura en esta discusión: %{url}"
       change_email_preferences_html: "Cambia tus <a href='%{email_preferences_url}'>preferencias de correo electrónico</a> para darte de baja de estos correos electrónicos."
       change_preferences: Cambiar sus preferencias de email
       new_motion: "%{who} propuso:"
