@@ -14,9 +14,3 @@
 
     .discussions-show-more.card-minor-action
       %a{ng-hide: 'lastPage', ng-click: 'getNextPage()', href: '#', translate: 'common.action.show_more'}
-    .discussions-new-thread{ng-if: '::canStartDiscussions()'}
-      .row
-        .col-xs-12.col-sm-6
-          %a.btn.btn-success.btn-block.btn-icon{href: '#', ng_click: 'openForm()'}
-            %i.fa.fa-lg.fa-plus>
-            %span{translate: 'common.action.new_thread' }
