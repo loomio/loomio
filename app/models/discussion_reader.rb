@@ -4,12 +4,9 @@ class DiscussionReader < ActiveRecord::Base
   belongs_to :user
   belongs_to :discussion
 
-  validates_presence_of :discussion, :user
-  validates_uniqueness_of :user_id, scope: :discussion_id
-
   scope :for_user, -> (user) { where(user_id: user.id) }
 
-  def self.for(user: nil, discussion: nil)
+  def self.for(user: , discussion: )
     if user.is_logged_in?
       begin
         find_or_create_by(user_id: user.id, discussion_id: discussion.id)
