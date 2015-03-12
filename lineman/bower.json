@@ -14,7 +14,7 @@
     "angular-translate-loader-url": "~2.4.0",
     "angular-markdown-directive": "~0.3.0",
     "angular-bootstrap": "0.11.2",
-    "ng-file-upload": "latest",
+    "ng-file-upload": "~3.2.4",
     "tc-angular-chartjs": "~1.0.9",
     "ment.io": "~0.9.15",
     "lokijs": "techfort/lokijs#v1.1.0",

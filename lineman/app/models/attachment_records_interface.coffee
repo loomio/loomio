@@ -27,7 +27,7 @@ angular.module('loomioApp').factory 'AttachmentRecordsInterface', ($upload, Base
       url:    @credentials.url
       method: 'POST'
       file:   file
-      data:
+      fields:
         utf8:           '✓',
         acl:            @credentials.acl,
         policy:         @credentials.policy,
