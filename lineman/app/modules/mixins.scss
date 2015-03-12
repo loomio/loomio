@@ -11,6 +11,7 @@ $loomio-orange: #F6A82B;
 $light-grey: #F5F5F5;
 $kinda-dark-grey: #545454;
 
+$main-max-width: 640px;
 $thread-max-width: 640px;
 $group-page-max-width: 640px;
 $sidebar-width: 320px;
@@ -83,4 +84,9 @@ $sidebar-width: 320px;
     margin: 10px 0 0 0;
     clear: both;
   }
+}
+
+@mixin thinRoundedBorder {
+  border: 1px solid $border-color;
+  border-radius: 2px;
 }

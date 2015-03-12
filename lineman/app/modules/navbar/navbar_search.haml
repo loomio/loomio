@@ -1,4 +1,4 @@
-%li.navbar-search.lmo-navbar-item.pull-left
+%li.navbar-search
   .navbar-search-input-wrapper
     %input.navbar-search-input.form-control{ng-click: '$event.stopPropagation()', ng-model: 'query', ng-model-options: '{debounce: {default: 300, blur: 100}}', ng-change: 'getSearchResults(query)', placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: 'setFocused(true)', ng-blur: 'setFocused(false)'}
     %i.fa.fa-lg.fa-fw.fa-search.navbar-search-input-icon{ng-hide: 'query'}

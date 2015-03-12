@@ -1,18 +1,19 @@
 .navbar-search {
+  height: 40px;
+  max-width: $main-max-width;
+  margin: 0 auto;
+  position: relative;
 }
 
 .navbar-search-input-wrapper{
-}
-
-.navbar-search-input{
-  background-color: $background-color;
 }
 
 .navbar-search-input {
   color: #999999;
   position: relative;
   top: 2px;
-  width: 300px;
+  width: 100%;
+  background-color: $background-color;
 }
 
 .navbar-search-input-icon {
@@ -22,11 +23,13 @@
 }
 
 .navbar-search-results {
+  @include thinRoundedBorder;
   position: absolute;
-  top: 48px;
-  left: 5px;
+  background-color: white;
+
+  top: 38px;
   text-align: left;
-  min-width: 500px;
+  max-width: $main-max-width;
   box-shadow: 2px 2px 2px #ccc;
   overflow-y: scroll;
   max-height: 800px;
