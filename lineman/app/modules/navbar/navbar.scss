@@ -8,11 +8,11 @@
   position: fixed;
 }
 
-.loomio-nav {
+.lmo-navbar-inner {
   position: relative;
 }
 
-.loomio-nav-items{
+.lmo-navbar-items{
   float: left;
   list-style: none;
   margin: 0;
@@ -20,23 +20,26 @@
   width: 100%;
   text-align: center;
 }
-.loomio-nav-items li{
+.lmo-navbar-items li{
   float: left;
 }
-.loomio-nav-items li.open a{ border-bottom: 4px solid $loomio-orange; }
-.loomio-nav-items li.open li a{ border-bottom: none; }
-a.loomio-nav-btn{
+.lmo-navbar-items li.open a{ border-bottom: 4px solid $loomio-orange; }
+.lmo-navbar-items li.open li a{ border-bottom: none; }
+
+a.lmo-navbar-btn{
   width: 40px;
   height: 40px;
   margin: 4px;
   display: block;
 }
-.loomio-nav-btn i{
+
+.lmo-navbar-btn i{
   color: $meta-text-color;
   font-size: 26px;
   line-height: 40px;
 }
-.loomio-nav-logo {
+
+.lmo-navbar-logo {
   width: 40px;
   height: 40px;
   float: left;
@@ -44,7 +47,8 @@ a.loomio-nav-btn{
   background-position: center;
   background-image: url(/img/lbow_round_34.png);
 }
-.loomio-nav-dropdown{
+
+.lmo-navbar-dropdown{
   top: 44px;
   padding: 0;
   margin: 0 -10px;
@@ -81,18 +85,18 @@ a.loomio-nav-btn{
 #user-options-dropdown .media-body{ vertical-align: middle; }
 
 
-.loomio-nav-btn.has-badge{
+.lmo-navbar-btn.has-badge{
   position: relative;
 }
 
-.loomio-nav-btn.has-badge .badge{
+.lmo-navbar-btn.has-badge .badge{
   position: absolute;
   top: 0;
   right: 0;
   background: #4A90E2;
 }
 
-.navbar-search-input{
+.lmo-navbar-search-input{
   padding: 5px;
   @media (max-width: 320px){ padding: 5px 15px; }
 }

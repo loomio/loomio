@@ -1,23 +1,22 @@
-.container#main
-  .form-card
-    %h1
-      %a{href:'/g/{{group.key}}'} {{group.name}}
-    %h2{translate: 'memberships_page.members'}
+.form-card
+  %h1
+    %a{href:'/g/{{group.key}}'} {{group.name}}
+  %h2{translate: 'memberships_page.members'}
 
-    %table.members-page-table
-      %thead
-        %th
-        %th{translate: 'memberships_page.name_label'}
-        %th{ng-show: 'userIsAdmin()', translate: 'memberships_page.email_label'}
-        %th{ng-show: 'userIsAdmin()', translate: 'memberships_page.coordinator_label'}
-        %th{ng-show: 'userIsAdmin()', translate: 'memberships_page.remove_member_label'}
-      %tr.members-page-member{ng-repeat: 'membership in group.memberships()'}
-        %td
-          %user_avatar{user: 'membership.user()'}
-        %td {{membership.user().name}}
-        %td{ng-show: 'userIsAdmin()'} {{membership.user().email}}
-        %td{ng-show: 'userIsAdmin()'}
-          %button.btn.btn-default{ng-show: '!membership.admin', translate: 'memberships_page.add_coordinator', ng-click: 'toggleMembershipAdmin(membership)'}
-          %button.btn.btn-alert{ng-show: 'membership.admin', translate: 'memberships_page.remove_coordinator', ng-click: 'toggleMembershipAdmin(membership)'}
-        %td{ng-show: 'userIsAdmin()'}
-          %button.btn.btn-danger{translate: 'memberships_page.remove_member', ng-click: 'destroyMembership(membership)'}
+  %table.members-page-table
+    %thead
+      %th
+      %th{translate: 'memberships_page.name_label'}
+      %th{ng-show: 'userIsAdmin()', translate: 'memberships_page.email_label'}
+      %th{ng-show: 'userIsAdmin()', translate: 'memberships_page.coordinator_label'}
+      %th{ng-show: 'userIsAdmin()', translate: 'memberships_page.remove_member_label'}
+    %tr.members-page-member{ng-repeat: 'membership in group.memberships()'}
+      %td
+        %user_avatar{user: 'membership.user()'}
+      %td {{membership.user().name}}
+      %td{ng-show: 'userIsAdmin()'} {{membership.user().email}}
+      %td{ng-show: 'userIsAdmin()'}
+        %button.btn.btn-default{ng-show: '!membership.admin', translate: 'memberships_page.add_coordinator', ng-click: 'toggleMembershipAdmin(membership)'}
+        %button.btn.btn-alert{ng-show: 'membership.admin', translate: 'memberships_page.remove_coordinator', ng-click: 'toggleMembershipAdmin(membership)'}
+      %td{ng-show: 'userIsAdmin()'}
+        %button.btn.btn-danger{translate: 'memberships_page.remove_member', ng-click: 'destroyMembership(membership)'}

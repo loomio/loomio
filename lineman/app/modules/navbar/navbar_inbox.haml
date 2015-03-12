@@ -1,8 +1,8 @@
 %li.visible-xs{dropdown: '', on-toggle: 'toggleInbox(open)'}
-  %a.loomio-nav-btn.has-badge.dropdown-toggle.cuke-nav-inbox-btn{href: '#'}
+  %a.lmo-navbar-btn.has-badge.dropdown-toggle{href: '#'}
     / lets put unread counts in here:
     %span.badge
     %i.fa.fa-lg.fa-fw.fa-inbox
     %span.hide Inbox
-  .dropdown-menu.loomio-nav-dropdown#inbox-dropdown{role: 'menu'}
+  .dropdown-menu.lmo-navbar-dropdown#inbox-dropdown{role: 'menu'}
     %inbox{ng_show: 'showInbox'}
