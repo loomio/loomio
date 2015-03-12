@@ -1,14 +1,13 @@
 = simple_form_for @group_request do |f|
   = f.input :admin_name
   = f.input :admin_email
-  = f.input :name, placeholder: placeholder
-  = f.input :is_commercial, as: :select, collection: [[t(:'group_request.commercial_use_option'), true],[t(:'group_request.non_commercial_use_option'), false]], prompt: t(:'common.select')
+  = f.input :name
+  - if show_loomio_org_marketing
+    = f.input :is_commercial, as: :select, collection: [[t(:'group_request.commercial_use_option'), true],[t(:'group_request.non_commercial_use_option'), false]], prompt: t(:'common.select')
+
+  - else
+    = f.input :is_commercial, as: :hidden, input_html: { value: false }
   = f.input :description, as: :text, required: false
   = f.input :payment_plan, as: :hidden
-  - if using_commercial_page?
-    %a{ :class => 'btn btn-info btn-lg commercial-page-show', :data => { :target => "#commercial" }, id: 'show-splash' }
-      = t(:next)
-    = render 'commercial', f: f
-    = render 'non_commercial', f: f
-  - else
-    = f.submit t(:"common.start_group"), class: 'btn btn-info btn-lg', :data => { :disable_with => t(:"common.start_group") }, id: 'sign-up-submit'
+
+  = f.submit t(:"common.start_group"), class: 'btn btn-info', :data => { :disable_with => t(:"common.start_group") }, id: 'sign-up-submit'
