@@ -2,41 +2,40 @@
   z-index: 1000;
   background: white;
   height: 48px;
-  border-bottom: 1px solid #bbb;
-  box-shadow: 0 0 10px #aaa;
+  border-bottom: 1px solid $border-color;
+  padding: 5px 0px;
+  /*box-shadow: 0 0 10px #aaa;*/
   width: 100%;
   position: fixed;
 }
 
-.lmo-navbar-inner {
-  position: relative;
-}
-
 .lmo-navbar-items{
-  float: left;
   list-style: none;
   margin: 0;
   padding: 0;
   width: 100%;
-  text-align: center;
 }
-.lmo-navbar-items li{
-  float: left;
-}
-.lmo-navbar-items li.open a{ border-bottom: 4px solid $loomio-orange; }
-.lmo-navbar-items li.open li a{ border-bottom: none; }
 
-a.lmo-navbar-btn{
+.lmo-navbar-item{
   width: 40px;
   height: 40px;
-  margin: 4px;
-  display: block;
+  margin: 0 0 0 10px;
 }
 
-.lmo-navbar-btn i{
-  color: $meta-text-color;
-  font-size: 26px;
+.lmo-navbar-item--selected {
+  border-bottom: 4px solid $loomio-orange;
+}
+
+/*.lmo-navbar-items .open li a{ border-bottom: none; }*/
+
+.lmo-navbar-btn{
+  /*font-size: 26px;*/
   line-height: 40px;
+}
+
+.lmo-navbar-btn__icon{
+  color: $meta-text-color;
+  font-size: 19px;
 }
 
 .lmo-navbar-logo {
@@ -60,12 +59,14 @@ a.lmo-navbar-btn{
 }
 
 #inbox-dropdown{ left: 49px; }
+
 #search-dropdown{
   left: 48px;
   @media (max-width: $screen-xs-max){
     left: 96px;
   }
 }
+
 #notifications-dropdown{ right: 47px; }
 @media (max-width: 380px){
   #inbox-dropdown, #search-dropdown{ left: 0; }
@@ -96,8 +97,4 @@ a.lmo-navbar-btn{
   background: #4A90E2;
 }
 
-.lmo-navbar-search-input{
-  padding: 5px;
-  @media (max-width: 320px){ padding: 5px 15px; }
-}
 

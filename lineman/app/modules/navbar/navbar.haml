@@ -1,12 +1,11 @@
-%header.lmo-navbar
-  %nav.lmo-navbar-inner.clearfix{role: 'navigation'}
-    %ul.lmo-navbar-items
-      %li
-        %a.lmo-navbar-btn{href: '/'}
-          .lmo-navbar-logo
-      %navbar_inbox
-      %navbar_search
-      %navbar_user_options
-      %navbar_notifications{ng-controller: 'NavbarNotificationsController'}
-      %navbar_start_discussion
+%header.lmo-navbar{role: 'navigation'}
+  %ul.lmo-navbar-items
+    %li.lmo-navbar-item.pull-left
+      %a.lmo-navbar-btn{href: '/'}
+        .lmo-navbar-logo
+    %navbar_search
+    -#%navbar_inbox
+    %navbar_user_options
+    %navbar_notifications{ng-controller: 'NavbarNotificationsController'}
+    %navbar_start_discussion
   %flash{modal: 'false'}

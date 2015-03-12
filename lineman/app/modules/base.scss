@@ -1,7 +1,7 @@
 body {
   @include fontHelvetica;
   @include fontMedium;
-  background-color: #f1f1f1;
+  background-color: $background-color;
   word-break: break-word;
 }
 

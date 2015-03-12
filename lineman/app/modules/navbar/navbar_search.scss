@@ -1,9 +1,17 @@
 .navbar-search {
-  position: relative;
+}
+
+.navbar-search-input-wrapper{
+}
+
+.navbar-search-input{
+  background-color: $background-color;
 }
 
 .navbar-search-input {
+  color: #999999;
   position: relative;
+  top: 2px;
   width: 300px;
 }
 
@@ -31,6 +39,7 @@
 .search-result {
   padding: 10px;
 }
+
 .search-result-item {
   padding-bottom: 10px;
 }

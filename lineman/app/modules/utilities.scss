@@ -1,5 +1,9 @@
 .menu-image { padding: 15px; }
 
+.debug {
+  border: 1px solid #000;
+}
+
 .font-bold {
   font-weight: bold;
 }
@@ -53,7 +57,7 @@
 .avatar-initials{
   width: 30px;
   height: 30px;
-  background: $thread-border-color;
+  background: $border-color;
   border: 1px solid #aaa;
   text-align: center;
   line-height: 30px;
