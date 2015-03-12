@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'MembershipsPageController', ($scope, group, UserAuthService) ->
+angular.module('loomioApp').controller 'MembershipsPageController', ($scope, group, Records) ->
   $scope.group = group
   Records.memberships.fetchByGroup group
 
