@@ -1,17 +1,20 @@
 pt-BR:
   email_settings:
     title: Configurações de e-mail
-    group_volume_level: "Definir todos os meus grupos para o seguinte nível de volume:"
-    group_volume_leve_description: "Para definir todos os seus grupos para o mesmo nível de volume, use esta opção."
+    group_volume: Volume do grupo
+    group_volume_description: "O volume controla a quantidade de e-mail que você recebe de um grupo. Defina o volume de todos os seus grupos:"
+    to_change_one_group: "Para alterar o volume de apenas um de seus grupos, visite a página do grupo."
     discussion_activity: Alterar o volume da discussão quando participo
-    discussion_activity_description: "Quando você participa de uma discussão, a definição do volume será alterado para 'Alto', então todas as atividade serão enviadas para você."
-    yesterday_on_loomio: Ontem no Loomio
-    yesterday_on_loomio_description: "Enviado para você às 6h todos os dia, este e-mail contém atividades não lidas ontem."
-    email_when_mentioned: "@menções"
-    email_when_mentioned_description: "Quando alguém quer chamar sua atenção, eles vão @mencionar você. Se você desligar isso, então as pessoas talvez não consigam entrar em contato com você."
-    proposal_closing_soon: Proposta fechando em breve
-    proposal_closing_soon_description: "Enviado 24 horas antes de uma proposta fechada, esta pode ser sua última chance de participar de uma decisão."
+    discussion_activity_description: "Quando você participa de uma discussão, a definição do volume será alterado para 'Alto', então todas as atividade serão imediatamente enviadas para você."
+    yesterday_on_loomio: Envie-me um resumo da atividade de cada dia
+    yesterday_on_loomio_description: "Todos os dias às 06:00, envia um e-mail com a atividade não lida de ontem. Esta é uma ótima maneira de recuperar o atraso em seus grupos e contém tudo o que não está mudo."
+    email_when_mentioned: "Envie-me um email quando eu for @mencionado"
+    email_when_mentioned_description: "Quando alguém quer chamar sua atenção, eles vão @mencionar você. Recomendamos que você deixe esta opção marcada para que receba um e-mail quando isso acontecer."
+    proposal_closing_soon: Envie-me um e-mail antes de uma proposta encerrar
+    proposal_closing_soon_description: "24 horas antes de uma proposta ser encerrada, independentemente do volume, você receberá um e-mail com as informações mais recentes sobre a proposta."
     submit: Atualizar configurações
+    no_change: Sem mudança
+    no_change_description: Deixe o nível de volume dos meus grupos como está.
   explore:
     header: Conheça grupos públicos
   try_it:
@@ -428,6 +431,26 @@ pt-BR:
       click_to_unfollow: Clicar para deixar de seguir o grupo
       following_details: Você será notificado sobre todos os tópicos nesse grupo
       not_following_details: Você será notificado sobre os tópicos que está participando
+  networks:
+    threads_header: todos os tópicos públicos nesta rede
+    groups_header: todos os grupos nesta rede
+    members_count: "%{count} membros"
+    membership_requests_header: "Pedidos de adesão para %{network}"
+    join_header: Adicione o seu grupo para a rede
+    request_to_join: Pedido para se juntar Rede
+    current_requests: Pedidos atuais
+    previous_requests: Pedidos anteriores
+    approve: Aprovar
+    approved: "Aprovado por %{name}"
+    decline: Recusar
+    declined: "Recusado por %{name}"
+    threads: Tópicos
+    groups: Grupos
+    join: Entre
+    manage: "Gerenciar (%{count} pending requests)"
+    request_created: Obrigado por pedir para entrar na rede. Os coordenadores da rede irão analisar o seu pedido em breve.
+    request_approved: Pedido aprovado como membro da rede.
+    request_declined: Pedido reprovado como membro da rede.
   group_request:
     header: Iniciar um grupo
     desc: "Para começar a tomar decisões no Loomio, o primeiro passo é iniciar um grupo:"
@@ -921,7 +944,7 @@ pt-BR:
       turn_off_notifications_html: "<a href='%{url}'>Desligar e-mails</a> para esta discussão."
       turn_off_notifications_text: "Desligar e-mails para esta discussão: %{url}"
       turn_on_notifications_html: "<a href='%{url}'>Ligar e-mails nesta discussão</a> para receber atividades."
-      turn_on_notifications_text: "Ligar e-mails para receber atividades nesta discussão: %{url}"
+      turn_on_notifications_text: "Ligar e-mail para receber atividades nesta discussão: %{url}"
       change_email_preferences_html: "Modifique suas <a href='%{email_preferences_url}'>preferências de e-mail</a> para cancelar subscrições destes e-mails."
       change_preferences: "Modifique suas preferências de e-mail:"
       new_motion: "%{who} propôs:"

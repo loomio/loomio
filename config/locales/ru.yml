@@ -1,4 +1,8 @@
 ru:
+  email_settings:
+    title: Настройки Email
+    submit: Обновить настройки
+    no_change: Изменений нет
   explore:
     header: Публичные группы
   try_it:
@@ -189,6 +193,7 @@ ru:
     about: О нас
     blog: Блог
     contact: Контакты
+    help: Помощь
     privacy: Конфиденциальность
     pricing: Цены
     public_groups: Общедоступные группы
