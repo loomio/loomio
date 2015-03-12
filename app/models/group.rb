@@ -456,7 +456,7 @@ class Group < ActiveRecord::Base
   end
 
   def organisation_motions_count
-    Discussion.published.where(group_id: [org_group_ids]).sum(:motions_count)
+    Discussion.published.where(group_id: org_group_ids).sum(:motions_count)
   end
 
   def org_group_ids

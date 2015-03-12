@@ -39,8 +39,6 @@ When(/^I complete and submit the form$/) do
   @group_name = "Hermans Herbs"
   fill_in :group_name, with: @group_name
   fill_in :group_description, with: "A collection of the finest herbs"
-  click_on 'Next'
-  click_on 'Next'
   click_on 'Start group!'
 end
 
