@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311025406) do
+ActiveRecord::Schema.define(version: 20150312200324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -186,7 +186,7 @@ ActiveRecord::Schema.define(version: 20150311025406) do
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
-  add_index "discussion_readers", ["user_id", "discussion_id"], name: "index_discussion_read_logs_on_user_id_and_discussion_id", using: :btree
+  add_index "discussion_readers", ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true, using: :btree
   add_index "discussion_readers", ["user_id"], name: "index_motion_read_logs_on_user_id", using: :btree
 
   create_table "discussion_search_vectors", force: :cascade do |t|
