@@ -1,6 +1,11 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $modal, discussion, Records, MessageChannelService, UserAuthService, DiscussionFormService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $document, $modal, discussion, Records, MessageChannelService, UserAuthService, DiscussionFormService) ->
   $scope.discussion = discussion
   $scope.group = discussion.group()
+
+  # if first time visiting the page
+  $document.scrollTop(0, 500)
+  console.log 'scrolling'
+  # if returning
 
   # maybe not needed
   onMessageReceived = ->
