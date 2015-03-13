@@ -377,10 +377,14 @@ class Group < ActiveRecord::Base
   end
 
   def find_or_create_membership(user, inviter)
-    Membership.find_or_create_by(user_id: user.id, group_id: id) do |m|
-      m.group = self
-      m.user = user
-      m.inviter = inviter
+    begin
+      Membership.find_or_create_by(user_id: user.id, group_id: id) do |m|
+        m.group = self
+        m.user = user
+        m.inviter = inviter
+      end
+    rescue ActiveRecord::RecordNotUnique
+      retry
     end
   end
 
@@ -456,7 +460,7 @@ class Group < ActiveRecord::Base
   end
 
   def organisation_motions_count
-    Discussion.published.where(group_id: [org_group_ids]).sum(:motions_count)
+    Discussion.published.where(group_id: org_group_ids).sum(:motions_count)
   end
 
   def org_group_ids
@@ -487,17 +491,8 @@ class Group < ActiveRecord::Base
     end
   end
 
-  # a bit nasty but no one really cares/has time to clean up the group_request stuff
-  def is_commercial
-    if is_subgroup?
-      parent.is_commercial
-    else
-      if group_request.present?
-        group_request.is_commercial
-      else
-        nil
-      end
-    end
+  def is_referral
+    !group_request.present? and !is_subgroup?
   end
 
   def financial_nature

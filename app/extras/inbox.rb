@@ -75,8 +75,7 @@ class Inbox
 
   def unread_discussions_for(group_or_groups, exclude_ids: [])
     q = Queries::VisibleDiscussions.
-      new(user: @user, groups: group_or_groups).
-      unread
+      new(user: @user, groups: group_or_groups).not_muted.unread
     q = q.where('discussions.id not in (?)', exclude_ids) if exclude_ids.any?
 
     q.last_activity_after(6.weeks.ago).

@@ -3,6 +3,9 @@ Feature: Start new group
   As a group coordinator
   I want to create a new group
 
+Background:
+  Given I want to show the loomio.org marketing
+
 Scenario: Guest submits invalid start group form
   Given I am a guest
   And I am on the home page of the website

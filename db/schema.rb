@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311025406) do
+ActiveRecord::Schema.define(version: 20150312203402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -173,10 +173,10 @@ ActiveRecord::Schema.define(version: 20150311025406) do
   add_index "did_not_votes", ["user_id"], name: "index_did_not_votes_on_user_id", using: :btree
 
   create_table "discussion_readers", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",                              null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "discussion_id"
+    t.integer  "discussion_id",                        null: false
     t.datetime "last_read_at"
     t.integer  "read_comments_count",      default: 0, null: false
     t.integer  "read_items_count",         default: 0, null: false
@@ -186,7 +186,7 @@ ActiveRecord::Schema.define(version: 20150311025406) do
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
-  add_index "discussion_readers", ["user_id", "discussion_id"], name: "index_discussion_read_logs_on_user_id_and_discussion_id", using: :btree
+  add_index "discussion_readers", ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true, using: :btree
   add_index "discussion_readers", ["user_id"], name: "index_motion_read_logs_on_user_id", using: :btree
 
   create_table "discussion_search_vectors", force: :cascade do |t|
@@ -352,6 +352,7 @@ ActiveRecord::Schema.define(version: 20150311025406) do
     t.boolean  "members_can_start_discussions",                  default: true,           null: false
     t.boolean  "members_can_create_subgroups",                   default: true,           null: false
     t.integer  "creator_id"
+    t.boolean  "is_commercial"
   end
 
   add_index "groups", ["archived_at", "id"], name: "index_groups_on_archived_at_and_id", using: :btree

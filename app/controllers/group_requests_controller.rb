@@ -15,16 +15,15 @@ class GroupRequestsController < BaseController
   end
 
   def new
-    build_group_request
-    @group_request.payment_plan = 'undetermined'
+    if user_signed_in?
+      redirect_to new_group_path
+    else
+      build_group_request
+      @group_request.payment_plan = 'undetermined'
+    end
   end
 
   private
-
-  def using_commercial_page?
-    ENV['SHOW_COMMERCIAL_PAGE'].present?
-  end
-  helper_method :using_commercial_page?
 
   def build_group_request
     @group_request = GroupRequest.new
