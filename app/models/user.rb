@@ -6,10 +6,12 @@ class User < ActiveRecord::Base
   require 'digest/md5'
 
   AVATAR_KINDS = %w[initials uploaded gravatar]
-  LARGE_IMAGE = 170
-  MED_LARGE_IMAGE = 70
-  MEDIUM_IMAGE = 35
-  SMALL_IMAGE = 25
+  IMAGE_SIZES = {
+    large: 170,
+    medlarge: 70,
+    medium: 35,
+    small: 25
+  }.with_indifferent_access.freeze
   MAX_AVATAR_IMAGE_SIZE_CONST = 10.megabytes
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
@@ -20,11 +22,12 @@ class User < ActiveRecord::Base
 
   has_attached_file :uploaded_avatar,
     styles: {
-              large: "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
-              medlarge: "#{User::MED_LARGE_IMAGE}x#{User::MED_LARGE_IMAGE}#",
-              medium: "#{User::MEDIUM_IMAGE}x#{User::MEDIUM_IMAGE}#",
-              small: "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#",
-            }
+              large:    "#{IMAGE_SIZES[:large]}x#{IMAGE_SIZES[:large]}",
+              medlarge: "#{IMAGE_SIZES[:medlarge]}x#{IMAGE_SIZES[:medlarge]}",
+              medium:   "#{IMAGE_SIZES[:medium]}x#{IMAGE_SIZES[:medium]}",
+              small:    "#{IMAGE_SIZES[:small]}x#{IMAGE_SIZES[:small]}"
+            },
+    default_url: "/avatars/:style/missing.png"
   validates_attachment :uploaded_avatar,
     size: { in: 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
     content_type: { content_type: /\Aimage/ },
@@ -287,26 +290,12 @@ class User < ActiveRecord::Base
     I18n.t(:inactive_html, path_to_contact: '/contact').html_safe
   end
 
-  def avatar_url(size=nil,avatar_kind=nil)
-    size = size ? size.to_sym : :medium
-    case size
-    when :small
-      pixels = User::SMALL_IMAGE
-    when :medium
-      pixels = User::MEDIUM_IMAGE
-    when :"med-large"
-      pixels = User::MED_LARGE_IMAGE
-    when :large
-      pixels = User::LARGE_IMAGE
-    else
-      pixels = User::SMALL_IMAGE
-    end
+  def avatar_url(size = :medium)
+    gravatar(size) || uploaded_avatar.url(size)
+  end
 
-    if avatar_kind == "gravatar"
-      gravatar_url(:size => pixels)
-    else
-      uploaded_avatar.url(size)
-    end
+  def gravatar(size = nil)
+    gravatar_url size: IMAGE_SIZES.fetch(size, :medium) if self.avatar_kind == 'gravatar'
   end
 
   def locale
@@ -318,7 +307,7 @@ class User < ActiveRecord::Base
   end
 
   def has_uploaded_image?
-    uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
+    uploaded_avatar.url(:medium) != '/avatars/medium/missing.png'
   end
 
   def has_gravatar?(options = {})
