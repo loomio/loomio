@@ -14,7 +14,7 @@
     %lintel{discussion: 'discussion'}
     .media.thread-origin
       .media-left.thread-origin-icon
-        %img.thread-origin-group-logo{src: "group.logoUrlSmall}}"}
+        %img.thread-origin-group-logo{src: "{{group.logoUrl()}}"}
       .media-body.thread-origin-details
         %a.cuke-group-parent-name{ng_show: 'group.parentId', href: '/g/{{group.parent().key}}'}
           {{group.parentName()}}
