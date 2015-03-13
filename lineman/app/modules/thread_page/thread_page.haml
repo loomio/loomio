@@ -1,0 +1,45 @@
+.thread-page
+  .thread-actions.pull-right
+    .dropdown.thread-notification-level
+      %notification_volume_dropdown{translate-root: 'discussion', discussion: 'discussion'}
+    .dropdown{ng-if: 'showContextMenu()'}
+      %a.fat-finger.dropdown-toggle{href:''}
+        %i.fa.fa-fw.fa-chevron-down.pull-right
+      %ul.dropdown-menu.dropdown-menu-right
+        %li
+          %a{href: '', ng-click: 'editDiscussion()', translate: 'common.action.edit', ng-if: 'canEditDiscussion($scope.discussion)'}
+
+  .thread-discussion
+    %h1 {{discussion.title}}
+    %lintel{discussion: 'discussion'}
+    .media.thread-origin
+      .media-left.thread-origin-icon
+        %img.thread-origin-group-logo{src: "group.logoUrlSmall}}"}
+      .media-body.thread-origin-details
+        %a.cuke-group-parent-name{ng_show: 'group.parentId', href: '/g/{{group.parent().key}}'}
+          {{group.parentName()}}
+        %span{ng_show: 'group.parentId'}> >
+        %a.cuke-group-name{href: '/g/{{group.key}}'}
+          {{group.name}}
+        %br
+        %span{translate: 'discussion.started_by', translate-value-name: '{{::discussion.authorName()}}'}
+        %timeago.nowrap{timestamp: '::discussion.createdAt' }>
+        ·
+        %span.nowrap.discussion-privacy__is-private{ng-show: 'discussion.private'}>
+          %i.fa.fa-lock>
+          %span{translate: 'common.privacy.private'}
+        %span.nowrap.discussion-privacy__is-public{ng-show: '!discussion.private'}>
+          %i.fa.fa-globe>
+          %span{translate: 'common.privacy.public'}
+
+    .thread-discussion-description{btf-markdown: 'discussion.description' }
+
+  %proposals_card{discussion: 'discussion'}
+  %activity_card{discussion: 'discussion'}
+  %comment_form{discussion: 'discussion'}
+
+.thread-container{ng_controller: 'StartProposalCardController', ng-if: 'canStartProposals()'}
+  .thread-start-proposal-card
+    %h3.first Ready to make a decision?
+    %a{href: '#', ng_click: 'openForm()'}
+      Create a proposal

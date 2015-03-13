@@ -1,4 +1,4 @@
-%li.navbar-search
+.navbar-search
   .navbar-search-input-wrapper
     %input.navbar-search-input.form-control{ng-click: '$event.stopPropagation()', ng-model: 'query', ng-model-options: '{debounce: {default: 300, blur: 100}}', ng-change: 'getSearchResults(query)', placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: 'setFocused(true)', ng-blur: 'setFocused(false)'}
     %i.fa.fa-lg.fa-fw.fa-search.navbar-search-input-icon{ng-hide: 'query'}
@@ -26,4 +26,4 @@
         %li.navbar-search-list-item.selector-list-header{ng-show: 'searchResults'}
           %h3{translate: "navbar.search.discussions"}
         %li.navbar-search-list-item.selector-list-item.media{ng-hide: 'searching', ng-repeat: 'searchResult in searchResults | orderBy: ["-priority", "lastActivityAt"]'}
-          %navbar_search_result{result: 'searchResult'}
+          %search_result{result: 'searchResult'}

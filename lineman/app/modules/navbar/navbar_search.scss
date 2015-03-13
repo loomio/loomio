@@ -2,10 +2,10 @@
   height: 40px;
   max-width: $main-max-width;
   margin: 0 auto;
-  position: relative;
 }
 
 .navbar-search-input-wrapper{
+  position: relative;
 }
 
 .navbar-search-input {
@@ -18,8 +18,9 @@
 
 .navbar-search-input-icon {
   position: absolute;
-  top: 15px;
+  top: 13px;
   right: 10px;
+  color: $meta-text-color;
 }
 
 .navbar-search-results {
@@ -27,10 +28,11 @@
   position: absolute;
   background-color: white;
 
-  top: 38px;
+  top: 42px;
   text-align: left;
-  max-width: $main-max-width;
-  box-shadow: 2px 2px 2px #ccc;
+  max-width: ($main-max-width - 5px);
+  width: 100%;
+  box-shadow: 5px 5px 10px #ccc;
   overflow-y: scroll;
   max-height: 800px;
 }
@@ -39,31 +41,3 @@
   background: white;
 }
 
-.search-result {
-  padding: 10px;
-}
-
-.search-result-item {
-  padding-bottom: 10px;
-}
-
-.search-result-group-name {
-  @include fontSmall;
-  color: $kinda-dark-grey;
-  padding-bottom: 5px;
-}
-
-.search-result-title {
-  @include fontMedium;
-  padding-bottom: 5px;
-}
-
-.search-result-child-title {
-  @include fontSmall;
-  padding-bottom: 5px;
-}
-
-.search-result-blurb {
-  @include fontSmall;
-  color: $kinda-dark-grey;
-}
