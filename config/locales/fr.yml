@@ -407,7 +407,6 @@ fr:
       following_details: Vous serez avisé de tous les fils de ce groupe.
       not_following_details: Vous serez informé sur les fils auxquels vous participez.
   group_request:
-    neighbourhood_support_group: "par exemple : Groupe d'aide de quartier"
     commercial_use_option: "dans une entreprise, une association ou sur votre lieu de travail"
     non_commercial_use_option: dans un groupe communautaire ou réseau informel
     please_select_an_option: "S'il vous plaît sélectionner une option"

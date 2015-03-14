@@ -409,7 +409,6 @@ it:
       following_details: Riceverai una notifica per ogni thread in questo gruppo.
       not_following_details: Riceverai una notifica per ogni conversazione a cui stai partecipando.
   group_request:
-    neighbourhood_support_group: es. Gruppo di supporto del quartiere
     commercial_use_option: "in un'impresa, un'organizzazione o sul posto di lavoro"
     non_commercial_use_option: in una comunità o un network informale
     please_select_an_option: "Scegli un'opzione"

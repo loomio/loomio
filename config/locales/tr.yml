@@ -407,7 +407,6 @@ tr:
       following_details: Bu grupta ki her konu hakkında bilgilendirileceksiniz.
       not_following_details: İştirak ettiğiniz konular hakkında bilgilendirileceksiniz.
   group_request:
-    neighbourhood_support_group: "Örnek: Komşu Destek Grubu"
     commercial_use_option: "bir şirkette, formel örgütte ya da işyerinde"
     non_commercial_use_option: bir topluluk grubunda ya da enformel bir ağda
     please_select_an_option: "Lütfen, bir opsiyon seçin"

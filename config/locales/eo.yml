@@ -399,7 +399,6 @@ eo:
       following_details: Vi estos informata pri ĉiu fadeno en ĉi tiu grupo.
       not_following_details: Vi estos informata pri fadenoj en kiuj vi partoprenas.
   group_request:
-    neighbourhood_support_group: ekz. Subtengrupo por la najbararo
     commercial_use_option: "en entrepreno, formala organizo aŭ laborejo"
     non_commercial_use_option: en komunuma grupo aŭ neformala reto
     please_select_an_option: Bonvolu elekti opcion

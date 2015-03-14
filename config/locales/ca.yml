@@ -355,7 +355,6 @@ ca:
       following_details: "Se't notificarà sobre tots els fils del grup."
       not_following_details: "Se't notificarà sobre els fils en els que participes."
   group_request:
-    neighbourhood_support_group: p. ex. Grup de Suport del Barri
     commercial_use_option: "a una empresa, organització o lloc de treball"
     non_commercial_use_option: a un grup comunitari o una xarxa informal
     please_select_an_option: Sel·lecciona una opció

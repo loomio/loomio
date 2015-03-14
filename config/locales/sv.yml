@@ -406,7 +406,6 @@ sv:
       following_details: Du kommer att meddelas om varje tråd i denna grupp.
       not_following_details: Du kommer att meddelas om trådar som du deltar i.
   group_request:
-    neighbourhood_support_group: t. ex. Stödgrupp i Grannskapet
     commercial_use_option: "i ett företag, formell organisation eller arbetsplats"
     non_commercial_use_option: i ett samhälle grupp eller informellt nätverk
     please_select_an_option: Vänligen välj ett alternativ

@@ -453,8 +453,7 @@ pt-BR:
     request_declined: Pedido reprovado como membro da rede.
   group_request:
     header: Iniciar um grupo
-    desc: "Para começar a tomar decisões no Loomio, o primeiro passo é iniciar um grupo:"
-    neighbourhood_support_group: e.g. Grupo de Apoio do Bairro
+    desc: "Crie um grupo para começar a tomar decisões em conjunto no Loomio:"
     commercial_use_option: "em uma empresa, organização formal ou local de trabalho"
     non_commercial_use_option: em um grupo comunitário ou rede informal
     please_select_an_option: "Por favor, selecione uma opção"

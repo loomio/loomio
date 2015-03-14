@@ -444,8 +444,6 @@ sl:
       not_following_details: "Obveščen/a boš o temah, v katerih sodeluješ."
   group_request:
     header: Ustvari skupino
-    desc: "Da bi lahko začeli sprejemati odločitve na Loomiu, morate najprej ustvariti skupino:"
-    neighbourhood_support_group: npr. Podporna Skupina za Sosesko
     commercial_use_option: "v podjetju, uradni organizaciji ali na delovnem mestu"
     non_commercial_use_option: v skupini za skupnost ali v neformalni mreži
     please_select_an_option: Izberi eno od možnosti

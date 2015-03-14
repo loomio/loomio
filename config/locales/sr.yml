@@ -421,7 +421,6 @@ sr:
       following_details: Bićete obavešteni o svakom dešavanju u ovoj grupi.
       not_following_details: Bićete obavešteni o svemu čemu se priključite.
   group_request:
-    neighbourhood_support_group: npr. Komšijska Grupa Podrške
     commercial_use_option: "u kompaniji, formalnoj organizaciji radnom mestu"
     non_commercial_use_option: u grupi zajednice ili informativnoj mreži
     please_select_an_option: Molim odaberite jednu opciju
