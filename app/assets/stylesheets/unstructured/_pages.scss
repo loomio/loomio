@@ -852,12 +852,29 @@ body.pages.translation {
   .code {
     font-family: 'courier';
     font-size: 14px;
-    background-color: $lighter-grey;
     border-radius: 2px;
     margin-left: 16px;
+    margin-bottom: 10px;
   }
   p.code { padding-left: 16px; }
-  td { padding: 0 10px; }
+  td { padding: 5px 15px; }
+
+  .progress {
+    height: 5px;
+    width: 150px;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  tr.spacer-row {
+    background-color: $lighter-grey;
+    opacity: 0.5;
+    td { 
+      height: 1px;
+      padding: 0 15px;
+    }
+    
+  }
 }
 
 body.pages.crowdfunding_celebration {

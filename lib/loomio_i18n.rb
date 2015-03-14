@@ -1,7 +1,7 @@
 module Loomio
   class I18n
     require 'yaml'
-    config = YAML.load_file('config/loomio_i18n.yml')['loomio_i18n']
+    config = YAML.load_file(Rails.root.join('config', 'loomio_i18n.yml'))['loomio_i18n']
 
     SELECTABLE_LOCALES = Array(config['selectable_locales']).map(&:to_sym)
     DETECTABLE_LOCALES = Array(config['additional_detectable_locales']).map(&:to_sym) + SELECTABLE_LOCALES
@@ -14,6 +14,7 @@ module Loomio
       new_hash
     end
 
+    TRANSLATION_COVERAGE = (YAML.load_file Rails.root.join('.translation_coverage.yml')).with_indifferent_access
   end
 end
 
