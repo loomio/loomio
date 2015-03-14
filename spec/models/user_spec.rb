@@ -51,6 +51,11 @@ describe User do
     user.save!
   end
 
+  it "should require the username contain no whitespace" do
+    user.username = 'user name'
+    user.should have(1).errors_on(:username)
+  end
+
   it "sets the avatar_kind to gravatar if user has one" do
     user = User.new attributes_for(:user)
     user.stub(:has_gravatar? => true)
