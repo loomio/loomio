@@ -9,22 +9,32 @@
 
         %h2 Supported languages (#{selectable_locales.count})
         %table.code
-          - selectable_locales.each do |locale|
+          - selectable_locales.each_with_index do |locale, index|
             %tr
-              %td= locale
-              %td= "|"
               %td= link_to locale_name(locale), root_path(locale: locale)
-              %td= "|"
+              - coverage = Loomio::I18n::TRANSLATION_COVERAGE[locale]
+              %td
+                -if coverage
+                  -coverage.each do |resource, percentage|
+                    -if resource == 'main'
+                      .progress
+                        .progress-bar{role: 'progressbar', 'aria-valuenow': percentage, 'aria-valuemin': 0, 'aria-valuemax': 100, style: "width:#{percentage}%"}
+              %td= locale
               %td= t(locale)
 
         %h2 Test Languages (#{Loomio::I18n::TEST_LOCALES.count})
         %table.code
-          - Loomio::I18n::TEST_LOCALES.each do |locale|
+          - Loomio::I18n::TEST_LOCALES.each_with_index do |locale, index|
             %tr
-              %td= locale
-              %td= "|"
               %td= link_to locale_name(locale), root_path(locale: locale)
-              %td= "|"
+              - coverage = Loomio::I18n::TRANSLATION_COVERAGE[locale]
+              %td
+                -if coverage
+                  -coverage.each do |resource, percentage|
+                    -if resource == 'main'
+                      .progress
+                        .progress-bar{role: 'progressbar', 'aria-valuenow': percentage, 'aria-valuemin': 0, 'aria-valuemax': 100, style: "width:#{percentage}%"}
+              %td= locale
               %td= t(locale)
 
         %h2 Updates
