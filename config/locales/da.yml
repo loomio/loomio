@@ -404,7 +404,6 @@ da:
       following_details: Du vil blive gjort opmærksom på alle tråde i denne gruppe.
       not_following_details: "Du vil blive gjort opmærksom på tråde, som du deltager i."
   group_request:
-    neighbourhood_support_group: f.eks. naboskabsstøttegruppe
     commercial_use_option: "i et firma, formel organisation eller arbejdsplads"
     non_commercial_use_option: i en lokalgruppe eller uformelt netværk
     please_select_an_option: Vælg venligst en mulighed

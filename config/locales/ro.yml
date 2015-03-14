@@ -421,7 +421,6 @@ ro:
       following_details: Vei fi anuntat despre fiecare subiect al acestui grup.
       not_following_details: Vei fi anuntat despre subiectele la care participi.
   group_request:
-    neighbourhood_support_group: e.g. Grupul Suporterilor din Cartier
     commercial_use_option: "intr-o companie, organizatie sau loc de munca"
     non_commercial_use_option: intr0o comunitate dau retea informala
     please_select_an_option: Selectati o optiune

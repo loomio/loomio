@@ -340,7 +340,6 @@ uk:
   edit_group_description: Змінити опис групи
   group_subscription: Групова підписка
   group_request:
-    neighbourhood_support_group: "наприклад, Група нашого району"
     confirmation:
       title: "Ви майже закінчили! Перевірте Вашу електронну пошту."
       body_html: "Ми надіслали вам email із запрошенням розпочати вашу групу.\n\nЯкщо ви не бачите запрошення у пошті навіть через декілька хвилин, напишіть нам на <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"

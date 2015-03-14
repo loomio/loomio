@@ -407,7 +407,6 @@ an:
       following_details: "Serás notificau sobre totz os temas d'iste grupo"
       not_following_details: Se te notificará sobre os temas en os quals yes participando.
   group_request:
-    neighbourhood_support_group: "p. eix. Grupo d'emparo a o vecindario"
     commercial_use_option: "en una interpresa, organización formal u puesto de treballo"
     non_commercial_use_option: En una comunidat u grupo informal
     please_select_an_option: Por favor tigue una opción

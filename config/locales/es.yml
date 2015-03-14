@@ -1,17 +1,17 @@
 es:
   email_settings:
-    title: Configuración del correo electrónico
-    group_volume: Volumen del grupo
-    group_volume_description: El Volumen controla cuanto correo electrónico recibes de un grupo. Configura el Volumen para todos tus grupos.
+    title: Configuración de correo electrónico
+    group_volume: Volumen de los grupos
+    group_volume_description: "El Volumen controla cuanto correo electrónico recibes de un grupo. Configura el Volumen de todos tus grupos a la vez:"
     to_change_one_group: "Para cambiar el volumen de solo uno de tus grupo, visita la pagina del mismo."
     discussion_activity: Cambiar el volumen de las discusiones cuando participo.
-    discussion_activity_description: "Cuando participas en una discusión, la configuración de volumen sera cambiada a \"Alto\", toda actividad futura te sera enviada por correo electrónico. "
-    yesterday_on_loomio: "Envíenme un sumario diario de actividades "
-    yesterday_on_loomio_description: "Cada día a las 6am, envíenme un correo electrónico con las actividades no leídas del día anterior. Esta una forma muy buena de ponerte al día con tus grupos, y contiene todo lo que no esta silenciado."
-    email_when_mentioned: "Envíenme un correo electrónico cuando soy @mencionado"
+    discussion_activity_description: "Cuando participas en una discusión, la configuración de volumen sera cambiada a \"Alto\", toda actividad futura te será enviada por correo electrónico. "
+    yesterday_on_loomio: Recibir un resumen de la actividad de cada día
+    yesterday_on_loomio_description: "Cada día a las 6am, enviarme un correo electrónico con las actividades no leídas del día anterior. Esta es una forma muy buena de ponerte al día con tus grupos e incluye todo lo que no está en volumen silenciado."
+    email_when_mentioned: "Recibir un correo electrónico cuando soy @mencionado"
     email_when_mentioned_description: "Cuando alguien quiere llamar tu atención, te @mencionaran. Te recomendamos dejar esta configuración seleccionada, para que recibas un correo electrónico cuando esto suceda. "
-    proposal_closing_soon: Envíenme un correo electrónico antes de que cierre una propuesta
-    proposal_closing_soon_description: "24 horas antes de que cierre una propuesta, sin importar el volumen, recibirás un correo electrónico con las ultimas informaciones sobre dicha propuesta."
+    proposal_closing_soon: Recibir un correo electrónico antes de que una propuesta se cierre
+    proposal_closing_soon_description: "24 horas antes de que se cierre una propuesta, sin importar el volumen, recibirás un correo electrónico con las ultimas informaciones sobre dicha propuesta."
     submit: Actualizar configuración.
     no_change: Sin cambio
     no_change_description: "Dejar el nivel de volumen de mi grupo como esta. "
@@ -28,7 +28,7 @@ es:
     errors:
       messages:
         blank: no puede estar en blanco
-        invalid: No es un valor valido.
+        invalid: No es un valor válido.
   errors:
     messages:
       email: No es una dirección de correo válida
@@ -198,7 +198,7 @@ es:
     pricing: Precio
     public_groups: Grupos públicos
     terms: Términos
-    independent_install_html: "%{hostname} esta utilizando una copia independiente de Loomio: <a href=\"http://github.com/loomio/loomio\">enterate mas</a>."
+    independent_install_html: "%{hostname} esta utilizando una copia independiente de Loomio: <a href=\"http://github.com/loomio/loomio\">enterate de más</a>."
   inbox:
     clear: Limpiar
     title: Bandeja de entrada
@@ -447,13 +447,13 @@ es:
     threads: Hilos
     groups: Grupos
     join: Unirse
+    manage: "Gestionar (%{count} peticiones pendientes) "
     request_created: Gracias por pedir unirte a la red. Los coordinadores de la red consideraran tu pedido en breve.
     request_approved: "Solicitud de membresía a la red aprobada. "
     request_declined: Solicitud de membresía a la red rechazada.
   group_request:
     header: Empieza un grupo
-    desc: "Para tomar decisiones en Loomio, el primer paso es iniciar un grupo."
-    neighbourhood_support_group: ej. Grupo de apoyo al vecindario
+    desc: "Crear un grupo para comenzar a tomar decisiones juntos en Loomio:"
     commercial_use_option: "en una empresa, organización formal o lugar de trabajo"
     non_commercial_use_option: En una comunidad o grupo informal
     please_select_an_option: Por favor seleccione una opción
@@ -468,13 +468,13 @@ es:
     mute: "Silenciado "
   discussion_volume:
     loud_description: "Enviar correo electrónico cuando hay actividad en este hilo. "
-    normal_description: "Solo enviar correo electrónico cuando una propuesta es creada, esta por cerrar o se ha notificado sobre un resultado."
+    normal_description: "Solo enviar correo electrónico cuando una propuesta es creada, va a ser cerrada o se ha notificado un resultado."
     quiet_description: No enviar correo electrónico sobre este hilo.
     mute_description: "Ocultar este hilo en el panel de control y no notificarme a no ser que sea @mencionado."
   group_volume:
-    loud_description: Enviar correo electrónico cuando hay actividad.
-    normal_description: "Solo enviar correo electrónico cuando hay actividad importante: nuevas discusiones y propuestas, resultados, etc."
-    quiet_description: No enviar correo electrónico acerca de este grupo. La actividad sera mostrada en el panel de control.
+    loud_description: Enviar correo electrónico siempre que haya actividad.
+    normal_description: "Enviar correo electrónico solo cuando haya actividad importante: nuevas discusiones y propuestas, resultados, etc."
+    quiet_description: No enviar correo electrónico del grupo. La actividad sera mostrada en el panel de control.
     mute_description: "Ocultar este hilo en el panel de control y no notificarme a no ser que sea @mencionado."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> apoyó la propuesta."
@@ -513,8 +513,8 @@ es:
   discussion_list:
     clear_filters: "Limpiar filtros:Ver todas las discusiones"
     filter_unread:
-      enable: Sólo mostrar discusiones no leídas
-      disable: Leer discusiones leidas y no leidas
+      enable: Haz clic para mostrar solo discusiones no leídas
+      disable: Haz clic para mostrar discusiones leídas y no leídas
     filter_followed:
       enable: Solo mostrar discusiones que sigo
       disable: Leer discusiones leidas y no leidas
@@ -674,7 +674,7 @@ es:
   confirm_new_password: Confirmar nueva contraseña
   change_your_password: Cambiar contraseña
   change_my_password: Cambiar mi contraseña
-  send_password_reset: Envíenme instrucciones para restablecimiento de contraseña
+  send_password_reset: Enviarme instrucciones para restablecimiento de contraseña
   blank_details: (dejar en blanco si no deseas cambiarla)
   password_confirmation: Confirmación de la contraseña
   current_password: Contraseña actual

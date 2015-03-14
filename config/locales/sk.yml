@@ -421,7 +421,6 @@ sk:
       following_details: Budete upozornený/á na každú diskusiu v tejto skupine.
       not_following_details: Budete upozornený/á na dianí v diskusiách na ktorých sa zúčastňujete.
   group_request:
-    neighbourhood_support_group: napr. komunitná podporná organizácia
     commercial_use_option: "ve firme, formálnej organizácii alebo na pracovisku"
     non_commercial_use_option: v komunitnej skupine alebo neformálnom zoskupení
     please_select_an_option: "Prosím, vyberte jednu z možností"

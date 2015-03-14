@@ -249,7 +249,6 @@ ko:
   edit_group_description: 그룹 설명 편집
   group_subscription: 그룹 토론
   group_request:
-    neighbourhood_support_group: 예. 이웃을 돕는 그룹
     confirmation:
       title: 거의 다 되었습니다. 이메일을 확인해 주세요.
   discussion_items:

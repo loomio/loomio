@@ -421,8 +421,6 @@ be-BY:
       not_following_details: "Вам паведамяць пра дзейнасць у абмеркаваннях, у якіх вы ўдзельнічаце. "
   group_request:
     header: Стварыць групу
-    desc: Каб пачаць прымаць рашэнні на Loomio -  стварыце групу
-    neighbourhood_support_group: "напрыклад, Група нашага двара"
     commercial_use_option: "У кампаніі, афіцыйнай установе ці на працоўным месцы"
     non_commercial_use_option: "У супольнасці ці нефармальным аб'яднанні"
     please_select_an_option: "Калі ласка, абярыце варыянт"

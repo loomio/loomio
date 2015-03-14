@@ -24,16 +24,16 @@ da:
   main: 91
 de:
   frontpage: 100
-  main: 96
+  main: 100
 el:
   frontpage: 100
-  main: 96
+  main: 100
 eo:
   frontpage: 89
   main: 90
 es:
   frontpage: 100
-  main: 99
+  main: 100
 fa-IR:
   frontpage: 89
   main: 13
@@ -50,14 +50,14 @@ gl:
   frontpage: 48
   main: 70
 he:
-  frontpage: 89
+  frontpage: 92
   main: 66
 hr:
   frontpage: 89
   main: 46
 hu:
-  frontpage: 89
-  main: 92
+  frontpage: 100
+  main: 100
 id:
   frontpage: 48
   main: 54
@@ -104,7 +104,7 @@ ro:
   frontpage: 89
   main: 92
 ru:
-  frontpage: 89
+  frontpage: 97
   main: 63
 sk:
   frontpage: 89
@@ -138,7 +138,7 @@ ur-PK:
   main: 0
 vi:
   frontpage: 0
-  main: 43
+  main: 44
 zh-TW:
   frontpage: 100
   main: 94
