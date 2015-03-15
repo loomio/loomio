@@ -10,7 +10,7 @@
   .row#invitation-options
     .col-sm-6.invite-by-email
       = render 'invite_users', form: f, group: @group, discussion: @discussion
-      = t(:remaining_invites_count, count: @group.invitations_remaining)
+      = t(:remaining_invitations_html, count: @group.invitations_remaining, contact_path: contact_path)
     - if @group.is_subgroup?
       .col-sm-5.col-sm-offset-1.invite-members-of-parent
         %h3= t :"invitation.select_members", group_name: @group.parent.name
