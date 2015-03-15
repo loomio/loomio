@@ -107,7 +107,7 @@ if Rails.application.secrets.intercom_app_id
     #   * :custom attaches the inbox open event to an anchor with an
     #             id of #Intercom.
     #
-    # config.inbox.style = :default 
-    config.inbox.style = :custom
+    config.inbox.style = :default
+    # config.inbox.style = :custom
   end
 end
