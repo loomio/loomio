@@ -296,7 +296,6 @@ cs:
   edit_memberships: Upravit členství
   add_new_member: Přidat nového člena
   invite_members_to_group: "Pozvat členy do %{which_group}"
-  get_in_touch_link: spojte se s námi
   email_members_in_group: "E-mailujte členy %{which_group}"
   subject_error: "Prosím, vyplňte předmět"
   subject_placeholder: Napište předmět

@@ -338,7 +338,6 @@ da:
   edit_memberships: Rediger medlemskaber
   add_new_member: Tilføj nyt medlem
   invite_members_to_group: "Inviter medlemmer til %{which_group}"
-  get_in_touch_link: kontakt os
   email_members_in_group: "Send email til medlemmer i %{which_group}"
   subject_error: Udfyld venligst et emne
   subject_placeholder: Skriv et emne

@@ -333,7 +333,6 @@ gl:
   number_pending: "%{pending} pendente"
   and_number_pending: "e %{pending} pendente"
   add_new_member: Engadir novo membro
-  remaining_invites_count: "%{count} invitacións pendentes"
   subject_placeholder: Escriba o asunto
   email_group_members: Enviar correo electrónico ós membros do grupo
   edit_group_settings: Editar configuración do grupo

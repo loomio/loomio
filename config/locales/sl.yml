@@ -376,8 +376,6 @@ sl:
   edit_memberships: Uredi članstva
   add_new_member: Dodaj novega člana/članico
   invite_members_to_group: "Povabi člane v %{which_group}"
-  remaining_invites_count: "%{count} vabil na voljo"
-  get_in_touch_link: stopi v stik
   email_members_in_group: "Pošlji email članom %{which_group}"
   subject_error: Vpiši naslov
   subject_placeholder: Napiši naslov

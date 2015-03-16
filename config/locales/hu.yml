@@ -365,8 +365,6 @@ hu:
   edit_memberships: Tagság szerkesztése
   add_new_member: Új tag hozzáadása
   invite_members_to_group: "Tagok meghívása a %{which_group} csoportba"
-  remaining_invites_count: "%{count} megmaradt meghívók"
-  get_in_touch_link: kapcsolat
   email_members_in_group: "E-mail küldése a(z) %{which_group} csoport tagjainak"
   subject_error: Töltsd ki a témát
   subject_placeholder: Írd meg a témát

@@ -352,7 +352,6 @@ hr:
   edit_memberships: Uredi članstva
   add_new_member: Dodaj novog člana
   invite_members_to_group: "Pozovi članove u %{which_group}"
-  get_in_touch_link: stupi u kontakt
   email_members_in_group: "Pošalji poruku članovima u %{which_group}"
   subject_error: Molim unesite predmet
   subject_placeholder: Napiši temu

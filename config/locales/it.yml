@@ -342,8 +342,6 @@ it:
   edit_memberships: Modifica iscrizioni
   add_new_member: Aggiungi un nuovo membro
   invite_members_to_group: "Invita membri a %{which_group}"
-  remaining_invites_count: "%{count} inviti rimanenti"
-  get_in_touch_link: contattaci
   email_members_in_group: "Invia una mail ai membri di %{which_group}"
   subject_error: Inserisci un oggetto
   subject_placeholder: Scrivi un oggetto

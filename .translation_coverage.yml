@@ -12,7 +12,7 @@ bg-BG:
   main: 41
 ca:
   frontpage: 84
-  main: 77
+  main: 76
 cmn:
   frontpage: 0
   main: 29
@@ -24,25 +24,25 @@ da:
   main: 91
 de:
   frontpage: 100
-  main: 100
+  main: 99
 el:
   frontpage: 100
-  main: 100
+  main: 99
 eo:
   frontpage: 89
   main: 90
 es:
   frontpage: 100
-  main: 100
+  main: 99
 fa-IR:
   frontpage: 89
-  main: 13
+  main: 12
 fi:
   frontpage: 0
   main: 6
 fr:
-  frontpage: 89
-  main: 92
+  frontpage: 100
+  main: 99
 ga-IE:
   frontpage: 35
   main: 44
@@ -57,13 +57,13 @@ hr:
   main: 46
 hu:
   frontpage: 100
-  main: 100
+  main: 99
 id:
   frontpage: 48
-  main: 54
+  main: 53
 it:
   frontpage: 89
-  main: 93
+  main: 92
 it-CH:
   frontpage: 0
   main: 0
@@ -105,13 +105,13 @@ ro:
   main: 92
 ru:
   frontpage: 97
-  main: 63
+  main: 62
 sk:
   frontpage: 89
   main: 92
 sl:
   frontpage: 100
-  main: 94
+  main: 93
 sr:
   frontpage: 89
   main: 92
@@ -138,7 +138,7 @@ ur-PK:
   main: 0
 vi:
   frontpage: 0
-  main: 44
+  main: 43
 zh-TW:
   frontpage: 100
   main: 94

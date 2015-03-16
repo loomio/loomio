@@ -221,7 +221,7 @@ es:
     membership_requested: pidió membresía en
     membership_request_approved: Acepta la petición para participar
     user_added_to_group: te agregó al grupo
-    motion_closing_soon: La propuesta está por cerrar
+    motion_closing_soon: La propuesta está a punto de cerrarse
     motion_blocked: bloqueó la propuesta
     motion_outcome_created: Publico una decisión para la propuesta.
     motion_outcome_updated: resultado de propuesta modificado
@@ -365,8 +365,6 @@ es:
   edit_memberships: Editar membresías
   add_new_member: Adherir Nuevo miembro
   invite_members_to_group: "Invitar miembros a %{which_group}"
-  remaining_invites_count: "%{count} invitaciones restantes"
-  get_in_touch_link: ponerse en contacto
   email_members_in_group: "Enviar correo electrónico a los miembros de %{which_group}"
   subject_error: Por favor escriba un título
   subject_placeholder: Escriba el título
@@ -474,8 +472,8 @@ es:
   group_volume:
     loud_description: Enviar correo electrónico siempre que haya actividad.
     normal_description: "Enviar correo electrónico solo cuando haya actividad importante: nuevas discusiones y propuestas, resultados, etc."
-    quiet_description: No enviar correo electrónico del grupo. La actividad sera mostrada en el panel de control.
-    mute_description: "Ocultar este hilo en el panel de control y no notificarme a no ser que sea @mencionado."
+    quiet_description: No enviar correo electrónico sobre el grupo. La actividad del grupo será mostrada en el panel de control.
+    mute_description: "Ocultar este grupo en el panel de control y no notificarme a no ser que sea @mencionado."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> apoyó la propuesta."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> se abstuvo en la propuesta."
