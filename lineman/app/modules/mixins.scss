@@ -2,6 +2,7 @@ $background-color: #ededeb;
 $primary-text-color: #262626;
 $meta-text-color: #898989;
 $border-color: #dcdcdc;
+$card-background-color: #fff;
 
 $item-highlight-color: #FFFFE8;
 $list-hover-color: #E0E0E0;
@@ -76,7 +77,7 @@ $navbar-height: 45px;
 @mixin card{
   border: 1px solid $border-color;
   padding: 15px;
-  background: #fff;
+  background: $card-background-color;
   margin-bottom: 10px;
   i{
     color: $meta-text-color;

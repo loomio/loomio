@@ -1,4 +1,6 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $document, $modal, discussion, Records, MessageChannelService, UserAuthService, DiscussionFormService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $rootScope, $document, $modal, discussion, Records, MessageChannelService, UserAuthService, DiscussionFormService) ->
+  $rootScope.$broadcast('viewingThread', discussion)
+
   $scope.discussion = discussion
   $scope.group = discussion.group()
 
@@ -12,7 +14,8 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $documen
     console.log 'on message received called, yay'
     $scope.$digest()
 
-  $scope.showLintel = false
+  $scope.showLintel = (bool) ->
+    $rootScope.$broadcast('showThreadLintel', bool)
 
   MessageChannelService.subscribeTo("/discussion-#{discussion.key}", onMessageReceived)
 
