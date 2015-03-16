@@ -27,3 +27,21 @@
   color: $meta-text-color;
 }
 
+.thread-lintel__progress {
+  width: 100%;
+  height: 2px;
+}
+
+.thread-lintel__progress-wrap {
+  margin: 0 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.thread-lintel__progress-bar {
+  width: 25%;
+  background: $progress-bar-color;
+  left: 0;
+  position: absolute;
+  top: 0;
+}

@@ -14,7 +14,27 @@ angular.module('loomioApp').directive 'activityCard', ->
       $scope.discussion.markAsRead(0)
       $scope.loadEventsForwards()
 
+    $scope.lastSequenceId = 0
+    visibleSequenceIds = []
+
+    updateLastSequenceId = ->
+      visibleSequenceIds = _.uniq(visibleSequenceIds)
+      $scope.lastSequenceId = _.max(visibleSequenceIds)
+      $rootScope.$broadcast('threadPosition', $scope.discussion, $scope.lastSequenceId)
+
+    addSequenceId = (id) =>
+      visibleSequenceIds.push(id)
+      updateLastSequenceId()
+
+    removeSequenceId = (id) ->
+      visibleSequenceIds = _.without(visibleSequenceIds, id)
+      updateLastSequenceId()
+
+    $scope.threadItemHidden = (item) ->
+      removeSequenceId(item.sequenceId)
+
     $scope.threadItemVisible = (item) ->
+      addSequenceId(item.sequenceId)
       $scope.discussion.markAsRead(item.sequenceId)
       $scope.loadEventsForwards() if $scope.loadMoreAfterReading(item)
 

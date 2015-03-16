@@ -5,3 +5,6 @@
     %img.media-object.thread-lintel__logo{src: '{{discussion.group().logoUrl()}}'}
   .media-body.thread-lintel__title
     {{ discussion.title }}
+
+  .thread-lintel__progress-wrap.thread-lintel__progress
+    .thread-lintel__progress-bar.thread-lintel__progress{style: 'width: {{positionPercent}}%'}

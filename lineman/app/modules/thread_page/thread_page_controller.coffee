@@ -1,8 +1,14 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $rootScope, $document, $modal, discussion, Records, MessageChannelService, UserAuthService, DiscussionFormService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $location, $rootScope, $document, $modal, discussion, Records, MessageChannelService, UserAuthService, DiscussionFormService) ->
   $rootScope.$broadcast('viewingThread', discussion)
 
   $scope.discussion = discussion
   $scope.group = discussion.group()
+
+  $scope.$on 'threadPosition', (event, discussion, position) ->
+    if position > 0
+      #$location.hash(position)
+    else
+      console.log 'position: ', position
 
   # if first time visiting the page
   $document.scrollTop(0, 500)
