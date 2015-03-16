@@ -3,7 +3,7 @@ Given /^I visit the profile page$/ do
 end
 
 Then /^I should see my display name has been updated$/ do
-  page.should have_content(@display_name)
+  expect(page).to have_content @display_name
 end
 
 Given /^I fill in and submit the new name$/ do
@@ -33,7 +33,7 @@ When(/^I log in with "(.*?)"$/) do |email|
 end
 
 Then(/^I should see the logged in homepage$/) do
-  page.should have_css('body.dashboard.show')
+  expect(page).to have_css 'body.dashboard.show'
 end
 
 When(/^I update my username$/) do
@@ -47,5 +47,21 @@ When(/^I view my user profile$/) do
 end
 
 Then(/^I should see my username has been updated$/) do
-  page.should have_content(@username)
+  expect(page).to have_content @username
+end
+
+When(/^I edit my username to contain whitespace$/) do
+  fill_in 'user_username', with: "user name"
+end
+
+When(/^And I submit the form$/) do
+  click_on 'profile-submit'
+end
+
+Then(/^I should see an error message on the form$/) do
+  expect(page).to have_content("Username cannot contain spaces")
+end
+
+Then(/^my username should not be updated$/) do
+  expect(@user.username).not_to eq "user name"
 end
