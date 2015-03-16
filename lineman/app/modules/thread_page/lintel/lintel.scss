@@ -1,2 +1,7 @@
 .lintel {
+  position: fixed;
+  top: $navbar-height;
+  width: $thread-max-width;
+  margin: 0 auto;
+  background-color: pink;
 }

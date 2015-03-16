@@ -13,7 +13,7 @@ angular.module('loomioApp').controller 'NavbarSearchController', ($scope, $timeo
       $timeout ->
         $scope.focused = bool
       ,
-        50
+        100
 
   $scope.showDropdown = ->
     $scope.focused || $scope.query.length > 0

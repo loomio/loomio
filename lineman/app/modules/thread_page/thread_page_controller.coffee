@@ -12,6 +12,8 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $documen
     console.log 'on message received called, yay'
     $scope.$digest()
 
+  $scope.showLintel = false
+
   MessageChannelService.subscribeTo("/discussion-#{discussion.key}", onMessageReceived)
 
   $scope.editDiscussion = ->
