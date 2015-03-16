@@ -420,8 +420,6 @@ en:
 
   add_new_member: "Add new member"
   invite_members_to_group: "Invite members to %{which_group}"
-  remaining_invites_count: "%{count} remaining invites"
-  get_in_touch_link: "get in touch"
 
   email_members_in_group: "Email the members in %{which_group}"
   subject_error: "Please fill in a subject"
@@ -490,6 +488,9 @@ en:
   group_subscription: "Group subscription"
 
   groups:
+    max_size_warning_html: "Your group is getting big and will reach the limit of %{size} members soon. Please <a href='%{link}'>contact us</a> to increase the limit."
+    max_size_reached_html: "Your group has reached the limit of %{size} members. <a href='%{link}'>Contact us</a> to add more people to the group."
+
     follow:
       click_to_follow: "Click to follow group"
       click_to_unfollow: "Click to unfollow group"

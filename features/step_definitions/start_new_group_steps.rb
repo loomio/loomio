@@ -1,5 +1,5 @@
 Given(/^I want to show the loomio\.org marketing$/) do
-  ENV['SHOW_LOOMIO_ORG_MARKETING'] = '1'
+  ENV['HOSTED_BY_LOOMIO'] = '1'
 end
 
 Given(/^I am a guest$/) do

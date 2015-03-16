@@ -1,3 +1,6 @@
+- if show_max_size_warning?
+  = render 'application/max_size_warning'
+
 = render 'title', group: @group, discussion: @discussion
 = simple_form_for(@invite_people_form, url: invitations_path, method: :post) do |f|
   - if @invitable.kind_of?(Group)
@@ -10,7 +13,6 @@
   .row#invitation-options
     .col-sm-6.invite-by-email
       = render 'invite_users', form: f, group: @group, discussion: @discussion
-      = t(:remaining_invites_count, count: @group.invitations_remaining)
     - if @group.is_subgroup?
       .col-sm-5.col-sm-offset-1.invite-members-of-parent
         %h3= t :"invitation.select_members", group_name: @group.parent.name
