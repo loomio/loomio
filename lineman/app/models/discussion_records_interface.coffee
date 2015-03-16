@@ -11,3 +11,6 @@ angular.module('loomioApp').factory 'DiscussionRecordsInterface', (BaseRecordsIn
     fetchInboxUnread: ->
       @restfulClient.get 'inbox_unread'
 
+    fetchInboxByGroup: ->
+      @restfulClient.get 'inbox_by_group'
+

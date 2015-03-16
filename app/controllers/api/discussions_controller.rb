@@ -3,24 +3,19 @@ class API::DiscussionsController < API::RestfulController
   load_resource only: [:create, :update]
 
   def inbox_current
-    @discussions = GroupDiscussionsViewer.for(user: current_user)
-
-    @discussions = @discussions.joined_to_current_motion.
-                                preload(:current_motion, {group: :parent}).
-                                order('motions.closing_at ASC, last_activity_at DESC').
-                                page(params[:page]).per(20)
-
+    @discussions = page_collection inbox_threads
     respond_with_discussions
   end
 
   def inbox_unread
-    @discussions = GroupDiscussionsViewer.for(user: current_user)
+    @discussions = page_collection inbox_threads.unread
+    respond_with_discussions
+  end
 
-    @discussions = @discussions.unread.joined_to_current_motion.
-                                preload(:current_motion, {group: :parent}).
-                                order('motions.closing_at ASC, last_activity_at DESC').
-                                page(params[:page]).per(20)
-
+  def inbox_by_group
+    @discussions = inbox_threads.group_by { |discussion| discussion.group_id }
+                                .map { |g, discussions| discussions.first(Integer(params[:per_group] || 4)) }
+                                .flatten
     respond_with_discussions
   end
 
@@ -76,6 +71,13 @@ class API::DiscussionsController < API::RestfulController
   end
 
   private
+
+  def inbox_threads
+    GroupDiscussionsViewer.for(user: current_user)
+                          .joined_to_current_motion
+                          .preload(:current_motion, {group: :parent})
+                          .order('motions.closing_at ASC, last_activity_at DESC')
+  end
 
   def discussion_reader
     @dr ||= DiscussionReader.for(user: current_user, discussion: @discussion)
