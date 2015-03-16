@@ -339,8 +339,6 @@ sv:
   edit_memberships: Redigera medlemskap
   add_new_member: Lägg till ny medlem
   invite_members_to_group: "Bjud in medlemmar till %{which_group}"
-  remaining_invites_count: "%{count} återstående inbjudningar"
-  get_in_touch_link: få kontakt med
   email_members_in_group: "E-posta medlemmarna i %{which_group}"
   subject_error: Ange ett ämne
   subject_placeholder: Skriv ett ämne

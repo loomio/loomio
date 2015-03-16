@@ -333,7 +333,6 @@ eo:
   edit_memberships: Redakti membrecojn
   add_new_member: Aldoni novan memebron
   invite_members_to_group: "Inviti membrojn aliĝi al  %{which_group}"
-  get_in_touch_link: kontaktu
   email_members_in_group: "Sendi retmesaĝon al la membroj en %{which_group}"
   subject_error: Bonvolu aldoni temon
   subject_placeholder: Skribu temon

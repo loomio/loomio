@@ -286,7 +286,6 @@ uk:
   edit_memberships: Редагувати учасників
   add_new_member: Додати нового учасника
   invite_members_to_group: "Запросити учасників до %{which_group} "
-  get_in_touch_link: "Зв'язок"
   email_members_in_group: "Надіслати email учасникам %{which_group}"
   subject_error: "Будь ласка, заповніть тему"
   subject_placeholder: Написати тему

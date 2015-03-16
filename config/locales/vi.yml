@@ -146,7 +146,6 @@ vi:
   edit_memberships: Chỉnh sửa thành viên
   add_new_member: Thêm thành viên mới
   invite_members_to_group: "Mời thành viên đến %{which_group}"
-  get_in_touch_link: liên lạc
   email_members_in_group: "Gửi email cho thành viên trong %{which_group}"
   subject_error: Xin điền vào chủ đề
   subject_placeholder: Viết một chủ đề

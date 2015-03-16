@@ -354,8 +354,6 @@ sr:
   edit_memberships: Uredi članstva
   add_new_member: Dodaj novog člana
   invite_members_to_group: "Pozovi članove u %{which_group}"
-  remaining_invites_count: "%{count} pozivnice/a je preostalo"
-  get_in_touch_link: ostanite u kontaktu
   email_members_in_group: "Pošaljite ePoruku članovima %{which_group}"
   subject_error: Molim unesite temu
   subject_placeholder: Napišite temu

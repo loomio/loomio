@@ -354,8 +354,6 @@ sk:
   edit_memberships: Upraviť členstvo
   add_new_member: Pridať nového člena
   invite_members_to_group: "Pozvať členov do %{which_group}"
-  remaining_invites_count: "ostáva %{count} pozvánok"
-  get_in_touch_link: spojte sa s nami
   email_members_in_group: "E-mailujte členom %{which_group}"
   subject_error: "Prosím, vyplňte predmet"
   subject_placeholder: Napište predmet

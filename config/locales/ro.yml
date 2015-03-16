@@ -354,8 +354,6 @@ ro:
   edit_memberships: Editeaza membrii
   add_new_member: Adauga un membru nou
   invite_members_to_group: "Invita membri in %{which_group}"
-  remaining_invites_count: "%{count} invitatii ramase"
-  get_in_touch_link: contacteaza
   email_members_in_group: "Trimite email membrilor din %{which_group}"
   subject_error: Te rugam sa introduci un subiect
   subject_placeholder: Scrie un subiect

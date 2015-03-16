@@ -340,8 +340,6 @@ an:
   edit_memberships: Editar pertenencias
   add_new_member: Adhibir un nuevo miembro
   invite_members_to_group: "Convidar miembros a %{which_group}"
-  remaining_invites_count: "quedan %{count} invitacions"
-  get_in_touch_link: meter-se en contacto
   email_members_in_group: "Ninviar un correu-e a os miembros de %{which_group}"
   subject_error: Por favor escribe un titol
   subject_placeholder: Escribe un tema

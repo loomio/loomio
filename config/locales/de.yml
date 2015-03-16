@@ -365,8 +365,6 @@ de:
   edit_memberships: Mitgliedschaften bearbeiten
   add_new_member: Neues Mitglied hinzufügen
   invite_members_to_group: "Mitglieder zu %{which_group} einladen"
-  remaining_invites_count: "%{count} verbleibende Einladungen"
-  get_in_touch_link: Melde dich bei uns
   email_members_in_group: "Benachrichtige die Mitglieder in %{which_group} per eMail"
   subject_error: Bitte füge einen Betreff hinzu
   subject_placeholder: Schreibe einen Betreff

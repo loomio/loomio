@@ -336,8 +336,6 @@ zh-TW:
   edit_memberships: 編輯成員資格
   add_new_member: 增加新成員
   invite_members_to_group: "邀請成員到%{which_group}群組"
-  remaining_invites_count: "還可邀請  %{count}  位"
-  get_in_touch_link: 聯繫
   email_members_in_group: "寄信給%{which_group}群組成員"
   subject_error: 請填寫主旨
   subject_placeholder: 撰寫主旨

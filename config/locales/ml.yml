@@ -192,7 +192,6 @@ ml:
   edit_memberships: അംഗത്വങ്ങള്‍ തിരുത്തുക
   add_new_member: പുതിയ അംഗത്തെ ചേര്‍ക്കുക
   invite_members_to_group: "ക്ഷണിക്കൂ  അംഗങ്ങളെ %{which_group} ലേക്ക്"
-  get_in_touch_link: ഞങ്ങളുമായി ബന്ധപ്പെടുക
   email_members_in_group: "%{which_group} കൂട്ടത്തിലെ അംഗങ്ങള്‍ക്കു് ഈമെയില്‍ അയയ്ക്കുക"
   subject_error: ദയവായി ഒരു വിഷയം ചേര്‍ക്കുക
   subject_placeholder: ഒരു വിഷയം എഴുത്തുക

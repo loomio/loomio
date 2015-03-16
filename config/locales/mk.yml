@@ -189,7 +189,6 @@ mk:
   edit_memberships: Измени членства
   add_new_member: Додај нов член
   invite_members_to_group: "Покани членови во %{which_group}"
-  get_in_touch_link: останете во контакт
   email_members_in_group: "Извести ги членовите во %{which_group} преку електронска пошта"
   subject_error: Ве молиме напишете тема
   subject_placeholder: Напиши тема

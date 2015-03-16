@@ -168,7 +168,6 @@ bg-BG:
   edit_memberships: Редакция на членството
   add_new_member: Добави нов потребител
   invite_members_to_group: "Покани потребители в %{which_group}"
-  get_in_touch_link: свържете се
   email_members_in_group: "Изпрати e-mail до членовете на %{which_group}"
   subject_error: Моля попълнете заглавие
   subject_placeholder: Напишете заглавие

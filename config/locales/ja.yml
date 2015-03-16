@@ -220,7 +220,6 @@ ja:
   edit_memberships: メンバーを編集する
   add_new_member: 新しいメンバーを追加します
   invite_members_to_group: "%{which_group} にメンバーを招待する"
-  get_in_touch_link: 連絡します
   email_members_in_group: "%{which_group} のメンバーにEメールを送ります"
   subject_error: 件名を入れてください
   subject_placeholder: 件名を入れてください
