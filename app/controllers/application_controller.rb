@@ -19,9 +19,6 @@ class ApplicationController < ActionController::Base
   after_filter :increment_measurement
   after_filter :new_relic_insights, if: :using_new_relic?
 
-  # intercom
-  skip_after_filter :intercom_rails_auto_include
-
   rescue_from CanCan::AccessDenied do |exception|
     if user_signed_in?
       flash[:error] = t("error.access_denied")
