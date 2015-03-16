@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312203402) do
+ActiveRecord::Schema.define(version: 20150315210731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -313,7 +313,7 @@ ActiveRecord::Schema.define(version: 20150312203402) do
     t.text     "description"
     t.integer  "memberships_count",                              default: 0,              null: false
     t.datetime "archived_at"
-    t.integer  "max_size",                                       default: 1000,           null: false
+    t.integer  "max_size",                                       default: 100,            null: false
     t.boolean  "cannot_contribute",                              default: false
     t.integer  "distribution_metric"
     t.string   "sectors",                            limit: 255

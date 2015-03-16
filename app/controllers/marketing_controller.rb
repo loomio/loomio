@@ -3,10 +3,10 @@ class MarketingController < ApplicationController
     if user_signed_in?
       redirect_to dashboard_path
     else
-      if show_loomio_org_marketing
-        render layout: false
-      else
+      if third_party_install?
         redirect_to new_user_session_path
+      else
+        render layout: false
       end
     end
   end
