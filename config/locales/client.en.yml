@@ -264,6 +264,18 @@ en:
   profile_page:
     my_groups: Groups
 
+  dashboard_page:
+    filtering:
+      all: All Threads
+      all_description: View all threads
+      unread: Unread Threads
+      unread_description: View only threads you have not read yet
+    sorting:
+      group: By Group
+      group_description: Sort threads by group.
+      date: By Date
+      date_description: Sort threads by date.
+
   discussion:
     load_previous: 'Load previous thread items'
     you_like_this: 'You like this.'

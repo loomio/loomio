@@ -1,0 +1,34 @@
+.container#main
+  .dashboard-container
+    .row
+      .col-xs-6
+        .dashboard-page-dropdown.dashboard-page-filter-dropdown{dropdown: '', on-toggle: 'toggled(open)'}
+          %a.dashboard-page-dropdown-toggle.dropdown-toggle{href: '#'}
+            %span{translate: "dashboard_page.filtering.all", ng-show: 'filter == "all"'}>
+            %span{translate: "dashboard_page.filtering.unread", ng-show: 'filter == "unread"'}>
+            %i.fa.fa-chevron-down
+          .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
+            %ul.filtering-options
+              %li.filtering-option{ng-click: 'setFilter("all")'}
+                .dashboard-option{translate: 'dashboard_page.filtering.all'}
+                .dashboard-description{translate: 'dashboard_page.filtering.all_description'}
+              %li.filtering-option{ng-click: 'setFilter("unread")'}
+                .dashboard-option{translate: 'dashboard_page.filtering.unread'}
+                .dashboard-description{translate: 'dashboard_page.filtering.unread_description'}
+      .col-xs-6
+        .dashboard-page-sort-dropdown.dashboard-page-dropdown{dropdown: '', on-toggle: 'toggled(open)'}
+          %a.dashboard-page-dropdown-toggle.dropdown-toggle{href: '#'}
+            %span{translate: "dashboard_page.sorting.group", ng-show: 'sort == "group"'}>
+            %span{translate: "dashboard_page.sorting.date", ng-show: 'sort == "date"'}>
+            %i.fa.fa-chevron-down
+          .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
+            %ul.sorting-options
+              %li.sorting-option{ng-click: 'setSort("group")'}
+                .dashboard-option{translate: 'dashboard_page.sorting.group'}
+                .dashboard-description{translate: 'dashboard_page.sorting.group_description'}
+              %li.sorting-option{ng-click: 'setSort("date")'}
+                .dashboard-option{translate: 'dashboard_page.sorting.date'}
+                .dashboard-description{translate: 'dashboard_page.sorting.date_description'}
+    .row
+      .col-xs-12
+        I AM DASHBOARD!
