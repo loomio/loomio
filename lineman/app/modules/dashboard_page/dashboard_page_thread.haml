@@ -1,9 +1,9 @@
 .dashboard-page-thread
   %a.selector-list-item-link{href: '/d/{{discussion.key}}'}
-    .media-left
+    .media-left{ng-hide: 'showGroupLogo'}
       %img.selector-list-item-group-logo{src: "{{discussion.group().logoUrl()}}"}
     .media-left.unread-count
-      %span{ng-if: 'discussion.unreadItemsCount > 0'}
+      %span{ng-if: 'discussion.isUnread()'}
         {{discussion.unreadItemsCount()}}
     .media-body
       .dashboard-page-thread-header

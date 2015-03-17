@@ -56,6 +56,7 @@
           .dashboard-page-sort-date{ng-show: 'sort == "group"'}
             .dashboard-page-group{ng-repeat: 'group in dashboardGroups()'}
               .dashboard-page-threads-container{ng-if: 'anyThisGroup(group)'}
-                %h3 {{group.name}}
+                %img.selector-list-item-group-logo.pull-left{src: "{{group.logoUrl()}}"}>
+                %h3.dashboard-page-group-name {{group.name}}
                 .dashboard-page-threads
-                  %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in group.discussions() | orderBy:lastInboxActivity | filter:unread'}
+                  %dashboard_page_thread{discussion: 'discussion', show-group-logo: true, ng-repeat: 'discussion in group.discussions() | orderBy:lastInboxActivity | filter:unread'}
