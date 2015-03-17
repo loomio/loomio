@@ -1,54 +1,55 @@
 .container#main
-  .row
-    .col-xs-6
-      .dashboard-page-dropdown.dashboard-page-filter-dropdown{dropdown: '', on-toggle: 'toggled(open)'}
-        %a.dashboard-page-dropdown-toggle.dropdown-toggle{href: '#'}
-          %span{translate: "dashboard_page.filtering.all", ng-show: 'filter == "all"'}>
-          %span{translate: "dashboard_page.filtering.unread", ng-show: 'filter == "unread"'}>
-          %i.fa.fa-chevron-down
-        .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
-          %ul.filtering-options
-            %li.filtering-option{ng-click: 'setFilter("all")'}
-              .dashboard-option{translate: 'dashboard_page.filtering.all'}
-              .dashboard-description{translate: 'dashboard_page.filtering.all_description'}
-            %li.filtering-option{ng-click: 'setFilter("unread")'}
-              .dashboard-option{translate: 'dashboard_page.filtering.unread'}
-              .dashboard-description{translate: 'dashboard_page.filtering.unread_description'}
-    .col-xs-6
-      .dashboard-page-sort-dropdown.dashboard-page-dropdown{dropdown: '', on-toggle: 'toggled(open)'}
-        %a.dashboard-page-dropdown-toggle.dropdown-toggle{href: '#'}
-          %span{translate: "dashboard_page.sorting.group", ng-show: 'sort == "group"'}>
-          %span{translate: "dashboard_page.sorting.date", ng-show: 'sort == "date"'}>
-          %i.fa.fa-chevron-down
-        .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
-          %ul.sorting-options
-            %li.sorting-option{ng-click: 'setSort("group")'}
-              .dashboard-option{translate: 'dashboard_page.sorting.group'}
-              .dashboard-description{translate: 'dashboard_page.sorting.group_description'}
-            %li.sorting-option{ng-click: 'setSort("date")'}
-              .dashboard-option{translate: 'dashboard_page.sorting.date'}
-              .dashboard-description{translate: 'dashboard_page.sorting.date_description'}
-  .row
-    .col-xs-12
-      .dashboard-page-panel
-        .dashboard-page-sort-group{ng-show: 'sort == "date"'}
-          %h3{translate: 'common.date_range.today'}
-          .dashboard-page-threads
-            %dashboard_page_thread{thread: 'thread', ng-repeat: 'thread in currentUserThreads() | withinRange:"lastInboxActivity":"today" | orderBy:lastInboxActivity'}
-          %h3{translate: 'common.date_range.yesterday'}
-          .dashboard-page-threads
-            %dashboard_page_thread{thread: 'thread', ng-repeat: 'thread in currentUserThreads() | withinRange:"lastInboxActivity":"yesterday" | orderBy:lastInboxActivity'}
-          %h3{translate: 'common.date_range.this_week'}
-          .dashboard-page-threads
-            %dashboard_page_thread{thread: 'thread', ng-repeat: 'thread in currentUserThreads() | withinRange:"lastInboxActivity":"thisWeek" | orderBy:lastInboxActivity'}
-          %h3{translate: 'common.date_range.this_month'}
-          .dashboard-page-threads
-            %dashboard_page_thread{thread: 'thread', ng-repeat: 'thread in currentUserThreads() | withinRange:"lastInboxActivity":"thisMonth" | orderBy:lastInboxActivity'}
-          %h3{translate: 'common.date_range.older'}
-          .dashboard-page-threads
-            %dashboard_page_thread{thread: 'thread', ng-repeat: 'thread in currentUserThreads() | withinRange:"lastInboxActivity":"older" | orderBy:lastInboxActivity'}
-        .dashboard-page-sort-date{ng-show: 'sort == "group"'}
-          .dashboard-page-group{ng-repeat: 'group in currentUserGroups()'}
-            %h3 {{group.name}}
+  .dashboard-container
+    .row
+      .col-xs-6
+        .dashboard-page-dropdown.dashboard-page-filter-dropdown{dropdown: '', on-toggle: 'toggled(open)'}
+          %a.dashboard-page-dropdown-toggle.dropdown-toggle{href: '#'}
+            %span{translate: "dashboard_page.filtering.all", ng-show: 'filter == "all"'}>
+            %span{translate: "dashboard_page.filtering.unread", ng-show: 'filter == "unread"'}>
+            %i.fa.fa-chevron-down
+          .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
+            %ul.dropdown-menu-items.filtering-options
+              %li.dropdown-menu-item.filtering-option{ng-click: 'setFilter("all")'}
+                .dropdown-menu-item-label{translate: 'dashboard_page.filtering.all'}
+                .dashboard-description{translate: 'dashboard_page.filtering.all_description'}
+              %li.dropdown-menu-item.filtering-option{ng-click: 'setFilter("unread")'}
+                .dropdown-menu-item-label{translate: 'dashboard_page.filtering.unread'}
+                .dashboard-description{translate: 'dashboard_page.filtering.unread_description'}
+      .col-xs-6
+        .dashboard-page-sort-dropdown.dashboard-page-dropdown.pull-right{dropdown: '', on-toggle: 'toggled(open)'}
+          %a.dashboard-page-dropdown-toggle.dropdown-toggle{href: '#'}
+            %span{translate: "dashboard_page.sorting.group", ng-show: 'sort == "group"'}>
+            %span{translate: "dashboard_page.sorting.date", ng-show: 'sort == "date"'}>
+            %i.fa.fa-chevron-down
+          .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
+            %ul.dropdown-menu-items.sorting-options
+              %li.dropdown-menu-item.sorting-option{ng-click: 'setSort("group")'}
+                .dropdown-menu-item-label{translate: 'dashboard_page.sorting.group'}
+                .dashboard-description{translate: 'dashboard_page.sorting.group_description'}
+              %li.dropdown-menu-item.sorting-option{ng-click: 'setSort("date")'}
+                .dropdown-menu-item-label{translate: 'dashboard_page.sorting.date'}
+                .dashboard-description{translate: 'dashboard_page.sorting.date_description'}
+    .row
+      .col-xs-12
+        .dashboard-page-panel
+          .dashboard-page-sort-group{ng-show: 'sort == "date"'}
+            %h3{translate: 'common.date_range.today'}
             .dashboard-page-threads
-              %dashboard_page_thread{thread: 'thread', ng-repeat: 'thread in group.discussions() | orderBy:lastInboxActivity'}
+              %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | withinRange:"lastInboxActivity":"today" | orderBy:lastInboxActivity'}
+            %h3{translate: 'common.date_range.yesterday'}
+            .dashboard-page-threads
+              %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | withinRange:"lastInboxActivity":"yesterday" | orderBy:lastInboxActivity'}
+            %h3{translate: 'common.date_range.this_week'}
+            .dashboard-page-threads
+              %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | withinRange:"lastInboxActivity":"thisWeek" | orderBy:lastInboxActivity'}
+            %h3{translate: 'common.date_range.this_month'}
+            .dashboard-page-threads
+              %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | withinRange:"lastInboxActivity":"thisMonth" | orderBy:lastInboxActivity'}
+            %h3{translate: 'common.date_range.older'}
+            .dashboard-page-threads
+              %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | withinRange:"lastInboxActivity":"older" | orderBy:lastInboxActivity'}
+          .dashboard-page-sort-date{ng-show: 'sort == "group"'}
+            .dashboard-page-group{ng-repeat: 'group in dashboardGroups()'}
+              %h3 {{group.name}}
+              .dashboard-page-threads
+                %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in group.discussions() | orderBy:lastInboxActivity'}

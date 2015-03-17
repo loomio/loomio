@@ -11,8 +11,8 @@ angular.module('loomioApp').controller 'DashboardPageController', ($scope, Recor
   $scope.setSort = (sort) ->
     $scope.sort = sort
 
-  $scope.currentUserThreads = ->
+  $scope.dashboardDiscussions = ->
     window.Loomio.currentUser.inboxDiscussions()
 
-  $scope.currentUserGroups = ->
+  $scope.dashboardGroups = ->
     window.Loomio.currentUser.groups()

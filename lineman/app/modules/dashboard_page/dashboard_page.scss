@@ -5,4 +5,18 @@
 
 .dashboard-page-threads {
   @include card;
+  padding: 0;
+}
+
+.dashboard-page-thread {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.dashboard-page-pie-chart {
+  padding-right: 5px;
+}
+
+.dashboard-page-thread-info {
+  clear: both;
 }
