@@ -8,7 +8,8 @@
     .media-body
       .dashboard-page-thread-header
         %tiny_proposal_pie_chart.pull-left.dashboard-page-pie-chart{proposal: 'discussion.activeProposal()', ng-if: 'discussion.activeProposal()'}
-        .dashboard-page-thread-title {{discussion.title}}
+        .dashboard-page-thread-title{ng-class: "{'is-unread': discussion.isUnread() }"}
+          {{discussion.title}}
       .dashboard-page-thread-info
         %span> {{discussion.group().fullName()}}
         %span> ·
