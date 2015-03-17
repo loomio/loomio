@@ -17,7 +17,8 @@ class DiscussionSerializer < ActiveModel::Serializer
              :created_at,
              :updated_at,
              :first_sequence_id,
-             :last_sequence_id
+             :last_sequence_id,
+             :proposal_closing_at
 
   has_one :author, serializer: UserSerializer, root: 'users'
   has_one :group, serializer: GroupSerializer, root: 'groups'
@@ -29,6 +30,10 @@ class DiscussionSerializer < ActiveModel::Serializer
 
   def active_proposal
     object.current_motion
+  end
+
+  def proposal_closing_at
+    active_proposal.try :closing_at
   end
 
   def filter(keys)

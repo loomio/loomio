@@ -1,0 +1,5 @@
+.dashboard-container {
+  margin: 10px auto;
+  max-width: $thread-max-width;
+  @include card;
+}

@@ -31,4 +31,17 @@
                 .dashboard-description{translate: 'dashboard_page.sorting.date_description'}
     .row
       .col-xs-12
-        I AM DASHBOARD!
+        .dashboard-page-panel
+          .dashboard-page-sort-group{ng-show: 'sort == "date"'}
+            .dashboard-page-today
+            .dashboard-page-yesterday
+            .dashboard-page-last-week
+            .dashboard-page-last-month
+            .dashboard-page-thread{ng-repeat: 'thread in currentUserThreads() track by thread.id | orderBy: ["proposalClosingAt", "lastActivityAt"]'}
+              %dashboard_page_thread{thread: 'thread'}
+          .dashboard-page-sort-date{ng-show: 'sort == "group"'}
+            .dashboard-page-group{ng-repeat: 'group in currentUserGroups() track by group.id'}
+              .dashboard-page-group-title
+                %strong {{group.name}}
+              .dashboard-page-threads{ng-repeat: 'thread in group.discussions() | orderBy: ["proposalClosingAt", "lastActivityAt"]'}
+                %dashboard_page_thread{thread: 'thread'}
