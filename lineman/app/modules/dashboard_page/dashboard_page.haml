@@ -9,10 +9,10 @@
             %i.fa.fa-chevron-down
           .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
             %ul.dropdown-menu-items.filtering-options
-              %li.dropdown-menu-item.filtering-option{ng-click: 'setFilter("all")'}
+              %li.dropdown-menu-item.filtering-option{ng-click: 'setOptions({filter: "all"})'}
                 .dropdown-menu-item-label{translate: 'dashboard_page.filtering.all'}
                 .dashboard-description{translate: 'dashboard_page.filtering.all_description'}
-              %li.dropdown-menu-item.filtering-option{ng-click: 'setFilter("unread")'}
+              %li.dropdown-menu-item.filtering-option{ng-click: 'setOptions({filter: "unread"})'}
                 .dropdown-menu-item-label{translate: 'dashboard_page.filtering.unread'}
                 .dashboard-description{translate: 'dashboard_page.filtering.unread_description'}
       .col-xs-6
@@ -23,10 +23,10 @@
             %i.fa.fa-chevron-down
           .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
             %ul.dropdown-menu-items.sorting-options
-              %li.dropdown-menu-item.sorting-option{ng-click: 'setSort("group")'}
+              %li.dropdown-menu-item.sorting-option{ng-click: 'setOptions({sort: "group"})'}
                 .dropdown-menu-item-label{translate: 'dashboard_page.sorting.group'}
                 .dashboard-description{translate: 'dashboard_page.sorting.group_description'}
-              %li.dropdown-menu-item.sorting-option{ng-click: 'setSort("date")'}
+              %li.dropdown-menu-item.sorting-option{ng-click: 'setOptions({sort: "date"})'}
                 .dropdown-menu-item-label{translate: 'dashboard_page.sorting.date'}
                 .dashboard-description{translate: 'dashboard_page.sorting.date_description'}
     .row

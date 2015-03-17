@@ -1,15 +1,10 @@
 angular.module('loomioApp').factory 'InboxService', (UserAuthService, Records) ->
   new class InboxService
     constructor: ->
-      currentUser = UserAuthService.currentUser
       baseThreadsView = (name) ->
-       view = Records.discussions.collection.addDynamicView(name)
-       #view.applyFind(groupId: $in: currentUser.groupIds())
-       #view.applyFind(volume: $in: ['email', 'normal'])
-       view
+       Records.discussions.collection.addDynamicView(name)
 
       @currentView = baseThreadsView('currentDiscussions')
-      #@currentView.applyFind(lastActivityAt: {'$gte': moment(4 weeks ago)})
       @currentView.applySimpleSort('lastActivityAt', true) # desc.. maybe try created at for a buzz.
 
       @unreadView = baseThreadsView('unreadDiscussions')
@@ -17,9 +12,8 @@ angular.module('loomioApp').factory 'InboxService', (UserAuthService, Records) -
       @unreadView.applyWhere (discussion) -> discussion.isUnread()
 
     fetchRecords: ->
-      Records.discussions.fetchInboxUnread()
-      Records.discussions.fetchInboxCurrent().then (response) ->
-        console.log 'inbox current:', response
+      Records.discussions.fetchInboxByDate
+      Records.discussions.fetchInboxByDate(filter: 'unread')
 
 
     currentThreads: ->

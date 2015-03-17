@@ -1,18 +1,21 @@
 angular.module('loomioApp').controller 'DashboardPageController', ($scope, Records) ->
-  $scope.sort = 'date'
-  $scope.filter = 'all'
 
-  Records.discussions.fetchInboxCurrent()
-  Records.discussions.fetchInboxByGroup()
+  $scope.refresh = ->
+    switch $scope.sort
+      when 'date'
+        Records.discussions.fetchInboxByDate  filter: $scope.filter
+      when 'group'
+        Records.discussions.fetchInboxByGroup filter: $scope.filter
 
-  $scope.setFilter = (filter) ->
-    $scope.filter = filter
-
-  $scope.setSort = (sort) ->
-    $scope.sort = sort
+  $scope.setOptions = (options = {}) ->
+    $scope.filter = options['filter'] if options['filter']
+    $scope.sort   = options['sort']   if options['sort']
+    $scope.refresh()
+  $scope.setOptions sort: 'date', filter: 'all'
 
   $scope.dashboardDiscussions = ->
     window.Loomio.currentUser.inboxDiscussions()
 
   $scope.dashboardGroups = ->
     window.Loomio.currentUser.groups()
+
