@@ -80,3 +80,12 @@ $sidebar-width: 320px;
     clear: both;
   }
 }
+
+#turn-off-angular {
+  z-index: 100;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  width: 100px;
+  background-color: pink
+}
