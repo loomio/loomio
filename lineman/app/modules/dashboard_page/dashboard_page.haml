@@ -33,23 +33,29 @@
       .col-xs-12
         .dashboard-page-panel
           .dashboard-page-sort-group{ng-show: 'sort == "date"'}
-            %h3{translate: 'common.date_range.today'}
-            .dashboard-page-threads
-              %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | withinRange:"lastInboxActivity":"today" | orderBy:lastInboxActivity'}
-            %h3{translate: 'common.date_range.yesterday'}
-            .dashboard-page-threads
-              %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | withinRange:"lastInboxActivity":"yesterday" | orderBy:lastInboxActivity'}
-            %h3{translate: 'common.date_range.this_week'}
-            .dashboard-page-threads
-              %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | withinRange:"lastInboxActivity":"thisWeek" | orderBy:lastInboxActivity'}
-            %h3{translate: 'common.date_range.this_month'}
-            .dashboard-page-threads
-              %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | withinRange:"lastInboxActivity":"thisMonth" | orderBy:lastInboxActivity'}
-            %h3{translate: 'common.date_range.older'}
-            .dashboard-page-threads
-              %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | withinRange:"lastInboxActivity":"older" | orderBy:lastInboxActivity'}
+            .dashboard-page-threads-container{ng-if: 'anyToday()'}
+              %h3{translate: 'common.date_range.today'}
+              .dashboard-page-threads
+                %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | orderBy:lastInboxActivity | filter:unread | filter:today'}
+            .dashboard-page-threads-container{ng-if: 'anyYesterday()'}
+              %h3{translate: 'common.date_range.yesterday'}
+              .dashboard-page-threads
+                %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | orderBy:lastInboxActivity | filter:unread | filter:yesterday'}
+            .dashboard-page-threads-container{ng-if: 'anyThisWeek()'}
+              %h3{translate: 'common.date_range.this_week'}
+              .dashboard-page-threads
+                %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | orderBy:lastInboxActivity | filter:unread | filter:thisWeek'}
+            .dashboard-page-threads-container{ng-if: 'anyThisMonth()'}
+              %h3{translate: 'common.date_range.this_month'}
+              .dashboard-page-threads
+                %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | orderBy:lastInboxActivity | filter:unread | filter:thisMonth'}
+            .dashboard-page-threads-container{ng-if: 'anyOlder()'}
+              %h3{translate: 'common.date_range.older'}
+              .dashboard-page-threads
+                %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | orderBy:lastInboxActivity | filter:unread | filter:older'}
           .dashboard-page-sort-date{ng-show: 'sort == "group"'}
             .dashboard-page-group{ng-repeat: 'group in dashboardGroups()'}
-              %h3 {{group.name}}
-              .dashboard-page-threads
-                %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in group.discussions() | orderBy:lastInboxActivity'}
+              .dashboard-page-threads-container{ng-if: 'anyThisGroup(group)'}
+                %h3 {{group.name}}
+                .dashboard-page-threads
+                  %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in group.discussions() | orderBy:lastInboxActivity | filter:unread'}

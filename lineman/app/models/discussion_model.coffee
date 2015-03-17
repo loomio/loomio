@@ -9,9 +9,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       @setupView 'proposals', 'createdAt', true
       @setupView 'events', 'sequenceId'
 
-    applyDefaults: ->
-      @lastInboxActivity = @activeProposalClosingAt() or @lastActivityAt
-
     translationOptions: ->
       title:     @title
       groupName: @groupName()
@@ -63,7 +60,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       @recordStore.discussionReaders.initialize(id: @id)
 
     isUnread: ->
-      @unreadActivityCount()
+      @unreadActivityCount() > 0
 
     unreadItemsCount: ->
       @itemsCount - @reader().readItemsCount
@@ -73,6 +70,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
 
     unreadCommentsCount: ->
       @commentsCount - @reader().readCommentsCount
+
+    lastInboxActivity: ->
+      @activeProposalClosingAt() or @lastActivityAt
 
     markAsRead: (sequenceId) ->
       if @reader().lastReadSequenceId < sequenceId
