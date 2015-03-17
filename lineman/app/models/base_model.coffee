@@ -12,7 +12,8 @@ angular.module('loomioApp').factory 'BaseModel', ->
       Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: false)
       Object.defineProperty(@, 'restfulClient', value: recordsInterface.restfulClient, enumerable: false)
       @initialize(data)
-      @setupViews() if @setupViews? and @id?
+      @setupViews()    if @setupViews? and @id?
+      @applyDefaults() if @applyDefaults?
 
     initialize: (data) ->
       @updateFromJSON(data)

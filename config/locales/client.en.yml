@@ -11,6 +11,12 @@ en:
       private: 'Private'
       public: 'Public'
       organization: 'Organization'
+    date_range:
+      today: 'Today'
+      yesterday: 'Yesterday'
+      this_week: 'This Week'
+      this_month: 'This Month'
+      older: 'Older'
     action:
       save: 'Save'
       reply: 'Reply'
