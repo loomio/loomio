@@ -496,7 +496,7 @@ en:
 
   networks:
     threads_header: 'all the public threads in this network'
-    groups_header: 'all the groups in this network'
+    groups_header: 'all %{count} groups in this network'
     members_count: '%{count} members'
     membership_requests_header: 'Membership requests for %{network}'
     join_header: 'Add your group to the network'

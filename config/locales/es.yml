@@ -420,6 +420,25 @@ es:
       click_to_unfollow: Clic para dejar de seguir el grupo
       following_details: "Serás notificado sobre cada tema en este grupo "
       not_following_details: Serás notificado sobre los temas en los que estás participando.
+  networks:
+    threads_header: todas los hilos públicos en esta red.
+    groups_header: "todos %{count} grupos en esta red"
+    members_count: "%{count} miembros"
+    membership_requests_header: "Membresías solicitadas para %{network}"
+    join_header: Adhiere tu grupo a la red
+    request_to_join: Pide unirte a la Red
+    current_requests: Peticiones actuales
+    previous_requests: Peticiones anteriores
+    approve: "Aprobar "
+    approved: "Aprobado por %{name}"
+    decline: "Rechazar "
+    declined: "Rechazado por %{name}"
+    threads: Hilos
+    groups: Grupos
+    join: Unirse
+    request_created: Gracias por pedir unirte a la red. Los coordinadores de la red consideraran tu pedido en breve.
+    request_approved: "Solicitud de membresía a la red aprobada. "
+    request_declined: Solicitud de membresía a la red rechazada.
   group_request:
     neighbourhood_support_group: ej. Grupo de apoyo al vecindario
     commercial_use_option: "en una empresa, organización formal o lugar de trabajo"
