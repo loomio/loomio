@@ -10,6 +10,7 @@ fr:
       try_it: Essayez
       log_in: SE CONNECTER
       video: Apprenez-en plus sur le fonctionnement de Loomio
+      try_loomio: Essayez Loomio
       try_loomio_beta: Essayez Loomio Beta
       more: Plus
       top: Haut
@@ -17,6 +18,9 @@ fr:
       terms: Termes
       privacy: Vie privée
       services: Services
+    hero:
+      header_html: "Loomio est le moyen le plus simple de<br /><strong>prendre des décisions ensemble</strong>."
+      lead_html: "Loomio permet aux organisations et aux communautés de transformer des <strong>discussions en actions</strong>, peu importe où sont les personnes."
     product:
       header_html: "Quand nous écoutons <strong>toutes les voix</strong>, nous prenons <strong>de meilleures décisions</strong>."
       step1:
@@ -30,6 +34,8 @@ fr:
         desc: "Détailler ensemble la proposition de sorte que cela fonctionne pour tout le monde. Chaque décision a une échéance claire, pour que vous obteniez toujours un résultat clair."
     crowdfunding:
       header: Nous avons choisi le financement participatif – crowdfunding – afin que nous puissions finir de construire cette nouvelle plateforme et la donner au monde.
+    mobile:
+      lead_html: "<strong>Loomio fonctionne sur n'importe quel périphérique,</strong><br /> prenez des décisions n'importe où, n'importe quand."
     quote:
       header:
         rushkoff_html: "«Loomio <strong> libère le potentiel d'internet </strong> pour favoriser l'émergence du consensus au lieu d'un débat polarisé.» <div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, auteur de <em>Present Shock</em></div>"

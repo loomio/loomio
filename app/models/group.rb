@@ -340,7 +340,7 @@ class Group < ActiveRecord::Base
   def public_discussions_only?
     discussion_privacy_options == 'public_only'
   end
-  
+
   def public_or_private_discussions_allowed?
     discussion_privacy_options == 'public_or_private'
   end
@@ -355,12 +355,31 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def add_member!(user, inviter=nil)
-    if is_parent?
-      if (memberships_count.to_i > max_size.to_i)
-        raise Group::MaximumMembershipsExceeded
-      end
+  def org_members_count
+    if is_subgroup?
+      parent.org_members_count
+    else
+      Membership.active.where(group_id: [id, subgroups.pluck(:id)].flatten).pluck(:user_id).uniq.count
     end
+  end
+
+  def approaching_max_size?
+    ENV['HOSTED_BY_LOOMIO'] && org_members_count > (org_max_size * 0.8)
+  end
+
+  def max_size_reached?
+    ENV['HOSTED_BY_LOOMIO'] && org_members_count >= org_max_size
+  end
+
+  def org_max_size
+    if is_subgroup?
+      parent.org_max_size
+    else
+      max_size
+    end
+  end
+
+  def add_member!(user, inviter=nil)
     find_or_create_membership(user, inviter)
   end
 
@@ -393,9 +412,9 @@ class Group < ActiveRecord::Base
   end
 
   def invitations_remaining
-    max_size - memberships_count - pending_invitations.count
+    org_max_size - org_members_count
   end
-  
+
   def has_member_with_email?(email)
     members.where(email: email).any?
   end
@@ -460,7 +479,7 @@ class Group < ActiveRecord::Base
   end
 
   def organisation_motions_count
-    Discussion.published.where(group_id: [org_group_ids]).sum(:motions_count)
+    Discussion.published.where(group_id: org_group_ids).sum(:motions_count)
   end
 
   def org_group_ids
@@ -491,17 +510,8 @@ class Group < ActiveRecord::Base
     end
   end
 
-  # a bit nasty but no one really cares/has time to clean up the group_request stuff
-  def is_commercial
-    if is_subgroup?
-      parent.is_commercial
-    else
-      if group_request.present?
-        group_request.is_commercial
-      else
-        nil
-      end
-    end
+  def is_referral
+    !group_request.present? and !is_subgroup?
   end
 
   def financial_nature

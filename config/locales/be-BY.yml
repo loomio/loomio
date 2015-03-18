@@ -353,8 +353,6 @@ be-BY:
   edit_memberships: Рэдагаваць чалецтва
   add_new_member: Дадаць новага ўдзельніка
   invite_members_to_group: "Запрасіць удзельніка ў %{which_group}"
-  remaining_invites_count: "%{count} запрашэнняў засталася"
-  get_in_touch_link: звязацца з намі
   email_members_in_group: "Разаслаць email удзельнікам  %{which_group}"
   subject_error: "Калі ласка, увядзіце назву тэмы"
   subject_placeholder: Напішыце тэму
@@ -421,8 +419,6 @@ be-BY:
       not_following_details: "Вам паведамяць пра дзейнасць у абмеркаваннях, у якіх вы ўдзельнічаце. "
   group_request:
     header: Стварыць групу
-    desc: Каб пачаць прымаць рашэнні на Loomio -  стварыце групу
-    neighbourhood_support_group: "напрыклад, Група нашага двара"
     commercial_use_option: "У кампаніі, афіцыйнай установе ці на працоўным месцы"
     non_commercial_use_option: "У супольнасці ці нефармальным аб'яднанні"
     please_select_an_option: "Калі ласка, абярыце варыянт"

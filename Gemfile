@@ -62,7 +62,6 @@ gem 'modernizr-rails'
 gem 'jquery-fileupload-rails'
 gem 'momentjs-rails'
 gem 'ruby-progressbar'
-gem 'dotenv'# , :require => 'dotenv/rails-now'
 gem 'responders', '~> 2.0'
 gem 'activerecord_any_of'
 
@@ -75,6 +74,7 @@ group :development, :test do
   gem 'minitest'
   gem 'timecop'
   gem 'pry-rails'
+  gem 'binding_of_caller'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-rails'
@@ -83,6 +83,7 @@ group :development, :test do
   gem 'rspec-activemodel-mocks'
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'dotenv-rails', :require => 'dotenv/rails-now'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
 end

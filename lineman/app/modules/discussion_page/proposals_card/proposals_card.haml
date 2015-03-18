@@ -1,10 +1,9 @@
 .thread-proposals
-  %h3.first Proposal
-
+  %h3.first{translate: 'discussion.proposals'}
   %div{ng_repeat: 'proposal in discussion.proposals()'}
     .active-proposal{ng-if: 'isExpanded(proposal)'}
       %proposal_expanded{proposal: 'proposal'}
-      %h3{ng-show: "discussion.proposals().length > 1"} Previous proposals
+      %h3{translate: 'discussion.previous_proposals', ng-show: "discussion.proposals().length > 1"}
 
     .inactive-proposal{ng-if: '!isExpanded(proposal)', ng_click: 'selectProposal(proposal)'}
       %proposal_collapsed{proposal: 'proposal'}

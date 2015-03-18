@@ -1,6 +1,9 @@
 nl-NL:
   email_settings:
     title: E-mail instellingen
+    group_volume: Groep volume
+    group_volume_description: "Volume bepaalt hoeveel e-mail je van een groep krijgt. Stel het volume in voor al je groepen:"
+    to_change_one_group: "Om het volume van slechts een groep te veranderen, bezoek je de pagina van die groep."
     discussion_activity: Verander discussievolume als ik deelneem
     submit: Instellingen bijwerken
   explore:
@@ -353,8 +356,6 @@ nl-NL:
   edit_memberships: Bewerk lidmaatschappen
   add_new_member: Nieuw lid toevoegen
   invite_members_to_group: "Nodig leden uit voor %{which_group}"
-  remaining_invites_count: "%{count} resterende uitnodigingen"
-  get_in_touch_link: neem contact op
   email_members_in_group: "E-mail de leden in %{which_group}"
   subject_error: Vul een onderwerp in
   subject_placeholder: Typ een onderwerp
@@ -421,8 +422,6 @@ nl-NL:
       not_following_details: Je wordt op de hoogte gesteld van gesprekken waar je aan deelneemt.
   group_request:
     header: Begin een groep
-    desc: "Om besluitvorming op Loomio te starten is de eerste stap het maken van een groep:"
-    neighbourhood_support_group: b.v. Buurt Steungroep
     commercial_use_option: "in een bedrijf,  organisatie of werkplek"
     non_commercial_use_option: en een gemeenschapsgroep of informeel netwerk
     please_select_an_option: Selecteer een optie

@@ -35,7 +35,7 @@
 
           .thread-discussion-description{btf-markdown: 'discussion.description' }
 
-        %proposals_card{discussion: 'discussion'}
+        %proposals_card{discussion: 'discussion', ng-show: 'discussion.proposals().length > 0'}
         %thread_card{discussion: 'discussion'}
         %comment_form{discussion: 'discussion'}
 

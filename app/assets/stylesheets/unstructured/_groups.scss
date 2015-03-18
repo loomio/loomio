@@ -2,6 +2,11 @@
 //= depend_on 'default-logo-medium.png'
 //= depend_on 'cover-photo-gradient.png'
 
+.group-max-size-warning, .group-max-size-reached {
+  margin-bottom: 3em;
+}
+
+
 body.groups {
   &.edit, &.new, &.create, &.update {
     .described-label {

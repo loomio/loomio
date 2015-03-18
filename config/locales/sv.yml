@@ -339,8 +339,6 @@ sv:
   edit_memberships: Redigera medlemskap
   add_new_member: Lägg till ny medlem
   invite_members_to_group: "Bjud in medlemmar till %{which_group}"
-  remaining_invites_count: "%{count} återstående inbjudningar"
-  get_in_touch_link: få kontakt med
   email_members_in_group: "E-posta medlemmarna i %{which_group}"
   subject_error: Ange ett ämne
   subject_placeholder: Skriv ett ämne
@@ -406,7 +404,6 @@ sv:
       following_details: Du kommer att meddelas om varje tråd i denna grupp.
       not_following_details: Du kommer att meddelas om trådar som du deltar i.
   group_request:
-    neighbourhood_support_group: t. ex. Stödgrupp i Grannskapet
     commercial_use_option: "i ett företag, formell organisation eller arbetsplats"
     non_commercial_use_option: i ett samhälle grupp eller informellt nätverk
     please_select_an_option: Vänligen välj ett alternativ

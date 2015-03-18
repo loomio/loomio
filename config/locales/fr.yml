@@ -1,4 +1,20 @@
 fr:
+  email_settings:
+    title: Paramètres de courrier électronique
+    group_volume: Niveau de notification pour le groupe
+    group_volume_description: "Le niveau de notification définit combien de courriers électroniques vous allez recevoir de la part d'un groupe. Définissez le niveau pour tous vos groupes\_:"
+    to_change_one_group: "Pour ajuster le niveau d'un seul de vos groupes, visitez la page de ce groupe."
+    discussion_activity: Change le niveau de notification lorsque je participe
+    discussion_activity_description: "Lorsque vous participez à une discussion, le niveau de notification sera changé en «\_Élevé\_» afin que toute activité ultérieure vous soit immédiatement notifiée."
+    yesterday_on_loomio: "Envoie moi un résumé quotidien de ce qui s'est passé"
+    yesterday_on_loomio_description: "Envoie chaque jour à 6:00 un message électronique avec les activités non-lues du jour précédent. C'est un excellent moyen de rattraper le retard. Le message contient toutes les notifications non-désactivées."
+    email_when_mentioned: "Écris-moi lorsque je suis @mentionné"
+    email_when_mentioned_description: "Lorsque quelqu'un veut attirer votre attention, ils vont vous @mentionner. Nous vous recommandons de laisser ce paramètre activé, afin que vous receviez un courrier électronique lorsque cela se produira."
+    proposal_closing_soon: "Écris-moi avant qu'une proposition n'arrive à son terme"
+    proposal_closing_soon_description: "24 heures avant que la proposition ferme, peu importe le niveau de notification, vous recevrez un courrier électronique avec les dernières informations sur la proposition."
+    submit: Met à jour mes paramètres
+    no_change: Aucun changement
+    no_change_description: Laisse le niveau de notification de mes groupes inchangé.
   explore:
     header: Explorer les groupes publics
   try_it:
@@ -12,6 +28,7 @@ fr:
     errors:
       messages:
         blank: Ne peut pas être laissé vierge
+        invalid: "n'est pas une valeur valable"
   errors:
     messages:
       email: "Ceci n'est pas une adresse e-mail correcte"
@@ -98,6 +115,8 @@ fr:
     logo_upload: Charger un nouveau logo
     edit_description: Éditer la description
     group_category: "Trouver d'autres groupes du même type"
+    unread_comments: Commentaires non-lus
+    new_votes: Nouveaux votes
   views:
     pagination:
       previous: Précédent
@@ -174,9 +193,12 @@ fr:
     about: À propos
     blog: Blog
     contact: Contact
+    help: Aide
     privacy: Confidentialité
+    pricing: Tarification
     public_groups: Groupes publics
     terms: "Conditions d'utilisation"
+    independent_install_html: "%{hostname} est une installation indépendante de Loomio\_: <a href=\"http://github.com/loomio/loomio\">en savoir plus</a>."
   inbox:
     clear: Vider
     title: "Boite de réception "
@@ -203,6 +225,9 @@ fr:
     motion_blocked: a bloqué cette proposition
     motion_outcome_created: a publié un résultat pour la proposition
     motion_outcome_updated: a mis à jour le résultat de la proposition
+    email_actions:
+      following_thread: "Vous suivez désormais la discussion\_: %{thread_title}"
+      not_following_thread: "Vous ne suivez plus la discussion\_: %{thread_title}"
   edit_discussion_context: Modifier le contexte de la discussion
   request_new_group: Créer un groupe
   start_new_group: Créer un nouveau groupe
@@ -340,8 +365,6 @@ fr:
   edit_memberships: Modifier les adhésions
   add_new_member: Ajouter un nouveau membre
   invite_members_to_group: "Inviter des membres à %{which_group}"
-  remaining_invites_count: "%{count} invitations restantes"
-  get_in_touch_link: Restons en contact
   email_members_in_group: "Envoyer un e-mail aux membres dans %{which_group}"
   subject_error: Merci de renseigner un sujet
   subject_placeholder: Écrire un sujet
@@ -406,14 +429,51 @@ fr:
       click_to_unfollow: Cliquez pour ne plus suivre le groupe
       following_details: Vous serez avisé de tous les fils de ce groupe.
       not_following_details: Vous serez informé sur les fils auxquels vous participez.
+  networks:
+    threads_header: toutes les discussions publiques dans ce réseau
+    groups_header: tous les groupes dans ce réseau
+    members_count: "%{count} membres"
+    membership_requests_header: "Demandes d'adhésion pour %{network}"
+    join_header: Ajouter votre groupe au réseau
+    request_to_join: "Demande d'adhésion au réseau"
+    current_requests: Demandes actuelles
+    previous_requests: Demandes précédentes
+    approve: Approuver
+    approved: "Approuvé par %{name}"
+    decline: Refuser
+    declined: "Refusé par %{name}"
+    threads: Discussions
+    groups: Groupes
+    join: Rejoindre
+    manage: "Gérer (%{count} demandes en attente)"
+    request_created: "Merci pour votre demande d'adhésion au réseau. Les coordinateurs du réseau vont bientôt traiter votre demande."
+    request_approved: "Demande d'adhésion au réseau approuvée."
+    request_declined: "Demande d'adhésion au réseau refusée."
   group_request:
-    neighbourhood_support_group: "par exemple : Groupe d'aide de quartier"
+    header: Créer un groupe
+    desc: "Mettez en place un groupe pour commencer à prendre des décisions ensemble sur Loomio\_:"
     commercial_use_option: "dans une entreprise, une association ou sur votre lieu de travail"
     non_commercial_use_option: dans un groupe communautaire ou réseau informel
     please_select_an_option: "S'il vous plaît sélectionner une option"
     confirmation:
       title: "Vous avez presque fini ! Consultez votre e-mail."
       body_html: "Nous vous avons envoyé une invitation par e-mail pour créer votre groupe.\nSi vous ne le recevez pas après quelques minutes, envoyez nous un e-mail à <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    volume: Niveau de notification
+    loud: Élevé
+    normal: Normal
+    quiet: Bas
+    mute: Désactivé
+  discussion_volume:
+    loud_description: "Envoie un courrier électronique dès qu'il y a de l'activité dans cette discussion."
+    normal_description: "Envoie un courrier uniquement lorsqu'une proposition est créée, s'apprête à fermer, ou qu'un résultat est publié."
+    quiet_description: "N'envoie aucun courrier à propos de cette discussion."
+    mute_description: "Cache cette discussion du tableau de bord et n'envoie aucune notification sauf si l'on est @mentionné."
+  group_volume:
+    loud_description: "Envoie un courrier électronique dès qu'il y a de l'activité."
+    normal_description: "Envoie par courrier électronique seulement les activités importantes: nouvelles discussions et propositions, résultats, etc."
+    quiet_description: "N'envoie pas de courrier électronique concernant ce groupe. Les activités restent consultables sur le tableau de bord."
+    mute_description: "Masque ce groupe dans le tableau de bord et n'envoie aucune notification sauf si l'on est @mentionné."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> accepte la proposition."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> s'abstient sur la proposition"
@@ -622,6 +682,7 @@ fr:
   remember_me: Se souvenir de moi
   signing_in: Se connecter
   or: ou
+  invalid_email: "L'adresse électronique que vous avez saisie n'a pas été reconnue. Vérifiez qu'elle a été correctement saisie ou essayez une autre adresse électronique."
   forgot_your_password: Mot de passe oublié ?
   dont_have_an_account: Pas de compte ?
   create_one_now: En créer un maintenant
@@ -764,6 +825,7 @@ fr:
         close_at_date: En cours de clôture
       user:
         name: Nom
+        username: Identifiant utilisateur
         email: E-mail
         password: Mot de passe
         password_confirmation: Confirmer votre mot de passe
@@ -828,10 +890,14 @@ fr:
       subject: Loomio - Résumé des dernières 24 heures
     missed_yesterday:
       subject: Hier sur Loomio
+      headlines: Les gros titres
       mark_as_read: Marquer comme lu
       thanks_for_reading: "Merci d'avoir lu ceci, passez une bonne journée !"
       click_here_to_mark_all_as_read_html: "Voici ce qui s'est passé hier sur Loomio.\nLorsque vous l'avez lu, cliquez sur <a href=\"%{link}\">marquer comme lu</a> pour le supprimer de votre Boîte de réception dans Loomio.\n"
       marked_as_read_success: Tout le contenu de cet email a été marqué comme lu
+    comment_replied_to:
+      context: "%{author_name} a répondu à votre commentaire dans la discussion «\_%{discussion_title}\_»"
+      subject: "%{who} a répondu à votre commentaire dans le groupe %{which} sur Loomio"
     group_email:
       intro: "%{who} à fait une annonce à %{group}:"
     group_membership_approved:
@@ -870,6 +936,13 @@ fr:
       headline: "La proposition de %{author} dans %{group} ferme bientôt :"
       summary: Résumé
     thread_mailer:
+      footer_text: "Répondez directement à ce courrier ou visualisez-le sur %{hostname}\_:"
+      reply_or_view_online_html: "Répondez à ce courrier directement ou <a href='%{url}'>visualisez-le sur %{hostname}</a>."
+      turn_off_notifications_html: "<a href='%{url}'>Désactiver les courriers électroniques</a> pour cette discussion."
+      turn_off_notifications_text: "Désactiver les courriers électroniques pour cette discussion\_: %{url}"
+      turn_on_notifications_html: "<a href='%{url}'>Activer les courriers électroniques pour cette discussion</a> pour recevoir les activités futures."
+      turn_on_notifications_text: "Activer les courriers électroniques pour recevoir les activités futures dans cette discussion\_: %{url}"
+      change_email_preferences_html: "Changez vos <a href='%{email_preferences_url}'>paramètres de notification</a> pour vous désabonner de ces courriers électroniques."
       change_preferences: "Modifiez vos préférences de courriel :"
       new_motion: "%{who} propose :"
       motion_closing_soon: "Proposition clôturée dans 24 heures :"
@@ -954,6 +1027,8 @@ fr:
   google: Google
   persona: Persona
   common:
+    profile: Profil
+    email_settings: Paramètres de courrier électronique
     markdown_help_tooltip: Apprenez comment formatter votre texte avec Markdown
     settings: Paramètres
     dashboard: Bureau
@@ -1057,3 +1132,4 @@ fr:
     women: Femmes
     media: Média
     health: Santé
+  start_your_group: Créer votre groupe

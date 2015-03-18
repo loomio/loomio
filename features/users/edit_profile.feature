@@ -29,6 +29,13 @@ Feature: User edits profile
     Then I should see my username has been updated
 
   @javascript
+  Scenario: User is prevented from changing username to contain whitespace
+    When I edit my username to contain whitespace
+    And And I submit the form
+    Then I should see an error message on the form
+    And my username should not be updated
+
+  @javascript
   Scenario: User updates profile photo
     Given I visit the profile page
     And I upload a profile image

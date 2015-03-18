@@ -144,7 +144,6 @@ ga-IE:
   no_invitations_button: Níl aon chuireadh fágtha
   number_pending: "%{pending} ar feitheamh"
   add_new_member: Cuir comhalta nua leis
-  get_in_touch_link: déan teagmháil
   subject_error: Cuir ábhar leis le do thoil
   subject_placeholder: Scríobh ábhar
   message_error: Cuir teachtaireacht isteach ann le do thoil

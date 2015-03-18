@@ -1,4 +1,20 @@
 hu:
+  email_settings:
+    title: Email beállítások
+    group_volume: Csoport hangerő
+    group_volume_description: "A hangerő azt vezérli, hogy hány levelet kapj a csoportból. Állítsd be minden csoport hangerejét:"
+    to_change_one_group: Egyetlen csoportod hangerejének beállításához keresd fel annak a csoportnak a lapját.
+    discussion_activity: Változzon a vita hangereje amikor részt veszek benne
+    discussion_activity_description: "Ha részt veszel egy vitában, a hangerő 'Hangos'-ra lesz állítva, így minden további aktivitásról azonnal emailt kapsz."
+    yesterday_on_loomio: Küldj nekem emailben összefoglalót naponta az aktivitásokról
+    yesterday_on_loomio_description: "Minden nap reggel 6-kor, küldj emailt a tegnapi olvasatlan aktivitásokról. Ez nagyszerű módja a csoporthoz történő felzárkózásnak és mindent tartalmaz, ami nincs lenémítva."
+    email_when_mentioned: "Küldj nekem emailt ha @megemlítenek"
+    email_when_mentioned_description: "Ha valaki  a figyelmedet szeretné kérni, meg fog @említeni. Azt ajánljuk hagyd bekapcsolva ezt a beállítási lehetőséget, így egy emailt fogsz kapni, ha ez megtörténik."
+    proposal_closing_soon: Kérek emailt mielőtt egy javaslat lezárul
+    proposal_closing_soon_description: "24 órával egy javaslat lezárása előtt, a hangerőtől függetlenül, egy emailt fogsz kapni a javaslatra vonatkozó legfrissebb információkkal."
+    submit: Frissítési beállítások
+    no_change: Nincs változás
+    no_change_description: Maradjon úgy a csoportjaim hangereje ahogy van.
   explore:
     header: Keresés a nyilvános csoportok között
   try_it:
@@ -12,6 +28,7 @@ hu:
     errors:
       messages:
         blank: nem lehet üres
+        invalid: ez nem egy érvényes érték
   errors:
     messages:
       email: Hibás e-mail cím
@@ -98,6 +115,8 @@ hu:
     logo_upload: Tölts fel új logót
     edit_description: Leírás szerkesztése
     group_category: Fedezz fel ehhez hasonló csoportokat
+    unread_comments: Olvasatlan hozzászólások
+    new_votes: Új szavazatok
   views:
     pagination:
       previous: Előző
@@ -174,9 +193,12 @@ hu:
     about: Rólunk
     blog: Blog
     contact: Kapcsolat
+    help: Segítség
     privacy: Adatvédelem
+    pricing: Árazás
     public_groups: Nyilvános csoportok
     terms: Feltételek
+    independent_install_html: "%{hostname} a Loomio egy független másolatát futtatja:<a href=\"http://github.com/loomio/loomio\">bővebben</a>."
   inbox:
     clear: Töröl
     title: Bejövő fiók
@@ -203,6 +225,9 @@ hu:
     motion_blocked: blokkolta a javaslatot
     motion_outcome_created: megjelenített egy javaslat eredményt
     motion_outcome_updated: frissítette a javaslat eredményét
+    email_actions:
+      following_thread: "Pillanatnyilag ezt a szálat követed: %{thread_title}"
+      not_following_thread: "Nem követed tovább ezt a szálat: %{thread_title}"
   edit_discussion_context: A téma leírásának szerkesztése
   request_new_group: Csoport létrehozása
   start_new_group: Új csoport létrehozása
@@ -340,8 +365,6 @@ hu:
   edit_memberships: Tagság szerkesztése
   add_new_member: Új tag hozzáadása
   invite_members_to_group: "Tagok meghívása a %{which_group} csoportba"
-  remaining_invites_count: "%{count} megmaradt meghívók"
-  get_in_touch_link: kapcsolat
   email_members_in_group: "E-mail küldése a(z) %{which_group} csoport tagjainak"
   subject_error: Töltsd ki a témát
   subject_placeholder: Írd meg a témát
@@ -406,14 +429,51 @@ hu:
       click_to_unfollow: "Klikk, a követés törlése"
       following_details: Értesítést kapsz minden esményről a csoportban.
       not_following_details: Értesítést kapsz az eseményekről amelyekben részt veszel.
+  networks:
+    threads_header: minden nyilvános szál ebben a hálózatban
+    groups_header: minden csoport ebben a hálózatban
+    members_count: "%{count} tag"
+    membership_requests_header: "Tagsági kérelem ehhez a hálózathoz: %{network}"
+    join_header: Csoportod hozzáadása a hálózathoz
+    request_to_join: Hálózathoz csatlakozási kérelem
+    current_requests: Aktuális kérelmek
+    previous_requests: Előző kérelem
+    approve: Érvényesítés
+    approved: "Érvényesítve  %{name} által"
+    decline: Visszautasítás
+    declined: "Visszautasítva %{name} által"
+    threads: Szálak
+    groups: Csoportok
+    join: Csatlakozás
+    manage: "Kezelés (%{count} függő kérelem)"
+    request_created: Köszönjük a hálózathoz csatlakozási kérést. A hálózati koordinátorok hamarosan megvizsgálják a kérelmedet.
+    request_approved: Hálózat tagsági kérelem jóváhagyva.
+    request_declined: Hálózat tagsági kérelem visszautasítva.
   group_request:
-    neighbourhood_support_group: pl. Szomszédok Közössége Csoport
+    header: Indíts egy csoportot
+    desc: "Hozz létre egy csoportot a közös döntéshozatal megkezdéséhez a Loomion:"
     commercial_use_option: "egy cégnél, hivatalos szervezet vagy munkahely"
     non_commercial_use_option: egy közösségi csoportban vagy nem formális hálózatban
     please_select_an_option: Válassz egy opciót
     confirmation:
       title: "Mindjárt kész! Ellenőrizd az e-mailed."
       body_html: "Mehívót küldtünk e-mailben a csoport létrehozása érdekében.\n\nHa nem látsz semmit az e-mail fiókodban pár percen belül, írj nekünk a <a href='mailto:contact@loomio.org'>contact@loomio.org</a> címre.\n"
+  volume:
+    volume: Hangerő
+    loud: Hangos
+    normal: Normál
+    quiet: Csendes
+    mute: Néma
+  discussion_volume:
+    loud_description: Emailezz ha aktivitás van ezen a szálon.
+    normal_description: "Csak akkor emailezz, ha egy javaslat született, ha zárás következik vagy ha összegzést tettek közzé."
+    quiet_description: Ne küldj emailt erről a szálról.
+    mute_description: "Ez a szál ne jelenjen meg a műszerfalon és ne értesítsen amíg nem @említenek meg."
+  group_volume:
+    loud_description: Emailezzen ha aktivitás van.
+    normal_description: "Csak a fontos aktivitásokról emailezz: Új viták és javaslatok, eredmények stb. "
+    quiet_description: Nem kérek emailt erről a csoportról. Az aktivitások megjelennek a műszerfalon.
+    mute_description: "Ez a csoport ne jelenjen meg a műszerfalon és ne értesítsen amíg nem @említenek meg."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> egyetértett a javaslattal."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> tartózkodott a javaslattal kapcsolatban."
@@ -579,6 +639,8 @@ hu:
     video_id: "52025402"
     video_tutorial: Videóbemutató
     video_tutorial_description: Nézd meg a rövid videóbemutatót a Loomio használatáról.
+    what_is_loomio: Mi az a Loomio?
+    what_is_loomio_description_html: "<p> A Loomio egy egyszerű, felhasználóbarát online eszköz a közösségi döntéshozatal számára.\nA Loomio megengedi a viták online tárolását, a megfelelő emberek meghívását a részvételre,\nkövetkezésképp a gyors döntéseket és a tanácskozások átalakítását valódi cselekvéssé. </p>\n<p> A Loomio egy nyílt és szabad szoftver amelyet egy dolgozói tulajdonban levő szövetkezet fejleszt Wellingtonban, Új Zélandon. </p>\n"
   hint:
     context: Hogyan használd a téma leírását
     discussion: Hogyan kezdj izgalmas témát
@@ -620,6 +682,7 @@ hu:
   remember_me: Emlékezzen rám
   signing_in: Belépés
   or: vagy
+  invalid_email: "Az általad beírt email cím nem azonosítható. ellenőrizd, hogy helyesen van-e beírva vagy próbálkozz egy másik email címmel."
   forgot_your_password: Elfelejtetted a jelszót?
   dont_have_an_account: Nincs fiókod?
   create_one_now: Hozz létre egyet
@@ -827,10 +890,14 @@ hu:
       subject: Loomio - az elmúlt 24 óra összefoglalása
     missed_yesterday:
       subject: Tegnap a Loomio-n
+      headlines: Szalagcímek
       mark_as_read: Olvasottként jelöl
       thanks_for_reading: "Köszönjük az elolvasást, kellemes napot!"
       click_here_to_mark_all_as_read_html: "Ez történt a Loomio-n tegnap.\nOlvasás után klikk az <a href=\"%{link}\">olvasva</a> gombra hogy törlődjön a bejövő fiókból.\n"
       marked_as_read_success: Minden olvasottként van jelölve
+    comment_replied_to:
+      context: "%{author_name} válaszolt a hozzászólásodra a \"%{discussion_title}\" című vitában."
+      subject: "%{who} válaszolt a hozzászólásodra a %{which} csoportban, a Loomion"
     group_email:
       intro: "%{who} bejelentést tett a(z)  %{group} csoportban:"
     group_membership_approved:
@@ -869,6 +936,13 @@ hu:
       headline: "%{author} javaslata a %{group} csoportban hamarosan lezáródik:"
       summary: Összefoglalás
     thread_mailer:
+      footer_text: "Közvetlen válasz erre a levélre vagy megnézem itt %{hostname}:"
+      reply_or_view_online_html: "Közvetlen válasz erre az emailre vagy  <a href='%{url}'>nézd meg ezen: %{hostname}</a>."
+      turn_off_notifications_html: "<a href='%{url}'>Emailek kikapcsolása</a> erre a vitára."
+      turn_off_notifications_text: "Emailek kikapcsolása erre a vitára: %{url}"
+      turn_on_notifications_html: "<a href='%{url}'>Emailek bekapcsolása erre a vitára</a> a további aktivitások jelzéséhez."
+      turn_on_notifications_text: "Emailek bekapcsolása a további aktivitások jelzéséhez ebben a vitában: %{url}"
+      change_email_preferences_html: "Változtasd meg <a href='%{email_preferences_url}'>email beállításaidat</a> a leíratkozáshoz ezekről a levelekről."
       change_preferences: "E-mail beállítások megváltoztatása:"
       new_motion: "%{who} javaslata:"
       motion_closing_soon: "24 órán belül lezáródó javaslat:"
@@ -953,6 +1027,8 @@ hu:
   google: Google
   persona: Persona
   common:
+    profile: Profil
+    email_settings: Email beállítások
     markdown_help_tooltip: Láss többet a szövegformázásról a Markdown segítségével
     settings: Beállítások
     dashboard: Műszerfal

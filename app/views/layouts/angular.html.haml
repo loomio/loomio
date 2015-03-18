@@ -18,6 +18,8 @@
   %body
     %navbar
     %main{ng_view: ''}
+    #turn-off-angular
+      =link_to 'Turn off angular', '/angular', target: '_self'
 
     = javascript_include_tag lineman_vendorjs_path
     = javascript_include_tag lineman_appjs_path
