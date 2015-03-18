@@ -1,9 +1,12 @@
 angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
-  defaultRoute = '/'
+  defaultRoute = '/dashboard'
 
   $locationProvider.html5Mode(true)
 
-  $routeProvider.when('/d/:key',
+  $routeProvider.when('/dashboard',
+    templateUrl: 'generated/modules/dashboard_page/dashboard_page.html'
+    controller: 'DashboardPageController'
+  ).when('/d/:key',
     templateUrl: 'generated/modules/discussion_page/discussion_page.html'
     controller: 'DiscussionPageController'
     resolve:

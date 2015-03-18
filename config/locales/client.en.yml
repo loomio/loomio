@@ -11,6 +11,12 @@ en:
       private: 'Private'
       public: 'Public'
       organization: 'Organization'
+    date_range:
+      today: 'Today'
+      yesterday: 'Yesterday'
+      this_week: 'This Week'
+      this_month: 'This Month'
+      older: 'Older'
     action:
       save: 'Save'
       reply: 'Reply'
@@ -263,6 +269,18 @@ en:
 
   profile_page:
     my_groups: Groups
+
+  dashboard_page:
+    filtering:
+      all: All Threads
+      all_description: View all threads
+      unread: Unread Threads
+      unread_description: View only threads you have not read yet
+    sorting:
+      group: By Group
+      group_description: Sort threads by group.
+      date: By Date
+      date_description: Sort threads by date.
 
   discussion:
     proposals: 'Proposals'
