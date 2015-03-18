@@ -265,6 +265,8 @@ en:
     my_groups: Groups
 
   discussion:
+    proposals: 'Proposals'
+    previous_proposals: 'Previous Proposals'
     load_previous: 'Load previous thread items'
     you_like_this: 'You like this.'
     liked_by_you_and_someone: 'You and {{name}} like this.'
