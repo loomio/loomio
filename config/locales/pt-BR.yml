@@ -80,6 +80,7 @@ pt-BR:
     group_already_setup: O grupo que você está tentando criar já existe.
     passwords_did_not_match: A senha não confere com a confirmação
     proposal_already_exists: Já existe uma proposição aberta nesta discussão.
+    username_cannot_contain_whitespace: Nome de usuário não pode conter espaços
     user_with_email_address_already_in_group: Um usuário com esse endereço de e-mail já pertence a este grupo.
     you_have_already_requested_membership: Você já solicitou adesão à este grupo
     you_are_already_a_member_of_this_group: Você já é membro deste grupo
@@ -642,7 +643,7 @@ pt-BR:
     video_tutorial: Vídeo-tutorial
     video_tutorial_description: Assista ao vídeo para uma rápida demonstração de como usar o Loomio.
     what_is_loomio: O que é Loomio?
-    what_is_loomio_description_html: "<p> Loomio é uma ferramenta on-line simples e fácil de usar para a tomada de decisão colaborativa.\nLoomio permite que você hospede discussões on-line, convide as pessoas certas para participar,\nchegue às decisões oportunas e transforme deliberação em ação no mundo real. </p>\n<p> Loomio é um programa gratuito de código aberto que está sendo desenvolvido por uma cooperativa de propriedade do trabalhador com base em Wellington, Nova Zelândia. </p>\n"
+    what_is_loomio_description_html: "<p> Loomio é uma ferramenta on-line simples e fácil de usar para tomada de decisão colaborativa.\nLoomio permite a hospedagem de discussões on-line, convidar as pessoas certas para participar,\nchegar às decisões oportunas e transformar deliberação em ação no mundo real. </p>\n"
   hint:
     context: Dicas para usar o painel de contexto
     discussion: Dicas para iniciar uma discussão envolvente

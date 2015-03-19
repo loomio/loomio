@@ -640,7 +640,6 @@ hu:
     video_tutorial: Videóbemutató
     video_tutorial_description: Nézd meg a rövid videóbemutatót a Loomio használatáról.
     what_is_loomio: Mi az a Loomio?
-    what_is_loomio_description_html: "<p> A Loomio egy egyszerű, felhasználóbarát online eszköz a közösségi döntéshozatal számára.\nA Loomio megengedi a viták online tárolását, a megfelelő emberek meghívását a részvételre,\nkövetkezésképp a gyors döntéseket és a tanácskozások átalakítását valódi cselekvéssé. </p>\n<p> A Loomio egy nyílt és szabad szoftver amelyet egy dolgozói tulajdonban levő szövetkezet fejleszt Wellingtonban, Új Zélandon. </p>\n"
   hint:
     context: Hogyan használd a téma leírását
     discussion: Hogyan kezdj izgalmas témát
