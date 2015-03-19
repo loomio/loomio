@@ -6,7 +6,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($routeParams, $l
     @discussion = discussion
     @group = @discussion.group()
     $rootScope.$broadcast('viewingThread', @discussion)
-    MessageChannelService.subscribeTo("/discussion-#{@discussion.key}", onMessageReceived)
+    #MessageChannelService.subscribeTo("/discussion-#{@discussion.key}", onMessageReceived)
 
   @showLintel = (bool) ->
     $rootScope.$broadcast('showThreadLintel', bool)
