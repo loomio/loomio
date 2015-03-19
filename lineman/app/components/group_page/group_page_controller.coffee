@@ -1,17 +1,11 @@
-angular.module('loomioApp').controller 'GroupController', ($scope, $document, $timeout, group, Records, MessageChannelService, UserAuthService) ->
+angular.module('loomioApp').controller 'GroupPageController', ($routeParams, $document, $timeout, Records, MessageChannelService, UserAuthService) ->
+  Records.groups.findOrFetchByKey($routeParams.key).then (group) =>
+    @group = group
+    MessageChannelService.subscribeTo("/group-#{@group.key}")
 
-  $timeout ->
-    console.log 'should have scrolled to the top at:', moment().calendar()
-    $document.scrollTop(0)
-  ,
-    200
+  @isMember = ->
+    window.Loomio.currentUser.membershipFor(@group)?
 
-  $scope.group = group
-
-  MessageChannelService.subscribeTo("/group-#{group.key}")
-
-  $scope.isMember = ->
-    window.Loomio.currentUser.membershipFor($scope.group)?
-
-  $scope.joinGroup = ->
-    Records.memberships.create(group_id: $scope.group.id)
+  @joinGroup = ->
+    Records.memberships.create(group_id: @group.id)
+  return
