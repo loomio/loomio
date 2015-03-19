@@ -3,6 +3,6 @@
   %a.thread-card-load-backwards{translate: 'discussion.load_previous', ng-show: 'canLoadBackwards()', ng-click: 'loadEventsBackwards()'}
   .thread-card-loading{ng-show: 'loadingBackward'}
     %i.fa.fa-lg.fa-spin.fa-circle-o-notch
-  %div{ng_repeat: 'event in discussion.events() track by event.id', ng_include: "'generated/components/thread_page/activity_card/'+ event.kind+ '.html'", in-view: '($inview&&threadItemVisible(event)) || (!$inview&&threadItemHidden(event))', in-view-options: '{debounce: 200}'}
+  %div{ng_repeat: 'event in discussion.events() track by event.id', ng_include: "'generated/components/thread_page/activity_card/'+ event.kind+ '.html'", in-view: '($inview&&threadItemVisible(event)) || (!$inview&&threadItemHidden(event))', in-view-options: '{debounce: 100}'}
   .thread-card-loading{ng-show: 'loadingForward'}
     %i.fa.fa-lg.fa-spin.fa-circle-o-notch
