@@ -17,6 +17,6 @@ angular.module('loomioApp').directive 'threadLintel', ->
       #console.log 'got thread position, total:', position, discussion.itemsCount
       $scope.position = position
       $scope.discussion = discussion
-      console.log position, discussion.lastSequenceId
+      #console.log position, discussion.lastSequenceId
       $scope.positionPercent = (position / discussion.lastSequenceId) *100
 

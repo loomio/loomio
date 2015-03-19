@@ -1,4 +1,4 @@
-%form{name: 'commentForm', ng_submit: 'submit()'}
+%form.comment-form{name: 'commentForm', ng_submit: 'submit()'}
   %span{translate: 'comment_form.in_reply_to', translate-values: "{name: '{{comment.parentAuthorName()}}' }", ng-show: 'comment.parentAuthorName()'}
   %textarea#comment-field.form-control.cuke-comment-field{name: 'body', placeholder: "Say something...", ng_model: 'comment.body', mentio: true, mentio-trigger-char: "'@'", mentio_items: 'mentionables', mentio-template-url: 'generated/components/thread_page/comment_form/mentio_menu.html', mentio-search: 'getMentionables(term)', mentio-typed-term: 'typedTerm', mentio-id: 'comment-field', ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 300, 'blur': 0} }"}
   .comment-row.comment-attachments{ng_repeat: 'attachment in comment.newAttachments()'}

@@ -40,7 +40,7 @@ $navbar-height: 45px;
 }
 
 @mixin fontGrande {
-  font-size: 22px;
+  font-size: 24px;
   line-height: 27px;
 }
 
@@ -71,15 +71,15 @@ $navbar-height: 45px;
 
 @mixin metaText {
   color: $meta-text-color;
-  @include fontSmall;
+  @include fontTiny;
   line-height: 20px;
 }
 
 @mixin card{
   border: 1px solid $border-color;
-  padding: 15px;
-  background: $card-background-color;
-  margin-bottom: 10px;
+  padding: 17px 22px;
+  background: #fff;
+  margin-bottom: 8px;
   i{
     color: $meta-text-color;
   }

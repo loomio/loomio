@@ -1,42 +1,44 @@
 .loading-wrapper.container.main-container
   .loading{ng-if: '!threadPage.discussion'}
     Loading..
-
   .thread-page{ng-if: 'threadPage.discussion'}
-    .thread-actions.pull-right
-      .dropdown.thread-notification-level
-        %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
-      .dropdown{ng-if: 'threadPage.showContextMenu()'}
-        %a.fat-finger.dropdown-toggle{href:''}
-          %i.fa.fa-fw.fa-chevron-down.pull-right
-        %ul.dropdown-menu.dropdown-menu-right
-          %li
-            %a{href: '', ng-click: 'threadPage.editDiscussion()', translate: 'common.action.edit', ng-if: 'threadPage.canEditDiscussion()'}
 
-    .thread-discussion
-      %h1{in-view: 'threadPage.showLintel(!$inview)'}
+    .media.thread-group
+      .media-left.thread-group__icon
+        %img.thread-group-logo{src: "{{threadPage.group.logoUrl()}}"}
+      .media-body.thread-group__name
+        %a{ng_show: 'threadPage.group.parentId', href: '/g/{{threadPage.group.parent().key}}'}
+          {{threadPage.group.parentName()}}
+        %span{ng_show: 'threadPage.group.parentId'}> >
+        %a{href: '/g/{{threadPage.group.key}}'}
+          {{threadPage.group.name}}
+
+    .thread-context
+      .thread-actions.pull-right
+        .dropdown.thread-notification-level
+          %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
+        .dropdown{ng-if: 'threadPage.showContextMenu()'}
+          %a.fat-finger.dropdown-toggle{href:''}
+            %i.fa.fa-fw.fa-chevron-down.pull-right
+          %ul.dropdown-menu.dropdown-menu-right
+            %li
+              %a{href: '', ng-click: 'threadPage.editDiscussion()', translate: 'common.action.edit', ng-if: 'threadPage.canEditDiscussion()'}
+
+      %h1.thread-context__title{in-view: 'threadPage.showLintel(!$inview)'}
         {{threadPage.discussion.title}}
-      .media.thread-origin
-        .media-left.thread-origin-icon
-          %img.thread-origin-group-logo{src: "{{threadPage.group.logoUrl()}}"}
-        .media-body.thread-origin-details
-          %a.cuke-group-parent-name{ng_show: 'threadPage.group.parentId', href: '/g/{{threadPage.group.parent().key}}'}
-            {{threadPage.group.parentName()}}
-          %span{ng_show: 'threadPage.group.parentId'}> >
-          %a.cuke-group-name{href: '/g/{{threadPage.group.key}}'}
-            {{threadPage.group.name}}
-          %br
-          %span{translate: 'discussion.started_by', translate-value-name: '{{::threadPage.discussion.authorName()}}'}
-          %timeago.nowrap{timestamp: '::threadPage.discussion.createdAt' }>
-          ·
-          %span.nowrap.discussion-privacy__is-private{ng-show: 'threadPage.discussion.private'}>
-            %i.fa.fa-lock>
-            %span{translate: 'common.privacy.private'}
-          %span.nowrap.discussion-privacy__is-public{ng-show: '!threadPage.discussion.private'}>
-            %i.fa.fa-globe>
-            %span{translate: 'common.privacy.public'}
+      .thread-context__details
+        %span{translate: 'discussion.started_by', translate-value-name: '{{::threadPage.discussion.authorName()}}'}
+        %timeago.nowrap{timestamp: '::threadPage.discussion.createdAt' }>
+        ·
+        %span.nowrap.discussion-privacy__is-private{ng-show: 'threadPage.discussion.private'}>
+          %i.fa.fa-lock>
+          %span{translate: 'common.privacy.private'}
+        %span.nowrap.discussion-privacy__is-public{ng-show: '!threadPage.discussion.private'}>
+          %i.fa.fa-globe>
+          %span{translate: 'common.privacy.public'}
 
-      .thread-discussion-description{btf-markdown: 'threadPage.discussion.description' }
+
+      .thread-context__description{btf-markdown: 'threadPage.discussion.description' }
 
     %proposals_card{discussion: 'threadPage.discussion'}
     %activity_card{discussion: 'threadPage.discussion'}
@@ -45,5 +47,5 @@
     .thread-container{ng_controller: 'StartProposalCardController', ng-if: 'threadPage.canStartProposals()'}
       .thread-start-proposal-card
         %h3.first Ready to make a decision?
-        %a{href: '#', ng_click: 'threadPage.openForm()'}
+        %a{href: '#', ng_click: 'openForm()'}
           Create a proposal
