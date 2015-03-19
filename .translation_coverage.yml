@@ -42,7 +42,7 @@ fi:
   main: 6
 fr:
   frontpage: 100
-  main: 99
+  main: 100
 ga-IE:
   frontpage: 35
   main: 44
@@ -90,7 +90,7 @@ ml:
   main: 51
 nl-NL:
   frontpage: 100
-  main: 96
+  main: 97
 pl:
   frontpage: 89
   main: 17
@@ -104,8 +104,8 @@ ro:
   frontpage: 89
   main: 92
 ru:
-  frontpage: 97
-  main: 62
+  frontpage: 100
+  main: 64
 sk:
   frontpage: 89
   main: 92

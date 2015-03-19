@@ -614,7 +614,6 @@ sl:
     video_tutorial: Video z navodili
     video_tutorial_description: "Oglej si video, ki na kratko prikazuje, kako uporabljati Loomio."
     what_is_loomio: Kaj je Loomio?
-    what_is_loomio_description_html: "<p>Loomio je enostavno, uporabniku prijazno spletno orodje za skupinsko soodločanje.\nLoomio ponuja spletni prostor za razpravo, kamor lahko povabiš prave ljudi,\ns katerimi pravočasno sprejmete odločitve in tako razmišljanja spremenite v dejanja.</p>\n<p>Loomio je brezplačen in odprtokoden program, ki ga razvija zadruga v lasti zaposlenih, v Wellingtonu na Novi Zelandiji.</p>\n"
   hint:
     context: Nasveti za uporabo polja Opis
     discussion: Nasveti za začetek angažirane razprave

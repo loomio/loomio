@@ -640,7 +640,6 @@ de:
     video_tutorial: Videoanleitung
     video_tutorial_description: Sieh dir das Video an um einen Einblick in die Funktionsweise von Loomio zu bekommen.
     what_is_loomio: Was ist Loomio?
-    what_is_loomio_description_html: "<p> Loomio ist ein einfaches benutzerfreundliches Online-Tool für die kollektive Entscheidungsfindung.\nMit Loomio können Sie Diskussionen Online hosten, laden die richtigen Leute ein sich zu beteiligen, \ngekommen, um zeitnahe Entscheidungen und verwandeln Beratung in der realen Welt Aktion. </p> \n<p> Loomio ist kostenlos und Open Source-Software, die von einer Arbeitnehmer-Genossenschaft in Wellington, Neuseeland entwickelt. </p> \n\n"
   hint:
     context: Hinweise für die Nutzung des Kontext-Felds
     discussion: Hinweise für das Starten einer mitreißenden Diskussion

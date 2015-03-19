@@ -80,6 +80,7 @@ fr:
     group_already_setup: Le groupe que vous essayez de créer existe déjà.
     passwords_did_not_match: Les mots de passe ne correspondent pas
     proposal_already_exists: Il y a déjà une proposition en cours dans cette discussion.
+    username_cannot_contain_whitespace: "Un identifiant utilisateur ne peut pas contenir d'espaces"
     user_with_email_address_already_in_group: Un utilisateur avec cette adresse e-mail appartient déjà à ce groupe.
     you_have_already_requested_membership: "Vous avez déjà demandé l'accès à ce groupe."
     you_are_already_a_member_of_this_group: Vous êtes déjà membre de ce groupe.
@@ -370,7 +371,7 @@ fr:
   subject_placeholder: Écrire un sujet
   message_error: Merci de remplir un message
   message_placeholder: "Ecrire un message aux membres de %{which_group}."
-  email_group_members: Envoyer un e-mail aux membres du groupe
+  email_group_members: Écrire aux membres
   edit_group_settings: Modifier les paramètres du groupe
   manage_members: Gérer les membres
   leave_group: Quitter le groupe
@@ -424,6 +425,8 @@ fr:
   edit_group_description: Modifier la description du groupe
   group_subscription: Inscription au groupe
   groups:
+    max_size_warning_html: "Votre groupe va bientôt atteindre la limite de %{size} membres. Merci de nous <a href='%{link}'>contacter</a> pour augmenter la limite."
+    max_size_reached_html: "Votre groupe a atteint la limite de %{size} membres. <a href='%{link}'>Contactez nous</a> pour augmenter cette limite."
     follow:
       click_to_follow: Cliquez pour suivre le groupe
       click_to_unfollow: Cliquez pour ne plus suivre le groupe
@@ -640,7 +643,7 @@ fr:
     video_tutorial: Tutoriel vidéo
     video_tutorial_description: Regardez la vidéo pour une rapide démonstration de la manière dont Loomio fonctionne.
     what_is_loomio: "Loomio, qu'est-ce que c'est ?"
-    what_is_loomio_description_html: "<p> Loomio est un outil en ligne, simple, facile à utiliser, pour collaborer dans les prises de décisions.\n    Loomio accueille vos discussions en ligne et permet d'inviter les bonnes personnes à participer,\n    pour atteindre des décisions en temps voulu et transformer des délibérations en actions réelles sur le terrain. </p>\n<p> Loomio est un logiciel gratuit et en source libre, développé par une coopérative de travailleurs indépendants basée à Wellington en Nouvelle-Zélande. </p>\n"
+    what_is_loomio_description_html: "<p> Loomio est un outil en ligne, simple, facile à utiliser, pour collaborer dans les prises de décisions.\nLoomio accueille vos discussions en ligne et permet d'inviter les bonnes personnes à participer,\npour atteindre des décisions en temps voulu et transformer des délibérations en actions concrètes sur le terrain. </p>\n"
   hint:
     context: "Conseils pour l'utilisation de la zone de contexte"
     discussion: Conseils pour démarrer une discussion stimulante
@@ -773,7 +776,7 @@ fr:
       header: Nouvelle proposition
       submit: Créer une proposition
     edit:
-      header: Éditer la proposition
+      header: Modifier la proposition
       submit: Mettre à jour la proposition
       only_closing_at: Vous ne pouvez changer ni le nom ni la description de la proposition après que le vote a commencé
     name_helper: Rédigez un titre aussi clair et bref que possible
