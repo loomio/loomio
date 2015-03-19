@@ -1,8 +1,8 @@
 .thread-card
   %h3.first Activity
-  %a.thread-card-load-backwards{translate: 'discussion.load_previous', ng-show: 'canLoadBackwards()', ng-click: 'loadEventsBackwards()'}
+  %a.thread-card-load-backwards.page-loading{translate: 'discussion.load_previous', ng-show: 'canLoadBackwards()', ng-click: 'loadEventsBackwards()'}
   .thread-card-loading{ng-show: 'loadingBackward'}
     %i.fa.fa-lg.fa-spin.fa-circle-o-notch
   %div{ng_repeat: 'event in discussion.events() track by event.id', ng_include: "'generated/modules/discussion_page/thread_card/'+ event.kind+ '.html'", in-view: '($inview&&threadItemVisible(event)) || (!$inview&&threadItemHidden(event))', in-view-options: '{debounce: 200}'}
-  .thread-card-loading{ng-show: 'loadingForward'}
+  .thread-card-loading.page-loading{ng-show: 'loadingForward'}
     %i.fa.fa-lg.fa-spin.fa-circle-o-notch
