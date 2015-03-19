@@ -19,7 +19,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/ng-file-upload/angular-file-upload-shim.js"
              "vendor/bower_components/angular/angular.js",
              "vendor/bower_components/angular-sanitize/angular-sanitize.js",
-             "vendor/bower_components/angular-route/angular-route.js",
+             "node_modules/angular-new-router/dist/router.es5.js",
              "vendor/bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js",
              "vendor/bower_components/angular-translate/angular-translate.js",
              "vendor/bower_components/angular-translate-loader-url/angular-translate-loader-url.js",
