@@ -6,6 +6,7 @@ describe API::DiscussionsController do
   let(:group) { create :group }
   let(:another_group) { create :group }
   let(:discussion) { create :discussion, group: group }
+  let(:old_discussion) { create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago }
   let(:comment) { create :comment, discussion: discussion}
   let(:proposal) { create :motion, discussion: discussion, author: user }
   let(:discussion_params) {{
@@ -20,6 +21,17 @@ describe API::DiscussionsController do
     another_group.add_member! user
     sign_in user
     discussion.reload
+  end
+
+  describe 'inbox_by_date' do
+    it 'returns discussions with activity after a certain date' do
+      old_discussion.reload
+      get :inbox_by_date
+      json = JSON.parse(response.body)
+      ids = json['discussions'].map { |v| v['id'] }
+      expect(ids).to include discussion.id
+      expect(ids).to_not include old_discussion.id
+    end
   end
 
   describe 'inbox_by_group' do

@@ -1,17 +1,24 @@
 angular.module('loomioApp').controller 'DashboardPageController', ($scope, Records) ->
 
-  $scope.refresh = ->
+  $scope.page = {}
+  $scope.perPage = 25
+
+  $scope.refresh = (options = {}) ->
+    options['filter'] = $scope.filter
     switch $scope.sort
       when 'date'
-        Records.discussions.fetchInboxByDate  filter: $scope.filter
+        options['per'] = $scope.perPage
+        options['from'] = $scope.page[$scope.filter] = $scope.page[$scope.filter] || 0
+        $scope.page[$scope.filter] = $scope.page[$scope.filter] + $scope.perPage
+        Records.discussions.fetchInboxByDate  options
       when 'group'
-        Records.discussions.fetchInboxByGroup filter: $scope.filter
+        Records.discussions.fetchInboxByGroup options
 
   $scope.setOptions = (options = {}) ->
     $scope.filter = options['filter'] if options['filter']
     $scope.sort   = options['sort']   if options['sort']
     $scope.refresh()
-  $scope.setOptions sort: 'date', filter: 'all'
+  $scope.setOptions sort: 'group', filter: 'all'
 
   $scope.dashboardDiscussions = ->
     window.Loomio.currentUser.inboxDiscussions()
@@ -19,8 +26,18 @@ angular.module('loomioApp').controller 'DashboardPageController', ($scope, Recor
   $scope.dashboardGroups = ->
     window.Loomio.currentUser.groups()
 
+  $scope.footerReached = ->
+    return false if $scope.loadingDiscussions
+    $scope.loadingDiscussions = true
+    $scope.refresh().then ->
+      $scope.loadingDiscussions = false
+
   $scope.unread = (discussion) ->
     discussion.isUnread() or $scope.filter != 'unread'
+
+
+  $scope.lastInboxActivity = (discussion) ->
+    -discussion.lastInboxActivity()
 
   $scope.startOfDay = ->
     moment().startOf('day').clone()

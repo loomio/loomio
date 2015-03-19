@@ -69,6 +69,7 @@ class API::DiscussionsController < API::RestfulController
 
   def inbox_threads
     GroupDiscussionsViewer.for(user: current_user, filter: params[:filter])
+                          .where('last_activity_at > ?', params[:from_date] || 3.months.ago)
                           .joined_to_current_motion
                           .preload(:current_motion, {group: :parent})
                           .order('motions.closing_at ASC, last_activity_at DESC')
