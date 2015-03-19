@@ -103,8 +103,8 @@
 
   .import-contacts-permission { float: right; }
 
-  .deactivation {
-    li { margin-bottom: 10px }
+  .deactivation, #volume-options {
+    li { margin-bottom: 20px }
     font-size: 15px;
     list-style: circle;
     margin-left: 20px;
