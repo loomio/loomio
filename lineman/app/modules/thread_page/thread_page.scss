@@ -1,9 +1,24 @@
 .thread-page {
   margin: 10px auto;
   max-width: $thread-max-width;
-  @include card;
 }
 
+.thread-group{
+  margin: 16px 22px;
+}
+.thread-group__name a{
+  font-weight: bold;
+  color: #666666;
+  line-height: 30px;
+}
+.thread-group__icon img{
+  width: 30px;
+  height: 30px;
+}
+
+.thread-context{
+  @include card;
+}
 .thread-actions {
   position: relative;
 }
@@ -11,8 +26,43 @@
   float: left;
   position: static;
 }
+.thread-context__title{
+  margin: 2px 0 9px 0;
+}
+.thread-context__details{
+  @include metaText;
+  margin-bottom: 15px;
+}
+.thread-context__description p:last-of-type{
+  margin-bottom: 0;
+}
+
+.proposals-card{
+  @include card;
+}
+.proposal-expanded-started-by{
+  @include metaText;
+}
+
+.activity-card{
+  @include card;
+}
+
+.comment-form{
+  @include card;
+}
+
+.thread-start-proposal-card{
+  @include card;
+}
+
+
+
 .thread-container .dropdown-menu-right{
   right: -16px;
+}
+.thread-container img {
+  max-width: 100%;
 }
 
 .thread-proposals {
@@ -20,19 +70,6 @@
   background-color: #fff;
 }
 
-.media.thread-origin{
-  margin-top: 8px;
-}
-
-.thread-origin {
-  @include fontSmall;
-  color: #777777;
-  margin-bottom: 10px;
-}
-.thread-origin-group-logo{
-  width: 30px;
-  height: 30px;
-}
 
 .thread-item {
   margin-bottom: 25px;
@@ -52,10 +89,6 @@
 
 .thread-item-body {
   margin-bottom: 10px;
-}
-
-.thread-container img {
-  max-width: 100%;
 }
 
 .thread-item-footer {
