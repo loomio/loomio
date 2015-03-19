@@ -1,8 +1,20 @@
 ru:
   email_settings:
     title: Настройки Email
+    group_volume: Громкость группы
+    group_volume_description: "Громкость определяет количество электронных писем, которые Вы получаете от группы. Установите громкость для всех Ваших групп:"
+    to_change_one_group: "Для изменения громкости лишь одной из Ваших групп, посетите страницу этой группы."
+    discussion_activity: "Изменить громкость обсуждения, когда я участвую."
+    discussion_activity_description: "Когда вы участвуете в обсуждении, регулировка громкости изменяется на 'Громко', таким образом, вы будете получать e-mail о дальнейших событиях."
+    yesterday_on_loomio: Присылать мне e-mail с обзором событий каждый день
+    yesterday_on_loomio_description: "Каждый день в 6 утра присылать мне e-mail о непрочитанных вчерашних событиях. Это отличный способ отслеживать ваши группы, и он содержит всё, что не заглушено."
+    email_when_mentioned: "Присылать мне e-mail, когда я @упомянут"
+    email_when_mentioned_description: "Когда кто-нибудь хочет привлечь Ваше внимание, они @упоминают Вас. Мы рекомендуем оставить эту установку отмеченной, таким образом, Вы будете получать e-mail об этих событиях."
+    proposal_closing_soon: Присылать мне e-mail перед закрытием предложения
+    proposal_closing_soon_description: "За 24 часа до закрытия предложения, не смотря на установленную громкость, Вы получите e-mail с самой последней информацией о предложении."
     submit: Обновить настройки
     no_change: Изменений нет
+    no_change_description: Оставить уровень громкости моих групп как есть.
   explore:
     header: Публичные группы
   try_it:
@@ -16,6 +28,7 @@ ru:
     errors:
       messages:
         blank: не может быть пустым
+        invalid: является недопустимым значением
   errors:
     messages:
       email: Неправильный email
@@ -67,6 +80,7 @@ ru:
     group_already_setup: Такая группа уже существует.
     passwords_did_not_match: Пароли не совпадают
     proposal_already_exists: В этом обсуждении уже есть открытое предложение.
+    username_cannot_contain_whitespace: Имя пользователя не может содержать пробелы
     user_with_email_address_already_in_group: Этот пользователь уже является участником группы.
     you_have_already_requested_membership: Вы уже запрашивали участие в этой группе.
     you_are_already_a_member_of_this_group: Вы уже член этих группи
@@ -133,6 +147,7 @@ ru:
     members_added: Участники добавлены в группу.
     membership_requested: "Вы послали запрос на вступление в %{which_group}. Вы получите уведомление когда он будет удовлетворен."
     motion_closed: Предложение закрыто. Вы можете установить результаты и отослать их в свою группу.
+    motion_outcome_created: "Поздравляем, Вы только что создали результат предложения! Участники Вашей группы были уведомлены."
     motion_outcome_updated: Результаты обновлены.
     password_updated: Пароль был успешно изменен
     position_submitted: Позиция добавлена
@@ -198,6 +213,7 @@ ru:
     pricing: Цены
     public_groups: Общедоступные группы
     terms: Условия
+    independent_install_html: "%{hostname} работает с независимой копией Loomio: <a href=\"http://github.com/loomio/loomio\">разузнать побольше</a>."
   inbox:
     clear: Очистить
     title: Входящие
@@ -342,8 +358,6 @@ ru:
   edit_memberships: Редактировать участников
   add_new_member: Добавить нового участника
   invite_members_to_group: "Пригласить участника в %{which_group}"
-  remaining_invites_count: "Осталось %{count}  приглашений."
-  get_in_touch_link: Оставаться на связи
   email_members_in_group: "Написать письмо участникам %{which_group}"
   subject_error: "Пожалуйста, заполните тему"
   subject_placeholder: Написать тему

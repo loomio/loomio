@@ -354,8 +354,6 @@ sr-RS:
   edit_memberships: Уреди чланства
   add_new_member: Додај новог члана
   invite_members_to_group: "Позови чланове у %{which_group}"
-  remaining_invites_count: "%{count} преостале позивнице"
-  get_in_touch_link: останите у контакту
   email_members_in_group: "Пошаљите еПоруку члановима %{which_group}"
   subject_error: Молим унесите тему
   subject_placeholder: Напишите тему
@@ -421,7 +419,6 @@ sr-RS:
       following_details: Бићете обавештени о свакој активности у овој групи.
       not_following_details: Бићете обавештени о активностима којима се прикључите.
   group_request:
-    neighbourhood_support_group: нпр. Комшијска Група Подршке
     commercial_use_option: "у компанији, формалној организацији или радном месту"
     non_commercial_use_option: у групи заједнице или информативној мрежи
     please_select_an_option: Молим одаберите једну опцију

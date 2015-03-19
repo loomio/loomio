@@ -10,11 +10,11 @@ angular.module('loomioApp').directive 'threadLintel', ->
       $scope.discussion = discussion
 
     $scope.$on 'showThreadLintel', (event, bool) ->
-      console.log 'bool', bool
+      #console.log 'bool', bool
       $scope.show = bool
 
     $scope.$on 'threadPosition', (event, discussion, position) ->
-      console.log 'got thread position, total:', position, discussion.itemsCount
+      #console.log 'got thread position, total:', position, discussion.itemsCount
       $scope.position = position
       $scope.discussion = discussion
       console.log position, discussion.lastSequenceId

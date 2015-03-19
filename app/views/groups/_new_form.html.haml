@@ -1,7 +1,7 @@
 = simple_form_for group do |f|
   = f.input :name, label: t(:'group_form.name')
   = f.input :description, as: :text, label: t(:'group_form.description')
-  - if group.is_parent? and show_loomio_org_marketing
+  - if group.is_parent? and hosted_by_loomio?
     = f.input :is_commercial, as: :select, collection: [[t(:'group_request.commercial_use_option'), true],[t(:'group_request.non_commercial_use_option'), false]], prompt: t(:'common.select'), label: t(:'simple_form.labels.group_request.is_commercial')
   - else
     = f.input :is_commercial, as: :hidden, input_html: { value: false }

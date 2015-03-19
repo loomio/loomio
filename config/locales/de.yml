@@ -1,8 +1,20 @@
 de:
   email_settings:
     title: Email Einstellungen
+    group_volume: Gruppenvolumen
+    group_volume_description: "Volume steuert, wie viele E-Mails Sie von einer Gruppe erhalten. Lautstärke einstellen für alle Gruppen:"
+    to_change_one_group: "Um die Lautstärke von nur einer Ihrer Gruppen zu ändern, besuchen Sie die Seite dieser Gruppe."
     discussion_activity: "Diskussionslautstärke ändern, wenn ich teilnehme"
+    discussion_activity_description: "Wenn Sie an einer Diskussion beteiligen, wird die Lautstärkeeinstellung auf 'Loud' geändert werden, so dass alle weiteren Aktivitäten  Ihnen gemailt werden."
+    yesterday_on_loomio: Bitte schicken Sie mir eine Zusammenfassung der Aktivität jeden Tag
+    yesterday_on_loomio_description: "Jeden Tag um 06.00 Uhr, senden Sie eine E-Mail mit ungelesenen Aktivität gestern. Dies ist eine gute Möglichkeit, auf Ihrem Gruppen einholen und alles, was nicht stumm geschaltet wird, enthält."
+    email_when_mentioned: "Sende mir eine E-Mail, wenn mich jemand in einem Kommentar erwähnt."
+    email_when_mentioned_description: "Wenn jemand, Ihre Aufmerksamkeit bekommen will, werden sie Erwähnt. Wenn Sie diese Funktion deaktivieren dann werden die Menschen vielleicht nicht in der Lage sein, Sie zu kontaktieren."
+    proposal_closing_soon: Erinnere mich 24 Stunden bevor der Vorschlag schließt.
+    proposal_closing_soon_description: "24 Stunden vor dem ein Vorschlag schließt, unabhängig von Volumen, werden Sie eine E-Mail mit den neuesten Informationen über den Vorschlag zu erhalten."
     submit: Update-Einstellungen
+    no_change: Keine Änderung
+    no_change_description: Verlassen Sie die Lautstärke meiner Gruppen
   explore:
     header: Erkunde öffentliche Gruppen
   try_it:
@@ -353,8 +365,6 @@ de:
   edit_memberships: Mitgliedschaften bearbeiten
   add_new_member: Neues Mitglied hinzufügen
   invite_members_to_group: "Mitglieder zu %{which_group} einladen"
-  remaining_invites_count: "%{count} verbleibende Einladungen"
-  get_in_touch_link: Melde dich bei uns
   email_members_in_group: "Benachrichtige die Mitglieder in %{which_group} per eMail"
   subject_error: Bitte füge einen Betreff hinzu
   subject_placeholder: Schreibe einen Betreff
@@ -419,10 +429,29 @@ de:
       click_to_unfollow: "Klicken, um der Gruppe nicht mehr zu folgen"
       following_details: Du wirst über jede Diskussion in dieser Gruppe informiert.
       not_following_details: Du wirst über Diskussionen informiert an denen Du beteiligt bist.
+  networks:
+    threads_header: alle öffentlichen Threads in diesem Netzwerk
+    groups_header: alle Gruppen in diesem Netzwerk
+    members_count: "%{count} Mitglieder "
+    membership_requests_header: "Mitgliedschaftsanfrage von %{network}"
+    join_header: Fügen Sie Ihre Gruppe zu dem Netzwerk
+    request_to_join: Anfrage an Netzwerk
+    current_requests: Aktuelle Anfragen
+    previous_requests: Bisherige Anfragen
+    approve: Zustimmen
+    approved: "Von %{name} bestätigt"
+    decline: Rückgang
+    declined: "Hallo %{name},"
+    threads: Themen
+    groups: Gruppen
+    join: Beitreten
+    manage: "Verwalten (%{count} Ausstehende Anforderungen)"
+    request_created: "Danke der Nachfrage, dem Netzwerk beizutreten. Die Netzwerkkoordinatoren werden Ihre Anfrage schnell überprüfen."
+    request_approved: Netzwerk-Mitgliedschaft Antrag genehmigt
+    request_declined: Netzwerkmitgliedschaft Anfrage zurück.
   group_request:
     header: Gründen Sie eine Gruppe
-    desc: "Um Entscheidungen auf Loomio zu treffen, müssen Sie zuerst eine Gruppe gründen"
-    neighbourhood_support_group: z. B. Nachbarschaftshilfe
+    desc: "Gründe eine Gruppe, um Entscheidungen in Deiner eigenen Community zu treffen."
     commercial_use_option: "in einem Unternehmen, einer formellen Organsation oder Arbeit"
     non_commercial_use_option: in einer Gruppe oder einem informellen Netzwerk
     please_select_an_option: Bitte wähle eine Option
@@ -611,7 +640,6 @@ de:
     video_tutorial: Videoanleitung
     video_tutorial_description: Sieh dir das Video an um einen Einblick in die Funktionsweise von Loomio zu bekommen.
     what_is_loomio: Was ist Loomio?
-    what_is_loomio_description_html: "<p> Loomio ist ein einfaches benutzerfreundliches Online-Tool für die kollektive Entscheidungsfindung.\nMit Loomio können Sie Diskussionen Online hosten, laden die richtigen Leute ein sich zu beteiligen, \ngekommen, um zeitnahe Entscheidungen und verwandeln Beratung in der realen Welt Aktion. </p> \n<p> Loomio ist kostenlos und Open Source-Software, die von einer Arbeitnehmer-Genossenschaft in Wellington, Neuseeland entwickelt. </p> \n\n"
   hint:
     context: Hinweise für die Nutzung des Kontext-Felds
     discussion: Hinweise für das Starten einer mitreißenden Diskussion
@@ -912,6 +940,7 @@ de:
       turn_off_notifications_html: "<a href='%{url}'> Deaktivieren Sie E-Mails </a> für diese Diskussion."
       turn_off_notifications_text: "Deaktivieren Sie E-Mails für diese Diskussion: %{url}"
       turn_on_notifications_html: "<a href='%{url}'> auf E-Mails für diese Diskussion </a> Wenden Sie sich weitere Aktivitäten erhalten."
+      turn_on_notifications_text: "Schalten Sie E-Mail an weitere Aktivitäten in dieser Diskussion erhalten: %{url}"
       change_email_preferences_html: "Ändere Deine <a href='%{email_preferences_url}'>eMail-Einstellungen</a> um weniger Loomio eMails zu erhalten."
       change_preferences: "Ändere Deine eMail Einstellungen:"
       new_motion: "%{who} schlägt vor:"

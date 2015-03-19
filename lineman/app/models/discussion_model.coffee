@@ -44,6 +44,10 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     hasActiveProposal: ->
       @activeProposal()?
 
+    activeProposalClosingAt: ->
+      proposal = @activeProposal()
+      proposal.closingAt if proposal?
+
     activeProposalClosedAt: ->
       proposal = @activeProposal()
       proposal.closedAt if proposal?
@@ -56,7 +60,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       @recordStore.discussionReaders.initialize(id: @id)
 
     isUnread: ->
-      @unreadActivityCount()
+      @unreadActivityCount() > 0
 
     unreadItemsCount: ->
       @itemsCount - @reader().readItemsCount
@@ -67,16 +71,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     unreadCommentsCount: ->
       @commentsCount - @reader().readCommentsCount
 
+    lastInboxActivity: ->
+      @activeProposalClosingAt() or @lastActivityAt
+
     markAsRead: (sequenceId) ->
       if @reader().lastReadSequenceId < sequenceId
         @restfulClient.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})
-
-
-    ## time of most recent thing out of last vote, last comment, created at
-    #lastActivityAt: ->
-      #times = []
-      #times.push moment(@activeProposal().lastVoteAt) if @activeProposal()?
-      #times.push moment(@lastCommentAt) if @lastCommentAt?
-      #times.push moment(@createdAt)
-      #_.max(_.compact(times))
-

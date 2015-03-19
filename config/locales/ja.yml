@@ -220,7 +220,6 @@ ja:
   edit_memberships: メンバーを編集する
   add_new_member: 新しいメンバーを追加します
   invite_members_to_group: "%{which_group} にメンバーを招待する"
-  get_in_touch_link: 連絡します
   email_members_in_group: "%{which_group} のメンバーにEメールを送ります"
   subject_error: 件名を入れてください
   subject_placeholder: 件名を入れてください
@@ -279,7 +278,6 @@ ja:
   edit_group_description: グループ情報を編集する
   group_subscription: グループ購読
   group_request:
-    neighbourhood_support_group: 例：地域サポートグループ
     confirmation:
       title: もう少しで完了です！メールをチェックしてください
       body_html: "グループを開始する招待をメールで送りました。\n\n数分後にあなたの受信箱に何も見つからなかった場合は、<a href='mailto:contact@loomio.org'>contact@loomio.org</a> にメールを送ってください。\n"

@@ -181,7 +181,6 @@ id:
   edit_memberships: Ubah keanggotaan
   add_new_member: Tambah anggota baru
   invite_members_to_group: "Undang anggota ke %{which_group}"
-  get_in_touch_link: hubungi
   email_members_in_group: "Kirim surel kepada anggota %{which_group}"
   subject_error: Masukkan perihal
   subject_placeholder: Tulis perihal

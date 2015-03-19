@@ -340,8 +340,6 @@ tr:
   edit_memberships: Üyeliği düzenle
   add_new_member: Yeni üye ekle
   invite_members_to_group: "%{which_group}'na üye davet et"
-  remaining_invites_count: "%{count} davetiye mevcut"
-  get_in_touch_link: irtibata geç
   email_members_in_group: "%{which_group}'undaki üyelere e-posta gönder"
   subject_error: Lütfen bir konuyu doldurun
   subject_placeholder: Bir konu yazın
@@ -407,7 +405,6 @@ tr:
       following_details: Bu grupta ki her konu hakkında bilgilendirileceksiniz.
       not_following_details: İştirak ettiğiniz konular hakkında bilgilendirileceksiniz.
   group_request:
-    neighbourhood_support_group: "Örnek: Komşu Destek Grubu"
     commercial_use_option: "bir şirkette, formel örgütte ya da işyerinde"
     non_commercial_use_option: bir topluluk grubunda ya da enformel bir ağda
     please_select_an_option: "Lütfen, bir opsiyon seçin"

@@ -354,8 +354,6 @@ sk:
   edit_memberships: Upraviť členstvo
   add_new_member: Pridať nového člena
   invite_members_to_group: "Pozvať členov do %{which_group}"
-  remaining_invites_count: "ostáva %{count} pozvánok"
-  get_in_touch_link: spojte sa s nami
   email_members_in_group: "E-mailujte členom %{which_group}"
   subject_error: "Prosím, vyplňte predmet"
   subject_placeholder: Napište predmet
@@ -421,7 +419,6 @@ sk:
       following_details: Budete upozornený/á na každú diskusiu v tejto skupine.
       not_following_details: Budete upozornený/á na dianí v diskusiách na ktorých sa zúčastňujete.
   group_request:
-    neighbourhood_support_group: napr. komunitná podporná organizácia
     commercial_use_option: "ve firme, formálnej organizácii alebo na pracovisku"
     non_commercial_use_option: v komunitnej skupine alebo neformálnom zoskupení
     please_select_an_option: "Prosím, vyberte jednu z možností"

@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :username, allow_blank: true
   validates_length_of :username, maximum: 30, allow_blank: true
+  validates_format_of :username, without: /\s/, message: I18n.t(:'error.username_cannot_contain_whitespace')
 
   validates_length_of :password, minimum: 8, :allow_nil => true
   validates :password, nontrivial_password: true, :allow_nil => true
@@ -287,7 +288,7 @@ class User < ActiveRecord::Base
     I18n.t(:inactive_html, path_to_contact: '/contact').html_safe
   end
 
-  def avatar_url(size=nil,avatar_kind=nil)
+  def avatar_url(size=nil)
     size = size ? size.to_sym : :medium
     case size
     when :small

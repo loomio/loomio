@@ -195,7 +195,6 @@ ko:
   edit_memberships: 멤버십 편집
   add_new_member: 멤버 추가
   invite_members_to_group: "%{which_group} 그룹에 멤버 초대"
-  get_in_touch_link: 연락하기
   email_members_in_group: "%{which_group} 그룹 멤버들에게 이메일"
   subject_error: 제목을 채워주세요.
   subject_placeholder: 제목 쓰기
@@ -249,7 +248,6 @@ ko:
   edit_group_description: 그룹 설명 편집
   group_subscription: 그룹 토론
   group_request:
-    neighbourhood_support_group: 예. 이웃을 돕는 그룹
     confirmation:
       title: 거의 다 되었습니다. 이메일을 확인해 주세요.
   discussion_items:

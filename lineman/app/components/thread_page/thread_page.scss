@@ -7,10 +7,12 @@
 .thread-actions {
   position: relative;
 }
+
 .thread-actions .dropdown{
   float: left;
   position: static;
 }
+
 .thread-container .dropdown-menu-right{
   right: -16px;
 }
@@ -29,6 +31,7 @@
   color: #777777;
   margin-bottom: 10px;
 }
+
 .thread-origin-group-logo{
   width: 30px;
   height: 30px;
@@ -143,9 +146,4 @@
 
 .comment-form-attachments input {
   display: none;
-}
-
-.thread-card-loading {
-  text-align: center;
-  margin-bottom: 20px;
 }

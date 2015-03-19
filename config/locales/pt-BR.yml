@@ -80,6 +80,7 @@ pt-BR:
     group_already_setup: O grupo que você está tentando criar já existe.
     passwords_did_not_match: A senha não confere com a confirmação
     proposal_already_exists: Já existe uma proposição aberta nesta discussão.
+    username_cannot_contain_whitespace: Nome de usuário não pode conter espaços
     user_with_email_address_already_in_group: Um usuário com esse endereço de e-mail já pertence a este grupo.
     you_have_already_requested_membership: Você já solicitou adesão à este grupo
     you_are_already_a_member_of_this_group: Você já é membro deste grupo
@@ -365,8 +366,6 @@ pt-BR:
   edit_memberships: Gerenciar integrantes
   add_new_member: Adicionar novo membro
   invite_members_to_group: "Convidar membros para %{which_group}"
-  remaining_invites_count: "%{count} convites restantes"
-  get_in_touch_link: entre em contato
   email_members_in_group: "Envie e-mail para os membros em %{which_group}"
   subject_error: "Por favor, preencha o assunto"
   subject_placeholder: Escreva um assunto
@@ -426,6 +425,8 @@ pt-BR:
   edit_group_description: Editar descrição do grupo
   group_subscription: Taxa de inscrição do grupo
   groups:
+    max_size_warning_html: "Seu grupo está ficando grande e atingirá o limite de %{size} membros em breve. Por favor, <a href='%{link}'>entre em contato</a> para aumentar o limite."
+    max_size_reached_html: "Seu grupo atingiu o limite de %{size} membros. <a href='%{link}'>Entre em contato</a> para adicionar mais pessoas ao grupo."
     follow:
       click_to_follow: Clicar para seguir o grupo
       click_to_unfollow: Clicar para deixar de seguir o grupo
@@ -453,8 +454,7 @@ pt-BR:
     request_declined: Pedido reprovado como membro da rede.
   group_request:
     header: Iniciar um grupo
-    desc: "Para começar a tomar decisões no Loomio, o primeiro passo é iniciar um grupo:"
-    neighbourhood_support_group: e.g. Grupo de Apoio do Bairro
+    desc: "Crie um grupo para começar a tomar decisões em conjunto no Loomio:"
     commercial_use_option: "em uma empresa, organização formal ou local de trabalho"
     non_commercial_use_option: em um grupo comunitário ou rede informal
     please_select_an_option: "Por favor, selecione uma opção"
@@ -643,7 +643,7 @@ pt-BR:
     video_tutorial: Vídeo-tutorial
     video_tutorial_description: Assista ao vídeo para uma rápida demonstração de como usar o Loomio.
     what_is_loomio: O que é Loomio?
-    what_is_loomio_description_html: "<p> Loomio é uma ferramenta on-line simples e fácil de usar para a tomada de decisão colaborativa.\nLoomio permite que você hospede discussões on-line, convide as pessoas certas para participar,\nchegue às decisões oportunas e transforme deliberação em ação no mundo real. </p>\n<p> Loomio é um programa gratuito de código aberto que está sendo desenvolvido por uma cooperativa de propriedade do trabalhador com base em Wellington, Nova Zelândia. </p>\n"
+    what_is_loomio_description_html: "<p> Loomio é uma ferramenta on-line simples e fácil de usar para tomada de decisão colaborativa.\nLoomio permite a hospedagem de discussões on-line, convidar as pessoas certas para participar,\nchegar às decisões oportunas e transformar deliberação em ação no mundo real. </p>\n"
   hint:
     context: Dicas para usar o painel de contexto
     discussion: Dicas para iniciar uma discussão envolvente

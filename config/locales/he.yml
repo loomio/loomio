@@ -317,8 +317,6 @@ he:
   and_number_pending: "ו%{pending} בהמתנה"
   edit_memberships: עריכת חברויות
   add_new_member: הוספת חבר חדש
-  remaining_invites_count: "%{count} הזמנות נותרו"
-  get_in_touch_link: שמרו על קשר
   email_members_in_group: "שלחו דוא״ל לחברים בקבוצה %{which_group}"
   subject_error: נא למלא נושא
   subject_placeholder: כתבו נושא

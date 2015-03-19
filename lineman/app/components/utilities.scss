@@ -100,3 +100,26 @@ label.label-with-details{
 .form-group{
   margin-top: 20px;
 }
+
+/* fyi..this kinda shit has to stop */
+/*input, select, textarea{*/
+  /*margin-bottom: 10px;*/
+/*}*/
+/*textarea{*/
+  /*min-height: 100px;*/
+/*}*/
+
+/*input[type="file"]{*/
+  /*[>This is a hack for now to fix the mobile layout. The file input should be hidden.<]*/
+  /*max-width: 200px;*/
+/*}*/
+
+.font-bold {
+  font-weight: bold;
+}
+
+.page-loading {
+  color: $kinda-dark-grey;
+  text-align: center;
+  padding: 10px;
+}

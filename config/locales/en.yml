@@ -93,6 +93,7 @@ en:
     group_already_setup: "The group you are trying to setup already exists."
     passwords_did_not_match: "Password did not match confirmation"
     proposal_already_exists: "There is already an open proposal in this discussion."
+    username_cannot_contain_whitespace: "Username cannot contain spaces"
     user_with_email_address_already_in_group: "A user with that email address already belongs to this group."
     you_have_already_requested_membership: "You have already requested membership to this group."
     you_are_already_a_member_of_this_group: "You are already a member of this group."
@@ -420,8 +421,6 @@ en:
 
   add_new_member: "Add new member"
   invite_members_to_group: "Invite members to %{which_group}"
-  remaining_invites_count: "%{count} remaining invites"
-  get_in_touch_link: "get in touch"
 
   email_members_in_group: "Email the members in %{which_group}"
   subject_error: "Please fill in a subject"
@@ -490,6 +489,9 @@ en:
   group_subscription: "Group subscription"
 
   groups:
+    max_size_warning_html: "Your group is getting big and will reach the limit of %{size} members soon. Please <a href='%{link}'>contact us</a> to increase the limit."
+    max_size_reached_html: "Your group has reached the limit of %{size} members. <a href='%{link}'>Contact us</a> to add more people to the group."
+
     follow:
       click_to_follow: "Click to follow group"
       click_to_unfollow: "Click to unfollow group"
@@ -819,7 +821,6 @@ en:
       <p> Loomio is a simple, user-friendly online tool for collaborative decision-making.
           Loomio allows you to host discussions online, invite the right people to participate,
           come to timely decisions and transform deliberation into real-world action. </p>
-      <p> Loomio is free and open source software being developed by a worker-owned cooperative based in Wellington, New Zealand. </p>
 
   hint:
     context: 'Tips for using the context panel'

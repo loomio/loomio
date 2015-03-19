@@ -354,8 +354,6 @@ ro:
   edit_memberships: Editeaza membrii
   add_new_member: Adauga un membru nou
   invite_members_to_group: "Invita membri in %{which_group}"
-  remaining_invites_count: "%{count} invitatii ramase"
-  get_in_touch_link: contacteaza
   email_members_in_group: "Trimite email membrilor din %{which_group}"
   subject_error: Te rugam sa introduci un subiect
   subject_placeholder: Scrie un subiect
@@ -421,7 +419,6 @@ ro:
       following_details: Vei fi anuntat despre fiecare subiect al acestui grup.
       not_following_details: Vei fi anuntat despre subiectele la care participi.
   group_request:
-    neighbourhood_support_group: e.g. Grupul Suporterilor din Cartier
     commercial_use_option: "intr-o companie, organizatie sau loc de munca"
     non_commercial_use_option: intr0o comunitate dau retea informala
     please_select_an_option: Selectati o optiune

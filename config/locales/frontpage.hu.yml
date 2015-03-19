@@ -10,6 +10,7 @@ hu:
       try_it: Próbáld ki
       log_in: Bejelentkezés
       video: További információk a Loomio működéséről
+      try_loomio: Próbáld ki a Loomiot
       try_loomio_beta: Próbáld ki a Loomio beta veziót
       more: Tovább
       top: Fel
@@ -17,6 +18,9 @@ hu:
       terms: Feltételek
       privacy: Titoktartás
       services: Szolgáltatások
+    hero:
+      header_html: "A Loomio a legegyszerűbb módja a <br /> <strong>közös döntéshozatalnak</strong>."
+      lead_html: "A Loomio képessé teszi a szervezeteket és a közösségeket, hogy a <strong>megbeszéléseiket élővé</strong> tegye, függetlenül attól, hol tartózkodnak az emberek."
     product:
       header_html: "Amikor  <strong>mindenkit</strong> meghallgatunk, <strong>jobb döntéseket</strong> hozunk."
       step1:
@@ -29,23 +33,25 @@ hu:
         header: 3. Döntsünk együtt
         desc: "Dolgozzunk ki egy javaslatot együtt, olyant amely mindenkinek megfelel. Minden döntésnek világos határideje van, tehát mindig lesz egy világos eredmény."
     crowdfunding:
-      header: "Közzösségi finanszírozásban részesülünk, úgyhogy be tudjuk fejezni ezt az új platformot és a világnak ajándékozhatjuk."
+      header: "Közzösségi finanszírozásban részesülünk, így be tudjuk fejezni ennek az új platformnak a fejlesztését és a világnak ajándékozhatjuk azt."
+    mobile:
+      lead_html: "<strong>A Loomio minden eszközön működik, </strong><br />hogy dönthessen bárhol, bármikor."
     quote:
       header:
         rushkoff_html: "“Loomio <strong>felszabadítja az internet potenciálját</strong> hogy az embereket a konszenzus felé vezesse és nem a sarkított vitákhoz.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, a <em>Present Shock</em></div> szerzője."
         sifry_html: "“Loomio a legtöbbet hozza ki az <strong>egyéni véleményekből</strong> és a <strong>közös döntéshozatalból</strong>.”<div class=\"attributation\">– Micah Sifry, Szerkesztő, <em><a href=\"http://techpresident.com\">TechPresident</a></em></div>"
     team:
       header: A Loomio-ról
-      desc: "Egy kis csapat nyílt forráskód fejlesztő és szociális igazságszolgáltatás aktivista vagyunk, akik az Enspiral-nál dolgozunk Aotearoanban Új Zélandon, egy hatalmas baráti, támogatói illetve tanácsadói hálózattal világszerte."
+      desc: "Mi egy kicsi, nyílt forráskód fejlesztő és társadalmi igazságossági aktivista csapat vagyunk, akik az Enspiral-nál dolgozunk Aotearoanban Új Zélandon, egy széles barátokból, támogatóból és tanácsadókból álló világméretű hálózattal."
     ideals:
       community:
-        header: Közösség vezette közreműködés
-        desc: "A Loomio fejlesztésével egy közösségi társulás foglalkozik, melynek tagjai épp a bedolgozók. Mi egy közösségi vállalkozás vagyunk és az a célunk hogy növeljük a társadalomra kifejtett pozitív hatást, nem a profitot."
+        header: Közösség vezérelt szövetkezet
+        desc: A Loomiot egy dolozói tulajdonban levő szövetkezet fejleszti. Mi társadalmi vállalkozásként a pozitív társadalmi hatás maximálására törekszünk a profittal szemben.
       independent:
         header: Független és semleges
         desc: "Lehetőséget és helyet biztosítunk, politikától és korporációs érdekektől menteset, bármilyen csoportnak az összejövetelre. Mi sosem fogjuk eladni az adataidat."
       open:
-        header: Szabad és nyitott szoftwer
+        header: Szabad és nyílt szoftwer
         desc: "A Loomio forráskódja egy nyilvános közkincs amelyet bárki használhat, olvashat, tanulhat belőle, módosíthat és továbbadhat."
       gift:
         header: Ajándék gazdaság

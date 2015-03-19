@@ -342,8 +342,6 @@ it:
   edit_memberships: Modifica iscrizioni
   add_new_member: Aggiungi un nuovo membro
   invite_members_to_group: "Invita membri a %{which_group}"
-  remaining_invites_count: "%{count} inviti rimanenti"
-  get_in_touch_link: contattaci
   email_members_in_group: "Invia una mail ai membri di %{which_group}"
   subject_error: Inserisci un oggetto
   subject_placeholder: Scrivi un oggetto
@@ -409,7 +407,6 @@ it:
       following_details: Riceverai una notifica per ogni thread in questo gruppo.
       not_following_details: Riceverai una notifica per ogni conversazione a cui stai partecipando.
   group_request:
-    neighbourhood_support_group: es. Gruppo di supporto del quartiere
     commercial_use_option: "in un'impresa, un'organizzazione o sul posto di lavoro"
     non_commercial_use_option: in una comunità o un network informale
     please_select_an_option: "Scegli un'opzione"
@@ -582,7 +579,6 @@ it:
     video_tutorial: Tutorial video
     video_tutorial_description: Guarda il video per una dimostrazione veloce di come funziona Loomio.
     what_is_loomio: "Cos'è Loomio?"
-    what_is_loomio_description_html: "<p> Loomio è uno strumento online facile e user-friendly per il decision-making collaborativo.\n    Loomio vi permette di condurre discussioni online, di invitare la gente coinvolta a partecipare, di raggiungere delle decisioni in tempo e di trasformare quanto deliberato in azioni efficaci nel mondo reale. </p>\n<p> Loomio è software gratuito, libero e open source software sviluppato da una cooperativa di lavoratori con base a Wellington, Nuova Zelanda. </p>\n"
   hint:
     context: Consigli per utilizzare il pannello contestuale
     discussion: Consigli per iniziare una discussione coinvolgente

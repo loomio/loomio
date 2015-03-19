@@ -93,3 +93,12 @@ $navbar-height: 45px;
   border: 1px solid $border-color;
   border-radius: 2px;
 }
+
+#turn-off-angular {
+  z-index: 100;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  width: 100px;
+  background-color: pink
+}

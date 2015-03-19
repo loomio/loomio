@@ -51,6 +51,11 @@ describe User do
     user.save!
   end
 
+  it "should require the username contain no whitespace" do
+    user.username = 'user name'
+    user.should have(1).errors_on(:username)
+  end
+
   it "sets the avatar_kind to gravatar if user has one" do
     user = User.new attributes_for(:user)
     user.stub(:has_gravatar? => true)
@@ -203,41 +208,6 @@ describe User do
   describe "gravatar?(options = {})" do
     it "returns true if gravatar exists"
     it "returns false if gravater does not exist"
-  end
-
-  describe "avatar_url" do
-    it "returns gravatar url if avatar_kind is 'gravatar'" do
-      user.should_receive(:gravatar_url).and_return('www.gravatar/spike')
-      user.avatar_kind = 'gravatar'
-      expect(user.avatar_url(:small, user.avatar_kind)).to eq 'www.gravatar/spike'
-    end
-
-    context "where avatar_kind is 'uploaded'" do
-      before do
-        @uploaded_avatar = double "paperclip_image"
-        user.should_receive(:uploaded_avatar).and_return(@uploaded_avatar)
-      end
-      it "returns medium url if no size is specified" do
-        @uploaded_avatar.should_receive(:url).with(:medium).and_return('/uploaded_avatars/medium/missing.png')
-        user.avatar_kind = 'uploaded'
-        expect(user.avatar_url(:medium,user.avatar_kind)).to eq '/uploaded_avatars/medium/missing.png'
-      end
-      it "returns large url if large size is specified" do
-        @uploaded_avatar.should_receive(:url).with(:large).and_return('/uploaded_avatars/large/missing.png')
-        user.avatar_kind = 'uploaded'
-        expect(user.avatar_url(:large,user.avatar_kind)).to eq '/uploaded_avatars/large/missing.png'
-      end
-      it "returns medium url if medium size is specified" do
-        @uploaded_avatar.should_receive(:url).with(:medium).and_return('/uploaded_avatars/medium/missing.png')
-        user.avatar_kind = 'uploaded'
-        expect(user.avatar_url(:medium,user.avatar_kind)).to eq '/uploaded_avatars/medium/missing.png'
-      end
-      it "returns small url if small size is specified" do
-        @uploaded_avatar.should_receive(:url).with(:small).and_return('/uploaded_avatars/small/missing.png')
-        user.avatar_kind = 'uploaded'
-        expect(user.avatar_url(:small,user.avatar_kind)).to eq '/uploaded_avatars/small/missing.png'
-      end
-    end
   end
 
   describe "deactivation" do

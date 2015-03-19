@@ -1,8 +1,8 @@
 .loading-wrapper.container.main-container
-  .loading{ng-if: 'threadPage.loading'}
+  .loading{ng-if: '!threadPage.discussion'}
     Loading..
 
-  .thread-page{ng-if: '!threadPage.loading'}
+  .thread-page{ng-if: 'threadPage.discussion'}
     .thread-actions.pull-right
       .dropdown.thread-notification-level
         %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}

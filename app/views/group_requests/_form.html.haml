@@ -2,7 +2,7 @@
   = f.input :admin_name
   = f.input :admin_email
   = f.input :name
-  - if show_loomio_org_marketing
+  - if hosted_by_loomio?
     = f.input :is_commercial, as: :select, collection: [[t(:'group_request.commercial_use_option'), true],[t(:'group_request.non_commercial_use_option'), false]], prompt: t(:'common.select')
 
   - else
