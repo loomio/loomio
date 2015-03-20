@@ -10,8 +10,10 @@ angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $con
     $location.path "/d/#{discussion.key}"
 
   $scope.availableGroups = ->
-    _.filter currentUser.groups(), (group) ->
+    groups = _.filter currentUser.groups(), (group) ->
       group.membersCanStartDiscussions or group.admins().include? currentUser
+    _.sortBy groups, (g) -> g.fullName()
+
 
   $scope.getCurrentPrivacy = ->
     $scope.discussion.group().discussionPrivacyOptions

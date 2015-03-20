@@ -14,9 +14,6 @@ angular.module('loomioApp').controller 'ThreadPageController', ($routeParams, $l
   @editDiscussion = ->
     DiscussionFormService.openEditDiscussionModal(@discussion)
 
-  @canStartProposals = =>
-    !@discussion.hasActiveProposal() and window.Loomio.currentUser.canStartProposals(@discussion)
-
   @showContextMenu = =>
     @canEditDiscussion(@discussion)
 
