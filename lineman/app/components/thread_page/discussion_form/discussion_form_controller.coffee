@@ -2,7 +2,7 @@ angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $con
   currentUser = window.Loomio.currentUser
   $scope.discussion = discussion
 
-  $controller('FormController', {$scope: $scope, record: discussion });
+  $controller('FormController', {$scope: $scope, record: discussion});
 
   $scope.onCreateSuccess = (records) ->
     $scope.onSuccess 'created'

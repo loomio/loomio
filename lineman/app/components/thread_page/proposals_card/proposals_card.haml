@@ -1,9 +1,16 @@
 .proposals-card
   %h3.first{translate: 'discussion.proposals'}
-  %div{ng_repeat: 'proposal in discussion.proposals()'}
-    .active-proposal{ng-if: 'isExpanded(proposal)'}
-      %proposal_expanded{proposal: 'proposal'}
-      %h3{translate: 'discussion.previous_proposals', ng-show: "discussion.proposals().length > 1"}
 
-    .inactive-proposal{ng-if: '!isExpanded(proposal)', ng_click: 'selectProposal(proposal)'}
+  .proposals-card__start-proposal{ng-if: 'proposalsCard.canStartProposal()'}
+    %h3.first Ready to make a decision?
+    %a{href: '#', ng_click: 'proposalsCard.openForm()'}
+      Create a proposal
+
+  .proposals-card__proposals{ng_repeat: 'proposal in proposalsCard.discussion.proposals()'}
+    .active-proposal{ng-if: 'proposalsCard.isExpanded(proposal)'}
+      %proposal_expanded{proposal: 'proposal'}
+
+    %h3{translate: 'discussion.previous_proposals', ng-show: "proposalsCard.discussion.proposals().length > 1"}
+
+    .inactive-proposal{ng-if: '!proposalsCard.isExpanded(proposal)', ng_click: 'proposalsCard.selectProposal(proposal)'}
       %proposal_collapsed{proposal: 'proposal'}
