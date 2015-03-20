@@ -1,0 +1,10 @@
+.lmo-navbar-item{dropdown: ''}
+  %a.lmo-navbar-btn.lmo-navbar-btn__icon.dropdown-toggle{href: '#'}
+    %i.fa.fa-lg.fa-fw.fa-bell
+  .lmo-navbar-dropdown.dropdown-menu.notifications-dropdown{role: 'menu'}
+    .navbar-notifications
+      %ul.selector-list
+        %li.selector-list-header
+          %h3{translate: "notifications.header"}
+          %li.selector-list-item.media{ng_repeat: 'notification in currentUser.notifications()', ng-controller: "NotificationItemController", ng-include: "'generated/components/navbar/notification_items/'+notification.event().kind+'.html'" }
+

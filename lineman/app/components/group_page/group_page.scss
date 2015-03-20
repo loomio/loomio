@@ -1,0 +1,95 @@
+.group-page{
+  max-width: $group-page-max-width;
+  margin: 0 auto;
+  /* over-riding bootstrap */
+  .media:first-child{
+    margin-top: 10px;
+  }
+}
+
+.group-page-header{
+  width: 100%;
+  position: relative;
+  min-height: 100px + 75px + 8px + 10px;
+}
+
+.group-page-cover{
+  max-width: $group-page-max-width;
+  height: 100px;
+  background: url('http://placehold.it/640x100') no-repeat center center;
+  background-size: cover;
+  @media(max-width: $screen-xs-max){ margin: 0 -15px; }
+}
+.group-page-logo{
+  width: 108px;
+  height: 108px;
+  position: absolute;
+  top: 75px;
+  left: 10px;
+  background: url('http://placehold.it/100x100') no-repeat top center white;
+  border: 4px solid #fff;
+}
+.group-page-privacy{
+  margin-top: 10px;
+  position: relative;
+  a{color: $primary-text-color;}
+  a:hover{text-decoration: none;}
+  a:hover span{text-decoration: underline;}
+}
+.group-page-name-and-privacy{
+  margin: 10px 0;
+  @media(min-width: $screen-xs-max){ margin-left: 128px; }
+}
+
+.group-page-buttons{
+  margin-top: 10px;
+}
+.group-page-notifications{
+  position: relative;
+  margin-bottom: 5px;
+}
+
+
+.group-page-description,
+.group-page-threads,
+.group-page-members,
+.group-page-subgroups{
+  @include card;
+}
+.discussions-new-thread{
+  margin-top: 10px;
+}
+.members-invite{
+  margin-top: 10px;
+}
+.group-member-list-avatar{
+  float: left;
+  margin: 0 10px 10px 0;
+}
+
+.group-thread-list{
+  border-top: 1px solid $border-color;
+}
+.group-thread-list-item{
+  border-bottom: 1px solid $border-color;
+  min-height: 48px;
+  padding: 8px 0;
+}
+.group-thread-list-group-name, .group-thread-list-time{
+  @include metaText;
+}
+.group-thread-list-item .time-and-icon{
+  padding-top: 10px;
+}
+
+.subgroup-list-item{
+  clear: both;
+}
+.subgroup-list-item-logo{
+  width: 50px;
+  height: 50px;
+  background: url('http://placehold.it/50x50');
+}
+.subgroup-list-item-name{
+  font-weight: bold;
+}
