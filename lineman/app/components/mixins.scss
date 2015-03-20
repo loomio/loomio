@@ -1,0 +1,104 @@
+$background-color: #ebebeb;
+$primary-text-color: #262626;
+$meta-text-color: #898989;
+$border-color: #dcdcdc;
+$card-background-color: #fff;
+$progress-bar-color: #176EE3;
+
+$item-highlight-color: #FFFFE8;
+$list-hover-color: #E0E0E0;
+$loomio-orange: #F6A82B;
+
+/* let's come up with a good naming scheme for the greys once we lock them in*/
+$light-grey: #F5F5F5;
+$kinda-dark-grey: #545454;
+
+$main-max-width: 640px;
+$thread-max-width: 640px;
+$group-page-max-width: 640px;
+$sidebar-width: 320px;
+$navbar-height: 45px;
+
+@mixin fontTiny {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+@mixin fontSmall {
+  font-size: 13px;
+  line-height: 15px;
+}
+
+@mixin fontMedium {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@mixin fontLarge {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+@mixin fontGrande {
+  font-size: 24px;
+  line-height: 27px;
+}
+
+
+@mixin fontHelvetica {
+  font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-weight:400;
+  font-stretch:normal;
+}
+@mixin fontHelveticaLight {
+  font-family: "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-weight:300;
+  font-stretch:normal;
+}
+@mixin fontHelveticaBold {
+  font-family: "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold",
+    "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold', "Helvetica", "Tahoma",
+    "Geneva", "Arial", sans-serif;
+  font-weight:600;
+  font-stretch:normal;
+}
+
+@mixin fontHelveticaMedium{
+  font-family: "HelveticaNeueMedium", "HelveticaNeue-Medium", "Helvetica Neue Medium", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-weight:500;
+  font-stretch:normal;
+}
+
+@mixin metaText {
+  color: $meta-text-color;
+  @include fontTiny;
+  line-height: 20px;
+}
+
+@mixin card{
+  border: 1px solid $border-color;
+  padding: 17px 22px;
+  background: #fff;
+  margin-bottom: 8px;
+  i{
+    color: $meta-text-color;
+  }
+  .card-minor-action{
+    margin: 10px 0 0 0;
+    clear: both;
+  }
+}
+
+@mixin thinRoundedBorder {
+  border: 1px solid $border-color;
+  border-radius: 2px;
+}
+
+#turn-off-angular {
+  z-index: 100;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  width: 100px;
+  background-color: pink
+}

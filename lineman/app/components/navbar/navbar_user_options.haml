@@ -1,0 +1,28 @@
+%li.lmo-navbar-item{dropdown: ''}
+  %a.dropdown-toggle.lmo-navbar-btn.lmo-navbar-btn__icon{href: '#'}
+    %i.fa.fa-lg.fa-fw.fa-navicon
+  .lmo-navbar-dropdown.dropdown-menu.user-options-dropdown
+    %ul.selector-list
+      %li.media.selector-list-item.visible-xs
+        %a{href: '#', ng_click: 'openDiscussionForm()'}
+          .media-left
+            %i.fa.fa-xlg.fa-plus
+          .media-body New thread
+      %li.selector-list-item
+        %a{href: '/profile'}
+          .media-left
+            %user_avatar{user: "currentUser()"}
+          .media-body
+            Profile
+      %li.selector-list-item
+        %a{href: '/help'}
+          .media-left
+            %i.fa.fa-xlg.fa-info
+          .media-body
+            Help
+      %li.selector-list-item
+        %a{href: '/contact'}
+          .media-left
+            %i.fa.fa-xlg.fa-question-circle
+          .media-body
+            Contact us

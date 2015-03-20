@@ -1,0 +1,13 @@
+%form.extend-proposal-form{ng-submit: 'submit()', ng-disabled: 'proposal.processing'}
+  .modal-header
+    %button{type: 'button', class: 'close', ng-click: 'cancel()'}
+      %span{aria-hidden: true} &times;
+      %span.sr-only{translate: 'common.action.cancel'}
+    %h1{translate: 'extend_proposal_form.title'}
+
+  .modal-body
+    .closing-at-field{ng-include: '"generated/components/thread_page/proposals_card/proposal_form/closing_at_field.html"'}
+
+  .modal-footer
+    %button.btn.btn-primary.cuke-extend-proposal-btn{type: 'submit', translate: 'extend_proposal_form.submit'}
+    %button.btn.btn-warning{type: 'button', ng-click: 'cancel($event)', translate: 'common.action.cancel'}

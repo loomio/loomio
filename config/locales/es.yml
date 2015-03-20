@@ -50,7 +50,7 @@ es:
       no_invitations_remaining: No hay más invitaciones
     mailer:
       invitation_instructions:
-        subject: Alguien te ha invitado a participar de su grupo en Loomio
+        subject: Alguien te ha invitado a invitado a participar en su grupo de Loomio
     registrations:
       sign_up: Crear cuenta
   error:
@@ -80,6 +80,7 @@ es:
     group_already_setup: El grupo que estás tratando de configurar ya existe.
     passwords_did_not_match: Las contraseñas no coinciden
     proposal_already_exists: Ya existe una propuesta abierta en esta discusión.
+    username_cannot_contain_whitespace: El nombre de usuario no puede contener espacios en blanco
     user_with_email_address_already_in_group: Un usuario con ese correo electrónico ya es miembro de este grupo.
     you_have_already_requested_membership: Ya has solicitado membresía en este grupo.
     you_are_already_a_member_of_this_group: Ya eres miembro de este grupo.
@@ -424,6 +425,8 @@ es:
   edit_group_description: Editar descripción del grupo
   group_subscription: "Subscripción grupal "
   groups:
+    max_size_warning_html: "El tamaño de tu grupo esta aumentando y llegara pronto al limite de %{size} miembros. Por favor <a href='%{link}'>contactanos</a> para incrementar el limite."
+    max_size_reached_html: "Tu grupo a alcanzado el limite de %{size} miembros. <a href='%{link}'>Contactanos</a> para agregar mas gente a tu grupo."
     follow:
       click_to_follow: Clic para seguir el grupo
       click_to_unfollow: Clic para dejar de seguir el grupo
@@ -640,7 +643,6 @@ es:
     video_tutorial: Vídeo tutorial
     video_tutorial_description: Mira el vídeo para una demostración rápida.
     what_is_loomio: Que es Loomio?
-    what_is_loomio_description_html: "<p>Loomio es una simple y fácil de usar herramienta en linea para toma de decisiones colaborativas. \nLoomio te permite crear discusiones en linea, invitar a la gente indicada a participar, llegar a la toma de decisiones y transformar deliberaciones en acciones en el mundo real.</p>\n<p>Loomio es un software gratuito y de código abierto que esta siendo creado por una cooperativa de trabajadores con base en Wellington, Nueva Zelanda. </p>\n"
   hint:
     context: Consejos para usar el panel de contexto
     discussion: Consejos para empezar una discusión participativa

@@ -5,7 +5,13 @@ nl-NL:
     group_volume_description: "Volume bepaalt hoeveel e-mail je van een groep krijgt. Stel het volume in voor al je groepen:"
     to_change_one_group: "Om het volume van slechts een groep te veranderen, bezoek je de pagina van die groep."
     discussion_activity: Verander discussievolume als ik deelneem
+    yesterday_on_loomio: E-mail mij iedere dag een samenvatting van activiteiten
+    email_when_mentioned: "E-mail mij als ik @genoemd word"
+    email_when_mentioned_description: "Als iemand jouw aandacht wil, kan je @genoemd worden. We raden je aan deze instelling aan te laten zodat je een e-mail krijgt als dit gebeurt."
+    proposal_closing_soon: E-mail mij voordat een voorstel sluit
     submit: Instellingen bijwerken
+    no_change: Geen verandering
+    no_change_description: Laat het volume van mijn groep zoals deze is.
   explore:
     header: Ontdek openbare groepen
   try_it:
@@ -71,6 +77,7 @@ nl-NL:
     group_already_setup: De groep die je probeert aan te maken bestaat al.
     passwords_did_not_match: Wachtwoorden komen niet overeen
     proposal_already_exists: Er staat al een voorstel open binnen deze discussie.
+    username_cannot_contain_whitespace: Gebruikersnaam mag geen spaties bevatten
     user_with_email_address_already_in_group: Een gebruiker met dit e-mailadres behoort al tot deze groep.
     you_have_already_requested_membership: Je hebt al een lidmaatschap aangevraagd voor deze groep.
     you_are_already_a_member_of_this_group: Je bent al lid van deze groep.
@@ -438,12 +445,12 @@ nl-NL:
     loud_description: E-mail altijd als er activiteit is in dit gesprek.
     normal_description: "Alleen e-mailen wanneer er een voorstel is gemaakt, op het punt staat te sluiten of als er een uitkomst is vastgesteld."
     quiet_description: Niet e-mail over dit gesprek.
-    mute_description: "Verberg dit gesprek van het dashboard en stuur geen notificaties tenzij @benoemd."
+    mute_description: "Verberg dit gesprek van het dashboard en stuur geen notificaties tenzij ik @genoemd word."
   group_volume:
     loud_description: E-mail als er activiteit is.
     normal_description: "Alleen belangrijke activiteit e-mailen: Nieuwe discussies en voorstellen, uitkomsten, enz."
     quiet_description: Niet e-mailen over deze groep. Activiteit wordt weergegeven op het dashboard.
-    mute_description: "Verberg deze groep van het dashboard en stuur geen notificatie tenzij @benoemd."
+    mute_description: "Verberg deze groep van het dashboard en stuur geen notificatie tenzij ik @genoemd word."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> ging akkoord met het voorstel."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> onthield zich van het voorstel."
@@ -597,7 +604,7 @@ nl-NL:
     make_a_decision: Maak een beslissing
     make_a_decision_description: "Als een groep klaar is om een beslissing te maken, kan iedereen een voorstel indienen. Zet in het voorstel een heldere lijn uiteen en geef achtergrondinformatie zodat iedereen exact weet wat het betekent om het ermee eens of oneens te zijn."
     prompt_people_details: "Als je de aandacht wilt van een bepaalde persoon in je groep, typ '@' gevolgd door zijn of haar naam. Diegene krijgt een e-mail met de boodschap dat jij hem of haar genoemd hebt in een reactie."
-    prompt_people_html: "Stel mensen op de hoogte van <span class='blue'>@benoemingen</span>"
+    prompt_people_html: "Stel mensen op de hoogte als ze <span class='blue'>@genoemd</span>  worden"
     positions_agree_description: "<span>Eens</span> betekent dat je blij bent met het voorstel."
     positions_abstain_description: "<span>Onthouden</span> betekent dat je het niet zeker weet, of dat je het prima vindt dat de groep zonder jou beslist."
     positions_disagree_description: "<span>Oneens</span> betekent dat je denkt dat er mogelijk een beter alternatief is, maar dat je mee wilt gaan met de beslissing van de groep."
@@ -610,7 +617,6 @@ nl-NL:
     video_tutorial: Video uitleg
     video_tutorial_description: Bekijk de video voor een snelle demonstratie van hoe Loomio te gebruiken.
     what_is_loomio: Wat is Loomio?
-    what_is_loomio_description_html: "<p> Loomio is een simpel, gebruikersvriendelijk online gereedschap voor het maken van beslissingen.\nLoomio geeft je de mogelijkheid om online discussies te voeren, mensen uit te nodigen om deel te nemen, tijdig een beslissing te nemen en beraadslaging om te zetten naar actie in real-life.</p>\n<p> Loomio is vrije en open source software dat ontwikkeld wordt door een coöperatieve gemeenschap in Wellington, Nieuw Zeeland. </p>\n"
   hint:
     context: Tips voor het gebruik van het omschrijvingenveld
     discussion: Tips voor het beginnen van een boeiende discussie

@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient) ->
+angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient, $q) ->
   class BaseRecordsInterface
     model: 'undefinedModel'
 
@@ -32,9 +32,15 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient) ->
         record
 
     findOrFetchByKey: (key) ->
+      deferred = $q.defer()
       promise = @fetchByKey(key).then => @find(key)
-      record = @find(key)
-      record or promise
+
+      if record = @find(key)
+        deferred.resolve(record)
+      else
+        deferred.resolve(promise)
+
+      deferred.promise
 
     fetchByKey: (key) ->
       @restfulClient.getMember(key)

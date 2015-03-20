@@ -14,6 +14,7 @@ Then(/^I should be redirected to the home page$/) do
 end
 
 Then(/^I should be redirected to the sign in page$/) do
+  view_screenshot
   page.should have_css("body.pages.sessions.new")
 end
 

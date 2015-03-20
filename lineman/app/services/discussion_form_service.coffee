@@ -2,14 +2,14 @@ angular.module('loomioApp').factory 'DiscussionFormService', ($modal, Records) -
   new class DiscussionFormService
     openEditDiscussionModal: (discussion) ->
       $modal.open
-        templateUrl: 'generated/modules/discussion_page/discussion_form/discussion_form.html',
+        templateUrl: 'generated/components/thread_page/discussion_form/discussion_form.html',
         controller: 'DiscussionFormController',
         resolve:
           discussion: -> Records.discussions.find(discussion.id)
 
     openNewDiscussionModal: ->
       $modal.open
-        templateUrl: 'generated/modules/discussion_page/discussion_form/discussion_form.html'
+        templateUrl: 'generated/components/thread_page/discussion_form/discussion_form.html'
         controller: 'DiscussionFormController'
         resolve:
           discussion: -> Records.discussions.initialize()

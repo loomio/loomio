@@ -1,10 +1,10 @@
 Feature: Person contacts Loomio using contact form
 
+@javascript
 Scenario: Guest contacts Loomio using contact form
 When I visit the contact page
 And I fill in and submit the contact form
-Then I should be redirected to the sign in page
-And I should see a thank you flash message
+Then I should see a thank you flash message
 And an email should be sent to @incoming.intercom.io
 And the message should be saved to the database
 
