@@ -101,7 +101,7 @@ class User < ActiveRecord::Base
 
   has_one :deactivation_response,
           class_name: 'UserDeactivationResponse',
-          dependent: :destory
+          dependent: :destroy
 
   before_save :set_avatar_initials,
               :ensure_unsubscribe_token,
