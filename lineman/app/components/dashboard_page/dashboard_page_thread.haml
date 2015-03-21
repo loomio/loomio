@@ -1,6 +1,6 @@
 .dashboard-page-thread
   %a.selector-list-item-link{href: '/d/{{discussion.key}}'}
-    .media-left{ng-hide: 'showGroupLogo'}
+    .media-left{ng-hide: 'hideGroupLogo'}
       %img.selector-list-item-group-logo{src: "{{discussion.group().logoUrl()}}"}
     .media-left.dashboard-page-unread-count
       %span{ng-if: 'discussion.isUnread()'}
@@ -11,6 +11,6 @@
         .dashboard-page-thread-title{ng-class: "{'is-unread': discussion.isUnread() }"}
           {{discussion.title}}
       .dashboard-page-thread-info
-        %span> {{discussion.group().fullName()}}
-        %span> ·
+        %span{ng-show: 'hideGroupLogo && !discussion.group().isParent()'}> {{ discussion.group().name }} ·
+        %span{ng-hide: 'hideGroupLogo'}> {{ discussion.group().fullName() }} ·
         %span> {{discussion.lastInboxActivity() | timeFromNowInWords}}

@@ -1,82 +1,104 @@
 angular.module('loomioApp').controller 'DashboardPageController', (Records) ->
-  @page = {}
-  @perPage = 25
 
-  @refresh = (options = {}) =>
-    options['filter'] = @filter
-    switch @sort
-      when 'date'
-        options['per'] = @perPage
-        options['from'] = @page[@filter] = @page[@filter] || 0
-        @page[@filter] = @page[@filter] + @perPage
-        Records.discussions.fetchInboxByDate  options
-      when 'group'
-        Records.discussions.fetchInboxByGroup options
+  @loaded =
+    date:
+      unread: 0
+      all: 0
+    group:
+      unread: 0
+      all: 0
+  @perPage =
+    date: 25
+    group: 5
+  @expandedGroupSize = 10
+  @expandedGroups = []
+
+  @loadMore = (options = {}) =>
+    callFetch(
+      filter:  @filter
+      per:     @perPage[@sort]
+      from:    @loadedCount()
+      groupId: options['groupId']).then =>
+      return if options['groupId']
+      @loaded[@sort][@filter] = @loadedCount() + @perPage[@sort]
+
+  callFetch = (params) =>
+    if @sort == 'date' or params['groupId']
+      Records.discussions.fetchInboxByDate(params)
+    else
+      Records.discussions.fetchInboxByGroup(params)
+
+  @loadedCount = (groupId) =>
+    if @groupIsExpanded(groupId)
+      @expandedGroupSize
+    else
+      @loaded[@sort][@filter]
+
+  @groupIsExpanded = (groupId) =>
+    _.find(@expandedGroups, (id) -> id == groupId)
 
   @setOptions = (options = {}) =>
     @filter = options['filter'] if options['filter']
     @sort   = options['sort']   if options['sort']
-    @refresh()
-
+    @loadMore() if @loadedCount() == 0
   @setOptions sort: 'group', filter: 'all'
 
-  @dashboardDiscussions = ->
-    window.Loomio.currentUser.inboxDiscussions()
+  @dashboardDiscussions = =>
+    _.sortBy(window.Loomio.currentUser.inboxDiscussions(), (discussion) =>
+      @lastInboxActivity(discussion))
+      .slice(0, @loadedCount())
 
   @dashboardGroups = ->
-    window.Loomio.currentUser.groups()
+    _.filter window.Loomio.currentUser.groups(), (group) -> group.isParent()
 
-  @footerReached = ->
-    return false if @loadingDiscussions
-    @loadingDiscussions = true
-    @refresh().then ->
-      @loadingDiscussions = false
+  @footerReached = =>
+    return false if @loadingDiscussionsDate
+    @loadingDiscussionsDate = true
+    @loadMore().then =>
+      @loadingDiscussionsDate = false
 
-  @unread = (discussion) ->
+  @loadMoreFromGroup = (group) =>
+    loadKey = "loadingDiscussions#{group.id}"
+    return false if @[loadKey]
+    @[loadKey] = true
+    @loadMore(groupId: group.id).then =>
+      @expandedGroups.push group.id
+      @[loadKey] = false
+
+  @unread = (discussion) =>
     discussion.isUnread() or @filter != 'unread'
 
   @lastInboxActivity = (discussion) ->
     -discussion.lastInboxActivity()
 
-  @startOfDay = ->
-    moment().startOf('day').clone()
+  timeframe = (options = {}) ->
+    today = moment().startOf 'day'
+    (discussion) ->
+      discussion.lastInboxActivity()
+                .isBetween(today.clone().subtract(options['fromCount'] or 1, options['from']),
+                           today.clone().subtract(options['toCount'] or 1, options['to']))
 
-  @today = (discussion) ->
-    discussion.lastInboxActivity().isAfter @startOfDay()
+  inTimeframe = (fn) =>
+    =>
+      @loadedCount() > 0 and _.find @dashboardDiscussions(), (discussion) =>
+        fn(discussion) and @unread(discussion)
 
-  @yesterday = (discussion) ->
-    discussion.lastInboxActivity().isBetween(@startOfDay().subtract(1, 'day'), @startOfDay())
+  @today     = timeframe(from: 'second', toCount: -10, to: 'year')
+  @yesterday = timeframe(from: 'day', to: 'second')
+  @thisWeek  = timeframe(from: 'week', to: 'day')
+  @thisMonth = timeframe(from: 'month', to: 'week')
+  @older     = timeframe(fromCount: 3, from: 'month', to: 'month')
 
-  @thisWeek = (discussion) ->
-    discussion.lastInboxActivity().isBetween(@startOfDay().subtract(1, 'week'), @startOfDay().subtract(1, 'day'))
+  @anyToday     = inTimeframe(@today)
+  @anyYesterday = inTimeframe(@yesterday)
+  @anyThisWeek  = inTimeframe(@thisWeek)
+  @anyThisMonth = inTimeframe(@thisMonth)
+  @anyOlder     = inTimeframe(@older)
 
-  @thisMonth = (discussion) ->
-    discussion.lastInboxActivity().isBetween(@startOfDay().subtract(1, 'month'), @startOfDay().subtract(1, 'week'))
+  @groupName = (group) -> group.name
 
-  @older = (discussion) ->
-    discussion.lastInboxActivity().isBefore(@startOfDay().subtract(1, 'month'))
+  @anyThisGroup = (group) =>
+    @loadedCount() > 0 and _.find group.discussions(), (discussion) =>
+      @unread(discussion)
 
-  @anyToday = ->
-    _.find @dashboardDiscussions(), (discussion) =>
-      @today(discussion) and @unread(discussion)
-
-  @anyYesterday = ->
-    _.find @dashboardDiscussions(), (discussion) =>
-      @yesterday(discussion) and @unread(discussion)
-
-  @anyThisWeek = ->
-    _.find @dashboardDiscussions(), (discussion) =>
-      @thisWeek(discussion) and @unread(discussion)
-
-  @anyThisMonth = ->
-    _.find @dashboardDiscussions(), (discussion) =>
-      @thisMonth(discussion) and @unread(discussion)
-
-  @anyOlder = ->
-    _.find @dashboardDiscussions(), (discussion) =>
-      @older(discussion) and @unread(discussion)
-
-  @anyThisGroup = (group) ->
-    _.find @dashboardDiscussions(), (discussion) =>
-      discussion.groupId == group.id and @unread(discussion)
   return

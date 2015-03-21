@@ -3,14 +3,18 @@ class API::DiscussionsController < API::RestfulController
   load_resource only: [:create, :update]
 
   def inbox_by_date
+    load_and_authorize_group if params[:group_id]
     @discussions = page_collection inbox_threads
     respond_with_discussions
   end
 
+  def inbox_by_organization
+    @discussions = grouped inbox_threads.group_by(&:organization_id)
+    respond_with_discussions
+  end
+
   def inbox_by_group
-    @discussions = inbox_threads.group_by(&:group_id)
-                                .map { |g, discussions| discussions.first(Integer(params[:per_group] || 4)) }
-                                .flatten
+    @discussions = grouped inbox_threads.group_by(&:group_id)
     respond_with_discussions
   end
 
@@ -68,11 +72,15 @@ class API::DiscussionsController < API::RestfulController
   private
 
   def inbox_threads
-    GroupDiscussionsViewer.for(user: current_user, filter: params[:filter])
+    GroupDiscussionsViewer.for(user: current_user, group: @group, filter: params[:filter])
                           .where('last_activity_at > ?', params[:from_date] || 3.months.ago)
                           .joined_to_current_motion
                           .preload(:current_motion, {group: :parent})
                           .order('motions.closing_at ASC, last_activity_at DESC')
+  end
+
+  def grouped(discussions)
+    discussions.map { |g, discussions| discussions.first(Integer(params[:per] || 5)) }.flatten
   end
 
   def discussion_reader
