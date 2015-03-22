@@ -38,6 +38,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
       @author().name
 
     isActive: ->
+      #!(@closedAt? and @closedAt.isValid())
       !@closedAt? or !@closedAt.isValid()
 
     uniqueVotesByUserId: ->

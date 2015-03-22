@@ -1,16 +1,4 @@
 sl:
-  users:
-    email_preferences:
-      edit:
-        title: Nastavitve e-pošte
-        when_do_you_want_emails: "Obvesti me po e-pošti:"
-        email_missed_yesterday: "'Včeraj na Loomiu' - dnevni povzetek spregledanih aktivnosti"
-        email_when_mentioned: "Ko sem @omenjen/-a"
-        email_followed_threads: "Ob dejavnosti v temi, ki jo spremljam"
-        email_when_proposal_closing_soon: 24 ur pred zaprtjem predloga
-        email_new_discussions_and_proposals: Nove razprave in predlogi
-        for_these_groups: "Za sledeče skupine:"
-        submit: Shrani nastavitve
   explore:
     header: Razišči javne skupine
   try_it:
@@ -262,8 +250,6 @@ sl:
   no_group_header: Dobrodošel/la v Loomio Beta
   empty_notifications: Nimaš še nobenega obvestila.
   see_all_notifications: Poglej vsa obvestila
-  profile: Profil
-  email_settings: Email nastavitve
   sign_out: Odjavi se
   sign_in: Prijavi se
   honeypot_warning: "Računa ni bilo mogoče ustvariti. Če uporabljaš bralnik zaslona, poskrbi, da je zadnje (skrito) polje na obrazcu prazno."
@@ -390,8 +376,6 @@ sl:
   edit_memberships: Uredi članstva
   add_new_member: Dodaj novega člana/članico
   invite_members_to_group: "Povabi člane v %{which_group}"
-  remaining_invites_count: "%{count} vabil na voljo"
-  get_in_touch_link: stopi v stik
   email_members_in_group: "Pošlji email članom %{which_group}"
   subject_error: Vpiši naslov
   subject_placeholder: Napiši naslov
@@ -458,8 +442,6 @@ sl:
       not_following_details: "Obveščen/a boš o temah, v katerih sodeluješ."
   group_request:
     header: Ustvari skupino
-    desc: "Da bi lahko začeli sprejemati odločitve na Loomiu, morate najprej ustvariti skupino:"
-    neighbourhood_support_group: npr. Podporna Skupina za Sosesko
     commercial_use_option: "v podjetju, uradni organizaciji ali na delovnem mestu"
     non_commercial_use_option: v skupini za skupnost ali v neformalni mreži
     please_select_an_option: Izberi eno od možnosti
@@ -632,7 +614,6 @@ sl:
     video_tutorial: Video z navodili
     video_tutorial_description: "Oglej si video, ki na kratko prikazuje, kako uporabljati Loomio."
     what_is_loomio: Kaj je Loomio?
-    what_is_loomio_description_html: "<p>Loomio je enostavno, uporabniku prijazno spletno orodje za skupinsko soodločanje.\nLoomio ponuja spletni prostor za razpravo, kamor lahko povabiš prave ljudi,\ns katerimi pravočasno sprejmete odločitve in tako razmišljanja spremenite v dejanja.</p>\n<p>Loomio je brezplačen in odprtokoden program, ki ga razvija zadruga v lasti zaposlenih, v Wellingtonu na Novi Zelandiji.</p>\n"
   hint:
     context: Nasveti za uporabo polja Opis
     discussion: Nasveti za začetek angažirane razprave
@@ -927,10 +908,6 @@ sl:
     thread_mailer:
       footer_text: "Odgovori na ta email, ali ga poglej na %{hostname}:"
       reply_or_view_online_html: "Odgovori na ta email, ali <a href='%{url}'>ga poglej na %{hostname}</a>."
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Odjavi se,</a> da prenehaš prejemati emaile o tej razpravi."
-      unfollow_discussion_text: "S klikom na povezavo lahko prenehaš prejemati obvestila o tej razpravi: %{unfollow_url}"
-      follow_discussion_html: "<a href='%{follow_url}'>Spremljaj</a> in prejemal/a boš obvestila o tej razpravi."
-      follow_discussion_text: "S klikom na povezavo boš začel/a prejemati obvestila o tej razpravi: %{follow_url}"
       change_email_preferences_html: "Za odjavo od teh sporočil spremeni svoje <a href='%{email_preferences_url}'>email nastavitve</a>."
       change_preferences: "Spremeni svoje email nastavitve:"
       new_motion: "%{who} je predlagal/a:"

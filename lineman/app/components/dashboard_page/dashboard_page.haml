@@ -1,0 +1,65 @@
+.container.main-container
+  .dashboard-container
+    .row
+      .col-xs-6
+        .dashboard-page-dropdown.dashboard-page-filter-dropdown{dropdown: '', on-toggle: 'dashboardPage.toggled(open)'}
+          %a.dashboard-page-dropdown-toggle.dropdown-toggle{href: '#'}
+            %span{translate: "dashboard_page.filtering.all", ng-show: 'dashboardPage.filter == "all"'}>
+            %span{translate: "dashboard_page.filtering.unread", ng-show: 'dashboardPage.filter == "unread"'}>
+            %i.fa.fa-chevron-down
+          .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
+            %ul.dropdown-menu-items.filtering-options
+              %li.dropdown-menu-item.filtering-option{ng-click: 'dashboardPage.setOptions({filter: "all"})'}
+                .dropdown-menu-item-label{translate: 'dashboard_page.filtering.all'}
+                .dashboard-description{translate: 'dashboard_page.filtering.all_description'}
+              %li.dropdown-menu-item.filtering-option{ng-click: 'dashboardPage.setOptions({filter: "unread"})'}
+                .dropdown-menu-item-label{translate: 'dashboard_page.filtering.unread'}
+                .dashboard-description{translate: 'dashboard_page.filtering.unread_description'}
+      .col-xs-6
+        .dashboard-page-sort-dropdown.dashboard-page-dropdown.pull-right{dropdown: '', on-toggle: 'dashboardPage.toggled(open)'}
+          %a.dashboard-page-dropdown-toggle.dropdown-toggle{href: '#'}
+            %span{translate: "dashboard_page.sorting.group", ng-show: 'dashboardPage.sort == "group"'}>
+            %span{translate: "dashboard_page.sorting.date", ng-show: 'dashboardPage.sort == "date"'}>
+            %i.fa.fa-chevron-down
+          .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
+            %ul.dropdown-menu-items.sorting-options
+              %li.dropdown-menu-item.sorting-option{ng-click: 'dashboardPage.setOptions({sort: "group"})'}
+                .dropdown-menu-item-label{translate: 'dashboard_page.sorting.group'}
+                .dashboard-description{translate: 'dashboard_page.sorting.group_description'}
+              %li.dropdown-menu-item.sorting-option{ng-click: 'dashboardPage.setOptions({sort: "date"})'}
+                .dropdown-menu-item-label{translate: 'dashboard_page.sorting.date'}
+                .dashboard-description{translate: 'dashboard_page.sorting.date_description'}
+    .row
+      .col-xs-12
+        .dashboard-page-panel
+          .dashboard-page-sort-group{ng-if: 'dashboardPage.sort == "date"'}
+            .dashboard-page-threads-container{ng-if: 'dashboardPage.anyToday()'}
+              %h3{translate: 'common.date_range.today'}
+              .dashboard-page-threads
+                %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | orderBy:lastInboxActivity | filter:unread | filter:today'}
+            .dashboard-page-threads-container{ng-if: 'dashboardPage.anyYesterday()'}
+              %h3{translate: 'common.date_range.yesterday'}
+              .dashboard-page-threads
+                %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | orderBy:lastInboxActivity | filter:unread | filter:yesterday'}
+            .dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisWeek()'}
+              %h3{translate: 'common.date_range.this_week'}
+              .dashboard-page-threads
+                %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | orderBy:lastInboxActivity | filter:unread | filter:thisWeek'}
+            .dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisMonth()'}
+              %h3{translate: 'common.date_range.this_month'}
+              .dashboard-page-threads
+                %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | orderBy:lastInboxActivity | filter:unread | filter:thisMonth'}
+            .dashboard-page-threads-container{ng-if: 'dashboardPage.anyOlder()'}
+              %h3{translate: 'common.date_range.older'}
+              .dashboard-page-threads
+                %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardDiscussions() | orderBy:lastInboxActivity | filter:unread | filter:older'}
+            .dashboard-page-footer{in-view: '$inview && dashboardPage.footerReached(event)', in-view-options: '{debounce: 200}'} .
+            .dashboard-page-loading.page-loading{ng-show: 'dashboardPage.loadingDiscussions'}
+              %i.fa.fa-lg.fa-spin.fa-circle-o-notch
+          .dashboard-page-sort-date{ng-if: 'dashboardPage.sort == "group"'}
+            .dashboard-page-group{ng-repeat: 'group in dashboardPage.dashboardGroups() | orderBy:fullName'}
+              .dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisGroup(group)'}
+                %img.selector-list-item-group-logo.pull-left{src: "{{group.logoUrl()}}"}>
+                %h3.dashboard-page-group-name {{group.fullName()}}
+                .dashboard-page-threads
+                  %dashboard_page_thread{discussion: 'discussion', show-group-logo: true, ng-repeat: 'discussion in group.discussions() | orderBy:lastInboxActivity | filter:unread'}

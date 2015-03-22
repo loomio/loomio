@@ -1,0 +1,10 @@
+%li.dropdown-menu-item{ng_click: "changeVolume()"}
+  .dropdown-menu-item-label
+    %i.fa.fa-lg.fa-envelope{ng-show: 'volume == "loud"'}
+    %i.fa.fa-lg.fa-volume-up{ng-show: 'volume == "normal"'}>
+    %i.fa.fa-lg.fa-volume-down{ng-show: 'volume == "quiet"'}>
+    %i.fa.fa-lg.fa-volume-off{ng-show: 'volume == "mute"'}>
+    %span{translate: "common.volume.{{volume}}"}
+    %i.fa.fa-lg.fa-check{ng-show: "model.volume == '{{volume}}'"}
+  .dropdown-menu-item-details
+    %span{translate: "{{translateRoot}}.volume.{{volume}}"}

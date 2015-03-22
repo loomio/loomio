@@ -9,7 +9,7 @@ class UserMailerPreview < ActionMailer::Preview
       #raise user.can?(:create, discussion).inspect
       #discussion.reload
       #user.reload
-      DiscussionService.start_discussion(discussion)
+      DiscussionService.create(discussion: discussion, actor: discussion.author)
       for i in 1..3 do
         case i
         when 0
@@ -18,7 +18,7 @@ class UserMailerPreview < ActionMailer::Preview
           # new motion
           motion = FactoryGirl.create(:motion, discussion: discussion)
           vote  = Vote.new(motion: motion, user: discussion.author, position: 'yes', statement: 'Oh yes in deeedee')
-          MotionService.cast_vote(vote)
+          VoteService.create(vote: vote, actor: vote.author)
 
         when 2
           # motion with outcome

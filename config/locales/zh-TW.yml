@@ -1,16 +1,6 @@
 zh-TW:
-  users:
-    email_preferences:
-      edit:
-        title: 電子郵件設定
-        when_do_you_want_emails: 寄電子郵件給我：
-        email_missed_yesterday: 「昨天在Loomio上」— 每日我錯過的動態
-        email_when_mentioned: 當我被標記
-        email_followed_threads: 當我跟隨的討論主題有新動態。
-        email_when_proposal_closing_soon: 24 小時前提議定案。
-        email_new_discussions_and_proposals: 新的討論串與提案
-        for_these_groups: 對於這些群組：
-        submit: 儲存偏好設定
+  email_settings:
+    title: 電子郵件設定
   explore:
     header: 探索公開群組
   try_it:
@@ -220,8 +210,6 @@ zh-TW:
   no_group_header: 歡迎使用 Loomio Beta
   empty_notifications: 您目前沒有新的通知。
   see_all_notifications: 查看所有通知
-  profile: 簡歷
-  email_settings: 電子郵件設定
   sign_out: 登出
   sign_in: 登入
   honeypot_warning: 無法建立您的帳號。假如您正在使用螢幕閱讀器，請確保表單最後一個 (隱藏) 欄位是留白的。
@@ -348,8 +336,6 @@ zh-TW:
   edit_memberships: 編輯成員資格
   add_new_member: 增加新成員
   invite_members_to_group: "邀請成員到%{which_group}群組"
-  remaining_invites_count: "還可邀請  %{count}  位"
-  get_in_touch_link: 聯繫
   email_members_in_group: "寄信給%{which_group}群組成員"
   subject_error: 請填寫主旨
   subject_placeholder: 撰寫主旨
@@ -416,8 +402,6 @@ zh-TW:
       not_following_details: 您參與的討論主題一有新的意見您將會被通知。
   group_request:
     header: 啟動群組
-    desc: 開始在 Loomio 作決策，第一步是啟動群組：
-    neighbourhood_support_group: 例如：守望相助支援群組
     commercial_use_option: 在公司、正式組織或是職場
     non_commercial_use_option: 在社群群組中或是非正式的網絡
     please_select_an_option: 請選出一個選項
@@ -590,7 +574,6 @@ zh-TW:
     video_tutorial: 影片教學
     video_tutorial_description: 點閱一段簡單示範的影片以瞭解如何使用 Loomio。
     what_is_loomio: Loomio 是？
-    what_is_loomio_description_html: "<p> Loomio 是一套簡單、人性化的線上協同決策制定利器。\nLoomio 讓您能在線上主持討論、邀請對的人來參與，即時作出討論，進而在深思熟慮後轉變為現實世界的行動。</p>\n<p> Loomio 是自由、開源的軟體，由紐西蘭威靈頓的一家合作社（worker-owned cooperative）所發展。</p>\n"
   hint:
     context: 使用論述控制板的小提示
     discussion: 發起一段激動人心討論的小提示
@@ -888,10 +871,6 @@ zh-TW:
     thread_mailer:
       footer_text: "直接回覆本電子郵件，或是到 %{hostname} 上觀看："
       reply_or_view_online_html: "直接回覆此 Email，或是<a href='%{url}'>在 %{hostname} 上觀看</a>。"
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>取消跟隨</a>以停止接收有關此討論的電子郵件。"
-      unfollow_discussion_text: "連到之後的連結以停止接收有關此討論串的電子郵件：%{unfollow_url}"
-      follow_discussion_html: "<a href='%{follow_url}'>跟隨</a>以接收有關此討論串的電子郵件。"
-      follow_discussion_text: "連到之後的連結以接收有關此討論串的電子郵件：%{follow_url}"
       change_email_preferences_html: "變更您的 <a href='%{email_preferences_url}'>email 偏好設定</a>以取消訂閱這些電子郵件。"
       change_preferences: 變更您的電子郵件偏好設定：
       new_motion: "%{who} 的提議："
@@ -977,6 +956,8 @@ zh-TW:
   google: Google
   persona: 人物誌
   common:
+    profile: 簡歷
+    email_settings: 電子郵件設定
     markdown_help_tooltip: 用 Markdown 格式化您的文字，從基礎學起
     settings: 設定
     dashboard: 儀表板

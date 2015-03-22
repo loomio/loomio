@@ -1,16 +1,4 @@
 ro:
-  users:
-    email_preferences:
-      edit:
-        title: Preferinte email
-        when_do_you_want_emails: Scrie-mi prin email
-        email_missed_yesterday: "'Ieri pe Loomio' - rezumatul zilnic al activitatilor la care am lipsit"
-        email_when_mentioned: "Cand sunt @mentionat"
-        email_followed_threads: Caand sunt activitati pe subiectele urmarite de mine.
-        email_when_proposal_closing_soon: 24 de ore inainte de inchiderea unei propuneri.
-        email_new_discussions_and_proposals: Discutii si propuneri noi.
-        for_these_groups: "Pentru aceste grupuri:"
-        submit: Salveaza preferintele
   explore:
     header: Exploreaza grupuri publice
   try_it:
@@ -240,8 +228,6 @@ ro:
   no_group_header: Bine ai venit la Loomio Beta
   empty_notifications: Nu ai inca nici o notificare.
   see_all_notifications: Vezi toate notificarile
-  profile: Profil
-  email_settings: Setarile emailului
   sign_out: Iesire
   sign_in: Autentificare
   honeypot_warning: "Nu se poate crea contul. Dacă utilizezi un screen reader, te rog să te asiguri că ultimul câmp (ascuns) de pe formular este gol."
@@ -368,8 +354,6 @@ ro:
   edit_memberships: Editeaza membrii
   add_new_member: Adauga un membru nou
   invite_members_to_group: "Invita membri in %{which_group}"
-  remaining_invites_count: "%{count} invitatii ramase"
-  get_in_touch_link: contacteaza
   email_members_in_group: "Trimite email membrilor din %{which_group}"
   subject_error: Te rugam sa introduci un subiect
   subject_placeholder: Scrie un subiect
@@ -435,7 +419,6 @@ ro:
       following_details: Vei fi anuntat despre fiecare subiect al acestui grup.
       not_following_details: Vei fi anuntat despre subiectele la care participi.
   group_request:
-    neighbourhood_support_group: e.g. Grupul Suporterilor din Cartier
     commercial_use_option: "intr-o companie, organizatie sau loc de munca"
     non_commercial_use_option: intr0o comunitate dau retea informala
     please_select_an_option: Selectati o optiune
@@ -896,7 +879,6 @@ ro:
       headline: "Propunerea %{author} in grupul %{group} se va inchide in curand:"
       summary: Sumar
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Dezabonare</a> pentru a opri primirea de mesaje despre aceasta discutie."
       change_preferences: "Schimba preferintele de email:"
       new_motion: "%{who} au propus:"
       motion_closing_soon: "Propunerea se inchide in 24 de ore:"

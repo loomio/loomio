@@ -19,7 +19,7 @@ class Events::MotionOutcomeCreated < Event
       ThreadMailer.delay.motion_outcome_created(user, self)
     end
 
-    motion.group_members_without_outcome_author.find_each do |user|
+    UsersByVolumeQuery.normal_or_loud(discussion).without(motion.outcome_author).find_each do |user|
       notify!(user)
     end
   end

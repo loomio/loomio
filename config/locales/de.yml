@@ -1,16 +1,20 @@
 de:
-  users:
-    email_preferences:
-      edit:
-        title: E-Mail Einstellungen
-        when_do_you_want_emails: "Sende mir:"
-        email_missed_yesterday: "\"Yesterday on Loomio\" - eine tägliche Zusammenfassung aller Aktivitäten, die ich verpasst habe"
-        email_when_mentioned: "Wenn ich @erwähnt wurde"
-        email_followed_threads: "Wenn es Aktivität in den Diskussionen gibt, denen ich folge."
-        email_when_proposal_closing_soon: 24 Stunden bevor der Vorschlag geschlossen wird.
-        email_new_discussions_and_proposals: Neue Diskussionen und Vorschläge
-        for_these_groups: "Für folgende Gruppen:"
-        submit: Einstellungen speichern
+  email_settings:
+    title: Email Einstellungen
+    group_volume: Gruppenvolumen
+    group_volume_description: "Volume steuert, wie viele E-Mails Sie von einer Gruppe erhalten. Lautstärke einstellen für alle Gruppen:"
+    to_change_one_group: "Um die Lautstärke von nur einer Ihrer Gruppen zu ändern, besuchen Sie die Seite dieser Gruppe."
+    discussion_activity: "Diskussionslautstärke ändern, wenn ich teilnehme"
+    discussion_activity_description: "Wenn Sie an einer Diskussion beteiligen, wird die Lautstärkeeinstellung auf 'Loud' geändert werden, so dass alle weiteren Aktivitäten  Ihnen gemailt werden."
+    yesterday_on_loomio: Bitte schicken Sie mir eine Zusammenfassung der Aktivität jeden Tag
+    yesterday_on_loomio_description: "Jeden Tag um 06.00 Uhr, senden Sie eine E-Mail mit ungelesenen Aktivität gestern. Dies ist eine gute Möglichkeit, auf Ihrem Gruppen einholen und alles, was nicht stumm geschaltet wird, enthält."
+    email_when_mentioned: "Sende mir eine E-Mail, wenn mich jemand in einem Kommentar erwähnt."
+    email_when_mentioned_description: "Wenn jemand, Ihre Aufmerksamkeit bekommen will, werden sie Erwähnt. Wenn Sie diese Funktion deaktivieren dann werden die Menschen vielleicht nicht in der Lage sein, Sie zu kontaktieren."
+    proposal_closing_soon: Erinnere mich 24 Stunden bevor der Vorschlag schließt.
+    proposal_closing_soon_description: "24 Stunden vor dem ein Vorschlag schließt, unabhängig von Volumen, werden Sie eine E-Mail mit den neuesten Informationen über den Vorschlag zu erhalten."
+    submit: Update-Einstellungen
+    no_change: Keine Änderung
+    no_change_description: Verlassen Sie die Lautstärke meiner Gruppen
   explore:
     header: Erkunde öffentliche Gruppen
   try_it:
@@ -24,6 +28,7 @@ de:
     errors:
       messages:
         blank: kann nicht freigelassen werden
+        invalid: ist kein gültiger Wert
   errors:
     messages:
       email: Keine gültige E-Mail-Adresse
@@ -234,8 +239,6 @@ de:
   no_group_header: Willkommen bei der Loomio Beta
   empty_notifications: Du hast noch keine Benachrichtigungen.
   see_all_notifications: Alle Benachrichtigungen ansehen
-  profile: Profil
-  email_settings: eMail-Einstellungen
   sign_out: Abmelden
   sign_in: Anmelden
   honeypot_warning: "Dein Konto konnte nicht erstellt werden. Falls Du eine Vorlese-Anwendung verwendest, stelle sicher, dass das letzte (versteckte) Feld des Formulars leer ist."
@@ -362,8 +365,6 @@ de:
   edit_memberships: Mitgliedschaften bearbeiten
   add_new_member: Neues Mitglied hinzufügen
   invite_members_to_group: "Mitglieder zu %{which_group} einladen"
-  remaining_invites_count: "%{count} verbleibende Einladungen"
-  get_in_touch_link: Melde dich bei uns
   email_members_in_group: "Benachrichtige die Mitglieder in %{which_group} per eMail"
   subject_error: Bitte füge einen Betreff hinzu
   subject_placeholder: Schreibe einen Betreff
@@ -428,16 +429,51 @@ de:
       click_to_unfollow: "Klicken, um der Gruppe nicht mehr zu folgen"
       following_details: Du wirst über jede Diskussion in dieser Gruppe informiert.
       not_following_details: Du wirst über Diskussionen informiert an denen Du beteiligt bist.
+  networks:
+    threads_header: alle öffentlichen Threads in diesem Netzwerk
+    groups_header: alle Gruppen in diesem Netzwerk
+    members_count: "%{count} Mitglieder "
+    membership_requests_header: "Mitgliedschaftsanfrage von %{network}"
+    join_header: Fügen Sie Ihre Gruppe zu dem Netzwerk
+    request_to_join: Anfrage an Netzwerk
+    current_requests: Aktuelle Anfragen
+    previous_requests: Bisherige Anfragen
+    approve: Zustimmen
+    approved: "Von %{name} bestätigt"
+    decline: Rückgang
+    declined: "Hallo %{name},"
+    threads: Themen
+    groups: Gruppen
+    join: Beitreten
+    manage: "Verwalten (%{count} Ausstehende Anforderungen)"
+    request_created: "Danke der Nachfrage, dem Netzwerk beizutreten. Die Netzwerkkoordinatoren werden Ihre Anfrage schnell überprüfen."
+    request_approved: Netzwerk-Mitgliedschaft Antrag genehmigt
+    request_declined: Netzwerkmitgliedschaft Anfrage zurück.
   group_request:
     header: Gründen Sie eine Gruppe
-    desc: "Um Entscheidungen auf Loomio zu treffen, müssen Sie zuerst eine Gruppe gründen"
-    neighbourhood_support_group: z. B. Nachbarschaftshilfe
+    desc: "Gründe eine Gruppe, um Entscheidungen in Deiner eigenen Community zu treffen."
     commercial_use_option: "in einem Unternehmen, einer formellen Organsation oder Arbeit"
     non_commercial_use_option: in einer Gruppe oder einem informellen Netzwerk
     please_select_an_option: Bitte wähle eine Option
     confirmation:
       title: "Du bist fast fertig! Prüfe Deine eMails."
       body_html: "Wir haben Dir eine eMail mit einer Einladung zum Gründen deiner Gruppe geschickt.\n\nSolltest Du in ein paar Minuten noch keine Nachricht erhalten haben, dann schreibe uns eine eMail an <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    volume: Lautstärke
+    loud: Laut
+    normal: Normal
+    quiet: Leise
+    mute: Stumm
+  discussion_volume:
+    loud_description: "Eine E-Mail, wenn es Tätigkeit in diesem Thread gibt"
+    normal_description: "Einfach eine E-Mail, wenn ein Vorschlag erstellt wird, zu schließen, oder ein Ergebnis wird gebucht."
+    quiet_description: Keine E-Mail nicht zu diesem Thema.
+    mute_description: Ausblenden dieses Thema aus dem Armaturenbrett und nicht benachrichtigen
+  group_volume:
+    loud_description: "Eine E-Mail, wenn es Tätigkeit gibt"
+    normal_description: "Wichtige Aktivitäten senden: Neue Diskussionen und Vorschläge, Ergebnisse usw."
+    quiet_description: Keine E-Mail über diese Gruppe. Aktivität wird auf dem Armaturenbrett angezeigt.
+    mute_description: Verstecke diese Gruppe aus dem Armaturenbrett und nicht benachrichtigen
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> stimmte dem Vorschlag zu."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> hat sich der Stimme enthalten."
@@ -604,7 +640,6 @@ de:
     video_tutorial: Videoanleitung
     video_tutorial_description: Sieh dir das Video an um einen Einblick in die Funktionsweise von Loomio zu bekommen.
     what_is_loomio: Was ist Loomio?
-    what_is_loomio_description_html: "<p> Loomio ist ein einfaches benutzerfreundliches Online-Tool für die kollektive Entscheidungsfindung.\nMit Loomio können Sie Diskussionen Online hosten, laden die richtigen Leute ein sich zu beteiligen, \ngekommen, um zeitnahe Entscheidungen und verwandeln Beratung in der realen Welt Aktion. </p> \n<p> Loomio ist kostenlos und Open Source-Software, die von einer Arbeitnehmer-Genossenschaft in Wellington, Neuseeland entwickelt. </p> \n\n"
   hint:
     context: Hinweise für die Nutzung des Kontext-Felds
     discussion: Hinweise für das Starten einer mitreißenden Diskussion
@@ -902,10 +937,10 @@ de:
     thread_mailer:
       footer_text: "Antworte auf diese eMail sofort oder auf %{hostname}: ansehen:"
       reply_or_view_online_html: "Antworte auf diese eMail sofort oder<a href='%{url}'> auf %{hostname}  ansehen</a>."
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Nicht mehr folgen</a> beendet die eMail-Benachrichtigung über diese Diskussion."
-      unfollow_discussion_text: "<a href='%{unfollow_url}'>Nicht mehr folgen</a> beendet die eMail-Benachrichtigung über diese Diskussion."
-      follow_discussion_html: "<a href='%{follow_url}'>Folgen</a> beendet die eMail-Benachrichtigung über diese Diskussion."
-      follow_discussion_text: "Besuchen Sie den folgenden Link, um E-Mails über diese Diskussion erhalten: %{follow_url}"
+      turn_off_notifications_html: "<a href='%{url}'> Deaktivieren Sie E-Mails </a> für diese Diskussion."
+      turn_off_notifications_text: "Deaktivieren Sie E-Mails für diese Diskussion: %{url}"
+      turn_on_notifications_html: "<a href='%{url}'> auf E-Mails für diese Diskussion </a> Wenden Sie sich weitere Aktivitäten erhalten."
+      turn_on_notifications_text: "Schalten Sie E-Mail an weitere Aktivitäten in dieser Diskussion erhalten: %{url}"
       change_email_preferences_html: "Ändere Deine <a href='%{email_preferences_url}'>eMail-Einstellungen</a> um weniger Loomio eMails zu erhalten."
       change_preferences: "Ändere Deine eMail Einstellungen:"
       new_motion: "%{who} schlägt vor:"
@@ -991,6 +1026,8 @@ de:
   google: Google
   persona: Persona
   common:
+    profile: Profil
+    email_settings: Email Einstellungen
     markdown_help_tooltip: Lerne die Grundlagen des Textformatierens mit Markdown
     settings: Einstellungen
     dashboard: Schreibtisch

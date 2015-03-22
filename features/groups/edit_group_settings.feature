@@ -51,3 +51,23 @@ Feature: Edit group settings
     When I change the group to public discussions only
     Then I should have to confirm making discussions public
     And the discussion should be public
+
+  @javascript
+  Scenario: Group is made public
+    Given I am the logged in admin of a group
+    And I visit the group settings page
+    When a group is made visible, join on request
+    Then discussion privacy is set to public, and other options are disabled
+
+  Scenario: Group is made visible, join on approval
+    Given I am the logged in admin of a group
+    And I visit the group settings page
+    When a group is made visible, join on approval
+    And all 3 discussion privacy options are available
+
+  Scenario: Group is made private
+    Given I am the logged in admin of a group
+    And I visit the group settings page
+    When a group is made hidden
+    Then the form selects invitation only, and disables other join options
+    And private discussions only is selected, other privacy options disabled

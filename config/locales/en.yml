@@ -2,17 +2,20 @@ en:
   # view path based locale strings
   email_settings:
     title: 'Email settings'
-    group_volume_level: 'Set all my groups to the following volume level:'
-    group_volume_leve_description: To set all your groups to the same volume level at once, use this option.
+    group_volume: Group volume
+    group_volume_description: 'Volume controls how much email you get from a group. Set volume for all of your groups:'
+    to_change_one_group: To change the volume of just one of your groups, visit that group's page.
     discussion_activity: Change discussion volume when I participate
-    discussion_activity_description: When you participate in a discussion, the volume setting will be changed to 'Loud', so all further activity will be emailed to you.
-    yesterday_on_loomio: 'Yesterday on Loomio'
-    yesterday_on_loomio_description: Sent to you at 6am each day, this email contains yesterday's unread activity.
-    email_when_mentioned: '@mentions'
-    email_when_mentioned_description: When someone wants to get your attention, they'll @mention you. If you turn this off then people might not be able to contact you.
-    proposal_closing_soon: Proposal closing soon
-    proposal_closing_soon_description: Sent 24 hours before a proposal closes, this might be your last chance to participate in a decision.
+    discussion_activity_description: When you participate in a discussion, the volume setting will be changed to 'Loud', so all further activity will be emailed to you immediately.
+    yesterday_on_loomio: Email me a summary of activity each day
+    yesterday_on_loomio_description: Each day at 6am, send an email with yesterday's unread activity. This is a great way to catch up on your groups and it contains everything that is not muted.
+    email_when_mentioned: Email me when I am @mentioned
+    email_when_mentioned_description: When someone wants to get your attention, they'll @mention you. We recommend you leave this setting checked, so that you will get an email when this happens.
+    proposal_closing_soon: Email me before a proposal closes
+    proposal_closing_soon_description: 24 hours before a proposal closes, regardless of volume, you will get an email with the latest information about the proposal.
     submit: Update settings
+    no_change: No change
+    no_change_description: Leave the volume level of my groups as is.
 
   explore:
     header: "Explore public groups"
@@ -90,6 +93,7 @@ en:
     group_already_setup: "The group you are trying to setup already exists."
     passwords_did_not_match: "Password did not match confirmation"
     proposal_already_exists: "There is already an open proposal in this discussion."
+    username_cannot_contain_whitespace: "Username cannot contain spaces"
     user_with_email_address_already_in_group: "A user with that email address already belongs to this group."
     you_have_already_requested_membership: "You have already requested membership to this group."
     you_are_already_a_member_of_this_group: "You are already a member of this group."
@@ -417,8 +421,6 @@ en:
 
   add_new_member: "Add new member"
   invite_members_to_group: "Invite members to %{which_group}"
-  remaining_invites_count: "%{count} remaining invites"
-  get_in_touch_link: "get in touch"
 
   email_members_in_group: "Email the members in %{which_group}"
   subject_error: "Please fill in a subject"
@@ -487,6 +489,9 @@ en:
   group_subscription: "Group subscription"
 
   groups:
+    max_size_warning_html: "Your group is getting big and will reach the limit of %{size} members soon. Please <a href='%{link}'>contact us</a> to increase the limit."
+    max_size_reached_html: "Your group has reached the limit of %{size} members. <a href='%{link}'>Contact us</a> to add more people to the group."
+
     follow:
       click_to_follow: "Click to follow group"
       click_to_unfollow: "Click to unfollow group"
@@ -523,8 +528,7 @@ en:
 
   group_request:
     header: 'Start a group'
-    desc: 'To start making decisions on Loomio, the first step is to start a group:'
-    neighbourhood_support_group: "e.g. Neighbourhood Support Group"
+    desc: 'Set up a group to start making decisions together on Loomio:'
     commercial_use_option: in a company, formal organisation or workplace
     non_commercial_use_option: in a community group or informal network
     please_select_an_option: Please select an option
@@ -545,7 +549,7 @@ en:
 
   discussion_volume:
     loud_description: Email whenever there is activity in this thread.
-    normal_description: Just email proposal events.
+    normal_description: Just email when a proposal is created, about to close, or an outcome is posted.
     quiet_description: Don't email about this thread.
     mute_description: Hide this thread from the dashboard and do not notify unless @mentioned.
 
@@ -817,7 +821,6 @@ en:
       <p> Loomio is a simple, user-friendly online tool for collaborative decision-making.
           Loomio allows you to host discussions online, invite the right people to participate,
           come to timely decisions and transform deliberation into real-world action. </p>
-      <p> Loomio is free and open source software being developed by a worker-owned cooperative based in Wellington, New Zealand. </p>
 
   hint:
     context: 'Tips for using the context panel'

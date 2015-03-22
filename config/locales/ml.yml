@@ -1,16 +1,4 @@
 ml:
-  users:
-    email_preferences:
-      edit:
-        title: ഈമെയില്‍ മുന്‍ഗണനകള്‍
-        when_do_you_want_emails: "എനിക്ക് ഈമെയിൽ അയക്കൂ:"
-        email_missed_yesterday: "\"ലൂമിയോയിൽ ഇന്നലെ\" - ഞാൻ നഷ്ടപ്പെടുത്തിയ ഏതൊരു പ്രവൃത്തിയുടേയും ദൈനംദിന സംഗ്രഹം"
-        email_when_mentioned: "എന്നെ @സൂചിപ്പിക്കുമ്പോൾ"
-        email_followed_threads: "ഞാൻ പിന്തുടരുന്ന ത്രെഡുകളിൽ "
-        email_when_proposal_closing_soon: ഒരു നിർദ്ദേശം അടയ്ക്കുന്നതിനു് 24 മണിക്കൂർ മുൻപ്
-        email_new_discussions_and_proposals: "പുതിയ ചർച്ചകളും "
-        for_these_groups: "ഈ ഗ്രൂപ്പുകൾക്ക്:"
-        submit: മുൻഗണനകൾ സൂക്ഷിക്കുക
   explore:
     header: പൊതുവായ ഗ്രൂപ്പുകൾ സന്ദർശിക്കുക
   try_it:
@@ -204,7 +192,6 @@ ml:
   edit_memberships: അംഗത്വങ്ങള്‍ തിരുത്തുക
   add_new_member: പുതിയ അംഗത്തെ ചേര്‍ക്കുക
   invite_members_to_group: "ക്ഷണിക്കൂ  അംഗങ്ങളെ %{which_group} ലേക്ക്"
-  get_in_touch_link: ഞങ്ങളുമായി ബന്ധപ്പെടുക
   email_members_in_group: "%{which_group} കൂട്ടത്തിലെ അംഗങ്ങള്‍ക്കു് ഈമെയില്‍ അയയ്ക്കുക"
   subject_error: ദയവായി ഒരു വിഷയം ചേര്‍ക്കുക
   subject_placeholder: ഒരു വിഷയം എഴുത്തുക

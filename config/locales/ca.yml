@@ -1,16 +1,4 @@
 ca:
-  users:
-    email_preferences:
-      edit:
-        title: Preferències del correu electrònic
-        when_do_you_want_emails: "Envia'm un mail"
-        email_missed_yesterday: "\"Ahir a Loomio\" - Un resum diari de l'activitat que t'has perdut"
-        email_when_mentioned: "Quan sóc @mencionat"
-        email_followed_threads: Quan hi ha activitat als fils que segueixo.
-        email_when_proposal_closing_soon: 24 hores abans que la proposta tanqui.
-        email_new_discussions_and_proposals: Noves discussions i propostes
-        for_these_groups: "Per aquests grups:"
-        submit: Desar preferències
   explore:
     header: Explorar grups públics
   try_it:
@@ -223,8 +211,6 @@ ca:
   no_group_header: Benvingut a Loomio Beta
   empty_notifications: Encara no tens cap notificació.
   see_all_notifications: Veure totes les notificacions
-  profile: Perfil
-  email_settings: Configuració de correu electrònic
   sign_out: Tanca la sessió
   sign_in: Inicia la sessió
   honeypot_warning: "No s'ha pogut crear el compte. Si utilitzes un lector de pantalla assegura't de que l'última casella (amagada) del formulari està buida."
@@ -302,8 +288,6 @@ ca:
   edit_memberships: Edita les afiliacions
   add_new_member: Afegeix un nou membre
   invite_members_to_group: "Convida membres a %{which_group}"
-  remaining_invites_count: "%{count} invitacions restants"
-  get_in_touch_link: Posar-se en contacte
   email_members_in_group: "Envia un correu electrònic als membres de %{which_group}"
   subject_error: "Omple l'assumpte, si us plau."
   subject_placeholder: Escriu un assumpte
@@ -369,7 +353,6 @@ ca:
       following_details: "Se't notificarà sobre tots els fils del grup."
       not_following_details: "Se't notificarà sobre els fils en els que participes."
   group_request:
-    neighbourhood_support_group: p. ex. Grup de Suport del Barri
     commercial_use_option: "a una empresa, organització o lloc de treball"
     non_commercial_use_option: a un grup comunitari o una xarxa informal
     please_select_an_option: Sel·lecciona una opció

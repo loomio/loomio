@@ -1,0 +1,7 @@
+.user-avatar
+  .avatar-initials{ng-if: '::(user.avatarKind == "initials")'}
+    {{::user.avatarInitials}}
+  .avatar-image{ng-if: '::(user.avatarKind == "gravatar")'}
+    %img{gravatar-src-once: 'user.gravatarMd5', alt: "{{::user.name}}"}
+  .avatar-image{ng-if: '::(user.avatarKind == "uploaded")'}
+    %img{alt: "{{::user.name}}", src: '{{::user.avatarUrl}}'}

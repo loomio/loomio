@@ -107,7 +107,6 @@ cmn:
   edit_memberships: 编辑会员
   add_new_member: 加新的成员
   invite_members_to_group: "邀请成员加入%{which_group}"
-  get_in_touch_link: 联系我们
   email_members_in_group: "给%{which_group}发邮件"
   subject_error: 请填写一个主题
   subject_placeholder: 写一个主题

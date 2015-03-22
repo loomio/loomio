@@ -1,16 +1,4 @@
 gl:
-  users:
-    email_preferences:
-      edit:
-        title: Preferencias de correo
-        when_do_you_want_emails: "Escríbeme:"
-        email_missed_yesterday: "'Onte en Loomio' - un resumo diario das actividades que te perdiches"
-        email_when_mentioned: "Cando me @mencionan"
-        email_followed_threads: Cando hai actividade nos fíos que sigo.
-        email_when_proposal_closing_soon: 24 horas antes do peche dunha proposta
-        email_new_discussions_and_proposals: Novos debates e propostas
-        for_these_groups: "Para estes grupos:"
-        submit: Gardar as preferencias
   explore:
     header: Explora os grupos públicos
   try_it:
@@ -226,8 +214,6 @@ gl:
   no_group_header: Benvido a Loomio Beta
   empty_notifications: Non tes notificacións neste momento
   see_all_notifications: Ver todas as notificacións
-  profile: Perfil
-  email_settings: Opcións do correo
   sign_out: Pechar sesión
   sign_in: Identifícate
   honeypot_warning: "Non se ouido acceder á túa conta. Se usas un lector de pantallas, por favor, asegúrate de que o último campo (oculto) do formulario está en branco."
@@ -347,7 +333,6 @@ gl:
   number_pending: "%{pending} pendente"
   and_number_pending: "e %{pending} pendente"
   add_new_member: Engadir novo membro
-  remaining_invites_count: "%{count} invitacións pendentes"
   subject_placeholder: Escriba o asunto
   email_group_members: Enviar correo electrónico ós membros do grupo
   edit_group_settings: Editar configuración do grupo

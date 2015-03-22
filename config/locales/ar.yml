@@ -1,16 +1,4 @@
 ar:
-  users:
-    email_preferences:
-      edit:
-        title: إعدادات البريد الإلكتروني
-        when_do_you_want_emails: "راسلني على البريد الإلكتروني:"
-        email_missed_yesterday: "'أحداث الأمس في Loomio' - ملخص يومي حول أية نشاطات فاتتك"
-        email_when_mentioned: "عندما يتم ذكر @إسمي"
-        email_followed_threads: عندما يحدث نشاط في المواضيع التي أتابعها.
-        email_when_proposal_closing_soon: 24 ساعة قبل إغلاق أي من المقترحات.
-        email_new_discussions_and_proposals: نقاشات ومقترحات جديدة
-        for_these_groups: "فيما يخص هذه المجموعات:"
-        submit: إحفظ الإعدادات
   explore:
     header: إستكشف مجموعات عامة
   try_it:
@@ -153,7 +141,6 @@ ar:
   no_group_header: مرحبا بك في لوميو التجريبية
   empty_notifications: ليس لديك أية تنبيهات بعد
   see_all_notifications: اعرض جميع التنبيهات
-  email_settings: إعدادت البريد الإلكتروني
   sign_out: تسجيل الخروج
   sign_in: تسجيل الدخول
   tagline: إنشاء عالم يكون فيه من السهل لأي كان المشاركة في قرارات تؤثر عليهم.
@@ -249,7 +236,6 @@ ar:
   edit_memberships: عدّل العضويات
   add_new_member: أضف عضوا جديدا
   invite_members_to_group: "قم بدعوة أعضاء إلى %{which_group}"
-  get_in_touch_link: تواصل معنا
   email_members_in_group: "أرسل بريدا إلكترونيا إلى أعضاء %{which_group}"
   subject_error: يرجى ملء حقل العنوان
   subject_placeholder: أكتب عنوانا

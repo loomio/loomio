@@ -1,0 +1,174 @@
+.thread-page {
+  margin: 0px auto;
+  max-width: $thread-max-width;
+}
+
+.thread-group{
+  margin: 16px 22px;
+}
+.thread-group__name a{
+  font-weight: bold;
+  color: #666666;
+  line-height: 30px;
+}
+.thread-group__icon img{
+  width: 30px;
+  height: 30px;
+}
+
+.thread-context{
+  @include card;
+}
+.thread-actions {
+  position: relative;
+}
+
+.thread-actions .dropdown{
+  float: left;
+  position: static;
+}
+
+.thread-context__title{
+  margin: 2px 0 9px 0;
+}
+.thread-context__details{
+  @include metaText;
+  margin-bottom: 15px;
+}
+.thread-context__description p:last-of-type{
+  margin-bottom: 0;
+}
+
+.proposals-card{
+  @include card;
+}
+.proposal-expanded-started-by{
+  @include metaText;
+}
+
+.comment-form{
+  @include card;
+}
+
+.thread-start-proposal-card{
+  @include card;
+}
+
+.thread-container .dropdown-menu-right{
+  right: -16px;
+}
+.thread-container img {
+  max-width: 100%;
+}
+
+.thread-proposals {
+  padding: 10px 0px 15px 0px;
+  background-color: #fff;
+}
+
+.thread-item {
+  margin-bottom: 25px;
+}
+
+.thread-item-header {
+  strong {
+    color: $text-color;
+    @include fontHelveticaBold;
+  }
+  color: $meta-text-color;
+  margin-bottom: 5px;
+  .media-body, .media-left{
+    vertical-align: middle;
+  }
+}
+
+.thread-item-body {
+  margin-bottom: 10px;
+}
+
+.thread-item-footer {
+  @include fontSmall();
+  color: $meta-text-color;
+}
+
+.thread-actions-and-meta {
+  margin-bottom: 5px;
+}
+
+.thread-item-vote-icon {
+  width: 22px;
+  height: 22px;
+  background-repeat: no-repeat;
+}
+
+.thread-item-proposal-icon{
+  width: 30px;
+  height: 30px;
+  background-image: url(/img/proposal_icon_30.png);
+}
+
+.thread-item-vote-icon-yes {
+  background-image: url(/img/green_thumb_22.png);
+}
+
+.thread-item-vote-icon-abstain {
+  background-image: url(/img/yellow_thumb_22.png);
+}
+
+.thread-item-vote-icon-no {
+  background-image: url(/img/pink_thumb_22.png);
+}
+
+.thread-item-vote-icon-block {
+  background-image: url(/img/red_flag_22.png);
+}
+
+.comment-form-container{
+  width: 100%;
+}
+.comment-form-attachments{
+  display: inline;
+}
+
+.thread-comment-form-actions {
+  padding: 10px 0;
+}
+
+.attachments {
+  margin: 0 10px;
+}
+
+.attachment-new {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #CCC;
+}
+
+.attachment-new input {
+  width: 34px;
+  opacity: 0;
+  padding: 5px;
+  cursor: pointer;
+  display: block;
+  overflow: hidden;
+}
+
+.cover-file-upload {
+  pointer-events: none;
+  position: relative;
+  bottom: 38px;
+  padding: 0px;
+  left: 4px;
+}
+
+.progress.active {
+  float: left;
+}
+
+#comment-form-attachment-button{
+  margin-left: 10px;
+}
+
+.comment-form-attachments input {
+  display: none;
+}

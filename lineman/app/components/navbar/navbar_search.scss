@@ -1,0 +1,43 @@
+.navbar-search {
+  height: 40px;
+  max-width: $main-max-width;
+  margin: 0 auto;
+}
+
+.navbar-search-input-wrapper{
+  position: relative;
+}
+
+.navbar-search-input {
+  color: #999999;
+  position: relative;
+  top: 2px;
+  width: 100%;
+  background-color: $background-color;
+}
+
+.navbar-search-input-icon {
+  position: absolute;
+  top: 13px;
+  right: 10px;
+  color: $meta-text-color;
+}
+
+.navbar-search-results {
+  @include thinRoundedBorder;
+  position: absolute;
+  background-color: white;
+
+  top: 42px;
+  text-align: left;
+  max-width: ($main-max-width - 5px);
+  width: 100%;
+  box-shadow: 5px 5px 10px #ccc;
+  overflow-y: scroll;
+  max-height: 800px;
+}
+
+.navbar-search-list-item {
+  background: white;
+}
+

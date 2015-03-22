@@ -4,7 +4,9 @@ describe API::DiscussionsController do
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:group) { create :group }
+  let(:another_group) { create :group }
   let(:discussion) { create :discussion, group: group }
+  let(:old_discussion) { create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago }
   let(:comment) { create :comment, discussion: discussion}
   let(:proposal) { create :motion, discussion: discussion, author: user }
   let(:discussion_params) {{
@@ -16,8 +18,45 @@ describe API::DiscussionsController do
 
   before do
     group.add_admin! user
+    another_group.add_member! user
     sign_in user
     discussion.reload
+  end
+
+  describe 'inbox_by_date' do
+    it 'returns discussions with activity after a certain date' do
+      old_discussion.reload
+      get :inbox_by_date
+      json = JSON.parse(response.body)
+      ids = json['discussions'].map { |v| v['id'] }
+      expect(ids).to include discussion.id
+      expect(ids).to_not include old_discussion.id
+    end
+  end
+
+  describe 'inbox_by_group' do
+    it 'returns a list of discussions by group' do
+      get :inbox_by_group
+      json = JSON.parse(response.body)
+      expect(json.keys).to include *(%w[users groups proposals discussions])
+    end
+
+    it 'returns results from multiple groups' do
+      create :discussion, group: another_group
+      get :inbox_by_group
+      json = JSON.parse(response.body)
+      group_ids = json['discussions'].map { |v| v['group_id'] }
+      expect(group_ids).to include group.id
+      expect(group_ids).to include another_group.id
+    end
+
+    it 'returns a threshhold of results per group' do
+      3.times { create :discussion, group: another_group }
+      get :inbox_by_group, per_group: 2
+      json = JSON.parse(response.body)
+      group_ids = json['discussions'].map { |v| v['group_id'] }
+      expect(group_ids.count { |id| id == another_group.id }).to eq 2
+    end
   end
 
   describe 'show' do

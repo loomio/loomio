@@ -1,0 +1,39 @@
+.dashboard-container {
+  margin: 10px auto;
+  max-width: $thread-max-width;
+}
+
+.dashboard-page-threads {
+  @include card;
+  padding: 0;
+}
+
+.dashboard-page-thread {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.dashboard-page-pie-chart {
+  padding-right: 5px;
+}
+
+.dashboard-page-thread-title.is-unread {
+  font-weight: bold;
+}
+
+.dashboard-page-thread-info {
+  clear: both;
+}
+
+.dashboard-page-group-name {
+  line-height: 30px;
+}
+
+.dashboard-page-unread-count {
+  white-space: nowrap;
+}
+
+.dashboard-page-footer {
+  font-size: 0.01em;
+  height: 1px;
+}

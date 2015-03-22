@@ -1,16 +1,11 @@
 be-BY:
-  users:
-    email_preferences:
-      edit:
-        title: Налады электроннай пошты
-        when_do_you_want_emails: "Адпраўляйце лісты на:"
-        email_missed_yesterday: "'Учора на Loomio' - рэзюмэ ўсіх падзей, прапушчаных за дзень"
-        email_when_mentioned: "Калі мяне @узгадваюць"
-        email_followed_threads: Калі ёсць дзейнасць у групах за якімі я сачу
-        email_when_proposal_closing_soon: Прапанова закрываецца праз 24 гадзіны.
-        email_new_discussions_and_proposals: Новыя абмеркаванні і прапановы
-        for_these_groups: "Для гэтых груп:"
-        submit: Захаваць налады
+  email_settings:
+    title: Налады email
+    group_volume: Гучнасць групы
+    group_volume_description: "Гучнасць кіруе колькасцю лістоў, якія вы атрымліваеце ад групы. Усталяваць гучнасць для ўсіх сваіх груп:"
+    to_change_one_group: "Каб змяніць гучнасць канкрэтнай групы, зайдзіце на яе старонку."
+    discussion_activity: "Змяняць узровень гучнасці абмеркаванняў, калі я ўдзельнічаю"
+    submit: Абнавіць налады
   explore:
     header: Знайсці публічныя групы
   try_it:
@@ -24,6 +19,7 @@ be-BY:
     errors:
       messages:
         blank: не можа быць пустым
+        invalid: недапушчальнае значэнне
   errors:
     messages:
       email: Нядзейсны email адрас
@@ -110,6 +106,8 @@ be-BY:
     logo_upload: Загрузіць новы лагатып
     edit_description: Рэдагаваць апісанне
     group_category: Знайсці падобныя групы
+    unread_comments: Непрачытаныя каментары
+    new_votes: Новыя галасы
   views:
     pagination:
       previous: Папр
@@ -186,9 +184,12 @@ be-BY:
     about: Пра нас
     blog: Блог
     contact: Кантакты
+    help: Дапамога
     privacy: Канфідэнцыйнасць
+    pricing: Кошты
     public_groups: Публічныя групы
     terms: Умовы
+    independent_install_html: "%{hostname} выкарыстоўвае незалежную копію Loomio: <a href=\"http://github.com/loomio/loomio\">даведайцеся больш</a>."
   inbox:
     clear: Ачысціць
     title: Паведамленні
@@ -215,6 +216,9 @@ be-BY:
     motion_blocked: заблакаваў прапанову
     motion_outcome_created: апублікаваў вынік прапановы
     motion_outcome_updated: абнавіў вынік прапановы
+    email_actions:
+      following_thread: "Цяпер вы сочаце за стужкай: %{thread_title}"
+      not_following_thread: "Вы больш не сочаце за стужкай: %{thread_title}"
   edit_discussion_context: Рэдагаваць кантэкст абмеркавання
   request_new_group: Стварыць групу
   start_new_group: Стварыць новую групу
@@ -226,8 +230,6 @@ be-BY:
   no_group_header: Вітаем на Loomio Beta
   empty_notifications: У Вас пакуль што няма ніякіх апавяшчэнняў.
   see_all_notifications: Паглядзець усе апавяшчэнні
-  profile: Профіль
-  email_settings: Налады email
   sign_out: Выйсці
   sign_in: Увайсці
   honeypot_warning: "Немагчыма правесці рэгістрацыю. Калі вы карыстаецеся праграмай для чытання тэксту з экрана, пераканайцеся, што апошняе (схаванае) поле на форме не запоўнена."
@@ -354,8 +356,6 @@ be-BY:
   edit_memberships: Рэдагаваць чалецтва
   add_new_member: Дадаць новага ўдзельніка
   invite_members_to_group: "Запрасіць удзельніка ў %{which_group}"
-  remaining_invites_count: "%{count} запрашэнняў засталася"
-  get_in_touch_link: звязацца з намі
   email_members_in_group: "Разаслаць email удзельнікам  %{which_group}"
   subject_error: "Калі ласка, увядзіце назву тэмы"
   subject_placeholder: Напішыце тэму
@@ -421,13 +421,29 @@ be-BY:
       following_details: "Вам паведамяць пра любую дзейнасць у групе. "
       not_following_details: "Вам паведамяць пра дзейнасць у абмеркаваннях, у якіх вы ўдзельнічаце. "
   group_request:
-    neighbourhood_support_group: "напрыклад, Група нашага двара"
+    header: Стварыць групу
     commercial_use_option: "У кампаніі, афіцыйнай установе ці на працоўным месцы"
     non_commercial_use_option: "У супольнасці ці нефармальным аб'яднанні"
     please_select_an_option: "Калі ласка, абярыце варыянт"
     confirmation:
       title: "Вы амаль што скончылі! Праверце сваю пошту."
       body_html: "Мы накіравалі вам ліст з запрашэннем распачаць сваю групу.\n\nКалі праз некалькі хвілін на сваёй пошце вы нічога не знайшлі, дашліце нам ліст на <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    volume: Гучнасць
+    loud: Гучна
+    normal: Нармальна
+    quiet: Ціха
+    mute: Бязгучна
+  discussion_volume:
+    loud_description: Дасылаць лісты пра кожнае дзеянне ў гэтай стужцы.
+    normal_description: "Дасылаць толькі важныя падзеі: стварэнне прапановы, хуткае закрыццё прапановы, ці з'яўленне новага выніку."
+    quiet_description: Не дасылаць лісты пра гэту стужку.
+    mute_description: "Убраць гэту стужку з галоўнай старонкі і нагадваць толькі калі @узгаданы."
+  group_volume:
+    loud_description: Дасылаць лісты пра ўсе новыя падзеі.
+    normal_description: "Дасылаць лісты толькі пра важныя падзеі: новыя абмеркаванні і прапановы, вынікі і т.д."
+    quiet_description: Не дасылаць лісты пра гэту групу. Яе дзейнасць будзе бачна на галоўнай старонцы.
+    mute_description: "Убраць гэту групу з галоўнай старонкі і нагадваць толькі калі @узгаданы."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> згадзіўся з прапановай."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> устрымаўся."
@@ -593,6 +609,7 @@ be-BY:
     video_id: "52025402"
     video_tutorial: Навучальнае відэа
     video_tutorial_description: "Паглядзіце відэа, каб убачыць хуткую дэманстрацыю таго, як карыстацца Loomio."
+    what_is_loomio: Што такое Loomio?
   hint:
     context: "Парады, як карыстацца панэллю кантэксту"
     discussion: "Парады, як распачаць і ўдзельнічаць у абмеркаванні"
@@ -634,6 +651,7 @@ be-BY:
   remember_me: Запомніць мяне
   signing_in: Заходзім
   or: альбо
+  invalid_email: "Мы не змаглі знайсці email адрас, які вы ўвялі. Калі ласка, праверце яго слушнасць, ці ўвядзіце іншы email адрас."
   forgot_your_password: Забылі Ваш пароль?
   dont_have_an_account: Яшчэ не маеце акаунта?
   create_one_now: Стварыць новы
@@ -841,10 +859,14 @@ be-BY:
       subject: Loomio - Што адбывалася ў апошнія 24 гадзіны
     missed_yesterday:
       subject: Учора на Loomio
+      headlines: Апошнія навіны
       mark_as_read: Адзначыць як прачытанае
       thanks_for_reading: "Дзякуем, што прачыталі! Цудоўнага вам дня!"
       click_here_to_mark_all_as_read_html: "Вось што адбывалася на Loomio учора.\nКалі ўсё прачытаеце, націсніце на <a href=\"%{link}\">адзначыць як прачытанае</a>, каб убраць гэтыя паведамленні са сваёй скрыні.\n"
       marked_as_read_success: Усе паведамленні з ліста былі пазначаны як прачытаныя
+    comment_replied_to:
+      context: "Карыстальнік %{author_name} адказаў на ваш каментар у абмеркаванні \"%{discussion_title}\""
+      subject: "Карыстальнік %{who} адказаў на ваш каментар у %{which} групе на Loomio"
     group_email:
       intro: "Карыстальнік %{who} зрабіў аб'яву ў групе %{group}:"
     group_membership_approved:
@@ -883,7 +905,12 @@ be-BY:
       headline: "Прапанова %{author} у %{group} хутка зачыніцца:"
       summary: Рэзюмэ
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Не сачыць</a>, каб больше не атрымліваць лісты пра гэта абмеркаванне."
+      footer_text: "Дашліце адказ на гэты ліст ці праглядзіце яго на %{hostname}:"
+      reply_or_view_online_html: "Дашліце адказ на гэты ліст ці <a href='%{url}'>праглядзіце яго на %{hostname}</a>."
+      turn_off_notifications_html: "<a href='%{url}'>Выключыць лісты</a> пра гэта абмеркаванне."
+      turn_off_notifications_text: "Выключыць лісты пра гэта абмеркаванне: %{url}"
+      turn_on_notifications_html: "<a href='%{url}'>Уключыць лісты пра гэта абмеркаванне</a> каб атрымліваць далейшыя падзеі."
+      change_email_preferences_html: "Змяніце свае <a href='%{email_preferences_url}'>налады email</a> каб адпісацца ад гэтых лістоў."
       change_preferences: "Змяніць свае налады электроннай пошты:"
       new_motion: "Карыстальнік %{who} прапанаваў:"
       motion_closing_soon: "Прапанова закрываецца праз 24 гадзіны:"
@@ -968,6 +995,8 @@ be-BY:
   google: Google
   persona: Persona
   common:
+    profile: Профіль
+    email_settings: Налады email
     markdown_help_tooltip: Даведайцеся асновы фарматавання тэксту з дапамогай Markdown
     settings: Налады
     dashboard: Галоўная

@@ -94,7 +94,6 @@ fa-IR:
   generic_confirm: مطمئن هستید؟
   add_new_member: افزودن عضو جدید
   invite_members_to_group: "دعوت اعضا به %{which_group}"
-  get_in_touch_link: در تماس باش
   email_members_in_group: "فرستادن رایانامه به اعضای %{which_group}"
   subject_error: لطفاً موضوع را پر کنید
   subject_placeholder: یک موضوع بنویسید

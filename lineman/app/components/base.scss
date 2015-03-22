@@ -1,0 +1,56 @@
+body {
+  @include fontHelvetica;
+  @include fontMedium;
+  background-color: $background-color;
+  word-break: break-word;
+}
+
+h1 {
+  @include fontHelveticaBold;
+  @include fontGrande;
+  padding: 0;
+  margin: 0;
+  color: $primary-text-color;
+}
+
+h2 {
+  @include fontHelveticaBold;
+  @include fontLarge;
+  margin: 8px 0;
+}
+
+h3, h4 {
+  @include fontHelveticaMedium;
+  @include fontSmall;
+  text-transform: uppercase;
+  color: $kinda-dark-grey;
+  margin-top: 22px;
+}
+h3.card-title{
+  @include fontTiny;
+  color: #999999;
+  margin-top: 0;
+}
+
+h4{
+  text-transform: none;
+}
+
+input, select, textarea{
+  margin-bottom: 10px;
+}
+
+textarea{
+  min-height: 100px;
+}
+
+input[type="file"]{
+  /*This is a hack for now to fix the mobile layout. The file input should be hidden.*/
+  max-width: 200px;
+}
+
+.main-container{
+  padding-top: 48px;
+  z-index: 0;
+  min-width: 320px;
+}

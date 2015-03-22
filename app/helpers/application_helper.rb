@@ -193,8 +193,12 @@ module ApplicationHelper
     ' help-container' if controller_name == 'help'
   end
 
-  def show_loomio_org_marketing
-    ENV['SHOW_LOOMIO_ORG_MARKETING']
+  def hosted_by_loomio?
+    ENV['HOSTED_BY_LOOMIO']
+  end
+
+  def third_party_install?
+    !hosted_by_loomio?
   end
 
   def site_hostname

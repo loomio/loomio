@@ -1,16 +1,4 @@
 sv:
-  users:
-    email_preferences:
-      edit:
-        title: E-postinställningar
-        when_do_you_want_emails: "E-posta mig:"
-        email_missed_yesterday: "\"Igår på Loomio\" - en daglig summering av aktiviteter jag missat"
-        email_when_mentioned: "När jag @nämnts"
-        email_followed_threads: När det är aktivitet i det trådar jag följer
-        email_when_proposal_closing_soon: 24 timmar innan dead-line för ett förslag.
-        email_new_discussions_and_proposals: Nya diskussioner och förslag
-        for_these_groups: "För dessa grupper:"
-        submit: Spara inställningar
   explore:
     header: Utforska publika grupper
   try_it:
@@ -226,8 +214,6 @@ sv:
   no_group_header: Välkommen till Loomio Beta
   empty_notifications: Du har inte fått några notifieringar ännu.
   see_all_notifications: Se alla notifieringar
-  profile: Profil
-  email_settings: Emailinställningar
   sign_out: Logga ut
   sign_in: Logga in
   honeypot_warning: "Kunde inte skapa ditt konto. Om du använder en radläsare, se till att det sista (dolda) fältet är ett blanktecken."
@@ -353,8 +339,6 @@ sv:
   edit_memberships: Redigera medlemskap
   add_new_member: Lägg till ny medlem
   invite_members_to_group: "Bjud in medlemmar till %{which_group}"
-  remaining_invites_count: "%{count} återstående inbjudningar"
-  get_in_touch_link: få kontakt med
   email_members_in_group: "E-posta medlemmarna i %{which_group}"
   subject_error: Ange ett ämne
   subject_placeholder: Skriv ett ämne
@@ -420,7 +404,6 @@ sv:
       following_details: Du kommer att meddelas om varje tråd i denna grupp.
       not_following_details: Du kommer att meddelas om trådar som du deltar i.
   group_request:
-    neighbourhood_support_group: t. ex. Stödgrupp i Grannskapet
     commercial_use_option: "i ett företag, formell organisation eller arbetsplats"
     non_commercial_use_option: i ett samhälle grupp eller informellt nätverk
     please_select_an_option: Vänligen välj ett alternativ
@@ -881,7 +864,6 @@ sv:
       headline: "%{author}s förslag i %{group} stänger snart:"
       summary: Sammanfattning
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Sluta följa</a> för att stoppa e-postmeddelanden om denna diskussion."
       change_preferences: "Ändra dina e-postinställningar:"
       new_motion: "%{who} föreslog:"
       motion_closing_soon: "Förslag som stänger inom 24 timmar:"

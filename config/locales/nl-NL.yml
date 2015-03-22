@@ -1,16 +1,17 @@
 nl-NL:
-  users:
-    email_preferences:
-      edit:
-        title: E-mail voorkeuren
-        when_do_you_want_emails: "E-mail mij:"
-        email_missed_yesterday: "'Gisteren op Loomio' - een dagelijkse samenvatting van wat ik gemist heb"
-        email_when_mentioned: "Als ik een @benoeming krijg"
-        email_followed_threads: Als er activiteit is in gesprekken die ik volg.
-        email_when_proposal_closing_soon: 24 uur voordat een voorstel sluit.
-        email_new_discussions_and_proposals: Nieuwe discussies en voorstellen
-        for_these_groups: "Voor deze groepen:"
-        submit: Bewaar voorkeuren
+  email_settings:
+    title: E-mail instellingen
+    group_volume: Groep volume
+    group_volume_description: "Volume bepaalt hoeveel e-mail je van een groep krijgt. Stel het volume in voor al je groepen:"
+    to_change_one_group: "Om het volume van slechts een groep te veranderen, bezoek je de pagina van die groep."
+    discussion_activity: Verander discussievolume als ik deelneem
+    yesterday_on_loomio: E-mail mij iedere dag een samenvatting van activiteiten
+    email_when_mentioned: "E-mail mij als ik @genoemd word"
+    email_when_mentioned_description: "Als iemand jouw aandacht wil, kan je @genoemd worden. We raden je aan deze instelling aan te laten zodat je een e-mail krijgt als dit gebeurt."
+    proposal_closing_soon: E-mail mij voordat een voorstel sluit
+    submit: Instellingen bijwerken
+    no_change: Geen verandering
+    no_change_description: Laat het volume van mijn groep zoals deze is.
   explore:
     header: Ontdek openbare groepen
   try_it:
@@ -24,6 +25,7 @@ nl-NL:
     errors:
       messages:
         blank: kan niet leeg zijn
+        invalid: is geen geldige waarde
   errors:
     messages:
       email: Ongeldig e-mailadres
@@ -75,6 +77,7 @@ nl-NL:
     group_already_setup: De groep die je probeert aan te maken bestaat al.
     passwords_did_not_match: Wachtwoorden komen niet overeen
     proposal_already_exists: Er staat al een voorstel open binnen deze discussie.
+    username_cannot_contain_whitespace: Gebruikersnaam mag geen spaties bevatten
     user_with_email_address_already_in_group: Een gebruiker met dit e-mailadres behoort al tot deze groep.
     you_have_already_requested_membership: Je hebt al een lidmaatschap aangevraagd voor deze groep.
     you_are_already_a_member_of_this_group: Je bent al lid van deze groep.
@@ -234,8 +237,6 @@ nl-NL:
   no_group_header: Welkom bij Loomio Beta
   empty_notifications: Je hebt nog geen meldingen.
   see_all_notifications: Bekijk alle meldingen
-  profile: Profiel
-  email_settings: E-mail instellingen
   sign_out: Uitloggen
   sign_in: Inloggen
   honeypot_warning: "Kon je account niet maken. Als je een voorleesprogramma gebruikt, zorg dan dat het laatste (verborgen) veld op het formulier leeg is."
@@ -362,8 +363,6 @@ nl-NL:
   edit_memberships: Bewerk lidmaatschappen
   add_new_member: Nieuw lid toevoegen
   invite_members_to_group: "Nodig leden uit voor %{which_group}"
-  remaining_invites_count: "%{count} resterende uitnodigingen"
-  get_in_touch_link: neem contact op
   email_members_in_group: "E-mail de leden in %{which_group}"
   subject_error: Vul een onderwerp in
   subject_placeholder: Typ een onderwerp
@@ -430,14 +429,28 @@ nl-NL:
       not_following_details: Je wordt op de hoogte gesteld van gesprekken waar je aan deelneemt.
   group_request:
     header: Begin een groep
-    desc: "Om besluitvorming op Loomio te starten is de eerste stap het maken van een groep:"
-    neighbourhood_support_group: b.v. Buurt Steungroep
     commercial_use_option: "in een bedrijf,  organisatie of werkplek"
     non_commercial_use_option: en een gemeenschapsgroep of informeel netwerk
     please_select_an_option: Selecteer een optie
     confirmation:
       title: "Je bent bijna klaar! Bekijk je e-mail."
       body_html: "We hebben je een e-mail gestuurd met een uitnodiging om jouw groep te beginnen.\n\nAls je niet binnen een paar minuten iets in je inbox ziet, e-mail ons dan op<a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    volume: Volume
+    loud: Luid
+    normal: Normaal
+    quiet: Stil
+    mute: Dempen
+  discussion_volume:
+    loud_description: E-mail altijd als er activiteit is in dit gesprek.
+    normal_description: "Alleen e-mailen wanneer er een voorstel is gemaakt, op het punt staat te sluiten of als er een uitkomst is vastgesteld."
+    quiet_description: Niet e-mail over dit gesprek.
+    mute_description: "Verberg dit gesprek van het dashboard en stuur geen notificaties tenzij ik @genoemd word."
+  group_volume:
+    loud_description: E-mail als er activiteit is.
+    normal_description: "Alleen belangrijke activiteit e-mailen: Nieuwe discussies en voorstellen, uitkomsten, enz."
+    quiet_description: Niet e-mailen over deze groep. Activiteit wordt weergegeven op het dashboard.
+    mute_description: "Verberg deze groep van het dashboard en stuur geen notificatie tenzij ik @genoemd word."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> ging akkoord met het voorstel."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> onthield zich van het voorstel."
@@ -591,7 +604,7 @@ nl-NL:
     make_a_decision: Maak een beslissing
     make_a_decision_description: "Als een groep klaar is om een beslissing te maken, kan iedereen een voorstel indienen. Zet in het voorstel een heldere lijn uiteen en geef achtergrondinformatie zodat iedereen exact weet wat het betekent om het ermee eens of oneens te zijn."
     prompt_people_details: "Als je de aandacht wilt van een bepaalde persoon in je groep, typ '@' gevolgd door zijn of haar naam. Diegene krijgt een e-mail met de boodschap dat jij hem of haar genoemd hebt in een reactie."
-    prompt_people_html: "Stel mensen op de hoogte van <span class='blue'>@benoemingen</span>"
+    prompt_people_html: "Stel mensen op de hoogte als ze <span class='blue'>@genoemd</span>  worden"
     positions_agree_description: "<span>Eens</span> betekent dat je blij bent met het voorstel."
     positions_abstain_description: "<span>Onthouden</span> betekent dat je het niet zeker weet, of dat je het prima vindt dat de groep zonder jou beslist."
     positions_disagree_description: "<span>Oneens</span> betekent dat je denkt dat er mogelijk een beter alternatief is, maar dat je mee wilt gaan met de beslissing van de groep."
@@ -604,7 +617,6 @@ nl-NL:
     video_tutorial: Video uitleg
     video_tutorial_description: Bekijk de video voor een snelle demonstratie van hoe Loomio te gebruiken.
     what_is_loomio: Wat is Loomio?
-    what_is_loomio_description_html: "<p> Loomio is een simpel, gebruikersvriendelijk online gereedschap voor het maken van beslissingen.\nLoomio geeft je de mogelijkheid om online discussies te voeren, mensen uit te nodigen om deel te nemen, tijdig een beslissing te nemen en beraadslaging om te zetten naar actie in real-life.</p>\n<p> Loomio is vrije en open source software dat ontwikkeld wordt door een coöperatieve gemeenschap in Wellington, Nieuw Zeeland. </p>\n"
   hint:
     context: Tips voor het gebruik van het omschrijvingenveld
     discussion: Tips voor het beginnen van een boeiende discussie
@@ -902,10 +914,9 @@ nl-NL:
     thread_mailer:
       footer_text: "Beantwoord deze e-mail direct of bekijk op %{hostname}:"
       reply_or_view_online_html: "Beantwoord deze e-mail direct of <a href='%{url}'>bekijk deze op %{hostname}</a>."
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Niet meer volgen</a> om geen e-mails meer te ontvangen over deze discussie."
-      unfollow_discussion_text: "Bezoek de volgende link om e-mails over deze discussie te stoppen: %{unfollow_url}"
-      follow_discussion_html: "<a href='%{follow_url}'>Volg</a> om e-mails te ontvangen over deze discussie."
-      follow_discussion_text: "Bezoek de volgende link om e-mails over deze discussie te ontvangen: %{follow_url}"
+      turn_off_notifications_html: "<a href='%{url}'>Zet e-mails uit</a> voor deze discussie."
+      turn_off_notifications_text: "Zet e-mails uit voor deze discussie: %{url}"
+      turn_on_notifications_html: "<a href='%{url}'>Zet e-mails aan voor deze discussie</a> om nieuwe activiteit te ontvangen."
       change_email_preferences_html: "Verander jouw <a href='%{email_preferences_url}'>e-mail voorkeuren</a> om je uit te schrijven van deze e-mails."
       change_preferences: "Verander je e-mail voorkeuren:"
       new_motion: "%{who} stelde voor:"
@@ -991,6 +1002,8 @@ nl-NL:
   google: Google
   persona: Persoonsgegevens
   common:
+    profile: Profiel
+    email_settings: E-mail instellingen
     markdown_help_tooltip: Leer de beginselen van tekstopmaak met Markdown
     settings: Instellingen
     dashboard: Dashboard

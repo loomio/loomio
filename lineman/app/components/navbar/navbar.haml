@@ -1,0 +1,14 @@
+%header.lmo-navbar{role: 'navigation'}
+  .lmo-navbar-flexbox
+    .lmo-navbar-logo
+      %a.lmo-navbar-btn{href: '/dashboard'}
+        .lmo-navbar-logo-image
+    .lmo-navbar-search
+      %navbar_search
+    .lmo-navbar-buttons
+      %navbar_start_discussion
+      %navbar_notifications{ng-controller: 'NavbarNotificationsController'}
+      %navbar_user_options
+    -#%navbar_inbox
+  %thread_lintel
+  %flash{modal: 'false'}

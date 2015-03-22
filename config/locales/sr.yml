@@ -1,16 +1,4 @@
 sr:
-  users:
-    email_preferences:
-      edit:
-        title: Podešavanje ePoruka
-        when_do_you_want_emails: "Obavesti me:"
-        email_missed_yesterday: "'Juče na Lumiju' - dnevni pregled svih propuštenih aktivnosti"
-        email_when_mentioned: "Kada sam @pomenut/a"
-        email_followed_threads: Kada postoji aktivnost u oblastima koje pratim.
-        email_when_proposal_closing_soon: 24 sata pre isteka predloga.
-        email_new_discussions_and_proposals: Nove diskusije i predlozi
-        for_these_groups: "Za ove grupe:"
-        submit: Sačuvaj podešavanja
   explore:
     header: Istraži javne grupe
   try_it:
@@ -240,8 +228,6 @@ sr:
   no_group_header: Dobrodošli na Lumio Beta
   empty_notifications: Nemate nikakvih obaveštenja još uvek.
   see_all_notifications: Vidi sva obaveštenja
-  profile: Profil
-  email_settings: Podešavanja ePoruka
   sign_out: Odjavi se
   sign_in: Prijavi se
   honeypot_warning: "Nije bilo moguće napravit Vaš nalog. Ako koristite čitač ekrana, molimo da se postarate da je poslednje(skriveno) polje u formularu prazno."
@@ -368,8 +354,6 @@ sr:
   edit_memberships: Uredi članstva
   add_new_member: Dodaj novog člana
   invite_members_to_group: "Pozovi članove u %{which_group}"
-  remaining_invites_count: "%{count} pozivnice/a je preostalo"
-  get_in_touch_link: ostanite u kontaktu
   email_members_in_group: "Pošaljite ePoruku članovima %{which_group}"
   subject_error: Molim unesite temu
   subject_placeholder: Napišite temu
@@ -435,7 +419,6 @@ sr:
       following_details: Bićete obavešteni o svakom dešavanju u ovoj grupi.
       not_following_details: Bićete obavešteni o svemu čemu se priključite.
   group_request:
-    neighbourhood_support_group: npr. Komšijska Grupa Podrške
     commercial_use_option: "u kompaniji, formalnoj organizaciji radnom mestu"
     non_commercial_use_option: u grupi zajednice ili informativnoj mreži
     please_select_an_option: Molim odaberite jednu opciju
@@ -897,7 +880,6 @@ sr:
       headline: "%{author}ov/in predlog u grupi %{group} uskoro ističe:"
       summary: Rezime
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Ne prati</a> da zaustaviš obaveštenja o ovoj diskusiji."
       change_preferences: "Promeni svoja podešavanja o ePorukama:"
       new_motion: "%{who} predlaže:"
       motion_closing_soon: "Predlog ističe kroz 24 časa:"

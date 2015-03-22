@@ -1,22 +1,24 @@
 .container
-  %section.first
-    .inner-container
-      .row
-        .col-md-6.col-md-offset-2
-          %h1 Pricing
+  .row.content
+    .col-md-6.col-md-offset-3
+      %h1 Pricing
 
-          %p
-            We're developing a pricing model that's in line with our social mission:
-            %strong making it easy for anyone, anywhere to participate in decisions that affect them.
+      %p
+        We're developing a pricing model that's in line with our social mission:
+        %strong making it easy for anyone, anywhere to participate in decisions that affect them.
 
-          %p We're excited about this challenge, and we might get in touch to talk with you about what would work for your group.
+      %h3 Loomio for organisations
 
-          %p Never fear, anyone can sign up for free and no-one will be kicked out if they can't pay.
+      %p
+        If you're using Loomio in a company, formal organisation or workplace, you'll be charged a monthly subscription of US$2 per person after a
+        %strong 30-day free trial.
+      %p
+        More than 100 members? We have plans for larger organisations.
+        %a#pricing-page-contact-link{href: contact_path} Contact us.
 
-          %p We're committed to the principle that money will never be a barrier to people using Loomio to do great stuff in the world.
 
-          %p
-            &hearts; If you want to talk to us about paying for Loomio,
-            %a{href: contact_path} get in touch.
-        .col-md-3
-          = image_tag "mascot-medium-lefthand.gif"
+      %h3 Loomio for communities
+      %p Money will never be a barrier for people using Loomio to do great stuff in their communities. If your group doesn't have the budget to pay for software, you don't need to pay a subscription. However, we may occasionally ask your group members for a donation.
+      %p
+      %p
+        %a.btn.btn-success.btn-lg#pricing-page-start-link{href: new_group_request_path} Get started

@@ -1,16 +1,4 @@
 an:
-  users:
-    email_preferences:
-      edit:
-        title: "Preferencias de correu electronico "
-        when_do_you_want_emails: "Ninviar-me un correu-e:"
-        email_missed_yesterday: "'Ahiere en Loomio' - un resumen diario de toda l'actividat no leita"
-        email_when_mentioned: "Quan siga @nombrau "
-        email_followed_threads: Quan i haiga actividat en os temas que sigo.
-        email_when_proposal_closing_soon: 24 horas antes de zarrar una propuesta.
-        email_new_discussions_and_proposals: Nuevas discusions y propuestas.
-        for_these_groups: "Ta istos grupos:"
-        submit: Alzar preferencias
   explore:
     header: Explorar grupos publicos
   try_it:
@@ -226,8 +214,6 @@ an:
   no_group_header: Bienveniu/da a Loomio Beta
   empty_notifications: Encara no tiens notificacions.
   see_all_notifications: Veyer todas as tuyas notificacions
-  profile: Perfil
-  email_settings: "Configuración d'o correu electronico"
   sign_out: Salir
   sign_in: Dentrar
   honeypot_warning: "No s'ha puesto crear a tuya cuenta. Si fas servir un lector de pantallas, por favor, asegura-te que o zaguer campo (amagau) d'o formulario ye en blanco."
@@ -354,8 +340,6 @@ an:
   edit_memberships: Editar pertenencias
   add_new_member: Adhibir un nuevo miembro
   invite_members_to_group: "Convidar miembros a %{which_group}"
-  remaining_invites_count: "quedan %{count} invitacions"
-  get_in_touch_link: meter-se en contacto
   email_members_in_group: "Ninviar un correu-e a os miembros de %{which_group}"
   subject_error: Por favor escribe un titol
   subject_placeholder: Escribe un tema
@@ -421,7 +405,6 @@ an:
       following_details: "Serás notificau sobre totz os temas d'iste grupo"
       not_following_details: Se te notificará sobre os temas en os quals yes participando.
   group_request:
-    neighbourhood_support_group: "p. eix. Grupo d'emparo a o vecindario"
     commercial_use_option: "en una interpresa, organización formal u puesto de treballo"
     non_commercial_use_option: En una comunidat u grupo informal
     please_select_an_option: Por favor tigue una opción
@@ -883,7 +866,6 @@ an:
       headline: "A propuesta de %{author} en %{group} se zarrará luego:"
       summary: Resumen
     thread_mailer:
-      unfollow_discussion_html: "<a href='%{unfollow_url}'>Deixar de seguir</a> ta deixar de recibir correus electronicos sobre ista discusión."
       change_preferences: "Cambiar as tuyas preferencias d'email:"
       new_motion: "%{who} ha proposau:"
       motion_closing_soon: A propuesta se zarrará en 24 horas

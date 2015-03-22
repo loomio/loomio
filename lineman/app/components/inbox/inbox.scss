@@ -1,0 +1,16 @@
+span.activity-count {
+  margin-left: 0.5em;
+  color: $meta-text-color;
+}
+.container#main {
+  @media (min-width: $screen-sm-min){
+    margin-left: $sidebar-width;
+    max-width: $container-sm - $sidebar-width;
+  }
+  @media (min-width: $screen-md-min){
+    max-width: $container-md - $sidebar-width;
+  }
+  @media (min-width: $screen-lg-min){
+    max-width: $container-lg - $sidebar-width;
+  }
+}

@@ -178,7 +178,6 @@ km:
   edit_memberships: កែសម្រួលសមាជិកភាព​
   add_new_member: បន្ថែមសមាជិកថ្មី
   invite_members_to_group: "ទៅអញ្ចើញសមាជិក %{which_group} "
-  get_in_touch_link: ទទួលបាននូវក្នុងការប៉ះ
   email_members_in_group: "ក្នុងសមាជិកអ៊ីម៉ែលនេះ %{which_group} "
   subject_error: សូមបំពេញក្នុងប្រធានបទមួយ
   subject_placeholder: សរសេរប្រធានបទមួយ

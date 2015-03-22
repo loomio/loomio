@@ -1,0 +1,106 @@
+.selector-list{
+  list-style-type: none;
+  padding: 0;
+}
+.dropdown-menu .selector-list{
+  max-height: 600px;
+  overflow-y:scroll;
+}
+.selector-list .timeago, .smart-time{
+  color: $meta-text-color;
+  @include fontTiny;
+}
+.selector-list-header {
+  padding: 0 10px;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+.selector-list-header .dropdown {
+  padding: 0 0 10px 0;
+}
+.selector-list-item {
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  @media (max-width: 320px){ padding: 15px 20px; }
+  width: 100%;
+  clear: both;
+}
+.selector-list-item-top-line {
+  border-top: 1px solid #eee;
+}
+.selector-list-item-no-bottom-line {
+  border-bottom: none;
+}
+
+.selector-list-item i{
+  color: $meta-text-color;
+}
+.selector-list-item-link{
+  display: block;
+  margin: -10px;
+  padding: 10px;
+  color: $primary-text-color;
+}
+.selector-list-item-link:hover{
+  display: block;
+  text-decoration: none;
+  background-color: $list-hover-color;
+}
+
+.selector-list .media{ margin-top: 0; }
+.selector-list .media-left { margin-right: 8px; }
+.selector-list-item.is-active{
+  background-color: $item-highlight-color;
+  border-left: 4px solid $loomio-orange;
+}
+
+.is-subgroup-true .selector-list-item-link{
+  padding-left: 53px;
+}
+.selector-list-item.is-read{
+  background-color: $light-grey;
+}
+.is-unread .selector-list-item-discussion-title{
+  font-weight: bold;
+}
+.selector-list-item-unread-comment-count {
+  font-weight: normal;
+  padding-left: 8px;
+  @include fontSmall;
+}
+.selector-list-item-proposal {
+  margin: 5px 0;
+  .time-left {
+    @include fontHelvetica;
+    @include fontSmall;
+  }
+}
+.selector-list-item-discussion-title {
+  color: $text-color;
+  @include fontHelvetica;
+  @include fontMedium;
+  margin-bottom: 5px;
+}
+a .selector-list-item-proposal-details {
+  color: $meta-text-color;
+  @include fontHelvetica;
+  @include fontSmall;
+  margin-bottom: 5px;
+  line-height: 16px;
+}
+.selector-list-item-group-name{
+  vertical-align: middle;
+}
+
+.selector-list-item-group-logo{
+  width: 32px;
+  height: 32px;
+}
+
+.selector-list-item-thread-group-name{
+  color: $meta-text-color;
+  @include fontHelvetica;
+  @include fontSmall;
+}
+
+

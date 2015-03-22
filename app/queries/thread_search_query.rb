@@ -24,7 +24,7 @@ class ThreadSearchQuery
                      relevant_comments(result['id'], result['query']))
   end
 
-  def self.relevant_motions(discussion_id, query, limit: 2)
+  def self.relevant_motions(discussion_id, query, limit: 1)
     SearchVector.execute_search_query(
       relevant_motions_sql,
       id: discussion_id,
@@ -33,7 +33,7 @@ class ThreadSearchQuery
     ).map { |result| SearchResultChild.new :motion, result['id'], result['blurb'] }
   end
 
-  def self.relevant_comments(discussion_id, query, limit: 2)
+  def self.relevant_comments(discussion_id, query, limit: 1)
     SearchVector.execute_search_query(
       relevant_comments_sql,
       id:    discussion_id,
