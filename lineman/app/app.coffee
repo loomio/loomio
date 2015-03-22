@@ -32,7 +32,8 @@ angular.module('loomioApp').run (Records, UserAuthService) ->
 
 angular.module('loomioApp').controller 'AppController', ($router) ->
   $router.config([
-    {path: '/dashboard', component: 'dashboardPage' },
-    {path: '/d/:key', component: 'threadPage' },
-    {path: '/g/:key', component: 'groupPage' },
+    { path: '/dashboard', component: 'dashboardPage' },
+    { path: '/d/:key', component: 'threadPage' },
+    { path: '/g/:key', component: 'groupPage' },
+    { path: '/g/:key/memberships', component: 'membershipsPage' },
   ]);
