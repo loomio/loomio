@@ -6,7 +6,8 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
   Records.groups.findOrFetchByKey($routeParams.key).then (group) => @group = group
 
   @loadMore = =>
-    Records.memberships.fetch({group_key: $routeParams.key, from: @loadedCount, per: @membershipsPerPage })
+    Records.memberships.fetch({group_key: $routeParams.key, from: @loadedCount, per: @membershipsPerPage }).then =>
+      @loadedCount = @loadedCount + @membershipsPerPage
   LoadingService.applyLoadingFunction @, 'loadMore'
   @loadMore()
 

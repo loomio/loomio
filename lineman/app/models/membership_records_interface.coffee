@@ -8,8 +8,8 @@ angular.module('loomioApp').factory 'MembershipRecordsInterface', (BaseRecordsIn
     fetchByNameFragment: (fragment, groupKey) ->
       @restfulClient.get 'autocomplete', {q: fragment, group_key: groupKey}
 
-    fetchByGroup: (groupKey, from) ->
-      @restfulClient.getCollection {group_key: groupKey, from}
+    fetchByGroup: (groupKey) ->
+      @restfulClient.getCollection {group_key: groupKey}
 
     makeAdmin: (membership) ->
       @restfulClient.postMember membership.id "make_admin"

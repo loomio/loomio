@@ -266,6 +266,7 @@ en:
     add_coordinator: 'Make Coordinator'
     remove_coordinator: 'Remove Coordinator'
     remove_member: 'Remove'
+    see_more_members: 'See more members'
 
   profile_page:
     my_groups: Groups

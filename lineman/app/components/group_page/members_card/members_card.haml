@@ -9,12 +9,12 @@
   %h3.first{ translate: 'group_page.members' }
 
   .group-member-list
-    .group-member-list-item{ng-repeat: 'member in group.members()'}
+    .group-member-list-item{ng-repeat: 'member in groupPage.group.members() | limitTo:5'}
       .group-member-list-avatar.lg{data-username: '{{member.label}}' }
         %user_avatar{user: 'member'}
     .group-member-list-show-more.show-more.card-minor-action
       %a{href: '/g/{{group.key}}/memberships', translate: 'common.action.show_more'}
-    .members-invite{ng_controller: 'InvitationsController', ng-if: '::canAddMembers()'}
+    .members-invite{ng_controller: 'InvitationsController', ng-if: 'groupPage.canAddMembers()'}
       .row
         .col-xs-12.col-sm-6
           %a.btn.btn-success.btn-block.btn-icon{href: '#', ng_click: 'openForm()'}

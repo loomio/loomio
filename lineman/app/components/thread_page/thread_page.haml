@@ -1,6 +1,5 @@
 .loading-wrapper.container.main-container
-  .loading{ng-if: '!threadPage.discussion'}
-    Loading..
+  %loading{ng-if: '!threadPage.discussion'}
   .thread-page{ng-if: 'threadPage.discussion'}
 
     .media.thread-group
