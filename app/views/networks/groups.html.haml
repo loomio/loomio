@@ -1,11 +1,11 @@
 = render 'nav'
-%h1= @network.name
+%h1
+  = @network.name
 
-%h2= t :'networks.groups_header'
+%h2
+  = t :'networks.groups_header', count: @network.groups.count
 
-%table
-  %tbody
-    - @groups.each do |g|
-      %tr
-        %td= link_to g.full_name, group_path(g)
-        %td.text-right= t(:'networks.members_count', count: g.memberships_count)
+- @groups.each do |g|
+  .network-group
+    .network-group-name= link_to g.full_name, group_path(g)
+    .network-group-size= t(:'networks.members_count', count: g.memberships_count)
