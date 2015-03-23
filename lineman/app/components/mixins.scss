@@ -1,17 +1,16 @@
-$background-color: #ebebeb;
+/* let's come up with a good naming scheme for the greys once we lock them in*/
 $primary-text-color: #262626;
-$meta-text-color: #898989;
+$kinda-dark-grey: #666;
+$meta-text-color: #999;
 $border-color: #dcdcdc;
+$list-hover-color: #E0E0E0;
+$background-color: #ebebeb;
+$light-grey: #F5F5F5;
 $card-background-color: #fff;
-$progress-bar-color: #176EE3;
 
 $item-highlight-color: #FFFFE8;
-$list-hover-color: #E0E0E0;
+$progress-bar-color: #176EE3;
 $loomio-orange: #F6A82B;
-
-/* let's come up with a good naming scheme for the greys once we lock them in*/
-$light-grey: #F5F5F5;
-$kinda-dark-grey: #545454;
 
 $main-max-width: 640px;
 $thread-max-width: 640px;
@@ -31,6 +30,16 @@ $navbar-height: 45px;
 
 @mixin fontMedium {
   font-size: 14px;
+  line-height: 20px;
+}
+
+@mixin fontCrapName{
+  font-size: 15px;
+  line-height: 20px;
+}
+
+@mixin fontModerate {
+  font-size: 16px;
   line-height: 20px;
 }
 

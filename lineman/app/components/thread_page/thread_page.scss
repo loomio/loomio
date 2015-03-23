@@ -8,7 +8,7 @@
 }
 .thread-group__name a{
   font-weight: bold;
-  color: #666666;
+  color: $kinda-dark-grey;
   line-height: 30px;
 }
 .thread-group__icon img{
@@ -63,7 +63,7 @@
 
 .thread-proposals {
   padding: 10px 0px 15px 0px;
-  background-color: #fff;
+  background-color: $card-background-color;
 }
 
 .thread-item {
@@ -141,7 +141,7 @@
 .attachment-new {
   width: 34px;
   height: 34px;
-  border: 1px solid #CCC;
+  border: 1px solid $border-color;
 }
 
 .attachment-new input {
