@@ -51,7 +51,7 @@ Loomio::Application.routes.draw do
     end
     resources :discussion_readers, only: :update
 
-    resources :motions,     only: [       :index, :create, :update], path: :proposals do
+    resources :motions,     only: [:show, :index, :create, :update], path: :proposals do
       post :close, on: :member
     end
     resources :votes,       only: [       :index, :create, :update] do

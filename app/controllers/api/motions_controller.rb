@@ -1,4 +1,9 @@
 class API::MotionsController < API::RestfulController
+  load_and_authorize_resource only: [:show], find_by: :key
+
+  def show
+    respond_with_resource
+  end
 
   def close
     load_resource
@@ -15,7 +20,7 @@ class API::MotionsController < API::RestfulController
                            .order(:created_at)
   end
 
-  def serializer_root 
+  def serializer_root
     :proposals
   end
 

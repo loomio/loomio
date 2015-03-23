@@ -88,6 +88,10 @@ class Motion < ActiveRecord::Base
     total_votes_count > 0
   end
 
+  def discussion_key
+    discussion.key
+  end
+
   # map of position and votes
   def vote_counts
     {'yes' => yes_votes_count,
