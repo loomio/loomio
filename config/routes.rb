@@ -45,6 +45,7 @@ Loomio::Application.routes.draw do
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
       get :inbox_by_date, on: :collection
+      get :inbox_by_organization, on: :collection
       get :inbox_by_group, on: :collection
       patch :mark_as_read, on: :member
     end

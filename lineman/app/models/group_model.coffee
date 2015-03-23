@@ -10,6 +10,12 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
     discussions: ->
       @discussionsView.data()
 
+    organizationDiscussions: ->
+      return unless @isParent()
+      groupIds = _.pluck(@subgroups(), 'id')
+      groupIds.push @id
+      @recordStore.discussions.findByGroupIds(groupIds)
+
     subgroups: ->
       @recordStore.groups.find(parentId: @id)
 
