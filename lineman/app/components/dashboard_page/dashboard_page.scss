@@ -21,49 +21,51 @@
   margin-top: 9px;
 }
 
+.dashboard-page-group-name a{
+  @include fontHelveticaMedium;
+  @include fontModerate;
+  line-height: 30px;
+  color: $meta-text-color;
+  margin-left: 16px;
+}
+
 .dashboard-page-thread {
   padding: 10px;
   border-bottom: 1px solid $border-color;
 }
 
-.dashboard-page-pie-chart {
-  padding-right: 5px;
-}
 
 .dashboard-page-thread-title.is-unread {
   font-weight: bold;
 }
 
-.dashboard-page-group-name {
-  @include fontHelveticaMedium;
-  @include fontModerate;
-  line-height: 30px;
-  color: $meta-text-color;
-  margin-left: 48px;
+.dashboard-page-thread-group-logo{
+  float: left;
+  img{ width: 32px; height: 32px; }
 }
 
 .dashboard-page-unread-count {
   white-space: nowrap;
   width: 38px;
-  min-height: 1px;
+  min-height: 32px;
   float: left;
   @include fontModerate;
   @include fontHelveticaBold;
   color: $meta-text-color;
   text-align: center;
 }
+.dashboard-page-pie-chart {
+  padding-right: 5px;
+  line-height: 18px;
+}
 
 .dashboard-page-thread-header {
   @include fontCrapName;
+  line-height: 24px;
 }
-
 .dashboard-page-thread-info {
-  clear: both;
-  margin-left: 38px;
   @include metaText;
-
 }
-
 .dashboard-page-footer {
   font-size: 0.01em;
   height: 1px;
