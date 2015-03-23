@@ -1,4 +1,6 @@
 angular.module('loomioApp').controller 'ThreadPageController', ($routeParams, $location, $rootScope, $document, $modal, Records, MessageChannelService, UserAuthService, DiscussionFormService) ->
+  $rootScope.$broadcast('currentComponent', 'threadPage')
+
   @loading = true
   Records.discussions.findOrFetchByKey($routeParams.key).then (discussion) =>
     @loading = false

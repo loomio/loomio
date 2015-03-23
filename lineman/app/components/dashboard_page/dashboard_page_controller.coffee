@@ -1,4 +1,5 @@
-angular.module('loomioApp').controller 'DashboardPageController', (Records) ->
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, Records) ->
+  $rootScope.$broadcast('currentComponent', 'dashboardPage')
 
   @loaded =
     date:
