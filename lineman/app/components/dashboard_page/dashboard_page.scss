@@ -3,14 +3,27 @@
   max-width: $thread-max-width;
 }
 
+.dashboard-options{
+  margin-bottom: 12px;
+}
+
+.dashboard-page-dropdown-toggle{
+  @include fontHelveticaMedium;
+  @include fontTiny;
+  text-transform: uppercase;
+  color: $meta-text-color;
+}
+
 .dashboard-page-threads {
   @include card;
   padding: 0;
+  margin-bottom: 26px;
+  margin-top: 9px;
 }
 
 .dashboard-page-thread {
   padding: 10px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid $border-color;
 }
 
 .dashboard-page-pie-chart {
@@ -21,16 +34,34 @@
   font-weight: bold;
 }
 
-.dashboard-page-thread-info {
-  clear: both;
-}
-
 .dashboard-page-group-name {
+  @include fontHelveticaMedium;
+  @include fontModerate;
   line-height: 30px;
+  color: $meta-text-color;
+  margin-left: 48px;
 }
 
 .dashboard-page-unread-count {
   white-space: nowrap;
+  width: 38px;
+  min-height: 1px;
+  float: left;
+  @include fontModerate;
+  @include fontHelveticaBold;
+  color: $meta-text-color;
+  text-align: center;
+}
+
+.dashboard-page-thread-header {
+  @include fontCrapName;
+}
+
+.dashboard-page-thread-info {
+  clear: both;
+  margin-left: 38px;
+  @include metaText;
+
 }
 
 .dashboard-page-footer {

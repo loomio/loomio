@@ -28,7 +28,7 @@ h3, h4 {
 }
 h3.card-title{
   @include fontTiny;
-  color: #999999;
+  color: $meta-text-color;
   margin-top: 0;
 }
 
