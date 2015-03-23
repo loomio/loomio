@@ -1,6 +1,6 @@
 .container.main-container
   .dashboard-container
-    .row
+    .row.dashboard-options
       .col-xs-6
         .dashboard-page-dropdown.dashboard-page-filter-dropdown{dropdown: '', on-toggle: 'dashboardPage.toggled(open)'}
           %a.dashboard-page-dropdown-toggle.dropdown-toggle{href: '#'}
@@ -60,6 +60,6 @@
             .dashboard-page-group{ng-repeat: 'group in dashboardPage.dashboardGroups() | orderBy:fullName'}
               .dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisGroup(group)'}
                 %img.selector-list-item-group-logo.pull-left{src: "{{group.logoUrl()}}"}>
-                %h3.dashboard-page-group-name {{group.fullName()}}
+                %h2.dashboard-page-group-name {{group.fullName()}}
                 .dashboard-page-threads
                   %dashboard_page_thread{discussion: 'discussion', show-group-logo: true, ng-repeat: 'discussion in group.discussions() | orderBy:lastInboxActivity | filter:unread'}
