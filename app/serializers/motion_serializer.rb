@@ -1,7 +1,9 @@
 class MotionSerializer < ActiveModel::Serializer
   embed :ids, include: true
   attributes :id,
+             :key,
              :discussion_id,
+             :discussion_key,
              :name,
              :description,
              :outcome,
