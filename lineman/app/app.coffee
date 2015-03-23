@@ -35,4 +35,6 @@ angular.module('loomioApp').controller 'AppController', ($router) ->
     {path: '/dashboard', component: 'dashboardPage' },
     {path: '/d/:key', component: 'threadPage' },
     {path: '/g/:key', component: 'groupPage' },
+    {path: '/d/:key/:stub', component: 'threadPage' },
+    {path: '/g/:key/:stub', component: 'groupPage' },
   ]);
