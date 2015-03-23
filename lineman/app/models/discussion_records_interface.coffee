@@ -8,6 +8,11 @@ angular.module('loomioApp').factory 'DiscussionRecordsInterface', (BaseRecordsIn
     fetchInboxByDate: (options = {}) ->
       @restfulClient.get 'inbox_by_date', options
 
+    fetchInboxByOrganization: (options = {}) ->
+      @restfulClient.get 'inbox_by_organization', options
+
     fetchInboxByGroup: (options = {}) ->
       @restfulClient.get 'inbox_by_group', options
 
+    findByGroupIds: (ids) ->
+      @collection.find(groupId: {'$in': ids})

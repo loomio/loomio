@@ -271,6 +271,7 @@ en:
     my_groups: Groups
 
   dashboard_page:
+    load_more: Load more threads
     filtering:
       all: All Threads
       all_description: View all threads
