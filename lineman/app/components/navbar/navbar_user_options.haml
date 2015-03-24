@@ -7,22 +7,19 @@
         %a{href: '#', ng_click: 'openDiscussionForm()'}
           .media-left
             %i.fa.fa-xlg.fa-plus
-          .media-body New thread
+          .media-body{translate: 'navbar.user_options.new_thread'}
       %li.selector-list-item
         %a{href: '/profile'}
           .media-left
             %user_avatar{user: "currentUser()"}
-          .media-body
-            Profile
+          .media-body{translate: 'navbar.user_options.profile'}
       %li.selector-list-item
         %a{href: '/help'}
           .media-left
             %i.fa.fa-xlg.fa-info
-          .media-body
-            Help
+          .media-body{translate: 'navbar.user_options.help'}
       %li.selector-list-item
         %a{href: '/contact'}
           .media-left
             %i.fa.fa-xlg.fa-question-circle
-          .media-body
-            Contact us
+          .media-body{translate: 'navbar.user_options.contact_us'}

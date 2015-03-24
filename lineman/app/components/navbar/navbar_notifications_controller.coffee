@@ -26,3 +26,4 @@ angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope,
     'motion_outcome_updated',
   ]
 
+  return
