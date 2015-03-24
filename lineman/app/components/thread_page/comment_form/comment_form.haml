@@ -2,10 +2,10 @@
   %span{translate: 'comment_form.in_reply_to', translate-values: "{name: '{{comment.parentAuthorName()}}' }", ng-show: 'comment.parentAuthorName()'}
   %textarea#comment-field.form-control.cuke-comment-field{name: 'body', placeholder: "Say something...", ng_model: 'comment.body', mentio: true, mentio-trigger-char: "'@'", mentio_items: 'mentionables', mentio-template-url: 'generated/components/thread_page/comment_form/mentio_menu.html', mentio-search: 'getMentionables(term)', mentio-typed-term: 'typedTerm', mentio-id: 'comment-field', ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 300, 'blur': 0} }"}
   .comment-row.comment-attachments{ng_repeat: 'attachment in comment.newAttachments()'}
-    %a.attachment-link{ng_href: '{{attachment.location}}', target: '_blank'}
+    %a.attachment-link{ng_href: '{{attachment.location}}', target: '_blank'}>
       {{ attachment.filename }}
     %span.attachment-filesize
-      {{ attachment.filesize | fileSize }}
+      {{attachment.formattedFilesize()}}
     %a.close.remove-upload{href: '#', ng_click: 'removeAttachment(attachment)'} &times;
   .thread-comment-form-actions.clearfix
     %button#post-comment-btn.btn.btn-default.btn-primary.pull-left.submit.cuke-comment-submit{type: 'submit'} Post
