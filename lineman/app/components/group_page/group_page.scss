@@ -15,13 +15,14 @@
   background: url('http://placehold.it/640x160') no-repeat center center $light-grey;
   background-size: cover;
 }
-
 .group-page-header{
   width: 100%;
   position: relative;
-  min-height: 100px + 100px + 8px + 10px;
+  min-height: 225px;
 }
-
+.group-page-header .btn{
+  @include fontSmall;
+}
 .group-page-logo{
   position: relative;
   top: 100px;
@@ -30,40 +31,35 @@
   background: url('http://placehold.it/100x100') no-repeat top center white;
   border: 4px solid #fff;
 }
-.group-page-name-and-privacy{
-  min-width: 75%;
-  float: left;
-}
-.group-page-buttons{
-  min-width: 25%;
-  float: right;
-}
-
-.group-page-name-and-options{
-  position: absolute;
-  top: 170px;
-  left: 125px;
-  max-width: $group-page-max-width - 146px;
+.group-page-header-name-and-actions{
+  margin-top: 60px;
 }
 .group-page-name {
   float: left;
-  max-width: 80%;
+  max-width: 50%;
+  margin-left: 108px + 15px;
   a{color: $primary-text-color;}
 }
 .group-page-privacy{
   float: left;
-  margin-left: 1em;
-  line-height: 30px;
-  a{color: $primary-text-color;}
-  a:hover{text-decoration: none;}
-  a:hover span{text-decoration: underline;}
-}
-
-.group-page-buttons{
+  margin-left: 15px;
 }
 .group-page-notifications{
+  float: right;
+  .btn { @include fontHelveticaBold; }
 }
-
+.group-page-actions-divider {
+  float: right;
+  height: 2em;
+  width: 1px;
+  background: $meta-text-color;
+  margin-left: 5px;
+  margin-right: 2px;
+}
+.group-page-actions{
+  float: right;
+  .btn { @include fontHelveticaBold; }
+}
 
 .group-page-description,
 .group-page-threads,
