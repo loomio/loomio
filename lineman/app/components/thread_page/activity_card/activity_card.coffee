@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.firstLoadedSequenceId = 0
     $scope.loadingForward = false
     $scope.loadingBackward = false
-    $scope.pageSize = 25
+    $scope.pageSize = 50
 
     $scope.init = ->
       $scope.discussion.markAsRead(0)
