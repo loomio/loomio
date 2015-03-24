@@ -25,7 +25,11 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def volume
-    super || membership.volume
+    if persisted?
+      super || membership.volume
+    else
+      membership.volume
+    end
   end
 
   def first_read?
