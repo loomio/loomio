@@ -55,6 +55,11 @@ en:
     in_reply_to: "In reply to <strong>{{name}}</strong>:"
 
   navbar:
+    user_options:
+      contact_us: 'Contact us'
+      new_thread: 'New Thread'
+      profile: 'Profile'
+      help: 'Help'
     search:
       placeholder: 'Search for groups or threads'
       loading: 'Loading results...'
