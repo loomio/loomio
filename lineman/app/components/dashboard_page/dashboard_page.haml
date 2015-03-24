@@ -34,23 +34,23 @@
         .dashboard-page-panel
           .dashboard-page-sort-group{ng-if: 'dashboardPage.sort == "date"'}
             .dashboard-page-threads-container{ng-if: 'dashboardPage.anyToday()'}
-              %h3{translate: 'common.date_range.today'}
+              .dashboard-page-date-range{translate: 'common.date_range.today'}
               .dashboard-page-threads
                 %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | orderBy:dashboardPage.lastInboxActivity | filter:dashboardPage.unread | limitByFn:dashboardPage.loadedCount | filter:dashboardPage.today'}
             .dashboard-page-threads-container{ng-if: 'dashboardPage.anyYesterday()'}
-              %h3{translate: 'common.date_range.yesterday'}
+              .dashboard-page-date-range{translate: 'common.date_range.yesterday'}
               .dashboard-page-threads
                 %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | orderBy:dashboardPage.lastInboxActivity | filter:dashboardPage.unread | limitByFn:dashboardPage.loadedCount | filter:dashboardPage.yesterday'}
             .dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisWeek()'}
-              %h3{translate: 'common.date_range.this_week'}
+              .dashboard-page-date-range{translate: 'common.date_range.this_week'}
               .dashboard-page-threads
                 %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | orderBy:dashboardPage.lastInboxActivity | filter:dashboardPage.unread | limitByFn:dashboardPage.loadedCount | filter:dashboardPage.thisWeek'}
             .dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisMonth()'}
-              %h3{translate: 'common.date_range.this_month'}
+              .dashboard-page-date-range{translate: 'common.date_range.this_month'}
               .dashboard-page-threads
                 %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | orderBy:dashboardPage.lastInboxActivity | filter:dashboardPage.unread | limitByFn:dashboardPage.loadedCount | filter:dashboardPage.thisMonth'}
             .dashboard-page-threads-container{ng-if: 'anyOlder()'}
-              %h3{translate: 'common.date_range.older'}
+              .dashboard-page-date-range{translate: 'common.date_range.older'}
               .dashboard-page-threads
                 %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | orderBy:dashboardPage.lastInboxActivity | filter:dashboardPage.unread | limitByFn:dashboardPage.loadedCount | filter:dashboardPage.older'}
             .dashboard-page-footer{in-view: '$inview && dashboardPage.footerReached(event)', in-view-options: '{debounce: 200}'} .
@@ -64,7 +64,7 @@
                   %a{href: '/g/{{group.key}}'} {{group.name}}
                 .dashboard-page-threads
                   %dashboard_page_thread{discussion: 'discussion', hide-group-logo: true, ng-repeat: 'discussion in group.organizationDiscussions() | orderBy:dashboardPage.lastInboxActivity | limitByFn:dashboardPage.loadedCount:group.id | filter:dashboardPage.unread'}
+                  .dashboard-page-show-more
+                    %a{ng-hide: 'dashboardPage.loadingDiscussions{{group.id}} || dashboardPage.groupIsExpanded(group.id)', translate: 'dashboard_page.load_more', ng-click:'dashboardPage.loadMoreFromGroup(group)', href: '#'}
                 .dashboard-page-loading.page-loading{ng-show: 'dashboardPage.loadingDiscussions{{group.id}}'}
                   %i.fa.fa-lg.fa-spin.fa-circle-o-notch
-                .dashboard-page-show-more
-                  %a{ng-hide: 'dashboardPage.loadingDiscussions{{group.id}} || dashboardPage.groupIsExpanded(group.id)', translate: 'dashboard_page.load_more', ng-click:'dashboardPage.loadMoreFromGroup(group)', href: '#'}

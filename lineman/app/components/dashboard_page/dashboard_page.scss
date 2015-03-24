@@ -4,13 +4,18 @@
 }
 
 .dashboard-options{
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .dashboard-page-dropdown-toggle{
   @include fontHelveticaMedium;
-  @include fontTiny;
+  @include fontSmall;
   text-transform: uppercase;
+  color: $meta-text-color;
+}
+
+.dashboard-page-date-range{
+  @include fontSmall;
   color: $meta-text-color;
 }
 
@@ -23,17 +28,17 @@
 
 .dashboard-page-group-name a{
   @include fontHelveticaMedium;
-  @include fontModerate;
+  @include fontCrapName;
   line-height: 30px;
   color: $meta-text-color;
   margin-left: 16px;
+  margin-top: 0;
 }
 
 .dashboard-page-thread {
-  padding: 10px;
+  padding: 13px 10px;
   border-bottom: 1px solid $border-color;
 }
-
 
 .dashboard-page-thread-title.is-unread {
   font-weight: bold;
@@ -47,9 +52,9 @@
 .dashboard-page-unread-count {
   white-space: nowrap;
   width: 38px;
-  min-height: 32px;
+  min-height: 45px;
   float: left;
-  @include fontModerate;
+  @include fontCrapName;
   @include fontHelveticaBold;
   color: $meta-text-color;
   text-align: center;
@@ -61,11 +66,22 @@
 
 .dashboard-page-thread-header {
   @include fontCrapName;
-  line-height: 24px;
+  padding-bottom: 4px;
 }
 .dashboard-page-thread-info {
   @include metaText;
 }
+.dashboard-page-show-more{
+  padding: 15px 15px 15px 48px;
+}
+.dashboard-page-show-more a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: $meta-text-color;
+  text-decoration: underline;
+}
+.dashboard-page-show-more a:hover{color: $primary-text-color;}
 .dashboard-page-footer {
   font-size: 0.01em;
   height: 1px;

@@ -81,7 +81,6 @@ $navbar-height: 45px;
 @mixin metaText {
   color: $meta-text-color;
   @include fontTiny;
-  line-height: 20px;
 }
 
 @mixin card{
