@@ -19,13 +19,6 @@
   color: $meta-text-color;
 }
 
-.dashboard-page-threads {
-  @include card;
-  padding: 0;
-  margin-bottom: 26px;
-  margin-top: 9px;
-}
-
 .dashboard-page-group-name a{
   @include fontHelveticaMedium;
   @include fontCrapName;
@@ -35,13 +28,16 @@
   margin-top: 0;
 }
 
-.dashboard-page-thread {
-  padding: 13px 10px;
-  border-bottom: 1px solid $border-color;
+.dashboard-page-threads {
+  @include card;
+  padding: 0;
+  margin-bottom: 26px;
+  margin-top: 9px;
 }
 
-.dashboard-page-thread-title.is-unread {
-  font-weight: bold;
+.dashboard-page-thread {
+  padding: 13px 13px;
+  border-bottom: 1px solid $border-color;
 }
 
 .dashboard-page-thread-group-logo{
@@ -51,7 +47,7 @@
 
 .dashboard-page-unread-count {
   white-space: nowrap;
-  width: 38px;
+  width: 35px;
   min-height: 45px;
   float: left;
   @include fontCrapName;
@@ -59,6 +55,7 @@
   color: $meta-text-color;
   text-align: center;
 }
+
 .dashboard-page-pie-chart {
   padding-right: 5px;
   line-height: 18px;
@@ -68,9 +65,15 @@
   @include fontCrapName;
   padding-bottom: 4px;
 }
+
+.dashboard-page-thread-title.is-unread {
+  font-weight: bold;
+}
+
 .dashboard-page-thread-info {
   @include metaText;
 }
+
 .dashboard-page-show-more{
   padding: 15px 15px 15px 48px;
 }
@@ -81,7 +84,10 @@
   color: $meta-text-color;
   text-decoration: underline;
 }
-.dashboard-page-show-more a:hover{color: $primary-text-color;}
+.dashboard-page-show-more a:hover{
+  color: $primary-text-color;
+}
+
 .dashboard-page-footer {
   font-size: 0.01em;
   height: 1px;
