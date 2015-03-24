@@ -25,7 +25,7 @@ angular.module('loomioApp', ['ngNewRouter',
     snakeName = _.snakeCase(name);
     'generated/components/' + snakeName + '/' + snakeName + '.html';
 
-angular.module('loomioApp').run (Records, UserAuthService) ->
+angular.module('loomioApp').run (Records) ->
   if window? and window.Loomio?
     Records.import(window.Loomio.seedRecords)
     window.Loomio.currentUser = Records.users.find(window.Loomio.currentUserId)

@@ -6,4 +6,5 @@ angular.module('loomioApp').controller 'NotificationVolumeDropdownController', (
     else if $scope.discussion
       $scope.model = Records.discussionReaders.find($scope.discussion.id)
   $scope.init()
+
   return

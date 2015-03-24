@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150315210731) do
+ActiveRecord::Schema.define(version: 20150324073159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -606,9 +606,11 @@ ActiveRecord::Schema.define(version: 20150315210731) do
     t.string   "detected_locale",                  limit: 255
     t.boolean  "email_missed_yesterday",                       default: true,       null: false
     t.string   "email_api_key",                    limit: 255
-    t.boolean  "email_when_mentioned",                         default: true,       null: false
-    t.boolean  "angular_ui_enabled",                           default: false,      null: false
-    t.boolean  "email_on_participation",                       default: true,       null: false
+    t.boolean  "email_when_mentioned",                         default: true,            null: false
+    t.boolean  "angular_ui_enabled",                           default: false,           null: false
+    t.boolean  "email_on_participation",                       default: true,            null: false
+    t.string   "dashboard_sort",                               default: "sort_by_group", null: false
+    t.string   "dashboard_filter",                             default: "show_all",      null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
