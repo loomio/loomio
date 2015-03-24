@@ -4,4 +4,3 @@ angular.module('loomioApp').directive 'notificationVolume', ->
   templateUrl: 'generated/components/notification_volume/notification_volume.html'
   replace: true
   controller: 'NotificationVolumeController'
-  link: (scope, element, attrs) ->
