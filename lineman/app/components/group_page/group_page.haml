@@ -17,6 +17,8 @@
           %notification_volume_dropdown{translate-root: 'group_page', group: 'groupPage.group'}
         .clearfix
 
+
+
         / The logic on this section wasnt working so I commented it out
         / so I could style it up. Styles are good now so this can be
         / reintegrated when we want to make it work properly
@@ -28,10 +30,12 @@
         /   %a.btn.btn-success.btn-block.btn-icon{href: '#', ng-click: 'groupPage.joinGroup()'}
         /     %i.fa.fa-lg.fa-plus>
         /     %span{translate: 'group_page.join_group' }
-
-    .group-page-description
-      .card-title{ translate: 'group_page.description' }
-      .group-description.last{ btf-markdown: 'group.description' }
-    %discussions_card{group: 'groupPage.group'}
-    %members_card{group: 'groupPage.group'}
-    %subgroups_card{group: 'groupPage.group'}
+    .row
+      .col-sm-8
+        .group-page-description
+          .card-title{ translate: 'group_page.description' }
+          .group-description.last{ btf-markdown: 'group.description' }
+        %discussions_card{group: 'groupPage.group'}
+      .col-sm-4
+        %members_card{group: 'groupPage.group'}
+        %subgroups_card{group: 'groupPage.group'}
