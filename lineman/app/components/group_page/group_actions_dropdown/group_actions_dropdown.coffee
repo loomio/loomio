@@ -3,5 +3,5 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/group_actions_dropdown/group_actions_dropdown.html'
   replace: true
-  controller: 'GroupOptionsDropdownController'
+  controller: 'GroupActionsDropdownController'
   link: (scope, element, attrs) ->
