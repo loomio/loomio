@@ -4,7 +4,10 @@ class API::EventsController < API::RestfulController
 
   def visible_records
     load_and_authorize_discussion
-    Event.where(discussion: @discussion).order(sequence_id: params[:reverse] ? :desc : :asc)
+    reverse = params[:reverse] == true || params[:reverse] == 'true'
+    #raise [reverse, params].inspect
+    #Event.where(discussion: @discussion).order(sequence_id: reverse ? :desc : :asc)
+    Event.where(discussion: @discussion).order(sequence_id: :asc)
   end
 
   def page_collection(collection)

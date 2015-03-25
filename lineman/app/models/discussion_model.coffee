@@ -74,6 +74,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     lastInboxActivity: ->
       @activeProposalClosingAt() or @lastActivityAt
 
+    unreadPosition: ->
+      @reader().lastReadSequenceId + 1
+
     markAsRead: (sequenceId) ->
       if @reader().lastReadSequenceId < sequenceId
         @restfulClient.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})
