@@ -13,9 +13,9 @@ $progress-bar-color: #176EE3;
 $loomio-orange: #F6A82B;
 
 $main-max-width: 640px;
-$thread-max-width: 640px;
-$group-page-max-width: 640px;
 $sidebar-width: 320px;
+$group-page-break-point: 480px;
+$group-page-max-width: $main-max-width + $sidebar-width;
 $navbar-height: 45px;
 
 @mixin fontTiny {

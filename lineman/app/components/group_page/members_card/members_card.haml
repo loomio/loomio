@@ -6,7 +6,7 @@
       %li
         %a{href: '/g/{{group.key}}/memberships', translate: 'group_page.options.manage_members'}
 
-  %h3.first{ translate: 'group_page.members' }
+  .card-title{ translate: 'group_page.members' }
 
   .group-member-list
     .group-member-list-item{ng-repeat: 'member in group.members()'}
