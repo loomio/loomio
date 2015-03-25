@@ -1,5 +1,6 @@
 .loading-wrapper.container.main-container
-  %form.form-card{name: 'groupForm', ng_submit: 'submit()'}
+  %loading{ng-unless: 'groupForm.group'}
+  %form.form-card{ng-if: 'groupForm.group', ng_submit: 'groupForm.submit()'}
     %fieldset{ng_disabled: 'isDisabled'}
       %h1{ng_show: 'groupForm.group.isNew() && !groupForm.group.parentId', translate: 'group_form.new_group_title'}
       %h1{ng_show: 'groupForm.group.isNew() && groupForm.group.parentId', translate: 'group_form.new_subgroup_title', translate-value-parent-group-name: '{{group.parentName()}}'}
@@ -19,7 +20,7 @@
         %label{for: 'group-visible-to-members', translate: 'group_form.privacy.visible_to_members'}
         %select#group-visible-to-members-field.form-control{ng_model: 'groupForm.group.visibleTo', ng_required: true}
           %option{value: 'public', ng_show: '!group.parentIsHidden()', translate: 'group_form.privacy.public_visibility'}
-          %option{value: 'parent_members', ng_show: 'groupForm.group.parent()', translate: 'group_form.privacy.organization_visibility'}
+          %option{value: 'parent_members', ng_show: 'groupForm.group.parentId', translate: 'group_form.privacy.organization_visibility'}
           %option{value: 'members', translate: 'group_form.privacy.private_visibility'}
 
         %label{for: 'group-membership-granted-upon', translate: 'group_form.privacy.membership_granted_upon'}
@@ -73,5 +74,5 @@
             %input#group-members-can-vote{type: 'checkbox', ng_model: 'groupForm.group.membersCanVote'}
             %span{translate: 'group_form.permissions.members_can_vote'}
 
-      %button.btn.btn-primary{type: 'submit', translate: 'group_form.new_group_submit', ng_show: 'groupForm.group.isNew()', ng-click: 'groupForm.submit()'}
-      %button.btn.btn-primary{type: 'submit', translate: 'group_form.edit_group_submit', ng_hide: 'groupForm.group.isNew()', ng-click: 'groupForm.submit()'}
+      %button.btn.btn-primary{type: 'submit', translate: 'group_form.new_group_submit', ng_show: 'groupForm.group.isNew()'}
+      %button.btn.btn-primary{type: 'submit', translate: 'group_form.edit_group_submit', ng_hide: 'groupForm.group.isNew()'}
