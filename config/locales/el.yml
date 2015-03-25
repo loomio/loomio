@@ -434,7 +434,7 @@ el:
       not_following_details: Θα ειδοποιηθείτε σχετικά με τα θέματα που συμμετέχετε.
   networks:
     threads_header: όλα τα δημόσια θέματα σε αυτό το δίκτυο
-    groups_header: όλες οι ομάδες σε αυτό το δίκτυο
+    groups_header: "όλες %{count} οι ομάδες σε αυτό το δίκτυο"
     members_count: "%{count} μέλη "
     membership_requests_header: "Νέα αίτηση μέλους από %{network}"
     join_header: Προσθήκη της ομάδας σας στο δίκτυο

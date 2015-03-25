@@ -10,6 +10,7 @@ sr:
       try_it: Probaj
       log_in: PRIJAVI SE
       video: Vidi više o tome kako Lumio radi
+      try_loomio: Probaj Lumio
       try_loomio_beta: Probaj Lumio Beta
       more: Još
       top: Vrh
@@ -17,6 +18,9 @@ sr:
       terms: Uslovi
       privacy: Privatnost
       services: Usluge
+    hero:
+      header_html: "Lumio je najjednostavniji način da<br /> <strong>odlučujete zajedno</strong>."
+      lead_html: "Loomio pomaže organizacijama i zajednici da preokrenu <strong>diskusiju u akciju</strong>, tamo gde su ljudi."
     product:
       header_html: "Kada čujemo <strong>sva mišljenja</strong>, donosimo <strong>ispravnije odluke</strong>."
       step1:
@@ -30,6 +34,8 @@ sr:
         desc: "Razvijanje predloga zajednički tako da funkcioniše za svakog. Svaka odluka ima jasan rok, tako da je uvek kristalno jasan ishod."
     crowdfunding:
       header: Mi smo dobili sredstva od zajednice tako da možemo završiti razvoj ove nove platforme i dati je nazad zajednici.
+    mobile:
+      lead_html: "<strong>Lumio radi na svakom uređaju,</strong><br />odlučuj bilo gde, bilo kada."
     quote:
       header:
         rushkoff_html: "“Lumio <strong>oslobađa potencijal interneta</strong> da približi ljude samom koncenzusu umesto polarizovanoj debati.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autor <em>Present Shock</em></div>"
