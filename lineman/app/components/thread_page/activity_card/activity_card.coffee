@@ -5,23 +5,35 @@ angular.module('loomioApp').directive 'activityCard', ->
   replace: true
   controller: ($scope, $rootScope, $location, Records) ->
     $scope.loading = false
-    $scope.pageSize = 50
+    $scope.pageSize = 30
     $scope.firstLoadedSequenceId = 0
     $scope.lastLoadedSequenceId = 0
+    rollback = 2
 
     $scope.init = ->
       $scope.discussion.markAsRead(0)
 
       # want to request the window of items that best suits the read position
       if _.isFinite(_.parseInt($location.hash()))
-        readPosition = _.parseInt($location.hash())
+        startPosition = _.parseInt($location.hash())
       else
-        readPosition = $scope.discussion.unreadPosition()
+        startPosition = $scope.discussion.unreadPosition()
+        $location.hash($scope.discussion.unreadPosition())
 
-      $scope.loadEventsForwards()
+      windowTop = startPosition - rollback
+
+      if (windowTop + $scope.pageSize - 1) > $scope.discussion.lastSequenceId
+        windowTop = $scope.discussion.lastSequenceId - $scope.pageSize + 1
+
+      $scope.firstLoadedSequenceId = windowTop
+      $scope.loadEvents(from: windowTop - 1).then (events) ->
+        # presumably scroll.. maybe after 100 ms
 
     $scope.lastSequenceId = 0
     visibleSequenceIds = []
+
+    $scope.beforeCount = ->
+      $scope.firstLoadedSequenceId - $scope.discussion.firstSequenceId
 
     updateLastSequenceId = ->
       visibleSequenceIds = _.uniq(visibleSequenceIds)

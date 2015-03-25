@@ -288,6 +288,9 @@ en:
       date: By Date
       date_description: Sort threads by date.
 
+  activity_card:
+    load_previous: '{{count}} older items. Click to load'
+
   discussion:
     proposals: 'Proposals'
     previous_proposals: 'Previous Proposals'
