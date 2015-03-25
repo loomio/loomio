@@ -55,12 +55,17 @@ en:
     in_reply_to: "In reply to <strong>{{name}}</strong>:"
 
   navbar:
+    dashboard: 'Go to dashboard'
+    start_thread: 'Start a new thread'
+    notifications: 'Open notifications panel'
     user_options:
+      label: 'Open user options menu'
       contact_us: 'Contact us'
-      new_thread: 'New Thread'
+      new_thread: 'New thread'
       profile: 'Profile'
       help: 'Help'
     search:
+      close: 'Close search panel'
       placeholder: 'Search for groups or threads'
       loading: 'Loading results...'
       discussions: 'Threads'
