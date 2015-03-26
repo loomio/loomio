@@ -15,11 +15,13 @@
                   = t(:'join_group.log_in', group_name: @invitation.invitable_name)
               - else
                 = t :sign_in
+
+          %p
+            = t(:'dont_have_an_account')
+            = link_to t(:'create_one_now'), new_user_registration_path, id:'create_account'
           .signin_container
-            = render 'devise/shared/omniauth_buttons'
-            .separator-container
-              .separator
-                = t :or
             = render "form"
+            = render 'devise/shared/omniauth_buttons'
+
           .terms
             =t(:terms_of_service_html, button_text: t(:'devise.sessions.sign_in'), link_path: terms_of_service_path) if hosted_by_loomio?
