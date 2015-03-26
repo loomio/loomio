@@ -2,7 +2,7 @@ class DiscussionReaderCache
   attr_accessor :user, :cache
 
   def initialize(user: nil, discussions: [])
-    return unless user && discussions
+    return unless user && user.is_logged_in? && discussions
 
     @user, @cache = user, {}
     DiscussionReader.includes(:discussion)
