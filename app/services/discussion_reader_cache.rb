@@ -2,9 +2,9 @@ class DiscussionReaderCache
   attr_accessor :user, :cache
 
   def initialize(user: nil, discussions: [])
+    @user, @cache = user, {}
     return unless user && user.is_logged_in? && discussions
 
-    @user, @cache = user, {}
     DiscussionReader.includes(:discussion)
                     .where(user_id: user.id,
                            discussion_id: discussions.map(&:id))
@@ -14,7 +14,7 @@ class DiscussionReaderCache
   end
 
   def get_for(discussion)
-    cache.fetch discussion.id, DiscussionReader.for(discussion: discussion, user: user)
+    cache.fetch(discussion.id) { DiscussionReader.for(discussion: discussion, user: user) }
   end
 
 end
