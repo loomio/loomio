@@ -1,13 +1,13 @@
 .group-page-privacy{dropdown: '', on-toggle: 'toggled(open)'}
   %a.btn.btn-nude.dropdown-toggle{href: '#'}
     .group-visibility-public{ng_show: 'group.visibleToPublic()'}
-      %i.fa.fa-lg.fa-globe>
+      %i.fa.fa-lg.fa-globe{aria-hidden:'true'}>
       %span{translate: 'common.privacy.public'}
     .group-visibility-organization{ng_show: 'group.visibleToOrganization()'}
-      %i.fa.fa-lg.fa-users>
+      %i.fa.fa-lg.fa-users{aria-hidden:'true'}>
       %span{translate: 'common.privacy.organization'}
     .group-visibility-private{ng_show: 'group.visibleToMembers()'}
-      %i.fa.fa-lg.fa-lock>
+      %i.fa.fa-lg.fa-lock{aria-hidden:'true'}>
       %span{translate: 'common.privacy.private'}
   .dropdown-menu.dropdown-menu-with-labels{role: 'menu', ng-class: '{disabled: !canEditGroup()}'}
     %h3.dropdown-heading{translate: 'group_page.visibility_label'}
@@ -15,7 +15,7 @@
 
       %li.dropdown-menu-item{ng_click: 'setPrivacy("members")'}
         .dropdown-menu-item-label
-          %i.fa.fa-lg.fa-lock>
+          %i.fa.fa-lg.fa-lock{aria-hidden:'true'}>
           %span{translate: 'common.privacy.private'}
           %i.fa.fa-lg.fa-check{ng_show: 'group.visibleToMembers()'}
         .dropdown-menu-item-details
@@ -23,7 +23,7 @@
 
       %li.dropdown-menu-item{ng_show: 'group.parentId', ng_click: 'setPrivacy("parent_members")'}
         .dropdown-menu-item-label
-          %i.fa.fa-lg.fa-users>
+          %i.fa.fa-lg.fa-users{aria-hidden:'true'}>
           %span{translate: 'common.privacy.organization'}
           %i.fa.fa-lg.fa-check{ng_show: 'group.visibleToOrganization()'}
         .dropdown-menu-item-details
@@ -31,7 +31,7 @@
 
       %li.dropdown-menu-item.last{ng_click: 'setPrivacy("public")'}
         .dropdown-menu-item-label
-          %i.fa.fa-lg.fa-globe>
+          %i.fa.fa-lg.fa-globe{aria-hidden:'true'}>
           %span{translate: 'common.privacy.public'}
           %i.fa.fa-lg.fa-check{ng_show: 'group.visibleToPublic()'}
         .dropdown-menu-item-details

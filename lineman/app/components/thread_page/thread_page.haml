@@ -1,25 +1,26 @@
-.loading-wrapper.container.main-container
+.loading-wrapper.container.main-container{role: 'main'}
   .loading{ng-if: '!threadPage.discussion'}
     Loading..
   .thread-page{ng-if: 'threadPage.discussion'}
 
-    .media.thread-group
-      .media-left.thread-group__icon
+    %section.media.thread-group{role: 'region', aria-label: "{{ 'thread_group.aria_label' | translate }}"}
+      .media-left.thread-group__icon{aria-hidden: 'true'}
         %img.thread-group-logo{src: "{{threadPage.group.logoUrl()}}"}
       .media-body.thread-group__name
         %a{ng_show: 'threadPage.group.parentId', href: '/g/{{threadPage.group.parent().key}}'}
           {{threadPage.group.parentName()}}
-        %span{ng_show: 'threadPage.group.parentId'}> >
+        %span{ng_show: 'threadPage.group.parentId', aria-label: '-'}> >
         %a{href: '/g/{{threadPage.group.key}}'}
           {{threadPage.group.name}}
 
-    .thread-context
+    %section.thread-context{role: 'region', aria-label: "{{ 'thread_context.aria_label' | translate }}"}
       .thread-actions.pull-right
         .dropdown.thread-notification-level
           %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
         .dropdown{ng-if: 'threadPage.showContextMenu()'}
           %a.fat-finger.dropdown-toggle{href:''}
-            %i.fa.fa-fw.fa-chevron-down.pull-right
+            .sr-only{translate: 'thread_context.thread_options'}
+            %i.fa.fa-fw.fa-chevron-down.pull-right{aria-hidden: 'true'}
           %ul.dropdown-menu.dropdown-menu-right
             %li
               %a{href: '', ng-click: 'threadPage.editDiscussion()', translate: 'common.action.edit', ng-if: 'threadPage.canEditDiscussion()'}
@@ -29,16 +30,16 @@
       .thread-context__details
         %span{translate: 'discussion.started_by', translate-value-name: '{{::threadPage.discussion.authorName()}}'}
         %timeago.nowrap{timestamp: '::threadPage.discussion.createdAt' }>
-        ·
+        %span{aria-hidden: 'true'}·
         %span.nowrap.discussion-privacy__is-private{ng-show: 'threadPage.discussion.private'}>
-          %i.fa.fa-lock>
+          %i.fa.fa-lock{aria-hidden: 'true'}>
           %span{translate: 'common.privacy.private'}
         %span.nowrap.discussion-privacy__is-public{ng-show: '!threadPage.discussion.private'}>
-          %i.fa.fa-globe>
+          %i.fa.fa-globe{aria-hidden: 'true'}>
           %span{translate: 'common.privacy.public'}
 
 
-      .thread-context__description{btf-markdown: 'threadPage.discussion.description' }
+      %article.thread-context__description{btf-markdown: 'threadPage.discussion.description' }
 
     %proposals_card{discussion: 'threadPage.discussion'}
     %activity_card{discussion: 'threadPage.discussion'}

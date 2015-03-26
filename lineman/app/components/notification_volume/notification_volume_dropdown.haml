@@ -1,12 +1,12 @@
 .group-page-notifications{dropdown: '', on-toggle: 'toggled(open)'}
   %a.group-page-notifications-button.dropdown-toggle{href: '#', ng-class: "{'btn btn-nude': showButton}"}
-    %i.fa.fa-lg.fa-fw.fa-envelope{ng-show: 'model.volume == "loud"'}>
-    %i.fa.fa-lg.fa-fw.fa-volume-up{ng-show: 'model.volume == "normal"'}>
-    %i.fa.fa-lg.fa-fw.fa-volume-down{ng-show: 'model.volume == "quiet"'}>
-    %i.fa.fa-lg.fa-fw.fa-volume-off{ng-show: 'model.volume == "mute"'}>
-    Notifications
+    %i.fa.fa-lg.fa-fw.fa-envelope{    aria-hidden: 'true', ng-show: 'model.volume == "loud"'}>
+    %i.fa.fa-lg.fa-fw.fa-volume-up{   aria-hidden: 'true', ng-show: 'model.volume == "normal"'}>
+    %i.fa.fa-lg.fa-fw.fa-volume-down{ aria-hidden: 'true', ng-show: 'model.volume == "quiet"'}>
+    %i.fa.fa-lg.fa-fw.fa-volume-off{  aria-hidden: 'true', ng-show: 'model.volume == "mute"'}>
+    %span{translate: 'notifications.header'}
   .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
-    %h3.dropdown-heading{translate: "common.volume.volume"}
+    .dropdown-heading{translate: "common.volume.volume", role: 'heading'}
     %ul.dropdown-menu-items
       %notification_volume{model: 'model', volume: 'loud', translate-root: '{{translateRoot}}'}
       %notification_volume{model: 'model', volume: 'normal', translate-root: '{{translateRoot}}'}
