@@ -42,6 +42,8 @@ angular.module('loomioApp').controller 'AppController', ($scope, $router) ->
     {path: '/d/:key/:stub', component: 'threadPage' },
     {path: '/m/:key/', component: 'proposalRedirect' },
     {path: '/m/:key/:stub', component: 'proposalRedirect' },
+    {path: '/g/new', component: 'groupForm' },
+    {path: '/g/:key/edit', component: 'groupForm' },
     {path: '/g/:key', component: 'groupPage' },
     {path: '/g/:key/:stub', component: 'groupPage' },
   ]);
