@@ -18,7 +18,7 @@ angular.module('loomioApp').directive 'activityCard', ->
         startPosition = _.parseInt($location.hash())
       else
         startPosition = $scope.discussion.unreadPosition()
-        $location.hash($scope.discussion.unreadPosition())
+        #$location.hash($scope.discussion.unreadPosition())
 
       windowTop = startPosition - rollback
 

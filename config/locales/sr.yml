@@ -1,4 +1,11 @@
 sr:
+  email_settings:
+    title: Podešavanja ePoruka
+    yesterday_on_loomio: Pošalji mi ePoruku sa izveštajem o aktivnostima svakog dana
+    email_when_mentioned: "Pošalji mi ePoruku kada me neko @naznači"
+    proposal_closing_soon: Obavesti me pre zatvaranja predloga
+    submit: Postavke ažuriranja
+    no_change: Bez promena
   explore:
     header: Istraži javne grupe
   try_it:
@@ -12,6 +19,7 @@ sr:
     errors:
       messages:
         blank: ne može biti prazno
+        invalid: nije prihvatljivo
   errors:
     messages:
       email: Neispravna adresa ePošte
@@ -63,6 +71,7 @@ sr:
     group_already_setup: Grupa koju pokušavate da napravite već postoji.
     passwords_did_not_match: Lozinka se ne poklapa sa potvrdom
     proposal_already_exists: Ovde je već jedan otvoreni predlog u diskusiji.
+    username_cannot_contain_whitespace: Korisničko ime ne može sadržati razmake
     user_with_email_address_already_in_group: Korisnik sa ovom adresom ePošte već pripada ovoj grupi.
     you_have_already_requested_membership: Već ste zatražili članstvo u ovoj grupi.
     you_are_already_a_member_of_this_group: Već ste član ove grupe.
@@ -101,6 +110,8 @@ sr:
     logo_upload: Pošalji nov logotip
     edit_description: Izmeni opis
     group_category: Nađi još sličnih grupa
+    unread_comments: Nepročitani komentari
+    new_votes: Novi glasovi
   views:
     pagination:
       previous: Pret
@@ -188,7 +199,9 @@ sr:
     about: O nama
     blog: Blog
     contact: Kontakt
+    help: Pomoć
     privacy: Privatnost
+    pricing: Cenovnik
     public_groups: Javne grupe
     terms: Uslovi
   inbox:
@@ -217,6 +230,8 @@ sr:
     motion_blocked: blokirao/la diskusiju
     motion_outcome_created: objavljen je jedan ishod predloga
     motion_outcome_updated: ažurirao/la je ishod predloga
+    email_actions:
+      following_thread: "Sada pratiš niz: %{thread_title}"
   edit_discussion_context: Uredi kontekst diskusije
   request_new_group: Započni grupu
   start_new_group: Započni novu grupu
@@ -418,13 +433,38 @@ sr:
       click_to_unfollow: Škljocni da prestaneš da pratiš grupu
       following_details: Bićete obavešteni o svakom dešavanju u ovoj grupi.
       not_following_details: Bićete obavešteni o svemu čemu se priključite.
+  networks:
+    groups_header: "svih %{count} grupa u ovoj mreži"
+    members_count: "%{count} članova"
+    join_header: Dodaj svoju grupu mreži
+    request_to_join: Zahtev za priključivanje Mreži
+    current_requests: Trenutni zahtevi
+    previous_requests: Prethodni zahtevi
+    approve: Odobri
+    approved: "Odobreno od %{name}"
+    decline: Odbij
+    declined: "Odbijeno od %{name}"
+    threads: Nizovi
+    groups: Grupe
+    manage: "Upravljaj (%{count} zahteva na čekanju)"
   group_request:
+    header: Kreiraj grupu
+    desc: "Kreiraj grupu da počneš donositi odluke sa drugima na Lumiju:"
     commercial_use_option: "u kompaniji, formalnoj organizaciji radnom mestu"
     non_commercial_use_option: u grupi zajednice ili informativnoj mreži
     please_select_an_option: Molim odaberite jednu opciju
     confirmation:
       title: "Još malo pa gotovo! Proverite ePoštu."
       body_html: "Poslali smo vam jednu ePoruku sa pozivnicom za pokretanje Vaše grupe.\n\nAko kroz par minuta ne vidite ePoruku u vašem sandučetu, kontaktirajte nas na <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    loud: Glasno
+    normal: Normalno
+    quiet: Tiho
+    mute: Isključeno
+  discussion_volume:
+    quiet_description: Ne šalji ePoruke o ovom nizu.
+  group_volume:
+    loud_description: ePoruka kada god ima aktivnosti.
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> se slaže sa predlogom."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> se suzdržao/la o predlogu."
@@ -590,6 +630,7 @@ sr:
     video_id: "52025402"
     video_tutorial: Video uputstvo
     video_tutorial_description: Pogledajte kratak video o tome kako se koristi Lumio.
+    what_is_loomio: Šta je Lumio?
   hint:
     context: Saveti za upotrebu kontekstualnog panela
     discussion: Saveti za pokretanje zanimljive diskusije

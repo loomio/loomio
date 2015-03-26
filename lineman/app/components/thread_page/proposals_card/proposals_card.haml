@@ -1,5 +1,5 @@
-.proposals-card
-  %h3.first{translate: 'discussion.proposals'}
+%section.proposals-card{role: 'region', aria-labelledby: 'proposals-card-heading'}
+  .card-title#proposals-card-heading{translate: 'discussion.proposals', role: 'heading'}
 
   .proposals-card__start-proposal{ng-if: 'proposalsCard.canStartProposal()'}
     %h3.first Ready to make a decision?

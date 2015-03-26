@@ -1,13 +1,13 @@
 .thread-item--inner{ng-controller: 'NewProposalItemController'}
-  .thread-item-header.media
+  .sr-only{role: 'heading', aria-label: "{{ proposal.authorName() }} {{ 'activity_card.new_motion.aria_label' | translate }} {{ proposal.name }} "}
+  .thread-item-header.media{aria-hidden: 'true'}
     .media-left
       .thread-item-proposal-icon
     .media-body
       %span{translate: "new_proposal_item.author_created_proposal", translate-value-name: '{{proposal.authorName()}}'}
-  .thread-item-body
+  .thread-item-body{aria-hidden: 'true'}
     {{proposal.name}}
 
   .thread-item-footer
     .thread-actions-and-meta
       %timeago{timestamp: 'proposal.createdAt'}
-

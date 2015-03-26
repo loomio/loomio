@@ -1,6 +1,6 @@
 .dashboard-container {
   margin: 10px auto;
-  max-width: $thread-max-width;
+  max-width: $main-max-width;
 }
 
 .dashboard-options{
@@ -19,13 +19,6 @@
   color: $meta-text-color;
 }
 
-.dashboard-page-threads {
-  @include card;
-  padding: 0;
-  margin-bottom: 26px;
-  margin-top: 9px;
-}
-
 .dashboard-page-group-name a{
   @include fontHelveticaMedium;
   @include fontCrapName;
@@ -35,13 +28,18 @@
   margin-top: 0;
 }
 
-.dashboard-page-thread {
-  padding: 13px 10px;
-  border-bottom: 1px solid $border-color;
+.dashboard-page-threads {
+  @include card;
+  padding: 0;
+  margin-bottom: 26px;
+  margin-top: 9px;
 }
 
-.dashboard-page-thread-title.is-unread {
-  font-weight: bold;
+.dashboard-page-thread {
+  padding: 13px 13px;
+  border-bottom: 1px solid $border-color;
+  position: relative;
+  &:hover { background-color: $list-hover-color; }
 }
 
 .dashboard-page-thread-group-logo{
@@ -49,16 +47,45 @@
   img{ width: 32px; height: 32px; }
 }
 
-.dashboard-page-unread-count {
+.dashboard-page-proposal-vote {
+  padding: 2px 5px;
+}
+
+.dashboard-page-proposal-icon{
+  width: 30px;
+  height: 30px;
+}
+
+.dashboard-page-vote-icon-yes {
+  background-image: url(/img/green_thumb_22.png);
+}
+
+.dashboard-page-vote-icon-abstain {
+  background-image: url(/img/yellow_thumb_22.png);
+}
+
+.dashboard-page-vote-icon-no {
+  background-image: url(/img/pink_thumb_22.png);
+}
+
+.dashboard-page-vote-icon-block {
+  background-image: url(/img/red_flag_22.png);
+}
+
+.dashboard-page-left {
   white-space: nowrap;
-  width: 38px;
+  width: 35px;
   min-height: 45px;
   float: left;
+}
+
+.dashboard-page-unread-count {
   @include fontCrapName;
   @include fontHelveticaBold;
   color: $meta-text-color;
   text-align: center;
 }
+
 .dashboard-page-pie-chart {
   padding-right: 5px;
   line-height: 18px;
@@ -68,9 +95,51 @@
   @include fontCrapName;
   padding-bottom: 4px;
 }
+
+.dashboard-page-thread-title {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.dashboard-page-thread-title.is-unread {
+  font-weight: bold;
+}
+
 .dashboard-page-thread-info {
   @include metaText;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 20px;
 }
+
+.dashboard-page-thread:hover .dashboard-page-thread-actions {
+  display: block;
+}
+
+.dashboard-page-thread-actions {
+  display: none;
+  position: absolute;
+  color: white;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding: 20px 10px;
+  background: $list-hover-transparent-color;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: 30px;
+    background: linear-gradient(to left, $list-hover-transparent-color, transparent);
+    height: 100%;
+  }
+}
+
+.dashboard-page-thread-action-button {
+  padding: 10px;
+}
+
 .dashboard-page-show-more{
   padding: 15px 15px 15px 48px;
 }
@@ -81,7 +150,10 @@
   color: $meta-text-color;
   text-decoration: underline;
 }
-.dashboard-page-show-more a:hover{color: $primary-text-color;}
+.dashboard-page-show-more a:hover{
+  color: $primary-text-color;
+}
+
 .dashboard-page-footer {
   font-size: 0.01em;
   height: 1px;

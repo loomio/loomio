@@ -42,7 +42,7 @@ fi:
   main: 6
 fr:
   frontpage: 100
-  main: 100
+  main: 99
 ga-IE:
   frontpage: 35
   main: 44
@@ -113,10 +113,10 @@ sl:
   frontpage: 100
   main: 96
 sr:
-  frontpage: 89
-  main: 92
+  frontpage: 100
+  main: 95
 sr-RS:
-  frontpage: 89
+  frontpage: 100
   main: 92
 sv:
   frontpage: 89

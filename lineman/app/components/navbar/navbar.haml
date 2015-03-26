@@ -1,14 +1,13 @@
 %header.lmo-navbar{role: 'navigation'}
   .lmo-navbar-flexbox
     .lmo-navbar-logo
-      %a.lmo-navbar-btn{href: '/dashboard'}
+      %a.lmo-navbar-btn{href: '/dashboard', title: "{{ 'navbar.dashboard' | translate }}"}
         .lmo-navbar-logo-image
-    .lmo-navbar-search
+    .lmo-navbar-search{role: 'search'}
       %navbar_search
     .lmo-navbar-buttons
       %navbar_start_discussion
       %navbar_notifications{ng-controller: 'NavbarNotificationsController'}
       %navbar_user_options
-    -#%navbar_inbox
   %thread_lintel
   %flash{modal: 'false'}

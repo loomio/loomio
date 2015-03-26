@@ -8,6 +8,7 @@ describe API::DiscussionsController do
   let(:another_group) { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:subgroup_discussion) { create :discussion, group: subgroup }
+  let(:muted_discussion) { create :discussion, group: group }
   let(:old_discussion) { create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago }
   let(:comment) { create :comment, discussion: discussion}
   let(:proposal) { create :motion, discussion: discussion, author: user }
@@ -24,6 +25,7 @@ describe API::DiscussionsController do
     subgroup.add_member! user
     sign_in user
     discussion.reload
+    DiscussionReader.for(user: user, discussion: muted_discussion).set_volume! 'mute'
   end
 
   describe 'inbox_by_date' do
@@ -34,6 +36,14 @@ describe API::DiscussionsController do
       ids = json['discussions'].map { |v| v['id'] }
       expect(ids).to include discussion.id
       expect(ids).to_not include old_discussion.id
+    end
+
+    it 'does not return muted discussions' do
+      muted_discussion.reload
+      get :inbox_by_date
+      json = JSON.parse(response.body)
+      ids = json['discussions'].map { |v| v['id'] }
+      expect(ids).to_not include muted_discussion.id
     end
   end
 
@@ -85,26 +95,6 @@ describe API::DiscussionsController do
       json = JSON.parse(response.body)
       expect(json.keys).to include *(%w[users groups proposals discussions])
       expect(json['discussions'][0].keys).to include *(%w[id key title description last_item_at last_comment_at created_at updated_at items_count comments_count private author_id group_id active_proposal_id])
-    end
-  end
-
-  describe 'mark_as_read', focus: true do
-    it "Marks context/discusion as read" do
-      patch :mark_as_read, id: discussion.key, sequence_id: 0
-      dr = DiscussionReader.for(discussion: discussion,
-                                user: user)
-      expect(dr.last_read_at).to eq discussion.last_activity_at
-      expect(dr.last_read_sequence_id).to eq 0
-    end
-
-    it "Marks thread item as read", focus: true do
-      event = CommentService.create(comment: comment, actor: discussion.author)
-      event.reload
-      patch :mark_as_read, id: discussion.key, sequence_id: event.sequence_id
-
-      dr = DiscussionReader.for(discussion: discussion, user: user)
-      expect(dr.last_read_at).to eq event.created_at
-      expect(dr.last_read_sequence_id).to eq 1
     end
   end
 

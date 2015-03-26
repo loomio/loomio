@@ -434,7 +434,7 @@ de:
       not_following_details: Du wirst über Diskussionen informiert an denen Du beteiligt bist.
   networks:
     threads_header: alle öffentlichen Threads in diesem Netzwerk
-    groups_header: alle Gruppen in diesem Netzwerk
+    groups_header: "alle %{count} Gruppen in diesem Netzwerk"
     members_count: "%{count} Mitglieder "
     membership_requests_header: "Mitgliedschaftsanfrage von %{network}"
     join_header: Fügen Sie Ihre Gruppe zu dem Netzwerk
