@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'CommentFormController', ($scope, Records) ->
+angular.module('loomioApp').controller 'CommentFormController', ($scope, FlashService, Records) ->
   $scope.comment = $scope.comment or Records.comments.initialize(discussion_id: $scope.discussion.id)
   group = $scope.discussion.group()
 
@@ -11,6 +11,7 @@ angular.module('loomioApp').controller 'CommentFormController', ($scope, Records
   saveSuccess = ->
     $scope.comment = Records.comments.initialize(discussion_id: $scope.discussion.id)
     $scope.$emit('commentSaveSuccess')
+    FlashService.good('comment_form.flash_messages.created')
 
   saveError = (error) ->
     console.log error

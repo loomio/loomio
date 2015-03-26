@@ -3,5 +3,26 @@ angular.module('loomioApp').directive 'notificationVolumeDropdown', ->
   restrict: 'E'
   templateUrl: 'generated/components/notification_volume/notification_volume_dropdown.html'
   replace: true
-  controller: 'NotificationVolumeDropdownController'
-  link: (scope, element, attrs) ->
+  controller: ($scope, FlashService, Records, UserAuthService) ->
+    $scope.saveVolume = ->
+      $scope.model.save().then ->
+        FlashService.good $scope.translateRoot+".volume.updated"
+
+    $scope.volumeLevels = ["loud", "normal", "quiet", "mute"]
+
+    $scope.iconClassForLevel = (level) ->
+      switch level
+        when 'loud' then 'fa-envelope'
+        when 'normal' then 'fa-volume-up'
+        when 'quiet' then 'fa-volume-down'
+        when 'mute' then 'fa-volume-off'
+
+    $scope.init = ->
+      if $scope.group
+        $scope.model = $scope.group.membershipFor(window.Loomio.currentUser)
+        $scope.showButton = true
+      else if $scope.discussion
+        $scope.model = $scope.discussion.reader()
+
+    $scope.init()
+    return
