@@ -1,5 +1,5 @@
-.group-page-subgroups{ng_show: '!group.parentId'}
-  .card-title{ translate: 'group_page.subgroups' }
+%section.group-page-subgroups{ng_show: '!group.parentId', role: 'region', aria-labelledby: 'subgroups-card-title'}
+  #subgroups-card-title.card-title{ translate: 'group_page.subgroups', role: 'heading' }
   .subgroup-list
     .media.subgroup-list-item{ng-repeat: 'subgroup in group.subgroups()'}
       .media-left
@@ -13,5 +13,5 @@
 
     .card-minor-action{ng-if: '::canCreateSubgroups()'}
       %a{href: '/g/new?parent_id={{group.key}}'}
-        %span>+
+        %span{aria-hidden:'true'}>+
         %span{ translate: 'common.action.add_subgroup' }

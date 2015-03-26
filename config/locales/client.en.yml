@@ -1,16 +1,13 @@
 en:
   common:
-    volume:
-      volume: 'Volume'
-      loud: 'Loud'
-      normal: 'Normal'
-      quiet: 'Quiet'
-      mute: 'Mute'
+    volume: 'Volume'
+    notification_volume: 'Notification Volume'
     groups: 'Groups'
     privacy:
       private: 'Private'
       public: 'Public'
       organization: 'Organization'
+    selected: 'Selected'
     date_range:
       today: 'Today'
       yesterday: 'Yesterday'
@@ -32,6 +29,12 @@ en:
     messages:
       aw_crap: 'We''re sorry, but something went wrong. Please try again'
 
+  volume_levels:
+    loud: 'Loud'
+    normal: 'Normal'
+    quiet: 'Quiet'
+    mute: 'Mute'
+
   inbox:
     clear: 'Clear'
     latest: 'Latest'
@@ -45,7 +48,11 @@ en:
     sign_in: 'Login'
 
   comment_form:
+    aria_label: 'Add a comment'
+    attachments:
+      aria_label: 'Attach a file'
     flash_messages:
+      created: 'Your comment was added to the thread'
       update_comment: 'Changes saved'
       destroy_comment: 'You comment has been deleted'
     edit_comment: 'Edit comment'
@@ -53,14 +60,22 @@ en:
     confirm_delete_message: 'Are you sure you want to delete this comment?'
     confirm_delete: 'Yes, I am sure'
     in_reply_to: "In reply to <strong>{{name}}</strong>:"
+    submit_button:
+      label: 'Post'
+
 
   navbar:
+    dashboard: 'Go to dashboard'
+    start_thread: 'Start a new thread'
+    notifications: 'Open notifications panel'
     user_options:
+      label: 'Open user options menu'
       contact_us: 'Contact us'
-      new_thread: 'New Thread'
+      new_thread: 'New thread'
       profile: 'Profile'
       help: 'Help'
     search:
+      close: 'Close search panel'
       placeholder: 'Search for groups or threads'
       loading: 'Loading results...'
       discussions: 'Threads'
@@ -180,6 +195,9 @@ en:
         public: 'This group is now visible to the public'
       leave_group_success: 'You have successfully left this group'
       deactivate_group_success: 'You have successfully deactivated this group'
+    group_logo: 'Group logo'
+    header:
+      aria_label: 'Group page header'
     description: 'Description'
     discussions: 'Threads'
     members: 'Members'
@@ -189,6 +207,7 @@ en:
     options_label: 'Options'
     join_group: 'Join Group'
     options:
+      label: 'Options'
       edit_group: 'Edit Group Settings'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
@@ -206,6 +225,7 @@ en:
       normal: 'Just email important activity: New discussions and proposals, outcomes etc.'
       quiet: Don't email about this group. Activity will be displayed on the dashboard.
       mute: Hide this group from the dashboard and do not notify unless @mentioned.
+      updated: Group volume updated.
     privacy:
       private: 'This group is only visible to members'
       parent_members: 'This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
@@ -289,6 +309,7 @@ en:
       date_description: Sort threads by date.
 
   discussion:
+    activity: 'Activity'
     proposals: 'Proposals'
     previous_proposals: 'Previous Proposals'
     load_previous: 'Load previous thread items'
@@ -306,6 +327,22 @@ en:
       normal: 'Just email when a proposal is created, about to close, or an outcome is posted.'
       quiet: Don't email about this thread.
       mute: Hide this thread from the dashboard and do not notify unless @mentioned.
+      updated: Thread volume updated.
+
+  thread_group:
+    aria_label: 'Group name'
+  thread_context:
+    aria_label: 'Thread context'
+    thread_options: 'Thread options'
+
+  activity_card:
+    attachment_display:
+      aria_label: 'File attached:'
+      image_alt: 'Attached image'
+    new_comment:
+      aria_label: 'Comment by'
+    new_motion:
+      aria_label: 'started a proposal:'
 
   delete_comment_dialog:
     title: 'Delete comment'

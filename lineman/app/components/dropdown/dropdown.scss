@@ -1,25 +1,35 @@
+.dropdown-menu label {
+  font-weight: normal;
+  cursor: pointer;
+}
 .dropdown-menu-with-labels{
   padding: 15px;
   width: 300px;
 }
+
 .dropdown-menu-with-labels .fa-check{
   margin-left: 5px;
 }
+
 .dropdown-menu-items{
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .dropdown-menu-item{
   margin-bottom: 10px;
   cursor: pointer;
 }
+
 .disabled .dropdown-menu-item{
   cursor: auto;
 }
+
 .dropdown-menu-item.last{
   margin-bottom: 0;
 }
+
 li .dropdown-menu-item-label{
   font-weight: bold;
   line-height: 24px;
@@ -29,10 +39,16 @@ li .dropdown-menu-item-label{
     color: $primary-text-color;
   }
 }
+
 .disabled .dropdown-menu-item{
   color: $kinda-dark-grey;
 }
-h3.dropdown-heading{
+
+.dropdown-heading{
+  @include fontHelveticaMedium;
+  @include fontSmall;
+  text-transform: uppercase;
+  color: $kinda-dark-grey;
   margin: 0 0 10px 0;
   border-bottom: 1px solid $border-color;
 }
