@@ -4,6 +4,10 @@ angular.module('loomioApp').factory 'FlashService', ($timeout, FlashModel) ->
     constructor: ->
       @currentFlash = new FlashModel
 
+    good: (translateKey, translateValues) =>
+      @set translateKey, "success", translateValues
+
+    # sorry, but I cannot jam with this
     success: (recordName, action, options = {}) =>
       @set "#{recordName}_record.#{action}", "success", options
 
@@ -23,4 +27,4 @@ angular.module('loomioApp').factory 'FlashService', ($timeout, FlashModel) ->
       @currentFlash.level   = level
       @currentFlash.options = options
       $timeout.cancel @pending if @pending?
-      @pending = $timeout @clear, 4000
+      @pending = $timeout @clear, 2000

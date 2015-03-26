@@ -1,11 +1,7 @@
 en:
   common:
-    volume:
-      volume: 'Volume'
-      loud: 'Loud'
-      normal: 'Normal'
-      quiet: 'Quiet'
-      mute: 'Mute'
+    volume: 'Volume'
+    notification_volume: 'Notification Volume'
     groups: 'Groups'
     privacy:
       private: 'Private'
@@ -32,6 +28,12 @@ en:
     messages:
       aw_crap: 'We''re sorry, but something went wrong. Please try again'
 
+  volume_levels:
+    loud: 'Loud'
+    normal: 'Normal'
+    quiet: 'Quiet'
+    mute: 'Mute'
+
   inbox:
     clear: 'Clear'
     latest: 'Latest'
@@ -46,6 +48,7 @@ en:
 
   comment_form:
     flash_messages:
+      created: 'Your comment was added to the thread'
       update_comment: 'Changes saved'
       destroy_comment: 'You comment has been deleted'
     edit_comment: 'Edit comment'
@@ -206,6 +209,7 @@ en:
       normal: 'Just email important activity: New discussions and proposals, outcomes etc.'
       quiet: Don't email about this group. Activity will be displayed on the dashboard.
       mute: Hide this group from the dashboard and do not notify unless @mentioned.
+      updated: Group volume updated.
     privacy:
       private: 'This group is only visible to members'
       parent_members: 'This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
@@ -306,6 +310,7 @@ en:
       normal: 'Just email when a proposal is created, about to close, or an outcome is posted.'
       quiet: Don't email about this thread.
       mute: Hide this thread from the dashboard and do not notify unless @mentioned.
+      updated: Thread volume updated.
 
   delete_comment_dialog:
     title: 'Delete comment'
