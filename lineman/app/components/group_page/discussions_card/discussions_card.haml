@@ -1,5 +1,5 @@
-.group-page-threads
-  .card-title{ translate: 'group_page.discussions' }
+%section.group-page-threads{role: 'region', aria-labelledby: 'threads-card-title'}
+  #threads-card-title.card-title{ translate: 'group_page.discussions', role: 'heading' }
   .group-thread-list
     .group-thread-list-item{ng_repeat: 'discussion in group.discussions() | orderBy: ["-createdAt"]'}
       .time-and-icon.pull-right

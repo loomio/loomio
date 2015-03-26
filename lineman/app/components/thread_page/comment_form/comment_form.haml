@@ -1,13 +1,15 @@
-%form.comment-form{name: 'commentForm', ng_submit: 'submit()'}
-  %span{translate: 'comment_form.in_reply_to', translate-values: "{name: '{{comment.parentAuthorName()}}' }", ng-show: 'comment.parentAuthorName()'}
-  %textarea#comment-field.form-control.cuke-comment-field{name: 'body', placeholder: "Say something...", ng_model: 'comment.body', mentio: true, mentio-trigger-char: "'@'", mentio_items: 'mentionables', mentio-template-url: 'generated/components/thread_page/comment_form/mentio_menu.html', mentio-search: 'getMentionables(term)', mentio-typed-term: 'typedTerm', mentio-id: 'comment-field', ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 300, 'blur': 0} }"}
-  .comment-row.comment-attachments{ng_repeat: 'attachment in comment.newAttachments()'}
-    %a.attachment-link{ng_href: '{{attachment.location}}', target: '_blank'}>
-      {{ attachment.filename }}
-    %span.attachment-filesize
-      {{attachment.formattedFilesize()}}
-    %a.close.remove-upload{href: '#', ng_click: 'removeAttachment(attachment)'} &times;
-  .thread-comment-form-actions.clearfix
-    %button#post-comment-btn.btn.btn-default.btn-primary.pull-left.submit.cuke-comment-submit{type: 'submit'} Post
-    %attachment_form.pull-left{comment: 'comment'}
-    %button#post-comment-cancel.btn.btn-default.pull-right{type: 'button', translate: 'common.action.cancel', ng-click: 'cancel($event)', ng-hide: 'comment.isNew()'}
+%section{role: 'region', aria-label: "{{ 'comment_form.aria_label' | translate }}"}
+  %form.comment-form{name: 'commentForm', ng_submit: 'submit()', role: 'form'}
+    %label.sr-only{translate: 'comment_form.aria_label'}
+    %span{translate: 'comment_form.in_reply_to', translate-values: "{name: '{{comment.parentAuthorName()}}' }", ng-show: 'comment.parentAuthorName()'}
+    %textarea#comment-field.form-control.cuke-comment-field{name: 'body', placeholder: "Say something...", ng_model: 'comment.body', mentio: true, mentio-trigger-char: "'@'", mentio_items: 'mentionables', mentio-template-url: 'generated/components/thread_page/comment_form/mentio_menu.html', mentio-search: 'getMentionables(term)', mentio-typed-term: 'typedTerm', mentio-id: 'comment-field', ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 300, 'blur': 0} }"}
+    .comment-row.comment-attachments{ng_repeat: 'attachment in comment.newAttachments()'}
+      %a.attachment-link{ng_href: '{{attachment.location}}', target: '_blank'}>
+        {{ attachment.filename }}
+      %span.attachment-filesize
+        {{attachment.formattedFilesize()}}
+      %a.close.remove-upload{href: '#', ng_click: 'removeAttachment(attachment)'} &times;
+    .thread-comment-form-actions.clearfix
+      %button#post-comment-btn.btn.btn-default.btn-primary.pull-left.submit.cuke-comment-submit{type: 'submit', translate: 'comment_form.submit_button.label'}
+      %attachment_form.pull-left{comment: 'comment'}
+      %button#post-comment-cancel.btn.btn-default.pull-right{type: 'button', translate: 'common.action.cancel', ng-click: 'cancel($event)', ng-hide: 'comment.isNew()'}
