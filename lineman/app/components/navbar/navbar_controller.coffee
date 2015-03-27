@@ -1,9 +1,9 @@
-angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Records, UserAuthService, DiscussionFormService) ->
+angular.module('loomioApp').controller 'NavbarController', ($scope, $modal, Records, CurrentUser, DiscussionFormService) ->
 
   $scope.openDiscussionForm = ->
     DiscussionFormService.openNewDiscussionModal()
 
   $scope.currentUser = ->
-    window.Loomio.currentUser
+    CurrentUser
 
   return

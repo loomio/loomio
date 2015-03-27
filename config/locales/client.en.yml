@@ -29,6 +29,15 @@ en:
     messages:
       aw_crap: 'We''re sorry, but something went wrong. Please try again'
 
+  start_proposal_card:
+    cta: Ready to decide? Start a proposal.
+
+  current_proposal_card:
+    heading: Proposal
+
+  previous_proposals_card:
+    heading: Previous Proposals
+
   volume_levels:
     loud: 'Loud'
     normal: 'Normal'

@@ -1,6 +1,6 @@
-angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $translate, $modal, Records, UserAuthService, CommentFormService) ->
+angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $translate, $modal, Records, CurrentUser, CommentFormService) ->
   renderLikedBySentence = ->
-    otherIds = _.without($scope.comment.likerIds, window.Loomio.currentUser.id)
+    otherIds = _.without($scope.comment.likerIds, CurrentUser.id)
     otherUsers = _.filter $scope.comment.likers(), (user) -> _.contains(otherIds, user.id)
     otherNames = _.map otherUsers, (user) -> user.name
 
@@ -47,19 +47,19 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $tra
     $scope.canEditComment($scope.comment) or $scope.canDeleteComment($scope.comment)
 
   $scope.canEditComment = ->
-    window.Loomio.currentUser.canEditComment($scope.comment)
+    CurrentUser.canEditComment($scope.comment)
 
   $scope.canDeleteComment = ->
-    window.Loomio.currentUser.canDeleteComment($scope.comment)
+    CurrentUser.canDeleteComment($scope.comment)
 
   $scope.like = ->
-    Records.comments.like(window.Loomio.currentUser, $scope.comment, renderLikedBySentence)
+    Records.comments.like(CurrentUser, $scope.comment, renderLikedBySentence)
 
   $scope.unlike = ->
-    Records.comments.unlike(window.Loomio.currentUser, $scope.comment, renderLikedBySentence)
+    Records.comments.unlike(CurrentUser, $scope.comment, renderLikedBySentence)
 
   $scope.currentUserLikesIt = ->
-    _.contains($scope.comment.likerIds, window.Loomio.currentUser.id)
+    _.contains($scope.comment.likerIds, CurrentUser.id)
 
   $scope.anybodyLikesIt = ->
     $scope.comment.likerIds.length > 0

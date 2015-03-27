@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'GroupPrivacyDropdownController', ($scope, MessageChannelService, UserAuthService, FlashService) ->
+angular.module('loomioApp').controller 'GroupPrivacyDropdownController', ($scope, MessageChannelService, UserAuthService, FlashService, CurrentUser) ->
   onSuccess = ->
     FlashService.success('group_page.messages.privacy.' + $scope.group.visibleTo)
 
@@ -12,4 +12,4 @@ angular.module('loomioApp').controller 'GroupPrivacyDropdownController', ($scope
 
 
   $scope.canEditGroup = ->
-    window.Loomio.currentUser.isAdminOf($scope.group)
+    CurrentUser.isAdminOf($scope.group)

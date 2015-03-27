@@ -1,0 +1,9 @@
+%section.previous-proposals-card{role: 'region', aria-labelledby: 'previous-proposals-card-heading'}
+  .card-title#previous-proposals-card-heading{translate: 'previous_proposals_card.heading', role: 'heading'}
+
+  .wrap{ng-repeat: 'proposal in previousProposalsCard.proposals()'}
+    .active-proposal{ng-if: 'previousProposalsCard.isSelected(proposal)'}
+      %proposal_expanded{proposal: 'proposal'}
+
+    .inactive-proposal{ng-if: '!previousProposalsCard.isSelected(proposal)', ng_click: 'previousProposalsCard.selectProposal(proposal)'}
+      %proposal_collapsed{proposal: 'proposal'}

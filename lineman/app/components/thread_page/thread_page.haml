@@ -41,7 +41,14 @@
 
       %article.thread-context__description{btf-markdown: 'threadPage.discussion.description' }
 
-    %proposals_card{discussion: 'threadPage.discussion'}
+    %start_proposal_card{discussion: 'threadPage.discussion'}
+
+    .wrap{ng-if: 'threadPage.discussion.activeProposal()'}
+      %current_proposal_card{discussion: 'threadPage.discussion'}
+
+    .wrap{ng-if: 'threadPage.discussion.anyClosedProposals()'}
+      %previous_proposals_card{discussion: 'threadPage.discussion'}
+
     %activity_card{discussion: 'threadPage.discussion'}
     %comment_form{discussion: 'threadPage.discussion'}
 

@@ -1,6 +1,6 @@
-angular.module('loomioApp').controller 'LeaveGroupController', ($scope, $modalInstance, group, Records, UserAuthService, FormService) ->
+angular.module('loomioApp').controller 'LeaveGroupController', ($scope, $modalInstance, group, Records, UserAuthService, FormService, CurrentUser) ->
   $scope.group = group
-  membership = group.membershipFor(window.Loomio.currentUser)
+  membership = group.membershipFor(CurrentUser)
 
   $scope.onSuccess (membership) -> membership.destroy()
 

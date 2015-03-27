@@ -1,11 +1,10 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($routeParams, $location, $rootScope, $document, $modal, Records, MessageChannelService, UserAuthService, DiscussionFormService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($routeParams, $location, $rootScope, $document, $modal, Records, MessageChannelService, CurrentUser, DiscussionFormService) ->
   $rootScope.$broadcast('currentComponent', 'threadPage')
 
-  @loading = true
   Records.discussions.findOrFetchByKey($routeParams.key).then (discussion) =>
-    @loading = false
-    console.log 'resolved discussion', discussion
     @discussion = discussion
+    Records.proposals.fetchByDiscussion @discussion
+    Records.votes.fetchMyVotesByDiscussion @discussion
     @group = @discussion.group()
     $rootScope.$broadcast('viewingThread', @discussion)
     MessageChannelService.subscribeTo("/discussion-#{@discussion.key}", @onMessageReceived)
@@ -23,7 +22,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($routeParams, $l
     @canEditDiscussion(@discussion)
 
   @canEditDiscussion = =>
-    window.Loomio.currentUser.canEditDiscussion(@discussion)
+    CurrentUser.canEditDiscussion(@discussion)
 
   console.log "hi"
   return

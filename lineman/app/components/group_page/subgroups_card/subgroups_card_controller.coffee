@@ -1,6 +1,6 @@
-angular.module('loomioApp').controller 'SubgroupsCardController', ($scope, Records, UserAuthService) ->
+angular.module('loomioApp').controller 'SubgroupsCardController', ($scope, Records, CurrentUser) ->
   Records.groups.fetchByParent $scope.group
 
   $scope.canCreateSubgroups = ->
-    window.Loomio.currentUser.isMemberOf($scope.group) and
-      ($scope.group.membersCanCreateSubgroups or window.Loomio.currentUser.isAdminOf($scope.group))
+    CurrentUser.isMemberOf($scope.group) and
+      ($scope.group.membersCanCreateSubgroups or CurrentUser.isAdminOf($scope.group))

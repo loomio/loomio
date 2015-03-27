@@ -1,9 +1,10 @@
-angular.module('loomioApp').directive 'proposalExpanded', ->
-  scope: {proposal: '='}
+angular.module('loomioApp').directive 'currentProposalCard', ->
+  scope: {discussion: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/thread_page/proposals_card/proposal_expanded/proposal_expanded.html'
+  templateUrl: 'generated/components/thread_page/current_proposal_card/current_proposal_card.html'
   replace: true
   controller: ($scope, $modal, Records, CurrentUser) ->
+    $scope.proposal = $scope.discussion.activeProposal()
     Records.votes.fetchByProposal($scope.proposal)
     currentUser = CurrentUser
     $scope.showVotes = false
@@ -37,9 +38,3 @@ angular.module('loomioApp').directive 'proposalExpanded', ->
     $scope.currentUserVote = ->
       return false unless $scope.proposal
       $scope.proposal.lastVoteByUser(currentUser)
-
-    $scope.showVoteToggle = ->
-      $scope.curatedVotes().length > 0 and !$scope.showVotes
-
-    $scope.applyVoteToggle = ->
-      $scope.showVotes = !$scope.showVotes
