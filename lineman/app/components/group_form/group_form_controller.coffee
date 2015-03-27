@@ -26,23 +26,23 @@ angular.module('loomioApp').controller 'GroupFormController', ($routeParams, $ro
       discussionPrivacyOptions: 'public_only'
     FormService.applyForm @, @group
 
-  @invalidVisibilityOption = (value) =>
+  @validVisibilityOption = (value) =>
     switch value
-      when 'public'         then @group.parentIsHidden()
-      when 'parent_members' then !@group.parentId
-      when 'members'        then false
+      when 'public'         then !@group.parentIsHidden()
+      when 'parent_members' then @group.parentId
+      when 'members'        then true
 
-  @invalidMembershipOption = (value) =>
+  @validMembershipOption = (value) =>
     switch value
-      when 'request'    then @group.visibleTo == 'members'
-      when 'approval'   then @group.visibleTo == 'members'
-      when 'invitation' then false
+      when 'request'    then @group.visibleTo != 'members'
+      when 'approval'   then @group.visibleTo != 'members'
+      when 'invitation' then true
 
-  @invalidDiscussionOption = (value) =>
+  @validDiscussionOption = (value) =>
     switch value
-      when 'public_only'       then @group.visibleTo == 'members'
-      when 'public_or_private' then @group.visibleTo == 'members'
-      when 'private_only'      then false
+      when 'public_only'       then @group.visibleTo != 'members'
+      when 'public_or_private' then @group.visibleTo != 'members'
+      when 'private_only'      then true
 
   @onSuccess = (newGroup) ->
     $location.path "/g/#{newGroup.key}"
