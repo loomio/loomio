@@ -19,7 +19,7 @@ angular.module('loomioApp').controller 'CommentFormController', ($scope, FlashSe
   $scope.submit = ->
     $scope.comment.save().then(saveSuccess, saveError)
 
-  $scope.$on 'showReplyToCommentForm', (event, parentComment) ->
+  $scope.$on 'replyToCommentClicked', (event, parentComment) ->
     $scope.comment.parentId = parentComment.id
 
   $scope.removeAttachment = (attachment) ->
