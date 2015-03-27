@@ -24,5 +24,4 @@ angular.module('loomioApp').controller 'ThreadPageController', ($routeParams, $l
   @canEditDiscussion = =>
     CurrentUser.canEditDiscussion(@discussion)
 
-  console.log "hi"
   return

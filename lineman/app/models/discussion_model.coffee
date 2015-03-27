@@ -87,5 +87,8 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     lastInboxActivity: ->
       @activeProposalClosingAt() or @lastActivityAt
 
+    unreadPosition: ->
+      @reader().lastReadSequenceId + 1
+
     markAsRead: (sequenceId) ->
       @reader().markAsRead(sequenceId)
