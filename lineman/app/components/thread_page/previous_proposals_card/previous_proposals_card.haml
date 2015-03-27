@@ -2,8 +2,8 @@
   .card-title#previous-proposals-card-heading{translate: 'previous_proposals_card.heading', role: 'heading'}
 
   .wrap{ng-repeat: 'proposal in previousProposalsCard.proposals()'}
-    .active-proposal{ng-if: 'previousProposalsCard.isSelected(proposal)'}
-      %proposal_expanded{proposal: 'proposal'}
+    .active-proposal{ng-if: 'selectedProposalId == proposal.id'}
+      %proposal_expanded{proposal: 'proposal', can_collapse: 'true'}
 
-    .inactive-proposal{ng-if: '!previousProposalsCard.isSelected(proposal)', ng_click: 'previousProposalsCard.selectProposal(proposal)'}
+    .inactive-proposal{ng-if: 'selectedProposalId != proposal.id', ng_click: 'previousProposalsCard.selectProposal(proposal)'}
       %proposal_collapsed{proposal: 'proposal'}

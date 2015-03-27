@@ -1,12 +1,15 @@
 angular.module('loomioApp').directive 'proposalExpanded', ->
-  scope: {proposal: '='}
+  scope: {proposal: '=', canCollapse: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/thread_page/proposals_card/proposal_expanded/proposal_expanded.html'
+  templateUrl: 'generated/components/thread_page/proposal_expanded/proposal_expanded.html'
   replace: true
   controller: ($scope, $modal, Records, CurrentUser) ->
     Records.votes.fetchByProposal($scope.proposal)
     currentUser = CurrentUser
-    $scope.showVotes = false
+
+    $scope.collapse = ->
+      console.log 'emmitting'
+      $scope.$emit('collapseProposal')
 
     $scope.showActionsDropdown = ->
       currentUser.canCloseOrExtendProposal($scope.proposal)
