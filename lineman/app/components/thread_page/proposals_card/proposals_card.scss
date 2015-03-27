@@ -1,7 +1,21 @@
+.thread-proposals {
+  padding: 10px 0px 15px 0px;
+  background-color: $card-background-color;
+}
+
 .closing-at-timezone{
   color: $meta-text-color;
 }
+
 .closing-at-time-in-words{
   color: $meta-text-color;
   margin-top: 0.5em;
 }
+
+.proposals-card{
+  @include card;
+}
+.proposal-expanded-started-by{
+  @include metaText;
+}
+

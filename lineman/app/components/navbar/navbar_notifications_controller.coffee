@@ -1,10 +1,10 @@
-angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope, UserAuthService, Records) ->
-  $scope.currentUser = window.Loomio.currentUser
+angular.module('loomioApp').controller 'NavbarNotificationsController', ($scope, UserAuthService, Records, CurrentUser) ->
+  $scope.currentUser = CurrentUser
 
   Records.notifications.fetch()
 
   $scope.userLoggedIn = ->
-    window.Loomio.currentUser?
+    CurrentUser?
 
   validKinds = [
     'comment_liked',

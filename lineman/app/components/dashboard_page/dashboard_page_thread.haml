@@ -3,8 +3,8 @@
     .dashboard-page-left
       .dashboard-page-unread-count{ng-if: 'discussion.isUnread()'}
         {{discussion.unreadItemsCount()}}
-      .dashboard-page-proposal-vote{ng-if: 'discussion.activeProposal() && discussion.activeProposal().lastVoteByUser()'}
-        .thread-item-vote-icon{class: 'thread-item-vote-icon-{{discussion.activeProposal().lastVoteByUser().position}}'}
+      .dashboard-page-proposal-vote{ng-if: 'discussion.activeProposal() && lastVoteByCurrentUser()'}
+        .thread-item-vote-icon{class: 'thread-item-vote-icon-{{lastVoteByCurrentUser().position}}'}
     .dashboard-page-thread-header
       .dashboard-page-thread-title{ng-class: "{'is-unread': discussion.isUnread() }"}
         {{discussion.title}}

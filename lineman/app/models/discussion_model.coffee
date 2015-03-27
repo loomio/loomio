@@ -9,6 +9,17 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       @setupView 'proposals', 'createdAt', true
       @setupView 'events', 'sequenceId'
 
+      @activeProposalView = @recordStore.proposals.collection.addDynamicView("#{@id}-activeProposal")
+      @activeProposalView.applyFind('discussionId': @id)
+      @activeProposalView.applyFind('id': {'$gt': 0})
+      @activeProposalView.applyFind('closedAt': {'$eq': null})
+      @activeProposalView.applySimpleSort('createdAt', true)
+
+      @closedProposalsView = @recordStore.proposals.collection.addDynamicView("#{@id}-closedProposals")
+      @closedProposalsView.applyFind('discussionId': @id)
+      @closedProposalsView.applyFind('closedAt': {'$gt': 0})
+      @closedProposalsView.applySimpleSort('createdAt', true)
+
     translationOptions: ->
       title:     @title
       groupName: @groupName()
@@ -34,12 +45,14 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     proposals: ->
       @proposalsView.data()
 
+    closedProposals: ->
+      @closedProposalsView.data()
+
+    anyClosedProposals: ->
+      _.some(@closedProposals())
+
     activeProposal: ->
-      proposal = _.last(@proposals())
-      if proposal and proposal.isActive()
-        proposal
-      else
-        null
+      _.first(@activeProposalView.data())
 
     hasActiveProposal: ->
       @activeProposal()?

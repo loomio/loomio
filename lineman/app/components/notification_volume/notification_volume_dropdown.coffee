@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'notificationVolumeDropdown', ->
   restrict: 'E'
   templateUrl: 'generated/components/notification_volume/notification_volume_dropdown.html'
   replace: true
-  controller: ($scope, FlashService, Records, UserAuthService) ->
+  controller: ($scope, FlashService, Records, CurrentUser) ->
     $scope.saveVolume = ->
       $scope.model.save().then ->
         FlashService.good $scope.translateRoot+".volume.updated"
@@ -19,7 +19,7 @@ angular.module('loomioApp').directive 'notificationVolumeDropdown', ->
 
     $scope.init = ->
       if $scope.group
-        $scope.model = $scope.group.membershipFor(window.Loomio.currentUser)
+        $scope.model = $scope.group.membershipFor(CurrentUser)
         $scope.showButton = true
       else if $scope.discussion
         $scope.model = $scope.discussion.reader()

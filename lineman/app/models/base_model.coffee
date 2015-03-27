@@ -36,7 +36,10 @@ angular.module('loomioApp').factory 'BaseModel', ->
       _.each _.keys(data), (key) =>
         attributeName = _.camelCase(key)
         if /At$/.test(attributeName)
-          dest[attributeName] = moment(data[key])
+          if moment(data[key]).isValid()
+            dest[attributeName] = moment(data[key])
+          else
+            dest[attributeName] = null
         else
           dest[attributeName] = data[key]
         return
@@ -53,6 +56,9 @@ angular.module('loomioApp').factory 'BaseModel', ->
         data[_.snakeCase(attributeName)] = @[_.camelCase(attributeName)]
       wrapper[paramKey] = data
       wrapper
+
+    addView: (collectionName, viewName) ->
+      @recordStore[collectionName].collection.addDynamicView("#{@id}-#{viewName}")
 
     setupViews: ->
 

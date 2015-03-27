@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, Records) ->
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, Records, CurrentUser) ->
   $rootScope.$broadcast('currentComponent', 'dashboardPage')
 
   @loaded =
@@ -16,8 +16,8 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
     collapsed: 5
     expanded:  10
 
-  @sort   = -> window.Loomio.currentUser.dashboardSort
-  @filter = -> window.Loomio.currentUser.dashboardFilter
+  @sort   = -> CurrentUser.dashboardSort
+  @filter = -> CurrentUser.dashboardFilter
 
   @loadMore = (options = {}) =>
     return if @loading
@@ -43,8 +43,8 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
       @loaded[@sort()][@filter()]
 
   @changePreferences = (options = {}) =>
-    window.Loomio.currentUser.updateFromJSON(options)
-    window.Loomio.currentUser.save()
+    CurrentUser.updateFromJSON(options)
+    CurrentUser.save()
     @loadMore() if @loadedCount() == 0
 
   @dashboardOptions = (group) =>
@@ -62,7 +62,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
                        .data()
 
   @dashboardGroups = ->
-    _.filter window.Loomio.currentUser.groups(), (group) -> group.isParent()
+    _.filter CurrentUser.groups(), (group) -> group.isParent()
 
   timeframe = (options = {}) ->
     today = moment().startOf 'day'

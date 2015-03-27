@@ -1,10 +1,10 @@
-angular.module('loomioApp').controller 'GroupActionsDropdownController', ($modal, UserAuthService) ->
+angular.module('loomioApp').controller 'GroupActionsDropdownController', ($modal, UserAuthService, CurrentUser) ->
 
   @canEditGroup = =>
-    window.Loomio.currentUser.isAdminOf(@group)
+    CurrentUser.isAdminOf(@group)
 
   @canDeactivateGroup = =>
-    window.Loomio.currentUser.isAdminOf(@group)
+    CurrentUser.isAdminOf(@group)
 
   @openLeaveGroupModal = =>
     $modal.open

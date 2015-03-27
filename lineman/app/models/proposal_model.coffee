@@ -51,7 +51,6 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
       _.values @uniqueVotesByUserId()
 
     lastVoteByUser: (user) ->
-      user = user or window.Loomio.currentUser
       @uniqueVotesByUserId()[user.id]
 
     userHasVoted: (user) ->
