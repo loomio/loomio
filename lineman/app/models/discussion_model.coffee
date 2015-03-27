@@ -18,6 +18,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       @closedProposalsView = @recordStore.proposals.collection.addDynamicView("#{@id}-closedProposals")
       @closedProposalsView.applyFind('discussionId': @id)
       @closedProposalsView.applyFind('closedAt': {'$gt': 0})
+      @closedProposalsView.applySimpleSort('createdAt', true)
 
     translationOptions: ->
       title:     @title
@@ -88,6 +89,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
 
     lastInboxActivity: ->
       @activeProposalClosingAt() or @lastActivityAt
+
+    unreadPosition: ->
+      @reader().lastReadSequenceId + 1
 
     markAsRead: (sequenceId) ->
       @reader().markAsRead(sequenceId)

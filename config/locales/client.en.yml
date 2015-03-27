@@ -1,5 +1,7 @@
 en:
   common:
+    closing_in: 'Closing in {{time}}'
+    closed_ago: 'Closed {{time}}'
     volume: 'Volume'
     notification_volume: 'Notification Volume'
     groups: 'Groups'
@@ -37,6 +39,9 @@ en:
 
   previous_proposals_card:
     heading: Previous Proposals
+
+  proposal_collapsed:
+    expand: Expand
 
   volume_levels:
     loud: 'Loud'
@@ -180,6 +185,7 @@ en:
     edit_discussion_submit: 'Edit thread'
 
   proposal_expanded:
+    collapse: Collapse
     your_position: 'Your Position'
     started_by: 'Started by <strong>{{name}}</strong>'
     no_votes_yet: 'Nobody has voted on this proposal yet.'

@@ -21,7 +21,7 @@
         %label{for: 'proposal-details-field', translate: 'proposal_form.details_label'}
         %textarea#proposal-details-field.form-control{ng-model: 'proposal.description', placeholder: "{{ 'proposal_form.details_placeholder' | translate }}"}
 
-    .closing-at-field{ng-include: '"generated/components/thread_page/proposals_card/proposal_form/closing_at_field.html"'}
+    .closing-at-field{ng-include: '"generated/components/thread_page/proposal_form/closing_at_field.html"'}
 
   .modal-footer
     %button.btn.btn-primary.cuke-save-proposal-btn{ng-if: 'proposal.isNew()', type: 'submit', translate: 'proposal_form.start_proposal'}

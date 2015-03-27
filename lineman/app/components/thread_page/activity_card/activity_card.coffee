@@ -3,19 +3,37 @@ angular.module('loomioApp').directive 'activityCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
   replace: true
-  controller: ($scope, $rootScope, Records) ->
-    $scope.lastLoadedSequenceId = 0
+  controller: ($scope, $rootScope, $location, Records) ->
+    $scope.loading = false
+    $scope.pageSize = 30
     $scope.firstLoadedSequenceId = 0
-    $scope.loadingForward = false
-    $scope.loadingBackward = false
-    $scope.pageSize = 50
+    $scope.lastLoadedSequenceId = 0
+    rollback = 2
 
     $scope.init = ->
       $scope.discussion.markAsRead(0)
-      $scope.loadEventsForwards()
+
+      # want to request the window of items that best suits the read position
+      if _.isFinite(_.parseInt($location.hash()))
+        startPosition = _.parseInt($location.hash())
+      else
+        startPosition = $scope.discussion.unreadPosition()
+        #$location.hash($scope.discussion.unreadPosition())
+
+      windowTop = startPosition - rollback
+
+      if (windowTop + $scope.pageSize - 1) > $scope.discussion.lastSequenceId
+        windowTop = $scope.discussion.lastSequenceId - $scope.pageSize + 1
+
+      $scope.firstLoadedSequenceId = windowTop
+      $scope.loadEvents(from: windowTop - 1).then (events) ->
+        # presumably scroll.. maybe after 100 ms
 
     $scope.lastSequenceId = 0
     visibleSequenceIds = []
+
+    $scope.beforeCount = ->
+      $scope.firstLoadedSequenceId - $scope.discussion.firstSequenceId
 
     updateLastSequenceId = ->
       visibleSequenceIds = _.uniq(visibleSequenceIds)
@@ -38,23 +56,28 @@ angular.module('loomioApp').directive 'activityCard', ->
       $scope.discussion.markAsRead(item.sequenceId)
       $scope.loadEventsForwards() if $scope.loadMoreAfterReading(item)
 
+    $scope.loadEvents = ({from, per, reverse}) ->
+      from = 0 unless from?
+      per = $scope.pageSize unless per?
+      reverse = false unless reverse?
+
+      return false if $scope.loading
+      $scope.loading = true
+      Records.events.fetch(discussion_key: $scope.discussion.key, from: from, per: per, reverse: reverse).then ->
+        if reverse
+          $scope.firstLoadedSequenceId = Records.events.minLoadedSequenceIdByDiscussion($scope.discussion)
+        else
+          $scope.lastLoadedSequenceId = Records.events.maxLoadedSequenceIdByDiscussion($scope.discussion)
+        $scope.loading = false
+
     $scope.loadEventsForwards = ->
-      return false if $scope.loadingForward
-      $scope.loadingForward = true
-      Records.events.fetch(discussion_key: $scope.discussion.key, from: $scope.lastLoadedSequenceId, per: $scope.pageSize).then ->
-        $scope.lastLoadedSequenceId = Records.events.maxLoadedSequenceIdByDiscussion($scope.discussion)
-        $scope.loadingForward = false
+      $scope.loadEvents(from: $scope.lastLoadedSequenceId)
 
     $scope.loadEventsBackwards = ->
-      return false if $scope.loadingBackward
-      $scope.loadingBackward = true
-      Records.events.fetch(discussion_key: $scope.discussion.key, from: $scope.firstLoadedSequenceId, per: $scope.pageSize, reverse: true).then ->
-        $scope.firstLoadedSequenceId = Records.events.minLoadedSequenceIdByDiscussion($scope.discussion)
-        $scope.loadingBackward = false
+      $scope.loadEvents(from: $scope.firstLoadedSequenceId, reverse: true)
 
     $scope.canLoadBackwards = ->
-      $scope.firstLoadedSequenceId > $scope.discussion.firstSequenceId and
-      !$scope.loadingBackward
+      $scope.firstLoadedSequenceId > $scope.discussion.firstSequenceId and !$scope.loading
 
     $scope.loadMoreAfterReading = (item) ->
       item.sequenceId == $scope.lastLoadedSequenceId and
@@ -64,3 +87,4 @@ angular.module('loomioApp').directive 'activityCard', ->
       _.contains ['new_comment', 'new_motion', 'new_vote'], kind
 
     $scope.init()
+    return
