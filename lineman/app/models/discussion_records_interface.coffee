@@ -14,5 +14,5 @@ angular.module('loomioApp').factory 'DiscussionRecordsInterface', (BaseRecordsIn
     fetchInboxByGroup: (options = {}) ->
       @restfulClient.get 'inbox_by_group', options
 
-    findByGroupIds: (ids) ->
-      @collection.find(groupId: {'$in': ids})
+    findByDiscussionIds: (ids) ->
+      @collection.chain().find({id: { $in: ids} })

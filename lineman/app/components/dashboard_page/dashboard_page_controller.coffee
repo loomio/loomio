@@ -2,75 +2,67 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
   $rootScope.$broadcast('currentComponent', 'dashboardPage')
 
   @loaded =
-    date:
-      unread: 0
-      all: 0
-    group:
-      unread: 0
-      all: 0
+    sort_by_date:
+      show_all: 0
+      show_unread: 0
+    sort_by_group:
+      show_all: 0
+      show_unread: 0
   @perPage =
-    date: 25
-    group: 5
-  @expandedGroupSize = 10
-  @expandedGroups = []
+    sort_by_date: 25
+    sort_by_group: 10
+  @groupThreadCounts =
+    hidden:    0
+    collapsed: 5
+    expanded:  10
+
+  @sort   = -> window.Loomio.currentUser.dashboardSort
+  @filter = -> window.Loomio.currentUser.dashboardFilter
 
   @loadMore = (options = {}) =>
+    return if @loading
+    @loading = true
+
     callFetch(
-      filter:  @filter
-      per:     @perPage[@sort]
-      from:    @loadedCount()
-      groupId: options['groupId']).then =>
-      return if options['groupId']
-      @loaded[@sort][@filter] = @loadedCount() + @perPage[@sort]
+      filter:  @filter()
+      per:     @perPage[@sort()]
+      from:    @loadedCount()).then => @loading = false
 
   callFetch = (params) =>
-    if @sort == 'date' or params['groupId']
+    @loaded[@sort()][@filter()] = @loadedCount() + @perPage[@sort()]
+
+    if @sort() == 'sort_by_date'
       Records.discussions.fetchInboxByDate(params)
     else
       Records.discussions.fetchInboxByGroup(params)
 
-  @loadedCount = (groupId) =>
-    if @groupIsExpanded(groupId)
-      @expandedGroupSize
+  @loadedCount = (group) =>
+    if group
+      @groupThreadCounts[group.dashboardStatus or 'collapsed']
     else
-      @loaded[@sort][@filter]
+      @loaded[@sort()][@filter()]
 
-  @groupIsExpanded = (groupId) =>
-    _.find(@expandedGroups, (id) -> id == groupId)
-
-  @setOptions = (options = {}) =>
-    @filter = options['filter'] if options['filter']
-    @sort   = options['sort']   if options['sort']
+  @changePreferences = (options = {}) =>
+    window.Loomio.currentUser.updateFromJSON(options)
+    window.Loomio.currentUser.save()
     @loadMore() if @loadedCount() == 0
-  @setOptions sort: 'group', filter: 'all'
 
-  @dashboardDiscussions = =>
-    _.sortBy(window.Loomio.currentUser.inboxDiscussions(), (discussion) =>
-      @lastInboxActivity(discussion))
-      .slice(0, @loadedCount())
+  @dashboardOptions = (group) =>
+    unmuted: true
+    unread: @filter() == 'show_unread'
+    groupId: (group.id if group)
+
+  @dashboardDiscussionReaders = (group) =>
+    _.pluck Records.discussionReaders.forDashboard(@dashboardOptions(group)).data(), 'id'
+
+  @dashboardDiscussions = (group) =>
+    Records.discussions.findByDiscussionIds(@dashboardDiscussionReaders(group))
+                       .simplesort('lastActivityAt', true)
+                       .limit(@loadedCount(group))
+                       .data()
 
   @dashboardGroups = ->
     _.filter window.Loomio.currentUser.groups(), (group) -> group.isParent()
-
-  @footerReached = =>
-    return false if @loadingDiscussionsDate
-    @loadingDiscussionsDate = true
-    @loadMore().then =>
-      @loadingDiscussionsDate = false
-
-  @loadMoreFromGroup = (group) =>
-    loadKey = "loadingDiscussions#{group.id}"
-    return false if @[loadKey]
-    @[loadKey] = true
-    @loadMore(groupId: group.id).then =>
-      @expandedGroups.push group.id
-      @[loadKey] = false
-
-  @unread = (discussion) =>
-    discussion.isUnread() or @filter != 'unread'
-
-  @lastInboxActivity = (discussion) ->
-    -discussion.lastInboxActivity()
 
   timeframe = (options = {}) ->
     today = moment().startOf 'day'
@@ -81,8 +73,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
 
   inTimeframe = (fn) =>
     =>
-      @loadedCount() > 0 and _.find @dashboardDiscussions(), (discussion) =>
-        fn(discussion) and @unread(discussion)
+      @loadedCount() > 0 and _.find @dashboardDiscussions(), (discussion) => fn(discussion)
 
   @today     = timeframe(from: 'second', toCount: -10, to: 'year')
   @yesterday = timeframe(from: 'day', to: 'second')
@@ -96,10 +87,12 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
   @anyThisMonth = inTimeframe(@thisMonth)
   @anyOlder     = inTimeframe(@older)
 
-  @groupName = (group) -> group.name
+  @groupName    = (group) -> group.name
+  @anyThisGroup = (group) => @dashboardDiscussions(group).length > 0
+  @canExpand    = (group) =>
+    @loadedCount(group) < _.min [@dashboardDiscussionReaders(group).length, @groupThreadCounts.expanded]
 
-  @anyThisGroup = (group) =>
-    @loadedCount() > 0 and _.find group.discussions(), (discussion) =>
-      @unread(discussion)
+  Records.votes.fetchMyRecentVotes()
+  @loadMore()
 
   return

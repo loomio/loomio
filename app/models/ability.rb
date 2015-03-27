@@ -129,6 +129,10 @@ class Ability
       not user_to_deactivate.adminable_groups.published.any? { |g| g.admins.count == 1 }
     end
 
+    can :update, User do |user|
+      @user == user
+    end
+
     can :create, MembershipRequest do |request|
       group = request.group
       can?(:show, group) and group.membership_granted_upon_approval?

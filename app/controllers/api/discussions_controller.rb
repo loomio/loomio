@@ -27,12 +27,6 @@ class API::DiscussionsController < API::RestfulController
     respond_with_discussion
   end
 
-  def mark_as_read
-    event = Event.where(discussion_id: @discussion.id, sequence_id: params[:sequence_id]).first
-    discussion_reader.viewed! (event || @discussion).created_at
-    respond_with_discussion
-  end
-
   private
 
   def respond_with_discussion
@@ -73,6 +67,7 @@ class API::DiscussionsController < API::RestfulController
 
   def inbox_threads
     GroupDiscussionsViewer.for(user: current_user, group: @group, filter: params[:filter])
+                          .not_muted
                           .where('last_activity_at > ?', params[:from_date] || 3.months.ago)
                           .joined_to_current_motion
                           .preload(:current_motion, {group: :parent})

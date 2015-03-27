@@ -20,9 +20,6 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
     memberships: ->
       @membershipsView.data()
 
-    inboxDiscussions: ->
-      @recordStore.discussions.where(id: {$gt: 0}, groupId: {$in: @groupIds()})
-
     notifications: ->
       @notificationsView.data()
 
