@@ -86,6 +86,7 @@ en:
       label: 'Open user options menu'
       contact_us: 'Contact us'
       new_thread: 'New thread'
+      new_group: 'New group'
       profile: 'Profile'
       help: 'Help'
     search:

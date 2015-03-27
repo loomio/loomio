@@ -19,15 +19,15 @@
 
         %label{for: 'group-visible-to-members', translate: 'group_form.privacy.visible_to_members'}
         %select#group-visible-to-members-field.form-control{ng-model: 'groupForm.group.visibleTo', ng_required: true}
-          %option{value: 'public', ng_show: '!group.parentIsHidden()', translate: 'group_form.privacy.public_visibility'}
-          %option{value: 'parent_members', ng_show: 'groupForm.group.parentId', translate: 'group_form.privacy.organization_visibility'}
-          %option{value: 'members', translate: 'group_form.privacy.private_visibility'}
+          %option{value: 'public', ng-disabled: 'groupForm.invalidVisibilityOption("public")', translate: 'group_form.privacy.public_visibility'}
+          %option{value: 'parent_members', ng-disabled: 'groupForm.invalidVisibilityOption("parent_members")', translate: 'group_form.privacy.organization_visibility'}
+          %option{value: 'members', ng-disabled: 'groupForm.invalidVisibilityOption("members")', translate: 'group_form.privacy.private_visibility'}
 
         %label{for: 'group-membership-granted-upon', translate: 'group_form.privacy.membership_granted_upon'}
         %select#group-membership-granted-upon-field.form-control{ng-model: 'groupForm.group.membershipGrantedUpon', ng_required: true}
-          %option{value: 'request', translate: 'group_form.privacy.membership_by_request'}
-          %option{value: 'approval', translate: 'group_form.privacy.membership_by_approval'}
-          %option{value: 'invitation', translate: 'group_form.privacy.membership_by_invitation'}
+          %option{value: 'request', ng-disabled: 'groupForm.invalidMembershipOption("request")', translate: 'group_form.privacy.membership_by_request'}
+          %option{value: 'approval', ng-disabled: 'groupForm.invalidMembershipOption("approval")', translate: 'group_form.privacy.membership_by_approval'}
+          %option{value: 'invitation', ng-disabled: 'groupForm.invalidMembershipOption("invitation")', translate: 'group_form.privacy.membership_by_invitation'}
 
         %label{for: 'group-discussion-privacy-options', translate: 'group_form.privacy.discussion_privacy_options'}
         %select#group-discussion-privacy-options-field.form-control{ng-model: 'groupForm.group.discussionPrivacyOptions', ng_required: true}
