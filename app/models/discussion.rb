@@ -71,6 +71,10 @@ class Discussion < ActiveRecord::Base
     group.parent.try(:id) || group_id
   end
 
+  def last_salient_item
+    self.salient_items.last
+  end
+
   def archive!
     return if is_archived?
     self.update_attribute(:archived_at, Time.now) and
