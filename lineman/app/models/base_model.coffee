@@ -54,6 +54,7 @@ angular.module('loomioApp').factory 'BaseModel', ->
       paramKey = _.snakeCase(@constructor.singular)
       _.each window.Loomio.permittedParams[paramKey], (attributeName) =>
         data[_.snakeCase(attributeName)] = @[_.camelCase(attributeName)]
+        true # so if the value is false we don't break the loop
       wrapper[paramKey] = data
       wrapper
 
