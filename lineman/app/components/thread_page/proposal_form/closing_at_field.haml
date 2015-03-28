@@ -1,15 +1,15 @@
 .closing-at-field
   %fieldset
-  .form-group{dropdown: '', is-open: 'dropdownIsOpen'}
+  .form-group
     %label{for: 'proposal-close-date-field', translate: 'proposal_form.closes_at_label'}
-    .closing-at-timezone.pull-right
-      I am the timezone
-    .dropdown
-      .input-group.dropdown-toggle
-        %input.form-control{ng-model: 'proposal.closingAt', ng-required: 'true'}
-        %span.input-group-addon
-          %i.fa.fa-calendar
-      .closing-at-time-in-words
-        %timeago{timestamp: 'proposal.closingAt'}>
-      .dropdown-menu-right.dropdown-menu{role: 'menu'}
-        %datetimepicker{ng-model: 'proposal.closingAt', data-datetimepicker-config: "{ startView:'day', minView:'hour'}", on-set-time: 'closeDateTimePicker()'}
+    .input-group
+      %input.form-control{type: 'date', min: "{{dateToday}}", ng-model: 'closingDate'}
+      .closing-at-field__time-select
+        %select
+          %option{ng-repeat: 'hour in hours', value: '{{hour}}', ng-selected: 'hour == closingHour'}
+            {{(hour > 12) ? (hour - 12): hour }}
+            &nbsp;
+            {{(hour > 12) ? ('common.time.pm' | translate ) : ('common.time.am' | translate ) }}
+    .closing-at-time-in-words
+      {{ timeZone }} - 
+      %timeago{timestamp: 'proposal.closingAt'}>

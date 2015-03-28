@@ -1,5 +1,8 @@
 en:
   common:
+    time:
+      am: am
+      pm: pm
     closing_in: 'Closing in {{time}}'
     closed_ago: 'Closed {{time}}'
     volume: 'Volume'
