@@ -1,6 +1,18 @@
 .proposal-expanded {
   background-color: #fff;
 }
+.previous-proposals-card{
+  .proposal-expanded{
+    border-bottom: 1px solid $border-color;
+    margin: 0 -22px;
+    padding: 10px 22px 17px 22px;
+  }
+}
+
+.proposal-expanded__collapse{
+  @include metaText;
+  text-decoration: underline;
+}
 
 .proposal-expanded-started-by {
   @include metaText;

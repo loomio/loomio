@@ -65,6 +65,7 @@ en:
     aria_label: 'Add a comment'
     attachments:
       aria_label: 'Attach a file'
+      remove_attachment: 'Remove attachment'
     flash_messages:
       created: 'Your comment was added to the thread'
       update_comment: 'Changes saved'
@@ -327,7 +328,7 @@ en:
     activity: 'Activity'
     proposals: 'Proposals'
     previous_proposals: 'Previous Proposals'
-    load_previous: 'Load previous thread items'
+    load_previous: 'Load earlier activity'
     you_like_this: 'You like this.'
     liked_by_you_and_someone: 'You and {{name}} like this.'
     liked_by_you_and_others: 'Liked by you, {{joinedNames}} and {{name}}.'

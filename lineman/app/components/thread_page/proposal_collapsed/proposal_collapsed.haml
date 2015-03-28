@@ -1,9 +1,8 @@
-.proposal-collapsed
-  %a.media{href: "#"}
-    %closing_in.pull-right{time: 'proposal.closingAt'}
-    .proposal-collapsed-expand.pull-right{translate: 'proposal_collapsed.expand'}
-    %mini-proposal-pie-chart.media-left{proposal: 'proposal'}
-    .proposal-collapsed-body.media-body
-      .proposal-collapsed-title
-        {{proposal.name}}
-    .clearfix
+%a.proposal-collapsed.media{href: "#"}
+  %closing_in.pull-right{time: 'proposal.closingAt'}
+  .proposal-collapsed-expand.pull-right{translate: 'proposal_collapsed.expand'}
+  %mini-proposal-pie-chart.media-left{proposal: 'proposal'}
+  .proposal-collapsed-body.media-body
+    .proposal-collapsed-title
+      {{proposal.name}}
+  .clearfix

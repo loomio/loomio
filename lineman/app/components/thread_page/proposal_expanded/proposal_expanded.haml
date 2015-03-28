@@ -1,14 +1,12 @@
 .proposal-expanded{ng-show: 'proposal'}
-
-  %a.proposal-expanded__collapse.pull-right{href: '#', ng-click: 'collapse()', translate: 'proposal_expanded.collapse', ng-show: 'canCollapse'}
-
   %proposal_actions_dropdown{proposal: 'proposal', ng-if: 'showActionsDropdown()'}
   %h2 {{proposal.name}}
+
   .proposal-expanded-started-by
     %span{translate: 'proposal_expanded.started_by', translate-values: '{name: proposal.authorName()}'}
     %span.time-ago>
       {{proposal.createdAt | timeFromNowInWords}}
-    ·
+    %span{aria-hidden: 'true'}·
     %closing_in{time: 'proposal.closingAt' }>
     .badge.pull-right.cuke-proposal-closed-badge{ng-show: '!proposal.isActive'} Closed
   .proposal-expanded-description{btf-markdown: 'proposal.description' }
@@ -34,3 +32,6 @@
       .media-body
         %strong> {{::vote.authorName()}}
         %span.author-statement {{vote.statement }}
+
+  %a.proposal-expanded__collapse.pull-right{href: '#', ng-click: 'collapse()', translate: 'proposal_expanded.collapse', ng-show: 'canCollapse'}
+  .clearfix
