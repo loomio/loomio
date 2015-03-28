@@ -161,6 +161,7 @@ en:
     title_placeholder: 'Eg: Go to the moon'
     title_label: 'Title'
     closes_at_label: 'Closes at'
+    closes: 'Closes'
     details_label: 'Details'
     details_placeholder: "Give enough detail so everyone knows exactly what it means to agree or disagree or whatever"
 

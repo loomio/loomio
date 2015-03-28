@@ -1,15 +1,19 @@
-.closing-at-field__time-select {
-  /*padding: 6px 12px;*/
-  /*font-size: 14px;*/
-  font-weight: normal;
-  line-height: 1;
-  /*color: #555555;*/
-  text-align: center;
-  /*background-color: #eeeeee;*/
+.closing-at-field__date {
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 1%;
-  white-space: nowrap;
-  vertical-align: middle;
-  display: table-cell;
+  padding: 0px 12px;
+  margin-right: 5px;
+}
+
+.closing-at-field__time{
+  height: 34px;
+  padding: 6px 12px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+.closing-at-field__zone {
+  color: $meta-text-color;
 }

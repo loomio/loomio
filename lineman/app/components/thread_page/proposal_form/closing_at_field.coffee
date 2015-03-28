@@ -6,7 +6,15 @@ angular.module('loomioApp').directive 'closingAtField', ->
   controller: ($scope, CurrentUser) ->
     $scope.hours = [1..24]
     $scope.closingHour= $scope.proposal.closingAt.format('H')
-    $scope.closingDate = $scope.proposal.closingAt.format("YYYY-MM-DD")
+    $scope.closingDate = $scope.proposal.closingAt.toDate()
+
+    updateClosingAt = ->
+      console.log 'updating closing at'
+      $scope.proposal.closingAt = moment($scope.closingDate).add($scope.closingHour, 'hours')
+
+    $scope.$watch 'closingDate', updateClosingAt
+
+    $scope.$watch 'closingHour', updateClosingAt
 
     $scope.dateToday = moment().format('YYYY-MM-DD')
     $scope.timeZone = CurrentUser.timeZone
