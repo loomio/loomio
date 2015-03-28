@@ -1,3 +1,10 @@
+.vote-form input[type="radio"]:checked+label{ border: 2px solid blue; }
+
+
+.position-buttons input {
+  display: none;
+}
+
 .vote-form form{
   margin-top: 10px;
 }
@@ -17,21 +24,21 @@
   background-repeat: no-repeat;
 }
 
-.position-button-yes{
+.position-button--yes{
   background-image: url(/img/green_thumb_button_inv_60.png);
 }
 
-.position-button-no {
+.position-button--no {
   margin-left: 5px;
   background-image: url(/img/pink_thumb_button_inv_60.png);
 }
 
-.position-button-abstain {
+.position-button--abstain {
   margin-left: 5px;
   background-image: url(/img/yellow_thumb_button_inv_60.png);
 }
 
-.position-button-block {
+.position-button--block {
   margin-left: 5px;
   background-image: url(/img/red_flag_button_inv_60.png);
 }

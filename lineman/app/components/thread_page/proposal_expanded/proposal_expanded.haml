@@ -22,11 +22,11 @@
 
   %vote_form{proposal: 'proposal'}
 
-  .proposal-expanded-no-votes{ng-show: 'onlyVoterIsYou()', translate: 'proposal_expanded.only_voter_is_you'}
-  .proposal-expanded-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_expanded.no_votes_yet'}
 
   .proposal-expanded-votes
     %h4{translate: 'proposal_expanded.positions'}
+    .proposal-expanded-no-votes{ng-show: 'onlyVoterIsYou()', translate: 'proposal_expanded.only_voter_is_you'}
+    .proposal-expanded-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_expanded.no_votes_yet'}
 
     .proposal-expanded-vote.media{ng_repeat: 'vote in curatedVotes()'}
       .media-left
