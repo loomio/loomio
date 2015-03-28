@@ -1,5 +1,4 @@
-angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $controller, $location, discussion, UserAuthService) ->
-  currentUser = window.Loomio.currentUser
+angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $controller, $location, discussion, UserAuthService, CurrentUser) ->
   $scope.discussion = discussion
 
   $controller('FormController', {$scope: $scope, record: discussion});
@@ -10,8 +9,8 @@ angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $con
     $location.path "/d/#{discussion.key}"
 
   $scope.availableGroups = ->
-    groups = _.filter currentUser.groups(), (group) ->
-      group.membersCanStartDiscussions or group.admins().include? currentUser
+    groups = _.filter CurrentUser.groups(), (group) ->
+      group.membersCanStartDiscussions or group.admins().include? CurrentUser
     _.sortBy groups, (g) -> g.fullName()
 
 

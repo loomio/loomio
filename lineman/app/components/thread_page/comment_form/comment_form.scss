@@ -1,0 +1,23 @@
+#comment-form-attachment-button{
+  margin-left: 10px;
+}
+
+.comment-form-attachments input {
+  display: none;
+}
+
+.comment-form {
+  @include card;
+}
+
+.comment-form-container{
+  width: 100%;
+}
+
+.comment-form-attachments{
+  display: inline;
+}
+
+.thread-comment-form-actions {
+  padding: 10px 0;
+}

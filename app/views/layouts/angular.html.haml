@@ -25,11 +25,13 @@
       %a{href: 'https://docs.google.com/forms/d/1JS75ZdoBiA3k7IzxDPijV4kPh1fXrmWs9A8k_WG_pyE/viewform', target: '_top'}
         Give us feedback
 
-    = javascript_include_tag lineman_vendorjs_path
-    = javascript_include_tag lineman_appjs_path
     :javascript
       window.Loomio.currentUserId = #{current_user.id};
       window.Loomio.seedRecords = #{CurrentUserSerializer.new(current_user).to_json}
       window.Loomio.permittedParams = #{PermittedParamsSerializer.new({}).to_json}
+
+    = javascript_include_tag lineman_vendorjs_path
+    = javascript_include_tag lineman_appjs_path
+
 
     %script{src: "#{ENV['FAYE_URL']}/client.js", type: 'text/javascript'}
