@@ -12,6 +12,6 @@
         .subgroup-list-item-description {{ subgroup.description }}
 
     .card-minor-action{ng-if: '::canCreateSubgroups()'}
-      %a{href: '/g/new?parent_id={{group.key}}'}
+      %a{href: '/g/{{group.key}}/subgroups/new'}
         %span{aria-hidden:'true'}>+
         %span{ translate: 'common.action.add_subgroup' }

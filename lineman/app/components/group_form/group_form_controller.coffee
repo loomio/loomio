@@ -4,8 +4,8 @@ angular.module('loomioApp').controller 'GroupFormController', ($routeParams, $ro
     Records.groups.findOrFetchByKey($routeParams.key).then (group) =>
       @group = group
       FormService.applyForm @, @group
-  else if $routeParams.parentId
-    Records.groups.findOrFetchByKey($routeParams.parentId).then (parent) =>
+  else if $routeParams.parentKey
+    Records.groups.findOrFetchByKey($routeParams.parentKey).then (parent) =>
       @group = Records.groups.initialize
         parentId:                   parent.id
         visibleTo:                  parent.visibleTo
@@ -61,6 +61,9 @@ angular.module('loomioApp').controller 'GroupFormController', ($routeParams, $ro
       @group.membershipGrantedUpon = @firstMembershipOption()
     if !@validDiscussionOption(@group.discussionPrivacyOptions)
       @group.discussionPrivacyOptions = @firstDiscussionOption(@group.discussionPrivacyOptions)
+
+  @privacyTranslation = (value) =>
+    if @group.parentId then "#{value}_subgroup" else value
 
   @onSuccess = (newGroup) ->
     $location.path "/g/#{newGroup.key}"
