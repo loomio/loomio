@@ -329,6 +329,13 @@ en:
       date: By Date
       date_aria_label: Currently sorting threads by date
       date_description: Sort threads by date.
+    threads_from:
+      group: 'Threads from'
+      today: 'Threads from today'
+      yesterday: 'Threads from yesterday'
+      this_week: 'Threads from this week'
+      this_month: 'Threads from this month'
+      older: 'Threads older than a month'
 
   discussion:
     activity: 'Activity'
