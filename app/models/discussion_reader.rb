@@ -26,7 +26,7 @@ class DiscussionReader < ActiveRecord::Base
 
   def volume
     if persisted?
-      super || membership.volume
+      super || membership && membership.volume || 'normal'
     else
       membership.volume
     end
