@@ -434,7 +434,7 @@ pt-BR:
       not_following_details: Você será notificado sobre os tópicos que está participando
   networks:
     threads_header: todos os tópicos públicos nesta rede
-    groups_header: todos os grupos nesta rede
+    groups_header: "todos %{count} grupos nesta rede"
     members_count: "%{count} membros"
     membership_requests_header: "Pedidos de adesão para %{network}"
     join_header: Adicione o seu grupo para a rede

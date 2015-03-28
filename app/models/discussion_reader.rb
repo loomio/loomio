@@ -7,7 +7,7 @@ class DiscussionReader < ActiveRecord::Base
   scope :for_user, -> (user) { where(user_id: user.id) }
 
   def self.for(user: , discussion: )
-    if user.is_logged_in?
+    if (!user.nil?) and user.is_logged_in?
       begin
         find_or_create_by(user_id: user.id, discussion_id: discussion.id)
       rescue ActiveRecord::RecordNotUnique
@@ -25,7 +25,11 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def volume
-    super || membership.volume
+    if persisted?
+      super || membership.volume
+    else
+      membership.volume
+    end
   end
 
   def first_read?

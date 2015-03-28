@@ -13,9 +13,10 @@ class Vote < ActiveRecord::Base
   include Translatable
   is_translatable on: :statement
 
-  scope :for_user, lambda {|user_id| where(user_id: user_id)}
+  scope :for_user,      -> (user_id) { where(user_id: user_id) }
   scope :by_discussion, -> (discussion_id = nil) { joins(:motion).where("motions.discussion_id = ? OR ? IS NULL", discussion_id, discussion_id) }
-  scope :most_recent, -> { where age: 0  }
+  scope :since,         -> (time) { where('created_at > ?', time) }
+  scope :most_recent,   -> { where(age: 0) }
 
   delegate :name, to: :user, prefix: :user # deprecated
   delegate :name, to: :user, prefix: :author
@@ -31,6 +32,7 @@ class Vote < ActiveRecord::Base
 
   after_create :update_motion_vote_counts
   after_destroy :update_motion_vote_counts
+
 
   # alias_method does not work for the following obvious methods
   def author=(obj)
@@ -67,10 +69,6 @@ class Vote < ActiveRecord::Base
 
   def can_be_edited_by?(current_user)
     current_user && user == current_user
-  end
-
-  def author
-    user
   end
 
   def position_verb

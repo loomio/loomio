@@ -6,6 +6,9 @@ angular.module('loomioApp').directive 'threadLintel', ->
     $scope.show = false
 
     # can probably delete this
+    $scope.$on 'currentComponent', (event, componentName) ->
+      $scope.show = componentName == 'threadPage'
+
     $scope.$on 'viewingThread', (event, discussion) ->
       $scope.discussion = discussion
 

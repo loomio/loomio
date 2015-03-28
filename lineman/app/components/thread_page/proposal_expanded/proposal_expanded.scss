@@ -1,0 +1,45 @@
+.proposal-expanded {
+  background-color: #fff;
+}
+
+.proposal-expanded-started-by {
+  @include metaText;
+  margin-bottom: 5px;
+}
+
+.pie-chart-pie {
+  width: 120px;
+  height: 120px;
+}
+
+.pie-chart-legend {
+  @include metaText;
+  padding-top: 36px;
+}
+
+.pie-chart-legend-item{
+  margin: 5px;
+  padding-left: 5px;
+  line-height: 15px;
+}
+
+.pie-chart-legend-item-yes{
+  border-left: 15px solid #90D490;
+}
+
+.pie-chart-legend-item-abstain{
+  border-left: 15px solid #F0BB67;
+}
+
+.pie-chart-legend-item-no{
+  border-left: 15px solid #D49090;
+}
+
+.pie-chart-legend-item-block{
+  border-left: 15px solid #dd0000;
+}
+
+.proposal-expanded-votes-trigger {
+  padding: 10px 0;
+  cursor: pointer;
+}

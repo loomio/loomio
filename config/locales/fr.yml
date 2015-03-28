@@ -434,7 +434,6 @@ fr:
       not_following_details: Vous serez informé sur les fils auxquels vous participez.
   networks:
     threads_header: toutes les discussions publiques dans ce réseau
-    groups_header: tous les groupes dans ce réseau
     members_count: "%{count} membres"
     membership_requests_header: "Demandes d'adhésion pour %{network}"
     join_header: Ajouter votre groupe au réseau

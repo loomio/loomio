@@ -1,7 +1,7 @@
-.thread-item{ng-controller: 'NewVoteItemController'}
+.thread-item--inner{ng-controller: 'NewVoteItemController'}
   .thread-item-header.media
     .media-left
-      .thread-item-vote-icon{class: 'thread-event-vote-icon-{{vote.position}}'}
+      .thread-item-vote-icon{class: 'thread-item-vote-icon-{{vote.position}}'}
     .media-body
       %span{ng-hide: 'vote.hasStatement()', translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-name: '{{vote.authorName()}}'}
       %span{ng-show: 'vote.hasStatement()', translate: "new_vote_item.{{vote.positionVerb()}}_and_why", translate-value-name: '{{vote.authorName()}}'}

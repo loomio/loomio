@@ -1,16 +1,23 @@
 .dashboard-page-thread
   %a.selector-list-item-link{href: '/d/{{discussion.key}}'}
-    .media-left{ng-hide: 'showGroupLogo'}
-      %img.selector-list-item-group-logo{src: "{{discussion.group().logoUrl()}}"}
-    .media-left.dashboard-page-unread-count
-      %span{ng-if: 'discussion.isUnread()'}
+    .dashboard-page-left
+      .dashboard-page-unread-count{ng-if: 'discussion.isUnread()'}
         {{discussion.unreadItemsCount()}}
-    .media-body
-      .dashboard-page-thread-header
+      .dashboard-page-proposal-vote{ng-if: 'discussion.activeProposal() && lastVoteByCurrentUser()'}
+        .thread-item-vote-icon{class: 'thread-item-vote-icon-{{lastVoteByCurrentUser().position}}'}
+    .dashboard-page-thread-header
+      .dashboard-page-thread-title{ng-class: "{'is-unread': discussion.isUnread() }"}
+        {{discussion.title}}
+    .dashboard-page-thread-info
+      %span.dashboard-page-proposal-info{ng-if: 'discussion.activeProposal()'}
         %tiny_proposal_pie_chart.pull-left.dashboard-page-pie-chart{proposal: 'discussion.activeProposal()', ng-if: 'discussion.activeProposal()'}
-        .dashboard-page-thread-title{ng-class: "{'is-unread': discussion.isUnread() }"}
-          {{discussion.title}}
-      .dashboard-page-thread-info
-        %span> {{discussion.group().fullName()}}
+        %span> {{ discussion.activeProposal().name }} ·
+        %smart_time{time: 'discussion.activeProposal().closingAt'}>
         %span> ·
-        %span> {{discussion.lastInboxActivity() | timeFromNowInWords}}
+      %span> {{ discussion.group().fullName() }}
+  .dashboard-page-thread-actions
+    %a.dashboard-page-thread-action-button{ng-show: 'discussion.volume != "mute"', href: '#', ng-click: 'discussion.reader().changeVolume("mute")'}>
+      %i.fa.fa-2x.fa-volume-off
+    %a.dashboard-page-thread-action-button{ng-show: 'discussion.isUnread()', href: '#', ng-click: 'discussion.markAsRead()'}>
+      %i.fa.fa-2x.fa-check
+

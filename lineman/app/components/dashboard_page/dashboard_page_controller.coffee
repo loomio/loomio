@@ -1,82 +1,98 @@
-angular.module('loomioApp').controller 'DashboardPageController', (Records) ->
-  @page = {}
-  @perPage = 25
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, Records, CurrentUser) ->
+  $rootScope.$broadcast('currentComponent', 'dashboardPage')
 
-  @refresh = (options = {}) =>
-    options['filter'] = @filter
-    switch @sort
-      when 'date'
-        options['per'] = @perPage
-        options['from'] = @page[@filter] = @page[@filter] || 0
-        @page[@filter] = @page[@filter] + @perPage
-        Records.discussions.fetchInboxByDate  options
-      when 'group'
-        Records.discussions.fetchInboxByGroup options
+  @loaded =
+    sort_by_date:
+      show_all: 0
+      show_unread: 0
+    sort_by_group:
+      show_all: 0
+      show_unread: 0
+  @perPage =
+    sort_by_date: 25
+    sort_by_group: 10
+  @groupThreadCounts =
+    hidden:    0
+    collapsed: 5
+    expanded:  10
 
-  @setOptions = (options = {}) =>
-    @filter = options['filter'] if options['filter']
-    @sort   = options['sort']   if options['sort']
-    @refresh()
+  @sort   = -> CurrentUser.dashboardSort
+  @filter = -> CurrentUser.dashboardFilter
 
-  @setOptions sort: 'group', filter: 'all'
+  @loadMore = (options = {}) =>
+    return if @loading
+    @loading = true
 
-  @dashboardDiscussions = ->
-    window.Loomio.currentUser.inboxDiscussions()
+    callFetch(
+      filter:  @filter()
+      per:     @perPage[@sort()]
+      from:    @loadedCount()).then => @loading = false
+
+  callFetch = (params) =>
+    @loaded[@sort()][@filter()] = @loadedCount() + @perPage[@sort()]
+
+    if @sort() == 'sort_by_date'
+      Records.discussions.fetchInboxByDate(params)
+    else
+      Records.discussions.fetchInboxByGroup(params)
+
+  @loadedCount = (group) =>
+    if group
+      @groupThreadCounts[group.dashboardStatus or 'collapsed']
+    else
+      @loaded[@sort()][@filter()]
+
+  @changePreferences = (options = {}) =>
+    CurrentUser.updateFromJSON(options)
+    CurrentUser.save()
+    @loadMore() if @loadedCount() == 0
+
+  @dashboardOptions = (group) =>
+    unmuted: true
+    unread: @filter() == 'show_unread'
+    groupId: (group.id if group)
+
+  @dashboardDiscussionReaders = (group) =>
+    _.pluck Records.discussionReaders.forDashboard(@dashboardOptions(group)).data(), 'id'
+
+  @dashboardDiscussions = (group) =>
+    Records.discussions.findByDiscussionIds(@dashboardDiscussionReaders(group))
+                       .simplesort('lastActivityAt', true)
+                       .limit(@loadedCount(group))
+                       .data()
 
   @dashboardGroups = ->
-    window.Loomio.currentUser.groups()
+    _.filter CurrentUser.groups(), (group) -> group.isParent()
 
-  @footerReached = ->
-    return false if @loadingDiscussions
-    @loadingDiscussions = true
-    @refresh().then ->
-      @loadingDiscussions = false
+  timeframe = (options = {}) ->
+    today = moment().startOf 'day'
+    (discussion) ->
+      discussion.lastInboxActivity()
+                .isBetween(today.clone().subtract(options['fromCount'] or 1, options['from']),
+                           today.clone().subtract(options['toCount'] or 1, options['to']))
 
-  @unread = (discussion) ->
-    discussion.isUnread() or @filter != 'unread'
+  inTimeframe = (fn) =>
+    =>
+      @loadedCount() > 0 and _.find @dashboardDiscussions(), (discussion) => fn(discussion)
 
-  @lastInboxActivity = (discussion) ->
-    -discussion.lastInboxActivity()
+  @today     = timeframe(from: 'second', toCount: -10, to: 'year')
+  @yesterday = timeframe(from: 'day', to: 'second')
+  @thisWeek  = timeframe(from: 'week', to: 'day')
+  @thisMonth = timeframe(from: 'month', to: 'week')
+  @older     = timeframe(fromCount: 3, from: 'month', to: 'month')
 
-  @startOfDay = ->
-    moment().startOf('day').clone()
+  @anyToday     = inTimeframe(@today)
+  @anyYesterday = inTimeframe(@yesterday)
+  @anyThisWeek  = inTimeframe(@thisWeek)
+  @anyThisMonth = inTimeframe(@thisMonth)
+  @anyOlder     = inTimeframe(@older)
 
-  @today = (discussion) ->
-    discussion.lastInboxActivity().isAfter @startOfDay()
+  @groupName    = (group) -> group.name
+  @anyThisGroup = (group) => @dashboardDiscussions(group).length > 0
+  @canExpand    = (group) =>
+    @loadedCount(group) < _.min [@dashboardDiscussionReaders(group).length, @groupThreadCounts.expanded]
 
-  @yesterday = (discussion) ->
-    discussion.lastInboxActivity().isBetween(@startOfDay().subtract(1, 'day'), @startOfDay())
+  Records.votes.fetchMyRecentVotes()
+  @loadMore()
 
-  @thisWeek = (discussion) ->
-    discussion.lastInboxActivity().isBetween(@startOfDay().subtract(1, 'week'), @startOfDay().subtract(1, 'day'))
-
-  @thisMonth = (discussion) ->
-    discussion.lastInboxActivity().isBetween(@startOfDay().subtract(1, 'month'), @startOfDay().subtract(1, 'week'))
-
-  @older = (discussion) ->
-    discussion.lastInboxActivity().isBefore(@startOfDay().subtract(1, 'month'))
-
-  @anyToday = ->
-    _.find @dashboardDiscussions(), (discussion) =>
-      @today(discussion) and @unread(discussion)
-
-  @anyYesterday = ->
-    _.find @dashboardDiscussions(), (discussion) =>
-      @yesterday(discussion) and @unread(discussion)
-
-  @anyThisWeek = ->
-    _.find @dashboardDiscussions(), (discussion) =>
-      @thisWeek(discussion) and @unread(discussion)
-
-  @anyThisMonth = ->
-    _.find @dashboardDiscussions(), (discussion) =>
-      @thisMonth(discussion) and @unread(discussion)
-
-  @anyOlder = ->
-    _.find @dashboardDiscussions(), (discussion) =>
-      @older(discussion) and @unread(discussion)
-
-  @anyThisGroup = (group) ->
-    _.find @dashboardDiscussions(), (discussion) =>
-      discussion.groupId == group.id and @unread(discussion)
   return

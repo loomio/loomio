@@ -1,8 +1,8 @@
-angular.module('loomioApp').controller 'MembersCardController', ($scope, Records, UserAuthService) ->
+angular.module('loomioApp').controller 'MembersCardController', ($scope, Records, CurrentUser) ->
   Records.memberships.fetchByGroup $scope.group.key
 
   $scope.canAddMembers = ->
-    $scope.group.membersCanAddMembers or window.Loomio.currentUser.isAdminOf($scope.group)
+    $scope.group.membersCanAddMembers or CurrentUser.isAdminOf($scope.group)
 
   $scope.isAdminOf = ->
-    window.Loomio.currentUser.isAdminOf($scope.group)
+    CurrentUser.isAdminOf($scope.group)

@@ -431,7 +431,6 @@ hu:
       not_following_details: Értesítést kapsz az eseményekről amelyekben részt veszel.
   networks:
     threads_header: minden nyilvános szál ebben a hálózatban
-    groups_header: minden csoport ebben a hálózatban
     members_count: "%{count} tag"
     membership_requests_header: "Tagsági kérelem ehhez a hálózathoz: %{network}"
     join_header: Csoportod hozzáadása a hálózathoz

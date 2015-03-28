@@ -25,15 +25,21 @@ angular.module('loomioApp', ['ngNewRouter',
     snakeName = _.snakeCase(name);
     'generated/components/' + snakeName + '/' + snakeName + '.html';
 
-angular.module('loomioApp').run (Records, UserAuthService) ->
-  if window? and window.Loomio?
-    Records.import(window.Loomio.seedRecords)
-    window.Loomio.currentUser = Records.users.find(window.Loomio.currentUserId)
+angular.module('loomioApp').controller 'AppController', ($scope, $router) ->
+  $scope.currentComponent = 'nothing yet'
 
-angular.module('loomioApp').controller 'AppController', ($router) ->
+  $scope.$on 'currentComponent', (event, component) ->
+    $scope.currentComponent = component
+
   $router.config([
-    { path: '/dashboard', component: 'dashboardPage' },
-    { path: '/d/:key', component: 'threadPage' },
-    { path: '/g/:key', component: 'groupPage' },
-    { path: '/g/:key/memberships', component: 'membershipsPage' },
+    {path: '/dashboard', component: 'dashboardPage' },
+    {path: '/d/:key', component: 'threadPage' },
+    {path: '/d/:key/:stub', component: 'threadPage' },
+    {path: '/m/:key/', component: 'proposalRedirect' },
+    {path: '/m/:key/:stub', component: 'proposalRedirect' },
+    {path: '/g/new', component: 'groupForm' },
+    {path: '/g/:key/edit', component: 'groupForm' },
+    {path: '/g/:key/memberships', component: 'membershipsPage'}
+    {path: '/g/:key', component: 'groupPage' },
+    {path: '/g/:key/:stub', component: 'groupPage' },
   ]);

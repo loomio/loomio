@@ -1,8 +1,12 @@
 class API::VotesController < API::RestfulController
 
   def my_votes
-    load_and_authorize_discussion
-    @votes = @discussion.votes.most_recent.for_user(current_user)
+    @votes = if params[:discussion_id]
+      load_and_authorize_discussion
+      @discussion.votes.for_user(current_user).most_recent
+    else
+      current_user.votes.most_recent.since(3.months.ago).most_recent
+    end
     respond_with_collection
   end
 

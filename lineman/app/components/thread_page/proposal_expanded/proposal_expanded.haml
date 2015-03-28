@@ -1,0 +1,36 @@
+.proposal-expanded{ng-show: 'proposal'}
+
+  %a.proposal-expanded__collapse.pull-right{href: '#', ng-click: 'collapse()', translate: 'proposal_expanded.collapse', ng-show: 'canCollapse'}
+
+  %proposal_actions_dropdown{proposal: 'proposal', ng-if: 'showActionsDropdown()'}
+  %h2 {{proposal.name}}
+  .proposal-expanded-started-by
+    %span{translate: 'proposal_expanded.started_by', translate-values: '{name: proposal.authorName()}'}
+    %span.time-ago>
+      {{proposal.createdAt | timeFromNowInWords}}
+    ·
+    %closing_in{time: 'proposal.closingAt' }>
+    .badge.pull-right.cuke-proposal-closed-badge{ng-show: '!proposal.isActive'} Closed
+  .proposal-expanded-description{btf-markdown: 'proposal.description' }
+
+  .pie-chart.media
+    .pie-chart-pie.media-left
+      %proposal_pie_chart{proposal: 'proposal'}
+    .pie-chart-legend.media-body
+      .pie-chart-legend-item{class: 'pie-chart-legend-item-{{position}}', ng-repeat: 'position in proposal.positions'}
+        {{ "proposal_position_"+position | translate}} ({{ proposal.voteCounts[position] }})
+
+  %vote_form{proposal: 'proposal'}
+
+  .proposal-expanded-no-votes{ng-show: 'onlyVoterIsYou()', translate: 'proposal_expanded.only_voter_is_you'}
+  .proposal-expanded-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_expanded.no_votes_yet'}
+
+  .proposal-expanded-votes
+    %h4{translate: 'proposal_expanded.positions'}
+
+    .proposal-expanded-vote.media{ng_repeat: 'vote in curatedVotes()'}
+      .media-left
+        .thread-item-vote-icon{class: 'thread-item-vote-icon-{{vote.position}}'}
+      .media-body
+        %strong> {{::vote.authorName()}}
+        %span.author-statement {{vote.statement }}

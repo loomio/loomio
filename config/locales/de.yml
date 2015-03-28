@@ -80,6 +80,7 @@ de:
     group_already_setup: "Die Gruppe, die Du einrichten möchtest, existiert schon."
     passwords_did_not_match: Passwort stimmt nicht mit Bestätigung überein.
     proposal_already_exists: Es gibt schon einen offenen Vorschlag in dieser Diskussion.
+    username_cannot_contain_whitespace: Benutzername darf keine Leerzeichen enthalten
     user_with_email_address_already_in_group: Ein Benutzer mit dieser eMail-Adresse gehört schon zu dieser Gruppe.
     you_have_already_requested_membership: Du hast die Mitgliedschaft dieser Gruppe schon angefragt.
     you_are_already_a_member_of_this_group: Du bist schon Mitglied dieser Gruppe.
@@ -424,6 +425,8 @@ de:
   edit_group_description: Gruppenbeschreibung ändern
   group_subscription: Gruppenabonnement
   groups:
+    max_size_warning_html: "Ihre Gruppe wächst, und hat bald die Grenze von %{size} Mitglieder. Bitte <a href='%{link}'> kontaktieren Sie uns </a>, um den Grenzwert zu erhöhen."
+    max_size_reached_html: "Ihre Gruppe die Grenze von %{size} Mitgliedern erreicht. <a href='%{link}'> Kontaktieren Sie uns</a>, um mehr Menschen in die Gruppe aufzunehmen."
     follow:
       click_to_follow: "Klicken, um der Gruppe zu folgen"
       click_to_unfollow: "Klicken, um der Gruppe nicht mehr zu folgen"
@@ -431,7 +434,7 @@ de:
       not_following_details: Du wirst über Diskussionen informiert an denen Du beteiligt bist.
   networks:
     threads_header: alle öffentlichen Threads in diesem Netzwerk
-    groups_header: alle Gruppen in diesem Netzwerk
+    groups_header: "alle %{count} Gruppen in diesem Netzwerk"
     members_count: "%{count} Mitglieder "
     membership_requests_header: "Mitgliedschaftsanfrage von %{network}"
     join_header: Fügen Sie Ihre Gruppe zu dem Netzwerk
@@ -640,6 +643,7 @@ de:
     video_tutorial: Videoanleitung
     video_tutorial_description: Sieh dir das Video an um einen Einblick in die Funktionsweise von Loomio zu bekommen.
     what_is_loomio: Was ist Loomio?
+    what_is_loomio_description_html: "<p> Loomio ist ein einfaches benutzerfreundliches Online-Tool für die kollektive Entscheidungsfindung.\nMit Loomio können Sie Diskussionen Online hosten, laden die richtigen Leute ein sich zu beteiligen, \ngekommen, um zeitnahe Entscheidungen und verwandeln Beratung in der realen Welt Aktion. </p> \n\n\n"
   hint:
     context: Hinweise für die Nutzung des Kontext-Felds
     discussion: Hinweise für das Starten einer mitreißenden Diskussion

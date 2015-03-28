@@ -1,33 +1,20 @@
 class DiscussionReaderCache
-  attr_accessor :user
-  attr_accessor :readers
+  attr_accessor :user, :cache
 
   def initialize(user: nil, discussions: [])
-    @user = user
-    @readers_by_discussion_id = {}
+    @user, @cache = user, {}
+    return unless user && user.is_logged_in? && discussions
 
-    if user
-      @readers = DiscussionReader.where(user_id: user.id,
-                                        discussion_id: discussions.map(&:id)).includes(:discussion)
-    else
-      @readers = []
-    end
-
-    @readers.each do |reader|
-      @readers_by_discussion_id[reader.discussion_id] = reader
+    DiscussionReader.includes(:discussion)
+                    .where(user_id: user.id,
+                           discussion_id: discussions.map(&:id))
+                    .each do |reader|
+      cache[reader.discussion_id] = reader
     end
   end
 
   def get_for(discussion)
-    @readers_by_discussion_id.fetch(discussion.id) { new_reader_for(discussion) }
+    cache.fetch(discussion.id) { DiscussionReader.for(discussion: discussion, user: user) }
   end
 
-  private
-
-  def new_reader_for(discussion)
-    DiscussionReader.new do |dr|
-      dr.discussion = discussion
-      dr.user = user
-    end
-  end
 end

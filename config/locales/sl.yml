@@ -1,4 +1,10 @@
 sl:
+  email_settings:
+    title: Email nastavitve
+    group_volume: Pogostost obveščanj za skupino
+    email_when_mentioned: "Pošlji mi email, ko sem @omenjen/a"
+    proposal_closing_soon: Pošlji mi email preden se predlogi zaključijo.
+    submit: Posodobi nastavitve
   explore:
     header: Razišči javne skupine
   try_it:
@@ -63,6 +69,7 @@ sl:
     group_already_setup: "Skupina, ki jo želiš ustvariti, že obstaja."
     passwords_did_not_match: Geslo se ne ujema s potrditvijo
     proposal_already_exists: V tej razpravi je predlog že odprt.
+    username_cannot_contain_whitespace: Uporabniško ime ne sme vsebovati presledkov
     user_with_email_address_already_in_group: Uporabnik s tem e-poštnim naslovom je že član te skupine.
     you_have_already_requested_membership: Za članstvo v tej skupini si že zaprosil/-a.
     you_are_already_a_member_of_this_group: V to skupino si že včlanjen-/a.
@@ -152,35 +159,35 @@ sl:
         few: "%{count} sekunde"
         other: "%{count} sekund"
       less_than_x_minutes:
-        one: "%{count} minuta"
-        two: "%{count} minuti"
-        few: "%{count} minute "
-        other: "%{count} minut"
+        one: "%{count} minuto"
+        two: "%{count} minutama"
+        few: "%{count} minutami"
+        other: "%{count} minutami"
       x_minutes:
-        one: "%{count} minuta"
-        two: "%{count} minuti"
-        few: "%{count} minute"
-        other: "%{count} minut"
+        one: "%{count} minuto"
+        two: "%{count} minutama"
+        few: "%{count} minutami"
+        other: "%{count} minutami"
       about_x_hours:
         one: "%{count} uro"
         two: "%{count} urama"
         few: "%{count} urami"
         other: "%{count} urami"
       x_days:
-        one: "%{count} dnevom"
+        one: "%{count} dnem"
         two: "%{count} dnevoma"
         few: "%{count} dnevi"
         other: "%{count} dnevi"
       about_x_months:
-        one: "%{count} mesec"
-        two: "%{count} meseca"
+        one: "%{count} mescem"
+        two: "%{count} mescema"
         few: "%{count} meseci"
-        other: "%{count} mesecev"
+        other: "%{count} meseci"
       x_months:
-        one: "%{count} mesec"
-        two: "%{count} meseca"
+        one: "%{count} mescem"
+        two: "%{count} mescema"
         few: "%{count} meseci"
-        other: "%{count} mesecev"
+        other: "%{count} meseci"
       about_x_years:
         one: "%{count} leto"
         two: "%{count} leti"
@@ -214,7 +221,7 @@ sl:
     clear: Počisti
     title: Nabiralnik
     preferences: Nastavitve nabiralnika
-    what_you_have_not_read_yet: Neprebrane dejavnosti
+    what_you_have_not_read_yet: Neprebrane aktivnosti
     dropdown-btn: Nabiralnik
     empty: Na tekočem si. Nimaš neprebranih komentarjev.
     preferences_instructions_html: "<strong>Povleci predmete</strong>, da jih preurediš. <strong>Odznači</strong> za izbris iz nabiralnika."
@@ -448,6 +455,22 @@ sl:
     confirmation:
       title: "Skoraj si opravil/a! Preveri svoj email."
       body_html: "Prejel/a boš email z vabilom k ustvarjanju svoje skupine.\n\nČe ga ne prejmeš v naslednjih nekaj minutah, nam piši na <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    volume: Pogostost obveščanj
+    loud: Glasno
+    normal: Normalno
+    quiet: Tiho
+    mute: Neslišno
+  discussion_volume:
+    loud_description: Pošlji email ob vsaki aktivnosti v tej razpravi.
+    normal_description: "Pošlji email ko se predlog odpre, preden se zapre in ko je objavljen izid."
+    quiet_description: Ne pošiljaj emailov za to razpravo.
+    mute_description: "Skrij to razpravo iz nadzorne plošče in me ne obveščaj, razen če sem @omenjen/a."
+  group_volume:
+    loud_description: Pošlji email ob vsaki aktivnosti.
+    normal_description: "Pošlji email samo za pomembne stvari: Nove razprave in predlogi, izidi glasovanj, itd."
+    quiet_description: Ne pošiljaj emailov za to skupino. Nove aktivnosti bodo objavljene na nadzorni plošči.
+    mute_description: "Skrij to skupino iz nadzorne plošče in me ne obveščaj, razen če sem @omenjen/a."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> se je strinjal/a s predlogom."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> se je vzdržal/a predloga."
@@ -478,7 +501,7 @@ sl:
   create_new_proposal: Ustvari predlog
   empty_decision_list_html: "Smo pripravljeni sprejeti odločitev? <br> Vsak lahko predlaga svoj predlog."
   empty_decision_index: Ta skupina ni izvedla še nobene odločitve.
-  empty_discussion_list: V tej razpravi še ni dejavnosti.
+  empty_discussion_list: V tej razpravi še ni aktivnosti.
   go_to_add_comment_html: "Če želiš dodati komentar, <a href='%{href}'>pojdi na konec razprave</a>."
   comment_by: "Komentiral/a %{comment_author}"
   read_up_to: Nazadnje si prebral/a do tu
@@ -597,11 +620,11 @@ sl:
     images_and_text_formatting: Urejanje slik in teksta
     images_and_text_formatting_html: "<p>Loomio uporablja 'Markdown' za vgrajevanje slik in urejanje besedil.\nMarkdown lahko vklopiš z majhno sivo ikono pod oknom s komentarji..</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Klikni sem</a>\nza več informacij o uporabi Markdown-a.</p>\n"
     keep_up_to_date: Ostani na tekočem
-    keep_up_to_date_html: "<p>Klik na ime skupine na vrhu zaslona te popelje na Stran Skupine,\nkjer lahko vidiš seznam vseh razprav in odločitev v tej skupini. Če\nsi včlanjen/a v več skupin, boš tu videl/a tudi vse dejavnost v teh skupinah.</p>\n<p>Ko se zgodi kaj pomembnega v tvoji skupini, boš prejel/a email.\nEmail nastavitve lahko spremeniš <a href=\"%{link}\"\">tukaj</a>.</p>\n"
+    keep_up_to_date_html: "<p>Klik na ime skupine na vrhu zaslona te popelje na Stran Skupine,\nkjer lahko vidiš seznam vseh razprav in odločitev v tej skupini. Če\nsi včlanjen/a v več skupin, boš tu videl/a vse aktivnosti v teh skupinah.</p>\n<p>Ko se zgodi kaj pomembnega v tvoji skupini, boš prejel/a email.\nEmail nastavitve lahko spremeniš <a href=\"%{link}\"\">tukaj</a>.</p>\n"
     make_a_decision: Odloči se
     make_a_decision_description: "Ko je skupina pripravljena sprejeti odločitev, lahko vsak pripravi predlog. Opiši jasen postopek in navedi dovolj informacij, da bodo vsi točno vedeli, kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo."
     prompt_people_details: "Če želiš dobiti pozornost določene osebe v skupini, vtipkaj ‘@’, kateri sledi še ime te osebe. Prejeli bodo email s sporočilom, da si jih omenil/a v komentarju."
-    prompt_people_html: "Pozovi člane z <span class='blue'>@imenom</span>"
+    prompt_people_html: "Pozovi člane z <span class='blue'>@omenjanjem</span>"
     positions_agree_description: "<span>Strinjam se</span> pomeni, da predlog podpiraš."
     positions_abstain_description: "<span>Vzdržan/a</span> pomeni, da nisi odločen/a, oziroma, da zaupaš skupini, da se odloči brez tebe."
     positions_disagree_description: "<span>Ne strinjam se</span> pomeni, da bi po tvojem mnenju lahko našli boljšo rešitev, a si pripravljen/a sprejeti odločitev večine."
@@ -863,7 +886,7 @@ sl:
       subject: Loomio - Povzetek zadnjih 24 ur
     missed_yesterday:
       subject: Včeraj na Loomiu
-      headlines: Naslovi
+      headlines: Razprave
       mark_as_read: Označi kot prebrano
       thanks_for_reading: "Super, prebral/a si vse novice. Lep dan!"
       click_here_to_mark_all_as_read_html: "Tole se je na Loomiu dogajalo včeraj.\nKo prebereš, klikni <a href=\"%{link}\">označi kot prebrano</a>, da sporočilo izbrišeš iz svojega nabiralnika.\n"
@@ -908,6 +931,9 @@ sl:
     thread_mailer:
       footer_text: "Odgovori na ta email, ali ga poglej na %{hostname}:"
       reply_or_view_online_html: "Odgovori na ta email, ali <a href='%{url}'>ga poglej na %{hostname}</a>."
+      turn_off_notifications_html: "<a href='%{url}'>Izklopi emaile</a> za to razpravo."
+      turn_off_notifications_text: "Izklopi emaile za to razpravo: %{url}"
+      turn_on_notifications_text: "Vklopi email za obveščanje o novih aktivnostih v tej razpravi: %{url}"
       change_email_preferences_html: "Za odjavo od teh sporočil spremeni svoje <a href='%{email_preferences_url}'>email nastavitve</a>."
       change_preferences: "Spremeni svoje email nastavitve:"
       new_motion: "%{who} je predlagal/a:"
@@ -993,6 +1019,8 @@ sl:
   google: Google
   persona: Persona
   common:
+    profile: Profil
+    email_settings: Email nastavitve
     markdown_help_tooltip: Nauči se osnov urejanja besedila z Markdown-om
     settings: Nastavitve
     dashboard: Nadzorna plošča

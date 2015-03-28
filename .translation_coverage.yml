@@ -24,10 +24,10 @@ da:
   main: 91
 de:
   frontpage: 100
-  main: 99
+  main: 100
 el:
   frontpage: 100
-  main: 99
+  main: 100
 eo:
   frontpage: 89
   main: 90
@@ -42,7 +42,7 @@ fi:
   main: 6
 fr:
   frontpage: 100
-  main: 100
+  main: 99
 ga-IE:
   frontpage: 35
   main: 44
@@ -111,12 +111,12 @@ sk:
   main: 92
 sl:
   frontpage: 100
-  main: 93
+  main: 96
 sr:
-  frontpage: 89
-  main: 92
+  frontpage: 100
+  main: 95
 sr-RS:
-  frontpage: 89
+  frontpage: 100
   main: 92
 sv:
   frontpage: 89

@@ -1,4 +1,4 @@
-.group-page{
+.group-page .main-container{
   max-width: $group-page-max-width;
   margin: 0 auto;
   /* over-riding bootstrap */
@@ -7,48 +7,59 @@
   }
 }
 
+.group-page-cover{
+  position: absolute;
+  top: $navbar-height;
+  width: 100%;
+  height: 160px;
+  background: url('http://placehold.it/640x160') no-repeat center center $light-grey;
+  background-size: cover;
+}
 .group-page-header{
   width: 100%;
   position: relative;
-  min-height: 100px + 75px + 8px + 10px;
+  min-height: 225px;
 }
-
-.group-page-cover{
-  max-width: $group-page-max-width;
-  height: 100px;
-  background: url('http://placehold.it/640x100') no-repeat center center;
-  background-size: cover;
-  @media(max-width: $screen-xs-max){ margin: 0 -15px; }
+.group-page-header .btn{
+  @include fontSmall;
 }
 .group-page-logo{
+  position: relative;
+  top: 100px;
   width: 108px;
   height: 108px;
-  position: absolute;
-  top: 75px;
-  left: 10px;
   background: url('http://placehold.it/100x100') no-repeat top center white;
   border: 4px solid #fff;
 }
-.group-page-privacy{
-  margin-top: 10px;
-  position: relative;
+.group-page-header-name-and-actions{
+  margin-top: 60px;
+}
+.group-page-name {
+  float: left;
+  max-width: 50%;
+  margin-left: 108px + 15px;
   a{color: $primary-text-color;}
-  a:hover{text-decoration: none;}
-  a:hover span{text-decoration: underline;}
 }
-.group-page-name-and-privacy{
-  margin: 10px 0;
-  @media(min-width: $screen-xs-max){ margin-left: 128px; }
-}
-
-.group-page-buttons{
-  margin-top: 10px;
+.group-page-privacy{
+  float: left;
+  margin-left: 15px;
 }
 .group-page-notifications{
-  position: relative;
-  margin-bottom: 5px;
+  float: right;
+  .btn { @include fontHelveticaBold; }
 }
-
+.group-page-actions-divider {
+  float: right;
+  height: 2em;
+  width: 1px;
+  background: $meta-text-color;
+  margin-left: 5px;
+  margin-right: 2px;
+}
+.group-page-actions{
+  float: right;
+  .btn { @include fontHelveticaBold; }
+}
 
 .group-page-description,
 .group-page-threads,
@@ -56,6 +67,7 @@
 .group-page-subgroups{
   @include card;
 }
+
 .discussions-new-thread{
   margin-top: 10px;
 }

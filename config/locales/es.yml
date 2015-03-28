@@ -433,8 +433,7 @@ es:
       following_details: "Serás notificado sobre cada tema en este grupo "
       not_following_details: Serás notificado sobre los temas en los que estás participando.
   networks:
-    threads_header: todas los hilos públicos en esta red.
-    groups_header: todos los grupos en esta red
+    threads_header: todos los hilos públicos en esta red.
     members_count: "%{count} miembros"
     membership_requests_header: "Membresías solicitadas para %{network}"
     join_header: Adhiere tu grupo a la red
@@ -643,6 +642,7 @@ es:
     video_tutorial: Vídeo tutorial
     video_tutorial_description: Mira el vídeo para una demostración rápida.
     what_is_loomio: Que es Loomio?
+    what_is_loomio_description_html: "<p> Loomio es una herramienta en linea simple y fácil de usar, para toma de decisiones colaborativas.\nLoomio te permite crear discusiones en linea, invitar a la gente indicada a participar, \nllegar a las decisiones a tiempo y transformar deliberaciones en acciones en el mundo real. </p>\n"
   hint:
     context: Consejos para usar el panel de contexto
     discussion: Consejos para empezar una discusión participativa

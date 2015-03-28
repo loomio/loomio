@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   require 'net/http'
   require 'digest/md5'
 
+  validates_inclusion_of :dashboard_sort,   in: %w[sort_by_group sort_by_date]
+  validates_inclusion_of :dashboard_filter, in: %w[show_all show_unread]
+
   AVATAR_KINDS = %w[initials uploaded gravatar]
   LARGE_IMAGE = 170
   MED_LARGE_IMAGE = 70
@@ -44,7 +47,7 @@ class User < ActiveRecord::Base
               :default => 'none'
 
 
-  has_many :contacts
+  has_many :contacts, dependent: :destroy
   has_many :admin_memberships,
            -> { where('memberships.admin = ? AND memberships.is_suspended = ?', true, false) },
            class_name: 'Membership',
@@ -65,7 +68,8 @@ class User < ActiveRecord::Base
            class_name: 'Membership'
 
   has_many :membership_requests,
-           foreign_key: 'requestor_id'
+           foreign_key: 'requestor_id',
+           dependent: :destroy
 
   has_many :groups,
            -> { where archived_at: nil },
@@ -97,10 +101,11 @@ class User < ActiveRecord::Base
 
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :attachments
+  has_many :attachments, dependent: :destroy
 
   has_one :deactivation_response,
-          class_name: 'UserDeactivationResponse'
+          class_name: 'UserDeactivationResponse',
+          dependent: :destroy
 
   before_save :set_avatar_initials,
               :ensure_unsubscribe_token,

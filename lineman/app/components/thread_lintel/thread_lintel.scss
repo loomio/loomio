@@ -4,7 +4,7 @@
   border-left: 1px solid $border-color;
   border-right: 1px solid $border-color;
   border-bottom: 1px solid $border-color;
-  max-width: $thread-max-width;
+  max-width: $main-max-width;
   background-color: $card-background-color;
   @include fontHelveticaBold;
   @include fontMedium;

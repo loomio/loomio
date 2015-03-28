@@ -45,12 +45,14 @@ Loomio::Application.routes.draw do
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
       get :inbox_by_date, on: :collection
+      get :inbox_by_organization, on: :collection
       get :inbox_by_group, on: :collection
+    end
+    resources :discussion_readers, only: :update do
       patch :mark_as_read, on: :member
     end
-    resources :discussion_readers, only: :update
 
-    resources :motions,     only: [       :index, :create, :update], path: :proposals do
+    resources :motions,     only: [:show, :index, :create, :update], path: :proposals do
       post :close, on: :member
     end
     resources :votes,       only: [       :index, :create, :update] do
@@ -67,6 +69,7 @@ Loomio::Application.routes.draw do
     resources :translations, only: :show
     resources :notifications, only: :index
     resources :search_results, only: :index
+
     resources :contact_messages, only: :create
     namespace :faye do
       post :subscribe
@@ -76,6 +79,7 @@ Loomio::Application.routes.draw do
       get :current
       get :unauthorized
     end
+    resources :users, only: :update
     devise_scope :user do
       resources :sessions, only: [:create, :destroy]
     end

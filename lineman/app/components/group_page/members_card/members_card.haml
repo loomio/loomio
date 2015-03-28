@@ -1,4 +1,4 @@
-.group-page-members
+%section.group-page-members{role: 'region', aria-labelledby: 'members-card-title'}
   .dropdown.context-menu.pull-right{ng-if: 'isAdminOf(group)'}
     %a.dropdown-toggle{href: ''}
       %i.fa.fa-lg.fa-chevron-down
@@ -6,7 +6,7 @@
       %li
         %a{href: '/g/{{group.key}}/memberships', translate: 'group_page.options.manage_members'}
 
-  %h3.first{ translate: 'group_page.members' }
+  #members-card-title.card-title{ translate: 'group_page.members', role: 'heading' }
 
   .group-member-list
     .group-member-list-item{ng-repeat: 'member in groupPage.group.members() | limitTo:5'}

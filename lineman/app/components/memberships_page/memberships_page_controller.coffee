@@ -3,13 +3,17 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
   @loadedCount = 0
   @membershipsPerPage = 25
 
-  Records.groups.findOrFetchByKey($routeParams.key).then (group) => @group = group
+  Records.groups.findOrFetchByKey($routeParams.key).then (group) =>
+    @group = group
+    @loadMore()
+
+  @userIsAdmin = =>
+    CurrentUser.isAdminOf(@group)
 
   @loadMore = =>
     Records.memberships.fetch({group_key: $routeParams.key, from: @loadedCount, per: @membershipsPerPage }).then =>
       @loadedCount = @loadedCount + @membershipsPerPage
   LoadingService.applyLoadingFunction @, 'loadMore'
-  @loadMore()
 
   @userIsAdmin = =>
     window.Loomio.currentUser.isAdminOf(@group)

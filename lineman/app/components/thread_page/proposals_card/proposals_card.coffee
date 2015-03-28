@@ -5,9 +5,7 @@ angular.module('loomioApp').directive 'proposalsCard', ->
   templateUrl: 'generated/components/thread_page/proposals_card/proposals_card.html'
   replace: true
   controllerAs: 'proposalsCard'
-  controller: (Records, ProposalFormService) ->
-    console.log 'proposalsCard.discussion', @discussion
-
+  controller: (Records, ProposalFormService, CurrentUser) ->
     Records.proposals.fetchByDiscussion @discussion
     Records.votes.fetchMyVotesByDiscussion @discussion
 
@@ -24,5 +22,5 @@ angular.module('loomioApp').directive 'proposalsCard', ->
       @selectedProposal = proposal
 
     @canStartProposal = =>
-      !@discussion.hasActiveProposal() and window.Loomio.currentUser.canStartProposals(@discussion)
+      !@discussion.hasActiveProposal() and CurrentUser.canStartProposals(@discussion)
     return
