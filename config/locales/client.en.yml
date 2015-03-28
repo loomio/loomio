@@ -312,16 +312,22 @@ en:
     my_groups: Groups
 
   dashboard_page:
+    options:
+      aria_label: 'Dashboard filtering options'
     load_more: Load more threads
     filtering:
       all: All Threads
+      all_aria_label: Currently showing all threads
       all_description: View all threads
       unread: Unread Threads
+      unread_aria_label: Currently showing unread threads
       unread_description: View only threads you have not read yet
     sorting:
       group: By Group
+      group_aria_label: Currently sorting threads by group
       group_description: Sort threads by group.
       date: By Date
+      date_aria_label: Currently sorting threads by date
       date_description: Sort threads by date.
 
   discussion:

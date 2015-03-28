@@ -6,6 +6,9 @@
   padding: 15px;
   width: 300px;
 }
+.dropdown-menu-with-labels a{
+  color: $primary-text-color;
+}
 
 .dropdown-menu-with-labels .fa-check{
   margin-left: 5px;
