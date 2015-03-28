@@ -65,6 +65,11 @@
   background-image: url(/img/red_flag_30.png);
 }
 
+.change-your-vote{
+  @include metaText;
+  span{ text-decoration: underline; }
+}
+
 .overlimit {
   color: red;
 }

@@ -35,14 +35,12 @@
   .your-position{ng-show: 'yourLastVote() && !editing'}
     %h4{translate: 'proposal_expanded.your_position'}
 
-    %a.cuke-edit-position-btn.pull-right{ng-show: 'proposal.isActive()', ng-click: 'edit()', href: '#'}
-
     .current-position.media
       .media-left
         .your-position-icon{class: 'your-position-icon-{{yourLastVote().position}}'}
       .media-body
         %span.author-statement
           {{ yourLastVote().statement || 'vote_form.no_statement' | translate }}
-
-        &nbsp;
-        %a.underlined-link{href: '#', translate: 'vote_form.change_your_vote', ng-click: 'changeVote()'}
+        %a.change-your-vote{href: '#', ng-click: 'changeVote()', ng-show: 'proposal.isActive()'}
+          %i.fa.fa-exchange{aria-hidden: 'true'}>
+          %span{translate: 'vote_form.change_your_vote'}
