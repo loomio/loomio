@@ -12,6 +12,7 @@ class GroupSerializer < ActiveModel::Serializer
              :members_can_edit_comments,
              :members_can_raise_proposals,
              :members_can_vote,
+             :memberships_count,
              :visible_to,
              :membership_granted_upon,
              :discussion_privacy_options,

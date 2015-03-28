@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, Records, LoadingService) ->
+angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, Records, LoadingService, CurrentUser) ->
   @loading = true
   @loadedCount = 0
   @membershipsPerPage = 25
@@ -15,16 +15,13 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
       @loadedCount = @loadedCount + @membershipsPerPage
   LoadingService.applyLoadingFunction @, 'loadMore'
 
-  @userIsAdmin = =>
-    window.Loomio.currentUser.isAdminOf(@group)
-
   @toggleMembershipAdmin = (membership) ->
     if membership.admin
       membership.removeAdmin()
     else
       membership.makeAdmin()
 
-  @destroyMembership = (membership) ->
-    membership.destroy()
+  @canLoadMore = =>
+    @loadedCount < @group.membershipsCount
 
   return

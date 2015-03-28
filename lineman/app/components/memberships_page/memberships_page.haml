@@ -6,23 +6,20 @@
       %h2{translate: 'memberships_page.members'}
     .row
       .memberships-page-table-row.memberships-page-table-header.col-xs-1
-      .memberships-page-table-row.memberships-page-table-header{ng-class: '{"col-xs-11": !membershipsPage.userIsAdmin(), "col-xs-3": membershipsPage.userIsAdmin()}', translate: 'memberships_page.name_label'}
-      .memberships-page-table-row.memberships-page-table-header.col-xs-3{ng-show: 'membershipsPage.userIsAdmin()', translate: 'memberships_page.email_label'}
+      .memberships-page-table-row.memberships-page-table-header{ng-class: '{"col-xs-11": !membershipsPage.userIsAdmin(), "col-xs-6": membershipsPage.userIsAdmin()}', translate: 'memberships_page.name_label'}
       .memberships-page-table-row.memberships-page-table-header.col-xs-3{ng-show: 'membershipsPage.userIsAdmin()'}
       .memberships-page-table-row.memberships-page-table-header.col-xs-2{ng-show: 'membershipsPage.userIsAdmin()'}
-    .row{ng-show: 'membershipsPage.loadMoreExecuting'}
-      %loading
     .row{ng-repeat: 'membership in membershipsPage.group.memberships() | limitTo:membershipsPage.loadedCount'}
       .memberships-page-table-row.col-xs-1
         %user_avatar{user: 'membership.user()'}
-      .memberships-page-table-row{ng-class: '{"col-xs-10": !membershipsPage.userIsAdmin(), "col-xs-3": membershipsPage.userIsAdmin()}'}
+      .memberships-page-table-row{ng-class: '{"col-xs-11": !membershipsPage.userIsAdmin(), "col-xs-6": membershipsPage.userIsAdmin()}'}
         {{membership.user().name}}
-      .memberships-page-table-row.col-xs-3{ng-show: 'membershipsPage.userIsAdmin()'}
-        {{membership.user().email}}
       .memberships-page-table-row.col-xs-3{ng-show: 'membershipsPage.userIsAdmin()'}
         %button.btn.btn-default{ng-show: '!membership.admin', translate: 'memberships_page.add_coordinator', ng-click: 'membershipsPage.toggleMembershipAdmin(membership)'}
         %button.btn.btn-alert{ng-show: 'membership.admin', translate: 'memberships_page.remove_coordinator', ng-click: 'membershipsPage.toggleMembershipAdmin(membership)'}
       .memberships-page-table-row.col-xs-2{ng-show: 'membershipsPage.userIsAdmin()'}
         %button.btn.btn-danger{translate: 'memberships_page.remove_member', ng-click: 'membership.destroy()'}
+    .row{ng-show: 'membershipsPage.loadMoreExecuting'}
+      %loading
     .row
-      %a.load-more{translate: 'memberships_page.see_more_members', href: '#', ng-click: 'membershipsPage.loadMore()'}
+      %a.load-more{translate: 'memberships_page.see_more_members', href: '#', ng-click: 'membershipsPage.loadMore()', ng-show: 'membershipsPage.canLoadMore()'}
