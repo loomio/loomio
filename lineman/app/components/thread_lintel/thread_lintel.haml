@@ -1,7 +1,6 @@
-.thread-lintel.media{ng-show: 'show'}
-  .media-left
-    %img.media-object.thread-lintel__logo{src: '{{discussion.group().logoUrl()}}'}
-  .media-body.thread-lintel__title
+.thread-lintel{ng-show: 'show'}
+  %img.thread-lintel__logo{src: '{{discussion.group().logoUrl()}}'}
+  .thread-lintel__title
     {{ discussion.title }}
 
   .thread-lintel__progress-wrap.thread-lintel__progress
