@@ -114,7 +114,7 @@ class API::RestfulController < API::BaseController
   end
 
   def default_page_size
-    10
+    50
   end
 
   def load_resource

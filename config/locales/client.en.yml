@@ -65,6 +65,7 @@ en:
     aria_label: 'Add a comment'
     attachments:
       aria_label: 'Attach a file'
+      remove_attachment: 'Remove attachment'
     flash_messages:
       created: 'Your comment was added to the thread'
       update_comment: 'Changes saved'
@@ -311,23 +312,41 @@ en:
     my_groups: Groups
 
   dashboard_page:
+    options:
+      aria_label: 'Dashboard filtering options'
     load_more: Load more threads
     filtering:
       all: All Threads
+      all_aria_label: Currently showing all threads
       all_description: View all threads
       unread: Unread Threads
+      unread_aria_label: Currently showing unread threads
       unread_description: View only threads you have not read yet
     sorting:
       group: By Group
+      group_aria_label: Currently sorting threads by group
       group_description: Sort threads by group.
       date: By Date
+      date_aria_label: Currently sorting threads by date
       date_description: Sort threads by date.
+    aria_thread:
+      title: 'Thread title: {{title}}.'
+      unread: '{{count}} unread items.'
+      current_proposal: 'Current proposal: {{name}}.'
+      you_voted: 'You voted: {{position}}.'
+    threads_from:
+      group: 'Threads from'
+      today: 'Threads from today'
+      yesterday: 'Threads from yesterday'
+      this_week: 'Threads from this week'
+      this_month: 'Threads from this month'
+      older: 'Threads older than a month'
 
   discussion:
     activity: 'Activity'
     proposals: 'Proposals'
     previous_proposals: 'Previous Proposals'
-    load_previous: 'Load previous thread items'
+    load_previous: 'Load earlier activity'
     you_like_this: 'You like this.'
     liked_by_you_and_someone: 'You and {{name}} like this.'
     liked_by_you_and_others: 'Liked by you, {{joinedNames}} and {{name}}.'

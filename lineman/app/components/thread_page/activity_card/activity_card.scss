@@ -1,3 +1,9 @@
 .activity-card{
   @include card;
 }
+
+.activity-card__load-backwards{
+  @include metaText;
+  line-height: 30px;
+  span{text-decoration: underline;}
+}

@@ -1,6 +1,6 @@
 = simple_form_for(@user, url: user_session_path) do |f|
-  = f.input :email, required: false, label: false
-  = f.input :password, label: false
+  = f.input :email, required: false
+  = f.input :password
   = f.submit t(:sign_in), class: "btn btn-default btn-block btn-info btn-lg", id: "sign-in-btn", :data => { :disable_with => t(:sign_in) }
 
   .row
@@ -11,9 +11,3 @@
           = t(:remember_me)
     .col-md-6#forgot-pwd
       = link_to t(:forgot_your_password), new_password_path(resource_name)
-  .row
-    .col-md-12#new-account
-      %p
-        = t(:'dont_have_an_account')
-        = link_to t(:'create_one_now'), new_user_registration_path, id:'create_account'
-
