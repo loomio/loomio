@@ -44,6 +44,24 @@ angular.module('loomioApp').controller 'GroupFormController', ($routeParams, $ro
       when 'public_or_private' then @group.visibleTo != 'members'
       when 'private_only'      then true
 
+  @firstOption = (isVisible, options) =>
+    =>
+      for option in options
+        return option if isVisible(option)
+      return
+
+  @firstVisibilityOption = @firstOption(@validVisibilityOption, ['public', 'parent_members', 'members'])
+  @firstMembershipOption = @firstOption(@validMembershipOption, ['request', 'approval', 'invitation'])
+  @firstDiscussionOption = @firstOption(@validDiscussionOption, ['public_only', 'public_or_private', 'private_only'])
+
+  @updateOptions = =>
+    if !@validVisibilityOption(@group.visibleTo)
+      @group.visibleTo = @firstVisibilityOption()
+    if !@validMembershipOption(@group.membershipGrantedUpon)
+      @group.membershipGrantedUpon = @firstMembershipOption()
+    if !@validDiscussionOption(@group.discussionPrivacyOptions)
+      @group.discussionPrivacyOptions = @firstDiscussionOption(@group.discussionPrivacyOptions)
+
   @onSuccess = (newGroup) ->
     $location.path "/g/#{newGroup.key}"
 

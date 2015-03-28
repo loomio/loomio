@@ -18,19 +18,19 @@
         %h2{translate: 'group_form.privacy.label'}
 
         %label{for: 'group-visible-to-members', translate: 'group_form.privacy.visible_to_members'}
-        %select#group-visible-to-members-field.form-control{ng-model: 'groupForm.group.visibleTo', ng_required: true}
+        %select#group-visible-to-members-field.form-control{ng-change: 'groupForm.updateOptions()', ng-model: 'groupForm.group.visibleTo', ng_required: true}
           %option{value: 'public', ng-if: 'groupForm.validVisibilityOption("public")', translate: 'group_form.privacy.public_visibility'}
           %option{value: 'parent_members', ng-if: 'groupForm.validVisibilityOption("parent_members")', translate: 'group_form.privacy.organization_visibility'}
           %option{value: 'members', ng-if: 'groupForm.validVisibilityOption("members")', translate: 'group_form.privacy.private_visibility'}
 
         %label{for: 'group-membership-granted-upon', translate: 'group_form.privacy.membership_granted_upon'}
-        %select#group-membership-granted-upon-field.form-control{ng-model: 'groupForm.group.membershipGrantedUpon', ng_required: true}
+        %select#group-membership-granted-upon-field.form-control{ng-change: 'groupForm.updateOptions()', ng-model: 'groupForm.group.membershipGrantedUpon', ng_required: true}
           %option{value: 'request', ng-if: 'groupForm.validMembershipOption("request")', translate: 'group_form.privacy.membership_by_request' }
           %option{value: 'approval', ng-if: 'groupForm.validMembershipOption("approval")', translate: 'group_form.privacy.membership_by_approval' }
           %option{value: 'invitation', ng-if: 'groupForm.validMembershipOption("invitation")', translate: 'group_form.privacy.membership_by_invitation'}
 
         %label{for: 'group-discussion-privacy-options', translate: 'group_form.privacy.discussion_privacy_options'}
-        %select#group-discussion-privacy-options-field.form-control{ng-model: 'groupForm.group.discussionPrivacyOptions', ng_required: true}
+        %select#group-discussion-privacy-options-field.form-control{ng-change: 'groupForm.updateOptions()', ng-model: 'groupForm.group.discussionPrivacyOptions', ng_required: true}
           %option{value: 'public_only', ng-if: 'groupForm.validDiscussionOption("public_only")', translate: 'group_form.privacy.public_discussions' }
           %option{value: 'public_or_private', ng-if: 'groupForm.validDiscussionOption("public_or_private")', translate: 'group_form.privacy.public_or_private_discussions' }
           %option{value: 'private_only', ng-if: 'groupForm.validDiscussionOption("private_only")', translate: 'group_form.privacy.private_discussions'}
