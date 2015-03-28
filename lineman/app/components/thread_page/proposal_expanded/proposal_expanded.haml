@@ -2,7 +2,7 @@
   %proposal_actions_dropdown{proposal: 'proposal', ng-if: 'showActionsDropdown()'}
   %h2 {{proposal.name}}
 
-  .proposal-expanded-started-by
+  .proposal-expanded__started-by
     %span{translate: 'proposal_expanded.started_by', translate-values: '{name: proposal.authorName()}'}
     %span.time-ago>
       {{proposal.createdAt | timeFromNowInWords}}
@@ -15,6 +15,7 @@
     .pie-chart-pie.media-left
       %proposal_pie_chart{proposal: 'proposal'}
     .pie-chart-legend.media-body
+      %label.sr-only{translate: 'proposal_expanded.current_votes'}
       .pie-chart-legend-item{class: 'pie-chart-legend-item-{{position}}', ng-repeat: 'position in proposal.positions'}
         {{ "proposal_position_"+position | translate}} ({{ proposal.voteCounts[position] }})
 
@@ -22,7 +23,7 @@
 
 
   .proposal-expanded-votes
-    %h4{translate: 'proposal_expanded.positions'}
+    .card-subheading{translate: 'proposal_expanded.positions', role: 'heading'}
     .proposal-expanded-no-votes{ng-show: 'onlyVoterIsYou()', translate: 'proposal_expanded.only_voter_is_you'}
     .proposal-expanded-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_expanded.no_votes_yet'}
 

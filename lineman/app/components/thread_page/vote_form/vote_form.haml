@@ -1,6 +1,6 @@
 .vote-form-and-your-position
   .vote-form{ng-show: 'proposal.isActive() && (!yourLastVote() || editing)', ng-disabled: 'vote.processing'}
-    %h4{translate: 'vote_form.have_your_say'}
+    .card-subheading{translate: 'vote_form.have_your_say', role: 'heading'}
 
     %form{ng-submit: 'submit()',  ng-disabled: 'vote.processing' }
       %form_errors{record: 'vote'}
