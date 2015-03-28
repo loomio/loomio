@@ -270,9 +270,6 @@ cmn:
       motion:
         name: 你提议的目的是什么
         description: 请给足信息，这样每个人同意或不同意的时候就会知道它到底是什么意思
-      user:
-        email: 邮件
-        password: 密码
   helpers:
     submit:
       discussion:
