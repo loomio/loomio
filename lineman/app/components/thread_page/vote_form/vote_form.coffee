@@ -22,4 +22,4 @@ angular.module('loomioApp').directive 'voteForm', ->
 
     $scope.cancel = ->
       $scope.editing = false
-      #$scope.vote.position = null
+      $scope.vote.position = null
