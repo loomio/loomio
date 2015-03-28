@@ -12,24 +12,14 @@
             %a.cuke-group-name{href: '/g/{{groupPage.group.key}}'}
               {{groupPage.group.name}}
         %group_privacy_dropdown{group: 'groupPage.group'}
-        .group-member-options
+        .group-member-options{ng-if: 'groupPage.isMember()'}
           %group_actions_dropdown{group: 'groupPage.group'}
           %notification_volume_dropdown{translate-root: 'group_page', group: 'groupPage.group'}
+        .group-nonmember-options{ng-if: '!groupPage.isMember()'}
+          %a.btn.btn-success.btn-block.btn-icon{href: '#', ng-click: 'groupPage.joinGroup()'}
+            %i.fa.fa-lg.fa-plus>
+            %span{translate: 'group_page.join_group' }
         .clearfix
-
-
-
-        / The logic on this section wasnt working so I commented it out
-        / so I could style it up. Styles are good now so this can be
-        / reintegrated when we want to make it work properly
-        /
-        / .group-member-options{ng-if: 'isMember()'}
-        /   %notification_volume_dropdown{translate-root: 'group_page', group: 'groupPage.group'}
-        /   %group_options_dropdown{group: 'groupPage.group'}
-        / .group-nonmember-options{ng-if: '!groupPage.isMember()'}
-        /   %a.btn.btn-success.btn-block.btn-icon{href: '#', ng-click: 'groupPage.joinGroup()'}
-        /     %i.fa.fa-lg.fa-plus>
-        /     %span{translate: 'group_page.join_group' }
     .row
       .col-sm-8
         %section.group-page-description{role: 'region', aria-labelledby: 'description-card-title'}
