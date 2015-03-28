@@ -65,6 +65,7 @@ en:
     aria_label: 'Add a comment'
     attachments:
       aria_label: 'Attach a file'
+      remove_attachment: 'Remove attachment'
     flash_messages:
       created: 'Your comment was added to the thread'
       update_comment: 'Changes saved'
