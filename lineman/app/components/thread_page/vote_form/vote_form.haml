@@ -1,16 +1,23 @@
 .vote-form-and-your-position
-  .vote-form{ng-show: 'proposal.isActive() && (!lastVote() || editing)', ng-disabled: 'vote.processing'}
+  .vote-form{ng-show: 'proposal.isActive() && (!yourLastVote() || editing)', ng-disabled: 'vote.processing'}
     %h4{translate: 'vote_form.have_your_say'}
-    .position-buttons
-      .position-button.position-button-yes{ng-click: 'selectPosition("yes")'}
-      .position-button.position-button-abstain{ng-click: 'selectPosition("abstain")'}
-      .position-button.position-button-no{ng-click: 'selectPosition("no")'}
-      .position-button.position-button-block{ng-click: 'selectPosition("block")'}
 
-    %form{ng-submit: 'submit()', ng-show: 'vote.position', ng-disabled: 'vote.processing' }
+    %form{ng-submit: 'submit()',  ng-disabled: 'vote.processing' }
       %form_errors{record: 'vote'}
+      .position-buttons
+        %input#position-yes{type: 'radio', name: 'position', value: 'yes', ng-model: 'vote.position'}
+        %label.position-button.position-button--yes{for: 'position-yes'}
 
-      %fieldset
+        %input#position-abstain{type: 'radio', name: 'position', value: 'abstain', ng-model: 'vote.position'}
+        %label.position-button.position-button--abstain{for: 'position-abstain'}
+
+        %input#position-no{type: 'radio', name: 'position', value: 'no', ng-model: 'vote.position'}
+        %label.position-button.position-button--no{for: 'position-no'}
+
+        %input#position-block{type: 'radio', name: 'position', value: 'block', ng-model: 'vote.position'}
+        %label.position-button.position-button--block{for: 'position-block'}
+
+      %fieldset{ng-show: 'vote.position'}
         .form-group
           %label.label-with-details{for: 'vote-statement-field'}
             %span.label-with-details-label{ng-show: 'vote.position'}
@@ -21,20 +28,21 @@
           %textarea#vote-statement-field.form-control{ng-model: 'vote.statement', placeholder: '{{ "vote_form.statement_placeholder" | translate }}'}
           .chars-left.pull-right{ng-class: '{ overlimit: vote.overCharLimit() }' }
             {{ vote.charsLeft() }}
-      %button.btn.btn-primary.cuke-submit-position{type: 'submit', translate: 'vote_form.submit_position'}>
+        %button.btn.btn-primary.cuke-submit-position{type: 'submit', translate: 'vote_form.submit_position'}>
 
-      %button.btn.btn-default{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}>
+        %button.btn.btn-default{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}>
 
-  .your-position{ng-show: 'lastVote() && !editing'}
+  .your-position{ng-show: 'yourLastVote() && !editing'}
     %h4{translate: 'proposal_expanded.your_position'}
 
     %a.cuke-edit-position-btn.pull-right{ng-show: 'proposal.isActive()', ng-click: 'edit()', href: '#'}
-      %span{translate: 'common.action.edit'}>
-      %i.fa.fa-pencil
 
     .current-position.media
       .media-left
-        .your-position-icon{class: 'your-position-icon-{{lastVote().position}}'}
+        .your-position-icon{class: 'your-position-icon-{{yourLastVote().position}}'}
       .media-body
         %span.author-statement
-          {{ lastVote().statement }}
+          {{ yourLastVote().statement || 'vote_form.no_statement' | translate }}
+
+        &nbsp;
+        %a.underlined-link{href: '#', translate: 'vote_form.change_your_vote', ng-click: 'changeVote()'}

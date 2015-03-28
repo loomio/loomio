@@ -118,10 +118,10 @@ en:
     motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the proposal {{proposal}}"
 
   vote_form:
-    have_your_say: 'Have your say'
-    messages:
-      new_vote: 'Your vote counts!'
-      update_vote: 'Successfully changed your position'
+    no_statement: No statement.
+    change_your_vote: Change your vote.
+    have_your_say: Have your say
+    submitted_your_vote: Submitted your vote.
     i_agree: 'I agree'
     i_agree_details: 'I support this and want it to go ahead.'
     i_abstain: 'I abstain'

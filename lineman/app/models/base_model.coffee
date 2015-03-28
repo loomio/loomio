@@ -87,6 +87,10 @@ angular.module('loomioApp').factory 'BaseModel', ->
 
     save: ->
       @errors = {}
+      if @processing
+        console.log "save returned, already processing:", @
+        return
+
       @processing = true
       if @isNew()
         @restfulClient.create(@serialize()).then(@saveSuccess, @saveFailure)
