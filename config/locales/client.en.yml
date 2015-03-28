@@ -329,6 +329,11 @@ en:
       date: By Date
       date_aria_label: Currently sorting threads by date
       date_description: Sort threads by date.
+    aria_thread:
+      title: 'Thread title: {{title}}.'
+      unread: '{{count}} unread items.'
+      current_proposal: 'Current proposal: {{name}}.'
+      you_voted: 'You voted: {{position}}.'
     threads_from:
       group: 'Threads from'
       today: 'Threads from today'
