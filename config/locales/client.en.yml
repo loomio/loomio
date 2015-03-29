@@ -32,7 +32,8 @@ en:
       aw_crap: 'We''re sorry, but something went wrong. Please try again'
 
   start_proposal_card:
-    cta: Ready to decide? Start a proposal.
+    title: 'Start a proposal'
+    cta: Ready to make a decision? Start a proposal.
 
   current_proposal_card:
     heading: Proposal
@@ -188,7 +189,7 @@ en:
 
   proposal_expanded:
     collapse: Collapse
-    your_position: 'Your Position'
+    current_votes: Current votes
     started_by: 'Started by <strong>{{name}}</strong>'
     no_votes_yet: 'Nobody has voted on this proposal yet.'
     only_voter_is_you: 'No other members have voted yet.'
@@ -201,7 +202,7 @@ en:
 
   proposal_position_yes: 'Agree'
   proposal_position_abstain: 'Abstain'
-  proposal_position_no: 'No'
+  proposal_position_no: 'Disagree'
   proposal_position_block: 'Block'
 
   group_page:
@@ -316,6 +317,7 @@ en:
     my_groups: Groups
 
   dashboard_page:
+    aria_label: 'Dashboard'
     options:
       aria_label: 'Dashboard filtering options'
     load_more: Load more threads
@@ -389,6 +391,7 @@ en:
 
   new_comment_item:
     context_menu:
+      aria_label: 'Comment options'
       edit_comment: 'Edit comment'
       delete_comment: 'Delete comment'
     in_reply_to: '<strong>{{author}}</strong> in reply to <strong>{{recipient}}</strong>'

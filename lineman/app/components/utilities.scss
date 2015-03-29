@@ -144,3 +144,10 @@ label.label-with-details{
   margin-top: 0;
   margin-bottom: 10px;
 }
+
+.card-subheading{
+  @include fontSmall;
+  @include fontHelveticaMedium;
+  color: $kinda-dark-grey;
+  margin-top: 1.5em;
+}
