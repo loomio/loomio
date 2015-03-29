@@ -32,6 +32,7 @@
         .thread-item-vote-icon{class: 'thread-item-vote-icon-{{vote.position}}'}
       .media-body
         %strong> {{::vote.authorName()}}
+        .sr-only {{vote.positionVerb()}}
         %span.author-statement {{vote.statement }}
 
   %a.proposal-expanded__collapse.pull-right{href: '#', ng-click: 'collapse()', translate: 'proposal_expanded.collapse', ng-show: 'canCollapse'}
