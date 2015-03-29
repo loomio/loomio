@@ -759,9 +759,6 @@ eo:
       motion:
         name: Kion vi proponas ke okazu?
         description: Donu sufiĉajn informojn por ke ĉiuj sciu ekzakte kion signifas konsenti aŭ malkonsenti.
-      user:
-        email: Retpoŝto
-        password: Pasvorto
       group_request:
         description: Ni ŝategus aŭdi pri via grupo kaj kial vi volas uzi Loomion.
   helpers:

@@ -838,9 +838,6 @@ sl:
       motion:
         name: Kakšen postopek predlagaš?
         description: "Navedi dovolj informacij, da bodo vsi točno vedeli, kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo."
-      user:
-        email: Email
-        password: Geslo
       group_request:
         description: Z veseljem bi izvedeli več o vaši skupini in razlogih za uporabo Loomia.
   helpers:

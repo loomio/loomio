@@ -775,9 +775,6 @@ sv:
       motion:
         name: Vad är dina förslag till handlingsplan?
         description: Ge tillräckligt med bakgrund så att alla förstår vad det innebär att instämma eller inte instämma.
-      user:
-        email: Email
-        password: Lösenord
       group_request:
         description: Vi vill gärna höra mer om din grupp och varför ni vill använda Loomio.
   helpers:

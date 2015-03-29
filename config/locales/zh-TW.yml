@@ -775,9 +775,6 @@ zh-TW:
       motion:
         name: 請問您提議的行動方針是?
         description: 請提供足夠的資訊，讓每個人都能明確表示贊成或是反對。
-      user:
-        email: 電子郵件
-        password: 密碼
       group_request:
         description: 我們很樂意聽到您的群組為甚麼想要使用 Loomio。
   helpers:

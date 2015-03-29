@@ -408,9 +408,6 @@ ar:
       motion:
         name: ما هو إتجاه العمل الذي تقترحه؟
         description: أعط ما يكفي من المعلومات بحيث يدرك الجميع مالذي تعنيه الموافقة أو عدمها.
-      user:
-        email: البريد الإلكتروني
-        password: كلمة السر
   helpers:
     submit:
       discussion:

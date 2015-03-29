@@ -568,9 +568,6 @@ ru:
         password: Пароль
         password_confirmation: Подтверждение пароля
         language_preference: Язык
-    placeholders:
-      user:
-        password: Пароль
   email:
     to_join_discussion:
       message_intro: "%{who} сказал(а):"

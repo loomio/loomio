@@ -780,9 +780,6 @@ it:
       motion:
         name: "Che linea d'azione proponi?"
         description: "Fornisci informazioni sufficienti perché tutti sappiano esattamente cosa significa essere o non essere d'accordo."
-      user:
-        email: Email
-        password: Password
       group_request:
         description: Vorremmo conoscere qualcosa sul tuo gruppo e perchè vuoi usare Loomio.
   helpers:
