@@ -1,11 +1,20 @@
 sr:
   email_settings:
     title: Podešavanja ePoruka
+    group_volume: Obim grupe
+    group_volume_description: "Obim određuje koliko ePoruka ćeš dobijati iz grupe. Postavi obim za sve svoje grupe:"
+    to_change_one_group: "Da promeniš obim samo jedne od svojih grupa, poseti stranicu grupe."
+    discussion_activity: Promeni obim diskusije kada se pridružim
+    discussion_activity_description: "Kada se pridružite diskusiji, podešavanja obima će se promeniti na 'Glasno', tako da će sve sledeće aktivnosti biti odmah prosleđene ePorukom."
     yesterday_on_loomio: Pošalji mi ePoruku sa izveštajem o aktivnostima svakog dana
+    yesterday_on_loomio_description: "Svakog dana u 6am, pošalji ePoruku sa jučerašnjim nepročitanim aktivnostima. Ovo je odličan način da ne propustite nešto u svojim grupama i sadrži sve što niste isključili."
     email_when_mentioned: "Pošalji mi ePoruku kada me neko @naznači"
+    email_when_mentioned_description: "Kada neko želi da skrene tvoju pažnju, @označiće te. Preporučujemo da ostaviš ovu opciju uključenu, tako da dobiješ ePoruku kada se ovo dogodi."
     proposal_closing_soon: Obavesti me pre zatvaranja predloga
+    proposal_closing_soon_description: "24 časa pre zatvaranja predloga, bez obzira na podešavanja o obimu, dobićeš jednu ePoruku sa poslednjim informacijama o predlogu."
     submit: Postavke ažuriranja
     no_change: Bez promena
+    no_change_description: Ostavi nivo obima mojih grupa kakav jeste.
   explore:
     header: Istraži javne grupe
   try_it:
@@ -204,6 +213,7 @@ sr:
     pricing: Cenovnik
     public_groups: Javne grupe
     terms: Uslovi
+    independent_install_html: "%{hostname} koristi jednu nezavisnu kopiju Lumija: <a href=\"http://github.com/loomio/loomio\">saznaj više</a>."
   inbox:
     clear: Očisti
     title: ePoruke
@@ -232,6 +242,7 @@ sr:
     motion_outcome_updated: ažurirao/la je ishod predloga
     email_actions:
       following_thread: "Sada pratiš niz: %{thread_title}"
+      not_following_thread: "Ne pratiš više niz: %{thread_title}"
   edit_discussion_context: Uredi kontekst diskusije
   request_new_group: Započni grupu
   start_new_group: Započni novu grupu
@@ -428,14 +439,18 @@ sr:
   edit_group_description: Uredi opis grupe
   group_subscription: Praćenje grupe
   groups:
+    max_size_warning_html: "Vaša grupa postaje velika i dostići će limit od %{size} članova uskoro. Molimo Vas <a href='%{link}'>kontaktirajte nas</a> da povećamo limit."
+    max_size_reached_html: "Vaša grupa je ostvarila limit od %{size} članova. <a href='%{link}'>Kontaktirajte nas</a> da dodate još ljudi grupi."
     follow:
       click_to_follow: Škljocni da pratiš grupu
       click_to_unfollow: Škljocni da prestaneš da pratiš grupu
       following_details: Bićete obavešteni o svakom dešavanju u ovoj grupi.
       not_following_details: Bićete obavešteni o svemu čemu se priključite.
   networks:
+    threads_header: svi javni nizovi u ovoj mreži
     groups_header: "svih %{count} grupa u ovoj mreži"
     members_count: "%{count} članova"
+    membership_requests_header: "Zahtevi za članstvom u %{network}"
     join_header: Dodaj svoju grupu mreži
     request_to_join: Zahtev za priključivanje Mreži
     current_requests: Trenutni zahtevi
@@ -446,7 +461,11 @@ sr:
     declined: "Odbijeno od %{name}"
     threads: Nizovi
     groups: Grupe
+    join: Pridruži se
     manage: "Upravljaj (%{count} zahteva na čekanju)"
+    request_created: Hvala na interesovanju da se pridružiš mreži. Koordinatori mreže će razmotriti uskoro tvoj zahtev.
+    request_approved: Zahtev za članstvom u mreži je prihvaćen.
+    request_declined: Zahtev za članstvom u mreži je odbijen.
   group_request:
     header: Kreiraj grupu
     desc: "Kreiraj grupu da počneš donositi odluke sa drugima na Lumiju:"
@@ -457,14 +476,21 @@ sr:
       title: "Još malo pa gotovo! Proverite ePoštu."
       body_html: "Poslali smo vam jednu ePoruku sa pozivnicom za pokretanje Vaše grupe.\n\nAko kroz par minuta ne vidite ePoruku u vašem sandučetu, kontaktirajte nas na <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
   volume:
+    volume: Obim
     loud: Glasno
     normal: Normalno
     quiet: Tiho
     mute: Isključeno
   discussion_volume:
+    loud_description: Obavesti kada god ima aktivnosti u ovom nizu.
+    normal_description: "Samo obavesti kada je predlog kreiran, pred zatvaranjem ili je ishod kreiran."
     quiet_description: Ne šalji ePoruke o ovom nizu.
+    mute_description: "Sakrij ovaj niz i ne obaveštavaj me dok ne budem @naznačen/a"
   group_volume:
     loud_description: ePoruka kada god ima aktivnosti.
+    normal_description: "Samo obavesti o važnim aktivnostima: Nove diskusije i predlozi, ishodi i sl."
+    quiet_description: Ne obaveštavaj o ovoj grupi. Aktivnost će biti prikazana na početnoj strani.
+    mute_description: "Sakrij ovu grupu i ne obaveštavaj dok ne budem @naznačen/a."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> se slaže sa predlogom."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> se suzdržao/la o predlogu."
@@ -631,6 +657,7 @@ sr:
     video_tutorial: Video uputstvo
     video_tutorial_description: Pogledajte kratak video o tome kako se koristi Lumio.
     what_is_loomio: Šta je Lumio?
+    what_is_loomio_description_html: "<p> Lumio je jednostavan, prijateljski nastrojen prema korisnicima alat za zajedničko donošenje odluka.\n    Lumio ti omogućava da pokrećeš diskusije i pozivaš prave ljude da se priključe,\n    dođete do odluke i  transformišete odluke u akciju u stvarnom okruženju. </p>\n"
   hint:
     context: Saveti za upotrebu kontekstualnog panela
     discussion: Saveti za pokretanje zanimljive diskusije
@@ -672,6 +699,7 @@ sr:
   remember_me: Zapamti me
   signing_in: Prijavljivanje
   or: ili
+  invalid_email: "Adresa ePošte koju ste uneli nije prepoznata. Proverite da li ste je ispravno uneli ili pokušajte sa drugom adresom. "
   forgot_your_password: Zaboravili ste lozinku?
   dont_have_an_account: Nemate nalog?
   create_one_now: Napravi jedan sada
@@ -831,9 +859,6 @@ sr:
       motion:
         name: Šta je Vaš predlog smera akcije?
         description: Dajte dovoljno informacija kako bi svi znali šta tačno znači složiti se ili se ne sa ovim predlogom.
-      user:
-        email: ePošta
-        password: Lozinka
       group_request:
         description: Voleli bismo da čujemo o tvojoj grupi i zašto hoćeš da koristiš Lumio.
   helpers:
@@ -879,10 +904,14 @@ sr:
       subject: Lumio - Rezime poslednjih 24 sata
     missed_yesterday:
       subject: Juče na Lumiju
+      headlines: Naslovi
       mark_as_read: Označi kao pročitano
       thanks_for_reading: "Hvala na čitanju, prijatan dan!"
       click_here_to_mark_all_as_read_html: "Evo šta se dogodilo na Lumiju juče.\nKada pročitate, škljocnite <a href=\"%{link}\">označi kao pročitano</a> da ukloite iz svog Lumio sandučeta sa porukama.\n"
       marked_as_read_success: Sve ePoruke su označene kao pročitane
+    comment_replied_to:
+      context: "%{author_name} je odgovorio/la na tvoj komentar u diskusiji \"%{discussion_title}\""
+      subject: "%{who} je odgovorio/la na tvoj komentar u %{which} groupi na Lumiju"
     group_email:
       intro: "%{who} je napravio/la objavu za grupu %{group}:"
     group_membership_approved:
@@ -921,6 +950,13 @@ sr:
       headline: "%{author}ov/in predlog u grupi %{group} uskoro ističe:"
       summary: Rezime
     thread_mailer:
+      footer_text: "Odgovori na ovu poruku direktno ili je pogledaj na %{hostname}:"
+      reply_or_view_online_html: "Odgovori na ovu poruku direktno ili <a href='%{url}'>pogledaj je na %{hostname}</a>."
+      turn_off_notifications_html: "<a href='%{url}'>Isključi ePoruke</a> za ovu diskusiju."
+      turn_off_notifications_text: "Isključi ePoruke za ovu diskusiju: %{url}"
+      turn_on_notifications_html: "<a href='%{url}'>Uključi ePoruke za ovu diskusiju</a> da primaš dalje aktivnosti."
+      turn_on_notifications_text: "Uključi ePoruke da primaš dalje aktivnosti iz ove diskusije: %{url}"
+      change_email_preferences_html: "Promeni svoja <a href='%{email_preferences_url}'>podešavanja o ePorukama</a> da prestaneš da primaš ove ePoruke."
       change_preferences: "Promeni svoja podešavanja o ePorukama:"
       new_motion: "%{who} predlaže:"
       motion_closing_soon: "Predlog ističe kroz 24 časa:"
@@ -1005,6 +1041,8 @@ sr:
   google: Google
   persona: Osoba
   common:
+    profile: Profil
+    email_settings: Podešavanja ePoruka
     markdown_help_tooltip: Naučite osnove formatiranja teksta pomoću Markdown-a
     settings: Podešavanja
     dashboard: Tabla

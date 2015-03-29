@@ -401,9 +401,6 @@ vi:
       motion:
         name: Lời đề nghị về cách giải quyết hành động này là gì?
         description: Cung cấp đủ thông tin để mọi người biết đích xác phần này có ý nghĩa gì để đồng thuận hoặc không đồng tình.
-      user:
-        email: Email
-        password: Mật khẩu
   helpers:
     submit:
       discussion:

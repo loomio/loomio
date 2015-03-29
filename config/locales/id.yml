@@ -487,9 +487,6 @@ id:
       motion:
         name: Apa tindakan yang Anda usulkan?
         description: Berikan informasi yang cukup sehingga anggota kelompok dapat segera memilih untuk setuju atau tidak setuju.
-      user:
-        email: Surel
-        password: Kata sandi
   helpers:
     submit:
       discussion:
