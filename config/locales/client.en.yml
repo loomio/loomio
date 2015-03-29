@@ -190,7 +190,6 @@ en:
   proposal_expanded:
     collapse: Collapse
     current_votes: Current votes
-    your_position: 'Your Position'
     started_by: 'Started by <strong>{{name}}</strong>'
     no_votes_yet: 'Nobody has voted on this proposal yet.'
     only_voter_is_you: 'No other members have voted yet.'
@@ -203,7 +202,7 @@ en:
 
   proposal_position_yes: 'Agree'
   proposal_position_abstain: 'Abstain'
-  proposal_position_no: 'No'
+  proposal_position_no: 'Disagree'
   proposal_position_block: 'Block'
 
   group_page:

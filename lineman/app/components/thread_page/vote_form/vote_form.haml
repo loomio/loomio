@@ -6,16 +6,17 @@
       %form_errors{record: 'vote'}
       .position-buttons
         %input#position-yes{type: 'radio', name: 'position', value: 'yes', ng-model: 'vote.position'}
-        %label.position-button.position-button--yes{for: 'position-yes'}
-
+        %label.position-button.position-button--yes{for: 'position-yes', ng-class: '{"position-button--dimmed": positionOtherThan("yes")}'}
+          .sr-only{translate: 'vote_form.i_agree'}
         %input#position-abstain{type: 'radio', name: 'position', value: 'abstain', ng-model: 'vote.position'}
-        %label.position-button.position-button--abstain{for: 'position-abstain'}
-
+        %label.position-button.position-button--abstain{for: 'position-abstain', ng-class: '{"position-button--dimmed": positionOtherThan("abstain")}'}
+          .sr-only{translate: 'vote_form.i_abstain'}
         %input#position-no{type: 'radio', name: 'position', value: 'no', ng-model: 'vote.position'}
-        %label.position-button.position-button--no{for: 'position-no'}
-
+        %label.position-button.position-button--no{for: 'position-no', ng-class: '{"position-button--dimmed": positionOtherThan("no")}'}
+          .sr-only{translate: 'vote_form.i_disagree'}
         %input#position-block{type: 'radio', name: 'position', value: 'block', ng-model: 'vote.position'}
-        %label.position-button.position-button--block{for: 'position-block'}
+        %label.position-button.position-button--block{for: 'position-block', ng-class: '{"position-button--dimmed": positionOtherThan("block")}'}
+          .sr-only{translate: 'vote_form.i_block'}
 
       %fieldset{ng-show: 'vote.position'}
         .form-group
@@ -33,14 +34,29 @@
         %button.btn.btn-default{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}>
 
   .your-position{ng-show: 'yourLastVote() && !editing'}
-    %h4{translate: 'proposal_expanded.your_position'}
+    .card-subheading{translate: 'proposal_expanded.positions', role: 'heading'}
 
     .current-position.media
       .media-left
-        .your-position-icon{class: 'your-position-icon-{{yourLastVote().position}}'}
+        .thread-item-vote-icon{class: 'thread-item-vote-icon-{{yourLastVote().position}}'}
       .media-body
+        %strong> {{yourLastVote().authorName()}}
+        .sr-only {{yourLastVote().positionVerb()}}
         %span.author-statement
           {{ yourLastVote().statement || 'vote_form.no_statement' | translate }}
         %a.change-your-vote{href: '#', ng-click: 'changeVote()', ng-show: 'proposal.isActive()'}
           %i.fa.fa-exchange{aria-hidden: 'true'}>
           %span{translate: 'vote_form.change_your_vote'}
+
+  .proposal-expanded-votes
+    .proposal-expanded-no-votes{ng-show: 'onlyVoterIsYou()', translate: 'proposal_expanded.only_voter_is_you'}
+    .proposal-expanded-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_expanded.no_votes_yet'}
+
+    .proposal-expanded-vote.media{ng_repeat: 'vote in curatedVotes()'}
+      .media-left
+        .thread-item-vote-icon{class: 'thread-item-vote-icon-{{vote.position}}'}
+      .media-body
+        %strong> {{::vote.authorName()}}
+        .sr-only {{vote.positionVerb()}}
+        %span.author-statement {{vote.statement }}
+      .clearfix

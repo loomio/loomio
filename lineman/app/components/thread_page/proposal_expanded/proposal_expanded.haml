@@ -21,19 +21,5 @@
 
   %vote_form{proposal: 'proposal'}
 
-
-  .proposal-expanded-votes
-    .card-subheading{translate: 'proposal_expanded.positions', role: 'heading'}
-    .proposal-expanded-no-votes{ng-show: 'onlyVoterIsYou()', translate: 'proposal_expanded.only_voter_is_you'}
-    .proposal-expanded-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_expanded.no_votes_yet'}
-
-    .proposal-expanded-vote.media{ng_repeat: 'vote in curatedVotes()'}
-      .media-left
-        .thread-item-vote-icon{class: 'thread-item-vote-icon-{{vote.position}}'}
-      .media-body
-        %strong> {{::vote.authorName()}}
-        .sr-only {{vote.positionVerb()}}
-        %span.author-statement {{vote.statement }}
-
   %a.proposal-expanded__collapse.pull-right{href: '#', ng-click: 'collapse()', translate: 'proposal_expanded.collapse', ng-show: 'canCollapse'}
   .clearfix
