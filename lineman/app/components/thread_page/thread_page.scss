@@ -27,7 +27,8 @@
 }
 
 .thread-context__details{
-  @include metaText;
+  @include fontSmall;
+  color: $grey-on-white;
   margin-bottom: 15px;
 }
 
@@ -49,10 +50,10 @@
 
 .thread-item-header {
   strong {
-    color: $text-color;
+    color: $primary-text-color;
     @include fontHelveticaBold;
   }
-  color: $meta-text-color;
+  color: $grey-on-white;
   margin-bottom: 5px;
   .media-body, .media-left{
     vertical-align: middle;
@@ -65,7 +66,7 @@
 
 .thread-item-footer {
   @include fontSmall();
-  color: $meta-text-color;
+  color: $grey-on-white;
 }
 
 .thread-actions-and-meta {

@@ -16,7 +16,7 @@
 
 .dashboard-page-date-range{
   @include fontSmall;
-  color: $meta-text-color;
+  color: $grey-on-grey;
 }
 
 .dashboard-page-group-name a{
@@ -106,7 +106,8 @@
 }
 
 .dashboard-page-thread-info {
-  @include metaText;
+  color: $grey-on-white;
+  @include fontSmall;
   white-space: nowrap;
   overflow: hidden;
   line-height: 20px;

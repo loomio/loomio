@@ -70,7 +70,8 @@
   padding: 8px 0;
 }
 .group-thread-list-group-name, .group-thread-list-time{
-  @include metaText;
+  @include fontSmall;
+  color: $grey-on-white;
 }
 .group-thread-list-item .time-and-icon{
   padding-top: 10px;
