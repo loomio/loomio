@@ -9,8 +9,7 @@
             %a{ng_show: 'groupPage.group.parentId', href: '/g/{{groupPage.group.parent().key}}'}
               {{groupPage.group.parentName()}}
             %span{ng_show: 'groupPage.group.parentId'}> \-
-            %a{href: '/g/{{groupPage.group.key}}'}
-              {{groupPage.group.name}}
+            {{groupPage.group.name}}
         %group_privacy_dropdown{group: 'groupPage.group'}
         .group-member-options.lmo-btn-group.lmo-btn-group-right{ng-if: 'groupPage.isMember()'}
           .lmo-btn-wrapper

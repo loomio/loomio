@@ -40,12 +40,12 @@
 }
 
 .action{
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
   text-decoration: underline;
 }
 
 .small-action{
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
   text-decoration: underline;
   @include fontSmall;
 }
@@ -61,7 +61,7 @@
 .btn.btn-icon{ padding: 6px 12px 6px 9px;}
 
 .btn-nude{
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
 }
 .btn-nude:hover{
   background-color: $list-hover-color;
@@ -120,7 +120,7 @@ label.label-with-details{
 }
 
 .page-loading {
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
   text-align: center;
   padding: 10px;
 }
@@ -129,14 +129,14 @@ label.label-with-details{
   @include fontHelveticaMedium;
   @include fontSmall;
   text-transform: uppercase;
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
   margin-top: 0;
   margin-bottom: 10px;
 }
 .card-subheading{
   @include fontSmall;
   @include fontHelveticaMedium;
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
   margin-top: 1.5em;
 }
 

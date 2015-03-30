@@ -47,14 +47,14 @@ li .dropdown-menu-item-label{
 }
 
 .disabled .dropdown-menu-item{
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
 }
 
 .dropdown-heading{
   @include fontHelveticaMedium;
   @include fontSmall;
   text-transform: uppercase;
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
   margin: 0 0 10px 0;
   border-bottom: 1px solid $border-color;
 }
