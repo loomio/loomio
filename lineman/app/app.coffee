@@ -1,6 +1,5 @@
 angular.module('loomioApp', ['ngNewRouter',
                              'ui.bootstrap',
-                             'ui.bootstrap.datetimepicker',
                              'pascalprecht.translate',
                              'ngSanitize',
                              'tc.chartjs',

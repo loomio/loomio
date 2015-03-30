@@ -7,8 +7,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
 
   css:
     app:    ['generated/css/main.css']
-    vendor: ['vendor/bower_components/components-font-awesome/css/font-awesome.css',
-             'vendor/bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css']
+    vendor: ['vendor/bower_components/components-font-awesome/css/font-awesome.css']
   coffee:
     app: "app/**/*.coffee"
 
@@ -20,7 +19,6 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/angular/angular.js",
              "vendor/bower_components/angular-sanitize/angular-sanitize.js",
              "node_modules/angular-new-router/dist/router.es5.js",
-             "vendor/bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js",
              "vendor/bower_components/angular-translate/angular-translate.js",
              "vendor/bower_components/angular-translate-loader-url/angular-translate-loader-url.js",
              "vendor/bower_components/angular-bootstrap/ui-bootstrap.js",
