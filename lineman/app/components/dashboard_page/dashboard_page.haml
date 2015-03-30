@@ -32,6 +32,9 @@
     .row
       .col-xs-12
         .dashboard-page-panel
+          .dashboard-page-no-threads{ng-show: '!dashboardPage.loading && dashboardPage.dashboardDiscussions().length == 0'}
+            %span{translate: 'dashboard_page.no_threads'}>
+            %a{ng-show: 'dashboardPage.filter() != "show_all"', translate: 'dashboard_page.view_recent', href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_all"})'}>
           .dashboard-page-sort-group{ng-if: 'dashboardPage.sort() == "sort_by_date"'}
             .dashboard-page-threads-container{ng-if: 'dashboardPage.anyToday()'}
               .dashboard-page-date-range{translate: 'common.date_range.today'}
