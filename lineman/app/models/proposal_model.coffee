@@ -3,6 +3,10 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     @singular: 'proposal'
     @plural: 'proposals'
 
+    initialize: (data) ->
+      @closingAt = moment().add(3, 'days')
+      @updateFromJSON(data)
+
     setupViews: ->
       @setupView 'votes'
 
