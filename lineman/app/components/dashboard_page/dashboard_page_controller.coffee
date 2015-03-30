@@ -1,5 +1,6 @@
 angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, Records, CurrentUser) ->
   $rootScope.$broadcast('currentComponent', 'dashboardPage')
+  $rootScope.$broadcast('setTitle', 'Dashboard')
 
   @loaded =
     sort_by_date:

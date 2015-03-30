@@ -27,9 +27,13 @@ angular.module('loomioApp', ['ngNewRouter',
 
 angular.module('loomioApp').controller 'AppController', ($scope, $router) ->
   $scope.currentComponent = 'nothing yet'
+  $scope.title = ""
 
   $scope.$on 'currentComponent', (event, component) ->
     $scope.currentComponent = component
+
+  $scope.$on 'setTitle', (event, title) ->
+    $scope.title = title
 
   $router.config([
     {path: '/dashboard', component: 'dashboardPage' },
@@ -44,3 +48,4 @@ angular.module('loomioApp').controller 'AppController', ($scope, $router) ->
     {path: '/g/:key', component: 'groupPage' },
     {path: '/g/:key/:stub', component: 'groupPage' },
   ]);
+  return
