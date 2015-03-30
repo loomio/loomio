@@ -40,6 +40,7 @@ angular.module('loomioApp').controller 'AppController', ($scope, $router) ->
     {path: '/g/new', component: 'groupForm' },
     {path: '/g/:parentKey/subgroups/new', component: 'groupForm'},
     {path: '/g/:key/edit', component: 'groupForm' },
+    {path: '/g/:key/memberships', component: 'membershipsPage'}
     {path: '/g/:key', component: 'groupPage' },
     {path: '/g/:key/:stub', component: 'groupPage' },
   ]);
