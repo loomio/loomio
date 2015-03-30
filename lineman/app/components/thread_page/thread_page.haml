@@ -14,16 +14,16 @@
           {{threadPage.group.name}}
 
     %section.thread-context{role: 'region', aria-label: "{{ 'thread_context.aria_label' | translate }}"}
-      .thread-actions.pull-right
-        .thread-notification-level
-          %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
-        .dropdown{ng-if: 'threadPage.showContextMenu()'}
+      .thread-actions.lmo-btn-group.lmo-btn-group-right
+        .lmo-btn-wrapper.dropdown{ng-if: 'threadPage.showContextMenu()'}
           %a.fat-finger.dropdown-toggle{href:''}
             .sr-only{translate: 'thread_context.thread_options'}
             %i.fa.fa-fw.fa-chevron-down.pull-right{aria-hidden: 'true'}
           %ul.dropdown-menu.dropdown-menu-right
             %li
               %a{href: '', ng-click: 'threadPage.editDiscussion()', translate: 'common.action.edit', ng-if: 'threadPage.canEditDiscussion()'}
+        .thread-notification-level.lmo-btn-wrapper
+          %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
 
       %h1.thread-context__title{in-view: 'threadPage.showLintel(!$inview)'}
         {{threadPage.discussion.title}}

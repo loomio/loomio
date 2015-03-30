@@ -30,11 +30,13 @@
 
 .fat-finger{
   /*utility class to increase the target size of a link*/
-  width: 30px;
-  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
   display: block;
-  text-align: center;
+  text-align: right;
   cursor: pointer;
+  line-height: 32px;
+  i{ line-height: 32px; }
 }
 
 .action{
