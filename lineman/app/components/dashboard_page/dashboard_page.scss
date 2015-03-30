@@ -28,6 +28,10 @@
   margin-top: 0;
 }
 
+.dashboard-page-no-threads {
+  text-align: center;
+}
+
 .dashboard-page-threads {
   @include card;
   padding: 0;

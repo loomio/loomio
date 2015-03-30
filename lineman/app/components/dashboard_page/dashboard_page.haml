@@ -45,6 +45,9 @@
       .col-xs-12
         .dashboard-page-panel
           %h1.sr-only{translate: 'dashboard_page.aria_label'}
+          .dashboard-page-no-threads{ng-show: '!dashboardPage.loading && dashboardPage.dashboardDiscussions().length == 0'}
+            %span{translate: 'dashboard_page.no_threads'}>
+            %a{ng-show: 'dashboardPage.filter() != "show_all"', translate: 'dashboard_page.view_recent', href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_all"})'}>
           .dashboard-page-sort-group{ng-if: 'dashboardPage.sort() == "sort_by_date"'}
             %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyToday()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.today' | translate }}"}
               .dashboard-page-date-range{translate: 'common.date_range.today', aria-hidden: 'true'}

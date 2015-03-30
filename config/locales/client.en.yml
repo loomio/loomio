@@ -324,11 +324,13 @@ en:
     aria_label: 'Dashboard'
     options:
       aria_label: 'Dashboard filtering options'
+    no_threads: No threads to show.
+    view_recent: View all recent threads?
     load_more: Load more threads
     filtering:
-      all: All Threads
-      all_aria_label: Currently showing all threads
-      all_description: View all threads
+      all: Recent Threads
+      all_aria_label: Currently showing recent threads
+      all_description: View recent threads
       unread: Unread Threads
       unread_aria_label: Currently showing unread threads
       unread_description: View only threads you have not read yet
