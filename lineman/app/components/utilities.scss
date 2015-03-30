@@ -129,14 +129,14 @@ label.label-with-details{
   @include fontHelveticaMedium;
   @include fontSmall;
   text-transform: uppercase;
-  color: $grey-on-grey;
+  color: $grey-on-white;
   margin-top: 0;
   margin-bottom: 10px;
 }
 .card-subheading{
   @include fontSmall;
   @include fontHelveticaMedium;
-  color: $grey-on-grey;
+  color: $grey-on-white;
   margin-top: 1.5em;
 }
 
@@ -148,7 +148,7 @@ label.label-with-details{
 }
 .lmo-btn-group .lmo-btn-wrapper{
   float: right;
-  border-right: 1px solid $meta-text-color;;
+  border-right: 1px solid $border-color;
 }
 .lmo-btn-group .lmo-btn-wrapper:first-of-type{
   border: none;
