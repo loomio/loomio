@@ -223,6 +223,7 @@ en:
     description: 'Description'
     discussions: 'Threads'
     members: 'Members'
+    member_options: Member options
     subgroups: 'Subgroups'
     invite_people: 'Invite people'
     visibility_label: 'Visibility'
@@ -244,9 +245,13 @@ en:
       submit: 'Yes, leave this group'
     volume:
       loud: Email whenever there is activity.
-      normal: 'Just email important activity: New discussions and proposals, outcomes etc.'
+      loud_aria_description: Your notification volume for this group is set to Loud. You will be emailed whenever there is activity.
+      normal: 'Just email important activity: New threads and proposals, outcomes etc.'
+      normal_aria_description: Your notification volume for this group is set to Normal. You will just be emailed important activity, such as when someone starts a new thread, raises a proposal, or sets an outcome.
       quiet: Don't email about this group. Activity will be displayed on the dashboard.
+      quiet_aria_description: Your notification volume for this group is set to Quiet. You won't be emailed about activity in this group. Group activity will be displayed on your Dashboard.
       mute: Hide this group from the dashboard and do not notify unless @mentioned.
+      mute_aria_description: Your notification volume for this group is set to Mute. You won't be emailed unless someone mentions you, and group activity will not be displayed on your Dashboard.
       updated: Group volume updated.
     privacy:
       private: 'This group is only visible to members'
@@ -371,9 +376,13 @@ en:
     started_by: 'Started by <strong>{{name}}</strong>'
     volume:
       loud: Email whenever there is activity in this thread.
+      loud_aria_description: Your notification volume for this thread is set to Loud. This means you will be emailed whenever there is activity in this thread.
       normal: 'Just email when a proposal is created, about to close, or an outcome is posted.'
+      normal_aria_description: 'Your notification volume for this thread is set to Normal. You will be emailed when a proposal is created, about to close, or an outcome is posted.'
       quiet: Don't email about this thread.
+      quiet_aria_description: Your notification volume for this thread is set to Quiet. You won't be emailed about this thread unless someone mentions you.
       mute: Hide this thread from the dashboard and do not notify unless @mentioned.
+      mute_aria_description: Your notification volume for this thread is set to Mute. You won't be emailed about this thread unless someone mentions you, and this thread will be removed from your dashboard.
       updated: Thread volume updated.
 
   thread_group:

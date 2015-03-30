@@ -2,16 +2,19 @@
   %a.btn.btn-nude.dropdown-toggle{href: '#'}
     .group-visibility-public{ng_show: 'group.visibleToPublic()'}
       .sr-only{translate: 'group_page.privacy.public'}
-      %i.fa.fa-lg.fa-globe{aria-hidden:'true'}>
-      %span{translate: 'common.privacy.public'}
+      .screen-only{aria-hidden:'true'}
+        %i.fa.fa-lg.fa-globe>
+        %span{translate: 'common.privacy.public'}
     .group-visibility-organization{ng_show: 'group.visibleToOrganization()'}
       .sr-only{translate: 'group_page.privacy.parent_members', translate-value-group-name: '{{group.name}}', translate-value-parent-group-name: '{{group.parentName()}}'}
-      %i.fa.fa-lg.fa-users{aria-hidden:'true'}>
-      %span{translate: 'common.privacy.organization'}
+      .screen-only{aria-hidden:'true'}
+        %i.fa.fa-lg.fa-users
+        %span{translate: 'common.privacy.organization'}
     .group-visibility-private{ng_show: 'group.visibleToMembers()'}
-      .sr-only{translate: 'group_page.privacy.public'}
-      %i.fa.fa-lg.fa-lock{aria-hidden:'true'}>
-      %span{translate: 'common.privacy.private'}
+      .sr-only{translate: 'group_page.privacy.private'}
+      .screen-only{aria-hidden:'true'}
+        %i.fa.fa-lg.fa-lock>
+        %span{translate: 'common.privacy.private'}
   .dropdown-menu.dropdown-menu-with-labels{role: 'menu', ng-class: '{disabled: !canEditGroup()}'}
     .dropdown-heading{translate: 'group_page.visibility_label'}
     %ul.dropdown-menu-items

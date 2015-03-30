@@ -1,10 +1,16 @@
 .notification-volume.dropdown.dropdown-fw-mobi
   %a.notification-volume__button.dropdown-toggle{href: '#', class: "btn btn-nude"}
-    %i.fa.fa-lg.fa-fw{ng-class: 'iconClassForLevel(model.volume)', aria-hidden: 'true'}>
-    %span{translate: 'volume_levels.loud', ng-show: 'model.volume == "loud"'}
-    %span{translate: 'volume_levels.normal', ng-show: 'model.volume == "normal"'}
-    %span{translate: 'volume_levels.quiet', ng-show: 'model.volume == "quiet"'}
-    %span{translate: 'volume_levels.mute', ng-show: 'model.volume == "mute"'}
+    .screen-only{aria-hidden: 'true'}
+      %i.fa.fa-lg.fa-fw{ng-class: 'iconClassForLevel(model.volume)'}>
+      %span{translate: 'volume_levels.loud', ng-show: 'model.volume == "loud"'}
+      %span{translate: 'volume_levels.normal', ng-show: 'model.volume == "normal"'}
+      %span{translate: 'volume_levels.quiet', ng-show: 'model.volume == "quiet"'}
+      %span{translate: 'volume_levels.mute', ng-show: 'model.volume == "mute"'}
+    .sr-only
+      %span{translate: "{{translateRoot}}.volume.loud_aria_description", ng-show: 'model.volume == "loud"'}
+      %span{translate: "{{translateRoot}}.volume.normal_aria_description", ng-show: 'model.volume == "normal"'}
+      %span{translate: "{{translateRoot}}.volume.quiet_aria_description", ng-show: 'model.volume == "quiet"'}
+      %span{translate: "{{translateRoot}}.volume.mute_aria_description", ng-show: 'model.volume == "mute"'}
 
   .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
     .dropdown-heading{translate: "common.notification_volume", role: 'heading'}
