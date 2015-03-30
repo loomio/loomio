@@ -3,6 +3,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($routeParams, $l
 
   Records.discussions.findOrFetchByKey($routeParams.key).then (discussion) =>
     @discussion = discussion
+    $rootScope.$broadcast('setTitle', @discussion.title)
     Records.proposals.fetchByDiscussion @discussion
     Records.votes.fetchMyVotesByDiscussion @discussion
     @group = @discussion.group()
