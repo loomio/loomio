@@ -1,5 +1,5 @@
 .notification-volume.dropdown.dropdown-fw-mobi
-  %a.notification-volume__button.dropdown-toggle{href: '#', ng-class: "{'btn btn-nude': showButton}"}
+  %a.notification-volume__button.dropdown-toggle{href: '#', class: "btn btn-nude"}
     %i.fa.fa-lg.fa-fw{ng-class: 'iconClassForLevel(model.volume)', aria-hidden: 'true'}>
     %span{translate: 'volume_levels.loud', ng-show: 'model.volume == "loud"'}
     %span{translate: 'volume_levels.normal', ng-show: 'model.volume == "normal"'}
@@ -7,7 +7,7 @@
     %span{translate: 'volume_levels.mute', ng-show: 'model.volume == "mute"'}
 
   .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
-    %h3.dropdown-heading{translate: "common.notification_volume"}
+    .dropdown-heading{translate: "common.notification_volume", role: 'heading'}
     %form{novalidate: ''}
       %ul.dropdown-menu-items
         %li.dropdown-menu-item{ng-repeat: 'level in volumeLevels'}
@@ -20,4 +20,3 @@
               %i.fa.fa-lg.fa-check{aria-hidden: 'true', ng-show: "level == model.volume"}
 
             .dropdown-menu-item-details{translate: "{{translateRoot}}.volume.{{level}}"}
-  .group-page-actions-divider
