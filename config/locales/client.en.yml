@@ -552,3 +552,11 @@ en:
     turn_on: 'Turn on the angular interface'
     now_off: 'Your angular interface is currently OFF'
     turn_off: 'Turn off the angular interface'
+
+  key_events:
+    title: Keyboard Shortcuts
+    pressed_k: View keyboard shortcuts
+    pressed_esc: Clear search results
+    pressed_slash: Open the search interface
+    pressed_up_arrow: Navigate upwards
+    pressed_down_arrow: Navigate to the next item

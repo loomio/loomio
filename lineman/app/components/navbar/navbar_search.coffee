@@ -17,20 +17,20 @@ angular.module('loomioApp').directive 'navbarSearch', ->
     $scope.shouldExecuteWithSearchField = (active) ->
       active == $scope.searchField() or KeyEventService.defaultShouldExecute(active)
 
-    KeyEventService.setKeyEvent $scope, 'pressedEsc', ->
+    KeyEventService.registerKeyEvent $scope, 'pressedEsc', ->
       $scope.searchField().blur()
       $scope.query = ''
     , $scope.shouldExecuteWithSearchField
 
-    KeyEventService.setKeyEvent $scope, 'pressedSlash', (active) ->
+    KeyEventService.registerKeyEvent $scope, 'pressedSlash', (active) ->
       $scope.searchField().focus()
       $scope.query = ''
 
-    KeyEventService.setKeyEvent $scope, 'pressedUpArrow', (active) ->
+    KeyEventService.registerKeyEvent $scope, 'pressedUpArrow', (active) ->
       alert('up arrow!')
     , $scope.shouldExecuteWithSearchField
 
-    KeyEventService.setKeyEvent $scope, 'pressedDownArrow', (active) ->
+    KeyEventService.registerKeyEvent $scope, 'pressedDownArrow', (active) ->
       alert('down arrow!')
     , $scope.shouldExecuteWithSearchField
 
