@@ -44,23 +44,6 @@
   float: left;
   margin-left: 15px;
 }
-.group-page-notifications{
-  float: right;
-  .btn { @include fontHelveticaBold; }
-}
-.group-page-actions-divider {
-  float: right;
-  height: 2em;
-  width: 1px;
-  background: $meta-text-color;
-  margin-left: 5px;
-  margin-right: 2px;
-}
-.group-page-actions{
-  float: right;
-  .btn { @include fontHelveticaBold; }
-}
-
 .group-page-description,
 .group-page-threads,
 .group-page-members,

@@ -113,19 +113,6 @@ label.label-with-details{
   margin-top: 20px;
 }
 
-/* fyi..this kinda shit has to stop */
-/*input, select, textarea{*/
-  /*margin-bottom: 10px;*/
-/*}*/
-/*textarea{*/
-  /*min-height: 100px;*/
-/*}*/
-
-/*input[type="file"]{*/
-  /*[>This is a hack for now to fix the mobile layout. The file input should be hidden.<]*/
-  /*max-width: 200px;*/
-/*}*/
-
 .font-bold {
   font-weight: bold;
 }
@@ -143,4 +130,18 @@ label.label-with-details{
   color: $kinda-dark-grey;
   margin-top: 0;
   margin-bottom: 10px;
+}
+
+.lmo-btn-group{
+  .btn { @include fontHelveticaBold; }
+}
+.lmo-btn-group-right{
+  float: right;
+}
+.lmo-btn-group .lmo-btn-wrapper{
+  float: right;
+  border-right: 1px solid $meta-text-color;;
+}
+.lmo-btn-group .lmo-btn-wrapper:first-of-type{
+  border: none;
 }

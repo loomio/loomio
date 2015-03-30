@@ -1,10 +1,10 @@
-.group-page-actions{dropdown: '', on-toggle: 'groupActions.toggled(open)'}
+.dropdown.group-page-actions
   %a.btn.btn-nude.dropdown-toggle{href: '#'}
-    %span{translate: 'group_page.options.label'}
+    %span{translate: 'group_page.options.label'}>
     %i.fa.fa-lg.fa-chevron-down{aria-hidden: 'true'}
 
   .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
-    .dropdown-heading{translate: 'group_page.options_label'}
+    .dropdown-heading{translate: 'group_page.options_label', role: 'heading'}
     %ul.dropdown-menu-items
       %li.dropdown-menu-item{ng-if: 'groupActions.canEditGroup()'}
         %a{href: '/g/{{::group.key}}/edit'}
