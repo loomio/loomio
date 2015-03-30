@@ -2,7 +2,7 @@
   %a.selector-list-item-link{href: '/d/{{ discussion.key }}'}
     .sr-only
       %span{translate: 'dashboard_page.aria_thread.title', translate-value-title: '{{ discussion.title }}'}
-      %span{ng-if: 'discussion.isUnread()', translate: 'dashboard_page.aria_thread.unread', translate-value-unread: '{{ discussion.unreadItemsCount() }}'}
+      %span{ng-if: 'discussion.isUnread()', translate: 'dashboard_page.aria_thread.unread', translate-value-count: '{{ discussion.unreadItemsCount() }}'}
       %span{ng-if: 'discussion.activeProposal()', translate: 'dashboard_page.aria_thread.current_proposal', translate-value-name: '{{ discussion.activeProposal().name }}'}
       %span{ng-if: 'discussion.activeProposal() && lastVoteByCurrentUser()', translate: 'dashboard_page.aria_thread.you_voted', translate-value-position: ' {{lastVoteByCurrentUser().position}} '}
     .screen-only{aria-hidden: 'true'}

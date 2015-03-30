@@ -15,7 +15,7 @@
 
     %section.thread-context{role: 'region', aria-label: "{{ 'thread_context.aria_label' | translate }}"}
       .thread-actions.pull-right
-        .dropdown.thread-notification-level
+        .thread-notification-level
           %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
         .dropdown{ng-if: 'threadPage.showContextMenu()'}
           %a.fat-finger.dropdown-toggle{href:''}

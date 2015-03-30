@@ -2,7 +2,8 @@
   .sr-only{aria-label: "{{ 'activity_card.new_comment.aria_label' | translate }} {{ ::comment.authorName() }}", role: 'heading'}
   .thread-item-context-menu.dropdown.pull-right{ng-if: 'showContextMenu()'}
     %a.dropdown-toggle{href:''}
-      %i.fa.fa-chevron-down
+      %i.fa.fa-chevron-down{aria-hidden: 'true'}
+      .sr-only{translate: 'new_comment_item.context_menu.aria_label'}
     %ul.dropdown-menu.dropdown-menu-right
       %li
         %a{href: '', ng-click: 'editComment()', ng-if: '::canEditComment()', translate: 'new_comment_item.context_menu.edit_comment'}
