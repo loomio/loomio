@@ -36,6 +36,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/lokijs/src/lokijs.js",
              "vendor/bower_components/angular-inview/angular-inview.js",
              "vendor/bower_components/angular-gravatar/build/angular-gravatar.js",
-             "vendor/bower_components/angular-gravatar/build/md5.js"]
+             "vendor/bower_components/angular-gravatar/build/md5.js",
+             "vendor/bower_components/angular-truncate/src/truncate.js"]
     app: ["app/app.js"
           "app/**/*.js"]

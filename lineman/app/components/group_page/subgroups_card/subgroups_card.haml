@@ -1,17 +1,13 @@
-%section.group-page-subgroups{ng_show: '!group.parentId', role: 'region', aria-labelledby: 'subgroups-card-title'}
-  #subgroups-card-title.card-title{ translate: 'group_page.subgroups', role: 'heading' }
-  .subgroup-list
-    .media.subgroup-list-item{ng-repeat: 'subgroup in group.subgroups()'}
-      .media-left
-        .subgroup-list-item-logo
-      .media-body
-        .subgroup-list-item-name
-          %a{href: '/g/{{subgroup.key}}'} {{ subgroup.name }}
-        / this should be truncated down to a few dozen chars
-        / do we want to use this? https://github.com/sparkalow/angular-truncate
-        .subgroup-list-item-description {{ subgroup.description }}
+%section.subgroups-card{ng_show: '!group.parentId', role: 'region', aria-labelledby: 'subgroups-card__title'}
+  #subgroups-card__title.card-title{ translate: 'group_page.subgroups', role: 'heading' }
+  %ul.subgroups-card__list
+    %li.subgroups-card__list-item{ng-repeat: 'subgroup in group.subgroups()'}
+      .subgroups-card__list-item-logo
+      .subgroups-card__list-item-name
+        %a{href: '/g/{{subgroup.key}}'} {{ subgroup.name }}
+      .subgroups-card__list-item-description {{ subgroup.description | words:10 }}
 
-    .card-minor-action{ng-if: '::canCreateSubgroups()'}
-      %a{href: '/g/{{group.key}}/subgroups/new'}
-        %span{aria-hidden:'true'}>+
-        %span{ translate: 'common.action.add_subgroup' }
+  .card-minor-action{ng-if: '::canCreateSubgroups()'}
+    %a{href: '/g/{{group.key}}/subgroups/new'}
+      %span{aria-hidden:'true'}>+
+      %span{ translate: 'common.action.add_subgroup' }

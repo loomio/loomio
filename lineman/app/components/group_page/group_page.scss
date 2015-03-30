@@ -46,8 +46,7 @@
 }
 .group-page-description,
 .group-page-threads,
-.group-page-members,
-.group-page-subgroups{
+.group-page-members{
   @include card;
 }
 
@@ -77,14 +76,29 @@
   padding-top: 10px;
 }
 
-.subgroup-list-item{
-  clear: both;
+.subgroups-card{
+  @include card;
 }
-.subgroup-list-item-logo{
+.subgroups-card__list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.subgroups-card__list-item{
+  clear: both;
+  min-height: 50px;
+  margin-bottom: 12px;
+}
+.subgroups-card__list-item-logo{
   width: 50px;
   height: 50px;
   background: url('http://placehold.it/50x50');
+  float: left;
 }
-.subgroup-list-item-name{
-  font-weight: bold;
+.subgroups-card__list-item-name{
+  @include fontHelveticaBold;
+  margin-left: 60px;
+}
+.subgroups-card__list-item-description{
+  margin-left: 60px;
 }
