@@ -1,6 +1,8 @@
 %section.activity-card{role: 'region', aria-labelledby:'activity-card-title'}
   .card-title#activity-card-title{role: 'heading', translate: 'discussion.activity'}
-  %a.activity-card__load-backwards{translate: 'discussion.load_previous', translate-value-count: '{{beforeCount()}}', ng-show: 'canLoadBackwards()', ng-click: 'loadEventsBackwards()'}
+  %a.activity-card__load-backwards{ng-show: 'canLoadBackwards()', ng-click: 'loadEventsBackwards()'}
+    %i.fa.fa-refresh{aria-hidden: true}>
+    %span{translate: 'discussion.load_previous', translate-value-count: '{{beforeCount()}}'}
   .activity-card__loading.page-loading{ng-show: 'loadingBackward'}
     %i.fa.fa-lg.fa-spin.fa-circle-o-notch
   %article{ng_repeat: 'event in discussion.events() track by event.id', ng_include: "'generated/components/thread_page/activity_card/'+ event.kind+ '.html'", in-view: '($inview&&threadItemVisible(event)) || (!$inview&&threadItemHidden(event))', in-view-options: '{debounce: 100}'}

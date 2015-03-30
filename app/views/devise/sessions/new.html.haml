@@ -15,11 +15,24 @@
                   = t(:'join_group.log_in', group_name: @invitation.invitable_name)
               - else
                 = t :sign_in
+
+          %p
+            = t(:'dont_have_an_account')
+            = link_to t(:'create_one_now'), new_user_registration_path, id:'create_account'
           .signin_container
-            = render 'devise/shared/omniauth_buttons'
-            .separator-container
-              .separator
-                = t :or
             = render "form"
+            -unless omniauth_authenticated_and_waiting?
+              .sso-btn-row
+                %label= t :log_in_with_third_party
+                = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-default btn-block btn-lg login' do
+                  = t :log_in_with_facebook
+                = link_to user_omniauth_authorize_url(:google, host: ENV['CANONICAL_HOST'] || request.host), class: 'btn btn-default btn-block btn-lg login' do
+                  = t :log_in_with_google
+                = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
+                  = t :log_in_with_twitter
+                = link_to user_omniauth_authorize_path(:browser_id), class: 'btn btn-default btn-block btn-lg login', id: 'persona-login-btn' do
+                  = t :log_in_with_persona
+
+
           .terms
             =t(:terms_of_service_html, button_text: t(:'devise.sessions.sign_in'), link_path: terms_of_service_path) if hosted_by_loomio?

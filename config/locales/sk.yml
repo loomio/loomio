@@ -790,9 +790,6 @@ sk:
       motion:
         name: Aké riešenie navrhujete?
         description: "Poskytnite dostatok informácií, aby každý vedel, čo vlastne znamená, ak súhlasí alebo nesúhlasí."
-      user:
-        email: E-mail
-        password: Heslo
       group_request:
         description: Radi by sme sa dozvedeli niečo o vašej skupine a prečo chcete použiť Loomio.
   helpers:

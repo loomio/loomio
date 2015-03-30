@@ -840,9 +840,6 @@ hu:
       motion:
         name: Mit javasolsz?
         description: "Adj elég információt, hogy pontosan tudhassák mit jelent, ha egyetértenek vagy ha ellenzik."
-      user:
-        email: E-mail
-        password: Jelszó
       group_request:
         description: Szeretnénk megismerni a csoportodat és megtudni hogy miért szeretnéd használni Loomio-t.
   helpers:

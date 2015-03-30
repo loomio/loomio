@@ -844,9 +844,6 @@ fr:
       motion:
         name: "Quel est votre plan d'action ?"
         description: "Donnez suffisamment d'informations pour que tout le monde sache exactement ce que signifie d'être d'accord ou de ne pas être d'accord."
-      user:
-        email: E-mail
-        password: Mot de passe
       group_request:
         description: Nous aimerions en savoir plus à propos de votre groupe et pourquoi vous voulez utiliser Loomio.
   helpers:

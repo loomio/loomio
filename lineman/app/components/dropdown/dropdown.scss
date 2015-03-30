@@ -1,10 +1,16 @@
+.dropdown-menu{
+  min-width: 320px;
+}
+
 .dropdown-menu label {
   font-weight: normal;
   cursor: pointer;
 }
 .dropdown-menu-with-labels{
   padding: 15px;
-  width: 300px;
+}
+.dropdown-menu-with-labels a{
+  color: $primary-text-color;
 }
 
 .dropdown-menu-with-labels .fa-check{
@@ -41,17 +47,27 @@ li .dropdown-menu-item-label{
 }
 
 .disabled .dropdown-menu-item{
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
 }
 
 .dropdown-heading{
   @include fontHelveticaMedium;
   @include fontSmall;
   text-transform: uppercase;
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
   margin: 0 0 10px 0;
   border-bottom: 1px solid $border-color;
 }
 .dropdown-menu-right{
   right: 0;
+}
+
+.dropdown-fw-mobi{
+  position: relative;
+  @media (max-width: $screen-xs-min){
+    position: static;
+    .dropdown-menu{
+      top: auto;
+    }
+  }
 }

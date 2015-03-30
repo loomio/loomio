@@ -17,12 +17,14 @@
     = render 'fork_me_on_github'
 
     .container-fluid
-      %nav.navbar.navbar-default
+      %nav.navbar.navbar-default{role: 'navigation'}
         .navbar-content
           .navbar-header
-            = link_to image_tag("logo-orange.png"), root_path, class: 'navbar-brand', alt: 'Loomio'
-          %ul.nav.navbar-nav.navbar-right
-            %li.pull-right= link_to t(:'frontpage.link.log_in'), new_user_session_path, class: 'btn btn-orange'
+            .navbar-brand
+              = link_to root_path do
+                = image_tag("logo-orange.png", alt: 'Loomio home page')
+          .nav.navbar-nav.navbar-right
+            .pull-right= link_to t(:'frontpage.link.log_in'), new_user_session_path, class: 'btn btn-orange'
       .row.hero
         .content
           =image_tag 'globe.png', class: 'image'

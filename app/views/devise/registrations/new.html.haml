@@ -12,7 +12,7 @@
             .signin_container
               = render "form"
           -else
-            %h2
+            %h1
               - if @invitation
                 - if @invitation.to_start_group?
                   = t :'start_group.create_account_to_start_group', group_name: @invitation.invitable_name
@@ -22,8 +22,17 @@
                 = t :"new_user_form.create_an_account"
             %p= t :or_sign_in_html, link: user_session_path, link_class: 'existing-user'
             .signin_container
-              %h3= t :sign_up_via
-              = render 'devise/shared/omniauth_buttons'
-              %h3= t :or_fill_in_this_form
               = render "form"
+              -unless omniauth_authenticated_and_waiting?
+                .sso-btn-row
+                  %label= t :sign_up_with_third_party
+                  = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-default btn-block btn-lg login' do
+                    = t :sign_up_with_facebook
+                  = link_to user_omniauth_authorize_url(:google, host: ENV['CANONICAL_HOST'] || request.host), class: 'btn btn-default btn-block btn-lg login' do
+                    = t :sign_up_with_google
+                  = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
+                    = t :sign_up_with_twitter
+                  = link_to user_omniauth_authorize_path(:browser_id), class: 'btn btn-default btn-block btn-lg login', id: 'persona-login-btn' do
+                    = t :sign_up_with_persona
+
           .terms= t(:terms_of_service_html, button_text: t(:'devise.registrations.sign_up'), link_path: terms_of_service_path) if hosted_by_loomio?

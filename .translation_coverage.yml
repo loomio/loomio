@@ -1,15 +1,15 @@
 an:
   frontpage: 89
-  main: 92
+  main: 91
 ar:
   frontpage: 89
-  main: 49
+  main: 48
 be-BY:
   frontpage: 100
-  main: 96
+  main: 95
 bg-BG:
   frontpage: 15
-  main: 41
+  main: 40
 ca:
   frontpage: 84
   main: 76
@@ -18,22 +18,22 @@ cmn:
   main: 29
 cs:
   frontpage: 89
-  main: 78
+  main: 77
 da:
   frontpage: 89
-  main: 91
+  main: 90
 de:
   frontpage: 100
-  main: 100
+  main: 98
 el:
   frontpage: 100
-  main: 100
+  main: 98
 eo:
   frontpage: 89
-  main: 90
+  main: 89
 es:
   frontpage: 100
-  main: 99
+  main: 98
 fa-IR:
   frontpage: 89
   main: 12
@@ -42,34 +42,34 @@ fi:
   main: 6
 fr:
   frontpage: 100
-  main: 99
+  main: 98
 ga-IE:
   frontpage: 35
-  main: 44
+  main: 43
 gl:
   frontpage: 48
-  main: 70
+  main: 69
 he:
   frontpage: 92
-  main: 66
+  main: 65
 hr:
   frontpage: 89
   main: 46
 hu:
   frontpage: 100
-  main: 99
+  main: 98
 id:
   frontpage: 48
   main: 53
 it:
   frontpage: 89
-  main: 92
+  main: 91
 it-CH:
   frontpage: 0
   main: 0
 ja:
   frontpage: 61
-  main: 64
+  main: 63
 km:
   frontpage: 0
   main: 49
@@ -84,13 +84,13 @@ mi:
   main: 3
 mk:
   frontpage: 89
-  main: 55
+  main: 54
 ml:
   frontpage: 0
   main: 51
 nl-NL:
   frontpage: 100
-  main: 97
+  main: 96
 pl:
   frontpage: 89
   main: 17
@@ -102,34 +102,34 @@ pt-PT:
   main: 9
 ro:
   frontpage: 89
-  main: 92
+  main: 91
 ru:
   frontpage: 100
-  main: 64
+  main: 63
 sk:
   frontpage: 89
-  main: 92
+  main: 91
 sl:
   frontpage: 100
-  main: 96
+  main: 95
 sr:
   frontpage: 100
-  main: 95
+  main: 98
 sr-RS:
   frontpage: 100
-  main: 92
+  main: 98
 sv:
   frontpage: 89
-  main: 91
+  main: 90
 te:
   frontpage: 20
-  main: 27
+  main: 26
 tr:
   frontpage: 89
-  main: 92
+  main: 91
 uk:
   frontpage: 100
-  main: 78
+  main: 77
 ur:
   frontpage: 0
   main: 0
@@ -141,4 +141,4 @@ vi:
   main: 43
 zh-TW:
   frontpage: 100
-  main: 94
+  main: 93

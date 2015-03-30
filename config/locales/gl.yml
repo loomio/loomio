@@ -610,10 +610,6 @@ gl:
         name: Cal é o nome do teu grupo?
         description: "Se tes un intre, fálanos do teu grupo"
         is_commercial: Onde pensas utilizar o Loomio?
-    placeholders:
-      user:
-        email: Correo electrónico
-        password: Contrasinal
   helpers:
     submit:
       discussion:

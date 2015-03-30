@@ -443,9 +443,6 @@ mk:
     placeholders:
       membership_request:
         introduction: "Напиши неколку зборови за тебе и зошто сакаш да се приклучиш во %{group_name}."
-      user:
-        email: Email
-        password: Лозинка
       group_request:
         description: Би сакале да слушнеме за твојата група и зошто сакаш да го користиш Loomio.
   helpers:

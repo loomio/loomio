@@ -844,9 +844,6 @@ es:
       motion:
         name: ¿Cuál es tu propuesta de plan de acción?
         description: Da información suficiente para que cualquier persona en tu grupo pueda tomar una decisión bien informada.
-      user:
-        email: Correo electrónico
-        password: Contraseña
       group_request:
         description: Nos encantaría saber de tu grupo y por qué desean usar Loomio.
   helpers:

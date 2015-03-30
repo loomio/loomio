@@ -566,10 +566,6 @@ he:
         admin_name: מה שמך?
         admin_email: מה הדואל שלך?
         name: מה שם הקבוצה שלך?
-    placeholders:
-      user:
-        email: דוא״ל
-        password: סיסמא
   helpers:
     submit:
       discussion:

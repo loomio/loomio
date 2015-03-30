@@ -773,9 +773,6 @@ da:
       motion:
         name: Hvad er din anbefalede handlingsplan?
         description: Giv nok information så alle ved præcis hvad det vil sige at være enig eller uenig.
-      user:
-        email: E-mail
-        password: Adgangskode
       group_request:
         description: Vi ville elske at høre om din gruppe og hvorfor du ønsker at bruge Loomio.
   helpers:

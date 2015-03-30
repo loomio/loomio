@@ -359,9 +359,6 @@ ga-IE:
     placeholders:
       membership_request:
         introduction: "Scríobh fút féin chun tú féin a chur in iúl agus mínigh cén fáth ar mhaith leat bheith mar chomhalta de %{group_name}."
-      user:
-        email: Seoladh ríomhphoist
-        password: Focal faire
       group_request:
         description: Ba bhreá linn eolas a chur ar do bhaicle agus cén fáth ar mhaith libh feidhm a bhaint as Loomio.
   helpers:

@@ -263,10 +263,6 @@ te:
       group_request:
         admin_name: మీ పేరు ఏమిటి?
         admin_email: మీ ఈమెయిలు చిరునామా ఏమిటి?
-    placeholders:
-      user:
-        email: ఈమెయిలు
-        password: సంకేతపదం
   helpers:
     submit:
       discussion:

@@ -7,7 +7,7 @@ angular.module('loomioApp').controller 'DiscussionsCardController', ($scope, $mo
     return false if busy or $scope.lastPage
     busy = true
     Records.discussions.fetchByGroupAndPage($scope.group, nextPage).then (data) ->
-      discussions = data.discussions
+      discussions = data.discussions or []
       $scope.lastPage = true if discussions.length < 5
       nextPage = nextPage + 1
       busy = false
