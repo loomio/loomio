@@ -22,8 +22,7 @@
           %span> ·
         %span> {{ discussion.group().fullName() }}
   .dashboard-page-thread-actions
-    %a.dashboard-page-thread-action-button{ng-show: 'discussion.volume != "mute"', href: '#', ng-click: 'discussion.reader().changeVolume("mute")'}>
-      %i.fa.fa-2x.fa-volume-off
+    -# %a.dashboard-page-thread-action-button{ng-show: 'discussion.volume != "mute"', href: '#', ng-click: 'discussion.reader().changeVolume("mute")'}>
+    -#   %i.fa.fa-2x.fa-volume-off
     %a.dashboard-page-thread-action-button{ng-show: 'discussion.isUnread()', href: '#', ng-click: 'discussion.markAsRead()'}>
       %i.fa.fa-2x.fa-check
-
