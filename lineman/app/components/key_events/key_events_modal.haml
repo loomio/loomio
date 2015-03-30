@@ -1,0 +1,10 @@
+.keyboard-shortcuts
+  .modal-header
+    %button{type: 'button', class: 'close', ng-click: '$close()'}
+      %span{aria-hidden: true} &times;
+      %span.sr-only{translate: 'common.action.cancel'}
+    %h1.modal-title{translate: 'key_events.title'}
+  .modal-body
+    .keyboard-shortcut{ng-repeat: 'shortcut in keyEventsModal.shortcuts'}
+      %span.keyboard-shortcut-key> {{ shortcut.key }} -
+      %span.keyboard-shortcut-description{translate: 'key_events.{{shortcut.description}}'}

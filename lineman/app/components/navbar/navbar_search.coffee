@@ -3,13 +3,36 @@ angular.module('loomioApp').directive 'navbarSearch', ->
   restrict: 'E'
   templateUrl: 'generated/components/navbar/navbar_search.html'
   replace: true
-  controller: ($scope, $timeout, CurrentUser, Records, SearchResultModel) ->
+  controller: ($scope, $timeout, CurrentUser, Records, SearchResultModel, KeyEventService) ->
     $scope.searchResults = []
     $scope.query = ''
     $scope.focused = false
 
     $scope.$on '$locationChangeSuccess', ->
       $scope.query = ''
+
+    $scope.searchField = ->
+      angular.element('#primary-search-input')[0]
+
+    $scope.shouldExecuteWithSearchField = (active) ->
+      active == $scope.searchField() or KeyEventService.defaultShouldExecute(active)
+
+    KeyEventService.registerKeyEvent $scope, 'pressedEsc', ->
+      $scope.searchField().blur()
+      $scope.query = ''
+    , $scope.shouldExecuteWithSearchField
+
+    KeyEventService.registerKeyEvent $scope, 'pressedSlash', (active) ->
+      $scope.searchField().focus()
+      $scope.query = ''
+
+    KeyEventService.registerKeyEvent $scope, 'pressedUpArrow', (active) ->
+      alert('up arrow!')
+    , $scope.shouldExecuteWithSearchField
+
+    KeyEventService.registerKeyEvent $scope, 'pressedDownArrow', (active) ->
+      alert('down arrow!')
+    , $scope.shouldExecuteWithSearchField
 
     $scope.setFocused = (bool) ->
       if bool
