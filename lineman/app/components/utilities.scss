@@ -30,11 +30,13 @@
 
 .fat-finger{
   /*utility class to increase the target size of a link*/
-  width: 30px;
-  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
   display: block;
-  text-align: center;
+  text-align: right;
   cursor: pointer;
+  line-height: 32px;
+  i{ line-height: 32px; }
 }
 
 .action{
@@ -113,19 +115,6 @@ label.label-with-details{
   margin-top: 20px;
 }
 
-/* fyi..this kinda shit has to stop */
-/*input, select, textarea{*/
-  /*margin-bottom: 10px;*/
-/*}*/
-/*textarea{*/
-  /*min-height: 100px;*/
-/*}*/
-
-/*input[type="file"]{*/
-  /*[>This is a hack for now to fix the mobile layout. The file input should be hidden.<]*/
-  /*max-width: 200px;*/
-/*}*/
-
 .font-bold {
   font-weight: bold;
 }
@@ -144,10 +133,23 @@ label.label-with-details{
   margin-top: 0;
   margin-bottom: 10px;
 }
-
 .card-subheading{
   @include fontSmall;
   @include fontHelveticaMedium;
   color: $kinda-dark-grey;
   margin-top: 1.5em;
+}
+
+.lmo-btn-group{
+  .btn { @include fontHelveticaBold; }
+}
+.lmo-btn-group-right{
+  float: right;
+}
+.lmo-btn-group .lmo-btn-wrapper{
+  float: right;
+  border-right: 1px solid $meta-text-color;;
+}
+.lmo-btn-group .lmo-btn-wrapper:first-of-type{
+  border: none;
 }

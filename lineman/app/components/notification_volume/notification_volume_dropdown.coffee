@@ -20,7 +20,6 @@ angular.module('loomioApp').directive 'notificationVolumeDropdown', ->
     $scope.init = ->
       if $scope.group
         $scope.model = $scope.group.membershipFor(CurrentUser)
-        $scope.showButton = true
       else if $scope.discussion
         $scope.model = $scope.discussion.reader()
 
