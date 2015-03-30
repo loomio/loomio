@@ -5,7 +5,7 @@
       .time-and-icon.pull-right
         %smart_time.group-thread-list-time{time: 'discussion.lastActivityAt' }>
         %span.group-thread-list-icon
-          %i.fa.fa-lg.fa-comments
+          %i.fa.fa-lg.fa-comments{aria-hidden: 'true'}
 
       .group-thread-list-thread-title
         %a{href: '/d/{{discussion.key}}'} {{ discussion.title }}
