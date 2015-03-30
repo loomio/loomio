@@ -1,49 +1,46 @@
 %section#keeping-up-to-date
-  %h1 Keeping up to date
-  %h3.anchor#volume Volume
+  %h1= t :"new_help.keeping_up_to_date.title"
+  %h3.anchor#volume= t :"new_help.keeping_up_to_date.volume.title"
   .row
     .col-sm-7
-      %p Volume controls how much you hear from a group or a discussion.
-      %p There are four settings for both <strong>Group Volume</strong> and <strong>Discussion Volume</strong>.
-      %p <strong>Group Volume</strong> can be changed from the group page by clicking the button in the <strong>"Volume"</strong> panel on the right-hand side of the page, and selecting one of the four options:
+      = t :"new_help.keeping_up_to_date.volume.body.intro_html"
       %ul#volume-options
-        %li <strong>Loud</strong> - this will email you whenever there is activity (comments, votes, new discussions or proposals, and proposal outcomes) in the group.
-        %li <strong>Normal</strong> - this will only email you with important activity: new discussions or proposals and proposal outcomes.
-        %li <strong>Quiet</strong> - this switches all the emails off. You’ll see new group activity on the dashboard.
-        %li <strong>Mute</strong> - this switches all emails off. You’ll only be notified if someone @mentions you. This will also remove the group from your dashboard and the <a href="#yesterday-on-loomio">“Yesterday on Loomio”</a> digest email.
-      %p When you join a new group, your volume settings for that particular group will be <strong>Normal</strong>. This means you will be emailed when a new discussion is started, when a proposal is raised, or when a proposal outcome is set.
+        %li= t :"new_help.keeping_up_to_date.volume.body.loud_html"
+        %li= t :"new_help.keeping_up_to_date.volume.body.normal_html"
+        %li= t :"new_help.keeping_up_to_date.volume.body.quiet_html"
+        %li= t :"new_help.keeping_up_to_date.volume.body.mute_html"
+      %p= t :"new_help.keeping_up_to_date.volume.body.upon_joining_group_html"
     .col-sm-5
       =image_tag "group-volume.png", class: "screenshot"
   .row
     .col-sm-6
-      %p You can set the volume for all of your groups from your <strong><a href="#email-settings">"Email settings"</a></strong> page.
+      %p= t :"new_help.keeping_up_to_date.volume.body.set_all_group_volume_html"
     .col-sm-6
       =image_tag "group-volume-settings.png", class: "screenshot"
   .row
     .col-sm-7
-      %p When a discussion starts, it will have the same volume setting as its group. You can customise the <strong>Discussion Volume</strong> of a particular discussion by clicking the button displaying the current volume (on the right-hand side of the discussion page) and selecting one of the four options.
-      %p When you participate in a discussion, the <strong>Discussion Volume</strong> will be changed to <strong>Loud</strong>, so all further activity will be emailed to you. You can change this behaviour from your <strong><a href="#email-settings">"Email settings"</a></strong> page.
+      = t :"new_help.keeping_up_to_date.volume.body.discussion_volume_html"
     .col-sm-5
       =image_tag "discussion-volume.png", class: "screenshot"
   .row
     .col-sm-6
-      %p You can reply to any comments you receive directly via email and your replies will be posted in the relevant Loomio discussion. Alternatively you can choose to view the comment as part of the discussion on Loomio by clicking the <strong>“view it on Loomio”</strong> link in the footer of the email.
+      %p= t :"new_help.keeping_up_to_date.volume.body.reply_via_email_html"
     .col-sm-6
       =image_tag "email-footer.png", class: "screenshot"
-  %h3.anchor#email-settings Email settings
+  %h3.anchor#email-settings= t :"new_help.keeping_up_to_date.email_settings.title"
   .row
     .col-sm-9
-      %p Your <strong>Email settings</strong> page enables you to create email notification settings for groups and discussions you are participating in. To visit your <strong>Email settings</strong> page, click your name at the top right of the page, then <strong>“Email settings”</strong>.
+      %p= t :"new_help.keeping_up_to_date.email_settings.body_html"
     .col-sm-3
       =image_tag "email-settings.png", class: "screenshot"
   .row
     .col-sm-5
-      %h3.anchor#yesterday-on-loomio "Yesterday on Loomio"
-      %p The <strong>“Yesterday on Loomio”</strong> email is a daily summary of content you haven’t read from the previous day. The email contains everything that is not muted. You can turn this on or off from the <strong><a href="#email-settings">"Email settings"</a></strong> page.
+      %h3.anchor#yesterday-on-loomio= t :"new_help.keeping_up_to_date.yesterday_on_loomio.title"
+      %p= t :"new_help.keeping_up_to_date.yesterday_on_loomio.body_html"
     .col-sm-7
       =image_tag "email-settings-page.png", class: "screenshot"
   .row#bottom-links
     .col-sm-6
-      %a.back-to-top{:href => "#contents"} ^ Back to top
+      %a.back-to-top{:href => "#contents"}= t :"new_help.back_to_top"
     .col-sm-6
-      %a.feedback-discussion-link{:href => "https://www.loomio.org/d/Yl5D3EC0/new-help-documentation-we-want-your-feedback"} Think this explanation could be clearer? Give us your feedback >
+      %a.feedback-discussion-link{:href => "https://www.loomio.org/d/Yl5D3EC0/new-help-documentation-we-want-your-feedback"}= t :"new_help.feedback_discussion"

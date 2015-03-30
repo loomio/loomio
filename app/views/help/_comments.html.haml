@@ -1,46 +1,46 @@
 %section#comments
-  %h1 Comments
-  %h3.anchor#posting-comments Posting a comment
+  %h1= t :"new_help.comments.title"
+  %h3.anchor#posting-comments= t :"new_help.comments.posting_comments.title"
   .row
     .col-sm-6
-      %p You can add your voice to a discussion using the comment box at the bottom of a discussion page.
-      %h3.anchor#markdown Markdown
-      %p Loomio uses <strong>Markdown</strong> to let you format text and embed images. To enable Markdown, check the box next to the word <strong>“Markdown”</strong> under the comment box. Click <a href="https://www.loomio.org/d/Wh7vHaTk/markdown-text-formatting-made-easy">here</a> for information on how to use Markdown.
+      %p= t :"new_help.comments.posting_comments.body"
+      %h3.anchor#markdown= t :"new_help.comments.markdown.title"
+      %p= t :"new_help.comments.markdown.body_html"
     .col-sm-6
       =image_tag "comment-box.png", class: "screenshot"
-  %h3.anchor#attaching-files Attaching files
+  %h3.anchor#attaching-files= t :"new_help.comments.attaching_files.title"
   .row
     .col-sm-8
-      %p Loomio allows you to attach files to comments in a discussion. You can attach a file to a comment by clicking the paperclip icon underneath the comment box at the bottom of the discussion page and selecting the file from your device.
+      %p= t :"new_help.comments.attaching_files.body"
     .col-sm-4
       =image_tag "attachment-icon.png", class: "screenshot"
-  %h3.anchor#mentioning @mentioning group members
+  %h3.anchor#mentioning= t :"new_help.comments.mentioning_group_members.title"
   .row
     .col-sm-6
-      %p If you want to get the attention of a specific person in your group, type <strong>‘@’</strong> into the comment box, followed by their name. Loomio will autocomplete their username. They will be notified that you’ve mentioned them in a comment.
+      %p= t :"new_help.comments.mentioning_group_members.body_html"
     .col-sm-6
       =image_tag "mentioning.png", class: "screenshot"
-  %h3.anchor#editing-comments Editing a comment
-  %p To allow for fixing typos, you can edit a comment after it is posted. By default, groups are configured so that a comment can only be edited until someone else contributes a comment to the discussion. Group coordinators can also <a href="#group-permissions">configure groups to allow users to edit their comments at any time</a>. The pencil icon for editing a comment will be visible in the right-hand corner of the comment if you have permission to edit it. Comments that have been edited display the word <strong>“Edited”</strong> beneath them. Clicking <strong>“Edited”</strong> below a comment will display all previous versions of the comment.
-  %h3.anchor#liking-comments Liking a comment
+  %h3.anchor#editing-comments= t :"new_help.comments.editing_comments.title"
+  %p= t :"new_help.comments.editing_comments.body_html"
+  %h3.anchor#liking-comments= t :"new_help.comments.liking_comments.title"
   .row
     .col-sm-6
-      %p Clicking <strong>“Like”</strong> below a comment is a simple way to let other members of your group know that you appreciate or understand what they’ve said without leaving a comment.
+      %p= t :"new_help.comments.liking_comments.body.liking_html"
     .col-sm-6
       =image_tag "comment-like.png", class: "screenshot"
   .row
     .col-sm-6
-      %p When you <strong>“Like”</strong> a comment, the fact that you <strong>“Liked”</strong> it will be visible below the comment. You can undo the <strong>“Like”</strong> action by clicking <strong>“Unlike”</strong> on a comment you’ve previously liked.
+      %p= t :"new_help.comments.liking_comments.body.unliking_html"
     .col-sm-6
       =image_tag "liked-comment.png", class: "screenshot"
-  %h3.anchor#deleting-comments Deleting a comment
+  %h3.anchor#deleting-comments= t :"new_help.comments.deleting_comments.title"
   .row
     .col-sm-6
-      %p You can delete your own comments at any time by clicking the <strong>"X"</strong> in the right-hand corner of the comment. Group coordinators can delete any comments posted in discussions taking place in groups they coordinate.
+      %p= t :"new_help.comments.deleting_comments.body_html"
     .col-sm-6
       =image_tag "delete-comment-icon.png", class: "screenshot"
   .row#bottom-links
     .col-sm-6
-      %a.back-to-top{:href => "#contents"} ^ Back to top
+      %a.back-to-top{:href => "#contents"}= t :"new_help.back_to_top"
     .col-sm-6
-      %a.feedback-discussion-link{:href => "https://www.loomio.org/d/Yl5D3EC0/new-help-documentation-we-want-your-feedback"} Think this explanation could be clearer? Give us your feedback >
+      %a.feedback-discussion-link{:href => "https://www.loomio.org/d/Yl5D3EC0/new-help-documentation-we-want-your-feedback"}= t :"new_help.feedback_discussion"

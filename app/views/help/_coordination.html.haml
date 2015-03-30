@@ -1,52 +1,51 @@
 %section#coordination
-  %h1 Coordinating your group
-  %p As a coordinator of a Loomio group you're responsible for guiding your group through the process of learning how to use a new piece of software, as well as learning new processes for collaborating more effectively and making good decisions together. The tasks outlined below are tasks only the coordinators of your group have permission to perform.
+  %h1= t :"new_help.coordination.title"
+  %p= t :"new_help.coordination.intro_html"
   .row
     .col-sm-8
-      %h3.anchor#adding-cover-photo Adding a cover photo
-      %p When your group is up and running you can add your cover photo. This is an easy way to help your group members feel a little more at home on Loomio.
-      %p When you hover over the grey area at the top of your Loomio group page a pencil icon will appear in the top right hand corner. Click the pencil icon and you will be able to select an image to upload. The optimal size for cover photos is 970 x 200 pixels. You can change your cover photo at any time by simply uploading a new one.
+      %h3.anchor#adding-cover-photo= t :"new_help.coordination.adding_cover_photo.title"
+      = t :"new_help.coordination.adding_cover_photo.body_html"
     .col-sm-4
       =image_tag "cover-photo-upload.png", class: "screenshot"
-  %h3.anchor#manage-membership Managing membership
+  %h3.anchor#manage-membership= t :"new_help.coordination.manage_membership.title"
   .row
     .col-sm-8
-      %p Group coordinators are responsible for managing the memberships within their group. This means adding and removing members, and granting and removing coordinator permissions. Coordinators can also send an email to all members of their group. These actions can be performed from the <strong>"Members"</strong> index page. On the right-hand side of your Loomio group page, there is an <strong>“Options”</strong> button. To access the <strong>"Members"</strong> page, click this button and select the <strong>“Manage members”</strong> option. You can also access the page by clicking the <strong>"More..."</strong> link in the <strong>"Members"</strong> panel on the left-hand side of your group page.
+      %p= t :"new_help.coordination.manage_membership.body_html"
     .col-sm-4
       =image_tag "manage-members.png", class: "screenshot"
-  %h4 Accepting/ignoring membership requests
-  %p If your <a href="#group-privacy">group privacy settings</a> allow people to join your group <strong>“By request”</strong>, a coordinator will need to approve each membership request. As a group coordinator you will receive an email each time there is a request to approve. Clicking the link in the notification email will take you to the <strong>"Membership requests"</strong> page, where you can approve or decline the request.
+  %h4= t :"new_help.coordination.manage_membership.membership_requests.title"
+  %p= t :"new_help.coordination.manage_membership.membership_requests.body.approval_process_html"
   .row
     .col-sm-8
-      %p If there is a pending membership request it will also be visible on your group page in a <strong>"Membership requests"</strong> panel. Clicking the link in the panel will take you to the <strong>"Membership requests"</strong> page.
+      %p= t :"new_help.coordination.manage_membership.membership_requests.body.pending_requests_html"
     .col-sm-4
       =image_tag "pending-requests.png", class: "screenshot"
   =image_tag "pending-request.png", class: "screenshot"
-  %h4 Emailing group members
+  %h4= t :"new_help.coordination.manage_membership.email_group_members.title"
   .row
     .col-sm-8
-      %p If you want to send an email to all members of your group, you can do so from the <strong>“Members”</strong> page. Clicking the <strong>"Email group members"</strong> button at top right of the page will let you compose and send a message to everyone in your group.
+      %p= t :"new_help.coordination.manage_membership.email_group_members.body_html"
     .col-sm-4
       =image_tag "email-group-members.png", class: "screenshot"
-  %h4 Adding/removing coordinators
-  %p Only coordinators can add and remove coordinators. On the <strong>“Members”</strong> page, next to every member who is not already a coordinator, there will be a <strong>“Make coordinator”</strong> button. Clicking this button will give the corresponding member coordinator permissions. Next to every coordinator there will be a <strong>“Remove coordinator”</strong> button. Clicking this button removes the coordinator permissions for the corresponding coordinator.
+  %h4= t :"new_help.coordination.manage_membership.group_coordinators.title"
+  %p= t :"new_help.coordination.manage_membership.group_coordinators.body_html"
   =image_tag "add-remove-coordinator.png", class: "screenshot"
-  %h4 Adding/removing group members
-  %p Only coordinators can remove group members. On the <strong>“Members”</strong> page, next to every group member there will be a <strong>“Remove”</strong> button. Clicking this button removes the corresponding member from your group.
-  %h3.anchor#deactivating-groups Deactivating/archiving a group
+  %h4= t :"new_help.coordination.manage_membership.group_members.title"
+  %p= t :"new_help.coordination.manage_membership.group_members.body_html"
+  %h3.anchor#deactivating-groups= t :"new_help.coordination.deactivating_groups.title"
   .row
     .col-sm-8
-      %p Deactivating your group means that your group members will no longer be able to access your group. If you are a group coordinator and you wish to deactivate your group you can do so by selecting <strong>“De-activate group”</strong> from the <strong>“Options”</strong> menu on the group page. Deactivated groups can be restored by a member of the Loomio team. To reactivate your deactivated group, contact the Loomio team by sending an email to <a href="mailto:contact@loomio.org">contact@loomio.org</a>.
+      %p= t :"new_help.coordination.deactivating_groups.body_html"
     .col-sm-4
       =image_tag "deactivate-group.png", class: "screenshot"
-  %h3.anchor#coordinator-tips Tips for engaging your group
-  %h4 <a href="#customising-invitations">Customise your invitation message</a>
-  %h4 Create an engaging first proposal:
-  %p People will be excited to jump in and start participating when there’s an engaging proposal on the table. A good proposal contains a plan of action for the group, so that it’s immediately obvious what it means to agree or disagree. Think about how you can identify discussions/decisions the group is currently undertaking in person or by email that would be easier if they were on Loomio. Alternatively, if your group wants to get accustomed to using the tool before using it to address real decisions, you could start a light-hearted decision to give everyone a chance to play with the tool and see the decision-making process in action.
-  %h4 Encourage <a href="#mentioning">@mentioning</a>:
-  %p Another simple way to encourage people to engage in a discussion is to use the @mention feature to prompt specific people; this will send them an email to tell them they’ve been mentioned in a comment.
+  %h3.anchor#coordinator-tips= t :"new_help.coordination.coordinator_tips.title"
+  %h4= t :"new_help.coordination.coordinator_tips.customise_invitation.title_html"
+  %h4= t :"new_help.coordination.coordinator_tips.engaging_proposal.title"
+  %p= t :"new_help.coordination.coordinator_tips.engaging_proposal.body"
+  %h4= t :"new_help.coordination.coordinator_tips.encourage_mentioning.title_html"
+  %p= t :"new_help.coordination.coordinator_tips.encourage_mentioning.body"
   .row#bottom-links
     .col-sm-6
-      %a.back-to-top{:href => "#contents"} ^ Back to top
+      %a.back-to-top{:href => "#contents"}= t :"new_help.back_to_top"
     .col-sm-6
-      %a.feedback-discussion-link{:href => "https://www.loomio.org/d/Yl5D3EC0/new-help-documentation-we-want-your-feedback"} Think this explanation could be clearer? Give us your feedback >
+      %a.feedback-discussion-link{:href => "https://www.loomio.org/d/Yl5D3EC0/new-help-documentation-we-want-your-feedback"}= t :"new_help.feedback_discussion"
