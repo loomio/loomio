@@ -1,14 +1,19 @@
-%li.lmo-navbar-item{dropdown: ''}
-  %a.dropdown-toggle.lmo-navbar-btn.lmo-navbar-btn__icon{href: '#'}
+%li.lmo-navbar-item.dropdown
+  %a.dropdown-toggle.lmo-navbar-btn.lmo-navbar-btn__icon{href: '#', tabindex: 5}
     .sr-only{translate: 'navbar.user_options.label'}
     %i.fa.fa-lg.fa-fw.fa-navicon{aria-hidden: 'true'}
-  .lmo-navbar-dropdown.dropdown-menu.dropdown-menu-right.user-options-dropdown
+  .dropdown-menu.dropdown-menu-right.user-options-dropdown
     %ul.selector-list
       %li.media.selector-list-item.visible-xs
         %a{href: '#', ng_click: 'openDiscussionForm()'}
           .media-left
             %i.fa.fa-xlg.fa-plus{aria-hidden: 'true'}
           .media-body{translate: 'navbar.user_options.new_thread'}
+      %li.media.selector-list-item.visible-xs
+        %a{href: '/g/new'}
+          .media-left
+            %i.fa.fa-xlg.fa-group{aria-hidden: 'true'}
+          .media-body{translate: 'navbar.user_options.new_group'}
       %li.selector-list-item
         %a{href: '/profile'}
           .media-left

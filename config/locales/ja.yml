@@ -586,9 +586,6 @@ ja:
       motion:
         name: 何を提案したいですか？
         description: 賛成か反対かどうか誰もがわかるように十分な情報をください
-      user:
-        email: Eメール
-        password: パスワード
       group_request:
         description: 私たちは、あなたのグループやあなたがLoomioを使いたい理由について是非お聞きしたいです
   helpers:

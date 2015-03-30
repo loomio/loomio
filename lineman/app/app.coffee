@@ -1,6 +1,5 @@
 angular.module('loomioApp', ['ngNewRouter',
                              'ui.bootstrap',
-                             'ui.bootstrap.datetimepicker',
                              'pascalprecht.translate',
                              'ngSanitize',
                              'tc.chartjs',
@@ -9,7 +8,8 @@ angular.module('loomioApp', ['ngNewRouter',
                              'mentio',
                              'ngAnimate',
                              'angular-inview',
-                             'ui.gravatar']).config ($httpProvider, $locationProvider, $translateProvider, $componentLoaderProvider) ->
+                             'ui.gravatar',
+                             'truncate']).config ($httpProvider, $locationProvider, $translateProvider, $componentLoaderProvider) ->
 
   # consume the csrf token from the page so form submissions can work
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
@@ -38,6 +38,7 @@ angular.module('loomioApp').controller 'AppController', ($scope, $router) ->
     {path: '/m/:key/', component: 'proposalRedirect' },
     {path: '/m/:key/:stub', component: 'proposalRedirect' },
     {path: '/g/new', component: 'groupForm' },
+    {path: '/g/:parentKey/subgroups/new', component: 'groupForm'},
     {path: '/g/:key/edit', component: 'groupForm' },
     {path: '/g/:key', component: 'groupPage' },
     {path: '/g/:key/:stub', component: 'groupPage' },

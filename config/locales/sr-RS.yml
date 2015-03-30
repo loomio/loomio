@@ -1,4 +1,20 @@
 sr-RS:
+  email_settings:
+    title: Подешавања еПорука
+    group_volume: Обим групе
+    group_volume_description: "Обим одређује колико еПорука добијаш из групе. Постави обим за сваку од група:"
+    to_change_one_group: "Да промениш обим само једне од својих група, посети страницу групе."
+    discussion_activity: Промени обим дискусије када се придружим
+    discussion_activity_description: "Када се придружиш дискусији, опција обима биће промењена на 'Гласно', тако да ти све даље активности буду прослеђене одмах."
+    yesterday_on_loomio: Обавести ме дневним извештајима о активностима
+    yesterday_on_loomio_description: "Сваког јутра у 6, пошаљи једну поруку са јучерашњим непрочитаним активностима. Ово је одличан начин да постигнете све у својим групама и садржи што није искључено."
+    email_when_mentioned: Пошаљи ми еПоруку када ме неко помене
+    email_when_mentioned_description: "Када неко жели да ти скрене пажњу, @означиће те. Препоручујемо да оставиш ову опцију укључену, тако да добијеш једну поруку када се ово догоди."
+    proposal_closing_soon: Обавести ме пре затварања предлога
+    proposal_closing_soon_description: "24 сата пре истека предлога, без обзира на обим, добићеш једну поруку са последњим информацијама о предлогу."
+    submit: Поставке ажурирања
+    no_change: Без промена
+    no_change_description: Остави ниво обима обавештења мојих група какав јесте.
   explore:
     header: Истражи јавне групe
   try_it:
@@ -12,6 +28,7 @@ sr-RS:
     errors:
       messages:
         blank: не може бити празно
+        invalid: није исправно
   errors:
     messages:
       email: Неисправна адреса еПоште
@@ -63,6 +80,7 @@ sr-RS:
     group_already_setup: Група коју покушавате да направите већ постоји.
     passwords_did_not_match: Лозинка се не поклапа са потврдном
     proposal_already_exists: Овде је већ један отворен предлог у дискусији.
+    username_cannot_contain_whitespace: Корисничко име не може садржати размаке
     user_with_email_address_already_in_group: Корисник са овом адресом еПоште већ припада овој групи.
     you_have_already_requested_membership: Већ сте затражили чланство у овој групи.
     you_are_already_a_member_of_this_group: Већ сте члан ове групе.
@@ -101,6 +119,8 @@ sr-RS:
     logo_upload: Пошаљи нов логотип
     edit_description: Измени опис
     group_category: Нађи још сличних група
+    unread_comments: Непрочитани коментари
+    new_votes: Нови гласови
   views:
     pagination:
       previous: Прет
@@ -188,9 +208,12 @@ sr-RS:
     about: О нама
     blog: Блог
     contact: Контакт
+    help: Помоћ
     privacy: Приватност
+    pricing: Ценовник
     public_groups: Јавне групе
     terms: Услови
+    independent_install_html: "%{hostname} користи једну независну копију Лумија: <a href=\"http://github.com/loomio/loomio\">сазнај више</a>."
   inbox:
     clear: Очисти
     title: Поруке
@@ -217,6 +240,9 @@ sr-RS:
     motion_blocked: блокирао/ла дискусију
     motion_outcome_created: објављен је један исход предлога
     motion_outcome_updated: ажурирао/ла је исход предлога
+    email_actions:
+      following_thread: "Сада пратиш низ: %{thread_title}"
+      not_following_thread: "Не пратиш више низ: %{thread_title}"
   edit_discussion_context: Уреди контекст дискусије
   request_new_group: Започни групу
   start_new_group: Започни нову групу
@@ -413,18 +439,58 @@ sr-RS:
   edit_group_description: Уреди опис групе
   group_subscription: Праћење групе
   groups:
+    max_size_warning_html: "Твоја група расте и ускоро ће остварити лимит од %{size} чланова. Молимо <a href='%{link}'>контактирајте нас</a> да увећамо лимит."
+    max_size_reached_html: "Твоја група је достигла лимит од %{size} чланова. <a href='%{link}'>Контактирај нас</a> да додаш још људи у групу."
     follow:
       click_to_follow: Шкљоцни да пратиш групу
       click_to_unfollow: Шкљоцни да престанеш пратити групу
       following_details: Бићете обавештени о свакој активности у овој групи.
       not_following_details: Бићете обавештени о активностима којима се прикључите.
+  networks:
+    threads_header: сви јавни низови у овој мрежи
+    groups_header: "Свих %{count} група у овој мрежи"
+    members_count: "%{count} чланова"
+    membership_requests_header: "Захтеви за чланством за %{network}"
+    join_header: Додај своју групу мрежи
+    request_to_join: Захтев за придруживање Мрежи
+    current_requests: Тренутни захтеви
+    previous_requests: Претходни захтеви
+    approve: Одобри
+    approved: "Одобрено од %{name}"
+    decline: Одбиј
+    declined: "Одбијено од %{name}"
+    threads: Низови
+    groups: Групе
+    join: Придружи се
+    manage: "Уреди (%{count} захтева на чекању)"
+    request_created: Хвала на интересовању да се придружите мрежи. Мрежни координатори ће размотрити захтев ускоро.
+    request_approved: Захтев за чланством у мрежи је одобрен.
+    request_declined: Захтев за чланством у мрежи је одбијен.
   group_request:
+    header: Креирај групу
+    desc: "Покрени групу да почнеш доносити одлуке заједно на Лумију:"
     commercial_use_option: "у компанији, формалној организацији или радном месту"
     non_commercial_use_option: у групи заједнице или информативној мрежи
     please_select_an_option: Молим одаберите једну опцију
     confirmation:
       title: "Још мало па готово! Проверите еПошту."
       body_html: "Послали смо вам једну еПоруку са позивницом за покретање Ваше групе.\n\nАко кроз пар минута не видите еПоруку у вашем сандучету, контактирајте нас на <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    volume: Обим
+    loud: Гласно
+    normal: Нормално
+    quiet: Тихо
+    mute: Искључено
+  discussion_volume:
+    loud_description: Обавести када год има активности у овом низу.
+    normal_description: "Обавести само када је предлог креиран, пред затварањем или је један исход одређен."
+    quiet_description: Не обавештавај о овом низу.
+    mute_description: "Сакриј овај низ и не обавештавај док ме неко не @означи."
+  group_volume:
+    loud_description: Обавести увек када има активности.
+    normal_description: "Обавести само о важним активностима: Нове дискусије и предлози, исходи и сл."
+    quiet_description: Не обавештавај о овој групи. Активност ће бити приказана на почетној страни.
+    mute_description: "Сакриј ову групу и не обавештавај док ме неко не @означи."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> се слаже са предлогом."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> се суздржава о предлогу."
@@ -590,6 +656,8 @@ sr-RS:
     video_id: "52025402"
     video_tutorial: Видео упутство
     video_tutorial_description: Погледајте кратак видео о томе како се користи Лумио.
+    what_is_loomio: Шта је Лумио?
+    what_is_loomio_description_html: "<p> Лумио је једноставан, пријатељски настројен према корисницима алат за заједничко доношење одлука.\n    Лумио ти омогућава да поставиш дискусије, позиваш праве људе да се придруже,\n    дођете брзо до одлука и трансформишете их у акцију у стварном свету. </p>\n"
   hint:
     context: Савети за употребу контекстуалног панела
     discussion: Савети за покретање занимљиве дискусије
@@ -631,6 +699,7 @@ sr-RS:
   remember_me: Запамти ме
   signing_in: Пријављивање
   or: или
+  invalid_email: Адреса еПоште коју сте унели није препозната. Проверите исправност или покушајте са другом еАдресом.
   forgot_your_password: Заборавили сте лозинку?
   dont_have_an_account: Немате налог?
   create_one_now: Направи један сада
@@ -790,9 +859,6 @@ sr-RS:
       motion:
         name: Шта је Ваш предлог смера акције?
         description: Дајте довољно информација како би сви знали шта тачно значи сложити се или се не са овим предлогом.
-      user:
-        email: еПошта
-        password: Лозинка
       group_request:
         description: Волели бисмо да чујемо о твојој групи и зашто хоћеш да користиш Лумио.
   helpers:
@@ -838,10 +904,14 @@ sr-RS:
       subject: Лумио - Резиме последњих 24 сата
     missed_yesterday:
       subject: Јуче на Лумију
+      headlines: Наслови
       mark_as_read: Означи као прочитано
       thanks_for_reading: "Хвала на читању, пријатан дан!"
       click_here_to_mark_all_as_read_html: "Ево шта се догодило на Лумију јуче.\nКада прочитате, шкљоцните <a href=\"%{link}\">означи као прочитано</a> да уклоните из свог Лумио сандучета са порукама.\n"
       marked_as_read_success: Све еПоруке су означене као прочитане
+    comment_replied_to:
+      context: "%{author_name} је одговорио/ла на твој коментар у дискусији \"%{discussion_title}\""
+      subject: "%{who} је одговорио/ла на твој коментар у %{which} групи на Лумију"
     group_email:
       intro: "%{who} је направио/ла објаву за групу %{group}:"
     group_membership_approved:
@@ -880,6 +950,13 @@ sr-RS:
       headline: "%{author} предлог у групи %{group} ускоро истиче:"
       summary: Резиме
     thread_mailer:
+      footer_text: "Одговори на ову поруку директно или је погледај на %{hostname}:"
+      reply_or_view_online_html: "Одговори на ову поруку директно или <a href='%{url}'>погледај је на %{hostname}</a>."
+      turn_off_notifications_html: "<a href='%{url}'>Искључи обавештења</a> о овој дискусији."
+      turn_off_notifications_text: "Искључи обавештења о овој дискусији: %{url}"
+      turn_on_notifications_html: "<a href='%{url}'>Укључи обавештења о овој дискусији</a> да добијаш даље активности."
+      turn_on_notifications_text: "Укључи обавештења да добијаш информације о будућим активностима у овој дискусији: %{url}"
+      change_email_preferences_html: "Промени <a href='%{email_preferences_url}'>особине еПорука</a> да се одјавиш са обавештавања."
       change_preferences: "Промени особине својих еПорука:"
       new_motion: "%{who} предлаже:"
       motion_closing_soon: "Предлог истиче кроз 24 часа:"
@@ -964,6 +1041,8 @@ sr-RS:
   google: Google
   persona: Особа
   common:
+    profile: Профил
+    email_settings: Подешавања еПорука
     markdown_help_tooltip: Научи основе уређивања свог текста са Markdown
     settings: Подешавања
     dashboard: Радна табла

@@ -1,19 +1,17 @@
-.proposal-collapsed{
-  a{
-    display: block;
-    color: $primary-text-color;
-    margin: 0 -15px;
-    padding: 15px;
-  }
-  a:hover{
-    background-color: $list-hover-color;
-    text-decoration: none;
-  }
+a.proposal-collapsed{
+  display: block;
+  color: $primary-text-color;
+  margin: 0 -22px;
+  padding: 15px 22px;
+  border-bottom: 1px solid $border-color;
+}
+a.proposal-collapsed:hover{
+  background-color: $list-hover-color;
+  text-decoration: none;
 }
 .proposal-collapsed-outcome{
   color: $meta-text-color;
 }
-
 .proposal-collapsed-expand{
   clear: both;
   margin-top: 1em;

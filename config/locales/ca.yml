@@ -643,9 +643,6 @@ ca:
       motion:
         name: Quins passos proposes seguir?
         description: "Dóna suficient infromació per tal de que tothom sàpiga exactament què vol dir estar d'acord o no estar'hi."
-      user:
-        email: Correu electrònic
-        password: Contrasenya
   helpers:
     submit:
       discussion:

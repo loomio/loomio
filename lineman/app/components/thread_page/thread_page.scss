@@ -9,7 +9,7 @@
 
 .thread-group__name a{
   font-weight: bold;
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
   line-height: 30px;
 }
 
@@ -20,15 +20,6 @@
 
 .thread-context{
   @include card;
-}
-
-.thread-actions {
-  position: relative;
-}
-
-.thread-actions .dropdown{
-  float: left;
-  position: static;
 }
 
 .thread-context__title{

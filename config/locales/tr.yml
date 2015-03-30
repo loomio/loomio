@@ -777,9 +777,6 @@ tr:
       motion:
         name: Önerdiğiniz hareket biçimi nedir?
         description: Yeterli bilgi verin ki herkes tam olarak katılımlarının ya da katılmamalarının ne anlama geldiğini bilsin.
-      user:
-        email: E-posta
-        password: Şifre
       group_request:
         description: "Grubunu duymaktan ve neden Loomio'yu kullanmak istediğinden memnun olduk."
   helpers:

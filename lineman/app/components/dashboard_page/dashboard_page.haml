@@ -1,59 +1,72 @@
-.container.main-container
+.container.main-container{role: 'main'}
   .dashboard-container
-    .row.dashboard-options
+    %section.row.dashboard-options{role: 'region', aria-label: "{{ 'dashboard_page.options.aria_label' | translate }}"}
       .col-xs-6
         .dashboard-page-dropdown.dashboard-page-filter-dropdown{dropdown: '', on-toggle: 'dashboardPage.toggled(open)'}
           %a.dashboard-page-dropdown-toggle.dropdown-toggle{href: '#'}
-            %span{translate: "dashboard_page.filtering.all", ng-show: 'dashboardPage.filter() == "show_all"'}>
-            %span{translate: "dashboard_page.filtering.unread", ng-show: 'dashboardPage.filter() == "show_unread"'}>
-            %i.fa.fa-chevron-down
+            %span{ng-show: 'dashboardPage.filter() == "show_all"'}>
+              .sr-only{ translate: 'dashboard_page.filtering.all_aria_label'}
+              %span{ translate: "dashboard_page.filtering.all", aria-hidden: 'true'}
+            %span{ng-show: 'dashboardPage.filter() == "show_unread"'}>
+              .sr-only{ translate: 'dashboard_page.filtering.unread_aria_label'}
+              %span{translate: "dashboard_page.filtering.unread", aria-hidden: 'true'}
+            %i.fa.fa-chevron-down{aria-hidden: 'true'}
           .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
             %ul.dropdown-menu-items.filtering-options
-              %li.dropdown-menu-item.filtering-option{ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_all"})'}
-                .dropdown-menu-item-label{translate: 'dashboard_page.filtering.all'}
-                .dashboard-description{translate: 'dashboard_page.filtering.all_description'}
-              %li.dropdown-menu-item.filtering-option{ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_unread"})'}
-                .dropdown-menu-item-label{translate: 'dashboard_page.filtering.unread'}
-                .dashboard-description{translate: 'dashboard_page.filtering.unread_description'}
+              %li.dropdown-menu-item.filtering-option
+                %a{href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_all"})'}
+                  .dropdown-menu-item-label{translate: 'dashboard_page.filtering.all', aria-hidden: 'true'}
+                  .dashboard-description{translate: 'dashboard_page.filtering.all_description'}
+              %li.dropdown-menu-item.filtering-option
+                %a{href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_unread"})'}
+                  .dropdown-menu-item-label{translate: 'dashboard_page.filtering.unread', aria-hidden: 'true'}
+                  .dashboard-description{translate: 'dashboard_page.filtering.unread_description'}
       .col-xs-6
         .dashboard-page-sort-dropdown.dashboard-page-dropdown.pull-right{dropdown: '', on-toggle: 'dashboardPage.toggled(open)'}
           %a.dashboard-page-dropdown-toggle.dropdown-toggle{href: '#'}
-            %span{translate: "dashboard_page.sorting.group", ng-show: 'dashboardPage.sort() == "sort_by_group"'}>
-            %span{translate: "dashboard_page.sorting.date", ng-show: 'dashboardPage.sort() == "sort_by_date"'}>
-            %i.fa.fa-chevron-down
+            %span{ng-show: 'dashboardPage.sort() == "sort_by_group"'}>
+              .sr-only{ translate: "dashboard_page.sorting.group_aria_label" }
+              %span{ translate: "dashboard_page.sorting.group", aria-hidden: 'true' }
+            %span{ng-show: 'dashboardPage.sort() == "sort_by_date"'}>
+              .sr-only{ translate: "dashboard_page.sorting.date_aria_label" }
+              %span{ translate: "dashboard_page.sorting.date", aria-hidden: 'true' }
+            %i.fa.fa-chevron-down{aria-hidden: 'true'}
           .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
             %ul.dropdown-menu-items.sorting-options
-              %li.dropdown-menu-item.sorting-option{ng-click: 'dashboardPage.changePreferences({dashboard_sort: "sort_by_group"})'}
-                .dropdown-menu-item-label{translate: 'dashboard_page.sorting.group'}
-                .dashboard-description{translate: 'dashboard_page.sorting.group_description'}
-              %li.dropdown-menu-item.sorting-option{ng-click: 'dashboardPage.changePreferences({dashboard_sort: "sort_by_date"})'}
-                .dropdown-menu-item-label{translate: 'dashboard_page.sorting.date'}
-                .dashboard-description{translate: 'dashboard_page.sorting.date_description'}
+              %li.dropdown-menu-item.sorting-option
+                %a{href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_sort: "sort_by_group"})'}
+                  .dropdown-menu-item-label{translate: 'dashboard_page.sorting.group', aria-hidden: 'true'}
+                  .dashboard-description{translate: 'dashboard_page.sorting.group_description'}
+              %li.dropdown-menu-item.sorting-option
+                %a{href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_sort: "sort_by_date"})'}
+                  .dropdown-menu-item-label{translate: 'dashboard_page.sorting.date', aria-hidden: 'true'}
+                  .dashboard-description{translate: 'dashboard_page.sorting.date_description'}
     .row
       .col-xs-12
         .dashboard-page-panel
+          %h1.sr-only{translate: 'dashboard_page.aria_label'}
           .dashboard-page-no-threads{ng-show: '!dashboardPage.loading && dashboardPage.dashboardDiscussions().length == 0'}
             %span{translate: 'dashboard_page.no_threads'}>
             %a{ng-show: 'dashboardPage.filter() != "show_all"', translate: 'dashboard_page.view_recent', href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_all"})'}>
           .dashboard-page-sort-group{ng-if: 'dashboardPage.sort() == "sort_by_date"'}
-            .dashboard-page-threads-container{ng-if: 'dashboardPage.anyToday()'}
-              .dashboard-page-date-range{translate: 'common.date_range.today'}
+            %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyToday()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.today' | translate }}"}
+              .dashboard-page-date-range{translate: 'common.date_range.today', aria-hidden: 'true'}
               .dashboard-page-threads
                 %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | filter:dashboardPage.today'}
-            .dashboard-page-threads-container{ng-if: 'dashboardPage.anyYesterday()'}
-              .dashboard-page-date-range{translate: 'common.date_range.yesterday'}
+            %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyYesterday()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.yesterday' | translate }}"}
+              .dashboard-page-date-range{translate: 'common.date_range.yesterday', aria-hidden: 'true'}
               .dashboard-page-threads
                 %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | filter:dashboardPage.yesterday'}
-            .dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisWeek()'}
-              .dashboard-page-date-range{translate: 'common.date_range.this_week'}
+            %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisWeek()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.this_week' | translate }}"}
+              .dashboard-page-date-range{translate: 'common.date_range.this_week', aria-hidden: 'true'}
               .dashboard-page-threads
                 %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | filter:dashboardPage.thisWeek'}
-            .dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisMonth()'}
-              .dashboard-page-date-range{translate: 'common.date_range.this_month'}
+            %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisMonth()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.this_month' | translate }}"}
+              .dashboard-page-date-range{translate: 'common.date_range.this_month', aria-hidden: 'true'}
               .dashboard-page-threads
                 %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | filter:dashboardPage.thisMonth'}
-            .dashboard-page-threads-container{ng-if: 'anyOlder()'}
-              .dashboard-page-date-range{translate: 'common.date_range.older'}
+            %section.dashboard-page-threads-container{ng-if: 'anyOlder()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.older' | translate }}"}
+              .dashboard-page-date-range{translate: 'common.date_range.older', aria-hidden: 'true'}
               .dashboard-page-threads
                 %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | filter:dashboardPage.older'}
             .dashboard-page-footer{in-view: '$inview && dashboardPage.loadMore()', in-view-options: '{debounce: 200}'} .
@@ -61,9 +74,9 @@
               %i.fa.fa-lg.fa-spin.fa-circle-o-notch
           .dashboard-page-sort-date{ng-if: 'dashboardPage.sort() == "sort_by_group"'}
             .dashboard-page-group{ng-repeat: 'group in dashboardPage.dashboardGroups() | orderBy:dashboardPage.groupName'}
-              .dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisGroup(group)'}
-                %img.selector-list-item-group-logo.pull-left{src: "{{group.logoUrl()}}"}>
-                %h2.dashboard-page-group-name
+              %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisGroup(group)', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.group' | translate }} {{group.name}}"}
+                %img.selector-list-item-group-logo.pull-left{src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
+                %h2.dashboard-page-group-name{aria-hidden: 'true'}
                   %a{href: '/g/{{group.key}}'} {{group.name}}
                 .dashboard-page-threads
                   %dashboard_page_thread{discussion: 'discussion', hide-group-logo: true, ng-repeat: 'discussion in dashboardPage.dashboardDiscussions(group)'}

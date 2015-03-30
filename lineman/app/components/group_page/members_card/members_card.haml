@@ -15,8 +15,6 @@
     .group-member-list-show-more.show-more.card-minor-action
       %a{href: '/g/{{group.key}}/memberships', translate: 'common.action.show_more'}
     .members-invite{ng_controller: 'InvitationsController', ng-if: '::canAddMembers()'}
-      .row
-        .col-xs-12.col-sm-6
-          %a.btn.btn-success.btn-block.btn-icon{href: '#', ng_click: 'openForm()'}
-            %i.fa.fa-lg.fa-plus>
-            %span.cuke-group-invite-people{translate: 'group_page.invite_people' }
+      %a.btn.btn-success.btn-block.btn-icon{href: '#', ng_click: 'openForm()'}
+        %i.fa.fa-lg.fa-plus>
+        %span{translate: 'group_page.invite_people' }

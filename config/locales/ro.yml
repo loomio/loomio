@@ -1,4 +1,10 @@
 ro:
+  email_settings:
+    title: Setări email
+    group_volume: Cadența notificărilor grupului
+    group_volume_description: "Cadența notificărilor controlează câte emailuri se primesc de la grup. Setează cadența notificărilor pentru toate grupurile tale:"
+    to_change_one_group: "Pentru a schimba cadența notificărilor a unui singur grup, vizitați pagina grupului."
+    proposal_closing_soon: Vreau să primesc email când o propunere se închide.
   explore:
     header: Exploreaza grupuri publice
   try_it:
@@ -789,9 +795,6 @@ ro:
       motion:
         name: Care este propunerea ta pentru pasii urmatori?
         description: Adauga destule informatii pentru ca toti din grupul tau sa poata lua o decizie informata cand aproba sau dezaproba.
-      user:
-        email: Email
-        password: Parola
       group_request:
         description: Ne-ar place sa auzim ceva despre grupul tau si motivul pentru care folosesti Loomio.
   helpers:

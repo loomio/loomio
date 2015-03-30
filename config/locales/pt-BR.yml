@@ -845,9 +845,6 @@ pt-BR:
       motion:
         name: Qual medida você está propondo?
         description: Forneça informações suficientes para que todos saibam exatamente o que significa concordar ou discordar.
-      user:
-        email: E-mail
-        password: Senha
       group_request:
         description: Gostaríamos muito de ouvir sobre o seu grupo e por que você quer usar Loomio.
   helpers:
@@ -1029,6 +1026,16 @@ pt-BR:
   yahoo: Yahoo
   google: Google
   persona: Persona
+  log_in_with_third_party: "Ou entre com uma conta de terceiros:"
+  log_in_with_google: Entrar com Google
+  log_in_with_facebook: Entrar com Facebook
+  log_in_with_persona: Entrar com Persona
+  log_in_with_twitter: Entrar com Twitter
+  sign_up_with_third_party: "Ou registre-se com uma conta de terceiros:"
+  sign_up_with_google: Registrar com Google
+  sign_up_with_facebook: Registrar com Facebook
+  sign_up_with_persona: Registrar com Persona
+  sign_up_with_twitter: Registrar com Twitter
   common:
     profile: Perfil
     email_settings: Configurações de e-mail
