@@ -1,7 +1,7 @@
 .navbar-search
   .navbar-search-input-wrapper
     %label.sr-only{ translate: 'navbar.search.placeholder' }
-    %input.navbar-search-input.form-control{ng-click: '$event.stopPropagation()', ng-model: 'query', ng-model-options: '{debounce: {default: 400, blur: 200}}', ng-change: 'getSearchResults(query)', placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: 'setFocused(true)', ng-blur: 'setFocused(false)', tabindex: 2}
+    %input.navbar-search-input.form-control#primary-search-input{ng-click: '$event.stopPropagation()', ng-model: 'query', ng-model-options: '{debounce: {default: 400, blur: 200}}', ng-change: 'getSearchResults(query)', placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: 'setFocused(true)', ng-blur: 'setFocused(false)', tabindex: 2}
     %i.fa.fa-lg.fa-fw.fa-search.navbar-search-input-icon{ng-hide: 'query', aria-hidden: 'true'}
     %i.fa.fa-lg.fa-fw.fa-times.navbar-search-input-icon{ng-show: 'query', ng-click: 'clearAndFocusInput()', title: "{{ 'navbar.search.close' | translate }}"}
 
@@ -9,7 +9,7 @@
     %ul.group-selector-list.selector-list
       %li.navbar-search-list-item.selector-list-header{ng-show: 'groups().length > 0'}
         %h3{translate: "common.groups"}
-      %li.navbar-search-list-item.selector-list-item.media{ng-repeat: 'group in groups() | orderBy: "fullName()"', ng-class:'{"selector-list-item-no-bottom-line": (queryEmpty()), "selector-list-item-top-line": (queryEmpty() && group.isParent())}'}
+      %li.navbar-search-list-item.navbar-search-list-option.selector-list-item.media{ng-repeat: 'group in groups() | orderBy: "fullName()"', ng-class:'{"selector-list-item-no-bottom-line": (queryEmpty()), "selector-list-item-top-line": (queryEmpty() && group.isParent())}'}
         %a.selector-list-item-link{href: '/g/{{group.key}}'}
           .media-left
             .selector-list-item-group-logo{ng-if: 'group.isSubgroup() && queryEmpty()'}
@@ -26,5 +26,5 @@
       %div{ng-hide: 'searching || noResultsFound()'}
         %li.navbar-search-list-item.selector-list-header{ng-show: 'searchResults'}
           %h3{translate: "navbar.search.discussions"}
-        %li.navbar-search-list-item.selector-list-item.media{ng-hide: 'searching', ng-repeat: 'searchResult in searchResults | orderBy: ["-priority", "lastActivityAt"]'}
+        %li.navbar-search-list-item.navbar-search-list-option.selector-list-item.media{ng-hide: 'searching', ng-repeat: 'searchResult in searchResults | orderBy: ["-priority", "lastActivityAt"]'}
           %search_result{result: 'searchResult'}

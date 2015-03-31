@@ -7,7 +7,7 @@
     %meta{content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name: "viewport"}
     %base{href: '/'}
     = stylesheet_link_tag lineman_css_path
-  %body
+  %body{'ng-keydown' => 'keyDown($event)'}
     %navbar
     %ng_viewport
 

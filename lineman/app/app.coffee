@@ -25,7 +25,7 @@ angular.module('loomioApp', ['ngNewRouter',
     snakeName = _.snakeCase(name);
     'generated/components/' + snakeName + '/' + snakeName + '.html';
 
-angular.module('loomioApp').controller 'AppController', ($scope, $router) ->
+angular.module('loomioApp').controller 'AppController', ($scope, $rootScope, $router, KeyEventService) ->
   $scope.currentComponent = 'nothing yet'
   $scope.title = ""
 
@@ -34,6 +34,8 @@ angular.module('loomioApp').controller 'AppController', ($scope, $router) ->
 
   $scope.$on 'setTitle', (event, title) ->
     $scope.title = title
+
+  $scope.keyDown = (event) -> KeyEventService.broadcast event
 
   $router.config([
     {path: '/dashboard', component: 'dashboardPage' },
