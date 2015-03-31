@@ -28,9 +28,6 @@ angular.module('loomioApp', ['ngNewRouter',
 angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootScope, $router, KeyEventService) ->
   $scope.currentComponent = 'nothing yet'
 
-  $scope.$on 'currentComponent', (event, component) ->
-    $scope.currentComponent = component
-
   $scope.$on 'setTitle', (event, title) ->
     angular.element.find('title')[0].text = _.trunc(title, 300) + ' | Loomio'
 
