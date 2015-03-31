@@ -6,9 +6,11 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
     sort_by_date:
       show_all: 0
       show_unread: 0
+      show_proposals: 0
     sort_by_group:
       show_all: 0
       show_unread: 0
+      show_proposals: 0
   @perPage =
     sort_by_date: 25
     sort_by_group: 10
@@ -49,9 +51,10 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
     @loadMore() if @loadedCount() == 0
 
   @dashboardOptions = (group) =>
-    unmuted: true
-    unread: @filter() == 'show_unread'
-    groupId: (group.id if group)
+    unmuted:   true
+    unread:    @filter() == 'show_unread'
+    proposals: @filter() == 'show_proposals'
+    groupId:   (group.id if group)
 
   @dashboardDiscussionReaders = (group) =>
     _.pluck Records.discussionReaders.forDashboard(@dashboardOptions(group)).data(), 'id'

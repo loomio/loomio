@@ -340,6 +340,9 @@ en:
       unread: Unread Threads
       unread_aria_label: Currently showing unread threads
       unread_description: View only threads you have not read yet
+      proposals: Proposals
+      proposals_aria_label: Currently showing threads with active proposals
+      proposals_description: View only threads with active proposals
     sorting:
       group: By Group
       group_aria_label: Currently sorting threads by group

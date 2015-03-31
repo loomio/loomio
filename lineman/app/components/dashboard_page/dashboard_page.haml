@@ -10,6 +10,9 @@
             %span{ng-show: 'dashboardPage.filter() == "show_unread"'}>
               .sr-only{ translate: 'dashboard_page.filtering.unread_aria_label'}
               %span{translate: "dashboard_page.filtering.unread", aria-hidden: 'true'}
+            %span{ng-show: 'dashboardPage.filter() == "show_proposals"'}>
+              .sr-only{ translate: 'dashboard_page.filtering.proposals_aria_label'}
+              %span{translate: "dashboard_page.filtering.proposals", aria-hidden: 'true'}
             %i.fa.fa-chevron-down{aria-hidden: 'true'}
           .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
             %ul.dropdown-menu-items.filtering-options
@@ -21,6 +24,10 @@
                 %a{href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_unread"})'}
                   .dropdown-menu-item-label{translate: 'dashboard_page.filtering.unread', aria-hidden: 'true'}
                   .dashboard-description{translate: 'dashboard_page.filtering.unread_description'}
+              %li.dropdown-menu-item.filtering-option
+                %a{href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_proposals"})'}
+                  .dropdown-menu-item-label{translate: 'dashboard_page.filtering.proposals', aria-hidden: 'true'}
+                  .dashboard-description{translate: 'dashboard_page.filtering.proposals_description'}
       .col-xs-6
         .dashboard-page-sort-dropdown.dashboard-page-dropdown.pull-right{dropdown: '', on-toggle: 'dashboardPage.toggled(open)'}
           %a.dashboard-page-dropdown-toggle.dropdown-toggle{href: '#'}

@@ -42,6 +42,19 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
+  def join_to_motions
+    unless @joined_to_motions
+      @relation = @relation.joins("LEFT OUTER JOIN motions mo ON mo.discussion_id = discussions.id AND mo.closed_at IS NULL")
+      @joined_to_motions = true
+    end
+  end
+
+  def with_active_motions
+    join_to_motions
+    @relation = @relation.where('mo.id IS NOT NULL')
+    self
+  end
+
   def unread
     join_to_discussion_readers
     @relation = @relation.where('dv.last_read_at IS NULL OR (dv.last_read_at < discussions.last_activity_at)')

@@ -10,6 +10,7 @@ describe API::DiscussionsController do
   let(:subgroup_discussion) { create :discussion, group: subgroup }
   let(:muted_discussion) { create :discussion, group: group }
   let(:old_discussion) { create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago }
+  let(:motionless_discussion) { create :discussion, group: group }
   let(:comment) { create :comment, discussion: discussion}
   let(:proposal) { create :motion, discussion: discussion, author: user }
   let(:discussion_params) {{
@@ -44,6 +45,16 @@ describe API::DiscussionsController do
       json = JSON.parse(response.body)
       ids = json['discussions'].map { |v| v['id'] }
       expect(ids).to_not include muted_discussion.id
+    end
+
+    it 'can filter by active proposals' do
+      proposal.reload
+      motionless_discussion.reload
+      get :inbox_by_date, filter: :show_proposals
+      json = JSON.parse(response.body)
+      ids = json['discussions'].map { |v| v['id'] }
+      expect(ids).to include discussion.id
+      expect(ids).to_not include motionless_discussion.id
     end
   end
 
