@@ -25,15 +25,14 @@ angular.module('loomioApp', ['ngNewRouter',
     snakeName = _.snakeCase(name);
     'generated/components/' + snakeName + '/' + snakeName + '.html';
 
-angular.module('loomioApp').controller 'AppController', ($scope, $rootScope, $router, KeyEventService) ->
+angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootScope, $router, KeyEventService) ->
   $scope.currentComponent = 'nothing yet'
-  $scope.title = ""
 
   $scope.$on 'currentComponent', (event, component) ->
     $scope.currentComponent = component
 
   $scope.$on 'setTitle', (event, title) ->
-    $scope.title = title
+    angular.element.find('title')[0].text = _.trunc(title, 300) + ' | Loomio'
 
   $scope.keyDown = (event) -> KeyEventService.broadcast event
 
