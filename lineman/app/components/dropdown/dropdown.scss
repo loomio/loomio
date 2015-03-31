@@ -87,7 +87,9 @@ li .dropdown-menu-item-label{
   @include fontSmall;
   text-transform: uppercase;
   color: $grey-on-grey;
-  margin: 0 0 13px 0;
+  margin: -3px 0 13px 0;
+  padding-bottom: 8px;
+  text-align: center;
   border-bottom: 1px solid $border-color;
 }
 

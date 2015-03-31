@@ -6,10 +6,10 @@
       .sr-only{translate: 'new_comment_item.context_menu.aria_label'}
     .dropdown-menu.dropdown-menu-right
       %ul.dropdown-menu-items
-        %li.dropdown-menu-item
-          %a.dropdown-menu-item-label{href: '', ng-click: 'editComment()', ng-if: '::canEditComment()', translate: 'new_comment_item.context_menu.edit_comment'}
-        %li.dropdown-menu-item
-          %a.dropdown-menu-item-label{href: '', ng-click: 'deleteComment()', ng-if: '::canDeleteComment()',  translate: 'new_comment_item.context_menu.delete_comment'}
+        %li.dropdown-menu-item{ng-if: '::canEditComment()'}
+          %a.dropdown-menu-item-label{href: '', ng-click: 'editComment()', translate: 'new_comment_item.context_menu.edit_comment'}
+        %li.dropdown-menu-item{ng-if: '::canDeleteComment()'}
+          %a.dropdown-menu-item-label{href: '', ng-click: 'deleteComment()', translate: 'new_comment_item.context_menu.delete_comment'}
 
   .thread-item-header.media{aria-hidden: "true"}
     .media-left

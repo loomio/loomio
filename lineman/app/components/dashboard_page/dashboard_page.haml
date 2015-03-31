@@ -1,15 +1,16 @@
 .container.main-container{role: 'main'}
   .dashboard-container
     %section.dashboard-options{role: 'region', aria-label: "{{ 'dashboard_page.options.aria_label' | translate }}"}
-      .dropdown.dashboard-page-sort-dropdown.dashboard-page-dropdown.pull-right
-        %a.dashboard-page-dropdown-toggle.dropdown-toggle{href: '#'}
-          %span{ng-show: 'dashboardPage.sort() == "sort_by_group"'}>
+      .dropdown.pull-right.dashboard-page-sort-dropdown.dashboard-page-dropdown
+        %a.fat-finger.dashboard-page-dropdown-toggle.dropdown-toggle{href: '#'}
+          .sort-by-group{ng-show: 'dashboardPage.sort() == "sort_by_group"'}>
             .sr-only{ translate: "dashboard_page.sorting.group_aria_label" }
-            %span{ translate: "dashboard_page.sorting.group", aria-hidden: 'true' }
-          %span{ng-show: 'dashboardPage.sort() == "sort_by_date"'}>
+            %span{ translate: "dashboard_page.sorting.group", aria-hidden: 'true' }>
+            %i.fa.fa-chevron-down{aria-hidden: 'true'}
+          .sort-by-date{ng-show: 'dashboardPage.sort() == "sort_by_date"'}>
             .sr-only{ translate: "dashboard_page.sorting.date_aria_label" }
-            %span{ translate: "dashboard_page.sorting.date", aria-hidden: 'true' }
-          %i.fa.fa-chevron-down{aria-hidden: 'true'}
+            %span{ translate: "dashboard_page.sorting.date", aria-hidden: 'true' }>
+            %i.fa.fa-chevron-down{aria-hidden: 'true'}
         .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
           %ul.dropdown-menu-items.sorting-options
             %li.dropdown-menu-item.sorting-option
