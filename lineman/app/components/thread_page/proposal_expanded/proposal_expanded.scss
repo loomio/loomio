@@ -10,12 +10,14 @@
 }
 
 .proposal-expanded__collapse{
-  @include metaText;
+  @include fontSmall;
+  color: $grey-on-white;
   text-decoration: underline;
 }
 
 .proposal-expanded__started-by {
-  @include metaText;
+  @include fontSmall;
+  color: $grey-on-white;
   margin-bottom: 15px;
 }
 
@@ -25,7 +27,8 @@
 }
 
 .pie-chart-legend {
-  @include metaText;
+  @include fontSmall;
+  color: $grey-on-white;
   padding-top: 36px;
 }
 
