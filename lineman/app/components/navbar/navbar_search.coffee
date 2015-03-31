@@ -7,9 +7,23 @@ angular.module('loomioApp').directive 'navbarSearch', ->
     $scope.searchResults = []
     $scope.query = ''
     $scope.focused = false
+    $scope.hightlighted = null
 
     $scope.$on '$locationChangeSuccess', ->
       $scope.query = ''
+
+    highlightables = ->
+      angular.element('.navbar-search-list-option:visible')
+
+    $scope.highlightedSelection = ->
+      highlightables()[$scope.highlighted]
+
+    $scope.updateHighlighted = (index) ->
+      $scope.highlighted = index
+      _.map highlightables(), (element) -> element.classList.remove("is-active")
+      if $scope.highlightedSelection()?
+        $scope.highlightedSelection().classList.add("is-active")
+        # scroll to newly highlighted element?
 
     $scope.searchField = ->
       angular.element('#primary-search-input')[0]
@@ -17,21 +31,33 @@ angular.module('loomioApp').directive 'navbarSearch', ->
     $scope.shouldExecuteWithSearchField = (active) ->
       active == $scope.searchField() or KeyEventService.defaultShouldExecute(active)
 
-    KeyEventService.setKeyEvent $scope, 'pressedEsc', ->
+    KeyEventService.registerKeyEvent $scope, 'pressedEsc', ->
       $scope.searchField().blur()
       $scope.query = ''
     , $scope.shouldExecuteWithSearchField
 
-    KeyEventService.setKeyEvent $scope, 'pressedSlash', (active) ->
+    KeyEventService.registerKeyEvent $scope, 'pressedSlash', (active) ->
       $scope.searchField().focus()
       $scope.query = ''
 
-    KeyEventService.setKeyEvent $scope, 'pressedUpArrow', (active) ->
-      alert('up arrow!')
+    KeyEventService.registerKeyEvent $scope, 'pressedEnter', ->
+      if el = $scope.highlightedSelection()
+        el.firstChild.click()
+        $scope.searchField().blur()
     , $scope.shouldExecuteWithSearchField
 
-    KeyEventService.setKeyEvent $scope, 'pressedDownArrow', (active) ->
-      alert('down arrow!')
+    KeyEventService.registerKeyEvent $scope, 'pressedUpArrow', (active) ->
+      if isNaN(parseInt($scope.highlighted)) or $scope.highlighted == 0
+        $scope.updateHighlighted(highlightables().length - 1)
+      else
+        $scope.updateHighlighted($scope.highlighted - 1)
+    , $scope.shouldExecuteWithSearchField
+
+    KeyEventService.registerKeyEvent $scope, 'pressedDownArrow', (active) ->
+      if isNaN(parseInt($scope.highlighted)) or $scope.highlighted == highlightables().length - 1
+        $scope.updateHighlighted(0)
+      else
+        $scope.updateHighlighted($scope.highlighted + 1)
     , $scope.shouldExecuteWithSearchField
 
     $scope.setFocused = (bool) ->
@@ -73,6 +99,7 @@ angular.module('loomioApp').directive 'navbarSearch', ->
 
     $scope.getSearchResults = (query) ->
       if query?
+        $scope.updateHighlighted(null)
         $scope.currentSearchQuery = query
         $scope.searching = true
         Records.searchResults.fetchByFragment($scope.query).then (response) ->

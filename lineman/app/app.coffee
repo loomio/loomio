@@ -25,15 +25,9 @@ angular.module('loomioApp', ['ngNewRouter',
     snakeName = _.snakeCase(name);
     'generated/components/' + snakeName + '/' + snakeName + '.html';
 
-angular.module('loomioApp').controller 'AppController', ($scope, $rootScope, $router) ->
+angular.module('loomioApp').controller 'AppController', ($scope, $rootScope, $router, KeyEventService) ->
   $scope.currentComponent = 'nothing yet'
   $scope.title = ""
-
-  $scope.keyboardShortcuts =
-    27:  'pressedEsc'
-    191: 'pressedSlash'
-    38:  'pressedUpArrow'
-    40:  'pressedDownArrow'
 
   $scope.$on 'currentComponent', (event, component) ->
     $scope.currentComponent = component
@@ -41,9 +35,7 @@ angular.module('loomioApp').controller 'AppController', ($scope, $rootScope, $ro
   $scope.$on 'setTitle', (event, title) ->
     $scope.title = title
 
-  $scope.keyDown = (event) ->
-    if key = $scope.keyboardShortcuts[event.which]
-      $rootScope.$broadcast key, angular.element(document.activeElement)[0]
+  $scope.keyDown = (event) -> KeyEventService.broadcast event
 
   $router.config([
     {path: '/dashboard', component: 'dashboardPage' },
