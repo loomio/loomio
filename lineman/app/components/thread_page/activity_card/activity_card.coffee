@@ -12,6 +12,7 @@ angular.module('loomioApp').directive 'activityCard', ->
 
     $scope.init = ->
       $scope.discussion.markAsRead(0)
+      $scope.readLastTime = $scope.discussion.reader().lastReadSequenceId
 
       # want to request the window of items that best suits the read position
       if _.isFinite(_.parseInt($location.hash()))

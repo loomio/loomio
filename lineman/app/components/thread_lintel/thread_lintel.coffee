@@ -5,21 +5,15 @@ angular.module('loomioApp').directive 'threadLintel', ->
   controller: ($scope) ->
     $scope.show = false
 
-    # can probably delete this
-    $scope.$on 'currentComponent', (event, componentName) ->
-      $scope.show = componentName == 'threadPage'
-
     $scope.$on 'viewingThread', (event, discussion) ->
       $scope.discussion = discussion
+      $scope.lastReadPercent = (discussion.reader().lastReadSequenceId / discussion.lastSequenceId) * 100
 
     $scope.$on 'showThreadLintel', (event, bool) ->
-      #console.log 'bool', bool
       $scope.show = bool
 
     $scope.$on 'threadPosition', (event, discussion, position) ->
-      #console.log 'got thread position, total:', position, discussion.itemsCount
       $scope.position = position
       $scope.discussion = discussion
-      #console.log position, discussion.lastSequenceId
       $scope.positionPercent = (position / discussion.lastSequenceId) *100
 

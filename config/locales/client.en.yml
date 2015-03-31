@@ -392,6 +392,7 @@ en:
     thread_options: 'Thread options'
 
   activity_card:
+    last_read: Last Read
     attachment_display:
       aria_label: 'File attached:'
       image_alt: 'Attached image'
