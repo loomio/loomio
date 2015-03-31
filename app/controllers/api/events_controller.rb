@@ -1,5 +1,10 @@
 class API::EventsController < API::RestfulController
 
+  def dashboard_events
+    @events = DashboardEventsQuery.latest_events_for(user: current_user)
+    respond_with_collection
+  end
+
   private
 
   def visible_records
