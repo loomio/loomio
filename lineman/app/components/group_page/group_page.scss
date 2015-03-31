@@ -50,8 +50,11 @@
   @include card;
 }
 
-.discussions-new-thread{
-  margin-top: 10px;
+.group-page-new-thread{
+  float: right;
+  margin-top: -5px;
+  margin-bottom: 10px;
+  .btn { @include fontSmall; }
 }
 .members-invite{
   margin-top: 10px;
@@ -63,6 +66,7 @@
 
 .group-thread-list{
   border-top: 1px solid $border-color;
+  clear: both;
 }
 .group-thread-list-item{
   border-bottom: 1px solid $border-color;
