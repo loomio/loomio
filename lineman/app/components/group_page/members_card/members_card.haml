@@ -3,9 +3,10 @@
     %a.dropdown-toggle{href: ''}
       .sr-only{translate: 'group_page.member_options'}
       %i.fa.fa-lg.fa-chevron-down{aria-hidden: 'true'}
-    %ul.dropdown-menu
-      %li
-        %a{href: '/g/{{group.key}}/memberships', translate: 'group_page.options.manage_members'}
+    .dropdown-menu
+      %ul.dropdown-menu-items
+        %li.dropdown-menu-item
+          %a.dropdown-menu-item-label{href: '/g/{{group.key}}/memberships', translate: 'group_page.options.manage_members'}
 
   #members-card-title.card-title{ translate: 'group_page.members', role: 'heading' }
 
