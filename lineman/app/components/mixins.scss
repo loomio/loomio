@@ -86,7 +86,14 @@ $navbar-height: 45px;
   @include fontSmall;
 }
 
+@mixin roundedCorners {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
 @mixin card{
+  @include roundedCorners;
   border: 1px solid $border-color;
   padding: 17px 22px;
   background: #fff;
@@ -102,7 +109,7 @@ $navbar-height: 45px;
 
 @mixin thinRoundedBorder {
   border: 1px solid $border-color;
-  border-radius: 2px;
+  @include roundedCorners;
 }
 
 #turn-off-angular {

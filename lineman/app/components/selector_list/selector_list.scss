@@ -95,6 +95,7 @@ a .selector-list-item-proposal-details {
 .selector-list-item-group-logo{
   width: 32px;
   height: 32px;
+  @include roundedCorners;
 }
 
 .selector-list-item-thread-group-name{
@@ -102,5 +103,3 @@ a .selector-list-item-proposal-details {
   @include fontHelvetica;
   @include fontSmall;
 }
-
-

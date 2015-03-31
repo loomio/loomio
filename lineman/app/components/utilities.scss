@@ -67,26 +67,6 @@
   background-color: $list-hover-color;
 }
 
-
-.avatar-initials{
-  width: 30px;
-  height: 30px;
-  background: $border-color;
-  border: 1px solid #aaa;
-  text-align: center;
-  line-height: 30px;
-}
-
-.avatar-image img{
-  width: 30px;
-  height: 30px;
-}
-
-.lg .avatar-image img, .lg .avatar-initials{
-  width: 50px;
-  height: 50px;
-}
-
 .label-with-details{
   font-weight: bold;
 }
