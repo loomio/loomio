@@ -7,7 +7,6 @@ angular.module('loomioApp').directive 'threadLintel', ->
 
     $scope.$on 'viewingThread', (event, discussion) ->
       $scope.discussion = discussion
-      $scope.lastReadPercent = (discussion.reader().lastReadSequenceId / discussion.lastSequenceId) * 100
 
     $scope.$on 'showThreadLintel', (event, bool) ->
       $scope.show = bool
