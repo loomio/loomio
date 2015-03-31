@@ -7,13 +7,18 @@
   overflow-y:scroll;
 }
 .selector-list .timeago, .smart-time{
-  color: $meta-text-color;
+  color: $grey-on-white;
   @include fontTiny;
 }
 .selector-list-header {
   padding: 0 10px;
   width: 100%;
   border-bottom: 1px solid #ddd;
+  @include fontHelveticaMedium;
+  @include fontSmall;
+  text-transform: uppercase;
+  color: $grey-on-white;
+  margin-top: 22px;
 }
 .selector-list-header .dropdown {
   padding: 0 0 10px 0;
@@ -33,7 +38,7 @@
 }
 
 .selector-list-item i{
-  color: $meta-text-color;
+  color: $grey-on-white;
 }
 .selector-list-item-link{
   display: block;
@@ -76,13 +81,13 @@
   }
 }
 .selector-list-item-discussion-title {
-  color: $text-color;
+  color: $primary-text-color;
   @include fontHelvetica;
   @include fontMedium;
   margin-bottom: 5px;
 }
 a .selector-list-item-proposal-details {
-  color: $meta-text-color;
+  color: $grey-on-white;
   @include fontHelvetica;
   @include fontSmall;
   margin-bottom: 5px;
@@ -99,7 +104,7 @@ a .selector-list-item-proposal-details {
 }
 
 .selector-list-item-thread-group-name{
-  color: $meta-text-color;
+  color: $grey-on-white;
   @include fontHelvetica;
   @include fontSmall;
 }
