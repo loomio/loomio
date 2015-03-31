@@ -139,11 +139,12 @@ en:
     change_position: 'Change position'
     select_position: 'Select position'
     statement_placeholder: 'Share your thoughts with the group.'
+    aria_statement_label: 'Optionally enter a statement to be recorded with your position'
 
   close_proposal_form:
     close_proposal: 'Close proposal'
     helptext: 'Are you sure you want to close this proposal now?'
-    close_proposal_submit: 'Close proposal early'
+    close_proposal_submit: 'Yes, close proposal'
 
   extend_proposal_form:
     title: 'Change close time'
