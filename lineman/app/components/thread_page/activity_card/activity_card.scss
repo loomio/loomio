@@ -3,7 +3,8 @@
 }
 
 .activity-card__load-backwards{
-  @include metaText;
+  @include fontSmall;
+  color: $grey-on-white;
   line-height: 30px;
   span{text-decoration: underline;}
 }

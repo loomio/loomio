@@ -25,7 +25,7 @@
   float: right;
   @include fontHelveticaLight;
   @include fontMedium;
-  color: $meta-text-color;
+  color: $grey-on-white;
 }
 
 .thread-lintel__progress {

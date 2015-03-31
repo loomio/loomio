@@ -10,11 +10,12 @@ a.proposal-collapsed:hover{
   text-decoration: none;
 }
 .proposal-collapsed-outcome{
-  color: $meta-text-color;
+  color: $grey-on-white;
 }
 .proposal-collapsed-expand{
   clear: both;
   margin-top: 1em;
-  @include metaText;
+  @include fontSmall;
+  color: $grey-on-white;
   text-decoration: underline;
 }

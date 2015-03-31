@@ -7,7 +7,7 @@
   overflow-y:scroll;
 }
 .selector-list .timeago, .smart-time{
-  color: $meta-text-color;
+  color: $grey-on-white;
   @include fontTiny;
 }
 .selector-list-header {
@@ -33,7 +33,7 @@
 }
 
 .selector-list-item i{
-  color: $meta-text-color;
+  color: $grey-on-white;
 }
 .selector-list-item-link{
   display: block;
@@ -57,9 +57,6 @@
 .is-subgroup-true .selector-list-item-link{
   padding-left: 53px;
 }
-.selector-list-item.is-read{
-  background-color: $light-grey;
-}
 .is-unread .selector-list-item-discussion-title{
   font-weight: bold;
 }
@@ -82,7 +79,7 @@
   margin-bottom: 5px;
 }
 a .selector-list-item-proposal-details {
-  color: $meta-text-color;
+  color: $grey-on-white;
   @include fontHelvetica;
   @include fontSmall;
   margin-bottom: 5px;
@@ -99,7 +96,7 @@ a .selector-list-item-proposal-details {
 }
 
 .selector-list-item-thread-group-name{
-  color: $meta-text-color;
+  color: $grey-on-white;
   @include fontHelvetica;
   @include fontSmall;
 }
