@@ -5,12 +5,12 @@ class API::DiscussionsController < API::RestfulController
   def dashboard_by_date
     load_and_authorize_group if params[:group_id]
     @discussions = page_collection inbox_threads
-    respond_with_discussions dashboard: true
+    respond_with_discussions
   end
 
   def dashboard_by_group
     @discussions = grouped inbox_threads.group_by(&:organization_id)
-    respond_with_discussions dashboard: true
+    respond_with_discussions
   end
 
   def index
@@ -34,11 +34,10 @@ class API::DiscussionsController < API::RestfulController
     end
   end
 
-  def respond_with_discussions(scope = {})
+  def respond_with_discussions
     render json: DiscussionWrapper.new_collection(user: current_user, discussions: @discussions),
            each_serializer: DiscussionWrapperSerializer,
-           scope: scope,
-           root: 'discussion_wrappers'
+           root: :discussion_wrappers
   end
 
   def discussion_params
