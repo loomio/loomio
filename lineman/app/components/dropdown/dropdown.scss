@@ -95,12 +95,14 @@ li .dropdown-menu-item-label{
   right: 0;
 }
 
-.dropdown-fw-mobi{
+.dropdown{
   position: relative;
   @media (max-width: $screen-xs-min){
     position: static;
     .dropdown-menu{
       top: auto;
+      right: 0;
+      left: 0;
     }
   }
 }
