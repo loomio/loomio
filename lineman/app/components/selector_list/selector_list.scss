@@ -11,14 +11,14 @@
   @include fontTiny;
 }
 .selector-list-header {
-  padding: 0 10px;
-  width: 100%;
-  border-bottom: 1px solid #ddd;
   @include fontHelveticaMedium;
   @include fontSmall;
   text-transform: uppercase;
   color: $grey-on-white;
-  margin-top: 22px;
+  margin: 12px 0 0 0;
+  padding-bottom: 8px;
+  text-align: center;
+  border-bottom: 1px solid $border-color;
 }
 .selector-list-header .dropdown {
   padding: 0 0 10px 0;

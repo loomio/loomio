@@ -21,9 +21,7 @@
 .lmo-navbar-logo {
   @media (min-width: 940px){ width: 120px; }
   padding: 0 5px;
-  .lmo-navbar-btn {
-    float: right;
-  }
+  a { float: right; }
 }
 
 .lmo-navbar-logo-image {
@@ -51,7 +49,7 @@
 
 .lmo-navbar-item{
   display: inline-block;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 2px;
 }
 
 .lmo-navbar-item--selected {
@@ -59,7 +57,8 @@
 }
 
 .lmo-navbar-btn{
-  line-height: 40px;
+  line-height: 24px;
+  padding: 6px;
 }
 
 .lmo-navbar-btn__icon{

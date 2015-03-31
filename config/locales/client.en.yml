@@ -335,6 +335,7 @@ en:
     view_recent: View all recent threads?
     load_more: Load more threads
     filtering:
+      dropdown_heading: Filter dashboard
       all: Recent Threads
       all_aria_label: Currently showing recent threads
       all_description: View recent threads
@@ -345,6 +346,7 @@ en:
       proposals_aria_label: Currently showing threads with active proposals
       proposals_description: View only threads with active proposals
     sorting:
+      dropdown_heading: Sort threads
       group: By Group
       group_aria_label: Currently sorting threads by group
       group_description: Sort threads by group.

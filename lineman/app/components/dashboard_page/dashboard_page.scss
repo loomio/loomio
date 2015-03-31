@@ -7,13 +7,6 @@
   margin-bottom: 16px;
 }
 
-.dashboard-page-dropdown-toggle{
-  @include fontHelveticaMedium;
-  @include fontSmall;
-  text-transform: uppercase;
-  color: $grey-on-grey;
-}
-
 .dashboard-page-date-range{
   @include fontSmall;
   color: $grey-on-grey;
