@@ -41,7 +41,10 @@ Loomio::Application.routes.draw do
     end
     resources :invitables, only: :index
     resources :invitations, only: :create
-    resources :events, only: :index
+    resources :events, only: :index do
+      get :dashboard_by_date, on: :collection
+      get :dashboard_by_group, on: :collection
+    end
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
       get :dashboard_by_date, on: :collection

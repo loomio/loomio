@@ -11,7 +11,12 @@ describe API::EventsController do
     sign_in user
   end
 
-   describe 'index' do
+  describe 'dashboard_events' do
+    context 'success' do
+    end
+  end
+
+  describe 'index' do
 
     context 'success' do
 
