@@ -1,12 +1,11 @@
-/* let's come up with a good naming scheme for the greys once we lock them in*/
+/* let's only use semantic names for our colours */
+$grey-on-grey:  #666;
+$grey-on-white: #767676;
 $primary-text-color: #262626;
-$kinda-dark-grey: #666;
-$meta-text-color: #999;
 $border-color: #dcdcdc;
 $list-hover-color: #E0E0E0;
 $list-hover-transparent-color: rgba(224,224,224,0.8);
 $background-color: #ebebeb;
-$light-grey: #F5F5F5;
 $card-background-color: #fff;
 
 $item-highlight-color: #FFFFE8;
@@ -36,11 +35,6 @@ $navbar-height: 45px;
 
 @mixin fontCrapName{
   font-size: 15px;
-  line-height: 20px;
-}
-
-@mixin fontModerate {
-  font-size: 16px;
   line-height: 20px;
 }
 
@@ -79,19 +73,19 @@ $navbar-height: 45px;
   font-stretch:normal;
 }
 
-@mixin metaText {
-  color: $meta-text-color;
-  @include fontTiny;
+@mixin roundedCorners {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
 
 @mixin card{
+  @include roundedCorners;
   border: 1px solid $border-color;
   padding: 17px 22px;
   background: #fff;
   margin-bottom: 8px;
-  i{
-    color: $meta-text-color;
-  }
+  i{ color: $grey-on-white; }
   .card-minor-action{
     margin: 10px 0 0 0;
     clear: both;
@@ -100,7 +94,7 @@ $navbar-height: 45px;
 
 @mixin thinRoundedBorder {
   border: 1px solid $border-color;
-  border-radius: 2px;
+  @include roundedCorners;
 }
 
 #turn-off-angular {

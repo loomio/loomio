@@ -1,11 +1,16 @@
 %section.group-page-threads{role: 'region', aria-labelledby: 'threads-card-title'}
+  .group-page-new-thread
+    %a.btn.btn-success.btn-icon{href: '#', ng_click: 'openDiscussionForm()', title: "{{ 'navbar.start_thread' | translate }}"}
+      %i.fa.fa-plus{aria-hidden: 'true'}>
+      %span{translate: 'navbar.start_thread'}
+
   #threads-card-title.card-title{ translate: 'group_page.discussions', role: 'heading' }
   .group-thread-list
     .group-thread-list-item{ng_repeat: 'discussion in group.discussions() | orderBy: ["-createdAt"]'}
       .time-and-icon.pull-right
         %smart_time.group-thread-list-time{time: 'discussion.lastActivityAt' }>
         %span.group-thread-list-icon
-          %i.fa.fa-lg.fa-comments
+          %i.fa.fa-lg.fa-comments{aria-hidden: 'true'}
 
       .group-thread-list-thread-title
         %a{href: '/d/{{discussion.key}}'} {{ discussion.title }}

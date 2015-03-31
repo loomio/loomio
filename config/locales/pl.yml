@@ -204,9 +204,6 @@ pl:
       user:
         password_confirmation: Potwierdź hasło
         language_preference: Język
-    placeholders:
-      user:
-        password: Hasło
   helpers:
     submit:
       user:

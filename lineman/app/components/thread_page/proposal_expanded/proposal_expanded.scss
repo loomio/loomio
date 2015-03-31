@@ -1,10 +1,24 @@
 .proposal-expanded {
   background-color: #fff;
 }
+.previous-proposals-card{
+  .proposal-expanded{
+    border-bottom: 1px solid $border-color;
+    margin: 0 -22px;
+    padding: 10px 22px 17px 22px;
+  }
+}
 
-.proposal-expanded-started-by {
-  @include metaText;
-  margin-bottom: 5px;
+.proposal-expanded__collapse{
+  @include fontSmall;
+  color: $grey-on-white;
+  text-decoration: underline;
+}
+
+.proposal-expanded__started-by {
+  @include fontSmall;
+  color: $grey-on-white;
+  margin-bottom: 15px;
 }
 
 .pie-chart-pie {
@@ -13,7 +27,8 @@
 }
 
 .pie-chart-legend {
-  @include metaText;
+  @include fontSmall;
+  color: $grey-on-white;
   padding-top: 36px;
 }
 

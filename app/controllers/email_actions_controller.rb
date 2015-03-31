@@ -1,4 +1,5 @@
 class EmailActionsController < AuthenticateByUnsubscribeTokenController
+  skip_before_filter :boot_angular_ui
   def unfollow_discussion
     discussion = Discussion.find(params[:discussion_id])
     DiscussionReader.for(discussion: discussion, user: user).set_volume! :quiet

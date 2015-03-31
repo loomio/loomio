@@ -659,9 +659,6 @@ cs:
       motion:
         name: Jaké řešení navrhujete?
         description: "Poskytněte dostatek informací, aby každý věděl, co vlastně znamená, když souhlasí nebo nesouhlasí."
-      user:
-        email: E-mail
-        password: Heslo
       group_request:
         description: Rádi bychom se dozvěděli něco o vaší skupině a proč chcete použít Loomio.
   helpers:

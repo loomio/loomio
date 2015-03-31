@@ -1,16 +1,16 @@
-.proposal-actions-dropdown.pull-right{dropdown: '', on-toggle: 'toggled(open)'}
-  %a.dropdown-toggle.cuke-proposal-actions-dropdown-btn{href: '#'}
+.proposal-actions-dropdown.dropdown.pull-right
+  %a.dropdown-toggle.fat-finger{href: '#'}
     %i.fa.fa-chevron-down
-  .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
+  .dropdown-menu.dropdown-menu-right{role: 'menu'}
     %ul.dropdown-menu-items
-      %li.dropdown-menu-item.cuke-edit-proposal{ng-if: 'canEditProposal()', ng_click: 'editProposal()'}
+      %li.dropdown-menu-item{ng-if: 'canEditProposal()', ng_click: 'editProposal()'}
         .dropdown-menu-item-label
           %span{translate: 'proposal_expanded.edit_proposal'}
 
-      %li.dropdown-menu-item{ng-if: '!canEditProposal() && canCloseOrExtendProposal()', ng_click: 'extendProposal()'}
-        .dropdown-menu-item-label
+      %li.dropdown-menu-item{ng-if: '!canEditProposal() && canCloseOrExtendProposal()'}
+        %a.dropdown-menu-item-label{href:'#', ng_click: 'extendProposal()'}
           %span{translate: 'proposal_expanded.extend_proposal'}
 
-      %li.dropdown-menu-item.cuke-close-proposal{ng-if: 'canCloseOrExtendProposal()', ng_click: 'closeProposal()'}
-        .dropdown-menu-item-label
+      %li.dropdown-menu-item{ng-if: 'canCloseOrExtendProposal()'}
+        %a.dropdown-menu-item-label{href:'#', ng_click: 'closeProposal()'}
           %span{translate: 'proposal_expanded.close_proposal'}

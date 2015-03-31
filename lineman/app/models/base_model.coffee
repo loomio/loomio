@@ -54,6 +54,7 @@ angular.module('loomioApp').factory 'BaseModel', ->
       paramKey = _.snakeCase(@constructor.singular)
       _.each window.Loomio.permittedParams[paramKey], (attributeName) =>
         data[_.snakeCase(attributeName)] = @[_.camelCase(attributeName)]
+        true # so if the value is false we don't break the loop
       wrapper[paramKey] = data
       wrapper
 
@@ -87,6 +88,10 @@ angular.module('loomioApp').factory 'BaseModel', ->
 
     save: ->
       @errors = {}
+      if @processing
+        console.log "save returned, already processing:", @
+        return
+
       @processing = true
       if @isNew()
         @restfulClient.create(@serialize()).then(@saveSuccess, @saveFailure)

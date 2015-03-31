@@ -1,11 +1,9 @@
-.lmo-navbar-item{dropdown: ''}
-  %a.lmo-navbar-btn.lmo-navbar-btn__icon.dropdown-toggle{href: '#'}
+.lmo-navbar-item.dropdown
+  %a.lmo-navbar-btn.lmo-navbar-btn__icon.dropdown-toggle{href: '#', tabindex: 4}
     .sr-only{translate: 'navbar.notifications'}
     %i.fa.fa-lg.fa-fw.fa-bell{aria-hidden: 'true'}
-  .lmo-navbar-dropdown.dropdown-menu.dropdown-menu-right.notifications-dropdown{role: 'menu'}
+  .dropdown-menu.dropdown-menu-right.dropdown-menu-with-selector-list.notifications-dropdown{role: 'menu'}
     .navbar-notifications
       %ul.selector-list
-        %li.selector-list-header
-          %h3{translate: "notifications.header"}
-          %li.selector-list-item.media{ng_repeat: 'notification in currentUser.notifications()', ng-controller: "NotificationItemController", ng-include: "'generated/components/navbar/notification_items/'+notification.event().kind+'.html'" }
-
+        %li.selector-list-header{translate: "notifications.header", role: 'heading'}
+        %li.selector-list-item.media{ng_repeat: 'notification in currentUser.notifications()', ng-controller: "NotificationItemController", ng-include: "'generated/components/navbar/notification_items/'+notification.event().kind+'.html'" }

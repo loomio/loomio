@@ -514,34 +514,19 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
     input {
       max-width: 100%;
     }
-    input[type="text"],
-    input[type="email"],
-    input[type="password"]  {
-      font-size: 22px;
-      height: 32px;
-      line-height: 28px;
-      margin-bottom: 4px;
-    }
     .user_honeypot { display: none }
     input[type="submit"] {
-      font-size: 1.4em;
       margin-bottom: .8em;
     }
     .header { text-align: center; }
-/*    .main-content {
-      float: none;
-      margin: 0 auto;
-      width: 50%;
-    }*/
     .signin_container {
-      color: #555;
       a { text-align: left; }
       .btn-container {
         padding-left: 5px;
         padding-right: 5px;
         text-align: center;
       }
-      .sso-btn-row { margin-bottom: 2em; }
+      .sso-btn-row { margin: 2em 0; }
       .login {
         font-size: 15px;
         text-align: center;
@@ -549,25 +534,6 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
       }
     }
   }
-    .separator-container {
-      height: 8px;
-      margin: 2.4em 0em;
-      position: relative;
-      @include box-shadow(0px, 2px, 6px, -3px, #555);
-      //box-shadow: 0px 2px 6px -3px #555;
-      .separator {
-        background: #fff;
-        color: #777;
-        font-size: 1.2em;
-        font-style: italic;
-        margin-left: 45%;
-        height: 20px;
-        position: absolute;
-        text-align: center;
-        width: 50px;
-      }
-    }
-
     .input-options{
       a {
         color: $mid-grey;
@@ -612,39 +578,6 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
   }
   select { margin: 8px 0 10px 0; }
   #direct_contact { margin-top: 101px; }
-}
-
-@mixin social-button($from, $to) {
-  background-color: $to !important;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#{$from}", endColorstr="#{$to}");
-  background-image: -khtml-gradient(linear, left top, left bottom, from($from), to($to));
-  background-image: -moz-linear-gradient(top, $from, $to);
-  background-image: -ms-linear-gradient(top, $from, $to);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $from), color-stop(100%, $to));
-  background-image: -webkit-linear-gradient(top, $from, $to);
-  background-image: -o-linear-gradient(top, $from, $to);
-  background-image: linear-gradient($from, $to);
-  border-color: $from $to;
-  color: #fff !important;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.16);
-  -webkit-font-smoothing: antialiased;
-}
-
-.btn-facebook {
-  @include social-button(#163e82, #0f2956);
-}
-
-.btn-google {
-  @include social-button(#EC4D33, #C43B25);
-}
-
-.btn-persona {
-  @include social-button(#fb9e08, #d88603);
-}
-
-.btn-twitter {
-  @include social-button(#7BB3D3, #95C4DD);
 }
 
 body.pages.crowd {

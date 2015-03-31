@@ -519,9 +519,6 @@ ko:
       motion:
         name: 행동이 제안된 과정은 무엇인가요?
         description: 충분한 정보를 제공해서 모두가 동의 혹은 동의하지 않는것이 어떤 의미인지 알 수 있도록 해 주세요.
-      user:
-        email: 이메일
-        password: 비밀번호
       group_request:
         description: 여러분의 그룹에 대해서 듣기를 원하고 왜 루미로를 사용하기 원하는지를 듣고 싶습니다.
   helpers:

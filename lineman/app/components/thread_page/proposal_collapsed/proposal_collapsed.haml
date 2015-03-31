@@ -1,5 +1,8 @@
-.proposal-collapsed
-  %a.media{href: "#"}
+%a.proposal-collapsed.media{href: "#"}
+  .sr-only
+    {{proposal.name}}.
+    %closing_in{time: 'proposal.closingAt'}.
+  .screen-only{aria-hidden: 'true'}
     %closing_in.pull-right{time: 'proposal.closingAt'}
     .proposal-collapsed-expand.pull-right{translate: 'proposal_collapsed.expand'}
     %mini-proposal-pie-chart.media-left{proposal: 'proposal'}

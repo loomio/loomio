@@ -12,7 +12,7 @@
   top: $navbar-height;
   width: 100%;
   height: 160px;
-  background: url('http://placehold.it/640x160') no-repeat center center $light-grey;
+  background: url('http://placehold.it/640x160') no-repeat center center #f5f5f5;
   background-size: cover;
 }
 .group-page-header{
@@ -44,32 +44,17 @@
   float: left;
   margin-left: 15px;
 }
-.group-page-notifications{
-  float: right;
-  .btn { @include fontHelveticaBold; }
-}
-.group-page-actions-divider {
-  float: right;
-  height: 2em;
-  width: 1px;
-  background: $meta-text-color;
-  margin-left: 5px;
-  margin-right: 2px;
-}
-.group-page-actions{
-  float: right;
-  .btn { @include fontHelveticaBold; }
-}
-
 .group-page-description,
 .group-page-threads,
-.group-page-members,
-.group-page-subgroups{
+.group-page-members{
   @include card;
 }
 
-.discussions-new-thread{
-  margin-top: 10px;
+.group-page-new-thread{
+  float: right;
+  margin-top: -5px;
+  margin-bottom: 10px;
+  .btn { @include fontSmall; }
 }
 .members-invite{
   margin-top: 10px;
@@ -81,6 +66,7 @@
 
 .group-thread-list{
   border-top: 1px solid $border-color;
+  clear: both;
 }
 .group-thread-list-item{
   border-bottom: 1px solid $border-color;
@@ -88,20 +74,36 @@
   padding: 8px 0;
 }
 .group-thread-list-group-name, .group-thread-list-time{
-  @include metaText;
+  @include fontSmall;
+  color: $grey-on-white;
 }
 .group-thread-list-item .time-and-icon{
   padding-top: 10px;
 }
 
-.subgroup-list-item{
-  clear: both;
+.subgroups-card{
+  @include card;
 }
-.subgroup-list-item-logo{
+.subgroups-card__list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.subgroups-card__list-item{
+  clear: both;
+  min-height: 50px;
+  margin-bottom: 12px;
+}
+.subgroups-card__list-item-logo{
   width: 50px;
   height: 50px;
   background: url('http://placehold.it/50x50');
+  float: left;
 }
-.subgroup-list-item-name{
-  font-weight: bold;
+.subgroups-card__list-item-name{
+  @include fontHelveticaBold;
+  margin-left: 60px;
+}
+.subgroups-card__list-item-description{
+  margin-left: 60px;
 }

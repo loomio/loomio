@@ -818,9 +818,6 @@ nl-NL:
       motion:
         name: Welke vervolgstap stel je voor?
         description: Geef voldoende informatie zodat iedereen exact weet wat het betekent om het eens of oneens te zijn.
-      user:
-        email: E-mail
-        password: Wachtwoord
       group_request:
         description: We vinden het leuk om wat over jouw groep te horen en waarom je Loomio wil gebruiken.
   helpers:

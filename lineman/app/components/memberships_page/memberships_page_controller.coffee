@@ -1,15 +1,27 @@
-angular.module('loomioApp').controller 'MembershipsPageController', ($scope, group, Records, CurrentUser) ->
-  $scope.group = group
-  Records.memberships.fetchByGroup group
+angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, Records, LoadingService, CurrentUser) ->
+  @loading = true
+  @loadedCount = 0
+  @membershipsPerPage = 25
 
-  $scope.userIsAdmin = ->
-    CurrentUser.isAdminOf($scope.group)
+  Records.groups.findOrFetchByKey($routeParams.key).then (group) =>
+    @group = group
+    @loadMore()
 
-  $scope.toggleMembershipAdmin = (membership) ->
+  @userIsAdmin = =>
+    CurrentUser.isAdminOf(@group)
+
+  @loadMore = =>
+    Records.memberships.fetch({group_key: $routeParams.key, from: @loadedCount, per: @membershipsPerPage }).then =>
+      @loadedCount = @loadedCount + @membershipsPerPage
+  LoadingService.applyLoadingFunction @, 'loadMore'
+
+  @toggleMembershipAdmin = (membership) ->
     if membership.admin
       membership.removeAdmin()
     else
       membership.makeAdmin()
 
-  $scope.destroyMembership = (membership) ->
-    membership.destroy()
+  @canLoadMore = =>
+    @loadedCount < @group.membershipsCount
+
+  return

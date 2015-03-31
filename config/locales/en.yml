@@ -1103,9 +1103,6 @@ en:
       motion:
         name: "What is your proposed course of action?"
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
-      user:
-        email: "Email"
-        password: "Password"
       group_request:
         description: "We'd love to hear about your group and why you want to use Loomio."
 
@@ -1310,6 +1307,16 @@ en:
   yahoo: "Yahoo"
   google: "Google"
   persona: "Persona"
+  log_in_with_third_party: 'Or log in with a third-party account:'
+  log_in_with_google: Log in with Google
+  log_in_with_facebook: Log in with Facebook
+  log_in_with_persona: Log in with Persona
+  log_in_with_twitter: Log in with Twitter
+  sign_up_with_third_party: 'Or sign up with a third-party account:'
+  sign_up_with_google: Sign up with Google
+  sign_up_with_facebook: Sign up with Facebook
+  sign_up_with_persona: Sign up with Persona
+  sign_up_with_twitter: Sign up with Twitter
 
   common:
     profile: "Profile"

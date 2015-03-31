@@ -1,0 +1,12 @@
+.memberships-page {
+  margin: 0px auto;
+  max-width: $main-max-width;
+}
+
+.memberships-container {
+  @include card;
+}
+
+.memberships-page-table-header {
+  font-weight: bold;
+}

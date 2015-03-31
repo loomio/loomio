@@ -1,21 +1,21 @@
-.group-page-actions{dropdown: '', on-toggle: 'toggled(open)'}
+.dropdown.group-page-actions
   %a.btn.btn-nude.dropdown-toggle{href: '#'}
-    %span{translate: 'group_page.options.label'}
+    %span{translate: 'group_page.options.label'}>
     %i.fa.fa-lg.fa-chevron-down{aria-hidden: 'true'}
 
   .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
-    .dropdown-heading{translate: 'group_page.options_label'}
+    .dropdown-heading{translate: 'group_page.options_label', role: 'heading'}
     %ul.dropdown-menu-items
-      %li.dropdown-menu-item{ng-if: 'canEditGroup()'}
+      %li.dropdown-menu-item{ng-if: 'groupActions.canEditGroup()'}
         %a{href: '/g/{{::group.key}}/edit'}
           .dropdown-menu-item-label{translate: 'group_page.options.edit_group'}
           .dropdown-menu-item-details
       %li.dropdown-menu-item
-        %a{href: '#', ng-click: 'openLeaveGroupModal()'}
+        %a{href: '#', ng-click: 'groupActions.openLeaveGroupModal()'}
           .dropdown-menu-item-label{translate: 'group_page.options.leave_group'}
         .dropdown-menu-item-details
-      %li.dropdown-menu-item{ng-if: 'canDeactivateGroup()'}
-        %a{href: '#', ng-click: 'openDeactivateGroupModel()'}
+      %li.dropdown-menu-item{ng-if: 'groupActions.canDeactivateGroup()'}
+        %a{href: '#', ng-click: 'groupActions.openDeactivateGroupModel()'}
           .dropdown-menu-item-label{translate: 'group_page.options.deactivate_group'}
         .dropdown-menu-item-details
 

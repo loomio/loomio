@@ -4,18 +4,14 @@
 }
 
 .closing-at-timezone{
-  color: $meta-text-color;
+  color: $grey-on-white;
 }
 
 .closing-at-time-in-words{
-  color: $meta-text-color;
+  color: $grey-on-white;
   margin-top: 0.5em;
 }
 
 .proposals-card{
   @include card;
 }
-.proposal-expanded-started-by{
-  @include metaText;
-}
-

@@ -10,5 +10,6 @@ angular.module('loomioApp').factory 'DiscussionReaderRecordsInterface', (BaseRec
       relation = @collection.chain()
       relation = relation.find({ volume: { $ne: 'mute'} })     if options['unmuted']
       relation = relation.find({ groupId: options['groupId']}) if options['groupId']
-      relation = relation.where((reader) -> reader.discussion().isUnread())   if options['unread']
+      relation = relation.where((reader) -> reader.discussion().hasActiveProposal()) if options['proposals']
+      relation = relation.where((reader) -> reader.discussion().isUnread())          if options['unread']
       relation

@@ -3,32 +3,32 @@
   background: white;
   height: $navbar-height;
   border-bottom: 1px solid $border-color;
-  padding: 5px 0px;
-  /*box-shadow: 0 0 10px #aaa;*/
+  padding: 3px 0px;
   width: 100%;
   position: fixed;
 }
 
 .lmo-navbar-flexbox{
   display: flex;
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
   flex-wrap: nowrap;
   width: 100%;
-  /*flex-direction: */
-  /*flex-wrap	 ?*/
-  justify-content: space-between;
-  /*align-items	 ?*/
-  /*align-content*/
+  justify-content: center;
+  -webkit-justify-content: center;
 }
 
 .lmo-navbar-logo {
   @media (min-width: 940px){ width: 120px; }
   padding: 0 5px;
+  .lmo-navbar-btn {
+    float: right;
+  }
 }
 
 .lmo-navbar-logo-image {
   width: 40px;
   height: 40px;
-  float: left;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(/img/lbow_round_34.png);
@@ -37,7 +37,12 @@
 .lmo-navbar-search {
   max-width: $main-max-width;
   flex-grow: 2;
+  -webkit-flex-grow: 2;
   padding-left: 5px;
+}
+
+.lmo-navbar-search-input{
+  margin-bottom: 0;
 }
 
 .lmo-navbar-buttons {
@@ -53,57 +58,14 @@
   border-bottom: 4px solid $loomio-orange;
 }
 
-/*.lmo-navbar-items .open li a{ border-bottom: none; }*/
-
 .lmo-navbar-btn{
-  /*font-size: 26px;*/
   line-height: 40px;
 }
 
 .lmo-navbar-btn__icon{
-  color: $meta-text-color;
+  color: $grey-on-white;
   font-size: 19px;
 }
-
-
-.lmo-navbar-dropdown{
-  top: 44px;
-  padding: 0;
-  margin: 0 -10px;
-  min-width: 320px;
-  @media (min-width: $screen-xs-min){
-    margin: 0;
-    width: 320px;
-  }
-}
-
-/*#inbox-dropdown{ left: 49px; }*/
-
-/*#search-dropdown{*/
-  /*left: 48px;*/
-  /*@media (max-width: $screen-xs-max){*/
-    /*left: 96px;*/
-  /*}*/
-/*}*/
-
-/*#notifications-dropdown{ right: 47px; }*/
-/*@media (max-width: 380px){*/
-  /*#inbox-dropdown, #search-dropdown{ left: 0; }*/
-  /*#notifications-dropdown, #user-options-dropdown{right: 10px;}*/
-/*}*/
-
-/*.fa-xlg{ font-size: 26px; }*/
-/*#user-options-dropdown a{*/
-  /*color: $kinda-dark-grey;*/
-/*}*/
-
-/*#user-options-dropdown .media-left{*/
-  /*width: 40px;*/
-  /*vertical-align: middle;*/
-  /*text-align: center;*/
-/*}*/
-/*#user-options-dropdown .media-body{ vertical-align: middle; }*/
-
 
 .lmo-navbar-btn.has-badge{
   position: relative;
@@ -115,5 +77,3 @@
   right: 0;
   background: #4A90E2;
 }
-
-

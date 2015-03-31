@@ -15,21 +15,21 @@
     - analytics_scope do
       = render 'google_tag_manager'
 
-    .navbar.navbar-top
+    .navbar.navbar-top{role: 'navigation'}
       .navbar-inner
         .navbar-container
-          = link_to " ", root_path, class: 'pages-nav-logo', alt: 'Loomio'
+          = link_to " ", root_path, class: 'pages-nav-logo', title: 'Go to Loomio home page'
 
     .container.home-flash
       = render 'flash_messages', :flash => flash
 
     .row.hero
-      .content-container
+      .content-container{role: 'main'}
         .content
           = yield
 
     .row
-      .container
+      .container{role: 'contentinfo'}
         .col-xs-12
           = render 'footer'
 

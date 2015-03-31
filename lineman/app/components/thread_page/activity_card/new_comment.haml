@@ -1,18 +1,21 @@
 .thread-item--inner{ng_controller: 'NewCommentItemController'}
   .sr-only{aria-label: "{{ 'activity_card.new_comment.aria_label' | translate }} {{ ::comment.authorName() }}", role: 'heading'}
   .thread-item-context-menu.dropdown.pull-right{ng-if: 'showContextMenu()'}
-    %a.dropdown-toggle{href:''}
-      %i.fa.fa-chevron-down
-    %ul.dropdown-menu.dropdown-menu-right
-      %li
-        %a{href: '', ng-click: 'editComment()', ng-if: '::canEditComment()', translate: 'new_comment_item.context_menu.edit_comment'}
-        %a{href: '', ng-click: 'deleteComment()', ng-if: '::canDeleteComment()',  translate: 'new_comment_item.context_menu.delete_comment'}
+    %a.fat-finger.dropdown-toggle{href:''}
+      %i.fa.fa-chevron-down{aria-hidden: 'true'}
+      .sr-only{translate: 'new_comment_item.context_menu.aria_label'}
+    .dropdown-menu.dropdown-menu-right
+      %ul.dropdown-menu-items
+        %li.dropdown-menu-item
+          %a.dropdown-menu-item-label{href: '', ng-click: 'editComment()', ng-if: '::canEditComment()', translate: 'new_comment_item.context_menu.edit_comment'}
+        %li.dropdown-menu-item
+          %a.dropdown-menu-item-label{href: '', ng-click: 'deleteComment()', ng-if: '::canDeleteComment()',  translate: 'new_comment_item.context_menu.delete_comment'}
 
   .thread-item-header.media{aria-hidden: "true"}
     .media-left
       %user_avatar{user: "comment.author()", aria-hidden: 'true'}
     .media-body
-      %span.cuke-in-reply-to{ng-show: 'comment.parentId', translate: 'new_comment_item.in_reply_to', translate-values: '{author: comment.authorName(), recipient: comment.parentAuthorName()}'}
+      %span{ng-show: 'comment.parentId', translate: 'new_comment_item.in_reply_to', translate-values: '{author: comment.authorName(), recipient: comment.parentAuthorName()}'}
       %span{ng-hide: 'comment.parentId'}
         %strong{aria-hidden:'true'} {{ ::comment.authorName() }}
 
@@ -24,10 +27,10 @@
 
   .thread-item-footer
     .thread-actions-and-meta
-      %a.cuke-comment-like-btn{translate: 'common.action.like', ng-show: '!currentUserLikesIt()', href: '#', ng_click: 'like()'}>
+      %a{translate: 'common.action.like', ng-show: '!currentUserLikesIt()', href: '#', ng_click: 'like()'}>
       %a{translate: 'common.action.unlike', href: '#', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
       %span{aria-hidden: 'true'}·
-      %a.cuke-comment-reply-btn{translate: 'common.action.reply', href: '#', ng_click: 'reply()'}>
+      %a{translate: 'common.action.reply', href: '#', ng_click: 'reply()'}>
       %span{aria-hidden: 'true'}·
       %timeago{timestamp: 'comment.createdAt' }>
 

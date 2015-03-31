@@ -1,5 +1,9 @@
 .menu-image { padding: 15px; }
 
+.underlined-link {
+  text-decoration: underline;
+}
+
 .debug {
   border: 1px solid #000;
 }
@@ -26,20 +30,22 @@
 
 .fat-finger{
   /*utility class to increase the target size of a link*/
-  width: 30px;
-  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
   display: block;
-  text-align: center;
+  text-align: right;
   cursor: pointer;
+  line-height: 32px;
+  i{ line-height: 32px; }
 }
 
 .action{
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
   text-decoration: underline;
 }
 
 .small-action{
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
   text-decoration: underline;
   @include fontSmall;
 }
@@ -55,30 +61,10 @@
 .btn.btn-icon{ padding: 6px 12px 6px 9px;}
 
 .btn-nude{
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
 }
 .btn-nude:hover{
   background-color: $list-hover-color;
-}
-
-
-.avatar-initials{
-  width: 30px;
-  height: 30px;
-  background: $border-color;
-  border: 1px solid #aaa;
-  text-align: center;
-  line-height: 30px;
-}
-
-.avatar-image img{
-  width: 30px;
-  height: 30px;
-}
-
-.lg .avatar-image img, .lg .avatar-initials{
-  width: 50px;
-  height: 50px;
 }
 
 .label-with-details{
@@ -109,25 +95,12 @@ label.label-with-details{
   margin-top: 20px;
 }
 
-/* fyi..this kinda shit has to stop */
-/*input, select, textarea{*/
-  /*margin-bottom: 10px;*/
-/*}*/
-/*textarea{*/
-  /*min-height: 100px;*/
-/*}*/
-
-/*input[type="file"]{*/
-  /*[>This is a hack for now to fix the mobile layout. The file input should be hidden.<]*/
-  /*max-width: 200px;*/
-/*}*/
-
 .font-bold {
   font-weight: bold;
 }
 
 .page-loading {
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
   text-align: center;
   padding: 10px;
 }
@@ -136,7 +109,27 @@ label.label-with-details{
   @include fontHelveticaMedium;
   @include fontSmall;
   text-transform: uppercase;
-  color: $kinda-dark-grey;
+  color: $grey-on-white;
   margin-top: 0;
   margin-bottom: 10px;
+}
+.card-subheading{
+  @include fontSmall;
+  @include fontHelveticaMedium;
+  color: $grey-on-white;
+  margin-top: 1.5em;
+}
+
+.lmo-btn-group{
+  .btn { @include fontHelveticaBold; }
+}
+.lmo-btn-group-right{
+  float: right;
+}
+.lmo-btn-group .lmo-btn-wrapper{
+  float: right;
+  border-right: 1px solid $border-color;
+}
+.lmo-btn-group .lmo-btn-wrapper:first-of-type{
+  border: none;
 }

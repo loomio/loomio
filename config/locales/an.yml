@@ -776,9 +776,6 @@ an:
       motion:
         name: "Quál ye a tuya propuesta de plan d'acción?"
         description: Da información suficient ta que qualsiquier persona en o tuyo grupo pueda prener una decisión bien informada.
-      user:
-        email: Correu electronico
-        password: Clau
       group_request:
         description: "Nos encantaría de saber d'o tuyo grupo y por qué quieren usar Loomio."
   helpers:

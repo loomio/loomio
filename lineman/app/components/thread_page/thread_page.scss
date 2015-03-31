@@ -4,16 +4,18 @@
 }
 
 .thread-group{
-  margin: 16px 22px;
+  margin: 14px 22px;
+  padding-top: 10px;
 }
 
 .thread-group__name a{
   font-weight: bold;
-  color: $kinda-dark-grey;
+  color: $grey-on-grey;
   line-height: 30px;
 }
 
 .thread-group__icon img{
+  @include roundedCorners;
   width: 30px;
   height: 30px;
 }
@@ -22,21 +24,13 @@
   @include card;
 }
 
-.thread-actions {
-  position: relative;
-}
-
-.thread-actions .dropdown{
-  float: left;
-  position: static;
-}
-
 .thread-context__title{
   margin: 2px 0 9px 0;
 }
 
 .thread-context__details{
-  @include metaText;
+  @include fontSmall;
+  color: $grey-on-white;
   margin-bottom: 15px;
 }
 
@@ -58,10 +52,10 @@
 
 .thread-item-header {
   strong {
-    color: $text-color;
+    color: $primary-text-color;
     @include fontHelveticaBold;
   }
-  color: $meta-text-color;
+  color: $grey-on-white;
   margin-bottom: 5px;
   .media-body, .media-left{
     vertical-align: middle;
@@ -74,7 +68,7 @@
 
 .thread-item-footer {
   @include fontSmall();
-  color: $meta-text-color;
+  color: $grey-on-white;
 }
 
 .thread-actions-and-meta {
@@ -118,6 +112,7 @@
   width: 34px;
   height: 34px;
   border: 1px solid $border-color;
+  @include roundedCorners;
 }
 
 .attachment-new input {
@@ -140,4 +135,3 @@
 .progress.active {
   float: left;
 }
-

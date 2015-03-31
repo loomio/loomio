@@ -11,21 +11,25 @@
   @include fontHelveticaMedium;
   @include fontSmall;
   text-transform: uppercase;
-  color: $meta-text-color;
+  color: $grey-on-grey;
 }
 
 .dashboard-page-date-range{
   @include fontSmall;
-  color: $meta-text-color;
+  color: $grey-on-grey;
 }
 
 .dashboard-page-group-name a{
   @include fontHelveticaMedium;
   @include fontCrapName;
   line-height: 30px;
-  color: $meta-text-color;
+  color: $grey-on-grey;
   margin-left: 16px;
   margin-top: 0;
+}
+
+.dashboard-page-no-threads {
+  text-align: center;
 }
 
 .dashboard-page-threads {
@@ -82,7 +86,7 @@
 .dashboard-page-unread-count {
   @include fontCrapName;
   @include fontHelveticaBold;
-  color: $meta-text-color;
+  color: $grey-on-white;
   text-align: center;
 }
 
@@ -106,7 +110,8 @@
 }
 
 .dashboard-page-thread-info {
-  @include metaText;
+  color: $grey-on-white;
+  @include fontSmall;
   white-space: nowrap;
   overflow: hidden;
   line-height: 20px;
@@ -147,7 +152,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  color: $meta-text-color;
+  color: $grey-on-white;
   text-decoration: underline;
 }
 .dashboard-page-show-more a:hover{

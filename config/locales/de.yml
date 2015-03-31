@@ -845,9 +845,6 @@ de:
       motion:
         name: Was ist dein Vorschlag zum Handlungsablauf?
         description: "Gib genug Informationen an, damit jeder genau versteht, was Zustimmung und Ablehnung jeweils bedeuten."
-      user:
-        email: eMail
-        password: Passwort
       group_request:
         description: Wir würden gerne mehr über deine Gruppe erfahren und warum ihr Loomio nutzen wollt.
   helpers:

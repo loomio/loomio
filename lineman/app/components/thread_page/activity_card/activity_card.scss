@@ -1,3 +1,20 @@
 .activity-card{
   @include card;
 }
+
+.activity-card__load-backwards{
+  @include fontSmall;
+  color: $grey-on-white;
+  line-height: 30px;
+  span{text-decoration: underline;}
+}
+
+.activity-card-last-read {
+  margin: 10px 0;
+  padding-bottom: 0;
+  border-bottom: 1px solid $loomio-orange;
+  text-align: right;
+  @include fontTiny;
+  line-height: 9px;
+  color: $loomio-orange;
+}
