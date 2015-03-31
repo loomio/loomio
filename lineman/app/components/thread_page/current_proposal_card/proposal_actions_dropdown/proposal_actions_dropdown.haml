@@ -1,10 +1,10 @@
 .proposal-actions-dropdown.dropdown.pull-right
-  %a.dropdown-toggle.fat-finger{href: '#'}
+  %button.btn.btn-nude.dropdown-toggle{href:''}
     %i.fa.fa-chevron-down
   .dropdown-menu.dropdown-menu-right{role: 'menu'}
     %ul.dropdown-menu-items
-      %li.dropdown-menu-item{ng-if: 'canEditProposal()', ng_click: 'editProposal()'}
-        .dropdown-menu-item-label
+      %li.dropdown-menu-item{ng-if: 'canEditProposal()'}
+        %a.dropdown-menu-item-label{ng_click: 'editProposal()'}
           %span{translate: 'proposal_expanded.edit_proposal'}
 
       %li.dropdown-menu-item{ng-if: '!canEditProposal() && canCloseOrExtendProposal()'}

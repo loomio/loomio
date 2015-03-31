@@ -62,6 +62,7 @@
 
 .btn-nude{
   color: $grey-on-grey;
+  background-color: transparent;
 }
 .btn-nude:hover{
   background-color: $list-hover-color;
@@ -126,7 +127,7 @@ label.label-with-details{
 .lmo-btn-group-right{
   float: right;
 }
-.lmo-btn-group .lmo-btn-wrapper{
+.lmo-btn-group-right .lmo-btn-wrapper{
   float: right;
   border-right: 1px solid $border-color;
 }
