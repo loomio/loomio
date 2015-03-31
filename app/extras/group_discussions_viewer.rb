@@ -2,7 +2,11 @@ class GroupDiscussionsViewer
   def self.for(group: nil, user: nil, filter: nil)
     groups = groups_displayed(group: group, user: user)
     Queries::VisibleDiscussions.new(groups: groups, user: user).tap do |discussions|
-      discussions = discussions.unread if filter == 'show_unread'
+      case filter
+      when 'show_unread'    then discussions.unread
+      when 'show_proposals' then discussions.with_active_motions
+      else                       discussions
+      end
     end
   end
 
