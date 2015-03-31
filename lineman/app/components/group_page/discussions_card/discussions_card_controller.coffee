@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'DiscussionsCardController', ($scope, $modal, Records, UserAuthService) ->
+angular.module('loomioApp').controller 'DiscussionsCardController', ($scope, $modal, Records, UserAuthService, DiscussionFormService) ->
   nextPage = 1
   busy = false
   $scope.lastPage = false
@@ -13,3 +13,6 @@ angular.module('loomioApp').controller 'DiscussionsCardController', ($scope, $mo
       busy = false
 
   $scope.getNextPage()
+
+  $scope.openDiscussionForm = ->
+    DiscussionFormService.openNewDiscussionModal()
