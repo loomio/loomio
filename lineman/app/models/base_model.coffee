@@ -102,11 +102,11 @@ angular.module('loomioApp').factory 'BaseModel', ->
       @processing = true
       @restfulClient.destroy(@keyOrId()).then(@saveSuccess, @saveFailure)
 
-    saveSuccess: (records) ->
+    saveSuccess: (records) =>
       @processing = false
       records
 
-    saveFailure: (errors) ->
+    saveFailure: (errors) =>
       @processing = false
       @errors = errors
       throw errors
