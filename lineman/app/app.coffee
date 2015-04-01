@@ -9,7 +9,7 @@ angular.module('loomioApp', ['ngNewRouter',
                              'ngAnimate',
                              'angular-inview',
                              'ui.gravatar',
-                             'truncate']).config ($httpProvider, $locationProvider, $translateProvider, $componentLoaderProvider) ->
+                             'truncate', 'duScroll']).config ($httpProvider, $locationProvider, $translateProvider, $componentLoaderProvider) ->
 
   # consume the csrf token from the page so form submissions can work
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
