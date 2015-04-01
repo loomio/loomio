@@ -2,5 +2,5 @@ angular.module('loomioApp').controller 'ProposalRedirectController', ($router, $
   $rootScope.$broadcast('currentComponent', 'proposalRedirect')
   Records.proposals.findOrFetchByKey($routeParams.key).then (proposal) =>
     @proposal = proposal
-    $location.url("/d/#{proposal.discussionKey}")
+    $location.url("/d/#{proposal.discussionKey}#proposal")
   return

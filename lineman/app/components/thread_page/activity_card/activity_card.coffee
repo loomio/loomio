@@ -3,46 +3,67 @@ angular.module('loomioApp').directive 'activityCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
   replace: true
-  controller: ($scope, $rootScope, $location, Records) ->
+  controller: ($scope, $rootScope, $location, $document, $timeout, Records) ->
+    reader = $scope.discussion.reader()
+
     $scope.loading = false
     $scope.pageSize = 30
     $scope.firstLoadedSequenceId = 0
     $scope.lastLoadedSequenceId = 0
+    $scope.newActivitySequenceId = reader.lastReadSequenceId + 1
+    visibleSequenceIds = []
     rollback = 2
 
     $scope.init = ->
       $scope.discussion.markAsRead(0)
-      if $scope.discussion.isUnread()
-        $scope.readLastTime = $scope.discussion.reader().lastReadSequenceId
 
-      # want to request the window of items that best suits the read position
+      $scope.firstLoadedSequenceId = focusSequenceId() - rollback
+
+      if ($scope.firstLoadedSequenceId + $scope.pageSize - 1) > $scope.discussion.lastSequenceId
+        $scope.firstLoadedSequenceId = $scope.discussion.lastSequenceId - $scope.pageSize + 1
+
+      $scope.loadEvents(from: $scope.firstLoadedSequenceId - 1).then (events) ->
+        $timeout ->
+          console.log 'scrolling to ', focusSelector(), document.querySelector(focusSelector())
+          $document.scrollToElement(document.querySelector(focusSelector()), 100)
+
+    focusSelector = ->
       if _.isFinite(_.parseInt($location.hash()))
-        startPosition = _.parseInt($location.hash())
+        # startPosition is manually specified in hash
+        "##{$location.hash()}"
+      else if $location.hash() == 'proposal'
+        '.current-proposal-card'
+      else if $scope.lastReadSequenceId == -1 or $scope.discussion.lastSequenceId == 0
+        # first view of thread. Start at the top
+        '.thread-context'
+      else if $scope.discussion.lastSequenceId == reader.lastReadSequenceId
+        # already read everything.. take them to the bottom
+        '.activity-card__last-item'
       else
-        startPosition = $scope.discussion.unreadPosition()
-        #$location.hash($scope.discussion.unreadPosition())
+        '.activity-card__new-activity'
 
-      windowTop = startPosition - rollback
-
-      if (windowTop + $scope.pageSize - 1) > $scope.discussion.lastSequenceId
-        windowTop = $scope.discussion.lastSequenceId - $scope.pageSize + 1
-
-      $scope.firstLoadedSequenceId = windowTop
-      $scope.loadEvents(from: windowTop - 1).then (events) ->
-        # presumably scroll.. maybe after 100 ms
-
-    $scope.lastSequenceId = 0
-    visibleSequenceIds = []
+    focusSequenceId = ->
+      if _.isFinite(_.parseInt($location.hash()))
+        # startPosition is manually specified in hash
+        _.parseInt($location.hash())
+      else if $scope.lastReadSequenceId == -1
+        # first view of thread. Start at the top
+        0
+      else if $scope.discussion.lastSequenceId == reader.lastReadSequenceId
+        # already read everything.. take them to the bottom
+        $scope.discussion.lastSequenceId
+      else
+        # start at first unread thing
+        $scope.discussion.lastSequenceId + 1
 
     $scope.beforeCount = ->
       $scope.firstLoadedSequenceId - $scope.discussion.firstSequenceId
 
     updateLastSequenceId = ->
       visibleSequenceIds = _.uniq(visibleSequenceIds)
-      $scope.lastSequenceId = _.max(visibleSequenceIds)
-      $rootScope.$broadcast('threadPosition', $scope.discussion, $scope.lastSequenceId)
+      $rootScope.$broadcast('threadPosition', $scope.discussion, _.max(visibleSequenceIds))
 
-    addSequenceId = (id) =>
+    addSequenceId = (id) ->
       visibleSequenceIds.push(id)
       updateLastSequenceId()
 

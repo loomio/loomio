@@ -19,7 +19,8 @@
     "angular-animate": "1.3.0",
     "angular-inview": "~> 1.5.0",
     "angular-gravatar": "~0.2.4",
-    "angular-truncate": "latest"
+    "angular-truncate": "latest",
+    "angular-scroll": "~0.6.5"
   },
   "resolutions": {
     "angular": "1.4"
