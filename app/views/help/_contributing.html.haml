@@ -2,9 +2,14 @@
   %h1= t :"new_help.contributing.title"
   %p= t :"new_help.contributing.body.intro"
   %ul#how-to-contribute
-    %li= t :"new_help.contributing.body.open_source.title_html"
+    %li
+      %strong= t :"new_help.contributing.body.open_source.title_html"
     %p= t :"new_help.contributing.body.open_source.body_html"
-    %li= t :"new_help.contributing.body.translation.title_html"
-    %li= t :"new_help.contributing.body.loomio_community.title_html"
+    %li
+      %strong
+        %a{href: "#translation"}= t :"new_help.contributing.body.translation.title_html"
+    %li
+      %strong
+        %a{href: "#loomio-community"}= t :"new_help.contributing.body.loomio_community.title_html"
   .row#bottom-links
     %a.back-to-top{:href => "#contents"}= t :"new_help.back_to_top"

@@ -5,10 +5,18 @@
     .col-sm-7
       = t :"new_help.keeping_up_to_date.volume.body.intro_html"
       %ul#volume-options
-        %li= t :"new_help.keeping_up_to_date.volume.body.loud_html"
-        %li= t :"new_help.keeping_up_to_date.volume.body.normal_html"
-        %li= t :"new_help.keeping_up_to_date.volume.body.quiet_html"
-        %li= t :"new_help.keeping_up_to_date.volume.body.mute_html"
+        %li
+          %strong= t :"new_help.keeping_up_to_date.volume.body.loud_title"
+          %span= t :"new_help.keeping_up_to_date.volume.body.loud_description"
+        %li
+          %strong= t :"new_help.keeping_up_to_date.volume.body.normal_title"
+          %span= t :"new_help.keeping_up_to_date.volume.body.normal_description"
+        %li
+          %strong= t :"new_help.keeping_up_to_date.volume.body.quiet_title"
+          %span= t :"new_help.keeping_up_to_date.volume.body.quiet_description"
+        %li
+          %strong= t :"new_help.keeping_up_to_date.volume.body.mute_title"
+          %span=t :"new_help.keeping_up_to_date.volume.body.mute_description_html"
       %p= t :"new_help.keeping_up_to_date.volume.body.upon_joining_group_html"
     .col-sm-5
       =image_tag "group-volume.png", class: "screenshot"

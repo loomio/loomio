@@ -39,7 +39,8 @@
     .col-sm-4
       =image_tag "deactivate-group.png", class: "screenshot"
   %h3.anchor#coordinator-tips= t :"new_help.coordination.coordinator_tips.title"
-  %h4= t :"new_help.coordination.coordinator_tips.customise_invitation.title_html"
+  %h4
+    %a{href: "#customising-invitations"}= t :"new_help.coordination.coordinator_tips.customise_invitation.title_html"
   %h4= t :"new_help.coordination.coordinator_tips.engaging_proposal.title"
   %p= t :"new_help.coordination.coordinator_tips.engaging_proposal.body"
   %h4= t :"new_help.coordination.coordinator_tips.encourage_mentioning.title_html"

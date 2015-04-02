@@ -2,91 +2,96 @@ en:
   new_help:
     how_to:
       title: How do I get started?
-      start_group_html: '<strong><a href="#starting-new-group">Start a group</a></strong> to collaborate with people on Loomio'
-      invite_people_html: '<strong><a href="#inviting-members">Invite people</a></strong> into your group'
-      start_discussion_html: '<strong><a href="#starting-discussions">Start a discussion</a></strong> on any topic'
-      make_proposal_html: '<strong><a href="#starting-proposals">Make a proposal</a></strong> to see how everyone feels about a particular course of action'
-      decide_together_html: '<strong><a href="#stating-positions">Decide together:</a></strong> anyone can agree, abstain, disagree, or block – so you can see how everyone feels about the proposal.'
+      start_group_link: Start a group
+      start_group_description: to collaborate with people on Loomio
+      invite_people_link: Invite people
+      invite_people_description: into your group
+      start_discussion_link: Start a discussion
+      start_discussion_description: on any topic
+      make_proposal_link: Make a proposal
+      make_proposal_description: to see how everyone feels about a particular course of action
+      decide_together_link: 'Decide together:'
+      decide_together_description: 'anyone can agree, abstain, disagree, or block – so you can see how everyone feels about the proposal.'
     contents:
       title: Need more information?
       getting_started:
-        title_html: '<a href="#getting-started">Getting started</a>'
-        starting_new_group_html: '<a href="#starting-new-group">When you want to start a new Loomio group</a>'
-        invited_into_group_html: '<a href="#invited-into-group">When you are invited into a Loomio group</a>'
-        joining_existing_group_html: '<a href="#joining-existing-group">When you want to join an existing Loomio group</a>'
-        single_sign_on_html: '<a href="#single-sign-on">Single sign-on</a>'
+        title_html: Getting started
+        starting_new_group_html: When you want to start a new Loomio group
+        invited_into_group_html: When you are invited into a Loomio group
+        joining_existing_group_html: When you want to join an existing Loomio group
+        single_sign_on_html: Single sign-on
       group_settings:
-        title_html: '<a href="#group-settings">Group settings</a>'
-        group_profile_html: '<a href="#group-profile">Group profile</a>'
-        group_privacy_html: '<a href="#group-privacy">Group privacy</a>'
-        group_permissions_html: '<a href="#group-permissions">Group permissions</a>'
+        title_html: Group settings
+        group_profile_html: Group profile
+        group_privacy_html: Group privacy
+        group_permissions_html: Group permissions
       coordination:
-        title_html: '<a href="#coordination">Coordinating your group</a>'
-        adding_cover_photo_html: '<a href="#adding-cover-photo">Adding a cover photo</a>'
-        managing_membership_html: '<a href="#manage-membership">Managing membership</a>'
-        deactivating_groups_html: '<a href="#deactivating-groups">Deactivating/archiving a group</a>'
+        title_html: Coordinating your group
+        adding_cover_photo_html: Adding a cover photo
+        managing_membership_html: Managing membership
+        deactivating_groups_html: Deactivating/archiving a group
       inviting_members:
-        title_html: '<a href="#inviting-members">Inviting new members</a>'
-        importing_contacts_html: '<a href="#importing-contacts">Importing contacts</a>'
-        pending_invitations_html: '<a href="#pending-invitations">Pending invitations</a>'
+        title_html: Inviting new members
+        importing_contacts_html: Importing contacts
+        pending_invitations_html: Pending invitations
       discussion_threads:
-        title_html: '<a href="#discussion-threads">Discussion threads</a>'
-        starting_discussions_html: '<a href="#starting-discussions">Starting a discussion</a>'
-        providing_context_html: '<a href="#providing-context">Providing context</a>'
-        discussion_privacy_html: '<a href="#discussion-privacy">Discussion privacy</a>'
-        editing_discussions_html: '<a href="#editing-discussions">Editing a discussion</a>'
-        moving_discussions_html: '<a href="#moving-discussions">Moving a discussion</a>'
-        deleting_discussions_html: '<a href="#deleting-discussions">Deleting a discussion</a>'
+        title_html: Discussion threads
+        starting_discussions_html: Starting a discussion
+        providing_context_html: Providing context
+        discussion_privacy_html: Discussion privacy
+        editing_discussions_html: Editing a discussion
+        moving_discussions_html: Moving a discussion
+        deleting_discussions_html: Deleting a discussion
       comments:
-        title_html: '<a href="#comments">Comments</a>'
-        posting_comments_html: '<a href="#posting-comments">Posting a comment</a>'
-        attaching_files_html: '<a href="#attaching-files">Attaching files</a>'
-        mentioning_html: '<a href="#mentioning">@mentioning group members</a>'
-        editing_comments_html: '<a href="#editing-comments">Editing a comment</a>'
-        liking_comments_html: '<a href="#liking-comments">Liking a comment</a>'
-        deleting_comments_html: '<a href="#deleting-comments">Deleting a comment</a>'
+        title_html: Comments
+        posting_comments_html: Posting a comment
+        attaching_files_html: Attaching files
+        mentioning_html: '@mentioning group members'
+        editing_comments_html: Editing a comment
+        liking_comments_html: Liking a comment
+        deleting_comments_html: Deleting a comment
       proposals:
-        title_html: '<a href="#proposals">Proposals</a>'
-        starting_proposals_html: '<a href="#starting-proposals">Starting a proposal</a>'
-        editing_proposals_html: '<a href="#editing-proposals">Editing a proposal</a>'
-        stating_positions_html: '<a href="#stating-positions">Stating your position</a>'
-        changing_positions_html: '<a href="#changing-positions">Changing your position</a>'
-        setting_outcome_html: '<a href="#setting-outcome">Setting a proposal outcome</a>'
-        closing_proposals_html: '<a href="#closing-proposals">Closing a proposal</a>'
-        previous_decisions_html: '<a href="#previous-decisions">Closed proposals/previous decisions</a>'
+        title_html: Proposals
+        starting_proposals_html: Starting a proposal
+        editing_proposals_html: Editing a proposal
+        stating_positions_html: Stating your position
+        changing_positions_html: Changing your position
+        setting_outcome_html: Setting a proposal outcome
+        closing_proposals_html: Closing a proposal
+        previous_decisions_html: Closed proposals/previous decisions
       subgroups:
-        title_html: '<a href="#subgroups">Sub-groups</a>'
-        subgroup_privacy_html: '<a href="#subgroup-privacy">Sub-group privacy'
+        title_html: Sub-groups
+        subgroup_privacy_html: Sub-group privacy
       dashboard:
-        title_html: '<a href="#dashboard">Your dashboard</a>'
+        title_html: Your dashboard
       keeping_up_to_date:
-        title_html: '<a href="#keeping-up-to-date">Keeping up to date</a>'
-        volume_html: '<a href="#volume">Volume</a>'
-        yesterday_on_loomio_html: '<a href="#yesterday-on-loomio">"Yesterday on Loomio"</a>'
-        email_settings_html: '<a href="#email-settings">Email settings</a>'
+        title_html: Keeping up to date
+        volume_html: Volume
+        yesterday_on_loomio_html: '"Yesterday on Loomio"'
+        email_settings_html: Email settings
       user_profile:
-        title_html: '<a href="#user-profile">Your user profile</a>'
-        language_settings_html: '<a href="#language-settings">Language settings</a>'
-        usernames_html: '<a href="#usernames">Usernames</a>'
-        updating_personal_settings_html: '<a href="#updating-personal-settings">Updating your personal settings</a>'
-        profile_photo_html: '<a href="#profile-photo">Uploading a profile photo</a>'
-        changing_passwords_html: '<a href="#changing-passwords">Changing your password</a>'
-        account_deactivation_html: '<a href="#account-deactivation">Deactivating your account</a>'
-        account_reactivation_html: '<a href="#account-reactivation">Reactivating your account</a>'
+        title_html: Your user profile
+        language_settings_html: Language settings
+        usernames_html: Usernames
+        updating_personal_settings_html: Updating your personal settings
+        profile_photo_html: Uploading a profile photo
+        changing_passwords_html: Changing your password
+        account_deactivation_html: Deactivating your account
+        account_reactivation_html: Reactivating your account
       leaving_groups:
-        title_html: '<a href="#leaving-groups">Leaving a group</a>'
+        title_html: Leaving a group
       translation:
-        title_html: '<a href="#translation">Translation</a>'
+        title_html: Translation
       security:
-        title_html: '<a href="#security">Privacy and security</a>'
+        title_html: Privacy and security
       contributing:
-        title_html: '<a href="#contributing">Contributing to Loomio</a>'
+        title_html: Contributing to Loomio
       loomio_community:
-        title_html: '<a href="#loomio-community">The Loomio Community</a>'
+        title_html: The Loomio Community
       loomio_development:
-        title_html: '<a href="#loomio-development">Keeping up with Loomio development</a>'
+        title_html: Keeping up with Loomio development
       faq:
-        title_html: '<a href="#faq">FAQ</a>'
+        title_html: FAQ
     getting_started:
       title: Getting started
       intro: |
@@ -323,7 +328,7 @@ en:
       coordinator_tips:
         title: Tips for engaging your group
         customise_invitation:
-          title_html: '<a href="#customising-invitations">Customise your invitation message</a>'
+          title_html: Customise your invitation message
         engaging_proposal:
           title: 'Create an engaging first proposal:'
           body: |
@@ -557,10 +562,14 @@ en:
             <p>Volume controls how much you hear from a group or a discussion.</p>
             <p>There are four settings for both <strong>Group Volume</strong> and <strong>Discussion Volume</strong>.</p>
             <p><strong>Group Volume</strong> can be changed from the group page by clicking the button in the <strong>"Volume"</strong> panel on the right-hand side of the page, and selecting one of the four options:</p>
-          loud_html: '<strong>Loud</strong> - this will email you whenever there is activity (comments, votes, new discussions or proposals, and proposal outcomes) in the group.'
-          normal_html: '<strong>Normal</strong> - this will only email you with important activity: new discussions or proposals and proposal outcomes.'
-          quiet_html: '<strong>Quiet</strong> - this switches all the emails off. You’ll see new group activity on the dashboard.'
-          mute_html: '<strong>Mute</strong> - this switches all emails off. You’ll only be notified if someone @mentions you. This will also remove the group from your dashboard and the <a href="#yesterday-on-loomio">“Yesterday on Loomio”</a> digest email.'
+          loud_title: Loud
+          loud_description: ' - this will email you whenever there is activity (comments, votes, new discussions or proposals, and proposal outcomes) in the group.'
+          normal_title: Normal
+          normal_description: ' - this will only email you with important activity: new discussions or proposals and proposal outcomes.'
+          quiet_title: Quiet
+          quiet_description: ' - this switches all the emails off. You’ll see new group activity on the dashboard.'
+          mute_title: Mute
+          mute_description_html: ' - this switches all emails off. You’ll only be notified if someone @mentions you. This will also remove the group from your dashboard and the <a href="#yesterday-on-loomio">“Yesterday on Loomio”</a> digest email.'
           upon_joining_group_html: |
             When you join a new group, your volume settings for that particular group will be <strong>Normal</strong>.
             This means you will be emailed when a new discussion is started, when a proposal is raised, or when a proposal outcome is set.
@@ -656,15 +665,15 @@ en:
       body:
         intro: 'There are currently several avenues through which people can make direct contributions to Loomio:'
         open_source:
-          title_html:  <strong>Open-source development</strong>
+          title_html: Open-source development
           body_html: |
             If you're interested in contributing to the Loomio codebase, the first place to start is to take a look at our <a href="https://github.com/loomio/loomio">Github repository</a>.
             We use <a href="https://github.com/loomio/loomio/issues">Github's issue tracker</a> to track tasks, enhancements and bugs, and we're always delighted to support external contributors!
             There is an installation guide to get you started on our <a href="https://github.com/loomio/loomio/wiki">Github wiki</a> and a public <a href="https://www.loomio.org/g/C7I2YAPN/loomio-community-installing-loomio">Loomio Community sub-group dedicated to installation support and assistance</a>, in which you can ask any questions that might arise along the way.
         translation:
-          title_html: '<strong><a href="#translation">Translation</a></strong>'
+          title_html: Translation
         loomio_community:
-          title_html: '<strong><a href="#loomio-community">The Loomio Community</a></strong>'
+          title_html: The Loomio Community
     loomio_community:
       title: The Loomio Community
       body_html: |
@@ -677,12 +686,12 @@ en:
     loomio_development:
       title: Keeping up with Loomio Development
       intro: 'There are several ways to keep track of Loomio progress:'
-      github_repo_html: '<strong><a href="https://github.com/loomio/loomio">The main Loomio development repository</a></strong>'
-      github_issues_html: '<strong><a href="https://github.com/loomio/loomio/issues">Loomio issue tracker on Github</a></strong>'
-      angular_html: '<strong><a href="https://loomio.org/angular">Loomio 1.0-beta in action</a></strong>'
-      roadmap_html: '<strong><a href="https://trello.com/b/tM6QGCLH/loomio-roadmap">The public roadmap</a></strong>'
-      twitter_html: '<strong><a href="https://twitter.com/loomio">Loomio on Twitter</a></strong>'
-      code_climate_html: '<strong><a href="https://codeclimate.com/github/loomio/loomio">Loomio’s Code Climate</a></strong>'
+      github_repo_html: The main Loomio development repository
+      github_issues_html: Loomio issue tracker on Github
+      angular_html: Loomio 1.0-beta in action
+      roadmap_html: The public roadmap
+      twitter_html: Loomio on Twitter
+      code_climate_html: Loomio’s Code Climate
     faq:
       title: FAQ
       confirmation_email:
