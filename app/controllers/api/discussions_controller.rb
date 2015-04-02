@@ -1,20 +1,16 @@
 class API::DiscussionsController < API::RestfulController
+  include DashboardHelper
+
   load_and_authorize_resource only: [:show, :mark_as_read, :set_volume], find_by: :key
   load_resource only: [:create, :update]
 
-  def inbox_by_date
-    load_and_authorize_group if params[:group_id]
-    @discussions = page_collection inbox_threads
+  def dashboard_by_date
+    @discussions = page_collection dashboard_threads
     respond_with_discussions
   end
 
-  def inbox_by_organization
-    @discussions = grouped inbox_threads.group_by(&:organization_id)
-    respond_with_discussions
-  end
-
-  def inbox_by_group
-    @discussions = grouped inbox_threads.group_by(&:group_id)
+  def dashboard_by_group
+    @discussions = grouped dashboard_threads.group_by(&:organization_id)
     respond_with_discussions
   end
 
@@ -42,7 +38,7 @@ class API::DiscussionsController < API::RestfulController
   def respond_with_discussions
     render json: DiscussionWrapper.new_collection(user: current_user, discussions: @discussions),
            each_serializer: DiscussionWrapperSerializer,
-           root: 'discussion_wrappers'
+           root: :discussion_wrappers
   end
 
   def discussion_params
@@ -64,19 +60,6 @@ class API::DiscussionsController < API::RestfulController
   end
 
   private
-
-  def inbox_threads
-    GroupDiscussionsViewer.for(user: current_user, group: @group, filter: params[:filter])
-                          .not_muted
-                          .where('last_activity_at > ?', params[:from_date] || 3.months.ago)
-                          .joined_to_current_motion
-                          .preload(:current_motion, {group: :parent})
-                          .order('motions.closing_at ASC, last_activity_at DESC')
-  end
-
-  def grouped(discussions)
-    discussions.map { |g, discussions| discussions.first(Integer(params[:per] || 5)) }.flatten
-  end
 
   def discussion_reader
     @dr ||= DiscussionReader.for(user: current_user, discussion: @discussion)

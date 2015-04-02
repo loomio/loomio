@@ -1,4 +1,15 @@
 class API::EventsController < API::RestfulController
+  include DashboardHelper
+
+  def dashboard_by_date
+    @events = page_collection dashboard_events
+    respond_with_collection
+  end
+
+  def dashboard_by_group
+    @events = grouped dashboard_events.group_by(&:organization_id)
+    respond_with_collection
+  end
 
   private
 

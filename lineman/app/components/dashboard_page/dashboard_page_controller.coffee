@@ -34,10 +34,13 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
   callFetch = (params) =>
     @loaded[@sort()][@filter()] = @loadedCount() + @perPage[@sort()]
 
-    if @sort() == 'sort_by_date'
-      Records.discussions.fetchInboxByDate(params)
-    else
-      Records.discussions.fetchInboxByGroup(params)
+    switch @sort()
+      when 'sort_by_date'
+        Records.events.fetchDashboardByDate(params)
+        Records.discussions.fetchDashboardByDate(params)
+      when 'sort_by_group'
+        Records.events.fetchDashboardByGroup(params)
+        Records.discussions.fetchDashboardByGroup(params)
 
   @loadedCount = (group) =>
     if group

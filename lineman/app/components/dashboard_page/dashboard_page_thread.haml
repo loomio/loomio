@@ -20,6 +20,11 @@
           %span> {{ discussion.activeProposal().name }} ·
           %smart_time{time: 'discussion.activeProposal().closingAt'}>
           %span> ·
+        %span.dashboard-page-activity-info{ng-if: '!discussion.activeProposal() && discussion.latestEvent()'}
+          %span{translate: 'dashboard_page.last_activity.{{discussion.latestEvent().kind}}'}>
+          %span> {{ discussion.latestEvent().author }} ·
+          %smart_time{time: 'discussion.latestEvent().createdAt'}>
+      %span> {{ discussion.group().fullName() }}
         %span> {{ discussion.group().fullName() }}
   -#.dashboard-page-thread-actions
     %a.dashboard-page-thread-action-button{ng-show: 'discussion.volume != "mute"', href: '#', ng-click: 'discussion.reader().changeVolume("mute")'}>

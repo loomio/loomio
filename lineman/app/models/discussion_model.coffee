@@ -39,6 +39,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     events: ->
       @eventsView.data()
 
+    latestEvent: ->
+      @events()[0] if @events()?
+
     comments: ->
       @commentsView.data()
 
