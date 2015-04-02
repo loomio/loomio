@@ -24,6 +24,10 @@
   @include card;
 }
 
+.thread-context img {
+  width: 100%;
+}
+
 .thread-context__title{
   margin: 2px 0 9px 0;
 }
