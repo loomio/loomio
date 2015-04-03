@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, Records, CurrentUser) ->
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, Records, CurrentUser, LoadingService) ->
   $rootScope.$broadcast('currentComponent', 'dashboardPage')
   $rootScope.$broadcast('setTitle', 'Dashboard')
 
@@ -22,28 +22,23 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
   @sort   = -> CurrentUser.dashboardSort
   @filter = -> CurrentUser.dashboardFilter
 
-  @loadMore = (options = {}) =>
-    return if @loading
-    @loading = true
-
-    callFetch(
-      filter:  @filter()
-      per:     @perPage[@sort()]
-      from:    @loadedCount()).then => @loading = false
-
-  callFetch = (params) =>
-    @loaded[@sort()][@filter()] = @loadedCount() + @perPage[@sort()]
-
-    if @sort() == 'sort_by_date'
-      Records.discussions.fetchInboxByDate(params)
-    else
-      Records.discussions.fetchInboxByGroup(params)
+  @loadParams = ->
+    filter: @filter()
+    per:    @perPage[@sort()]
+    from:   @loadedCount()
 
   @loadedCount = (group) =>
     if group
       @groupThreadCounts[group.dashboardStatus or 'collapsed']
     else
       @loaded[@sort()][@filter()]
+
+  @loadMore = (options = {}) =>
+    @loaded[@sort()][@filter()] = @loadedCount() + @perPage[@sort()]
+    switch @sort()
+      when 'sort_by_date'  then Records.discussions.fetchInboxByDate(@loadParams())
+      when 'sort_by_group' then Records.discussions.fetchInboxByGroup(@loadParams())
+  LoadingService.applyLoadingFunction @, 'loadMore'
 
   @changePreferences = (options = {}) =>
     CurrentUser.updateFromJSON(options)
