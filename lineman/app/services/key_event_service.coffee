@@ -10,13 +10,13 @@ angular.module('loomioApp').factory 'KeyEventService', ($rootScope) ->
 
     broadcast: (event) ->
       if key = @keyboardShortcuts[event.which]
-        $rootScope.$broadcast key, angular.element(document.activeElement)[0]
+        $rootScope.$broadcast key, event, angular.element(document.activeElement)[0]
 
     registerKeyEvent: (scope, eventCode, execute, shouldExecute) ->
       shouldExecute = shouldExecute or @defaultShouldExecute
-      scope.$on eventCode, (event, active) ->
+      scope.$on eventCode, (angularEvent, originalEvent, active) ->
         if shouldExecute(active)
-          event.preventDefault()
+          angularEvent.preventDefault() and originalEvent.preventDefault()
           execute(active)
 
     defaultShouldExecute: (active = {}) ->
