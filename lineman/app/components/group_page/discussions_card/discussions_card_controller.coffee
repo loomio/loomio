@@ -15,4 +15,4 @@ angular.module('loomioApp').controller 'DiscussionsCardController', ($scope, $mo
   $scope.getNextPage()
 
   $scope.openDiscussionForm = ->
-    DiscussionFormService.openNewDiscussionModal()
+    DiscussionFormService.openNewDiscussionModal($scope.group)
