@@ -2,6 +2,7 @@ angular.module('loomioApp').factory 'KeyEventService', ($rootScope) ->
   new class KeyEventService
 
     keyboardShortcuts:
+      84:  'pressedT'
       27:  'pressedEsc'
       13:  'pressedEnter'
       191: 'pressedSlash'
