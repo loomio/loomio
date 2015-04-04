@@ -1,4 +1,7 @@
 tr:
+  email_settings:
+    title: E-posta ayarları
+    submit: Ayarları güncelle
   explore:
     header: Genel grupları keşfedin
   try_it:
@@ -174,7 +177,9 @@ tr:
     about: Hakkında
     blog: Blog
     contact: İletişim
+    help: Yardım
     privacy: Gizlilik
+    pricing: Fiyatlandırma
     public_groups: Genel gruplar
     terms: Şartlar
   inbox:
@@ -404,7 +409,13 @@ tr:
       click_to_unfollow: Grubu takip etmeyi bırakmak için tıkla
       following_details: Bu grupta ki her konu hakkında bilgilendirileceksiniz.
       not_following_details: İştirak ettiğiniz konular hakkında bilgilendirileceksiniz.
+  networks:
+    previous_requests: Önceki istekler
+    approve: Onayla
+    threads: Müzakereler
+    groups: Gruplar
   group_request:
+    header: Bir grup başlat
     commercial_use_option: "bir şirkette, formel örgütte ya da işyerinde"
     non_commercial_use_option: bir topluluk grubunda ya da enformel bir ağda
     please_select_an_option: "Lütfen, bir opsiyon seçin"
@@ -948,6 +959,8 @@ tr:
   google: Google
   persona: Karakter
   common:
+    profile: Profil
+    email_settings: E-posta ayarları
     markdown_help_tooltip: Markdown ile metin biçimlendirme temellerini öğrenin
     settings: Ayarlar
     dashboard: Kontrol paneli

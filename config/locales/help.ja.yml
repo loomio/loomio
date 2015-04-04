@@ -1,0 +1,36 @@
+ja:
+  new_help:
+    how_to:
+      start_group_link: グループを開始する
+      invite_people_link: メンバーを招待する
+      start_discussion_link: ディスカッションを開始する
+    contents:
+      getting_started:
+        title_html: 始めるには
+      inviting_members:
+        pending_invitations_html: 保留中の招待
+      discussion_threads:
+        discussion_privacy_html: ディスカッションプライバシー
+      subgroups:
+        title_html: 子グループ
+      keeping_up_to_date:
+        email_settings_html: Eメール設定
+    getting_started:
+      title: 始めるには
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: 誰がこのグループを見つけられる？
+        how_do_people_join:
+          title: どうやって参加する？
+    inviting_members:
+      pending_invitations:
+        title: 保留中の招待
+    discussion_threads:
+      discussion_privacy:
+        title: ディスカッションプライバシー
+    subgroups:
+      title: 子グループ
+    keeping_up_to_date:
+      email_settings:
+        title: Eメール設定

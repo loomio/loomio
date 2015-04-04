@@ -856,7 +856,7 @@ pt-BR:
         create: Iniciar proposição
       user:
         create: Criar conta
-        update: Salvar configurações
+        update: Atualizar configurações
   email:
     by_who: "por %{person}"
     reply_to_this_discussion: Responder a esta discussão

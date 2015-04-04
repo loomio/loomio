@@ -1,0 +1,56 @@
+hr:
+  new_help:
+    how_to:
+      start_group_link: Započni grupu
+      invite_people_link: Pozovi ljude
+      start_discussion_link: Započni raspravu
+    contents:
+      getting_started:
+        title_html: Početak rada
+      group_settings:
+        group_permissions_html: Dozvole grupe
+      discussion_threads:
+        discussion_privacy_html: Privatnost rasprave
+      subgroups:
+        title_html: Podgrupe
+      keeping_up_to_date:
+        email_settings_html: Postavke emaila
+      user_profile:
+        account_deactivation_html: Deaktivacija računa
+    getting_started:
+      title: Početak rada
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Tko može naći ovu grupu?
+        how_do_people_join:
+          title: Kako se pridružiti?
+        who_can_see_discussions:
+          title: Tko može vidjeti rasprave?
+      group_permissions:
+        title: Dozvole grupe
+        what_can_members_do:
+          title: Što mogu članovi?
+          invite_and_approve_new_members:
+            title: Pozivati i odobravati nove članove
+          start_discussions:
+            title: Započinjati rasprave
+          edit_discussion_context:
+            title: Ažurirati kontekst bilo koje rasprave u grupi
+          edit_comments:
+            title: Bili kada ažurirati komentare
+          raise_proposals:
+            title: Podizati prijedloge
+          vote_on_proposals:
+            title: Glasati o prijedlozima
+    discussion_threads:
+      discussion_privacy:
+        title: Privatnost rasprave
+    subgroups:
+      title: Podgrupe
+    keeping_up_to_date:
+      email_settings:
+        title: Postavke emaila
+    user_profile:
+      account_deactivation:
+        title: Deaktivacija računa

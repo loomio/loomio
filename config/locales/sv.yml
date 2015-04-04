@@ -1,4 +1,7 @@
 sv:
+  email_settings:
+    title: Emailinställningar
+    submit: Uppdatera inställningar
   explore:
     header: Utforska publika grupper
   try_it:
@@ -174,7 +177,9 @@ sv:
     about: Om
     blog: Blogga
     contact: Kontakta
+    help: Hjälp
     privacy: Slutet
+    pricing: Prissättning
     public_groups: Öppna grupper
     terms: Villkor
   inbox:
@@ -327,6 +332,7 @@ sv:
       parent_members: "Privat listade grupp. Visas endast för medlemmar och personer i %{parent_group_name}."
       members: Dold grupp. Visas endast för medlemmar.
       public_html: "Någon <span>lista gruppen offentligt</span>"
+      parent_members_html: "Personer i %{parent_group_name} <span>onoterade för allmänheten, men synlig för medlemmar i %{parent_group_name}</span>"
       members_html: "Medlemmar bara <span>gruppen kommer inte att listas</span>"
   setup_steps_title: "Nästa steg:"
   setup_step_1: Titta på diksussionsexemplet
@@ -403,7 +409,13 @@ sv:
       click_to_unfollow: Klicka för att sluta följa gruppen
       following_details: Du kommer att meddelas om varje tråd i denna grupp.
       not_following_details: Du kommer att meddelas om trådar som du deltar i.
+  networks:
+    previous_requests: Tidigare önskemål
+    approve: Godkänn
+    threads: Diskussioner
+    groups: Grupper
   group_request:
+    header: Starta en grupp
     commercial_use_option: "i ett företag, formell organisation eller arbetsplats"
     non_commercial_use_option: i ett samhälle grupp eller informellt nätverk
     please_select_an_option: Vänligen välj ett alternativ
@@ -942,6 +954,8 @@ sv:
   google: Google
   persona: Persona
   common:
+    profile: Profil
+    email_settings: Emailinställningar
     markdown_help_tooltip: Lär dig grunderna i att formatera din text med Wiki
     settings: Inställningar
     dashboard: Instrumentbräda

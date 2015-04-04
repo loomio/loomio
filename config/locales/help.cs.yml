@@ -1,0 +1,56 @@
+cs:
+  new_help:
+    how_to:
+      start_group_link: Vytvořit skupinu
+      invite_people_link: Pozvat další
+      start_discussion_link: Zahájit diskuzi
+    contents:
+      getting_started:
+        title_html: Jak začít
+      group_settings:
+        group_permissions_html: Oprávnění skupiny
+      inviting_members:
+        pending_invitations_html: Nevyřízené pozvánky
+      subgroups:
+        title_html: Podskupiny
+      keeping_up_to_date:
+        email_settings_html: Nastavení emailu
+      user_profile:
+        account_deactivation_html: Deaktivace vašeho účtu
+    getting_started:
+      title: Jak začít
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Kdo může najít tuto skupinu?
+        how_do_people_join:
+          title: Jak se lidé připojí?
+        who_can_see_discussions:
+          title: Kdo může vidět diskuze?
+      group_permissions:
+        title: Oprávnění skupiny
+        what_can_members_do:
+          title: Co mohou členové dělat?
+          invite_and_approve_new_members:
+            title: Pozvat a schválit nové členy
+          start_discussions:
+            title: Zahájit diskuze
+          edit_comments:
+            title: Upravit kdykoliv své komentáře
+          raise_proposals:
+            title: Prezentujte návrhy
+          vote_on_proposals:
+            title: Hlasovat o návrzích
+    inviting_members:
+      pending_invitations:
+        title: Nevyřízené pozvánky
+    subgroups:
+      title: Podskupiny
+    keeping_up_to_date:
+      email_settings:
+        title: Nastavení emailu
+      yesterday_on_loomio:
+        title: Včera na Loomio
+    user_profile:
+      account_deactivation:
+        title: Deaktivace vašeho účtu

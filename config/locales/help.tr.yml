@@ -1,0 +1,63 @@
+tr:
+  new_help:
+    how_to:
+      start_group_link: Bir grup başlat
+      invite_people_link: Kişileri davet et
+      start_discussion_link: Bir müzakere başlat
+    contents:
+      getting_started:
+        title_html: Başlarken
+      group_settings:
+        group_permissions_html: Grup izinleri
+      inviting_members:
+        pending_invitations_html: Bekleyen davetler
+      discussion_threads:
+        discussion_privacy_html: Müzakere gizliliği
+      subgroups:
+        title_html: Alt gruplar
+      keeping_up_to_date:
+        email_settings_html: E-posta ayarları
+      user_profile:
+        account_deactivation_html: Hesabınızın devre dışı bırakılması
+    getting_started:
+      title: Başlarken
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Kimler bu grubu bulabilir?
+        how_do_people_join:
+          title: İnsanlar nasıl katılabilir?
+        who_can_see_discussions:
+          title: Kim müzakereleri izleyebilir?
+      group_permissions:
+        title: Grup izinleri
+        what_can_members_do:
+          title: Üyeler neler yapabilir?
+          invite_and_approve_new_members:
+            title: Yeni üyeleri davet edin ve onaylayın.
+          start_discussions:
+            title: Müzakereler başlatın
+          edit_discussion_context:
+            title: Grup dahilindeki herhangi bir müzakarenin içeriğini düzenleyin
+          edit_comments:
+            title: İstediğiniz zaman onların yorumlarını düzenleyin
+          raise_proposals:
+            title: Öneriler üretin
+          vote_on_proposals:
+            title: Önerileri oylayın
+    inviting_members:
+      pending_invitations:
+        title: Bekleyen davetler
+    discussion_threads:
+      discussion_privacy:
+        title: Müzakere gizliliği
+    subgroups:
+      title: Alt gruplar
+    keeping_up_to_date:
+      email_settings:
+        title: E-posta ayarları
+      yesterday_on_loomio:
+        title: "Loomio'da dün"
+    user_profile:
+      account_deactivation:
+        title: Hesabınızın devre dışı bırakılması

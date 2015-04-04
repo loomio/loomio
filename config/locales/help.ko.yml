@@ -1,0 +1,25 @@
+ko:
+  new_help:
+    how_to:
+      start_group_link: 그룹 시작하기
+      invite_people_link: 초대 명단
+      start_discussion_link: 그룹 시작하기
+    contents:
+      getting_started:
+        title_html: 시작하기
+      inviting_members:
+        pending_invitations_html: 보류중인 초대
+      subgroups:
+        title_html: 하위 그룹
+      keeping_up_to_date:
+        email_settings_html: 이메일 설정
+    getting_started:
+      title: 시작하기
+    inviting_members:
+      pending_invitations:
+        title: 보류중인 초대
+    subgroups:
+      title: 하위 그룹
+    keeping_up_to_date:
+      email_settings:
+        title: 이메일 설정

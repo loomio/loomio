@@ -1,0 +1,201 @@
+de:
+  new_help:
+    how_to:
+      start_group_link: Gründen Sie eine Gruppe
+      invite_people_link: Leute einladen
+      start_discussion_link: Diskussion starten
+      make_proposal_link: Einen Vorschlag machen
+      make_proposal_description: "sehen, wie sich jeder zu einem bestimmten Punkt im Ablauf fühlt"
+      decide_together_link: "Gemeinsam entscheiden:"
+      decide_together_description: "jeder kann zustimmen, sich enthalten, nicht zustimmen oder Veto einlegen - so kannst Du sehen wie jeder zu dem Vorschlag steht."
+    contents:
+      title: Brauchst Du mehr Informationen?
+      getting_started:
+        title_html: Loslegen
+        starting_new_group_html: Wenn Du eine neue Loomio Gruppe starten willst
+        invited_into_group_html: Wenn Du in eine Loomio Gruppe eingeladen bist
+        joining_existing_group_html: Wenn Du einer bestehende Loomio Gruppe beitreten willst
+      group_settings:
+        title_html: Gruppen-Einstellungen
+        group_profile_html: Gruppen-Profil
+        group_permissions_html: Gruppen-Berechtigungen
+      coordination:
+        title_html: Koordiniere deine Gruppe
+        adding_cover_photo_html: Ein Cover-Photo hinzufügen
+        managing_membership_html: Mitgliedschaft organisieren
+        deactivating_groups_html: Gruppe deaktivieren/archivieren
+      inviting_members:
+        title_html: Neue Mitglieder einladen
+        importing_contacts_html: Kontakte importieren
+        pending_invitations_html: Unbestätigte Einladungen
+      discussion_threads:
+        title_html: Diskussionsstränge
+        starting_discussions_html: Diskussion eröffnen
+        providing_context_html: Kontext bereitstellen
+        discussion_privacy_html: Diskussionssphäre
+        editing_discussions_html: Diskussion bearbeiten
+        moving_discussions_html: Diskussion verschieben
+        deleting_discussions_html: Diskussion löschen
+      comments:
+        title_html: Kommentare
+        posting_comments_html: Kommentar veröffentlichen
+        attaching_files_html: Dateien anhängen
+        editing_comments_html: Kommentar bearbeiten
+        liking_comments_html: Kommentar zustimmen
+        deleting_comments_html: Kommentar löschen
+      proposals:
+        title_html: Vorschläge
+        starting_proposals_html: Einen Vorschlag machen
+        editing_proposals_html: Einen Vorschlag bearbeiten
+        stating_positions_html: Deine Meinung abgeben
+        changing_positions_html: Deine Meinung ändern
+        setting_outcome_html: Das Voschlagsergebnis festhalten
+        closing_proposals_html: Einen Vorschlag schließen
+        previous_decisions_html: Geschlossen Vorschläge/frühere Entscheidungen
+      subgroups:
+        title_html: Untergruppen
+      dashboard:
+        title_html: Dein Schreibtisch
+      keeping_up_to_date:
+        volume_html: Lautstärke
+        yesterday_on_loomio_html: "\"Gestern auf Loomio\""
+        email_settings_html: Email Einstellungen
+      user_profile:
+        title_html: Dein Benutzer-Profil
+        language_settings_html: Sprach-Einstellungen
+        usernames_html: Benutzernamen
+        updating_personal_settings_html: Deine persönlichen Einstellungen aktualisieren
+        profile_photo_html: Ein Profil-Foto hochladen
+        changing_passwords_html: Dein Passwort ändern
+        account_deactivation_html: Konto deaktivieren
+        account_reactivation_html: Dein Konto reaktivieren
+      leaving_groups:
+        title_html: Eine Gruppe verlassen
+      translation:
+        title_html: Übersetzung
+    getting_started:
+      title: Loslegen
+      starting_new_group:
+        title: Wenn Du eine neue Loomio Gruppe starten willst
+      invited_into_group:
+        title: Wenn Du in eine Loomio Gruppe eingeladen bist
+    group_settings:
+      group_profile:
+        title: Gruppen-Profil
+      group_privacy:
+        who_can_find_this_group:
+          title: Wer kann diese Gruppe sehen?
+        how_do_people_join:
+          title: Wie kann jemand teilnehmen?
+        who_can_see_discussions:
+          title: Wer kann Diskussionen sehen?
+      group_permissions:
+        title: Gruppen-Berechtigungen
+        what_can_members_do:
+          title: Was Mitglieder tun können?
+          invite_and_approve_new_members:
+            title: Neue Mitglieder einladen und annehmen
+          start_discussions:
+            title: Diskussionen eröffnen
+          edit_discussion_context:
+            title: Den Kontext jeder Diskussion in dieser Gruppe bearbeiten
+          edit_comments:
+            title: Jederzeit ihre Kommentare bearbeiten
+          raise_proposals:
+            title: Vorschläge einbringen
+          vote_on_proposals:
+            title: Über Vorschläge abstimmen
+    coordination:
+      title: Koordiniere deine Gruppe
+      adding_cover_photo:
+        title: Ein Cover-Photo hinzufügen
+      manage_membership:
+        title: Mitgliedschaft organisieren
+      deactivating_groups:
+        title: Gruppe deaktivieren/archivieren
+    inviting_members:
+      title: Neue Mitglieder einladen
+      importing_contacts:
+        title: Kontakte importieren
+      pending_invitations:
+        title: Unbestätigte Einladungen
+    discussion_threads:
+      title: Diskussionsstränge
+      starting_discussions:
+        title: Diskussion eröffnen
+      providing_context:
+        title: Kontext bereitstellen
+      discussion_privacy:
+        title: Diskussionssphäre
+      editing_discussions:
+        title: Diskussion bearbeiten
+      moving_discussions:
+        title: Diskussion verschieben
+      deleting_discussions:
+        title: Diskussion löschen
+    comments:
+      title: Kommentare
+      attaching_files:
+        title: Dateien anhängen
+      editing_comments:
+        title: Kommentar bearbeiten
+      liking_comments:
+        title: Kommentar zustimmen
+      deleting_comments:
+        title: Kommentar löschen
+    proposals:
+      title: Vorschläge
+      starting_proposals:
+        title: Einen Vorschlag machen
+      editing_proposals:
+        title: Einen Vorschlag bearbeiten
+      stating_positions:
+        title: Deine Meinung abgeben
+      changing_positions:
+        title: Deine Meinung ändern
+      setting_outcome:
+        title: Das Voschlagsergebnis festhalten
+      closing_proposals:
+        title: Einen Vorschlag schließen
+      previous_decisions:
+        title: Geschlossen Vorschläge/frühere Entscheidungen
+    subgroups:
+      title: Untergruppen
+    dashboard:
+      title: Dein Schreibtisch
+    keeping_up_to_date:
+      volume:
+        title: Lautstärke
+        body:
+          loud_title: Laut
+          normal_title: Normal
+          quiet_title: Leise
+          mute_title: Stumm
+      email_settings:
+        title: Email Einstellungen
+      yesterday_on_loomio:
+        title: Gestern auf Loomio
+    user_profile:
+      title: Dein Benutzer-Profil
+      language_settings:
+        title: Sprach-Einstellungen
+      usernames:
+        title: Benutzernamen
+      updating_personal_settings:
+        title: Deine persönlichen Einstellungen aktualisieren
+      profile_photo:
+        title: Ein Profil-Foto hochladen
+      changing_passwords:
+        title: Dein Passwort ändern
+      account_deactivation:
+        title: Konto deaktivieren
+      account_reactivation:
+        title: Dein Konto reaktivieren
+    leaving_groups:
+      title: Eine Gruppe verlassen
+    translation:
+      title: Übersetzung
+    contributing:
+      body:
+        translation:
+          title_html: Übersetzung

@@ -1,0 +1,71 @@
+sl:
+  new_help:
+    how_to:
+      start_group_link: Ustvari skupino
+      invite_people_link: Povabi še koga
+      start_discussion_link: Začni razpravo
+    contents:
+      getting_started:
+        title_html: Prvi koraki
+      group_settings:
+        group_permissions_html: Dovoljenja za skupine
+      inviting_members:
+        pending_invitations_html: "Vabila, ki čakajo odgovor"
+      discussion_threads:
+        discussion_privacy_html: Zasebnost razprave
+      subgroups:
+        title_html: Podskupine
+      keeping_up_to_date:
+        volume_html: Pogostost obveščanj
+        email_settings_html: Email nastavitve
+      user_profile:
+        account_deactivation_html: Deaktivacija računa
+    getting_started:
+      title: Prvi koraki
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Kdo lahko najde to skupino?
+        how_do_people_join:
+          title: Kako se lahko pridruži še kdo?
+        who_can_see_discussions:
+          title: Kdo lahko vidi razprave?
+      group_permissions:
+        title: Dovoljenja za skupine
+        what_can_members_do:
+          title: Kaj lahko počnejo člani?
+          invite_and_approve_new_members:
+            title: Povabijo in potrjujejo nove člane
+          start_discussions:
+            title: Začnejo razprave
+          edit_discussion_context:
+            title: Urejajo opis katerekoli razprave v skupini
+          edit_comments:
+            title: Urejajo vse svoje komentarje
+          raise_proposals:
+            title: Predlagajo
+          vote_on_proposals:
+            title: Glasujejo o predlogih
+    inviting_members:
+      pending_invitations:
+        title: "Vabila, ki čakajo odgovor"
+    discussion_threads:
+      discussion_privacy:
+        title: Zasebnost razprave
+    subgroups:
+      title: Podskupine
+    keeping_up_to_date:
+      volume:
+        title: Pogostost obveščanj
+        body:
+          loud_title: Glasno
+          normal_title: Normalno
+          quiet_title: Tiho
+          mute_title: Neslišno
+      email_settings:
+        title: Email nastavitve
+      yesterday_on_loomio:
+        title: Včeraj na Loomiu
+    user_profile:
+      account_deactivation:
+        title: Deaktivacija računa

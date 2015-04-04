@@ -1,0 +1,63 @@
+ro:
+  new_help:
+    how_to:
+      start_group_link: Creaza un grup
+      invite_people_link: Invita oameni
+      start_discussion_link: Discuţie nouă
+    contents:
+      getting_started:
+        title_html: Pregatit pentru a incepe
+      group_settings:
+        group_permissions_html: Permisiuni in grup
+      inviting_members:
+        pending_invitations_html: Invitaţii fără răspuns
+      discussion_threads:
+        discussion_privacy_html: Confidentialitatea discutiei
+      subgroups:
+        title_html: Subgrupuri
+      keeping_up_to_date:
+        email_settings_html: Setări email
+      user_profile:
+        account_deactivation_html: Contul se dezactiveaza
+    getting_started:
+      title: Pregatit pentru a incepe
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Cine poate gasi acest grup?
+        how_do_people_join:
+          title: Cum se pot alatura oamenii?
+        who_can_see_discussions:
+          title: Cine poate vedea discutiile?
+      group_permissions:
+        title: Permisiuni in grup
+        what_can_members_do:
+          title: Ce pot face membrii?
+          invite_and_approve_new_members:
+            title: Invita si valideaza noi membrii
+          start_discussions:
+            title: Initiaza discutii
+          edit_discussion_context:
+            title: Editeaza contextul oricarei discutii in grup
+          edit_comments:
+            title: Editeaza comentariile oricand
+          raise_proposals:
+            title: Enunta propuneri
+          vote_on_proposals:
+            title: Voteaza propuneri
+    inviting_members:
+      pending_invitations:
+        title: Invitaţii fără răspuns
+    discussion_threads:
+      discussion_privacy:
+        title: Confidentialitatea discutiei
+    subgroups:
+      title: Subgrupuri
+    keeping_up_to_date:
+      email_settings:
+        title: Setări email
+      yesterday_on_loomio:
+        title: Ieri pe Loomio
+    user_profile:
+      account_deactivation:
+        title: Contul se dezactiveaza

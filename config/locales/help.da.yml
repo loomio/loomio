@@ -1,0 +1,63 @@
+da:
+  new_help:
+    how_to:
+      start_group_link: Start en gruppe
+      invite_people_link: Inviter folk
+      start_discussion_link: Start en diskussion
+    contents:
+      getting_started:
+        title_html: Kom godt i gang
+      group_settings:
+        group_permissions_html: Gruppetilladelser
+      inviting_members:
+        pending_invitations_html: Afventende invitationer
+      discussion_threads:
+        discussion_privacy_html: Diskussionsfortrolighed
+      subgroups:
+        title_html: Undergrupper
+      keeping_up_to_date:
+        email_settings_html: Indstillinger for email
+      user_profile:
+        account_deactivation_html: Deaktiverer din konto
+    getting_started:
+      title: Kom godt i gang
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Hvem kan finde denne gruppe?
+        how_do_people_join:
+          title: Hvordan bliver folk medlem?
+        who_can_see_discussions:
+          title: Hvem kan se diskussioner?
+      group_permissions:
+        title: Gruppetilladelser
+        what_can_members_do:
+          title: Hvad kan medlemmer gøre?
+          invite_and_approve_new_members:
+            title: Invitere og godkende nye medlemmer
+          start_discussions:
+            title: Start diskussioner
+          edit_discussion_context:
+            title: Rediger konteksten for enhver diskussion i gruppen
+          edit_comments:
+            title: Rediger deres kommentarer når som helst
+          raise_proposals:
+            title: Fremsætte forslag
+          vote_on_proposals:
+            title: Stem om forslag
+    inviting_members:
+      pending_invitations:
+        title: Afventende invitationer
+    discussion_threads:
+      discussion_privacy:
+        title: Diskussionsfortrolighed
+    subgroups:
+      title: Undergrupper
+    keeping_up_to_date:
+      email_settings:
+        title: Indstillinger for email
+      yesterday_on_loomio:
+        title: I går på Loomio
+    user_profile:
+      account_deactivation:
+        title: Deaktiverer din konto

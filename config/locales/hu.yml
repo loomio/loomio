@@ -80,6 +80,7 @@ hu:
     group_already_setup: Már van ilyen csoport.
     passwords_did_not_match: A két jelszó nem azonos
     proposal_already_exists: Ebben a témában már van aktív javaslat.
+    username_cannot_contain_whitespace: A felhasználónév nem tartalmazhat szóközt
     user_with_email_address_already_in_group: Az evvel az e-mail címmel rendelkező felhasználó már tagja ennek a csoportnak.
     you_have_already_requested_membership: Már kérted a tagságot ebbe a csoportba.
     you_are_already_a_member_of_this_group: Már tagja vagy ennek a csoportnak.
@@ -308,7 +309,7 @@ hu:
       approval_html: "Kérés alapján <span>bárki csatlakozhat</span>"
       invitation_html: "Meghívásos alapon <span>az új tagoknak meghívót kell küldeni</span>"
     parent_members_can_see_discussions:
-      label: Beszélgetések titkosítása
+      label: Beszélgetések titkossága
       "true": "Bárki a %{parent_group_name} csoportból láthatja a vitákat"
       "false": Csak tagok láthatják a vitákat
     discussion_privacy_options:
@@ -424,6 +425,8 @@ hu:
   edit_group_description: A csoport leírásának szerkesztése
   group_subscription: Csoport felíratkozás
   groups:
+    max_size_warning_html: "Csoportod növekszik és hamarosan eléri a %{size} fős határt. Kérjük <a href='%{link}'>lépj kapcsolatba velünk</a> a határ megemelése érdekében."
+    max_size_reached_html: "Csoportod elérte a %{size} fős határt. <a href='%{link}'>Lépj kapcsolatba velünk</a> további tagok hozzáadása érdekében."
     follow:
       click_to_follow: "Klikk, kövesd a csoportot"
       click_to_unfollow: "Klikk, a követés törlése"
@@ -431,6 +434,7 @@ hu:
       not_following_details: Értesítést kapsz az eseményekről amelyekben részt veszel.
   networks:
     threads_header: minden nyilvános szál ebben a hálózatban
+    groups_header: "Mind a %{count} csoport ebben a hálózatban"
     members_count: "%{count} tag"
     membership_requests_header: "Tagsági kérelem ehhez a hálózathoz: %{network}"
     join_header: Csoportod hozzáadása a hálózathoz
@@ -639,6 +643,7 @@ hu:
     video_tutorial: Videóbemutató
     video_tutorial_description: Nézd meg a rövid videóbemutatót a Loomio használatáról.
     what_is_loomio: Mi az a Loomio?
+    what_is_loomio_description_html: "<p> A Loomio egy egyszerű, felhasználóbarát online eszköz a közösségi döntéshozatal számára. \nA Loomio megengedi a viták online kezelését, a megfelelő emberek meghívását a részvételre,\nkövetkezésképp a gyors döntéseket és az elhatározások valódi cselekvéssé alakítását. </p> \n"
   hint:
     context: Hogyan használd a téma leírását
     discussion: Hogyan kezdj izgalmas témát
@@ -661,7 +666,7 @@ hu:
     tooltip: Tudj meg többet a mi közösségünk finanszírozási modelljéről
     thought_about_contributing: Lehetőséged hogy hozzájárulj
     thought_about_contributing_description: "Loomio egy kooperatív társadalmi vállalkozás mely azon dolgozik, hogy bárki könnyen részt vehessen az őket érintő kérdések döntésében\nA pénz nem kellene akadálya legyen a közösségi döntéshozatalnak. Loomio finanszírozása a közösség tagjainak hozzájárulásaiból és a formális szervezetek bérletéből ered.\nHozzájárulásod azt jelenti, hogy a Loomio független marad, reklámmentes és ingyen elérhető azok számára akik csodálatos dolgokat művelnek a közösségeik javára.\nKöszönjük, hogy ezt lehetővé teszed!\n"
-    thank_you_title: "Köszönjük, hogy támogatod a Loomiót!"
+    thank_you_title: "Köszönjük hozzájárulásodat a Loomióhoz!"
     thank_you_body: "Az adományod segít bennünket, hogy egyszerű együttműködésen alapuló döntéshozatalt tegyünk elérhetővé világszerte.\nAz adományodról hamarosan e-mailben nyugtát fogsz kapni.\nMindenkit szeretettel várunk, hogy bekapcsolódjon a Loomio Közösségbe, ahol arról beszélgetünk, hogy hogy tudjuk az eszközt minnél jobban kihasználni és hogy tudunk javítani rajta.\n<a href='https://www.loomio.org/groups/3'>Mutasd a Loomio Közösséget!</a>\n"
     making_a_donation: Hozzájárulok
     making_a_donation_description: "Loomio egy kooperatív társadalmi vállalkozás mely azon dolgozik, hogy bárki könnyen részt vehessen az őket érintő kérdések döntésében\n\nHozzájárulásod azt jelenti, hogy a Loomio független marad, reklámmentes és ingyen elérhető azok számára akik csodálatos dolgokat művelnek a közösségeik javára.\n\nKöszönjük, hogy ezt lehetővé teszed!\n"
@@ -944,7 +949,7 @@ hu:
       proposal_closed: "A javaslat lezárva:"
       specify_outcome_html: "A javaslatod lezárult. <a href='%{link}'>Készíts egy összegzést</a> hogy mindenki megtudja az eredményt."
       specify_outcome: "A javaslatod lezárult. Készíts egy összegzést hogy mindenki megtudja az eredményt:"
-      outcome_created: "%{who} elkészítette egy javaslat összegzését:"
+      outcome_created: "%{who} összegezte egy javaslat eredményét:"
       you_agreed: "Te %{past_tense_position}"
     verification:
       header: "Mindjárt kész!"
@@ -1021,6 +1026,16 @@ hu:
   yahoo: Yahoo
   google: Google
   persona: Persona
+  log_in_with_third_party: "Vagy lépj be egy külső fiókkal:"
+  log_in_with_google: Lépj be a Google-lel
+  log_in_with_facebook: Lépj be a Facebook-kal
+  log_in_with_persona: Lépj be a Persona-val
+  log_in_with_twitter: Lépj be a Twitter-rel
+  sign_up_with_third_party: "Vagy regisztrálj egy külső fiókkal:"
+  sign_up_with_google: Regisztrálj a Google-lel
+  sign_up_with_facebook: Regisztrálj a Facebook-kal
+  sign_up_with_persona: Regisztrálj a Persona-val
+  sign_up_with_twitter: Regisztrálj a Twittwr-rel
   common:
     profile: Profil
     email_settings: Email beállítások
@@ -1091,7 +1106,7 @@ hu:
       am: de
       pm: du
     please_wait: Pillanat
-    privacy: Adatvédelem
+    privacy: Titkosság
     private: Zártkörű
     permissions: Engedélyek
     public: Nyilvános

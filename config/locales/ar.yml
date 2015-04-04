@@ -1,4 +1,7 @@
 ar:
+  email_settings:
+    title: إعدادت البريد الإلكتروني
+    submit: حدّث الإعدادات
   explore:
     header: إستكشف مجموعات عامة
   try_it:
@@ -122,9 +125,15 @@ ar:
         other: "%{count} ثوان"
   footer:
     about: حول
+    blog: مدونة
+    contact: تواصل معنا
+    help: مساعدة
     privacy: خصوصية
+    public_groups: المجموعات المفتوحة للعموم
+    terms: شروط الخدمة
   notifications:
     header: التنبيهات
+    new_motion: أنشأ اقتراحا
     motion_closed:
       by_user: أغلق الإقتراح
       by_expiry: تم إغلاق الإقتراح
@@ -231,6 +240,11 @@ ar:
     m6: بدء مجموعة فرعية بحيث يصبحون منسقين فيها.
     m7: تحرير التعليقات الخاصة بهم في أي وقت.
     m8: طرح المقترحات والمشاركة بها.
+  group_privacy:
+    visible_to:
+      public_html: "أي أحد <span>المجموعة متاحة للعلن</span>"
+      parent_members_html: "متاحة للأعضاء في %{parent_group_name} <span>المجموعة غير متاحة للعلن، لكنها ظاهرة لأعضاء %{parent_group_name}</span>"
+      members_html: "للأعضاء فقط <span>لن يتم إظهار المجموعة</span>"
   setup_steps_title: "الخطوة التالية:"
   invite_people: قم بدعوة الناس
   edit_memberships: عدّل العضويات
@@ -274,6 +288,11 @@ ar:
   updating_group: جار تحديث المجموعة
   start_a_discussion: ابدأ نقاشا
   group_description: وصف المجموعة
+  networks:
+    approve: موافق
+    groups: المجموعات
+  group_request:
+    header: ابدأ مجموعة
   discussion_items:
     new_discussion: أنشأ النقاش
     new_motion: أنشأ اقتراحا
@@ -306,6 +325,7 @@ ar:
   delete_comment: احذف التعليق
   confirm_delete_comment: هل أنت متأكد من أنك تريد حذف هذا التعليق؟
   markdown_settings_more_info: معلومات إضافية...
+  edit_discussion: تعديل المحادثة
   delete_discussion: احذف النقاش
   confirm_delete_discussion: هل أنت متأكد من أنك تريد حذف هذا النقاش بشكل دائم؟
   new_proposal: اقتراح جديد
@@ -360,15 +380,19 @@ ar:
   password_confirmation: تأكيد كلمة السر
   current_password: كلمة السر الحالية
   password_details: (نحتاج كلمة سرك الجديدة لتأكيد تعديلاتك)
+  confirm_password: تأكيد كلمة السر
   cancel_my_account: قم بإلغاء حسابي
   remember_me: تذكرني
   signing_in: تسجيل الدخول
   forgot_your_password: هل نسيت كلمة سرك؟
   confirmation_not_received: لم تصلك تعليمات تأكيد كلمة السر؟
   unlock_not_received: لم تصلك تعليمات فتح القفل؟
+  log_in: تسجيل الدخول
   invitation:
     recipients: "يرجى إدخال عناوين بريد إلكتروني تفصل بينها فواصل:"
   discussion_form:
+    new:
+      header: ابدأ نقاشا
     edit:
       header: تعديل المحادثة
   motion_form:
@@ -457,6 +481,9 @@ ar:
       subject: تم قبول طلب العضوية
     invitation:
       hi: "مرحبا بك %{name}،"
+    proposal_closing_soon:
+      closes_in: سيغلق خلال
+  about_loomio: عن Loomio
   ago: "منذ %{quantity_of_time}"
   approve: موافق
   back: الرجوع
@@ -465,6 +492,7 @@ ar:
   close: إغلاق
   closed: مغلق
   delete: حذف
+  details: التفاصيل
   edit: تحرير
   email_address: عنوان البريد الإلكتروني
   enable: تفعيل
@@ -478,16 +506,20 @@ ar:
   outcome: النتيجة
   password: كلمة السر
   photo: صورة
+  prev: السابق
   options: الخيارات
   save: حفظ
   saving: جار الحفظ
   send_invite: أرسل دعوة
   send_email: أرسل رسالة إلكترونية
   show_more: أظهر المزيد
+  start_a_group: ابدأ مجموعة
   subject: الموضوع
   unlike: أخالف هذا
   update: تحديث
   common:
+    email_settings: إعدادت البريد الإلكتروني
+    groups: المجموعات
     today: اليوم
     months:
       january: يناير

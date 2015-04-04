@@ -1,4 +1,7 @@
 cs:
+  email_settings:
+    title: Nastavení emailu
+    submit: Aktualizovat nastavení
   explore:
     header: Prozkoumejte veřejné skupiny
   try_it:
@@ -171,7 +174,9 @@ cs:
     about: O nás
     blog: Blog
     contact: Kontakt
+    help: Nápověda
     privacy: Soukromí
+    pricing: Ceník
     public_groups: Veřejné skupiny
     terms: Podmínky
   inbox:
@@ -352,7 +357,13 @@ cs:
   start_a_discussion: Zahájit diskuzi
   group_description: Popis skupiny
   edit_group_description: Upravit popis skupiny
+  networks:
+    previous_requests: Předchozí žádosti
+    approve: Schválit
+    threads: Diskuze
+    groups: Skupiny
   group_request:
+    header: Vytvořit skupinu
     commercial_use_option: "ve firmě, formální organizaci nebo na pracovišti"
     please_select_an_option: "Prosím, vyberte jednu z možností"
     confirmation:
@@ -386,6 +397,9 @@ cs:
     filter_followed:
       enable: Zobrazit pouze sledované diskuse
       disable: Zobrazit sledované a nesledované diskuse
+    empty:
+      no_discussions: V žádných vašich skupinách nejsou diskuze.
+      no_discussions_in_group: Tato skupina zatím nemá žádné diskuze.
   discussion_context:
     started_html: "Zahájil(a) <a href='%{link}' class='%{link_class}'>%{who}</a> před %{when}"
     last_edited_html: "Naposledy upravil(a) <a href='%{link}' class='%{link_class}'>%{who}</a> před %{when}"
@@ -814,6 +828,8 @@ cs:
   google: Google
   persona: Persona
   common:
+    profile: Profil
+    email_settings: Nastavení emailu
     settings: Nastavení
     dashboard: Ovládací panel
     unread: Nepřečteno
@@ -880,6 +896,8 @@ cs:
       am: dop.
       pm: odp.
     please_wait: Prosím vyčkejte
+    privacy: Soukromí
+    private: Soukromá
     permissions: Oprávnění
     public: Veřejnost
     email: E-mail

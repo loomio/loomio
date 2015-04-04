@@ -1,0 +1,34 @@
+ga-IE:
+  new_help:
+    how_to:
+      start_group_link: Cuir baicle ar bun
+      invite_people_link: Tabhair cuirí do dhaoine
+      start_discussion_link: Cuir tús le plé
+    contents:
+      getting_started:
+        title_html: Ag tosú ar dtús báire
+      inviting_members:
+        pending_invitations_html: Cuirí ar feitheamh
+      keeping_up_to_date:
+        email_settings_html: Socruithe ríomhphoist
+    getting_started:
+      title: Ag tosú ar dtús báire
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Cé ar féidir leo an bhaicle seo a aimsiú?
+        how_do_people_join:
+          title: Conas mar is féidir le daoine clárú?
+      group_permissions:
+        what_can_members_do:
+          title: Cad is féidir leis na baill a dhéanamh?
+          start_discussions:
+            title: Cuir tús le plé
+    inviting_members:
+      pending_invitations:
+        title: Cuirí ar feitheamh
+    keeping_up_to_date:
+      email_settings:
+        title: Socruithe ríomhphoist
+      yesterday_on_loomio:
+        title: Inné ar Loomio

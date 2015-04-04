@@ -1,4 +1,6 @@
 vi:
+  email_settings:
+    submit: Cập nhật phần thiết lập
   activerecord:
     errors:
       messages:
@@ -13,6 +15,9 @@ vi:
     formats:
       for_this_year: "%e %b"
       for_another_year: "%-d/%-m/%y"
+  devise:
+    registrations:
+      sign_up: Tạo tài khoản
   error:
     access_denied: Bạn không có quyền thực hiện thao tác này.
     cant_join_subgroup: Bạn không thể tham gia vào nhóm-con này nếu bạn không phải là thành viên của nhóm gốc.
@@ -52,6 +57,10 @@ vi:
     you_have_left_group: "Bạn chỉ còn lại %{which_group}."
     invitations:
       auto_added_and_sent: "%{auto_added_text} và %{sent_text}"
+  views:
+    pagination:
+      previous: Trước đó
+      next: Tiếp theo
   warning:
     cant_remove_last_admin: Bạn là người điều hành viên cuối cùng và không thể bị loại bỏ.
     membership_request_already_approved: Lời đề nghị làm thành viên đã được chấp thuận.
@@ -101,13 +110,16 @@ vi:
     about: Dịch bởi Vietnamesel10n
     blog: Blog
     contact: Liên hệ
+    help: Trợ giúp
     privacy: Quyền riêng tư
     terms: Điều khoản sử dụng
   inbox:
+    title: Hộp thư
     dropdown-btn: Hộp thư
     empty: "Bạn đã đến đúng ngày! Hiện không có bình luận nào để xem."
   notifications:
     header: Thông báo
+    new_motion: đã tạo lời đề nghị
     motion_closed:
       by_user: đã đóng lại yêu cầu
       by_expiry: Lời yêu cầu đã được đóng lại
@@ -135,6 +147,8 @@ vi:
     message: "<p>Đây là <strong>trang của nhóm</strong>. Ở phía bên trái là danh sách tất cả các phần thảo luận trong nhóm này.</p><p>Khi bạn muốn cả nhóm thảo luận một vấn đề khác, hãy bắt đầu một phần thảo luận mới.</p>"
   dashboard_helper_text:
     header: Chào mừng đến với Trang Chủ của bạn
+  user_profile:
+    change_password: Thay đổi mật khẩu của bạn
   setup_steps_title: "Các bước tiếp theo:"
   setup_step_1: Thử dùng một thảo luận dạng mẫu
   setup_step_2: Bắt đầu phần thảo luận đầu tiên của bạn
@@ -192,7 +206,12 @@ vi:
   start_a_discussion: Bắt đầu phần thảo luận
   group_description: Mô tả về nhóm
   edit_group_description: Chỉnh sửa mô tả về nhóm
+  networks:
+    approve: Chấp thuậ
+    threads: Các phần thảo luận
+    groups: Các nhóm
   group_request:
+    header: Lập một nhóm mới
     confirmation:
       title: "Bạn đã sắp hoàn tất! Hãy kiểm tra email của mình."
       body_html: "Chúng tôi đã gửi cho bạn một email để mời bạn tham gia vào nhóm của mình.\n\nNếu bạn không thấy email nào trong hộp thư của mình, hãy liên hệ chúng tôi tại<a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
@@ -212,6 +231,10 @@ vi:
   empty_decision_list_html: "Đã sẵn sàng đưa ra quyết định? <br> Bất kỳ ai cũng có thể bắt đầu đưa ra lời đề nghị."
   empty_decision_index: Nhóm này vẫn chưa đưa ra quyết định nào.
   empty_discussion_list: Phần thảo luận này hiện vẫn chưa có thông tin nào.
+  discussion_list:
+    empty:
+      no_discussions: Hiện không có phần thảo luận nào trong bất kỳ nhóm nào của bạn.
+      no_discussions_in_group: Nhóm này hiện không có phần thảo luận nào.
   discussion_context:
     started_html: "Đã bắt đầu cách đây %{when} bởi <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Đã được chỉnh sửa cách đây %{when} bởi <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -327,10 +350,12 @@ vi:
   password_confirmation: Xác nhận về mật khẩu
   current_password: Mật khẩu hiện tại
   password_details: (chúng tôi cần bạn điền vào mật khẩu hiện tại của bạn để xác nhận các thay đổi này)
+  confirm_password: Xác nhận mật khẩu
   cancel_my_account: Hủy bỏ tài khoản của tôi
   remember_me: Ghi nhớ đăng nhập
   signing_in: Đang đăng nhập vào
   forgot_your_password: Quên mật khẩu?
+  dont_have_an_account: Chưa có tài khoản?
   confirmation_not_received: Không nhận được hướng dẫn xác nhận?
   unlock_not_received: Không nhận được hướng dẫn mở khóa?
   invitation:
@@ -348,6 +373,7 @@ vi:
     invitation_link: Đường dẫn liên kết đến lời mời
     link_help: "Click vào liên kết này để tham gia vào %{group} trên Loomio:"
     copy: "Nếu một ai đó không nhận được email xác nhận lời mời, xin vui lòng sao chép đường dẫn liên kết phía trên và gửi cho chính bạn."
+    pending_invitations: Đang đợi thư mời
   search:
     description: "Bên dưới là danh sách các phần thảo luận và lời đề nghị có thông tin liên quan về '%{query}' trong phần tiêu đề và mô tả."
     header: "Tìm kiếm kết quả về '%{query}'"
@@ -358,7 +384,13 @@ vi:
   example_motion:
     name: "Chúng ta có lẽ nên bàn thảo về một chuyến du lịch đến mặt trăng chẳng hạn!"
     description: "Rôbốt Trợ Giúp Loomio sẵn sàng hỗ trợ nhóm của bạn một phần đầu tư về một chuyến đi lên mặt trăng. Chắc có lẽ nghe hơi kỳ kỳ. Nhưng mục tiêu của chúng ta là nhằm thảo luận về một đề tài nào đó.\nĐây có phải là một ý kiến tốt hay không? Rôbốt Trợ Giúp Loomio muốn biết bạn nghĩ gì về điều này!\nNếu bạn đã biết rõ kiến nghị của mình, hãy click vào một trong số các biểu tượng bên dưới (rê chuột qua nút quyết định để có được mô tả về mỗi đối tượng mà bạn muốn biết ý nghĩa của chúng).\nBạn sẽ được thông báo một phát biểu ngắn gọn về nguyên nhân đối với việc đưa ra quyết định của mình. Phần này hoàn toàn dễ dàng nhằm tóm lược thông tin về điều mọi người đang suy nghĩ cũng như lý do tại sao. Bạn có thể thay đổi suy nghĩ của mình và thậm chí là chỉnh sửa việc đưa ra quyết định theo cách tự do nhất có thể miễn là trước khi thời hạn dành cho lời đề nghị chưa bị đóng lại.\n"
+  discussion_form:
+    new:
+      header: Bắt đầu một cuộc thảo luận
+      who: Bạn muốn bắt đầu phần thảo luận trong nhóm nào?
   motion_form:
+    new:
+      header: Tạo lời đề nghị mới
     name_helper: Hãy soạn thảo phần tiêu đề theo hướng rõ ràng và ngắn gọn.
   vote_form:
     header: Đưa ra kiến nghị của bạn
@@ -370,6 +402,9 @@ vi:
     update: Cập nhật kiến nghị
   new_user_form:
     create_an_account: Tạo một tài khoản
+  profile_form:
+    picture: Hình ảnh
+    upload_new_image: Tải lên một hình ảnh mới
   group_setup:
     submit: "Hãy đưa tôi đến nhóm của mình!"
   simple_form:
@@ -389,12 +424,15 @@ vi:
       motion:
         name: Tiêu đề
         description: Chi tiết
+        close_at_date: Đang đóng lại
       user:
         name: Tên đầy đủ
         email: Email
         password: Mật khẩu
         password_confirmation: Xác nhận mật khẩu
         language_preference: Ngôn ngữ
+      group_request:
+        name: Tên của nhóm bạn là gì?
     placeholders:
       membership_request:
         introduction: "Viết một vài dòng về thông tin cá nhân của bạn cũng như lý do tại sao bạn muốn tham gia %{group_name}."
@@ -494,9 +532,12 @@ vi:
   send_invite: Gửi thư mời
   send_email: Gửi email
   show_more: Hiển thị thêm
+  start_a_group: Lập một nhóm mới
   starting: Đang bắt đầu
   subject: Chủ đề
   unlike: Không thích
   update: Cập nhật
   common:
+    groups: Các nhóm
+    privacy: Quyền riêng tư
     email: Email

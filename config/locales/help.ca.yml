@@ -1,0 +1,55 @@
+ca:
+  new_help:
+    how_to:
+      start_group_link: Comença un grup
+      invite_people_link: Convida gent
+      start_discussion_link: Comença una discussió
+    contents:
+      getting_started:
+        title_html: Primers passos
+      group_settings:
+        group_permissions_html: Permisos de grup
+      inviting_members:
+        pending_invitations_html: Invitacions pendents
+      discussion_threads:
+        discussion_privacy_html: Privacitat de la discussió
+      subgroups:
+        title_html: Sub-grups
+      keeping_up_to_date:
+        email_settings_html: Configuració de correu electrònic
+      user_profile:
+        account_deactivation_html: Desactivant el teu compte
+    getting_started:
+      title: Primers passos
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Qui pot trobar aquest grup?
+        who_can_see_discussions:
+          title: Qui pot veure les discussions?
+      group_permissions:
+        title: Permisos de grup
+        what_can_members_do:
+          title: Què poden fer els membres?
+          invite_and_approve_new_members:
+            title: Convida i aprova nous membres
+          start_discussions:
+            title: Començar discussions
+          edit_comments:
+            title: Editar els comentaris en qualsevol moment.
+          vote_on_proposals:
+            title: Votar propostes
+    inviting_members:
+      pending_invitations:
+        title: Invitacions pendents
+    discussion_threads:
+      discussion_privacy:
+        title: Privacitat de la discussió
+    subgroups:
+      title: Sub-grups
+    keeping_up_to_date:
+      email_settings:
+        title: Configuració de correu electrònic
+    user_profile:
+      account_deactivation:
+        title: Desactivant el teu compte

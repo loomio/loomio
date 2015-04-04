@@ -1,4 +1,7 @@
 an:
+  email_settings:
+    title: "Configuración d'o correu electronico"
+    submit: Actualizar preferencias
   explore:
     header: Explorar grupos publicos
   try_it:
@@ -174,7 +177,9 @@ an:
     about: Sobre Loomio
     blog: Blog
     contact: Contacto
+    help: Aduya
     privacy: Privacidat
+    pricing: Pres
     public_groups: Grupos publicos
     terms: Termens
   inbox:
@@ -404,7 +409,13 @@ an:
       click_to_unfollow: Fe clic ta deixar de seguir o grupo
       following_details: "Serás notificau sobre totz os temas d'iste grupo"
       not_following_details: Se te notificará sobre os temas en os quals yes participando.
+  networks:
+    previous_requests: Solicitutz anteriors
+    approve: Aprebar
+    threads: Discusions
+    groups: Grupos
   group_request:
+    header: Crear un grupo
     commercial_use_option: "en una interpresa, organización formal u puesto de treballo"
     non_commercial_use_option: En una comunidat u grupo informal
     please_select_an_option: Por favor tigue una opción
@@ -947,6 +958,8 @@ an:
   google: Google
   persona: Persona
   common:
+    profile: Perfil
+    email_settings: "Configuración d'o correu electronico"
     markdown_help_tooltip: "Conoixe o basico d'o formateyo de texto con Markdown"
     settings: Achustes
     dashboard: Panel de control

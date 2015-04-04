@@ -1,4 +1,7 @@
 he:
+  email_settings:
+    title: הגדרות דוא״ל
+    submit: עדכון הגדרות
   explore:
     header: גלו קבוצות ציבוריות
   try_it:
@@ -174,7 +177,9 @@ he:
     about: אודות
     blog: בלוג
     contact: יצירת קשר
+    help: עזרה
     privacy: פרטיות
+    pricing: תמחור
     public_groups: קבוצות ציבוריות
     terms: תנאי שימוש
   inbox:
@@ -355,7 +360,13 @@ he:
     follow:
       following_details: תקבלו הודעה על כל שיחה בקבוצה זו
       not_following_details: תקבלו הודעה על שיחות בהן השתתפתם
+  networks:
+    previous_requests: בקשןת קודמות
+    approve: אישור
+    threads: דיונים
+    groups: קבוצות
   group_request:
+    header: יצירת קבוצה
     please_select_an_option: נא לבחור אפשרות
     confirmation:
       title: כמעט סיימת. הודעה נשלחה לתיבת הדוא״ל שלך.
@@ -480,6 +491,7 @@ he:
   cancel_my_account: בטל את החשבון שלי
   sign_up_via: הרשמה דרך
   confirm_your_details: אישרור הפרטים
+  log_in: התחברות
   invitation:
     alternate: "לחליפין, שיתוף הקישור הזה יאפשר לכל אחד לבקש להצטרף"
     by_email: הזמנה בדוא״ל
@@ -487,6 +499,7 @@ he:
     invitation_not_found: "לא נמצאה הזמנה, אנא בקשו שישלחו לכם הזמנה חדשה."
     invitation_cancelled: הזמנה זו בוטלה. נא ליצור קשר עם השולח אם זו נראית לך טעות.
     recipients: "נא להזין כתובות דוא״ל, מופרדות בפסיקים:"
+    invite_people: הזמינו אנשים לקבוצה שלך
     invite_to_discussion: הזמנת אנשים לדיון זה
     body_editable_discussion: "הי, בואו הצטרפו לדיון!\n"
     discussion_link: "השתתפו בדיון:"
@@ -521,6 +534,7 @@ he:
       only_closing_at: לא ניתן לשנות את שם או פירוט ההצעה לאחר שההצבעה החלה
     close_proposal_heading: מעוניינים לסגור את ההצעה לפני הזמן?
   vote_form:
+    header: הצהר/י עמדתך
     your_position: עמדתך
     your_statement: הצהרתך
     submit: הגשת עמדה
@@ -678,6 +692,8 @@ he:
   google: גוגל
   persona: פרסונה
   common:
+    profile: פרופיל
+    email_settings: הגדרות דוא״ל
     markdown_help_tooltip: צעדי בסיס בלימוד עיצוב הטקסט באמצעות Markdown
     settings: הגדרות
     dashboard: לוח מכוונים

@@ -72,3 +72,10 @@ fi:
   generic_confirm: Oletko varma?
   add_new_member: Lisää uusi jäsen
   invite_members_to_group: "Kutsu jäseniä %{which_group} ryhmään"
+  group_request:
+    header: Aloita ryhmä
+  discussion_items:
+    motion_closed:
+      by_user: sulki esityksen
+  log_in: Kirjaudu sisään
+  start_a_group: Aloita ryhmä

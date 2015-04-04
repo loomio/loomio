@@ -1,0 +1,71 @@
+es:
+  new_help:
+    how_to:
+      start_group_link: Empieza un grupo
+      invite_people_link: Invitar a personas
+      start_discussion_link: Empezar una discusión
+    contents:
+      getting_started:
+        title_html: Primeros pasos
+      group_settings:
+        group_permissions_html: Permisos del grupo
+      inviting_members:
+        pending_invitations_html: Invitaciones pendientes
+      discussion_threads:
+        discussion_privacy_html: Privacidad de la discusión
+      subgroups:
+        title_html: Subgrupos
+      keeping_up_to_date:
+        volume_html: "Volumen "
+        email_settings_html: Configuración de correo electrónico
+      user_profile:
+        account_deactivation_html: Desactivando su cuenta.
+    getting_started:
+      title: Primeros pasos
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: ¿Quien puede encontrar este grupo?
+        how_do_people_join:
+          title: ¿Cómo unirse al grupo?
+        who_can_see_discussions:
+          title: ¿Quién puede ver las discusiones?
+      group_permissions:
+        title: Permisos del grupo
+        what_can_members_do:
+          title: ¿Qué pueden hacer los miembros?
+          invite_and_approve_new_members:
+            title: Invitar y aprobar nuevos miembros
+          start_discussions:
+            title: Empezar discusiones
+          edit_discussion_context:
+            title: Editar el contexto de cualquier discusión del grupo
+          edit_comments:
+            title: Editar sus comentarios en cualquier momento
+          raise_proposals:
+            title: Hacer propuestas
+          vote_on_proposals:
+            title: Votar en propuestas
+    inviting_members:
+      pending_invitations:
+        title: Invitaciones pendientes
+    discussion_threads:
+      discussion_privacy:
+        title: Privacidad de la discusión
+    subgroups:
+      title: Subgrupos
+    keeping_up_to_date:
+      volume:
+        title: "Volumen "
+        body:
+          loud_title: Alto
+          normal_title: Normal
+          quiet_title: Bajo
+          mute_title: "Silenciado "
+      email_settings:
+        title: Configuración de correo electrónico
+      yesterday_on_loomio:
+        title: Ayer en Loomio
+    user_profile:
+      account_deactivation:
+        title: Desactivando su cuenta.

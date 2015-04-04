@@ -1,0 +1,10 @@
+fa-IR:
+  new_help:
+    how_to:
+      start_group_link: راه اندازی گروه
+      start_discussion_link: راه انداختن یک بحث
+    contents:
+      subgroups:
+        title_html: زیرگروه‌ها
+    subgroups:
+      title: زیرگروه‌ها

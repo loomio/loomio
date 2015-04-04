@@ -1,4 +1,7 @@
 sk:
+  email_settings:
+    title: Nastavenia emailu
+    submit: Aktualizovať nastavenia
   explore:
     header: Preskúmajte verejné skupiny
   try_it:
@@ -188,7 +191,9 @@ sk:
     about: O nás
     blog: Blog
     contact: Kontakt
+    help: Pomocník
     privacy: Súkromie
+    pricing: Cenník
     public_groups: Verejné skupiny
     terms: Podmienky
   inbox:
@@ -418,7 +423,13 @@ sk:
       click_to_unfollow: Kliknutím ukončíte sledovanie skupiny
       following_details: Budete upozornený/á na každú diskusiu v tejto skupine.
       not_following_details: Budete upozornený/á na dianí v diskusiách na ktorých sa zúčastňujete.
+  networks:
+    previous_requests: Predošlé žiadosti
+    approve: Schváliť
+    threads: Diskusie
+    groups: Skupiny
   group_request:
+    header: Vytvoriť skupinu
     commercial_use_option: "ve firme, formálnej organizácii alebo na pracovisku"
     non_commercial_use_option: v komunitnej skupine alebo neformálnom zoskupení
     please_select_an_option: "Prosím, vyberte jednu z možností"
@@ -961,6 +972,8 @@ sk:
   google: Google
   persona: Persona
   common:
+    profile: Profil
+    email_settings: Nastavenia emailu
     markdown_help_tooltip: Naučte sa ako formátovať text použitím jazyka Markdown
     settings: Nastavenia
     dashboard: Ovládací panel

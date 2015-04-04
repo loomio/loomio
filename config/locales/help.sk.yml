@@ -1,0 +1,63 @@
+sk:
+  new_help:
+    how_to:
+      start_group_link: Vytvoriť skupinu
+      invite_people_link: Pozvať ďalších
+      start_discussion_link: Zahájiť diskusiu
+    contents:
+      getting_started:
+        title_html: Ako začať
+      group_settings:
+        group_permissions_html: Oprávnenia skupiny
+      inviting_members:
+        pending_invitations_html: Nevybavené pozvánky
+      discussion_threads:
+        discussion_privacy_html: Prístup do diskusie
+      subgroups:
+        title_html: Podskupiny
+      keeping_up_to_date:
+        email_settings_html: Nastavenia emailu
+      user_profile:
+        account_deactivation_html: Deaktivácia vášho účtu
+    getting_started:
+      title: Ako začať
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Kto môže nájsť túto skupinu?
+        how_do_people_join:
+          title: Ako sa môžu ľudia pripojiť?
+        who_can_see_discussions:
+          title: Kto môže vidieť diskusie?
+      group_permissions:
+        title: Oprávnenia skupiny
+        what_can_members_do:
+          title: Čo môžu členovia robiť?
+          invite_and_approve_new_members:
+            title: Pozvať a schváliť nových členov
+          start_discussions:
+            title: Zahájiť diskusie
+          edit_discussion_context:
+            title: Aktualizovať popis akejkoľvek diskusie v skupine.
+          edit_comments:
+            title: Upraviť kedykoľvek svoje komentáre
+          raise_proposals:
+            title: Predkladať návrhy
+          vote_on_proposals:
+            title: Hlasovať o návrhoch
+    inviting_members:
+      pending_invitations:
+        title: Nevybavené pozvánky
+    discussion_threads:
+      discussion_privacy:
+        title: Prístup do diskusie
+    subgroups:
+      title: Podskupiny
+    keeping_up_to_date:
+      email_settings:
+        title: Nastavenia emailu
+      yesterday_on_loomio:
+        title: Včera na Loomio
+    user_profile:
+      account_deactivation:
+        title: Deaktivácia vášho účtu

@@ -1,4 +1,7 @@
 it:
+  email_settings:
+    title: Impostazioni Email
+    submit: Aggiorna impostazioni
   explore:
     header: Esplora gruppi pubblici
   try_it:
@@ -176,7 +179,9 @@ it:
     about: About
     blog: Blog
     contact: Contatti
+    help: Aiuto
     privacy: Privacy
+    pricing: Prezzo
     public_groups: Gruppi pubblici
     terms: Termini
   inbox:
@@ -406,7 +411,13 @@ it:
       click_to_unfollow: Clicca per smettere di seguire questo gruppo
       following_details: Riceverai una notifica per ogni thread in questo gruppo.
       not_following_details: Riceverai una notifica per ogni conversazione a cui stai partecipando.
+  networks:
+    previous_requests: Richieste precedenti
+    approve: Approva
+    threads: Discussioni
+    groups: Gruppi
   group_request:
+    header: Crea un gruppo
     commercial_use_option: "in un'impresa, un'organizzazione o sul posto di lavoro"
     non_commercial_use_option: in una comunità o un network informale
     please_select_an_option: "Scegli un'opzione"
@@ -952,6 +963,8 @@ it:
   google: Google
   persona: Persona
   common:
+    profile: Profilo
+    email_settings: Impostazioni Email
     markdown_help_tooltip: Qualche nozione di base per formattare i testi con Markdown
     settings: Impostazioni
     dashboard: Dashboard

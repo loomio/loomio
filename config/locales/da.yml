@@ -1,4 +1,7 @@
 da:
+  email_settings:
+    title: Indstillinger for email
+    submit: Opdater indstillinger
   explore:
     header: Udforsk offentlige grupper
   try_it:
@@ -34,6 +37,8 @@ da:
     mailer:
       invitation_instructions:
         subject: Nogen har inviteret dig til at blive en del af deres Loomio gruppe
+    registrations:
+      sign_up: Opret konto
   error:
     access_denied: Du har ikke adgang til at gøre dette.
     cant_join_subgroup: "Du kan ikke blive medlem af en undergruppe, hvis du ikke er medlem af overgruppen."
@@ -172,7 +177,9 @@ da:
     about: Om
     blog: Blog
     contact: Kontakt
+    help: Hjælp
     privacy: Fortrolighed
+    pricing: Priser
     public_groups: Offentlige grupper
     terms: Betingelser
   inbox:
@@ -402,7 +409,13 @@ da:
       click_to_unfollow: Klik for ikke at følge gruppen
       following_details: Du vil blive gjort opmærksom på alle tråde i denne gruppe.
       not_following_details: "Du vil blive gjort opmærksom på tråde, som du deltager i."
+  networks:
+    previous_requests: Tidligere anmodninger
+    approve: Godkend
+    threads: Diskussioner
+    groups: Grupper
   group_request:
+    header: Start en gruppe
     commercial_use_option: "i et firma, formel organisation eller arbejdsplads"
     non_commercial_use_option: i en lokalgruppe eller uformelt netværk
     please_select_an_option: Vælg venligst en mulighed
@@ -944,6 +957,8 @@ da:
   google: Google
   persona: Persona
   common:
+    profile: Profil
+    email_settings: Indstillinger for email
     settings: Indstillinger
     dashboard: Instrumentbræt
     unread: Ulæst

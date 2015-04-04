@@ -1,0 +1,61 @@
+gl:
+  new_help:
+    how_to:
+      start_group_link: Comezar un grupo
+      invite_people_link: Invitar xente
+      start_discussion_link: Comezar debate
+    contents:
+      getting_started:
+        title_html: Comezando
+      group_settings:
+        group_permissions_html: Permisos do grupo
+      inviting_members:
+        pending_invitations_html: Invitacións pendentes
+      discussion_threads:
+        discussion_privacy_html: Privacidade do debate
+      subgroups:
+        title_html: Subgrupos
+      keeping_up_to_date:
+        email_settings_html: Opcións do correo
+      user_profile:
+        account_deactivation_html: Eliminando a túa conta
+    getting_started:
+      title: Comezando
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Quen pode atopar este grupo?
+        how_do_people_join:
+          title: Como fai a xente para entrar?
+        who_can_see_discussions:
+          title: Quen pode ver o debate?
+      group_permissions:
+        title: Permisos do grupo
+        what_can_members_do:
+          title: Que poden facer os membros?
+          invite_and_approve_new_members:
+            title: Invita e aproba novos membros
+          start_discussions:
+            title: Comeza debates
+          edit_discussion_context:
+            title: Editar o contexto de calquer debate no grupo
+          edit_comments:
+            title: Edita os seus comentarios en calquera momento
+          raise_proposals:
+            title: Facer propostas
+          vote_on_proposals:
+            title: Votar nas propostas
+    inviting_members:
+      pending_invitations:
+        title: Invitacións pendentes
+    discussion_threads:
+      discussion_privacy:
+        title: Privacidade do debate
+    subgroups:
+      title: Subgrupos
+    keeping_up_to_date:
+      email_settings:
+        title: Opcións do correo
+    user_profile:
+      account_deactivation:
+        title: Eliminando a túa conta

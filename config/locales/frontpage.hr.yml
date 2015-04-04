@@ -10,6 +10,7 @@ hr:
       try_it: Isprobaj
       log_in: Prijava
       video: Saznaj više o načinu rada Loomia
+      try_loomio: Isprobaj Loomio
       try_loomio_beta: Isprobaj Loomio beta
       more: Više
       top: Vrh
@@ -17,6 +18,9 @@ hr:
       terms: Uvjeti
       privacy: Privatnost
       services: Usluge
+    hero:
+      header_html: "Loomio je najlakpi način za <br /> <strong>donošenje zajedničkih odluka</strong>."
+      lead_html: "Loomio omogućuje organizacijama i zajednicama da pretvore <strong>diskusije u akciju</strong>, gdje god da ljudi bili."
     product:
       header_html: "Kad čujemo <strong>sve glasove</strong>, donosimo <strong>bolje odluke</strong>."
       step1:

@@ -1,4 +1,6 @@
 pl:
+  email_settings:
+    submit: Zaktualizuj ustawienia
   explore:
     header: Przegląd grup publicznych
   try_it:
@@ -127,7 +129,11 @@ pl:
   footer:
     blog: Blog
     contact: Kontakt
+    help: Pomoc
     privacy: Prywatność
+    pricing: Opłaty
+    public_groups: Grupy publiczne
+    terms: Regulamin
   notifications:
     header: Powiadomienia
     motion_closed:
@@ -158,8 +164,11 @@ pl:
   updating_group: Aktualizowanie grupy
   start_a_discussion: Rozpocznij dyskusję
   group_description: Opis grupy
+  networks:
+    threads: Dyskusje
   discussion_items:
     motion_closed:
+      by_user: zamknij propozycję
       by_expiry: Propozycja zamknięta
   discussion: Dyskusja
   current_decision: Obecna decyzja
@@ -185,10 +194,17 @@ pl:
     vote: W każdej chwili możesz zmienić swoje stanowisko
   new_password: Nowe hasło
   current_password: Obecne hasło
+  confirm_password: Potwierdź hasło
   remember_me: Zapamiętaj mnie
   forgot_your_password: Zapomniałeś hasła?
   search:
     placeholder: Szukaj
+  discussion_form:
+    new:
+      header: Rozpocznij dyskusję
+  motion_form:
+    new:
+      header: Nowa propozycja
   vote_form:
     header: Podaj swoje stanowisko
     edit: Edycja Twego stanowiska
@@ -201,12 +217,17 @@ pl:
     labels:
       membership_request:
         introduction: Przedstaw się
+      motion:
+        description: Szczegóły
       user:
+        email: E-mail
+        password: Hasło
         password_confirmation: Potwierdź hasło
         language_preference: Język
   helpers:
     submit:
       user:
+        create: Utwórz konto
         update: Zaktualizuj ustawienia
   email:
     invitation:
@@ -219,6 +240,7 @@ pl:
       new_motion: "%{who} zaproponował/ła:"
       motion_closing_soon: "Zamknięcie propozycji w ciągu 24 godzin:"
       proposal_closed: "Propozycja zamknięta:"
+  about_loomio: O Loomio
   author: Autor
   decisions: Decyzje
   details: Szczegóły
@@ -231,4 +253,5 @@ pl:
   saving: Zapisywanie
   thanks: "Dziękujemy!"
   common:
+    privacy: Zasady prywatności
     email: E-mail

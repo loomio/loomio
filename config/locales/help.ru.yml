@@ -1,0 +1,58 @@
+ru:
+  new_help:
+    how_to:
+      start_group_link: Создать группу
+      invite_people_link: Пригласите людей
+      start_discussion_link: Начать дискуссию
+    contents:
+      getting_started:
+        title_html: С чего начать
+      group_settings:
+        group_permissions_html: Разрешения
+      discussion_threads:
+        discussion_privacy_html: Безопасность
+      subgroups:
+        title_html: Подгруппы
+      keeping_up_to_date:
+        email_settings_html: Настройки Email
+      user_profile:
+        account_deactivation_html: Деактивация учетной записи
+    getting_started:
+      title: С чего начать
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Кто может видеть эту группу?
+        how_do_people_join:
+          title: Как люди вступают в группу?
+        who_can_see_discussions:
+          title: Кто может видеть обсуждение?
+      group_permissions:
+        title: Разрешения
+        what_can_members_do:
+          title: "Участники могут:"
+          invite_and_approve_new_members:
+            title: Приглашать новых участников
+          start_discussions:
+            title: Создавать обсуждения
+          edit_discussion_context:
+            title: Менять описание любого обсуждения в группе
+          edit_comments:
+            title: Редактировать свои коментарии
+          raise_proposals:
+            title: Создавать предложения
+          vote_on_proposals:
+            title: Голосовать
+    discussion_threads:
+      discussion_privacy:
+        title: Безопасность
+    subgroups:
+      title: Подгруппы
+    keeping_up_to_date:
+      email_settings:
+        title: Настройки Email
+      yesterday_on_loomio:
+        title: Вчера на Loomio
+    user_profile:
+      account_deactivation:
+        title: Деактивация учетной записи
