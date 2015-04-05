@@ -23,8 +23,10 @@ angular.module('loomioApp').directive 'activityCard', ->
 
       $scope.loadEventsForwards($scope.firstLoadedSequenceId - 1).then (events) ->
         $timeout ->
-          console.log 'scrolling to ', focusSelector(), document.querySelector(focusSelector())
-          $document.scrollToElement(document.querySelector(focusSelector()), 100)
+          elem = document.querySelector(focusSelector())
+          console.log 'scrolling to ', focusSelector(), elem
+          angular.element().focus(elem)
+          $document.scrollToElement(elem, 100)
 
     focusSelector = ->
       if _.isFinite(_.parseInt($location.hash()))

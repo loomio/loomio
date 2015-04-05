@@ -75,8 +75,12 @@ class DiscussionReader < ActiveRecord::Base
 
   def viewed!(age_of_last_read_item = nil)
     return if user.nil?
-    self.last_read_at = age_of_last_read_item || discussion.last_activity_at
-    reset_counts!
+    read_at = age_of_last_read_item || discussion.last_activity_at
+
+    if self.last_read_at.nil? or (read_at > self.last_read_at)
+      self.last_read_at = read_at
+      reset_counts!
+    end
   end
 
   def reset_comment_counts

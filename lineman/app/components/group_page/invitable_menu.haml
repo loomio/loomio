@@ -1,2 +1,3 @@
 %a.cuke-group-invitable-option{href='#'}
-  {{match.label.name}} ({{match.label.subtitle}})
+  %span {{match.label.name}}
+  %span{ng-if: 'match.label.subtitle'} ({{match.label.subtitle}})
