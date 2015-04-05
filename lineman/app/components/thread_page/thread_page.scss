@@ -70,6 +70,10 @@
   margin-bottom: 10px;
 }
 
+.thread-item-body img {
+  max-width: 100%;
+}
+
 .thread-item-footer {
   @include fontSmall();
   color: $grey-on-white;
