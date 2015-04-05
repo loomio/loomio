@@ -5,6 +5,8 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $rout
     @group = group
     $rootScope.$broadcast('setTitle', @group.fullName())
     MessageChannelService.subscribeTo("/group-#{@group.key}")
+  , (error) ->
+    $rootScope.$broadcast('pageError', error)
 
   @isMember = ->
     CurrentUser.membershipFor(@group)?
