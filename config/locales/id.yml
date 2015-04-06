@@ -1,4 +1,6 @@
 id:
+  email_settings:
+    submit: Perbarui setelan
   activerecord:
     errors:
       messages:
@@ -24,6 +26,8 @@ id:
     mailer:
       invitation_instructions:
         subject: Seseorang telah mengundang Anda untuk bergabung ke dalam kelompok Loomio
+    registrations:
+      sign_up: Buat akun
   error:
     access_denied: Anda tidak dapat melakukan hal ini.
     cant_join_subgroup: Anda tidak dapat bergabung dengan sebagai anggota kelompok kecil jika Anda bukan anggota dari kelompok induk.
@@ -128,14 +132,18 @@ id:
     about: Tentang
     blog: Blog
     contact: Hubungi
+    help: Bantuan
     privacy: Kerahasiaan
+    pricing: Harga
     public_groups: Kelompok umum
     terms: Ketentuan
   inbox:
+    title: Kotak masuk
     dropdown-btn: Kotak masuk
     empty: "Anda telah terperbarui! Tidak ada komentar yang belum Anda lihat."
   notifications:
     header: Notifikasi
+    new_motion: membuat usulan baru
     motion_closed:
       by_user: menutup usulan
       by_expiry: Usulan telah ditutup
@@ -170,6 +178,11 @@ id:
     message: "<p>Ini adalah <strong>laman kelompok</strong>. Di bagian kiri adalah daftar diskusi dalam kelompok ini.</p><p>Apabila Anda ingin kelompok mendiskusikan topik lain, buatlah diskusi baru.</p>"
   dashboard_helper_text:
     header: Selamat datang ke Beranda
+  user_profile:
+    change_password: Ganti kata sandi
+  group_form:
+    name: Nama kelompok
+    description: Deskripsi
   setup_steps_title: "Langkah selanjutnya:"
   setup_step_1: Simak contoh diskusi
   setup_step_2: Mulai diskusi pertama Anda
@@ -233,7 +246,12 @@ id:
   group_description: Keterangan kelompok
   edit_group_description: Ubah deskripsi kelompok
   group_subscription: Langganan kelompok
+  networks:
+    approve: Setuju
+    threads: Diskusi
+    groups: Kelompok
   group_request:
+    header: Buat kelompok
     confirmation:
       title: "Anda hampir selesai! Periksa surel Anda."
       body_html: "Kami telah mengirimkan surel dengan undangan untuk memulai kelompok Anda.\n\nApabila Anda tidak mendapatkannya dalam beberapa menit, hubungi kami melalui <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
@@ -255,6 +273,10 @@ id:
   empty_decision_list_html: "Siap membuat keputusan? <br> Setiap orang dapat membuat usulan."
   empty_decision_index: Kelompok ini belum membuat keputusan.
   empty_discussion_list: Belum ada aktivitas di dalam diskusi ini.
+  discussion_list:
+    empty:
+      no_discussions: Belum ada diskusi di dalam kelompok Anda.
+      no_discussions_in_group: Kelompok ini belum memiliki diskusi.
   discussion_context:
     started_html: "Dimulai %{when} yang lalu oleh <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Terakhir diubah %{when} lalu oleh <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -391,12 +413,14 @@ id:
   password_confirmation: Konfirmasi kata sandi
   current_password: Kata sandi saat ini
   password_details: (kami membutuhkan kata sandi Anda untuk konfirmasi perubahan)
+  confirm_password: Konfirmasi kata sandi
   cancel_my_account: Batalkan akun saya
   remember_me: Ingat saya
   signing_in: Masuk
   forgot_your_password: Lupa kata sandi?
   confirmation_not_received: Tidak menerima instruksi konfirmasi?
   unlock_not_received: Tidak menerima instruksi untuk membuka?
+  log_in: Masuk log
   join_group:
     log_in: "Masuk log untuk bergabung dengan %{group_name}"
     create_account_to_join_group: "Buat akun untuk bergabung ke dalam %{group_name}"
@@ -419,6 +443,7 @@ id:
     invitation_link: Pranala undangan
     link_help: "Klik tautan ini untuk bergabung dengan %{group} di Loomio:"
     copy: "Apabila penerima tidak mendapatkan surel undangan, Anda dapat menyalin tautan undangan di atas dan mengirimkannya kepada penerima."
+    pending_invitations: Undangan tertunda
   search:
     description: "Di bawah ini adalah daftar diskusi dan usulan yang memiliki kata '%{query}' di dalam judul atau penjelasan."
     header: "Cari hasil dari '%{query}'"
@@ -437,6 +462,8 @@ id:
     edit:
       header: Ubah diskusi
   motion_form:
+    new:
+      header: Usulan baru
     name_helper: Buat judul yang jelas dan ringkas.
   vote_form:
     header: Berikan pendapat Anda
@@ -448,6 +475,9 @@ id:
     update: Perbarui pendapat
   new_user_form:
     create_an_account: Buat akun
+  profile_form:
+    picture: Gambar
+    upload_new_image: Unggah gambar baru
   group_setup:
     set_up_your_group: Buat kelompok Anda
     desc_header: "Anda hampir selesai!"
@@ -613,4 +643,9 @@ id:
   unlike: Tidak sukai
   update: Perbarui
   common:
+    groups: Kelompok
+    privacy: Kebijakan Privasi
+    private: Tertutup
+    public: Terbuka
     email: Surel
+    start_group: "Buat kelompok!"

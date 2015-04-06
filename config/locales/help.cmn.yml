@@ -1,0 +1,14 @@
+cmn:
+  new_help:
+    how_to:
+      invite_people_link: 邀请人
+      start_discussion_link: 开始讨论
+    contents:
+      getting_started:
+        title_html: 开始吧
+      subgroups:
+        title_html: 小组群体
+    getting_started:
+      title: 开始吧
+    subgroups:
+      title: 小组群体

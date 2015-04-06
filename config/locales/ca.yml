@@ -1,4 +1,7 @@
 ca:
+  email_settings:
+    title: Configuració de correu electrònic
+    submit: Actualitzar la configuració
   explore:
     header: Explorar grups públics
   try_it:
@@ -172,7 +175,9 @@ ca:
     about: Quant a
     blog: Blog
     contact: Contacte
+    help: Ajuda
     privacy: Privacitat
+    pricing: Preus
     public_groups: Grups públics
     terms: "Termes d'ús"
   inbox:
@@ -352,7 +357,13 @@ ca:
       click_to_unfollow: Clicka per deixar de seguir el grup
       following_details: "Se't notificarà sobre tots els fils del grup."
       not_following_details: "Se't notificarà sobre els fils en els que participes."
+  networks:
+    previous_requests: Sol·licituds anteriors
+    approve: Aprovar
+    threads: Discussions
+    groups: Grups
   group_request:
+    header: Comença un grup
     commercial_use_option: "a una empresa, organització o lloc de treball"
     non_commercial_use_option: a un grup comunitari o una xarxa informal
     please_select_an_option: Sel·lecciona una opció
@@ -392,6 +403,7 @@ ca:
       disable: Mostra les discussions que segueixo i les que no segueixo
     empty:
       no_discussions: No hi ha discussions a cap dels teus grups.
+      no_discussions_in_group: Aquest grup encara no té cap discussió
   discussion_context:
     started_html: "Começat fa %{when} per <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Darrera modificació fa %{when} per <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -547,6 +559,7 @@ ca:
     log_in: "Inicia sessió per unir-te a %{group_name}"
     create_account_to_join_group: "Crea un compte per unir-te a %{group_name}, si us plau"
   start_group:
+    log_in: Inicia sessió per a configurar el grup
     create_account_to_start_group: "Crea un compte per començar el teu grup %{group_name}, si us plau"
   invitation:
     alternate: "Com a alternativa, comparteix aquest enllaç i qualsevol podrà demanar unir-se."
@@ -567,6 +580,7 @@ ca:
     invitation_link: "Enllaç d'invitació"
     link_help: "Clica aquest enllaç per unir-te al grup %{group} a Loomio:"
     copy: "Si algú no ha rebut el correu electrònic d'invitació, pots copiar el link de més amunt i passar-lo tu mateix si vols."
+    pending_invitations: Invitacions pendents
     no_pending_invitations: Actualment no hi ha invitacions pendents.
   search:
     description: "A sota es mostren les discussions i propostes que tenen '%{query}' en el títol o la descripció."
@@ -593,6 +607,8 @@ ca:
     edit:
       header: Edita la discussió
   motion_form:
+    new:
+      header: Nova proposta
     name_helper: Escriu un títol tant clar i concís com puguis.
   vote_form:
     header: Declara la teva posició
@@ -604,6 +620,9 @@ ca:
     update: Actualitzar posició
   new_user_form:
     create_an_account: Crea un compte
+  profile_form:
+    picture: Foto
+    upload_new_image: Puja una nova foto
   group_setup:
     set_up_your_group: Configura el teu grup
     desc_header: "Ja quasi ho tens!"
@@ -637,6 +656,8 @@ ca:
         password: Contrasenya
         password_confirmation: Confirma contrassenya
         language_preference: Idioma
+      group_request:
+        name: Quin és el nom del teu grup?
     placeholders:
       membership_request:
         introduction: "Fes-nos cinc cèntims sobre qui ets i per què t'agradaria unir-te a %{group_name}."
@@ -782,6 +803,8 @@ ca:
   google: Google
   persona: Persona
   common:
+    profile: Perfil
+    email_settings: Configuració de correu electrònic
     settings: Configuració
     dashboard: Panell
     unread: No llegit

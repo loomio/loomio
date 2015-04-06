@@ -1,6 +1,7 @@
 zh-TW:
   email_settings:
     title: 電子郵件設定
+    submit: 更新設定
   explore:
     header: 探索公開群組
   try_it:
@@ -400,6 +401,11 @@ zh-TW:
       click_to_unfollow: 點此取消跟隨群組
       following_details: 此群組一有新的討論主題您將會被通知。
       not_following_details: 您參與的討論主題一有新的意見您將會被通知。
+  networks:
+    previous_requests: 前一個要求
+    approve: 批准
+    threads: 討論
+    groups: 群組
   group_request:
     header: 啟動群組
     commercial_use_option: 在公司、正式組織或是職場

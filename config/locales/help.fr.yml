@@ -1,0 +1,71 @@
+fr:
+  new_help:
+    how_to:
+      start_group_link: Créer un groupe
+      invite_people_link: Inviter des personnes
+      start_discussion_link: Démarrer une discussion
+    contents:
+      getting_started:
+        title_html: Démarrage
+      group_settings:
+        group_permissions_html: Permissions du groupe
+      inviting_members:
+        pending_invitations_html: Invitations en attente
+      discussion_threads:
+        discussion_privacy_html: Discussion privée
+      subgroups:
+        title_html: Sous-groupes
+      keeping_up_to_date:
+        volume_html: Niveau de notification
+        email_settings_html: Paramètres de courrier électronique
+      user_profile:
+        account_deactivation_html: Désactivation de votre compte
+    getting_started:
+      title: Démarrage
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Qui peut voir ce groupe ?
+        how_do_people_join:
+          title: Comment peut-on rejoindre ce groupe?
+        who_can_see_discussions:
+          title: Qui peut voir les discussions ?
+      group_permissions:
+        title: Permissions du groupe
+        what_can_members_do:
+          title: Que peuvent faire les membres?
+          invite_and_approve_new_members:
+            title: Inviter et approuver les nouveaux membres
+          start_discussions:
+            title: Commencer les discussions
+          edit_discussion_context:
+            title: Éditer le contexte de chaque discussion du groupe
+          edit_comments:
+            title: Modifier leurs commentaires à tout moment
+          raise_proposals:
+            title: Créer des propositions
+          vote_on_proposals:
+            title: Voter pour des propositions
+    inviting_members:
+      pending_invitations:
+        title: Invitations en attente
+    discussion_threads:
+      discussion_privacy:
+        title: Discussion privée
+    subgroups:
+      title: Sous-groupes
+    keeping_up_to_date:
+      volume:
+        title: Niveau de notification
+        body:
+          loud_title: Élevé
+          normal_title: Normal
+          quiet_title: Bas
+          mute_title: Désactivé
+      email_settings:
+        title: Paramètres de courrier électronique
+      yesterday_on_loomio:
+        title: Hier sur Loomio
+    user_profile:
+      account_deactivation:
+        title: Désactivation de votre compte

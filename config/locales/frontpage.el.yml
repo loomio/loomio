@@ -35,7 +35,7 @@ el:
     crowdfunding:
       header: Χρηματοδοτούμαστε από το πλήθος ώστε να μπορούμε να τελειώσουμε το φτιάξιμο αυτής της νέας πλατφόρμας και να το δώσουμε στον κόσμο.
     mobile:
-      lead_html: "<strong> Loomio λειτουργεί σε οποιαδήποτε συσκευή, </strong> <br /> λαμβάνετε αποφάσεις οπουδήποτε, οποιαδήποτε στιγμή."
+      lead_html: "<strong> Το Loomio λειτουργεί σε οποιαδήποτε συσκευή, </strong> <br /> λαμβάνετε αποφάσεις οπουδήποτε, οποιαδήποτε στιγμή."
     quote:
       header:
         rushkoff_html: "“Το Loomio<strong>απελευθερώνει τις δυνατότητες υου διαδικτύου</strong> για να φέρει τους ανθρώπους προς τη συναίνεση παρά την πολωμένη συζήτηση.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, author of <em>Present Shock</em></div>"

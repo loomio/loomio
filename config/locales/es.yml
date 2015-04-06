@@ -434,6 +434,7 @@ es:
       not_following_details: Serás notificado sobre los temas en los que estás participando.
   networks:
     threads_header: todos los hilos públicos en esta red.
+    groups_header: "todos los %{count} grupos en esta red"
     members_count: "%{count} miembros"
     membership_requests_header: "Membresías solicitadas para %{network}"
     join_header: Adhiere tu grupo a la red
@@ -1025,6 +1026,16 @@ es:
   yahoo: Yahoo
   google: Google
   persona: Persona
+  log_in_with_third_party: "O inicia sesión con una cuenta de otra plataforma:"
+  log_in_with_google: Iniciar sesión con Google
+  log_in_with_facebook: Iniciar sesión con Facebook
+  log_in_with_persona: Iniciar sesión con Persona
+  log_in_with_twitter: Iniciar sesión con Twitter
+  sign_up_with_third_party: "O crea una cuenta con tu cuenta de otras plataformas: "
+  sign_up_with_google: Crear una cuenta con Google
+  sign_up_with_facebook: Crear una cuenta con Facebook
+  sign_up_with_persona: Crear una cuenta con Persona
+  sign_up_with_twitter: Crear una cuenta con Twitter
   common:
     profile: Perfil
     email_settings: Configuración de correo electrónico

@@ -1,4 +1,7 @@
 ja:
+  email_settings:
+    title: Eメール設定
+    submit: 設定をアップデート
   try_it:
     header: Loomioを試しましょう
     start_a_group: あなたのコミュニティで決定を行うためのグループを開始する
@@ -23,6 +26,8 @@ ja:
     mailer:
       invitation_instructions:
         subject: 誰かがあなたをLoomioのグループに招待しました
+    registrations:
+      sign_up: アカウントを作成します
   error:
     access_denied: このアクションの許可がありません
     cant_join_subgroup: 親グループのメンバーでない場合は子グループに参加できません
@@ -129,20 +134,25 @@ ja:
     about: 会社情報
     blog: ブログ
     contact: お問い合わせ
+    help: ヘルプ
     privacy: 個人情報
+    pricing: 価格設定
     public_groups: 公開グループ
     terms: 使用条件
   inbox:
+    title: 受信箱
     dropdown-btn: 受信箱
     empty: 全部見ました！見ていないコメントはありません
   notifications:
     header: 通知
+    new_motion: 提案を作成しました
     motion_closed:
       by_user: 提案を締め切ります
       by_expiry: 提案が締め切られました
     new_vote: "が提案に「%{position}」と言いました"
     new_comment: がディスカッションにコメントしました
     comment_liked: があなたのコメントにいいね！しました。
+    user_mentioned: コメントであなたをタグ付けしました。
     membership_requested: にメンバーリクエストを送る
     membership_request_approved: あなたの参加リクエストは承認されました
     user_added_to_group: がグループにあなたを追加しました
@@ -181,7 +191,11 @@ ja:
   prompt_user_to_join:
     header: 参加するためにグループに加わってください
     body: コメント、または投票するためにはこのグループのメンバーである必要があります
+  user_profile:
+    change_password: パスワードを変更します
   group_form:
+    name: グループ名
+    description: 情報
     confirm_all_discussions_will_be_made_private_message: もしこのまま進んだ場合、どの公開ディスカッションも非公開に設定されます
     confirm_all_discussions_will_be_made_public_message: よろしいですか？もしこのまま進んだ場合、どの公開ディスカッションも非公開に設定されます
     visible_to:
@@ -277,7 +291,13 @@ ja:
   group_description: グループ情報
   edit_group_description: グループ情報を編集する
   group_subscription: グループ購読
+  networks:
+    previous_requests: 以前のリクエスト
+    approve: 承認
+    threads: ディスカッション
+    groups: グループ
   group_request:
+    header: グループを開始する
     confirmation:
       title: もう少しで完了です！メールをチェックしてください
       body_html: "グループを開始する招待をメールで送りました。\n\n数分後にあなたの受信箱に何も見つからなかった場合は、<a href='mailto:contact@loomio.org'>contact@loomio.org</a> にメールを送ってください。\n"
@@ -528,6 +548,8 @@ ja:
       will_be_private_to_parent_group: "このディスカッションは %{parent_group_name} および %{group_name} のメンバーに閲覧可能です"
       will_be_public: 誰でもディスカッションを見ることができます
   motion_form:
+    new:
+      header: 新しい提案
     name_helper: タイトルは出来るだけ簡潔にしてください
   vote_form:
     header: 意見を選択しください
@@ -726,6 +748,9 @@ ja:
   google: Google
   persona: Persona
   common:
+    profile: プロフィール
+    email_settings: Eメール設定
+    groups: グループ
     privacy: 個人情報
     private: 非公開
     public: 公開

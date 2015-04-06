@@ -1,1 +1,10 @@
-ml: {}
+ml:
+  frontpage:
+    link:
+      blog: ബ്ലോഗ്
+      contact: ബന്ധപ്പെടുക
+      public_groups: പൊതുവായ സമൂഹം
+      terms: വ്യവസ്ഥകള്‍
+      privacy: സ്വകാര്യത
+    team:
+      header: "ലൂമിയോയെ കുറിച്ച് "

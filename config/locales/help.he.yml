@@ -1,0 +1,58 @@
+he:
+  new_help:
+    how_to:
+      start_group_link: יצירת קבוצה
+      invite_people_link: הזמינו אנשים
+      start_discussion_link: התחילו בדיון
+    contents:
+      getting_started:
+        title_html: מתחילים
+      group_settings:
+        group_permissions_html: הרשאות בקבוצה
+      discussion_threads:
+        discussion_privacy_html: פרטיות הדיון
+      subgroups:
+        title_html: תת-קבוצות
+      keeping_up_to_date:
+        email_settings_html: הגדרות דוא״ל
+      user_profile:
+        account_deactivation_html: משהה חשבון
+    getting_started:
+      title: מתחילים
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: מי יכול למצא קבוצה זו?
+        how_do_people_join:
+          title: איך מצטרפים?
+        who_can_see_discussions:
+          title: מי יכול לראות דיונים?
+      group_permissions:
+        title: הרשאות בקבוצה
+        what_can_members_do:
+          title: מה חברים יכולים לעשות?
+          invite_and_approve_new_members:
+            title: הזמנה ואישור של חברים חדשים
+          start_discussions:
+            title: התחלת דיונים
+          edit_discussion_context:
+            title: עריכת ההקשר של שיחה כלשהי בקבוצה
+          edit_comments:
+            title: עריכת ההערות שלהם בכל עת
+          raise_proposals:
+            title: הוספת הצעה
+          vote_on_proposals:
+            title: הצבעה על הצעה
+    discussion_threads:
+      discussion_privacy:
+        title: פרטיות הדיון
+    subgroups:
+      title: תת-קבוצות
+    keeping_up_to_date:
+      email_settings:
+        title: הגדרות דוא״ל
+      yesterday_on_loomio:
+        title: אתמול בLoomio
+    user_profile:
+      account_deactivation:
+        title: משהה חשבון

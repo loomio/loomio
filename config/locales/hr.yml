@@ -1,4 +1,6 @@
 hr:
+  email_settings:
+    title: Postavke emaila
   explore:
     header: Istraži javne grupe
   try_it:
@@ -416,7 +418,10 @@ hr:
       click_to_unfollow: Klikni za prekid praćenja grupe
       following_details: Dobivat ćete obavijesti o svakoj temi u ovoj grupi.
       not_following_details: Dobivat ćete obavijesti o temama u kojima sudjelujete.
+  networks:
+    previous_requests: Prijašnji zahtjevi
   group_request:
+    header: Započni grupu
     commercial_use_option: "U tvrki, formalnoj organizaciji ili radnom mjestu"
     non_commercial_use_option: U lokalnoj zajednici ili neformalnoj mreži
     please_select_an_option: Molim odaberite opciju
@@ -556,3 +561,24 @@ hr:
     get_in_touch_description_html: "Ako imate pitanje ili prijedlog, <a href='%{link}'>javite nam se</a>."
     getting_started: Početak rada
     getting_started_description: "S lijeve strane grupa raspravlja o temi razmjenjujući ideje i informacije. Kad grupa mora donijeti odluku, ona se pojavljuje s desne strane."
+  change_your_password: Promjeni lozinku
+  log_in: Prijava
+  invitation:
+    invite_people: Pozovi ljude u svoju grupu
+  discussion_form:
+    new:
+      header: Započni raspravu
+    edit:
+      header: Ažurirati raspravu
+  vote_form:
+    header: Iznesi svoj stav
+  about_loomio: O Loomiu
+  next: Slij
+  prev: Prethodno
+  start_a_group: Započni grupu
+  common:
+    profile: Profil
+    email_settings: Postavke emaila
+    select_error: Molim odaberite opciju
+    privacy: Privatnost
+    public: Javno

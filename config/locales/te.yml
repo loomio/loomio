@@ -1,4 +1,6 @@
 te:
+  email_settings:
+    submit: అమరికలను నవీకరించు
   activerecord:
     errors:
       messages:
@@ -16,6 +18,8 @@ te:
   devise:
     invitations:
       updated: ఖాతా సృష్టించబడింది.
+    registrations:
+      sign_up: ఖాతాను సృష్టించండి
   error:
     cant_modify_position: ఈ ప్రతిపాదన మూసివేయబడింది.
     cant_state_position: ఈ ప్రతిపాదన మూసివేయబడింది.
@@ -80,14 +84,18 @@ te:
     about: గురించి
     blog: బ్లాగు
     contact: సంప్రదించండి
+    help: సహాయం
     privacy: గోప్యత
+    pricing: ధర
     public_groups: బహిరంగ సమూహాలు
     terms: షరతులు
   inbox:
+    title: సందేశాలపెట్టె
     dropdown-btn: సందేశాలపెట్టె
     empty: "మీరు తాజాగానే ఉన్నారు! మీరు చూడనటువంటి వ్యాఖ్యలేమీ లేవు."
   notifications:
     header: గమనికలు
+    new_motion: ఒక ప్రతిపాదనను సృష్టించారు
     motion_closed:
       by_user: ప్రతిపాదనను మూసివేసారు
       by_expiry: ప్రతిపాదన మూసివేయబడింది
@@ -107,6 +115,11 @@ te:
     header: "మీ కొత్త సమూహానికి స్వాగతం!"
   dashboard_helper_text:
     header: మీ ముంగిలి పుటకు స్వాగతం
+  user_profile:
+    change_password: మీ సంకేతపదాన్ని మార్చండి
+  group_form:
+    name: సమూహం పేరు
+    description: వివరణ
   setup_steps_title: "తరువాతి అంచెలు:"
   setup_step_2: మీ మొదటి చర్చను మొదలుపెట్టండి
   setup_step_3: మీ సమూహానికి ప్రజలను ఆహ్వానించండి
@@ -150,6 +163,12 @@ te:
   group_description: సమూహ వివరణ
   edit_group_description: సమూహ వివరణను సవరించండి
   group_subscription: సమూహ చందా
+  networks:
+    approve: ఆమోదించండి
+    threads: చర్చలు
+    groups: సమూహాలు
+  group_request:
+    header: ఒక సమూహాన్ని ప్రారంభించండి
   discussion_items:
     new_discussion: చర్చను సృష్టించారు
     new_motion: ఒక ప్రతిపాదనను సృష్టించారు
@@ -173,6 +192,7 @@ te:
   comment_form_submit_button: వ్యాఖ్యను టపాకట్టండి
   delete_comment: వ్యాఖ్యను తొలగించు
   markdown_settings_more_info: మరింత సమాచారం...
+  edit_discussion: చర్చను సవరించండి
   move_discussion: చర్చను తరలించండి
   delete_discussion: చర్చను తొలగించు
   new_proposal: కొత్త ప్రతిపాదన
@@ -204,10 +224,12 @@ te:
   change_my_password: నా సంకేతపదాన్ని మార్చండి
   password_confirmation: సంకేతపదం నిర్థారణ
   current_password: ప్రస్తుత సంకేతపదం
+  confirm_password: సంకేతపదాన్ని నిర్ధారించండి
   cancel_my_account: నా ఖాతాను రద్దుచేయి
   remember_me: నన్ను గుర్తుపెట్టుకో
   signing_in: ప్రవేశం
   forgot_your_password: మీ సంకేతపదాన్ని మర్చిపోయారా?
+  log_in: ప్రవేశించండి
   join_group:
     log_in: "%{group_name} చేరుటకు ప్రవేశించండి"
   invitation:
@@ -226,6 +248,9 @@ te:
       header: ఒక చర్చను ఆరంభించండి
     edit:
       header: చర్చను సవరించండి
+  motion_form:
+    new:
+      header: కొత్త ప్రతిపాదన
   vote_form:
     edit: మీ స్థానాన్ని సవరించుకోండి
     your_position: మీ స్థానము
@@ -234,6 +259,9 @@ te:
     update: స్థానాన్ని నవీకరించండి
   new_user_form:
     create_an_account: ఒక ఖాతాను సృష్టించండి
+  profile_form:
+    picture: చిత్రం
+    upload_new_image: ఒక కొత్త బొమ్మను ఎక్కించండి
   group_setup:
     submit: నన్ను నా సమూహానికి తీసుకెళ్ళు
     payment_model:
@@ -341,4 +369,8 @@ te:
   google: గూగుల్
   persona: పెర్సోనా
   common:
+    groups: సమూహాలు
+    privacy: గోప్యత
+    public: బహిరంగం
     email: వేగు
+    start_group: "సమూహాన్ని ప్రారంభించండి!"

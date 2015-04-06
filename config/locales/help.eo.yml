@@ -1,0 +1,63 @@
+eo:
+  new_help:
+    how_to:
+      start_group_link: Komenci grupon
+      invite_people_link: Inviti personojn
+      start_discussion_link: Komenci diskuton
+    contents:
+      getting_started:
+        title_html: Ekkomenci
+      group_settings:
+        group_permissions_html: Grupaj permesoj
+      inviting_members:
+        pending_invitations_html: Esperataj invitakceptoj
+      discussion_threads:
+        discussion_privacy_html: Diskuta privateco
+      subgroups:
+        title_html: Subgrupoj
+      keeping_up_to_date:
+        email_settings_html: Retpoŝtaj agordoj
+      user_profile:
+        account_deactivation_html: Malaktivigi vian konton
+    getting_started:
+      title: Ekkomenci
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Kiu povas trovi ĉi tiun grupon?
+        how_do_people_join:
+          title: Kiel homoj aliĝas?
+        who_can_see_discussions:
+          title: Kiu povas vidi diskutojn?
+      group_permissions:
+        title: Grupaj permesoj
+        what_can_members_do:
+          title: Kion membroj povas fari?
+          invite_and_approve_new_members:
+            title: Inviti kaj aprobi novajn membrojn
+          start_discussions:
+            title: Komenci diskutojn
+          edit_discussion_context:
+            title: Redakti la kuntekston de ajna diskuto en la grupo
+          edit_comments:
+            title: Redakti ties komentojn kiam ajn
+          raise_proposals:
+            title: Ekproponi
+          vote_on_proposals:
+            title: Voĉdoni pri proponoj
+    inviting_members:
+      pending_invitations:
+        title: Esperataj invitakceptoj
+    discussion_threads:
+      discussion_privacy:
+        title: Diskuta privateco
+    subgroups:
+      title: Subgrupoj
+    keeping_up_to_date:
+      email_settings:
+        title: Retpoŝtaj agordoj
+      yesterday_on_loomio:
+        title: Hieraŭ en Loomio
+    user_profile:
+      account_deactivation:
+        title: Malaktivigi vian konton

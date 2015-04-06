@@ -1,0 +1,63 @@
+it:
+  new_help:
+    how_to:
+      start_group_link: Crea un gruppo
+      invite_people_link: Invita persone
+      start_discussion_link: Comincia discussione
+    contents:
+      getting_started:
+        title_html: Per cominciare
+      group_settings:
+        group_permissions_html: Permessi del gruppo
+      inviting_members:
+        pending_invitations_html: Inviti in sospeso
+      discussion_threads:
+        discussion_privacy_html: Privacy della discussione
+      subgroups:
+        title_html: Sotto-gruppi
+      keeping_up_to_date:
+        email_settings_html: Impostazioni Email
+      user_profile:
+        account_deactivation_html: Disattivazione del tuo account
+    getting_started:
+      title: Per cominciare
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Chi può trovare questo gruppo?
+        how_do_people_join:
+          title: Come si partecipa?
+        who_can_see_discussions:
+          title: Chi può vedere le discussioni?
+      group_permissions:
+        title: Permessi del gruppo
+        what_can_members_do:
+          title: Cosa possono fare i membri?
+          invite_and_approve_new_members:
+            title: Invita e approva nuovi membri
+          start_discussions:
+            title: Inizia discussioni
+          edit_discussion_context:
+            title: Modifica il contesto di ogni discussione nel gruppo
+          edit_comments:
+            title: Modifica i loro commenti in qualsiasi momento
+          raise_proposals:
+            title: Avanza proposte
+          vote_on_proposals:
+            title: Vota delle proposte
+    inviting_members:
+      pending_invitations:
+        title: Inviti in sospeso
+    discussion_threads:
+      discussion_privacy:
+        title: Privacy della discussione
+    subgroups:
+      title: Sotto-gruppi
+    keeping_up_to_date:
+      email_settings:
+        title: Impostazioni Email
+      yesterday_on_loomio:
+        title: Ieri su Loomio
+    user_profile:
+      account_deactivation:
+        title: Disattivazione del tuo account

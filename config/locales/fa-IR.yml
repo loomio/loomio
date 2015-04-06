@@ -70,8 +70,15 @@ fa-IR:
         other: "%{count} سال"
       almost_x_years:
         other: "%{count} سال"
+  footer:
+    blog: بلاگ
+    contact: تماس
+    privacy: محرمانگی
+    public_groups: گروه‌های عمومی
+    terms: شرایط
   notifications:
     header: اطلاعیه ها
+    new_motion: یک پیشنهاد ارایه داد
     motion_closed:
       by_user: پیشنهاد را بست
       by_expiry: پیشنهاد بسته شد
@@ -131,6 +138,8 @@ fa-IR:
   updating_group: در حال به روز رسانی گروه
   start_a_discussion: راه انداختن یک بحث
   group_description: شرح گروه
+  group_request:
+    header: راه اندازی گروه
   discussion_items:
     new_discussion: بحث را راه انداخت
     new_motion: یک پیشنهاد ارایه داد
@@ -139,6 +148,14 @@ fa-IR:
       by_expiry: پیشنهاد بسته شد
     motion_close_date_edited: تاریخ بسته شدن پیشنهاد را تغییر داد
     discussion_title_edited: عنوان بحث را عوض کرد
+  log_in: ورود
+  discussion_form:
+    new:
+      header: راه انداختن یک بحث
+  about_loomio: درباره لومیو
+  start_a_group: راه اندازی گروه
+  common:
+    privacy: محرمانگی
   group_categories:
     science: علوم
     technology: فناوری

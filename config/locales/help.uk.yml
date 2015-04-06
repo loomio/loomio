@@ -1,0 +1,60 @@
+uk:
+  new_help:
+    how_to:
+      start_group_link: Створити групу
+      invite_people_link: Запросити людей
+      start_discussion_link: Розпочати дискусію
+    contents:
+      getting_started:
+        title_html: Перші кроки
+      inviting_members:
+        pending_invitations_html: "Запрошення, що очікують"
+      discussion_threads:
+        discussion_privacy_html: Приватність обговорення
+      subgroups:
+        title_html: Підгрупи
+      keeping_up_to_date:
+        email_settings_html: Налаштування електронної пошти
+      user_profile:
+        account_deactivation_html: Деактивація облікового запису
+    getting_started:
+      title: Перші кроки
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Хто може знайти цю групу?
+        how_do_people_join:
+          title: Як прийняти участь?
+        who_can_see_discussions:
+          title: Хто може бачити обговорення?
+      group_permissions:
+        what_can_members_do:
+          title: Що можуть робити учасники?
+          invite_and_approve_new_members:
+            title: Запрошувати та затверджувати інших учасників.
+          start_discussions:
+            title: Розпочинати обговорення
+          edit_discussion_context:
+            title: Редагувати контекст будь-якого обговорення в групі
+          edit_comments:
+            title: Редагувати свої коментарі будь-коли
+          raise_proposals:
+            title: Вносити пропозиції
+          vote_on_proposals:
+            title: Голосувати за пропозиції
+    inviting_members:
+      pending_invitations:
+        title: "Запрошення, що очікують"
+    discussion_threads:
+      discussion_privacy:
+        title: Приватність обговорення
+    subgroups:
+      title: Підгрупи
+    keeping_up_to_date:
+      email_settings:
+        title: Налаштування електронної пошти
+      yesterday_on_loomio:
+        title: Вчора на Loomio
+    user_profile:
+      account_deactivation:
+        title: Деактивація облікового запису

@@ -1,0 +1,20 @@
+ml:
+  new_help:
+    how_to:
+      start_group_link: കൂട്ടം ആരംഭിക്കുക
+      invite_people_link: ആളുകളെ ക്ഷണിക്കുക
+      start_discussion_link: പുതിയൊരു ചര്‍ച്ച ആരംഭിക്കുക
+    contents:
+      getting_started:
+        title_html: എങ്ങനെ തുടങ്ങാം
+      inviting_members:
+        pending_invitations_html: ബാക്കിയുള്ള ക്ഷണനങ്ങള്‍
+      subgroups:
+        title_html: സമൂഹ-ശാഖകള്‍
+    getting_started:
+      title: എങ്ങനെ തുടങ്ങാം
+    inviting_members:
+      pending_invitations:
+        title: ബാക്കിയുള്ള ക്ഷണനങ്ങള്‍
+    subgroups:
+      title: സമൂഹ-ശാഖകള്‍

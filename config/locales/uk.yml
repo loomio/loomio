@@ -1,4 +1,7 @@
 uk:
+  email_settings:
+    title: Налаштування електронної пошти
+    submit: Оновити налаштування
   explore:
     header: Переглянути відкриті групи
   try_it:
@@ -172,7 +175,9 @@ uk:
     about: Про Loomio
     blog: Блог
     contact: Контакти
+    help: Допомога
     privacy: Конфіденційність
+    pricing: Ціни
     public_groups: Публічні групи
     terms: Умови
   inbox:
@@ -338,7 +343,13 @@ uk:
   group_description: Групове рішення
   edit_group_description: Змінити опис групи
   group_subscription: Групова підписка
+  networks:
+    approve: Підтримую
+    threads: Дискусії
+    groups: Групи
   group_request:
+    header: Створити групу
+    please_select_an_option: "Будь ласка, оберіть опцію"
     confirmation:
       title: "Ви майже закінчили! Перевірте Вашу електронну пошту."
       body_html: "Ми надіслали вам email із запрошенням розпочати вашу групу.\n\nЯкщо ви не бачите запрошення у пошті навіть через декілька хвилин, напишіть нам на <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
@@ -362,6 +373,10 @@ uk:
   empty_decision_list_html: "Готові приймати рішення? <br> Будь-хто може розпочати з пропозиції"
   empty_decision_index: Ця група ще не прийняла жодного рішення
   empty_discussion_list: Жодних подій в цьому обговоренні
+  discussion_list:
+    empty:
+      no_discussions: В жодної з ваших груп немає обговорень
+      no_discussions_in_group: В цій групі наразі немає жодної дискусії
   discussion_context:
     started_html: "<a href='%{link}' class='%{link_class}'>%{who}</a> почав цю дискусію %{when} тому"
     last_edited_html: "<a href='%{link}' class='%{link_class}'>%{who}</a> вніс останні зміни %{when} тому"
@@ -575,6 +590,8 @@ uk:
     edit:
       header: Редагувати дискусію
   motion_form:
+    new:
+      header: Нова пропозиція
     name_helper: Зробіть заголовок якомога чітким і стислим
   vote_form:
     header: Висловіть ваше ставлення
@@ -800,6 +817,8 @@ uk:
   google: Google
   persona: Персона
   common:
+    profile: Профіль
+    email_settings: Налаштування електронної пошти
     markdown_help_tooltip: Навчіться основам форматування тексту за допомогою мови Markdown
     settings: Налаштування
     dashboard: Майстерня

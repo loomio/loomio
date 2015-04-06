@@ -1,4 +1,6 @@
 ml:
+  email_settings:
+    submit: ക്രമീകരണങ്ങള്‍ പുതുക്കുക
   explore:
     header: പൊതുവായ ഗ്രൂപ്പുകൾ സന്ദർശിക്കുക
   try_it:
@@ -32,6 +34,8 @@ ml:
     mailer:
       invitation_instructions:
         subject: ആരോ ലൂമിയോ കൂട്ടത്തില്‍ ചേരാന്‍ താങ്കളെ ക്ഷണിച്ചു
+    registrations:
+      sign_up: അക്കൗണ്ട് തുടങ്ങുക
   error:
     access_denied: നിങ്ങള്‍ക്ക് ഇതു ചെയ്യാനുള്ള അനുമതിയില്ല
     cant_join_subgroup: താങ്കള്‍ക്ക് മാതൃസമൂഹത്തിന്റെ അംഗത്വം ഉണ്ടെങ്കിലെ സമൂഹ-ശാഖയില്‍ ചേരാനാകുകയുള്ളൂ
@@ -140,14 +144,18 @@ ml:
     about: കുറിച്ച്
     blog: ബ്ലോഗ്
     contact: ബന്ധപ്പെടുക
+    help: സഹായം
     privacy: സ്വകാര്യത
+    pricing: വിലവിവരം
     public_groups: പൊതുവായ സമൂഹം
     terms: വ്യവസ്ഥകള്‍
   inbox:
+    title: എഴുത്തുപെട്ടി
     dropdown-btn: എഴുത്തുപെട്ടി
     empty: "താങ്കള്‍ ഇതുവരെയുള്ളതെല്ലാംകണ്ടു! കാണാത്ത അഭിപ്രായങ്ങള്‍ ഒന്നും തന്നെ ഇല്ല."
   notifications:
     header: അറിയിപ്പുകള്‍
+    new_motion: ശുപാര്‍ശ തുടങ്ങിയിരിക്കുന്നു
     motion_closed:
       by_user: ശുപാര്‍ശ അവസാനിപ്പിച്ചു
       by_expiry: ശുപാര്‍ശ അവസാനിച്ചു
@@ -181,6 +189,11 @@ ml:
     header: നിങ്ങളുടെ പൂമുഖ താളിലേക്ക് സ്വാഗതം
   prompt_visitor_to_authenticate:
     header: പങ്കെടുക്കാന്‍ കൂട്ടത്തില്‍ ചേരുക അലെങ്കില്‍ അകത്തു പ്രവേശിക്കുക.
+  user_profile:
+    change_password: നിങ്ങളുടെ അടയാളവാക്ക് മാറ്റുക
+  group_form:
+    name: കൂട്ടത്തിന്റെ പേരു്
+    description: വിവരണം
   setup_steps_title: "അടുത്ത പടികള്‍:"
   setup_step_1: ഉദാഹരണമായി നല്‍കിയ ചര്‍ച്ച നോക്കുക
   setup_step_2: നിങ്ങളുടെ ആദ്യ ചര്‍ച്ച ആരംഭിക്കൂ
@@ -242,7 +255,12 @@ ml:
   group_description: കൂട്ടത്തിന്റെ വിവരണം
   edit_group_description: കൂട്ടത്തിന്റെ വിവരണം തിരുത്തുക
   group_subscription: കൂട്ടത്തിന്‍റെ വരിക്കാരാകാന്‍
+  networks:
+    approve: സ്ഥിരീകരിക്കുക
+    threads: ചര്‍ച്ചകള്‍
+    groups: കൂട്ടങ്ങള്‍
   group_request:
+    header: കൂട്ടം ആരംഭിക്കുക
     confirmation:
       title: "ഏതാണ്ട് കഴിഞ്ഞു!  ഇമെയില്‍ നോക്കിയാട്ടെ."
   discussion_items:
@@ -263,6 +281,10 @@ ml:
   empty_decision_list_html: "തീരുമാനമെടുക്കാന്‍ തയ്യാറാണോ? <br>ആര്‍ക്കും നിര്‍ദേശങ്ങള്‍ തുടങ്ങാം."
   empty_decision_index: ഈ കൂട്ടം ഇതുവരെ തീരുമാനങ്ങളൊന്നുമെടുത്തിട്ടില്ല
   empty_discussion_list: "ഈ ചര്‍ച്ചയില്‍ ഇതുവരെ ഒരു കര്‍മ്മവുമില്ല "
+  discussion_list:
+    empty:
+      no_discussions: "താങ്കളുടെ സമൂഹത്തില്‍ ഒന്നും ചര്‍ച്ചകളില്ല "
+      no_discussions_in_group: ഈ സമൂഹത്തില്‍ യാതൊരു ചര്‍ച്ചയും ഇതുവരെ ഇല്ല
   discussion_context:
     started_html: " %{when} മുന്‍പ്  <a href='%{link}' class='%{link_class}'>%{who}</a> തുടങ്ങി"
     last_edited_html: "അവസാനമായി  <a href='%{link}' class='%{link_class}'>%{who}</a> %{when} മുന്‍പ് തിരുത്തി"
@@ -384,6 +406,7 @@ ml:
   password_confirmation: അടയാളവാക്ക് സ്ഥിരീകരിക്കല്‍
   current_password: ഇപ്പോഴത്തെ അടയാളവാക്ക്
   password_details: (മാറ്റങ്ങള്‍ ഉറപ്പിക്കാന്‍ താങ്കളുടെ ഇപ്പോഴത്തെ രഹസ്യവാക്ക് വേണം)
+  confirm_password: അടയാളവാക്ക് സ്ഥിരീകരിക്കുക
   cancel_my_account: എന്റെ അക്കൗണ്ട് റദ്ദാക്കുക
   remember_me: എന്നെ ഓര്‍ക്കുക
   signing_in: പ്രവേശിക്കുന്നു
@@ -432,6 +455,8 @@ ml:
     edit:
       header: ചര്‍ച്ച തിരുത്തുക
   motion_form:
+    new:
+      header: പുതിയ ശുപാര്‍ശ
     name_helper: ഈ തലകെട്ട് പരമാവധി ലളിതമാക്കുക
   vote_form:
     header: നിങ്ങളുടെ നിലപാടു് വ്യക്തമാക്കുക
@@ -443,6 +468,9 @@ ml:
     update: നിലപാടു് പുതുക്കുക
   new_user_form:
     create_an_account: ഒരു അക്കൗണ്ട് തുടങ്ങുക
+  profile_form:
+    picture: ചിത്രം
+    upload_new_image: പുതിയ ചിത്രം അപ്‌ലോഡ്‌ ചെയ്യുക
   group_setup:
     set_up_your_group: താങ്കളുടെ കൂട്ടം ചിട്ടപെടുത്തുക
     desc_header: "ഏതാണ്ട് എത്തിപോയി!"
@@ -606,4 +634,9 @@ ml:
   unlike: ഇഷ്ടം തിരിച്ചെടുക്കുക
   update: പുതുക്കുക
   common:
+    groups: കൂട്ടങ്ങള്‍
+    privacy: സ്വകാര്യത
+    private: സ്വകാര്യം
+    public: പൊതുവായ
     email: ഈമെയില്‍
+    start_group: "കൂട്ടം ആരംഭിക്കുക!"

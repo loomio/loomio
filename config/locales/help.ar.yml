@@ -1,0 +1,57 @@
+ar:
+  new_help:
+    how_to:
+      start_group_link: ابدأ مجموعة
+      invite_people_link: قم بدعوة الناس
+      start_discussion_link: ابدأ نقاشا
+    contents:
+      getting_started:
+        title_html: من أجل البدء
+      group_settings:
+        group_permissions_html: سماحيات المجموعة
+      discussion_threads:
+        discussion_privacy_html: خصوصية النقاش
+      subgroups:
+        title_html: المجموعات الفرعية
+      keeping_up_to_date:
+        email_settings_html: إعدادت البريد الإلكتروني
+      user_profile:
+        account_deactivation_html: جار إيقاف حسابك
+    getting_started:
+      title: من أجل البدء
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: من يستطيع إيجاد هذه المجموعة؟
+        how_do_people_join:
+          title: كيف يمكن للناس أن ينضموا؟
+        who_can_see_discussions:
+          title: من يستطيع رؤية النقاشات؟
+      group_permissions:
+        title: سماحيات المجموعة
+        what_can_members_do:
+          invite_and_approve_new_members:
+            title: دعوة وقبول أعضاء جدد
+          start_discussions:
+            title: بدء نقاشات جديدة
+          edit_discussion_context:
+            title: تحرير وصف سياق أي نقاش في المجموعة
+          edit_comments:
+            title: تحرير تعليقاتهم في أي وقت
+          raise_proposals:
+            title: رفع مقترحات جديدة
+          vote_on_proposals:
+            title: التصويت على المقترحات
+    discussion_threads:
+      discussion_privacy:
+        title: خصوصية النقاش
+    subgroups:
+      title: المجموعات الفرعية
+    keeping_up_to_date:
+      email_settings:
+        title: إعدادت البريد الإلكتروني
+      yesterday_on_loomio:
+        title: أحداث الأمس على Loomio
+    user_profile:
+      account_deactivation:
+        title: جار إيقاف حسابك

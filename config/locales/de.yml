@@ -1026,6 +1026,16 @@ de:
   yahoo: Yahoo
   google: Google
   persona: Persona
+  log_in_with_third_party: "Oder melden Sie sich an mit einem Drittanbieter-Account:"
+  log_in_with_google: Anmelden mit Google
+  log_in_with_facebook: Anmelden mit Facebook
+  log_in_with_persona: Anmelden mit Persona
+  log_in_with_twitter: Anmelden mit Twitter
+  sign_up_with_third_party: "Oder registrieren Sie sich mit einem Drittanbieter-Account:"
+  sign_up_with_google: Registrierung mit Google
+  sign_up_with_facebook: Registrierung mit Facebook
+  sign_up_with_persona: Registrierung mit Persona
+  sign_up_with_twitter: Registrierung mit Twitter
   common:
     profile: Profil
     email_settings: Email Einstellungen

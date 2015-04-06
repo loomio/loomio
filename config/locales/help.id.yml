@@ -1,0 +1,20 @@
+id:
+  new_help:
+    how_to:
+      start_group_link: Buat kelompok
+      invite_people_link: Undang teman
+      start_discussion_link: Mulai diskusi
+    contents:
+      getting_started:
+        title_html: Memulai
+      inviting_members:
+        pending_invitations_html: Undangan tertunda
+      subgroups:
+        title_html: Kelompok kecil
+    getting_started:
+      title: Memulai
+    inviting_members:
+      pending_invitations:
+        title: Undangan tertunda
+    subgroups:
+      title: Kelompok kecil

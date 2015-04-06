@@ -1,0 +1,20 @@
+vi:
+  new_help:
+    how_to:
+      start_group_link: Lập một nhóm mới
+      invite_people_link: Mời thành viên
+      start_discussion_link: Bắt đầu một cuộc thảo luận
+    contents:
+      getting_started:
+        title_html: Chuẩn bị bắt đầu
+      inviting_members:
+        pending_invitations_html: Đang đợi thư mời
+      subgroups:
+        title_html: Nhóm-thành viên
+    getting_started:
+      title: Chuẩn bị bắt đầu
+    inviting_members:
+      pending_invitations:
+        title: Đang đợi thư mời
+    subgroups:
+      title: Nhóm-thành viên

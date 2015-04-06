@@ -1,4 +1,7 @@
 gl:
+  email_settings:
+    title: Opcións do correo
+    submit: Actualizar configuración
   explore:
     header: Explora os grupos públicos
   try_it:
@@ -174,7 +177,9 @@ gl:
     about: Acerca de
     blog: Blogue
     contact: Contacto
+    help: Axuda
     privacy: Privacidade
+    pricing: Custo
     public_groups: Grupos públicos
     terms: Termos de uso
   inbox:
@@ -324,6 +329,9 @@ gl:
   group_privacy:
     visible_to:
       public: Grupo público
+      public_html: "Calquera <span>lista o grupo publicamente</span>"
+      parent_members_html: "Persoas en %{parent_group_name} <span> non aparecen para o público , pero son visibles para @s membr@s de %{parent_group_name} </span>"
+      members_html: "Só participantes <span> o grupo non se listará</span>"
   setup_steps_title: "Próximos pasos:"
   setup_step_1: Bótalle un ollo ao debate de exemplo
   setup_step_2: Iniciar o teu primeiro debate
@@ -379,14 +387,24 @@ gl:
     follow:
       click_to_follow: Pinche para seguir o grupo
       click_to_unfollow: Pinche para non seguir o grupo
+  networks:
+    previous_requests: Peticións anteriores
+    approve: Dar o visto bo
+    threads: Debates
+    groups: Grupos
   group_request:
+    header: Comezar un grupo
     please_select_an_option: "Seleccione unha opción, por favor"
     confirmation:
       title: "Case estás! Comproba o teu correo electrónico."
   discussion_items:
     new_discussion: creou o debate
+    new_motion: Crear unha proposta
     motion_closed:
+      by_user: Pechar unha proposta
       by_expiry: Proposta pechada
+    motion_outcome_created: Publico unha decisión para a proposta
+    motion_outcome_updated: resultado da proposta modificado
     discussion_title_edited: cambiou o título do debate
     discussion_description_edited: cambiou a descripción do debate
     motion_name_edited: editar título da proposta
@@ -398,6 +416,10 @@ gl:
   see_more: Ver máis
   create_new_proposal: Crear proposta
   empty_discussion_list: Todavía sen actividade neste debate.
+  discussion_list:
+    empty:
+      no_discussions: Sen debates nos teus grupos.
+      no_discussions_in_group: Este grupo aínda non ten debates.
   discussion_context:
     see_revision_history: Ver a revisión do histórico
     see_history: Ver histórico
@@ -709,6 +731,8 @@ gl:
   google: Google
   persona: Persoa
   common:
+    profile: Perfil
+    email_settings: Opcións do correo
     markdown_help_tooltip: Aprender o básico de formatear os textos con Markdown
     settings: Configuración
     dashboard: Panel de control

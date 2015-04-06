@@ -1,8 +1,16 @@
 mi:
+  footer:
+    help: Āwhina
+    public_groups: rōpū public
+  sign_in: Takiuru
+  user_profile:
+    change_password: Hurihia tō kupuhipa
   group_form:
     name: Ingoa rōpū
     description: Whakaahuatanga
   members: Ngā Mema
+  networks:
+    groups: Ngā Rōpū
   help:
     help: Āwhina
   change_your_password: Hurihia tō kupuhipa
@@ -11,9 +19,14 @@ mi:
     placeholder: Rapu
   simple_form:
     labels:
+      discussion:
+        title: Taitara
       motion:
         name: Taitara
+        description: Ngā Taipitopito
       user:
+        email: Īmēra
+        password: Kupuhipa
         language_preference: Reo
   author: Kaituhi
   back: Hoki

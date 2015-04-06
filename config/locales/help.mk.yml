@@ -1,0 +1,29 @@
+mk:
+  new_help:
+    how_to:
+      start_group_link: Започни група
+      invite_people_link: Покани луѓе
+      start_discussion_link: Започни дискусија
+    contents:
+      getting_started:
+        title_html: Започни
+      subgroups:
+        title_html: Под-групи
+    getting_started:
+      title: Започни
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Кој може да ја пронајде групава?
+        how_do_people_join:
+          title: Како луѓето се придружуваат?
+        who_can_see_discussions:
+          title: Кој може да гледа дискусии?
+      group_permissions:
+        what_can_members_do:
+          title: Што можат да направат членовите?
+    subgroups:
+      title: Под-групи
+    keeping_up_to_date:
+      yesterday_on_loomio:
+        title: Вчера на Loomio

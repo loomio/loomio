@@ -1,4 +1,7 @@
 eo:
+  email_settings:
+    title: Retpoŝtaj agordoj
+    submit: Ĝisdatigi agordojn
   explore:
     header: Esplori publikajn grupojn
   try_it:
@@ -34,6 +37,8 @@ eo:
     mailer:
       invitation_instructions:
         subject: Iu invitis vin aliĝi al Loomio
+    registrations:
+      sign_up: Krei konton
   error:
     access_denied: Vi ne havas permeson fari ĉi tion
     cant_join_subgroup: Vi ne rajtas aniĝi al subgrupo se vi ne estas membro de la ĉefgrupo
@@ -172,10 +177,13 @@ eo:
     about: Pri
     blog: Blogo
     contact: Kontakti
+    help: Helpo
     privacy: Privateco
+    pricing: Prezo
     public_groups: Publikaj grupoj
     terms: Kondiĉoj
   inbox:
+    title: Poŝtkesto
     dropdown-btn: Poŝtkesto
     empty: "Vi estas ĝisdata! Ne estas komentoj kiujn vi ne vidis."
   notifications:
@@ -397,7 +405,13 @@ eo:
       click_to_unfollow: Klaku por malsekvi grupon
       following_details: Vi estos informata pri ĉiu fadeno en ĉi tiu grupo.
       not_following_details: Vi estos informata pri fadenoj en kiuj vi partoprenas.
+  networks:
+    previous_requests: Antaŭaj petoj
+    approve: Aprobi
+    threads: Diskutoj
+    groups: Grupoj
   group_request:
+    header: Komenci grupon
     commercial_use_option: "en entrepreno, formala organizo aŭ laborejo"
     non_commercial_use_option: en komunuma grupo aŭ neformala reto
     please_select_an_option: Bonvolu elekti opcion
@@ -927,6 +941,8 @@ eo:
   google: Google
   persona: Persona
   common:
+    profile: Profilo
+    email_settings: Retpoŝtaj agordoj
     dashboard: Supervidpanelo
     unread: Nelegitaj
     filter: "Filtrilo:"
