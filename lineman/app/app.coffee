@@ -25,7 +25,7 @@ angular.module('loomioApp', ['ngNewRouter',
     snakeName = _.snakeCase(name);
     'generated/components/' + snakeName + '/' + snakeName + '.html';
 
-angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootScope, $router, KeyEventService) ->
+angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootScope, $router, KeyEventService, FlashService) ->
   $scope.currentComponent = 'nothing yet'
 
   $scope.$on 'currentComponent', ->
@@ -50,4 +50,7 @@ angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootS
     {path: '/g/:key', component: 'groupPage' },
     {path: '/g/:key/:stub', component: 'groupPage' },
   ]);
+
+  FlashService.info window.Loomio.flash.notice if window.Loomio.flash.notice?
+
   return
