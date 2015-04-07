@@ -11,6 +11,7 @@
       %a.close.remove-upload{href: '#', ng_click: 'removeAttachment(attachment)', title: "{{ 'comment_form.attachments.remove_attachment' | translate }}"}
         %span{aria-hidden: 'true'}&times;
     .thread-comment-form-actions.clearfix
-      %button#post-comment-btn.btn.btn-default.btn-primary.pull-left.submit.cuke-comment-submit{type: 'submit', translate: 'comment_form.submit_button.label'}
+      %button#post-comment-btn.btn.btn-default.btn-primary.pull-left.submit{type: 'submit', translate: 'comment_form.submit_button.label'}
+      %button.btn.btn-default.pull-left.comment-form-button{translate: 'comment_form.cancel_reply', ng-show: 'comment.parentId', ng-click: 'comment.parentId = null'}
       %attachment_form.pull-left{comment: 'comment'}
       %button#post-comment-cancel.btn.btn-default.pull-right{type: 'button', translate: 'common.action.cancel', ng-click: 'cancel($event)', ng-hide: 'comment.isNew()'}
