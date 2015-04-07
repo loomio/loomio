@@ -90,7 +90,7 @@ describe API::CommentsController do
 
         it "responds with an error when the user is unauthorized" do
           put :update, {id: another_comment.id, comment: comment_params}
-          expect(response.status).to eq 400
+          expect(response.status).to eq 403
           expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
         end
 
