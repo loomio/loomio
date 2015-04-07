@@ -1,0 +1,63 @@
+zh-TW:
+  new_help:
+    how_to:
+      start_group_link: 啟動群組
+      invite_people_link: 邀請夥伴
+      start_discussion_link: 啟動新的討論串
+    contents:
+      getting_started:
+        title_html: 開始入門
+      group_settings:
+        group_permissions_html: 群組權限
+      inviting_members:
+        pending_invitations_html: 擱置中的邀請函
+      discussion_threads:
+        discussion_privacy_html: 討論串私密
+      subgroups:
+        title_html: 子群組
+      keeping_up_to_date:
+        email_settings_html: 電子郵件設定
+      user_profile:
+        account_deactivation_html: 正在凍結您的帳號
+    getting_started:
+      title: 開始入門
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: 誰能找到這個群組？
+        how_do_people_join:
+          title: 夥伴要怎樣加入？
+        who_can_see_discussions:
+          title: 誰能看見討論串？
+      group_permissions:
+        title: 群組權限
+        what_can_members_do:
+          title: 成員能做些甚麼？
+          invite_and_approve_new_members:
+            title: 邀請並且批准新的成員
+          start_discussions:
+            title: 啟動討論串
+          edit_discussion_context:
+            title: 編輯在此群組中任何討論串的論述
+          edit_comments:
+            title: 任何時候都能編輯他們的意見
+          raise_proposals:
+            title: 發起提案
+          vote_on_proposals:
+            title: 在提案上投票
+    inviting_members:
+      pending_invitations:
+        title: 擱置中的邀請函
+    discussion_threads:
+      discussion_privacy:
+        title: 討論串私密
+    subgroups:
+      title: 子群組
+    keeping_up_to_date:
+      email_settings:
+        title: 電子郵件設定
+      yesterday_on_loomio:
+        title: 昨日 Loomio
+    user_profile:
+      account_deactivation:
+        title: 正在凍結您的帳號

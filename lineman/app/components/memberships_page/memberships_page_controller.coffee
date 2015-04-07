@@ -1,5 +1,4 @@
 angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, Records, LoadingService, CurrentUser) ->
-  @loading = true
   @loadedCount = 0
   @membershipsPerPage = 25
 

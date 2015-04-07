@@ -1,4 +1,7 @@
 ko:
+  email_settings:
+    title: 이메일 설정
+    submit: 업데이트 설정
   try_it:
     header: 루미오 사용해보기
     start_a_group: 여러분이 커뮤니티에서 의사결정을 위해서 그룹시작하기
@@ -31,6 +34,8 @@ ko:
     mailer:
       invitation_instructions:
         subject: 누군가 당신을 루미오 안에 그룹에 초대했습니다.
+    registrations:
+      sign_up: 계정 만들기
   error:
     access_denied: "권한을 가지고 있지 않습니다. "
     cant_modify_position: 이 제안은 종료되었습니다.
@@ -132,14 +137,18 @@ ko:
     about: 소개
     blog: 블로그
     contact: 연락하기
+    help: 도움말
     privacy: 개인정보
+    pricing: 가격표
     public_groups: 공개 그룹
     terms: 정책
   inbox:
+    title: 받은 메시지함
     dropdown-btn: 받은 메시지함
     empty: "최신 상태이며, 확인하지 않은 댓글이 없습니다."
   notifications:
     header: 알림
+    new_motion: 만들어진 제안
     motion_closed:
       by_user: 제안 마감하기
       by_expiry: 제안이 마감되었습니다.
@@ -184,6 +193,11 @@ ko:
   prompt_user_to_join:
     header: 참여를 위해서 그룹에 가입하기
     body: 댓글을 달거나 투표를 하기 위해서 이 그룹의 멤버가 되어야 합니다.
+  user_profile:
+    change_password: 비밀번호 변경
+  group_form:
+    name: 그룹명
+    description: 설명
   setup_steps_title: "다음 단계:"
   setup_step_1: 예시 토론을 살펴보세요.
   setup_step_2: 첫번째 토론을 시작해보세요.
@@ -247,7 +261,12 @@ ko:
   group_description: 그룹 설명
   edit_group_description: 그룹 설명 편집
   group_subscription: 그룹 토론
+  networks:
+    approve: 승인
+    threads: 토론
+    groups: 그룹
   group_request:
+    header: 그룹 시작하기
     confirmation:
       title: 거의 다 되었습니다. 이메일을 확인해 주세요.
   discussion_items:
@@ -269,6 +288,10 @@ ko:
   empty_decision_list_html: "결정을 내릴 준비가 되어있습니까? <br> 누구나 제안을 시작할 수 있습니다."
   empty_decision_index: "이 그룹은 현재 어떤 의사결정도 한 적이 없습니다. "
   empty_discussion_list: 이 그룹에는 어떤 활동도 아직 없습니다.
+  discussion_list:
+    empty:
+      no_discussions: 어떤 그룹에도 토론이 없습니다.
+      no_discussions_in_group: 이 그룹은 아직 어떤 토론도 하지 않았습니다.
   discussion_context:
     started_html: "<a href='%{link}' class='%{link_class}'>%{who}</a> 님이 %{when} 전에 시작했습니다."
     last_edited_html: "<a href='%{link}' class='%{link_class}'>%{who}</a> 님이 %{when} 전에 마지막으로 편집했습니다."
@@ -461,6 +484,8 @@ ko:
     edit:
       header: 토론 편집
   motion_form:
+    new:
+      header: 새로운 제안
     name_helper: 제목을 가능한 간결하고 명확하게 만드세요.
   vote_form:
     header: 입장을 명시하기
@@ -659,4 +684,11 @@ ko:
   google: 구글
   persona: 페르소나
   common:
+    profile: 프로필
+    email_settings: 이메일 설정
+    groups: 그룹
+    privacy: 개인정보
+    private: 비공개
+    public: 공개
     email: 이메일
+    start_group: 그룹 시작하기

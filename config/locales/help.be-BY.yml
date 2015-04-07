@@ -1,0 +1,71 @@
+be-BY:
+  new_help:
+    how_to:
+      start_group_link: Стварыць групу
+      invite_people_link: Запрасіць людзей
+      start_discussion_link: Распачаць абмеркаванне
+    contents:
+      getting_started:
+        title_html: Першыя крокі
+      group_settings:
+        group_permissions_html: Правы ўдзельнікаў
+      inviting_members:
+        pending_invitations_html: "Запрашэнні, якія яшчэ разглядаюцца"
+      discussion_threads:
+        discussion_privacy_html: Канфеденціяльнасць абмеркавання
+      subgroups:
+        title_html: Падгрупы
+      keeping_up_to_date:
+        volume_html: Гучнасць
+        email_settings_html: Налады email
+      user_profile:
+        account_deactivation_html: Адключаем акаунт
+    getting_started:
+      title: Першыя крокі
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Хто можа знайсці гэту групу?
+        how_do_people_join:
+          title: Як людзі могуць далучыцца?
+        who_can_see_discussions:
+          title: Хто можа бачыць абмеркаванні?
+      group_permissions:
+        title: Правы ўдзельнікаў
+        what_can_members_do:
+          title: Што удзельнікі здольны рабіць?
+          invite_and_approve_new_members:
+            title: Запрасіць і зацвердзіць новых удзельнікаў
+          start_discussions:
+            title: Распачаць абмеркаванні
+          edit_discussion_context:
+            title: Рэдагаваць кантэкст любога абмеркавання ў групе
+          edit_comments:
+            title: Рэдагуйце іх каментары ў любы час
+          raise_proposals:
+            title: Падымаць прапановы
+          vote_on_proposals:
+            title: Галасаваць за прапановы
+    inviting_members:
+      pending_invitations:
+        title: "Запрашэнні, якія яшчэ разглядаюцца"
+    discussion_threads:
+      discussion_privacy:
+        title: Канфеденціяльнасць абмеркавання
+    subgroups:
+      title: Падгрупы
+    keeping_up_to_date:
+      volume:
+        title: Гучнасць
+        body:
+          loud_title: Гучна
+          normal_title: Нармальна
+          quiet_title: Ціха
+          mute_title: Бязгучна
+      email_settings:
+        title: Налады email
+      yesterday_on_loomio:
+        title: Учора на Loomio
+    user_profile:
+      account_deactivation:
+        title: Адключаем акаунт

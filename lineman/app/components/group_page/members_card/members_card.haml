@@ -11,7 +11,7 @@
   #members-card-title.card-title{ translate: 'group_page.members', role: 'heading' }
 
   .group-member-list
-    .group-member-list-item{ng-repeat: 'member in groupPage.group.members() | limitTo:5'}
+    .group-member-list-item{ng-repeat: 'member in group.members() | limitTo:5'}
       .group-member-list-avatar.lg{data-username: '{{member.label}}' }
         %user_avatar{user: 'member'}
     .group-member-list-show-more.show-more.card-minor-action

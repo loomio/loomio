@@ -420,6 +420,11 @@ be-BY:
       click_to_unfollow: "Націсніце, каб больш не сачыць за групай"
       following_details: "Вам паведамяць пра любую дзейнасць у групе. "
       not_following_details: "Вам паведамяць пра дзейнасць у абмеркаваннях, у якіх вы ўдзельнічаце. "
+  networks:
+    previous_requests: Папярэднія заяўкі
+    approve: Пацвердзіць
+    threads: Абмеркаванні
+    groups: Групы
   group_request:
     header: Стварыць групу
     commercial_use_option: "У кампаніі, афіцыйнай установе ці на працоўным месцы"

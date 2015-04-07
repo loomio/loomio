@@ -1,0 +1,71 @@
+sr:
+  new_help:
+    how_to:
+      start_group_link: Kreiraj grupu
+      invite_people_link: Pozovi ljude
+      start_discussion_link: Započni diskusiju
+    contents:
+      getting_started:
+        title_html: Odakle početi
+      group_settings:
+        group_permissions_html: Dozvole grupe
+      inviting_members:
+        pending_invitations_html: Pozivi u toku
+      discussion_threads:
+        discussion_privacy_html: Privatnost diskusije
+      subgroups:
+        title_html: Podgrupe
+      keeping_up_to_date:
+        volume_html: Obim
+        email_settings_html: Podešavanja ePoruka
+      user_profile:
+        account_deactivation_html: Deaktiviranje Vašeg naloga
+    getting_started:
+      title: Odakle početi
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Ko može naći ovu grupu?
+        how_do_people_join:
+          title: Kako se ljudi pridružuju?
+        who_can_see_discussions:
+          title: Ko može videti diskusije?
+      group_permissions:
+        title: Dozvole grupe
+        what_can_members_do:
+          title: Šta članovi mogu raditi?
+          invite_and_approve_new_members:
+            title: Pozovite i odobrite nove članove
+          start_discussions:
+            title: Počni diskusije
+          edit_discussion_context:
+            title: Izmeni kontekst bilo koje diskusije u grupi
+          edit_comments:
+            title: Menjaj njihove komentare u svakom momentu
+          raise_proposals:
+            title: Istaknite predloge
+          vote_on_proposals:
+            title: Glasajte o predlozima
+    inviting_members:
+      pending_invitations:
+        title: Pozivi u toku
+    discussion_threads:
+      discussion_privacy:
+        title: Privatnost diskusije
+    subgroups:
+      title: Podgrupe
+    keeping_up_to_date:
+      volume:
+        title: Obim
+        body:
+          loud_title: Glasno
+          normal_title: Normalno
+          quiet_title: Tiho
+          mute_title: Isključeno
+      email_settings:
+        title: Podešavanja ePoruka
+      yesterday_on_loomio:
+        title: Juče na Lumiju
+    user_profile:
+      account_deactivation:
+        title: Deaktiviranje Vašeg naloga

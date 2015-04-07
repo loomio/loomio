@@ -9,12 +9,13 @@
     = stylesheet_link_tag lineman_css_path
   %body{'ng-keydown' => 'keyDown($event)'}
     %navbar
-    %ng_viewport
+    %ng_viewport{'ng-if' => '!pageError'}
+    %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
 
     #turn-off-angular{'aria-hidden' => 'true'}
       =link_to 'Turn off angular', '/angular', target: '_self'
       %br
-      %a{href: 'https://docs.google.com/forms/d/1JS75ZdoBiA3k7IzxDPijV4kPh1fXrmWs9A8k_WG_pyE/viewform', target: '_top'}
+      %a{href: 'https://docs.google.com/forms/d/1JS75ZdoBiA3k7IzxDPijV4kPh1fXrmWs9A8k_WG_pyE/viewform', target: '_blank'}
         Give us feedback
 
     :javascript

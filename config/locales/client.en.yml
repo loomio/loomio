@@ -31,8 +31,10 @@ en:
       new_thread: "New thread"
       add_subgroup: 'Add subgroup'
 
-    messages:
-      aw_crap: 'We''re sorry, but something went wrong. Please try again'
+  error_page:
+    forbidden: 'You do not have permission to do this.'
+    page_not_found: 'We were unable to find that. It may have been deleted or moved.'
+    internal_server_error: 'We''re sorry, but something went wrong. Please try again.'
 
   start_proposal_card:
     title: 'Start a proposal'
@@ -76,6 +78,7 @@ en:
       destroy_comment: 'You comment has been deleted'
     edit_comment: 'Edit comment'
     delete_comment: 'Delete comment'
+    cancel_reply: 'Cancel Reply'
     confirm_delete_message: 'Are you sure you want to delete this comment?'
     confirm_delete: 'Yes, I am sure'
     in_reply_to: "In reply to <strong>{{name}}</strong>:"

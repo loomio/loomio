@@ -28,8 +28,14 @@ angular.module('loomioApp', ['ngNewRouter',
 angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootScope, $router, KeyEventService) ->
   $scope.currentComponent = 'nothing yet'
 
+  $scope.$on 'currentComponent', ->
+    angular.element(document.querySelector('.main-container'))
+
   $scope.$on 'setTitle', (event, title) ->
     angular.element.find('title')[0].text = _.trunc(title, 300) + ' | Loomio'
+
+  $scope.$on 'pageError', (event, error) ->
+    $scope.pageError = error
 
   $scope.keyDown = (event) -> KeyEventService.broadcast event
 

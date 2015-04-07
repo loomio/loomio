@@ -1,4 +1,6 @@
 cmn:
+  email_settings:
+    submit: 更新设置
   errors:
     messages:
       email: 不是一个有效的电子邮箱地址
@@ -9,6 +11,9 @@ cmn:
     formats:
       for_this_year: "%e%b"
       for_another_year: "%-d/%-m/%y"
+  devise:
+    registrations:
+      sign_up: 创建账户
   error:
     cant_join_subgroup: 如果你不是大组的一员那你就不能加入一个小组
     cant_modify_position: 这提议已经关闭了
@@ -78,8 +83,10 @@ cmn:
   footer:
     public_groups: 公共组团
   inbox:
+    title: 收件箱
     dropdown-btn: 收件箱
   notifications:
+    new_motion: 创建了这个提议。
     motion_closed:
       by_user: 关闭提议
       by_expiry: 提议已经关闭了
@@ -100,6 +107,8 @@ cmn:
   generic_confirm: 您确定吗？
   discussion_helper_text:
     header: 欢迎你来参与第一次的讨论
+  user_profile:
+    change_password: 改你的密码
   setup_steps_title: 下一步
   setup_step_2: 开始你的第一个讨论
   setup_step_3: 邀请人到你的组里
@@ -144,6 +153,10 @@ cmn:
   updating_group: 组正在更新中
   start_a_discussion: 开始讨论
   group_description: 团队讨论
+  networks:
+    approve: 批准
+    threads: 讨论
+    groups: 组群
   discussion_items:
     new_discussion: 创建了这个讨论。
     new_motion: 创建了这个提议。
@@ -159,6 +172,10 @@ cmn:
   see_previous_decisions: 看看之前的决定
   empty_decision_index: 这个组还没有做出什么决定
   empty_discussion_list: 这一条讨论还没有发表
+  discussion_list:
+    empty:
+      no_discussions: 你的团队里没有任何讨论
+      no_discussions_in_group: 这个团队还没有讨论过
   discussion_context:
     see_revision_history: 看历史修订
   description_history:
@@ -229,10 +246,16 @@ cmn:
   confirmation_not_received: 没有收到确认指令吗？
   unlock_not_received: 没有收到解锁指令吗？
   invitation:
+    invite_people: 邀请人到你的组里
     message_body: 邀请信息
     invitation_link: 邀请链接
     copy: 如果有些人没有得到他们的邀请邮件，请自觉的复制这上面的邀请链接并且发送给他们
+  discussion_form:
+    new:
+      header: 开始讨论
   motion_form:
+    new:
+      header: 新提议
     name_helper: 尽可能让这个标题清晰和简洁
   vote_form:
     header: 陈述你的位置
@@ -244,6 +267,9 @@ cmn:
     update: 位置更新
   new_user_form:
     create_an_account: 创建一个账户
+  profile_form:
+    picture: 图片
+    upload_new_image: 上传一个新形象
   group_setup:
     submit: 把我放到我的组里
     payment_model:
@@ -261,6 +287,7 @@ cmn:
       motion:
         name: 标题
         description: 细节
+        close_at_date: 关闭中
       user:
         name: 性名
         email: 邮件
@@ -307,6 +334,7 @@ cmn:
   closed: 关闭了
   decisions: 决定
   delete: 删除
+  details: 细节
   discussions: 讨论
   edit: 编辑
   email_address: 邮件地址
@@ -340,4 +368,6 @@ cmn:
   unlike: 不喜欢
   update: 更新
   common:
+    groups: 组群
     email: 邮件
+    start_group: 开始组团！

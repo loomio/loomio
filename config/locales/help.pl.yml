@@ -1,0 +1,10 @@
+pl:
+  new_help:
+    how_to:
+      invite_people_link: Zaproś ludzi
+      start_discussion_link: Rozpocznij dyskusję
+    contents:
+      subgroups:
+        title_html: Podgrupy
+    subgroups:
+      title: Podgrupy

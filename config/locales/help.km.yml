@@ -1,0 +1,15 @@
+km:
+  new_help:
+    how_to:
+      start_group_link: ចាប់ផ្តើមក្រុម
+      invite_people_link: អញ្ជើញមនុស្ស​
+      start_discussion_link: ចាប់ផ្តើមជាមួយការពិភាក្សារ
+    contents:
+      getting_started:
+        title_html: ការចាប់ផ្តើម​
+      subgroups:
+        title_html: "Sub-groups "
+    getting_started:
+      title: ការចាប់ផ្តើម​
+    subgroups:
+      title: "Sub-groups "

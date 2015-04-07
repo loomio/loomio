@@ -125,3 +125,16 @@ pt-PT:
       x_months:
         one: 1 mês
         other: "%{count} meses"
+  footer:
+    blog: Blogue
+    contact: Contacto
+    privacy: Privacidade
+    public_groups: Grupos públicos
+    terms: Termos
+  description_history:
+    previous: Anterior
+    next: Next
+  next: Next
+  prev: Anterior
+  common:
+    privacy: Privacidade

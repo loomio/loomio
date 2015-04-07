@@ -1,0 +1,19 @@
+bg-BG:
+  new_help:
+    how_to:
+      invite_people_link: Поканете хора
+      start_discussion_link: Започни дискусия
+    contents:
+      getting_started:
+        title_html: Как да започнем
+      inviting_members:
+        pending_invitations_html: Чакащи покани
+      subgroups:
+        title_html: Подгрупи
+    getting_started:
+      title: Как да започнем
+    inviting_members:
+      pending_invitations:
+        title: Чакащи покани
+    subgroups:
+      title: Подгрупи

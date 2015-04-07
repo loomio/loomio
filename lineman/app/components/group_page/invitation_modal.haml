@@ -11,7 +11,8 @@
     .current-invitations{ng_show: 'hasInvitations()'}
       %h4 {{ 'invitation.to' | translate }}:
       .current-invitations{ng_repeat: 'invitation in invitations'}
-        {{::invitation.name}} ({{::invitation.subtitle}})
+        %span {{::invitation.name}}
+        %span{ng-if: 'invitation.subtitle'} ({{::invitation.subtitle}})
 
       %h4 {{ 'invitation.invitation_message' | translate }}
       %textarea.form-control{ng-model: 'message'}

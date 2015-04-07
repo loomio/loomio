@@ -427,6 +427,11 @@ nl-NL:
       click_to_unfollow: Klik om groep niet meer te volgen
       following_details: Je wordt op de hoogte gesteld van elk gesprek in deze groep.
       not_following_details: Je wordt op de hoogte gesteld van gesprekken waar je aan deelneemt.
+  networks:
+    previous_requests: Eerdere verzoeken
+    approve: Goedkeuren
+    threads: Discussies
+    groups: Groepen
   group_request:
     header: Begin een groep
     commercial_use_option: "in een bedrijf,  organisatie of werkplek"

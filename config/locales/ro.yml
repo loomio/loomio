@@ -5,6 +5,7 @@ ro:
     group_volume_description: "Cadența notificărilor controlează câte emailuri se primesc de la grup. Setează cadența notificărilor pentru toate grupurile tale:"
     to_change_one_group: "Pentru a schimba cadența notificărilor a unui singur grup, vizitați pagina grupului."
     proposal_closing_soon: Vreau să primesc email când o propunere se închide.
+    submit: Actualizeaza setarile
   explore:
     header: Exploreaza grupuri publice
   try_it:
@@ -194,7 +195,9 @@ ro:
     about: Despre
     blog: Blog
     contact: Contact
+    help: Ajutor
     privacy: Confidentialitate
+    pricing: Preturi
     public_groups: Grupuri publice
     terms: Termeni
   inbox:
@@ -424,7 +427,13 @@ ro:
       click_to_unfollow: Click pentru dezabonare la grup
       following_details: Vei fi anuntat despre fiecare subiect al acestui grup.
       not_following_details: Vei fi anuntat despre subiectele la care participi.
+  networks:
+    previous_requests: Cereri anterioare
+    approve: Aproba
+    threads: Discutii
+    groups: Grupuri
   group_request:
+    header: Creaza un grup
     commercial_use_option: "intr-o companie, organizatie sau loc de munca"
     non_commercial_use_option: intr0o comunitate dau retea informala
     please_select_an_option: Selectati o optiune
@@ -966,6 +975,8 @@ ro:
   google: Google
   persona: Persona
   common:
+    profile: Profil
+    email_settings: Setări email
     markdown_help_tooltip: Invata bazele formatarii textului folosind Markdown
     settings: Setari
     dashboard: Tablou de bord

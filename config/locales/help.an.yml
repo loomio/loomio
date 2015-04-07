@@ -1,0 +1,63 @@
+an:
+  new_help:
+    how_to:
+      start_group_link: Crear un grupo
+      invite_people_link: Convidar a personas
+      start_discussion_link: Empecipiar una discusión
+    contents:
+      getting_started:
+        title_html: Primers pasos
+      group_settings:
+        group_permissions_html: "Permisos d'o grupo"
+      inviting_members:
+        pending_invitations_html: Invitacions pendients
+      discussion_threads:
+        discussion_privacy_html: "Privacidat d'a discusión"
+      subgroups:
+        title_html: Subgrupos
+      keeping_up_to_date:
+        email_settings_html: "Configuración d'o correu electronico"
+      user_profile:
+        account_deactivation_html: Desactivando a tuya cuenta.
+    getting_started:
+      title: Primers pasos
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Qui puede trobar iste grupo?
+        how_do_people_join:
+          title: Cómo unir-se a o grupo?
+        who_can_see_discussions:
+          title: Quí puede veyer as discusions?
+      group_permissions:
+        title: "Permisos d'o grupo"
+        what_can_members_do:
+          title: Qué pueden fer os miembros?
+          invite_and_approve_new_members:
+            title: Convidar y aprebar nuevos miembros
+          start_discussions:
+            title: Empecipiar discusions
+          edit_discussion_context:
+            title: "Editar o contexto de qualsiquier discusión d''o grupo"
+          edit_comments:
+            title: Editar os suyos comentarios en qualsiquier momento
+          raise_proposals:
+            title: Fer propuestas
+          vote_on_proposals:
+            title: Votar en propuestas
+    inviting_members:
+      pending_invitations:
+        title: Invitacions pendients
+    discussion_threads:
+      discussion_privacy:
+        title: "Privacidat d'a discusión"
+    subgroups:
+      title: Subgrupos
+    keeping_up_to_date:
+      email_settings:
+        title: "Configuración d'o correu electronico"
+      yesterday_on_loomio:
+        title: Ahiere en Loomio
+    user_profile:
+      account_deactivation:
+        title: Desactivando a tuya cuenta.

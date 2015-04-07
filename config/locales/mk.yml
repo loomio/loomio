@@ -1,4 +1,6 @@
 mk:
+  email_settings:
+    submit: Ажурирај ги подесувањата
   try_it:
     header: Пробај го Loomio
     start_a_group: Започни група за да донесуваш одлуки во својата заедница.
@@ -14,6 +16,9 @@ mk:
   date:
     formats:
       for_another_year: "%-д/%-м/%г"
+  devise:
+    registrations:
+      sign_up: Создај акаунт
   error:
     access_denied: Немате дозвола за да го направите ова.
     cant_join_subgroup: Не можете да се придружите на под-групата ако не сте член на главната група.
@@ -121,14 +126,19 @@ mk:
     about: За Loomio
     blog: Блог
     contact: Контакт
+    help: Помош
     privacy: Приватност
+    pricing: Ценовник
     public_groups: Јавни групи
     terms: Услови
   inbox:
+    title: Сандаче
     dropdown-btn: Сандаче
   notifications:
     header: Известувања
+    new_motion: го започна предлогот
     motion_closed:
+      by_user: го затвори предлогот
       by_expiry: Предлогот е затворен
     new_vote: "%{position} на предлогот"
     new_comment: коментираше на дискусијата
@@ -156,6 +166,8 @@ mk:
     header: Добре дојде на твојата почетна страна
   prompt_user_to_join:
     header: Приклучи се во групата за да учествуваш
+  user_profile:
+    change_password: Измени ја лозинката
   group_form:
     name: Име на групата
     description: Опис
@@ -179,6 +191,8 @@ mk:
     c7: Додај/избриши други координатори.
     c8: Избриши дискусии.
     c9: Избриши коментари.
+    m5: Измени го насловот или контекстот на било која дискусија.
+    m7: Измени ги нивните сопствени коментари во секое време.
   group_privacy:
     visible_to:
       members: Скриена група. Видлива само за членовите.
@@ -234,7 +248,13 @@ mk:
   start_a_discussion: Започни дискусија
   group_description: Опис на групата
   edit_group_description: Измени го описот на групата
+  networks:
+    previous_requests: Претходни барања
+    approve: Одобри
+    threads: Дискусии
+    groups: Групи
   group_request:
+    header: Започни група
     confirmation:
       title: "Речиси си готов/а! Провери ја твојата електронска пошта."
   discussion_items:
@@ -429,6 +449,7 @@ mk:
       motion:
         name: Наслов
         description: Детали
+        close_at_date: Се затвора
       user:
         name: Целосно име
         email: Email
@@ -568,8 +589,10 @@ mk:
   google: Гугл
   persona: Личност
   common:
+    profile: Профил
     back_to_discussion: Врати се на дискусијата
     edited: Изменето
+    groups: Групи
     today: Денес
     months:
       january: Јануари

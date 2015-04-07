@@ -1,18 +1,17 @@
-angular.module('loomioApp').controller 'DiscussionsCardController', ($scope, $modal, Records, UserAuthService, DiscussionFormService) ->
-  nextPage = 1
-  busy = false
-  $scope.lastPage = false
+angular.module('loomioApp').controller 'DiscussionsCardController', ($scope, $modal, Records, DiscussionFormService, KeyEventService, LoadingService) ->
+  $scope.loaded = 0
+  $scope.perPage = 25
 
-  $scope.getNextPage = ->
-    return false if busy or $scope.lastPage
-    busy = true
-    Records.discussions.fetchByGroupAndPage($scope.group, nextPage).then (data) ->
-      discussions = data.discussions or []
-      $scope.lastPage = true if discussions.length < 5
-      nextPage = nextPage + 1
-      busy = false
-
-  $scope.getNextPage()
+  $scope.loadMore = ->
+    options =
+      group_id: $scope.group.id
+      from:     $scope.loaded
+      per:      $scope.perPage
+    $scope.loaded += $scope.perPage
+    Records.discussions.fetchByGroup options
+  LoadingService.applyLoadingFunction $scope, 'loadMore'
+  $scope.loadMore()
 
   $scope.openDiscussionForm = ->
-    DiscussionFormService.openNewDiscussionModal()
+    DiscussionFormService.openNewDiscussionModal($scope.group)
+  KeyEventService.registerKeyEvent $scope, 'pressedT', $scope.openDiscussionForm

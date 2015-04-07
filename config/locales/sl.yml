@@ -447,6 +447,11 @@ sl:
       click_to_unfollow: Klikni za prenehanje spremljanja skupine
       following_details: Obveščen/a boš o vsaki temi v tej skupini.
       not_following_details: "Obveščen/a boš o temah, v katerih sodeluješ."
+  networks:
+    previous_requests: Pretekle prošnje
+    approve: Potrdi
+    threads: Razprave
+    groups: Skupine
   group_request:
     header: Ustvari skupino
     commercial_use_option: "v podjetju, uradni organizaciji ali na delovnem mestu"

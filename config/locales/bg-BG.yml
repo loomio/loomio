@@ -1,4 +1,6 @@
 bg-BG:
+  email_settings:
+    submit: Обновяване на настройки
   try_it:
     loomio_community_info: "Това е мястото, където дискутираме и вземаме решения относно Loomio."
   activerecord:
@@ -22,6 +24,8 @@ bg-BG:
     invitations:
       send_instructions: "Изпратена е покана до %{email}."
       invitation_token_invalid: "Тази покана вече не е валидна!"
+    registrations:
+      sign_up: Създаване на акаунт
   error:
     access_denied: Нямате права да правите това.
     cant_join_subgroup: Не можете да се присъедините към подгрупа ако не сте член на родителската група.
@@ -72,6 +76,10 @@ bg-BG:
         one: 1 покана бе изпратена
         other: "%{count} покани бяха изпратени"
       auto_added_and_sent: "%{auto_added_text} и %{sent_text}"
+  views:
+    pagination:
+      previous: Предишно
+      next: Следващо
   warning:
     cant_remove_last_admin: Вие сте последния координатор и не може да бъдете отстранявани.
     membership_request_already_approved: Заявката за члеснтво вече е била одобрена.
@@ -126,11 +134,15 @@ bg-BG:
       almost_x_years:
         one: "%{count} година"
         other: "%{count} години"
+  footer:
+    help: Помощ
   inbox:
+    title: Кутия входящи
     dropdown-btn: Кутия входящи
     empty: "Няма коментари, които вече да не сте видели."
   notifications:
     header: Известия
+    new_motion: създаде предложение
     motion_closed:
       by_user: затвори предложението
       by_expiry: Това предложение е затворено.
@@ -157,6 +169,8 @@ bg-BG:
     message: "<p>Това е  <strong>страницата на групата</strong>. Отляво е списък с дискусиите в тази група.</p><p>Ако искате групата да дискутира друга тема, започнете нова дискусия.</p>"
   dashboard_helper_text:
     header: Добре дошли във вашата начална страница
+  user_profile:
+    change_password: Промени своята парола
   setup_steps_title: "Следващи стъпки:"
   setup_step_1: Прегледайте примерната дискусия
   setup_step_2: Започнете вашата първа дискусия
@@ -214,6 +228,10 @@ bg-BG:
   start_a_discussion: Стартирай дискусия
   group_description: Описание на група
   edit_group_description: Редакция на описанието на групата
+  networks:
+    approve: Одобряване
+    threads: Дискусии
+    groups: Групи
   discussion_items:
     new_discussion: създаде дискусията
     new_motion: създаде предложение
@@ -230,6 +248,10 @@ bg-BG:
   empty_decision_list_html: "Готови за вземане на решение? <br> Всеки може да направи предложение."
   empty_decision_index: Групата не е взела решения все още.
   empty_discussion_list: Няма активност в тази дискусия все още.
+  discussion_list:
+    empty:
+      no_discussions: Няма дискусии във вашите групи.
+      no_discussions_in_group: Групата няма дискусии все още.
   discussion_context:
     started_html: "Започнато преди %{when} от <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Последно редактирано на %{when} от <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -319,6 +341,7 @@ bg-BG:
     proposal: Насоки за писане на чисти предложения
     vote: Можете да промените позицията си по всяко време
   contribution:
+    submit: Принос
     thank_you_title: "Благодарим за вашия принос за Loomio!"
   resend_confirmation: Изпрати отново инструкции за потвърждение
   new_password: Нова парола
@@ -330,10 +353,12 @@ bg-BG:
   password_confirmation: Потвърждение на парола
   current_password: Текуща парола
   password_details: (имаме нужда от твоята настояща парола за да потвърдим промените)
+  confirm_password: Потвърждаване на паролата
   cancel_my_account: Закрий моя акаунт
   remember_me: Запомни ме
   signing_in: Влизане
   forgot_your_password: Забравили сте паролата си?
+  dont_have_an_account: Нямате акаунт?
   confirmation_not_received: Не получихте инструкции за потвърждение?
   unlock_not_received: Не получихте инструкции за отключване?
   invitation:
@@ -350,6 +375,7 @@ bg-BG:
     invitation_link: Линк към покана
     link_help: "Кликнете върху този линк за да се присъедините към %{group} в Loomio:"
     copy: "Ако някой не е получил e-mail с поканата, моля копирайте горния линк към поканата и му го изпратете."
+    pending_invitations: Чакащи покани
   search:
     description: "Следва списък с дискусии и предложения, които имат '%{query}' в тяхното заглавие или описание."
     header: "Резултати от търсенето за '%{query}'"
@@ -359,7 +385,13 @@ bg-BG:
   example_motion:
     name: "Трябва да можем да идем на почивка на луната!"
     description: "Помощник Роботът на Loomio е наистина запален от идеята вашата група да предприеме пътуване до луната. Очевидно космическото сирене е вкусно. Но сте обезпокоени от това колко емисии въглероден двуокис ще произведете. Добра идея ли е това пътуване? Помощник Роботът на Loomio иска да знае какво мислите!\nАко сте наясно с позицията си, кликнете една от иконките по долу (посочете с мишката за да видите описание на значението на всяка една).\nЩе имате възможност да направите кратко изявление за причината да гласувате така. Така е много лесно да се види обобщената картина на това кой какво мисли и защо. Можете да промените мнението си и да редактирате решението си свободно докато предложението е отворено.\n"
+  discussion_form:
+    new:
+      header: Започни дискусия
+      who: В коя група желаете да започнете дискусия?
   motion_form:
+    new:
+      header: Ново предложение
     name_helper: Направете заглавието колкото е възможно по-ясно и кратко.
   vote_form:
     header: Изразете своята позиция
@@ -371,6 +403,9 @@ bg-BG:
     update: Обновете своята позиция
   new_user_form:
     create_an_account: Създай акаунт
+  profile_form:
+    picture: Изображение
+    upload_new_image: Прикачи ново изображение
   group_setup:
     submit: "Заведи ме в групата!"
   simple_form:
@@ -383,12 +418,15 @@ bg-BG:
       motion:
         name: Заглавие
         description: Детайли
+        close_at_date: Затваряне
       user:
         name: Пълно име
         email: E-mail
         password: Парола
         password_confirmation: Потвърждаване на паролата
         language_preference: Език
+      group_request:
+        name: Какво е името на вашата група?
     placeholders:
       membership_request:
         introduction: "Напишете няколко думи за това кой сте и защо искате да се присъедините към %{group_name}."
@@ -487,4 +525,5 @@ bg-BG:
   unlike: Не харесвам
   update: Обновяване
   common:
+    groups: Групи
     email: E-mail

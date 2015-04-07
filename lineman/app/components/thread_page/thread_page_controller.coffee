@@ -9,6 +9,8 @@ angular.module('loomioApp').controller 'ThreadPageController', ($routeParams, $l
     @group = @discussion.group()
     $rootScope.$broadcast('viewingThread', @discussion)
     MessageChannelService.subscribeTo("/discussion-#{@discussion.key}", @onMessageReceived)
+  , (error) ->
+    $rootScope.$broadcast('pageError', error)
 
   @onMessageReceived = (event) ->
     console.log 'discussion update received', event
