@@ -6,7 +6,7 @@
 
   #threads-card-title.card-title{ translate: 'group_page.discussions', role: 'heading' }
   .group-thread-list
-    .group-thread-list-item{ng_repeat: 'discussion in group.discussions() | orderBy: ["-lastActivityAt"] | limitTo:loaded'}
+    .group-thread-list-item{ng-repeat: 'discussion in group.organizationDiscussions() | orderBy: ["-lastActivityAt"] | limitTo:loaded'}
       .time-and-icon.pull-right
         %smart_time.group-thread-list-time{time: 'discussion.lastActivityAt' }>
         %span.group-thread-list-icon

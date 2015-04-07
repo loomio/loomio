@@ -3,16 +3,15 @@ angular.module('loomioApp').controller 'DiscussionsCardController', ($scope, $mo
   $scope.perPage = 25
 
   $scope.loadMore = ->
-    Records.discussions.fetchByGroup(
+    options =
       group_id: $scope.group.id
       from:     $scope.loaded
-      per:      $scope.perPage).then -> $scope.loaded += $scope.perPage
+      per:      $scope.perPage
+    $scope.loaded += $scope.perPage
+    Records.discussions.fetchByGroup options
   LoadingService.applyLoadingFunction $scope, 'loadMore'
-
   $scope.loadMore()
 
   $scope.openDiscussionForm = ->
     DiscussionFormService.openNewDiscussionModal($scope.group)
-
-  KeyEventService.registerKeyEvent $scope, 'pressedT', ->
-    $scope.openDiscussionForm()
+  KeyEventService.registerKeyEvent $scope, 'pressedT', $scope.openDiscussionForm
