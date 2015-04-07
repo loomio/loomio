@@ -6,7 +6,7 @@
 
   #threads-card-title.card-title{ translate: 'group_page.discussions', role: 'heading' }
   .group-thread-list
-    .group-thread-list-item{ng_repeat: 'discussion in group.discussions() | orderBy: ["-createdAt"]'}
+    .group-thread-list-item{ng-repeat: 'discussion in group.organizationDiscussions() | orderBy: ["-lastActivityAt"] | limitTo:loaded'}
       .time-and-icon.pull-right
         %smart_time.group-thread-list-time{time: 'discussion.lastActivityAt' }>
         %span.group-thread-list-icon
@@ -16,6 +16,7 @@
         %a{href: '/d/{{discussion.key}}'} {{ discussion.title }}
       .group-thread-list-group-name{ng-if: 'discussion.group().isSubgroup()'}
         %a{href: '/g/{{discussion.group().key}}'} {{ discussion.groupName() }}
+    %loading{ng-show: 'loadMoreExecuting'}
 
     .discussions-show-more.card-minor-action
-      %a{ng-hide: 'lastPage', ng-click: 'getNextPage()', href: '#', translate: 'common.action.show_more'}
+      %a{ng-hide: 'loadMoreExecuting', ng-click: 'loadMore()', href: '#', translate: 'common.action.show_more'}

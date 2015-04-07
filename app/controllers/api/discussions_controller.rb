@@ -60,7 +60,7 @@ class API::DiscussionsController < API::RestfulController
       GroupDiscussionsViewer.for(user: current_user, group: @group)
     else
       Queries::VisibleDiscussions.new(user: current_user)
-    end
+    end.order(last_activity_at: :desc)
   end
 
   private
