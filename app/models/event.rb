@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
   after_create :call_thread_item_created
   after_destroy :call_thread_item_destroyed
 
-  after_create :publish_event, :broadcast_event
+  after_create :publish_event
 
   validates_inclusion_of :kind, :in => KINDS
   validates_presence_of :eventable
@@ -43,10 +43,6 @@ class Event < ActiveRecord::Base
         end
       end
     end
-  end
-
-  def broadcast_event
-    EventBroadcaster.broadcast(self)
   end
 
   def message_channel
