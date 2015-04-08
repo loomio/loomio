@@ -1,64 +1,59 @@
-%h1 Start a new group
-= form_for @group, url: start_group_path, html: {class: 'form-horizontal'} do |f|
-  .form-group
-    .col-sm-3
-    .col-sm-9
-      - if @errors.any?
-        .form__error Some information is missing or incorrect.
+.row
+  .col-md-6.col-md-offset-3.col-sm-10.col-sm-offset-1
+    .row
+      %h1= t :"start_group_form.header"
+      = form_for @group, url: start_group_path, html: {class: 'form-horizontal'} do |f|
+        .form-group
+          .col-sm-3
+          .col-sm-9
+            - if @errors.any?
+              .form__error= t :"start_group_form.form_error"
 
-  - unless user_signed_in?
-    .form-group
-      .col-sm-3
-        %label.control-label Your name:
-      .col-sm-9
-        - if @errors.include? 'name'
-          .form__error Name is required.
-        %input.form-control{type: 'text', name: 'name', value: "#{params[:name]}"}
+        - unless user_signed_in?
+          .form-group
+            .col-sm-3
+              %label.control-label{for: 'name'}= t :"start_group_form.name"
+            .col-sm-9
+              - if @errors.include? 'name'
+                .form__error= t :"start_group_form.name_error"
+              %input.form-control{type: 'text', name: 'name', value: "#{params[:name]}", id: 'name'}
 
-    .form-group
-      .col-sm-3
-        %label.control-label Your email:
-      .col-sm-9
-        - if @errors.include? 'email'
-          .form__error Not a valid email address.
-        %input.form-control{type: 'text', name: 'email', value: "#{params[:email]}"}
+          .form-group
+            .col-sm-3
+              %label.control-label{for: 'email'}= t :"start_group_form.email"
+            .col-sm-9
+              - if @errors.include? 'email'
+                .form__error= t :"start_group_form.email_error"
+              %input.form-control{type: 'text', name: 'email', value: "#{params[:email]}", id: 'email'}
 
-  .form-group
-    .col-sm-3
-      %label.control-label Group name:
-    .col-sm-9
-      - if @errors.include? 'group_name'
-        .form__error Group name is required.
-      = f.text_field :name, class: 'form-control'
+        .form-group
+          .col-sm-3
+            %label.control-label{for: 'group_name'}= t :"start_group_form.group_name"
+          .col-sm-9
+            - if @errors.include? 'group_name'
+              .form__error= t :"start_group_form.group_name_error"
+            = f.text_field :name, class: 'form-control', id: 'group_name'
 
-  .form-group
-    .col-sm-3
-      %label.control-label Payment:
-    .col-sm-9
-      - if @errors.include? 'is_commercial'
-        .form__error Please select an option
+        .form-group
+          .col-sm-3
+            %label.control-label{for: 'payment'}= t :"start_group_form.payment"
+          .col-sm-9
+            - if @errors.include? 'is_commercial'
+              .form__error= t :"start_group_form.payment_error"
 
-      .radio
-        = f.radio_button :is_commercial, true
-        = f.label :is_commercial_true do
-          %strong Subscription
-          \- 30 day free trial. If your group loves Loomio, you can use it for only $1 per member per month.
-      .radio
-        = f.radio_button :is_commercial, false
-        = f.label :is_commercial_false do
-          %strong Donation
-          \- if you can't pay a regular subscription, we will occasionally ask your group members for a voluntary donation.
+            .radio
+              = f.radio_button :is_commercial, true
+              = f.label :is_commercial_true, t(:"start_group_form.subscription_html")
+            .radio
+              = f.radio_button :is_commercial, false
+              = f.label :is_commercial_false, t(:"start_group_form.donation_html")
 
-      = f.submit t(:"common.start_group"), class: 'btn btn-success btn-block', :data => { :disable_with => t(:"common.start_group") }, id: 'sign-up-submit'
+            = f.submit t(:"common.start_group"), class: 'btn btn-success btn-block', :data => { :disable_with => t(:"common.start_group") }, id: 'sign-up-submit'
 
-      %p.small
-        By starting a group, you agree to Loomio's
-        = link_to "Terms of service", terms_of_service_path
+            %p.small= t :"start_group_form.terms_html", link: terms_of_service_path
 
-  .row
-    .col-sm-9.col-sm-offset-3
-      %p
-        We're developing a pricing model that's in line with our social mission: making it easy for anyone, anywhere to participate in decisions that affect them
+        .row
+          .col-sm-9.col-sm-offset-3
+            %p= t :"pricing_page.in_development_html"
+            %p= link_to t(:'common.find_out_more'), pricing_path
 
-      %p.text-right
-        =link_to "find out more >", pricing_path

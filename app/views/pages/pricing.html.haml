@@ -1,20 +1,14 @@
 .container
   .row.content
     .col-md-6.col-md-offset-3
-      %h1 Pricing
+      %h1= t :"pricing_page.header"
+      %p= t :"pricing_page.in_development_html"
 
-      %p
-        We're developing a pricing model that's in line with our social mission:
-        %strong making it easy for anyone, anywhere to participate in decisions that affect them.
+      %h3= t :"pricing_page.loomio_for_organisations"
+      %p= t :"pricing_page.organisations_deal_html"
 
-      %h3 Loomio for organisations
-
-      %p
-        If you're using Loomio in a company, formal organisation or workplace, you'll be charged a monthly subscription of $1 per person after a
-        %strong 30-day free trial.
-
-      %h3 Loomio for communities
-      %p Money will never be a barrier for people using Loomio to do great stuff in their communities. If your group doesn't have the budget to pay for software, you don't need to pay a subscription. However, we may occasionally ask your group members for a donation.
+      %h3= t :"pricing_page.loomio_for_communities"
+      %p= t :"pricing_page.communities_deal"
       %p
       %p
-        %a.btn.btn-success.btn-lg#pricing-page-start-link{href: start_group_path} Get started
+        %a.btn.btn-success.btn-lg#pricing-page-start-link{href: start_group_path}= t :"common.get_started"
