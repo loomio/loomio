@@ -1,35 +1,143 @@
 es:
   new_help:
     how_to:
+      title: "Como comienzo? "
       start_group_link: Empieza un grupo
-      invite_people_link: Invitar a personas
-      start_discussion_link: Empezar una discusión
+      start_group_description: Para colaborar con gente en Loomio
+      invite_people_link: Invitar personas
+      invite_people_description: a tu grupo
+      start_discussion_link: Empieza una discusión
+      start_discussion_description: sobre un tema
+      make_proposal_link: Haz una propuesta
+      make_proposal_description: "Para ver como cada uno se siente sobre un curso de acción en particular "
+      decide_together_link: "Decide juntos:"
+      decide_together_description: "cualquiera puede estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear - de esa manera podrás ver como cada uno se siente sobre la propuesta."
     contents:
+      title: Necesitas mas información?
       getting_started:
         title_html: Primeros pasos
+        starting_new_group_html: cuando quieres comenzar un nuevo grupo de Loomio
+        invited_into_group_html: Cuando eres invitado a un grupo de Loomio
+        joining_existing_group_html: Cuando quieres unirte a un grupo de Loomio ya existente
+        single_sign_on_html: Entrada de validación única
       group_settings:
+        title_html: Configuración del grupo
+        group_profile_html: Perfil del grupo
+        group_privacy_html: Privacidad del grupo
         group_permissions_html: Permisos del grupo
+      coordination:
+        title_html: Coordinando tu grupo
+        adding_cover_photo_html: Agregando una foto de portada
+        managing_membership_html: Gestionando membresias
+        deactivating_groups_html: Desactivar/archivar un grupo
       inviting_members:
+        title_html: Invitando nuevos miembros
+        importing_contacts_html: Importar contactos
         pending_invitations_html: Invitaciones pendientes
       discussion_threads:
+        title_html: "Hilos de discusión "
+        starting_discussions_html: "Comenzando una discusión "
+        providing_context_html: "Proveer contexto "
         discussion_privacy_html: Privacidad de la discusión
+        editing_discussions_html: "Editar una discusión "
+        moving_discussions_html: "Mover una discusión "
+        deleting_discussions_html: "Eliminar una discusión "
+      comments:
+        title_html: "Comentarios "
+        posting_comments_html: "Publicar un comentario "
+        attaching_files_html: "Adjuntar archivos "
+        mentioning_html: "@mencionar miembros del grupo"
+        editing_comments_html: "Editar un comentario "
+        liking_comments_html: "Gustar un comentario "
+        deleting_comments_html: "Eliminar un comentario "
+      proposals:
+        title_html: Propuestas
+        starting_proposals_html: Comenzar una propuesta
+        editing_proposals_html: Editar una propuesta
+        stating_positions_html: "Estableciendo tu posición  "
+        changing_positions_html: Cambiando tu posición
+        setting_outcome_html: Fijar los resultados de una propuesta
+        closing_proposals_html: "Cerrar una propuesta "
+        previous_decisions_html: Propuestas cerradas/decisiones anteriores
       subgroups:
         title_html: Subgrupos
+        subgroup_privacy_html: "Privacidad del subgrupo "
+      dashboard:
+        title_html: "Tu panel de control "
       keeping_up_to_date:
+        title_html: "Mantenerse al día "
         volume_html: "Volumen "
+        yesterday_on_loomio_html: "\"Ayer en Loomio\""
         email_settings_html: Configuración de correo electrónico
       user_profile:
+        title_html: Tu perfil de usuario
+        language_settings_html: "Configuración de lenguaje "
+        usernames_html: Nombres de usuario
+        updating_personal_settings_html: "Actualizar tus configuraciones personales "
+        profile_photo_html: "Sube una foto de perfil "
+        changing_passwords_html: "Cambiando tu contraseña "
         account_deactivation_html: Desactivando su cuenta.
+        account_reactivation_html: "Reactivando tu cuenta "
+      leaving_groups:
+        title_html: Abandonar un grupo
+      translation:
+        title_html: "Traducción "
+      security:
+        title_html: "Privacidad y seguridad "
+      contributing:
+        title_html: Contribuir con Loomio
+      loomio_community:
+        title_html: La Comunidad de Loomio
+      loomio_development:
+        title_html: Mantenerse informado del desarrollo de Loomio
+      faq:
+        title_html: "Preguntas frecuentes "
     getting_started:
       title: Primeros pasos
+      intro: "Cuando entras en contacto con Loomio por primera vez, puede que te sumes a través de diferentes formas.\nAquí hay algo de información sobre esos puntos de entrada.\n"
+      starting_new_group:
+        title: cuando quieres comenzar un nuevo grupo de Loomio
+        body_html: "Si no tienes una cuenta en Loomio, puedes empezar un nuevo grupo desde la pagina de portada de Lomio haciendo click en el botón <strong>\"Prueba Loomio\"</strong>.\nSeras guiado a través de los pasos a seguir para comenzar tu propio grupo.\nComo parte del proceso de iniciación del grupo, deberás  determinar como quieres que tu grupo funcione, personalizando la configuración del mismo.\nHaz click <a href=\"#group-settings\">aquí</a> para leer mas sobre las configuraciones del grupo.\n"
+      invited_into_group:
+        title: Cuando eres invitado a un grupo de Loomio
+        body_html: "Cuando recibes una invitación para unirte a un grupo ya existente de Loomio, el correo electrónico que recibes incluye un enlace de invitación único.\nCuando sigues este enlace, si no tienes una cuenta de usuario ya existente en Loomio, seras incitado a crear una cuenta con tu dirección de correo electrónico y una contraseña.\nSi ya posees una cuenta de Loomio seras llevado directamente a la pagina del grupo.\n"
+      joining_existing_group:
+        title_html: "Cuando quieres unirte a un grupo de Loomio ya existente (la <a href=\"http://loomio.org/explore\">pagina Explorar</a>)"
+        body:
+          explore_page_html: "La <a href=\"https://www.loomio.org/explore\">pagina Explorar</a> te muestra los grupos públicos activos en Loomio.\nEs accesible a través de la aplicación portátil bajo el enlace <strong>\"Gupos públicos\"</strong> al pie.\nDesde la <a href=\"https://www.loomio.org/explore\">pagina Explorar</a> puedes buscar un grupo por el nombre, por una palabra clave o por categoría, y hacer click en un grupo para ver su contenido publico.\nLa configuración de privacidad de un grupo determina como puedes hacerte miembro.\n"
+          open_to_join_html: "Algunos grupos públicos son <strong>abiertos para unirse</strong>, en ese caso veras el botón <strong>\"Unirse al grupo\"</strong> el la pagina del mismo.\nSi tienes una cuenta de Loomio, hacer click en el botón <strong>\"Unirse al grupo\"</strong> te agrega al mismo.\nSi no tienes una cuenta de Loomio, seras incitado a configurar una.\n"
+          by_request_html: "Otros grupos son accesibles <strong>solo por pedido</strong>, esto significa que a los coordinadores se les pide que aprueben (o ignoren) los pedidos de membresia.\nCuando este es el caso, veras el boton de <strong>\"Pedir pertenencia al grupo\"</strong> en la pagina.\nAl hacer click en el botón de <strong>\"Pedir pertenencia al grupo\"</strong> se te sera pedido proveer una introducción personal, luego de la cual tu pedido de membresia es enviado y los coordinadores del grupo serán notificados.\n"
+          invitation_only_html: "Algunos grupos públicos solo permiten nuevos miembros <strong>por invitación</strong>, en ese caso podrás ver el grupo pero no habrá ningún botón o forma de unirte al grupo desde la pagina del mismo.\n"
+      single_sign_on:
+        title: Entrada de validación única
+        body_html: "<p>Loomio permite crear una cuenta utilizando Facebook, Google o Persona.\nSi no tienes una cuenta de Loomio, puedes crear una utilizando cualquiera de estas plataformas de terceros haciendo click en el botón correspondiente en la pagina <a href=\"http://loomio.org/sign_in\">Entrar</a>.\nSi en el momento estas conectado a Google, Facebook o Persona, la cuenta sera detectada automáticamente.\nSino, se te pedirá ingresar. Cuando Loomio reconoce tu cuenta de terceros, te sera requerido seguir los pasos para crear tu cuenta de Loomio<p>.\n<p>También puedes asociar una cuenta existente de Google, Facebook o Persona con una cuenta existente de Loomio.\nAsegúrate de que tu sesión esta finalizada, visita la <a href=\"https://www.loomio.org/users/sign_in\">pagina de Entrada</a> y selecciona tu plataforma preferida.\nLoomio te pedirá si quieres crear una nueva cuenta con tu cuenta de tu plataforma elegida o si quieres asociarla a tu cuenta ya existente de Loomio.</p>\n"
     group_settings:
+      title: Configuración del grupo
+      intro_html: "En cualquier momento se puede comenzar un nuevo grupo de Loomio.\nCuando primero comienzas tu grupo te sera dada la posibilidad de determinar como quieres que funcione el grupo llenando tres formularios relacionados con diferentes aspectos de la configuración de tu grupo, <strong>Perfil</strong>, <strong>Privacidad</strong> y <strong>Permisos</strong>. \nLas preferencias para cada una de ellas esta explicada en detalle a continuación.\nSi deseas cambiar las preferencias de tu grupo, puedes hacerlo haciendo click en el botón <strong>\"Opciones\"</strong> en la esquina superior derecha de la pagina del grupo, y seleccionando la opción <strong>\"Editar preferencias del grupo\"</strong>.\nEsto solo sera visible para los coordinadores del grupo.\n"
+      group_profile:
+        title: Perfil del grupo
+        body_html: "La configuración de perfil de tu grupo requiere que elijas un nombre para tu grupo y que escribas una descripción del mismo. \nDescribe el propósito del grupo, por ejemplo \"Un grupo publico para que los coordinadores de la galería aprueben las propuestas de uso del espacio\" o \"El espacio para que nuestros miembros de la junta consideren el uso del presupuesto\".\nEl propósito del grupo puede cambiar con el tiempo, pero es útil que la descripción le de un entendimiento claro, a los nuevos miembros, sobre para que es el grupo.\nTambién puedes elegir la categoría de tu grupo.\nSi tu grupo es publico y quieres que la gente se sume a las conversaciones, es útil entonces elegir una categoría que ayude a otros a encontrar tu grupo en la <a href=\"http://loomio.org/explore\">pagina Explorar</a>.\n"
       group_privacy:
+        title: Privacidad del grupo
+        intro_html: "Tu configuración de privacidad determina quien puede ver lo que estas haciendo en tu grupo, y quien puede obtener la membresia.\nCuando comienzas tu grupo deberás elegir entre algunas opciones diferentes.\n"
         who_can_find_this_group:
           title: ¿Quien puede encontrar este grupo?
+          body:
+            anyone_html: "Si seleccionas <strong>\"Cualquiera\"</strong>, el grupo sera publicado en la pagina de búsqueda publica <a href=\"http://loomio.org/explore\">Explorar</a>, y en otros buscadores.\nEsto facilita que la gente encuentre tu grupo sin necesidad de que tu les envíes una invitación personal.\nEsto puede ser útil para que una gran cantidad de gente, que no se conocen entre si, se unan a un grupo.\n"
+            members_only_html: "Si seleccionas <strong>\"Miembros solamente\"</strong> el grupo no aparecerá en las búsquedas.\nSolo miembros del grupo podrán acceder al mismo.\nSeleccionar esta opción también afecta como las personas se unen a tu grupo y quien puede ver las discusiones.\nSeleccionando <strong>\"Miembros solamente\"</strong> te aseguras que la membresia es por invitación solamente, y que solo podrás tener discusiones privadas en tu grupo.\n"
         how_do_people_join:
-          title: ¿Cómo unirse al grupo?
+          title: ¿Cómo se unen las personas al grupo?
+          body:
+            open_html: "Seleccionando la opción <strong>\"Abierto\"</strong> significa que cualquiera que tenga una cuenta de Loomio puede unirse al grupo.\nLas personas verán el botón de <strong>\"Unirse al grupo\"</strong> en la parte derecha de la pagina del mismo.\nSi alguien con una cuenta existente en Loomio hace click en este botón, serán agregados al grupo.\nSi alguien sin una cuenta de Loomio hace click en el botón, entonces se les pedirá que creen una cuenta antes de que sean agregados al grupo.\n(Nota: la opción <strong>\"Abierto\"</strong> no aplica si haz seleccionado la opción <strong>\"Solo miembros\"</strong> en la sección <strong>\"¿Quien puede encontrar este grupo?\"</strong>)\n"
+            by_request_html: "/Seleccionando la opción <strong>\"Por petición\"</strong> significa que cualquiera  puede pedir unirse al grupo.\nLas personas verán el botón <strong>\"Pedir unirse al grupo\"</strong> en la parte derecha de la pagina de tu grupo.\nCuando alguien hace click en este botón tendrá la posibilidad de crear una introducción personal, y un pedido de membresia sera enviado a los coordinadores del grupo.\n"
+            membership_requests_html: "Los pedidos de membresia pueden ser aprobados o ignorados.\n(Nota: la opción <strong>\"Por petición\"</strong> no aplica si haz seleccionado la opción <strong>\"Solo miembros\"</strong> en la sección <strong>\"¿Quien puede encontrar este grupo\"</strong>)\n"
+            invitation_only_html: "Si seleccionas <strong>\"Solo por invitación\"</strong>, nadie puede unirse al grupo sin ser invitados individualmente.\nLas invitaciones se envían desde la pagina <a href=\"#inviting-members\">\"Invitar personas\"</a>.\n"
         who_can_see_discussions:
           title: ¿Quién puede ver las discusiones?
+          body:
+            public_only_html: "Seleccionando la opción <strong>\"Solo discusiones públicas\"</strong> significa que el contenido de todas las discusiones podrá ser visto públicamente.\nLos miembros del publico que no tengan cuenta de Loomio podrán leer tus comentarios pero no podrán escribir comentarios o participar en la discusión.\nEsto puede ser útil si están teniendo una discusión abierta y quieres alentar a las personas a participar.\n(Nota: la opción <strong>\"Solo discusiones públicas\"</strong> no aplica si haz seleccionado la opción <strong>\"Solo miembros\"</strong> en la sección <strong>\"¿Quien puede encontrar este grupo?\"</strong> )\n"
+            public_and_private_html: "Seleccionando la opción <strong>\"Permitir discusiones públicas y privadas\"</strong> significa que los miembros de tu grupo pueden elegir si las discusiones que comienzan son públicas o privadas.\nEsto permite discreción en torno a temáticas que pueden ser mas sensibles, y puede ser útil si quieres que solo los miembros del grupo sean capaces de leer esas conversaciones.\n(Nota: la opción <strong>\"Permitir discusiones públicas y privadas\"</strong> no aplica si haz seleccionado la opción <strong>\"Solo miembros\"</strong> en la sección <strong>\"¿Quien puede encontrar este grupo?\"</strong>)\n"
+            private_only_html: "Si seccionas la opción <strong>\"Solo discusiones privadas\"</strong>, nadie fuera de tu grupo puede ver el contenido de las discusiones."
       group_permissions:
         title: Permisos del grupo
         what_can_members_do:
@@ -46,15 +154,70 @@ es:
             title: Hacer propuestas
           vote_on_proposals:
             title: Votar en propuestas
+    coordination:
+      title: Coordinando tu grupo
+      adding_cover_photo:
+        title: Agregando una foto de portada
+      manage_membership:
+        title: Gestionando membresias
+      deactivating_groups:
+        title: Desactivar/archivar un grupo
     inviting_members:
+      title: Invitando nuevos miembros
+      importing_contacts:
+        title: Importar contactos
       pending_invitations:
         title: Invitaciones pendientes
     discussion_threads:
+      title: "Hilos de discusión "
+      starting_discussions:
+        title: "Comenzando una discusión "
+      providing_context:
+        title: "Proveer contexto "
       discussion_privacy:
         title: Privacidad de la discusión
+      editing_discussions:
+        title: "Editar una discusión "
+      moving_discussions:
+        title: "Mover una discusión "
+      deleting_discussions:
+        title: "Eliminar una discusión "
+    comments:
+      title: "Comentarios "
+      attaching_files:
+        title: "Adjuntar archivos "
+      mentioning_group_members:
+        title: "@mencionar miembros del grupo"
+      editing_comments:
+        title: "Editar un comentario "
+      liking_comments:
+        title: "Gustar un comentario "
+      deleting_comments:
+        title: "Eliminar un comentario "
+    proposals:
+      title: Propuestas
+      starting_proposals:
+        title: Comenzar una propuesta
+      editing_proposals:
+        title: Editar una propuesta
+      stating_positions:
+        title: "Estableciendo tu posición  "
+      changing_positions:
+        title: Cambiando tu posición
+      setting_outcome:
+        title: Fijar los resultados de una propuesta
+      closing_proposals:
+        title: "Cerrar una propuesta "
+      previous_decisions:
+        title: Propuestas cerradas/decisiones anteriores
     subgroups:
       title: Subgrupos
+      subgroup_privacy:
+        title: "Privacidad del subgrupo "
+    dashboard:
+      title: "Tu panel de control "
     keeping_up_to_date:
+      title: "Mantenerse al día "
       volume:
         title: "Volumen "
         body:
@@ -67,5 +230,35 @@ es:
       yesterday_on_loomio:
         title: Ayer en Loomio
     user_profile:
+      title: Tu perfil de usuario
+      language_settings:
+        title: "Configuración de lenguaje "
+      usernames:
+        title: Nombres de usuario
+      updating_personal_settings:
+        title: "Actualizar tus configuraciones personales "
+      profile_photo:
+        title: "Sube una foto de perfil "
+      changing_passwords:
+        title: "Cambiando tu contraseña "
       account_deactivation:
         title: Desactivando su cuenta.
+      account_reactivation:
+        title: "Reactivando tu cuenta "
+    leaving_groups:
+      title: Abandonar un grupo
+    translation:
+      title: "Traducción "
+    security:
+      title: "Privacidad y seguridad "
+    contributing:
+      title: Contribuir con Loomio
+      body:
+        translation:
+          title_html: "Traducción "
+        loomio_community:
+          title_html: La Comunidad de Loomio
+    loomio_community:
+      title: La Comunidad de Loomio
+    faq:
+      title: "Preguntas frecuentes "

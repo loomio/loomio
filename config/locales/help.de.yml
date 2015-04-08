@@ -1,9 +1,13 @@
 de:
   new_help:
     how_to:
+      title: Wie kann ich loslegen?
       start_group_link: Gründen Sie eine Gruppe
+      start_group_description: um mit anderen Menschen auf Loomio zusammenzuarbeiten
       invite_people_link: Leute einladen
+      invite_people_description: in Deine Gruppe
       start_discussion_link: Diskussion starten
+      start_discussion_description: zu jedem Thema
       make_proposal_link: Einen Vorschlag machen
       make_proposal_description: "sehen, wie sich jeder zu einem bestimmten Punkt im Ablauf fühlt"
       decide_together_link: "Gemeinsam entscheiden:"
@@ -15,9 +19,11 @@ de:
         starting_new_group_html: Wenn Du eine neue Loomio Gruppe starten willst
         invited_into_group_html: Wenn Du in eine Loomio Gruppe eingeladen bist
         joining_existing_group_html: Wenn Du einer bestehende Loomio Gruppe beitreten willst
+        single_sign_on_html: Einfaches Registrieren
       group_settings:
         title_html: Gruppen-Einstellungen
         group_profile_html: Gruppen-Profil
+        group_privacy_html: Gruppen-Privatsphäre
         group_permissions_html: Gruppen-Berechtigungen
       coordination:
         title_html: Koordiniere deine Gruppe
@@ -40,6 +46,7 @@ de:
         title_html: Kommentare
         posting_comments_html: Kommentar veröffentlichen
         attaching_files_html: Dateien anhängen
+        mentioning_html: "@Erwähnung von Gruppen-Mitgliedern"
         editing_comments_html: Kommentar bearbeiten
         liking_comments_html: Kommentar zustimmen
         deleting_comments_html: Kommentar löschen
@@ -54,9 +61,11 @@ de:
         previous_decisions_html: Geschlossen Vorschläge/frühere Entscheidungen
       subgroups:
         title_html: Untergruppen
+        subgroup_privacy_html: Untergruppen-Privatsphäre
       dashboard:
         title_html: Dein Schreibtisch
       keeping_up_to_date:
+        title_html: Auf dem Laufenden bleiben
         volume_html: Lautstärke
         yesterday_on_loomio_html: "\"Gestern auf Loomio\""
         email_settings_html: Email Einstellungen
@@ -73,16 +82,40 @@ de:
         title_html: Eine Gruppe verlassen
       translation:
         title_html: Übersetzung
+      security:
+        title_html: Privatsphäre und Sicherheit
+      contributing:
+        title_html: Bei Loomio mitwirken
+      loomio_community:
+        title_html: Die Loomio Gemeinschaft
+      loomio_development:
+        title_html: Mit der Loomio-Entwicklung auf dem Laufenden bleiben
+      faq:
+        title_html: FAQ
     getting_started:
       title: Loslegen
+      intro: "Es gibt mehrere Wege um mit Loomio zu starten.\nEinige Erläuterungen zu den einzelnen Zugängen:\n"
       starting_new_group:
         title: Wenn Du eine neue Loomio Gruppe starten willst
+        body_html: "Wenn Du kein Loomio-Konto hast, kannst Du eine neue Gruppe eröffnen indem Du auf <strong>\"Teste Loomio beta\"</strong> klickst.\nDu wirst durc die verschiedenen Schritte geleitet um Deine eigene Gruppe zu starten.\nAls Teil des Gruppen-Erstellungsprozesses wirst Du defninieren müssen, wie Deine Gruppe funktionieren soll, indem Du die Gruppen-Einstellungen anpasst.\nKlicke <a href=\"#group-settings\">hier</a> um mehr über Gruppen-Einstellungen zu erfahren.\n"
       invited_into_group:
         title: Wenn Du in eine Loomio Gruppe eingeladen bist
+        body_html: "Wenn Du eine Einladung in eine bestehende Loomio-Gruppe erhältst, dann erhält die eMail, die Du erhalten hast einen indiviuellen Einladungslink.\nWenn Du diesen Link klickst und du kein Loomio-Benutzerkonto hast, wirst Du aufgefordert mit Deiner eMail-Adresse und einem Passwort ein Benutzerkonto zu erstellen.\nWenn Du bereits ein Konto besitzt, wirst Du sofort zur Gruppe weitergeleitet.\n"
+      joining_existing_group:
+        title_html: "Wenn Du einer bestehende Loomio-Gruppe beitreten willst (die <a href=\"http://loomio.org/explore\">Durchsuchen-Seite</a>)"
+        body:
+          explore_page_html: "Die <a href=\"https://www.loomio.org/explore\">Öffentliche Gruppen</a> zeigt Dir aktive, öffentliche Loomio-Gruppen.\nIn der Loomio App ist diese über den <strong>“Öffentliche Gruppen”</strong>-Link im Fußbereich zu erreichen.\nVon der <a href=\"https://www.loomio.org/explore\">Öffentliche Gruppen</a>-Seite kannst Du nach einem Gruppenname oder einem Schlüsselbegriff suchen oder nach Kategorien und durch Klick auf die Gruppe kannst Du deren öffentlichen Inhalt sehen.\nDie Gruppen-Privatsphäre-Einstellungen definieren wie Du Mitglied werden kannst.\n"
+          open_to_join_html: "Einige öffentliche Gruppen sind <strong>offen</strong>\nund Du kannst den Button <strong>\"Der Gruppe beitreten\"</strong> auf der Gruppen-Seite sehen.\nWenn Du ein Loomio-Konto hast, kannst Du durch klicken auf <strong>\"Der Gruppe beitreten\"</strong> der Gruppe beitreten.\nWenn Du kein Loomio-Konto hast wirst Du dazu aufgefordert.\n"
+          by_request_html: "Andere Gruppen sind nur <strong>Auf Anfrage</strong> erreichbar, d. .h. dass die Koordinatoren aufgefordert sind Mitgliedschaftsanfragen zu beantworten.\nIn diesem Fall wirst Du ein <strong>\"Gruppenbeitritt anfragen\"</strong>-Button auf der Gruppenseite sehen.\nNach klick auf den <strong>\"Gruppenbeitritt anfragen\"</strong>-Button wirst Du einen Hinweistext sehen nach welchem die Gruppen-Koordinatoren Deine Beitrittsanfrage erhalten.\n"
+          invitation_only_html: "Einige öffentliche Gruppen erlauben neuen Mitglieder <strong>nur auf Anfrage</strong>. Hier wirst Du nur die Gruppe sehen können aber keine Möglichkeit erhalten, der Gruppe beizutreten.\n"
+      single_sign_on:
+        title: Einfaches Registrieren
     group_settings:
+      title: Gruppen-Einstellungen
       group_profile:
         title: Gruppen-Profil
       group_privacy:
+        title: Gruppen-Privatsphäre
         who_can_find_this_group:
           title: Wer kann diese Gruppe sehen?
         how_do_people_join:
@@ -137,6 +170,8 @@ de:
       title: Kommentare
       attaching_files:
         title: Dateien anhängen
+      mentioning_group_members:
+        title: "@Erwähnung von Gruppen-Mitgliedern"
       editing_comments:
         title: Kommentar bearbeiten
       liking_comments:
@@ -161,9 +196,12 @@ de:
         title: Geschlossen Vorschläge/frühere Entscheidungen
     subgroups:
       title: Untergruppen
+      subgroup_privacy:
+        title: Untergruppen-Privatsphäre
     dashboard:
       title: Dein Schreibtisch
     keeping_up_to_date:
+      title: Auf dem Laufenden bleiben
       volume:
         title: Lautstärke
         body:
@@ -195,7 +233,16 @@ de:
       title: Eine Gruppe verlassen
     translation:
       title: Übersetzung
+    security:
+      title: Privatsphäre und Sicherheit
     contributing:
+      title: Bei Loomio mitwirken
       body:
         translation:
           title_html: Übersetzung
+        loomio_community:
+          title_html: Die Loomio Gemeinschaft
+    loomio_community:
+      title: Die Loomio Gemeinschaft
+    faq:
+      title: FAQ
