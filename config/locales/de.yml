@@ -1,20 +1,20 @@
 de:
   email_settings:
-    title: Email Einstellungen
-    group_volume: Gruppenvolumen
-    group_volume_description: "Volume steuert, wie viele E-Mails Sie von einer Gruppe erhalten. Lautstärke einstellen für alle Gruppen:"
+    title: eMail-Einstellungen
+    group_volume: Gruppenlautstärke
+    group_volume_description: "Die Luatstärke steuert, wie viele E-Mails Sie von einer Gruppe erhalten. Lautstärke einstellen für alle Gruppen:"
     to_change_one_group: "Um die Lautstärke von nur einer Ihrer Gruppen zu ändern, besuchen Sie die Seite dieser Gruppe."
     discussion_activity: "Diskussionslautstärke ändern, wenn ich teilnehme"
-    discussion_activity_description: "Wenn Sie an einer Diskussion beteiligen, wird die Lautstärkeeinstellung auf 'Loud' geändert werden, so dass alle weiteren Aktivitäten  Ihnen gemailt werden."
-    yesterday_on_loomio: Bitte schicken Sie mir eine Zusammenfassung der Aktivität jeden Tag
-    yesterday_on_loomio_description: "Jeden Tag um 06.00 Uhr, senden Sie eine E-Mail mit ungelesenen Aktivität gestern. Dies ist eine gute Möglichkeit, auf Ihrem Gruppen einholen und alles, was nicht stumm geschaltet wird, enthält."
-    email_when_mentioned: "Sende mir eine E-Mail, wenn mich jemand in einem Kommentar erwähnt."
-    email_when_mentioned_description: "Wenn jemand, Ihre Aufmerksamkeit bekommen will, werden sie Erwähnt. Wenn Sie diese Funktion deaktivieren dann werden die Menschen vielleicht nicht in der Lage sein, Sie zu kontaktieren."
-    proposal_closing_soon: Erinnere mich 24 Stunden bevor der Vorschlag schließt.
-    proposal_closing_soon_description: "24 Stunden vor dem ein Vorschlag schließt, unabhängig von Volumen, werden Sie eine E-Mail mit den neuesten Informationen über den Vorschlag zu erhalten."
+    discussion_activity_description: "Wenn Sie sich an einer Diskussion beteiligen, wird die Lautstärkeeinstellung auf 'Laut' geändert werden, so dass Ihnen alle weiteren Aktivitäten gemailt werden."
+    yesterday_on_loomio: Täglich eine Zusammenfassung der Aktivitäten per eMail schicken
+    yesterday_on_loomio_description: "Täglich um 6.00 Uhr eine E-Mail mit allen ungelesenen Aktivitäten des vorigen Tages erhalten. Dies ist eine gute Möglichkeit um in Deinen Gruppen auf dem Laufenden zu bleiben und sie enthält alles was nicht auf 'stumm' gesetzt ist."
+    email_when_mentioned: "Sende mir eine E-Mail, wenn mich jemand @erwähnt."
+    email_when_mentioned_description: "Wenn jemand Deine Aufmerksamkeit erhalten will, wirst Du @erwähnt. Wir empfehlen diese Einstellung aktiv zu setzen, damit andere Dich ansprechen können."
+    proposal_closing_soon: Erinnere mich bevor der Vorschlag schließt.
+    proposal_closing_soon_description: "24 Stunden vor Schließung eines Vorschlag, unabhängig von der Lautstärke, wirst Du eine E-Mail mit den neuesten Informationen über den Vorschlag erhalten."
     submit: Update-Einstellungen
     no_change: Keine Änderung
-    no_change_description: Verlassen Sie die Lautstärke meiner Gruppen
+    no_change_description: Lautstärke meiner Gruppen unverändert lassen.
   explore:
     header: Erkunde öffentliche Gruppen
   try_it:
@@ -199,7 +199,7 @@ de:
     pricing: Preisgestaltung
     public_groups: Öffentliche Gruppen
     terms: Bedingungen
-    independent_install_html: "%{hostname} ist eine unabhängige Kopie Loomio läuft: <a href=\"http://github.com/loomio/loomio\"> erfahren Sie mehr </a>."
+    independent_install_html: "%{hostname} benutzt eine unabhängige Kopie von Loomio: <a href=\"http://github.com/loomio/loomio\"> Erfahre mehr </a>."
   inbox:
     clear: Leeren
     title: Posteingang
@@ -207,7 +207,7 @@ de:
     what_you_have_not_read_yet: "Hier sind alle Aktivitäten, die Du noch nicht gelesen hast."
     dropdown-btn: Eingang
     empty: "Du bist auf dem neuesten Stand! Es gibt keine Kommentare, die Du noch nicht gesehen hast."
-    preferences_instructions_html: "<strong>Ziehe die Objekte</strong> um sie neu zu ordnen.  <strong>Deaktivieren</strong> um es aus der inbox zu entfernen."
+    preferences_instructions_html: "<strong>Ziehe Objekte</strong> um sie neu zu ordnen. <strong>Deaktiviere</strong> um sie aus dem Posteingang zu entfernen."
   notifications:
     header: Benachrichtigungen
     new_discussion: begann eine Diskussion
@@ -227,8 +227,8 @@ de:
     motion_outcome_created: hat ein Ergebnis für den Vorschlag bekanntgegeben
     motion_outcome_updated: hat das Ergebnis für den Vorschlag aktualisiert
     email_actions:
-      following_thread: "Ab sofort folgen Sie den Thread: %{thread_title}"
-      not_following_thread: "Ab sofort folgen Sie den Thread nicht mehr: %{thread_title}"
+      following_thread: "Du folgst dem Thread: %{thread_title}"
+      not_following_thread: "Du folgst dem Thread nicht mehr: %{thread_title}"
   edit_discussion_context: Diskussionskontext bearbeiten
   request_new_group: Gründe eine Gruppe
   start_new_group: Gründe eine Gruppe
@@ -401,7 +401,7 @@ de:
   confirm_ignore_membership_request: "Bist Du sicher, dass Du die Mitgliedsanfrage von %{which_user} ignorieren möchtest?"
   membership_requested: Mitgliedschaft angefragt
   request_membership: Mitgliedschaft anfragen
-  ask_to_join_group: Gruppe beitreten
+  ask_to_join_group: Gruppenbeitritt anfragen
   confirm_remove_membership_request: "Bist Du sicher, dass Du die Mitgliedschaftsanfrage für diese Gruppe zurückziehen möchtest?"
   no_pending_membership_requests: Im Moment gibt es keine offenen Mitgliedschaftsanfragen für diese Gruppe.
   subgroups: Untergruppen
@@ -606,7 +606,7 @@ de:
     coordinating: Koordiniere deine Loomio Gruppe
     coordinating_details: "Als Koordinator bist Du verantwortlich für die Einrichtung der Loomio Gruppe und jeden einzuladen. \nGenauso wie man lernt ein neues Teil der Software zu nutzen wird deine Gruppe neue Prozesse zur besseren und effizienteren Zusammenarbeit \nkennenlernen und gemeinsam gute Entscheidungen zu treffen. \nHier sind einige Tipps um Deiner Gruppe zum Erfolg zu verhelfen:\n"
     different_ways: Verschiedene Wege um Loomio zu benutzen
-    engaging_html: "<h2>Tips um Deine Gruppe zu mobilisieren</h2>\n<p>Die Leute werden begeistert sein und mitmachen, wenn ein einnehmender\nVorschlag auf dem Tisch liegt. Ein guter Vorschlag beinhaltet einen Aktionsplan, so dass \nes sofort klar ist, was es bedeutet, zuzustimmen oder abzulehnen. Denke darüber nach, ob \nes Diskussionen oder Entscheidungen gibt, die momentan persönlich oder per eMail geführt werden \nund bei denen Du denkst es wäre besser, diese auf Loomio zu führen.</p>\n<p>Wenn Deine Gruppe gerade beginnt, könntest Du eine unbeschwerte Diskussion beginnen\ndamit jeder eine Chance bekommt mit Loomio rumzuspielen und es in Aktion zu sehen.</p>\n<p>Ein anderer Weg, um Leute zu animieren an einer Diskussion teilzunehmen, ist das @erwähnen-Feature; damit wird jemandem eine eMail geschickt, ihm/ihr mitzuteilen, dass er/sie in einem Kommentar erwähnt wurde.</p>\n"
+    engaging_html: "<h2>Tipps um Deine Gruppe zu mobilisieren</h2>\n<p>Die Leute werden begeistert sein und mitmachen, wenn ein einnehmender Vorschlag auf dem Tisch liegt. Ein guter Vorschlag beinhaltet einen Aktionsplan, so dass es sofort klar ist, was es bedeutet, zuzustimmen oder abzulehnen. Denke darüber nach, ob \nes Diskussionen oder Entscheidungen gibt, die momentan persönlich oder per eMail geführt werden \nund bei denen Du denkst es wäre besser, diese auf Loomio zu führen.</p>\n<p>Wenn Deine Gruppe gerade beginnt, könntest Du eine unbeschwerte Diskussion beginnen\ndamit jeder eine Chance bekommt mit Loomio rumzuspielen und es in Aktion zu sehen.</p>\n<p>Ein anderer Weg, um Leute zu animieren an einer Diskussion teilzunehmen, ist das @erwähnen-Feature: damit wird dem/der erwähnten Person eine eMail geschickt, dass er/sie in einem Kommentar erwähnt wurde.</p>\n"
     example1_html: "<h3>Deine Gruppe soll ein umfassendes Thema diskutieren und zusammen eine Lösung finden?</h3>\n<p>Strategie: Diskutiert ein Thema eine Weile, bevor jemand einen Vorschlag erstellt.</p>\n<p>Diskussionen erreichen das beste Ergebnis, wenn ihr ein geteiltes Verständnis über das Problem aufgebaut habt, bevor eine spezielle Lösung diskutiert wird.\nWenn die Meinungen der einzelnen auf dem Weg zur Lösungsfindung einbezogen sind, werden sie eher bereit\nsein, das Ergebnis zu akzeptieren.</p>\n"
     example2_html: "<h3>Du hast schon einen Vorschlag vor Augen und Du möchtest das Okay von der Gruppe um weiter machen zu können.</h3>\n<p>Strategie: Beginne die Diskussion mit einem speziellen Thema und mache deinen Vorschlag sofort.</p>\n<p>Wenn du meinst, du wüsstest wie die Entscheidung ausfallen wird, aber noch mal auf Nummer sicher gehen willst, kannst du den Vorschlag benutzen, um schnell einen Eindruck zu bekommen.</p>\n<p>So kannst du über finale Dokumente, eine Bewerbung oder die Abnahme eines Projektes abstimmen.</p>\n"
     get_in_touch: Kontakt aufnehmen

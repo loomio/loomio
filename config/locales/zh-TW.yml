@@ -1,7 +1,11 @@
 zh-TW:
   email_settings:
     title: 電子郵件設定
+    yesterday_on_loomio: 每天寄送事件摘要的電子郵件給我
+    email_when_mentioned: 當我被提及時寄送電子郵件給我
+    proposal_closing_soon: 提議定案前寄送電子郵件通知給我
     submit: 更新設定
+    no_change: 無更改
   explore:
     header: 探索公開群組
   try_it:
@@ -15,6 +19,7 @@ zh-TW:
     errors:
       messages:
         blank: 不能留白
+        invalid: 不是正確的值
   errors:
     messages:
       email: 您輸入的不是有效的電子郵件地址
@@ -402,6 +407,7 @@ zh-TW:
       following_details: 此群組一有新的討論主題您將會被通知。
       not_following_details: 您參與的討論主題一有新的意見您將會被通知。
   networks:
+    members_count: "%{count} 位成員"
     previous_requests: 前一個要求
     approve: 批准
     threads: 討論

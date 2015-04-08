@@ -32,7 +32,7 @@ da:
   main: 92
 de:
   frontpage: 100
-  help docs: 40
+  help docs: 52
   main: 100
 el:
   frontpage: 100
@@ -44,7 +44,7 @@ eo:
   main: 90
 es:
   frontpage: 100
-  help docs: 11
+  help docs: 56
   main: 100
 fa-IR:
   frontpage: 89
@@ -70,6 +70,10 @@ he:
   frontpage: 92
   help docs: 8
   main: 66
+hi:
+  frontpage: 0
+  help docs: 0
+  main: 0
 hr:
   frontpage: 97
   help docs: 8
@@ -91,7 +95,7 @@ it-CH:
   help docs: 0
   main: 0
 ja:
-  frontpage: 61
+  frontpage: 76
   help docs: 5
   main: 65
 km:
@@ -128,7 +132,7 @@ pl:
   main: 18
 pt-BR:
   frontpage: 100
-  help docs: 74
+  help docs: 76
   main: 100
 pt-PT:
   frontpage: 28
@@ -189,4 +193,4 @@ vi:
 zh-TW:
   frontpage: 100
   help docs: 9
-  main: 93
+  main: 94
