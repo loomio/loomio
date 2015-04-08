@@ -25,7 +25,7 @@ angular.module('loomioApp', ['ngNewRouter',
     snakeName = _.snakeCase(name);
     'generated/components/' + snakeName + '/' + snakeName + '.html';
 
-angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootScope, $router, KeyEventService, FlashService) ->
+angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootScope, $router, KeyEventService) ->
   $scope.currentComponent = 'nothing yet'
 
   $scope.$on 'currentComponent', ->
