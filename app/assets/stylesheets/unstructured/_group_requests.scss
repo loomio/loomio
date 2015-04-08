@@ -1,8 +1,7 @@
-body.group_requests, body.groups.create {
-  .form__error{
-    color: red;
-  }
-  input[type="radio"]{
-    margin-left: 0;
-  }
+.form__error{
+  color: firebrick;
+}
+
+#new_group input[type="radio"]{
+  margin-left: 0;
 }

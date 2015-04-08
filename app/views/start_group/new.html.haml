@@ -1,29 +1,42 @@
-= form_for @group, html: {class: 'form-horizontal'} do |f|
-
+%h1 Start a new group
+= form_for @group, url: start_group_path, html: {class: 'form-horizontal'} do |f|
   .form-group
-    .col-sm-9.col-sm-offset-3
-      - if @group.errors.any?
-        .form__error All fields are required
+    .col-sm-3
+    .col-sm-9
+      - if @errors.any?
+        .form__error Some information is missing or incorrect.
+
+  - unless user_signed_in?
+    .form-group
+      .col-sm-3
+        %label.control-label Your name:
+      .col-sm-9
+        - if @errors.include? 'name'
+          .form__error Name is required.
+        %input.form-control{type: 'text', name: 'name'}
+
+    .form-group
+      .col-sm-3
+        %label.control-label Your email:
+      .col-sm-9
+        - if @errors.include? 'email'
+          .form__error Not a valid email address.
+        %input.form-control{type: 'text', name: 'email'}
 
   .form-group
     .col-sm-3
       %label.control-label Group name:
     .col-sm-9
+      - if @errors.include? 'group_name'
+        .form__error Group name is required.
       = f.text_field :name, class: 'form-control'
-
-  .form-group
-    .col-sm-3
-      %label.control-label Your email:
-    .col-sm-9
-      = text_field_tag :admin_email, class: 'form-control'
-
 
   .form-group
     .col-sm-3
       %label.control-label Payment:
     .col-sm-9
-      - if @group.errors[:is_commercial].any?
-        .form__error Please select an option:
+      - if @errors.include? 'is_commercial'
+        .form__error Please select an option
 
       .radio
         = f.radio_button :is_commercial, true

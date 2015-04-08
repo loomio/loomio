@@ -13,14 +13,13 @@ class BaseController < ApplicationController
   before_filter :boot_angular_ui, if: :use_angular_ui?
 
   helper_method :time_zone
-  helper_method :permitted_params
+  #helper_method :permitted_params
 
+  protected
 
   def boot_angular_ui
     render 'layouts/angular', layout: false
   end
-
-  protected
 
   def use_angular_ui?
     current_user_or_visitor.angular_ui_enabled?
@@ -28,10 +27,6 @@ class BaseController < ApplicationController
 
   def ajax_request?
     request.xhr? or not user_signed_in?
-  end
-
-  def permitted_params
-    @permitted_params ||= PermittedParams.new(params, current_user)
   end
 
   def ensure_user_name_present

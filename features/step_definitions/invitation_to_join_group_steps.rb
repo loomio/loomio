@@ -25,6 +25,7 @@ Then(/^bill and jane should both have invitations to join$/) do
   expect(emails).to eq %w[bill@example.org jane@example.org]
 end
 
+
 Then(/^"(.*?)" should get an invitation to join the group$/) do |arg1|
   last_email = ActionMailer::Base.deliveries.last
   expect(last_email.to).to eq [arg1]

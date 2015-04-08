@@ -1,4 +1,4 @@
-class PermittedParams < Struct.new(:params, :user)
+class PermittedParams < Struct.new(:params)
 
   %w[user vote subscription motion membership_request membership
    invitation group_request group discussion discussion_reader comment

@@ -40,6 +40,10 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+  def permitted_params
+    @permitted_params ||= PermittedParams.new(params)
+  end
+
   def using_new_relic?
     ENV['NEW_RELIC_APP_NAME'].present?
   end
