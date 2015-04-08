@@ -646,8 +646,9 @@ ActiveRecord::Schema.define(version: 20150407133815) do
 
   create_table "webhooks", force: :cascade do |t|
     t.integer "discussion_id"
-    t.string  "kind",          null: false
-    t.string  "uri",           null: false
+    t.string  "kind",                       null: false
+    t.string  "uri",                        null: false
+    t.text    "event_types",   default: [],              array: true
   end
 
 end
