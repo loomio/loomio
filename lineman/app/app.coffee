@@ -51,6 +51,4 @@ angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootS
     {path: '/g/:key/:stub', component: 'groupPage' },
   ]);
 
-  FlashService.info window.Loomio.flash.notice if window.Loomio.flash.notice?
-
   return
