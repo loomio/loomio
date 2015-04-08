@@ -13,7 +13,7 @@
       .col-sm-9
         - if @errors.include? 'name'
           .form__error Name is required.
-        %input.form-control{type: 'text', name: 'name'}
+        %input.form-control{type: 'text', name: 'name', value: "#{params[:name]}"}
 
     .form-group
       .col-sm-3
@@ -21,7 +21,7 @@
       .col-sm-9
         - if @errors.include? 'email'
           .form__error Not a valid email address.
-        %input.form-control{type: 'text', name: 'email'}
+        %input.form-control{type: 'text', name: 'email', value: "#{params[:email]}"}
 
   .form-group
     .col-sm-3

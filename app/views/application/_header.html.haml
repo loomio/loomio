@@ -50,7 +50,7 @@
           = render 'user_dropdown'
 
       - else
-        %a.navbar-brand.app-logo{href: dashboard_or_root_path, title: t(:"organisation.name")}
+        %a.navbar-brand.app-logo{ href: dashboard_or_root_path, title: t(:"organisation.name"), style: "background-image: url(#{logo_path})" }
         %nav
           %ul.nav.navbar-nav.navbar-right.pull-right
             - unless controller_name == "group_requests"
