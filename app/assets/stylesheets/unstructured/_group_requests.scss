@@ -1,5 +1,8 @@
-body.group_requests {
-  abbr {
-    display: none;
+body.group_requests, body.groups.create {
+  .form__error{
+    color: red;
+  }
+  input[type="radio"]{
+    margin-left: 0;
   }
 }
