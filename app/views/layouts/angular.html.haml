@@ -20,6 +20,7 @@
 
     :javascript
       window.Loomio = {};
+      window.Loomio.flash = #{flash.to_h.to_json};
       window.Loomio.currentUserId = #{current_user.id};
       window.Loomio.seedRecords = #{CurrentUserSerializer.new(current_user).to_json}
       window.Loomio.permittedParams = #{PermittedParamsSerializer.new({}).to_json}

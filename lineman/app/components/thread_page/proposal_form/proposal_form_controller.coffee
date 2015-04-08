@@ -5,9 +5,9 @@ angular.module('loomioApp').controller 'ProposalFormController', ($scope, $modal
     proposal.save().then ->
       $modalInstance.close()
       if proposal.isNew()
-        FlashService.good 'proposal_form.messages.created'
+        FlashService.success 'proposal_form.messages.created'
       else
-        FlashService.good 'proposal_form.messages.updated'
+        FlashService.success 'proposal_form.messages.updated'
 
   $scope.cancel = ->
     $modalInstance.dismiss()

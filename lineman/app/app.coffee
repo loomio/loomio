@@ -53,4 +53,5 @@ angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootS
     {path: '/g/:key', component: 'groupPage' },
     {path: '/g/:key/:stub', component: 'groupPage' },
   ]);
+
   return

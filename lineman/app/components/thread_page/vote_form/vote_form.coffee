@@ -14,7 +14,7 @@ angular.module('loomioApp').directive 'voteForm', ->
 
     $scope.submit = ->
       $scope.vote.save().then ->
-        FlashService.good 'vote_form.submitted_your_vote'
+        FlashService.success 'vote_form.submitted_your_vote'
         $scope.editing = false
         $scope.vote = Records.votes.initialize({proposal_id: $scope.proposal.id})
 
