@@ -62,16 +62,13 @@
             %span{translate: 'dashboard_page.no_threads'}>
             %a{ng-show: 'dashboardPage.filter() != "show_all"', translate: 'dashboard_page.view_recent', href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_all"})'}>
           .dashboard-page-sort-group{ng-if: 'dashboardPage.sort() == "sort_by_date"'}
-            %dashboard_page_thread_collection{name: 'Older', threads: 'dashboardPage.dashboardDiscussions()', filter: 'dashboardPage.older'}
+            %dashboard_page_thread_collection{name: 'today', threads: 'dashboardPage.dashboardDiscussions', filter: 'dashboardPage.today'}
+            %dashboard_page_thread_collection{name: 'yesterday', threads: 'dashboardPage.dashboardDiscussions', filter: 'dashboardPage.yesterday'}
+            %dashboard_page_thread_collection{name: 'this_week', threads: 'dashboardPage.dashboardDiscussions', filter: 'dashboardPage.thisWeek'}
+            %dashboard_page_thread_collection{name: 'this_month', threads: 'dashboardPage.dashboardDiscussions', filter: 'dashboardPage.thisMonth'}
+            %dashboard_page_thread_collection{name: 'older', threads: 'dashboardPage.dashboardDiscussions', filter: 'dashboardPage.older'}
             .dashboard-page-footer{in-view: '$inview && dashboardPage.loadMore()', in-view-options: '{debounce: 200}'} .
             %loading{ng-show: 'dashboardPage.loadMoreExecuting'}
           .dashboard-page-sort-date{ng-if: 'dashboardPage.sort() == "sort_by_group"'}
             .dashboard-page-group{ng-repeat: 'group in dashboardPage.dashboardGroups() | orderBy:dashboardPage.groupName'}
-              %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisGroup(group)', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.group' | translate }} {{group.name}}"}
-                %img.selector-list-item-group-logo.pull-left{src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
-                %h2.dashboard-page-group-name
-                  %a{href: '/g/{{group.key}}'} {{group.name}}
-                .dashboard-page-threads
-                  %dashboard_page_thread{discussion: 'discussion', hide-group-logo: true, ng-repeat: 'discussion in dashboardPage.dashboardDiscussions(group)'}
-                  .dashboard-page-show-more{ng-show: 'dashboardPage.canExpand(group)'}
-                    %a{translate: 'dashboard_page.load_more', ng-click:'group.dashboardStatus = "expanded"', href: '#'}
+              %dashboard_page_thread_collection{group: 'group', threads: 'dashboardPage.dashboardDiscussions', filter: 'dashboardPage.inGroup(group)'}
