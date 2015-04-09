@@ -1,0 +1,4 @@
+%section.dashboard-page-threads-container{ng-if: 'collection.any()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.older' | translate }}"}
+  .dashboard-page-date-range{translate: 'common.date_range.yesterday', aria-hidden: 'true'}
+  .dashboard-page-threads
+    %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in collection.filteredThreads()'}
