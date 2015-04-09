@@ -6,8 +6,10 @@ ja:
     link:
       blog: ブログ
       contact: お問い合わせ
+      press: 取材
       log_in: ログイン
       video: Loomioがどのように動くか、更に詳細を見る
+      try_loomio: Loomioを試す
       try_loomio_beta: Loomio beta を試す
       more: 更に詳細
       top: トップ
@@ -15,8 +17,11 @@ ja:
       terms: 使用条件
       privacy: 個人情報
       services: サービス
+    hero:
+      header_html: "Loomioは一番安い,<br /><strong>オンライン共同意思決定過程</strong>です。"
     product:
       step1:
+        header: 徹底的に議論する。
         desc: どのトピックでもいいので、ディスカッションを初めて正しい人たちを集めましょう。多様な視点を分け合ってアイディアをともに発展させましょう。
       step2:
         header: 2. 合意を形成しましょう
@@ -26,6 +31,8 @@ ja:
         desc: 皆に機能するように、提案を一緒に発展させましょう。すべての決定が明確な締め切りを持つので、常に明確な結果を得るでしょう。
     crowdfunding:
       header: 私たちは、この新しいプラットフォームを築き終えるために、そして世界に広めるためにクラウドファンディングをしています。
+    mobile:
+      lead_html: "<strong>Loomioは任意のデバイス上で動作します。,</strong><br />決定の参加、どこでも。"
     team:
       header: Loomioについて
     ideals:
@@ -36,3 +43,5 @@ ja:
       open:
         header: 無料およびオープンソフトウェア
         desc: Loomioのコードは誰でも動かし、読み、学び、改良でき、再分配できるパブリックのリソースです。
+      gift:
+        header: ギフト･エコノミー

@@ -140,20 +140,27 @@ pt-BR:
             private_only_html: "Se você selecionou <strong>\"Apenas discussões privadas”</strong>, ninguém fora do seu grupo será capaz de ver os conteúdos de suas discussões."
       group_permissions:
         title: Permissões do grupo
+        body_html: "<p> Permissões do seu grupo ditam quais funções os membros Loomio de seu grupo podem usar.\nQuando você começar o seu grupo, você vai precisar considerar se os membros do grupo devem ter poder de decisão, se eles devem ser capazes de levantar questões ou apenas comentar as questões que você levanta, etc.\nSer capaz de regular as ações que os membros do grupo podem executar significa que consulta, supervisão, relatórios e outras situações que você pode precisar para separar membros de seu grupo em participantes e \"observadores\" pode ser mais fácil de gerir.</p>\n<p>Se você quiser que apenas algumas pessoas em seu grupo possam votar, comentar, ou iniciar as discussões, coloque essas pessoas como coordenadores e desmarque as caixas de modo que os membros não-coordenador não têm essas permissões.</p>\n"
         what_can_members_do:
           title: O que os membros podem fazer?
           invite_and_approve_new_members:
             title: Convidar e aprovar novos membros
+            body_html: "Você quer que as pessoas do seu grupo possam <a href=\"#inviting-members\">convidar pessoas para aderir</a> e, dependendo das configurações de privacidade do seu grupo, aprovar pedidos para novos membros?\nSe esta opção for selecionada todos em seu grupo serão capazes de convidar pessoas novas e aprovar todos os pedidos de adesão.\nQuando está desmarcada somente coordenadores do grupo serão capaz de convidar e aprovar novos membros.\n"
           create_subgroups:
             title: Criar subgrupos
+            body_html: "Você quer que membros sejam capazes de iniciar um novo <a href=\"#subgroups\">sub-grupo</a> no seu grupo Loomio?\nSe esta opção for selecionada todos em seu grupo serão capazes de criar sub-grupos. Quando está desmarcada somente coordenadores do grupo serão capazes de criar sub-grupos.\n"
           start_discussions:
             title: Iniciar discussões
+            body_html: "Você quer que qualquer um do grupo possa iniciar <a href=\"#starting-discussions\">novas discussões</a>?\nSe esta opção for selecionada todos em seu grupo serão capazes de iniciar discussões.\nQuando está desmarcada somente coordenadores do grupo podem iniciar discussões.\n"
           edit_discussion_context:
             title: Editar o contexto de qualquer discussão no grupo
+            body_html: "Você quer que pessoas possam modificar o <a href=\"#providing-context\">painel de contexto</a> de discussões?\nEste é o esboço do tópico de discussão e pode ser útil atualizar conforme novas informações emergem.\nQuando esta caixa é selecionada todos em seu grupo serão capazes de editar o contexto de qualquer discussão.\nQuando está desmarcada somente coordenadores do grupo podem editar os contextos das discussões.\n(Autores de discussões sempre podem editar o contexto de suas próprias discussões.)\n"
           edit_comments:
             title: Edite os seus comentários a qualquer momento
+            body_html: "Você quer permitir que as pessoas mudem o que escreveram nos comentários?\nQuando esta caixa é selecionada todos em seu grupo podem <a href=\"#editing-comments\">editar o próprio comentário</a> a qualquer momento.\nQuando ela estiver desmarcada, um comentário só pode ser editado até que alguém participe da discussão.\nComentários que foram editados aparecem com a palavra <strong>“Editado”</strong> abaixo deles.\nClicar \"Editado\" mostra todas as versões anteriores do comentário.\n"
           raise_proposals:
             title: Levantar propostas
+            body_html: "Você quer que qualquer um do grupo possa <a href=\"#starting-proposals\">fazer propostas</a> para o grupo votar?\nSe esta opção for selecionada todos em seu grupo serão capazes de levantar uma proposta em uma discussão.\nQuando está desmarcada somente coordenadores do grupo podem iniciar propostas.\n"
           vote_on_proposals:
             title: Votar em propostas
         what_next:

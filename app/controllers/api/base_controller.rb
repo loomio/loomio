@@ -17,7 +17,7 @@ class API::BaseController < ActionController::Base
   end
 
   def permitted_params
-    @permitted_params ||= PermittedParams.new(params, current_user)
+    @permitted_params ||= PermittedParams.new(params)
   end
 
   def require_authenticated_user

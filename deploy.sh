@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "building angular and copying into public"
-BRANCH=production-$(date +%Y%m%d)
+BRANCH=production-$(date +%Y%m%d%H%M%S)
 git checkout master
 git checkout -b $BRANCH # should be new branch each time
 cd lineman

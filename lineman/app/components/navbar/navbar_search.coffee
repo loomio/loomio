@@ -70,7 +70,7 @@ angular.module('loomioApp').directive 'navbarSearch', ->
           100
 
     $scope.showDropdown = ->
-      $scope.focused && $scope.query.length > 0
+      $scope.focused
 
     $scope.clearAndFocusInput = ->
       $scope.query = ''
