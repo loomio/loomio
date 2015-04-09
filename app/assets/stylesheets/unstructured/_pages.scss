@@ -113,7 +113,6 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.services,
 .pages.terms_of_service,
 .pages.third_parties,
-.pages.try_it,
 .pages.translation,
 .pages.purpose,
 .pages.how_it_works,
@@ -735,50 +734,6 @@ body.pages.wallets {
   }
 }
 
-body.pages.try_it {
-
-  h1, p, .button-text { font-family: 'Open Sans'; }
-
-  h1 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #797979;
-    text-transform: uppercase;
-  }
-
-  p {
-    font-size: 17px;
-    font-weight: 300;
-    color: $charcoal;
-  }
-
-  section { margin-top: 0; }
-
-  .fa, .join-loomio-community-icon {
-    display: block;
-    float: left;
-  }
-
-  .button-text {
-    margin: 5px 0 0 50px;
-    color: #fff;
-  }
-
-  .btn-try-it {
-    font-size: 22px;
-    font-weight: 300;
-    text-align: left;
-    padding: 30px;
-    margin: 24px 0 4px;
-    width: 100%;
-    white-space: normal;
-
-    .fa-try-it {
-      color: white;
-      font-size: 30px;
-    }
-  }
-}
 body.pages.translation {
   .container h2 { font-size: 1.6em; }
   .twitter-feed-container { padding-left: 16px; }

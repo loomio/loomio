@@ -20,15 +20,6 @@ en:
   explore:
     header: "Explore public groups"
 
-  try_it:
-    header: "Try Loomio"
-    start_a_group: "Start a group to make decisions in your own community."
-    join_the_community: "Join the Loomio Community group"
-    loomio_community_info: "This is where we discuss and make decisions about Loomio."
-    explore_groups: "Explore other groups on Loomio"
-    explore_groups_info: "Check out all the awesome groups on Loomio and join them!"
-
-
   activerecord:
     errors:
       messages:
