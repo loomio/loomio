@@ -16,6 +16,7 @@
               - else
                 = t :sign_in
 
+          %h2= t :"common.welcome_back"
           %p
             = t(:'dont_have_an_account')
             = link_to t(:'create_one_now'), new_user_registration_path, id:'create_account'
@@ -35,4 +36,4 @@
 
 
           .terms
-            =t(:terms_of_service_html, button_text: t(:'devise.sessions.sign_in'), link_path: terms_of_service_path) if hosted_by_loomio?
+            =t(:tos_html, link_path: terms_of_service_path) if hosted_by_loomio?
