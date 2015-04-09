@@ -8,15 +8,18 @@
     "company": "DAVEMO Consulting"
   },
   "dependencies": {
+    "angular-new-router": "~0.5.3",
     "coffee-script": "^1.8.0",
     "grunt": "~0.4.5",
     "grunt-angular-templates": "0.5.7",
     "grunt-concat-sourcemap": "~0.4.3",
     "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-copy": "~0.5.0",
     "grunt-exec": "^0.4.6",
+    "grunt-haml": "^0.9.0",
     "grunt-ng-annotate": "latest",
-    "lineman": ">=0.34.3",
-    "angular-new-router": "~0.5.0"
+    "grunt-sass": "0.18.1",
+    "lineman": "^0.36.0"
   },
   "engines": {
     "node": "~>0.10.5",
@@ -24,11 +27,7 @@
   },
   "devDependencies": {
     "cucumber": "~0.4.4",
-    "grunt-contrib-copy": "~0.5.0",
     "grunt-cucumber": "~0.2.3",
-    "grunt-haml": "^0.9.0",
-    "grunt-sass": "0.17.0",
-    "node-sass": "3.0.0-alpha.0",
     "protractor": ">=1.4.0",
     "selenium-webdriver": "~2.44.0"
   }
