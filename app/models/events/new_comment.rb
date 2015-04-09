@@ -16,6 +16,8 @@ class Events::NewComment < Event
       Events::UserMentioned.publish!(comment, mentioned_user)
     end
 
+    DiscussionReader.for(user: comment.author, discussion: comment.discussion).participate!
+
     UsersToEmailQuery.new_comment(comment).find_each do |user|
       ThreadMailer.delay.new_comment(user, event)
     end

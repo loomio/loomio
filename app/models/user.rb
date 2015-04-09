@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
   require 'net/http'
   require 'digest/md5'
 
-  validates_inclusion_of :dashboard_sort,   in: %w[sort_by_group sort_by_date]
-  validates_inclusion_of :dashboard_filter, in: %w[show_all show_unread show_proposals]
+  validates_inclusion_of :dashboard_filter, in: %w[show_all show_participating show_proposals show_muted]
 
   AVATAR_KINDS = %w[initials uploaded gravatar]
   LARGE_IMAGE = 170

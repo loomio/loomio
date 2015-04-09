@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411013532) do
+ActiveRecord::Schema.define(version: 20150504075221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -173,16 +173,17 @@ ActiveRecord::Schema.define(version: 20150411013532) do
   add_index "did_not_votes", ["user_id"], name: "index_did_not_votes_on_user_id", using: :btree
 
   create_table "discussion_readers", force: :cascade do |t|
-    t.integer  "user_id",                              null: false
+    t.integer  "user_id",                                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "discussion_id",                        null: false
+    t.integer  "discussion_id",                            null: false
     t.datetime "last_read_at"
-    t.integer  "read_comments_count",      default: 0, null: false
-    t.integer  "read_items_count",         default: 0, null: false
-    t.integer  "last_read_sequence_id",    default: 0, null: false
-    t.integer  "read_salient_items_count", default: 0, null: false
+    t.integer  "read_comments_count",      default: 0,     null: false
+    t.integer  "read_items_count",         default: 0,     null: false
+    t.integer  "last_read_sequence_id",    default: 0,     null: false
+    t.integer  "read_salient_items_count", default: 0,     null: false
     t.integer  "volume"
+    t.boolean  "participating",            default: false, null: false
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree

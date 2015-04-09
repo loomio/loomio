@@ -4,9 +4,9 @@ class Events::NewMotion < Event
                     eventable: motion,
                     discussion: motion.discussion)
 
-    DiscussionReader.for(discussion: motion.discussion,
-                         user: motion.author).
-                     set_volume_as_required!
+    dr = DiscussionReader.for(discussion: motion.discussion, user: motion.author)
+    dr.set_volume_as_required!
+    dr.participate!
 
     UsersToEmailQuery.new_motion(motion).find_each do |user|
       ThreadMailer.delay.new_motion(user, event)
