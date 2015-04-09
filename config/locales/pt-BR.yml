@@ -136,6 +136,7 @@ pt-BR:
     added_to_group: "Você foi adicionado a %{which_group}."
     close_date_changed: Data de encerramento alterada com sucesso.
     discussion_created: Discussão criada com sucesso.
+    discussion_updated: Discussão atualizada com sucesso.
     discussion_deleted: Discussão apagada com sucesso.
     discussion_moved: "Discussão movida para %{group_name} com sucesso"
     emails_sending: Enviando e-mails.
@@ -151,6 +152,7 @@ pt-BR:
     position_updated: Posição atualizada.
     proposal_created: Proposta criada com sucesso.
     proposal_deleted: Proposta apagada.
+    proposal_updated: Proposta atualizada.
   datetime:
     distance_in_words:
       less_than_x_seconds:
