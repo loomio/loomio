@@ -29,7 +29,7 @@
               = link_to t(:"about_loomio"), about_path, class: 'btn btn-default hidden-xs'
               %br
       .row.hero
-        .content
+        %section.content{role: 'main'}
           =image_tag 'globe.png', class: 'image'
           %h1.header= t :'frontpage.hero.header_html'
           %p.hero-text.description= t :'frontpage.hero.lead_html'
@@ -196,7 +196,7 @@
             %li#boing
               = link_to image_tag("boing.png"), 'http://boingboing.net/2014/03/19/loomio-democratic-decision-ma.html', alt: 'Boing Boing', target: 'blank'
 
-      .row.footer
+      %section.row.footer{role: 'contentinfo'}
         .content
           %ul
             %li
