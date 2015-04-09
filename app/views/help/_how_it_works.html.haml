@@ -7,7 +7,7 @@
   .col-md-8
     %p= t :"help.video_tutorial_description"
     - unless signed_in?
-      = link_to "Start a group", new_group_request_path, class: 'btn btn-success btn-lg', id: 'start-group-btn'
+      = link_to "Start a group", start_group_path, class: 'btn btn-success btn-lg', id: 'start-group-btn'
   .col-md-4
     <iframe width='356px' height='267px' src="//www.youtube.com/embed/eu6A1IQar0g" frameborder="0" allowfullscreen></iframe>
 .row#getting-started

@@ -2,10 +2,6 @@ Given(/^I want to show the loomio\.org marketing$/) do
   ENV['HOSTED_BY_LOOMIO'] = '1'
 end
 
-Given(/^I am a guest$/) do
-  @user = FactoryGirl.build(:user, name: "Herby Hancock", email: "herb@home.com")
-end
-
 Given(/^I am a logged out user$/) do
   @user = FactoryGirl.create(:user, name: "Herby Hancock", email: "herb@home.com")
 end
@@ -20,30 +16,15 @@ When(/^I go to start a new group from the navbar$/) do
 end
 
 When(/^I go to start a new group$/) do
-  visit new_group_request_path
+  visit start_group_path
 end
 
-When(/^I fill in and submit the form$/) do
-  @group_name = "Herby's Erbs"
-  fill_in :group_request_admin_name, with: @user.name
-  fill_in :group_request_admin_email, with: @user.email
-  fill_in :group_request_name, with: @group_name
-  select 'in a company, formal organisation or workplace', from: "group_request[is_commercial]"
-  click_on 'sign-up-submit'
-end
 
 When(/^I click the invitation link$/) do
   link = links_in_email(current_email)[2]
   request_uri = URI::parse(link).request_uri
   visit request_uri
   # click_email_link_matching(invitation_url(@group_request.token))
-end
-
-When(/^I complete and submit the form$/) do
-  @group_name = "Hermans Herbs"
-  fill_in :group_name, with: @group_name
-  fill_in :group_description, with: "A collection of the finest herbs"
-  click_on 'Start group!'
 end
 
 When(/^I sign in to Loomio$/) do
@@ -65,12 +46,12 @@ When(/^I click start group without filling in any fields$/) do
 end
 
 Then(/^I should see the thank you page$/) do
-  page.should have_css("body.group_requests.confirmation")
+  page.should have_css(".start-group__success")
 end
 
 Then (/^I should recieve an email with an invitation link$/) do
-  open_email(@user.email)
-  @invitation = Invitation.find_by_recipient_email(@user.email)
+  open_email('hank.schrader@cops.com')
+  @invitation = Invitation.find_by_recipient_email('hank.schrader@cops.com')
   current_email.should have_content(invitation_path(@invitation))
 end
 
@@ -80,16 +61,45 @@ end
 
 Then(/^I should be the creator of the group$/) do
   @group = Group.where(name: @group_name).first
-  @group.creator.id.should eq @user.id
+  @group.creator.should == @user
 end
 
 
 Then(/^I should see the start group form with errors$/) do
-  page.should have_content 'can\'t be blank'
+  page.should have_content 'Some information is missing or incorrect'
+  page.should have_content 'Name is required'
+  page.should have_content 'Not a valid email address'
+  page.should have_content 'Group name is required'
+  page.should have_content 'Please select an option'
 end
 
 Then(/^the example content should be present$/) do
   @group = Group.where(name: @group_name).first
   expect(@group.discussions.first.title).to eq I18n.t('example_discussion.title')
   expect(@group.motions.first.name).to eq I18n.t('example_motion.name')
+end
+
+When(/^I click 'Try Loomio' from the front page$/) do
+  visit '/'
+  click_on :'try-it-main'
+end
+
+When(/^I fill in the start group form$/) do
+  @group_name = 'Hank\'s Hankeys and Handkerchiefs'
+  fill_in :name, with: 'Hank Schrader'
+  fill_in :email, with: 'hank.schrader@cops.com'
+  fill_in :group_name, with: @group_name
+  choose 'group_is_commercial_true'
+  click_on 'Start group'
+end
+
+When(/^I fill in my group name and choose subscription and submit$/) do
+  @group_name = 'Hank\'s Hankeys and Handkerchiefs'
+  fill_in :group_name, with: @group_name
+  choose 'group_is_commercial_true'
+  click_on 'Start group'
+end
+
+When(/^I choose to create an account now$/) do
+  pending # express the regexp above with the code you wish you had
 end

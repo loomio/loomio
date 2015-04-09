@@ -317,6 +317,25 @@ en:
   # GROUP PAGE
   #
 
+  start_group_form:
+    header: "Start a new group"
+    form_error: "Some information is missing or incorrect."
+    name: "Your name"
+    name_error: "Name is required"
+    email: "Your email"
+    email_error: "Not a valid email address."
+    group_name: "Group name"
+    group_name_error: "Group name is required"
+    payment: "Payment"
+    payment_error: "Please select an option:"
+    subscription_html: "<strong>Subscription</strong> - 30 day free trial. If your group loves Loomio, you can use it for only $1 per member per month."
+    donation_html: "<strong>Donation</strong> - if you can't pay a regular subscription, we will occasionally ask your group members for a voluntary donation."
+    terms_html: "By starting a group, you agree to Loomio's <a href='%{link}' target='_blank'>terms of service</a>."
+    success:
+      header: "You're almost done! Check your email."
+      email_delivered: "We've sent an email to %{email}. Please follow the link inside to setup your new group."
+      email_not_arrived: "Email has not arrived?"
+      please_hold: "Please allow up to five 5 minutes for the email to arrive and be sure to check your spam folder."
 
   group_form:
     name: "Group name"
@@ -830,15 +849,13 @@ en:
     vote: 'You can change your position at any time'
 
   pricing_page:
-    intro: |
-      Groups with a budget pay a subscription for using the tool.
-      Groups without the means to pay a subscription use the
-      Pay What You Can model: their members are invited to make a voluntary contribution.      Your contribution means we can keep Loomio independent, free of advertising, and driven by our community.
-    organisations: Organisations
-    organisations_examples: e.g. businesses, government agencies, community organisations
-    informal_groups: Informal groups
-    informal_groups_desc: Members of your group will be asked to pay what they can
-    informal_groups_examples: e.g. families, social movements, collectives
+    header: 'Pricing'
+    in_development_html: "We're developing a pricing model that's in line with our social mission: <strong>making it easy for anyone, anywhere to participate in decisions that affect them</strong>."
+    loomio_for_organisations: "Loomio for organisations"
+    organisations_deal_html: "If you're using Loomio in a company, formal organisation or workplace, you'll be charged a monthly subscription of $1 per person after a <strong>30-day free trial</strong>."
+    loomio_for_communities: "Loomio for communities"
+    communities_deal: "Money will never be a barrier for people using Loomio to do great stuff in their communities. If your group doesn't have the budget to pay for software, you don't need to pay a subscription. However, we will occasionally ask your group members for a voluntary donation."
+
 
   #
   # CONTRIBUTIONS
@@ -1090,12 +1107,6 @@ en:
         password: "Password"
         password_confirmation: "Confirm password"
         language_preference: "Language"
-      group_request:
-        admin_name: "What is your name?"
-        admin_email: "What is your email address?"
-        name: "What is the name of your group?"
-        description: "If you have a moment, tell us about your group"
-        is_commercial: "Where are you planning to use Loomio?"
 
     placeholders:
       membership_request:
@@ -1103,8 +1114,6 @@ en:
       motion:
         name: "What is your proposed course of action?"
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
-      group_request:
-        description: "We'd love to hear about your group and why you want to use Loomio."
 
   helpers:
     submit:
@@ -1220,10 +1229,6 @@ en:
       specify_outcome: "Your proposal has closed. Specify an outcome to let everyone know what the result is:"
       outcome_created: "%{who} set a proposal outcome:"
       you_agreed: "You %{past_tense_position}"
-    verification:
-      header: "You're almost done!"
-      intro: "Please click this verification link to finalise your request:"
-      ignore: "If you did not request to join Loomio please ignore this email."
 
 
   #
@@ -1325,11 +1330,13 @@ en:
     settings: Settings
     dashboard: Dashboard
     unread: Unread
+    find_out_more: "Find out more"
     filter: 'Filter:'
     following: Following
     not_following: Not following
     back_to_discussion: "Back to discussion"
     edited: Edited
+    get_started: "Get started"
     groups: "Groups"
     select_error: Please select an option
     today: Today

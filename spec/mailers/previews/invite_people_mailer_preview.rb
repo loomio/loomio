@@ -1,7 +1,6 @@
 class InvitePeopleMailerPreview < ActionMailer::Preview
   def to_start_group
     group = FactoryGirl.create(:group)
-    group.group_request = FactoryGirl.create(:group_request)
     inviter = FactoryGirl.create(:user)
     sender = FactoryGirl.create(:user)
 

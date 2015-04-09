@@ -1,5 +1,7 @@
-body.group_requests {
-  abbr {
-    display: none;
-  }
+.form__error{
+  color: firebrick;
+}
+
+#new_group input[type="radio"]{
+  margin-left: 0;
 }

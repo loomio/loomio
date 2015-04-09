@@ -26,6 +26,7 @@ class GroupsController < GroupBaseController
     redirect_to @group, notice: t(:you_have_joined_group, group_name: @group.name)
   end
 
+  # only to be used to create subgroups
   def create
     @group = Group.new(permitted_params.group)
     authorize!(:create, @group)
@@ -33,24 +34,12 @@ class GroupsController < GroupBaseController
       @group.mark_as_setup!
       @group.add_admin! current_user
       @group.creator = current_user
-      Measurement.increment('groups.create.success')
-      if @group.is_parent?
-        SetupGroup.create_example_discussion(@group)
-      end
       flash[:success] = t("success.group_created")
       redirect_to @group
-    elsif @group.is_subgroup?
+    else
       @subgroup = @group
       render 'groups/add_subgroup'
-    else
-      Measurement.increment('groups.create.error')
-      render 'new'
     end
-  end
-
-  def new
-    @group = Group.new
-    @group.payment_plan = 'undetermined'
   end
 
   def update

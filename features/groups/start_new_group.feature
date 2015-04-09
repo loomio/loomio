@@ -7,25 +7,21 @@ Background:
   Given I want to show the loomio.org marketing
 
 Scenario: Guest submits invalid start group form
-  Given I am a guest
-  And I am on the home page of the website
+  Given I click 'Try Loomio' from the front page
   When I go to start a new group
   And I click start group without filling in any fields
   Then I should see the start group form with errors
 
 @javascript
 Scenario: Guest creates group
-  Given I am a guest
-  And I am on the home page of the website
-  When I go to start a new group
-  And I fill in and submit the form
+  Given I click 'Try Loomio' from the front page
+  And I fill in the start group form
   Then I should see the thank you page
   And I should recieve an email with an invitation link
   When I click the invitation link
-  And I choose to create an account now
   And I sign up as a new user
   And I setup the group
-  Then I should see the group page
+  Then I should be taken to the new group
   And the example content should be present
   And I should be the creator of the group
 
@@ -33,22 +29,8 @@ Scenario: Guest creates group
 Scenario: User creates group
   Given I am logged in
   When I go to start a new group from the navbar
-  And I complete and submit the form
-  Then I should be taken to the new group
-  And the example content should be present
-  And I should be the creator of the group
-
-@javascript
- Scenario: Logged out user creates group
-  Given I am a logged out user
-  And I am on the home page of the website
-  When I go to start a new group
-  And I fill in and submit the form
-  Then I should see the thank you page
-  And I should recieve an email with an invitation link
-  When I click the invitation link
-  And I sign in to Loomio
+  And I fill in my group name and choose subscription and submit
   And I setup the group
-  Then I should see the group page
+  Then I should be taken to the new group
   And the example content should be present
   And I should be the creator of the group

@@ -1,26 +1,19 @@
-class SetupGroup
-  def self.from_group_request(group_request)
-    group = Group.new
-    group.name = group_request.name
-    group.payment_plan = group_request.payment_plan
-    group.is_commercial = group_request.is_commercial
-    group.group_request = group_request
+class StartGroupService
+  def self.start_group(group)
     group.is_visible_to_public = false
     group.discussion_privacy_options = 'private_only'
     group.save!
 
     # do not create example discussion if the group is public discussions only
-    SetupGroup.create_example_discussion(group) if group.discussion_privacy_options != 'public_only'
-    send_invitation_to_start_group(group)
-    group
+    create_example_discussion(group) if group.discussion_privacy_options != 'public_only'
   end
 
-  def self.send_invitation_to_start_group(group)
-    inviter = SetupGroup.find_or_create_helper_bot
+  def self.invite_admin_to_group(group: , name:, email:)
+    inviter = find_or_create_helper_bot
     invitation = InvitationService.create_invite_to_start_group(group: group,
                                                                 inviter: inviter,
-                                                                recipient_email: group.group_request.admin_email,
-                                                                recipient_name: group.group_request.admin_name)
+                                                                recipient_email: email,
+                                                                recipient_name: name)
     InvitePeopleMailer.delay.to_start_group(invitation, inviter.email)
     invitation
   end
