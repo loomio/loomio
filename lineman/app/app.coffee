@@ -29,6 +29,7 @@ angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootS
   $scope.currentComponent = 'nothing yet'
 
   $scope.$on 'currentComponent', ->
+    $scope.pageError = null
     angular.element(document.querySelector('.main-container'))
 
   $scope.$on 'setTitle', (event, title) ->
