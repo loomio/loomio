@@ -185,4 +185,11 @@ FactoryGirl.define do
 
   factory :search_result
 
+  factory :webhook do
+    discussion
+    uri { "www.test.com" }
+    kind :slack
+    event_types { ['new_comment', 'new_motion', 'new_vote'] }
+  end
+
 end

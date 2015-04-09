@@ -11,7 +11,7 @@ class Invitables::BaseSerializer < ActiveModel::Serializer
 
   def subtitle
     raise NotImplementedError.new
-  end           
+  end
 
   def image
     raise NotImplementedError.new

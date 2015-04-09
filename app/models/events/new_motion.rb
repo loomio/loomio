@@ -12,6 +12,10 @@ class Events::NewMotion < Event
       ThreadMailer.delay.new_motion(user, event)
     end
 
+    motion.discussion.webhooks.each do |webhook|
+      WebhookService.publish! webhook: webhook, event: event
+    end
+
     event
   end
 

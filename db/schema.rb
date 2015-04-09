@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324073159) do
+ActiveRecord::Schema.define(version: 20150407133815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -643,5 +643,12 @@ ActiveRecord::Schema.define(version: 20150324073159) do
   add_index "votes", ["motion_id", "user_id", "age"], name: "vote_age_per_user_per_motion", unique: true, using: :btree
   add_index "votes", ["motion_id", "user_id"], name: "index_votes_on_motion_id_and_user_id", using: :btree
   add_index "votes", ["motion_id"], name: "index_votes_on_motion_id", using: :btree
+
+  create_table "webhooks", force: :cascade do |t|
+    t.integer "discussion_id"
+    t.string  "kind",                       null: false
+    t.string  "uri",                        null: false
+    t.text    "event_types",   default: [],              array: true
+  end
 
 end
