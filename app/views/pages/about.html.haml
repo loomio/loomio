@@ -3,23 +3,14 @@
     .inner-container
       .row
         .subhead
-          %h1 About
+          %h1= t :"about_loomio"
       .row
         .col-md-12
-          %h2 Our story
-          %p Loomio is an online tool for collaborative decision-making, built by a team of technologists, activists and social entrepreneurs in New Zealand.
+          = t :"about_page.our_story_1_html"
 
       .row
         .col-md-6
-          %p Loomio emerged from the need for a scalable way to make inclusive group decisions during the Occupy movement in 2011.
-
-          %p We experienced the transformative potential of collaborative decision-making, as well as its severe limitations: if people have to be in the same place at the same time to participate, it can never scale.
-
-          %p We set out to build a solution to this problem: using the Internet to give people an easy way to make good decisions together, wherever they are.
-
-          %p It’s called Loomio, like a loom for weaving diverse perspectives together :)
-
-          %p Now more than 75,000 people have made more than 25,000 decisions on Loomio.
+          = t :"about_page.our_story_2_html"
         .col-md-6.video
           <iframe width="426" height="239" src="//www.youtube.com/embed/wSj81OxhdBg" frameborder="0" allowfullscreen></iframe>
 
@@ -27,18 +18,14 @@
     .inner-container
       .row
         .col-md-12
-          %h2 Mission
-          %p We’re a mission-driven organization with a social purpose at our core: Loomio exists to make it easy for anyone, anywhere, to participate in decisions that affect their lives.
-
-          %p We measure our impact in the numbers and diversity of people and groups involved in decisions AND the inspiring stories from people using it to do great things in their communities.
+          = t :"about_page.mission_html"
 
   %section
     .inner-container
       .row
         .col-md-10
-          %h2 Advisors
+          = t :"about_page.advisors_html"
 
-          %p We’re backed by an Advisory Council with some of the brightest minds in democracy and tech internationally.
           %p &nbsp;
 
       .row
@@ -49,7 +36,7 @@
                 = image_tag "round-sascha.png", width: '100px'
             .media-body
               %h3.media-heading Sascha Meinrath
-              %p Founder of <a href="http://thexlab.org/" target="_blank">X-Lab</a> & <a href="http://www.newamerica.org/oti/" target="_blank">Open Technology Institute</a> at New America Foundation
+              %p= t :'about_page.sascha_bio_html'
 
           .media
             .pull-left
@@ -57,7 +44,7 @@
                 = image_tag "round-katherine.png", width: '100px'
             .media-body
               %h3.media-heading Katherine Borsecnik
-              %p Former Senior Vice President, <a href="http://www.aol.com/" target="_blank">AOL</a>, Vice Chair of <a href="http://www.rootcapital.org/" target="_blank">Root Capital</a>
+              %p= t :'about_page.katherine_bio_html'
 
           .media
             .pull-left
@@ -65,7 +52,7 @@
                 = image_tag "round-joi.png", width: '100px'
             .media-body
               %h3.media-heading Joi Ito
-              %p Director of <a href="http://www.media.mit.edu/" target="_blank">MIT Media Lab</a>, Co-founder <a href="https://creativecommons.org/" target="_blank">Creative Commons</a>, Board of <a href="https://www.mozilla.org/en-US/foundation/" target="_blank">Mozilla Foundation</a>
+              %p= t :'about_page.joi_bio_html'
 
 
 
@@ -76,23 +63,22 @@
                 = image_tag "round-rushkoff.png", width: '100px'
             .media-body
               %h3.media-heading Douglas Rushkoff
-              %p <a href="http://www.rushkoff.com/" target="_blank">Bestselling author</a>, CNN commentator, media theorist
+              %p= t :'about_page.rushkoff_bio_html'
 
           .media
             .pull-left
               .media-object
                 = image_tag "round-monahans.png", width: '100px'
             .media-body
-              %h3.media-heading Matthew & Brian Monahan
-              %p Cofounders of <a href="http://inflection.com/" target="_blank">Inflection</a>, <a href="http://www.namaste.org/" target="_blank">Namaste Foundation</a>
+              %h3.media-heading Matthew &amp; Brian Monahan
+              %p= t :'about_page.monahan_bio_html'
 
 
 .container
   %section#people
     .inner-container
       .row
-        %h2 Team
-        %p Loomio is a cooperative social enterprise based in New Zealand. We’re a passionate team with deep expertise in group process and open technology development.
+        %p= t :'about_page.team_html'
         %p &nbsp;
 
       .row
@@ -103,7 +89,7 @@
                 = image_tag "people/ben.png", width: '100px'
             .media-body
               %h3.media-heading Ben Knight
-              %p Co-founder and Executive Director, community organizer, collective intelligence researcher
+              %p= t :'about_page.ben_bio'
 
           .media
             .pull-left
@@ -111,7 +97,7 @@
                 = image_tag "people/mj.png", width: '100px'
             .media-body
               %h3.media-heading MJ Kaplan
-              %p US operations lead, adjunct professor in social enterprise at Brown University
+              %p= t :'about_page.mj_bio'
 
           .media
             .pull-left
@@ -119,7 +105,7 @@
                 = image_tag "people/rob.png", width: '100px'
             .media-body
               %h3.media-heading Robert Guthrie
-              %p Co-founder and lead software architect, accessibility, user experience
+              %p= t :'about_page.rob_bio'
 
           .media
             .pull-left
@@ -127,7 +113,7 @@
                 = image_tag "people/jon.png", width: '100px'
             .media-body
               %h3.media-heading Jon Lemmon
-              %p Co-founder and software developer, user experience designer, musician
+              %p= t :'about_page.jon_bio'
 
           .media
             .pull-left
@@ -135,7 +121,7 @@
                 = image_tag "people/chelsea.png", width: '100px'
             .media-body
               %h3.media-heading Chelsea Robinson
-              %p Facilitation expert, collaboration coach, Generation Zero co-founder
+              %p= t :'about_page.chelsea_bio'
 
           .media
             .pull-left
@@ -143,7 +129,7 @@
                 = image_tag "people/jesse.png", width: '100px'
             .media-body
               %h3.media-heading Jesse Doud
-              %p Software developer, design, accessibility, bikes
+              %p= t :'about_page.jesse_bio'
 
           .media
             .pull-left
@@ -151,8 +137,7 @@
                 = image_tag "people/mix.png", width: '100px'
             .media-body
               %h3.media-heading Mix Irving
-              %p Software developer, translation specialist, education, group process
-
+              %p= t :'about_page.mix_bio'
 
           .media
             .pull-left
@@ -160,7 +145,7 @@
                 = image_tag "people/malcolm.png", width: '100px'
             .media-body
               %h3.media-heading Malcolm Shearer
-              %p Organisational systems, process design
+              %p= t :'about_page.malcolm_bio'
 
           .media
             .pull-left
@@ -168,7 +153,7 @@
                 = image_tag "people/simon.png", width: '100px'
             .media-body
               %h3.media-heading Simon Tegg
-              %p Data analysis, visualisation, software development, communication
+              %p= t :'about_page.simon_bio'
 
         .col-md-6
           .media
@@ -177,7 +162,7 @@
                 = image_tag "people/alanna.png", width: '100px'
             .media-body
               %h3.media-heading Alanna Krause
-              %p Co-founder and consulting lead, management activist, director of Enspiral Foundation
+              %p= t :'about_page.alanna_bio'
 
           .media
             .pull-left
@@ -185,7 +170,7 @@
                 = image_tag "people/rich.png", width: '100px'
             .media-body
               %h3.media-heading Richard D. Bartlett
-              %p Co-founder and software developer, citizen activist, open source hardware hacker
+              %p= t :'about_page.rich_bio'
 
           .media
             .pull-left
@@ -193,7 +178,7 @@
                 = image_tag "people/viv.png", width: '100px'
             .media-body
               %h3.media-heading Vivien Maidaborn
-              %p Co-founder, Chair of Loomio Board, Executive Director UNICEF New Zealand
+              %p= t :'about_page.viv_bio'
 
           .media
             .pull-left
@@ -201,7 +186,7 @@
                 = image_tag "people/aaron.png", width: '100px'
             .media-body
               %h3.media-heading Aaron Thornton
-              %p Co-founder and software developer, front-end specialist
+              %p= t :'about_page.aaron_bio'
 
           .media
             .pull-left
@@ -209,7 +194,7 @@
                 = image_tag "people/hannah.png", width: '100px'
             .media-body
               %h3.media-heading Hannah Salmon
-              %p Software developer, user support, illustrator, creative activist
+              %p= t :'about_page.hannah_bio'
 
           .media
             .pull-left
@@ -217,7 +202,7 @@
                 = image_tag "people/matthew.png", width: '100px'
             .media-body
               %h3.media-heading Matthew Bartlett
-              %p Designer, data analysis, business development
+              %p= t :'about_page.matt_bio'
 
           .media
             .pull-left
@@ -225,7 +210,7 @@
                 = image_tag "people/james.png", width: '100px'
             .media-body
               %h3.media-heading James Kiesel
-              %p Software developer, open source community coordinator, daring swashbuckler
+              %p= t :'about_page.james_bio'
 
           .media
             .pull-left
@@ -233,7 +218,7 @@
                 = image_tag "people/michael.png", width: '100px'
             .media-body
               %h3.media-heading Michael Elwood-Smith
-              %p Business development, collaboration coach, motorcyclist
+              %p= t :'about_page.michael_bio'
 
 
 .container
@@ -302,7 +287,7 @@
           %p
             Enspiral Space
             %br
-            Level 2, CMC Building, 89 Courtenay Place
+            Level 2, 89 Courtenay Place
             %br
             Te Aro Wellington CBD,
             %br
