@@ -1294,7 +1294,7 @@ en:
   start_a_group: "Start a group"
   starting: "Starting"
   subject: "Subject"
-  terms_of_service_html: "By clicking %{button_text}, you agree to Loomio's <a href='%{link_path}' target='_blank'>Terms of service</a>"
+  tos_html: "By logging in, you agree to Loomio's <a href='%{link_path}' target='_blank'>Terms of service</a>"
   thanks: "Thanks!"
   unlike: "Unlike"
   time_until_close: "%{quantity_of_time} until close"
@@ -1316,6 +1316,7 @@ en:
 
   common:
     profile: "Profile"
+    welcome_back: "Welcome back!"
     email_settings: "Email settings"
     markdown_help_tooltip: 'Learn the basics of formatting your text with Markdown'
     settings: Settings
