@@ -21,12 +21,15 @@
         .navbar-content
           .navbar-header
             .navbar-brand
-              = link_to root_path do
+              = link_to_unless_current root_path do
                 = image_tag("logo-orange.png", alt: 'Loomio home page')
           .nav.navbar-nav.navbar-right
             .pull-right= link_to t(:'frontpage.link.log_in'), new_user_session_path, class: 'btn btn-orange'
+            .pull-right
+              = link_to t(:"about_loomio"), about_path, class: 'btn btn-default hidden-xs'
+              %br
       .row.hero
-        .content
+        %section.content{role: 'main'}
           =image_tag 'globe.png', class: 'image'
           %h1.header= t :'frontpage.hero.header_html'
           %p.hero-text.description= t :'frontpage.hero.lead_html'
@@ -193,7 +196,7 @@
             %li#boing
               = link_to image_tag("boing.png"), 'http://boingboing.net/2014/03/19/loomio-democratic-decision-ma.html', alt: 'Boing Boing', target: 'blank'
 
-      .row.footer
+      %section.row.footer{role: 'contentinfo'}
         .content
           %ul
             %li
