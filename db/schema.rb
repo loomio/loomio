@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410025815) do
+ActiveRecord::Schema.define(version: 20150410051836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -353,7 +353,7 @@ ActiveRecord::Schema.define(version: 20150410025815) do
     t.boolean  "members_can_create_subgroups",                   default: true,           null: false
     t.integer  "creator_id"
     t.boolean  "is_commercial"
-    t.boolean  "is_referral"
+    t.boolean  "is_referral",                                                             null: false
   end
 
   add_index "groups", ["archived_at", "id"], name: "index_groups_on_archived_at_and_id", using: :btree
