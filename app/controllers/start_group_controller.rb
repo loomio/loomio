@@ -20,6 +20,8 @@ class StartGroupController < ApplicationController
 
     # check for valid name and email
     if @group.valid? and @errors.empty?
+      @group = Group.new(permitted_params.group)
+      @group.is_referral = true
       StartGroupService.start_group(@group)
       @group.add_admin!(current_user)
       redirect_to @group
@@ -30,6 +32,7 @@ class StartGroupController < ApplicationController
 
   def create_signed_out
     @group = Group.new(permitted_params.group)
+    @group.is_referral = false
     @email = params[:email]
     @name =  params[:name]
     @errors = []
