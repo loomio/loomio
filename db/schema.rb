@@ -353,7 +353,7 @@ ActiveRecord::Schema.define(version: 20150410051836) do
     t.boolean  "members_can_create_subgroups",                   default: true,           null: false
     t.integer  "creator_id"
     t.boolean  "is_commercial"
-    t.boolean  "is_referral",                                                             null: false
+    t.boolean  "is_referral",                                    default: false,          null: false
   end
 
   add_index "groups", ["archived_at", "id"], name: "index_groups_on_archived_at_and_id", using: :btree
