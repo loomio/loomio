@@ -64,6 +64,9 @@ Then(/^I should be the creator of the group$/) do
   @group.creator.should == @user
 end
 
+Then(/^the group should be non referral$/) do
+  @group.is_referral.should == false
+end
 
 Then(/^I should see the start group form with errors$/) do
   page.should have_content 'Some information is missing or incorrect'

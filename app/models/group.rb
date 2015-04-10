@@ -510,10 +510,6 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def is_referral
-    !group_request.present? and !is_subgroup?
-  end
-
   def financial_nature
     case is_commercial
     when nil then 'undefined'

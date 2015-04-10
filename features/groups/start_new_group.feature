@@ -24,6 +24,7 @@ Scenario: Guest creates group
   Then I should be taken to the new group
   And the example content should be present
   And I should be the creator of the group
+  And the group should be non referral
 
 @javascript
 Scenario: User creates group
