@@ -82,7 +82,7 @@ $navbar-height: 45px;
 @mixin card{
   @include roundedCorners;
   border: 1px solid $border-color;
-  padding: 17px 22px;
+  padding: 17px 17px;
   background: #fff;
   margin-bottom: 8px;
   i{ color: $grey-on-white; }
@@ -100,8 +100,8 @@ $navbar-height: 45px;
 #turn-off-angular {
   z-index: 100;
   position: fixed;
-  right: 50px;
-  bottom: 50px;
+  right: 10px;
+  bottom: 10px;
   width: 100px;
   background-color: pink
 }
