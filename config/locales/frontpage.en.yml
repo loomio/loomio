@@ -76,13 +76,13 @@ en:
       <p>We’re a mission-driven organization with a social purpose at our core:
       Loomio exists to make it easy for anyone, anywhere, to participate
       in decisions that affect their lives.</p>
-      <p>We measure our impact in the numbers and diversity of people and groups
+      <p>We measure our impact in the numbers of people and groups
       involved in decisions AND the inspiring stories from people
       using it to do great things in their communities.</p>
     advisors_html: |
       <h2>Advisors</h2>
       <p>We’re backed by an Advisory Council with some of the brightest minds in democracy and tech internationally.</p>
-    sascha_bio_html: "Founder of <a href='http://thexlab.org/' target='_blank'>X-Lab</a> & <a href='http://www.newamerica.org/oti/' target='_blank'>Open Technology Institute</a> at New America Foundation"
+    sascha_bio_html: "Founder of <a href='http://thexlab.org/' target='_blank'>X-Lab</a> & <a href='http://www.newamerica.org/oti/' target='_blank'>Open Technology Institute</a>"
     katherine_bio_html: " Former Senior Vice President, <a href='http://www.aol.com/' target='_blank'>AOL</a>, Vice Chair of <a href='http://www.rootcapital.org/' target='_blank'>Root Capital</a>"
     joi_bio_html: 'Director of <a href="http://www.media.mit.edu/" target="_blank">MIT Media Lab</a>, Co-founder <a href="https://creativecommons.org/" target="_blank">Creative Commons</a>, Board of <a href="https://www.mozilla.org/en-US/foundation/" target="_blank">Mozilla Foundation</a>'
     rushkoff_bio_html: '<a href="http://www.rushkoff.com/" target="_blank">Bestselling author</a>, CNN commentator, media theorist'
@@ -90,7 +90,7 @@ en:
     team_html: |
       <h2>Team</h2>
       <p>Loomio is a cooperative social enterprise based in New Zealand. We’re a passionate team with deep expertise in group process and open technology development.</p>
-    ben_bio: "Co-founder and Executive Director, community organizer, collective intelligence researcher"
+    ben_bio: "Co-founder and director, community organizer, collective intelligence researcher"
     mj_bio: "US operations lead, adjunct professor in social enterprise at Brown University"
     rob_bio: "Co-founder and lead software architect, accessibility, user experience"
     jon_bio: "Co-founder and software developer, user experience designer, musician"
