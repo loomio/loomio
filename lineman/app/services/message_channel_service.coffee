@@ -28,9 +28,13 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, Records, Co
               comment.removeLikerId(memo.data.user_id)
 
       if data.event?
-        Records.events.initialize(data.event)
+        data.events = [] unless data.events?
+        data.events.push(data.event)
 
-      # maybe indent this one
+      if data.notification?
+        data.notifications = [] unless data.notifications?
+        data.events.push(data.notification)
+
       Records.import(data)
       onMessageReceived(data) if onMessageReceived?
 

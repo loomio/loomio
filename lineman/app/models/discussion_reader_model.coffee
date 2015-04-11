@@ -2,7 +2,7 @@ angular.module('loomioApp').factory 'DiscussionReaderModel', (BaseModel) ->
   class DiscussionReaderModel extends BaseModel
     @singular: 'discussionReader'
     @plural: 'discussionReaders'
-    @indices: 'discussionId'
+    @indices: ['id', 'discussionId']
 
     initialize: (data) ->
       @readItemsCount = 0
@@ -10,12 +10,13 @@ angular.module('loomioApp').factory 'DiscussionReaderModel', (BaseModel) ->
       @readCommentsCount = 0
       @lastReadAt = null
       @volume = null
-      @lastReadSequenceId = -1 # 0 means context is read, neg 1 means never seen discussion
+      @lastReadSequenceId = -1
+
       if data.discussion_id?
-        @id = data.discussion_id
+        discussion = @recordStore.discussions.find(data.discussion_id)
         _.extend data,
-          id:       @discussion().id
-          group_id: @discussion().groupId
+          id:       discussion.id
+          group_id: discussion.groupId
       @updateFromJSON(data)
 
     serialize: ->
@@ -34,3 +35,4 @@ angular.module('loomioApp').factory 'DiscussionReaderModel', (BaseModel) ->
       sequenceId = @discussion().lastSequenceId if isNaN(sequenceId)
       if @lastReadSequenceId < sequenceId
         @restfulClient.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})
+        @lastReadSequenceId = sequenceId

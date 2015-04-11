@@ -10,7 +10,6 @@ class Events::MembershipRequested < Event
     eventable
   end
 
-
   private
 
   def notify_users!

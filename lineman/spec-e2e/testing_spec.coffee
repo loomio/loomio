@@ -43,4 +43,4 @@
 
     #expect(history.last().getText()).toContain('1 + 2')
     #expect(history.first().getText()).toContain('5 + 6')
-
+ 

@@ -9,3 +9,7 @@ angular.module('loomioApp').factory 'MembershipModel', (BaseModel) ->
 
     user: ->
       @recordStore.users.find(@userId)
+
+    inviter: ->
+      @recordStore.users.find(@inviterId)
+

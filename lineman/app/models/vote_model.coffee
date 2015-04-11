@@ -2,6 +2,7 @@ angular.module('loomioApp').factory 'VoteModel', (BaseModel) ->
   class VoteModel extends BaseModel
     @singular: 'vote'
     @plural: 'votes'
+    @indices: ['id', 'proposalId']
 
     author: ->
       @recordStore.users.find(@authorId)

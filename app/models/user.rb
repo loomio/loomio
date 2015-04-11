@@ -227,15 +227,6 @@ class User < ActiveRecord::Base
     memberships.for_group(group).first
   end
 
-  def unviewed_notifications
-    notifications.unviewed
-  end
-
-  def mark_notifications_as_viewed!(latest_viewed_id)
-    notifications.where('id <= ?', latest_viewed_id).
-      update_all(:viewed_at => Time.now)
-  end
-
   def self.loomio_helper_bot(password: nil)
     where(email: 'contact@loom.io').first ||
     create!(email: 'contact@loom.io', name: 'Loomio Helper Bot', password: password || SecureRandom.hex)

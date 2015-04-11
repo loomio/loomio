@@ -19,8 +19,4 @@ class Events::NewVote < Event
   def vote
     eventable
   end
-
-  def message_channel
-    "/discussion-#{vote.motion.discussion.key}" #/#{kind}"
-  end
 end

@@ -15,9 +15,7 @@
 }
 
 .thread-group__icon img{
-  @include roundedCorners;
-  width: 30px;
-  height: 30px;
+  @include smallIcon;
 }
 
 .thread-context{
@@ -90,8 +88,7 @@
 }
 
 .thread-item-proposal-icon{
-  width: 30px;
-  height: 30px;
+  @include smallIcon;
   background-image: url(/img/proposal_icon_30.png);
 }
 

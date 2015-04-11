@@ -21,12 +21,15 @@ ActiveAdmin.register Group do
   filter :payment_plan, as: :select, collection: Group::PAYMENT_PLANS
   filter :memberships_count
   filter :created_at
+  filter :is_commercial
 
   scope :parents_only
   scope :engaged
   scope :engaged_but_stopped
   scope :has_members_but_never_engaged
   scope :visible_on_explore_front_page
+  scope :is_subscription
+  scope :is_donation
 
   index :download_links => false do
     column :id
@@ -47,7 +50,7 @@ ActiveAdmin.register Group do
     column :description, :sortable => :description do |group|
       group.description
     end
-    column :payment_plan
+    column :is_commercial
     column :archived_at
     actions
   end
@@ -122,7 +125,7 @@ ActiveAdmin.register Group do
       f.input :subdomain
       f.input :theme, as: :select, collection: Theme.all
       f.input :max_size
-      f.input :payment_plan, :as => :select, :collection => Group::PAYMENT_PLANS
+      f.input :is_commercial
       f.input :category_id, as: :select, collection: Category.all
     end
     f.actions

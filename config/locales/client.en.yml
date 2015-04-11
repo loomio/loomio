@@ -108,22 +108,22 @@ en:
 
   notifications:
     header: "Notifications"
-    new_discussion: "<strong>{{name}}</strong> started a discussion {{discussion}}"
-    new_motion: "<strong>{{name}}</strong> created a proposal {{proposal}}"
-    motion_closed_by_user: "<strong>{{name}}</strong> closed the proposal {{proposal}}"
-    motion_closed_by_expiry: "Proposal has closed {{proposal}}"
-    new_vote: "<strong>{{name}}</strong> {{position}} on the proposal {{proposal}}"
-    new_comment: "<strong>{{name}}</strong> commented on the discussion {{discussion}}"
-    comment_replied_to: "<strong>{{name}}</strong> replied to your comment in the discussion {{discussion}}"
-    comment_liked: "<strong>{{name}}</strong> liked your comment in the discussion {{discussion}}"
-    user_mentioned: "<strong>{{name}}</strong> mentioned you in a comment in {{discussion}}"
-    membership_requested: "<strong>{{name}}</strong> requested membership to {{group}}"
-    membership_request_approved: '<strong>{{name}}</strong> approved your request to join {{group}}'
-    user_added_to_group: "<strong>{{name}}</strong> added you to the group {{group}}"
-    motion_closing_soon: "Proposal is closing soon: {{proposal}}"
-    motion_blocked: "<strong>{{name}}</strong> blocked the proposal {{proposal}}"
-    motion_outcome_created: "<strong>{{name}}</strong> published an outcome for the proposal {{proposal}}"
-    motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the proposal {{proposal}}"
+    new_discussion: "<strong>{{name}}</strong> started a discussion <strong>{{discussion}}</strong>"
+    new_motion: "<strong>{{name}}</strong> created a proposal <strong>{{proposal}}</strong>"
+    motion_closed_by_user: "<strong>{{name}}</strong> closed the proposal <strong>{{proposal}}</strong>"
+    motion_closed_by_expiry: "Proposal has closed <strong>{{proposal}}</strong>"
+    new_vote: "<strong>{{name}}</strong> {{position}} on the proposal <strong>{{proposal}}</strong>"
+    new_comment: "<strong>{{name}}</strong> commented on <strong>{{discussion}}</strong>"
+    comment_replied_to: "<strong>{{name}}</strong> replied to your comment in <strong>{{discussion}}</strong>"
+    comment_liked: "<strong>{{name}}</strong> liked your comment in <strong>{{discussion}}</strong>"
+    user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{title}}</strong>"
+    membership_requested: "<strong>{{name}}</strong> requested membership to <strong>{{group}}</strong>"
+    membership_request_approved: '<strong>{{name}}</strong> approved your request to join <strong>{{group}}</strong>'
+    user_added_to_group: "<strong>{{name}}</strong> added you to the group <strong>{{group}}</strong>"
+    user_added_to_group_no_inviter: "You were added the group <strong>{{group}}</strong>"
+    motion_closing_soon: "Proposal is closing soon: <strong>{{proposal}}</strong>"
+    motion_outcome_created: "<strong>{{name}}</strong> published an outcome for the proposal <strong>{{proposal}}</strong>"
+    motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the proposal <strong>{{proposal}}</strong>"
 
   vote_form:
     no_statement: No statement.

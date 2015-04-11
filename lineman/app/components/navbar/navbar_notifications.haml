@@ -1,9 +1,0 @@
-.lmo-navbar-item.dropdown
-  %button.btn.btn-nude.lmo-navbar-btn.lmo-navbar-btn__icon.dropdown-toggle{href: '#', tabindex: 4}
-    .sr-only{translate: 'navbar.notifications'}
-    %i.fa.fa-lg.fa-fw.fa-bell{aria-hidden: 'true'}
-  .dropdown-menu.dropdown-menu-right.dropdown-menu-with-selector-list.notifications-dropdown{role: 'menu'}
-    .navbar-notifications
-      %ul.selector-list
-        %li.selector-list-header{translate: "notifications.header", role: 'heading'}
-        %li.selector-list-item.media{ng_repeat: 'notification in currentUser.notifications()', ng-controller: "NotificationItemController", ng-include: "'generated/components/navbar/notification_items/'+notification.event().kind+'.html'" }

@@ -16,7 +16,7 @@ angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel) ->
     byExistingUser: -> @requestorId?
 
     fakeUser: ->
-      name: @requestorName
-      email: @requestorEmail
+      name: @name
+      email: @email
       avatarKind: 'initials'
       avatarInitials: 'NA'

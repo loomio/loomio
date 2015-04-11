@@ -2,6 +2,7 @@ angular.module('loomioApp').factory 'AttachmentModel', (BaseModel) ->
   class AttachmentModel extends BaseModel
     @singular: 'attachment'
     @plural: 'attachments'
+    @indices: ['id', 'commentId']
 
     formattedFilesize: ->
       if isNaN(@filesize) then return "(invalid file size)"

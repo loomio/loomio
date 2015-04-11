@@ -3,7 +3,6 @@ class MotionSerializer < ActiveModel::Serializer
   attributes :id,
              :key,
              :discussion_id,
-             :discussion_key,
              :name,
              :description,
              :outcome,

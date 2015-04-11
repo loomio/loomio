@@ -2,7 +2,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
   class GroupModel extends BaseModel
     @singular: 'group'
     @plural: 'groups'
-    @indices: ['parentId']
+    @indices: ['id', 'key', 'parentId']
 
     setupViews: ->
       @setupView 'discussions', 'createdAt', true

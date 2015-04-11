@@ -10,8 +10,8 @@ class Events::CommentLiked < Event
     eventable
   end
 
-  def message_channel
-    "/discussion-#{comment_vote.comment.discussion.key}" #/#{kind}"
+  def discussion_key
+    eventable.comment.discussion.key
   end
 
   private

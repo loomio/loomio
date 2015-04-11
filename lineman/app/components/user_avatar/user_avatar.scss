@@ -1,7 +1,5 @@
 .avatar-initials{
-  @include roundedCorners;
-  width: 30px;
-  height: 30px;
+  @include smallIcon;
   background: $border-color;
   border: 1px solid #aaa;
   text-align: center;
@@ -9,9 +7,7 @@
 }
 
 .avatar-image img{
-  @include roundedCorners;
-  width: 30px;
-  height: 30px;
+  @include smallIcon;
 }
 
 .lg .avatar-image img, .lg .avatar-initials{

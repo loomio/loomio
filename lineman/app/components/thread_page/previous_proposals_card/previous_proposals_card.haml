@@ -1,9 +1,9 @@
-%section.previous-proposals-card{role: 'region', aria-labelledby: 'previous-proposals-card-heading'}
+%section.previous-proposals-card{role: 'region', aria-labelledby: 'previous-proposals-card-heading', ng-show: 'anyProposals()'}
   .card-title#previous-proposals-card-heading{translate: 'previous_proposals_card.heading', role: 'heading'}
 
-  .wrap{ng-repeat: 'proposal in previousProposalsCard.proposals()'}
+  .wrap{ng-repeat: 'proposal in proposals()'}
     .active-proposal{ng-if: 'selectedProposalId == proposal.id'}
       %proposal_expanded{proposal: 'proposal', can_collapse: 'true'}
 
-    .inactive-proposal{ng-if: 'selectedProposalId != proposal.id', ng_click: 'previousProposalsCard.selectProposal(proposal)'}
+    .inactive-proposal{ng-if: 'selectedProposalId != proposal.id', ng_click: 'selectProposal(proposal)'}
       %proposal_collapsed{proposal: 'proposal'}

@@ -10,10 +10,6 @@ describe 'RecordStore', ->
         @singular: 'mock'
         @plural: 'mocks'
 
-        initialize: (data) ->
-          @id = data.id
-          @key = data.key
-
       class MockRecordsInterface extends BaseRecordsInterface
         model: MockModel
 
@@ -25,4 +21,5 @@ describe 'RecordStore', ->
 
   it 'imports records', ->
     recordStore.import({mocks: [{id: 9, key:'z'}]})
+    console.log(recordStore.mocks.find(9))
     expect(recordStore.mocks.find(9).key).toBe('z')

@@ -9,7 +9,7 @@ class Groups::MembershipRequestsController < BaseController
   end
 
   def create
-    if @membership_request.valid? and MembershipRequestService.new(@membership_request).perform!
+    if MembershipRequestService.create(membership_request: @membership_request, actor: current_user_or_visitor)
       flash[:success] = t(:'success.membership_requested', which_group: @group.full_name)
       redirect_to after_request_membership_path
     else

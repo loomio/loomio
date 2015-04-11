@@ -2,8 +2,7 @@
   - if @notifications.empty?
     %li.notifications-placeholder= t :empty_notifications
   = render @notifications
-:javascript
-  var new_notifications_count = #{@unviewed_notifications.size}
-  if (new_notifications_count > 0) {
-    $('span#notifications-count').html(new_notifications_count)
-  }
+
+- if unread_count > 0
+  :javascript
+    $('span#notifications-count').html(#{unread_count})

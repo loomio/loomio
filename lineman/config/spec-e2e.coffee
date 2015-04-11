@@ -34,6 +34,7 @@ exports.config =
   # Spec patterns are relative to the current working directly when
   # protractor is called.
   specs: ["../spec-e2e/**/*spec.{js,coffee}"]
+  #specs: ["../spec-e2e/testing_spec.coffee"]
   
   # ----- Capabilities to be passed to the webdriver instance.
   # For a full list of available capabilities, see

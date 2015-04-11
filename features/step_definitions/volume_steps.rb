@@ -375,7 +375,7 @@ When(/^I set a proposal outcome$/) do
   @motion = FactoryGirl.create :motion, discussion: @discussion
   @motion.outcome = "success"
   @motion.outcome_author = @user
-  MotionService.create_outcome(motion: @motion, actor: @motion.author, params: {outcome: 'yes ok'})
+  event =  MotionService.create_outcome(motion: @motion, actor: @motion.author, params: {outcome: 'yes ok'})
 end
 
 When(/^I mention Mute Megan$/) do

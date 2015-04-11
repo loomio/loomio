@@ -1,5 +1,5 @@
 class API::DiscussionsController < API::RestfulController
-  load_and_authorize_resource only: [:show, :mark_as_read, :set_volume], find_by: :key
+  load_and_authorize_resource only: [:show, :mark_as_read, :set_volume]
   load_resource only: [:create, :update]
 
   def inbox_by_date

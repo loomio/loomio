@@ -79,6 +79,12 @@ $navbar-height: 45px;
   border-radius: 3px;
 }
 
+@mixin smallIcon {
+  @include roundedCorners;
+  width: 32px;
+  height: 32px;
+}
+
 @mixin card{
   @include roundedCorners;
   border: 1px solid $border-color;

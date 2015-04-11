@@ -2,6 +2,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
   class UserModel extends BaseModel
     @singular: 'user'
     @plural: 'users'
+    @indices: ['id']
 
     initialize: (data) ->
       @updateFromJSON(data)
