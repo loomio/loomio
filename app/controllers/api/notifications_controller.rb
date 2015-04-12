@@ -1,7 +1,7 @@
 class API::NotificationsController < API::RestfulController
 
   def viewed
-    current_user.update_attribute(:notifications_last_viewed_at, Time.zone.now)
+    NotificationService.mark_as_viewed(current_user)
     head :ok
   end
 

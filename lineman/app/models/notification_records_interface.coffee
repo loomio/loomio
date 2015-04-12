@@ -3,4 +3,10 @@ angular.module('loomioApp').factory 'NotificationRecordsInterface', (BaseRecords
     model: NotificationModel
 
     viewed: ->
-      @restfulClient.post 'viewed'
+      any = false
+      _.each @collection.find({viewed: false}), (n) =>
+        any = true
+        n.viewed = true
+        @collection.update(n)
+
+      @restfulClient.post 'viewed' if any

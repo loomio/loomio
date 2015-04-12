@@ -3,7 +3,10 @@ angular.module('loomioApp').directive 'notifications', ->
   restrict: 'E'
   templateUrl: 'generated/components/notifications/notifications.html'
   replace: true
-  controller: ($scope, UserAuthService, Records, CurrentUser) ->
+  controller: ($scope, UserAuthService, Records, CurrentUser, MessageChannelService) ->
+
+    MessageChannelService.subscribeToNotifications()
+    Records.notifications.fetch()
 
     kinds = [
       'comment_liked',
@@ -17,28 +20,25 @@ angular.module('loomioApp').directive 'notifications', ->
       'motion_outcome_created'
     ]
 
-    Records.notifications.fetch()
-
-    @notificationsView = Records.notifications.collection.addDynamicView("CurrentUser")
-    @notificationsView.applySimpleSort('createdAt', true)
-    @notificationsView.applyWhere (notification) ->
+    notificationsView = Records.notifications.collection.addDynamicView("CurrentUser")
+    notificationsView.applySimpleSort('createdAt', true)
+    notificationsView.applyWhere (notification) ->
       _.contains(kinds, notification.event().kind)
 
     $scope.toggled = (open) ->
       if open
-        CurrentUser.notificationsLastViewedAt = moment()
         Records.notifications.viewed()
+
+    $scope.count = =>
+      notificationsView.data().length
 
     $scope.unread = ->
       $scope.unreadCount() > 0
 
     $scope.unreadCount = =>
-      if CurrentUser.notificationsLastViewedAt?
-        _.filter(@notificationsView.data(), (n) -> n.createdAt.isAfter(CurrentUser.notificationsLastViewedAt) ).length
-      else
-        @notificationsView.data().length
+      _.filter($scope.notifications(), (n) -> !n.viewed).length
 
     $scope.notifications = =>
-      @notificationsView.data()
+      notificationsView.data()
 
     return

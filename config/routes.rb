@@ -76,10 +76,11 @@ Loomio::Application.routes.draw do
     resources :search_results, only: :index
 
     resources :contact_messages, only: :create
-    namespace :faye do
+
+    namespace :message_channel do
       post :subscribe
-      get :who_am_i
     end
+
     namespace :sessions do
       get :current
       get :unauthorized

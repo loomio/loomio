@@ -16,8 +16,7 @@ class NotificationsController < BaseController
   end
 
   def mark_as_viewed
-    Notification.where(user_id: current_user.id, viewed: false).
-                 update_all(viewed: true)
+    NotificationService.mark_as_viewed(current_user)
     head :ok
   end
 

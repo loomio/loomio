@@ -1,18 +1,15 @@
-angular.module('loomioApp').factory 'MessageChannelService', ($http, Records, CommentModel, EventModel) ->
+angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope, Records, CommentModel, EventModel, CurrentUser) ->
   new class MessageChannelService
-    subscribeSuccess: (subscription, onMessageReceived) ->
-      PrivatePub.sign(subscription)
-      console.log 'subscribed to channel:', subscription.channel
-      PrivatePub.subscribe subscription.channel, (data, channel) =>
-        @messageReceived(data, onMessageReceived)
-
     subscribeTo: (channel, onMessageReceived) ->
-      $http.post('/api/v1/faye/subscribe', channel: channel).then (response) =>
+      $http.post('/api/v1/message_channel/subscribe', channel: channel).then (response) =>
           subscription = response.data
           PrivatePub.sign(subscription)
           console.log 'subscribed response:', response
           PrivatePub.subscribe subscription.channel, (data, channel) =>
             @messageReceived(data, onMessageReceived)
+
+    subscribeToNotifications: ->
+      @subscribeTo "/notifications-#{CurrentUser.id}"
 
     messageReceived: (data, onMessageReceived) ->
       if data.memo?
@@ -28,13 +25,14 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, Records, Co
               comment.removeLikerId(memo.data.user_id)
 
       if data.event?
-        data.events = [] unless data.events?
+        data.events = [] unless _.isArray(data.events)
         data.events.push(data.event)
 
       if data.notification?
-        data.notifications = [] unless data.notifications?
-        data.events.push(data.notification)
+        data.notifications = [] unless _.isArray(data.notifications)
+        data.notifications.push(data.notification)
 
       Records.import(data)
+      $rootScope.$digest()
       onMessageReceived(data) if onMessageReceived?
 

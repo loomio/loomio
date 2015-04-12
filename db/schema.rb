@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411020311) do
+ActiveRecord::Schema.define(version: 20150411013532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -612,7 +612,6 @@ ActiveRecord::Schema.define(version: 20150411020311) do
     t.boolean  "email_on_participation",                       default: true,            null: false
     t.string   "dashboard_sort",                               default: "sort_by_group", null: false
     t.string   "dashboard_filter",                             default: "show_all",      null: false
-    t.datetime "notifications_last_viewed_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
