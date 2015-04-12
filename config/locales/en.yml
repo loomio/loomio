@@ -145,6 +145,7 @@ en:
     added_to_group: "You have been added to %{which_group}."
     close_date_changed: "Close date successfully changed."
     discussion_created: "Discussion successfully created."
+    discussion_updated: "Discussion successfully updated."
     discussion_deleted: "Discussion successfully deleted."
     discussion_moved: "Discussion successfully moved to %{group_name}"
     emails_sending: "Emails sending."
