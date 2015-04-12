@@ -1,5 +1,7 @@
 ml:
   email_settings:
+    title: ഈമെയിൽ  ക്രമീകരണങ്ങള്‍
+    group_volume: കൂട്ടത്തിന്റെ  ശബ്ദം
     submit: ക്രമീകരണങ്ങള്‍ പുതുക്കുക
   explore:
     header: പൊതുവായ ഗ്രൂപ്പുകൾ സന്ദർശിക്കുക

@@ -206,15 +206,20 @@ hu:
         body: Hallathatod a hangod a vitában a hozzászólás dobozt használva a vitalap alján.
       markdown:
         title: Formázás
+        body_html: "A Loomio a <strong>Markdown</strong> rendszert használja szövegek formázásához és képek beillesztéséhez.\nA Markdown engedélyezéséhez jelöld be a <strong>“Markdown”</strong> szót a hozzászólás szövegdoboz alatt.\nKattints <a href=\"https://www.loomio.org/d/Wh7vHaTk/markdown-text-formatting-made-easy\">ide</a> a Markdown használatához szükséges információkért.\n"
       attaching_files:
         title: Fájlok csatolása
         body: "Loomio lehetővé teszi számodra, hogy fájlokat csatolj a hozzászólásodhoz egy vitában.\nCsatolhatsz egy fájlt egy hozzászóláshoz az iratkapocs ikonra kattintva a vitalap végén található hozzászólás doboz alatt majd kiválasztva a fájlt a saját eszközödről.\n"
       mentioning_group_members:
         title: "@csoporttagok megemlítése"
+        body_html: "Ha a csoportodban levő bizonyos személyek figyelmét szeretnéd felhívni, üsd be a <strong>‘@’</strong> jelet a hozzászólásodba, majd utána gépeld az illető nevét.\nA Loomio automatikusan felkínálja a felhasználóneveket.\nAz illető értesítést fog kapni arról, hogy megemlítetted őt egy hozzászólásban.\n"
       editing_comments:
         title: Egy hozzászólás szerkesztése
       liking_comments:
         title: Hivatkozás egy hozzászólásra
+        body:
+          liking_html: "Egy hozzászólás alatti <strong>“Tetszik”</strong> szóra kattintás a legegyszerűbb módja annak, hogy tudasd más tagokkal, érted és értékeled amit ők mondtak, anélkül, hogy hozzászólást írnál."
+          unliking_html: "Amikor egy hozzászólás alatt rákattintasz a <strong>“Tetszik”</strong>- szóra, láthatóvá válik, hogy <strong>“Tetszik”</strong> neked a hozzászólás.\nVisszavonhatod a  <strong>“Tetszésedet”</strong> azzal, ha rákattintasz egy korábban tetsző hozzászólás <strong>“Nem tetszik”</strong> feliratára.\n"
       deleting_comments:
         title: Hozzászólás törlése
         body_html: "Törölheted saját hozzászólásaidat bármikor a hozzászólás jobb felső sarkában található <strong>\"X\"</strong>-re kattintva.\nA csoport koordinátor bármelyik hozzászólást törölheti egy megbeszélésből, amelyet egy általa koordinált csoportban tettek.\n"
@@ -227,10 +232,16 @@ hu:
           instructions_html: "Ha a csoport felkészült a döntéshozatalra, megfogalmazhatsz egy javaslatot a <strong>\"Hozz létre egy javaslatot\"</strong> gombra kattintva a vitalap jobb oldalán."
       editing_proposals:
         title: Egy javaslat szerkesztése
+        body:
+          intro_html: "A csoport koordinátorok és a javaslattevő mindaddig módosíthatja a javaslat szövegét, ameddig egy csoporttag nem szavaz.\nA szavazási határidő megváltoztatható a csoport koordinátor vagy a javaslattevő által a folyamatban levő szavazás ideje alatt is.\nA javaslat lezárható a beállított szavazási véghatáridő előtt is, ha tisztán látszik, hogy a javaslat nem felel meg a csoportnak.\n"
+          instructions_html: "A <strong>\"Javaslat szerkesztése\"</strong> oldal a <strong>\"Szerkesztés\"</strong> hivatkozás segítségével érhető el, ami a vitalap jobb oldalán található <strong>\"Jelenlegi döntés\"</strong> panelen van."
       stating_positions:
         title: Álláspontod megadása
+        body:
+          intro_html: "Ha készen állsz arra, hogy véleményt mondj, kattints a négy ikon valamelyikére a javaslat alatt:"
       changing_positions:
         title: Álláspontod megváltoztatása
+        body_html: "Ha meg szeretnéd változtatni az álláspontodat, azt megteheted, ha rákattintasz a  szavazatod meletti <strong>“edit”</strong> feliratra a lap jobb oldalán található  <strong>“Jelenlegi döntés”</strong> panelen."
       setting_outcome:
         title: Egy javaslat eredményének megállapítása
       closing_proposals:
