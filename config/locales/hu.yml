@@ -497,7 +497,7 @@ hu:
     motion_outcome_updated: frissítette a javaslat eredményét
     discussion_title_edited: megváltoztattuk a téma címét
     discussion_description_edited: megváltoztattuk a téma leírását
-    motion_name_edited: módosította a javaslatot
+    motion_name_edited: módosította a javaslat címét
     motion_description_edited: módosította a javaslat leírását
   discussion: Téma
   current_decision: Jelenlegi döntés
@@ -976,7 +976,7 @@ hu:
   delete: Törlés
   details: Részletek
   discussions: Témák
-  edit: Szerkesztés
+  edit: Módosítás
   email_address: E-mail cím
   enable: Bekapcsolás
   participation: Részvétel
