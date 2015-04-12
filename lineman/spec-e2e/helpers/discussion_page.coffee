@@ -1,55 +1,55 @@
 module.exports = class DiscussionPage
   load: ->
     browser.get('http://localhost:8000/angular_support/setup_for_add_comment')
-    element(By.css('.cuke-nav-inbox-btn')).click()
-    element.all(By.css('.cuke-inbox-item')).first().click()
 
   loadWithActiveProposal: ->
     browser.get('http://localhost:8000/angular_support/setup_for_vote_on_proposal')
-    element(By.css('.cuke-nav-inbox-btn')).click()
-    element.all(By.css('.cuke-inbox-item')).first().click()
 
   addComment: (body) ->
-    element(By.css('.cuke-comment-field')).sendKeys('hi this is my comment')
-    element(By.css('.cuke-comment-submit')).click()
+    element(By.css('#comment-field')).sendKeys('hi this is my comment')
+    element(By.css('#post-comment-btn')).click()
 
   openNotificationDropdown: ->
     element(By.css('.dropdown-toggle')).click()
 
   notificationDropdown: ->
-    element(By.css('.navbar-notifications')).first()
+    element(By.css('.lmo-navbar-btn--notifications'))
 
   mostRecentComment: ->
-    element.all(By.css('.thread-comment')).last()
+    element.all(By.css('.thread-item--comment')).last()
 
   startProposalLink: ->
-    element(By.css('.thread-start-proposal-card')).element(By.tagName('a'))
+    element(By.css('.start-proposal-card__link'))
 
   cancelProposalBtn: ->
-    element(By.css('.cuke-cancel-proposal-btn'))
+    element(By.css('.proposal-form__cancel-btn'))
 
-  startProposal: (name, description) ->
-    element(By.css('.thread-start-proposal-card')).element(By.tagName('a')).click()
-    element(By.model('proposal.name')).sendKeys(name)
-    element(By.model('proposal.description')).sendKeys(description)
-    element(By.css('i.fa-calendar')).click()
-    element(By.css('th.right')).click()
-    element(By.css('th.right')).click()
-    element.all(By.repeater('dateObject in week.dates')).first().click()
-    element.all(By.css('span.hour')).last().click()
-    element(By.css('.cuke-start-proposal-btn')).click()
+  startProposalBtn: ->
+    element(By.css('.proposal-form__start-btn'))
 
-  fillInProposalForm: (name, description) ->
-    element(By.model('proposal.name')).clear().sendKeys(name)
-    element(By.model('proposal.description')).clear().sendKeys(description)
-    element(By.css('i.fa-calendar')).click()
-    element(By.css('th.right')).click()
-    element(By.css('th.right')).click()
-    element.all(By.repeater('dateObject in week.dates')).first().click()
-    element.all(By.css('span.hour')).last().click()
+  proposalDescripionField: ->
+    element(By.model('proposal.description'))
 
-  submitProposalForm: ->
-    element(By.css('.cuke-save-proposal-btn')).click()
+  proposalNameField: ->
+    element(By.model('proposal.name'))
+
+  startAProposal: (name, description) ->
+    startProposalLink().click()
+    proposalNameField().sendKeys(name)
+    proposalDescripionField().sendKeys(description)
+    startProposalBtn.click()
+
+  #fillInProposalForm: (name, description) ->
+    #element(By.model('proposal.name')).clear().sendKeys(name)
+    #element(By.model('proposal.description')).clear().sendKeys(description)
+    #element(By.css('i.fa-calendar')).click()
+    #element(By.css('th.right')).click()
+    #element(By.css('th.right')).click()
+    #element.all(By.repeater('dateObject in week.dates')).first().click()
+    #element.all(By.css('span.hour')).last().click()
+
+  #submitProposalForm: ->
+    #element(By.css('.cuke-save-proposal-btn')).click()
 
   modal: ->
     element(By.css('.modal-dialog'))
@@ -93,20 +93,20 @@ module.exports = class DiscussionPage
     element(By.css('.thread-new-vote-item'))
 
   proposalActionsDropdown: ->
-    element(By.css('.cuke-proposal-actions-dropdown-btn'))
+    element(By.css('.proposal-actions-dropdown__btn'))
 
   proposalActionsDropdownEdit: ->
-    element(By.css('.proposal-actions-dropdown')).element(By.css('.cuke-edit-proposal'))
+    element(By.css('.proposal-actions-dropdown__edit-link'))
 
   proposalActionsDropdownClose: ->
-    element(By.css('.proposal-actions-dropdown')).element(By.css('.cuke-close-proposal'))
+    element(By.css('.proposal-actions-dropdown__close-link'))
 
   closeProposalButton: ->
-    element(By.css('.cuke-close-proposal-btn'))
+    element(By.css('.close-proposal-form__submit-btn'))
 
   proposalClosedBadge: ->
     element(By.css('.cuke-proposal-closed-badge'))
 
   firstCollpasedProposal: ->
-    element(By.css('.proposal-collapsed a'))
+    element.all(By.css('a.proposal-collapsed')).first()
 

@@ -67,7 +67,7 @@ describe 'Proposals', ->
     beforeEach ->
       page.loadWithActiveProposal()
 
-    iit 'closes the proposal', ->
+    it 'closes the proposal', ->
       page.proposalActionsDropdown().click()
       page.proposalActionsDropdownClose().click()
       page.closeProposalButton().click()

@@ -23,7 +23,7 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient, $q) 
       else if data.id?
         existingRecord = @find(data.id)
 
-      if existingRecord?
+      if existingRecord? and existingRecord != null
         existingRecord.updateFromJSON(data)
         existingRecord
       else
@@ -61,7 +61,9 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient, $q) 
       _.keys(params).join() + _.values(params).join()
 
     find: (q) ->
-      if _.isNumber(q)
+      if q == null or q == undefined
+        null
+      else if _.isNumber(q)
         @findById(q)
       else if _.isString(q)
         @findByKey(q)
@@ -76,10 +78,10 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient, $q) 
         @collection.find(q)
 
     findById: (id) ->
-      @collection.find(id: id)[0]
+      @collection.findOne(id: id)
 
     findByKey: (key) ->
-      @collection.find(key: key)[0]
+      @collection.findOne(key: key)
 
     findByIds: (ids) ->
       @collection.find(id: {'$in': ids})

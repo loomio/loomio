@@ -3,6 +3,7 @@ class EventSerializer < ActiveModel::Serializer
   attributes :id, :sequence_id, :kind, :discussion_id, :created_at
 
   has_one :actor, serializer: UserSerializer, root: 'users'
+  has_one :membership, serializer: MembershipSerializer, root: 'memberships'
   has_one :membership_request, serializer: MembershipRequestSerializer, root: 'membership_requests'
   has_one :comment, serializer: CommentSerializer
   has_one :discussion, serializer: DiscussionSerializer
@@ -15,6 +16,10 @@ class EventSerializer < ActiveModel::Serializer
 
   def group
     object.eventable.try(:group) || object.group
+  end
+
+  def membership
+    object.eventable
   end
 
   def membership_request
@@ -37,8 +42,12 @@ class EventSerializer < ActiveModel::Serializer
     object.eventable
   end
 
-  def include_membership_request?
+  def include_membership?
     membership_kinds.include? object.kind
+  end
+
+  def include_membership_request?
+    membership_request_kinds.include? object.kind
   end
 
   def include_group?
@@ -64,12 +73,15 @@ class EventSerializer < ActiveModel::Serializer
   def group_kinds
     ['new_discussion',
      'user_added_to_group'] +
-     membership_kinds
+     membership_request_kinds
   end
 
   def membership_kinds
-    ['membership_request',
-     'membership_request_approved']
+    ['user_added_to_group', 'membership_request_approved']
+  end
+
+  def membership_request_kinds
+    ['membership_requested']
   end
 
   def discussion_kinds

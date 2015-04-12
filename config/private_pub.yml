@@ -1,6 +1,5 @@
 common: &common
   server: "<%= ENV.fetch('FAYE_URL', 'http://localhost:9292/faye') %>"
-  #server: <%= ENV['FAYE_URL'] %>
   secret_token: "<%= ENV.fetch('PRIVATE_PUB_SECRET_TOKEN', 'secret') %>"
 
 development:

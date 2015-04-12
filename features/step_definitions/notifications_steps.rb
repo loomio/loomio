@@ -29,7 +29,7 @@ end
 Given(/^a visitor has requested membership to the group$/) do
   params = { name: "Richie", email: "rich@loomio.org", group: @group }
   @membership_request = MembershipRequest.new(params)
-  MembershipRequestService.new(@membership_request).perform!
+  MembershipRequestService.create(membership_request: @membership_request)
 end
 
 Then(/^I should see that the visitor requested access to the group$/) do
@@ -38,8 +38,8 @@ end
 
 Given(/^a user has requested membership to the group$/) do
   @requestor = FactoryGirl.create :user
-  @membership_request = MembershipRequest.new(group: @group, requestor: @requestor)
-  MembershipRequestService.new(@membership_request).perform!
+  @membership_request = MembershipRequest.new(group: @group)
+  MembershipRequestService.create(membership_request: @membership_request, actor: @requestor)
 end
 
 Then(/^I should see that the user requested access to the group$/) do

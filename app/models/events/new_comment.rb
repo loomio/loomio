@@ -24,11 +24,11 @@ class Events::NewComment < Event
 
   end
 
-  def comment
-    eventable
+  def discussion_key
+    discussion.key
   end
 
-  def message_channel
-    "/discussion-#{comment.discussion.key}" #/#{kind}"
+  def comment
+    eventable
   end
 end

@@ -39,6 +39,9 @@ class Group < ActiveRecord::Base
 
   scope :parents_only, -> { where(parent_id: nil) }
 
+  scope :is_subscription, -> { where(is_commercial: true) }
+  scope :is_donation, -> { where('is_commercial = false or is_commercial IS NULL') }
+
   scope :sort_by_popularity, -> { order('memberships_count DESC') }
 
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }

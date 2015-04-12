@@ -61,17 +61,3 @@ describe 'DiscussionModel', ->
   describe 'reader', ->
     it "returns the discussion reader associated with this discussion", ->
       expect(discussion.reader()).toBe(discussionReader)
-
-  #describe 'lastActivityAt', ->
-    #it 'returns createdAt when no vote or comments', ->
-      #expect(discussion.lastActivityAt()).toEqual(discussion.createdAt)
-      ##expect(discussion.lastActivityAt().isSame(discussion.createdAt)).toBe(true)
-
-    #it 'returns last vote at when proposal last vote at is most recent', ->
-      #proposal = recordStore.proposals.initialize(id:7, discussion_id: discussion.id, last_vote_at: "2015-01-02T00:00:00Z")
-      #expect(discussion.lastActivityAt()).toEqual(proposal.lastVoteAt)
-
-    #it 'returns last comment at when last comment at is most recent', ->
-      #discussion.lastCommentAt = moment("2015-01-03T00:00:00Z")
-      #expect(discussion.lastActivityAt()).toEqual(discussion.lastCommentAt)
-

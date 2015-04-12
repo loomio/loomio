@@ -1,27 +1,22 @@
 - item = NotificationItem.new(notification).item
-- begin
-  - actor = item.actor
-  - action_text = item.action_text
-  - title_text = item.title
-  - group_name = item.group_full_name
-  - href = item.link
-  - avatar = item.avatar
+- actor = item.actor
+- action_text = item.action_text
+- title_text = item.title
+- group_name = item.group_full_name
+- href = item.link
+- avatar = item.avatar
 
-  - date = time_ago_in_words(notification.created_at)
-  - class_name = notification.viewed_at.nil? ? " unread" : ""
+- date = time_ago_in_words(notification.created_at)
+- class_name = notification.viewed? ? " " : " unread"
 
-  %li.selector-item{:class => "notification-item#{class_name}", :id => "notification-#{notification.id}" }
-    =link_to href do
-      = render 'avatar', user: avatar
-      %span.notification-content
-        - if actor
-          %span.bold-name= actor.name
-        = action_text
-        - if title_text
-          %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
-        %span.notification-item-footer
-          #{t(:ago, :quantity_of_time => date)} · #{group_name}
-
-- rescue Exception => e
-  - stuff = "\n #{notification.inspect}\n #{item.inspect}\n #{notification.event.inspect}\n #{e}\n #{e.backtrace.join("\n ")}"
-  - logger.error "NOTIFICATION ERROR:" + stuff
+%li.selector-item{:class => "notification-item#{class_name}", :id => "notification-#{notification.id}" }
+  =link_to href do
+    = render 'avatar', user: avatar
+    %span.notification-content
+      - if actor
+        %span.bold-name= actor.name
+      = action_text
+      - if title_text
+        %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
+      %span.notification-item-footer
+        #{t(:ago, :quantity_of_time => date)} · #{group_name}

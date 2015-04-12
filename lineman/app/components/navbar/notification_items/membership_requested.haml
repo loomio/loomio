@@ -1,5 +1,0 @@
-%a.selector-list-item-link{ng-href: '{{event.link()}}'}
-  .media-left
-    %user_avatar{user: "event.membershipRequest().actor()", ng-if: "event.membershipRequest().byExistingUser()"}
-  .media-body
-    %span{translate: 'notifications.membership_requested', translate-value-name: '{{event.membershipRequest().actor().name}}', translate-value-group: '{{event.membershipRequest().group().fullName()}}' }

@@ -148,26 +148,6 @@ describe User do
     end
   end
 
-  describe "mark_notifications_as_viewed" do
-    before do
-      @notif1 = Notification.create!(:event => mock_model(Event), :user => user)
-      @notif2 = Notification.create!(:event => mock_model(Event), :user => user)
-      @notif3 = Notification.create!(:event => mock_model(Event), :user => user)
-      user.mark_notifications_as_viewed! @notif2.id
-    end
-
-    it "marks all notifications before given notification id as viewed" do
-      expect(user.unviewed_notifications.count).to eq 1
-      @notif1.reload
-      @notif1.viewed_at.should_not be_nil
-    end
-
-    it "does not mark notifications after given notification id as viewed" do
-      @notif3.reload
-      @notif3.viewed_at.should be_nil
-    end
-  end
-
   describe "name" do
     it "returns '[deactivated account]' if deactivated_at is true (a date is present)" do
       user.update_attribute(:deactivated_at, Time.now)
@@ -243,21 +223,6 @@ describe User do
        end
      end
    end
-
-  describe "unviewed_notifications" do
-    it "returns notifications that the user has not viewed yet" do
-      notification = Notification.create!(:event => mock_model(Event),
-                                          :user => user)
-      expect(user.unviewed_notifications.first.id).to eq notification.id
-    end
-    it "does not return notifications that the user has viewed" do
-      notification = Notification.new(:event => mock_model(Event),
-                                      :user => user)
-      notification.viewed_at = Time.now
-      notification.save
-      expect(user.unviewed_notifications.count).to eq 0
-    end
-  end
 
   describe "usernames" do
     before do

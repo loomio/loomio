@@ -10,6 +10,7 @@ describe 'MockRecordsInterface', ->
       class MockModel extends BaseModel
         @singular: 'mock'
         @plural: 'mocks'
+        @indices: ['id', 'key']
 
         initialize: (data) ->
           @id = data.id
@@ -23,14 +24,7 @@ describe 'MockRecordsInterface', ->
       recordStore = new RecordStore(db)
       recordStore.addRecordsInterface(MockRecordsInterface)
 
-
-  #describe 'fetchByGroup', ->
-    #it 'uses restfulclient to get all discussions in the given group'
-
-  #describe 'fetchByKey', ->
-    #it 'uses restfulclient to request the discusssion'
-
-  describe 'get', ->
+  describe 'find', ->
     beforeEach ->
       mock =  {id: 1, key: 'a'}
       otherMock = {id: 2, key:'b'}
@@ -41,7 +35,7 @@ describe 'MockRecordsInterface', ->
       expect(recordStore.mocks.find(1).id).toEqual(mock.id)
 
     it 'returns null if nothing found for single', ->
-      expect(recordStore.mocks.find(7)).toBe(undefined)
+      expect(recordStore.mocks.find(7)).toBe(null)
 
     it 'returns [] if nothing found for many', ->
       expect(recordStore.mocks.find([7]).length).toBe(0)
@@ -54,6 +48,3 @@ describe 'MockRecordsInterface', ->
 
     it 'looks up items by keys', ->
       expect(recordStore.mocks.find(['a'])[0].key).toBe('a')
-
-    #it 'looks up items by function', ->
-      #expect(collection.get( (discussion) -> discussion.id == 1 )).toEqual([discussion])

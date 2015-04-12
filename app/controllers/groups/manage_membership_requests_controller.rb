@@ -16,13 +16,13 @@ class Groups::ManageMembershipRequestsController < GroupBaseController
   end
 
   def approve
-    ManageMembershipRequests.approve!(@membership_request, approved_by: current_user)
+    MembershipRequestService.approve(membership_request: @membership_request, actor: current_user)
     set_request_approved_flash_message
     redirect_to group_membership_requests_path(@group)
   end
 
   def ignore
-    ManageMembershipRequests.ignore!(@membership_request, ignored_by: current_user)
+    MembershipRequestService.ignore(membership_request: @membership_request, actor: current_user)
     flash[:success] = t(:'notice.membership_request_ignored')
     redirect_to group_membership_requests_path(@group)
   end

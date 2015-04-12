@@ -5,6 +5,7 @@ Loomio::Application.routes.draw do
     get 'setup_for_add_comment'
     get 'setup_for_like_comment'
     get 'setup_for_vote_on_proposal'
+    get 'setup_all_notifications'
   end
 
   scope '/angular', controller: 'angular', path: 'angular', as: 'angular' do
@@ -67,14 +68,19 @@ Loomio::Application.routes.draw do
       post :vote, on: :member
     end
     resources :translations, only: :show
-    resources :notifications, only: :index
+
+    resources :notifications, only: :index do
+      post :viewed, on: :collection
+    end
+
     resources :search_results, only: :index
 
     resources :contact_messages, only: :create
-    namespace :faye do
+
+    namespace :message_channel do
       post :subscribe
-      get :who_am_i
     end
+
     namespace :sessions do
       get :current
       get :unauthorized

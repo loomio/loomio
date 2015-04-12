@@ -1,0 +1,9 @@
+%a.selector-list-item-link{ng-href: '{{link()}}', ng-controller: 'NotificationController'}
+  %span{ng-if: 'event.membership().inviter() == null'}
+    %span{translate: 'notifications.user_added_to_group_no_inviter', translate-value-group: '{{event.membership().group().fullName()}}' }
+
+  .wrap{ng-if: 'event.membership().inviter()'}
+    .media-left
+      %user_avatar{user: "event.membership().inviter()"}
+    .media-body
+      %span{translate: 'notifications.user_added_to_group', translate-value-name: '{{event.membership().inviter().name}}', translate-value-group: '{{event.membership().group().fullName()}}' }

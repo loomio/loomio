@@ -1,9 +1,14 @@
 class API::NotificationsController < API::RestfulController
 
+  def viewed
+    NotificationService.mark_as_viewed(current_user)
+    head :ok
+  end
+
   private
 
   def visible_records
-    current_user.notifications.order(created_at: :desc)
+    Notification.where(user_id: current_user.id).order(created_at: :desc)
   end
 
 end

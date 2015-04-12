@@ -3,8 +3,7 @@ class Event < ActiveRecord::Base
              new_motion new_vote motion_close_date_edited motion_name_edited motion_description_edited
              motion_closing_soon motion_closed motion_closed_by_user motion_outcome_created motion_outcome_updated
              membership_requested invitation_accepted user_added_to_group user_joined_group
-             membership_request_approved
-             comment_liked comment_replied_to user_mentioned]
+             membership_request_approved comment_liked comment_replied_to user_mentioned]
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
@@ -17,12 +16,13 @@ class Event < ActiveRecord::Base
   after_create :call_thread_item_created
   after_destroy :call_thread_item_destroyed
 
-  after_create :publish_event
+  after_create :publish_message
 
   validates_inclusion_of :kind, :in => KINDS
   validates_presence_of :eventable
 
   acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? }
+
 
   def notify!(user)
     notifications.create!(user: user)
@@ -32,21 +32,8 @@ class Event < ActiveRecord::Base
     self.user_id == this_user.id
   end
 
-  def publish_event
-    if message_channel
-      data = EventSerializer.new(self).as_json
-      if ENV['FAYE_ENABLED']
-        if ENV['DELAY_FAYE']
-          PrivatePub.delay(priority: 10).publish_to(message_channel, data)
-        else
-          PrivatePub.publish_to(message_channel, data)
-        end
-      end
-    end
-  end
-
-  def message_channel
-    nil
+  def publish_message
+    MessageChannelService.publish_event(self)
   end
 
   private

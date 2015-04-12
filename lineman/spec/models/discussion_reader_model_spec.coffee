@@ -16,10 +16,13 @@ describe 'DiscussionReaderModel', ->
 
   describe 'markItemAsRead', ->
     beforeEach ->
-      reader.markItemAsRead(item)
 
-    it "it sets lastReadAt to item.createdAt", ->
-      expect(reader.lastReadAt).toBe(item.createdAt)
+    it "it sets lastReadSequenceId to the passed value", ->
+      expect(reader.lastReadSequenceId).toBe(-1)
+      reader.markAsRead(0)
+      expect(reader.lastReadSequenceId).toBe(0)
 
-    it "it sets lastReadSequenceId to item.sequenceId", ->
-      expect(reader.lastReadSequenceId).toBe(item.sequenceId)
+    it "it does not lower the last read sequenceId", ->
+      reader.lastReadSequenceId = 1
+      reader.markAsRead(0)
+      expect(reader.lastReadSequenceId).toBe(1)

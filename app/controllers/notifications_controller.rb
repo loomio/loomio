@@ -1,29 +1,33 @@
 class NotificationsController < BaseController
+  helper_method :unread_count
+
   def groups_tree_dropdown
     render layout: false
   end
 
   def dropdown_items
-    @unviewed_notifications = current_user.unviewed_notifications.order('created_at DESC')
-    @notifications = recent_notifications.order('created_at DESC')
-    preload_associations
+    @notifications = notifications.includes(event: [:eventable, :user]).limit(12)
     render layout: false
   end
 
   def index
-    @notifications = []
-    @notifications = current_user.notifications.order('created_at DESC')
-                     .includes(:event => [:eventable, :user])
+    @notifications = notifications.includes(event: [:eventable, :user])
                      .page(params[:page]).per(15)
-    preload_associations
   end
 
   def mark_as_viewed
-    current_user.mark_notifications_as_viewed! params[:latest_viewed]
+    NotificationService.mark_as_viewed(current_user)
     head :ok
   end
 
   private
+  def notifications
+    Notification.where(user_id: current_user.id).order('created_at DESC')
+  end
+
+  def unread_count
+    Notification.where(user_id: current_user.id, viewed: false).count
+  end
 
   # Returns most recent notifications
   #   lower_limit - (minimum # of notifications returned)
@@ -34,16 +38,5 @@ class NotificationsController < BaseController
     else
       current_user.unviewed_notifications.limit(upper_limit)
     end
-  end
-
-  def preload_associations
-    motions = @notifications.select { |n| n.eventable.kind_of? Motion }.map(&:eventable)
-    ActiveRecord::Associations::Preloader.new.preload(motions, [{discussion: :group }, :author])
-
-    discussions = @notifications.select { |n| n.eventable.kind_of? Discussion }.map(&:eventable)
-    ActiveRecord::Associations::Preloader.new.preload(discussions, [:group, :author])
-
-    comments = @notifications.select { |n| n.eventable.kind_of? Comment }.map(&:eventable)
-    ActiveRecord::Associations::Preloader.new.preload(comments, [{:discussion => :group}, :user])
   end
 end
