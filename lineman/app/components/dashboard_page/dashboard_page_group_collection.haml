@@ -1,5 +1,5 @@
-%section.dashboard-page-threads-container{ng-show: 'any()', role: 'region', aria-label: "{{ name | translate }}"}
-  .dashboard-page-group-name{aria-hidden: 'true'}
+%section.dashboard-page-threads-container{ng-show: 'any()', role: 'region', aria-labelledby: "{{ name }}"}
+  .dashboard-page-group-name
     %img.selector-list-item-group-logo.pull-left{src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
     %h2.dashboard-page-group-name
       %a{href: '/g/{{group.key}}'} {{group.name}}
