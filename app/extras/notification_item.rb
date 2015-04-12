@@ -38,7 +38,7 @@ class NotificationItem
   end
 
   def actor
-    notification.eventable.user
+    notification.eventable.try(:user) || notification.event.user
   end
 
   def title
