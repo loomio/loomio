@@ -71,4 +71,4 @@
             %loading{ng-show: 'dashboardPage.loadMoreExecuting'}
           .dashboard-page-sort-date{ng-if: 'dashboardPage.sort() == "sort_by_group"'}
             .dashboard-page-group{ng-repeat: 'group in dashboardPage.dashboardGroups() | orderBy:dashboardPage.groupName'}
-              %dashboard_page_thread_collection{group: 'group', threads: 'dashboardPage.dashboardDiscussions', filter: 'dashboardPage.inGroup(group)'}
+              %dashboard_page_group_collection{group: 'group', threads: 'dashboardPage.dashboardDiscussions'}

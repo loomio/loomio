@@ -13,7 +13,6 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
   @loadedCount = =>
     @loaded[@sort()] = @loaded[@sort()] or {}
     @loaded[@sort()][@filter()] = @loaded[@sort()][@filter()] or 0
-    @loaded[@sort()][@filter()]
 
   @updateLoadedCount = =>
     current = @loadedCount()
