@@ -66,9 +66,6 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
   @older     = timeframe(fromCount: 3, from: 'month', to: 'month')
 
   @groupName = (group) -> group.name
-  @inGroup = (group) =>
-    (discussion) =>
-      discussion.groupId == group.id
 
   Records.votes.fetchMyRecentVotes()
   @loadMore()

@@ -10,7 +10,7 @@ angular.module('loomioApp').directive 'dashboardPageGroupCollection', ->
     $scope.limit = COLLAPSED_GROUP_SIZE
 
     $scope.filteredThreads = ->
-      _.filter $scope.threads(), (thread) -> thread.groupId == $scope.group.id
+      $scope.threads($scope.group)
 
     $scope.expand = ->
       $scope.limit = EXPANDED_GROUP_SIZE
