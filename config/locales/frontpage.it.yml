@@ -10,6 +10,7 @@ it:
       try_it: Provalo
       log_in: ACCEDI
       video: Guarda come funziona Loomio
+      try_loomio: Prova Loomio
       try_loomio_beta: Prova Loomio beta
       more: Altro
       top: Su
@@ -17,19 +18,24 @@ it:
       terms: Termini
       privacy: Privacy
       services: Servizi
+    hero:
+      header_html: "Loomio: il modo più semplice per <br /><strong>decidere insieme.</strong>"
+      lead_html: "Loomio permette alle organizzazioni e ai singoli gruppi di trasformare le <strong>discussioni in azioni</strong> ovunque le persone si trovino. "
     product:
-      header_html: "Quando sentiamo <strong>la voce di tutti</strong>, prendiamo <strong>decisioni migliori</strong>."
+      header_html: "Quando ascoltiamo <strong>la voce di tutti</strong>, prendiamo <strong>decisioni migliori</strong>."
       step1:
         header: 1. Discutere
         desc: Inizia una discussione su qualsiasi argomento e invita le persone giuste. Condividi diversi punti di vista e sviluppa le idee insieme.
       step2:
         header: 2. Trovare un accordo
-        desc: "Chiunque può proporre una linea di azione. Le persone possono concordare, astenersi, non essere d'accordo, o bloccare - così vuoi vedere come tutti la pensano, e perché."
+        desc: "Chiunque può proporre una linea d'azione. Le persone possono concordare, astenersi, non essere d'accordo, o bloccare una proposta - così puoi vedere come la pensa ciascuno, e perché. "
       step3:
         header: 3. Decidere insieme
         desc: "Sviluppa la proposta insieme così che funzioni per tutti. Ogni decisione ha una scadenza chiara, così hai sempre un risultato chiaro."
     crowdfunding:
       header: Siamo in crowdfunding per finire di costruire questa nuova piattaforma e regalarla a tutto il mondo.
+    mobile:
+      lead_html: "<strong>Loomio funziona su qualsiasi dispositivo.</strong><br />Prendi decisioni ovunque e in ogni momento. "
     quote:
       header:
         rushkoff_html: "\"Loomio <strong>libera il potenziale di internet</strong> avvicinando la gente a un consenso invece che costruendo un dibattito polarizzato.\" <div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autore di <em>Present Shock</em></div>"

@@ -163,18 +163,27 @@ pt-BR:
             body_html: "Você quer que qualquer um do grupo possa <a href=\"#starting-proposals\">fazer propostas</a> para o grupo votar?\nSe esta opção for selecionada todos em seu grupo serão capazes de levantar uma proposta em uma discussão.\nQuando está desmarcada somente coordenadores do grupo podem iniciar propostas.\n"
           vote_on_proposals:
             title: Votar em propostas
+            body_html: "Você quer que todos os membros do grupo passam <a href=\"#stating-positions\">afirmar suas posições sobre as propostas</a>?\nOu você prefere que algumas pessoas só possam observar?\nQuando esta caixa está selecionada, qualquer um no seu grupo será capaz de indicar a sua posição sobre as propostas.\nQuando se está desmarcada, somente coordenadores do grupo serão capazes de afirmar as suas posições sobre as propostas.\n"
         what_next:
           title: E depois?
+          body_html: "Após o envio do formulário de configuração você será direcionado à página do seu grupo.\nNa página do seu grupo você pode convidar pessoas para participar do seu grupo.\nClique <a href=\"#inviting-members\">aqui</a> para ler mais sobre convites.\n"
     coordination:
       title: Coordenando o seu grupo
+      intro_html: "Como coordenador de um grupo Loomio você é responsável por orientar o seu grupo através do processo de aprender a usar uma nova peça de software, bem como a aprendizagem de novos processos de colaboração mais eficazes e em tomar boas decisões em conjunto.\nAs tarefas descritas abaixo são tarefas as quais apenas os coordenadores do seu grupo têm permissão para executar.\n"
       adding_cover_photo:
         title: Adicionar foto de capa
+        body_html: "<p>Quando o grupo está instalado e funcionando, você pode adicionar sua foto de capa.\nEsta é uma maneira fácil de ajudar os membros do grupo se sentirem um pouco mais em casa no Loomio.</p>\n<p>Quando você passa o mouse sobre a área cinza na parte superior da sua página de grupo Loomio, um ícone de lápis irá aparecer no canto superior direito.\nClique no ícone de lápis e você será capaz de selecionar uma imagem para carregar.\nO tamanho ideal para fotos de capa é de 970 x 200 pixels.\nVocê pode mudar a sua foto de capa a qualquer momento, basta carregar uma nova.</p>\n"
       manage_membership:
         title: Gerenciar a adesão
+        body_html: "Coordenadores do grupo são responsáveis por gerenciar os membros no seu grupo.\nIsto significa adicionar e remover membros, e conceder e retirar permissões de coordenador.\nCoordenadores também podem enviar e-mail para todos os membros do grupo.\nEssas ações podem ser realizadas a partir da página de índice <strong>\"Membros\"</strong>.\nNo lado direito da página do seu grupo Loomio há um botão <strong>\"Opções\"</strong>.\nPara acessar a página <strong>\"Membros\"</strong> clique neste botão e selecione a opção <strong>\"Gerenciar membros\"</strong>.\nVocê também pode acessar a página clicando no link <strong>\"Mais...\"</strong> no painel <strong>\"Membros\"</strong> no lado direito da página do grupo.\n"
         membership_requests:
           title: Aceitar/ignorar pedido para ser membro
+          body:
+            approval_process_html: "Se suas <a href=\"#group-privacy\">configurações de privacidade do grupo</a> permitem que pessoas participem do seu grupo <strong>\"Por pedido\"</strong>, um coordenador precisará aprovar cada pedido de adesão.\nComo coordenador do grupo, você receberá um e-mail cada vez que houver um pedido de aprovação.\nAo clicar no link no e-mail de notificação você irá para a página <strong>\"Pedidos de adesã\"</strong>, onde você pode aprovar ou recusar o pedido.\n"
+            pending_requests_html: "Se houver um pedido de adesão pendente, também estará visível em sua página do grupo no painel <strong>\"Pedidos de adesão\"</strong>.\nAo clicar no link no painel você irá para a página <strong>\"Pedidos de adesão\"</strong>.\n"
         email_group_members:
           title: Enviar e-mail para membros do grupo
+          body_html: "Se você deseja enviar um e-mail para todos os membros de seu grupo, você pode fazê-lo a partir da página <strong>\"Membros\"</strong>.\nClicando no botão <strong>\"Enviar e-mail para membros do grupo\"</strong>, no canto superior direito da página, permite que você componha e envie uma mensagem para todos no seu grupo.\n"
         group_coordinators:
           title: Adicionar/remover coordenadores
         group_members:

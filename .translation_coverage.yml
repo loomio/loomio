@@ -75,19 +75,19 @@ hi:
   help docs: 0
   main: 0
 hr:
-  frontpage: 97
-  help docs: 8
+  frontpage: 100
+  help docs: 16
   main: 47
 hu:
   frontpage: 100
-  help docs: 66
+  help docs: 69
   main: 100
 id:
   frontpage: 48
   help docs: 3
   main: 55
 it:
-  frontpage: 89
+  frontpage: 100
   help docs: 9
   main: 92
 it-CH:
@@ -132,7 +132,7 @@ pl:
   main: 18
 pt-BR:
   frontpage: 100
-  help docs: 76
+  help docs: 79
   main: 100
 pt-PT:
   frontpage: 28

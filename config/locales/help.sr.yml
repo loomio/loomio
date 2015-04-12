@@ -37,11 +37,11 @@ sr:
           invite_and_approve_new_members:
             title: Pozovite i odobrite nove članove
           start_discussions:
-            title: Počni diskusije
+            title: Pokreni diskusije
           edit_discussion_context:
             title: Izmeni kontekst bilo koje diskusije u grupi
           edit_comments:
-            title: Menjaj njihove komentare u svakom momentu
+            title: Menjati komentare u bilo koje vreme
           raise_proposals:
             title: Istaknite predloge
           vote_on_proposals:
