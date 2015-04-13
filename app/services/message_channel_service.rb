@@ -21,7 +21,7 @@ class MessageChannelService
     when 'notifications'
       channel_key(channel).to_i == user.id
     when 'group'
-      Group.find_by_key(channel_key(channel)).has_member?(current_user)
+      Group.find_by_key(channel_key(channel)).has_member?(user)
     else
       raise UnknownChannelError.new
     end
