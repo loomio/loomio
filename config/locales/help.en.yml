@@ -748,62 +748,70 @@ en:
   help:
     markdown:
       intro:
-        title: What is markdown?
+        title: |
+          What is markdown?
+          =================
+
         body: |
-          Markdown is a way of writing plain text so that it can be converted to rich
-          text like web pages.
+          Markdown is a way of writing plain text (left),
+          so that it can be converted to rich text (right).
 
-          This page is written in markdown and gives examples of how to use it.
+          This page is written in markdown to show how it works.
 
-          While markdown can be useful, it can also be a bit tricky and we hope to
-          introducing something easier to use soon.
       headers:
-        title: Headings
         body: |
-          There are two ways to write a heading in markdown. Underline it like above, or:
+          Headings: just underline with equals
+          ====================================
 
-          # Prefix with a single hash to make an h1 (largest and highest-level heading)
-          ## Prefix with two hashes to make an h2
-          ### And prefix with three hashes for an h3 (smallest and lowest-level heading)
+          Or underline with dash
+          ----------------------
+      paragraphs:
+        title: |
+          Paragraphs
+          --------
 
-        note: 'Note - make sure you leave a space after the #'
+        body: |
+          You need
+          to put a
+          blank line
+          in between lines.
+
+          Or it will end up as one big paragraph!
+
       emphasis:
-        title: Emphasis
-      italics:
-        title: Italics
-        body: You can _emphasise_ a word by surrounding it with _underscore_ or *star*.
-      bold:
-        title: Bold
-        body: You can __bold__ a word by doubling the **emphasis**.
+        title: |
+          Emphasis
+          --------
+
+        body: |
+          You can italicize a word with _underscore_ or *star*.
+
+          __Bold__ a word by doubling the **emphasis**.
+
       lists:
-        title: Lists
+        title: |
+          Lists
+          -----
+
         body: |
           Here's how to make a list:
 
           * leave a blank line before your list
           * use stars (*)
           * leave a space after the star
+
       links:
-        title: Links
+        title: |
+          Links and Images
+          ----------------
+
         body: |
-          Links are the hardest thing to remember.
-          The format is square brackets around the name of the link,
-          followed by round brackets around the link itself.
+          Repeat out loud:
 
-          [Haven't we come far?](https://en.wikipedia.org/wiki/MacWrite)
-      images:
-        title: Images
-        body: |
-          You'll notice that embedding an image is just like a link but with an exclamation mark!
+          Square brackets for name then round brackets for URL.
 
-          ![markdown meme](http://cdn.meme.am/instances/500x/56351590.jpg)
-      horizontal_rules:
-        title: Horizontal Rules
-        body: |
-          Create horizontal divides by using three dashes with blank lines above and below.
+          [Loomio Homepage](https://www.loomio.org/)
 
-          ---
+          Images are the same, but prefixed with an exclamation mark.
 
-          They're a really nice was to seperate ideas or information.
-      read_more_html: You can read more about markdown <a href='%{link}'>here</a>
-
+          ![loomio logo](https://www.loomio.org/images/loomio-logo.png)

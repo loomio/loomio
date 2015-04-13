@@ -4,6 +4,7 @@ class HelpController < ApplicationController
   end
 
   def markdown
+    render layout: false
 
   end
 end

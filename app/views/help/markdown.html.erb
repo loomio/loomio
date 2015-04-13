@@ -1,49 +1,43 @@
-<pre>
+<style>
+td {
+  vertical-align: top;
+}
+</style>
+<table>
+<tr><td>
+<pre id='markdown-src'>
 <%= t(:'.intro.title') %>
-========
 
 <%= t(:'.intro.body') %>
 
-<%= t(:'.headers.title')  %>
--------
-
 <%= t(:'.headers.body')  %>
 
-<%= t(:'.headers.note')  %>
-</pre>
-<pre>
-## <%= t(:'.emphasis.title')  %>
+<%= t(:'.paragraphs.title') %>
 
-### <%= t(:'.italics.title')  %>
-<%= t(:'.italics.body')  %>
+<%= t(:'.paragraphs.body')  %>
 
+<%= t(:'.emphasis.title')  %>
 
-### <%= t(:'.bold.title')  %>
-<%= t(:'.bold.body')  %>
-</pre>
-<pre>
-## <%= t(:'.lists.title')  %>
+<%= t(:'.emphasis.body')  %>
+
+<%= t(:'.lists.title')  %>
 
 <%= t(:'.lists.body')  %>
-</pre>
-<pre>
+
 <%= t(:'.links.title')  %>
------
 
 <%= t(:'.links.body')  %>
 
 
-<%= t(:'.images.title')  %>
-------
-
-<%= t(:'.images.body')  %>
 </pre>
-<pre>
-## <%= t(:'.horizontal_rules.title')  %>
+</td>
+<td id='content'>
+</td></tr></table>
 
-<%= t(:'.horizontal_rules.body')  %>
-</pre>
+<script src="//cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+<script>
+  document.getElementById('content').innerHTML = marked(document.getElementById('markdown-src').innerHTML)
+</script>
 
 
-<%= t(:'.read_more_html', link: 'https://help.github.com/articles/markdown-basics/' )  %>
 
