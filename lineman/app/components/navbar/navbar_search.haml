@@ -13,7 +13,7 @@
         %a.selector-list-item-link{href: '/g/{{group.key}}'}
           .media-left
             .selector-list-item-group-logo{ng-if: 'group.isSubgroup() && queryEmpty()'}
-            %img.selector-list-item-group-logo{ng-if: 'group.isParent() || queryPresent()', src: "{{group.logoUrl()}}", aria-hidden: 'true'}
+            %img.selector-list-item-group-logo{ng-if: 'group.isParent() || queryPresent()', ng-src: "{{group.logoUrl()}}", aria-hidden: 'true'}
           .selector-list-item-group-name.media-body
             .noop{ng-if: 'queryPresent()' }
               {{ group.fullName() }}
