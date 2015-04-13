@@ -20,6 +20,8 @@ class MessageChannelService
       user.ability.can?(:show, discussion)
     when 'notifications'
       channel_key(channel).to_i == user.id
+    when 'group'
+      Group.find_by_key(channel_key(channel)).has_member?(current_user)
     else
       raise UnknownChannelError.new
     end
@@ -34,8 +36,11 @@ class MessageChannelService
   end
 
   def self.channel_for_event(event)
-    if ['comment_liked', 'comment_replied_to', 'new_comment'].include? event.kind
+    case event.kind
+    when 'comment_liked', 'comment_replied_to', 'new_comment'
       "/discussion-#{event.discussion_key}"
+    when 'new_discussion'
+      "/group-#{event.discussion.group.key}"
     else
       false
     end

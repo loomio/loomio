@@ -43,6 +43,10 @@ class Comment < ActiveRecord::Base
   alias_method :author=, :user=
   attr_accessor :new_attachment_ids
 
+  def discussion_title
+    discussion.title
+  end
+
   def parent_author
     parent.author if is_reply?
   end

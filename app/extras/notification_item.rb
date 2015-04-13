@@ -39,10 +39,14 @@ class NotificationItem
 
   def actor
     notification.eventable.try(:user) || notification.event.user
+  rescue => e
+    raise [e, notification, notification.event].inspect
   end
 
   def title
     notification.eventable.discussion_title
+  rescue => e
+    raise [e, notification, notification.event].inspect
   end
 
   def group_full_name
