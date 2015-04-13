@@ -415,7 +415,7 @@ class Group < ActiveRecord::Base
   end
 
   def has_member?(user)
-    memberships.where(user_id: current_user.id).any?
+    memberships.where(user_id: user.id).any?
   end
 
   def has_member_with_email?(email)
