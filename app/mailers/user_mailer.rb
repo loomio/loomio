@@ -48,7 +48,7 @@ class UserMailer < BaseMailer
     I18n.with_locale(locale) do
       mail to: user.email,
            from: from_user_via_loomio(inviter || group.admins.first),
-           reply_to: inviter.name_and_email,
+           reply_to: inviter.try(:name_and_email),
            subject: t("email.user_added_to_a_group.subject", which_group: group.full_name, who: inviter.name)
     end
   end
