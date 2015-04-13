@@ -749,11 +749,18 @@ en:
     markdown:
       intro:
         title: What is markdown?
-        body: Markdown is a text formmatting langauge which is a little bit hard to learn.
+        body: |
+          Markdown is a way of writing plain text so that it can be converted to rich
+          text like web pages.
+
+          This page is written in markdown and gives examples of how to use it.
+
+          While markdown can be useful, it can also be a bit tricky and we hope to
+          introducing something easier to use soon.
       headers:
         title: Headings
         body: |
-          There are two ways to write a heading in Markdown. Underline it like above, or:
+          There are two ways to write a heading in markdown. Underline it like above, or:
 
           # Prefix with a single hash to make an h1 (largest and highest-level heading)
           ## Prefix with two hashes to make an h2
