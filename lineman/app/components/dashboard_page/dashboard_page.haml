@@ -87,7 +87,7 @@
           .dashboard-page-sort-date{ng-if: 'dashboardPage.sort() == "sort_by_group"'}
             .dashboard-page-group{ng-repeat: 'group in dashboardPage.dashboardGroups() | orderBy:dashboardPage.groupName'}
               %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisGroup(group)', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.group' | translate }} {{group.name}}"}
-                %img.selector-list-item-group-logo.pull-left{src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
+                %img.selector-list-item-group-logo.pull-left{ng-src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
                 %h2.dashboard-page-group-name
                   %a{href: '/g/{{group.key}}'} {{group.name}}
                 .dashboard-page-threads
