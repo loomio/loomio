@@ -410,16 +410,12 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def user_membership_or_request_exists? user
-    Membership.where(:user_id => user, :group_id => self).exists?
-  end
-
   def invitations_remaining
     org_max_size - org_members_count
   end
 
   def has_member?(user)
-    Membership.active.where(group_id: group.id, user_id: current_user.id).any?
+    memberships.where(user_id: current_user.id).any?
   end
 
   def has_member_with_email?(email)
