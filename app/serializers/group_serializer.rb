@@ -25,8 +25,16 @@ class GroupSerializer < ActiveModel::Serializer
     object.logo.url(:medium)
   end
 
+  def include_logo_url_medium?
+    object.logo.present?
+  end
+
   def cover_url_desktop
     object.cover_photo.url(:desktop)
+  end
+
+  def include_cover_url_desktop?
+    object.cover_photo.present?
   end
 
   def members_can_raise_proposals
