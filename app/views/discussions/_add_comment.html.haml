@@ -16,7 +16,7 @@
             = check_box_tag 'uses_markdown', 1, current_user.uses_markdown
             = label_tag :uses_markdown, 'Markdown'
             = surround '(', ')' do
-              = link_to t(:'help.help'), "https://help.github.com/articles/markdown-basics/", title: t(:'common.markdown_help_tooltip'), class: 'js-tooltip-left', target: '_blank'
+              = link_to t(:'help.help'), markdown_path, title: t(:'common.markdown_help_tooltip'), class: 'js-tooltip-left', target: '_blank'
 
   - if user_signed_in?
     -unless browser.ie? && browser.version.to_i < 10

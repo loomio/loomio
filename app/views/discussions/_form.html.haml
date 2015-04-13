@@ -17,7 +17,7 @@
         = f.check_box :uses_markdown
         = f.label :uses_markdown, 'Markdown'
         = surround '(', ')' do
-          = link_to t(:'help.help'), "https://help.github.com/articles/markdown-basics/", title: t(:'common.markdown_help_tooltip'), class: 'js-tooltip-left', target: '_blank'
+          = link_to t(:'help.help'), markdown_path, title: t(:'common.markdown_help_tooltip'), class: 'js-tooltip-left', target: '_blank'
 
       - if discussion.group.present? and discussion.group.beta_feature_enabled?('discussion_iframe') and can?(:update, discussion.group)
         =f.input :iframe_src

@@ -744,3 +744,59 @@ en:
       feedback_link:  Have we missed something? Give us your feedback >
     back_to_top: ^ Back to top
     feedback_discussion: Think this explanation could be clearer? Give us your feedback >
+
+  help:
+    markdown:
+      intro:
+        title: What is markdown?
+        body: Markdown is a text formmatting langauge which is a little bit hard to learn.
+      headers:
+        title: Headings
+        body: |
+          There are two ways to write a heading in Markdown. Underline it like above, or:
+
+          # Prefix with a single hash to make an h1 (largest and highest-level heading)
+          ## Prefix with two hashes to make an h2
+          ### And prefix with three hashes for an h3 (smallest and lowest-level heading)
+
+        note: 'Note - make sure you leave a space after the #'
+      emphasis:
+        title: Emphasis
+      italics:
+        title: Italics
+        body: You can _emphasise_ a word by surrounding it with _underscore_ or *star*.
+      bold:
+        title: Bold
+        body: You can __bold__ a word by doubling the **emphasis**.
+      lists:
+        title: Lists
+        body: |
+          Here's how to make a list:
+
+          * leave a blank line before your list
+          * use stars (*)
+          * leave a space after the star
+      links:
+        title: Links
+        body: |
+          Links are the hardest thing to remember.
+          The format is square brackets around the name of the link,
+          followed by round brackets around the link itself.
+
+          [Haven't we come far?](https://en.wikipedia.org/wiki/MacWrite)
+      images:
+        title: Images
+        body: |
+          You'll notice that embedding an image is just like a link but with an exclamation mark!
+
+          ![markdown meme](http://cdn.meme.am/instances/500x/56351590.jpg)
+      horizontal_rules:
+        title: Horizontal Rules
+        body: |
+          Create horizontal divides by using three dashes with blank lines above and below.
+
+          ---
+
+          They're a really nice was to seperate ideas or information.
+      read_more_html: You can read more about markdown <a href='%{link}'>here</a>
+
