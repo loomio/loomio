@@ -16,7 +16,7 @@ class API::InvitationsController < API::RestfulController
 
   def parse_invitations
     @user_ids, @contact_ids, @new_emails = [],[],[]
-    params[:invitations].each do |invitation|
+    Array(params[:invitations]).each do |invitation|
       case invitation[:type]
       when 'User'    then @user_ids    << invitation[:id]
       when 'Group'   then @user_ids    << Group.find(invitation[:id]).members.pluck(:id)
