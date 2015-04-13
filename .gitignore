@@ -12,7 +12,6 @@ tmp/
 coverage
 public/assets
 public/system
-public/images
 .project
 Session.vim
 *.sql
