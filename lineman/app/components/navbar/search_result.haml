@@ -21,7 +21,7 @@
         .avatar-initials{ng-if: '::(comment.author.avatar_kind == "initials")'}
           {{::comment.author.avatar_initials}}
         .avatar-image{ng-if: '::(comment.author.avatar_kind != "initials")'}
-          %img{alt: "{{::comment.author.name}}", src: '{{::comment.author.avatar_url}}'}
+          %img{alt: "{{::comment.author.name}}", ng-src: '{{::comment.author.avatar_url}}'}
     .media-body
       .search-result-child-title {{comment.author.name}}
       .search-result-blurb{ng-bind-html: 'comment.blurb'}

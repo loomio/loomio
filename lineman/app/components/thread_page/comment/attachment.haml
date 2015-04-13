@@ -6,5 +6,5 @@
       {{attachment.filename }}
     %span {{attachment.formattedFilesize()}}
   .attachment-content{ng-if: 'attachment.isAnImage'}
-    %img{src: '{{::attachment.location}}', alt: "{{ 'activity_card.attachment_display.image_alt' | translate }}"}
+    %img{ng-src: '{{::attachment.location}}', alt: "{{ 'activity_card.attachment_display.image_alt' | translate }}"}
 
