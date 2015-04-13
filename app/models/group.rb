@@ -418,6 +418,10 @@ class Group < ActiveRecord::Base
     org_max_size - org_members_count
   end
 
+  def has_member?(user)
+    Membership.active.where(group_id: group.id, user_id: current_user.id).any?
+  end
+
   def has_member_with_email?(email)
     members.where(email: email).any?
   end
