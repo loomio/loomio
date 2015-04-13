@@ -4,7 +4,7 @@
 
     %section.media.thread-group{role: 'region', aria-label: "{{ 'thread_group.aria_label' | translate }}"}
       .media-left.thread-group__icon{aria-hidden: 'true'}
-        %img.thread-group-logo{src: "{{threadPage.group.logoUrl()}}"}
+        %img.thread-group-logo{ng-src: "{{threadPage.group.logoUrl()}}"}
       .media-body.thread-group__name
         %a{ng_show: 'threadPage.group.parentId', href: '/g/{{threadPage.group.parent().key}}'}
           {{threadPage.group.parentName()}}
