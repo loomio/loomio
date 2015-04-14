@@ -42,52 +42,6 @@ describe Comment do
     end
   end
 
-  context "liked by user" do
-    before do
-      @like = comment.like user
-      comment.reload
-    end
-
-    it "increases like count" do
-      expect(comment.comment_votes.count).to eq 1
-    end
-
-    it "returns a CommentVote object" do
-      expect(@like.class.name).to eq "CommentVote"
-    end
-
-    context "liked again by the same user" do
-      before do
-        comment.like user
-      end
-
-      it "does not increase like count" do
-        expect(comment.comment_votes.count).to eq 1
-      end
-    end
-  end
-
-  context "unliked by user" do
-    before do
-      comment.like user
-      comment.unlike user
-    end
-
-    it "decreases like count" do
-      expect(comment.comment_votes.count).to eq 0
-    end
-
-    context "unliked again by the same user" do
-      before do
-        comment.unlike user
-      end
-
-      it "does not decrease like count" do
-        expect(comment.comment_votes.count).to eq 0
-      end
-    end
-  end
-
   describe "#mentioned_group_members" do
     before do
       @group = create :group

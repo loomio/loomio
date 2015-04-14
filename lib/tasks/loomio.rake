@@ -27,8 +27,7 @@ namespace :loomio do
 
     Comment.find_each do |c|
       progress_bar.increment
-      c.refresh_liker_ids_and_names
-      c.save
+      c.refresh_liker_ids_and_names!
     end
   end
 

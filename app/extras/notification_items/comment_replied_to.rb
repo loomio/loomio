@@ -11,6 +11,6 @@ class NotificationItems::CommentRepliedTo < NotificationItem
 
   def link
     discussion_path = Routing.discussion_path(@notification.eventable.discussion)
-    discussion_path + "#comment-#{@notification.eventable.comment_id}"
+    discussion_path + "#comment-#{@notification.eventable.id}"
   end
 end

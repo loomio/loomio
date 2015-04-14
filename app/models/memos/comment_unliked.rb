@@ -1,6 +1,7 @@
 class Memos::CommentUnliked < Memo
-  def initialize(comment_vote)
-    @comment_vote = comment_vote
+  def initialize(user: , comment: )
+    @comment = comment
+    @user = user
   end
 
   def kind
@@ -8,11 +9,11 @@ class Memos::CommentUnliked < Memo
   end
 
   def data
-    {comment_id: @comment_vote.comment_id,
-     user_id: @comment_vote.user_id}
+    {comment_id: @comment.id,
+     user_id: @user.id}
   end
 
   def message_channel
-    "/discussion-#{@comment_vote.comment.discussion_id}"
+    "/discussion-#{@comment.discussion_id}"
   end
 end

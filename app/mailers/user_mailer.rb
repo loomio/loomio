@@ -40,16 +40,16 @@ class UserMailer < BaseMailer
 
   def added_to_group(user: nil, inviter: nil, group: nil, message: nil)
     @user = user
-    @inviter = inviter
+    @inviter = inviter || group.admins.first
     @group = group
     @message = message
 
     locale = locale_fallback(user.try(:locale), inviter.try(:locale))
     I18n.with_locale(locale) do
       mail to: user.email,
-           from: from_user_via_loomio(inviter || group.admins.first),
+           from: from_user_via_loomio(@inviter),
            reply_to: inviter.try(:name_and_email),
-           subject: t("email.user_added_to_a_group.subject", which_group: group.full_name, who: inviter.name)
+           subject: t("email.user_added_to_a_group.subject", which_group: group.full_name, who: @inviter.name)
     end
   end
 end
