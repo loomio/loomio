@@ -25,16 +25,13 @@ class CommentsController < BaseController
   end
 
   def like
-    if params[:like] == 'true'
-      Measurement.increment('comments.like.success')
-      CommentService.like(comment: @comment, actor: current_user)
-    else
-      Measurement.increment('comments.unlike.success')
-      CommentService.unlike(comment: @comment, actor: current_user)
-    end
-    @discussion = @comment.discussion
+    CommentService.like(comment: @comment, actor: current_user)
+    render template: "comments/comment_likes"
+  end
 
-    render :template => "comments/comment_likes"
+  def unlike
+    CommentService.unlike(comment: @comment, actor: current_user)
+    render template: "comments/comment_likes"
   end
 
 end

@@ -20,45 +20,6 @@ describe 'CommentService' do
     end
   end
 
-  describe 'unlike' do
-    after do
-      comment.stub(:likers){[user]}
-      CommentService.unlike(comment: comment, actor: user)
-    end
-
-    it 'calls unlike on the comment' do
-      comment.should_receive(:unlike).with(user)
-    end
-  end
-
-  describe 'like' do
-    before do
-      Events::CommentLiked.stub(:publish!)
-      user.ability.stub(:authorize!)
-      #comment.stub(:like).and_return(comment_vote)
-    end
-
-    after do
-      CommentService.like(comment: comment, actor: user)
-    end
-
-    it 'checks the user can like the comment' do
-      user.ability.should_receive(:authorize!).with(:like, comment)
-    end
-
-    it 'creates a comment vote' do
-      #comment.should_receive(:like).with(user).and_return(comment_vote)
-    end
-
-    it 'enfollows the liker' do
-      #expect(discussion_reader).to receive(:follow!)
-    end
-
-    it 'publishes a like comment event' do
-      #Events::CommentLiked.should_receive(:publish!).with(comment_vote)
-    end
-  end
-
   describe 'create' do
     before do
       Events::NewComment.stub(:publish!).and_return(event)

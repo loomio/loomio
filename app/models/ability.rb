@@ -202,7 +202,7 @@ class Ability
       user_is_member_of?(comment.group.id) && user_is_author_of?(comment) && comment.can_be_edited?
     end
 
-    can :like, Comment do |comment|
+    can [:like, :unlike], Comment do |comment|
       user_is_member_of?(comment.group.id)
     end
 

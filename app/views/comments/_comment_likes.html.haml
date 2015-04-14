@@ -7,9 +7,9 @@
   - if @can_like_comments ||= can?(:like, comment)
     = " · "
     - if comment.likers_include?(current_user)
-      = link_to t(:unlike), like_comment_path(id: comment, like: 'false'), method: :post, remote: true, id: "unlike-comment-#{comment.id}"
+      = link_to t(:unlike), unlike_comment_path(comment), method: :post, remote: true, id: "unlike-comment-#{comment.id}"
     - else
-      = link_to t(:like), like_comment_path(id: comment, like: 'true'), method: :post, remote: true, id: "like-comment-#{comment.id}"
+      = link_to t(:like), like_comment_path(comment), method: :post, remote: true, id: "like-comment-#{comment.id}"
 
   - if TranslationService.can_translate? comment
     = " · "

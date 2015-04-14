@@ -11,4 +11,6 @@ class CommentVote < ActiveRecord::Base
   delegate :group_full_name, :discussion, to: :comment
   delegate :group, to: :discussion
   delegate :title, to: :discussion, prefix: :discussion
+  delegate :discussion_id, to: :comment
+  delegate :discussion, to: :comment
 end

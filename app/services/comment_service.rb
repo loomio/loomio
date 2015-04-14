@@ -1,15 +1,22 @@
 class CommentService
   def self.unlike(comment:, actor:)
     return false unless comment.likers.include? actor
-    actor.ability.authorize!(:like, comment)
-    comment_vote = CommentVote.where(user_id: actor.id, comment_id: comment.id).first
-    comment.unlike(actor)
-    Memos::CommentUnliked.publish!(comment_vote)
+    actor.ability.authorize!(:unlike, comment)
+
+    CommentVote.where(user_id: actor.id, comment_id: comment.id).destroy_all
+    comment.refresh_liker_ids_and_names!
+
+    Memos::CommentUnliked.publish!(comment: comment, user: actor)
+
   end
 
   def self.like(comment:, actor:)
     actor.ability.authorize!(:like, comment)
-    comment_vote = comment.like(actor)
+
+    comment_vote = CommentVote.find_or_create_by(comment_id: comment.id,
+                                                 user_id: actor.id)
+
+    comment.refresh_liker_ids_and_names!
 
     DiscussionReader.for(discussion: comment.discussion,
                          user: actor).set_volume_as_required!
