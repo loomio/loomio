@@ -402,6 +402,7 @@ GEM
     modernizr-rails (2.7.1)
     momentjs-rails (2.9.0)
       railties (>= 3.1)
+    msgpack (0.5.11)
     multi_json (1.11.0)
     multi_test (0.1.2)
     multi_xml (0.5.5)
@@ -522,6 +523,10 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.2)
+    rbtrace (0.4.7)
+      ffi (>= 1.0.6)
+      msgpack (>= 0.4.3)
+      trollop (>= 1.16.2)
     redcarpet (3.1.2)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
@@ -622,6 +627,7 @@ GEM
     thread_safe (0.3.5)
     tilt (1.4.1)
     timecop (0.7.3)
+    trollop (2.1.2)
     twitter-text (1.11.0)
       unf (~> 0.1.0)
     tzinfo (1.2.2)
@@ -733,6 +739,7 @@ DEPENDENCIES
   rails_12factor
   rails_serve_static_assets
   rake
+  rbtrace
   redcarpet (~> 3.1.2)
   responders (~> 2.0)
   rinku
