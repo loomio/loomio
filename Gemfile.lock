@@ -71,6 +71,8 @@ GEM
     airbrake (4.1.0)
       builder
       multi_json
+    airbrake_user_attributes (0.1.1)
+      airbrake (>= 3.0.9)
     akami (1.2.2)
       gyoku (>= 0.4.0)
       nokogiri
@@ -654,7 +656,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.8.1)
   activeadmin!
   activerecord_any_of
-  airbrake
+  airbrake_user_attributes
   autoprefixer-rails
   awesome_print
   better_errors
