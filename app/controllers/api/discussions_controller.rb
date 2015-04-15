@@ -56,22 +56,32 @@ class API::DiscussionsController < API::RestfulController
 
   def visible_records
     load_and_authorize_group
-    if @group
-      GroupDiscussionsViewer.for(user: current_user, group: @group)
-    else
-      Queries::VisibleDiscussions.new(user: current_user)
-    end.order(last_activity_at: :desc)
+    groups = if @group
+               VisibleGroupsQuery.expand(group: @group, user: current_user)
+             else
+               current_user.groups
+             end
+    Queries::VisibleDiscussions.new(user: current_user, groups: groups).order(last_activity_at: :desc)
   end
 
   private
+  def filter_discussions(discussions, filter)
+    case filter
+    when 'show_unread'    then discussions.unread
+    when 'show_proposals' then discussions.with_active_motions
+    else                       discussions
+    end
+  end
 
   def inbox_threads
-    GroupDiscussionsViewer.for(user: current_user, group: @group, filter: params[:filter])
-                          .not_muted
-                          .where('last_activity_at > ?', params[:from_date] || 3.months.ago)
-                          .joined_to_current_motion
-                          .preload(:current_motion, {group: :parent})
-                          .order('motions.closing_at ASC, last_activity_at DESC')
+    discussions = Queries::VisibleDiscussions.new(groups: current_user.groups,
+                                                  user: current_user) 
+    discussions = filter_discussions(discussions, params[:filter])
+    discussions.not_muted.
+                where('last_activity_at > ?', params[:from_date] || 3.months.ago).
+                joined_to_current_motion.
+                preload(:current_motion, {group: :parent}).
+                order('motions.closing_at ASC, last_activity_at DESC')
   end
 
   def grouped(discussions)
