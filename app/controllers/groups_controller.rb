@@ -66,7 +66,8 @@ class GroupsController < GroupBaseController
     @membership = @group.membership_for(current_user) if user_signed_in?
     @discussion = Discussion.new(group_id: @group.id)
 
-    @discussions = GroupDiscussionsViewer.for(group: @group, user: current_user)
+    @visible_groups = VisibleGroupsQuery.expand(group: @group, user: current_user)
+    @discussions = Queries::VisibleDiscussions.new(groups: @visible_groups, user: current_user)
 
     if sifting_unread?
       @discussions = @discussions.unread
