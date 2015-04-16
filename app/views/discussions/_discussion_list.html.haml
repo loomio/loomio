@@ -44,7 +44,7 @@
 
             - # invite them to login
             - unless current_user_or_visitor.is_logged_in?
-              = t(:'discussion_list.empty.log_in_html', href: new_user_session_path)
+              = t(:'discussion_list.empty.log_in_html', href: new_user_session_path(return_to: request.original_url))
 
       - else # dashboard
         - # there are no discussions in any of your groups
