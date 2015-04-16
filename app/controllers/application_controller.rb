@@ -76,7 +76,7 @@ class ApplicationController < ActionController::Base
     return_to = request.env['HTTP_REFERER']
 
     if params['return_to']
-      return_to = URI.unescape(params['return_to'])
+      return_to = URI.unescape(params['return_to']).chomp('/')
     end
 
     session['user_return_to'] = return_to unless return_to.blank?
