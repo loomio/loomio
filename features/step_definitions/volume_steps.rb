@@ -153,7 +153,7 @@ Given(/^I update the title$/) do
 end
 
 Then(/^my followed threads should include the discussion$/) do
-  @discussions = GroupDiscussionsViewer.for(user: @user).not_muted
+  @discussions = Queries::VisibleDiscussions.new(user: @user, groups: @user.groups).not_muted
   @discussions.should include(@discussion)
 end
 

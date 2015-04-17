@@ -12,7 +12,7 @@ class ThreadSearchQuery
   private
 
   def self.visible_results_for(user)
-    Queries::VisibleDiscussions.new(user: user).pluck(:id)
+    Queries::VisibleDiscussions.new(user: user, groups: user.groups).pluck(:id)
   end
 
   def self.build_search_result(result)

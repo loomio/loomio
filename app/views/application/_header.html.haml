@@ -54,4 +54,4 @@
         %nav
           %ul.nav.navbar-nav.navbar-right.pull-right
             - unless controller_name == "group_requests"
-              %li=link_to t(:log_in), new_user_session_path, class: 'login'
+              %li=link_to t(:log_in), new_user_session_path(return_to: request.original_url), class: 'login'

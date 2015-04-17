@@ -73,7 +73,13 @@ class ApplicationController < ActionController::Base
   end
 
   def store_previous_location
-    session['user_return_to'] = request.env['HTTP_REFERER'] if request.env['HTTP_REFERER'].present?
+    return_to = request.env['HTTP_REFERER']
+
+    if params['return_to']
+      return_to = URI.unescape(params['return_to']).chomp('/')
+    end
+
+    session['user_return_to'] = return_to unless return_to.blank?
   end
 
   def clear_stored_location
