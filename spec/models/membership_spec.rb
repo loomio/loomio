@@ -16,13 +16,6 @@ describe Membership do
       membership.valid?
       membership.errors_on(:user_id).should include("has already been taken")
     end
-
-    it "membership_count should be less than the group max_size" do
-      group.max_size = 1
-      group.memberships_count = 1
-      group.save
-      expect { group.add_member!(user) }.to raise_error
-    end
   end
 
   it "can have an inviter" do
