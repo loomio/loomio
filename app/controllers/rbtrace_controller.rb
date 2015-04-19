@@ -11,13 +11,31 @@ class RbtraceController < BaseController
     require "objspace"
     require 'net/scp'
     require 'zlib'
+    require 'fog'
 
     ObjectSpace.trace_object_allocations_start
     GC.start()
-    f = Zlib::GzipWriter.open(filepath)
-    ObjectSpace.dump_all(output: f)
 
-    send_file(filepath)
+    File.open(filepath, 'w') do |f|
+      ObjectSpace.dump_all(output: f)
+    end
+
+    Thread.new do 
+      File.open(filepath, 'r') do |f|
+
+        connection = Fog::Storage.new({
+          :provider                 => 'AWS',
+          :aws_access_key_id        => ENV['DUMP_AWS_ID'],
+          :aws_secret_access_key    => ENV['DUMP_AWS_KEY']
+        })
+
+        d = connection.directories.get('lmo-tracedumps')
+
+        d.files.create(key: filename, body: f, public: false)
+      end
+    end
+
+    send_file filepath
   end
 
 
