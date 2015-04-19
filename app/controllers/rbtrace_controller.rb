@@ -20,7 +20,7 @@ class RbtraceController < BaseController
       ObjectSpace.dump_all(output: f)
     end
 
-    Thread.new do 
+    Thread.new do
       File.open(filepath, 'r') do |f|
 
         connection = Fog::Storage.new({
@@ -35,7 +35,7 @@ class RbtraceController < BaseController
       end
     end
 
-    send_file filepath
+    render text: "writing: #{filename}"
   end
 
 
@@ -47,7 +47,7 @@ class RbtraceController < BaseController
   end
 
   def gen_filename
-    request.host+"-heap#{Time.now.strftime('%Y-%m-%d_%H%M%S')}.json.gz"
+    request.host+"-heap#{Time.now.strftime('%Y-%m-%d_%H%M%S')}.json"
   end
 
   def tmp_dir
