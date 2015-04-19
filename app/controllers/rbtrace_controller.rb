@@ -9,8 +9,6 @@ class RbtraceController < BaseController
     filepath = tmp_dir.join(filename)
 
     require "objspace"
-    require 'net/scp'
-    require 'zlib'
     require 'fog'
 
     ObjectSpace.trace_object_allocations_start
@@ -32,10 +30,11 @@ class RbtraceController < BaseController
         d = connection.directories.get('lmo-tracedumps')
 
         d.files.create(key: filename, body: f, public: false)
+        d.files.create(key: 'completed-'+filename, body: 'yes', public: false)
       end
     end
 
-    render text: "writing: #{filename}"
+    render text: "wrote: #{filename}"
   end
 
 
