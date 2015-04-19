@@ -247,6 +247,8 @@ Loomio::Application.routes.draw do
     post :unlike, on: :member
   end
 
+  get '/tracedump' => 'rbtrace#new'
+
   resources :attachments, only: [:create, :new] do
     collection do
       get 'sign'
