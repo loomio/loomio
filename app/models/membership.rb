@@ -24,7 +24,6 @@ class Membership < ActiveRecord::Base
   delegate :admins, to: :group, prefix: :group
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
 
-  before_create :check_group_max_size
   before_destroy :remove_open_votes
   after_destroy :leave_subgroups_of_hidden_parents
 
@@ -54,13 +53,6 @@ class Membership < ActiveRecord::Base
   end
 
   private
-
-  def check_group_max_size
-    if group.max_size
-      raise "Group max_size exceeded" if group.memberships_count >= group.max_size
-    end
-  end
-
   def leave_subgroups_of_hidden_parents
     return if group.nil? #necessary if group is missing (as in case of production data)
     return unless group.is_hidden_from_public?
