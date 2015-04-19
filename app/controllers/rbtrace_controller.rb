@@ -1,4 +1,6 @@
 class RbtraceController < BaseController
+  include ActionController::Live
+ 
   def new
     raise "not permitted pal" unless current_user.is_admin?
 
@@ -16,11 +18,17 @@ class RbtraceController < BaseController
       f = Zlib::GzipWriter.open(filepath)
       ObjectSpace.dump_all(output: f)
 
+      response.headers['Content-Type'] = 'text/event-stream'
       Net::SCP.upload!(ENV['DUMP_HOST'],
                        ENV['DUMP_USER'],
                        filepath,
                        filename,
-                       ssh: {password: ENV['DUMP_PASS']})
+                       ssh: {password: ENV['DUMP_PASS']}) do |update|
+
+        response.stream.write "This is a test Messagen"
+      end
+
+      response.stream.close
     end.join
 
 
