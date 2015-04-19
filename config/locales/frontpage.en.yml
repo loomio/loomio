@@ -2,7 +2,7 @@ en:
   frontpage:
     view_this_in_your_language: 'View this site in %{language}'
     title:
-      collaborative_decision_making: Collaborative Decision-Making
+      collaborative_decision_making: 'Collaborative Decision-Making'
     link:
       blog: 'Blog'
       contact: 'Contact'
