@@ -1,6 +1,6 @@
 .proposal-expanded{ng-show: 'proposal'}
   %proposal_actions_dropdown{proposal: 'proposal', ng-if: 'showActionsDropdown()'}
-  %h2 {{proposal.name}}
+  %h3.proposal-expanded__proposal-name {{proposal.name}}
 
   .proposal-expanded__started-by
     %span{translate: 'proposal_expanded.started_by', translate-values: '{name: proposal.authorName()}'}

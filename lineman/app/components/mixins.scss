@@ -103,7 +103,7 @@ $navbar-height: 45px;
   @include roundedCorners;
 }
 
-@mixin resetFont{
+@mixin fontReset{
   color: $primary-text-color;
   text-transform: none;
   @include fontHelvetica;

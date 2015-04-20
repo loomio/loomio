@@ -1,5 +1,5 @@
 .new_vote__heading{
-  @include resetFont;
+  @include fontReset;
   color: $grey-on-white;
   span{
     @include fontHelveticaBold;

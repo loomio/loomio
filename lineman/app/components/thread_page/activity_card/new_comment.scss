@@ -1,4 +1,4 @@
 .new-comment__author-name{
-  @include resetFont;
+  @include fontReset;
   @include fontHelveticaBold;
 }
