@@ -90,6 +90,7 @@
 .thread-item-proposal-icon{
   @include smallIcon;
   background-image: url(/img/proposal_icon_30.png);
+  background-repeat: no-repeat;
 }
 
 .thread-item-vote-icon-yes {
