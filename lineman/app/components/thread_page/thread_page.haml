@@ -1,6 +1,6 @@
 .loading-wrapper.container.main-container
   %loading{ng-if: '!threadPage.discussion'}
-  .thread-page{ng-if: 'threadPage.discussion'}
+  .thread-page{ng-if: 'threadPage.discussion', role: 'main'}
 
     %section.media.thread-group{role: 'region', aria-label: "{{ 'thread_group.aria_label' | translate }}"}
       .media-left.thread-group__icon{aria-hidden: 'true'}

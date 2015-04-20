@@ -1,4 +1,4 @@
-.loading-wrapper.container.main-container
+.loading-wrapper.container.main-container{role: 'main'}
   %loading{ng-unless: 'groupForm.group'}
   %form.form-card{ng-if: 'groupForm.group', ng_submit: 'groupForm.submit()'}
     %fieldset{ng_disabled: 'groupForm.isDisabled'}
