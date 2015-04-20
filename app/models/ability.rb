@@ -161,7 +161,7 @@ class Ability
       else
         discussion.public? or
         user_is_member_of?(discussion.group_id) or
-        (discussion.group.is_visible_to_parent_members? and user_is_member_of?(discussion.group.parent_id))
+        (discussion.group.parent_members_can_see_discussions? and user_is_member_of?(discussion.group.parent_id))
       end
     end
 

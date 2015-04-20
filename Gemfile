@@ -70,11 +70,9 @@ gem 'activerecord_any_of'
 #gem 'oj_mimic_json'
 
 group :development, :test do
-  gem 'byebug'
   gem 'minitest'
   gem 'timecop'
-  gem 'pry-rails'
-  gem 'binding_of_caller'
+  gem 'byebug'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-rails'
