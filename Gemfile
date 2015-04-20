@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
 
-ruby '2.2.0'
+ruby '2.2.2'
 gem 'rails', '~> 4.2.0'
+gem 'rbtrace'
 gem 'rake'
 gem 'pg', '~> 0.17.1'
 gem 'pg_search', '~> 0.7.8'

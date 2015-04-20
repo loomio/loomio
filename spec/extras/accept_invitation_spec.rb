@@ -23,7 +23,7 @@ describe AcceptInvitation do
                                             invitable: group) }
 
       it 'makes the user a group admin' do
-        group.admins.should include user
+        group.reload.admins.should include user
       end
     end
 
