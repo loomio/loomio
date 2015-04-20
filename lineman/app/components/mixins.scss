@@ -103,6 +103,15 @@ $navbar-height: 45px;
   @include roundedCorners;
 }
 
+@mixin resetFont{
+  color: $primary-text-color;
+  text-transform: none;
+  @include fontHelvetica;
+  @include fontMedium;
+  margin: 0;
+  padding: 0;
+}
+
 #turn-off-angular {
   z-index: 100;
   position: fixed;
