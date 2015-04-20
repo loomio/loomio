@@ -86,8 +86,6 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
-    binding_of_caller (0.7.2)
-      debug_inspector (>= 0.0.1)
     bing_translator (4.4.1)
       json (~> 1.8.0)
       nokogiri (~> 1.6.0)
@@ -156,7 +154,6 @@ GEM
     daemons (1.2.1)
     dalli (2.7.2)
     database_cleaner (1.4.1)
-    debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     delayed-plugins-airbrake (1.1.0)
       airbrake
@@ -388,7 +385,6 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     memcachier (0.0.2)
-    method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.2)
     minitest (5.5.1)
@@ -460,12 +456,6 @@ GEM
       websocket-driver (>= 0.2.0)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
-    pry (0.10.1)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
-    pry-rails (0.3.3)
-      pry (>= 0.9.10)
     puma (2.11.1)
       rack (>= 1.1, < 2.0)
     quiet_assets (1.1.0)
@@ -658,7 +648,6 @@ DEPENDENCIES
   autoprefixer-rails
   awesome_print
   better_errors
-  binding_of_caller
   bing_translator
   bootstrap-sass (~> 3.2.0)
   browser
@@ -717,7 +706,6 @@ DEPENDENCIES
   pg_search (~> 0.7.8)
   poltergeist
   private_pub!
-  pry-rails
   puma
   quiet_assets
   rack-canonical-host
