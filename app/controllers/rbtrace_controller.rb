@@ -46,7 +46,7 @@ class RbtraceController < BaseController
   end
 
   def gen_filename
-    request.host+"-heap#{Time.now.strftime('%Y-%m-%d_%H%M%S')}.json"
+    request.host+"-#{Process.pid}-#{Time.now.strftime('%Y-%m-%d_%H%M%S')}.json"
   end
 
   def tmp_dir
