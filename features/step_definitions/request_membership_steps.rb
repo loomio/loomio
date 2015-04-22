@@ -215,3 +215,17 @@ end
 Then(/^I should be asked to log in$/) do
   page.should have_content(I18n.t(:sign_in))
 end
+
+Given(/^I am a member of a group with an invitation only subgroup that is visible to parent members$/) do
+  @new_parent_group = FactoryGirl.create :group
+  @new_parent_group.add_member! @user
+  @subgroup = FactoryGirl.create :group,
+                                  parent_id: @new_parent_group.id,
+                                  is_visible_to_public: false,
+                                  is_visible_to_parent_members: true,
+                                  membership_granted_upon: 'invitation'
+end
+
+Then(/^I should see that I need an invitation to join$/) do
+  expect(page).to have_content('Membership to this group is by invitation only')
+end

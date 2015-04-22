@@ -463,6 +463,7 @@ en:
   approved_by_person: Approved by %{person}
   ignored_by_perosn: Ignored by %{person}
   join_group_btn: Join group
+  membership_by_invitation_only: Membership to this group is by invitation only
   you_have_joined_group: You have joined %{group_name}
   confirm_approve_membership_request: "Are you sure you want to add %{which_user} to the group?"
   cancel_membership_request: "Cancel request"
