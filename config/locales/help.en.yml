@@ -1,7 +1,7 @@
 en:  
   new_help:
-    how_to:
-      title: How do I get started?
+    how_loomio_works:
+      title: How Loomio works
       start_group_link: Start a group
       start_group_description: to collaborate with people on Loomio
       invite_people_link: Invite people
@@ -13,7 +13,7 @@ en:
       decide_together_link: 'Decide together:'
       decide_together_description: 'anyone can agree, abstain, disagree, or block – so you can see how everyone feels about the proposal.'
     contents:
-      title: Need more information?
+      title: What can we help you with?
       getting_started:
         title_html: Getting started
         starting_new_group_html: When you want to start a new Loomio group
@@ -91,7 +91,7 @@ en:
       loomio_development:
         title_html: Keeping up with Loomio development
       faq:
-        title_html: FAQ
+        title_html: Frequently asked questions
     getting_started:
       title: Getting started
       intro: |
@@ -693,54 +693,80 @@ en:
       twitter_html: Loomio on Twitter
       code_climate_html: Loomio’s Code Climate
     faq:
-      title: FAQ
+      title: Frequently asked questions
       confirmation_email:
         title: Where is my confirmation email?
         body: 'If you don’t receive an email confirming your group registration, you might need to check your spam or junk mail folder – sometimes they end up in there.'
       approved_membership_request:
         title: 'I have approved membership requests for people who wanted to join my group but they haven’t shown up as members, what’s going on?'
         body: |
-          If the people who have requested membership to your group do not have existing Loomio accounts then they will need to create accounts before they become group members.
+          If the people who have requested membership to your group don't have existing Loomio accounts they will need to create accounts before they can become group members.
           After you approve their membership requests, they will receive a confirmation email and following the link in this email will prompt them to create a Loomio account.
           When their accounts have been created they will show up as members of your group.
       forgotten_password:
         title: 'I’ve forgotten my password, what do I do?'
         body_html: |
-          If you’ve forgotten your password click the <strong>“Forgot your password?”</strong> link on the <a href="http://www.loomio.org/users/sign_in">Log in page</a>.
+          If you’ve forgotten your password click the <strong>“Forgot your password?”</strong> link on the <a href="https://www.loomio.org/users/sign_in">Log in page</a>.
           You will be asked to enter the email address associated with your Loomio account and password reset instructions will be sent to this email address.
       loomio_account:
         title: Do I need a Loomio account to participate in discussions?
-        body: 'Yes. Even though there are different levels of group privacy, everyone who wishes to participate in a Loomio group is required to have a Loomio account.'
+        body: 'Yes. Even though there are different levels of group privacy, everyone who wishes to participate in a Loomio group needs to have a Loomio account.'
       cost:
         title: Does it cost to use Loomio?
-        body_html: |
-          <p>We're developing a pricing model that's in line with our social mission: <strong>making it easy for anyone, anywhere to participate in decisions that affect them</strong>.</p>
-          <p>If you're using Loomio in a <strong>company, formal organisation or workplace</strong>, you'll be charged a monthly subscription of US$2 per person after a <strong>30-day free trial</strong>.</p>
-          <p>More than 100 members? We have plans for larger organisations. <a href="mailto:contact@loomio.org">Contact us</a>.</p>
-          <p>Money will never be a barrier for people using Loomio to do great stuff in their <strong>communities</strong>.
-          If your group doesn't have the budget to pay for software, you don't need to pay a subscription. However, we may occasionally ask your group members for a donation.</p>
+        body_html: Check out our pricing page at <a href="https://www.loomio.org/pricing">loomio.org/pricing</a>.
       single_sign_on:
         title: 'Can I sign in with Google, Facebook or Twitter?'
-        body_html: 'Yes, see the segment on “Single sign-on” in the <a href="#getting-started">Getting started</a> section.'
+        body_html: 'Yes, see <a href="https://www.loomio.org/help#single-sign-on">Single sign-on</a> in our <a href="https://www.loomio.org/help">help documentation</a>.'
       loomio_instance:
         title: How can I set up my own instance of Loomio?
         body_html: |
           There is an installation guide on our <a href="https://github.com/loomio/loomio/wiki">Github wiki</a> and a <a href="https://www.loomio.org/g/C7I2YAPN/loomio-community-installing-loomio">Loomio Community sub-group</a> dedicated to support and assistance with local installations.
-          If you're considering installing your own version of Loomio, we highly recommend joining this group.
+          If you're thinking about installing your own version of Loomio, we highly recommend joining this group.
       feature_idea:
         title: What if I have a feature to suggest?
         body_html: |
           You might be interested in taking a look at our <a href="http://www.loomio.org/roadmap">public roadmap</a>, which documents what’s coming up in the development pipeline.
           We also have an open Loomio Community sub-group dedicated to <a href="https://www.loomio.org/g/GN7EFQTK/loomio-community-feature-ideas">Feature Ideas</a>.
-          If you don’t see the feature you wish to suggest on our public roadmap, and you are interested in participating in discussions around the development of Loomio, you might want to consider joining this group.
+          If you don’t see the feature you wish to suggest on our public roadmap, and you are interested in participating in discussions around the development of Loomio, you might want to join this group.
       development_pipeline:
         title: What’s coming up in the Loomio development pipeline?
         body_html: |
           To find out what our developers are working on and what’s coming up in the development pipeline, take a look at our <a href="https://www.loomio.org/roadmap">public roadmap</a>.
           You can vote for the ideas you want to see prioritised, and comment with your feedback.
-      max_group_size:
-        title: What is the maximum number of members I can have in a group?
-        body_html: 'Currently maximum group size is 300 members. If you need to increase this for any reason, contact us - <a href=mailto:contact@loomio.org>contact@loomio.org</a>.'
+      functional_group_size:
+        title: What size groups work well on Loomio?
+        body: Loomio currently works well for groups up to about 1000 people.
+      search_for_private_group:
+        title: 'How come when I search for a group I know exists, it doesn’t come up on the Explore page?'
+        body: 'If the group you are searching for is private, then it will not be publicly searchable and an invitation will be required to join.'
+      mobile_responsive:
+        title: Will Loomio work on my mobile device?
+        body: 'Loomio is mobile responsive, so it will work on any device through a browser.'
+      information_security:
+        title: Is information I post on Loomio secure?
+        body_html: |
+          <p>Loomio is a password-protected service, and each Loomio account is tied to a verified email address.
+          Private groups are invite only, meaning a group coordinator will be inviting people in by their email addresses.
+          Each user sets up an account with a password. Private groups are viewable only to members of the group.</p>
+          <p>Loomio is hosted by Heroku in the US, with cloud services provided by AWS/EC2 and encryption and authenticity provided by SSL.
+          We use secure HTTP protocol (HTTPS), providing bidirectional encryption. Our privacy, security and backup systems meet industry best practice.</p>
+          <p>You can view our privacy policy at <a href="https://www.loomio.org/privacy">loomio.org/privacy</a>. If you have any specific security concerns we recommend installing your own instance of Loomio.</p>
+      account_reactivation:
+        title: How can I reactivate my account?
+        body_html: |
+          Account reactivation can only be done by a member of the Loomio team. To have your account reactivated contact us using the form below, or send an email to <a href="mailto:contact@loomio.org">contact@loomio.org</a>.
+      restore_group:
+        title: 'I’ve deactivated my group, can I restore it?'
+        body_html: |
+          Deactivated groups can only be restored by a member of the Loomio team. To have a deactivated group restored contact us using the form below, or send an email to <a href="mailto:contact@loomio.org">contact@loomio.org</a>.
+      loomio_api:
+        title: Is there a Loomio API?
+        body: |
+          As of April 2015 we're actively developing and using the API that the new Loomio 1.0 client will use. This implements everything a Loomio client talking to the web service would need.
+          There is currently no server to server api, but Loomio is open source and we welcome additions. So feel free to scratch your itch.
+      subdomain:
+        title: Is it possible to have a Loomio subdomain?
+        body_html: "Yes. We can, for example, set up <strong>[your-group-name].loomio.org</strong> as the URL for your group. <a href='mailto:contact@loomio.org'>Contact us</a> if you're interested."
       feedback_link:  Have we missed something? Give us your feedback >
     back_to_top: ^ Back to top
     feedback_discussion: Think this explanation could be clearer? Give us your feedback >

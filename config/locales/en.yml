@@ -1002,15 +1002,19 @@ en:
   #
 
   contact_page:
-    contact_us:     'Contact us'
+    contact_us: Contact us
+    faq_prompt_html: "Got a question for the Loomio team? Before contacting us, you might be able to find the answer in our frequently asked questions."
+    contact_information: "If you don't find what you're looking for, you can find our contact information at the bottom of the page."
+    contact_form: Contact form
     labels:
-      name:         'Your name'
-      email:        'Your email address'
-      message:      'Your message'
-      submit:       'Send message'
+      name: Your name
+      email: Your email address
+      message: Your message
+      submit: Send message
     messages:
-      email_html:        "Fill out this form, or send an email to <a href='mailto:%{email}'>%{email}</a>"
-      social_html:       "You can also join us on<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
+      email_html: "Fill out this form, or send an email to <a href='mailto:%{email}'>%{email}</a>"
+      social_html: |
+        You can also join us on<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!
 
   #
   # FORMS

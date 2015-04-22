@@ -34,6 +34,8 @@
     margin-top: -50px;
   }
 
+  #help-header {   margin-top: 20px; }
+
   #sidenav {
     .nav.nav-tabs {
       max-width: 230px;
@@ -60,7 +62,6 @@
       }
     }
   }
-  #help-header { margin-top: 10px; }
 
   #get-started, #progress-resources, #how-to-contribute {
     list-style: decimal;
@@ -69,10 +70,6 @@
       font-size: 16px;
       margin-bottom: 10px;
     }
-  }
-  #what-is-loomio {
-    padding-top: 75px;
-    margin-top: -75px;
   }
 
   #how-to { margin-bottom: 50px; }
@@ -110,7 +107,7 @@
     margin-left: 20px;
   }
 
-  #bottom-links { margin: 30px 0 0 0; }
+  #bottom-links, #help-links { margin: 30px 0 0 0; }
 
   .feedback-discussion-link { float: right; }
 }
