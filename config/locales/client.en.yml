@@ -89,9 +89,9 @@ en:
   navbar:
     dashboard: 'Go to dashboard'
     start_thread: 'Start a new thread'
-    notifications: 'Open notifications panel'
+    notifications: 'Notifications panel'
     user_options:
-      label: 'Open user options menu'
+      label: 'User options menu'
       contact_us: 'Contact us'
       new_thread: 'New thread'
       new_group: 'New group'
@@ -129,6 +129,7 @@ en:
     no_statement: No statement.
     change_your_vote: Change your vote.
     have_your_say: Have your say
+    positions: Positions
     submitted_your_vote: Submitted your vote.
     i_agree: 'I agree'
     i_agree_details: 'I support this and want it to go ahead.'
@@ -407,8 +408,6 @@ en:
       image_alt: 'Attached image'
     new_comment:
       aria_label: 'Comment by'
-    new_motion:
-      aria_label: 'started a proposal:'
 
   delete_comment_dialog:
     title: 'Delete comment'
@@ -423,17 +422,17 @@ en:
     in_reply_to: '<strong>{{author}}</strong> in reply to <strong>{{recipient}}</strong>'
 
   new_vote_item:
-    agree: '<strong>{{name}}</strong> agreed.'
-    abstain: '<strong>{{name}}</strong> abstained.'
-    disagree: '<strong>{{name}}</strong> disagreed.'
-    block: '<strong>{{name}}</strong> blocked.'
-    agree_and_why: '<strong>{{name}}</strong> agreed:'
-    abstain_and_why: '<strong>{{name}}</strong> abstained:'
-    disagree_and_why: '<strong>{{name}}</strong> disagreed:'
-    block_and_why: '<strong>{{name}}</strong> blocked:'
+    agree: '<span>{{name}}</span> agreed.'
+    abstain: '<span>{{name}}</span> abstained.'
+    disagree: '<span>{{name}}</span> disagreed.'
+    block: '<span>{{name}}</span> blocked.'
+    agree_and_why: '<span>{{name}}</span> agreed:'
+    abstain_and_why: '<span>{{name}}</span> abstained:'
+    disagree_and_why: '<span>{{name}}</span> disagreed:'
+    block_and_why: '<span>{{name}}</span> blocked:'
 
   new_proposal_item:
-    author_created_proposal: '<strong>{{name}}</strong> created a proposal:'
+    author_created_proposal: '<span>{{name}}</span> created a proposal:'
 
   contact_message_form:
     contact_us: 'Contact Us'
