@@ -80,6 +80,8 @@ module GroupsHelper
         else
           request_membership_icon_button(group)
         end
+      when 'invitation'
+        t :'membership_by_invitation_only'
       end
     end
   end
