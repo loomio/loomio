@@ -733,9 +733,9 @@ en:
         body_html: |
           To find out what our developers are working on and what’s coming up in the development pipeline, take a look at our <a href="https://www.loomio.org/roadmap">public roadmap</a>.
           You can vote for the ideas you want to see prioritised, and comment with your feedback.
-      max_group_size:
-        title: What is the maximum number of members I can have in a group?
-        body_html: 'Currently maximum group size is %{max_size} members. If you need to increase this for any reason, contact us - <a href=mailto:contact@loomio.org>contact@loomio.org</a>.'
+      functional_group_size:
+        title: What size groups work well on Loomio?
+        body: Loomio currently works well for groups up to about 1000 people.
       search_for_private_group:
         title: 'How come when I search for a group I know exists, it doesn’t come up on the Explore page?'
         body: 'If the group you are searching for is private, then it will not be publicly searchable and an invitation will be required to join.'
@@ -766,7 +766,7 @@ en:
           There is currently no server to server api, but Loomio is open source and we welcome additions. So feel free to scratch your itch.
       subdomain:
         title: Is it possible to have a Loomio subdomain?
-        body_html: 'Yes. We can, for example, set up <strong>[your-group-name].loomio.org</strong> as the URL for your group. <a href="mailto:contact@loomio.org">Get in touch</a> to talk pricing.'
+        body_html: "Yes. We can, for example, set up <strong>[your-group-name].loomio.org</strong> as the URL for your group. <a href='mailto:contact@loomio.org'>Contact us</a> if you're interested."
       feedback_link:  Have we missed something? Give us your feedback >
     back_to_top: ^ Back to top
     feedback_discussion: Think this explanation could be clearer? Give us your feedback >
