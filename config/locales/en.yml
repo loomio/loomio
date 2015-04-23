@@ -922,6 +922,13 @@ en:
   inactive_html: "This account has been deactivated. If you have any questions please <a href='%{path_to_contact}'>get in touch</a>."
   create_an_account_html: 'Create a Loomio Beta account'
   log_in: "Log in"
+  password_reset:
+    email_guidelines_html: |
+      <p>Enter the email address for your Loomio account into the field below and you will be sent a password reset link.</p>
+      <p>If you normally sign in via Facebook, Google, Twitter or Persona, enter the email address associated with that account.</p>
+    reset_email_timeframe: It may take up to 5 minutes for the email to arrive. If it doesn't show up, be sure to check your spam folder.
+    length_restriction: Passwords must be at least 8 characters long.
+    forbidden_passwords: Common passwords such as “password” are forbidden to keep your account safe.
 
   join_group:
     log_in: "Log in to join %{group_name}"

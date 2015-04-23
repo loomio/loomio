@@ -5,14 +5,15 @@ class Users::ChangePasswordController < BaseController
   end
 
   def update
+    @errors = []
     @user = User.find(current_user.id)
-    if params[:user][:password] == params[:user][:password_confirmation]
+    if params[:user][:password].present? && params[:user][:password] == params[:user][:password_confirmation]
       @user.update_attributes(permitted_params.user)
       sign_in @user, :bypass => true
       flash[:success] = t('success.password_updated')
       redirect_to profile_path
     else
-      flash[:error] = t('error.passwords_did_not_match')
+      @errors << 'password_confirmation'
       render 'show'
     end
   end
