@@ -2,10 +2,6 @@ ga-IE:
   email_settings:
     title: Socruithe ríomhphoist
     submit: Nuashonraigh na roghanna
-  try_it:
-    header: Bain triail as Loomio
-    explore_groups: Féach baiclí eile ar Loomio
-    explore_groups_info: "Féach na baiclí iontacha uile ar Loomio agus cláraigh leo!"
   activerecord:
     errors:
       messages:
@@ -132,6 +128,12 @@ ga-IE:
   user_profile:
     change_password: "Déan d'fhocal faire a athrú"
     about_deactivation: Cad is brí le seo?
+  start_group_form:
+    header: Cuir baicle nua ar bun
+    name: "D'ainm"
+    group_name: Ainm na baiclí
+    success:
+      header: "Tá beagnach críochnaithe agat! Féach do ríomhphoist."
   group_form:
     name: Ainm na baiclí
     description: Cur síos
@@ -254,9 +256,6 @@ ga-IE:
     positions_agree_description: "Ciallaíonn <span>Aontaíom</span> go bhfuil tú sásta leis an dtogra."
     video_id: "52025402"
     video_tutorial: Físeán teagaisc
-  pricing_page:
-    organisations: Eagraíochtaí
-    organisations_examples: "m.sh. gnólachtaí, gníomhaireachtaí rialtais, eagraíochtaí pobail"
   contribution:
     making_a_donation: Bronn airgead
   new_password: Focal faire nua
@@ -366,16 +365,9 @@ ga-IE:
         password: Focal faire
         password_confirmation: Deimhnigh an focal faire
         language_preference: Teanga
-      group_request:
-        admin_name: Cad is ainm duit?
-        admin_email: Cad é do sheoladh ríomhphoist?
-        name: Cad is ainm den bhaicle seo agatsa?
-        description: "Má tá an t-am agat, déan cur síos ar an mbaicle seo agatsa"
     placeholders:
       membership_request:
         introduction: "Scríobh fút féin chun tú féin a chur in iúl agus mínigh cén fáth ar mhaith leat bheith mar chomhalta de %{group_name}."
-      group_request:
-        description: Ba bhreá linn eolas a chur ar do bhaicle agus cén fáth ar mhaith libh feidhm a bhaint as Loomio.
   helpers:
     submit:
       discussion:
@@ -427,8 +419,6 @@ ga-IE:
     thread_mailer:
       new_motion: "Mhol %{who}:"
       proposal_closed: "Tá an togra dúnta:"
-    verification:
-      header: "Tá beagnach críochnaithe agat!"
   about_loomio: Maidir le Loomio
   ago: "%{quantity_of_time} ó shin"
   approve: Ceadaigh
@@ -487,6 +477,7 @@ ga-IE:
     profile: Beathaisnéisín
     email_settings: Socruithe ríomhphoist
     unread: Neamhléite
+    find_out_more: Cuir tuilleadh eolais air
     filter: "Scagaire:"
     edited: Curtha in eagar
     groups: Baiclí

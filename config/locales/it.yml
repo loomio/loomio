@@ -4,13 +4,6 @@ it:
     submit: Aggiorna impostazioni
   explore:
     header: Esplora gruppi pubblici
-  try_it:
-    header: Prova Loomio
-    start_a_group: Crea un gruppo per prendere decisioni nella tua comunità
-    join_the_community: Unisciti al gruppo della Comunità Loomio
-    loomio_community_info: Questo é il luogo dove discutiamo e prendiamo decisioni circa Loomio
-    explore_groups: Esplora altri gruppi su Loomio
-    explore_groups_info: "Prova tutti i fantastici gruppi su Loomio e unisciti a loro!"
   activerecord:
     errors:
       messages:
@@ -260,6 +253,12 @@ it:
       memberships: Non sarai più elencato tra i membri dei gruppi a cui attualmente appartieni.
       group_contributions: "I commenti, le proposte e le discussioni che hai creato nei gruppi rimarranno, ma rimuoveremo il tuo nome da questi elementi."
       emails: Smetteremo di mandarti mail riguardo Loomio.
+  start_group_form:
+    header: Crea un nuovo gruppo
+    name: Nominativo
+    group_name: Nome gruppo
+    success:
+      header: "Hai quasi finito! Controlla la tua email."
   group_form:
     name: Nome gruppo
     description: Descrizione
@@ -597,12 +596,7 @@ it:
     proposal: Consigli per scrivere una proposta chiara
     vote: Puoi cambiare la tua posizione in ogni momento
   pricing_page:
-    intro: "Gruppi con un budget pagano una sottoscrizione per usare lo strumento.\nGruppi che non possono pagare una sottoscrizione usano il\nmetodo \"Paga Quello Che Puoi\": i loro membri sono invitati a dare un contributo volontario. Il Vostro contributo fa sì che Loomio sia indipendente, senza pubblicità, e guidato dalla comunità.\n"
-    organisations: Organizzazioni
-    organisations_examples: "es. aziende, agenzie governative, organizzazioni comunitarie"
-    informal_groups: Gruppi informali
-    informal_groups_desc: Verrà richiesto ai membri del tuo gruppo di pagare quanto possono
-    informal_groups_examples: "es. famiglie, movimenti sociali, collettivi"
+    header: Prezzo
   contribution:
     any_amount: o un contributo unico personalizzato
     currency_desc: Cifre sono in dollaro statunitense
@@ -703,7 +697,6 @@ it:
       submit: Invia messaggio
     messages:
       email_html: "Riempi questo modulo, o manda un'email a <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Puoi anche unirti a noi su<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: Comincia discussione
@@ -779,20 +772,12 @@ it:
         password: Password
         password_confirmation: Conferma la password
         language_preference: Lingua
-      group_request:
-        admin_name: "Qual'é il tuo nome?"
-        admin_email: "Qual'é il tuo indirizzo email?"
-        name: "Qual'é il nome del tuo gruppo?"
-        description: "Se hai un momento, dì qualcosa sul tuo gruppo"
-        is_commercial: Dove pensi di impiegare Loomio?
     placeholders:
       membership_request:
         introduction: "Scrivi un paio di parole su di te stesso e perché vorresti unirti a %{group_name}."
       motion:
         name: "Che linea d'azione proponi?"
         description: "Fornisci informazioni sufficienti perché tutti sappiano esattamente cosa significa essere o non essere d'accordo."
-      group_request:
-        description: Vorremmo conoscere qualcosa sul tuo gruppo e perchè vuoi usare Loomio.
   helpers:
     submit:
       discussion:
@@ -887,10 +872,6 @@ it:
       specify_outcome: "La tua proposta è chiusa. Specifica un risultato per far sapere a tutti qual è l'esito."
       outcome_created: "%{who} ha impostato un risultato per la proposta:"
       you_agreed: "Tu %{past_tense_position}"
-    verification:
-      header: "Hai quasi finito!"
-      intro: "Clicca su questo link di verifica per completare la tua richiesta:"
-      ignore: Se non hai fatto richiesta per unirti a Loomio per favore ignora questa email.
   meta_tags:
     default_title: "Loomio | Decision-Making Collaborativo"
     default_description: Loomio è uno strumento online semplice da usare per facilitare il decision-making di gruppo. Consente a gruppi sparsi di prendere decisioni velocemente e agire in maniera costruttiva.
@@ -953,7 +934,6 @@ it:
   start_a_group: Apri un gruppo
   starting: Cominciando
   subject: Oggetto
-  terms_of_service_html: "Cliccando %{button_text}, accetti le <a href='%{link_path}' target='_blank'>Condizioni di servizio</a> di Loomio"
   thanks: "Grazie!"
   unlike: Unlike
   time_until_close: "%{quantity_of_time} fino alla chiusura"
@@ -969,6 +949,7 @@ it:
     settings: Impostazioni
     dashboard: Dashboard
     unread: Non letto
+    find_out_more: Cerca altro
     filter: "Filtro:"
     following: Seguendo
     not_following: Non seguendo

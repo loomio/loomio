@@ -1,19 +1,18 @@
 hu:
   new_help:
-    how_to:
-      title: Hogyan kezdjem?
+    how_loomio_works:
+      title: Hogyan működik a Loomio
       start_group_link: Indíts egy csoportot
-      start_group_description: együttműködni az emberekkel a Loomion
-      invite_people_link: Hívj meg másokat
+      start_group_description: az emberekkel való együttműködésért a Loomion
+      invite_people_link: Hívj meg embereket
       invite_people_description: a csoportodba
-      start_discussion_link: Téma indítása
-      start_discussion_description: bármely témában
-      make_proposal_link: Tegyél egy javaslatot
+      start_discussion_link: Kezdj egy megbeszélést
+      start_discussion_description: bármilyen témában
+      make_proposal_link: Tegyél javaslatot
       make_proposal_description: hogy lásd miként vélekednek mások egy meghatározott cselekvésről
       decide_together_link: "Közösen dönteni:"
       decide_together_description: "bárki egyetérthet, tartózkodhet, elutasíthat vagy blokkolhat - így láthatod miként vélekednek mások a javaslatról."
     contents:
-      title: Több információ kell?
       getting_started:
         title_html: Kezdjük
         starting_new_group_html: Ha egy új Loomio csoportot akarsz indítani
@@ -90,8 +89,6 @@ hu:
         title_html: A Loomio Közösség
       loomio_development:
         title_html: Lépést tartva a Loomio fejlesztéssel
-      faq:
-        title_html: GYIK
     getting_started:
       title: Kezdjük
       intro: "Amikor először kerülcs kapcsolatba a Loomioval, több út is kínálkozik a csatlakozásra.\nIme néhány információ minden egyes belépési pontról:\n"
@@ -123,6 +120,9 @@ hu:
             anyone_html: "Ha a <strong>“Bárki”</strong> lehetőséget választod, a csoport szerepelni fog a nyilvánosan kereshető csoportok  <a href=\"http://loomio.org/explore\">Felfedező lapján</a>, és más kereső kereső motorok listájában.\nEz megkönnyíti az embereknek, hogy megtalálják a csoportodat anélkül, hogy neked személyes meghívást kelljen küldened számukra.\nEz hasznos lehet nagyszámú ember esetén, akik még nem ismerik egymást egy csoportban.\n"
         how_do_people_join:
           title: Hogy lehet csatlakozni?
+          body:
+            membership_requests_html: "A tagsági kérelem érvényesíthető vagy elvethető.\n(Megjegyzés:  a <strong>“Kérés alapján”</strong> opció nem választható, ha a <strong>“Csak tagok számára”</strong> lehetőséget választottad a <strong>“Ki találhatja meg ezt a csoportot?”</strong> részben.)\n"
+            invitation_only_html: "Ha a <strong>“csak meghívással”</strong> opciót választod, senki sem tud csatlakozni a csoporthoz személyes meghívó nélkül\nA meghívók elküldése a <a href=\"#inviting-members\">\"emberek meghívása”</a> oldalról történik.\n"
         who_can_see_discussions:
           title: Ki láthatja a vitákat?
           body:
@@ -136,6 +136,7 @@ hu:
             body_html: "Szeretnéd, hogy a csoportod tagjai <a href=\"#inviting-members\">meghívhassanak személyeket</a> csatlakozásra, és - a csoportod adatvédelmi beállításaitól függően - érvényesítsenek tagsági kérelmeket?\nHa ezt a lehetőséget választod a csoportod minden tagja meghívhat új embereket és érvényesíthet tagsági kérelmeket.\nHa ezek nincsenek kiválasztva, akkor csak a koordinátor lesz képes meghívni és érvényesíteni új tagokat.\n"
           create_subgroups:
             title: Alcsoport létrehozása
+            body_html: "Akarod, hogy a Loomio csoportod tagjai új <a href=\"#subgroups\">alcsoportot</a> hozhassanak létre?\nHa ez a lehetőség ki van választva, a csoportodban mindenki létre tud majd hozni alcsoportokat.\nHa nincs kiválasztva, akkor csak a csoport koordinátor hozhat létre alcsoportokat.\n"
           start_discussions:
             title: Vitákat kezdeményez
             body_html: "Szeretnéd hogy a csoportban bárki képes legyen <a href=\"#starting-discussions\">új vitát kezdeményezni</a>?\nHa ez a lehetőség ki van választva, a csoportban mindenki indíthat vitát.\nHa nincs kiválasztva, akkor csak a csoport koordinátor tud megbeszélést kezdeni.\n"
@@ -150,6 +151,7 @@ hu:
             title: Szavaz a javaslatokon
         what_next:
           title: Mi következik?
+          body_html: "A csoport beállítás űrlap lezárása után át leszel irányítva a csoport lapra.\nA csoportod lapjáról meghívhatsz embereket, hogy csatlakozzanak a csoportodhoz.\nKattints  <a href=\"#inviting-members\">ide</a> hogy megtudj többet a meghívásról.\n"
     coordination:
       title: Csoportod koordinálása
       adding_cover_photo:
@@ -161,23 +163,31 @@ hu:
           title: Tagsági kérelmek elfogadása/elvetése
           body:
             approval_process_html: "Ha a <a href=\"#group-privacy\">csoport adatvédelmi beállítások</a> az embereknek a csoporthoz csatlakozást <strong>“Kérelemmel”</strong> engedik meg, akkor egy koordinátornak minden tagsági kérelmet érvényesítenie kell.\nCsoport koordinátorként emailt fogsz kapni minden esetben, ha érvényesítendő kérelem van.\nAz értesítő email hivatkozására kattintva át leszel irányítva a  <strong>\"Tagsági kérelmek\"</strong> oldalra, ahol érvényesítheted vagy elutasíthatod a kérést.\n"
+            pending_requests_html: "Ha vannak függőben levő tagsági kérelmek, az is látható lesz a csoportod lapján a <strong>\"Tagsági kérelmek\"</strong> panelen.\nA hivatkozásra kattintva át leszel irányitva a <strong>\"Tagsági kérelmek\"</strong> oldalra.\n"
         email_group_members:
           title: email küldés csoport tagoknak
+          body_html: "Ha emailt szeretnél küldeni csoportod minden tagjának, azt megteheted a <strong>“Tagok”</strong> oldalon.\nAz oldal jobb felső részén található <strong>\"Email a csoporttagoknak\"</strong> gombra kattintva írhatod meg és küldheted el a levelet acsoport minden tagjának.\n"
         group_coordinators:
           title: Koordinátorok hozzáadása/törlése
         group_members:
           title: Csoporttagok hozzáadása/törlése
+          body_html: "Csak a koordinátorok tudnak csoport tagságot megvonni.\nA <strong>“Tagok”</strong> oldalon, minden csoporttag mellett lesz egy <strong>“Visszavonás”</strong> gomb.\nA gombra kattintás a vonatkozó tagot törli a csopotodból.\n"
       deactivating_groups:
         title: Csoport deaktiválása/archiválása
       coordinator_tips:
         title: Tippek a csoportodban való részvételre
         customise_invitation:
           title_html: Meghívó üzeneted testreszabása
+        engaging_proposal:
+          title: "Tegyél egy vonzó első javaslatot:"
         encourage_mentioning:
           title_html: "Ösztönözz <a href=\"#mentioning\">@megemlítve</a>:"
           body: "Egy másik egyszerű mód az emberek ösztönzésére, hogy részt vegyenek egy vitában, hosználjuk a @megemlítés funkciót, megnevezve a kívánt személyt; küldve nekik ezzel egy emailt arról, hogy megemlítették őket egy hozzászólásban. "
     inviting_members:
       title: Új tagok meghívása
+      body:
+        invitation_instructions_html: "Új emberek meghívásához a csoportodba, írd be email címeiket, vesszővel elválasztva.\nVálaszthatod a Loomio alapértelmezett üzenetét, vagy megfogalmazhatsz egy alkalmi üzenetet\n"
+        invitation_link: "Amikor befejezed a meghívás űrlap kitöltését, egy-egy email megy majd minden általad megadott email címre a szövegeddel és egy egyedi meghívási hivatkozással:"
       importing_contacts:
         title: Kapcsolatok importálása
       pending_invitations:
@@ -269,6 +279,7 @@ hu:
           normal_title: Normál
           normal_description: ",- ez csak fontos aktivitás: új téma vagy javaslat illetve javaslat eredmény esetén lesz emailben elküldve neked. "
           quiet_title: Csendes
+          quiet_description: "- ez minden emailt kikapcsol. Az új csoport eseményeket a Műszerfalon fogod látni."
           mute_title: Néma
           upon_joining_group_html: "Amikor új csoporthoz csatlakozol, hangerő beállításod erre a konkrét csoportra vonatkozóan <strong>Normál</strong> lesz.\nEz azt jelenti, hogy emailt fogsz kapni, amikor új vita indul, amikor egy döntési javaslat születik vagy amikor egy javaslat eredményét közzéteszik.\n"
           reply_via_email_html: "Bármelyik hozzászólásra válaszolhatsz, amelyet emailben kaptál meg, és a válaszod a megfelelő Loomios vitában fog megjelenni.\nAlternatívaként választhatod, hogy a hozzászólást a Loomion, a vita részeként tekinted meg a <strong>“megnézem a Loomion”</strong> hivatkozásra kattintva az email láblécében.\n"
@@ -285,6 +296,7 @@ hu:
         title: Felhasználónevek
       updating_personal_settings:
         title: Személyes beállításaid frissítése
+        body_html: "Frissítheted a fiókodhoz tartozó nevet, felhasználó nevet, email címet és a nyelv beállítást a vonatkozó adatmezők szerkesztésével a <a href=\"#user-profile\">Profil lap</a>-on, és a  <strong>“Változatások mentése”</strong> gomb megnyomásával."
       profile_photo:
         title: Profilkép feltöltése
       changing_passwords:
@@ -303,6 +315,9 @@ hu:
     contributing:
       title: Hozzájárulás a Loomiohoz
       body:
+        intro: "Pillanatnyilag számtalan út áll nyitva, amelyen az emberek közvetlenül vehetnek részt a Loomio munkáiban:"
+        open_source:
+          body_html: "Ha érdekel a részvétel a Loomio programozásában, először is nézz körül <a href=\"https://github.com/loomio/loomio\">Github tárhelyünkön</a>.\nMi a <a href=\"https://github.com/loomio/loomio/issues\">Github feladat kezelőjét</a> használjuk a munkák, fejlesztések és hibajavítások követésére és mindig örömmel fogadjuk külső közreműködők támogatását.!\nAz induláshoz találsz egy telepítési útmutatót a  <a href=\"https://github.com/loomio/loomio/wiki\">Github wikin</a> és egy nyilvános <a href=\"https://www.loomio.org/g/C7I2YAPN/loomio-community-installing-loomio\">Loomio Közösségi alcsoportot a telepítések támogatása és segítségnyújtás témákban</a>, melyben bármilyen, a problémád megoldását segítő kérdést feltehetsz.\n"
         translation:
           title_html: Fordítás
         loomio_community:
@@ -311,11 +326,46 @@ hu:
       title: A Loomio Közösség
       body_html: "<p>A <a href=\"https://www.loomio.org/g/WmPCB3IR/loomio-community\">Loomio Közösség</a> egy nyilvános csoporta loomios felhasználók és fejlesztők egész közössége számára, az együttléthez, a Loomio fejlesztésének és a közreműködés megbeszélésére.\nBárki csatlakozhat, egyszerűen, tagsági kérelemmel <a href=\"https://www.loomio.org/g/WmPCB3IR/loomio-community\">a csoportba</a> és a koordinátor érvényesíti a kérésedet.</p>\n<p>Számos nyilvános Loomio Közösségi alcsoport létezik a közösségi ökoszisztéma különböző változatainak címezve.\nEzek a csoportok nyitottak minden csatlakozó számára, akit érdekel a közreműködés vagy csak kíváncsi a Loomiora.\nLétezik egy <a href=\"https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation\">fordító alcsoport</a>, egy <a href=\"https://www.loomio.org/g/GN7EFQTK/loomio-community-feature-ideas\">Funkció ötlet alcsoport</a>, egy <a href=\"https://www.loomio.org/g/C7I2YAPN/loomio-community-installing-loomio\">Loomio telepítés alcsoport</a> a helyi telepítések támogatására és segítésére, és egy alcsoport a<a href=\"https://www.loomio.org/g/7jWVDr04/loomio-community-group-coordinators\">Loomio csoport koordinátorok</a> számára, hogy megosszák serkentő tippjeiket és trükkjeiket, amivel közösen növelhetjük tudásunkat és építhetjük közös erőforrásainkat a Loomio közös használatának legjobb módjaival kapcsolatban.</p>\n<p>Továbbiakat is megtudhatsz a Loomio Közösség működéséről <a href=\"https://www.loomio.org/discussions/5200\">itt</a>.</p>\n"
     loomio_development:
+      title: Lépéstartás a Loomio fejlesztéssel
+      intro: "Számtalan módod van, hogy kövesd a Loomio fejlődését:"
+      github_repo_html: A fő Loomio fejlesztési tárhely
       github_issues_html: Loomio esemény követő a Githubon
+      angular_html: Loomio 1.0 beta működésben
+      roadmap_html: A nyilvános ütemterv
+      twitter_html: Loomio a Twitteren
+      code_climate_html: Loomio Code Climate-je (automatikus kód ellenőrzője)
     faq:
-      title: GYIK
+      confirmation_email:
+        title: Hol a visszaigazoló emailem?
+        body: "Ha nem kapsz visszaigazoló emailt a csoport feliratkozásról, akkor szükséged lehet a kéretlen levelek vagy levélszemét mappád ellenőrzésére - néha itt kötnek ki ezek a levelek."
+      approved_membership_request:
+        title: "Érvényesítettem azoknak az embereknek a tagsági kéremét, akik a csoportomhoz akartak csatlakozni, de nem jelentek meg  mint tagok, mi történik?"
+      forgotten_password:
+        title: "Elfelejtettem a jelszavamat, mit csináljak?"
       loomio_account:
         title: Szükségem van Loomio fiókra egy vitában való részvételhez?
-        body: "Igen. Habár különféle csoport titkossági szintek léteznek, mindenkinek, aki részt kíván venni egy Loomio csoportban, szüksége van egy Loomio fiókra."
+      cost:
+        title: Kell fizetni a Loomio használatáért?
+      single_sign_on:
+        title: "Beléphetek Google-lal, Facebookkal vagy Twitterrel?"
       loomio_instance:
-        body_html: "Van egy telepítési útmutató <a href=\"https://github.com/loomio/loomio/wiki\">Github wiki-nken</a> és egy <a href=\"https://www.loomio.org/g/C7I2YAPN/loomio-community-installing-loomio\">Loomio Közösség alcsoport</a> a saját telepítések támogatására és segítésére.\nHa azt fontolgatod, hogy a Loomio saját verzióját telepíted, erősen ajánljuk, hogy csatlakozz ehhez a csoporthoz.\n"
+        title: Hogyan állíthatom be saját Loomio példányomat?
+      feature_idea:
+        title: "Mit tegyek, ha új funkcióra van javaslatom?"
+      feedback_link: "Kihagytunk valamit? Várjuk visszajelzését >"
+    back_to_top: ^ Vissza a tetejére
+    feedback_discussion: "Gondolja, hogy ez a magyarázat világosabb is lehetne? Várjuk visszajelzését >"
+  help:
+    markdown:
+      intro:
+        title: "Mi az a markdown?\n=================\n"
+        body: "A Mardown egy módja a sima szöveg írásnak (balra),\nígy azt át lehet alakítani formázott szöveggé (jobbra).\n\nEz az oldal mardown-ban íródott, hogy bemutassa miként működik.\n"
+      paragraphs:
+        title: "Bekezdések\n--------\n"
+      emphasis:
+        title: "Kiemelés\n--------\n"
+      lists:
+        title: "Felsorolás\n-----\n"
+        body: "Ime, így készíthetsz felsorolást:\n\n* hagyj egy üres sort a felsorolás előtt\n* használd a csillag (*) karaktert\n* hagyj egy szóközt a csillag után\n"
+      links:
+        title: "Hivatkozások és képek\n----------------\n"

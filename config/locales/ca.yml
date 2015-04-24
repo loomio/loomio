@@ -4,13 +4,6 @@ ca:
     submit: Actualitzar la configuració
   explore:
     header: Explorar grups públics
-  try_it:
-    header: Prova Loomio
-    start_a_group: Comença un grup per prendre decissions a la teva propia comunitat
-    join_the_community: Uneix-te al grup de la Comunitat Loomio
-    loomio_community_info: Aquí és on discutim i decidim sobre Loomio
-    explore_groups: Explorar altres grups a Loomio
-    explore_groups_info: "Mira tots els fantàstics grups de Loomio i uneix-te!"
   activerecord:
     errors:
       messages:
@@ -250,6 +243,12 @@ ca:
       query: Et faria res explicar-nos per què desactives el teu compte?
       info_title: Què suposarà desactivar el teu compte?
       emails: "Deixarem d'enviar-te correus electrònics relacionats amb Loomio."
+  start_group_form:
+    header: Comença un nou grup
+    name: El teu nom
+    group_name: Nom del grup
+    success:
+      header: "Ja quasi ho tens! Comprova el teu correu electrònic."
   group_form:
     name: Nom del grup
     description: Descripció
@@ -515,12 +514,7 @@ ca:
     proposal: Claus per escriure una proposta clara
     vote: Pots canviar la teva posició en qualsevol moment
   pricing_page:
-    intro: "Els grups amb pressupost paguen una subscripció per utilitzar l'eina.\nEls grups sense els mitjans per pagar una subscripció usen el model\n\"paga el que puguis\": els seus membres estan convidats a fer una contribució voluntària. La teva ajuda és necessària per mantenir Loomio independent, lliure de publicitat, i conduït per la comunitat.\n"
-    organisations: Organitzacions
-    organisations_examples: "per exemple empreses, agències governamentals, organitzacions comunitàries"
-    informal_groups: Grups informals
-    informal_groups_desc: Es demanarà als membres del teu grup per pagar el que puguin
-    informal_groups_examples: "per exemple famílies, moviments socials, col·lectius"
+    header: Preus
   contribution:
     any_amount: o una contribució voluntària única
     currency_desc: Les quantitats són en dòlars dels EUA
@@ -656,8 +650,6 @@ ca:
         password: Contrasenya
         password_confirmation: Confirma contrassenya
         language_preference: Idioma
-      group_request:
-        name: Quin és el nom del teu grup?
     placeholders:
       membership_request:
         introduction: "Fes-nos cinc cèntims sobre qui ets i per què t'agradaria unir-te a %{group_name}."
@@ -733,10 +725,6 @@ ca:
       change_preferences: Canvia les preferències de correu electrònic
       proposal_closed: "Proposta tancada:"
       you_agreed: "%{past_tense_position}"
-    verification:
-      header: "Ja quasi ho tens!"
-      intro: "Sisplau, fes click a aquest link per verificar la teva sol·licitud:"
-      ignore: "Si no has sol·licitat accedir a Loomio, sisplau, ignora aquest correu."
   about_loomio: Quant a Loomio
   ago: "Fa %{quantity_of_time}"
   approve: Aprovar
@@ -794,7 +782,6 @@ ca:
   start_a_group: Comença un grup
   starting: Iniciant
   subject: Tema
-  terms_of_service_html: "En fer clic a %{button_text},  acceptes els  <a href='%{link_path}' target='_blank'>Termes de servei</a> de Loomio"
   thanks: "Mercès!"
   unlike: "No m'agrada"
   update: Actualitzar
@@ -808,6 +795,7 @@ ca:
     settings: Configuració
     dashboard: Panell
     unread: No llegit
+    find_out_more: Coneix més
     filter: "Filtre:"
     following: Seguint
     not_following: No seguint

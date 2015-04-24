@@ -32,8 +32,6 @@ fr:
       step3:
         header: 3. Décider ensemble
         desc: "Détailler ensemble la proposition de sorte que cela fonctionne pour tout le monde. Chaque décision a une échéance claire, pour que vous obteniez toujours un résultat clair."
-    crowdfunding:
-      header: Nous avons choisi le financement participatif – crowdfunding – afin que nous puissions finir de construire cette nouvelle plateforme et la donner au monde.
     mobile:
       lead_html: "<strong>Loomio fonctionne sur n'importe quel périphérique,</strong><br /> prenez des décisions n'importe où, n'importe quand."
     quote:

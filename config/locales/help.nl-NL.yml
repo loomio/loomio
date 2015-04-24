@@ -1,7 +1,6 @@
 nl-NL:
   new_help:
-    how_to:
-      title: Hoe begin ik?
+    how_loomio_works:
       start_group_link: Begin een groep
       start_group_description: om samen te werken met mensen op Loomio
       invite_people_link: Mensen uitnodigen
@@ -13,7 +12,6 @@ nl-NL:
       decide_together_link: "Beslis samen:"
       decide_together_description: "iedereen kan het ermee eens zijn, zich onthouden, oneens zijn of blokkeren - zodat je kan zien hoe iedereen tegenover het voorstel staat."
     contents:
-      title: Meer informatie nodig?
       getting_started:
         title_html: Aan de slag
         starting_new_group_html: Wanneer je een nieuwe Loomio groep wil beginnen
@@ -90,8 +88,6 @@ nl-NL:
         title_html: De Loomio Gemeenschap
       loomio_development:
         title_html: Op de hoogte blijven van Loomio ontwikkeling
-      faq:
-        title_html: FAQ
     getting_started:
       title: Aan de slag
       intro: "Wanneer je voor het eerst in Loomio komt, kan je op verschillende manieren meedoen.\nHier is informatie over elke mogelijkheid:\n"
@@ -257,5 +253,3 @@ nl-NL:
           title_html: De Loomio Gemeenschap
     loomio_community:
       title: De Loomio Gemeenschap
-    faq:
-      title: FAQ

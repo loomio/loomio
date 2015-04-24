@@ -8,13 +8,6 @@ ro:
     submit: Actualizeaza setarile
   explore:
     header: Exploreaza grupuri publice
-  try_it:
-    header: Incearca Loomio
-    start_a_group: Formeaza un grup pentru a initia decizii in comunitatea ta.
-    join_the_community: Alatura-te grupului Loomio Community
-    loomio_community_info: Aici discutam si luam decizii despre Loomio.
-    explore_groups: Exploreaza si alte grupuri pe Loomio
-    explore_groups_info: "Trece in revista toate grupurile Loomio si alatura-te daca vrei!"
   activerecord:
     errors:
       messages:
@@ -276,6 +269,12 @@ ro:
       memberships: Nu vei mai fi listat in niciunul dintre grupurile la care apartii acum.
       group_contributions: "Comentariile, propunerile si discutiile pe care le-ai facut in grupuri vor ramane dar numele tau va fi retras."
       emails: Vom inceta sa-ti trimitem informari Loomio prin email.
+  start_group_form:
+    header: Creare grup nou
+    name: Nume
+    group_name: Numele grupului
+    success:
+      header: "Aproape ai terminat! Verifica-ti mailul."
   group_form:
     name: Numele grupului
     description: Descrierea
@@ -612,12 +611,7 @@ ro:
     proposal: Sfaturi pentru a scrie o propunere clara
     vote: Poti sa-ti modifici pozitia oricand doresti
   pricing_page:
-    intro: "Grupuri cu un buget vor plăti un abonament pentru utilizarea acestui instrument\nGrupuri fără mijloacele de a plăti un abonament vor folosi\nmodelul plateste Cat Poti:. membrii lor sunt invitați să facă o contribuție voluntară. Contribuția dumneavoastră ne ajuta sa păstram Loomio independent, liber de publicitate, condus doar de către comunitatea noastră.\n"
-    organisations: Organizatii
-    organisations_examples: "ex. companii, agentii guvernamentale, organizatii comunitare"
-    informal_groups: Grupuri Informale
-    informal_groups_desc: Membrii grupului tau vor putea sa plateasca cat vor dori
-    informal_groups_examples: "ex. familii, miscari sociale, colectivitati"
+    header: Preturi
   contribution:
     any_amount: sau o contributie aleasa de tine
     currency_desc: Sumele sunt in USD
@@ -717,7 +711,6 @@ ro:
       submit: Trimitere
     messages:
       email_html: "Completeaza acest formular sau trimite un email la <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Te mai poti alatura si prin<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: Discuţie nouă
@@ -792,20 +785,12 @@ ro:
         password: Parola
         password_confirmation: Confirma parola
         language_preference: Limba
-      group_request:
-        admin_name: Cum te cheamă?
-        admin_email: Care este adresa ta de email?
-        name: Cum se va numi grupul tău?
-        description: "Pe scurt, spune-ne ceva despre grupul tau."
-        is_commercial: Unde intentionezi sa folosesti Loomio?
     placeholders:
       membership_request:
         introduction: "Scrie in cateva cuvinte cine esti si de ce vrei sa te alaturi %{group_name}."
       motion:
         name: Care este propunerea ta pentru pasii urmatori?
         description: Adauga destule informatii pentru ca toti din grupul tau sa poata lua o decizie informata cand aproba sau dezaproba.
-      group_request:
-        description: Ne-ar place sa auzim ceva despre grupul tau si motivul pentru care folosesti Loomio.
   helpers:
     submit:
       discussion:
@@ -899,10 +884,6 @@ ro:
       specify_outcome: "Propunerea ta este inchisa. Specifica o urmare din care sa se afle care sunt rezultatele:"
       outcome_created: "%{who} formuleaza o urmare a propunerii:"
       you_agreed: "Tu %{past_tense_position}"
-    verification:
-      header: "Aproape ai terminat!"
-      intro: "Te rugam apasa pe acest link de verificare pentru a finaliza cererea:"
-      ignore: Daca nu ai cerut sa intri in Loomio poti sa ignori acest email.
   meta_tags:
     default_title: "Loomio | Elaborator de Decizii Colaborative"
     default_description: Loomio este un instrument online usor de folosit la luarea deciziilor. El permite grupurilor dispersate să ajunga rapid la decizii care sa duca la actiuni constructive.
@@ -965,7 +946,6 @@ ro:
   start_a_group: Creaza un grup
   starting: Incep
   subject: Subiect
-  terms_of_service_html: "Apasand %{button_text}, esti de acord cu <a href='%{link_path}' target='_blank'>Termenii si Conditiile</a> Loomio."
   thanks: "Multumim!"
   unlike: Nu apreciez
   time_until_close: "%{quantity_of_time} pana la inchidere"
@@ -981,6 +961,7 @@ ro:
     settings: Setari
     dashboard: Tablou de bord
     unread: Necitit
+    find_out_more: Afla mai multe
     filter: "Filtru:"
     following: Urmaresti
     not_following: Nu urmaresti

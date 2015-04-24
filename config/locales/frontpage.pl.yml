@@ -28,8 +28,6 @@ pl:
       step3:
         header: 3. Wspólnie zdecydujcie
         desc: "Wspólne stwórzcie propozycję tak, by odpowiadała każdemu. Każda decyzja ma jasno określony termin jej podjęcia, więc zawsze otrzymacie jasny wynik. "
-    crowdfunding:
-      header: "Korzystamy z crowdfundingu, więc możemy udostępnić tę platformę całemu światu po tym jak skończymy ją budować."
     quote:
       header:
         rushkoff_html: "“Loomio <strong>uwalnia potencjał internetu</strong> pozwalający ludziom osiągać konsensus zamiast mnożyć poróżniające nas kłótnie.\" <div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autor <em>Present Shock</em></div>"

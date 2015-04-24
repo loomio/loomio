@@ -1,7 +1,6 @@
 de:
   new_help:
-    how_to:
-      title: Wie kann ich loslegen?
+    how_loomio_works:
       start_group_link: Gründen Sie eine Gruppe
       start_group_description: um mit anderen Menschen auf Loomio zusammenzuarbeiten
       invite_people_link: Leute einladen
@@ -13,7 +12,6 @@ de:
       decide_together_link: "Gemeinsam entscheiden:"
       decide_together_description: "jeder kann zustimmen, sich enthalten, nicht zustimmen oder Veto einlegen - so kannst Du sehen wie jeder zu dem Vorschlag steht."
     contents:
-      title: Brauchst Du mehr Informationen?
       getting_started:
         title_html: Loslegen
         starting_new_group_html: Wenn Du eine neue Loomio Gruppe starten willst
@@ -90,8 +88,6 @@ de:
         title_html: Die Loomio Gemeinschaft
       loomio_development:
         title_html: Mit der Loomio-Entwicklung auf dem Laufenden bleiben
-      faq:
-        title_html: FAQ
     getting_started:
       title: Loslegen
       intro: "Es gibt mehrere Wege um mit Loomio zu starten.\nEinige Erläuterungen zu den einzelnen Zugängen:\n"
@@ -244,5 +240,3 @@ de:
           title_html: Die Loomio Gemeinschaft
     loomio_community:
       title: Die Loomio Gemeinschaft
-    faq:
-      title: FAQ

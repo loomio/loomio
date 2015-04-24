@@ -4,13 +4,6 @@ gl:
     submit: Actualizar configuración
   explore:
     header: Explora os grupos públicos
-  try_it:
-    header: Proba Loomio
-    start_a_group: Crea un grupo para a toma de decisións na túa comunidade.
-    join_the_community: Únete ao grupo da comunidade Loomio
-    loomio_community_info: Aquí é onde debatemos e tomamos decisións sobre Loomio.
-    explore_groups: Explora outros grupos en Loomio
-    explore_groups_info: "Revisa todos estes grupos interesantes en Loomio e únete a eles!"
   activerecord:
     errors:
       messages:
@@ -258,6 +251,12 @@ gl:
       memberships: Xa non serás listado como membro en calquera dos grupos aos que pertences na actualidade.
       group_contributions: "Os comentarios, propostas e debates que fagas nos grupos permanecerán, pero borraremos o teu nome deles."
       emails: Deixaremos de mandarche correos relacionados con Loomio.
+  start_group_form:
+    header: Comeza un novo grupo
+    name: O teu nome
+    group_name: Nome do grupo
+    success:
+      header: "Case estás! Comproba o teu correo electrónico."
   group_form:
     name: Nome do grupo
     description: Descripción
@@ -492,8 +491,7 @@ gl:
     proposal: Trucos para escribir unha proposta clara
     vote: Podes cambiar a proposta en calquera momento
   pricing_page:
-    organisations: Organizacións
-    informal_groups: Grupos informais
+    header: Custo
   contribution:
     submit: Cooperar
     thought_about_contributing: A túa oportunidade de cooperar
@@ -626,12 +624,6 @@ gl:
         password: Contrasinal
         password_confirmation: Confirmar Contrasinal
         language_preference: Lingua
-      group_request:
-        admin_name: Cal é o teu nome?
-        admin_email: Cal é a túa dirección de correo electrónico?
-        name: Cal é o nome do teu grupo?
-        description: "Se tes un intre, fálanos do teu grupo"
-        is_commercial: Onde pensas utilizar o Loomio?
   helpers:
     submit:
       discussion:
@@ -660,8 +652,6 @@ gl:
       proposal_closed: "Propostas pechadas:"
       outcome_created: "%{who} propuxo dar por feita a proposta:"
       you_agreed: "Ti %{past_tense_position}"
-    verification:
-      header: "Case está!"
   about_loomio: Sobre Loomio
   ago: "van %{quantity_of_time}"
   approve: Dar o visto bo
@@ -721,7 +711,6 @@ gl:
   start_a_group: Comezar un grupo
   starting: Comezando
   subject: Tema
-  terms_of_service_html: "Pinchando %{button_text}, estás de acordo coas <a href='%{link_path}' target='_blank'>Condicións do Servizo de Loomio</a>"
   thanks: "Grazas!"
   unlike: Desgustar
   time_until_close: "%{quantity_of_time} ata o peche"
@@ -737,6 +726,7 @@ gl:
     settings: Configuración
     dashboard: Panel de control
     unread: Sin ler
+    find_out_more: Atopar máis
     filter: "Filtro:"
     following: Seguindo
     not_following: Non seguindo

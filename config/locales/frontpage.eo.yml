@@ -28,8 +28,6 @@ eo:
       step3:
         header: 3. Decidi kune
         desc: "Disvolvu la proponon kune por ke ĝi funkciu por ĉiuj. Ĉiu decido havas klaran limdaton, do vi ĉiam havas klaran rezulton."
-    crowdfunding:
-      header: Ni kolektas monon por ke ni povu fini la konstruadon de ĉi tiu nova platformo kaj fordoni ĝin al la mondo.
     quote:
       header:
         rushkoff_html: "\"Loomio <strong>liberigas la povon de la interreto</strong> por kunsentigi homojn anstataŭ polusigi debaton.\"<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, aŭtoro de <em>Present Shock</em></div>"

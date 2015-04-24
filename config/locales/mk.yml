@@ -1,11 +1,6 @@
 mk:
   email_settings:
     submit: Ажурирај ги подесувањата
-  try_it:
-    header: Пробај го Loomio
-    start_a_group: Започни група за да донесуваш одлуки во својата заедница.
-    loomio_community_info: Овде дискутираме и донесуваме одлуки за Loomio.
-    explore_groups: Истражи ги другите групи на Loomio
   activerecord:
     errors:
       messages:
@@ -168,6 +163,12 @@ mk:
     header: Приклучи се во групата за да учествуваш
   user_profile:
     change_password: Измени ја лозинката
+  start_group_form:
+    header: Започни нова група
+    name: Твоето име
+    group_name: Име на групата
+    success:
+      header: "Речиси си готов/а! Провери ја твојата електронска пошта."
   group_form:
     name: Име на групата
     description: Опис
@@ -348,8 +349,7 @@ mk:
     video_tutorial: Видео туторијал
     video_tutorial_description: Провери го видеото за брза демонстрација како се користи Loomio.
   pricing_page:
-    organisations: Организации
-    informal_groups: Неформални групи
+    header: Ценовник
   resend_confirmation: Испрати повторно инструкции за потврда
   new_password: Нова лозинка
   confirm_new_password: Потврди ја новата лозинка
@@ -398,7 +398,6 @@ mk:
       submit: Испрати порака
     messages:
       email_html: "Пополни ја формава, или испрати email до <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Исто така можете да ни се приклучите на <br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, и <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: Започни дискусија
@@ -456,16 +455,9 @@ mk:
         password: Лозинка
         password_confirmation: Потврди ја лозинката
         language_preference: Јазик
-      group_request:
-        admin_name: Како се викаш?
-        admin_email: Која е твојата електронска пошта?
-        name: Кое е името на твојата група?
-        description: "Ако имаш минута, кажи ни за твојата група"
     placeholders:
       membership_request:
         introduction: "Напиши неколку зборови за тебе и зошто сакаш да се приклучиш во %{group_name}."
-      group_request:
-        description: Би сакале да слушнеме за твојата група и зошто сакаш да го користиш Loomio.
   helpers:
     submit:
       discussion:
@@ -523,9 +515,6 @@ mk:
       closes_at: Се затвора во
       closes_in: Се затвора во
       summary: Резиме
-    verification:
-      header: "Речиси си готов/а!"
-      ignore: Ако не побаравте да се придружите на Loomio ве молиме игнорирајте ја оваа порака.
   about_loomio: За Loomio
   ago: "пред %{quantity_of_time}"
   approve: Одобри
@@ -590,6 +579,7 @@ mk:
   persona: Личност
   common:
     profile: Профил
+    find_out_more: Дознај повеќе
     back_to_discussion: Врати се на дискусијата
     edited: Изменето
     groups: Групи

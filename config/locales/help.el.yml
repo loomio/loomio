@@ -1,7 +1,6 @@
 el:
   new_help:
-    how_to:
-      title: Πως ξεκινάω;
+    how_loomio_works:
       start_group_link: Ξεκινήστε μια ομάδα
       invite_people_link: Προσκαλέστε άτομα
       invite_people_description: στην ομάδα σας
@@ -12,7 +11,6 @@ el:
       decide_together_link: "Αποφασίστε από κοινού:"
       decide_together_description: "οποιοσδήποτε μπορεί να συμφωνήσει, να απέχει, να διαφωνήσει ή και να αποκλείσει - έτσι μπορείτε να δείτε πως αισθάνεται ο καθένας σχετικά με την πρόταση."
     contents:
-      title: Θέλετε περισσότερες πληροφορίες;
       getting_started:
         title_html: Ξεκινώντας
         starting_new_group_html: Όταν θελετε να ξεκινήσετε μια νέα ομάδα στο Loomio
@@ -88,8 +86,6 @@ el:
         title_html: Η κοινότητα του Loomio
       loomio_development:
         title_html: Συμβαδίζοντας με την ανάπτυξη του Loomio
-      faq:
-        title_html: Συχνές ερωτήσεις
     getting_started:
       title: Ξεκινώντας
       starting_new_group:
@@ -229,5 +225,3 @@ el:
           title_html: Η κοινότητα του Loomio
     loomio_community:
       title: Η κοινότητα του Loomio
-    faq:
-      title: Συχνές ερωτήσεις

@@ -4,13 +4,6 @@ an:
     submit: Actualizar preferencias
   explore:
     header: Explorar grupos publicos
-  try_it:
-    header: Preba Loomio
-    start_a_group: Enciete un grupo ta prener decisions con a suya propia comunidat.
-    join_the_community: "S'una a o grupo d'a comunidat de Loomio"
-    loomio_community_info: Aquí ye an discutimos y prenemos decisions sobre Loomio.
-    explore_groups: Explorar os grupos de Loomio
-    explore_groups_info: Fe-le una gollada a totz os fantasticos grupos de Loomio y une-te
   activerecord:
     errors:
       messages:
@@ -258,6 +251,12 @@ an:
       memberships: Vusté ya no será listau como miembro en os grupos a os quals perteneixe actualment.
       group_contributions: "Os comentarios, propuestas y debatz que ha realizau en os grupos remanirán, pero imos a sacar o suyo nombre d'istos."
       emails: Deixaremos de mandar-te corretz-os relacionaus con Loomio.
+  start_group_form:
+    header: Empecipiar un nuevo grupo
+    name: O tuyo nombre
+    group_name: "Nombre d'o grupo"
+    success:
+      header: "Ya quasi has rematau! Revisa o tuyo correu electronico. "
   group_form:
     name: "Nombre d'o grupo"
     description: Descripción
@@ -594,12 +593,7 @@ an:
     proposal: Consellos ta redactar una propuesta clara
     vote: Puetz cambiar a tuya posición en qualsiquier inte
   pricing_page:
-    intro: "Os grupos con presupuesto aportan una conduta por usar a ferramienta.\nOs grupos sin medios ta una conduta fan servir o modelo «Aporta o que puedas»: os suyos miembros son convidaus a realizar una contribución voluntaria. A tuya contribución fa que podamos mantener Loomio independient, libre de publicidat, y endrezau por a nuestra comunidat.\n"
-    organisations: "Organizacions "
-    organisations_examples: "eix. interpresas, achencias de gubierno, organizacions comunitarias"
-    informal_groups: Grupos informals
-    informal_groups_desc: "A os miembros d'o tuyo grupo se les pedirá que contribuigan con o que puedan"
-    informal_groups_examples: "p. eix. familias, movimientos socials, grupos colectivos"
+    header: Pres
   contribution:
     any_amount: u una contribución puntual de
     currency_desc: A suma ye en dolars americans
@@ -699,7 +693,6 @@ an:
       submit: Ninviar mensache
     messages:
       email_html: "Replena iste formulario u ninvia un correu electronico a <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Tamién puetz trobar-nos en<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: Empecipiar una discusión
@@ -775,20 +768,12 @@ an:
         password: Clau
         password_confirmation: Confirmar clau
         language_preference: Idioma
-      group_request:
-        admin_name: Quál ye o tuyo nombre?
-        admin_email: Quál ye o tuyo correu electronico?
-        name: "Quál ye o nombre d'o tuyo grupo?"
-        description: "Si tiens un momento, charra-nos d'o tuyo grupo"
-        is_commercial: Án tiens plans de fer servir Loomio?
     placeholders:
       membership_request:
         introduction: "Escribe qualques parolas sobre quí yes y por qué quiers adhibir-te a %{group_name}."
       motion:
         name: "Quál ye a tuya propuesta de plan d'acción?"
         description: Da información suficient ta que qualsiquier persona en o tuyo grupo pueda prener una decisión bien informada.
-      group_request:
-        description: "Nos encantaría de saber d'o tuyo grupo y por qué quieren usar Loomio."
   helpers:
     submit:
       discussion:
@@ -882,10 +867,6 @@ an:
       specify_outcome: " A tuya propuesta ha zarrau. Especifica un resultau ta que totz en sigan sabedors:"
       outcome_created: "%{who} ha anunciau o resultau d'a propuesta "
       you_agreed: "%{past_tense_position}"
-    verification:
-      header: "Ya quasi rematas!"
-      intro: "Por favor, fe clic en o vinclo de verificación ta finalizar a tuya demanda:"
-      ignore: "Si no has demandau estar parte de Loomio ignora iste correu electronico. "
   meta_tags:
     default_title: "Loomio | Presa de decisions colaborativa"
     default_description: Loomio ye una ferramienta online de buen usar ta la presa de decisions en grupo. Permite a grupos dispersos prener decisions rapidament y executar accions constructivas.
@@ -948,7 +929,6 @@ an:
   start_a_group: Empecipia un grupo
   starting: Empecipiando
   subject: Titol
-  terms_of_service_html: "Fendo clic en %{button_text}, acceptas <a href='%{link_path}' target='_blank'>os termens de servicio de Loomio</a>"
   thanks: "Mersi!"
   unlike: Ya no me fa goyo
   time_until_close: "%{quantity_of_time} ta zarrar"
@@ -964,6 +944,7 @@ an:
     settings: Achustes
     dashboard: Panel de control
     unread: No leyiu
+    find_out_more: Saber-ne mas...
     filter: "Filtrar:"
     following: Seguindo
     not_following: No seguindo

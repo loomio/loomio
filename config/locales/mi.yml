@@ -5,6 +5,8 @@ mi:
   sign_in: Takiuru
   user_profile:
     change_password: Hurihia tō kupuhipa
+  start_group_form:
+    group_name: Ingoa rōpū
   group_form:
     name: Ingoa rōpū
     description: Whakaahuatanga
