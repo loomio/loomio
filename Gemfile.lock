@@ -710,6 +710,7 @@ DEPENDENCIES
   private_pub!
   puma
   quiet_assets
+  rack-attack (~> 4.2.0)
   rack-canonical-host
   rack_session_access
   rails (~> 4.2.0)
