@@ -32,8 +32,6 @@ zh-TW:
       step3:
         header: 3. 共同決策
         desc: 一同發展提案，讓每個人都能適用。每個決策都有明確的期限，因此您總是有明確的成果。
-    crowdfunding:
-      header: 我們運用群眾募資來打造這個嶄新的平台並推廣給全世界。
     mobile:
       lead_html: "<strong>Loomio 能在任何的裝置上執行，</strong><br />隨時隨地作決策。"
     quote:
@@ -56,3 +54,5 @@ zh-TW:
       gift:
         header: 禮物經濟學
         desc: 使用者各自依自己的能力來付費支持 Loomio 。大家的贊助能維持平台的運作、免除廣告的干擾，讓沒有資金的團體也能來隨意運用。
+  about_page:
+    our_story_1_html: "<h2>我們的故事</h2> <p>Loomio 是一套用來作決策的線上工具，由一群技術專家、行動主義者以及社會企業家在紐西蘭所建立。</p> "

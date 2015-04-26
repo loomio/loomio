@@ -32,8 +32,6 @@ de:
       step3:
         header: 3. Gemeinsam entscheiden
         desc: "Gemeinsam wird eine Lösung erarbeitet, mit der jeder einverstanden ist. Jede Entscheidung hat eine klare Deadline, damit immer ein klares Ergebnis herauskommt."
-    crowdfunding:
-      header: "Wir finanzieren uns über Crowdfunding, um diese Plattform fertigzustellen und der Welt zur Verfügung zu stellen."
     mobile:
       lead_html: "<strong> Loomio funktioniert auf jedem Gerät, </strong> <br /> Entscheidungen überall und jederzeit."
     quote:

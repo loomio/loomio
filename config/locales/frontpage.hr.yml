@@ -32,8 +32,6 @@ hr:
       step3:
         header: 3. Zajedno odlučujte
         desc: "Zajedno razvijte prijedlog podoban svima. Svaka odluka ima jasan rok, kako bi uvijek imali jasan ishod."
-    crowdfunding:
-      header: Vršimo crowdfunding kampanju kako bi završili ovu novu platformu i dali je svijetu.
     mobile:
       lead_html: "<strong>Loomio radi na svim uređajima,</strong><br /> donosite odluke bilo kada i bilo gdje."
     quote:

@@ -4,13 +4,6 @@ ar:
     submit: حدّث الإعدادات
   explore:
     header: إستكشف مجموعات عامة
-  try_it:
-    header: جرّب Loomio
-    start_a_group: كون مجموعة لاتخاذ القرارات في تجمعك.
-    join_the_community: إنضمّ إلى مجموعة Loomio تجمع
-    loomio_community_info: هذا هو المكان الذي نناقش ونتخذ القرارات فيه بشأن Loomio.
-    explore_groups: إستكشف مجموعات أخرى على Loomio
-    explore_groups_info: "إطلع على المجموعات الرائعة في Loomio وانضم لها!"
   activerecord:
     errors:
       messages:
@@ -177,6 +170,8 @@ ar:
     reactivation_html: "سيتعين عليك <a href='%{link}'>الإتصال بنا</a> لإعادة تفعيل حسابك."
     deactivation:
       title: جار إيقاف حسابك
+  start_group_form:
+    group_name: اسم المجموعة
   group_form:
     name: اسم المجموعة
     description: الوصف

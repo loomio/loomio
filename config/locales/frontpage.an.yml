@@ -28,8 +28,6 @@ an:
       step3:
         header: 3. Decidir chuntos
         desc: "Desembolica a propuesta colectivament ta que funcione ta totz. Cada decisión tien una calendata final, pa poder obtener siempre un resultau claro."
-    crowdfunding:
-      header: Somos en un proceso de financiamiento colectivo ta poder construir ista nueva plataforma y poder ofrir-la a o mundo.
     quote:
       header:
         rushkoff_html: "“Loomio <strong>fa servir o potencial d'internet</strong> ta trayer a las personas enta un consenso en cuenta de enta un debat polarizau.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, authr de <em>Present Shock</em></div>"

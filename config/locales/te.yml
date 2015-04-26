@@ -117,6 +117,9 @@ te:
     header: మీ ముంగిలి పుటకు స్వాగతం
   user_profile:
     change_password: మీ సంకేతపదాన్ని మార్చండి
+  start_group_form:
+    name: మీ పేరు
+    group_name: సమూహం పేరు
   group_form:
     name: సమూహం పేరు
     description: వివరణ
@@ -215,7 +218,7 @@ te:
     video_id: "52025402"
     video_tutorial: దృశ్యక ఉపశిక్షణ
   pricing_page:
-    organisations: సంస్థలు
+    header: ధర
   contribution:
     submit: తోడ్పడండి
   new_password: కొత్త సంకేతపదం
@@ -288,9 +291,6 @@ te:
         password: సంకేతపదం
         password_confirmation: సంకేతపదాన్ని నిర్ధారించండి
         language_preference: భాష
-      group_request:
-        admin_name: మీ పేరు ఏమిటి?
-        admin_email: మీ ఈమెయిలు చిరునామా ఏమిటి?
   helpers:
     submit:
       discussion:
@@ -369,6 +369,7 @@ te:
   google: గూగుల్
   persona: పెర్సోనా
   common:
+    find_out_more: మరింత తెలుసుకోండి
     groups: సమూహాలు
     privacy: గోప్యత
     public: బహిరంగం

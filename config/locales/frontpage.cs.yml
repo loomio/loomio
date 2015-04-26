@@ -10,6 +10,7 @@ cs:
       try_it: Vyzkoušejte to
       log_in: PŘIHLÁSIT SE
       video: "Více o tom, jak Loomio funguje"
+      try_loomio: Vyzkoušejte Loomio
       try_loomio_beta: Vyzkoušejte Loomio beta
       more: Více
       top: Začátek
@@ -17,6 +18,8 @@ cs:
       terms: Podmínky
       privacy: Soukromí
       services: Služby
+    hero:
+      header_html: "Loomio je nejjednodušší způsob, jak<br /><strong>, rozhodovat společně</strong>."
     product:
       header_html: "Když vyslechneme <strong>všechny hlasy</strong>, činíme <strong>lepší rozhodnutí</strong>."
       step1:
@@ -28,8 +31,8 @@ cs:
       step3:
         header: 3. Rozhodněte se společně
         desc: "Vypracujte návrh společně, aby vyhovoval všem. Každé rozhodnutí má jasnou lhůtu, takže vždy získáte jasné rozhodnutí."
-    crowdfunding:
-      header: "Crowdfundujeme, abychom mohli dobudovat tuto novou platformu a poskytnout ji světu."
+    mobile:
+      lead_html: "<strong>Loomio pracuje na jakémkoliv zařízení,</strong><br /> vytvořte rozhodnutí kdekoliv a kdykoliv."
     quote:
       header:
         rushkoff_html: "“Loomio <strong> využívá naplno potenciál internetu</strong>, místo polarizování debaty se snaží spíše přivést lidi ke konsenzu.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, author of <em>Present Shock</em></div>"

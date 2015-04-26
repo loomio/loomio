@@ -320,9 +320,6 @@ cmn:
     proposal_closing_soon:
       closes_in: 将要关闭
       summary: 总结
-    verification:
-      header: 你快要完成了
-      ignore: 如果你不想请求加入Loomio请忽略这封邮件
   approve: 批准
   back: 返回
   cancel: 取消
@@ -368,6 +365,7 @@ cmn:
   unlike: 不喜欢
   update: 更新
   common:
+    find_out_more: 找出更多
     groups: 组群
     email: 邮件
     start_group: 开始组团！

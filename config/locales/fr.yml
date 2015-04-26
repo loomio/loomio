@@ -17,13 +17,6 @@ fr:
     no_change_description: Laisse le niveau de notification de mes groupes inchangé.
   explore:
     header: Explorer les groupes publics
-  try_it:
-    header: Essayez Loomio
-    start_a_group: Commencez un groupe pour prendre des décisions dans votre communauté.
-    join_the_community: Rejoignez le groupe de la Communauté Loomio
-    loomio_community_info: "C'est ici que nous discutons et prenons des décisions au sujet de Loomio"
-    explore_groups: Explorez les autres groupes sur Loomio
-    explore_groups_info: "Cherchez parmi les formidables groupes sur Loomio et rejoignez-les!"
   activerecord:
     errors:
       messages:
@@ -136,6 +129,7 @@ fr:
     added_to_group: "Vous avez été ajouté à %{which_group}."
     close_date_changed: La date de clôture a bien été changée.
     discussion_created: La discussion a bien été créée.
+    discussion_updated: La discussion a été mise à jour avec succès.
     discussion_deleted: La discussion a bien été supprimée.
     discussion_moved: "La discussion a été déplacée vers %{group_name} avec succès"
     emails_sending: "Envois d'e-mails."
@@ -279,6 +273,23 @@ fr:
       memberships: "Vous ne serez plus répertorié comme membre de l'un des groupes auxquels vous appartenez actuellement."
       group_contributions: "Les commentaires, les propositions et les discussions que vous avez faites dans les groupes resteront, mais nous allons retirer votre nom de ceux-ci."
       emails: Nous arrêterons de vous envoyer des courriels relatifs à Loomio.
+  start_group_form:
+    header: Créer un nouveau groupe
+    form_error: Quelques informations sont manquantes ou incorrectes.
+    name: Votre nom
+    name_error: Le nom est requis
+    email: Votre courriel
+    email_error: "N'est pas une adresse de courriel valide"
+    group_name: Nom du groupe
+    group_name_error: Le nom du groupe est requis
+    payment: Paiement
+    payment_error: "S'il vous plait sélectionnez une option :"
+    terms_html: "En créant un groupe, vous acceptez les  <a href='%{link}' target='_blank'>termes d'utilisation</a> de Loomio"
+    success:
+      header: "Vous avez presque fini ! Consultez votre e-mail."
+      email_delivered: "Nous avons envoyé un courriel à %{email}. S'il vous plaît suivez le lien à l'intérieur de celui-ci afin de configurer votre nouveau groupe."
+      email_not_arrived: "Le courriel n'est pas arrivé ?"
+      please_hold: "S'il vous plaît prévoir jusqu'à cinq 5 minutes pour la livraison du courriel  et veuillez vérifier votre dossier spam."
   group_form:
     name: Nom du groupe
     description: Description
@@ -434,6 +445,7 @@ fr:
       not_following_details: Vous serez informé sur les fils auxquels vous participez.
   networks:
     threads_header: toutes les discussions publiques dans ce réseau
+    groups_header: "tous les %{count} groupes dans ce réseau"
     members_count: "%{count} membres"
     membership_requests_header: "Demandes d'adhésion pour %{network}"
     join_header: Ajouter votre groupe au réseau
@@ -650,12 +662,9 @@ fr:
     proposal: Conseils pour écrire une proposition claire
     vote: Vous pouvez changer votre position à tout moment
   pricing_page:
-    intro: "Les groupes qui ont des ressources paient un abonnement pour pour utiliser l’outil.\nLes groupes qui n'en n'ont pas les moyens utilisent le modèle \"Donne ce que tu peux\": leurs membres sont invités à faire des dons. Vos contributions permettent à Loomio de conserver son indépendance, d'être gratuit, sans pubs et géré par notre communauté. \n"
-    organisations: Organismes
-    organisations_examples: "par exemple: entreprises, collectivités, associations locales"
-    informal_groups: Groupes informels
-    informal_groups_desc: Nous demanderons aux membres de votre groupe de faire des dons.
-    informal_groups_examples: "par exemple: familles, mouvements sociaux, collectifs"
+    header: Tarification
+    loomio_for_organisations: Loomio pour les organisations
+    loomio_for_communities: Loomio pour les communautés
   contribution:
     any_amount: "ou un don ponctuel de "
     currency_desc: Les montants sont en Dollars US
@@ -756,7 +765,6 @@ fr:
       submit: Envoyer le message
     messages:
       email_html: "Remplissez ce formulaire, ou envoyez un email à  <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Vous pouvez aussi nous rejoindre sur <br/><a href='%{facebook}' target='_blank'>facebook</a>,  <a href='%{google}' target='_blank'>google+</a> et <a href='%{twitter}' target='_blank'>twitter</a> !"
   discussion_form:
     new:
       header: Démarrer une discussion
@@ -832,20 +840,12 @@ fr:
         password: Mot de passe
         password_confirmation: Confirmer votre mot de passe
         language_preference: Langue
-      group_request:
-        admin_name: Quel est votre nom ?
-        admin_email: Quelle est votre adresse e-mail ?
-        name: Quel est le nom de votre groupe ?
-        description: "Si vous avez un moment, dites-en nous plus à propos de votre groupe"
-        is_commercial: "Où prévoyez-vous d'utiliser Loomio ?"
     placeholders:
       membership_request:
         introduction: "Ecrire quelques mots sur vous et pourquoi vous voulez intégrer %{group_name}."
       motion:
         name: "Quel est votre plan d'action ?"
         description: "Donnez suffisamment d'informations pour que tout le monde sache exactement ce que signifie d'être d'accord ou de ne pas être d'accord."
-      group_request:
-        description: Nous aimerions en savoir plus à propos de votre groupe et pourquoi vous voulez utiliser Loomio.
   helpers:
     submit:
       discussion:
@@ -950,10 +950,6 @@ fr:
       specify_outcome: "Votre proposition a été fermée. Spécifiez un résultat afin que tout le monde puisse en être informé :"
       outcome_created: "%{who} propose le résultat :"
       you_agreed: "Vous %{past_tense_position}"
-    verification:
-      header: "Vous avez presque fini !"
-      intro: "Merci de cliquer sur le lien de vérification pour finaliser votre demande :"
-      ignore: "Si vous n'avez pas demandé à rejoindre Loomio, merci d'ignorer cet e-mail."
   meta_tags:
     default_title: "Loomio | Prise de décision collaborative "
     default_description: "Loomio est un outil de prise de décision collaboratif, en ligne et simple d'utilisation. Il permet à des groupes dispersés de prendre des décisions rapidement et passer à l'action."
@@ -1016,7 +1012,7 @@ fr:
   start_a_group: Créer un groupe
   starting: Démarrez
   subject: Sujet
-  terms_of_service_html: "En cliquant sur %{button_text}, vous acceptez les <a href='%{link_path}' target='_blank'>conditions d'utilisation</a> de Loomio"
+  tos_html: "En vous connectant, vous acceptez les  <a href='%{link_path}' target='_blank'>Termes d'utilisation de</a> Loomio"
   thanks: "Merci !"
   unlike: "Je n'aime plus"
   time_until_close: "%{quantity_of_time} avant fermeture"
@@ -1025,18 +1021,31 @@ fr:
   yahoo: Yahoo
   google: Google
   persona: Persona
+  log_in_with_third_party: "Ou connectez-vous avec un compte tiers :"
+  log_in_with_google: Se connecter avec Google
+  log_in_with_facebook: Se connecter avec facebook
+  log_in_with_persona: Se connecter avec Persona
+  log_in_with_twitter: Se connecter avec Twitter
+  sign_up_with_third_party: "Ou enregistrez-vous avec un compte tiers :"
+  sign_up_with_google: "S'enregistrer avec Google"
+  sign_up_with_facebook: "S'enregistrer avec avec Facebook"
+  sign_up_with_persona: "S'enregistrer avec avec Persona"
+  sign_up_with_twitter: "S'enregistrer avec avec Twitter"
   common:
     profile: Profil
+    welcome_back: "Bienvenue à nouveau !"
     email_settings: Paramètres de courrier électronique
     markdown_help_tooltip: Apprenez comment formatter votre texte avec Markdown
     settings: Paramètres
     dashboard: Bureau
     unread: Non lu
+    find_out_more: En savoir plus
     filter: "Filtre :"
     following: Suivre
     not_following: ne pas suivre
     back_to_discussion: Retour à la discussion
     edited: Modifié
+    get_started: "Démarrons "
     groups: Groupes
     select_error: "S'il vous plait sélectionnez une option"
     today: "Aujourd'hui"

@@ -28,8 +28,6 @@ tr:
       step3:
         header: 3. Birlikte karar verin
         desc: "Öneriyi birlikte geliştirirsiniz, böylece herkes için çalışır. Her kararın bir teslim süresi vardır, böylece her zaman net bir sonuç alırsınız."
-    crowdfunding:
-      header: Yeni platformumuzu kurarak dünyaya hediye edebilmek icin bağış topluyoruz.
     quote:
       header:
         rushkoff_html: "\"Loomio insanları kutuplaşmış tartışmalardan ziyade fikir birliğine doğru getirmek için <strong>internetin potansiyelini ortaya çıkarıyor.</strong>\"<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, yazar, <em>Present Shock</em></div>"

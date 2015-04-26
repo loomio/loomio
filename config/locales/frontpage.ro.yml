@@ -28,8 +28,6 @@ ro:
       step3:
         header: 3. Decideti impreuna
         desc: "Dezvoltati propunerile impreuna astfel incat sa functioneze pentru toata lumea. Fiecare propunere are un termen clar astfel veti obtine un rezutat clar. "
-    crowdfunding:
-      header: Adunam fonduri astfel incat sa putem construi aceasta noua platforma si sa o punem la dispozitia tuturor.
     quote:
       header:
         rushkoff_html: "“Loomio <strong>dezlantuie potentialul internetului</strong> prin aducerea oamenilor spre consens, mai degraba decat spre dezbatere polarizata.” &quot; <div class=\"attributation\"> - <a href=\"http://rushkoff.com\">Douglas Rushkoff</a> , autor al cartii <em>Socul Prezent</em> </div>"

@@ -7,13 +7,6 @@ sl:
     submit: Posodobi nastavitve
   explore:
     header: Razišči javne skupine
-  try_it:
-    header: Preizkusi Loomio
-    start_a_group: Ustvari skupino in začni sprejemati odločitve v svoji skupnosti.
-    join_the_community: Pridruži se skupini Loomio Skupnost.
-    loomio_community_info: Tu razpravljamo in se odločamo glede Loomia.
-    explore_groups: Razišči druge skupine na Loomiu.
-    explore_groups_info: "Razišči vse mega skupine in se jim pridruži!"
   activerecord:
     errors:
       messages:
@@ -296,6 +289,12 @@ sl:
       memberships: "Ne boš več naveden/a kot član/ica nobene od skupin, katerim trenutno pripadaš."
       group_contributions: "Komentarji, predlogi in razprave, ki si jih ustvaril/a v skupinah bodo ostale, bo pa iz njih odstranjeno tvoje ime."
       emails: "Prenehal/a boš prejemati emaile, povezane z Loomiom."
+  start_group_form:
+    header: Ustvari novo skupino
+    name: Tvoje ime
+    group_name: Ime skupine
+    success:
+      header: "Skoraj si opravil/a! Preveri svoj email."
   group_form:
     name: Ime skupine
     description: Opis
@@ -649,12 +648,7 @@ sl:
     proposal: Nasveti za pisanje jasnih predlogov
     vote: Svojo odločitev lahko spremeniš kadarkoli
   pricing_page:
-    intro: "Skupine s finančnimi sredstvi plačujejo naročnino za uporabo orodja.\nSkupine brez finančnih sredstev za plačilo naročnine uporabljajo model\n\"Plačaj, kolikor lahko\": njihovi člani so vabljeni, da prispevajo prostovoljne donacije. Vaš prispevek nam pomaga, da ohranimo Loomio neodvisen, brez oglasov in v lasti celotne skupnosti.\n"
-    organisations: Organizacije
-    organisations_examples: "npr. podjetja, vladne agencije, skupnostne organizacije"
-    informal_groups: Neformalne skupine
-    informal_groups_desc: "Člane vaše skupine bomo prosili za plačilo, v okviru njihovih zmožnosti"
-    informal_groups_examples: "npr. družine, družbena gibanja, skupnosti"
+    header: Cene
   contribution:
     any_amount: "ali pa za enkraten prispevek po želji, v višini"
     currency_desc: Zneski so v ameriških dolarjih
@@ -755,7 +749,6 @@ sl:
       submit: Pošlji sporočilo
     messages:
       email_html: "Izpolni obrazec ali pošlji email na <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Pridružiš se nam lahko tudi na omrežjih<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, in <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: Začni razpravo
@@ -831,20 +824,12 @@ sl:
         password: Geslo
         password_confirmation: Potrdi geslo
         language_preference: Jezik
-      group_request:
-        admin_name: Kako ti je ime?
-        admin_email: Kakšen je tvoj email naslov?
-        name: Kako se imenuje tvoja skupina?
-        description: "Če si lahko vzameš trenutek časa, nam povej več o svoji skupini"
-        is_commercial: Kjer nameravaš uporabljati Loomio?
     placeholders:
       membership_request:
         introduction: "V nekaj besedah opiši kdo si in zakaj se želiš pridružiti %{group_name}."
       motion:
         name: Kakšen postopek predlagaš?
         description: "Navedi dovolj informacij, da bodo vsi točno vedeli, kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo."
-      group_request:
-        description: Z veseljem bi izvedeli več o vaši skupini in razlogih za uporabo Loomia.
   helpers:
     submit:
       discussion:
@@ -945,10 +930,6 @@ sl:
       specify_outcome: "Tvoj predlog je zaključen. Opiši izid, da lahko vse obvestiš o rezultatu."
       outcome_created: "%{who} je določil/a izid predloga:"
       you_agreed: "Ti si %{past_tense_position}"
-    verification:
-      header: "Skoraj si opravil/a!"
-      intro: "Prosim klikni na povezavo za verifikacijo, da zaključiš svoj predlog:"
-      ignore: "Če nisi zaprosil/a za pridružitev Loomiu, prezri ta email."
   meta_tags:
     default_title: "Loomio | Skupnostno odločanje"
     default_description: "Loomio je enostavno spletno orodje za skupnostno odločanje. Skupinam omogoča, da hitro pridejo do skupne odločitve in jo začnejo uresničevati."
@@ -1011,7 +992,6 @@ sl:
   start_a_group: Ustvari skupino
   starting: Ustvarjam
   subject: Naslov
-  terms_of_service_html: "S klikom na %{button_text} soglašaš s <a href='%{link_path}' target='_blank'>Splošnimi pogoji</a> Loomia"
   thanks: "Hvala!"
   unlike: Ne všečkaj
   time_until_close: "%{quantity_of_time} do zaključitve"
@@ -1027,6 +1007,7 @@ sl:
     settings: Nastavitve
     dashboard: Nadzorna plošča
     unread: Neprebrano
+    find_out_more: Preberi več
     filter: "Razvrsti:"
     following: Spremljano
     not_following: Ne spremljam
