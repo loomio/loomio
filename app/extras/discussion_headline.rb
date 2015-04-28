@@ -1,5 +1,4 @@
 class DiscussionHeadline
-  include Routing
   attr_accessor :discussion
   attr_accessor :time_frame
 
@@ -11,7 +10,7 @@ class DiscussionHeadline
   def has_motion?
     new_motion? or ongoing_motion? or motion_closed?
   end
-  
+
   def motion
     if new_motion? or ongoing_motion?
       discussion.current_motion

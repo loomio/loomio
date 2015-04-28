@@ -17,7 +17,7 @@ class NotificationItems::NewDiscussion < NotificationItem
     @notification.eventable.title
   end
 
-  def link
-    Routing.discussion_path(@notification.eventable)
+  def linkable
+    [@notification.eventable]
   end
 end

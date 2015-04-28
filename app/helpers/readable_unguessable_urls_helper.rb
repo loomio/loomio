@@ -3,6 +3,7 @@ module ReadableUnguessableUrlsHelper
                               'user' => :name,
                             'group'  => :full_name,
                             'motion' => :name }
+  MODELS_WITH_SLUGS.freeze
 
   MODELS_WITH_SLUGS.keys.each do |model|
     next if model == 'group'

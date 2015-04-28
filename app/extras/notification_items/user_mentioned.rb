@@ -9,8 +9,8 @@ class NotificationItems::UserMentioned < NotificationItem
     I18n.t('notifications.user_mentioned')
   end
 
-  def link
-    discussion_path = Routing.discussion_path(@notification.eventable.discussion)
-    discussion_path + "#comment-#{@notification.eventable.id}"
+  def linkable
+    [@notification.eventable.discussion,
+     {anchor: "comment-#{@notification.eventable.id}"}]
   end
 end
