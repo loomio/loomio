@@ -14,6 +14,7 @@ class Membership < ActiveRecord::Base
   scope :archived, lambda { where('archived_at IS NOT NULL') }
   scope :published, lambda { where(archived_at: nil) }
   scope :sorted_by_group_name, -> { joins(:group).order('groups.full_name') }
+  scope :chronologically, -> { order('created_at asc') }
 
   scope :for_group, lambda {|group| where(group_id: group)}
   scope :admin, -> { where(admin: true) }

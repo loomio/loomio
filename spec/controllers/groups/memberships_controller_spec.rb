@@ -26,7 +26,7 @@ describe Groups::MembershipsController do
         expect(flash[:notice]).to match(/#{@new_user.name} has been made a coordinator./)
         response.should redirect_to(group_memberships_path(@group))
         assigns(:membership).admin.should be true
-        @group.admins.should include(@new_user)
+        @group.admins.reload.should include(@new_user)
       end
 
       context "removes a member" do

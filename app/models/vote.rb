@@ -17,6 +17,7 @@ class Vote < ActiveRecord::Base
   scope :by_discussion, -> (discussion_id = nil) { joins(:motion).where("motions.discussion_id = ? OR ? IS NULL", discussion_id, discussion_id) }
   scope :since,         -> (time) { where('created_at > ?', time) }
   scope :most_recent,   -> { where(age: 0) }
+  scope :chronologically, -> { order('created_at asc') }
 
   delegate :name, to: :user, prefix: :user # deprecated
   delegate :name, to: :user, prefix: :author
@@ -27,6 +28,9 @@ class Vote < ActiveRecord::Base
   delegate :name, to: :motion, prefix: :motion
   delegate :name, :full_name, to: :group, prefix: :group
   delegate :locale, to: :user
+  delegate :discussion_id, to: :motion
+  delegate :title, to: :discussion, prefix: :discussion
+  delegate :id, to: :group, prefix: :group
 
   before_create :age_previous_votes, :associate_previous_vote
 
