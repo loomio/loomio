@@ -7,6 +7,7 @@ class GroupsController < GroupBaseController
 
   before_filter :ensure_group_is_setup, only: :show
   before_filter :assign_meta_data, only: :show
+  after_filter :clear_discussion_index_caches, only: :show
 
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.group_private_or_not_found') }

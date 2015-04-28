@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: f5b1602ed4a36f6de6da316fd8023a2c83924725
+  revision: 4baf474177fb6c4e2638d103dfb28c576b3084df
   specs:
     activeadmin (1.0.0.pre1)
       arbre (~> 1.0, >= 1.0.2)
@@ -391,7 +391,6 @@ GEM
       systemu (~> 2.6.2)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    memcachier (0.0.2)
     mime-types (2.5)
     mini_portile (0.6.2)
     minitest (5.6.1)
@@ -449,7 +448,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    pg (0.17.1)
+    pg (0.18.1)
     pg_search (0.7.9)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
@@ -576,7 +575,7 @@ GEM
     sequenced (2.0.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
-    sexp_processor (4.5.0)
+    sexp_processor (4.5.1)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
     simple_form (3.1.0)
@@ -594,7 +593,7 @@ GEM
       spring (>= 0.9.1)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    sprockets (3.0.2)
+    sprockets (3.0.3)
       rack (~> 1.0)
     sprockets-rails (2.2.4)
       actionpack (>= 3.0)
@@ -692,7 +691,6 @@ DEPENDENCIES
   kaminari
   launchy
   librato-rails
-  memcachier
   minitest
   modernizr-rails
   momentjs-rails
@@ -706,7 +704,7 @@ DEPENDENCIES
   omnicontacts (~> 0.3.4)
   paper_trail (~> 4.0.0.beta2)
   paperclip (~> 4.2.0)
-  pg (~> 0.17.1)
+  pg (~> 0.18.1)
   pg_search (~> 0.7.8)
   poltergeist
   private_pub!

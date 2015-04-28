@@ -17,4 +17,7 @@ class DiscussionReaderCache
     cache.fetch(discussion.id) { DiscussionReader.for(discussion: discussion, user: user) }
   end
 
+  def clear
+    cache.clear
+  end
 end

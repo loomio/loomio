@@ -21,7 +21,7 @@ class NotificationItems::NewMotion < NotificationItem
     @notification.eventable.group_full_name
   end
 
-  def link
-    Routing.discussion_path(@notification.eventable.discussion)
+  def linkable
+    @notification.eventable.discussion
   end
 end

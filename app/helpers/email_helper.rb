@@ -20,10 +20,7 @@ module EmailHelper
   end
 
   def markdown_email_parser
-    @renderer ||= EmailMarkdownRenderer.new(filter_html: true,
-                                            hard_wrap: true)
-
-    @markdown_email_parser ||= Redcarpet::Markdown.new(EmailMarkdownRenderer, autolink: true)
+    Redcarpet::Markdown.new(EmailMarkdownRenderer, autolink: true)
   end
 
   def mark_summary_as_read_url_for(user, format: nil)

@@ -1,5 +1,6 @@
 class DashboardController <  GroupBaseController
   include ApplicationHelper
+  after_filter :clear_discussion_index_caches, only: :show
 
   def show
     @discussions = Queries::VisibleDiscussions.new(groups: current_user.groups, user: current_user).not_muted

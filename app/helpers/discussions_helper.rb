@@ -1,7 +1,4 @@
 module DiscussionsHelper
-  include Twitter::Extractor
-  include Twitter::Autolink
-
   def filter_discussion_events(activity)
     last_item = nil
     ignored_event_kinds = %w[motion_closing_soon user_mentioned comment_liked]
@@ -50,10 +47,6 @@ module DiscussionsHelper
     when :new_comment then event.eventable
     #else                   DiscussionItem.new event
     end
-  end
-
-  def add_mention_links(comment)
-    auto_link_usernames_or_lists(comment, :username_url_base => "#", :username_include_symbol => true)
   end
 
   def css_for_markdown_link(target, setting)

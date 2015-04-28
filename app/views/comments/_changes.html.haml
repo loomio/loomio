@@ -1,7 +1,7 @@
 - @comment.versions.each do |version|
   - next unless comment = version.reify
   .version-header= comment.updated_at.strftime("%I:%M%p %d %B %Y")
-  ~ add_mention_links(render_rich_text(comment.body.to_s.force_encoding("UTF-8"), comment.uses_markdown?)).html_safe
+  ~ render_rich_text(comment.body, comment.uses_markdown?).html_safe
 
 .version-header= @comment.updated_at.strftime("%I:%M%p %d %B %Y")
-~ add_mention_links(render_rich_text(@comment.body.to_s.force_encoding("UTF-8"), @comment.uses_markdown?)).html_safe
+~ render_rich_text(@comment.body, @comment.uses_markdown?).html_safe

@@ -14,4 +14,8 @@ class VoteCache
   def get_for(motion)
     @votes_by_motion_id.fetch(motion.id) { Vote.new(motion: motion, user: user) }
   end
+
+  def clear
+    @votes_by_motion_id.clear
+  end
 end

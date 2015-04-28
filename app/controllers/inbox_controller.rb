@@ -1,4 +1,6 @@
 class InboxController < BaseController
+  after_filter :clear_discussion_index_caches, only: :index
+
   def index
     load_inbox
     build_discussion_index_caches
@@ -92,6 +94,12 @@ class InboxController < BaseController
     @motion_reader_cache = MotionReaderCache.new(current_user, @motion_readers)
 
     @last_vote_cache = VoteCache.new(current_user, @last_votes)
+  end
+
+  def clear_discussion_index_caches
+    @discussion_reader_cache.clear
+    @motion_reader_cache.clear
+    @last_vote_cache.clear
   end
 
   def redirect_back_or_head_ok
