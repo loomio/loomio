@@ -16,13 +16,14 @@
     "tc-angular-chartjs": "~1.0.9",
     "ment.io": "~0.9.15",
     "lokijs": "techfort/lokijs#v1.2.4",
-    "angular-animate": "1.3.0",
+    "angular-animate": "1.4.0-rc.0",
     "angular-inview": "~> 1.5.0",
     "angular-gravatar": "~0.2.4",
     "angular-truncate": "latest",
-    "angular-scroll": "~0.6.5"
+    "angular-scroll": "~0.6.5",
+    "moment": "latest"
   },
   "resolutions": {
-    "angular": "1.4"
+    "angular": "1.4.0-rc.0"
   }
 }
