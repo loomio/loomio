@@ -36,6 +36,7 @@ class Comment < ActiveRecord::Base
   delegate :full_name, to: :group, prefix: :group
   delegate :title, to: :discussion, prefix: :discussion
   delegate :locale, to: :user
+  delegate :id, to: :group, prefix: :group
 
   serialize :liker_ids_and_names, Hash
 

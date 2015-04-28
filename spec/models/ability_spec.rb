@@ -57,6 +57,12 @@ describe "User abilities" do
         let(:network) { Network.create(name: "Podemos", coordinators: [user]) }
         let(:request) { NetworkMembershipRequest.new(requestor: user, group: group, network: network) }
 
+        before do
+          network
+          request
+          request.group.reload
+        end
+
         it{should be_able_to(:create, request)}
       end
 

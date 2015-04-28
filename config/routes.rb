@@ -138,6 +138,7 @@ Loomio::Application.routes.draw do
   post 'start_group' => 'start_group#create'
   resources :groups, path: 'g', only: [:create, :edit, :update] do
     member do
+      get :export
       post :set_volume
       post :join
       post :add_members
