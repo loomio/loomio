@@ -16,6 +16,7 @@ class Invitation < ActiveRecord::Base
   validates_presence_of :invitable, :intent
   validates_inclusion_of :invitable_type, :in => ['Group', 'Discussion']
   validates_inclusion_of :intent, :in => ['start_group', 'join_group', 'join_discussion']
+  scope :chronologically, -> { order('id asc') }
   before_save :ensure_token_is_present
 
   scope :not_cancelled,  -> { where(cancelled_at: nil) }

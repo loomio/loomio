@@ -1,1 +1,27 @@
-hi: {}
+hi:
+  email_settings:
+    title: ईमेल सेटिंग
+    group_volume: समूह ध्वनि
+    group_volume_description: "ध्वनि नियंत्रण करता है कि कितने ईमेल आपको मिलेगा। सभी समूह के लिए ध्वनि पक्का करे:"
+    to_change_one_group: अपने  सिर्फ एक समूह के लिए ध्वनि बदलने के उस समूह के पृष्ठ पर जाएँ।
+    discussion_activity: "चर्चा में जब मैं भाग लेता हूं तब ध्वनि बदले "
+  activerecord:
+    errors:
+      messages:
+        blank: खाली नहीं हो सकता
+  devise:
+    invitations:
+      invitation_token_invalid: "यह निमंत्रण अब मान्य नहीं है!"
+      updated: खाता खुल गया
+      no_invitations_remaining: कोई निमंत्रण नहीं बचा हुआ
+    mailer:
+      invitation_instructions:
+        subject: किसीने आपको आमंत्रित किया है उनके Loomio समूह में शामिल होने के लिए
+    registrations:
+      sign_up: खाता बनाएँ
+  helpers:
+    submit:
+      user:
+        create: खाता बनाएँ
+  common:
+    email_settings: ईमेल सेटिंग

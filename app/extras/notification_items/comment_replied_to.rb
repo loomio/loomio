@@ -9,8 +9,7 @@ class NotificationItems::CommentRepliedTo < NotificationItem
     I18n.t('notifications.comment_replied_to')
   end
 
-  def link
-    discussion_path = Routing.discussion_path(@notification.eventable.discussion)
-    discussion_path + "#comment-#{@notification.eventable.id}"
+  def linkable
+    [@notification.eventable.discussion, {anchor: "comment-#{@notification.eventable.comment_id}"}]
   end
 end

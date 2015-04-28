@@ -32,8 +32,6 @@ sr:
       step3:
         header: 3. Odlučujte zajedno
         desc: "Razvijanje predloga zajednički tako da funkcioniše za svakog. Svaka odluka ima jasan rok, tako da je uvek kristalno jasan ishod."
-    crowdfunding:
-      header: Mi smo dobili sredstva od zajednice tako da možemo završiti razvoj ove nove platforme i dati je nazad zajednici.
     mobile:
       lead_html: "<strong>Lumio radi na svakom uređaju,</strong><br />odlučuj bilo gde, bilo kada."
     quote:

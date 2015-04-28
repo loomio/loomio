@@ -1,4 +1,6 @@
 class NotificationItems::NewVote < NotificationItem
+  # note this is not created any more.. 
+  # someone should sweep the db and delete the files
   def initialize(notification)
     @notification = notification
   end
@@ -16,8 +18,8 @@ class NotificationItems::NewVote < NotificationItem
     @notification.eventable.group_full_name
   end
 
-  def link
-    discussion_path = Routing.discussion_path(@notification.eventable.discussion)
-    discussion_path + "?proposal=#{@notification.eventable.motion.key}"
+  def linkable
+    [@notification.eventable.discussion,
+     {proposal:@notification.eventable.motion.key}]
   end
 end

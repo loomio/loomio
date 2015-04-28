@@ -2,13 +2,13 @@ es:
   frontpage:
     view_this_in_your_language: "Haz click aquí para usar Loomio en %{language}"
     title:
-      collaborative_decision_making: Toma de decisiones colectiva
+      collaborative_decision_making: Toma colectiva de decisiones
     link:
       blog: Blog
       contact: Contacto
       press: Prensa
       try_it: Pruébalo
-      log_in: Entrar
+      log_in: Identificarte
       video: Más sobre cómo funciona Loomio
       try_loomio: Prueba Loomio
       try_loomio_beta: Prueba Loomio beta
@@ -20,20 +20,18 @@ es:
       services: Servicios
     hero:
       header_html: "Loomio es la forma mas fácil para<br /> <strong>tomar decisiones juntos</strong>. "
-      lead_html: "Loomio empodera organizaciones y comunidades para transformar <strong>discusiones en acción</strong> donde sea que la gente se encuentre."
+      lead_html: "Loomio empodera organizaciones y comunidades para transformar <strong>discusiones en acción</strong> donde quiera que sus miembros se encuentren."
     product:
       header_html: "Cuando escuchamos <strong>todas las voces</strong>, tomamos <strong>mejores decisiones. </strong>"
       step1:
         header: 1. Discutir a fondo las cosas
-        desc: "Empieza una discusión en cualquier tema, e invita a las personas que quieras. Comparte perspectivas diversas y desarrolla las ideas en conjunto."
+        desc: "Empieza una discusión sobre cualquier tema, e invita a las personas adecuadas. Comparte diferentes perspectivas y desarrolla ideas conjuntamente."
       step2:
-        header: 2. Construir un acuerdo
-        desc: "Cualquier persona puede proponer una discusión. Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear –de esa manera podrás ver cómo se siente el grupo y por qué-."
+        header: 2. Construir acuerdo
+        desc: "Todo el mundo puede proponer un plan de acción. Cada uno puede estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear –de esa manera podrás ver cómo se siente el grupo y por qué-."
       step3:
         header: 3. Decidir juntos
         desc: "Desarrolla la propuesta colectivamente para que funcione para todos. Cada decisión posee una fecha límite, siempre obteniendo un resultado claro."
-    crowdfunding:
-      header: Estamos en el proceso de financiación colectiva para poder construir esta nueva plataforma y poder regalarse al mundo.
     mobile:
       lead_html: "<strong>Loomio funciona en cualquier dispositivo, </strong><br />toma decisiones en cualquier lugar y en cualquier momento."
     quote:

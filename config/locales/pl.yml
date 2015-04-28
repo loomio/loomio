@@ -3,13 +3,6 @@ pl:
     submit: Zaktualizuj ustawienia
   explore:
     header: Przegląd grup publicznych
-  try_it:
-    header: Wypróbuj Loomio
-    start_a_group: Utwórz grupę dla podejmowania decyzji w Twojej społeczności.
-    join_the_community: Dołącz do grupy Społeczność Loomio
-    loomio_community_info: Tutaj dyskutujemy i podejmujemy decyzję o Loomio.
-    explore_groups: Przegląd innych grup na Loomio
-    explore_groups_info: "Sprawdź wszystkie fantastyczne grupy na Loomio i dołącz do nich!"
   activerecord:
     errors:
       messages:
@@ -192,6 +185,8 @@ pl:
     make_a_decision: Podejmij decyzję
   hint:
     vote: W każdej chwili możesz zmienić swoje stanowisko
+  pricing_page:
+    header: Opłaty
   new_password: Nowe hasło
   current_password: Obecne hasło
   confirm_password: Potwierdź hasło

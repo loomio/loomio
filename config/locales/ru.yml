@@ -17,13 +17,6 @@ ru:
     no_change_description: Оставить уровень громкости моих групп как есть.
   explore:
     header: Публичные группы
-  try_it:
-    header: Попробуйте Loomio
-    start_a_group: Создйте группу для принятия решений в собственном сообществе.
-    join_the_community: Вступите в группу Сообщество Loomio
-    loomio_community_info: "То место, где мы обсуждаем и принимаем рещения о Loomio."
-    explore_groups: Найдите другие группы
-    explore_groups_info: "Найдите замечательные группы  и вступите в них!"
   activerecord:
     errors:
       messages:
@@ -283,6 +276,11 @@ ru:
       memberships: "Вы больше не будете числиться членом ни в каких группах, к которым вы в настоящее время принадлежите."
       group_contributions: "Комментарии, предложения и обсуждения, которые Вы делали в группах, останутся, но мы удалим из них Ваше имя ."
       emails: "Мы прекратим направлять Вам электронные письма, относящиеся к Loomio."
+  start_group_form:
+    header: Создайте новую группу
+    group_name: Название группы
+    success:
+      header: "Почти готово! Проверьте почту."
   group_form:
     name: Название группы
     description: Описание
@@ -530,9 +528,7 @@ ru:
     invitation: Подсказки для написания отличного приглашения
     proposal: Подсказки для написания понятного предложения
   pricing_page:
-    organisations: Организации
-    informal_groups: Неформальные группы
-    informal_groups_desc: "У членов Вашей группы попросят заплатить, сколько они смогут"
+    header: Цены
   contribution:
     currency_desc: Суммы зафиксированы в долларах США
     monthly_html: Я бы хотел делать ежемесячный взнос
@@ -612,8 +608,6 @@ ru:
       proposal_closed: Предложение закрыто
       outcome_created: "%{who} подвел итоги:"
       you_agreed: "Вы %{past_tense_position}"
-    verification:
-      header: "Почти готово!"
   about_loomio: О Loomio
   ago: "%{quantity_of_time} назад"
   approve: Подтвердить
@@ -666,7 +660,6 @@ ru:
   show_more: Больше
   start_a_group: Создать группу
   subject: Заголовок
-  terms_of_service_html: "Нажимая %{button_text}, вы соглашаетесь с <a href='%{link_path}' target='_blank'>Условиями использования</a>"
   thanks: "Спасибо!"
   unlike: Не нравится
   time_until_close: "%{quantity_of_time} до закрытия"

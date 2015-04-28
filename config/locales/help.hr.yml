@@ -1,7 +1,6 @@
 hr:
   new_help:
-    how_to:
-      title: Kako početi?
+    how_loomio_works:
       start_group_link: Započni grupu
       start_group_description: surađivati s korisnicima Loomio
       invite_people_link: Pozovi ljude
@@ -13,7 +12,6 @@ hr:
       decide_together_link: 3. Zajedno odlučujte
       decide_together_description: "Svatko može predložiti tok akcije. Sudionici se mogu slagati, biti suzdržani ili blokirati - tako se jasno vide svačiji stavovi i njihov razlog."
     contents:
-      title: potrebno vam je više informacija?
       getting_started:
         title_html: Početak rada
         starting_new_group_html: ukoliko želite započeti novu Loomio grupu

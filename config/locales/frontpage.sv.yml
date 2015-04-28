@@ -28,8 +28,6 @@ sv:
       step3:
         header: 3. Fatta beslut tillsammans
         desc: "Utveckla förslaget tillsamman så alla kan ställa sig bakom det. Varje beslut har en tydlig dead-line, så att ni alltid når ett konkret resultat."
-    crowdfunding:
-      header: Vi använder oss av crowdfunding så vi kan färdigställa bygget av vår nya plattform och ge den som en gåva till världen.
     quote:
       header:
         rushkoff_html: "“Loomio <strong>släpper loss internets potential</strong> för att få människor att nå konsensus snarare än genom polariserade debatter.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, författare till <em>Present Shock</em></div>"

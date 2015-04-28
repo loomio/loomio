@@ -29,7 +29,7 @@ class NotificationItems::MembershipRequested < NotificationItem
     notification.eventable.group_name
   end
 
-  def link
-    Routing.group_membership_requests_path(notification.eventable.group)
+  def linkable
+    [ notification.eventable.group, :manage_membership_requests]
   end
 end

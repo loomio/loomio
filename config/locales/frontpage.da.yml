@@ -28,8 +28,6 @@ da:
       step3:
         header: 3. Beslut sammen
         desc: "Udvikl forslaget sammen så  alle kan acceptere det. Alle forslag har en tydelig deadline, hvorfor du altid får et tideligt resultat."
-    crowdfunding:
-      header: "Vi er crowdfunded. Det betyder, at vi kan færdigbygge denne nye softwareplatform og give den til verdenen."
     quote:
       header:
         rushkoff_html: "\"Loomio <strong>frigører internettets potentiale</strong> for at opnå konsensus mellem mennesker frem for at polarisere debatten.\"<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, forfatter af <em>Present Shock</em></div>"

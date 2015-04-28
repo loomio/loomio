@@ -19,7 +19,7 @@
                 .edit-icon.edit-icon-small.edit-comment.js-tooltip{title: t(:'edit_comment.edit_comment')}
                   %i.fa.fa-pencil
         .activity-item-header{dir: text_direction(comment)}
-          ~ add_mention_links(render_rich_text(comment.body.to_s.force_encoding("UTF-8"), comment.uses_markdown?)).html_safe
+          ~ render_rich_text(comment.body.to_s.force_encoding("UTF-8"), comment.uses_markdown?).html_safe
           .translation-spacer.translated
           .activity-item-translation.translated
             = t(:loading_translation)

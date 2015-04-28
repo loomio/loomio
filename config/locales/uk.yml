@@ -4,13 +4,6 @@ uk:
     submit: Оновити налаштування
   explore:
     header: Переглянути відкриті групи
-  try_it:
-    header: Спробуйте Loomio
-    start_a_group: Створіть групу для прийняття рішень у вашій спільноті.
-    join_the_community: Долучитися то Групи спільноти Loomio
-    loomio_community_info: "Саме тут ми обоговорюємо питання, та приймаємо рішення щодо Луміо."
-    explore_groups: Перегляньте інші групи на Луміо
-    explore_groups_info: "Знайдіть багато чудових груп на Loomio та приєднуйтеся до них!"
   activerecord:
     errors:
       messages:
@@ -254,6 +247,12 @@ uk:
       memberships: "Ви більше не знаходитиметесь серед учасників будь-яких груп, в яких ви нині є членом."
       group_contributions: "Коментарі, пропозиції та обговорення, які ви зробили в групах, залишаться, але з них зникне ваше ім’я."
       emails: "Ми білше не будемо висилати вам розсилки, пов’язані з Loomio."
+  start_group_form:
+    header: Створити нову групу
+    name: "Ваше ім'я"
+    group_name: Назва групи
+    success:
+      header: "Ви майже закінчили! Перевірте Вашу електронну пошту."
   group_form:
     name: Назва групи
     description: Опис
@@ -485,12 +484,7 @@ uk:
     proposal: Підказки щодо написання чіткої пропозиції
     vote: Ви можете змінити Ваше ставлення будь-коли
   pricing_page:
-    intro: "Групи з бюджетом сплачують підписку за користування інструментом.\nГрупи без можливостей сплачувати підписку використовують Плати Коли Зможешь модель: їх члени запрошуються зробити добровільний внесок. Ваш внесок означає, що ми можемо зберігати Loomio незалежним, вільним від реклами, та існуючим за рахунок спільноти.\n"
-    organisations: Організації
-    organisations_examples: "наприклад бізнес, урядові агенції, суспільні організації"
-    informal_groups: Не формальні групи
-    informal_groups_desc: "Членів вашої групи попросять заплатити стільки, скільки вони зможуть"
-    informal_groups_examples: "наприклад, сім'ї, соціальні ініціативи, коллективи"
+    header: Ціни
   contribution:
     any_amount: або індивідуальний разовий внесок у розмірі
     currency_desc: Суми зазначено у американських доларах
@@ -582,7 +576,6 @@ uk:
       submit: Відправити повідомлення
     messages:
       email_html: "Заповніть цю форму, або надішліть email до <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Ви також можете приєднатися до нас  на<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, та <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: Розпочати дискусію
@@ -645,20 +638,12 @@ uk:
         password: Пароль
         password_confirmation: Підтвердити пароль
         language_preference: Мова
-      group_request:
-        admin_name: Як вас звати?
-        admin_email: Ваша email-адреса?
-        name: Назва вашої групи?
-        description: "Якщо маєте час, розкажіть нам про свою групу"
-        is_commercial: Де ви плануєте використовувати Loomio?
     placeholders:
       membership_request:
         introduction: "Напишіть декілька слів про себе і про те, чому ви хочете долучитися до %{group_name}."
       motion:
         name: Який план дій ви пропонуєте?
         description: "Надайте якомога більше інформації, щоб кожен чітко розумів що це означає і міг погодитися або не погодитися"
-      group_request:
-        description: "Ми будемо раді почути про вашу групу та дізнатись, чому ви вирішили використовувати Loomio."
   helpers:
     submit:
       discussion:
@@ -742,10 +727,6 @@ uk:
       new_motion: "%{who} запропонував(ла)"
       motion_closing_soon: Пропозиція закривається через 24 години
       proposal_closed: "Пропозиція закрита:"
-    verification:
-      header: "Ви майже впоралися!"
-      intro: "Будь ласка натисніть на посилання підтвердження щоб завершити Ваш запит:"
-      ignore: "Якщо Ви не намагалися приєднатись до Loomio, не звертайте уваги на це повідомлення"
   meta_tags:
     default_title: "Loomio | Спільне прийняття рішень"
   about_loomio: Про Loomio
@@ -807,7 +788,6 @@ uk:
   start_a_group: Створити групу
   starting: Починаємо
   subject: Тема
-  terms_of_service_html: "Натиснувши на %{button_text}, ви погоджуєтесь із <a href='%{link_path}' target='_blank'>Умовами використання</a> Loomio"
   thanks: "Дякуємо!"
   unlike: Не подобається
   time_until_close: "%{quantity_of_time} до закриття"
@@ -823,6 +803,7 @@ uk:
     settings: Налаштування
     dashboard: Майстерня
     unread: Непрочитані
+    find_out_more: Дізнатись більше
     filter: "Фільтр:"
     following: Відслідковується
     not_following: Не відслідковується

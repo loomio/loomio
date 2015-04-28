@@ -21,7 +21,7 @@ class NotificationItems::MotionOutcomeCreated < NotificationItem
     @notification.eventable.group_full_name
   end
 
-  def link
-    Routing.motion_path(@notification.eventable)
+  def linkable
+    @notification.eventable
   end
 end

@@ -17,13 +17,6 @@ sr:
     no_change_description: Ostavi nivo obima mojih grupa kakav jeste.
   explore:
     header: Istraži javne grupe
-  try_it:
-    header: Probaj Lumio
-    start_a_group: Započni grupu da bi donosio odluke u svojoj zajednici.
-    join_the_community: Pridruži se Lumio Zajednica grupi.
-    loomio_community_info: Ovde diskutujemo i donosimo odluke o Lumiju.
-    explore_groups: Istraži ostale grupe na Lumiju.
-    explore_groups_info: "Pogledajte grupe na Lumiu i pridružite se!"
   activerecord:
     errors:
       messages:
@@ -293,6 +286,12 @@ sr:
       memberships: Nećete više biti prikazivani kao deo bilo koje grupe u kojima ste trenutno član.
       group_contributions: "Komentari, predlozi i diskusije koje ste napravili u grupama će ostati, ali ćemo ukloniti Vaše ime sa njih."
       emails: Prestaćemo da Vam šaljemo ePoruke u vezi sa Lumijem.
+  start_group_form:
+    header: Započni novu grupu
+    name: Tvoje ime
+    group_name: Naziv grupe
+    success:
+      header: "Još malo pa gotovo! Proverite ePoštu."
   group_form:
     name: Naziv grupe
     description: Opis
@@ -665,12 +664,7 @@ sr:
     proposal: Saveti za pisanje jasnog predloga
     vote: Možete promeniti svoj stav bilo kada
   pricing_page:
-    intro: "Grupe sa budžetom plaćaju pretplatu da bi koristili alat.\nGrupe koje nemaju nameru da plaćaju pretplatu koriste \nPlati Šta Možeš model: njihovi članovi su pozvani da doniraju volonterskim učešćem. Vaše učešće omogućava da održimo Lumio nezavisnim, i slobodnim od oglasa, vođenim od strane naše zajednice.\n"
-    organisations: Organizacije
-    organisations_examples: "npr. kompanije, institucije i agencije države, organizacije unutar neke zajednice"
-    informal_groups: Neformalne grupe
-    informal_groups_desc: Članovi Vaše grupe će biti zamoljeni da plate koliko mogu
-    informal_groups_examples: "npr. porodice, društveni pokreti, kolektivi"
+    header: Cenovnik
   contribution:
     any_amount: ili proizvoljni jednokratni prilog od
     currency_desc: Iznosi su u SAD dolarima
@@ -771,7 +765,6 @@ sr:
       submit: Pošalji poruku
     messages:
       email_html: "Popunite ovaj obrazac, ili pošaljite ePoruku na <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Možete nam se pridružiti i na <br/><a href='%{facebook}' target='_blank'>facebook-u</a>, <a href='%{google}' target='_blank'>g+</a> i <a href='%{twitter}' target='_blank'>twitter-u</a>!"
   discussion_form:
     new:
       header: Započni diskusiju
@@ -847,20 +840,12 @@ sr:
         password: Lozinka
         password_confirmation: Potvrdi lozinku
         language_preference: Jezik
-      group_request:
-        admin_name: Kako se zoveš?
-        admin_email: Koja je Vaša adresa ePošte?
-        name: Kako se zove tvoja grupa?
-        description: "Ako imaš vremena, reci nam o tvojoj grupi"
-        is_commercial: Gde planirate da koristite Lumio?
     placeholders:
       membership_request:
         introduction: "Napišite nekoliko reči o tome ko ste i zašto želite da se pridružite %{group_name}."
       motion:
         name: Šta je Vaš predlog smera akcije?
         description: Dajte dovoljno informacija kako bi svi znali šta tačno znači složiti se ili se ne sa ovim predlogom.
-      group_request:
-        description: Voleli bismo da čujemo o tvojoj grupi i zašto hoćeš da koristiš Lumio.
   helpers:
     submit:
       discussion:
@@ -965,10 +950,6 @@ sr:
       specify_outcome: "Vaš predlog je istekao. Odredite ishod da obavestite ostale o rezultatu:"
       outcome_created: "%{who} je odredio/la ishod predloga:"
       you_agreed: "Vi %{past_tense_position}"
-    verification:
-      header: "Skoro ste završili!"
-      intro: "Molim škljocnite na verifikacioni link da završite svoj zahtev:"
-      ignore: Ako niste zahtevali da se pridružite Lumiju molim ignorišite ovu ePoruku.
   meta_tags:
     default_title: "Lumio | Zajedničko Donošenje Odluka"
     default_description: Lumio je jednostavan alat za zajedničko donošenje odluka. On omogućava rasutim grupama da dostignu odluke brzo i preduzmu konstruktivnu akciju.
@@ -1031,7 +1012,6 @@ sr:
   start_a_group: Započnite grupu
   starting: Počinje
   subject: Tema
-  terms_of_service_html: "Klikom na %{button_text}, slažete se sa Loomio <a href='%{link_path}' target='_blank'>Uslovima korišćenja</a>"
   thanks: "Hvala!"
   unlike: Ne Sviđa
   time_until_close: "%{quantity_of_time} do zatvaranja"
@@ -1047,6 +1027,7 @@ sr:
     settings: Podešavanja
     dashboard: Tabla
     unread: Nepročitano
+    find_out_more: Saznaj više
     filter: "Filter:"
     following: Praćenje
     not_following: Bez praćenja

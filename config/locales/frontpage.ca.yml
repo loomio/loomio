@@ -26,8 +26,6 @@ ca:
       step3:
         header: 3. Decidiu plegats
         desc: "Desenvolupeu la proposta plegats de manera que satisfaci a tothom. Cada decisió té una data límit clara, així sempre s'obté un resultat concret."
-    crowdfunding:
-      header: Estem en un procès de micromecenatge per acabar de construïr aquesta plataforma i lliurar-la al món.
     quote:
       header:
         rushkoff_html: "\"Loomio <strong>desencadena el potencial d'internet</strong> per coduïr a la gent cap al consens i no cap al debat polaritzat\". <div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autor de <em>Present Shock</em></div>"

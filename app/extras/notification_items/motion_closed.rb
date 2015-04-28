@@ -18,8 +18,8 @@ class NotificationItems::MotionClosed < NotificationItem
     @notification.eventable.name
   end
 
-  def link
-    Routing.motion_path(@notification.eventable)
+  def linkable
+    [@notification.eventable]
   end
 
   def avatar

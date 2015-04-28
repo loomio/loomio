@@ -23,13 +23,13 @@ describe AcceptInvitation do
                                             invitable: group) }
 
       it 'makes the user a group admin' do
-        group.admins.should include user
+        group.admins.reload.should include user
       end
     end
 
     context 'not to_be_admin' do
       it 'adds the user to the group as a member' do
-        group.members.should include user
+        group.members.reload.should include user
       end
     end
 

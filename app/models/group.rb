@@ -130,6 +130,12 @@ class Group < ActiveRecord::Base
            as: :invitable,
            class_name: 'Invitation'
 
+  has_many :invitations,
+           as: :invitable,
+           class_name: 'Invitation'
+ 
+  has_many :comments, through: :discussions
+
   after_initialize :set_defaults
 
   alias :users :members
@@ -138,6 +144,7 @@ class Group < ActiveRecord::Base
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, dependent: :destroy
   has_many :motions, through: :discussions
+  has_many :votes, through: :motions
 
   belongs_to :parent, class_name: 'Group'
   belongs_to :creator, class_name: 'User'
