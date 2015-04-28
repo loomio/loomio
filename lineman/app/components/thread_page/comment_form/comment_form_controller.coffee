@@ -1,12 +1,11 @@
 angular.module('loomioApp').controller 'CommentFormController', ($scope, FlashService, Records) ->
   $scope.comment = $scope.comment or Records.comments.initialize(discussion_id: $scope.discussion.id)
   group = $scope.discussion.group()
+  $scope.mentionables = group.members()
 
-  $scope.getMentionables = (fragment) ->
-    Records.memberships.fetchByNameFragment(fragment, group.key).then ->
-      $scope.mentionables = _.filter(group.members(), (member) ->
-        ~member.name.search(new RegExp(fragment, 'i')) or \
-        ~member.label.search(new RegExp(fragment, 'i')))
+  $scope.fetchByNameFragment = (fragment) ->
+    Records.memberships.fetchByNameFragment(fragment, $scope.discussion.group().key).then ->
+      $scope.mentionables = group.members()
 
   saveSuccess = ->
     $scope.comment = Records.comments.initialize(discussion_id: $scope.discussion.id)
