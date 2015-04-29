@@ -19,6 +19,7 @@ Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   namespace :admin do
+    get 'url_info' => 'base#url_info'
     namespace :stats do
       get :group_activity
       get :daily_activity
