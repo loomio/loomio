@@ -82,10 +82,6 @@ GEM
       json
     awesome_print (1.6.1)
     bcrypt (3.1.10)
-    better_errors (2.1.1)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
-      rack (>= 0.9.0)
     bing_translator (4.4.1)
       json (~> 1.8.0)
       nokogiri (~> 1.6.0)
@@ -118,7 +114,6 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     codeclimate-test-reporter (0.4.7)
       simplecov (>= 0.7.1, < 1.0.0)
-    coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -462,8 +457,6 @@ GEM
       activerecord (>= 3.0)
     puma (2.11.2)
       rack (>= 1.1, < 2.0)
-    quiet_assets (1.1.0)
-      railties (>= 3.1, < 5.0)
     rack (1.6.0)
     rack-attack (4.2.0)
       rack
@@ -511,7 +504,7 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.2)
-    redcarpet (3.1.2)
+    redcarpet (3.2.3)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rinku (1.7.3)
@@ -652,7 +645,6 @@ DEPENDENCIES
   airbrake
   autoprefixer-rails
   awesome_print
-  better_errors
   bing_translator
   bootstrap-sass (~> 3.2.0)
   browser
@@ -711,7 +703,6 @@ DEPENDENCIES
   poltergeist
   private_pub!
   puma
-  quiet_assets
   rack-attack (~> 4.2.0)
   rack-canonical-host
   rack_session_access
@@ -719,7 +710,7 @@ DEPENDENCIES
   rails_12factor
   rails_serve_static_assets
   rake
-  redcarpet (~> 3.1.2)
+  redcarpet (~> 3.2.3)
   responders (~> 2.0)
   rinku
   rmagick (~> 2.13.3)

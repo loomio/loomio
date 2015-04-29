@@ -20,8 +20,6 @@
 
 comment_creation:
   path: ^\/d\/[A-Za-z0-9]*\/add_comment$
-  period: 50
-  limit: 5
 
 group_creation:
   path: ^\/g$
@@ -36,6 +34,6 @@ vote_creation:
   path: ^\/m\/[A-Za-z0-9]*\/votes$
 
 default:
-  period: 30
-  limit: 3
+  period: 60
+  limit: 10
   method: POST
