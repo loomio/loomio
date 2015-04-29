@@ -22,6 +22,10 @@ class ApplicationController < ActionController::Base
   # intercom
   skip_after_filter :intercom_rails_auto_include
 
+  rescue_from ActionView::MissingTemplate do |exception|
+    raise exception unless %w[txt text gif png].include?(params[:format])
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
     if user_signed_in?
       flash[:error] = t("error.access_denied")
