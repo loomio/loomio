@@ -3,7 +3,9 @@ class Admin::BaseController < ApplicationController
   before_filter :require_admin
 
   def url_info
-    h = {}
+
+    h = {canonical_host: ENV['CANONICAL_HOST'], tld_length: ENV['TLD_LENGTH'], default_subdomain: ENV['DEFAULT_SUBDOMAIN']}
+
     %w[subdomain domain host port ssl?].each do |method|
       h[method] = request.send method
     end
