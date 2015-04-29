@@ -29,7 +29,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'nokogiri'
 gem 'twitter-text'
 gem 'jquery-atwho-rails', '~> 0.4.11'
-gem 'redcarpet', '~> 3.1.2'
+gem 'redcarpet', '~> 3.2.3'
 gem 'paper_trail', '~> 4.0.0.beta2'
 gem 'rack-canonical-host'
 gem 'delayed_job', '~> 4.0.2'
@@ -64,6 +64,7 @@ gem 'momentjs-rails'
 gem 'ruby-progressbar'
 gem 'responders', '~> 2.0'
 gem 'activerecord_any_of'
+gem 'rack-attack', '~> 4.2.0'
 
 # consider uncommenting these when we want to mess around with json parsing
 #gem 'oj'
@@ -93,9 +94,9 @@ group :development do
   #gem 'bullet'
   gem 'launchy'
   gem 'awesome_print'
-  gem 'quiet_assets'
+  #gem 'quiet_assets'
   #gem 'meta_request'
-  gem 'better_errors'
+  #gem 'better_errors'
   #gem 'binding_of_caller'
 end
 
