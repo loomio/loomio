@@ -43,6 +43,8 @@ class CommentService
 
   def self.destroy(comment:, actor:)
     actor.ability.authorize!(:destroy, comment)
+    # paranoid destroy_all because comment votes seem to be dangling around.
+    comment.comment_votes.destroy_all
     comment.destroy
     Memos::CommentDestroyed.publish!(comment)
   end
