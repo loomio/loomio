@@ -1,6 +1,7 @@
 es:
   new_help:
     how_loomio_works:
+      title: Como funciona Loomio
       start_group_link: Empieza un grupo
       start_group_description: Para colaborar con gente en Loomio
       invite_people_link: Invitar personas
@@ -12,6 +13,7 @@ es:
       decide_together_link: "Decide juntos:"
       decide_together_description: "cualquiera puede estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear - de esa manera podrás ver como cada uno se siente sobre la propuesta."
     contents:
+      title: Con que podemos ayudarte?
       getting_started:
         title_html: Primeros pasos
         starting_new_group_html: cuando quieres comenzar un nuevo grupo de Loomio
@@ -88,6 +90,8 @@ es:
         title_html: La Comunidad de Loomio
       loomio_development:
         title_html: Mantenerse informado del desarrollo de Loomio
+      faq:
+        title_html: "Preguntas frecuentes "
     getting_started:
       title: Primeros pasos
       intro: "Cuando entras en contacto con Loomio por primera vez, puede que te sumes a través de diferentes formas.\nAquí hay algo de información sobre esos puntos de entrada.\n"
@@ -136,18 +140,24 @@ es:
             private_only_html: "Si seccionas la opción <strong>\"Solo discusiones privadas\"</strong>, nadie fuera de tu grupo puede ver el contenido de las discusiones."
       group_permissions:
         title: Permisos del grupo
+        body_html: "<p>Los permisos de tu grupo dictan que funciones de Loomio los miembros de tu grupo tienen permitido usar.\nCuando comienzas tu grupo, deberás decidir si los miembros de tu grupo tendrán poder de tomar decisiones, si podrán plantear cuestiones o solo comentar en las cuestiones que tu planteas, etc.\nEl poder regular que acciones los miembros de tu grupo pueden ejecutar, significa que las consultas, supervisión, reportes y otras situaciones en las que necesitas separar los miembros de tu grupo en participantes y \"observadores\", puede ser mas fácil de manejar.</p>\n<p>Si quieres que solo algunas de las personas en tu grupo tengan la habilidad de votar, comentar o iniciar discusiones, haz coordinadores a esas personas y des-selecciona las casillas para que los miembros no-coordinadores no tengan esos permisos.</p>\n"
         what_can_members_do:
           title: ¿Qué pueden hacer los miembros?
           invite_and_approve_new_members:
             title: Invitar y aprobar nuevos miembros
+            body_html: "Quieres que las personas en tu grupo sean capaces de <a href=\"#inviting-members\">invitar gente a unirse</a> y, dependiendo de la configuración de privacidad de tu grupo, aprobar los pedidos de membresia?\nCuando esta opción es seleccionada, todos en tu grupo podrán invitar nuevas personas y aprobar membresias.\nCuando no esta seleccionada, solo los coordinadores del grupo podrán invitar y aprobar nuevos miembros.\n"
           create_subgroups:
             title: Crear sub-grupos
+            body_html: "Quieres que los miembros sean capases de comenzar un nuevo <a href=\"#subgroups\">sub-groupo</a> dentro de tu grupo de Loomio?\nCuando esta opción es seleccionada, todos en tu grupo podrán crear sub-grupos.\nCuando esta opción no es seleccionada, solo los coordinadores del grupo podrán crear sub-grupos.\n"
           start_discussions:
             title: Empezar discusiones
+            body_html: "Quieres que quienquiera en tu grupo pueda comenzar <a href=\"#starting-discussions\">nuevas discusiones</a>?\nSi esta opción es seleccionada, todos en tu grupo podrán comenzar discusiones.\nCuando no es seleccionada, solo los coordinadores del grupo podrán comenzar discusiones.\n"
           edit_discussion_context:
             title: Editar el contexto de cualquier discusión del grupo
+            body_html: "Quieres que las personas puedan cambiar el <a href=\"#providing-context\">panel de contexto</a> de las discusiones?\nEsto es la descripción del tópico de la discusión, y puede ser útil modificarla a medida que nueva información emerge.\nCuando esta opción es seleccionada, todos en tu grupo podrán editar el contexto de la discusión.\nCuando esta opción no sea seleccionada, solo los coordinadores del grupo podrán editar el contexto de la discusión.\n(Los autores de la discusión siempre podrán editar el contexto de sus discusiones)\n"
           edit_comments:
             title: Editar sus comentarios en cualquier momento
+            body_html: "Quieres permitir a la gente cambiar lo que han escrito en sus comentarios?\nCuando esta casilla es seleccionada, todos en tu grupo podrán <a href=\"#editing-comments\">editar sus comentarios</a> en cualquier momento.\nCuando no es seleccionada, un comentario solo puede ser editado hasta que alguien mas participe en la discusión.\nLos comentarios que han sido editados muestran la palabra <strong>“Editado”</strong> debajo.\nHacer click en \"Editado\" mostrara todas las otras versiones del comentario.\n"
           raise_proposals:
             title: Hacer propuestas
           vote_on_proposals:
@@ -284,6 +294,7 @@ es:
       angular_html: Loomio 1.0-beta en acción
       twitter_html: Loomio en Twitter
     faq:
+      title: "Preguntas frecuentes "
       confirmation_email:
         title: ¿Dónde está mi correo de confirmación?
       approved_membership_request:
