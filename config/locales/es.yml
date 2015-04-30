@@ -716,6 +716,11 @@ es:
   inactive_html: "Esta cuenta ha sido desactivada. Si tú tienes alguna pregunta, por favor <a href='%{path_to_contact}'>póngase en contacto</a> con nosotros."
   create_an_account_html: Crear una cuenta Loomio Beta
   log_in: Entrar
+  password_reset:
+    email_guidelines_html: "<p>ingresa la dirección de correo electrónico de tu cuenta en Loomio en el espacio debajo, y se te sera mandado un enlace para restablecer tu contraseña.</p>\n<p>Si normalmente ingresas vía Facebook, Google, Twitter o Persona, ingresa el correo electrónico asociado con esa cuenta.</p>\n"
+    reset_email_timeframe: Puede tardar hasta 5 minutos para que llegue el correo electrónico. si no lo recibes asegúrate de mirar en tu carpeta de correo no deseado.
+    length_restriction: La contraseña debe tener al menos 8 caracteres.
+    forbidden_passwords: "Contraseñas comunes como \"contraseña' están prohibidas para mantener tu cuenta segura."
   join_group:
     log_in: "Entrar para unirte a %{group_name}"
     create_account_to_join_group: "Crea una cuenta para acceder a %{group_name}"
@@ -764,6 +769,9 @@ es:
     description: "Loomio Helper Bot está muy interesado en que tu grupo invierta en un viaje a la luna. Al parecer, el espacio queso es delicioso. Pero las implicaciones por la huella de carbono son preocupantes. ⏎\n¿Es una buena idea? Loomio Helper Bot quiere saber lo que piensas! ⏎\nSi estás convencido de tu posición, haz clic en uno de los iconos de abajo (pulsa el cursor sobre los botones de decisiones para una descripción de lo que cada uno de ellos significa). ⏎\nSe te pedirá que realices una breve declaración sobre la razón de tu decisión. Esto hace que sea fácil de ver en forma de resumen de lo que todos piensan y por qué. Puedes cambiar de opinión y editar tu decisión libremente hasta que la propuesta se cierra. ⏎ \n"
   contact_page:
     contact_us: Contáctanos
+    faq_prompt_html: "Tienes una pregunta para el equipo de Loomio? antes de contactarnos, quizás puedas encontrar la respuesta en nuestra sección de preguntas frecuentes."
+    contact_information: "Si no encuentras lo que buscas, puedes encontrar nuestra información de contacto al final de la pagina."
+    contact_form: Formulario de contacto.
     labels:
       name: Tu nombre
       email: Tu correo electrónico
@@ -771,6 +779,7 @@ es:
       submit: Enviar mensaje
     messages:
       email_html: "Rellena este formulario o envía un correo electrónico a <a href='mailto:%{email}'>%{email}</a>"
+      social_html: "También puedes sumarte en<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, y <a href='%{twitter}' target='_blank'>twitter</a>!\n"
   discussion_form:
     new:
       header: Empezar una discusión

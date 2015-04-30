@@ -44,8 +44,8 @@ eo:
   main: 87
 es:
   frontpage: 58
-  help docs: 59
-  main: 99
+  help docs: 62
+  main: 100
 fa-IR:
   frontpage: 52
   help docs: 1
@@ -79,7 +79,7 @@ hr:
   help docs: 14
   main: 46
 hu:
-  frontpage: 58
+  frontpage: 61
   help docs: 74
   main: 97
 id:
@@ -87,7 +87,7 @@ id:
   help docs: 2
   main: 54
 it:
-  frontpage: 58
+  frontpage: 60
   help docs: 8
   main: 89
 it-CH:

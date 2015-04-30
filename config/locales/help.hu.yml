@@ -89,6 +89,8 @@ hu:
         title_html: A Loomio Közösség
       loomio_development:
         title_html: Lépést tartva a Loomio fejlesztéssel
+      faq:
+        title_html: "Gyakran feltett kérdések:"
     getting_started:
       title: Kezdjük
       intro: "Amikor először kerülcs kapcsolatba a Loomioval, több út is kínálkozik a csatlakozásra.\nIme néhány információ minden egyes belépési pontról:\n"
@@ -335,6 +337,7 @@ hu:
       twitter_html: Loomio a Twitteren
       code_climate_html: Loomio Code Climate-je (automatikus kód ellenőrzője)
     faq:
+      title: "Gyakran feltett kérdések:"
       confirmation_email:
         title: Hol a visszaigazoló emailem?
         body: "Ha nem kapsz visszaigazoló emailt a csoport feliratkozásról, akkor szükséged lehet a kéretlen levelek vagy levélszemét mappád ellenőrzésére - néha itt kötnek ki ezek a levelek."
