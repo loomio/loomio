@@ -70,17 +70,13 @@
   #how-to { margin-bottom: 50px; }
 
   #contents {
-    ul { margin-bottom: 24px; }
-    .single-item {
+    ul { margin-bottom: 25px; }
+    h3 {
       font-size: 16px;
       font-weight: 600;
-      a { margin-bottom: 10px; }
+      margin: 0 0 10px;
     }
     li { margin-bottom: 10px; }
-    .top-level {
-      font-size: 16px;
-      font-weight: 600;
-    }
   }
 
   .screenshot { margin-bottom: 30px; }
