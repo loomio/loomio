@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/Diego81/omnicontacts.git
+  revision: beca38666154d660c472e5efba2197f164acd1ff
+  ref: beca38666154d660c472e5efba2197f164acd1ff
+  specs:
+    omnicontacts (0.3.5)
+      json
+      rack
+
+GIT
   remote: git://github.com/activeadmin/activeadmin.git
   revision: 4baf474177fb6c4e2638d103dfb28c576b3084df
   specs:
@@ -431,9 +440,6 @@ GEM
     omniauth-twitter (1.1.0)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
-    omnicontacts (0.3.5)
-      json
-      rack
     orm_adapter (0.5.0)
     paper_trail (4.0.0.beta2)
       activerecord (>= 3.0, < 6.0)
@@ -695,7 +701,7 @@ DEPENDENCIES
   omniauth-facebook (~> 1.6.0)
   omniauth-google-oauth2 (~> 0.2.5)
   omniauth-twitter (~> 1.1.0)
-  omnicontacts (~> 0.3.4)
+  omnicontacts!
   paper_trail (~> 4.0.0.beta2)
   paperclip (~> 4.2.0)
   pg (~> 0.18.1)
