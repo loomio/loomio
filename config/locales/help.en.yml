@@ -1,5 +1,6 @@
 en:  
   new_help:
+    title: What can we help you with?
     how_loomio_works:
       title: How Loomio works
       start_group_link: Start a group
@@ -13,7 +14,7 @@ en:
       decide_together_link: 'Decide together:'
       decide_together_description: 'anyone can agree, abstain, disagree, or block – so you can see how everyone feels about the proposal.'
     contents:
-      title: What can we help you with?
+      title: Table of contents
       getting_started:
         title_html: Getting started
         starting_new_group_html: When you want to start a new Loomio group
