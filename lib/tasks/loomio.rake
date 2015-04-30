@@ -43,4 +43,32 @@ namespace :loomio do
       dr.reset_counts!
     end
   end
+
+  # rake loomio:fetch_remote_database[`heroku pgbackups:url -a loomio-production`]
+  task :fetch_remote_database, :url, :dbname do |t, args|
+    args.with_defaults dbname: :loomio_production
+    args.with_defaults filename: "~/#{args[:dbname]}-#{Time.now.strftime('%Y-%m-%d')}.dump",
+                       latest_filename: "~/#{args[:dbname]}-latest.dump"
+
+    puts "Fetch remote database... (this may take a bit)"
+    sh "wget #{args[:url]} -O #{args[:filename]}"
+    sh "rm ~/#{args[:dbname]}"
+    sh "ln -s #{args[:latest_filename]} #{args[:filename]}"
+    puts "Resetting local #{args[:dbname]} database..."
+    sh "dropdb #{args[:dbname]}"
+    sh "createdb #{args[:dbname]}"
+    puts "Saving database to local #{args[:dbname]} database..."
+    sh "pg_restore --verbose --clean --no-acl --no-owner -d #{args[:dbname]} #{args[:latest_filename]}"
+    puts "All set! Run `rake loomio:restore_remote_database` to load this restore your local database with this data."
+  end
+
+  # rake loomio:restore_remote_database
+  task :restore_remote_database, :target, :source do |t, args|
+    args.with_defaults target: :loomio_development, source: :loomio_production
+
+    puts "Restoring data from #{args[:source]} to #{args[:target]}..."
+    sh "dropdb #{args[:target]}"
+    sh "createdb #{args[:target]} -T #{args[:source]}"
+    puts "Success!"
+  end
 end
