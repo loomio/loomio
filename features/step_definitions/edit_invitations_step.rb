@@ -6,16 +6,6 @@ Then(/^I should see the pending invitations for the group$/) do
   page.should have_css(".pending-invitations")
 end
 
-
-Then(/^I should see the no invitations page$/) do
-  page.should have_content I18n.t(:"invitation.no_invitations_left")
-end
-
-Given(/^the group has run out of invites$/) do
-  @group.max_size = 2
-  @group.save!
-end
-
 When(/^I click 'Invite People'$/) do
   click_on 'Invite people'
 end
