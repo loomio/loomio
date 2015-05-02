@@ -1,7 +1,6 @@
 class InvitationsController < ApplicationController
   include InvitationsHelper
   before_filter :load_invitable, only: [:new, :create]
-  before_filter :ensure_invitations_available, only: [:new, :create]
   before_filter :authenticate_user!, only: :create
 
   rescue_from ActiveRecord::RecordNotFound do
@@ -91,12 +90,6 @@ class InvitationsController < ApplicationController
   end
 
   private
-
-  def ensure_invitations_available
-    unless @group.invitations_remaining > 0
-      render 'no_invitations_left'
-    end
-  end
 
   def load_invitable
     if params[:group_id].present?
