@@ -360,8 +360,6 @@ bg-BG:
   confirmation_not_received: Не получихте инструкции за потвърждение?
   unlock_not_received: Не получихте инструкции за отключване?
   invitation:
-    no_invitations_left: "Съжалявам, нямате повече останали покани"
-    no_invitations_left_get_more: "Моля пишете на contact@loomio.org и ние ще видим какво можем да направим да ви помогнем"
     invitation_not_found: Покана с такъв код не е открита. Моля поискайте от изпращача да ви изпрати нова покана.
     invitation_cancelled: "Тази покана е отменена. Моля свържете се с изпратилия я ако считате, че това е станало погрешка."
     invitees_placeholder: "Потребителско Име <user1@example.com>, user2@example.com"

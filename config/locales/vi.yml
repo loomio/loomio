@@ -356,8 +356,6 @@ vi:
   confirmation_not_received: Không nhận được hướng dẫn xác nhận?
   unlock_not_received: Không nhận được hướng dẫn mở khóa?
   invitation:
-    no_invitations_left: "Rất tiếc, bạn không còn lời mời nào"
-    no_invitations_left_get_more: "Vui lòng gửi email đến contact@loomio.org và chúng tôi sẽ xem xét trường hợp của bạn"
     invitation_not_found: Không thể tìm thấy lời mời nào khớp với mã xác nhận đó. Hãy yêu cầu người gửi gửi lại cho bạn một lời mời mới.
     invitation_cancelled: Lời mời tham gia này đã bị hủy bỏ. Vui lòng liên hệ người gửi về lời mời tham gia nhóm nếu bạn nghĩ rằng đã có lỗi xảy ra.
     recipients: "Điền vào các địa chỉ email, tách biệt bởi dấu phẩy:"

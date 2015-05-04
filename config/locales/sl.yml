@@ -704,8 +704,6 @@ sl:
   invitation:
     alternate: "Lahko tudi deliš to povezavo, s katero lahko vsak prosi za pridružitev:"
     by_email: Povabi prek emaila
-    no_invitations_left: Žal nimaš nobenih vabil več
-    no_invitations_left_get_more: "Piši na contact@loomio.org in z veseljem bomo poskusili pomagati"
     invitation_not_found: Ne najdem tvojega povabila. Prosi pošiljatelja za novo vabilo.
     invitation_cancelled: "To vabilo je bilo preklicano. Stopi v stik s pošiljateljem vabila, če meniš, da gre za napako."
     invitation_already_used: Vabilo je že bilo uporabljeno. Prijavi se in se pridruži svoji skupini.

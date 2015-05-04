@@ -439,8 +439,6 @@ pt-BR:
   edit_group_description: Editar descrição do grupo
   group_subscription: Taxa de inscrição do grupo
   groups:
-    max_size_warning_html: "Seu grupo está ficando grande e atingirá o limite de %{size} membros em breve. Por favor, <a href='%{link}'>entre em contato</a> para aumentar o limite."
-    max_size_reached_html: "Seu grupo atingiu o limite de %{size} membros. <a href='%{link}'>Entre em contato</a> para adicionar mais pessoas ao grupo."
     follow:
       click_to_follow: Clicar para seguir o grupo
       click_to_unfollow: Clicar para deixar de seguir o grupo
@@ -731,8 +729,6 @@ pt-BR:
   invitation:
     alternate: "Ou compartilhe esse link e qualquer um poderá solicitar entrada:"
     by_email: Convidar por e-mail
-    no_invitations_left: "Desculpe-me, mas você não tem mais nenhum convite"
-    no_invitations_left_get_more: "Por favor escreva para contact@loomio.org e veremos o que podemos fazer para te ajudar"
     invitation_not_found: Não localizamos um convite com este código. Por favor peça um novo convite a quem lhe enviou da outra vez.
     invitation_cancelled: Este convite foi cancelado. Por favor entre em contato com quem enviou o convite se você acha que aconteceu por engano.
     invitation_already_used: Esse convite já foi utilizado. Favor fazer login para continuar para seu grupo.

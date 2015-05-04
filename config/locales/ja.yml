@@ -486,8 +486,6 @@ ja:
   invitation:
     alternate: 代わりにこのリンクをシェアして、参加するように誰でも要求できるようにする：
     by_email: Eメールで招待を送る
-    no_invitations_left: "(*_ _)人ゴメンナサイ　招待はありません"
-    no_invitations_left_get_more: "contact@loomio.org にメールを送ってください\nあなたを助けるために何ができるか考えます"
     invitation_not_found: そのトークンでは招待を見つけられませんでした。送信者に新しい招待を要求してください
     invitation_cancelled: この招待はキャンセルされました。エラーによるものだと考えられる場合、招待の送信者に連絡を取ってください
     invitation_already_used: この招待はすでに使われています。あなたのグループにとどまるにはログインしてください

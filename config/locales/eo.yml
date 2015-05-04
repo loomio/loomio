@@ -635,8 +635,6 @@ eo:
   invitation:
     alternate: "Alternative, vi povas kunhavigi ĉi tiun ligilon kaj ĉiuj povas peti aliĝon:"
     by_email: Inviti per retpoŝto
-    no_invitations_left: "Pardonu, sed ne restas plu invitoj"
-    no_invitations_left_get_more: "Bonvolu retpoŝti al contact@loomio.org kaj ni vidos kion ni povos fari por helpi vin"
     invitation_not_found: Ne eblis trovi la inviton kun tiu identaĵo. Bonvolu peti novan inviton de la sendinto.
     invitation_cancelled: Ĉi tiu invito nuliĝis. Bonvolu kontakti la sendinton de la invito se vi pensas ke tio estis eraro.
     invitation_already_used: Ĉi tiu invito jam uziĝis. Bonvolu ensaluti por pluiri al via grupo.
