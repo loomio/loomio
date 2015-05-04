@@ -1,9 +1,0 @@
-%section.dashboard-page-threads-container{ng-show: 'any()', role: 'region', aria-labelledby: "{{ name }}"}
-  .dashboard-page-group-name
-    %img.selector-list-item-group-logo.pull-left{src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
-    %h2.dashboard-page-group-name
-      %a{href: '/g/{{group.key}}'} {{group.name}}
-  .dashboard-page-threads
-    %dashboard_page_thread{discussion: 'thread', ng-repeat: 'thread in filteredThreads() | limitTo:limit'}
-    .dashboard-page-show-more{ng-show: 'canExpand()'}
-      %a{translate: 'dashboard_page.load_more', ng-click:'expand()', href: '#'}

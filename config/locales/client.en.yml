@@ -85,9 +85,13 @@ en:
     submit_button:
       label: 'Post'
 
-
   navbar:
-    dashboard: 'Go to dashboard'
+    home: 'Home'
+    unread: 'Unread'
+    groups: 'Groups'
+    home_title: 'Go to dashboard'
+    unread_title: 'View unread activity'
+    groups_title: 'View your groups'
     start_thread: 'Start a new thread'
     notifications: 'Open notifications panel'
     user_options:
@@ -342,20 +346,15 @@ en:
       all: Recent Threads
       all_aria_label: Currently showing recent threads
       all_description: View recent threads
-      unread: Unread Threads
-      unread_aria_label: Currently showing unread threads
-      unread_description: View only threads you have not read yet
+      participating: Participating threads
+      participating_aria_label: Currently showing threads I've participated
+      participating_description: View only threads you have participated in
       proposals: Proposals
       proposals_aria_label: Currently showing threads with active proposals
       proposals_description: View only threads with active proposals
-    sorting:
-      dropdown_heading: Sort threads
-      group: By Group
-      group_aria_label: Currently sorting threads by group
-      group_description: Sort threads by group.
-      date: By Date
-      date_aria_label: Currently sorting threads by date
-      date_description: Sort threads by date.
+      muted: Muted
+      muted_aria_label: Current showing muted threads
+      muted_description: View only threads which have been muted
     aria_thread:
       title: 'Thread title: {{title}}.'
       unread: '{{count}} unread items.'
@@ -368,6 +367,10 @@ en:
       this_week: 'Threads from this week'
       this_month: 'Threads from this month'
       older: 'Threads older than a month'
+
+  inbox_page:
+    unread_threads: Unread Threads
+    view_more: View More
 
   discussion:
     activity: 'Activity'

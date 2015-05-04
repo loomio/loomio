@@ -3,31 +3,26 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
   $rootScope.$broadcast('setTitle', 'Dashboard')
 
   @loaded = {}
-  @perPage =
-    sort_by_date: 25
-    sort_by_group: 10
+  @perPage = 25
 
-  @sort   = -> CurrentUser.dashboardSort
   @filter = -> CurrentUser.dashboardFilter
 
   @loadedCount = =>
-    @loaded[@sort()] = @loaded[@sort()] or {}
-    @loaded[@sort()][@filter()] = @loaded[@sort()][@filter()] or 0
+    @loaded[@filter()] = @loaded[@filter()] or 0
 
   @updateLoadedCount = =>
     current = @loadedCount()
-    @loaded[@sort()][@filter()] = current + @perPage[@sort()]
+    @loaded[@filter()] = current + @perPage
 
   @loadParams = ->
     filter: @filter()
-    per:    @perPage[@sort()]
+    per:    @perPage
     from:   @loadedCount()
 
-  @loadMore = (options = {}) =>
+  @loadMore = =>
+    params = @loadParams()
     @updateLoadedCount()
-    switch @sort()
-      when 'sort_by_date'  then Records.discussions.fetchInboxByDate(@loadParams())
-      when 'sort_by_group' then Records.discussions.fetchInboxByGroup(@loadParams())
+    Records.discussions.fetchDashboard(params)
   LoadingService.applyLoadingFunction @, 'loadMore'
 
   @changePreferences = (options = {}) =>
@@ -35,29 +30,31 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
     CurrentUser.save()
     @loadMore() if @loadedCount() == 0
 
-  @dashboardOptions = (group = {}) =>
-    unmuted:   true
-    unread:    @filter() == 'show_unread'
-    proposals: @filter() == 'show_proposals'
-    groupId:   group.id
+  @dashboardOptions = =>
+    muted:         @filter() == 'show_muted'
+    unread:        @filter() == 'show_unread'
+    proposals:     @filter() == 'show_proposals'
+    participating: @filter() == 'show_participating'
 
-  @dashboardDiscussionReaders = (group) =>
-    _.pluck Records.discussionReaders.forDashboard(@dashboardOptions(group)).data(), 'id'
+  @dashboardDiscussionReaders = =>
+    _.pluck Records.discussionReaders.forDashboard(@dashboardOptions()).data(), 'id'
 
-  @dashboardDiscussions = (group) =>
-    Records.discussions.findByDiscussionIds(@dashboardDiscussionReaders(group))
+  @dashboardThreads = =>
+    Records.discussions.findByDiscussionIds(@dashboardDiscussionReaders())
                        .simplesort('lastActivityAt', true)
+                       .limit(@loadedCount())
                        .data()
 
-  @dashboardGroups = ->
-    _.filter CurrentUser.groups(), (group) -> group.isParent()
+  @discussionsFor = (timeframe) => @[_.camelCase(timeframe)]()
+  @timeframes = ['today', 'yesterday', 'this_week', 'this_month', 'older']
 
-  timeframe = (options = {}) ->
+  timeframe = (options = {}) =>
     today = moment().startOf 'day'
-    (discussion) ->
-      discussion.lastInboxActivity()
-                .isBetween(today.clone().subtract(options['fromCount'] or 1, options['from']),
-                           today.clone().subtract(options['toCount'] or 1, options['to']))
+    =>
+      _.filter @dashboardThreads(), (thread) ->
+        thread.lastInboxActivity()
+              .isBetween(today.clone().subtract(options['fromCount'] or 1, options['from']),
+                         today.clone().subtract(options['toCount'] or 1, options['to']))
 
   @today     = timeframe(from: 'second', toCount: -10, to: 'year')
   @yesterday = timeframe(from: 'day', to: 'second')

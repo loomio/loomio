@@ -9,5 +9,6 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
              :read_items_count,
              :read_salient_items_count,
              :last_read_sequence_id,
-             :volume
+             :volume,
+             :participating
 end

@@ -1,0 +1,18 @@
+.thread-preview-collection-container {
+  margin: 10px auto;
+  max-width: $main-max-width;
+}
+
+.thread-previews-container {
+  @include card;
+  padding: 0;
+  margin-bottom: 26px;
+  margin-top: 9px;
+}
+
+.thread-preview {
+  padding: 13px 13px;
+  border-bottom: 1px solid $border-color;
+  position: relative;
+  &:hover { background-color: $list-hover-color; }
+}
