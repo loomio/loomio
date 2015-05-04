@@ -149,6 +149,9 @@ vi:
     header: Chào mừng đến với Trang Chủ của bạn
   user_profile:
     change_password: Thay đổi mật khẩu của bạn
+  start_group_form:
+    success:
+      header: "Bạn đã sắp hoàn tất! Hãy kiểm tra email của mình."
   setup_steps_title: "Các bước tiếp theo:"
   setup_step_1: Thử dùng một thảo luận dạng mẫu
   setup_step_2: Bắt đầu phần thảo luận đầu tiên của bạn
@@ -324,12 +327,6 @@ vi:
     invitation: Gợi ý về cách viết các lời mời để kết nối thêm thành viên
     proposal: Gợi ý về việc viết lời đề nghị theo hướng rõ ràng nhất
     vote: Bạn có thể thay đổi kiến nghị của bạn vào bất kỳ thời điểm nào
-  pricing_page:
-    organisations: Các tổ chức
-    organisations_examples: "ví dụ như doanh nghiệp, các cơ quan đại diện chính phủ, các tổ chức hoạt động vì cộng đồng"
-    informal_groups: Thông báo nhóm
-    informal_groups_desc: Thành viên trong nhóm của bạn có thể sẽ nhận được yêu cầu chi trả khi những thành viên đó có thể thực hiện
-    informal_groups_examples: "ví dụ như gia đình, các hoạt động xã hội, các tổ chức thu thập"
   contribution:
     any_amount: hoặc sử dụng tùy chọn cống hiến một lần theo dạng
     currency_desc: Số lượng được tính bằng đơn vị đồng đô la Mỹ
@@ -359,8 +356,6 @@ vi:
   confirmation_not_received: Không nhận được hướng dẫn xác nhận?
   unlock_not_received: Không nhận được hướng dẫn mở khóa?
   invitation:
-    no_invitations_left: "Rất tiếc, bạn không còn lời mời nào"
-    no_invitations_left_get_more: "Vui lòng gửi email đến contact@loomio.org và chúng tôi sẽ xem xét trường hợp của bạn"
     invitation_not_found: Không thể tìm thấy lời mời nào khớp với mã xác nhận đó. Hãy yêu cầu người gửi gửi lại cho bạn một lời mời mới.
     invitation_cancelled: Lời mời tham gia này đã bị hủy bỏ. Vui lòng liên hệ người gửi về lời mời tham gia nhóm nếu bạn nghĩ rằng đã có lỗi xảy ra.
     recipients: "Điền vào các địa chỉ email, tách biệt bởi dấu phẩy:"
@@ -431,8 +426,6 @@ vi:
         password: Mật khẩu
         password_confirmation: Xác nhận mật khẩu
         language_preference: Ngôn ngữ
-      group_request:
-        name: Tên của nhóm bạn là gì?
     placeholders:
       membership_request:
         introduction: "Viết một vài dòng về thông tin cá nhân của bạn cũng như lý do tại sao bạn muốn tham gia %{group_name}."
@@ -482,10 +475,6 @@ vi:
     proposal_closing_soon:
       closes_in: Đóng lại vào
       summary: Tóm tắt
-    verification:
-      header: "Bạn gần như đã hoàn tất!"
-      intro: "Vui lòng click vào đường liên kết xác nhận này để hoàn tất lời đề nghị của bạn:"
-      ignore: Nếu bạn không đề nghị tham gia trên Loomio vui lòng bỏ qua email này.
   about_loomio: Chuyển ngữ bởi Anh Phan
   ago: "%{quantity_of_time} trước"
   approve: Chấp thuậ

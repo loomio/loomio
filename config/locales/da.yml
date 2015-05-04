@@ -4,13 +4,6 @@ da:
     submit: Opdater indstillinger
   explore:
     header: Udforsk offentlige grupper
-  try_it:
-    header: Prøv Loomio
-    start_a_group: Start en gruppe for at træffe beslutninger i dit fællesskab.
-    join_the_community: Deltag i Loomio-fællesskabets gruppe
-    loomio_community_info: Dette er her vi diskuterer og træffer beslutninger omkring Loomio.
-    explore_groups: Find andre grupper på Loomio
-    explore_groups_info: "Tjek alle de seje grupper på Loomio ud og bliv en del af dem!"
   activerecord:
     errors:
       messages:
@@ -258,6 +251,12 @@ da:
       memberships: Du vil ikke længere blive vist som et medlem i nogle af de grupper som du i øjeblikket tilhører.
       group_contributions: "De kommentarer, forslag og diskussioner, som du er kommet med i grupper forbliver, men vi vil fjerne dit navn fra dem."
       emails: Vi vil stoppe med at sende dig Loomio-relaterede mails.
+  start_group_form:
+    header: Start en ny gruppe
+    name: Dit navn
+    group_name: Gruppenavn
+    success:
+      header: "Du er næsten færdig! Tjek din email."
   group_form:
     name: Gruppenavn
     description: Beskrivelse
@@ -594,12 +593,7 @@ da:
     proposal: Tips til at skrive et klart forslag
     vote: Du kan ændre dit standpunkt når som helst
   pricing_page:
-    intro: "Grupper med et budget betaler et abonnement for at bruge værktøjet.\nGrupper uden midler til at betale et abonnement bruger\nbetal-hvad-du-kan-modellen: deres medlemmer inviteres til at give frivillige bidrag. Dit bidrag sikrer at vi kan holde Loomio uafhængigt, reklamefrit og drevet af vores fællesskab.\n"
-    organisations: Organisationer
-    organisations_examples: "f.eks. virksomheder, offentlige myndigheder, lokalorganisationer"
-    informal_groups: Uformelle grupper
-    informal_groups_desc: Medlemmer af din gruppe vil blive bedt om at betale hvad de kan
-    informal_groups_examples: "f.eks. familie, sociale bevægelser, kollektiver"
+    header: Priser
   contribution:
     any_amount: eller et tilpasset engangsbidrag på
     currency_desc: Mængder er i amerikanske dollars
@@ -654,8 +648,6 @@ da:
   invitation:
     alternate: "Alternativ kan du dele dette link, og alle kan anmode om medlemskab:"
     by_email: Inviter via email
-    no_invitations_left: "Beklager, du har ikke flere invitationer tilbage"
-    no_invitations_left_get_more: "Kontakt venligst contact@loomio.org og vi vil se hvad vi kan gøre for at hjælpe dig"
     invitation_not_found: Kunne ikke finde en invitation med denne token. Bed venligst om en ny invitation fra afsenderen.
     invitation_cancelled: Denne invitation er blevet annulleret. Kontakt venligst invitationens afsender hvis du mener dette er en fejl.
     invitation_already_used: Denne invitation er allerede blevet anvendt. Log ind for at fortsætte til din gruppe.
@@ -699,7 +691,6 @@ da:
       submit: Send besked
     messages:
       email_html: "Udfyld denne formular eller send en e-mail til <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Du kan også være med på <br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a> og <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: Start en diskussion
@@ -774,20 +765,12 @@ da:
         password: Adgangskode
         password_confirmation: Bekræft adgangskode
         language_preference: Sprog
-      group_request:
-        admin_name: Hvad er dit navn?
-        admin_email: Hvad er din email-adresse?
-        name: Hvad er navnet på din gruppe?
-        description: Hvis du har et øjeblik så fortæl os om din gruppe
-        is_commercial: Hvor planlægger du at anvende Loomio?
     placeholders:
       membership_request:
         introduction: "Skriv nogle få ord om hvem du er og hvorfor du ønsker at blive medlem af %{group_name}."
       motion:
         name: Hvad er din anbefalede handlingsplan?
         description: Giv nok information så alle ved præcis hvad det vil sige at være enig eller uenig.
-      group_request:
-        description: Vi ville elske at høre om din gruppe og hvorfor du ønsker at bruge Loomio.
   helpers:
     submit:
       discussion:
@@ -881,10 +864,6 @@ da:
       specify_outcome: "Dit forslag er lukket. Angiv et resultat for at lade alle vide hvad resultatet er:"
       outcome_created: "%{who} har angivet resultatet af et forslag:"
       you_agreed: "Dit standpunkt var %{past_tense_position}"
-    verification:
-      header: "Du er næsten færdig!"
-      intro: "Klik venligst på dette bekræftelseslink for at færdiggøre din anmodning:"
-      ignore: Hvis du ikke anmodede om at blive oprettet på Loomio kan du ignorere denne e-mail.
   meta_tags:
     default_title: "Loomio | Fælles beslutningstagning"
     default_description: Loomio er et nemt onlineværktøj til beslutnigsprocesser i grupper. Det tillader spredte grupper at nå til beslutninger hurtigt og handle konstruktivt.
@@ -947,7 +926,6 @@ da:
   start_a_group: Start en gruppe
   starting: Starter
   subject: Emne
-  terms_of_service_html: "Ved at klikke %{button_text}, erklærer du dig indforstået med Loomio's <a href='%{link_path}' target='_blank'>Servicevilkår</a>"
   thanks: "Tak!"
   unlike: Synes ikke om
   time_until_close: "%{quantity_of_time} indtil lukning"
@@ -962,6 +940,7 @@ da:
     settings: Indstillinger
     dashboard: Instrumentbræt
     unread: Ulæst
+    find_out_more: Få mere at vide
     filter: "Filter:"
     following: Følger
     not_following: Følger ikke

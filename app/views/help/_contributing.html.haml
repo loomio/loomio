@@ -1,5 +1,5 @@
-%section#contributing
-  %h1= t :"new_help.contributing.title"
+%section{"role" => "region", "aria-labelledby" => "contributing"}
+  %h2#contributing= t :"new_help.contributing.title"
   %p= t :"new_help.contributing.body.intro"
   %ul#how-to-contribute
     %li
@@ -12,4 +12,5 @@
       %strong
         %a{href: "#loomio-community"}= t :"new_help.contributing.body.loomio_community.title_html"
   .row#bottom-links
-    %a.back-to-top{:href => "#contents"}= t :"new_help.back_to_top"
+    .col-sm-6
+      %a.back-to-top{:href => "#contents"}= t :"new_help.back_to_top"

@@ -3,13 +3,6 @@ hr:
     title: Postavke emaila
   explore:
     header: Istraži javne grupe
-  try_it:
-    header: Isprobaj Loomio
-    start_a_group: Započni grupu za donošenje odluka u vlastitoj zajednici.
-    join_the_community: Pridruži se grupi Loomio zajednice
-    loomio_community_info: Ovdje raspravljamo i donosimo odluke o Loomiu.
-    explore_groups: Istraži druge grupe na Loomiu.
-    explore_groups_info: "Pregledaj odlične Loomio grupe i pridruži se!"
   activerecord:
     errors:
       messages:
@@ -267,6 +260,11 @@ hr:
       memberships: Više nećete biti na popisu članova grupa kojima trenutačno pripadate.
       group_contributions: "Komentari, prijedlozi i rasprave koje ste napravili ostat će u grupi, ali će s njih biti maknuto vaše ime."
       emails: Prestat ćemo vam slati email poruke vezane uz Loomio.
+  start_group_form:
+    header: Počni novu grupu
+    group_name: Ime grupe
+    success:
+      header: "Još malo! Provjerite email."
   group_form:
     name: Ime grupe
     description: Opis

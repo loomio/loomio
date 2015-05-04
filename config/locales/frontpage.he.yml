@@ -29,8 +29,6 @@ he:
       step3:
         header: 3. להחליט יחדיו
         desc: פתחו את ההצעה יחדיו כך שתתאים לכולם. לכל החלטה יש זמן קצוב ומוגדר מראש כך שתמיד תקבלו תוצאה חד-משמעית
-    crowdfunding:
-      header: אנחנו נעזרים במימון ציבורי על מנת לסיים לבנות את המערכת החדשה ולהעניק אותה לעולם
     quote:
       header:
         rushkoff_html: "“Loomio <strong>ממצה את את הפוטנציאל של האינטרנט </strong> להביא אנשים לידי קונצנזוס במקום לדיון מקוטב”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">דאגלאס ראשקוף</a>, מחבר <em>Present Shock</em></div>"

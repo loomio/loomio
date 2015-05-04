@@ -1,8 +1,6 @@
 bg-BG:
   email_settings:
     submit: Обновяване на настройки
-  try_it:
-    loomio_community_info: "Това е мястото, където дискутираме и вземаме решения относно Loomio."
   activerecord:
     errors:
       messages:
@@ -362,8 +360,6 @@ bg-BG:
   confirmation_not_received: Не получихте инструкции за потвърждение?
   unlock_not_received: Не получихте инструкции за отключване?
   invitation:
-    no_invitations_left: "Съжалявам, нямате повече останали покани"
-    no_invitations_left_get_more: "Моля пишете на contact@loomio.org и ние ще видим какво можем да направим да ви помогнем"
     invitation_not_found: Покана с такъв код не е открита. Моля поискайте от изпращача да ви изпрати нова покана.
     invitation_cancelled: "Тази покана е отменена. Моля свържете се с изпратилия я ако считате, че това е станало погрешка."
     invitees_placeholder: "Потребителско Име <user1@example.com>, user2@example.com"
@@ -425,8 +421,6 @@ bg-BG:
         password: Парола
         password_confirmation: Потвърждаване на паролата
         language_preference: Език
-      group_request:
-        name: Какво е името на вашата група?
     placeholders:
       membership_request:
         introduction: "Напишете няколко думи за това кой сте и защо искате да се присъедините към %{group_name}."
@@ -473,10 +467,6 @@ bg-BG:
     proposal_closing_soon:
       closes_in: Затваря след
       summary: Резюме
-    verification:
-      header: "Почти готово!"
-      intro: моля кликнете върху този линк за верификация за да финализирате заявката си
-      ignore: Ако не сте изпращали заявка за присъединяване в Loomio моля игнорирайте този e-mail.
   ago: "преди %{quantity_of_time}"
   approve: Одобряване
   author: Автор

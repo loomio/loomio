@@ -9,6 +9,12 @@ Feature: Request Membership to Group
     When I visit the group page
     Then I should see that membership is by invitation only
 
+  Scenario: Member of parent cannot join invitation only subgroup
+    Given I am logged in
+    And I am a member of a group with an invitation only subgroup that is visible to parent members
+    When I visit the subgroup page
+    Then I should see that I need an invitation to join
+
   Scenario: Vistor requests membership to approval required group
     Given I am a visitor
     And an approval required group exists

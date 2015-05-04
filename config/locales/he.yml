@@ -4,13 +4,6 @@ he:
     submit: עדכון הגדרות
   explore:
     header: גלו קבוצות ציבוריות
-  try_it:
-    header: נסו את Loomio
-    start_a_group: צרו קבוצה וקבלו החלטות בקהילה שלכם
-    join_the_community: הצטרפו לקבוצת הקהילה של Loomio
-    loomio_community_info: כאן אנו מתדיינים ומקבלים החלטות בנוגע לLoomio
-    explore_groups: גלו קבוצות אחרות בLoomio
-    explore_groups_info: "בדקו את כל הקבוצות המדהימות בLoomio והצטרפו אליהן!"
   activerecord:
     errors:
       messages:
@@ -258,6 +251,12 @@ he:
       memberships: הרישום לכל הקבוצות להן אתם רשומים יבוטל.
       group_contributions: "ההערות, ההצעות והשיחות שהוספת לקבוצה לא ימחקו, אבל נסיר את שמך מהם."
       emails: נפסיק לשלוח לך דוא״ל הקשור ל Loomio.
+  start_group_form:
+    header: התחילו קבוצה חדשה
+    name: שמך
+    group_name: שם הקבוצה
+    success:
+      header: כמעט סיימת. הודעה נשלחה לתיבת הדוא״ל שלך.
   group_form:
     name: שם הקבוצה
     description: תיאור
@@ -479,7 +478,7 @@ he:
   hint:
     discussion: טיפים להתחלת דיון מרתק
   pricing_page:
-    informal_groups_desc: חברי הקבוצה שלך יתבקשו לשלם כפי יכולתם
+    header: תמחור
   new_password: סיסמא חדשה
   confirm_new_password: אישרור סיסמא חדשה
   change_your_password: שינוי סיסמא
@@ -495,7 +494,6 @@ he:
   invitation:
     alternate: "לחליפין, שיתוף הקישור הזה יאפשר לכל אחד לבקש להצטרף"
     by_email: הזמנה בדוא״ל
-    no_invitations_left_get_more: "נא פנו ל contact@loomio.org (עדיף באנגלית) ואנחנו נבדוק איך נוכל לעזור"
     invitation_not_found: "לא נמצאה הזמנה, אנא בקשו שישלחו לכם הזמנה חדשה."
     invitation_cancelled: הזמנה זו בוטלה. נא ליצור קשר עם השולח אם זו נראית לך טעות.
     recipients: "נא להזין כתובות דוא״ל, מופרדות בפסיקים:"
@@ -576,10 +574,6 @@ he:
         password: סיסמא
         password_confirmation: סיסמא בשנית
         language_preference: שפה
-      group_request:
-        admin_name: מה שמך?
-        admin_email: מה הדואל שלך?
-        name: מה שם הקבוצה שלך?
   helpers:
     submit:
       discussion:
@@ -621,9 +615,6 @@ he:
     thread_mailer:
       change_preferences: "שינוי העדפות הדוא״ל שלך:"
       proposal_closed: "ההצעה נסגרה:"
-    verification:
-      header: "כמעט סיימת!"
-      ignore: אם לא ביקשת להצטרף ל-Loomio נא להתעלם מהודעה זו.
   about_loomio: אודות Loomio
   ago: "לפני %{quantity_of_time}"
   approve: אישור

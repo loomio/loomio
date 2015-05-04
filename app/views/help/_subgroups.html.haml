@@ -1,5 +1,5 @@
-%section#subgroups
-  %h1= t :"new_help.subgroups.title"
+%section{"role" => "region", "aria-labelledby" => "subgroups"}
+  %h2#subgroups= t :"new_help.subgroups.title"
   %p= t :"new_help.subgroups.body.intro_html"
   .row
     .col-sm-9
@@ -17,8 +17,4 @@
       %p= t :"new_help.subgroups.subgroup_privacy.body.editing_settings_html"
     .col-sm-3
       =image_tag "edit-subgroup.png", class: "screenshot"
-  .row#bottom-links
-    .col-sm-6
-      %a.back-to-top{:href => "#contents"}= t :"new_help.back_to_top"
-    .col-sm-6
-      %a.feedback-discussion-link{:href => "https://www.loomio.org/d/Yl5D3EC0/new-help-documentation-we-want-your-feedback"}= t :"new_help.feedback_discussion"
+  = render 'help/help_links'

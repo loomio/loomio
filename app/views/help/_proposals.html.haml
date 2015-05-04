@@ -1,5 +1,5 @@
-%section#proposals
-  %h1= t :"new_help.proposals.title"
+%section{"role" => "region", "aria-labelledby" => "proposals"}
+  %h2#proposals= t :"new_help.proposals.title"
   %p= t :"new_help.proposals.intro_html"
   %h3.anchor#starting-proposals= t :"new_help.proposals.starting_proposals.title"
   .row
@@ -63,8 +63,4 @@
       %p= t :"new_help.proposals.previous_decisions.body_html"
     .col-sm-6
       =image_tag "previous-decisions.png", class: "screenshot"
-  .row#bottom-links
-    .col-sm-6
-      %a.back-to-top{:href => "#contents"}= t :"new_help.back_to_top"
-    .col-sm-6
-      %a.feedback-discussion-link{:href => "https://www.loomio.org/d/Yl5D3EC0/new-help-documentation-we-want-your-feedback"}= t :"new_help.feedback_discussion"
+  = render 'help/help_links'

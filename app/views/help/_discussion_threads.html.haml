@@ -1,5 +1,5 @@
-%section#discussion-threads
-  %h1= t :"new_help.discussion_threads.title"
+%section{"role" => "region", "aria-labelledby" => "discussion-threads"}
+  %h2#discussion-threads= t :"new_help.discussion_threads.title"
   .row
     .col-sm-6
       = t :"new_help.discussion_threads.intro_html"
@@ -37,8 +37,4 @@
       %p= t :"new_help.discussion_threads.deleting_discussions.body_html"
     .col-sm-4
       =image_tag "delete-discussion.png", class: "screenshot"
-  .row#bottom-links
-    .col-sm-6
-      %a.back-to-top{:href => "#contents"}= t :"new_help.back_to_top"
-    .col-sm-6
-      %a.feedback-discussion-link{:href => "https://www.loomio.org/d/Yl5D3EC0/new-help-documentation-we-want-your-feedback"}= t :"new_help.feedback_discussion"
+  = render 'help/help_links'

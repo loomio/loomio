@@ -19,6 +19,7 @@ Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   namespace :admin do
+    get 'url_info' => 'base#url_info'
     namespace :stats do
       get :group_activity
       get :daily_activity
@@ -138,6 +139,7 @@ Loomio::Application.routes.draw do
   post 'start_group' => 'start_group#create'
   resources :groups, path: 'g', only: [:create, :edit, :update] do
     member do
+      get :export
       post :set_volume
       post :join
       post :add_members

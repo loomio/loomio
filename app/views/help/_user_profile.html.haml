@@ -1,5 +1,5 @@
-%section#user-profile
-  %h1= t :"new_help.user_profile.title"
+%section{"role" => "region", "aria-labelledby" => "user-profile"}
+  %h2#user-profile= t :"new_help.user_profile.title"
   .row
     .col-sm-9
       %p= t :"new_help.user_profile.intro_html"
@@ -29,8 +29,4 @@
       =image_tag "deactivation-button.png", class: "screenshot"
   %h3.anchor#account-reactivation= t :"new_help.user_profile.account_reactivation.title"
   %p= t :"new_help.user_profile.account_reactivation.body_html"
-  .row#bottom-links
-    .col-sm-6
-      %a.back-to-top{:href => "#contents"}= t :"new_help.back_to_top"
-    .col-sm-6
-      %a.feedback-discussion-link{:href => "https://www.loomio.org/d/Yl5D3EC0/new-help-documentation-we-want-your-feedback"}= t :"new_help.feedback_discussion"
+  = render 'help/help_links'

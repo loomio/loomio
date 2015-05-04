@@ -1,19 +1,20 @@
 pt-BR:
   new_help:
-    how_to:
-      title: Como faço para começar?
+    title: Como podemos ajudá-lo?
+    how_loomio_works:
+      title: Como o Loomio funciona
       start_group_link: Iniciar um grupo
       start_group_description: para colaborar com as pessoas no Loomio
       invite_people_link: Convidar pessoas
-      invite_people_description: em seu grupo
+      invite_people_description: no seu grupo
       start_discussion_link: Iniciar uma discussão
       start_discussion_description: em qualquer tópico
       make_proposal_link: Faça uma proposta
       make_proposal_description: para ver como todos se sentem sobre um determinado curso de ação
       decide_together_link: "Decidir em conjunto:"
-      decide_together_description: "qualquer um pode concordar, abster-se, discordar, ou bloquear – assim você pode ver como todos se sentem sobre a proposta."
+      decide_together_description: "qualquer um pode concordar, abster-se, discordar ou bloquear – para que você possa ver como todos se sentem sobre a proposta."
     contents:
-      title: Precisa de mais informações?
+      title: Índice
       getting_started:
         title_html: Primeiros passos
         starting_new_group_html: Quando você quer começar um novo grupo no Loomio
@@ -91,7 +92,7 @@ pt-BR:
       loomio_development:
         title_html: Acompanhar o desenvolvimento do Loomio
       faq:
-        title_html: Perguntas Mais Frequentes
+        title_html: Perguntas Frequentes
     getting_started:
       title: Primeiros passos
       intro: "Na primeira vez que você entra no Loomio, você pode aderir de algumas maneiras.\nAqui estão algumas informações sobre cada ponto de entrada:\n"
@@ -186,42 +187,59 @@ pt-BR:
           body_html: "Se você deseja enviar um e-mail para todos os membros de seu grupo, você pode fazê-lo a partir da página <strong>\"Membros\"</strong>.\nClicando no botão <strong>\"Enviar e-mail para membros do grupo\"</strong>, no canto superior direito da página, permite que você componha e envie uma mensagem para todos no seu grupo.\n"
         group_coordinators:
           title: Adicionar/remover coordenadores
+          body_html: "Apenas coordenadores podem adicionar e remover coordenadores.\nNa página <strong>“Membros”</strong>, ao lado de todos os membros que ainda não são coordenadores, haverá um botão <strong>\"Faça coordenador\"</strong>.\nClicar neste botão dará as permissões de coordenador ao membro correspondente.\nAo lado de cada coordenador haverá um botão <strong>\"Remover coordenador</strong>.\nClicar neste botão remove as permissões de coordenador para o coordenador correspondente.\n"
         group_members:
           title: Adicionar/remover membros do grupo
+          body_html: "Apenas coordenadores podem remover membros do grupo.\nNa página <strong>“Membros”</strong>, ao lado de todos os membros do grupo haverá um botão <strong>“Remover”</strong>.\nClicar neste botão remove o correspondente membro do grupo.\n"
       deactivating_groups:
         title: Desativando/arquivando um grupo
+        body_html: "Desativar o seu grupo significa que os membros do grupo não poderão mais acessar o seu grupo.\nSe você é um coordenador do grupo e deseja desativar o seu grupo, você pode fazê-lo selecionando <strong>\"Desativar grupo\"</strong> no menu da página do grupo em <strong>\"Opções\"</strong>.\nGrupos desativados podem ser restaurados por um membro da equipe Loomio.\nPara reativar o seu grupo desativado, entre em contato com a equipe Loomio enviando um e-mail para <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>.\n"
       coordinator_tips:
         title: Dicas para envolver o seu do grupo
         customise_invitation:
           title_html: Personalizar sua mensagem de convite
         engaging_proposal:
           title: "Criar uma primeira proposta atraente:"
+          body: "As pessoas vão estar animadas para entrar e começar a participar quando há uma proposta envolvente.\nUma boa proposta contém um plano de ação para o grupo, de modo que é imediatamente óbvio o que significa concordar ou discordar.\nPense em como você pode identificar discussões/decisões que o grupo atualmente realiza ao vivo ou por e-mail que seriam mais fáceis se estivessem no Loomio.\nAlternativamente, se o seu grupo quer se acostumar a usar a ferramenta antes de usá-la para tratar decisões reais, você poderia começar uma decisão despreocupada para dar a todos a chance de brincar com a ferramenta e ver o processo de tomada de decisão em ação.\n"
         encourage_mentioning:
           title_html: "Estimular <a href=\"#mentioning\">@menção</a>:"
           body: "Outra forma simples de encorajar as pessoas a se envolverem em uma discussão é usar o recurso de @menção para solicitar pessoas específicas; isso irá enviar um e-mail para dizer-lhes que foram mencionados em um comentário."
     inviting_members:
       title: Convidando membros novos
       body:
+        intro_html: "Dependendo das suas <a href=\"#group-settings\">configurações de grupo</a>, novos membros podem ser convidados por todos no grupo ou apenas por coordenadores.\nA página de <strong>Convites</strong> é acessada clicando no botão <strong>\"Convidar pessoas\"</strong> na página do seu grupo.\n"
         invitation_instructions_html: "Para convidar novas pessoas para o seu grupo, insira os endereços de e-mail, separados por vírgulas.\nVocê pode optar por usar o padrão de mensagem do Loomio ou criar uma mensagem personalizada.\n"
+        customising_invitations_html: "Personalizar a mensagem de convite pode ser uma grande oportunidade de envolver novos membros desde o início.\nA primeira pergunta que cada novo membro terá é <strong><i>\"para que serve esse grupo?\"</i></strong>.\nPense sobre a maneira mais simples você pode descrever o grupo: <strong><i>\"O que vocês querem alcançar em conjunto?\nQue tipos de decisões vocês vão fazer? Quem estará envolvido? </i></strong> As pessoas vão querer saber por que foram convidadas, o que se espera delas e por que vale a pena tomar o tempo delas para aprender a usar uma nova ferramenta.\n"
         invitation_link: "Quando você enviar os formulários de convites, um e-mail será enviado para cada um dos endereços de e-mail que você forneceu, contendo a sua mensagem e um link de convite único:"
       importing_contacts:
         title: Importando contatos
+        body:
+          intro_html: "Importar seus contatos do Google no Loomio torna muito mais fácil adicionar pessoas aos seus grupos.\nUma vez que os contatos tanham sido importados você não precisa preencher endereços de e-mail individuais; você pode simplesmente começar a digitar nomes e sugestões irão aparecer.\nVocê pode importar seus contatos do Google a partir da página <strong>\"Convidar pessoas\"</strong>.\n"
+          instructions_html: "Clique no link <strong>\"Importar seus contatos do Google\"</strong> sob o campo de endereços de e-mail.\nVocê será solicitado a conceder permissão ao Loomio para ver sua lista de contatos.\nLoomio usará essas informações para nenhum outro fim que não seja ajudá-lo a selecionar pessoas para adicionar ao seu grupo.\n"
       pending_invitations:
         title: Convites pendentes
+        body_html: "Você pode ver uma lista de pessoas que foram convidadas para participar do seu grupo, mas ainda não aceitaram o convite no painel <strong>\"Convites pendentes\"</strong> na parte inferior da página de índice <strong>\"Membros\"</strong>.\nPara acessar a página <strong>\"Membros\"</strong> e visualizar os convites pendentes, clique no link <strong>\"Mais...\"</strong> no painel <strong>\"Membros\"</strong> sobre o lado direito da página do seu grupo.\n"
     discussion_threads:
       title: Tópicos de discussão
+      intro_html: "<p>Tópicos de discussão são onde seu grupo se reúne para discutir um tema, trocar idéias e informações, e tomar decisões.</p>\n<p> No topo da página está o título do tópico, seguido pelo painel de contexto . A discussão ocupa o lado esquerdo da página. Quando há uma decisão para o grupo tomar, a proposta surge à direita.</p>\n<p>O criador do grupo determina as <a href=\"#group-permissions\">permissões de discussão</a> quando configura o seu grupo e qualquer coordenador do grupo pode editar estas configurações a qualquer momento.</p>\n"
       starting_discussions:
         title: Começando uma discussão
+        body_html: "Se você deseja iniciar uma nova discussão, você pode fazer a partir do <a href=\"#dashboard\">painel</a> ou da página do seu grupo, clicando no botão <strong>\"Iniciar uma discussão\"</strong> no lado direito de cada página.\nSe você iniciar uma discussão do painel, você será solicitado a escolher o grupo no qual a discussão deve ocorrer.\n"
       providing_context:
         title: Fornecendo contexto
+        body_html: "<p>Uma vez que você clicou no botão <strong>\"Iniciar uma discussão\"</strong>, o formulário subseqüente exige que você forneça um <strong>título</strong> e <strong>contexto</strong> para a sua discussão.\nCertifique-se que o título faz referência ao tema de forma sucinta – qual é a mensagem central?\nTítulos longos de discussão ficarão truncados no painel de instrumentos.</p>\n<p>O campo de contexto permite elaborar sobre o título e fornecer todas as informações pertinentes.\nTente fornecer todos os elementos de que alguém pode precisar para participar de forma significativa – tudo que é necessário para que o grupo tenha uma discussão produtiva e embasada.</p>\n<p>O título da discussão e as informações que você fornecer para o campo de contexto vão estar em um. painel no topo da página de discussão.</p>\n<p>Enquanto a discussão avança, o painel de contexto pode ser atualizado conforme novas informações vêm à luz.\nAlém de esclarecer o assunto, você pode usar este espaço para compartilhar recursos, resumir a discussão à medida que progride ou descrever os protocolos de tomada de decisão que seu grupo está utilizando.</p>\n<p> Loomio usa <strong>Remarcadores</strong> para deixá-lo formatar textos e embutir imagens.\nVocê pode usar Remarcadores no painel de contexto para formatar o seu contexto de discussão ou para incorporar imagens.\nClique <a href=\"https://www.loomio.org/d/Wh7vHaTk/markdown-text-formatting-made-easy\">aqui</a> para mais informações sobre como usar Remarcadores.</p>\n"
       discussion_privacy:
         title: Privacidade da discussão
+        body_html: "Privacidade de discussão é determinado por <a href=\"#group-privacy\">privacidade do grupo</a>.\nSe você está iniciando uma discussão em um grupo público, em seguida você pode escolher se a sua discussão é pública (ou seja, é pesquisável e ninguém pode vê-la) ou privada (visível apenas para os membros do seu grupo).\n"
       editing_discussions:
         title: Editando uma discussão
+        body_html: "<p> Os membros do grupo podem editar a qualquer momento título, contexto e privacidade de qualquer discussão que iniciaram.\nCoordenadores do grupo podem editar o título, o contexto e privacidade de todas as discussões que ocorrem em grupos que coordenam.\nO criador do grupo determina se membros do grupo podem ou não editar discussões uns dos outros (ver <a href=\"#group-settings\">configurações do grupo</a>) e qualquer coordenador do grupo pode alterar as permissões em torno da edição de discussões. </p>\n<p>A opção de editar uma discussão só será visível para os membros do grupo com as permissões corretas.\nSe você tem as permissões corretas para editar uma discussão, então você pode fazê-lo clicando no ícone de engrenagem no canto superior direito da página de discussão e, em seguida, selecione a opção <strong>\"Editar discussão\"</strong> no menu suspenso.</p>\n"
       moving_discussions:
         title: Movendo uma discussão
+        body_html: "Para avançar uma discussão de um grupo para outro grupo, você deve ser o autor da discussão ou um coordenador do grupo em que a discussão foi criada.\nVocê também pode apenas mover discussões entre grupos você é membro.\nSe você quer mover uma discussão, clique no ícone de engrenagem no canto superior direito da página de discussão e, em seguida, selecione <strong>\"Mover discussão\"</strong>.\nVocê será solicitado a escolher para qual dos seus grupos você deseja mover a discussão.\nSe você mover uma discussão pública para um grupo com discussões definidas para <strong>\"Apenas privadas\"</strong>, então a discussão será privada.\n"
       deleting_discussions:
         title: Deletando uma discussão
+        body_html: "Somente coordenadores dos grupos podem excluir discussões.\nQuando uma discussão é excluída, ela é removida e não pode ser restaurada.\nSe você é um coordenador de grupo e deseja excluir uma discussão, visite a página de discussão, clique no ícone de engrenagem e selecione a opção <strong>\"Excluir discussão\"</strong> no menu suspenso.\n"
     comments:
       title: Comentários
       posting_comments:
@@ -229,54 +247,73 @@ pt-BR:
         body: Você pode adicionar sua voz a uma discussão usando a caixa de comentário na parte inferior de uma página de discussão.
       markdown:
         title: Remarcação
+        body_html: "Loomio utiliza <strong>Remarcação</strong> para você formatar textos e embutir imagens.\nPara habilitar Remarcação, marque a caixa ao lado da palavra <strong>“Remarcação”</strong> abaixo da caixa de comentário.\nClique <a href=\"https://www.loomio.org/d/Wh7vHaTk/markdown-text-formatting-made-easy\">aqui</a> para mais informações sobre como utilizar Remarcação.\n"
       attaching_files:
         title: Anexando arquivos
         body: "Loomio permite anexar arquivos para comentários em uma discussão.\nVocê pode anexar um arquivo a um comentário clicando no ícone de clipe abaixo da caixa de comentário na parte inferior da página de discussão e selecionar o arquivo a partir do seu dispositivo.\n"
       mentioning_group_members:
         title: "@mencionando membros do grupo"
+        body_html: "Se você quiser chamar a atenção de uma pessoa específica no seu grupo, digite <strong>'@'</strong> na caixa de comentário, seguido pelo nome.\nLoomio vai autocompletar o nome de usuário em quetão.\nEles serão notificados que você mencionou-os em um comentário.\n"
       editing_comments:
         title: Editando um comentário
+        body_html: "Para corrigir erros de digitação, você pode editar um comentário após ser postado.\nPor padrão, os grupos são configurados para que um comentário só possa ser editado até que alguém contribua com um comentário para a discussão.\nCoordenadores de grupo também podem <a href=\"#group-permissions\">configurar grupos permitindo que usuários editem seus próprios comentários a qualquer momento</a>.\nO ícone de lápis para editar um comentário será visível no canto direito do comentário, se você tiver permissão para editá-lo.\nComentários que foram editados aparecem com a palavra <strong>\"Editado\"</strong> abaixo deles.\nClicar em <strong>\"Editado\"</strong>, abaixo de um comentário, irá exibir todas as versões anteriores do comentário.\n"
       liking_comments:
         title: Curtindo um comentário
         body:
           liking_html: "Clicar <strong>\"Curtir</strong> abaixo de um comentário é uma maneira simples de deixar outros membros de seu grupo saberem que você aprecia ou entende o que eles disseram, sem deixar um comentário."
+          unliking_html: "Quando você <strong>\"Curtir\"</strong> um comentário, o fato de que você <strong>\"Curtiu\"</strong> estará visível abaixo do comentário.\nVocê pode desfazer a ação <strong>\"Curtir\"</strong> clicando em <strong>\"Não curtir\"</strong> em um comentário o qual você gostou anteriormente.\n"
       deleting_comments:
         title: Apagar um comentário
+        body_html: "Você pode apagar os seus próprios comentários a qualquer momento, clicando no <strong>\"X\"</strong> no canto direito do comentário.\nCoordenadores do grupo podem apagar qualquer comentário postado em discussões que ocorrem em grupos que coordenam.\n"
     proposals:
       title: Propostas
+      intro_html: "Propostas ocorrem em um <a href=\"#discussion-threads\">tópico de discussão</a>, que engloba tanto a discussão quanto a proposta.\nSó pode haver uma proposta ativa em um único tópico de discussão.\nLoomio incentiva os grupos a usarem uma discussão inicial para considerar várias opções.\nA proposta é um curso de ação proposta que emerge naturalmente quando parece que a idéia se está ganhando força.\n"
       starting_proposals:
         title: Iniciar uma proposta
         body:
           instructions_html: "Quando o grupo está pronto para tomar uma decisão, você pode levantar uma proposta clicando no botão <strong>\"Criar uma proposta\"</strong> no lado direito da página de discussão."
+          additional_info_html: "<p>Quando você cria uma nova proposta, você será solicitado a fornecer uma <strong>título</strong>, uma <strong>data de encerramento</strong> e quaisquer relevantes <strong>detalhes</strong>.\nÉ uma boa idéia usar um título curto, indicando um caminho claro de ação para que as pessoas saibam de imediato exatamente o que significa concordar ou discordar.\nO campo <strong>\"Detalhes\"</strong> pode ser usado para fornecer qualquer informação de fundo para que todos tenham o contexto necessário para tomar uma decisão bem fundamentada.</p>\n<p>Tenha em mente que não é o fim do mundo se a proposta não chegar a um acordo claro imediatamente. Se o grupo não amar a primeira proposta, uma nova proposta pode ser iniciada para resolver as questões levantadas e manter o avanço do processo.\nO prazo da proposta também pode ser estendido se parecer que a decisão precisa de mais algum espaço.</p>\n<p>Todos vão receber uma notificação por e-mail 24 horas antes de uma proposta ser encerrada.</p>\n"
       editing_proposals:
         title: Editar uma proposta
         body:
+          intro_html: "Coordenadores do grupo e o autor da proposta podem editar os detalhes da proposta até que um membro do grupo afirme a sua posição.\nNo entanto, o tempo limite para a proposta pode ser alterada por um coordenador do grupo ou o autor da proposta a qualquer momento ao longo da proposta.\nUma proposta também pode ser fechada antes da hora de encerramento prevista, caso torne-se claro que não está satisfazendo as necessidades do grupo.\n"
           instructions_html: "A página <strong>\"Editar proposta\"</strong> é acessada via link <strong>\"Editar\"</strong> dentro do painel <strong>\"Decisão atual\"</strong> no lado direito da página."
       stating_positions:
         title: Declarar sua posição
         body:
           intro_html: "Quando você está pronto para dar a sua opinião, clique em um dos quatro botões de decisão sob a proposta:"
+          additional_info_html: "<p>Quando você tiver selecionado a sua posição, você será solicitado a dar uma breve explicação sobre porque você acha isso.</p>\n<p>Abaixo do gráfico circular, você pode ver o que todo mundo pensa.\nIsto torna mais fácil acompanhar uma discussão.\nÀ medida que novas informações vêm à luz, você pode mudar a sua posição a qualquer momento ao longo da proposta.</p>\n"
       changing_positions:
         title: Modificar sua posição
+        body_html: "Se você deseja alterar a sua posição, você pode clicando em <strong>\"editar\"</strong> ao lado de sua declaração de posição no painel <strong>\"Decisão atual\"</strong> ao lado direito da página."
       setting_outcome:
         title: Definir um resultado da proposta
+        body_html: "Quando uma proposta termina, ela permanecerá no lado direito da página de discussão, dentro de um painel <strong>\"Decisões anteriores\"</strong>.\nUm campo editável de declaração de resultado aparece abaixo do título da proposta, e a pessoa que levantou a proposta será solicitada via e-mail a fornecer uma declaração do resultado para a sua proposta.\nDesfechos de propostas só podem ser definidos pela pessoa que começou a proposta ou pelos coordenadores do grupo.\nA definição de um resultado de proposta é uma boa oportunidade para atualizar todos os membros do grupo. Assim, todos entendem quais são as implicações da proposta e ficam cientes de quaisquer próximas etapas.\nQuando a instrução do resultado da proposta é submetida, todos no grupo receberão um e-mail notificando-os sobre o resultado.\n"
       closing_proposals:
         title: Encerrar uma proposta
+        body_html: "Apenas o membro do grupo que começou a proposta e os coordenadores do grupo podem fechar uma proposta ativa.\nSe você quiser fechar uma proposta cedo e você tem as permissões corretas, clique em <strong>\"Editar\"</strong> no lado direito do painel <strong>\"Decisão atual\"</strong>.\nNa parte inferior do formulário<strong>\"Editar proposta\"</strong> na página posterior, haverá uma opção para fechar a proposta cedo.\nQuando uma proposta é fechada mais cedo ela vai permanecer no lado direito da página de discussão em um painel <strong>\"Decisões anteriores\"</strong>, mas os participantes não serão mais capazes de apresentar as suas posições.\n"
       previous_decisions:
         title: Propostas encerradas/decisões anteriores
+        body_html: "Quando uma nova proposta é iniciada, todas as propostas anteriores serão reduzidas a um resumo (que mostra o título da proposta, a decisão em gráfico e sua posição) em um painel <strong>\"Decisões anteriores\"</strong> sob o painel <strong>\"Decisão atual\"</strong>."
     subgroups:
       title: Subgrupos
       body:
         intro_html: "Muitas vezes você vai precisar de múltiplos grupos Loomio que estão todos relacionados a uma organização, mas você pode achar que cada grupo tem necessidades diferentes para a adesão, privacidade e permissões.\nÉ assim que os subgrupos são úteis.\n"
+        creation_instructions_html: "Se você deseja criar um sub-grupo dentro de um grupo e você tem as <a href=\"#group-permissions\">permissões corretas</a>, você pode fazê-lo clicando no link <strong>\"Criar um sub-grupo\"</strong> no painel <strong>\"Subgrupos\"</strong> no lado direito da página do seu grupo."
       subgroup_privacy:
         title: Privacidade do sub-grupo
+        body:
+          settings_html: "<p>Configurações de sub-grupo são iguais às <a href=\"#group-settings\">configurações de grupo</a>, mas com ligeiramente diferentes opções de privacidade relativa à visibilidade do sub-grupo em relação ao grupo principal.</p>\n<p>As opções abaixo de <strong>\"Quem pode encontrar esse grupo?\"</strong> (na seção <strong>\"Privacidade\"</strong> no formulário do novo sub-grupo) determina se as pessoas do grupo principal podem ver o sub-grupo.\nQuando a opção <strong>\"Pessoas no [grupo principal]\"</strong> for selecionada, em seguida, o grupo será visível no painel <strong>\"Sub-grupos\"</strong> na página do grupo principal ou quando os membros do principal navegarem até a página do sub-grupo, mesmo que não sejam membros do sub-grupo.</p>\n<p> Há também uma opção de privacidade relativa à privacidade de discussão do sub-grupo.\nSe você decidir que seu grupo deve ser visível para os membros do principal, mas não público, então, no segmento <strong>\"Quem pode ver as discussões?\"</strong> nas configurações de <strong>\"Privacidade\"</strong>, você pode escolher se deseja que as discussões sejam visíveis para os membros do principal ou somente para membros do sub-grupo.\nSe você optar por fazer discussões visíveis apenas para os membros sub-grupo, então membros do principal poderão visualizar a página do sub-grupo, mas não verão nenhum dos tópicos de discussões do sub-grupo.</p>\n<p>Quando a opção <strong>\"Pessoas no [grupo principal]\"</strong> estiver desmarcada, apenas os membros do sub-grupo poderão encontrá-lo.</p>\n"
+          editing_settings_html: "Edição de configurações do sub-grupo é restrita aos coordenadores.\nSe você é um coordenador de sub-grupo e deseja alterar as configurações do seu sub-grupo, clique em <strong>\"Opções\"</strong> no lado direito da página do seu sub-grupo e, em seguida, selecione <strong>\"Editar configurações de grupo\"</strong> no menu suspenso.\n"
     dashboard:
       title: Seu painel
+      body: "Seu painel de instrumentos é a sua página principal. Ele lhe dá uma visão geral do que está acontecendo em seus grupos.\nÉ a página que você vê quando entra pela primeira vez no Loomio. Seu painel exibe o conteúdo de seus grupos em uma lista priorizada.\nAs propostas abertas estão no topo, seguidas por todos os tópicos de discussão de todos os grupos você é membro, classificados por atividade mais recente.\nSe um título de discussão ou proposta estiver cinza, então novas atividades ocorreram desde a última vez que viu esse segmento específico.\nNúmeros acima de um ícone de comentário refletem quantos comentários novos foram lançados desde a última vez que você viu a página correspondente.\nUm gráfico circular é um reflexo do estado do diagrama na proposta correspondente.\nQuando números aparecem acima do gráfico circular, reflete o número de novas tomadas de posição que foram postadas desde a última vez que você viu a página correspondente.\nSe você declarou sua posição sobre uma proposta em particular, você verá um ícone que representa a sua posição em frente ao título da correspondente proposta.\n"
     keeping_up_to_date:
       title: Manter atualizado
       volume:
         title: Volume
         body:
+          intro_html: "<p> O volume controla o quanto você ouve de um grupo ou de uma discussão.</p>\n<p>Existem quatro configurações tanto para <strong>Volume do Grupo</strong> e <strong>Volume da Discussão</strong>.</p>\n<p><strong>Volume do Grupo</strong> pode ser alterado a partir da página do grupo clicando no botão do painel <strong>\"Volume\"</strong> no lado direito da página, e selecionando uma das quatro opções:</p>\n"
           loud_title: Alto
           loud_description: "- este envia-lhe e-mail sempre que há atividade (comentários, votos, novas discussões ou propostas, e resultados de propostas) no grupo."
           normal_title: Normal
@@ -284,45 +321,66 @@ pt-BR:
           quiet_title: Quieto
           quiet_description: "- este torna todos os e-mails desligados. Você verá nova atividade do grupo no painel."
           mute_title: Mudo
+          mute_description_html: "- Isso muda todos os e-mails para desligados. Você só vai ser notificado se alguém @menciona você. Isso também irá remover o grupo do seu painel de instrumentos e do e-mail de resumos <a href=\"#yesterday-on-loomio\">“Ontem no Loomio”</a>."
+          upon_joining_group_html: "Quando você entra em um novo grupo, suas configurações de volume para esse grupo específico será <strong>Normal</strong>.\nIsto significa que você receberá um e-mail quando uma nova discussão é iniciada, quando uma proposta é levantada ou quando um resultado de proposta é definido.\n"
           set_all_group_volume_html: "Você pode definir o volume para todos os seus grupos na sua página <strong><a href=\"#email-settings\">\"Configurações de e-mail\"</a></strong>."
+          discussion_volume_html: "<p>Quando uma discussão inicia, terá a mesma configuração de volume do seu grupo.\nVocê pode personalizar o <strong>Volume da Discussão</strong> de uma discussão particular, clicando no botão que indica o volume atual (no lado direito da página de discussão) e selecionando uma das quatro opções.</p>\n<p>Quando você participa de uma discussão, o <strong>Volume de Discussão</strong> será alterado para <strong>Alto</strong>, então todas as atividades adicionais serão enviadas por e-mail para você.\nVocê pode alterar esse comportamento através da sua página <strong><a href=\"#email-settings\">\"Configurações de e-mail\"</a></strong>.</p>\n"
+          reply_via_email_html: "Você pode responder a quaisquer comentários que você receber diretamente via e-mail, então suas respostas serão postadas na discussão relevante no Loomio.\nAlternativamente, você pode optar por ver o comentário como parte da discussão no Loomio clicando no link <strong>\"Ver no Loomio\"</strong> no rodapé do e-mail.\n"
       email_settings:
         title: Configurações de e-mail
+        body_html: "Sua página <strong>Configurações de e-mail</strong> permite que você crie configurações de notificação de e-mail para grupos e discussões as quais participa.\nPara visitar sua página <strong>Configurações de e-mail</strong>, clique no seu nome no canto superior direito da página e em seguida clique em <strong>\"Configurações de e-mail\"</strong>.\n"
       yesterday_on_loomio:
         title: Ontem no Loomio
+        body_html: "O e-mail <strong>\"Ontem o Loomio\"</strong> é um resumo diário do conteúdo que você não leu desde o dia anterior.\nO e-mail contém tudo o que não está no modo mudo.\nVocê pode ligar ou desligar através da página <strong><a href=\"#email-settings\">\"Configurações de e-mail\"</a></strong>.\n"
     user_profile:
       title: Seu perfil de usuário
+      intro_html: "Sua página de perfil é o que os outros usuários verão quando clicarem em seu nome.\nEla exibe o seu nome, <a href=\"#profile-photo\">imagem do perfil</a>, <a href=\"#usernames\">nome de usuário</a> e a lista de grupos públicos que você integra.\nVocê pode visitar a página do seu perfil clicando no seu nome, no canto superior direito da página e, em seguida, <strong>\"Perfil\"</strong>.\nPré-visualize o que os outros usuários verão clicando no link <strong>\"Ver perfil\"</strong>.\n"
       language_settings:
         title: Configurações de idioma
+        body_html: "Loomio está disponível em diversos idiomas.\nEle irá detectar as configurações de idioma do seu navegador ou você pode configurar manualmente o seu idioma preferido, visitando a sua <a href=\"#user-profile\">página do perfil</a> e selecionando seu idioma através do menu suspenso <strong>“Idioma”</strong>.\n"
       usernames:
         title: Nomes de usuário
+        body_html: "Seu nome de usuário é o nome que as pessoas utilizarão para mencionar (<a href=\"#mentioning\">@menção</a>) você nos comentários.\nVocê pode mudar o seu nome de usuário editando o campo <strong>\"Nome de usuário\"</strong> na sua <a href=\"#user-profile\">página do perfil</a> e clicando no botão <strong>“Utualizar configurações”</strong>.\n"
       updating_personal_settings:
         title: Atualizar suas configurações pessoais
+        body_html: "Você pode atualizar as configurações do nome, nome de usuário, endereço de e-mail e de idioma associados à sua conta, editando os campos correspondentes na sua <a href=\"#user-profile\">página do perfil</a>, e clicando no botão <strong>“Atualizar configurações”</strong>."
       profile_photo:
         title: Carregar uma foto de capa
+        body_html: "Quando você cria uma conta no Loomio, suas iniciais serão a imagem padrão associada ao seu perfil.\nVocê pode carregar uma foto para o perfil clicando no botão <strong>\"Carregar uma nova imagem\"</strong> na seção <strong>\"Foto\"</strong> da sua <a href=\"#user-profile\">página do perfil</a>.\nSe você tem um <a href=\"https://en.gravatar.com\">Gravatar</a>, então você pode usá-lo no lugar de uma imagem carregada ou das iniciais padrão clicando em <strong>\"Use Gravatar\"</strong>.\n"
       changing_passwords:
         title: Mudar sua senha
+        body_html: "Se você estiver logado no Loomio, você pode alterar sua senha a qualquer momento, seguindo o link <strong>\"Alterar senha\"</strong> na sua <a href=\"#user-profile\">página do perfil</a>.\nSe você não estiver conectado, então você pode usar o link <strong>\"Esqueceu sua senha?\"</strong> na <a href=\"http://loomio.org/users/sign_in\">página de acesso</a>.\n"
       account_deactivation:
         title: Desativando sua conta
+        body:
+          instructions_html: "<p>Se você quiser desativar sua conta Loomio você deve se certificar de que você não é o único coordenador de nenhum grupo. Caso contrário, você será impedido de fazê-lo até você designar outro coordenador ou arquivar o grupo.\nSe você não é o único coordenador de nenhum grupo Loomio, você pode desativar a sua conta clicando no botão <strong>\"Desativar conta\"</strong> na sua <a href=\"#user-profile\">página do perfil</a>.</p>\n<p>Quando sua conta for desativada:</p>\n"
+          implications_html: "<li>você deixará de ser listado como membro de qualquer grupo</li>\n<li>comentários, propostas e discussões que você fez permanecerão, mas seu nome será removido deles</li>\n<li>você não receberá mais e-mails relacionados ao Loomio</li>\n<li>você precisará entrar em contato conosco para reativar sua a conta</li>\n"
       account_reactivation:
         title: Reativar sua conta
+        body_html: "Reativação da conta só pode ser feita por um membro da equipe Loomio.\nPara reativar sua conta desativada entre em contato com a equipe Loomio enviando um e-mail para <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>.\n"
     leaving_groups:
       title: Sair de um grupo
+      body_html: "Se você quiser deixar o seu grupo, você deve garantir que você não é o único coordenador do grupo.\nSe você é o único coordenador do seu grupo, você será impedido de sair até você designar outro coordenador ou desativar o grupo.\nSe você não é o único coordenador de um grupo, então você pode deixar o grupo, selecionando a opção <strong>\"Sair do grupo\"</strong> no menu <strong>\"Opções\"</strong> na página do grupo.\n"
     translation:
       title: Tradução
+      body_html: "<p>A tradução do Loomio é feita por uma comunidade incrível de voluntários generosos, usando uma ferramenta chamada <a href=\"https://www.transifex.com\">Transifex</a>.\nSe você estiver interessado em participar do processo de tradução, um bom lugar para começar é ler o nosso <a href=\"https://github.com/loomio/loomio/wiki/Translation\">Guia de tradução</a> e juntar-se ao nosso <a href=\"https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation\">sub-grupo Comunidade de Tradução</a>.\nVocê pode solicitar adesão através da página do grupo e seu pedido será aprovado pelo coordenador do grupo. Você pode apresentar-se e ter uma noção de quem está na mais ampla comunidade de tradução nesta <a href=\"https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation\">discussão de introdução</a>.</p>\n<p>Se você tiver alguma dúvida sobre o processo de tradução, entre em contato com <a href=\"mailto:mix@loomio.org\">mix@loomio.org</a>.</p>\n"
     security:
       title: Privacidade e segurança
+      body_html: "<p>Você pode ver nossa política de Privacidade em <a href=\"https://www.loomio.org/privacy\">www.loomio.org/privacy</a></p>\n<p> Se você tiver preocupações específicas de segurança, recomendamos que você instale sua própria versão do Loomio.\nVocê pode descobrir mais sobre como hospedar sua própria versão no wiki: <a href=\"https://github.com/loomio/loomio/wiki\">github.com/loomio/loomio/wiki</a>.</p>\n"
     contributing:
       title: Contribuir para o Loomio
       body:
         intro: "Atualmente há várias vias através das quais as pessoas podem fazer contribuições diretas para o Loomio:"
         open_source:
           title_html: Desenvolvimento em código aberto
+          body_html: "Se você estiver interessado em contribuir para a base de código do Loomio, o primeiro lugar para começar é dar uma olhada no nosso <a href=\"https://github.com/loomio/loomio\">repositório Github</a>.\nNós utilizamos o <a href=\"https://github.com/loomio/loomio/issues\">rastreador de edições Github</a> para acompanhar tarefas, melhorias e erros, e estamos sempre felizes em apoiar colaboradores externos!\nHá um guia de instalação para você começar no nosso <a href=\"https://github.com/loomio/loomio/wiki\">wiki Github</a> e um sub-grupo público na <a href=\"https://www.loomio.org/g/C7I2YAPN/loomio-community-installing-loomio\">Comunidade Loomio dedicada ao suporte e assistência de instalação</a>, na qual você pode fazer quaisquer perguntas que possam surgir ao longo do caminho.\n"
         translation:
           title_html: Tradução
         loomio_community:
           title_html: A comunidade Loomio
     loomio_community:
       title: A comunidade Loomio
+      body_html: "<p>A <a href=\"https://www.loomio.org/g/WmPCB3IR/loomio-community\">Comunidade Loomio</a> é um grupo público para toda a comunidade de usuários Loomio e simpatizantes se reunirem, discutirem o desenvolvimento do Loomio e colaborarem.\nQualquer um pode participar, basta solicitar adesão através da <a href=\"https://www.loomio.org/g/WmPCB3IR/loomio-community\">página do grupo</a> e um coordenador aprovará o seu pedido.</p>\n<p>Há uma série de sub-grupos públicos da Comunidade Loomio dedicados a diferentes vertentes do ecossistema da comunidade.\nEsses grupos estão abertos para qualquer um aderir; esteja você interessado em contribuir ou apenas curioso sobre o Loomio.\nHá um <a href=\"https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation\">sub-grupo de Tradução</a>, um <a href=\"https://www.loomio.org/g/GN7EFQTK/loomio-community-feature-ideas\">sub-grupo Idéias para Funções</a>, um <a href=\"https://www.loomio.org/g/C7I2YAPN/loomio-community-installing-loomio\">sub-grupo de Instalação do Loomio</a> para suporte e assistência de instalações locais e um sub-grupo para <a href=\"https://www.loomio.org/g/7jWVDr04/loomio-community-group-coordinators\">coordenadores de grupo Loomio</a> para compartilhar dicas de facilitação e truques, para que possamos crescer coletivamente em nosso conhecimento e construir recursos compartilhados em torno das melhores maneiras de usar Loomio juntos.</p>\n<p>Você pode saber mais sobre como funciona a Comunidade Loomio <a href=\"https://www.loomio.org/discussions/5200\">aqui</a>.</p>\n"
     loomio_development:
       title: Acompanhar o Desenvolvimento do Loomio
       intro: "Existem várias maneiras de mante-se a par do progresso do Loomio:"
@@ -333,31 +391,77 @@ pt-BR:
       twitter_html: Loomio no Twitter
       code_climate_html: Código de Clima do Loomio
     faq:
-      title: Perguntas Mais Frequentes
+      title: Perguntas Frequentes
       confirmation_email:
         title: Onde está o meu e-mail de confirmação?
         body: "Se você não receber um e-mail confirmando sua inscrição no grupo, pode ser necessário verificar a sua pasta de spam ou lixo eletrônico – às vezes eles vão para lá."
       approved_membership_request:
         title: "Aprovei pedidos de adesão para as pessoas que queriam participar do meu grupo, mas eles não apareceram como membros, o que está acontecendo?"
+        body: "Se as pessoas que solicitaram a adesão ao seu grupo não tem conta no Loomio, elas terão que criar contas antes para poderem ser membros do grupo.\nDepois que você aprovar os pedidos de adesão, elas receberão um e-mail de confirmação e seguir o link neste e-mail irá levá-las a criar uma conta Loomio.\nQuando as contas delas forem criadas, elas aparecerão como membros do seu grupo.\n"
       forgotten_password:
         title: "Esqueci minha senha, o que eu faço?"
+        body_html: "Se você esqueceu a sua senha, clique no link <strong>Esqueceu a sua senha?</strong> na <a href=\"https://www.loomio.org/users/sign_in\">página de acesso</a>.\nVocê será solicitado a inserir o endereço de email associado à sua conta e instruções de redefinição da sua senha Loomio serão enviadas para este endereço de e-mail.\n"
       loomio_account:
         title: Preciso de uma conta Loomio para participar das discussões?
-        body: "Sim. Embora existam diferentes níveis de privacidade do grupo, todos os que desejam participar de um grupo Loomio precisam ter uma conta Loomio."
+        body: "Sim. Embora existam diferentes níveis de privacidade do grupo, todos que desejam participar de um grupo no Loomio precisam ter uma conta no Loomio."
       cost:
         title: Tenho que pagar para usar o Loomio?
+        body_html: "Consulte nossa página de preços em <a href=\"https://www.loomio.org/pricing\">loomio.org/pricing</a>."
       single_sign_on:
         title: "Posso acessar com Google, Facebook ou Twitter?"
-        body_html: "Sim, veja o segmento \"Conexão Única\" na seção <a href=\"#getting-started\">Começar</a>."
+        body_html: "Sim, veja <a href=\"https://www.loomio.org/help#single-sign-on\">Conexão Única</a> em nossa <a href=\"https://www.loomio.org/help\">documentação de ajuda</a>."
       loomio_instance:
         title: Como posso montar a minha própria instância de Loomio?
+        body_html: "Há um guia de instalação em nosso <a href=\"https://github.com/loomio/loomio/wiki\">wiki Github</a> e um <a href=\"https://www.loomio.org/g/C7I2YAPN/loomio-community-installing-loomio\">sub-grupo da Comunidade Loomio</a> dedicado a apoio e assistência com instalações locais.\nSe você está pensando em instalar a sua própria versão do Loomio, é altamente recomendável ingressar neste grupo.\n"
       feature_idea:
         title: E se eu tiver um recurso para sugerir?
+        body_html: "Você pode estar interessado em dar uma olhada no nosso <a href=\"http://www.loomio.org/roadmap\">roteiro público</a>, o qual documenta o que está por vir em processo de desenvolvimento.\nTemos também um sub-grupo aberto da Comunidade Loomio dedicado a <a href=\"https://www.loomio.org/g/GN7EFQTK/loomio-community-feature-ideas\">Idéias para Funções</a>.\nSe você não ver em nosso roteiro público a função que deseja sugerir, e você está interessado em participar de discussões sobre o desenvolvimento do Loomio, talvez você queira se juntar a este grupo.\n"
       development_pipeline:
         title: O que está chegando com o processo de desenvolvimento do Loomio?
-      max_group_size:
-        title: Qual é o número máximo de membros que eu posso ter em um grupo?
-        body_html: "Atualmente, o tamanho máximo do grupo é de 300 membros. Se você precisa aumentar, por qualquer motivo, entre em contato conosco - <a href=mailto:contact@loomio.org>contact@loomio.org</a>."
+        body_html: "Para descobrir no que nossos desenvolvedores estão trabalhando e o que está chegando em processo de desenvolvimento, dê uma olhada no nosso <a href=\"https://www.loomio.org/roadmap\">roteiro público</a>.\nVocê pode votar nas idéias que você quer ver priorizadas e comentar com o seu feedback.\n"
+      functional_group_size:
+        title: Quais tamanhos de grupos funcionam bem no Loomio?
+        body: Loomio atualmente funciona bem para grupos com até cerca de 1000 pessoas.
+      search_for_private_group:
+        title: "Por que quando eu procuro um grupo que sei que existe, ele não aparece na página de busca?"
+        body: "Se o grupo que você está procurando é privado, então não é pesquisável publicamente e será necessário um convite para entrar."
+      mobile_responsive:
+        title: Loomio vai funcionar no meu dispositivo móvel?
+        body: "Loomio é responsivo ao móvel, por isso vai funcionar em qualquer dispositivo através de um navegador."
+      information_security:
+        title: As informações que eu posto no Loomio estão seguras?
+        body_html: "<p>O Loomio é um serviço protegido por senha e cada conta Loomio está vinculada a um endereço de e-mail verificado.\nGrupos privados são apenas para convidados, ou seja, um coordenador do grupo estará convidando as pessoas pelos seus endereços de e-mail.\nCada usuário cria uma conta com uma senha. Grupos privados são visíveis apenas para os membros do grupo.</p>\n<p>O Loomio é hospedado pelo Heroku nos EUA, com os serviços em nuvem prestados pela AWS/EC2 e com criptografia e autenticidade fornecidas pelo SSL.\nNós usamos o protocolo HTTP seguro (HTTPS), fornecendo criptografia bidirecional. Nossos sistemas de  privacidade, segurança e backup atendem as melhores práticas da indústria.</p>\n<p>Você pode ver a nossa política de privacidade em <a href=\"https://www.loomio.org/privacy\">loomio.org/privacy</a>. Se você tiver quaisquer preocupações específicas de segurança, recomendamos a instalação de sua própria instância do Loomio.</p>\n"
+      account_reactivation:
+        title: Como posso reativar a minha conta?
+        body_html: "Reativação de conta só pode ser feita por um membro da equipe Loomio. Para ter a sua conta reativada, contacte-nos através do formulário abaixo ou envie um e-mail para <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>.\n"
+      restore_group:
+        title: Desativei o meu grupo. Posso restaurá-lo?
+        body_html: "Grupos desativados só podem ser restaurados por um membro da equipe Loomio. Para ter um grupo desativado restaurado, contacte-nos através do formulário abaixo ou envie um e-mail para <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>.\n"
+      loomio_api:
+        title: Existe uma IPA - Interface de Programação de Aplicativos - do Loomio?
+        body: "Em abril de 2015, estamos ativamente desenvolvendo e utilizando a IPA que o novo cliente Loomio 1.0 irá utilizar. Ela implementa tudo o que um cliente Loomio comunicando-se com o serviço web precisa.\nAtualmente não há nenhuma API de servidor para servidor, mas Loomio é código aberto e acolhemos adições. Portanto, sinta-se livre para coçar o seu comichão.\n"
+      subdomain:
+        title: É possível ter um subdomínio do Loomio?
+        body_html: "Sim. Podemos, por exemplo, instalar <strong>[nome-do-seu-grupo].loomio.org</strong> como a URL do seu grupo. <a href='mailto:contact@loomio.org'>Contacte-nos</a> se você estiver interessado."
       feedback_link: "Nós perdemos alguma coisa? Dê-nos a sua opinião >"
     back_to_top: ^ Voltar ao início
     feedback_discussion: "Acho que essa explicação poderia ser mais clara? Dê-nos a sua opinião >"
+  help:
+    markdown:
+      intro:
+        title: "O que é remarcação?\n=================\n"
+        body: "Remarcação é um modo de escrever texto sem formatação/plain text (esquerda),\nde modo que possa ser convertido em texto com formatação/rich text (à direita).\n\nEsta página é escrita com remarcação para mostrar como funciona.\n"
+      headers:
+        body: "Cabeçalhos: sublinha com iguais\n====================================\n\nOu sublinha com traços\n----------------------\n"
+      paragraphs:
+        title: "Parágrafos\n--------\n"
+        body: "Você precisa\ncolocar uma\nlinha em branco\nentre as linhas.\n\nOu vai acabar com um grande parágrafo!\n"
+      emphasis:
+        title: "Ênfase\n--------\n"
+        body: "Você pode colocar uma palavra em itálico com _sublinhado_ ou *asterisco*.\n\nColoque uma palavra em __negrito__ duplicando a **ênfase**.\n"
+      lists:
+        title: "Listas\n-----\n"
+        body: "Veja como fazer uma lista:\n\n* deixe uma linha em branco antes da sua lista\n* utilize asterisco (*)\n* deixe um espaço depois do asterisco\n"
+      links:
+        title: "Links e imagens\n----------------\n"
+        body: "Repita em voz alta:\n\nEntre colchetes para nome e entre parênteses para URL.\n\n[Página inicial do Loomio](https://www.loomio.org/)\n\nO mesmo com imagens, mas antecedidas por um ponto de exclamação.\n\n![Logo do Loomio](https://i.imgur.com/Fvtworb.png)\n"

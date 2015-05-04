@@ -4,13 +4,6 @@ eo:
     submit: Ĝisdatigi agordojn
   explore:
     header: Esplori publikajn grupojn
-  try_it:
-    header: Provu uzi Loomio-n
-    start_a_group: Starigu grupon por fari decidojn rilatajn al via komunumo
-    join_the_community: Aliĝi al la grupo de la Loomio-komunumo
-    loomio_community_info: Ĉi tie ni diskutas kaj decidas pri Loomio
-    explore_groups: Esplori aliajn grupojn en Loomio
-    explore_groups_info: "Vidu la aliajn mojosajn grupojn en Loomio kaj aliĝu!"
   activerecord:
     errors:
       messages:
@@ -254,6 +247,12 @@ eo:
       memberships: Vi ne plu estos listigita kiel membro en ajna grupo al kiu vi nun apartenas.
       group_contributions: "La komentoj, proponoj kaj diskutoj kiujn vi faris en grupoj restos tie, sed ni forviŝos vian nomon de ili."
       emails: Ni ne plu sendos retpoŝtaĵojn rilatajn al Loomio.
+  start_group_form:
+    header: Komenci novan grupon
+    name: Via nomo
+    group_name: Grupnomo
+    success:
+      header: "Vi preskaŭ pretas! Kontrolu vian retpoŝton."
   group_form:
     name: Grupnomo
     description: Priskribo
@@ -581,12 +580,7 @@ eo:
     proposal: Konsiloj por verki klaran proponon
     vote: Vi povas ŝanĝi vian sintenon iam ajn
   pricing_page:
-    intro: "Grupoj kun budĝeto pagas abonon por uzi la ilon.\nGrupoj sen maniero pagi abonon pagas laŭkapable:\nla membroj estas invitataj volontule kontribui. Via kontribuo signifas ke ni povas lasi Loomion sendependa, senreklama kaj puŝata de nia komunumo.\n"
-    organisations: Organizoj
-    organisations_examples: "ekz. entreprenoj, landestraraj agentejoj, komunumaj organizoj"
-    informal_groups: Neformalaj grupoj
-    informal_groups_desc: Membroj de via grupo estos petataj pagi kiom ili povas
-    informal_groups_examples: "ekz. familiaj, sociaj movadoj, kolektivoj"
+    header: Prezo
   contribution:
     any_amount: aŭ adaptita unu-foja kontribuo de
     currency_desc: Kvantoj estas en usonaj dolaroj
@@ -641,8 +635,6 @@ eo:
   invitation:
     alternate: "Alternative, vi povas kunhavigi ĉi tiun ligilon kaj ĉiuj povas peti aliĝon:"
     by_email: Inviti per retpoŝto
-    no_invitations_left: "Pardonu, sed ne restas plu invitoj"
-    no_invitations_left_get_more: "Bonvolu retpoŝti al contact@loomio.org kaj ni vidos kion ni povos fari por helpi vin"
     invitation_not_found: Ne eblis trovi la inviton kun tiu identaĵo. Bonvolu peti novan inviton de la sendinto.
     invitation_cancelled: Ĉi tiu invito nuliĝis. Bonvolu kontakti la sendinton de la invito se vi pensas ke tio estis eraro.
     invitation_already_used: Ĉi tiu invito jam uziĝis. Bonvolu ensaluti por pluiri al via grupo.
@@ -686,7 +678,6 @@ eo:
       submit: Sendi mesaĝon
     messages:
       email_html: "Plenigu ĉi tiun formularon aŭ sendu retpoŝtaĵon al <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Vi ankaŭ povas sekvi nin per<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, kaj <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: Komenci diskuton
@@ -761,20 +752,12 @@ eo:
         password: Pasvorto
         password_confirmation: Konfirmi pasvorton
         language_preference: Lingvo
-      group_request:
-        admin_name: Kio estas via nomo?
-        admin_email: Kio estas via retpoŝtadreso?
-        name: Kio estas la nomo de via grupo?
-        description: "Se vi havas momenton, rakontu al ni pri via grupo"
-        is_commercial: Kie vi planas uzi Loomion?
     placeholders:
       membership_request:
         introduction: "Skribu kelkajn vortojn pri kiu vi estas kaj kial vi volus aliĝi al %{group_name}."
       motion:
         name: Kion vi proponas ke okazu?
         description: Donu sufiĉajn informojn por ke ĉiuj sciu ekzakte kion signifas konsenti aŭ malkonsenti.
-      group_request:
-        description: Ni ŝategus aŭdi pri via grupo kaj kial vi volas uzi Loomion.
   helpers:
     submit:
       discussion:
@@ -868,10 +851,6 @@ eo:
       specify_outcome: "Via propono estas fermita. Decidu rezulton por sciigi al ĉiuj kiel elturniĝis:"
       outcome_created: "%{who} metis proponan rezulton:"
       you_agreed: "Vi %{past_tense_position}"
-    verification:
-      header: "Vi preskaŭ pretas!"
-      intro: "Bonvolu alklaki la kontrololigilon por fini vian peton:"
-      ignore: Se vi ne petis aliĝi al Loomio bonvolu ignori ĉi tiun retpoŝtaĵon.
   about_loomio: Pri Loomio
   ago: "antaŭ %{quantity_of_time}"
   approve: Aprobi
@@ -931,7 +910,6 @@ eo:
   start_a_group: Komenci grupon
   starting: Komenciĝas
   subject: Temo
-  terms_of_service_html: "Klakante %{button_text}, vi konsentas kun la <a href='%{link_path}' target='_blank'>uzkondiĉoj</a> de Loomio."
   thanks: "Dankon!"
   unlike: Ne ŝati
   time_until_close: "%{quantity_of_time} ĝis fermo"
@@ -945,6 +923,7 @@ eo:
     email_settings: Retpoŝtaj agordoj
     dashboard: Supervidpanelo
     unread: Nelegitaj
+    find_out_more: Eltrovu pli
     filter: "Filtrilo:"
     following: Sekviĝas
     not_following: Ne sekviĝas

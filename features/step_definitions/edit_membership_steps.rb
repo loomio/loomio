@@ -26,7 +26,7 @@ When(/^click 'Make coordinator' on the member$/) do
 end
 
 Then(/^the member should be a group admin$/) do
-  @group.admins.should include @another_user
+  @group.admins.reload.should include @another_user
 end
 
 Given(/^there is another group admin$/) do

@@ -1,13 +1,6 @@
 pt-PT:
   explore:
     header: Explorar grupos públicos
-  try_it:
-    header: Experimentar o Loomio
-    start_a_group: Criar um grupo para tomar decisões com a minha própria comunidade.
-    join_the_community: Entrar no grupo Comunidade Loomio
-    loomio_community_info: Aqui discutimos e tomamos decisões sobre o Loomio.
-    explore_groups: Explorar outros grupos no Loomio
-    explore_groups_info: "Explore os outros grupos fantásticos existentes no Loomio e participe!"
   activerecord:
     errors:
       messages:

@@ -32,8 +32,6 @@ hu:
       step3:
         header: 3. Döntsünk együtt
         desc: "Dolgozzunk ki egy javaslatot együtt, olyant amely mindenkinek megfelel. Minden döntésnek világos határideje van, tehát mindig lesz egy világos eredmény."
-    crowdfunding:
-      header: "Közzösségi finanszírozásban részesülünk, így be tudjuk fejezni ennek az új platformnak a fejlesztését és a világnak ajándékozhatjuk azt."
     mobile:
       lead_html: "<strong>A Loomio minden eszközön működik, </strong><br />hogy dönthessen bárhol, bármikor."
     quote:
@@ -56,3 +54,6 @@ hu:
       gift:
         header: Ajándék gazdaság
         desc: A Loomio támogatását mindenki saját lehetőségei szerint teszi. Ez tartja a felületet reklámmentesen és teszi elérhetővé azon csoportok számára is amelyeknek nem rendelkeznek pénzzel.
+  about_page:
+    ben_bio: "Társ-alapító és igazgató, közösség szervező, közösségi intelligencia kutató"
+    mj_bio: "A Brown Egyetem adjunktusa, szociális vállalkozások gyakorlatvezetője, "

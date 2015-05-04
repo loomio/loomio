@@ -177,6 +177,10 @@ km:
     header: សូមស្វាគមន៍មកកាន់ទំព័រដើមរបស់អ្នក​
   user_profile:
     change_password: ផ្លាស់ប្ដូរលេខសម្ងាត់របស់អ្នក
+  start_group_form:
+    group_name: ឈ្មោះក្រុម
+    success:
+      header: "អ្នកកំពុងតែបានធ្វើស្ទើតែ! ពិនិត្យអ៊ីម៉ែលរបស់អ្នក"
   group_form:
     name: ឈ្មោះក្រុម
     description: ការពិពណ៍នាសង្ខេប
@@ -365,11 +369,7 @@ km:
     proposal: គន្លឹះសម្រាប់ការសរសេរសំណើរច្បាស់លាស់
     vote: អ្នកអាចផ្លាស់ប្ដូរទីតាំងរបស់អ្នកនៅពេលណាមួួយ
   pricing_page:
-    organisations: "អង្គការ "
-    organisations_examples: e.g. អាជីវកម្មទីភ្នាក់ងាររដ្ឋាភិបាលអង្គការសហគមន៍
-    informal_groups: "ក្រុមផ្លូវការ "
-    informal_groups_desc: "សមាជិកនៃក្រុមរបស់អ្នកនឹងត្រូវបានស្នើឱ្យបង់ប្រាក់អ្វីដែលពួកគេអាចធ្វើបាន "
-    informal_groups_examples: "e.g. ក្រុមគ្រួសារចលនាសង្គមសមូហភាព "
+    header: តម្លៃ
   contribution:
     any_amount: ឬផ្ទាល់ខ្លួន one-off នៃការចូលរួមចំណេក
     currency_desc: ចំនួនទឹកប្រាក់គឺនៅក្នុងដុល្លាអាមេរិក
@@ -402,8 +402,6 @@ km:
     log_in: "ឡុកអ៊ីនដើម្បីចូលរួម%{group_name}"
     create_account_to_join_group: "សូមបង្កើតគណនីមួយដើម្បីចូលរួម%{group_name}"
   invitation:
-    no_invitations_left: សូមទោសអ្នកមិនមានលិខិតអញ្ជើញណាមួយដែរបានចាកចេញ
-    no_invitations_left_get_more: "សូមផ្ញើអ៊ីម៉ែល contact@loomio.org ហើយយើងនឹងឃើញអ្វីដែលយើងអាចធ្វើដើម្បីជួយអ្នក "
     invitation_not_found: មិនអាចរកឃើញការអញ្ជើញជាមួយសញ្ញាសម្ងាត់ សូមសួរសម្រាប់ការអញ្ជើញថ្មីពីអ្នកផ្ញើ។
     invitation_cancelled: ការអញ្ជើញនេះត្រូវបានលុបចោល សូមទាក់ទងទៅអ្នកផ្ញើការអញ្ជើញនេះប្រសិនបើអ្នកជឿថានេះត្រូវបានធ្វើនៅក្នុងកំហុស។
     invitation_already_used: ការអញ្ជើញនេះត្រូវបានប្រើរួចហើយ។ សូមចូលក្នុងដើម្បីបន្តទៅក្រុមរបស់អ្នក។
@@ -537,10 +535,6 @@ km:
       closes_in: បិទខាងក្នុង
       headline: "%{author}របស់សំណើរក្នុង%{group}ត្រូវបានបិទក្នុងពេលឆាប់ៗ"
       summary: សេចក្ដីសង្ខេប
-    verification:
-      header: "អ្នកកំពុងធ្វើឲ្យបានសម្រេច!"
-      intro: "សូមចុចតំណនេះដើម្បីបញ្ចប់ការផ្ទៀងផ្ទាត់សំណើរបស់អ្នក:​"
-      ignore: ប្រសិនបើអ្នកមិនបានស្នើសុំឱ្យចូលរួមក្នុង Loomio សូមកុំអើពើអ៊ីម៉ែលនេះ។
   about_loomio: អំពី Loomio
   ago: "%{quantity_of_time} កន្លងទៅ "
   approve: "អនុម័ត "
@@ -592,7 +586,6 @@ km:
   start_a_group: ចាប់ផ្តើមក្រុម
   starting: ចាប់ផ្តើម​
   subject: ប្រធានបទ​
-  terms_of_service_html: "ដោយចុច %{button_text}, អ្នកយល់ព្រមLoomio របស់ <a href='%{link_path}' target='_blank'>រយះពេលនៃសេវាកម្ម</a>"
   thanks: "សូមអរគុណ!"
   unlike: មិនចូលចិត្ត
   update: ធ្វើឱ្យទាន់សម័យ​

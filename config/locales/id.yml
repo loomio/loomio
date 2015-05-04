@@ -180,6 +180,10 @@ id:
     header: Selamat datang ke Beranda
   user_profile:
     change_password: Ganti kata sandi
+  start_group_form:
+    group_name: Nama kelompok
+    success:
+      header: "Anda hampir selesai! Periksa surel Anda."
   group_form:
     name: Nama kelompok
     description: Deskripsi
@@ -384,12 +388,7 @@ id:
     proposal: Tips untuk menulis usulan yang baik
     vote: Anda dapat mengubah pendapat Anda kapanpun
   pricing_page:
-    intro: "Kelompok dengan anggaran membayar biaya langganan untuk menggunakan alat ini.\nKelompok tanpa biaya untuk membayar anggaran dapat menggunakan model Bayar Semampu Anda: anggota mereka akan diundang untuk memberi sumbangan suka rela. Sumbangan Anda akan membuat Loomio tetap independen, bebas iklan, dan dikelola oleh komunitas kami.\n"
-    organisations: Organisasi
-    organisations_examples: "contoh: usaha/bisnis, lembaga pemerintah, organisasi komunitas"
-    informal_groups: Kelompok informal
-    informal_groups_desc: Anggota kelompok Anda akan diminta untuk membayar semampunya
-    informal_groups_examples: "contoh: keluarga, gerakan sosial, kolektif"
+    header: Harga
   contribution:
     any_amount: atau sumbangan sebesar
     currency_desc: Jumlah dalam dolar US
@@ -427,8 +426,6 @@ id:
   invitation:
     alternate: "Selain itu, sebarkan tautan ini dan setiap orang dapat mengirim permintaan bergabung:"
     by_email: Undang melalui surel
-    no_invitations_left: Anda tidak memiliki undangan yang tersisa
-    no_invitations_left_get_more: "Kirim surel ke contact@loomio.org dan kami akan coba membantu Anda"
     invitation_not_found: Undangan dengan token tersebut tidak ditemukan. Hubungi pengirim untuk memberikan undangan baru.
     invitation_cancelled: Undangan ini telah dibatalkan. Hubungi pengirim undangan apabila Anda merasa terdapat kesalahan.
     invitation_already_used: Undangan ini telah digunakan. Masuk log untuk lanjut ke kelompok Anda.
@@ -582,10 +579,6 @@ id:
       closes_in: Ditutup dalam
       headline: "Usulan %{author} di dalam %{group} akan segera ditutup:"
       summary: Ringkasan
-    verification:
-      header: "Anda hampir selesai!"
-      intro: "Klik pranala verifikasi untuk menyelesaikan permintaan Anda:"
-      ignore: "Apabila Anda tidak ingin bergabung dengan Loomio, abaikan surel ini."
   about_loomio: Tentang Loomio
   ago: "%{quantity_of_time} yang lalu"
   approve: Setuju
@@ -638,11 +631,11 @@ id:
   start_a_group: Buat kelompok
   starting: Memulai
   subject: Perihal
-  terms_of_service_html: "Dengan menekan %{button_text}, Anda setuju dengan <a href='%{link_path}' target='_blank'>Ketentuan layanan</a> Loomio"
   thanks: "Terima kasih!"
   unlike: Tidak sukai
   update: Perbarui
   common:
+    find_out_more: Ketahui lebih lanjut
     groups: Kelompok
     privacy: Kebijakan Privasi
     private: Tertutup

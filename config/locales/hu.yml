@@ -17,13 +17,6 @@ hu:
     no_change_description: Maradjon úgy a csoportjaim hangereje ahogy van.
   explore:
     header: Keresés a nyilvános csoportok között
-  try_it:
-    header: Próbáld ki a Loomio-t
-    start_a_group: Indíts egy csoportot hogy hozzatok döntést a közösségetekben.
-    join_the_community: Csatlakozz a Loomio Közösségi csoporthoz
-    loomio_community_info: Itt vitázunk és hozunk döntéseket a Loomio-ról.
-    explore_groups: Keress más csoportokat a Loomio-n
-    explore_groups_info: "Nézd meg az összes érdekes csoportot a Loomio-n és csatlakozz hozzájuk!"
   activerecord:
     errors:
       messages:
@@ -136,6 +129,7 @@ hu:
     added_to_group: "Tagja lettél a(z) %{which_group} csoprotnak."
     close_date_changed: Megváltoztattad a határidőt.
     discussion_created: Létrehoztad a témát.
+    discussion_updated: A megbeszélés sikeresen frissítve.
     discussion_deleted: Törölted a témát.
     discussion_moved: "A vita sikeresen át lett helyezve ide: %{group_name}"
     emails_sending: Küldjük az e-maileket.
@@ -279,6 +273,22 @@ hu:
       memberships: Nem leszel tagja többé egyetlen csoportnak sem amelyhez most tartozol.
       group_contributions: "A bejegyzéseid, javaslataid és vitáid megmaradnak a csoportban, de a neved nem jelenik meg majd mellettük."
       emails: Nem fogunk további e-maileket küldeni a Loomio-val kapcsolatban.
+  start_group_form:
+    header: Új csoport létrehozása
+    form_error: Néhány információ hiányzik vagy hibás.
+    name: Neved
+    name_error: Név megadása kötelező
+    email: email címed
+    email_error: Hibás email cím.
+    group_name: Csoport neve
+    group_name_error: Csoportnév kötelező
+    payment: Fizetés
+    payment_error: "Válassz egy lehetőséget:"
+    subscription_html: "<strong>Előfizetés</strong> - 30 napig ingyenes. Ha a csoportodnak tetszik a Loomio, használhatod tagonként havonta mindössze 1$-ért."
+    donation_html: "<strong>Adomány</strong> - ha nem tudod fizetni a normál  előfizetési díjat, alkalmanként önkéntes adományozásra fogjuk kérni csoportod tagjait."
+    terms_html: "Csoportod indításával elfogadod a Loomio <a href='%{link}' target='_blank'>szolgáltatási feltételeit</a>."
+    success:
+      header: "Mindjárt kész! Ellenőrizd az e-mailed."
   group_form:
     name: Csoport neve
     description: Leírás
@@ -425,8 +435,6 @@ hu:
   edit_group_description: A csoport leírásának szerkesztése
   group_subscription: Csoport felíratkozás
   groups:
-    max_size_warning_html: "Csoportod növekszik és hamarosan eléri a %{size} fős határt. Kérjük <a href='%{link}'>lépj kapcsolatba velünk</a> a határ megemelése érdekében."
-    max_size_reached_html: "Csoportod elérte a %{size} fős határt. <a href='%{link}'>Lépj kapcsolatba velünk</a> további tagok hozzáadása érdekében."
     follow:
       click_to_follow: "Klikk, kövesd a csoportot"
       click_to_unfollow: "Klikk, a követés törlése"
@@ -651,12 +659,7 @@ hu:
     proposal: Hogyan írj egyértelmű javaslatot
     vote: Bármikor megváltoztathatod az álláspontodat
   pricing_page:
-    intro: "Költségvetéssel rendelkező csoportok egy bérletet fizetnek az eszköz használatáért\nAzok a csoportok akiknek nem áll szándékában fizetni\na Pay What You Can modelt használják: a tagjaikat meghívjuk, hogy önkéntesen járuljanak hozzá a Loomio projekthez. Így független, reklámmentes és közösség-vezette maradhat.\n"
-    organisations: Szervezetek
-    organisations_examples: "pl. vállalkozások, kormányzati ügynökségek, közösségi szervezetek"
-    informal_groups: Kötetlen csoportok
-    informal_groups_desc: "A csoportod tagjait felkérik majd, hogy fizessenek amennyit tudnak."
-    informal_groups_examples: "pl. családok, társadalmi mozgalmak, közösségek"
+    header: Árazás
   contribution:
     any_amount: vagy egy szokásos egyszeri hozzájárulással
     currency_desc: Az értékek US dollárban
@@ -712,8 +715,6 @@ hu:
   invitation:
     alternate: "Esetleg oszd meg ezt a linket és bárki kérheti a csatlakozást:"
     by_email: Hívj meg e-mailben
-    no_invitations_left: "Bocs, nincs már meghívód"
-    no_invitations_left_get_more: "Írj a contact@loomio.org címre, hátha segíthetünk"
     invitation_not_found: "nem találtunk meghívót ezzel a kóddal. Kérj új meghívót!"
     invitation_cancelled: "Ezt a meghívót visszavonták. Írj annak, akitől kaptad, ha szerinted hiba történt."
     invitation_already_used: "Ezt a meghívót már felhasználták. Jelentkezz be, hogy beléphess a csoportodba."
@@ -757,7 +758,6 @@ hu:
       submit: Üzenet küldése
     messages:
       email_html: "Töltsd ki ezt az űrlapot vagy írj egy e-mailt ide <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Kövess minket itt is: <br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: Téma indítása
@@ -833,20 +833,12 @@ hu:
         password: Jelszó
         password_confirmation: Jelszó megerősítése
         language_preference: Nyelv
-      group_request:
-        admin_name: Neved?
-        admin_email: E-mail címed?
-        name: Csoportod neve?
-        description: "Ha van egy perced, mesélj a csoportodról"
-        is_commercial: Hol tervezed használni a Loomio-t?
     placeholders:
       membership_request:
         introduction: "Írj egy pár szót magadról és arról, miért akarsz a %{group_name} csoporthoz csatlakozni."
       motion:
         name: Mit javasolsz?
         description: "Adj elég információt, hogy pontosan tudhassák mit jelent, ha egyetértenek vagy ha ellenzik."
-      group_request:
-        description: Szeretnénk megismerni a csoportodat és megtudni hogy miért szeretnéd használni Loomio-t.
   helpers:
     submit:
       discussion:
@@ -951,10 +943,6 @@ hu:
       specify_outcome: "A javaslatod lezárult. Készíts egy összegzést hogy mindenki megtudja az eredményt:"
       outcome_created: "%{who} összegezte egy javaslat eredményét:"
       you_agreed: "Te %{past_tense_position}"
-    verification:
-      header: "Mindjárt kész!"
-      intro: "Kattints erre a megerősítő linkre, hogy véglegesítsd a kérelmed:"
-      ignore: "Ha nem te kérelmezted a csatlakozást a csoporthoz, ne törődj ezzel a levéllel."
   meta_tags:
     default_title: "Loomio | Közreműködéses Döntéshozatal"
     default_description: "A Loomio egy könnyen használható online eszköz a csoportos döntéshozatalra. Elősegíti, szétszórt csoportokban is, a gyors döntéseket és a konstruktív cselekvést."
@@ -1017,7 +1005,6 @@ hu:
   start_a_group: Csoport létrehozása
   starting: Kezdem
   subject: Téma
-  terms_of_service_html: "Ide kattintva %{button_text}, egyetértesz a Loomio <a href='%{link_path}' target='_blank'>Szolgáltatási feltételeivel</a>"
   thanks: "Köszi!"
   unlike: Nem tetszik
   time_until_close: "%{quantity_of_time} zárásig"
@@ -1043,6 +1030,7 @@ hu:
     settings: Beállítások
     dashboard: Műszerfal
     unread: Olvasatlan
+    find_out_more: Fedezz fel többet
     filter: "Szűrő:"
     following: Követés
     not_following: Nem követ

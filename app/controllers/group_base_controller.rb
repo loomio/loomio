@@ -20,6 +20,13 @@ class GroupBaseController < BaseController
     @last_vote_cache = VoteCache.new(current_user, @last_votes)
   end
 
+  def clear_discussion_index_caches
+    @last_vote_cache.clear
+    @motion_reader_cache.clear
+    @discussion_reader_cache.clear
+  end
+
+
   def require_current_user_can_invite_people
     unless can? :invite_people, @group
       flash[:error] = "You are not able to invite people to this group"

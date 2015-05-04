@@ -17,13 +17,6 @@ de:
     no_change_description: Lautstärke meiner Gruppen unverändert lassen.
   explore:
     header: Erkunde öffentliche Gruppen
-  try_it:
-    header: Loomio ausprobieren
-    start_a_group: "Gründe eine Gruppe, um Entscheidungen in Deiner eigenen Community zu treffen."
-    join_the_community: Tritt der Loomio Community-Gruppe bei
-    loomio_community_info: Hier diskutieren wir über Loomio und treffen Entscheidungen.
-    explore_groups: Erkunde andere Gruppen auf Loomio
-    explore_groups_info: "Sieh Dir all die fantastischen Gruppen auf Loomio an und tritt ihnen bei!"
   activerecord:
     errors:
       messages:
@@ -279,6 +272,12 @@ de:
       memberships: "Du wirst nicht mehr als Mitglied irgendeiner Gruppe aufgeführt, in welchen Du momentan noch Mitglied bist."
       group_contributions: "Die Kommentare, Vorschläge und Diskussionen, die Du gemacht und erstellt hast, werden bleiben, Dein Name wird jedoch gelöscht."
       emails: Wir werden keine weiteren Loomio eMails schicken.
+  start_group_form:
+    header: Gründe eine Gruppe
+    name: Dein Name
+    group_name: Gruppenname
+    success:
+      header: "Du bist fast fertig! Prüfe Deine eMails."
   group_form:
     name: Gruppenname
     description: Beschreibung
@@ -425,8 +424,6 @@ de:
   edit_group_description: Gruppenbeschreibung ändern
   group_subscription: Gruppenabonnement
   groups:
-    max_size_warning_html: "Ihre Gruppe wächst, und hat bald die Grenze von %{size} Mitglieder. Bitte <a href='%{link}'> kontaktieren Sie uns </a>, um den Grenzwert zu erhöhen."
-    max_size_reached_html: "Ihre Gruppe die Grenze von %{size} Mitgliedern erreicht. <a href='%{link}'> Kontaktieren Sie uns</a>, um mehr Menschen in die Gruppe aufzunehmen."
     follow:
       click_to_follow: "Klicken, um der Gruppe zu folgen"
       click_to_unfollow: "Klicken, um der Gruppe nicht mehr zu folgen"
@@ -651,12 +648,7 @@ de:
     proposal: Hinweise für das Schreiben eines klaren Vorschlags
     vote: Du kannst Deine Meinung jederzeit ändern.
   pricing_page:
-    intro: "Gruppen mit einem Budget zahlen für die Nutzung des Tools mit einem Abonnement.\nGruppen ohne Abonnement-Möglichkeiten nutzen das\nZahle-was-Du-kannst-Modell: deren Mitglieder werden aufgefordert einen freiwilligen Beitrag zu leisten. Dein Beitrag bedeutet, dass wir Loomio unabhängig, frei von Werbung und getrieben von der Gemeinschaft betreiben können.\n"
-    organisations: Organisationen
-    organisations_examples: "z.B. Firmen, staatliche Behörden, gemeinschaftliche Organisationen"
-    informal_groups: Informelle Gruppen
-    informal_groups_desc: "Die Mitglieder deiner Gruppe werden gebeten zu bezahlen, soviel wie sie können"
-    informal_groups_examples: "z.B. Familien, soziale Bewegungen, Kollektive"
+    header: Preisgestaltung
   contribution:
     any_amount: "oder einen individuellen, einmaligen Beitrag von "
     currency_desc: Beträge sind in US Dollar angegeben
@@ -712,8 +704,6 @@ de:
   invitation:
     alternate: "Stattdessen kannst Du diesen Link teilen, damit jeder um Aufnahme bitten kann:"
     by_email: Per eMail einladen
-    no_invitations_left: "Es tut uns leid, aber Du hast keine Einladungen mehr übrig."
-    no_invitations_left_get_more: "Bitte wende dich an contact@loomio.org, dann werden wir sehen wie wir dir helfen können"
     invitation_not_found: Es konnte keine Einladung mit diesem Token gefunden werden. Bitte frage den Absender nach einer neuen Einladung.
     invitation_cancelled: "Diese Einladung wurde abgebrochen. Bitte kontaktiere den Absender der Einladung, vielleicht wurde die Einladung aus Versehen abgebrochen."
     invitation_already_used: Diese Einladung wurde schon benutzt. Bitte melde dich an um in dieser Gruppe fortzufahren.
@@ -757,7 +747,6 @@ de:
       submit: Nachricht abschicken
     messages:
       email_html: "Fülle dieses Formular aus oder schicke eine eMail an <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Du findest uns auch auf<br/><a href='%{facebook}' target='_blank'>Facebook</a>, <a href='%{google}' target='_blank'>Google+</a>, und <a href='%{twitter}' target='_blank'>Twitter</a>!"
   discussion_form:
     new:
       header: Beginne eine Diskussion
@@ -833,20 +822,12 @@ de:
         password: Passwort
         password_confirmation: Passwort bestätigen
         language_preference: Sprache
-      group_request:
-        admin_name: Wie heißt Du?
-        admin_email: Wie lautet Deine eMail-Adresse?
-        name: Wie heißt deine Gruppe?
-        description: "Wenn Du einen Moment Zeit hast, erzähl uns von Deiner Gruppe"
-        is_commercial: In welchem Bereich wirst Du Loomio nutzen?
     placeholders:
       membership_request:
         introduction: "Schreibe einige Worte über Dich und warum Du %{group_name} beitreten möchtest ."
       motion:
         name: Was ist dein Vorschlag zum Handlungsablauf?
         description: "Gib genug Informationen an, damit jeder genau versteht, was Zustimmung und Ablehnung jeweils bedeuten."
-      group_request:
-        description: Wir würden gerne mehr über deine Gruppe erfahren und warum ihr Loomio nutzen wollt.
   helpers:
     submit:
       discussion:
@@ -951,10 +932,6 @@ de:
       specify_outcome: "Dein Vorschlag ist geschlossen. Lege einen Beschluss fest, damit jedeR erfahren kann, wie das Ergbnis lautet."
       outcome_created: "%{who} gibt folgendes Vorschlagsergebnis bekannt:"
       you_agreed: "Du %{past_tense_position}"
-    verification:
-      header: "Du bist fast fertig!"
-      intro: "Bitte klicke auf diesen Link zur Verifizierung, um Deine Anfrage abzuschließen:"
-      ignore: "Wenn Du nicht angefragt hast dieser Loomio Gruppe beizutreten, ignoriere diese eMail."
   meta_tags:
     default_title: "Loomio | Gemeinschaftliche Entscheidungsfindung"
     default_description: Loomio ist einfach benutzbares Online Werkzeug für Entscheidungsfindung in Gruppen. Es erlaubt verstreuten Gruppen schnell Entscheidungen zu treffen und konstruktiv umzusetzen.
@@ -1017,7 +994,6 @@ de:
   start_a_group: Eröffne eine Gruppe
   starting: Wird gestartet
   subject: Betreff
-  terms_of_service_html: "When Du %{button_text} klickst, stimmst Du Loomio´s <a href='%{link_path}' target='_blank'>Geschäftsbedingungen</a> zu."
   thanks: Danke
   unlike: Gefällt mir nicht
   time_until_close: "%{quantity_of_time} verbleiben"
@@ -1043,6 +1019,7 @@ de:
     settings: Einstellungen
     dashboard: Schreibtisch
     unread: Ungelesen
+    find_out_more: Mehr erfahren
     filter: "Filter:"
     following: Gefolgt
     not_following: Nicht gefolgt

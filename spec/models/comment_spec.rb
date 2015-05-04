@@ -31,6 +31,15 @@ describe Comment do
       expect(comment.discussion).to receive(:comment_destroyed!)
       comment.destroy
     end
+
+    it "destroys comment votes" do
+      CommentService.like(comment: comment, actor: user)
+      expect(CommentVote.where(comment_id: comment.id,
+                               user_id: user.id).exists?).to be true
+      comment.destroy
+      expect(CommentVote.where(comment_id: comment.id,
+                               user_id: user.id).exists?).to be false
+    end
   end
 
   describe "validate attachments_owned_by_author" do

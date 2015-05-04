@@ -32,8 +32,6 @@ sl:
       step3:
         header: 3. Odloči se skupaj z drugimi
         desc: "Razvijte predlog skupaj tako, da ustreza vsem. Vsaka odločitev ima določen skrajni rok za sprejetje, zato je izid vedno nedvoumen."
-    crowdfunding:
-      header: "Da bi do konca postavili to platformo in jo delili s svetom, sredstva množično zbiramo prek spleta."
     mobile:
       lead_html: "<strong>Loomio deluje na vsaki napravi,</strong><br />odločaj se kjerkoli, kadarkoli."
     quote:

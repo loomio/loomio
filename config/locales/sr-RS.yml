@@ -17,13 +17,6 @@ sr-RS:
     no_change_description: Остави ниво обима обавештења мојих група какав јесте.
   explore:
     header: Истражи јавне групe
-  try_it:
-    header: Пробај Лумио
-    start_a_group: Започни групу да би доносио одлуке у својој заједници.
-    join_the_community: Придружи се Лумио Заједница групи.
-    loomio_community_info: Овде дискутујемо и доносимо одлуке о Лумију.
-    explore_groups: Истражи остале групе на Лумију.
-    explore_groups_info: "Погледајте групе на Лумиу и придружите се!"
   activerecord:
     errors:
       messages:
@@ -293,6 +286,12 @@ sr-RS:
       memberships: Нећете више бити приказани као члан ни једне групе којима тренутно припадате.
       group_contributions: "Коментари, предлози и дискусије које сте направили у групама ће остати, али ћемо уклонити Ваше име са њих."
       emails: Престаћемо да Вам шаљемо Лумио еПоруке.
+  start_group_form:
+    header: Започни нову групу
+    name: Твоје име
+    group_name: Назив групе
+    success:
+      header: "Још мало па готово! Проверите еПошту."
   group_form:
     name: Назив групе
     description: Опис
@@ -439,8 +438,6 @@ sr-RS:
   edit_group_description: Уреди опис групе
   group_subscription: Праћење групе
   groups:
-    max_size_warning_html: "Твоја група расте и ускоро ће остварити лимит од %{size} чланова. Молимо <a href='%{link}'>контактирајте нас</a> да увећамо лимит."
-    max_size_reached_html: "Твоја група је достигла лимит од %{size} чланова. <a href='%{link}'>Контактирај нас</a> да додаш још људи у групу."
     follow:
       click_to_follow: Шкљоцни да пратиш групу
       click_to_unfollow: Шкљоцни да престанеш пратити групу
@@ -665,12 +662,7 @@ sr-RS:
     proposal: Савети за писање јасног предлога
     vote: Можете променити свој став било када
   pricing_page:
-    intro: "Групе са буџетом плаћају претплату да би користили алат.\n Групе које немају намеру да плаћају претплату користе\nПлати Шта Можеш модел: њихови чланови су позвани да донирају волонтерским учешћем. Ваше учешће омогућава да одржимо Лумио независним, и слободним од огласа, вођеним од стране наше заједнице.\n"
-    organisations: Организације
-    organisations_examples: "нпр. компаније, институције и агенције државе, организације унутар неке заједнице"
-    informal_groups: Неформалне групе
-    informal_groups_desc: Чланови Ваше групе ће бити замољени да плате колико могу
-    informal_groups_examples: "нпр. породице, друштвени покрети, колективи"
+    header: Ценовник
   contribution:
     any_amount: или произвољни једнократни прилог од
     currency_desc: Износи су у САД доларима
@@ -726,8 +718,6 @@ sr-RS:
   invitation:
     alternate: "Или, поделите овај линк и свако може питати да се придружи:"
     by_email: Позови еПоруком
-    no_invitations_left: "Извините, немате више позивница"
-    no_invitations_left_get_more: "Молим пошаљите еПоруку на contact@loomio.org и видећемо шта можемо урадити да помогнемо"
     invitation_not_found: Не можемо наћи позивницу са тим токеном. Молимо Вас да затражите нову позивницу од пошиљаоца.
     invitation_cancelled: Овај позив је отказан. Молим Вас контактирајте пошиљаоца позива ако верујете да је дошло до грешке.
     invitation_already_used: Ова позивница је већ употребљена. Молимо Вас пријавите се да бисте наставили до своје групе.
@@ -771,7 +761,6 @@ sr-RS:
       submit: Пошаљи поруку
     messages:
       email_html: "Попуните овај образац, или пошаљите еПоруку на <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Можете нам се придружити и на <br/><a href='%{facebook}' target='_blank'>facebook-у</a>, <a href='%{google}' target='_blank'>g+</a> i <a href='%{twitter}' target='_blank'>twitter-у</a>!"
   discussion_form:
     new:
       header: Започни дискусију
@@ -847,20 +836,12 @@ sr-RS:
         password: Лозинка
         password_confirmation: Потврди лозинку
         language_preference: Језик
-      group_request:
-        admin_name: Како се зовеш?
-        admin_email: Која је Ваша адреса еПоште?
-        name: Како се зове твоја група?
-        description: "Ако имаш времена, реци нам о твојој групи"
-        is_commercial: Где планирате да користите Лумио?
     placeholders:
       membership_request:
         introduction: "Напишите неколико речи о томе ко сте и зашто желите да се придружите %{group_name}."
       motion:
         name: Шта је Ваш предлог смера акције?
         description: Дајте довољно информација како би сви знали шта тачно значи сложити се или се не са овим предлогом.
-      group_request:
-        description: Волели бисмо да чујемо о твојој групи и зашто хоћеш да користиш Лумио.
   helpers:
     submit:
       discussion:
@@ -965,10 +946,6 @@ sr-RS:
       specify_outcome: "Ваш предлог је истекао. Одредите један исход да сви виде који је резултат:"
       outcome_created: "%{who} је поставио/ла исход предлога:"
       you_agreed: "Ви %{past_tense_position}"
-    verification:
-      header: "Скоро сте завршили!"
-      intro: "Молим шкљоцните на верификациони линк да завршите свој захтев:"
-      ignore: Ако нисте захтевали да се придружите Лумију молим игноришите ову еПоруку.
   meta_tags:
     default_title: "Лумио | Заједничко Одлучивање"
     default_description: Лумио је алат за групно доношење одлука који је једноставан за употребу. Он омогућава групама да досегну одлуке брзо и предузму конструктивну акцију.
@@ -1031,7 +1008,6 @@ sr-RS:
   start_a_group: Започните групу
   starting: Почиње
   subject: Тема
-  terms_of_service_html: "Кликом на %{button_text}, слажете се са Лоомио <a href='%{link_path}' target='_blank'>Условима коришћења</a>"
   thanks: "Хвала!"
   unlike: Не Свиђа
   time_until_close: "%{quantity_of_time} до затварања"
@@ -1047,6 +1023,7 @@ sr-RS:
     settings: Подешавања
     dashboard: Радна табла
     unread: Непрочитано
+    find_out_more: Сазнај више
     filter: "Филтер:"
     following: Прати се
     not_following: Не прати се

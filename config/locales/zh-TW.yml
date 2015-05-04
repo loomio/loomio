@@ -1,20 +1,22 @@
 zh-TW:
   email_settings:
     title: 電子郵件設定
+    group_volume: 群組音量
+    group_volume_description: 音量控制，決定您要從群組收到多少電子郵件。為您所有的群組設定音量：
+    to_change_one_group: 若要變更您其中一個群組的音量，請到該群組的頁面修改。
+    discussion_activity: 當我參與時變更討論的音量
+    discussion_activity_description: 當您參與討論時，音量設定會變更為「大聲」，未來所有的動靜都會立刻寄電子郵件給您。
     yesterday_on_loomio: 每天寄送事件摘要的電子郵件給我
+    yesterday_on_loomio_description: 每天的早上6點，寄出昨天尚未閱讀的活動的電子郵件。這是一個相當好的方來來追蹤您的群組，它會包含一切您尚未靜音的資訊。
     email_when_mentioned: 當我被提及時寄送電子郵件給我
+    email_when_mentioned_description: "當某人想要取得您的注意，他們將會以 @ 來提到您。我們建議您將這個設定保持在勾選的狀態，這樣您就可以在有人提到您時收到一封電子郵件。"
     proposal_closing_soon: 提議定案前寄送電子郵件通知給我
+    proposal_closing_soon_description: 在提議結束前的24小時，不管音量大小，您都將會收到一封關於提議最新資訊的電子郵件。
     submit: 更新設定
     no_change: 無更改
+    no_change_description: 將我的群組音量水準設定為。
   explore:
     header: 探索公開群組
-  try_it:
-    header: 試試 Loomio
-    start_a_group: 要在您的社群中作決策，請啟動群組。
-    join_the_community: 加入 Loomio 社群群組
-    loomio_community_info: 這是我們討論有關 Loomio 及作決策的地方。
-    explore_groups: 探索其他在 Loomio 的群組
-    explore_groups_info: 看看 Loomio 上所有出色的群組並加入他們吧！
   activerecord:
     errors:
       messages:
@@ -71,6 +73,7 @@ zh-TW:
     group_already_setup: 您想設置的群組已存在。
     passwords_did_not_match: 密碼與確認密碼並不相符
     proposal_already_exists: 在這個討論串中已有一個開啟狀態的提案。
+    username_cannot_contain_whitespace: 使用者名稱不可以包含空格
     user_with_email_address_already_in_group: 該電子郵件使用者已屬於本群組。
     you_have_already_requested_membership: 您已經申請此群組的成員資格。
     you_are_already_a_member_of_this_group: 您已經是這個群組的成員。
@@ -123,6 +126,7 @@ zh-TW:
     added_to_group: "您已經加入 %{which_group} 群組。"
     close_date_changed: 定案日期更改成功。
     discussion_created: 成功建立討論串。
+    discussion_updated: 成功更新討論串。
     discussion_deleted: 成功刪除討論串。
     discussion_moved: "討論串成功移至 %{group_name}"
     emails_sending: 正在傳送這些電子郵件。
@@ -255,6 +259,25 @@ zh-TW:
       memberships: 在您目前隸屬的任何群組中您將不再被列為成員。
       group_contributions: 您在群組中作出的意見、提案與討論串會留下，但我們會從中移除您的大名。
       emails: 我們會停止寄送給您有關 Loomio 的電子郵件。
+  start_group_form:
+    header: 啟動新的群組
+    form_error: 有一些資訊遺失或不正確。
+    name: 您的大名
+    name_error: 名稱必填
+    email: 您的電子郵件
+    email_error: 並非有效的電子郵件地址。
+    group_name: 群組名稱
+    group_name_error: 群組名稱必填
+    payment: 付款
+    payment_error: 請選出一個選項：
+    subscription_html: "<strong>訂閱</strong> - 30 天免費試用。如果您的群組喜愛 Loomio，您可以以每月每個成員 $1 來使用它。"
+    donation_html: "<strong>捐款</strong> - 如果您無法支付常規的訂閱費用，我們會偶爾詢問您的群組成員有無自願性的捐款。"
+    terms_html: "要開始一個群組，您即同意遵守 Loomio 的<a href='%{link}' target='_blank'>服務條款</a>。"
+    success:
+      header: 您就快完成了！請確認您的電子郵件信箱。
+      email_delivered: "我們已經寄出一封電子郵件到 %{email}。請跟隨裡面的連結設定您的群組。"
+      email_not_arrived: 電子郵件尚未抵達？
+      please_hold: 請允許它在五分鐘內到達，並同時也請檢查您的垃圾信資料夾。
   group_form:
     name: 群組名稱
     description: 描述
@@ -369,6 +392,7 @@ zh-TW:
   approved_by_person: "由%{person}核准"
   ignored_by_perosn: "由%{person}取消"
   join_group_btn: 加入群組
+  membership_by_invitation_only: 這個群組的成員資格只能透過邀請獲得
   you_have_joined_group: "您已經加入「%{group_name}」群組"
   confirm_approve_membership_request: "您確定要將 %{which_user} 加入群組嗎？"
   cancel_membership_request: 取消申請
@@ -407,19 +431,50 @@ zh-TW:
       following_details: 此群組一有新的討論主題您將會被通知。
       not_following_details: 您參與的討論主題一有新的意見您將會被通知。
   networks:
+    threads_header: 在這個網絡中所有公開的討論串
+    groups_header: "在這個網絡中共有 %{count} 個群組"
     members_count: "%{count} 位成員"
+    membership_requests_header: "%{network} 的成員資格申請"
+    join_header: 將您的群組加入到網絡中
+    request_to_join: 請求加入網絡
+    current_requests: 目前的請求
     previous_requests: 前一個要求
     approve: 批准
+    approved: "由%{name}核准"
+    decline: 拒絕
+    declined: "由%{name}所拒絕"
     threads: 討論
     groups: 群組
+    join: 加入
+    manage: "管理 (%{count} 個擱置中的請求)"
+    request_created: 感謝您要求加入這個網絡。該網絡的協調者將會很快的審核您的請求。
+    request_approved: 成員資格申請已批准。
+    request_declined: 成員資格申請已拒絕。
   group_request:
     header: 啟動群組
+    desc: 設定一個群組以開始在 Loomio 上共同作出決策：
     commercial_use_option: 在公司、正式組織或是職場
     non_commercial_use_option: 在社群群組中或是非正式的網絡
     please_select_an_option: 請選出一個選項
     confirmation:
       title: 您就快完成了！請確認您的電子郵件信箱。
       body_html: "我們已寄出一封邀請函，邀請您建立屬於您的群組。\n\n若幾分鐘後，您在信件收件匣中未看見任何內容，請聯絡我們：<a href='mailto:contact@loomio.org'>contact@loomio.org</a>\n"
+  volume:
+    volume: 音量
+    loud: 大聲
+    normal: 普通
+    quiet: 安靜
+    mute: 靜音
+  discussion_volume:
+    loud_description: 只要這個討論串有活動就立刻寄發電子郵件。
+    normal_description: 只當提議被建立、將要關閉、或是結果公佈時才寄發電子郵件。
+    quiet_description: 不要寄發關於這個討論串的電子郵件。
+    mute_description: "從儀表板上隱藏此討論串，除非 @提及，否則將不會通知。"
+  group_volume:
+    loud_description: 只要有活動就立刻寄發電子郵件。
+    normal_description: 只在有重要的活動時寄發電子郵件：新的討論及提議，結果......等。
+    quiet_description: 不要寄發任何關於此群組的電子郵件。活動將會顯示在儀表板上。
+    mute_description: "從儀表板上隱藏此群組，除非 @提及，否則將不會通知。"
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> 對此提案表示贊成。"
     user_abstained_on_proposal_html: "<strong>%{name}</strong> 對此提案表示棄權。"
@@ -586,6 +641,7 @@ zh-TW:
     video_tutorial: 影片教學
     video_tutorial_description: 點閱一段簡單示範的影片以瞭解如何使用 Loomio。
     what_is_loomio: Loomio 是？
+    what_is_loomio_description_html: "<p> Loomio 是一套簡單、人性化的線上協同決策制定利器。\nLoomio 讓您能在線上主持討論、邀請對的人來參與，即時作出討論，進而在深思熟慮後轉變為現實世界的行動。</p>\n"
   hint:
     context: 使用論述控制板的小提示
     discussion: 發起一段激動人心討論的小提示
@@ -593,12 +649,12 @@ zh-TW:
     proposal: 寫出明確提案的小提示
     vote: 任何時候您都能改變您的立場
   pricing_page:
-    intro: "有預算的群組可以認購付費使用此工具。\n沒有預算的群組，則可以「隨意付」模式使用此工具：該群組成員將被邀請來完成一些志願性的任務。您的贊助可以讓 Loomio 維持獨立運作、免除廣告影響，由使用者自己經營。\n"
-    organisations: 組織
-    organisations_examples: 例如，公司行號，政府機關，或社群團體
-    informal_groups: 非正式群組
-    informal_groups_desc: 您群組內的成員會被要求「隨意付」
-    informal_groups_examples: 例如：家庭會議、社會運動、集體創作
+    header: 價格
+    in_development_html: "我們正在發展一種符合我們的社會使命的定價模式： <strong>任何人都能輕鬆參與、討論決策、影響他人</strong>。"
+    loomio_for_organisations: 組織用的 Loomio
+    organisations_deal_html: "如果您在公司、正式組織或工作場所中使用 Loomio，您將會在<strong>30天的免費試用</strong>後被收取每人 $1 的月費。"
+    loomio_for_communities: 社群用的 Loomio
+    communities_deal: 錢永遠不會是人們在他們的社群中使用 Loomio 做大事的阻礙。如果您的團隊沒有足夠的預算來支付軟體費用，您就不需要支付訂閱的費用。但是，我們偶爾會詢問您的群組成員是否有自願性的捐款。
   contribution:
     any_amount: 或是自訂的單次贊助：
     currency_desc: 以美元作為單位
@@ -644,6 +700,11 @@ zh-TW:
   inactive_html: "此帳號已經被凍結。假如您有任何疑問，請<a href='%{path_to_contact}'>聯繫我們</a>。"
   create_an_account_html: 建立 Loomio Beta 帳號
   log_in: 登入
+  password_reset:
+    email_guidelines_html: "<p>在下面的欄位中填入您 Loomio 帳號的電子郵件地址，然後您將會收到一個密碼的重置連結。</p>\n<p>如果您是透過 Facebook、Google、Twitter 或是 Persona 登入的話，請輸入與這些帳號相關聯的電子郵件地址。</p>\n"
+    reset_email_timeframe: 這將會花費 5 分鐘的時間將電子郵件寄到。如果沒有出現，請務必檢查您的垃圾信資料夾。
+    length_restriction: 密碼應至少 8 個字元長。
+    forbidden_passwords: 常見的密碼，像是「password」將會被拒絕以保護您的帳號安全。
   join_group:
     log_in: "登入以加入 %{group_name}"
     create_account_to_join_group: "請建立帳號以加入 %{group_name}"
@@ -654,8 +715,6 @@ zh-TW:
   invitation:
     alternate: 或者，分享這個連結讓別人能要求加入：
     by_email: 以電子郵件邀請
-    no_invitations_left: 抱歉，目前您尚未收到任何邀請。
-    no_invitations_left_get_more: 若有任何問題，請聯絡 contact＠loomio.org，我們將盡力提供協助！
     invitation_not_found: 無法在該邀請碼內找到邀請函。請要求寄件者給一封新的。
     invitation_cancelled: 您的邀請函已失效。若您認為這可能是系統錯誤，您可以請寄出此封信的邀請者再一次發送邀請函。
     invitation_already_used: 您已出示過此封邀請函，現在您可以直接登入您的群組。
@@ -692,6 +751,9 @@ zh-TW:
     description: "Loomio 小幫手真的熱切希望您的群組投資月球之旅。據說宇宙乳酪美味可口。但這麼做的話，您的碳足跡影響令人擔憂。\n這是一個好主意嗎？Loomio 小幫手要知道您怎麼想！\n假如您的立場是明確的，點擊以下的決策圖示之一 (移動滑鼠游標停在每個按鈕上會出現描述)。\n您會被提示要作出有關您決定的簡短聲明。這是讓大家能輕鬆看見您想法原由的摘要。您能自由改變您的心意、編輯您的決定直到這個提案結束。\n"
   contact_page:
     contact_us: 聯絡我們
+    faq_prompt_html: 對 Loomio 團隊有任何問題？在聯絡我們之前，您應該先在我們的常見問題中找尋答案。
+    contact_information: 如果您找不到您想找的東西，您可以在這個頁面的底部找到我們的聯絡資訊。
+    contact_form: 聯絡表單
     labels:
       name: 您的大名
       email: 您的電子郵件地址
@@ -699,7 +761,7 @@ zh-TW:
       submit: 寄送訊息
     messages:
       email_html: "填寫這張表格，或發電子郵件到 <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "您也可以在<br/><a href='%{facebook}' target='_blank'>facebook</a> ， <a href='%{google}' target='_blank'>google+</a> ，和 <a href='%{twitter}' target='_blank'>twitter</a> 加入我們！"
+      social_html: "您也可以在 <br/><a href='%{facebook}' target='_blank'>facebook</a>、<a href='%{google}' target='_blank'>google+</a>、以及 <a href='%{twitter}' target='_blank'>twitter</a> 上加入我們！\n"
   discussion_form:
     new:
       header: 啟動討論串
@@ -775,20 +837,12 @@ zh-TW:
         password: 密碼
         password_confirmation: 確認密碼
         language_preference: 語言
-      group_request:
-        admin_name: 您的大名是？
-        admin_email: 您的電子郵件地址是？
-        name: 您的群組的名稱是？
-        description: 如果您有空的話，多告訴我們一些有關您群組的事
-        is_commercial: 您打算在哪裡使用 Loomio？
     placeholders:
       membership_request:
         introduction: "簡單幾句話告訴我們您是誰和為甚麼想要加入「%{group_name}」。"
       motion:
         name: 請問您提議的行動方針是?
         description: 請提供足夠的資訊，讓每個人都能明確表示贊成或是反對。
-      group_request:
-        description: 我們很樂意聽到您的群組為甚麼想要使用 Loomio。
   helpers:
     submit:
       discussion:
@@ -880,6 +934,10 @@ zh-TW:
     thread_mailer:
       footer_text: "直接回覆本電子郵件，或是到 %{hostname} 上觀看："
       reply_or_view_online_html: "直接回覆此 Email，或是<a href='%{url}'>在 %{hostname} 上觀看</a>。"
+      turn_off_notifications_html: "為此討論<a href='%{url}'>關閉電子郵件</a>。"
+      turn_off_notifications_text: "為此討論關閉電子郵件：%{url}"
+      turn_on_notifications_html: "<a href='%{url}'>為此討論開啟電子郵件</a> 以接收所有未來的活動。"
+      turn_on_notifications_text: "為此討論開啟電子郵件以接收所有未來的活動：%{url}"
       change_email_preferences_html: "變更您的 <a href='%{email_preferences_url}'>email 偏好設定</a>以取消訂閱這些電子郵件。"
       change_preferences: 變更您的電子郵件偏好設定：
       new_motion: "%{who} 的提議："
@@ -889,10 +947,6 @@ zh-TW:
       specify_outcome: 您的提議已經定案。請具體說明成果，讓每個人都能知道提案的結果：
       outcome_created: "%{who} 確立了提案成果："
       you_agreed: "您%{past_tense_position}"
-    verification:
-      header: 您就快完成了！
-      intro: 為了完成您的申請，請點擊此認證連結：
-      ignore: 若您並未申請加入 Loomio，請忽略此郵件。
   meta_tags:
     default_title: "Loomio | 協同決策制定利器"
     default_description: Loomio 是簡單易用的線上群組決策制定工具。讓分散型的社群得以快速作出決定進而付諸實行。
@@ -955,7 +1009,7 @@ zh-TW:
   start_a_group: 啟動群組
   starting: 正在啟動
   subject: 主旨
-  terms_of_service_html: "按下%{button_text}按鈕表示您同意遵守 Loomio 的<a href='%{link_path}' target='_blank'>服務條款</a>"
+  tos_html: "要登入，您即同意遵守 Loomio 的<a href='%{link_path}' target='_blank'>服務條款</a>。"
   thanks: 謝謝！
   unlike: 收回讚
   time_until_close: "直到定案還有 %{quantity_of_time}"
@@ -964,18 +1018,31 @@ zh-TW:
   yahoo: Yahoo
   google: Google
   persona: 人物誌
+  log_in_with_third_party: 或是以第三方帳號登入：
+  log_in_with_google: 使用 Google 登入
+  log_in_with_facebook: 使用 Facebook 登入
+  log_in_with_persona: 使用 Persona 登入
+  log_in_with_twitter: 使用 Twitter 登入
+  sign_up_with_third_party: 或是以第三方帳號註冊：
+  sign_up_with_google: 使用 Google 註冊
+  sign_up_with_facebook: 使用 Facebook 登入
+  sign_up_with_persona: 使用 Persona 登入
+  sign_up_with_twitter: 使用 Twitter 登入
   common:
     profile: 簡歷
+    welcome_back: 歡迎回來！
     email_settings: 電子郵件設定
     markdown_help_tooltip: 用 Markdown 格式化您的文字，從基礎學起
     settings: 設定
     dashboard: 儀表板
     unread: 未讀
+    find_out_more: 詳細瞭解
     filter: 過濾條件：
     following: 正在跟隨
     not_following: 尚未跟隨
     back_to_discussion: 回到討論串
     edited: 編輯紀錄
+    get_started: 入門
     groups: 群組
     select_error: 請選出一個選項
     today: 今天

@@ -8,13 +8,6 @@ be-BY:
     submit: Абнавіць налады
   explore:
     header: Знайсці публічныя групы
-  try_it:
-    header: Паспрабаваць Loomio
-    start_a_group: Стварыце групу каб прымаць вырашенні ў сваёй супольнасці
-    join_the_community: "Далучайцеся да групы супольнасці Loomio "
-    loomio_community_info: Тут мы абмяркоўваем і прымаем вырашэнні якім будзе Loomio
-    explore_groups: Знайдзіце іншыя групы на Loomio
-    explore_groups_info: "Праглядзіце астатнія выдатныя групы на Loomio і далучайцеся да іх!"
   activerecord:
     errors:
       messages:
@@ -93,12 +86,18 @@ be-BY:
     invitations:
       auto_added:
         one: 1 удзельнік дададзены
+        few: "%{count} удзельніка дадазена"
+        many: "%{count} удзельніка дадазена"
         other: "%{count} удзельніка дадазена"
       existing_member:
         one: 1 удзельнік ужо ў групе
+        few: "%{count} удзельніка ўжо ў групе"
+        many: "%{count} удзельніка ўжо ў групе"
         other: "%{count} удзельніка ўжо ў групе"
       sent:
         one: 1 запрашэнне даслана
+        few: "%{count} запрашэння даслана"
+        many: "%{count} запрашэння даслана"
         other: "%{count} запрашэння даслана"
       auto_added_and_sent: "%{auto_added_text} і %{sent_text}"
   tooltip:
@@ -145,36 +144,58 @@ be-BY:
     distance_in_words:
       less_than_x_seconds:
         one: 1 секунда
+        few: "%{count} секунды"
+        many: "%{count} секунды"
         other: "%{count} секунды"
       x_seconds:
         one: 1 секунда
+        few: "%{count} секунд"
+        many: "%{count} секунд"
         other: "%{count} секунд"
       less_than_x_minutes:
         one: 1 хвіліна
+        few: "%{count} хвілін"
+        many: "%{count} хвілін"
         other: "%{count} хвілін"
       x_minutes:
         one: 1 хвіліна
+        few: "%{count} хвілін"
+        many: "%{count} хвілін"
         other: "%{count} хвілін"
       about_x_hours:
         one: 1 гадзіна
+        few: "%{count} гадзін"
+        many: "%{count} гадзін"
         other: "%{count} гадзін"
       x_days:
         one: 1 дзень
+        few: "%{count} дзён"
+        many: "%{count} дзён"
         other: "%{count} дзён"
       about_x_months:
         one: 1 месяц
+        few: "%{count} месяцаў"
+        many: "%{count} месяцаў"
         other: "%{count} месяцаў"
       x_months:
         one: 1 месяц
+        few: "%{count} месяцаў"
+        many: "%{count} месяцаў"
         other: "%{count} месяцаў"
       about_x_years:
         one: 1 год
+        few: "%{count} гадоў"
+        many: "%{count} гадоў"
         other: "%{count} гадоў"
       over_x_years:
         one: 1 год
+        few: "%{count} гадоў"
+        many: "%{count} гадоў"
         other: "%{count} гадоў"
       almost_x_years:
         one: 1 год
+        few: "%{count} гадоў"
+        many: "%{count} гадоў"
         other: "%{count} гадоў"
   organisation:
     name: Loomio
@@ -269,6 +290,12 @@ be-BY:
       memberships: "Вы больш не будзеце ў спісе ўдзельнікаў у групах, у якіх вы зараз ўдзельнічаеце."
       group_contributions: "Каментары, прапановы і абмеркаванні, якія вы рабілі ў групах, застануцца, але з іх знікне ваша імя."
       emails: Вам больш не будуць прыходзіць лісты з Loomio.
+  start_group_form:
+    header: Стварыць новую групу
+    name: Вашае імя
+    group_name: Назва групы
+    success:
+      header: "Вы амаль што скончылі! Праверце сваю пошту."
   group_form:
     name: Назва групы
     description: Апісанне
@@ -622,12 +649,7 @@ be-BY:
     proposal: "Парады, як пісаць зразумелыя прапановы"
     vote: Вы здольны змяніць свой голас у любы час
   pricing_page:
-    intro: "Групы з бюджэтам набываюць платную падпіску для карыстання Loomio.\nГрупы, у якіх няма сродкаў на платную падпіску, выкарыстоўваюць мадэль «плаці колькі можаш»: іх удзельнікі вольны рабіць добраахвотныя ўнёскі. Ваш унёсак дае магчымасць Loomio быць незалежным, вольным ад рэкламы, і кіраваным супольнасцю.\n"
-    organisations: Арганізацыі
-    organisations_examples: "напрыклад, камерчыя арганізацыі, дзяржаўныя ўстановы, грамадскія арганізацыі"
-    informal_groups: Нефармальныя групы
-    informal_groups_desc: Мы папросім удзельнікаў вашай групы заплаціць колькі яны здольны
-    informal_groups_examples: "напрыклад, сем'і, грамадскія рухі, калектывы"
+    header: Кошты
   contribution:
     any_amount: "ці асобны, разавы ўнёсак у"
     currency_desc: Колькасць у амерыканскіх далярах
@@ -683,8 +705,6 @@ be-BY:
   invitation:
     alternate: "Ці, падзяліцеся спасылкай, каб людзі змаглі папрасіць далучыцца:"
     by_email: Запрасіць праз email
-    no_invitations_left: "Нажаль, у вас больш не засталося запрашэнняў"
-    no_invitations_left_get_more: "Калі ласка, напішыце на contact@loomio.org і мы прыдумаем як вам дапамагчы"
     invitation_not_found: "Мы не можам знайсці запрашэнне з такім кодам. Калі ласка, запытайце новае запрашэнне ў таго, хто прыслаў вам папярэдняе."
     invitation_cancelled: "Запрашэнне было скасавана. Калі ласка, звяжыцеся з адпраўніком запрашэння, калі вы лічыце, што гэта было зроблена памылкова."
     invitation_already_used: "Запрашэнне ўжо было выкарыстана. Калі ласка, увайдзіце пад сваім запісам каб перайсці да сваёй групы."
@@ -728,7 +748,6 @@ be-BY:
       submit: Адправіць паведамленне
     messages:
       email_html: "Запоўніце форму, ці адпраўце нам ліст на пошту <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Вы таксама можаце далучыцца да нас на<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, і <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: Распачаць абмеркаванне
@@ -804,20 +823,12 @@ be-BY:
         password: Пароль
         password_confirmation: Пацвердзіце пароль
         language_preference: Мова
-      group_request:
-        admin_name: Якое Вашае імя?
-        admin_email: Які Ваш email адрас?
-        name: Як завецца Вашая група?
-        description: "Калі маеце час, распавядзіце нам пра сваю групу"
-        is_commercial: Дзе вы плануеце выкарыстоўваць Loomio?
     placeholders:
       membership_request:
         introduction: "Напішыце некалькі слоў пра тое, хто вы і чаму вы жадаеце далучыцца да групы %{group_name}."
       motion:
         name: Які курс дзеянняў вы прапануеце?
         description: "Напішыце дастаткова інфармацыі, каб кожны зразумеў, што значыць быць згодным ці не згодным."
-      group_request:
-        description: Мы вельмі хацім даведацца пра вашую групу і чаму вы хаціце карыстацца Loomio.
   helpers:
     submit:
       discussion:
@@ -921,10 +932,6 @@ be-BY:
       specify_outcome: "Ваша прапанова закрыта. Падагульніце зыход, каб паведаміць усім пра вынік:"
       outcome_created: "Карыстальнік %{who} усталяваў вынік прапановы:"
       you_agreed: "Вы %{past_tense_position}"
-    verification:
-      header: "Вы амаль скончылі!"
-      intro: "Калі ласка, націсніце на гэтую спасылку праверкі, каб завяршыць запыт:"
-      ignore: "Калі вы не запытвалі, далучэння да Loomio, ігнаруйце гэта паведамленне."
   meta_tags:
     default_title: "Loomio | Сумеснае прыняцце рашэнняў"
     default_description: "Loomio — лёгкі для карыстання анлайн інструмент для прыняцця групавых рашэнняў. Ён дазваляе раззасяроджаным групам хутка прымаць рашэнні і, як вынік, канструктыўна дзейнічаць."
@@ -987,7 +994,6 @@ be-BY:
   start_a_group: Стварыць групу
   starting: Ствараем
   subject: Тэма
-  terms_of_service_html: "Націснуўшы %{button_text}, вы пагаджаецеся з <a href='%{link_path}' target='_blank'>умовамі выкарыстання</a> Loomio"
   thanks: "Дзякуй!"
   unlike: Не падабаецца
   time_until_close: "%{quantity_of_time} да закрыцця"
@@ -1003,6 +1009,7 @@ be-BY:
     settings: Налады
     dashboard: Галоўная
     unread: Непрачытаныя
+    find_out_more: Даведацца больш
     filter: "Фільтр:"
     following: Сачу
     not_following: Не сачу

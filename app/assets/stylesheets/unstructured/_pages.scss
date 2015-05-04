@@ -559,7 +559,31 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
     width: 360px;
   }
   select { margin: 8px 0 10px 0; }
-  #direct_contact { margin-top: 101px; }
+  #direct_contact { margin-top: 30px; }
+
+  #faq {
+    margin-top: 50px;
+    h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+    h3 {
+      line-height: 1.2;
+      margin: 1em 0;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 1.5em;
+      line-height: 1.4;
+    }
+  }
+  #contact_form {
+    h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      margin-top: 25px;
+    }
+  }
 }
 
 body.pages.crowd {
@@ -817,4 +841,8 @@ body.pages.crowdfunding_celebration {
   .content{
     margin-top: 0;
   }
+}
+
+body.passwords {
+  input { margin-bottom: 15px; }
 }

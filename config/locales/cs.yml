@@ -2,19 +2,14 @@ cs:
   email_settings:
     title: Nastavení emailu
     submit: Aktualizovat nastavení
+    no_change: Žádná změna
   explore:
     header: Prozkoumejte veřejné skupiny
-  try_it:
-    header: Vyzkoušejte Loomio
-    start_a_group: Spustit skupinu pro vytvoření rozhodnutí ve své vlastní komunitě.
-    join_the_community: Přidejte se ke skupině komunity Loomio
-    loomio_community_info: Zde diskutujeme a vytváříme rozhodnutí o programu Loomio
-    explore_groups: Prozkoumejte další skupiny na Loomio
-    explore_groups_info: "Podívejte se na všechny ty úžasné skupiny na Loomio a připojte se k nim!"
   activerecord:
     errors:
       messages:
         blank: nemůže být prázdné
+        invalid: není platná hodnota
   errors:
     messages:
       email: Není platnou e-mailovou adresou
@@ -66,6 +61,7 @@ cs:
     group_already_setup: "Skupina, kterou se snažíte vytvořit, už existuje."
     passwords_did_not_match: Heslo se neshoduje s potvrzením
     proposal_already_exists: V této diskuzi už je otevřený návrh.
+    username_cannot_contain_whitespace: Uživatelské jméno nesmí obsahovat mezery
     user_with_email_address_already_in_group: Uživatel s touto emailovou adresou už patří do této skupiny.
     you_have_already_requested_membership: Už jste zažádal(a) o členství v této skupině.
     you_are_already_a_member_of_this_group: Už jste členem této skupiny.
@@ -208,6 +204,7 @@ cs:
   edit_discussion_context: Upravit kontext diskuze
   request_new_group: Vytvořit skupinu
   start_new_group: Vytvořit novou skupinu
+  start_new_group_hint: Chcete-li začít přijímat rozhodnutí
   find_a_group: Najít skupinu
   find_a_group_hint: Prozkoumat veřejné skupiny
   search_for_group: Hledat skupinu ...
@@ -248,6 +245,12 @@ cs:
       only_coordinator: "Skupina musí mít alespoň jednoho koordinátora. Jste v současné době jediný koordinátor následujících skupin:"
       instructions: "Chcete-li deaktivovat váš účet, budete muset buď přidat dalšího koordinátora nebo deaktivovat skupiny."
       info_title: Co bude deaktivace vašeho účtu znamenat?
+  start_group_form:
+    header: Vytvořit novou skupinu
+    name: Vaše jméno
+    group_name: Název skupiny
+    success:
+      header: "Jste téměř u konce! Zkontrolujte si email."
   group_form:
     name: Název skupiny
     description: Popis
@@ -357,9 +360,16 @@ cs:
   start_a_discussion: Zahájit diskuzi
   group_description: Popis skupiny
   edit_group_description: Upravit popis skupiny
+  groups:
+    follow:
+      click_to_follow: Kliknutím sledovat skupinu
+      click_to_unfollow: Kliknutím nesledovat skupinu
   networks:
+    request_to_join: Žádost o připojení k síti
+    current_requests: Aktuální žádosti
     previous_requests: Předchozí žádosti
     approve: Schválit
+    approved: "Schválil %{name}"
     threads: Diskuze
     groups: Skupiny
   group_request:
@@ -496,6 +506,7 @@ cs:
     video_id: "52025402"
     video_tutorial: Zobrazit tutoriál
     video_tutorial_description: "Shlédněte rychlou ukázku toho, jak se Loomio používá."
+    what_is_loomio: Co je Loomio?
   hint:
     context: Rady pro používání kontextového panelu
     discussion: Rady k zahájení poutavé diskuze
@@ -503,11 +514,7 @@ cs:
     proposal: Rady pro napsání jasného návrhu
     vote: Můžete kdykoliv svůj postoj změnit
   pricing_page:
-    organisations: Organizace
-    organisations_examples: "např. firmy, vládní agentury, komunitní organizace"
-    informal_groups: neformální skupiny
-    informal_groups_desc: Členové vaší skupiny budou vyzváni aby zaplatili co mohou
-    informal_groups_examples: "např. rodiny, sociální hnutí, kolektivy"
+    header: Ceník
   contribution:
     any_amount: nebo jednorázový příspěvek
     currency_desc: Částky jsou uvedeny v amerických dolarech
@@ -554,8 +561,6 @@ cs:
   invitation:
     alternate: "Případně sdílejte tento odkaz a každý vás může zažádat o členství:"
     by_email: Pozvat emailem
-    no_invitations_left: "Omlouváme se, nezbývají vám žádné pozvánky"
-    no_invitations_left_get_more: "Prosím emailujte contact@loomio.org a uvidíme, co můžeme udělat, abychom vám pomohli"
     invitation_cancelled: "Tato pozvánka byla zrušena. Prosím kontaktujte odesílatele této pozvánky pokud myslíte, že došlo k chybě."
     invitation_already_used: "Tato pozvánka už byla použita. Prosím přihlaste se, abyste pokračoval(a) ke své skupině."
     recipients: "Zadejte emailové adresy, oddělené čárkami:"
@@ -581,7 +586,7 @@ cs:
     please_enter_a_search: Prosím zadejte výraz do vyhledávacího pole výše
     no_match: Žádné výsledky neodpovídali vašemu výrazu
   example_discussion:
-    title: "Ukázková diskuze: Přivítání a úvod do Loomio"
+    title: "Ukázková diskuze: Úvítání a úvod do Loomio"
   example_motion:
     name: "Měli bychom mít dovolenou na měsíci!"
   contact_page:
@@ -657,24 +662,17 @@ cs:
         close_at_date: Uzavírá se
       user:
         name: Jméno a příjmení
+        username: Uživatelské jméno
         email: E-mail
         password: Heslo
         password_confirmation: Potvrdit heslo
         language_preference: Jazyk
-      group_request:
-        admin_name: Jaké je vaše jméno?
-        admin_email: Jaká je vaše e-mailová adresa?
-        name: Jaký je název vaší skupiny?
-        description: "Máte-li chvilku, řekněte nám něco o vaší skupině"
-        is_commercial: Kde plánujete používat Loomio?
     placeholders:
       membership_request:
         introduction: "Napište pár slov o sobě a proč se chcete přidat k %{group_name}."
       motion:
         name: Jaké řešení navrhujete?
         description: "Poskytněte dostatek informací, aby každý věděl, co vlastně znamená, když souhlasí nebo nesouhlasí."
-      group_request:
-        description: Rádi bychom se dozvěděli něco o vaší skupině a proč chcete použít Loomio.
   helpers:
     submit:
       discussion:
@@ -756,10 +754,6 @@ cs:
       change_preferences: "Změna nastavení e-mailu:"
       motion_closing_soon: "Návrhy uzavřené během 24 hodin:"
       proposal_closed: "Návrh uzavřen:"
-    verification:
-      header: "jste skoro hotov(a)!"
-      intro: "Prosím klikněte na tento ověřovací odkaz pro dokončení vaší žádosti:"
-      ignore: "Pokud jste nezažádal(a) o členství na Loomio, prosím ignorujte tento email."
   meta_tags:
     default_title: "Loomio | Společné rozhodování"
   about_loomio: O Loomio
@@ -827,12 +821,23 @@ cs:
   yahoo: Yahoo
   google: Google
   persona: Persona
+  log_in_with_third_party: "Nebo se přihlašte pomocí účtu třetí strany:"
+  log_in_with_google: Přihlásit se pomocí účtu Google
+  log_in_with_facebook: Přihlásit se pomocí účtu Facebook
+  log_in_with_persona: Přihlásit se pomocí účtu Persona
+  log_in_with_twitter: Přihlásit se pomocí účtu Twitter
+  sign_up_with_third_party: "Nebo si zaregistrujte účet třetí strany:"
+  sign_up_with_google: Registrovat si účet pomocí Google
+  sign_up_with_facebook: Registrovat si účet pomocí Facebook
+  sign_up_with_persona: Registrovat si účet pomocí Persona
+  sign_up_with_twitter: Registrovat si účet pomocí Twitter
   common:
     profile: Profil
     email_settings: Nastavení emailu
     settings: Nastavení
     dashboard: Ovládací panel
     unread: Nepřečteno
+    find_out_more: Dověďte se více
     filter: "Filtr:"
     following: Sledované
     not_following: Nesledované

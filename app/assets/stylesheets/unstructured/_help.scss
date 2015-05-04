@@ -1,12 +1,13 @@
 .help {
   h1 {
-    font-size: 36px;
-    margin: 1em 0;
-    border-bottom: 1px solid;
+    font-size: 40px;
+    margin: .4em 0 0;
   }
   h2 {
     font-size: 28px;
-    margin: 2em 0;
+    margin-bottom: 1em;
+    border-bottom: 1px solid;
+    padding-top: 70px;
   }
   h3{
     font-size: 18px;
@@ -23,10 +24,6 @@
     font-size: 15px;
     margin-bottom: 1.5em;
     line-height: 1.4;
-  }
-  section {
-    padding-top: 30px;
-    margin-top: 10px;
   }
 
   .anchor {
@@ -60,7 +57,6 @@
       }
     }
   }
-  #help-header { margin-top: 10px; }
 
   #get-started, #progress-resources, #how-to-contribute {
     list-style: decimal;
@@ -70,28 +66,17 @@
       margin-bottom: 10px;
     }
   }
-  #what-is-loomio {
-    padding-top: 75px;
-    margin-top: -75px;
-  }
 
   #how-to { margin-bottom: 50px; }
 
   #contents {
-    padding-top: 55px;
-    margin-top: -55px;
-    ul { margin-bottom: 24px; }
-    .single-item {
+    ul { margin-bottom: 25px; }
+    h3 {
       font-size: 16px;
       font-weight: 600;
-      a { margin-bottom: 10px; }
+      margin: 0 0 10px;
     }
     li { margin-bottom: 10px; }
-    .top-level {
-      font-size: 16px;
-      font-weight: 600;
-    }
-    margin-bottom: 20px;
   }
 
   .screenshot { margin-bottom: 30px; }
@@ -110,7 +95,7 @@
     margin-left: 20px;
   }
 
-  #bottom-links { margin: 30px 0 0 0; }
+  #bottom-links, #help-links { margin: 30px 0 0 0; }
 
   .feedback-discussion-link { float: right; }
 }
@@ -119,10 +104,6 @@
 /*Styles applied to both in-app help and marketing site*/
 .help, .pages.purpose{
   #help-content {
-    h2 {
-      margin-bottom: .3em;
-      .blue{ color: #0088cc; }
-    }
     iframe { margin-top: 0; }
     img, iframe {
       border: 1px solid #eee;

@@ -1,7 +1,6 @@
 class NotificationItems::MembershipRequestApproved < NotificationItem
   attr_accessor :notification
 
-
   def initialize(notification)
     @notification = notification
   end
@@ -14,8 +13,8 @@ class NotificationItems::MembershipRequestApproved < NotificationItem
     @notification.eventable.group_full_name
   end
 
-  def link
-    Routing.group_path(@notification.eventable.group)
+  def linkable
+    [@notification.eventable.group]
   end
 
   def actor

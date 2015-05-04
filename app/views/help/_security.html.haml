@@ -1,8 +1,6 @@
-%section#security
-  .row
-    .col-sm-12
-      %h1= t :"new_help.security.title"
-      = t :"new_help.security.body_html"
+%section{"role" => "region", "aria-labelledby" => "security"}
+  %h2#security= t :"new_help.security.title"
+  = t :"new_help.security.body_html"
   .row#back-to-top
-    .col-sm-12
+    .col-sm-6
       %a{:href => "#contents"}= t :"new_help.back_to_top"

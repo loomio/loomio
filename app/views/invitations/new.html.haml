@@ -1,6 +1,3 @@
-- if show_max_size_warning?
-  = render 'application/max_size_warning'
-
 = render 'title', group: @group, discussion: @discussion
 = simple_form_for(@invite_people_form, url: invitations_path, method: :post) do |f|
   - if @invitable.kind_of?(Group)

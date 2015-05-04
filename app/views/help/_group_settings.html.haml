@@ -1,5 +1,5 @@
-%section#group-settings
-  %h1= t :"new_help.group_settings.title"
+%section{"role" => "region", "aria-labelledby" => "group-settings"}
+  %h2#group-settings= t :"new_help.group_settings.title"
   .row
     .col-sm-7
       %p= t :"new_help.group_settings.intro_html"
@@ -66,8 +66,4 @@
   %p= t :"new_help.group_settings.group_permissions.what_can_members_do.vote_on_proposals.body_html"
   %h3.after-group-setup= t :"new_help.group_settings.group_permissions.what_next.title"
   %p= t :"new_help.group_settings.group_permissions.what_next.body_html"
-  .row#bottom-links
-    .col-sm-6
-      %a.back-to-top{:href => "#contents"}= t :"new_help.back_to_top"
-    .col-sm-6
-      %a.feedback-discussion-link{:href => "https://www.loomio.org/d/Yl5D3EC0/new-help-documentation-we-want-your-feedback"}= t :"new_help.feedback_discussion"
+  = render 'help/help_links'

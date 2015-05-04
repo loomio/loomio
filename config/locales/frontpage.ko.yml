@@ -28,8 +28,6 @@ ko:
       step3:
         header: 3. 다 함께 의사 결정하기
         desc: "모두가 함께 참여한 제안을 만들어보세요. 모든 크고 작은 결정 사항마다 분명한 기한이 있으니, 언제나 명확한 결과를 얻을 수 있어요."
-    crowdfunding:
-      header: 루미오는 현재 세상 모든 사람들이 루미오를 누릴 수 있도록 개방과 완성을 목표로 크라우드펀딩 중입니다.
     quote:
       header:
         rushkoff_html: "“루미오는 양극단으로 치닫는 토론 대신 함께 의견을 모으는 <strong>인터넷의 가능성을 해방시켰습니다.</strong>\" <div class=\"attributation\">– <a href=\"http://rushkoff.com\">더글라스 러시코프 (Douglas Rushkoff)</a>, <em>Present Shock</em>의 저자</div>"

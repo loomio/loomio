@@ -68,6 +68,9 @@ class Ability
       user_is_admin_of?(group.id)
     end
 
+    can :export, Group do |group|
+      user_is_admin_of?(group.id) && group.enabled_beta_features.include?('export')
+    end
 
     can [:members_autocomplete, :set_volume, :see_members], Group do |group|
       user_is_member_of?(group.id)
@@ -161,7 +164,7 @@ class Ability
       else
         discussion.public? or
         user_is_member_of?(discussion.group_id) or
-        (discussion.group.is_visible_to_parent_members? and user_is_member_of?(discussion.group.parent_id))
+        (discussion.group.parent_members_can_see_discussions? and user_is_member_of?(discussion.group.parent_id))
       end
     end
 

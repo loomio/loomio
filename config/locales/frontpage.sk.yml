@@ -28,8 +28,6 @@ sk:
       step3:
         header: 3. Rozhodnite sa spoločne
         desc: "Vypracujte návrh spoločne, aby vyhovoval všetkým. Každé rozhodnutie má jasnú lehotu, takže vždy získate jasné rozhodnutie."
-    crowdfunding:
-      header: "Crowdfundujeme, aby sme mohli dobudovať túto novú platformu a poskytnúť ju svetu."
     quote:
       header:
         rushkoff_html: "“Loomio <strong>naplno využíva potenciál internetu</strong> na to, aby ľudia mohli budovať konsenzus, namiesto polarizujúcich debát.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autor <em>Present Shock</em></div>"

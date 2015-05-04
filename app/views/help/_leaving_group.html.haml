@@ -1,12 +1,8 @@
-%section#leaving-groups
-  %h1= t :"new_help.leaving_groups.title"
+%section{"role" => "region", "aria-labelledby" => "leaving-groups"}
+  %h2#leaving-groups= t :"new_help.leaving_groups.title"
   .row
     .col-sm-8
       %p= t :"new_help.leaving_groups.body_html"
     .col-sm-4
       =image_tag "leave-group.png", class: "screenshot"
-  .row#bottom-links
-    .col-sm-6
-      %a.back-to-top{:href => "#contents"}= t :"new_help.back_to_top"
-    .col-sm-6
-      %a.feedback-discussion-link{:href => "https://www.loomio.org/d/Yl5D3EC0/new-help-documentation-we-want-your-feedback"}= t :"new_help.feedback_discussion"
+  = render 'help/help_links'

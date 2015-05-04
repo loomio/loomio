@@ -11,75 +11,9 @@
             We use the third parties listed on this page to provide a high-level of service and some of Loomio's functionality. Loomio shares data with these services and for convenience this page provides links to third party privacy policies. For more information please see our
             =link_to "Privacy Policy.", privacy_path
           %br
-          .row
-            .col-md-2
-              %p
-                = link_to "Amazon S3", "http://www.amazon.com/gp/help/customer/display.html?nodeId=468496", target: '_blank'
-            .col-md-8
-              %p -stores uploaded files and images.
-          .row
-            .col-md-2
-              %p
-                = link_to "Airbrake", "https://airbrake.io/pages/privacy", target: '_blank'
-            .col-md-8
-              %p -error logging.
-          .row
-            .col-md-2
-              %p
-                = link_to "Bing Translate", "http://www.microsoft.com/privacystatement/en-gb/bing/default.aspx", target: '_blank'
-            .col-md-8
-              %p -inline comment translation.
-          .row
-            .col-md-2
-              %p
-                = link_to "Cloudflare", "http://www.cloudflare.com/security-policy", target: '_blank'
-            .col-md-8
-              %p -caches web content for faster page loads.
-          .row
-            .col-md-2
-              %p
-                = link_to "Google analytics", "http://www.google.com/intl/en/policies/", target: '_blank'
-            .col-md-8
-              %p -tracks page views and other usage statistics.
-          .row
-            .col-md-2
-              %p
-                = link_to "Heroku", "https://www.heroku.com/policy/privacy", target: '_blank'
-            .col-md-8
-              %p -web hosting.
-          .row
-            .col-md-2
-              %p
-                = link_to "New Relic", "http://newrelic.com/privacy", target: '_blank'
-            .col-md-8
-              %p -performance monitoring.
-          .row
-            .col-md-2
-              %p 
-                = link_to "Sendgrid", "http://sendgrid.com/privacy", target: '_blank'
-            .col-md-8
-              %p -used to send emails from the app. 
-          .row
-            .col-md-2
-              %p
-                = link_to "Heap Analytics", "https://heapanalytics.com/privacy", target: '_blank'
-            .col-md-8
-              %p - to measure how people are interacting with the software and identify points of the user experience that can be improved.
-          .row-fluid
-            .col-md-2
-              %p 
-                = link_to "Intercom", "http://docs.intercom.io/privacy", target: '_blank'
-            .col-md-8
-              %p - our CRM system, a way for our customer support to keep in touch with users.
-          .row-fluid
-            .span2
-              %p 
-                = link_to "Facebook", "https://www.facebook.com/about/privacy/", target: '_blank'
-            .span8
-              %p - to allow you to login via your Facebook account.
-          .row-fluid
-            .span2
-              %p 
-                = link_to "Google", "http://www.google.com/policies/privacy/", target: '_blank'
-            .span8
-              %p - we use Google to log in via your Google account. Optionally you can authorize us to download your Google contacts when inviting people to your group.
+          - @parties.each do |party|
+            .row
+              .col-md-2
+                %p= link_to party[:name], party[:link], target: '_blank'
+              .col-md-8
+                %p= party[:description]

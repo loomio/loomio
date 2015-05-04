@@ -7,7 +7,7 @@ class NotificationItems::NewComment < NotificationItem
     I18n.t('notifications.new_comment')
   end
 
-  def link
-    Routing.discussion_path(@notification.eventable.discussion)
+  def linkable
+    [notification.eventable.discussion]
   end
 end

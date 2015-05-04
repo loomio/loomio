@@ -15,6 +15,10 @@ class MotionReaderCache
     @readers_by_motion_id.fetch(motion.id) { new_reader_for(motion) }
   end
 
+  def clear
+    @readers_by_motion_id.clear
+  end
+
   private
 
   def new_reader_for(motion)

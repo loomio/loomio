@@ -3,14 +3,13 @@
 - action_text = item.action_text
 - title_text = item.title
 - group_name = item.group_full_name
-- href = item.link
 - avatar = item.avatar
 
 - date = time_ago_in_words(notification.created_at)
 - class_name = notification.viewed? ? " " : " unread"
 
 %li.selector-item{:class => "notification-item#{class_name}", :id => "notification-#{notification.id}" }
-  =link_to href do
+  =link_to item.linkable do
     = render 'avatar', user: avatar
     %span.notification-content
       - if actor

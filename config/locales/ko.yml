@@ -2,13 +2,6 @@ ko:
   email_settings:
     title: 이메일 설정
     submit: 업데이트 설정
-  try_it:
-    header: 루미오 사용해보기
-    start_a_group: 여러분이 커뮤니티에서 의사결정을 위해서 그룹시작하기
-    join_the_community: 루미오 커뮤니티 그룹에 가입하기
-    loomio_community_info: 여기가 루미오에 대해서 토론을 하고 의견을 결정하는 곳입니다.
-    explore_groups: 루미오의 다른 그룹 둘러보기
-    explore_groups_info: "루미오에 멋진 그룹을 둘러보고 가입하기!"
   activerecord:
     errors:
       messages:
@@ -195,6 +188,12 @@ ko:
     body: 댓글을 달거나 투표를 하기 위해서 이 그룹의 멤버가 되어야 합니다.
   user_profile:
     change_password: 비밀번호 변경
+  start_group_form:
+    header: 새로운 그룹 시작하기
+    name: 이름
+    group_name: 그룹명
+    success:
+      header: 거의 다 되었습니다. 이메일을 확인해 주세요.
   group_form:
     name: 그룹명
     description: 설명
@@ -388,11 +387,7 @@ ko:
     proposal: 명확한 제안을 쓰기을 위한 도움말
     vote: 입장를 언제나 변경할 수 있습니다.
   pricing_page:
-    organisations: 조직
-    organisations_examples: "예. 회사, 정부기관, 커뮤니티 조직"
-    informal_groups: 비공개 그룹
-    informal_groups_desc: 여러분 그룹의 멤버들은 멤버들이 지불 할 수 있는 요청을 받게 됩니다.
-    informal_groups_examples: "예. 가족, 사회운동, 단체"
+    header: 가격표
   contribution:
     any_amount: 혹은 한 번의 도움을 지정하세요.
     currency_desc: 금액은 미국 달러입니다.
@@ -438,8 +433,6 @@ ko:
   invitation:
     alternate: "대안적으로, 이 링크를 공유해서 누구에게나 가입을 요청할 수 있습니다."
     by_email: 이메일로 초대하기
-    no_invitations_left: 죄송합니다 남아있는 초대가 없습니다.
-    no_invitations_left_get_more: "contact@loomio.org로 이메일을 보내주세요. 어떤 도움을 드릴 수 있을지 살펴보겠습니다."
     invitation_not_found: 이 토큰을 가지고 있는 초대를 찾을 수 없습니다. 초대장을 보낸 분에게 새로운 초대를 요청하세요.
     invitation_cancelled: 초대가 취소되었습니다. 초대 취소가 오류인것 같다면 초대장을 보낸 분에게 연락해 보세요.
     invitation_already_used: 이 초대는 이미 사용되었습니다. 그룹 로그인을 계속해 보세요.
@@ -476,7 +469,6 @@ ko:
       submit: 메시지 보내기
     messages:
       email_html: "양식을 채우거나 <a href='mailto:%{email}'>%{email}</a> 로 이메일을  보내세요."
-      social_html: "<br/><a href='%{facebook}' target='_blank'>페이스북</a>, <a href='%{google}' target='_blank'>구글플러스</a>,  <a href='%{twitter}' target='_blank'>트위터</a>를 통해서도 함께 하실 수 있습니다."
   discussion_form:
     new:
       header: 그룹 시작하기
@@ -533,19 +525,12 @@ ko:
         password: 비밀번호
         password_confirmation: 비밀번호 확인
         language_preference: 언어
-      group_request:
-        admin_name: 이름이 무엇인가요?
-        admin_email: 이메일이 어떻게 되세요?
-        name: 그룹의 이름이 무엇인가요?
-        description: 잠깐의 여유가 있다면 그룹에 대해서 설명해 주세요.
     placeholders:
       membership_request:
         introduction: "간단한 자기소개와 %{group_name} 그룹에 가입을 원하는 이유를 적어주세요."
       motion:
         name: 행동이 제안된 과정은 무엇인가요?
         description: 충분한 정보를 제공해서 모두가 동의 혹은 동의하지 않는것이 어떤 의미인지 알 수 있도록 해 주세요.
-      group_request:
-        description: 여러분의 그룹에 대해서 듣기를 원하고 왜 루미로를 사용하기 원하는지를 듣고 싶습니다.
   helpers:
     submit:
       discussion:
@@ -616,10 +601,6 @@ ko:
       closes_in: "닫습니다. "
       headline: "%{group} 그룹에 %{author}님의 제안이 곧 마감이 됩니다."
       summary: 요약
-    verification:
-      header: 거의 다 왔습니다.
-      intro: 요청사항을 완료하기 위해서 유효성 확인 링크를 클릭해 주세요.
-      ignore: 루미오에 가입 요청을 하지 않았다면 이 이메일을 무시하세요.
   about_loomio: 루미오에 대해서
   ago: "%{quantity_of_time} 전"
   approve: 승인
@@ -675,7 +656,6 @@ ko:
   start_a_group: 그룹 시작하기
   starting: 시작하기
   subject: 제목
-  terms_of_service_html: "%{button_text} 를 클릭을 통해, 루미도의 약관에 <a href='%{link_path}' target='_blank'>동의</a>하게 됩니다."
   thanks: 고맙습니다.
   unlike: 싫어요
   time_until_close: "%{quantity_of_time} 까지 닫힘"
@@ -686,6 +666,7 @@ ko:
   common:
     profile: 프로필
     email_settings: 이메일 설정
+    find_out_more: 좀 더 알아보기
     groups: 그룹
     privacy: 개인정보
     private: 비공개

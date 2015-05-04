@@ -7,9 +7,9 @@ Loomio::Application.configure do
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
-  # Show full error reports and disable caching
+  # Show full error reports and enable caching
   config.consider_all_requests_local       = true
-  config.action_controller.perform_caching = false
+  config.action_controller.perform_caching = true
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -25,12 +25,13 @@ Loomio::Application.configure do
   config.assets.raise_runtime_errors = true
   config.assets.raise_production_errors = true
   config.sass.debug_info = true
+
   # support scss support in chrome devtools
   #
   config.sass.line_comments = false
 
   # config.action_mailer.asset_host = "http://localhost:3000"
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp
 

@@ -4,13 +4,6 @@ tr:
     submit: Ayarları güncelle
   explore:
     header: Genel grupları keşfedin
-  try_it:
-    header: "Loomio'yu deneyin"
-    start_a_group: Kendi topluluğunuzda kararlar almak için bir grup başlatın.
-    join_the_community: Loomio Topluluk grubuna katılın
-    loomio_community_info: Burası Loomio hakkında tartıştığımız ve kararlar aldığımız alan.
-    explore_groups: "Loomio'daki diğer grupları keşfedin"
-    explore_groups_info: "Loomio'daki müthiş gruplara göz atın ve onlara katılın!"
   activerecord:
     errors:
       messages:
@@ -258,6 +251,12 @@ tr:
       memberships: Şu anda dahil olduğunuz grupların herhangi birinde artık üye olarak listelenmeyeceksiniz.
       group_contributions: "Gruplarda yaptığınız yorumlar, öneriler ve tartışmalar kalacak, ancak bunlardan adınızı kaldıracağız."
       emails: Size Loomio ilgili e-posta göndermeyi durduracağız.
+  start_group_form:
+    header: Yeni bir grup başlat
+    name: Adın
+    group_name: Grup adı
+    success:
+      header: "Neredeyse bitti! E-postanızı kontrol edin."
   group_form:
     name: Grup adı
     description: Açıklama
@@ -595,12 +594,7 @@ tr:
     proposal: Anlaşılır bir öneri yazmak için ipuçları
     vote: Konumunu istediğin zaman değiştirebilirsin
   pricing_page:
-    intro: "Bütçeye sahip gruplar aracı kullanmak icin bir abonelik ücreti öderler.\nBütçesi olmayan gruplar Ödeyebilgin Kadar Öde modelini kullanırlar. Bu modelde grubun kendi üyeleri gönüllü katkı yapmaya davet edilir. \nKatkılarınız bizlere Loomiyo'yu bağımsız ve reklamsız tutmamız ve kendi topluluğumuz tarafından yönlendirilebilmemiz için olanak sağlıyor.\n"
-    organisations: Kuruluşlar
-    organisations_examples: "örneğin; şirketler, devlet kuruluşları, sivil organizasyonlar"
-    informal_groups: İnformal gruplar
-    informal_groups_desc: Grubunuzdaki üyelerden yapabilecekleri kadar ödeme yapmaları istenilecek
-    informal_groups_examples: "örneğin aileler, sosyal hareketler, kolektifler"
+    header: Fiyatlandırma
   contribution:
     any_amount: ya da bir seferlik şu şekilde kişisel katkı yapın
     currency_desc: Tutarlar ABD doları cinsindendir
@@ -655,8 +649,6 @@ tr:
   invitation:
     alternate: "Alternatif olarak, bu bağlantıyı paylaşın ve herhangi birinin katılabilmesini isteyin:"
     by_email: E-posta ile davet et
-    no_invitations_left: Maalesef hiç davetiyen kalmadı
-    no_invitations_left_get_more: "Sana yardımcı olabilmemiz için lütfen contact@loomio.org e-posta gönder"
     invitation_not_found: Bu kuponla ilişik bir davetiye bulunamadı. Lütfen seni davet eden kişiden yeni bir davetiye talep et.
     invitation_cancelled: "Bu davetiye iptal edildi. Eğer bunun bir hata olduğunu düşünüyorsan, lütfen seni davet eden kişiyle irtibata geç."
     invitation_already_used: "Bu davetiye daha önce kullanılmış. Lütfen, gruba devam etmek için giriş yapın."
@@ -700,7 +692,6 @@ tr:
       submit: Mesaj gönder
     messages:
       email_html: "Bu forumu doldurun, ya da <a href='mailto:%{email}'>%{email}</a> adresine bir E-posta gönderin"
-      social_html: "Değişik platformlar üzerinden bize katılabilirsin<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: Bir müzakere başlat
@@ -776,20 +767,12 @@ tr:
         password: Şifre
         password_confirmation: Şifreyi onayla
         language_preference: Dil
-      group_request:
-        admin_name: İsminiz nedir?
-        admin_email: E-posta adresiniz nedir?
-        name: Grup isminizin adı nedir?
-        description: "Eğer, bir dakikan var ise, bize grubundan bahseder misin"
-        is_commercial: "Loomio'yu nerede kullanmayı planlıyorsun?"
     placeholders:
       membership_request:
         introduction: "Kendin ve neden %{group_name} grubuna katıldığın hakkında birkaç kelime yaz."
       motion:
         name: Önerdiğiniz hareket biçimi nedir?
         description: Yeterli bilgi verin ki herkes tam olarak katılımlarının ya da katılmamalarının ne anlama geldiğini bilsin.
-      group_request:
-        description: "Grubunu duymaktan ve neden Loomio'yu kullanmak istediğinden memnun olduk."
   helpers:
     submit:
       discussion:
@@ -883,10 +866,6 @@ tr:
       specify_outcome: "Sizin öneriniz kapandı. Herkesin bilmesi için bir sonuç belirtin:"
       outcome_created: "%{who} bir öneri sonucu belirledi"
       you_agreed: "Sen %{past_tense_position}"
-    verification:
-      header: "Neredeyse bitti!"
-      intro: "Talebinizi sonuçlandırmak için lütfen bu doğrulama linkine tıklayın:"
-      ignore: "Eğer Loomio'ya katılmayı talep etmediysen lütfen bu e-postayı görmezden gel."
   meta_tags:
     default_title: "Loomio | İşbirliğine Dayalı Karar Verme"
     default_description: Loomio kullanımı kolay ve çevrimiçi bir grup içi karar verme aracıdır. Dağınık grupların kararlara çabuk ulaşmasına ve yapıcı eylemde bulunmasına olanak sağlar.
@@ -949,7 +928,6 @@ tr:
   start_a_group: Bir grup başlat
   starting: Başlangıç
   subject: Konu
-  terms_of_service_html: "Bunu tıklayarak %{button_text}, Loomio'nun <a href='%{link_path}' target='_blank'>Hizmet Koşullarını</a>kabul etmiş sayılırsınız"
   thanks: "Teşekkürler!"
   unlike: Beğenmekten vazgeç
   time_until_close: "Kapanmasına %{quantity_of_time} kaldı"
@@ -965,6 +943,7 @@ tr:
     settings: Ayarlar
     dashboard: Kontrol paneli
     unread: Okunmamış
+    find_out_more: Daha fazla bilgi
     filter: "Filtrele:"
     following: Takiptekiler
     not_following: Takip edilmiyor

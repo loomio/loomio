@@ -14,6 +14,7 @@ class Membership < ActiveRecord::Base
   scope :archived, lambda { where('archived_at IS NOT NULL') }
   scope :published, lambda { where(archived_at: nil) }
   scope :sorted_by_group_name, -> { joins(:group).order('groups.full_name') }
+  scope :chronologically, -> { order('created_at asc') }
 
   scope :for_group, lambda {|group| where(group_id: group)}
   scope :admin, -> { where(admin: true) }
@@ -24,7 +25,6 @@ class Membership < ActiveRecord::Base
   delegate :admins, to: :group, prefix: :group
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
 
-  before_destroy :remove_open_votes
   after_destroy :leave_subgroups_of_hidden_parents
 
   def suspend!
@@ -58,13 +58,6 @@ class Membership < ActiveRecord::Base
     return unless group.is_hidden_from_public?
     group.subgroups.each do |subgroup|
       subgroup.memberships.where(user_id: user.id).destroy_all
-    end
-  end
-
-  def remove_open_votes
-    return if group.nil? #necessary if group is missing (as in case of production data)
-    group.motions.voting.each do |motion|
-      motion.votes.where(user_id: user_id).each(&:destroy)
     end
   end
 end

@@ -130,6 +130,12 @@ class Group < ActiveRecord::Base
            as: :invitable,
            class_name: 'Invitation'
 
+  has_many :invitations,
+           as: :invitable,
+           class_name: 'Invitation'
+ 
+  has_many :comments, through: :discussions
+
   after_initialize :set_defaults
 
   alias :users :members
@@ -138,6 +144,7 @@ class Group < ActiveRecord::Base
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, dependent: :destroy
   has_many :motions, through: :discussions
+  has_many :votes, through: :motions
 
   belongs_to :parent, class_name: 'Group'
   belongs_to :creator, class_name: 'User'
@@ -366,14 +373,6 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def approaching_max_size?
-    ENV['HOSTED_BY_LOOMIO'] && org_members_count > (org_max_size * 0.8)
-  end
-
-  def max_size_reached?
-    ENV['HOSTED_BY_LOOMIO'] && org_members_count >= org_max_size
-  end
-
   def org_max_size
     if is_subgroup?
       parent.org_max_size
@@ -408,10 +407,6 @@ class Group < ActiveRecord::Base
     rescue ActiveRecord::RecordNotUnique
       retry
     end
-  end
-
-  def invitations_remaining
-    org_max_size - org_members_count
   end
 
   def has_member?(user)

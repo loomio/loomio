@@ -32,14 +32,12 @@ it:
       step3:
         header: 3. Decidere insieme
         desc: "Sviluppa la proposta insieme così che funzioni per tutti. Ogni decisione ha una scadenza chiara, così hai sempre un risultato chiaro."
-    crowdfunding:
-      header: Siamo in crowdfunding per finire di costruire questa nuova piattaforma e regalarla a tutto il mondo.
     mobile:
       lead_html: "<strong>Loomio funziona su qualsiasi dispositivo.</strong><br />Prendi decisioni ovunque e in ogni momento. "
     quote:
       header:
-        rushkoff_html: "\"Loomio <strong>libera il potenziale di internet</strong> avvicinando la gente a un consenso invece che costruendo un dibattito polarizzato.\" <div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autore di <em>Present Shock</em></div>"
-        sifry_html: "“Loomio lavora precisamente nello spazio tra <strong>espressione individuale</strong> e <strong>decisione collettiva</strong>.”<div class=\"attributation\">– Micah Sifry, Editor, <em><a href=\"http://techpresident.com\">TechPresident</a></em></div>"
+        rushkoff_html: "\"Loomio <strong>scatena il potenziale di internet</strong> portando le persone a prendere una decisione condivisa piuttosto che monopolizzata.\" <div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autore di <em>Present Shock</em></div>"
+        sifry_html: "“Loomio si inserisce nella delicata fase tra il <strong>desiderio individuale</strong> e <strong>la decisione collettiva</strong>.”<div class=\"attributation\">– Micah Sifry, Editor, <em><a href=\"http://techpresident.com\">TechPresident</a></em></div>"
     team:
       header: Informazioni su Loomio
       desc: "Siamo un piccolo team di sviluppatori open-source e sostenitori della giustizia sociale. Lavoriamo a Enspiral in Aotearoa, Nuova Zelanda, con un'ampia rete di amici, sostenitori e consiglieri in tutto il mondo."
@@ -56,3 +54,5 @@ it:
       gift:
         header: Economia del dono
         desc: Loomio è supportato da persone che pagano a seconda delle loro possibilità. Questo ci permette di non avere pubblicità sul sito e di mantenere la piattaforma accessibile a gruppi senza risorse.
+  about_page:
+    our_story_1_html: "<h2>La nostra storia</h2> <p>Loomio è uno strumento online ideato per sviluppare un processo decisionale collaborativo e creato in Nuova Zelanda da un gruppo di tecnologi, attivisti e imprenditori sociali.</p>."

@@ -1,5 +1,6 @@
 class NetworksController < BaseController
   before_filter :authenticate_user!, except: [:show, :groups]
+  after_filter :clear_discussion_index_caches, only: :show
 
   def show
     @network = Network.friendly.find params[:id]
@@ -34,5 +35,11 @@ class NetworksController < BaseController
     @motion_reader_cache = MotionReaderCache.new(current_user, @motion_readers)
 
     @last_vote_cache = VoteCache.new(current_user, @last_votes)
+  end
+
+  def clear_discussion_index_caches
+    @discussion_reader_cache.clear
+    @motion_reader_cache.clear
+    @last_vote_cache.clear
   end
 end

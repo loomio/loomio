@@ -2,12 +2,6 @@ ja:
   email_settings:
     title: Eメール設定
     submit: 設定をアップデート
-  try_it:
-    header: Loomioを試しましょう
-    start_a_group: あなたのコミュニティで決定を行うためのグループを開始する
-    join_the_community: Loomioのコミュニティに参加する
-    loomio_community_info: ここは、Loomioについてディスカッションを行い決定を下す場です
-    explore_groups: Loomioの他のグループを調べる
   activerecord:
     errors:
       messages:
@@ -193,6 +187,12 @@ ja:
     body: コメント、または投票するためにはこのグループのメンバーである必要があります
   user_profile:
     change_password: パスワードを変更します
+  start_group_form:
+    header: 新しいグループを開始する
+    name: あなたの名前
+    group_name: グループ名
+    success:
+      header: もう少しで完了です！メールをチェックしてください
   group_form:
     name: グループ名
     description: 情報
@@ -437,12 +437,7 @@ ja:
     proposal: はっきりした提案を書くアドバイス
     vote: いつでも意見を変更することができます
   pricing_page:
-    intro: "予算のあるグループは、ツールを使用するための購読料を支払います。\n支払う手段のないグループは、以下のシステムを使ってください。\nPay What You Canモデル：そのメンバーはボランティアで寄付をすることを勧められます。\nあなたの寄付は、広告のない、私たちのコミュニティによって運営されるLoomioの独立を維持することを意味します。\n"
-    organisations: 組織
-    organisations_examples: 例：ビジネス、政府機関、地域組織
-    informal_groups: 非公式のグループ
-    informal_groups_desc: あなたのグループのメンバーは、出来るものを払うように要求されるでしょう
-    informal_groups_examples: 例：家族、社会運動、共同体
+    header: 価格設定
   contribution:
     currency_desc: 総計はUSドルです
     monthly_html: に、毎月の寄付をしたい
@@ -491,8 +486,6 @@ ja:
   invitation:
     alternate: 代わりにこのリンクをシェアして、参加するように誰でも要求できるようにする：
     by_email: Eメールで招待を送る
-    no_invitations_left: "(*_ _)人ゴメンナサイ　招待はありません"
-    no_invitations_left_get_more: "contact@loomio.org にメールを送ってください\nあなたを助けるために何ができるか考えます"
     invitation_not_found: そのトークンでは招待を見つけられませんでした。送信者に新しい招待を要求してください
     invitation_cancelled: この招待はキャンセルされました。エラーによるものだと考えられる場合、招待の送信者に連絡を取ってください
     invitation_already_used: この招待はすでに使われています。あなたのグループにとどまるにはログインしてください
@@ -535,7 +528,6 @@ ja:
       submit: メッセージを送る
     messages:
       email_html: "このフォームを埋めてください、もしくは <a href='mailto:%{email}'>%{email}</a> にメールを送ってください"
-      social_html: "<br/><a href='%{facebook}' target='_blank'>facebook</a>や<a href='%{google}' target='_blank'>google+</a>、<a href='%{twitter}' target='_blank'>twitter</a>からも私たちに参加することもできます。"
   discussion_form:
     new:
       header: ディスカッションを開始する
@@ -597,19 +589,12 @@ ja:
         password: パスワード
         password_confirmation: パスワードの確認
         language_preference: 言語
-      group_request:
-        admin_name: あなたの名前は何ですか？
-        admin_email: あなたのEメールアドレスは何ですか？
-        name: あなたのグループの名前は何ですか？
-        description: お時間があれば、あなたのグループについて教えてください
     placeholders:
       membership_request:
         introduction: "あなたがどういう人か、どうして  %{group_name} に参加したいのかについて一言書いてください"
       motion:
         name: 何を提案したいですか？
         description: 賛成か反対かどうか誰もがわかるように十分な情報をください
-      group_request:
-        description: 私たちは、あなたのグループやあなたがLoomioを使いたい理由について是非お聞きしたいです
   helpers:
     submit:
       discussion:
@@ -680,10 +665,6 @@ ja:
       closes_in: 後に締め切られます
       headline: " %{group} の %{author} の提案はもうすぐ締め切られます："
       summary: 要約
-    verification:
-      header: もう少しで完了です！
-      intro: あなたのリクエストを最終的なものにするには、この確認リンクをクリックしてください
-      ignore: Loomio参加へのリクエストを送って無かった場合は、このメールを無視してください
   about_loomio: Loomioについて
   ago: "%{quantity_of_time} 前"
   approve: 承認
@@ -739,7 +720,6 @@ ja:
   start_a_group: グループを開始する
   starting: 開始中
   subject: 主題
-  terms_of_service_html: " %{button_text} をクリックすることによって、Loomioの<a href='%{link_path}' target='_blank'>サービスの使用条件</a>に同意します。"
   thanks: ありがとうございます！
   unlike: ええね！を消す
   time_until_close: "締め切るまで %{quantity_of_time} "
@@ -750,6 +730,7 @@ ja:
   common:
     profile: プロフィール
     email_settings: Eメール設定
+    find_out_more: 詳細を見る
     groups: グループ
     privacy: 個人情報
     private: 非公開

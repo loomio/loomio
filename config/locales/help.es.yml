@@ -1,7 +1,8 @@
 es:
   new_help:
-    how_to:
-      title: "Como comienzo? "
+    title: Con que podemos ayudarte?
+    how_loomio_works:
+      title: Como funciona Loomio
       start_group_link: Empieza un grupo
       start_group_description: Para colaborar con gente en Loomio
       invite_people_link: Invitar personas
@@ -13,7 +14,7 @@ es:
       decide_together_link: "Decide juntos:"
       decide_together_description: "cualquiera puede estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear - de esa manera podrás ver como cada uno se siente sobre la propuesta."
     contents:
-      title: Necesitas mas información?
+      title: Tabla de contenido
       getting_started:
         title_html: Primeros pasos
         starting_new_group_html: cuando quieres comenzar un nuevo grupo de Loomio
@@ -140,28 +141,56 @@ es:
             private_only_html: "Si seccionas la opción <strong>\"Solo discusiones privadas\"</strong>, nadie fuera de tu grupo puede ver el contenido de las discusiones."
       group_permissions:
         title: Permisos del grupo
+        body_html: "<p>Los permisos de tu grupo dictan que funciones de Loomio los miembros de tu grupo tienen permitido usar.\nCuando comienzas tu grupo, deberás decidir si los miembros de tu grupo tendrán poder de tomar decisiones, si podrán plantear cuestiones o solo comentar en las cuestiones que tu planteas, etc.\nEl poder regular que acciones los miembros de tu grupo pueden ejecutar, significa que las consultas, supervisión, reportes y otras situaciones en las que necesitas separar los miembros de tu grupo en participantes y \"observadores\", puede ser mas fácil de manejar.</p>\n<p>Si quieres que solo algunas de las personas en tu grupo tengan la habilidad de votar, comentar o iniciar discusiones, haz coordinadores a esas personas y des-selecciona las casillas para que los miembros no-coordinadores no tengan esos permisos.</p>\n"
         what_can_members_do:
           title: ¿Qué pueden hacer los miembros?
           invite_and_approve_new_members:
             title: Invitar y aprobar nuevos miembros
+            body_html: "Quieres que las personas en tu grupo sean capaces de <a href=\"#inviting-members\">invitar gente a unirse</a> y, dependiendo de la configuración de privacidad de tu grupo, aprobar los pedidos de membresia?\nCuando esta opción es seleccionada, todos en tu grupo podrán invitar nuevas personas y aprobar membresias.\nCuando no esta seleccionada, solo los coordinadores del grupo podrán invitar y aprobar nuevos miembros.\n"
+          create_subgroups:
+            title: Crear sub-grupos
+            body_html: "Quieres que los miembros sean capases de comenzar un nuevo <a href=\"#subgroups\">sub-groupo</a> dentro de tu grupo de Loomio?\nCuando esta opción es seleccionada, todos en tu grupo podrán crear sub-grupos.\nCuando esta opción no es seleccionada, solo los coordinadores del grupo podrán crear sub-grupos.\n"
           start_discussions:
             title: Empezar discusiones
+            body_html: "Quieres que quienquiera en tu grupo pueda comenzar <a href=\"#starting-discussions\">nuevas discusiones</a>?\nSi esta opción es seleccionada, todos en tu grupo podrán comenzar discusiones.\nCuando no es seleccionada, solo los coordinadores del grupo podrán comenzar discusiones.\n"
           edit_discussion_context:
             title: Editar el contexto de cualquier discusión del grupo
+            body_html: "Quieres que las personas puedan cambiar el <a href=\"#providing-context\">panel de contexto</a> de las discusiones?\nEsto es la descripción del tópico de la discusión, y puede ser útil modificarla a medida que nueva información emerge.\nCuando esta opción es seleccionada, todos en tu grupo podrán editar el contexto de la discusión.\nCuando esta opción no sea seleccionada, solo los coordinadores del grupo podrán editar el contexto de la discusión.\n(Los autores de la discusión siempre podrán editar el contexto de sus discusiones)\n"
           edit_comments:
             title: Editar sus comentarios en cualquier momento
+            body_html: "Quieres permitir a la gente cambiar lo que han escrito en sus comentarios?\nCuando esta casilla es seleccionada, todos en tu grupo podrán <a href=\"#editing-comments\">editar sus comentarios</a> en cualquier momento.\nCuando no es seleccionada, un comentario solo puede ser editado hasta que alguien mas participe en la discusión.\nLos comentarios que han sido editados muestran la palabra <strong>“Editado”</strong> debajo.\nHacer click en \"Editado\" mostrara todas las otras versiones del comentario.\n"
           raise_proposals:
             title: Hacer propuestas
+            body_html: "Quieres que todos en tu grupo puedan <a href=\"#starting-proposals\">proponer propuestas</a> para que el grupo las vote?\nCuando esta casilla es seleccionada, todos en tu grupo podrán proponer propuestas dentro de una discusión.\nCuando esta casilla no es seleccionada, solo los coordinadores del grupo podrán proponer propuestas.\n"
           vote_on_proposals:
             title: Votar en propuestas
+            body_html: "Quieres que los miembros de tu grupo puedan <a href=\"#stating-positions\">expresen su postura en las propuestas</a>?\nO preferirías que algunas personas solo observen?\nCuando esta casilla es seleccionada cualquiera en tu grupo podrá expresar su postura en las propuestas.\nCuando no es seleccionada, solo los coordinadores del grupo podrán expresar su postura en las propuestas. \n"
+        what_next:
+          title: ¿Y después?
+          body_html: "Luego de enviar el formulario de configuración del grupo, seras enviado a la pagina de tu grupo.\nDesde la pagina de tu grupo puedes invitar gente a unirse.\nHaz click <a href=\"#inviting-members\">aquí</a> para leer mas sobre invitaciones.\n"
     coordination:
       title: Coordinando tu grupo
+      intro_html: "Como coordinador de un grupo de Loomio, eres responsable de guiar a tu grupo en el proceso de aprender a usar una nueva pieza de software; así como también aprender nuevos procesos de colaboración par la buena toma de decisiones juntos.\nLas tareas especificadas debajo son tareas que solo los coordinadores de tu grupo tienen permiso de ejecutar.\n"
       adding_cover_photo:
         title: Agregando una foto de portada
+        body_html: "<p>Cuando tu grupo este listo y funcionando puedes agregar una foto de portada.\nEsta es una forma fácil de hacer que los miembros de tu grupo que sientan mas en casa en Loomio.</p>\n<p>Cuando pases sobre las zonas grises en la parte de arriba de la pagina de tu grupo, un icono de lápiz aparecerá en la parte superior derecha.\nHaz click en el icono y seras capaz de seleccionar una imagen para subir.\nEl tamaño óptimo de las fotos de portada es 970x200 píxeles.\nPuedes cambiar tu foto de portada en cualquier momento simplemente subiendo una nueva.</p>\n"
       manage_membership:
         title: Gestionando membresias
+        body_html: "Los coordinadores del grupo son responsables de manejar las membresias dentro del grupo.\nEsto significa agregar y remover miembros y dar y remover permisos de coordinadores.\nLos coordinadores también pueden enviar correos electrónicos a todos los miembros del grupo.\nEstas acciones pueden ejecutarse desde la pagina de <strong>\"Miembros\"</strong>.\nEn el lado derecho de la pagina de tu grupo de Loomio hay un botón de <strong>\"Opciones\"</strong>.\nPara acceder a la pagina <strong>\"Miembros\"</strong>, haz click en este botón y selecciona la opción <strong>\"Administrar miembros\"</strong>.\nTambién puedes acceder a la pagina haciendo click en el enlace <strong>\"Mas...\"</strong> en el panel <strong>\"Miembros\"</strong> en la parte derecha de la pagina de tu grupo.\n"
+        membership_requests:
+          title: Aceptando/Ignorando solicitudes de membresía
+        email_group_members:
+          title: Enviando correos electrónicos a los miembros del grupo
+        group_coordinators:
+          title: Añadiendo/Eliminando coordinadores
+        group_members:
+          title: Añadiendo/Eliminando miembros del grupo
       deactivating_groups:
         title: Desactivar/archivar un grupo
+      coordinator_tips:
+        title: Consejos para comprometer a tu grupo
+        customise_invitation:
+          title_html: Personaliza tu mensaje de invitación
     inviting_members:
       title: Invitando nuevos miembros
       importing_contacts:
@@ -184,6 +213,8 @@ es:
         title: "Eliminar una discusión "
     comments:
       title: "Comentarios "
+      posting_comments:
+        title: Publicando un comentario
       attaching_files:
         title: "Adjuntar archivos "
       mentioning_group_members:
@@ -254,11 +285,41 @@ es:
     contributing:
       title: Contribuir con Loomio
       body:
+        open_source:
+          title_html: Desarrollo de código abierto
         translation:
           title_html: "Traducción "
         loomio_community:
           title_html: La Comunidad de Loomio
     loomio_community:
       title: La Comunidad de Loomio
+    loomio_development:
+      title: Manteniéndote al día con el Desarrollo de Loomio
+      intro: Hay distintas maneras de mantenerte al día de los progresos de Loomio
+      github_repo_html: El repositorio principal del desarrollo de Loomio
+      github_issues_html: El seguimiento de incidencias de Loomio en Github
+      angular_html: Loomio 1.0-beta en acción
+      twitter_html: Loomio en Twitter
     faq:
       title: "Preguntas frecuentes "
+      confirmation_email:
+        title: ¿Dónde está mi correo de confirmación?
+      approved_membership_request:
+        title: "He aprobado las solicitudes de pertenencia de personas que querían entrar en mi grupo, pero no se han mostrado ¿Qué está pasando?"
+      forgotten_password:
+        title: Olvidé mi contraseña. ¿Qué hago?
+      loomio_account:
+        title: ¿Necesito una cuenta Loomio para participar en las discusiones?
+      cost:
+        title: ¿Cuesta hacer uso de Loomio?
+      single_sign_on:
+        title: "¿Puedo identificarme con Google, Facebook o Twitter?"
+      loomio_instance:
+        title: ¿Cómo puedo configurar mi propia instancia de Loomio?
+      feature_idea:
+        title: ¿Y si quiero proponer una característica?
+      development_pipeline:
+        title: ¿Qué es lo próximo en la pila de desarrollo de Loomio?
+      feedback_link: "¿Echaste algo en falta? Cuéntanoslo >"
+    back_to_top: ^ Arriba
+    feedback_discussion: "¿Esta explicación podría ser más clara? Ayúdanos >"

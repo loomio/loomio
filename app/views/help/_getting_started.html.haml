@@ -1,5 +1,5 @@
-%section#getting-started
-  %h1= t :"new_help.getting_started.title"
+%section{"role" => "region", "aria-labelledby" => "getting-started"}
+  %h2#getting-started= t :"new_help.getting_started.title"
   %p= t :"new_help.getting_started.intro"
   %h3.anchor#starting-new-group= t :"new_help.getting_started.starting_new_group.title"
   .row
@@ -29,8 +29,4 @@
       = t :"new_help.getting_started.single_sign_on.body_html"
     .col-sm-5
       =image_tag "login-page.png", class: "screenshot"
-  .row#bottom-links
-    .col-sm-6
-      %a.back-to-top{:href => "#contents"}= t :"new_help.back_to_top"
-    .col-sm-6
-      %a.feedback-discussion-link{:href => "https://www.loomio.org/d/Yl5D3EC0/new-help-documentation-we-want-your-feedback"}= t :"new_help.feedback_discussion"
+  = render 'help/help_links'

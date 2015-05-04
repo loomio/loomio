@@ -4,13 +4,6 @@ sv:
     submit: Uppdatera inställningar
   explore:
     header: Utforska publika grupper
-  try_it:
-    header: Prova Loomio
-    start_a_group: "Starta en grupp för att ta beslut tillsammans med dina medarbetare. "
-    join_the_community: Gå med i Loomio-gruppen
-    loomio_community_info: Det är här vi diskuterar och tar beslut om Loomio.
-    explore_groups: Utforska andra Loomio-grupper
-    explore_groups_info: "Kolla in alla coola Loomio-grupper och gå med i dem! "
   activerecord:
     errors:
       messages:
@@ -258,6 +251,12 @@ sv:
       memberships: "Du kommer inte längre vara listad som medlem i någon av grupperna du tillhör. "
       group_contributions: "Alla kommentarer och förslag du kommit med kommer att fortsätta synas, men vi tar bort ditt namn från dem. "
       emails: "Vi komer att sluta skicka Loomio-relaterade mail. "
+  start_group_form:
+    header: Starta en ny grupp
+    name: Ditt namn
+    group_name: Gruppnamn
+    success:
+      header: "Du är nästan klar! Kolla din email."
   group_form:
     name: Gruppnamn
     description: Beskrivning
@@ -594,12 +593,7 @@ sv:
     proposal: Tips för att skriva ett tydligt förslag
     vote: Du kan ändra din ståndpunkt när som helst
   pricing_page:
-    intro: "Grupper som har finansiering betalar en abonnemangskostnad för att använda verktyget.\nGrupper som har få medel att betala för sig använder en Betala-vad-du-kan-modell: dvs att deras medlemmar uppmanas att lämna ett frivilligt bidrag. Ditt bidrag innebär att vi kan hålla Loomio oberoende, fri från reklam, samt att den drivs av och för våra medlemmar.\n"
-    organisations: Organisationer
-    organisations_examples: "t ex företag, myndigheter, och ideella organisationer"
-    informal_groups: Informella grupper
-    informal_groups_desc: Medlemmarna i din grupp kommer att få en begäran att ge ett bidrag efter förmåga
-    informal_groups_examples: "t ex familjer, samhällsrörelser, sammanslutningar"
+    header: Prissättning
   contribution:
     any_amount: eller ett engångsbidrag om
     currency_desc: Beloppen är angivna i US dollar
@@ -654,8 +648,6 @@ sv:
   invitation:
     alternate: "Alternativt, dela denna länken och vem som helst kan gå med:"
     by_email: Bjud in per email
-    no_invitations_left: Tyvärr har du inga inbjudningar kvar
-    no_invitations_left_get_more: "Emaila contact@loomio.org och vi ska se vad vi kan göra för att hjälpa dig"
     invitation_not_found: Kunde inte hitta någon inbjudan med denna token. Be om en ny inbjudan från avsändaren.
     invitation_cancelled: Denna inbjudan har blivit cancellerad. Ta kontakt med avsändaren av inbjudan om du tror att det har blivit fel.
     invitation_already_used: Denna inbjudan har redan använts. Logga in för att fortsätta till din grupp.
@@ -699,7 +691,6 @@ sv:
       submit: Skicka meddelande
     messages:
       email_html: "Fyll i detta formulär, eller skicka ett email till <a href='mailto:%{email}'>%{email}</a>"
-      social_html: "Du kan också följa oss på <br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, and <a href='%{twitter}' target='_blank'>twitter</a>!"
   discussion_form:
     new:
       header: Starta en diskussion
@@ -775,20 +766,12 @@ sv:
         password: Lösenord
         password_confirmation: Konfirmera lösenordet
         language_preference: Språk
-      group_request:
-        admin_name: Vad heter du?
-        admin_email: Vad har du för emailadress?
-        name: Vad heter din grupp?
-        description: "Om du har möjlighet, berätta lite om din grupp för oss"
-        is_commercial: Var är du planerar att använda Loomio?
     placeholders:
       membership_request:
         introduction: "Skriv några rader om om vem du är och varför du vill gå med i %{group_name}."
       motion:
         name: Vad är dina förslag till handlingsplan?
         description: Ge tillräckligt med bakgrund så att alla förstår vad det innebär att instämma eller inte instämma.
-      group_request:
-        description: Vi vill gärna höra mer om din grupp och varför ni vill använda Loomio.
   helpers:
     submit:
       discussion:
@@ -881,10 +864,6 @@ sv:
       specify_outcome: "Ert förslag har stängt. Ange ett utfall för att låta alla veta vad resultatet är:"
       outcome_created: "%{who} satt ett förslag utfall:"
       you_agreed: "Du %{past_tense_position}"
-    verification:
-      header: "Du är nästan klar!"
-      intro: "Klicka på denna verifieringslänk för att slutföra din begäran:"
-      ignore: Om du inte har begärt att gå med i Loomio ignorera detta email.
   about_loomio: Mer om Loomio
   ago: "%{quantity_of_time} sedan"
   approve: Godkänn
@@ -944,7 +923,6 @@ sv:
   start_a_group: Starta en grupp
   starting: Startar
   subject: Ämne
-  terms_of_service_html: "Genom att klicka på %{button_text}, godkänner du Loomios <a href='%{link_path}' target='_blank'>användarvillkor</a>"
   thanks: "Tack!"
   unlike: Sluta gilla
   time_until_close: "%{quantity_of_time} återstår till stängning"
@@ -960,6 +938,7 @@ sv:
     settings: Inställningar
     dashboard: Instrumentbräda
     unread: Olästa
+    find_out_more: Läs mer
     filter: "Filter:"
     following: Följer
     not_following: Följer inte
