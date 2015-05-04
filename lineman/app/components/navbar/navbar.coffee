@@ -6,8 +6,10 @@ angular.module('loomioApp').directive 'navbar', ->
   controller: ($scope, Records) ->
     $scope.$on 'currentComponent', (el, component) ->
       $scope.selected = component
-      Records.discussions.fetchInbox()
 
     $scope.unreadThreadCount = ->
-      Records.discussions.unread().length
+      Records.discussions.forInbox().data().length
 
+    if !$scope.inboxLoaded
+      Records.discussions.fetchInbox().then ->
+        $scope.inboxLoaded = true

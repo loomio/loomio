@@ -18,7 +18,7 @@ angular.module('loomioApp').factory 'DiscussionRecordsInterface', (BaseRecordsIn
       @collection.chain().find({id: { $in: ids} })
 
     forInbox: (group) ->
-      @collection.chain().find({groupId: { $in: group.organizationIds() }})
-
-    unread: ->
-      @collection.where (discussion) -> discussion.isUnread()
+      relation = @collection.chain()
+      relation = relation.find({groupId: { $in: group.organizationIds() }}) if group?
+      relation = relation.where (discussion) -> discussion.isUnread()
+      relation

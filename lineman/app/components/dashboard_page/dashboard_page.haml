@@ -45,8 +45,8 @@
             %span{translate: 'dashboard_page.no_threads'}>
             %a{ng-show: 'dashboardPage.filter() != "show_all"', translate: 'dashboard_page.view_recent', href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_all"})'}>
           .dashboard-page-collections
-            %section.thread-preview-collection-container{ng-show: 'dashboardPage.discussionsFor(timeframe).length > 0', aria-labelledby: '{{timeframe}}', ng-repeat: 'timeframe in dashboardPage.timeframes'}
+            %section.thread-preview-collection-container{ng-show: 'dashboardPage.threadsFor(timeframe).length > 0', aria-labelledby: '{{timeframe}}', ng-repeat: 'timeframe in dashboardPage.timeframes'}
               .dashboard-page-date-range{translate: 'dashboard_page.threads_from.{{timeframe}}'}
-              %thread_preview_collection.thread-previews-container{threads: 'dashboardPage.discussionsFor(timeframe)'}
+              %thread_preview_collection.thread-previews-container{threads: 'dashboardPage.threadsFor(timeframe)'}
             .dashboard-page-footer{in-view: '$inview && dashboardPage.loadMore()', in-view-options: '{debounce: 200}'} .
             %loading{ng-show: 'dashboardPage.loadMoreExecuting'}

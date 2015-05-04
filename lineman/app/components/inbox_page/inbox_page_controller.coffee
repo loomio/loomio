@@ -8,10 +8,10 @@ angular.module('loomioApp').controller 'InboxPageController', ($rootScope, Recor
     _.filter CurrentUser.groups(), (group) -> group.isParent()
 
   @allInboxThreads = (group) ->
-    _.filter Records.discussions
-                    .forInbox(group)
-                    .simplesort('lastActivityAt', true)
-                    .data(), (thread) -> thread.isUnread()
+    Records.discussions
+           .forInbox(group)
+           .simplesort('lastActivityAt', true)
+           .data()
 
   @inboxThreads = (group) ->
     _.take @allInboxThreads(group), @threadLimit
@@ -20,6 +20,7 @@ angular.module('loomioApp').controller 'InboxPageController', ($rootScope, Recor
   @anyForThisGroup  = (group) -> @allInboxThreads(group).length > 0
   @moreForThisGroup = (group) -> @allInboxThreads(group).length > @threadLimit
 
+  Records.discussions.fetchInbox()
   Records.votes.fetchMyRecentVotes()
 
   return
