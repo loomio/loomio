@@ -1,6 +1,8 @@
 ga-IE:
   frontpage:
     view_this_in_your_language: "Féach an suíomh seo i %{language}"
+    title:
+      collaborative_decision_making: "Cinnteoireacht Chomhoibríoch "
     link:
       blog: Blag
       contact: Déan Teagmháil
@@ -8,16 +10,28 @@ ga-IE:
       try_it: Bain triail as
       log_in: SÍNIGH ISTEACH
       video: Féach tuilleadh faoi conas mar a fheidhmíonn Loomio
+      try_loomio: Bain triail as Loomio
+      try_loomio_beta: Bain triail as Loomio béite
       more: Tuilleadh
       top: Barr
       public_groups: Grúpaí poiblí
       terms: Coinníollacha
       privacy: Príobháideachas
+      services: Seirbhísí
+    hero:
+      header_html: "Is é Loomio an bealach is fusa<br /> <strong>chun cinntí a dhéanamh le chéile</strong>."
+      lead_html: "Cuireann Loomio an cumas ar eagraíochtaí agus pobail chun <strong>plé a thiontú go gníomh</strong>, pé áit ar domhan ina bhfuil daoine."
     product:
+      header_html: "Nuair a chloistear <strong>gach guth</strong>, déantar <strong>cinntí níos fearr</strong>."
       step1:
         header: 1. Déan an scéal a chíoradh
+        desc: "Cuir tús le plé ar ábhar ar bith, agus tabhair na daoine cearta in éineacht leat. Roinn dearctha éagsúla agus forbaigh smaointe le chéile."
+      step2:
+        header: 2. Tabhair daoine le chéile
       step3:
         header: 3. Déan cinneadh le chéile
+    mobile:
+      lead_html: "<strong>Feidhmíonn Loomio ar ghléas ar bith,</strong><br />déan cinntí áit ar bith, am ar bith."
     team:
       header: Maidir le Loomio
     ideals:
@@ -25,3 +39,7 @@ ga-IE:
         header: Neamhspleách agus neodrach
       open:
         header: Oideasra atá saor agus le foinse oscailte
+      gift:
+        header: Geilleagar bronntanais
+  about_page:
+    sascha_bio_html: "Bunaitheoir <a href='http://thexlab.org/' target='_blank'>X-Lab</a> & <a href='http://www.newamerica.org/oti/' target='_blank'>Open Technology Institute</a>"

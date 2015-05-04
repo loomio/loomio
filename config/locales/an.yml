@@ -648,8 +648,6 @@ an:
   invitation:
     alternate: "Como alternativa, comparte iste vinclo y qualsiquiera podrá solicitar unir-se:"
     by_email: "Convidar por correu electronico "
-    no_invitations_left: Ya no tiens mas invitacions
-    no_invitations_left_get_more: "Por favor, ninvia-nos un correu a contact@loomio.org y veyeremos cómo podemos aduyar-te"
     invitation_not_found: "No s'ha puesto trobar garra invitación. Por favor, pide una nueva invitación."
     invitation_cancelled: "Ista invitación s'ha cancelau. Contacta a o remitent si creyes que i hai habiu bella error."
     invitation_already_used: "Ista invitación ya s'ha usau. Encieta sesión ta dentrar a o tuyo grupo."

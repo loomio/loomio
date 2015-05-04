@@ -494,7 +494,6 @@ he:
   invitation:
     alternate: "לחליפין, שיתוף הקישור הזה יאפשר לכל אחד לבקש להצטרף"
     by_email: הזמנה בדוא״ל
-    no_invitations_left_get_more: "נא פנו ל contact@loomio.org (עדיף באנגלית) ואנחנו נבדוק איך נוכל לעזור"
     invitation_not_found: "לא נמצאה הזמנה, אנא בקשו שישלחו לכם הזמנה חדשה."
     invitation_cancelled: הזמנה זו בוטלה. נא ליצור קשר עם השולח אם זו נראית לך טעות.
     recipients: "נא להזין כתובות דוא״ל, מופרדות בפסיקים:"

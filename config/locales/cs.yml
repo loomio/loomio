@@ -561,8 +561,6 @@ cs:
   invitation:
     alternate: "Případně sdílejte tento odkaz a každý vás může zažádat o členství:"
     by_email: Pozvat emailem
-    no_invitations_left: "Omlouváme se, nezbývají vám žádné pozvánky"
-    no_invitations_left_get_more: "Prosím emailujte contact@loomio.org a uvidíme, co můžeme udělat, abychom vám pomohli"
     invitation_cancelled: "Tato pozvánka byla zrušena. Prosím kontaktujte odesílatele této pozvánky pokud myslíte, že došlo k chybě."
     invitation_already_used: "Tato pozvánka už byla použita. Prosím přihlaste se, abyste pokračoval(a) ke své skupině."
     recipients: "Zadejte emailové adresy, oddělené čárkami:"

@@ -652,8 +652,6 @@ it:
   invitation:
     alternate: "In alternativa, condividi questo link e ciascuno potrà chiedere di unirsi:"
     by_email: Invito via e-mail
-    no_invitations_left: Non hai più inviti
-    no_invitations_left_get_more: "Per favore manda una email a contact@loomio.org e vediamo cosa riusciamo a fare per aiutarti"
     invitation_not_found: Non è stato possibile trovare un invito con quel token. Chiedi un nuovo invito al mittente.
     invitation_cancelled: "Questo invito è stato annullato. Contatta il mittente dell'invito se pensi che si tratti di un errore."
     invitation_already_used: Questo invito è già stato usato. Accedi per andare al tuo gruppo.

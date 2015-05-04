@@ -662,8 +662,6 @@ sk:
   invitation:
     alternate: "Prípadne zdieľajte tento odkaz a každý vás môže požiadať o členstvo:"
     by_email: Pozvať emailom
-    no_invitations_left: "Ospravedlňujeme sa, ale neostávajú vám žiadne pozvánky"
-    no_invitations_left_get_more: "Prosím emailujte contact@loomio.org a uvidíme, čo môžme urobiť, aby sme vám pomohli"
     invitation_not_found: Nedarí sa nám nájsť pozvánku s touto adresou. Skúste si vyžiadať novú pozvánku od jej odosielateľa.
     invitation_cancelled: "Tato pozvánka bola zrušená. Prosím kontaktujte odesieľateľa tejto pozvánky pokiaľ si myslíte, že došlo ku chybe."
     invitation_already_used: "Tato pozvánka už bola použitá. Prosím prihláste sa, aby ste mohli pokračovať do svojej skupiny."

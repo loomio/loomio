@@ -648,8 +648,6 @@ da:
   invitation:
     alternate: "Alternativ kan du dele dette link, og alle kan anmode om medlemskab:"
     by_email: Inviter via email
-    no_invitations_left: "Beklager, du har ikke flere invitationer tilbage"
-    no_invitations_left_get_more: "Kontakt venligst contact@loomio.org og vi vil se hvad vi kan gøre for at hjælpe dig"
     invitation_not_found: Kunne ikke finde en invitation med denne token. Bed venligst om en ny invitation fra afsenderen.
     invitation_cancelled: Denne invitation er blevet annulleret. Kontakt venligst invitationens afsender hvis du mener dette er en fejl.
     invitation_already_used: Denne invitation er allerede blevet anvendt. Log ind for at fortsætte til din gruppe.

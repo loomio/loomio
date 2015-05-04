@@ -426,8 +426,6 @@ id:
   invitation:
     alternate: "Selain itu, sebarkan tautan ini dan setiap orang dapat mengirim permintaan bergabung:"
     by_email: Undang melalui surel
-    no_invitations_left: Anda tidak memiliki undangan yang tersisa
-    no_invitations_left_get_more: "Kirim surel ke contact@loomio.org dan kami akan coba membantu Anda"
     invitation_not_found: Undangan dengan token tersebut tidak ditemukan. Hubungi pengirim untuk memberikan undangan baru.
     invitation_cancelled: Undangan ini telah dibatalkan. Hubungi pengirim undangan apabila Anda merasa terdapat kesalahan.
     invitation_already_used: Undangan ini telah digunakan. Masuk log untuk lanjut ke kelompok Anda.

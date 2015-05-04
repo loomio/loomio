@@ -649,8 +649,6 @@ tr:
   invitation:
     alternate: "Alternatif olarak, bu bağlantıyı paylaşın ve herhangi birinin katılabilmesini isteyin:"
     by_email: E-posta ile davet et
-    no_invitations_left: Maalesef hiç davetiyen kalmadı
-    no_invitations_left_get_more: "Sana yardımcı olabilmemiz için lütfen contact@loomio.org e-posta gönder"
     invitation_not_found: Bu kuponla ilişik bir davetiye bulunamadı. Lütfen seni davet eden kişiden yeni bir davetiye talep et.
     invitation_cancelled: "Bu davetiye iptal edildi. Eğer bunun bir hata olduğunu düşünüyorsan, lütfen seni davet eden kişiyle irtibata geç."
     invitation_already_used: "Bu davetiye daha önce kullanılmış. Lütfen, gruba devam etmek için giriş yapın."

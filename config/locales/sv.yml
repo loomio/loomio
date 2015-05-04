@@ -648,8 +648,6 @@ sv:
   invitation:
     alternate: "Alternativt, dela denna länken och vem som helst kan gå med:"
     by_email: Bjud in per email
-    no_invitations_left: Tyvärr har du inga inbjudningar kvar
-    no_invitations_left_get_more: "Emaila contact@loomio.org och vi ska se vad vi kan göra för att hjälpa dig"
     invitation_not_found: Kunde inte hitta någon inbjudan med denna token. Be om en ny inbjudan från avsändaren.
     invitation_cancelled: Denna inbjudan har blivit cancellerad. Ta kontakt med avsändaren av inbjudan om du tror att det har blivit fel.
     invitation_already_used: Denna inbjudan har redan använts. Logga in för att fortsätta till din grupp.
