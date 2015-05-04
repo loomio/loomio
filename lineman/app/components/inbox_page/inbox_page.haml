@@ -1,0 +1,19 @@
+.container.main-container{role: 'main'}
+  .inbox-container
+    .row
+      .col-xs-12
+        .inbox-page-panel.thread-preview-collection-container
+          %h1.sr-only{translate: 'inbox_page.aria_label'}
+          .inbox-page-no-threads{ng-show: 'false'}
+            %span{translate: 'inbox_page.no_threads'}>
+            %a{ng-show: 'inboxPage.filter() != "show_all"', translate: 'inbox_page.view_recent', href: '#', ng-click: 'inboxPage.changePreferences({inbox_filter: "show_all"})'}>
+          %h1{translate: 'inbox_page.unread_threads'}
+          .inbox-page-group{ng-repeat: 'group in inboxPage.inboxGroups() | orderBy:inboxPage.groupName'}
+            %section{ng-if: 'inboxPage.anyForThisGroup(group)', role: 'region', aria-label: "{{ 'inbox_page.threads_from.group' | translate }} {{group.name}}"}
+              %img.selector-list-item-group-logo.pull-left{ng-src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
+              %h2.inbox-page-group-name
+                %a{href: '/g/{{group.key}}'} {{group.name}}
+              .inbox-groups.thread-previews-container
+                %thread_preview_collection{threads: 'inboxPage.inboxThreads(group)'}
+                .inbox-page-show-more{ng-show: 'inboxPage.moreForThisGroup(group)'}
+                  %a{translate: 'inbox_page.view_more', href: '/g/{{group.key}}'}

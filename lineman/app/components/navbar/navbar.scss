@@ -18,20 +18,6 @@
   -webkit-justify-content: center;
 }
 
-.lmo-navbar-logo {
-  @media (min-width: 940px){ width: 120px; }
-  padding: 0 5px;
-  a { float: right; }
-}
-
-.lmo-navbar-logo-image {
-  width: 40px;
-  height: 40px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url(/img/lbow_round_34.png);
-}
-
 .lmo-navbar-search {
   max-width: $main-max-width;
   flex-grow: 2;
@@ -54,6 +40,7 @@
 
 .lmo-navbar-item--selected {
   border-bottom: 4px solid $loomio-orange;
+  a { color: black;}
 }
 
 .lmo-navbar-btn{
@@ -64,15 +51,27 @@
 .lmo-navbar-btn__icon{
   color: $grey-on-white;
   font-size: 19px;
+  &:hover { text-decoration: none; }
+}
+
+.lmo-navbar-btn__span{
+  @include fontMedium;
+  padding: 5px;
 }
 
 .lmo-navbar-btn.has-badge{
   position: relative;
 }
 
-.lmo-navbar-btn.has-badge .badge{
+.lmo-navbar-btn.has-badge .badge {
+  font-size: 10px;
   position: absolute;
-  top: 0;
-  right: 0;
+  left: 16px;
+  top: 1px;
   background: #4A90E2;
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
+  line-height: 5px;
+  text-align: center;
 }

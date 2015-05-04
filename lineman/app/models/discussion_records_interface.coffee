@@ -8,14 +8,17 @@ angular.module('loomioApp').factory 'DiscussionRecordsInterface', (BaseRecordsIn
         from:     options['from']
         per:      options['per']
 
-    fetchInboxByDate: (options = {}) ->
-      @restfulClient.get 'inbox_by_date', options
+    fetchDashboard: (options = {}) ->
+      @restfulClient.get 'discussions_for_dashboard', options
 
-    fetchInboxByOrganization: (options = {}) ->
-      @restfulClient.get 'inbox_by_organization', options
-
-    fetchInboxByGroup: (options = {}) ->
-      @restfulClient.get 'inbox_by_group', options
+    fetchInbox: (options = {}) ->
+      @restfulClient.get 'discussions_for_inbox', options
 
     findByDiscussionIds: (ids) ->
       @collection.chain().find({id: { $in: ids} })
+
+    forInbox: (group) ->
+      @collection.chain().find({groupId: { $in: group.organizationIds() }})
+
+    unread: ->
+      @collection.where (discussion) -> discussion.isUnread()

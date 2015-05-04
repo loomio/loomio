@@ -1,7 +1,3 @@
-.dashboard-container {
-  margin: 10px auto;
-  max-width: $main-max-width;
-}
 
 .dashboard-options{
   margin-bottom: 16px;
@@ -12,31 +8,8 @@
   color: $grey-on-grey;
 }
 
-.dashboard-page-group-name a{
-  @include fontHelveticaMedium;
-  @include fontCrapName;
-  line-height: 30px;
-  color: $grey-on-grey;
-  margin-left: 16px;
-  margin-top: 0;
-}
-
 .dashboard-page-no-threads {
   text-align: center;
-}
-
-.dashboard-page-threads {
-  @include card;
-  padding: 0;
-  margin-bottom: 26px;
-  margin-top: 9px;
-}
-
-.dashboard-page-thread {
-  padding: 13px 13px;
-  border-bottom: 1px solid $border-color;
-  position: relative;
-  &:hover { background-color: $list-hover-color; }
 }
 
 .dashboard-page-thread-group-logo{
@@ -138,16 +111,6 @@
   padding: 10px;
 }
 
-.dashboard-page-show-more{
-  padding: 15px 15px 15px 48px;
-}
-.dashboard-page-show-more a{
-  display: block;
-  width: 100%;
-  height: 100%;
-  color: $grey-on-white;
-  text-decoration: underline;
-}
 .dashboard-page-show-more a:hover{
   color: $primary-text-color;
 }
