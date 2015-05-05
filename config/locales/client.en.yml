@@ -16,8 +16,8 @@ en:
     date_range:
       today: 'Today'
       yesterday: 'Yesterday'
-      this_week: 'This Week'
-      this_month: 'This Month'
+      thisweek: 'This Week'
+      thismonth: 'This Month'
       older: 'Older'
     action:
       save: 'Save'
@@ -364,8 +364,8 @@ en:
       group: 'Threads from'
       today: 'Threads from today'
       yesterday: 'Threads from yesterday'
-      this_week: 'Threads from this week'
-      this_month: 'Threads from this month'
+      thisweek: 'Threads from this week'
+      thismonth: 'Threads from this month'
       older: 'Threads older than a month'
 
   inbox_page:

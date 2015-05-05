@@ -13,12 +13,3 @@ angular.module('loomioApp').factory 'DiscussionRecordsInterface', (BaseRecordsIn
 
     fetchInbox: (options = {}) ->
       @restfulClient.get 'discussions_for_inbox', options
-
-    findByDiscussionIds: (ids) ->
-      @collection.chain().find({id: { $in: ids} })
-
-    forInbox: (group) ->
-      relation = @collection.chain()
-      relation = relation.find({groupId: { $in: group.organizationIds() }}) if group?
-      relation = relation.where (discussion) -> discussion.isUnread()
-      relation

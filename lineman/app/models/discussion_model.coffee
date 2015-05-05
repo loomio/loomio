@@ -69,6 +69,12 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     isUnread: ->
       @unreadActivityCount() > 0
 
+    isMuted: ->
+      @reader().volume == 'mute'
+
+    isParticipating: ->
+      @reader().participating
+
     unreadItemsCount: ->
       @itemsCount - @reader().readItemsCount
 

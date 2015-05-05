@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'InboxPageController', ($rootScope, Records, CurrentUser, LoadingService) ->
+angular.module('loomioApp').controller 'InboxPageController', ($rootScope, Records, CurrentUser, LoadingService, ThreadQueryService) ->
   $rootScope.$broadcast('currentComponent', 'inboxPage')
   $rootScope.$broadcast('setTitle', 'Inbox')
 
@@ -7,18 +7,11 @@ angular.module('loomioApp').controller 'InboxPageController', ($rootScope, Recor
   @inboxGroups = ->
     _.filter CurrentUser.groups(), (group) -> group.isParent()
 
-  @allInboxThreads = (group) ->
-    Records.discussions
-           .forInbox(group)
-           .simplesort('lastActivityAt', true)
-           .data()
-
-  @inboxThreads = (group) ->
-    _.take @allInboxThreads(group), @threadLimit
+  @queryFor = (group) ->
+    ThreadQueryService.groupQuery(group)
 
   @groupName        = (group) -> group.name
-  @anyForThisGroup  = (group) -> @allInboxThreads(group).length > 0
-  @moreForThisGroup = (group) -> @allInboxThreads(group).length > @threadLimit
+  @moreForThisGroup = (group) -> @queryFor(group).threads().length > @threadLimit
 
   Records.discussions.fetchInbox()
   Records.votes.fetchMyRecentVotes()

@@ -51,7 +51,7 @@
 .lmo-navbar-btn__icon{
   color: $grey-on-white;
   font-size: 19px;
-  &:hover { text-decoration: none; }
+  &:hover, &:focus { text-decoration: none; }
 }
 
 .lmo-navbar-btn__span{

@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'threadPreviewCollection', ->
-  scope: {threads: '='}
+  scope: {query: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_preview_collection/thread_preview_collection.html'
   replace: true
