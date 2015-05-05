@@ -106,7 +106,32 @@ label.label-with-details{
   padding: 10px;
 }
 
-.card-title{
+.lmo-h1{
+  @include fontHelveticaBold;
+  @include fontGrande;
+  padding: 0;
+  margin: 0;
+}
+.lmo-h2 {
+  @include fontHelveticaBold;
+  @include fontLarge;
+  margin: 8px 0;
+}
+.lmo-h3{
+  @include fontHelveticaMedium;
+  @include fontSmall;
+  color: $grey-on-white;
+  margin-top: 22px;
+  text-transform: uppercase;
+}
+.lmo-h4{
+  @include fontHelveticaMedium;
+  @include fontSmall;
+  color: $grey-on-white;
+  margin-top: 22px;
+}
+
+.lmo-card-heading{
   @include fontHelveticaMedium;
   @include fontSmall;
   text-transform: uppercase;
@@ -114,7 +139,7 @@ label.label-with-details{
   margin-top: 0;
   margin-bottom: 10px;
 }
-.card-subheading{
+.lmo-card-subheading{
   @include fontSmall;
   @include fontHelveticaMedium;
   color: $grey-on-white;

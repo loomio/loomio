@@ -422,17 +422,17 @@ en:
     in_reply_to: '<strong>{{author}}</strong> in reply to <strong>{{recipient}}</strong>'
 
   new_vote_item:
-    agree: '<span>{{name}}</span> agreed.'
-    abstain: '<span>{{name}}</span> abstained.'
-    disagree: '<span>{{name}}</span> disagreed.'
-    block: '<span>{{name}}</span> blocked.'
-    agree_and_why: '<span>{{name}}</span> agreed:'
-    abstain_and_why: '<span>{{name}}</span> abstained:'
-    disagree_and_why: '<span>{{name}}</span> disagreed:'
-    block_and_why: '<span>{{name}}</span> blocked:'
+    agree: '<strong>{{name}}</strong> agreed.'
+    abstain: '<strong>{{name}}</strong> abstained.'
+    disagree: '<strong>{{name}}</strong> disagreed.'
+    block: '<strong>{{name}}</strong> blocked.'
+    agree_and_why: '<strong>{{name}}</strong> agreed:'
+    abstain_and_why: '<strong>{{name}}</strong> abstained:'
+    disagree_and_why: '<strong>{{name}}</strong> disagreed:'
+    block_and_why: '<strong>{{name}}</strong> blocked:'
 
   new_proposal_item:
-    author_created_proposal: '<span>{{name}}</span> created a proposal:'
+    author_created_proposal: '<strong>{{name}}</strong> created a proposal:'
 
   contact_message_form:
     contact_us: 'Contact Us'

@@ -1,6 +1,6 @@
 .vote-form-and-your-position
   .vote-form{ng-show: 'proposal.isActive() && (!yourLastVote() || editing)', ng-disabled: 'vote.processing'}
-    %h4.card-subheading{translate: 'vote_form.have_your_say'}
+    %h4.lmo-card-subheading{translate: 'vote_form.have_your_say'}
 
     %form{ng-submit: 'submit()',  ng-disabled: 'vote.processing' }
       %form_errors{record: 'vote'}
@@ -36,10 +36,10 @@
         %button.btn.btn-default{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}>
 
   .proposal-expanded-positions
-    %h4.card-subheading{translate: 'vote_form.positions'}
+    %h4.lmo-card-subheading{translate: 'vote_form.positions'}
 
     .your-position{ng-show: 'yourLastVote() && !editing'}
-      .card-subheading{translate: 'proposal_expanded.positions', role: 'heading'}
+      .lmo-card-subheading{translate: 'proposal_expanded.positions', role: 'heading'}
 
       .current-position.media
         .media-left

@@ -25,7 +25,7 @@
         .thread-notification-level.lmo-btn-wrapper
           %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
 
-      %h1.thread-context__title{in-view: 'threadPage.showLintel(!$inview)'}
+      %h1.lmo-h1.thread-context__heading{in-view: 'threadPage.showLintel(!$inview)'}
         {{threadPage.discussion.title}}
       .thread-context__details
         %span{translate: 'discussion.started_by', translate-value-name: '{{::threadPage.discussion.authorName()}}'}

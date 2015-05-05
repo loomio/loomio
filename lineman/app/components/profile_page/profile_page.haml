@@ -2,11 +2,11 @@
   .media-left
     %img.img-profile.img-rounded{ng-src: '{{user.profileUrl}}'}
   .media-body
-    %h1 {{user.name}}
+    %h1.lmo-h1 {{user.name}}
     %p.username
       @{{user.label}}
 
-  %h3.clearfix{translate: 'profile_page.my_groups'}
+  %h3.lmo-h3.clearfix{translate: 'profile_page.my_groups'}
   .profile-group{ng-repeat: 'group in user.groups()', ng-class: '{"profile-subgroup": group.parentId}'}
     .media-left
       %img{ng-src: '{{group.logoUrlSmall}}'}

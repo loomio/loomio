@@ -5,7 +5,7 @@
       .group-page-logo{style:'background-image:url({{groupPage.group.logoUrl()}})', alt: "{{ 'group_page.group_logo' | translate }}"}
       .group-page-header-name-and-actions
         .group-page-name
-          %h1
+          %h1.lmo-h1
             %a{ng_show: 'groupPage.group.parentId', href: '/g/{{groupPage.group.parent().key}}'}
               {{groupPage.group.parentName()}}
             %span{ng_show: 'groupPage.group.parentId'}> \-
@@ -24,7 +24,7 @@
     .row
       .col-sm-8
         %section.group-page-description{aria-labelledby: 'description-card-title'}
-          %h2#description-card-title.card-title{ translate: 'group_page.description'}
+          %h2#description-card-title.lmo-card-heading{ translate: 'group_page.description'}
           .group-description.last{ btf-markdown: 'groupPage.group.description' }
         %discussions_card{group: 'groupPage.group'}
       .col-sm-4

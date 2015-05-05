@@ -8,7 +8,7 @@
         %li.dropdown-menu-item
           %a.dropdown-menu-item-label{href: '/g/{{group.key}}/memberships', translate: 'group_page.options.manage_members'}
 
-  %h2#members-card-title.card-title{ translate: 'group_page.members'}
+  %h2#members-card-title.lmo-card-heading{ translate: 'group_page.members'}
 
   .group-member-list
     .group-member-list-item{ng-repeat: 'member in group.members() | limitTo:5'}

@@ -1,8 +1,6 @@
 .new-vote__heading{
-  @include fontReset;
   color: $grey-on-white;
-  span{
-    @include fontHelveticaBold;
+  strong{
     color: $primary-text-color;
   }
 }
