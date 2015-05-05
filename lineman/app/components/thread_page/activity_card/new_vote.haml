@@ -3,8 +3,8 @@
     .media-left
       .thread-item-vote-icon{class: 'thread-item-vote-icon-{{vote.position}}'}
     .media-body
-      %h3.new_vote__heading{ng-hide: 'vote.hasStatement()', translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-name: '{{vote.authorName()}}'}
-      %h3.new_vote__heading{ng-show: 'vote.hasStatement()', translate: "new_vote_item.{{vote.positionVerb()}}_and_why", translate-value-name: '{{vote.authorName()}}'}
+      %h3.new-vote__heading{ng-hide: 'vote.hasStatement()', translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-name: '{{vote.authorName()}}'}
+      %h3.new-vote__heading{ng-show: 'vote.hasStatement()', translate: "new_vote_item.{{vote.positionVerb()}}_and_why", translate-value-name: '{{vote.authorName()}}'}
   .thread-item-body{ng_show: 'vote.statement'}
     {{::vote.statement}}
   .thread-item-footer

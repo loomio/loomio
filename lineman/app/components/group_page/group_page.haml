@@ -1,6 +1,6 @@
 .group-page
   .group-page-cover{style:'background-image:url({{groupPage.group.coverUrl()}})'}
-  .container.main-container{role: 'main'}
+  %main.container.main-container
     %section.group-page-header{role: 'region', aria-label: "{{ 'group_page.header.aria_label' | translate }}"}
       .group-page-logo{style:'background-image:url({{groupPage.group.logoUrl()}})', alt: "{{ 'group_page.group_logo' | translate }}"}
       .group-page-header-name-and-actions
