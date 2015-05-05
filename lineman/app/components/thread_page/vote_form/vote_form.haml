@@ -1,6 +1,6 @@
 .vote-form-and-your-position
   .vote-form{ng-show: 'proposal.isActive() && (!yourLastVote() || editing)', ng-disabled: 'vote.processing'}
-    .card-subheading{translate: 'vote_form.have_your_say', role: 'heading'}
+    %h4.lmo-card-subheading{translate: 'vote_form.have_your_say'}
 
     %form{ng-submit: 'submit()',  ng-disabled: 'vote.processing' }
       %form_errors{record: 'vote'}
@@ -35,30 +35,18 @@
 
         %button.btn.btn-default{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}>
 
-  .your-position{ng-show: 'yourLastVote() && !editing'}
-    .card-subheading{translate: 'proposal_expanded.positions', role: 'heading'}
+  .proposal-expanded-positions
+    %h4.lmo-card-subheading{translate: 'vote_form.positions'}
 
-    .current-position.media
-      .media-left
-        .thread-item-vote-icon{class: 'thread-item-vote-icon-{{yourLastVote().position}}'}
-      .media-body
-        %strong> {{yourLastVote().authorName()}}
-        .sr-only {{yourLastVote().positionVerb()}}
-        %span.author-statement
-          {{ yourLastVote().statement || 'vote_form.no_statement' | translate }}
-        %a.change-your-vote{href: '#', ng-click: 'changeVote()', ng-show: 'proposal.isActive()'}
-          %i.fa.fa-exchange{aria-hidden: 'true'}>
-          %span{translate: 'vote_form.change_your_vote'}
-
-  .proposal-expanded-votes
-    .proposal-expanded-no-votes{ng-show: 'onlyVoterIsYou()', translate: 'proposal_expanded.only_voter_is_you'}
-    .proposal-expanded-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_expanded.no_votes_yet'}
-
-    .proposal-expanded-vote.media{ng_repeat: 'vote in curatedVotes()'}
-      .media-left
-        .thread-item-vote-icon{class: 'thread-item-vote-icon-{{vote.position}}'}
-      .media-body
-        %strong> {{::vote.authorName()}}
-        .sr-only {{vote.positionVerb()}}
-        %span.author-statement {{vote.statement }}
-      .clearfix
+    %ul.proposal-expanded-votes
+      %li.proposal-expanded-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_expanded.no_votes_yet'}
+      %li.proposal-expanded-vote.media{ng_repeat: 'vote in curatedVotes()'}
+        .media-left
+          .thread-item-vote-icon{class: 'thread-item-vote-icon-{{vote.position}}'}
+        .media-body
+          %span.proposal-expanded-vote{translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-name: '{{vote.authorName()}}'}
+          %span{ng-if: '!vote.hasStatement()'}.
+          %span{ng-if: 'vote.hasStatement()'}: {{::vote.statement}}
+          %a.change-your-vote{href: '#', ng-click: 'changeVote()', ng-show: 'proposal.isActive() && voteIsMine(vote)'}
+            %i.fa.fa-exchange{aria-hidden: 'true'}>
+            %span{translate: 'vote_form.change_your_vote'}

@@ -4,7 +4,6 @@ angular.module('loomioApp').directive 'voteForm', ->
   templateUrl: 'generated/components/thread_page/vote_form/vote_form.html'
   replace: true
   controller: ($scope, Records, CurrentUser, FormService, FlashService) ->
-    currentUser = CurrentUser
     $scope.editing = false
 
     $scope.changeVote = ->
@@ -28,12 +27,16 @@ angular.module('loomioApp').directive 'voteForm', ->
     $scope.positionOtherThan = (position) ->
       $scope.vote.position? && $scope.vote.position != position
 
-    $scope.curatedVotes = ->
-      positionValues = {yes: 0, abstain: 1, no: 2, block: 3}
-      _.sortBy filteredVotes(), (vote) ->
+    sortValueForVote = (vote) ->
+      positionValues = {yes: 1, abstain: 2, no: 3, block: 4}
+      if $scope.voteIsMine(vote)
+        0
+      else
         positionValues[vote.position]
 
-    filteredVotes = ->
-      return [] unless $scope.proposal
-      _.filter $scope.proposal.uniqueVotes(), (vote) ->
-        vote.authorId != currentUser.id
+    $scope.curatedVotes = ->
+      _.sortBy $scope.proposal.uniqueVotes(), (vote) ->
+        sortValueForVote(vote)
+
+    $scope.voteIsMine = (vote) ->
+      vote.authorId == CurrentUser.id

@@ -3,9 +3,11 @@
     .media-left
       .thread-item-vote-icon{class: 'thread-item-vote-icon-{{vote.position}}'}
     .media-body
-      %span{ng-hide: 'vote.hasStatement()', translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-name: '{{vote.authorName()}}'}
-      %span{ng-show: 'vote.hasStatement()', translate: "new_vote_item.{{vote.positionVerb()}}_and_why", translate-value-name: '{{vote.authorName()}}'}
-  .thread-item-body{ng_show: 'vote.statement'}
+      %h3.new-vote__heading
+        %span{translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-name: '{{vote.authorName()}}'}
+        %span{ng-if: '!vote.hasStatement()'}.
+        %span{ng-if: 'vote.hasStatement()'}:
+  .thread-item-body{ng-if: 'vote.hasStatement()'}
     {{::vote.statement}}
   .thread-item-footer
     .thread-actions-and-meta

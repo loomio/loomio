@@ -1,11 +1,11 @@
 .group-page
   .group-page-cover{style:'background-image:url({{groupPage.group.coverUrl()}})'}
-  .container.main-container{role: 'main'}
-    %section.group-page-header{role: 'region', aria-label: "{{ 'group_page.header.aria_label' | translate }}"}
+  %main.container.main-container
+    %section.group-page-header{aria-label: "{{ 'group_page.header.aria_label' | translate }}"}
       .group-page-logo{style:'background-image:url({{groupPage.group.logoUrl()}})', alt: "{{ 'group_page.group_logo' | translate }}"}
       .group-page-header-name-and-actions
         .group-page-name
-          %h1
+          %h1.lmo-h1
             %a{ng_show: 'groupPage.group.parentId', href: '/g/{{groupPage.group.parent().key}}'}
               {{groupPage.group.parentName()}}
             %span{ng_show: 'groupPage.group.parentId'}> \-
@@ -23,8 +23,8 @@
         .clearfix
     .row
       .col-sm-8
-        %section.group-page-description{role: 'region', aria-labelledby: 'description-card-title'}
-          #description-card-title.card-title{ translate: 'group_page.description', role: 'heading' }
+        %section.group-page-description{aria-labelledby: 'description-card-title'}
+          %h2#description-card-title.lmo-card-heading{ translate: 'group_page.description'}
           .group-description.last{ btf-markdown: 'groupPage.group.description' }
         %discussions_card{group: 'groupPage.group'}
       .col-sm-4

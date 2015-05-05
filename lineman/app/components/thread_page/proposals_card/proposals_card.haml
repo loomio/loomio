@@ -1,6 +1,5 @@
-%section.proposals-card{role: 'region', aria-labelledby: 'proposals-card-heading'}
-  .card-title#proposals-card-heading{translate: 'discussion.proposals', role: 'heading'}
-
+%section.proposals-card{aria-labelledby: 'proposals-card-heading'}
+  %h2.lmo-card-heading#proposals-card-heading{translate: 'discussion.proposals'}
 
   .proposals-card__proposals{ng_repeat: 'proposal in proposalsCard.discussion.proposals()'}
     .active-proposal{ng-if: 'proposalsCard.isExpanded(proposal)'}

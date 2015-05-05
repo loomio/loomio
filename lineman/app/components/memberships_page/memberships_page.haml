@@ -1,9 +1,9 @@
-.memberships-page.container.main-container#main
+%main.memberships-page.container.main-container#main
   .memberships-container
     .row
-      %h1
+      %h1.lmo-h1
         %a{href:'/g/{{membershipsPage.group.key}}'} {{membershipsPage.group.name}}
-      %h2{translate: 'memberships_page.members'}
+      %h2.lmo-h2{translate: 'memberships_page.members'}
     .row
       .memberships-page-table-row.memberships-page-table-header.col-xs-1
       .memberships-page-table-row.memberships-page-table-header{ng-class: '{"col-xs-11": !membershipsPage.userIsAdmin(), "col-xs-6": membershipsPage.userIsAdmin()}', translate: 'memberships_page.name_label'}

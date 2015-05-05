@@ -1,12 +1,12 @@
-.loading-wrapper.container.main-container
+%main.loading-wrapper.container.main-container
   %loading{ng-unless: 'groupForm.group'}
   %form.form-card{ng-if: 'groupForm.group', ng_submit: 'groupForm.submit()'}
     %fieldset{ng_disabled: 'groupForm.isDisabled'}
-      %h1{ng_show: 'groupForm.group.isNew() && !groupForm.group.parentId', translate: 'group_form.new_group_title'}
-      %h1{ng_show: 'groupForm.group.isNew() && groupForm.group.parentId', translate: 'group_form.new_subgroup_title', translate-value-parent-group-name: '{{groupForm.group.parentName()}}'}
-      %h1{ng_show: '!groupForm.group.isNew()', translate: 'group_form.edit_group_title'}
+      %h1.lmo-h1{ng_show: 'groupForm.group.isNew() && !groupForm.group.parentId', translate: 'group_form.new_group_title'}
+      %h1.lmo-h1{ng_show: 'groupForm.group.isNew() && groupForm.group.parentId', translate: 'group_form.new_subgroup_title', translate-value-parent-group-name: '{{groupForm.group.parentName()}}'}
+      %h1.lmo-h1{ng_show: '!groupForm.group.isNew()', translate: 'group_form.edit_group_title'}
       .form-group
-        %h2{translate: 'group_form.profile_label'}
+        %h2.lmo-h2{translate: 'group_form.profile_label'}
 
         %label{for: 'group-name-field', translate: 'group_form.name_label'}
         %input#group-name-field.form-control{placeholder: "{{ 'group_form.name_placeholder' | translate }}", ng-model: 'groupForm.group.name', ng_required: 'true'}
@@ -15,7 +15,7 @@
         %textarea#group-description-field.form-control{placeholder: "{{ 'group_form.description_placeholder' | translate }}", ng-model: 'groupForm.group.description'}
 
       .form-group
-        %h2{translate: 'group_form.privacy.label'}
+        %h2.lmo-h2{translate: 'group_form.privacy.label'}
 
         %label{for: 'group-visible-to-members', translate: 'group_form.privacy.visible_to_members'}
         %select#group-visible-to-members-field.form-control{ng-change: 'groupForm.updateOptions()', ng-model: 'groupForm.group.visibleTo', ng_required: true}
@@ -36,7 +36,7 @@
           %option{value: 'private_only', ng-if: 'groupForm.validDiscussionOption("private_only")', translate: 'group_form.privacy.private_discussions'}
 
       .form-group
-        %h2{translate: 'group_form.permissions.label'}
+        %h2.lmo-h2{translate: 'group_form.permissions.label'}
         %strong{translate: 'group_form.permissions.helptext'}
 
         .checkbox

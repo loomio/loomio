@@ -1,5 +1,5 @@
-%section.subgroups-card{ng_show: '!group.parentId', role: 'region', aria-labelledby: 'subgroups-card__title'}
-  #subgroups-card__title.card-title{ translate: 'group_page.subgroups', role: 'heading' }
+%section.subgroups-card{ng_show: '!group.parentId', aria-labelledby: 'subgroups-card__title'}
+  %h2#subgroups-card__title.lmo-card-heading{ translate: 'group_page.subgroups'}
   %ul.subgroups-card__list
     %li.subgroups-card__list-item{ng-repeat: 'subgroup in group.subgroups()'}
       .subgroups-card__list-item-logo

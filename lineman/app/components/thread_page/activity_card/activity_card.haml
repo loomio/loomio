@@ -1,11 +1,12 @@
-%section.activity-card{role: 'region', aria-labelledby:'activity-card-title'}
-  .card-title#activity-card-title{role: 'heading', translate: 'discussion.activity'}
+%section.activity-card{aria-labelledby:'activity-card-title'}
+  %h2.lmo-card-heading#activity-card-title{translate: 'discussion.activity'}
   %a.activity-card__load-backwards{ng-show: 'canLoadBackwards()', ng-click: 'loadEventsBackwards()'}
     %i.fa.fa-refresh{aria-hidden: true}>
     %span{translate: 'discussion.load_previous', translate-value-count: '{{beforeCount()}}'}
   %loading.activity-card__loading.page-loading{ng-show: 'loadEventsBackwardsExecuting'}
-  %article{ng_repeat: 'event in discussion.events() track by event.id', in-view: '($inview&&threadItemVisible(event)) || (!$inview&&threadItemHidden(event))', in-view-options: '{debounce: 100}'}
-    .activity-card__new-activity{ng-if: 'event.sequenceId == newActivitySequenceId', translate: 'activity_card.new_activity'}
-    .activity-card__last-item{ng-if: '$last'}
-    .activity-card-content{id: '{{event.sequenceId}}', ng-include: "'generated/components/thread_page/activity_card/'+ event.kind + '.html'"}
+  %ul.activity-card__activity-list
+    %li.activity-card__activity-list-item{ng_repeat: 'event in discussion.events() track by event.id', in-view: '($inview&&threadItemVisible(event)) || (!$inview&&threadItemHidden(event))', in-view-options: '{debounce: 100}'}
+      .activity-card__new-activity{ng-if: 'event.sequenceId == newActivitySequenceId', translate: 'activity_card.new_activity'}
+      .activity-card__last-item{ng-if: '$last'}
+      .activity-card-content{id: '{{event.sequenceId}}', ng-include: "'generated/components/thread_page/activity_card/'+ event.kind + '.html'"}
   %loading.activity-card__loading.page-loading{ng-show: 'loadEventsForwardsExecuting'}

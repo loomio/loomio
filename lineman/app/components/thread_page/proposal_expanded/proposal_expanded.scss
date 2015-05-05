@@ -1,11 +1,16 @@
 .proposal-expanded {
   background-color: #fff;
 }
+.proposal-expanded__proposal-name{
+  @include fontLarge;
+  @include fontHelveticaBold;
+  margin-bottom: 0.4em;
+}
 .previous-proposals-card{
   .proposal-expanded{
     border-bottom: 1px solid $border-color;
-    margin: 0 -22px;
-    padding: 10px 22px 17px 22px;
+    margin: 0 -17px;
+    padding: 10px 17px 17px 17px;
   }
 }
 
@@ -54,7 +59,8 @@
   border-left: 15px solid #dd0000;
 }
 
-.proposal-expanded-votes-trigger {
-  padding: 10px 0;
-  cursor: pointer;
+.proposal-expanded-votes {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
 }

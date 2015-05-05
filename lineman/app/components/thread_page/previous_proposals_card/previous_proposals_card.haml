@@ -1,5 +1,5 @@
-%section.previous-proposals-card{role: 'region', aria-labelledby: 'previous-proposals-card-heading', ng-show: 'anyProposals()'}
-  .card-title#previous-proposals-card-heading{translate: 'previous_proposals_card.heading', role: 'heading'}
+%section.previous-proposals-card{aria-labelledby: 'previous-proposals-card-heading', ng-show: 'anyProposals()'}
+  %h2.lmo-card-heading#previous-proposals-card-heading{translate: 'previous_proposals_card.heading'}
 
   .wrap{ng-repeat: 'proposal in proposals()'}
     .active-proposal{ng-if: 'selectedProposalId == proposal.id'}
