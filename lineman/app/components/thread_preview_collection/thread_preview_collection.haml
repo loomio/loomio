@@ -1,5 +1,5 @@
 .thread-previews
-  .thread-preview{ng-repeat: 'thread in query.threads()'}
+  .thread-preview{ng-repeat: 'thread in query.threads() | limitTo: limit'}
     %a.selector-list-item-link{href: '/d/{{ thread.key }}'}
       .sr-only
         %span{translate: 'dashboard_page.aria_thread.title', translate-value-title: '{{ thread.title }}'}

@@ -7,11 +7,12 @@ angular.module('loomioApp').controller 'InboxPageController', ($rootScope, Recor
   @inboxGroups = ->
     _.filter CurrentUser.groups(), (group) -> group.isParent()
 
-  @queryFor = (group) ->
-    ThreadQueryService.groupQuery(group)
+  _.map @inboxGroups(), (group) =>
+    @["group#{group.id}"] = ThreadQueryService.groupQuery(group)
+  @queryFor = (group) -> @["group#{group.id}"]
 
   @groupName        = (group) -> group.name
-  @moreForThisGroup = (group) -> @queryFor(group).threads().length > @threadLimit
+  @moreForThisGroup = (group) -> @queryFor(group).length() > @threadLimit
 
   Records.discussions.fetchInbox()
   Records.votes.fetchMyRecentVotes()
