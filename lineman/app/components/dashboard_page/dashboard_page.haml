@@ -1,6 +1,6 @@
 %main.container.main-container
   .dashboard-container
-    %section.dashboard-options{role: 'region', aria-label: "{{ 'dashboard_page.options.aria_label' | translate }}"}
+    %section.dashboard-options{aria-label: "{{ 'dashboard_page.options.aria_label' | translate }}"}
       .lmo-btn-group.lmo-btn-group-right
           .lmo-btn-wrapper
             .dropdown.dashboard-page-sort-dropdown
@@ -62,23 +62,23 @@
             %span{translate: 'dashboard_page.no_threads'}>
             %a{ng-show: 'dashboardPage.filter() != "show_all"', translate: 'dashboard_page.view_recent', href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_all"})'}>
           .dashboard-page-sort-group{ng-if: 'dashboardPage.sort() == "sort_by_date"'}
-            %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyToday()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.today' | translate }}"}
+            %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyToday()', aria-label: "{{ 'dashboard_page.threads_from.today' | translate }}"}
               .dashboard-page-date-range{translate: 'common.date_range.today', aria-hidden: 'true'}
               .dashboard-page-threads
                 %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | filter:dashboardPage.today'}
-            %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyYesterday()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.yesterday' | translate }}"}
+            %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyYesterday()', aria-label: "{{ 'dashboard_page.threads_from.yesterday' | translate }}"}
               .dashboard-page-date-range{translate: 'common.date_range.yesterday', aria-hidden: 'true'}
               .dashboard-page-threads
                 %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | filter:dashboardPage.yesterday'}
-            %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisWeek()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.this_week' | translate }}"}
+            %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisWeek()', aria-label: "{{ 'dashboard_page.threads_from.this_week' | translate }}"}
               .dashboard-page-date-range{translate: 'common.date_range.this_week', aria-hidden: 'true'}
               .dashboard-page-threads
                 %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | filter:dashboardPage.thisWeek'}
-            %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisMonth()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.this_month' | translate }}"}
+            %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisMonth()', aria-label: "{{ 'dashboard_page.threads_from.this_month' | translate }}"}
               .dashboard-page-date-range{translate: 'common.date_range.this_month', aria-hidden: 'true'}
               .dashboard-page-threads
                 %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | filter:dashboardPage.thisMonth'}
-            %section.dashboard-page-threads-container{ng-if: 'anyOlder()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.older' | translate }}"}
+            %section.dashboard-page-threads-container{ng-if: 'anyOlder()', aria-label: "{{ 'dashboard_page.threads_from.older' | translate }}"}
               .dashboard-page-date-range{translate: 'common.date_range.older', aria-hidden: 'true'}
               .dashboard-page-threads
                 %dashboard_page_thread{discussion: 'discussion', ng-repeat: 'discussion in dashboardPage.dashboardDiscussions() | filter:dashboardPage.older'}
@@ -86,7 +86,7 @@
             %loading{ng-show: 'dashboardPage.loadMoreExecuting'}
           .dashboard-page-sort-date{ng-if: 'dashboardPage.sort() == "sort_by_group"'}
             .dashboard-page-group{ng-repeat: 'group in dashboardPage.dashboardGroups() | orderBy:dashboardPage.groupName'}
-              %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisGroup(group)', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.group' | translate }} {{group.name}}"}
+              %section.dashboard-page-threads-container{ng-if: 'dashboardPage.anyThisGroup(group)', aria-label: "{{ 'dashboard_page.threads_from.group' | translate }} {{group.name}}"}
                 %img.selector-list-item-group-logo.pull-left{ng-src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
                 %h2.dashboard-page-group-name
                   %a{href: '/g/{{group.key}}'} {{group.name}}

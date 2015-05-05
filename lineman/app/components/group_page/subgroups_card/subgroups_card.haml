@@ -1,4 +1,4 @@
-%section.subgroups-card{ng_show: '!group.parentId', role: 'region', aria-labelledby: 'subgroups-card__title'}
+%section.subgroups-card{ng_show: '!group.parentId', aria-labelledby: 'subgroups-card__title'}
   %h2#subgroups-card__title.card-title{ translate: 'group_page.subgroups'}
   %ul.subgroups-card__list
     %li.subgroups-card__list-item{ng-repeat: 'subgroup in group.subgroups()'}

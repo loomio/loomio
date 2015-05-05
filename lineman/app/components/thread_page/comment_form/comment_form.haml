@@ -1,4 +1,4 @@
-%section{role: 'region', aria-labelledby: 'comment-form-title'}
+%section{aria-labelledby: 'comment-form-title'}
   %form.comment-form{name: 'commentForm', ng_submit: 'submit()', role: 'form'}
     %h2.card-title#comment-form-title{translate: 'comment_form.aria_label'}
     %span{translate: 'comment_form.in_reply_to', translate-values: "{name: '{{comment.parentAuthorName()}}' }", ng-show: 'comment.parentAuthorName()'}

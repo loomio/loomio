@@ -2,7 +2,7 @@
   %loading{ng-if: '!threadPage.discussion'}
   %main.thread-page{ng-if: 'threadPage.discussion'}
 
-    %section.media.thread-group{role: 'region', aria-label: "{{ 'thread_group.aria_label' | translate }}"}
+    %section.media.thread-group{aria-label: "{{ 'thread_group.aria_label' | translate }}"}
       .media-left.thread-group__icon{aria-hidden: 'true'}
         %img.thread-group-logo{ng-src: "{{threadPage.group.logoUrl()}}"}
       .media-body.thread-group__name
@@ -12,7 +12,7 @@
         %a{href: '/g/{{threadPage.group.key}}'}
           {{threadPage.group.name}}
 
-    %section.thread-context{role: 'region', aria-label: "{{ 'thread_context.aria_label' | translate }}"}
+    %section.thread-context{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
       .thread-actions.lmo-btn-group.lmo-btn-group-right
         .lmo-btn-wrapper.dropdown{ng-if: 'threadPage.showContextMenu()'}
           %button.btn.btn-nude.dropdown-toggle{href:''}
