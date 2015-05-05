@@ -501,9 +501,6 @@ en:
   group_subscription: "Group subscription"
 
   groups:
-    max_size_warning_html: "Your group is getting big and will reach the limit of %{size} members soon. Please <a href='%{link}'>contact us</a> to increase the limit."
-    max_size_reached_html: "Your group has reached the limit of %{size} members. <a href='%{link}'>Contact us</a> to add more people to the group."
-
     follow:
       click_to_follow: "Click to follow group"
       click_to_unfollow: "Click to unfollow group"
@@ -946,8 +943,6 @@ en:
   invitation:
     alternate: "Alternatively, share this link and anyone can ask to join:"
     by_email: "Invite by email"
-    no_invitations_left: "Sorry you don't have any invitations left"
-    no_invitations_left_get_more: "Please email contact@loomio.org and we'll see what we can do to help you"
     invitation_not_found:  'Could not find invitation with that token. Please ask for a new invitation from the sender.'
     invitation_cancelled: 'This invitation has been cancelled. Please contact the sender of the invitation if you believe this was done in error.'
     invitation_already_used: 'This invitation has already been used. Please log in to continue to your group.'
@@ -1431,7 +1426,7 @@ en:
     online_community: "Online community"
     religious_group: "Religious/spiritual"
     event: "Event"
-    open_source_software: "Open source software"
+    open_source_software: "Free and open source software"
     political_initiative: "Political initiative"
     social_enterprise: "Social enterprise"
     social_justice: "Social justice"

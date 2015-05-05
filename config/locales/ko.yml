@@ -433,8 +433,6 @@ ko:
   invitation:
     alternate: "대안적으로, 이 링크를 공유해서 누구에게나 가입을 요청할 수 있습니다."
     by_email: 이메일로 초대하기
-    no_invitations_left: 죄송합니다 남아있는 초대가 없습니다.
-    no_invitations_left_get_more: "contact@loomio.org로 이메일을 보내주세요. 어떤 도움을 드릴 수 있을지 살펴보겠습니다."
     invitation_not_found: 이 토큰을 가지고 있는 초대를 찾을 수 없습니다. 초대장을 보낸 분에게 새로운 초대를 요청하세요.
     invitation_cancelled: 초대가 취소되었습니다. 초대 취소가 오류인것 같다면 초대장을 보낸 분에게 연락해 보세요.
     invitation_already_used: 이 초대는 이미 사용되었습니다. 그룹 로그인을 계속해 보세요.

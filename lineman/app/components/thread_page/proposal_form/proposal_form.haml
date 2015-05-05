@@ -3,8 +3,8 @@
     %button{type: 'button', class: 'close', ng-click: 'cancel($event)'}
       %span{aria-hidden: true} &times;
       %span.sr-only{translate: 'common.action.cancel'}
-    %h1{ng-if: 'proposal.isNew()', translate: 'proposal_form.start_a_proposal'}
-    %h1{ng-if: '!proposal.isNew()', translate: 'proposal_form.edit_proposal'}
+    %h1.lmo-h1{ng-if: 'proposal.isNew()', translate: 'proposal_form.start_a_proposal'}
+    %h1.lmo-h1{ng-if: '!proposal.isNew()', translate: 'proposal_form.edit_proposal'}
 
   .modal-body
     %p{ng-if: 'proposal.isNew()', translate: 'proposal_form.what_does_a_proposal_do'}

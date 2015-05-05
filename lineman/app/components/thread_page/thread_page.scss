@@ -26,8 +26,8 @@
   width: 100%;
 }
 
-.thread-context__title{
-  margin: 2px 0 9px 0;
+.thread-context__heading{
+  margin: 2px 0 9px 0 !important;
 }
 
 .thread-context__details{
@@ -90,6 +90,7 @@
 .thread-item-proposal-icon{
   @include smallIcon;
   background-image: url(/img/proposal_icon_30.png);
+  background-repeat: no-repeat;
 }
 
 .thread-item-vote-icon-yes {

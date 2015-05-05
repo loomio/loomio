@@ -435,8 +435,6 @@ hu:
   edit_group_description: A csoport leírásának szerkesztése
   group_subscription: Csoport felíratkozás
   groups:
-    max_size_warning_html: "Csoportod növekszik és hamarosan eléri a %{size} fős határt. Kérjük <a href='%{link}'>lépj kapcsolatba velünk</a> a határ megemelése érdekében."
-    max_size_reached_html: "Csoportod elérte a %{size} fős határt. <a href='%{link}'>Lépj kapcsolatba velünk</a> további tagok hozzáadása érdekében."
     follow:
       click_to_follow: "Klikk, kövesd a csoportot"
       click_to_unfollow: "Klikk, a követés törlése"
@@ -717,8 +715,6 @@ hu:
   invitation:
     alternate: "Esetleg oszd meg ezt a linket és bárki kérheti a csatlakozást:"
     by_email: Hívj meg e-mailben
-    no_invitations_left: "Bocs, nincs már meghívód"
-    no_invitations_left_get_more: "Írj a contact@loomio.org címre, hátha segíthetünk"
     invitation_not_found: "nem találtunk meghívót ezzel a kóddal. Kérj új meghívót!"
     invitation_cancelled: "Ezt a meghívót visszavonták. Írj annak, akitől kaptad, ha szerinted hiba történt."
     invitation_already_used: "Ezt a meghívót már felhasználták. Jelentkezz be, hogy beléphess a csoportodba."

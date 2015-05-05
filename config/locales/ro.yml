@@ -666,8 +666,6 @@ ro:
   invitation:
     alternate: "Alternativ, raspandeste acest link si oricine va putea sa ceara accesul:"
     by_email: Invita prin email
-    no_invitations_left: Ne pare rau nu mai ai nici o invitatie ramasa
-    no_invitations_left_get_more: "Te rugam sa contactezi contact@loomio.org si vom vedea ce putem face sa te ajutam"
     invitation_not_found: Nu am gasit invitatia cu acest token. Cere o noua invitatie celui care ti-a trimis-o.
     invitation_cancelled: Invitatia a fost anulata. Te rugam sa contactezi pe cel care ti-a triis invitatia daca crezi ca este o eroare.
     invitation_already_used: Aceasta invitatie a fost deja utilizata. Autentifica-te pentru a ajunge la grupul tau.

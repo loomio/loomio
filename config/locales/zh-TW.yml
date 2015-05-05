@@ -392,6 +392,7 @@ zh-TW:
   approved_by_person: "由%{person}核准"
   ignored_by_perosn: "由%{person}取消"
   join_group_btn: 加入群組
+  membership_by_invitation_only: 這個群組的成員資格只能透過邀請獲得
   you_have_joined_group: "您已經加入「%{group_name}」群組"
   confirm_approve_membership_request: "您確定要將 %{which_user} 加入群組嗎？"
   cancel_membership_request: 取消申請
@@ -424,8 +425,6 @@ zh-TW:
   edit_group_description: 編輯群組的描述
   group_subscription: 群組訂閱
   groups:
-    max_size_warning_html: "您的群組日漸茁壯，並且將會很快到達 %{size} 個成員的限制。請 <a href='%{link}'>聯絡我們</a> 以增加限制。"
-    max_size_reached_html: "您的群組已經到達 %{size} 個成員的限制。<a href='%{link}'>聯絡我們</a> 以加入更多人到您的群組中。"
     follow:
       click_to_follow: 點此跟隨群組
       click_to_unfollow: 點此取消跟隨群組
@@ -701,6 +700,11 @@ zh-TW:
   inactive_html: "此帳號已經被凍結。假如您有任何疑問，請<a href='%{path_to_contact}'>聯繫我們</a>。"
   create_an_account_html: 建立 Loomio Beta 帳號
   log_in: 登入
+  password_reset:
+    email_guidelines_html: "<p>在下面的欄位中填入您 Loomio 帳號的電子郵件地址，然後您將會收到一個密碼的重置連結。</p>\n<p>如果您是透過 Facebook、Google、Twitter 或是 Persona 登入的話，請輸入與這些帳號相關聯的電子郵件地址。</p>\n"
+    reset_email_timeframe: 這將會花費 5 分鐘的時間將電子郵件寄到。如果沒有出現，請務必檢查您的垃圾信資料夾。
+    length_restriction: 密碼應至少 8 個字元長。
+    forbidden_passwords: 常見的密碼，像是「password」將會被拒絕以保護您的帳號安全。
   join_group:
     log_in: "登入以加入 %{group_name}"
     create_account_to_join_group: "請建立帳號以加入 %{group_name}"
@@ -711,8 +715,6 @@ zh-TW:
   invitation:
     alternate: 或者，分享這個連結讓別人能要求加入：
     by_email: 以電子郵件邀請
-    no_invitations_left: 抱歉，目前您尚未收到任何邀請。
-    no_invitations_left_get_more: 若有任何問題，請聯絡 contact＠loomio.org，我們將盡力提供協助！
     invitation_not_found: 無法在該邀請碼內找到邀請函。請要求寄件者給一封新的。
     invitation_cancelled: 您的邀請函已失效。若您認為這可能是系統錯誤，您可以請寄出此封信的邀請者再一次發送邀請函。
     invitation_already_used: 您已出示過此封邀請函，現在您可以直接登入您的群組。
@@ -749,6 +751,9 @@ zh-TW:
     description: "Loomio 小幫手真的熱切希望您的群組投資月球之旅。據說宇宙乳酪美味可口。但這麼做的話，您的碳足跡影響令人擔憂。\n這是一個好主意嗎？Loomio 小幫手要知道您怎麼想！\n假如您的立場是明確的，點擊以下的決策圖示之一 (移動滑鼠游標停在每個按鈕上會出現描述)。\n您會被提示要作出有關您決定的簡短聲明。這是讓大家能輕鬆看見您想法原由的摘要。您能自由改變您的心意、編輯您的決定直到這個提案結束。\n"
   contact_page:
     contact_us: 聯絡我們
+    faq_prompt_html: 對 Loomio 團隊有任何問題？在聯絡我們之前，您應該先在我們的常見問題中找尋答案。
+    contact_information: 如果您找不到您想找的東西，您可以在這個頁面的底部找到我們的聯絡資訊。
+    contact_form: 聯絡表單
     labels:
       name: 您的大名
       email: 您的電子郵件地址
@@ -756,6 +761,7 @@ zh-TW:
       submit: 寄送訊息
     messages:
       email_html: "填寫這張表格，或發電子郵件到 <a href='mailto:%{email}'>%{email}</a>"
+      social_html: "您也可以在 <br/><a href='%{facebook}' target='_blank'>facebook</a>、<a href='%{google}' target='_blank'>google+</a>、以及 <a href='%{twitter}' target='_blank'>twitter</a> 上加入我們！\n"
   discussion_form:
     new:
       header: 啟動討論串

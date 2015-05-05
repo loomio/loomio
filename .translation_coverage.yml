@@ -29,7 +29,7 @@ cs:
 da:
   frontpage: 52
   help docs: 8
-  main: 88
+  main: 89
 de:
   frontpage: 58
   help docs: 46
@@ -44,8 +44,8 @@ eo:
   main: 87
 es:
   frontpage: 58
-  help docs: 59
-  main: 99
+  help docs: 64
+  main: 100
 fa-IR:
   frontpage: 52
   help docs: 1
@@ -59,9 +59,9 @@ fr:
   help docs: 26
   main: 98
 ga-IE:
-  frontpage: 26
-  help docs: 4
-  main: 44
+  frontpage: 44
+  help docs: 6
+  main: 54
 gl:
   frontpage: 29
   help docs: 8
@@ -77,9 +77,9 @@ hi:
 hr:
   frontpage: 58
   help docs: 14
-  main: 46
+  main: 47
 hu:
-  frontpage: 58
+  frontpage: 61
   help docs: 74
   main: 97
 id:
@@ -87,7 +87,7 @@ id:
   help docs: 2
   main: 54
 it:
-  frontpage: 58
+  frontpage: 60
   help docs: 8
   main: 89
 it-CH:
@@ -117,7 +117,7 @@ mi:
 mk:
   frontpage: 52
   help docs: 3
-  main: 54
+  main: 55
 ml:
   frontpage: 9
   help docs: 3
@@ -197,4 +197,4 @@ vi:
 zh-TW:
   frontpage: 60
   help docs: 44
-  main: 99
+  main: 100

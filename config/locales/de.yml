@@ -424,8 +424,6 @@ de:
   edit_group_description: Gruppenbeschreibung ändern
   group_subscription: Gruppenabonnement
   groups:
-    max_size_warning_html: "Ihre Gruppe wächst, und hat bald die Grenze von %{size} Mitglieder. Bitte <a href='%{link}'> kontaktieren Sie uns </a>, um den Grenzwert zu erhöhen."
-    max_size_reached_html: "Ihre Gruppe die Grenze von %{size} Mitgliedern erreicht. <a href='%{link}'> Kontaktieren Sie uns</a>, um mehr Menschen in die Gruppe aufzunehmen."
     follow:
       click_to_follow: "Klicken, um der Gruppe zu folgen"
       click_to_unfollow: "Klicken, um der Gruppe nicht mehr zu folgen"
@@ -706,8 +704,6 @@ de:
   invitation:
     alternate: "Stattdessen kannst Du diesen Link teilen, damit jeder um Aufnahme bitten kann:"
     by_email: Per eMail einladen
-    no_invitations_left: "Es tut uns leid, aber Du hast keine Einladungen mehr übrig."
-    no_invitations_left_get_more: "Bitte wende dich an contact@loomio.org, dann werden wir sehen wie wir dir helfen können"
     invitation_not_found: Es konnte keine Einladung mit diesem Token gefunden werden. Bitte frage den Absender nach einer neuen Einladung.
     invitation_cancelled: "Diese Einladung wurde abgebrochen. Bitte kontaktiere den Absender der Einladung, vielleicht wurde die Einladung aus Versehen abgebrochen."
     invitation_already_used: Diese Einladung wurde schon benutzt. Bitte melde dich an um in dieser Gruppe fortzufahren.

@@ -20,14 +20,6 @@ Feature: Edit Group Invitations
     And there should be a couple of pending invitations to those people
 
   @javascript
-  Scenario: Group Admin tries to invite people with no invites left
-    Given I am a signed in group admin
-    And the group has run out of invites
-    When I visit the group page
-    And I click 'Invite People'
-    Then I should see the no invitations page
-
-  @javascript
   Scenario: Group Admin cancels invitation
     Given I am a signed in group admin
     And there is a pending invitation to join the group

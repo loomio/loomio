@@ -9,11 +9,18 @@
 }
 
 .navbar-search-input {
-  color: #999999;
   position: relative;
   top: 2px;
   width: 100%;
   background-color: $background-color;
+  color: $primary-text-color;
+}
+
+.navbar-search-input::-webkit-input-placeholder,
+.navbar-search-input:-moz-placeholder,
+.navbar-search-input::-moz-placeholder,
+.navbar-search-input:-ms-input-placeholder {
+   color: $grey-on-grey;
 }
 
 .navbar-search-input-icon {

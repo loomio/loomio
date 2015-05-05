@@ -3,8 +3,8 @@
     %button{type: 'button', class: 'close', ng-click: '$close()'}
       %span{aria-hidden: true} &times;
       %span.sr-only{translate: 'common.action.cancel'}
-    %h1.modal-title{translate: 'discussion_form.new_discussion_title', ng_show: 'discussion.isNew()'}
-    %h1.modal-title{translate: 'discussion_form.edit_discussion_title', ng_hide: 'discussion.isNew()'}
+    %h1.lmo-h1.modal-title{translate: 'discussion_form.new_discussion_title', ng_show: 'discussion.isNew()'}
+    %h1.lmo-h1.modal-title{translate: 'discussion_form.edit_discussion_title', ng_hide: 'discussion.isNew()'}
 
   .modal-body
     %form_errors{record: 'discussion'}

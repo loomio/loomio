@@ -61,9 +61,9 @@ describe Membership do
         vote.save!
       end
 
-      it "removes user's open votes for the group" do
+      it "preserves user's open votes for the group" do
         @membership.destroy
-        expect(@motion.votes.count).to eq 0
+        expect(@motion.votes.count).to eq 1
       end
 
       it "does not remove user's open votes for other groups" do

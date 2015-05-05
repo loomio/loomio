@@ -558,8 +558,6 @@ ca:
   invitation:
     alternate: "Com a alternativa, comparteix aquest enllaç i qualsevol podrà demanar unir-se."
     by_email: Convida per correu electrònic
-    no_invitations_left: "Ho sentim, no et queda cap invitació"
-    no_invitations_left_get_more: "Si us plau, escriu-nos un correu electrònic a contact@loomio.org i veurem què podem fer per ajudar-te "
     invitation_not_found: "No hem pogut trobar la invitació amb aquesta sol·licitud. Si us plau, demana una invitació nova a qui te l'hagi enviat."
     invitation_cancelled: "La invitació ha estat cancel·lada. Si creus que es tracta d'un error, si us plau, posa't en contacte amb qui te l'ha enviat."
     invitation_already_used: "Aquesta invitació ja ha estat utilitzada. Sisplau, inicia la sessió per connectar-te al teu grup."

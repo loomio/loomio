@@ -2,13 +2,6 @@
 - cover_photo_url = image_url use_parent_if_blank(@group, :cover_photo).url(:desktop)
 - logo_url = image_url use_parent_if_blank(@group, :logo).url(:medium)
 
-
-- if show_max_size_warning?
-  = render 'application/max_size_warning'
-
-- if show_max_size_reached?
-  = render 'application/max_size_reached'
-
 .group-heading{style: "background-image: url(#{image_path 'cover-photo-gradient.png'}), url('#{cover_photo_url}')"}
   = render 'application/flash_messages', :flash => flash, :on_landing_page => false
   - if can? :edit, @group

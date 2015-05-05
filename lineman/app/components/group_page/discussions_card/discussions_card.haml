@@ -1,10 +1,10 @@
-%section.group-page-threads{role: 'region', aria-labelledby: 'threads-card-title'}
+%section.group-page-threads{aria-labelledby: 'threads-card-title'}
   .group-page-new-thread
     %a.btn.btn-success.btn-icon{href: '#', ng_click: 'openDiscussionForm()', title: "{{ 'navbar.start_thread' | translate }}"}
       %i.fa.fa-plus{aria-hidden: 'true'}>
       %span{translate: 'navbar.start_thread'}
 
-  #threads-card-title.card-title{ translate: 'group_page.discussions', role: 'heading' }
+  %h2#threads-card-title.lmo-card-heading{ translate: 'group_page.discussions'}
   .group-thread-list
     .group-thread-list-item{ng-repeat: 'discussion in group.organizationDiscussions() | orderBy: ["-lastActivityAt"] | limitTo:loaded'}
       .time-and-icon.pull-right

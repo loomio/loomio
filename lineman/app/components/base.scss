@@ -5,29 +5,8 @@ body {
   word-break: break-word;
 }
 
-h1 {
-  @include fontHelveticaBold;
-  @include fontGrande;
-  padding: 0;
-  margin: 0;
-  color: $primary-text-color;
-}
-
-h2 {
-  @include fontHelveticaBold;
-  @include fontLarge;
-  margin: 8px 0;
-}
-
-h3, h4 {
-  @include fontHelveticaMedium;
-  @include fontSmall;
-  text-transform: uppercase;
-  color: $grey-on-white;
-  margin-top: 22px;
-}
-h4{
-  text-transform: none;
+h1, h2, h3, h4{
+  @include fontReset;
 }
 
 input, select, textarea{
@@ -41,6 +20,10 @@ textarea{
 input[type="file"]{
   /*This is a hack for now to fix the mobile layout. The file input should be hidden.*/
   max-width: 200px;
+}
+
+strong{
+  @include fontHelveticaBold;
 }
 
 .main-container{

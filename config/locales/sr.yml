@@ -438,8 +438,6 @@ sr:
   edit_group_description: Uredi opis grupe
   group_subscription: Praćenje grupe
   groups:
-    max_size_warning_html: "Vaša grupa postaje velika i dostići će limit od %{size} članova uskoro. Molimo Vas <a href='%{link}'>kontaktirajte nas</a> da povećamo limit."
-    max_size_reached_html: "Vaša grupa je ostvarila limit od %{size} članova. <a href='%{link}'>Kontaktirajte nas</a> da dodate još ljudi grupi."
     follow:
       click_to_follow: Škljocni da pratiš grupu
       click_to_unfollow: Škljocni da prestaneš da pratiš grupu
@@ -720,8 +718,6 @@ sr:
   invitation:
     alternate: "Ili, podelite ovaj link i svako može pitati da se pridruži:"
     by_email: Pozovi ePorukom
-    no_invitations_left: "Izvinite, nemate više pozivnica"
-    no_invitations_left_get_more: "Molim pošaljite ePoruku na contact@loomio.org i videćemo šta možemo uraditi da pomognemo"
     invitation_not_found: Ne možemo naći pozivnicu sa tim tokenom. Molimo Vas da zatražite novu pozivnicu od pošiljaoca.
     invitation_cancelled: Ovaj poziv je otkazan. Molim Vas kontaktirajte pošiljaoca poziva ako verujete da je došlo do greške.
     invitation_already_used: Ova pozivnica je već upotrebljena. Molimo Vas prijavite se da biste nastavili do svoje grupe.

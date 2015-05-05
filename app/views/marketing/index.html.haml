@@ -28,173 +28,174 @@
             .pull-right
               = link_to t(:"about_loomio"), about_path, class: 'btn btn-default hidden-xs'
               %br
-      .row.hero
-        %section.content{role: 'main'}
-          =image_tag 'globe.png', class: 'image'
-          %h1.header= t :'frontpage.hero.header_html'
-          %p.hero-text.description= t :'frontpage.hero.lead_html'
+      %main
+        .row.hero
+          %section.content
+            =image_tag 'globe.png', class: 'image'
+            %h1.header= t :'frontpage.hero.header_html'
+            %p.hero-text.description= t :'frontpage.hero.lead_html'
 
-          =link_to start_group_path, class: 'btn btn-teal btn-lg hero-text js-not-yet-button', id: 'try-it-main' do
-            = t :'frontpage.link.try_loomio'
-            %i.fa.fa-angle-right
+            =link_to start_group_path, class: 'btn btn-teal btn-lg hero-text js-not-yet-button', id: 'try-it-main' do
+              = t :'frontpage.link.try_loomio'
+              %i.fa.fa-angle-right
 
-      .row.product
-        .content
-          .header
-            %h1= t(:'frontpage.product.header_html')
-          .decision-steps
-            .content
-              #threads.col-md-4.step
-                .step-img
-                  = image_tag 'threads.png', {class: 'top active'}
-                %h2.active= t(:'frontpage.product.step1.header')
-                %p.active= t(:'frontpage.product.step1.desc')
-              #weaving.col-md-4.step
-                .step-img.hide-background
-                  = image_tag 'weaving.png', {class: 'top'}
-                %h2= t(:'frontpage.product.step2.header')
-                %p= t(:'frontpage.product.step2.desc')
-              #braid.col-md-4.step
-                .step-img.hide-background
-                  = image_tag 'braid.png', {class: 'top'}
-                %h2= t(:'frontpage.product.step3.header')
-                %p= t(:'frontpage.product.step3.desc')
-          .col-xs-12#product-carousel.content.product-carousel.carousel.slide{"data-ride" => 'carousel'}
+        .row.product
+          .content
+            .header
+              %h1= t(:'frontpage.product.header_html')
+            .decision-steps
+              .content
+                #threads.col-md-4.step
+                  .step-img
+                    = image_tag 'threads.png', {class: 'top active'}
+                  %h2.active= t(:'frontpage.product.step1.header')
+                  %p.active= t(:'frontpage.product.step1.desc')
+                #weaving.col-md-4.step
+                  .step-img.hide-background
+                    = image_tag 'weaving.png', {class: 'top'}
+                  %h2= t(:'frontpage.product.step2.header')
+                  %p= t(:'frontpage.product.step2.desc')
+                #braid.col-md-4.step
+                  .step-img.hide-background
+                    = image_tag 'braid.png', {class: 'top'}
+                  %h2= t(:'frontpage.product.step3.header')
+                  %p= t(:'frontpage.product.step3.desc')
+            .col-xs-12#product-carousel.content.product-carousel.carousel.slide{"data-ride" => 'carousel'}
+              .carousel-inner
+                .item.active
+                  = image_tag 'ipad-1.png', alt: 'Loomio 1.0 discussion mockup'
+                .item
+                  = image_tag 'ipad-2.png', alt: 'Loomio 1.0 proposal mockup'
+                .item
+                  = image_tag 'ipad-3.png', alt: 'Loomio 1.0 proposal outcome mockup'
+              %a.carousel-control.left-ctrl{href: '#product-carousel', "data-slide" => 'prev'}
+                %i.fa.fa-angle-left
+              %a.carousel-control.right-ctrl{href: '#product-carousel', "data-slide" => 'next'}
+                %i.fa.fa-angle-right
+              =link_to 'https://www.youtube.com/watch?v=ZipyebSY2Lo', class: 'video hero-text' do
+                = t(:'frontpage.link.video')
+
+        .row.prototype
+          #prototype-carousel.content.prototype-carousel.carousel.slide{"data-ride" => 'carousel'}
             .carousel-inner
               .item.active
-                = image_tag 'ipad-1.png', alt: 'Loomio 1.0 discussion mockup'
+                .carousel-image
+                  = image_tag 'genzero.png', alt: "Generation Zero"
+                .carousel-desc
+                  Generation Zero is a youth-led network of climate change activists. Decisions made on Loomio inform their national campaigns and events.
+                  .quote
+                    “As an almost totally volunteer-driven organisation, our capacity is built on a sense of ownership among our membership. Loomio is fast and flexible, so we can give more volunteers a stake, and make better informed decisions.”
+                    %br – Jimmy Green, Events Director
               .item
-                = image_tag 'ipad-2.png', alt: 'Loomio 1.0 proposal mockup'
+                .carousel-image
+                  = image_tag 'pathways.png', alt: 'Pathways'
+                .carousel-desc
+                  New Zealand's leading national provider of community-based mental health and wellness services is rolling out Loomio organisation-wide.
+                  .quote
+                    “Loomio is a tool that gives everybody a voice. Decisions are being made by the people affected by them. Team members using it genuinely feel their input is valued, and are able to connect about things that concern them.”
+                    %br – Ross Phillips, business improvement manager
               .item
-                = image_tag 'ipad-3.png', alt: 'Loomio 1.0 proposal outcome mockup'
-            %a.carousel-control.left-ctrl{href: '#product-carousel', "data-slide" => 'prev'}
+                .carousel-image
+                  = image_tag 'timebank.png', alt: 'Wellington Timebank'
+                .carousel-desc
+                  Timebanking creates thriving communities by trading skills, knowledge and services between locals.
+                  .quote
+                    "Loomio is a key decision making tool at a Steering Committee level for the Wellington Timebank. It means I can easily get feedback from Committee members between our monthly meetings. When we do meet up, everyone arrives on the same page, because all the background work has been done online."
+                    %br – Hannah Mackintosh, coordinator
+              .item
+                .carousel-image
+                  = image_tag 'nvc.png', alt: 'Non-Violent Communication Convention'
+                .carousel-desc
+                  After finding it impossible to coordinate a committee across Asia and Europe using other tools, the Non-Violent Communication Convention moved to Loomio.
+                  .quote
+                    “If you don’t feel heard, then you have a loss of power and there is violence. Loomio is supporting our convention team to collaborate effectively over a wide geographical area.”
+                    %br – Emma Collins, Compassionate Communication Trainer
+            %a.carousel-control.left-ctrl{href: '#prototype-carousel', "data-slide" => 'prev'}
               %i.fa.fa-angle-left
-            %a.carousel-control.right-ctrl{href: '#product-carousel', "data-slide" => 'next'}
+            %a.carousel-control.right-ctrl{href: '#prototype-carousel', "data-slide" => 'next'}
               %i.fa.fa-angle-right
-            =link_to 'https://www.youtube.com/watch?v=ZipyebSY2Lo', class: 'video hero-text' do
-              = t(:'frontpage.link.video')
 
-      .row.prototype
-        #prototype-carousel.content.prototype-carousel.carousel.slide{"data-ride" => 'carousel'}
-          .carousel-inner
-            .item.active
-              .carousel-image
-                = image_tag 'genzero.png', alt: "Generation Zero"
-              .carousel-desc
-                Generation Zero is a youth-led network of climate change activists. Decisions made on Loomio inform their national campaigns and events.
-                .quote
-                  “As an almost totally volunteer-driven organisation, our capacity is built on a sense of ownership among our membership. Loomio is fast and flexible, so we can give more volunteers a stake, and make better informed decisions.”
-                  %br – Jimmy Green, Events Director
-            .item
-              .carousel-image
-                = image_tag 'pathways.png', alt: 'Pathways'
-              .carousel-desc
-                New Zealand's leading national provider of community-based mental health and wellness services is rolling out Loomio organisation-wide.
-                .quote
-                  “Loomio is a tool that gives everybody a voice. Decisions are being made by the people affected by them. Team members using it genuinely feel their input is valued, and are able to connect about things that concern them.”
-                  %br – Ross Phillips, business improvement manager
-            .item
-              .carousel-image
-                = image_tag 'timebank.png', alt: 'Wellington Timebank'
-              .carousel-desc
-                Timebanking creates thriving communities by trading skills, knowledge and services between locals.
-                .quote
-                  "Loomio is a key decision making tool at a Steering Committee level for the Wellington Timebank. It means I can easily get feedback from Committee members between our monthly meetings. When we do meet up, everyone arrives on the same page, because all the background work has been done online."
-                  %br – Hannah Mackintosh, coordinator
-            .item
-              .carousel-image
-                = image_tag 'nvc.png', alt: 'Non-Violent Communication Convention'
-              .carousel-desc
-                After finding it impossible to coordinate a committee across Asia and Europe using other tools, the Non-Violent Communication Convention moved to Loomio.
-                .quote
-                  “If you don’t feel heard, then you have a loss of power and there is violence. Loomio is supporting our convention team to collaborate effectively over a wide geographical area.”
-                  %br – Emma Collins, Compassionate Communication Trainer
-          %a.carousel-control.left-ctrl{href: '#prototype-carousel', "data-slide" => 'prev'}
-            %i.fa.fa-angle-left
-          %a.carousel-control.right-ctrl{href: '#prototype-carousel', "data-slide" => 'next'}
-            %i.fa.fa-angle-right
-
-      .row.groups
-        .content
-          .group-tab.col-md-3#genzero.active
-            .group.active
-              = image_tag 'genzero-logo.png', alt: "Generation Zero"
-          .group-tab.col-md-3#pathways
-            .group
-              = image_tag 'pathways-logo.png', alt: "Pathways"
-          .group-tab.col-md-3#timebank
-            .group
-              = image_tag 'timebank-logo.png', alt: "Timebank"
-          .group-tab.col-md-3#nvc
-            .group
-              = image_tag 'nvc-logo.png', alt: "Generation Zero"
-      .row.links
-        .content
-
-      .row.quote
-        .content.rushkoff
-          %blockquote= t(:'frontpage.quote.header.rushkoff_html')
-
-      .row.mobile
-        .content
-          .col-md-6.mobile-header
-            %h1= t(:'frontpage.mobile.lead_html')
-
-      .row.quote
-        .content.sifry
-          %blockquote= t(:'frontpage.quote.header.sifry_html')
-
-      .row
-        = image_tag 'team.png', class: 'img-responsive full-width', alt: 'The Loomio team'
-
-      .row.team
-        %a{href: about_path, class: 'block-link'}
+        .row.groups
           .content
-            %h1= t(:'frontpage.team.header')
-            %p.hero-text= t(:'frontpage.team.desc')
-            %h2
-              = t(:'frontpage.link.more')
-              %i.fa.fa-angle-right
+            .group-tab.col-md-3#genzero.active
+              .group.active
+                = image_tag 'genzero-logo.png', alt: "Generation Zero"
+            .group-tab.col-md-3#pathways
+              .group
+                = image_tag 'pathways-logo.png', alt: "Pathways"
+            .group-tab.col-md-3#timebank
+              .group
+                = image_tag 'timebank-logo.png', alt: "Timebank"
+            .group-tab.col-md-3#nvc
+              .group
+                = image_tag 'nvc-logo.png', alt: "Generation Zero"
+        .row.links
+          .content
 
-      .row.ideals
-        .content.first
-          .row
-            .col-xs-6
-              = image_tag 'community.png'
-              %h2= t(:'frontpage.ideals.community.header')
-              %p= t(:'frontpage.ideals.community.desc')
-            .col-xs-6
-              = image_tag 'indi.png'
-              %h2= t(:'frontpage.ideals.independent.header')
-              %p= t(:'frontpage.ideals.independent.desc')
-      .row.ideals
-        .content
-          .row
-            .col-xs-6
-              = image_tag 'open.png'
-              %h2= t(:'frontpage.ideals.open.header')
-              %p.open= t(:'frontpage.ideals.open.desc')
-            .col-xs-6
-              = image_tag 'gift.png'
-              %h2= t(:'frontpage.ideals.gift.header')
-              %p.gift= t(:'frontpage.ideals.gift.desc')
+        .row.quote
+          .content.rushkoff
+            %blockquote= t(:'frontpage.quote.header.rushkoff_html')
+
+        .row.mobile
+          .content
+            .col-md-6.mobile-header
+              %h1= t(:'frontpage.mobile.lead_html')
+
+        .row.quote
+          .content.sifry
+            %blockquote= t(:'frontpage.quote.header.sifry_html')
+
+        .row
+          = image_tag 'team.png', class: 'img-responsive full-width', alt: 'The Loomio team'
+
+        .row.team
+          %a{href: about_path, class: 'block-link'}
+            .content
+              %h1= t(:'frontpage.team.header')
+              %p.hero-text= t(:'frontpage.team.desc')
+              %h2
+                = t(:'frontpage.link.more')
+                %i.fa.fa-angle-right
+
+        .row.ideals
+          .content.first
+            .row
+              .col-xs-6
+                = image_tag 'community.png'
+                %h2= t(:'frontpage.ideals.community.header')
+                %p= t(:'frontpage.ideals.community.desc')
+              .col-xs-6
+                = image_tag 'indi.png'
+                %h2= t(:'frontpage.ideals.independent.header')
+                %p= t(:'frontpage.ideals.independent.desc')
+        .row.ideals
+          .content
+            .row
+              .col-xs-6
+                = image_tag 'open.png'
+                %h2= t(:'frontpage.ideals.open.header')
+                %p.open= t(:'frontpage.ideals.open.desc')
+              .col-xs-6
+                = image_tag 'gift.png'
+                %h2= t(:'frontpage.ideals.gift.header')
+                %p.gift= t(:'frontpage.ideals.gift.desc')
 
 
-      .row.media
-        .content
-          %ul
-            %li#ted
-              = link_to image_tag("ted.png"), 'https://www.youtube.com/watch?v=4vCL4I19o9U', alt: 'Ted', target: 'blank'
-            %li#guardian
-              = link_to image_tag("fast.png"), 'http://www.fastcoexist.com/3029132/fund-this/an-occupy-inspired-app-that-helps-groups-make-actual-group-decisions', alt: 'Fast Company', target: 'blank'
-            %li#cnn
-              = link_to image_tag("wired.png"), 'http://www.wired.com/2014/04/loomio/', alt: 'WIRED', target: 'blank'
-            %li#gigaom
-              = link_to image_tag("gigaom.png"), 'http://gigaom.com/2014/03/13/meet-loomio-the-small-scale-decision-making-platform-with-the-biggest-ambitions/', alt: 'Gigaom', target: 'blank'
-            %li#sharable
-              = link_to image_tag("sharable.png"), 'http://www.shareable.net/blog/loomio-the-occupy-inspired-app-for-consensus-decision-making', alt: 'Sharable', target: 'blank'
-            %li#boing
-              = link_to image_tag("boing.png"), 'http://boingboing.net/2014/03/19/loomio-democratic-decision-ma.html', alt: 'Boing Boing', target: 'blank'
+        .row.media
+          .content
+            %ul
+              %li#ted
+                = link_to image_tag("ted.png"), 'https://www.youtube.com/watch?v=4vCL4I19o9U', alt: 'Ted', target: 'blank'
+              %li#guardian
+                = link_to image_tag("fast.png"), 'http://www.fastcoexist.com/3029132/fund-this/an-occupy-inspired-app-that-helps-groups-make-actual-group-decisions', alt: 'Fast Company', target: 'blank'
+              %li#cnn
+                = link_to image_tag("wired.png"), 'http://www.wired.com/2014/04/loomio/', alt: 'WIRED', target: 'blank'
+              %li#gigaom
+                = link_to image_tag("gigaom.png"), 'http://gigaom.com/2014/03/13/meet-loomio-the-small-scale-decision-making-platform-with-the-biggest-ambitions/', alt: 'Gigaom', target: 'blank'
+              %li#sharable
+                = link_to image_tag("sharable.png"), 'http://www.shareable.net/blog/loomio-the-occupy-inspired-app-for-consensus-decision-making', alt: 'Sharable', target: 'blank'
+              %li#boing
+                = link_to image_tag("boing.png"), 'http://boingboing.net/2014/03/19/loomio-democratic-decision-ma.html', alt: 'Boing Boing', target: 'blank'
 
       %section.row.footer{role: 'contentinfo'}
         .content

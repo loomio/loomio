@@ -1,5 +1,6 @@
 pt-BR:
   new_help:
+    title: Como podemos ajudá-lo?
     how_loomio_works:
       title: Como o Loomio funciona
       start_group_link: Iniciar um grupo
@@ -13,7 +14,7 @@ pt-BR:
       decide_together_link: "Decidir em conjunto:"
       decide_together_description: "qualquer um pode concordar, abster-se, discordar ou bloquear – para que você possa ver como todos se sentem sobre a proposta."
     contents:
-      title: Como podemos ajudá-lo?
+      title: Índice
       getting_started:
         title_html: Primeiros passos
         starting_new_group_html: Quando você quer começar um novo grupo no Loomio
@@ -281,7 +282,7 @@ pt-BR:
         title: Declarar sua posição
         body:
           intro_html: "Quando você está pronto para dar a sua opinião, clique em um dos quatro botões de decisão sob a proposta:"
-          additional_info_html: "<p>Quando você tiver selecionado a sua posição, você será solicitado a dar uma breve explicação sobre porque você acha isso.</p>\n<p>Abaixo do gráfico tipo torta, você pode ver o que todo mundo pensa.\nIsto torna mais fácil acompanhar uma discussão.\nÀ medida que novas informações vêm à luz, você pode mudar a sua posição a qualquer momento ao longo da proposta.</p>\n"
+          additional_info_html: "<p>Quando você tiver selecionado a sua posição, você será solicitado a dar uma breve explicação sobre porque você acha isso.</p>\n<p>Abaixo do gráfico circular, você pode ver o que todo mundo pensa.\nIsto torna mais fácil acompanhar uma discussão.\nÀ medida que novas informações vêm à luz, você pode mudar a sua posição a qualquer momento ao longo da proposta.</p>\n"
       changing_positions:
         title: Modificar sua posição
         body_html: "Se você deseja alterar a sua posição, você pode clicando em <strong>\"editar\"</strong> ao lado de sua declaração de posição no painel <strong>\"Decisão atual\"</strong> ao lado direito da página."
@@ -306,7 +307,7 @@ pt-BR:
           editing_settings_html: "Edição de configurações do sub-grupo é restrita aos coordenadores.\nSe você é um coordenador de sub-grupo e deseja alterar as configurações do seu sub-grupo, clique em <strong>\"Opções\"</strong> no lado direito da página do seu sub-grupo e, em seguida, selecione <strong>\"Editar configurações de grupo\"</strong> no menu suspenso.\n"
     dashboard:
       title: Seu painel
-      body: "Seu painel de instrumentos é a sua página principal. Ele lhe dá uma visão geral do que está acontecendo em seus grupos.\nÉ a página que você vê quando entra pela primeira vez no Loomio. Seu painel exibe o conteúdo de seus grupos em uma lista priorizada.\nAs propostas abertas estão no topo, seguidas por todos os tópicos de discussão de todos os grupos você é membro, classificados por atividade mais recente.\nSe um título de discussão ou proposta estiver cinza, então novas atividades ocorreram desde a última vez que viu esse segmento específico.\nNúmeros acima de um ícone de comentário refletem quantos comentários novos foram lançados desde a última vez que você viu a página correspondente.\nUm gráfico de pizza é um reflexo do estado do gráfico de pizza na proposta correspondente.\nQuando números aparecem acima do gráfico de pizza, isso reflete o número de novas tomadas de posição que foram postadas desde a última vez que você viu a página correspondente.\nSe você declarou sua posição sobre uma proposta em particular, você verá um ícone que representa a sua posição em frente ao título da correspondente proposta.\n"
+      body: "Seu painel de instrumentos é a sua página principal. Ele lhe dá uma visão geral do que está acontecendo em seus grupos.\nÉ a página que você vê quando entra pela primeira vez no Loomio. Seu painel exibe o conteúdo de seus grupos em uma lista priorizada.\nAs propostas abertas estão no topo, seguidas por todos os tópicos de discussão de todos os grupos você é membro, classificados por atividade mais recente.\nSe um título de discussão ou proposta estiver cinza, então novas atividades ocorreram desde a última vez que viu esse segmento específico.\nNúmeros acima de um ícone de comentário refletem quantos comentários novos foram lançados desde a última vez que você viu a página correspondente.\nUm gráfico circular é um reflexo do estado do diagrama na proposta correspondente.\nQuando números aparecem acima do gráfico circular, reflete o número de novas tomadas de posição que foram postadas desde a última vez que você viu a página correspondente.\nSe você declarou sua posição sobre uma proposta em particular, você verá um ícone que representa a sua posição em frente ao título da correspondente proposta.\n"
     keeping_up_to_date:
       title: Manter atualizado
       volume:

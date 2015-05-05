@@ -1,5 +1,4 @@
-.thread-item.thread-item--comment{ng_controller: 'NewCommentItemController'}
-  .sr-only{aria-label: "{{ 'activity_card.new_comment.aria_label' | translate }} {{ ::comment.authorName() }}", role: 'heading'}
+%article.thread-item.thread-item--comment{ng_controller: 'NewCommentItemController', aria-label: "{{ 'activity_card.new_comment.aria_label' | translate }} {{ ::comment.authorName() }}"}
   .thread-item-context-menu.dropdown.pull-right{ng-if: 'showContextMenu()'}
     %button.btn.btn-nude.dropdown-toggle{href:''}
       %i.fa.fa-chevron-down{aria-hidden: 'true'}
@@ -11,13 +10,13 @@
         %li.dropdown-menu-item{ng-if: '::canDeleteComment()'}
           %a.dropdown-menu-item-label{href: '', ng-click: 'deleteComment()', translate: 'new_comment_item.context_menu.delete_comment'}
 
-  .thread-item-header.media{aria-hidden: "true"}
+  .thread-item-header.media
     .media-left
-      %user_avatar{user: "comment.author()", aria-hidden: 'true'}
+      %user_avatar{user: "comment.author()"}
     .media-body
       %span{ng-if: 'comment.parentId', translate: 'new_comment_item.in_reply_to', translate-values: '{author: comment.authorName(), recipient: comment.parentAuthorName()}'}
       %span{ng-if: '!comment.parentId'}
-        %strong{aria-hidden:'true'} {{ ::comment.authorName() }}
+        %h3.new-comment__author-name {{ ::comment.authorName() }}
 
   .thread-item-body{btf-markdown: 'comment.body' }
 

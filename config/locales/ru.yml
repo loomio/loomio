@@ -97,14 +97,17 @@ ru:
       auto_added:
         one: 1 участник добавлен
         few: Несколько участников добавлено
+        many: "%{count} участников добавлено"
         other: "%{count} участников добавлено"
       existing_member:
         one: 1 участник в группе
         few: "%{count} участника в группе"
+        many: "%{count} участников в группе"
         other: "%{count} участников в группе"
       sent:
         one: 1 приглашение отослано
         few: "%{count} приглашения отослано"
+        many: "%{count} приглашений отослано"
         other: "%{count} приглашений отослано"
       auto_added_and_sent: "%{auto_added_text} и %{sent_text}"
   tooltip:
@@ -152,46 +155,57 @@ ru:
       less_than_x_seconds:
         one: 1 секунда
         few: Несколько секунд
+        many: "%{count} секунд"
         other: "%{count} секунд"
       x_seconds:
         one: 1 секунда
         few: секунды
+        many: "%{count} секунд"
         other: "%{count} секунд"
       less_than_x_minutes:
         one: 1 минута
         few: минуты
+        many: "%{count} минут"
         other: "%{count} минут"
       x_minutes:
         one: 1 минута
         few: минуты
+        many: "%{count} минут"
         other: "%{count} минут"
       about_x_hours:
         one: 1 час
         few: часа
+        many: "%{count} часов"
         other: "%{count} часов"
       x_days:
         one: 1 день
         few: дня
+        many: "%{count} дней"
         other: "%{count} дней"
       about_x_months:
         one: 1 месяц
         few: месяца
+        many: "%{count} месяцев "
         other: "%{count} месяцев "
       x_months:
         one: 1 месяц
         few: месяца
+        many: "%{count} месяцев"
         other: "%{count} месяцев"
       about_x_years:
         one: 1 год
         few: года
+        many: "%{count} лет"
         other: "%{count} лет"
       over_x_years:
         one: 1 год
         few: года
+        many: "%{count} лет"
         other: "%{count} лет"
       almost_x_years:
         one: 1 год
         few: года
+        many: "%{count} лет"
         other: "%{count} лет"
   organisation:
     name: Loomio

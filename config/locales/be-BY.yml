@@ -86,12 +86,18 @@ be-BY:
     invitations:
       auto_added:
         one: 1 удзельнік дададзены
+        few: "%{count} удзельніка дадазена"
+        many: "%{count} удзельніка дадазена"
         other: "%{count} удзельніка дадазена"
       existing_member:
         one: 1 удзельнік ужо ў групе
+        few: "%{count} удзельніка ўжо ў групе"
+        many: "%{count} удзельніка ўжо ў групе"
         other: "%{count} удзельніка ўжо ў групе"
       sent:
         one: 1 запрашэнне даслана
+        few: "%{count} запрашэння даслана"
+        many: "%{count} запрашэння даслана"
         other: "%{count} запрашэння даслана"
       auto_added_and_sent: "%{auto_added_text} і %{sent_text}"
   tooltip:
@@ -138,36 +144,58 @@ be-BY:
     distance_in_words:
       less_than_x_seconds:
         one: 1 секунда
+        few: "%{count} секунды"
+        many: "%{count} секунды"
         other: "%{count} секунды"
       x_seconds:
         one: 1 секунда
+        few: "%{count} секунд"
+        many: "%{count} секунд"
         other: "%{count} секунд"
       less_than_x_minutes:
         one: 1 хвіліна
+        few: "%{count} хвілін"
+        many: "%{count} хвілін"
         other: "%{count} хвілін"
       x_minutes:
         one: 1 хвіліна
+        few: "%{count} хвілін"
+        many: "%{count} хвілін"
         other: "%{count} хвілін"
       about_x_hours:
         one: 1 гадзіна
+        few: "%{count} гадзін"
+        many: "%{count} гадзін"
         other: "%{count} гадзін"
       x_days:
         one: 1 дзень
+        few: "%{count} дзён"
+        many: "%{count} дзён"
         other: "%{count} дзён"
       about_x_months:
         one: 1 месяц
+        few: "%{count} месяцаў"
+        many: "%{count} месяцаў"
         other: "%{count} месяцаў"
       x_months:
         one: 1 месяц
+        few: "%{count} месяцаў"
+        many: "%{count} месяцаў"
         other: "%{count} месяцаў"
       about_x_years:
         one: 1 год
+        few: "%{count} гадоў"
+        many: "%{count} гадоў"
         other: "%{count} гадоў"
       over_x_years:
         one: 1 год
+        few: "%{count} гадоў"
+        many: "%{count} гадоў"
         other: "%{count} гадоў"
       almost_x_years:
         one: 1 год
+        few: "%{count} гадоў"
+        many: "%{count} гадоў"
         other: "%{count} гадоў"
   organisation:
     name: Loomio
@@ -677,8 +705,6 @@ be-BY:
   invitation:
     alternate: "Ці, падзяліцеся спасылкай, каб людзі змаглі папрасіць далучыцца:"
     by_email: Запрасіць праз email
-    no_invitations_left: "Нажаль, у вас больш не засталося запрашэнняў"
-    no_invitations_left_get_more: "Калі ласка, напішыце на contact@loomio.org і мы прыдумаем як вам дапамагчы"
     invitation_not_found: "Мы не можам знайсці запрашэнне з такім кодам. Калі ласка, запытайце новае запрашэнне ў таго, хто прыслаў вам папярэдняе."
     invitation_cancelled: "Запрашэнне было скасавана. Калі ласка, звяжыцеся з адпраўніком запрашэння, калі вы лічыце, што гэта было зроблена памылкова."
     invitation_already_used: "Запрашэнне ўжо было выкарыстана. Калі ласка, увайдзіце пад сваім запісам каб перайсці да сваёй групы."
