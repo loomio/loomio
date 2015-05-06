@@ -4,17 +4,8 @@
 }
 
 .groups-page-group {
-  padding: 10px;
   @include card;
-  clear: left;
-  float: left;
   width: 315px;
-  
-}
-
-.groups-page-group:nth-child(2n) {
-  clear: right;
-  float: right;
 }
 
 .groups-page-group-description {
@@ -23,4 +14,14 @@
 
 .groups-page-group-link {
   padding: 10px 0;
+}
+
+.clear-left {
+  float: left;
+  clear: left;
+}
+
+.clear-right {
+  float: right;
+  clear: right;
 }
