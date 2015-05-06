@@ -27,25 +27,27 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
     _.each @timeframeNames, (name) =>
       @timeframes[name].view = ThreadQueryService.timeframeQuery
         name: name
-        filter: CurrentUser.dashboardFilter
+        filter: @filter()
         timeframe: @timeframes[name]
-  @updateTimeframes()
 
   @loadMore = =>
     from = @nowLoaded()
-    @loaded[CurrentUser.dashboardFilter] = @nowLoaded() + @perPage
+    @loaded[@filter()] = @nowLoaded() + @perPage
 
     Records.discussions.fetchDashboard
-      filter: CurrentUser.dashboardFilter
+      filter: @filter()
       from:   from
       per:    @perPage
   LoadingService.applyLoadingFunction @, 'loadMore'
-  @loadMore()
 
-  @changePreferences = (options = {}) =>
-    CurrentUser.updateFromJSON(options)
+  @setFilter = (filter) ->
+    CurrentUser.updateFromJSON(dashboardFilter: filter)
     CurrentUser.save()
+    @refresh()
+
+  @refresh = ->
     @updateTimeframes()
     @loadMore() if @nowLoaded() == 0
+  @refresh()
 
   return

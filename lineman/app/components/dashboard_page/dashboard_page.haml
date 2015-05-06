@@ -22,20 +22,28 @@
                 .dropdown-heading{role: 'heading', translate: 'dashboard_page.filtering.dropdown_heading'}
                 %ul.dropdown-menu-items.filtering-options
                   %li.dropdown-menu-item.filtering-option
-                    %a{href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_all"})'}
-                      .dropdown-menu-item-label{translate: 'dashboard_page.filtering.all', aria-hidden: 'true'}
+                    %a{href: '#', ng-click: 'dashboardPage.setFilter("show_all")'}
+                      .dropdown-menu-item-label
+                        %span{translate: 'dashboard_page.filtering.all', aria-hidden: 'true'}>
+                        %i.fa.fa-lg.fa-check{ng-show: 'dashboardPage.filter() == "show_all"'}
                       .dropdown-menu-item-details{translate: 'dashboard_page.filtering.all_description'}
                   %li.dropdown-menu-item.filtering-option
-                    %a{href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_participating"})'}
-                      .dropdown-menu-item-label{translate: 'dashboard_page.filtering.participating', aria-hidden: 'true'}
+                    %a{href: '#', ng-click: 'dashboardPage.setFilter("show_participating")'}
+                      .dropdown-menu-item-label
+                        %span{translate: 'dashboard_page.filtering.participating', aria-hidden: 'true'}>
+                        %i.fa.fa-lg.fa-check{ng-show: 'dashboardPage.filter() == "show_participating"'}
                       .dropdown-menu-item-details{translate: 'dashboard_page.filtering.participating_description'}
                   %li.dropdown-menu-item.filtering-option
-                    %a{href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_proposals"})'}
-                      .dropdown-menu-item-label{translate: 'dashboard_page.filtering.proposals', aria-hidden: 'true'}
+                    %a{href: '#', ng-click: 'dashboardPage.setFilter("show_proposals")'}
+                      .dropdown-menu-item-label
+                        %span{translate: 'dashboard_page.filtering.proposals', aria-hidden: 'true'}>
+                        %i.fa.fa-lg.fa-check{ng-show: 'dashboardPage.filter() == "show_proposals"'}
                       .dropdown-menu-item-details{translate: 'dashboard_page.filtering.proposals_description'}
                   %li.dropdown-menu-item.filtering-option
-                    %a{href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_muted"})'}
-                      .dropdown-menu-item-label{translate: 'dashboard_page.filtering.muted', aria-hidden: 'true'}
+                    %a{href: '#', ng-click: 'dashboardPage.setFilter("show_muted")'}
+                      .dropdown-menu-item-label
+                        %span{translate: 'dashboard_page.filtering.muted', aria-hidden: 'true'}>
+                        %i.fa.fa-lg.fa-check{ng-show: 'dashboardPage.filter() == "show_muted"'}
                       .dropdown-menu-item-details{translate: 'dashboard_page.filtering.muted_description'}
     .row
       .col-xs-12
@@ -43,7 +51,7 @@
           %h1.sr-only{translate: 'dashboard_page.aria_label'}
           .dashboard-page-no-threads{ng-show: '!dashboardPage.loadMoreExecuting && dashboardPage.dashboardThreads().length == 0'}
             %span{translate: 'dashboard_page.no_threads'}>
-            %a{ng-show: 'dashboardPage.filter() != "show_all"', translate: 'dashboard_page.view_recent', href: '#', ng-click: 'dashboardPage.changePreferences({dashboard_filter: "show_all"})'}>
+            %a{ng-show: 'dashboardPage.filter() != "show_all"', translate: 'dashboard_page.view_recent', href: '#', ng-click: 'dashboardPage.setFilter("show_all")'}>
           .dashboard-page-collections
             %section.thread-preview-collection-container{ng-show: 'dashboardPage.timeframeFor(timeframe).any()', aria-labelledby: '{{timeframe}}', ng-repeat: 'timeframe in dashboardPage.timeframeNames'}
               .dashboard-page-date-range{translate: 'dashboard_page.threads_from.{{timeframe}}'}
