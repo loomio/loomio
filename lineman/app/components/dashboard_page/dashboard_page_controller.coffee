@@ -20,10 +20,17 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
     thismonth: { from: '1 month ago',  to: '1 week ago' }
     older:     { from: '3 month ago',  to: '1 month ago' }
   @timeframeNames = _.map @timeframes, (timeframe, name) -> name
-  @timeframeFor = (name) -> @timeframes[name].view
+  @timeframeQueryFor = (name) -> @timeframes[name].view
 
-  @updateTimeframes = ->
-    # set timeframes.today.view, timeframes.yesterday.view, etc.
+  @groupThreadLimit = 5
+  @groups = -> CurrentUser.parentGroups()
+  @groupName = (group) -> group.name
+  @groupQueryFor = (group) -> @["group#{group.id}"]
+  @moreForThisGroup = (group) -> @groupQueryFor(group, { filter: @filter() }).length() > @groupThreadLimit
+
+  @updateQueries = ->
+    _.each @groups(), (group) =>
+      @["group#{group.id}"] = ThreadQueryService.groupQuery(group, { filter: @filter() })
     _.each @timeframeNames, (name) =>
       @timeframes[name].view = ThreadQueryService.timeframeQuery
         name: name
@@ -46,7 +53,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
     @refresh()
 
   @refresh = ->
-    @updateTimeframes()
+    @updateQueries()
     @loadMore() if @nowLoaded() == 0
   @refresh()
 

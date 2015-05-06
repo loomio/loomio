@@ -13,7 +13,4 @@ angular.module('loomioApp').controller 'InboxPageController', ($rootScope, Recor
   @groupName        = (group) -> group.name
   @moreForThisGroup = (group) -> @queryFor(group).length() > @threadLimit
 
-  Records.discussions.fetchInbox()
-  Records.votes.fetchMyRecentVotes()
-
   return

@@ -47,9 +47,19 @@
           .dashboard-page-no-threads{ng-show: '!dashboardPage.loadMoreExecuting && dashboardPage.dashboardThreads().length == 0'}
             %span{translate: 'dashboard_page.no_threads'}>
             %a{ng-show: 'dashboardPage.filter() != "show_all"', translate: 'dashboard_page.view_recent', href: '#', ng-click: 'dashboardPage.setFilter("show_all")'}>
-          .dashboard-page-collections
-            %section.thread-preview-collection-container{ng-show: 'dashboardPage.timeframeFor(timeframe).any()', aria-labelledby: '{{timeframe}}', ng-repeat: 'timeframe in dashboardPage.timeframeNames'}
+          .dashboard-page-collections{ng-if: 'dashboardPage.filter() != "show_muted"'}
+            %section.thread-preview-collection-container{ng-show: 'dashboardPage.timeframeQueryFor(timeframe).any()', aria-labelledby: '{{timeframe}}', ng-repeat: 'timeframe in dashboardPage.timeframeNames'}
               .dashboard-page-date-range{translate: 'dashboard_page.threads_from.{{timeframe}}'}
-              %thread_preview_collection.thread-previews-container{query: 'dashboardPage.timeframeFor(timeframe)'}
+              %thread_preview_collection.thread-previews-container{query: 'dashboardPage.timeframeQueryFor(timeframe)'}
             .dashboard-page-footer{in-view: '$inview && dashboardPage.loadMore()', in-view-options: '{debounce: 200}'} .
             %loading{ng-show: 'dashboardPage.loadMoreExecuting'}
+          .dashboard-page-collections{ng-if: 'dashboardPage.filter() == "show_muted"'}
+            .dashboard-page-group{ng-repeat: 'group in dashboardPage.groups() | orderBy:dashboardPage.groupName'}
+              %section{ng-if: 'dashboardPage.groupQueryFor(group).any()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.group' | translate }} {{group.name}}"}
+                %img.selector-list-item-group-logo.pull-left{ng-src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
+                %h2.dashboard-page-group-name
+                  %a{href: '/g/{{group.key}}'} {{group.name}}
+                .dashboard-groups.thread-previews-container
+                  %thread_preview_collection{query: 'dashboardPage.groupQueryFor(group)', limit: 'dashboardPage.groupThreadLimit'}
+                  .dashboard-page-show-more{ng-show: 'dashboardPage.moreForThisGroup(group)'}
+                    %a{translate: 'dashboard_page.view_more', href: '/g/{{group.key}}'}

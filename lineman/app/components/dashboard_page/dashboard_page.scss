@@ -121,3 +121,24 @@
   position: relative;
   bottom: 200px;
 }
+
+.dashboard-page-group-name a{
+  @include fontHelveticaMedium;
+  @include fontCrapName;
+  line-height: 30px;
+  color: $grey-on-grey;
+  margin-left: 16px;
+  margin-top: 0;
+}
+
+.dashboard-page-show-more{
+  padding: 15px 15px 15px 48px;
+}
+
+.dashboard-page-show-more a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: $grey-on-white;
+  text-decoration: underline;
+}
