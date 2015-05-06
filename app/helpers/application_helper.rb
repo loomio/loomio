@@ -174,11 +174,11 @@ module ApplicationHelper
   end
 
   def sifting_unread?
-    params.has_key? :unread
+    current_user && params[:unread]
   end
 
   def sifting_followed?
-    params.has_key? :followed
+    current_user && params[:followed]
   end
 
   def unread_toggle_class
