@@ -122,6 +122,11 @@
   bottom: 200px;
 }
 
+.dashboard-page-panel {
+  max-width: $main-max-width;
+  margin: 10px auto;
+}
+
 .dashboard-page-group-name a{
   @include fontHelveticaMedium;
   @include fontCrapName;
