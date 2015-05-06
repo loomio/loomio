@@ -342,6 +342,7 @@ en:
     view_recent: View all recent threads?
     load_more: Load more threads
     filtering:
+      filter_threads: Filter Threads
       dropdown_heading: Filter dashboard
       all: Recent Threads
       all_aria_label: Currently showing recent threads
