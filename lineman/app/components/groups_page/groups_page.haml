@@ -1,0 +1,17 @@
+%main.main-container
+  .groups-page-container
+    .row
+      .col-xs-12
+        %h1{translate: 'groups_page.page_header'}
+        %section.groups-page-group{ng-repeat: 'group in groupsPage.groups() | orderBy:groupsPage.groupName'}
+          .groups-page-group-header.clearfix
+            %img.selector-list-item-group-logo.pull-left{ng-src: "{{::group.logoUrl()}}", aria-hidden: 'true'}>
+            %h2.inbox-page-group-name
+              %a{href: '/g/{{::group.key}}'} {{::group.name}}
+          .groups-page-group-description{btf-markdown: 'group.description' }
+          .groups-page-group-link
+            %a{href: '/g/{{::group.key}}', translate: 'groups_page.visit_group'}
+          .groups-page-group-subgroups{ng-if: 'group.subgroups().length > 0'}
+            %h3{translate: 'groups_page.subgroups'}
+            .groups-page-group-subgroup{ng-repeat: 'subgroup in group.subgroups()'}
+              %a{href: '/g/{{::subgroup.key}}'} {{::subgroup.name}}

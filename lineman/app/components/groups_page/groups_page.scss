@@ -1,0 +1,26 @@
+.groups-page-container {
+  max-width: $main-max-width;
+  margin: 10px auto;
+}
+
+.groups-page-group {
+  padding: 10px;
+  @include card;
+  clear: left;
+  float: left;
+  width: 315px;
+  
+}
+
+.groups-page-group:nth-child(2n) {
+  clear: right;
+  float: right;
+}
+
+.groups-page-group-description {
+  padding-top: 10px;
+}
+
+.groups-page-group-link {
+  padding: 10px 0;
+}

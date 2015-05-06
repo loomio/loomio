@@ -4,13 +4,12 @@ angular.module('loomioApp').controller 'InboxPageController', ($rootScope, Recor
 
   @threadLimit = 5
 
-  @inboxGroups = ->
-    _.filter CurrentUser.groups(), (group) -> group.isParent()
-
-  _.map @inboxGroups(), (group) =>
+  _.each CurrentUser.parentGroups(), (group) =>
     @["group#{group.id}"] = ThreadQueryService.groupQuery(group)
+
   @queryFor = (group) -> @["group#{group.id}"]
 
+  @groups           = -> CurrentUser.parentGroups()
   @groupName        = (group) -> group.name
   @moreForThisGroup = (group) -> @queryFor(group).length() > @threadLimit
 
