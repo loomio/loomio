@@ -12,7 +12,7 @@
         %a{href: '/g/{{threadPage.group.key}}'}
           {{threadPage.group.name}}
 
-    %section.thread-context{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
+    %section.thread-context{aria-labelledby: "thread-context__heading"}
       .thread-actions.lmo-btn-group.lmo-btn-group-right
         .lmo-btn-wrapper.dropdown{ng-if: 'threadPage.showContextMenu()'}
           %button.btn.btn-nude.dropdown-toggle{href:''}
@@ -25,7 +25,7 @@
         .thread-notification-level.lmo-btn-wrapper
           %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
 
-      %h1.lmo-h1.thread-context__heading{in-view: 'threadPage.showLintel(!$inview)'}
+      %h1.lmo-h1#thread-context__heading{in-view: 'threadPage.showLintel(!$inview)'}
         {{threadPage.discussion.title}}
       .thread-context__details
         %span{translate: 'discussion.started_by', translate-value-name: '{{::threadPage.discussion.authorName()}}'}
@@ -39,7 +39,7 @@
           %span{translate: 'common.privacy.public'}
 
 
-      %article.thread-context__description{btf-markdown: 'threadPage.discussion.description' }
+      %article.thread-context__description{btf-markdown: 'threadPage.discussion.description', aria-label: "{{ 'thread_context.aria_label' | translate }}" }
 
     %start_proposal_card{discussion: 'threadPage.discussion'}
 
