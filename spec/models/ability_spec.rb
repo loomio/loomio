@@ -462,6 +462,7 @@ describe "User abilities" do
     it { should     be_able_to(:move, user_discussion) }
     it { should     be_able_to(:update, user_discussion) }
     it { should     be_able_to(:show, Discussion) }
+    it { should     be_able_to(:print, Discussion) }
     it { should     be_able_to(:destroy, user_comment) }
     it { should_not be_able_to(:destroy, discussion) }
     it { should_not be_able_to(:destroy, another_user_comment) }
@@ -589,6 +590,7 @@ describe "User abilities" do
     it { should_not be_able_to(:unfollow, group) }
     it { should_not be_able_to(:create, new_discussion) }
     it { should_not be_able_to(:show, discussion) }
+    it { should_not be_able_to(:print, discussion) }
     it { should_not be_able_to(:new_proposal, discussion) }
     it { should_not be_able_to(:create, user_comment) }
     it { should_not be_able_to(:move, discussion) }
@@ -639,12 +641,14 @@ describe "User abilities" do
 
     it { should_not be_able_to(:create, new_discussion) }
     it { should_not be_able_to(:show, private_discussion) }
+    it { should_not be_able_to(:print, private_discussion) }
     it { should_not be_able_to(:new_proposal, private_discussion) }
     it { should_not be_able_to(:create, comment_in_private_discussion) }
     it { should_not be_able_to(:move, private_discussion) }
     it { should_not be_able_to(:destroy, private_discussion) }
 
     it { should     be_able_to(:show, public_discussion) }
+    it { should     be_able_to(:print, public_discussion) }
     it { should_not be_able_to(:new_proposal, public_discussion) }
     it { should_not be_able_to(:create, comment_in_public_discussion) }
     it { should_not be_able_to(:move, public_discussion) }

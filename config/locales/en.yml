@@ -632,6 +632,7 @@ en:
 
   discussion_context:
     started_html: "Started %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    started_print: "Started %{when} by %{who}"
     last_edited_html: "Last edited %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "See revision history"
     see_history: "See history"
@@ -665,6 +666,7 @@ en:
   move_discussion_where: "Where would you like to move this discussion to?"
   delete_discussion: "Delete discussion"
   confirm_delete_discussion: "Are you sure you want to permanently delete this discussion?"
+  print_tooltip_info: Print
 
   #
   # DECISIONS / PROPOSALS / MOTIONS
@@ -677,10 +679,13 @@ en:
   change_proposal_close_date: "Change close date"
   change_proposal_close_date_header: "Change the close date for the proposal '%{which}'"
   proposal: Proposal
+  proposals: Proposals
+  closed_at: Closed at
   proposal_close_date_error: "Please give a future close date"
   proposal_closing_when: "Closing in %{when}"
   proposal_closed_when: "Closed %{when} ago"
   proposed_when_by_who: "Proposed by %{who} %{when} ago"
+  proposed_by_who_on: "Proposed by: %{who}, %{when}"
   engagement_on_open_proposal: "%{percent}%% of members have stated their position (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}%% of members stated their position (%{numerator}/%{denominator})"
 

@@ -156,6 +156,7 @@ class Ability
     end
 
     can [:show,
+         :print,
          :mark_as_read], Discussion do |discussion|
       if discussion.is_archived?
         false

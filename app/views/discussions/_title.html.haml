@@ -6,4 +6,7 @@
           =render "discussions/options", discussion: discussion
         = discussion.title
         = render 'discussions/privacy_icon', discussion: discussion
+        - if user_signed_in? && can?(:print, discussion)
+          %a{ href: print_discussion_path(discussion), id: 'print-link', title: t(:print_tooltip_info), 'aria-label' => t(:print_tooltip_info), class: 'js-tooltip-top', target: '_blank'}
+            %i.fa.fa-print
   .discussion-title-translation.translated= t(:loading_translation)
