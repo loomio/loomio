@@ -19,6 +19,10 @@ hi:
         subject: किसीने आपको आमंत्रित किया है उनके Loomio समूह में शामिल होने के लिए
     registrations:
       sign_up: खाता बनाएँ
+  new_proposal: नया प्रस्ताव
+  edit_proposal: परिवर्तन प्रस्ताव
+  close_proposal: बंद करें प्रस्ताव
+  confirm_close_proposal: क्या आपको यकीन है कि इस प्रस्ताव को बंद करना चाहते हैं?
   helpers:
     submit:
       user:

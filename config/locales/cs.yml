@@ -87,9 +87,11 @@ cs:
     logo_upload: Nahrát nové logo
     edit_description: Upravit popis
     group_category: "Najít další skupiny, jako je tato"
+    unread_comments: Nepřečtené komentáře
+    new_votes: New votes
   views:
     pagination:
-      previous: Před.
+      previous: Předchozí
       next: Další
   warning:
     cant_remove_last_admin: Jste posledním koordinátorem a nemůžete být odstraněn.
@@ -105,6 +107,7 @@ cs:
     added_to_group: "Byl(a) jste přidán(a) do skupiny %{which_group}."
     close_date_changed: Datum uzavření úspěšně změněno.
     discussion_created: Diskuze úspěšně vytvořena.
+    discussion_updated: Diskuse úspěšně aktualizována.
     discussion_deleted: Diskuze úspěšně odstraněna.
     discussion_moved: "Diskuze úspěšně přesunuta na %{group_name}"
     emails_sending: E-maily se odesílají.
@@ -219,7 +222,7 @@ cs:
   or_sign_in_html: "Pokud už máte Loomio účet, <a href='%{link}' class='%{link_class}'>přihlaste se zde</a>"
   or_link_account_html: "Pokud už máte Loomio účet, <a href='%{link}'>propojte své účty</a>"
   click_to_dismiss: Klikněte sem pro uzavření této zprávy
-  generic_confirm: Jste si jist(a)?
+  generic_confirm: Jste si jisti?
   discussion_helper_text:
     header: Vítejte na své první diskuzi
   group_helper_text:
@@ -239,18 +242,30 @@ cs:
     deactivate_account: Deaktivovat účet
     about_deactivation: Co to ​​znamená?
     confirm_account_deactivation: "Jste si jisti, že chcete deaktivovat svůj účet?"
+    reactivation_html: "Pro opětovné aktivování účtu nás budete muset <a href='%{link}'>kontaktovat</a>."
     deactivation:
       title: Deaktivace vašeho účtu
       query: "Mohl byste nám říct, proč jste se rozhodl k deaktivaci všeho účtu?"
       only_coordinator: "Skupina musí mít alespoň jednoho koordinátora. Jste v současné době jediný koordinátor následujících skupin:"
       instructions: "Chcete-li deaktivovat váš účet, budete muset buď přidat dalšího koordinátora nebo deaktivovat skupiny."
       info_title: Co bude deaktivace vašeho účtu znamenat?
+      memberships: "Již nebude uveden jako člen v žádné ze skupin, do kterých současnosti patříte."
+      group_contributions: "Komentáře, návrhy a diskuse, které jste provedli ve skupinách zůstanou, ale bude z nich odstraněno vaše jméno."
+      emails: Přestaneme vám zasílat emaily související s Loomio.
   start_group_form:
     header: Vytvořit novou skupinu
+    form_error: Některé informace chybí nebo jsou nesprávné.
     name: Vaše jméno
+    name_error: Je požadován název
+    email: Váš email
+    email_error: Neplatná e-mailová adresa.
     group_name: Název skupiny
+    group_name_error: Je požadován název skupiny
+    payment: Platba
+    payment_error: "Prosím, vyberte jednu z možností:"
     success:
       header: "Jste téměř u konce! Zkontrolujte si email."
+      email_not_arrived: E-mail nebyl doručen?
   group_form:
     name: Název skupiny
     description: Popis
@@ -261,6 +276,7 @@ cs:
     members_can:
       add_members: Pozvat a schválit nové členy
       edit_comments: Upravit kdykoliv své komentáře
+      edit_discussions: Uprava souvislostí u jakékoliv diskuse ve skupině
       start_discussions: Zahájit diskuze
       raise_motions: Prezentujte návrhy
       vote: Hlasovat o návrzích
@@ -330,6 +346,7 @@ cs:
   previous_requests: Předchozí žádosti
   approved_by_person: "Schválil %{person}"
   join_group_btn: Připojit ke skupině
+  membership_by_invitation_only: Členství v této skupině je pouze pro zvané
   you_have_joined_group: "Připojili jste se k %{group_name}"
   confirm_approve_membership_request: "Opravdu chcete přidat %{which_user} do skupiny?"
   cancel_membership_request: Zrušit žádost
@@ -370,6 +387,8 @@ cs:
     previous_requests: Předchozí žádosti
     approve: Schválit
     approved: "Schválil %{name}"
+    decline: Odmítnout
+    declined: "Odmítnul %{name}"
     threads: Diskuze
     groups: Skupiny
   group_request:
@@ -795,7 +814,7 @@ cs:
   leave_this_field_blank: nechte toto pole prázdné
   photo: Foto
   pricing: Ceník
-  prev: Předch.
+  prev: Předchozí
   more: Více...
   translate: "Pomozte přeložit Loomio!"
   translate_field: Zobrazit překlad
@@ -833,7 +852,9 @@ cs:
   sign_up_with_twitter: Registrovat si účet pomocí Twitter
   common:
     profile: Profil
+    welcome_back: "Vítejte zpět!"
     email_settings: Nastavení emailu
+    markdown_help_tooltip: Naučte se základy formátování textu pomocí formátu Markdown
     settings: Nastavení
     dashboard: Ovládací panel
     unread: Nepřečteno
@@ -843,6 +864,7 @@ cs:
     not_following: Nesledované
     back_to_discussion: Zpět do diskuze
     edited: Upraveno
+    get_started: Začít
     groups: Skupiny
     select_error: "Prosím, vyberte jednu z možností"
     today: Dnes
@@ -915,6 +937,7 @@ cs:
     arts: Umění
     business: Obchod
     collective: Sdružení
+    community_group: Komunitní skupiny
     education: Vzdělání
     environmental_group: Skupina pro životní prostředí
     family: Rodina
@@ -922,7 +945,7 @@ cs:
     online_community: Online komunita
     religious_group: Náboženství/duchovno
     event: Událost
-    open_source_software: Open source software
+    open_source_software: Svobodný a otevřený software
     political_initiative: Politické iniciativy
     social_enterprise: Sociální podnik
     social_justice: Sociální spravedlnost
