@@ -23,9 +23,9 @@ cmn:
   help docs: 1
   main: 30
 cs:
-  frontpage: 56
-  help docs: 7
-  main: 78
+  frontpage: 76
+  help docs: 43
+  main: 81
 da:
   frontpage: 52
   help docs: 8
@@ -44,8 +44,8 @@ eo:
   main: 87
 es:
   frontpage: 58
-  help docs: 64
-  main: 100
+  help docs: 70
+  main: 99
 fa-IR:
   frontpage: 52
   help docs: 1
@@ -197,4 +197,4 @@ vi:
 zh-TW:
   frontpage: 60
   help docs: 44
-  main: 100
+  main: 99
