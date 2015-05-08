@@ -183,6 +183,16 @@ class DiscussionsController < GroupBaseController
     redirect_to @version.reify()
   end
 
+  def print
+    @discussion = Discussion.find_by_key! params[:id]
+    @group = @discussion.group
+    if @discussion.motions.present?
+      @motions = @discussion.motions.sort_by {|m| m.created_at }
+    end
+    @activity = @discussion.items if @discussion.items.present?
+    render :layout => "print"
+  end
+
   private
 
   def we_dont_serve_images_here_google_bot

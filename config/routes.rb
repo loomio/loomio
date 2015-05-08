@@ -232,6 +232,7 @@ Loomio::Application.routes.draw do
       post :show_description_history
       get :new_proposal
       post :move
+      get :print
     end
   end
 

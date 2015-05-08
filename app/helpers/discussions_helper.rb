@@ -121,4 +121,34 @@ module DiscussionsHelper
   def privacy_icon(discussion)
     discussion.private? ? "lock" : "globe"
   end
+
+  def display_proposal_activity_icons_for_print(vote)
+    case vote.position
+    when 'abstain'
+      'hand-abstain-18.png'
+    when 'block'
+      'hand-block-18.png'
+    when 'no'
+      'hand-no-18.png'
+    when 'yes'
+      'hand-yes-18.png'
+    end
+  end
+
+  def display_discussion_activity_icons_for_print(item)
+    case item.icon
+    when 'discussion-icon'
+      'discussion-18.png'
+    when 'position-abstain-icon'
+      'hand-abstain-18.png'
+    when 'position-block-icon'
+      'hand-block-18.png'
+    when 'position-no-icon'
+      'hand-no-18.png'
+    when 'position-yes-icon'
+      'hand-yes-18.png'
+    when 'proposal-icon'
+      'pie-18.png'
+    end
+  end
 end
