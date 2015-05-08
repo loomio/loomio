@@ -318,9 +318,11 @@ Loomio::Application.routes.draw do
   get '/contributions/thanks' => redirect('/crowd')
   get '/contributions/callback' => redirect('/crowd')
   get '/crowd' => redirect('https://love.loomio.org/')
-  get '/groups' => redirect('/explore')
 
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
+
+  # this is a dumb thing
+  get '/groups', to: 'dashboard#show'
 
   constraints(MainDomainConstraint) do
     scope controller: 'pages' do

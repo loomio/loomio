@@ -1,19 +1,47 @@
-.groups-page-container {
+.groups-page{
   max-width: $main-max-width;
-  margin: 10px auto;
+  margin: 0px auto;
 }
 
-.groups-page-group {
+.groups-page__heading{
+  margin: 20px 0;
+}
+
+.groups-page__group {
   @include card;
-  width: 315px;
+  @media (min-width: $main-max-width){ width: 315px; }
+  @media (max-width: $main-max-width){ width: 100%; }
 }
 
-.groups-page-group-description {
+.groups-page__group-logo{
+  float: left;
+  margin-right: 1em;
+  width: 30px;
+  height: 30px;
+}
+
+.groups-page__group-name a{
+  font-weight: bold;
+  line-height: 30px;
+  color: $primary-text-color;
+}
+
+.groups-page__subgroup a, .groups-page__group-link a{
+  text-decoration: underline;
+  color: $primary-text-color;
+}
+
+.groups-page__group-description {
   padding-top: 10px;
 }
 
-.groups-page-group-link {
+.groups-page__group-link {
   padding: 10px 0;
+}
+
+.groups-page__subgroups-heading{
+  font-weight: bold;
+  margin: 9px 0 3px;
 }
 
 .clear-left {
