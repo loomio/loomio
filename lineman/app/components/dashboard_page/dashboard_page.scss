@@ -20,39 +20,6 @@
   text-align: center;
 }
 
-.dashboard-page__unread-count {
-  font-weight: normal;
-  padding-left: 5px;
-  color: $grey-on-white;
-}
-
-.dashboard-page__pie-chart {
-  padding-right: 5px;
-  line-height: 18px;
-}
-
-.dashboard-page__thread-header {
-  @include fontCrapName;
-  padding-bottom: 4px;
-}
-
-.dashboard-page__thread-title {
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.dashboard-page__thread-title.is-unread {
-  font-weight: bold;
-}
-
-.dashboard-page__thread-info {
-  color: $grey-on-white;
-  @include fontSmall;
-  white-space: nowrap;
-  overflow: hidden;
-  line-height: 20px;
-}
-
 .dashboard-page__footer {
   font-size: 0.01em;
   height: 1px;
