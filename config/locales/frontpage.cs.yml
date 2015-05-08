@@ -20,6 +20,7 @@ cs:
       services: Služby
     hero:
       header_html: "Loomio je nejjednodušší způsob, jak<br /><strong>, rozhodovat společně</strong>."
+      lead_html: "Loomio umožňuje organizacím a komunitám vtáhnout <strong>lidi do dění</strong>, všude tam, kde právě jsou."
     product:
       header_html: "Když vyslechneme <strong>všechny hlasy</strong>, činíme <strong>lepší rozhodnutí</strong>."
       step1:
@@ -53,3 +54,16 @@ cs:
       gift:
         header: Ekonomika darů
         desc: "Loomio je podporován lidmi, kteří platí podle svých možností. To udržuje platformu bez reklam a přístuptupnou skupinám bez peněz."
+  about_page:
+    our_story_1_html: "<h2>Náš příběh</h2><p>Loomio je on-line nástroj pro společné kolektivní rozhodování, postavený týmu technologů, aktivistů a sociálních podnikatelů na Novém Zélandu.</p>"
+    advisors_html: "<h2>Poradci</h2> <p>Máme podporu mezinárodní poradní rady s několika nejschopnějšími v oblasti demokracie a technologií.</p>"
+    sascha_bio_html: "Zakladatel <a href='http://thexlab.org/' target='_blank'>X-Lab</a> a <a href='http://www.newamerica.org/oti/' target='_blank'>Institutu otevřených technologií</a>"
+    katherine_bio_html: " Bývalá vice prezidentka, <a href='http://www.aol.com/' target='_blank'>AOL</a>, Místopředsedkyně <a href='http://www.rootcapital.org/' target='_blank'>Root Capital</a>"
+    joi_bio_html: "Ředitel <a href=\"http://www.media.mit.edu/\" target=\"_blank\">MIT Media Lab</a>, Spoluzakladatel <a href=\"https://creativecommons.org/\" target=\"_blank\">Creative Commons</a>, Člen představenstva <a href=\"https://www.mozilla.org/en-US/foundation/\" target=\"_blank\">Mozilla Foundation</a>"
+    rushkoff_bio_html: "<a href=\"http://www.rushkoff.com/\" target=\"_blank\">Autor bestsellerů</a>, komentátor CNN, mediální teoretik"
+    monahan_bio_html: "Spoluzakladatel <a href=\"http://inflection.com/\" target=\"_blank\">Inflection</a>, <a href=\"http://www.namaste.org/\" target=\"_blank\">Nadace Namaste</a>"
+    team_html: "<h2>Tým</h2> <p>Loomio je družstevní sociální podnik se sídlem na Novém Zélandu. Máme vášnivý tým s hlubokou znalostí ve skupinových procesech a vývoji otevřených technologií.</p>"
+    ben_bio: "Spoluzakladatel a ředitel, komunitní organizátor, výzkumník kolektivní inteligence "
+    jesse_bio: "Vývojář softwaru, design, přístupnost, cyklo guru"
+    malcolm_bio: "Organizační systémy, proces návrhu"
+    simon_bio: "Analýza dat, vizualizace, vývoj software, komunikace"

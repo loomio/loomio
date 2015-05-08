@@ -182,6 +182,12 @@ body.discussions.show {
       float: right;
       margin: -5px 10px 0 0;
     }
+    #print-link {
+      float: right;
+      font-size: 0.8em;
+      color: $mid-grey;
+      padding: 0 10px;
+    }
   }
   .discussion-title-translation {
     padding: 0 15px 10px;

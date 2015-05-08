@@ -1,9 +1,9 @@
-.thread-item{ng-controller: 'NewProposalItemController'}
+%article.thread-item{ng-controller: 'NewProposalItemController', aria-labelledby: 'proposal-{{proposal.id}}'}
   .thread-item-header.media
     .media-left
       .thread-item-proposal-icon
     .media-body
-      %h3.new-motion__heading{translate: "new_proposal_item.author_created_proposal", translate-value-name: '{{proposal.authorName()}}'}
+      %h3.new-motion__heading{id: 'proposal-{{proposal.id}}', translate: "new_proposal_item.author_created_proposal", translate-value-name: '{{proposal.authorName()}}'}
   .thread-item-body
     {{proposal.name}}
 

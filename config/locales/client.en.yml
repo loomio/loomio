@@ -414,8 +414,6 @@ en:
     attachment_display:
       aria_label: 'File attached:'
       image_alt: 'Attached image'
-    new_comment:
-      aria_label: 'Comment by'
 
   delete_comment_dialog:
     title: 'Delete comment'

@@ -40,3 +40,7 @@ $ ->
 $ ->
   $('.js-tooltip-left').tooltip
     placement: "left"
+
+$ ->
+  $('.js-tooltip-top').tooltip
+    placement: "top"

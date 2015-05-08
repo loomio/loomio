@@ -179,28 +179,52 @@ es:
         body_html: "Los coordinadores del grupo son responsables de manejar las membresias dentro del grupo.\nEsto significa agregar y remover miembros y dar y remover permisos de coordinadores.\nLos coordinadores también pueden enviar correos electrónicos a todos los miembros del grupo.\nEstas acciones pueden ejecutarse desde la pagina de <strong>\"Miembros\"</strong>.\nEn el lado derecho de la pagina de tu grupo de Loomio hay un botón de <strong>\"Opciones\"</strong>.\nPara acceder a la pagina <strong>\"Miembros\"</strong>, haz click en este botón y selecciona la opción <strong>\"Administrar miembros\"</strong>.\nTambién puedes acceder a la pagina haciendo click en el enlace <strong>\"Mas...\"</strong> en el panel <strong>\"Miembros\"</strong> en la parte derecha de la pagina de tu grupo.\n"
         membership_requests:
           title: Aceptando/Ignorando solicitudes de membresía
+          body:
+            approval_process_html: "Si la <a href=\"#group-privacy\">configuración de privacidad</a> de tu grupo, le permite a la gente unirse a tu grupo <strong>\"Por solicitud\"</strong>, un coordinador necesitara aprobar cada solicitud de membresia.\nComo coordinador del grupo recibirás un correo electrónico cada vez que haya un pedido para aprobar.\nHaciendo click en el correo electrónico de notificación te llevara a la pagina <strong>\"Peticiones de membresia\"</strong>, donde puedes aprobar o ignorar la solicitud. \n"
+            pending_requests_html: "Si hay un pedido de membresia pendiente, tambien sera visible en la pagina de tu grupo en el panel <strong>\"Pedidos de membresia\"</strong>.\nHaciendo click en el panel te llevara a la pagina <strong>\"Pedidos de membresia\"</strong>.\n"
         email_group_members:
           title: Enviando correos electrónicos a los miembros del grupo
+          body_html: "Si quieres mandar un correo electrónico a todos los miembros de tu grupo, puedes hacerlo desde la pagina <strong>\"Miembros\"</strong>.\nHaciendo click en el botón <strong>\"Enviar mensaje a los miembros del grupo\"</strong> en la parte superior derecha de la pagina, te dejara escribir y enviar un mensaje a todos los miembros de tu grupo.\n"
         group_coordinators:
           title: Añadiendo/Eliminando coordinadores
+          body_html: "Solo los coordinadores pueden agregar y eliminar coordinadores.\nEn la pagina <strong>\"Miembros\"</strong>, junto a cada miembro que no sea ya un coordinador, hay un botón <strong>\"Hacer coordinador\"</strong>.\nHaciendo click en este botón le darás permisos de coordinador a ese miembro.\nJunto a ca coordinador hay un botón <strong>\"Remover coordinador\"</strong>.\nHaciendo click en este botón le quitaras permisos de coordinador a ese miembro.\n"
         group_members:
           title: Añadiendo/Eliminando miembros del grupo
+          body_html: "Solo los coordinadores pueden eliminar miembros del grupo.\nEn la pagina <strong>\"Miembros\"</strong>, junto a cada miembro del grupo, hay un botón de <strong>\"Remover\"</strong>.\nHaciendo click en este botón remueves al correspondiente miembro de tu grupo.\n"
       deactivating_groups:
         title: Desactivar/archivar un grupo
+        body_html: "Desactivar tu grupo significa que los miembros del mismo ya no serán capaces de acceder a tu grupo.\nSi eres un coordinador de grupo y deseas desactivarlo, puedes hacerlo seleccionando <strong>\"Desactivar grupo\"</strong> desde el menú de <strong>\"Opciones\"</strong> en la pagina del grupo.\nGrupos desactivados pueden ser reactivados por un miembro del equipo de Loomio.\nPara reactivar un grupo, contacta al equipo de Loomio enviando un correo electrónico a <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>.\n"
       coordinator_tips:
         title: Consejos para comprometer a tu grupo
         customise_invitation:
           title_html: Personaliza tu mensaje de invitación
+        engaging_proposal:
+          title: "Crea una primera propuesta atractiva: "
+          body: "La gente estará entusiasmada de participar cuando haya una propuesta atractiva sobre la mesa.\nUna buena propuesta contiene un plan de acción para el grupo, entonces se hace obvio lo que significa estar de acuerdo o no.\nPiensa como puedes identificar discusiones/decisiones que el grupo esta atravesando actualmente, en persona o por correo electrónico, que seria mas fácil si estuvieran en Loomio.\nAlternativamente, si tu grupo quiere acostumbrarse a la herramienta antes de utilizarla para abordar decisiones reales, puedes comenzar una decisión mas liviana para darle la oportunidad a todos de jugar con la herramienta y ver el proceso de toma de decisiones en acción.\n"
+        encourage_mentioning:
+          title_html: "Alentar <a href=\"#mentioning\">@menciones</a>:"
+          body: "Otra forma simple de alentar a la gente a participar en una discusión es usando el elemento @mención para apuntar gente;  les sera enviado un coreo electrónico para decirles que han sido mencionados en un comentario."
     inviting_members:
       title: Invitando nuevos miembros
+      body:
+        intro_html: "Dependiendo de la <a href=\"#group-settings\">configuración</a> de tu grupo, nuevos miembros pueden ser invitados por cualquiera en el grupo o solo por los coordinadores.\nA la pagina de <strong>Invitaciones</strong> se accede haciendo click en el botón <strong>\"Invitar gente\"</strong> en la pagina de tu grupo.\n"
+        invitation_instructions_html: "Para invitar nuevas personas a tu grupo, ingresa sus direcciones de correo electrónico separadas por comas.\nPuedes elegir utilizar el mensaje estandarizado de Loomio, o crear un nuevo mensaje personalizado.\n"
+        customising_invitations_html: "Escribir una invitación personalizada puede ser una buena oportunidad de involucrar nuevos miembros desde el comienzo.\nla primera pregunta que un nuevo miembro tendrá es <strong><i>\"Para que es este grupo?\"</i></strong>.\nPiensa en la forma mas fácil en que puedes describir al grupo: <strong><i>Que es lo que quieren alcanzar juntos?\nQue tipo de decisiones tomaran? Quien estará involucrado?</i></strong> La gente querrá saber por que han sido invitados, y porque es bueno para ellos pasar tiempo aprendiendo una nueva herramienta.\n"
+        invitation_link: "Cuando envíes el formulario de invitaciones, un correo electrónico le sera enviado a cada una de las direcciones de correo electrónico que suministraste, conteniendo tu mensaje y un enlace de invitación único:"
       importing_contacts:
         title: Importar contactos
+        body:
+          intro_html: "Importar tus contactos desde Google a Loomio facilita el invitar gente a tu grupo.\nUna vez que tus contactos han sido importados, no necesitas completar individualmente las direcciones de correo electrónico; puedes comenzar a escribir el nombre y te aparecerán sugerencias.\nPuedes importar tus contactos de Google desde la pagina <strong>\"Invitar gente\"</strong>.\n"
+          instructions_html: "Haz click en el enlace <strong>“Importar tus contactos desde Google”</strong> bajo la casilla dirección de correo electrónico.\nSe te sera pedido que le concedas permiso a Loomio para ver tu lista de contactos.\nLoomio utilizara esta información solo para el propósito que ayudarte a seleccionar gente para agregar a tu grupo.\n"
       pending_invitations:
         title: Invitaciones pendientes
+        body_html: "Puedes ver un listado de la gente que ha sido invitada a tu grupo pero que aun no han aceptado la invitación en el panel <strong>\"Invitaciones pendientes\"</strong> al final de la pagina de <strong>\"Miembros\"</strong>.\nPara acceder la pagina <strong>\"Miembros\"</strong> y ver la invitaciones pendientes, haz click en el enlace <strong>\"Mas...\"</strong> en el panel <strong>\"Miembros\"</strong> en la parte derecha de la pagina de tu grupo.\n"
     discussion_threads:
       title: "Hilos de discusión "
+      intro_html: "<p>Los hilos de discusión son donde tu grupo se junta para discutir un tema, intercambiar ideas e información y tomar decisiones.</p>\n<p>Al principio de la pagina esta el titulo del hilo de discusión, seguido del panel de contexto. Las discusiones toman lugar en la parte izquierda de la pagina. Cuando hay una decisión que tomar, la propuesta aparecerá en la parte derecha.</p>\n<p>El creador del grupo determina los <a href=\"#group-permissions\">permisos de discusión</a> cuando crea el grupo, y cualquier coordinador del grupo puede editar esas preferencias en cualquier momento.</p>\n"
       starting_discussions:
         title: "Comenzando una discusión "
+        body_html: "Si quieres comenzar una nueva discusión lo puedes hacer desde el <a href=\"#dashboard\">Panel de control</a>, o desde la pagina del grupo, haciendo click en el botón <strong>\"Empezar una discusión\"</strong> en el lado derecho de la pagina.\nSi comienzas una discusión desde el Panel de control, se te pedirá elegir el grupo donde la discusión tomara lugar.\n"
       providing_context:
         title: "Proveer contexto "
       discussion_privacy:

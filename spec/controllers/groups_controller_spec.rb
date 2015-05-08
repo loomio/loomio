@@ -11,7 +11,17 @@ describe GroupsController do
 
       it "show" do
         get :show, :id => group.key
-        response.should be_success
+        expect(response).to be_success
+      end
+
+      it 'should not error on sifting unread' do
+        get :show, id: group.key, unread: "true"
+        expect(response).to be_success
+      end
+
+      it 'should not error on sifting followed' do
+        get :show, id: group.key, followed: "true"
+        expect(response).to be_success
       end
     end
 
@@ -19,7 +29,7 @@ describe GroupsController do
       before { group.update_attribute(:is_visible_to_public, false) }
       it "does not show" do
         get :show, :id => group.key
-        response.should be_redirect
+        expect(response).to be_redirect
       end
     end
   end
@@ -33,19 +43,19 @@ describe GroupsController do
 
     it "show" do
       get :show, :id => group.key
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "add_subgroup" do
       get :add_subgroup, :id => group.key
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "create subgroup" do
       post :create, :group => {parent_id: group.id, name: 'subgroup', is_visible_to_public: false}
       expect(assigns(:group).parent).to eq (group)
-      assigns(:group).admins.should include(user)
-      response.should redirect_to(group_url(assigns(:group)))
+      expect(assigns(:group).admins).to include(user)
+      expect(response).to redirect_to(group_url(assigns(:group)))
     end
 
     context "a group admin" do
@@ -55,19 +65,19 @@ describe GroupsController do
         expected_new_path = group_path(group).gsub(group.full_name.parameterize, 'new-name')
         post :update, id: group.key, group: { name: "New name!" }
         expect(flash[:notice]).to eq "Group was successfully updated."
-        response.should redirect_to expected_new_path
+        expect(response).to redirect_to expected_new_path
       end
 
       describe "archives group" do
         before { put :archive, :id => group.key }
 
         it "sets archived_at field on the group" do
-          assigns(:group).archived_at.should_not == nil
+          expect(assigns(:group).archived_at).to_not be_nil
         end
 
         it "sets flash and redirects to the dashboard" do
           expect(flash[:success]).to match(/Group archived successfully/)
-          response.should redirect_to '/dashboard'
+          expect(response).to redirect_to '/dashboard'
         end
       end
     end
