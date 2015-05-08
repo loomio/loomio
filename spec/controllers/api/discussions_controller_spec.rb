@@ -114,6 +114,26 @@ describe API::DiscussionsController do
         discussions = json['discussions'].map { |v| v['id'] }
         expect(discussions).to_not include cant_see_me.id
       end
+
+      it 'responds to a since parameter' do
+        four_months_ago = create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago
+        two_months_ago = create :discussion, group: group, created_at: 2.months.ago, last_activity_at: 2.months.ago
+        get :index, group_id: group.id, format: :json, since: 3.months.ago
+        json = JSON.parse(response.body)
+        discussions = json['discussions'].map { |v| v['id'] }
+        expect(discussions).to include two_months_ago.id
+        expect(discussions).to_not include four_months_ago.id
+      end
+
+      it 'responds to an until parameter' do
+        four_months_ago = create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago
+        two_months_ago = create :discussion, group: group, created_at: 2.months.ago, last_activity_at: 2.months.ago
+        get :index, group_id: group.id, format: :json, until: 3.months.ago
+        json = JSON.parse(response.body)
+        discussions = json['discussions'].map { |v| v['id'] }
+        expect(discussions).to include four_months_ago.id
+        expect(discussions).to_not include two_months_ago.id
+      end
     end
   end
 
