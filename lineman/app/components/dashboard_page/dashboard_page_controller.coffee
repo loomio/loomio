@@ -22,15 +22,16 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
   @timeframeNames = _.map @timeframes, (timeframe, name) -> name
   @timeframeQueryFor = (name) -> @timeframes[name].view
 
+  @groups = {}
   @groupThreadLimit = 5
   @groups = -> CurrentUser.parentGroups()
   @groupName = (group) -> group.name
-  @groupQueryFor = (group) -> @["group#{group.id}"]
+  @groupQueryFor = (group) -> @groups[group.key]
   @moreForThisGroup = (group) -> @groupQueryFor(group, { filter: @filter() }).length() > @groupThreadLimit
 
   @updateQueries = ->
     _.each @groups(), (group) =>
-      @["group#{group.id}"] = ThreadQueryService.groupQuery(group, { filter: @filter() })
+      @groups[group.key] = ThreadQueryService.groupQuery(group, { filter: @filter() })
     _.each @timeframeNames, (name) =>
       @timeframes[name].view = ThreadQueryService.timeframeQuery
         name: name

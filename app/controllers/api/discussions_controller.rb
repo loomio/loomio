@@ -61,7 +61,7 @@ class API::DiscussionsController < API::RestfulController
     when 'show_muted'         then visible_records.muted
     when 'show_unread'        then visible_records.not_muted.unread
     else                           visible_records.not_muted
-    end.recent.sorted_by_latest_motions
+    end.recent
   end
 
   def discussion_reader

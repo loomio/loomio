@@ -25,7 +25,7 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def participate!
-    update(participating: true) unless self.participating
+    update_attribute :participating, true
   end
 
   def volume
