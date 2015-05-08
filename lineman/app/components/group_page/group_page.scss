@@ -34,6 +34,9 @@
 .group-page-header-name-and-actions{
   margin-top: 60px;
 }
+
+.group-member-options .btn { @include fontHelveticaBold; }
+
 .group-page-name {
   float: left;
   max-width: 50%;

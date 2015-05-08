@@ -4,7 +4,7 @@ angular.module('loomioApp').directive 'groupsLoaded', ($timeout) ->
   link: (scope, element) ->
     $timeout ->
       leftHeight = rightHeight = 0
-      _.each element.find('.groups-page-group'), (el) ->
+      _.each element.find('.groups-page__group'), (el) ->
         el = angular.element(el)
         if rightHeight < leftHeight
           el.addClass('clear-right')

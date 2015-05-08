@@ -363,11 +363,11 @@ en:
       you_voted: 'You voted: {{position}}.'
     threads_from:
       group: 'Threads from'
-      today: 'Threads from today'
-      yesterday: 'Threads from yesterday'
-      thisweek: 'Threads from this week'
-      thismonth: 'Threads from this month'
-      older: 'Threads older than a month'
+      today: 'Today'
+      yesterday: 'Yesterday'
+      thisweek: 'This week'
+      thismonth: 'This month'
+      older: 'Older than a month'
 
   inbox_page:
     unread_threads: Unread Threads

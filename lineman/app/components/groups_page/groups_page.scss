@@ -1,18 +1,22 @@
-.groups-page-container {
+.groups-page{
   max-width: $main-max-width;
-  margin: 10px auto;
+  margin: 0px auto;
 }
 
-.groups-page-group {
+.groups-page__heading{
+  margin: 20px 0;
+}
+
+.groups-page__group {
   @include card;
   width: 315px;
 }
 
-.groups-page-group-description {
+.groups-page__group-description {
   padding-top: 10px;
 }
 
-.groups-page-group-link {
+.groups-page__group-link {
   padding: 10px 0;
 }
 

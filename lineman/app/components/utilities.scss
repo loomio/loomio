@@ -112,6 +112,10 @@ label.label-with-details{
   padding: 0;
   margin: 0;
 }
+.lmo-h1-medium{
+  @include fontHelveticaMedium;
+  @include fontGrande;
+}
 .lmo-h2 {
   @include fontHelveticaBold;
   @include fontLarge;
@@ -146,9 +150,6 @@ label.label-with-details{
   margin-top: 1.5em;
 }
 
-.lmo-btn-group{
-  .btn { @include fontHelveticaBold; }
-}
 .lmo-btn-group-right{
   float: right;
 }
