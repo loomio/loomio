@@ -4,13 +4,13 @@
     .groups-page__groups{groups-loaded: true}
       %section.groups-page__group{ng-repeat: 'group in groupsPage.groups() | orderBy:groupsPage.groupName'}
         .groups-page__group-header.clearfix
-          %img.selector-list-item-group-logo.pull-left{ng-src: "{{::group.logoUrl()}}", aria-hidden: 'true'}>
-          %h2.inbox-page-group-name
+          %img.groups-page__group-logo{ng-src: "{{::group.logoUrl()}}", aria-hidden: 'true'}>
+          %h2.groups-page__group-name
             %a{href: '/g/{{::group.key}}'} {{::group.name}}
         .groups-page__group-description{btf-markdown: 'group.description' }
         .groups-page__group-link
           %a{href: '/g/{{::group.key}}', translate: 'groups_page.visit_group'}
-        .groups-page__group-subgroups{ng-if: 'group.subgroups().length > 0'}
-          %h3{translate: 'groups_page.subgroups'}
-          .groups-page__group-subgroup{ng-repeat: 'subgroup in group.subgroups()'}
+        .groups-page__subgroups{ng-if: 'group.subgroups().length > 0'}
+          %h3.groups-page__subgroups-heading{translate: 'groups_page.subgroups'}
+          .groups-page__subgroup{ng-repeat: 'subgroup in group.subgroups()'}
             %a{href: '/g/{{::subgroup.key}}'} {{::subgroup.name}}
