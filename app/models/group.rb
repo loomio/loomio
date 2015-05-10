@@ -96,6 +96,7 @@ class Group < ActiveRecord::Base
                                              parents_only }
 
   scope :alphabetically, -> { order('full_name asc') }
+  scope :in_any_cohort, -> { where('cohort_id is not null') }
 
   has_one :group_request
 
@@ -155,6 +156,8 @@ class Group < ActiveRecord::Base
            -> { where(archived_at: nil).order(:name) },
            class_name: 'Group',
            foreign_key: 'parent_id'
+
+  has_many :comment_votes, through: :comments
 
   # maybe change this to just archived_subgroups
   has_many :all_subgroups,

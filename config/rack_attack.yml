@@ -19,6 +19,8 @@
 # NB: period is measured in seconds; (eg period: 120 = X requests per 2 minutes)
 
 comment_creation:
+  period: 60
+  limit: 30
   path: ^\/d\/[A-Za-z0-9]*\/add_comment$
 
 group_creation:
