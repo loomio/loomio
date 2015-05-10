@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411013532) do
+ActiveRecord::Schema.define(version: 20150508013340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,11 @@ ActiveRecord::Schema.define(version: 20150411013532) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.integer  "position",               default: 0, null: false
+  end
+
+  create_table "cohorts", force: :cascade do |t|
+    t.datetime "start_on"
+    t.datetime "end_on"
   end
 
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
@@ -252,6 +257,22 @@ ActiveRecord::Schema.define(version: 20150411013532) do
   add_index "group_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "group_anc_desc_udx", unique: true, using: :btree
   add_index "group_hierarchies", ["descendant_id"], name: "group_desc_idx", using: :btree
 
+  create_table "group_measurements", force: :cascade do |t|
+    t.integer "group_id"
+    t.date    "measured_on"
+    t.integer "members_count"
+    t.integer "admins_count"
+    t.integer "subgroups_count"
+    t.integer "invitations_count"
+    t.integer "discussions_count"
+    t.integer "proposals_count"
+    t.integer "comments_count"
+    t.integer "likes_count"
+  end
+
+  add_index "group_measurements", ["group_id"], name: "index_group_measurements_on_group_id", using: :btree
+  add_index "group_measurements", ["measured_on"], name: "index_group_measurements_on_measured_on", using: :btree
+
   create_table "group_requests", force: :cascade do |t|
     t.string   "name",                limit: 255
     t.text     "description"
@@ -354,10 +375,12 @@ ActiveRecord::Schema.define(version: 20150411013532) do
     t.integer  "creator_id"
     t.boolean  "is_commercial"
     t.boolean  "is_referral",                                    default: false,          null: false
+    t.integer  "cohort_id"
   end
 
   add_index "groups", ["archived_at", "id"], name: "index_groups_on_archived_at_and_id", using: :btree
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
+  add_index "groups", ["cohort_id"], name: "index_groups_on_cohort_id", using: :btree
   add_index "groups", ["full_name"], name: "index_groups_on_full_name", using: :btree
   add_index "groups", ["is_visible_to_public"], name: "index_groups_on_is_visible_to_public", using: :btree
   add_index "groups", ["key"], name: "index_groups_on_key", unique: true, using: :btree
@@ -379,6 +402,7 @@ ActiveRecord::Schema.define(version: 20150411013532) do
     t.string   "invitable_type",  limit: 255
   end
 
+  add_index "invitations", ["invitable_type", "invitable_id"], name: "index_invitations_on_invitable_type_and_invitable_id", using: :btree
   add_index "invitations", ["token"], name: "index_invitations_on_token", using: :btree
 
   create_table "membership_requests", force: :cascade do |t|
