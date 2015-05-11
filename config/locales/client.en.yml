@@ -16,8 +16,8 @@ en:
     date_range:
       today: 'Today'
       yesterday: 'Yesterday'
-      this_week: 'This Week'
-      this_month: 'This Month'
+      thisweek: 'This Week'
+      thismonth: 'This Month'
       older: 'Older'
     action:
       save: 'Save'
@@ -85,9 +85,13 @@ en:
     submit_button:
       label: 'Post'
 
-
   navbar:
-    dashboard: 'Go to dashboard'
+    home: 'Home'
+    unread: 'Unread'
+    groups: 'Groups'
+    home_title: 'Go to dashboard'
+    unread_title: 'View unread activity'
+    groups_title: 'View your groups'
     start_thread: 'Start a new thread'
     notifications: 'Notifications panel'
     user_options:
@@ -99,7 +103,7 @@ en:
       help: 'Help'
     search:
       close: 'Close search panel'
-      placeholder: 'Search for groups or threads'
+      placeholder: 'Search'
       loading: 'Loading results...'
       discussions: 'Threads'
       proposals: 'Proposals'
@@ -338,24 +342,20 @@ en:
     view_recent: View all recent threads?
     load_more: Load more threads
     filtering:
+      filter_threads: Filter Threads
       dropdown_heading: Filter dashboard
       all: Recent Threads
       all_aria_label: Currently showing recent threads
       all_description: View recent threads
-      unread: Unread Threads
-      unread_aria_label: Currently showing unread threads
-      unread_description: View only threads you have not read yet
+      participating: Participating threads
+      participating_aria_label: Currently showing threads I've participated
+      participating_description: View only threads you have participated in
       proposals: Proposals
       proposals_aria_label: Currently showing threads with active proposals
       proposals_description: View only threads with active proposals
-    sorting:
-      dropdown_heading: Sort threads
-      group: By Group
-      group_aria_label: Currently sorting threads by group
-      group_description: Sort threads by group.
-      date: By Date
-      date_aria_label: Currently sorting threads by date
-      date_description: Sort threads by date.
+      muted: Muted
+      muted_aria_label: Current showing muted threads
+      muted_description: View only threads which have been muted
     aria_thread:
       title: 'Thread title: {{title}}.'
       unread: '{{count}} unread items.'
@@ -363,11 +363,18 @@ en:
       you_voted: 'You voted: {{position}}.'
     threads_from:
       group: 'Threads from'
-      today: 'Threads from today'
-      yesterday: 'Threads from yesterday'
-      this_week: 'Threads from this week'
-      this_month: 'Threads from this month'
-      older: 'Threads older than a month'
+      today: 'Today'
+      yesterday: 'Yesterday'
+      thisweek: 'This week'
+      thismonth: 'This month'
+      older: 'Older than a month'
+
+  inbox_page:
+    unread_threads: Unread Threads
+    view_more: View More
+
+  groups_page:
+    page_header: Your groups
 
   discussion:
     activity: 'Activity'

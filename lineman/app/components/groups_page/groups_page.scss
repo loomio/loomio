@@ -1,0 +1,41 @@
+.groups-page{
+  max-width: $main-max-width;
+  margin: 0px auto;
+}
+
+.groups-page__heading{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.groups-page__new-group{
+  float: right;
+}
+
+.groups-page__group {
+  @include card;
+  width: 100%;
+}
+
+.groups-page__group-logo{
+  float: left;
+  margin-right: 1em;
+  width: 30px;
+  height: 30px;
+}
+
+.groups-page__group-name a{
+  font-weight: bold;
+  line-height: 30px;
+  color: $primary-text-color;
+}
+
+.groups-page__subgroups{
+  list-style: none;
+  margin: 0 0 0 5px;
+}
+
+.groups-page__subgroup a{
+  text-decoration: underline;
+  color: $primary-text-color;
+}

@@ -1,18 +1,33 @@
-.dashboard-container {
-  margin: 10px auto;
+.dashboard-page {
   max-width: $main-max-width;
+  margin: 0px auto;
 }
 
-.dashboard-options{
+.dashboard-page__heading{
+  margin: 20px 0;
+}
+
+.dashboard-page__options{
   margin-bottom: 16px;
 }
 
-.dashboard-page-date-range{
+.dashboard-page__date-range{
   @include fontSmall;
   color: $grey-on-grey;
 }
 
-.dashboard-page-group-name a{
+.dashboard-page__no-threads {
+  text-align: center;
+}
+
+.dashboard-page__footer {
+  font-size: 0.01em;
+  height: 1px;
+  position: relative;
+  bottom: 200px;
+}
+
+.dashboard-page__group-name a{
   @include fontHelveticaMedium;
   @include fontCrapName;
   line-height: 30px;
@@ -21,140 +36,18 @@
   margin-top: 0;
 }
 
-.dashboard-page-no-threads {
-  text-align: center;
-}
-
-.dashboard-page-threads {
-  @include card;
-  padding: 0;
-  margin-bottom: 26px;
-  margin-top: 9px;
-}
-
-.dashboard-page-thread {
-  padding: 13px 13px;
-  border-bottom: 1px solid $border-color;
-  position: relative;
-  &:hover { background-color: $list-hover-color; }
-}
-
-.dashboard-page-thread-group-logo{
-  float: left;
-  img{ width: 32px; height: 32px; }
-}
-
-.dashboard-page-proposal-vote {
-  padding: 2px 5px;
-}
-
-.dashboard-page-proposal-icon{
-  width: 30px;
-  height: 30px;
-}
-
-.dashboard-page-vote-icon-yes {
-  background-image: url(/img/green_thumb_22.png);
-}
-
-.dashboard-page-vote-icon-abstain {
-  background-image: url(/img/yellow_thumb_22.png);
-}
-
-.dashboard-page-vote-icon-no {
-  background-image: url(/img/pink_thumb_22.png);
-}
-
-.dashboard-page-vote-icon-block {
-  background-image: url(/img/red_flag_22.png);
-}
-
-.dashboard-page-left {
-  white-space: nowrap;
-  width: 35px;
-  min-height: 45px;
-  float: left;
-}
-
-.dashboard-page-unread-count {
-  @include fontCrapName;
-  @include fontHelveticaBold;
-  color: $grey-on-white;
-  text-align: center;
-}
-
-.dashboard-page-pie-chart {
-  padding-right: 5px;
-  line-height: 18px;
-}
-
-.dashboard-page-thread-header {
-  @include fontCrapName;
-  padding-bottom: 4px;
-}
-
-.dashboard-page-thread-title {
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.dashboard-page-thread-title.is-unread {
-  font-weight: bold;
-}
-
-.dashboard-page-thread-info {
-  color: $grey-on-white;
-  @include fontSmall;
-  white-space: nowrap;
-  overflow: hidden;
-  line-height: 20px;
-}
-
-.dashboard-page-thread:hover .dashboard-page-thread-actions {
-  display: block;
-}
-
-.dashboard-page-thread-actions {
-  display: none;
-  position: absolute;
-  color: white;
-  right: 0;
-  top: 0;
-  height: 100%;
-  padding: 20px 10px;
-  background: $list-hover-transparent-color;
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -30px;
-    width: 30px;
-    background: linear-gradient(to left, $list-hover-transparent-color, transparent);
-    height: 100%;
-  }
-}
-
-.dashboard-page-thread-action-button {
-  padding: 10px;
-}
-
-.dashboard-page-show-more{
+.dashboard-page__show-more{
   padding: 15px 15px 15px 48px;
 }
-.dashboard-page-show-more a{
+
+.dashboard-page__show-more a{
   display: block;
   width: 100%;
   height: 100%;
   color: $grey-on-white;
   text-decoration: underline;
 }
-.dashboard-page-show-more a:hover{
-  color: $primary-text-color;
-}
 
-.dashboard-page-footer {
-  font-size: 0.01em;
-  height: 1px;
-  position: relative;
-  bottom: 200px;
+.dashboard-page__show-more a:hover{
+  color: $primary-text-color;
 }

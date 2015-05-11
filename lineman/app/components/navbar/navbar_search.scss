@@ -1,9 +1,3 @@
-.navbar-search {
-  height: 40px;
-  max-width: $main-max-width;
-  margin: 0 auto;
-}
-
 .navbar-search-input-wrapper{
   position: relative;
 }
@@ -11,9 +5,10 @@
 .navbar-search-input {
   position: relative;
   top: 2px;
-  width: 100%;
   background-color: $background-color;
   color: $primary-text-color;
+  @media (max-width: $screen-xs-min){width: 100px;}
+  @media (min-width: $screen-xs-min){width: 250px;}
 }
 
 .navbar-search-input::-webkit-input-placeholder,
@@ -37,7 +32,7 @@
 
   top: 42px;
   text-align: left;
-  max-width: ($main-max-width - 5px);
+  max-width: 320px;
   width: 100%;
   box-shadow: 5px 5px 10px #ccc;
   overflow-y: scroll;

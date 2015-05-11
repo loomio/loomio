@@ -1,8 +1,8 @@
-.lmo-navbar-item.dropdown{on-toggle: 'toggled(open)'}
-  %button.btn.btn-nude.lmo-navbar-btn.lmo-navbar-btn--notifications.lmo-navbar-btn__icon.notifications__button.dropdown-toggle{href: '#', tabindex: 4}
+.dropdown{on-toggle: 'toggled(open)'}
+  %button.btn.lmo-btn-nude.lmo-navbar__btn.lmo-navbar__btn--notifications.lmo-navbar__btn-icon.notifications__button.dropdown-toggle.has-badge{href: '#', tabindex: 4}
     .sr-only{translate: 'navbar.notifications'}
     %i.fa.fa-lg.fa-fw{aria-hidden: 'true', ng-class: '{"fa-bell": unread(), "fa-bell-o": !unread()}'}
-    %span.notifications__activity{ng-if: 'unread()'}
+    %span.badge.notifications__activity{ng-if: 'unread()'}
       {{unreadCount()}}
   .dropdown-menu.dropdown-menu-right.dropdown-menu-with-selector-list.notifications__dropdown{role: 'menu'}
     .navbar-notifications

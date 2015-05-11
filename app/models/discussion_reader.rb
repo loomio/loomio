@@ -24,6 +24,10 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
+  def participate!
+    update_attribute :participating, true
+  end
+
   def volume
     if persisted?
       super || membership && membership.volume || 'normal'

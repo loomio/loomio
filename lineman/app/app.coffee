@@ -42,6 +42,8 @@ angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootS
 
   $router.config([
     {path: '/dashboard', component: 'dashboardPage' },
+    {path: '/inbox', component: 'inboxPage' },
+    {path: '/groups', component: 'groupsPage' },
     {path: '/d/:key', component: 'threadPage' },
     {path: '/d/:key/:stub', component: 'threadPage' },
     {path: '/m/:key/', component: 'proposalRedirect' },

@@ -60,11 +60,11 @@
 
 .btn.btn-icon{ padding: 6px 12px 6px 9px;}
 
-.btn-nude{
+.lmo-btn-nude{
   color: $grey-on-grey;
   background-color: transparent;
 }
-.btn-nude:hover{
+.lmo-btn-nude:hover{
   background-color: $list-hover-color;
 }
 
@@ -112,6 +112,10 @@ label.label-with-details{
   padding: 0;
   margin: 0;
 }
+.lmo-h1-medium{
+  @include fontHelveticaMedium;
+  @include fontGrande;
+}
 .lmo-h2 {
   @include fontHelveticaBold;
   @include fontLarge;
@@ -146,9 +150,6 @@ label.label-with-details{
   margin-top: 1.5em;
 }
 
-.lmo-btn-group{
-  .btn { @include fontHelveticaBold; }
-}
 .lmo-btn-group-right{
   float: right;
 }

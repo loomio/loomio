@@ -1,0 +1,28 @@
+.inbox-page{
+  max-width: $main-max-width;
+  margin: 0px auto;
+}
+
+.inbox-page__heading{
+  margin: 20px 0;
+}
+
+.inbox-page__group-name a{
+  @include fontHelveticaMedium;
+  @include fontCrapName;
+  line-height: 30px;
+  color: $grey-on-grey;
+  margin-left: 16px;
+  margin-top: 0;
+}
+
+.inbox-page__show-more{
+  padding: 15px 15px 15px 48px;
+}
+.inbox-page__show-more a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: $grey-on-white;
+  text-decoration: underline;
+}

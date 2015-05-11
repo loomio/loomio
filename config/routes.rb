@@ -46,9 +46,8 @@ Loomio::Application.routes.draw do
     resources :events, only: :index
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
-      get :inbox_by_date, on: :collection
-      get :inbox_by_organization, on: :collection
-      get :inbox_by_group, on: :collection
+      get :discussions_for_dashboard, on: :collection
+      get :discussions_for_inbox, on: :collection
     end
     resources :discussion_readers, only: :update do
       patch :mark_as_read, on: :member
@@ -319,9 +318,11 @@ Loomio::Application.routes.draw do
   get '/contributions/thanks' => redirect('/crowd')
   get '/contributions/callback' => redirect('/crowd')
   get '/crowd' => redirect('https://love.loomio.org/')
-  get '/groups' => redirect('/explore')
 
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
+
+  # this is a dumb thing
+  get '/groups', to: 'dashboard#show'
 
   constraints(MainDomainConstraint) do
     scope controller: 'pages' do

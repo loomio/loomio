@@ -6,7 +6,7 @@ body {
 }
 
 h1, h2, h3, h4{
-  @include fontReset;
+  @include fontReset; /* Y U SO RESET? */
 }
 
 input, select, textarea{

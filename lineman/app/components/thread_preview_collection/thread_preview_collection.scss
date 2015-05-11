@@ -1,0 +1,53 @@
+.thread-previews-container {
+  @include card;
+  padding: 0;
+  margin-bottom: 26px;
+  margin-top: 9px;
+}
+
+.thread-preview {
+  padding: 13px 13px;
+  border-bottom: 1px solid $border-color;
+  position: relative;
+  &:hover { background-color: $list-hover-color; }
+}
+
+.thread-preview__thread-header {
+  @include fontCrapName;
+  padding-bottom: 4px;
+}
+
+.thread-preview__thread-title {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.thread-preview__unread-count {
+  font-weight: normal;
+  padding-left: 5px;
+  color: $grey-on-white;
+}
+
+.thread-preview__thread-title.is-unread {
+  font-weight: bold;
+}
+
+.thread-preview__thread-info {
+  color: $grey-on-white;
+}
+
+.thread-preview__proposal-name{
+  line-height: 20px;
+}
+
+.thread-preview__pie-chart {
+  padding-right: 5px;
+  line-height: 18px;
+  margin-bottom: 2px;
+}
+
+.thread-preview__group-name{
+  @include fontSmall;
+  color: $grey-on-white;
+  clear: both;
+}

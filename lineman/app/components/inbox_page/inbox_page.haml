@@ -1,0 +1,15 @@
+.container.main-container
+  %main.inbox-page
+    .thread-preview-collection__container
+      .inbox-page__no-threads{ng-show: 'false'}
+        %span{translate: 'inbox_page.no_threads'}>
+      %h1.lmo-h1-medium.inbox-page__heading{translate: 'inbox_page.unread_threads'}
+      .inbox-page__group{ng-repeat: 'group in inboxPage.groups() | orderBy:inboxPage.groupName'}
+        %section{ng-if: 'inboxPage.queryFor(group).any()', role: 'region', aria-label: "{{ 'inbox_page.threads_from.group' | translate }} {{group.name}}"}
+          %img.selector-list-item-group-logo.pull-left{ng-src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
+          %h2.inbox-page__group-name
+            %a{href: '/g/{{group.key}}'} {{group.name}}
+          .inbox-page__groups.thread-previews-container
+            %thread_preview_collection{query: 'inboxPage.queryFor(group)', limit: 'inboxPage.threadLimit'}
+            .inbox-page__show-more{ng-show: 'inboxPage.moreForThisGroup(group)'}
+              %a{translate: 'inbox_page.view_more', href: '/g/{{group.key}}'}

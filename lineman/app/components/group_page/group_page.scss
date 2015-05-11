@@ -1,5 +1,5 @@
 .group-page .main-container{
-  max-width: $group-page-max-width;
+  max-width: $large-max-width;
   margin: 0 auto;
   /* over-riding bootstrap */
   .media:first-child{
@@ -34,6 +34,9 @@
 .group-page-header-name-and-actions{
   margin-top: 60px;
 }
+
+.group-member-options .btn { @include fontHelveticaBold; }
+
 .group-page-name {
   float: left;
   max-width: 50%;
