@@ -2,6 +2,7 @@ class Motion < ActiveRecord::Base
   CHART_COLOURS = ["#90D490", "#F0BB67", "#D49090", "#dd0000", '#ccc']
 
   include ReadableUnguessableUrls
+  include HasTimeframe
 
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading

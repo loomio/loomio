@@ -55,6 +55,12 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
+  def starred
+    join_to_discussion_readers
+    @relation = @relation.where('dv.starred = true')
+    self
+  end
+
   def unread
     join_to_discussion_readers
     @relation = @relation.where('dv.last_read_at IS NULL OR (dv.last_read_at < discussions.last_activity_at)')
@@ -72,11 +78,6 @@ class Queries::VisibleDiscussions < Delegator
     join_to_discussion_readers && join_to_memberships
     @relation = @relation.where('(dv.volume > :mute) OR (dv.volume IS NULL AND m.volume > :mute)',
                                 {mute: DiscussionReader.volumes[:mute]})
-    self
-  end
-
-  def recent
-    @relation = @relation.where('last_activity_at > ?', 3.months.ago)
     self
   end
 

@@ -3,4 +3,6 @@ angular.module('loomioApp').factory 'SearchResultRecordsInterface', (BaseRecords
     model: SearchResultModel
 
     fetchByFragment: (fragment) ->
-      @restfulClient.getCollection(q: fragment)
+      @fetch
+        params:
+          q: fragment

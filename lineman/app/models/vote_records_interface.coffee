@@ -3,10 +3,19 @@ angular.module('loomioApp').factory 'VoteRecordsInterface', (BaseRecordsInterfac
     model: VoteModel
 
     fetchMyRecentVotes: ->
-      @restfulClient.get('my_votes')
+      @fetch
+        path: 'my_votes'
+        cacheKey: 'myVotes'
 
     fetchMyVotesByDiscussion: (discussion) ->
-      @restfulClient.get('my_votes', discussion_key: discussion.key)
+      @fetch
+        path: 'my_votes'
+        params:
+          discussion_key: discussion.key
+        cacheKey: "myVotesFor#{discussion.key}" 
 
     fetchByProposal: (proposal) ->
-      @restfulClient.getCollection(motion_id: proposal.id)
+      @fetch
+        params:
+          motion_id: proposal.id
+        cacheKey: "votesFor#{proposal.key}"
