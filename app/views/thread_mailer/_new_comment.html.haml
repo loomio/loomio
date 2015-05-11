@@ -11,4 +11,4 @@
       - else
         = render_email_plaintext comment.body
       - if comment.attachments.any?
-        = render "thread_mailer/attachment", comment: comment
+        = render "thread_mailer/attachments", comment: comment
