@@ -10,6 +10,6 @@ class NotificationItems::CommentRepliedTo < NotificationItem
   end
 
   def linkable
-    [@notification.eventable.discussion, {anchor: "comment-#{@notification.eventable.comment_id}"}]
+    [@notification.eventable.discussion, {anchor: "comment-#{@notification.eventable.id}"}]
   end
 end
