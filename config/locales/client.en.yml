@@ -103,7 +103,7 @@ en:
       help: 'Help'
     search:
       close: 'Close search panel'
-      placeholder: 'Search for groups or threads'
+      placeholder: 'Search'
       loading: 'Loading results...'
       discussions: 'Threads'
       proposals: 'Proposals'

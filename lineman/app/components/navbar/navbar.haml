@@ -1,23 +1,26 @@
 %header.lmo-navbar{role: 'navigation'}
-  .lmo-navbar-flexbox
-    .lmo-navbar-btn{ng-class: '{"lmo-navbar-item--selected": selected == "dashboardPage"}'}
-      %a.lmo-navbar-btn__icon{href: '/dashboard', title: "{{ 'navbar.home_title' | translate }}", tabindex: 1}
+  .lmo-navbar__left
+    .lmo-navbar__item{ng-class: '{"lmo-navbar__item--selected": selected == "dashboardPage"}'}
+      %a.btn.lmo-navbar__btn.lmo-navbar__btn-icon{href: '/dashboard', title: "{{ 'navbar.home_title' | translate }}", tabindex: 1}
         %i.fa.fa-lg.fa-home>
-        %span.lmo-navbar-btn__span{translate: 'navbar.home'}
-    .lmo-navbar-btn.has-badge{ng-class: '{"lmo-navbar-item--selected": selected == "inboxPage"}'}
-      %a.lmo-navbar-btn__icon{href: '/inbox', title: "{{ 'navbar.unread_title' | translate }}", tabindex: 2}
+        %span.lmo-navbar__btn-label{translate: 'navbar.home'}
+    .lmo-navbar__item{ng-class: '{"lmo-navbar__item--selected": selected == "inboxPage"}'}
+      %a.btn.lmo-navbar__btn.lmo-navbar__btn-icon.has-badge{href: '/inbox', title: "{{ 'navbar.unread_title' | translate }}", tabindex: 2}
         %i.fa.fa-lg.fa-inbox>
-        %span.lmo-navbar-btn__span{translate: 'navbar.unread'}
+        %span.lmo-navbar__btn-label{translate: 'navbar.unread'}
         %span.badge{ng-show: 'unreadThreadCount() > 0'}
           {{unreadThreadCount()}}
-    .lmo-navbar-btn{ng-class: '{"lmo-navbar-item--selected": selected == "groupsPage"}'}
-      %a.lmo-navbar-btn__icon{href: '/groups', title: "{{ 'navbar.groups_title' | translate }}", tabindex: 3}
+    .lmo-navbar__item{ng-class: '{"lmo-navbar__item--selected": selected == "groupsPage"}'}
+      %a.btn.lmo-navbar__btn-icon.lmo-navbar__btn{href: '/groups', title: "{{ 'navbar.groups_title' | translate }}", tabindex: 3}
         %i.fa.fa-lg.fa-group>
-        %span.lmo-navbar-btn__span{translate: 'navbar.groups'}
-    .lmo-navbar-search{role: 'search'}
+        %span.lmo-navbar__btn-label{translate: 'navbar.groups'}
+
+  .lmo-navbar__right
+    .lmo-navbar__item{role: 'search'}
       %navbar_search
-    .lmo-navbar-buttons
+    .lmo-navbar__item
       %notifications
+    .lmo-navbar__item
       %navbar_user_options
   %thread_lintel
   %flash{modal: 'false'}
