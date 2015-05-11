@@ -1,0 +1,5 @@
+%h4{style: "margin: 10px 0;"}= t :attachments
+%ul{style: "margin: 5px 0 15px; padding: 0px"}
+  - comment.attachments.each do |attachment|
+    %li{style: "list-style-type: none; margin-bottom: 10px;"}
+      = link_to attachment.filename, attachment.location

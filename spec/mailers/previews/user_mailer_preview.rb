@@ -10,6 +10,10 @@ class UserMailerPreview < ActionMailer::Preview
       #discussion.reload
       #user.reload
       DiscussionService.create(discussion: discussion, actor: discussion.author)
+      attachment = FactoryGirl.create :attachment
+      comment = FactoryGirl.create :comment, discussion: discussion, body: "New comment", uses_markdown: true
+      comment.attachments << attachment
+      event = Events::NewComment.create(kind: 'new_comment', eventable: comment, discussion_id: discussion.id)
       for i in 1..3 do
         case i
         when 0

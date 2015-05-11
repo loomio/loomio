@@ -175,7 +175,7 @@ FactoryGirl.define do
   factory :attachment do
     user
     filename { Faker::Name.name }
-    location { Faker::Name.name }
+    location { Faker::Company.logo }
   end
   
   factory :translation do
