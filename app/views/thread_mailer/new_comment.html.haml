@@ -1,2 +1,4 @@
 = render_rich_text(@comment.body, @comment.uses_markdown)
+- if @comment.attachments.any?
+  = render "attachments", comment: @comment
 = render "footer", link: comment_url_helper(@comment)

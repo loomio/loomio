@@ -1250,6 +1250,7 @@ en:
   about_loomio: "About Loomio"
   ago: "%{quantity_of_time} ago"
   approve: "Approve"
+  attachments: "Attachments:"
   author: "Author"
   back: "Back"
   cancel: "Cancel"

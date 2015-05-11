@@ -20,6 +20,22 @@ class ThreadMailerPreview < ActionMailer::Preview
     ThreadMailer.new_comment user, event
   end
 
+  def new_comment_with_attachments_followed
+    group = FactoryGirl.create :group
+    user = FactoryGirl.create :user
+    discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
+    DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
+    group.add_member! user
+    rich_text_body = "I am a comment with a **bold bit**"
+    attachment = FactoryGirl.create :attachment
+    second_attachment = FactoryGirl.create :attachment
+    comment = FactoryGirl.create :comment, discussion: discussion, body: rich_text_body, uses_markdown: true
+    comment.attachments << attachment
+    comment.attachments << second_attachment
+    event = Events::NewComment.create(kind: 'new_comment', eventable: comment, discussion_id: discussion.id)
+    ThreadMailer.new_comment user, event
+  end
+
   def user_mentioned_follows_by_loud
     group = FactoryGirl.create :group
     user = FactoryGirl.create :user
