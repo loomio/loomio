@@ -375,8 +375,6 @@ en:
 
   groups_page:
     page_header: Your groups
-    subgroups: Subgroups
-    visit_group: Visit this group
 
   discussion:
     activity: 'Activity'

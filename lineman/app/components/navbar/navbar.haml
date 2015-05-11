@@ -4,13 +4,13 @@
       %a.lmo-navbar-btn__icon{href: '/dashboard', title: "{{ 'navbar.home_title' | translate }}", tabindex: 1}
         %i.fa.fa-lg.fa-home>
         %span.lmo-navbar-btn__span{translate: 'navbar.home'}
-    .lmo-navbar-btn.has-badge{ng-class: '{"lmo-navbar-item--selected": selected == "inboxPage"}'} 
+    .lmo-navbar-btn.has-badge{ng-class: '{"lmo-navbar-item--selected": selected == "inboxPage"}'}
       %a.lmo-navbar-btn__icon{href: '/inbox', title: "{{ 'navbar.unread_title' | translate }}", tabindex: 2}
         %i.fa.fa-lg.fa-inbox>
         %span.lmo-navbar-btn__span{translate: 'navbar.unread'}
         %span.badge{ng-show: 'unreadThreadCount() > 0'}
           {{unreadThreadCount()}}
-    .lmo-navbar-btn{ng-class: '{"lmo-navbar-item--selected": selected == "groupsPage"}'} 
+    .lmo-navbar-btn{ng-class: '{"lmo-navbar-item--selected": selected == "groupsPage"}'}
       %a.lmo-navbar-btn__icon{href: '/groups', title: "{{ 'navbar.groups_title' | translate }}", tabindex: 3}
         %i.fa.fa-lg.fa-group>
         %span.lmo-navbar-btn__span{translate: 'navbar.groups'}
