@@ -49,6 +49,7 @@ Loomio::Application.routes.draw do
       get :discussions_for_dashboard, on: :collection
       get :discussions_for_inbox, on: :collection
     end
+
     resources :discussion_readers, only: :update do
       patch :mark_as_read, on: :member
     end

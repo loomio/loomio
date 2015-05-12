@@ -7,6 +7,7 @@ class DiscussionsController < GroupBaseController
   authorize_resource :except => [:new, :create, :index, :add_comment]
 
   after_filter :mark_as_read, only: :show
+  after_filter :track_visit, only: :show
 
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.not_found') }
