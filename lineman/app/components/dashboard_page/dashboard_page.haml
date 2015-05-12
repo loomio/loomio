@@ -16,42 +16,42 @@
                   %a{href: '#', ng-click: 'dashboardPage.setFilter("show_all")'}
                     .dropdown-menu-item-label
                       %span{translate: 'dashboard_page.filtering.all', aria-hidden: 'true'}>
-                      %i.fa.fa-lg.fa-check{ng-show: 'dashboardPage.filter() == "show_all"'}
+                      %i.fa.fa-lg.fa-check{ng-show: 'dashboardPage.filter == "show_all"'}
                     .dropdown-menu-item-details{translate: 'dashboard_page.filtering.all_description'}
                 %li.dropdown-menu-item.filtering-option
                   %a{href: '#', ng-click: 'dashboardPage.setFilter("show_participating")'}
                     .dropdown-menu-item-label
                       %span{translate: 'dashboard_page.filtering.participating', aria-hidden: 'true'}>
-                      %i.fa.fa-lg.fa-check{ng-show: 'dashboardPage.filter() == "show_participating"'}
+                      %i.fa.fa-lg.fa-check{ng-show: 'dashboardPage.filter == "show_participating"'}
                     .dropdown-menu-item-details{translate: 'dashboard_page.filtering.participating_description'}
                 %li.dropdown-menu-item.filtering-option
                   %a{href: '#', ng-click: 'dashboardPage.setFilter("show_proposals")'}
                     .dropdown-menu-item-label
                       %span{translate: 'dashboard_page.filtering.proposals', aria-hidden: 'true'}>
-                      %i.fa.fa-lg.fa-check{ng-show: 'dashboardPage.filter() == "show_proposals"'}
+                      %i.fa.fa-lg.fa-check{ng-show: 'dashboardPage.filter == "show_proposals"'}
                     .dropdown-menu-item-details{translate: 'dashboard_page.filtering.proposals_description'}
                 %li.dropdown-menu-item.filtering-option
                   %a{href: '#', ng-click: 'dashboardPage.setFilter("show_muted")'}
                     .dropdown-menu-item-label
                       %span{translate: 'dashboard_page.filtering.muted', aria-hidden: 'true'}>
-                      %i.fa.fa-lg.fa-check{ng-show: 'dashboardPage.filter() == "show_muted"'}
+                      %i.fa.fa-lg.fa-check{ng-show: 'dashboardPage.filter == "show_muted"'}
                     .dropdown-menu-item-details{translate: 'dashboard_page.filtering.muted_description'}
 
 
-    %h1.lmo-h1-medium.dashboard-page__heading{translate: 'dashboard_page.filtering.all', ng-show: 'dashboardPage.filter() == "show_all"'}
-    %h1.lmo-h1-medium.dashboard-page__heading{translate: 'dashboard_page.filtering.participating', ng-show: 'dashboardPage.filter() == "show_participating"'}
-    %h1.lmo-h1-medium.dashboard-page__heading{translate: 'dashboard_page.filtering.proposals', ng-show: 'dashboardPage.filter() == "show_proposals"'}
-    %h1.lmo-h1-medium.dashboard-page__heading{translate: 'dashboard_page.filtering.muted', ng-show: 'dashboardPage.filter() == "show_muted"'}
+    %h1.lmo-h1-medium.dashboard-page__heading{translate: 'dashboard_page.filtering.all', ng-show: 'dashboardPage.filter == "show_all"'}
+    %h1.lmo-h1-medium.dashboard-page__heading{translate: 'dashboard_page.filtering.participating', ng-show: 'dashboardPage.filter == "show_participating"'}
+    %h1.lmo-h1-medium.dashboard-page__heading{translate: 'dashboard_page.filtering.proposals', ng-show: 'dashboardPage.filter == "show_proposals"'}
+    %h1.lmo-h1-medium.dashboard-page__heading{translate: 'dashboard_page.filtering.muted', ng-show: 'dashboardPage.filter == "show_muted"'}
     .dashboard-page__no-threads{ng-show: '!dashboardPage.loadMoreExecuting && dashboardPage.dashboardThreads().length == 0'}
       %span{translate: 'dashboard_page.no_threads'}>
-      %a{ng-show: 'dashboardPage.filter() != "show_all"', translate: 'dashboard_page.view_recent', href: '#', ng-click: 'dashboardPage.setFilter("show_all")'}>
-    .dashboard-page__collections{ng-if: 'dashboardPage.filter() != "show_muted"'}
+      %a{ng-show: 'dashboardPage.filter != "show_all"', translate: 'dashboard_page.view_recent', href: '#', ng-click: 'dashboardPage.setFilter("show_all")'}>
+    .dashboard-page__collections{ng-if: 'dashboardPage.filter != "show_muted"'}
       %section.thread-preview-collection__container{ng-show: 'dashboardPage.timeframeQueryFor(timeframe).any()', aria-labelledby: '{{timeframe}}', ng-repeat: 'timeframe in dashboardPage.timeframeNames'}
         .dashboard-page__date-range{translate: 'dashboard_page.threads_from.{{timeframe}}'}
         %thread_preview_collection.thread-previews-container{query: 'dashboardPage.timeframeQueryFor(timeframe)'}
       .dashboard-page__footer{in-view: '$inview && dashboardPage.loadMore()', in-view-options: '{debounce: 200}'} .
       %loading{ng-show: 'dashboardPage.loadMoreExecuting'}
-    .dashboard-page__collections{ng-if: 'dashboardPage.filter() == "show_muted"'}
+    .dashboard-page__collections{ng-if: 'dashboardPage.filter == "show_muted"'}
       .dashboard-page__group{ng-repeat: 'group in dashboardPage.groups() | orderBy:dashboardPage.groupName'}
         %section{ng-if: 'dashboardPage.groupQueryFor(group).any()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.group' | translate }} {{group.name}}"}
           %img.selector-list-item-group-logo.pull-left{ng-src: "{{group.logoUrl()}}", aria-hidden: 'true'}>

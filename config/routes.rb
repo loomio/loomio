@@ -85,7 +85,6 @@ Loomio::Application.routes.draw do
       get :current
       get :unauthorized
     end
-    resources :users, only: :update
     devise_scope :user do
       resources :sessions, only: [:create, :destroy]
     end
