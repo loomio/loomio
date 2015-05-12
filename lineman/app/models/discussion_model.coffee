@@ -23,7 +23,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       @recordStore.groups.find(@groupId)
 
     groupName: ->
-      @group().name
+      @group().name if @group()
 
     events: ->
       @eventsView.data()

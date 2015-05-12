@@ -10,6 +10,12 @@
   @include smallIcon;
 }
 
+.sm .avatar-image img, .sm .avatar-initials {
+  @include roundedCorners;
+  width: 25px;
+  height: 25px;
+}
+
 .lg .avatar-image img, .lg .avatar-initials{
   @include roundedCorners;
   width: 50px;

@@ -1,32 +1,17 @@
-
-.dropdown
-  %button.btn.lmo-btn-nude.dropdown-toggle.lmo-navbar__btn.lmo-navbar__btn-icon{href: '#', tabindex: 5}
-    .sr-only{translate: 'navbar.user_options.label'}
-    %i.fa.fa-lg.fa-fw.fa-navicon{aria-hidden: 'true'}
-  .dropdown-menu.dropdown-menu-right.user-options-dropdown.dropdown-menu-with-icons
-    %ul.dropdown-menu-items
-      -#%li.dropdown-menu-item
-        -#%a{href: '/profile'}
-          -#.dropdown-menu-item-icon
-            -#%user_avatar{user: "currentUser()", aria-hidden: 'true'}
-          -#.dropdown-menu-item-label{translate: 'navbar.user_options.profile'}
-      %li.dropdown-menu-item
-        %a{href: '#', ng_click: 'openDiscussionForm()'}
-          .dropdown-menu-item-icon
-            %i.fa.fa-xlg.fa-plus{aria-hidden: 'true'}
-          .dropdown-menu-item-label{translate: 'navbar.user_options.new_thread'}
-      %li.dropdown-menu-item
-        %a{href: '/g/new'}
-          .dropdown-menu-item-icon
-            %i.fa.fa-xlg.fa-group{aria-hidden: 'true'}
-          .dropdown-menu-item-label{translate: 'navbar.user_options.new_group'}
-      -#%li.dropdown-menu-item
-        -#%a{href: '/help'}
-          -#.dropdown-menu-item-icon
-            -#%i.fa.fa-xlg.fa-info{aria-hidden: 'true'}
-          -#.dropdown-menu-item-label{translate: 'navbar.user_options.help'}
-      -#%li.dropdown-menu-item
-        -#%a{href: '/contact'}
-          -#.dropdown-menu-item-icon
-            -#%i.fa.fa-xlg.fa-question-circle{aria-hidden: 'true'}
-          -#.dropdown-menu-item-label{translate: 'navbar.user_options.contact_us'}
+.navbar-user-options
+  .dropdown
+    %button.btn.lmo-btn-nude.dropdown-toggle.lmo-navbar__btn.lmo-navbar__btn-icon{href: '#', tabindex: 5}
+      .sr-only{translate: 'navbar.user_options.label'}
+      %user_avatar{user: 'currentUser', size: 'sm'}
+    .dropdown-menu.dropdown-menu-right.user-options-dropdown.dropdown-menu-with-icons
+      %ul.dropdown-menu-items
+        %li.dropdown-menu-item
+          %a{href: '#', ng_click: 'openDiscussionForm()'}
+            .dropdown-menu-item-icon
+              %i.fa.fa-xlg.fa-plus{aria-hidden: 'true'}
+            .dropdown-menu-item-label{translate: 'navbar.user_options.new_thread'}
+        %li.dropdown-menu-item
+          %a{href: '/g/new'}
+            .dropdown-menu-item-icon
+              %i.fa.fa-xlg.fa-group{aria-hidden: 'true'}
+            .dropdown-menu-item-label{translate: 'navbar.user_options.new_group'}
