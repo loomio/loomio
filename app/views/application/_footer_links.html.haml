@@ -1,8 +1,8 @@
-= link_to t('footer.pricing'), pricing_path, target: target
-= link_to t('footer.public_groups'), explore_path, target: target
-= link_to t('footer.blog'), blog_path, target: target
-= link_to t('footer.help'), help_path
-= link_to t('footer.contact'), contact_path, target: target
-= link_to t('footer.about'), about_path, target: target
-= link_to t('footer.terms'), terms_of_service_path, target: target
-= link_to t('footer.privacy'), privacy_path, target: target
+= link_to t('footer.pricing'), pricing_url(host: ENV['CANONICAL_HOST']), target: target
+= link_to t('footer.public_groups'), explore_url(host: ENV['CANONICAL_HOST']), target: target
+= link_to t('footer.blog'), blog_url(host: ENV['CANONICAL_HOST']), target: target
+= link_to t('footer.help'), help_url(host: ENV['CANONICAL_HOST'])
+= link_to t('footer.contact'), contact_url(host: ENV['CANONICAL_HOST']), target: target
+= link_to t('footer.about'), about_url(host: ENV['CANONICAL_HOST']), target: target
+= link_to t('footer.terms'), terms_of_service_url(host: ENV['CANONICAL_HOST']), target: target
+= link_to t('footer.privacy'), privacy_url(host: ENV['CANONICAL_HOST']), target: target
