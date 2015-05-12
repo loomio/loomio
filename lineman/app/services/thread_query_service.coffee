@@ -56,6 +56,7 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
       (viewData) ->
         _.filter viewData, (thread) ->
           return false if thread.isMuted() and filter != 'show_muted'
+          return false if thread.readerNotLoaded()
           switch filter
             when 'show_all'           then true
             when 'show_muted'         then thread.isMuted()
