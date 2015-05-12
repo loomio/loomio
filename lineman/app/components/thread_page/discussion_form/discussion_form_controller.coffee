@@ -15,7 +15,7 @@ angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $con
 
 
   $scope.getCurrentPrivacy = ->
-    $scope.discussion.group().discussionPrivacyOptions
+    $scope.discussion.group().discussionPrivacyOptions if $scope.discussion.group()
 
   $scope.setCurrentPrivacy = ->
     if $scope.discussion.isNew()
