@@ -1,3 +1,16 @@
-.list-group-item.active > span.text-primary {
-  color: white;
+mentio-menu {
+  display: none;
+}
+
+.mentionable-name {
+  @include fontMedium;
+  line-height: 16px;
+}
+
+.mentionable-username {
+  @include fontSmall;
+}
+
+.mentionable-content {
+  display: table-cell;
 }

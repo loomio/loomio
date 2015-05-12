@@ -10,6 +10,7 @@ describe API::DiscussionsController do
   let(:participating_discussion) { create :discussion, group: group }
   let(:subgroup_discussion) { create :discussion, group: subgroup }
   let(:muted_discussion) { create :discussion, group: group }
+  let(:starred_discussion) { create :discussion, group: group }
   let(:old_discussion) { create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago }
   let(:motionless_discussion) { create :discussion, group: group }
   let(:comment) { create :comment, discussion: discussion}
@@ -28,21 +29,13 @@ describe API::DiscussionsController do
     sign_in user
     discussion.reload
     DiscussionReader.for(user: user, discussion: muted_discussion).set_volume! 'mute'
+    DiscussionReader.for(user: user, discussion: starred_discussion).update starred: true
   end
 
-  describe 'dashboard_discussions' do
-    it 'returns discussions with activity after a certain date' do
-      old_discussion.reload
-      get :discussions_for_dashboard
-      json = JSON.parse(response.body)
-      ids = json['discussions'].map { |v| v['id'] }
-      expect(ids).to include discussion.id
-      expect(ids).to_not include old_discussion.id
-    end
-
+  describe 'dashboard' do
     it 'does not return muted discussions by default' do
       muted_discussion.reload
-      get :discussions_for_dashboard
+      get :dashboard
       json = JSON.parse(response.body)
       ids = json['discussions'].map { |v| v['id'] }
       expect(ids).to_not include muted_discussion.id
@@ -51,7 +44,7 @@ describe API::DiscussionsController do
     it 'can filter by active proposals' do
       proposal.reload
       motionless_discussion.reload
-      get :discussions_for_dashboard, filter: :show_proposals
+      get :dashboard, filter: :show_proposals
       json = JSON.parse(response.body)
       ids = json['discussions'].map { |v| v['id'] }
       expect(ids).to include discussion.id
@@ -60,7 +53,7 @@ describe API::DiscussionsController do
 
     it 'can filter by participating' do
       CommentService.create actor: user, comment: build(:comment, discussion: participating_discussion)
-      get :discussions_for_dashboard, filter: :show_participating
+      get :dashboard, filter: :show_participating
       json = JSON.parse(response.body)
       ids = json['discussions'].map { |v| v['id'] }
       expect(ids).to include participating_discussion.id
@@ -69,15 +62,39 @@ describe API::DiscussionsController do
 
     it 'can filter by muted' do
       muted_discussion.reload
-      get :discussions_for_dashboard, filter: :show_muted
+      get :dashboard, filter: :show_muted
       json = JSON.parse(response.body)
       ids = json['discussions'].map { |v| v['id'] }
       expect(ids).to include muted_discussion.id
       expect(ids).to_not include discussion.id
     end
-  end
 
-  describe 'inbox_discussions' do
+    it 'can filter by starred' do
+      starred_discussion.reload
+      get :dashboard, filter: :show_starred
+      json = JSON.parse(response.body)
+      ids = json['discussions'].map { |v| v['id'] }
+      expect(ids).to include starred_discussion.id
+      expect(ids).to_not include discussion.id
+    end
+
+    it 'can filter since a certain date' do
+      old_discussion.reload
+      get :dashboard, since: 3.months.ago
+      json = JSON.parse(response.body)
+      ids = json['discussions'].map { |v| v['id'] }
+      expect(ids).to include discussion.id
+      expect(ids).to_not include old_discussion.id
+    end
+
+    it 'can filter until a certain date' do
+      old_discussion.reload
+      get :dashboard, until: 3.months.ago
+      json = JSON.parse(response.body)
+      ids = json['discussions'].map { |v| v['id'] }
+      expect(ids).to_not include discussion.id
+      expect(ids).to include old_discussion.id
+    end
   end
 
   describe 'show' do

@@ -543,6 +543,7 @@ pt-BR:
       log_in_html: "Se você é um membro, <a href='%{href}'>entre</a> para ver todas as discussões privadas."
   discussion_context:
     started_html: "Iniciado %{when} atrás por <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    started_print: "Iniciada %{when} por %{who}"
     last_edited_html: "Última edição %{when} atrás por <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: Ver o histórico de revisões
     see_history: Ver histórico
@@ -572,6 +573,7 @@ pt-BR:
   move_discussion_where: Para onde você gostaria de mover esta discussão?
   delete_discussion: Apagar discussão
   confirm_delete_discussion: Tem certeza que quer apagar permanentemente esta discussão?
+  print_tooltip_info: Imprimir
   new_proposal: Nova Proposição
   edit_proposal: Editar Proposta
   close_proposal: Encerrar proposição
@@ -579,10 +581,13 @@ pt-BR:
   change_proposal_close_date: Mudar data de encerramento
   change_proposal_close_date_header: "Mudar data de encerramento para a proposição '%{which}'"
   proposal: Proposição
+  proposals: Propostas
+  closed_at: Fechou em
   proposal_close_date_error: "Por favor, defina uma data de encerramento futura"
   proposal_closing_when: "Encerra em %{when}"
   proposal_closed_when: "Encerrado há %{when}"
   proposed_when_by_who: "Proposto por %{who} há %{when}"
+  proposed_by_who_on: "Proposta por: %{who}, %{when}"
   engagement_on_open_proposal: "%{percent}%% dos membros declararam sua posição (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}%% dos membros declararam sua posição (%{numerator}/%{denominator})"
   state_your_position: Declare sua posição
@@ -967,6 +972,7 @@ pt-BR:
   about_loomio: Sobre o Loomio
   ago: "há %{quantity_of_time}"
   approve: Aprovar
+  attachments: "Anexos:"
   author: Autor(a)
   back: Voltar
   cancel: Cancelar

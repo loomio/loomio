@@ -575,6 +575,7 @@ hu:
   change_proposal_close_date: A határidő módosítása
   change_proposal_close_date_header: "A  '%{which}' javaslat határidejének módosítása"
   proposal: Javaslat
+  proposals: Javaslatok
   proposal_close_date_error: "Olyan dátumot adj meg, ami még nem múlt el"
   proposal_closing_when: "A lezárásig hátralevő idő: %{when}"
   proposal_closed_when: "A lezárás óta eltelt idő: %{when}"

@@ -462,6 +462,7 @@ cs:
   change_proposal_close_date: Změnit datum uzavření
   change_proposal_close_date_header: "Změňte datum uzavření návrhu '%{which}'"
   proposal: Návrh
+  proposals: Návrhy
   proposal_close_date_error: Prosím vyberte budoucí datum uzavření
   proposal_closing_when: "Uzavírá se za %{when}"
   proposal_closed_when: "Uzavřeno před %{when}"

@@ -2,6 +2,14 @@ angular.module('loomioApp').factory 'EventRecordsInterface', (BaseRecordsInterfa
   class EventRecordsInterface extends BaseRecordsInterface
     model: EventModel
 
+    fetchByDiscussion: (discussionKey, options = {}) ->
+      @fetch
+        params:
+          discussion_key: discussionKey
+          from: options['from']
+          per: options['per']
+          reverse: options['reverse']
+
     minLoadedSequenceIdByDiscussion: (discussion) ->
       item = _.min @where(discussionId: discussion.id), (event) -> event.sequenceId
       item.sequenceId || 0

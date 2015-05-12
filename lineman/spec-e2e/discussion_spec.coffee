@@ -23,3 +23,9 @@ describe 'Discussion Page', ->
     page.mostRecentComment().element(By.css('.cuke-comment-like-btn')).click()
     expect(element(By.css('.thread-liked-by-sentence')).getText()).toContain('You like this.')
 
+  iit 'mention a user', ->
+    page.enterCommentText('@max')
+    expect(page.mentionList().toContain('Max Von Sydow')
+    page.firstMention().click()
+    page.submitComment()
+    expect(page.mostRecentComment().getText()).toContain('@maxvonsydow')

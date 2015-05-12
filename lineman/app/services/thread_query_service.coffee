@@ -1,8 +1,8 @@
 angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
   new class ThreadQueryService
 
-    unreadQuery: ->
-      threadQueryFor createBaseView(), 'show_unread'
+    filterQuery: (filter) ->
+      threadQueryFor createBaseView(), filter
 
     groupQuery: (group = {}, options = {}) ->
       threadQueryFor createGroupView(group), 
@@ -33,7 +33,7 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
     createGroupView = (group) ->
       _.memoize(->
         view = Records.discussions.collection.addDynamicView group.name
-        view.applyFind({groupId: { $in: group.organizationIds() }})
+        view.applyFind({groupId: { $in: group.organisationIds() }})
         view.applySimpleSort('lastActivityAt', true)
         view)()
 
@@ -56,9 +56,11 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
       (viewData) ->
         _.filter viewData, (thread) ->
           return false if thread.isMuted() and filter != 'show_muted'
+          return false if thread.readerNotLoaded()
           switch filter
             when 'show_all'           then true
             when 'show_muted'         then thread.isMuted()
             when 'show_unread'        then thread.isUnread()
             when 'show_participating' then thread.isParticipating()
+            when 'show_starred'       then thread.isStarred()
             when 'show_proposals'     then thread.hasActiveProposal()

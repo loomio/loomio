@@ -5,8 +5,6 @@ class User < ActiveRecord::Base
   require 'net/http'
   require 'digest/md5'
 
-  validates_inclusion_of :dashboard_filter, in: %w[show_all show_participating show_proposals show_muted]
-
   AVATAR_KINDS = %w[initials uploaded gravatar]
   LARGE_IMAGE = 170
   MED_LARGE_IMAGE = 70

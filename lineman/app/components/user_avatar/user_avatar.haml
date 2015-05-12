@@ -1,4 +1,4 @@
-.user-avatar{aria-hidden: 'true'}
+.user-avatar{aria-hidden: 'true', class: '{{size}}'}
   .avatar-initials{ng-if: '::(user.avatarKind == "initials")'}
     {{::user.avatarInitials}}
   .avatar-image{ng-if: '::(user.avatarKind == "gravatar")'}

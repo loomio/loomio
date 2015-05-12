@@ -6,10 +6,6 @@ class Discussion < ActiveRecord::Base
   include ReadableUnguessableUrls
   include Translatable
   include HasTimeframe
-  
-  def self.timeframe_field
-    :last_activity_at
-  end
 
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil, is_deleted: false) }
@@ -73,8 +69,8 @@ class Discussion < ActiveRecord::Base
     created_at
   end
 
-  def organization_id
-    group.parent.try(:id) || group_id
+  def organisation_id
+    group.parent_id || group_id
   end
 
   def archive!

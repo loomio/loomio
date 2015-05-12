@@ -3,7 +3,7 @@ class Admin::StatsController < Admin::BaseController
 
   def weekly_activity
     @metrics = []
-    (0..25).each do |i|
+    (0..52).each do |i|
       date_range = (i+1).weeks.ago..i.weeks.ago
       @metrics << { weeks_ago:   i,
                     comments:    Comment.where(   created_at: date_range ).count,
@@ -160,6 +160,7 @@ class Admin::StatsController < Admin::BaseController
     outcomes_count = g.motions.where('outcome IS NOT NULL').count
     { id: g.id,
       name: g.full_name,
+      admin_group_url: admin_group_path(g),
       discussions: g.discussions.count,
       comments: comments_count,
       motions: g.motions.count,

@@ -13,9 +13,10 @@ class Vote < ActiveRecord::Base
   include Translatable
   is_translatable on: :statement
 
+  include HasTimeframe
+
   scope :for_user,      -> (user_id) { where(user_id: user_id) }
   scope :by_discussion, -> (discussion_id = nil) { joins(:motion).where("motions.discussion_id = ? OR ? IS NULL", discussion_id, discussion_id) }
-  scope :since,         -> (time) { where('created_at > ?', time) }
   scope :most_recent,   -> { where(age: 0) }
   scope :chronologically, -> { order('created_at asc') }
 

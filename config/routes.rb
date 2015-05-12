@@ -46,9 +46,9 @@ Loomio::Application.routes.draw do
     resources :events, only: :index
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
-      get :discussions_for_dashboard, on: :collection
-      get :discussions_for_inbox, on: :collection
+      get :dashboard, on: :collection
     end
+
     resources :discussion_readers, only: :update do
       patch :mark_as_read, on: :member
     end
@@ -85,7 +85,6 @@ Loomio::Application.routes.draw do
       get :current
       get :unauthorized
     end
-    resources :users, only: :update
     devise_scope :user do
       resources :sessions, only: [:create, :destroy]
     end

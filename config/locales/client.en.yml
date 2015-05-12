@@ -11,7 +11,7 @@ en:
     privacy:
       private: 'Private'
       public: 'Public'
-      organization: 'Organization'
+      organisation: 'Organisation'
     selected: 'Selected'
     date_range:
       today: 'Today'
@@ -221,7 +221,7 @@ en:
     messages:
       privacy:
         members: 'This group is now visible only to members'
-        parent_members: 'This group is now visible only to members of your organization'
+        parent_members: 'This group is now visible only to members of your organisation'
         public: 'This group is now visible to the public'
       leave_group_success: 'You have successfully left this group'
       deactivate_group_success: 'You have successfully deactivated this group'
@@ -283,7 +283,7 @@ en:
       label: 'Privacy'
       visible_to_members: 'Who can find this group?'
       public_visibility: 'Anyone - list the group publicly'
-      organization_visibility: "Organization - unlisted to the public, but visible to members of {{parentGroupName}}"
+      organisation_visibility: "Organisation - unlisted to the public, but visible to members of {{parentGroupName}}"
       private_visibility: 'Members only - the group will not be listed'
       membership_granted_upon: 'How do people join?'
       membership_by_request: 'Open - anyone can join the group'
@@ -338,7 +338,12 @@ en:
     aria_label: 'Dashboard'
     options:
       aria_label: 'Dashboard filtering options'
-    no_threads: No threads to show.
+    no_threads:
+      show_all: You don't have any recent threads.
+      show_participating: You haven't participated in any threads recently.
+      show_starred: You don't have any starred threads.
+      show_proposals: There are no proposals currently active.
+      show_muted: You don't have any muted threads.
     view_recent: View all recent threads?
     load_more: Load more threads
     filtering:
@@ -347,6 +352,9 @@ en:
       all: Recent Threads
       all_aria_label: Currently showing recent threads
       all_description: View recent threads
+      starred: Starred Threads
+      starred_aria_label: Currently showing threads I've marked as important
+      starred_description: View only threads you have marked as important
       participating: Participating threads
       participating_aria_label: Currently showing threads I've participated
       participating_description: View only threads you have participated in
@@ -370,6 +378,7 @@ en:
       older: 'Older than a month'
 
   inbox_page:
+    no_threads: Woohoo! You've read all the threads in your inbox.
     unread_threads: Unread Threads
     view_more: View More
 

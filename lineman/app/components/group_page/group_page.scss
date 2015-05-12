@@ -7,7 +7,7 @@
   }
 }
 
-.group-page-cover{
+.group-page__cover{
   position: absolute;
   top: $navbar-height;
   width: 100%;
@@ -15,15 +15,18 @@
   background: url('http://placehold.it/640x160') no-repeat center center #f5f5f5;
   background-size: cover;
 }
-.group-page-header{
+
+.group-page__header{
   width: 100%;
   position: relative;
   min-height: 225px;
 }
-.group-page-header .btn{
+
+.group-page__header .btn{
   @include fontSmall;
 }
-.group-page-logo{
+
+.group-page__logo{
   position: relative;
   top: 100px;
   width: 108px;
@@ -31,29 +34,30 @@
   background: url('http://placehold.it/100x100') no-repeat top center white;
   border: 4px solid #fff;
 }
-.group-page-header-name-and-actions{
+
+.group-page__name-and-actions{
   margin-top: 60px;
 }
 
-.group-member-options .btn { @include fontHelveticaBold; }
+.group-page__member-actions .btn { @include fontHelveticaBold; }
 
-.group-page-name {
+.group-page__name {
   float: left;
   max-width: 50%;
   margin-left: 108px + 15px;
   a{color: $primary-text-color;}
 }
-.group-page-privacy{
+.group-page__privacy{
   float: left;
   margin-left: 15px;
 }
-.group-page-description,
-.group-page-threads,
+.group-page__description,
+.group-page__threads,
 .group-page-members{
   @include card;
 }
 
-.group-page-new-thread{
+.group-page__new-thread{
   float: right;
   margin-top: -5px;
   margin-bottom: 10px;
@@ -62,9 +66,12 @@
 .members-invite{
   margin-top: 10px;
 }
+.group-member-list-show-more{
+  padding-top: 8px;
+}
 .group-member-list-avatar{
   float: left;
-  margin: 0 10px 10px 0;
+  margin: 0 2px 2px 0;
 }
 
 .group-thread-list{
