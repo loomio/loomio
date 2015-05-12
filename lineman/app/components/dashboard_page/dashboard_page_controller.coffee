@@ -11,7 +11,6 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
     show_proposals:     0
     show_participating: 0
   @filter    = -> CurrentUser.dashboardFilter
-  @nowLoaded = -> @loaded[@filter()]
 
   @timeframes =
     today:     { from: '1 second ago', to: '-10 year ago' }
@@ -27,35 +26,35 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
   @groups = -> CurrentUser.parentGroups()
   @groupName = (group) -> group.name
   @groupQueryFor = (group) -> @groups[group.key]
-  @moreForThisGroup = (group) -> @groupQueryFor(group, { filter: @filter() }).length() > @groupThreadLimit
+  @moreForThisGroup = (group) -> @groupQueryFor(group, { filter: @filter }).length() > @groupThreadLimit
 
   @updateQueries = ->
     _.each @groups(), (group) =>
-      @groups[group.key] = ThreadQueryService.groupQuery(group, { filter: @filter() })
+      @groups[group.key] = ThreadQueryService.groupQuery(group, { filter: @filter })
     _.each @timeframeNames, (name) =>
       @timeframes[name].view = ThreadQueryService.timeframeQuery
         name: name
-        filter: @filter()
+        filter: @filter
         timeframe: @timeframes[name]
 
   @loadMore = =>
-    from = @nowLoaded()
-    @loaded[@filter()] = @nowLoaded() + @perPage
+    from = @loaded[@filter]
+    @loaded[@filter] = @loaded[@filter] + @perPage
 
     Records.discussions.fetchDashboard
-      filter: @filter()
+      filter: @filter
       from:   from
       per:    @perPage
   LoadingService.applyLoadingFunction @, 'loadMore'
 
-  @setFilter = (filter) ->
-    CurrentUser.updateFromJSON(dashboardFilter: filter)
-    CurrentUser.save()
-    @refresh()
-
   @refresh = ->
     @updateQueries()
-    @loadMore() if @nowLoaded() == 0
-  @refresh()
+    @loadMore() if @loaded[@filter] == 0
+
+  @setFilter = (filter) ->
+    @filter = filter
+    @refresh()
+  @setFilter 'show_all'
+
 
   return

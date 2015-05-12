@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504075221) do
+ActiveRecord::Schema.define(version: 20150512034525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -575,7 +575,7 @@ ActiveRecord::Schema.define(version: 20150504075221) do
   add_index "user_deactivation_responses", ["user_id"], name: "index_user_deactivation_responses_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                            limit: 255, default: "",              null: false
+    t.string   "email",                            limit: 255, default: "",         null: false
     t.string   "encrypted_password",               limit: 128, default: ""
     t.string   "reset_password_token",             limit: 255
     t.datetime "reset_password_sent_at"
@@ -590,29 +590,27 @@ ActiveRecord::Schema.define(version: 20150504075221) do
     t.string   "name",                             limit: 255
     t.datetime "deactivated_at"
     t.boolean  "is_admin",                                     default: false
-    t.string   "avatar_kind",                      limit: 255, default: "initials",      null: false
+    t.string   "avatar_kind",                      limit: 255, default: "initials", null: false
     t.string   "uploaded_avatar_file_name",        limit: 255
     t.string   "uploaded_avatar_content_type",     limit: 255
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials",                  limit: 255
     t.string   "username",                         limit: 255
-    t.boolean  "email_when_proposal_closing_soon",             default: false,           null: false
+    t.boolean  "email_when_proposal_closing_soon",             default: false,      null: false
     t.string   "authentication_token",             limit: 255
     t.string   "unsubscribe_token",                limit: 255
-    t.integer  "memberships_count",                            default: 0,               null: false
-    t.boolean  "uses_markdown",                                default: false,           null: false
+    t.integer  "memberships_count",                            default: 0,          null: false
+    t.boolean  "uses_markdown",                                default: false,      null: false
     t.string   "selected_locale",                  limit: 255
     t.string   "time_zone",                        limit: 255
     t.string   "key",                              limit: 255
     t.string   "detected_locale",                  limit: 255
-    t.boolean  "email_missed_yesterday",                       default: true,            null: false
+    t.boolean  "email_missed_yesterday",                       default: true,       null: false
     t.string   "email_api_key",                    limit: 255
-    t.boolean  "email_when_mentioned",                         default: true,            null: false
-    t.boolean  "angular_ui_enabled",                           default: false,           null: false
-    t.boolean  "email_on_participation",                       default: true,            null: false
-    t.string   "dashboard_sort",                               default: "sort_by_group", null: false
-    t.string   "dashboard_filter",                             default: "show_all",      null: false
+    t.boolean  "email_when_mentioned",                         default: true,       null: false
+    t.boolean  "angular_ui_enabled",                           default: false,      null: false
+    t.boolean  "email_on_participation",                       default: true,       null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
