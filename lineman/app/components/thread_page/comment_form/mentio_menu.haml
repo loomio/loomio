@@ -1,3 +1,7 @@
 %ul.list-group.user-search
   %li.list-group-item{mentio_menu_item: 'user', ng_repeat: 'user in items'}
-    %span.text-primary {{ user.name }}
+    .media-left
+      %user_avatar{user: 'user'}
+    .mentionable-content
+      .mentionable-name {{user.name}}
+      .mentionable-username {{user.label}}
