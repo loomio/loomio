@@ -51,3 +51,38 @@
   color: $grey-on-white;
   clear: both;
 }
+
+.thread-preview__actions{
+  float: right;
+  padding-left: 10px;
+}
+
+.thread-preview__star{
+  @include fontLarge;
+}
+
+.thread-preview__star.is-starred{
+  i{color: $loomio-orange;}
+}
+
+.thread-preview__mark-as-read{
+  margin-top: -17px;
+  margin-bottom: -11px;
+  margin-right: 5px;
+}
+
+.thread-preview__mute{
+  margin-top: -17px;
+  margin-bottom: -11px;
+  margin-right: 5px;
+  position: relative;
+  .fa-volume-off{
+    padding-right: 9px;
+  }
+  .fa-times{
+    font-size: 70%;
+    position: absolute;
+    top: 10px;
+    left: 17px;
+  }
+}
