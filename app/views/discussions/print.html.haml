@@ -85,7 +85,7 @@
                 %strong= event.eventable.user_name
                 = simple_format event.eventable.body
                 - if event.eventable.attachments.any?
-                  %strong Attachments:
+                  %strong= t :attachments
                   %ul.attachments
                     - event.eventable.attachments.each do |attachment|
                       %li= attachment.location
