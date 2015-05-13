@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512034525) do
+ActiveRecord::Schema.define(version: 20150512225427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,8 +99,8 @@ ActiveRecord::Schema.define(version: 20150512034525) do
   end
 
   create_table "cohorts", force: :cascade do |t|
-    t.datetime "start_on"
-    t.datetime "end_on"
+    t.date "start_on"
+    t.date "end_on"
   end
 
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20150512034525) do
   end
 
   add_index "comment_votes", ["comment_id"], name: "index_comment_votes_on_comment_id", using: :btree
+  add_index "comment_votes", ["created_at"], name: "index_comment_votes_on_created_at", using: :btree
   add_index "comment_votes", ["user_id"], name: "index_comment_votes_on_user_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
@@ -137,6 +138,7 @@ ActiveRecord::Schema.define(version: 20150512034525) do
     t.datetime "edited_at"
   end
 
+  add_index "comments", ["created_at"], name: "index_comments_on_created_at", using: :btree
   add_index "comments", ["discussion_id"], name: "index_comments_on_commentable_id", using: :btree
   add_index "comments", ["discussion_id"], name: "index_comments_on_discussion_id", using: :btree
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
@@ -239,6 +241,7 @@ ActiveRecord::Schema.define(version: 20150512034525) do
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
+  add_index "discussions", ["created_at"], name: "index_discussions_on_created_at", using: :btree
   add_index "discussions", ["group_id"], name: "index_discussions_on_group_id", using: :btree
   add_index "discussions", ["is_deleted", "group_id"], name: "index_discussions_on_is_deleted_and_group_id", using: :btree
   add_index "discussions", ["is_deleted", "id"], name: "index_discussions_on_is_deleted_and_id", using: :btree
@@ -349,6 +352,7 @@ ActiveRecord::Schema.define(version: 20150512034525) do
     t.datetime "updated_at"
   end
 
+  add_index "group_visits", ["created_at"], name: "index_group_visits_on_created_at", using: :btree
   add_index "group_visits", ["visit_id", "group_id"], name: "index_group_visits_on_visit_id_and_group_id", unique: true, using: :btree
 
   create_table "groups", force: :cascade do |t|
@@ -408,6 +412,7 @@ ActiveRecord::Schema.define(version: 20150512034525) do
   add_index "groups", ["archived_at", "id"], name: "index_groups_on_archived_at_and_id", using: :btree
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
   add_index "groups", ["cohort_id"], name: "index_groups_on_cohort_id", using: :btree
+  add_index "groups", ["created_at"], name: "index_groups_on_created_at", using: :btree
   add_index "groups", ["full_name"], name: "index_groups_on_full_name", using: :btree
   add_index "groups", ["is_visible_to_public"], name: "index_groups_on_is_visible_to_public", using: :btree
   add_index "groups", ["key"], name: "index_groups_on_key", unique: true, using: :btree
@@ -431,6 +436,7 @@ ActiveRecord::Schema.define(version: 20150512034525) do
     t.datetime "updated_at"
   end
 
+  add_index "invitations", ["created_at"], name: "index_invitations_on_created_at", using: :btree
   add_index "invitations", ["invitable_type", "invitable_id"], name: "index_invitations_on_invitable_type_and_invitable_id", using: :btree
   add_index "invitations", ["token"], name: "index_invitations_on_token", using: :btree
 
@@ -468,6 +474,7 @@ ActiveRecord::Schema.define(version: 20150512034525) do
     t.integer  "volume",         default: 2,     null: false
   end
 
+  add_index "memberships", ["created_at"], name: "index_memberships_on_created_at", using: :btree
   add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
   add_index "memberships", ["inviter_id"], name: "index_memberships_on_inviter_id", using: :btree
   add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
@@ -507,6 +514,7 @@ ActiveRecord::Schema.define(version: 20150512034525) do
   end
 
   add_index "motions", ["author_id"], name: "index_motions_on_author_id", using: :btree
+  add_index "motions", ["created_at"], name: "index_motions_on_created_at", using: :btree
   add_index "motions", ["discussion_id", "closed_at"], name: "index_motions_on_discussion_id_and_closed_at", order: {"closed_at"=>:desc}, using: :btree
   add_index "motions", ["discussion_id"], name: "index_motions_on_discussion_id", using: :btree
   add_index "motions", ["key"], name: "index_motions_on_key", unique: true, using: :btree
@@ -589,6 +597,7 @@ ActiveRecord::Schema.define(version: 20150512034525) do
     t.datetime "updated_at"
   end
 
+  add_index "organisation_visits", ["created_at"], name: "index_organisation_visits_on_created_at", using: :btree
   add_index "organisation_visits", ["visit_id", "organisation_id"], name: "index_organisation_visits_on_visit_id_and_organisation_id", unique: true, using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
@@ -728,6 +737,7 @@ ActiveRecord::Schema.define(version: 20150512034525) do
     t.integer  "previous_vote_id"
   end
 
+  add_index "votes", ["created_at"], name: "index_votes_on_created_at", using: :btree
   add_index "votes", ["motion_id", "user_id", "age"], name: "vote_age_per_user_per_motion", unique: true, using: :btree
   add_index "votes", ["motion_id", "user_id"], name: "index_votes_on_motion_id_and_user_id", using: :btree
   add_index "votes", ["motion_id"], name: "index_votes_on_motion_id", using: :btree

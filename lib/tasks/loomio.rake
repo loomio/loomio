@@ -43,4 +43,13 @@ namespace :loomio do
       dr.reset_counts!
     end
   end
+
+  task tag_cohorts: :environment do
+    CohortService.tag_groups
+    puts "Tagged all groups into cohorts"
+  end
+
+  task measure_groups: :environment do
+    MeasurementService.measure_groups(Time.zone.yesterday)
+  end
 end

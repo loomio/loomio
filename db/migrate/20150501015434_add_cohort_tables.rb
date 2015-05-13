@@ -1,8 +1,8 @@
 class AddCohortTables < ActiveRecord::Migration
   def change
     create_table :cohorts do |t|
-      t.datetime :start_on
-      t.datetime :end_on
+      t.date :start_on
+      t.date :end_on
     end
 
     add_column :groups, :cohort_id, :integer

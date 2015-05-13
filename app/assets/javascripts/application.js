@@ -46,7 +46,7 @@
 //= require ahoy
 
 ahoy.trackView();
-ahoy.trackClicks();
+//ahoy.trackClicks();
 
 if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   var msViewportStyle = document.createElement('style')
