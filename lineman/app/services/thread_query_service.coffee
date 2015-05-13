@@ -33,7 +33,7 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
     createGroupView = (group) ->
       _.memoize(->
         view = Records.discussions.collection.addDynamicView group.name
-        view.applyFind({groupId: { $in: group.organizationIds() }})
+        view.applyFind({groupId: { $in: group.organisationIds() }})
         view.applySimpleSort('lastActivityAt', true)
         view)()
 
