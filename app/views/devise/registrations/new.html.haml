@@ -23,16 +23,26 @@
             %p= t :or_sign_in_html, link: user_session_path, link_class: 'existing-user'
             .signin_container
               = render "form"
+
               -unless omniauth_authenticated_and_waiting?
                 .sso-btn-row
-                  %label= t :sign_up_with_third_party
-                  = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-default btn-block btn-lg login' do
-                    = t :sign_up_with_facebook
-                  = link_to user_omniauth_authorize_url(:google, host: ENV['CANONICAL_HOST'] || request.host), class: 'btn btn-default btn-block btn-lg login' do
-                    = t :sign_up_with_google
-                  = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
-                    = t :sign_up_with_twitter
-                  = link_to user_omniauth_authorize_path(:browser_id), class: 'btn btn-default btn-block btn-lg login', id: 'persona-login-btn' do
-                    = t :sign_up_with_persona
+                  - if has_email_password?
+                    %label= t :sign_up_with_third_party
+
+                  - if has_facebook?
+                    = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-default btn-block btn-lg login' do
+                      = t :sign_up_with_facebook
+                  - if has_google?
+                    = link_to user_omniauth_authorize_url(:google, host: ENV['CANONICAL_HOST'] || request.host), class: 'btn btn-default btn-block btn-lg login' do
+                      = t :sign_up_with_google
+                  - if has_twitter?
+                    = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
+                      = t :sign_up_with_twitter
+                  - if has_persona?
+                    = link_to user_omniauth_authorize_path(:browser_id), class: 'btn btn-default btn-block btn-lg login', id: 'persona-login-btn' do
+                      = t :sign_up_with_persona
+                  - if has_custom_oauth2?
+                    = link_to user_omniauth_authorize_path(:custom_oauth2), class: 'btn btn-default btn-block btn-lg login', id: 'custom_oauth2-login-btn' do
+                      = t :sign_up_with_custom_oauth2, name: Rails.application.secrets.custom_oauth2_name
 
           .terms= t(:tos_html, link_path: terms_of_service_path) if hosted_by_loomio?
