@@ -9,7 +9,10 @@
   padding: 13px 13px;
   border-bottom: 1px solid $border-color;
   position: relative;
-  &:hover { background-color: $list-hover-color; }
+  &:hover {
+    .thread-preview__actions { display: block; }
+    background-color: $list-hover-color;
+  }
 }
 
 .thread-preview__thread-header {
@@ -55,6 +58,7 @@
 .thread-preview__actions{
   float: right;
   padding-left: 10px;
+  display: none;
 }
 
 .thread-preview__star{

@@ -78,6 +78,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     isParticipating: ->
       @reader().participating
 
+    isStarred: ->
+      @reader().starred
+
     unreadItemsCount: ->
       @itemsCount - @reader().readItemsCount
 

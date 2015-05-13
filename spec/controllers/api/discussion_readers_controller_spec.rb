@@ -7,7 +7,7 @@ describe API::DiscussionReadersController do
   let(:comment) { build(:comment, discussion: discussion) }
   let(:discussion) { create :discussion, group: group }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
-  let(:reader_params) { { volume: :mute } }
+  let(:reader_params) { { volume: :mute, starred: true } }
 
   before do
     group.add_admin! user
@@ -37,6 +37,12 @@ describe API::DiscussionReadersController do
         post :update, id: reader.discussion.id, discussion_reader: reader_params
         expect(response).to be_success
         expect(reader.reload.volume.to_sym).to eq reader_params[:volume]
+      end
+
+      it "updates a discussion reader's star status" do
+        post :update, id: reader.discussion.id, discussion_reader: reader_params
+        expect(response).to be_success
+        expect(reader.reload.starred).to be_truthy
       end
     end
 

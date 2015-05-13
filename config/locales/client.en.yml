@@ -341,6 +341,7 @@ en:
     no_threads: No threads to show.
     view_recent: View all recent threads?
     load_more: Load more threads
+    mark_as_read: Mark as read
     filtering:
       filter_threads: Filter Threads
       dropdown_heading: Filter dashboard

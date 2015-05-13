@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512034525) do
+ActiveRecord::Schema.define(version: 20150513023923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(version: 20150512034525) do
     t.integer  "read_salient_items_count", default: 0,     null: false
     t.integer  "volume"
     t.boolean  "participating",            default: false, null: false
+    t.boolean  "starred",                  default: false, null: false
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
