@@ -160,6 +160,7 @@ class Admin::StatsController < Admin::BaseController
     outcomes_count = g.motions.where('outcome IS NOT NULL').count
     { id: g.id,
       name: g.full_name,
+      admin_group_url: admin_group_path(g),
       discussions: g.discussions.count,
       comments: comments_count,
       motions: g.motions.count,
