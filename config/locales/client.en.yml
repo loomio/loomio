@@ -348,6 +348,9 @@ en:
       all: Recent Threads
       all_aria_label: Currently showing recent threads
       all_description: View recent threads
+      starred: Starred Threads
+      starred_aria_label: Currently showing threads I've marked as important
+      starred_description: View only threads you have marked as important
       participating: Participating threads
       participating_aria_label: Currently showing threads I've participated
       participating_description: View only threads you have participated in
