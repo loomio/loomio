@@ -209,6 +209,13 @@ Devise.setup do |config|
   config.omniauth :facebook, Rails.application.secrets.facebook_key, Rails.application.secrets.facebook_secret
   config.omniauth :browser_id
   config.omniauth :twitter, Rails.application.secrets.twitter_key, Rails.application.secrets.twitter_secret
+  config.omniauth :custom_oauth2, Rails.application.secrets.custom_oauth2_key, Rails.application.secrets.custom_oauth2_secret,
+    :client_options => {
+      :site => Rails.application.secrets.custom_oauth2_site,
+      :authorize_url => Rails.application.secrets.custom_oauth2_authorize_url,
+      :token_url => Rails.application.secrets.custom_oauth2_token_url
+    },
+    :strategy_class => CustomOauth2
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

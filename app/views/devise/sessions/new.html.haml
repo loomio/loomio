@@ -22,6 +22,7 @@
             = link_to t(:'create_one_now'), new_user_registration_path, id:'create_account'
           .signin_container
             = render "form"
+
             -unless omniauth_authenticated_and_waiting?
               .sso-btn-row
                 %label= t :log_in_with_third_party
@@ -33,7 +34,8 @@
                   = t :log_in_with_twitter
                 = link_to user_omniauth_authorize_path(:browser_id), class: 'btn btn-default btn-block btn-lg login', id: 'persona-login-btn' do
                   = t :log_in_with_persona
-
+                = link_to user_omniauth_authorize_path(:custom_oauth2), class: 'btn btn-default btn-block btn-lg login', id: 'custom_oauth2-login-btn' do
+                  = t :log_in_with_custom_oauth2, :name => Rails.application.secrets.custom_oauth2_name
 
           .terms
             =t(:tos_html, link_path: terms_of_service_path) if hosted_by_loomio?
