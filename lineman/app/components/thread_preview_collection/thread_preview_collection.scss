@@ -62,11 +62,7 @@
 }
 
 .thread-preview__star{
-  @include fontLarge;
-}
-
-.thread-preview__star.is-starred{
-  i{color: $loomio-orange;}
+  float: right;
 }
 
 .thread-preview__mark-as-read{

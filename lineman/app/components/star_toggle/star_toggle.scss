@@ -1,0 +1,6 @@
+.star-toggle{
+  @include fontLarge;
+  cursor: pointer;
+  line-height: 30px;
+  .fa-star { color: $loomio-orange; }
+}
