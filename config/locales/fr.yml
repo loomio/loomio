@@ -576,6 +576,7 @@ fr:
   change_proposal_close_date: Changer la date de clôture
   change_proposal_close_date_header: "Changer la date de clôture pour la proposition '%{which}'"
   proposal: Proposition
+  proposals: Propositions
   proposal_close_date_error: "Merci de donner une date future de clôture "
   proposal_closing_when: "Fermera dans  %{when}"
   proposal_closed_when: "Fermé depuis %{when}"

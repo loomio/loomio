@@ -565,6 +565,7 @@ zh-TW:
   change_proposal_close_date: 變更定案日期
   change_proposal_close_date_header: "變更提議「%{which}」的定案日期"
   proposal: 提案
+  proposals: 提議
   proposal_close_date_error: 請提供尚未逾期的定案日期
   proposal_closing_when: "在%{when}之內定案"
   proposal_closed_when: "在%{when}前已定案"

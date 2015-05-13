@@ -564,6 +564,7 @@ de:
   change_proposal_close_date: Enddatum ändern
   change_proposal_close_date_header: "Ändere das Enddatum für den Vorschlag '%{which}'"
   proposal: Vorschlag
+  proposals: Vorschläge
   proposal_close_date_error: "Bitte gib einen Enddatum an, das in der Zukunft liegt"
   proposal_closing_when: "Endet in %{when}"
   proposal_closed_when: "Endete vor %{when}"

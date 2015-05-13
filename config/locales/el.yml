@@ -564,6 +564,7 @@ el:
   change_proposal_close_date: Αλλάξτε την ημερομηνία κλεισίματος
   change_proposal_close_date_header: "Αλλάξτε την ημερομηνία κλεισίματος για την πρόταση '%{which}'"
   proposal: Πρόταση
+  proposals: Προτάσεις
   proposal_close_date_error: Παρακαλούμε δώστε μελλοντική ημερομηνία κλεισίματος
   proposal_closing_when: "Κλείνει σε %{when}"
   proposal_closed_when: "Έκλεισε πριν από %{when}"

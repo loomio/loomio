@@ -545,6 +545,7 @@ nl-NL:
   change_proposal_close_date: Verander sluitingsdatum
   change_proposal_close_date_header: "Verander de sluitingsdatum voor voorstel '%{which}'"
   proposal: Voorstel
+  proposals: Voorstellen
   proposal_close_date_error: Geef een sluitingsdatum in de toekomst op
   proposal_closing_when: "Sluit over %{when}"
   proposal_closed_when: "%{when} geleden gesloten"
