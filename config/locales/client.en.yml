@@ -11,7 +11,7 @@ en:
     privacy:
       private: 'Private'
       public: 'Public'
-      organization: 'Organization'
+      organisation: 'Organisation'
     selected: 'Selected'
     date_range:
       today: 'Today'
@@ -221,7 +221,7 @@ en:
     messages:
       privacy:
         members: 'This group is now visible only to members'
-        parent_members: 'This group is now visible only to members of your organization'
+        parent_members: 'This group is now visible only to members of your organisation'
         public: 'This group is now visible to the public'
       leave_group_success: 'You have successfully left this group'
       deactivate_group_success: 'You have successfully deactivated this group'
@@ -283,7 +283,7 @@ en:
       label: 'Privacy'
       visible_to_members: 'Who can find this group?'
       public_visibility: 'Anyone - list the group publicly'
-      organization_visibility: "Organization - unlisted to the public, but visible to members of {{parentGroupName}}"
+      organisation_visibility: "Organisation - unlisted to the public, but visible to members of {{parentGroupName}}"
       private_visibility: 'Members only - the group will not be listed'
       membership_granted_upon: 'How do people join?'
       membership_by_request: 'Open - anyone can join the group'

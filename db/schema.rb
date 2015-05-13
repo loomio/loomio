@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(version: 20150513023923) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_admin_notes_on_resource_type_and_resource_id", using: :btree
 
+  create_table "ahoy_events", id: :uuid, default: nil, force: :cascade do |t|
+    t.uuid     "visit_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.jsonb    "properties"
+    t.datetime "time"
+  end
+
+  add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
+  add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
+  add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
+
   create_table "announcement_dismissals", force: :cascade do |t|
     t.integer  "announcement_id"
     t.integer  "user_id"
@@ -86,6 +98,11 @@ ActiveRecord::Schema.define(version: 20150513023923) do
     t.integer  "position",               default: 0, null: false
   end
 
+  create_table "cohorts", force: :cascade do |t|
+    t.date "start_on"
+    t.date "end_on"
+  end
+
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
     t.integer "descendant_id", null: false
@@ -103,6 +120,7 @@ ActiveRecord::Schema.define(version: 20150513023923) do
   end
 
   add_index "comment_votes", ["comment_id"], name: "index_comment_votes_on_comment_id", using: :btree
+  add_index "comment_votes", ["created_at"], name: "index_comment_votes_on_created_at", using: :btree
   add_index "comment_votes", ["user_id"], name: "index_comment_votes_on_user_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
@@ -120,6 +138,7 @@ ActiveRecord::Schema.define(version: 20150513023923) do
     t.datetime "edited_at"
   end
 
+  add_index "comments", ["created_at"], name: "index_comments_on_created_at", using: :btree
   add_index "comments", ["discussion_id"], name: "index_comments_on_commentable_id", using: :btree
   add_index "comments", ["discussion_id"], name: "index_comments_on_discussion_id", using: :btree
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
@@ -223,6 +242,7 @@ ActiveRecord::Schema.define(version: 20150513023923) do
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
+  add_index "discussions", ["created_at"], name: "index_discussions_on_created_at", using: :btree
   add_index "discussions", ["group_id"], name: "index_discussions_on_group_id", using: :btree
   add_index "discussions", ["is_deleted", "group_id"], name: "index_discussions_on_is_deleted_and_group_id", using: :btree
   add_index "discussions", ["is_deleted", "id"], name: "index_discussions_on_is_deleted_and_id", using: :btree
@@ -253,6 +273,27 @@ ActiveRecord::Schema.define(version: 20150513023923) do
 
   add_index "group_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "group_anc_desc_udx", unique: true, using: :btree
   add_index "group_hierarchies", ["descendant_id"], name: "group_desc_idx", using: :btree
+
+  create_table "group_measurements", force: :cascade do |t|
+    t.integer "group_id"
+    t.date    "period_end_on"
+    t.integer "members_count"
+    t.integer "admins_count"
+    t.integer "subgroups_count"
+    t.integer "invitations_count"
+    t.integer "discussions_count"
+    t.integer "proposals_count"
+    t.integer "comments_count"
+    t.integer "likes_count"
+    t.integer "group_visits_count"
+    t.integer "member_group_visits_count"
+    t.integer "organisation_visits_count"
+    t.integer "member_organisation_visits_count"
+  end
+
+  add_index "group_measurements", ["group_id", "period_end_on"], name: "index_group_measurements_on_group_id_and_period_end_on", unique: true, using: :btree
+  add_index "group_measurements", ["group_id"], name: "index_group_measurements_on_group_id", using: :btree
+  add_index "group_measurements", ["period_end_on"], name: "index_group_measurements_on_period_end_on", using: :btree
 
   create_table "group_requests", force: :cascade do |t|
     t.string   "name",                limit: 255
@@ -305,6 +346,16 @@ ActiveRecord::Schema.define(version: 20150513023923) do
     t.datetime "updated_at",                                             null: false
   end
 
+  create_table "group_visits", force: :cascade do |t|
+    t.uuid     "visit_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "group_visits", ["created_at"], name: "index_group_visits_on_created_at", using: :btree
+  add_index "group_visits", ["visit_id", "group_id"], name: "index_group_visits_on_visit_id_and_group_id", unique: true, using: :btree
+
   create_table "groups", force: :cascade do |t|
     t.string   "name",                               limit: 255
     t.datetime "created_at"
@@ -356,10 +407,13 @@ ActiveRecord::Schema.define(version: 20150513023923) do
     t.integer  "creator_id"
     t.boolean  "is_commercial"
     t.boolean  "is_referral",                                    default: false,          null: false
+    t.integer  "cohort_id"
   end
 
   add_index "groups", ["archived_at", "id"], name: "index_groups_on_archived_at_and_id", using: :btree
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
+  add_index "groups", ["cohort_id"], name: "index_groups_on_cohort_id", using: :btree
+  add_index "groups", ["created_at"], name: "index_groups_on_created_at", using: :btree
   add_index "groups", ["full_name"], name: "index_groups_on_full_name", using: :btree
   add_index "groups", ["is_visible_to_public"], name: "index_groups_on_is_visible_to_public", using: :btree
   add_index "groups", ["key"], name: "index_groups_on_key", unique: true, using: :btree
@@ -379,8 +433,12 @@ ActiveRecord::Schema.define(version: 20150513023923) do
     t.string   "recipient_name",  limit: 255
     t.integer  "invitable_id"
     t.string   "invitable_type",  limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
+  add_index "invitations", ["created_at"], name: "index_invitations_on_created_at", using: :btree
+  add_index "invitations", ["invitable_type", "invitable_id"], name: "index_invitations_on_invitable_type_and_invitable_id", using: :btree
   add_index "invitations", ["token"], name: "index_invitations_on_token", using: :btree
 
   create_table "membership_requests", force: :cascade do |t|
@@ -417,6 +475,7 @@ ActiveRecord::Schema.define(version: 20150513023923) do
     t.integer  "volume",         default: 2,     null: false
   end
 
+  add_index "memberships", ["created_at"], name: "index_memberships_on_created_at", using: :btree
   add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
   add_index "memberships", ["inviter_id"], name: "index_memberships_on_inviter_id", using: :btree
   add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
@@ -456,6 +515,7 @@ ActiveRecord::Schema.define(version: 20150513023923) do
   end
 
   add_index "motions", ["author_id"], name: "index_motions_on_author_id", using: :btree
+  add_index "motions", ["created_at"], name: "index_motions_on_created_at", using: :btree
   add_index "motions", ["discussion_id", "closed_at"], name: "index_motions_on_discussion_id_and_closed_at", order: {"closed_at"=>:desc}, using: :btree
   add_index "motions", ["discussion_id"], name: "index_motions_on_discussion_id", using: :btree
   add_index "motions", ["key"], name: "index_motions_on_key", unique: true, using: :btree
@@ -530,6 +590,16 @@ ActiveRecord::Schema.define(version: 20150513023923) do
   add_index "omniauth_identities", ["email"], name: "index_personas_on_email", using: :btree
   add_index "omniauth_identities", ["provider", "uid"], name: "index_omniauth_identities_on_provider_and_uid", using: :btree
   add_index "omniauth_identities", ["user_id"], name: "index_personas_on_user_id", using: :btree
+
+  create_table "organisation_visits", force: :cascade do |t|
+    t.uuid     "visit_id"
+    t.integer  "organisation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "organisation_visits", ["created_at"], name: "index_organisation_visits_on_created_at", using: :btree
+  add_index "organisation_visits", ["visit_id", "organisation_id"], name: "index_organisation_visits_on_visit_id_and_organisation_id", unique: true, using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "group_id"
@@ -630,6 +700,33 @@ ActiveRecord::Schema.define(version: 20150513023923) do
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
+  create_table "visits", id: :uuid, default: nil, force: :cascade do |t|
+    t.uuid     "visitor_id"
+    t.string   "ip"
+    t.text     "user_agent"
+    t.text     "referrer"
+    t.text     "landing_page"
+    t.integer  "user_id"
+    t.string   "referring_domain"
+    t.string   "search_keyword"
+    t.string   "browser"
+    t.string   "os"
+    t.string   "device_type"
+    t.integer  "screen_height"
+    t.integer  "screen_width"
+    t.string   "country"
+    t.string   "region"
+    t.string   "city"
+    t.string   "utm_source"
+    t.string   "utm_medium"
+    t.string   "utm_term"
+    t.string   "utm_content"
+    t.string   "utm_campaign"
+    t.datetime "started_at"
+  end
+
+  add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
+
   create_table "votes", force: :cascade do |t|
     t.integer  "motion_id"
     t.integer  "user_id"
@@ -641,6 +738,7 @@ ActiveRecord::Schema.define(version: 20150513023923) do
     t.integer  "previous_vote_id"
   end
 
+  add_index "votes", ["created_at"], name: "index_votes_on_created_at", using: :btree
   add_index "votes", ["motion_id", "user_id", "age"], name: "vote_age_per_user_per_motion", unique: true, using: :btree
   add_index "votes", ["motion_id", "user_id"], name: "index_votes_on_motion_id_and_user_id", using: :btree
   add_index "votes", ["motion_id"], name: "index_votes_on_motion_id", using: :btree

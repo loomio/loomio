@@ -8,6 +8,7 @@ class GroupsController < GroupBaseController
   before_filter :ensure_group_is_setup, only: :show
   before_filter :assign_meta_data, only: :show
   after_filter :clear_discussion_index_caches, only: :show
+  after_filter :track_visit, only: :show
 
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.group_private_or_not_found') }
@@ -117,6 +118,7 @@ class GroupsController < GroupBaseController
     @closed_motions = Queries::VisibleMotions.new(user: current_user, groups: @group).order('closed_at desc')
     @feed_url = group_url @group, format: :xml if @group.is_visible_to_public?
 
+    GroupVisitService.record(visit: current_visit, group: @group)
     build_discussion_index_caches
   end
 

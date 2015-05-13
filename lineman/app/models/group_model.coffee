@@ -10,10 +10,10 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
     discussions: ->
       @discussionsView.data()
 
-    organizationDiscussions: ->
-      @recordStore.discussions.find(groupId: { $in: @organizationIds()})
+    organisationDiscussions: ->
+      @recordStore.discussions.find(groupId: { $in: @organisationIds()})
 
-    organizationIds: ->
+    organisationIds: ->
       _.pluck(@subgroups(), 'id').concat(@id)
 
     subgroups: ->
@@ -61,7 +61,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       @parent().visibleToPublic() if @parentId?
 
     visibleToPublic: ->       @visibleTo == 'public'
-    visibleToOrganization: -> @visibleTo == 'parent_members'
+    visibleToorganisation: -> @visibleTo == 'parent_members'
     visibleToMembers: ->      @visibleTo == 'members'
 
     isSubgroup: ->
