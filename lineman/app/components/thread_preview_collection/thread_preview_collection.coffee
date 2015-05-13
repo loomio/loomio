@@ -7,7 +7,4 @@ angular.module('loomioApp').directive 'threadPreviewCollection', ->
     $scope.lastVoteByCurrentUser = (thread) ->
       thread.activeProposal().lastVoteByUser(CurrentUser)
 
-    $scope.markAsRead = (thread) ->
-      thread.markAsRead()
-
     return
