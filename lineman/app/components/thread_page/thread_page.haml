@@ -22,6 +22,7 @@
             %ul.dropdown-menu-items
               %li.dropdown-menu-item
                 %a.dropdown-menu-item-label{href: '', ng-click: 'threadPage.editDiscussion()', translate: 'common.action.edit', ng-if: 'threadPage.canEditDiscussion()'}
+        %star_toggle.pull-right{thread: 'threadPage.discussion'}
         .thread-notification-level.lmo-btn-wrapper
           %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
 
