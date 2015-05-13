@@ -16,6 +16,7 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
 script: "bundle exec rake travis"
 addons:
+  postgresql: "9.4"
   code_climate:
     repo_token:
       secure: "RQcqTqhx9hhcWO97ib8s8I8m/ufPbBuKRfEEh4RHNIsBEMpqekaPNHtK+T2ym2pfbCpD+L+0bZ+nMlSCrYz0gklfNnYJlPH4/g1f0SX2OEdq2eUCi9xlRObi9ayXsz7Ujtk14mncNGx+e02TnAtEjtFBT8uyvxn8Ql4djvOTsCg="

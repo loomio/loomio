@@ -20,7 +20,7 @@
         %label{for: 'group-visible-to-members', translate: 'group_form.privacy.visible_to_members'}
         %select#group-visible-to-members-field.form-control{ng-change: 'groupForm.updateOptions()', ng-model: 'groupForm.group.visibleTo', ng_required: true}
           %option{value: 'public', ng-if: 'groupForm.validVisibilityOption("public")', translate: 'group_form.privacy.public_visibility'}
-          %option{value: 'parent_members', ng-if: 'groupForm.validVisibilityOption("parent_members")', translate: 'group_form.privacy.organization_visibility', translate-value-parent-group-name: '{{groupForm.group.parentName()}}'}
+          %option{value: 'parent_members', ng-if: 'groupForm.validVisibilityOption("parent_members")', translate: 'group_form.privacy.organisation_visibility', translate-value-parent-group-name: '{{groupForm.group.parentName()}}'}
           %option{value: 'members', ng-if: 'groupForm.validVisibilityOption("members")', translate: 'group_form.privacy.private_visibility'}
 
         %label{for: 'group-membership-granted-upon', translate: 'group_form.privacy.membership_granted_upon'}

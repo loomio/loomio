@@ -96,6 +96,7 @@ class Group < ActiveRecord::Base
                                              parents_only }
 
   scope :alphabetically, -> { order('full_name asc') }
+  scope :in_any_cohort, -> { where('cohort_id is not null') }
 
   has_one :group_request
 
@@ -150,11 +151,14 @@ class Group < ActiveRecord::Base
   belongs_to :creator, class_name: 'User'
   belongs_to :category
   belongs_to :theme
+  belongs_to :cohort
 
   has_many :subgroups,
            -> { where(archived_at: nil).order(:name) },
            class_name: 'Group',
            foreign_key: 'parent_id'
+
+  has_many :comment_votes, through: :comments
 
   # maybe change this to just archived_subgroups
   has_many :all_subgroups,
@@ -470,6 +474,10 @@ class Group < ActiveRecord::Base
     else
       self
     end
+  end
+
+  def organisation_id
+    parent_id or id
   end
 
   def organisation_discussions_count

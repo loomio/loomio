@@ -43,7 +43,7 @@ FactoryGirl.define do
     members_can_add_members true
     after(:create) do |group, evaluator|
       user = FactoryGirl.create(:user)
-      group.pending_invitations << FactoryGirl.create(:invitation, invitable: group)
+      #group.pending_invitations << FactoryGirl.create(:invitation, invitable: group)
       if group.parent.present?
         group.parent.admins << user
       end
