@@ -1,5 +1,16 @@
 .thread-previews
   .thread-preview{ng-repeat: 'thread in query.threads() | limitTo: limit'}
+    .thread-preview__actions
+      %button.btn.btn-default.btn-sm.thread-preview__mark-as-read{ng-click: 'thread.reader().markAsRead()', ng-class: '{disabled: !thread.isUnread()}'}>
+        %i.fa.fa-check>
+        %span{translate: 'dashboard_page.mark_as_read'}
+      %button.btn.btn-default.btn-sm.thread-preview__mute{ng-click: 'thread.reader().changeVolume("mute")', ng-class: '{disabled: thread.isMuted()}'}>
+        %i.fa.fa-volume-off
+        %i.fa.fa-times>
+        %span{translate: 'volume_levels.mute'}
+      %a.thread-preview__star.thread-preview__star{ng-class: '{"is-starred": thread.isStarred()}', ng-click: 'thread.reader().toggleStar()'}
+        %i.fa.fa-star
+
     %a.selector-list-item-link{href: '/d/{{ thread.key }}'}
       .sr-only
         %span{translate: 'dashboard_page.aria_thread.title', translate-value-title: '{{ thread.title }}'}
