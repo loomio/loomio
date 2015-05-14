@@ -35,7 +35,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def visible_records
-    Queries::VisibleDiscussions.new(user: current_user, groups: current_user.groups)
+    Queries::VisibleDiscussions.new(user: current_user, groups: current_user.groups).sorted_by_latest_activity
   end
 
   private

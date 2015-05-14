@@ -81,6 +81,11 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
+  def sorted_by_latest_activity
+    @relation = @relation.order(last_activity_at: :desc)
+    self
+  end
+
   def sorted_by_latest_motions
     @relation = @relation.joined_to_current_motion
                          .preload(:current_motion, {group: :parent})
