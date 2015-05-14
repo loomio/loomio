@@ -49,8 +49,12 @@
     %h1.lmo-h1-medium.dashboard-page__heading{translate: 'dashboard_page.filtering.participating', ng-show: 'dashboardPage.filter == "show_participating"'}
     %h1.lmo-h1-medium.dashboard-page__heading{translate: 'dashboard_page.filtering.proposals', ng-show: 'dashboardPage.filter == "show_proposals"'}
     %h1.lmo-h1-medium.dashboard-page__heading{translate: 'dashboard_page.filtering.muted', ng-show: 'dashboardPage.filter == "show_muted"'}
-    .dashboard-page__no-threads{ng-show: '!dashboardPage.loadMoreExecuting && dashboardPage.dashboardThreads().length == 0'}
-      %span{translate: 'dashboard_page.no_threads'}>
+    .dashboard-page__no-threads{ng-hide: 'dashboardPage.loadMoreExecuting || dashboardPage.currentBaseQuery.any()'}
+      %span{ng-show: 'dashboardPage.filter == "show_all"', translate: 'dashboard_page.no_threads.show_all'}>
+      %span{ng-show: 'dashboardPage.filter == "show_starred"', translate: 'dashboard_page.no_threads.show_starred'}>
+      %span{ng-show: 'dashboardPage.filter == "show_participating"', translate: 'dashboard_page.no_threads.show_participating'}>
+      %span{ng-show: 'dashboardPage.filter == "show_proposals"', translate: 'dashboard_page.no_threads.show_proposals'}>
+      %span{ng-show: 'dashboardPage.filter == "show_muted"', translate: 'dashboard_page.no_threads.show_muted'}>
       %a{ng-show: 'dashboardPage.filter != "show_all"', translate: 'dashboard_page.view_recent', href: '#', ng-click: 'dashboardPage.setFilter("show_all")'}>
     .dashboard-page__collections{ng-if: '!dashboardPage.displayByGroup()'}
       %section.thread-preview-collection__container{ng-show: 'dashboardPage.timeframeQueryFor(timeframe).any()', aria-labelledby: '{{timeframe}}', ng-repeat: 'timeframe in dashboardPage.timeframeNames'}

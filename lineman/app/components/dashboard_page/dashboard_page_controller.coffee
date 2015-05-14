@@ -56,6 +56,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
 
   @setFilter = (filter) ->
     @filter = filter
+    @currentBaseQuery = ThreadQueryService.filterQuery(@filter)
     @refresh()
   @setFilter 'show_all'
 
