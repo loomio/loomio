@@ -21,6 +21,9 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     positionVerbs: ['agree', 'abstain', 'disagree', 'block']
     positions: ['yes', 'abstain', 'no', 'block']
 
+    closingSoon: ->
+      @isActive() and @closingAt < moment().add(24, 'hours').toDate()
+
     canBeEdited: ->
       @isNew() or !@hasVotes()
 

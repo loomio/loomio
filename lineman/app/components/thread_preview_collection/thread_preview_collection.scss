@@ -43,6 +43,11 @@
   line-height: 20px;
 }
 
+.thread-preview__proposal-closing-at {
+  @include fontSmall;
+  color: $highlight-red;
+}
+
 .thread-preview__pie-chart {
   padding-right: 5px;
   line-height: 18px;
