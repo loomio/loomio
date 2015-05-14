@@ -1,13 +1,18 @@
 -unless omniauth_authenticated_and_waiting?
   .sso-btn-row
     %label= t :log_in_with_third_party
-    = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-default btn-block btn-lg login' do
-      = t :log_in_with_facebook
-    = link_to user_omniauth_authorize_url(:google, host: ENV['CANONICAL_HOST'] || request.host), class: 'btn btn-default btn-block btn-lg login' do
-      = t :log_in_with_google
-    = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
-      = t :log_in_with_twitter
-    = link_to user_omniauth_authorize_path(:browser_id), class: 'btn btn-default btn-block btn-lg login', id: 'persona-login-btn' do
-      = t :log_in_with_persona
-    = link_to user_omniauth_authorize_path(:custom_oauth2), class: 'btn btn-default btn-block btn-lg login', id: 'custom_oauth2-login-btn' do
-      = t :log_in_with_custom_oauth2, :name => Rails.application.secrets.custom_oauth2_name
+    - if has_facebook?
+      = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-default btn-block btn-lg login' do
+        = t :log_in_with_facebook
+    - if has_google?
+      = link_to user_omniauth_authorize_url(:google, host: ENV['CANONICAL_HOST'] || request.host), class: 'btn btn-default btn-block btn-lg login' do
+        = t :log_in_with_google
+    - if has_twitter?
+      = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
+        = t :log_in_with_twitter
+    - if has_persona?
+      = link_to user_omniauth_authorize_path(:browser_id), class: 'btn btn-default btn-block btn-lg login', id: 'persona-login-btn' do
+        = t :log_in_with_persona
+    - if has_custom_oauth2?
+      = link_to user_omniauth_authorize_path(:custom_oauth2), class: 'btn btn-default btn-block btn-lg login', id: 'custom_oauth2-login-btn' do
+        = t :log_in_with_custom_oauth2, :name => Rails.application.secrets.custom_oauth2_name
