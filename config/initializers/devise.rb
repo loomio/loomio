@@ -1,3 +1,5 @@
+include Oauth2Helper
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -205,17 +207,17 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth 'google_oauth2', Rails.application.secrets.google_key, Rails.application.secrets.google_secret, name: 'google'
-  config.omniauth :facebook, Rails.application.secrets.facebook_key, Rails.application.secrets.facebook_secret
-  config.omniauth :browser_id
-  config.omniauth :twitter, Rails.application.secrets.twitter_key, Rails.application.secrets.twitter_secret
+  config.omniauth 'google_oauth2', Rails.application.secrets.google_key, Rails.application.secrets.google_secret, name: 'google' if has_google?
+  config.omniauth :facebook, Rails.application.secrets.facebook_key, Rails.application.secrets.facebook_secret if has_facebook?
+  config.omniauth :browser_id if has_persona?
+  config.omniauth :twitter, Rails.application.secrets.twitter_key, Rails.application.secrets.twitter_secret if has_twitter?
   config.omniauth :custom_oauth2, Rails.application.secrets.custom_oauth2_key, Rails.application.secrets.custom_oauth2_secret,
     :client_options => {
       :site => Rails.application.secrets.custom_oauth2_site,
       :authorize_url => Rails.application.secrets.custom_oauth2_authorize_url,
       :token_url => Rails.application.secrets.custom_oauth2_token_url
     },
-    :strategy_class => CustomOauth2
+    :strategy_class => CustomOauth2 if has_custom_oauth2?
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
