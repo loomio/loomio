@@ -9,7 +9,7 @@ angular.module('loomioApp', ['ngNewRouter',
                              'ngAnimate',
                              'angular-inview',
                              'ui.gravatar',
-                             'truncate', 'duScroll']).config ($httpProvider, $locationProvider, $translateProvider, $componentLoaderProvider) ->
+                             'truncate', 'duScroll']).config ($httpProvider, $locationProvider, $translateProvider) ->
 
   # consume the csrf token from the page so form submissions can work
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
@@ -20,10 +20,6 @@ angular.module('loomioApp', ['ngNewRouter',
   $translateProvider.
     useUrlLoader('/api/v1/translations/en').
     preferredLanguage('en')
-
-  $componentLoaderProvider.setTemplateMapping (name) ->
-    snakeName = _.snakeCase(name);
-    'generated/components/' + snakeName + '/' + snakeName + '.html';
 
 angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootScope, $router, KeyEventService) ->
   $scope.currentComponent = 'nothing yet'
