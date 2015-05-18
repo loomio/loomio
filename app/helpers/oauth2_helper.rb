@@ -20,4 +20,8 @@ module Oauth2Helper
     Rails.application.secrets.custom_oauth2_key and Rails.application.secrets.custom_oauth2_secret
   end
 
+  def has_email_password?
+    Rails.application.secrets.enable_email_password
+  end
+
 end
