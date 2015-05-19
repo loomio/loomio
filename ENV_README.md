@@ -1,4 +1,4 @@
-# -- Server env -- 
+# -- Server env --
 
 RACK_ENV=development
 
@@ -43,16 +43,32 @@ Set to 1 if you want to allow robots (search engines) to crawl the public data o
 
 # -- 3rd party services --
 
+## OAuth2 configuration
+
+By default all of these values are empty; these need to be set to enable each OAuth2 login/signup method.
+
+- ENABLE_PERSONA (defaults to true)
+- ENABLE_EMAIL_PASSWORD (display password registration form, defaults to true)
+- GOOGLE_KEY
+- GOOGLE_SECRET
+- FACEBOOK_KEY
+- FACEBOOK_SECRET
+- TWITTER_KEY
+- TWITTER_SECRET
+- CUSTOM_OAUTH2_NAME
+- CUSTOM_OAUTH2_KEY
+- CUSTOM_OAUTH2_SECRET
+- CUSTOM_OAUTH2_SITE
+- CUSTOM_OAUTH2_AUTHORIZE_URL
+- CUSTOM_OAUTH2_TOKEN_URL
+- CUSTOM_OAUTH2_INFO_URL
+
 ## Amazon AWS for attachments
 AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
 AWS_BUCKET
 
 ## Social media
-FACEBOOK_KEY
-FACEBOOK_SECRET
-TWITTER_KEY
-TWITTER_SECRET
 FB_APP_ID_META
 
 ## Stats / Diagnostics
@@ -77,22 +93,19 @@ ERRBIT_KEY
 ERRBIT_HOST
 ERRBIT_PORT
 
-
-# -- Deprecated -- 
+# -- Deprecated --
 
 GMAIL_PASSWORD
 GMAIL_USER_NAME
 YAHOO_KEY
 YAHOO_SECRET
 
-# -- ??? --- 
+# -- ??? ---
 
 BUNDLE_GEMFILE
 CFLAGS
 GEM_HOME
 GEM_PATH
-GOOGLE_KEY
-GOOGLE_SECRET
 LIBS
 MAX_THREADS
 MIN_THREADS
@@ -110,8 +123,8 @@ UNICORN_TIMEOUT
 UNICORN_WORKERS
 callbackName
 
-## find the ENV currently in use in the app using : 
-##   grep -rIso -P "(?<=ENV)(\.fetch\(|\[).[A-Z_]+.(\)|\])" 
+## find the ENV currently in use in the app using :
+##   grep -rIso -P "(?<=ENV)(\.fetch\(|\[).[A-Z_]+.(\)|\])"
 
 # for a uniq ordered list of env vars:
-##   grep -rIsoh -P "(?<=ENV)(\.fetch\(|\[).[A-Z_]+.(\)|\])" | grep -oP "[A-Z_]+" | sort -u > temp  
+##   grep -rIsoh -P "(?<=ENV)(\.fetch\(|\[).[A-Z_]+.(\)|\])" | grep -oP "[A-Z_]+" | sort -u > temp
