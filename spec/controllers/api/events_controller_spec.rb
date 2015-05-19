@@ -53,14 +53,6 @@ describe API::EventsController do
         expect(sequence_ids.sort).to eq [4,5]
       end
 
-      it 'responds to a reverse parameter with from' do
-        get :index, discussion_id: discussion.id, from: 3, reverse: 'true'
-        json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[events])
-        sequence_ids = json['events'].map { |v| v['sequence_id'] }
-        expect(sequence_ids.sort).to eq [1,2]
-      end
-
       context 'with deleted events' do
         it 'accounts for deleted sequence ids' do
           Event.find_by_sequence_id(3).destroy
@@ -71,14 +63,6 @@ describe API::EventsController do
           expect(sequence_ids.sort).to eq [1,2,4]
         end
 
-        it 'accounts for deleted sequence ids in reverse' do
-          Event.find_by_sequence_id(3).destroy
-          get :index, discussion_id: discussion.id, from: 6, per: 3, reverse: 'true'
-          json = JSON.parse(response.body)
-          expect(json.keys).to include *(%w[events])
-          sequence_ids = json['events'].map { |v| v['sequence_id'] }
-          expect(sequence_ids.sort).to eq [2,4,5]
-        end
       end
     end
   end
