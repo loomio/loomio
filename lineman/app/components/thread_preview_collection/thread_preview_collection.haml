@@ -26,8 +26,9 @@
         .thread-preview__thread-info
           %span.thread-preview-proposal-info{ng-if: 'thread.activeProposal()'}
             %tiny_proposal_pie_chart.pull-left.thread-preview__pie-chart{proposal: 'thread.activeProposal()', ng-if: 'thread.activeProposal()'}
-            %span.thread-preview__proposal-name> {{ thread.activeProposal().name }} ·
-            %smart_time{time: 'thread.activeProposal().closingAt'}>
+            %span.nowrap.thread-preview__proposal-name> {{ thread.activeProposal().name }}
+            %span{ng-if: 'thread.activeProposal().closingSoon()'} ·
+            %closing_in.thread-preview__proposal-closing-at{ng-if: 'thread.activeProposal().closingSoon()', time: 'thread.activeProposal().closingAt'}>
         .thread-preview__group-name
           {{ thread.group().fullName() }} ·
           %smart_time{time: 'thread.lastActivityAt'}>

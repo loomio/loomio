@@ -338,7 +338,12 @@ en:
     aria_label: 'Dashboard'
     options:
       aria_label: 'Dashboard filtering options'
-    no_threads: No threads to show.
+    no_threads:
+      show_all: You don't have any recent threads.
+      show_participating: You haven't participated in any threads recently.
+      show_starred: You don't have any starred threads.
+      show_proposals: There are no proposals currently active.
+      show_muted: You don't have any muted threads.
     view_recent: View all recent threads?
     load_more: Load more threads
     mark_as_read: Mark as read
@@ -374,6 +379,7 @@ en:
       older: 'Older than a month'
 
   inbox_page:
+    no_threads: Woohoo! You've read all the threads in your inbox.
     unread_threads: Unread Threads
     view_more: View More
 

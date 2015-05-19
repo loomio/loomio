@@ -1,8 +1,8 @@
 angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
   new class ThreadQueryService
 
-    unreadQuery: ->
-      threadQueryFor createBaseView(), 'show_unread'
+    filterQuery: (filter) ->
+      threadQueryFor createBaseView(), filter
 
     groupQuery: (group = {}, options = {}) ->
       threadQueryFor createGroupView(group), 
