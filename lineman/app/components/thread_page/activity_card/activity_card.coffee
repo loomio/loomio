@@ -16,7 +16,7 @@ angular.module('loomioApp').directive 'activityCard', ->
       $scope.discussion.markAsRead(0)
 
       target = _.parseInt($location.hash())
-      if target > 0 and target < $scope.discussion.lastSequenceId 
+      if target >= $scope.discussion.firstSequenceId and target < $scope.discussion.lastSequenceId 
         # valid sequence id is specified in url
         $scope.initialLoaded  = _.max [target - rollback, 0]
         $scope.initialFocused = target
@@ -74,7 +74,7 @@ angular.module('loomioApp').directive 'activityCard', ->
     LoadingService.applyLoadingFunction $scope, 'loadEventsBackwards'
 
     $scope.canLoadBackwards = ->
-      $scope.initialLoaded > $scope.discussion.firstSequenceId and
+      $scope.firstLoadedSequenceId > $scope.discussion.firstSequenceId and
       !($scope.loadEventsForwardsExecuting or $scope.loadEventsBackwardsExecuting)
 
     $scope.loadMoreAfterReading = (item) ->

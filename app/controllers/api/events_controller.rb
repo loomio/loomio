@@ -8,7 +8,7 @@ class API::EventsController < API::RestfulController
   end
 
   def page_collection(collection)
-    collection.where('sequence_id > ?', params[:from] || 0)
+    collection.where('sequence_id >= ?', params[:from] || 0)
               .limit(params[:per] || default_page_size)
   end
 
