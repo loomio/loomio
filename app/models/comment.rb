@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   include Twitter::Extractor
   include Translatable
+  include Archivable
 
   has_paper_trail
   acts_as_tree
@@ -78,6 +79,10 @@ class Comment < ActiveRecord::Base
 
   def is_reply?
     parent.present?
+  end
+
+  def archived?
+    archived_at.present?
   end
 
   def liker_names(max: 3)

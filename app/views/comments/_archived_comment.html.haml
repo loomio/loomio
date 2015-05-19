@@ -1,0 +1,5 @@
+%div{ class: "medium-user-avatar avatar-canvas" }
+.activity-item-body
+  %p= t :deleted_comment
+  .activity-item-time
+    = link_to(t('ago', :quantity_of_time => time_ago_in_words(comment.archived_at)), "#comment-#{comment.id}")

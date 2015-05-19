@@ -15,8 +15,8 @@ And /^I accept the popup to confirm$/ do
   find('#confirm-action').click()
 end
 
-Then /^I should no longer see the post in the discussion$/ do
-  find('#activity-feed').should_not have_content('post to be deleted')
+Then(/^I should see a representation of the deleted comment$/) do
+  find('#activity-feed').should have_content('Deleted comment')
 end
 
 Then /^I should not see the delete link on another users comment$/ do

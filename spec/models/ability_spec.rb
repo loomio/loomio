@@ -464,6 +464,7 @@ describe "User abilities" do
     it { should     be_able_to(:show, Discussion) }
     it { should     be_able_to(:print, Discussion) }
     it { should     be_able_to(:destroy, user_comment) }
+    it { should     be_able_to(:archive, user_comment) }
     it { should_not be_able_to(:destroy, discussion) }
     it { should_not be_able_to(:destroy, another_user_comment) }
     it { should     be_able_to(:like, Comment) }
@@ -545,6 +546,7 @@ describe "User abilities" do
     it { should     be_able_to(:close, other_users_motion) }
     it { should     be_able_to(:create_outcome, other_users_motion) }
     it { should     be_able_to(:destroy, another_user_comment) }
+    it { should     be_able_to(:archive, another_user_comment) }
     it { should     be_able_to(:cancel, own_invitation) }
     it { should     be_able_to(:cancel, other_members_invitation) }
 

@@ -214,7 +214,7 @@ class Ability
       user_is_member_of?(discussion.group_id)
     end
 
-    can [:destroy], Comment do |comment|
+    can [:destroy, :archive], Comment do |comment|
       user_is_author_of?(comment) or user_is_admin_of?(comment.discussion.group_id)
     end
 

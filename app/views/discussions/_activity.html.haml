@@ -17,7 +17,10 @@
 
     %li.activity-item-container
       - if event.kind == 'new_comment'
-        = render event.eventable
+        - if event.eventable.archived?
+          = render 'comments/archived_comment', comment: event.eventable
+        - else
+          = render event.eventable
       - else
         - discussion_item = DiscussionItem.new(event)
         = render 'discussion_item', :item => discussion_item
