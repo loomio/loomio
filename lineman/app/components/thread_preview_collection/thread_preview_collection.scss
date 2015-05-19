@@ -9,7 +9,10 @@
   padding: 13px 13px;
   border-bottom: 1px solid $border-color;
   position: relative;
-  &:hover { background-color: $list-hover-color; }
+  &:hover {
+    .thread-preview__actions { display: block; }
+    background-color: $list-hover-color;
+  }
 }
 
 .thread-preview__thread-header {
@@ -40,6 +43,11 @@
   line-height: 20px;
 }
 
+.thread-preview__proposal-closing-at {
+  @include fontSmall;
+  color: $highlight-red;
+}
+
 .thread-preview__pie-chart {
   padding-right: 5px;
   line-height: 18px;
@@ -50,4 +58,36 @@
   @include fontSmall;
   color: $grey-on-white;
   clear: both;
+}
+
+.thread-preview__actions{
+  float: right;
+  padding-left: 10px;
+  display: none;
+}
+
+.thread-preview__star{
+  float: right;
+}
+
+.thread-preview__mark-as-read{
+  margin-top: -17px;
+  margin-bottom: -11px;
+  margin-right: 5px;
+}
+
+.thread-preview__mute{
+  margin-top: -17px;
+  margin-bottom: -11px;
+  margin-right: 5px;
+  position: relative;
+  .fa-volume-off{
+    padding-right: 9px;
+  }
+  .fa-times{
+    font-size: 70%;
+    position: absolute;
+    top: 10px;
+    left: 17px;
+  }
 }

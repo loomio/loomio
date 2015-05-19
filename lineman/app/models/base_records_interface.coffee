@@ -6,6 +6,7 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient, $q) 
       @recordStore = recordStore
       @collection = @recordStore.db.addCollection(@model.plural, {indices: @model.indices})
       @restfulClient = new RestfulClient(@model.plural)
+      @latestCache = {}
 
       @restfulClient.onSuccess = (response) =>
         @recordStore.import(response.data)
@@ -45,8 +46,20 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient, $q) 
     fetchByKey: (key) ->
       @restfulClient.getMember(key)
 
-    fetch: (params) ->
-      @restfulClient.getCollection(params)
+    fetch: ({params, path, cacheKey}) ->
+      if cacheKey
+        lastFetchedAt = @applyLatestFetch(cacheKey)
+        params.since = lastFetchedAt if params? and lastFetchedAt?
+
+      if path?
+        @restfulClient.get(path, params)
+      else
+        @restfulClient.getCollection(params)
+
+    applyLatestFetch: (cacheKey) ->
+      lastFetchedAt = @latestCache[cacheKey]
+      @latestCache[cacheKey] = moment().toDate()
+      lastFetchedAt
 
     where: (params) ->
       @collection.chain().find(params).data()

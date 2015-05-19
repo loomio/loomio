@@ -55,6 +55,12 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
+  def starred
+    join_to_discussion_readers
+    @relation = @relation.where('dv.starred = true')
+    self
+  end
+
   def unread
     join_to_discussion_readers
     @relation = @relation.where('dv.last_read_at IS NULL OR (dv.last_read_at < discussions.last_activity_at)')
@@ -75,8 +81,8 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
-  def recent
-    @relation = @relation.where('last_activity_at > ?', 3.months.ago)
+  def sorted_by_latest_activity
+    @relation = @relation.order(last_activity_at: :desc)
     self
   end
 

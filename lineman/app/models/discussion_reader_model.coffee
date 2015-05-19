@@ -31,6 +31,10 @@ angular.module('loomioApp').factory 'DiscussionReaderModel', (BaseModel) ->
       @volume = volume
       @save()
 
+    toggleStar: ->
+      @starred = !@starred
+      @save()
+
     markAsRead: (sequenceId) ->
       sequenceId = @discussion().lastSequenceId if isNaN(sequenceId)
       if @lastReadSequenceId < sequenceId

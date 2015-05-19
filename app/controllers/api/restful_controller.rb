@@ -11,6 +11,8 @@ class API::RestfulController < API::BaseController
     attr_writer :resource_class
   end
 
+  API_DATE_PARAMETERS = %w(since until).freeze
+
   rescue_from CanCan::AccessDenied                    do |e| respond_with_standard_error e, 403 end
   rescue_from ActionController::UnpermittedParameters do |e| respond_with_standard_error e, 400 end
 
@@ -96,13 +98,25 @@ class API::RestfulController < API::BaseController
     self.resource = resource_class.new(resource_params)
   end
 
-  def instantiate_collection
-    records = if resource_class.try(:has_timeframe?)
-      visible_records.within(params[:since], params[:until])
+  def instantiate_collection(timeframe_collection: true, page_collection: true)
+    collection = visible_records
+    collection = yield collection                if block_given?
+    collection = timeframe_collection collection if timeframe_collection
+    collection = page_collection collection      if page_collection
+    self.collection = collection.to_a
+  end
+
+  def timeframe_collection(collection)
+    if resource_class.try(:has_timeframe?) && (params[:since] || params[:until])
+      parse_date_parameters # I feel like Rails should do this for me..
+      collection.within(params[:since], params[:until], params[:timeframe_for])
     else
-      visible_records
+      collection
     end
-    self.collection = page_collection(records).to_a
+  end
+
+  def parse_date_parameters
+    API_DATE_PARAMETERS.each { |field| params[field] = DateTime.parse(params[field].to_s) if params[field] }
   end
 
   def page_collection(collection)

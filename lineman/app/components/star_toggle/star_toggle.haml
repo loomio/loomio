@@ -1,0 +1,4 @@
+.star-toggle
+  %a{ng-click: 'thread.reader().toggleStar()'}
+    %i.fa.fa-star{ng-show: 'thread.isStarred()'}
+    %i.fa.fa-star-o{ng-hide: 'thread.isStarred()'}
