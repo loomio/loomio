@@ -26,7 +26,7 @@ angular.module('loomioApp').directive 'activityCard', ->
         $scope.initialFocused = _.max [$scope.initialLoaded - rollback, 0]
       else
         # discussion is read
-        $scope.initialLoaded  = _.max [$scope.discussion.lastSequenceId - $scope.pageSize, 0]
+        $scope.initialLoaded  = _.max [$scope.discussion.lastSequenceId - $scope.pageSize + 1, 0]
         $scope.initialFocused = _.max [$scope.discussion.lastSequenceId - rollback, 0]
 
       $scope.loadEventsForwards($scope.initialLoaded).then ->
