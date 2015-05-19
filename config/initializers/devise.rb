@@ -217,6 +217,7 @@ Devise.setup do |config|
       :authorize_url => Rails.application.secrets.custom_oauth2_authorize_url,
       :token_url => Rails.application.secrets.custom_oauth2_token_url
     },
+    :info_url => Rails.application.secrets.custom_oauth2_info_url,
     :strategy_class => CustomOauth2 if has_custom_oauth2?
 
   # ==> Warden configuration
