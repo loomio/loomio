@@ -8,12 +8,11 @@ angular.module('loomioApp').factory 'EventRecordsInterface', (BaseRecordsInterfa
           discussion_key: discussionKey
           from: options['from']
           per: options['per']
-          reverse: options['reverse']
 
     minLoadedSequenceIdByDiscussion: (discussion) ->
-      item = _.min @where(discussionId: discussion.id), (event) -> event.sequenceId
-      item.sequenceId || 0
+      item = _.min @find(discussionId: discussion.id), (event) -> event.sequenceId or Number.MAX_VALUE
+      item.sequenceId
 
     maxLoadedSequenceIdByDiscussion: (discussion) ->
-      item = _.max @where(discussionId: discussion.id), (event) -> event.sequenceId
-      item.sequenceId || 0
+      item = _.max @find(discussionId: discussion.id), (event) -> event.sequenceId or 0
+      item.sequenceId

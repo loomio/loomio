@@ -8,6 +8,7 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.pageSize = 30
     $scope.firstLoadedSequenceId = 0
     $scope.lastLoadedSequenceId = 0
+    $scope.newActivitySequenceId = $scope.discussion.reader().lastReaderSequenceId - 1
     $scope.initialSequenceId = _.max [$scope.discussion.lastSequenceId - $scope.pageSize, 0]
     visibleSequenceIds = []
     rollback = 2
@@ -55,27 +56,25 @@ angular.module('loomioApp').directive 'activityCard', ->
       $scope.discussion.markAsRead(item.sequenceId)
       $scope.loadEventsForwards($scope.lastLoadedSequenceId) if $scope.loadMoreAfterReading(item)
 
-    $scope.loadEvents = ({from, per, reverse}) ->
+    $scope.loadEvents = ({from, per}) ->
       from = 0 unless from?
       per = $scope.pageSize unless per?
-      reverse = false unless reverse?
 
-      Records.events.fetchByDiscussion($scope.discussion.key, {from: from, per: per, reverse: reverse}).then ->
-        if reverse
-          $scope.firstLoadedSequenceId = Records.events.minLoadedSequenceIdByDiscussion($scope.discussion)
-        else
-          $scope.lastLoadedSequenceId = Records.events.maxLoadedSequenceIdByDiscussion($scope.discussion)
+      Records.events.fetchByDiscussion($scope.discussion.key, {from: from, per: per}).then ->
+        $scope.firstLoadedSequenceId = Records.events.minLoadedSequenceIdByDiscussion($scope.discussion)
+        $scope.lastLoadedSequenceId  = Records.events.maxLoadedSequenceIdByDiscussion($scope.discussion)
 
     $scope.loadEventsForwards = (sequenceId) ->
       $scope.loadEvents(from: sequenceId)
     LoadingService.applyLoadingFunction $scope, 'loadEventsForwards'
 
     $scope.loadEventsBackwards = ->
-      $scope.loadEvents(from: $scope.firstLoadedSequenceId, reverse: true)
+      lastPageSequenceId = _.max [$scope.firstLoadedSequenceId - $scope.pageSize, 0]
+      $scope.loadEvents(from: lastPageSequenceId)
     LoadingService.applyLoadingFunction $scope, 'loadEventsBackwards'
 
     $scope.canLoadBackwards = ->
-      $scope.firstLoadedSequenceId > $scope.discussion.firstSequenceId and
+      $scope.initialLoaded > $scope.discussion.firstSequenceId and
       !($scope.loadEventsForwardsExecuting or $scope.loadEventsBackwardsExecuting)
 
     $scope.loadMoreAfterReading = (item) ->
