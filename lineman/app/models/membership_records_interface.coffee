@@ -3,17 +3,22 @@ angular.module('loomioApp').factory 'MembershipRecordsInterface', (BaseRecordsIn
     model: MembershipModel
 
     fetchMyMemberships: ->
-      @restfulClient.get 'my_memberships'
+      @fetch
+        path: 'my_memberships'
+        cacheKey: 'myMemberships'
 
     fetchByNameFragment: (fragment, groupKey) ->
-      @restfulClient.get 'autocomplete', {q: fragment, group_key: groupKey}
+      @fetch
+        path: 'autocomplete'
+        params: { q: fragment, group_key: groupKey }
 
-    fetchByGroup: (groupKey) ->
-      @restfulClient.getCollection {group_key: groupKey}
+    fetchByGroup: (groupKey, options = {}) ->
+      @fetch
+        params: { group_key: groupKey },
+        cacheKey: "membershipsFor#{groupKey}"
 
     makeAdmin: (membership) ->
       @restfulClient.postMember membership.id "make_admin"
 
     removeAdmin: (membership) ->
       @restfulClient.postMember membership.id "remove_admin"
-

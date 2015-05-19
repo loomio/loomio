@@ -1,8 +1,8 @@
 angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
   new class ThreadQueryService
 
-    unreadQuery: ->
-      threadQueryFor createBaseView(), 'show_unread'
+    filterQuery: (filter) ->
+      threadQueryFor createBaseView(), filter
 
     groupQuery: (group = {}, options = {}) ->
       threadQueryFor createGroupView(group), 
@@ -62,4 +62,5 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
             when 'show_muted'         then thread.isMuted()
             when 'show_unread'        then thread.isUnread()
             when 'show_participating' then thread.isParticipating()
+            when 'show_starred'       then thread.isStarred()
             when 'show_proposals'     then thread.hasActiveProposal()

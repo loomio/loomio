@@ -1,4 +1,4 @@
-.dropdown.group-page-privacy
+.dropdown.group-page__privacy
   %a.btn.lmo-btn-nude.dropdown-toggle{href: '#'}
     .group-visibility-public{ng_show: 'group.visibleToPublic()'}
       .sr-only{translate: 'group_page.privacy.public'}
@@ -39,7 +39,7 @@
             .dropdown-menu-item-details
               %span{translate: 'group_page.privacy.parent_members', translate-value-group-name: '{{group.name}}', translate-value-parent-group-name: '{{group.parentName()}}'}
 
-        %li.dropdown-menu-item.last
+        %li.dropdown-menu-item.lmo-last
           %label{for: 'visibleTo.public'}
             .dropdown-menu-item-label
               %i.fa.fa-lg.fa-globe{aria-hidden:'true'}>

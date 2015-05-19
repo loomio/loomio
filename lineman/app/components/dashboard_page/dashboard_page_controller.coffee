@@ -28,6 +28,9 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
   @groupQueryFor = (group) -> @groups[group.key]
   @moreForThisGroup = (group) -> @groupQueryFor(group, { filter: @filter }).length() > @groupThreadLimit
 
+  @displayByGroup = ->
+    _.contains ['show_starred', 'show_muted'], @filter
+
   @updateQueries = ->
     _.each @groups(), (group) =>
       @groups[group.key] = ThreadQueryService.groupQuery(group, { filter: @filter })
@@ -53,6 +56,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, R
 
   @setFilter = (filter) ->
     @filter = filter
+    @currentBaseQuery = ThreadQueryService.filterQuery(@filter)
     @refresh()
   @setFilter 'show_all'
 

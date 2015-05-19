@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'notifications', ->
   controller: ($scope, UserAuthService, Records, CurrentUser, MessageChannelService) ->
 
     MessageChannelService.subscribeToNotifications()
-    Records.notifications.fetch()
+    Records.notifications.fetchMyNotifications()
 
     kinds = [
       'comment_liked',

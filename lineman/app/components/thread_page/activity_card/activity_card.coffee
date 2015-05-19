@@ -85,7 +85,7 @@ angular.module('loomioApp').directive 'activityCard', ->
       per = $scope.pageSize unless per?
       reverse = false unless reverse?
 
-      Records.events.fetch(discussion_key: $scope.discussion.key, from: from, per: per, reverse: reverse).then ->
+      Records.events.fetchByDiscussion($scope.discussion.key, {from: from, per: per, reverse: reverse}).then ->
         if reverse
           $scope.firstLoadedSequenceId = Records.events.minLoadedSequenceIdByDiscussion($scope.discussion)
         else

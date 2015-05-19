@@ -6,10 +6,10 @@
         - if @group.is_subgroup?
           %h3= @group.parent.name
           = content_tag :span, "\u25B6", class: 'name-separator'
-        %h3=@group.name
+        %h3= @group.name
   .row.context
     .col-md-9
-      = @discussion.description
+      = simple_format @discussion.description
     .col-md-2.col-md-offset-1
       .discussion-details
         = t("discussion_context.started_print",
@@ -23,7 +23,7 @@
         .col-md-9
           %h3= motion.title
           .proposal-description
-            = motion.description
+            = simple_format motion.description
           .proposal-details
             %ul
               - if motion.voting?
@@ -84,6 +84,11 @@
                 = render 'avatar', user: event.eventable.user
                 %strong= event.eventable.user_name
                 = simple_format event.eventable.body
+                - if event.eventable.attachments.any?
+                  %strong= t :attachments
+                  %ul.attachments
+                    - event.eventable.attachments.each do |attachment|
+                      %li= attachment.location
                 %p.timestamp= event.eventable.created_at.strftime("%d %B %Y, %I.%M %p")
             - else
               - item = DiscussionItem.new(event)

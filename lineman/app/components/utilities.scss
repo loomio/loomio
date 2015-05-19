@@ -17,7 +17,7 @@
   margin-top: 0;
 }
 
-.last{
+.lmo-last{
   /* utility class to use when you want to fix up
      the margins on your card, e.g. if the last
      element in the card is a paragraph */
@@ -50,20 +50,21 @@
   @include fontSmall;
 }
 
-.btn-icon{
+.lmo-btn-icon{
   text-align: left;
 }
 
-.btn-success.btn-icon i.fa{ color: #fff; }
+.btn-success.lmo-btn-icon i.fa{ color: #fff; }
 
-.btn-icon i.fa{ padding-right: 2px; }
+.lmo-btn-icon i.fa{ padding-right: 2px; }
 
-.btn.btn-icon{ padding: 6px 12px 6px 9px;}
+.btn.lmo-btn-icon{ padding: 6px 12px 6px 9px;}
 
 .lmo-btn-nude{
   color: $grey-on-grey;
   background-color: transparent;
 }
+
 .lmo-btn-nude:hover{
   background-color: $list-hover-color;
 }
@@ -153,10 +154,7 @@ label.label-with-details{
 .lmo-btn-group-right{
   float: right;
 }
+
 .lmo-btn-group-right .lmo-btn-wrapper{
   float: right;
-  border-right: 1px solid $border-color;
-}
-.lmo-btn-group .lmo-btn-wrapper:first-of-type{
-  border: none;
 }

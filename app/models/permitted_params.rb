@@ -51,7 +51,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def discussion_reader_attributes
-    [:discussion_id, :volume]
+    [:discussion_id, :volume, :starred]
   end
 
   def invitation_attributes

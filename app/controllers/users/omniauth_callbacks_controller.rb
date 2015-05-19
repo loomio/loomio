@@ -12,7 +12,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       :location,
       :image,
       :description,
-      urls: [:Website, :Twitter])
+      :first_name,
+      :last_name,
+      :verified,
+      urls: [:Website, :Twitter, :Facebook])
     auth = OmniauthIdentity.from_omniauth(auth_params[:provider], auth_params[:uid], user_info)
 
     if auth.user

@@ -6,6 +6,7 @@ angular.module('loomioApp').controller 'InboxPageController', ($rootScope, Recor
 
   _.each CurrentUser.parentGroups(), (group) =>
     @["group#{group.id}"] = ThreadQueryService.groupQuery(group)
+  @baseQuery = ThreadQueryService.filterQuery('show_unread')
 
   @queryFor = (group) -> @["group#{group.id}"]
 
