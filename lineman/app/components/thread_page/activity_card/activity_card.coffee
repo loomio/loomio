@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.pageSize = 30
     $scope.firstLoadedSequenceId = 0
     $scope.lastLoadedSequenceId = 0
-    $scope.newActivitySequenceId = $scope.discussion.reader().lastReaderSequenceId - 1
+    $scope.newActivitySequenceId = $scope.discussion.reader().lastReadSequenceId - 1
     visibleSequenceIds = []
     rollback = 2
 
