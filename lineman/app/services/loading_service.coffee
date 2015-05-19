@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'LoadingService', (Records) ->
     applyLoadingFunction: (controller, functionName) ->
       executing = "#{functionName}Executing"
       loadingFunction = controller[functionName]
-      controller[functionName] = ->
+      controller[functionName] = (args...) ->
         return if controller[executing]
         controller[executing] = true
-        loadingFunction().then -> controller[executing] = false
+        loadingFunction(args...).then -> controller[executing] = false

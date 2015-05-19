@@ -8,29 +8,29 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.pageSize = 30
     $scope.firstLoadedSequenceId = 0
     $scope.lastLoadedSequenceId = 0
-    $scope.newActivitySequenceId = $scope.discussion.reader().lastReadSequenceId + 1
-    $scope.initialSequenceId = _.max($scope.discussion.lastSequenceId - $scope.pageSize, 0)
+    $scope.initialSequenceId = _.max [$scope.discussion.lastSequenceId - $scope.pageSize, 0]
     visibleSequenceIds = []
     rollback = 2
 
     $scope.init = ->
       $scope.discussion.markAsRead(0)
 
-      if _.isFinite(_.parseInt($location.hash()))
-        # sequence id is specified in url
-        $scope.initialLoaded  = _.parseInt($location.hash())
-        $scope.initialFocused = _.max $scope.initialLoaded - rollback, 0
+      target = _.parseInt($location.hash())
+      if target > 0 and target < $scope.discussion.lastSequenceId 
+        # valid sequence id is specified in url
+        $scope.initialLoaded  = _.max [target - rollback, 0]
+        $scope.initialFocused = target
       else if $scope.discussion.isUnread()
         # discussion is unread
         $scope.initialLoaded  = $scope.discussion.reader().lastReadSequenceId
-        $scope.initialFocused = _.max $scope.initialLoaded - rollback, 0
+        $scope.initialFocused = _.max [$scope.initialLoaded - rollback, 0]
       else
         # discussion is read
-        $scope.initialLoaded  = _.max $scope.discussion.lastSequenceId - $scope.pageSize, 0
-        $scope.initialFocused = _.max $scope.discussion.lastSequenceId - rollback, 0
+        $scope.initialLoaded  = _.max [$scope.discussion.lastSequenceId - $scope.pageSize, 0]
+        $scope.initialFocused = _.max [$scope.discussion.lastSequenceId - rollback, 0]
 
       $scope.loadEventsForwards($scope.initialLoaded).then ->
-        $rootScope.broadcast 'threadPageEventsLoaded', $scope.initialFocused
+        $rootScope.$broadcast 'threadPageEventsLoaded', $scope.initialFocused
 
     $scope.beforeCount = ->
       $scope.initialLoaded - $scope.discussion.firstSequenceId

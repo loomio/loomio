@@ -1,9 +1,9 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($routeParams, $location, $rootScope, $document, $modal, Records, MessageChannelService, CurrentUser, DiscussionFormService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $document, $timeout, Records, MessageChannelService, CurrentUser, DiscussionFormService) ->
   $rootScope.$broadcast('currentComponent', 'threadPage')
 
-  $scope.$on 'threadPageEventsLoaded',    (sequenceId) =>
+  $scope.$on 'threadPageEventsLoaded',    (event, sequenceId) =>
     @scrollToElement("#sequence-#{sequenceId}") if @focusMode == 'activity'
-  $scope.$on 'threadPageProposalsLoaded', (proposalId) =>
+  $scope.$on 'threadPageProposalsLoaded', (event, proposalId) =>
     @scrollToElement("#proposal-#{proposalId}") if @focusMode == 'proposal'
 
   Records.discussions.findOrFetchByKey($routeParams.key).then (discussion) =>
@@ -35,14 +35,17 @@ angular.module('loomioApp').controller 'ThreadPageController', ($routeParams, $l
     CurrentUser.canEditDiscussion(@discussion)
 
   @scrollToElement = (target) ->
-    console.log 'scrolling to ', target
-    $document.scrollToElement(angular.element(target), 100)
-    angular.element().focus(elem)
+    $timeout ->
+      console.log 'scrolling to ', target
+      elem = angular.element(target)
+      $document.scrollToElement(elem, 100)
+      angular.element().focus(elem)
+    , 0
 
   @setFocusMode = ->
     @focusMode = if $location.hash().match(/$proposal-(\d+)^/)
       'proposal'
-    else if $scope.discussion.lastSequenceId == 0 or $scope.discussion.reader().lastReadSequenceId == -1
+    else if @discussion.lastSequenceId == 0 or @discussion.reader().lastReadSequenceId == -1
       'context'
     else
       'activity'
