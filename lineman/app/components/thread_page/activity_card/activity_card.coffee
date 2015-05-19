@@ -9,7 +9,6 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.firstLoadedSequenceId = 0
     $scope.lastLoadedSequenceId = 0
     $scope.newActivitySequenceId = $scope.discussion.reader().lastReaderSequenceId - 1
-    $scope.initialSequenceId = _.max [$scope.discussion.lastSequenceId - $scope.pageSize, 0]
     visibleSequenceIds = []
     rollback = 2
 
@@ -34,7 +33,7 @@ angular.module('loomioApp').directive 'activityCard', ->
         $rootScope.$broadcast 'threadPageEventsLoaded', $scope.initialFocused
 
     $scope.beforeCount = ->
-      $scope.initialLoaded - $scope.discussion.firstSequenceId
+      $scope.firstLoadedSequenceId - $scope.discussion.firstSequenceId
 
     updateLastSequenceId = ->
       visibleSequenceIds = _.uniq(visibleSequenceIds)
@@ -54,6 +53,7 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.threadItemVisible = (item) ->
       addSequenceId(item.sequenceId)
       $scope.discussion.markAsRead(item.sequenceId)
+      $location.hash(_.min(visibleSequenceIds))
       $scope.loadEventsForwards($scope.lastLoadedSequenceId) if $scope.loadMoreAfterReading(item)
 
     $scope.loadEvents = ({from, per}) ->
