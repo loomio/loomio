@@ -50,7 +50,7 @@ describe API::EventsController do
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[events])
         sequence_ids = json['events'].map { |v| v['sequence_id'] }
-        expect(sequence_ids.sort).to eq [4,5]
+        expect(sequence_ids.sort).to eq [3,4,5]
       end
 
       context 'with deleted events' do
