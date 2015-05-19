@@ -9,8 +9,6 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   Records.discussions.findOrFetchByKey($routeParams.key).then (discussion) =>
     @discussion = discussion
     $rootScope.$broadcast('setTitle', @discussion.title)
-    Records.proposals.fetchByDiscussion @discussion
-    Records.votes.fetchMyVotesByDiscussion @discussion
     @group = @discussion.group()
     $rootScope.$broadcast('viewingThread', @discussion)
     MessageChannelService.subscribeTo("/discussion-#{@discussion.key}", @onMessageReceived)
@@ -43,7 +41,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     , 0
 
   @setFocusMode = ->
-    @focusMode = if $location.hash().match(/$proposal-(\d+)^/)
+    @focusMode = if $location.hash().match(/^proposal-\d+$/)
       'proposal'
     else if @discussion.lastSequenceId == 0 or @discussion.reader().lastReadSequenceId == -1
       'context'
