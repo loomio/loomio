@@ -10,8 +10,8 @@
           =link_to comment.user_name, user_path(comment.user), class: "user-name"
 
           .comment-actions
-            - if can? :destroy, comment
-              = link_to comment_path(comment), method: :delete, data: { confirm: t(:confirm_delete_comment) }, id: "delete-comment-#{comment.id}" do
+            - if can? :archive, comment
+              = link_to archive_comment_path(comment), method: :post, data: { confirm: t(:confirm_delete_comment) }, id: "delete-comment-#{comment.id}" do
                 .delete-icon.js-tooltip{title: t(:delete_comment)}
                   %i.fa.fa-times
             - if can? :edit, comment

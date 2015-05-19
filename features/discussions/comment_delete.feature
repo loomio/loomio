@@ -11,7 +11,7 @@ Feature: User deletes post
     And I am on the discussion page
     And I write and submit a comment
     When I click the delete button on a post
-    Then I should no longer see the post in the discussion
+    Then I should see a representation of the deleted comment
     And I should be told the comment was deleted
 
  Scenario: User tries to delete another user's comment

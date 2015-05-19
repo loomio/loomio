@@ -41,6 +41,11 @@ class CommentService
     event
   end
 
+  def self.archive(comment:, actor:)
+    actor.ability.authorize!(:archive, comment)
+    comment.archive
+  end
+
   def self.destroy(comment:, actor:)
     actor.ability.authorize!(:destroy, comment)
     # paranoid destroy_all because comment votes seem to be dangling around.

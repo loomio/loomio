@@ -21,6 +21,12 @@ class CommentsController < BaseController
     end
   end
 
+  def archive
+    CommentService.archive(comment: @comment, actor: current_user)
+    flash[:notice] = t(:"notice.comment_deleted")
+    redirect_to discussion_url(@comment.discussion)
+  end
+
   def show
   end
 
