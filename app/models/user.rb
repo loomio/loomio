@@ -107,7 +107,8 @@ class User < ActiveRecord::Base
   before_save :set_avatar_initials,
               :ensure_unsubscribe_token,
               :ensure_email_api_key,
-              :generate_username
+              :generate_username,
+              :parameterize_username
 
   before_create :set_default_avatar_kind
 
@@ -324,6 +325,10 @@ class User < ActiveRecord::Base
     response.code != '302'
   rescue StandardError, Timeout::Error
     false  # Don't show "gravatar" if the service is down or slow
+  end
+
+  def parameterize_username
+    self.username = username.parameterize('')
   end
 
   def generate_username
