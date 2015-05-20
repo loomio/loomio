@@ -212,14 +212,14 @@ Devise.setup do |config|
   config.omniauth :browser_id if has_persona?
   config.omniauth :twitter, Rails.application.secrets.twitter_key, Rails.application.secrets.twitter_secret if has_twitter?
   config.omniauth :custom_oauth2, Rails.application.secrets.custom_oauth2_key, Rails.application.secrets.custom_oauth2_secret,
-    :client_options => {
-      :site => Rails.application.secrets.custom_oauth2_site,
-      :authorize_url => Rails.application.secrets.custom_oauth2_authorize_url,
-      :token_url => Rails.application.secrets.custom_oauth2_token_url
+    client_options: {
+      site: Rails.application.secrets.custom_oauth2_site,
+      authorize_url: Rails.application.secrets.custom_oauth2_authorize_url,
+      token_url: Rails.application.secrets.custom_oauth2_token_url
     },
-    :info_url => Rails.application.secrets.custom_oauth2_info_url,
-    :use_post => Rails.application.secrets.custom_oauth2_use_post,
-    :strategy_class => CustomOauth2 if has_custom_oauth2?
+    info_url: Rails.application.secrets.custom_oauth2_info_url,
+    use_post: Rails.application.secrets.custom_oauth2_use_post,
+    strategy_class: CustomOauth2 if has_custom_oauth2?
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

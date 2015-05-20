@@ -17,4 +17,4 @@
         = t :log_in_with_persona
     - if has_custom_oauth2?
       = link_to user_omniauth_authorize_path(:custom_oauth2), class: 'btn btn-default btn-block btn-lg login', id: 'custom_oauth2-login-btn' do
-        = t :log_in_with_custom_oauth2, :name => Rails.application.secrets.custom_oauth2_name
+        = t :log_in_with_custom_oauth2, name: Rails.application.secrets.custom_oauth2_name
