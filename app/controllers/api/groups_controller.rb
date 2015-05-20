@@ -17,4 +17,9 @@ class API::GroupsController < API::RestfulController
     respond_with_collection
   end
 
+  def for_subdomain
+    @group = resource_class.find_by_subdomain(params[:subdomain])
+    respond_with_resource
+  end
+
 end
