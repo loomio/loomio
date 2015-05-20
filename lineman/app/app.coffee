@@ -37,6 +37,7 @@ angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootS
   $scope.keyDown = (event) -> KeyEventService.broadcast event
 
   $router.config([
+    {path: '/home', component: 'homePageRedirect' },
     {path: '/dashboard', component: 'dashboardPage' },
     {path: '/inbox', component: 'inboxPage' },
     {path: '/groups', component: 'groupsPage' },
