@@ -30,8 +30,8 @@ class CustomOauth2 < OmniAuth::Strategies::OAuth2
   info do
     {
       # Support both normal OAuth2 and Drupal OAuth2
-      :name => raw_info['name'] || raw_info['result']['field_full_name']['und']['item']['value'] || raw_info['result']['name'],
-      :email => raw_info['email'] || raw_info['mail'] || raw_info['result']['mail']
+      :name => extract_name(raw_info),
+      :email => extract_email(raw_info)
     }
   end
 
@@ -39,6 +39,22 @@ class CustomOauth2 < OmniAuth::Strategies::OAuth2
     {
       'raw_info' => raw_info
     }
+  end
+
+  def extract_name(raw_info)
+    return raw_info['name'] if raw_info['name']
+    return raw_info['result']['field_full_name']['und']['item']['value'] if raw_info['result'] and
+        raw_info['result']['field_full_name'] and
+        raw_info['result']['field_full_name']['und'] and
+        raw_info['result']['field_full_name']['und']['item'] and
+        raw_info['result']['field_full_name']['und']['item']['value']
+    return raw_info['result']['name'] if raw_info['result'] and raw_info['result']['name']
+  end
+
+  def extract_email(raw_info)
+    return raw_info['email'] if raw_info['email']
+    return raw_info['mail'] if raw_info['mail']
+    return raw_info['result']['mail'] if raw_info['result'] and raw_info['result']['mail']
   end
 
   def raw_info
