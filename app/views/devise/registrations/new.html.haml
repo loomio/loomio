@@ -22,8 +22,7 @@
                 = t :"new_user_form.create_an_account"
             %p= t :or_sign_in_html, link: user_session_path, link_class: 'existing-user'
             .signin_container
-              - if has_email_password?
-                = render "form"
+              = render "form"
 
               -unless omniauth_authenticated_and_waiting?
                 .sso-btn-row
