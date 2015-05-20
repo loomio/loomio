@@ -3,6 +3,7 @@ class Users::SessionsController < Devise::SessionsController
   include AutodetectTimeZone
   include InvitationsHelper
   include OmniauthAuthenticationHelper
+  include Oauth2Helper
 
   # at some point in the future we can remove this
   before_filter :create_parse_user_if_needed, only: :create
