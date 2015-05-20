@@ -8,11 +8,12 @@ class CustomOauth2 < OmniAuth::Strategies::OAuth2
   # initializing your consumer from the OAuth gem.
   option :client_options, {
     site: 'https://example.com',
-    authorize_url: "/oauth2/authorize",
+    authorize_url: '/oauth2/authorize',
     token_url: '/oauth2/token'
   }
 
   option :info_url, "user"
+  option :use_post, false
 
   # These are called after authentication has succeeded. If
   # possible, you should try to set the UID without making
@@ -36,6 +37,10 @@ class CustomOauth2 < OmniAuth::Strategies::OAuth2
 
   def raw_info
     access_token.options[:mode] = :query
-    @raw_info ||= access_token.get(options[:info_url]).parsed
+    if options[:use_post]
+      @raw_info ||= access_token.post(options[:info_url]).parsed
+    else
+      @raw_info ||= access_token.get(options[:info_url]).parsed
+    end
   end
 end
