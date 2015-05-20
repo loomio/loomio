@@ -3,7 +3,7 @@ class Admin::StatsController < Admin::BaseController
 
   def weekly_activity
     @metrics = []
-    (0..25).each do |i|
+    (0..52).each do |i|
       date_range = (i+1).weeks.ago..i.weeks.ago
       @metrics << { weeks_ago:   i,
                     comments:    Comment.where(   created_at: date_range ).count,
