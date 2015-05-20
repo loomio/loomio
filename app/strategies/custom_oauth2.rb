@@ -15,17 +15,23 @@ class CustomOauth2 < OmniAuth::Strategies::OAuth2
   option :info_url, "user"
   option :use_post, false
 
+  # workaround for 'csrf_detected' warning, https://github.com/mkdynamic/omniauth-facebook/issues/73
+  option :provider_ignores_state, true
+
   # These are called after authentication has succeeded. If
   # possible, you should try to set the UID without making
   # additional calls (if the user id is returned with the token
   # or as a URI parameter). This may not be possible with all
   # providers.
-  uid{ raw_info['id'] }
+
+  # We *need* a UID or else omniauth won't be able to persist name/email fields at registration
+  uid{ raw_info['id'] || raw_info['result']['uid'] || fail("Could not find uid from #{raw_info.to_json}") }
 
   info do
     {
-      :name => raw_info['name'],
-      :email => raw_info['email']
+      # Support both normal OAuth2 and Drupal OAuth2
+      :name => raw_info['name'] || raw_info['result']['field_full_name']['und']['item']['value'] || raw_info['result']['name'],
+      :email => raw_info['email'] || raw_info['mail'] || raw_info['result']['mail']
     }
   end
 
