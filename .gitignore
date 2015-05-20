@@ -28,4 +28,3 @@ bin/
 /lineman/app/css/modules.scss
 .powenv
 /lineman/app/css/modules.scss
-config/local_env.yml
