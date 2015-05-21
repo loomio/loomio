@@ -658,9 +658,11 @@ en:
     security:
       title: Privacy and security
       body_html: |
-        <p>You can view our Privacy policy at <a href="https://www.loomio.org/privacy">www.loomio.org/privacy</a></p>
-        <p>If you have specific security concerns, we recommend you install your own version of Loomio.
-        You can find out more about hosting your own version on the wiki: <a href="https://github.com/loomio/loomio/wiki">github.com/loomio/loomio/wiki</a>.</p>
+        <p>Loomio is a password-protected service, and each Loomio account is tied to a verified email address. Private groups are invite only, meaning a group coordinator will be inviting people in by their email addresses. Each user sets up an account with a password. Private groups are viewable only to members of the group.</p>
+        <p>Loomio is hosted by Heroku in the US, with cloud services provided by AWS/EC2 and encryption and authenticity provided by SSL.</p>
+        <p>We use secure HTTP protocol (HTTPS), providing bidirectional encryption. Our privacy, security and backup systems meet industry best practice.</p>
+        <p>For more information about privacy, service hosting and data security please take a look at our privacy page: <a href="/privacy">loomio.org/privacy</a>.</p>
+        <p>If you have any specific security concerns we recommend installing your own instance of Loomio.</p>
     contributing:
       title: Contributing to Loomio
       body:
@@ -743,15 +745,6 @@ en:
       mobile_responsive:
         title: Will Loomio work on my mobile device?
         body: 'Loomio is mobile responsive, so it will work on any device through a browser.'
-      information_security:
-        title: Is information I post on Loomio secure?
-        body_html: |
-          <p>Loomio is a password-protected service, and each Loomio account is tied to a verified email address.
-          Private groups are invite only, meaning a group coordinator will be inviting people in by their email addresses.
-          Each user sets up an account with a password. Private groups are viewable only to members of the group.</p>
-          <p>Loomio is hosted by Heroku in the US, with cloud services provided by AWS/EC2 and encryption and authenticity provided by SSL.
-          We use secure HTTP protocol (HTTPS), providing bidirectional encryption. Our privacy, security and backup systems meet industry best practice.</p>
-          <p>You can view our privacy policy at <a href="https://www.loomio.org/privacy">loomio.org/privacy</a>. If you have any specific security concerns we recommend installing your own instance of Loomio.</p>
       account_reactivation:
         title: How can I reactivate my account?
         body_html: |
@@ -768,6 +761,12 @@ en:
       subdomain:
         title: Is it possible to have a Loomio subdomain?
         body_html: "Yes. We can, for example, set up <strong>[your-group-name].loomio.org</strong> as the URL for your group. <a href='mailto:contact@loomio.org'>Contact us</a> if you're interested."
+      email_signature_included_in_reply_title: 'When I reply to a comment via email my response is accompanied by a lot of extra text when it is posted in the corresponding Loomio discussion, why is this happening and how can I stop it?'
+      email_signature_included_in_reply_body_html: |
+        <p>There is currently no official standard for identifying email signatures from the rest of the email body. To a computer the whole email is just a block of text.
+        The easiest method we have for marking the end of the email body and the beginning of the signature is the double-dash method popularised by Gmail, which involves inserting a double-dash ('--') on it's own line between the body of an email and the signature.
+        Other common formats are recognised too, but Gmail's method is very easy to implement. Most programs trying to separate email body from signature (including Loomio) will correctly import the body if these dashes are included in the right place.</p>
+        <p>To be sure that your email signature is not included in your comment when you reply by email, you need to begin your signature with a double hyphen on its own line. For example:</p>
       feedback_link:  Have we missed something? Give us your feedback >
     back_to_top: ^ Back to top
     feedback_discussion: Think this explanation could be clearer? Give us your feedback >

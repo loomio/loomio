@@ -2,18 +2,15 @@
   %section.first
     .inner-container
       .row
-        .col-md-10.offset2
-          %br
-          %h3
+        .col-md-12
+          %h1
             Third Party Services
-          %br
           %p
             We use the third parties listed on this page to provide a high-level of service and some of Loomio's functionality. Loomio shares data with these services and for convenience this page provides links to third party privacy policies. For more information please see our
             =link_to "Privacy Policy.", privacy_path
-          %br
           - @parties.each do |party|
             .row
-              .col-md-2
+              .col-md-3
                 %p= link_to party[:name], party[:link], target: '_blank'
-              .col-md-8
+              .col-md-9
                 %p= party[:description]

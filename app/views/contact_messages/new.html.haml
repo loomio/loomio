@@ -17,6 +17,6 @@
             = f.input :message, label: t(:"contact_page.labels.message")
             = f.submit :submit, value: t(:"contact_page.labels.submit"), class: 'btn btn-info btn-lg', data: { disable_with: t(:"contact_page.labels.submit") }
         .col-md-5.offset1#direct_contact
-          %p= t(:"contact_page.messages.email_html", email: ENV["CONTACT"])
           - if hosted_by_loomio?
+            %p= t(:"contact_page.messages.email_html", email: "contact@loomio.org")
             %p= t(:"contact_page.messages.social_html", facebook: "https://www.facebook.com/Loomio", twitter: "https://twitter.com/Loomio", google: "https://plus.google.com/+LoomioOrg")
