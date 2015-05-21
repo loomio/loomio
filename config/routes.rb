@@ -32,6 +32,7 @@ Loomio::Application.routes.draw do
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resources :groups, only: [:show, :create, :update] do
+      get :for_subdomain, on: :collection
       get :subgroups, on: :member
       patch :archive, on: :member
     end

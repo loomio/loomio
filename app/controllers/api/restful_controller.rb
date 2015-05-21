@@ -164,11 +164,11 @@ class API::RestfulController < API::BaseController
   end
 
   def respond_with_resource
-    if resource.errors.empty?
+    if resource.blank? || resource.errors.empty?
       if @event.is_a? Event
         render json: [@event], root: 'events', each_serializer: EventSerializer
       else
-        render json: [resource], root: serializer_root
+        render json: Array(resource), root: serializer_root
       end
     else
       respond_with_errors
