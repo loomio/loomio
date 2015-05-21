@@ -83,7 +83,9 @@ if Rails.application.secrets.intercom_app_id
         financial_nature: :financial_nature,
         is_referral: :is_referral,
         visible_to: :visible_to,
-        plan: :payment_plan
+        plan: :payment_plan,
+        cohort_id: :cohort_id,
+        key: :key
     }
 
     # == Company Plan name
