@@ -404,6 +404,7 @@ fr:
   approved_by_person: "Approuvé par %{person}"
   ignored_by_perosn: "Ignoré par %{person}"
   join_group_btn: Rejoindre le groupe
+  membership_by_invitation_only: "L'inscription à ce groupe est sur invitation seulement"
   you_have_joined_group: "Vous avez rejoint %{group_name}"
   confirm_approve_membership_request: "Êtes vous sûr de vouloir ajouter %{which_user} à ce groupe ?"
   cancel_membership_request: Annuler la requête
@@ -540,6 +541,7 @@ fr:
       log_in_html: "Si vous êtes un membre, <a href='%{href}'>connectez-vous</a> pour voir les discussions privées."
   discussion_context:
     started_html: "Débuté il y a %{when} par <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    started_print: "Démarré le %{when} par %{who}"
     last_edited_html: "Dernière modification il y a %{when} par <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Voir l'historique de révision"
     see_history: "Voir l'historique"
@@ -569,6 +571,7 @@ fr:
   move_discussion_where: Vers où voudriez-vous déplacer cette discussion ?
   delete_discussion: Effacer la discussion
   confirm_delete_discussion: Êtes-vous sur de vouloir supprimer définitivement cette discussion ?
+  print_tooltip_info: Imprimer
   new_proposal: Nouvelle proposition
   edit_proposal: Éditer la proposition
   close_proposal: Fermer la proposition
@@ -577,10 +580,12 @@ fr:
   change_proposal_close_date_header: "Changer la date de clôture pour la proposition '%{which}'"
   proposal: Proposition
   proposals: Propositions
+  closed_at: Fermé à
   proposal_close_date_error: "Merci de donner une date future de clôture "
   proposal_closing_when: "Fermera dans  %{when}"
   proposal_closed_when: "Fermé depuis %{when}"
   proposed_when_by_who: "Proposé par %{who} il y a %{when}"
+  proposed_by_who_on: "Proposé par : %{who}, %{when}"
   engagement_on_open_proposal: "%{percent}%% des membres ont donné leur opinion (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}%% des membres ont donné leur position (%{numerator}/%{denominator})"
   state_your_position: Prenez position
@@ -709,6 +714,9 @@ fr:
   inactive_html: "Ce compte a été désactivé.  <a href='%{path_to_contact}'>Contactez-nous</a> si vous avez des questions."
   create_an_account_html: Créer un compte sur Loomio Beta
   log_in: Se connecter
+  password_reset:
+    length_restriction: Les mots de passe doivent au moins avoir 8 caractères de long.
+    forbidden_passwords: "Les mots de passe communs tels que \"motdepasse\" (password) sont interdits afin de garder votre compte sécurisé."
   join_group:
     log_in: "Connectez-vous pour rejoindre %{group_name}"
     create_account_to_join_group: "Veuillez créer un compte pour rejoindre le groupe %{group_name}"
@@ -755,6 +763,7 @@ fr:
     description: "Le Robot d'Aide de Loomio est vraiment motivé pour que vous investissiez dans un voyage sur la Lune. Apparemment, le brownie de l'espace est délicieux. Mais les implications pour votre empreinte carbone vous inquiètent.\nEst ce une bonne idée ? Le Robot d'Aide de Loomio veut savoir ce que vous en pensez !\nSi vous connaissez déjà votre position, cliquez sur l'une des icônes ci dessous (survolez les boutons de décision pour une description de la signification de chacun d'eux).\nVous êtes invités à laisser un bref commentaire sur la raison de votre choix. Ceci permet de rendre plus facile la synthèse de ce que chacun pense et pourquoi. Vous pouvez changer d'avis et revoter sans souci, tant que la proposition n'est pas close.\n"
   contact_page:
     contact_us: Contactez-nous
+    contact_form: Formulaire de contact
     labels:
       name: Votre nom
       email: Votre adresse e-mail
@@ -953,6 +962,7 @@ fr:
   about_loomio: À propos de Loomio
   ago: "il y a %{quantity_of_time}"
   approve: Approuvez
+  attachments: "Pièces jointes :"
   author: Auteur
   back: Retour
   cancel: Annuler
@@ -1125,6 +1135,7 @@ fr:
     online_community: Communauté en ligne
     religious_group: Religion/spiritualité
     event: Évnement
+    open_source_software: Logiciel libre et open source
     political_initiative: Initiative politique
     social_enterprise: Entreprise sociale
     social_justice: Justice sociale

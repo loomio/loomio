@@ -20,7 +20,7 @@ es:
   activerecord:
     errors:
       messages:
-        blank: no puede estar en blanco
+        blank: no puede estar vacío
         invalid: No es un valor válido.
   errors:
     messages:
@@ -43,27 +43,27 @@ es:
       no_invitations_remaining: No hay más invitaciones
     mailer:
       invitation_instructions:
-        subject: Alguien te ha invitado a invitado a participar en su grupo de Loomio
+        subject: Alguien te ha invitado a unirte a su grupo en Loomio
     registrations:
       sign_up: Crear cuenta
   error:
     access_denied: No tienes permisos para hacer esto.
     cant_join_subgroup: No puedes unirte a un subgrupo si no eres miembro del grupo superior.
-    cant_modify_position: La propuesta ha cerrado. Ya no puedes modificar tu posición.
-    cant_state_position: Esta propuesta se ha cerrado.
+    cant_modify_position: Esta propuesta está cerrada.
+    cant_state_position: Esta propuesta está cerrada.
     cant_view_member_profile: No puedes ver el perfil de este miembro porque no perteneces al mismo grupo.
     contribution: Inicia sesión para hacer una contribución.
     discussion_not_created: No se pudo crear la discusión.
     discussion_not_moved: "No tienes permisos para trasladar esta discusión a %{destination_group.name}"
-    group_not_archived: El grupo no pudo ser archivado.
+    group_not_archived: El grupo no pudo archivarse.
     invalid_close_date: "La fecha de cierre no es válida. Por favor, comprueba que la fecha no haya pasado."
     invalid_email: Por favor introduzca al menos una dirección de correo electrónico valida
     image_upload_fail: "Imposible cargar la imagen. Asegúrate que el archivo sea inferior a 1 MB y sea un .jpeg, .png, o .gif"
     motion_closing_inputs: La fecha de cierre no es válida
-    motion_outcome_not_created: No es posible publicar la decisión.
+    motion_outcome_not_created: No es posible publicar el resultado.
     motion_outcome_not_updated: No es posible actualizar la discusión.
-    only_group_coordinator_destroy: "No puedes irte de este grupo porque eres el único coordinador. Puedes desactivar tu grupo por medio de las opciones\nabajo o <a href='%{add_coordinator}'>adherir a nuevo coordinador</a> al grupo."
-    only_group_coordinator_remove_admin: "El grupo debe tener un coordinador. ¿Te gustaría adherir a otro coordinador al grupo? "
+    only_group_coordinator_destroy: "No puedes irte de este grupo porque eres el único coordinador. Puedes desactivar tu grupo en el panel desplegable de opciones o <a href='%{add_coordinator}'>añadir un nuevo coordinador</a> al grupo."
+    only_group_coordinator_remove_admin: "El grupo debe tener un coordinador. ¿Te gustaría añadir a otro coordinador al grupo? "
     permission_to_invite: No tienes permiso para invitar a nuevos miembros.
     position_not_updated: Su posición no ha sido actualizada.
     settings_not_updated: Tus ajustes no han sido modificados.
@@ -73,18 +73,18 @@ es:
     group_already_setup: El grupo que estás tratando de configurar ya existe.
     passwords_did_not_match: Las contraseñas no coinciden
     proposal_already_exists: Ya existe una propuesta abierta en esta discusión.
-    username_cannot_contain_whitespace: El nombre de usuario no puede contener espacios en blanco
+    username_cannot_contain_whitespace: El nombre de usuario no puede contener espacios
     user_with_email_address_already_in_group: Un usuario con ese correo electrónico ya es miembro de este grupo.
-    you_have_already_requested_membership: Ya has solicitado membresía en este grupo.
+    you_have_already_requested_membership: Ya has solicitado unirte a este grupo.
     you_are_already_a_member_of_this_group: Ya eres miembro de este grupo.
-    not_found: " No se encontró. Pudo haberse eliminado."
+    not_found: " No ha encontrado el elemento. Pudo haberse eliminado."
   alert:
     duplicate_email: "%{which_email} ya está en el grupo."
   notice:
-    new_contacts_imported: "¡Funcionó! Puedes escribir nombres en el campo de abajo y te sugeriremos la dirección email."
+    new_contacts_imported: "¡Funcionó! Puedes escribir nombres en el campo de abajo y te sugeriremos la dirección de email."
     admin_rights_removed: "Los derechos de %{which_user} como coordinador han sido removidos."
     user_added: "%{user_email_or_name} se ha añadido al grupo."
-    new_user_added: "%{user_email_or_name} será añadido al grupo cuando cree una cuenta en Loomio."
+    new_user_added: "%{user_email_or_name} se añadirá al grupo cuando cree una cuenta en Loomio."
     member_removed: Miembro eliminado.
     membership_approved: Membresía aprobada.
     membership_request_canceled: Solicitud de membresía cancelada.
@@ -96,7 +96,7 @@ es:
     invitations:
       auto_added:
         one: 1 miembro añadido
-        other: "%{count} miembros adheridos"
+        other: "%{count} miembros añadidos"
       existing_member:
         one: 1 miembro en este grupo
         other: "%{count} miembros en este grupo"
@@ -108,42 +108,42 @@ es:
     cover_photo_upload: Sube una nueva foto de portada
     logo_upload: Sube un nuevo logo
     edit_description: Editar descripción
-    group_category: Encuentra más grupos como éste
+    group_category: Encuentra más grupos como este
     unread_comments: "Comentarios no leídos  "
-    new_votes: nuevos votos
+    new_votes: Votos nuevos
   views:
     pagination:
-      previous: Atrás
+      previous: Anterior
       next: Siguiente
   warning:
     cant_remove_last_admin: Eres el último coordinador y no puedes ser eliminado.
-    membership_request_already_approved: La petición de membresía ya ha sido aprobada.
+    membership_request_already_approved: La solicitud de membresía ya ha sido aprobada.
     membership_request_already_ignored: La solicitud de membresía ya ha sido ignorada.
     membership_request_already_canceled: La solicitud de membresía ya ha sido cancelada.
-    position_not_submitted: Tu posición no pudo ser enviada
-    proposal_not_created: La propuesta no pudo ser creada.
+    position_not_submitted: Tu posición no pudo enviarse
+    proposal_not_created: La propuesta no pudo crearse.
     user_already_admin: "%{which_user} ya es coordinador de este grupo."
     user_already_member: "%{which_user} ya es miembro de este grupo."
-    user_not_admin: "Lo siento, %{which_user} debe ser administrador de este grupo para acceder a esto."
+    user_not_admin: "Lo sentimos, %{which_user} tienes que ser administrador de este grupo para acceder."
   success:
-    added_to_group: "Has sido adherido a %{which_group}."
-    close_date_changed: Fecha de cierre cambiada exitosamente.
-    discussion_created: Discusión creada exitosamente.
-    discussion_updated: Discusión actualizada satisfactoriamente.
-    discussion_deleted: Discusión exitosamente eliminada.
-    discussion_moved: "Discusión satisfactoriamente trasladada a %{group_name}"
+    added_to_group: "Te has unido a %{which_group}."
+    close_date_changed: Fecha de cierre cambiada con éxito.
+    discussion_created: Discusión creada con éxito.
+    discussion_updated: Discusión actualizada con éxito.
+    discussion_deleted: Discusión eliminada con éxito.
+    discussion_moved: "Discusión trasladada con éxito a %{group_name}"
     emails_sending: Enviando correos electrónicos.
-    group_archived: Grupo archivado exitosamente.
-    group_created: Grupo creado exitosamente.
+    group_archived: Grupo archivado con éxito.
+    group_created: Grupo creado con éxito.
     members_added: Miembros agregados al grupo.
-    membership_requested: "Has solicitado unirte a %{which_group}. Serás notificado/a una vez que tu petición haya sido aprobada."
-    motion_closed: "Propuesta concluida. Si lo deseas, debajo puedes establecer un resultado y enviarlo a tu grupo."
-    motion_outcome_created: "Felicitaciones, has creado la decisión a una propuesta y los miembros del grupo serán notificados."
+    membership_requested: "Has solicitado unirte a %{which_group}. Se te notificará una vez que tu solicitud haya sido aprobada."
+    motion_closed: "Propuesta concluida. Si lo deseas, puedes establecer un resultado abajo y enviarlo a tu grupo."
+    motion_outcome_created: "Enhorabuena, has creado un resultado para la propuesta y los miembros del grupo han sido notificados."
     motion_outcome_updated: La decisión ha sido modificada.
-    password_updated: Tú contraseña se ha cambiado correctamente.
+    password_updated: Tú contraseña se ha cambiado con éxito.
     position_submitted: Posición enviada
     position_updated: Posición actualizada.
-    proposal_created: Propuesta creada exitosamente.
+    proposal_created: Propuesta creada con éxito.
     proposal_deleted: Propuesta eliminada.
   datetime:
     distance_in_words:
@@ -183,9 +183,9 @@ es:
   organisation:
     name: Loomio
   sr:
-    toggle_navigation: Mostrar / Ocultar Navegación
+    toggle_navigation: Mostrar/ocultar navegación
   footer:
-    about: Acerca de Loomio
+    about: Sobre Loomio
     blog: Blog
     contact: Contacto
     help: Ayuda
@@ -201,11 +201,11 @@ es:
     what_you_have_not_read_yet: He aquí lo que te has perdido
     dropdown-btn: Bandeja de entrada
     empty: "¡Estás al día! No hay comentarios que no hayas visto."
-    preferences_instructions_html: "<strong>Arrastra los elementos</strong> para reordenarlos. <strong>Deselecciónalos</strong> para eliminarlos de tu bandeja de entrada."
+    preferences_instructions_html: "<strong>Arrastra los elementos</strong> para reordenarlos. <strong>Desmárcalos</strong> para eliminarlos de tu bandeja de entrada."
   notifications:
     header: Notificaciones
-    new_discussion: Comenzó una discusión
-    new_motion: Creó una proposición
+    new_discussion: comenzó una discusión
+    new_motion: Creó una propuesta
     motion_closed:
       by_user: cerró la propuesta
       by_expiry: La propuesta se ha cerrado
@@ -213,17 +213,17 @@ es:
     new_comment: comentó en la discusión
     comment_liked: le gusta tu comentario en la discusión
     user_mentioned: te mencionó en un comentario sobre
-    membership_requested: pidió membresía en
-    membership_request_approved: Acepta la petición para participar
+    membership_requested: membresía solicitada para
+    membership_request_approved: tu solicitud de ingreso ha sido aprobada
     user_added_to_group: te agregó al grupo
     motion_closing_soon: La propuesta está a punto de cerrarse
     motion_blocked: bloqueó la propuesta
-    motion_outcome_created: Publico una decisión para la propuesta.
-    motion_outcome_updated: resultado de propuesta modificado
+    motion_outcome_created: publicó un resultado para la propuesta.
+    motion_outcome_updated: resultado de propuesta actualizado
     email_actions:
       following_thread: "Estas ahora siguiendo el hilo: %{thread_title}"
       not_following_thread: "Ya no estas siguiendo el hilo: %{thread_title}"
-  edit_discussion_context: Editar información de la discusión
+  edit_discussion_context: Editar el contexto de la discusión
   request_new_group: Crear un grupo
   start_new_group: Empieza un nuevo grupo
   start_new_group_hint: "Empieza a tomar decisiones "
@@ -233,15 +233,15 @@ es:
   no_groups_found: "¡No se han encontrado grupos con ese nombre!"
   no_group_header: "Bienvenid@ a Loomio Beta"
   empty_notifications: Todavía no tienes notificaciones.
-  see_all_notifications: Ver todas tus notificaciones
+  see_all_notifications: Ver todas las notificaciones
   sign_out: Salir
-  sign_in: Entrar
-  honeypot_warning: "No se pudo crear tu cuenta. Si usas un lector de pantallas, por favor, asegúrate de que el último campo (oculto) del formulario está en blanco."
-  tagline: Creando un mundo donde es fácil para todos participar de las decisiones que nos afectan.
-  or_sign_in_html: "si ya tienes una cuenta en Loomio, <a href='%{link}' class='%{link_class}'>accede aquí</a>"
-  or_link_account_html: "Si ya tienes cuenta en Loomio, <a href='%{link}'>haz que se vinculen</a>"
-  click_to_dismiss: Presione aquí para deshacerse de este mensaje
-  generic_confirm: Estas seguro?
+  sign_in: Iniciar sesión
+  honeypot_warning: "No se pudo crear tu cuenta. Si usas un lector de pantalla, por favor, asegúrate de que el último campo (oculto) del formulario está en blanco."
+  tagline: Creando un mundo en el que es fácil para todos participar en las decisiones que les afectan.
+  or_sign_in_html: "Si ya tienes una cuenta en Loomio, <a href='%{link}' class='%{link_class}'>inicia sesión aquí</a>"
+  or_link_account_html: "Si ya tienes cuenta en Loomio, <a href='%{link}'>vincúlalas</a>"
+  click_to_dismiss: Haz clic aquí para descartar este mensaje
+  generic_confirm: ¿Estás seguro?
   discussion_helper_text:
     header: "Bienvenido a tu primera discusión "
     message: "<p> El tema se encuentra al principio de la pagina, con el contexto debajo.</p><p>La discusión está a la izquierda, las decisiones aparecen a la derecha. Si piensas que tu grupo está listo para tomar una decisión, puedes crear una propuesta para que sea considerada.</p>"
@@ -252,8 +252,8 @@ es:
     header: Bienvenido/a a tu página de inicio
     message: "<p>La página de inicio muestra todas las discusiones actuales de todos los grupos que eres miembro.</p><p>Puedes empezar una discusión haciendo clic en el botón \"Empezar discusión\".</p>"
   prompt_visitor_to_authenticate:
-    header: Accede a tu cuenta o únete al grupo para participar
-    body: "Si eres miembro de este grupo, has de acceder a tu cuenta para participar"
+    header: Inicia sesión en tu cuenta o únete al grupo para participar
+    body: "Si eres miembro de este grupo, tendrás que iniciar sesión en tu cuenta para participar"
   prompt_user_to_join:
     header: Únete al grupo para participar
     body: "Para comentar o votar, necesitas ser miembro de este grupo"
@@ -401,7 +401,7 @@ es:
   confirm_make_coordinator: "¿Estás seguro de que quieres hacer a %{which_user} coordinador de este grupo?"
   confirm_remove_member: ¿Estás seguro que deseas remover a este miembro del grupo?
   want_to_invite_html: "¿Quieres <a href='%{link}'> invitar a personas</a> a este grupo?"
-  membership_requests: Peticiones de membresía
+  membership_requests: Solicitudes de ingreso
   previous_requests: Solicitudes anteriores
   approved_by_person: "Aprobado por %{person}"
   ignored_by_perosn: "Ignorado por %{person}"
@@ -412,11 +412,11 @@ es:
   cancel_membership_request: Cancelar petición
   ignore_request: Ignorar petición
   ignore: Ignorar
-  confirm_ignore_membership_request: "¿Estás seguro de que deseas ignorar la petición al grupo de %{which_user}?"
+  confirm_ignore_membership_request: "¿Estás seguro de que deseas ignorar la solicitud de %{which_user}?"
   membership_requested: Membresía solicitada.
-  request_membership: Petición de membresías
-  ask_to_join_group: Pedir pertenencia al grupo
-  confirm_remove_membership_request: ¿Estás seguro de que deseas retirar tu petición de membresía a este grupo?
+  request_membership: Solicitud de membresías
+  ask_to_join_group: Solicita unirte al grupo
+  confirm_remove_membership_request: ¿Estás seguro de que deseas retirar tu solicitud de membresía a este grupo?
   no_pending_membership_requests: No hay peticiones de membresía pendientes para este grupo.
   subgroups: Subgrupos
   create_a_subgroup: Crear un subgrupo
@@ -450,9 +450,9 @@ es:
     members_count: "%{count} miembros"
     membership_requests_header: "Membresías solicitadas para %{network}"
     join_header: Adhiere tu grupo a la red
-    request_to_join: Pide unirte a la Red
-    current_requests: Peticiones actuales
-    previous_requests: Peticiones anteriores
+    request_to_join: Solicita unirte a la Red
+    current_requests: Solicitudes actuales
+    previous_requests: Solicitudes anteriores
     approve: "Aprobar "
     approved: "Aprobado por %{name}"
     decline: "Rechazar "
@@ -460,8 +460,8 @@ es:
     threads: Hilos
     groups: Grupos
     join: Unirse
-    manage: "Gestionar (%{count} peticiones pendientes) "
-    request_created: Gracias por pedir unirte a la red. Los coordinadores de la red consideraran tu pedido en breve.
+    manage: "Gestionar (%{count} solicitudes pendientes) "
+    request_created: Gracias por solicitar unirte a la red. Los coordinadores revisarán tu solicitud en breve.
     request_approved: "Solicitud de membresía a la red aprobada. "
     request_declined: Solicitud de membresía a la red rechazada.
   group_request:
@@ -641,7 +641,7 @@ es:
     keep_up_to_date: Mantente informado
     keep_up_to_date_html: "<p>Pulsando el nombre de tu grupo al principio de la pantalla, irás a la página de tu grupo,\ndonde podrás ver una lista de todas las discusiones y decisiones de ese grupo. Si estás en más de un grupo, en la página de inicio puedes ver de una sola vez toda la actividad de todos tus grupos.</p>\n<p>Recibirás un correo electrónico cuando ocurran cosas importantes en tu grupo.\nPuedes modificar tus preferencias de correo electrónico <a href=\"%{link}\"\">aquí</a>.</p>\n"
     make_a_decision: Toma una decisión
-    make_a_decision_description: "Cuando la conversación lleva establecida un tiempo determinado, cualquiera puede iniciar una propuesta. Cuando estés listo para dar tu opinión, haz clic en uno de los cuatro botones de decisión:"
+    make_a_decision_description: "Cuando el grupo está listo para tomar una decisión, cualquiera puede hacer una  propuesta. Resume en pocas palabras de un plan de acción claro y proporciona algún contexto para que todo el mundo sepa exactamente qué significa estar o no de acuerdo."
     prompt_people_details: "Si quieres atención de una persona especifica en tu grupo, escribe «@» seguido del nombre de la persona, y recibirá un correo electrónico dejándole saber que lo has mencionado en un comentario."
     prompt_people_html: "Llama la atención de una persona con <span class='blue'>@nombre</span>"
     positions_agree_description: "<span>Estás de acuerdo</span> y quieres que siga a delante."
@@ -708,20 +708,20 @@ es:
   already_have_account: ¿Ya tienes una cuenta en Loomio?
   confirm_your_details: Confirma tus datos
   link_up_your_account: Vincula tu cuenta
-  log_in_to_your_loomio_account: "Accede a tu cuenta Loomio vinculándola con %{provider_name}."
-  now_that_your_logged_in: "Ahora que has entrado con %{provider_name}, por favor, confirma tus datos para crear una cuenta Loomio."
+  log_in_to_your_loomio_account: "Inicia sesión en tu cuenta Loomio vinculándola con %{provider_name}."
+  now_that_your_logged_in: "Ahora que has iniciado sesión con %{provider_name}, por favor, confirma tus datos para crear una cuenta de Loomio."
   confirmation_not_received: ¿No has recibido las instrucciones de confirmación?
   unlock_not_received: ¿No has recibido instrucciones de desbloqueo?
   inactive_html: "Esta cuenta ha sido desactivada. Si tú tienes alguna pregunta, por favor <a href='%{path_to_contact}'>póngase en contacto</a> con nosotros."
   create_an_account_html: Crear una cuenta Loomio Beta
-  log_in: Entrar
+  log_in: Iniciar sesión
   password_reset:
     email_guidelines_html: "<p>ingresa la dirección de correo electrónico de tu cuenta en Loomio en el espacio debajo, y se te sera mandado un enlace para restablecer tu contraseña.</p>\n<p>Si normalmente ingresas vía Facebook, Google, Twitter o Persona, ingresa el correo electrónico asociado con esa cuenta.</p>\n"
     reset_email_timeframe: Puede tardar hasta 5 minutos para que llegue el correo electrónico. si no lo recibes asegúrate de mirar en tu carpeta de correo no deseado.
     length_restriction: La contraseña debe tener al menos 8 caracteres.
     forbidden_passwords: "Contraseñas comunes como \"contraseña' están prohibidas para mantener tu cuenta segura."
   join_group:
-    log_in: "Entrar para unirte a %{group_name}"
+    log_in: "Inicia sesión para unirte a %{group_name}"
     create_account_to_join_group: "Crea una cuenta para acceder a %{group_name}"
   start_group:
     log_in: Inicia sesión para configurar tu grupo.
@@ -912,7 +912,7 @@ es:
     group_email:
       intro: "%{who} hizo un anuncio en %{group}:"
     group_membership_approved:
-      intro: "Tu pedido para acceder al grupo '%{group_name}' en Loomio ha sido aprobado."
+      intro: "Tu solicitud para acceder al grupo '%{group_name}' en Loomio ha sido aprobada."
       subject: Membresía aprobada
     invitation:
       hi: "Hola %{name},"
@@ -920,9 +920,9 @@ es:
       closing_message: "Si tienes alguna pregunta o hay cualquier cosa con la que te podamos ayudar a mantenerte en marcha, nos encantará saber de ti; tan solo responde a este correo electrónico."
       thanks: "Gracias!⏎\nEl Equipo de Loomio⏎ \n"
     membership_request:
-      intro: "%{name} (%{email}) ha pedido acceso a uno de tus grupos de Loomio."
-      subject: "%{who} pidió acceso a %{which_group}"
-      view_group: Puedes aceptar o denegar el pedido aquí
+      intro: "%{name} (%{email}) ha solicitado el acceso a uno de tus grupos de Loomio."
+      subject: "%{who} solicitó el acceso a %{which_group}"
+      view_group: Puedes aceptar o denegar la solicitud aquí
     mentioned:
       context: "%{author_name} le mencionó en la discusión  \"%{discussion_title}\""
       subject: "%{who} te mencionó en el grupo de Loomio %{which} "
