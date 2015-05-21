@@ -43,8 +43,8 @@ eo:
   help docs: 8
   main: 86
 es:
-  frontpage: 58
-  help docs: 70
+  frontpage: 95
+  help docs: 75
   main: 99
 fa-IR:
   frontpage: 52
@@ -57,7 +57,7 @@ fi:
 fr:
   frontpage: 58
   help docs: 26
-  main: 97
+  main: 98
 ga-IE:
   frontpage: 44
   help docs: 6
