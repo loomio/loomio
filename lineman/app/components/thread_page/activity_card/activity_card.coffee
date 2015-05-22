@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.pageSize = 30
     $scope.firstLoadedSequenceId = 0
     $scope.lastLoadedSequenceId = 0
-    $scope.newActivitySequenceId = $scope.discussion.reader().lastReadSequenceId - 1
+    $scope.newActivitySequenceId = $scope.discussion.reader().lastReadSequenceId + 1
     visibleSequenceIds = []
     rollback = 2
 
@@ -22,8 +22,8 @@ angular.module('loomioApp').directive 'activityCard', ->
         $scope.initialFocused = target
       else if $scope.discussion.isUnread()
         # discussion is unread
-        $scope.initialLoaded  = $scope.discussion.reader().lastReadSequenceId
-        $scope.initialFocused = _.max [$scope.initialLoaded - rollback, 0]
+        $scope.initialLoaded  = _.max [$scope.discussion.reader().lastReadSequenceId - rollback, 0]
+        $scope.initialFocused = $scope.initialLoaded + rollback
       else
         # discussion is read
         $scope.initialLoaded  = _.max [$scope.discussion.lastSequenceId - $scope.pageSize + 1, 0]

@@ -3,13 +3,6 @@ env:
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install imagemagick libmagickwand-dev -qq -y
-  - npm install -g lineman bower
-install:
-  - bundle install
-  - cd lineman
-  - npm install
-  - bower install
-  - cd ..
 branches:
   only:
     - 'master'
