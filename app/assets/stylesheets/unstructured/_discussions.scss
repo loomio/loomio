@@ -442,19 +442,14 @@ body.discussions.show {
             margin-bottom: -4px;
            }
         }
-        h1, h2, h3, h4, ol, ul {
+        h1, h2, h3, h4 {
           &:first-child {
             clear: left;
             position: relative;
             top: -12px;
             margin-bottom: -12px;
           }
-          ul {
-            clear: left;
-            position: relative;
-            top: -12px;
-            margin-bottom: -12px;
-        }}
+        }
         ol, p, ul {
           color: $text-black;
         }
