@@ -23,7 +23,10 @@
     "angular-scroll": "~0.6.5",
     "moment": "latest"
   },
+  "devDependencies": {
+    "angular-mocks": "1.4.0-rc.0"
+  },
   "resolutions": {
-    "angular": "1.4.0-rc.0"
+    "angular": "1.4"
   }
 }

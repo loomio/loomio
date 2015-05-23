@@ -1,7 +1,7 @@
 %section.previous-proposals-card{aria-labelledby: 'previous-proposals-card-heading', ng-show: 'anyProposals()'}
   %h2.lmo-card-heading#previous-proposals-card-heading{translate: 'previous_proposals_card.heading'}
 
-  .wrap{ng-repeat: 'proposal in proposals()'}
+  .wrap{ng-repeat: 'proposal in proposals()', id: 'proposal-{{proposal.id}}'}
     .active-proposal{ng-if: 'selectedProposalId == proposal.id'}
       %proposal_expanded{proposal: 'proposal', can_collapse: 'true'}
 

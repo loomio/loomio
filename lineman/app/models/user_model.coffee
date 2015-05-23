@@ -28,7 +28,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       @notificationsView.data()
 
     groups: ->
-      @groupsView.data()
+      @recordStore.groups.find(id: { $in: @groupIds() })
 
     parentGroups: ->
       @parentGroupsView.data()
