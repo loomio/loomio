@@ -1,7 +1,7 @@
 %header.lmo-navbar{role: 'navigation'}
   .lmo-navbar__left
     .lmo-navbar__item{ng-class: '{"lmo-navbar__item--selected": selected == "dashboardPage"}'}
-      %a.btn.lmo-navbar__btn.lmo-navbar__btn-icon{href: '/dashboard', title: "{{ 'navbar.home_title' | translate }}", tabindex: 1}
+      %a.btn.lmo-navbar__btn.lmo-navbar__btn-icon{href: '/dashboard', title: "{{ 'navbar.home_title' | translate }}", tabindex: 1, ng-click: 'homePageClicked()'}
         %i.fa.fa-lg.fa-home>
         %span.lmo-navbar__btn-label{translate: 'navbar.home'}
     .lmo-navbar__item{ng-class: '{"lmo-navbar__item--selected": selected == "inboxPage"}'}
