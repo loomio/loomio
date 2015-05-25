@@ -37,7 +37,7 @@ Then(/^I should see the logged in homepage$/) do
 end
 
 When(/^I update my username$/) do
-  @username = Faker::Internet.user_name
+  @username = Faker::Internet.user_name nil, []
   fill_in 'user_username', with: @username
   click_on 'profile-submit'
 end
@@ -59,7 +59,7 @@ When(/^And I submit the form$/) do
 end
 
 Then(/^I should see an error message on the form$/) do
-  expect(page).to have_content("Username cannot contain spaces")
+  expect(page).to have_content(I18n.t(:"error.username_must_be_alphanumeric"))
 end
 
 Then(/^my username should not be updated$/) do

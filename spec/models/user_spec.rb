@@ -56,6 +56,22 @@ describe User do
     user.should have(1).errors_on(:username)
   end
 
+  it "should require the username not have special characters" do
+    user.username = 'username?'
+    user.should have(1).errors_on(:username)
+    user.username = 'username/'
+    user.should have(1).errors_on(:username)
+    user.username = 'user_name'    
+    user.should have(1).errors_on(:username)
+    user.username = 'user-name'
+    user.should have(1).errors_on(:username)
+  end
+
+  it 'should require the username is lower case' do
+    user.username = 'USERNAME'
+    user.should have(1).errors_on(:username)
+  end
+
   it "sets the avatar_kind to gravatar if user has one" do
     user = User.new attributes_for(:user)
     user.stub(:has_gravatar? => true)

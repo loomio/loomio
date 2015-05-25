@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :username, allow_blank: true
   validates_length_of :username, maximum: 30, allow_blank: true
-  validates_format_of :username, without: /\s/, message: I18n.t(:'error.username_cannot_contain_whitespace')
+  validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'error.username_must_be_alphanumeric')
 
   validates_length_of :password, minimum: 8, :allow_nil => true
   validates :password, nontrivial_password: true, :allow_nil => true
