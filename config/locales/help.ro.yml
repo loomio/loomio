@@ -13,9 +13,12 @@ ro:
         pending_invitations_html: Invitaţii fără răspuns
       discussion_threads:
         discussion_privacy_html: Confidentialitatea discutiei
+      proposals:
+        title_html: Propuneri
       subgroups:
         title_html: Subgrupuri
       keeping_up_to_date:
+        volume_html: Volum
         email_settings_html: Setări email
       user_profile:
         account_deactivation_html: Contul se dezactiveaza
@@ -51,9 +54,18 @@ ro:
     discussion_threads:
       discussion_privacy:
         title: Confidentialitatea discutiei
+    proposals:
+      title: Propuneri
     subgroups:
       title: Subgrupuri
     keeping_up_to_date:
+      volume:
+        title: Volum
+        body:
+          loud_title: Tare
+          normal_title: Normal
+          quiet_title: Incet
+          mute_title: Mut
       email_settings:
         title: Setări email
       yesterday_on_loomio:
