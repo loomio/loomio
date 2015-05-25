@@ -1,5 +1,5 @@
 angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $routeParams, $document, $timeout, Records, MessageChannelService, CurrentUser) ->
-  $rootScope.$broadcast('currentComponent', 'groupPage')
+  $rootScope.$broadcast 'currentComponent', {page: 'groupPage'}
 
   Records.groups.findOrFetchByKey($routeParams.key).then (group) =>
     @group = group
