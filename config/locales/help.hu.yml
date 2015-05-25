@@ -313,7 +313,6 @@ hu:
       title: Fordítás
     security:
       title: Titkosság és biztonság
-      body_html: "<p>Megnézheted  <a href=\"https://www.loomio.org/privacy\">Adatvédelmi irányelveinket</a></p>\n<p>Ha speciális biztonsági aggályaid vannak, azt ajánljuk, hogy telepítsd a Loomio saját verzióját.\nTovábbiakat találsz a saját verzió üzemeltetéséről a wikiben: <a href=\"https://github.com/loomio/loomio/wiki\">github.com/loomio/loomio/wiki</a>.</p>\n"
     contributing:
       title: Hozzájárulás a Loomiohoz
       body:

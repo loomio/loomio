@@ -1,13 +1,17 @@
 fr:
   new_help:
+    title: "Besoin d'aide ?"
     how_loomio_works:
+      title: Comment Loomio fonctionne
       start_group_link: Créer un groupe
+      start_group_description: pour collaborer sur Loomio
       invite_people_link: Inviter des personnes
       invite_people_description: dans votre groupe
       start_discussion_link: Démarrer une discussion
       make_proposal_link: Faire une proposition
       decide_together_link: "Décider ensemble :"
     contents:
+      title: Sommaire
       getting_started:
         title_html: Démarrage
       group_settings:
@@ -24,6 +28,7 @@ fr:
         title_html: Commentaires
         posting_comments_html: Publier un commentaire
         attaching_files_html: Attacher des fichiers
+        mentioning_html: "@mentionner les membres du groupe"
         editing_comments_html: Modifier un commentaire
         liking_comments_html: Apprécier un commentaire
         deleting_comments_html: Effacer un commentaire
@@ -55,6 +60,8 @@ fr:
         title_html: Contribuer à Loomio
       loomio_community:
         title_html: La communauté Loomio
+      faq:
+        title_html: FAQ
     getting_started:
       title: Démarrage
     group_settings:
@@ -98,6 +105,8 @@ fr:
       title: Commentaires
       attaching_files:
         title: Attacher des fichiers
+      mentioning_group_members:
+        title: "@mentionner les membres du groupe"
       editing_comments:
         title: Modifier un commentaire
       liking_comments:
@@ -153,3 +162,12 @@ fr:
           title_html: La communauté Loomio
     loomio_community:
       title: La communauté Loomio
+    faq:
+      title: FAQ
+    back_to_top: ^ Retour en haut
+  help:
+    markdown:
+      intro:
+        title: "Qu'est-ce que markdown?\n=======================\n"
+      lists:
+        title: "Listes\n------\n"

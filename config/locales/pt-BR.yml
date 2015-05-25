@@ -212,6 +212,7 @@ pt-BR:
     new_vote: "%{position} na proposição"
     new_comment: comentou na discussão
     comment_liked: curtiu seu comentário na discussão
+    comment_replied_to: respondeu ao seu comentário em
     user_mentioned: mencionou você em um comentário em
     membership_requested: requisitou inclusão de membro para
     membership_request_approved: aprovou seu pedido de entrada
