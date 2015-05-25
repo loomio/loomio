@@ -14,7 +14,7 @@ class API::MotionsController < API::RestfulController
   private
 
   def visible_records
-    load_and_authorize_discussion
+    load_and_authorize :discussion
     Queries::VisibleMotions.new(user: current_user, groups: current_user.groups)
                            .where(discussion: @discussion)
                            .order(:created_at)

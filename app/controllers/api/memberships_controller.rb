@@ -2,7 +2,7 @@ class API::MembershipsController < API::RestfulController
 
   def create
     params[:group_id] = params[:membership][:group_id]
-    load_and_authorize_group
+    load_and_authorize :group
     event = MembershipService.join_group group: @group, user: current_user
     @membership = event.eventable
     respond_with_resource
@@ -14,7 +14,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def autocomplete
-    load_and_authorize_group
+    load_and_authorize :group
     authorize! :members_autocomplete, @group
 
     @memberships = Queries::VisibleAutocompletes.new(query: params[:q],
@@ -39,7 +39,7 @@ class API::MembershipsController < API::RestfulController
   private
 
   def visible_records
-    load_and_authorize_group
+    load_and_authorize :group
     Queries::VisibleMemberships.new(user: current_user, group: @group)
   end
 
