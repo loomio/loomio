@@ -1,5 +1,5 @@
 angular.module('loomioApp').controller 'InboxPageController', ($rootScope, Records, CurrentUser, LoadingService, ThreadQueryService) ->
-  $rootScope.$broadcast('currentComponent', 'inboxPage')
+  $rootScope.$broadcast('currentComponent', {page: 'inboxPage'})
   $rootScope.$broadcast('setTitle', 'Inbox')
 
   @threadLimit = 5

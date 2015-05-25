@@ -1,5 +1,5 @@
 angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, CurrentUser, LoadingService, ThreadQueryService) ->
-  $rootScope.$broadcast('currentComponent', 'dashboardPage')
+  $rootScope.$broadcast('currentComponent', { page: 'dashboardPage' })
   $rootScope.$broadcast('setTitle', 'Dashboard')
 
   Records.votes.fetchMyRecentVotes()

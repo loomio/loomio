@@ -1,4 +1,5 @@
 angular.module('loomioApp').controller 'GroupFormController', ($routeParams, $rootScope, $location, Records, FormService) ->
+  $rootScope.$broadcast('currentComponent', { page: 'groupFormPage'})
 
   if $routeParams.key
     Records.groups.findOrFetchByKey($routeParams.key).then (group) =>
