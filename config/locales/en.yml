@@ -84,7 +84,7 @@ en:
     group_already_setup: "The group you are trying to setup already exists."
     passwords_did_not_match: "Password did not match confirmation"
     proposal_already_exists: "There is already an open proposal in this discussion."
-    username_cannot_contain_whitespace: "Username cannot contain spaces"
+    username_must_be_alphanumeric: "Username must contain only lowercase letters and digits."
     user_with_email_address_already_in_group: "A user with that email address already belongs to this group."
     you_have_already_requested_membership: "You have already requested membership to this group."
     you_are_already_a_member_of_this_group: "You are already a member of this group."
