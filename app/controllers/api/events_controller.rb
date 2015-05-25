@@ -3,7 +3,7 @@ class API::EventsController < API::RestfulController
   private
 
   def visible_records
-    load_and_authorize_discussion
+    load_and_authorize :discussion
     resource_class.where(discussion: @discussion).order(sequence_id: :asc)
   end
 

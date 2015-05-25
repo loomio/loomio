@@ -12,7 +12,7 @@ class API::GroupsController < API::RestfulController
   end
 
   def subgroups
-    load_and_authorize_group
+    load_and_authorize :group
     @groups = @group.subgroups.select{|g| can? :show, g }
     respond_with_collection
   end
