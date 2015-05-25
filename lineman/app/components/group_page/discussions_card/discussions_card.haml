@@ -6,6 +6,12 @@
 
   %h2#threads-card-title.lmo-card-heading{ translate: 'group_page.discussions'}
   .group-thread-list
+    .group-thread-list-empty{ng-if: '!loadMoreExecuting && group.organisationDiscussions().length == 0'}
+      .group-thread-list-empty-reason{translate: 'group_page.thread_list.empty.{{whyImEmpty()}}'}
+      .group-thread-list-empty-access{ng-if: 'howToGainAccess()'}
+        %span{translate: 'group_page.thread_list.empty.{{howToGainAccess()}}'}
+        %a{translate: 'group_page.thread_list.empty.request_membership_link', ng-if: 'howToGainAccess() == "request_membership"', href: '#', ng-click: 'requestToJoin()'}
+
     .group-thread-list-item{ng-repeat: 'discussion in group.organisationDiscussions() | orderBy: ["-lastActivityAt"] | limitTo:loaded'}
       .time-and-icon.pull-right
         %smart_time.group-thread-list-time{time: 'discussion.lastActivityAt' }>
@@ -18,5 +24,6 @@
         %a{href: '/g/{{discussion.group().key}}'} {{ discussion.groupName() }}
     %loading{ng-show: 'loadMoreExecuting'}
 
-    .discussions-show-more.card-minor-action
-      %a{ng-hide: 'loadMoreExecuting', ng-click: 'loadMore()', href: '#', translate: 'common.action.show_more'}
+    / Hiding this for now.
+    .discussions-show-more.card-minor-action{ng-if: 'false'}
+      %a{ng-hide: 'loadMoreExecuting || !group.hasDiscussions', ng-click: 'loadMore()', href: '#', translate: 'common.action.show_more'}

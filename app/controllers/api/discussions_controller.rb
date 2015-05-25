@@ -8,6 +8,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def index
+    load_and_authorize :group if params[:group_id] || params[:group_key]
     instantiate_collection
     respond_with_discussions
   end
@@ -35,10 +36,14 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def visible_records
-    Queries::VisibleDiscussions.new(user: current_user, groups: current_user.groups).sorted_by_latest_activity
+    Queries::VisibleDiscussions.new(user: current_user, groups: visible_groups).sorted_by_latest_activity
   end
 
   private
+
+  def visible_groups
+    Array(@group).presence || current_user.groups
+  end
 
   def filter_collection(collection, filter = params[:filter])
     case filter

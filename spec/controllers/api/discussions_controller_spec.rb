@@ -108,7 +108,7 @@ describe API::DiscussionsController do
   end
 
   describe 'index' do
-    let(:another_discussion)    { create :discussion }
+    let(:another_discussion)    { create :discussion, group: another_group }
 
     before do
       discussion; another_discussion
@@ -130,6 +130,15 @@ describe API::DiscussionsController do
         json = JSON.parse(response.body)
         discussions = json['discussions'].map { |v| v['id'] }
         expect(discussions).to_not include cant_see_me.id
+      end
+
+      it 'can display content from a specified public group' do
+        public_group = create :group, discussion_privacy_options: :public_only, is_visible_to_public: true
+        can_see_me = create :discussion, group: public_group, private: false
+        get :index, group_id: public_group.id, format: :json
+        json = JSON.parse(response.body)
+        discussions = json['discussions'].map { |v| v['id'] }
+        expect(discussions).to include can_see_me.id
       end
 
       it 'responds to a since parameter' do

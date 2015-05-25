@@ -218,6 +218,17 @@ en:
   proposal_position_block: 'Block'
 
   group_page:
+    thread_list:
+      empty:
+        no_discussions_in_group: "This group does not have any threads yet."
+        no_discussions_matching_filters_html: "There are no threads matching these filters. <a href='%{link}'>Clear filters</a>."
+        no_public_discussions: "There are no public threads in this group."
+        discussions_are_private: "All threads in this group are private."
+        request_membership: "To see private threads, "
+        request_membership_link: "request to join the group"
+        membership_is_invitation_only: "To join this group you need to be invited by a member."
+        membership_is_invitation_by_admin_only: "To join this group you need to be invited by a coordinator."
+
     messages:
       privacy:
         members: 'This group is now visible only to members'
