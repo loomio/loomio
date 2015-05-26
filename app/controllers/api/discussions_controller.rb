@@ -21,7 +21,7 @@ class API::DiscussionsController < API::RestfulController
   def respond_with_discussion
     if resource.errors.empty?
       render json: DiscussionWrapper.new(discussion: resource, discussion_reader: discussion_reader),
-             serializer: DiscussionWrapperSerializer,
+             serializer: CurrentDiscussionWrapperSerializer,
              root: 'discussion_wrappers'
     else
       respond_with_errors
