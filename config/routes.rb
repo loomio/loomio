@@ -16,7 +16,6 @@ Loomio::Application.routes.draw do
 
   slug_regex = /[a-z0-9\-\_]*/i
 
-  ActiveAdmin.routes(self)
 
   namespace :admin do
     get 'url_info' => 'base#url_info'
@@ -27,8 +26,16 @@ Loomio::Application.routes.draw do
       get :retention
       get :events
       get :weekly_activity
+      get :cohorts
+      get :aaarrr
     end
+    #get :test
+    #resources :groups, only: :show
+    #get 'group/:id'
+    #get 'group/:id' => 'cohort_reports#group'
   end
+
+  ActiveAdmin.routes(self)
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resources :groups, only: [:show, :create, :update] do

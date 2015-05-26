@@ -118,7 +118,6 @@ class GroupsController < GroupBaseController
     @closed_motions = Queries::VisibleMotions.new(user: current_user, groups: @group).order('closed_at desc')
     @feed_url = group_url @group, format: :xml if @group.is_visible_to_public?
 
-    GroupVisitService.record(visit: current_visit, group: @group)
     build_discussion_index_caches
   end
 

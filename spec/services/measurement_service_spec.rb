@@ -4,7 +4,7 @@ describe MeasurementService do
 
   context 'take_daily_measurement' do
     let(:group) { create :group, cohort_id: 1 }
-    let(:today) { Time.zone.now.to_date }
+    let(:today) { Date.today }
 
     before do
       group
@@ -18,13 +18,11 @@ describe MeasurementService do
       create :group, parent: group
 
       member_visit = Visit.create(id: SecureRandom.uuid, user: member)
-      GroupVisit.create(visit: member_visit, group: group)
-      OrganisationVisit.create(visit: member_visit, organisation: group)
+      VisitService.record(visit: member_visit, group: group, user: member)
 
       non_member = create :user
       non_member_visit = Visit.create(id: SecureRandom.uuid, user: non_member)
-      GroupVisit.create(visit: non_member_visit, group: group)
-      OrganisationVisit.create(visit: non_member_visit, organisation: group)
+      VisitService.record(visit: non_member_visit, group: group, user: non_member)
 
       # pass tomorrow as period_end_on to include stuff that happened today
       #
@@ -44,9 +42,9 @@ describe MeasurementService do
       measurement.likes_count.should == 1
       measurement.subgroups_count.should == 1
       measurement.group_visits_count.should == 2
-      measurement.member_group_visits_count.should == 1
+      measurement.group_member_visits_count.should == 1
       measurement.organisation_visits_count.should == 2
-      measurement.member_organisation_visits_count.should == 1
+      measurement.organisation_member_visits_count.should == 1
     end
   end
 end

@@ -16,6 +16,32 @@ ActiveAdmin.register Cohort do
     actions
   end
 
+  show do
+    h3 cohort.id
+    div do
+      ul do
+        cohort.groups.each do |group|
+          li do
+            a(href: group_url(group)) do
+              group.name
+            end
+
+            a(href: admin_groups_path(group)) do
+              'admin'
+            end
+
+            a(href: admin_cohort_reports_group_path(group)) do
+              'report'
+            end
+            #[link_to(group.name, ),
+             #link_to('admin', admin_groups_path(group)),
+             #link_to('report', admin_cohort_reports_path(group))]
+          end
+        end
+      end
+    end
+  end
+
   controller do
     def permitted_params
       params.permit!

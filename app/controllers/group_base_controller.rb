@@ -4,8 +4,7 @@ class GroupBaseController < BaseController
   def track_visit
     if user_signed_in?
       ahoy.track_visit
-      GroupVisitService.record(visit: current_visit, group: @group)
-      OrganisationVisitService.record(visit: current_visit, organisation: @group.parent_or_self)
+      VisitService.record(visit: current_visit, group: @group, user: current_user)
     end
   end
 

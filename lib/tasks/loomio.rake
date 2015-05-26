@@ -49,7 +49,17 @@ namespace :loomio do
     puts "Tagged all groups into cohorts"
   end
 
-  task measure_groups: :environment do
+  task measure_groups_yesterday: :environment do
     MeasurementService.measure_groups(Time.zone.yesterday)
+  end
+
+  task measure_groups_lots: :environment do
+    date = 10.weeks.ago.to_date
+    while(date < Date.today) do
+      puts 'hi'
+      MeasurementService.measure_groups(date)
+      puts "measured #{date}"
+      date = date + 1.day
+    end
   end
 end
