@@ -380,7 +380,7 @@ GEM
     intercom-rails (0.2.28)
       activesupport (> 3.0)
     ipaddress (0.8.0)
-    jquery-atwho-rails (1.1.0)
+    jquery-atwho-rails (0.4.11)
     jquery-fileupload-rails (0.4.5)
       actionpack (>= 3.1)
       railties (>= 3.1)
@@ -709,7 +709,7 @@ DEPENDENCIES
   httparty
   intercom
   intercom-rails
-  jquery-atwho-rails (~> 1.1.0)
+  jquery-atwho-rails (~> 0.4.11)
   jquery-fileupload-rails
   jquery-rails (~> 4.0.3)
   jquery-ui-rails (~> 5.0.0)
