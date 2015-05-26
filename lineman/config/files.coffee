@@ -8,6 +8,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
   css:
     app:    ['generated/css/main.css']
     vendor: ['vendor/bower_components/components-font-awesome/css/font-awesome.css']
+
   coffee:
     app: "app/**/*.coffee"
 
@@ -38,5 +39,6 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/angular-gravatar/build/md5.js",
              "vendor/bower_components/angular-truncate/src/truncate.js",
              "vendor/bower_components/angular-scroll/angular-scroll.js"]
+
     app: ["app/app.js"
           "app/**/*.js"]
