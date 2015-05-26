@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513023923) do
+ActiveRecord::Schema.define(version: 20150523050704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+  enable_extension "pg_stat_statements"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   limit: 255, null: false
@@ -286,9 +287,10 @@ ActiveRecord::Schema.define(version: 20150513023923) do
     t.integer "comments_count"
     t.integer "likes_count"
     t.integer "group_visits_count"
-    t.integer "member_group_visits_count"
+    t.integer "group_member_visits_count"
     t.integer "organisation_visits_count"
-    t.integer "member_organisation_visits_count"
+    t.integer "organisation_member_visits_count"
+    t.integer "age",                              null: false
   end
 
   add_index "group_measurements", ["group_id", "period_end_on"], name: "index_group_measurements_on_group_id_and_period_end_on", unique: true, using: :btree
@@ -351,9 +353,13 @@ ActiveRecord::Schema.define(version: 20150513023923) do
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.boolean  "member",     default: false, null: false
   end
 
   add_index "group_visits", ["created_at"], name: "index_group_visits_on_created_at", using: :btree
+  add_index "group_visits", ["group_id"], name: "index_group_visits_on_group_id", using: :btree
+  add_index "group_visits", ["member"], name: "index_group_visits_on_member", using: :btree
   add_index "group_visits", ["visit_id", "group_id"], name: "index_group_visits_on_visit_id_and_group_id", unique: true, using: :btree
 
   create_table "groups", force: :cascade do |t|
@@ -596,9 +602,13 @@ ActiveRecord::Schema.define(version: 20150513023923) do
     t.integer  "organisation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.boolean  "member",          default: false, null: false
   end
 
   add_index "organisation_visits", ["created_at"], name: "index_organisation_visits_on_created_at", using: :btree
+  add_index "organisation_visits", ["member"], name: "index_organisation_visits_on_member", using: :btree
+  add_index "organisation_visits", ["organisation_id"], name: "index_organisation_visits_on_organisation_id", using: :btree
   add_index "organisation_visits", ["visit_id", "organisation_id"], name: "index_organisation_visits_on_visit_id_and_organisation_id", unique: true, using: :btree
 
   create_table "subscriptions", force: :cascade do |t|

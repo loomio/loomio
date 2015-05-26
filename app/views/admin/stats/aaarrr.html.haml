@@ -1,0 +1,32 @@
+%H1 AAARRR
+
+%ul
+  %li Awareness - homepage visits to www.loomio.org during cohort period
+  %li Acquisition - number of organisations created during the cohort period
+  %li Activation - number of organisations which had more than 5 sessions (from members)
+  %li Retention - number of organisations which had more than 20 sessions after 20 days
+  %li Revenue - number of organisations from cohort that decided to pay
+  %li Referral - number of organisations started by users who are part of a group in this cohort?
+
+%table.table
+  %thead
+    %tr
+      %th Cohort
+      %th Start on
+      %th Awareness
+      %th Acquisition
+      %th Activiation
+      %th Retention
+      %th Revenue
+      %th Referral
+  %tbody
+    - @cohorts.each do |cohort|
+      %tr
+        %td= cohort.id # cohort id
+        %td= cohort.start_on
+        %td= cohort.homepage_visits.count # homepage visits
+        %td= cohort.organisations.count # acquisitions
+        %td= cohort.activated_organisations.count
+        %td= cohort.retained_organisations.count
+        %td= 0 # cohort.paying_organisations.count
+        %td= 0 # cohort.referral.count

@@ -1,0 +1,35 @@
+%h1 Cohorts
+
+%h2 Cohort ages
+%table.table
+  %thead
+    %tr
+      %th cohort
+      %th start on
+      %th end on
+      %th oldest
+      %th youngest
+  %tbody
+    - @cohorts.each do |cohort|
+      %tr
+        %td= cohort.id
+        %td= cohort.start_on
+        %td= cohort.end_on
+        %td= ( Date.today  - cohort.start_on ).to_i
+        %td= ( Date.today  - cohort.end_on ).to_i
+
+- @measurements.each do |measurement|
+  %h2= measurement
+  %table.table
+    %thead
+      %tr
+        %th Cohort
+        - @ages.each do |age|
+          %th= age
+    %tbody
+      - @cohorts.each do |cohort|
+        %tr
+          %td= cohort.id
+          - data_for(cohort, measurement).each do |avg|
+            %td= avg
+

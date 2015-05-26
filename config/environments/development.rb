@@ -40,20 +40,6 @@ Loomio::Application.configure do
   config.eager_load = false
   config.roadie.url_options = {host: 'localhost'}
 
-  # Use these settings to send mail from gmail. If you use 2-step authentication on
-  # your google account, create a new application-specific password and use it in here
-  # http://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration-for-gmail
-  #
-  # config.action_mailer.smtp_settings = {
-  #   address:              'smtp.gmail.com',
-  #   port:                 587,
-  #   domain:               'example.com',
-  #   user_name:            ENV['GMAIL_USER_NAME'],
-  #   password:             ENV['GMAIL_PASSWORD'],
-  #   authentication:       'plain',
-  #   enable_starttls_auto: true
-  # }
-
   config.action_mailer.file_settings = {
     :location => Rails.root.join('tmp/mail')
   }

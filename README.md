@@ -16,6 +16,10 @@ If you have any questions or feedback, get in touch via [contact@loomio.org](mai
 <br />
 [Facebook](https://facebook.com/Loomio) [Twitter](https://twitter.com/Loomio) [Google+](https://plus.google.com/+LoomioOrg)
 
+## Requirements
+- PostgreSQL version 9.4 or higher.
+- Ruby 2.1
+
 # Loomio AngularJS Frontend
 This is the beginnings of a document to introduce people to the
 AngularJS parts of Loomio. It is assumed that you have the rails parts
@@ -85,53 +89,43 @@ probably easiest if you run these each in their own terminal window.
   Then finally to run the tests:  
   `$ lineman grunt spec-e2e`
 
-# -- Server env -- 
+# Configuration
 
-RACK_ENV=development  
-APP_LOGO_PATH
+### Domain name settings
+CANONICAL_HOST - Hostname of the loomio instance. For us it's "www.loomio.org"
+TLD_LENGTH - length of the top level part of your domain name.
+DEFAULT_SUBDOMAIN - we use www
+ALLOW_ROBOTS - Set to 1 if you want to search engines to crawl the public discussions and groups.
 
-### CANONICAL_HOST
-Hostname of the loomio instance. For us it's "www.loomio.org"
+Examples:
+  www.loomio.org
+  CANONICAL_HOST = www.loomio.org
+  TLD_LENGTH = 1
+  DEFAULT_SUBDOMAIN = www
+ 
+  loomio.somewhereelse.com
+  CANONICAL_HOST = loomio.somewhereelse.com
+  TLD_LENGTH = 2
+  DEFAULT_SUBDOMAIN should not be set
 
-### DEFAULT_SUBDOMAIN
-Groups can have subdomains rather than paths to locate them. ie: plainka.loomio.org rather than www.loomio.org/g/2423d23/palinka. Default subdomain is usually "www".
+SECRET_COOKIE_TOKEN -  run 'rake secret' to generate your own SECRET_COOKIE_TOKEN
+DEVISE_SECRET - run 'rake secret' to generate your own DEVISE_SECRET
+FORCE_SSL - if true, only HTTPS connections will be permitted
+FAYE_ENABLED - If you have a instance of https://github.com/loomio/private_pub
+FAYE_URL - the url for your FAYE instance
+MAX_THREADS - optional puma configuration
+MIN_THREADS - optional puma configuration
+PUMA_WORKERS - optional puma configuration
 
-### DELAY_FAYE
-When sending messages to the FAYE websocket server, use delayed job. This is a dumb hack incase the websocket server is down, so that that error does not break the user experience.
-
-### DEVISE_SECRET
-generate a secret with rake secret and use it here.
-
-Should we try to send messages to the websocket server. IE: is the 1.0 interface live updating enabled? and have you setup your FAYE server?
-
-FAYE_ENABLED  
-FAYE_URL
-
-Should all links be https? If so enable this and we'll force all traffic to be https
-FORCE_SSL
-
-If you are hosting www.loomio.org then enable this. the loomio marketing will show. You do not want to set this ever
-
-SHOW_COMMERCIAL_PAGE  
-SHOW_LOOMIO_ORG_MARKETING  
-
-### Email setttings:
-see config/environments/production.rb and http://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration
+### Email configuration
 
 SMTP_DOMAIN  
 SMTP_PASSWORD  
 SMTP_PORT  
 SMTP_SERVER  
 SMTP_USERNAME  
+REPLY_HOSTNAME - we use reply.loomio.org. This is the hostname of your reply by email server.
 
-### REPLY_HOSTNAME
-So that people can reply by email, you can setup a loomo-email-gateway box. This needs an address such as reply.loomio.org. We generate custom email addresses for custombit@ENV['REPLY_HOSTNAME'] so that you can reply by email.
-
-
-### ALLOW_ROBOTS
-Set to 1 if you want to allow robots (search engines) to crawl the public data of the site. In practice this controls the robots.txt file.
-
-# -- 3rd party services --
 
 ### Amazon AWS for attachments
 AWS_ACCESS_KEY_ID  
@@ -144,61 +138,24 @@ FACEBOOK_SECRET
 TWITTER_KEY  
 TWITTER_SECRET  
 FB_APP_ID_META  
+GOOGLE_KEY  
+GOOGLE_SECRET  
+OMNI_CONTACTS_GOOGLE_KEY  
+OMNI_CONTACTS_GOOGLE_SECRET  
 
-### Stats / Diagnostics
-AIRBRAKE_API_KEY  
+### Analytics
 HEAP_APP_ID  
-INTERCOM_APP_API_KEY  
-INTERCOM_APP_ID  
-INTERCOM_APP_SECRET  
-METRICS_LISTENER_URL  
-METRICS_NAMESPACE  
 NEW_RELIC_APP_NAME  
 TAG_MANAGER_ID  
 
 ### Translation related
 BING_TRANSLATE_APPID  
 BING_TRANSLATE_SECRET  
-TRANSIFEX_PASSWORD  
-TRANSIFEX_USERNAME  
 
 ### Errbit/Airbrake
 ERRBIT_KEY  
 ERRBIT_HOST  
 ERRBIT_PORT  
-
-
-### -- Deprecated -- 
-
-GMAIL_PASSWORD  
-GMAIL_USER_NAME  
-YAHOO_KEY  
-YAHOO_SECRET  
-
-### -- ??? --- 
-
-BUNDLE_GEMFILE  
-CFLAGS  
-GEM_HOME  
-GEM_PATH  
-GOOGLE_KEY  
-GOOGLE_SECRET  
-LIBS  
-MAX_THREADS  
-MIN_THREADS  
-NO_RUBYGEMS  
-OMNI_CONTACTS_GOOGLE_KEY  
-OMNI_CONTACTS_GOOGLE_SECRET  
-PARSE_GROUP_ID  
-PARSE_ID  
-PARSE_KEY  
-PARSE_SUBDOMAIN  
-PUMA_WORKERS  
-SECRET_COOKIE_TOKEN  
-TLD_LENGTH  
-UNICORN_TIMEOUT  
-UNICORN_WORKERS  
-callbackName  
 
 #### find the ENV currently in use in the app using : 
 `grep -rIso -P "(?<=ENV)(\.fetch\(|\[).[A-Z_]+.(\)|\])"`
