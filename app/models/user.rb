@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   attr_accessor :honeypot
 
   validates :email, presence: true, uniqueness: true, email: true
+  #validates :name, presence: true
   validates_inclusion_of :uses_markdown, in: [true,false]
 
   has_attached_file :uploaded_avatar,
