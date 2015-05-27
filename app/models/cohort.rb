@@ -18,11 +18,20 @@ class Cohort < ActiveRecord::Base
     organisations.where("id in (#{subquery.to_sql})")
   end
 
-  def retained_organisations
-    subquery = GroupMeasurement.select('DISTINCT group_id')
-                               .where('organisation_member_visits_count > 20')
-                               .where('age > 20')
-    organisations.where("id in (#{subquery.to_sql})")
+  def retained_organisations_count
+    min_age = 20
+    min_activity = 20
+    q = "SELECT COUNT(group_id)
+         FROM group_measurements o_gm
+         JOIN groups o_g on o_gm.group_id = o_g.id
+         WHERE o_g.cohort_id = #{id}
+         AND EXISTS (
+           SELECT * FROM group_measurements i_gm
+           WHERE i_gm.group_id = o_gm.group_id
+           AND o_gm.age > #{min_age} AND i_gm.age = #{min_age}
+           AND o_gm.organisation_member_visits_count > (i_gm.organisation_member_visits_count + #{min_activity}) )"
+
+    ActiveRecord::Base.connection.exec_query(q).to_hash.first['count']
   end
 
   def paying_organisations
