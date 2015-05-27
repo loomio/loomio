@@ -23,7 +23,7 @@
     - @cohorts.each do |cohort|
 
       %tr
-        %td= cohort.id # cohort id
+        %td= link_to cohort.id, admin_cohort_path(cohort) # cohort id
         %td= cohort.start_on
         %td= visits_count = cohort.homepage_visits.count # homepage visits
         %td

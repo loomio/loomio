@@ -19,23 +19,35 @@ ActiveAdmin.register Cohort do
   show do
     h3 cohort.id
     div do
+      h2 'joined'
       ul do
-        cohort.groups.each do |group|
+        cohort.organisations.each do |group|
           li do
-            a(href: group_url(group)) do
+            a(href: admin_group_path(group)) do
               group.name
             end
+          end
+        end
+      end
 
-            a(href: admin_groups_path(group)) do
-              'admin'
+      h2 'activated'
+      ul do
+        cohort.activated_organisations.each do |group|
+          li do
+            a(href: admin_group_path(group)) do
+              group.name
             end
+          end
+        end
+      end
 
-            a(href: admin_cohort_reports_group_path(group)) do
-              'report'
+      h2 'retained'
+      ul do
+        cohort.retained_organisations.each do |group|
+          li do
+            a(href: admin_group_path(group)) do
+              group.name
             end
-            #[link_to(group.name, ),
-             #link_to('admin', admin_groups_path(group)),
-             #link_to('report', admin_cohort_reports_path(group))]
           end
         end
       end
