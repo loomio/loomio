@@ -7,11 +7,6 @@ describe UsernameGenerator do
       expect(UsernameGenerator.new(user).generate).to eq "howdyho"
     end
 
-    it "provides a username based on email if no name exists" do
-      user = build :user, email: "howdy@ho.com", name: nil
-      expect(UsernameGenerator.new(user).generate).to eq "howdy"
-    end
-
     it "lowercases a username" do
       user = build :user, name: "HOWDY HO"
       expect(UsernameGenerator.new(user).generate).to eq "howdyho"
