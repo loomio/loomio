@@ -240,10 +240,14 @@ en:
     header:
       aria_label: 'Group page header'
     description: 'Description'
+    description_placeholder: 'Use this place to describe the purpose of the group so your members know why they are here.'
     discussions: 'Threads'
+    discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
     members: 'Members'
+    members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
     subgroups: 'Subgroups'
+    subgroups_placeholder: 'Subgroups let you break the group up into different teams.'
     invite_people: 'Invite people'
     visibility_label: 'Visibility'
     options_label: 'Options'

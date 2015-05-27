@@ -193,6 +193,10 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  def example_discussion?
+    self.author_id == User.loomio_helper_bot.id
+  end
+
   private
   def set_last_activity_at_to_created_at
     update_attribute(:last_activity_at, created_at)

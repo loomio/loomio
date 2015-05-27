@@ -4,3 +4,6 @@ angular.module('loomioApp').controller 'SubgroupsCardController', ($scope, Recor
   $scope.canCreateSubgroups = ->
     CurrentUser.isMemberOf($scope.group) and
       ($scope.group.membersCanCreateSubgroups or CurrentUser.isAdminOf($scope.group))
+
+  $scope.showSubgroupsPlaceholder = ->
+    CurrentUser.isAdminOf($scope.group) and $scope.group.subgroups().length == 0

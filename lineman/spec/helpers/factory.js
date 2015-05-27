@@ -36,6 +36,11 @@ window.useFactory = function() {
       avatar_kind: 'initials'
     },
 
+    memberships: {
+      volume: 1,
+      admin: false
+    },
+
     groups: {
       key: 'fedcba',
       name: 'Venus: ...Ladies.',
