@@ -16,7 +16,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
   loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ng-annotate", "grunt-haml", 'grunt-sass', 'grunt-cucumber', 'grunt-contrib-copy', 'grunt-exec']
 
   removeTasks:
-    dist: ['uglify']
+    #dist: ['uglify']
     common: ["handlebars", "jst", 'less', 'pages', 'concat_sourcemap', 'pages:dev']
 
   prependTasks:
@@ -27,6 +27,8 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
     common: ["concat_sourcemap:css", "concat_sourcemap:app", "concat_sourcemap:vendor", "concat_sourcemap:spec"]
 
   uglify:
+    options:
+      mangle: false
     js:
       files:
         "dist/js/vendor.js": "generated/js/vendor.js"
