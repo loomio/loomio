@@ -6,6 +6,7 @@ describe MotionsController do
   let(:discussion)  { stub_model(Discussion, group: group, title: 'some discussion', key: 'asdf333') }
   let(:motion) { stub_model(Motion, discussion: discussion, key: 'abc777') }
   let(:previous_url) { root_url }
+  let(:permitted_params) { stub_model(PermittedParams, motion: {outcome: 'new outcome'}) }
 
   before :each do
     Motion.stub(:find_by_key!).with(motion.key).and_return motion
@@ -61,6 +62,13 @@ describe MotionsController do
       it "gives flash success message" do
         delete :destroy, id: motion.key
         expect(flash[:success]).to match(/Proposal deleted/)
+      end
+    end
+
+    context "updating a motion's outcome" do
+      it "updates the motion's outcome" do
+        MotionService.should_receive(:update_outcome).with(:motion => motion, :params => permitted_params.motion, :actor => user)
+        patch :update_outcome, :id => motion.key, :motion => permitted_params.motion
       end
     end
   end
