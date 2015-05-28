@@ -17,8 +17,7 @@ class DiscussionSerializer < ActiveModel::Serializer
              :created_at,
              :updated_at,
              :first_sequence_id,
-             :last_sequence_id,
-             :example
+             :last_sequence_id
 
   has_one :author, serializer: UserSerializer, root: 'users'
   has_one :group, serializer: GroupSerializer, root: 'groups'
@@ -30,10 +29,6 @@ class DiscussionSerializer < ActiveModel::Serializer
 
   def active_proposal
     object.current_motion
-  end
-
-  def example
-    object.example_discussion?
   end
 
   def filter(keys)

@@ -10,9 +10,6 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
     discussions: ->
       @discussionsView.data()
 
-    nonExampleDiscussions: ->
-      @discussionsView.applyFind(example: false).data()
-
     organisationDiscussions: ->
       @recordStore.discussions.find(groupId: { $in: @organisationIds()})
 

@@ -56,14 +56,15 @@ describe 'Discussions Card Component', ->
       parent.group = @group
     expect(@$scope.showThreadsPlaceholder()).toBe(true)
 
-  it 'displays a placeholder when there are only sample threads', ->
-    @factory.create 'discussions', groupId: @group.id, example: true
+  it 'displays a placeholder when there is only one thread', ->
+    @factory.create 'discussions', groupId: @group.id
     prepareDirective @, 'discussions_card', { group: 'group' }, (parent) =>
       parent.group = @group
     expect(@$scope.showThreadsPlaceholder()).toBe(true)
 
-  it 'does not display a placeholder when there are threads', ->
-    @factory.create 'discussions', groupId: @group.id, example: false
+  it 'does not display a placeholder when there are multiple threads', ->
+    @factory.create 'discussions', groupId: @group.id
+    @factory.create 'discussions', groupId: @group.id
     prepareDirective @, 'discussions_card', { group: 'group' }, (parent) =>
       parent.group = @group
     expect(@$scope.showThreadsPlaceholder()).toBe(false)
