@@ -6,11 +6,12 @@ before_install:
   - sudo apt-get install imagemagick libmagickwand-dev -qq -y
 
 install:
-  - bundle install --path vendor/bundle
-  - cd lineman && npm install
-  - cd lineman && bower install
+  - cd lineman
+  - npm install
+  - bower install
   - npm install -g bower
   - npm install -g protractor
+  - bundle install --path vendor/bundle
 
 branches:
   only:
