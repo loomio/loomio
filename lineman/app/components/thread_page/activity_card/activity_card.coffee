@@ -47,7 +47,6 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.threadItemVisible = (item) ->
       addSequenceId(item.sequenceId)
       $scope.discussion.markAsRead(item.sequenceId)
-      # $location.hash(_.min(visibleSequenceIds))
       $scope.loadEventsForwards($scope.lastLoadedSequenceId) if $scope.loadMoreAfterReading(item)
 
     $scope.loadEvents = ({from, per}) ->
