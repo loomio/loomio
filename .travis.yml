@@ -8,10 +8,10 @@ before_install:
 install:
   - cd lineman
   - npm install
-  - bower install
   - npm install -g bower
   - npm install -g protractor
-  - bundle install --path vendor/bundle
+  - bower install
+  - cd .. && bundle install --path vendor/bundle
 
 branches:
   only:
