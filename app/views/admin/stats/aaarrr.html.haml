@@ -8,11 +8,14 @@
   %li Revenue - number of organisations from cohort that decided to pay
   %li Referral - number of organisations started by users who are part of a group in this cohort?
 
+%p FYI: organisation session records start from 2015-05-13, homepage visits recorded from 2015-05-26
+
 %table.table
   %thead
     %tr
       %th Cohort
       %th Start on
+      %th age range (days)
       %th Awareness
       %th Acquisition (% of aware)
       %th Activation (% of acquired)
@@ -25,6 +28,7 @@
       %tr
         %td= link_to cohort.id, admin_cohort_path(cohort) # cohort id
         %td= cohort.start_on
+        %td #{( Date.today  - cohort.end_on ).to_i} - #{( Date.today  - cohort.start_on ).to_i }
         %td= visits_count = cohort.homepage_visits.count # homepage visits
         %td
           = org_count = cohort.organisations.count # acquisitions
