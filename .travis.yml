@@ -1,15 +1,16 @@
 env:
   - DB=postgresql
+
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install imagemagick libmagickwand-dev -qq -y
-  - webdriver-manager update --standalone
 
 install:
   - bundle install --path vendor/bundle
   - cd lineman && npm install
-  - npm install -g bower
   - cd lineman && bower install
+  - npm install -g bower
+  - npm install -g protractor
 
 branches:
   only:
@@ -22,10 +23,8 @@ rvm:
 before_script:
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup RAILS_ENV=test
-  - sh -e /etc/init.d/xvfb start
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - nohup bash -c "webdriver-manager start 2>&1 &"
+  #- nohup bash -c "webdriver-manager start 2>&1 &"
+  # start rails s for cuckes to hit 
 
 #script: "bundle exec rake travis"
 script: cd lineman && 
