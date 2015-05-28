@@ -55,33 +55,6 @@ class DiscussionsController < GroupBaseController
     redirect_to @discussion.group
   end
 
-  # where is this used?
-  def index
-    raise "Is this even used?"
-    if params[:group_id].present?
-      @group = Group.find(params[:group_id])
-      if cannot? :show, @group
-        head 401
-      else
-        @no_discussions_exist = (@group.discussions.count == 0)
-        groups = VisibleGroupsQuery.expand(@group)
-        @discussions = Queries::VisibleDiscussions.
-                       new(user: current_user, groups: groups).
-                       without_open_motions.
-                       order_by_latest_comment.
-                       page(params[:page]).per(10)
-      end
-    else
-      authenticate_user!
-      @no_discussions_exist = (current_user.discussions.count == 0)
-      @discussions = Queries::VisibleDiscussions.
-                     new(user: current_user, groups: current_user.groups).
-                     without_open_motions.
-                     order_by_latest_comment.
-                     page(params[:page]).per(10)
-    end
-  end
-
   def show
     @group = @discussion.group
 

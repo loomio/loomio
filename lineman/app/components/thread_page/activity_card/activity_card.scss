@@ -9,7 +9,14 @@
   span{text-decoration: underline;}
 }
 
+.activity-card__last-read-activity {
+  visibility: hidden; /* can't display none because scrolling won't work */
+  line-height: 0px;
+  margin: -10px 0;
+}
+
 .activity-card__new-activity {
+  visibility: visible;
   margin: 10px 0;
   padding-bottom: 0;
   border-bottom: 1px solid $loomio-orange;
