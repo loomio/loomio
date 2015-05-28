@@ -9,6 +9,12 @@ angular.module('loomioApp').factory 'EventRecordsInterface', (BaseRecordsInterfa
           from: options['from']
           per: options['per']
 
+    findByDiscussionAndSequenceId: (discussion, sequenceId) ->
+      @collection.chain()
+                 .find(discussionId: discussion.id)
+                 .find(sequenceId: sequenceId)
+                 .data()[0] # so, turns out finding by multiple parameters doesn't actually work..
+
     minLoadedSequenceIdByDiscussion: (discussion) ->
       item = _.min @find(discussionId: discussion.id), (event) -> event.sequenceId or Number.MAX_VALUE
       item.sequenceId

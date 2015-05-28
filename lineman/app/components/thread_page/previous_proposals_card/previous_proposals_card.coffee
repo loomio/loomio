@@ -10,7 +10,8 @@ angular.module('loomioApp').directive 'previousProposalsCard', ->
       if target = $location.hash().match /^proposal-(\d+)$/
         if proposal = Records.proposals.find(parseInt(target[1]))
           $scope.selectProposal(proposal)
-          $rootScope.$broadcast 'threadPageProposalsLoaded', proposal.id
+          selectedProposalId = proposal.id
+      $rootScope.$broadcast 'threadPageProposalsLoaded', selectedProposalId
 
     $scope.selectedProposalId = 0
 
