@@ -10,27 +10,6 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.lastLoadedSequenceId = 0
     $scope.newActivitySequenceId = $scope.discussion.reader().lastReadSequenceId + 1
     visibleSequenceIds = []
-    rollback = 2
-
-    $scope.init = ->
-      $scope.discussion.markAsRead(0)
-
-      target = _.parseInt($location.hash())
-      if target >= $scope.discussion.firstSequenceId and target < $scope.discussion.lastSequenceId 
-        # valid sequence id is specified in url
-        $scope.initialLoaded  = _.max [target - rollback, 0]
-        $scope.initialFocused = target
-      else if $scope.discussion.isUnread()
-        # discussion is unread
-        $scope.initialLoaded  = _.max [$scope.discussion.reader().lastReadSequenceId - rollback, 0]
-        $scope.initialFocused = $scope.initialLoaded + rollback
-      else
-        # discussion is read
-        $scope.initialLoaded  = _.max [$scope.discussion.lastSequenceId - $scope.pageSize + 1, 0]
-        $scope.initialFocused = _.max [$scope.discussion.lastSequenceId - rollback, 0]
-
-      $scope.loadEventsForwards($scope.initialLoaded).then ->
-        $rootScope.$broadcast 'threadPageEventsLoaded', $scope.initialFocused
 
     $scope.beforeCount = ->
       $scope.firstLoadedSequenceId - $scope.discussion.firstSequenceId
@@ -84,5 +63,5 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.safeEvent = (kind) ->
       _.contains ['new_comment', 'new_motion', 'new_vote'], kind
 
-    $scope.init()
+    $scope.discussion.markAsRead(0)
     return
