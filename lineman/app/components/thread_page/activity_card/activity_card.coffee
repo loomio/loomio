@@ -9,6 +9,7 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.firstLoadedSequenceId = 0
     $scope.lastLoadedSequenceId = 0
     $scope.lastReadSequenceId = $scope.discussion.reader().lastReadSequenceId
+    $scope.hasNewActivity = $scope.discussion.isUnread()
     visibleSequenceIds = []
 
     $scope.init = ->
@@ -22,9 +23,6 @@ angular.module('loomioApp').directive 'activityCard', ->
         $scope.discussion.reader().lastReadSequenceId - 1
       else
         $scope.discussion.lastSequenceId - $scope.pageSize + 1
-
-    $scope.hasNewActivity = ->
-      $scope.discussion.isUnread()
 
     $scope.beforeCount = ->
       $scope.firstLoadedSequenceId - $scope.discussion.firstSequenceId
