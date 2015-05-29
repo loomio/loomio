@@ -13,6 +13,7 @@ install:
   - npm install
   - bower install
   - webdriver-manager update
+  - cd ..
 
 branches:
   only:
