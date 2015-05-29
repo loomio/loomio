@@ -26,10 +26,10 @@
 
   .thread-item-footer
     .thread-actions-and-meta
-      %a{href: '#', translate: 'common.action.like', ng-show: '!currentUserLikesIt()', ng_click: 'like()'}>
-      %a{href: '#', translate: 'common.action.unlike', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
+      %a{href: '', translate: 'common.action.like', ng-show: '!currentUserLikesIt()', ng_click: 'like()'}>
+      %a{href: '', translate: 'common.action.unlike', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
       %span{aria-hidden: 'true'}·
-      %a{translate: 'common.action.reply', href: '#', ng_click: 'reply()'}>
+      %a{translate: 'common.action.reply', href: '', ng_click: 'reply()'}>
       %span{aria-hidden: 'true'}·
       %timeago{timestamp: 'comment.createdAt' }>
 

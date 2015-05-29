@@ -8,7 +8,7 @@
         {{ attachment.filename }}
       %span.attachment-filesize
         {{attachment.formattedFilesize()}}
-      %a.close.remove-upload{href: '#', ng_click: 'removeAttachment(attachment)', title: "{{ 'comment_form.attachments.remove_attachment' | translate }}"}
+      %a.close.remove-upload{href: '', ng_click: 'removeAttachment(attachment)', title: "{{ 'comment_form.attachments.remove_attachment' | translate }}"}
         %span{aria-hidden: 'true'}&times;
     .thread-comment-form-actions.clearfix
       %button#post-comment-btn.btn.btn-default.btn-primary.pull-left.submit{type: 'submit', translate: 'comment_form.submit_button.label'}
