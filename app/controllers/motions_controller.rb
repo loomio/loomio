@@ -85,8 +85,9 @@ class MotionsController < GroupBaseController
   end
 
   def update_outcome
-
-    if MotionService.update_outcome(motion: @motion, params: params, actor: current_user)
+    if MotionService.update_outcome(motion: @motion, 
+                                    params: permitted_params.motion, 
+                                    actor: current_user)
       Measurement.increment('motions.update_outcome.success')
       flash[:success] = t("success.motion_outcome_updated")
     else
