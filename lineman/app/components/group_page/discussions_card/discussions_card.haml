@@ -1,6 +1,6 @@
 %section.group-page__threads{aria-labelledby: 'threads-card-title'}
   .group-page__new-thread
-    %a.btn.btn-success.lmo-btn-icon{href: '#', ng_click: 'openDiscussionForm()', title: "{{ 'navbar.start_thread' | translate }}"}
+    %a.btn.btn-success.lmo-btn-icon{href: '', ng_click: 'openDiscussionForm()', title: "{{ 'navbar.start_thread' | translate }}"}
       %i.fa.fa-plus{aria-hidden: 'true'}>
       %span{translate: 'navbar.start_thread'}
 
@@ -11,7 +11,7 @@
       .group-thread-list-empty-reason{translate: 'group_page.thread_list.empty.{{whyImEmpty()}}'}
       .group-thread-list-empty-access{ng-if: 'howToGainAccess()'}
         %span{translate: 'group_page.thread_list.empty.{{howToGainAccess()}}'}
-        %a{translate: 'group_page.thread_list.empty.request_membership_link', ng-if: 'howToGainAccess() == "request_membership"', href: '#', ng-click: 'requestToJoin()'}
+        %a{translate: 'group_page.thread_list.empty.request_membership_link', ng-if: 'howToGainAccess() == "request_membership"', href: '', ng-click: 'requestToJoin()'}
 
     .group-thread-list-item{ng-repeat: 'discussion in group.organisationDiscussions() | orderBy: ["-lastActivityAt"] | limitTo:loaded'}
       .time-and-icon.pull-right
@@ -27,4 +27,4 @@
 
     / Hiding this for now.
     .discussions-show-more.card-minor-action{ng-if: 'false'}
-      %a{ng-hide: 'loadMoreExecuting || !group.hasDiscussions', ng-click: 'loadMore()', href: '#', translate: 'common.action.show_more'}
+      %a{ng-hide: 'loadMoreExecuting || !group.hasDiscussions', ng-click: 'loadMore()', href: '', translate: 'common.action.show_more'}
