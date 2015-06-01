@@ -16,6 +16,9 @@ angular.module('loomioApp').controller 'DiscussionsCardController', ($scope, $mo
     DiscussionFormService.openNewDiscussionModal($scope.group)
   KeyEventService.registerKeyEvent $scope, 'pressedT', $scope.openDiscussionForm
 
+  $scope.showThreadsPlaceholder = ->
+    CurrentUser.isAdminOf($scope.group) and $scope.group.nonExampleDiscussions().length <= 1
+
   $scope.whyImEmpty = ->
     if !$scope.group.hasDiscussions
       'no_discussions_in_group'

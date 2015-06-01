@@ -16,5 +16,8 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $rout
     Records.memberships.initialize(
       group_id: @group.id
       user_id: CurrentUser.id).save()
+
+  @showDescriptionPlaceholder = ->
+    CurrentUser.isAdminOf(@group) and !@group.description
   
   return
