@@ -33,7 +33,7 @@ before_script:
 
 #script: "bundle exec rake travis"
 #script: cd lineman && lineman grunt spec-e2e
-script: cd lineman; lineman spec-ci && lineman run ; sleep 10 ; lineman grunt spec-e2e
+script: cd lineman && lineman spec-ci #&& lineman run; sleep 10; lineman grunt spec-e2e
 
 addons:
   postgresql: "9.4"
