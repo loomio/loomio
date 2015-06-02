@@ -30,11 +30,10 @@ before_script:
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup RAILS_ENV=test
   - RAILS_ENV=test bundle exec rails server & sleep 15
-  - 
 
 #script: "bundle exec rake travis"
 #script: cd lineman && lineman grunt spec-e2e
-script: cd lineman && lineman spec-ci && lineman run & sleep 10 & lineman grunt spec-e2e
+script: cd lineman; lineman spec-ci && lineman run ; sleep 10 ; lineman grunt spec-e2e
 
 addons:
   postgresql: "9.4"
