@@ -846,9 +846,10 @@ en:
 
   pricing_page:
     header: 'Pricing'
-    in_development_html: "We're developing a pricing model that's in line with our social mission: <strong>making it easy for anyone, anywhere to participate in decisions that affect them</strong>."
+    social_mission_html: "Our pricing model is driven by our social mission: <strong>making it easy for anyone, anywhere to participate in decisions that affect them</strong>."
     loomio_for_organisations: "Loomio for organisations"
-    organisations_deal_html: "If you're using Loomio in a company, formal organisation or workplace, you'll be charged a monthly subscription of $1 per person after a <strong>30-day free trial</strong>."
+    organisations_deal_html: "If you're using Loomio in a company, formal organisation or workplace, you'll be charged a monthly subscription of US$1 per person after a <strong>30-day free trial</strong>."
+    discuss_options_html: "If you'd like to discuss pricing options to suit your organisation, <a href=/contact#contact-form target='_blank'>contact us</a>."
     loomio_for_communities: "Loomio for communities"
     communities_deal: "Money will never be a barrier for people using Loomio to do great stuff in their communities. If your group doesn't have the budget to pay for software, you don't need to pay a subscription. However, we will occasionally ask your group members for a voluntary donation."
 
