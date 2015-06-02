@@ -29,7 +29,7 @@ before_script:
   - nohup bash -c "webdriver-manager start 2>&1 &"
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup RAILS_ENV=test
-  - rails s & sleep 5
+  - bundle exec rails server & sleep 5
 
 #script: "bundle exec rake travis"
 script: cd lineman && lineman grunt spec-e2e
