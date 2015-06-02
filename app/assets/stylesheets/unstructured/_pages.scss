@@ -542,6 +542,7 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
 
   h1 {
     font-size: 50px;
+    line-height: 40px;
     margin-bottom: 40px;
   }
   input[type="email"],
@@ -550,19 +551,17 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
     height: 28px;
     line-height: 1.2;
     margin: 8px 0 10px 0;
-    width: 360px;
   }
   input[type='submit'] { padding: 11px 40px }
   textarea {
     height: 100px;
     margin: 8px 0 10px 0;
-    width: 360px;
   }
   select { margin: 8px 0 10px 0; }
   #direct_contact { margin-top: 30px; }
 
-  #faq {
-    margin-top: 50px;
+  #contact-faq {
+    margin-bottom: 50px;
     h1 {
       font-size: 40px;
       margin-bottom: 10px;
@@ -576,6 +575,7 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
       margin-bottom: 1.5em;
       line-height: 1.4;
     }
+    img { margin-bottom: 30px; }
   }
   #contact_form {
     h1 {
@@ -585,6 +585,7 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
     }
   }
 }
+
 
 body.pages.crowd {
   section.first { }
