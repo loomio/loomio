@@ -1,5 +1,5 @@
 .dropdown.group-page-actions
-  %button.btn.lmo-btn-nude.dropdown-toggle{href: '#'}
+  %button.btn.lmo-btn-nude.dropdown-toggle{href: ''}
     %span{translate: 'group_page.options.label'}>
     %i.fa.fa-lg.fa-angle-down{aria-hidden: 'true'}
 
@@ -11,11 +11,11 @@
           .dropdown-menu-item-label{translate: 'group_page.options.edit_group'}
           .dropdown-menu-item-details
       %li.dropdown-menu-item
-        %a{href: '#', ng-click: 'groupActions.openLeaveGroupModal()'}
+        %a{href: '', ng-click: 'groupActions.openLeaveGroupModal()'}
           .dropdown-menu-item-label{translate: 'group_page.options.leave_group'}
         .dropdown-menu-item-details
       %li.dropdown-menu-item{ng-if: 'groupActions.canDeactivateGroup()'}
-        %a{href: '#', ng-click: 'groupActions.openDeactivateGroupModel()'}
+        %a{href: '', ng-click: 'groupActions.openDeactivateGroupModel()'}
           .dropdown-menu-item-label{translate: 'group_page.options.deactivate_group'}
         .dropdown-menu-item-details
 

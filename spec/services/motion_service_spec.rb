@@ -199,4 +199,33 @@ describe 'MotionService' do
       end
     end
   end
+  describe '.update_outcome' do
+    before do
+      motion.stub(:outcome_author)
+      allow(motion).to receive(:outcome_author) { user }
+      allow(motion).to receive(:outcome) { "Updated agreement and engagement" }
+    end
+
+    it 'authorizes the user can update the outcome' do
+      ability.should_receive(:authorize!).with(:update_outcome, motion)
+      motion.should_receive(:save!)
+      Events::MotionOutcomeUpdated.should_receive(:publish!).with(motion, user)
+      MotionService.update_outcome(motion: motion, params: {}, actor: user)
+    end
+
+    context 'outcome is invalid' do
+      before do
+        motion.stub(:valid?).and_return false
+      end
+
+      it 'returns false' do
+        expect(MotionService.update_outcome(motion: motion, params: {}, actor: user)).to be false
+      end
+
+      it 'does not update an event' do
+        Events::MotionOutcomeUpdated.should_not_receive(:publish!)
+        MotionService.update_outcome(motion: motion, params: {}, actor: user)
+      end
+    end
+  end
 end

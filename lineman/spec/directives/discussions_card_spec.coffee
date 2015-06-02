@@ -6,6 +6,10 @@ describe 'Discussions Card Component', ->
   beforeEach inject ($httpBackend) ->
     $httpBackend.whenGET(/api\/v1\/translations/).respond(200, {})
     $httpBackend.whenGET(/api\/v1\/discussions/).respond(200, {})
+    @currentUser = @factory.create 'users'
+    useCurrentUser @currentUser
+    @group       = @factory.create 'groups'
+    @membership  = @factory.create 'memberships', userId: @currentUser.id, groupId: @group.id, admin: true
 
   it 'passes the group', ->
     prepareDirective @, 'discussions_card', { group: 'group' }, (parent) =>
@@ -46,3 +50,27 @@ describe 'Discussions Card Component', ->
     prepareDirective @, 'discussions_card', { group: 'group' }, (parent) =>
       parent.group = @factory.create 'groups', has_discussions: true, membership_granted_upon: 'invitation', members_can_add_members: false
     expect(@$scope.howToGainAccess()).toBe('membership_is_invitation_by_admin_only')
+
+  it 'displays a placeholder when there are no threads', ->
+    prepareDirective @, 'discussions_card', { group: 'group' }, (parent) =>
+      parent.group = @group
+    expect(@$scope.showThreadsPlaceholder()).toBe(true)
+
+  it 'displays a placeholder when there is only one thread', ->
+    @factory.create 'discussions', groupId: @group.id
+    prepareDirective @, 'discussions_card', { group: 'group' }, (parent) =>
+      parent.group = @group
+    expect(@$scope.showThreadsPlaceholder()).toBe(true)
+
+  it 'does not display a placeholder when there are multiple threads', ->
+    @factory.create 'discussions', groupId: @group.id
+    @factory.create 'discussions', groupId: @group.id
+    prepareDirective @, 'discussions_card', { group: 'group' }, (parent) =>
+      parent.group = @group
+    expect(@$scope.showThreadsPlaceholder()).toBe(false)
+
+  it 'does not display a placeholder when the CurrentUser is not a coordinator', ->
+    @membership.updateFromJSON admin: false
+    prepareDirective @, 'discussions_card', { group: 'group' }, (parent) =>
+      parent.group = @group
+    expect(@$scope.showThreadsPlaceholder()).toBe(false)

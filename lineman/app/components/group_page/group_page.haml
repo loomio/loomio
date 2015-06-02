@@ -19,7 +19,7 @@
             .lmo-btn-wrapper
               %notification_volume_dropdown{translate-root: 'group_page', group: 'groupPage.group'}
           .group-page__nonmember-actions{ng-if: '!groupPage.isMember()'}
-            %a.btn.btn-success.btn-block.lmo-btn-icon{href: '#', ng-click: 'groupPage.joinGroup()'}
+            %a.btn.btn-success.btn-block.lmo-btn-icon{href: '', ng-click: 'groupPage.joinGroup()'}
               %i.fa.fa-lg.fa-plus{aria-hidden: 'true'}>
               %span{translate: 'group_page.join_group' }
           .clearfix
@@ -27,6 +27,7 @@
         .col-sm-8
           %section.group-page__description{aria-labelledby: 'description-card-title'}
             %h2#description-card-title.lmo-card-heading{ translate: 'group_page.description'}
+            .group-page__description-placeholder.group-page-placeholder{translate: 'group_page.description_placeholder', ng-if: 'groupPage.showDescriptionPlaceholder()' }
             .group-page__description-text.lmo-last{ btf-markdown: 'groupPage.group.description' }
           %discussions_card{group: 'groupPage.group'}
         .col-sm-4

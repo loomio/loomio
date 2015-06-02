@@ -47,6 +47,6 @@
           %span.proposal-expanded-vote{translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-name: '{{vote.authorName()}}'}
           %span{ng-if: '!vote.hasStatement()'}.
           %span{ng-if: 'vote.hasStatement()'}: {{::vote.statement}}
-          %a.change-your-vote{href: '#', ng-click: 'changeVote()', ng-show: 'proposal.isActive() && voteIsMine(vote)'}
+          %a.change-your-vote{href: '', ng-click: 'changeVote()', ng-show: 'proposal.isActive() && voteIsMine(vote)'}
             %i.fa.fa-exchange{aria-hidden: 'true'}>
             %span{translate: 'vote_form.change_your_vote'}

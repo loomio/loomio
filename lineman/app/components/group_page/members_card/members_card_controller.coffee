@@ -6,3 +6,6 @@ angular.module('loomioApp').controller 'MembersCardController', ($scope, Records
 
   $scope.isAdminOf = ->
     CurrentUser.isAdminOf($scope.group)
+
+  $scope.showMembersPlaceholder = ->
+    CurrentUser.isAdminOf($scope.group) and $scope.group.memberships().length <= 1
