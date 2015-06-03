@@ -73,7 +73,6 @@ Then(/^I should see the start group form with errors$/) do
   page.should have_content 'Name is required'
   page.should have_content 'Not a valid email address'
   page.should have_content 'Group name is required'
-  page.should have_content 'Please select an option'
 end
 
 Then(/^the example content should be present$/) do
@@ -92,14 +91,12 @@ When(/^I fill in the start group form$/) do
   fill_in :name, with: 'Hank Schrader'
   fill_in :email, with: 'hank.schrader@cops.com'
   fill_in :group_name, with: @group_name
-  choose 'group_is_commercial_true'
   click_on 'Start group'
 end
 
 When(/^I fill in my group name and choose subscription and submit$/) do
   @group_name = 'Hank\'s Hankeys and Handkerchiefs'
   fill_in :group_name, with: @group_name
-  choose 'group_is_commercial_true'
   click_on 'Start group'
 end
 

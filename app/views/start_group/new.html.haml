@@ -2,6 +2,7 @@
   .col-md-6.col-md-offset-3.col-sm-10.col-sm-offset-1
     .row
       %h1= t :"start_group_form.header"
+      %h2= t :"start_group_form.start_making_decisions"
       = form_for @group, url: start_group_path, html: {class: 'form-horizontal'} do |f|
         .form-group
           .col-sm-3
@@ -34,26 +35,9 @@
               .form__error= t :"start_group_form.group_name_error"
             = f.text_field :name, class: 'form-control', id: 'group_name'
 
-        .form-group
-          .col-sm-3
-            %label.control-label{for: 'payment'}= t :"start_group_form.payment"
-          .col-sm-9
-            - if @errors.include? 'is_commercial'
-              .form__error= t :"start_group_form.payment_error"
-
-            .radio
-              = f.radio_button :is_commercial, true
-              = f.label :is_commercial_true, t(:"start_group_form.subscription_html")
-            .radio
-              = f.radio_button :is_commercial, false
-              = f.label :is_commercial_false, t(:"start_group_form.donation_html")
+            %p.pricing= t :"start_group_form.pricing_html", link: pricing_path
 
             = f.submit t(:"common.start_group"), class: 'btn btn-success btn-block', :data => { :disable_with => t(:"common.start_group") }, id: 'sign-up-submit'
 
             %p.small= t :"start_group_form.terms_html", link: terms_of_service_path
-
-        .row
-          .col-sm-9.col-sm-offset-3
-            %p= t :"pricing_page.in_development_html"
-            %p= link_to t(:'common.find_out_more'), pricing_path, target: '_blank'
 
