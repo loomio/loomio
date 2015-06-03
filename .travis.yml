@@ -35,7 +35,7 @@ before_script:
 #script: cd lineman &&  # works
 script:
   - cd lineman
-  - lineman spec-ci
+  - lineman spec-ci && echo 'ran de specs'
   - lineman run & sleep 10
   - lineman grunt spec-e2e
 
