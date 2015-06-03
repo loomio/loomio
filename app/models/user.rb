@@ -317,6 +317,7 @@ class User < ActiveRecord::Base
   end
 
   def has_gravatar?(options = {})
+    return false if Rails.env.test?
     hash = Digest::MD5.hexdigest(email.to_s.downcase)
     options = { :rating => 'x', :timeout => 2 }.merge(options)
     http = Net::HTTP.new('www.gravatar.com', 80)
