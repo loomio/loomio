@@ -319,16 +319,14 @@ en:
     email_error: "Not a valid email address."
     group_name: "Group name"
     group_name_error: "Group name is required"
-    payment: "Payment"
-    payment_error: "Please select an option:"
-    subscription_html: "<strong>Subscription</strong> - 30 day free trial. If your group loves Loomio, you can use it for only $1 per member per month."
-    donation_html: "<strong>Donation</strong> - if you can't pay a regular subscription, we will occasionally ask your group members for a voluntary donation."
+    pricing_html: "In 30 days, when you've seen how Loomio improves your group's decision-making, we'll ask you to choose the <a href='%{link}' target='_blank'>payment plan</a> that works for you."
     terms_html: "By starting a group, you agree to Loomio's <a href='%{link}' target='_blank'>terms of service</a>."
     success:
       header: "You're almost done! Check your email."
       email_delivered: "We've sent an email to %{email}. Please follow the link inside to setup your new group."
       email_not_arrived: "Email has not arrived?"
       please_hold: "Please allow up to five 5 minutes for the email to arrive and be sure to check your spam folder."
+    start_making_decisions: "To start making decisions together on Loomio, set up a group for free:"
 
   group_form:
     name: "Group name"

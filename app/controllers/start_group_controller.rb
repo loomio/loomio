@@ -15,7 +15,6 @@ class StartGroupController < ApplicationController
   def create_signed_in
     @group = Group.new(permitted_params.group)
     @errors = []
-    @errors << 'is_commercial' if @group.is_commercial.nil?
     @errors << 'group_name' if @group.name.blank?
 
     # check for valid name and email
@@ -38,7 +37,6 @@ class StartGroupController < ApplicationController
     @errors = []
     @errors << 'name' if @name.blank?
     @errors << 'email' unless /^[^@]+@[^@]+\.[^@]+$/.match @email
-    @errors << 'is_commercial' if @group.is_commercial.nil?
     @errors << 'group_name' if @group.name.blank?
 
     # check for valid name and email
