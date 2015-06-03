@@ -34,8 +34,7 @@ before_script:
 #script: "bundle exec rake travis"
 #script: cd lineman &&  # works
 script:
-  - cd lineman
-  - lineman spec-ci && echo 'ran de specs'
+  - cd lineman && lineman spec-ci
   - lineman run & sleep 10
   - lineman grunt spec-e2e
 
