@@ -81,7 +81,7 @@ describe Motion do
 
       it "returns the number of members who did not vote" do
         motion.should be_closed
-        motion.stub(:did_not_votes_count).and_return(99)
+        motion.stub(:did_not_voters).and_return((1..99).to_a)
         expect(motion.members_not_voted_count).to eq 99
       end
     end
