@@ -5,12 +5,13 @@
         %h1= t(:"contact_page.contact_us")
         %p= t(:"contact_page.faq_prompt_html")
         %p= t(:"contact_page.contact_information")
-        = render 'help/faq'
+        #contact-faq
+          = render 'help/faq'
       .row
         .col-md-12#contact-form
           %h2= t(:"contact_page.contact_form")
       .row
-        .col-md-5
+        .col-sm-5
           = simple_form_for @contact_message, :defaults => {:required => true}, :validate => true do |f|
             = f.input :name, label: t(:"contact_page.labels.name")
             = f.input :email, label: t(:"contact_page.labels.email")

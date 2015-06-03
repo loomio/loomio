@@ -287,3 +287,12 @@ form.group-settings{
 .membership_requests{
   textarea{  height: 200px; }
 }
+
+body.start_group {
+  h2 {
+    font-size: 22px;
+    line-height: 32px;
+    font-weight: 300;
+  }
+  .pricing { margin: 15px 0 30px; }
+}
