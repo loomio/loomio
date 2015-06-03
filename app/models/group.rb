@@ -47,6 +47,7 @@ class Group < ActiveRecord::Base
 
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
+  scope :created_by, -> (user) { where(creator_id: user.id) }
 
   scope :visible_on_explore_front_page,
         -> { visible_to_public.categorised_any.parents_only.
