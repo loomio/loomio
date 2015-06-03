@@ -20,26 +20,17 @@ class ThreadSearchQuery
                      result['query'],
                      result['rank'],
                      result['blurb'],
-                     relevant_motions(result['id'], result['query']),
-                     relevant_comments(result['id'], result['query']))
+                     relevant_models(:motion, result['id'], result['query']),
+                     relevant_models(:comment, result['id'], result['query']))
   end
 
-  def self.relevant_motions(discussion_id, query, limit: 1)
+  def self.relevant_models(model, discussion_id, query, limit: 1)
     SearchVector.execute_search_query(
-      relevant_motions_sql,
+      send(:"relevant_#{model.to_s.pluralize}_sql"),
       id: discussion_id,
       query: query,
       limit: limit
-    ).map { |result| SearchResultChild.new :motion, result['id'], result['blurb'] }
-  end
-
-  def self.relevant_comments(discussion_id, query, limit: 1)
-    SearchVector.execute_search_query(
-      relevant_comments_sql,
-      id:    discussion_id,
-      query: query,
-      limit: limit
-    ).map { |result| SearchResultChild.new :comment, result['id'], result['blurb'] }
+    ).map { |result| SearchResultChild.new model, result['id'], result['blurb'] }
   end
 
   def self.index_thread_sql
