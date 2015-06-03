@@ -761,7 +761,7 @@ en:
       subdomain:
         title: Is it possible to have a Loomio subdomain?
         body_html: "Yes. We can, for example, set up <strong>[your-group-name].loomio.org</strong> as the URL for your group. <a href='mailto:contact@loomio.org'>Contact us</a> if you're interested."
-      email_signature_included_in_reply_title: 'When I reply to a comment via email my response is accompanied by a lot of extra text when it is posted in the corresponding Loomio discussion, why is this happening and how can I stop it?'
+      email_signature_included_in_reply_title: 'When I reply to a discussion via email my signature is included in my comment, how can I stop it?'
       email_signature_included_in_reply_body_html: |
         <p>There is currently no official standard for identifying email signatures from the rest of the email body. To a computer the whole email is just a block of text.
         The easiest method we have for marking the end of the email body and the beginning of the signature is the double-dash method popularised by Gmail, which involves inserting a double-dash ('--') on it's own line between the body of an email and the signature.
