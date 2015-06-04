@@ -2,11 +2,11 @@ class Ability
   include CanCan::Ability
 
   def user_is_member_of?(group_id)
-    @member_group_ids.include?(group_id)
+    @user.group_ids.include?(group_id)
   end
 
   def user_is_admin_of?(group_id)
-    @admin_group_ids.include?(group_id)
+    @user.adminable_group_ids.include?(group_id)
   end
 
   def user_is_author_of?(object)
@@ -17,9 +17,6 @@ class Ability
 
     user ||= User.new
     @user = user
-    @admin_group_ids = user.adminable_group_ids
-    @member_group_ids = user.group_ids
-
 
     cannot :sign_up, User
 
@@ -106,7 +103,7 @@ class Ability
     end
 
     can [:make_admin], Membership do |membership|
-      @admin_group_ids.include?(membership.group_id)
+      user_is_admin_of?(membership.group_id)
     end
 
     can [:update], DiscussionReader do |reader|

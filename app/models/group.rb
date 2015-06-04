@@ -135,7 +135,8 @@ class Group < ActiveRecord::Base
 
   has_many :invitations,
            as: :invitable,
-           class_name: 'Invitation'
+           class_name: 'Invitation',
+           dependent: :destroy
  
   has_many :comments, through: :discussions
 
