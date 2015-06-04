@@ -33,7 +33,7 @@ ActiveAdmin.register Group do
 
   batch_action :delete_spam do |group_ids|
     Group.find(group_ids).each do |group|
-      UserService.delete_spam(group.creator)
+      UserService.delete_spam(group.creator || Group.admins.first)
     end
     redirect_to admin_groups_path, notice: "#{group_ids.size} spammy groups deleted"
   end
