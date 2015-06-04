@@ -42,9 +42,6 @@ ActiveAdmin.register Group do
       end
     end
 
-    Group.find(group_ids).each do |group|
-      UserService.delete_spam(group.creator)
-    end
     redirect_to admin_groups_path, notice: "#{group_ids.size} spammy groups deleted"
   end
 
