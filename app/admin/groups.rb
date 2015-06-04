@@ -31,7 +31,15 @@ ActiveAdmin.register Group do
   scope :is_subscription
   scope :is_donation
 
+  batch_action :delete_spam do |group_ids|
+    Group.find(group_ids).each do |group|
+      UserService.delete_spam(group.creator)
+    end
+    redirect_to admin_groups_path, notice: "#{group_ids.size} spammy groups deleted"
+  end
+
   index :download_links => false do
+    selectable_column
     column :id
     column :name do |g|
       simple_format(g.full_name.sub(' - ', "\n \n> "))

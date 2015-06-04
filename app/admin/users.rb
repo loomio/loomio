@@ -39,6 +39,12 @@ ActiveAdmin.register User do
     f.actions
   end
 
+  member_action :delete_spam, method: :post do
+    user = User.friendly.find(params[:id])
+    UserService.delete_spam(user)
+    redirect_to admin_users_url, notice: 'User and the groups they created deleted'
+  end
+
   member_action :update, :method => :put do
     user = User.friendly.find(params[:id])
     user.name = params[:user][:name]
