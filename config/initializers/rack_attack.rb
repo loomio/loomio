@@ -12,8 +12,13 @@ def from_config(key, field)
 end
 
 def throttle_request?(key, req)
+  production_or_testing_throttling? &&
   from_config(key, :method) == req.env['REQUEST_METHOD'] &&
   /#{from_config(key, :path)}/.match(req.path.to_s)
+end
+
+def production_or_testing_throttling?
+  Rails.env.production? || ENV['TESTING_RATE_LIMIT'] == '1'
 end
 
 @config.keys.each do |key|

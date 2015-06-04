@@ -1,4 +1,5 @@
 When(/^I attempt to create ([0-9]+) comments in the discussion$/) do |int|
+  ENV['TESTING_RATE_LIMIT'] = '1'
   int.to_i.times do |i|
     @comment_text = "RambotSpamBot#{i}"
     if first('#new-comment')
@@ -12,4 +13,5 @@ end
 
 Then(/^I should see a rate limiting error page$/) do
   page.should have_selector '#too-many-requests'
+  ENV.delete('TESTING_RATE_LIMIT')
 end
