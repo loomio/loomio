@@ -32,8 +32,18 @@ ActiveAdmin.register Group do
   scope :is_donation
 
   batch_action :delete_spam do |group_ids|
+    group_ids.each do |group_id|
+      if Group.exists?(group_id)
+        group = Group.find(group_id)
+        user = group.creator || group.admins.first
+        if user
+          UserService.delete_spam(user)
+        end
+      end
+    end
+
     Group.find(group_ids).each do |group|
-      UserService.delete_spam(group.creator || Group.admins.first)
+      UserService.delete_spam(group.creator)
     end
     redirect_to admin_groups_path, notice: "#{group_ids.size} spammy groups deleted"
   end
