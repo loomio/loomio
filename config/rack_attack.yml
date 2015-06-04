@@ -18,20 +18,19 @@
 #
 # NB: period is measured in seconds; (eg period: 120 = X requests per 2 minutes)
 
-comment_creation_minute:
-  period: 60
-  limit: 10
-  path: ^\/d\/[A-Za-z0-9]*\/add_comment$
 
 group_creation_minute:
   period: 60
-  limit: 1
+  limit: 3
   path: ^\/g$
 
 group_creation_day:
   period: 86400
-  limit: 5
+  limit: 20
   path: ^\/g$
+
+comment_creation_minute:
+  path: ^\/d\/[A-Za-z0-9]*\/add_comment$
 
 discussion_creation:
   path: ^\/d$
