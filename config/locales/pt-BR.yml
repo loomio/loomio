@@ -73,7 +73,7 @@ pt-BR:
     group_already_setup: O grupo que você está tentando criar já existe.
     passwords_did_not_match: A senha não confere com a confirmação
     proposal_already_exists: Já existe uma proposição aberta nesta discussão.
-    username_cannot_contain_whitespace: Nome de usuário não pode conter espaços
+    username_must_be_alphanumeric: O nome de usuário deve conter apenas letras minúsculas e dígitos.
     user_with_email_address_already_in_group: Um usuário com esse endereço de e-mail já pertence a este grupo.
     you_have_already_requested_membership: Você já solicitou adesão à este grupo
     you_are_already_a_member_of_this_group: Você já é membro deste grupo
@@ -283,16 +283,14 @@ pt-BR:
     email_error: Não é um endereço de e-mail válido
     group_name: Nome do grupo
     group_name_error: Nome do grupo é necessário
-    payment: Pagamento
-    payment_error: "Por favor, selecione uma opção"
-    subscription_html: "<strong>Assinatura</strong> - 30 dias de teste gratuito. Se o seu grupo ama o Loomio, você pode usá-lo por apenas US$ 1 por membro por mês."
-    donation_html: "<strong>Doação</strong> - se você não pode pagar por uma assinatura regular, vamos, ocasionalmente, pedir aos membros do seu grupo por uma doação voluntária."
+    pricing_html: "Em 30 dias, quando você tiver visto como Loomio melhora a tomada de decisão do seu grupo, vamos pedir-lhe para escolher o <a href='%{link}' target='_blank'>plano de pagamento</a> que funciona para você."
     terms_html: "Ao iniciar um grupo, você concorda com os <a href='%{link}' target='_blank'>termos de serviço</a> do Loomio."
     success:
       header: "Você está quase lá! Verifique seu e-mail."
       email_delivered: "Enviamos um e-mail para %{email}. Por favor, siga o link para configurar o seu novo grupo."
       email_not_arrived: O e-mail não chegou?
       please_hold: "Por favor, aguarde até 5 minutos para o e-mail chegar e não se esqueça de verificar sua pasta de spam."
+    start_making_decisions: "Para começar a tomar decisões em conjunto no Loomio, crie um grupo gratuitamente:"
   group_form:
     name: Nome do grupo
     description: Descrição
@@ -670,9 +668,10 @@ pt-BR:
     vote: Você pode mudar sua posição a qualquer momento
   pricing_page:
     header: Preço
-    in_development_html: "Desenvolvemos um modelo de precificação que está alinhado com a nossa missão social: <strong>tornando fácil para qualquer um, em qualquer lugar, participar nas decisões que lhes dizem respeito</strong>."
+    social_mission_html: "Nosso modelo de precificação é conduzido por nossa missão social: <strong>tornar mais fácil para qualquer um, em qualquer lugar, participar nas decisões que os afetam </strong>."
     loomio_for_organisations: Loomio para organizações
-    organisations_deal_html: "Se você estiver usando Loomio em uma empresa, organização formal ou local de trabalho, vai ser cobrada uma assinatura mensal de US$ 1 por pessoa depois de um <strong>teste gratuito de 30 dias</strong>."
+    organisations_deal_html: "Se você estiver usando Loomio em uma empresa, organização formal ou local de trabalho, será cobrada uma assinatura mensal de US$ 1 por pessoa após um <strong>teste gratuito de 30 dias</strong>."
+    discuss_options_html: "Se você gostaria de discutir opções de preços para atender a sua organização, <a href=/contact#contact-form target='_blank'>entre em contato conosco</a>."
     loomio_for_communities: Loomio para comunidades
     communities_deal: "Dinheiro nunca será uma barreira para as pessoas que utilizam Loomio fazerem grandes coisas em suas comunidades. Se o seu grupo não tem orçamento para pagar por software, você não precisa pagar uma assinatura. No entanto, ocasionalmente, vamos pedir aos membros do seu grupo por uma doação voluntária."
   contribution:

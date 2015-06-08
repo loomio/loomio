@@ -70,7 +70,6 @@ nl-NL:
     group_already_setup: De groep die je probeert aan te maken bestaat al.
     passwords_did_not_match: Wachtwoorden komen niet overeen
     proposal_already_exists: Er staat al een voorstel open binnen deze discussie.
-    username_cannot_contain_whitespace: Gebruikersnaam mag geen spaties bevatten
     user_with_email_address_already_in_group: Een gebruiker met dit e-mailadres behoort al tot deze groep.
     you_have_already_requested_membership: Je hebt al een lidmaatschap aangevraagd voor deze groep.
     you_are_already_a_member_of_this_group: Je bent al lid van deze groep.

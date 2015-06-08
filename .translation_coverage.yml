@@ -9,7 +9,7 @@ ar:
 be-BY:
   frontpage: 58
   help docs: 10
-  main: 92
+  main: 96
 bg-BG:
   frontpage: 9
   help docs: 2
@@ -45,7 +45,7 @@ eo:
 es:
   frontpage: 95
   help docs: 75
-  main: 99
+  main: 98
 fa-IR:
   frontpage: 52
   help docs: 1
@@ -61,7 +61,7 @@ fr:
 ga-IE:
   frontpage: 44
   help docs: 6
-  main: 54
+  main: 53
 gl:
   frontpage: 29
   help docs: 8
@@ -75,13 +75,13 @@ hi:
   help docs: 0
   main: 1
 hr:
-  frontpage: 58
+  frontpage: 100
   help docs: 14
   main: 46
 hu:
   frontpage: 61
   help docs: 74
-  main: 97
+  main: 96
 id:
   frontpage: 29
   help docs: 2
@@ -143,9 +143,9 @@ pt-PT:
   help docs: 0
   main: 9
 ro:
-  frontpage: 52
-  help docs: 11
-  main: 100
+  frontpage: 100
+  help docs: 54
+  main: 99
 ru:
   frontpage: 58
   help docs: 8
@@ -179,7 +179,7 @@ tr:
   help docs: 8
   main: 88
 uk:
-  frontpage: 58
+  frontpage: 64
   help docs: 8
   main: 75
 ur:
