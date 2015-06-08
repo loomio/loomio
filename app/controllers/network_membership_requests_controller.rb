@@ -28,7 +28,7 @@ class NetworkMembershipRequestsController < BaseController
 
   def process_membership_request(approve:)
     @network = Network.friendly.find params[:network_id]
-    if approved
+    if approve
       NetworkMembershipRequestService.approve process_params
       flash[:notice] = I18n.t(:"networks.request_approved")
     else
@@ -39,6 +39,6 @@ class NetworkMembershipRequestsController < BaseController
   end
 
   def process_params
-    { network_membership_request: @network.membership_requests.find params[:id] }
+    { network_membership_request: @network.membership_requests.find(params[:id]), actor: current_user }
   end
 end
