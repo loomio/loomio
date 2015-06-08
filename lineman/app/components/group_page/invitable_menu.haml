@@ -1,3 +1,5 @@
-%a.cuke-group-invitable-option{href='#'}
-  %span {{match.label.name}}
-  %span{ng-if: 'match.label.subtitle'} ({{match.label.subtitle}})
+.media-left
+  %user_avatar{user: 'user'}
+.invitable-content
+  .invitable-name {{match.label.name}}
+  .invitable-subtitle{ng-if: 'match.label.subtitle'} {{match.label.subtitle}}

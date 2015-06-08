@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $modalInstance, group, InvitablesClient, InvitationsClient, Records) ->
+angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $modalInstance, group, InvitablesClient, InvitationsClient, Records, CurrentUser) ->
   $scope.group = group
   $scope.fragment = ''
   $scope.invitations = []
@@ -9,13 +9,44 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
   $scope.hasInvitations = ->
     $scope.invitations.length > 0
 
-  $scope.getInvitables = (fragment) ->
-    invitablesClient.getByNameFragment(fragment, $scope.group.id).then $scope.handleInvitables
+  $scope.invitables = ->
+    invitables = []
+    invitables.push $scope.invitableEmail() if $scope.fragmentIsValidEmail()
+    invitables.push $scope.invitableGroups()
+    invitables.push $scope.invitableContacts()
+    _.flatten invitables
 
-  $scope.handleInvitables = (response) ->
-    if angular.element('#invitable-email').hasClass('ng-valid-email')
-      response.data.invitables.push { name: "<#{$scope.fragment}>", type: 'Email', email: $scope.fragment }
-    response.data.invitables
+  $scope.invitableEmail = ->
+    name: "<#{$scope.fragment}>"
+    type: "Email"
+    email: $scope.fragment
+
+  $scope.invitableGroups = ->
+    groups = _.filter $scope.availableGroups(), (group) ->
+      group.id != $scope.group.id and ~group.name.search(new RegExp($scope.fragment, 'i'))
+    _.map groups, (group) ->
+      name:     group.name
+      subtitle: "Add all members (#{group.membersCount})"
+      image:    group.logoUrl()
+
+  $scope.invitableContacts = ->
+    memberIds = _.uniq _.flatten _.map $scope.availableGroups(), (group) -> group.memberIds()
+    memberIds = _.filter memberIds, (memberId) -> 
+      !_.contains $scope.group.memberIds(), memberId
+    _.map Records.users.find(memberIds), (user) ->
+      name:     user.name
+      subtitle: "@#{user.username()}"
+      image:    user.avatarUrl
+
+  $scope.getInvitables = (fragment) ->
+    invitablesClient.getByNameFragment(fragment, $scope.group.id)
+    $scope.invitables()
+
+  $scope.fragmentIsValidEmail = ->
+    $scope.invitableForm.fragment.$valid
+
+  $scope.availableGroups = ->
+    CurrentUser.groups()
 
   $scope.addInvitation = (invitation) ->
     $scope.fragment = ''
@@ -34,7 +65,7 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
     $event.preventDefault()
     $modalInstance.dismiss('cancel')
 
-  $scope.saveSuccess = () ->
+  $scope.saveSuccess = ->
     $scope.isDisabled = false
     $scope.invitations = []
     $modalInstance.close()
