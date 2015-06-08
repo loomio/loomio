@@ -6,6 +6,7 @@ window.useFactory = function() {
         attrs = attrs || {}
         this.currentIds[model] = this.currentIds[model] || 1
         attrs.id = this.currentIds[model] || 1;
+        attrs.key = "key" + attrs.id
         this.currentIds[model] = attrs.id + 1;
         return Records[_.camelCase(model)].initialize(_.extend(fixtures[model], attrs));
       },
@@ -42,7 +43,6 @@ window.useFactory = function() {
     },
 
     groups: {
-      key: 'fedcba',
       name: 'Venus: ...Ladies.',
       description: '',
       created_at: moment().subtract(2, 'day'),
@@ -51,7 +51,6 @@ window.useFactory = function() {
     },
 
     discussions: {
-      key: 'abcdef',
       title: 'Earth: The Most Recent Frontier',
       description: '',
       last_item_at: moment(),
