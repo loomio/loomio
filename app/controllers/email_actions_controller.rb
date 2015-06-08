@@ -49,7 +49,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   private
 
   def set_discussion_volume(volume:, flash_notice:)
-    DiscussionReader.for(discussion: discussion, user: user).set_volume! volume,
+    DiscussionReader.for(discussion: discussion, user: user).set_volume! volume
     redirect_to dashboard_or_root_path, notice: t(flash_notice, thread_title: discussion.title)
   end
 

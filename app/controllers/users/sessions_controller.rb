@@ -15,31 +15,23 @@ class Users::SessionsController < Devise::SessionsController
 
   # and this
   def create_parse_user_if_needed
-    return unless need_to_create_parse_user?
-    Group.find(ENV['PARSE_GROUP_ID']).add_member! parsed_user
-    sign_in :user, parsed_user
-    flash[:notice] = t(:'devise.sessions.signed_in')
-    redirect_to after_sign_in_path_for parsed_user
-  end
+    if ENV['PARSE_ID'] and request.subdomain == ENV['PARSE_SUBDOMAIN']
+      unless warden.authenticate?(auth_options)
+        if user_hash = ParseAuth.login_with_email_and_password(params[:user][:email], params[:user][:password])
 
-  private
+          unless u = User.find_by_email(params[:user][:email])
+            u = User.create!(name: "#{user_hash['firstname']} #{user_hash['lastname']}",
+                             email: params[:user][:email],
+                             password: params[:user][:password])
+          end
 
-  def need_to_create_parse_user?
-    ENV['PARSE_ID'] &&
-    request.subdomain == ENV['PARSE_SUBDOMAIN'] &&
-    !warden.authenticate?(auth_options) &&
-    user_hash.present?
-  end
-
-  def user_hash
-    @user_hash ||= ParseAuth.login_with_email_and_password(params[:user][:email], params[:user][:password])
-  end
-
-  def parsed_user
-    @parsed_user ||= 
-      User.find_by_email(params[:user][:email]) || 
-      User.create! name: "#{user_hash['firstname']} #{user_hash['lastname']}", 
-                   email: params[:user][:email], 
-                   password: params[:user][:password]
+          g = Group.find(ENV['PARSE_GROUP_ID'])
+          g.add_member!(u)
+          flash[:notice] = t(:'devise.sessions.signed_in')
+          sign_in(:user, u)
+          redirect_to after_sign_in_path_for(u)
+        end
+      end
+    end
   end
 end
