@@ -29,3 +29,10 @@ angular.module('loomioApp').factory 'ProposalFormService', ($modal, Records) ->
         resolve:
           proposal: -> Records.proposals.find(proposal.id)
 
+    openSetOutcomeModal: (proposal) ->
+      modalInstance = $modal.open
+        templateUrl: 'generated/components/thread_page/proposal_outcome_form/proposal_outcome_form.html'
+        controller: 'ProposalOutcomeFormController'
+        resolve:
+          proposal: -> proposal
+

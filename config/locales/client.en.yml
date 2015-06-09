@@ -21,6 +21,7 @@ en:
       older: 'Older'
     action:
       save: 'Save'
+      save_changes: 'Save changes'
       reply: 'Reply'
       edit: 'Edit'
       like: 'Like'
@@ -42,6 +43,19 @@ en:
 
   current_proposal_card:
     heading: Proposal
+
+  proposal_outcome_panel:
+    heading: Outcome
+    set_outcome_hint: Use this space to let everyone know the outcome of the proposal.
+    set_outcome_btn: Set proposal outcome
+    edit_outcome_link: Edit proposal outcome
+
+  proposal_outcome_form:
+    set_outcome: Set proposal outcome
+    update_outcome: Update proposal outcome
+    outcome_label: Proposal outcome
+    outcome_placeholder: Let everyone know the outcome of the proposal.
+    publish_outcome: Publish outcome
 
   previous_proposals_card:
     heading: Previous Proposals

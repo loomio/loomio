@@ -69,7 +69,7 @@ We're not using linemans default e2e testing stuff. Insted we're going for cucum
 ## Installing Protractor & Webdriver-manager
 To run the integration tests, you'll need Protractor and Webdriver-manager
 
-  `$ npm install protractor`  
+  `$ npm install -g protractor`  
   `$ webdriver-manager update --standalone`  
 
 (NB: This will require a java development kit to function correctly, [go here](http://docs.oracle.com/javase/7/docs/webnotes/install/) for more details on installing a JDK)

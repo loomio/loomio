@@ -26,8 +26,6 @@
     "npm": "~>1.2.18"
   },
   "devDependencies": {
-    "cucumber": "~0.4.4",
-    "grunt-cucumber": "~0.2.3",
     "protractor": ">=1.4.0",
     "selenium-webdriver": "~2.44.0"
   }

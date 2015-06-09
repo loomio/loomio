@@ -45,9 +45,9 @@ class API::RestfulController < API::BaseController
 
   private
 
-  def load_and_authorize(model)
+  def load_and_authorize(model, action = :show)
     instance_variable_set :"@#{model}", ModelLocator.new(model, params).locate 
-    authorize! :show, instance_variable_get(:"@#{model}")
+    authorize! action, instance_variable_get(:"@#{model}")
   end
 
   def collection

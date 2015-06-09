@@ -1,0 +1,7 @@
+.proposal-outcome-panel
+  %h4.lmo-card-subheading{translate: 'proposal_outcome_panel.heading'}
+  .wrap{ng-if: 'canCreateOutcome()'}
+    %p.lmo-hint-text{translate: 'proposal_outcome_panel.set_outcome_hint'}
+    %a.btn.btn-success.lmo-btn-icon.proposal-outcome-panel__set-outcome-btn{href: '', ng-click: 'openProposalOutcomeForm()', translate: 'proposal_outcome_panel.set_outcome_btn'}
+  %p.proposal-outcome-panel__outcome{ng-show: 'proposal.hasOutcome()'} {{ proposal.outcome }}
+  %a.proposal-outcome-panel__edit-outcome-link{href: '', ng-if: 'canUpdateOutcome()', ng-click: 'openProposalOutcomeForm()', translate: 'proposal_outcome_panel.edit_outcome_link'}

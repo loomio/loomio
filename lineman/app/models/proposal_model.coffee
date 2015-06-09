@@ -48,6 +48,9 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     isActive: ->
       !@closedAt?
 
+    isClosed: ->
+      !@isActive()
+
     uniqueVotesByUserId: ->
       votesByUserId = {}
       _.each _.sortBy(@votes(), 'createdAt'), (vote) ->
@@ -65,3 +68,6 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
 
     close: ->
       @restfulClient.postMember(@id, "close")
+
+    hasOutcome: ->
+      _.some(@outcome)

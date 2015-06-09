@@ -57,6 +57,16 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       proposal.isActive() and
       (@isAdminOf(proposal.group()) or @isAuthorOf(proposal))
 
+    canCreateOutcomeFor: (proposal) ->
+      @canSetOutcomeFor(proposal) and !proposal.hasOutcome()
+
+    canUpdateOutcomeFor: (proposal) ->
+      @canSetOutcomeFor(proposal) and proposal.hasOutcome()
+
+    canSetOutcomeFor: (proposal) ->
+      proposal.isClosed() and
+      (proposal.authorId == @id or proposal.group().coordinatorsIncludes(@))
+
     canSeePrivateContentFor: (group) ->
       group.visibleTo == 'public' or
       @isMemberOf(group) or

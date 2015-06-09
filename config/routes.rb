@@ -1,10 +1,11 @@
 Loomio::Application.routes.draw do
 
   scope '/angular_support', controller: 'angular_support', path: 'angular_support', as: 'angular_support' do
-    get 'setup_for_invite_people'
-    get 'setup_for_add_comment'
-    get 'setup_for_like_comment'
-    get 'setup_for_vote_on_proposal'
+    get 'setup_discussion'
+    get 'setup_discussion_with_comment'
+    get 'setup_proposal'
+    get 'setup_closed_proposal'
+    get 'setup_closed_proposal_with_outcome'
     get 'setup_all_notifications'
   end
 
@@ -62,6 +63,8 @@ Loomio::Application.routes.draw do
 
     resources :motions,     only: [:show, :index, :create, :update], path: :proposals do
       post :close, on: :member
+      post :create_outcome, on: :member
+      post :update_outcome, on: :member
     end
     resources :votes,       only: [       :index, :create, :update] do
       get :my_votes, on: :collection
