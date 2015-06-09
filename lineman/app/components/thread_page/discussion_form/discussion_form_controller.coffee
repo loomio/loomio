@@ -1,5 +1,5 @@
-angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $controller, $location, discussion, UserAuthService, CurrentUser) ->
-  $scope.discussion = discussion
+angular.module('loomioApp').controller 'DiscussionFormController', ($scope, $controller, $location, discussion, UserAuthService, CurrentUser, Records) ->
+  $scope.discussion = discussion or Records.discussions.initialize()
 
   $controller('FormController', {$scope: $scope, record: discussion});
 

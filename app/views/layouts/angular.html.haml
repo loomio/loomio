@@ -11,6 +11,7 @@
     %navbar
     %ng-outlet{'ng-if' => '!pageError'}
     %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
+    %start_menu
 
     #turn-off-angular{'aria-hidden' => 'true'}
       =link_to 'Turn off angular', '/angular', target: '_self'
