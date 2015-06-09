@@ -73,7 +73,6 @@ el:
     group_already_setup: Η ομάδα που προσπαθείτε να στήσετε υπάρχει ήδη.
     passwords_did_not_match: Ο κωδικός δεν ταιριάζει με την επιβεβαίωση
     proposal_already_exists: Υπάρχει ήδη ανοιχτή πρόταση για αυτή την συζήτηση.
-    username_cannot_contain_whitespace: Το όνομα χρήστη δεν μπορεί να περιέχει κενά
     user_with_email_address_already_in_group: Ο χρήστης με αυτό το ηλεκτρονικό ταχυδρομείο ανήκει ήδη σε αυτήν την ομάδα.
     you_have_already_requested_membership: Έχετε ήδη αιτηθεί για μέλος σε αυτή την ομάδα.
     you_are_already_a_member_of_this_group: Είστε ήδη μέλος αυτής της ομάδας.

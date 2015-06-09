@@ -62,7 +62,6 @@ sl:
     group_already_setup: "Skupina, ki jo želiš ustvariti, že obstaja."
     passwords_did_not_match: Geslo se ne ujema s potrditvijo
     proposal_already_exists: V tej razpravi je predlog že odprt.
-    username_cannot_contain_whitespace: Uporabniško ime ne sme vsebovati presledkov
     user_with_email_address_already_in_group: Uporabnik s tem e-poštnim naslovom je že član te skupine.
     you_have_already_requested_membership: Za članstvo v tej skupini si že zaprosil/-a.
     you_are_already_a_member_of_this_group: V to skupino si že včlanjen-/a.

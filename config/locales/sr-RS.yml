@@ -73,7 +73,6 @@ sr-RS:
     group_already_setup: Група коју покушавате да направите већ постоји.
     passwords_did_not_match: Лозинка се не поклапа са потврдном
     proposal_already_exists: Овде је већ један отворен предлог у дискусији.
-    username_cannot_contain_whitespace: Корисничко име не може садржати размаке
     user_with_email_address_already_in_group: Корисник са овом адресом еПоште већ припада овој групи.
     you_have_already_requested_membership: Већ сте затражили чланство у овој групи.
     you_are_already_a_member_of_this_group: Већ сте члан ове групе.

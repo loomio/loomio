@@ -73,7 +73,6 @@ ru:
     group_already_setup: Такая группа уже существует.
     passwords_did_not_match: Пароли не совпадают
     proposal_already_exists: В этом обсуждении уже есть открытое предложение.
-    username_cannot_contain_whitespace: Имя пользователя не может содержать пробелы
     user_with_email_address_already_in_group: Этот пользователь уже является участником группы.
     you_have_already_requested_membership: Вы уже запрашивали участие в этой группе.
     you_are_already_a_member_of_this_group: Вы уже член этих группи

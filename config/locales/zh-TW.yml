@@ -73,7 +73,7 @@ zh-TW:
     group_already_setup: 您想設置的群組已存在。
     passwords_did_not_match: 密碼與確認密碼並不相符
     proposal_already_exists: 在這個討論串中已有一個開啟狀態的提案。
-    username_cannot_contain_whitespace: 使用者名稱不可以包含空格
+    username_must_be_alphanumeric: 使用者名稱只能包含小寫字母及數字。
     user_with_email_address_already_in_group: 該電子郵件使用者已屬於本群組。
     you_have_already_requested_membership: 您已經申請此群組的成員資格。
     you_are_already_a_member_of_this_group: 您已經是這個群組的成員。
@@ -198,6 +198,7 @@ zh-TW:
     new_vote: "在此提案上的 %{position}"
     new_comment: 加入討論
     comment_liked: 說您的意見很讚
+    comment_replied_to: 回覆您的意見在
     user_mentioned: 在意見中提到您
     membership_requested: 申請成為成員
     membership_request_approved: 已批准您的加入申請
@@ -268,10 +269,6 @@ zh-TW:
     email_error: 並非有效的電子郵件地址。
     group_name: 群組名稱
     group_name_error: 群組名稱必填
-    payment: 付款
-    payment_error: 請選出一個選項：
-    subscription_html: "<strong>訂閱</strong> - 30 天免費試用。如果您的群組喜愛 Loomio，您可以以每月每個成員 $1 來使用它。"
-    donation_html: "<strong>捐款</strong> - 如果您無法支付常規的訂閱費用，我們會偶爾詢問您的群組成員有無自願性的捐款。"
     terms_html: "要開始一個群組，您即同意遵守 Loomio 的<a href='%{link}' target='_blank'>服務條款</a>。"
     success:
       header: 您就快完成了！請確認您的電子郵件信箱。
@@ -529,6 +526,7 @@ zh-TW:
       log_in_html: "假如您是成員，<a href='%{href}'>登入</a>就能看到私密討論串。"
   discussion_context:
     started_html: "已由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在%{when}前開始"
+    started_print: "由 %{who} 在 %{when} 開始"
     last_edited_html: "最後由 <a href='%{link}' class='%{link_class}'>%{who}</a> 在%{when}前編輯"
     see_revision_history: 查看修訂歷史紀錄
     see_history: 查看歷史紀錄
@@ -558,6 +556,7 @@ zh-TW:
   move_discussion_where: 您想要把這則討論串移至？
   delete_discussion: 刪除討論串
   confirm_delete_discussion: 您確定要永久刪除這個討論串嗎？
+  print_tooltip_info: 列印
   new_proposal: 新提案
   edit_proposal: 編輯提案
   close_proposal: 提議定案
@@ -566,10 +565,12 @@ zh-TW:
   change_proposal_close_date_header: "變更提議「%{which}」的定案日期"
   proposal: 提案
   proposals: 提議
+  closed_at: 定案在
   proposal_close_date_error: 請提供尚未逾期的定案日期
   proposal_closing_when: "在%{when}之內定案"
   proposal_closed_when: "在%{when}前已定案"
   proposed_when_by_who: "由 %{who} 在%{when}前提案"
+  proposed_by_who_on: "提案由：%{who}，%{when}"
   engagement_on_open_proposal: "%{percent}%%的成員已經陳述他們的立場 (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}%%的成員陳述他們的立場 (%{numerator}/%{denominator})"
   state_your_position: 陳述您的立場
@@ -651,9 +652,7 @@ zh-TW:
     vote: 任何時候您都能改變您的立場
   pricing_page:
     header: 價格
-    in_development_html: "我們正在發展一種符合我們的社會使命的定價模式： <strong>任何人都能輕鬆參與、討論決策、影響他人</strong>。"
     loomio_for_organisations: 組織用的 Loomio
-    organisations_deal_html: "如果您在公司、正式組織或工作場所中使用 Loomio，您將會在<strong>30天的免費試用</strong>後被收取每人 $1 的月費。"
     loomio_for_communities: 社群用的 Loomio
     communities_deal: 錢永遠不會是人們在他們的社群中使用 Loomio 做大事的阻礙。如果您的團隊沒有足夠的預算來支付軟體費用，您就不需要支付訂閱的費用。但是，我們偶爾會詢問您的群組成員是否有自願性的捐款。
   contribution:
@@ -954,6 +953,7 @@ zh-TW:
   about_loomio: 關於 Loomio
   ago: "%{quantity_of_time}前"
   approve: 批准
+  attachments: 附件：
   author: 作者
   back: 返回
   cancel: 取消
@@ -1126,6 +1126,7 @@ zh-TW:
     online_community: 線上社群
     religious_group: 宗教信仰
     event: 事件
+    open_source_software: 自由及開放原始碼軟體
     political_initiative: 政治倡議
     social_enterprise: 社會企業
     social_justice: 社會正義

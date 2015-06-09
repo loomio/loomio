@@ -73,7 +73,6 @@ de:
     group_already_setup: "Die Gruppe, die Du einrichten möchtest, existiert schon."
     passwords_did_not_match: Passwort stimmt nicht mit Bestätigung überein.
     proposal_already_exists: Es gibt schon einen offenen Vorschlag in dieser Diskussion.
-    username_cannot_contain_whitespace: Benutzername darf keine Leerzeichen enthalten
     user_with_email_address_already_in_group: Ein Benutzer mit dieser eMail-Adresse gehört schon zu dieser Gruppe.
     you_have_already_requested_membership: Du hast die Mitgliedschaft dieser Gruppe schon angefragt.
     you_are_already_a_member_of_this_group: Du bist schon Mitglied dieser Gruppe.

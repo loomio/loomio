@@ -73,7 +73,6 @@ fr:
     group_already_setup: Le groupe que vous essayez de créer existe déjà.
     passwords_did_not_match: Les mots de passe ne correspondent pas
     proposal_already_exists: Il y a déjà une proposition en cours dans cette discussion.
-    username_cannot_contain_whitespace: "Un identifiant utilisateur ne peut pas contenir d'espaces"
     user_with_email_address_already_in_group: Un utilisateur avec cette adresse e-mail appartient déjà à ce groupe.
     you_have_already_requested_membership: "Vous avez déjà demandé l'accès à ce groupe."
     you_are_already_a_member_of_this_group: Vous êtes déjà membre de ce groupe.
@@ -282,8 +281,6 @@ fr:
     email_error: "N'est pas une adresse de courriel valide"
     group_name: Nom du groupe
     group_name_error: Le nom du groupe est requis
-    payment: Paiement
-    payment_error: "S'il vous plait sélectionnez une option :"
     terms_html: "En créant un groupe, vous acceptez les  <a href='%{link}' target='_blank'>termes d'utilisation</a> de Loomio"
     success:
       header: "Vous avez presque fini ! Consultez votre e-mail."
