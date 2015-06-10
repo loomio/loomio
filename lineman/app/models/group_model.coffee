@@ -16,6 +16,12 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
     organisationIds: ->
       _.pluck(@subgroups(), 'id').concat(@id)
 
+    organisationSubdomain: ->
+      if @isSubgroup()
+        @parent().subdomain
+      else
+        @subdomain  
+
     subgroups: ->
       if @isParent()
         @recordStore.groups.find(parentId: @id)
