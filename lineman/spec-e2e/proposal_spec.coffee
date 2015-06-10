@@ -1,87 +1,50 @@
 describe 'Proposals', ->
 
   DiscussionPage = require './helpers/discussion_page.coffee'
+  proposalsHelper = require './helpers/proposals_helper.coffee'
   page = new DiscussionPage
 
-  describe 'voting', ->
-    beforeEach ->
-      page.loadWithActiveProposal()
-
-    describe 'vote on a proposal', ->
-      beforeEach ->
-        page.agreeButton().click()
-        page.voteStatementInput().sendKeys('I do agree')
-        page.submitPositionButton().click()
-
-      it 'displays your current vote and statement', ->
-        expect(page.yourPositionIcon().isPresent()).toBe(true)
-        expect(page.yourVoteStatement().getText()).toContain('I do agree')
-
-      it 'appends your vote to the discussion thread', ->
-        expect(page.newVoteDiscussionItem().getText()).toContain('I do agree')
-
-      it 'lets you change position', ->
-        page.editPositionButton().click()
-        page.abstainButton().click()
-        page.voteStatementInput().clear().sendKeys('now im iffy')
-        page.submitPositionButton().click()
-        expect(page.yourVoteStatement().getText()).toContain('now im iffy')
-
-
   describe 'starting a proposal', ->
+
     beforeEach ->
       page.load()
-      page.startProposalLink().click()
 
-    describe 'then cancelling', ->
-      beforeEach ->
-        page.cancelProposalBtn().click()
+    it 'successfully starts a new proposal', ->
+      proposalsHelper.startProposalBtn().click()
+      proposalsHelper.fillInProposalForm({ title: 'New proposal', details: 'Describing the proposal' })
+      proposalsHelper.submitProposalForm()
+      # expect(page.flashMessageText()).toContain('Successfully created your proposal')
 
-      it 'closes the modal', ->
-        expect(page.modal().isPresent()).toBe(false)
-
-    describe 'successfully', ->
-      beforeEach ->
-        page.fillInProposalForm('test proposal', 'the details are in the details')
-        page.submitProposalForm()
-
-      it 'closes the modal', ->
-        expect(page.modal().isPresent()).toBe(false)
-
-      it 'shows the new proposal as the expanded current proposal', ->
-        expect(page.expandedProposalTitleText()).toContain('test proposal')
-
-  describe 'editing propsal', ->
+  describe 'voting on a proposal', ->
     beforeEach ->
       page.loadWithActiveProposal()
 
-    it 'lets you edit proposal when there are no votes', ->
-      page.proposalActionsDropdown().click()
-      page.proposalActionsDropdownEdit().click()
-      page.fillInProposalForm('updated title', 'the details are not the same')
-      page.submitProposalForm()
-      expect(page.modal().isPresent()).toBe(false)
-      expect(page.expandedProposalTitleText()).toContain('updated title')
+    it 'successfully votes on a proposal', ->
+      proposalsHelper.agreeBtn().click()
+      proposalsHelper.voteStatementField().sendKeys('This is a good idea')
+      proposalsHelper.submitVoteForm()
+      expect(proposalsHelper.positionsList().getText()).toContain('This is a good idea')
 
-  describe 'closing propsal', ->
+  describe 'editing a proposal', ->
     beforeEach ->
       page.loadWithActiveProposal()
 
-    it 'closes the proposal', ->
-      page.proposalActionsDropdown().click()
-      page.proposalActionsDropdownClose().click()
-      page.closeProposalButton().click()
-      expect(page.modal().isPresent()).toBe(false)
-      page.firstCollpasedProposal().click()
-      expect(page.proposalClosedBadge().isPresent()).toBe(true)
+    it 'successfully edits a proposal when there are no votes', ->
+      proposalsHelper.proposalActionsDropdown().click()
+      proposalsHelper.proposalActionsDropdownEdit().click()
+      proposalsHelper.fillInProposalForm({ title: 'Edited proposal' })
+      proposalsHelper.saveProposalChangesBtn().click()
+      expect(proposalsHelper.currentProposalHeading().getText()).toContain('Edited proposal')
 
-  describe 'changing close time', ->
-    beforeEach ->
-      page.loadWithActiveProposal()
-      page.agreeWithProposal('yes why not')
+  # describe 'closing a proposal', ->
+  #   beforeEach ->
+  #     page.loadWithActiveProposal
 
-    it 'lets admin change close time', ->
-      page.proposalActionsDropdown().click()
-      page.proposalActionsDropdownChangeCloseTime().click()
-      # something about updating the time
+  #   it 'successfully closes a proposal', ->
+  #     proposalsHelper.proposalActionsDropdown().click()
+  #     proposalsHelper.proposalActionsDropdownClose().click()
+  #     proposalsHelper.closeProposalButton().click()
+  #     expect(page.previousProposalsList().getText()).toContain("let's go hiking")
+  #     expect(page.proposalClosedAt().isPresent()).toBe(true)
 
+  # set a proposal outcome

@@ -6,8 +6,8 @@ module.exports = class DiscussionPage
     browser.get('http://localhost:8000/angular_support/setup_for_vote_on_proposal')
 
   addComment: (body) ->
-    enterCommentText(body)
-    submitComment()
+    @enterCommentText(body)
+    @submitComment()
 
   enterCommentText: (body) ->
     element(By.css('#comment-field')).sendKeys(body or 'I am a comment')
@@ -24,100 +24,23 @@ module.exports = class DiscussionPage
   mostRecentComment: ->
     element.all(By.css('.thread-item--comment')).last()
 
-  startProposalLink: ->
-    element(By.css('.start-proposal-card__link'))
+  replyLinkOnMostRecentComment: ->
+    element.all(By.css('.thread-actions__reply')).last()
 
-  cancelProposalBtn: ->
-    element(By.css('.proposal-form__cancel-btn'))
+  inReplyToOnMostRecentComment: ->
+    element.all(By.css('.new-comment__in-reply-to')).last()
 
-  startProposalBtn: ->
-    element(By.css('.proposal-form__start-btn'))
+  likeLinkOnMostRecentComment: ->
+    element.all(By.css('.thread-actions__like')).last()
 
-  proposalDescripionField: ->
-    element(By.model('proposal.description'))
-
-  proposalNameField: ->
-    element(By.model('proposal.name'))
-
-  startAProposal: (name, description) ->
-    startProposalLink().click()
-    proposalNameField().sendKeys(name)
-    proposalDescripionField().sendKeys(description)
-    startProposalBtn.click()
-
-  #fillInProposalForm: (name, description) ->
-    #element(By.model('proposal.name')).clear().sendKeys(name)
-    #element(By.model('proposal.description')).clear().sendKeys(description)
-    #element(By.css('i.fa-calendar')).click()
-    #element(By.css('th.right')).click()
-    #element(By.css('th.right')).click()
-    #element.all(By.repeater('dateObject in week.dates')).first().click()
-    #element.all(By.css('span.hour')).last().click()
-
-  #submitProposalForm: ->
-    #element(By.css('.cuke-save-proposal-btn')).click()
-
-  modal: ->
-    element(By.css('.modal-dialog'))
-
-  expandedProposal: ->
-    element(By.css('.proposal-expanded'))
-
-  expandedProposalTitleText: ->
-    @expandedProposal().element(By.tagName('h2')).getText()
+  likedByOnMostRecentComment: ->
+    element.all(By.css('.thread-liked-by-sentence')).last()
 
   flashMessageText: ->
     element(By.css('.flash-container')).getText()
 
-  agreeWithProposal: (statement) ->
-    @agreeButton().click()
-    @voteStatementInput().sendKeys(statement)
-    @submitPositionButton().click()
-
-  agreeButton: ->
-    element(By.css('.position-button-yes'))
-
-  abstainButton: ->
-    element(By.css('.position-button-abstain'))
-
-  voteStatementInput: ->
-    element(By.model('vote.statement'))
-
-  submitPositionButton: ->
-    element(By.css('.cuke-submit-position'))
-
-  editPositionButton: ->
-    element(By.css('.cuke-edit-position-btn'))
-
-  yourPositionIcon: ->
-    element(By.css('.your-position-icon'))
-
-  yourVoteStatement: ->
-    element(By.css('.author-statement'))
-
-  newVoteDiscussionItem: ->
-    element(By.css('.thread-new-vote-item'))
-
-  proposalActionsDropdown: ->
-    element(By.css('.proposal-actions-dropdown__btn'))
-
-  proposalActionsDropdownEdit: ->
-    element(By.css('.proposal-actions-dropdown__edit-link'))
-
-  proposalActionsDropdownClose: ->
-    element(By.css('.proposal-actions-dropdown__close-link'))
-
-  closeProposalButton: ->
-    element(By.css('.close-proposal-form__submit-btn'))
-
-  proposalClosedBadge: ->
-    element(By.css('.cuke-proposal-closed-badge'))
-
-  firstCollpasedProposal: ->
-    element.all(By.css('a.proposal-collapsed')).first()
-
   mentionList: ->
-    element(By.css('mentio-menu')).first()
+    element(By.css('ul.list-group.user-search'))
     
   firstMentionOption: ->
-    @mentionList().element('li').first()
+    @mentionList().element(By.css('li'))
