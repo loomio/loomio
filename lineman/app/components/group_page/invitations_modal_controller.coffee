@@ -20,7 +20,7 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
     invitables.push $scope.invitableUsers()
     invitables.push $scope.invitableContacts()
     invitables.push $scope.invitableEmail() if $scope.fragmentIsValidEmail()
-    _.flatten invitables
+    _.take _.flatten(invitables), 3
 
   $scope.fragmentIsValidEmail = ->
     $scope.invitableForm.$valid

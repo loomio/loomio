@@ -35,6 +35,10 @@ describe 'InvitationsModalController', ->
       @scope.invitations.push { count: 5 }
       expect(@scope.invitationsCount()).toBe(6)
 
+    it 'displays a maximum of 3 options at a time', ->
+      @factory.create 'contacts', user_id: @currentUser.id for i in [0..9]
+      expect(@scope.invitables().length).toBe(3)
+
   describe 'contacts', ->
     beforeEach ->
       @contact = @factory.create 'contacts', name: 'RickDazo', email: 'dick@razo.com', user_id: @currentUser.id
