@@ -13,8 +13,12 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
     invitables = []
     invitables.push $scope.invitableEmail() if $scope.fragmentIsValidEmail()
     invitables.push $scope.invitableGroups()
+    invitables.push $scope.invitableUsers()
     invitables.push $scope.invitableContacts()
     _.flatten invitables
+
+  $scope.fragmentIsValidEmail = ->
+    $scope.invitableForm.fragment.$valid
 
   $scope.invitableEmail = ->
     name: "<#{$scope.fragment}>"
@@ -29,7 +33,7 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
       subtitle: "Add all members (#{group.membersCount})"
       image:    group.logoUrl()
 
-  $scope.invitableContacts = ->
+  $scope.invitableUsers = ->
     memberIds = _.uniq _.flatten _.map $scope.availableGroups(), (group) -> group.memberIds()
     memberIds = _.filter memberIds, (memberId) -> 
       !_.contains $scope.group.memberIds(), memberId
@@ -38,12 +42,16 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
       subtitle: "@#{user.username()}"
       image:    user.avatarUrl
 
-  $scope.getInvitables = (fragment) ->
-    invitablesClient.getByNameFragment(fragment, $scope.group.id)
-    $scope.invitables()
+  $scope.invitableContacts = ->
+    _.map CurrentUser.contacts(), (contact) ->
+      name:     contact.name
+      subtitle: "<#{contact.email}>"
+      image:    contact.avatarUrl
 
-  $scope.fragmentIsValidEmail = ->
-    $scope.invitableForm.fragment.$valid
+  $scope.getInvitables = (fragment) ->
+    Records.contacts.fetchInvitables(fragment, $scope.group)
+    Records.users.fetchInvitables(fragment, $scope.group)
+    $scope.invitables()
 
   $scope.availableGroups = ->
     CurrentUser.groups()

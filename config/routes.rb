@@ -80,6 +80,10 @@ Loomio::Application.routes.draw do
       post :viewed, on: :collection
     end
 
+    resources :contacts, only: :index do
+      get :import, on: :collection
+    end
+
     resources :search_results, only: :index
 
     resources :contact_messages, only: :create
@@ -96,7 +100,6 @@ Loomio::Application.routes.draw do
       resources :sessions, only: [:create, :destroy]
     end
     get '/attachments/credentials',      to: 'attachments#credentials'
-    get  '/contacts/import',             to: 'contacts#import'
     get  '/contacts/:importer/callback', to: 'contacts#callback'
   end
 
