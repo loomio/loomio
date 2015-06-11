@@ -1,8 +1,7 @@
 class API::InvitationsController < API::RestfulController
 
   def create
-    @group = Group.find(params[:group_id])
-    authorize! :invite_people, @group
+    load_and_authorize :group, :invite_people
 
     @invitations = parse_invitations
 
@@ -43,7 +42,7 @@ class API::InvitationsController < API::RestfulController
   end
 
   def new_invitations
-    Contact.where(id: @contact_ids).pluck(:email) + @new_emails
+    Contact.find(@contact_ids).pluck(:email) + @new_emails
   end
 
 end

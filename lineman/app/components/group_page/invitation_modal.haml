@@ -11,7 +11,7 @@
         %h4{translate: 'invitation.instructions'}
         %input.form-control{type: 'text', ng-model: 'invitableForm.fragment', typeahead: 'invitable for invitable in getInvitables($viewValue)', typeahead-template-url: 'generated/components/group_page/invitable_menu.html', typeahead-on-select: 'addInvitation($item)', typeahead-wait-ms: '300'}
         %input.hidden.form-control{type: 'email', ng-model: 'invitableForm.fragment'}
-    %form{name: 'invitationForm', ng-submit: 'submit()', ng-show: 'hasInvitations()'}
+    %form{name: 'invitationForm', ng-show: 'hasInvitations()'}
       %h4 {{ 'invitation.to' | translate }}:
       .current-invitations{ng-repeat: 'invitation in invitations'}
         %span {{::invitation.name}}
@@ -21,5 +21,5 @@
       %textarea.form-control{ng-model: 'invitationForm.message'}
 
   .modal-footer
-    %button.btn.btn-primary.cuke-group-invitation-submit{type: 'submit', ng-show: 'hasInvitations()', translate: 'invitation.send_invite', translate-value-count: '{{invitationsCount()}}'}
+    %button.btn.btn-primary.cuke-group-invitation-submit{ng-click: 'submit()', ng-show: 'hasInvitations()', translate: 'invitation.send_invite', translate-value-count: '{{invitationsCount()}}'}
     %button.btn.btn-warning{ng-click: 'cancel($event)', translate: 'common.action.cancel'}
