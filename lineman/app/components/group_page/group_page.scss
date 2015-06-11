@@ -66,12 +66,21 @@
 .members-invite{
   margin-top: 10px;
 }
+
+.group-page__members-placeholder {
+  padding: 0 0 0 60px;
+}
+
 .group-member-list-show-more{
   padding-top: 8px;
 }
 .group-member-list-avatar{
   float: left;
   margin: 0 2px 2px 0;
+}
+
+.group-page__threads-placeholder {
+  clear: both;
 }
 
 .group-thread-list-empty {

@@ -14,7 +14,7 @@
     .group-member-list-item{ng-repeat: 'member in group.members() | limitTo:5'}
       .group-member-list-avatar.lg{data-username: '{{member.label}}' }
         %user_avatar{user: 'member'}
-    .group-page__members-placeholder.group-page-placeholder{translate: 'group_page.members_placeholder', ng-if: 'showMembersPlaceholder()' }
+    .group-page__members-placeholder.placeholder{translate: 'group_page.members_placeholder', ng-if: 'showMembersPlaceholder()' }
   .group-member-list-show-more.show-more.card-minor-action
     %a{href: '/g/{{group.key}}/memberships', translate: 'common.action.show_more'}
   .members-invite{ng_controller: 'InvitationsController', ng-if: '::canAddMembers()'}

@@ -31,6 +31,7 @@ en:
       view_all: "View All"
       new_thread: "New thread"
       add_subgroup: 'Add subgroup'
+      ok_got_it: "Ok, got it!"
 
   error_page:
     forbidden: 'You do not have permission to do this.'
@@ -237,6 +238,12 @@ en:
   proposal_position_block: 'Block'
 
   group_page:
+    welcome_message: "Welcome to your new group"
+    instructions: "You're the group coordinator, which means it is your job to set up the group and invite people in"
+    what_next: "Here's what to do next:"
+    first_step: "Set the group description, logo and cover photo"
+    second_step: "Read the example thread and practice making a decision"
+    third_step: "Invite people in to join your group"
     thread_list:
       empty:
         no_discussions_in_group: "This group does not have any threads yet."
@@ -305,10 +312,12 @@ en:
       new_group: 'Successfully created your group'
       update_group: 'Changes saved'
     new_group_title: 'Create a New Group'
+    group_helptext: 'To start making desicions together on Loomio, set up a group for free:'
+    group_payment_reminder: "In 30 days, when you've seen how Loomio improves your group's decision making, we'll ask you to choose the <a href='#'>payment plan</a> that works for you."
     new_subgroup_title: 'Create a New Subgroup of {{parentGroupName}}'
     edit_group_title: 'Group Settings'
     profile_label: 'Profile'
-    name_label: 'Name'
+    name_label: 'Group Name'
     name_placeholder: 'Enter the name of your group'
     description_label: 'Description'
     description_placeholder: 'Describe your group'
@@ -341,7 +350,7 @@ en:
       members_can_raise_motions: 'Start proposals'
       members_can_vote: 'Vote on proposals'
     edit_group_submit:  'Update Settings'
-    new_group_submit: 'Create Group'
+    new_group_submit: 'Start Group'
 
   invitation:
     invite_people: 'Invite People'
