@@ -14,7 +14,7 @@
     .media-left
       %user_avatar{user: "comment.author()"}
     .media-body
-      %span{ng-if: 'comment.parentId', translate: 'new_comment_item.in_reply_to', translate-values: '{author: comment.authorName(), recipient: comment.parentAuthorName()}'}
+      %span.new-comment__in-reply-to{ng-if: 'comment.parentId', translate: 'new_comment_item.in_reply_to', translate-values: '{author: comment.authorName(), recipient: comment.parentAuthorName()}'}
       %span{ng-if: '!comment.parentId'}
         %h3.new-comment__author-name{id: 'comment-{{comment.id}}'} {{ ::comment.authorName() }}
 
@@ -25,11 +25,11 @@
       %attachment{attachment: 'attachment'}
 
   .thread-item-footer
-    .thread-actions-and-meta
-      %a{href: '', translate: 'common.action.like', ng-show: '!currentUserLikesIt()', ng_click: 'like()'}>
+    .thread-actions
+      %a.thread-actions__like{href: '', translate: 'common.action.like', ng-show: '!currentUserLikesIt()', ng_click: 'like()'}>
       %a{href: '', translate: 'common.action.unlike', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
       %span{aria-hidden: 'true'}·
-      %a{translate: 'common.action.reply', href: '', ng_click: 'reply()'}>
+      %a.thread-actions__reply{translate: 'common.action.reply', href: '', ng_click: 'reply()'}>
       %span{aria-hidden: 'true'}·
       %timeago{timestamp: 'comment.createdAt' }>
 

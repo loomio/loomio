@@ -21,6 +21,7 @@ en:
       older: 'Older'
     action:
       save: 'Save'
+      save_changes: 'Save changes'
       reply: 'Reply'
       edit: 'Edit'
       like: 'Like'

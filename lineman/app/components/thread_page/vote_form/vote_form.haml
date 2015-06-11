@@ -28,23 +28,23 @@
             %span.sr-only.label-with-details-details{ng-show: 'vote.position', translate: 'vote_form.aria_statement_label'}>
 
             %span{translate: 'vote_form.select_position', ng-show: '!vote.position'}
-          %textarea#vote-statement-field.form-control{ng-model: 'vote.statement', placeholder: '{{ "vote_form.statement_placeholder" | translate }}'}
+          %textarea.vote-form__statement-field.form-control{ng-model: 'vote.statement', placeholder: '{{ "vote_form.statement_placeholder" | translate }}'}
           .chars-left.pull-right{ng-class: '{ overlimit: vote.overCharLimit() }' }
             {{ vote.charsLeft() }}
-        %button.btn.btn-primary.cuke-submit-position{type: 'submit', translate: 'vote_form.submit_position'}>
+        %button.btn.btn-primary.vote-form__submit-btn{type: 'submit', translate: 'vote_form.submit_position'}>
 
         %button.btn.btn-default{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}>
 
-  .proposal-expanded-positions
+  .proposal-positions
     %h4.lmo-card-subheading{translate: 'vote_form.positions'}
 
-    %ul.proposal-expanded-votes
-      %li.proposal-expanded-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_expanded.no_votes_yet'}
-      %li.proposal-expanded-vote.media{ng_repeat: 'vote in curatedVotes()'}
+    %ul.proposal-positions__list
+      %li.proposal-positions__no-votes{ng-show: 'noVotesYet()', translate: 'proposal_expanded.no_votes_yet'}
+      %li.proposal-positions__vote.media{ng_repeat: 'vote in curatedVotes()'}
         .media-left
           .thread-item-vote-icon{class: 'thread-item-vote-icon-{{vote.position}}'}
         .media-body
-          %span.proposal-expanded-vote{translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-name: '{{vote.authorName()}}'}
+          %span.proposal-positions__vote-position{translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-name: '{{vote.authorName()}}'}
           %span{ng-if: '!vote.hasStatement()'}.
           %span{ng-if: 'vote.hasStatement()'}: {{::vote.statement}}
           %a.change-your-vote{href: '', ng-click: 'changeVote()', ng-show: 'proposal.isActive() && voteIsMine(vote)'}

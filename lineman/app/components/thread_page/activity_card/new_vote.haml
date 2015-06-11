@@ -10,5 +10,5 @@
   .thread-item-body{ng-if: 'vote.hasStatement()'}
     {{::vote.statement}}
   .thread-item-footer
-    .thread-actions-and-meta
+    .thread-actions
       %timeago{timestamp: 'vote.createdAt'}
