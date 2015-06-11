@@ -17,7 +17,6 @@ module DiscussionIndexCacheHelper
   private
 
   def load_discussions_from_inbox
-    @discussions = @motions = []
     @inbox.items_by_group do |group, items|
       @discussions = items.map { |item| item if item.is_a?(Discussion) }.compact
       @motions     = items.map { |item| item if item.is_a?(Motion) }.compact
@@ -49,6 +48,7 @@ module DiscussionIndexCacheHelper
   end
 
   def current_motion_ids
+    return unless @motions || @discussions
     @current_motion_ids ||= (@motions || @discussions.map(&:current_motion).compact).map(&:id)
   end
 
