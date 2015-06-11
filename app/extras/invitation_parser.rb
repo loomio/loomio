@@ -1,4 +1,4 @@
-class InvitationParser = Struct.new(:invitations) do
+InvitationParser = Struct.new(:invitations) do
 
   def new_emails
     @new_emails ||= invitations_by_type(:email, :email) + invitations_by_type(:contact, :email)
@@ -15,8 +15,8 @@ class InvitationParser = Struct.new(:invitations) do
   end
 
   def invitations_by_type(type, field)
-    @invitations.select { |invitation| invitation.type == type.to_s }
-                .map    { |invitation| invitation[field.to_s] }
+    invitations.select { |invitation| invitation[:type] == type.to_s }
+               .map    { |invitation| invitation[field] }
   end
 
 end
