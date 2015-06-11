@@ -5,8 +5,19 @@ describe HostInfo do
   let(:request){ double(
     port: 3000,
     ssl?: true,
-    host: 'localhost'
+    host: 'localhost',
+    domain: nil
   ) }
+  let(:request_with_domain) { double(
+    post: 3000,
+    ssl?: true,
+    host: 'www.loomio.org',
+    domain: 'loomio.org'
+  )}
+
+  it 'prefers domain over host for host' do
+    expect(HostInfo.new(request_with_domain).host).to eq request_with_domain.domain
+  end
 
   it 'pulls attributes from the request' do
     expect(host_info.port).to eq request.port

@@ -2,7 +2,7 @@ HostInfo = Struct.new(:request) do
   alias :read_attribute_for_serialization :send
 
   def host
-    request.host
+    request.domain || request.host
   end
 
   def port
