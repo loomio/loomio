@@ -17,7 +17,7 @@
     .group-page__members-placeholder.group-page-placeholder{translate: 'group_page.members_placeholder', ng-if: 'showMembersPlaceholder()' }
   .group-member-list-show-more.show-more.card-minor-action
     %a{href: '/g/{{group.key}}/memberships', translate: 'common.action.show_more'}
-  .members-invite{ng_controller: 'InvitationsController', ng-if: '::canAddMembers()'}
-    %a.btn.btn-success.btn-block.lmo-btn-icon{href: '', ng_click: 'openForm()'}
+  .members-invite{ng-if: '::canAddMembers()'}
+    %a.btn.btn-success.btn-block.lmo-btn-icon{href: '', ng_click: 'invitePeople()'}
       %i.fa.fa-lg.fa-plus>
       %span{translate: 'group_page.invite_people' }

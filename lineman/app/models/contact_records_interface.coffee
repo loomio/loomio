@@ -2,8 +2,8 @@ angular.module('loomioApp').factory 'ContactRecordsInterface', (BaseRecordsInter
   class ContactRecordsInterface extends BaseRecordsInterface
     model: ContactModel
 
-    fetchInvitables: (fragment, group) ->
+    fetchInvitables: (invitableForm) ->
       @fetch 
         params:
-          group_id: group.id
-          q: fragment
+          group_id: invitableForm.group.id
+          q: invitableForm.fragment

@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'MembersCardController', ($scope, Records, CurrentUser) ->
+angular.module('loomioApp').controller 'MembersCardController', ($scope, Records, CurrentUser, ModalService) ->
   Records.memberships.fetchByGroup $scope.group.key
 
   $scope.canAddMembers = ->
@@ -9,3 +9,6 @@ angular.module('loomioApp').controller 'MembersCardController', ($scope, Records
 
   $scope.showMembersPlaceholder = ->
     CurrentUser.isAdminOf($scope.group) and $scope.group.memberships().length <= 1
+
+  $scope.invitePeople = ->
+    ModalService.openModal 'invitePeople', { group: $scope.group }

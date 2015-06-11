@@ -84,6 +84,10 @@ Loomio::Application.routes.draw do
       get :import, on: :collection
     end
 
+    resources :users, only: [] do
+      get :invitables, on: :collection
+    end
+
     resources :search_results, only: :index
 
     resources :contact_messages, only: :create

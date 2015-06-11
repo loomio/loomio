@@ -2,8 +2,9 @@ angular.module('loomioApp').factory 'UserRecordsInterface', (BaseRecordsInterfac
   class UserRecordsInterface extends BaseRecordsInterface
     model: UserModel
 
-    fetchInvitables: (fragment, group) ->
-      @fetch 
+    fetchInvitables: (invitableForm) ->
+      @fetch
+        path: '/invitables'
         params:
-          group_id: group.id
-          q: fragment
+          group_id: invitableForm.group.id
+          q: invitableForm.fragment

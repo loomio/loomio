@@ -9,10 +9,10 @@ class API::UsersController < API::RestfulController
   private
 
   def visible_invitables
-    Queries::VisibleInvitableUsers.new
+    Queries::VisibleInvitableUsers.new(
       query: params[:q],
       group: @group,
-      user: current_user
+      user: current_user)
   end
 
 end

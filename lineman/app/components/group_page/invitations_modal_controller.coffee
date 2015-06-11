@@ -1,13 +1,16 @@
-angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $modalInstance, group, InvitablesClient, InvitationsClient, Records, CurrentUser) ->
-  $scope.group = group
-  $scope.fragment = ''
+angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $modalInstance, group, InvitationsClient, Records, CurrentUser) ->
+  $scope.invitableForm =
+    group: group
+    fragment: ''
   $scope.invitations = []
 
-  invitablesClient = new InvitablesClient()
   invitationsClient = new InvitationsClient()
 
   $scope.hasInvitations = ->
     $scope.invitations.length > 0
+
+  $scope.invitationsCount = ->
+    _.reduce $scope.invitations, ((invitation, total) -> total + invitiation.count), 0
 
   $scope.invitables = ->
     invitables = []
@@ -21,25 +24,29 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
     $scope.invitableForm.fragment.$valid
 
   $scope.invitableEmail = ->
-    name: "<#{$scope.fragment}>"
+    name: "<#{$scope.invitableForm.fragment}>"
     type: "Email"
-    email: $scope.fragment
+    email: $scope.invitableForm.fragment
 
   $scope.invitableGroups = ->
     groups = _.filter $scope.availableGroups(), (group) ->
-      group.id != $scope.group.id and ~group.name.search(new RegExp($scope.fragment, 'i'))
+      group.id != $scope.invitableForm.group.id and matchesFragment(group.name)
     _.map groups, (group) ->
       name:     group.name
-      subtitle: "Add all members (#{group.membersCount})"
+      subtitle: "Add all #{group.membershipsCount} members"
       image:    group.logoUrl()
+      count:    group.membershipsCount
 
   $scope.invitableUsers = ->
     memberIds = _.uniq _.flatten _.map $scope.availableGroups(), (group) -> group.memberIds()
     memberIds = _.filter memberIds, (memberId) -> 
-      !_.contains $scope.group.memberIds(), memberId
-    _.map Records.users.find(memberIds), (user) ->
+      !_.contains $scope.invitableForm.group.memberIds(), memberId
+    users = _.filter Records.users.find(memberIds), (user) ->
+      !user.membershipFor($scope.invitableForm.group) and matchesFragment(user.name, user.username)
+
+    _.map users, (user) ->
       name:     user.name
-      subtitle: "@#{user.username()}"
+      subtitle: "@#{user.username}"
       image:    user.avatarUrl
 
   $scope.invitableContacts = ->
@@ -48,16 +55,20 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
       subtitle: "<#{contact.email}>"
       image:    contact.avatarUrl
 
+  matchesFragment = (fields...) ->
+    _.some _.map fields, (field) ->
+      ~field.search new RegExp($scope.invitableForm.fragment, 'i')
+
   $scope.getInvitables = (fragment) ->
-    Records.contacts.fetchInvitables(fragment, $scope.group)
-    Records.users.fetchInvitables(fragment, $scope.group)
+    Records.contacts.fetchInvitables($scope.invitableForm)
+    Records.users.fetchInvitables($scope.invitableForm)
     $scope.invitables()
 
   $scope.availableGroups = ->
     CurrentUser.groups()
 
   $scope.addInvitation = (invitation) ->
-    $scope.fragment = ''
+    $scope.invitableForm.fragment = ''
     $scope.invitations.push invitation
 
   $scope.submit = ->
@@ -66,7 +77,7 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
 
   invitationsParams = ->
     invitations: $scope.invitations
-    group_id: $scope.group.id
+    group_id: $scope.invitableForm.group.id
     message: $scope.message
 
   $scope.cancel = ($event) ->
@@ -78,7 +89,7 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
     $scope.invitations = []
     $modalInstance.close()
     # Repopulate newly added members for group
-    Records.memberships.fetchByGroup $scope.group
+    Records.memberships.fetchByGroup $scope.invitableForm.group
 
   $scope.saveError = (error) ->
     $scope.isDisabled = false

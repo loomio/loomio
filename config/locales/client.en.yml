@@ -338,7 +338,7 @@ en:
     import_contacts: 'Import contacts'
     instructions: 'Enter names or email addresses'
     invitation_message: 'Invitation Message'
-    send_invite: 'Send invites'
+    send_invite: 'Send {{count}} invites'
     to: 'to'
 
   memberships_page:
