@@ -23,3 +23,9 @@ angular.module('loomioApp').factory 'ModalService', ($modal, $rootScope) ->
         template:   'generated/components/thread_page/discussion_form/discussion_form.html'
         controller: 'DiscussionFormController'
         locals:   ['discussion']
+      startGroup:
+        template:   'generated/components/group_form/group_form.html'
+        controller: 'GroupFormController'
+        locals:  ['group']
+      groupIntro:
+        template:   'generated/components/group_page/group_intro_modal.html'

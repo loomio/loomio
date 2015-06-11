@@ -28,6 +28,11 @@
   white-space: nowrap;
 }
 
+.placeholder {
+  font-style: italic;
+  padding: 10px 0;
+}
+
 .fat-finger{
   /*utility class to increase the target size of a link*/
   min-width: 30px;
