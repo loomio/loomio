@@ -6,20 +6,20 @@
   .modal-body
     %form{name: 'invitableForm'}
       %h4{translate: 'common.group'}
-      %select#invitable-group.form-control{ng-model: 'invitableForm.group', ng-required: true, ng-options: 'group as group.fullName() for group in availableGroups()'}
+      %select.form-control{ng-model: 'invitableForm.group', ng-required: true, ng-options: 'group as group.fullName() for group in availableGroups()'}
       .wrap{ng-if: 'invitableForm.group'}
         %h4{translate: 'invitation.instructions'}
-        %input.form-control#invitable-email{type: 'email', ng-model: 'invitableForm.fragment', typeahead: 'invitable for invitable in getInvitables($viewValue)', typeahead-template-url: 'generated/components/group_page/invitable_menu.html', typeahead-on-select: 'addInvitation($item)', typeahead-wait-ms: '300'}
-    %form{name: 'invitationForm', ng-submit: 'submit()'}
-      .current-invitations{ng-show: 'hasInvitations()'}
-        %h4 {{ 'invitation.to' | translate }}:
-        .current-invitations{ng-repeat: 'invitation in invitations'}
-          %span {{::invitation.name}}
-          %span{ng-if: 'invitation.subtitle'} ({{::invitation.subtitle}})
+        %input.form-control{type: 'text', ng-model: 'invitableForm.fragment', typeahead: 'invitable for invitable in getInvitables($viewValue)', typeahead-template-url: 'generated/components/group_page/invitable_menu.html', typeahead-on-select: 'addInvitation($item)', typeahead-wait-ms: '300'}
+        %input.hidden.form-control{type: 'email', ng-model: 'invitableForm.fragment'}
+    %form{name: 'invitationForm', ng-submit: 'submit()', ng-show: 'hasInvitations()'}
+      %h4 {{ 'invitation.to' | translate }}:
+      .current-invitations{ng-repeat: 'invitation in invitations'}
+        %span {{::invitation.name}}
+        %span{ng-if: 'invitation.subtitle'} ({{::invitation.subtitle}})
 
-        %h4{translate: 'invitation.invitation_message'}
-        %textarea.form-control{ng-model: 'invitationForm.message'}
+      %h4{translate: 'invitation.invitation_message'}
+      %textarea.form-control{ng-model: 'invitationForm.message'}
 
   .modal-footer
-    %button.btn.btn-primary.cuke-group-invitation-submit{type: 'submit', ng-attr-disabled: '!hasInvitations()', translate: 'invitation.send_invite', translate-value-count: '{{invitationsCount()}}'}
+    %button.btn.btn-primary.cuke-group-invitation-submit{type: 'submit', ng-show: 'hasInvitations()', translate: 'invitation.send_invite', translate-value-count: '{{invitationsCount()}}'}
     %button.btn.btn-warning{ng-click: 'cancel($event)', translate: 'common.action.cancel'}
