@@ -21,7 +21,10 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
 
     membershipFor: (group) ->
       _.first @recordStore.memberships
-                          .where(groupId: group.id, userId: @id)
+                          .collection.chain()
+                          .find(groupId: group.id)
+                          .find(userId: @id).data()
+
     memberships: ->
       @membershipsView.data()
 

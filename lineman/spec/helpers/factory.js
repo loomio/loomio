@@ -78,6 +78,11 @@ window.useFactory = function() {
 
     events: {
 
+    },
+
+    contacts: {
+      name: 'Wop Van Gool',
+      email: 'wop@vangool.com'
     }
   }
 }

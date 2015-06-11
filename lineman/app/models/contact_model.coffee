@@ -1,4 +1,4 @@
 angular.module('loomioApp').factory 'ContactModel', (BaseModel) ->
-  class ContactMessageModel extends BaseModel
+  class ContactModal extends BaseModel
     @singular: 'contact'
     @plural: 'contacts'

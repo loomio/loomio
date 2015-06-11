@@ -1,7 +1,9 @@
-angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $modalInstance, group, InvitationsClient, Records, CurrentUser) ->
+angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $modalInstance, $translate, group, InvitationsClient, Records, CurrentUser) ->
   $scope.invitableForm =
     group: group
     fragment: ''
+  $scope.invitationForm =
+    message: $translate 'invitation_form.default_message'
   $scope.invitations = []
 
   invitationsClient = new InvitationsClient()
@@ -10,23 +12,22 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
     $scope.invitations.length > 0
 
   $scope.invitationsCount = ->
-    _.reduce $scope.invitations, ((invitation, total) -> total + invitiation.count), 0
+    _.reduce $scope.invitations, ((total, invitation) -> total + (invitation.count or 1)), 0
 
   $scope.invitables = ->
     invitables = []
-    invitables.push $scope.invitableEmail() if $scope.fragmentIsValidEmail()
     invitables.push $scope.invitableGroups()
     invitables.push $scope.invitableUsers()
     invitables.push $scope.invitableContacts()
+    invitables.push $scope.invitableEmail() if $scope.fragmentIsValidEmail()
     _.flatten invitables
 
   $scope.fragmentIsValidEmail = ->
-    $scope.invitableForm.fragment.$valid
+    $scope.invitableForm.$valid
 
   $scope.invitableEmail = ->
     name: "<#{$scope.invitableForm.fragment}>"
-    type: "Email"
-    email: $scope.invitableForm.fragment
+    subtitle: $scope.invitableForm.fragment
 
   $scope.invitableGroups = ->
     groups = _.filter $scope.availableGroups(), (group) ->
@@ -50,7 +51,10 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
       image:    user.avatarUrl
 
   $scope.invitableContacts = ->
-    _.map CurrentUser.contacts(), (contact) ->
+    contacts = _.filter CurrentUser.contacts(), (contact) ->
+      matchesFragment(contact.name, contact.email)
+
+    _.map contacts, (contact) ->
       name:     contact.name
       subtitle: "<#{contact.email}>"
       image:    contact.avatarUrl
@@ -78,7 +82,7 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
   invitationsParams = ->
     invitations: $scope.invitations
     group_id: $scope.invitableForm.group.id
-    message: $scope.message
+    message: $scope.invitationForm.message
 
   $scope.cancel = ($event) ->
     $event.preventDefault()
@@ -95,3 +99,4 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
     $scope.isDisabled = false
     $scope.errorMessages = error.error_messages
 
+  return

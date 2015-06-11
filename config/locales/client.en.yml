@@ -340,6 +340,7 @@ en:
     invitation_message: 'Invitation Message'
     send_invite: 'Send {{count}} invites'
     to: 'to'
+    default_message: "Hey there, come make decisions with us! We're using a collaborative decision-making tool called Loomio"
 
   memberships_page:
     members: 'Members'

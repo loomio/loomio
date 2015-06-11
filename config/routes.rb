@@ -48,7 +48,6 @@ Loomio::Application.routes.draw do
       patch :make_admin, on: :member
       patch :remove_admin, on: :member
     end
-    resources :invitables, only: :index
     resources :invitations, only: :create
     resources :events, only: :index
 
