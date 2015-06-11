@@ -61,7 +61,6 @@ cs:
     group_already_setup: "Skupina, kterou se snažíte vytvořit, už existuje."
     passwords_did_not_match: Heslo se neshoduje s potvrzením
     proposal_already_exists: V této diskuzi už je otevřený návrh.
-    username_cannot_contain_whitespace: Uživatelské jméno nesmí obsahovat mezery
     user_with_email_address_already_in_group: Uživatel s touto emailovou adresou už patří do této skupiny.
     you_have_already_requested_membership: Už jste zažádal(a) o členství v této skupině.
     you_are_already_a_member_of_this_group: Už jste členem této skupiny.
@@ -261,8 +260,6 @@ cs:
     email_error: Neplatná e-mailová adresa.
     group_name: Název skupiny
     group_name_error: Je požadován název skupiny
-    payment: Platba
-    payment_error: "Prosím, vyberte jednu z možností:"
     success:
       header: "Jste téměř u konce! Zkontrolujte si email."
       email_not_arrived: E-mail nebyl doručen?

@@ -73,7 +73,6 @@ es:
     group_already_setup: El grupo que estás tratando de configurar ya existe.
     passwords_did_not_match: Las contraseñas no coinciden
     proposal_already_exists: Ya existe una propuesta abierta en esta discusión.
-    username_cannot_contain_whitespace: El nombre de usuario no puede contener espacios
     user_with_email_address_already_in_group: Un usuario con ese correo electrónico ya es miembro de este grupo.
     you_have_already_requested_membership: Ya has solicitado unirte a este grupo.
     you_are_already_a_member_of_this_group: Ya eres miembro de este grupo.
@@ -282,10 +281,6 @@ es:
     email_error: No es una dirección de correo electrónico valida.
     group_name: Nombre del grupo
     group_name_error: "Se requiere el nombre del grupo. "
-    payment: Pago
-    payment_error: "Por favor selecciona una opción: "
-    subscription_html: "<strong>Suscripción</strong> - 30 días de prueba gratis. Si a tu grupo le encanta Loomio puedes usarlo por solo $1 por miembro por mes."
-    donation_html: "<strong>Donación</strong> - Si no puedes pagar una suscripción regular, ocasionalmente le pediremos a tu grupo por una donación voluntaria. "
     terms_html: "Al empiezas un grupo, aceptas los <a href='%{link}' target='_blank'>términos de servicio</a> de Loomio."
     success:
       header: "¡Ya casi has terminado! Revisa tu correo electrónico. "
@@ -665,9 +660,7 @@ es:
     vote: Puedes cambiar tu posición en cualquier momento
   pricing_page:
     header: Precio
-    in_development_html: "Estamos desarrollando un modelo de pago que esta en linea con nuestra misión social: <strong>Facilitar, para quien sea y donde sea, la participación en la toma de decisiones que les afecten</strong>."
     loomio_for_organisations: "Loomio para organizaciones "
-    organisations_deal_html: "Si utilizas Loomio en una empresa, organización formal o espacio laboral, te sera cobrado una suscripción mensual de $1 por persona luego de <strong>30 días de prueba gratis</strong>."
     loomio_for_communities: "Loomio para comunidades "
     communities_deal: "El dinero nunca sera una barrera para personas usando Loomio para hacer mejoras en sus comunidades. Si tu grupo no tiene presupuesto para pagar el software, no tienes que pagar la suscripción. Sin embrago, les pediremos ocasionalmente, a los miembros de tu grupo una donación voluntaria."
   contribution:

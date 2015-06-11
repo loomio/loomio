@@ -147,8 +147,6 @@ ga-IE:
     name_error: Tá ainm de dhíth anseo
     email: Do sheoladh ríomhphoist
     group_name: Ainm na baiclí
-    payment: Íocaíocht
-    payment_error: "Déan rogha le do thoil:"
     success:
       header: "Tá beagnach críochnaithe agat! Féach do ríomhphoist."
       email_not_arrived: Nár bhfuair tú an ríomhphost?

@@ -111,6 +111,11 @@ en:
       comments: 'Comments'
       no_results: 'No results found'
 
+  start_menu:
+    start_group: 'Start Group'
+    start_thread: 'Start Thread'
+    invite_people: 'Invite People'
+
   notifications:
     header: "Notifications"
     new_discussion: "<strong>{{name}}</strong> started a discussion <strong>{{discussion}}</strong>"

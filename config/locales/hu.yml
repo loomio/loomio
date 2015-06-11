@@ -73,7 +73,6 @@ hu:
     group_already_setup: Már van ilyen csoport.
     passwords_did_not_match: A két jelszó nem azonos
     proposal_already_exists: Ebben a témában már van aktív javaslat.
-    username_cannot_contain_whitespace: A felhasználónév nem tartalmazhat szóközt
     user_with_email_address_already_in_group: Az evvel az e-mail címmel rendelkező felhasználó már tagja ennek a csoportnak.
     you_have_already_requested_membership: Már kérted a tagságot ebbe a csoportba.
     you_are_already_a_member_of_this_group: Már tagja vagy ennek a csoportnak.
@@ -282,10 +281,6 @@ hu:
     email_error: Hibás email cím.
     group_name: Csoport neve
     group_name_error: Csoportnév kötelező
-    payment: Fizetés
-    payment_error: "Válassz egy lehetőséget:"
-    subscription_html: "<strong>Előfizetés</strong> - 30 napig ingyenes. Ha a csoportodnak tetszik a Loomio, használhatod tagonként havonta mindössze 1$-ért."
-    donation_html: "<strong>Adomány</strong> - ha nem tudod fizetni a normál  előfizetési díjat, alkalmanként önkéntes adományozásra fogjuk kérni csoportod tagjait."
     terms_html: "Csoportod indításával elfogadod a Loomio <a href='%{link}' target='_blank'>szolgáltatási feltételeit</a>."
     success:
       header: "Mindjárt kész! Ellenőrizd az e-mailed."

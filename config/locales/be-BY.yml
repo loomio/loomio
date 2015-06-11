@@ -5,7 +5,16 @@ be-BY:
     group_volume_description: "Гучнасць кіруе колькасцю лістоў, якія вы атрымліваеце ад групы. Усталяваць гучнасць для ўсіх сваіх груп:"
     to_change_one_group: "Каб змяніць гучнасць канкрэтнай групы, зайдзіце на яе старонку."
     discussion_activity: "Змяняць узровень гучнасці абмеркаванняў, калі я ўдзельнічаю"
+    discussion_activity_description: "Пры ўдзеле ў абмеркаванні, яе гучнасць падымецца да \"Гучнай\", то бок усе далейшыя падзеі будуць дасылацца вам на пошту."
+    yesterday_on_loomio: Дасылаць справаздачу па падзеях кожны дзень
+    yesterday_on_loomio_description: "Кожны дзень у 6:00 дасылаць ліст з непрачынатынымі ўчорашнімі падзеямі. Гэта выдатны спосаб сачыць за дзейнасцю груп, які паказвае ўсе дзеянне, што не \"без гука\"."
+    email_when_mentioned: "Дасылаць ліст, калі хто-небудзь мяне @узгадае"
+    email_when_mentioned_description: "Калі хтосці хоча прыцягнуць вашу ўвагу, яны @узгадаюць вас. Мы раім не выкллючаць гэту опцыю, каб атрымліваць лісты, калі гэта адбудзецца."
+    proposal_closing_soon: "Дасылаць ліст, калі прапанова закрываецца"
+    proposal_closing_soon_description: "За 24 гадзіны да закрыцця прапановы, у незалежнасці ад налад гучнасці, вы атрымаеце ліст з апошняй інфармацыяй пра прапанову."
     submit: Абнавіць налады
+    no_change: Без зменаў
+    no_change_description: Пакінуць налады гучнасці групы як ёсць.
   explore:
     header: Знайсці публічныя групы
   activerecord:
@@ -64,6 +73,7 @@ be-BY:
     group_already_setup: "Група, якую вы спрабуеце распачаць, ужо існуе."
     passwords_did_not_match: Паролі адрозніваюцца
     proposal_already_exists: У гэтым абмеркаванні ўжо ёсць адкрытая прапанова.
+    username_must_be_alphanumeric: Імя карыстальніка можа змяшчаць толькі малыя літары і лічбы.
     user_with_email_address_already_in_group: Карыстальнік з такім паштовым адрасам ўжо ўдзельнічае ў групе.
     you_have_already_requested_membership: Вы ўжо запытвалі ўдзел у гэтай групе.
     you_are_already_a_member_of_this_group: "Вы ўжо з'яўляецеся ўдзельнікам гэтай групы."
@@ -125,6 +135,7 @@ be-BY:
     added_to_group: "Вы былі дададзены да %{which_group}."
     close_date_changed: Бліжэйшая дата  паспяхова змененая.
     discussion_created: Абмеркаванне паспяхова створана.
+    discussion_updated: Абмеркаванне паспяхова абноўлена.
     discussion_deleted: Абмеркаванне паспяхова выдалена.
     discussion_moved: "Абмеркаванне паспяхова перанесена да %{group_name}"
     emails_sending: Адсылка email.
@@ -229,6 +240,7 @@ be-BY:
     new_vote: "%{position} з прапановай"
     new_comment: высказаўся ў абмеркаванні
     comment_liked: упадабаў ваш каментар у абмеркаванні
+    comment_replied_to: адказаў на ваш каментар у
     user_mentioned: узгадаў Вас у сваім каментары
     membership_requested: "запытаў чалецтва ў "
     membership_request_approved: зацвердзіў ваш запыт на далучэнне
@@ -292,10 +304,21 @@ be-BY:
       emails: Вам больш не будуць прыходзіць лісты з Loomio.
   start_group_form:
     header: Стварыць новую групу
+    form_error: Некаторая інфармацыя напісана не поўна ці памылкова
     name: Вашае імя
+    name_error: Напішыце імя
+    email: Ваш email
+    email_error: Нядзейсны email адрас.
     group_name: Назва групы
+    group_name_error: Напішыце назву групы
+    pricing_html: "Праз 30 дзён, пасля таго, як вы пабачыце, як Loomio паляпшае прыняцце вырашэнняў для вашай групы, мы папытаем вас абраць <a href='%{link}' target='_blank'>тарыфны план</a> які вам падыходзіць."
+    terms_html: "Арганізоўваючы групу, вы згаджаецеся з <a href='%{link}' target='_blank'>умовамі выкарыстання</a> Loomio."
     success:
       header: "Вы амаль што скончылі! Праверце сваю пошту."
+      email_delivered: "Мы даслалі ліст на адрас %{email}. Калі ласка, прайдзіце па спасылцы з ліста, каб наладзіць вашу новую групу."
+      email_not_arrived: Ліст не прыйшоў?
+      please_hold: "Калі ласка, дайце лісту 5 хвілін дайсці да вас і праверце папку са спамам."
+    start_making_decisions: "Каб пачаць разам прымаць рашэнні на Loomio - бясплатна стварыце групу:"
   group_form:
     name: Назва групы
     description: Апісанне
@@ -410,6 +433,7 @@ be-BY:
   approved_by_person: "Зацверджана %{person}"
   ignored_by_perosn: "Праігнаравана %{person}"
   join_group_btn: Далучыцца да групы
+  membership_by_invitation_only: Удзел у групе толькі па запрашэнням
   you_have_joined_group: "Вы далучыліся да %{group_name}"
   confirm_approve_membership_request: "Вы ўпэўнены, што хочаце дадаць %{which_user} да групы?"
   cancel_membership_request: Адмяніць запыт
@@ -448,6 +472,11 @@ be-BY:
       following_details: "Вам паведамяць пра любую дзейнасць у групе. "
       not_following_details: "Вам паведамяць пра дзейнасць у абмеркаваннях, у якіх вы ўдзельнічаце. "
   networks:
+    threads_header: "усе публічныя стужкі ў гэтым аб'яднанні"
+    groups_header: "усе %{count} групы ў гэтым аб'яднанні"
+    members_count: "Удзельнікаў: %{count}"
+    membership_requests_header: "Запыт чалецтва да %{network}"
+    join_header: "Далучыць сваю групу да аб'яднання"
     previous_requests: Папярэднія заяўкі
     approve: Пацвердзіць
     threads: Абмеркаванні
@@ -938,6 +967,7 @@ be-BY:
   about_loomio: Аб Loomio
   ago: "%{quantity_of_time} таму"
   approve: Пацвердзіць
+  attachments: "Дадаткі:"
   author: Аўтар
   back: Назад
   cancel: Адмяніць
@@ -994,6 +1024,7 @@ be-BY:
   start_a_group: Стварыць групу
   starting: Ствараем
   subject: Тэма
+  tos_html: "Увайшоўшы, вы пагаджаецеся з <a href='%{link_path}' target='_blank'>умовамі выкарыстання</a> Loomio"
   thanks: "Дзякуй!"
   unlike: Не падабаецца
   time_until_close: "%{quantity_of_time} да закрыцця"
@@ -1002,8 +1033,19 @@ be-BY:
   yahoo: Yahoo
   google: Google
   persona: Persona
+  log_in_with_third_party: "Ці ўвайдзіце з дапамогай уліковага запісу іншага сервіса:"
+  log_in_with_google: Увайсці праз Google
+  log_in_with_facebook: Увайсці праз Facebook
+  log_in_with_persona: Увайсці праз Persona
+  log_in_with_twitter: Увайсці праз Twitter
+  sign_up_with_third_party: "Ці зарэгіструйцеся з дапамогай уліковага запісу іншага сервіса:"
+  sign_up_with_google: Рэгістрацыя праз Google
+  sign_up_with_facebook: Рэгістрацыя праз Facebook
+  sign_up_with_persona: Рэгістрацыя праз Persona
+  sign_up_with_twitter: Рэгістрацыя праз Twitter
   common:
     profile: Профіль
+    welcome_back: "Сардэчна вітаем!"
     email_settings: Налады email
     markdown_help_tooltip: Даведайцеся асновы фарматавання тэксту з дапамогай Markdown
     settings: Налады
@@ -1015,6 +1057,7 @@ be-BY:
     not_following: Не сачу
     back_to_discussion: Назад да абмеркавання
     edited: Адрэдагавана
+    get_started: Пачаць
     groups: Групы
     select_error: "Калі ласка, абярыце варыянт"
     today: Сёння
@@ -1097,6 +1140,7 @@ be-BY:
     online_community: Анлайн супольнасць
     religious_group: Рэлігійная/Духоўная
     event: Падзея
+    open_source_software: Свабоднае і адкрытае праграмнае забеспячэнне
     political_initiative: Палітычная ініцыятыва
     social_enterprise: Сацыяльнае прадпрыемства
     social_justice: Сацыяльная справядлівасць
