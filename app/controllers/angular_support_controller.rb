@@ -1,29 +1,6 @@
 class AngularSupportController < ApplicationController
   around_filter :ensure_testing_environment
 
-  USER_PARAMS = {name: 'Patrick Swayze',
-                 email: 'patrick_swayze@loomio.org',
-                 username: 'patrickswayze',
-                 password: 'gh0stmovie',
-                 angular_ui_enabled: true}
-
-  COMMENTER_PARAMS = {name: 'Jennifer Grey',
-                      email: 'jennifer_grey@loomio.org',
-                      username: 'jennifergrey',
-                      password: 'gh0stmovie',
-                      angular_ui_enabled: true}
-
-  INVITEE_PARAMS = {name: 'Max Von Sydow',
-                    email: 'max@loomio.org',
-                    password: 'gh0stmovie',
-                    username: 'mingthemerciless',
-                    angular_ui_enabled: true}
-
-  GROUP_NAME = 'Dirty Dancing Shoes'
-  OTHER_GROUP_NAME = 'Wendigo Winnebagos'
-
-  DISCUSSION_TITLE = 'What star sign are you?'
-
   def discussion_url(discussion)
     "http://localhost:8000/d/#{discussion.key}/"
   end
@@ -32,82 +9,69 @@ class AngularSupportController < ApplicationController
     "http://localhost:8000/g/#{group.key}/"
   end
 
-  def connect_private_pub
+  def setup_discussion
+    cleanup_database
+    test_discussion
+    sign_in patrick
+    redirect_to discussion_url(test_discussion)
   end
 
-  def setup_for_invite_people
-    reset_database
+  def setup_proposal
+    cleanup_database
     sign_in patrick
-    testing_group.update! members_can_add_members: true
-    introduce_patrick_to_max
+    test_proposal
 
-    redirect_to group_url(testing_group)
+    redirect_to discussion_url(test_discussion)
   end
 
-  def setup_for_add_comment
-    reset_database
+  def setup_closed_proposal
+    cleanup_database
     sign_in patrick
-    redirect_to discussion_url(testing_discussion)
+    test_proposal
+    MotionService.close(test_proposal)
+    redirect_to discussion_url(test_discussion)
   end
 
-  def setup_for_like_comment
-    reset_database
+  def setup_closed_proposal_with_outcome
+    cleanup_database
     sign_in patrick
-
-
-    CommentService.create(comment: Comment.new(author: jennifer,
-                                      discussion: testing_discussion,
-                                      body: 'Hi Patrick, lets go dancing'), actor: jennifer)
-
-    redirect_to discussion_url(testing_discussion)
-  end
-
-  def setup_for_vote_on_proposal
-    reset_database
-    sign_in patrick
-
-    MotionService.create(motion: Motion.new(name: 'lets go hiking',
-                                            closing_at: 3.days.from_now,
-                                            discussion: testing_discussion),
-                        actor: patrick)
-
-
-    redirect_to discussion_url(testing_discussion)
+    MotionService.close(test_proposal)
+    MotionService.create_outcome(motion: test_proposal,
+                                 params: {outcome: 'Were going hiking tomorrow'},
+                                 actor: patrick)
+    redirect_to discussion_url(test_discussion)
   end
 
   def setup_all_notifications
-    reset_database
+    cleanup_database
     sign_in patrick
 
     #'comment_liked'
-    comment = Comment.new(discussion: testing_discussion, body: 'I\'m rather likeable')
+    comment = Comment.new(discussion: test_discussion, body: 'I\'m rather likeable')
     new_comment_event = CommentService.create(comment: comment, actor: patrick)
     comment_liked_event = CommentService.like(comment: comment, actor: jennifer)
 
     #'motion_closing_soon'
-    motion = Motion.new(name: 'lets go hiking',
-                        closing_at: 1.days.from_now,
-                        discussion: testing_discussion)
-    motion_created_event = MotionService.create(motion: motion,
+    motion_created_event = MotionService.create(motion: test_proposal,
                                                 actor: jennifer)
-    closing_soon_event = Events::MotionClosingSoon.publish!(motion)
+    closing_soon_event = Events::MotionClosingSoon.publish!(test_proposal)
 
     #'motion_outcome_created'
-    outcome_event = MotionService.create_outcome(motion: motion,
+    outcome_event = MotionService.create_outcome(motion: test_proposal,
                                                  params: {outcome: 'Were going hiking tomorrow'},
                                                  actor: jennifer)
 
     #'comment_replied_to'
-    reply_comment = Comment.new(discussion: testing_discussion,
+    reply_comment = Comment.new(discussion: test_discussion,
                                 body: 'I agree with you', parent: comment)
     CommentService.create(comment: reply_comment, actor: jennifer)
 
     #'user_mentioned'
-    comment = Comment.new(discussion: testing_discussion, body: 'hey @patrickswayze you look great in that tuxeido')
+    comment = Comment.new(discussion: test_discussion, body: 'hey @patrickswayze you look great in that tuxeido')
     CommentService.create(comment: comment, actor: jennifer)
 
     #'membership_requested',
-    membership_request = MembershipRequest.new(name: 'The Ghost', email: 'boooooo@invisible.co', group: testing_group)
+    membership_request = MembershipRequest.new(name: 'The Ghost', email: 'boooooo@invisible.co', group: test_group)
     event = MembershipRequestService.create(membership_request: membership_request, actor: LoggedOutUser.new)
 
     #'membership_request_approved',
@@ -123,7 +87,7 @@ class AngularSupportController < ApplicationController
     GroupService.create(group: another_group, actor: jennifer)
     MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer, message: 'join in')
 
-    redirect_to discussion_url(testing_discussion)
+    redirect_to discussion_url(test_discussion)
   end
 
   private
@@ -136,50 +100,60 @@ class AngularSupportController < ApplicationController
   end
 
   def patrick
-    User.find_by_email USER_PARAMS[:email]
+    @patrick ||= User.create!(name: 'Patrick Swayze',
+                              email: 'patrick_swayze@loomio.org',
+                              username: 'patrickswayze',
+                              password: 'gh0stmovie',
+                              angular_ui_enabled: true)
   end
 
   def jennifer
-    User.find_by_email COMMENTER_PARAMS[:email]
+    @jennifer ||= User.create!(name: 'Jennifer Grey',
+                               email: 'jennifer_grey@loomio.org',
+                               username: 'jennifergrey',
+                               password: 'gh0stmovie',
+                               angular_ui_enabled: true)
   end
 
   def max
-    User.find_by_email INVITEE_PARAMS[:email]
+    @max ||= User.create!(name: 'Max Von Sydow',
+                          email: 'max@loomio.org',
+                          password: 'gh0stmovie',
+                          username: 'mingthemerciless',
+                          angular_ui_enabled: true)
   end
 
-  def testing_group
-    Group.find_by_name GROUP_NAME
+  def test_group
+    unless @test_group
+      @test_group = Group.create!(name: 'Dirty Dancing Shoes',
+                                  membership_granted_upon: 'approval',
+                                  is_visible_to_public: true,
+                                  is_visible_to_parent_members: false)
+      @test_group.add_admin! patrick
+      @test_group.add_member! jennifer
+    end
+    @test_group
   end
 
-  def other_testing_group
-    Group.find_by_name OTHER_GROUP_NAME
+  def test_discussion
+    unless @test_discussion
+      @test_discussion = Discussion.create!(title: 'What star sign are you?', group: test_group, author: jennifer, private: true)
+    end
+    @test_discussion
   end
 
-  def testing_discussion
-    testing_group.discussions.first
+  def test_proposal
+    unless @test_proposal
+      @test_proposal = Motion.new(name: 'lets go hiking',
+                                closing_at: 3.days.from_now,
+                                discussion: test_discussion)
+      MotionService.create(motion: @test_proposal, actor: patrick)
+    end
+    @test_proposal
   end
 
-  def introduce_patrick_to_max
-    group = Group.create! name: OTHER_GROUP_NAME
-    group.add_member! patrick
-    group.add_member! max
-  end
-
-  def reset_database
+  def cleanup_database
     User.delete_all
     Group.delete_all
-
-    patrick = User.create!(USER_PARAMS)
-    jennifer = User.create!(COMMENTER_PARAMS)
-    max = User.create!(INVITEE_PARAMS)
-
-    group = Group.create!(name: GROUP_NAME,
-                          membership_granted_upon: 'approval',
-                          is_visible_to_public: true,
-                          is_visible_to_parent_members: false)
-    group.add_admin! patrick
-    group.add_member! jennifer
-
-    Discussion.create!(title: DISCUSSION_TITLE, group: group, author: jennifer, private: true)
   end
 end

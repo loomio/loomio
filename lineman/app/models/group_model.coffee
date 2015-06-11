@@ -45,6 +45,9 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       adminIds = _.map(@adminMemberships(), (membership) -> membership.userId)
       @recordStore.users.find(id: {$in: adminIds})
 
+    coordinatorsIncludes: (user) ->
+      _.some @recordStore.memberships.where(groupId: @id, userId: user.id)
+
     memberIds: ->
       _.map @memberships(), (membership) -> membership.userId
 
@@ -93,4 +96,5 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
         '/img/default-cover-photo.png'
 
     archive: ->
+      # is this broken (group null right?)
       @restfulClient.postMember(group.key, 'archive')

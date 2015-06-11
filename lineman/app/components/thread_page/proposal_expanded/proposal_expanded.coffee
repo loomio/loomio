@@ -36,3 +36,7 @@ angular.module('loomioApp').directive 'proposalExpanded', ->
 
     $scope.applyVoteToggle = ->
       $scope.showVotes = !$scope.showVotes
+
+    $scope.showOutcomePanel = ->
+      currentUser.canCreateOutcomeFor($scope.proposal) or
+      $scope.proposal.hasOutcome()
