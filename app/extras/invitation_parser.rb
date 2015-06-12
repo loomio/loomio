@@ -15,7 +15,7 @@ InvitationParser = Struct.new(:invitations) do
   end
 
   def invitations_by_type(type, field)
-    invitations.select { |invitation| invitation[:type] == type.to_s }
+    invitations.select { |invitation| invitation[:type].to_s == type.to_s }
                .map    { |invitation| invitation[field] }
   end
 
