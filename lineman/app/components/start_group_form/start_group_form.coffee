@@ -5,8 +5,8 @@ angular.module('loomioApp').factory 'StartGroupForm', ->
 
     $scope.submit = ->
       $scope.group.save().then (response) ->
-        $location.path LmoUrlService.group Records.groups.find(response.groups[0].id)
         $scope.$close()
+        $location.path LmoUrlService.group Records.groups.find(response.groups[0].id)
         $rootScope.$broadcast 'newGroupCreated'
       , ->
         $rootScope.$broadcast 'pageError', 'cantCreateGroup', $scope.group

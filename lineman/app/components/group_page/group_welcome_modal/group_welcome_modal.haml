@@ -1,0 +1,17 @@
+.group-welcome-modal
+  .modal-header
+    %button{type: 'button', class: 'close', ng-click: '$close()'}
+      %span{aria-hidden: true} &times;
+      %span.sr-only{translate: 'common.action.cancel'}
+    %h1.lmo-h1.modal-title{translate: 'group_welcome_modal.heading'}
+
+  .modal-body
+    %p{translate: 'group_welcome_modal.instructions'}
+    %p{translate: 'group_welcome_modal.what_next'}
+    %ul
+      %li{translate: 'group_welcome_modal.first_step'}
+      %li{translate: 'group_welcome_modal.second_step'}
+      %li{translate: 'group_welcome_modal.third_step'}
+
+  .modal-footer
+    %button.btn.btn-primary{type: 'button', ng-click: '$close()', translate: 'group_welcome_modal.ok_got_it'}
