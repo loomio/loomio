@@ -10,7 +10,7 @@ describe API::InvitationsController do
   let(:user_invitable)    { { id: another_user.id, type: :user } }
   let(:group_invitable)   { { id: another_group.id, type: :group } }
   let(:contact_invitable) { { email: contact.email, type: :contact } }
-  let(:email_invitable)   { { email: '', type: :email } }
+  let(:email_invitable)   { { email: 'mail@gmail.com', type: :email } }
 
   before do
     stub_request(:post, "http://localhost:9292/faye").to_return(status: 200)

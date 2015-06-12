@@ -20,19 +20,23 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
     invitables.push $scope.invitableUsers()
     invitables.push $scope.invitableContacts()
     invitables.push $scope.invitableEmail() if $scope.fragmentIsValidEmail()
-    _.take _.flatten(invitables), 3
+    _.take _.flatten(invitables), 10
 
   $scope.fragmentIsValidEmail = ->
     $scope.invitableForm.$valid
 
   $scope.invitableEmail = ->
+    type: 'email'
     name: "<#{$scope.invitableForm.fragment}>"
     subtitle: $scope.invitableForm.fragment
+    email: $scope.invitableForm.fragment
 
   $scope.invitableGroups = ->
     groups = _.filter $scope.availableGroups(), (group) ->
       group.id != $scope.invitableForm.group.id and matchesFragment(group.name)
     _.map groups, (group) ->
+      id:       group.id
+      type:     'group'
       name:     group.name
       subtitle: "Add all #{group.membershipsCount} members"
       image:    group.logoUrl()
@@ -46,6 +50,8 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
       !user.membershipFor($scope.invitableForm.group) and matchesFragment(user.name, user.username)
 
     _.map users, (user) ->
+      id:       user.id
+      type:     'user'
       name:     user.name
       subtitle: "@#{user.username}"
       image:    user.avatarUrl
@@ -55,7 +61,9 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
       matchesFragment(contact.name, contact.email)
 
     _.map contacts, (contact) ->
+      type:     'contact'
       name:     contact.name
+      email:    contact.email
       subtitle: "<#{contact.email}>"
       image:    contact.avatarUrl
 
@@ -63,9 +71,11 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
     _.some _.map fields, (field) ->
       ~field.search new RegExp($scope.invitableForm.fragment, 'i')
 
-  $scope.getInvitables = (fragment) ->
-    Records.contacts.fetchInvitables($scope.invitableForm)
-    Records.users.fetchInvitables($scope.invitableForm)
+  $scope.getInvitables = ->
+    fragment = $scope.invitableForm.fragment
+    groupKey = $scope.invitableForm.group.key
+    Records.contacts.fetchInvitables(fragment, groupKey).then $scope.invitables
+    Records.memberships.fetchInvitables(fragment, groupKey).then $scope.invitables
     $scope.invitables()
 
   $scope.availableGroups = ->
