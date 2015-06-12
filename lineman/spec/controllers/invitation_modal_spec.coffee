@@ -35,9 +35,9 @@ describe 'InvitationsModalController', ->
       @scope.invitations.push { count: 5 }
       expect(@scope.invitationsCount()).toBe(6)
 
-    it 'displays a maximum of 3 options at a time', ->
-      @factory.create 'contacts', user_id: @currentUser.id for i in [0..9]
-      expect(@scope.invitables().length).toBe(3)
+    it 'displays a maximum of 10 options at a time', ->
+      @factory.create 'contacts', user_id: @currentUser.id for i in [0..13]
+      expect(@scope.invitables().length).toBe(10)
 
   describe 'contacts', ->
     beforeEach ->
@@ -46,7 +46,6 @@ describe 'InvitationsModalController', ->
     it 'can find a contact with no search query', ->
       expect(@scope.invitables().length).toBe(1)
       expect(@scope.invitables()[0].name).toBe 'RickDazo'
-
 
     it 'displays a contact as an invitable if it matches the search query by name', ->
       @scope.invitableForm.fragment = 'dazo'
@@ -65,6 +64,10 @@ describe 'InvitationsModalController', ->
     it 'counts a contact as 1 invitation', ->
       @scope.addInvitation(@scope.invitables()[0])
       expect(@scope.invitationsCount()).toBe(1)
+
+    it 'cannot double add a contact', ->
+      @scope.addInvitation(@scope.invitables()[0])
+      expect(@scope.invitables().length).toBe(0)
 
   describe 'users', ->
     beforeEach ->
@@ -91,8 +94,15 @@ describe 'InvitationsModalController', ->
       expect(@scope.invitables().length).toBe(0)
 
     it 'counts a user as 1 invitation', ->
+      @scope.invitableGroups = -> []
       @scope.addInvitation(@scope.invitables()[0])
       expect(@scope.invitationsCount()).toBe(1)
+
+    it 'cannot double add a user', ->
+      @scope.invitableGroups = -> []
+      @scope.addInvitation(@scope.invitables()[0])
+      @scope.invitableForm.fragment = 'rick'
+      expect(_.pluck(@scope.invitables(), 'name')).not.toContain('RickDazo')
 
   describe 'groups', ->
     beforeEach ->
@@ -120,12 +130,13 @@ describe 'InvitationsModalController', ->
       @scope.addInvitation(@scope.invitables()[0])
       expect(@scope.invitationsCount()).toBe(@someOtherGroup.membershipsCount)
 
-  describe 'email', ->
-    it 'displays an email invitable if the search query is a valid email', ->
-      @scope.invitableForm.fragment = 'dick@razoo.com'
-      expect(@scope.invitables().length).toBe(1)
-      expect(@scope.invitables()[0].name).toBe 'dick@razoo.com'
+    it 'cannot double add a group', ->
+      @scope.addInvitation(@scope.invitables()[0])
+      expect(_.pluck(@scope.invitables(), 'name')).not.toContain('An Extraordinary Carrot')
 
-    it 'does not display an email invitable if the search query is not a valid email', ->
-      @scope.invitableForm.fragment = 'dickrazoo.com'
+  describe 'email', ->
+    it 'cannot double add an email', ->
+      @scope.invitableForm.fragment = 'rickdazo@gmail.com'
+      @scope.addInvitation(@scope.invitables()[0])
+      @scope.invitableForm.fragment = 'rickdazo@gmail.com'
       expect(@scope.invitables().length).toBe(0)

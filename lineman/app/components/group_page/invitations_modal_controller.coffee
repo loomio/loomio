@@ -33,7 +33,10 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
 
   $scope.invitableGroups = ->
     groups = _.filter $scope.availableGroups(), (group) ->
-      group.id != $scope.invitableForm.group.id and matchesFragment(group.name)
+      group.id != $scope.invitableForm.group.id and
+      matchesFragment(group.name) and
+      !existsAlready('group', 'id', group.id)
+
     _.map groups, (group) ->
       id:       group.id
       type:     'group'
@@ -47,7 +50,9 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
     memberIds = _.filter memberIds, (memberId) -> 
       !_.contains $scope.invitableForm.group.memberIds(), memberId
     users = _.filter Records.users.find(memberIds), (user) ->
-      !user.membershipFor($scope.invitableForm.group) and matchesFragment(user.name, user.username)
+      !user.membershipFor($scope.invitableForm.group) and 
+      matchesFragment(user.name, user.username) and
+      !existsAlready('user', 'id', user.id)
 
     _.map users, (user) ->
       id:       user.id
@@ -58,7 +63,8 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
 
   $scope.invitableContacts = ->
     contacts = _.filter CurrentUser.contacts(), (contact) ->
-      matchesFragment(contact.name, contact.email)
+      matchesFragment(contact.name, contact.email) and 
+      !existsAlready('contact', 'email', contact.email)
 
     _.map contacts, (contact) ->
       type:     'contact'
@@ -70,6 +76,10 @@ angular.module('loomioApp').controller 'InvitationsModalController', ($scope, $m
   matchesFragment = (fields...) ->
     _.some _.map fields, (field) ->
       ~field.search new RegExp($scope.invitableForm.fragment, 'i')
+
+  existsAlready = (type, uniqueField, value) ->
+    _.some _.map $scope.invitations, (invitation) ->
+      invitation.type == type and invitation[uniqueField] = value
 
   $scope.getInvitables = ->
     fragment = $scope.invitableForm.fragment
