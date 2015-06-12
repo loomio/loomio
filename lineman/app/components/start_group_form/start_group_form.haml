@@ -1,0 +1,21 @@
+%form.start-group-form{name: 'startGroupForm', ng_submit: 'submit()', ng-disabled: 'group.processing'}
+  .modal-header
+    %button{type: 'button', class: 'close', ng-click: '$close()'}
+      %span{aria-hidden: true} &times;
+      %span.sr-only{translate: 'common.action.cancel'}
+    %h1.lmo-h1.modal-title{translate: 'start_group_form.heading'}
+
+  .modal-body
+    %form_errors{record: 'group'}
+
+    .group-helptext{translate: 'start_group_form.group_helptext'}
+
+    .form-group
+      %label{for: 'group-name', translate: 'start_group_form.name_label'}
+      %input.form-control{ng-model: 'group.name', ng-required: 'true'}
+
+    .group-payment-notice{translate: 'start_group_form.group_payment_reminder'}
+
+  .modal-footer
+    %button.btn.btn-primary{type: 'submit', translate: 'start_group_form.submit'}
+    %button.btn.btn-warning{type: 'button', ng-click: '$close()', translate: 'common.action.cancel'}
