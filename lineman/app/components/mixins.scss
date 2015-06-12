@@ -17,6 +17,16 @@ $main-max-width: 640px;
 $large-max-width: 960px;
 $navbar-height: 45px;
 
+$agree-color: hsl(148, 40, 52);
+$abstain-color: hsl(37, 92, 61);
+$disagree-color: hsl(352, 79, 70);
+$block-color: hsl(7, 68, 49);
+
+$agree-border-color: darken($agree-color, 10%);
+$disagree-border-color: darken($disagree-color, 10%);
+$abstain-border-color: darken($abstain-color, 10%);
+$block-border-color: darken($block-color, 10%);
+
 @mixin fontTiny {
   font-size: 12px;
   line-height: 14px;
@@ -114,7 +124,7 @@ $navbar-height: 45px;
 #turn-off-angular {
   z-index: 100;
   position: fixed;
-  right: 10px;
+  left: 10px;
   bottom: 10px;
   width: 100px;
   background-color: pink

@@ -1,3 +1,50 @@
 .proposal-pie-chart {
-  display: inline-block;
+}
+
+.proposal-pie-chart__legend{
+  @include fontSmall;
+  color: $grey-on-white;
+  padding-top: 16px;
+  padding-left: 32px;
+  td {
+    padding-bottom: 10px;
+  }
+}
+
+.proposal-pie-chart__label{
+  padding-left: 10px;
+}
+
+.proposal-pie-chart__icon{
+  width: 24px;
+  height: 24px;
+  border-width: 1px;
+  border-style: solid;
+  @include roundedCorners;
+}
+
+.proposal-pie-chart__icon--yes{
+  background-color: $agree-color;
+  border-color: $agree-border-color;
+}
+
+.proposal-pie-chart__icon--abstain{
+  background-color: $abstain-color;
+  border-color: $abstain-border-color;
+}
+
+.proposal-pie-chart__icon--no{
+  background-color: $disagree-color;
+  border-color: $disagree-border-color;
+}
+
+.proposal-pie-chart__icon--block{
+  background-color: $block-color;
+  border-color: $block-border-color;
+}
+
+.proposal-pie-chart__participation-statement {
+  margin-top: 10px;
+  @include fontSmall;
+  color: $grey-on-white;
 }

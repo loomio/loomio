@@ -7,44 +7,6 @@
 .vote-form-details{
   font-weight: normal;
 }
-.position-buttons {
-  margin-bottom: 5px;
-}
-.position-button {
-  display: inline-block;
-  width: 60px;
-  height: 60px;
-  background-repeat: no-repeat;
-  border-radius: 8px;
-}
-.vote-form input[type="radio"]:checked+label{
-  @include box-shadow(2px 2px 3px rgba(0,0,0,0.5))
-}
-.position-button--dimmed{
-  opacity: 0.3;
-}
-.position-buttons input {
-  opacity: 0;
-  margin-left: -13px;
-}
-.position-button--yes{
-  background-image: url(/img/green_thumb_button_inv_60.png);
-}
-
-.position-button--no {
-  margin-left: 4px;
-  background-image: url(/img/pink_thumb_button_inv_60.png);
-}
-
-.position-button--abstain {
-  margin-left: 4px;
-  background-image: url(/img/yellow_thumb_button_inv_60.png);
-}
-
-.position-button--block {
-  margin-left: 4px;
-  background-image: url(/img/red_flag_button_inv_60.png);
-}
 
 .your-position-icon-yes {
   background-image: url(/img/green_thumb_30.png);
@@ -60,11 +22,6 @@
 
 .your-position-icon-block {
   background-image: url(/img/red_flag_30.png);
-}
-
-.change-your-vote{
-  @include fontSmall;
-  span{ text-decoration: underline; }
 }
 
 .overlimit {

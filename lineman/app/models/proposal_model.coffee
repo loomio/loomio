@@ -60,6 +60,21 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     uniqueVotes: ->
       _.values @uniqueVotesByUserId()
 
+    numberVoted: ->
+      @uniqueVotes().length
+
+    percentVoted: ->
+      numVoted = @numberVoted()
+      groupSize = @groupSizeWhenVoting()
+      return 0 if numVoted == 0 or groupSize == 0
+      numVoted / groupSize * 100
+
+    groupSizeWhenVoting: ->
+      if @isActive()
+        @group().membersCount
+      else
+        @numberVoted() + parseInt(@didNotVotesCount)
+
     lastVoteByUser: (user) ->
       @uniqueVotesByUserId()[user.id]
 

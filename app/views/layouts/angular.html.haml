@@ -11,6 +11,7 @@
     %navbar
     %ng-outlet{'ng-if' => '!pageError'}
     %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
+    %start_menu
 
     #turn-off-angular{'aria-hidden' => 'true'}
       =link_to 'Turn off angular', '/angular', target: '_self'
@@ -24,6 +25,7 @@
       window.Loomio.currentUserId = #{current_user.id};
       window.Loomio.seedRecords = #{CurrentUserSerializer.new(current_user).to_json}
       window.Loomio.permittedParams = #{PermittedParamsSerializer.new({}).to_json}
+      window.Loomio.hostInfo = #{HostInfoSerializer.new(request).to_json}
 
     = javascript_include_tag lineman_vendorjs_path
     = javascript_include_tag lineman_appjs_path

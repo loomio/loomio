@@ -1,42 +1,23 @@
-angular.module('loomioApp').directive 'voteForm', ->
-  scope: {proposal: '='}
-  restrict: 'E'
+angular.module('loomioApp').factory 'VoteForm', ->
   templateUrl: 'generated/components/thread_page/vote_form/vote_form.html'
-  replace: true
-  controller: ($scope, Records, CurrentUser, FormService, FlashService) ->
+  controller: ($scope, proposal, position, Records, CurrentUser, FlashService) ->
+    $scope.proposal = proposal
     $scope.editing = false
 
     $scope.changeVote = ->
       $scope.editing = true
 
-    $scope.vote = Records.votes.initialize({proposal_id: $scope.proposal.id})
+    $scope.vote = Records.votes.initialize({proposal_id: proposal.id})
+
+    if position
+      $scope.vote.position = position
 
     $scope.submit = ->
       $scope.vote.save().then ->
         FlashService.success 'vote_form.submitted_your_vote'
         $scope.editing = false
-        $scope.vote = Records.votes.initialize({proposal_id: $scope.proposal.id})
+        $scope.vote = Records.votes.initialize({proposal_id: proposal.id})
+        $scope.$close()
 
     $scope.yourLastVote = ->
       $scope.proposal.lastVoteByUser(CurrentUser)
-
-    $scope.cancel = ->
-      $scope.editing = false
-      $scope.vote.position = null
-
-    $scope.positionOtherThan = (position) ->
-      $scope.vote.position? && $scope.vote.position != position
-
-    sortValueForVote = (vote) ->
-      positionValues = {yes: 1, abstain: 2, no: 3, block: 4}
-      if $scope.voteIsMine(vote)
-        0
-      else
-        positionValues[vote.position]
-
-    $scope.curatedVotes = ->
-      _.sortBy $scope.proposal.uniqueVotes(), (vote) ->
-        sortValueForVote(vote)
-
-    $scope.voteIsMine = (vote) ->
-      vote.authorId == CurrentUser.id

@@ -19,7 +19,7 @@ angular.module('loomioApp').factory 'LmoUrlService', ->
     comment: (c) ->
       d = c.discussion()
       @discussion(d) + "#comment-#{c.id}"
-    
+
     discussionPath: (d) ->
       "/d/#{d.key}/#{@stub(d.title)}"
 
@@ -33,11 +33,12 @@ angular.module('loomioApp').factory 'LmoUrlService', ->
         "/g/#{g.key}/#{@stub(g.fullName())}"
 
     groupHost: (g) ->
-      "#{@protocol()}#{@subdomainFor(g)}#{@host()}#{@port()}"
+      #"#{@protocol()}#{@subdomainFor(g)}#{@host()}#{@port()}"
+      ''
 
     protocol: ->
       if @hostInfo().ssl then 'https://' else 'http://'
-    
+
     subdomainFor: (g) ->
       if subdomain = g.organisationSubdomain() or @hostInfo().default_subdomain
         "#{subdomain}."

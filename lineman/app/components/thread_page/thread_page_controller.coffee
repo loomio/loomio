@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, CurrentUser, DiscussionFormService, ScrollService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, CurrentUser, ModalService, DiscussionForm, ScrollService) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
   @performScroll = ->
@@ -45,7 +45,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     $rootScope.$broadcast('showThreadLintel', bool)
 
   @editDiscussion = ->
-    DiscussionFormService.openEditDiscussionModal(@discussion)
+    ModalService.open DiscussionForm, discussion: => @discussion
 
   @showContextMenu = =>
     @canEditDiscussion(@discussion)
