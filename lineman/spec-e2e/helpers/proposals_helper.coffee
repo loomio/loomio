@@ -20,7 +20,7 @@ module.exports = new class ProposalsHelper
     element(By.css('.vote-form__submit-btn')).click()
 
   positionsList: ->
-    element(By.css('.proposal-positions__list'))
+    element(By.css('.proposal-positions-panel__list'))
 
   proposalActionsDropdown: ->
     element(By.css('.proposal-actions-dropdown__btn'))

@@ -1,2 +1,15 @@
-.proposal-pie-chart
-  %canvas{tc-chartjs-pie: '', chart-data: "pieChartData", chart-options: "pieChartOptions", width: 160, height: 160, aria-hidden: 'true'}
+.proposal-pie-chart.media
+  .proposal-pie-chart__pie.media-left
+    %canvas{tc-chartjs-pie: '', chart-data: "pieChartData", chart-options: "pieChartOptions", width: 160, height: 160, aria-hidden: 'true'}
+  .proposal-pie-chart__legend.media-body
+    %label.sr-only{translate: 'proposal_expanded.current_votes'}
+    %table
+      %tbody
+        %tr{ng-repeat: 'position in proposal.positions'}
+          %td
+            .proposal-pie-chart__icon{class: 'proposal-pie-chart__icon--{{position}}'}
+              &nbsp;
+          %td
+            .proposal-pie-chart__label
+              {{ "proposal_position_"+position | translate}} ({{ proposal.voteCounts[position] }})
+  .proposal-pie-chart__participation-statement{translate: 'proposal_pie_chart.participation_statement', translate-value-percentage: '{{proposal.percentVoted()}}', translate-value-number: '{{proposal.numberVoted()}}', translate-value-total: '{{proposal.groupSizeWhenVoting()}}'}
