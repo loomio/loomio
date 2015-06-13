@@ -78,10 +78,13 @@ angular.module('loomioApp').factory 'InvitationForm', ->
         Records.memberships.fetchInvitables($scope.fragment, $scope.group.key)
       ]).then ->
         $scope.getInvitablesExecuting = false
-        _.take _.union($scope.invitableUsers(), 
-                       $scope.invitableContacts(),
-                       $scope.invitableGroups(),
-                       _.compact([$scope.invitableEmail() if $scope.fragmentIsValidEmail()])), 5
+        $scope.invitables()
+
+    $scope.invitables = ->
+      _.take _.union($scope.invitableUsers(), 
+                     $scope.invitableContacts(),
+                     $scope.invitableGroups(),
+                     _.compact([$scope.invitableEmail() if $scope.fragmentIsValidEmail()])), 5
 
     $scope.availableGroups = ->
       _.filter CurrentUser.groups(), (group) ->
