@@ -2,7 +2,8 @@ class API::InvitationsController < API::RestfulController
 
   def create
     load_and_authorize :group, :invite_people
-
+    @invitations = params[:invitations]
+    
     MembershipService.add_users_to_group new_members
     InvitationService.invite_to_group    new_emails
 
@@ -24,7 +25,7 @@ class API::InvitationsController < API::RestfulController
   end
 
   def invitation_parser
-    @invitation_parser ||= InvitationParser.new(params[:invitations])
+    @invitation_parser ||= InvitationParser.new(@invitations)
   end
 
 end
