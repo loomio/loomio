@@ -51,6 +51,7 @@ Loomio::Application.routes.draw do
     end
     resources :invitables, only: :index
     resources :invitations, only: :create
+    resources :users, only: :update
     resources :events, only: :index
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do

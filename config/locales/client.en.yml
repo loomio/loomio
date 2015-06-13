@@ -390,7 +390,10 @@ en:
     see_more_members: 'See more members'
 
   profile_page:
-    my_groups: Groups
+    name_label: 'Name'
+    username_label: 'Username'
+    email_label: 'Email'
+    update_profile: 'Update profile'
 
   dashboard_page:
     aria_label: 'Dashboard'

@@ -1,14 +1,18 @@
-.profile-page
-  .media-left
-    %img.img-profile.img-rounded{ng-src: '{{user.profileUrl}}'}
-  .media-body
-    %h1.lmo-h1 {{user.name}}
-    %p.username
-      @{{user.label}}
-
-  %h3.lmo-h3.clearfix{translate: 'profile_page.my_groups'}
-  .profile-group{ng-repeat: 'group in user.groups()', ng-class: '{"profile-subgroup": group.parentId}'}
+.loading-wrapper.container.main-container
+  %loading{ng-if: '!profilePage.user'}
+  %main.profile-page{ng-if: 'profilePage.user'}
     .media-left
-      %img{ng-src: '{{group.logoUrlSmall}}'}
-    .media-body 
-      %a{href: '/g/{{group.key}}'} {{group.name}}
+      %img.img-profile.img-rounded{ng-src: '{{profilePage.user.profileUrl}}'}
+    .media-body
+      %h1.lmo-h1 {{profilePage.savedName()}}
+
+      %label{for: 'user-name-field', translate: 'profile_page.name_label'}
+      %input.form-control{ng-model: 'profilePage.user.name'}
+
+      %label{for: 'user-username-field', translate: 'profile_page.username_label'}
+      %input.form-control{ng-model: 'profilePage.user.username'}
+
+      %label{for: 'user-email-field', translate: 'profile_page.email_label'}
+      %input.form-control{ng-model: 'profilePage.user.email'}
+
+      %button.btn.btn-primary{ng-click: 'profilePage.submit()', ng-disabled: 'isDisabled', translate: 'profile_page.update_profile'}
