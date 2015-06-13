@@ -1,4 +1,4 @@
-.invitation-modal
+.invitation-form
   .modal-header
     %h3.pull-left {{ 'invitation.invite_people' | translate }}
     %a.close.pull-right{href: '', ng-click: 'cancel($event)'} ×
@@ -8,9 +8,9 @@
     %select.form-control{ng-model: 'group', ng-required: true, ng-options: 'group as group.fullName() for group in availableGroups()'}
     .wrap{ng-show: 'group'}
       %h4{translate: 'invitation.instructions'}
-      .invitation-modal__invitables-input
+      .invitation-form__invitables-input
         %input.form-control{type: 'text', ng-model: 'fragment', typeahead: 'invitable for invitable in getInvitables()', typeahead-template-url: 'generated/components/group_page/invitable_menu.html', typeahead-on-select: 'addInvitation($item)', typeahead-wait-ms: '300'}
-        %loading.invitation-modal__loading{ng-show: 'getInvitablesExecuting'}
+        %loading.invitation-form__loading{ng-show: 'getInvitablesExecuting'}
       %form{name: 'emailValidation'}
         %input.hidden.form-control{type: 'email', ng-model: 'fragment'}
 

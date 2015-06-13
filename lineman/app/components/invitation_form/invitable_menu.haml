@@ -2,6 +2,6 @@
   .user-avatar{aria-hidden: 'true'}
     .avatar-image
       %img{alt: "{{match.label.name}}", ng-src: '{{match.image.avatarUrl}}'}
-.mentionable-content
+.invitable-content
   .invitable-name> {{match.label.name}}
   .invitable-subtitle{ng-if: 'match.label.subtitle'} {{match.label.subtitle}}

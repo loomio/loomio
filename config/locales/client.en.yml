@@ -127,6 +127,7 @@ en:
 
   start_menu:
     start_group: 'Start Group'
+    start_subgroup: 'Start Subgroup'
     start_thread: 'Start Thread'
     invite_people: 'Invite People'
 

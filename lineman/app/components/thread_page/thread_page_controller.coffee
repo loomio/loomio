@@ -1,5 +1,4 @@
 angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, CurrentUser, ModalService, DiscussionForm, ScrollService) ->
-  $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
   @performScroll = ->
     elementToFocus = @elementToFocus()
@@ -23,8 +22,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       @group = @discussion.group()
       @sequenceIdToFocus = @discussion.reader().lastReadSequenceId # or location hash when we put it back in.
 
-      $rootScope.$broadcast 'setTitle', @discussion.title
+      $rootScope.$broadcast 'currentComponent', { page: 'threadPage'}
       $rootScope.$broadcast 'viewingThread', @discussion
+      $rootScope.$broadcast 'setTitle', @discussion.title
 
       MessageChannelService.subscribeTo "/discussion-#{@discussion.key}"
       @performScroll()
