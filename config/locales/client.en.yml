@@ -390,9 +390,13 @@ en:
     see_more_members: 'See more members'
 
   profile_page:
+    profile: 'Profile'
+    edit_profile: 'Edit Profile'
+    picture_label: 'Picture'
     name_label: 'Name'
     username_label: 'Username'
     email_label: 'Email'
+    locale_label: 'Language'
     update_profile: 'Update profile'
 
   dashboard_page:

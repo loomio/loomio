@@ -1,8 +1,8 @@
 angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, CurrentUser, Records) ->
   @user = CurrentUser.clone()
 
-  @savedName = ->
-    CurrentUser.name
+  @availableLocales = ->
+    window.Loomio.locales
 
   @submit = ->
     @isDisabled = true

@@ -1,18 +1,22 @@
 .loading-wrapper.container.main-container
   %loading{ng-if: '!profilePage.user'}
   %main.profile-page{ng-if: 'profilePage.user'}
-    .media-left
+    %h4.lmo-h4{translate: 'profile_page.edit_profile'}
+
+    %label{for: 'user-picture-field', translate: 'profile_page.picture_label'}
+    .profile-picture
       %img.img-profile.img-rounded{ng-src: '{{profilePage.user.profileUrl}}'}
-    .media-body
-      %h1.lmo-h1 {{profilePage.savedName()}}
+    
+    %label{for: 'user-name-field', translate: 'profile_page.name_label'}
+    %input.form-control{ng-model: 'profilePage.user.name'}
 
-      %label{for: 'user-name-field', translate: 'profile_page.name_label'}
-      %input.form-control{ng-model: 'profilePage.user.name'}
+    %label{for: 'user-username-field', translate: 'profile_page.username_label'}
+    %input.form-control{ng-model: 'profilePage.user.username'}
 
-      %label{for: 'user-username-field', translate: 'profile_page.username_label'}
-      %input.form-control{ng-model: 'profilePage.user.username'}
+    %label{for: 'user-email-field', translate: 'profile_page.email_label'}
+    %input.form-control{ng-model: 'profilePage.user.email'}
 
-      %label{for: 'user-email-field', translate: 'profile_page.email_label'}
-      %input.form-control{ng-model: 'profilePage.user.email'}
+    %label{for: 'user-locale-field', translate: 'profile_page.locale_label'}
+    %select.form-control{ng-model: 'discussion.groupId', ng-required: 'true', ng-options: 'locale in availableLocales()', ng-change: 'setCurrentPrivacy()'}
 
-      %button.btn.btn-primary{ng-click: 'profilePage.submit()', ng-disabled: 'isDisabled', translate: 'profile_page.update_profile'}
+    %button.btn.btn-primary{ng-click: 'profilePage.submit()', ng-disabled: 'isDisabled', translate: 'profile_page.update_profile'}
