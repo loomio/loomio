@@ -8,15 +8,15 @@ angular.module('loomioApp').factory 'MembershipRecordsInterface', (BaseRecordsIn
         cacheKey: 'myMemberships'
 
     # There's a pattern emerging for searching by fragment...
-    fetchByNameFragment: (fragment, groupKey) ->
+    fetchByNameFragment: (fragment, groupKey, limit = 5) ->
       @fetch
         path: 'autocomplete'
-        params: { q: fragment, group_key: groupKey }
+        params: { q: fragment, group_key: groupKey, per: limit }
     
-    fetchInvitables: (fragment, groupKey) ->
+    fetchInvitables: (fragment, groupKey, limit = 5) ->
       @fetch
         path: 'invitables'
-        params: { q: fragment, group_key: groupKey }
+        params: { q: fragment, group_key: groupKey, per: limit }
 
     fetchByGroup: (groupKey, options = {}) ->
       @fetch

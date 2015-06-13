@@ -43,6 +43,9 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
     parentGroups: ->
       @parentGroupsView.data()
 
+    canInviteTo: (group) ->
+      @membershipFor(group).admin or (@membershipFor(group) and group.membersCanAddMembers)
+
     canEditComment: (comment) ->
       @isAuthorOf(comment) && comment.group().membersCanEditComments
 

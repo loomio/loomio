@@ -10,7 +10,7 @@ class API::MembershipsController < API::RestfulController
 
 
   def invitables
-    @memberships = visible_invitables
+    @memberships = page_collection visible_invitables
     respond_with_collection
   end
 
