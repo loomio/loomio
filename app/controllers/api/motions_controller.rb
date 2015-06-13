@@ -11,6 +11,22 @@ class API::MotionsController < API::RestfulController
     respond_with_resource
   end
 
+  def create_outcome
+    load_and_authorize(:motion, :create_outcome)
+    MotionService.create_outcome(motion: @motion,
+                                 params: permitted_params.motion,
+                                 actor:  current_user)
+    respond_with_resource
+  end
+
+  def update_outcome
+    load_and_authorize(:motion, :update_outcome)
+    MotionService.update_outcome(motion: @motion, 
+                                 params: permitted_params.motion, 
+                                 actor:  current_user)
+    respond_with_resource
+  end
+
   private
 
   def visible_records

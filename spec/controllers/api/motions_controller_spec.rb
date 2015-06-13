@@ -70,6 +70,30 @@ describe API::MotionsController do
     end
   end
 
+  describe 'create outcome' do
+    context 'success' do
+      it "creates a motion outcome" do
+        motion_params = {outcome: 'Come out'}
+        post :create_outcome, id: motion.id, motion: motion_params, format: :json
+        json = JSON.parse(response.body)
+        expect(response.status).to eq 200
+        expect(json['proposals'].first['outcome']).to eq motion_params[:outcome]
+      end
+    end
+  end
+
+  describe 'update outcome' do
+    context 'success' do
+      it "updates a motion outcome" do
+        post :update_outcome, id: motion.id, motion: motion_params, format: :json
+        json = JSON.parse(response.body)
+        motion_ids = json['proposals'].map { |v| v['id'] }
+        expect(motion_ids).to include motion.id
+        expect(motion.reload.outcome).to eq motion_params[:outcome]
+      end
+    end
+  end
+
   describe 'create' do
     context 'success' do
       it "creates a motion" do

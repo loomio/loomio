@@ -75,10 +75,8 @@ class MotionsController < GroupBaseController
     if MotionService.create_outcome(motion: @motion,
                                     params: permitted_params.motion,
                                     actor: current_user)
-      Measurement.increment('motions.create_outcome.success')
       flash[:success] = t("success.motion_outcome_created")
     else
-      Measurement.increment('motions.create_outcome.error')
       flash[:error] = t("error.motion_outcome_not_created")
     end
     redirect_to discussion_url(@motion.discussion, proposal: @motion)
@@ -88,10 +86,8 @@ class MotionsController < GroupBaseController
     if MotionService.update_outcome(motion: @motion, 
                                     params: permitted_params.motion, 
                                     actor: current_user)
-      Measurement.increment('motions.update_outcome.success')
       flash[:success] = t("success.motion_outcome_updated")
     else
-      Measurement.increment('motions.update_outcome.error')
       flash[:error] = t("error.motion_outcome_not_updated")
     end
     redirect_to discussion_url(@motion.discussion, proposal: @motion)

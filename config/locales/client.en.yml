@@ -22,6 +22,7 @@ en:
       older: 'Older'
     action:
       save: 'Save'
+      save_changes: 'Save changes'
       reply: 'Reply'
       edit: 'Edit'
       like: 'Like'
@@ -43,6 +44,19 @@ en:
 
   current_proposal_card:
     heading: Proposal
+
+  proposal_outcome_panel:
+    heading: Outcome
+    set_outcome_hint: Use this space to let everyone know the outcome of the proposal.
+    set_outcome_btn: Set proposal outcome
+    edit_outcome_link: Edit proposal outcome
+
+  proposal_outcome_form:
+    set_outcome: Set proposal outcome
+    update_outcome: Update proposal outcome
+    outcome_label: Proposal outcome
+    outcome_placeholder: Let everyone know the outcome of the proposal.
+    publish_outcome: Publish outcome
 
   previous_proposals_card:
     heading: Previous Proposals
@@ -135,11 +149,12 @@ en:
     motion_outcome_created: "<strong>{{name}}</strong> published an outcome for the proposal <strong>{{proposal}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the proposal <strong>{{proposal}}</strong>"
 
+  position_buttons_panel:
+    heading: Have your say
+
   vote_form:
+    heading: Have your say
     no_statement: No statement.
-    change_your_vote: Change your vote.
-    have_your_say: Have your say
-    positions: Positions
     submitted_your_vote: Submitted your vote.
     i_agree: 'I agree'
     i_agree_details: 'I support this and want it to go ahead.'
@@ -154,6 +169,14 @@ en:
     select_position: 'Select position'
     statement_placeholder: 'Share your thoughts with the group.'
     aria_statement_label: 'Optionally enter a statement to be recorded with your position'
+
+  proposal_positions_panel:
+    heading: Positions
+    no_votes_yet: Nobody has voted on this proposal yet.
+    change_your_vote: Change your vote.
+
+  proposal_pie_chart:
+    participation_statement: '{{percentage}}% of members have stated their position ({{number}}/{{total}})'
 
   close_proposal_form:
     close_proposal: 'Close proposal'
@@ -210,7 +233,6 @@ en:
     collapse: Collapse
     current_votes: Current votes
     started_by: 'Started by <strong>{{name}}</strong>'
-    no_votes_yet: 'Nobody has voted on this proposal yet.'
     only_voter_is_you: 'No other members have voted yet.'
     extend_proposal: 'Change closing time'
     edit_proposal: 'Edit proposal'
@@ -222,6 +244,22 @@ en:
   proposal_position_abstain: 'Abstain'
   proposal_position_no: 'Disagree'
   proposal_position_block: 'Block'
+
+  group_welcome_modal:
+    heading: "Welcome to your new group"
+    instructions: "You're the group coordinator, which means it is your job to set up the group and invite people in"
+    what_next: "Here's what to do next:"
+    first_step: "Set the group description, logo and cover photo"
+    second_step: "Read the example thread and practice making a decision"
+    third_step: "Invite people in to join your group"
+    ok_got_it: 'Ok, got it!'
+
+  start_group_form:
+    heading: 'Start a group'
+    group_helptext: 'To start making decisions together on Loomio, set up a group for free:'
+    group_payment_reminder: "In 30 days, when you've seen how Loomio improves your group's decision making, we'll ask you to choose the <a href='#'>payment plan</a> that works for you."
+    name_label: 'Group Name'
+    submit: 'Start Group'
 
   group_page:
     thread_list:

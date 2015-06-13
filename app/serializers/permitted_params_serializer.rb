@@ -5,7 +5,7 @@ class PermittedParamsSerializer < ActiveModel::Serializer
     PermittedParams.new
   end
 
-  %w[user vote motion membership_request membership
+  %w[user vote motion proposal membership_request membership
    invitation group discussion discussion_reader comment
    attachment contact_message].each do |kind|
     send :attribute, :"#{kind}_attributes", key: kind

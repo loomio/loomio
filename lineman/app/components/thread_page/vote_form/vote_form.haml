@@ -1,52 +1,24 @@
-.vote-form-and-your-position
-  .vote-form{ng-show: 'proposal.isActive() && (!yourLastVote() || editing)', ng-disabled: 'vote.processing'}
-    %h4.lmo-card-subheading{translate: 'vote_form.have_your_say'}
+.vote-form
+  %form{ng-submit: 'submit()',  ng-disabled: 'vote.processing', name: 'voteForm' }
+    .modal-header
+      %button{type: 'button', class: 'close', ng-click: '$close()'}
+        %span{aria-hidden: true} &times;
+        %span.sr-only{translate: 'common.action.cancel'}
+      %h1.lmo-h1.modal-title{translate: 'vote_form.heading'}
 
-    %form{ng-submit: 'submit()',  ng-disabled: 'vote.processing' }
+    .modal-body
       %form_errors{record: 'vote'}
-      .position-buttons
-        %input#position-yes{type: 'radio', name: 'position', value: 'yes', ng-model: 'vote.position'}
-        %label.position-button.position-button--yes{for: 'position-yes', ng-class: '{"position-button--dimmed": positionOtherThan("yes")}'}
-          .sr-only{translate: 'vote_form.i_agree'}
-        %input#position-abstain{type: 'radio', name: 'position', value: 'abstain', ng-model: 'vote.position'}
-        %label.position-button.position-button--abstain{for: 'position-abstain', ng-class: '{"position-button--dimmed": positionOtherThan("abstain")}'}
-          .sr-only{translate: 'vote_form.i_abstain'}
-        %input#position-no{type: 'radio', name: 'position', value: 'no', ng-model: 'vote.position'}
-        %label.position-button.position-button--no{for: 'position-no', ng-class: '{"position-button--dimmed": positionOtherThan("no")}'}
-          .sr-only{translate: 'vote_form.i_disagree'}
-        %input#position-block{type: 'radio', name: 'position', value: 'block', ng-model: 'vote.position'}
-        %label.position-button.position-button--block{for: 'position-block', ng-class: '{"position-button--dimmed": positionOtherThan("block")}'}
-          .sr-only{translate: 'vote_form.i_block'}
-
-      %fieldset{ng-show: 'vote.position'}
+      %select{ng-model: 'vote.position'}
+        %option{value: 'yes', translate: 'vote_form.i_agree'}
+        %option{value: 'abstain', translate: 'vote_form.i_abstain'}
+        %option{value: 'no', translate: 'vote_form.i_disagree'}
+        %option{value: 'block', translate: 'vote_form.i_block'}
+      %fieldset
         .form-group
-          %label.label-with-details{for: 'vote-statement-field'}
-            %span.label-with-details-label{ng-show: 'vote.position'}
-              {{ 'vote_form.i_'+ vote.positionVerb() | translate }}
-            %span.label-with-details-details{ng-show: 'vote.position', aria-hidden: 'true'}
-              {{ 'vote_form.i_'+ vote.positionVerb() +'_details' | translate }}
-            %span.sr-only.label-with-details-details{ng-show: 'vote.position', translate: 'vote_form.aria_statement_label'}>
-
-            %span{translate: 'vote_form.select_position', ng-show: '!vote.position'}
-          %textarea#vote-statement-field.form-control{ng-model: 'vote.statement', placeholder: '{{ "vote_form.statement_placeholder" | translate }}'}
+          %textarea.vote-form__statement-field.form-control{ng-model: 'vote.statement', placeholder: '{{ "vote_form.statement_placeholder" | translate }}'}
           .chars-left.pull-right{ng-class: '{ overlimit: vote.overCharLimit() }' }
             {{ vote.charsLeft() }}
-        %button.btn.btn-primary.cuke-submit-position{type: 'submit', translate: 'vote_form.submit_position'}>
 
-        %button.btn.btn-default{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}>
-
-  .proposal-expanded-positions
-    %h4.lmo-card-subheading{translate: 'vote_form.positions'}
-
-    %ul.proposal-expanded-votes
-      %li.proposal-expanded-no-votes{ng-show: 'noVotesYet()', translate: 'proposal_expanded.no_votes_yet'}
-      %li.proposal-expanded-vote.media{ng_repeat: 'vote in curatedVotes()'}
-        .media-left
-          .thread-item-vote-icon{class: 'thread-item-vote-icon-{{vote.position}}'}
-        .media-body
-          %span.proposal-expanded-vote{translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-name: '{{vote.authorName()}}'}
-          %span{ng-if: '!vote.hasStatement()'}.
-          %span{ng-if: 'vote.hasStatement()'}: {{::vote.statement}}
-          %a.change-your-vote{href: '', ng-click: 'changeVote()', ng-show: 'proposal.isActive() && voteIsMine(vote)'}
-            %i.fa.fa-exchange{aria-hidden: 'true'}>
-            %span{translate: 'vote_form.change_your_vote'}
+    .modal-footer
+      %button.btn.btn-primary.vote-form__submit-btn{type: 'submit', translate: 'vote_form.submit_position'}>
+      %button.btn.btn-warning{type: 'button', ng-click: '$close()', translate: 'common.action.cancel'}

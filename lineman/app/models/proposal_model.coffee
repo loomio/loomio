@@ -48,6 +48,9 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     isActive: ->
       !@closedAt?
 
+    isClosed: ->
+      !@isActive()
+
     uniqueVotesByUserId: ->
       votesByUserId = {}
       _.each _.sortBy(@votes(), 'createdAt'), (vote) ->
@@ -57,6 +60,21 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     uniqueVotes: ->
       _.values @uniqueVotesByUserId()
 
+    numberVoted: ->
+      @uniqueVotes().length
+
+    percentVoted: ->
+      numVoted = @numberVoted()
+      groupSize = @groupSizeWhenVoting()
+      return 0 if numVoted == 0 or groupSize == 0
+      numVoted / groupSize * 100
+
+    groupSizeWhenVoting: ->
+      if @isActive()
+        @group().membersCount
+      else
+        @numberVoted() + parseInt(@didNotVotesCount)
+
     lastVoteByUser: (user) ->
       @uniqueVotesByUserId()[user.id]
 
@@ -65,3 +83,6 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
 
     close: ->
       @restfulClient.postMember(@id, "close")
+
+    hasOutcome: ->
+      _.some(@outcome)

@@ -428,6 +428,10 @@ class Group < ActiveRecord::Base
     membership_requests.where(email: email).any?
   end
 
+  def members_count
+    members.count
+  end
+
   def is_setup?
     setup_completed_at.present?
   end

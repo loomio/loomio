@@ -26,39 +26,6 @@
   margin-bottom: 15px;
 }
 
-.pie-chart-pie {
-  width: 120px;
-  height: 120px;
-}
-
-.pie-chart-legend {
-  @include fontSmall;
-  color: $grey-on-white;
-  padding-top: 36px;
-}
-
-.pie-chart-legend-item{
-  margin: 5px;
-  padding-left: 5px;
-  line-height: 15px;
-}
-
-.pie-chart-legend-item-yes{
-  border-left: 15px solid #90D490;
-}
-
-.pie-chart-legend-item-abstain{
-  border-left: 15px solid #F0BB67;
-}
-
-.pie-chart-legend-item-no{
-  border-left: 15px solid #D49090;
-}
-
-.pie-chart-legend-item-block{
-  border-left: 15px solid #dd0000;
-}
-
 .proposal-expanded-votes {
   list-style: none;
   margin-left: 0;

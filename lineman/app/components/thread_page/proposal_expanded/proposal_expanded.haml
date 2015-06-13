@@ -10,16 +10,11 @@
     %closing_in{time: 'proposal.closingAt' }>
     .badge.pull-right.cuke-proposal-closed-badge{ng-show: '!proposal.isActive'} Closed
   .proposal-expanded-description{btf-markdown: 'proposal.description' }
+  %proposal_outcome_panel{ng-if: 'showOutcomePanel()', proposal: 'proposal'}
 
-  .pie-chart.media
-    .pie-chart-pie.media-left
-      %proposal_pie_chart{proposal: 'proposal'}
-    .pie-chart-legend.media-body
-      %label.sr-only{translate: 'proposal_expanded.current_votes'}
-      .pie-chart-legend-item{class: 'pie-chart-legend-item-{{position}}', ng-repeat: 'position in proposal.positions'}
-        {{ "proposal_position_"+position | translate}} ({{ proposal.voteCounts[position] }})
 
-  %vote_form{proposal: 'proposal'}
+  %position_buttons_panel{proposal: 'proposal'}
+  %proposal_positions_panel{proposal: 'proposal'}
 
   %a.proposal-expanded__collapse.pull-right{href: '', ng-click: 'collapse()', translate: 'proposal_expanded.collapse', ng-show: 'canCollapse'}
   .clearfix
