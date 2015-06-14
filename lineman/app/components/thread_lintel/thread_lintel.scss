@@ -30,6 +30,12 @@
 .thread-lintel__title {
   line-height: 30px;
   padding: 7px 0;
+  cursor: pointer;
+}
+
+.thread-lintel__proposal-pie-chart {
+  float: left;
+  padding-right: 5px;
 }
 
 .thread-lintel__go-to-end {

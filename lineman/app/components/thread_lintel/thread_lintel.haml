@@ -1,8 +1,10 @@
 .thread-lintel{ng-show: 'show()'}
   .thread-lintel__left
     %img.thread-lintel__logo{ng-src: '{{discussion.group().logoUrl()}}'}
-    .thread-lintel__title
-      {{ discussion.title }}
+    .thread-lintel__title{ng-click: 'scrollToTop()'} {{ discussion.title }}
+    .thread-lintel__proposal{ng-show: 'discussion.activeProposal()'}
+      %tiny_proposal_pie_chart.thread-lintel__proposal-pie-chart{proposal: 'discussion.activeProposal()'}
+      %span {{ discussion.activeProposal().name }}
   .thread-lintel__right
     .thread-lintel__start-proposal{ng-show: 'canStartProposal()'}
       %button.btn.btn-success{type: 'button', ng-click: 'startProposal()'}
