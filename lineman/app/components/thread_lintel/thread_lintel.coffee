@@ -2,9 +2,15 @@ angular.module('loomioApp').directive 'threadLintel', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_lintel/thread_lintel.html'
   replace: true
-  controller: ($scope) ->
+  controller: ($scope, Records, ModalService, ProposalForm) ->
     $scope.show = ->
       $scope.scrolled && $scope.currentComponent == 'threadPage'
+
+    $scope.canStartProposal = ->
+      true
+
+    $scope.startProposal = ->
+      ModalService.open ProposalForm, proposal: -> Records.proposals.initialize(discussion_id: $scope.discussion.id)
 
     $scope.$on 'currentComponent', (event, options) ->
       $scope.currentComponent = options['page']

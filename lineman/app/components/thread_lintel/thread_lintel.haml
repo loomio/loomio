@@ -1,7 +1,13 @@
 .thread-lintel{ng-show: 'show()'}
-  %img.thread-lintel__logo{ng-src: '{{discussion.group().logoUrl()}}'}
-  .thread-lintel__title
-    {{ discussion.title }}
+  .thread-lintel__left
+    %img.thread-lintel__logo{ng-src: '{{discussion.group().logoUrl()}}'}
+    .thread-lintel__title
+      {{ discussion.title }}
+  .thread-lintel__right
+    .thread-lintel__start-proposal{ng-show: 'canStartProposal()'}
+      %button.btn.btn-success{type: 'button', ng-click: 'startProposal()'}
+        %i.fa.fa-lg.fa-rocket>
+        %span{translate: 'proposal_form.start_proposal'}
 
   .thread-lintel__progress-wrap.thread-lintel__progress
     .thread-lintel__progress-bar.thread-lintel__progress{style: 'width: {{positionPercent}}%'}
