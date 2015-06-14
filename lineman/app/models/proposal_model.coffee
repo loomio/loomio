@@ -67,7 +67,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
       numVoted = @numberVoted()
       groupSize = @groupSizeWhenVoting()
       return 0 if numVoted == 0 or groupSize == 0
-      numVoted / groupSize * 100
+      (100 * numVoted / groupSize).toFixed(2)
 
     groupSizeWhenVoting: ->
       if @isActive()
