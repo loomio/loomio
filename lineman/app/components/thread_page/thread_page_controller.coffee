@@ -56,4 +56,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @canEditDiscussion = =>
     CurrentUser.canEditDiscussion(@discussion)
 
+  @startProposalButton = ($inview) ->
+    $rootScope.$broadcast 'proposalButtonInView', $inview
+
   return

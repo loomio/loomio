@@ -5,7 +5,7 @@
     .thread-lintel__proposal{ng-show: 'discussion.activeProposal()', ng-click: 'scrollToProposal()'}
       %tiny_proposal_pie_chart.thread-lintel__proposal-pie-chart{proposal: 'discussion.activeProposal()'}
       %span {{ discussion.activeProposal().name }}
-  .thread-lintel__right
+  .thread-lintel__right{ng-show: '!proposalButtonInView'}
     %start_proposal_button{discussion: 'discussion'}
 
   .thread-lintel__progress-wrap.thread-lintel__progress
