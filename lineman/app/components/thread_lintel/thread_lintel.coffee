@@ -2,12 +2,18 @@ angular.module('loomioApp').directive 'threadLintel', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_lintel/thread_lintel.html'
   replace: true
-  controller: ($scope, Records, ModalService, ProposalForm) ->
+  controller: ($scope, Records, ModalService, ProposalForm, CurrentUser, ScrollService) ->
     $scope.show = ->
       $scope.scrolled && $scope.currentComponent == 'threadPage'
 
+    $scope.scrollToThread = ->
+      ScrollService.scrollTo 'h1:first'
+
+    $scope.scrollToProposal = ->
+      ScrollService.scrollTo 'section.current-proposal-card'
+
     $scope.canStartProposal = ->
-      true
+      $scope.discussion && !$scope.discussion.hasActiveProposal() and CurrentUser.canStartProposals($scope.discussion)
 
     $scope.startProposal = ->
       ModalService.open ProposalForm, proposal: -> Records.proposals.initialize(discussion_id: $scope.discussion.id)
