@@ -28,6 +28,10 @@
   white-space: nowrap;
 }
 
+.table-cell {
+  display: table-cell;
+}
+
 .fat-finger{
   /*utility class to increase the target size of a link*/
   min-width: 30px;

@@ -6,10 +6,7 @@
       %tiny_proposal_pie_chart.thread-lintel__proposal-pie-chart{proposal: 'discussion.activeProposal()'}
       %span {{ discussion.activeProposal().name }}
   .thread-lintel__right
-    .thread-lintel__start-proposal{ng-show: 'canStartProposal()'}
-      %button.btn.btn-success{type: 'button', ng-click: 'startProposal()'}
-        %i.fa.fa-lg.fa-rocket>
-        %span{translate: 'proposal_form.start_proposal'}
+    %start_proposal_button{discussion: 'discussion'}
 
   .thread-lintel__progress-wrap.thread-lintel__progress
     .thread-lintel__progress-bar.thread-lintel__progress{style: 'width: {{positionPercent}}%'}
