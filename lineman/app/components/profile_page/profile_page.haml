@@ -17,6 +17,6 @@
     %input.form-control{ng-model: 'profilePage.user.email'}
 
     %label{for: 'user-locale-field', translate: 'profile_page.locale_label'}
-    %select.form-control{ng-model: 'discussion.groupId', ng-required: 'true', ng-options: 'locale in availableLocales()', ng-change: 'setCurrentPrivacy()'}
+    %select.form-control{ng-model: 'profilePage.user.selectedLocale', ng-required: 'true', ng-options: 'locale.key as locale.name for locale in profilePage.availableLocales()', ng-change: 'setCurrentPrivacy()'}
 
     %button.btn.btn-primary{ng-click: 'profilePage.submit()', ng-disabled: 'isDisabled', translate: 'profile_page.update_profile'}
