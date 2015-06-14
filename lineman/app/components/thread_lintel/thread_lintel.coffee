@@ -6,8 +6,8 @@ angular.module('loomioApp').directive 'threadLintel', ->
     $scope.show = ->
       $scope.scrolled && $scope.currentComponent == 'threadPage'
 
-    $scope.$on 'currentComponent', (event, component) ->
-      $scope.currentComponent = component
+    $scope.$on 'currentComponent', (event, options) ->
+      $scope.currentComponent = options['page']
 
     $scope.$on 'viewingThread', (event, discussion) ->
       $scope.discussion = discussion
