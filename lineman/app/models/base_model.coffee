@@ -5,13 +5,14 @@ angular.module('loomioApp').factory 'BaseModel', ->
     @indices: []
     @attributeNames: []
 
-    constructor: (recordsInterface, data) ->
+    constructor: (recordsInterface, data, postInitializeData = {}) ->
       @errors = {}
       @processing = false
       Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: false)
       Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: false)
       Object.defineProperty(@, 'restfulClient', value: recordsInterface.restfulClient, enumerable: false)
       @initialize(data)
+      _.merge @, postInitializeData
       @setupViews() if @setupViews? and @id?
 
     initialize: (data) ->
@@ -19,7 +20,7 @@ angular.module('loomioApp').factory 'BaseModel', ->
 
     clone: ->
       attrs = @baseSerialize()[@constructor.singular] or {}
-      _.merge new @constructor(@recordsInterface, attrs), { id: @id, key: @key }
+      new @constructor @recordsInterface, attrs, { id: @id, key: @key }
 
     update: (data) ->
       @updateFromJSON(data)
