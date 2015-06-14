@@ -21,9 +21,11 @@ angular.module('loomioApp').directive 'threadLintel', ->
     $scope.$on 'showThreadLintel', (event, bool) ->
       $scope.scrolled = bool
 
+    $scope.$on 'proposalInView', (event, bool) ->
+      $scope.proposalInView = bool
+
     $scope.$on 'proposalButtonInView', (event, bool) ->
       $scope.proposalButtonInView = bool
-      console.log bool
 
     $scope.$on 'threadPosition', (event, discussion, position) ->
       $scope.position = position
