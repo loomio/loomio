@@ -3,10 +3,10 @@ angular.module('loomioApp').directive 'startProposalCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/start_proposal_card/start_proposal_card.html'
   replace: true
-  controller: ($scope, ProposalFormService, CurrentUser) ->
+  controller: ($scope, CurrentUser, ModalService, ProposalForm, Records) ->
 
     $scope.openForm = ->
-      ProposalFormService.openStartProposalModal($scope.discussion)
+      ModalService.open ProposalForm, proposal: -> Records.proposals.initialize(discussion_id: $scope.discussion.id)
 
     $scope.canStartProposal = ->
       $scope.discussion && !$scope.discussion.hasActiveProposal() and CurrentUser.canStartProposals($scope.discussion)
