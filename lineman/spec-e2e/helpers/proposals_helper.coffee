@@ -10,11 +10,17 @@ module.exports = new class ProposalsHelper
   submitProposalForm: ->
     element(By.css('.proposal-form__start-btn')).click()
 
-  agreeBtn: ->
+  clickAgreeBtn: ->
     element(By.css('.position-button--yes')).click()
 
-  voteStatementField: ->
-    element(By.css('.vote-form__statement-field'))
+  clickChangeBtn: ->
+    element(By.css('.proposal-positions-panel__change-your-vote')).click()
+
+  selectVotePosition: (position) ->
+    element(By.css(".vote-form__select-position options[value=#{position]}")).click()
+
+  setVoteStatement: (statement) ->
+    element(By.css('.vote-form__statement-field')).sendKeys(statement)
 
   submitVoteForm: ->
     element(By.css('.vote-form__submit-btn')).click()
