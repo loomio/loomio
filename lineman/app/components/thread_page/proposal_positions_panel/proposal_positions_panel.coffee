@@ -7,7 +7,7 @@ angular.module('loomioApp').directive 'proposalPositionsPanel', ->
 
     $scope.changeVote = ->
       ModalService.open VoteForm, 
-        proposal: -> $scope.proposal.clone()
+        proposal: -> $scope.proposal
 
     sortValueForVote = (vote) ->
       positionValues = {yes: 1, abstain: 2, no: 3, block: 4}

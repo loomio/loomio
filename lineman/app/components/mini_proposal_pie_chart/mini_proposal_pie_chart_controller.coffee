@@ -20,6 +20,6 @@ angular.module('loomioApp').controller 'MiniProposalPieChartController', ($scope
     $scope.pieChartData[1].value = counts.abstain
     $scope.pieChartData[2].value = counts.no
     $scope.pieChartData[3].value = counts.block
-    $scope.pieChartData[4].value = if _.some [counts.yes, counts.abstain, counts.no, counts.block] then 0 else 1
+    $scope.pieChartData[4].value = if _.some($scope.proposal.voteCounts.values) then 0 else 1
 
   $scope.$watch 'proposal.voteCounts', refreshPieChartData()
