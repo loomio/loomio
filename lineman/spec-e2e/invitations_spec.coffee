@@ -1,17 +1,20 @@
 describe 'Invitations', ->
 
   threadHelper = require './helpers/thread_helper.coffee'
-  invitationsHelper = require './helpers/invitation_helper.coffee'
+  invitationsHelper = require './helpers/invitations_helper.coffee'
+  groupsHelper = require './helpers/groups_helper.coffee'
 
   describe 'basics', ->
     it 'successfully opens a modal', ->
-      invitationHelper.openInvitationModal()
-      expect(invitationHelper.groupDropdown().isPresent()).toBe(true)
+      threadHelper.load()
+      invitationsHelper.openInvitationsModal()
+      expect(invitationsHelper.groupDropdown().isPresent()).toBe(true)
 
-    # it 'successfully opens a model for a specific group', ->
-    #   invitationHelper.openInvitationModal(group)
-    #   expect(invitationHelper.groupDropdownSelectedOption().getText()).toContain(group.name)
-    #   expect(invitationHelper.invitableInput().isPresent()).toBe(true)
+    it 'successfully opens a model for a specific group', ->
+      groupsHelper.load()
+      invitationsHelper.openInvitationsModal()
+      expect(invitationsHelper.groupDropdown().getText()).toContain('Dirty')
+      expect(invitationsHelper.invitableInput().isPresent()).toBe(true)
 
   # describe 'inviting a Loomio user', ->
 
@@ -19,6 +22,6 @@ describe 'Invitations', ->
   #     threadHelper.load()
 
   #   it 'successfully invites a user by name', ->
-  #     invitationHelper.openInvitationModal(group)
-  #     invitationHelper.invite('hannah')
-  #     invitationHelper.submitInvitationForm()
+  #     invitationsHelper.openInvitationModal(group)
+  #     invitationsHelper.invite('hannah')
+  #     invitationsHelper.submitInvitationForm()

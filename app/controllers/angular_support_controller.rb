@@ -9,6 +9,13 @@ class AngularSupportController < ApplicationController
     "http://localhost:8000/g/#{group.key}/"
   end
 
+  def setup_group
+    cleanup_database
+    test_group
+    sign_in patrick
+    redirect_to group_url(test_group)
+  end
+
   def setup_discussion
     cleanup_database
     test_discussion
