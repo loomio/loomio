@@ -17,10 +17,10 @@ module.exports = new class ProposalsHelper
     element(By.css('.proposal-positions-panel__change-your-vote')).click()
 
   selectVotePosition: (position) ->
-    element(By.css(".vote-form__select-position options[value=#{position]}")).click()
+    element(By.css(".vote-form__select-position option[value=#{position}]")).click()
 
   setVoteStatement: (statement) ->
-    element(By.css('.vote-form__statement-field')).sendKeys(statement)
+    element(By.css('.vote-form__statement-field')).clear().sendKeys(statement)
 
   submitVoteForm: ->
     element(By.css('.vote-form__submit-btn')).click()

@@ -31,8 +31,8 @@ describe 'Proposals', ->
       threadHelper.loadWithActiveProposalWithVote()   
 
     it 'successfully updates a previous vote on a proposal', ->
-      proposalsHelper.clickChangeBtn().click()
-      proposalsHelper.selectVotePosition('disagree')
+      proposalsHelper.clickChangeBtn()
+      proposalsHelper.selectVotePosition('no')
       proposalsHelper.setVoteStatement('This is not a good idea')
       proposalsHelper.submitVoteForm()
       expect(proposalsHelper.positionsList().getText()).toContain('disagreed')
