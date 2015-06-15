@@ -5,78 +5,27 @@ describe 'LmoUrlService', ->
     beforeEach useFactory
     beforeEach inject (LmoUrlService) -> @subject = LmoUrlService
     beforeEach ->
-      @group = @factory.create 'groups', name: 'name', key: 'key'
+      @group = @factory.create 'groups', name: 'Group Name', key: 'gkey'
+      @subgroup = @factory.create 'groups', parent_id: @group.id, name: 'Subgroup Name', key: 'sgkey'
+      @thread = @factory.create 'discussions', title: 'Discussion Title', key: 'dkey'
+      @proposal = @factory.create 'proposals', discussion_id: @thread.id, name: 'Proposal Name', key: 'pkey'
+      @comment = @factory.create 'comments', discussion_id: @thread.id, key: 'ckey'
 
-    describe 'on localhost', ->
-      beforeEach ->
-        @subject.hostInfo = ->
-          port: 3000
-          default_subdomain: null
-          host: 'localhost'
+    describe 'group', ->
+      it 'gives a group path', ->
+        expect(@subject.group(@group)).toBe("/g/#{@group.key}/group-name")
 
-      it "handles a group without subdomain on localhost", ->
-        expect(@subject.group(@group)).toBe "http://localhost:3000/g/#{@group.key}/name"
+      it 'gives a subgroup path', ->
+        expect(@subject.group(@subgroup)).toBe("/g/#{@subgroup.key}/group-name-subgroup-name")
 
-      it "handles a group with subdomain on localhost", ->
-        @group.updateFromJSON subdomain: 'subdomain'
-        expect(@subject.group(@group)).toBe "http://subdomain.localhost:3000/"
+    describe 'discussion', ->
+      it 'gives a discussion path', ->
+        expect(@subject.discussion(@thread)).toBe("/d/#{@thread.key}/discussion-title")
 
-      it "handles a subgroup with subdomain on localhost", ->
-        @group.updateFromJSON subdomain: 'subdomain'
-        subgroup = @factory.create 'groups', parent_id: @group.id, key: 'subkey', name: 'subname'
-        expect(@subject.group(subgroup)).toBe "http://subdomain.localhost:3000/g/#{subgroup.key}/name-subname"
+    describe 'proposal', ->
+      it 'gives a proposal path', ->
+        expect(@subject.proposal(@proposal)).toBe("/m/#{@proposal.key}/proposal-name")
 
-    describe 'on loom.io', ->
-      beforeEach ->
-        @subject.hostInfo = ->
-          host: 'loom.io'
-          default_subdomain: null
-          ssl: true
-
-      it 'handles a group without subdomain on loom.io', ->
-        expect(@subject.group(@group)).toBe "https://loom.io/g/#{@group.key}/name"
-
-      it 'handles a group with subdomain on loom.io', ->
-        @group.updateFromJSON subdomain: 'subdomain'
-        expect(@subject.group(@group)).toBe 'https://subdomain.loom.io/'
-
-      it 'handles a subgroup with subdomain on loom.io', ->
-        @group.updateFromJSON subdomain: 'subdomain'
-        subgroup = @factory.create 'groups', parent_id: @group.id, key: 'subkey', name: 'subname'
-        expect(@subject.group(subgroup)).toBe "https://subdomain.loom.io/g/#{subgroup.key}/name-subname"
-
-    describe 'on loomio.org', ->
-      beforeEach ->
-        @subject.hostInfo = ->
-          host: 'loomio.org'
-          default_subdomain: 'www'
-
-      it 'handles a group without subdomain on loomio.org', ->
-        expect(@subject.group(@group)).toBe "http://www.loomio.org/g/#{@group.key}/name"
-
-      it 'handles a group with subdomain on loomio.org', ->
-        @group.updateFromJSON subdomain: 'subdomain'
-        expect(@subject.group(@group)).toBe "http://subdomain.loomio.org/"
-
-      it 'handles a subgroup with subdomain on loomio.org', ->
-        @group.updateFromJSON subdomain: 'subdomain'
-        subgroup = @factory.create 'groups', parent_id: @group.id, key: 'subkey', name: 'subname'
-        expect(@subject.group(subgroup)).toBe "http://subdomain.loomio.org/g/#{subgroup.key}/name-subname"
-
-    describe 'on loomio.anotherdomain.com', ->
-      beforeEach ->
-        @subject.hostInfo = ->
-          host: 'loomio.anotherdomain.com'
-          default_subdomain: null
-
-      it 'handles a group without subdomain on loomio.anotherdomain.com', ->
-        expect(@subject.group(@group)).toBe "http://loomio.anotherdomain.com/g/#{@group.key}/name"
-
-      it 'handles a group with subdomain on loomio.anotherdomain.com', ->
-        @group.updateFromJSON subdomain: 'subdomain'
-        expect(@subject.group(@group)).toBe "http://subdomain.loomio.anotherdomain.com/"
-
-      it 'handles a subgroup with subdomain on loomio.anotherdomain.com', ->
-        @group.updateFromJSON subdomain: 'subdomain'
-        subgroup = @factory.create 'groups', parent_id: @group.id, key: 'subkey', name: 'subname'
-        expect(@subject.group(subgroup)).toBe "http://subdomain.loomio.anotherdomain.com/g/#{subgroup.key}/name-subname"
+    describe 'comment', ->
+      it 'gives a comment path', ->
+        expect(@subject.comment(@comment)).toBe("/d/#{@thread.key}/discussion-title#comment-#{@comment.id}")
