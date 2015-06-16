@@ -8,4 +8,4 @@ angular.module('loomioApp').directive 'startMenuOption', ->
       switch $scope.action
         when 'invitePeople' then ModalService.open InvitationForm
         when 'startGroup' then ModalService.open StartGroupForm, group: -> Records.groups.initialize()
-        when 'startThread' then ModalService.open DiscussionForm, discussion: -> Records.discussions.initialize()
+        when 'startThread' then ModalService.open DiscussionForm, discussion: -> Records.discussions.initialize(uses_markdown: true)
