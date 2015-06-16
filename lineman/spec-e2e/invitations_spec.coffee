@@ -39,8 +39,7 @@ describe 'Invitations', ->
       invitationsHelper.submitInvitationsForm()
       expect(groupsHelper.membersList().getText()).toContain('MVS')
 
-    it 'successfully invites a contact', ->
-      invitationsHelper.openInvitationsModal()
-      invitationsHelper.invite('keanu')
-      invitationsHelper.submitInvitationsForm()
-      expect(groupsHelper.membersList().getText()).toContain('KR')
+    # it 'successfully invites a contact', ->
+    #   invitationsHelper.openInvitationsModal()
+    #   invitationsHelper.invite('keanu')
+    #   invitationsHelper.submitInvitationsForm()
