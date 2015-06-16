@@ -1,13 +1,11 @@
-.comment-form
+.edit-comment-form
   %form{ng-submit: 'submit()',  ng-disabled: 'comment.processing', name: 'commentForm' }
     .modal-header
       %button{type: 'button', class: 'close', ng-click: '$close()'}
         %span{aria-hidden: true} &times;
         %span.sr-only{translate: 'common.action.cancel'}
-      %h3.modal-title{translate: 'comment_form.edit_comment'}
+      %h1.lmo-h1.modal-title{translate: 'comment_form.edit_comment'}
     .modal-body
-      %h2.lmo-card-heading#comment-form-title{translate: 'comment_form.aria_label'}
-      %span{translate: 'comment_form.in_reply_to', translate-values: "{name: '{{comment.parentAuthorName()}}' }", ng-show: 'comment.parentAuthorName()'}
       %textarea#comment-field.form-control{name: 'body', ng_model: 'comment.body', mentio: true, mentio-trigger-char: "'@'", mentio_items: 'mentionables', mentio-template-url: 'generated/components/thread_page/comment_form/mentio_menu.html', mentio-search: 'fetchByNameFragment(term)', mentio-id: 'comment-field', ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 300, 'blur': 0} }"}
     .modal-footer
       %button.btn.btn-primary.comment-form__submit-btn{type: 'submit', translate: 'common.action.save_changes'}>
