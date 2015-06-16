@@ -1,5 +1,5 @@
 .comment-form
-  %form{ng-submit: 'submit()',  ng-disabled: 'vote.processing', name: 'voteForm' }
+  %form{ng-submit: 'submit()',  ng-disabled: 'comment.processing', name: 'commentForm' }
     .modal-header
       %button{type: 'button', class: 'close', ng-click: '$close()'}
         %span{aria-hidden: true} &times;
@@ -10,5 +10,5 @@
       %span{translate: 'comment_form.in_reply_to', translate-values: "{name: '{{comment.parentAuthorName()}}' }", ng-show: 'comment.parentAuthorName()'}
       %textarea#comment-field.form-control{name: 'body', ng_model: 'comment.body', mentio: true, mentio-trigger-char: "'@'", mentio_items: 'mentionables', mentio-template-url: 'generated/components/thread_page/comment_form/mentio_menu.html', mentio-search: 'fetchByNameFragment(term)', mentio-id: 'comment-field', ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 300, 'blur': 0} }"}
     .modal-footer
-      %button.btn.btn-primary.comment-form__submit-btn{type: 'submit', translate: 'comment_form.save_changes', ng-disabled: 'processing'}>
+      %button.btn.btn-primary.comment-form__submit-btn{type: 'submit', translate: 'common.action.save_changes'}>
       %button.btn.btn-warning{type: 'button', ng-click: '$close()', translate: 'common.action.cancel'}
