@@ -72,6 +72,12 @@ window.useFactory = function() {
       read_salient_items_count: 50
     },
 
+    proposals: {
+      name: "To the robot moon!",
+      closingAt: moment().add(3, 'day'),
+      description: "Like astrobots!"
+    },
+
     comments: {
       body: "Jello Swirled"
     },

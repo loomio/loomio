@@ -615,10 +615,10 @@ be-BY:
   outcome_placeholder: Што было вынікам гэтай прапановы?
   outcome_submit: Апублікаваць вынік
   position_verbs:
-    "yes": згодзен
+    "yes": Згаджаюся
     "no": Не пагаджаюся
-    abstain: устрымаўся
-    block: блакаваць
+    abstain: Устрымліваюся
+    block: Блакую
     past_tense:
       "yes": згадзіўся
       "no": не пагаджаюся

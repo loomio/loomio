@@ -25,7 +25,7 @@ class MembershipService
     memberships = group.add_members!(users, inviter)
     memberships.each do |m|
       Events::UserAddedToGroup.publish!(m, inviter)
-      UserMailer.delay.added_to_group(user: m.user, inviter: m.inviter,
+      UserMailer.delay.added_to_group(user: m.user, inviter: inviter,
                                       group: m.group, message: message)
     end
   end
