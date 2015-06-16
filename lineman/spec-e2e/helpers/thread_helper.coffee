@@ -5,6 +5,9 @@ module.exports = new class ThreadHelper
   loadWithActiveProposal: ->
     browser.get('http://localhost:8000/angular_support/setup_proposal')
 
+  loadWithActiveProposalWithVote: ->
+    browser.get('http://localhost:8000/angular_support/setup_proposal_with_vote')
+
   loadWithClosedProposal: ->
     browser.get('http://localhost:8000/angular_support/setup_closed_proposal')
 

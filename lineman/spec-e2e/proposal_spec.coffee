@@ -20,10 +20,23 @@ describe 'Proposals', ->
       threadHelper.loadWithActiveProposal()
 
     it 'successfully votes on a proposal', ->
-      proposalsHelper.agreeBtn().click()
-      proposalsHelper.voteStatementField().sendKeys('This is a good idea')
+      proposalsHelper.clickAgreeBtn()
+      proposalsHelper.setVoteStatement('This is a good idea')
       proposalsHelper.submitVoteForm()
+      expect(proposalsHelper.positionsList().getText()).toContain('agreed')
       expect(proposalsHelper.positionsList().getText()).toContain('This is a good idea')
+
+  describe 'updating a vote on a proposal', ->
+    beforeEach ->
+      threadHelper.loadWithActiveProposalWithVote()   
+
+    it 'successfully updates a previous vote on a proposal', ->
+      proposalsHelper.clickChangeBtn()
+      proposalsHelper.selectVotePosition('no')
+      proposalsHelper.setVoteStatement('This is not a good idea')
+      proposalsHelper.submitVoteForm()
+      expect(proposalsHelper.positionsList().getText()).toContain('disagreed')
+      expect(proposalsHelper.positionsList().getText()).toContain('This is not a good idea')
 
   describe 'editing a proposal', ->
 

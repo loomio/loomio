@@ -1,5 +1,3 @@
-
-
 !!!
 %html{'ng-app' => 'loomioApp', 'ng-controller' => 'AppController as app'}
   %head
@@ -27,7 +25,6 @@
       window.Loomio.currentUserId = #{current_user.id};
       window.Loomio.seedRecords = #{CurrentUserSerializer.new(current_user).to_json}
       window.Loomio.permittedParams = #{PermittedParamsSerializer.new({}).to_json}
-      window.Loomio.hostInfo = #{HostInfoSerializer.new(request).to_json}
       window.Loomio.locales = [{name: "English", key: "en"}, {name: "Spanish", key: "es"}]
 
     = javascript_include_tag lineman_vendorjs_path

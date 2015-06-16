@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'MembershipsPageController', ($rootScope, $routeParams, Records, LoadingService, CurrentUser) ->
+angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, Records, LoadingService, CurrentUser) ->
   $rootScope.$broadcast('currentComponent', { page: 'membershipsPage'})
 
   @loadedCount = 0

@@ -54,3 +54,17 @@ el:
       gift:
         header: Δώρο οικονομίας
         desc: Το Loomio υποστηρίζεται από εκείνους που πληρώνουν ανάλογα με τις δυνατότητές τους. Αυτό κρατά την πλατφόρμα χωρίς διαφημίσεις και προσβάσιμη σε ομάδες χωρίς χρήματα.
+  about_page:
+    our_story_1_html: "<h2>Η ιστορία μας</h2> <p>Το Loomio είναι ένα ηλεκτρονικό εργαλείο για συλλογική λήψη αποφάσεων, το οποίο δημιουργήθηκε από μια ομάδα τεχνολογικού ενδιαφέροντος, ακτιβιστές και κοινωνικών επιχειρήσεων στην Νέα Ζηλανδία.</p> "
+    advisors_html: "<h2>Σύμβουλοι</h2> <p>Υποστηριζόμαστε από ένα γνωμοδοτικό συμβούλιο με μερικά από τα λαμπρότερα μυαλά στην δημοκρατία και την τεχνολογία διεθνώς.</p> "
+    sascha_bio_html: "Ιδρυτής του <a href='http://thexlab.org/' target='_blank'>X-Lab</a> & <a href='http://www.newamerica.org/oti/' target='_blank'>του Ανοιχτού Τεχνολογικού Ινστιτούτου</a>"
+    katherine_bio_html: "Πρώην Ανώτερος Αντιπρόεδρος, <a href='http://www.aol.com/' target='_blank'>AOL</a>, Αντιπρόεδρος του <a href='http://www.rootcapital.org/' target='_blank'>Root Capital</a>"
+    joi_bio_html: "Διευθυντής του <a href=\"http://www.media.mit.edu/\" target=\"_blank\">MIT Media Lab</a>, Συν-ιδρυτής του <a href=\"https://creativecommons.org/\" target=\"_blank\">Creative Commons</a>, Διοικητικό Συμβούλιο του <a href=\"https://www.mozilla.org/en-US/foundation/\" target=\"_blank\">Mozilla Foundation</a>"
+    rushkoff_bio_html: "<a href=\"http://www.rushkoff.com/\" target=\"_blank\">Bestselling συγγραφέας</a>, CNN σχολιαστής, θεωρητικός μέσων μαζικής ενημέρωσης"
+    monahan_bio_html: "Συνιδρυτής του <a href=\"http://inflection.com/\" target=\"_blank\">Inflection</a>, <a href=\"http://www.namaste.org/\" target=\"_blank\">Namaste Foundation</a>"
+    team_html: "<h2> Ομάδα </h2> <p>Το Loomio είναι μια συνεταιριστική κοινωνική επιχείρηση με έδρα τη Νέα Ζηλανδία. Είμαστε μια παθιασμένη ομάδα με μεγάλη εμπειρία στην ομαδική διαδικασία και την ανάπτυξη με ανοιχτή τεχνολογία.</p>"
+    ben_bio: "Συν-ιδρυτής και διευθυντής, διοργανωτής κοινότητας, ερευνητής συλλογικής νοημοσύνης"
+    mj_bio: "US οδηγός επιχειρήσεων, επίκουρος καθηγητής στην κοινωνική επιχείρηση στο Πανεπιστήμιο Brown"
+    rob_bio: "Συν-ιδρυτής και επικεφαλής αρχιτέκτονας λογισμικού, προσβασιμότητας, εμπειρίας του χρήστη"
+    jon_bio: "Συν-ιδρυτής και προγραμματιστής λογισμικού, σχεδιαστής εμπειρίας χρήστη, μουσικός"
+    chelsea_bio: "Εμπειρογνωμόνων για τη διευκόλυνση, συνεργατικός προπονητής, συν-ιδρυτής Generation Zero"

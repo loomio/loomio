@@ -4,6 +4,7 @@ Loomio::Application.routes.draw do
     get 'setup_discussion'
     get 'setup_discussion_with_comment'
     get 'setup_proposal'
+    get 'setup_proposal_with_vote'
     get 'setup_closed_proposal'
     get 'setup_closed_proposal_with_outcome'
     get 'setup_all_notifications'

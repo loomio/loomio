@@ -10,6 +10,7 @@ describe API::VotesController do
   let(:my_older_vote)         { create :vote, motion: motion,         user: user, age: 1 }
   let(:my_vote)               { create :vote, motion: motion,         user: user }
   let(:my_other_vote)         { create :vote, motion: another_motion, user: user }
+  let(:other_guys_vote)       { create :vote, motion: motion, user: create(:user) }
   let(:vote_params) {{
     position: 'yes',
     statement: 'code all the things',
@@ -23,58 +24,66 @@ describe API::VotesController do
     sign_in user
   end
 
-  #describe 'index' do
+  describe 'index' do
 
-    #before do
-      #my_older_vote; my_vote; my_other_vote; other_guys_vote
-    #end
+    before do
+      my_older_vote; my_vote; my_other_vote; other_guys_vote
+    end
 
-    #context 'success' do
-      #it 'returns votes filtered by motion' do
-        #get :index, motion_id: motion.id, format: :json
-        #json = JSON.parse(response.body)
-        #expect(json.keys).to include *(%w[votes])
-        #motions = json['votes'].map { |v| v['id'] }
-        #expect(motions).to include my_vote.id
-        #expect(motions).to include other_guys_vote.id
-        #expect(motions).to_not include my_other_vote.id
-      #end
-    #end
+    context 'success' do
+      it 'returns votes filtered by motion' do
+        get :index, motion_id: motion.id, format: :json
+        json = JSON.parse(response.body)
+        expect(json.keys).to include *(%w[votes])
+        motions = json['votes'].map { |v| v['id'] }
+        expect(motions).to include my_vote.id
+        expect(motions).to include other_guys_vote.id
+        expect(motions).to_not include my_other_vote.id
+      end
+    end
 
-    #context 'failure' do
-      #it 'does not allow access to an unauthorized motion' do
-        #cant_see_me = create :motion
-        #expect { get :index, motion_id: cant_see_me.id, format: :json }.to raise_error
-      #end
-    #end
-  #end
+    context 'failure' do
+      it 'does not allow access to an unauthorized motion' do
+        cant_see_me = create :motion
+        get :index, motion_id: cant_see_me.id, format: :json
+        expect(response.status).to eq 403
+      end
+    end
+  end
 
-  #describe 'my_votes' do
-    #before do
-      #my_older_vote; my_vote; my_other_vote; other_guys_vote
-    #end
+  describe 'my_votes' do
+    before do
+      my_older_vote; my_vote; my_other_vote; other_guys_vote
+    end
 
-    #context 'success' do
-      #it 'returns votes filtered by discussion and current user' do
-        #get :my_votes, discussion_id: discussion.id, format: :json
-        #json = JSON.parse(response.body)
-        #expect(json.keys).to include *(%w[votes])
-        #motions = json['votes'].map { |v| v['id'] }
-        #expect(motions).to include my_vote.id
-        #expect(motions).to include my_other_vote.id
-        #expect(motions).to_not include other_guys_vote.id
-      #end
+    context 'success' do
+      it 'returns votes filtered by discussion and current user' do
+        get :my_votes, discussion_id: discussion.id, format: :json
+        json = JSON.parse(response.body)
+        expect(json.keys).to include *(%w[votes])
+        motions = json['votes'].map { |v| v['id'] }
+        expect(motions).to include my_vote.id
+        expect(motions).to include my_other_vote.id
+        expect(motions).to_not include other_guys_vote.id
+      end
 
-      #it 'returns only the most recent vote' do
-        #get :my_votes, discussion_id: discussion.id, format: :json
-        #json = JSON.parse(response.body)
-        #expect(json.keys).to include *(%w[votes])
-        #motions = json['votes'].map { |v| v['id'] }
-        #expect(motions).to include my_vote.id
-        #expect(motions).to_not include my_older_vote.id        
-      #end
-    #end
-  #end
+      it 'returns only the most recent vote' do
+        get :my_votes, discussion_id: discussion.id, format: :json
+        json = JSON.parse(response.body)
+        expect(json.keys).to include *(%w[votes])
+        motions = json['votes'].map { |v| v['id'] }
+        expect(motions).to include my_vote.id
+        expect(motions).to_not include my_older_vote.id        
+      end
+    end
+  end
+
+  # describe 'update' do
+  #   it 'calls VotesController#create' do
+  #     expect(VoteService).to receive(:create)
+  #     post :update, vote: vote_params
+  #   end
+  # end
 
   describe 'create' do
     context 'success' do

@@ -27,7 +27,7 @@
         .col-sm-8
           %section.group-page__description{aria-labelledby: 'description-card-title'}
             %h2#description-card-title.lmo-card-heading{ translate: 'group_page.description'}
-            .group-page__description-placeholder.group-page-placeholder.lmo-hint-text{translate: 'group_page.description_placeholder', ng-if: 'groupPage.showDescriptionPlaceholder()' }
+            .group-page__description-placeholder.lmo-placeholder.lmo-hint-text{translate: 'group_page.description_placeholder', ng-if: 'groupPage.showDescriptionPlaceholder()' }
             .group-page__description-text.lmo-last{ btf-markdown: 'groupPage.group.description' }
           %discussions_card{group: 'groupPage.group'}
         .col-sm-4
