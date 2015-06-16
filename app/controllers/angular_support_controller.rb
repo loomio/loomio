@@ -19,6 +19,7 @@ class AngularSupportController < ApplicationController
   def setup_group_for_invitations
     setup_group
     another_test_group
+    give_patrick_a_friend
   end
 
   def setup_discussion
@@ -117,6 +118,14 @@ class AngularSupportController < ApplicationController
                               username: 'patrickswayze',
                               password: 'gh0stmovie',
                               angular_ui_enabled: true)
+  end
+
+  def give_patrick_a_friend
+    if patrick.contacts.empty?
+      patrick.contacts.create(name: 'Keanu Reeves',
+                              email: 'keanu@loomio.org',
+                              source: 'gmail')
+    end
   end
 
   def jennifer

@@ -18,10 +18,10 @@ angular.module('loomioApp').factory 'MembershipRecordsInterface', (BaseRecordsIn
         path: 'invitables'
         params: { q: fragment, group_key: groupKey, per: limit }
 
-    fetchByGroup: (groupKey, options = {}) ->
+    fetchByGroup: (group, options = {}) ->
       @fetch
-        params: { group_key: groupKey },
-        cacheKey: "membershipsFor#{groupKey}"
+        params: { group_key: group.key },
+        cacheKey: "membershipsFor#{group.key}"
 
     makeAdmin: (membership) ->
       @restfulClient.postMember membership.id "make_admin"

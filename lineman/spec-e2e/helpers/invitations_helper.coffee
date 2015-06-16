@@ -14,7 +14,7 @@ module.exports = new class InvitationsHelper
 
   invite: (fragment) ->
     @invitableInput().clear().sendKeys(fragment)
-    element(By.css('.invitation-form__invitable:first')).click()
+    element(By.css('.invitation-form__invitable')).click()
 
   submitInvitationsForm: ->
     element(By.css('.invitation-form__submit')).click()
