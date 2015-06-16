@@ -2,6 +2,7 @@ Loomio::Application.routes.draw do
 
   scope '/angular_support', controller: 'angular_support', path: 'angular_support', as: 'angular_support' do
     get 'setup_group'
+    get 'setup_group_for_invitations'
     get 'setup_discussion'
     get 'setup_discussion_with_comment'
     get 'setup_proposal'

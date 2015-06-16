@@ -1,4 +1,7 @@
 module.exports = new class InvitationsHelper
+  load: ->
+    browser.get('http://localhost:8000/angular_support/setup_group_for_invitations')
+
   openInvitationsModal: (group) ->
     element(By.css('.start-menu__start-button')).click()
     element(By.css('.start-menu__option[action=invitePeople] a')).click()
@@ -9,16 +12,9 @@ module.exports = new class InvitationsHelper
   invitableInput: ->
     element(By.css('.invitation-form__invitable-input'))
 
-  # selectInvitationGroup: ->
+  invite: (fragment) ->
+    @invitableInput().clear().sendKeys(fragment)
+    element(By.css('.invitation-form__invitable:first')).click()
 
-  # enterInviteString: ->
-
-  # selectFirstInvitation: ->
-
-  # enterInvitationMessage: ->
-
-  # invite: (fragment) ->
-  #   @enterInviteString(fragment)
-  #   @selectFirstInvitation()
-
-  # submitInvitations: ->
+  submitInvitationsForm: ->
+    element(By.css('.invitation-form__submit')).click()
