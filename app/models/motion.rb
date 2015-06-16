@@ -174,7 +174,7 @@ class Motion < ActiveRecord::Base
     if voting?
       group.members.count
     else
-      voters.count + did_not_votes_count
+      total_votes_count + did_not_votes_count
     end
   end
 
