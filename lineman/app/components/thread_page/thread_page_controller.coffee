@@ -20,7 +20,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @init = (discussion) =>
     if discussion and !@discussion?
       @discussion = discussion
-      @group = @discussion.group()
+      @group      = @discussion.group()
+      @comment    = Records.comments.initialize(discussion_id: @discussion.id)
+
       @sequenceIdToFocus = @discussion.reader().lastReadSequenceId # or location hash when we put it back in.
 
       $rootScope.$broadcast 'setTitle', @discussion.title
