@@ -41,7 +41,7 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $roo
     ModalService.open EditCommentForm, comment: -> $scope.comment
 
   $scope.deleteComment = ->
-    CommentFormService.openDeleteCommentModal($scope.comment)
+    ModalService.open DeleteCommentForm, comment: -> $scope.comment
 
   $scope.showContextMenu = ->
     $scope.canEditComment($scope.comment) or $scope.canDeleteComment($scope.comment)
