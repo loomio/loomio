@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'discussionsCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'
   replace: true
-  controller: ($scope, $modal, Records, ModalService, DiscussionForm, KeyEventService, LoadingService, CurrentUser) ->
+  controller: ($scope, Records, ModalService, DiscussionForm, KeyEventService, LoadingService, AbilityService) ->
     $scope.loaded = 0
     $scope.perPage = 25
 
@@ -25,7 +25,7 @@ angular.module('loomioApp').directive 'discussionsCard', ->
     KeyEventService.registerKeyEvent $scope, 'pressedT', $scope.openDiscussionForm
 
     $scope.showThreadsPlaceholder = ->
-      CurrentUser.isAdminOf($scope.group) and $scope.group.discussions().length <= 1
+      AbilityService.canAdminister($scope.group) and $scope.group.discussions().length <= 1
 
     $scope.whyImEmpty = ->
       if !$scope.group.hasDiscussions
