@@ -3,9 +3,6 @@ angular.module('loomioApp').factory 'DeleteCommentForm', ->
   controller: ($scope, $rootScope, Records, comment) ->
     $scope.comment = comment.clone()
 
-    $scope.cancel = ->
-      $scope.$close()
-
     $scope.submit = ->
       $scope.comment.destroy().then ->
         $scope.$close()

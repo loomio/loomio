@@ -1,7 +1,7 @@
 .delete-comment-form
   %form{ng-submit: 'submit()',  ng-disabled: 'comment.processing', name: 'deleteCommentForm' }
     .modal-header
-      %button{type: 'button', class: 'close', ng-click: 'cancel()'}
+      %button{type: 'button', class: 'close', ng-click: '$close()'}
         %span{aria-hidden: true} &times;
         %span.sr-only{translate: 'common.action.cancel'}
       %h3.modal-title{translate: 'comment_form.delete_comment'}
@@ -9,4 +9,4 @@
       .comment-form-delete-message{translate: 'comment_form.confirm_delete_message'}
     .modal-footer
       %button.btn.btn-danger{type: 'submit', translate: 'comment_form.confirm_delete'}
-      %button.btn{type: 'button', ng-click: 'cancel()', translate: 'common.action.cancel'}
+      %button.btn{type: 'button', ng-click: '$close()', translate: 'common.action.cancel'}
