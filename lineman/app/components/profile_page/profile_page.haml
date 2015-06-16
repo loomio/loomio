@@ -4,9 +4,8 @@
     %h4.lmo-h4{translate: 'profile_page.edit_profile'}
 
     %label{for: 'user-picture-field', translate: 'profile_page.picture_label'}
-    .profile-picture
-      %img.img-profile.img-rounded{ng-src: '{{profilePage.user.profileUrl}}'}
-    
+    %user_avatar{user: 'profilePage.user'}
+
     %label{for: 'user-name-field', translate: 'profile_page.name_label'}
     %input.form-control{ng-model: 'profilePage.user.name'}
 
