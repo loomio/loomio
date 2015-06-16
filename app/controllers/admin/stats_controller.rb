@@ -3,6 +3,33 @@ class Admin::StatsController < Admin::BaseController
   helper_method :data_for
   layout 'admin'
 
+  def bad_analytics
+    visit_ids = []
+    @group = Group.friendly.find(params[:id])
+    @groups = Group.where("parent_id = :id or id = :id", id: @group.id)
+    @discussions = Discussion.where(group_id: @groups.pluck(:id))
+    discussion_paths = @discussions.map {|d| URI(discussion_path(d)).path }
+    group_paths = @groups.map {|g| URI(group_path(g)).path }
+    paths = [discussion_paths + group_paths].flatten.reject{|p| p == '/' or p.blank?}
+    visit_ids << Ahoy::Event.where("properties ->> 'page' IN (?)", paths).pluck(:visit_id)
+    visit_ids << Ahoy::Event.where("properties ->> 'url' IN (?)", [group_url(@group)]).pluck(:visit_id)
+    visit_ids = visit_ids.flatten
+
+    @start_date = Visit.where(id: visit_ids).order('started_at').first.started_at.to_date
+    @end_date = Visit.where(id: visit_ids).order('started_at').last.started_at.to_date
+    @total_visits = visit_ids.flatten.uniq.count
+    @total_visits_per_day = Visit.where(id: visit_ids).group("DATE(started_at)").count
+    @visit_count_per_referrer = Visit.where(id: visit_ids).group('referrer').count
+    @visit_count_per_landing_page = Visit.where(id: visit_ids).group('landing_page').count
+
+    @visits_per_discussion_per_day = {}
+    @discussions.each do |d|
+      visit_ids = Ahoy::Event.where("properties ->> 'page' = ?", URI(discussion_path(d)).path).pluck(:visit_id)
+      @visits_per_discussion_per_day[d] = Visit.where(id: visit_ids).group("DATE(started_at)").count
+    end
+    render layout: false
+  end
+
   def aaarrr
     #arrrrrrr!!!
     @cohorts = Cohort.all
