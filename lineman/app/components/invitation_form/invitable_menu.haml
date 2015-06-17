@@ -1,0 +1,9 @@
+.invitation-form__invitable
+  .media-left
+    .user-avatar{aria-hidden: 'true'}
+      .avatar-image
+        %img{alt: "{{match.label.name}}", ng-src: '{{match.label.image}}'}
+  .invitation-form__invitable-content
+    .invitable-name> {{match.label.name}}
+    %abbr.invitable-subtitle{ng-if: 'match.label.subtitle'} {{match.label.subtitle}}
+  .invitation-form__spacer

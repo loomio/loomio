@@ -35,8 +35,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       _.find @memberships(), (membership) -> membership.userId == user.id
 
     members: ->
-      memberIds = _.map(@memberships(), (membership) -> membership.userId)
-      @recordStore.users.find(id: {$in: memberIds})
+      @recordStore.users.find(id: {$in: @memberIds()})
 
     adminMemberships: ->
       _.filter @memberships(), (membership) -> membership.admin

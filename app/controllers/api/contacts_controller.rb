@@ -1,4 +1,9 @@
 class API::ContactsController < API::RestfulController
+  def index
+    instantiate_collection { |contacts| contacts.search_for(params[:q]) }
+    respond_with_collection
+  end
+
   def import
     redirect_to "/contacts/#{params[:from]}" if params[:from]
   end
@@ -13,6 +18,10 @@ class API::ContactsController < API::RestfulController
   end
 
   private
+
+  def visible_records
+    current_user.contacts
+  end
 
   def importable_contacts
     current_contact_emails = current_user.contacts.pluck(:email)

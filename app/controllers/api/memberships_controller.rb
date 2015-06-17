@@ -8,6 +8,12 @@ class API::MembershipsController < API::RestfulController
     respond_with_resource
   end
 
+
+  def invitables
+    @memberships = page_collection visible_invitables
+    respond_with_collection
+  end
+
   def my_memberships
     @memberships = current_user.memberships.joins(:group).order('groups.full_name ASC')
     respond_with_collection
@@ -41,6 +47,11 @@ class API::MembershipsController < API::RestfulController
   def visible_records
     load_and_authorize :group
     Queries::VisibleMemberships.new(user: current_user, group: @group)
+  end
+
+  def visible_invitables
+    load_and_authorize :group, :invite_people
+    Queries::VisibleInvitableMemberships.new(group: @group, user:  current_user, query: params[:q])
   end
 
   def default_page_size

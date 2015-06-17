@@ -1,12 +1,14 @@
-#describe 'Group Page', ->
+describe 'Group Page', ->
 
-  #GroupPage = require './helpers/group_page.coffee'
-  #page = new GroupPage
+  groupsHelper = require './helpers/groups_helper.coffee'
 
-  #it 'invite people', ->
-    #page.loadForInvitations()
-    #expect(page.invitePeopleLink().isPresent()).toBe(true)
-    #page.invitePerson('max')
-    #page.sendInvitations()
-    #expect(page.groupHasMember('mingthemerciless')).toBe(true)
-  #, 100000
+  beforeEach ->
+    groupsHelper.load()
+
+  it 'successfully starts a discussion', ->
+    groupsHelper.clickStartDiscussionBtn()
+    groupsHelper.fillInDiscussionTitle('Nobody puts baby in a corner')
+    groupsHelper.fillInDiscussionDescription("I've had the time of my life")
+    groupsHelper.submitDiscussionForm()
+    expect(groupsHelper.discussionTitle().getText()).toContain('Nobody puts baby in a corner')
+    expect(groupsHelper.discussionTitle().getText()).toContain("I've had the time of my life")
