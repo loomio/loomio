@@ -1,5 +1,6 @@
 class GroupsController < GroupBaseController
   include ApplicationHelper
+  include DiscussionIndexCacheHelper
   before_filter :authenticate_user!, except: :show
 
   before_filter :load_group, :except => [:create, :new]
