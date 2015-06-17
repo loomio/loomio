@@ -2,6 +2,6 @@ angular.module('loomioApp').factory 'DiscussionReaderRecordsInterface', (BaseRec
   class DiscussionReaderRecordsInterface extends BaseRecordsInterface
     model: DiscussionReaderModel
 
-    initialize: (data = {}) ->
+    import: (data = {}) ->
       data.id = data.discussion_id if data.discussion_id?
-      @baseInitialize(data)
+      @baseImport(data)

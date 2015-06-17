@@ -1,0 +1,28 @@
+.invitation-form__invitables-input {
+  position: relative;
+}
+
+.invitation-form__invitables-input li {
+  padding-left: 10px;
+  cursor: pointer;
+  &:hover { background-color: $list-hover-color; }
+}
+
+.invitation-form__loading {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+}
+
+.invitation-form__invitable {
+  padding: 10px 0;
+}
+
+.invitation-form__invitable-content {
+  display: table-cell;
+}
+
+.invitation-form__invitable-spacer {
+  padding-bottom: 10px;
+  &:last { padding-bottom: 0 };
+}

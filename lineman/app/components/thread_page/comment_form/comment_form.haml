@@ -1,8 +1,9 @@
 %section{aria-labelledby: 'comment-form-title'}
   %form.comment-form{name: 'commentForm', ng_submit: 'submit()', role: 'form'}
+    %input{type: 'hidden', ng-model: 'comment.usesMarkdown'}
     %h2.lmo-card-heading#comment-form-title{translate: 'comment_form.aria_label'}
     %span{translate: 'comment_form.in_reply_to', translate-values: "{name: '{{comment.parentAuthorName()}}' }", ng-show: 'comment.parentAuthorName()'}
-    %textarea#comment-field.form-control.cuke-comment-field{name: 'body', placeholder: "Say something...", ng_model: 'comment.body', mentio: true, mentio-trigger-char: "'@'", mentio_items: 'mentionables', mentio-template-url: 'generated/components/thread_page/comment_form/mentio_menu.html', mentio-search: 'fetchByNameFragment(term)', mentio-id: 'comment-field', ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 300, 'blur': 0} }"}
+    %textarea.form-control.comment-form__comment-field{name: 'body', placeholder: "Say something...", ng_model: 'comment.body', mentio: true, mentio-trigger-char: "'@'", mentio_items: 'mentionables', mentio-template-url: 'generated/components/thread_page/comment_form/mentio_menu.html', mentio-search: 'fetchByNameFragment(term)', mentio-id: 'comment-field', ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 300, 'blur': 0} }"}
     .comment-row.comment-attachments{ng_repeat: 'attachment in comment.newAttachments()'}
       %a.attachment-link{ng_href: '{{attachment.location}}', target: '_blank'}>
         {{ attachment.filename }}
@@ -11,7 +12,7 @@
       %a.close.remove-upload{href: '', ng_click: 'removeAttachment(attachment)', title: "{{ 'comment_form.attachments.remove_attachment' | translate }}"}
         %span{aria-hidden: 'true'}&times;
     .thread-comment-form-actions.clearfix
-      %button#post-comment-btn.btn.btn-default.btn-primary.pull-left.submit{type: 'submit', translate: 'comment_form.submit_button.label'}
+      %button.btn.btn-default.btn-primary.pull-left.submit.comment-form__submit-button{type: 'submit', translate: 'comment_form.submit_button.label'}
       %button.btn.btn-default.pull-left.comment-form-button{translate: 'comment_form.cancel_reply', ng-show: 'comment.parentId', ng-click: 'comment.parentId = null'}
       %attachment_form.pull-left{comment: 'comment'}
       %button#post-comment-cancel.btn.btn-default.pull-right{type: 'button', translate: 'common.action.cancel', ng-click: 'cancel($event)', ng-hide: 'comment.isNew()'}

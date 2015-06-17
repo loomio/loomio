@@ -172,9 +172,9 @@ class Motion < ActiveRecord::Base
 
   def group_size_when_voting
     if voting?
-      group.memberships_count
+      group.members.count
     else
-      total_votes_count + members_not_voted_count
+      total_votes_count + did_not_votes_count
     end
   end
 
@@ -187,11 +187,7 @@ class Motion < ActiveRecord::Base
   end
 
   def members_not_voted_count
-    if voting?
-      group_members.size - total_votes_count
-    else
-      did_not_votes_count
-    end
+    members_not_voted.count
   end
 
   def percent_voted

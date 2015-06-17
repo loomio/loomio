@@ -15,5 +15,5 @@
           %h2.groups-page__group-name{id: '{{::group.key}}'}
             %a{href: '/g/{{::group.key}}'} {{::group.name}}
         %ul.groups-page__subgroups{ng-if: 'group.subgroups().length > 0'}
-          %li.groups-page__subgroup{ng-repeat: 'subgroup in group.subgroups()'}
+          %li.groups-page__subgroup{ng-repeat: 'subgroup in group.subgroups() | orderBy:groupsPage.groupName'}
             %a{href: '/g/{{::subgroup.key}}'} {{::subgroup.name}}

@@ -14,3 +14,6 @@ angular.module('loomioApp').directive 'membersCard', ->
 
     $scope.showMembersPlaceholder = ->
       AbilityService.canAdminister($scope.group) and $scope.group.memberships().length <= 1
+
+    $scope.invitePeople = ->
+      ModalService.open InvitationForm, group: -> $scope.group
