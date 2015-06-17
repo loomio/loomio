@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, CurrentUser, Records) ->
+angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, CurrentUser, Records, FlashService, $location) ->
   @user = CurrentUser.clone()
 
   @availableLocales = ->
@@ -8,6 +8,8 @@ angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Cur
     @isDisabled = true
     @user.save().then -> 
       @isDisabled = false
+      FlashService.success('profile_page.messages.updated')
+      $location.path('/dashboard')
     , ->
       @isDisabled = false
       $rootScope.$broadcast 'pageError', 'cantUpdateProfile'
