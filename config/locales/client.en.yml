@@ -20,6 +20,8 @@ en:
       thisweek: 'This Week'
       thismonth: 'This Month'
       older: 'Older'
+    models:
+      proposal: 'Proposal'
     action:
       save: 'Save'
       save_changes: 'Save changes'
@@ -40,10 +42,7 @@ en:
 
   start_proposal_card:
     title: 'Start a proposal'
-    cta: Ready to make a decision? Start a proposal.
-
-  current_proposal_card:
-    heading: Proposal
+    helptext: Ready to make a decision? Proposals let you see how everyone feels about a particular course of action.
 
   proposal_outcome_panel:
     heading: Outcome

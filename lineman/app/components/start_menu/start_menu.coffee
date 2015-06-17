@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'startMenu', ->
   restrict: 'E'
   templateUrl: 'generated/components/start_menu/start_menu.html'
   replace: true
-  controller: ($scope, $modal) ->
+  controller: ($scope) ->
 
     $scope.$on 'modalOpened', ->
       $scope.startMenuOpen = false

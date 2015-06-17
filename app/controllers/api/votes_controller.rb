@@ -1,5 +1,7 @@
 class API::VotesController < API::RestfulController
 
+  alias :update :create
+
   def my_votes
     @votes = if params[:discussion_id]
       load_and_authorize :discussion

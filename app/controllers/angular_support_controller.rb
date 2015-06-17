@@ -37,6 +37,14 @@ class AngularSupportController < ApplicationController
     redirect_to discussion_url(test_discussion)
   end
 
+  def setup_proposal_with_vote
+    cleanup_database
+    sign_in patrick
+    test_vote
+
+    redirect_to discussion_url(test_discussion)
+  end
+
   def setup_closed_proposal
     cleanup_database
     sign_in patrick
@@ -180,6 +188,14 @@ class AngularSupportController < ApplicationController
       MotionService.create(motion: @test_proposal, actor: patrick)
     end
     @test_proposal
+  end
+
+  def test_vote
+    unless @test_vote
+      @test_vote = Vote.new(position: 'yes', motion: test_proposal, statement: 'I agree!')
+      VoteService.create(vote: @test_vote, actor: patrick)
+    end
+    @test_vote
   end
 
   def cleanup_database

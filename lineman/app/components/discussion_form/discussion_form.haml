@@ -1,4 +1,5 @@
 %form.discussion-form{name: 'discussionForm', ng_submit: 'submit()', ng-disabled: 'discussion.processing'}
+  %input{type: 'hidden', ng-model: 'discussion.uses_markdown', ng-value: 'true'}
   .modal-header
     %button{type: 'button', class: 'close', ng-click: '$close()'}
       %span{aria-hidden: true} &times;

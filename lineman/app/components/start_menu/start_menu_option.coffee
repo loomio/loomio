@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'startMenuOption', ->
   controller: ($scope, ModalService, InvitationForm, DiscussionForm, StartGroupForm, Records, CurrentUser) ->
     $scope.openModal = ->
       switch $scope.action
-        when 'invitePeople' then ModalService.open InvitationForm, 
+        when 'invitePeople' then ModalService.open InvitationForm,
           group:      -> $scope.invitePeopleGroup()
         when 'startGroup' then ModalService.open StartGroupForm,
           group:      -> Records.groups.build()
@@ -17,8 +17,8 @@ angular.module('loomioApp').directive 'startMenuOption', ->
 
     $scope.invitePeopleGroup = ->
       if $scope.group and CurrentUser.canInviteTo($scope.group)
-        $scope.group 
-      else 
+        $scope.group
+      else
         Records.groups.build()
 
     $scope.currentGroupId = ->

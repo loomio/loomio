@@ -1,15 +1,11 @@
 class EmailActionsController < AuthenticateByUnsubscribeTokenController
   skip_before_filter :boot_angular_ui
   def unfollow_discussion
-    discussion = Discussion.find(params[:discussion_id])
-    DiscussionReader.for(discussion: discussion, user: user).set_volume! :quiet
-    redirect_to dashboard_or_root_path, notice: t(:'notifications.email_actions.not_following_thread', thread_title: discussion.title)
-  end
+    set_discussion_volume volume: :quiet, flash_notice: :"notifications.email_actions.not_following_thread"
+   end
 
   def follow_discussion
-    discussion = Discussion.find(params[:discussion_id])
-    DiscussionReader.for(discussion: discussion, user: user).set_volume! :loud
-    redirect_to dashboard_or_root_path, notice: t(:'notifications.email_actions.following_thread', thread_title: discussion.title)
+    set_discussion_volume volume: :loud, flash_notice: :"notifications.email_actions.following_thread"
   end
 
   def mark_discussion_as_read
@@ -48,5 +44,16 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
                   type: 'image/gif', disposition: 'inline'
       }
     end
+  end
+
+  private
+
+  def set_discussion_volume(volume:, flash_notice:)
+    DiscussionReader.for(discussion: discussion, user: user).set_volume! volume
+    redirect_to dashboard_or_root_path, notice: t(flash_notice, thread_title: discussion.title)
+  end
+
+  def discussion
+    @discussion ||= Discussion.find params[:discussion_id]
   end
 end

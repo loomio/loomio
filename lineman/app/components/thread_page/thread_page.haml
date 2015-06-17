@@ -39,17 +39,16 @@
           %i.fa.fa-globe{aria-hidden: 'true'}>
           %span{translate: 'common.privacy.public'}
 
-
       %article.thread-context__description{btf-markdown: 'threadPage.discussion.description', aria-label: "{{ 'thread_context.aria_label' | translate }}" }
 
-    %start_proposal_card{discussion: 'threadPage.discussion'}
+    %section.start-proposal-card{in-view: 'threadPage.proposalButtonInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.canStartProposal()', aria-label: '{{ "start_proposal_card.title" | translate }}'}
+      %h2.lmo-card-heading{translate: 'common.models.proposal'}
+      %start_proposal_button.table-cell.thread-start-proposal-button{discussion: 'threadPage.discussion'}
+      %span.lmo-placeholder.lmo-hint-text.table-cell{translate: 'start_proposal_card.helptext'}
 
-    .wrap{ng-if: 'threadPage.discussion.hasActiveProposal()'}
-      %current_proposal_card{proposal: 'threadPage.discussion.activeProposal()'}
+    %current_proposal_card{in-view: 'threadPage.proposalInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.discussion.hasActiveProposal()', proposal: 'threadPage.discussion.activeProposal()'}
 
-    .wrap{ng-if: 'threadPage.discussion.anyClosedProposals()'}
-      %previous_proposals_card{discussion: 'threadPage.discussion'}
+    %previous_proposals_card{ng-if: 'threadPage.discussion.anyClosedProposals()', discussion: 'threadPage.discussion'}
 
     %activity_card{discussion: 'threadPage.discussion'}
-    %comment_form{discussion: 'threadPage.discussion'}
-
+    %comment_form{comment: 'threadPage.comment'}

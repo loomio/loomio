@@ -5,6 +5,9 @@ module.exports = new class ThreadHelper
   loadWithActiveProposal: ->
     browser.get('http://localhost:8000/angular_support/setup_proposal')
 
+  loadWithActiveProposalWithVote: ->
+    browser.get('http://localhost:8000/angular_support/setup_proposal_with_vote')
+
   loadWithClosedProposal: ->
     browser.get('http://localhost:8000/angular_support/setup_closed_proposal')
 
@@ -16,10 +19,31 @@ module.exports = new class ThreadHelper
     @submitComment()
 
   enterCommentText: (body) ->
-    element(By.css('#comment-field')).sendKeys(body or 'I am a comment')
+    element(By.css('.comment-form__comment-field')).sendKeys(body or 'I am a comment')
 
   submitComment: ->
-    element(By.css('#post-comment-btn')).click()
+    element(By.css('.comment-form__submit-button')).click()
+
+  clickThreadItemOptionsButton: ->
+    element(By.css('.thread-item__options-button')).click()
+
+  selectEditCommentOption: ->
+    element(By.css('.thread-item__edit-link')).click()
+
+  editCommentText: (body) ->
+    element(By.css('.edit-comment-form__comment-field')).clear().sendKeys(body)
+
+  submitEditedComment: ->
+    element(By.css('.comment-form__submit-btn')).click()
+
+  selectDeleteCommentOption: ->
+    element(By.css('.thread-item__delete-link')).click()
+
+  confirmCommentDeletion: ->
+    element(By.css('.delete-comment-form__delete-button')).click()
+
+  activityPanel: ->
+    element(By.css('.activity-card')).click()
 
   openNotificationDropdown: ->
     element(By.css('.dropdown-toggle')).click()

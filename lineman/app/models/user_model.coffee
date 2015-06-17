@@ -57,10 +57,6 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       @isAdminOf(discussion.group()) or
       discussion.group().membersCanEditDiscussions
 
-    canStartProposals: (discussion) ->
-      @isAdminOf(discussion.group()) or
-      discussion.group().membersCanRaiseProposals
-
     canEditProposal: (proposal) ->
       proposal.isActive() and
       proposal.canBeEdited() and

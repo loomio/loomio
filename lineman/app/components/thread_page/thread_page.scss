@@ -141,3 +141,13 @@
 .progress.active {
   float: left;
 }
+
+.start-proposal-card {
+  @include card;
+  i { color: white; }
+}
+
+.thread-start-proposal-button {
+  vertical-align: middle;
+  padding-right: 10px;
+}

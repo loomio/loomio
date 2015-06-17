@@ -10,6 +10,16 @@
   clear: both;
 }
 
+.thread-lintel__left {
+  float: left;
+  width: 75%;
+}
+
+.thread-lintel__right {
+  float: right;
+  padding: 5px;
+}
+
 .thread-lintel__logo {
   width: 30px;
   height: 30px;
@@ -20,6 +30,16 @@
 .thread-lintel__title {
   line-height: 30px;
   padding: 7px 0;
+  cursor: pointer;
+}
+
+.thread-lintel__proposal {
+  cursor: pointer;
+}
+
+.thread-lintel__proposal-pie-chart {
+  float: left;
+  padding-right: 5px;
 }
 
 .thread-lintel__go-to-end {
