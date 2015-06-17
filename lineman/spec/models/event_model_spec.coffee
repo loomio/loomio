@@ -8,7 +8,7 @@ describe 'EventModel', ->
     inject (Records) ->
       recordStore = Records
 
-    event = recordStore.events.initialize(id: 1, kind: 'comment_liked')
+    event = recordStore.events.import(id: 1, kind: 'comment_liked')
 
   #describe 'camelKind', ->
     #it 'returns a camelcased kind', ->
