@@ -4,6 +4,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     @plural: 'discussions'
     @indices: ['id', 'key', 'groupId', 'authorId']
 
+    defaultValues: ->
+      uses_markdown: true
+
     setupViews: ->
       @setupView 'comments'
       @setupView 'events', 'sequenceId'
