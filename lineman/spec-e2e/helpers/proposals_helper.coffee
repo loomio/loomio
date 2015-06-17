@@ -1,7 +1,7 @@
 module.exports = new class ProposalsHelper
   
   startProposalBtn: ->
-    element(By.css('.start-proposal-card__btn'))
+    element(By.css('.start-proposal-card .start-proposal-button__button'))
 
   fillInProposalForm: (params) ->
     element(By.css('.proposal-form__title-field')).clear().sendKeys(params.title)
