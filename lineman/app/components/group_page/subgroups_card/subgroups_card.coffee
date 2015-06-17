@@ -10,4 +10,4 @@ angular.module('loomioApp').directive 'subgroupsCard', ->
       AbilityService.canCreateSubgroups($scope.group)
 
     $scope.showSubgroupsPlaceholder = ->
-      AbilityService.canAdminister($scope.group) and $scope.group.subgroups().length == 0
+      AbilityService.canAdministerGroup($scope.group) and $scope.group.subgroups().length == 0
