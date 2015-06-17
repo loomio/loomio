@@ -21,6 +21,9 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       'user_mentioned':              'comment'
     }
 
+    delete: ->
+      @deleted = true
+
     membership: ->
       @recordStore.memberships.find(@membershipId)
 
