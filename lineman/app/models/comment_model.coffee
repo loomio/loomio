@@ -22,9 +22,6 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
     group: ->
       @discussion().group()
 
-    canBeEditedByAuthor: ->
-      @group().membersCanEditComments or @isMostRecent()
-
     isMostRecent: ->
       _.last(@discussion().comments()) == @
 
