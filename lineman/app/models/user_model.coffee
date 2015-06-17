@@ -5,7 +5,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
     @indices: ['id']
 
     initialize: (data) ->
-      @updateFromJSON(data)
+      @baseInitialize(data)
       @label = data.username
 
     setupViews: ->

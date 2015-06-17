@@ -9,7 +9,7 @@ angular.module('loomioApp').directive 'commentForm', ->
 
     $scope.submit = ->
       $scope.comment.save().then ->
-        $scope.comment = Records.comments.initialize(discussion_id: discussion.id)
+        $scope.comment = Records.comments.build(discussion_id: discussion.id)
         $scope.$emit('commentSaveSuccess')
         FlashService.success('comment_form.flash_messages.created')
 

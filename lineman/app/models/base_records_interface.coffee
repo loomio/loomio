@@ -15,13 +15,13 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient, $q) 
         console.log('request failure!', response)
         throw response
 
-    initialize: (data = {}) ->
-      @baseInitialize(data)
-
     build: (data = {}) ->
       new @model @, data
 
-    baseInitialize: (data = {}) ->
+    import: (data = {}) ->
+      @baseImport(data)
+
+    baseImport: (data = {}) ->
       if data.key?
         existingRecord = @find(data.key)
       else if data.id?

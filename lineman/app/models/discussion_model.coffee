@@ -67,7 +67,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       proposal.lastVoteAt if proposal?
 
     reader: ->
-      @recordStore.discussionReaders.initialize(id: @id)
+      @recordStore.discussionReaders.build(id: @id)
 
     readerNotLoaded: ->
       !@reader().discussionId?

@@ -16,5 +16,5 @@ angular.module('loomioApp').factory 'RecordStore', () ->
         camelName = _.camelCase(name)
         if data[snakeName]?
           _.each data[snakeName], (recordData) =>
-            @[camelName].initialize(recordData)
+            @[camelName].import(recordData)
       data
