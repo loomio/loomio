@@ -4,7 +4,7 @@ angular.module('loomioApp').directive 'threadLintel', ->
   replace: true
   controller: ($scope, CurrentUser, ScrollService) ->
     $scope.show = ->
-      $scope.scrolled && $scope.currentComponent == 'threadPage'
+      $scope.scrolled && $scope.currentComponent == 'threadPage' && $scope.discussion
 
     $scope.scrollToThread = ->
       ScrollService.scrollTo 'h1:first'
