@@ -9,7 +9,7 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
     @loadMore()
 
   @userIsAdmin = =>
-    AbilityService.canAdminister(@group)
+    AbilityService.canAdministerGroup(@group)
 
   @loadMore = =>
     Records.memberships.fetch({group_key: $routeParams.key, from: @loadedCount, per: @membershipsPerPage }).then =>

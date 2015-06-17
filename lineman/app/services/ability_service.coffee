@@ -50,7 +50,7 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
     canEditGroup: (group) ->
       @canAdministerGroup(group)
 
-    canDeactivateGroup: (group) ->
+    canArchiveGroup: (group) ->
       @canAdministerGroup(group)
 
     canEditComment: (comment) ->

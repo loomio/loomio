@@ -22,6 +22,6 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $rout
       user_id: CurrentUser.id).save()
 
   @showDescriptionPlaceholder = ->
-    AbilityService.canAdminister(@group) and !@group.description
+    AbilityService.canAdministerGroup(@group) and !@group.description
   
   return
