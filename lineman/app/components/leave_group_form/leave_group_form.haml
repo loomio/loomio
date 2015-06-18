@@ -1,13 +1,12 @@
 %form{ng-submit: 'submit()'}
   .modal-header
-    %button{type: 'button', class: 'close', ng-click: 'cancel()'}
+    %button{type: 'button', class: 'close', ng-click: '$close()'}
       %span{aria-hidden: true} &times;
       %span.sr-only{translate: 'common.action.cancel'}
     %h1.lmo-h1{translate: 'group_page.leave_group.title'}
 
   .modal-body
-    %flash{modal: 'true'}
     %span{translate: 'group_page.leave_group.question'}
   .modal-footer
     %button.btn.btn-primary{type: 'submit', translate: 'group_page.leave_group.submit'}
-    %button.btn.btn-warning{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}
+    %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}

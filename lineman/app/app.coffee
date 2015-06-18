@@ -46,9 +46,6 @@ angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootS
     {path: '/m/:key/', component: 'proposalRedirect' },
     {path: '/m/:key/:stub', component: 'proposalRedirect' },
     {path: '/m/:key/votes/new', component: 'proposalRedirect' },
-    {path: '/g/new', component: 'groupForm' },
-    {path: '/g/:parentKey/subgroups/new', component: 'groupForm'},
-    {path: '/g/:key/edit', component: 'groupForm' },
     {path: '/g/:key/memberships', component: 'membershipsPage'}
     {path: '/g/:key', component: 'groupPage' },
     {path: '/g/:key/:stub', component: 'groupPage' },

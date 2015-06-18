@@ -6,3 +6,6 @@ angular.module('loomioApp').factory 'GroupRecordsInterface', (BaseRecordsInterfa
       @fetch
         path: "#{parentGroup.id}/subgroups"
         cacheKey: "subgroupsFor#{parentGroup.key}"
+
+    archive: (group) ->
+      @restfulClient.postMember group.id, "archive"
