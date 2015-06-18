@@ -9,8 +9,11 @@ angular.module('loomioApp').directive 'membersCard', ->
     $scope.canAddMembers = ->
       AbilityService.canAddMembers($scope.group)
 
-    $scope.isAdminOf = ->
+    $scope.isAdmin = ->
       AbilityService.canAdministerGroup($scope.group)
+
+    $scope.memberIsAdmin = (member) ->
+      $scope.group.membershipFor(member).admin
 
     $scope.showMembersPlaceholder = ->
       AbilityService.canAdministerGroup($scope.group) and $scope.group.memberships().length <= 1

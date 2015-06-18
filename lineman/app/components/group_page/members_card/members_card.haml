@@ -1,5 +1,5 @@
 %section.group-page-members{aria-labelledby: 'members-card-title'}
-  .dropdown.context-menu.pull-right{ng-if: 'isAdminOf(group)'}
+  .dropdown.context-menu.pull-right{ng-if: 'isAdmin()'}
     %a.dropdown-toggle{href: ''}
       .sr-only{translate: 'group_page.member_options'}
       %i.fa.fa-lg.fa-chevron-down{aria-hidden: 'true'}
@@ -12,7 +12,7 @@
 
   .group-member-list
     .group-member-list-item{ng-repeat: 'member in group.members() | limitTo:5'}
-      .group-member-list-avatar.lg{data-username: '{{member.label}}' }
+      .group-member-list-avatar.lg{data-username: '{{member.label}}', ng-class: '{"group-coordinator": memberIsAdmin(member)}' }
         %user_avatar{user: 'member'}
     .group-page__members-placeholder.group-page-placeholder{translate: 'group_page.members_placeholder', ng-if: 'showMembersPlaceholder()' }
   .group-member-list-show-more.show-more.card-minor-action
