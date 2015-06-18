@@ -12,7 +12,7 @@ describe 'MockRecordsInterface', ->
         @plural: 'mocks'
         @indices: ['id', 'key']
 
-        initialize: (data) ->
+        import: (data) ->
           @id = data.id
           @key = data.key
 
@@ -28,8 +28,8 @@ describe 'MockRecordsInterface', ->
     beforeEach ->
       mock =  {id: 1, key: 'a'}
       otherMock = {id: 2, key:'b'}
-      recordStore.mocks.initialize(mock)
-      recordStore.mocks.initialize(otherMock)
+      recordStore.mocks.import(mock)
+      recordStore.mocks.import(otherMock)
 
     it 'looks up item by id', ->
       expect(recordStore.mocks.find(1).id).toEqual(mock.id)
