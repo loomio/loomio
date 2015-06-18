@@ -3,12 +3,11 @@ angular.module('loomioApp').directive 'subgroupsCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/subgroups_card/subgroups_card.html'
   replace: true
-  controller: ($scope, Records, CurrentUser) ->
+  controller: ($scope, Records, AbilityService) ->
     Records.groups.fetchByParent $scope.group
 
     $scope.canCreateSubgroups = ->
-      CurrentUser.isMemberOf($scope.group) and
-        ($scope.group.membersCanCreateSubgroups or CurrentUser.isAdminOf($scope.group))
+      AbilityService.canCreateSubgroups($scope.group)
 
     $scope.showSubgroupsPlaceholder = ->
-      CurrentUser.isAdminOf($scope.group) and $scope.group.subgroups().length == 0
+      AbilityService.canAdministerGroup($scope.group) and $scope.group.subgroups().length == 0

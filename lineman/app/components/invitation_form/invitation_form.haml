@@ -1,7 +1,7 @@
 .invitation-form
   .modal-header
     %h3.pull-left {{ 'invitation.invite_people' | translate }}
-    %a.close.pull-right{href: '', ng-click: 'cancel($event)'} ×
+    %a.close.pull-right{href: '', ng-click: '$close()'} ×
     .clearfix
   .modal-body
     %h4{translate: 'common.group'}
@@ -25,4 +25,4 @@
 
   .modal-footer
     %button.btn.btn-primary.invitation-form__submit{ng-click: 'submit()', ng-disabled: 'isDisabled', ng-show: 'hasInvitations()', translate: 'invitation.send_invite', translate-value-count: '{{invitationsCount()}}'}
-    %button.btn.btn-warning{ng-click: 'cancel($event)', translate: 'common.action.cancel'}
+    %button.btn.btn-warning{ng-click: '$close()', translate: 'common.action.cancel'}

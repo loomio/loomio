@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'InvitationForm', ->
   templateUrl: 'generated/components/invitation_form/invitation_form.html'
-  controller: ($scope, $modalInstance, group, InvitationsClient, Records, CurrentUser, LoadingService) ->
+  controller: ($scope, $rootScope, group, InvitationsClient, Records, CurrentUser, AbilityService, LoadingService) ->
     $scope.group = group
     $scope.invitations = []
 
@@ -88,7 +88,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
 
     $scope.availableGroups = ->
       _.filter CurrentUser.groups(), (group) ->
-        CurrentUser.canInviteTo(group)
+        AbilityService.canAddMembers(group)
 
     $scope.addInvitation = (invitation) ->
       $scope.fragment = ''
@@ -98,7 +98,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
       $scope.isDisabled = true
       invitationsClient.create(invitationsParams()).then ->
         $scope.invitations = []
-        $modalInstance.close()
+        $scope.$close()
         Records.memberships.fetchByGroup $scope.group
       , ->
         $scope.isDisabled = false
@@ -108,9 +108,5 @@ angular.module('loomioApp').factory 'InvitationForm', ->
       invitations: $scope.invitations
       group_key: $scope.group.key
       message: $scope.message
-
-    $scope.cancel = ($event) ->
-      $event.preventDefault()
-      $modalInstance.dismiss 'cancel'
 
     return

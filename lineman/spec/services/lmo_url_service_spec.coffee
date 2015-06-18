@@ -18,14 +18,24 @@ describe 'LmoUrlService', ->
       it 'gives a subgroup path', ->
         expect(@subject.group(@subgroup)).toBe("/g/#{@subgroup.key}/group-name-subgroup-name")
 
+      it 'can pass query parameters', ->
+        expect(@subject.group(@group, { utm_source: 'source'})).toBe("/g/#{@group.key}/group-name?utm_source=source")
+
     describe 'discussion', ->
       it 'gives a discussion path', ->
         expect(@subject.discussion(@thread)).toBe("/d/#{@thread.key}/discussion-title")
+
+      it 'can pass query parameters', ->
+        expect(@subject.discussion(@thread, { comment_id: '15'})).toBe("/d/#{@thread.key}/discussion-title?comment_id=15")
+
 
     describe 'proposal', ->
       it 'gives a proposal path', ->
         expect(@subject.proposal(@proposal)).toBe("/m/#{@proposal.key}/proposal-name")
 
+      it 'can pass query parameters', ->
+        expect(@subject.proposal(@proposal, { position: 'yes', utm_medium: 'medium'})).toBe("/m/#{@proposal.key}/proposal-name?position=yes&utm_medium=medium")
+
     describe 'comment', ->
       it 'gives a comment path', ->
-        expect(@subject.comment(@comment)).toBe("/d/#{@thread.key}/discussion-title#comment-#{@comment.id}")
+        expect(@subject.comment(@comment)).toBe("/d/#{@thread.key}/discussion-title?comment_id=#{@comment.id}")

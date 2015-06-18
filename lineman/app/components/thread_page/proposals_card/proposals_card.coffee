@@ -19,5 +19,6 @@ angular.module('loomioApp').directive 'proposalsCard', ->
       @selectedProposal = proposal
 
     @canStartProposal = =>
-      !@discussion.hasActiveProposal() and CurrentUser.canStartProposals(@discussion)
+      AbilityService.canStartProposal(@discussion)
+
     return

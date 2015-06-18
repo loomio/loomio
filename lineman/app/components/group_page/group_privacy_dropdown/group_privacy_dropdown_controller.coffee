@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'GroupPrivacyDropdownController', ($scope, MessageChannelService, UserAuthService, FlashService, CurrentUser) ->
+angular.module('loomioApp').controller 'GroupPrivacyDropdownController', ($scope, FlashService, AbilityService) ->
 
   $scope.savePrivacy = ->
     return true unless $scope.canEditGroup()
@@ -6,7 +6,7 @@ angular.module('loomioApp').controller 'GroupPrivacyDropdownController', ($scope
       FlashService.success('group_page.messages.privacy.' + $scope.group.visibleTo)
 
   $scope.canEditGroup = ->
-    CurrentUser.isAdminOf($scope.group)
+    AbilityService.canEditGroup($scope.group)
 
   return
   

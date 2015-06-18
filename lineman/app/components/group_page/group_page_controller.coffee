@@ -1,4 +1,5 @@
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $routeParams, $document, $timeout, Records, MessageChannelService, CurrentUser, ScrollService, ModalService, GroupWelcomeModal) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $routeParams, Records, CurrentUser, ScrollService, ModalService, MessageChannelService, GroupWelcomeModal, AbilityService) ->
+  $rootScope.$broadcast 'currentComponent', {page: 'groupPage'}
 
   $rootScope.$on 'newGroupCreated', ->
     ModalService.open GroupWelcomeModal
@@ -21,6 +22,6 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $rout
       user_id: CurrentUser.id).save()
 
   @showDescriptionPlaceholder = ->
-    CurrentUser.isAdminOf(@group) and !@group.description
+    AbilityService.canAdministerGroup(@group) and !@group.description
   
   return

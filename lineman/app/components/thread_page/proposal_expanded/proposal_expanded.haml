@@ -1,4 +1,4 @@
-.proposal-expanded{ng-show: 'proposal'}
+.proposal-expanded{ng-show: 'proposal' id: 'proposal-{{proposal.key}}'}
   %proposal_actions_dropdown{proposal: 'proposal', ng-if: 'showActionsDropdown()'}
   %h3.proposal-expanded__proposal-name {{proposal.name}}
 

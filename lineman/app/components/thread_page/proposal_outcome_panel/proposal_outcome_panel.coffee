@@ -3,18 +3,15 @@ angular.module('loomioApp').directive 'proposalOutcomePanel', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/proposal_outcome_panel/proposal_outcome_panel.html'
   replace: true
-  controller: ($scope, CurrentUser, ProposalFormService) ->
+  controller: ($scope, AbilityService, ProposalFormService) ->
 
     $scope.canCreateOutcome = ->
-      CurrentUser.canCreateOutcomeFor($scope.proposal)
-
-    $scope.currentUser = ->
-      CurrentUser
+      AbilityService.canCreateOutcomeFor($scope.proposal)
 
     $scope.openProposalOutcomeForm = ->
       ProposalFormService.openSetOutcomeModal($scope.proposal)
 
     $scope.canUpdateOutcome = ->
-     CurrentUser.canUpdateOutcomeFor($scope.proposal)
+     AbilityService.canUpdateOutcomeFor($scope.proposal)
 
     return
