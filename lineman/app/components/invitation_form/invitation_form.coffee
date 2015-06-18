@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'InvitationForm', ->
   templateUrl: 'generated/components/invitation_form/invitation_form.html'
-  controller: ($scope, $modalInstance, group, InvitationsClient, Records, CurrentUser, LoadingService) ->
+  controller: ($scope, $modalInstance, group, InvitationsClient, Records, CurrentUser, AbilityService, LoadingService) ->
     $scope.group = group
     $scope.invitations = []
 
@@ -88,7 +88,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
 
     $scope.availableGroups = ->
       _.filter CurrentUser.groups(), (group) ->
-        CurrentUser.canInviteTo(group)
+        AbilityService.canAddMembers(group)
 
     $scope.addInvitation = (invitation) ->
       $scope.fragment = ''
