@@ -6,12 +6,12 @@ angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Cur
 
   @submit = ->
     @isDisabled = true
-    @user.save().then -> 
+    Records.users.updateProfile(@user).then ->
       @isDisabled = false
       FlashService.success('profile_page.messages.updated')
       $location.path('/dashboard')
     , ->
       @isDisabled = false
-      $rootScope.$broadcast 'pageError', 'cantUpdateProfile'
+      $rootScope.$broadcast 'pageError', 'cantUpdateProfile', @user
 
   return

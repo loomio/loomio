@@ -56,7 +56,7 @@ Loomio::Application.routes.draw do
     end
     resources :invitations, only: :create
     resources :users, only: [] do
-      patch :update_profile, on: :collection
+      post :update_profile, on: :collection
     end
     resources :events, only: :index
 
