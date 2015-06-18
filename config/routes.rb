@@ -1,6 +1,8 @@
 Loomio::Application.routes.draw do
 
-  scope '/angular_support', controller: 'angular_support', path: 'angular_support', as: 'angular_support' do
+  namespace :development do
+    get 'send_email'
+    get 'last_email'
     get 'setup_group'
     get 'setup_group_for_invitations'
     get 'setup_discussion'

@@ -1,6 +1,7 @@
 describe 'Invitations', ->
 
   threadHelper = require './helpers/thread_helper.coffee'
+  emailHelper = require './helpers/email_helper.coffee'
   invitationsHelper = require './helpers/invitations_helper.coffee'
   groupsHelper = require './helpers/groups_helper.coffee'
 
@@ -39,7 +40,23 @@ describe 'Invitations', ->
       invitationsHelper.submitInvitationsForm()
       expect(groupsHelper.membersList().getText()).toContain('MVS')
 
-    # it 'successfully invites a contact', ->
+    # it 'successfully invites a user by email address', ->
     #   invitationsHelper.openInvitationsModal()
-    #   invitationsHelper.invite('keanu')
+    #   invitationsHelper.invite('max@loomio.org')
     #   invitationsHelper.submitInvitationsForm()
+    #   expect(groupsHelper.membersList().getText()).toContain('MVS')
+
+    it 'successfully invites someone by email address', ->
+      invitationsHelper.openInvitationsModal()
+      invitationsHelper.invite('mollyringwald@loomio.org')
+      invitationsHelper.submitInvitationsForm()
+      emailHelper.openLastEmail()
+      expect(emailHelper.lastEmailSubject().getText()).toContain('Patrick Swayze has invited you to join Dirty Dancing Shoes on Loomio')
+
+
+    it 'successfully invites a contact', ->
+      invitationsHelper.openInvitationsModal()
+      invitationsHelper.invite('keanu')
+      invitationsHelper.submitInvitationsForm()
+      emailHelper.openLastEmail()
+      expect(emailHelper.lastEmailSubject().getText()).toContain('Dirty Dancing Shoes')
