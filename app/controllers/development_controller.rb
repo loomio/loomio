@@ -1,5 +1,20 @@
-class AngularSupportController < ApplicationController
+class DevelopmentController < ApplicationController
   around_filter :ensure_testing_environment
+
+  def send_email
+    group = FactoryGirl.create(:group)
+    sender = group.admins.first
+    subject = "Please be aware of the important decision we're making"
+    message = "as you all know the things have been happening and we need full engagement for the next thing so please come join us"
+    recipient = FactoryGirl.create(:user)
+    GroupMailer.delay.group_email(group, sender, subject, message, recipient)
+    render text: 'sent a group annoucment email'
+  end
+
+  def last_email
+    @email = ActionMailer::Base.deliveries.last
+    render layout: false
+  end
 
   def discussion_url(discussion)
     "http://localhost:8000/d/#{discussion.key}/"
@@ -170,7 +185,7 @@ class AngularSupportController < ApplicationController
       @another_test_group.add_admin! patrick
       @another_test_group.add_member! max
     end
-    @another_test_group    
+    @another_test_group
   end
 
   def test_discussion

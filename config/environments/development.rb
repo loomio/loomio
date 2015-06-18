@@ -30,12 +30,9 @@ Loomio::Application.configure do
   #
   config.sass.line_comments = false
 
-  # config.action_mailer.asset_host = "http://localhost:3000"
-  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.delivery_method = :smtp
-
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'localhost', port: 8000 }
+  config.action_mailer.delivery_method = :test
 
   config.eager_load = false
   config.roadie.url_options = {host: 'localhost'}
