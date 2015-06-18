@@ -9,3 +9,4 @@ angular.module('loomioApp').controller 'GroupPrivacyDropdownController', ($scope
     CurrentUser.isAdminOf($scope.group)
 
   return
+  
