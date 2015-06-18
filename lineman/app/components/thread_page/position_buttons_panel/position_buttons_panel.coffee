@@ -12,5 +12,5 @@ angular.module('loomioApp').directive 'positionButtonsPanel', ->
       myVote = $scope.proposal.lastVoteByUser(CurrentUser) or {}
       $scope.select position, myVote.statement
 
-    $scope.select = (position, statement = '') ->
-      ModalService.open(VoteForm, vote: -> Records.votes.initialize(proposal_id: $scope.proposal.id, position: position, statement: statement))
+    $scope.select = (position) ->
+      ModalService.open(VoteForm, vote: -> Records.votes.build(proposal_id: $scope.proposal.id, position: position))

@@ -20,7 +20,7 @@ angular.module('loomioApp').directive 'discussionsCard', ->
 
     $scope.openDiscussionForm = ->
       ModalService.open DiscussionForm,
-                        discussion: -> Records.discussions.initialize(group_id: $scope.group.id)
+                        discussion: -> Records.discussions.build(group_id: $scope.group.id)
 
     KeyEventService.registerKeyEvent $scope, 'pressedT', $scope.openDiscussionForm
 

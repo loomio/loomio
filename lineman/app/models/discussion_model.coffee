@@ -4,6 +4,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     @plural: 'discussions'
     @indices: ['id', 'key', 'groupId', 'authorId']
 
+    defaultValues: ->
+      uses_markdown: true
+
     setupViews: ->
       @setupView 'comments'
       @setupView 'events', 'sequenceId'
@@ -64,7 +67,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       proposal.lastVoteAt if proposal?
 
     reader: ->
-      @recordStore.discussionReaders.initialize(id: @id)
+      @recordStore.discussionReaders.build(id: @id)
 
     readerNotLoaded: ->
       !@reader().discussionId?

@@ -1,4 +1,5 @@
 %form.discussion-form{name: 'discussionForm', ng_submit: 'submit()', ng-disabled: 'discussion.processing'}
+  %input{type: 'hidden', ng-model: 'discussion.usesMarkdown'}
   .modal-header
     %button{type: 'button', class: 'close', ng-click: '$close()'}
       %span{aria-hidden: true} &times;
@@ -19,11 +20,11 @@
     .discussion-group-selected{ng_show: 'discussion.groupId'}
       .form-group
         %label{for: 'discussion-title-field', translate: 'discussion_form.title_label'}
-        %input#discussion-title-field.form-control{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: 'discussion.title', ng-required: 'true'}
+        %input.form-control.discussion-form__title-input{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: 'discussion.title', ng-required: 'true'}
 
       .form-group
         %label{for: 'discussion-context-field', translate: 'discussion_form.context_label'}
-        %textarea#discussion-context-field.form-control{ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
+        %textarea.form-control.discussion-form__description-input{ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
 
       .form-group{ng_show: 'showPrivacyForm()'}
         .privacy-form-option
@@ -51,6 +52,6 @@
           %span.label-with-details-details{ng_show: 'discussion.group().isVisibleToParentMembers', translate: 'discussion_form.privacy.will_be_private_to_parent_group', translate-value-group-name: '{{::discussion.groupName()}}', translate-value-parent-group-name: '{{discussion.group().parentName()}}'}
           %span.label-with-details-details{ng_hide: 'discussion.group().isVisibleToParentMembers', translate: 'discussion_form.privacy.will_be_private_to_group', translate-value-group-name: '{{discussion.groupName()}}'}
   .modal-footer
-    %button.btn.btn-primary{type: 'submit', translate: 'discussion_form.new_discussion_submit', ng_show: 'discussion.isNew()' }
-    %button.btn.btn-primary{type: 'submit', translate: 'discussion_form.edit_discussion_submit', ng_hide: 'discussion.isNew()' }
-    %button.btn.btn-warning{type: 'button', ng-click: '$close()', translate: 'common.action.cancel'}
+    %button.btn.btn-primary.discussion-form__submit{type: 'submit', translate: 'discussion_form.new_discussion_submit', ng_show: 'discussion.isNew()' }
+    %button.btn.btn-primary.discussion-form__submit{type: 'submit', translate: 'discussion_form.edit_discussion_submit', ng_hide: 'discussion.isNew()' }
+    %button.btn.btn-warning.discussion-form__cancel{type: 'button', ng-click: '$close()', translate: 'common.action.cancel'}

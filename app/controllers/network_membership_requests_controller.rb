@@ -17,18 +17,28 @@ class NetworkMembershipRequestsController < BaseController
   end
 
   def approve
-    @network = Network.friendly.find params[:network_id]
-    @request = @network.membership_requests.find params[:id]
-    NetworkMembershipRequestService.approve(network_membership_request: @request, actor: current_user)
-    flash[:notice] = I18n.t(:'networks.request_approved')
-    redirect_to @network
+    process_membership_request approve: true
   end
 
   def decline
+    process_membership_request approve: false
+  end
+
+  private
+
+  def process_membership_request(approve:)
     @network = Network.friendly.find params[:network_id]
-    @request = @network.membership_requests.find params[:id]
-    NetworkMembershipRequestService.decline(network_membership_request: @request, actor: current_user)
-    flash[:notice] = I18n.t(:'networks.request_declined')
+    if approve
+      NetworkMembershipRequestService.approve process_params
+      flash[:notice] = I18n.t(:"networks.request_approved")
+    else
+      NetworkMembershipRequestService.decline process_params
+      flash[:notice] = I18n.t(:"networks.request_approved")
+    end
     redirect_to @network
+  end
+
+  def process_params
+    { network_membership_request: @network.membership_requests.find(params[:id]), actor: current_user }
   end
 end
