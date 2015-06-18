@@ -1,22 +1,18 @@
 angular.module('loomioApp').directive 'flash', ->
-  scope: {modal: '='}
   restrict: 'E'
   templateUrl: 'generated/components/flash/flash.html'
   replace: true
   controllerAs: 'flash'
   controller: ($scope, $timeout, FlashService) ->
-    @pendingDismiss = null
+    $scope.pendingDismiss = null
 
     $scope.$on 'flashMessage', (event, flash) =>
-      @flash = flash
-      $timeout.cancel @pendingDismiss if @pendingDismiss?
-      @pendingDismiss = $timeout @dismiss, 2000
+      $scope.flash = _.merge flash, { visible: true }
+      $timeout.cancel $scope.pendingDismiss if $scope.pendingDismiss?
+      $scope.pendingDismiss = $timeout $scope.dismiss, 2500
 
-    @modalIsVisible = ->
-      angular.element('.modal').hasClass('in')
-
-    @display = => @flash and (@modal == @modalIsVisible())
-    @dismiss = => @flash = null
+    $scope.display = -> $scope.flash.visible
+    $scope.dismiss = -> $scope.flash.visible = false
 
     FlashService.success window.Loomio.flash.success if window.Loomio.flash.success?
     FlashService.info    window.Loomio.flash.notice  if window.Loomio.flash.notice?

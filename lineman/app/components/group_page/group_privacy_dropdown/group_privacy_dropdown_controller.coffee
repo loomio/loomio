@@ -9,3 +9,4 @@ angular.module('loomioApp').controller 'GroupPrivacyDropdownController', ($scope
     AbilityService.canEditGroup($scope.group)
 
   return
+  
