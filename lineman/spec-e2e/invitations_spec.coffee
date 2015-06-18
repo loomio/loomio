@@ -40,14 +40,23 @@ describe 'Invitations', ->
       invitationsHelper.submitInvitationsForm()
       expect(groupsHelper.membersList().getText()).toContain('MVS')
 
-    iit 'invites someone by email address', ->
+    # it 'successfully invites a user by email address', ->
+    #   invitationsHelper.openInvitationsModal()
+    #   invitationsHelper.invite('max@loomio.org')
+    #   invitationsHelper.submitInvitationsForm()
+    #   expect(groupsHelper.membersList().getText()).toContain('MVS')
+
+    it 'successfully invites someone by email address', ->
       invitationsHelper.openInvitationsModal()
-      invitationsHelper.invite('keanu@reeves.com')
+      invitationsHelper.invite('mollyringwald@loomio.org')
       invitationsHelper.submitInvitationsForm()
       emailHelper.openLastEmail()
+      expect(emailHelper.lastEmailSubject().getText()).toContain('Patrick Swayze has invited you to join Dirty Dancing Shoes on Loomio')
 
 
-    # it 'successfully invites a contact', ->
-    #   invitationsHelper.openInvitationsModal()
-    #   invitationsHelper.invite('keanu')
-    #   invitationsHelper.submitInvitationsForm()
+    it 'successfully invites a contact', ->
+      invitationsHelper.openInvitationsModal()
+      invitationsHelper.invite('keanu')
+      invitationsHelper.submitInvitationsForm()
+      emailHelper.openLastEmail()
+      expect(emailHelper.lastEmailSubject().getText()).toContain('Dirty Dancing Shoes')

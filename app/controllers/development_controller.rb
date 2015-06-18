@@ -34,7 +34,7 @@ class DevelopmentController < ApplicationController
   def setup_group_for_invitations
     setup_group
     another_test_group
-    give_patrick_a_friend
+    patricks_contact
   end
 
   def setup_discussion
@@ -143,7 +143,7 @@ class DevelopmentController < ApplicationController
                               angular_ui_enabled: true)
   end
 
-  def give_patrick_a_friend
+  def patricks_contact
     if patrick.contacts.empty?
       patrick.contacts.create(name: 'Keanu Reeves',
                               email: 'keanu@loomio.org',
@@ -216,5 +216,6 @@ class DevelopmentController < ApplicationController
   def cleanup_database
     User.delete_all
     Group.delete_all
+    ActionMailer::Base.deliveries = []
   end
 end
