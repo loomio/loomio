@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, CurrentUser, ModalService, DiscussionForm, ScrollService, AbilityService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, ScrollService, AbilityService) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
   @performScroll = ->
@@ -57,7 +57,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     AbilityService.canStartProposal(@discussion)
 
   @canEditDiscussion = =>
-    CurrentUser.canEditDiscussion(@discussion)
+    AbilityService.canEditThread(@discussion)
 
   @proposalInView = ($inview) ->
     $rootScope.$broadcast 'proposalInView', $inview

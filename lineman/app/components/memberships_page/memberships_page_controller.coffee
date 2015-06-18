@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, Records, LoadingService, CurrentUser) ->
+angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, Records, LoadingService, AbilityService) ->
   $rootScope.$broadcast('currentComponent', { page: 'membershipsPage'})
 
   @loadedCount = 0
@@ -9,7 +9,7 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
     @loadMore()
 
   @userIsAdmin = =>
-    CurrentUser.isAdminOf(@group)
+    AbilityService.canAdministerGroup(@group)
 
   @loadMore = =>
     Records.memberships.fetch({group_key: $routeParams.key, from: @loadedCount, per: @membershipsPerPage }).then =>
