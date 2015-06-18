@@ -15,7 +15,14 @@ angular.module('loomioApp').factory 'BaseModel', ->
       _.merge @, postInitializeData
       @setupViews() if @setupViews? and @id?
 
+    defaultValues: ->
+      {}
+
     initialize: (data) ->
+      @baseInitialize(data)
+
+    baseInitialize: (data) ->
+      @updateFromJSON(@defaultValues())
       @updateFromJSON(data)
 
     clone: ->

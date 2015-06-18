@@ -16,6 +16,12 @@ class AngularSupportController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def setup_group_for_invitations
+    setup_group
+    another_test_group
+    give_patrick_a_friend
+  end
+
   def setup_discussion
     cleanup_database
     test_discussion
@@ -122,6 +128,14 @@ class AngularSupportController < ApplicationController
                               angular_ui_enabled: true)
   end
 
+  def give_patrick_a_friend
+    if patrick.contacts.empty?
+      patrick.contacts.create(name: 'Keanu Reeves',
+                              email: 'keanu@loomio.org',
+                              source: 'gmail')
+    end
+  end
+
   def jennifer
     @jennifer ||= User.create!(name: 'Jennifer Grey',
                                email: 'jennifer_grey@loomio.org',
@@ -148,6 +162,15 @@ class AngularSupportController < ApplicationController
       @test_group.add_member! jennifer
     end
     @test_group
+  end
+
+  def another_test_group
+    unless @another_test_group
+      @another_test_group = Group.create!(name: 'Point Break')
+      @another_test_group.add_admin! patrick
+      @another_test_group.add_member! max
+    end
+    @another_test_group    
   end
 
   def test_discussion

@@ -7,6 +7,7 @@ en:
     closed_ago: 'Closed {{time}}'
     volume: 'Volume'
     notification_volume: 'Notification Volume'
+    group: 'Group'
     groups: 'Groups'
     privacy:
       private: 'Private'
@@ -125,6 +126,7 @@ en:
 
   start_menu:
     start_group: 'Start Group'
+    start_subgroup: 'Start Subgroup'
     start_thread: 'Start Thread'
     invite_people: 'Invite People'
 
@@ -372,10 +374,11 @@ en:
     import_contacts_header: 'Connect your address book'
     import_contacts_message: 'Inviting people to Loomio is much easier if you import your contacts from Google.'
     import_contacts: 'Import contacts'
-    instructions: 'Type names or email addresses for people you want to invite'
+    instructions: 'Enter names or email addresses'
     invitation_message: 'Invitation Message'
-    send_invite: 'Send invites'
-    to: 'to'
+    send_invite: 'Send {{count}} invites'
+    to: 'to: '
+    default_message: "Hey there, come make decisions with us! We're using a collaborative decision-making tool called Loomio"
 
   memberships_page:
     members: 'Members'

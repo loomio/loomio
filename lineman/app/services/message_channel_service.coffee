@@ -18,7 +18,7 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope,
             if comment = Records.comments.find(memo.data.comment_id)
               comment.destroy()
           when 'comment_updated'
-            Records.comments.initialize(memo.data.comment)
+            Records.comments.import(memo.data.comment)
             Records.import(memo.data)
           when 'comment_unliked'
             if comment = Records.comments.find(memo.data.comment_id)

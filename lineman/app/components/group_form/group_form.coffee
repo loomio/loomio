@@ -8,7 +8,7 @@ angular.module('loomioApp').factory 'GroupForm', ->
         @group = group
     else if $routeParams.parentKey
       Records.groups.findOrFetchByKey($routeParams.parentKey).then (parent) =>
-        @group = Records.groups.initialize
+        @group = Records.groups.build
           parentId:                   parent.id
           visibleTo:                  parent.visibleTo
           membershipGrantedUpon:      parent.membershipGrantedUpon
@@ -21,7 +21,7 @@ angular.module('loomioApp').factory 'GroupForm', ->
           membersCanRaiseMotions:     parent.membersCanRaiseMotions
           membersCanVote:             parent.membersCanVote
     else
-      @group = Records.groups.initialize
+      @group = Records.groups.build
         visibleTo: 'public',
         membershipGrantedUpon: 'request',
         discussionPrivacyOptions: 'public_only'

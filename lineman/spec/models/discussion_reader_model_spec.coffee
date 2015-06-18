@@ -10,9 +10,9 @@ describe 'DiscussionReaderModel', ->
     inject (Records) ->
       recordStore = Records
 
-    discussion = recordStore.discussions.initialize(id: 1, title: 'Hi')
-    reader = recordStore.discussionReaders.initialize(discussion_id: 1)
-    item = recordStore.events.initialize(id:1, discussion_id: 1, createdAt: 'yesterday', sequenceId: 1)
+    discussion = recordStore.discussions.import(id: 1, title: 'Hi')
+    reader = recordStore.discussionReaders.import(discussion_id: 1)
+    item = recordStore.events.import(id:1, discussion_id: 1, createdAt: 'yesterday', sequenceId: 1)
 
   describe 'markItemAsRead', ->
     beforeEach ->

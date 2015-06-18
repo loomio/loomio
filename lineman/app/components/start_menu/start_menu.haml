@@ -1,9 +1,11 @@
 .start-menu
-  .start-menu__modal-backdrop.modal-backdrop{ng-show: 'startMenuOpen', modal-window: true}
+  .start-menu__modal-backdrop.modal-backdrop{ng-show: 'startMenuOpen', modal-window: true, ng-click: 'toggleStartMenu() ||'}
   %ul.start-menu__options.start-menu__over-modal{ng-if: 'startMenuOpen'}
-    %start_menu_option{text: 'invite_people', icon: 'user', action: 'invitePeople'}
-    %start_menu_option{text: 'start_group', icon: 'group', action: 'startGroup'}
-    %start_menu_option{text: 'start_thread', icon: 'pencil', action: 'startThread'}
+    %start_menu_option{text: 'invite_people', icon: 'user', action: 'invitePeople', group: 'currentGroup'}
+    %start_menu_option{text: 'start_group', icon: 'group', action: 'startGroup', group: 'currentGroup'}
+    %start_menu_option{text: 'start_subgroup', icon: 'group', action: 'startSubgroup', group: 'currentGroup', ng-show: 'showSubgroupAction()'}
+    %start_menu_option{text: 'start_thread', icon: 'pencil', action: 'startThread', group: 'currentGroup'}
+
   %a.start-menu__start-button.start-menu__menu-button.start-menu__over-modal{href: '', ng-click: 'toggleStartMenu()'}
     %i.fa.fa-plus.fa-2x{ng-if: '!startMenuOpen'}
     %i.fa.fa-times.fa-2x{ng-if: 'startMenuOpen'}

@@ -1,5 +1,6 @@
 class DashboardController <  GroupBaseController
   include ApplicationHelper
+  include DiscussionIndexCacheHelper
   after_filter :clear_discussion_index_caches, only: :show
 
   def show

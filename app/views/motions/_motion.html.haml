@@ -51,16 +51,10 @@
         (#{motion.block_votes_count})
 
   .percentage-to-vote
-    - if motion.closed?
-      = t :engagement_on_closed_proposal,
-          percent: motion.percent_voted,
-          numerator: (motion.group_size_when_voting - motion.members_not_voted_count),
-          denominator:  motion.group_size_when_voting
-    - else
-      = t :engagement_on_open_proposal,
-          percent: motion.percent_voted,
-          numerator: (motion.group_size_when_voting - motion.members_not_voted_count),
-          denominator:  motion.group_size_when_voting
+    = t :engagement_on_open_proposal,
+        percent: motion.percent_voted,
+        numerator: motion.voters.count,
+        denominator: motion.group_size_when_voting
 
   .votes
     - if can?(:vote, motion) && motion.user_has_not_voted?(current_user)

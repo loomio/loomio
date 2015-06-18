@@ -1,6 +1,8 @@
 Loomio::Application.routes.draw do
 
   scope '/angular_support', controller: 'angular_support', path: 'angular_support', as: 'angular_support' do
+    get 'setup_group'
+    get 'setup_group_for_invitations'
     get 'setup_discussion'
     get 'setup_discussion_with_comment'
     get 'setup_proposal'
@@ -48,10 +50,10 @@ Loomio::Application.routes.draw do
     resources :memberships, only: [:index, :create, :update, :destroy] do
       get :autocomplete, on: :collection
       get :my_memberships, on: :collection
+      get :invitables, on: :collection
       patch :make_admin, on: :member
       patch :remove_admin, on: :member
     end
-    resources :invitables, only: :index
     resources :invitations, only: :create
     resources :users, only: :update
     resources :events, only: :index
@@ -86,6 +88,10 @@ Loomio::Application.routes.draw do
       post :viewed, on: :collection
     end
 
+    resources :contacts, only: :index do
+      get :import, on: :collection
+    end
+
     resources :search_results, only: :index
 
     resources :contact_messages, only: :create
@@ -102,7 +108,6 @@ Loomio::Application.routes.draw do
       resources :sessions, only: [:create, :destroy]
     end
     get '/attachments/credentials',      to: 'attachments#credentials'
-    get  '/contacts/import',             to: 'contacts#import'
     get  '/contacts/:importer/callback', to: 'contacts#callback'
   end
 
