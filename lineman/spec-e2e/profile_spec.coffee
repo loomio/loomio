@@ -14,3 +14,4 @@ describe 'Profile', ->
       profileHelper.visitProfilePage()
       expect(profileHelper.nameInput().getAttribute('value')).toContain('Ferris Bueller')
       expect(profileHelper.usernameInput().getAttribute('value')).toContain('ferrisbueller')
+      expect(profileHelper.emailInput().getAttribute('value')).toContain('ferris@loomio.org')
