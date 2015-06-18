@@ -61,7 +61,7 @@ describe 'DiscussionModel', ->
 
   describe 'reader', ->
 
-    xit "returns the discussion reader associated with this discussion", ->
+    it "returns the discussion reader associated with this discussion", ->
       expect(discussion.reader()).toBe(discussionReader)
 
   describe 'clone()', ->

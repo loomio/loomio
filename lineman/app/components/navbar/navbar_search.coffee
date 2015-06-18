@@ -105,7 +105,7 @@ angular.module('loomioApp').directive 'navbarSearch', ->
         $scope.searching = true
         Records.searchResults.fetchByFragment($scope.query).then (response) ->
           $scope.searchResults = _.map response.search_results, (result) ->
-            Records.searchResults.build result
+            Records.searchResults.import result
 
           if $scope.currentSearchQuery == query
             $scope.searching = false
