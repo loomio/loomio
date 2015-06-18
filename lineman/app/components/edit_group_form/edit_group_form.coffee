@@ -1,5 +1,5 @@
 angular.module('loomioApp').factory 'EditGroupForm', ->
-  templateUrl: 'generated/components/group_form/edit_group_form.html'
+  templateUrl: 'generated/components/edit_group_form/edit_group_form.html'
   controller: ($scope, $rootScope, group, FlashService, Records) ->
     $scope.group = group.clone()
 

@@ -1,5 +1,5 @@
 angular.module('loomioApp').factory 'ArchiveGroupForm', ->
-  templateUrl: 'generated/components/group_form/archive_group_form.html'
+  templateUrl: 'generated/components/archive_group_form/archive_group_form.html'
   controller: ($scope, $rootScope, $location, group, FlashService, Records) ->
     $scope.group = group
 
