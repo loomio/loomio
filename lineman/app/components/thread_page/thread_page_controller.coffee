@@ -1,6 +1,12 @@
 angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, ScrollService, AbilityService) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
+  handleCommentHash = (->
+    if match = $location.hash().match /comment-(\d+)/
+      $location.search().comment = match[1]
+      $location.hash('')
+  )()
+
   @performScroll = ->
     if (elementToFocus = @elementToFocus()) && !@scrolledAlready
       ScrollService.scrollTo elementToFocus
@@ -11,6 +17,8 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       if (position = $location.search().position) and AbilityService.canVoteOn(proposal)
         $rootScope.$broadcast 'triggerVoteForm', position
       "#proposal-#{proposal.key}"
+    if comment = Records.comments.find($location.search().comment)
+      "#comment-#{comment.key}"
     else if @discussion.lastSequenceId == 0 or @sequenceIdToFocus == -1
       ".thread-context"
     else if Records.events.findByDiscussionAndSequenceId(@discussion, @sequenceIdToFocus)

@@ -11,7 +11,7 @@ angular.module('loomioApp').factory 'LmoUrlService', ->
       "/m/#{p.key}/#{@stub(p.name)}#{@queryStringFor(params)}"
 
     comment: (c, params = {}) ->
-      @discussion c.discussion(), _.merge(params, {comment_id: c.id})
+      @discussion c.discussion(), _.merge(params, {comment: c.key})
 
     stub: (name) ->
       name.replace(/[^a-z0-9\-_]+/gi, '-').replace(/-+/g, '-').toLowerCase()

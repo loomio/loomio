@@ -38,4 +38,7 @@ describe 'LmoUrlService', ->
 
     describe 'comment', ->
       it 'gives a comment path', ->
-        expect(@subject.comment(@comment)).toBe("/d/#{@thread.key}/discussion-title?comment_id=#{@comment.id}")
+        expect(@subject.comment(@comment)).toBe("/d/#{@thread.key}/discussion-title?comment=#{@comment.key}")
+
+      it 'can pass query parameters', ->
+        expect(@subject.comment(@comment, { scroll: 'yes' })).toBe("/d/#{@thread.key}/discussion-title?comment=#{@comment.key}&scroll=yes")
