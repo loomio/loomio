@@ -55,6 +55,9 @@ Loomio::Application.routes.draw do
       patch :remove_admin, on: :member
     end
     resources :invitations, only: :create
+    resources :users, only: [] do
+      post :update_profile, on: :collection
+    end
     resources :events, only: :index
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do

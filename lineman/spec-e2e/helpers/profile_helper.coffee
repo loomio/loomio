@@ -1,6 +1,8 @@
 module.exports = new class ProfileHelper
-  load: ->
-    browser.get('http://localhost:8000/angular_support/setup_user_profile')
+
+  visitProfilePage: ->
+    element(By.css('.navbar-user-options button')).click()
+    element(By.css('.navbar-user-options__profile-link')).click()
 
   updateProfile: (name, username, email) ->
     @changeName(name)
@@ -8,14 +10,23 @@ module.exports = new class ProfileHelper
     @changeEmail(email)
     @submitForm()
 
+  nameInput: ->
+    element(By.css('.profile-page__name-input'))
+
+  usernameInput: ->
+    element(By.css('.profile-page__username-input'))
+
+  emailInput: ->
+    element(By.css('.profile-page__email-input'))
+
   changeName: (text) ->
-    element(By.css('#name-field')).sendKeys(text or 'My New name')
+    @nameInput().clear().sendKeys(text or 'My New name')
 
   changeUsername: (text) ->
-    element(By.css('#username-field')).sendKeys(text or 'mynewusername')
+    @usernameInput().clear().sendKeys(text or 'mynewusername')
 
   changeEmail: (text) ->
-    element(By.css('#email-field')).sendKeys(text or 'mynew@email.com')
+    @emailInput().clear().sendKeys(text or 'mynew@email.com')
 
   submitForm: ->
-    element(By.css('')).click()
+    element(By.css('.profile-page__update-button')).click()
