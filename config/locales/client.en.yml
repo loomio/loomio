@@ -392,6 +392,8 @@ en:
     see_more_members: 'See more members'
 
   profile_page:
+    messages:
+      updated: 'Profile updated'
     profile: 'Profile'
     edit_profile: 'Edit Profile'
     picture_label: 'Picture'
