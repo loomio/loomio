@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 
 ruby '2.2.0'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 4.2.2'
 gem 'rake'
-gem 'pg', '~> 0.18.1'
+gem 'pg', '~> 0.18.2'
 gem 'pg_search', '~> 1.0.3'
 gem 'haml-rails'
 gem 'devise', '~> 3.4.1'
