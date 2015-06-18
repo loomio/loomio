@@ -2,4 +2,6 @@
   @include card;
   padding-bottom: 0;
   border-bottom: none;
+  max-height: 320px;
+  overflow: scroll;
 }

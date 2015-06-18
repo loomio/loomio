@@ -12,9 +12,13 @@
   float: right;
 }
 
-.groups-page__group {
+.groups-page__groups {
   @include card;
   width: 100%;
+}
+
+.groups-page__group{
+  margin-bottom: 1em;
 }
 
 .groups-page__group-logo{
