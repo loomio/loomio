@@ -1,6 +1,6 @@
 module.exports = new class InvitationsHelper
   load: ->
-    browser.get('http://localhost:8000/angular_support/setup_group_for_invitations')
+    browser.get('http://localhost:8000/development/setup_group_for_invitations')
 
   openInvitationsModal: (group) ->
     element(By.css('.start-menu__start-button')).click()

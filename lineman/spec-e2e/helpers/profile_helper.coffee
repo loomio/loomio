@@ -1,6 +1,6 @@
 module.exports = new class ProfileHelper
   load: ->
-    browser.get('http://localhost:8000/angular_support/setup_user_profile')
+    browser.get('http://localhost:8000/development/setup_user_profile')
 
   updateProfile: (name, username, email) ->
     @changeName(name)

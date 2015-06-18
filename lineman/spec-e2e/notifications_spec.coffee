@@ -1,6 +1,6 @@
 describe 'Notifications', ->
   it 'has all the notifications', ->
-    browser.get('http://localhost:8000/angular_support/setup_all_notifications')
+    browser.get('http://localhost:8000/development/setup_all_notifications')
 
     unreadCount = ->
       element(By.css('.notifications__activity')).getText()

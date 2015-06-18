@@ -1,18 +1,18 @@
 module.exports = new class ThreadHelper
   load: ->
-    browser.get('http://localhost:8000/angular_support/setup_discussion')
+    browser.get('http://localhost:8000/development/setup_discussion')
 
   loadWithActiveProposal: ->
-    browser.get('http://localhost:8000/angular_support/setup_proposal')
+    browser.get('http://localhost:8000/development/setup_proposal')
 
   loadWithActiveProposalWithVote: ->
-    browser.get('http://localhost:8000/angular_support/setup_proposal_with_vote')
+    browser.get('http://localhost:8000/development/setup_proposal_with_vote')
 
   loadWithClosedProposal: ->
-    browser.get('http://localhost:8000/angular_support/setup_closed_proposal')
+    browser.get('http://localhost:8000/development/setup_closed_proposal')
 
   loadWithSetOutcome: ->
-    browser.get('http://localhost:8000/angular_support/setup_closed_proposal_with_outcome')
+    browser.get('http://localhost:8000/development/setup_closed_proposal_with_outcome')
 
   addComment: (body) ->
     @enterCommentText(body)

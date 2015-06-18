@@ -1,6 +1,7 @@
 describe 'Invitations', ->
 
   threadHelper = require './helpers/thread_helper.coffee'
+  emailHelper = require './helpers/email_helper.coffee'
   invitationsHelper = require './helpers/invitations_helper.coffee'
   groupsHelper = require './helpers/groups_helper.coffee'
 
@@ -38,6 +39,13 @@ describe 'Invitations', ->
       invitationsHelper.invite('Point')
       invitationsHelper.submitInvitationsForm()
       expect(groupsHelper.membersList().getText()).toContain('MVS')
+
+    iit 'invites someone by email address', ->
+      invitationsHelper.openInvitationsModal()
+      invitationsHelper.invite('keanu@reeves.com')
+      invitationsHelper.submitInvitationsForm()
+      emailHelper.openLastEmail()
+
 
     # it 'successfully invites a contact', ->
     #   invitationsHelper.openInvitationsModal()
