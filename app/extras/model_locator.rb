@@ -6,7 +6,7 @@ ModelLocator = Struct.new(:model, :params) do
     elsif key_param = params[:"#{model}_key"]
       resource_class.find_by key: key_param
     else
-      resource_class.friendly.find_by id: params[:id]
+      resource_class.friendly.find params[:id]
     end
   end
 
