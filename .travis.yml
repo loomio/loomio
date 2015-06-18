@@ -8,7 +8,7 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 install:
-  - bundle install --path vendor/bundle
+  - bundle install
   - cd lineman
   - npm install -g bower
   - npm install -g protractor
