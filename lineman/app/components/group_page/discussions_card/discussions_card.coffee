@@ -25,7 +25,7 @@ angular.module('loomioApp').directive 'discussionsCard', ->
     KeyEventService.registerKeyEvent $scope, 'pressedT', $scope.openDiscussionForm
 
     $scope.showThreadsPlaceholder = ->
-      AbilityService.canAdminister($scope.group) and $scope.group.discussions().length <= 1
+      AbilityService.canAdministerGroup($scope.group) and $scope.group.discussions().length <= 1
 
     $scope.whyImEmpty = ->
       if !$scope.group.hasDiscussions
