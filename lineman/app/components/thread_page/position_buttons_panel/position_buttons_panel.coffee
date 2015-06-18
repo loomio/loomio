@@ -8,5 +8,9 @@ angular.module('loomioApp').directive 'positionButtonsPanel', ->
     $scope.undecided = ->
       !($scope.proposal.lastVoteByUser(CurrentUser)?)
 
+    $scope.$on 'triggerVoteForm', (event, position) ->
+      myVote = $scope.proposal.lastVoteByUser(CurrentUser) or {}
+      $scope.select position, myVote.statement
+
     $scope.select = (position) ->
       ModalService.open(VoteForm, vote: -> Records.votes.build(proposal_id: $scope.proposal.id, position: position))

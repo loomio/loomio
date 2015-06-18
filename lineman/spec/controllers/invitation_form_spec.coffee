@@ -13,7 +13,6 @@ describe 'InvitationFormController', ->
     @membership  = @factory.create 'memberships', userId: @currentUser.id, groupId: @group.id, admin: true
     window.useCurrentUser @currentUser
 
-($scope, group, InvitationsClient, Records, CurrentUser, AbilityService, LoadingService)
   beforeEach inject (InvitationForm, $rootScope, InvitationsClient, Records, CurrentUser, AbilityService, LoadingService) ->
     @scope = $rootScope.$new()
     @controller = InvitationForm.controller(@scope, $rootScope, @group, InvitationsClient, Records, CurrentUser, AbilityService, LoadingService)

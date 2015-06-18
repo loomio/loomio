@@ -7,17 +7,14 @@ angular.module('loomioApp').directive 'previousProposalsCard', ->
 
     Records.votes.fetchMyVotesByDiscussion($scope.discussion)
     Records.proposals.fetchByDiscussion($scope.discussion).then ->
-      if target = $location.hash().match /^proposal-(\d+)$/
-        if proposal = Records.proposals.find(parseInt(target[1]))
-          $scope.selectProposal(proposal)
-          selectedProposalId = proposal.id
-      $rootScope.$broadcast 'threadPageProposalsLoaded', selectedProposalId
+      if proposal = Records.proposals.find($location.search().proposal)
+        $scope.selectProposal(proposal)
+      $rootScope.$broadcast 'threadPageProposalsLoaded'
 
     $scope.selectedProposalId = 0
 
     $scope.anyProposals = ->
       $scope.discussion.closedProposals().length > 0
-
 
     $scope.$on 'collapseProposal', (event) ->
       $scope.selectedProposalId = 0

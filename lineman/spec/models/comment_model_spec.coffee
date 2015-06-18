@@ -42,23 +42,23 @@ describe 'CommentModel', ->
       newComment = recordStore.comments.import(id: 6, discussion_id: 1, created_at: "2000-01-05T00:00:10")
       expect(comment.isMostRecent()).toBe(false)
 
-  describe 'canBeEditedByAuthor', ->
-    describe 'members Can Edit', ->
-      it 'is true', ->
-        group.membersCanEditComments = true
-        expect(comment.canBeEditedByAuthor()).toBe(true)
+  # describe 'canBeEditedByAuthor', ->
+  #   describe 'members Can Edit', ->
+  #     it 'is true', ->
+  #       group.membersCanEditComments = true
+  #       expect(comment.canBeEditedByAuthor()).toBe(true)
 
-    describe 'members Cannot edit', ->
-      beforeEach ->
-        group.membersCanEditComments = false
+  #   describe 'members Cannot edit', ->
+  #     beforeEach ->
+  #       group.membersCanEditComments = false
 
-      it 'is true when is most recent comment', ->
-        expect(comment.isMostRecent()).toBe(true)
-        expect(comment.canBeEditedByAuthor()).toBe(true)
+  #     it 'is true when is most recent comment', ->
+  #       expect(comment.isMostRecent()).toBe(true)
+  #       expect(comment.canBeEditedByAuthor()).toBe(true)
 
-      it 'is false when is is not most recent comment', ->
-        newComment = recordStore.comments.import(id: 9, discussion_id: 1, created_at: "2000-04-01T00:00:20")
-        expect(comment.isMostRecent()).toBe(false)
-        expect(comment.canBeEditedByAuthor()).toBe(false)
+  #     it 'is false when is is not most recent comment', ->
+  #       newComment = recordStore.comments.import(id: 9, discussion_id: 1, created_at: "2000-04-01T00:00:20")
+  #       expect(comment.isMostRecent()).toBe(false)
+  #       expect(comment.canBeEditedByAuthor()).toBe(false)
 
 

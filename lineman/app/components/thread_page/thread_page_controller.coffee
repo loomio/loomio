@@ -2,14 +2,15 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
   @performScroll = ->
-    elementToFocus = @elementToFocus()
-    if elementToFocus && !@scrolledAlready
+    if (elementToFocus = @elementToFocus()) && !@scrolledAlready
       ScrollService.scrollTo elementToFocus
       @scrolledAlready = true
 
   @elementToFocus = ->
-    if $location.hash().match(/^proposal-\d+$/) and Records.proposals.find(@focusedProposalId)
-      "#proposal-#{@focusedProposalId}"
+    if proposal = Records.proposals.find($location.search().proposal)
+      if (position = $location.search().position) and AbilityService.canVoteOn(proposal)
+        $rootScope.$broadcast 'triggerVoteForm', position
+      "#proposal-#{proposal.key}"
     else if @discussion.lastSequenceId == 0 or @sequenceIdToFocus == -1
       ".thread-context"
     else if Records.events.findByDiscussionAndSequenceId(@discussion, @sequenceIdToFocus)
@@ -39,9 +40,8 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   $scope.$on 'threadPageEventsLoaded',    (event) =>
     @eventsLoaded = true
     @performScroll() if @proposalsLoaded or !@discussion.anyClosedProposals()
-  $scope.$on 'threadPageProposalsLoaded', (event, proposalId) =>
+  $scope.$on 'threadPageProposalsLoaded', (event) =>
     @proposalsLoaded = true
-    @focusedProposalId = proposalId
     @performScroll()
 
   @showLintel = (bool) ->

@@ -55,7 +55,7 @@ describe API::EventsController do
 
       context 'with deleted events' do
         it 'accounts for deleted sequence ids' do
-          Event.find_by_sequence_id(3).destroy
+          Event.find_by_sequence_id(3).destroy!
           get :index, discussion_id: discussion.id, from: 0, per: 3
           json = JSON.parse(response.body)
           expect(json.keys).to include *(%w[events])
