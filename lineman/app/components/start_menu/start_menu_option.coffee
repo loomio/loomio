@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'startMenuOption', ->
   restrict: 'E'
   templateUrl: 'generated/components/start_menu/start_menu_option.html'
   replace: true,
-  controller: ($scope, ModalService, InvitationForm, DiscussionForm, StartGroupForm, Records, CurrentUser) ->
+  controller: ($scope, ModalService, InvitationForm, DiscussionForm, StartGroupForm, Records, AbilityService) ->
     $scope.openModal = ->
       switch $scope.action
         when 'invitePeople' then ModalService.open InvitationForm,
@@ -16,7 +16,7 @@ angular.module('loomioApp').directive 'startMenuOption', ->
           discussion: -> Records.discussions.build(group_id: $scope.currentGroupId())
 
     $scope.invitePeopleGroup = ->
-      if $scope.group and CurrentUser.canInviteTo($scope.group)
+      if $scope.group and AbilityService.canAddMembers($scope.group)
         $scope.group
       else
         Records.groups.build()

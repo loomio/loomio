@@ -1,14 +1,21 @@
-.profile-page
-  .media-left
-    %img.img-profile.img-rounded{ng-src: '{{user.profileUrl}}'}
-  .media-body
-    %h1.lmo-h1 {{user.name}}
-    %p.username
-      @{{user.label}}
+.loading-wrapper.container.main-container
+  %loading{ng-if: '!profilePage.user'}
+  %main.profile-page{ng-if: 'profilePage.user'}
+    %h4.lmo-h4{translate: 'profile_page.edit_profile'}
 
-  %h3.lmo-h3.clearfix{translate: 'profile_page.my_groups'}
-  .profile-group{ng-repeat: 'group in user.groups()', ng-class: '{"profile-subgroup": group.parentId}'}
-    .media-left
-      %img{ng-src: '{{group.logoUrlSmall}}'}
-    .media-body 
-      %a{href: '/g/{{group.key}}'} {{group.name}}
+    %label{for: 'user-picture-field', translate: 'profile_page.picture_label'}
+    %user_avatar{user: 'profilePage.user'}
+
+    %label{for: 'user-name-field', translate: 'profile_page.name_label'}
+    %input.form-control.profile-page__name-input{ng-model: 'profilePage.user.name'}
+
+    %label{for: 'user-username-field', translate: 'profile_page.username_label'}
+    %input.form-control.profile-page__username-input{ng-model: 'profilePage.user.username'}
+
+    %label{for: 'user-email-field', translate: 'profile_page.email_label'}
+    %input.form-control.profile-page__email-input{ng-model: 'profilePage.user.email'}
+
+    %label{for: 'user-locale-field', translate: 'profile_page.locale_label'}
+    %select.form-control.profile-page__language-input{ng-model: 'profilePage.user.selectedLocale', ng-required: 'true', ng-options: 'locale.key as locale.name for locale in profilePage.availableLocales()', ng-change: 'setCurrentPrivacy()'}
+
+    %button.btn.btn-primary.profile-page__update-button{ng-click: 'profilePage.submit()', ng-disabled: 'isDisabled', translate: 'profile_page.update_profile'}
