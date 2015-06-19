@@ -7,7 +7,7 @@
     .dropdown-heading{translate: 'group_page.options_label', role: 'heading'}
     %ul.dropdown-menu-items
       %li.dropdown-menu-item{ng-if: 'groupActions.canEditGroup()'}
-        %a{href: '', ng-click: 'groupActions.editGroup()'}
+        %a.group-page-actions__edit-group-link{href: '', ng-click: 'groupActions.editGroup()'}
           .dropdown-menu-item-label{translate: 'group_page.options.edit_group'}
           .dropdown-menu-item-details
       %li.dropdown-menu-item
