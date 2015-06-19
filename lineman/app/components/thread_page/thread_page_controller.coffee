@@ -15,7 +15,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       if (position = $location.search().position) and AbilityService.canVoteOn(proposal)
         $rootScope.$broadcast 'triggerVoteForm', position
       "#proposal-#{@proposalToFocus.key}"
-    if @commentToFocus
+    else if @commentToFocus
       "#comment-#{@commentToFocus.id}"
     else if Records.events.findByDiscussionAndSequenceId(@discussion, @sequenceIdToFocus)
       '.activity-card__last-read-activity'
@@ -45,11 +45,11 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   $scope.$on 'threadPageEventsLoaded',    (event) =>
     @eventsLoaded = true
-    @proposalToFocus = Records.proposals.find $location.search().proposal
+    @commentToFocus = Records.comments.find parseInt($location.search().comment)
     @performScroll() if @proposalsLoaded or !@discussion.anyClosedProposals()
   $scope.$on 'threadPageProposalsLoaded', (event) =>
     @proposalsLoaded = true
-    @commentToFocus = Records.comments.find parseInt($location.search().comment)
+    @proposalToFocus = Records.proposals.find $location.search().proposal
     @performScroll() if @eventsLoaded
 
   @showLintel = (bool) ->
