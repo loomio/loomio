@@ -8,23 +8,22 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   )()
 
   @performScroll = ->
-    if (elementToFocus = @elementToFocus()) && !@scrolledAlready
-      ScrollService.scrollTo elementToFocus
-      @scrolledAlready = true
+    ScrollService.scrollTo @elementToFocus(), 150
 
   @elementToFocus = ->
-    if proposal = Records.proposals.find($location.search().proposal)
+    if @proposalToFocus
       if (position = $location.search().position) and AbilityService.canVoteOn(proposal)
         $rootScope.$broadcast 'triggerVoteForm', position
-      "#proposal-#{proposal.key}"
-    if comment = Records.comments.find($location.search().comment)
-      "#comment-#{comment.key}"
-    else if @discussion.lastSequenceId == 0 or @sequenceIdToFocus == -1
-      ".thread-context"
+      "#proposal-#{@proposalToFocus.key}"
+    if @commentToFocus
+      "#comment-#{@commentToFocus.id}"
     else if Records.events.findByDiscussionAndSequenceId(@discussion, @sequenceIdToFocus)
-      ".activity-card__last-read-activity"
+      '.activity-card__last-read-activity'
     else
-      false # our record isn't there yet
+      '.thread-context'
+
+  @threadElementsLoaded = ->
+    @eventsLoaded and @proposalsLoaded
 
   @init = (discussion) =>
     if discussion and !@discussion?
@@ -39,7 +38,6 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       $rootScope.$broadcast 'setTitle', @discussion.title
 
       MessageChannelService.subscribeTo "/discussion-#{@discussion.key}"
-      @performScroll()
 
   @init Records.discussions.find $routeParams.key
   Records.discussions.findOrFetchByKey($routeParams.key).then @init, (error) ->
@@ -47,10 +45,12 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   $scope.$on 'threadPageEventsLoaded',    (event) =>
     @eventsLoaded = true
+    @proposalToFocus = Records.proposals.find $location.search().proposal
     @performScroll() if @proposalsLoaded or !@discussion.anyClosedProposals()
   $scope.$on 'threadPageProposalsLoaded', (event) =>
     @proposalsLoaded = true
-    @performScroll()
+    @commentToFocus = Records.comments.find parseInt($location.search().comment)
+    @performScroll() if @eventsLoaded
 
   @showLintel = (bool) ->
     $rootScope.$broadcast('showThreadLintel', bool)
