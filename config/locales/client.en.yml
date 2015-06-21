@@ -290,6 +290,7 @@ en:
     members: 'Members'
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
+    manage_members: Manage members
     subgroups: 'Subgroups'
     subgroups_placeholder: 'Subgroups let you break the group up into different teams.'
     invite_people: 'Invite people'
@@ -301,7 +302,6 @@ en:
       edit_group: 'Edit Group Settings'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
-      manage_members: 'Manage members'
     deactivate_group:
       title: 'Deactivate group'
       question: 'Are you sure you want to deactivate this group?'

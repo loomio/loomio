@@ -1,20 +1,20 @@
-angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, Records, LoadingService, AbilityService) ->
+angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, $rootScope, Records, LoadingService, InvitationForm, AbilityService) ->
   $rootScope.$broadcast('currentComponent', { page: 'membershipsPage'})
 
-  @loadedCount = 0
-  @membershipsPerPage = 25
+  @init = (group) =>
+    if group and !@group?
+      @group      = group
+      Records.memberships.fetchByGroup(@group.key)
 
-  Records.groups.findOrFetchByKey($routeParams.key).then (group) =>
-    @group = group
-    @loadMore()
+  @init Records.discussions.find $routeParams.key
+  Records.groups.findOrFetchByKey($routeParams.key).then @init, (error) ->
+    $rootScope.$broadcast('pageError', error, group)
 
-  @userIsAdmin = =>
+  @canAdministerGroup = ->
     AbilityService.canAdministerGroup(@group)
 
-  @loadMore = =>
-    Records.memberships.fetch({group_key: $routeParams.key, from: @loadedCount, per: @membershipsPerPage }).then =>
-      @loadedCount = @loadedCount + @membershipsPerPage
-  LoadingService.applyLoadingFunction @, 'loadMore'
+  @canAddMembers = ->
+    AbilityService.canAddMembers(@group)
 
   @toggleMembershipAdmin = (membership) ->
     if membership.admin
@@ -22,7 +22,7 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
     else
       membership.makeAdmin()
 
-  @canLoadMore = =>
-    @loadedCount < @group.membershipsCount
+  @invitePeople = ->
+    ModalService.open InvitationForm, group: => @group
 
   return

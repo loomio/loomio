@@ -3,8 +3,10 @@
   max-width: $main-max-width;
 }
 
-.memberships-container {
+.memberships-page__memberships {
   @include card;
+  position: relative;
+  top: 50px;
 }
 
 .memberships-page-table-header {
