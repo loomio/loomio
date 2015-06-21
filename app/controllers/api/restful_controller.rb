@@ -135,6 +135,10 @@ class API::RestfulController < API::BaseController
     render json: collection, root: serializer_root
   end
 
+  def respond_with_search_results
+    render json: collection, root: serializer_root, scope: { q: params[:q] }
+  end
+
   def respond_with_resource
     if resource.errors.empty?
       if @event.is_a? Event
