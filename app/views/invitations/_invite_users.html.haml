@@ -12,4 +12,5 @@
   - if @discussion.present?
     = form.input :message_body, label: t("invitation.message_body"), as: :text, input_html: { value: t("invitation.body_editable_discussion", group: group.name) }
   - else
+    = form.input :subject, label: t("invitation.custom_subject"), input_html: { value: t("email.to_join_group.subject", member: current_user.name, group_name: group.name) }
     = form.input :message_body, label: t("invitation.message_body"), as: :text, input_html: { value: t("invitation.body_editable", group: group.name) }

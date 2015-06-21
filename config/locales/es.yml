@@ -729,6 +729,7 @@ es:
     recipients: "Introduce las direcciones de correo electrónico, separadas por comas: "
     invitees_placeholder: "Nombre de usuario <user1@example.com>, user2@example.com"
     subject: "Por favor, forma parte de nuestro nuevo grupo en Loomio, %{group}"
+    custom_subject: 'Tu propio asunto'
     invite_people: Invitar a personas
     invite_to_discussion: Invitar a esta discusión
     invite_to_discussion_info: "Al añadir a personas a esta discusión se les enviará una invitación a tu grupo. Cuando la acepten, serán dirigidas a esta discusión."

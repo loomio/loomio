@@ -954,6 +954,7 @@ en:
     recipients: "Enter email addresses, separated by commas:"
     invitees_placeholder: "User Name <user1@example.com>, user2@example.com"
     subject: "Please join our new Loomio group, %{group}"
+    custom_subject: "Your own subject"
     invite_people: "Invite people to your group"
     invite_to_discussion: "Invite people to this discussion"
     invite_to_discussion_info: "Adding people to this discussion will send them an invitation to your group. When they accept, they'll be directed to this discussion."

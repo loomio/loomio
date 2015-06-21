@@ -27,12 +27,13 @@ class InvitationService
   def self.invite_to_group(recipient_emails: nil,
                            message: nil,
                            group: nil,
-                           inviter: nil)
+                           inviter: nil,
+                           subject: nil)
     recipient_emails.each do |recipient_email|
       invitation = create_invite_to_join_group(recipient_email: recipient_email,
                                                group: group,
                                                inviter: inviter)
-      InvitePeopleMailer.delay.to_join_group(invitation, inviter, message)
+      InvitePeopleMailer.delay.to_join_group(invitation, inviter, message, subject)
     end
   end
 
