@@ -4,26 +4,21 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
   templateUrl: 'generated/components/group_page/group_actions_dropdown/group_actions_dropdown.html'
   replace: true
   controllerAs: 'groupActions'
-  controller: ($scope, $modal, AbilityService) ->
+  controller: ($scope, AbilityService, ModalService, EditGroupForm, LeaveGroupForm, ArchiveGroupForm) ->
 
     @canEditGroup = =>
       AbilityService.canEditGroup($scope.group)
 
-    @canDeactivateGroup = =>
-      AbilityService.canDeactivateGroup($scope.group)
+    @canArchiveGroup = =>
+      AbilityService.canArchiveGroup($scope.group)
 
-    @openLeaveGroupModal = =>
-      $modal.open
-        templateUrl: 'generated/components/group_page/group_actions_dropdown/leave_group.html'
-        controller: 'LeaveGroupController'
-        resolve:
-          group: => $scope.group
+    @editGroup = ->
+      ModalService.open EditGroupForm, group: -> $scope.group
 
-    @openDeactivateGroupModel = =>
-      $modal.open
-        templateUrl: 'generated/components/group_page/group_actions_dropdown/deactivate_group.html'
-        controller: 'DeactivateGroupController'
-        resolve:
-          group: => $scope.group
+    @leaveGroup = ->
+      ModalService.open LeaveGroupForm, group: -> $scope.group
+
+    @archiveGroup = ->
+      ModalService.open ArchiveGroupForm, group: -> $scope.group
 
     return

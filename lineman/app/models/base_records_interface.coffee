@@ -22,17 +22,12 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient, $q) 
       @baseImport(data)
 
     baseImport: (data = {}) ->
-      if data.key?
-        existingRecord = @find(data.key)
-      else if data.id?
-        existingRecord = @find(data.id)
-
-      if existingRecord?
-        existingRecord.updateFromJSON(data)
-        existingRecord
+      if record = @find(data.key or data.id)
+        record.updateFromJSON(data)
       else
         @collection.insert(record = @build(data))
-        record
+
+      record
 
     findOrFetchByKey: (key) ->
       deferred = $q.defer()

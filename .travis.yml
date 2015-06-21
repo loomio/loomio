@@ -8,7 +8,7 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 install:
-  - bundle install --path vendor/bundle
+  - bundle install
   - cd lineman
   - npm install -g bower
   - npm install -g protractor
@@ -29,7 +29,7 @@ before_script:
   - nohup bash -c "webdriver-manager start 2>&1 &"
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup RAILS_ENV=test
-  - RAILS_ENV=test bundle exec rails server & sleep 15
+  - RAILS_ENV=test bundle exec rails server & sleep 10
 
 script:
   - bundle exec rake travis

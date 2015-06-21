@@ -7,15 +7,15 @@
     .dropdown-heading{translate: 'group_page.options_label', role: 'heading'}
     %ul.dropdown-menu-items
       %li.dropdown-menu-item{ng-if: 'groupActions.canEditGroup()'}
-        %a{href: '/g/{{::group.key}}/edit'}
+        %a.group-page-actions__edit-group-link{href: '', ng-click: 'groupActions.editGroup()'}
           .dropdown-menu-item-label{translate: 'group_page.options.edit_group'}
           .dropdown-menu-item-details
       %li.dropdown-menu-item
-        %a{href: '', ng-click: 'groupActions.openLeaveGroupModal()'}
+        %a{href: '', ng-click: 'groupActions.leaveGroup()'}
           .dropdown-menu-item-label{translate: 'group_page.options.leave_group'}
         .dropdown-menu-item-details
-      %li.dropdown-menu-item{ng-if: 'groupActions.canDeactivateGroup()'}
-        %a{href: '', ng-click: 'groupActions.openDeactivateGroupModel()'}
+      %li.dropdown-menu-item{ng-if: 'groupActions.canArchiveGroup()'}
+        %a{href: '', ng-click: 'groupActions.archiveGroup()'}
           .dropdown-menu-item-label{translate: 'group_page.options.deactivate_group'}
         .dropdown-menu-item-details
 
