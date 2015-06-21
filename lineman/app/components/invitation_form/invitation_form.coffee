@@ -40,7 +40,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
         !_.contains $scope.group.memberIds(), memberId
       users = _.filter Records.users.find(memberIds), (user) ->
         !user.membershipFor($scope.group) and
-        matchesFragment(user.searchFragment) and
+        (matchesFragment(user.searchFragment)) and
         !existsAlready('user', 'id', user.id)
 
       _.map users, (user) ->

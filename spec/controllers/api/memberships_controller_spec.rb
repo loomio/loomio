@@ -19,8 +19,9 @@ describe API::MembershipsController do
     stub_request(:post, "http://localhost:9292/faye").to_return(status: 200)
     group.admins << user
     group.users  << user_named_biff
+    group.users  << user_named_bang
     another_group.users << user
-    another_group.users << user_named_bang
+    another_group.users << alien_named_bang
     another_group.users << alien_named_biff
     sign_in user
   end
@@ -82,7 +83,7 @@ describe API::MembershipsController do
       it 'includes the given search fragment' do
         get :invitables, group_id: group.id, q: 'beef', format: :json
         json = JSON.parse(response.body)
-        search_fragments = json['memberships'].map { |c| c['search_fragment'] }
+        search_fragments = json['users'].map { |c| c['search_fragment'] }
         expect(search_fragments.compact.uniq.length).to eq 1
         expect(search_fragments).to include 'beef'
       end

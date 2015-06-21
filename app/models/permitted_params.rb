@@ -20,7 +20,7 @@ class PermittedParams < Struct.new(:params)
     [:name, :avatar_kind, :email, :password, :password_confirmation,
      :remember_me, :uploaded_avatar, :username, :uses_markdown,
      :time_zone, :selected_locale, :email_when_mentioned,
-     :email_missed_yesterday, :dashboard_sort, :dashboard_filter,
+     :email_missed_yesterday, :dashboard_sort, :dashboard_filter, :search_fragment,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation,
      {email_new_discussions_and_proposals_group_ids: []}]
   end
@@ -47,7 +47,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def membership_attributes
-    [:volume, :search_fragment]
+    [:volume]
   end
 
   def discussion_reader_attributes
