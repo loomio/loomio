@@ -3,8 +3,7 @@ class InvitePeopleForm
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :recipients, :message_body, :parent_members_to_add,
-                :subject
+  attr_accessor :recipients, :message_body, :parent_members_to_add, :subject
 
   validates_presence_of :recipients
 
