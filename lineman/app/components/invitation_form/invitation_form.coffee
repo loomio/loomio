@@ -36,11 +36,11 @@ angular.module('loomioApp').factory 'InvitationForm', ->
 
     $scope.invitableUsers = ->
       memberIds = _.uniq _.flatten _.map $scope.availableGroups(), (group) -> group.memberIds()
-      memberIds = _.filter memberIds, (memberId) -> 
+      memberIds = _.filter memberIds, (memberId) ->
         !_.contains $scope.group.memberIds(), memberId
       users = _.filter Records.users.find(memberIds), (user) ->
-        !user.membershipFor($scope.group) and 
-        matchesFragment(user.name, user.username) and
+        !user.membershipFor($scope.group) and
+        matchesFragment(user.searchFragment, user.name, user.username) and
         !existsAlready('user', 'id', user.id)
 
       _.map users, (user) ->
@@ -52,7 +52,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
 
     $scope.invitableContacts = ->
       contacts = _.filter CurrentUser.contacts(), (contact) ->
-        matchesFragment(contact.name, contact.email) and 
+        matchesFragment(contact.name, contact.email) and
         !existsAlready('contact', 'email', contact.email)
 
       _.map contacts, (contact) ->
@@ -64,6 +64,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
 
     matchesFragment = (fields...) ->
       _.some _.map fields, (field) ->
+        return false unless field?
         ~field.search new RegExp($scope.fragment, 'i')
 
     existsAlready = (type, uniqueField, value) ->
@@ -81,7 +82,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
         $scope.invitables()
 
     $scope.invitables = ->
-      _.take _.union($scope.invitableUsers(), 
+      _.take _.union($scope.invitableUsers(),
                      $scope.invitableContacts(),
                      $scope.invitableGroups(),
                      _.compact([$scope.invitableEmail() if $scope.fragmentIsValidEmail()])), 5
