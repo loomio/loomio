@@ -53,7 +53,6 @@ describe 'Invitations', ->
       emailHelper.openLastEmail()
       expect(emailHelper.lastEmailSubject().getText()).toContain('Patrick Swayze has invited you to join Dirty Dancing Shoes on Loomio')
 
-
     it 'successfully invites a contact', ->
       invitationsHelper.openInvitationsModal()
       invitationsHelper.invite('keanu')
