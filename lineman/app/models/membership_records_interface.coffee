@@ -24,7 +24,7 @@ angular.module('loomioApp').factory 'MembershipRecordsInterface', (BaseRecordsIn
         cacheKey: "membershipsFor#{groupKey}"
 
     makeAdmin: (membership) ->
-      @restfulClient.postMember membership.id "make_admin"
+      @restfulClient.postMember membership.id, "make_admin"
 
     removeAdmin: (membership) ->
-      @restfulClient.postMember membership.id "remove_admin"
+      @restfulClient.postMember membership.id, "remove_admin"

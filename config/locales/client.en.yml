@@ -384,13 +384,8 @@ en:
   memberships_page:
     members: 'Members'
     name_label: 'Name'
-    email_label: 'Email'
     coordinator_label: 'Coordinator'
     remove_member_label: 'Remove'
-    add_coordinator: 'Make Coordinator'
-    remove_coordinator: 'Remove Coordinator'
-    remove_member: 'Remove'
-    see_more_members: 'See more members'
 
   profile_page:
     messages:

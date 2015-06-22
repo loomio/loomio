@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, $rootScope, Records, LoadingService, InvitationForm, AbilityService) ->
+angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, $rootScope, Records, LoadingService, ModalService, InvitationForm, AbilityService) ->
   $rootScope.$broadcast('currentComponent', { page: 'membershipsPage'})
 
   @init = (group) =>
@@ -16,11 +16,16 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
   @canAddMembers = ->
     AbilityService.canAddMembers(@group)
 
-  @toggleMembershipAdmin = (membership) ->
-    if membership.admin
-      membership.removeAdmin()
-    else
-      membership.makeAdmin()
+  @canRemoveMembership = (membership) ->
+    AbilityService.canRemoveMembership(membership)
+
+  @canToggleAdmin = (membership) ->
+    @canAdministerGroup(membership) and
+    (!membership.admin or @canRemoveMembership(membership))
+
+  @toggleAdmin = (membership) ->
+    method = if membership.admin then 'makeAdmin' else 'removeAdmin'
+    Records.memberships[method](membership)
 
   @invitePeople = ->
     ModalService.open InvitationForm, group: => @group

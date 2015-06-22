@@ -29,6 +29,9 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient, $q) 
 
       record
 
+    remove: (record) ->
+      @collection.remove(record)
+
     findOrFetchByKey: (key) ->
       deferred = $q.defer()
       promise = @fetchByKey(key).then => @find(key)

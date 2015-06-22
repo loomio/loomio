@@ -5,12 +5,12 @@ class MembershipService
     membership.set_volume! params[:volume]
   end
 
-  def self.make_admin(membership:, params:, actor:)
+  def self.make_admin(membership:, actor:)
     actor.ability.authorize! :make_admin, membership
     membership.update admin: true
   end
 
-  def self.remove_admin(membership:, params:, actor:)
+  def self.remove_admin(membership:, actor:)
     actor.ability.authorize! :remove_admin, membership
     membership.update admin: false
   end
