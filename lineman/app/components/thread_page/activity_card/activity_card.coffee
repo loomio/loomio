@@ -15,7 +15,9 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.init = ->
       $scope.discussion.markAsRead(0)
 
-      $scope.loadEventsForwards($scope.initialLoadSequenceId()).then ->
+      $scope.loadEventsForwards(
+        commentId: $location.search().comment
+        sequenceId: $scope.initialLoadSequenceId()).then ->
         $rootScope.$broadcast 'threadPageEventsLoaded'
 
     $scope.initialLoadSequenceId = ->
@@ -45,18 +47,18 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.threadItemVisible = (item) ->
       addSequenceId(item.sequenceId)
       $scope.discussion.markAsRead(item.sequenceId)
-      $scope.loadEventsForwards($scope.lastLoadedSequenceId) if $scope.loadMoreAfterReading(item)
+      $scope.loadEventsForwards(sequenceId: $scope.lastLoadedSequenceId) if $scope.loadMoreAfterReading(item)
 
-    $scope.loadEvents = ({from, per}) ->
+    $scope.loadEvents = ({from, per, commentId}) ->
       from = 0 unless from?
       per = $scope.pageSize unless per?
 
-      Records.events.fetchByDiscussion($scope.discussion.key, {from: from, per: per}).then ->
+      Records.events.fetchByDiscussion($scope.discussion.key, {from: from, comment_id: commentId, per: per}).then ->
         $scope.firstLoadedSequenceId = Records.events.minLoadedSequenceIdByDiscussion($scope.discussion)
         $scope.lastLoadedSequenceId  = Records.events.maxLoadedSequenceIdByDiscussion($scope.discussion)
 
-    $scope.loadEventsForwards = (sequenceId) ->
-      $scope.loadEvents(from: sequenceId)
+    $scope.loadEventsForwards = ({commentId, sequenceId}) ->
+      $scope.loadEvents(commentId: commentId, from: sequenceId)
     LoadingService.applyLoadingFunction $scope, 'loadEventsForwards'
 
     $scope.loadEventsBackwards = ->
