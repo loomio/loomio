@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'InvitationForm', ->
   templateUrl: 'generated/components/invitation_form/invitation_form.html'
-  controller: ($scope, $rootScope, group, InvitationsClient, Records, CurrentUser, AbilityService, LoadingService) ->
+  controller: ($scope, $rootScope, group, InvitationsClient, Records, CurrentUser, AbilityService, LoadingService, FlashService) ->
     $scope.group = group
     $scope.invitations = []
 
@@ -9,8 +9,13 @@ angular.module('loomioApp').factory 'InvitationForm', ->
     $scope.hasInvitations = ->
       $scope.invitations.length > 0
 
-    $scope.invitationsCount = ->
-      _.reduce $scope.invitations, ((total, invitation) -> total + (invitation.count or 1)), 0
+    $scope.invitationsCount = (types...) ->
+      _.reduce $scope.invitations, ((total, invitation) ->
+        if _.isEmpty(types) or _.contains(types, invitation.type)
+          total + (invitation.count or 1)
+        else
+          total
+      ), 0
 
     $scope.fragmentIsValidEmail = ->
       $scope.emailValidation.$valid
@@ -98,12 +103,28 @@ angular.module('loomioApp').factory 'InvitationForm', ->
     $scope.submit = ->
       $scope.isDisabled = true
       invitationsClient.create(invitationsParams()).then ->
-        $scope.invitations = []
+        FlashService.success $scope.successMessage(), members: $scope.memberCount(), emails: $scope.emailCount()
         $scope.$close()
         Records.memberships.fetchByGroup $scope.group
       , ->
         $scope.isDisabled = false
         $rootScope.$broadcast 'pageError', 'cantCreateInvitations'
+
+    $scope.successMessage = ->
+      if $scope.memberCount() > 0 and $scope.emailCount() > 0
+        'invitation.messages.members_added_and_emails_sent'
+      else if $scope.memberCount() > 0
+        'invitation.messages.members_added'
+      else if $scope.emailCount() > 0
+        'invitation.messages.emails_sent'
+      else
+        'invitation.messages.no_invitations'
+
+    $scope.memberCount = ->
+      $scope.invitationsCount('user', 'group')
+
+    $scope.emailCount = ->
+      $scope.invitationsCount('contact', 'email')
 
     invitationsParams = ->
       invitations: $scope.invitations

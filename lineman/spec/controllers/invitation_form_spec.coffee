@@ -108,7 +108,7 @@ describe 'InvitationFormController', ->
       @someOtherGroup = @factory.create 'groups', name: 'An Extraordinary Carrot!', membershipsCount: 3
       @factory.create 'memberships', groupId: @someOtherGroup.id, userId: @user.id
       @factory.create 'memberships', groupId: @someOtherGroup.id, userId: @anotherUser.id
-      @factory.create 'memberships', groupId: @someOtherGroup.id, userId: @currentUser.id      
+      @factory.create 'memberships', groupId: @someOtherGroup.id, userId: @currentUser.id
 
     it 'can find a group with no search query', ->
       expect(_.pluck(@scope.invitables(), 'name')).toContain('An Extraordinary Carrot!')
@@ -137,3 +137,26 @@ describe 'InvitationFormController', ->
       @scope.addInvitation(@scope.invitables()[0])
       @scope.fragment = 'rickdazo@gmail.com'
       expect(@scope.invitables().length).toBe(0)
+
+  describe 'flash message', ->
+    it 'displays a count of invitations sent', ->
+      @scope.invitations.push { type: 'email' }
+      @scope.invitations.push  { type: 'contact' }
+      @scope.submit()
+      expect(@scope.emailCount()).toBe(2)
+      expect(@scope.successMessage()).toBe('invitation.messages.emails_sent')
+
+    it 'displays a count of the members added', ->
+      @scope.invitations.push { type: 'user' }
+      @scope.invitations.push  { type: 'group', count: 3 }
+      @scope.submit()
+      expect(@scope.memberCount()).toBe(4)
+      expect(@scope.successMessage()).toBe('invitation.messages.members_added')
+
+    it 'displays a count of invitations sent and members added', ->
+      @scope.invitations.push { type: 'email' }
+      @scope.invitations.push  { type: 'user' }
+      @scope.submit()
+      expect(@scope.memberCount()).toBe(1)
+      expect(@scope.emailCount()).toBe(1)
+      expect(@scope.successMessage()).toBe('invitation.messages.members_added_and_emails_sent')
