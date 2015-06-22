@@ -2,7 +2,7 @@
   .thread-preview{ng-repeat: 'thread in query.threads() | limitTo: limit'}
     .thread-preview__star
       %star_toggle{thread: 'thread'}
-    .thread-preview__actions
+    .thread-preview__actions.hidden-xs
       %button.btn.btn-default.btn-sm.thread-preview__mark-as-read{ng-click: 'thread.reader().markAsRead()', ng-class: '{disabled: !thread.isUnread()}'}>
         %i.fa.fa-check>
         %span{translate: 'dashboard_page.mark_as_read'}
