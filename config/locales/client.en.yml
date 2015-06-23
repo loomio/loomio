@@ -384,9 +384,9 @@ en:
     to: 'to: '
     default_message: "Hey there, come make decisions with us! We're using a collaborative decision-making tool called Loomio"
     messages:
-      members_added_and_emails_sent: '{{members}} member(s) added and {{emails}} email(s) sent'
+      members_added_and_emails_sent: '{{members}} member(s) added and {{emails}} invitation(s) sent'
       members_added: '{{members}} member(s) added'
-      emails_sent: '{{emails}} email(s) sent'
+      emails_sent: '{{emails}} invitation(s) sent'
       no_invitations: 'No invitation(s) sent!'
   memberships_page:
     members: 'Members'
