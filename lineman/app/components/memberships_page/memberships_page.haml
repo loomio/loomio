@@ -21,7 +21,7 @@
             %span.memberships-page__member-info{translate: 'memberships_page.name_label'}
           .memberships-page-table-row.memberships-page__table-header.col-xs-2.align-center{ng-show: 'membershipsPage.canAdministerGroup()', translate: 'memberships_page.coordinator_label'}
           .memberships-page-table-row.memberships-page__table-header.col-xs-2.align-center{ng-show: 'membershipsPage.canAdministerGroup()', translate: 'memberships_page.remove_member_label'}
-        .row.memberships-page__table-row{ng-repeat: 'membership in membershipsPage.group.memberships() | filterModel:membershipsPage.fragment'}
+        .row.memberships-page__table-row.memberships-page__membership{ng-repeat: 'membership in membershipsPage.group.memberships() | filterModel:membershipsPage.fragment'}
           .memberships-page-table-row.col-xs-1
             %user_avatar{user: 'membership.user()', size: 'lg', coordinator: 'membership.admin'}
           .memberships-page-table-row{ng-class: '{"col-xs-11": !membershipsPage.canAdministerGroup(), "col-xs-7": membershipsPage.canAdministerGroup()}'}
@@ -29,9 +29,9 @@
               %div {{membership.user().name}}
               %div @{{membership.user().username}}
           .memberships-page-table-row.col-xs-2.align-center{ng-show: 'membershipsPage.canAdministerGroup()'}
-            %input{type: 'checkbox', ng-model: 'membership.admin', ng-change: 'membershipsPage.toggleAdmin(membership)', ng-disabled: '!membershipsPage.canToggleAdmin(membership)'}
+            %input.memberships-page__make-coordinator{type: 'checkbox', ng-model: 'membership.admin', ng-change: 'membershipsPage.toggleAdmin(membership)', ng-disabled: '!membershipsPage.canToggleAdmin(membership)'}
           .memberships-page-table-row.col-xs-2.align-center{ng-show: 'membershipsPage.canAdministerGroup()'}
-            %a{href: '', ng-click: 'membership.destroy()', ng-show: 'membershipsPage.canRemoveMembership(membership)'}
+            %a.memberships-page__remove-link{href: '', ng-click: 'membership.destroy()', ng-show: 'membershipsPage.canRemoveMembership(membership)'}
               %i.fa.fa-lg.fa-times-circle
         .row.memberships-page__table-row
           .members-card__invite-members.col-xs-5{ng-if: 'membershipsPage.canAddMembers()'}
