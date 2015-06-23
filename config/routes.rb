@@ -1,14 +1,13 @@
 Loomio::Application.routes.draw do
 
   namespace :development do
-    get 'send_email'
     get 'last_email'
     get 'setup_group'
     get 'setup_group_for_invitations'
     get 'setup_discussion'
     get 'setup_discussion_with_comment'
     get 'setup_proposal'
-    get 'setup_proposal_with_vote'
+    get 'setup_proposal_with_votes'
     get 'setup_closed_proposal'
     get 'setup_closed_proposal_with_outcome'
     get 'setup_all_notifications'

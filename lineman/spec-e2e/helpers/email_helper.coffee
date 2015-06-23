@@ -12,3 +12,6 @@ module.exports = new class EmailHelper
   clickFirstLink: ->
     @firstLink().click()
 
+  clickAgreeLink: ->
+    browser.driver.findElement(By.css('a.yes-link')).getAttribute('href').then (attr) ->
+      browser.get(attr)

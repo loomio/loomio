@@ -104,7 +104,7 @@ describe 'Invitations', ->
     beforeEach ->
       invitationsHelper.load()
 
-    it 'displays the correct flash message', ->
+    it 'successfully invites a contact', ->
       invitationsHelper.openInvitationsModal()
       invitationsHelper.invite('ming')
       invitationsHelper.invite('keanu')
