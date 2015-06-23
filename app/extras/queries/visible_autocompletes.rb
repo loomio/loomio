@@ -5,7 +5,7 @@ class Queries::VisibleAutocompletes < Delegator
                           .where(group: group)
                           .where("users.id != ?", current_user.id)
                           .where("users.name ilike :q OR
-                                  users.username ilike :q", q: "#{query}%")
+                                  users.username ilike :q", q: "%#{query}%")
                           .limit(limit)
     super @relation
   end
