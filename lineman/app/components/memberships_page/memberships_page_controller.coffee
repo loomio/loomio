@@ -33,4 +33,7 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
   @invitePeople = ->
     ModalService.open InvitationForm, group: => @group
 
+  @name = (membership) ->
+    membership.userName()
+
   return
