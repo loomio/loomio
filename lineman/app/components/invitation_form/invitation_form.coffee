@@ -99,7 +99,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
       invitationsClient.create(invitationsParams()).then ->
         $scope.invitations = []
         $scope.$close()
-        Records.memberships.fetchByGroup $scope.group.key
+        Records.memberships.fetchByGroup $scope.group.key, per: 25
       , ->
         $scope.isDisabled = false
         $rootScope.$broadcast 'pageError', 'cantCreateInvitations'

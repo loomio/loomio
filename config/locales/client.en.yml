@@ -386,6 +386,7 @@ en:
     name_label: 'Name'
     coordinator_label: 'Coordinator'
     remove_member_label: 'Remove'
+    fragment_placeholder: 'Filter users by name or username...'
 
   profile_page:
     messages:

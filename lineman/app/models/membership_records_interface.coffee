@@ -20,7 +20,9 @@ angular.module('loomioApp').factory 'MembershipRecordsInterface', (BaseRecordsIn
 
     fetchByGroup: (groupKey, options = {}) ->
       @fetch
-        params: { group_key: groupKey },
+        params:
+          group_key: groupKey
+          per: options['per']
         cacheKey: "membershipsFor#{groupKey}"
 
     makeAdmin: (membership) ->
