@@ -287,7 +287,7 @@ en:
     description_placeholder: 'Use this place to describe the purpose of the group so your members know why they are here.'
     discussions: 'Threads'
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
-    members: 'Members'
+    members: 'Members ({{count}}) '
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
     manage_members: Manage members
@@ -389,10 +389,12 @@ en:
     fragment_placeholder: 'Filter users by name or username...'
     messages:
       remove_member_success: 'Successfully removed {{name}}'
+      make_admin_success: '{{name}} is now a coordinator'
+      remove_admin_success: '{{name}} is no longer a coordinator'
     remove_membership:
       title: 'Remove member'
       question: 'Are you sure you want to remove {{name}} as a member of {{group}}?'
-      submit: 'Yes, remove member from this group'
+      submit: 'Remove'
 
   profile_page:
     messages:

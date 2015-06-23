@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, $rootScope, Records, LoadingService, ModalService, InvitationForm, RemoveMembershipForm, AbilityService) ->
+angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, $rootScope, Records, LoadingService, ModalService, InvitationForm, RemoveMembershipForm, AbilityService, FlashService) ->
   $rootScope.$broadcast('currentComponent', { page: 'membershipsPage'})
 
   @init = (group) =>
@@ -28,7 +28,8 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
 
   @toggleAdmin = (membership) ->
     method = if membership.admin then 'makeAdmin' else 'removeAdmin'
-    Records.memberships[method](membership)
+    Records.memberships[method](membership).then ->
+      FlashService.success "memberships_page.messages.#{_.snakeCase method}_success", name: membership.userName()
 
   @openRemoveForm = (membership) ->
     ModalService.open RemoveMembershipForm, membership: -> membership
