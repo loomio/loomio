@@ -8,7 +8,7 @@ class API::EventsController < API::RestfulController
   end
 
   def page_collection(collection)
-    collection.where('sequence_id >= ?', params[:from] || 0)
+    collection.where('sequence_id >= ?', sequence_id_for(collection))
               .limit(params[:per] || default_page_size)
   end
 
@@ -16,4 +16,11 @@ class API::EventsController < API::RestfulController
     30
   end
 
+  def sequence_id_for(collection)
+    (sequence_id_for_comment(collection) if params[:comment_id].present?) || params[:from] || 0
+  end
+
+  def sequence_id_for_comment(collection)
+    collection.where(eventable_type: "Comment", eventable_id: params[:comment_id]).pluck(:sequence_id).first
+  end
 end
