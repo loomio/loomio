@@ -23,7 +23,6 @@ angular.module('loomioApp').factory 'MembershipRecordsInterface', (BaseRecordsIn
         params:
           group_key: groupKey
           per: options['per']
-        cacheKey: "membershipsFor#{groupKey}"
 
     makeAdmin: (membership) ->
       @restfulClient.postMember membership.id, "make_admin"
