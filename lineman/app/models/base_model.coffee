@@ -4,6 +4,7 @@ angular.module('loomioApp').factory 'BaseModel', ->
     @plural: 'undefinedPlural'
     @indices: []
     @attributeNames: []
+    @searchableFields: []
 
     constructor: (recordsInterface, data, postInitializeData = {}) ->
       @errors = {}
