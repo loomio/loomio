@@ -4,7 +4,7 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
   @init = (group) =>
     if group and !@group?
       @group      = group
-      Records.memberships.fetchByGroup(@group.key, per: 25)
+      Records.memberships.fetchByGroup(@group.key, per: 100)
 
   @setMemberships = =>
     Records.memberships.fetchByNameFragment @fragment, @group.key if @fragment
