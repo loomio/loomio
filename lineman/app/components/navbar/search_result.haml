@@ -10,7 +10,7 @@
 
   .search-result-item.media{ng-repeat: 'proposal in result.proposals'}
     .media-left{ng-init: 'proposal.voteCounts = proposal.vote_counts'}
-      %mini_proposal_pie_chart{proposal: 'proposal'}
+      %pie_chart.pie-chart--mini{votes: 'proposal.voteCounts'}
     .media-body
       .search-result-child-title {{proposal.name}}
       .search-result-blurb{ng-bind-html: 'proposal.blurb'}
