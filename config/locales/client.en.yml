@@ -63,6 +63,9 @@ en:
   proposal_collapsed:
     expand: Expand
 
+  context_card:
+    heading: Context
+
   volume_levels:
     loud: 'Loud'
     normal: 'Normal'
