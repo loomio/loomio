@@ -100,10 +100,10 @@ en:
       label: 'Post'
 
   navbar:
-    home: 'Home'
+    recent: 'Recent'
     unread: 'Unread'
     groups: 'Groups'
-    home_title: 'Go to dashboard'
+    recent_title: 'Go to dashboard'
     unread_title: 'View unread activity'
     groups_title: 'View your groups'
     start_thread: 'Start a new thread'
