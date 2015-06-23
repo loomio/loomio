@@ -387,6 +387,12 @@ en:
     coordinator_label: 'Coordinator'
     remove_member_label: 'Remove'
     fragment_placeholder: 'Filter users by name or username...'
+    messages:
+      remove_member_success: 'Successfully removed {{name}}'
+    remove_membership:
+      title: 'Remove member'
+      question: 'Are you sure you want to remove {{name}} as a member of {{group}}?'
+      submit: 'Yes, remove member from this group'
 
   profile_page:
     messages:

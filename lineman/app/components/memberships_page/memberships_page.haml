@@ -15,7 +15,7 @@
       .memberships-page__memberships
         %h2.lmo-h2{translate: 'memberships_page.members'}
         .memberships-page__search-filter.col-xs-6
-          %input.membership-page__search-filer.form-control{ng-model: 'membershipsPage.fragment', ng-model-options: '{debounce: 300}', ng-change: 'membershipsPage.setMemberships()', placeholder: '{{"memberships_page.fragment_placeholder" | translate}}'}
+          %input.membership-page__search-filer.form-control{ng-model: 'membershipsPage.fragment', ng-model-options: '{debounce: 300}', ng-change: 'membershipsPage.fetchMemberships()', placeholder: '{{"memberships_page.fragment_placeholder" | translate}}'}
           %i.fa.fa-lg.fa-search
         .row.memberships-page__table-row
           .memberships-page-table-row.memberships-page__table-header.col-xs-1
@@ -32,7 +32,7 @@
           .memberships-page-table-row.col-xs-2.align-center{ng-show: 'membershipsPage.canAdministerGroup()'}
             %input{type: 'checkbox', ng-model: 'membership.admin', ng-change: 'membershipsPage.toggleAdmin(membership)', ng-disabled: '!membershipsPage.canToggleAdmin(membership)'}
           .memberships-page-table-row.col-xs-2.align-center{ng-show: 'membershipsPage.canAdministerGroup()'}
-            %a{href: '', ng-click: 'membership.destroy()', ng-show: 'membershipsPage.canRemoveMembership(membership)'}
+            %a{href: '', ng-click: 'membershipsPage.openRemoveForm(membership)', ng-show: 'membershipsPage.canRemoveMembership(membership)'}
               %i.fa.fa-lg.fa-times-circle
         .row.memberships-page__table-row
           .members-card__invite-members.col-xs-6{ng-if: 'membershipsPage.canAddMembers()'}

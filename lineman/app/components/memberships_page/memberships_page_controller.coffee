@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, $rootScope, Records, LoadingService, ModalService, InvitationForm, AbilityService) ->
+angular.module('loomioApp').controller 'MembershipsPageController', ($routeParams, $rootScope, Records, LoadingService, ModalService, InvitationForm, RemoveMembershipForm, AbilityService) ->
   $rootScope.$broadcast('currentComponent', { page: 'membershipsPage'})
 
   @init = (group) =>
@@ -6,8 +6,8 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
       @group      = group
       Records.memberships.fetchByGroup(@group.key, per: 100)
 
-  @setMemberships = =>
-    Records.memberships.fetchByNameFragment @fragment, @group.key if @fragment
+  @fetchMemberships = =>
+    Records.memberships.fetchByNameFragment(@fragment, @group.key) if @fragment
 
   @init Records.discussions.find $routeParams.key
   Records.groups.findOrFetchByKey($routeParams.key).then @init, (error) ->
@@ -29,6 +29,9 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
   @toggleAdmin = (membership) ->
     method = if membership.admin then 'makeAdmin' else 'removeAdmin'
     Records.memberships[method](membership)
+
+  @openRemoveForm = (membership) ->
+    ModalService.open RemoveMembershipForm, membership: -> membership
 
   @invitePeople = ->
     ModalService.open InvitationForm, group: => @group
