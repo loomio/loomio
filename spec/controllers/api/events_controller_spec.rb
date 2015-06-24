@@ -31,6 +31,37 @@ describe API::EventsController do
 
     end
 
+    context 'with comment' do
+      before do
+        @early_event = CommentService.create(comment: build(:comment, discussion: discussion), actor: user)
+        @later_event = CommentService.create(comment: build(:comment, discussion: discussion), actor: user)
+      end
+
+      it 'returns events beginning with a given comment id' do
+        get :index, discussion_id: discussion.id, format: :json, comment_id: @later_event.comment.id
+        json = JSON.parse(response.body)
+        event_ids = json['events'].map { |v| v['id'] }
+        expect(event_ids).to include @later_event.id
+        expect(event_ids).to_not include @early_event.id
+      end
+
+      it 'returns events normally when no comment id is passed' do
+        get :index, discussion_id: discussion.id, format: :json, comment_id: nil
+        json = JSON.parse(response.body)
+        event_ids = json['events'].map { |v| v['id'] }
+        expect(event_ids).to include @later_event.id
+        expect(event_ids).to include @early_event.id
+      end
+
+      it 'returns events normally when a nonexistent comment id is passed' do
+        get :index, discussion_id: discussion.id, format: :json, comment_id: -2
+        json = JSON.parse(response.body)
+        event_ids = json['events'].map { |v| v['id'] }
+        expect(event_ids).to include @later_event.id
+        expect(event_ids).to include @early_event.id
+      end
+    end
+
     context 'paging' do
 
       before do

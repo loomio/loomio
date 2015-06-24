@@ -52,10 +52,11 @@ class DevelopmentController < ApplicationController
     redirect_to discussion_url(test_discussion)
   end
 
-  def setup_proposal_with_vote
+  def setup_proposal_with_votes
     cleanup_database
     sign_in patrick
     test_vote
+    another_test_vote
 
     redirect_to discussion_url(test_discussion)
   end
@@ -211,6 +212,14 @@ class DevelopmentController < ApplicationController
       VoteService.create(vote: @test_vote, actor: patrick)
     end
     @test_vote
+  end
+
+  def another_test_vote
+    unless @another_test_vote
+      @another_test_vote = Vote.new(position: 'no', motion: test_proposal, statement: 'I disagree!')
+      VoteService.create(vote: @another_test_vote, actor: jennifer)
+    end
+    @another_test_vote
   end
 
   def cleanup_database

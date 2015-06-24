@@ -131,8 +131,8 @@ class API::RestfulController < API::BaseController
     @@service_class || "#{resource_name}_service".camelize.constantize
   end
 
-  def respond_with_collection
-    render json: collection, root: serializer_root
+  def respond_with_collection(scope: {})
+    render json: collection, root: serializer_root, scope: scope
   end
 
   def respond_with_resource

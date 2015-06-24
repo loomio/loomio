@@ -73,6 +73,7 @@ es:
     group_already_setup: El grupo que estás tratando de configurar ya existe.
     passwords_did_not_match: Las contraseñas no coinciden
     proposal_already_exists: Ya existe una propuesta abierta en esta discusión.
+    username_must_be_alphanumeric: El nombre de usuario debe contener solamente letras y dígitos en minúscula
     user_with_email_address_already_in_group: Un usuario con ese correo electrónico ya es miembro de este grupo.
     you_have_already_requested_membership: Ya has solicitado unirte a este grupo.
     you_are_already_a_member_of_this_group: Ya eres miembro de este grupo.
@@ -211,6 +212,7 @@ es:
     new_vote: "%{position} sobre la propuesta"
     new_comment: comentó en la discusión
     comment_liked: le gusta tu comentario en la discusión
+    comment_replied_to: contestó a tu comentario en
     user_mentioned: te mencionó en un comentario sobre
     membership_requested: membresía solicitada para
     membership_request_approved: tu solicitud de ingreso ha sido aprobada
@@ -281,12 +283,14 @@ es:
     email_error: No es una dirección de correo electrónico valida.
     group_name: Nombre del grupo
     group_name_error: "Se requiere el nombre del grupo. "
+    pricing_html: "En 30 días, cuando hayas visto cómo Loomio mejora la forma de organizarse de tu grupo, te pediremos que elijas la <a href='%{link}' target='_blank'>forma de pago</a> que consideres oportuna."
     terms_html: "Al empiezas un grupo, aceptas los <a href='%{link}' target='_blank'>términos de servicio</a> de Loomio."
     success:
       header: "¡Ya casi has terminado! Revisa tu correo electrónico. "
       email_delivered: "Hemos enviado un correo electrónico a %{email}. Por favor sigue el link que hay dentro para configurar tu grupo"
       email_not_arrived: No te ha llegado el correo electrónico?
       please_hold: Por favor espera hasta 5 minutos para que te llegue el correo electrónico y asegurate de mirar en la la carpeta de correo no solicitado.
+    start_making_decisions: "Para empezar a tomar decisiones juntos con Loomio, crea un grupo. Es gratis."
   group_form:
     name: Nombre del grupo
     description: Descripción
@@ -538,6 +542,7 @@ es:
       log_in_html: "Si eres un miembro, <a href='%{href}'>inicia sesión</a> para ver las discusiones privadas."
   discussion_context:
     started_html: "Iniciado hace %{when} por <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    started_print: "Empezado %{when} por %{who}"
     last_edited_html: "Última edición hace %{when} por <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: Ver historial de revisión
     see_history: Ver historia
@@ -567,6 +572,7 @@ es:
   move_discussion_where: ¿A dónde te gustaría trasladar esta discusión?
   delete_discussion: Eliminar discusión
   confirm_delete_discussion: ¿Estás seguro de que quieres eliminar permanentemente esta discusión?
+  print_tooltip_info: Imprimir
   new_proposal: Nueva propuesta
   edit_proposal: Editar propuesta
   close_proposal: Cerrar propuesta
@@ -575,10 +581,12 @@ es:
   change_proposal_close_date_header: "Cambiar la fecha de cierre para la propuesta '%{which}'"
   proposal: Propuesta
   proposals: Propuestas
+  closed_at: Cerró a las
   proposal_close_date_error: "Por favor, indique una fecha futura"
   proposal_closing_when: "Cierra en %{when}"
   proposal_closed_when: "Cerró hace %{when}"
   proposed_when_by_who: "Propuesto hace %{when} por %{who}"
+  proposed_by_who_on: "Propuesto por: %{who}, %{when}"
   engagement_on_open_proposal: "%{percent}%% de miembros ha manifestado su posición (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}%% de miembros ha manifestado su posición (%{numerator}/%{denominator})"
   state_your_position: Establece tu posición
@@ -660,7 +668,9 @@ es:
     vote: Puedes cambiar tu posición en cualquier momento
   pricing_page:
     header: Precio
+    social_mission_html: "Nuestro modelo de pago está enfocado a nuestra misión social: <strong>facilitar a todas las personas, en cualquier parte, participar en las decisiones que les afectan </strong>."
     loomio_for_organisations: "Loomio para organizaciones "
+    organisations_deal_html: "Si estás usando Loomio en una empresa, organización formal o negocio, el precio es de 1$ US mensual por persona, tras el <strong> periodo de prueba gratuito de 30 días </strong>."
     loomio_for_communities: "Loomio para comunidades "
     communities_deal: "El dinero nunca sera una barrera para personas usando Loomio para hacer mejoras en sus comunidades. Si tu grupo no tiene presupuesto para pagar el software, no tienes que pagar la suscripción. Sin embrago, les pediremos ocasionalmente, a los miembros de tu grupo una donación voluntaria."
   contribution:

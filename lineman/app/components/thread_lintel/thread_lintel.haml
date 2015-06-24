@@ -2,8 +2,8 @@
   .thread-lintel__left
     %img.thread-lintel__logo{ng-src: '{{discussion.group().logoUrl()}}'}
     .thread-lintel__title{ng-click: 'scrollToThread()'} {{ discussion.title }}
-    .thread-lintel__proposal{ng-show: 'discussion.activeProposal() && !proposalInView', ng-click: 'scrollToProposal()'}
-      %tiny_proposal_pie_chart.thread-lintel__proposal-pie-chart{proposal: 'discussion.activeProposal()'}
+    .thread-lintel__proposal{ng-if: 'discussion.activeProposal() && !proposalInView', ng-click: 'scrollToProposal()'}
+      %pie_chart.thread-lintel__proposal-pie-chart.pie-chart--tiny{votes: 'discussion.activeProposal().voteCounts'}
       %span {{ discussion.activeProposal().name }}
   .thread-lintel__right{ng-show: '!proposalButtonInView'}
     %start_proposal_button{discussion: 'discussion'}
