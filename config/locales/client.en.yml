@@ -63,6 +63,9 @@ en:
   proposal_collapsed:
     expand: Expand
 
+  context_card:
+    heading: Context
+
   volume_levels:
     loud: 'Loud'
     normal: 'Normal'
@@ -100,10 +103,10 @@ en:
       label: 'Post'
 
   navbar:
-    home: 'Home'
+    recent: 'Recent'
     unread: 'Unread'
     groups: 'Groups'
-    home_title: 'Go to dashboard'
+    recent_title: 'Go to dashboard'
     unread_title: 'View unread activity'
     groups_title: 'View your groups'
     start_thread: 'Start a new thread'
@@ -380,7 +383,11 @@ en:
     send_invite: 'Send {{count}} invites'
     to: 'to: '
     default_message: "Hey there, come make decisions with us! We're using a collaborative decision-making tool called Loomio"
-
+    messages:
+      members_added_and_emails_sent: '{{members}} member(s) added and {{emails}} invitation(s) sent'
+      members_added: '{{members}} member(s) added'
+      emails_sent: '{{emails}} invitation(s) sent'
+      no_invitations: 'No invitation(s) sent!'
   memberships_page:
     members: 'Members'
     name_label: 'Name'

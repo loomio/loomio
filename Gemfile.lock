@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: git://github.com/loomio/private_pub.git
-  revision: 875b3de1711b200ce070d4a6d0f83b88fb66f5b0
+  revision: 48feb4b0eaead7480157a41719efbb438bdb425e
   specs:
     private_pub (1.0.3)
       faye
@@ -420,7 +420,7 @@ GEM
     modernizr-rails (2.7.1)
     momentjs-rails (2.10.2)
       railties (>= 3.1)
-    multi_json (1.11.0)
+    multi_json (1.11.1)
     multi_test (0.1.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -438,6 +438,8 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
+    oj (2.12.9)
+    oj_mimic_json (1.0.1)
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
@@ -721,6 +723,8 @@ DEPENDENCIES
   momentjs-rails
   newrelic_rpm
   nokogiri
+  oj
+  oj_mimic_json
   omniauth (~> 1.2.2)
   omniauth-browserid
   omniauth-facebook (~> 2.0.1)

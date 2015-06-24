@@ -8,4 +8,4 @@
     .navbar-notifications
       %ul.selector-list
         %li.selector-list-header{translate: "notifications.header", role: 'heading'}
-        %li.selector-list-item.media{ng_repeat: 'notification in notifications()', ng-include: '"generated/components/notifications/" + notification.event().kind + ".html"'}
+        %li.selector-list-item.media{ng_repeat: 'notification in notifications() track by notification.id', ng-include: '"generated/components/notifications/" + notification.event().kind + ".html"'}

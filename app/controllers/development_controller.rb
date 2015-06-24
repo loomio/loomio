@@ -1,16 +1,6 @@
 class DevelopmentController < ApplicationController
   around_filter :ensure_testing_environment
 
-  def send_email
-    group = FactoryGirl.create(:group)
-    sender = group.admins.first
-    subject = "Please be aware of the important decision we're making"
-    message = "as you all know the things have been happening and we need full engagement for the next thing so please come join us"
-    recipient = FactoryGirl.create(:user)
-    GroupMailer.delay.group_email(group, sender, subject, message, recipient)
-    render text: 'sent a group annoucment email'
-  end
-
   def last_email
     @email = ActionMailer::Base.deliveries.last
     render layout: false
@@ -52,10 +42,11 @@ class DevelopmentController < ApplicationController
     redirect_to discussion_url(test_discussion)
   end
 
-  def setup_proposal_with_vote
+  def setup_proposal_with_votes
     cleanup_database
     sign_in patrick
     test_vote
+    another_test_vote
 
     redirect_to discussion_url(test_discussion)
   end
@@ -200,7 +191,7 @@ class DevelopmentController < ApplicationController
       @test_proposal = Motion.new(name: 'lets go hiking',
                                 closing_at: 3.days.from_now,
                                 discussion: test_discussion)
-      MotionService.create(motion: @test_proposal, actor: patrick)
+      MotionService.create(motion: @test_proposal, actor: jennifer)
     end
     @test_proposal
   end
@@ -211,6 +202,14 @@ class DevelopmentController < ApplicationController
       VoteService.create(vote: @test_vote, actor: patrick)
     end
     @test_vote
+  end
+
+  def another_test_vote
+    unless @another_test_vote
+      @another_test_vote = Vote.new(position: 'no', motion: test_proposal, statement: 'I disagree!')
+      VoteService.create(vote: @another_test_vote, actor: jennifer)
+    end
+    @another_test_vote
   end
 
   def cleanup_database

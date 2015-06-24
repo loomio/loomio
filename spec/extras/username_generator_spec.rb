@@ -21,10 +21,6 @@ describe UsernameGenerator do
       create :user, username: 'howdyho'
       user = build :user, name: 'howdy ho'
       expect(UsernameGenerator.new(user).generate).to eq 'howdyho1'
-      user.save
-
-      user = build :user, name: 'howdy ho'
-      expect(UsernameGenerator.new(user).generate).to eq 'howdyho2'
     end
   end
 end

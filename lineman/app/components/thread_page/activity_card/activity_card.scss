@@ -4,9 +4,14 @@
 
 .activity-card__load-backwards{
   @include fontSmall;
-  color: $grey-on-white;
-  line-height: 30px;
+  color: $grey-on-grey;
   span{text-decoration: underline;}
+  line-height: 30px;
+  padding: 0 10px;
+  background-color: $background-color;
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .activity-card__last-read-activity {

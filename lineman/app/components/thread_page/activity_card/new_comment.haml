@@ -1,4 +1,4 @@
-%article.thread-item.thread-item--comment{ng_controller: 'NewCommentItemController', aria-labelledby: 'comment-{{comment.id}}' }
+%article.thread-item.thread-item--comment{ng_controller: 'NewCommentItemController', aria-labelledby: 'comment-{{comment.id}}', id: 'comment-{{comment.id}}' }
   .thread-item-context-menu.dropdown.pull-right{ng-if: 'showContextMenu()'}
     %button.btn.lmo-btn-nude.dropdown-toggle.thread-item__options-button{href:''}
       %i.fa.fa-chevron-down{aria-hidden: 'true'}
@@ -16,12 +16,12 @@
     .media-body
       %span.new-comment__in-reply-to{ng-if: 'comment.parentId', translate: 'new_comment_item.in_reply_to', translate-values: '{author: comment.authorName(), recipient: comment.parentAuthorName()}'}
       %span{ng-if: '!comment.parentId'}
-        %h3.new-comment__author-name{id: 'comment-{{comment.id}}'} {{ ::comment.authorName() }}
+        %h3.new-comment__author-name {{ ::comment.authorName() }}
 
   .thread-item-body{btf-markdown: 'comment.body' }
 
   .thread-item-attachments
-    .thread-attachment{ng-repeat: 'attachment in comment.attachments()'}
+    .thread-attachment{ng-repeat: 'attachment in comment.attachments() track by attachment.id'}
       %attachment{attachment: 'attachment'}
 
   .thread-item-footer

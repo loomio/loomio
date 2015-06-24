@@ -11,7 +11,7 @@ class API::MembershipsController < API::RestfulController
 
   def invitables
     @memberships = page_collection visible_invitables
-    respond_with_collection
+    respond_with_collection scope: { q: params[:q] }
   end
 
   def my_memberships
@@ -51,7 +51,7 @@ class API::MembershipsController < API::RestfulController
 
   def visible_invitables
     load_and_authorize :group, :invite_people
-    Queries::VisibleInvitableMemberships.new(group: @group, user:  current_user, query: params[:q])
+    Queries::VisibleInvitableMemberships.new(group: @group, user: current_user, query: params[:q])
   end
 
   def default_page_size

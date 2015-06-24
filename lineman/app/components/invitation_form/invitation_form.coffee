@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'InvitationForm', ->
   templateUrl: 'generated/components/invitation_form/invitation_form.html'
-  controller: ($scope, $rootScope, group, InvitationsClient, Records, CurrentUser, AbilityService, LoadingService) ->
+  controller: ($scope, $rootScope, group, InvitationsClient, Records, CurrentUser, AbilityService, LoadingService, FlashService) ->
     $scope.group = group
     $scope.invitations = []
 
@@ -9,8 +9,13 @@ angular.module('loomioApp').factory 'InvitationForm', ->
     $scope.hasInvitations = ->
       $scope.invitations.length > 0
 
-    $scope.invitationsCount = ->
-      _.reduce $scope.invitations, ((total, invitation) -> total + (invitation.count or 1)), 0
+    $scope.invitationsCount = (types...) ->
+      _.reduce $scope.invitations, ((total, invitation) ->
+        if _.isEmpty(types) or _.contains(types, invitation.type)
+          total + (invitation.count or 1)
+        else
+          total
+      ), 0
 
     $scope.fragmentIsValidEmail = ->
       $scope.emailValidation.$valid
@@ -36,11 +41,11 @@ angular.module('loomioApp').factory 'InvitationForm', ->
 
     $scope.invitableUsers = ->
       memberIds = _.uniq _.flatten _.map $scope.availableGroups(), (group) -> group.memberIds()
-      memberIds = _.filter memberIds, (memberId) -> 
+      memberIds = _.filter memberIds, (memberId) ->
         !_.contains $scope.group.memberIds(), memberId
       users = _.filter Records.users.find(memberIds), (user) ->
-        !user.membershipFor($scope.group) and 
-        matchesFragment(user.name, user.username) and
+        !user.membershipFor($scope.group) and
+        matchesFragment(user.searchFragment, user.name, user.username) and
         !existsAlready('user', 'id', user.id)
 
       _.map users, (user) ->
@@ -52,7 +57,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
 
     $scope.invitableContacts = ->
       contacts = _.filter CurrentUser.contacts(), (contact) ->
-        matchesFragment(contact.name, contact.email) and 
+        matchesFragment(contact.name, contact.email) and
         !existsAlready('contact', 'email', contact.email)
 
       _.map contacts, (contact) ->
@@ -64,6 +69,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
 
     matchesFragment = (fields...) ->
       _.some _.map fields, (field) ->
+        return false unless field?
         ~field.search new RegExp($scope.fragment, 'i')
 
     existsAlready = (type, uniqueField, value) ->
@@ -81,7 +87,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
         $scope.invitables()
 
     $scope.invitables = ->
-      _.take _.union($scope.invitableUsers(), 
+      _.take _.union($scope.invitableUsers(),
                      $scope.invitableContacts(),
                      $scope.invitableGroups(),
                      _.compact([$scope.invitableEmail() if $scope.fragmentIsValidEmail()])), 5
@@ -97,12 +103,28 @@ angular.module('loomioApp').factory 'InvitationForm', ->
     $scope.submit = ->
       $scope.isDisabled = true
       invitationsClient.create(invitationsParams()).then ->
-        $scope.invitations = []
+        FlashService.success $scope.successMessage(), members: $scope.memberCount(), emails: $scope.emailCount()
         $scope.$close()
         Records.memberships.fetchByGroup $scope.group.key, per: 25
       , ->
         $scope.isDisabled = false
         $rootScope.$broadcast 'pageError', 'cantCreateInvitations'
+
+    $scope.successMessage = ->
+      if $scope.memberCount() > 0 and $scope.emailCount() > 0
+        'invitation.messages.members_added_and_emails_sent'
+      else if $scope.memberCount() > 0
+        'invitation.messages.members_added'
+      else if $scope.emailCount() > 0
+        'invitation.messages.emails_sent'
+      else
+        'invitation.messages.no_invitations'
+
+    $scope.memberCount = ->
+      $scope.invitationsCount('user', 'group')
+
+    $scope.emailCount = ->
+      $scope.invitationsCount('contact', 'email')
 
     invitationsParams = ->
       invitations: $scope.invitations

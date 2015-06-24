@@ -2,6 +2,9 @@ module.exports = new class GroupsHelper
   load: ->
     browser.get('http://localhost:8000/development/setup_group')
 
+  flashSection: ->
+    element(By.css('.flash-message'))
+
   membersList: ->
     element(By.css('.group-member-list'))
 
@@ -15,7 +18,7 @@ module.exports = new class GroupsHelper
     element(By.css('.discussion-form__description-input')).sendKeys(description)
 
   submitDiscussionForm: ->
-    element(By.css('.discussion-form__submit')).click()
+    element.all(By.css('.discussion-form__submit')).first().click()
 
   discussionTitle: ->
     element(By.css('.thread-context'))

@@ -7,6 +7,7 @@ angular.module('loomioApp').factory 'EventRecordsInterface', (BaseRecordsInterfa
         params:
           discussion_key: discussionKey
           from: options['from']
+          comment_id: options['comment_id']
           per: options['per']
 
     findByDiscussionAndSequenceId: (discussion, sequenceId) ->
