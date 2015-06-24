@@ -16,7 +16,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
     vendor: ["vendor/bower_components/lodash/lodash.js",
              "vendor/bower_components/moment/moment.js",
              "vendor/bower_components/jquery/dist/jquery.js",
-             "vendor/bower_components/ng-file-upload/angular-file-upload-shim.js"
+             "vendor/bower_components/ng-file-upload/angular-file-upload-shim.js",
              "vendor/bower_components/angular/angular.js",
              "vendor/bower_components/angular-mocks/angular-mocks.js",
              "vendor/bower_components/angular-sanitize/angular-sanitize.js",
