@@ -13,7 +13,7 @@
         %span{translate: 'group_page.thread_list.empty.{{howToGainAccess()}}'}
         %a{translate: 'group_page.thread_list.empty.request_membership_link', ng-if: 'howToGainAccess() == "request_membership"', href: '', ng-click: 'requestToJoin()'}
 
-    .group-thread-list-item{ng-repeat: 'discussion in group.organisationDiscussions() | orderBy: ["-lastActivityAt"] | limitTo:loaded'}
+    .group-thread-list-item{ng-repeat: 'discussion in group.organisationDiscussions() track by discussion.id | orderBy: ["-lastActivityAt"] | limitTo:loaded'}
       .time-and-icon.pull-right
         %smart_time.group-thread-list-time{time: 'discussion.lastActivityAt' }>
         %span.group-thread-list-icon

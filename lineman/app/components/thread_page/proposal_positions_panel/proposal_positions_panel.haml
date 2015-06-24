@@ -18,7 +18,7 @@
   .proposal-pie-chart__participation-statement{translate: 'proposal_pie_chart.participation_statement', translate-value-percentage: '{{proposal.percentVoted()}}', translate-value-number: '{{proposal.numberVoted()}}', translate-value-total: '{{proposal.groupSizeWhenVoting()}}'}
 
   %ul.proposal-positions-panel__list
-    %li.proposal-positions-panel__vote.media{ng_repeat: 'vote in curatedVotes()'}
+    %li.proposal-positions-panel__vote.media{ng_repeat: 'vote in curatedVotes() track by vote.id'}
       .media-left
         .thread-item-vote-icon{class: 'thread-item-vote-icon-{{vote.position}}'}
       .media-body

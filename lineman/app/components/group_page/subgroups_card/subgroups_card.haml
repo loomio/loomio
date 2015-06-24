@@ -2,7 +2,7 @@
   %h2#subgroups-card__title.lmo-card-heading{ translate: 'group_page.subgroups'}
   .group-page__subgroups-placeholder.lmo-hint-text{translate: 'group_page.subgroups_placeholder', ng-if: 'showSubgroupsPlaceholder()' }
   %ul.subgroups-card__list
-    %li.subgroups-card__list-item{ng-repeat: 'subgroup in group.subgroups()'}
+    %li.subgroups-card__list-item{ng-repeat: 'subgroup in group.subgroups() track by subgroup.id'}
       .subgroups-card__list-item-logo
       .subgroups-card__list-item-name
         %a{href: '/g/{{subgroup.key}}'} {{ subgroup.name }}
