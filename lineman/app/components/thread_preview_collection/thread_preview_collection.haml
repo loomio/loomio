@@ -1,5 +1,5 @@
 .thread-previews
-  .thread-preview{ng-repeat: 'thread in query.threads() | limitTo: limit'}
+  .thread-preview{ng-repeat: 'thread in query.threads() track by thread.id | limitTo: limit'}
     .thread-preview__star
       %star_toggle{thread: 'thread'}
     .thread-preview__actions.hidden-xs
