@@ -18,7 +18,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     AbilityService.canVoteOn(@discussion.activeProposal())
 
   @elementToFocus = ->
-    if @proposalToFocus
+    if @proposalToFocus or (@discussion.hasActiveProposal() and $location.search().proposal == @discussion.activeProposal().key)
       "#proposal-#{@proposalToFocus.key}"
     else if @commentToFocus
       "#comment-#{@commentToFocus.id}"
@@ -35,7 +35,8 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       @discussion = discussion
       @group      = @discussion.group()
       @comment    = Records.comments.build(discussion_id: @discussion.id)
-      @openVoteModal()
+      if @discussion.hasActiveProposal() and $location.search().proposal == @discussion.activeProposal().key
+        @proposalToFocus = @discussion.activeProposal()
 
       @sequenceIdToFocus = @discussion.reader().lastReadSequenceId # or location hash when we put it back in.
 
