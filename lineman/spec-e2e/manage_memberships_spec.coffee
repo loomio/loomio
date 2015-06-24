@@ -10,15 +10,20 @@ describe 'Managing memberships', ->
 
     it 'successfully removes a group member', ->
       membershipsHelper.visitMembershipsPage()
-      expect(membershipsHelper.currentMembershipsCount()).toEqual(2)
+      membershipsHelper.fillInSearchInput('Jennifer')
       membershipsHelper.clickRemoveLink()
-      expect(membershipsHelper.currentMembershipsCount()).toEqual(1)
+      membershipsHelper.confirmRemoveAction()
+      expect(membershipsHelper.currentMembershipRow().isPresent()).toBe(false)
+      membershipsHelper.clearSearchInput()
+      expect(membershipsHelper.membershipsTable().getText()).not.toContain('Jennifer Grey')
 
   describe 'promoting a member to coordinator', ->
 
     it 'successfully assigns coordinator privileges', ->
       membershipsHelper.visitMembershipsPage()
+      membershipsHelper.fillInSearchInput('Jennifer')
       membershipsHelper.checkCoordinatorCheckbox()
+      membershipsHelper.clearSearchInput()
       expect(membershipsHelper.currentCoordinatorsCount()).toEqual(2)
 
   describe 'removing a coordinator', ->
@@ -26,6 +31,5 @@ describe 'Managing memberships', ->
     it 'cannot remove the last coordinator', ->
       membershipsHelper.visitMembershipsPage()
       expect(membershipsHelper.currentCoordinatorsCount()).toEqual(1)
-      expect(membershipsHelper.disabledCoordinatorCheckbox().isEnabled()).toBe(false)
-
-
+      membershipsHelper.fillInSearchInput('Patrick')
+      expect(membershipsHelper.coordinatorCheckbox().isEnabled()).toBe(false)

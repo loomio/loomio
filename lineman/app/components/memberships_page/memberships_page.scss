@@ -4,6 +4,21 @@
   .align-center { text-align: center; }
 }
 
+.memberships-page__search-filter {
+  padding-left: 0;
+  position: relative;
+}
+
+.memberships-page__search-filter input {
+  padding-left: 35px;
+}
+
+.memberships-page__search-filter i {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
 .memberships-page__memberships {
   @include card;
   padding-top: 10px;

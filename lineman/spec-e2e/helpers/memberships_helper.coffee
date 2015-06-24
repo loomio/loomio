@@ -3,20 +3,32 @@ module.exports = new class MembershipsHelper
   visitMembershipsPage: ->
     element(By.css('.members-card__manage-members a')).click()
 
+  searchInput: ->
+    element(By.css('.membership-page__search-filter'))
+
+  fillInSearchInput: (name) ->
+    @searchInput().sendKeys(name)
+
   clickRemoveLink: ->
-    element.all(By.css('.memberships-page__remove-link')).last().click()
+    element(By.css('.memberships-page__remove-link')).click()
 
-  currentMembershipsCount: ->
-    element.all(By.css('.memberships-page__membership')).count()
+  confirmRemoveAction: ->
+    element(By.css('.memberships-page__remove-membership-confirm')).click()
 
-  disabledCoordinatorCheckbox: ->
-    element.all(By.css('.memberships-page__make-coordinator')).first()
+  currentMembershipRow: ->
+    element(By.css('.memberships-page__membership'))
 
-  enabledCoordinatorCheckbox: ->
-    element.all(By.css('.memberships-page__make-coordinator')).last()
+  clearSearchInput: ->
+    @searchInput().clear()
+
+  membershipsTable: ->
+    element(By.css('.memberships-page__memberships'))
+
+  coordinatorCheckbox: ->
+    element(By.css('.memberships-page__make-coordinator'))
 
   checkCoordinatorCheckbox: ->
-    @enabledCoordinatorCheckbox().click()
+    @coordinatorCheckbox().click()
 
   currentCoordinatorsCount: ->
     element.all(By.css('.coordinator')).count()
