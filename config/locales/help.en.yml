@@ -15,6 +15,10 @@ en:
       decide_together_description: 'anyone can agree, abstain, disagree, or block – so you can see how everyone feels about the proposal.'
     contents:
       title: Table of contents
+      what_is_loomio:
+        title: What is Loomio
+      how_loomio_works:
+        title: How Loomio works
       getting_started:
         title_html: Getting started
         starting_new_group_html: When you want to start a new Loomio group
@@ -104,7 +108,7 @@ en:
           If you do not have a Loomio account you can start a new group from the Loomio front page by clicking the <strong>“Try out Loomio beta”</strong> button.
           You will be guided through the steps to start your own group.
           As part of the group setup process, you will need to determine how you want your group to function by customising your group settings.
-          Click <a href="#group-settings">here</a> to read more about group settings.
+          You can read more about group settings in the <a href="#group-settings">"Group settings"</a> section of this document.
       invited_into_group:
         title: When you are invited into a Loomio group
         body_html: |
@@ -265,7 +269,7 @@ en:
           body_html: |
             Upon submitting the group setup form you will be directed to your group page.
             From your group page you can invite people to join your group.
-            Click <a href="#inviting-members">here</a> to read more about invitations.
+            You can read more about invitations in the <a href="#inviting-members">"Inviting new members"</a> section of this document.
     coordination:
       title: Coordinating your group
       intro_html: |
@@ -393,9 +397,8 @@ en:
           <p>The discussion title and the information you provide for the context field will sit in a panel at the top of the discussion page.</p>
           <p>As the discussion progresses, the context panel can be updated as new information comes to light.
           As well as clarifying the topic, you can use this space for sharing resources, summarising the discussion as it progresses, or outlining the decision-making protocols your group is using.</p>
-          <p>Loomio uses <strong>Markdown</strong> to let you format text and embed images.
-          You can use Markdown in the context panel to format your discussion context, or to embed images.
-          Click <a href="https://www.loomio.org/d/Wh7vHaTk/markdown-text-formatting-made-easy">here</a> for information on how to use Markdown.</p>
+          <p>Loomio uses <strong>Markdown</strong> to let you format text and embed images. You can use Markdown in the context panel to format your discussion context, or to embed images.
+          For more information on how to use Markdown, click the <a href="https://www.loomio.org/d/Wh7vHaTk/markdown-text-formatting-made-easy">"Help"</a> link next to the Markdown checkbox on the new discussion form, or visit the Markdown help page directly: <a href="/markdown" target="_blank">loomio.org/markdown</a>.</p>
       discussion_privacy:
         title: Discussion privacy
         body_html: |
@@ -433,7 +436,7 @@ en:
         body_html: |
           Loomio uses <strong>Markdown</strong> to let you format text and embed images.
           To enable Markdown, check the box next to the word <strong>“Markdown”</strong> under the comment box.
-          Click <a href="https://www.loomio.org/d/Wh7vHaTk/markdown-text-formatting-made-easy">here</a> for information on how to use Markdown.
+          For more information on how to use Markdown, click the <a href="https://www.loomio.org/d/Wh7vHaTk/markdown-text-formatting-made-easy">"Help"</a> link next to the Markdown checkbox under the comment box, or visit the Markdown help page directly: <a href="/markdown" target="_blank">loomio.org/markdown</a>.
       attaching_files:
         title: Attaching files
         body: |
@@ -685,7 +688,7 @@ en:
         <p>There are a number of public Loomio Community sub-groups dedicated to different strands of the community ecosystem.
         These groups are open for anyone to join; whether you're interested in contributing, or just curious about Loomio.
         There is a <a href="https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation">translation sub-group</a>, a <a href="https://www.loomio.org/g/GN7EFQTK/loomio-community-feature-ideas">Feature ideas sub-group</a>, an <a href="https://www.loomio.org/g/C7I2YAPN/loomio-community-installing-loomio">Installing Loomio sub-group</a> for support and assistance with local installations, and a sub-group for <a href="https://www.loomio.org/g/7jWVDr04/loomio-community-group-coordinators">Loomio group coordinators</a> to share faciliation tips and tricks, so we can collectively grow our knowledge and build shared resources around the best ways to use Loomio together.</p>
-        <p>You can find out more about how the Loomio Community works <a href="https://www.loomio.org/discussions/5200">here</a>.</p>
+        <p>To find out more about how the Loomio Community works take a look at the <a href="https://www.loomio.org/discussions/5200">"How this community works discussion"</a> in the Loomio Community group.</p>
     loomio_development:
       title: Keeping up with Loomio Development
       intro: 'There are several ways to keep track of Loomio progress:'
