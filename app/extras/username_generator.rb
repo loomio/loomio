@@ -1,11 +1,19 @@
-UsernameGenerator = Struct.new(:user) do
+class UsernameGenerator
+  attr_reader :user
+
+  def initialize(user)
+    @user = user
+  end
 
   def generate
+    return safe_username unless conflict_exists?(safe_username)
+
+    low = 1
+    high = 1
     begin
-      i ||= 0
-      username = "#{safe_username}#{i if i > 0}"
-      i += 1
-    end while conflicts.include? username
+      username = "#{safe_username}#{(low..high).to_a.sample}"
+      high = high * 2
+    end while conflict_exists?(username)
     username
   end
 
@@ -27,8 +35,7 @@ UsernameGenerator = Struct.new(:user) do
                             .gsub(/[^a-z0-9]+/, '')[0,18]
   end
 
-  def conflicts
-    UsernameConflictsQuery.conflicts_for(safe_username).pluck(:username)
+  def conflict_exists?(username)
+    User.where(username: username).exists?
   end
-
 end

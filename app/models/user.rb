@@ -37,12 +37,11 @@ class User < ActiveRecord::Base
   validates_length_of :username, maximum: 30, allow_blank: true
   validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'error.username_must_be_alphanumeric')
 
-  validates_length_of :password, minimum: 8, :allow_nil => true
-  validates :password, nontrivial_password: true, :allow_nil => true
+  validates_length_of :password, minimum: 8, allow_nil: true
+  validates :password, nontrivial_password: true, allow_nil: true
 
   include Gravtastic
-  gravtastic  :rating => 'pg',
-              :default => 'none'
+  gravtastic rating: :pg, default: :none
 
 
   has_many :contacts, dependent: :destroy
