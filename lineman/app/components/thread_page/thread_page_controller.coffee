@@ -12,7 +12,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   @elementToFocus = ->
     if @proposalToFocus
-      if (position = $location.search().position) and AbilityService.canVoteOn(proposal)
+      if (position = $location.search().position) and AbilityService.canVoteOn(@proposalToFocus)
         $rootScope.$broadcast 'triggerVoteForm', position
       "#proposal-#{@proposalToFocus.key}"
     else if @commentToFocus

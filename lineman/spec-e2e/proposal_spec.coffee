@@ -85,7 +85,7 @@ describe 'Proposals', ->
     beforeEach ->
       threadHelper.loadWithActiveProposal()
 
-    it 'opens the voting modal when email link is clicked', ->
+    iit 'opens the voting modal when email link is clicked', ->
       emailHelper.openLastEmail()
       emailHelper.clickAgreeLink()
       expect(proposalsHelper.voteFormPositionSelect().getAttribute('value')).toContain('yes')

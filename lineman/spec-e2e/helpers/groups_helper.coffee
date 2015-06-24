@@ -18,7 +18,7 @@ module.exports = new class GroupsHelper
     element(By.css('.discussion-form__description-input')).sendKeys(description)
 
   submitDiscussionForm: ->
-    element(By.css('.discussion-form__submit')).click()
+    element.all(By.css('.discussion-form__submit')).first().click()
 
   discussionTitle: ->
     element(By.css('.thread-context'))
