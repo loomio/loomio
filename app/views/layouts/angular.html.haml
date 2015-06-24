@@ -19,8 +19,12 @@
       %a{href: 'https://docs.google.com/forms/d/1JS75ZdoBiA3k7IzxDPijV4kPh1fXrmWs9A8k_WG_pyE/viewform', target: '_blank'}
         Give feedback
 
+    - if Rails.env.production?
+      %script{src: '/js/airbrake-shim.js', 'data-airbrake-host' => "http://#{ENV['ERRBIT_HOST']}", 'data-airbrake-project-id' => ENV['ERRBIT_KEY'],  'data-airbrake-project-key' => ENV['ERRBIT_KEY']}
+
     :javascript
       window.Loomio = {};
+      window.Loomio.environment = #{Rails.env.to_json};
       window.Loomio.flash = #{flash.to_h.to_json};
       window.Loomio.currentUserId = #{current_user.id};
       window.Loomio.seedRecords = #{CurrentUserSerializer.new(current_user).to_json}
@@ -29,6 +33,7 @@
 
     = javascript_include_tag lineman_vendorjs_path
     = javascript_include_tag lineman_appjs_path
+
 
     - if ENV['FAYE_URL']
       %script{src: "#{ENV['FAYE_URL']}/client.js", type: 'text/javascript'}
