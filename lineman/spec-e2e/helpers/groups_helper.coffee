@@ -2,6 +2,9 @@ module.exports = new class GroupsHelper
   load: ->
     browser.get('http://localhost:8000/development/setup_group')
 
+  flashSection: ->
+    element(By.css('.flash-message'))
+
   membersList: ->
     element(By.css('.group-member-list'))
 

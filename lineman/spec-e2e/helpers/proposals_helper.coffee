@@ -75,3 +75,6 @@ module.exports = new class ProposalsHelper
 
   editProposalOutcomeForm: (params) ->
     element(By.css('.proposal-form__outcome-field')).clear().sendKeys(params.body)
+
+  voteFormPositionSelect: ->
+    element(By.css('.vote-form__select-position'))

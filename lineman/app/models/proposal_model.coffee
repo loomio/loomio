@@ -4,9 +4,9 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     @plural: 'proposals'
     @indices: ['id', 'key', 'discussionId']
 
-    initialize: (data) ->
-      @closingAt = moment().add(3, 'days')
-      @updateFromJSON(data)
+    defaultValues: ->
+      voteCounts: {yes: 0, no: 0, abstain: 0, block: 0}
+      closingAt: moment().add(3, 'days')
 
     setupViews: ->
       @setupView 'votes'
