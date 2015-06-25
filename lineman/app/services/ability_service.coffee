@@ -60,3 +60,8 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
     canDeleteComment: (comment) ->
       CurrentUser.isAuthorOf(comment) or
       @canAdministerGroup(comment.group())
+
+    canRemoveMembership: (membership) ->
+      membership.group().memberIds().length > 1 and
+      (!membership.admin or membership.group().adminIds().length > 1) and
+      (membership.user() == CurrentUser or @canAdministerGroup(membership.group()))

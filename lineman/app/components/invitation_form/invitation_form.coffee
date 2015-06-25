@@ -105,7 +105,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
       invitationsClient.create(invitationsParams()).then ->
         FlashService.success $scope.successMessage(), members: $scope.memberCount(), emails: $scope.emailCount()
         $scope.$close()
-        Records.memberships.fetchByGroup $scope.group
+        Records.memberships.fetchByGroup $scope.group.key, per: 25
       , ->
         $scope.isDisabled = false
         $rootScope.$broadcast 'pageError', 'cantCreateInvitations'

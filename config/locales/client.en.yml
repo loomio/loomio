@@ -290,9 +290,10 @@ en:
     description_placeholder: 'Use this place to describe the purpose of the group so your members know why they are here.'
     discussions: 'Threads'
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
-    members: 'Members'
+    members: 'Members ({{count}}) '
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
+    manage_members: Manage members
     subgroups: 'Subgroups'
     subgroups_placeholder: 'Subgroups let you break the group up into different teams.'
     invite_people: 'Invite people'
@@ -304,7 +305,6 @@ en:
       edit_group: 'Edit Group Settings'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
-      manage_members: 'Manage members'
     deactivate_group:
       title: 'Deactivate group'
       question: 'Are you sure you want to deactivate this group?'
@@ -391,13 +391,17 @@ en:
   memberships_page:
     members: 'Members'
     name_label: 'Name'
-    email_label: 'Email'
     coordinator_label: 'Coordinator'
     remove_member_label: 'Remove'
-    add_coordinator: 'Make Coordinator'
-    remove_coordinator: 'Remove Coordinator'
-    remove_member: 'Remove'
-    see_more_members: 'See more members'
+    fragment_placeholder: 'Filter users by name or username...'
+    messages:
+      remove_member_success: 'Successfully removed {{name}}'
+      make_admin_success: '{{name}} is now a coordinator'
+      remove_admin_success: '{{name}} is no longer a coordinator'
+    remove_membership:
+      title: 'Remove member'
+      question: 'Are you sure you want to remove {{name}} as a member of {{group}}?'
+      submit: 'Remove'
 
   profile_page:
     messages:
