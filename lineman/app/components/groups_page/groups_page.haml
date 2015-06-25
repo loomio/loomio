@@ -9,8 +9,6 @@
           %span{translate: 'navbar.user_options.new_group'}
 
     .groups-page__groups
-      hi
-      {{ groupsPage.memberships() }}
       %section.groups-page__group{ng-repeat: 'group in groupsPage.groups() track by group.id | orderBy:groupsPage.groupName', aria-labelledby: '{{::group.key}}'}
         .groups-page__group-header.clearfix
           %img.groups-page__group-logo{ng-src: "{{::group.logoUrl()}}", aria-hidden: 'true'}>
