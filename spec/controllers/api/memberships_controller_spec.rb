@@ -38,6 +38,13 @@ describe API::MembershipsController do
         expect(users).to_not include alien_named_biff.id
         expect(groups).to include group.id
       end
+
+      it 'returns users ordered by name' do
+        get :index, group_id: group.id, format: :json
+        json = JSON.parse(response.body)
+        usernames = json['users'].map { |c| c['name'] }
+        expect(usernames.sort).to eq usernames
+      end
     end
   end
 

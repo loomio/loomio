@@ -2,9 +2,9 @@ class Queries::VisibleMemberships < Delegator
 
   def initialize(user: nil, group: nil, query: nil, limit: nil)
     @user, @group, @query, @limit = user, group, query, limit
-    @relation = @group.memberships.joins(:user)
+    @relation = @group.memberships.joins(:user).includes(:user, :group)
                       .where("users.name ilike #{search_term} or users.username ilike #{search_term}")
-                      .limit(limit)
+                      .limit(limit).order('users.name')
     super @relation
   end
 
