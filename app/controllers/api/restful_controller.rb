@@ -92,7 +92,7 @@ class API::RestfulController < API::BaseController
   end
 
   def page_collection(collection)
-    collection.offset(params[:from]).limit(params[:per] || default_page_size)
+    collection.offset(params[:from]).limit(params[:per].try(:to_i) || default_page_size)
   end
 
   def visible_records
