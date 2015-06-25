@@ -27,7 +27,7 @@ if window.Loomio? and window.Loomio.environment == 'production'
   angular.module('loomioApp').config  ($compileProvider) ->
     $compileProvider.debugInfoEnabled(false);
 
-angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService) ->
+angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService, Records) ->
   $scope.currentComponent = 'nothing yet'
 
   $scope.$on 'currentComponent', (event, options = {}) ->

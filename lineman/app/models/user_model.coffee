@@ -12,12 +12,6 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       @membershipsView   = @recordStore.memberships.belongingTo(userId: @id)
       @notificationsView = @recordStore.notifications.belongingTo(userId: @id)
       @contactsView      = @recordStore.contacts.belongingTo(userId: @id)
-      @groupsView        = @recordStore.groups.belongingTo(id: { $in: @groupIds() })
-      @parentGroupsView  = @recordStore.groups.collection.addDynamicView()
-      @parentGroupsView.applyFind(parentId: {$eq: null}).applyFind(id: {$in: @groupIds()})
-
-    groupIds: ->
-      _.map(@memberships(), 'groupId')
 
     membershipFor: (group) ->
       _.first @recordStore.memberships
@@ -27,6 +21,9 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
 
     memberships: ->
       @membershipsView.data()
+
+    groupIds: ->
+      _.map(@memberships(), 'groupId')
 
     notifications: ->
       @notificationsView.data()
@@ -41,7 +38,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       @recordStore.groups.find(id: { $in: @groupIds() })
 
     parentGroups: ->
-      @parentGroupsView.data()
+      _.filter @groups(), (group) -> group.parentId == null
 
     isAuthorOf: (object) ->
       @id == object.authorId
