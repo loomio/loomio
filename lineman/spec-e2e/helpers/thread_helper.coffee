@@ -6,7 +6,7 @@ module.exports = new class ThreadHelper
     browser.get('http://localhost:8000/development/setup_proposal')
 
   loadWithActiveProposalWithVote: ->
-    browser.get('http://localhost:8000/development/setup_proposal_with_vote')
+    browser.get('http://localhost:8000/development/setup_proposal_with_votes')
 
   loadWithClosedProposal: ->
     browser.get('http://localhost:8000/development/setup_closed_proposal')
