@@ -5,7 +5,6 @@ angular.module('loomioApp').factory 'MembershipRecordsInterface', (BaseRecordsIn
     fetchMyMemberships: ->
       @fetch
         path: 'my_memberships'
-        cacheKey: 'myMemberships'
 
     # There's a pattern emerging for searching by fragment...
     fetchByNameFragment: (fragment, groupKey, limit = 5) ->

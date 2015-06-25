@@ -4,6 +4,9 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
     @plural: 'groups'
     @indices: ['id', 'key', 'parentId']
 
+    defaultValues: ->
+      parentId: null
+
     setupViews: ->
       @setupView 'discussions', 'createdAt', true
 
