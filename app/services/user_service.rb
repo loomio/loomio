@@ -6,7 +6,7 @@ class UserService
 
   def self.deactivate(user:, actor:, params:)
     actor.ability.authorize! :deactivate, user
-    UserDeactivationResponse.create! user: user, body: params[:deactivation_response]
+    UserDeactivationResponse.create(user: user, body: params[:deactivation_response])
     user.deactivate!
     user
   end
