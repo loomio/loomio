@@ -4,9 +4,12 @@ class Popolo::MotionSerializer < ActiveModel::Serializer
              :creator_id,
              :text,
              :classification,
-             :date,
+             :start_date,
+             :end_date,
              :requirement,
-             :result
+             :result,
+             :counts
+  has_many :unique_votes, key: :votes, serializer: Popolo::VoteSerializer
 
   def motion_id
     object.key
@@ -28,8 +31,12 @@ class Popolo::MotionSerializer < ActiveModel::Serializer
     'proposal'
   end
 
-  def date
+  def start_date
     object.created_at
+  end
+
+  def end_date
+    object.closed_at || object.closing_at
   end
 
   def requirement
@@ -38,5 +45,9 @@ class Popolo::MotionSerializer < ActiveModel::Serializer
 
   def result
     object.outcome
+  end
+
+  def counts
+    object.vote_counts.keys.map { |key| { option: key, value: object.vote_counts[key] } }
   end
 end

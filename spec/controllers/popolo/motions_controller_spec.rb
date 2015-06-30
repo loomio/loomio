@@ -10,7 +10,16 @@ describe Popolo::MotionsController do
   let(:public_motion) { create :motion, discussion: public_discussion }
   let(:private_motion) { create :motion, discussion: private_discussion }
 
-  before { public_motion; private_motion }
+  let(:old_vote) { create :vote, position: :abstain, motion: public_motion, author: public_motion.author, age: 1 }
+  let(:yes_vote) { create :vote, position: :yes, motion: public_motion, author: public_motion.author }
+  let(:no_vote) { create :vote, position: :no, motion: public_motion }
+
+  before do
+    public_motion; private_motion
+    public_motion.votes << old_vote
+    public_motion.votes << yes_vote
+    public_motion.votes << no_vote
+  end
 
   describe 'index' do
 
@@ -31,10 +40,20 @@ describe Popolo::MotionsController do
       expect(motion['creator_id']).to eq public_motion.author.name.parameterize
       expect(motion['text']).to eq public_motion.description
       expect(motion['classification']).to eq 'proposal'
-      expect(motion['date'].to_date).to eq public_motion.created_at.to_date
+      expect(motion['start_date'].to_date).to eq public_motion.created_at.to_date
+      expect(motion['end_date'].to_date).to eq public_motion.closing_at.to_date
       expect(motion['requirement']).to eq 'consensus'
       expect(motion['result']).to eq public_motion.outcome
-      # TODO: vote counts
+      voter_ids = motion['votes'].map { |v| v['voter_id'] }
+      expect(voter_ids).to include yes_vote.author.name.parameterize
+      expect(voter_ids).to include no_vote.author.name.parameterize
+      voter_positions = motion['votes'].map { |v| v['option'] }
+      expect(voter_positions).to include 'yes'
+      expect(voter_positions).to include 'no'
+      expect(voter_positions).to_not include 'abstain'
+      expect(motion['counts']).to include({ option: 'yes', value: 1 })
+      expect(motion['counts']).to include({ option: 'no', value: 1 })
+      expect(motion['counts']).to include({ option: 'abstain', value: 0 })
     end
 
     it 'can filter by date' do
