@@ -19,6 +19,16 @@ describe API::UsersController do
         user_emails = json['users'].map { |v| v['email'] }
         expect(user_emails).to include user_params[:email]
       end
+
+      it "changes a users password" do
+        old_password = user.encrypted_password
+        post :update_profile, user: { password: 'new_password', password_confirmation: 'new_password'}, format: :json
+        expect(response).to be_success
+        expect(user.reload.encrypted_password).not_to eq old_password
+        json = JSON.parse(response.body)
+        user_emails = json['users'].map { |v| v['email'] }
+        expect(user_emails).to include user.email
+      end
     end
 
     context 'failures' do
@@ -26,6 +36,26 @@ describe API::UsersController do
         user_params[:dontmindme] = 'wild wooly byte virus'
         put :update_profile, user: user_params, format: :json
         expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
+      end
+
+      it 'does not allow a change if passwords dont match' do
+        old_password = user.encrypted_password
+        post :update_profile, user: { password: 'new_password', password_confirmation: 'errwhoops'}, format: :json
+        expect(response).to_not be_success
+        expect(user.reload.encrypted_password).to eq old_password
+      end
+    end
+  end
+
+  describe 'deactivate' do
+    context 'success' do
+      it "deactivates the users account" do
+        post :deactivate, user: { deactivation_response: 'harrtroll'}, format: :json
+        expect(response).to be_success
+        json = JSON.parse(response.body)
+        user_emails = json['users'].map { |v| v['email'] }
+        expect(user_emails).to include user.email
+        expect(user.reload.deactivated_at).to be_present
       end
     end
   end

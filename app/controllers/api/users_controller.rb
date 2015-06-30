@@ -1,17 +1,26 @@
 class API::UsersController < API::RestfulController
 
   def update_profile
-    service.update(user: current_user, actor: current_user, params: resource_params)
-    respond_with_current_user      
+    service.update user_params
+    respond_with_resource
+  end
+
+  def deactivate
+    service.deactivate user_params
+    respond_with_resource
   end
 
   private
 
-  def respond_with_current_user
-    if current_user.errors.empty?
-      render json: [current_user], each_serializer: CurrentUserSerializer, root: :users
-    else
-      respond_with_errors
-    end
+  def resource
+    current_user
+  end
+
+  def user_params
+    { user: current_user, actor: current_user, params: resource_params }
+  end
+
+  def resource_serializer
+    CurrentUserSerializer
   end
 end

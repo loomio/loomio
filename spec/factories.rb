@@ -12,6 +12,7 @@ FactoryGirl.define do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
     password 'complex_password'
+    password_confirmation 'complex_password'
     time_zone "Pacific/Tarawa"
 
     after(:build) do |user|

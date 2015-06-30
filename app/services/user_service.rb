@@ -4,9 +4,16 @@ class UserService
     user.destroy
   end
 
+  def self.deactivate(user:, actor:, params:)
+    actor.ability.authorize! :deactivate, user
+    UserDeactivationResponse.create! user: user, body: params[:deactivation_response]
+    user.deactivate!
+    user
+  end
+
   def self.update(user:, actor:, params:)
     actor.ability.authorize! :update, user
-    user.update! params
+    user.update params
     user
   end
 end
