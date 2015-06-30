@@ -22,7 +22,7 @@ describe API::UsersController do
 
       it "changes a users password" do
         old_password = user.encrypted_password
-        post :update_profile, user: { password: 'new_password', password_confirmation: 'new_password'}, format: :json
+        post :update_profile, user: { current_password: 'complex_password', password: 'new_password', password_confirmation: 'new_password'}, format: :json
         expect(response).to be_success
         expect(user.reload.encrypted_password).not_to eq old_password
         json = JSON.parse(response.body)
@@ -36,6 +36,13 @@ describe API::UsersController do
         user_params[:dontmindme] = 'wild wooly byte virus'
         put :update_profile, user: user_params, format: :json
         expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
+      end
+
+      it 'does not allow a change if current password does not match' do
+        old_password = user.encrypted_password
+        post :update_profile, user: { current_password: 'not right', password: 'new_password', password_confirmation: 'errwhoops'}, format: :json
+        expect(response).to_not be_success
+        expect(user.reload.encrypted_password).to eq old_password
       end
 
       it 'does not allow a change if passwords dont match' do

@@ -405,7 +405,23 @@ en:
 
   profile_page:
     messages:
-      updated: 'Profile updated'
+      updated: 'Your information has been updated'
+      password_changed: 'Your password has been updated'
+      deactivated: 'Successfully deactivated your account'
+    change_password:
+      title: 'Change Password'
+      helptext: 'Passwords must be 8 characters long. Common passwords such as "password" are forbidden to keep your account safe.'
+      current_password_label: 'Current password'
+      new_password_label: 'New password'
+      password_confirmation_label: 'Confirm new password'
+      submit: 'Update password'
+    deactivate_user:
+      title: 'Deactivate account'
+      question: 'Would you tell us why you are deactivating your account?'
+      placeholder: 'Answering this question is optional. Any information you share will help us to improve Loomio :)'
+      submit: 'Deactivate account'
+    change_password_link: 'Change password'
+    deactivate_user_link: 'Deactivate account...'
     profile: 'Profile'
     edit_profile: 'Edit Profile'
     picture_label: 'Picture'
