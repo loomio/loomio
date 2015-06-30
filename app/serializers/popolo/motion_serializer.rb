@@ -1,11 +1,16 @@
 class Popolo::MotionSerializer < ActiveModel::Serializer
-  attributes :organization_id,
+  attributes :motion_id,
+             :organization_id,
              :creator_id,
              :text,
              :classification,
              :date,
              :requirement,
              :result
+
+  def motion_id
+    object.key
+  end
 
   def organization_id
     object.group.name.parameterize
