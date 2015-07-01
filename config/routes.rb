@@ -1,14 +1,13 @@
 Loomio::Application.routes.draw do
 
   namespace :development do
-    get 'send_email'
     get 'last_email'
     get 'setup_group'
     get 'setup_group_for_invitations'
     get 'setup_discussion'
     get 'setup_discussion_with_comment'
     get 'setup_proposal'
-    get 'setup_proposal_with_vote'
+    get 'setup_proposal_with_votes'
     get 'setup_closed_proposal'
     get 'setup_closed_proposal_with_outcome'
     get 'setup_all_notifications'
@@ -53,8 +52,8 @@ Loomio::Application.routes.draw do
       get :autocomplete, on: :collection
       get :my_memberships, on: :collection
       get :invitables, on: :collection
-      patch :make_admin, on: :member
-      patch :remove_admin, on: :member
+      post :make_admin, on: :member
+      post :remove_admin, on: :member
     end
     resources :invitations, only: :create
     resources :users, only: [] do

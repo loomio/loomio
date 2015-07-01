@@ -2,6 +2,7 @@ describe 'Proposals', ->
 
   threadHelper = require './helpers/thread_helper.coffee'
   proposalsHelper = require './helpers/proposals_helper.coffee'
+  emailHelper = require './helpers/email_helper.coffee'
 
   describe 'starting a proposal', ->
 
@@ -78,3 +79,13 @@ describe 'Proposals', ->
       proposalsHelper.editProposalOutcomeForm({ body: 'Gonna make things happen!' })
       proposalsHelper.submitProposalOutcomeForm()
       expect(proposalsHelper.currentExpandedProposalOutcome().getText()).toContain('Gonna make things happen!')
+
+  describe 'voting by email', ->
+
+    beforeEach ->
+      threadHelper.loadWithActiveProposal()
+
+    xit 'opens the voting modal when email link is clicked', ->
+      emailHelper.openLastEmail()
+      emailHelper.clickAgreeLink()
+      expect(proposalsHelper.voteFormPositionSelect().getAttribute('value')).toContain('yes')

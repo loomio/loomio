@@ -8,14 +8,14 @@
     .search-result-blurb{ng-bind-html: 'result.discussion.blurb'}
 
 
-  .search-result-item.media{ng-repeat: 'proposal in result.proposals'}
+  .search-result-item.media{ng-repeat: 'proposal in result.proposals track by proposal.id'}
     .media-left{ng-init: 'proposal.voteCounts = proposal.vote_counts'}
-      %mini_proposal_pie_chart{proposal: 'proposal'}
+      %pie_chart.pie-chart--mini{votes: 'proposal.voteCounts'}
     .media-body
       .search-result-child-title {{proposal.name}}
       .search-result-blurb{ng-bind-html: 'proposal.blurb'}
 
-  .search-result-item.media{ng-repeat: 'comment in result.comments'}
+  .search-result-item.media{ng-repeat: 'comment in result.comments track by comment.id'}
     .media-left
       .user-avatar
         .avatar-initials{ng-if: '::(comment.author.avatar_kind == "initials")'}

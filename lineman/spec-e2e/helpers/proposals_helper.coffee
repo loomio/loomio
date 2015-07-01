@@ -14,7 +14,7 @@ module.exports = new class ProposalsHelper
     element(By.css('.position-button--yes')).click()
 
   clickChangeBtn: ->
-    element(By.css('.proposal-positions-panel__change-your-vote')).click()
+    element.all(By.css('.proposal-positions-panel__change-your-vote')).first().click()
 
   selectVotePosition: (position) ->
     element(By.css(".vote-form__select-position option[value=#{position}]")).click()
@@ -75,3 +75,6 @@ module.exports = new class ProposalsHelper
 
   editProposalOutcomeForm: (params) ->
     element(By.css('.proposal-form__outcome-field')).clear().sendKeys(params.body)
+
+  voteFormPositionSelect: ->
+    element(By.css('.vote-form__select-position'))

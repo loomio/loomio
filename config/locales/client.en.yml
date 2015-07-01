@@ -63,6 +63,9 @@ en:
   proposal_collapsed:
     expand: Expand
 
+  context_card:
+    heading: Context
+
   volume_levels:
     loud: 'Loud'
     normal: 'Normal'
@@ -100,10 +103,10 @@ en:
       label: 'Post'
 
   navbar:
-    home: 'Home'
+    recent: 'Recent'
     unread: 'Unread'
     groups: 'Groups'
-    home_title: 'Go to dashboard'
+    recent_title: 'Go to dashboard'
     unread_title: 'View unread activity'
     groups_title: 'View your groups'
     start_thread: 'Start a new thread'
@@ -287,9 +290,10 @@ en:
     description_placeholder: 'Use this place to describe the purpose of the group so your members know why they are here.'
     discussions: 'Threads'
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
-    members: 'Members'
+    members: 'Members ({{count}}) '
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
+    manage_members: Manage members
     subgroups: 'Subgroups'
     subgroups_placeholder: 'Subgroups let you break the group up into different teams.'
     invite_people: 'Invite people'
@@ -301,7 +305,6 @@ en:
       edit_group: 'Edit Group Settings'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
-      manage_members: 'Manage members'
     deactivate_group:
       title: 'Deactivate group'
       question: 'Are you sure you want to deactivate this group?'
@@ -381,20 +384,24 @@ en:
     to: 'to: '
     default_message: "Hey there, come make decisions with us! We're using a collaborative decision-making tool called Loomio"
     messages:
-      members_added_and_emails_sent: '{{members}} member(s) added and {{emails}} email(s) sent'
+      members_added_and_emails_sent: '{{members}} member(s) added and {{emails}} invitation(s) sent'
       members_added: '{{members}} member(s) added'
-      emails_sent: '{{emails}} email(s) sent'
+      emails_sent: '{{emails}} invitation(s) sent'
       no_invitations: 'No invitation(s) sent!'
   memberships_page:
     members: 'Members'
     name_label: 'Name'
-    email_label: 'Email'
     coordinator_label: 'Coordinator'
     remove_member_label: 'Remove'
-    add_coordinator: 'Make Coordinator'
-    remove_coordinator: 'Remove Coordinator'
-    remove_member: 'Remove'
-    see_more_members: 'See more members'
+    fragment_placeholder: 'Filter users by name or username...'
+    messages:
+      remove_member_success: 'Successfully removed {{name}}'
+      make_admin_success: '{{name}} is now a coordinator'
+      remove_admin_success: '{{name}} is no longer a coordinator'
+    remove_membership:
+      title: 'Remove member'
+      question: 'Are you sure you want to remove {{name}} as a member of {{group}}?'
+      submit: 'Remove'
 
   profile_page:
     messages:

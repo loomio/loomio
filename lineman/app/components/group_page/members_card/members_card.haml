@@ -1,23 +1,13 @@
 %section.group-page-members{aria-labelledby: 'members-card-title'}
-  .dropdown.context-menu.pull-right{ng-if: 'isAdminOf(group)'}
-    %a.dropdown-toggle{href: ''}
-      .sr-only{translate: 'group_page.member_options'}
-      %i.fa.fa-lg.fa-chevron-down{aria-hidden: 'true'}
-    .dropdown-menu
-      %ul.dropdown-menu-items
-        %li.dropdown-menu-item
-          %a.dropdown-menu-item-label{href: '/g/{{group.key}}/memberships', translate: 'group_page.options.manage_members'}
-
-  %h2#members-card-title.lmo-card-heading{ translate: 'group_page.members'}
-
+  %h2#members-card-title.lmo-card-heading{ translate: 'group_page.members', translate-value-count: '{{group.membershipsCount}}'}
   .group-member-list
-    .group-member-list-item{ng-repeat: 'member in group.members() | limitTo:5'}
-      .group-member-list-avatar.lg{data-username: '{{member.label}}' }
-        %user_avatar{user: 'member'}
+    .group-member-list-item{ng-repeat: 'member in group.members() | limitTo:10'}
+      .group-member-list-avatar.lg{data-username: '{{member.label}}'}
+        %user_avatar{user: 'member', coordinator: 'memberIsAdmin(member)'}
     .group-page__members-placeholder.group-page-placeholder{translate: 'group_page.members_placeholder', ng-if: 'showMembersPlaceholder()' }
-  .group-member-list-show-more.show-more.card-minor-action
-    %a{href: '/g/{{group.key}}/memberships', translate: 'common.action.show_more'}
-  .members-invite{ng-if: '::canAddMembers()'}
+  .members-card__invite-members{ng-if: '::canAddMembers()'}
     %a.btn.btn-success.btn-block.lmo-btn-icon{href: '', ng_click: 'invitePeople()'}
       %i.fa.fa-lg.fa-plus>
       %span{translate: 'group_page.invite_people' }
+  .members-card__manage-members.show-more.card-minor-action
+    %a{href: '/g/{{group.key}}/memberships', translate: 'group_page.manage_members'}

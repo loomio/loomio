@@ -16,7 +16,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
     vendor: ["vendor/bower_components/lodash/lodash.js",
              "vendor/bower_components/moment/moment.js",
              "vendor/bower_components/jquery/dist/jquery.js",
-             "vendor/bower_components/ng-file-upload/angular-file-upload-shim.js"
+             "vendor/bower_components/ng-file-upload/angular-file-upload-shim.js",
              "vendor/bower_components/angular/angular.js",
              "vendor/bower_components/angular-mocks/angular-mocks.js",
              "vendor/bower_components/angular-sanitize/angular-sanitize.js",
@@ -28,8 +28,6 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/showdown/src/showdown.js",
              "vendor/bower_components/angular-markdown-directive/markdown.js",
              "vendor/bower_components/ng-file-upload/angular-file-upload.js",
-             "vendor/bower_components/Chart.js/Chart.js",
-             "vendor/bower_components/tc-angular-chartjs/dist/tc-angular-chartjs.js",
              "vendor/bower_components/ment.io/dist/mentio.js",
              "vendor/js/private_pub.js",
              "vendor/bower_components/angular-animate/angular-animate.js",
@@ -38,7 +36,8 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/angular-gravatar/build/angular-gravatar.js",
              "vendor/bower_components/angular-gravatar/build/md5.js",
              "vendor/bower_components/angular-truncate/src/truncate.js",
-             "vendor/bower_components/angular-scroll/angular-scroll.js"]
+             "vendor/bower_components/angular-scroll/angular-scroll.js",
+             "vendor/bower_components/svg.js/dist/svg.js"]
 
     app: ["app/app.js"
           "app/**/*.js"]

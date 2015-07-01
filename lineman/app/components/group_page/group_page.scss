@@ -65,11 +65,9 @@
   margin-bottom: 10px;
   .btn { @include fontSmall; }
 }
-.members-invite{
-  margin-top: 10px;
-}
-.group-member-list-show-more{
-  padding-top: 8px;
+.members-card__invite-members {
+  clear: both;
+  padding-top: 10px;
 }
 .group-member-list-avatar{
   float: left;

@@ -22,8 +22,6 @@ angular.module('loomioApp').directive 'discussionsCard', ->
       ModalService.open DiscussionForm,
                         discussion: -> Records.discussions.build(group_id: $scope.group.id)
 
-    KeyEventService.registerKeyEvent $scope, 'pressedT', $scope.openDiscussionForm
-
     $scope.showThreadsPlaceholder = ->
       AbilityService.canAdministerGroup($scope.group) and $scope.group.discussions().length <= 1
 

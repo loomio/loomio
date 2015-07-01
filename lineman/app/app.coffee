@@ -2,14 +2,15 @@ angular.module('loomioApp', ['ngNewRouter',
                              'ui.bootstrap',
                              'pascalprecht.translate',
                              'ngSanitize',
-                             'tc.chartjs',
                              'btford.markdown',
                              'angularFileUpload',
                              'mentio',
                              'ngAnimate',
                              'angular-inview',
                              'ui.gravatar',
-                             'truncate', 'duScroll']).config ($httpProvider, $locationProvider, $translateProvider) ->
+                             'truncate',
+                             'duScroll'
+                             ]).config ($httpProvider, $locationProvider, $translateProvider) ->
 
   # consume the csrf token from the page so form submissions can work
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
@@ -20,6 +21,11 @@ angular.module('loomioApp', ['ngNewRouter',
   $translateProvider.
     useUrlLoader('/api/v1/translations/en').
     preferredLanguage('en')
+
+if window.Loomio? and window.Loomio.environment == 'production'
+  # disable angular debug stuff in production
+  angular.module('loomioApp').config  ($compileProvider) ->
+    $compileProvider.debugInfoEnabled(false);
 
 angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService) ->
   $scope.currentComponent = 'nothing yet'

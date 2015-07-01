@@ -1,10 +1,24 @@
 .proposal-positions-panel
   %h4.lmo-card-subheading{translate: 'proposal_positions_panel.heading'}
 
-  %proposal_pie_chart{proposal: 'proposal'}
+  .proposal-pie-chart.media
+    .proposal-pie-chart__pie.media-left
+      %pie_chart.proposal-positions-panel__pie-chart{votes: 'proposal.voteCounts'}
+    .proposal-pie-chart__legend.media-body
+      %label.sr-only{translate: 'proposal_expanded.current_votes'}
+      %table
+        %tbody
+          %tr{ng-repeat: 'position in proposal.positions'}
+            %td
+              .proposal-pie-chart__icon{class: 'proposal-pie-chart__icon--{{position}}'}
+                &nbsp;
+            %td
+              .proposal-pie-chart__label
+                {{ "proposal_position_"+position | translate}} ({{ proposal.voteCounts[position] }})
+  .proposal-pie-chart__participation-statement{translate: 'proposal_pie_chart.participation_statement', translate-value-percentage: '{{proposal.percentVoted()}}', translate-value-number: '{{proposal.numberVoted()}}', translate-value-total: '{{proposal.groupSizeWhenVoting()}}'}
 
   %ul.proposal-positions-panel__list
-    %li.proposal-positions-panel__vote.media{ng_repeat: 'vote in curatedVotes()'}
+    %li.proposal-positions-panel__vote.media{ng_repeat: 'vote in curatedVotes() track by vote.id'}
       .media-left
         .thread-item-vote-icon{class: 'thread-item-vote-icon-{{vote.position}}'}
       .media-body
