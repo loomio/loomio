@@ -8,5 +8,5 @@ angular.module('loomioApp').directive 'undecidedPanel', ->
     $scope.undecidedPanelOpen = false
 
     $scope.showUndecided = ->
-      Records.memberships.fetchByGroup($scope.proposal.group().key, {per: 500})
+      $scope.proposal.fetchUndecidedMembers()
       $scope.undecidedPanelOpen = true
