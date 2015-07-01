@@ -42,6 +42,12 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     votes: ->
       @votesView.data() unless @isNew()
 
+    voters: ->
+      @recordStore.users.find(@voterIds())
+
+    voterIds: ->
+      _.pluck(@votes(), 'authorId')
+
     authorName: ->
       @author().name
 
@@ -86,3 +92,6 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
 
     hasOutcome: ->
       _.some(@outcome)
+
+    undecidedMembers: ->
+      _.difference(@group().members(), @voters())
