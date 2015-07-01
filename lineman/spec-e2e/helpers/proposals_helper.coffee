@@ -78,3 +78,12 @@ module.exports = new class ProposalsHelper
 
   voteFormPositionSelect: ->
     element(By.css('.vote-form__select-position'))
+
+  clickShowUndecidedLink: ->
+    element(By.css('a.undecided-panel__show-undecided-link')).click()
+
+  undecidedPanel: ->
+    element(By.css('.undecided-panel'))
+
+  clickHideUndecidedLink: ->
+    element(By.css('a.undecided-panel__hide-undecided-link')).click()

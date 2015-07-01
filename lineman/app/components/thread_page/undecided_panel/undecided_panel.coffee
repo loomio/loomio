@@ -10,3 +10,6 @@ angular.module('loomioApp').directive 'undecidedPanel', ->
     $scope.showUndecided = ->
       $scope.proposal.fetchUndecidedMembers()
       $scope.undecidedPanelOpen = true
+
+    $scope.hideUndecided = ->
+      $scope.undecidedPanelOpen = false
