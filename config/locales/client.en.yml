@@ -365,6 +365,8 @@ en:
   membership_requests_page:
     heading: Membership Requests
     approve: Approve
+    ignore: Ignore
+    previous_requests: Previous Requests
 
   group_form:
     messages:

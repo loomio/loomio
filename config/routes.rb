@@ -60,8 +60,9 @@ Loomio::Application.routes.draw do
 
     resources :membership_requests, only: [] do
       get :pending, on: :collection
-      get :responded_to, on: :collection
+      get :previous, on: :collection
       post :approve, on: :member
+      post :ignore, on: :member
     end
 
     resources :invitations, only: :create

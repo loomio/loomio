@@ -6,17 +6,21 @@ class API::MembershipRequestsController < API::RestfulController
     respond_with_collection
   end
 
-  def responded_to
+  def previous
     load_and_authorize :group
     @membership_requests = @group.membership_requests.responded_to
     respond_with_collection
   end
 
   def approve
-    load_and_authorize :group
-    authorize! :manage_membership_requests, @group
-    @membership_request = @group.membership_requests.where(id: params[:id]).first
-    @membership_request.approve!(current_user)
+    @membership_request = MembershipRequest.find(params[:id])
+    MembershipRequestService.approve(membership_request: @membership_request, actor: current_user)
+    respond_with_resource
+  end
+
+  def ignore
+    @membership_request = MembershipRequest.find(params[:id])
+    MembershipRequestService.ignore(membership_request: @membership_request, actor: current_user)
     respond_with_resource
   end
 end

@@ -5,8 +5,11 @@ angular.module('loomioApp').factory 'MembershipRequestRecordsInterface', (BaseRe
     fetchPendingByGroup: (groupKey, options = {}) ->
       @restfulClient.get('/pending', group_key: groupKey)
 
-    fetchRespondedToByGroup: (groupKey, options = {}) ->
-      @restfulClient.get('/responded_to', group_key: groupKey)
+    fetchPreviousByGroup: (groupKey, options = {}) ->
+      @restfulClient.get('/previous', group_key: groupKey)
 
     approve: (membershipRequest) ->
       @restfulClient.postMember(membershipRequest.id, 'approve', group_key: membershipRequest.group().key)
+
+    ignore: (membershipRequest) ->
+      @restfulClient.postMember(membershipRequest.id, 'ignore', group_key: membershipRequest.group().key)

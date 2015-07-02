@@ -1,9 +1,15 @@
 .loading-wrapper.container.main-container
   %loading{ng-if: '!membershipRequestsPage.group'}
   %main.membership-requests-page{ng-if: 'membershipRequestsPage.group'}
-    .memberships-page__memberships
+    .memberships-page__pending-membership-requests
       %h2.lmo-h2{translate: 'membership_requests_page.heading'}
       %ul
         %li{ng-repeat: 'request in membershipRequestsPage.pendingRequests() track by request.id'}
           {{request.actor().name}}
-          %a.membership-requests-page__approve-link{href: '', ng-click: 'membershipRequestsPage.approve(request)', translate: 'membership_requests_page.approve'}
+          %button.membership-requests-page__approve-link{ng-click: 'membershipRequestsPage.approve(request)', translate: 'membership_requests_page.approve'}
+          %button.membership-requests-page__approve-link{ng-click: 'membershipRequestsPage.ignore(request)', translate: 'membership_requests_page.ignore'}
+    .memberships-page__previous-membership-requests
+      %h3.lmo-h3{translate: 'membership_requests_page.previous_requests'}
+      %ul
+        %li{ng-repeat: 'request in membershipRequestsPage.previousRequests() track by request.id'}
+          {{request.actor().name}}

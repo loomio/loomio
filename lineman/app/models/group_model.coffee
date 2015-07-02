@@ -21,6 +21,10 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       _.filter @membershipRequestsView.data(), (membershipRequest) ->
         membershipRequest.isPending()
 
+    previousMembershipRequests: ->
+      _.filter @membershipRequestsView.data(), (membershipRequest) ->
+        !membershipRequest.isPending()
+
     organisationDiscussions: ->
       @recordStore.discussions.find(groupId: { $in: @organisationIds()})
 

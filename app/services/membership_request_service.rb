@@ -10,6 +10,7 @@ class MembershipRequestService
   end
 
   def self.approve(membership_request:, actor: )
+    actor.ability.authorize! :approve, membership_request
     requestor = membership_request.requestor
     membership_request.approve!(actor)
     if membership_request.from_a_visitor?
@@ -26,6 +27,7 @@ class MembershipRequestService
   end
 
   def self.ignore(membership_request: , actor: )
+    actor.ability.authorize! :ignore, membership_request
     membership_request.ignore!(actor)
   end
 end

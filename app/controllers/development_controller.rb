@@ -73,7 +73,9 @@ class DevelopmentController < ApplicationController
     cleanup_database
     sign_in patrick
     test_group
-    test_membership_request
+    another_test_group
+    membership_request_from_logged_out
+    membership_request_from_user
     redirect_to group_url(test_group)
   end
 
@@ -220,14 +222,23 @@ class DevelopmentController < ApplicationController
     @another_test_vote
   end
 
-  def test_membership_request
-    unless @test_membership_request
-      @test_membership_request = MembershipRequest.new(group: test_group,
-                                                       name: 'Marjorie Houseman',
-                                                       email: 'marjorie@example.com')
-      MembershipRequestService.create(membership_request: @test_membership_request)
+  def membership_request_from_logged_out
+    unless @membership_request_from_logged_out
+      @membership_request_from_logged_out = MembershipRequest.new(group: test_group,
+                                                                  name: 'Marjorie Houseman',
+                                                                  email: 'marjorie@example.com')
+      MembershipRequestService.create(membership_request: @membership_request_from_logged_out)
     end
-    @test_membership_request
+    @membership_request_from_logged_out
+  end
+
+  def membership_request_from_user
+    unless @membership_request_from_user
+      @membership_request_from_user = MembershipRequest.new(group: test_group,
+                                                            requestor: max)
+      MembershipRequestService.create(membership_request: @membership_request_from_user)
+    end
+    @membership_request_from_user
   end
 
   def cleanup_database
