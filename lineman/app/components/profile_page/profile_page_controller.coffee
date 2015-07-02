@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, CurrentUser, Records, FlashService, $location, ModalService, ChangePasswordForm, DeactivateUserForm) ->
+angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, CurrentUser, Records, FlashService, $location, AbilityService, ModalService, ChangePasswordForm, DeactivateUserForm) ->
   @user = CurrentUser.clone()
 
   @availableLocales = ->
@@ -19,5 +19,8 @@ angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Cur
 
   @deactivateUser = ->
     ModalService.open DeactivateUserForm
+
+  @canDeactivateUser = ->
+    AbilityService.canDeactivateUser()
 
   return
