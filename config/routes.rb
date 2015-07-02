@@ -43,7 +43,7 @@ Loomio::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  namespace :popolo do
+  namespace :popolo, path: '/api/popolo', defaults: {format: :json} do
     resources :motions, only: :index
   end
 
