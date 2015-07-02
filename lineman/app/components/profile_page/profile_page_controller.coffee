@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, CurrentUser, Records, FlashService, $location, AbilityService, ModalService, ChangePasswordForm, DeactivateUserForm) ->
+angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, CurrentUser, Records, FlashService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm) ->
   @user = CurrentUser.clone()
 
   @availableLocales = ->
@@ -13,6 +13,8 @@ angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Cur
     , ->
       @isDisabled = false
       $rootScope.$broadcast 'pageError', 'cantUpdateProfile', @user
+  @changePicture = ->
+    ModalService.open ChangePictureForm
 
   @changePassword = ->
     ModalService.open ChangePasswordForm

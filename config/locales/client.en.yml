@@ -405,9 +405,16 @@ en:
 
   profile_page:
     messages:
-      updated: 'Your information has been updated'
+      updated: 'Your profile has been updated'
+      picture_changed: 'Your profile picture has been updated'
       password_changed: 'Your password has been updated'
       deactivated: 'Successfully deactivated your account'
+    change_picture:
+      title: 'Change picture'
+      helptext: 'You can upload your own profile picture, or if you have a <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> account, you can use that.'
+      use_initials: 'Use initials'
+      use_gravatar: 'Use gravatar'
+      use_uploaded: 'Upload new picture'
     change_password:
       title: 'Change Password'
       helptext: 'Passwords must be 8 characters long. Common passwords such as "password" are forbidden to keep your account safe.'
@@ -420,6 +427,7 @@ en:
       question: 'Would you tell us why you are deactivating your account?'
       placeholder: 'Answering this question is optional. Any information you share will help us to improve Loomio :)'
       submit: 'Deactivate account'
+    change_picture_link: 'Change picture'
     change_password_link: 'Change password'
     deactivate_user_link: 'Deactivate account...'
     profile: 'Profile'

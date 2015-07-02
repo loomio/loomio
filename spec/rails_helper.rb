@@ -56,6 +56,10 @@ RSpec.configure do |config|
   end
 end
 
+def fixture_for(*path)
+  File.open(File.join(path.unshift(Rails.root, 'spec', 'fixtures'))) 
+end
+
 def described_model_name
   described_class.model_name.singular
 end

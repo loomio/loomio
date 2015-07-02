@@ -1,0 +1,17 @@
+.modal-header
+  %button{type: 'button', class: 'close', ng-click: '$close()'}
+    %span{aria-hidden: true} &times;
+    %span.sr-only{translate: 'common.action.cancel'}
+  %h1.lmo-h1{translate: 'profile_page.change_password.title'}
+
+.modal-body
+  %ul
+    %li
+      %a{href: '', ng-click: 'submit("initials")', translate: 'profile_page.change_picture.use_initials'}
+    %li
+      %a{href: '', ng-click: 'submit("gravatar")', translate: 'profile_page.change_picture.use_gravatar'}
+    %li
+      %a{href: '', ng-click: 'loadFileInput()', translate: 'profile_page.change_picture.use_uploaded'}
+  %input#upload-avatar-input.invisible{type: 'file', ng-model: 'user.uploadedAvatar', ng-change: 'submit("uploaded")'}
+.modal-footer
+  %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}
