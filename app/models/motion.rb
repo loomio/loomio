@@ -207,7 +207,7 @@ class Motion < ActiveRecord::Base
       position_counts[position] = 0
     end
 
-    unique_votes.each do |vote|
+    reload.unique_votes.each do |vote|
       position_counts[vote.position] += 1
     end
 
