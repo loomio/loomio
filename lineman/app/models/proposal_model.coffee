@@ -102,9 +102,3 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
         _.difference(@group().members(), @voters())
       else
         @recordStore.users.find(_.pluck(@didNotVotes(), 'userId'))
-
-    fetchUndecidedMembers: ->
-      if @isActive()
-        @recordStore.memberships.fetchByGroup(@group().key, {per: 500})
-      else
-        @recordStore.didNotVotes.fetchByProposal(@key, {per: 500})

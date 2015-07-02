@@ -3,12 +3,12 @@ angular.module('loomioApp').directive 'undecidedPanel', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/undecided_panel/undecided_panel.html'
   replace: true
-  controller: ($scope, Records, CurrentUser) ->
+  controller: ($scope, Records) ->
 
     $scope.undecidedPanelOpen = false
 
     $scope.showUndecided = ->
-      $scope.proposal.fetchUndecidedMembers()
+      Records.proposals.fetchUndecidedMembers($scope.proposal)
       $scope.undecidedPanelOpen = true
 
     $scope.hideUndecided = ->
