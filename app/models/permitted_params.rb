@@ -17,7 +17,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def user_attributes
-    [:name, :avatar_kind, :email, :password, :password_confirmation,
+    [:name, :avatar_kind, :email, :password, :password_confirmation, :current_password,
      :remember_me, :uploaded_avatar, :username, :uses_markdown,
      :time_zone, :selected_locale, :email_when_mentioned,
      :email_missed_yesterday, :deactivation_response,

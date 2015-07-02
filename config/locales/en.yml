@@ -82,6 +82,7 @@ en:
     group_request_invalid_token: "Sorry! This is an invalid token"
     group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
     group_already_setup: "The group you are trying to setup already exists."
+    current_password_did_not_match: "Sorry, we were unable to confirm your current password"
     passwords_did_not_match: "Password did not match confirmation"
     proposal_already_exists: "There is already an open proposal in this discussion."
     username_must_be_alphanumeric: "Username must contain only lowercase letters and digits."

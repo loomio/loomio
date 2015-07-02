@@ -5,7 +5,7 @@ angular.module('loomioApp').factory 'ChangePasswordForm', ->
 
     $scope.submit = ->
       $scope.isDisabled = true
-      Records.users.updateProfile($scope.user).then ->
+      Records.users.changePassword($scope.user).then ->
         $scope.isDisabled = false
         FlashService.success('profile_page.messages.password_changed')
         $scope.$close()

@@ -16,4 +16,12 @@ class UserService
     user.update params
     user
   end
+
+  def self.change_password(user:, actor:, params:)
+    actor.ability.authorize! :update, user
+    user.errors.add :current_password, I18n.t(:"error.current_password_did_not_match") unless user.valid_password? params.delete(:current_password)
+    user.errors.add :password, I18n.t(:"error.passwords_did_not_match")                unless params[:password] == params[:password_confirmation]
+    user.update params unless user.errors.any?
+    user
+  end
 end

@@ -19,10 +19,22 @@ describe API::UsersController do
         user_emails = json['users'].map { |v| v['email'] }
         expect(user_emails).to include user_params[:email]
       end
+    end
 
+    context 'failures' do
+      it "responds with an error when there are unpermitted params" do
+        user_params[:dontmindme] = 'wild wooly byte virus'
+        put :update_profile, user: user_params, format: :json
+        expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
+      end
+    end
+  end
+
+  describe 'change_password' do
+    context 'success' do
       it "changes a users password" do
         old_password = user.encrypted_password
-        post :update_profile, user: { current_password: 'complex_password', password: 'new_password', password_confirmation: 'new_password'}, format: :json
+        post :change_password, user: { current_password: 'complex_password', password: 'new_password', password_confirmation: 'new_password'}, format: :json
         expect(response).to be_success
         expect(user.reload.encrypted_password).not_to eq old_password
         json = JSON.parse(response.body)
@@ -32,22 +44,16 @@ describe API::UsersController do
     end
 
     context 'failures' do
-      it "responds with an error when there are unpermitted params" do
-        user_params[:dontmindme] = 'wild wooly byte virus'
-        put :update_profile, user: user_params, format: :json
-        expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
-      end
-
       it 'does not allow a change if current password does not match' do
         old_password = user.encrypted_password
-        post :update_profile, user: { current_password: 'not right', password: 'new_password', password_confirmation: 'errwhoops'}, format: :json
+        post :change_password, user: { current_password: 'not right', password: 'new_password', password_confirmation: 'new_password'}, format: :json
         expect(response).to_not be_success
         expect(user.reload.encrypted_password).to eq old_password
       end
 
-      it 'does not allow a change if passwords dont match' do
+      it 'does not allow a change if passord confirmation doesnt match' do
         old_password = user.encrypted_password
-        post :update_profile, user: { password: 'new_password', password_confirmation: 'errwhoops'}, format: :json
+        post :change_password, user: { password: 'new_password', password_confirmation: 'errwhoops'}, format: :json
         expect(response).to_not be_success
         expect(user.reload.encrypted_password).to eq old_password
       end
