@@ -358,6 +358,9 @@ en:
         members_can_vote: 'Vote on proposals'
       submit:  'Update Settings'
 
+  membership_requests_card:
+    heading: 'Membership Requests ({{count}})'
+
   group_form:
     messages:
       new_group: 'Successfully created your group'

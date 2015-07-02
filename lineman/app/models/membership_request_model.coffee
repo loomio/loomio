@@ -1,11 +1,17 @@
 angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel) ->
   class MembershipRequestModel extends BaseModel
-    @singular: 'membership_request'
-    @plural: 'membership_requests'
+    @singular: 'membershipRequest'
+    @plural: 'membershipRequests'
+    @indices: ['id', 'groupId']
 
-    group: -> @recordStore.groups.find(@groupId)
-    requestor: -> @recordStore.users.find(@requestorId)
-    responder: -> @recordStore.users.find(@responderId)
+    group: ->
+      @recordStore.groups.find(@groupId)
+
+    requestor: ->
+      @recordStore.users.find(@requestorId)
+
+    responder: ->
+      @recordStore.users.find(@responderId)
 
     actor: ->
       if @byExistingUser()
@@ -20,3 +26,6 @@ angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel) ->
       email: @email
       avatarKind: 'initials'
       avatarInitials: 'NA'
+
+    isPending: ->
+      !@respondedAt?
