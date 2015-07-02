@@ -10,15 +10,13 @@ describe Popolo::MotionsController do
   let(:public_motion) { create :motion, discussion: public_discussion }
   let(:private_motion) { create :motion, discussion: private_discussion }
 
-  let(:old_vote) { create :vote, position: :abstain, motion: public_motion, author: public_motion.author, age: 1 }
-  let(:yes_vote) { create :vote, position: :yes, motion: public_motion, author: public_motion.author }
+  let(:old_vote) { create :vote, position: :abstain, motion: public_motion, user: public_motion.author, age: 1 }
+  let(:yes_vote) { create :vote, position: :yes, motion: public_motion, user: public_motion.author }
   let(:no_vote) { create :vote, position: :no, motion: public_motion }
 
   before do
-    public_motion; private_motion
-    public_motion.votes << old_vote
-    public_motion.votes << yes_vote
-    public_motion.votes << no_vote
+    private_motion
+    old_vote; yes_vote; no_vote
   end
 
   describe 'index' do
@@ -51,9 +49,9 @@ describe Popolo::MotionsController do
       expect(voter_positions).to include 'yes'
       expect(voter_positions).to include 'no'
       expect(voter_positions).to_not include 'abstain'
-      expect(motion['counts']).to include({ option: 'yes', value: 1 })
-      expect(motion['counts']).to include({ option: 'no', value: 1 })
-      expect(motion['counts']).to include({ option: 'abstain', value: 0 })
+      expect(motion['counts']).to include({ 'option' => 'yes', 'value' => 1 })
+      expect(motion['counts']).to include({ 'option' => 'no', 'value' => 1 })
+      expect(motion['counts']).to include({ 'option' => 'abstain', 'value' => 0 })
     end
 
     it 'can filter by date' do
