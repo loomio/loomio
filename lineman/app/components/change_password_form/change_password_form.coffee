@@ -11,4 +11,4 @@ angular.module('loomioApp').factory 'ChangePasswordForm', ->
         $scope.$close()
       , ->
         $scope.isDisabled = false
-        $rootScope.$broadcast 'pageError', 'cantChangePassword', $scope.user
+        # $rootScope.$broadcast 'pageError', 'cantChangePassword', $scope.user

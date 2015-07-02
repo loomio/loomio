@@ -6,7 +6,7 @@ class API::UsersController < API::RestfulController
   end
 
   def change_password
-    service.change_password user_params
+    service.change_password(user_params) { sign_in resource, bypass: true }
     respond_with_resource
   end
 
