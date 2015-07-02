@@ -1,0 +1,9 @@
+.loading-wrapper.container.main-container
+  %loading{ng-if: '!membershipRequestsPage.group'}
+  %main.membership-requests-page{ng-if: 'membershipRequestsPage.group'}
+    .memberships-page__memberships
+      %h2.lmo-h2{translate: 'membership_requests_page.heading'}
+      %ul
+        %li{ng-repeat: 'request in membershipRequestsPage.pendingRequests() track by request.id'}
+          {{request.actor().name}}
+          %a.membership-requests-page__approve-link{href: '', ng-click: 'membershipRequestsPage.approve(request)', translate: 'membership_requests_page.approve'}

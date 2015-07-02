@@ -6,11 +6,17 @@ class API::MembershipRequestsController < API::RestfulController
     respond_with_collection
   end
 
-  private
-
-  def visible_records
+  def responded_to
     load_and_authorize :group
-    Queries::VisibleMemberships.new(user: current_user, group: @group)
+    @membership_requests = @group.membership_requests.responded_to
+    respond_with_collection
   end
 
+  def approve
+    load_and_authorize :group
+    authorize! :manage_membership_requests, @group
+    @membership_request = @group.membership_requests.where(id: params[:id]).first
+    @membership_request.approve!(current_user)
+    respond_with_resource
+  end
 end

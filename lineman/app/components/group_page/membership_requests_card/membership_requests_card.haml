@@ -2,4 +2,5 @@
   %h2.lmo-card-heading{ translate: 'membership_requests_card.heading', translate-value-count: '{{group.pendingMembershipRequests().length}}'}
   %ul
     %li{ng-repeat: 'membershipRequest in group.pendingMembershipRequests() track by membershipRequest.id'}
-      {{membershipRequest.name}}
+      {{membershipRequest.actor().name}}
+  %a.membership-requests-card__link{href: '/g/{{group.key}}/membership_requests', translate: 'membership_requests_card.manage_requests'}

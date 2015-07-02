@@ -360,6 +360,11 @@ en:
 
   membership_requests_card:
     heading: 'Membership Requests ({{count}})'
+    manage_requests: Manage requests
+
+  membership_requests_page:
+    heading: Membership Requests
+    approve: Approve
 
   group_form:
     messages:
