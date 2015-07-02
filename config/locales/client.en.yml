@@ -230,7 +230,7 @@ en:
       will_be_private_to_parent_group: 'The thread will be visible to members of {{parentGroupName}} and members of {{groupName}}.'
       will_be_public: 'Anyone can see the thread.'
     new_discussion_submit: 'Start thread'
-    edit_discussion_submit: 'Edit thread'
+    edit_discussion_submit: 'Update thread'
 
   proposal_expanded:
     collapse: Collapse
