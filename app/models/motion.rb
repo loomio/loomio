@@ -47,7 +47,7 @@ class Motion < ActiveRecord::Base
   scope :lapsed_but_not_closed,    -> { voting.lapsed }
   scope :closed,                   -> { where('closed_at IS NOT NULL').order(closed_at: :desc) }
   scope :order_by_latest_activity, -> { order('last_vote_at desc') }
-  #scope :visible_to_public,        -> { joins(:discussion).merge(Discussion.public) }
+  scope :visible_to_public,        -> { joins(:discussion).merge(Discussion.visible_to_public) }
   scope :voting_or_closed_after,   ->(time) { where('motions.closed_at IS NULL OR (motions.closed_at > ?)', time) }
   scope :closing_in_24_hours,      -> { where('motions.closing_at > ? AND motions.closing_at <= ?', Time.now, 24.hours.from_now) }
   scope :chronologically, -> { order('created_at asc') }
@@ -207,7 +207,7 @@ class Motion < ActiveRecord::Base
       position_counts[position] = 0
     end
 
-    unique_votes.each do |vote|
+    reload.unique_votes.each do |vote|
       position_counts[vote.position] += 1
     end
 

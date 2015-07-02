@@ -43,6 +43,10 @@ Loomio::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  namespace :popolo, path: '/api/popolo', defaults: {format: :json} do
+    resources :motions, only: :index
+  end
+
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resources :groups, only: [:show, :create, :update] do
       get :subgroups, on: :member

@@ -1,17 +1,4 @@
 class API::RestfulController < API::BaseController
-  @@resource_name = nil
-  @@resource_plural = nil
-  @@service_class = nil
-  @@resource_class = nil
-
-  class << self
-    attr_writer :resource_name
-    attr_writer :resource_plural
-    attr_writer :service_class
-    attr_writer :resource_class
-  end
-
-  API_DATE_PARAMETERS = %w(since until).freeze
 
   rescue_from CanCan::AccessDenied                    do |e| respond_with_standard_error e, 403 end
   rescue_from ActionController::UnpermittedParameters do |e| respond_with_standard_error e, 400 end
@@ -71,7 +58,7 @@ class API::RestfulController < API::BaseController
   end
 
   def instantiate_collection(timeframe_collection: true, page_collection: true)
-    collection = visible_records
+    collection = accessible_records
     collection = yield collection                if block_given?
     collection = timeframe_collection collection if timeframe_collection
     collection = page_collection collection      if page_collection
@@ -87,6 +74,7 @@ class API::RestfulController < API::BaseController
     end
   end
 
+  API_DATE_PARAMETERS = %w(since until).freeze
   def parse_date_parameters
     API_DATE_PARAMETERS.each { |field| params[field] = DateTime.parse(params[field].to_s) if params[field] }
   end
@@ -95,8 +83,20 @@ class API::RestfulController < API::BaseController
     collection.offset(params[:from]).limit(params[:per] || default_page_size)
   end
 
+  def accessible_records
+    if current_user
+      visible_records
+    else
+      public_records
+    end
+  end
+
   def visible_records
     raise NotImplementedError.new
+  end
+
+  def public_records
+    resource_class.visible_to_public.order(created_at: :desc)
   end
 
   def default_page_size
@@ -116,31 +116,35 @@ class API::RestfulController < API::BaseController
   end
 
   def resource_name
-    @@resource_name || controller_name.singularize
+    controller_name.singularize
   end
 
   def resource_class
-    @@resource_class || resource_name.camelize.constantize
+    resource_name.camelize.constantize
   end
 
   def resource_plural
-    @@resource_plural || controller_name
+    controller_name
+  end
+
+  def resource_serializer
+    "#{resource_name}_serializer".camelize.constantize
   end
 
   def service
-    @@service_class || "#{resource_name}_service".camelize.constantize
+    "#{resource_name}_service".camelize.constantize
   end
 
-  def respond_with_collection(scope: {})
-    render json: collection, root: serializer_root, scope: scope
+  def respond_with_collection(scope: {}, serializer: resource_serializer)
+    render json: collection, root: serializer_root, scope: scope, each_serializer: serializer
   end
 
-  def respond_with_resource
+  def respond_with_resource(scope: {}, serializer: resource_serializer)
     if resource.errors.empty?
       if @event.is_a? Event
         render json: [@event], root: 'events', each_serializer: EventSerializer
       else
-        render json: [resource], root: serializer_root
+        render json: [resource], root: serializer_root, each_serializer: serializer
       end
     else
       respond_with_errors
