@@ -226,7 +226,8 @@ class DevelopmentController < ApplicationController
     unless @membership_request_from_logged_out
       @membership_request_from_logged_out = MembershipRequest.new(group: test_group,
                                                                   name: 'Marjorie Houseman',
-                                                                  email: 'marjorie@example.com')
+                                                                  email: 'marjorie@example.com',
+                                                                  introduction: "Hi, I'm Marjorie")
       MembershipRequestService.create(membership_request: @membership_request_from_logged_out)
     end
     @membership_request_from_logged_out
@@ -235,7 +236,8 @@ class DevelopmentController < ApplicationController
   def membership_request_from_user
     unless @membership_request_from_user
       @membership_request_from_user = MembershipRequest.new(group: test_group,
-                                                            requestor: max)
+                                                            requestor: max,
+                                                            introduction: "I'd like to make decisions with y'all")
       MembershipRequestService.create(membership_request: @membership_request_from_user)
     end
     @membership_request_from_user

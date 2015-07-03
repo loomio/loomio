@@ -25,7 +25,7 @@ angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel) ->
       name: @name
       email: @email
       avatarKind: 'initials'
-      avatarInitials: 'NA'
+      avatarInitials: _.map(@name.split(' '), (t) -> t[0]).join('')
 
     isPending: ->
       !@respondedAt?

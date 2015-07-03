@@ -1,15 +1,18 @@
-.loading-wrapper.container.main-container
-  %loading{ng-if: '!membershipRequestsPage.group'}
+.container.main-container
   %main.membership-requests-page{ng-if: 'membershipRequestsPage.group'}
-    .memberships-page__pending-membership-requests
+    .memberships-requests-page__membership-requests
       %h2.lmo-h2{translate: 'membership_requests_page.heading'}
-      %ul
+      %ul.memberships-requests-page__pending-membership-requests
         %li{ng-repeat: 'request in membershipRequestsPage.pendingRequests() track by request.id'}
-          {{request.actor().name}}
-          %button.membership-requests-page__approve-link{ng-click: 'membershipRequestsPage.approve(request)', translate: 'membership_requests_page.approve'}
-          %button.membership-requests-page__approve-link{ng-click: 'membershipRequestsPage.ignore(request)', translate: 'membership_requests_page.ignore'}
-    .memberships-page__previous-membership-requests
+          %user_avatar{user: 'request.actor()'}
+          %span {{request.actor().name}}
+          .membership-requests-page__actions
+            %button.btn.btn-primary.membership-requests-page__approve-link{ng-click: 'membershipRequestsPage.approve(request)', translate: 'membership_requests_page.approve'}
+            %button.btn.btn-primary.membership-requests-page__approve-link{ng-click: 'membershipRequestsPage.ignore(request)', translate: 'membership_requests_page.ignore'}
       %h3.lmo-h3{translate: 'membership_requests_page.previous_requests'}
-      %ul
+      %ul.memberships-requests-page__previous-membership-requests
         %li{ng-repeat: 'request in membershipRequestsPage.previousRequests() track by request.id'}
-          {{request.actor().name}}
+          .memberships-requests-page__requestor-name
+            {{request.actor().name}}
+          .memberships-requests-page__requestor-introduction
+            {{request.introduction}}

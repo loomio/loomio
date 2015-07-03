@@ -21,6 +21,9 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       _.filter @membershipRequestsView.data(), (membershipRequest) ->
         membershipRequest.isPending()
 
+    hasPendingMembershipRequests: ->
+      _.some @pendingMembershipRequests()
+
     previousMembershipRequests: ->
       _.filter @membershipRequestsView.data(), (membershipRequest) ->
         !membershipRequest.isPending()
