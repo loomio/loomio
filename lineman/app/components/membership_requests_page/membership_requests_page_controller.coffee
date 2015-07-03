@@ -21,4 +21,7 @@ angular.module('loomioApp').controller 'MembershipRequestsPageController', ($rou
   @ignore = (membershipRequest) =>
     Records.membershipRequests.ignore(membershipRequest)
 
+  @noPendingRequests = =>
+    @pendingRequests.length == 0
+
   return

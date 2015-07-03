@@ -366,6 +366,7 @@ en:
     heading: Membership Requests
     approve: Approve
     ignore: Ignore
+    no_pending_requests: There are currently no pending membership requests.
     previous_requests: Previous Requests
 
   group_form:

@@ -1,46 +1,29 @@
-.memberships-requests-page__pending-membership-requests,
-.memberships-requests-page__previous-membership-requests {
-  list-style: none;
+.membership-requests-page {
+  margin: 0px auto;
+  max-width: $main-max-width;
+  .align-center { text-align: center; }
 }
 
-// .memberships-page {
-//   margin: 0px auto;
-//   max-width: $main-max-width;
-//   .align-center { text-align: center; }
-// }
+.membership-requests-page__pending-membership-requests,
+.membership-requests-page__previous-membership-requests {
+  @include card;
+  ul {
+    list-style: none;
+    padding-left: 0px;
+  }
+}
 
-// .memberships-page__search-filter {
-//   padding-left: 0;
-//   position: relative;
-// }
+.membership-requests-page__actions {
+  margin: 15px 0 0 50px;
+  button { margin-right: 10px; }
+}
 
-// .memberships-page__search-filter input {
-//   padding-left: 35px;
-// }
+.membership-requests-page__pending-request-email,
+.membership-requests-page__previous-request-email {
+  color: $grey-on-white;
+  font-size: 12px;
+}
 
-// .memberships-page__search-filter i {
-//   position: absolute;
-//   top: 10px;
-//   left: 10px;
-// }
-
-// .memberships-page__memberships {
-//   @include card;
-//   padding-top: 10px;
-//   clear: both;
-//   position: relative;
-//   top: 25px;
-// }
-
-// .memberships-page__member-info {
-//   padding-left: 10px;
-// }
-
-// .memberships-page__table-row {
-//   padding: 5px 0;
-//   clear: both;
-// }
-
-// .memberships-page__table-header {
-//   font-weight: bold;
-// }
+.pending-request, .previous-request {
+  margin-bottom: 15px;
+}

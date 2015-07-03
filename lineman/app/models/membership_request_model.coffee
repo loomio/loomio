@@ -4,6 +4,14 @@ angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel) ->
     @plural: 'membershipRequests'
     @indices: ['id', 'groupId']
 
+    initialize: (data) ->
+      @baseInitialize(data)
+      @fakeUser =
+        name: @name
+        email: @email
+        avatarKind: 'initials'
+        avatarInitials: _.map(@name.split(' '), (t) -> t[0]).join('')
+
     group: ->
       @recordStore.groups.find(@groupId)
 
@@ -17,15 +25,9 @@ angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel) ->
       if @byExistingUser()
         @requestor()
       else
-        @fakeUser()
+        @fakeUser
 
     byExistingUser: -> @requestorId?
-
-    fakeUser: ->
-      name: @name
-      email: @email
-      avatarKind: 'initials'
-      avatarInitials: _.map(@name.split(' '), (t) -> t[0]).join('')
 
     isPending: ->
       !@respondedAt?
