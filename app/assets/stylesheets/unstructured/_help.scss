@@ -71,15 +71,16 @@
 
   #contents {
     ul { margin-bottom: 25px; }
-    h3 {
+    li { margin-bottom: 10px; }
+    .contents-subheadings {
       font-size: 16px;
       font-weight: 600;
-      margin: 0 0 10px;
+      line-height: 1.2;
+      margin: 1em 0;
     }
-    li { margin-bottom: 10px; }
   }
 
-  #screenshot { margin-bottom: 30px; }
+  .screenshot { margin-bottom: 30px; }
 
 
   .permissions-subhead { font-style: italic; }
