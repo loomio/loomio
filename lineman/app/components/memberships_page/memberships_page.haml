@@ -1,25 +1,41 @@
-%main.memberships-page.container.main-container#main
-  .memberships-container
-    .row
-      %h1.lmo-h1
-        %a{href:'/g/{{membershipsPage.group.key}}'} {{membershipsPage.group.name}}
-      %h2.lmo-h2{translate: 'memberships_page.members'}
-    .row
-      .memberships-page-table-row.memberships-page-table-header.col-xs-1
-      .memberships-page-table-row.memberships-page-table-header{ng-class: '{"col-xs-11": !membershipsPage.userIsAdmin(), "col-xs-6": membershipsPage.userIsAdmin()}', translate: 'memberships_page.name_label'}
-      .memberships-page-table-row.memberships-page-table-header.col-xs-3{ng-show: 'membershipsPage.userIsAdmin()'}
-      .memberships-page-table-row.memberships-page-table-header.col-xs-2{ng-show: 'membershipsPage.userIsAdmin()'}
-    .row{ng-repeat: 'membership in membershipsPage.group.memberships() | limitTo:membershipsPage.loadedCount'}
-      .memberships-page-table-row.col-xs-1
-        %user_avatar{user: 'membership.user()'}
-      .memberships-page-table-row{ng-class: '{"col-xs-11": !membershipsPage.userIsAdmin(), "col-xs-6": membershipsPage.userIsAdmin()}'}
-        {{membership.user().name}}
-      .memberships-page-table-row.col-xs-3{ng-show: 'membershipsPage.userIsAdmin()'}
-        %button.btn.btn-default{ng-show: '!membership.admin', translate: 'memberships_page.add_coordinator', ng-click: 'membershipsPage.toggleMembershipAdmin(membership)'}
-        %button.btn.btn-alert{ng-show: 'membership.admin', translate: 'memberships_page.remove_coordinator', ng-click: 'membershipsPage.toggleMembershipAdmin(membership)'}
-      .memberships-page-table-row.col-xs-2{ng-show: 'membershipsPage.userIsAdmin()'}
-        %button.btn.btn-danger{translate: 'memberships_page.remove_member', ng-click: 'membership.destroy()'}
-    .row{ng-show: 'membershipsPage.loadMoreExecuting'}
-      %loading
-    .row
-      %a.load-more{translate: 'memberships_page.see_more_members', href: '', ng-click: 'membershipsPage.loadMore()', ng-show: 'membershipsPage.canLoadMore()'}
+.loading-wrapper.container.main-container
+  %loading{ng-if: '!membershipsPage.group'}
+  %main.memberships-page{ng-if: 'membershipsPage.group'}
+    .group-page__cover{style:'background-image:url({{membershipsPage.group.coverUrl()}})'}
+    %section.group-page__header{aria-label: "{{ 'group_page.header.aria_label' | translate }}"}
+      .group-page__logo{style:'background-image:url({{membershipsPage.group.logoUrl()}})', alt: "{{ 'group_page.group_logo' | translate }}"}
+      .group-page__name-and-actions
+        .group-page__name
+          %h1.lmo-h1
+            %a{ng_show: 'membershipsPage.group.parentId', href: '/g/{{membershipsPage.group.parent().key}}'}
+              {{membershipsPage.group.parentName()}}
+            %span{ng_show: 'membershipsPage.group.parentId'}> \-
+            %a{href: '/g/{{membershipsPage.group.key}}'}
+              {{membershipsPage.group.name}}
+      .memberships-page__memberships
+        %h2.lmo-h2{translate: 'memberships_page.members'}
+        .memberships-page__search-filter.col-xs-6
+          %input.membership-page__search-filter.form-control{ng-model: 'membershipsPage.fragment', ng-model-options: '{debounce: 300}', ng-change: 'membershipsPage.fetchMemberships()', placeholder: '{{"memberships_page.fragment_placeholder" | translate}}'}
+          %i.fa.fa-lg.fa-search
+        .row.memberships-page__table-row
+          .memberships-page-table-row.memberships-page__table-header.col-xs-1
+          .memberships-page-table-row.memberships-page__table-header{ng-class: '{"col-xs-11": !membershipsPage.canAdministerGroup(), "col-xs-7": membershipsPage.canAdministerGroup()}'}
+          .memberships-page-table-row.memberships-page__table-header.col-xs-2.align-center{ng-show: 'membershipsPage.canAdministerGroup()', translate: 'memberships_page.coordinator_label'}
+          .memberships-page-table-row.memberships-page__table-header.col-xs-2.align-center{ng-show: 'membershipsPage.canAdministerGroup()', translate: 'memberships_page.remove_member_label'}
+        .row.memberships-page__table-row.memberships-page__membership{ng-repeat: 'membership in membershipsPage.group.memberships() | orderBy:membershipsPage.name | filterModel:membershipsPage.fragment'}
+          .memberships-page-table-row.col-xs-1
+            %user_avatar{user: 'membership.user()', size: 'lg', coordinator: 'membership.admin'}
+          .memberships-page-table-row{ng-class: '{"col-xs-11": !membershipsPage.canAdministerGroup(), "col-xs-7": membershipsPage.canAdministerGroup()}'}
+            .memberships-page__member-info
+              %div {{::membership.user().name}}
+              %div @{{::membership.user().username}}
+          .memberships-page-table-row.col-xs-2.align-center{ng-show: 'membershipsPage.canAdministerGroup()'}
+            %input.memberships-page__make-coordinator{type: 'checkbox', ng-model: 'membership.admin', ng-change: 'membershipsPage.toggleAdmin(membership)', ng-disabled: '!membershipsPage.canToggleAdmin(membership)'}
+          .memberships-page-table-row.col-xs-2.align-center{ng-show: 'membershipsPage.canAdministerGroup()'}
+            %a.memberships-page__remove-link{href: '', ng-click: 'membershipsPage.openRemoveForm(membership)', ng-show: 'membershipsPage.canRemoveMembership(membership)'}
+              %i.fa.fa-lg.fa-times-circle
+        .row.memberships-page__table-row
+          .members-card__invite-members.col-xs-6{ng-if: 'membershipsPage.canAddMembers()'}
+            %a.btn.btn-success.btn-block.lmo-btn-icon{href: '', ng_click: 'membershipsPage.invitePeople()'}
+              %i.fa.fa-lg.fa-plus>
+              %span{translate: 'group_page.invite_people' }

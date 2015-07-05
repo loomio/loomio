@@ -43,6 +43,10 @@ Loomio::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  namespace :popolo, path: '/api/popolo', defaults: {format: :json} do
+    resources :motions, only: :index
+  end
+
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resources :groups, only: [:show, :create, :update] do
       get :subgroups, on: :member
@@ -52,8 +56,8 @@ Loomio::Application.routes.draw do
       get :autocomplete, on: :collection
       get :my_memberships, on: :collection
       get :invitables, on: :collection
-      patch :make_admin, on: :member
-      patch :remove_admin, on: :member
+      post :make_admin, on: :member
+      post :remove_admin, on: :member
     end
     resources :invitations, only: :create
     resources :users, only: [] do

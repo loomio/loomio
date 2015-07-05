@@ -2,8 +2,9 @@ angular.module('loomioApp').controller 'ProposalRedirectController', ($router, $
   $rootScope.$broadcast('currentComponent', 'proposalRedirect')
   Records.proposals.findOrFetchByKey($routeParams.key).then (proposal) =>
     Records.discussions.findOrFetchByKey(proposal.discussionId).then (discussion) =>
-      $location.url LmoUrlService.discussion discussion,
-        proposal: proposal.key
-        position: $location.search().position
+      params = {proposal: proposal.key}
+      if $location.search().position?
+        params.position = $location.search().position
+      $location.url LmoUrlService.discussion discussion, params
 
   return

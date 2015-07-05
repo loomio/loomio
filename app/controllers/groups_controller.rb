@@ -2,6 +2,7 @@ class GroupsController < GroupBaseController
   include ApplicationHelper
   include DiscussionIndexCacheHelper
   before_filter :authenticate_user!, except: :show
+  skip_before_filter :boot_angular_ui, only: :export
 
   before_filter :load_group, :except => [:create, :new]
   authorize_resource except: [:create, :members_autocomplete]

@@ -22,6 +22,11 @@ angular.module('loomioApp', ['ngNewRouter',
     useUrlLoader('/api/v1/translations/en').
     preferredLanguage('en')
 
+if window.Loomio? and window.Loomio.environment == 'production'
+  # disable angular debug stuff in production
+  angular.module('loomioApp').config  ($compileProvider) ->
+    $compileProvider.debugInfoEnabled(false);
+
 angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService) ->
   $scope.currentComponent = 'nothing yet'
 

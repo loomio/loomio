@@ -6,6 +6,10 @@
   line-height: 30px;
 }
 
+.avatar.coordinator {
+  border: 3px solid $loomio-orange;
+}
+
 .avatar-image img{
   @include smallIcon;
 }

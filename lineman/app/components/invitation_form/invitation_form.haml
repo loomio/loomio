@@ -16,7 +16,7 @@
 
     .lmo-wrap{ng-show: 'hasInvitations()'}
       %h4{translate: 'invitation.to'}
-      .current-invitations{ng-repeat: 'invitation in invitations'}
+      .current-invitations{ng-repeat: 'invitation in invitations track by invitation.id'}
         %span {{invitation.name}}
         %span{ng-show: 'invitation.subtitle'} ({{invitation.subtitle}})
 

@@ -9,7 +9,7 @@
     %ul.group-selector-list.selector-list
       %li.navbar-search-list-item.selector-list-header{ng-show: 'groups().length > 0'}
         %h3{translate: "common.groups"}
-      %li.navbar-search-list-item.navbar-search-list-option.selector-list-item.media{ng-repeat: 'group in groups() | orderBy: "fullName()"', ng-class:'{"selector-list-item-no-bottom-line": (queryEmpty()), "selector-list-item-top-line": (queryEmpty() && group.isParent())}'}
+      %li.navbar-search-list-item.navbar-search-list-option.selector-list-item.media{ng-repeat: 'group in groups() track by group.id | orderBy: "fullName()"', ng-class:'{"selector-list-item-no-bottom-line": (queryEmpty()), "selector-list-item-top-line": (queryEmpty() && group.isParent())}'}
         %a.selector-list-item-link{href: '/g/{{group.key}}'}
           .media-left
             .selector-list-item-group-logo{ng-if: 'group.isSubgroup() && queryEmpty()'}

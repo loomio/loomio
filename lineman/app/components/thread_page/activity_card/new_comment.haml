@@ -21,7 +21,7 @@
   .thread-item-body{btf-markdown: 'comment.body' }
 
   .thread-item-attachments
-    .thread-attachment{ng-repeat: 'attachment in comment.attachments()'}
+    .thread-attachment{ng-repeat: 'attachment in comment.attachments() track by attachment.id'}
       %attachment{attachment: 'attachment'}
 
   .thread-item-footer

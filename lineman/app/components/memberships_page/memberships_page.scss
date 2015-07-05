@@ -1,12 +1,41 @@
 .memberships-page {
   margin: 0px auto;
   max-width: $main-max-width;
+  .align-center { text-align: center; }
 }
 
-.memberships-container {
+.memberships-page__search-filter {
+  padding-left: 0;
+  position: relative;
+}
+
+.memberships-page__search-filter input {
+  padding-left: 35px;
+}
+
+.memberships-page__search-filter i {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.memberships-page__memberships {
   @include card;
+  padding-top: 10px;
+  clear: both;
+  position: relative;
+  top: 25px;
 }
 
-.memberships-page-table-header {
+.memberships-page__member-info {
+  padding-left: 10px;
+}
+
+.memberships-page__table-row {
+  padding: 5px 0;
+  clear: both;
+}
+
+.memberships-page__table-header {
   font-weight: bold;
 }

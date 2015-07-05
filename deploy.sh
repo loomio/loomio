@@ -8,11 +8,10 @@ echo $BRANCH
 BUILD_BRANCH=production-$(date +%Y%m%d%H%M%S)
 git checkout $SOURCE_BRANCH
 git checkout -b $BUILD_BRANCH
-cd lineman
-npm install && bower install && lineman build
-cd ..
+cd lineman && npm install && bower install && lineman build && cd ..
 cp -R lineman/dist/* public/
-git add public/img public/css/app.css public/js/app.js public/js/vendor.js public/fonts && git commit -m "production build commit" && git checkout $SOURCE_BRANCH && git push loomio-production $BUILD_BRANCH:master -f
+cp lineman/vendor/bower_components/airbrake-js/airbrake-shim.js public/js/airbrake-shim.js
+git add public/img public/css public/js public/fonts && git commit -m "production build commit" && git checkout $SOURCE_BRANCH && git push loomio-production $BUILD_BRANCH:master -f
 git branch -D $BUILD_BRANCH
 heroku run rake db:migrate -a loomio-production
 heroku restart -a loomio-production

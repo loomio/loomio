@@ -1,7 +1,7 @@
 .user-avatar{aria-hidden: 'true', class: '{{size}}'}
-  .avatar-initials{ng-if: '::(user.avatarKind == "initials")'}
+  .avatar.avatar-initials{ng-if: '::(user.avatarKind == "initials")', ng-class: '{ coordinator: coordinator }'}
     {{::user.avatarInitials}}
   .avatar-image{ng-if: '::(user.avatarKind == "gravatar")'}
-    %img{gravatar-src-once: 'user.gravatarMd5', alt: "{{::user.name}}"}
+    %img.avatar{gravatar-src-once: 'user.gravatarMd5', alt: "{{::user.name}}", ng-class: '{ coordinator: coordinator }'}
   .avatar-image{ng-if: '::(user.avatarKind == "uploaded")'}
-    %img{alt: "{{::user.name}}", ng-src: '{{::user.avatarUrl}}'}
+    %img.avatar{alt: "{{::user.name}}", ng-src: '{{::user.avatarUrl}}', ng-class: '{ coordinator: coordinator }'}

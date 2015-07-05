@@ -9,11 +9,16 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   @performScroll = ->
     ScrollService.scrollTo @elementToFocus(), 150
+    $rootScope.$broadcast 'triggerVoteForm', $location.search().position if @openVoteModal()
+
+  @openVoteModal = ->
+    $location.search().position and
+    @discussion.hasActiveProposal() and
+    @discussion.activeProposal().key == $location.search().proposal and
+    AbilityService.canVoteOn(@discussion.activeProposal())
 
   @elementToFocus = ->
-    if @proposalToFocus
-      if (position = $location.search().position) and AbilityService.canVoteOn(proposal)
-        $rootScope.$broadcast 'triggerVoteForm', position
+    if @proposalToFocus or (@discussion.hasActiveProposal() and $location.search().proposal == @discussion.activeProposal().key)
       "#proposal-#{@proposalToFocus.key}"
     else if @commentToFocus
       "#comment-#{@commentToFocus.id}"
@@ -30,6 +35,8 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       @discussion = discussion
       @group      = @discussion.group()
       @comment    = Records.comments.build(discussion_id: @discussion.id)
+      if @discussion.hasActiveProposal() and $location.search().proposal == @discussion.activeProposal().key
+        @proposalToFocus = @discussion.activeProposal()
 
       @sequenceIdToFocus = @discussion.reader().lastReadSequenceId # or location hash when we put it back in.
 

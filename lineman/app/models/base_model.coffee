@@ -4,6 +4,7 @@ angular.module('loomioApp').factory 'BaseModel', ->
     @plural: 'undefinedPlural'
     @indices: []
     @attributeNames: []
+    @searchableFields: []
 
     constructor: (recordsInterface, data, postInitializeData = {}) ->
       @errors = {}
@@ -112,7 +113,10 @@ angular.module('loomioApp').factory 'BaseModel', ->
 
     destroy: ->
       @processing = true
-      @restfulClient.destroy(@keyOrId()).then(@saveSuccess, @saveFailure)
+      @restfulClient.destroy(@keyOrId()).then =>
+        @processing = false
+        @recordsInterface.remove(@)
+      , ->
 
     saveSuccess: (records) =>
       @processing = false
