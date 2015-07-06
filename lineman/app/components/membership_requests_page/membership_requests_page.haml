@@ -3,8 +3,6 @@
     .membership-requests-page__membership-requests
       .membership-requests-page__pending-membership-requests
         %h2.lmo-h2{translate: 'membership_requests_page.heading'}
-        .membership-requests-page__no-pending-requests{ng-if: 'membershipRequestsPage.noPendingRequests()'}
-          %p{translate: 'membership_requests_page.no_pending_requests'}
         %ul
           %li.media.membership-requests-page__pending-request{ng-repeat: 'request in membershipRequestsPage.pendingRequests() track by request.id'}
             .media-left
@@ -30,7 +28,8 @@
                 %strong {{request.actor().name}}
               .membership-requests-page__previous-request-email
                 {{request.email}}
-              .membership-requests-page__previous-request-email
-                {{request.response}}
+              .membership-requests-page__previous-request-response
+                %span{translate: 'membership_requests_page.previous_request_response', translate-value-response: '{{request.formattedResponse()}}', translate-value-responder: '{{request.responder().name}}'}
+                %timeago{timestamp: 'request.responded_at'}
               .membership-requests-page__previous-request-introduction
                 {{request.introduction}}

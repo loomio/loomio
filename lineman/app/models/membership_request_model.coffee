@@ -31,3 +31,6 @@ angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel) ->
 
     isPending: ->
       !@respondedAt?
+
+    formattedResponse: ->
+      _.capitalize(@response)
