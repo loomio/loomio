@@ -26,6 +26,10 @@ describe 'Managing membership requests', ->
       emailHelper.openLastEmail()
       expect(emailHelper.lastEmailSubject().getText()).toContain('Membership approved')
 
+    it 'displays the correct flash message', ->
+      membershipRequestsHelper.clickApproveButton()
+      expect(membershipRequestsHelper.flashSection().getText()).toContain('Membership request approved')
+
 
   describe 'ignoring a membership request', ->
 
@@ -33,3 +37,6 @@ describe 'Managing membership requests', ->
       membershipRequestsHelper.clickIgnoreButton()
       expect(membershipRequestsHelper.previousRequestsPanel().getText()).toContain('Ignored by Patrick Swayze')
 
+    it 'displays the correct flash message', ->
+      membershipRequestsHelper.clickIgnoreButton()
+      expect(membershipRequestsHelper.flashSection().getText()).toContain('Membership request ignored')

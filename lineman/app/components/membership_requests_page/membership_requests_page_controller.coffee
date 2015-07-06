@@ -16,10 +16,13 @@ angular.module('loomioApp').controller 'MembershipRequestsPageController', ($rou
     @group.previousMembershipRequests()
 
   @approve = (membershipRequest) =>
-    Records.membershipRequests.approve(membershipRequest)
+    Records.membershipRequests.approve(membershipRequest).then ->
+      FlashService.success "membership_requests_page.messages.request_approved_success"
+
 
   @ignore = (membershipRequest) =>
-    Records.membershipRequests.ignore(membershipRequest)
+    Records.membershipRequests.ignore(membershipRequest).then ->
+      FlashService.success "membership_requests_page.messages.request_ignored_success"
 
   @noPendingRequests = =>
     @pendingRequests.length == 0

@@ -368,6 +368,10 @@ en:
     ignore: Ignore
     no_pending_requests: There are currently no pending membership requests.
     previous_requests: Previous Requests
+    previous_request_response: '{{response}} by {{responder}} '
+    messages:
+      request_approved_success: Membership request approved
+      request_ignored_success: Membership request ignored
 
   group_form:
     messages:

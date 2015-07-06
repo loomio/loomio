@@ -1,13 +1,13 @@
 class API::MembershipRequestsController < API::RestfulController
 
+  before_action :authorize, only: [:pending, :previous]
+
   def pending
-    load_and_authorize :group
     @membership_requests = @group.membership_requests.pending
     respond_with_collection
   end
 
   def previous
-    load_and_authorize :group
     @membership_requests = @group.membership_requests.responded_to
     respond_with_collection
   end
@@ -22,5 +22,12 @@ class API::MembershipRequestsController < API::RestfulController
     @membership_request = MembershipRequest.find(params[:id])
     MembershipRequestService.ignore(membership_request: @membership_request, actor: current_user)
     respond_with_resource
+  end
+
+  private
+
+  def authorize
+    load_and_authorize :group
+    current_user.ability.authorize! :manage_membership_requests, @group
   end
 end

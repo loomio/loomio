@@ -18,3 +18,6 @@ module.exports = new class MembershipRequestsHelper
 
   clickIgnoreButton: ->
     element.all(By.css('.membership-requests-page__ignore')).first().click()
+
+  flashSection: ->
+    element(By.css('.flash-message'))

@@ -2,7 +2,7 @@ require 'rails_helper'
 describe API::MembershipRequestsController do
 
   let(:user) { create :user }
-  let(:group) { create :group }
+  let(:group) { create :group, members_can_add_members: true }
   let(:other_group) { create :group }
   let(:pending_membership_request) { create :membership_request, group: group }
   let(:other_pending_membership_request) { create :membership_request, group: other_group }
@@ -10,14 +10,14 @@ describe API::MembershipRequestsController do
 
   before do
     stub_request(:post, "http://localhost:9292/faye").to_return(status: 200)
-    group.admins << user
+    group.add_member! user
     pending_membership_request
     approved_membership_request.approve!(user)
     sign_in user
   end
 
   describe 'pending' do
-    context 'success' do
+    context 'permitted' do
       it 'returns users filtered by group' do
         get :pending, group_id: group.id
         json = JSON.parse(response.body)
@@ -25,15 +25,33 @@ describe API::MembershipRequestsController do
         expect(json['membership_requests'].first['id']).to eq pending_membership_request.id
       end
     end
+
+    context 'not permitted' do
+      it 'returns AccessDenied' do
+        group.update_attribute(:members_can_add_members, false)
+        get :pending, group_id: group.id
+        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
+        expect(response.status).to eq 403
+      end
+    end
   end
 
   describe 'previous' do
-    context 'success' do
+    context 'permitted' do
       it 'returns users filtered by group' do
         get :previous, group_id: group.id
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[membership_requests])
         expect(json['membership_requests'].first['id']).to eq approved_membership_request.id
+      end
+    end
+
+    context 'not permitted' do
+      it 'returns AccessDenied' do
+        group.update_attribute(:members_can_add_members, false)
+        get :previous, group_id: group.id
+        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
+        expect(response.status).to eq 403
       end
     end
   end
