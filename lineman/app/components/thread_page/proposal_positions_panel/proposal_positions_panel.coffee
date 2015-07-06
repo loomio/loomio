@@ -5,6 +5,8 @@ angular.module('loomioApp').directive 'proposalPositionsPanel', ->
   replace: true
   controller: ($scope, Records, CurrentUser, ModalService, VoteForm) ->
 
+    $scope.undecidedPanelOpen = false
+
     $scope.changeVote = ->
       ModalService.open VoteForm, vote: -> $scope.proposal.lastVoteByUser(CurrentUser).clone()
 
@@ -22,3 +24,5 @@ angular.module('loomioApp').directive 'proposalPositionsPanel', ->
     $scope.voteIsMine = (vote) ->
       vote.authorId == CurrentUser.id
 
+    $scope.showUndecided = ->
+      $scope.undecidedPanelOpen = true

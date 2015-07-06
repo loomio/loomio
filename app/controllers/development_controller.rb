@@ -168,14 +168,22 @@ class DevelopmentController < ApplicationController
                           angular_ui_enabled: true)
   end
 
+  def emilio
+    @emilio ||= User.create!(name: 'Emilio Estevez',
+                            email: 'emilio@loomio.org',
+                            password: 'gh0stmovie',
+                            angular_ui_enabled: true)
+  end
+
   def test_group
     unless @test_group
       @test_group = Group.create!(name: 'Dirty Dancing Shoes',
                                   membership_granted_upon: 'approval',
                                   is_visible_to_public: true,
                                   is_visible_to_parent_members: false)
-      @test_group.add_admin! patrick
+      @test_group.add_admin!  patrick
       @test_group.add_member! jennifer
+      @test_group.add_member! emilio
     end
     @test_group
   end

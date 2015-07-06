@@ -44,6 +44,10 @@ Loomio::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  namespace :popolo, path: '/api/popolo', defaults: {format: :json} do
+    resources :motions, only: :index
+  end
+
   namespace :api, path: '/api/v1', defaults: {format: :json} do
     resources :groups, only: [:show, :create, :update] do
       get :subgroups, on: :member
@@ -90,6 +94,8 @@ Loomio::Application.routes.draw do
     resources :votes,       only: [       :index, :create, :update] do
       get :my_votes, on: :collection
     end
+
+    resources :did_not_votes, only: :index
 
     resources :comments,    only: [:create, :update, :destroy] do
       post :like, on: :member

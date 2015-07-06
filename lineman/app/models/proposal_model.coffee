@@ -10,6 +10,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
 
     setupViews: ->
       @setupView 'votes'
+      @setupView 'didNotVotes'
 
     serialize: ->
       motion:
@@ -41,6 +42,15 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
 
     votes: ->
       @votesView.data() unless @isNew()
+
+    didNotVotes: ->
+      @didNotVotesView.data() unless @isNew()
+
+    voters: ->
+      @recordStore.users.find(@voterIds())
+
+    voterIds: ->
+      _.pluck(@votes(), 'authorId')
 
     authorName: ->
       @author().name
@@ -86,3 +96,9 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
 
     hasOutcome: ->
       _.some(@outcome)
+
+    undecidedMembers: ->
+      if @isActive()
+        _.difference(@group().members(), @voters())
+      else
+        @recordStore.users.find(_.pluck(@didNotVotes(), 'userId'))

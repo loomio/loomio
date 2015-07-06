@@ -178,6 +178,10 @@ en:
     no_votes_yet: Nobody has voted on this proposal yet.
     change_your_vote: Change your vote.
 
+  undecided_panel:
+    show_undecided: Show undecided members
+    hide_undecided: Hide undecided members
+
   proposal_pie_chart:
     participation_statement: '{{percentage}}% of members have stated their position ({{number}}/{{total}})'
 
