@@ -54,6 +54,11 @@
   @include fontSmall;
 }
 
+.option-icon {
+  /* a helper class to display inline icons and avatars */
+  margin: 5px 5px 5px 0;
+  display: inline-block;
+}
 .lmo-btn-icon{
   text-align: left;
 }
