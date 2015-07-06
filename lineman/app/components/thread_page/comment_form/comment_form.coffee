@@ -31,4 +31,3 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.fetchByNameFragment = (fragment) ->
       $scope.updateMentionables(fragment)
       Records.memberships.fetchByNameFragment(fragment, group.key).then -> $scope.updateMentionables(fragment)
-    $scope.fetchByNameFragment('')

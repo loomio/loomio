@@ -29,7 +29,7 @@ describe 'Proposals', ->
 
   describe 'updating a vote on a proposal', ->
     beforeEach ->
-      threadHelper.loadWithActiveProposalWithVote()   
+      threadHelper.loadWithActiveProposalWithVotes()
 
     it 'successfully updates a previous vote on a proposal', ->
       proposalsHelper.clickChangeBtn()
@@ -89,3 +89,30 @@ describe 'Proposals', ->
       emailHelper.openLastEmail()
       emailHelper.clickAgreeLink()
       expect(proposalsHelper.voteFormPositionSelect().getAttribute('value')).toContain('yes')
+
+  describe 'undecided members', ->
+
+      describe 'when proposal is open', ->
+
+        beforeEach ->
+          threadHelper.loadWithActiveProposalWithVotes()
+          proposalsHelper.clickShowUndecidedLink()
+
+        it 'shows all undecided members when the show link is clicked', ->
+          expect(proposalsHelper.undecidedPanel().getText()).toContain('Emilio')
+          expect(proposalsHelper.undecidedPanel().getText()).toContain('Hide undecided members')
+
+        it 'hides all undecided members when undecided panel is open and hide link is clicked', ->
+          proposalsHelper.clickHideUndecidedLink()
+          expect(proposalsHelper.undecidedPanel().getText()).toContain('Show undecided members')
+
+      describe 'when proposal is closed', ->
+
+        beforeEach ->
+          threadHelper.loadWithClosedProposal()
+
+        xit 'shows all undecided members when the show link is clicked', ->
+          # invitationsHelper.inviteUser()
+          # threadHelper.visitDiscussionPage()
+          # proposalsHelper.clickShowUndecidedLink()
+          # expect(proposalsHelper.undecidedPanel().getText()).not.toContain('Max')
