@@ -73,6 +73,9 @@ describe 'DiscussionModel', ->
     it 'copies all of the attributes of the object being cloned', ->
       expect(discussion.clone().title).toBe(discussion.title)
 
+    it 'copies values not present in the permitted params', ->
+      expect(discussion.clone().key).toBe(discussion.key)
+
     it 'copies all of the methods of the object being closed', ->
       expect(discussion.clone().authorName()).toBe(discussion.authorName())
 

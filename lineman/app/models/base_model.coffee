@@ -27,7 +27,10 @@ angular.module('loomioApp').factory 'BaseModel', ->
       @updateFromJSON(data)
 
     clone: ->
-      attrs = @baseSerialize()[@constructor.singular] or {}
+      attrs = _.reduce @constructor.attributeNames, (clone, attr) =>
+        clone[attr] = @[attr]
+        clone
+      , {}
       new @constructor @recordsInterface, attrs, { id: @id, key: @key }
 
     update: (data) ->
