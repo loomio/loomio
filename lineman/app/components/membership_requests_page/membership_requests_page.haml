@@ -12,6 +12,8 @@
                 %strong {{request.actor().name}}
               .membership-requests-page__pending-request-email
                 {{request.email}}
+              .membership-requests-page__pending-request-date
+                %timeago{timestamp: 'request.createdAt'}
               .membership-requests-page__pending-request-introduction
                 {{request.introduction}}
             .membership-requests-page__actions
@@ -30,6 +32,6 @@
                 {{request.email}}
               .membership-requests-page__previous-request-response
                 %span{translate: 'membership_requests_page.previous_request_response', translate-value-response: '{{request.formattedResponse()}}', translate-value-responder: '{{request.responder().name}}'}
-                %timeago{timestamp: 'request.responded_at'}
+                %timeago{timestamp: 'request.respondedAt'}
               .membership-requests-page__previous-request-introduction
                 {{request.introduction}}
