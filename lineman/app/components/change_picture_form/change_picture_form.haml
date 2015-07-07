@@ -18,10 +18,10 @@
           %img.avatar{gravatar-src-once: 'user.gravatarMd5', alt: "{{::user.name}}"}
         %span{translate: 'profile_page.change_picture.use_gravatar'}
     %li.change-picture-form__option
-      %a{href: '', ng-click: 'loadFileInput()'}
+      %button{type: 'button'}
         .avatar.avatar-initials.option-icon
           %i.fa.fa-lg.fa-camera
         %span{translate: 'profile_page.change_picture.use_uploaded'}
-  %input#upload-avatar-input.change-picture-form__file-input{type: 'file', ng-model: 'user.uploadedAvatar', ng-change: 'submit("uploaded")'}
+      %input{type: 'file', ng-model: 'files', ng_file_select: 'upload(files)'}
 .modal-footer
   %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}

@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'RestfulClient', ($http) ->
+angular.module('loomioApp').factory 'RestfulClient', ($http, $upload) ->
   class RestfulClient
     apiPrefix: "api/v1"
 
@@ -31,6 +31,13 @@ angular.module('loomioApp').factory 'RestfulClient', ($http) ->
 
     post: (path, params) ->
       $http.post(@customPath(path), params).then @onSuccess, @onFailure
+
+    upload: (path, params, file) ->
+      $upload.upload _.merge params,
+        url: @customPath(path)
+        headers: { 'Content-Type': false }
+        data: params
+        file: file
 
     postMember: (keyOrId, action, params) ->
       $http.post(@memberPath(keyOrId, action), params).then @onSuccess, @onFailure

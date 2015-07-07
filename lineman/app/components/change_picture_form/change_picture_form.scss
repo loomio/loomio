@@ -4,12 +4,8 @@
   padding: 0;
 }
 
-.change-picture-form__option a {
+.change-picture-form__option a,
+.change-picture-form__option button {
   color: $grey-on-white;
   text-decoration: underline;
-}
-
-.change-picture-form__file-input {
-  visibility: hidden;
-  position: absolute;
 }

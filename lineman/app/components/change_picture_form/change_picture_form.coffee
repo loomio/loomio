@@ -9,5 +9,7 @@ angular.module('loomioApp').factory 'ChangePictureForm', ->
         FlashService.success 'profile_page.messages.picture_changed'
         $scope.$close()
 
-    $scope.loadFileInput = ->
-      angular.element('#upload-avatar-input').click()
+    $scope.upload = (files) ->
+      $scope.user.uploadedAvatar = files[0]
+      if $scope.user.uploadedAvatar?
+        $scope.submit('uploaded')
