@@ -11,6 +11,13 @@ describe API::UsersController do
 
   describe 'update_profile' do
     context 'success' do
+      it 'updates a users profile picture type' do
+        user.update avatar_kind: 'gravatar'
+        post :update_profile, user: { avatar_kind: 'initials' }
+        expect(response).to be_success
+        expect(user.reload.avatar_kind).to eq 'initials'
+      end
+
       it "updates a users profile" do
         post :update_profile, user: user_params, format: :json
         expect(response).to be_success
@@ -19,37 +26,6 @@ describe API::UsersController do
         user_emails = json['users'].map { |v| v['email'] }
         expect(user_emails).to include user_params[:email]
       end
-
-      it 'updates a users profile picture type' do
-        user.update avatar_kind: 'gravatar'
-        post :update_profile, user: { avatar_kind: 'initials' }
-        expect(response).to be_success
-        expect(user.reload.avatar_kind).to eq 'initials'
-      end
-
-      it 'updates a users profile picture when uploaded' do
-        user.update avatar_kind: 'gravatar'
-        post :update_profile, html: {multipart: true}, user: {
-          avatar_kind: 'uploaded',
-          uploaded_avatar_file_name: fixture_for('images', 'strongbad.png'),
-          uploaded_avatar_content_type: 'image/png'
-        }
-        expect(response.status).to eq 200
-        expect(user.reload.avatar_kind).to eq 'uploaded'
-        expect(user.reload.uploaded_avatar).to be_present
-      end
-
-      it 'does not upload an invalid file' do
-        user.update avatar_kind: 'gravatar'
-        post :update_profile, user: {
-          avatar_kind: 'uploaded',
-          uploaded_avatar: fixture_for('images', 'strongmad.pdf'),
-          uploaded_avatar_content_type: 'text/pdf'
-        }
-        expect(response.status).to_not eq 200
-        expect(user.reload.avatar_kind).to eq 'gravatar'
-        expect(user.reload.uploaded_avatar).to be_blank
-      end
     end
 
     context 'failures' do
@@ -57,6 +33,29 @@ describe API::UsersController do
         user_params[:dontmindme] = 'wild wooly byte virus'
         put :update_profile, user: user_params, format: :json
         expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
+      end
+    end
+  end
+
+  describe 'upload_avatar' do
+    context 'success' do
+      it 'updates a users profile picture when uploaded' do
+        user.update avatar_kind: 'gravatar'
+        allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true)
+        post :upload_avatar, file: fixture_for('images', 'strongbad.png')
+        expect(response.status).to eq 200
+        expect(user.reload.avatar_kind).to eq 'uploaded'
+        expect(user.reload.uploaded_avatar).to be_present
+      end
+    end
+
+    context 'failure' do
+      it 'does not upload an invalid file' do
+        user.update avatar_kind: 'gravatar'
+        post :upload_avatar, file: fixture_for('images', 'strongbad.png', filetype: 'text/pdf')
+        expect(response.status).to_not eq 200
+        expect(user.reload.avatar_kind).to eq 'gravatar'
+        expect(user.reload.uploaded_avatar).to be_blank
       end
     end
   end

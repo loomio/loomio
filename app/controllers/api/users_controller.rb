@@ -5,6 +5,11 @@ class API::UsersController < API::RestfulController
     respond_with_resource
   end
 
+  def upload_avatar
+    service.update user: current_user, actor: current_user, params: { uploaded_avatar: params[:file], avatar_kind: :uploaded }
+    respond_with_resource
+  end
+
   def change_password
     service.change_password(user_params) { sign_in resource, bypass: true }
     respond_with_resource
