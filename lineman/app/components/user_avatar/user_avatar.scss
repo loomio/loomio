@@ -18,6 +18,8 @@
   @include roundedCorners;
   width: 25px;
   height: 25px;
+  @include fontMedium;
+  line-height: 25px;
 }
 
 .lg .avatar-image img, .lg .avatar-initials{

@@ -1,15 +1,17 @@
 angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, CurrentUser, Records, FlashService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm) ->
-  @user = CurrentUser.clone()
+  @init = ->
+    @user = CurrentUser.clone()
+  @init()
 
   @availableLocales = ->
     window.Loomio.locales
 
   @submit = ->
     @isDisabled = true
-    Records.users.updateProfile(@user).then ->
+    Records.users.updateProfile(@user).then =>
       @isDisabled = false
       FlashService.success('profile_page.messages.updated')
-      $location.path('/dashboard')
+      @init()
     , ->
       @isDisabled = false
       $rootScope.$broadcast 'pageError', 'cantUpdateProfile', @user
