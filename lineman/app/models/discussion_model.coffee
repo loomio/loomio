@@ -101,6 +101,3 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
 
     markAsRead: (sequenceId) ->
       @reader().markAsRead(sequenceId)
-
-    truncatedTitle: ->
-      _.trunc(@title, 65)

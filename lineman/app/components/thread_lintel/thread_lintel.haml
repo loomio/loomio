@@ -1,9 +1,9 @@
 .thread-lintel{ng-if: 'show()'}
   .thread-lintel__left
-    .thread-lintel__title{ng-click: 'scrollToThread()'} {{ discussion.truncatedTitle() }}
+    .thread-lintel__title{ng-click: 'scrollToThread()'} {{ truncatedDiscussionTitle() }}
     .thread-lintel__proposal{ng-if: 'discussion.activeProposal() && !proposalInView', ng-click: 'scrollToProposal()'}
       %pie_chart.thread-lintel__proposal-pie-chart.pie-chart--tiny{votes: 'discussion.activeProposal().voteCounts'}
-      %span.thread-lintel__proposal-name {{ discussion.activeProposal().truncatedName() }}
+      %span.thread-lintel__proposal-name {{ truncatedProposalName() }}
   .thread-lintel__right{ng-show: '!proposalButtonInView'}
     %start_proposal_button.hidden-xs{discussion: 'discussion'}
 
