@@ -69,6 +69,16 @@ class DevelopmentController < ApplicationController
     redirect_to discussion_url(test_discussion)
   end
 
+  def setup_membership_requests
+    cleanup_database
+    sign_in patrick
+    test_group
+    another_test_group
+    membership_request_from_logged_out
+    membership_request_from_user
+    redirect_to group_url(test_group)
+  end
+
   def setup_all_notifications
     cleanup_database
     sign_in patrick
@@ -128,7 +138,7 @@ class DevelopmentController < ApplicationController
 
   def patrick
     @patrick ||= User.create!(name: 'Patrick Swayze',
-                              email: 'patrick_swayze@loomio.org',
+                              email: 'patrick_swayze@example.com',
                               username: 'patrickswayze',
                               password: 'gh0stmovie',
                               angular_ui_enabled: true)
@@ -137,14 +147,14 @@ class DevelopmentController < ApplicationController
   def patricks_contact
     if patrick.contacts.empty?
       patrick.contacts.create(name: 'Keanu Reeves',
-                              email: 'keanu@loomio.org',
+                              email: 'keanu@example.com',
                               source: 'gmail')
     end
   end
 
   def jennifer
     @jennifer ||= User.create!(name: 'Jennifer Grey',
-                               email: 'jennifer_grey@loomio.org',
+                               email: 'jennifer_grey@example.com',
                                username: 'jennifergrey',
                                password: 'gh0stmovie',
                                angular_ui_enabled: true)
@@ -152,7 +162,7 @@ class DevelopmentController < ApplicationController
 
   def max
     @max ||= User.create!(name: 'Max Von Sydow',
-                          email: 'max@loomio.org',
+                          email: 'max@example.com',
                           password: 'gh0stmovie',
                           username: 'mingthemerciless',
                           angular_ui_enabled: true)
@@ -218,6 +228,27 @@ class DevelopmentController < ApplicationController
       VoteService.create(vote: @another_test_vote, actor: jennifer)
     end
     @another_test_vote
+  end
+
+  def membership_request_from_logged_out
+    unless @membership_request_from_logged_out
+      @membership_request_from_logged_out = MembershipRequest.new(group: test_group,
+                                                                  name: 'Marjorie Houseman',
+                                                                  email: 'marjorie@example.com',
+                                                                  introduction: "Hi, I'm Marjorie")
+      MembershipRequestService.create(membership_request: @membership_request_from_logged_out)
+    end
+    @membership_request_from_logged_out
+  end
+
+  def membership_request_from_user
+    unless @membership_request_from_user
+      @membership_request_from_user = MembershipRequest.new(group: test_group,
+                                                            requestor: max,
+                                                            introduction: "I'd like to make decisions with y'all")
+      MembershipRequestService.create(membership_request: @membership_request_from_user)
+    end
+    @membership_request_from_user
   end
 
   def cleanup_database

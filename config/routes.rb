@@ -10,6 +10,7 @@ Loomio::Application.routes.draw do
     get 'setup_proposal_with_votes'
     get 'setup_closed_proposal'
     get 'setup_closed_proposal_with_outcome'
+    get 'setup_membership_requests'
     get 'setup_all_notifications'
   end
 
@@ -52,6 +53,7 @@ Loomio::Application.routes.draw do
       get :subgroups, on: :member
       patch :archive, on: :member
     end
+  
     resources :memberships, only: [:index, :create, :update, :destroy] do
       get :autocomplete, on: :collection
       get :my_memberships, on: :collection
@@ -59,10 +61,20 @@ Loomio::Application.routes.draw do
       post :make_admin, on: :member
       post :remove_admin, on: :member
     end
+
+    resources :membership_requests, only: [] do
+      get :pending, on: :collection
+      get :previous, on: :collection
+      post :approve, on: :member
+      post :ignore, on: :member
+    end
+
     resources :invitations, only: :create
+
     resources :users, only: [] do
       post :update_profile, on: :collection
     end
+
     resources :events, only: :index
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
@@ -78,6 +90,7 @@ Loomio::Application.routes.draw do
       post :create_outcome, on: :member
       post :update_outcome, on: :member
     end
+
     resources :votes,       only: [       :index, :create, :update] do
       get :my_votes, on: :collection
     end
@@ -88,10 +101,13 @@ Loomio::Application.routes.draw do
       post :like, on: :member
       post :unlike, on: :member
     end
+
     resources :attachments, only: [:create, :destroy]
+
     resources :motions, only: :create do
       post :vote, on: :member
     end
+
     resources :translations, only: :show
 
     resources :notifications, only: :index do

@@ -65,3 +65,6 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
       membership.group().memberIds().length > 1 and
       (!membership.admin or membership.group().adminIds().length > 1) and
       (membership.user() == CurrentUser or @canAdministerGroup(membership.group()))
+
+    canManageMembershipRequests: (group) ->
+      (group.membersCanAddMembers and CurrentUser.isMemberOf(group)) or @canAdministerGroup(group)

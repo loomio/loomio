@@ -362,6 +362,21 @@ en:
         members_can_vote: 'Vote on proposals'
       submit:  'Update Settings'
 
+  membership_requests_card:
+    heading: 'Membership Requests ({{count}})'
+    manage_requests: Manage requests
+
+  membership_requests_page:
+    heading: Membership Requests
+    approve: Approve
+    ignore: Ignore
+    no_pending_requests: There are currently no pending membership requests.
+    previous_requests: Previous Requests
+    previous_request_response: '{{response}} by {{responder}} '
+    messages:
+      request_approved_success: Membership request approved
+      request_ignored_success: Membership request ignored
+
   group_form:
     messages:
       new_group: 'Successfully created your group'

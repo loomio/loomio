@@ -1,0 +1,37 @@
+.container.main-container
+  %main.membership-requests-page{ng-if: 'membershipRequestsPage.group'}
+    .membership-requests-page__membership-requests
+      .membership-requests-page__pending-membership-requests
+        %h2.lmo-h2{translate: 'membership_requests_page.heading'}
+        %ul
+          %li.media.membership-requests-page__pending-request{ng-repeat: 'request in membershipRequestsPage.pendingRequests() track by request.id'}
+            .media-left
+              %user_avatar{user: 'request.actor()', size: 'lg'}
+            .media-body
+              %span.membership-requests-page__pending-request-name
+                %strong {{request.actor().name}}
+              .membership-requests-page__pending-request-email
+                {{request.email}}
+              .membership-requests-page__pending-request-date
+                %timeago{timestamp: 'request.createdAt'}
+              .membership-requests-page__pending-request-introduction
+                {{request.introduction}}
+            .membership-requests-page__actions
+              %button.btn.btn-primary.membership-requests-page__approve{ng-click: 'membershipRequestsPage.approve(request)', translate: 'membership_requests_page.approve'}
+              %button.btn.membership-requests-page__ignore{ng-click: 'membershipRequestsPage.ignore(request)', translate: 'membership_requests_page.ignore'}
+      .membership-requests-page__previous-membership-requests
+        %h3.lmo-card-heading{translate: 'membership_requests_page.previous_requests'}
+        %ul
+          %li.media.membership-requests-page__previous-request{ng-repeat: 'request in membershipRequestsPage.previousRequests() track by request.id'}
+            .media-left
+              %user_avatar{user: 'request.actor()', size: 'lg'}
+            .media-body
+              %span.membership-requests-page__previous-request-name
+                %strong {{request.actor().name}}
+              .membership-requests-page__previous-request-email
+                {{request.email}}
+              .membership-requests-page__previous-request-response
+                %span{translate: 'membership_requests_page.previous_request_response', translate-value-response: '{{request.formattedResponse()}}', translate-value-responder: '{{request.responder().name}}'}
+                %timeago{timestamp: 'request.respondedAt'}
+              .membership-requests-page__previous-request-introduction
+                {{request.introduction}}
