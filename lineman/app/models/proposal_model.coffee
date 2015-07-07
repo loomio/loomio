@@ -102,3 +102,6 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
         _.difference(@group().members(), @voters())
       else
         @recordStore.users.find(_.pluck(@didNotVotes(), 'userId'))
+
+    truncatedName: ->
+      _.trunc(@name, 65)
