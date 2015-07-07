@@ -32,11 +32,10 @@ angular.module('loomioApp').factory 'RestfulClient', ($http, $upload) ->
     post: (path, params) ->
       $http.post(@customPath(path), params).then @onSuccess, @onFailure
 
-    upload: (path, params, file) ->
-      $upload.upload _.merge params,
+    upload: (path, file) ->
+      $upload.upload
         url: @customPath(path)
         headers: { 'Content-Type': false }
-        data: params
         file: file
 
     postMember: (keyOrId, action, params) ->

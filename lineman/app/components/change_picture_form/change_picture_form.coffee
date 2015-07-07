@@ -5,11 +5,11 @@ angular.module('loomioApp').factory 'ChangePictureForm', ->
 
     $scope.submit = (kind) ->
       $scope.user.avatarKind = kind
-      Records.users.updateProfile($scope.user).then ->
-        FlashService.success 'profile_page.messages.picture_changed'
-        $scope.$close()
+      Records.users.updateProfile($scope.user).then changePictureSuccess
 
     $scope.upload = (files) ->
-      $scope.user.uploadedAvatar = files[0]
-      if $scope.user.uploadedAvatar?
-        $scope.submit('uploaded')
+      Records.users.uploadAvatar(files[0]).then changePictureSuccess
+
+    changePictureSuccess = ->
+      FlashService.success 'profile_page.messages.picture_changed'
+      $scope.$close()
