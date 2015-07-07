@@ -21,13 +21,6 @@
   padding: 7px 15px 7px 0px;
 }
 
-.thread-lintel__logo {
-  width: 30px;
-  height: 30px;
-  float: left;
-  margin: 7px;
-}
-
 .thread-lintel__title {
   @include fontHelveticaBold;
   line-height: 30px;
@@ -35,23 +28,13 @@
 }
 
 .thread-lintel__proposal {
+  font-weight: 400px;
   cursor: pointer;
 }
 
 .thread-lintel__proposal-pie-chart {
   float: left;
   padding-right: 5px;
-}
-
-.thread-lintel__proposal-name {
-  font-weight: 400px;
-}
-
-.thread-lintel__go-to-end {
-  float: right;
-  @include fontHelveticaLight;
-  @include fontMedium;
-  color: $grey-on-white;
 }
 
 .thread-lintel__progress {

@@ -12,12 +12,6 @@ angular.module('loomioApp').directive 'threadLintel', ->
     $scope.scrollToProposal = ->
       ScrollService.scrollTo 'section.current-proposal-card'
 
-    $scope.truncatedDiscussionTitle = ->
-      _.trunc($scope.discussion.title, 65)
-
-    $scope.truncatedProposalName = ->
-      _.trunc($scope.discussion.activeProposal().name, 65)
-
     $scope.$on 'currentComponent', (event, options) ->
       $scope.currentComponent = options['page']
 
