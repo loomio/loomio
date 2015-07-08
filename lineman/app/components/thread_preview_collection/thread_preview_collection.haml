@@ -19,16 +19,16 @@
         %span{ng-if: 'thread.activeProposal() && lastVoteByCurrentUser(thread)', translate: 'dashboard_page.aria_thread.you_voted', translate-value-position: ' {{lastVoteByCurrentUser(thread).position}} '}
       .screen-only{aria-hidden: 'true'}
         .thread-preview__thread-header
-          .thread-preview__thread-title{ng-class: "{'is-unread': thread.isUnread() }"}
+          .thread-preview__thread-title.lmo-truncate{ng-class: "{'is-unread': thread.isUnread() }"}
             {{thread.title}}
-            %span.thread-preview__unread-count{ng-if: 'thread.isUnread()'}
-              ({{thread.unreadItemsCount()}})
-        .thread-preview__thread-info
-          %span.thread-preview-proposal-info{ng-if: 'thread.activeProposal()'}
-            %pie_chart.pull-left.thread-preview__pie-chart.pie-chart--tiny{votes: 'thread.activeProposal().voteCounts', ng-if: 'thread.activeProposal()'}
-            %span.nowrap.thread-preview__proposal-name> {{ thread.activeProposal().name }}
-            %span{ng-if: 'thread.activeProposal().closingSoon()'} ·
-            %closing_in.thread-preview__proposal-closing-at{ng-if: 'thread.activeProposal().closingSoon()', time: 'thread.activeProposal().closingAt'}>
+          .thread-preview__unread-count{ng-if: 'thread.isUnread()'}
+            ({{thread.unreadItemsCount()}})
+        .thread-preview__proposal{ng-if: 'thread.activeProposal()'}
+          %pie_chart.thread-preview__pie-chart.pie-chart--tiny{votes: 'thread.activeProposal().voteCounts', ng-if: 'thread.activeProposal()'}
+          .thread-preview__proposal-name.lmo-truncate> {{ thread.activeProposal().name }}
+          .thread-preview__proposal-closing-soon{ng-if: 'thread.activeProposal().closingSoon()'}
+            %span ·
+            %closing_in.thread-preview__proposal-closing-at{time: 'thread.activeProposal().closingAt'}>
         .thread-preview__group-name
           {{ thread.group().fullName() }} ·
           %smart_time{time: 'thread.lastActivityAt'}>

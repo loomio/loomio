@@ -59,6 +59,13 @@ class DevelopmentController < ApplicationController
     redirect_to discussion_url(test_discussion)
   end
 
+  def setup_proposal_closing_soon
+    cleanup_database
+    sign_in patrick
+    test_proposal.update_attribute(:closing_at, 6.hours.from_now)
+    redirect_to discussion_url(test_discussion)
+  end
+
   def setup_closed_proposal_with_outcome
     cleanup_database
     sign_in patrick
