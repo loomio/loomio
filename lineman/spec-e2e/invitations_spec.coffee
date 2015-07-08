@@ -61,7 +61,7 @@ describe 'Invitations', ->
     describe 'by email address', ->
       beforeEach ->
         invitationsHelper.openInvitationsModal()
-        invitationsHelper.invite('max@loomio.org')
+        invitationsHelper.invite('max@example.com')
         invitationsHelper.submitInvitationsForm()
 
       it 'successfully invites the user', ->
@@ -104,7 +104,7 @@ describe 'Invitations', ->
     beforeEach ->
       invitationsHelper.load()
 
-    it 'successfully invites a contact', ->
+    it 'successfully adds users and invites non-users', ->
       invitationsHelper.openInvitationsModal()
       invitationsHelper.invite('ming')
       invitationsHelper.invite('keanu')
