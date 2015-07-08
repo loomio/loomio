@@ -4,8 +4,11 @@
   padding: 0;
 }
 
-.change-picture-form__option a,
-.change-picture-form__option button {
+.change-picture-form__option {
+  position: relative;
+}
+
+.change-picture-form__option a {
   color: $grey-on-white;
   text-decoration: underline;
 }
