@@ -3,12 +3,12 @@ class API::MembershipRequestsController < API::RestfulController
   before_action :authorize, only: [:pending, :previous]
 
   def pending
-    @membership_requests = @group.membership_requests.pending
+    @membership_requests = page_collection(@group.membership_requests.pending)
     respond_with_collection
   end
 
   def previous
-    @membership_requests = @group.membership_requests.responded_to
+    @membership_requests = page_collection(@group.membership_requests.responded_to)
     respond_with_collection
   end
 

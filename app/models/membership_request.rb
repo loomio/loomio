@@ -14,7 +14,7 @@ class MembershipRequest < ActiveRecord::Base
   belongs_to :responder, class_name: 'User'
   has_many :events, as: :eventable, dependent: :destroy
 
-  scope :pending, -> { where response: nil }
+  scope :pending, -> { where(response: nil).order('created_at DESC') }
   scope :responded_to, -> { where('response IS NOT ?', nil).order('responded_at DESC') }
   scope :requested_by, ->(user) { where requestor_id: user.id }
 
