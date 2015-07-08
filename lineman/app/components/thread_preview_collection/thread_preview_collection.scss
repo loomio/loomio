@@ -18,6 +18,7 @@
 .thread-preview__thread-header {
   @include fontCrapName;
   padding-bottom: 4px;
+  display: flex;
 }
 
 .thread-preview__thread-title {
@@ -29,14 +30,16 @@
   font-weight: normal;
   padding-left: 5px;
   color: $grey-on-white;
+  min-width: 25px;
 }
 
 .thread-preview__thread-title.is-unread {
   font-weight: bold;
 }
 
-.thread-preview__thread-info {
+.thread-preview__proposal {
   color: $grey-on-white;
+  display: flex;
 }
 
 .thread-preview__proposal-name{
@@ -46,6 +49,10 @@
 .thread-preview__proposal-closing-at {
   @include fontSmall;
   color: $highlight-red;
+}
+
+.thread-preview__proposal-closing-soon {
+  width: 160px;
 }
 
 .thread-preview__pie-chart {
