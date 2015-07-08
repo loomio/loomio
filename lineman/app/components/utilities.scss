@@ -174,3 +174,9 @@ label.label-with-details{
   font-style: italic;
   color: $grey-on-white;
 }
+
+.lmo-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
