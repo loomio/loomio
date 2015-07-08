@@ -169,6 +169,8 @@ FactoryGirl.define do
 
   factory :membership_request do
     introduction { Faker::Lorem.sentence(4) }
+    email { Faker::Internet.email }
+    name { Faker::Name.name }
     group
   end
 

@@ -6,7 +6,7 @@ module.exports = new class GroupsHelper
     element(By.css('.flash-message'))
 
   membersList: ->
-    element(By.css('.group-member-list'))
+    element(By.css('.group-page-members'))
 
   clickStartDiscussionBtn: ->
     element(By.css('.group-page__new-thread a')).click()

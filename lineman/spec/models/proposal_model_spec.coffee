@@ -7,6 +7,7 @@ describe 'ProposalModel', ->
   voter2 = null
   vote1 = null
   vote2 = null
+  undecidedMember = null
 
   beforeEach module 'loomioApp'
 
@@ -19,12 +20,27 @@ describe 'ProposalModel', ->
     proposal = recordStore.proposals.import(id: 1, discussion_id: discussion.id, name: 'proposal')
     voter1 = recordStore.users.import(id: 1, name: 'sam')
     voter2 = recordStore.users.import(id: 2, name: 'han')
+    undecidedMember =  recordStore.users.import(id: 3, name: 'jam')
+    recordStore.memberships.import(userId: 1, groupId: 1)
+    recordStore.memberships.import(userId: 2, groupId: 1)
+    recordStore.memberships.import(userId: 3, groupId: 1)
     vote1 = recordStore.votes.import(id: 1, proposal_id: proposal.id, author_id: voter1.id)
     vote2 = recordStore.votes.import(id: 2, proposal_id: proposal.id, author_id: voter1.id)
 
   describe 'votes()', ->
     it 'returns votes', ->
       expect(proposal.votes()).toContain(vote1, vote2)
+
+  describe 'voters()', ->
+    it 'returns voters', ->
+      expect(proposal.voters()).toContain(voter1, voter2)
+
+  describe 'undecidedMembers()', ->
+    it 'returns undecided members', ->
+      expect(proposal.undecidedMembers()).toContain(undecidedMember)
+
+    it 'does not return voters', ->
+      expect(proposal.undecidedMembers()).not.toContain(voter1, voter2)
 
   describe 'isActive', ->
     it 'is true when closedAt', ->

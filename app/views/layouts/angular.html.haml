@@ -13,13 +13,14 @@
     %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
     %start_menu
 
-    #turn-off-angular{'aria-hidden' => 'true'}
-      =link_to 'Turn off angular', '/angular', target: '_self'
-      %br
-      %a{href: 'https://docs.google.com/forms/d/1JS75ZdoBiA3k7IzxDPijV4kPh1fXrmWs9A8k_WG_pyE/viewform', target: '_blank'}
-        Give feedback
 
     - if Rails.env.production?
+      #turn-off-angular{'aria-hidden' => 'true'}
+        =link_to 'Turn off angular', '/angular', target: '_self'
+        %br
+        %a{href: 'https://docs.google.com/forms/d/1JS75ZdoBiA3k7IzxDPijV4kPh1fXrmWs9A8k_WG_pyE/viewform', target: '_blank'}
+          Give feedback
+
       %script{src: '/js/airbrake-shim.js', 'data-airbrake-host' => "http://#{ENV['ERRBIT_HOST']}", 'data-airbrake-project-id' => ENV['ERRBIT_KEY'],  'data-airbrake-project-key' => ENV['ERRBIT_KEY']}
 
     :javascript
@@ -37,3 +38,6 @@
 
     - if ENV['FAYE_URL']
       %script{src: "#{ENV['FAYE_URL']}/client.js", type: 'text/javascript'}
+
+    - if Rails.env.development?
+      = javascript_include_tag 'https://github.com/Khan/tota11y/releases/download/0.0.3/tota11y.min.js'

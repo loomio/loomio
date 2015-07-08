@@ -1,0 +1,31 @@
+.membership-requests-page {
+  margin: 0px auto;
+  max-width: $main-max-width;
+  .align-center { text-align: center; }
+}
+
+.membership-requests-page__pending-membership-requests,
+.membership-requests-page__previous-membership-requests {
+  @include card;
+  ul {
+    list-style: none;
+    padding-left: 0px;
+  }
+}
+
+.membership-requests-page__actions {
+  margin: 15px 0 0 50px;
+  button { margin-right: 10px; }
+}
+
+.membership-requests-page__pending-request-email,
+.membership-requests-page__pending-request-date,
+.membership-requests-page__previous-request-email,
+.membership-requests-page__previous-request-response {
+  color: $grey-on-white;
+  font-size: 12px;
+}
+
+.pending-request, .previous-request {
+  margin-bottom: 15px;
+}

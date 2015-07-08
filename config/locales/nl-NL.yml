@@ -125,6 +125,7 @@ nl-NL:
     added_to_group: "Je bent toegevoegd aan %{which_group}"
     close_date_changed: Sluitingsdatum is gewijzigd.
     discussion_created: Discussie is aangemaakt.
+    discussion_updated: Discussie succesvol bijgewerkt.
     discussion_deleted: Discussie is verwijderd.
     discussion_moved: "Discussie verplaatst naar %{group_name}"
     emails_sending: E-mails worden verstuurd.
@@ -207,6 +208,7 @@ nl-NL:
     new_vote: "%{position} met het voorstel"
     new_comment: reageerde op de discussie
     comment_liked: waardeert je reactie in de discussie
+    comment_replied_to: reageerde op je reactie in
     user_mentioned: noemde je in een reactie in
     membership_requested: verzocht lidmaatschap voor
     membership_request_approved: keurde je aanmelding goed
@@ -270,10 +272,16 @@ nl-NL:
       emails: Je zal geen Loomio gerelateerde e-mails meer van ons krijgen.
   start_group_form:
     header: Begin een nieuwe groep
+    form_error: Sommige informatie mist of is incorrect.
     name: Je naam
+    name_error: Naam is verplicht
+    email: Je e-mail
+    email_error: Geen geldig e-mail adres.
     group_name: Groepsnaam
+    group_name_error: Groepsnaam is verplicht
     success:
       header: "Je bent bijna klaar! Bekijk je e-mail."
+      email_not_arrived: E-mail niet aangekomen?
   group_form:
     name: Groepsnaam
     description: Omschrijving
@@ -388,6 +396,7 @@ nl-NL:
   approved_by_person: "Goedgekeurd door %{person}"
   ignored_by_perosn: "Genegeerd door %{person}"
   join_group_btn: Word lid van groep
+  membership_by_invitation_only: Lidmaatschap van deze groep kan alleen via uitnodiging
   you_have_joined_group: "Je bent lid geworden van %{group_name}"
   confirm_approve_membership_request: "Weet je zeker dat je %{which_user} aan de groep toe wilt voegen?"
   cancel_membership_request: Annuleer aanvraag
@@ -426,10 +435,16 @@ nl-NL:
       following_details: Je wordt op de hoogte gesteld van elk gesprek in deze groep.
       not_following_details: Je wordt op de hoogte gesteld van gesprekken waar je aan deelneemt.
   networks:
+    threads_header: alle openbare gesprekken in dit netwerk
+    join_header: Voeg je groep aan het netwerk toe
+    request_to_join: Lidmaatschap aanvragen voor Netwerk
+    current_requests: Huidige aanvragen
     previous_requests: Eerdere verzoeken
     approve: Goedkeuren
+    decline: Weigeren
     threads: Discussies
     groups: Groepen
+    join: Lid worden
   group_request:
     header: Begin een groep
     commercial_use_option: "in een bedrijf,  organisatie of werkplek"

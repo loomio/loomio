@@ -3,3 +3,4 @@ angular.module('loomioApp').directive 'userAvatar', ->
   restrict: 'E'
   templateUrl: 'generated/components/user_avatar/user_avatar.html'
   replace: true
+  controller: ($scope) ->
