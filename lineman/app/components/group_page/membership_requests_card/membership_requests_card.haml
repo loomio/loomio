@@ -7,5 +7,5 @@
           %user_avatar{user: 'membershipRequest.actor()', size: 'lg'}
         .media-body
           %span.membership-requests-card__requestor-name {{membershipRequest.actor().name}}
-          .membership-requests-card__requestor-introduction {{membershipRequest.introduction}}
+          .lmo-truncate.membership-requests-card__requestor-introduction {{membershipRequest.introduction}}
     %a.membership-requests-card__link{href: '/g/{{group.key}}/membership_requests', translate: 'membership_requests_card.manage_requests'}
