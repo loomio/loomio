@@ -9,6 +9,9 @@ angular.module('loomioApp').factory 'ChangePasswordForm', ->
         $scope.isDisabled = false
         FlashService.success('profile_page.messages.password_changed')
         $scope.$close()
-      , ->
+      , (response) ->
         $scope.isDisabled = false
-        # $rootScope.$broadcast 'pageError', 'cantChangePassword', $scope.user
+        if response.status == 422
+          $scope.user.setErrors response.data.errors
+        else
+          $rootScope.$broadcast 'pageError', response

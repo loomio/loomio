@@ -24,6 +24,12 @@
   margin-bottom: -10px;
 }
 
+.lmo-validation-error {
+  color: $highlight-red;
+  display: block;
+  @include fontSmall;
+}
+
 .nowrap{
   white-space: nowrap;
 }

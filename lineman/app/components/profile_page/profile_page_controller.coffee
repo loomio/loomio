@@ -8,13 +8,18 @@ angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Rec
 
   @submit = ->
     @isDisabled = true
+    @user.setErrors()
     Records.users.updateProfile(@user).then =>
       @isDisabled = false
       FlashService.success('profile_page.messages.updated')
       @init()
-    , ->
+    , (response) =>
       @isDisabled = false
-      $rootScope.$broadcast 'pageError', 'cantUpdateProfile', @user
+      if response.status == 422
+        @user.setErrors response.data.errors
+      else
+        $rootScope.$broadcast 'pageError', response
+
   @changePicture = ->
     ModalService.open ChangePictureForm
 
