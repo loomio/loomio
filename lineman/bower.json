@@ -5,7 +5,7 @@
     "angular-sanitize": "~> 1.4.1",
     "jquery": "~> 2.1.1",
     "lodash": "~> 3.9.3",
-    "bootstrap-sass-official": "~> 3.3.0",
+    "bootstrap-sass-official": "~> 3.3.5",
     "components-font-awesome": "~> 4.2.0",
     "faye": "latest",
     "angular-translate": "~2.7.2",
@@ -27,6 +27,7 @@
     "angular-mocks": "1.4.0-rc.0"
   },
   "resolutions": {
-    "angular": "1.4.1"
+    "angular": "1.4.1",
+    "angular-translate": "~2.7.2"
   }
 }

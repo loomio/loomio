@@ -1,52 +1,36 @@
 .thread-lintel {
   margin: 0 auto;
-  border-left: 1px solid $border-color;
-  border-right: 1px solid $border-color;
-  border-bottom: 1px solid $border-color;
+  border: 1px solid $border-color;
   max-width: $main-max-width;
   background-color: $card-background-color;
-  @include fontHelveticaBold;
   @include fontMedium;
   clear: both;
 }
 
 .thread-lintel__left {
   float: left;
-  width: 75%;
+  padding: 7px 0 7px 15px;
 }
 
 .thread-lintel__right {
   float: right;
-  padding: 5px;
-}
-
-.thread-lintel__logo {
-  width: 30px;
-  height: 30px;
-  float: left;
-  margin: 7px;
+  padding: 7px 15px 7px 0px;
 }
 
 .thread-lintel__title {
+  @include fontHelveticaBold;
   line-height: 30px;
-  padding: 7px 0;
   cursor: pointer;
 }
 
 .thread-lintel__proposal {
+  font-weight: 400px;
   cursor: pointer;
 }
 
 .thread-lintel__proposal-pie-chart {
   float: left;
   padding-right: 5px;
-}
-
-.thread-lintel__go-to-end {
-  float: right;
-  @include fontHelveticaLight;
-  @include fontMedium;
-  color: $grey-on-white;
 }
 
 .thread-lintel__progress {
