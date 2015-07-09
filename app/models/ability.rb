@@ -66,7 +66,8 @@ class Ability
     end
 
     can :export, Group do |group|
-      user_is_admin_of?(group.id) && group.enabled_beta_features.include?('export')
+      user.is_admin? or
+      (user_is_admin_of?(group.id) && group.enabled_beta_features.include?('export'))
     end
 
     can [:members_autocomplete, :set_volume, :see_members], Group do |group|
