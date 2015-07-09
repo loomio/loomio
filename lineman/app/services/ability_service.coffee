@@ -68,7 +68,7 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
 
     canDeactivateUser: ->
      _.all CurrentUser.memberships(), (membership) ->
-       !membership.admin or membership.group().adminIds().length > 1
+       !membership.admin or membership.group().hasMultipleAdmins
 
     canManageMembershipRequests: (group) ->
       (group.membersCanAddMembers and CurrentUser.isMemberOf(group)) or @canAdministerGroup(group)
