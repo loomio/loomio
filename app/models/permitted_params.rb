@@ -43,7 +43,7 @@ class PermittedParams < Struct.new(:params)
   alias_method :proposal_attributes, :motion_attributes
 
   def membership_request_attributes
-    [:name, :email, :introduction]
+    [:name, :email, :introduction, :group_id]
   end
 
   def membership_attributes

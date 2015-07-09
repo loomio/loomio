@@ -18,10 +18,7 @@
               %group_actions_dropdown{group: 'groupPage.group'}
             .lmo-btn-wrapper
               %notification_volume_dropdown{translate-root: 'group_page', group: 'groupPage.group'}
-          .group-page__nonmember-actions{ng-if: '!groupPage.isMember()'}
-            %a.btn.btn-success.btn-block.lmo-btn-icon{href: '', ng-click: 'groupPage.joinGroup()'}
-              %i.fa.fa-lg.fa-plus{aria-hidden: 'true'}>
-              %span{translate: 'group_page.join_group' }
+          %join_group_button{group: 'groupPage.group'}
           .clearfix
       .row
         .col-sm-8

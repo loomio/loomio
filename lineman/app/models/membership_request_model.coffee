@@ -6,11 +6,12 @@ angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel) ->
 
     initialize: (data) ->
       @baseInitialize(data)
-      @fakeUser =
-        name: @name
-        email: @email
-        avatarKind: 'initials'
-        avatarInitials: _.map(@name.split(' '), (t) -> t[0]).join('')
+      if !@byExistingUser()
+        @fakeUser =
+          name: @name
+          email: @email
+          avatarKind: 'initials'
+          avatarInitials: _.map(@name.split(' '), (t) -> t[0]).join('')
 
     group: ->
       @recordStore.groups.find(@groupId)

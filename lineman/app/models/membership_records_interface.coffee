@@ -2,6 +2,9 @@ angular.module('loomioApp').factory 'MembershipRecordsInterface', (BaseRecordsIn
   class MembershipRecordsInterface extends BaseRecordsInterface
     model: MembershipModel
 
+    joinGroup: (group) ->
+      @restfulClient.post 'join_group', group_id: group.id
+
     fetchMyMemberships: ->
       @fetch
         path: 'my_memberships'

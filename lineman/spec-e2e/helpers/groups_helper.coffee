@@ -2,6 +2,9 @@ module.exports = new class GroupsHelper
   load: ->
     browser.get('http://localhost:8000/development/setup_group')
 
+  loadToJoin: (value) ->
+    browser.get("http://localhost:8000/development/setup_group_to_join?membership_granted_upon=#{value}")
+
   flashSection: ->
     element(By.css('.flash-message'))
 
@@ -55,3 +58,15 @@ module.exports = new class GroupsHelper
 
   groupPage: ->
     element(By.css('.group-page'))
+
+  clickJoinGroupButton: ->
+    element(By.css('.join-group-button__join-group')).click()
+
+  askToJoinGroupButton: ->
+    element(By.css('.join-group-button__ask-to-join-group'))
+
+  clickAskToJoinGroupButton: ->
+     @askToJoinGroupButton().click()
+
+  submitMembershipRequestForm: ->
+    element(By.css('.membership-request-form__submit-btn')).click()

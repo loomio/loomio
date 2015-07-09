@@ -27,6 +27,21 @@ class DevelopmentController < ApplicationController
     patricks_contact
   end
 
+  def setup_group_to_join
+    cleanup_database
+    sign_in jennifer
+    another_test_group.update_attribute(:membership_granted_upon, params_membership_granted_upon)
+    redirect_to group_url(another_test_group)
+  end
+
+  def params_membership_granted_upon
+    if ['request', 'approval', 'invitation'].include? params[:membership_granted_upon]
+      params[:membership_granted_upon]
+    else
+      'request'
+    end
+  end
+
   def setup_discussion
     cleanup_database
     test_discussion
@@ -199,7 +214,8 @@ class DevelopmentController < ApplicationController
 
   def another_test_group
     unless @another_test_group
-      @another_test_group = Group.create!(name: 'Point Break')
+      @another_test_group = Group.create!(name: 'Point Break',
+                                          visible_to: 'public')
       @another_test_group.add_admin! patrick
       @another_test_group.add_member! max
     end

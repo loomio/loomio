@@ -16,11 +16,6 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $rout
   @isMember = ->
     CurrentUser.membershipFor(@group)?
 
-  @joinGroup = ->
-    Records.memberships.build(
-      group_id: @group.id
-      user_id: CurrentUser.id).save()
-
   @showDescriptionPlaceholder = ->
     AbilityService.canAdministerGroup(@group) and !@group.description
 

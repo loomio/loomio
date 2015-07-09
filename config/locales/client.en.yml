@@ -268,6 +268,22 @@ en:
     name_label: 'Group Name'
     submit: 'Start Group'
 
+  join_group_button:
+    join_group: Join group
+    ask_to_join_group: Ask to join group
+    messages:
+      joined_group: 'You are now a member of {{group}}'
+
+  membership_request_form:
+    heading: Ask to join group
+    name_label: Name
+    email_label: Email
+    introduction_label: Introduce yourself
+    submit_button: Ask to join group
+    messages:
+      membership_requested: 'You have requested membership to {{group}}'
+
+
   group_page:
     thread_list:
       empty:
@@ -303,7 +319,6 @@ en:
     invite_people: 'Invite people'
     visibility_label: 'Visibility'
     options_label: 'Options'
-    join_group: 'Join Group'
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'

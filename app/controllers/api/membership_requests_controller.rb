@@ -7,6 +7,12 @@ class API::MembershipRequestsController < API::RestfulController
     respond_with_collection
   end
 
+  def my_pending
+    load_and_authorize :group
+    @membership_requests = @group.membership_requests.pending.where(requestor_id: current_user.id)
+    respond_with_collection
+  end
+
   def previous
     @membership_requests = page_collection(@group.membership_requests.responded_to)
     respond_with_collection
