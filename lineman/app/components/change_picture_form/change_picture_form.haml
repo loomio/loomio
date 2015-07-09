@@ -8,17 +8,17 @@
   .change-picture-form__helptext{translate: 'profile_page.change_picture.helptext'}
   %ul.change-picture-form__options-list
     %li.change-picture-form__option
-      %a{href: '', ng-click: 'submit("initials")'}
+      %a.lmo-link{href: '', ng-click: 'submit("initials")'}
         .avatar.avatar-initials.option-icon
           {{user.avatarInitials}}
         %span{translate: 'profile_page.change_picture.use_initials'}
     %li.change-picture-form__option
-      %a{href: '', ng-click: 'submit("gravatar")'}
+      %a.lmo-link{href: '', ng-click: 'submit("gravatar")'}
         .avatar-image.option-icon
           %img.avatar{gravatar-src-once: 'user.gravatarMd5', alt: "{{::user.name}}"}
         %span{translate: 'profile_page.change_picture.use_gravatar'}
     %li.change-picture-form__option
-      %a.change-picture-form__upload-button{href: '', ng-click: 'selectFile()'}
+      %a.lmo-link.change-picture-form__upload-button{href: '', ng-click: 'selectFile()'}
         .avatar.avatar-initials.option-icon
           %i.fa.fa-lg.fa-camera
         %span{translate: 'profile_page.change_picture.use_uploaded'}

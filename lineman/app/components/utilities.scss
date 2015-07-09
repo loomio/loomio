@@ -141,7 +141,8 @@ label.label-with-details{
   @include fontHelveticaMedium;
   @include fontSmall;
   color: $grey-on-white;
-  margin-top: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
   text-transform: uppercase;
 }
 .lmo-h4{
@@ -166,6 +167,19 @@ label.label-with-details{
   text-transform: uppercase;
   color: $grey-on-white;
   margin-top: 1.5em;
+}
+
+.lmo-link {
+  color: $grey-on-white;
+  text-decoration: underline;
+}
+
+.lmo-vertical-spacer {
+  padding: 5px 0;
+}
+
+.lmo-vertical-spacer-lg {
+  padding: 15px 0;
 }
 
 .lmo-btn-group-right{
