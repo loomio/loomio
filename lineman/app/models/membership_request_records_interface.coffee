@@ -3,10 +3,12 @@ angular.module('loomioApp').factory 'MembershipRequestRecordsInterface', (BaseRe
     model: MembershipRequestModel
 
     fetchPendingByGroup: (groupKey, options = {}) ->
-      @restfulClient.get('/pending', group_key: groupKey)
+      options['group_key'] = groupKey
+      @restfulClient.get('/pending', options)
 
     fetchPreviousByGroup: (groupKey, options = {}) ->
-      @restfulClient.get('/previous', group_key: groupKey)
+      options['group_key'] = groupKey
+      @restfulClient.get('/previous', options)
 
     approve: (membershipRequest) ->
       @restfulClient.postMember(membershipRequest.id, 'approve', group_key: membershipRequest.group().key)

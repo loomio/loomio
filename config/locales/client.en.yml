@@ -3,7 +3,7 @@ en:
     time:
       am: am
       pm: pm
-    closing_in: 'Closing in {{time}}'
+    closing_in: 'Closing {{time}}'
     closed_ago: 'Closed {{time}}'
     volume: 'Volume'
     notification_volume: 'Notification Volume'

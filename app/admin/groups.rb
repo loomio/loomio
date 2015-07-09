@@ -18,10 +18,12 @@ ActiveAdmin.register Group do
 
 
   filter :name
+  filter :description
   filter :payment_plan, as: :select, collection: Group::PAYMENT_PLANS
   filter :memberships_count
   filter :created_at
   filter :is_commercial
+  filter :subdomain
 
   scope :parents_only
   scope :engaged

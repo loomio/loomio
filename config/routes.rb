@@ -8,6 +8,7 @@ Loomio::Application.routes.draw do
     get 'setup_discussion_with_comment'
     get 'setup_proposal'
     get 'setup_proposal_with_votes'
+    get 'setup_proposal_closing_soon'
     get 'setup_closed_proposal'
     get 'setup_closed_proposal_with_outcome'
     get 'setup_membership_requests'

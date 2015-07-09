@@ -185,3 +185,13 @@ label.label-with-details{
   font-style: italic;
   color: $grey-on-white;
 }
+
+.lmo-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lmo-width-75 {
+  width: 75%
+}

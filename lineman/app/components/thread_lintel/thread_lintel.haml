@@ -1,12 +1,11 @@
 .thread-lintel{ng-if: 'show()'}
-  .thread-lintel__left
-    %img.thread-lintel__logo{ng-src: '{{discussion.group().logoUrl()}}'}
-    .thread-lintel__title{ng-click: 'scrollToThread()'} {{ discussion.title }}
-    .thread-lintel__proposal{ng-if: 'discussion.activeProposal() && !proposalInView', ng-click: 'scrollToProposal()'}
+  .thread-lintel__left{ng-class: "{'lmo-width-75': !proposalButtonInView}"}
+    .lmo-truncate.thread-lintel__title{ng-click: 'scrollToThread()'} {{ discussion.title }}
+    .lmo-truncate.thread-lintel__proposal{ng-if: 'discussion.activeProposal() && !proposalInView', ng-click: 'scrollToProposal()'}
       %pie_chart.thread-lintel__proposal-pie-chart.pie-chart--tiny{votes: 'discussion.activeProposal().voteCounts'}
       %span {{ discussion.activeProposal().name }}
-  .thread-lintel__right{ng-show: '!proposalButtonInView'}
-    %start_proposal_button{discussion: 'discussion'}
+  .thread-lintel__right{ng-if: '!discussion.activeProposal() && !proposalButtonInView'}
+    %start_proposal_button.hidden-xs{discussion: 'discussion'}
 
   .thread-lintel__progress-wrap.thread-lintel__progress
     .thread-lintel__progress-bar.thread-lintel__progress{style: 'width: {{positionPercent}}%'}
