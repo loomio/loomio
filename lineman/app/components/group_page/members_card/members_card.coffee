@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'membersCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/members_card/members_card.html'
   replace: true
-  controller: ($scope, Records, AbilityService, ModalService, InvitationForm) ->
+  controller: ($scope, Records, AbilityService, ModalService, InvitationForm, CurrentUser) ->
     Records.memberships.fetchByGroup $scope.group.key, per: 5
 
     $scope.canAddMembers = ->
@@ -11,6 +11,9 @@ angular.module('loomioApp').directive 'membersCard', ->
 
     $scope.isAdmin = ->
       AbilityService.canAdministerGroup($scope.group)
+
+    $scope.isMember = ->
+      CurrentUser.membershipFor($scope.group)?
 
     $scope.memberIsAdmin = (member) ->
       $scope.group.membershipFor(member).admin

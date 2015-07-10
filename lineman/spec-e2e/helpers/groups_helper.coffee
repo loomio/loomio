@@ -11,8 +11,11 @@ module.exports = new class GroupsHelper
   membersList: ->
     element(By.css('.group-page-members'))
 
-  clickStartDiscussionBtn: ->
-    element(By.css('.group-page__new-thread a')).click()
+  startThreadButton: ->
+    element(By.css('.group-page__new-thread a'))
+
+  clickStartThreadButton: ->
+    @startThreadButton().click()
 
   fillInDiscussionTitle: (title)->
     element(By.css('.discussion-form__title-input')).sendKeys(title)
@@ -26,8 +29,11 @@ module.exports = new class GroupsHelper
   discussionTitle: ->
     element(By.css('.thread-context'))
 
-  openOptionsDropdown: ->
-    element(By.css('.group-page-actions button')).click()
+  memberOptionsDropdown: ->
+    element(By.css('.group-page-actions button'))
+
+  openMemberOptionsDropdown: ->
+    @memberOptionsDropdown().click()
 
   clickEditGroupOption: ->
     element(By.css('.group-page-actions__edit-group-link')).click()
@@ -44,7 +50,7 @@ module.exports = new class GroupsHelper
   #   element(By.css('.edit-group-form__group-members-can-raise-motions')).click()
 
   visitEditGroupPage: ->
-    @openOptionsDropdown()
+    @openMemberOptionsDropdown()
     @clickEditGroupOption()
 
   votePermissionsCheckbox: ->
@@ -70,3 +76,15 @@ module.exports = new class GroupsHelper
 
   submitMembershipRequestForm: ->
     element(By.css('.membership-request-form__submit-btn')).click()
+
+  groupMembersPanel: ->
+    element(By.css('.group-page-members'))
+
+  groupDescriptionPanel: ->
+    element(By.css('.group-page__description'))
+
+  groupThreadsList: ->
+    element(By.css('.group-thread-list'))
+
+  subgroupsPanel: ->
+    element(By.css('.subgroups-card'))

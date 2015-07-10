@@ -291,8 +291,8 @@ en:
         no_discussions_matching_filters_html: "There are no threads matching these filters. <a href='%{link}'>Clear filters</a>."
         no_public_discussions: "There are no public threads in this group."
         discussions_are_private: "All threads in this group are private."
-        request_membership: "To see private threads, "
-        request_membership_link: "request to join the group"
+        join_group: "To see private threads, you'll need to join the group."
+        request_membership: "To see private threads, request to join the group"
         membership_is_invitation_only: "To join this group you need to be invited by a member."
         membership_is_invitation_by_admin_only: "To join this group you need to be invited by a coordinator."
 
