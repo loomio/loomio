@@ -62,7 +62,8 @@ class MotionService
     Events::MotionClosed.publish!(motion)
   end
 
-  def self.close_by_user(motion, user)
+  def self.close_by_user(motion: nil, actor:, params: {})
+    motion ||= ModelLocator.new(:motion, params).locate
     user.ability.authorize! :close, motion
 
     motion.store_users_that_didnt_vote
@@ -70,27 +71,32 @@ class MotionService
     motion.save!
 
     Events::MotionClosedByUser.publish!(motion, user)
+    motion
   end
 
-  def self.create_outcome(motion:, params:, actor:)
+  def self.create_outcome(motion: nil, actor:, params: {})
+    motion ||= ModelLocator.new(:motion, params).locate
     motion.outcome_author = actor
-    motion.outcome = params[:outcome]
+    motion.outcome = params[:motion][:outcome]
 
     return false unless motion.valid?
     actor.ability.authorize! :create_outcome, motion
 
     motion.save!
     Events::MotionOutcomeCreated.publish!(motion, actor)
+    motion
   end
 
-  def self.update_outcome(motion:, params:, actor:)
+  def self.update_outcome(motion: nil, actor:, params: {})
+    motion ||= ModelLocator.new(:motion, params).locate
     motion.outcome_author = actor
-    motion.outcome = params[:outcome]
+    motion.outcome = params[:motion][:outcome]
 
     return false unless motion.valid?
     actor.ability.authorize! :update_outcome, motion
 
     motion.save!
     Events::MotionOutcomeUpdated.publish!(motion, actor)
+    motion
   end
 end

@@ -15,11 +15,12 @@ class MembershipService
     membership.update admin: false
   end
 
-  def self.join_group(actor: nil, group: nil)
-     actor.ability.authorize! :join, group
-     membership = group.add_member!(actor)
-     Events::UserJoinedGroup.publish!(membership)
-   end
+  def self.join_group(group: nil, actor:, params: {})
+    group ||= ModelLocator.new(:group, params).locate
+    actor.ability.authorize! :join, group
+    membership = group.add_member!(actor)
+    Events::UserJoinedGroup.publish!(membership)
+  end
 
   def self.add_users_to_group(users: nil, group: nil, inviter: nil, message: nil)
     memberships = group.add_members!(users, inviter)

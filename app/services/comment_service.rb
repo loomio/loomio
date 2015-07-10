@@ -1,5 +1,6 @@
 class CommentService
-  def self.unlike(comment:, actor:)
+  def self.unlike(comment: nil, actor:, params: {})
+    comment ||= ModelLocator.new(:comment, params).locate
     return false unless comment.likers.include? actor
     actor.ability.authorize!(:unlike, comment)
 
@@ -7,10 +8,11 @@ class CommentService
     comment.refresh_liker_ids_and_names!
 
     Memos::CommentUnliked.publish!(comment: comment, user: actor)
-
+    comment
   end
 
-  def self.like(comment:, actor:)
+  def self.like(comment: nil, actor:, params: {})
+    comment ||= ModelLocator.new(:comment, params).locate
     actor.ability.authorize!(:like, comment)
 
     comment_vote = CommentVote.find_or_create_by(comment_id: comment.id,
@@ -22,6 +24,7 @@ class CommentService
                          user: actor).set_volume_as_required!
 
     Events::CommentLiked.publish!(comment_vote)
+    comment
   end
 
   def self.create(comment:, actor:, mark_as_read: true)

@@ -5,6 +5,8 @@ describe ModelLocator do
 
     let (:discussion) { create :discussion }
     let (:motion) { create :motion }
+    let (:comment) { create :comment }
+    let (:membership_request) { create :membership_request }
 
     before { discussion; motion }
 
@@ -31,6 +33,14 @@ describe ModelLocator do
 
     it "finds an alternate model by id" do
       expect(ModelLocator.new(:motion, id: motion.id).locate).to eq motion
+    end
+
+    it 'finds a model which does not use friendly ids' do
+      expect(ModelLocator.new(:comment, id: comment.id).locate).to eq comment
+    end
+
+    it 'finds a model with a complex name' do
+      expect(ModelLocator.new(:membership_request, id: membership_request.id).locate).to eq membership_request
     end
   end
 end

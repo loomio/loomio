@@ -6,8 +6,7 @@ class API::GroupsController < API::RestfulController
   end
 
   def archive
-    load_resource
-    GroupService.archive(group: @group, actor: current_user)
+    GroupService.archive(actor: current_user, params: params)
     respond_with_resource
   end
 
