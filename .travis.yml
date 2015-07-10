@@ -5,6 +5,7 @@ cache:
   directories:
     - vendor/bundle
     - lineman/node_modules
+    - lineman/vendor/bower_components
 
 env:
   - DB=postgresql
