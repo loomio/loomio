@@ -1,0 +1,27 @@
+.modal-header
+  %button{type: 'button', class: 'close', ng-click: '$close()'}
+    %span{aria-hidden: true} &times;
+    %span.sr-only{translate: 'common.action.cancel'}
+  %h1.lmo-h1{translate: 'profile_page.change_picture.title'}
+
+.modal-body
+  .change-picture-form__helptext{translate: 'profile_page.change_picture.helptext'}
+  %ul.change-picture-form__options-list
+    %li.change-picture-form__option
+      %a.lmo-link{href: '', ng-click: 'submit("initials")'}
+        .avatar.avatar-initials.option-icon
+          {{user.avatarInitials}}
+        %span{translate: 'profile_page.change_picture.use_initials'}
+    %li.change-picture-form__option
+      %a.lmo-link{href: '', ng-click: 'submit("gravatar")'}
+        .avatar-image.option-icon
+          %img.avatar{gravatar-src-once: 'user.gravatarMd5', alt: "{{::user.name}}"}
+        %span{translate: 'profile_page.change_picture.use_gravatar'}
+    %li.change-picture-form__option
+      %a.lmo-link.change-picture-form__upload-button{href: '', ng-click: 'selectFile()'}
+        .avatar.avatar-initials.option-icon
+          %i.fa.fa-lg.fa-camera
+        %span{translate: 'profile_page.change_picture.use_uploaded'}
+      %input.hidden.change-picture-form__file-input{type: 'file', ng-model: 'files', ng-file-select: 'upload(files)'}
+.modal-footer
+  %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}

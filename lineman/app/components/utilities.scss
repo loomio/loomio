@@ -24,6 +24,12 @@
   margin-bottom: -10px;
 }
 
+.lmo-validation-error {
+  color: $highlight-red;
+  display: block;
+  @include fontSmall;
+}
+
 .nowrap{
   white-space: nowrap;
 }
@@ -54,6 +60,11 @@
   @include fontSmall;
 }
 
+.option-icon {
+  /* a helper class to display inline icons and avatars */
+  margin: 5px 5px 5px 0;
+  display: inline-block;
+}
 .lmo-btn-icon{
   text-align: left;
 }
@@ -130,7 +141,8 @@ label.label-with-details{
   @include fontHelveticaMedium;
   @include fontSmall;
   color: $grey-on-white;
-  margin-top: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
   text-transform: uppercase;
 }
 .lmo-h4{
@@ -155,6 +167,19 @@ label.label-with-details{
   text-transform: uppercase;
   color: $grey-on-white;
   margin-top: 1.5em;
+}
+
+.lmo-link {
+  color: $grey-on-white;
+  text-decoration: underline;
+}
+
+.lmo-vertical-spacer {
+  padding: 5px 0;
+}
+
+.lmo-vertical-spacer-lg {
+  padding: 15px 0;
 }
 
 .lmo-btn-group-right{

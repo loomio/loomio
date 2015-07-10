@@ -1,21 +1,39 @@
 .loading-wrapper.container.main-container
   %loading{ng-if: '!profilePage.user'}
   %main.profile-page{ng-if: 'profilePage.user'}
-    %h4.lmo-h4{translate: 'profile_page.edit_profile'}
+    %h1.lmo-h1.lmo-vertical-spacer-lg{translate: 'profile_page.profile'}
+    .profile-page-card
+      %h3.lmo-h3{translate: 'profile_page.edit_profile'}
 
-    %label{for: 'user-picture-field', translate: 'profile_page.picture_label'}
-    %user_avatar{user: 'profilePage.user'}
+      %label{for: 'user-picture-field', translate: 'profile_page.picture_label'}
+      %user_avatar{user: 'profilePage.user', size: 'lg'}
 
-    %label{for: 'user-name-field', translate: 'profile_page.name_label'}
-    %input.form-control.profile-page__name-input{ng-model: 'profilePage.user.name'}
+      .profile-page__change-picture.lmo-vertical-spacer
+        %a.lmo-link{href: '', ng-click: 'profilePage.changePicture()', translate: 'profile_page.change_picture_link'}
 
-    %label{for: 'user-username-field', translate: 'profile_page.username_label'}
-    %input.form-control.profile-page__username-input{ng-model: 'profilePage.user.username'}
+      .profile-page__profile-fieldset.lmo-vertical-spacer
+        %label{for: 'user-name-field', translate: 'profile_page.name_label'}
+        %input.form-control.profile-page__name-input{ng-required: true, ng-model: 'profilePage.user.name'}
+        %validation_errors{subject: 'user', field: 'name'}
 
-    %label{for: 'user-email-field', translate: 'profile_page.email_label'}
-    %input.form-control.profile-page__email-input{ng-model: 'profilePage.user.email'}
+        %label{for: 'user-username-field', translate: 'profile_page.username_label'}
+        %input.form-control.profile-page__username-input{ng-required: true, ng-model: 'profilePage.user.username'}
+        %validation_errors{subject: 'profilePage.user', field: 'username'}
 
-    %label{for: 'user-locale-field', translate: 'profile_page.locale_label'}
-    %select.form-control.profile-page__language-input{ng-model: 'profilePage.user.selectedLocale', ng-required: 'true', ng-options: 'locale.key as locale.name for locale in profilePage.availableLocales()', ng-change: 'setCurrentPrivacy()'}
+        %label{for: 'user-email-field', translate: 'profile_page.email_label'}
+        %input.form-control.profile-page__email-input{ng-required: true, ng-model: 'profilePage.user.email'}
+        %validation_errors{subject: 'profilePage.user', field: 'email'}
 
-    %button.btn.btn-primary.profile-page__update-button{ng-click: 'profilePage.submit()', ng-disabled: 'isDisabled', translate: 'profile_page.update_profile'}
+        %label{for: 'user-locale-field', translate: 'profile_page.locale_label'}
+        %select.form-control.profile-page__language-input{ng-model: 'profilePage.user.selectedLocale', ng-required: 'true', ng-options: 'locale.key as locale.name for locale in profilePage.availableLocales()', ng-change: 'setCurrentPrivacy()'}
+        %validation_errors{subject: 'profilePage.user', field: 'selectedLocale'}
+
+      .profile-page__update-account.lmo-vertical-spacer
+        %button.btn.btn-primary.profile-page__update-button{ng-click: 'profilePage.submit()', ng-disabled: 'isDisabled', translate: 'profile_page.update_profile'}
+
+      .profile-page__change-password.lmo-vertical-spacer
+        %a.lmo-link{href: '', ng-click: 'profilePage.changePassword()', translate: 'profile_page.change_password_link'}
+    .profile-page-card{ng-if: 'profilePage.canDeactivateUser()'}
+      %h3.lmo-h3{translate: 'profile_page.deactivate_user.title'}
+
+      %a.lmo-link.lmo-vertical-spacer{href: '', ng-click: 'profilePage.deactivateUser()', translate: 'profile_page.deactivate_user_link'}

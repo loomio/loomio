@@ -179,7 +179,7 @@ FactoryGirl.define do
     filename { Faker::Name.name }
     location { Faker::Company.logo }
   end
-  
+
   factory :translation do
     language 'en'
     fields {{ body: 'Successful translation' }}

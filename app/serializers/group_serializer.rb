@@ -19,7 +19,8 @@ class GroupSerializer < ActiveModel::Serializer
              :discussion_privacy_options,
              :logo_url_medium,
              :cover_url_desktop,
-             :has_discussions
+             :has_discussions,
+             :has_multiple_admins
 
   has_one :parent, serializer: GroupSerializer, root: 'groups'
 
@@ -47,4 +48,7 @@ class GroupSerializer < ActiveModel::Serializer
     object.discussions_count > 0
   end
 
+  def has_multiple_admins
+    object.admins.count > 1
+  end
 end

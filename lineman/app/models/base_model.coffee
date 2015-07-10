@@ -7,7 +7,7 @@ angular.module('loomioApp').factory 'BaseModel', ->
     @searchableFields: []
 
     constructor: (recordsInterface, data, postInitializeData = {}) ->
-      @errors = {}
+      @setErrors()
       @processing = false
       Object.defineProperty(@, 'recordsInterface', value: recordsInterface, enumerable: false)
       Object.defineProperty(@, 'recordStore', value: recordsInterface.recordStore, enumerable: false)
@@ -27,7 +27,10 @@ angular.module('loomioApp').factory 'BaseModel', ->
       @updateFromJSON(data)
 
     clone: ->
-      attrs = @baseSerialize()[@constructor.singular] or {}
+      attrs = _.reduce @constructor.attributeNames, (clone, attr) =>
+        clone[attr] = @[attr]
+        clone
+      , {}
       new @constructor @recordsInterface, attrs, { id: @id, key: @key }
 
     update: (data) ->
@@ -100,7 +103,7 @@ angular.module('loomioApp').factory 'BaseModel', ->
         @id
 
     save: ->
-      @errors = {}
+      @setErrors()
       if @processing
         console.log "save returned, already processing:", @
         return
@@ -124,8 +127,13 @@ angular.module('loomioApp').factory 'BaseModel', ->
 
     saveFailure: (errors) =>
       @processing = false
-      @errors = errors
+      @setErrors errors
       throw errors
+
+    setErrors: (errorList = []) ->
+      @errors = {}
+      _.each errorList, (errors, key) =>
+        @errors[_.camelCase(key)] = errors
 
     isValid: ->
       @errors.length > 0
