@@ -1,4 +1,4 @@
-class API::UsersController < API::RestfulController
+class API::ProfileController < API::RestfulController
 
   def update_profile
     service.update user_params
@@ -27,10 +27,18 @@ class API::UsersController < API::RestfulController
   end
 
   def user_params
-    { user: current_user, actor: current_user, params: resource_params }
+    { user: current_user, actor: current_user, params: permitted_params.user }
   end
 
   def resource_serializer
     CurrentUserSerializer
+  end
+
+  def serializer_root
+    :users
+  end
+
+  def service
+    UserService
   end
 end

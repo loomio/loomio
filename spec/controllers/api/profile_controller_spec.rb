@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::UsersController do
+describe API::ProfileController do
 
   let(:user) { create :user }
   let(:another_user) { create :user }
@@ -31,7 +31,7 @@ describe API::UsersController do
     context 'failures' do
       it "responds with an error when there are unpermitted params" do
         user_params[:dontmindme] = 'wild wooly byte virus'
-        put :update_profile, user: user_params, format: :json
+        post :update_profile, user: user_params, format: :json
         expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
       end
     end
