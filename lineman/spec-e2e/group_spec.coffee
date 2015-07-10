@@ -6,7 +6,7 @@ describe 'Group Page', ->
     groupsHelper.load()
 
   it 'successfully starts a discussion', ->
-    groupsHelper.clickStartDiscussionBtn()
+    groupsHelper.clickStartThreadButton()
     groupsHelper.fillInDiscussionTitle('Nobody puts baby in a corner')
     groupsHelper.fillInDiscussionDescription("I've had the time of my life")
     groupsHelper.submitDiscussionForm()
@@ -14,7 +14,7 @@ describe 'Group Page', ->
     expect(groupsHelper.discussionTitle().getText()).toContain("I've had the time of my life")
 
   it 'successfully edits group privacy', ->
-    groupsHelper.openOptionsDropdown()
+    groupsHelper.openMemberOptionsDropdown()
     groupsHelper.clickEditGroupOption()
     groupsHelper.changeGroupVisibilitySettings()
     groupsHelper.submitGroupSettingsForm()

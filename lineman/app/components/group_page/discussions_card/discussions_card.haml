@@ -1,5 +1,5 @@
 %section.group-page__threads{aria-labelledby: 'threads-card-title'}
-  .group-page__new-thread
+  .group-page__new-thread{ng-if: 'isMemberOfGroup()'}
     %a.btn.btn-success.lmo-btn-icon{href: '', ng_click: 'openDiscussionForm()', title: "{{ 'navbar.start_thread' | translate }}"}
       %i.fa.fa-plus{aria-hidden: 'true'}>
       %span{translate: 'navbar.start_thread'}
@@ -11,7 +11,6 @@
       .group-thread-list-empty-reason{translate: 'group_page.thread_list.empty.{{whyImEmpty()}}'}
       .group-thread-list-empty-access{ng-if: 'howToGainAccess()'}
         %span{translate: 'group_page.thread_list.empty.{{howToGainAccess()}}'}
-        %a{translate: 'group_page.thread_list.empty.request_membership_link', ng-if: 'howToGainAccess() == "request_membership"', href: '', ng-click: 'requestToJoin()'}
 
     .group-thread-list-item{ng-repeat: 'discussion in group.organisationDiscussions() track by discussion.id | orderBy: ["-lastActivityAt"] | limitTo:loaded'}
       .time-and-icon.pull-right
