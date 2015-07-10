@@ -4,6 +4,8 @@ sudo: false
 cache:
   directories:
     - vendor/bundle
+    - lineman/node_modules
+
 env:
   - DB=postgresql
 
