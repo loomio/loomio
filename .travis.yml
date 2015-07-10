@@ -3,7 +3,7 @@ cache: bundler
 sudo: false
 cache:
   directories:
-  - vendor/bundle
+    - vendor/bundle
 env:
   - DB=postgresql
 
