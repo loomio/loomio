@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'discussionsCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'
   replace: true
-  controller: ($scope, Records, ModalService, DiscussionForm, KeyEventService, LoadingService, AbilityService) ->
+  controller: ($scope, Records, ModalService, DiscussionForm, KeyEventService, LoadingService, AbilityService, CurrentUser) ->
     $scope.loaded = 0
     $scope.perPage = 25
 
@@ -36,13 +36,14 @@ angular.module('loomioApp').directive 'discussionsCard', ->
     $scope.howToGainAccess = ->
       if !$scope.group.hasDiscussions
         null
+      else if $scope.group.membershipGrantedUpon == 'request'
+        'join_group'
       else if $scope.group.membershipGrantedUpon == 'approval'
-       'request_membership'
+        'request_membership'
       else if $scope.group.membersCanAddMembers
         'membership_is_invitation_only'
       else
         'membership_is_invitation_by_admin_only'
 
-    $scope.requestToJoin = ->
-      # will need to implement this; is it in a modal? New page?
-      # also, probably wants to go in a form for accessibility
+    $scope.isMemberOfGroup = ->
+      CurrentUser.membershipFor($scope.group)?

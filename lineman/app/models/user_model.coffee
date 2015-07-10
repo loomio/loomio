@@ -19,6 +19,9 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
                           .find(groupId: group.id)
                           .find(userId: @id).data()
 
+    isMemberOf: (group) ->
+      @membershipFor(group)?
+
     memberships: ->
       @membershipsView.data()
 

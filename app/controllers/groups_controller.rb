@@ -26,7 +26,7 @@ class GroupsController < GroupBaseController
   end
 
   def join
-    MembershipService.join_group(group: @group, user: current_user)
+    MembershipService.join_group(group: @group, actor: current_user)
     redirect_to @group, notice: t(:you_have_joined_group, group_name: @group.name)
   end
 

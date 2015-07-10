@@ -4,6 +4,7 @@ Loomio::Application.routes.draw do
     get 'last_email'
     get 'setup_group'
     get 'setup_group_for_invitations'
+    get 'setup_group_to_join'
     get 'setup_discussion'
     get 'setup_discussion_with_comment'
     get 'setup_proposal'
@@ -56,16 +57,24 @@ Loomio::Application.routes.draw do
     end
   
     resources :memberships, only: [:index, :create, :update, :destroy] do
-      get :autocomplete, on: :collection
-      get :my_memberships, on: :collection
-      get :invitables, on: :collection
-      post :make_admin, on: :member
-      post :remove_admin, on: :member
+      collection do
+        post :join_group
+        get :autocomplete
+        get :my_memberships
+        get :invitables
+      end
+      member do
+        post :make_admin
+        post :remove_admin
+      end
     end
 
-    resources :membership_requests, only: [] do
-      get :pending, on: :collection
-      get :previous, on: :collection
+    resources :membership_requests, only: [:create] do
+      collection do
+        get :my_pending
+        get :pending
+        get :previous
+      end
       post :approve, on: :member
       post :ignore, on: :member
     end

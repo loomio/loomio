@@ -27,6 +27,24 @@ class DevelopmentController < ApplicationController
     patricks_contact
   end
 
+  def setup_group_to_join
+    cleanup_database
+    sign_in jennifer
+    another_test_group.update_attribute(:membership_granted_upon, params_membership_granted_upon)
+    public_test_discussion
+    private_test_discussion
+    test_subgroup
+    redirect_to group_url(another_test_group)
+  end
+
+  def params_membership_granted_upon
+    if ['request', 'approval', 'invitation'].include? params[:membership_granted_upon]
+      params[:membership_granted_upon]
+    else
+      'request'
+    end
+  end
+
   def setup_discussion
     cleanup_database
     test_discussion
@@ -199,7 +217,9 @@ class DevelopmentController < ApplicationController
 
   def another_test_group
     unless @another_test_group
-      @another_test_group = Group.create!(name: 'Point Break')
+      @another_test_group = Group.create!(name: 'Point Break',
+                                          visible_to: 'public',
+                                          description: 'An FBI agent goes undercover to catch a gang of bank robbers who may be surfers.')
       @another_test_group.add_admin! patrick
       @another_test_group.add_member! max
     end
@@ -211,6 +231,30 @@ class DevelopmentController < ApplicationController
       @test_discussion = Discussion.create!(title: 'What star sign are you?', group: test_group, author: jennifer, private: true)
     end
     @test_discussion
+  end
+
+  def public_test_discussion
+    unless @another_test_discussion
+      @another_test_discussion = Discussion.create!(title: "The name's Johnny Utah!", group: another_test_group, author: patrick, private: false)
+    end
+    @another_test_discussion
+  end
+
+  def private_test_discussion
+    unless @another_test_discussion
+      @another_test_discussion = Discussion.create!(title: 'But are you crazy enough?', group: another_test_group, author: patrick, private: true)
+    end
+    @another_test_discussion
+  end
+
+  def test_subgroup
+    unless @test_subgroup
+      @test_subgroup = Group.create!(name: 'Johnny Utah',
+                                     parent_id: another_test_group.id, 
+                                     visible_to: 'public')
+      @test_subgroup.add_admin! patrick
+    end
+    @test_subgroup
   end
 
   def test_proposal

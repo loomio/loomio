@@ -2,6 +2,10 @@ angular.module('loomioApp').factory 'MembershipRequestRecordsInterface', (BaseRe
   class MembershipRequestRecordsInterface extends BaseRecordsInterface
     model: MembershipRequestModel
 
+    fetchMyPendingByGroup: (groupKey, options = {}) ->
+      options['group_key'] = groupKey
+      @restfulClient.get('/my_pending', options)
+
     fetchPendingByGroup: (groupKey, options = {}) ->
       options['group_key'] = groupKey
       @restfulClient.get('/pending', options)

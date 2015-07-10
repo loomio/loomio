@@ -24,6 +24,10 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
     hasPendingMembershipRequests: ->
       _.some @pendingMembershipRequests()
 
+    hasPendingMembershipRequestFrom: (user) ->
+       _.some @pendingMembershipRequests(), (request) ->
+        request.requestorId == user.id
+
     previousMembershipRequests: ->
       _.filter @membershipRequestsView.data(), (membershipRequest) ->
         !membershipRequest.isPending()
@@ -87,7 +91,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       @parent().visibleToPublic() if @parentId?
 
     visibleToPublic: ->       @visibleTo == 'public'
-    visibleToorganisation: -> @visibleTo == 'parent_members'
+    visibleToOrganisation: -> @visibleTo == 'parent_members'
     visibleToMembers: ->      @visibleTo == 'members'
 
     isSubgroup: ->

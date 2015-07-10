@@ -1,13 +1,11 @@
 class API::MembershipsController < API::RestfulController
 
-  def create
-    params[:group_id] = params[:membership][:group_id]
-    load_and_authorize :group
-    event = MembershipService.join_group group: @group, user: current_user
+  def join_group
+    @group = Group.find(params[:group_id])
+    event = MembershipService.join_group group: @group, actor: current_user
     @membership = event.eventable
     respond_with_resource
   end
-
 
   def invitables
     @memberships = page_collection visible_invitables
