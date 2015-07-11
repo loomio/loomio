@@ -7,8 +7,8 @@ usage = <<-END
     <pre_value>:    The string value to set to pre.
                     Only used when the version_type is pre.
     <action>:       Action to perform after making version changes.
-                    Valid values are no-commit | commit | push
-                    Default is commit
+                    Valid values are commit | no-commit
+                    Default is no-commit
 
   Example:
     Bumping the version: (assuming the current version is 0.10.1)
@@ -20,11 +20,8 @@ usage = <<-END
     Setting the version prefix:
     ruby script/bump_version pre rc1 # => 0.10.1.rc1
 
-    Do not commit changes:
-    ruby script/bump_version patch no-commit
-
-    Push changes to github:
-    ruby script/bump_version patch push
+    Commit changes to git repo:
+    ruby script/bump_version patch commit
  END
 
 if ARGV.length == 0 || ARGV.include?('--help')
@@ -34,9 +31,9 @@ end
 
 version_type = ARGV[0]
 if version_type == 'pre'
-  pre_value, action = ARGV[1], ARGV[2] || 'commit'
+  pre_value, action = ARGV[1], ARGV[2] || 'no-commit'
 else
-  action = ARGV[1] || 'commit'
+  action = ARGV[1] || 'no-commit'
 end
 
 if !%w(major minor patch pre).include? version_type
@@ -44,7 +41,7 @@ if !%w(major minor patch pre).include? version_type
   exit 0
 end
 
-if !%w(no-commit commit push).include? action
+if !%w(no-commit commit).include? action
   puts "Invalid action; use the --help option for usage info."
   exit 0
 end
@@ -64,10 +61,8 @@ puts "Current version: #{Loomio::Version.current}"
 
 def write_version(type, value)
   file_path = File.expand_path "../../lib/version/#{type.downcase}.rb", __FILE__
-  File.open(file_path, 'w+') do |file|
-    puts "Updating #{file_path}..."
-    file.write "Loomio::Version::#{type.upcase} = #{value}"
-  end
+  File.open(file_path, 'w+') { |file| file.write "Loomio::Version::#{type.upcase} = #{value}" }
+  Loomio::Version.send :remove_const, type.upcase
   load file_path
 end
 
@@ -79,6 +74,13 @@ else
   write_version 'minor', 0 if %w(major).include? version_type
   write_version 'patch', 0 if %w(major minor).include? version_type
   write_version 'pre',   'nil'
+end
+
+if action == 'commit'
+  puts "Creating version bump commit..."
+  `git add lib/version.rb`
+  `git add lib/version`
+  `git commit -m "Bump version to #{Loomio::Version.current}"`
 end
 
 puts "New version: #{Loomio::Version.current}"
