@@ -9,7 +9,7 @@
           %span{translate: 'navbar.user_options.new_group'}
 
     .groups-page__groups
-      %section.groups-page__group{ng-repeat: 'group in groupsPage.groups() track by group.id | orderBy:groupsPage.groupName', aria-labelledby: '{{::group.key}}'}
+      %section.groups-page__group{ng-repeat: 'group in groupsPage.groups() | orderBy: "name" track by group.id', aria-labelledby: '{{::group.key}}'}
         .groups-page__group-header.clearfix
           %img.groups-page__group-logo{ng-src: "{{::group.logoUrl()}}", aria-hidden: 'true'}>
           %h2.groups-page__group-name{id: '{{::group.key}}'}

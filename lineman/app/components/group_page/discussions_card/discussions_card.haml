@@ -12,7 +12,7 @@
       .group-thread-list-empty-access{ng-if: 'howToGainAccess()'}
         %span{translate: 'group_page.thread_list.empty.{{howToGainAccess()}}'}
 
-    .group-thread-list-item{ng-repeat: 'discussion in group.organisationDiscussions() track by discussion.id | orderBy: ["-lastActivityAt"] | limitTo:loaded'}
+    .group-thread-list-item{ng-repeat: 'discussion in group.organisationDiscussions() | orderBy: "-lastActivityAt" track by discussion.id | limitTo:loaded'}
       .time-and-icon.pull-right
         %smart_time.group-thread-list-time{time: 'discussion.lastActivityAt' }>
         %span.group-thread-list-icon
