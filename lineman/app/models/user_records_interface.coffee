@@ -1,15 +1,19 @@
-angular.module('loomioApp').factory 'UserRecordsInterface', (BaseRecordsInterface, UserModel) ->
+angular.module('loomioApp').factory 'UserRecordsInterface', (BaseRecordsInterface, UserModel, RestfulClient) ->
   class UserRecordsInterface extends BaseRecordsInterface
     model: UserModel
 
+    constructor: (recordStore) ->
+      @baseConstructor recordStore
+      @profileClient = new RestfulClient 'profile'
+
     updateProfile: (user) ->
-      @restfulClient.post 'update_profile', user.serialize()
+      @profileClient.post 'update_profile', user.serialize()
 
     uploadAvatar: (file) ->
-      @restfulClient.upload 'upload_avatar', file
+      @profileClient.upload 'upload_avatar', file
 
     changePassword: (user) ->
-      @restfulClient.post 'change_password', user.serialize()
+      @profileClient.post 'change_password', user.serialize()
 
     deactivate: (user) ->
-      @restfulClient.post 'deactivate', user.serialize()
+      @profileClient.post 'deactivate', user.serialize()

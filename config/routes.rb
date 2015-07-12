@@ -81,7 +81,7 @@ Loomio::Application.routes.draw do
 
     resources :invitations, only: :create
 
-    resources :users, only: [] do
+    resources :profile, only: [] do
       post :update_profile, on: :collection
       post :upload_avatar, on: :collection
       post :change_password, on: :collection

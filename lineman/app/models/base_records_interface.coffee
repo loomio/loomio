@@ -3,6 +3,9 @@ angular.module('loomioApp').factory 'BaseRecordsInterface', (RestfulClient, $q) 
     model: 'undefinedModel'
 
     constructor: (recordStore) ->
+      @baseConstructor recordStore
+
+    baseConstructor: (recordStore) ->
       @recordStore = recordStore
       @collection = @recordStore.db.addCollection(@model.plural, {indices: @model.indices})
       @restfulClient = new RestfulClient(@model.plural)
