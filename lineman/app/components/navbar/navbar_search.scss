@@ -1,10 +1,17 @@
+.navbar-search {
+  padding: 0 5px;
+
+  input {
+    margin-bottom: 0px;
+  }
+}
+
 .navbar-search-input-wrapper{
   position: relative;
 }
 
 .navbar-search-input {
   position: relative;
-  top: 2px;
   background-color: $background-color;
   color: $primary-text-color;
   @media (max-width: $screen-xs-min){width: 100px;}
@@ -20,7 +27,7 @@
 
 .navbar-search-input-icon {
   position: absolute;
-  top: 13px;
+  top: 10px;
   right: 10px;
   color: $grey-on-white;
 }
@@ -42,4 +49,3 @@
 .navbar-search-list-item {
   background: white;
 }
-
