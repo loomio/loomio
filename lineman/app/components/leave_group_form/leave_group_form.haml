@@ -1,12 +1,15 @@
 %form{ng-submit: 'submit()'}
-  .modal-header
-    %button{type: 'button', class: 'close', ng-click: '$close()'}
-      %span{aria-hidden: true} &times;
-      %span.sr-only{translate: 'common.action.cancel'}
-    %h1.lmo-h1{translate: 'group_page.leave_group.title'}
+  .leave-group-form
+    .modal-header
+      %button{type: 'button', class: 'close', ng-click: '$close()'}
+        %span{aria-hidden: true} &times;
+        %span.sr-only{translate: 'common.action.cancel'}
+      %h1.lmo-h1{translate: 'group_page.leave_group.title'}
 
-  .modal-body
-    %span{translate: 'group_page.leave_group.question'}
-  .modal-footer
-    %button.btn.btn-primary{type: 'submit', translate: 'group_page.leave_group.submit'}
-    %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}
+    .modal-body
+      %span{ng-if: 'canLeaveGroup()', translate: 'group_page.leave_group.question'}
+      %span{ng-if: '!canLeaveGroup()', translate: 'group_page.leave_group.cannot_leave_group'}
+    .modal-footer
+      %button.btn.btn-primary.leave-group-form__submit{ng-if: 'canLeaveGroup()', type: 'submit', translate: 'group_page.leave_group.submit'}
+      %a.btn.btn-primary.leave-group-form__add-coordinator{ng-if: '!canLeaveGroup()', href: '/g/{{group.key}}/memberships', ng-click: '$close()', translate: 'group_page.leave_group.add_coordinator'}
+      %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}

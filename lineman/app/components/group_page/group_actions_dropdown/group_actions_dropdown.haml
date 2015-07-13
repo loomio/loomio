@@ -11,7 +11,7 @@
           .dropdown-menu-item-label{translate: 'group_page.options.edit_group'}
           .dropdown-menu-item-details
       %li.dropdown-menu-item
-        %a{href: '', ng-click: 'groupActions.leaveGroup()'}
+        %a.group-page-actions__leave_group{href: '', ng-click: 'groupActions.leaveGroup()'}
           .dropdown-menu-item-label{translate: 'group_page.options.leave_group'}
         .dropdown-menu-item-details
       %li.dropdown-menu-item{ng-if: 'groupActions.canArchiveGroup()'}
