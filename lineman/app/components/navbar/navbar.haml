@@ -14,13 +14,14 @@
       %a.groups-item.btn.lmo-navbar__btn-icon.lmo-navbar__btn{href: '/groups', title: "{{ 'navbar.groups_title' | translate }}", tabindex: 3}
         %i.fa.fa-lg.fa-group>
         %span.lmo-navbar__btn-label{translate: 'navbar.groups'}
-
   .lmo-navbar__right
-    .lmo-navbar__item{role: 'search'}
-      %navbar_search
     .lmo-navbar__item
       %notifications
     .lmo-navbar__item
       %navbar_user_options
+  .lmo-navbar__right--search
+    .lmo-navbar__item{role: 'search'}
+      %navbar_search
+  .clearfix
   %thread_lintel
   %flash
