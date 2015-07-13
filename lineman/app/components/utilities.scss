@@ -76,11 +76,13 @@
 .btn.lmo-btn-icon{ padding: 6px 12px 6px 9px;}
 
 .lmo-btn-nude{
+  box-shadow: none;
   color: $grey-on-grey;
   background-color: transparent;
 }
 
 .lmo-btn-nude:hover{
+  box-shadow: none;
   background-color: $list-hover-color;
 }
 

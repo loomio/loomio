@@ -1,16 +1,17 @@
 .lmo-navbar{
+  @include box_shadow(2);
   z-index: 1000;
   background: white;
   height: $navbar-height;
   border-bottom: 1px solid $border-color;
-  padding: 2px 5px;
+  padding: 0;
   width: 100%;
   position: fixed;
 }
 
 .lmo-navbar__left{
   float: left;
-    padding: 3px 2px;
+    padding: 0 2px;
   .fa-group {
     font-size: 1.1em;
   }
@@ -18,15 +19,18 @@
 
 .lmo-navbar__right{
   float: right;
-  padding: 3px 2px;
+  padding: 0 2px;
   .fa-bell-o {
+    font-size: 1.2em;
+  }
+  .fa-bell {
     font-size: 1.2em;
   }
 }
 
 .lmo-navbar__right--search {
   float: right;
-  padding: 2px 2px 3px;
+  padding: 0px 2px 3px;
 }
 
 .lmo-navbar__center{
@@ -40,7 +44,7 @@
 
 .lmo-navbar__item {
   .navbar-user-options .lmo-navbar__btn {
-    padding: 4px 5px;
+    padding: 9px 6px 10px;
   }
 }
 
@@ -50,11 +54,16 @@
 }
 
 .lmo-navbar__btn{
-  line-height: 23px;
-  padding: 5px;
+  box-shadow: none;
   background: transparent;
   border: none;
-  &:hover, &:focus { background: $list-hover-color; }
+  border-radius: 0;
+  line-height: 23px;
+  padding: 10px 6px 11px;
+  &:hover, &:focus {
+    background: $list-hover-color;
+    box-shadow: none;
+  }
 }
 
 .lmo-navbar__btn-icon{

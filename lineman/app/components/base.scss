@@ -31,3 +31,12 @@ strong{
   z-index: 0;
   min-width: 320px;
 }
+
+.btn {
+  @include box_shadow(1);
+  border: none;
+
+  &:hover {
+    @include box_shadow(2);
+  }
+}
