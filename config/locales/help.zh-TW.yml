@@ -1,6 +1,7 @@
 zh-TW:
   new_help:
     how_loomio_works:
+      title: Loomio 是如何運作的
       start_group_link: 啟動群組
       start_group_description: 與在 Loomio 上的人協同合作
       invite_people_link: 邀請夥伴
@@ -12,6 +13,10 @@ zh-TW:
       decide_together_link: 共同決策：
       decide_together_description: 任何人可以同意、放棄、反對或凍結 — 這樣您可以了解每個人對提議的感覺。
     contents:
+      what_is_loomio:
+        title: Loomio 是什麼
+      how_loomio_works:
+        title: Loomio 是如何運作的
       getting_started:
         title_html: 開始入門
         starting_new_group_html: 當您需要開始一個新的 Loomio 群組

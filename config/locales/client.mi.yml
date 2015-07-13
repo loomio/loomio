@@ -1,0 +1,48 @@
+mi:
+  common:
+    group: Rōpū
+    groups: Ngā Rōpū
+    action:
+      save: Tiaki
+      edit: Whakatika
+      cancel: Whakakore
+  navbar:
+    groups: Ngā Rōpū
+    user_options:
+      help: Āwhina
+    search:
+      placeholder: Rapu
+  proposal_form:
+    title_label: Taitara
+    details_label: Ngā Taipitopito
+  discussion_form:
+    group_label: Rōpū
+    title_label: Taitara
+  membership_request_form:
+    name_label: Ingoa
+    email_label: Īmēra
+  group_page:
+    description: Whakaahuatanga
+    options_label: Ngā Kōwhiringa
+    options:
+      label: Ngā Kōwhiringa
+    edit_group:
+      permissions:
+        label: Ngā Whakaaetanga
+  group_form:
+    name_label: Ingoa
+    description_label: Whakaahuatanga
+  memberships_page:
+    members: Ngā Mema
+    name_label: Ingoa
+    remove_member_label: Tango
+    remove_membership:
+      submit: Tango
+  profile_page:
+    name_label: Ingoa
+    email_label: Īmēra
+    locale_label: Reo
+  thread_group:
+    aria_label: Ingoa rōpū
+  help_page:
+    help: Āwhina

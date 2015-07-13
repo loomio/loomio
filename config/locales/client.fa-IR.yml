@@ -1,0 +1,20 @@
+fa-IR:
+  error_page:
+    forbidden: شما اجازه انجام این کار را ندارید.
+  navbar:
+    user_options:
+      new_group: گروه جدید
+  notifications:
+    header: اطلاعیه ها
+  discussion_form:
+    privacy_label: محرمانگی
+  start_group_form:
+    heading: راه اندازی گروه
+  group_page:
+    leave_group:
+      title: ترک گروه
+    edit_group:
+      privacy:
+        label: محرمانگی
+  memberships_page:
+    members: اعضا

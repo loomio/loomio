@@ -37,22 +37,22 @@ it:
     quote:
       header:
         rushkoff_html: "\"Loomio <strong>scatena il potenziale di internet</strong> portando le persone a prendere una decisione condivisa piuttosto che monopolizzata.\" <div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autore di <em>Present Shock</em></div>"
-        sifry_html: "“Loomio si inserisce nella delicata fase tra il <strong>desiderio individuale</strong> e <strong>la decisione collettiva</strong>.”<div class=\"attributation\">– Micah Sifry, Editor, <em><a href=\"http://techpresident.com\">TechPresident</a></em></div>"
+        sifry_html: "“Loomio si inserisce nel delicato intervallo tra il <strong>desiderio individuale</strong> e <strong>la decisione collettiva</strong>.”<div class=\"attributation\">– Micah Sifry, Editor, <em><a href=\"http://techpresident.com\">TechPresident</a></em></div>"
     team:
       header: Informazioni su Loomio
       desc: "Siamo un piccolo team di sviluppatori open-source e sostenitori della giustizia sociale. Lavoriamo a Enspiral in Aotearoa, Nuova Zelanda, con un'ampia rete di amici, sostenitori e consiglieri in tutto il mondo."
     ideals:
       community:
         header: Cooperativa gestita da una comunità
-        desc: "Loomio è costruito da una cooperativa di proprietà dei lavoratori. Siamo un'impresa sociale che lavora per massimizzare l'impatto sociale, non l'utile."
+        desc: "Loomio è costruito da una cooperativa di proprietà dei lavoratori. Siamo un'impresa sociale che lavora per massimizzare l'impatto sociale, non il profitto."
       independent:
         header: Indipendente e neutrale
-        desc: "Curiamo uno spazio, indipendente da interessi politici o d'impresa, per unire qualunque gruppo. Non venderemo mai i vostri dati."
+        desc: "Curiamo uno spazio indipendente da interessi politici o d'impresa, per unire qualsiasi gruppo. Non venderemo mai i vostri dati."
       open:
         header: Software gratuito e aperto
         desc: "Il codice di Loomio è una risorsa pubblica. Chiunque può farlo girare, leggere, impararlo, modificarlo e ridistribuirlo."
       gift:
         header: Economia del dono
-        desc: Loomio è supportato da persone che pagano a seconda delle loro possibilità. Questo ci permette di non avere pubblicità sul sito e di mantenere la piattaforma accessibile a gruppi senza risorse.
+        desc: Loomio è supportato da persone che pagano a seconda delle loro possibilità. Questo ci permette di non avere pubblicità sul sito e di mantenere la piattaforma accessibile ai gruppi senza risorse economiche.
   about_page:
-    our_story_1_html: "<h2>La nostra storia</h2> <p>Loomio è uno strumento online ideato per sviluppare un processo decisionale collaborativo, creato in Nuova Zelanda da un gruppo di tecnologi, attivisti e imprenditori sociali.</p>."
+    our_story_1_html: "<h2>La nostra storia</h2> <p>Loomio è uno strumento online creato per prendere decisioni insieme. E' stato ideato in Nuova Zelanda da un gruppo di tecnologi, attivisti e imprenditori sociali.</p>."

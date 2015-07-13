@@ -1,0 +1,112 @@
+te:
+  common:
+    group: సమూహం
+    groups: సమూహాలు
+    privacy:
+      public: బహిరంగం
+    models:
+      proposal: ప్రతిపాదన
+    action:
+      save: భద్రపరుచు
+      edit: సవరించు
+      like: ఇష్టం
+      unlike: అయిష్టం
+      cancel: రద్దుచేయి
+  context_card:
+    heading: సందర్భం
+  comment_form:
+    delete_comment: వ్యాఖ్యను తొలగించు
+  navbar:
+    groups: సమూహాలు
+    user_options:
+      new_group: కొత్త సమూహం
+      help: సహాయం
+    search:
+      placeholder: వెతుకు
+      discussions: చర్చలు
+  notifications:
+    header: గమనికలు
+  vote_form:
+    i_agree: నేను అంగీకరిస్తున్నాను
+    submit_position: స్థానాన్ని సమర్పించండి
+  proposal_positions_panel:
+    heading: స్థానాలు
+  close_proposal_form:
+    close_proposal: ప్రతిపాదనను మూసివేయి
+  proposal_form:
+    start_proposal: ప్రతిపాదనను ప్రారంభించండి
+    title_label: శీర్షిక
+    details_label: వివరాలు
+  discussion_form:
+    group_label: సమూహం
+    title_label: శీర్షిక
+    context_label: సందర్భం
+    privacy_label: గోప్యత
+  proposal_expanded:
+    close_proposal: ప్రతిపాదనను మూసివేయి
+  start_group_form:
+    heading: ఒక సమూహాన్ని ప్రారంభించండి
+  join_group_button:
+    ask_to_join_group: సమూహంలో చేరుటకు అడగండి
+  membership_request_form:
+    heading: సమూహంలో చేరుటకు అడగండి
+    name_label: పేరు
+    email_label: ఈమెయిలు
+    introduction_label: మిమ్మల్ని పరిచయం చేసుకోండి
+    submit_button: సమూహంలో చేరుటకు అడగండి
+  group_page:
+    description: వివరణ
+    discussions: చర్చలు
+    invite_people: వ్యక్తులను ఆహ్వానించండి
+    options_label: ఐచ్ఛికాలు
+    options:
+      label: ఐచ్ఛికాలు
+    leave_group:
+      title: సమూహాన్ని వదిలివెళ్ళండి
+    edit_group:
+      privacy:
+        label: గోప్యత
+  membership_requests_page:
+    approve: ఆమోదించండి
+    ignore: విస్మరించు
+  group_form:
+    name_label: పేరు
+    description_label: వివరణ
+  memberships_page:
+    members: సభ్యులు
+    name_label: పేరు
+    coordinator_label: సమన్వయకర్త
+    remove_member_label: తీసివేయి
+    remove_membership:
+      submit: తీసివేయి
+  profile_page:
+    change_password:
+      current_password_label: ప్రస్తుత సంకేతపదం
+      new_password_label: కొత్త సంకేతపదం
+      password_confirmation_label: కొత్త సంకేతపదాన్ని నిర్థారించండి
+    picture_label: చిత్రం
+    name_label: పేరు
+    email_label: ఈమెయిలు
+    locale_label: భాష
+  thread_group:
+    aria_label: సమూహం పేరు
+  delete_comment_dialog:
+    title: వ్యాఖ్యను తొలగించు
+    confirm: వ్యాఖ్యను తొలగించు
+  new_comment_item:
+    context_menu:
+      delete_comment: వ్యాఖ్యను తొలగించు
+  contact_message_form:
+    name_label: మీ పేరు
+    email_label: మీ ఈమెయిలు చిరునామా
+    message_label: మీ సందేశం
+  help_page:
+    getting_started: ఆరంభించండి
+    help: సహాయం
+    how_it_works: ఎలా పనిచేస్తుంది
+    join_the_community: సంఘంలో చేరండి
+    make_a_decision: ఒక నిర్ణయాన్ని తీసుకోండి
+    video_id: "52025402"
+    video_tutorial: దృశ్యక ఉపశిక్షణ
+  pricing_page:
+    organisations: సంస్థలు

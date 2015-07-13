@@ -1,0 +1,178 @@
+ga-IE:
+  common:
+    time:
+      am: rn
+      pm: in
+    volume: Airde
+    group: Baicle
+    groups: Baiclí
+    privacy:
+      private: Príobháideach
+      public: Poiblí
+    date_range:
+      today: Inniu
+    models:
+      proposal: Togra
+    action:
+      save: Taisc
+      edit: Cuir in eagar é
+      cancel: Cealaigh
+  error_page:
+    forbidden: Níl cead agat é sin a dhéanamh.
+  proposal_outcome_panel:
+    heading: Toradh
+  proposal_outcome_form:
+    outcome_label: Toradh an togra
+    publish_outcome: Foilsigh an toradh
+  context_card:
+    heading: Comhthéacs
+  volume_levels:
+    loud: Ard
+    normal: Gnáth
+    quiet: Ciúin
+    mute: Gan fhuaim
+  inbox:
+    clear: Glan
+    unread: Neamhléite
+  comment_form:
+    edit_comment: Déan eagarthóireacht ar an trácht
+    delete_comment: Scrios an trácht
+    confirm_delete_message: An bhfuil tú cinnte go dteastaíonn uait an trácht seo a scriosadh?
+  navbar:
+    unread: Neamhléite
+    groups: Baiclí
+    user_options:
+      contact_us: Déan teagmháil linn
+      new_group: Baicle nua
+      profile: Beathaisnéisín
+      help: Cabhair
+    search:
+      placeholder: Cuardaigh
+      discussions: Pléití
+  notifications:
+    header: Fógraí
+  position_buttons_panel:
+    heading: Abair leat
+  vote_form:
+    heading: Abair leat
+    i_agree: Aontaíom
+    i_disagree: Ní aontaíom
+    i_disagree_details: "Dar liom, tig linn rud éigin níos fearr a dhéanamh."
+    i_block: Crosaim é
+    submit_position: Cuir seasamh isteach
+  proposal_positions_panel:
+    heading: Seasaimh
+  close_proposal_form:
+    close_proposal: Dún an togra
+  proposal_form:
+    start_proposal: Tosaigh an togra
+    edit_proposal: Leasaigh an togra
+    title_label: Teideal
+    closes_at_label: Dúnann sé ag a
+    details_label: Sonraí
+  discussion_form:
+    group_label: Baicle
+    title_label: Teideal
+    context_label: Comhthéacs
+    privacy_label: Príobháideachas
+  proposal_expanded:
+    edit_proposal: Leasaigh an togra
+    close_proposal: Dún an togra
+  start_group_form:
+    heading: Cuir baicle ar bun
+    group_helptext: "Chun tosú ag déanamh cinntí le chéile ar Loomio, cuir baicle ar bun saor in aisce:"
+  join_group_button:
+    ask_to_join_group: Iarr cead dul isteach sa bhaicle
+  membership_request_form:
+    heading: Iarr cead dul isteach sa bhaicle
+    name_label: Ainm
+    email_label: Seoladh ríomhphoist
+    introduction_label: Cuir tú féin in aithne do dhaoine
+    submit_button: Iarr cead dul isteach sa bhaicle
+  group_page:
+    description: Cur síos
+    discussions: Pléití
+    invite_people: Tabhair cuirí do dhaoine
+    options_label: Roghanna
+    options:
+      label: Roghanna
+    leave_group:
+      title: Fág an dream seo
+    volume:
+      loud: Seol ríomhphost chugam nuair a bhíonn gníomhaíocht ann.
+    edit_group:
+      privacy:
+        label: Príobháideachas
+        visible_to_members: Cé ar féidir leo an bhaicle seo a aimsiú?
+        membership_granted_upon: Conas mar is féidir le daoine clárú?
+      permissions:
+        label: Ceadanna
+        helptext: Cad is féidir leis na baill a dhéanamh?
+        members_can_create_subgroups: Cruthaigh fobhaiclí
+        members_can_vote: Caith do ghuth i dtaobh tograí
+  membership_requests_page:
+    approve: Ceadaigh
+    ignore: Déan neamhaird de
+  group_form:
+    profile_label: Beathaisnéisín
+    name_label: Ainm
+    description_label: Cur síos
+    category_label: Aicme
+  memberships_page:
+    members: Comhaltaí
+    name_label: Ainm
+    remove_member_label: Bain é
+    remove_membership:
+      submit: Bain é
+  profile_page:
+    change_password:
+      current_password_label: An focal faire reatha
+      new_password_label: Focal faire nua
+      password_confirmation_label: Deimhnigh an focal faire nua
+    deactivate_user:
+      title: Díghníomhachtaigh an cuntas
+      submit: Díghníomhachtaigh an cuntas
+    profile: Beathaisnéisín
+    picture_label: Grianghraf
+    name_label: Ainm
+    email_label: Seoladh ríomhphoist
+    locale_label: Teanga
+  dashboard_page:
+    mark_as_read: Rianaigh mar léite
+    threads_from:
+      today: Inniu
+  thread_group:
+    aria_label: Ainm na baicle
+  delete_comment_dialog:
+    title: Scrios an trácht
+    question: An bhfuil tú cinnte go dteastaíonn uait an trácht seo a scriosadh?
+    confirm: Scrios an trácht
+  new_comment_item:
+    context_menu:
+      edit_comment: Déan eagarthóireacht ar an trácht
+      delete_comment: Scrios an trácht
+  contact_message_form:
+    name_label: "D'ainm"
+    email_label: Do sheoladh ríomhphoist
+    message_label: Do theachtaireacht
+  help_page:
+    different_ways: Bealaí éagsúla chun feidhm a bhaint as Loomio
+    get_in_touch: Déan teagmháil
+    get_in_touch_description_html: "Má tá aon cheist nó aiseolas agat dúinn, <a href='%{link}'>cuir teachtaireacht chugainn</a>."
+    getting_started: Ag tosú ar dtús báire
+    getting_the_most: Bain an leas is fearr as Loomio
+    have_your_say: Abair leat
+    have_a_discussion: Bíodh plé ann
+    help: Cabhair
+    how_it_works: Conas mar a fheidhmíonn sé
+    join_the_community: Bí sa phobal
+    keep_up_to_date: Fan ar an eolas
+    make_a_decision: Déan cinneadh
+    positions_agree_description: "Ciallaíonn <span>Aontaíom</span> go bhfuil tú sásta leis an dtogra."
+    start_discussion: Cuir tús le plé meallacach
+    start_proposal: Ag scríobh togra soiléir
+    video_id: "52025402"
+    video_tutorial: Físeán teagaisc
+  pricing_page:
+    organisations: Eagraíochtaí
+    organisations_examples: "m.sh. gnólachtaí, gníomhaireachtaí rialtais, eagraíochtaí pobail"

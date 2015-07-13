@@ -1,0 +1,241 @@
+zh-TW:
+  common:
+    time:
+      am: am
+      pm: pm
+    volume: 音量
+    group: 群組
+    groups: 群組
+    privacy:
+      private: 私密
+      public: 公開
+    date_range:
+      today: 今天
+    models:
+      proposal: 提案
+    action:
+      save: 儲存
+      edit: 編輯
+      like: 讚
+      unlike: 收回讚
+      cancel: 取消
+  error_page:
+    forbidden: 您沒有足夠的權限。
+  proposal_outcome_panel:
+    heading: 成果
+  proposal_outcome_form:
+    outcome_label: 提案成果
+    publish_outcome: 發表成果
+  context_card:
+    heading: 論述
+  volume_levels:
+    loud: 大聲
+    normal: 普通
+    quiet: 安靜
+    mute: 靜音
+  inbox:
+    clear: 清除
+    unread: 未讀
+  comment_form:
+    edit_comment: 編輯意見
+    delete_comment: 刪除意見
+    confirm_delete_message: 您確定要刪除這個意見嗎？
+  navbar:
+    unread: 未讀
+    groups: 群組
+    user_options:
+      contact_us: 聯絡我們
+      new_group: 新增群組
+      profile: 簡歷
+      help: 教學文件
+    search:
+      placeholder: 搜尋
+      discussions: 討論
+      proposals: 提議
+      comments: 意見
+  notifications:
+    header: 通知
+  position_buttons_panel:
+    heading: 擁有發言權
+  vote_form:
+    heading: 擁有發言權
+    i_agree: 我贊成
+    i_abstain: 我棄權
+    i_abstain_details: 我很樂意群組的決定沒有我的參與。
+    i_disagree: 我反對
+    i_disagree_details: 我認為我們可以做更好
+    i_block: 我阻擋
+    i_block_details: " 我強烈反對並且不願意這個提案繼續下去"
+    submit_position: 呈遞您的立場
+  proposal_positions_panel:
+    heading: 立場表態
+  close_proposal_form:
+    close_proposal: 提議定案
+  proposal_form:
+    start_proposal: 啟動提案
+    edit_proposal: 編輯提案
+    title_label: 標題
+    closes_at_label: 定案在
+    details_label: 詳細內容
+  discussion_form:
+    group_label: 群組
+    title_label: 標題
+    context_label: 論述
+    privacy_label: 隱私
+  proposal_expanded:
+    edit_proposal: 編輯提案
+    close_proposal: 提議定案
+  start_group_form:
+    heading: 啟動群組
+  join_group_button:
+    join_group: 加入群組
+    ask_to_join_group: 要求加入群組
+  membership_request_form:
+    heading: 要求加入群組
+    name_label: 名字
+    email_label: 電子郵件
+    introduction_label: 介紹您自己
+    submit_button: 要求加入群組
+  group_page:
+    thread_list:
+      empty:
+        membership_is_invitation_only: 您需要有這個群組的成員邀請才能加入。
+        membership_is_invitation_by_admin_only: 您需要被協作者邀請才能加入這個群組。
+    description: 描述
+    discussions: 討論
+    manage_members: 管理成員
+    invite_people: 邀請夥伴
+    options_label: 選項
+    options:
+      label: 選項
+    leave_group:
+      title: 離開群組
+    volume:
+      loud: 只要有活動就立刻寄發電子郵件。
+      quiet: 不要寄發任何關於此群組的電子郵件。活動將會顯示在儀表板上。
+      mute: "從儀表板上隱藏此群組，除非 @提及，否則將不會通知。"
+    edit_group:
+      privacy:
+        label: 隱私
+        visible_to_members: 誰能找到這個群組？
+        membership_granted_upon: 夥伴要怎樣加入？
+        private_discussions: 只有成員才能看到討論串
+      permissions:
+        label: 權限
+        helptext: 成員能做些甚麼？
+        members_can_add_members: 邀請並且批准新的成員
+        members_can_create_subgroups: 建立子群組
+        members_can_edit_comments: 任何時候都能編輯他們的意見
+        members_can_vote: 在提案上投票
+  membership_requests_page:
+    approve: 批准
+    ignore: 忽略
+  group_form:
+    edit_group_title: 群組設定
+    profile_label: 簡歷
+    name_label: 名字
+    description_label: 描述
+    category_label: 分類
+  memberships_page:
+    members: 成員
+    name_label: 名字
+    coordinator_label: 協作者
+    remove_member_label: 移除
+    remove_membership:
+      submit: 移除
+  profile_page:
+    change_picture:
+      use_initials: 使用縮寫
+    change_password:
+      current_password_label: 目前的密碼
+      new_password_label: 新密碼
+      password_confirmation_label: 確認新密碼
+    deactivate_user:
+      title: 凍結帳號
+      submit: 凍結帳號
+    profile: 簡歷
+    picture_label: 照片
+    name_label: 名字
+    username_label: 使用者名稱
+    email_label: 電子郵件
+    locale_label: 語言
+  dashboard_page:
+    aria_label: 儀表板
+    mark_as_read: 設為已讀
+    filtering:
+      proposals: 提議
+    threads_from:
+      today: 今天
+  discussion:
+    proposals: 提議
+    volume:
+      loud: 只要這個討論串有活動就立刻寄發電子郵件。
+      normal: 只當提議被建立、將要關閉、或是結果公佈時才寄發電子郵件。
+      quiet: 不要寄發關於這個討論串的電子郵件。
+      mute: "從儀表板上隱藏此討論串，除非 @提及，否則將不會通知。"
+  thread_group:
+    aria_label: 群組名稱
+  delete_comment_dialog:
+    title: 刪除意見
+    question: 您確定要刪除這個意見嗎？
+    confirm: 刪除意見
+  new_comment_item:
+    context_menu:
+      edit_comment: 編輯意見
+      delete_comment: 刪除意見
+  contact_message_form:
+    name_label: 您的大名
+    email_label: 您的電子郵件地址
+    message_label: 您的訊息
+  help_page:
+    coordinating: 在您的 Loomio 群組中協作
+    coordinating_details: "身為協作者，您的責任是設置您的 Loomio 群組以及邀請大家加入。在學習使用一種新的軟體的同時，您的群組也將在新的過程中學習到更有效的合作方式，一同作出更好的決策。這裡是一些幫助您的群組成功的小秘訣：\n"
+    different_ways: 各種使用 Loomio 的方式
+    engaging_html: "<h2>激動人心的群組小技巧</h2>\n<p>當一個吸引人的提案出現時，夥伴會很興奮地加入討論，一個開誠布公的好提案，可幫助夥伴直接知道要支持或是站在反對的立場。\n想想看，在面對面的討論或在信件的討論串中的討論狀況，您會發現在 Loomio 參與討論或決策容易得多。</p>\n<p>如果您的群組才剛開始經營，您可以從比較輕鬆的決策開始討論，\n如此一來，大家都有機會使用 Loomio 工具發表意見、參與整個決策制定的過程。</p>\n<p>另一個經營討論的方法是，在提到夥伴時，使用 @夥伴 這個功能，\n一旦某人被提及，就會收到一封 Email，通知他們在討論串中被提到了。</p>\n"
+    example1_html: "<h3>您需要群組去討論廣泛的主題並一同發展解決方案</h3>\n<p>策略：在建立提案之前先花點時間討論主題。</p>\n<p>在下定解決方案之前，若您能建立起對問題的共識，通常能討論出最棒的成果。當夥伴開始參與這個過程，他們將更可能贊成此案的成果。</p>\n"
+    example2_html: "<h3>您已經想到一個提案，並且希望獲得您的群組批准來進行</h3>\n<p>策略：針對一個特定決策來啟動討論串並立即提出提案。</p>\n<p>如果你腦海中已經有明確的成果，但是您想要確定沒有反對聲浪，你可以使用該提案來快速達成決定。</p>\n<p>您可以使用這樣的方法來達成類似敲定公文、允許申請，或者是核准一件工作。</p>\n"
+    get_in_touch: 取得聯繫
+    get_in_touch_description_html: "如果您有任何問題或反饋，<a href='%{link}'>丟封信給我們</a>就行了。"
+    getting_started: 開始入門
+    getting_started_description: 左邊是討論主題、交換想法與資訊的地方。當群組有決策要制定時，選項會出現在右邊。
+    getting_the_most: Loomio：工欲善其事必先利其器
+    have_your_say: 擁有發言權
+    have_your_say_details_html: "<p>當您準備好要發言，點擊四個決策按鈕之一。</p>\n<p>當您已經作出您的決定，請給出簡短的解釋。在下方的圓餅圖，您能見到其他人的想法。這會使得其他人能快速輕鬆地跟上討論。隨著新的資訊明朗化，任何時候您都能改變您的立場。</p>\n"
+    have_a_discussion: 舉行討論
+    have_a_discussion_description: 主題與任何相關背景資訊座落在本頁的最上方。請用意見區塊將您的想法加入討論串。
+    help: 教學文件
+    how_it_works: 這是怎樣辦到的
+    invitation_html: "<h2>寫下一封卓越邀請函</h2>\n<p>每一個新成員想到的第一個問題通常是：「這個群組是作甚麼用的？」</p>\n<p>用您所能想到最簡單的方式來描述你的群組：你們想要共同達成甚麼？你們將會作出哪種類型的決策？將會涉及到誰？</p>\n<p>在您邀請他們加入 Loomio 前，先告訴他們這些可能會是個好主意。</p>\n<p>夥伴會想知道為何他們會被邀請，您對他們的期望是什麼，以及為何他們花時間去學習一個新工具是值得的。</p>\n"
+    join_the_community: 加入社群
+    images_and_text_formatting: 圖片及文字格式
+    images_and_text_formatting_html: "<p>Loomio 使用「Markdown」語法來嵌入圖片、格式化文字。\n您可以點選意見區塊底下的小灰色圖示切換 Markdown 功能。</p>\n<p><a href='https://www.loomio.org/discussions/1124'>點選這裡</a>以瞭解如何使用 Markdown。</p>\n"
+    keep_up_to_date: 持續跟進
+    keep_up_to_date_html: "<p>點擊您畫面上方的群組名稱以進入群組頁面，頁面中您可看到該群組的討論與決定清單。\n若您加入一個以上的群組，您可在首頁看到所有您加入的群組及其所有動態。 </p>\n<p>當您的群組有要事發生時，您將會收到通知信。您可<a href=\"%{link}\"\">於此</a>更改您的電子郵件偏好設定。</p>\n"
+    make_a_decision: 作出決策
+    make_a_decision_description: 當群組準備好制定決策時，任何人都可以提案。替行動方案做出概要以及提供一些背景資料，讓每個人都能明確知道贊成與否所代表的真正意義。
+    prompt_people_details: "假如您想得到群組內特定人士的注意，先按下「@」緊接著輸入他們的大名。他們會收到一封電子郵件，提醒他們在某則討論串中被提及。"
+    prompt_people_html: "提到夥伴時請用 <span class='blue'>@夥伴</span>"
+    positions_agree_description: "<span>贊成</span>代表您滿意這個提案。"
+    positions_abstain_description: "<span>棄權</span>代表您並不是很確定，或是您很樂意群組的決定沒有您的參與。"
+    positions_disagree_description: "<span>反對</span>代表您認為可能有更好的方案，但您願意順應群組的決策。"
+    positions_block_description: "<span>阻擋</span>代表您非常反對，並且如果此提案繼續進行，這會讓您非常不愉快。"
+    start_discussion: 發起一段激動人心的討論
+    start_discussion_html: "<p>當您啟動一場討論，確保您標題傳達的主題是簡潔的。運用論述面板給出所有必要的背景資訊，讓群組是有生產力、有見地的討論。</p>\n<p>隨著新的資訊明朗化，討論的過程當中論述面板能被更新。不但能闡明主題，還能運用這空間來分享資源，在過程中總結討論，或是概要出您的群組決策制定的協議。</p>\n"
+    start_proposal: 寫出明確的提案
+    start_proposal_html: "<p>如果您讓標題明確扼要，夥伴將可以迅速準確理解其意，然後選擇贊成或是反對。</p>\n<p>提案沒有馬上得到明確的共識並不是世界末日。假如群組不滿意一開始的提案，任何人都可以啟動新提案來表達您的顧慮，並讓過程順利進行。</p>\n<p>透過這種動態的過程，您的群組解放了集體的智慧，比起獨自拿出個人所有，進而一同產生更棒的想法。</p>\n<p>如果決策需要更多的時間，提案的截止日可以在任何時間延長。每一個人將會在提案結束的 24 小時前接到電子郵件通知。</p>\n"
+    video_id: "52025402"
+    video_tutorial: 影片教學
+    video_tutorial_description: 點閱一段簡單示範的影片以瞭解如何使用 Loomio。
+  hint:
+    context: 使用論述控制板的小提示
+    discussion: 發起一段激動人心討論的小提示
+    invitation: 寫出卓越邀請函的小提示
+    proposal: 寫出明確提案的小提示
+    vote: 任何時候您都能改變您的立場
+  pricing_page:
+    intro: "有預算的群組可以認購付費使用此工具。\n沒有預算的群組，則可以「隨意付」模式使用此工具：該群組成員將被邀請來完成一些志願性的任務。您的贊助可以讓 Loomio 維持獨立運作、免除廣告影響，由使用者自己經營。\n"
+    organisations: 組織
+    organisations_examples: 例如，公司行號，政府機關，或社群團體
+    informal_groups: 非正式群組
+    informal_groups_desc: 您群組內的成員會被要求「隨意付」
+    informal_groups_examples: 例如：家庭會議、社會運動、集體創作

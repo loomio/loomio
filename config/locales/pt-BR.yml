@@ -71,6 +71,7 @@ pt-BR:
     group_request_invalid_token: "Desculpe! Este token não é válido"
     group_private_or_not_found: "Grupo não encontrado.\n\nPode ser um grupo privado. Se alguém te passou este link, peça a esta pessoa que te convide para entrar no grupo."
     group_already_setup: O grupo que você está tentando criar já existe.
+    current_password_did_not_match: "Desculpe-nos, não fomos capazes de confirmar sua senha atual"
     passwords_did_not_match: A senha não confere com a confirmação
     proposal_already_exists: Já existe uma proposição aberta nesta discussão.
     username_must_be_alphanumeric: O nome de usuário deve conter apenas letras minúsculas e dígitos.
