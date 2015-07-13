@@ -98,7 +98,6 @@ ro:
       intro: "Sunt mai multe căi prin care poti deveni utilizator Loomio.\nVezi aici cateva informatii despre fiecare punct de intrare:\n"
       starting_new_group:
         title: Cand doresti sa initiezi un nou grup Loomio
-        body_html: "Daca nu ai inca un cont Loomio poti incepe un grup nou pornind de pe pagina principala accesand comanda <strong>“Incearca Loomio Beta”</strong> button.\nVei fi ghidat spre pasii de urmat necesari formarii propriului grup.\nCa parte a procesului de formare, va trebui sa hotarasti cum vei voi sa functioneze acest grup, personalizandu-l cu ajutorul setarilor.\nAcceseaza comanda <a href=\"#group-settings\">here</a> pentru a afla mai mult despre setarile grupului.\n"
       invited_into_group:
         title: Cand esti invitat intr-un grup Loomio
         body_html: "Invitatia de alaturare unui grup Loomio va sosi pe calea unui email care va contine un link singur link.\nAccesand acest link, in cazul in care nu ai deja un grup format, ti se va solicita sa creezi un cont folosind adresa ta de email si o parola.\nDaca ai deja un grup Loomio format vei fi dirijat spre acel grup.\n"

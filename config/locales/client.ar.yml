@@ -1,0 +1,131 @@
+ar:
+  common:
+    group: المجموعة
+    groups: المجموعات
+    date_range:
+      today: اليوم
+    action:
+      save: حفظ
+      edit: تحرير
+      like: يعجبني
+      unlike: أخالف هذا
+      cancel: إلغاء
+  error_page:
+    forbidden: ليس لديك صلاحية للقيام بذلك.
+  proposal_outcome_panel:
+    heading: النتيجة
+  context_card:
+    heading: سياق النقاش
+  comment_form:
+    delete_comment: احذف التعليق
+    confirm_delete_message: هل أنت متأكد من أنك تريد حذف هذا التعليق؟
+  navbar:
+    groups: المجموعات
+    user_options:
+      new_group: مجموعة جديدة
+      help: مساعدة
+  notifications:
+    header: التنبيهات
+  vote_form:
+    i_agree: موافق
+    i_abstain: أمتنع
+    i_abstain_details: أنا سعيد بترك المجموعة تقرر عني.
+    i_disagree: غير موافق
+    i_disagree_details: أظن أنه بإمكاننا العمل على قرار أفضل.
+    i_block: أعترض
+    i_block_details: لدي إعتراضات قوية على هذا الإقتراح، ولست موافقا على المضي به قدما.
+    submit_position: أرسل الموقف
+  proposal_positions_panel:
+    heading: مواقف الأعضاء
+  close_proposal_form:
+    close_proposal: أغلِق الإقتراح
+  proposal_form:
+    start_proposal: إبدأ مقترحا
+    edit_proposal: تعديل الإقتراح
+    title_label: العنوان
+    details_label: التفاصيل
+  discussion_form:
+    group_label: المجموعة
+    title_label: العنوان
+    context_label: سياق النقاش
+    privacy_label: خصوصية
+  proposal_expanded:
+    edit_proposal: تعديل الإقتراح
+    close_proposal: أغلِق الإقتراح
+  start_group_form:
+    heading: ابدأ مجموعة
+  membership_request_form:
+    name_label: الإسم
+    email_label: البريد الإلكتروني
+  group_page:
+    description: الوصف
+    invite_people: قم بدعوة الناس
+    options_label: الخيارات
+    options:
+      label: الخيارات
+    leave_group:
+      title: غادر المجموعة
+    edit_group:
+      privacy:
+        label: خصوصية
+        visible_to_members: من يستطيع إيجاد هذه المجموعة؟
+        membership_granted_upon: كيف يمكن للناس أن ينضموا؟
+        private_discussions: رؤية النقاشات محصورة على الأعضاء
+      permissions:
+        members_can_add_members: دعوة وقبول أعضاء جدد
+        members_can_create_subgroups: إنشاء مجموعات فرعية
+        members_can_edit_comments: تحرير تعليقاتهم في أي وقت
+        members_can_vote: التصويت على المقترحات
+  membership_requests_page:
+    approve: موافق
+    ignore: تجاهل
+  group_form:
+    name_label: الإسم
+    description_label: الوصف
+    category_label: التصنيف
+  memberships_page:
+    members: الأعضاء
+    name_label: الإسم
+  profile_page:
+    change_password:
+      current_password_label: كلمة السر الحالية
+      new_password_label: كلمة السر الجديدة
+      password_confirmation_label: قم بتأكيد كلمة السر الجديدة
+    deactivate_user:
+      title: إيقاف الحساب
+      submit: إيقاف الحساب
+    name_label: الإسم
+    username_label: إسم المستخدم
+    email_label: البريد الإلكتروني
+    locale_label: اللغة
+  dashboard_page:
+    mark_as_read: تمت قراءته
+    threads_from:
+      today: اليوم
+  thread_group:
+    aria_label: اسم المجموعة
+  delete_comment_dialog:
+    title: احذف التعليق
+    question: هل أنت متأكد من أنك تريد حذف هذا التعليق؟
+    confirm: احذف التعليق
+  new_comment_item:
+    context_menu:
+      delete_comment: احذف التعليق
+  help_page:
+    get_in_touch: إتصل معنا
+    get_in_touch_description_html: "إذا كان لديك أي أسئلة أو تعليقات، <a href='%{link}'>تواصل معنا</a>."
+    getting_started: من أجل البدء
+    getting_started_description: "على اليسار، تناقش المجموعة موضوعا\_وتتبادل الأفكار والمعلومات. عندما يكون هناك قرار يتعين على المجموعة اتخاذه، فإنه يظهر على اليمين."
+    have_a_discussion: أجر نقاشا
+    have_a_discussion_description: يتم وضع موضوع النقاش وأي معلومات لازمة متعلقة به في أعلى الصفحة. يمكنك استخدام مربع التعليق لإضافة صوتك في النقاش.
+    help: مساعدة
+    how_it_works: كيفية عمل Loomio
+    join_the_community: إنضم للمجتمع
+    make_a_decision: اتخذ قرارا
+    make_a_decision_description: عندما تصبح المجموعة جاهزة لاتخاذ قرار، فإنه يمكن لأي كان أن يطرح مقترحا. ضع خطا واضحا لمسار العمل وأعط ما يكفي من المعلومات بحيث يدرك الجميع مالذي تعنيه الموافقة أو عدمها.
+    positions_agree_description: "<span>\"موافق\"</span> تعني أنك راضي بالمقترح."
+    positions_abstain_description: "<span>\"امتنع\"</span> تعني أنك غير متأكد، أو أنك سعيد بترك المجموعة تقرر عنك."
+    positions_disagree_description: "<span>\"غير موافق\"</span> تعني أنك تظن أن هناك بديل أفضل، ولكنك على استعداد للمضي مع قرار المجموعة."
+    positions_block_description: "<span>\"أعترض\"</span> تعني أن لديك إعتراضات جدية وأنك ستكون غير راض إذا تم تبني المقترح."
+    video_tutorial: الفيديو التعليمي
+    video_tutorial_description: شاهد الفيديو لتحصل على عرض سريع حول كيفية استخدام Loomio.

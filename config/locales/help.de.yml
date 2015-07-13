@@ -93,7 +93,6 @@ de:
       intro: "Es gibt mehrere Wege um mit Loomio zu starten.\nEinige Erläuterungen zu den einzelnen Zugängen:\n"
       starting_new_group:
         title: Wenn Du eine neue Loomio Gruppe starten willst
-        body_html: "Wenn Du kein Loomio-Konto hast, kannst Du eine neue Gruppe eröffnen indem Du auf <strong>\"Teste Loomio beta\"</strong> klickst.\nDu wirst durc die verschiedenen Schritte geleitet um Deine eigene Gruppe zu starten.\nAls Teil des Gruppen-Erstellungsprozesses wirst Du defninieren müssen, wie Deine Gruppe funktionieren soll, indem Du die Gruppen-Einstellungen anpasst.\nKlicke <a href=\"#group-settings\">hier</a> um mehr über Gruppen-Einstellungen zu erfahren.\n"
       invited_into_group:
         title: Wenn Du in eine Loomio Gruppe eingeladen bist
         body_html: "Wenn Du eine Einladung in eine bestehende Loomio-Gruppe erhältst, dann erhält die eMail, die Du erhalten hast einen indiviuellen Einladungslink.\nWenn Du diesen Link klickst und du kein Loomio-Benutzerkonto hast, wirst Du aufgefordert mit Deiner eMail-Adresse und einem Passwort ein Benutzerkonto zu erstellen.\nWenn Du bereits ein Konto besitzt, wirst Du sofort zur Gruppe weitergeleitet.\n"

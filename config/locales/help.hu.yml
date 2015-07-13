@@ -153,7 +153,6 @@ hu:
             title: Szavaz a javaslatokon
         what_next:
           title: Mi következik?
-          body_html: "A csoport beállítás űrlap lezárása után át leszel irányítva a csoport lapra.\nA csoportod lapjáról meghívhatsz embereket, hogy csatlakozzanak a csoportodhoz.\nKattints  <a href=\"#inviting-members\">ide</a> hogy megtudj többet a meghívásról.\n"
     coordination:
       title: Csoportod koordinálása
       adding_cover_photo:
@@ -218,7 +217,6 @@ hu:
         body: Hallathatod a hangod a vitában a hozzászólás dobozt használva a vitalap alján.
       markdown:
         title: Formázás
-        body_html: "A Loomio a <strong>Markdown</strong> rendszert használja szövegek formázásához és képek beillesztéséhez.\nA Markdown engedélyezéséhez jelöld be a <strong>“Markdown”</strong> szót a hozzászólás szövegdoboz alatt.\nKattints <a href=\"https://www.loomio.org/d/Wh7vHaTk/markdown-text-formatting-made-easy\">ide</a> a Markdown használatához szükséges információkért.\n"
       attaching_files:
         title: Fájlok csatolása
         body: "Loomio lehetővé teszi számodra, hogy fájlokat csatolj a hozzászólásodhoz egy vitában.\nCsatolhatsz egy fájlt egy hozzászóláshoz az iratkapocs ikonra kattintva a vitalap végén található hozzászólás doboz alatt majd kiválasztva a fájlt a saját eszközödről.\n"
@@ -325,7 +323,6 @@ hu:
           title_html: A Loomio Közösség
     loomio_community:
       title: A Loomio Közösség
-      body_html: "<p>A <a href=\"https://www.loomio.org/g/WmPCB3IR/loomio-community\">Loomio Közösség</a> egy nyilvános csoporta loomios felhasználók és fejlesztők egész közössége számára, az együttléthez, a Loomio fejlesztésének és a közreműködés megbeszélésére.\nBárki csatlakozhat, egyszerűen, tagsági kérelemmel <a href=\"https://www.loomio.org/g/WmPCB3IR/loomio-community\">a csoportba</a> és a koordinátor érvényesíti a kérésedet.</p>\n<p>Számos nyilvános Loomio Közösségi alcsoport létezik a közösségi ökoszisztéma különböző változatainak címezve.\nEzek a csoportok nyitottak minden csatlakozó számára, akit érdekel a közreműködés vagy csak kíváncsi a Loomiora.\nLétezik egy <a href=\"https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation\">fordító alcsoport</a>, egy <a href=\"https://www.loomio.org/g/GN7EFQTK/loomio-community-feature-ideas\">Funkció ötlet alcsoport</a>, egy <a href=\"https://www.loomio.org/g/C7I2YAPN/loomio-community-installing-loomio\">Loomio telepítés alcsoport</a> a helyi telepítések támogatására és segítésére, és egy alcsoport a<a href=\"https://www.loomio.org/g/7jWVDr04/loomio-community-group-coordinators\">Loomio csoport koordinátorok</a> számára, hogy megosszák serkentő tippjeiket és trükkjeiket, amivel közösen növelhetjük tudásunkat és építhetjük közös erőforrásainkat a Loomio közös használatának legjobb módjaival kapcsolatban.</p>\n<p>Továbbiakat is megtudhatsz a Loomio Közösség működéséről <a href=\"https://www.loomio.org/discussions/5200\">itt</a>.</p>\n"
     loomio_development:
       title: Lépéstartás a Loomio fejlesztéssel
       intro: "Számtalan módod van, hogy kövesd a Loomio fejlődését:"

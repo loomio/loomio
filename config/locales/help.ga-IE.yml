@@ -27,6 +27,10 @@ ga-IE:
           title: Cad is féidir leis na baill a dhéanamh?
           start_discussions:
             title: Cuir tús le plé
+          raise_proposals:
+            title: Tóg tograí
+          vote_on_proposals:
+            title: Caith do ghuth i dtaobh tograí
     inviting_members:
       pending_invitations:
         title: Cuirí ar feitheamh

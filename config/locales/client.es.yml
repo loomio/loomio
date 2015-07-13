@@ -1,0 +1,244 @@
+es:
+  common:
+    time:
+      am: am
+      pm: pm
+    volume: "Volumen "
+    group: Grupo
+    groups: Grupos
+    privacy:
+      private: Privado
+      public: Público
+      organisation: "Organización "
+    date_range:
+      today: Hoy
+    models:
+      proposal: Propuesta
+    action:
+      save: Guardar
+      edit: Editar
+      like: Me gusta
+      unlike: Ya no me gusta
+      cancel: Cancelar
+  error_page:
+    forbidden: No tienes permisos para hacer esto.
+  proposal_outcome_panel:
+    heading: Resultado
+  proposal_outcome_form:
+    outcome_label: Resultado de la propuesta
+    publish_outcome: Publicar resultado
+  context_card:
+    heading: Contexto
+  volume_levels:
+    loud: Alto
+    normal: Normal
+    quiet: Bajo
+    mute: "Silenciado "
+  inbox:
+    clear: Limpiar
+    unread: No leído
+  comment_form:
+    edit_comment: Editar comentario
+    delete_comment: Borrar comentario
+    confirm_delete_message: ¿Estás seguro de que quieres borrar este comentario?
+  navbar:
+    unread: No leído
+    groups: Grupos
+    user_options:
+      contact_us: Contáctanos
+      new_group: Nuevo grupo
+      profile: Perfil
+      help: Ayuda
+    search:
+      placeholder: Buscar
+      discussions: Hilos
+      proposals: Propuestas
+      comments: "Comentarios "
+  notifications:
+    header: Notificaciones
+  position_buttons_panel:
+    heading: "Di tu opinión "
+  vote_form:
+    heading: "Di tu opinión "
+    i_agree: Estoy de acuerdo
+    i_abstain: Me abstengo
+    i_abstain_details: Estoy contento con lo que el grupo decida sin mí.
+    i_disagree: No estoy de acuerdo
+    i_disagree_details: " Creo que podemos hacerlo mejor, pero si el resto del grupo siente que es el mejor curso de acción, entonces yo estoy de acuerdo con que siga adelante."
+    i_block: Bloqueo
+    i_block_details: Tengo fuertes objeciones a esta propuesta y no estoy de acuerdo con que siga adelante.
+    submit_position: Remitir posición
+  proposal_positions_panel:
+    heading: Posiciones
+  close_proposal_form:
+    close_proposal: Cerrar propuesta
+  proposal_form:
+    start_proposal: Empezar propuesta
+    edit_proposal: Editar propuesta
+    title_label: Título
+    closes_at_label: Cierra a las
+    details_label: Detalles
+  discussion_form:
+    group_label: Grupo
+    title_label: Título
+    context_label: Contexto
+    privacy_label: Privacidad
+  proposal_expanded:
+    edit_proposal: Editar propuesta
+    close_proposal: Cerrar propuesta
+  start_group_form:
+    heading: Empieza un grupo
+    group_helptext: "Para empezar a tomar decisiones juntos con Loomio, crea un grupo. Es gratis."
+    name_label: Nombre del Grupo
+  join_group_button:
+    join_group: Unirse al grupo
+    ask_to_join_group: Solicita unirte al grupo
+  membership_request_form:
+    heading: Solicita unirte al grupo
+    name_label: Nombre
+    email_label: Correo electrónico
+    introduction_label: Preséntate
+    submit_button: Solicita unirte al grupo
+  group_page:
+    thread_list:
+      empty:
+        membership_is_invitation_only: Para unirte a este grupo necesitas ser invitado por un miembro.
+        membership_is_invitation_by_admin_only: Para unirte a este grupo necesitas ser invitado por un coordinador.
+    description: Descripción
+    discussions: Hilos
+    manage_members: Gestionar miembros
+    invite_people: Invitar personas
+    options_label: Opciones
+    options:
+      label: Opciones
+    leave_group:
+      title: Abandonar grupo
+    volume:
+      loud: Enviar correo electrónico siempre que haya actividad.
+      quiet: No enviar correo electrónico sobre el grupo. La actividad del grupo será mostrada en el panel de control.
+      mute: "Ocultar este grupo en el panel de control y no notificarme a no ser que sea @mencionado."
+    edit_group:
+      privacy:
+        label: Privacidad
+        visible_to_members: ¿Quién puede encontrar este grupo?
+        membership_granted_upon: ¿Cómo se unen las personas al grupo?
+        private_discussions: Solamente los miembros pueden ver las discusiones
+      permissions:
+        label: Permisos
+        helptext: ¿Qué pueden hacer los miembros?
+        members_can_add_members: Invitar y aprobar nuevos miembros
+        members_can_create_subgroups: Crear subgrupos
+        members_can_edit_comments: Edita sus comentarios en cualquier momento
+        members_can_vote: Votar en propuestas
+  membership_requests_page:
+    approve: "Aprobar "
+    ignore: Ignorar
+  group_form:
+    edit_group_title: Configuración del grupo
+    profile_label: Perfil
+    name_label: Nombre
+    description_label: Descripción
+    category_label: Categoría
+  memberships_page:
+    members: Miembros
+    name_label: Nombre
+    coordinator_label: Coordinador
+    remove_member_label: Eliminar
+    remove_membership:
+      submit: Eliminar
+  profile_page:
+    change_picture:
+      use_initials: Usar iniciales
+    change_password:
+      current_password_label: Contraseña actual
+      new_password_label: Nueva contraseña
+      password_confirmation_label: Confirmar nueva contraseña
+    deactivate_user:
+      title: Desactiva tu cuenta
+      submit: Desactiva tu cuenta
+    profile: Perfil
+    picture_label: Imagen
+    name_label: Nombre
+    username_label: Nombre de usuario
+    email_label: Correo electrónico
+    locale_label: Lenguaje
+  dashboard_page:
+    aria_label: Panel de control
+    mark_as_read: Marcar como leído
+    filtering:
+      proposals: Propuestas
+    threads_from:
+      today: Hoy
+  discussion:
+    proposals: Propuestas
+    volume:
+      loud: "Enviar correo electrónico cuando hay actividad en este hilo. "
+      normal: "Solo enviar correo electrónico cuando una propuesta es creada, va a ser cerrada o se ha notificado un resultado."
+      quiet: No enviar correo electrónico sobre este hilo.
+      mute: "Ocultar este hilo en el panel de control y no notificarme a no ser que sea @mencionado."
+  thread_group:
+    aria_label: Nombre del grupo
+  delete_comment_dialog:
+    title: Borrar comentario
+    question: ¿Estás seguro de que quieres borrar este comentario?
+    confirm: Borrar comentario
+  new_comment_item:
+    context_menu:
+      edit_comment: Editar comentario
+      delete_comment: Borrar comentario
+  contact_message_form:
+    name_label: Tu nombre
+    email_label: Tu correo electrónico
+    message_label: Tu mensaje
+  help_page:
+    coordinating: Coordinando tu grupo en Loomio
+    coordinating_details: "Como co-ordinador, eres responsable de iniciar tu grupo e invitar⏎\na todos a participar. Ademas de aprender a usar una nueva herramienta de software, tu grupo⏎\nestará aprendiendo nuevos procesos para colaborar mas efectivamente y tomando buenas decisiones⏎\njuntos. Aquí puedes encontrar algunos consejos para que tu grupo tenga mucho éxito:⏎\n"
+    different_ways: Maneras diferentes de usar Loomio
+    engaging_html: "<h2>Consejos para implicar a tu grupo</h2>\n<p>La gente estará motivada a entrar y comenzar a participar cuando haya una propuesta interesante sobre la mesa. Una buena propuesta contiene un plan de acción para el grupo, asi que se hace obvio lo que significa estar de acuerdo o en desacuerdo. Piensa en como puedes identificar las discusiones/decisiones en las que el grupo esta involucrado actualmente en persona o por correo, que pudieran hacerse más fáciles si estuvieran en Loomio.</p>\n<p>Si tu grupo esta apenas comenzando, puedes iniciar una decisión ligera, para darle a todos la oportunidad de jugar con la herramienta y ver en acción el proceso de toma de decisiones.</p>\n<p>Otra manera sencilla de animar a las personas a implicarse en una discusión es usando la característica de @mention para aludir a determinadas personas; esto les enviará un correo avisándoles que han sido mencionados en un comentario.</p>\n"
+    example1_html: "<h3>El grupo debe discutir sobre un tema amplio y desarrollar una solucion conjunta</h3>⏎\n<p>Estrategia: Discutir el tema durante un tiempo antes de iniciar una propuesta.</p>⏎\n<p>A menudo, las discusiones obtienen los mejores resultados si se crea un entendimiento⏎ \ncompartido sobre el problema antes de decantarse por una solucion concreta. Cuando la gente⏎\nempieza a participar en el proceso, es mucho mas probable que esten satisfechos con⏎\nel resultado o decision final.⏎</p>\\n"
+    example2_html: "<h3>Tienes ya en mente una propuesta, y quieres alcanzar un refrendo del grupo para seguir adelante.</h3>\n<p>Estrategia: Comienza una discusión sobre una decisión específica y crea inmediatamente una propuesta.</p>\n<p>Si tienes en mente un resultado claro pero quieres asegurarte de que no hay ningún problema crítico,\npuedes usar la propuesta para obtener una rápida contribución en la decisión.</p>\n<p>Puedes hacer cosas como finalizar un documento, aprobar una solicitud, o refrendar una obra realizada.</p>\n"
+    get_in_touch: Ponte en contacto
+    get_in_touch_description_html: "Si tienes preguntas o sugerencias, <a href='%{link}'> escríbenos a</a>."
+    getting_started: Primeros pasos
+    getting_started_description: "A la izquierda, el grupo debate un tema, intercambiando ideas e información. Cuando hay que tomar una decisión, aparece a la derecha."
+    getting_the_most: Aprovechando al máximo el uso de Loomio
+    have_your_say: "Di tu opinión "
+    have_your_say_details_html: "<p>Cuando estés listo para decidir, clica en uno de los cuatro botones de decisión.</p>⏎\n<p>Una vez hayas decidido, da una breve explicación. Debajo del gráfico circular⏎\npuedes ver lo que piensan los demás, facilitando una rápida comprensión del estado de la discusión.⏎\nA medida que se vaya añadiendo nueva informacón puedes ir cambiando tu decisión en cualquier momento</p>⏎\\n"
+    have_a_discussion: Discutir un tema
+    have_a_discussion_description: El tema y cualquier otra información relevante se sitúan en la parte superior de la página. Utiliza el cuadro de comentario para agregar tu voz a dicha discusión.
+    help: Ayuda
+    how_it_works: Cómo funciona
+    invitation_html: "<h2>Redactar una buena invitación</h2>\n<p>La primera pregunta que todo nuevo miembro se hará es «¿A qué se dedica este grupo?»</p>\n<p>Piensa en la forma más sencilla con la puedas describir al grupo: ¿Qué queréis conseguir juntos? ¿Qué tipo de decisiones tomaréis? ¿Quiénes estarán involucrados?</p>\n<p>Podría ser buena idea hablar primero con tu grupo, antes de invitarles a Loomio.</p>\n<p>Las personas querrán saber por qué han sido invitadas, qué se espera de ellas,\ny por qué merece su tiempo aprender a usar una nueva herramienta.</p>\n"
+    join_the_community: Únete a la comunidad
+    images_and_text_formatting: Imagenes y formato de texto
+    images_and_text_formatting_html: "<p>Loomio usa «marcadores» para la inclusión de imágenes y el formateo de texto.\nPuedes activar marcadores con el pequeño icono gris bajo el cuadro de comentarios.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Pulsa aquí</a>\npara información sobre cómo usar marcadores.</p>\n"
+    keep_up_to_date: Mantente informado
+    keep_up_to_date_html: "<p>Pulsando el nombre de tu grupo al principio de la pantalla, irás a la página de tu grupo,\ndonde podrás ver una lista de todas las discusiones y decisiones de ese grupo. Si estás en más de un grupo, en la página de inicio puedes ver de una sola vez toda la actividad de todos tus grupos.</p>\n<p>Recibirás un correo electrónico cuando ocurran cosas importantes en tu grupo.\nPuedes modificar tus preferencias de correo electrónico <a href=\"%{link}\"\">aquí</a>.</p>\n"
+    make_a_decision: Toma una decisión
+    make_a_decision_description: "Cuando el grupo está listo para tomar una decisión, cualquiera puede hacer una  propuesta. Resume en pocas palabras de un plan de acción claro y proporciona algún contexto para que todo el mundo sepa exactamente qué significa estar o no de acuerdo."
+    prompt_people_details: "Si quieres atención de una persona especifica en tu grupo, escribe «@» seguido del nombre de la persona, y recibirá un correo electrónico dejándole saber que lo has mencionado en un comentario."
+    prompt_people_html: "Llama la atención de una persona con <span class='blue'>@nombre</span>"
+    positions_agree_description: "<span>Estás de acuerdo</span> y quieres que siga a delante."
+    positions_abstain_description: "<span>Te abstienes</span>, significa que estás indeciso, o que te parece bien que el grupo decida sin ti."
+    positions_disagree_description: "<span>No estás de acuerdo</span>, significa que piensas que hay una mejor alternativa, pero estás dispuesto a seguir con la decisión del grupo."
+    positions_block_description: "<span>Bloquear</span>, significa que tienes serias objeciones y estarías extremadamente en desacuerdo si la propuesta siguiera adelante."
+    start_discussion: Empezar una discusión participativa
+    start_discussion_html: "<p>Cuando comienzas una discusión, asegúrate de que el título transmite sucintamente el asunto.\nUsa el panel de contexto para aportar todo el trasfondo necesario para que el grupo tenga una discusión productiva y bien fundamentada.</p>\n<p>Durante la discusión, el panel de contexto puede actualizarse según salga a la luz nueva información. Además de clarificar el tema, puedes usar este espacio para compartir recursos, recapitular la discusión según progresa, o resumir los protocolos de toma de decisiones que está usando tu grupo.</p>\n"
+    start_proposal: Crear una propuesta clara
+    start_proposal_html: "<p> Si creas un título claro y sucinto, la personas sabrán de forma inmediata qué significa exactamente estar de acuerdo o disentir.</p>\n<p>No resulta el fin del mundo si una propuesta no obtiene un claro acuerdo inmediatamente.\nSi al grupo no le gusta la primera propuesta, cualquiera puede comenzar una nueva propuesta para abordar los problemas surgidos y mantener el avance del proceso.</p>\n<p>A través de este proceso dinámico, la sabiduría colectiva de tu grupo puede generar mejores ideas que las que nadie por sí solo podría hacer surgir.</p>\n<p>La fecha de finalización de una propuesta puede ser ampliada en cualquier momento, si pareciera que la decisión necesita algo más de espacio. Todos recibirán un correo electrónico 24 horas antes de que una propuesta finalice.</p>\n"
+    video_id: "67765444"
+    video_tutorial: Vídeo tutorial
+    video_tutorial_description: Mira el vídeo para una demostración rápida.
+  hint:
+    context: Consejos para usar el panel de contexto
+    discussion: Consejos para empezar una discusión participativa
+    invitation: Consejos para redactar una buena invitación
+    proposal: Consejos para redactar una propuesta clara
+    vote: Puedes cambiar tu posición en cualquier momento
+  pricing_page:
+    intro: "Los grupos con presupuesto aportan una suscripción por usar la herramienta.\nLos grupos sin medios para una suscripción utilizan el modelo «Aporta lo que puedas»: sus miembros son invitados a realizar una contribución voluntaria. Tu contribución implica que podamos mantener Loomio independiente, libre de publicidad, y dirigido por nuestra comunidad.\n"
+    organisations: "Organizaciones "
+    organisations_examples: "ej. empresas, agencias de gobierno, organizaciones comunitarias"
+    informal_groups: Grupo informal
+    informal_groups_desc: A los miembros de tu grupo se les pedirá que contribuyan con lo que puedan
+    informal_groups_examples: "ej. familias, movimientos sociales, grupos colectivos"
