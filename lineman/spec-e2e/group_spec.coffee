@@ -36,7 +36,7 @@ describe 'Group Page', ->
   describe 'leaving a group', ->
 
     it 'allows group members to leave the group', ->
-      groupsHelper.load()
+      groupsHelper.loadWithMultipleCoordinators()
       groupsHelper.openMemberOptionsDropdown()
       groupsHelper.clickLeaveGroupButton()
       groupsHelper.confirmLeaveGroup()
@@ -46,13 +46,13 @@ describe 'Group Page', ->
 
 
     it 'prevents last coordinator from leaving the group', ->
-      groupsHelper.loadWithMultipleCoordinators()
+      groupsHelper.load()
       groupsHelper.openMemberOptionsDropdown()
       groupsHelper.clickLeaveGroupButton()
       expect(groupsHelper.leaveGroupForm().getText()).toContain('You cannot leave this group')
 
-    iit 'prompts last coordinator to add another coordinator in order to leave group', ->
-      groupsHelper.loadWithMultipleCoordinators()
+    it 'prompts last coordinator to add another coordinator in order to leave group', ->
+      groupsHelper.load()
       groupsHelper.openMemberOptionsDropdown()
       groupsHelper.clickLeaveGroupButton()
       groupsHelper.clickAddCoordinatorButton()

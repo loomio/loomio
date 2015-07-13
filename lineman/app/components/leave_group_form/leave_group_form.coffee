@@ -14,7 +14,3 @@ angular.module('loomioApp').factory 'LeaveGroupForm', ->
 
     $scope.canLeaveGroup = ->
       AbilityService.canRemoveMembership($scope.group.membershipFor(CurrentUser))
-
-    $scope.visitMembershipsPage = ->
-      $scope.$close()
-      $location.path("/g/#{group.key}/memberships")
