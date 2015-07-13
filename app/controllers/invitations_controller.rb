@@ -39,7 +39,8 @@ class InvitationsController < ApplicationController
       InvitationService.invite_to_group(recipient_emails: @invite_people_form.emails_to_invite,
                                         message: @invite_people_form.message_body,
                                         group: @invitable,
-                                        inviter: current_user)
+                                        inviter: current_user,
+                                        subject: params[:invite_people_form][:subject])
     elsif @invitable.kind_of?(Discussion)
       MembershipService.add_users_to_discussion(users: @invite_people_form.members_to_add,
                                                 discussion: @discussion,
