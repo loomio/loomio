@@ -80,7 +80,7 @@ describe 'Invitations', ->
         invitationsHelper.invite('mollyringwald@loomio.org')
         invitationsHelper.submitInvitationsForm()
 
-      it 'successfully invites someone', ->
+      xit 'successfully invites someone', ->
         emailHelper.openLastEmail()
         expect(emailHelper.lastEmailSubject().getText()).toContain('Patrick Swayze has invited you to join Dirty Dancing Shoes on Loomio')
 
