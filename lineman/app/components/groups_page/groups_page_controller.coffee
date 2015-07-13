@@ -3,6 +3,5 @@ angular.module('loomioApp').controller 'GroupsPageController', ($rootScope, Curr
   $rootScope.$broadcast('setTitle', 'Groups')
 
   @groups = -> CurrentUser.parentGroups()
-  @groupName = (group) -> group.name
 
   return
