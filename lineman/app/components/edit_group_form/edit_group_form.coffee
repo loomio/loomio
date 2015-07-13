@@ -7,8 +7,13 @@ angular.module('loomioApp').factory 'EditGroupForm', ->
       $scope.group.save().then ->
         $scope.$close()
         FlashService.success 'group_form.edit_group_success'
-      , ->
-        $rootScope.$broadcast 'pageError', 'cantEditGroup', $scope.group
+      , (response) ->
+        console.log(response)
+        $scope.isDisabled = false
+        if response.status == 422
+          $scope.group.setErrors response.data.errors
+        else
+          $rootScope.$broadcast 'pageError', 'cantEditGroup', $scope.group
 
     $scope.validVisibilityOption = (value) =>
       switch value

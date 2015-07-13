@@ -13,6 +13,20 @@ describe 'Group Page', ->
     expect(groupsHelper.discussionTitle().getText()).toContain('Nobody puts baby in a corner')
     expect(groupsHelper.discussionTitle().getText()).toContain("I've had the time of my life")
 
+  it 'successfully edits group name', ->
+    groupsHelper.openMemberOptionsDropdown()
+    groupsHelper.clickEditGroupOption()
+    groupsHelper.editGroupNameTo('Dancing Dirty Shoes')
+    groupsHelper.submitGroupSettingsForm()
+    expect(groupsHelper.groupPage().getText()).toContain('')
+
+   it 'successfully edits group description', ->
+    groupsHelper.openMemberOptionsDropdown()
+    groupsHelper.clickEditGroupOption()
+    groupsHelper.changeGroupVisibilitySettings()
+    groupsHelper.submitGroupSettingsForm()
+    expect(groupsHelper.groupPage().getText()).toContain('This group is only visible to members')
+
   it 'successfully edits group privacy', ->
     groupsHelper.openMemberOptionsDropdown()
     groupsHelper.clickEditGroupOption()
