@@ -1,0 +1,89 @@
+he:
+  memberships_page:
+    email_label: דואל
+    members: חברים
+    name_label: שם
+    coordinator_label: מתאם
+    remove_member: הסרה
+  profile_page:
+    my_groups: קבוצות
+  common:
+    privacy:
+      private: פרטי
+      public: פתוח לציבור
+    action:
+      save: שמירה
+      edit: עריכה
+      like: אהבתי
+      unlike: ביטול לייק
+      cancel: ביטול
+  inbox:
+    clear: נקה/י
+    unread: לא-נקרא
+  session_form:
+    password_label: סיסמא
+  group_page:
+    notifications_label: התרעות
+    invite_people: הזמינו אנשים
+    options_label: אפשרויות
+    options:
+      manage_members: ניהול חברים
+    leave_group:
+      title: עזיבת הקבוצה
+    notifications:
+      following: עוקבים
+      not_following: ללא מעקב
+      not_following_details: תקבלו הודעה על שיחות בהן השתתפתם
+  vote_form:
+    i_agree: אני מסכימ/ה
+    i_abstain: אני נמנע/ת
+    i_abstain_details: אעדיף שהקבוצה תחליט בלעדיי
+    i_disagree: אני לא מסכימ/ה
+    i_disagree_details: אני מאמינ/ה שאנחנו יכולים למצוא פתרון טוב יותר
+    i_block: אני חוסמ/ת
+    submit_position: הגשת עמדה
+  proposal_expanded:
+    close_proposal: סגירת הצעה
+    edit_proposal: עריכת הצעה
+    positions: עמדות
+  proposal_form:
+    start_proposal: התחלת הצעה
+    details_label: פרטים
+  discussion_form:
+    title_label: תואר
+    group_label: קבוצה
+    context_label: הקשר
+  group_form:
+    privacy:
+      label: פרטיות
+      visible_to_members: מי יכול למצא קבוצה זו?
+      membership_granted_upon: איך מצטרפים?
+      private_discussions: דיונים פרטיים בלבד
+    description_label: תיאור
+    profile_label: פרופיל
+    category_label: קרטגוריה
+    permissions:
+      label: הרשאות
+      helptext: מה חברים יכולים לעשות?
+      members_can_add_members: הזמנה ואישור של חברים חדשים
+      members_can_create_subgroups: ליצור תת-קבוצות
+      members_can_edit_comments: עריכת ההערות שלהם בכל עת
+      members_can_vote: הצבעה על הצעה.
+  proposal_position_no: לא
+  new_comment_item:
+    context_menu:
+      delete_comment: מחקו תגובה
+  delete_comment_dialog:
+    question: למחוק את התגובה? בטוחים?
+  contact_message_form:
+    name_label: שמך
+    email_label: כתובת הדוא״ל שלך
+    message_placeholder: ההודעה שלך
+  help_page:
+    getting_started: מתחילים
+    help: עזרה
+    start_discussion: מתחיל בדיון מרתק
+  hint:
+    discussion: טיפים להתחלת דיון מרתק
+  pricing_page:
+    informal_groups_desc: חברי הקבוצה שלך יתבקשו לשלם כפי יכולתם

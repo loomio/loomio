@@ -1,0 +1,95 @@
+ru:
+  memberships_page:
+    email_label: Email
+    members: Участники
+    name_label: Имя
+    coordinator_label: Координатор
+    remove_member: Удалить
+  profile_page:
+    my_groups: Группы
+  common:
+    privacy:
+      private: Приватная
+      public: Публичная
+    action:
+      save: Сохранить
+      edit: Редактировать
+      like: Нравится
+      unlike: Не нравится
+      cancel: Отмена
+  inbox:
+    clear: Очистить
+    unread: Непрочитанные
+  session_form:
+    password_label: Пароль
+  new_comment_item:
+    context_menu:
+      edit_comment: Редактировать коментарий
+      delete_comment: Удалить комментарий
+  group_page:
+    notifications_label: Уведомления
+    invite_people: Пригласите людей
+    options_label: Опции
+    options:
+      manage_members: Управление участниками
+    leave_group:
+      title: Покинуть группу
+    notifications:
+      following: Отслеживаю
+      not_following: Не отслеживаю
+  vote_form:
+    i_agree: Я согласен
+    i_abstain: Я воздерживаюсь
+    i_abstain_details: "Я был бы рад, если группа примет решение без меня."
+    i_disagree: Я не соласен
+    i_block: Я блокирую
+  proposal_expanded:
+    close_proposal: Закрыть предложение
+  discussion_form:
+    title_label: Название
+    group_label: Группа
+    context_label: Описание
+  proposal_form:
+    details_label: Детали
+  group_form:
+    privacy:
+      label: Конфиденциальность
+      visible_to_members: Кто может видеть эту группу?
+      membership_granted_upon: Как люди вступают в группу?
+      private_discussions: Только закрытые обсуждения
+    description_label: Описание
+    profile_label: Профиль
+    category_label: Категория
+    permissions:
+      label: Разрешения
+      helptext: "Участники могут:"
+      members_can_add_members: Приглашать и утверждать участников.
+      members_can_create_subgroups: Создавать подгруппы.
+      members_can_edit_comments: Редактировать свои коментарии
+      members_can_vote: Голосовать.
+  proposal_position_no: Нет
+  delete_comment_dialog:
+    question: Вы уверены что хотите удалить комментарий?
+  help_page:
+    different_ways: Различные способы использовать Loomio
+    get_in_touch_description_html: "Если у Вас есть вопросы или отзыв, <a href='%{link}'>черкните нам пару строк</a>."
+    getting_started: С чего начать
+    help: Помощь
+    how_it_works: Как это работает
+    join_the_community: Присоединиться к сообществу
+    make_a_decision: Принять решение
+    make_a_decision_description: "Когда группа готова принять решение, каждый может сделать предложение. Обозначьте ясный порядок действий и дайте пояснения, чтобы каждый точно знал, что означает согласиться или не согласиться."
+    positions_agree_description: "<span>Согласен(-на)</span> означает, что Вы довольны предложением."
+    start_discussion: Начиная интересное обсуждение
+    start_proposal: Написание понятного предложения
+    video_tutorial: Видеоучебник
+    video_tutorial_description: "Посмотрите видео, которое вкратце покажет, как использовать Loomio."
+  hint:
+    context: Подсказки для использования контекстной панели
+    discussion: Подсказки для начала увлекательного обсуждения
+    invitation: Подсказки для написания отличного приглашения
+    proposal: Подсказки для написания понятного предложения
+  pricing_page:
+    organisations: Организации
+    informal_groups: Неформальные группы
+    informal_groups_desc: "У членов Вашей группы попросят заплатить, сколько они смогут"

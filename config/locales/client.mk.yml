@@ -1,0 +1,80 @@
+mk:
+  memberships_page:
+    email_label: Email
+    members: Членови
+    name_label: Име
+    coordinator_label: Координатор
+    remove_member: Избриши
+  common:
+    privacy:
+      public: Јавно
+    action:
+      save: Зачувај
+      edit: Измени
+      like: Ми се допаѓа
+      unlike: Не ми се допаѓа
+      cancel: Откажи
+  session_form:
+    password_label: Лозинка
+  new_comment_item:
+    context_menu:
+      edit_comment: Измени го коментарот
+      delete_comment: Избриши го коментарот
+  group_page:
+    notifications_label: Известувања
+    invite_people: Покани луѓе
+    options_label: Опции
+    leave_group:
+      title: Напушти ја групата
+  help_page:
+    have_your_say: Кажете што имате
+    different_ways: Различни начини да го користиш Loomio
+    get_in_touch: Останете во контакт
+    getting_started: Започни
+    have_a_discussion: Дискутирајте
+    help: Помош
+    how_it_works: Како работи
+    join_the_community: Придружи се на заедницата
+    keep_up_to_date: Бидете во тек
+    make_a_decision: Направи одлука
+    positions_agree_description: "<span>Се сложувам</span> значи дека сте задоволни со предлогот."
+    positions_abstain_description: "<span>Воздржан</span> значи дека сте несигурни или дека е во ред групата да одлучи без вас."
+    video_id: "52025402"
+    video_tutorial: Видео туторијал
+    video_tutorial_description: Провери го видеото за брза демонстрација како се користи Loomio.
+  vote_form:
+    i_agree: Се согласувам
+    i_abstain: Апстинирам
+    i_disagree: Не се согласувам
+  proposal_expanded:
+    close_proposal: Затвори го предлогот
+    edit_proposal: Измени го предлогот
+    positions: Позиции
+  discussion_form:
+    title_label: Наслов
+    group_label: Група
+    context_label: Контекст
+  proposal_form:
+    closes_at_label: Се затвора во
+    details_label: Детали
+  group_form:
+    privacy:
+      label: Приватност
+      visible_to_members: Кој може да ја пронајде групава?
+      membership_granted_upon: Како луѓето се придружуваат?
+    description_label: Опис
+    profile_label: Профил
+    category_label: Категорија
+    permissions:
+      helptext: Што можат да направат членовите?
+      members_can_add_members: Покани и одобри нови членови.
+  proposal_position_no: Не
+  delete_comment_dialog:
+    question: Дали си сигурен/а дека сакаш да го избришиш коментарот?
+  contact_message_form:
+    name_label: Твоето име
+    email_label: Твојата електронска пошта
+    message_placeholder: Твојата порака
+  pricing_page:
+    organisations: Организации
+    informal_groups: Неформални групи

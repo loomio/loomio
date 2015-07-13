@@ -1,0 +1,57 @@
+hr:
+  common:
+    privacy:
+      public: Javno
+  inbox:
+    clear: Obriši
+  new_comment_item:
+    context_menu:
+      edit_comment: Ažuriranje komentara
+      delete_comment: Obriši komentar
+  group_page:
+    notifications_label: Notifikacije
+    invite_people: Pozovi ljude
+    options:
+      manage_members: Upravljanje članovima
+    leave_group:
+      title: Napusti grupu
+    notifications:
+      not_following_details: Dobivat ćete obavijesti o temama u kojima sudjelujete.
+  vote_form:
+    i_agree: Slažem se
+    i_abstain: Suzdržan / a sam
+    i_abstain_details: " Slažem se da grupa odluči bez mene."
+    i_disagree: Ne slažem se
+    i_disagree_details: Mislim da vjerojatno možemo bolje.
+    i_block: Blokiram
+    i_block_details: Imam snažne prigovore na ovaj prijedlog i nisam za to da prođe.
+  proposal_expanded:
+    close_proposal: Zatvori prijedlog
+    positions: Stavovi
+  group_form:
+    privacy:
+      label: Privatnost
+      visible_to_members: Tko može naći ovu grupu?
+      membership_granted_upon: Kako se pridružiti?
+      private_discussions: Samo privatne rasprave
+    description_label: Opis
+    profile_label: Profil
+    category_label: Kategorija
+    permissions:
+      helptext: Što mogu članovi?
+      members_can_add_members: Pozivati i odobravati nove članove.
+      members_can_create_subgroups: Kreirati podgrupe.
+      members_can_edit_comments: Bili kada ažurirati komentare
+      members_can_vote: "Glasati o prijedlozima. "
+  memberships_page:
+    members: Članovi
+  delete_comment_dialog:
+    question: Jeste li sigurni da želite obrisati komentar?
+  help_page:
+    coordinating: Koordinacije vaše Loomio grupe
+    coordinating_details: "Kao koordinator / ica, odgovorni ste za postavljanje vaše Loomio grupe i pozivanje\nčlanova. Također se morate naučiti koristiti novi softver, pa će i vaša grupa učinkovitije učiti nove procese kolaboracije i zajedno donositi bolje odluke. Ovo su neke smjernice za bolji uspjeh vaše grupe:\n"
+    different_ways: Različiti načini korištenja Loomia
+    get_in_touch: Stupite u kontakt
+    get_in_touch_description_html: "Ako imate pitanje ili prijedlog, <a href='%{link}'>javite nam se</a>."
+    getting_started: Početak rada
+    getting_started_description: "S lijeve strane grupa raspravlja o temi razmjenjujući ideje i informacije. Kad grupa mora donijeti odluku, ona se pojavljuje s desne strane."

@@ -1,0 +1,40 @@
+pl:
+  memberships_page:
+    email_label: E-mail
+    members: Członkowie
+  common:
+    action:
+      save: Zapisz
+  session_form:
+    password_label: Hasło
+  group_page:
+    notifications_label: Powiadomienia
+    invite_people: Zaproś ludzi
+    options_label: Opcje
+    leave_group:
+      title: Opuść grupę
+  vote_form:
+    i_agree: Zgadzam się
+    i_disagree: Nie zgadzam się
+    submit_position: Prześlij stanowisko
+  proposal_expanded:
+    close_proposal: Zamknij propozycję
+    positions: Stanowiska
+  proposal_form:
+    details_label: Szczegóły
+  discussion_form:
+    group_label: Grupa
+  group_form:
+    privacy:
+      label: Prywatność
+  proposal_position_no: Nie
+  new_comment_item:
+    context_menu:
+      delete_comment: Usuń komentarz
+  help_page:
+    help: Pomoc
+    how_it_works: Jak to działa
+    join_the_community: Dołącz do społeczności
+    make_a_decision: Podejmij decyzję
+  hint:
+    vote: W każdej chwili możesz zmienić swoje stanowisko

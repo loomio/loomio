@@ -1,0 +1,83 @@
+ga-IE:
+  memberships_page:
+    email_label: Seoladh ríomhphoist
+    members: Comhaltaí
+    name_label: Ainm
+    remove_member: Bain é
+  profile_page:
+    my_groups: Baiclí
+  common:
+    privacy:
+      private: Príobháideach
+      public: Poiblí
+    action:
+      save: Taisc
+      edit: Cuir in eagar é
+      cancel: Cealaigh
+  inbox:
+    unread: Neamhléite
+  session_form:
+    password_label: Focal faire
+  new_comment_item:
+    context_menu:
+      edit_comment: Déan eagarthóireacht ar an trácht
+      delete_comment: Scrios an trácht
+  group_page:
+    notifications_label: Fógraí
+    invite_people: Tabhair cuirí do dhaoine
+    options_label: Roghanna
+    leave_group:
+      title: Fág an dream seo
+  help_page:
+    have_your_say: Abair leat
+    different_ways: Bealaí éagsúla chun feidhm a bhaint as Loomio
+    get_in_touch: Déan teagmháil
+    get_in_touch_description_html: "Má tá aon cheist nó aiseolas agat dúinn, <a href='%{link}'>cuir teachtaireacht chugainn</a>."
+    getting_started: Ag tosú ar dtús báire
+    getting_the_most: Bain an leas is fearr as Loomio
+    have_a_discussion: Bíodh plé ann
+    help: Cabhair
+    how_it_works: Conas mar a fheidhmíonn sé
+    join_the_community: Bí sa phobal
+    keep_up_to_date: Fan ar an eolas
+    make_a_decision: Déan cinneadh
+    positions_agree_description: "Ciallaíonn <span>Aontaíom</span> go bhfuil tú sásta leis an dtogra."
+    video_id: "52025402"
+    video_tutorial: Físeán teagaisc
+  vote_form:
+    i_agree: Aontaíom
+    i_disagree: Ní aontaíom
+    i_disagree_details: "Dar liom, tig linn rud éigin níos fearr a dhéanamh."
+    i_block: Crosaim é
+    submit_position: Cuir seasamh isteach
+  proposal_expanded:
+    close_proposal: Dún an togra
+    edit_proposal: Leasaigh an togra
+    positions: Seasaimh
+  proposal_form:
+    start_proposal: Tosaigh an togra
+    closes_at_label: Dúnann sé ag a
+    details_label: Sonraí
+  discussion_form:
+    title_label: Teideal
+    group_label: Baicle
+    context_label: Comhthéacs
+  group_form:
+    privacy:
+      label: Príobháideachas
+      visible_to_members: Cé ar féidir leo an bhaicle seo a aimsiú?
+      membership_granted_upon: Conas mar is féidir le daoine clárú?
+    description_label: Cur síos
+    profile_label: Beathaisnéisín
+    category_label: Aicme
+    permissions:
+      helptext: Cad is féidir leis na baill a dhéanamh?
+  delete_comment_dialog:
+    question: An bhfuil tú cinnte go dteastaíonn uait an trácht seo a scriosadh?
+  contact_message_form:
+    name_label: "D'ainm"
+    email_label: Do sheoladh ríomhphoist
+    message_placeholder: Do theachtaireacht
+  pricing_page:
+    organisations: Eagraíochtaí
+    organisations_examples: "m.sh. gnólachtaí, gníomhaireachtaí rialtais, eagraíochtaí pobail"
