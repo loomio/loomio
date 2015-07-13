@@ -5,6 +5,7 @@ Loomio::Application.routes.draw do
     get 'setup_group'
     get 'setup_group_for_invitations'
     get 'setup_group_to_join'
+    get 'setup_group_with_multiple_coordinators'
     get 'setup_discussion'
     get 'setup_discussion_with_comment'
     get 'setup_proposal'

@@ -332,6 +332,8 @@ en:
       title: 'Leave group'
       question: 'Are you sure you want to leave this group?'
       submit: 'Yes, leave this group'
+      cannot_leave_group: 'You cannot leave this group because you are the last coordinator. You will need to choose another coordinator or deactivate the group.'
+      add_coordinator: 'Add a coordinator'
     volume:
       loud: Email whenever there is activity.
       loud_aria_description: Your notification volume for this group is set to Loud. You will be emailed whenever there is activity.

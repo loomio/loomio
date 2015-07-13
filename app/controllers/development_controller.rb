@@ -16,7 +16,14 @@ class DevelopmentController < ApplicationController
 
   def setup_group
     cleanup_database
-    test_group
+    test_group.add_admin! emilio
+    sign_in patrick
+    redirect_to group_url(test_group)
+  end
+
+  def setup_group_with_multiple_coordinators
+    cleanup_database
+    test_group.add_member! emilio
     sign_in patrick
     redirect_to group_url(test_group)
   end
