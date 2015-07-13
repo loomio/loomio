@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   SMALL_IMAGE = 25
   MAX_AVATAR_IMAGE_SIZE_CONST = 10.megabytes
 
-  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
+  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :omniauthable
   attr_accessor :honeypot
 
   validates :email, presence: true, uniqueness: true, email: true
