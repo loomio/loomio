@@ -1,4 +1,4 @@
-require 'http_accept_language'
+#require 'http_accept_language'
 
 module LocalesHelper
   def selectable_locales
@@ -72,24 +72,19 @@ module LocalesHelper
 
   private
 
-  def all_locale_strings
-    I18n.available_locales.map &:to_s
-  end
-
   def browser_accepted_locales
     header = request.env['HTTP_ACCEPT_LANGUAGE']
     parser = HttpAcceptLanguage::Parser.new(header)
 
-    filter_locales(parser.user_preferred_languages, all_locale_strings)
+    filter_locales(parser.user_preferred_languages, I18n.available_locales)
   end
 
   def best_locale
     selected_locale || detected_locale || default_locale
   end
 
-  # 2 of 2 places untrusted user input can enter system
   def params_selected_locale
-    filter_locales(params[:locale], all_locale_strings).first
+    filter_locales(params[:locale], I18n.available_locales).first
   end
 
   def user_selected_locale
@@ -105,10 +100,7 @@ module LocalesHelper
   end
 
   def filter_locales(input_locales, valid_locales)
-    input_locales = Array(input_locales).map &:to_s
-    valid_locales = Array(valid_locales).map &:to_s
-
-    ( input_locales & valid_locales ).map(&:to_sym)
+    Array(input_locales).map(&:to_sym) & Array(valid_locales).map(&:to_sym)
   end
 
   def language_options_for(*locales, link_values: false)
