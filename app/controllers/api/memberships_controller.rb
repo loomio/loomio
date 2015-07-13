@@ -1,8 +1,7 @@
 class API::MembershipsController < API::RestfulController
 
   def join_group
-    @group = Group.find(params[:group_id])
-    event = MembershipService.join_group group: @group, actor: current_user
+    event = MembershipService.join_group actor: current_user, params: params
     @membership = event.eventable
     respond_with_resource
   end

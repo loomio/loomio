@@ -12,7 +12,8 @@ class GroupService
     group
   end
 
-  def self.archive(group:, actor:)
+  def self.archive(group: nil, actor:, params: {})
+    group ||= ModelLocator.new(:group, params).locate
     actor.ability.authorize! :archive, group
     group.archive!
   end

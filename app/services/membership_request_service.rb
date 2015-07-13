@@ -9,7 +9,8 @@ class MembershipRequestService
     Events::MembershipRequested.publish!(membership_request)
   end
 
-  def self.approve(membership_request:, actor: )
+  def self.approve(membership_request: nil, actor:, params: {})
+    membership_request ||= ModelLocator.new(:membership_request, params).locate
     actor.ability.authorize! :approve, membership_request
     requestor = membership_request.requestor
     membership_request.approve!(actor)
@@ -24,10 +25,13 @@ class MembershipRequestService
       membership = group.add_member! requestor
       Events::MembershipRequestApproved.publish!(membership, actor)
     end
+    membership_request
   end
 
-  def self.ignore(membership_request: , actor: )
+  def self.ignore(membership_request: nil, actor:, params: {})
+    membership_request ||= ModelLocator.new(:membership_request, params).locate
     actor.ability.authorize! :ignore, membership_request
     membership_request.ignore!(actor)
+    membership_request
   end
 end
