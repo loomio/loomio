@@ -6,7 +6,7 @@ angular.module('loomioApp').factory 'EditGroupForm', ->
     $scope.submit = ->
       $scope.group.save().then ->
         $scope.$close()
-        FlashService.success 'group_form.edit_group_success'
+        FlashService.success 'edit_group_form.messages.success'
       , (response) ->
         console.log(response)
         $scope.isDisabled = false

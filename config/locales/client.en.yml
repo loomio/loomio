@@ -348,6 +348,7 @@ en:
       private: 'This group is only visible to members'
       parent_members: 'This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
       public: 'This group is visible on the web'
+
   edit_group_form:
     title: 'Edit Group Settings'
     profile:
@@ -382,6 +383,8 @@ en:
       members_can_raise_motions: 'Start proposals'
       members_can_vote: 'Vote on proposals'
     submit:  'Update Settings'
+    messages:
+      success: 'Successfully updated your group'
 
   membership_requests_card:
     heading: 'Membership Requests ({{count}})'

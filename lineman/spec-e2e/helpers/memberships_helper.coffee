@@ -33,5 +33,5 @@ module.exports = new class MembershipsHelper
   currentCoordinatorsCount: ->
     element.all(By.css('.coordinator')).count()
 
-  pageHeader: ->
+  membershipsPageHeader: ->
     element(By.css('.memberships-page__memberships h2'))

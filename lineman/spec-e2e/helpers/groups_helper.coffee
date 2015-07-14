@@ -62,14 +62,32 @@ module.exports = new class GroupsHelper
   changeVotingPermissions: ->
     @votePermissionsCheckbox().click()
 
-  editGroupNameTo: (name) ->
-    element.By.css('.edit-group-form__group-name')).sendKeys(name)
+  groupNameInput: ->
+    element(By.css('.edit-group-form__name'))
 
-  submitGroupSettingsForm: ->
+  editGroupName: (name) ->
+    @groupNameInput().clear().sendKeys(name)
+
+  clearGroupNameInput: ->
+    @groupNameInput().clear()
+
+  editGroupFormValidationErrors: ->
+    element(By.css('.lmo-validation-error'))
+
+  editGroupDescription: (description) ->
+    element(By.css('.edit-group-form__description')).sendKeys(description)
+
+  groupPageDescriptionText: ->
+    element(By.css('.group-page__description-text'))
+
+  submitEditGroupForm: ->
     element(By.css('.edit-group-form__submit-button')).click()
 
   groupPage: ->
     element(By.css('.group-page'))
+
+  groupPageHeader: ->
+    element(By.css('.group-page__name h1'))
 
   clickJoinGroupButton: ->
     element(By.css('.join-group-button__join-group')).click()
