@@ -1,10 +1,11 @@
-angular.module('loomioApp').factory 'CurrentUser', (Records) ->
+angular.module('loomioApp').factory 'CurrentUser', ($rootScope, Records) ->
   currentUser = null
   if window? and window.Loomio?
     window.Loomio.seedRecords.users = [] unless window.Loomio.seedRecords.users?
     window.Loomio.seedRecords.users.push window.Loomio.seedRecords.current_user
     Records.import(window.Loomio.seedRecords)
-    Records.memberships.fetchMyMemberships()
+    Records.memberships.fetchMyMemberships().then ->
+      $rootScope.$broadcast 'currentUserMembershipsLoaded'
     currentUser =  Records.users.find(window.Loomio.currentUserId)
 
   currentUser
