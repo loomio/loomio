@@ -4,7 +4,7 @@
       %h1.lmo-h1-medium.inbox-page__heading{translate: 'inbox_page.unread_threads'}
       .inbox-page__no-threads{ng-hide: 'inboxPage.baseQuery.any()'}
         %span{translate: 'inbox_page.no_threads'}>
-      .inbox-page__group{ng-repeat: 'group in inboxPage.groups() track by group.id | orderBy:inboxPage.groupName'}
+      .inbox-page__group{ng-repeat: 'group in inboxPage.groups() | orderBy:"name" track by group.id'}
         %section{ng-if: 'inboxPage.queryFor(group).any()', role: 'region', aria-label: "{{ 'inbox_page.threads_from.group' | translate }} {{group.name}}"}
           %img.selector-list-item-group-logo.pull-left{ng-src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
           %h2.inbox-page__group-name
