@@ -47,8 +47,8 @@ Set to 1 if you want to allow robots (search engines) to crawl the public data o
 
 By default all of these values are empty; these need to be set to enable each OAuth2 login/signup method.
 
-- ENABLE_PERSONA (defaults to true)
-- ENABLE_EMAIL_PASSWORD (display password registration form, defaults to true)
+- DISABLE_PERSONA
+- DISABLE_EMAIL_PASSWORD (disable password registration form)
 - GOOGLE_KEY
 - GOOGLE_SECRET
 - FACEBOOK_KEY

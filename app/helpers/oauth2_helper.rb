@@ -13,7 +13,7 @@ module Oauth2Helper
   end
 
   def has_persona?
-    Rails.application.secrets.enable_persona
+    !Rails.application.secrets.disable_persona
   end
 
   def has_custom_oauth2?
@@ -21,7 +21,7 @@ module Oauth2Helper
   end
 
   def has_email_password?
-    Rails.application.secrets.enable_email_password
+    !Rails.application.secrets.disable_email_password
   end
 
 end
