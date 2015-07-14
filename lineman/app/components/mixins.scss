@@ -17,10 +17,15 @@ $main-max-width: 640px;
 $large-max-width: 960px;
 $navbar-height: 44px;
 
-$agree-color: hsl(148, 40, 52);
+/*$agree-color: hsl(148, 40, 52);
 $abstain-color: hsl(37, 92, 61);
 $disagree-color: hsl(352, 79, 70);
-$block-color: hsl(7, 68, 49);
+$block-color: hsl(7, 68, 49);*/
+
+$agree-color: #2f7d32;
+$abstain-color: #f67f17;
+$disagree-color: #ab46bc;
+$block-color: #d60000;
 
 $agree-border-color: darken($agree-color, 10%);
 $disagree-border-color: darken($disagree-color, 10%);
