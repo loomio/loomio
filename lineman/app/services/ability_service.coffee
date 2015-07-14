@@ -8,9 +8,9 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
 
     canEditThread: (thread) ->
       CurrentUser.isMemberOf(thread.group()) and
-      (@canAdministerGroup(thread.group()) or
-      CurrentUser.isAuthorOf(thread) or
-      thread.group().membersCanEditDiscussions)
+        (@canAdministerGroup(thread.group()) or
+         CurrentUser.isAuthorOf(thread) or
+         thread.group().membersCanEditDiscussions)
 
     canVoteOn: (proposal) ->
       proposal.isActive() and
@@ -55,7 +55,7 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
 
     canEditComment: (comment) ->
       CurrentUser.isAuthorOf(comment) and
-      comment.isMostRecent() or comment.group().membersCanEditComments
+      (comment.isMostRecent() or comment.group().membersCanEditComments)
 
     canDeleteComment: (comment) ->
       CurrentUser.isAuthorOf(comment) or
