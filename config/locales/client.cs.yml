@@ -100,18 +100,6 @@ cs:
       label: Nastavení
     leave_group:
       title: Opustit skupinu
-    edit_group:
-      privacy:
-        label: Soukromí
-        visible_to_members: Kdo může najít tuto skupinu?
-        membership_granted_upon: Jak se lidé připojí?
-      permissions:
-        label: Oprávnění
-        helptext: Co mohou členové dělat?
-        members_can_add_members: Pozvat a schválit nové členy
-        members_can_create_subgroups: Vytvořit podskupiny
-        members_can_edit_comments: Upravit kdykoliv své komentáře
-        members_can_vote: Hlasovat o návrzích
   membership_requests_page:
     approve: Schválit
     ignore: Ignorovat

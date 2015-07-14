@@ -83,19 +83,6 @@ ru:
       label: Опции
     leave_group:
       title: Покинуть группу
-    edit_group:
-      privacy:
-        label: Конфиденциальность
-        visible_to_members: Кто может видеть эту группу?
-        membership_granted_upon: Как люди вступают в группу?
-        private_discussions: Только участники могут видеть обсуждения
-      permissions:
-        label: Разрешения
-        helptext: "Участники могут:"
-        members_can_add_members: Приглашать новых участников
-        members_can_create_subgroups: Создавать подгруппы
-        members_can_edit_comments: Редактировать свои коментарии
-        members_can_vote: Голосовать
   membership_requests_page:
     approve: Подтвердить
     ignore: Игнорировать

@@ -54,18 +54,6 @@ hr:
     invite_people: Pozovi ljude
     leave_group:
       title: Napusti grupu
-    edit_group:
-      privacy:
-        label: Privatnost
-        visible_to_members: Tko može naći ovu grupu?
-        membership_granted_upon: Kako se pridružiti?
-        private_discussions: Samo članovi vide rasprave
-      permissions:
-        helptext: Što mogu članovi?
-        members_can_add_members: Pozivati i odobravati nove članove
-        members_can_create_subgroups: Stvarati podgrupe
-        members_can_edit_comments: Bili kada ažurirati komentare
-        members_can_vote: Glasati o prijedlozima
   membership_requests_page:
     ignore: Ignoriraj
   group_form:

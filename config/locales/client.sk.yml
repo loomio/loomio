@@ -102,19 +102,6 @@ sk:
       label: Nastavenia
     leave_group:
       title: Opustiť skupinu
-    edit_group:
-      privacy:
-        label: Súkromie
-        visible_to_members: Kto môže nájsť túto skupinu?
-        membership_granted_upon: Ako sa môžu ľudia pripojiť?
-        private_discussions: Len členovia môžu vidieť diskusie
-      permissions:
-        label: Oprávnenie
-        helptext: Čo môžu členovia robiť?
-        members_can_add_members: Pozvať a schváliť nových členov
-        members_can_create_subgroups: Vytvoriť podskupiny
-        members_can_edit_comments: Upraviť kedykoľvek svoje komentáre
-        members_can_vote: Hlasovať o návrhoch
   membership_requests_page:
     approve: Schváliť
     ignore: Ignorovať

@@ -112,19 +112,6 @@ sl:
       loud: Pošlji email ob vsaki aktivnosti.
       quiet: Ne pošiljaj emailov za to skupino. Nove aktivnosti bodo objavljene na nadzorni plošči.
       mute: "Skrij to skupino iz nadzorne plošče in me ne obveščaj, razen če sem @omenjen/a."
-    edit_group:
-      privacy:
-        label: Zasebnost
-        visible_to_members: Kdo lahko najde to skupino?
-        membership_granted_upon: Kako se lahko pridruži še kdo?
-        private_discussions: Samo člani lahko vidijo razprave
-      permissions:
-        label: Dovoljenja
-        helptext: Kaj lahko počnejo člani?
-        members_can_add_members: Povabijo in potrjujejo nove člane
-        members_can_create_subgroups: Ustvarjajo podskupine
-        members_can_edit_comments: Urejajo vse svoje komentarje
-        members_can_vote: Glasujejo o predlogih
   membership_requests_page:
     approve: Potrdi
     ignore: Prezri

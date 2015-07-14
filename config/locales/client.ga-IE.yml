@@ -100,16 +100,6 @@ ga-IE:
       title: Fág an dream seo
     volume:
       loud: Seol ríomhphost chugam nuair a bhíonn gníomhaíocht ann.
-    edit_group:
-      privacy:
-        label: Príobháideachas
-        visible_to_members: Cé ar féidir leo an bhaicle seo a aimsiú?
-        membership_granted_upon: Conas mar is féidir le daoine clárú?
-      permissions:
-        label: Ceadanna
-        helptext: Cad is féidir leis na baill a dhéanamh?
-        members_can_create_subgroups: Cruthaigh fobhaiclí
-        members_can_vote: Caith do ghuth i dtaobh tograí
   membership_requests_page:
     approve: Ceadaigh
     ignore: Déan neamhaird de

@@ -91,19 +91,6 @@ he:
       label: אפשרויות
     leave_group:
       title: עזיבת הקבוצה
-    edit_group:
-      privacy:
-        label: פרטיות
-        visible_to_members: מי יכול למצא קבוצה זו?
-        membership_granted_upon: איך מצטרפים?
-        private_discussions: רק חברים יכולים לראות את הדיונים
-      permissions:
-        label: הרשאות
-        helptext: מה חברים יכולים לעשות?
-        members_can_add_members: הזמנה ואישור של חברים חדשים
-        members_can_create_subgroups: צרו תת-קבוצה
-        members_can_edit_comments: עריכת ההערות שלהם בכל עת
-        members_can_vote: הצבעה על הצעה
   membership_requests_page:
     approve: אישור
     ignore: התעלמ/י

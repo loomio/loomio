@@ -1,0 +1,15 @@
+lt:
+  new_help:
+    how_loomio_works:
+      invite_people_link: Pakviesti žmones
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Kas gali rasti šią grupę?
+        how_do_people_join:
+          title: Kaip žmonės prisijungia?
+      group_permissions:
+        what_can_members_do:
+          title: Ką gali daryti nariai?
+          invite_and_approve_new_members:
+            title: Kviesti ir tvirtinti naujus narius

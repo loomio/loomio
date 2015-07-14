@@ -3,29 +3,48 @@ pt-BR:
     time:
       am: am
       pm: pm
+    closing_in: "Fechando {{time}}"
+    closed_ago: "Fechado {{time}}"
     volume: Volume
+    notification_volume: Volume de Notificações
     group: Grupo
     groups: Grupos
     privacy:
       private: Privado
       public: Público
+      organisation: Organização
+    selected: Selecionado
     date_range:
       today: Hoje
+      yesterday: Ontem
+      thisweek: Esta Semana
+      thismonth: Este Mês
+      older: Antigos
     models:
       proposal: Proposição
     action:
       save: Salvar
+      save_changes: Salvar mudanças
+      reply: Responder
       edit: Editar
       like: Curtir
       unlike: Curtir (desfazer)
       cancel: Cancelar
+      show_more: Mostrar mais
+      view_all: Ver Tudo
+      new_thread: Novo tópico
+      add_subgroup: Adicionar subgrupo
   error_page:
     forbidden: Você não tem permissão para fazer isso.
+  start_proposal_card:
+    title: Iniciar uma proposta
   proposal_outcome_panel:
     heading: Resultado
   proposal_outcome_form:
     outcome_label: Resultado da proposição
     publish_outcome: Publicar resultado
+  proposal_collapsed:
+    expand: Expandir
   context_card:
     heading: Contexto
   volume_levels:
@@ -35,31 +54,66 @@ pt-BR:
     mute: Mudo
   inbox:
     clear: Limpar
+    latest: Último
     unread: Não lida
+    closing_in: Encerrando
+  session_form:
+    email_label: "E-mail:"
+    password_label: "Senha:"
+    remember_me: Lembre-me
+    sign_in: Login
   comment_form:
+    aria_label: Adicionar um comentário
+    attachments:
+      aria_label: Anexar um arquivo
+      remove_attachment: Remover anexo
     edit_comment: Editar comentários
     delete_comment: Apagar comentário
+    cancel_reply: Cancelar Resposta
     confirm_delete_message: Tem certeza que quer apagar este comentário?
+    confirm_delete: "Sim, tenho certeza"
+    in_reply_to: "Em resposta a <strong>{{name}}</strong>:"
+    submit_button:
+      label: Postagem
   navbar:
+    recent: Recente
     unread: Não lida
     groups: Grupos
+    recent_title: Ir para o painel
+    unread_title: Ver atividades não lidas
+    groups_title: Ver seus grupos
+    start_thread: Iniciar um novo tópico
+    notifications: Painel de notificações
     user_options:
+      label: Menu de opções do usuário
       contact_us: Contacte-nos
+      new_thread: Novo tópico
       new_group: Novo grupo
       profile: Perfil
       help: Ajuda
     search:
+      close: Fechar painel de pesquisa
       placeholder: Pesquisar
+      loading: Carregando resultados...
       discussions: Tópicos
       proposals: Propostas
       comments: Comentários
+      no_results: Nenhum resultado encontrado
+  start_menu:
+    start_group: Iniciar Grupo
+    start_subgroup: Iniciar Subgrupo
+    start_thread: Iniciar Tópico
+    invite_people: Convidar Pessoas
   notifications:
     header: Notificações
   position_buttons_panel:
     heading: Dê a sua opinião
   vote_form:
     heading: Dê a sua opinião
+    no_statement: Nenhuma afirmação.
+    submitted_your_vote: Enviou o seu voto.
     i_agree: Eu concordo
+    i_agree_details: Eu apoio isso e quero que siga em frente.
     i_abstain: Eu me abstenho
     i_abstain_details: Estou feliz com o que o grupo decidir sem mim.
     i_disagree: Eu discordo
@@ -67,12 +121,33 @@ pt-BR:
     i_block: Eu veto
     i_block_details: Eu tenho fortes objeções a esta proposta e NÃO concordo que vá adiante.
     submit_position: Enviar posição
+    change_position: Modificar posição
+    select_position: Selecionar posição
+    statement_placeholder: Compartilhe seus pensamentos com o grupo.
+    aria_statement_label: "Opcionalmente, insira uma declaração para ser registrada com a sua posição"
   proposal_positions_panel:
     heading: Posições
+    no_votes_yet: Ninguém votou nesta proposta ainda.
+    change_your_vote: Modifique seu voto.
+  undecided_panel:
+    show_undecided: Mostrar membros indecisos
+    hide_undecided: Ocultar membros indecisos
+  proposal_pie_chart:
+    participation_statement: "{{percentage}}% dos membros manifestaram suas posições ({{number}}/{{total}})"
   close_proposal_form:
     close_proposal: Encerrar proposição
+    helptext: Tem certeza de que deseja encerrar esta proposta agora?
+    close_proposal_submit: "Sim, encerrar proposta"
+  extend_proposal_form:
+    title: Mudar hora de encerramento
+    success: Hora de encerramento da proposta atualizada
+    submit: Atualizar hora de encerramento
   proposal_form:
+    messages:
+      created: Criou sua proposta com sucesso
+      updated: Proposta atualizada
     start_proposal: Iniciar proposição
+    start_a_proposal: Iniciar uma proposta
     edit_proposal: Editar proposta
     title_label: Título
     closes_at_label: Encerra em
@@ -89,6 +164,7 @@ pt-BR:
     heading: Iniciar um grupo
     group_helptext: "Para começar a tomar decisões em conjunto no Loomio, crie um grupo gratuitamente:"
     name_label: Nome do Grupo
+    submit: Iniciar Grupo
   join_group_button:
     join_group: Entrar no grupo
     ask_to_join_group: Pedir para entrar no grupo
@@ -116,28 +192,19 @@ pt-BR:
       loud: Enviar e-mail sempre que houver atividade.
       quiet: Não enviar e-mail sobre esse grupo. Atividades serão exibidas no painel.
       mute: "Esconder este grupo do painel e não notificar a não ser quando @mencionado."
-    edit_group:
-      privacy:
-        label: Privacidade
-        visible_to_members: Quem pode encontrar esse grupo?
-        membership_granted_upon: Como as pessoas participam?
-        private_discussions: Apenas os membros podem ver discussões
-      permissions:
-        label: Permissões
-        helptext: O que os membros podem fazer?
-        members_can_add_members: Convidar e aprovar novos membros
-        members_can_create_subgroups: Criar subgrupos
-        members_can_edit_comments: Edite os seus comentários a qualquer momento
-        members_can_vote: Votar em propostas
   membership_requests_page:
     approve: Aprovar
     ignore: "Ignorar "
   group_form:
+    messages:
+      update_group: Modificações salvas
     edit_group_title: Configurações do Grupo
     profile_label: Perfil
     name_label: Nome
     description_label: Descrição
     category_label: Categoria
+  invitation:
+    invite_people: Convidar Pessoas
   memberships_page:
     members: Membros
     name_label: Nome
@@ -168,6 +235,7 @@ pt-BR:
       proposals: Propostas
     threads_from:
       today: Hoje
+      yesterday: Ontem
   discussion:
     proposals: Propostas
     volume:

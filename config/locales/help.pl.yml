@@ -1,10 +1,52 @@
 pl:
   new_help:
     how_loomio_works:
+      start_group_link: Uruchomienie grupy
       invite_people_link: Zaproś ludzi
       start_discussion_link: Rozpocznij dyskusję
     contents:
+      group_settings:
+        group_permissions_html: Uprawnienia grupy
+      discussion_threads:
+        discussion_privacy_html: Prywatność dyskusji
       subgroups:
         title_html: Podgrupy
+      keeping_up_to_date:
+        email_settings_html: Ustawienia poczty
+      user_profile:
+        account_deactivation_html: Deaktywacja Twojego konta
+    group_settings:
+      group_privacy:
+        who_can_find_this_group:
+          title: Kto może znaleźć tę grupę?
+        how_do_people_join:
+          title: Jak ludzie będą dołączać?
+        who_can_see_discussions:
+          title: Kto może widzieć dyskusje?
+      group_permissions:
+        title: Uprawnienia grupy
+        what_can_members_do:
+          title: Co mogą robić członkowie?
+          invite_and_approve_new_members:
+            title: Zapraszać i akceptować nowych członków
+          start_discussions:
+            title: Uruchamiać dyskusje
+          edit_discussion_context:
+            title: Edytować kontekst każdej dyskusji w grupie
+          edit_comments:
+            title: Edytować ich komentarze w każdym momencie
+          raise_proposals:
+            title: Definiować propozycje
+          vote_on_proposals:
+            title: Głosować na propozycje
+    discussion_threads:
+      discussion_privacy:
+        title: Prywatność dyskusji
     subgroups:
       title: Podgrupy
+    keeping_up_to_date:
+      email_settings:
+        title: Ustawienia poczty
+    user_profile:
+      account_deactivation:
+        title: Deaktywacja Twojego konta

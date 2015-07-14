@@ -102,19 +102,6 @@ it:
       label: Opzioni
     leave_group:
       title: Abbandona il gruppo
-    edit_group:
-      privacy:
-        label: Privacy
-        visible_to_members: Chi può trovare questo gruppo?
-        membership_granted_upon: Come si partecipa?
-        private_discussions: Solo i membri possono vedere le discussioni
-      permissions:
-        label: Permessi
-        helptext: Cosa possono fare i membri?
-        members_can_add_members: Invita e approva nuovi membri
-        members_can_create_subgroups: Crea sottogruppi
-        members_can_edit_comments: Modifica i loro commenti in qualsiasi momento
-        members_can_vote: Vota delle proposte
   membership_requests_page:
     approve: Approva
     ignore: Ignora

@@ -86,12 +86,6 @@ ja:
       label: オプション
     leave_group:
       title: グループを離れます
-    edit_group:
-      privacy:
-        label: 個人情報
-        visible_to_members: 誰がこのグループを見つけられる？
-        membership_granted_upon: どうやって参加する？
-        private_discussions: メンバーのみがディスカッションを見ることができます
   membership_requests_page:
     approve: 承認
     ignore: 拒否

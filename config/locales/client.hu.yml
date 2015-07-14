@@ -114,19 +114,6 @@ hu:
       loud: Emailezzen ha aktivitás van.
       quiet: Nem kérek emailt erről a csoportról. Az aktivitások megjelennek a műszerfalon.
       mute: "Ez a csoport ne jelenjen meg a műszerfalon és ne értesítsen amíg nem @említenek meg."
-    edit_group:
-      privacy:
-        label: Adatvédelem
-        visible_to_members: Ki találhatja meg ezt a csoportot?
-        membership_granted_upon: Hogy lehet csatlakozni?
-        private_discussions: Csak tagok láthatják a vitákat
-      permissions:
-        label: Engedélyek
-        helptext: Mit tehetnek a tagok?
-        members_can_add_members: Hivj meg és hagyd jóvá az új tagok csatlakozását
-        members_can_create_subgroups: Alcsoportokat hoz létre
-        members_can_edit_comments: Szerkeszti a hozzászólásaikat bármikor
-        members_can_vote: Szavaz a javaslatokon
   membership_requests_page:
     approve: Érvényesítés
     ignore: Figyelmen kívül hagyás

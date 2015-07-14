@@ -1,0 +1,55 @@
+lt:
+  error_page:
+    forbidden: Jūs neturite leidimo tai padaryti.
+  previous_proposals_card:
+    heading: Ankstesni Pasiūlymai
+  navbar:
+    user_options:
+      profile: Profilis
+  start_menu:
+    invite_people: Pakviesti Žmones
+  discussion_form:
+    privacy_label: Privatumas
+  start_group_form:
+    name_label: Grupės Pavadinimas
+  group_page:
+    description: Aprašas
+    invite_people: Pakviesti žmones
+    options_label: Parinktys
+    options:
+      label: Parinktys
+  edit_group_form:
+    profile:
+      label: Profilis
+      description: Aprašas
+    privacy:
+      label: Privatumas
+      visible_to_members: Kas gali rasti šią grupę?
+      public_visibility: Bet kas - rodyti grupę viešai
+      private_visibility: Tik nariai - grupė nebus rodoma
+      membership_granted_upon: Kaip žmonės prisijungia?
+      membership_by_request: Atvirai - bet kas gali prisijungti prie grupės
+      membership_by_approval: Pagal prašymus - bet kas gali paprašyti prisijungti
+      membership_by_invitation: Tik pakvietimai - nauji nariai turės būti pakviesti
+    permissions:
+      label: Leidimai
+      helptext: Ką gali daryti nariai?
+      members_can_add_members: Kviesti ir tvirtinti naujus narius
+      members_can_create_subgroups: Kurti pogrupius
+  group_form:
+    profile_label: Profilis
+    description_label: Aprašas
+    category_label: Kategorija
+  invitation:
+    invite_people: Pakviesti Žmones
+  profile_page:
+    messages:
+      updated: Jūsų profilis buvo atnaujintas
+      picture_changed: Jūsų profilio paveikslas buvo atnaujintas
+    change_picture:
+      use_uploaded: Įkelti naują paveikslą
+    profile: Profilis
+  discussion:
+    previous_proposals: Ankstesni Pasiūlymai
+  thread_group:
+    aria_label: Grupės pavadinimas

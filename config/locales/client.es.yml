@@ -117,19 +117,6 @@ es:
       loud: Enviar correo electrónico siempre que haya actividad.
       quiet: No enviar correo electrónico sobre el grupo. La actividad del grupo será mostrada en el panel de control.
       mute: "Ocultar este grupo en el panel de control y no notificarme a no ser que sea @mencionado."
-    edit_group:
-      privacy:
-        label: Privacidad
-        visible_to_members: ¿Quién puede encontrar este grupo?
-        membership_granted_upon: ¿Cómo se unen las personas al grupo?
-        private_discussions: Solamente los miembros pueden ver las discusiones
-      permissions:
-        label: Permisos
-        helptext: ¿Qué pueden hacer los miembros?
-        members_can_add_members: Invitar y aprobar nuevos miembros
-        members_can_create_subgroups: Crear subgrupos
-        members_can_edit_comments: Edita sus comentarios en cualquier momento
-        members_can_vote: Votar en propuestas
   membership_requests_page:
     approve: "Aprobar "
     ignore: Ignorar

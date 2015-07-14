@@ -102,19 +102,6 @@ da:
       label: Indstillinger
     leave_group:
       title: Forlad gruppe
-    edit_group:
-      privacy:
-        label: Fortrolighed
-        visible_to_members: Hvem kan finde denne gruppe?
-        membership_granted_upon: Hvordan bliver folk medlem?
-        private_discussions: Kun medlemmer kan se diskussioner
-      permissions:
-        label: Tilladelser
-        helptext: Hvad kan medlemmer gøre?
-        members_can_add_members: Invitere og godkende nye medlemmer
-        members_can_create_subgroups: Opret undergrupper
-        members_can_edit_comments: Rediger deres kommentarer når som helst
-        members_can_vote: Stem om forslag
   membership_requests_page:
     approve: Godkend
     ignore: Ignorer

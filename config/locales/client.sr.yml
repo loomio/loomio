@@ -112,19 +112,6 @@ sr:
       loud: ePoruka kada god ima aktivnosti.
       quiet: Ne obaveštavaj o ovoj grupi. Aktivnost će biti prikazana na početnoj strani.
       mute: "Sakrij ovu grupu i ne obaveštavaj dok ne budem @naznačen/a."
-    edit_group:
-      privacy:
-        label: Privatnost
-        visible_to_members: Ko može naći ovu grupu?
-        membership_granted_upon: Kako se ljudi pridružuju?
-        private_discussions: Samo članovi mogu videti diskusije
-      permissions:
-        label: Dozvole
-        helptext: Šta članovi mogu raditi?
-        members_can_add_members: Pozovite i odobrite nove članove
-        members_can_create_subgroups: Napravite podgrupe
-        members_can_edit_comments: Menjati komentare u bilo koje vreme
-        members_can_vote: Glasajte o predlozima
   membership_requests_page:
     approve: Odobri
     ignore: Ignoriši

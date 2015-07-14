@@ -13,8 +13,5 @@ fa-IR:
   group_page:
     leave_group:
       title: ترک گروه
-    edit_group:
-      privacy:
-        label: محرمانگی
   memberships_page:
     members: اعضا

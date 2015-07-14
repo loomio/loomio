@@ -115,19 +115,6 @@ ro:
       loud: Trimite email ori de cate ori exista activitate.
       quiet: Nu trimite email pentru acest grup. Activitatea va fi afisata pe tabloul de bord.
       mute: "Ascunde acest grup din tabloul de comanda si notifica doar cand @va mentiona."
-    edit_group:
-      privacy:
-        label: Confidentialitate
-        visible_to_members: Cine poate gasi acest grup?
-        membership_granted_upon: Cum se pot alatura oamenii?
-        private_discussions: Doar membrii pot vedea discutiile
-      permissions:
-        label: Permisii
-        helptext: Ce pot face membrii?
-        members_can_add_members: Invita si valideaza noi membrii
-        members_can_create_subgroups: Creaza sub-grupuri
-        members_can_edit_comments: Editeaza comentariile oricand
-        members_can_vote: Voteaza propuneri
   membership_requests_page:
     approve: Aproba
     ignore: "Ignora "

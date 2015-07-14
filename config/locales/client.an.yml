@@ -102,19 +102,6 @@ an:
       label: Opcions
     leave_group:
       title: Abandonar grupo
-    edit_group:
-      privacy:
-        label: Privacidat
-        visible_to_members: Qui puede trobar iste grupo?
-        membership_granted_upon: Cómo unir-se a o grupo?
-        private_discussions: Solament os miembros pueden veyer as discusions
-      permissions:
-        label: Permisos
-        helptext: Qué pueden fer os miembros?
-        members_can_add_members: Convidar y aprebar nuevos miembros
-        members_can_create_subgroups: Crear subgrupos
-        members_can_edit_comments: Editar os suyos comentarios en qualsiquier momento
-        members_can_vote: Votar en propuestas
   membership_requests_page:
     approve: Aprebar
     ignore: Ignorar

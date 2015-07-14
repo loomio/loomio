@@ -63,9 +63,6 @@ te:
       label: ఐచ్ఛికాలు
     leave_group:
       title: సమూహాన్ని వదిలివెళ్ళండి
-    edit_group:
-      privacy:
-        label: గోప్యత
   membership_requests_page:
     approve: ఆమోదించండి
     ignore: విస్మరించు

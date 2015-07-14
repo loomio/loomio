@@ -81,9 +81,6 @@ km:
       label: "ជម្រើស "
     leave_group:
       title: ចាកចេញពីក្រុម
-    edit_group:
-      privacy:
-        label: ភាពជាឯកជន​
   membership_requests_page:
     approve: "អនុម័ត "
     ignore: មិនអើពើ

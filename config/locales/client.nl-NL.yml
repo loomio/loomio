@@ -115,19 +115,6 @@ nl-NL:
       loud: E-mail als er activiteit is.
       quiet: Niet e-mailen over deze groep. Activiteit wordt weergegeven op het dashboard.
       mute: "Verberg deze groep van het dashboard en stuur geen notificatie tenzij ik @genoemd word."
-    edit_group:
-      privacy:
-        label: Privacy
-        visible_to_members: Wie kan deze groep vinden?
-        membership_granted_upon: Hoe worden mensen lid?
-        private_discussions: Alleen leden kunnen discussies zien
-      permissions:
-        label: Machtigingen
-        helptext: Wat kunnen leden doen?
-        members_can_add_members: Nodig nieuwe leden uit en laat ze toe
-        members_can_create_subgroups: Subgroepen maken
-        members_can_edit_comments: Bewerk hun reacties op elk moment
-        members_can_vote: Op voorstellen stemmen
   membership_requests_page:
     approve: Goedkeuren
     ignore: Negeer

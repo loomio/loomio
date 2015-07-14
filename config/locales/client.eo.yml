@@ -101,19 +101,6 @@ eo:
       label: Opcioj
     leave_group:
       title: Elirii grupon
-    edit_group:
-      privacy:
-        label: Privateco
-        visible_to_members: Kiu povas trovi ĉi tiun grupon?
-        membership_granted_upon: Kiel homoj aliĝas?
-        private_discussions: Nur membroj povas vidi la diskutojn
-      permissions:
-        label: Permesoj
-        helptext: Kion membroj povas fari?
-        members_can_add_members: Inviti kaj aprobi novajn membrojn
-        members_can_create_subgroups: Krei subgrupojn
-        members_can_edit_comments: Redakti ties komentojn kiam ajn
-        members_can_vote: Voĉdoni pri proponoj
   membership_requests_page:
     approve: Aprobi
     ignore: Ignori

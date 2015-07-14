@@ -92,19 +92,6 @@ uk:
       label: Опції
     leave_group:
       title: Вийти з групи
-    edit_group:
-      privacy:
-        label: Приватність
-        visible_to_members: Хто може знайти цю групу?
-        membership_granted_upon: Як прийняти участь?
-        private_discussions: Тільки учасники бачать обговорення
-      permissions:
-        label: Права
-        helptext: Що можуть робити учасники?
-        members_can_add_members: Запрошувати та затверджувати інших учасників.
-        members_can_create_subgroups: Створювати підгрупи
-        members_can_edit_comments: Редагувати свої коментарі будь-коли
-        members_can_vote: Голосувати за пропозиції
   membership_requests_page:
     approve: Підтримую
     ignore: Ігнорувати

@@ -112,19 +112,6 @@ sr-RS:
       loud: Обавести увек када има активности.
       quiet: Не обавештавај о овој групи. Активност ће бити приказана на почетној страни.
       mute: "Сакриј ову групу и не обавештавај док ме неко не @означи."
-    edit_group:
-      privacy:
-        label: Приватност
-        visible_to_members: Ко може наћи ову групу?
-        membership_granted_upon: Како се људи придружују?
-        private_discussions: Само чланови могу видети дискусије
-      permissions:
-        label: Дозволе
-        helptext: Шта чланови могу радити?
-        members_can_add_members: Позовите и одобрите нове чланове
-        members_can_create_subgroups: "Направите подгрупе "
-        members_can_edit_comments: Мењај њихове коментаре у сваком моменту
-        members_can_vote: Гласајте о предлозимa
   membership_requests_page:
     approve: Одобри
     ignore: Игнориши

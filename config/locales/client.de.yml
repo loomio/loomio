@@ -115,19 +115,6 @@ de:
       loud: "Eine E-Mail, wenn es Tätigkeit gibt"
       quiet: Keine E-Mail über diese Gruppe. Aktivität wird auf dem Armaturenbrett angezeigt.
       mute: Verstecke diese Gruppe aus dem Armaturenbrett und nicht benachrichtigen
-    edit_group:
-      privacy:
-        label: Privatsphäre
-        visible_to_members: Wer kann diese Gruppe sehen?
-        membership_granted_upon: Wie kann jemand teilnehmen?
-        private_discussions: Nur Mitglieder können Diskussionen sehen
-      permissions:
-        label: Berechtigungen
-        helptext: Was Mitglieder tun können?
-        members_can_add_members: Neue Mitglieder einladen und annehmen
-        members_can_create_subgroups: Untergruppen erstellen
-        members_can_edit_comments: Jederzeit ihre Kommentare bearbeiten
-        members_can_vote: Über Vorschläge abstimmen
   membership_requests_page:
     approve: Zustimmen
     ignore: Ignorieren
