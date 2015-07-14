@@ -65,17 +65,6 @@ ar:
       label: الخيارات
     leave_group:
       title: غادر المجموعة
-    edit_group:
-      privacy:
-        label: خصوصية
-        visible_to_members: من يستطيع إيجاد هذه المجموعة؟
-        membership_granted_upon: كيف يمكن للناس أن ينضموا؟
-        private_discussions: رؤية النقاشات محصورة على الأعضاء
-      permissions:
-        members_can_add_members: دعوة وقبول أعضاء جدد
-        members_can_create_subgroups: إنشاء مجموعات فرعية
-        members_can_edit_comments: تحرير تعليقاتهم في أي وقت
-        members_can_vote: التصويت على المقترحات
   membership_requests_page:
     approve: موافق
     ignore: تجاهل

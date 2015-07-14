@@ -95,17 +95,6 @@ ca:
       label: Opcions
     leave_group:
       title: Deixar el grup
-    edit_group:
-      privacy:
-        label: Prvacitat
-        visible_to_members: Qui pot trobar aquest grup?
-      permissions:
-        label: Permisos
-        helptext: Què poden fer els membres?
-        members_can_add_members: Convida i aprova nous membres
-        members_can_create_subgroups: Crear sub-grups
-        members_can_edit_comments: Editar els comentaris en qualsevol moment.
-        members_can_vote: Votar propostes
   membership_requests_page:
     approve: Aprovar
     ignore: Ignorar

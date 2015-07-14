@@ -1,0 +1,26 @@
+lt:
+  error:
+    access_denied: Jūs neturite leidimo tai padaryti.
+  footer:
+    privacy: Privatumas
+  start_group_form:
+    group_name: Grupės pavadinimas
+  group_form:
+    name: Grupės pavadinimas
+    description: Aprašas
+    category: Kategorija
+    what_can_members_do: Ką gali daryti nariai?
+    members_can:
+      add_members: Kviesti ir tvirtinti naujus narius
+      create_subgroups: Kurti pogrupius
+    visible_to:
+      label: Kas gali rasti šią grupę?
+    membership_granted_upon:
+      label: Kaip žmonės prisijungia?
+  invite_people: Pakviesti žmones
+  about_loomio: Apie Loomio
+  options: Parinktys
+  common:
+    profile: Profilis
+    privacy: Privatumas
+    permissions: Leidimai

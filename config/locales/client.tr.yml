@@ -102,19 +102,6 @@ tr:
       label: Seçenekler
     leave_group:
       title: Gruptan ayrıl
-    edit_group:
-      privacy:
-        label: Gizlilik
-        visible_to_members: Kimler bu grubu bulabilir?
-        membership_granted_upon: İnsanlar nasıl katılabilir?
-        private_discussions: Sadece üyeler müzakereleri görebilir
-      permissions:
-        label: İzinler
-        helptext: Üyeler neler yapabilir?
-        members_can_add_members: Yeni üyeleri davet edin ve onaylayın.
-        members_can_create_subgroups: Alt gruplar oluşturun
-        members_can_edit_comments: İstediğiniz zaman onların yorumlarını düzenleyin
-        members_can_vote: Önerileri oylayın
   membership_requests_page:
     approve: Onayla
     ignore: Yok say

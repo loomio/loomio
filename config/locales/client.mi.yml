@@ -26,9 +26,6 @@ mi:
     options_label: Ngā Kōwhiringa
     options:
       label: Ngā Kōwhiringa
-    edit_group:
-      permissions:
-        label: Ngā Whakaaetanga
   group_form:
     name_label: Ingoa
     description_label: Whakaahuatanga

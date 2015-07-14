@@ -99,19 +99,6 @@ sv:
       label: Alternativ
     leave_group:
       title: Lämna gruppen
-    edit_group:
-      privacy:
-        label: Sekretesspolicy
-        visible_to_members: Vem kan hitta denna grupp?
-        membership_granted_upon: Hur gör människor går?
-        private_discussions: Endast medlemmar kan se diskussioner
-      permissions:
-        label: Behörigheter
-        helptext: Vad kan medlemmar göra?
-        members_can_add_members: Bjud in och godkänn nya medlemmar
-        members_can_create_subgroups: Skapa undergrupper
-        members_can_edit_comments: Redigera deras kommentarer när som helst
-        members_can_vote: Rösta på förslag
   membership_requests_page:
     approve: Godkänn
     ignore: Ignorera

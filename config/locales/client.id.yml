@@ -82,9 +82,6 @@ id:
       label: Pilihan
     leave_group:
       title: Tinggalkan kelompok
-    edit_group:
-      privacy:
-        label: Kebijakan Privasi
   membership_requests_page:
     approve: Setuju
     ignore: Abaikan

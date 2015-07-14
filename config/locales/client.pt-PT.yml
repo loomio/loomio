@@ -3,7 +3,3 @@ pt-PT:
     forbidden: Não tem permissão para o fazer.
   discussion_form:
     privacy_label: Privacidade
-  group_page:
-    edit_group:
-      privacy:
-        label: Privacidade

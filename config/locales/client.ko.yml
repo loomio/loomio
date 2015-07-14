@@ -80,9 +80,6 @@ ko:
       label: 선택사항
     leave_group:
       title: 그룹 탈퇴
-    edit_group:
-      privacy:
-        label: 개인정보
   membership_requests_page:
     approve: 승인
     ignore: 무시

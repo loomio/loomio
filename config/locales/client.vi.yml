@@ -70,9 +70,6 @@ vi:
       label: Tùy chọn
     leave_group:
       title: Rời khỏi nhóm
-    edit_group:
-      privacy:
-        label: Quyền riêng tư
   membership_requests_page:
     approve: Chấp thuậ
     ignore: Bỏ qua

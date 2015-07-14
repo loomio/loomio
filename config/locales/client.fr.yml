@@ -114,19 +114,6 @@ fr:
       loud: "Envoie un courrier électronique dès qu'il y a de l'activité."
       quiet: "N'envoie pas de courrier électronique concernant ce groupe. Les activités restent consultables sur le tableau de bord."
       mute: "Masque ce groupe dans le tableau de bord et n'envoie aucune notification sauf si l'on est @mentionné."
-    edit_group:
-      privacy:
-        label: Privé
-        visible_to_members: Qui peut voir ce groupe ?
-        membership_granted_upon: Comment peut-on rejoindre ce groupe?
-        private_discussions: Seuls les membres peuvent voir les discussions
-      permissions:
-        label: Permissions
-        helptext: Que peuvent faire les membres?
-        members_can_add_members: Inviter et approuver les nouveaux membres
-        members_can_create_subgroups: Créer des sous-groupes
-        members_can_edit_comments: Modifier leurs commentaires à tout moment
-        members_can_vote: Voter pour des propositions
   membership_requests_page:
     approve: Approuver
     ignore: Ignorer

@@ -113,19 +113,6 @@ be-BY:
       loud: Дасылаць лісты пра ўсе новыя падзеі.
       quiet: Не дасылаць лісты пра гэту групу. Яе дзейнасць будзе бачна на галоўнай старонцы.
       mute: "Убраць гэту групу з галоўнай старонкі і нагадваць толькі калі @узгаданы."
-    edit_group:
-      privacy:
-        label: Канфідэнцыяльнасць
-        visible_to_members: Хто можа знайсці гэту групу?
-        membership_granted_upon: Як людзі могуць далучыцца?
-        private_discussions: Толькі ўдзельнімі могуць бачыць абмеркаванні
-      permissions:
-        label: Дазволы
-        helptext: Што удзельнікі здольны рабіць?
-        members_can_add_members: Запрасіць і зацвердзіць новых удзельнікаў
-        members_can_create_subgroups: Стварыць падгрупы
-        members_can_edit_comments: Рэдагуйце іх каментары ў любы час
-        members_can_vote: Галасаваць за прапановы
   membership_requests_page:
     approve: Пацвердзіць
     ignore: Ігнараваць

@@ -89,19 +89,6 @@ gl:
       label: Opcións
     leave_group:
       title: Deixar grupo
-    edit_group:
-      privacy:
-        label: Privacidade
-        visible_to_members: Quen pode atopar este grupo?
-        membership_granted_upon: Como fai a xente para entrar?
-        private_discussions: Tan só os membros poden ver os debates
-      permissions:
-        label: Permisos
-        helptext: Que poden facer os membros?
-        members_can_add_members: Invita e aproba novos membros
-        members_can_create_subgroups: Crea subgrupos
-        members_can_edit_comments: Edita os seus comentarios en calquera momento
-        members_can_vote: Votar nas propostas
   membership_requests_page:
     approve: Dar o visto bo
     ignore: ignorar

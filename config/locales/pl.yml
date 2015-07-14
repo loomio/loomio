@@ -1,18 +1,40 @@
 pl:
   email_settings:
+    title: Ustawienia poczty
+    group_volume: Głośność grupy
+    group_volume_description: "Głośność określa jak dużo poczty otrzymałeś/aś od grupy. Ustaw głośność dla wszystkich swoich grup:"
+    to_change_one_group: Aby zmienić głośność tylko jednej grupy wejdź na stronę tej grupy.
+    discussion_activity: Zmień głośność dyskusji jeśli biorę udział
+    discussion_activity_description: "KIedy bierzesz udział w dyskusji, ustawienia głośności będą ustawione na 'głośna', cała nast ępna aktywność będzie do Ciebie natychmiast przesyłana."
+    yesterday_on_loomio: Wyślij do mnie dzienne podsumowanie aktywności
+    yesterday_on_loomio_description: "Każdego dnia o 6 rano, wyślij wiadomość z wczorajszą nieprzeczytaną aktywnością"
+    email_when_mentioned: "Wyślij wiadomość jeśli @wspomniano o mnie"
+    email_when_mentioned_description: "Jeśli ktoś chce zwrócić Twoją uwagę, @wspomni o Tobie. Zalecamy aby zostawić to ustawienie włączone, abyś otrzymał/ła wiadomość kiedy to się stanie."
+    proposal_closing_soon: Wyślij wiadomość zanim propozycja zostanie zamknięta.
+    proposal_closing_soon_description: "24 godziny przed zamknięciem propozycji, w zależności od głośności, otrzymasz wiadomość z ostatnimi informacjami o propozycji."
     submit: Zaktualizuj ustawienia
+    no_change: Bez zmian
+    no_change_description: Pozostaw poziom głośności moich grup bez zmian.
   explore:
     header: Przegląd grup publicznych
   activerecord:
     errors:
       messages:
         blank: nie może być puste
+        invalid: nie jest poprawną wartością
   errors:
     messages:
       email: Nieprawidłowy adres e-mail
   attachment:
     error:
       too_large: "Plik, który probowałeś/aś załączyć jest większy niż 50MB, wybierz mniejszy plik."
+  time:
+    formats:
+      for_today: "%l:%M %P"
+  date:
+    formats:
+      for_this_year: "%e %b"
+      for_another_year: "%-d/%-m/%y"
   devise:
     invitations:
       send_instructions: "Zaproszenie zostało wysłane do %{email}"
@@ -49,8 +71,10 @@ pl:
     group_request_invalid_token: "Przepraszamy! Ten token jest niepoprawny"
     group_private_or_not_found: "Nie znaleziono grupy.\nTa grupa może być prywatna. Jeśli ktoś przekazał Ci ten link, poproś go o zaproszenie do grupy."
     group_already_setup: Grupa o takiej nazwie już istnieje.
+    current_password_did_not_match: Niestety nie udało się potwierdzić Twojego hasła.
     passwords_did_not_match: Hasła nie są takie same
     proposal_already_exists: Dyskusja ma już otwartą propozycję.
+    username_must_be_alphanumeric: Nazwa użytkownika może zawierać tylko małe litery i cyfry
     user_with_email_address_already_in_group: Użytkownik z tym adresem e-mail należy już do tej grupy.
     you_have_already_requested_membership: Wysłałeś/aś już prośbę o dostęp do tej grupy.
     you_are_already_a_member_of_this_group: Jesteś już członkiem tej grupy.
@@ -58,6 +82,7 @@ pl:
   alert:
     duplicate_email: "%{which_email} znajduje się już w grupie."
   notice:
+    new_contacts_imported: "To działa! Możesz wpisać nazwy do pola poniżej a my będziemy sugerować adres email,"
     admin_rights_removed: "Usunięto uprawnienia koordynatora dla %{which_user}."
     user_added: "%{user_email_or_name} został dodany do grupy."
     new_user_added: "%{user_email_or_name} zostanie dodany do grupy po utworzeniu konta w Loomio."
@@ -66,27 +91,70 @@ pl:
     membership_request_canceled: Prośba o członkostwo anulowana.
     membership_request_ignored: Prośba o członkostwo zignorowana.
     settings_updated: Twoje ustawienia zostały zaktualizowane.
+    user_made_admin: "%{which_user} został koordynatorem."
     you_have_left_group: "Opuściłeś %{which_group}."
+    comment_deleted: Komentarz usunięty.
+    invitations:
+      auto_added:
+        one: Dodano 1 członka
+        few: "Dodano %{count} członków"
+        other: "Dodano %{count} członków"
+      existing_member:
+        one: 1 członej znajduje się w grupie
+        few: "%{count} członków znajduje się już w grupie"
+        other: "%{count} członków znajduje się już w grupie"
+      sent:
+        one: Wysłano 1 zaproszenie
+        few: "Wysłano %{count} zaproszeń"
+        other: "Wysłano %{count} zaproszeń"
+      auto_added_and_sent: "%{auto_added_text} i %{sent_text}"
+  tooltip:
+    cover_photo_upload: Przesłanie nowego zdjęcia
+    logo_upload: Przesłanie  nowego logo
+    edit_description: Edycja opisu
+    group_category: Znajdź więcej grup podobnych do tej
+    unread_comments: Nieprzeczytane komentarze
+    new_votes: Nowe głosy
+  views:
+    pagination:
+      previous: Wstecz
+      next: Następne
   warning:
+    cant_remove_last_admin: Jesteś ostatnim koordynatorem - nie może zostać usunięty.
+    membership_request_already_approved: Prośba o dołączenie do grupy została już zaakceptowana.
     membership_request_already_ignored: Prośba o członkostwo została już zignorowana.
     membership_request_already_canceled: Prośba o członkostwo została już anulowana.
     position_not_submitted: Twoje stanowisko nie może zostać wysłane.
     proposal_not_created: "Propozycja nie może być utworzona. "
+    user_already_admin: "%{which_user} jest już koordynatorem tej grupy."
+    user_already_member: "%{which_user} jest już członkiem tej grupy."
+    user_not_admin: "Niestety, %{which_user} musi być koordynatorem tej grupy aby mieć dostęp."
   success:
     added_to_group: "Zostałeś dodany do %{which_group}."
     close_date_changed: Data zamknięcia zmieniona.
     discussion_created: Dyskusja została utworzona.
+    discussion_updated: Dyskusja została zaktualizowana.
     discussion_deleted: Dyskusja została usunięta.
+    discussion_moved: "Dyskusja została przeniesiona do %{group_name}"
     emails_sending: "Wysyłanie emaili. "
     group_archived: Grupa została zarchiwizowana pomyślnie.
     group_created: Grupa została utworzona pomyślnie.
     members_added: Nowe osoby dodane do grupy.
+    membership_requested: "Poprosiłeś/aś o dołączenie do grupy %{which_group}. Dostaniesz powiadomienie jeśli Twoja prośba zostanie zaakceptowana."
+    motion_closed: "Propozycja zamknięta. Jeśli chcesz, poniżej możesz ustawić wynik i wysłać do Twojej grupy."
+    motion_outcome_created: "Gratulacje, utworzyłeś/aś wynik propozycji a członkowie Twojej grupy zostali powiadomieni."
+    motion_outcome_updated: Wynik propozycji został zmieniony.
+    password_updated: Twoje hasło zostało pomyślnie zmienione
     position_submitted: Stanowisko zostało przesłane.
     position_updated: Stanowisko zostało zaktualizowane.
     proposal_created: Propozycja utworzona pomyślnie.
     proposal_deleted: Propozycja usunięta.
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: 1 sekunda
+        few: "%{count} sekundy"
+        other: "%{count} sekund"
       x_seconds:
         one: "%{count} sekunda"
         few: "%{count} sekundy"
@@ -107,6 +175,14 @@ pl:
         one: dzień
         few: "%{count} dni"
         other: "%{count} dni"
+      about_x_months:
+        one: 1 miesiąc
+        few: "%{count} miesiące"
+        other: "%{count} miesięcy"
+      x_months:
+        one: 1 miesiąc
+        few: "%{count} miesiące"
+        other: "%{count} miesięcy"
       about_x_years:
         one: rok
         few: "%{count} lata"
@@ -119,7 +195,12 @@ pl:
         one: rok
         few: "%{count} lata"
         other: "%{count} lat"
+  organisation:
+    name: Loomio
+  sr:
+    toggle_navigation: Przełączenie nawigacji
   footer:
+    about: O...
     blog: Blog
     contact: Kontakt
     help: Pomoc
@@ -127,20 +208,219 @@ pl:
     pricing: Opłaty
     public_groups: Grupy publiczne
     terms: Regulamin
+    independent_install_html: "Na %{hostname} uruchomiono niezależną kpię Loomio: <a href=\"http://github.com/loomio/loomio\">znajdź więcej</a>."
+  inbox:
+    clear: Wyczyść
+    title: Skrzynka odbiorcza
+    preferences: Ustawienia skrzynki odbiorczej
+    what_you_have_not_read_yet: "Oto aktywności, których jeszcze nie czytałeś/aś."
+    dropdown-btn: Skrzynka odbiorcza
+    empty: "Jesteś na bierząco! Brak komentarzy, których nie czytałeś/aś"
+    preferences_instructions_html: "<strong>Przeciągnij obiekty</strong> aby zmienić ich kolejność.  <strong>Wyłącz</strong> aby usunąć ze skrzynki odbiorczej."
   notifications:
     header: Powiadomienia
+    new_discussion: rozpoczęcie dyskusji
+    new_motion: utworzenie propozycji
     motion_closed:
       by_user: zamknij propozycję
       by_expiry: Propozycja została zamknięta
+    new_vote: "%{position} w propozycji"
+    new_comment: komentarz w dyskusji
+    comment_liked: polubienie Twojego komentarza w dyskusji
+    comment_replied_to: "odpowiedź na Twój komentarz w "
+    user_mentioned: "wspomnienie o Tobie w komentarzu do "
+    membership_requested: wysłana prośba o członkostwo w
+    membership_request_approved: akceptacja Twojej prośby o członkostwo
+    user_added_to_group: dodanie Ciebie do grupy
+    motion_closing_soon: Propozycja wkrótce zostanie zamknięta
+    motion_blocked: Zablokowanie propozycji
+    motion_outcome_created: opublikowanie wyniku propozycji
+    motion_outcome_updated: aktualizacja wyniku propozycji
+    email_actions:
+      following_thread: "Podążasz za wątkiem: %{thread_title}"
+      not_following_thread: "Nie podążasz więcej za wątkiem: %{thread_title}"
+  edit_discussion_context: Edycja kontekstu dyskusji
+  request_new_group: Uruchomienie grupy
+  start_new_group: Uruchomienie nowej grupy
+  start_new_group_hint: Aby rozpocząć podejmowanie decyzji
+  find_a_group: Wyszukanie grupy
+  find_a_group_hint: Przegląd grup publicznych
+  search_for_group: Szukanie grupy...
+  no_groups_found: "Nie znaleziono grupy o takiej nazwie!"
+  no_group_header: Witamy w Loomio Beta
+  empty_notifications: Nie masz jeszcze żadnych powiadomień.
   see_all_notifications: Zobacz wszystkie powiadomienia
   sign_out: Wyloguj się
+  sign_in: Logowanie
+  honeypot_warning: "Nie można utworzyć Twojego konta. Jeśli używasz 'screen reader' upewnij się, że ostatnie (ukryte) pole formularza jest puste."
+  tagline: "Tworzenie przestrzeni, która sprawia, że każdy może łatwo brać udział w decyzjach, które jego dotyczą."
+  or_sign_in_html: "Jeśli już masz konto Loomio, <a href='%{link}' class='%{link_class}'>zaloguj się</a>"
+  or_link_account_html: "Jeśli masz juz konto Loomio, <a href='%{link}'>połącz je</a>"
+  click_to_dismiss: Kliknij tuaj aby usunąć tę wiadomość
   generic_confirm: Czy jesteś pewien?
+  discussion_helper_text:
+    header: Witamy w Twojej pierwszej dyskusji
+    message: "<p>Temat znajduje się na górze strony a jego zawartość poniżej.</p><p>Dyskusja znajduje się po lewej a decyzje pojawią się po prawej. Jeśli myślisz, że grupa jest gotowa do podjęcia decyzji, możesz utworzyć propozycję dla rozważenia przez grupę.</p>"
+  group_helper_text:
+    header: "Witamy w Twojej nowej grupie!"
+    message: "<p>Oto<strong>trona grupy</strong>. Po lewej znajduje się lista wszystkich dyskusji grupy.</p><p>Jeśli chesz aby grupa dyskutowała inny temat rozpocznij nową dyskusję.</p>"
+  dashboard_helper_text:
+    header: Witamy na Twojej stronie domowej
+    message: "<p>Strona domowa pokazuje Ci wszystkie aktualne dyskusje we wszystkich grupach, których jesteś członkiem.</p><p>Możesz rozpocząć dyskusję na nowy temat klikając na przycisk \"Rozpoczęcie dyskusji\".</p>"
+  prompt_visitor_to_authenticate:
+    header: Zaloguj się lub dołącz do grupy aby wziąć udział
+    body: "Jeśli jesteś członkiem tej grupy, musisz się zalogować aby wziąć udział."
+  prompt_user_to_join:
+    header: Dołącz do grupy aby wziąć udział
+    body: Aby skomentować lub zagłosować musisz być członkiem tej grupy.
+  user_profile:
+    back: Powrót do mojego profilu
+    change_password: Zmiana Twojego hasła
+    deactivate_account: Deaktywacja konta
+    about_deactivation: Co to oznacza?
+    confirm_account_deactivation: Czy na pewno chcesz deaktywować Twoje konto?
+    reactivation_html: "Aby aktywować konto niezbędny będzie <a href='%{link}'>kontakt z nami</a>."
+    deactivation:
+      title: Deaktywacja Twojego konta
+      query: Czy możesz podzielić się z nami informacją dlaczego deaktywujesz swoje konto?
+      only_coordinator: "Grupa musi posiadać przynajmniej jednego koordynatora. Jesteś obecnie jedynym koordynatorem następujących grup:"
+      instructions: Aby deaktywować Twoje konto musisz albo dodać innego koordynatora albo deaktywować te grupy.
+      info_title: Co oznacza deaktywacja Twojego konta?
+      memberships: Twoje konto nie będzie pojawiać się na listach członków grup do któryc obecnie należysz.
+      group_contributions: "Komentarze, propozycje oraz dyskusje, które utworzyłeś/aś pozostaną ale usuniemy z nich Twoją nazwę."
+      emails: Wstrzymamy przesyłanie Ci wiadomości pocztowych związanych z Loomio.
+  start_group_form:
+    header: Uruchomienie nowej grupy
+    form_error: Brak niektórych informacji lub są niepoprawne.
+    name: Twoja nazwa
+    name_error: Nazwa jest wymagana
+    email: Twój adres email
+    email_error: Niepoprawny adres email.
+    group_name: Nazwa grupy
+    group_name_error: Nazwa grupy jest wymagana
+    pricing_html: "Po 30 dniach, w których mogłeś/aś obserwować jak Loomio pomaga podejmowanie decyzji przez grupy, poprosimy Cię o wybór <a href='%{link}' target='_blank'>planu płatności</a> który jest dla Ciebie odpowiedni."
+    terms_html: "Uruchamiając grupę, zgadzasz się na określone przez Loomio  <a href='%{link}' target='_blank'>zasady usług</a>."
+    success:
+      header: "Prawie zakończone! Odbierz pocztę."
+      email_delivered: "Wysłaliśmy wiadomość na adres %{email}. Kliknij na link znajdujący się w wiadomości aby uruchomić nową grupę."
+      email_not_arrived: Czy wiadomość nie dotarła?
+      please_hold: Prosimy o oczekiwanie do 5 minut na wiadomość mail oraz sprawdzenie folderu spam.
+    start_making_decisions: "Aby rozpocząć wspólne podejmowanie decyzji z użyciem Loomio, ustaw bezpłatną grupę:"
+  group_form:
+    name: Nazwa grupy
+    description: Opis
+    category: Kategoria
+    confirm_all_discussions_will_be_made_private_message: "Jeśli kontynuujesz, wszystkie publiczne dyskusje staną się prywatnymi."
+    confirm_all_discussions_will_be_made_public_message: "Czy na pewno? Jeśli kontynuujesz, wszystkie prywatne dyskusje staną się publiczne."
+    what_can_members_do: Co mogą robić członkowie?
+    members_can:
+      add_members: Zapraszać i akceptować nowych członków
+      edit_comments: Edytować ich komentarze w każdym momencie
+      edit_discussions: Edytować kontekst każdej dyskusji w grupie
+      start_discussions: Uruchamiać dyskusje
+      raise_motions: Definiować propozycje
+      vote: Głosować na propozycje
+      create_subgroups: Tworzyć podgrupy
+    motions_can_be_edited: Edytować swoje propozycje po tym jak rozpoczęto głosowanie
+    visible_to:
+      label: Kto może znaleźć tę grupę?
+      public_html: "Każdy może <span>publicznie listować grupę</span>"
+      parent_members_html: "Osoby w %{parent_group_name} <span>nielistowana publicznie, ale widoczna dla członków grupy %{parent_group_name}</span>"
+      members_html: "Tylko członkowie <span>grupa nie będzie listowana</span>"
+    membership_granted_upon:
+      label: Jak ludzie będą dołączać?
+      hidden_parent:
+        request_html: "Otwarta <span>dla członków %{parent_group_name}</span>"
+        approval_html: "Na żądanie <span>od członków %{parent_group_name}</span>"
+      request_html: "Otwarta <span>każdy może dołączyć do grupy</span>"
+      approval_html: "Na żądanie <span>każdy może wysłać prośbę o dołączenie</span>"
+      invitation_html: "Na zaproszenie <span>nowi członkowie muszą być zaproszeni</span>"
+    parent_members_can_see_discussions:
+      label: Prywatność dyskusji
+      "true": "Każdy w %{parent_group_name} może widzieć dyskusje"
+      "false": Tylko członkowie mogą widzieć dyskusje
+    discussion_privacy_options:
+      label: Kto może widzieć dyskusje?
+      hint: Dyskusje publiczne mogą być przeglądane przez każdego.
+      public_only_html: Tylko dyskusje publiczne
+      public_or_private_html: Pozwala na publiczne i prywatne dyskusje
+      private_only_html: Tylko dyskusje prywatne
+    learn_about_permissions: Dowiedz się więcej o uprawnieniach grupy
+  group_permissions:
+    header: Uprawnienia grupy
+    coordinators_can: "Koordynatorzy mogą:"
+    c1: Zmiana ustawień grupy
+    c2: Edycja tytułu i kontekstu wszystkich dyskusji
+    c3: Przenoszenie dyskusji pomiędzy grupami.
+    c4: Zapraszanie i akceptacja nowych członków.
+    c5: Wysyłanie powiadomień przez email do wszystkich członków grupy.
+    c6: Deaktywacja grupy.
+    c7: Dodawanie/usuwanie innych koordynatorów
+    c8: Usuwanie dyskusji.
+    c9: Usuwanie komentarzy.
+    c10: Tworzenie podgrup.
+    c11: Uruchamianie dyskusji.
+    c12: Definiowanie propozycji.
+    c13: Głosowanie propozycji.
+    members_defaults: "Przy domyślnych ustawieniach członkowie mogą:"
+    m1: Usuwać ich własne komentarze.
+    m3: "Edytować tytuł i opis propozycji, które zdefiniowali, dopóki ktoś nie odniósł się do propozycji."
+    m4: "Edytować datę zamknięcia propozycji, które zdefiniowali, dopóki jej nie zamknęli."
+    m5: Edycja tytułu i kontekstu wszystkich dyskusji
+    m6: "Uruchomienie podgrupy, której stają się koordynatorem."
+    m7: Edytowanie ich własnych komentarzy w każdym momencie.
+    m8: Definiowanie i branie udziału w propozycjach.
+    optional_restrictions: "Opcjonalnie, koordynatorzy mogą ograniczyć uprawnienia członków."
+  discussion_privacy:
+    private: Ta dyskusja jest prywatna - tylko dla członków grupy
+  group_privacy:
+    visible_to:
+      public: Grupa listowana publicznie.
+      parent_members: "Grupa listowana prywatnie. Widoczna tylko dla członków i osób z %{parent_group_name}."
+      members: Grupa ukryta. Widoczna tylko dla członków.
+      public_html: "Każdy może <span>publicznie listować grupę</span>"
+      parent_members_html: "Osoby w %{parent_group_name} <span>nielistowane publicznie, ale widoczne dla członków grupy %{parent_group_name}</span>"
+      members_html: "Tylko członkowie <span>grupa nie będzie listowana</span>"
+  setup_steps_title: "Następne kroki:"
+  setup_step_1: Sprawdź dyskusję przykładową
+  setup_step_2: Uruchom Twoją pierwszą dyskusję
+  setup_step_3: Zaproś osoby do Twojej grupy
   invite_people: Zaproś ludzi
+  no_invitations_button: Brak zaproszeń
+  number_pending: "%{pending} oczekuje"
+  and_number_pending: "i %{pending} oczekuje"
+  edit_memberships: Edycja członkowstwa
   add_new_member: Dodaj nowego członka
+  invite_members_to_group: "Zaproszenie członków do %{which_group}"
+  email_members_in_group: "Wysłanie wiadomości do członków %{which_group}"
+  subject_error: Prosimy wypełnić temat wiadomości
+  subject_placeholder: Napisz temat
+  message_error: Prosimy wypełnić treść wiadomości
+  message_placeholder: "Napisanie wiadomości do członków %{which_group}."
+  email_group_members: Wiadomość do członków grupy
   edit_group_settings: Edycja ustawień grupy
+  manage_members: Zarządzanie członkami
   leave_group: Opuść grupę
+  confirm_leave_hidden_group: "Czy na pewno chcesz opuścić grupę %{which_group}? Zostaniesz również usunięty/a z wszystkich podgrup."
+  confirm_leave_group: "Czy na pewno chcesz opuścić grupę %{which_group}?"
+  deactivate_group: Dekatywacja grupy
+  confirm_deactivate_group: "UWAGA!!! Czy na pewno chcesz deaktywować grupę %{which_group}? Nie będziesz mógł/a więcej zobaczyć tej grupy. Jednakże, jeśli będziesz chciał/a przywrócić grupę możesz wysłać nam prośbę o reaktywację grupy na adres contact@loomio.org."
   invited_users: Zaproszeni członkowie
   members: Członkowie
+  confirm_remove_user: "Czy na pewno chcesz usunąć %{which_user} z tej grupy?"
+  remove_coordinator: Usunięcie koordynatora
+  confirm_remove_coordinator: "Czy na pewno nie chcesz aby %{which_user} był koordynatorem tej grupy?"
+  make_coordinator: Definicja koordynatora
+  confirm_make_coordinator: "Czy na pewno chcesz aby %{which_user} został koordynatorem tej grupy?"
+  confirm_remove_member: Czy na pewno chcesz usunąć tego członka z grupy?
+  want_to_invite_html: "Chcesz <a href='%{link}'>zaprosić osoby</a> do tej grupy?"
+  membership_requests: Prośby o członkostwo
+  previous_requests: Poprzednie żądania
+  approved_by_person: "Zaakceptowane przez %{person}"
+  ignored_by_perosn: "Zignorowane przez %{person}"
+  join_group_btn: Dołączenie do grupy
+  membership_by_invitation_only: Członkostwo w tej grupie tylko na zaproszenie
+  you_have_joined_group: "Dołączyłeś/aś do grupy %{group_name}"
   ignore_request: Ignoruj prośbę
   ignore: Ignoruj
   subgroups: Podgrupy
@@ -158,16 +438,26 @@ pl:
   start_a_discussion: Rozpocznij dyskusję
   group_description: Opis grupy
   networks:
+    previous_requests: Poprzednie żądania
     threads: Dyskusje
+  group_request:
+    header: Uruchomienie grupy
+    confirmation:
+      title: "Prawie zakończone! Odbierz pocztę."
   discussion_items:
+    new_motion: utworzenie propozycji
     motion_closed:
       by_user: zamknij propozycję
       by_expiry: Propozycja zamknięta
+    motion_outcome_created: opublikowanie wyniku propozycji
+    motion_outcome_updated: aktualizacja wyniku propozycji
   discussion: Dyskusja
   current_decision: Obecna decyzja
   previous_decisions: Wcześniejsze decyzje
   description_history:
     subheader: Wersja
+    previous: Wstecz
+    next: Następne
   comment_form_placeholder: Powiedz coś...
   delete_comment: Usuń komentarz
   delete_discussion: Usuń dyskusję
@@ -188,12 +478,19 @@ pl:
   pricing_page:
     header: Opłaty
   new_password: Nowe hasło
+  change_your_password: Zmiana Twojego hasła
   current_password: Obecne hasło
   confirm_password: Potwierdź hasło
   remember_me: Zapamiętaj mnie
   forgot_your_password: Zapomniałeś hasła?
+  log_in: Logowanie
+  invitation:
+    invite_people: Zaproś osoby do Twojej grupy
   search:
     placeholder: Szukaj
+  contact_page:
+    labels:
+      name: Twoja nazwa
   discussion_form:
     new:
       header: Rozpocznij dyskusję
@@ -241,12 +538,26 @@ pl:
   details: Szczegóły
   discussions: Dyskusje
   group: Grupa
+  next: Następne
   password: Hasło
   pricing: Opłaty
+  prev: Wstecz
   options: Opcje
   save: Zapisz
   saving: Zapisywanie
+  start_a_group: Uruchomienie grupy
   thanks: "Dziękujemy!"
   common:
+    email_settings: Ustawienia poczty
     privacy: Zasady prywatności
     email: E-mail
+  group_categories:
+    co_operative: Współpracująca
+    democratic_organisation: Organizacja demokratyczna
+    education: Edukacja
+    environmental_group: Grupa środowiskowa
+    family: Rodzina
+    local_government: Samorząd
+    online_community: Społeczność internetowa
+    religious_group: Religijna
+    event: Wydarzenie

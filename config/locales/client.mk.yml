@@ -86,14 +86,6 @@ mk:
       label: Опции
     leave_group:
       title: Напушти ја групата
-    edit_group:
-      privacy:
-        label: Приватност
-        visible_to_members: Кој може да ја пронајде групава?
-        membership_granted_upon: Како луѓето се придружуваат?
-        private_discussions: Само членови можат да гледаат дискусии
-      permissions:
-        helptext: Што можат да направат членовите?
   membership_requests_page:
     approve: Одобри
     ignore: Игнорирај

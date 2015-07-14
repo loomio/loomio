@@ -114,19 +114,6 @@ zh-TW:
       loud: 只要有活動就立刻寄發電子郵件。
       quiet: 不要寄發任何關於此群組的電子郵件。活動將會顯示在儀表板上。
       mute: "從儀表板上隱藏此群組，除非 @提及，否則將不會通知。"
-    edit_group:
-      privacy:
-        label: 隱私
-        visible_to_members: 誰能找到這個群組？
-        membership_granted_upon: 夥伴要怎樣加入？
-        private_discussions: 只有成員才能看到討論串
-      permissions:
-        label: 權限
-        helptext: 成員能做些甚麼？
-        members_can_add_members: 邀請並且批准新的成員
-        members_can_create_subgroups: 建立子群組
-        members_can_edit_comments: 任何時候都能編輯他們的意見
-        members_can_vote: 在提案上投票
   membership_requests_page:
     approve: 批准
     ignore: 忽略
