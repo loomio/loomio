@@ -21,9 +21,10 @@ class Groups::MembershipRequestsController < BaseController
   end
 
   def cancel
+    @group = @membership_request.group
     @membership_request.destroy
     flash[:success] = t(:'notice.membership_request_canceled')
-    redirect_to @membership_request.group
+    redirect_to @group
   end
 
   private

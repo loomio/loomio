@@ -48,7 +48,7 @@ describe UserMailer do
     before :each do
       @user = create(:user)
       @inviter = create(:user)
-      @group = build(:group, full_name: "Group full name")
+      @group = create(:group, full_name: "Group full name")
       @mail = UserMailer.added_to_group(user: @user, inviter: @inviter, group: @group)
     end
 

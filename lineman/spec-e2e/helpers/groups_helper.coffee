@@ -5,6 +5,9 @@ module.exports = new class GroupsHelper
   loadToJoin: (value) ->
     browser.get("http://localhost:8000/development/setup_group_to_join?membership_granted_upon=#{value}")
 
+  loadWithMultipleCoordinators: ->
+    browser.get('http://localhost:8000/development/setup_group_with_multiple_coordinators')
+
   flashSection: ->
     element(By.css('.flash-message'))
 
@@ -91,3 +94,21 @@ module.exports = new class GroupsHelper
 
   subgroupsPanel: ->
     element(By.css('.subgroups-card'))
+
+  clickLeaveGroupButton: ->
+    element(By.css('.group-page-actions__leave_group')).click()
+
+  confirmLeaveGroup: ->
+    element(By.css('.leave-group-form__submit')).click()
+
+  visitGroupPage: ->
+    element(By.css('.groups-item')).click()
+
+  groupsList: ->
+    element(By.css('.groups-page__groups'))
+
+  leaveGroupForm: ->
+    element(By.css('.leave-group-form'))
+
+  clickAddCoordinatorButton: ->
+    element(By.css('.leave-group-form__add-coordinator')).click()

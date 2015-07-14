@@ -98,7 +98,6 @@ es:
       intro: "Cuando entras en contacto con Loomio por primera vez, puede que te unas de diferentes formas.\nHe aquí alguna información sobre esos puntos de entrada.\n"
       starting_new_group:
         title: Cuando quieres comenzar un nuevo grupo de Loomio
-        body_html: "Si no tienes una cuenta en Loomio, puedes empezar un nuevo grupo desde la página de inicio de Lomio haciendo clic en el botón <strong>\"Prueba Loomio\"</strong>.\nSe te guiará a través de los pasos a seguir para comenzar tu propio grupo.\nComo parte del proceso de iniciación del grupo, deberás determinar cómo quieres que funcione tu grupo, personalizando la configuración del mismo.\nHaz clic <a href=\"#group-settings\">aquí</a> para leer más sobre la configuración del grupo.\n"
       invited_into_group:
         title: Cuando se te invita a un grupo de Loomio
         body_html: "Cuando recibes una invitación para unirte a un grupo ya existente de Loomio, el correo electrónico que recibes incluye un enlace de invitación único.\nCuando sigues este enlace, si no tienes una cuenta de usuario en Loomio, se te pedirá que crees una cuenta con tu dirección de correo electrónico y una contraseña.\nSi ya posees una cuenta de Loomio entrarás directamente en la página del grupo.\n"
@@ -167,7 +166,6 @@ es:
             body_html: "¿Quieres que los miembros de tu grupo puedan <a href=\"#stating-positions\">expresar su postura en las propuestas</a>?\n¿O preferirías que algunas personas solo puedan observar?\nCuando se selecciona esta casilla cualquiera en tu grupo podrá expresar su postura en las propuestas.\nCuando no se selecciona, solo los coordinadores del grupo podrán expresar su postura. \n"
         what_next:
           title: ¿Y después?
-          body_html: "Después de enviar el formulario de configuración del grupo, se te redireccionará a la página de tu grupo.\nDesde la página de tu grupo puedes invitar a gente a unirse.\nHaz clic <a href=\"#inviting-members\">aquí</a> para leer más sobre invitaciones.\n"
     coordination:
       title: Coordinando tu grupo
       intro_html: "Como coordinador de un grupo de Loomio, eres responsable de guiar a tu grupo en el proceso de aprender a usar una nueva pieza de software; así como también aprender nuevos procesos para colaborar más eficazmente y tomar buenas decisiones juntos.\nLas tareas especificadas debajo son tareas que solo los coordinadores de tu grupo tienen permiso de ejecutar.\n"
@@ -227,7 +225,6 @@ es:
         body_html: "Si quieres iniciar una nueva discusión lo puedes hacer desde el <a href=\"#dashboard\">Panel de control</a>, o desde la página del grupo, haciendo clic en el botón <strong>\"Empezar una discusión\"</strong> en el lado derecho de la página.\nSi comienzas una discusión desde el Panel de control, se te pedirá elegir el grupo donde la discusión debería llevarse a cabo.\n"
       providing_context:
         title: "Proveer contexto "
-        body_html: "<p>Una vez hayas hecho clic en el botón <strong>\"Empezar una discusión\"</strong>, el formulario siguiente te pedirá que le pongas un <strong>título</strong> y un <strong>contexto</strong>.\n\nAsegúrate de que el título transmite el tema en pocas palabras. ¿Cuál es el mensaje central?\n\nLos títulos de discusión largos se cortarán en el Panel de control.</p>\n\n<p>El campo de contexto te permite desarrollar el título y proporcionar cualquier información útil sobre los antecedentes.\n\nIntenta proporcionar toda la información sobre antecedentes que se podría necesitar para participar significativamente; todo lo que requiera el grupo para llevar a cabo una discusión productiva e informada.</p>\n\n<p>El título de la discusión y la información que proveas para el contexto se sitúan en un panel en la parte superior de la página de la discusión.</p>\n\n<p>A medida que va progresando la discusión, el panel de contexto puede ser actualizado según salga a la luz nueva información.\n\nAdemás de aclarar el tema, puedes usar este espacio para compartir recursos, resumir la discusión según va progresando, o resumir los protocolos de toma de decisiones que tu grupo está usando.</p>\n\n<p>Loomio utiliza <strong>Markdown</strong> para formatear texto e incrustar imágenes.\n\nPuedes utilizar Markdown en el panel de contexto para formatear el contexto de tu discusión o para incrustar imágenes.\n\nHaz clic <a href=\"https://www.loomio.org/d/Wh7vHaTk/markdown-text-formatting-made-easy\">aquí</a> para obtener información sobre cómo utilizar Markdown.</p>\n"
       discussion_privacy:
         title: Privacidad de la discusión
         body_html: "La privacidad de la discusión se determina mediante la <a href=\"#group-privacy\">privacidad del grupo</a>.\n\nSi estás empezando una discusión en un grupo público, puedes elegir si tu discusión es pública (es decir, se puede buscar y cualquiera puede verla), o privada (sólo será visible para los miembros de tu grupo).\n"
@@ -247,7 +244,6 @@ es:
         body: Puedes añadir tu voz a una discusión mediante el recuadro de comentarios al fondo de la página de discusión.
       markdown:
         title: Markdown
-        body_html: "Loomio usa <strong>Markdown</strong> para formatear texto e incrustar imágenes.\nPara activar Markdown, marca la casilla junto a la palabra <strong>“Markdown”</strong> bajo el recuadro de comentario.\nHaz clic <a href=\"https://www.loomio.org/d/Wh7vHaTk/markdown-text-formatting-made-easy\">aquí</a> para obtener información sobre cómo utilizar Markdown.\n"
       attaching_files:
         title: "Adjuntar archivos "
         body: "Loomio te permite adjuntar archivos a los comentarios en una discusión.\nPuedes adjuntar un archivo a un comentario haciendo clic en el icono de clip debajo del recuadro de comentario al fondo de la página de discusión y seleccionando el archivo en tu equipo.\n"

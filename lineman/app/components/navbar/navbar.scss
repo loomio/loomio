@@ -3,17 +3,30 @@
   background: white;
   height: $navbar-height;
   border-bottom: 1px solid $border-color;
-  padding: 2px 0px;
+  padding: 2px 5px;
   width: 100%;
   position: fixed;
 }
 
 .lmo-navbar__left{
   float: left;
+    padding: 3px 2px;
+  .fa-group {
+    font-size: 1.1em;
+  }
 }
 
 .lmo-navbar__right{
   float: right;
+  padding: 3px 2px;
+  .fa-bell-o {
+    font-size: 1.2em;
+  }
+}
+
+.lmo-navbar__right--search {
+  float: right;
+  padding: 2px 2px 3px;
 }
 
 .lmo-navbar__center{
@@ -22,8 +35,13 @@
 
 .lmo-navbar__item{
   display: inline-block;
-  margin: 0 0 0 2px;
-  height: $navbar-height - 4px;
+  margin: 0;
+}
+
+.lmo-navbar__item {
+  .navbar-user-options .lmo-navbar__btn {
+    padding: 4px 5px;
+  }
 }
 
 .lmo-navbar__item--selected {
@@ -33,7 +51,7 @@
 
 .lmo-navbar__btn{
   line-height: 23px;
-  padding: 6px;
+  padding: 5px;
   background: transparent;
   border: none;
   &:hover, &:focus { background: $list-hover-color; }

@@ -4,8 +4,8 @@ describe Groups::MembershipRequestsController do
 
   describe '#cancel' do
     let(:requestor) { create(:user) }
-    let(:group) { mock_model Group, full_name: "Isolde's Bane", has_subdomain?: false }
-    let(:membership_request) { mock_model MembershipRequest, group: group, requestor_id: requestor.id }
+    let(:group) { create :group}
+    let(:membership_request) { create :membership_request, group: group, requestor_id: requestor.id }
 
     before do
       MembershipRequest.stub(:find).with(membership_request.id.to_s).and_return(membership_request)
@@ -21,6 +21,7 @@ describe Groups::MembershipRequestsController do
         membership_request.should_receive(:destroy)
         post :cancel, id: membership_request.id
       end
+
       it "redirects them to group page with success flash" do
         post :cancel, id: membership_request.id
         expect(flash[:success]).to match(/Membership request canceled/i)

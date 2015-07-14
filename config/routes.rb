@@ -5,6 +5,7 @@ Loomio::Application.routes.draw do
     get 'setup_group'
     get 'setup_group_for_invitations'
     get 'setup_group_to_join'
+    get 'setup_group_with_multiple_coordinators'
     get 'setup_discussion'
     get 'setup_discussion_with_comment'
     get 'setup_proposal'
@@ -24,7 +25,6 @@ Loomio::Application.routes.draw do
 
   slug_regex = /[a-z0-9\-\_]*/i
 
-
   namespace :admin do
     get 'url_info' => 'base#url_info'
     namespace :stats do
@@ -38,10 +38,6 @@ Loomio::Application.routes.draw do
       get :cohorts
       get :aaarrr
     end
-    #get :test
-    #resources :groups, only: :show
-    #get 'group/:id'
-    #get 'group/:id' => 'cohort_reports#group'
   end
 
   ActiveAdmin.routes(self)
@@ -150,6 +146,26 @@ Loomio::Application.routes.draw do
     get  '/contacts/:importer/callback', to: 'contacts#callback'
   end
 
+  constraints(GroupSubdomainConstraint) do
+    get '/' => 'redirect#group_subdomain'
+    get '/d/:id(/:slug)', to: 'redirect#discussion_key'
+    get '/g/:id(/:slug)', to: 'redirect#group_key'
+    get '/m/:id(/:slug)', to: 'redirect#motion_key'
+
+    get '/about' => redirect('https://www.loomio.org/about')
+    get '/privacy' => redirect('https://www.loomio.org/privacy')
+    get '/purpose' => redirect('https://www.loomio.org/purpose')
+    get '/services' => redirect('https://www.loomio.org/services')
+    get '/terms_of_service' => redirect('https://www.loomio.org/terms_of_service')
+    get '/third_parties' => redirect('https://www.loomio.org/third_parties')
+    get '/try_it' => redirect('https://www.loomio.org/try_it')
+    get '/wallets' => redirect('https://www.loomio.org/wallets')
+  end
+
+  constraints(MainDomainConstraint) do
+    root :to => 'marketing#index'
+  end
+
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
   get "/explore/category/:id", to: "explore#category", as: :category_explore
@@ -192,6 +208,7 @@ Loomio::Application.routes.draw do
 
   get 'start_group' => 'start_group#new'
   post 'start_group' => 'start_group#create'
+
   resources :groups, path: 'g', only: [:create, :edit, :update] do
     member do
       get :export
@@ -240,20 +257,12 @@ Loomio::Application.routes.draw do
   end
 
   scope module: :groups, path: 'g', slug: slug_regex do
-    get    ':id(/:slug)', action: 'show' #, as: :group
+    get    ':id(/:slug)', action: 'show'
     patch    ':id(/:slug)', action: 'update'
     delete ':id(/:slug)', action: 'destroy'
     post 'archive/:id',  action: 'archive', as: :archive_group
   end
 
-  constraints(GroupSubdomainConstraint) do
-    get '/' => 'groups#show'
-    patch '/' => 'groups#update'
-  end
-
-  constraints(MainDomainConstraint) do
-    root :to => 'marketing#index'
-  end
 
   delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel', as: :cancel_membership_request
 
@@ -292,7 +301,7 @@ Loomio::Application.routes.draw do
   end
 
   scope module: :discussions, path: 'd', slug: slug_regex do
-    get    ':id(/:slug)', action: 'show' #,    as: :discussion
+    get    ':id(/:slug)', action: 'show'
     patch  ':id(/:slug)', action: 'update'
     delete ':id(/:slug)', action: 'destroy'
 
@@ -357,10 +366,10 @@ Loomio::Application.routes.draw do
     end
   end
 
-  scope module: :users, path: 'u' do
-    get ':id(/:slug)', action: 'show',    slug: slug_regex, as: :user
-    patch ':id(/:slug)', action: 'update',  slug: slug_regex
-    post ':id(/:slug)', action: 'deactivate', slug: slug_regex
+  scope module: :users, path: 'u', slug: slug_regex do
+    get ':id(/:slug)', action: 'show', as: :user
+    patch ':id(/:slug)', action: 'update'
+    post ':id(/:slug)', action: 'deactivate'
   end
 
   get '/deactivation_instructions' => 'users#deactivation_instructions'
@@ -391,17 +400,6 @@ Loomio::Application.routes.draw do
     end
   end
 
-  constraints(GroupSubdomainConstraint) do
-    get '/about' => redirect('https://www.loomio.org/about')
-    get '/privacy' => redirect('https://www.loomio.org/privacy')
-    get '/purpose' => redirect('https://www.loomio.org/purpose')
-    get '/services' => redirect('https://www.loomio.org/services')
-    get '/terms_of_service' => redirect('https://www.loomio.org/terms_of_service')
-    get '/third_parties' => redirect('https://www.loomio.org/third_parties')
-    get '/try_it' => redirect('https://www.loomio.org/try_it')
-    get '/wallets' => redirect('https://www.loomio.org/wallets')
-  end
-
   scope controller: 'help' do
     get :help
     get :markdown
@@ -413,9 +411,9 @@ Loomio::Application.routes.draw do
   get 'contact(/:destination)', to: 'contact_messages#new'
 
 
-  get '/discussions/:id', to: 'discussions_redirect#show'
-  get '/groups/:id',      to: 'groups_redirect#show'
-  get '/motions/:id',     to: 'motions_redirect#show'
+  get '/discussions/:id', to: 'redirect#discussion_id'
+  get '/groups/:id',      to: 'redirect#group_id'
+  get '/motions/:id',     to: 'redirect#motion_id'
 
   get '/contributions'      => redirect('/crowd')
   get '/contributions/thanks' => redirect('/crowd')
@@ -441,6 +439,5 @@ Loomio::Application.routes.draw do
   get '/roadmap'    => redirect('https://trello.com/b/tM6QGCLH/loomio-roadmap')
   get '/community'  => redirect('https://www.loomio.org/g/WmPCB3IR/loomio-community')
   get '/timeline'   => redirect('http://www.tiki-toki.com/timeline/entry/313361/Loomio')
-
   get '/robots'     => 'robots#show'
 end

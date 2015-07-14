@@ -10,6 +10,7 @@ pl:
       try_it: Wypróbuj
       log_in: ZALOGUJ SIĘ
       video: Dowiedz się więcej jak działa Loomio
+      try_loomio: Wypróbuj Loomio
       try_loomio_beta: Wypróbuj Loomio w wersji beta
       more: Więcej
       top: Powrót do góry storny
@@ -17,6 +18,9 @@ pl:
       terms: Regulamin
       privacy: Zasady prywatności
       services: Usługi
+    hero:
+      header_html: "Loomio jest najprostszą drogą<br /> <strong>dla wspólnych decyzji</strong>."
+      lead_html: "Loomio umożliwia organizacjom i społecznościom prowadzić <strong>dyskusje</strong>, gdziekolwiek znajdują się ludzie."
     product:
       header_html: "Gdy słyszymy <strong>wszystkie głosy</strong>, podejmujemy <strong>lepsze decyzje</strong>."
       step1:

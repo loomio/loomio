@@ -10,86 +10,78 @@ Loomio is a collaborative decision-making tool that makes it easy for anyone to 
 - To learn how to __setup__, __develop__ or __translate__ Loomio [visit the wiki](https://github.com/loomio/loomio/wiki).
 - To see what's being worked on and what's planned, vote on development priorities, and find tasks to pick up, check out the [Loomio Roadmap](https://www.loomio.org/roadmap). To participate in discussions about the app, potential features, and more, [join the Loomio Community group on Loomio](https://www.loomio.org/g/WmPCB3IR/loomio-community).
 
-### Contact
+# Setup loomio for development
+See [Setup a Loomio development environment](https://github.com/loomio/loomio/wiki/Setup-a-Loomio-development-environment) our github wiki for a step by step guide to setting up your computer to develop on Loomio. If you are familiar with the process of running rails apps you can just fork and clone the repo, `bundle install` then `rake db:setup`.
 
-If you have any questions or feedback, get in touch via [contact@loomio.org](mailto:contact@loomio.org).
-<br />
-[Facebook](https://facebook.com/Loomio) [Twitter](https://twitter.com/Loomio) [Google+](https://plus.google.com/+LoomioOrg)
+## Installing the frontend dependencies
 
-## Requirements
-- PostgreSQL version 9.4 or higher.
-- Ruby 2.1
+The new javascript frontend is a [linemanjs](http://linemanjs.com/) project.
 
-# Loomio AngularJS Frontend
-This is the beginnings of a document to introduce people to the
-AngularJS parts of Loomio. It is assumed that you have the rails parts
-of loomio running already.
-
-# Installing Node
-Install the latest version of node.js for your system. (Some of us quite like [NVM](https://github.com/creationix/nvm))
-
-# Installing Bower & Lineman
+You'll need bower and lineman installed:
 
   `$ npm install -g bower`  
   `$ npm install -g lineman`
 
-# Installing Dependencies
-in the loomio folder  
-  `$ cd lineman`  
+Fetch the npm and bower dependencies:
+
+  from within loomio/lineman/
   `$ npm install`  
   `$ bower install`
 
-# Running
-Run the rails development server and Private Pub
-  (loomio) `$ rails s`  
+## Trying the new user interface in development mode
+Run the rails development server
 
-For production environments only, run Private Pub (this is unnecessary for development)  
-`$ rackup private_pub.ru -s thin -E production`
-
+  `$ rails s`  
 
 Then start lineman from the loomio/lineman folder  
-`$ cd lineman`  
-`$ lineman run`
 
-# Browsing
-- First go to the rails app at [localhost:3000](localhost:3000) and sign in.  
-- After logging in, visit [localhost:3000/angular](localhost:3000/angular) to enable the angular dashboard for your User.  
-- After activating the angular interface, you can use the javascript app at [localhost:8000](localhost:8000)
+  `$ lineman run`
 
-# Unit Testing
-We're going for high test coverage of our JS frontend here.
-You can run the unit tests with
+We have links that can setup some fake data and log you in:
+
+  http://localhost:8000/development/start_discussion
+
+See the app/controllers/development_controller.rb for more.
+
+## Testing
+We have rspec and cucumber tests on the rails app.
+
+### Rspec and Cucumber for the rails app
+We unit test the rails app with rspec, and have intregration tests of
+the rails based UI in cucumber.
+
+We also unit and e2e test the new javascript frontend.
+
+### Jasmine and Protractor for the frontend
+
+You can run the frontend unit tests with
 
   `$ lineman spec`
 
-# Integration testing
-We're not using linemans default e2e testing stuff. Insted we're going for cucumber.js integration tests.
+### Running e2e tests
 
-
-## Installing Protractor & Webdriver-manager
-To run the integration tests, you'll need Protractor and Webdriver-manager
+If you don't have them already, install protractor and webdriver-manager:
 
   `$ npm install -g protractor`  
   `$ webdriver-manager update --standalone`  
 
-(NB: This will require a java development kit to function correctly, [go here](http://docs.oracle.com/javase/7/docs/webnotes/install/) for more details on installing a JDK)
+Protractor e2e tests require rails, lineman and webdriver-manager to be
+running at the same time:
 
-## Running e2e tests
-
-To run the e2e tests, you need a bit of environment running. It's
-probably easiest if you run these each in their own terminal window.
-
-  From the loomio folder:  
-  `$ rails s`
-
-  From the loomio/lineman folder:  
-  `$ lineman run`  
+  Start webdriver-manager from anywhere
   `$ webdriver-manager start`  
 
-  Then finally to run the tests:  
+  Start rails from the loomio folder
+  `$ rails s`
+
+  Start lineman from loomio/lineman
+  `$ lineman run`  
+
+  Run the tests themselves from loomio/lineman
   `$ lineman grunt spec-e2e`
 
-# Configuration
+
+# Production Configuration
 
 ### Domain name settings
 CANONICAL_HOST - Hostname of the loomio instance. For us it's "www.loomio.org"
@@ -162,3 +154,13 @@ ERRBIT_PORT
 
 #### for a uniq ordered list of env vars:
 `grep -rIsoh -P "(?<=ENV)(\.fetch\(|\[).[A-Z_]+.(\)|\])" | grep -oP "[A-Z_]+" | sort -u > temp`
+
+## Requirements
+- PostgreSQL version 9.4 or higher.
+- Ruby 2.2
+
+### Contact
+
+If you have any questions or feedback, get in touch via [contact@loomio.org](mailto:contact@loomio.org).
+<br />
+[Facebook](https://facebook.com/Loomio) [Twitter](https://twitter.com/Loomio) [Google+](https://plus.google.com/+LoomioOrg)

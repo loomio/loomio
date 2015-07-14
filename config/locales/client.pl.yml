@@ -1,0 +1,70 @@
+pl:
+  common:
+    group: Grupa
+    action:
+      save: Zapisz
+  error_page:
+    forbidden: Nie masz uprawnień aby to wykonać.
+  comment_form:
+    delete_comment: Usuń komentarz
+  navbar:
+    user_options:
+      new_group: Nowa grupa
+      help: Pomoc
+    search:
+      placeholder: Szukaj
+      discussions: Dyskusje
+  notifications:
+    header: Powiadomienia
+  vote_form:
+    i_agree: Zgadzam się
+    i_disagree: Nie zgadzam się
+    submit_position: Prześlij stanowisko
+  proposal_positions_panel:
+    heading: Stanowiska
+  close_proposal_form:
+    close_proposal: Zamknij propozycję
+  proposal_form:
+    details_label: Szczegóły
+  discussion_form:
+    group_label: Grupa
+    privacy_label: Zasady prywatności
+  proposal_expanded:
+    close_proposal: Zamknij propozycję
+  membership_request_form:
+    email_label: E-mail
+    introduction_label: Przedstaw się
+  group_page:
+    discussions: Dyskusje
+    invite_people: Zaproś ludzi
+    options_label: Opcje
+    options:
+      label: Opcje
+    leave_group:
+      title: Opuść grupę
+    edit_group:
+      privacy:
+        label: Zasady prywatności
+  membership_requests_page:
+    ignore: Ignoruj
+  memberships_page:
+    members: Członkowie
+  profile_page:
+    change_password:
+      current_password_label: Obecne hasło
+      new_password_label: Nowe hasło
+    email_label: E-mail
+    locale_label: Język
+  delete_comment_dialog:
+    title: Usuń komentarz
+    confirm: Usuń komentarz
+  new_comment_item:
+    context_menu:
+      delete_comment: Usuń komentarz
+  help_page:
+    help: Pomoc
+    how_it_works: Jak to działa
+    join_the_community: Dołącz do społeczności
+    make_a_decision: Podejmij decyzję
+  hint:
+    vote: W każdej chwili możesz zmienić swoje stanowisko

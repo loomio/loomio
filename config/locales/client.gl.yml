@@ -1,0 +1,174 @@
+gl:
+  common:
+    time:
+      am: am
+      pm: pm
+    group: Grupo
+    groups: Grupos
+    privacy:
+      private: Privado
+      public: Público
+    date_range:
+      today: Hoxe
+    models:
+      proposal: Proposta
+    action:
+      save: Gardar
+      edit: Editar
+      like: Gústame
+      unlike: Desgustar
+      cancel: Cancelar
+  error_page:
+    forbidden: Non tes permisos para facer iso.
+  proposal_outcome_panel:
+    heading: Resultado
+  context_card:
+    heading: Contexto
+  inbox:
+    clear: Eliminar
+    unread: Sin ler
+  comment_form:
+    edit_comment: Editar commentario
+    delete_comment: Borrar comentario
+  navbar:
+    unread: Sin ler
+    groups: Grupos
+    user_options:
+      contact_us: Contáctenos
+      new_group: Novo grupo
+      profile: Perfil
+      help: Axuda
+    search:
+      placeholder: Buscar
+      discussions: Debates
+  notifications:
+    header: Notificacións
+  vote_form:
+    i_agree: Estou de acordo
+    i_abstain: Abstéñome
+    i_abstain_details: Paréceme ben que o grupo decida por min
+    i_disagree: Estou en desacordo
+    i_disagree_details: Penso que o podemos facer mellor
+    i_block: O bloqueo
+    submit_position: Enviar posición
+  proposal_positions_panel:
+    heading: Postura
+  close_proposal_form:
+    close_proposal: Pechar proposta
+  proposal_form:
+    start_proposal: Comezar proposta
+    edit_proposal: Editar proposta
+    title_label: Título
+    details_label: Detalles
+  discussion_form:
+    group_label: Grupo
+    title_label: Título
+    context_label: Contexto
+    privacy_label: Privacidade
+  proposal_expanded:
+    edit_proposal: Editar proposta
+    close_proposal: Pechar proposta
+  start_group_form:
+    heading: Comezar un grupo
+  join_group_button:
+    join_group: Unirse ó grupo
+    ask_to_join_group: Pedir unirse ó grupo
+  membership_request_form:
+    heading: Pedir unirse ó grupo
+    name_label: Nome
+    email_label: Correo electrónico
+    introduction_label: Introdúcete
+    submit_button: Pedir unirse ó grupo
+  group_page:
+    description: Descripción
+    discussions: Debates
+    manage_members: Xestionar membros
+    invite_people: Invitar xente
+    options_label: Opcións
+    options:
+      label: Opcións
+    leave_group:
+      title: Deixar grupo
+    edit_group:
+      privacy:
+        label: Privacidade
+        visible_to_members: Quen pode atopar este grupo?
+        membership_granted_upon: Como fai a xente para entrar?
+        private_discussions: Tan só os membros poden ver os debates
+      permissions:
+        label: Permisos
+        helptext: Que poden facer os membros?
+        members_can_add_members: Invita e aproba novos membros
+        members_can_create_subgroups: Crea subgrupos
+        members_can_edit_comments: Edita os seus comentarios en calquera momento
+        members_can_vote: Votar nas propostas
+  membership_requests_page:
+    approve: Dar o visto bo
+    ignore: ignorar
+  group_form:
+    profile_label: Perfil
+    name_label: Nome
+    description_label: Descripción
+    category_label: Categoría
+  memberships_page:
+    members: Membros
+    name_label: Nome
+    coordinator_label: Coordinador/a
+    remove_member_label: Borrar
+    remove_membership:
+      submit: Borrar
+  profile_page:
+    change_picture:
+      use_initials: Usar iniciais
+    change_password:
+      current_password_label: Contrasinal actual
+      new_password_label: Novo contrasinal
+      password_confirmation_label: Confirmar contrasinal
+    deactivate_user:
+      title: Elimina a túa conta
+      submit: Elimina a túa conta
+    profile: Perfil
+    picture_label: Imaxe
+    name_label: Nome
+    username_label: Usuario
+    email_label: Correo electrónico
+    locale_label: Lingua
+  dashboard_page:
+    aria_label: Panel de control
+    threads_from:
+      today: Hoxe
+  thread_group:
+    aria_label: Nome do grupo
+  delete_comment_dialog:
+    title: Borrar comentario
+    confirm: Borrar comentario
+  new_comment_item:
+    context_menu:
+      edit_comment: Editar commentario
+      delete_comment: Borrar comentario
+  contact_message_form:
+    name_label: O teu nome
+    email_label: A túa dirección de correo electrónico
+    message_label: A túa mensaxe
+  help_page:
+    coordinating: Coordinando o teu grupo de Loomio
+    different_ways: Formas diferentes de empregar Loomio
+    getting_started: Comezando
+    have_a_discussion: Ter un debate
+    have_a_discussion_description: O asunto e calquera información relevante van no alto da páxina. Usa a caixa de comentario para dicir algo no debate.
+    help: Axuda
+    how_it_works: Como funciona
+    join_the_community: Unirse á comunidade
+    images_and_text_formatting: Formato de texto e imaxes
+    keep_up_to_date: Manter ó día
+    make_a_decision: Tomar unha decisión
+    start_discussion: Comezar un debate aberto
+    video_id: "52025402"
+    video_tutorial: Videotutorial
+  hint:
+    discussion: Recomendacións para comezar un debate aberto
+    proposal: Trucos para escribir unha proposta clara
+    vote: Podes cambiar a proposta en calquera momento
+  pricing_page:
+    organisations: Organizacións
+    informal_groups: Grupos informais
