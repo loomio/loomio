@@ -348,36 +348,43 @@ en:
       private: 'This group is only visible to members'
       parent_members: 'This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
       public: 'This group is visible on the web'
-    edit_group:
-      title: 'Edit Group Settings'
-      privacy:
-        label: 'Privacy'
-        visible_to_members: 'Who can find this group?'
-        public_visibility: 'Anyone - list the group publicly'
-        organisation_visibility: "Organisation - unlisted to the public, but visible to members of {{parentGroupName}}"
-        private_visibility: 'Members only - the group will not be listed'
-        membership_granted_upon: 'How do people join?'
-        membership_by_request: 'Open - anyone can join the group'
-        membership_by_request_subgroup: 'Open to members of {{parentGroupName}}'
-        membership_by_approval: 'By request - anyone can request to join'
-        membership_by_approval_subgroup: 'By request from members of {{parentGroupName}}'
-        membership_by_invitation: 'Invitation only - new members must be invited'
-        discussion_privacy_options: 'Who can view threads?'
-        public_discussions: 'Public threads only'
-        public_discussions_subgroup: 'Anyone in {{parentGroupName}} can see discussions'
-        public_or_private_discussions: 'Allow public and private threads'
-        private_discussions: 'Only members can see discussions'
-      permissions:
-        label: 'Permissions'
-        helptext: 'What can members do?'
-        members_can_add_members: 'Invite and approve new members'
-        members_can_create_subgroups: 'Create subgroups'
-        members_can_start_discussions: 'Start threads'
-        members_can_edit_discussions: 'Edit the title and context of any thread'
-        members_can_edit_comments: 'Edit their comments at any time'
-        members_can_raise_motions: 'Start proposals'
-        members_can_vote: 'Vote on proposals'
-      submit:  'Update Settings'
+
+  edit_group_form:
+    title: 'Edit Group Settings'
+    profile:
+      label: 'Profile'
+      name: 'Name'
+      description: 'Description'
+    privacy:
+      label: 'Privacy'
+      visible_to_members: 'Who can find this group?'
+      public_visibility: 'Anyone - list the group publicly'
+      organisation_visibility: "Organisation - unlisted to the public, but visible to members of {{parentGroupName}}"
+      private_visibility: 'Members only - the group will not be listed'
+      membership_granted_upon: 'How do people join?'
+      membership_by_request: 'Open - anyone can join the group'
+      membership_by_request_subgroup: 'Open to members of {{parentGroupName}}'
+      membership_by_approval: 'By request - anyone can request to join'
+      membership_by_approval_subgroup: 'By request from members of {{parentGroupName}}'
+      membership_by_invitation: 'Invitation only - new members must be invited'
+      discussion_privacy_options: 'Who can view threads?'
+      public_discussions: 'Public threads only'
+      public_discussions_subgroup: 'Anyone in {{parentGroupName}} can see discussions'
+      public_or_private_discussions: 'Allow public and private threads'
+      private_discussions: 'Only members can see discussions'
+    permissions:
+      label: 'Permissions'
+      helptext: 'What can members do?'
+      members_can_add_members: 'Invite and approve new members'
+      members_can_create_subgroups: 'Create subgroups'
+      members_can_start_discussions: 'Start threads'
+      members_can_edit_discussions: 'Edit the title and context of any thread'
+      members_can_edit_comments: 'Edit their comments at any time'
+      members_can_raise_motions: 'Start proposals'
+      members_can_vote: 'Vote on proposals'
+    submit:  'Update Settings'
+    messages:
+      success: 'Successfully updated your group'
 
   membership_requests_card:
     heading: 'Membership Requests ({{count}})'

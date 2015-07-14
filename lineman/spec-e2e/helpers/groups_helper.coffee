@@ -42,7 +42,7 @@ module.exports = new class GroupsHelper
     element(By.css('.group-page-actions__edit-group-link')).click()
 
   changeGroupVisibilitySettings: ->
-    element(By.css('.edit-group-form__group-visible-to-field option[value=members]')).click()
+    element(By.css('.edit-group-form__visible-to option[value=members]')).click()
 
   # changeGroupPermissionsOptions: ->
   #   element(By.css('.edit-group-form__group-members-can-add-members')).click()
@@ -57,16 +57,37 @@ module.exports = new class GroupsHelper
     @clickEditGroupOption()
 
   votePermissionsCheckbox: ->
-    element(By.css('.edit-group-form__group-members-can-vote'))
+    element(By.css('.edit-group-form__members-can-vote'))
 
   changeVotingPermissions: ->
     @votePermissionsCheckbox().click()
 
-  submitGroupSettingsForm: ->
+  groupNameInput: ->
+    element(By.css('.edit-group-form__name'))
+
+  editGroupName: (name) ->
+    @groupNameInput().clear().sendKeys(name)
+
+  clearGroupNameInput: ->
+    @groupNameInput().clear()
+
+  editGroupFormValidationErrors: ->
+    element(By.css('.lmo-validation-error'))
+
+  editGroupDescription: (description) ->
+    element(By.css('.edit-group-form__description')).sendKeys(description)
+
+  groupPageDescriptionText: ->
+    element(By.css('.group-page__description-text'))
+
+  submitEditGroupForm: ->
     element(By.css('.edit-group-form__submit-button')).click()
 
   groupPage: ->
     element(By.css('.group-page'))
+
+  groupPageHeader: ->
+    element(By.css('.group-page__name h1'))
 
   clickJoinGroupButton: ->
     element(By.css('.join-group-button__join-group')).click()

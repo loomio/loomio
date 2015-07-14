@@ -19,17 +19,37 @@ describe 'Group Page', ->
     beforeEach ->
       groupsHelper.load()
 
+    it 'successfully edits group name', ->
+      groupsHelper.visitEditGroupPage()
+      groupsHelper.editGroupName('Dancing Dirty Shoes')
+      groupsHelper.submitEditGroupForm()
+      expect(groupsHelper.flashSection().getText()).toContain('Successfully updated your group')
+      expect(groupsHelper.groupPageHeader().getText()).toContain('Dancing Dirty Shoes')
+
+    it 'throws a validation error when name is blank', ->
+      groupsHelper.visitEditGroupPage()
+      groupsHelper.clearGroupNameInput()
+      groupsHelper.submitEditGroupForm()
+      expect(groupsHelper.editGroupFormValidationErrors().isDisplayed()).toBeTruthy()
+      expect(groupsHelper.editGroupFormValidationErrors().getText()).toContain("can't be blank")
+
+     it 'successfully edits group description', ->
+      groupsHelper.visitEditGroupPage()
+      groupsHelper.editGroupDescription("Describin' the group")
+      groupsHelper.submitEditGroupForm()
+      expect(groupsHelper.flashSection().getText()).toContain('Successfully updated your group')
+      expect(groupsHelper.groupPageDescriptionText().getText()).toContain("Describin' the group")
+
     it 'successfully edits group privacy', ->
-      groupsHelper.openMemberOptionsDropdown()
-      groupsHelper.clickEditGroupOption()
+      groupsHelper.visitEditGroupPage()
       groupsHelper.changeGroupVisibilitySettings()
-      groupsHelper.submitGroupSettingsForm()
+      groupsHelper.submitEditGroupForm()
       expect(groupsHelper.groupPage().getText()).toContain('This group is only visible to members')
 
     it 'successfully edits group permissions', ->
       groupsHelper.visitEditGroupPage()
       groupsHelper.changeVotingPermissions()
-      groupsHelper.submitGroupSettingsForm()
+      groupsHelper.submitEditGroupForm()
       groupsHelper.visitEditGroupPage()
       expect(groupsHelper.votePermissionsCheckbox().isSelected()).not.toBeTruthy()
 
@@ -44,7 +64,6 @@ describe 'Group Page', ->
       groupsHelper.visitGroupPage()
       expect(groupsHelper.groupsList().getText()).not.toContain('Dirty Dancing Shoes')
 
-
     it 'prevents last coordinator from leaving the group', ->
       groupsHelper.load()
       groupsHelper.openMemberOptionsDropdown()
@@ -56,5 +75,4 @@ describe 'Group Page', ->
       groupsHelper.openMemberOptionsDropdown()
       groupsHelper.clickLeaveGroupButton()
       groupsHelper.clickAddCoordinatorButton()
-      expect(membershipsHelper.pageHeader().isDisplayed()).toBeTruthy
-
+      expect(membershipsHelper.membershipsPageHeader().isDisplayed()).toBeTruthy

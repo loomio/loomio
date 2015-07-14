@@ -4,67 +4,77 @@
       %button{type: 'button', class: 'close', ng-click: '$close()'}
         %span{aria-hidden: true} &times;
         %span.sr-only{translate: 'common.action.cancel'}
-      %h1.lmo-h1{translate: 'group_page.edit_group.title'}
+      %h1.lmo-h1{translate: 'edit_group_form.title'}
 
     .modal-body
-      %h2.lmo-h2{translate: 'group_page.edit_group.privacy.label'}
 
-      %label{for: 'group-visible-to-members', translate: 'group_page.edit_group.privacy.visible_to_members'}
-      %select.form-control.edit-group-form__group-visible-to-field{ng-change: 'updateOptions()', ng-model: 'group.visibleTo', ng_required: true}
-        %option{value: 'public', ng-if: 'validVisibilityOption("public")', translate: 'group_page.edit_group.privacy.public_visibility'}
-        %option{value: 'parent_members', ng-if: 'validVisibilityOption("parent_members")', translate: 'group_page.edit_group.privacy.organisation_visibility', translate-value-parent-group-name: '{{group.parentName()}}'}
-        %option{value: 'members', ng-if: 'validVisibilityOption("members")', translate: 'group_page.edit_group.privacy.private_visibility'}
+      %h2.lmo-h2{translate: 'edit_group_form.profile.label'}
 
-      %label{for: 'group-membership-granted-upon', translate: 'group_page.edit_group.privacy.membership_granted_upon'}
-      %select.form-control.edit-group-form.group-membership-granted-upon-field.{ng-change: 'updateOptions()', ng-model: 'group.membershipGrantedUpon', ng_required: true}
-        %option{value: 'request', ng-if: 'validMembershipOption("request")', translate: 'group_page.edit_group.privacy.{{privacyTranslation("membership_by_request")}}', translate-value-parent-group-name: '{{group.parentName()}}' }
-        %option{value: 'approval', ng-if: 'validMembershipOption("approval")', translate: 'group_page.edit_group.privacy.{{privacyTranslation("membership_by_approval")}}', translate-value-parent-group-name: '{{group.parentName()}}' }
-        %option{value: 'invitation', ng-if: 'validMembershipOption("invitation")', translate: 'group_page.edit_group.privacy.membership_by_invitation'}
+      %label{for: 'group-name', translate: 'edit_group_form.profile.name'}
+      %input.form-control.edit-group-form__name#group-name{ng-required: true, ng-model: 'group.name'}
+      %validation_errors{subject: 'group', field: 'name'}
 
-      %label{for: 'group-discussion-privacy-options', translate: 'group_page.edit_group.privacy.discussion_privacy_options'}
-      %select.form-control.edit-group-form__group-discussion-privacy-options-field{ng-change: 'updateOptions()', ng-model: 'group.discussionPrivacyOptions', ng_required: true}
-        %option{value: 'public_only', ng-if: 'validDiscussionOption("public_only")', translate: 'group_page.edit_group.privacy.{{privacyTranslation("public_discussions")}}', translate-value-parent-group-name: '{{group.parentName()}}' }
-        %option{value: 'public_or_private', ng-if: 'validDiscussionOption("public_or_private")', translate: 'group_page.edit_group.privacy.public_or_private_discussions' }
-        %option{value: 'private_only', ng-if: 'validDiscussionOption("private_only")', translate: 'group_page.edit_group.privacy.private_discussions'}
+      %label{for: 'group-description', translate: 'edit_group_form.profile.description'}
+      %textarea.form-control.edit-group-form__description#group-description{ng-model: 'group.description'}
 
-      %h2.lmo-h2{translate: 'group_page.edit_group.permissions.label'}
-      %strong{translate: 'group_page.edit_group.permissions.helptext'}
+      %h2.lmo-h2{translate: 'edit_group_form.privacy.label'}
+
+      %label{for: 'group-visible-to', translate: 'edit_group_form.privacy.visible_to_members'}
+      %select.form-control.edit-group-form__visible-to#group-visible-to{ng-change: 'updateOptions()', ng-model: 'group.visibleTo', ng_required: true}
+        %option{value: 'public', ng-if: 'validVisibilityOption("public")', translate: 'edit_group_form.privacy.public_visibility'}
+        %option{value: 'parent_members', ng-if: 'validVisibilityOption("parent_members")', translate: 'edit_group_form.privacy.organisation_visibility', translate-value-parent-group-name: '{{group.parentName()}}'}
+        %option{value: 'members', ng-if: 'validVisibilityOption("members")', translate: 'edit_group_form.privacy.private_visibility'}
+
+      %label{for: 'group-membership-granted-upon', translate: 'edit_group_form.privacy.membership_granted_upon'}
+      %select.form-control.edit-group-form__membership-granted-upon#group-membership-granted-upon{ng-change: 'updateOptions()', ng-model: 'group.membershipGrantedUpon', ng_required: true}
+        %option{value: 'request', ng-if: 'validMembershipOption("request")', translate: 'edit_group_form.privacy.{{privacyTranslation("membership_by_request")}}', translate-value-parent-group-name: '{{group.parentName()}}' }
+        %option{value: 'approval', ng-if: 'validMembershipOption("approval")', translate: 'edit_group_form.privacy.{{privacyTranslation("membership_by_approval")}}', translate-value-parent-group-name: '{{group.parentName()}}' }
+        %option{value: 'invitation', ng-if: 'validMembershipOption("invitation")', translate: 'edit_group_form.privacy.membership_by_invitation'}
+
+      %label{for: 'group-discussion-privacy-options', translate: 'edit_group_form.privacy.discussion_privacy_options'}
+      %select.form-control.edit-group-form__discussion-privacy-options#group-discussion-privacy-options{ng-change: 'updateOptions()', ng-model: 'group.discussionPrivacyOptions', ng_required: true}
+        %option{value: 'public_only', ng-if: 'validDiscussionOption("public_only")', translate: 'edit_group_form.privacy.{{privacyTranslation("public_discussions")}}', translate-value-parent-group-name: '{{group.parentName()}}' }
+        %option{value: 'public_or_private', ng-if: 'validDiscussionOption("public_or_private")', translate: 'edit_group_form.privacy.public_or_private_discussions' }
+        %option{value: 'private_only', ng-if: 'validDiscussionOption("private_only")', translate: 'edit_group_form.privacy.private_discussions'}
+
+      %h2.lmo-h2{translate: 'edit_group_form.permissions.label'}
+      %strong{translate: 'edit_group_form.permissions.helptext'}
 
       .checkbox
         %label{for: 'group-members-can-add-members'}
-          %input.edit-group-form__group-members-can-add-members{type: 'checkbox', ng-model: 'group.membersCanAddMembers'}
-          %span{translate: 'group_page.edit_group.permissions.members_can_add_members'}
+          %input.edit-group-form__members-can-add-members#group-members-can-add-members{type: 'checkbox', ng-model: 'group.membersCanAddMembers'}
+          %span{translate: 'edit_group_form.permissions.members_can_add_members'}
 
       .checkbox
         %label{for: 'group-members-can-create-subgroups'}
-          %input.edit-group-form__group-members-can-create-subgroups{type: 'checkbox', ng-model: 'group.membersCanCreateSubgroups'}
-          %span{translate: 'group_page.edit_group.permissions.members_can_create_subgroups'}
+          %input.edit-group-form__members-can-create-subgroups#group-members-can-create-subgroups{type: 'checkbox', ng-model: 'group.membersCanCreateSubgroups'}
+          %span{translate: 'edit_group_form.permissions.members_can_create_subgroups'}
 
       .checkbox
         %label{for: 'group-members-can-start-discussions'}
-          %input.edit-group-form__group-members-can-start-discussions{type: 'checkbox', ng-model: 'group.membersCanStartDiscussions'}
-          %span{translate: 'group_page.edit_group.permissions.members_can_start_discussions'}
+          %input.edit-group-form__members-can-start-discussions#group-members-can-start-discussions{type: 'checkbox', ng-model: 'group.membersCanStartDiscussions'}
+          %span{translate: 'edit_group_form.permissions.members_can_start_discussions'}
 
       .checkbox
         %label{for: 'group-members-can-edit-discussions'}
-          %input.edit-group-form__group-members-can-edit-discussions{type: 'checkbox', ng-model: 'group.membersCanEditDiscussions'}
-          %span{translate: 'group_page.edit_group.permissions.members_can_edit_discussions'}
+          %input.edit-group-form__members-can-edit-discussions#group-members-can-edit-discussions{type: 'checkbox', ng-model: 'group.membersCanEditDiscussions'}
+          %span{translate: 'edit_group_form.permissions.members_can_edit_discussions'}
 
       .checkbox
         %label{for: 'group-members-can-edit-comments'}
-          %input.edit-group-form__group-members-can-edit-comments{type: 'checkbox', ng-model: 'group.membersCanEditComments'}
-          %span{translate: 'group_page.edit_group.permissions.members_can_edit_comments'}
+          %input.edit-group-form__members-can-edit-comments#group-members-can-edit-comments{type: 'checkbox', ng-model: 'group.membersCanEditComments'}
+          %span{translate: 'edit_group_form.permissions.members_can_edit_comments'}
 
       .checkbox
         %label{for: 'group-members-can-raise-motions'}
-          %input.edit-group-form__group-members-can-raise-motions{type: 'checkbox', ng-model: 'group.membersCanRaiseProposals'}
-          %span{translate: 'group_page.edit_group.permissions.members_can_raise_motions'}
+          %input.edit-group-form__members-can-raise-motions#group-members-can-raise-motions{type: 'checkbox', ng-model: 'group.membersCanRaiseProposals'}
+          %span{translate: 'edit_group_form.permissions.members_can_raise_motions'}
 
       .checkbox
         %label{for: 'group-members-can-vote'}
-          %input.edit-group-form__group-members-can-vote{type: 'checkbox', ng-model: 'group.membersCanVote'}
-          %span{translate: 'group_page.edit_group.permissions.members_can_vote'}
+          %input.edit-group-form__members-can-vote#group-members-can-vote{type: 'checkbox', ng-model: 'group.membersCanVote'}
+          %span{translate: 'edit_group_form.permissions.members_can_vote'}
 
     .modal-footer
-      %button.btn.btn-primary.edit-group-form__submit-button{type: 'submit', translate: 'group_page.edit_group.submit'}
+      %button.btn.btn-primary.edit-group-form__submit-button{type: 'submit', translate: 'edit_group_form.submit'}
       %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}
