@@ -16,6 +16,6 @@ describe 'Email settings', ->
     expect(emailSettingsHelper.mentionedCheckbox().isSelected()).toBeTruthy()
 
   it 'redirects the user to the dashboard with flash when settings are updated', ->
-    emailSettingsHelper.updateEmailSettings()
+    emailSettingsHelper.updateEmailSettings() 
     expect(dashboardHelper.flashSection().getText()).toContain('Email settings updated')
     expect(dashboardHelper.pageHeader().getText()).toContain('Recent Threads')

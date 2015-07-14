@@ -91,7 +91,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     userHasVoted: (user) ->
       @lastVoteByUser(user)?
 
-    close: ->
+    close: =>
       @restfulClient.postMember(@id, "close")
 
     hasOutcome: ->

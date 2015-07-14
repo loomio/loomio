@@ -102,7 +102,7 @@ angular.module('loomioApp').factory 'BaseModel', ->
       else
         @id
 
-    save: ->
+    save: =>
       @setErrors()
       if @processing
         console.log "save returned, already processing:", @
@@ -114,7 +114,7 @@ angular.module('loomioApp').factory 'BaseModel', ->
       else
         @restfulClient.update(@keyOrId(), @serialize()).then(@saveSuccess, @saveFailure)
 
-    destroy: ->
+    destroy: =>
       @processing = true
       @restfulClient.destroy(@keyOrId()).then =>
         @processing = false
