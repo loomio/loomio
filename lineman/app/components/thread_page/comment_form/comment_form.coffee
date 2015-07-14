@@ -11,7 +11,7 @@ angular.module('loomioApp').directive 'commentForm', ->
       $scope.comment.save().then ->
         $scope.comment = Records.comments.build(discussion_id: discussion.id)
         $scope.$emit('commentSaveSuccess')
-        FlashService.success('comment_form.flash_messages.created')
+        FlashService.success('comment_form.messages.created')
 
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->
       $scope.comment.parentId = parentComment.id

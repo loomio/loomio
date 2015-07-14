@@ -7,7 +7,7 @@ angular.module('loomioApp').factory 'EditCommentForm', ->
       $scope.processing = true
       $scope.comment.save().then ->
         $scope.processing = false
-        FlashService.success 'comment_form.changes_saved'
+        FlashService.success 'comment_form.messages.updated'
         $scope.$close()
       , ->
         $scope.processing = false

@@ -89,10 +89,10 @@ en:
     attachments:
       aria_label: 'Attach a file'
       remove_attachment: 'Remove attachment'
-    flash_messages:
+    messages:
       created: 'Your comment was added to the thread'
-      update_comment: 'Changes saved'
-      destroy_comment: 'You comment has been deleted'
+      updated: 'Comment successfully updated'
+      destroyed: 'Your comment has been deleted'
     edit_comment: 'Edit comment'
     delete_comment: 'Delete comment'
     cancel_reply: 'Cancel Reply'
