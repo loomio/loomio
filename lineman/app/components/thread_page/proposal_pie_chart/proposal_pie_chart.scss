@@ -19,9 +19,7 @@
 .proposal-pie-chart__icon{
   width: 24px;
   height: 24px;
-  border-width: 1px;
-  border-style: solid;
-  @include roundedCorners;
+  border-radius: 100%;
 }
 
 .proposal-pie-chart__icon--yes{
@@ -31,17 +29,14 @@
 
 .proposal-pie-chart__icon--abstain{
   background-color: $abstain-color;
-  border-color: $abstain-border-color;
 }
 
 .proposal-pie-chart__icon--no{
   background-color: $disagree-color;
-  border-color: $disagree-border-color;
 }
 
 .proposal-pie-chart__icon--block{
   background-color: $block-color;
-  border-color: $block-border-color;
 }
 
 .proposal-pie-chart__participation-statement {

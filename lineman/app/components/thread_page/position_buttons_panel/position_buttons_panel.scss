@@ -15,8 +15,7 @@
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 8px;
-  border-width: 1px;
-  border-style: solid;
+  border: none;
 }
 
 /*.vote-form input[type="radio"]:checked+label{*/
@@ -27,24 +26,24 @@
   opacity: 0.3;
 }
 .position-button--yes{
-  background-image: url(/img/green_thumb_button_inv_60.png);
-  border-color: darken($agree-color, 15%);
+  background-color: $agree-color;
+  background-image: url(/img/agree_48.png);
 }
 
 .position-button--no {
+  background-color: $disagree-color;
+  background-image: url(/img/disagree_48.png);
   margin-left: 4px;
-  background-image: url(/img/pink_thumb_button_inv_60.png);
-  border-color: darken($disagree-color, 15%);
 }
 
 .position-button--abstain {
+  background-color: $abstain-color;
+  background-image: url(/img/abstain_48.png);
   margin-left: 4px;
-  background-image: url(/img/yellow_thumb_button_inv_60.png);
-  border-color: darken($abstain-color, 15%);
 }
 
 .position-button--block {
+  background-color: $block-color;
+  background-image: url(/img/block_48.png);
   margin-left: 4px;
-  background-image: url(/img/red_flag_button_inv_60.png);
-  border-color: darken($block-color, 15%);
 }
