@@ -41,12 +41,13 @@ class CustomOauth2 < OmniAuth::Strategies::OAuth2
     }
   end
 
+  # TODO: Clean up these nested hash methods
   def extract_name(raw_info)
     return raw_info['name'] if raw_info['name']
-    return raw_info['result']['field_full_name']['und']['item']['value'] if raw_info['result'] and
-        raw_info['result']['field_full_name'] and
-        raw_info['result']['field_full_name']['und'] and
-        raw_info['result']['field_full_name']['und']['item'] and
+    return raw_info['result']['field_full_name']['und']['item']['value'] if raw_info['result'] &&
+        raw_info['result']['field_full_name'] &&
+        raw_info['result']['field_full_name']['und'] &&
+        raw_info['result']['field_full_name']['und']['item'] &&
         raw_info['result']['field_full_name']['und']['item']['value']
     return raw_info['result']['name'] if raw_info['result'] and raw_info['result']['name']
   end
