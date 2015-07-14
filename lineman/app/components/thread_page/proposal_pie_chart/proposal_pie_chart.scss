@@ -6,7 +6,7 @@
   @include fontSmall;
   color: $grey-on-white;
   padding-top: 16px;
-  padding-left: 32px;
+  padding-left: 20px;
   td {
     padding-bottom: 10px;
   }
@@ -17,8 +17,8 @@
 }
 
 .proposal-pie-chart__icon{
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   border-width: 1px;
   border-style: solid;
   @include roundedCorners;
@@ -48,4 +48,11 @@
   margin-top: 10px;
   @include fontSmall;
   color: $grey-on-white;
+}
+
+@media (max-width: 480px) {
+  .proposal-pie-chart__legend{
+    display: block;
+    padding: 0 0 0 165px;
+  }
 }
