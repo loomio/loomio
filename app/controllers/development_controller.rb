@@ -14,6 +14,10 @@ class DevelopmentController < ApplicationController
     "http://localhost:8000/g/#{group.key}/"
   end
 
+  def dashboard_url
+    "http://localhost:8000/dashboard"
+  end
+
   def setup_group
     cleanup_database
     sign_in patrick
@@ -119,6 +123,16 @@ class DevelopmentController < ApplicationController
     end
     membership_request_from_user
     redirect_to group_url(test_group)
+  end
+
+  def setup_user_email_settings
+    cleanup_database
+    sign_in patrick
+    patrick.update_attributes(email_when_proposal_closing_soon: false,
+                              email_missed_yesterday:           false,
+                              email_when_mentioned:             false,
+                              email_on_participation:           false)
+    redirect_to dashboard_url
   end
 
   def setup_all_notifications

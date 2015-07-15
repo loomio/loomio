@@ -63,6 +63,7 @@ angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootS
     {path: '/inbox', component: 'inboxPage' },
     {path: '/groups', component: 'groupsPage' },
     {path: '/profile', component: 'profilePage'},
+    {path: '/email_preferences', component: 'emailSettingsPage' },
     {path: '/d/:key', component: 'threadPage' },
     {path: '/d/:key/:stub', component: 'threadPage' },
     {path: '/m/:key/', component: 'proposalRedirect' },

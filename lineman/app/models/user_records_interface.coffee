@@ -5,6 +5,8 @@ angular.module('loomioApp').factory 'UserRecordsInterface', (BaseRecordsInterfac
     constructor: (recordStore) ->
       @baseConstructor recordStore
       @profileClient = new RestfulClient 'profile'
+      @profileClient.onSuccess = (response) =>
+        @recordStore.import(response.data)
 
     updateProfile: (user) ->
       @profileClient.post 'update_profile', user.serialize()

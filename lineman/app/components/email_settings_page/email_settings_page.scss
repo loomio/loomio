@@ -1,0 +1,17 @@
+.email-settings-page {
+  max-width: $main-max-width;
+  margin: 0px auto;
+}
+
+.email-settings-page__email-settings {
+  @include card;
+}
+
+.email-settings-page__field {
+  label { margin: 0 0 0 15px; }
+  margin-bottom: 15px;
+}
+
+.email-settings-page__input-description {
+  margin-left: 25px;
+}
