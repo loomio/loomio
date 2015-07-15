@@ -20,6 +20,7 @@ class Cohort < ActiveRecord::Base
 
   def retained_organisations
     min_age = 20
+    max_age = 40
     min_activity = 20
     q = "SELECT DISTINCT group_id
          FROM group_measurements o_gm
@@ -28,7 +29,7 @@ class Cohort < ActiveRecord::Base
          AND EXISTS (
            SELECT * FROM group_measurements i_gm
            WHERE i_gm.group_id = o_gm.group_id
-           AND o_gm.age > #{min_age} AND i_gm.age = #{min_age}
+           AND o_gm.age > #{min_age} AND i_gm.age = #{min_age} AND o_gm.age < #{max_age}
            AND o_gm.organisation_member_visits_count > (i_gm.organisation_member_visits_count + #{min_activity}) )"
     retained_organisation_ids = ActiveRecord::Base.connection.exec_query(q).rows.flatten.map(&:to_i)
 
