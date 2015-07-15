@@ -1,12 +1,12 @@
 %article.thread-item{ng-controller: 'NewProposalItemController', aria-labelledby: 'proposal-{{proposal.id}}'}
-  .thread-item-header.media
+  .thread-item__header.media
     .media-left
-      .thread-item-proposal-icon
+      .thread-item__proposal-icon
     .media-body
       %h3.new-motion__heading{id: 'proposal-{{proposal.id}}', translate: "new_proposal_item.author_created_proposal", translate-value-name: '{{proposal.authorName()}}'}
-  .thread-item-body
+  .thread-item__body
     {{proposal.name}}
 
-  .thread-item-footer
-    .thread-actions
+  .thread-item__footer
+    .thread-item__actions
       %timeago{timestamp: 'proposal.createdAt'}

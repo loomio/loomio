@@ -10,10 +10,6 @@ class CommentSerializer < ActiveModel::Serializer
   has_many :likers, serializer: UserSerializer, root: 'users'
   has_many :attachments, serializer: AttachmentSerializer, root: 'attachments'
 
-  def body
-    auto_link_usernames_or_lists object.body, username_url_base: '#', username_include_symbol: true
-  end
-
   def filter(keys)
     keys.delete(:parent) unless object.parent.present?
     keys

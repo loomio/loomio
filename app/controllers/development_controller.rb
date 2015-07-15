@@ -59,6 +59,14 @@ class DevelopmentController < ApplicationController
     redirect_to discussion_url(test_discussion)
   end
 
+  def setup_busy_discussion
+    cleanup_database
+    test_discussion
+    sign_in patrick
+    setup_all_notifications_work
+    redirect_to discussion_url(test_discussion)
+  end
+
   def setup_proposal
     cleanup_database
     sign_in patrick
@@ -116,7 +124,15 @@ class DevelopmentController < ApplicationController
   def setup_all_notifications
     cleanup_database
     sign_in patrick
+    setup_all_notifications_work
 
+
+    redirect_to discussion_url(test_discussion)
+  end
+
+  private
+
+  def setup_all_notifications_work
     #'comment_liked'
     comment = Comment.new(discussion: test_discussion, body: 'I\'m rather likeable')
     new_comment_event = CommentService.create(comment: comment, actor: patrick)
@@ -157,11 +173,7 @@ class DevelopmentController < ApplicationController
     another_group = Group.new(name: 'Planets of the 80\'s')
     GroupService.create(group: another_group, actor: jennifer)
     MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer, message: 'join in')
-
-    redirect_to discussion_url(test_discussion)
   end
-
-  private
 
   def ensure_testing_environment
     raise "Do not call me." if Rails.env.production?

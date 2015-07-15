@@ -1,6 +1,6 @@
 %article.thread-item.thread-item--comment{ng_controller: 'NewCommentItemController', aria-labelledby: 'comment-{{comment.id}}', id: 'comment-{{comment.id}}' }
-  .thread-item-context-menu.dropdown.pull-right{ng-if: 'showContextMenu()'}
-    %button.btn.lmo-btn-nude.dropdown-toggle.thread-item__options-button{href:''}
+  .dropdown.pull-right{ng-if: 'showContextMenu()'}
+    %button.thread-item__dropdown-button.btn.lmo-btn-nude.dropdown-toggle{href:''}
       %i.fa.fa-chevron-down{aria-hidden: 'true'}
       .sr-only{translate: 'new_comment_item.context_menu.aria_label'}
     .dropdown-menu.dropdown-menu-right
@@ -10,7 +10,7 @@
         %li.dropdown-menu-item{ng-if: '::canDeleteComment()'}
           %a.dropdown-menu-item-label.thread-item__delete-link{href: '', ng-click: 'deleteComment()', translate: 'new_comment_item.context_menu.delete_comment'}
 
-  .thread-item-header.media
+  .thread-item__header.media
     .media-left
       %user_avatar{user: "comment.author()"}
     .media-body
@@ -18,20 +18,20 @@
       %span{ng-if: '!comment.parentId'}
         %h3.new-comment__author-name {{ ::comment.authorName() }}
 
-  .thread-item-body{marked: 'comment.body' }
+  .thread-item__body{marked: 'comment.body' }
 
-  .thread-item-attachments
-    .thread-attachment{ng-repeat: 'attachment in comment.attachments() track by attachment.id'}
+  .thread-item__attachments
+    .thread-item__attachment{ng-repeat: 'attachment in comment.attachments() track by attachment.id'}
       %attachment{attachment: 'attachment'}
 
-  .thread-item-footer
-    .thread-actions
-      %a.thread-actions__like{href: '', translate: 'common.action.like', ng-show: '!currentUserLikesIt()', ng_click: 'like()'}>
+  .thread-item__footer
+    .thread-item__actions
+      %a.thread-item__action--like{href: '', translate: 'common.action.like', ng-show: '!currentUserLikesIt()', ng_click: 'like()'}>
       %a{href: '', translate: 'common.action.unlike', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
       %span{aria-hidden: 'true'}·
-      %a.thread-actions__reply{translate: 'common.action.reply', href: '', ng_click: 'reply()'}>
+      %a.thread-item__action--reply{translate: 'common.action.reply', href: '', ng_click: 'reply()'}>
       %span{aria-hidden: 'true'}·
       %timeago{timestamp: 'comment.createdAt' }>
 
-    .thread-liked-by-sentence{ng_show: 'anybodyLikesIt()'}
+    .thread-item__liked-by{ng_show: 'anybodyLikesIt()'}
       {{ likedBySentence }}
