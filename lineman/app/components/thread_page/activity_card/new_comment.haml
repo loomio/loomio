@@ -18,7 +18,7 @@
       %span{ng-if: '!comment.parentId'}
         %h3.new-comment__author-name {{ ::comment.authorName() }}
 
-  .thread-item-body{btf-markdown: 'comment.body' }
+  .thread-item-body{marked: 'comment.body' }
 
   .thread-item-attachments
     .thread-attachment{ng-repeat: 'attachment in comment.attachments() track by attachment.id'}

@@ -2,7 +2,7 @@ angular.module('loomioApp', ['ngNewRouter',
                              'ui.bootstrap',
                              'pascalprecht.translate',
                              'ngSanitize',
-                             'btford.markdown',
+                             'hc.marked',
                              'angularFileUpload',
                              'mentio',
                              'ngAnimate',
@@ -10,7 +10,23 @@ angular.module('loomioApp', ['ngNewRouter',
                              'ui.gravatar',
                              'truncate',
                              'duScroll'
-                             ]).config ($httpProvider, $locationProvider, $translateProvider) ->
+                             ]).config ($httpProvider, $locationProvider, $translateProvider, markedProvider) ->
+
+  # setup markdown options:
+  # see https://github.com/Hypercubed/angular-marked
+
+  markedProvider.setOptions
+    gfm: true
+    sanitize: true
+    breaks: true
+
+  # for somereason we need to set the options twice
+  markedProvider.setRenderer
+    link: (href, title, text) ->
+      "<a href='" + href + "' title='" + title + "' target='_blank'>" + text + "</a>";
+    gfm: true
+    sanitize: true
+    breaks: true
 
   # consume the csrf token from the page so form submissions can work
   authToken = $("meta[name=\"csrf-token\"]").attr("content")

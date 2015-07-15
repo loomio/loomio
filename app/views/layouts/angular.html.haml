@@ -38,6 +38,3 @@
 
     - if ENV['FAYE_URL']
       %script{src: "#{ENV['FAYE_URL']}/client.js", type: 'text/javascript'}
-
-    - if Rails.env.development?
-      = javascript_include_tag 'https://github.com/Khan/tota11y/releases/download/0.0.3/tota11y.min.js'
