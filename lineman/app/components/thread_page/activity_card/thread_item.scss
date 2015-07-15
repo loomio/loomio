@@ -1,0 +1,64 @@
+.thread-item {
+  margin-bottom: 25px;
+}
+
+.thread-item__header {
+  strong {
+    color: $primary-text-color;
+    @include fontHelveticaBold;
+  }
+  color: $grey-on-white;
+  margin-bottom: 5px;
+  .media-body, .media-left{
+    vertical-align: middle;
+  }
+}
+
+.thread-item__body {
+  margin-bottom: 10px;
+  img {
+    max-width: 100%;
+  }
+}
+
+.thread-item__attachments {
+}
+
+.thread-item__attachment {
+}
+
+.thread-item__footer {
+  @include fontSmall();
+  color: $grey-on-white;
+}
+
+.thread-item__actions {
+}
+
+.thread-item__vote-icon {
+  width: 22px;
+  height: 22px;
+  background-repeat: no-repeat;
+}
+
+.thread-item__proposal-icon{
+  @include smallIcon;
+  background-image: url(/img/proposal_icon_30.png);
+  background-repeat: no-repeat;
+}
+
+.thread-item__vote-icon--yes {
+  background-image: url(/img/green_thumb_22.png);
+}
+
+.thread-item__vote-icon--abstain {
+  background-image: url(/img/yellow_thumb_22.png);
+}
+
+.thread-item__vote-icon--no {
+  background-image: url(/img/pink_thumb_22.png);
+}
+
+.thread-item__vote-icon--block {
+  background-image: url(/img/red_flag_22.png);
+}

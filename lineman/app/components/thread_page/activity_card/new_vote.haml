@@ -1,14 +1,14 @@
 %article.thread-item{ng-controller: 'NewVoteItemController', aria-labelledby: 'vote-{{vote.id}}'}
-  .thread-item-header.media
+  .thread-item__header.media
     .media-left
-      .thread-item-vote-icon{class: 'thread-item-vote-icon-{{vote.position}}'}
+      .thread-item__vote-icon{class: 'thread-item__vote-icon--{{vote.position}}'}
     .media-body
       %h3.new-vote__heading{id: 'vote-{{vote.id}}'}
         %span{translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-name: '{{vote.authorName()}}'}
         %span{ng-if: '!vote.hasStatement()'}.
         %span{ng-if: 'vote.hasStatement()'}:
-  .thread-item-body{ng-if: 'vote.hasStatement()'}
+  .thread-item__body{ng-if: 'vote.hasStatement()'}
     {{::vote.statement}}
-  .thread-item-footer
-    .thread-actions
+  .thread-item__footer
+    .thread-item__actions
       %timeago{timestamp: 'vote.createdAt'}

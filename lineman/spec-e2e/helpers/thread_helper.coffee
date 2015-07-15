@@ -25,7 +25,7 @@ module.exports = new class ThreadHelper
     element(By.css('.comment-form__submit-button')).click()
 
   clickThreadItemOptionsButton: ->
-    element(By.css('.thread-item__options-button')).click()
+    element(By.css('.thread-item__dropdown-button')).click()
 
   selectEditCommentOption: ->
     element(By.css('.thread-item__edit-link')).click()
@@ -55,16 +55,16 @@ module.exports = new class ThreadHelper
     element.all(By.css('.thread-item--comment')).last()
 
   replyLinkOnMostRecentComment: ->
-    element.all(By.css('.thread-actions__reply')).last()
+    element.all(By.css('.thread-item__action--reply')).last()
 
   inReplyToOnMostRecentComment: ->
     element.all(By.css('.new-comment__in-reply-to')).last()
 
   likeLinkOnMostRecentComment: ->
-    element.all(By.css('.thread-actions__like')).last()
+    element.all(By.css('.thread-item__action--like')).last()
 
   likedByOnMostRecentComment: ->
-    element.all(By.css('.thread-liked-by-sentence')).last()
+    element.all(By.css('.thread-item__liked-by')).last()
 
   flashMessageText: ->
     element(By.css('.flash-container')).getText()
