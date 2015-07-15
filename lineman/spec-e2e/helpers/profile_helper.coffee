@@ -1,8 +1,5 @@
 module.exports = new class ProfileHelper
 
-  load: ->
-    browser.get('http://localhost:8000/development/setup_user_profile')
-
   visitProfilePage: ->
     element(By.css('.navbar-user-options button')).click()
     element(By.css('.navbar-user-options__profile-link')).click()

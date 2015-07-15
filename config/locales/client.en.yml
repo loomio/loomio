@@ -117,6 +117,7 @@ en:
       new_thread: 'New thread'
       new_group: 'New group'
       profile: 'Profile'
+      email_settings: 'Email settings'
       help: 'Help'
     search:
       close: 'Close search panel'
@@ -481,6 +482,21 @@ en:
     email_label: 'Email'
     locale_label: 'Language'
     update_profile: 'Update profile'
+
+  email_settings_page:
+    header: Email settings
+    email: Email
+    daily_summary_label: Daily summary email
+    daily_summary_description: "Each morning, send an email with yesterday's unread activity. This email provides an easy routine for staying up to date with Loomio activity."
+    on_participation_label: Activity from the threads I participate in
+    on_participation_description: "When you participate in a thread, the volume setting will be changes to 'High', so all further activity will be emailed to you immediately."
+    proposal_closing_soon_label: Before a proposal closes
+    proposal_closing_soon_description: '24 hours before a proposal closes, regardless of volume, you will get an email with the latest information about the proposal.'
+    mentioned_label: When I am @mentioned
+    mentioned_description: "When someone wants to get you're attention, they'll @mention you. We recommend you leave this on, so that you'll get an email when this happens."
+    update_settings: Update email settings
+    messages:
+      updated: Your email settings have been updated
 
   dashboard_page:
     aria_label: 'Dashboard'

@@ -15,6 +15,7 @@ Loomio::Application.routes.draw do
     get 'setup_closed_proposal'
     get 'setup_closed_proposal_with_outcome'
     get 'setup_membership_requests'
+    get 'setup_user_email_settings'
     get 'setup_all_notifications'
   end
 
