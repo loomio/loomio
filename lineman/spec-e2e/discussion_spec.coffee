@@ -9,7 +9,7 @@ describe 'Discussion Page', ->
     threadHelper.addComment('hi this is my comment')
     expect(threadHelper.mostRecentComment().getText()).toContain('hi this is my comment')
 
-  iit 'replies to a comment', ->
+  it 'replies to a comment', ->
     threadHelper.addComment('original comment right heerrr')
     threadHelper.replyLinkOnMostRecentComment().click()
     threadHelper.addComment('hi this is my comment')
