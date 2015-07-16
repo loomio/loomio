@@ -3,6 +3,14 @@
   max-width: $main-max-width;
 }
 
+.thread-actions { margin: -9px -17px 0 0; }
+
+.thread-actions .star-toggle a {
+  min-width: 30px;
+  display: block;
+  text-align: center;
+}
+
 .thread-group{
   margin: 14px 22px;
   padding-top: 10px;
@@ -25,6 +33,8 @@
 .thread-context img {
   width: 100%;
 }
+
+// hey no ids in BEM, mate
 
 #thread-context__heading{
   margin: 2px 0 9px 0 !important;
