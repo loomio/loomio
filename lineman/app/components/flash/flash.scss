@@ -1,29 +1,21 @@
 .flash-root {
-  position: absolute;
-  top: $navbar-height;
-  width: 100%;
+  bottom: 20px;
+  left: 20px;
+  min-width: 220px;
+  position: fixed;
+  z-index: 200;
 }
 
 .flash-container {
-  padding: 5px 0;
+  background-color: $primary-text-color;
+  color: #fff;
+  font-size: 15px;
+  line-height: 20px;
+  padding: 15px;
   width: 100%;
-  text-align: center;
   -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
   -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
   -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
   -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
   transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-}
-
-.flash-container.ng-hide { opacity: 0; }
-
-.flash-container.ng-hide-remove {
-  opacity: 0;
-  top: -30px;
-}
-
-.dismiss-flash {
-  position: absolute;
-  right: 5px;
-  top: 5px;
 }
