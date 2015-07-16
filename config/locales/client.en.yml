@@ -56,6 +56,8 @@ en:
     outcome_label: Proposal outcome
     outcome_placeholder: Let everyone know the outcome of the proposal.
     publish_outcome: Publish outcome
+    messages:
+      created: Outcome published
 
   previous_proposals_card:
     heading: Previous Proposals
@@ -90,9 +92,9 @@ en:
       aria_label: 'Attach a file'
       remove_attachment: 'Remove attachment'
     messages:
-      created: 'Your comment was added to the thread'
-      updated: 'Comment successfully updated'
-      destroyed: 'Your comment has been deleted'
+      created: 'Comment added'
+      updated: 'Comment updated'
+      destroyed: 'Comment deleted'
     edit_comment: 'Edit comment'
     delete_comment: 'Delete comment'
     cancel_reply: 'Cancel Reply'
@@ -159,7 +161,6 @@ en:
   vote_form:
     heading: Have your say
     no_statement: No statement.
-    submitted_your_vote: Submitted your vote.
     i_agree: 'I agree'
     i_agree_details: 'I support this and want it to go ahead.'
     i_abstain: 'I abstain'
@@ -173,6 +174,8 @@ en:
     select_position: 'Select position'
     statement_placeholder: 'Share your thoughts with the group.'
     aria_statement_label: 'Optionally enter a statement to be recorded with your position'
+    messages:
+      created: Vote added
 
   proposal_positions_panel:
     heading: Positions
@@ -190,6 +193,8 @@ en:
     close_proposal: 'Close proposal'
     helptext: 'Are you sure you want to close this proposal now?'
     close_proposal_submit: 'Yes, close proposal'
+    messages:
+      success: Proposal closed
 
   extend_proposal_form:
     title: 'Change close time'
@@ -198,7 +203,7 @@ en:
 
   proposal_form:
     messages:
-      created: 'Successfully created your proposal'
+      created: 'Proposal started'
       updated: 'Proposal updated'
     start_proposal: 'Start proposal'
     start_a_proposal: 'Start a proposal'
@@ -218,8 +223,8 @@ en:
 
   discussion_form:
     messages:
-      created: 'Successfully created your thread'
-      updated: 'Discussion Updated'
+      created: 'Thread started'
+      updated: 'Thread updated'
     new_discussion_title: 'Start new thread'
     edit_discussion_title: 'Edit thread'
     discussion_helptext: 'The thread is where everyone can discuss a topic and make decisions together.'
@@ -302,8 +307,8 @@ en:
         members: 'This group is now visible only to members'
         parent_members: 'This group is now visible only to members of your organisation'
         public: 'This group is now visible to the public'
-      leave_group_success: 'You have successfully left this group'
-      deactivate_group_success: 'You have successfully deactivated this group'
+      leave_group_success: 'You have left this group'
+      deactivate_group_success: 'Group deactivated'
     group_logo: 'Group logo'
     header:
       aria_label: 'Group page header'
@@ -385,7 +390,7 @@ en:
       members_can_vote: 'Vote on proposals'
     submit:  'Update Settings'
     messages:
-      success: 'Successfully updated your group'
+      success: 'Group updated'
 
   membership_requests_card:
     heading: 'Membership Requests ({{count}})'
@@ -404,8 +409,8 @@ en:
 
   group_form:
     messages:
-      new_group: 'Successfully created your group'
-      update_group: 'Changes saved'
+      new_group: 'Group created'
+      update_group: 'Group updated'
     new_group_title: 'Create a New Group'
     new_subgroup_title: 'Create a New Subgroup of {{parentGroupName}}'
     edit_group_title: 'Group Settings'
@@ -439,7 +444,7 @@ en:
     remove_member_label: 'Remove'
     fragment_placeholder: 'Filter users by name or username...'
     messages:
-      remove_member_success: 'Successfully removed {{name}}'
+      remove_member_success: 'Removed {{name}}'
       make_admin_success: '{{name}} is now a coordinator'
       remove_admin_success: '{{name}} is no longer a coordinator'
     remove_membership:
@@ -449,10 +454,10 @@ en:
 
   profile_page:
     messages:
-      updated: 'Your profile has been updated'
-      picture_changed: 'Your profile picture has been updated'
-      password_changed: 'Your password has been updated'
-      deactivated: 'Successfully deactivated your account'
+      updated: 'Profile updated'
+      picture_changed: 'Profile picture updated'
+      password_changed: 'Password updated'
+      deactivated: 'Account deactivated'
     change_picture:
       title: 'Change picture'
       helptext: 'You can upload your own profile picture, or if you have a <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> account, you can use that.'
@@ -496,7 +501,7 @@ en:
     mentioned_description: "When someone wants to get you're attention, they'll @mention you. We recommend you leave this on, so that you'll get an email when this happens."
     update_settings: Update email settings
     messages:
-      updated: Your email settings have been updated
+      updated: Email settings updated
 
   dashboard_page:
     aria_label: 'Dashboard'

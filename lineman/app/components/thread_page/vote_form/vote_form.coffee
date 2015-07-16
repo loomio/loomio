@@ -9,7 +9,7 @@ angular.module('loomioApp').factory 'VoteForm', ->
 
     $scope.submit = ->
       $scope.vote.save().then ->
-        FlashService.success 'vote_form.submitted_your_vote'
+        FlashService.success 'vote_form.messages.created'
         $scope.editing = false
         $scope.$close()
 
