@@ -20,9 +20,12 @@
 }
 
 .start-menu__menu-button {
+  @include box_shadow(2);
   border-radius: 100%;
-  box-shadow: 1px 1px 4px 0 black;
   cursor: pointer;
+  &:hover {
+    @include box_shadow(3);
+  }
 }
 
 .start-menu__over-modal {
