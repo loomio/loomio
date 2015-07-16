@@ -13,7 +13,7 @@ $ ->
         scrollTop: $('#js-dog-ear').offset().top - 75
 
     autocomplete_path = $('#comment-input').data('autocomplete-path')
-    $("textarea").atwho
+    $("textarea#new-comment").atwho
       at: '@'
       tpl: "<li id='${id}' data-value='@${username}'> ${real_name} <small> @${username}</small></li>"
       callbacks:

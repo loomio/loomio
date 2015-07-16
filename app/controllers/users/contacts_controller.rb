@@ -35,6 +35,6 @@ class Users::ContactsController < BaseController
 
   def autocomplete
     contacts = current_user.contacts.where('name ilike :term or email ilike :term', {term: "%#{params[:q]}%"})
-    render json: contacts.map{|c| {name: c.name, email: c.email, name_and_email: "#{c.name} <#{c.email}>" } }
+    render json: contacts.map{|c| {name: c.name, email: c.email, name_and_email: "#{c.name} <#{c.email}>" } }, root: false
   end
 end
