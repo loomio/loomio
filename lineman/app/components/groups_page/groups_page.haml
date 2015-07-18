@@ -4,7 +4,7 @@
       .col-xs-8
         %h1.lmo-h1-medium{translate: 'groups_page.page_header'}
       .col-xs-4
-        %a.btn.btn-success.groups-page__new-group{href: '/g/new'}
+        %a.btn.btn-success.groups-page__new-group{ng-click: 'groupsPage.startGroup()', href: '#'}
           %i.fa.fa-lg.fa-plus{aria-hidden: 'true'}>
           %span{translate: 'navbar.user_options.new_group'}
 
