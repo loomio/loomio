@@ -1,5 +1,5 @@
 loomio_i18n:
-  selectable_locales: [ en, an, be-BY, bg-BG, ca, cs, zh-TW, da, de, eo, es, el, fr, id, it, he, hu, ja, ko, ml, nl-NL, pt-BR, ro, sr, sr-RS, sk, sl, sv, vi, tr, uk ]
+  selectable_locales: [ en, an, be-BY, bg-BG, ca, cs, zh-TW, da, de, eo, es, el, fr, id, it, he, hu, ja, ko, ml, nl-NL, pl, pt-BR, ro, sr, sr-RS, sk, sl, sv, vi, tr, uk ]
   additional_detectable_locales: [ be, pt, zh, zh-HK ]
 
   fallbacks: 
@@ -20,5 +20,5 @@ loomio_i18n:
   rtl_locales: [ ar, he, fa-IR, ur, ur-PK ]
 
   # only for display purposes, please don't depend on this in the system
-  test_locales: [ ar, cmn, hi, hr, fi, gl, ga-IE, it-CH, km, lv, mk, mi, fa-IR, pl, pt-PT, ru, te, ur, ur-PK ]
+  test_locales: [ ar, cmn, hi, hr, fi, gl, ga-IE, it-CH, km, lv, mk, mi, fa-IR, pt-PT, ru, te, ur, ur-PK ]
 

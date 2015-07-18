@@ -1,15 +1,49 @@
 lt:
+  common:
+    models:
+      proposal: Pasiūlymas
+    action:
+      edit: Redaguoti
   error_page:
-    forbidden: Jūs neturite leidimo tai padaryti.
+    forbidden: Tu neturi leidimo tai padaryti.
   previous_proposals_card:
     heading: Ankstesni Pasiūlymai
+  session_form:
+    email_label: "El. paštas:"
+    password_label: "Slaptažodis:"
   navbar:
+    notifications: Pranešimų skydelis
     user_options:
       profile: Profilis
+    search:
+      proposals: Pasiūlymai
   start_menu:
     invite_people: Pakviesti Žmones
+  notifications:
+    header: Pranešimai
+    new_discussion: "<strong>{{name}}</strong> pradėjo diskusiją <strong>{{discussion}}</strong>"
+  position_buttons_panel:
+    heading: Tark savo žodį
+  vote_form:
+    heading: Tark savo žodį
+    i_agree: Aš sutinku
+    i_abstain: Aš susilaikau
+    i_disagree: Aš nesutinku
+  proposal_positions_panel:
+    heading: Nuomonės
+  undecided_panel:
+    show_undecided: Rodyti neapsisprendusius narius
+  proposal_pie_chart:
+    participation_statement: "{{percentage}}% narių išreiškė savo nuomonę ({{number}}/{{total}})"
+  proposal_form:
+    details_label: Išsamesnė Informacija
+    details_placeholder: "Suteik pakankamai išsamios informacijos, kad visi žinotų ką tai reiškia ir galėtų sutikti arba nesutikti, arba dar kažką."
   discussion_form:
+    title_placeholder: Kokia tema nori diskutuoti?
     privacy_label: Privatumas
+  proposal_position_yes: Sutinku
+  proposal_position_abstain: Susilaikau
+  proposal_position_no: Nesutinku
   start_group_form:
     name_label: Grupės Pavadinimas
   group_page:
@@ -36,6 +70,7 @@ lt:
       helptext: Ką gali daryti nariai?
       members_can_add_members: Kviesti ir tvirtinti naujus narius
       members_can_create_subgroups: Kurti pogrupius
+    submit: Atnaujinti Nustatymus
   group_form:
     profile_label: Profilis
     description_label: Aprašas
@@ -43,13 +78,23 @@ lt:
   invitation:
     invite_people: Pakviesti Žmones
   profile_page:
-    messages:
-      updated: Jūsų profilis buvo atnaujintas
-      picture_changed: Jūsų profilio paveikslas buvo atnaujintas
     change_picture:
       use_uploaded: Įkelti naują paveikslą
     profile: Profilis
+  dashboard_page:
+    filtering:
+      proposals: Pasiūlymai
   discussion:
+    proposals: Pasiūlymai
     previous_proposals: Ankstesni Pasiūlymai
   thread_group:
     aria_label: Grupės pavadinimas
+  new_vote_item:
+    agree: "<strong>{{name}}</strong> sutiko"
+    abstain: "<strong>{{name}}</strong> susilaikė"
+    disagree: "<strong>{{name}}</strong> nesutiko"
+  help_page:
+    getting_started: Darbo pradžia
+    have_your_say: Tarkite savo žodį
+    positions_agree_description: "<span>Sutinku</span> reiškia, kad tau patinka pasiūlymas."
+    positions_disagree_description: "<span>Nesutinku</span> reiškia, kad tu galvoji, jog gali būti geresnių alternatyvų, tačiau neprieštarausi grupės sprendimui."

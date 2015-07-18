@@ -32,6 +32,8 @@ pl:
       step3:
         header: 3. Wspólnie zdecydujcie
         desc: "Wspólne stwórzcie propozycję tak, by odpowiadała każdemu. Każda decyzja ma jasno określony termin jej podjęcia, więc zawsze otrzymacie jasny wynik. "
+    mobile:
+      lead_html: "<strong>Loomio działa na każdym urządzeni,</strong><br />podejmuj decyzje gdziekolwiek i dowolnym czasie."
     quote:
       header:
         rushkoff_html: "“Loomio <strong>uwalnia potencjał internetu</strong> pozwalający ludziom osiągać konsensus zamiast mnożyć poróżniające nas kłótnie.\" <div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autor <em>Present Shock</em></div>"
@@ -52,3 +54,6 @@ pl:
       gift:
         header: Ekonomia daru
         desc: "Loomio jest wspierane przez tych, którzy wpłacają tyle ile mogą. To pozwala tej platformie pozostać wolną od reklam i dostępną dla grup nie dysponującymi pieniędzmi. "
+  about_page:
+    our_story_1_html: "<h2>Nasza historia</h2> <p>Loomio jest narzędziem do wspólnego podejmowania decyzji, stworzonym przez zespoł techniczny i aktywistów społecznych z Nowej Zelandii.</p> "
+    our_story_2_html: "<p>Loomio zostało stworzone aby w skalowalny sposób umożliwiać włączanie się do podejmowania decyzji podczas ruchu Occupy w 2011.</p> <p>Poznaliśmy zarówno potencjał zmian jaki niesie wspólne podejmowanie decyzji jak i poważne ograniczenia: jeśli ludzie muszą być w jednym miejscu w tym samym czasie aby podjąć decyzję niemożliwe jest skalowanie.</p> <p>Postanowiliśmy zbudować rozwiązanie tego problemu: używając Internetu damy ludziom łatwy sposób na wspólne podejmowanie dobrych decyzji, gdziekolwiek oni są.</p> <p>Nazwaliśmy je Loomio od słowa 'loom' - krosna do wspólnego tkania  różnych perspektyw:)</p> <p>Obecnie więcej niż 75 000 osób podjęło ponad 25 000 decyzji używając Loomio.</p> "
