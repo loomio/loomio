@@ -111,7 +111,6 @@ pt-BR:
   vote_form:
     heading: Dê a sua opinião
     no_statement: Nenhuma afirmação.
-    submitted_your_vote: Enviou o seu voto.
     i_agree: Eu concordo
     i_agree_details: Eu apoio isso e quero que siga em frente.
     i_abstain: Eu me abstenho
@@ -144,7 +143,6 @@ pt-BR:
     submit: Atualizar hora de encerramento
   proposal_form:
     messages:
-      created: Criou sua proposta com sucesso
       updated: Proposta atualizada
     start_proposal: Iniciar proposição
     start_a_proposal: Iniciar uma proposta
@@ -196,8 +194,6 @@ pt-BR:
     approve: Aprovar
     ignore: "Ignorar "
   group_form:
-    messages:
-      update_group: Modificações salvas
     edit_group_title: Configurações do Grupo
     profile_label: Perfil
     name_label: Nome

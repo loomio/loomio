@@ -5,17 +5,27 @@ pl:
       invite_people_link: Zaproś ludzi
       start_discussion_link: Rozpocznij dyskusję
     contents:
+      getting_started:
+        title_html: Rozpoczynanie
       group_settings:
         group_permissions_html: Uprawnienia grupy
       discussion_threads:
         discussion_privacy_html: Prywatność dyskusji
+      comments:
+        title_html: Komentarze
+      proposals:
+        title_html: Rekomendacje
       subgroups:
         title_html: Podgrupy
       keeping_up_to_date:
+        volume_html: Głośność
         email_settings_html: Ustawienia poczty
       user_profile:
         account_deactivation_html: Deaktywacja Twojego konta
+    getting_started:
+      title: Rozpoczynanie
     group_settings:
+      title: Ustawienia Grupy
       group_privacy:
         who_can_find_this_group:
           title: Kto może znaleźć tę grupę?
@@ -42,9 +52,20 @@ pl:
     discussion_threads:
       discussion_privacy:
         title: Prywatność dyskusji
+    comments:
+      title: Komentarze
+    proposals:
+      title: Rekomendacje
     subgroups:
       title: Podgrupy
     keeping_up_to_date:
+      volume:
+        title: Głośność
+        body:
+          loud_title: Głośno
+          normal_title: Normalnie
+          quiet_title: Cicho
+          mute_title: Wyciszono
       email_settings:
         title: Ustawienia poczty
     user_profile:

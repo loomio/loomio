@@ -1,15 +1,42 @@
 lt:
   new_help:
+    title: Kuo galime jums padėti?
     how_loomio_works:
+      title: Kaip Loomio veikia
       invite_people_link: Pakviesti žmones
+    contents:
+      title: Turinys
+      what_is_loomio:
+        title: Kas yra Loomio
+      how_loomio_works:
+        title: Kaip Loomio veikia
+      getting_started:
+        title_html: Darbo pradžia
+      group_settings:
+        title_html: Grupės nustatymai
+        group_profile_html: Grupės profilis
+        group_privacy_html: Grupės privatumas
+        group_permissions_html: Grupės leidimai
+      proposals:
+        title_html: Pasiūlymai
+    getting_started:
+      title: Darbo pradžia
     group_settings:
+      group_profile:
+        title: Grupės profilis
       group_privacy:
+        title: Grupės privatumas
         who_can_find_this_group:
           title: Kas gali rasti šią grupę?
         how_do_people_join:
           title: Kaip žmonės prisijungia?
       group_permissions:
+        title: Grupės leidimai
         what_can_members_do:
           title: Ką gali daryti nariai?
           invite_and_approve_new_members:
             title: Kviesti ir tvirtinti naujus narius
+        what_next:
+          title: Kas toliau?
+    proposals:
+      title: Pasiūlymai

@@ -423,12 +423,14 @@ pl:
   you_have_joined_group: "Dołączyłeś/aś do grupy %{group_name}"
   ignore_request: Ignoruj prośbę
   ignore: Ignoruj
+  ask_to_join_group: Prośba o dołączenie do grupy
   subgroups: Podgrupy
   create_a_subgroup: Utwórz podgrupę
   invite_members: Zaproś członków
   new_subgroup: Nowa podgrupa
   create_subgroup: Utwórz podgrupę
   creating_subgroup: Tworzenie podgrupy
+  public: Publiczna
   new_group: Nowa grupa
   create_group: Utwórz grupę
   creating_group: Tworzenie grupy
@@ -439,11 +441,28 @@ pl:
   group_description: Opis grupy
   networks:
     previous_requests: Poprzednie żądania
+    approve: Akceptacja
     threads: Dyskusje
+    groups: Grupy
   group_request:
     header: Uruchomienie grupy
     confirmation:
       title: "Prawie zakończone! Odbierz pocztę."
+  volume:
+    volume: Głośność
+    loud: Głośno
+    normal: Normalnie
+    quiet: Cicho
+    mute: Wyciszono
+  discussion_volume:
+    loud_description: Wyślij wiadomość jeśli jest aktywność w tym wątku.
+    normal_description: "Wysłanie wiadomości tylko kiedy utworzono rekomendację, zbliża się zamknięcie lub wysłano wynik."
+    quiet_description: Nie wysyłaj wiadomości z tego wątku.
+    mute_description: "Ukryj ten wątek na pulpicie i nie powiadamiaj dopóki nie @wspomniano."
+  group_volume:
+    loud_description: Wyślij wiadomość jeśli pojawi się aktywność.
+    quiet_description: Nie przysyłam maili z tej grupy. Aktywności będą wyświetlane na panelu.
+    mute_description: "Ukryj tę grupę z panelu i nie przesyłaj powiadomień z wyjątkiem @wzmianek"
   discussion_items:
     new_motion: utworzenie propozycji
     motion_closed:
@@ -454,30 +473,84 @@ pl:
   discussion: Dyskusja
   current_decision: Obecna decyzja
   previous_decisions: Wcześniejsze decyzje
+  discussion_list:
+    empty:
+      membership_is_invitation_only: Aby dołączyć do tej grupy musisz otrzymać zaproszenie od jej członka.
+      membership_is_invitation_by_admin_only: Aby dołączyć do tej grupy musisz otrzymać zaproszenie od koordynatora.
   description_history:
     subheader: Wersja
     previous: Wstecz
     next: Następne
   comment_form_placeholder: Powiedz coś...
   delete_comment: Usuń komentarz
+  confirm_delete_comment: Czy na pewno chcesz usunąć ten komentarz?
   delete_discussion: Usuń dyskusję
   new_proposal: Nowa propozycja
   close_proposal: Zamknij propozycję
   change_proposal_close_date: Zmień datę zamknięcia
+  proposal: Propozycja
+  proposals: Rekomendacje
   state_your_position: Podaj swoje stanowisko
   positions: Stanowiska
   yes_position: Zgadzam się
+  abstain_position: Wstrzymuję się
+  abstain_details: Zgadzam się aby grupa zdecydowała beze mnie.
   no_position: Nie zgadzam się
+  no_details: "Myślę, że możemy zrobić to lepiej."
+  block_position: Blokuję
+  block_details: Mam silne obiekcje co do tej rekomendacji i nie zgadzam się na kontynuację w tym kierunku.
+  outcome_submit: Publikacja wyniku
+  edit_comment:
+    edit_comment: Edycja komentarza
   help:
+    coordinating: Koordynacja Twoich grup Loomio
+    coordinating_details: "Jako koordynator jesteś odpowiedzialny/a za ustawienia Twoich grup Loomio oraz zapraszanie osób. Podobnie jak nauka używania nowego kawałka oprogramowania, Twoja grupa nauczy się nowego procesu dla bardziej efektywnej współpracy oraz wspólnego podejmowania dobrych decyzji. Oto kilka wskazówek jak wspierać Twoją grupę dla uzyskania sukcesu.\n"
+    different_ways: Różne sposoby używania Loomio
+    engaging_html: "<h2>Wskazówki dla zaangażowania Twojej grupy</h2>\n<p>Ludzie będą chętniej biorą udział jeśli na stole leży ciekaw rekomendacja. Dobra rekomendacja zawiera taki plan działań dla grupy, że jest czytelne co oznacza zgoda lub jej brak. Przemyśl jak możesz zidentyfikować dyskusje/decyzje, które grupa obecnie rozważa bezpośrenio lub mailowo, które będą łatwiejsze do podjęcia za pomocą Loomio. </p>\n<p>Jeśli Twoja grupa właśnie zaczęła działać, możesz rozpocząć lekką dyskusję, aby pozwolić wszystkim zapoznać się z narzędziem i zobaczyć proces podejmowania decyzji w akcji.\n</p>\n<p>Inny prosty sposób aby zachęcić ludzi do zaangażowania w dyskusji to użycie funkcji @wzmianek aby wezwać konkretne osoby; otrzymają wtedy wiadomość, która powiadomi ich, że zostali wspomnieni w komentarzu</p>\n"
+    example1_html: "<h3>Potrzebujesz grupy aby przedyskutować duży temat i wypracować wspólne rozwiązanie</h3>\n<p>Strategia: Przedyskutuj temat przez chwilę zanim utworzysz rekomendację.</p>\n<p>Dyskusje osiągają często dobry skutek jeśli zbudujesz wspólne zrozumienie problemu zanim przeskoczysz do konkretnego rozwiązania. Kiedy ludzie wezmą udział w procesie, wówczas chętniej wejdą na pokład z rozwiązaniem.</p>\n"
+    example2_html: "<h3>Masz opracowaną rekomendację i chcesz uzyskać akceptację grupy aby posunąć się na przód.</h3>\n<p>Strategia: Uruchom dyskusję o konkretnej decyzji i od razu utwórz rekomendację.</p>\n<p>Jeśli ma jasny wynik ale chcesz się upewnić, że nie ma krytycznych wątpliwości, możesz użyć rekomendacji aby uzyskać szybki wkład do dyskusji.</p>\n<p>Można użyć do tematów jak akceptacja dokumentu, akceptacja aplikacji lub potwierdzenie realizacji zadania.</p>\n"
+    get_in_touch: Skontaktujmy się
+    get_in_touch_description_html: "Jeśli masz jakieś pytania lub feedback, <a href='%{link}'>napisz do nas</a>."
+    getting_started: Rozpoczynanie
+    getting_started_description: "Po lewej, grupa dyskutuje temat, wymieniając pomysły i informacje. Kiedy pojawia się decyzja do podjęcia przez grupę, przedstawiana jest po prawej stronie."
+    getting_the_most: Pełne wykorzystanie Loomio
+    have_your_say: Wypowiedz się
+    have_your_say_details_html: "<p>Kiedy będziesz gotowy/a aby się wypowiedzieć kliknij jeden z czterech przycisków</p>\n<p>Kiedy podejmiesz swoją decyzję podaj krótkie uzasadnienie. Poniżej wykresu możesz zobaczyć co myślą pozostali.  To pozwala na szybkie wejście w dyskusję. Jeśli pojawią nowe informacje możesz zawsze zmienić swoje stanowisko.</p>\n"
+    have_a_discussion: Weż udział w dyskusji
+    have_a_discussion_description: Temat oraz każda związana z nim informacja znajduje się na górze strony. Użyj pola komentarza aby dodać Twój głos w dyskusji.
     help: Pomoc
     how_it_works: Jak to działa
+    invitation_html: "<h2>Jak napisać dobre zaproszenie</h2>\n<p>Pierwsze pytanie, które zada nowy członek grupy to 'po co jest ta grupa?'</p>\n<p>Pomyśl o najprostszym sposobie  na opisanie grupy: Co chcecie wspólnie osiągnąć?</p>\n<p>Dobrym pomysłem jest porozmawiać najpierw ze swoją grupą zanim zaprosisz ich do Loomio.</p>\n<p>Ludzie będą chcieli wiedzieć czemu zostali zaproszeni oraz czego się od nich oczekuje, oraz dlaczego warto poświęcić czas na naukę nowego narzędzia.</p>\n"
     join_the_community: Dołącz do społeczności
+    images_and_text_formatting: Formatowanie zdjęć i tekstu
+    images_and_text_formatting_html: "<p>Loomio używa 'Markdown' dla zamieszczania zdjęć i formatowania tekstu.\nMożesz włączyć Markdown za pomocą małej szarej ikony poniżej pola komentarzy</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Kliknij tutaj</a>\npo informacje jak używać Markdown.</p>\n"
+    keep_up_to_date: Informują na bieżąco
+    keep_up_to_date_html: "<p>Klikając na nazwę grupy na górze ekranu przejdziesz na Stronę Grupy, \ngdzie możesz zobaczyć listę wszystkich dyskusji i decyzji dla grupy. Jeśli jesteś w więcej niż jednej grupie, możesz zobaczyć aktywność wszystkoich Twoich grup na Stronie Domowej.</p>\n<p>Otrzymasz powiadomienia pocztą jeśli ważne rzeczy zdarzą się w Twojej grupie.\nMożesz zmienić ustawienia Twojej poczty <a href=\"%{link}\"\">tutaj</a>.</p>\n"
     make_a_decision: Podejmij decyzję
+    make_a_decision_description: "Kiedy ta grupa jest gotowa aby podjąć decyzję, każdy może utworzyć rekomendację. Opisz jasno kierunek działania i podaj trochę ogólnych informacji tak aby wszyscy wiedzieli co dokładnie oznacza ich zgoda lub jej brak."
+    prompt_people_details: "Jeśli chcesz zwrócić uwagę konkretnej osoby w grupie, napisz znak '@'  oraz jego nazwę. Otrzyma wiadomość z informacją, że wspomniałeś o nim/niej w komentarzy."
+    prompt_people_html: "Zwróć uwagę osób za pomocą <span class='blue'>@wspomnień</span>"
+    positions_agree_description: "<span>Zgoda</span> oznacza, że zgadzasz się z rekomendacją."
+    positions_abstain_description: "<span>Wstrzymanie się</span> oznacza że nie jesteś pewny/a lub zadowolony z wzięcia udziału w decyzji grupy."
+    positions_disagree_description: "<span>Nie zgadzam się</span> ocznacza, że myślisz, ze mogą być lepsze alternatywy ale zgadzasz się na pójście w zaproponowanym kierunku."
+    positions_block_description: "<span>Blokada</span> oznacza, że masz poważne obiekcje i nie zgadzasz się z podążaniem w zaproponowanym kierunku."
+    start_discussion: Rozpoczęcie zaangażowanej dyskusji
+    start_discussion_html: "<p>Kiedy rozpoczynasz dyskusję, upewnij się, że tytuł komunikuje temat zwięźle.\nUżyj Panelu Kontekstu aby przekazać wszystkie dodatkowe informacje niezbędne do tego aby grupa mogła skutecznie dyskutować.</p>\n<p>W trakcie dyskusji, Panel Kontekstu może być aktalizowany nowymi informacjami.\nPoza wyjaśnianiem zagadnienia, możesz użyć tego miejsca aby dzielić się zasobami, podsumowywać dyskusje w trakcie lub wyjaśniać protokół podejmowania decyzji w Twojej grupie.</p>\n"
+    start_proposal: Pisanie czytelnej rekomendacji
+    start_proposal_html: "<p> Jeśli stworzysz czytelny i zwięzły tytuł, ludzie będą wiedzieli dokładnie co oznacza zgoda lub jej brak</p>\n<p>To nie koniec świata jeśli rekomendacja nie uzyska od razu jasnej akceptacji</p>\n<p>Poprzez ten dynamiczny proces, mądrość grupowa może wygenerować lepsze pomysły niż ktokolwiek byłby w stanie zrobić to w pojedynkę.</p>\n<p>Termin zamknięcia rekomendacji może być przedłużony w każdym momencie, jeśli wygląda na to, że decyzja wymaga więcej czasu. Wszyscy otrzymają powiadomienie na 24 godziny przez zamknięciem rekomendacji.</p>\n"
+    video_id: "52025402"
+    video_tutorial: Podręcznik Video
+    video_tutorial_description: Sprawdź video z prostą demonstracją jak używać Loomio.
   hint:
+    context: Wskazówki użycia panelu kontekstu
+    discussion: Wskazówki uruchamiania zaangażowanych dyskusji
+    invitation: Wskazówki pisania dobrych zaproszeń
+    proposal: Wskazówki do pisania czytelnych rekomendacji
     vote: W każdej chwili możesz zmienić swoje stanowisko
   pricing_page:
     header: Opłaty
   new_password: Nowe hasło
+  confirm_new_password: Potwierdź nowe hasło
   change_your_password: Zmiana Twojego hasła
   current_password: Obecne hasło
   confirm_password: Potwierdź hasło
@@ -489,43 +562,63 @@ pl:
   search:
     placeholder: Szukaj
   contact_page:
+    contact_us: Kontakt
     labels:
       name: Twoja nazwa
+      email: Twój adres email
+      message: Twoja wiadomość
   discussion_form:
     new:
       header: Rozpocznij dyskusję
   motion_form:
     new:
       header: Nowa propozycja
+    edit:
+      header: Edycja rekomendacji
   vote_form:
     header: Podaj swoje stanowisko
     edit: Edycja Twego stanowiska
     your_position: Twoje stanowisko
     submit: Prześlij stanowisko
     update: Zaktualizuj stanowisko
+  profile_form:
+    picture: Zdjęcie
+    use_initials: Użyj inicjałów
   simple_form:
     "yes": Tak
     "no": Nie
     labels:
+      discussion:
+        title: Tytuł
+        description: Kontekst
       membership_request:
         introduction: Przedstaw się
       motion:
+        name: Tytuł
         description: Szczegóły
       user:
+        username: Nazwa użytkownika
         email: E-mail
         password: Hasło
         password_confirmation: Potwierdź hasło
         language_preference: Język
   helpers:
     submit:
+      motion:
+        create: Uruchomienie rekomendacji
       user:
         create: Utwórz konto
         update: Zaktualizuj ustawienia
   email:
+    missed_yesterday:
+      mark_as_read: Oznaczenie jako przeczytane
     invitation:
       hi: "Witaj %{name},"
       thanks: "Dziękujemy!\nZespół Loomio\n"
+    proposal_outcome:
+      subject: Wynik rekomendacji
     proposal_closing_soon:
+      closes_at: "Zamyka się o "
       summary: Podsumowanie
     thread_mailer:
       change_preferences: Zmiana ustawień poczty.
@@ -533,23 +626,43 @@ pl:
       motion_closing_soon: "Zamknięcie propozycji w ciągu 24 godzin:"
       proposal_closed: "Propozycja zamknięta:"
   about_loomio: O Loomio
+  approve: Akceptacja
   author: Autor
+  cancel: Anuluj
+  coordinator: Koordynator
   decisions: Decyzje
   details: Szczegóły
   discussions: Dyskusje
+  edit: Edycja
   group: Grupa
+  like: Lubię
+  name: Nazwa
   next: Następne
+  outcome: Wynik
   password: Hasło
   pricing: Opłaty
   prev: Wstecz
   options: Opcje
+  remove: Usunięcie
   save: Zapisz
   saving: Zapisywanie
   start_a_group: Uruchomienie grupy
   thanks: "Dziękujemy!"
+  unlike: Nie lubię
   common:
+    profile: Profil
     email_settings: Ustawienia poczty
+    dashboard: Pulpit
+    unread: Nieprzeczytane
+    groups: Grupy
+    today: Dzisiaj
+    meridians:
+      am: am
+      pm: pm
     privacy: Zasady prywatności
+    private: Prywatna
+    permissions: Uprawnienia
+    public: Publiczna
     email: E-mail
   group_categories:
     co_operative: Współpracująca

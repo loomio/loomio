@@ -3,6 +3,8 @@ lt:
     access_denied: Jūs neturite leidimo tai padaryti.
   footer:
     privacy: Privatumas
+  notifications:
+    header: Pranešimai
   start_group_form:
     group_name: Grupės pavadinimas
   group_form:
@@ -17,8 +19,27 @@ lt:
       label: Kas gali rasti šią grupę?
     membership_granted_upon:
       label: Kaip žmonės prisijungia?
+  group_permissions:
+    header: Grupės leidimai
   invite_people: Pakviesti žmones
+  proposal: Pasiūlymas
+  proposals: Pasiūlymai
+  positions: Nuomonės
+  yes_position: Aš sutinku
+  abstain_position: Aš neapsisprendžiau
+  no_position: Aš nesutinku
+  help:
+    getting_started: Darbo pradžia
+    have_your_say: Tarkite savo žodį
+    positions_agree_description: "<span>Sutinku</span> reiškia, kad tu sutinki su pasiūlymu."
+    positions_disagree_description: "<span>Nesutinku</span> reiškia, kad tu galvoji, jog gali būti geresnių alternatyvų, tačiau neprieštarausi grupės sprendimui."
+  simple_form:
+    labels:
+      motion:
+        description: Išsamesnė Informacija
   about_loomio: Apie Loomio
+  details: Išsamesnė Informacija
+  edit: Redaguoti
   options: Parinktys
   common:
     profile: Profilis
