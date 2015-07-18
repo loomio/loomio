@@ -1,6 +1,6 @@
 %form.proposal-form{ng-submit: 'submit()', ng-disabled: 'proposal.processing'}
   .modal-header
-    %button{type: 'button', class: 'close', ng-click: 'cancel($event)'}
+    %button{type: 'button', class: 'close', ng-click: '$close()'}
       %span{aria-hidden: true} &times;
       %span.sr-only{translate: 'common.action.cancel'}
     %h1.lmo-h1{ng-if: '!hasOutcome', translate: 'proposal_outcome_form.set_outcome'}
@@ -17,4 +17,4 @@
 
   .modal-footer
     %button.btn.btn-primary.proposal-outcome-form__publish-outcome-btn{type: 'submit', translate: 'proposal_outcome_form.publish_outcome'}
-    %button.btn.btn-warning.proposal-outcome-form__cancel-btn{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}
+    %button.btn.btn-warning.proposal-outcome-form__cancel-btn{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}

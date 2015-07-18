@@ -1,6 +1,6 @@
 %form.proposal-form{ng-submit: 'submit()', ng-disabled: 'proposal.processing'}
   .modal-header
-    %button{type: 'button', class: 'close', ng-click: 'cancel($event)'}
+    %button{type: 'button', class: 'close', ng-click: '$close($event)'}
       %span{aria-hidden: true} &times;
       %span.sr-only{translate: 'common.action.cancel'}
     %h1.lmo-h1{ng-if: 'proposal.isNew()', translate: 'proposal_form.start_a_proposal'}
@@ -26,4 +26,4 @@
   .modal-footer
     %button.btn.btn-primary.proposal-form__start-btn{ng-if: 'proposal.isNew()', type: 'submit', translate: 'proposal_form.start_proposal'}
     %button.btn.btn-primary.proposal-form__save-changes-btn{ng-if: '!proposal.isNew()', type: 'submit', translate: 'common.action.save_changes'}
-    %button.btn.btn-warning.proposal-form__cancel-btn{ng-click: 'cancel($event)', type: 'button', translate: 'common.action.cancel'}
+    %button.btn.btn-warning.proposal-form__cancel-btn{ng-click: '$close($event)', type: 'button', translate: 'common.action.cancel'}

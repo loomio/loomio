@@ -283,7 +283,7 @@ class DevelopmentController < ApplicationController
   def test_subgroup
     unless @test_subgroup
       @test_subgroup = Group.create!(name: 'Johnny Utah',
-                                     parent_id: another_test_group.id, 
+                                     parent_id: another_test_group.id,
                                      visible_to: 'public')
       @test_subgroup.add_admin! patrick
     end
