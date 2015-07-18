@@ -537,7 +537,7 @@ body.pages.translation {
     margin-bottom: 10px;
   }
   p.code { padding-left: 16px; }
-  td { padding: 5px 15px; }
+  td, th { padding: 5px 15px; }
 
   .progress {
     height: 5px;
@@ -545,6 +545,9 @@ body.pages.translation {
     margin: 0;
     border-radius: 0;
   }
+
+  th.beta-translation { color: #A9A9A9; }
+  .progress-bar.beta-translation { background-color: #A9A9A9; }
 
   tr.spacer-row {
     background-color: $lighter-grey;
