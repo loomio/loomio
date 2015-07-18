@@ -4,7 +4,7 @@ angular.module('loomioApp').directive 'threadLintel', ->
   replace: true
   controller: ($scope, CurrentUser, ScrollService) ->
     $scope.show = ->
-      $scope.scrolled && $scope.currentComponent == 'threadPage' && $scope.discussion
+      $scope.showLintel && $scope.discussion
 
     $scope.scrollToThread = ->
       ScrollService.scrollTo 'h1:first'
@@ -19,7 +19,7 @@ angular.module('loomioApp').directive 'threadLintel', ->
       $scope.discussion = discussion
 
     $scope.$on 'showThreadLintel', (event, bool) ->
-      $scope.scrolled = bool
+      $scope.showLintel = bool
 
     $scope.$on 'proposalInView', (event, bool) ->
       $scope.proposalInView = bool
@@ -31,4 +31,3 @@ angular.module('loomioApp').directive 'threadLintel', ->
       $scope.position = position
       $scope.discussion = discussion
       $scope.positionPercent = (position / discussion.lastSequenceId) *100
-
