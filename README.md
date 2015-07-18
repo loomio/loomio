@@ -43,6 +43,15 @@ We have links that can setup some fake data and log you in:
 
 See the app/controllers/development_controller.rb for more.
 
+My ‘my dev env is totally b0rked’ checklist:
+
+- restart lineman
+- restart rails
+- run bower install
+- run npm install
+- weep
+- actually look at the error message in lineman
+
 ## Updating to the latest loomio code
 TODO: explain how to update your fork from loomio master
 We regularly change and update the node modules and bower dependencies.
