@@ -1,19 +1,12 @@
 angular.module('loomioApp').factory 'DiscussionForm', ->
   templateUrl: 'generated/components/discussion_form/discussion_form.html'
-  controller: ($scope, $controller, $location, discussion, CurrentUser, Records, FlashService) ->
+  controller: ($scope, $controller, $location, discussion, CurrentUser, Records, FormService) ->
     $scope.discussion = discussion.clone()
 
-    $scope.submit = ->
-      newDiscussion = $scope.discussion.isNew()
-      $scope.discussion.save().then (records) ->
-        $scope.discussion = records.discussions[0]
-        $scope.$close()
-        if newDiscussion
-          $location.path "/d/#{$scope.discussion.key}"
-          FlashService.success 'discussion_form.messages.created'
-        else
-          FlashService.success 'discussion_form.messages.updated'
-
+    actionName = if $scope.discussion.isNew() then 'created' else 'updated'
+    $scope.submit = FormService.submit $scope, $scope.discussion,
+      flashSuccess: "discussion_form.messages.#{actionName}"
+      successCallback: (response) => $location.path "/d/#{response.discussions[0].key}" if actionName == 'created'
 
     $scope.availableGroups = ->
       groups = _.filter CurrentUser.groups(), (group) ->

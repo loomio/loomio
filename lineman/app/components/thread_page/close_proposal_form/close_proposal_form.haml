@@ -1,6 +1,6 @@
 %form.close-proposal-form{ng-submit: 'submit()', ng-disabled: 'proposal.processing'}
   .modal-header
-    %button{type: 'button', class: 'close', ng-click: 'cancel()'}
+    %button{type: 'button', class: 'close', ng-click: '$close()'}
       %span{aria-hidden: true} &times;
       %span.sr-only{translate: 'common.action.cancel'}
     %h1.lmo-h1{translate: 'close_proposal_form.close_proposal'}
@@ -10,4 +10,4 @@
 
   .modal-footer
     %button.btn.btn-primary.close-proposal-form__submit-btn{type: 'submit', translate: 'close_proposal_form.close_proposal_submit'}
-    %button.btn.btn-warning{type: 'button', ng-click: 'cancel($event)', translate: 'common.action.cancel'}
+    %button.btn.btn-warning{type: 'button', ng-click: '$close()', translate: 'common.action.cancel'}

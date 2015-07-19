@@ -1,16 +1,13 @@
 angular.module('loomioApp').factory 'LeaveGroupForm', ->
   templateUrl: 'generated/components/leave_group_form/leave_group_form.html'
-  controller: ($scope, $location, $rootScope, group, FlashService, CurrentUser, AbilityService) ->
+  controller: ($scope, $location, $rootScope, group, FormService, CurrentUser, AbilityService) ->
     $scope.group = group
+    $scope.membership = $scope.group.membershipFor(CurrentUser)
 
-    $scope.submit = ->
-      $scope.group.membershipFor(CurrentUser).destroy().then ->
-        FlashService.success 'group_page.messages.leave_group_success'
-        $scope.$close()
-        $location.path "/dashboard"
-      , ->
-        $rootScope.$broadcast 'pageError', 'cantDestroyMembership', group.membershipFor(CurrentUser)
-        $scope.$close()
+    $scope.submit = FormService.submit $scope, $scope.group,
+      submitFn: $scope.membership.destroy
+      flashSuccess: 'group_page.messages.leave_group_success'
+      successCallback: -> $location.path '/dashboard'
 
     $scope.canLeaveGroup = ->
-      AbilityService.canRemoveMembership($scope.group.membershipFor(CurrentUser))
+      AbilityService.canRemoveMembership($scope.membership)

@@ -1,15 +1,8 @@
 angular.module('loomioApp').factory 'ProposalForm', ->
   templateUrl: 'generated/components/proposal_form/proposal_form.html'
-  controller: ($scope, $modalInstance, proposal, FlashService) ->
+  controller: ($scope, $modalInstance, proposal, FormService) ->
     $scope.proposal = proposal
 
-    $scope.submit = ->
-      proposal.save().then ->
-        $modalInstance.close()
-        if proposal.isNew()
-          FlashService.success 'proposal_form.messages.created'
-        else
-          FlashService.success 'proposal_form.messages.updated'
-
-    $scope.cancel = ->
-      $modalInstance.dismiss()
+    actionName = if $scope.proposal.isNew() then 'created' else 'updated'
+    $scope.submit = FormService.submit $scope, $scope.proposal,
+      flashSuccess: "proposal_form.messages.#{actionName}"

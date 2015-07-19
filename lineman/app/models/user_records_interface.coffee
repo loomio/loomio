@@ -8,14 +8,14 @@ angular.module('loomioApp').factory 'UserRecordsInterface', (BaseRecordsInterfac
       @profileClient.onSuccess = (response) =>
         @recordStore.import(response.data)
 
-    updateProfile: (user) ->
+    updateProfile: (user) =>
       @profileClient.post 'update_profile', user.serialize()
 
-    uploadAvatar: (file) ->
+    uploadAvatar: (file) =>
       @profileClient.upload 'upload_avatar', file
 
-    changePassword: (user) ->
+    changePassword: (user) =>
       @profileClient.post 'change_password', user.serialize()
 
-    deactivate: (user) ->
+    deactivate: (user) =>
       @profileClient.post 'deactivate', user.serialize()

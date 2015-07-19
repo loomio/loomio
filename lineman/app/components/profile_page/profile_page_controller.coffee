@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Records, FlashService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm) ->
+angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Records, FormService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm) ->
   @init = ->
     @user = Records.users.find(window.Loomio.currentUserId)
   @init()
@@ -6,19 +6,10 @@ angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Rec
   @availableLocales = ->
     window.Loomio.locales
 
-  @submit = ->
-    @isDisabled = true
-    @user.setErrors()
-    Records.users.updateProfile(@user).then =>
-      @isDisabled = false
-      FlashService.success('profile_page.messages.updated')
-      @init()
-    , (response) =>
-      @isDisabled = false
-      if response.status == 422
-        @user.setErrors response.data.errors
-      else
-        $rootScope.$broadcast 'pageError', response
+  @submit = FormService.submit @, @user,
+    flashSuccess: 'profile_page.messages.updated'
+    submitFn: Records.users.updateProfile
+    successCallback: @init
 
   @changePicture = ->
     ModalService.open ChangePictureForm

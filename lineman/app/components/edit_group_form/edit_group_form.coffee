@@ -1,19 +1,10 @@
 angular.module('loomioApp').factory 'EditGroupForm', ->
   templateUrl: 'generated/components/edit_group_form/edit_group_form.html'
-  controller: ($scope, $rootScope, group, FlashService, Records) ->
+  controller: ($scope, $rootScope, group, FormService, Records) ->
     $scope.group = group.clone()
 
-    $scope.submit = ->
-      $scope.group.save().then ->
-        $scope.$close()
-        FlashService.success 'edit_group_form.messages.success'
-      , (response) ->
-        console.log(response)
-        $scope.isDisabled = false
-        if response.status == 422
-          $scope.group.setErrors response.data.errors
-        else
-          $rootScope.$broadcast 'pageError', 'cantEditGroup', $scope.group
+    $scope.submit = FormService.submit $scope, $scope.group,
+      flashSuccess: 'edit_group_form.messages.success'
 
     $scope.validVisibilityOption = (value) =>
       switch value
