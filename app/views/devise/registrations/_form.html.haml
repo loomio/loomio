@@ -2,7 +2,7 @@
   =f.error_notification
   =f.input :name
   =f.input :email
-  -unless omniauth_authenticated_and_waiting?
+  - if has_email_password? && !omniauth_authenticated_and_waiting?
     =f.input :password
     =f.input :password_confirmation
   =f.input :honeypot, as: :string, placeholder: t(:leave_this_field_blank), label: false

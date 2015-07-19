@@ -10,6 +10,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :load_invitation_from_session, only: :new
 
   include OmniauthAuthenticationHelper
+  include Oauth2Helper
+
   def new
     @user = User.new
     if @invitation
