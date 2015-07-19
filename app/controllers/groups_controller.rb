@@ -92,11 +92,9 @@ class GroupsController < GroupBaseController
         @group.discussions.update_all(private: false)
       end
 
-      Measurement.increment('groups.update.success')
       flash[:notice] = 'Group was successfully updated.'
       redirect_to @group
     else
-      Measurement.increment('groups.update.error')
       render :edit
     end
   end
@@ -140,7 +138,6 @@ class GroupsController < GroupBaseController
     subject = params[:group_email_subject]
     body = params[:group_email_body]
     GroupMailer.deliver_group_email(@group, current_user, subject, body)
-    Measurement.measure('groups.email_members.size', @group.members.size)
     flash[:success] = t("success.emails_sending")
     redirect_to @group
   end

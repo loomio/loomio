@@ -1,4 +1,5 @@
 namespace :loomio do
+
   task tail_call: :environment do
     RubyVM::InstructionSequence.compile_option = {
       :tailcall_optimization => true,

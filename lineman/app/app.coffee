@@ -9,21 +9,15 @@ angular.module('loomioApp', ['ngNewRouter',
                              'angular-inview',
                              'ui.gravatar',
                              'truncate',
-                             'duScroll'
-                             ]).config ($httpProvider, $locationProvider, $translateProvider, markedProvider) ->
+                             'duScroll']).config ($httpProvider, $locationProvider, $translateProvider, markedProvider, $compileProvider) ->
 
-  # setup markdown options:
-  # see https://github.com/Hypercubed/angular-marked
+  #configure markdown
+  renderer = new marked.Renderer()
+  renderer.link = (href, title, text) ->
+    "<a href='" + href + "' title='" + title + "' target='_blank'>" + text + "</a>";
 
   markedProvider.setOptions
-    gfm: true
-    sanitize: true
-    breaks: true
-
-  # for somereason we need to set the options twice
-  markedProvider.setRenderer
-    link: (href, title, text) ->
-      "<a href='" + href + "' title='" + title + "' target='_blank'>" + text + "</a>";
+    renderer: renderer
     gfm: true
     sanitize: true
     breaks: true
@@ -32,18 +26,22 @@ angular.module('loomioApp', ['ngNewRouter',
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
 
+  # enabled html5 pushstate mode
   $locationProvider.html5Mode(true)
 
-  $translateProvider.
-    useUrlLoader('/api/v1/translations/en').
-    preferredLanguage('en')
+  if window.Loomio?
+    # load translations
+    $translateProvider.
+      useUrlLoader('/api/v1/translations/en').
+      preferredLanguage('en')
 
-if window.Loomio? and window.Loomio.environment == 'production'
-  # disable angular debug stuff in production
-  angular.module('loomioApp').config  ($compileProvider) ->
+  # stuff that only runs in production environment
+  if window.Loomio? and window.Loomio.environment == 'production'
+    # disable angular debug stuff in production
     $compileProvider.debugInfoEnabled(false);
 
-angular.module('loomioApp').controller 'AppController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService) ->
+# Finally the Application controller lives here.
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService, AnalyticsService) ->
   $scope.currentComponent = 'nothing yet'
 
   $scope.$on 'currentComponent', (event, options = {}) ->

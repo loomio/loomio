@@ -11,12 +11,10 @@ class UsersController < BaseController
 
   def update
     if current_user.update_attributes(permitted_params.user)
-      Measurement.increment('users.update.success')
       set_application_locale
       flash[:notice] = t("notice.settings_updated")
       redirect_to dashboard_path
     else
-      Measurement.increment('users.update.error')
       @user = current_user
       @user_deactivation_response = UserDeactivationResponse.new
       flash[:error] = t("error.settings_not_updated")

@@ -12,11 +12,9 @@ class VotesController < BaseController
     @vote.author = current_user
 
     if VoteService.create(vote: @vote, actor: current_user)
-      Measurement.increment('votes.create.success')
       flash[:success] = t("success.position_submitted")
       redirect_to @vote.motion.discussion
     else
-      Measurement.increment('votes.create.errors')
       render :new
     end
   end

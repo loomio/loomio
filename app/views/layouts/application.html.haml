@@ -17,10 +17,9 @@
     = theme_javascript_include_tag
     = csrf_meta_tags
     = render 'social_metadata', description: @meta_description, title: @meta_title
+    = render 'google_analytics'
 
   %body{class: "#{controller_name} #{action_name}"}
-    - analytics_scope do
-      = render 'google_tag_manager'
     = render 'application/header'
     .container.main-container{ class: render_help_container }
       - unless (controller_name == 'groups') && (action_name == 'show')

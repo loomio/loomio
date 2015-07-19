@@ -4,17 +4,8 @@ class API::BaseController < ActionController::Base
   before_filter :require_authenticated_user, except: :index
 
   skip_after_filter :intercom_rails_auto_include
-  after_filter :increment_measurement
 
   protected
-
-  def increment_measurement
-    Measurement.increment(measurement_name)
-  end
-
-  def measurement_name
-    "#{controller_name}.#{action_name}"
-  end
 
   def permitted_params
     @permitted_params ||= PermittedParams.new(params)

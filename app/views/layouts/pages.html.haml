@@ -10,11 +10,9 @@
     = theme_stylesheet_link_tag
     = csrf_meta_tags
     = render 'social_metadata', description: @meta_description, title: @meta_title
+    = render 'google_analytics'
 
   %body{class: "pages #{controller_name} #{action_name}"}
-    - analytics_scope do
-      = render 'google_tag_manager'
-
     .navbar.navbar-top{role: 'navigation'}
       .navbar-inner
         .navbar-container
