@@ -6,7 +6,7 @@
         %ul
           %li.media.membership-requests-page__pending-request{ng-repeat: 'request in membershipRequestsPage.pendingRequests() track by request.id'}
             .media-left
-              %user_avatar{user: 'request.actor()', size: 'lg'}
+              %user_avatar{user: 'request.actor()', size: 'large'}
             .media-body
               %span.membership-requests-page__pending-request-name
                 %strong {{request.actor().name}}
@@ -24,7 +24,7 @@
         %ul
           %li.media.membership-requests-page__previous-request{ng-repeat: 'request in membershipRequestsPage.previousRequests() track by request.id'}
             .media-left
-              %user_avatar{user: 'request.actor()', size: 'lg'}
+              %user_avatar{user: 'request.actor()', size: 'large'}
             .media-body
               %span.membership-requests-page__previous-request-name
                 %strong {{request.actor().name}}

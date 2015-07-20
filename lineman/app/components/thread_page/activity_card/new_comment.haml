@@ -12,7 +12,7 @@
 
   .thread-item__header.media
     .media-left
-      %user_avatar{user: "comment.author()"}
+      %user_avatar{user: "comment.author()", size: 'small'}
     .media-body
       %span.new-comment__in-reply-to{ng-if: 'comment.parentId', translate: 'new_comment_item.in_reply_to', translate-values: '{author: comment.authorName(), recipient: comment.parentAuthorName()}'}
       %span{ng-if: '!comment.parentId'}

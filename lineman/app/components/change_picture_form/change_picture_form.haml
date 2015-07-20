@@ -9,18 +9,20 @@
   %ul.change-picture-form__options-list
     %li.change-picture-form__option
       %a.lmo-link{href: '', ng-click: 'submit("initials")'}
-        .avatar.avatar-initials.option-icon
-          {{user.avatarInitials}}
+        .user-avatar.user-avatar--small.option-icon
+          .user-avatar__initials--small
+            {{user.avatarInitials}}
         %span{translate: 'profile_page.change_picture.use_initials'}
     %li.change-picture-form__option
       %a.lmo-link{href: '', ng-click: 'submit("gravatar")'}
-        .avatar-image.option-icon
-          %img.avatar{gravatar-src-once: 'user.gravatarMd5', alt: "{{::user.name}}"}
+        .user-avatar.user-avatar--small.option-icon
+          %img.user-avatar__image--small{gravatar-src-once: 'user.gravatarMd5', alt: "{{::user.name}}"}
         %span{translate: 'profile_page.change_picture.use_gravatar'}
     %li.change-picture-form__option
       %a.lmo-link.change-picture-form__upload-button{href: '', ng-click: 'selectFile()'}
-        .avatar.avatar-initials.option-icon
-          %i.fa.fa-lg.fa-camera
+        .user-avatar.user-avatar--small.option-icon
+          .user-avatar__initials--small
+            %i.fa.fa-lg.fa-camera
         %span{translate: 'profile_page.change_picture.use_uploaded'}
       %input.hidden.change-picture-form__file-input{type: 'file', ng-model: 'files', ng-file-select: 'upload(files)'}
 .modal-footer
