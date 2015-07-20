@@ -29,6 +29,8 @@ task :deploy do
 
   def bump_version_and_push_origin_master
     run_commands ['ruby script/bump_version patch',
+                  'git add lib/version',
+                  'git commit -m "bump version"',
                   'git push origin master']
   end
 
