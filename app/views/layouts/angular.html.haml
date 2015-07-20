@@ -45,8 +45,8 @@
       window.Loomio.permittedParams = #{PermittedParamsSerializer.new({}).to_json}
       window.Loomio.locales = [{name: "English", key: "en"}, {name: "Spanish", key: "es"}]
 
-    - if window.Loomio.reportErrors
-      %script{src: '/js/airbrake-shim.js', 'data-airbrake-host' => "http://#{ENV['ERRBIT_HOST']}", 'data-airbrake-project-id' => ENV['ERRBIT_KEY'],  'data-airbrake-project-key' => ENV['ERRBIT_KEY']}
+    -#- if Rails.env.production? and ENV['ERRBIT_HOST']
+      -#%script{src: '/js/airbrake-shim.js', 'data-airbrake-host' => "http://#{ENV['ERRBIT_HOST']}", 'data-airbrake-project-id' => ENV['ERRBIT_KEY'],  'data-airbrake-project-key' => ENV['ERRBIT_KEY']}
 
     = javascript_include_tag lineman_vendorjs_path
     = javascript_include_tag lineman_appjs_path
