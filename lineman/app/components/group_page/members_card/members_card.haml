@@ -4,7 +4,7 @@
     .group-member-list
       .group-member-list-item{ng-repeat: 'member in group.members() | limitTo:10'}
         .group-member-list-avatar.lg{data-username: '{{member.label}}'}
-          %user_avatar{user: 'member', coordinator: 'memberIsAdmin(member)'}
+          %user_avatar{user: 'member', coordinator: 'memberIsAdmin(member)', size: 'small'}
       .group-page__members-placeholder.group-page-placeholder{translate: 'group_page.members_placeholder', ng-if: 'showMembersPlaceholder()' }
     .members-card__invite-members{ng-if: '::canAddMembers()'}
       %a.btn.btn-success.btn-block.lmo-btn-icon{href: '', ng_click: 'invitePeople()'}

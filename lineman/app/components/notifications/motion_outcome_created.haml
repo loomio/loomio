@@ -1,5 +1,5 @@
 %a.selector-list-item-link{ng-href: '{{link()}}', ng-controller: 'NotificationController'}
   .media-left
-    %user_avatar{user: "actor"}
+    %user_avatar{user: "actor", size: 'small'}
   .media-body
     %span{translate: 'notifications.motion_outcome_created', translate-value-name: '{{actor.name}}', translate-value-proposal: '{{event.proposal().name}}' }

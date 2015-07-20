@@ -1,7 +1,7 @@
 %a.selector-list-item-link{ng-href: '{{link()}}', ng-controller: 'NotificationController'}
   .media{ng-if: "event.membershipRequest().byExistingUser()"}
     .media-left
-      %user_avatar{user: "event.membershipRequest().actor()", }
+      %user_avatar{user: "event.membershipRequest().actor()", size: 'small'}
       %img{src: "{{group.logoUrl()}}", aria-hidden: 'true'}
     .media-body
       %span{translate: 'notifications.membership_requested', translate-value-name: '{{event.membershipRequest().actor().name}}', translate-value-group: '{{event.membershipRequest().group().fullName()}}' }

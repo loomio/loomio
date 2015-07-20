@@ -1,31 +1,42 @@
-.avatar-initials{
-  @include smallIcon;
+.user-avatar--coordinator {
+  border: 2px solid $loomio-orange !important;
+}
+
+.user-avatar{
+  @include roundedCorners;
   background: $border-color;
   border: 1px solid #aaa;
   text-align: center;
-  line-height: 30px;
 }
 
-.avatar.coordinator {
-  border: 3px solid $loomio-orange;
+.user-avatar--large {
+  height: 82px;
+  width: 82px;
 }
 
-.avatar-image img{
-  @include smallIcon;
+.user-avatar--small {
+  width: 32px;
+  height: 32px;
 }
 
-.sm .avatar-image img, .sm .avatar-initials {
+.user-avatar__image--large{
   @include roundedCorners;
-  width: 25px;
-  height: 25px;
-  @include fontMedium;
-  line-height: 25px;
-}
-
-.lg .avatar-image img, .lg .avatar-initials{
-  @include roundedCorners;
-  width: 80px;
   height: 80px;
-  font-size: 40px;
+  width: 80px;
+}
+
+.user-avatar__image--small{
+  @include roundedCorners;
+  width: 30px;
+  height: 30px;
+}
+
+.user-avatar__initials--large{
+  font-size: 32px;
   line-height: 80px;
+}
+
+.user-avatar__initials--small{
+  font-size: 12px;
+  line-height: 30px;
 }
