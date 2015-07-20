@@ -9,6 +9,13 @@
 
         %h2 Supported languages (#{selectable_locales.count})
         %table.code
+          %tr
+            %th Language
+            %th Loomio 1.0
+            %th.beta-translation Loomio Beta (old)
+            %th Code
+            %th English name
+
           - selectable_locales.each_with_index do |locale, index|
             %tr
               %td= link_to locale_name(locale), root_path(locale: locale)
@@ -16,9 +23,15 @@
               %td
                 -if coverage
                   -coverage.each do |resource, percentage|
-                    -if resource == 'main'
+                    -if resource == 'main_1_0'
                       .progress
                         .progress-bar{role: 'progressbar', 'aria-valuenow': percentage, 'aria-valuemin': 0, 'aria-valuemax': 100, style: "width:#{percentage}%"}
+              %td
+                -if coverage
+                  -coverage.each do |resource, percentage|
+                    -if resource == 'main'
+                      .progress
+                        .progress-bar.beta-translation{role: 'progressbar', 'aria-valuenow': percentage, 'aria-valuemin': 0, 'aria-valuemax': 100, style: "width:#{percentage}%"}
               %td= locale
               %td= t(locale)
 
@@ -31,9 +44,15 @@
               %td
                 -if coverage
                   -coverage.each do |resource, percentage|
-                    -if resource == 'main'
+                    -if resource == 'main_1_0'
                       .progress
                         .progress-bar{role: 'progressbar', 'aria-valuenow': percentage, 'aria-valuemin': 0, 'aria-valuemax': 100, style: "width:#{percentage}%"}
+              %td
+                -if coverage
+                  -coverage.each do |resource, percentage|
+                    -if resource == 'main'
+                      .progress
+                        .progress-bar.beta-translation{role: 'progressbar', 'aria-valuenow': percentage, 'aria-valuemin': 0, 'aria-valuemax': 100, style: "width:#{percentage}%"}
               %td= locale
               %td= t(locale)
 
