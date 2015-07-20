@@ -28,8 +28,8 @@ task :deploy do
   end
 
   def bump_version_and_push_origin_master
-    puts `ruby script/bump_version patch`
-    puts `git push origin master`
+    run_commands ['ruby script/bump_version patch',
+                  'git push origin master']
   end
 
   def run_commands(commands)
