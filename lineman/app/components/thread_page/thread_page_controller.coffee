@@ -43,6 +43,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       $rootScope.$broadcast 'currentComponent', { page: 'threadPage'}
       $rootScope.$broadcast 'viewingThread', @discussion
       $rootScope.$broadcast 'setTitle', @discussion.title
+      $rootScope.$broadcast 'analyticsSetGroup', @discussion.group()
 
       MessageChannelService.subscribeTo "/discussion-#{@discussion.key}"
 

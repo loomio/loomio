@@ -7,9 +7,7 @@ class DetectLocaleController < ActionController::Base
     d = locale_fallback(detected_locale)
     if locale_fallback(selected_locale) != d
       I18n.locale = d
-      Measurement.increment('detect_locale.foreign')
     else
-      Measurement.increment('detect_locale.default')
       head :ok
     end
   end

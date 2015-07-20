@@ -1,5 +1,5 @@
 !!!
-%html{'ng-app' => 'loomioApp', 'ng-controller' => 'AppController as app'}
+%html{'ng-app' => 'loomioApp', 'ng-controller' => 'ApplicationController as app'}
   %head
     %title Loomio
     %meta{charset: 'utf-8'}
@@ -7,9 +7,20 @@
     %meta{content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name: "viewport"}
     %base{href: '/'}
     = stylesheet_link_tag lineman_css_path
+
+    -# google analytics code for production
+    - if Rails.env.production? and ENV['GOOGLE_ANALYTICS_ID']
+      :javascript
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', '#{ENV["GOOGLE_ANALYTICS_ID"]}', 'auto');
+
   %body{'ng-keydown' => 'keyDown($event)'}
     %navbar
-    %ng-outlet{'ng-if' => '!pageError'}
+    %ng_outlet{'ng-if' => '!pageError'}
     %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
     %start_menu
 
@@ -21,13 +32,17 @@
         %a{href: 'https://docs.google.com/forms/d/1JS75ZdoBiA3k7IzxDPijV4kPh1fXrmWs9A8k_WG_pyE/viewform', target: '_blank'}
           Give feedback
 
+    - if Rails.env.production? and ENV['ERRBIT_HOST']
       %script{src: '/js/airbrake-shim.js', 'data-airbrake-host' => "http://#{ENV['ERRBIT_HOST']}", 'data-airbrake-project-id' => ENV['ERRBIT_KEY'],  'data-airbrake-project-key' => ENV['ERRBIT_KEY']}
 
     :javascript
       window.Loomio = {};
+      window.Loomio.version = #{Loomio::Version.current.to_json}
+      window.Loomio.reportErrors = #{(request.host == 'www.loomio.org').to_json}
       window.Loomio.environment = #{Rails.env.to_json};
       window.Loomio.flash = #{flash.to_h.to_json};
-      window.Loomio.currentUserId = #{current_user.id};
+      window.Loomio.currentUserId = #{current_user.id.to_json};
+      window.Loomio.currentUserLocale = #{current_user.locale.to_json}
       window.Loomio.seedRecords = #{CurrentUserSerializer.new(current_user).to_json}
       window.Loomio.permittedParams = #{PermittedParamsSerializer.new({}).to_json}
       window.Loomio.locales = [{name: "English", key: "en"}, {name: "Spanish", key: "es"}]

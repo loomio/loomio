@@ -9,10 +9,9 @@
     = stylesheet_link_tag  "marketing/index"
     = csrf_meta_tags
     = render 'social_metadata'
+    = render 'google_analytics'
 
   %body{class: "#{controller_name} #{action_name}", dir: language_dir(current_locale)}
-    - analytics_scope do
-      = render 'google_tag_manager'
     = render 'flash_messages'
     = render 'fork_me_on_github'
 

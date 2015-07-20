@@ -1,6 +1,8 @@
 class GroupSerializer < ActiveModel::Serializer
   embed :ids, include: true
   attributes :id,
+             :organisation_id,
+             :cohort_id,
              :key,
              :name,
              :created_at,

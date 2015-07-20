@@ -19,13 +19,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     auth = OmniauthIdentity.from_omniauth(auth_params[:provider], auth_params[:uid], user_info)
 
     if auth.user
-      Measurement.increment('omniauth.success.recognised')
       sign_in_and_redirect(auth.user)
     else
       save_omniauth_authentication_to_session(auth)
 
       if user = User.find_by_email(auth.email.to_s)
-        Measurement.increment('omniauth.success.recognised_first_auth')
         sign_in_and_redirect(user)
 
       # at some point in the future we can remove this elsif #IAMSORRY4THIS
@@ -39,12 +37,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           group.add_member!(user)
           sign_in_and_redirect(user)
         else
-          Measurement.increment('omniauth.success.unrecognised_first_auth')
           redirect_to login_or_signup_path_for_email(auth.email)
         end
       # end block that could be removed
       else
-        Measurement.increment('omniauth.success.unrecognised_first_auth')
         redirect_to login_or_signup_path_for_email(auth.email)
       end
     end

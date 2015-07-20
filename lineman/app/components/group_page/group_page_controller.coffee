@@ -9,6 +9,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $rout
     $rootScope.$broadcast 'currentComponent', { page: 'groupPage' }
     $rootScope.$broadcast 'viewingGroup', @group
     $rootScope.$broadcast 'setTitle', @group.fullName()
+    $rootScope.$broadcast 'analyticsSetGroup', @group
     MessageChannelService.subscribeTo("/group-#{@group.key}")
   , (error) ->
     $rootScope.$broadcast('pageError', error)
@@ -21,5 +22,5 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $rout
 
   @canManageMembershipRequests = ->
     AbilityService.canManageMembershipRequests(@group)
-  
+
   return

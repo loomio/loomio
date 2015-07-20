@@ -1,27 +1,16 @@
 module AnalyticsDataHelper
-
   def analytics_data_tag
-    tg = {"user_id" => 'undefined',
-                 "cohort" => 'undefined'}
+    tg = {dimension4: Loomio::Version.current}
 
     if current_user
-     tg.merge!({"user_id" => current_user.id.to_s,
-                       "cohort" => current_user.created_at.strftime("%Y-%m")})
-    end
-
-    if @discussion.present?
-      tg.merge!({ "discussion_id" => @discussion.id.to_s })
-      @group = @discussion.group if @group.nil?
+     tg.merge!({dimension5: current_user.id})
     end
 
     if @group.present? and @group.persisted?
       tg.merge!({
-        "group_id" => @group.id.to_s,
-        "group_parent_id" => (@group.parent_id.to_s ? @group.parent_id.to_s : 'undefined'),
-        "top_group" => (@group.parent_id.to_s ? @group.parent_id.to_s : @group.id.to_s),
-        "group_memberships_count" => @group.memberships_count.to_s,
-        "group_visible_to" => @group.visible_to,
-        "group_cohort" => @group.created_at.strftime("%Y-%m")
+        dimension1: @group.id,
+        dimension2: @group.organisation_id,
+        dimension3: @group.cohort_id,
       })
     end
 

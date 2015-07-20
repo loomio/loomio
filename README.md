@@ -50,7 +50,8 @@ My ‘my dev env is totally b0rked’ checklist:
 - run bower install
 - run npm install
 - weep
-- actually look at the error message in lineman
+- actually look at the error message in lineman/browser console
+
 
 ## Updating to the latest loomio code
 TODO: explain how to update your fork from loomio master

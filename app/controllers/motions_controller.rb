@@ -14,11 +14,9 @@ class MotionsController < GroupBaseController
 
       if MotionService.create(motion: @motion,
                               actor: current_user)
-        Measurement.increment('motions.create.success')
         flash[:success] = t("success.proposal_created")
         redirect_to @discussion
       else
-        Measurement.increment('motions.create.error')
         flash[:warning] = t("warning.proposal_not_created")
         render action: :new
       end

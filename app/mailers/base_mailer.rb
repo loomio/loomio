@@ -24,12 +24,6 @@ class BaseMailer < ActionMailer::Base
     "[Loomio: #{group_name}]"
   end
 
-  def initialize(method_name=nil, *args)
-    super.tap do
-      Measurement.increment("#{mailer_name}-#{action_name}")
-    end
-  end
-
   def from_user_via_loomio(user)
     "\"#{user.name} (Loomio)\" <notifications@loomio.org>"
   end

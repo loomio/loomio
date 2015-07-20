@@ -76,7 +76,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
-    aggregate (0.2.2)
     ahoy_matey (1.1.1)
       addressable
       browser (>= 0.4.0)
@@ -398,16 +397,6 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    librato-metrics (1.5.0)
-      aggregate (~> 0.2.2)
-      faraday (~> 0.7)
-      multi_json
-    librato-rack (0.4.5)
-      librato-metrics (~> 1.1)
-    librato-rails (0.11.1)
-      activesupport (>= 3.0)
-      librato-rack (~> 0.4.2)
-      railties (>= 3.0)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     macaddr (1.7.1)
@@ -488,9 +477,6 @@ GEM
     rack (1.6.4)
     rack-attack (4.2.0)
       rack
-    rack-canonical-host (0.1.0)
-      addressable
-      rack (~> 1.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rack_session_access (0.1.1)
@@ -717,7 +703,6 @@ DEPENDENCIES
   jquery-ui-rails (~> 5.0.0)
   kaminari
   launchy
-  librato-rails
   minitest
   modernizr-rails
   momentjs-rails
@@ -739,7 +724,6 @@ DEPENDENCIES
   private_pub!
   puma
   rack-attack (~> 4.2.0)
-  rack-canonical-host
   rack_session_access
   rails (~> 4.2.2)
   rails_12factor

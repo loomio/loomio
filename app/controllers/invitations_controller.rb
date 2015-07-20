@@ -51,9 +51,6 @@ class InvitationsController < ApplicationController
                                              discussion: @invitable,
                                              inviter: current_user)
     end
-    Measurement.measure('invitations.invite_members', @invite_people_form.members_to_add.size)
-    Measurement.measure('invitations.invite_new_emails', @invite_people_form.emails_to_invite.size)
-
     set_flash_message
     redirect_to @invitable
   end

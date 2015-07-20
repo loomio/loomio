@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory '$exceptionHandler', ->
   (exception, cause) ->
-    if window.Loomio.environment == 'production'
+    if window.Loomio.reportErrors
       Airbrake.push
         error:
           message : exception.toString()
