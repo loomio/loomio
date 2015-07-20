@@ -3,30 +3,52 @@ es:
     time:
       am: am
       pm: pm
+    closing_in: "Cerrando {{time}}"
+    closed_ago: "Cerrado {{time}}"
     volume: "Volumen "
+    notification_volume: Volumen de notificaciones
     group: Grupo
     groups: Grupos
     privacy:
       private: Privado
       public: Público
       organisation: "Organización "
+    selected: Seleccionado
     date_range:
       today: Hoy
+      yesterday: Ayer
+      thisweek: Esta semana
+      thismonth: Este mes
+      older: Antiguo
     models:
       proposal: Propuesta
     action:
       save: Guardar
+      save_changes: Guardar cambios
+      reply: Responder
       edit: Editar
       like: Me gusta
       unlike: Ya no me gusta
       cancel: Cancelar
+      show_more: Mostrar más
+      view_all: Ver todo
+      new_thread: Nuevo hilo
+      add_subgroup: Añadir subgrupo
   error_page:
     forbidden: No tienes permisos para hacer esto.
+    page_not_found: No encontramos lo que está buscando. Podría haber sido borrado o movido.
+    internal_server_error: "Lo sentimos, pero algo ha ido mal. Por favor, inténtelo otra vez."
+  start_proposal_card:
+    title: Empezar una propuesta
+    helptext: ¿Lista/o para tomar una decisión? Las propuestas te permiten ver qué opina todo el mundo acerca de un tema en particular.
   proposal_outcome_panel:
     heading: Resultado
+    set_outcome_hint: Usa este espacio para dar a conocer tu propuesta a todo el mundo.
   proposal_outcome_form:
     outcome_label: Resultado de la propuesta
     publish_outcome: Publicar resultado
+  proposal_collapsed:
+    expand: Expandir
   context_card:
     heading: Contexto
   volume_levels:
@@ -36,24 +58,61 @@ es:
     mute: "Silenciado "
   inbox:
     clear: Limpiar
+    latest: Últimos
     unread: No leído
+    closing_in: Cerrando
+  session_form:
+    email_label: "Correo:"
+    password_label: "Contraseña:"
+    remember_me: Recuérdame
+    sign_in: Entrar
   comment_form:
+    aria_label: Añad un comentario
+    attachments:
+      aria_label: Adjuntar un archivo
+      remove_attachment: Quitar archivo adjunto
+    messages:
+      created: Comentario añadido
+      updated: Comentario actualizado
+      destroyed: Comentario eliminado
     edit_comment: Editar comentario
     delete_comment: Borrar comentario
+    cancel_reply: Cancelar respuesta
     confirm_delete_message: ¿Estás seguro de que quieres borrar este comentario?
+    confirm_delete: "Sí, estoy segura/o"
+    in_reply_to: "En respuesta a <strong>{{name}}</strong>"
+    submit_button:
+      label: Enviar
   navbar:
+    recent: Reciente
     unread: No leído
     groups: Grupos
+    recent_title: Ir a escritorio
+    unread_title: Ver los mensajes no leídos
+    groups_title: Ver tus grupos
+    start_thread: Comienza un nuevo hilo
+    notifications: Panel de notificaciones
     user_options:
+      label: Menú de opciones de usuario
       contact_us: Contáctanos
+      new_thread: Nuevo hilo
       new_group: Nuevo grupo
       profile: Perfil
+      email_settings: Ajustes de correo
       help: Ayuda
     search:
+      close: Cerrar panel de búsqueda
       placeholder: Buscar
+      loading: Cargando resultados...
       discussions: Hilos
       proposals: Propuestas
       comments: "Comentarios "
+      no_results: No hemos encontrado nada
+  start_menu:
+    start_group: Crear un grupo nuevo
+    start_subgroup: Crear subgrupo nuevo
+    start_thread: Iniciar hilo nuevo
+    invite_people: Invita a gente
   notifications:
     header: Notificaciones
   position_buttons_panel:
@@ -74,6 +133,7 @@ es:
     close_proposal: Cerrar propuesta
   proposal_form:
     start_proposal: Empezar propuesta
+    start_a_proposal: Empezar una propuesta
     edit_proposal: Editar propuesta
     title_label: Título
     closes_at_label: Cierra a las
@@ -90,6 +150,7 @@ es:
     heading: Empieza un grupo
     group_helptext: "Para empezar a tomar decisiones juntos con Loomio, crea un grupo. Es gratis."
     name_label: Nombre del Grupo
+    submit: Crea un grupo nuevo
   join_group_button:
     join_group: Unirse al grupo
     ask_to_join_group: Solicita unirte al grupo
@@ -126,6 +187,8 @@ es:
     name_label: Nombre
     description_label: Descripción
     category_label: Categoría
+  invitation:
+    invite_people: Invita a gente
   memberships_page:
     members: Miembros
     name_label: Nombre
@@ -149,6 +212,8 @@ es:
     username_label: Nombre de usuario
     email_label: Correo electrónico
     locale_label: Lenguaje
+  email_settings_page:
+    header: Ajustes de correo
   dashboard_page:
     aria_label: Panel de control
     mark_as_read: Marcar como leído
@@ -156,6 +221,7 @@ es:
       proposals: Propuestas
     threads_from:
       today: Hoy
+      yesterday: Ayer
   discussion:
     proposals: Propuestas
     volume:

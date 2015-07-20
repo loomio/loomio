@@ -5,8 +5,8 @@ pl:
       pm: pm
     closing_in: "Zamknięcie {{time}}"
     closed_ago: "Zamknięto {{time}}"
-    volume: Głośność
-    notification_volume: Głośność powiadomienia
+    volume: Poziom
+    notification_volume: Poziom powiadamiania
     group: Grupa
     groups: Grupy
     privacy:
@@ -23,7 +23,7 @@ pl:
     models:
       proposal: Rekomendacja
     action:
-      save: Zapisz
+      save: Zapis
       save_changes: Zapisanie zmian
       reply: Odpowiedź
       edit: Edycja
@@ -85,8 +85,8 @@ pl:
       updated: Komentarz zmieniony
       destroyed: Komentarz usunięty
     edit_comment: Edycja komentarza
-    delete_comment: Usuń komentarz
-    cancel_reply: Anuluj Odpowiedź
+    delete_comment: Usunięcie komentarza
+    cancel_reply: Anulowanie Odpowiedzi
     confirm_delete_message: Czy na pewno chcesz usunąć ten komentarz?
     confirm_delete: "Tak, jestem pewny/a"
     in_reply_to: "W odpowiedzi na <strong>{{name}}</strong>:"
@@ -96,7 +96,7 @@ pl:
     recent: Ostatnie
     unread: Nieprzeczytane
     groups: Grupy
-    recent_title: Idź do panelu
+    recent_title: Idź do pulpitu
     unread_title: Zobacz nieprzeczytaną aktywność
     groups_title: Zobacz Twoje grupy
     start_thread: Rozpoczęcie nowego wątku
@@ -113,7 +113,7 @@ pl:
       close: Zamknij panel wyszukiwania
       placeholder: Szukaj
       loading: Ładowanie wyników...
-      discussions: Dyskusje
+      discussions: Wątki
       proposals: Rekomendacje
       comments: Komentarze
       no_results: Nie znaleziono
@@ -128,7 +128,7 @@ pl:
     new_motion: "<strong>{{name}}</strong> utworzył/a rekomendację <strong>{{proposal}}</strong>"
     motion_closed_by_user: "<strong>{{name}}</strong> zamknął/ęła rekomendację <strong>{{proposal}}</strong>"
     motion_closed_by_expiry: "Rekomendacja została zamknięta <strong>{{proposal}}</strong>"
-    new_vote: "<strong>{{name}}</strong> {{position}} w rekomendacji <strong>{{proposal}}</strong>"
+    new_vote: "<strong>{{name}}</strong> {{position}} dla rekomendacji <strong>{{proposal}}</strong>"
     new_comment: "<strong>{{name}}</strong> skomentował/a <strong>{{discussion}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> odpowiedział/a na Twój komentarz do <strong>{{discussion}}</strong>"
     comment_liked: "<strong>{{name}}</strong> polubił/a Twój komentarz do <strong>{{discussion}}</strong>"
@@ -144,7 +144,7 @@ pl:
     heading: Wypowiedz się
   vote_form:
     heading: Wypowiedz się
-    no_statement: Brak deklaracji.
+    no_statement: Brak stanowiska.
     i_agree: Zgadzam się
     i_agree_details: Wspieram to i chcę pójść dalej.
     i_abstain: Wstrzymuję się
@@ -153,7 +153,7 @@ pl:
     i_disagree_details: "Myślę, że możemy zrobić to lepiej."
     i_block: Blokuję
     i_block_details: Mam silne obiekcje co do tej rekomendacji i nie zgadzam się na kontynuację w tym kierunku.
-    submit_position: Prześlij stanowisko
+    submit_position: Wprowadzenie stanowiska
     change_position: Zmiana stanowiska
     select_position: Wybór stanowiska
     statement_placeholder: Podziel się swoimi poglądami  grupą.
@@ -209,7 +209,7 @@ pl:
     title_label: Tytuł
     title_placeholder: Jaki temat chcesz dyskutować?
     context_label: Kontekst
-    context_placeholder: Podaj dostatecznie dużo ogólnych informacji dla grupy aby uzyskać produktywną dyskusję. Można aktualizować w trakcie procesu dyskusji
+    context_placeholder: Aby uzyskać efektywną dyskusję podaj dostateczną ilość informacji. Można aktualizować w trakcie dyskusji
     privacy_label: Zasady prywatności
     privacy:
       will_be_private_to_group: "Wątek będzie widoczny tylko dla członków grupy  {{groupName}}."
@@ -232,7 +232,7 @@ pl:
   proposal_position_block: Blokuję
   group_welcome_modal:
     heading: Witamy w Twojej nowej grupie
-    instructions: "Jesteś koordynatorem grupy, do Twoich obowiązku należy skonfigurowanie grupy i zaproszenie osób"
+    instructions: "Jesteś koordynatorem grupy, do Twoich obowiązków należy skonfigurowanie grupy i zaproszenie osób"
     what_next: "Oto co należy dalej zrobić:"
     first_step: "Ustaw opis grupy, logo i zdjęcie"
     second_step: Przeczytaj wątek przykładowy i przećwicz podejmowanie decyzji
@@ -241,7 +241,7 @@ pl:
   start_group_form:
     heading: Uruchomienie grupy
     group_helptext: "Aby rozpocząć wspólne podejmowanie decyzji z użyciem Loomio, ustaw bezpłatną grupę:"
-    group_payment_reminder: "Po 30 dniach, sprawdzania jak Loomio wspiera podejmowanie grupowych decyzji, spytamy Cię o wybór <a href='#'>planu płatności</a> odpowiedniego dla Ciebie."
+    group_payment_reminder: "Po 30 dniach Twojego sprawdzania jak Loomio wspiera podejmowanie grupowych decyzji, spytamy Cię o wybór <a href='#'>planu płatności</a> odpowiedniego dla Ciebie."
     name_label: Nazwa Grupy
     submit: Uruchomienie Grupy
   join_group_button:
@@ -313,7 +313,7 @@ pl:
       normal_aria_description: "Poziom powiadamiania dla tej grupy jest ustawiony na Normaly. Otrzymasz wiadomości na temat ważnych akcji, takich jak kiedy ktoś uruchomi nowy wątek, zgłosi rekomendację lub ustawi jej wynik."
       quiet: Nie przysyłam maili z tej grupy. Aktywności będą wyświetlane na pulpicie.
       quiet_aria_description: Poziom powiadamianie dla tej grupy jest ustawiony na Cicho. Nie będziesz otrzymywać maili o aktywnościach z tej grupy. Jej aktywność będzie wyświetlana na Pulpicie.
-      mute: "Ukryj tę grupę z panelu i nie przesyłaj powiadomień z wyjątkiem @wzmianek"
+      mute: "Ukryj tę grupę na pulpicie i nie przesyłaj powiadomień z wyjątkiem @wzmianek"
       mute_aria_description: "Poziom powiadamiania dla tej grupy jest ustawiony na Wyciszony. Nie otrzymasz wiadomości dopóki ktoś nie wspomni o Tobie w komentarzu, a aktywność grupy nie będzie wyświetlana na Pulpicie."
       updated: Poziom powiadamiania Grupy zmieniono.
     privacy:

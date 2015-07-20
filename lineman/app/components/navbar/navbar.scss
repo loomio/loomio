@@ -2,39 +2,38 @@
   @include box_shadow(2);
   z-index: 1000;
   background: white;
-  height: $navbar-height;
   border-bottom: 1px solid $border-color;
-  padding: 0;
+  padding: 0 6px;
   width: 100%;
   position: fixed;
 }
 
-.lmo-navbar__left{
-  float: left;
-    padding: 0 2px;
+.lmo-navbar-item-container{
+  display: inline-block;
   .fa-group {
     font-size: 1.1em;
   }
-}
 
-.lmo-navbar__right{
-  float: right;
-  padding: 0 2px;
   .fa-bell-o {
     font-size: 1.2em;
   }
+
   .fa-bell {
     font-size: 1.2em;
   }
 }
 
-.lmo-navbar__right--search {
-  float: right;
-  padding: 0px 2px 3px;
+.lmo-navbar-item-container--left{
+  width: 42%;
 }
 
-.lmo-navbar__center{
-  text-align: center
+.lmo-navbar-item-container--right{
+  text-align: right;
+  width: 58%;
+}
+
+.lmo-navbar-item-container__sub{
+  display: inline-block;
 }
 
 .lmo-navbar__item{
@@ -42,15 +41,15 @@
   margin: 0;
 }
 
-.lmo-navbar__item {
-  .navbar-user-options .lmo-navbar__btn {
-    padding: 9px 6px 10px;
-  }
-}
-
 .lmo-navbar__item--selected {
   border-bottom: 4px solid $loomio-orange;
   a{ color: $primary-text-color; }
+}
+
+.lmo-navbar__item--user {
+  .lmo-navbar__btn{
+    padding: 9px 8px 10px;
+  }
 }
 
 .lmo-navbar__btn{
@@ -93,4 +92,42 @@
   color: white;
   line-height: 5px;
   text-align: center;
+}
+
+@media (max-width: 480px) {
+  .lmo-navbar-item-container--left{
+    width: 39%;
+    .lmo-navbar__item {
+      width: 33%;
+      display: inline-block;
+      text-align: center;
+    }
+  }
+
+  .lmo-navbar-item-container--right{
+    width: 61%;
+
+    .lmo-navbar-item-container__sub--left{
+      width: 59%;
+    }
+
+    .lmo-navbar-item-container__sub--right{
+      text-align: center;
+      width: 41%;
+    }
+
+    .lmo-navbar__item--notifications {
+      width: 50%;
+      .lmo-navbar__btn{
+        padding: 10px 5px 11px;
+      }
+    }
+
+    .lmo-navbar__item--user {
+      width: 50%;
+      .lmo-navbar__btn{
+        padding: 6px;
+      }
+    }
+  }
 }

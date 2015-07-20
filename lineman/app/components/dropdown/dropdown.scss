@@ -103,8 +103,11 @@ li .dropdown-menu-item-label{
     position: static;
     .dropdown-menu{
       top: auto;
-      right: 0;
-      left: 0;
+      right: 0px;
+      left: 0px;
+      margin: 2px 8px;
+      min-width: 250px;
+      max-width: none;
     }
   }
 }

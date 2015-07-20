@@ -1,10 +1,18 @@
-.thread-lintel {
-  margin: 0 auto;
-  border: 1px solid $border-color;
-  max-width: $main-max-width;
-  background-color: $card-background-color;
+.thread-lintel__wrapper {
   @include fontMedium;
+  position: fixed;
+  top: $navbar-height;
+  left: 0;
+  width: 100% ;
+}
+
+.thread-lintel__content {
+  @include box_shadow(1);
+  border: 1px solid $border-color;
+  background-color: $card-background-color;
   clear: both;
+  margin: 0 auto;
+  max-width: $main-max-width;
 }
 
 .thread-lintel__left {
@@ -51,4 +59,10 @@
   left: 0;
   position: absolute;
   top: 0;
+}
+
+@media (max-width: 480px) {
+  .thread-lintel__content {
+    margin: 0 10px;
+  }
 }

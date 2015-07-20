@@ -18,7 +18,7 @@
       %span{ng-if: '!comment.parentId'}
         %h3.new-comment__author-name {{ ::comment.authorName() }}
 
-  .thread-item__body{marked: 'comment.body' }
+  .thread-item__body.lmo-markdown-wrapper{marked: 'comment.body' }
 
   .thread-item__attachments
     .thread-item__attachment{ng-repeat: 'attachment in comment.attachments() track by attachment.id'}

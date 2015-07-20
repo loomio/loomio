@@ -9,7 +9,7 @@
     %span{aria-hidden: 'true'}·
     %closing_in{time: 'proposal.closingAt' }>
     .badge.pull-right.cuke-proposal-closed-badge{ng-show: '!proposal.isActive'} Closed
-  .proposal-expanded-description{marked: 'proposal.description' }
+  .proposal-expanded-description.lmo-markdown-wrapper{marked: 'proposal.description' }
   %proposal_outcome_panel{ng-if: 'showOutcomePanel()', proposal: 'proposal'}
 
 

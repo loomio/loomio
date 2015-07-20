@@ -20,7 +20,7 @@
   %ul.proposal-positions-panel__list
     %li.proposal-positions-panel__vote.media{ng_repeat: 'vote in curatedVotes() track by vote.id'}
       .media-left
-        .thread-item-vote-icon{class: 'thread-item-vote-icon-{{vote.position}}'}
+        .thread-item__vote-icon{class: 'thread-item__vote-icon--{{vote.position}}'}
       .media-body
         %span.proposal-positions-panel__name-and-position{translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-name: '{{vote.authorName()}}'}
         %span{ng-if: '!vote.hasStatement()'}.
