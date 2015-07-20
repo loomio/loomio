@@ -14,7 +14,6 @@ task :deploy do
                   "git checkout -b #{build_branch}",
                   "cd lineman && npm install && bower install && lineman build",
                   "cp -R lineman/dist/* public/",
-                  "cp lineman/vendor/bower_components/airbrake-js/airbrake-shim.js public/js/airbrake-shim.js",
                   "git add public/img public/css public/js public/fonts",
                   "git commit -m 'production build commit'",
                   "git checkout #{branch}",

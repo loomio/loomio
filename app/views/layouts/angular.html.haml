@@ -32,13 +32,11 @@
         %a{href: 'https://docs.google.com/forms/d/1JS75ZdoBiA3k7IzxDPijV4kPh1fXrmWs9A8k_WG_pyE/viewform', target: '_blank'}
           Give feedback
 
-    - if Rails.env.production? and ENV['ERRBIT_HOST']
-      %script{src: '/js/airbrake-shim.js', 'data-airbrake-host' => "http://#{ENV['ERRBIT_HOST']}", 'data-airbrake-project-id' => ENV['ERRBIT_KEY'],  'data-airbrake-project-key' => ENV['ERRBIT_KEY']}
 
     :javascript
       window.Loomio = {};
       window.Loomio.version = #{Loomio::Version.current.to_json}
-      window.Loomio.reportErrors = #{(request.host == 'www.loomio.org').to_json}
+      window.Loomio.reportErrors = false
       window.Loomio.environment = #{Rails.env.to_json};
       window.Loomio.flash = #{flash.to_h.to_json};
       window.Loomio.currentUserId = #{current_user.id.to_json};
@@ -46,6 +44,9 @@
       window.Loomio.seedRecords = #{CurrentUserSerializer.new(current_user).to_json}
       window.Loomio.permittedParams = #{PermittedParamsSerializer.new({}).to_json}
       window.Loomio.locales = [{name: "English", key: "en"}, {name: "Spanish", key: "es"}]
+
+    - if window.Loomio.reportErrors
+      %script{src: '/js/airbrake-shim.js', 'data-airbrake-host' => "http://#{ENV['ERRBIT_HOST']}", 'data-airbrake-project-id' => ENV['ERRBIT_KEY'],  'data-airbrake-project-key' => ENV['ERRBIT_KEY']}
 
     = javascript_include_tag lineman_vendorjs_path
     = javascript_include_tag lineman_appjs_path
