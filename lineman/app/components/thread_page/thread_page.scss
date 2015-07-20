@@ -30,10 +30,6 @@
   @include card;
 }
 
-.thread-context img {
-  width: 100%;
-}
-
 // hey no ids in BEM, mate
 
 #thread-context__heading{
@@ -52,10 +48,6 @@
 
 .thread-container .dropdown-menu-right{
   right: -16px;
-}
-
-.thread-container img {
-  max-width: 100%;
 }
 
 .attachments {
