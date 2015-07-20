@@ -2,6 +2,8 @@ lt:
   error:
     access_denied: Jūs neturite leidimo tai padaryti.
   footer:
+    blog: Tinklaraštis
+    contact: Susisiekite
     privacy: Privatumas
   notifications:
     header: Pranešimai
