@@ -44,6 +44,7 @@
 
 .thread-preview__proposal-name{
   line-height: 20px;
+  color: $primary-text-color;
 }
 
 .thread-preview__proposal-closing-at {
@@ -60,6 +61,35 @@
   line-height: 18px;
   margin-bottom: 2px;
 }
+
+.thread-preview__position-icon {
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  margin: 3px 5px 0 0;
+}
+
+.thread-preview__position-icon--yes {
+  background-image: url(/img/green_thumb_15.png);
+}
+
+.thread-preview__position-icon--no {
+  background-image: url(/img/pink_thumb_15.png);
+}
+
+.thread-preview__position-icon--block {
+  background-image: url(/img/red_flag_15.png);
+}
+
+.thread-preview__position-icon--abstain {
+  background-image: url(/img/yellow_thumb_15.png);
+}
+
+.thread-preview__undecided-icon {
+  font-size: 1.6em;
+  padding-right: 5px;
+}
+
 
 .thread-preview__group-name{
   @include fontSmall;
