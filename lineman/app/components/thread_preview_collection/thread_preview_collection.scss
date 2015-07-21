@@ -52,7 +52,8 @@
 }
 
 .thread-preview__proposal-closing-soon {
-  width: 160px;
+  min-width: 160px;
+  padding-left: 4px;
 }
 
 .thread-preview__pie-chart {
