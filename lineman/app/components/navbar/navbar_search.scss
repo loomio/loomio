@@ -1,9 +1,5 @@
 .navbar-search {
   padding: 4px 5px;
-
-  input {
-    margin-bottom: 0px;
-  }
 }
 
 .navbar-search-input-wrapper{
@@ -14,7 +10,8 @@
   position: relative;
   background-color: $background-color;
   color: $primary-text-color;
-  /*@media (max-width: $screen-xs-min){width: 100px;}*/
+  display: inline-block;
+  margin-bottom: 0px;
   @media (min-width: $screen-xs-min){width: 250px;}
 }
 
