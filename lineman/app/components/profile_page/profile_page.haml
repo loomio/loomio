@@ -25,7 +25,7 @@
         %validation_errors{subject: 'profilePage.user', field: 'email'}
 
         %label{for: 'user-locale-field', translate: 'profile_page.locale_label'}
-        %select.form-control.profile-page__language-input{ng-model: 'profilePage.user.selectedLocale', ng-required: 'true', ng-options: 'locale.key as locale.name for locale in profilePage.availableLocales()', ng-change: 'setCurrentPrivacy()'}
+        %select.form-control.profile-page__language-input{ng-model: 'profilePage.user.selectedLocale', ng-required: 'true', ng-options: 'locale.key as locale.name for locale in profilePage.availableLocales()'}
         %validation_errors{subject: 'profilePage.user', field: 'selectedLocale'}
 
       .profile-page__update-account.lmo-vertical-spacer

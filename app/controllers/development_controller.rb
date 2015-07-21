@@ -201,6 +201,7 @@ class DevelopmentController < ApplicationController
                               email: 'patrick_swayze@example.com',
                               username: 'patrickswayze',
                               password: 'gh0stmovie',
+                              detected_locale: 'en',
                               angular_ui_enabled: true)
   end
 

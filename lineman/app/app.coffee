@@ -30,10 +30,9 @@ angular.module('loomioApp', ['ngNewRouter',
   $locationProvider.html5Mode(true)
 
   if window.Loomio?
-    # load translations
-    $translateProvider.
-      useUrlLoader('/api/v1/translations/en').
-      preferredLanguage('en')
+    locale = window.Loomio.currentUserLocale
+    $translateProvider.useUrlLoader("/api/v1/translations").
+                       preferredLanguage(locale)
 
   # stuff that only runs in production environment
   if window.Loomio? and window.Loomio.environment == 'production'

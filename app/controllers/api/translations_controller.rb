@@ -1,6 +1,11 @@
 class API::TranslationsController < API::BaseController
   def show
-    locale_root = Rails.root.join('config', 'locales', "client.#{params[:lang]}.yml")
-    render json: YAML.load_file(locale_root)[params[:lang]]
+    locale = params[:lang]
+
+    source = YAML.load_file("config/locales/client.#{locale}.yml")[locale]
+    fallback = YAML.load_file('config/locales/client.en.yml')['en']
+
+    dest = fallback.deep_merge(source)
+    render json: dest
   end
 end

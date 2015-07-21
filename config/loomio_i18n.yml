@@ -2,7 +2,7 @@ loomio_i18n:
   selectable_locales: [ en, an, be-BY, bg-BG, ca, cs, zh-TW, da, de, eo, es, el, fr, id, it, he, hu, ja, ko, ml, nl-NL, pl, pt-BR, ro, sr, sr-RS, sk, sl, sv, vi, tr, uk ]
   additional_detectable_locales: [ be, pt, zh, zh-HK ]
 
-  fallbacks: 
+  fallbacks:
     an:      es
     be:      be-BY
     ca:      es

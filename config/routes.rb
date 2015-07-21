@@ -119,7 +119,7 @@ Loomio::Application.routes.draw do
       post :vote, on: :member
     end
 
-    resources :translations, only: :show
+    resource :translations, only: :show
 
     resources :notifications, only: :index do
       post :viewed, on: :collection
@@ -406,8 +406,6 @@ Loomio::Application.routes.draw do
     get :help
     get :markdown
   end
-
-  get '/detect_locale' => 'detect_locale#show'
 
   resources :contact_messages, only: [:new, :create]
   get 'contact(/:destination)', to: 'contact_messages#new'
