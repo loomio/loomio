@@ -304,7 +304,7 @@ class User < ActiveRecord::Base
   end
 
   def locale
-    selected_locale || detected_locale
+    selected_locale || detected_locale || I18n.default_locale
   end
 
   def using_initials?

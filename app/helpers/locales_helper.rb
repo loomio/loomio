@@ -70,6 +70,12 @@ module LocalesHelper
     @language_options ||= language_options_for selectable_locales, nil, incomplete_locales
   end
 
+  def angular_locales
+    selectable_locales.map do |locale|
+      {key: locale, name: locale_name(locale)}
+    end
+  end
+
   private
 
   def browser_accepted_locales
