@@ -9,8 +9,11 @@ angular.module('loomioApp').directive 'flash', ->
     $scope.$on 'flashMessage', (event, flash) =>
       $scope.flash = _.merge flash, { visible: true }
       $timeout.cancel $scope.pendingDismiss if $scope.pendingDismiss?
-      $scope.pendingDismiss = $timeout $scope.dismiss, 2500
+      $scope.pendingDismiss = $timeout($scope.dismiss, flash.duration)
 
+    $scope.$on 'dismissFlash', $scope.dismiss
+
+    $scope.loading = -> $scope.flash.level == 'loading'
     $scope.display = -> $scope.flash.visible
     $scope.dismiss = -> $scope.flash.visible = false
 

@@ -34,6 +34,7 @@ en:
       view_all: "View All"
       new_thread: "New thread"
       add_subgroup: 'Add subgroup'
+      loading: 'Loading'
 
   error_page:
     forbidden: 'You do not have permission to do this.'

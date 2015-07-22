@@ -19,6 +19,7 @@
         ga('create', '#{ENV["GOOGLE_ANALYTICS_ID"]}', 'auto');
 
   %body{'ng-keydown' => 'keyDown($event)'}
+    %flash
     %navbar
     %ng_outlet{'ng-if' => '!pageError'}
     %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
