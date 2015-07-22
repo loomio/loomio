@@ -1,11 +1,17 @@
+.pie-chart {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
 .pie-chart--big{
   width: 200px;
   height: 200px;
 }
 
 .pie-chart--tiny{
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
 }
 
 .pie-chart--small{
