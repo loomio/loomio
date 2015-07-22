@@ -10,16 +10,27 @@ nl-NL:
       private: Besloten
       public: Openbaar
       organisation: Organisatie
+    selected: Geselecteerd
     date_range:
       today: Vandaag
+      yesterday: Gisteren
+      thisweek: Deze week
+      thismonth: Deze maand
+      older: Ouder
     models:
       proposal: Voorstel
     action:
       save: Bewaar
+      save_changes: Bewaren wijzigingen
+      reply: Antwoorden
       edit: Bewerk
       like: Vind ik leuk
       unlike: Niet leuk
       cancel: Annuleren
+      show_more: Laat meer zien
+      view_all: Bekijk alles
+      new_thread: Nieuwe discussie
+      add_subgroup: Toevoegen subgroep
   error_page:
     forbidden: Je bent niet gemachtigd om dit te doen.
   proposal_outcome_panel:
@@ -27,6 +38,8 @@ nl-NL:
   proposal_outcome_form:
     outcome_label: Uitkomst voorstel
     publish_outcome: Publiceer uitkomst
+  proposal_collapsed:
+    expand: Uitbreiden
   context_card:
     heading: Beschrijving
   volume_levels:
@@ -36,18 +49,41 @@ nl-NL:
     mute: Dempen
   inbox:
     clear: Leegmaken
+    latest: Laatste
     unread: Ongelezen
+  session_form:
+    email_label: "E-mailadres:"
+    password_label: Wachtwoord
+    remember_me: Onthoud mij
+    sign_in: Inloggen
   comment_form:
+    aria_label: Toevoegen reactie
+    attachments:
+      aria_label: Bestand toevoegen
+      remove_attachment: Verwijderen bijlage
+    messages:
+      created: Reactie toegevoegd
+      updated: Reactie bijgewerkt
+      destroyed: Reactie verwijderd
     edit_comment: Bewerk reactie
     delete_comment: Verwijder reactie
+    cancel_reply: Annuleren antwoord
     confirm_delete_message: Weet je zeker dat je deze reactie wilt verwijderen?
+    confirm_delete: "Ja, ik weet het zeker"
+    in_reply_to: "In antwoord op <strong>{{name}}</strong>:"
+    submit_button:
+      label: Plaatsen
   navbar:
+    recent: Recent
     unread: Ongelezen
     groups: Groepen
+    recent_title: Ga naar dashboard
     user_options:
       contact_us: Neem contact op
+      new_thread: Nieuwe discussie
       new_group: Nieuwe groep
       profile: Profiel
+      email_settings: E-mail instellingen
       help: Help
     search:
       placeholder: Zoek
@@ -106,6 +142,7 @@ nl-NL:
     discussions: Discussies
     manage_members: Beheer leden
     invite_people: Mensen uitnodigen
+    visibility_label: Zichtbaarheid
     options_label: Opties
     options:
       label: Opties
@@ -115,6 +152,15 @@ nl-NL:
       loud: E-mail als er activiteit is.
       quiet: Niet e-mailen over deze groep. Activiteit wordt weergegeven op het dashboard.
       mute: "Verberg deze groep van het dashboard en stuur geen notificatie tenzij ik @genoemd word."
+  edit_group_form:
+    profile:
+      label: Profiel
+      name: Naam
+      description: Beschrijving
+    privacy:
+      label: Privacy
+    permissions:
+      label: Machtigingen
   membership_requests_page:
     approve: Goedkeuren
     ignore: Negeer
@@ -124,6 +170,8 @@ nl-NL:
     name_label: Naam
     description_label: Omschrijving
     category_label: Categorie
+  invitation:
+    to: "aan:"
   memberships_page:
     members: Leden
     name_label: Naam
@@ -133,6 +181,7 @@ nl-NL:
       submit: Verwijder
   profile_page:
     change_picture:
+      title: "Wijzigen afbeelding:"
       use_initials: Gebruik initialen
     change_password:
       current_password_label: Huidig wachtwoord
@@ -141,20 +190,35 @@ nl-NL:
     deactivate_user:
       title: Deactiveer account
       submit: Deactiveer account
+    change_picture_link: "Wijzigen afbeelding:"
+    change_password_link: Wijzigen wachtwoord
+    deactivate_user_link: Deactiveren account...
     profile: Profiel
+    edit_profile: Bewerk profiel
     picture_label: Afbeelding
     name_label: Naam
     username_label: Gebruikersnaam
     email_label: E-mail
     locale_label: Taal
+    update_profile: Bijwerken profiel
+  email_settings_page:
+    header: E-mail instellingen
+    email: E-mailadres
   dashboard_page:
     aria_label: Dashboard
     mark_as_read: Markeer als gelezen
     filtering:
       proposals: Voorstellen
     threads_from:
+      group: Discussies van
       today: Vandaag
+      yesterday: Gisteren
+  inbox_page:
+    view_more: Bekijk meer
+  groups_page:
+    page_header: Jouw groepen
   discussion:
+    activity: Activiteit
     proposals: Voorstellen
     volume:
       loud: E-mail altijd als er activiteit is in dit gesprek.
