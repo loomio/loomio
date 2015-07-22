@@ -20,4 +20,4 @@ module.exports = new class MembershipRequestsHelper
     element.all(By.css('.membership-requests-page__ignore')).first().click()
 
   flashSection: ->
-    element(By.css('.flash-message'))
+    element(By.css('.flash-root__message'))
