@@ -172,12 +172,22 @@ es:
     options_label: Opciones
     options:
       label: Opciones
+      edit_group: Editar Configuraciones del Grupo
     leave_group:
       title: Abandonar grupo
     volume:
       loud: Enviar correo electrónico siempre que haya actividad.
       quiet: No enviar correo electrónico sobre el grupo. La actividad del grupo será mostrada en el panel de control.
       mute: "Ocultar este grupo en el panel de control y no notificarme a no ser que sea @mencionado."
+  edit_group_form:
+    title: Editar Configuraciones del Grupo
+    profile:
+      label: Perfil
+      name: Nombre
+      description: "Descripción "
+    privacy:
+      label: Privacidad
+      membership_granted_upon: ¿Cómo unirse al grupo?
   membership_requests_page:
     approve: "Aprobar "
     ignore: Ignorar
