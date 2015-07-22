@@ -67,6 +67,8 @@ pt-BR:
     attachments:
       aria_label: Anexar um arquivo
       remove_attachment: Remover anexo
+    messages:
+      created: Comentário adicionado
     edit_comment: Editar comentários
     delete_comment: Apagar comentário
     cancel_reply: Cancelar Resposta
@@ -90,6 +92,7 @@ pt-BR:
       new_thread: Novo tópico
       new_group: Novo grupo
       profile: Perfil
+      email_settings: Configurações de e-mail
       help: Ajuda
     search:
       close: Fechar painel de pesquisa
@@ -124,6 +127,8 @@ pt-BR:
     select_position: Selecionar posição
     statement_placeholder: Compartilhe seus pensamentos com o grupo.
     aria_statement_label: "Opcionalmente, insira uma declaração para ser registrada com a sua posição"
+    messages:
+      created: Voto adicionado
   proposal_positions_panel:
     heading: Posições
     no_votes_yet: Ninguém votou nesta proposta ainda.
@@ -158,6 +163,8 @@ pt-BR:
   proposal_expanded:
     edit_proposal: Editar proposta
     close_proposal: Encerrar proposição
+  group_welcome_modal:
+    ok_got_it: "OK, entendi!"
   start_group_form:
     heading: Iniciar um grupo
     group_helptext: "Para começar a tomar decisões em conjunto no Loomio, crie um grupo gratuitamente:"
@@ -177,19 +184,48 @@ pt-BR:
       empty:
         membership_is_invitation_only: Para se juntar a este grupo você precisa ser convidado por um membro.
         membership_is_invitation_by_admin_only: Para se juntar a este grupo você precisa ser convidado por um(a) coordenador(a).
+    messages:
+      privacy:
+        public: Este grupo agora é visível publicamente
+      deactivate_group_success: Grupo desativado
     description: Descrição
     discussions: Tópicos
+    members_placeholder: "Você é a única pessoa aqui: convide outras para se juntar a você!"
     manage_members: Gerenciar membros
     invite_people: Convidar pessoas
+    visibility_label: Visibilidade
     options_label: Opções
     options:
       label: Opções
+      edit_group: Editar Configurações do Grupo
+      leave_group: Sair do Grupo
+      deactivate_group: Desativar Grupo
+    deactivate_group:
+      title: Desativar grupo
+      question: Tem certeza de que deseja desativar este grupo?
+      submit: "Sim, Desative este grupo"
     leave_group:
       title: Sair do grupo
+      question: Tem certeza de que deseja sair deste grupo?
+      submit: "Sim, sair deste grupo"
     volume:
       loud: Enviar e-mail sempre que houver atividade.
       quiet: Não enviar e-mail sobre esse grupo. Atividades serão exibidas no painel.
       mute: "Esconder este grupo do painel e não notificar a não ser quando @mencionado."
+    privacy:
+      private: Este grupo está visível apenas para membros
+  edit_group_form:
+    title: Editar Configurações do Grupo
+    profile:
+      label: Perfil
+      name: Nome
+      description: Descrição
+    privacy:
+      label: Privacidade
+      visible_to_members: Quem pode achar este grupo?
+    permissions:
+      helptext: O que membros podem fazer?
+      members_can_add_members: Convidar e aprovar novos membros
   membership_requests_page:
     approve: Aprovar
     ignore: "Ignorar "
@@ -224,6 +260,8 @@ pt-BR:
     username_label: Nome de usuário
     email_label: E-mail
     locale_label: Idioma
+  email_settings_page:
+    header: Configurações de e-mail
   dashboard_page:
     aria_label: Painel
     mark_as_read: Marcar como lida

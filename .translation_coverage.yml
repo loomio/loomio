@@ -57,7 +57,7 @@ es:
   frontpage: 95
   help docs: 74
   main: 99
-  main_1_0: 44
+  main_1_0: 45
 fa-IR:
   frontpage: 52
   help docs: 1
@@ -118,6 +118,7 @@ it-CH:
   help docs: 0
   main: 0
   main_1_0: 0
+it-IT: {}
 ja:
   frontpage: 44
   help docs: 4
@@ -167,7 +168,7 @@ nl-NL:
   frontpage: 58
   help docs: 47
   main: 94
-  main_1_0: 33
+  main_1_0: 42
 pl:
   frontpage: 100
   help docs: 56
@@ -177,7 +178,7 @@ pt-BR:
   frontpage: 100
   help docs: 100
   main: 100
-  main_1_0: 45
+  main_1_0: 50
 pt-PT:
   frontpage: 16
   help docs: 0
