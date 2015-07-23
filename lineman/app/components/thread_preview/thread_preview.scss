@@ -1,0 +1,131 @@
+.thread-preview {
+  padding: 13px 13px;
+  border-bottom: 1px solid $border-color;
+  position: relative;
+  &:hover {
+    .thread-preview__actions { display: block; }
+    background-color: $list-hover-color;
+  }
+}
+
+.thread-preview__thread-header {
+  @include fontCrapName;
+  padding-bottom: 4px;
+  display: flex;
+}
+
+.thread-preview__thread-title {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.thread-preview__unread-count {
+  font-weight: normal;
+  padding-left: 5px;
+  color: $grey-on-white;
+  min-width: 30px;
+}
+
+.thread-preview__thread-title.is-unread {
+  font-weight: bold;
+}
+
+.thread-preview__proposal {
+  color: $grey-on-white;
+  display: flex;
+}
+
+.thread-preview__proposal-name{
+  padding-left: 2px;
+  line-height: 23px;
+  color: $primary-text-color;
+}
+
+.thread-preview__proposal-closing-at {
+  @include fontSmall;
+  color: $highlight-red;
+}
+
+.thread-preview__proposal-closing-soon {
+  min-width: 160px;
+  padding-left: 4px;
+}
+
+.thread-preview__icons {
+  min-width: 48px;
+}
+.thread-preview__icon {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+  text-align: center;
+}
+
+.thread-preview__position-icon {
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  margin: 3px 5px 0 0;
+}
+
+.thread-preview__position-icon--yes {
+  background-image: url(/img/green_thumb_15.png);
+}
+
+.thread-preview__position-icon--no {
+  background-image: url(/img/pink_thumb_15.png);
+}
+
+.thread-preview__position-icon--block {
+  background-image: url(/img/red_flag_15.png);
+}
+
+.thread-preview__position-icon--abstain {
+  background-image: url(/img/yellow_thumb_15.png);
+}
+
+.thread-preview__undecided-icon {
+  font-size: 22px;
+  padding-left: 2px;
+  margin-top: 0px;
+}
+
+.thread-preview__group-name{
+  @include fontSmall;
+  margin-top: 2px;
+  color: $grey-on-white;
+  /*clear: both;*/
+}
+
+.thread-preview__actions{
+  float: right;
+  padding-left: 10px;
+  display: none;
+}
+
+.thread-preview__star{
+  float: right;
+}
+
+.thread-preview__mark-as-read{
+  margin-top: -17px;
+  margin-bottom: -11px;
+  margin-right: 5px;
+}
+
+.thread-preview__mute{
+  margin-top: -17px;
+  margin-bottom: -11px;
+  margin-right: 5px;
+  position: relative;
+  .fa-volume-off{
+    padding-right: 9px;
+  }
+  .fa-times{
+    font-size: 70%;
+    position: absolute;
+    top: 10px;
+    left: 17px;
+  }
+}

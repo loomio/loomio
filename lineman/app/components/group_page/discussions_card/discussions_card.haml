@@ -12,16 +12,9 @@
       .group-thread-list-empty-access{ng-if: 'howToGainAccess()'}
         %span{translate: 'group_page.thread_list.empty.{{howToGainAccess()}}'}
 
-    .group-thread-list-item{ng-repeat: 'discussion in group.organisationDiscussions() | orderBy: "-lastActivityAt" track by discussion.id | limitTo:loaded'}
-      .time-and-icon.pull-right
-        %smart_time.group-thread-list-time{time: 'discussion.lastActivityAt' }>
-        %span.group-thread-list-icon
-          %i.fa.fa-lg.fa-comments{aria-hidden: 'true'}
+    .blank{ng-repeat: 'thread in group.organisationDiscussions() | orderBy: "-lastActivityAt" track by thread.id | limitTo:loaded'}
+      %thread_preview{thread: 'thread'}
 
-      .group-thread-list-thread-title
-        %a{href: '/d/{{discussion.key}}'} {{ discussion.title }}
-      .group-thread-list-group-name{ng-if: 'discussion.group().isSubgroup()'}
-        %a{href: '/g/{{discussion.group().key}}'} {{ discussion.groupName() }}
     %loading{ng-show: 'loadMoreExecuting'}
 
     / Hiding this for now.

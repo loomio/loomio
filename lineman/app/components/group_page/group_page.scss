@@ -86,17 +86,8 @@
   border-top: 1px solid $border-color;
   clear: both;
 }
-.group-thread-list-item{
-  border-bottom: 1px solid $border-color;
-  min-height: 48px;
-  padding: 8px 0;
-}
-.group-thread-list-group-name, .group-thread-list-time{
-  @include fontSmall;
-  color: $grey-on-white;
-}
-.group-thread-list-item .time-and-icon{
-  padding-top: 10px;
+.group-thread-list .thread-preview {
+  padding: 13px 0px;
 }
 
 .subgroups-card{
