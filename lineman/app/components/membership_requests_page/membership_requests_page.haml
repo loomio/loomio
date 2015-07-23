@@ -6,7 +6,7 @@
         %ul
           %li.media.membership-requests-page__pending-request{ng-repeat: 'request in membershipRequestsPage.pendingRequests() track by request.id'}
             .media-left
-              %user_avatar{user: 'request.actor()', size: 'large'}
+              %user_avatar{user: 'request.actor()', size: 'medium'}
             .media-body
               %span.membership-requests-page__pending-request-name
                 %strong {{request.actor().name}}
@@ -16,15 +16,15 @@
                 %timeago{timestamp: 'request.createdAt'}
               .membership-requests-page__pending-request-introduction
                 {{request.introduction}}
-            .membership-requests-page__actions
-              %button.btn.btn-primary.membership-requests-page__approve{ng-click: 'membershipRequestsPage.approve(request)', translate: 'membership_requests_page.approve'}
-              %button.btn.membership-requests-page__ignore{ng-click: 'membershipRequestsPage.ignore(request)', translate: 'membership_requests_page.ignore'}
+              .membership-requests-page__actions
+                %button.btn.btn-primary.membership-requests-page__approve{ng-click: 'membershipRequestsPage.approve(request)', translate: 'membership_requests_page.approve'}
+                %button.btn.membership-requests-page__ignore{ng-click: 'membershipRequestsPage.ignore(request)', translate: 'membership_requests_page.ignore'}
       .membership-requests-page__previous-membership-requests
         %h3.lmo-card-heading{translate: 'membership_requests_page.previous_requests'}
         %ul
           %li.media.membership-requests-page__previous-request{ng-repeat: 'request in membershipRequestsPage.previousRequests() track by request.id'}
             .media-left
-              %user_avatar{user: 'request.actor()', size: 'large'}
+              %user_avatar{user: 'request.actor()', size: 'medium'}
             .media-body
               %span.membership-requests-page__previous-request-name
                 %strong {{request.actor().name}}

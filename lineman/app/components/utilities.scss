@@ -226,3 +226,19 @@ label.label-with-details{
   z-index: 10;
   opacity: 0.5;
 }
+
+.lmo-box--tiny {
+  @include boxTiny;
+}
+
+.lmo-box--small {
+  @include boxSmall;
+}
+
+.lmo-box--medium {
+  @include boxMedium;
+}
+
+.lmo-box--large {
+  @include boxLarge;
+}

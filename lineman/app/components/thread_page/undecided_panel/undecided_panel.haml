@@ -1,7 +1,9 @@
 .undecided-panel
   %a.undecided-panel__show-undecided-link{href: '', ng-click: 'showUndecided()', ng-show: '!undecidedPanelOpen', translate: 'undecided_panel.show_undecided'}
   %ul.undecided-panel__list{ng-if: 'undecidedPanelOpen'}
-    %li{ng-repeat: 'user in proposal.undecidedMembers() track by user.id'}
-      %i.fa.fa-question-circle.undecided-panel__icon
-      %span.undecided-panel__user {{user.name}}
+    %li.media{ng-repeat: 'user in proposal.undecidedMembers() track by user.id'}
+      .media-left
+        %i.fa.fa-question-circle.undecided-panel__icon
+      .media-body
+        %span.undecided-panel__user {{user.name}}
   %a.undecided-panel__hide-undecided-link{href: '', ng-click: 'hideUndecided()', ng-show: 'undecidedPanelOpen', translate: 'undecided_panel.hide_undecided'}

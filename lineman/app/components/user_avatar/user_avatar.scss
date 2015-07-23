@@ -4,39 +4,27 @@
 
 .user-avatar{
   @include roundedCorners;
-  background: $border-color;
-  border: 1px solid #aaa;
+  background-color: $background-color;
+  box-sizing: border-box;
   text-align: center;
+  overflow: hidden;
 }
 
-.user-avatar--large {
-  height: 82px;
-  width: 82px;
+.user-avatar__initials--small{
+  border: 1px solid $border-color;
+  font-size: 12px;
+  line-height: 30px;
 }
 
-.user-avatar--small {
-  width: 32px;
-  height: 32px;
-}
-
-.user-avatar__image--large{
-  @include roundedCorners;
-  height: 80px;
-  width: 80px;
-}
-
-.user-avatar__image--small{
-  @include roundedCorners;
-  width: 30px;
-  height: 30px;
+.user-avatar__initials--medium{
+  border: 1px solid $border-color;
+  font-size: 20px;
+  line-height: 50px;
 }
 
 .user-avatar__initials--large{
+  border: 1px solid $border-color;
   font-size: 32px;
   line-height: 80px;
 }
 
-.user-avatar__initials--small{
-  font-size: 12px;
-  line-height: 30px;
-}

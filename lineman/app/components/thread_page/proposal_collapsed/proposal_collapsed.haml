@@ -5,7 +5,8 @@
   .screen-only{aria-hidden: 'true'}
     %closing_in.pull-right{time: 'proposal.closingAt'}
     .proposal-collapsed-expand.pull-right{translate: 'proposal_collapsed.expand'}
-    %pie_chart.pie-chart--small{votes: 'proposal.voteCounts'}
+    .media-left
+      %pie_chart.lmo-box--medium{votes: 'proposal.voteCounts'}
     .proposal-collapsed-body.media-body
       .proposal-collapsed-title
         {{proposal.name}}

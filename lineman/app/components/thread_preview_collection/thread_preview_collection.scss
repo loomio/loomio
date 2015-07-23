@@ -43,7 +43,8 @@
 }
 
 .thread-preview__proposal-name{
-  line-height: 20px;
+  padding-left: 2px;
+  line-height: 23px;
   color: $primary-text-color;
 }
 
@@ -57,16 +58,21 @@
   padding-left: 4px;
 }
 
-.thread-preview__pie-chart {
-  padding-right: 5px;
-  line-height: 18px;
-  margin-bottom: 2px;
+.thread-preview__icons {
+  min-width: 48px;
+}
+.thread-preview__icon {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+  text-align: center;
 }
 
 .thread-preview__position-icon {
-  background-repeat: no-repeat;
   width: 20px;
   height: 20px;
+  background-repeat: no-repeat;
   margin: 3px 5px 0 0;
 }
 
@@ -87,15 +93,16 @@
 }
 
 .thread-preview__undecided-icon {
-  font-size: 1.6em;
-  padding-right: 5px;
+  font-size: 22px;
+  padding-left: 2px;
+  margin-top: 0px;
 }
-
 
 .thread-preview__group-name{
   @include fontSmall;
+  margin-top: 2px;
   color: $grey-on-white;
-  clear: both;
+  /*clear: both;*/
 }
 
 .thread-preview__actions{

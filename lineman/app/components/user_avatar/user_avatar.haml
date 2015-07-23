@@ -1,5 +1,5 @@
-.user-avatar{class: 'user-avatar--{{size}}', aria-hidden: 'true', ng-class: '{"user-avatar--coordinator": coordinator}'}
-  %div{class: 'user-avatar__initials--{{size}}', ng-if: 'user.avatarKind == "initials"'}
+.user-avatar{class: 'lmo-box--{{size}}', aria-hidden: 'true', ng-class: '{"user-avatar--coordinator": coordinator}'}
+  %div{class: 'lmo-box--{{size}} user-avatar__initials--{{size}}', ng-if: 'user.avatarKind == "initials"'}
     {{user.avatarInitials}}
-  %img{class: 'user-avatar__image--{{size}}', ng-if: 'user.avatarKind == "gravatar"', gravatar-src-once: 'user.gravatarMd5', alt: "{{::user.name}}"}
-  %img{class: 'user-avatar__image--{{size}}', ng-if: 'user.avatarKind == "uploaded"', alt: "{{user.name}}", ng-src: '{{::user.avatarUrl}}'}
+  %img{class: 'lmo-box--{{size}}', ng-if: 'user.avatarKind == "gravatar"', gravatar-src-once: 'user.gravatarMd5', alt: "{{::user.name}}"}
+  %img{class: 'lmo-box--{{size}}', ng-if: 'user.avatarKind == "uploaded"', alt: "{{user.name}}", ng-src: '{{::user.avatarUrl}}'}
