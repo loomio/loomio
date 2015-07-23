@@ -24,7 +24,7 @@
           .memberships-page-table-row.memberships-page__table-header.col-xs-2.align-center{ng-show: 'membershipsPage.canAdministerGroup()', translate: 'memberships_page.remove_member_label'}
         .row.memberships-page__table-row.memberships-page__membership{ng-repeat: 'membership in membershipsPage.group.memberships() | orderBy:membershipsPage.name | filterModel:membershipsPage.fragment'}
           .memberships-page-table-row.col-xs-1
-            %user_avatar{user: 'membership.user()', size: 'small', coordinator: 'membership.admin'}
+            %user_avatar{user: 'membership.user()', size: 'medium', coordinator: 'membership.admin'}
           .memberships-page-table-row{ng-class: '{"col-xs-11": !membershipsPage.canAdministerGroup(), "col-xs-7": membershipsPage.canAdministerGroup()}'}
             .memberships-page__member-info
               %div {{::membership.user().name}}
