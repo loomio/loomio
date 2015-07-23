@@ -2,9 +2,9 @@
   %section.group-page-members{ng-if: 'isMember()', aria-labelledby: 'members-card-title'}
     %h2#members-card-title.lmo-card-heading{ translate: 'group_page.members', translate-value-count: '{{group.membershipsCount}}'}
     .group-member-list
-      .group-member-list-item{ng-repeat: 'member in group.members() | limitTo:10'}
-        .group-member-list-avatar.lg{data-username: '{{member.label}}'}
-          %user_avatar{user: 'member', coordinator: 'memberIsAdmin(member)', size: 'small'}
+      .group-member-list-item{ng-repeat: 'membership in group.memberships() | orderBy: "-admin" | limitTo:10'}
+        .group-member-list-avatar
+          %user_avatar{user: 'membership.user()', coordinator: 'membership.admin', size: 'medium'}
       .group-page__members-placeholder.group-page-placeholder{translate: 'group_page.members_placeholder', ng-if: 'showMembersPlaceholder()' }
     .members-card__invite-members{ng-if: '::canAddMembers()'}
       %a.btn.btn-success.btn-block.lmo-btn-icon{href: '', ng_click: 'invitePeople()'}
