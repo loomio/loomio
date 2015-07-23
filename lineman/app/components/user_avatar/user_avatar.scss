@@ -10,40 +10,6 @@
   overflow: hidden;
 }
 
-
-.user-avatar--small {
-  width: 30px;
-  height: 30px;
-}
-
-.user-avatar--medium {
-  width: 50px;
-  height: 50px;
-}
-
-.user-avatar--large {
-  height: 80px;
-  width: 80px;
-}
-
-.user-avatar__image--small{
-  /*@include roundedCorners;*/
-  width: 30px;
-  height: 30px;
-}
-
-.user-avatar__image--medium{
-  /*@include roundedCorners;*/
-  height: 50px;
-  width: 50px;
-}
-
-.user-avatar__image--large{
-  /*@include roundedCorners;*/
-  height: 80px;
-  width: 80px;
-}
-
 .user-avatar__initials--small{
   border: 1px solid $border-color;
   font-size: 12px;
