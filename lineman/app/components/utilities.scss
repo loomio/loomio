@@ -215,3 +215,19 @@ label.label-with-details{
 .lmo-markdown-wrapper img {
   max-width: 100%;
 }
+
+.lmo-box--tiny {
+  @include boxTiny;
+}
+
+.lmo-box--small {
+  @include boxSmall;
+}
+
+.lmo-box--medium {
+  @include boxMedium;
+}
+
+.lmo-box--large {
+  @include boxLarge;
+}

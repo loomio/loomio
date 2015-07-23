@@ -26,7 +26,7 @@
         .thread-preview__proposal{ng-if: 'thread.activeProposal()'}
           .thread-preview__icons
             .thread-preview__icon
-              %pie_chart.pie-chart--tiny{votes: 'thread.activeProposal().voteCounts', ng-if: 'thread.activeProposal()'}
+              %pie_chart.lmo-box--tiny{votes: 'thread.activeProposal().voteCounts', ng-if: 'thread.activeProposal()'}
             .thread-preview__icon
               .thread-preview__position-icon{ng-if: 'lastVoteByCurrentUser(thread)', class: 'thread-preview__position-icon--{{lastVoteByCurrentUser(thread).position}} '}
               .thread-preview__undecided-icon{ng-if: '!lastVoteByCurrentUser(thread)'}

@@ -10,18 +10,17 @@
 
   .search-result-item.media{ng-repeat: 'proposal in result.proposals track by proposal.id'}
     .media-left{ng-init: 'proposal.voteCounts = proposal.vote_counts'}
-      %pie_chart.pie-chart--mini{votes: 'proposal.voteCounts'}
+      %pie_chart.lmo-box--small{votes: 'proposal.voteCounts'}
     .media-body
       .search-result-child-title {{proposal.name}}
       .search-result-blurb{ng-bind-html: 'proposal.blurb'}
 
   .search-result-item.media{ng-repeat: 'comment in result.comments track by comment.id'}
     .media-left
-      .user-avatar
-        .avatar-initials{ng-if: '::(comment.author.avatar_kind == "initials")'}
+      .user-avatar.lmo-box--small
+        .user-avatar__initials--small{ng-if: '::(comment.author.avatar_kind == "initials")'}
           {{::comment.author.avatar_initials}}
-        .avatar-image{ng-if: '::(comment.author.avatar_kind != "initials")'}
-          %img{alt: "{{::comment.author.name}}", ng-src: '{{::comment.author.avatar_url}}'}
+        %img.lmo-box--small{alt: "{{::comment.author.name}}", ng-src: '{{::comment.author.avatar_url}}', ng-if: '::(comment.author.avatar_kind != "initials")'}
     .media-body
       .search-result-child-title {{comment.author.name}}
       .search-result-blurb{ng-bind-html: 'comment.blurb'}
