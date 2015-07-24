@@ -5,6 +5,10 @@ class Events::MotionClosedByUser < Events::MotionClosed
             user: closer)
   end
 
+  def group_key
+    motion.group.key
+  end
+
   def motion
     eventable
   end

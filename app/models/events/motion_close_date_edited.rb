@@ -5,6 +5,10 @@ class Events::MotionCloseDateEdited < Event
             user: editor)
   end
 
+  def group_key
+    motion.group.key
+  end
+
   def motion
     eventable
   end

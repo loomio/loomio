@@ -10,6 +10,10 @@ class Events::MotionClosed < Event
     event
   end
 
+  def group_key
+    motion.group.key
+  end
+
   def motion
     eventable
   end

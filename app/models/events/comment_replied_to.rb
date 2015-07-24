@@ -11,6 +11,10 @@ class Events::CommentRepliedTo < Event
     event
   end
 
+  def group_key
+    comment.group.key
+  end
+
   def discussion_key
     eventable.discussion.key
   end

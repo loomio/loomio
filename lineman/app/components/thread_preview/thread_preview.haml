@@ -20,7 +20,7 @@
       .thread-preview__thread-header
         .thread-preview__thread-title.lmo-truncate{ng-class: "{'is-unread': thread.isUnread() }"}
           {{thread.title}}
-        .thread-preview__unread-count{ng-if: 'thread.isUnread()'}
+        .thread-preview__unread-count{ng-if: 'thread.isUnread() && thread.itemsCount > 0'}
           ({{thread.unreadItemsCount()}})
       .thread-preview__proposal{ng-if: 'thread.activeProposal()'}
         .thread-preview__icons

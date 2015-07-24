@@ -73,7 +73,10 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       !@reader().discussionId?
 
     isUnread: ->
-      @unreadActivityCount() > 0
+      if @reader().lastReadAt?
+        @unreadActivityCount() > 0
+      else
+        true
 
     isMuted: ->
       @reader().volume == 'mute'
@@ -85,7 +88,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       @reader().starred
 
     unreadItemsCount: ->
-      @itemsCount - @reader().readItemsCount
+      (@itemsCount - @reader().readItemsCount)
 
     unreadActivityCount: ->
       @salientItemsCount - @reader().readSalientItemsCount
