@@ -5,6 +5,10 @@ class Events::DiscussionTitleEdited < Event
             user: editor)
   end
 
+  def group_key
+    discussion.group.key
+  end
+
   def discussion
     eventable
   end

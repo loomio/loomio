@@ -5,6 +5,10 @@ class Events::DiscussionDescriptionEdited < Event
             user: editor)
   end
 
+  def discussion_key
+    eventable.key
+  end
+
   def discussion
     eventable
   end

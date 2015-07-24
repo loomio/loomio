@@ -12,12 +12,19 @@ angular.module('loomioApp').factory 'DiscussionReaderModel', (BaseModel) ->
       @volume = null
       @lastReadSequenceId = -1
 
-      if data.discussion_id?
-        discussion = @recordStore.discussions.find(data.discussion_id)
-        _.extend data,
-          id:       discussion.id
-          group_id: discussion.groupId
-      @updateFromJSON(data)
+      # commented so I can ask gdpelican about it
+      #if data.discussion_id?
+        #discussion = @recordStore.discussions.find(data.discussion_id)
+        #_.extend data,
+          #id:       discussion.id
+          #group_id: discussion.groupId
+
+      response = @updateFromJSON(data)
+
+      if data.discussion_id
+        @id = data.discussion_id
+
+      response
 
     serialize: ->
       data = @baseSerialize()

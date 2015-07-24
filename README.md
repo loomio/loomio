@@ -124,8 +124,7 @@ Examples:
 SECRET_COOKIE_TOKEN -  run 'rake secret' to generate your own SECRET_COOKIE_TOKEN
 DEVISE_SECRET - run 'rake secret' to generate your own DEVISE_SECRET
 FORCE_SSL - if true, only HTTPS connections will be permitted
-FAYE_ENABLED - If you have a instance of https://github.com/loomio/private_pub
-FAYE_URL - the url for your FAYE instance
+FAYE_URL - the url for your FAYE instance - see https://github.com/loomio/private_pub
 MAX_THREADS - optional puma configuration
 MIN_THREADS - optional puma configuration
 PUMA_WORKERS - optional puma configuration

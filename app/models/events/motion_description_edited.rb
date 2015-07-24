@@ -5,6 +5,10 @@ class Events::MotionDescriptionEdited < Event
             user: editor)
   end
 
+  def discussion_key
+    motion.group.key
+  end
+
   def motion
     eventable
   end

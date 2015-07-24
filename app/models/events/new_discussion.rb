@@ -14,6 +14,10 @@ class Events::NewDiscussion < Event
     event
   end
 
+  def group_key
+    eventable.group.key
+  end
+
   def discussion
     eventable
   end

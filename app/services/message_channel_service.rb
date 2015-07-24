@@ -36,11 +36,25 @@ class MessageChannelService
   end
 
   def self.channel_for_event(event)
-    case event.kind
-    when 'comment_liked', 'comment_replied_to', 'new_comment'
+    group_events = %w(new_discussion
+                      new_motion
+                      new_comment
+                      new_vote
+                      comment_replied_to
+                      discussion_title_edited
+                      motion_close_date_edited
+                      motion_closed
+                      motion_closed_by_user
+                      motion_name_edited)
+
+    discussion_events = %w(comment_liked
+                           discussion_description_edited
+                           motion_description_edited)
+
+    if group_events.include? event.kind
+      "/group-#{event.group_key}"
+    elsif discussion_events.include? event.kind
       "/discussion-#{event.discussion_key}"
-    when 'new_discussion'
-      "/group-#{event.discussion.group.key}"
     else
       false
     end

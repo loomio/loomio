@@ -9,7 +9,7 @@ class Memo
   end
 
   def publish!
-    if ENV['FAYE_ENABLED']
+    if ENV['FAYE_URL']
       if ENV['DELAY_FAYE']
         PrivatePub.delay(priority: 10).publish_to(message_channel, as_hash)
       else

@@ -42,7 +42,7 @@ angular.module('loomioApp', ['ngNewRouter',
     $compileProvider.debugInfoEnabled(false);
 
 # Finally the Application controller lives here.
-angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService, AnalyticsService) ->
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService, AnalyticsService, CurrentUser, MessageChannelService) ->
   $scope.currentComponent = 'nothing yet'
 
   $scope.$on 'currentComponent', (event, options = {}) ->
@@ -54,6 +54,11 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter
 
   $scope.$on 'pageError', (event, error) ->
     $scope.pageError = error
+
+  $scope.$on 'currentUserMembershipsLoaded', ->
+    _.each CurrentUser.groups(), (group) ->
+      MessageChannelService.subscribeTo "/group-#{group.key}"
+
 
   $scope.keyDown = (event) -> KeyEventService.broadcast event
 
