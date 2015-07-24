@@ -16,6 +16,7 @@ da:
       subgroups:
         title_html: Undergrupper
       keeping_up_to_date:
+        volume_html: Lydstyrke
         email_settings_html: Indstillinger for email
       user_profile:
         account_deactivation_html: Deaktiverer din konto
@@ -54,6 +55,8 @@ da:
     subgroups:
       title: Undergrupper
     keeping_up_to_date:
+      volume:
+        title: Lydstyrke
       email_settings:
         title: Indstillinger for email
       yesterday_on_loomio:

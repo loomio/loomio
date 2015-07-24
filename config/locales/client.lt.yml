@@ -1,9 +1,16 @@
 lt:
   common:
+    time:
+      am: am
+      pm: pm
     models:
       proposal: Pasiūlymas
     action:
+      save: Įrašyti
+      save_changes: Įrašyti pakeitimus
       edit: Redaguoti
+      show_more: Rodyti daugiau
+      add_subgroup: Pridėti pogrupį
   error_page:
     forbidden: Tu neturi leidimo tai padaryti.
   previous_proposals_card:
@@ -11,10 +18,19 @@ lt:
   session_form:
     email_label: "El. paštas:"
     password_label: "Slaptažodis:"
+  comment_form:
+    attachments:
+      aria_label: Pridėti failą
+      remove_attachment: Šalinti priedą
+    confirm_delete_message: Tu tikrai nori ištrinti šį komentarą?
+    confirm_delete: "Taip, tikrai"
   navbar:
     notifications: Pranešimų skydelis
     user_options:
+      contact_us: Susisiekti su mumis
+      new_group: Nauja grupė
       profile: Profilis
+      email_settings: El. pašto nustatymai
     search:
       proposals: Pasiūlymai
   start_menu:
@@ -22,6 +38,7 @@ lt:
   notifications:
     header: Pranešimai
     new_discussion: "<strong>{{name}}</strong> pradėjo diskusiją <strong>{{discussion}}</strong>"
+    user_added_to_group_no_inviter: "Tave pridėjo į grupę <strong>{{group}}</strong>"
   position_buttons_panel:
     heading: Tark savo žodį
   vote_form:
@@ -29,30 +46,58 @@ lt:
     i_agree: Aš sutinku
     i_abstain: Aš susilaikau
     i_disagree: Aš nesutinku
+    submit_position: Pateikti nuomonę
+    aria_statement_label: "Pasirinktinai įvesk teiginį, kuris bus įrašytas kartu su tavo nuomone"
   proposal_positions_panel:
     heading: Nuomonės
   undecided_panel:
     show_undecided: Rodyti neapsisprendusius narius
+    hide_undecided: Slėpti neapsisprendusius narius
   proposal_pie_chart:
     participation_statement: "{{percentage}}% narių išreiškė savo nuomonę ({{number}}/{{total}})"
   proposal_form:
+    messages:
+      updated: Pasiūlymas atnaujintas
+    edit_proposal: Redaguoti pasiūlymą
     details_label: Išsamesnė Informacija
     details_placeholder: "Suteik pakankamai išsamios informacijos, kad visi žinotų ką tai reiškia ir galėtų sutikti arba nesutikti, arba dar kažką."
   discussion_form:
     title_placeholder: Kokia tema nori diskutuoti?
     privacy_label: Privatumas
+  proposal_expanded:
+    edit_proposal: Redaguoti pasiūlymą
   proposal_position_yes: Sutinku
   proposal_position_abstain: Susilaikau
   proposal_position_no: Nesutinku
+  group_welcome_modal:
+    what_next: "Štai ką daryti toliau:"
+    ok_got_it: "Gerai, supratau!"
   start_group_form:
     name_label: Grupės Pavadinimas
+  join_group_button:
+    messages:
+      joined_group: "Dabar tu esi {{group}} grupės narys"
+  membership_request_form:
+    email_label: El. paštas
   group_page:
+    thread_list:
+      empty:
+        membership_is_invitation_by_admin_only: "Kad prisijungtum prie šios grupės, tave turi pakviesti koordinatorius."
+    group_logo: Grupės logotipas
     description: Aprašas
+    manage_members: Tvarkyti narius
+    subgroups: Pogrupiai
+    subgroups_placeholder: Pogrupiai leidžia suskaidyti grupę į įvairias komandas.
     invite_people: Pakviesti žmones
     options_label: Parinktys
     options:
       label: Parinktys
+      edit_group: Redaguoti Grupės Nustatymus
+    leave_group:
+      question: Tu tikrai nori palikti šią grupę?
+      add_coordinator: Pridėti koordinatorių
   edit_group_form:
+    title: Redaguoti Grupės Nustatymus
     profile:
       label: Profilis
       description: Aprašas
@@ -71,28 +116,77 @@ lt:
       members_can_add_members: Kviesti ir tvirtinti naujus narius
       members_can_create_subgroups: Kurti pogrupius
     submit: Atnaujinti Nustatymus
+    messages:
+      success: Grupė atnaujinta
   group_form:
+    messages:
+      update_group: Grupė atnaujinta
+    new_subgroup_title: "Kurti naują {{parentGroupName}} grupės pogrupį"
+    edit_group_title: Grupės Nustatymai
     profile_label: Profilis
+    name_placeholder: Įvesk savo grupės pavadinimą
     description_label: Aprašas
+    description_placeholder: Aprašyk savo grupę
     category_label: Kategorija
   invitation:
     invite_people: Pakviesti Žmones
+    instructions: Įvesk vardus arba el. pašto adresus
+    invitation_message: Pakvietimo Pranešimas
+  memberships_page:
+    coordinator_label: Koordinatorius
+    remove_member_label: Šalinti
+    messages:
+      make_admin_success: "{{name}} dabar yra koordinatorius"
+      remove_admin_success: "{{name}} daugiau nebėra koordinatorius"
+    remove_membership:
+      title: Šalinti narį
+      submit: Šalinti
   profile_page:
+    messages:
+      updated: Profilis atnaujintas
+      picture_changed: Profilio paveikslas atnaujintas
+      password_changed: Slaptažodis atnaujintas
     change_picture:
+      title: Keisti paveikslą
+      use_initials: Naudoti inicialus
       use_uploaded: Įkelti naują paveikslą
+    change_password:
+      title: Keisti Slaptažodį
+      current_password_label: Dabartinis slaptažodis
+      new_password_label: Naujas slaptažodis
+      password_confirmation_label: Patvirtink naują slaptažodį
+      submit: Atnaujinti slaptažodį
+    change_picture_link: Keisti paveikslą
+    change_password_link: Keisti slaptažodį
     profile: Profilis
+    edit_profile: Redaguoti Profilį
+    email_label: El. paštas
+    update_profile: Atnaujinti profilį
+  email_settings_page:
+    header: El. pašto nustatymai
+    email: El. paštas
+    update_settings: Atnaujinti el. pašto nustatymus
+    messages:
+      updated: El. pašto nustatymai atnaujinti
   dashboard_page:
     filtering:
       proposals: Pasiūlymai
+  groups_page:
+    page_header: Tavo grupės
   discussion:
     proposals: Pasiūlymai
     previous_proposals: Ankstesni Pasiūlymai
   thread_group:
     aria_label: Grupės pavadinimas
+  delete_comment_dialog:
+    question: Tu tikrai nori ištrinti šį komentarą?
   new_vote_item:
     agree: "<strong>{{name}}</strong> sutiko"
     abstain: "<strong>{{name}}</strong> susilaikė"
     disagree: "<strong>{{name}}</strong> nesutiko"
+  contact_message_form:
+    email_label: Tavo el. pašto adresas
+    email_placeholder: Įvesk savo el. pašto adresą...
   help_page:
     getting_started: Darbo pradžia
     have_your_say: Tarkite savo žodį

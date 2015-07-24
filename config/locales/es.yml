@@ -71,6 +71,7 @@ es:
     group_request_invalid_token: "¡Lo siento! Ese código no es válido"
     group_private_or_not_found: "No se encontro grupo. ⏎\n⏎\nEste grupo puede ser privado. Si alguien te ha dado este enlace, pide que te agreguen al grupo."
     group_already_setup: El grupo que estás tratando de configurar ya existe.
+    current_password_did_not_match: "Lo sentimos, no hemos sido capaces de confirmar tu actual contraseña"
     passwords_did_not_match: Las contraseñas no coinciden
     proposal_already_exists: Ya existe una propuesta abierta en esta discusión.
     username_must_be_alphanumeric: El nombre de usuario debe contener solamente letras y dígitos en minúscula
@@ -671,6 +672,7 @@ es:
     social_mission_html: "Nuestro modelo de pago está enfocado a nuestra misión social: <strong>facilitar a todas las personas, en cualquier parte, participar en las decisiones que les afectan </strong>."
     loomio_for_organisations: "Loomio para organizaciones "
     organisations_deal_html: "Si estás usando Loomio en una empresa, organización formal o negocio, el precio es de 1$ US mensual por persona, tras el <strong> periodo de prueba gratuito de 30 días </strong>."
+    discuss_options_html: "Si quieres discutir las opciones de pago para que encajen con tu organización, <a href=/contact#contact-form target='_blank'>contacta con nosotros</a>."
     loomio_for_communities: "Loomio para comunidades "
     communities_deal: "El dinero nunca sera una barrera para personas usando Loomio para hacer mejoras en sus comunidades. Si tu grupo no tiene presupuesto para pagar el software, no tienes que pagar la suscripción. Sin embrago, les pediremos ocasionalmente, a los miembros de tu grupo una donación voluntaria."
   contribution:
@@ -971,6 +973,7 @@ es:
   about_loomio: Acerca de Loomio
   ago: "hace %{quantity_of_time}"
   approve: Aprobar
+  attachments: "Adjuntos:"
   author: Autor
   back: Atrás
   cancel: Cancelar
@@ -1143,6 +1146,7 @@ es:
     online_community: Comunidad online
     religious_group: Religioso/espiritual
     event: Evento
+    open_source_software: Software libre y de código abierto
     political_initiative: Iniciativa política
     social_enterprise: Empresa social
     social_justice: Justicia social

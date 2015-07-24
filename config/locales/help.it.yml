@@ -13,9 +13,14 @@ it:
         pending_invitations_html: Inviti in sospeso
       discussion_threads:
         discussion_privacy_html: Privacy della discussione
+      comments:
+        title_html: Commenti
+      proposals:
+        title_html: Proposte
       subgroups:
         title_html: Sotto-gruppi
       keeping_up_to_date:
+        volume_html: Volume
         email_settings_html: Impostazioni Email
       user_profile:
         account_deactivation_html: Disattivazione del tuo account
@@ -51,9 +56,19 @@ it:
     discussion_threads:
       discussion_privacy:
         title: Privacy della discussione
+    comments:
+      title: Commenti
+    proposals:
+      title: Proposte
     subgroups:
       title: Sotto-gruppi
     keeping_up_to_date:
+      volume:
+        title: Volume
+        body:
+          loud_title: Alto
+          normal_title: Normale
+          mute_title: Silenzioso
       email_settings:
         title: Impostazioni Email
       yesterday_on_loomio:

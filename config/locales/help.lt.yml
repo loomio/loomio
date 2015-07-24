@@ -19,9 +19,12 @@ lt:
         group_permissions_html: Grupės leidimai
       proposals:
         title_html: Pasiūlymai
+      keeping_up_to_date:
+        email_settings_html: El. pašto nustatymai
     getting_started:
       title: Darbo pradžia
     group_settings:
+      title: Grupės Nustatymai
       group_profile:
         title: Grupės profilis
       group_privacy:
@@ -40,3 +43,6 @@ lt:
           title: Kas toliau?
     proposals:
       title: Pasiūlymai
+    keeping_up_to_date:
+      email_settings:
+        title: El. pašto nustatymai

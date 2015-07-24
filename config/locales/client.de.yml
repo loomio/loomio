@@ -10,8 +10,11 @@ de:
       private: Privat
       public: Öffentlich
       organisation: Organisation
+    selected: Ausgewählt
     date_range:
       today: Heute
+      yesterday: Gestern
+      thisweek: In dieser Woche
     models:
       proposal: Vorschlag
     action:
@@ -22,6 +25,7 @@ de:
       cancel: Abbrechen
   error_page:
     forbidden: "Du bist nicht berechtigt, das zu tun."
+    page_not_found: Das konnten wir nicht finden. Es wurden entweder gelöscht oder verschoben.
   proposal_outcome_panel:
     heading: Ergebnis
   proposal_outcome_form:
@@ -154,6 +158,7 @@ de:
       proposals: Vorschläge
     threads_from:
       today: Heute
+      yesterday: Gestern
   discussion:
     proposals: Vorschläge
     volume:

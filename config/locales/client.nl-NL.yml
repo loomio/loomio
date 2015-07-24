@@ -4,6 +4,7 @@ nl-NL:
       am: am
       pm: pm
     volume: Volume
+    notification_volume: Melding Volume
     group: Groep
     groups: Groepen
     privacy:
@@ -33,8 +34,14 @@ nl-NL:
       add_subgroup: Toevoegen subgroep
   error_page:
     forbidden: Je bent niet gemachtigd om dit te doen.
+    page_not_found: Dat konden we niet vinden.  Wellicht is het verwijderd of verplaatst.
+    internal_server_error: "Helaas, er ging iets fout. Probeer het opnieuw."
+  start_proposal_card:
+    title: Kom met een voorstel.
+    helptext: Klaar om een besluit te nemen? Voorstellen laten zien hoe iedereen denkt over een bepaalde aanpak.
   proposal_outcome_panel:
     heading: Uitkomst
+    set_outcome_hint: Laat op deze plek iedereen weten wat de uitkomst is van het voorstel.
   proposal_outcome_form:
     outcome_label: Uitkomst voorstel
     publish_outcome: Publiceer uitkomst
@@ -110,6 +117,7 @@ nl-NL:
     close_proposal: Sluit voorstel
   proposal_form:
     start_proposal: Dien een voorstel in
+    start_a_proposal: Kom met een voorstel.
     edit_proposal: Bewerk voorstel
     title_label: Titel
     closes_at_label: Sluit om

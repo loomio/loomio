@@ -15,6 +15,10 @@ es:
       decide_together_description: "cualquiera puede estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear, de esa manera podrás ver qué le parece a cada uno la propuesta."
     contents:
       title: Tabla de contenidos
+      what_is_loomio:
+        title: Qué es Loomio
+      how_loomio_works:
+        title: Cómo funciona Loomio
       getting_started:
         title_html: Primeros pasos
         starting_new_group_html: Cuando quieres comenzar un nuevo grupo de Loomio
@@ -271,10 +275,15 @@ es:
           additional_info_html: "<p>Cuando creas una nueva propuesta se te pedirá que le pongas un <strong>título</strong>, una <strong>fecha de cierre</strong> y cualquier <strong>detalle</strong> relevante.\nEs buena idea usar un título corto para indicar un plan de acción claro, de manera que la gente sepa al momento exactamente qué significa estar o no de acuerdo.\nPuede usarse el campo de <strong>“Detalles”</strong> para proporcionar cualquier información sobre el contexto para que todo el mundo tenga la información necesaria para tomar una decisión informada.</p>\n<p>Recuerda que no es el fin del mundo si una propuesta no consigue un acuerdo claro inmediatamente. Si al grupo no le encanta la primera propuesta, se puede iniciar una nueva que tenga en cuenta las preocupaciones que surgen y mantenga el proceso en marcha.\nLa fecha límite de una propuesta también puede extenderse si parece que la decisión necesita un poco más de espacio.</p>\n<p>A todo el mundo le llegará una notificación por correo electrónico 24 horas antes del cierre de una propuesta.</p>\n"
       editing_proposals:
         title: Editar una propuesta
+        body:
+          instructions_html: "A la página <strong>\"Editar propuesta\"</strong> se accede mediante el enlace <strong>\"Editar\"</strong> dentro del panel <strong>\"Decisión actual\"</strong> a la derecha de la página."
       stating_positions:
         title: "Estableciendo tu posición  "
+        body:
+          intro_html: "Cuando estés listo para dar tu opinión, haz clic en una de los cuatro botones de decisión bajo la propuesta:"
       changing_positions:
         title: Cambiando tu posición
+        body_html: "Si quieres cambiar tu postura, haz clic en <strong>“editar”</strong> junto a ella, en el panel <strong>“Decisión actual”</strong> a la derecha de la página."
       setting_outcome:
         title: Fijar los resultados de una propuesta
       closing_proposals:
@@ -360,6 +369,35 @@ es:
         title: ¿Y si quiero proponer una característica?
       development_pipeline:
         title: ¿Qué es lo próximo en la pila de desarrollo de Loomio?
+      functional_group_size:
+        title: ¿Qué tamaño de grupos funciona bien en Loomio?
+        body: Actualmente Loomio funciona bien para grupos de hasta 1.000 personas.
+      search_for_private_group:
+        title: "¿Cómo es posible que cuando busco un grupo que sé que existe, no aparezca en la página Explorar?"
+      mobile_responsive:
+        title: ¿Funcionará Loomio en mi dispositivo móvil?
+      account_reactivation:
+        title: ¿Cómo puedo reactivar mi cuenta?
+        body_html: "Sólo un miembro del equipo de Loomio puede reactivar una cuenta. Para reactivar la tuya, contacta con nosotros utilizando el formulario de abajo o envía un correo electrónico a <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>.\n"
+      restore_group:
+        title: "He desactivado mi grupo, ¿puedo restaurarlo?"
+        body_html: "Sólo un miembro del equipo de Loomio puede restaurar un grupo desactivado. Para hacerlo contacta con nosotros utilizando el formulario de abajo o envía un correo electrónico a <a href=\"mailto:contact@loomio.org\">contact@loomio.org</a>.\n"
+      loomio_api:
+        title: ¿Hay una API de Loomio?
+      subdomain:
+        title: ¿Es posible tener un subdominio de Loomio?
+      email_signature_included_in_reply_title: "Cuando contesto en una discusión por correo electrónico, mi firma se incluye en mi comentario. ¿Cómo puedo cambiar esto?"
       feedback_link: "¿Echaste algo en falta? Cuéntanoslo >"
     back_to_top: ^ Arriba
     feedback_discussion: "¿Esta explicación podría ser más clara? Ayúdanos >"
+  help:
+    markdown:
+      paragraphs:
+        title: "Párrafos\n--------\n"
+        body: "Necesitas\ninsertar una\nlínea en blanco\nentre las líneas.\n\n¡O acabará siendo un enorme párrafo!\n"
+      emphasis:
+        title: "Énfasis\n--------\n"
+      lists:
+        title: "Listas\n-----\n"
+      links:
+        title: "Enlaces e imágenes\n----------------\n"

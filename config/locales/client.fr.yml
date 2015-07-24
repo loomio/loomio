@@ -11,14 +11,21 @@ fr:
       public: Public
     date_range:
       today: "Aujourd'hui"
+      yesterday: Hier
+      thisweek: Cette semaine
+      thismonth: Ce mois
+      older: Plus vieux
     models:
       proposal: Proposition
     action:
       save: Enregistrer
+      reply: Répondre
       edit: Modifier
       like: "J'aime"
       unlike: "Je n'aime plus"
       cancel: Annuler
+      show_more: En voir plus
+      view_all: Tout voir
   error_page:
     forbidden: "Vous n'avez pas la permission de faire cela."
   proposal_outcome_panel:
@@ -36,10 +43,24 @@ fr:
   inbox:
     clear: Vider
     unread: Non lu
+  session_form:
+    email_label: "Courriel :"
+    password_label: "Mot de passe :"
+    sign_in: Connexion
   comment_form:
+    aria_label: Ajouter un commentaire
+    attachments:
+      aria_label: Attacher un fichier
+      remove_attachment: Enlever la pièce jointe
+    messages:
+      created: Commentaire ajouté
+      updated: Commentaire mis à jour
+      destroyed: Commentaire effacé
     edit_comment: Modifier le commentaire
     delete_comment: Effacer le commentaire
+    cancel_reply: Annuler la réponse
     confirm_delete_message: Etes vous sur de vouloir effacer ce commentaire ?
+    confirm_delete: "Oui, j'en suis sûr"
   navbar:
     unread: Non lu
     groups: Groupes
@@ -47,6 +68,7 @@ fr:
       contact_us: Contactez-nous
       new_group: Nouveau groupe
       profile: Profil
+      email_settings: Réglages de courriel
       help: Aide
     search:
       placeholder: Chercher
@@ -67,26 +89,33 @@ fr:
     i_block: Je bloque
     i_block_details: "J'ai de fortes objections à cette proposition et ne suis pas d'accord pour qu'elle se poursuive."
     submit_position: Publier votre position
+    messages:
+      created: Vote ajouté
   proposal_positions_panel:
     heading: Positions
+    change_your_vote: Changer votre vote.
   close_proposal_form:
     close_proposal: Fermer la proposition
   proposal_form:
     start_proposal: Commencez la proposition
     edit_proposal: Modifier la proposition
+    title_placeholder: "Ex : Aller sur la Lune"
     title_label: Titre
     closes_at_label: Ferme à
     details_label: Détails
   discussion_form:
     group_label: Groupe
+    group_placeholder: Sélectionner un groupe
     title_label: Titre
     context_label: Contexte
     privacy_label: Privé
   proposal_expanded:
+    collapse: Réduire
     edit_proposal: Modifier la proposition
     close_proposal: Fermer la proposition
   start_group_form:
     heading: Créer un groupe
+    name_label: Nom du groupe
   join_group_button:
     join_group: Rejoindre le groupe
     ask_to_join_group: Demander à rejoindre le groupe
@@ -101,13 +130,20 @@ fr:
       empty:
         membership_is_invitation_only: Pour rejoindre ce groupe vous devez être invité par un membre.
         membership_is_invitation_by_admin_only: "Pour rejoindre ce groupe, vous devez être invité par un coordinateur."
+    messages:
+      leave_group_success: Vous avez quitté ce groupe
+      deactivate_group_success: Groupe désactivé
+    group_logo: Logo du groupe
     description: Description
     discussions: Discussions
+    members: "({{count}}) membres"
     manage_members: Gérer les membres
     invite_people: Inviter des personnes
+    visibility_label: Visibilité
     options_label: Options
     options:
       label: Options
+      leave_group: Quitter le groupe
     leave_group:
       title: Quitter le groupe
     volume:
@@ -145,6 +181,8 @@ fr:
     username_label: Identifiant utilisateur
     email_label: E-mail
     locale_label: Langue
+  email_settings_page:
+    header: Réglages de courriel
   dashboard_page:
     aria_label: Bureau
     mark_as_read: Marquer comme lu
@@ -152,6 +190,7 @@ fr:
       proposals: Propositions
     threads_from:
       today: "Aujourd'hui"
+      yesterday: Hier
   discussion:
     proposals: Propositions
     volume:
