@@ -13,6 +13,8 @@ sr:
         pending_invitations_html: Pozivi u toku
       discussion_threads:
         discussion_privacy_html: Privatnost diskusije
+      proposals:
+        title_html: Predlozi
       subgroups:
         title_html: Podgrupe
       keeping_up_to_date:
@@ -52,6 +54,8 @@ sr:
     discussion_threads:
       discussion_privacy:
         title: Privatnost diskusije
+    proposals:
+      title: Predlozi
     subgroups:
       title: Podgrupe
     keeping_up_to_date:

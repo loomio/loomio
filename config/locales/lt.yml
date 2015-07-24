@@ -1,4 +1,6 @@
 lt:
+  email_settings:
+    title: El. pašto nustatymai
   error:
     access_denied: Jūs neturite leidimo tai padaryti.
   footer:
@@ -24,6 +26,12 @@ lt:
   group_permissions:
     header: Grupės leidimai
   invite_people: Pakviesti žmones
+  manage_members: Tvarkyti narius
+  new_group: Nauja grupė
+  discussion_list:
+    empty:
+      membership_is_invitation_by_admin_only: "Kad prisijungtum prie šios grupės, tave turi pakviesti koordinatorius."
+  confirm_delete_comment: Tu tikrai nori ištrinti šį komentarą?
   proposal: Pasiūlymas
   proposals: Pasiūlymai
   positions: Nuomonės
@@ -35,15 +43,39 @@ lt:
     have_your_say: Tarkite savo žodį
     positions_agree_description: "<span>Sutinku</span> reiškia, kad tu sutinki su pasiūlymu."
     positions_disagree_description: "<span>Nesutinku</span> reiškia, kad tu galvoji, jog gali būti geresnių alternatyvų, tačiau neprieštarausi grupės sprendimui."
+  new_password: Naujas slaptažodis
+  confirm_new_password: Patvirtink naują slaptažodį
+  current_password: Dabartinis slaptažodis
+  contact_page:
+    contact_us: Susisiekti su mumis
+    labels:
+      email: Tavo el. pašto adresas
+  motion_form:
+    edit:
+      header: Redaguoti pasiūlymą
+  vote_form:
+    submit: Pateikti nuomonę
+  profile_form:
+    use_initials: Naudoti inicialus
   simple_form:
     labels:
       motion:
         description: Išsamesnė Informacija
+      user:
+        email: El. paštas
   about_loomio: Apie Loomio
+  coordinator: Koordinatorius
   details: Išsamesnė Informacija
   edit: Redaguoti
   options: Parinktys
+  remove: Šalinti
+  save: Įrašyti
   common:
     profile: Profilis
+    email_settings: El. pašto nustatymai
+    meridians:
+      am: am
+      pm: pm
     privacy: Privatumas
     permissions: Leidimai
+    email: El. paštas

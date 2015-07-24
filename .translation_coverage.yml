@@ -35,29 +35,39 @@ cs:
   main_1_0: 28
 da:
   frontpage: 52
-  help docs: 8
+  help docs: 9
   main: 88
-  main_1_0: 29
+  main_1_0: 33
 de:
   frontpage: 58
   help docs: 45
   main: 96
-  main_1_0: 33
+  main_1_0: 34
 el:
   frontpage: 78
   help docs: 42
   main: 96
   main_1_0: 32
+en-BE:
+  frontpage: 0
+  help docs: 0
+  main: 0
+  main_1_0: 0
+en-NL:
+  frontpage: 0
+  help docs: 0
+  main: 0
+  main_1_0: 0
 eo:
   frontpage: 52
   help docs: 8
   main: 86
   main_1_0: 29
 es:
-  frontpage: 95
-  help docs: 74
-  main: 99
-  main_1_0: 45
+  frontpage: 100
+  help docs: 80
+  main: 100
+  main_1_0: 100
 fa-IR:
   frontpage: 52
   help docs: 1
@@ -72,12 +82,12 @@ fr:
   frontpage: 58
   help docs: 29
   main: 98
-  main_1_0: 32
+  main_1_0: 38
 ga-IE:
   frontpage: 66
-  help docs: 7
-  main: 57
-  main_1_0: 22
+  help docs: 9
+  main: 61
+  main_1_0: 94
 gl:
   frontpage: 29
   help docs: 8
@@ -99,10 +109,10 @@ hr:
   main: 46
   main_1_0: 10
 hu:
-  frontpage: 61
-  help docs: 72
+  frontpage: 63
+  help docs: 74
   main: 96
-  main_1_0: 32
+  main_1_0: 41
 id:
   frontpage: 29
   help docs: 2
@@ -110,9 +120,9 @@ id:
   main_1_0: 24
 it:
   frontpage: 60
-  help docs: 8
-  main: 89
-  main_1_0: 29
+  help docs: 11
+  main: 90
+  main_1_0: 51
 it-CH:
   frontpage: 0
   help docs: 0
@@ -136,9 +146,9 @@ ko:
   main_1_0: 22
 lt:
   frontpage: 18
-  help docs: 6
-  main: 3
-  main_1_0: 12
+  help docs: 7
+  main: 5
+  main_1_0: 25
 lv:
   frontpage: 0
   help docs: 0
@@ -164,11 +174,12 @@ ml-IN:
   help docs: 0
   main: 0
   main_1_0: 0
+nl: {}
 nl-NL:
-  frontpage: 58
+  frontpage: 100
   help docs: 47
   main: 94
-  main_1_0: 42
+  main_1_0: 44
 pl:
   frontpage: 100
   help docs: 56
@@ -178,7 +189,7 @@ pt-BR:
   frontpage: 100
   help docs: 100
   main: 100
-  main_1_0: 50
+  main_1_0: 100
 pt-PT:
   frontpage: 16
   help docs: 0
@@ -206,9 +217,9 @@ sl:
   main_1_0: 31
 sr:
   frontpage: 58
-  help docs: 10
-  main: 94
-  main_1_0: 31
+  help docs: 11
+  main: 96
+  main_1_0: 32
 sr-RS:
   frontpage: 58
   help docs: 10

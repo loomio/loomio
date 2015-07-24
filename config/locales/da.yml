@@ -421,6 +421,8 @@ da:
     confirmation:
       title: "Du er næsten færdig! Tjek din email."
       body_html: "Vi har sendt dig en email med en invitation til at starte din gruppe..\n\nHvis du ikke ser noget i din indbakke om et par minutter, så send venligst en mail til <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    volume: Lydstyrke
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> var enig i forslaget."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> undlod at stemme på forslaget."

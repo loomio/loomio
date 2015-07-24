@@ -9,6 +9,7 @@ sr:
     privacy:
       private: Privatno
       public: Javno
+    selected: Označeno
     date_range:
       today: Danas
     models:
@@ -51,6 +52,7 @@ sr:
     search:
       placeholder: Traži
       discussions: Nizovi
+      proposals: Predlozi
   notifications:
     header: Obaveštenja
   position_buttons_panel:
@@ -146,9 +148,12 @@ sr:
   dashboard_page:
     aria_label: Tabla
     mark_as_read: Označi kao pročitano
+    filtering:
+      proposals: Predlozi
     threads_from:
       today: Danas
   discussion:
+    proposals: Predlozi
     volume:
       loud: Obavesti kada god ima aktivnosti u ovom nizu.
       normal: "Samo obavesti kada je predlog kreiran, pred zatvaranjem ili je ishod kreiran."

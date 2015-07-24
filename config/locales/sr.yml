@@ -288,7 +288,11 @@ sr:
   start_group_form:
     header: Započni novu grupu
     name: Tvoje ime
+    name_error: Ime je neophodno
+    email: Tvoja ePošta
+    email_error: Neispravna adresa ePošte
     group_name: Naziv grupe
+    group_name_error: Naziv grupe je neophodan
     success:
       header: "Još malo pa gotovo! Proverite ePoštu."
   group_form:
@@ -570,6 +574,7 @@ sr:
   move_discussion_where: Gde želite da premestite ovu diskusiju?
   delete_discussion: Obriši diskusiju
   confirm_delete_discussion: Da li ste sigurni da želite trajno obrisati ovu diskusiju?
+  print_tooltip_info: Štampanje
   new_proposal: Novi predlog
   edit_proposal: Izmeni Predlog
   close_proposal: Zatvori predlog
@@ -577,10 +582,13 @@ sr:
   change_proposal_close_date: Promeni datum zatvaranja
   change_proposal_close_date_header: "Promeni datum zatvaranja za predlog '%{which}'"
   proposal: Predlog
+  proposals: Predlozi
+  closed_at: Zatvoreno
   proposal_close_date_error: Molim odredite budući datum zatvaranja
   proposal_closing_when: "Zatvara se kroz %{when}"
   proposal_closed_when: "Zatvoren pre %{when}"
   proposed_when_by_who: "Predloženo od %{who}, pre %{when}"
+  proposed_by_who_on: "Predloženo od;: %{who}, %{when}"
   engagement_on_open_proposal: "%{percent}%% članova je do sada iznelo svoj stav (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}%% članova koji su izneli svoj stav (%{numerator}/%{denominator})"
   state_your_position: Reci svoj stav
@@ -662,6 +670,8 @@ sr:
     vote: Možete promeniti svoj stav bilo kada
   pricing_page:
     header: Cenovnik
+    loomio_for_organisations: Loomio za organizacije
+    loomio_for_communities: Loomio za zajednice
   contribution:
     any_amount: ili proizvoljni jednokratni prilog od
     currency_desc: Iznosi su u SAD dolarima
@@ -707,6 +717,9 @@ sr:
   inactive_html: "Ovaj nalog je deaktiviran.  Ukoliko imate pitanja molimo <a href='%{path_to_contact}'>kontaktirajte nas</a>."
   create_an_account_html: Napravite Lumio Beta nalog
   log_in: Prijavi se
+  password_reset:
+    length_restriction: Lozinke moraju biti najmanje 8 znakova duge.
+    forbidden_passwords: "Česte lozinke kao što je \"lozinka\" su zabranjene kako bi Vaš nalog bio siguran."
   join_group:
     log_in: "Prijavite se da biste se pridružili %{group_name}"
     create_account_to_join_group: "Molimo napravite nalog da bi ste se pridružili %{group_name}"
@@ -753,6 +766,7 @@ sr:
     description: "Lumio Pomoćni Bot je zaista oduševljen odlukom vaše grupe da investira u putovanje na mesec. Očigledno je svemirski sir veoma ukusan. Ali, Vaši problemi sa emisijom ugljen-dioksida su zabrinjavajući.\nDa li je to dobra ideja? Lumio Pomoćni Bot želi da zna šta mislite!\nUkoliko ste sigurni u svoj stav, pritisnite jednu od ikonica ispod (ako vam je neophodno objašnjenje značenja ikona, jednostavno prevucite miša preko željene opcije i sačekajte malo da vidite opis koji će se pojaviti).\nBiće vam zatraženo da napišete kratko obrazloženje Vaše odluke. Ovo olakšava da se stekne uvid u to šta svako misli i zašto. Možete se slobodno predomisliti i izmeniti svoju odluku u vremenskom okviru koji je određen trajanjem predloga.\n"
   contact_page:
     contact_us: Kontaktirajte nas
+    contact_form: Kontakt formular
     labels:
       name: Tvoje ime
       email: Tvoja adresa ePošte
@@ -1007,6 +1021,7 @@ sr:
   start_a_group: Započnite grupu
   starting: Počinje
   subject: Tema
+  tos_html: "Prijavljivanjem, slažete se sa Loomio <a href='%{link_path}' target='_blank'>Uslovima korišćenja</a>"
   thanks: "Hvala!"
   unlike: Ne Sviđa
   time_until_close: "%{quantity_of_time} do zatvaranja"

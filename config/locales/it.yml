@@ -423,6 +423,15 @@ it:
     confirmation:
       title: "Hai quasi finito! Controlla la tua email."
       body_html: "Ti abbiamo inviato una email con un invito per avviare il tuo gruppo.\n\nSe non trovi nulla nella tua posta in arrivo entro pochi minuti, inviaci una email a <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    volume: Volume
+    loud: Alto
+    normal: Normale
+    mute: Silenzioso
+  discussion_volume:
+    loud_description: Mandami una mail in caso ci sia una qualsiasi attività in questa discussione.
+    quiet_description: Non mandare mail a proposito di questa discussione.
+    mute_description: "Elimina questa discussione dalla dashboard e non mandarmi notifiche a meno che non venga @mentioned."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> si è detto/a favorevole alla proposta."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> si è astenuto/a sulla proposta."
@@ -513,6 +522,7 @@ it:
   change_proposal_close_date: Cambia la data di conclusione
   change_proposal_close_date_header: "Cambia la data di conclusione per la proposta '%{which}'"
   proposal: Proposta
+  proposals: Proposte
   proposal_close_date_error: Imposta una data di conclusione futura
   proposal_closing_when: "Chiude in %{when}"
   proposal_closed_when: "Chiusa %{when} fa"

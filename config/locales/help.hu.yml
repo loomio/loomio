@@ -1,5 +1,6 @@
 hu:
   new_help:
+    title: Miben lehetünk a segítségedre?
     how_loomio_works:
       title: Hogyan működik a Loomio
       start_group_link: Indíts egy csoportot
@@ -13,6 +14,11 @@ hu:
       decide_together_link: "Közösen dönteni:"
       decide_together_description: "bárki egyetérthet, tartózkodhet, elutasíthat vagy blokkolhat - így láthatod miként vélekednek mások a javaslatról."
     contents:
+      title: Tartalomjegyzék
+      what_is_loomio:
+        title: Mi a Loomio
+      how_loomio_works:
+        title: Hogy működik a Loomio
       getting_started:
         title_html: Kezdjük
         starting_new_group_html: Ha egy új Loomio csoportot akarsz indítani

@@ -4,6 +4,7 @@ ga-IE:
     yesterday_on_loomio: Seol ríomhphost chugam le hachoimre den ghníomhacht gach lá
     email_when_mentioned: Seol ríomhphost chugam nuair a dhéantar tagairt dom
     proposal_closing_soon: Seol ríomhphost chugam sula ndúntar togra
+    proposal_closing_soon_description: "24 uair a chloig sula dhúnfar togra, beag beann ar an airde, seolfar ríomhphost chugat leis an eolas is déanaí faoin dtogra."
     submit: Nuashonraigh na roghanna
     no_change: Gan athrú
   activerecord:
@@ -175,6 +176,8 @@ ga-IE:
     category: Aicme
     what_can_members_do: Cad is féidir leis na baill a dhéanamh?
     members_can:
+      add_members: Tabhair cuirí do chomhaltaí nua agus ceadaigh iad
+      edit_comments: Cuir a dtráchtanna in eagar am ar bith
       start_discussions: Cuir tús le plé
       raise_motions: Tóg tograí
       vote: Caith do ghuth i dtaobh tograí
@@ -184,6 +187,8 @@ ga-IE:
       label: Cé ar féidir leo an bhaicle seo a aimsiú?
     membership_granted_upon:
       label: Conas mar is féidir le daoine clárú?
+    parent_members_can_see_discussions:
+      "false": Is iad na comhaltaí amháin ar féidir leo na pléite a fheiceáil
     discussion_privacy_options:
       label: Cé ar féidir na pléite a fheiceáil?
       public_only_html: Plé poiblí amháin
@@ -216,6 +221,7 @@ ga-IE:
   subject_error: Cuir ábhar leis le do thoil
   subject_placeholder: Scríobh ábhar
   message_error: Cuir teachtaireacht isteach ann le do thoil
+  manage_members: Riar na comhaltaí
   leave_group: Fág an dream seo
   confirm_leave_group: "An bhfuil tú cinnte gur miean leat %{which_group} a fhágáil?"
   invited_users: Na comhaltaí a bhfuair cuirí
@@ -225,6 +231,7 @@ ga-IE:
   membership_requests: "Iarratas ballraíocht "
   previous_requests: Iarratais a bhí ann cheana
   approved_by_person: "Ceadaithe ag %{person}"
+  join_group_btn: Cláraigh leis an mbaicle
   confirm_approve_membership_request: "An bhfuil tú cinnte go bhfuil fonn ort %{which_user} a chur sa ghrúpa?"
   cancel_membership_request: Cealaigh an t-iarratas
   ignore_request: Déan neamhaird den iarratas
@@ -258,8 +265,15 @@ ga-IE:
     normal: Gnáth
     quiet: Ciúin
     mute: Gan fhuaim
+  discussion_volume:
+    loud_description: Seol ríomhphost chugam pé uair atá gníomhaíocht sa snáithe seo.
+    normal_description: "Seol ríomhphost chugam nuair a chruthaítear togra, nuair atá togra ar tí dúnadh, nó nuair a fhoilsítear toradh."
+    quiet_description: Ná seol ríomhphost chugam maidir leis an tsnáithe seo.
+    mute_description: "Folaigh an tsnáithe seo ón gclár rialaithe agus ná seol fógraí chugam ach amháin má @dhéantar tagairt dom."
   group_volume:
     loud_description: Seol ríomhphost chugam nuair a bhíonn gníomhaíocht ann.
+    quiet_description: Ná seol ríomhphost faoin mbaicle seo chugam. Taispeánfar gníomhaíocht ar an gclár rialaithe.
+    mute_description: "Folaigh an bhaicle seo ón gclár rialaithe agus ná taispeáin fógraí uaithi ach amháin má @dhéantar tagairt dom"
   discussion_items:
     new_motion: "- chruthaigh siad togra"
     motion_closed:
@@ -278,6 +292,9 @@ ga-IE:
   discussion_list:
     filter_unread:
       enable: Taispeáin pléite neamhléite amháin
+    empty:
+      membership_is_invitation_only: "Le gur féidir leat clárú leis an mbaicle seo, ní mór do chomhalta cuireadh a thabhairt duit."
+      membership_is_invitation_by_admin_only: "Le gur féidir leat clárú leis an mbaicle seo, ní mór do chomhordaitheoir cuireadh a thabhairt duit."
   description_history:
     subheader: Leagan
     current: (reatha)
@@ -301,6 +318,7 @@ ga-IE:
   change_proposal_close_date: Athraigh an dáta ar a dhúnfar é
   change_proposal_close_date_header: "Athraigh an dáta a dhúnfar an togra '%{which}'"
   proposal: Togra
+  proposals: Tograí
   proposal_close_date_error: Cuir isteach an dáta ar a dhúnfar é
   proposal_closing_when: "Ag dúnadh i gceann %{when}"
   proposal_closed_when: "Dúnadh %{when} ó shin é"
@@ -309,9 +327,12 @@ ga-IE:
   positions: Seasaimh
   yes_position: Aontaíom
   yes_details: Aontaíom le seo agus is mian liom go rachfaidh sé ar aghaidh.
+  abstain_position: Staonaim
+  abstain_details: Táim sásta go ndéanfaidh an bhaicle cinneadh gan mise.
   no_position: Ní aontaíom
   no_details: "Dar liom, tig linn rud éigin níos fearr a dhéanamh."
   block_position: Crosaim é
+  block_details: Táim glan i gcoinne an togra seo agus ní mian liom go rachaidh sé ar aghaidh ar chor ar bith.
   outcome_submit: Foilsigh an toradh
   position_verbs:
     "yes": aontaíom
@@ -323,6 +344,7 @@ ga-IE:
   edit_comment:
     edit_comment: Déan eagarthóireacht ar an trácht
   help:
+    coordinating: Ag déanamh comheagar ar do bhaicle Loomio
     different_ways: Bealaí éagsúla chun feidhm a bhaint as Loomio
     get_in_touch: Déan teagmháil
     get_in_touch_description_html: "Má tá aon cheist nó aiseolas agat dúinn, <a href='%{link}'>cuir teachtaireacht chugainn</a>."
@@ -336,11 +358,20 @@ ga-IE:
     keep_up_to_date: Fan ar an eolas
     make_a_decision: Déan cinneadh
     positions_agree_description: "Ciallaíonn <span>Aontaíom</span> go bhfuil tú sásta leis an dtogra."
+    positions_abstain_description: "Is éard is brí le <span>Staon</span> means you’re unsure, or you’re happy for the group to decide without you."
+    positions_disagree_description: "Is éard is brí le h<span>Easaontú</span> ná go bhfuil tú den tuairim b'fhéidir go bhfuil rogha níos fearr ann, ach tá tú sásta glacadh le cinneadh na baicle."
+    positions_block_description: "Is éard is brí le <span>Cros</span> ná go bhfuil tú glan i gcoinne an togra agus beidh tú thar a bheith míshásta mar leanann an togra ar aghaidh."
     start_discussion: Cuir tús le plé meallacach
     start_proposal: Ag scríobh togra soiléir
     video_id: "52025402"
     video_tutorial: Físeán teagaisc
+    video_tutorial_description: Breathnaig ar an bhfíseán chun taispeántas tapa a fheiceáil conas feidhm a bhaint as Loomio
     what_is_loomio: Cad é Loomio?
+  hint:
+    discussion: Leideanna chun tús a chur le plé mealltach
+    invitation: Leideanna chun cuireadh den scoth a scríobh
+    proposal: Leideanna chun togra soiléir a scríobh
+    vote: Tig leat do sheasamh a athrú am ar bith
   pricing_page:
     header: Praghsáil
     loomio_for_organisations: Loomio i gcomhair eagraíochtaí
@@ -426,6 +457,7 @@ ga-IE:
   profile_form:
     profile: Cuir do bheathaisnéisín in eagar
     picture: Grianghraf
+    use_initials: Bain feidhm as túslitreacha
     use_uploaded: Bain feidhm as íomhá atá uasluchtaithe
     use_gravtar: Bain feidhm as Gravatar
     upload_new_image: Uasluchtaigh íomhá nua
@@ -455,6 +487,7 @@ ga-IE:
         close_at_date: Ag dúnadh
       user:
         name: An t-ainm iomlán
+        username: Ainm úsáideora
         email: Seoladh ríomhphoist
         password: Focal faire
         password_confirmation: Deimhnigh an focal faire
@@ -539,6 +572,7 @@ ga-IE:
   close: Dún
   closing: Ag dúnadh
   closed: Dúnta
+  coordinator: Comhordaitheoir
   decisions: Cinntí
   delete: Scrios
   details: Sonraí
@@ -550,6 +584,7 @@ ga-IE:
   disable: Díchumasaigh
   group: Baicle
   home: Baile
+  like: Is maith liom é
   loading: Ag luchtú...
   message: Teachtaireacht
   name: Ainm
@@ -581,6 +616,7 @@ ga-IE:
   starting: Ag tosú
   subject: Ábhar
   thanks: "Go raibh maith agat!"
+  unlike: Ní maith liom é
   time_until_close: "%{quantity_of_time} go dtí go ndúnfar é"
   update: Nuashonraigh é
   facebook: Facebook
@@ -592,6 +628,7 @@ ga-IE:
     welcome_back: "Fáilte ar ais!"
     email_settings: Socruithe ríomhphoist
     settings: Socruithe
+    dashboard: An clár rialaithe
     unread: Neamhléite
     find_out_more: Cuir tuilleadh eolais air
     filter: "Scagaire:"

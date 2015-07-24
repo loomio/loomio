@@ -10,7 +10,7 @@ de:
       try_it: Testen
       log_in: ANMELDEN
       video: "Sieh, wie Loomio funktioniert"
-      try_loomio: Loomio ausprobieren
+      try_loomio: "Teste Loomio "
       try_loomio_beta: Loomio Beta testen
       more: Mehr
       top: Nach oben
@@ -19,8 +19,8 @@ de:
       privacy: Datenschutz
       services: Dienste
     hero:
-      header_html: "Loomio ist der einfachste Weg, um <br /> <strong> Entscheidungen gemeinsam zu treffen </strong>."
-      lead_html: "Loomio befähigt Organisationen und Gemeinschaftenin Aktion <strong>, wo immer Menschen wenden </strong> Diskussion"
+      header_html: "Loomio ist der einfachste Weg, um <br /> <strong>gemeinsam Entscheidungen zu finden </strong>."
+      lead_html: "Loomio ermöglicht Organisationen und Gemeinschaften <strong>  Diskussion in Aktionen </strong> zu verwanden, wo immer die Menschen auch sein mögen."
     product:
       header_html: "Wenn wir <strong>alle Meinungen</strong> einbeziehen, können wir <strong>bessere Entscheidungen</strong> treffen."
       step1:
@@ -33,7 +33,7 @@ de:
         header: 3. Gemeinsam entscheiden
         desc: "Gemeinsam wird eine Lösung erarbeitet, mit der jeder einverstanden ist. Jede Entscheidung hat eine klare Deadline, damit immer ein klares Ergebnis herauskommt."
     mobile:
-      lead_html: "<strong> Loomio funktioniert auf jedem Gerät, </strong> <br /> Entscheidungen überall und jederzeit."
+      lead_html: "<strong> Loomio funktioniert auf jedem Gerät, </strong> <br /> und erlaubt es Entscheidungen überall und jederzeit zu finden."
     quote:
       header:
         rushkoff_html: "\"Loomio <strong>entfesselt im Internet das Potenzial</strong>, um Leute statt in polarisierende Debatten zu einem gemeinschaftlichen Konsens zu führen.\"<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, Autor von <em>Present Shock</em></div>"
