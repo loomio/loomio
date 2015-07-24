@@ -94,13 +94,22 @@
   text-align: center;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 767px) {
+  .lmo-navbar__item {
+    display: inline-block;
+    text-align: center;
+    .lmo-navbar__btn {
+      width: 100%;
+      &:hover, &:focus {
+        background: $list-hover-color;
+      }
+    }
+  }
+
   .lmo-navbar-item-container--left{
     width: 39%;
     .lmo-navbar__item {
       width: 33%;
-      display: inline-block;
-      text-align: center;
     }
   }
 
@@ -126,7 +135,10 @@
     .lmo-navbar__item--user {
       width: 50%;
       .lmo-navbar__btn{
-        padding: 6px;
+        padding: 5px 5px 3px;
+      }
+      .user-avatar {
+        display: inline-block;
       }
     }
   }
