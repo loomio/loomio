@@ -3,19 +3,21 @@
   left: 20px;
   min-width: 220px;
   position: fixed;
-  z-index: 200;
+  z-index: 2000;
 }
 
-.flash-container {
+.flash-root__container {
   background-color: $primary-text-color;
-  color: #fff;
+  color: white;
   font-size: 15px;
   line-height: 20px;
   padding: 15px;
   width: 100%;
-  -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-  -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-  -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-  -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-  transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+  border-radius: 6px;
+}
+
+.flash-root__loading.page-loading {
+  padding: 0 12px 0 0;
+  display: inline-block;
+  color: white;
 }

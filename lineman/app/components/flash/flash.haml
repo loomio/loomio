@@ -1,4 +1,7 @@
 .flash-root{aria-live: 'assertive', role: 'alert'}
-  .flash-container{ng-show: 'display()', ng-animate: "'enter'", class: 'alert-{{flash.level}}'}
-    .flash-message
+  .flash-root__container{ng-show: 'display()', ng-animate: "'enter'", class: 'alert-{{flash.level}}'}
+    .flash-root__message{ng-if:'loading()'}
+      %loading.flash-root__loading
+      %span{translate: 'common.action.loading'}
+    .flash-root__message{ng-if:'!loading()'}
       {{ flash.message | translate:flash.options }}
