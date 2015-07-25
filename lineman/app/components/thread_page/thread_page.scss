@@ -3,12 +3,25 @@
   max-width: $main-max-width;
 }
 
-.thread-actions { margin: -9px -17px 0 0; }
+.thread-context__heading {
+  .lmo-card-heading {
+    display: inline-block;
+  }
+}
 
-.thread-actions .star-toggle a {
-  min-width: 30px;
-  display: block;
+.thread-actions .star-toggle {
+  display: inline-block;
   text-align: center;
+  vertical-align: middle;
+  width: 30px;
+  a {
+    min-width: 30px;
+    text-align: center;
+  }
+}
+
+.thread-notification-level {
+  display: inline-block;
 }
 
 .thread-group{
@@ -28,6 +41,10 @@
 
 .thread-context{
   @include card;
+  padding-top: 10px;
+  .lmo-card-heading {
+    margin-top: 7px;
+  }
 }
 
 // hey no ids in BEM, mate

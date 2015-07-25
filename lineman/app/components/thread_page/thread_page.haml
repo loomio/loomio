@@ -13,19 +13,20 @@
           {{threadPage.group.name}}
 
     %section.thread-context{aria-labelledby: "thread-context__heading"}
-      .thread-actions.lmo-btn-group.lmo-btn-group-right
-        .lmo-btn-wrapper.dropdown{ng-if: 'threadPage.showContextMenu()'}
+      %h2.lmo-card-heading{translate: 'context_card.heading'}
+      .thread-actions.lmo-btn-group.pull-right
+        .thread-notification-level.lmo-btn-wrapper
+          %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
+        %star_toggle{thread: 'threadPage.discussion'}
+        %span.lmo-btn-wrapper.dropdown{ng-if: 'threadPage.showContextMenu()'}
           %button.btn.lmo-btn-nude.dropdown-toggle{href:''}
             .sr-only{translate: 'thread_context.thread_options'}
-            %i.fa.fa-fw.fa-chevron-down.pull-right{aria-hidden: 'true'}
+            %i.fa.fa-fw.fa-chevron-down{aria-hidden: 'true'}
           .dropdown-menu.dropdown-menu-right
             %ul.dropdown-menu-items
               %li.dropdown-menu-item
                 %a.dropdown-menu-item-label{href: '', ng-click: 'threadPage.editDiscussion()', translate: 'common.action.edit', ng-if: 'threadPage.canEditDiscussion()'}
-        %star_toggle.pull-right{thread: 'threadPage.discussion'}
-        .thread-notification-level.lmo-btn-wrapper
-          %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
-      %h2.lmo-card-heading{translate: 'context_card.heading'}
+      .clearfix
       %h1.lmo-h1#thread-context__heading{in-view: 'threadPage.showLintel(!$inview)'}
         {{threadPage.discussion.title}}
       .thread-context__details

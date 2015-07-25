@@ -1,13 +1,10 @@
 .container.main-container
   %main.groups-page
     .row.groups-page__heading
-      .col-xs-8
-        %h1.lmo-h1-medium{translate: 'groups_page.page_header'}
-      .col-xs-4
-        %a.btn.btn-success.groups-page__new-group{ng-click: 'groupsPage.startGroup()', href: '#'}
-          %i.fa.fa-lg.fa-plus{aria-hidden: 'true'}>
-          %span{translate: 'navbar.user_options.new_group'}
-
+      %h1.lmo-h1-medium{translate: 'groups_page.page_header'}
+      %a.btn.btn-success.groups-page__new-group{ng-click: 'groupsPage.startGroup()', href: '#'}
+        %i.fa.fa-lg.fa-plus{aria-hidden: 'true'}>
+        %span{translate: 'navbar.user_options.new_group'}
     .groups-page__groups
       %section.groups-page__group{ng-repeat: 'group in groupsPage.groups() | orderBy: "name" track by group.id', aria-labelledby: '{{::group.key}}'}
         .groups-page__group-header.clearfix

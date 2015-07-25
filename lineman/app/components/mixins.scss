@@ -118,7 +118,7 @@ $block-border-color: darken($block-color, 10%);
   @include roundedCorners;
   @include box_shadow(1);
   border: 1px solid $border-color;
-  padding: 17px 17px;
+  padding: 17px;
   background: #fff;
   margin-bottom: 8px;
   i{ color: $grey-on-white; }
