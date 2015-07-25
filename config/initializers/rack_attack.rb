@@ -2,7 +2,7 @@ Rack::Attack.cache.store = Rails.cache
 Rack::Attack.throttled_response = ->(env) { [429, {}, [ActionView::Base.new.render(file: 'public/429.html')]] }
 
 ActiveSupport::Notifications.subscribe('rack.attack') do |name, start, finish, request_id, req|
-  Airbrake.notify Exception.new(message: "#{req.ip} has been rate limited for url #{req.url}", data: req.env['rack.attack.throttle_data'])
+  Airbrake.notify Exception.new(message: "#{req.ip} has been rate limited for url #{req.url}", data: [name, start, finish, request_id, req])
 end
 
 @config = YAML.load_file("#{Rails.root}/config/rack_attack.yml").with_indifferent_access
