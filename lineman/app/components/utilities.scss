@@ -157,6 +157,7 @@ label.label-with-details{
 .lmo-card-heading{
   @include fontHelveticaMedium;
   @include fontSmall;
+  display: inline-block;
   text-transform: uppercase;
   color: $grey-on-white;
   margin-top: 0;

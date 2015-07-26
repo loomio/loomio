@@ -8,6 +8,7 @@
 }
 
 .position-button {
+  @include box_shadow(1);
   margin-right: 5px;
   display: inline-block;
   width: 55px;

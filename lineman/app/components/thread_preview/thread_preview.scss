@@ -36,18 +36,21 @@
 }
 
 .thread-preview__proposal-name{
-  padding-left: 2px;
-  line-height: 23px;
   color: $primary-text-color;
+  display: inline-block;
+  line-height: 23px;
+  padding-left: 2px;
 }
 
 .thread-preview__proposal-closing-at {
   @include fontSmall;
   color: $highlight-red;
+  display: inline-block;
 }
 
 .thread-preview__proposal-closing-soon {
   min-width: 160px;
+  display: inline-block;
   padding-left: 4px;
 }
 

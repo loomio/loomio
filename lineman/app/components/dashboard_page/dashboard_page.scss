@@ -4,7 +4,7 @@
 }
 
 .dashboard-page__heading{
-  margin: 20px 0;
+  margin: 20px 0 20px 13px;
 }
 
 .dashboard-page__options{
@@ -14,10 +14,12 @@
 .dashboard-page__date-range{
   @include fontSmall;
   color: $grey-on-grey;
+  margin-left: 13px;
 }
 
 .dashboard-page__no-threads {
   text-align: center;
+  margin-left: 13px;
 }
 
 .dashboard-page__footer {
