@@ -285,7 +285,7 @@ es:
     group_name: Nombre del grupo
     group_name_error: "Se requiere el nombre del grupo. "
     pricing_html: "En 30 días, cuando hayas visto cómo Loomio mejora la forma de organizarse de tu grupo, te pediremos que elijas la <a href='%{link}' target='_blank'>forma de pago</a> que consideres oportuna."
-    terms_html: "Al empiezas un grupo, aceptas los <a href='%{link}' target='_blank'>términos de servicio</a> de Loomio."
+    terms_html: "Al empezar un grupo, aceptas los <a href='%{link}' target='_blank'>términos de servicio</a> de Loomio."
     success:
       header: "¡Ya casi has terminado! Revisa tu correo electrónico. "
       email_delivered: "Hemos enviado un correo electrónico a %{email}. Por favor sigue el link que hay dentro para configurar tu grupo"

@@ -1,9 +1,15 @@
 fa-IR:
+  common:
+    volume: مقدار
   error_page:
     forbidden: شما اجازه انجام این کار را ندارید.
   navbar:
     user_options:
       new_group: گروه جدید
+      email_settings: تنظیمات رایانامه
+    search:
+      proposals: پیشنهاد‌ها
+      comments: نظرات
   notifications:
     header: اطلاعیه ها
   discussion_form:
@@ -11,7 +17,17 @@ fa-IR:
   start_group_form:
     heading: راه اندازی گروه
   group_page:
+    invite_people: دیگران را دعوت کنید
     leave_group:
       title: ترک گروه
   memberships_page:
     members: اعضا
+  email_settings_page:
+    header: تنظیمات رایانامه
+  dashboard_page:
+    filtering:
+      proposals: پیشنهاد‌ها
+  discussion:
+    proposals: پیشنهاد‌ها
+  help_page:
+    getting_started: شروع کار

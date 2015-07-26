@@ -423,6 +423,10 @@ da:
       body_html: "Vi har sendt dig en email med en invitation til at starte din gruppe..\n\nHvis du ikke ser noget i din indbakke om et par minutter, så send venligst en mail til <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
   volume:
     volume: Lydstyrke
+    loud: Høj
+    normal: Normal
+    quiet: Stille
+    mute: Slået fra
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> var enig i forslaget."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> undlod at stemme på forslaget."
@@ -513,6 +517,7 @@ da:
   change_proposal_close_date: Skift lukkedato
   change_proposal_close_date_header: "Skift lukkedato på forslaget '%{which}'"
   proposal: Forslag
+  proposals: Forslag
   proposal_close_date_error: Angiv venligst en fremtidig lukkedato
   proposal_closing_when: "Lukker om %{when}"
   proposal_closed_when: "Lukket for %{when} siden"

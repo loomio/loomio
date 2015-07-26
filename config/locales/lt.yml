@@ -6,9 +6,12 @@ lt:
   footer:
     blog: Tinklaraštis
     contact: Susisiekite
+    help: Pagalba
     privacy: Privatumas
   notifications:
     header: Pranešimai
+  user_profile:
+    deactivate_account: Pasyvinti paskyrą
   start_group_form:
     group_name: Grupės pavadinimas
   group_form:
@@ -27,10 +30,18 @@ lt:
     header: Grupės leidimai
   invite_people: Pakviesti žmones
   manage_members: Tvarkyti narius
+  public: Vieša
   new_group: Nauja grupė
+  networks:
+    threads: Gijos
+  discussion_volume:
+    quiet_description: Nesiųsti el. laiškų apie šią giją.
+  group_volume:
+    quiet_description: Nesiųsti el. laiškų apie šią grupę. Veikla bus rodoma skydelyje.
   discussion_list:
     empty:
       membership_is_invitation_by_admin_only: "Kad prisijungtum prie šios grupės, tave turi pakviesti koordinatorius."
+  delete_comment: Ištrinti komentarą
   confirm_delete_comment: Tu tikrai nori ištrinti šį komentarą?
   proposal: Pasiūlymas
   proposals: Pasiūlymai
@@ -41,6 +52,7 @@ lt:
   help:
     getting_started: Darbo pradžia
     have_your_say: Tarkite savo žodį
+    help: Pagalba
     positions_agree_description: "<span>Sutinku</span> reiškia, kad tu sutinki su pasiūlymu."
     positions_disagree_description: "<span>Nesutinku</span> reiškia, kad tu galvoji, jog gali būti geresnių alternatyvų, tačiau neprieštarausi grupės sprendimui."
   new_password: Naujas slaptažodis
@@ -56,6 +68,7 @@ lt:
   vote_form:
     submit: Pateikti nuomonę
   profile_form:
+    picture: Paveikslas
     use_initials: Naudoti inicialus
   simple_form:
     labels:
@@ -67,15 +80,20 @@ lt:
   coordinator: Koordinatorius
   details: Išsamesnė Informacija
   edit: Redaguoti
+  like: Patinka
   options: Parinktys
   remove: Šalinti
   save: Įrašyti
+  unlike: Nebepatinka
   common:
     profile: Profilis
     email_settings: El. pašto nustatymai
+    dashboard: Skydelis
     meridians:
       am: am
       pm: pm
     privacy: Privatumas
+    private: Privati
     permissions: Leidimai
+    public: Vieša
     email: El. paštas

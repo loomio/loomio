@@ -3,35 +3,54 @@ lt:
     time:
       am: am
       pm: pm
+    privacy:
+      private: Privati
+      public: Vieša
     models:
       proposal: Pasiūlymas
     action:
       save: Įrašyti
       save_changes: Įrašyti pakeitimus
+      reply: Atsakyti
       edit: Redaguoti
+      like: Patinka
+      unlike: Nebepatinka
       show_more: Rodyti daugiau
+      new_thread: Nauja gija
       add_subgroup: Pridėti pogrupį
   error_page:
     forbidden: Tu neturi leidimo tai padaryti.
   previous_proposals_card:
     heading: Ankstesni Pasiūlymai
+  proposal_collapsed:
+    expand: Išskleisti
   session_form:
     email_label: "El. paštas:"
     password_label: "Slaptažodis:"
   comment_form:
+    aria_label: Pridėk komentarą
     attachments:
       aria_label: Pridėti failą
       remove_attachment: Šalinti priedą
+    messages:
+      created: Komentaras pridėtas
+    delete_comment: Ištrinti komentarą
+    cancel_reply: Atšaukti Atsakymą
     confirm_delete_message: Tu tikrai nori ištrinti šį komentarą?
     confirm_delete: "Taip, tikrai"
+    submit_button:
+      label: Išsiųsti
   navbar:
     notifications: Pranešimų skydelis
     user_options:
       contact_us: Susisiekti su mumis
+      new_thread: Nauja gija
       new_group: Nauja grupė
       profile: Profilis
       email_settings: El. pašto nustatymai
+      help: Pagalba
     search:
+      discussions: Gijos
       proposals: Pasiūlymai
   start_menu:
     invite_people: Pakviesti Žmones
@@ -43,9 +62,9 @@ lt:
     heading: Tark savo žodį
   vote_form:
     heading: Tark savo žodį
-    i_agree: Aš sutinku
+    i_agree: Aš pritariu
     i_abstain: Aš susilaikau
-    i_disagree: Aš nesutinku
+    i_disagree: Aš nepritariu
     submit_position: Pateikti nuomonę
     aria_statement_label: "Pasirinktinai įvesk teiginį, kuris bus įrašytas kartu su tavo nuomone"
   proposal_positions_panel:
@@ -59,16 +78,19 @@ lt:
     messages:
       updated: Pasiūlymas atnaujintas
     edit_proposal: Redaguoti pasiūlymą
+    title_placeholder: "Pvz: Skristi į mėnulį"
     details_label: Išsamesnė Informacija
-    details_placeholder: "Suteik pakankamai išsamios informacijos, kad visi žinotų ką tai reiškia ir galėtų sutikti arba nesutikti, arba dar kažką."
+    details_placeholder: "Suteik pakankamai išsamios informacijos, kad visi žinotų ką tai reiškia ir galėtų pritarti arba nepritarti, arba dar kažką."
   discussion_form:
+    edit_discussion_title: Redaguoti giją
     title_placeholder: Kokia tema nori diskutuoti?
     privacy_label: Privatumas
   proposal_expanded:
+    collapse: Suskleisti
     edit_proposal: Redaguoti pasiūlymą
-  proposal_position_yes: Sutinku
+  proposal_position_yes: Pritariu
   proposal_position_abstain: Susilaikau
-  proposal_position_no: Nesutinku
+  proposal_position_no: Nepritariu
   group_welcome_modal:
     what_next: "Štai ką daryti toliau:"
     ok_got_it: "Gerai, supratau!"
@@ -85,17 +107,29 @@ lt:
         membership_is_invitation_by_admin_only: "Kad prisijungtum prie šios grupės, tave turi pakviesti koordinatorius."
     group_logo: Grupės logotipas
     description: Aprašas
+    discussions: Gijos
     manage_members: Tvarkyti narius
     subgroups: Pogrupiai
     subgroups_placeholder: Pogrupiai leidžia suskaidyti grupę į įvairias komandas.
     invite_people: Pakviesti žmones
+    visibility_label: Matomumas
     options_label: Parinktys
     options:
       label: Parinktys
       edit_group: Redaguoti Grupės Nustatymus
+      deactivate_group: Pasyvinti Grupę
+    deactivate_group:
+      title: Pasyvinti grupę
+      question: Ar tikrai nori pasyvinti šią grupę?
+      submit: "Taip, Pasyvinti šią grupę"
     leave_group:
       question: Tu tikrai nori palikti šią grupę?
       add_coordinator: Pridėti koordinatorių
+    volume:
+      quiet: Nesiųsti el. laiškų apie šią grupę. Veikla bus rodoma skydelyje.
+    privacy:
+      private: Ši grupė yra matoma tik nariams
+      public: Ši grupė yra matoma saityne
   edit_group_form:
     title: Redaguoti Grupės Nustatymus
     profile:
@@ -156,10 +190,15 @@ lt:
       new_password_label: Naujas slaptažodis
       password_confirmation_label: Patvirtink naują slaptažodį
       submit: Atnaujinti slaptažodį
+    deactivate_user:
+      title: Pasyvinti paskyrą
+      submit: Pasyvinti paskyrą
     change_picture_link: Keisti paveikslą
     change_password_link: Keisti slaptažodį
+    deactivate_user_link: Pasyvinti paskyrą...
     profile: Profilis
     edit_profile: Redaguoti Profilį
+    picture_label: Paveikslas
     email_label: El. paštas
     update_profile: Atnaujinti profilį
   email_settings_page:
@@ -169,26 +208,40 @@ lt:
     messages:
       updated: El. pašto nustatymai atnaujinti
   dashboard_page:
+    aria_label: Skydelis
+    load_more: Įkelti daugiau gijų
     filtering:
       proposals: Pasiūlymai
   groups_page:
     page_header: Tavo grupės
   discussion:
+    activity: Veikla
     proposals: Pasiūlymai
     previous_proposals: Ankstesni Pasiūlymai
+    you_like_this: Tau tai patinka.
+    volume:
+      quiet: Nesiųsti el. laiškų apie šią giją.
   thread_group:
     aria_label: Grupės pavadinimas
+  thread_context:
+    thread_options: Gijos parinktys
   delete_comment_dialog:
+    title: Ištrinti komentarą
     question: Tu tikrai nori ištrinti šį komentarą?
+    confirm: Ištrinti komentarą
+  new_comment_item:
+    context_menu:
+      delete_comment: Ištrinti komentarą
   new_vote_item:
-    agree: "<strong>{{name}}</strong> sutiko"
+    agree: "<strong>{{name}}</strong> pritarė"
     abstain: "<strong>{{name}}</strong> susilaikė"
-    disagree: "<strong>{{name}}</strong> nesutiko"
+    disagree: "<strong>{{name}}</strong> nepritarė"
   contact_message_form:
     email_label: Tavo el. pašto adresas
     email_placeholder: Įvesk savo el. pašto adresą...
   help_page:
     getting_started: Darbo pradžia
     have_your_say: Tarkite savo žodį
-    positions_agree_description: "<span>Sutinku</span> reiškia, kad tau patinka pasiūlymas."
-    positions_disagree_description: "<span>Nesutinku</span> reiškia, kad tu galvoji, jog gali būti geresnių alternatyvų, tačiau neprieštarausi grupės sprendimui."
+    help: Pagalba
+    positions_agree_description: "<span>Pritariu</span> reiškia, kad tau patinka pasiūlymas."
+    positions_disagree_description: "<span>Nepritariu</span> reiškia, kad tu galvoji, jog gali būti geresnių alternatyvų, tačiau neprieštarausi grupės sprendimui."

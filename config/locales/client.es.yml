@@ -34,6 +34,7 @@ es:
       view_all: Ver todo
       new_thread: Nuevo hilo
       add_subgroup: Añadir subgrupo
+      loading: Cargando
   error_page:
     forbidden: No tienes permisos para hacer esto.
     page_not_found: No encontramos lo que estás buscando. Podría haber sido borrado o movido.

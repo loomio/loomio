@@ -3,6 +3,8 @@ de:
     time:
       am: Vormittag
       pm: Nachmitag
+    closing_in: "Ende um {{time}}"
+    closed_ago: "Endete um {{time}}"
     volume: Lautstärke
     group: Gruppe
     groups: Gruppen
@@ -15,22 +17,43 @@ de:
       today: Heute
       yesterday: Gestern
       thisweek: In dieser Woche
+      thismonth: Diesen Monat
+      older: Älter
     models:
       proposal: Vorschlag
     action:
       save: Sichern
+      save_changes: Änderungen speichern
+      reply: Antworten
       edit: Bearbeiten
       like: Gefällt mir
       unlike: Gefällt mir nicht
       cancel: Abbrechen
+      show_more: Mehr zeigen
+      view_all: Zeige alle
+      new_thread: Neuer Strang
+      add_subgroup: Untergruppe anlegen
   error_page:
     forbidden: "Du bist nicht berechtigt, das zu tun."
     page_not_found: Das konnten wir nicht finden. Es wurden entweder gelöscht oder verschoben.
+    internal_server_error: Entschuldige bitte. Etwas lief falsch. Bitte erneut versuchen.
+  start_proposal_card:
+    title: Einen Vorschlag machen
   proposal_outcome_panel:
     heading: Ergebnis
+    set_outcome_btn: Das Voschlagsergebnis festhalten
+    edit_outcome_link: Das Vorschlagergebnis bearbeiten
   proposal_outcome_form:
+    set_outcome: Das Voschlagsergebnis festhalten
+    update_outcome: Vorschlagergebnis aktualisieren
     outcome_label: Ergebnis des Vorschlags
     publish_outcome: Ergebnis bekanntgeben
+    messages:
+      created: Ergebnis ist veröffentlicht
+  previous_proposals_card:
+    heading: Vorherige Vorschläge
+  proposal_collapsed:
+    expand: Erweitern
   context_card:
     heading: Kontext
   volume_levels:
@@ -40,16 +63,36 @@ de:
     mute: Stumm
   inbox:
     clear: Leeren
+    latest: Letzte
     unread: Ungelesen
+    closing_in: Wird geschlossen
+  session_form:
+    email_label: "eMail:"
+    password_label: "Passwort:"
+    remember_me: Angemeldet bleiben
+    sign_in: Login
   comment_form:
+    aria_label: Kommentar hinzufügen
+    attachments:
+      aria_label: Datei anhängen
+      remove_attachment: Anhang entfernen
+    messages:
+      created: Kommentar hinzugefügt
+      updated: Kommentar aktualisiert
+      destroyed: Kommenar gelöscht
     edit_comment: Kommentar bearbeiten
     delete_comment: Kommentar löschen
     confirm_delete_message: "Bist Du sicher, dass Du diesen Kommentar löschen willst?"
+    confirm_delete: "Ja, ich bin mir sicher"
   navbar:
     unread: Ungelesen
     groups: Gruppen
+    recent_title: Gehe zum Schreibtisch
+    unread_title: Ungelesene Aktivitäten lesen
+    groups_title: Deine Gruppen sehen
     user_options:
       contact_us: Kontaktiere uns
+      new_thread: Neuer Strang
       new_group: Neue Gruppe
       profile: Profil
       help: Hilfe
@@ -78,6 +121,7 @@ de:
     close_proposal: Vorschlag schließen
   proposal_form:
     start_proposal: Vorschlag machen
+    start_a_proposal: Einen Vorschlag machen
     edit_proposal: Vorschlag bearbeiten
     title_label: Titel
     closes_at_label: Endet um
@@ -161,6 +205,7 @@ de:
       yesterday: Gestern
   discussion:
     proposals: Vorschläge
+    previous_proposals: Vorherige Vorschläge
     volume:
       loud: "Eine E-Mail, wenn es Tätigkeit in diesem Thread gibt"
       normal: "Einfach eine E-Mail, wenn ein Vorschlag erstellt wird, zu schließen, oder ein Ergebnis wird gebucht."

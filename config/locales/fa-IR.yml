@@ -1,4 +1,6 @@
 fa-IR:
+  email_settings:
+    title: تنظیمات رایانامه
   errors:
     messages:
       email: رایانامه معتبر نیست
@@ -99,6 +101,15 @@ fa-IR:
   tagline: ساختن دنیایی که هر کسی به راحتی می تواند در تصمیم گیری هایی که او را تحت تاثیر می گذارد شرکت کند.
   click_to_dismiss: برای در نظر نگرفتن این پیام این جا کلیک کنید
   generic_confirm: مطمئن هستید؟
+  user_profile:
+    deactivation:
+      title: معلق‌سازی حساب کاربری شما
+  group_form:
+    parent_members_can_see_discussions:
+      label: حریم بحث
+  group_permissions:
+    header: دسترسی‌های گروه
+  invite_people: دیگران را دعوت کنید
   add_new_member: افزودن عضو جدید
   invite_members_to_group: "دعوت اعضا به %{which_group}"
   email_members_in_group: "فرستادن رایانامه به اعضای %{which_group}"
@@ -140,6 +151,8 @@ fa-IR:
   group_description: شرح گروه
   group_request:
     header: راه اندازی گروه
+  volume:
+    volume: مقدار
   discussion_items:
     new_discussion: بحث را راه انداخت
     new_motion: یک پیشنهاد ارایه داد
@@ -148,13 +161,19 @@ fa-IR:
       by_expiry: پیشنهاد بسته شد
     motion_close_date_edited: تاریخ بسته شدن پیشنهاد را تغییر داد
     discussion_title_edited: عنوان بحث را عوض کرد
+  proposals: پیشنهاد‌ها
+  help:
+    getting_started: شروع کار
   log_in: ورود
+  invitation:
+    pending_invitations: دعوت‌نامه‌های در حال انتظار
   discussion_form:
     new:
       header: راه انداختن یک بحث
   about_loomio: درباره لومیو
   start_a_group: راه اندازی گروه
   common:
+    email_settings: تنظیمات رایانامه
     privacy: محرمانگی
   group_categories:
     science: علوم
