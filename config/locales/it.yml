@@ -259,6 +259,7 @@ it:
     group_name: Nome gruppo
     success:
       header: "Hai quasi finito! Controlla la tua email."
+    start_making_decisions: "Per iniziare a prendere decisioni insieme su Loomio, crea un gruppo"
   group_form:
     name: Nome gruppo
     description: Descrizione
@@ -432,6 +433,8 @@ it:
     loud_description: Mandami una mail in caso ci sia una qualsiasi attività in questa discussione.
     quiet_description: Non mandare mail a proposito di questa discussione.
     mute_description: "Elimina questa discussione dalla dashboard e non mandarmi notifiche a meno che non venga @mentioned."
+  group_volume:
+    loud_description: Invia una mail in caso di qualsiasi tipo di attività.
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> si è detto/a favorevole alla proposta."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> si è astenuto/a sulla proposta."

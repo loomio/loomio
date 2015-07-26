@@ -103,6 +103,15 @@ it:
     header: Notifiche
     new_discussion: "<strong>{{name}}</strong> ha creato una discussione <strong>{{discussion}}</strong>"
     new_motion: "<strong>{{name}}</strong> ha creato una proposta <strong>{{proposal}}</strong>"
+    motion_closed_by_user: "<strong>{{name}}</strong> ha chiuso la proposta <strong>{{proposal}}</strong>"
+    new_comment: "<strong>{{name}}</strong> ha inserito un commento nella discussione <strong>{{discussion}}</strong>"
+    comment_replied_to: "<strong>{{name}}</strong> ha risposto al tuo commento nella discussione su <strong>{{discussion}}</strong>"
+    comment_liked: "A <strong>{{name}}</strong> piace il tuo commento nella discussione <strong>{{discussion}}</strong>"
+    membership_requested: "<strong>{{name}}</strong> ha chiesto di entrare nel gruppo <strong>{{group}}</strong>"
+    membership_request_approved: "<strong>{{name}}</strong> ha approvato la tua richiesta di unirti al gruppo  <strong>{{group}}</strong>"
+    user_added_to_group: "<strong>{{name}}</strong> ti ha aggiunto al gruppo <strong>{{group}}</strong>"
+    user_added_to_group_no_inviter: "Sei stato/a aggiunto/a al gruppo <strong>{{group}}</strong>"
+    motion_closing_soon: "La proposta  <strong>{{proposal}}</strong> è in chiusura."
   position_buttons_panel:
     heading: Dite la vostra
   vote_form:
@@ -134,6 +143,8 @@ it:
     participation_statement: "{{percentage}}% dei votanti ha espresso la propria posizione ({{number}}/{{total}})"
   close_proposal_form:
     close_proposal: Chiudi la proposta
+    helptext: Sei sicuro/a di volere chiudere la proposta adesso?
+    close_proposal_submit: "Si, chiudi la proposta"
     messages:
       success: Proposta chiusa
   extend_proposal_form:
@@ -142,18 +153,21 @@ it:
     start_proposal: Lancia una proposta
     start_a_proposal: Lancia una proposta
     edit_proposal: Modifica proposta
+    editing_title_and_description_forbidden: "Non puoi cambiare il titolo di una proposta dopo che altre persone hanno espresso il loro voto su di essa. Se qualcosa è cambiato, chiudi questa proposta e fanne iniziare un'altra"
     title_placeholder: "Ad esempio: andiamo sulla Luna"
     title_label: Titolo
     closes_at_label: Chiude a
     details_label: Dettagli
     details_placeholder: "Fornisci informazioni sufficienti perché tutti sappiano esattamente cosa significa essere o non essere d'accordo."
   discussion_record:
+    created: "La discussione {{title}} è stata creata con successo nel gruppo {{groupName}}."
     updated: "Salva i cambiamenti a {{title}}"
   discussion_form:
     messages:
       created: Discussione lanciata
       updated: Discussione aggiornata
     new_discussion_title: Lancia una nuova discussione
+    edit_discussion_title: Modifica il nome della discussione
     discussion_helptext: La discussione è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni su esso.
     group_label: Gruppo
     group_placeholder: Scegli un gruppo
@@ -164,36 +178,99 @@ it:
     privacy_label: Privacy
     privacy:
       will_be_private_to_group: "La discussione sarà visibile solo ai membri del gruppo {{groupName}}."
+      will_be_private_to_parent_group: "La discussione sarà visibile ai componenti del sottogruppo {{parentGroupName}}  e del gruppo {{groupName}}."
       will_be_public: Tutti possono vedere questa discussione
+    new_discussion_submit: Inizia una discussione
+    edit_discussion_submit: Modifica il nome della discussione
   proposal_expanded:
+    started_by: "Iniziato da <strong>{{name}}</strong>"
     edit_proposal: Modifica proposta
     close_proposal: Chiudi la proposta
+  proposal_position_yes: favorevole
+  proposal_position_abstain: astenuto
+  proposal_position_no: contrario
+  proposal_position_block: blocco
+  group_welcome_modal:
+    heading: "Benvenuto/a nel tuo nuovo gruppo!"
+    instructions: "Sei il coordinatore o la coordinatrice del gruppo, questo significa che sta a te configurare il gruppo e invitare in esso altre persone"
+    what_next: "Ecco cosa c'è ancora da fare:"
+    first_step: "Inserisci la descrizione del gruppo, il logo e la foto di copertina"
+    second_step: Leggi la discussione di esempio e fai pratica sul come prendere una decisione
+    third_step: Invita altre persone a unirsi al gruppo
+    ok_got_it: "E vai!"
   start_group_form:
     heading: Crea un gruppo
+    group_helptext: "Per iniziare a prendere decisioni insieme su Loomio, crea un gruppo"
+    group_payment_reminder: "In 30 giorni, quando avrai verificato come Loomio può migliorare l'efficacia del tuo gruppo, ti chiederemo di scegliere il  <a href='#'>payment plan</a> migliore per te."
+    name_label: Nome del gruppo
     submit: Crea un gruppo
   join_group_button:
     join_group: Unisciti al gruppo
     ask_to_join_group: Chiedi di unirti al gruppo
+    messages:
+      joined_group: "Sei membro/a del gruppo {{group}}"
   membership_request_form:
     heading: Chiedi di unirti al gruppo
     name_label: Nome
     email_label: Email
     introduction_label: Presentati
     submit_button: Chiedi di unirti al gruppo
+    messages:
+      membership_requested: "Hai richiesto di partecipare al gruppo {{group}}"
   group_page:
     thread_list:
       empty:
+        no_discussions_in_group: Questo gruppo non è ancora impegnato in alcuna discussione.
+        no_discussions_matching_filters_html: "Non ci sono discussioni che corrispondono a questi filtri. <a href='%{link}'>Togli i filtri</a>."
+        no_public_discussions: In questo gruppo non sono presenti discussioni pubbliche.
+        discussions_are_private: Tutte le discussioni in questo gruppo sono private.
+        join_group: Per vedere le discussioni private è necessario aderire al gruppo.
+        request_membership: Per vedere le discussioni private richiedi di aderire al gruppo.
         membership_is_invitation_only: Per unirti a questo gruppo devi essere invitato da un membro.
         membership_is_invitation_by_admin_only: Per unirti a questo gruppo devi essere invitato da un coordinatore.
+    messages:
+      privacy:
+        members: Ora il gruppo è visibile solo alle persone che ne fanno parte.
+        parent_members: Il gruppo è ora visibile solo ai membri della tua organizzazione.
+        public: "Ora il gruppo è pubblico "
+      leave_group_success: Hai lasciato il gruppo.
+      deactivate_group_success: Gruppo disattivato
+    group_logo: Logo del gruppo
+    header:
+      aria_label: Intestazione della pagina del gruppo
     description: Descrizione
+    description_placeholder: Usa questo spazio per descrivere lo scopo del gruppo in modo che i suoi membri sappiano il motivo per cui sono qui.
     discussions: Discussioni
+    discussions_placeholder: Il thread (discussione) è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni su esso.
+    members: "Membri ({{count}}) "
+    members_placeholder: "Sei da solo qui: invita altre persone!"
     manage_members: Gestisci i membri
+    subgroups: Sottogruppi
+    subgroups_placeholder: I sottogruppi permettono di dividere il gruppo più grande in gruppi di lavoro.
     invite_people: Invita persone
+    visibility_label: Visibilità
     options_label: Opzioni
     options:
       label: Opzioni
+      edit_group: Modifica le impostazioni del gruppo
+      leave_group: Abbandona il gruppo
+      deactivate_group: Disattiva il gruppo
+    deactivate_group:
+      title: Disattiva il gruppo
+      question: Sei sicuro/a di volere disattivare il gruppo?
+      submit: "Si, disattiva il gruppo"
     leave_group:
       title: Abbandona il gruppo
+      question: Sei sicuro/a di volere lasciare questo gruppo?
+      submit: "Si, voglio lasciare il gruppo"
+      cannot_leave_group: "Non puoi lasciare il gruppo perché ne sei l'ultimo coordinatore/ice. Devi scegliere un altro coordinatore/coordinatrice o disattivare prima il gruppo."
+      add_coordinator: Aggiungi un coordinatore/ice.
+    volume:
+      loud: Invia una mail in caso di qualsiasi tipo di attività.
+      loud_aria_description: Il volume delle notifiche per questo gruppo è settato su Alto. Riceverai una mail in caso di qualsiasi attività nel gruppo.
+      normal: "Invia emails solo in caso di attività importanti: nuove discussioni e proposte, risultati di votazioni ecc."
+  edit_group_form:
+    title: Modifica le impostazioni del gruppo
   membership_requests_page:
     approve: Approva
     ignore: Ignora
@@ -237,18 +314,47 @@ it:
     aria_label: Dashboard
     mark_as_read: Contrassegnato come letto
     filtering:
+      participating_description: Visualizza solo le discussioni cui hai partecipato
       proposals: Proposte
+      proposals_description: Visualizza solo le discussioni che contengono proposte attive
+      muted: Silenziato
+      muted_description: Visualizza solo le discussioni che sono state silenziate.
+    aria_thread:
+      title: "Nome della discussione: {{title}}."
+      unread: "{{count}} item non letti."
+      current_proposal: "Attuale proposta: {{name}}."
+      you_voted: "Il tuo voto: {{position}}."
     threads_from:
+      group: Discussioni da
       today: Oggi
       yesterday: Ieri
+      thisweek: Questa Settimana
+      thismonth: Questo mese
+      older: Più di un mese fa
+  inbox_page:
+    no_threads: "Woohoo! Hai letto tutte le discussioni nella tua casella di posta.."
+    unread_threads: Discussioni non lette
+  groups_page:
+    page_header: I tuoi gruppi
   discussion:
+    activity: Attività
     proposals: Proposte
     previous_proposals: Proposte precedenti
+    you_like_this: Ti piace.
+    liked_by_you_and_someone: "Piace a te e a  {{name}}."
+    liked_by_you_and_others: "Piace a te, {{joinedNames}} e {{name}}."
+    liked_by_someone: "Piace a {{name}}."
+    liked_by_two_others: "Piace a {{name_1}} e {{name_2}}."
+    liked_by_many_others: "Piace a {{joinedNames}} e {{name}}."
+    liked_by_name: "Piace a {{name}}."
+    liked_by_names_and_name: "Piace a {{joinedNames}} e {{name}}."
+    started_by: "Iniziato da <strong>{{name}}</strong>"
     volume:
       loud: Mandami una mail in caso ci sia una qualsiasi attività in questa discussione.
       loud_aria_description: "Il volume delle notifiche di questa discussione è impostato su Alto. Ciò significa che riceverai una mail ogni volta che c'è attività in questa discussione."
       normal_aria_description: "Il volume delle notifiche di questa discussione è impostato su Normale. Ciò significa che riceverai una mail quando viene creata una proposta, quando sta per scadere, oppure se viene postato il risultato di una votazione o di una discussione."
       quiet: Non mandare mail a proposito di questa discussione.
+      quiet_aria_description: Il volume delle notifiche di questa discussione è impostato su Basso. Non riceverai email a proposito di questa discussione a meno che tu non venga menzionato/a da qualcuno/a.
       mute: "Elimina questa discussione dalla dashboard e non mandarmi notifiche a meno che non venga @mentioned."
       mute_aria_description: "Il volume delle notifiche di questa discussione è impostato su Muto. Non riceverai email a proposito di questa discussione a meno che tu non venga menzionato/a da qualcuno/a, e questa discussione verrà rimossa dalla tua dashboard."
       updated: Volume della discussione aggiornato.

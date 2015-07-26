@@ -34,6 +34,7 @@ pt-BR:
       view_all: Ver Tudo
       new_thread: Novo tópico
       add_subgroup: Adicionar subgrupo
+      loading: Carregando
   error_page:
     forbidden: Você não tem permissão para fazer isso.
     page_not_found: Não fomos capazes de encontrar. Pode ter sido excluído ou movido.

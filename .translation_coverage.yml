@@ -35,14 +35,14 @@ cs:
   main_1_0: 28
 da:
   frontpage: 52
-  help docs: 9
-  main: 88
-  main_1_0: 33
+  help docs: 11
+  main: 89
+  main_1_0: 41
 de:
   frontpage: 58
   help docs: 45
   main: 96
-  main_1_0: 34
+  main_1_0: 41
 el:
   frontpage: 78
   help docs: 42
@@ -70,9 +70,9 @@ es:
   main_1_0: 100
 fa-IR:
   frontpage: 52
-  help docs: 1
-  main: 13
-  main_1_0: 1
+  help docs: 41
+  main: 14
+  main_1_0: 3
 fi:
   frontpage: 0
   help docs: 0
@@ -122,7 +122,7 @@ it:
   frontpage: 60
   help docs: 11
   main: 90
-  main_1_0: 51
+  main_1_0: 69
 it-CH:
   frontpage: 0
   help docs: 0
@@ -147,8 +147,8 @@ ko:
 lt:
   frontpage: 18
   help docs: 7
-  main: 5
-  main_1_0: 25
+  main: 7
+  main_1_0: 33
 lv:
   frontpage: 0
   help docs: 0
@@ -184,7 +184,7 @@ pl:
   frontpage: 100
   help docs: 56
   main: 59
-  main_1_0: 100
+  main_1_0: 99
 pt-BR:
   frontpage: 100
   help docs: 100

@@ -13,6 +13,7 @@ da:
       private: Privat
       public: Offentlig
       organisation: Organisation
+    selected: Valgt(e)
     date_range:
       today: Idag
       yesterday: I går
@@ -41,30 +42,78 @@ da:
     title: Start et forslag
   proposal_outcome_panel:
     heading: Resultat
+    set_outcome_btn: Angiv forslagets resultat
+    edit_outcome_link: Ret forslagets resultat
   proposal_outcome_form:
+    set_outcome: Sæt forslagets resultat
+    update_outcome: Opdater forslagets resultat
     outcome_label: Resultat af forslaget
+    outcome_placeholder: Informer alle om forslagets resultat
     publish_outcome: Offentliggør resultat
+    messages:
+      created: Udfald publiceret
+  previous_proposals_card:
+    heading: Tidligere Forslag
+  proposal_collapsed:
+    expand: Fold ud
   context_card:
     heading: Kontekst
+  volume_levels:
+    loud: Høj
+    normal: Normal
+    quiet: Lav
+    mute: Slået fra
   inbox:
     clear: ryd
+    latest: Sidste
     unread: Ulæst
+    closing_in: Ved at lukke
+  session_form:
+    email_label: Email
+    password_label: Password
+    remember_me: Husk Mig
+    sign_in: Login
   comment_form:
+    aria_label: Tilføj en kommentar
+    attachments:
+      aria_label: Vedhæft en fil
+      remove_attachment: Fjern vedhæftet fil
+    messages:
+      created: Kommentar tilføjet
+      updated: Kommentar opdateret
+      destroyed: Kommentar slettet
     edit_comment: Rediger kommentar
     delete_comment: Slet kommentar
+    cancel_reply: Drop Svar
     confirm_delete_message: "Er du sikker på, at du vil slette denne kommentar?"
+    confirm_delete: "Ja, jeg er sikker"
+    in_reply_to: "Som svar på <strong>{{name}}</strong>:"
+    submit_button:
+      label: Post
   navbar:
+    recent: Nye
     unread: Ulæst
     groups: Grupper
+    recent_title: Gå til oversigtssiden
+    unread_title: Se ulæst aktivitet
+    groups_title: Se dine grupper
+    start_thread: Start en ny tråd
+    notifications: Meddelelsespanel
     user_options:
+      label: Brugerindstillingsmenu
       contact_us: Kontakt os
       new_thread: Ny tråd
       new_group: Ny gruppe
       profile: Profil
+      email_settings: Emailindstillinger
       help: Hjælp
     search:
+      close: Luk søgepanelet
       placeholder: Søg
+      loading: Henter resultater
       discussions: Diskussioner
+      proposals: Forslag
+      comments: Kommentarer
   notifications:
     header: Notifikationer
   position_buttons_panel:
@@ -153,12 +202,19 @@ da:
     name_label: Navn
     email_label: E-mail
     locale_label: Sprog
+  email_settings_page:
+    header: Emailindstillinger
   dashboard_page:
     aria_label: Instrumentbræt
     mark_as_read: Marker som læst
+    filtering:
+      proposals: Forslag
     threads_from:
       today: Idag
       yesterday: I går
+  discussion:
+    proposals: Forslag
+    previous_proposals: Tidligere Forslag
   thread_group:
     aria_label: Gruppenavn
   delete_comment_dialog:
