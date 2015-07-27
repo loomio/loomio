@@ -4,7 +4,7 @@
   %li Awareness - homepage visits to www.loomio.org during cohort period
   %li Acquisition - number of organisations created during the cohort period
   %li Activation - number of organisations which had at least 5 sessions
-  %li Retention - number of organisations which had at least 20 new sessions after their 20th day.
+  %li Retention - number of organisations which had at least 20 new sessions between their 20th and 40th day.
   %li Revenue - number of organisations from cohort that decided to pay
   %li Referral - number of organisations started by users who are part of a group in this cohort?
 
@@ -39,5 +39,7 @@
         %td
           = retained_count = cohort.retained_organisations.count
           (#{safe_pct(retained_count, activated_count)}%)
-        %td= 0 # cohort.paying_organisations.count
-        %td= 0 # cohort.referral.count
+        %td N/A
+          -# cohort.paying_organisations.count
+        %td N/A
+          -# cohort.referral.count
