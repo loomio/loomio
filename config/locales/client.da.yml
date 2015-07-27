@@ -114,8 +114,16 @@ da:
       discussions: Diskussioner
       proposals: Forslag
       comments: Kommentarer
+      no_results: Ingen resultater fundet
+  start_menu:
+    start_group: Start gruppe
+    start_subgroup: Start Undergruppe
+    start_thread: Start Tråd
+    invite_people: Inviter Folk
   notifications:
     header: Notifikationer
+    new_discussion: "<strong>{{name}}</strong> startede en diskussion <strong>{{discussion}}</strong>"
+    new_motion: "<strong>{{name}}</strong> oprettede et forslag <strong>{{proposal}}</strong>"
   position_buttons_panel:
     heading: Sig din mening
   vote_form:
@@ -149,6 +157,7 @@ da:
     close_proposal: Luk forslag
   start_group_form:
     heading: Start en gruppe
+    submit: Start gruppe
   join_group_button:
     join_group: Bliv medlem af gruppe
     ask_to_join_group: Anmod om gruppemedlemskab
@@ -180,6 +189,8 @@ da:
     name_label: Navn
     description_label: Beskrivelse
     category_label: Kategori
+  invitation:
+    invite_people: Inviter Folk
   memberships_page:
     members: Medlemmer
     name_label: Navn

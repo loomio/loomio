@@ -108,7 +108,7 @@ es:
       new_thread: Nuevo hilo
       new_group: Nuevo grupo
       profile: Perfil
-      email_settings: Ajustes de correo
+      email_settings: Configuración de correo electrónico
       help: Ayuda
     search:
       close: Cerrar panel de búsqueda
@@ -528,7 +528,7 @@ es:
     volume:
       loud: "Enviar correo electrónico cuando hay actividad en este hilo. "
       loud_aria_description: El volumen de notificaciones para este hilo está establecido como Alto. Esto significa que se te enviará un correo electrónico cada vez que haya actividad en él.
-      normal: "Solo enviar correo electrónico cuando una propuesta es creada, va a ser cerrada o se ha notificado un resultado."
+      normal: "Enviar correo electrónico sólo cuando se cree una propuesta, esté a punto de cerrar o se publique un resultado."
       normal_aria_description: "El volumen de notificaciones para este hilo está establecido como Normal. Se te enviará un correo electrónico cuando se cree una propuesta, cuando esté a punto de cerrar o cuando se publique un resultado."
       quiet: No enviar correo electrónico sobre este hilo.
       quiet_aria_description: El volumen de notificaciones para este hilo está establecido como Bajo. No se te enviarán correos electrónicos sobre este hilo a menos que alguien te mencione.

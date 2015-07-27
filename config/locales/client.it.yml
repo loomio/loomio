@@ -60,6 +60,7 @@ it:
   session_form:
     email_label: "Email:"
     password_label: Password
+    remember_me: Ricordami
     sign_in: Login
   comment_form:
     aria_label: Aggiungi un commento
@@ -83,6 +84,7 @@ it:
     recent_title: Vai alla dashboard
     groups_title: Visualizza i tuoi gruppi
     start_thread: Lancia una nuova discussione
+    notifications: Pannello delle notifiche
     user_options:
       contact_us: Contattaci
       new_thread: Nuova discussione
@@ -91,6 +93,7 @@ it:
       email_settings: Impostazioni Email
       help: Aiuto
     search:
+      close: Chiudi ricerca
       placeholder: Ricerca
       discussions: Discussioni
       proposals: Proposte
@@ -99,11 +102,13 @@ it:
     start_group: Crea un gruppo
     start_subgroup: Crea un sottogruppo
     start_thread: Inizia una discussione
+    invite_people: Invita persone
   notifications:
     header: Notifiche
     new_discussion: "<strong>{{name}}</strong> ha creato una discussione <strong>{{discussion}}</strong>"
     new_motion: "<strong>{{name}}</strong> ha creato una proposta <strong>{{proposal}}</strong>"
     motion_closed_by_user: "<strong>{{name}}</strong> ha chiuso la proposta <strong>{{proposal}}</strong>"
+    motion_closed_by_expiry: "La proposta <strong>{{proposal}}</strong> è chiusa."
     new_comment: "<strong>{{name}}</strong> ha inserito un commento nella discussione <strong>{{discussion}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> ha risposto al tuo commento nella discussione su <strong>{{discussion}}</strong>"
     comment_liked: "A <strong>{{name}}</strong> piace il tuo commento nella discussione <strong>{{discussion}}</strong>"
@@ -150,6 +155,8 @@ it:
   extend_proposal_form:
     title: Cambia la data di conclusione
   proposal_form:
+    messages:
+      updated: Proposta aggiornata
     start_proposal: Lancia una proposta
     start_a_proposal: Lancia una proposta
     edit_proposal: Modifica proposta
@@ -184,6 +191,7 @@ it:
     edit_discussion_submit: Modifica il nome della discussione
   proposal_expanded:
     started_by: "Iniziato da <strong>{{name}}</strong>"
+    only_voter_is_you: Nessun altro membro ha ancora votato.
     edit_proposal: Modifica proposta
     close_proposal: Chiudi la proposta
   proposal_position_yes: favorevole
@@ -271,23 +279,84 @@ it:
       normal: "Invia emails solo in caso di attività importanti: nuove discussioni e proposte, risultati di votazioni ecc."
   edit_group_form:
     title: Modifica le impostazioni del gruppo
+    profile:
+      label: Profilo
+      name: Nome
+    privacy:
+      private_visibility: Gruppo chiuso - non sarà presente nella lista
+      membership_by_request: Aperto - chiunque può unirsi al gruppo
+      membership_by_request_subgroup: "Aperto ai membri del gruppo {{parentGroupName}}"
+      membership_by_invitation: Solo su invito - i nuovi membri devono essere invitati
+      discussion_privacy_options: Chi può vedere le discussioni?
+      public_discussions_subgroup: "Chiunque nel gruppo {{parentGroupName}} può vedere le discussioni"
+      public_or_private_discussions: Permetti discussioni pubbliche e private
+      private_discussions: Solo i membri del gruppo possono vedere le discussioni
+    permissions:
+      label: Permessi
+      helptext: Cosa possono fare i membri del gruppo?
+      members_can_add_members: Invita ed approva nuovi membri
+      members_can_create_subgroups: Crea sottogruppi
+      members_can_vote: Vota le proposte
+    messages:
+      success: Gruppo aggiornato
+  membership_requests_card:
+    heading: "({{count}}) Richieste di partecipazione"
+    manage_requests: Gestisci le richieste
   membership_requests_page:
+    heading: Richieste di partecipazione
     approve: Approva
     ignore: Ignora
+    no_pending_requests: Non ci sono richieste di partecipazione inevase.
+    messages:
+      request_approved_success: Richiesta di partecipazione approvata
+      request_ignored_success: Richiesta di partecipazione ignorata
   group_form:
+    messages:
+      new_group: Gruppo creato
+      update_group: Gruppo aggiornato
+    new_group_title: Crea un nuovo gruppo
     profile_label: Profilo
     name_label: Nome
+    name_placeholder: Digita il nome del tuo gruppo
     description_label: Descrizione
+    description_placeholder: Descrivi il tuo gruppo
     category_label: Categoria
+  invitation:
+    invite_people: Invita persone
+    find_people: Trova persone
+    import_contacts_header: Collega il tuo address book
+    import_contacts: Importa contatti
+    instructions: Inserisci nomi o indirizzi email
+    invitation_message: Messaggio di invito
+    default_message: "Ciao, vieni a prendere decisioni con noi! Usiamo un tool di decision-making collaborativo chiamato Loomio."
+    messages:
+      members_added_and_emails_sent: "{{members}} membro(i) aggiunto(i) e {{emails}} invito(i) inviato(i)"
+      members_added: "{{members}} membro(i) aggiunto(i)"
+      emails_sent: "{{emails}} invito(i) partito(i)"
+      no_invitations: "Nessun invito inviato!"
   memberships_page:
     members: Membri
     name_label: Nome
     coordinator_label: Coordinatore
     remove_member_label: Rimuovi
+    fragment_placeholder: Filtra gli utenti per nome o per username...
+    messages:
+      remove_member_success: "{{name}} rimosso."
+      make_admin_success: "{{name}} è ora coordinatore/ice"
+      remove_admin_success: "{{name}} non è più un coordinatore/trice"
     remove_membership:
+      title: Espelli membro
+      question: "Sei sicuro/a di volere rimuovere {{name}} dal gruppo {{group}}?"
       submit: Rimuovi
   profile_page:
+    messages:
+      updated: Profilo aggiornato
+      picture_changed: Immagine del profilo aggiornata
+      password_changed: Password aggiornata
+      deactivated: Account disattivato
     change_picture:
+      title: Cambia immagine
+      helptext: "Puoi caricare una tua foto nel profilo, oppure se hai un account  <a href=\"https://en.gravatar.com/support/what-is-gravatar/\">Gravatar</a>  puoi usare quello."
       use_initials: Usa iniziali
       use_gravatar: Usa Gravatar
       use_uploaded: Carica una nuova immagine
@@ -301,19 +370,35 @@ it:
     deactivate_user:
       title: "Disattiva l'account"
       question: Ci diresti perché stai disattivando il tuo account?
+      placeholder: "Rispondere a questa domanda è opzionale. Ogni informazione che condividi ci aiuterà a migliorare Loomio :)"
       submit: "Disattiva l'account"
+    change_picture_link: Cambia immagine
+    change_password_link: Cambia password
+    deactivate_user_link: Disattiva account...
     profile: Profilo
+    edit_profile: Modifica profilo
     picture_label: Immagine
     name_label: Nome
     username_label: Nome Utente
     email_label: Email
     locale_label: Lingua
+    update_profile: Aggiorna profilo
   email_settings_page:
     header: Impostazioni Email
+    email: Posta elettronica
+    daily_summary_label: "Sommario giornaliero "
+    proposal_closing_soon_label: Prima della chiusura di una proposta
+    update_settings: Aggiorna le impostazioni della posta elettronica
+    messages:
+      updated: Impostazioni della posta elettronica aggiornate.
   dashboard_page:
     aria_label: Dashboard
+    no_threads:
+      show_proposals: Non ci sono proposte attive in questo momento.
     mark_as_read: Contrassegnato come letto
     filtering:
+      filter_threads: Filtra discussioni
+      all: Discussioni recenti
       participating_description: Visualizza solo le discussioni cui hai partecipato
       proposals: Proposte
       proposals_description: Visualizza solo le discussioni che contengono proposte attive
