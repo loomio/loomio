@@ -721,7 +721,7 @@ es:
   create_an_account_html: Crear una cuenta Loomio Beta
   log_in: Iniciar sesión
   password_reset:
-    email_guidelines_html: "<p>ingresa la dirección de correo electrónico de tu cuenta en Loomio en el espacio debajo, y se te sera mandado un enlace para restablecer tu contraseña.</p>\n<p>Si normalmente ingresas vía Facebook, Google, Twitter o Persona, ingresa el correo electrónico asociado con esa cuenta.</p>\n"
+    email_guidelines_html: "<p>Introduce la dirección de correo electrónico de tu cuenta de Loomio en el espacio de abajo y se te enviará un enlace para restablecer tu contraseña.</p>\n<p>Si normalmente inicias sesión mediante Facebook, Google, Twitter o Persona, introduce el correo electrónico asociado con esa cuenta.</p>\n"
     reset_email_timeframe: Puede tardar hasta 5 minutos para que llegue el correo electrónico. si no lo recibes asegúrate de mirar en tu carpeta de correo no deseado.
     length_restriction: La contraseña debe tener al menos 8 caracteres.
     forbidden_passwords: "Contraseñas comunes como \"contraseña' están prohibidas para mantener tu cuenta segura."
@@ -1146,7 +1146,7 @@ es:
     online_community: Comunidad online
     religious_group: Religioso/espiritual
     event: Evento
-    open_source_software: Software libre y de código abierto
+    open_source_software: Software gratuito de código abierto
     political_initiative: Iniciativa política
     social_enterprise: Empresa social
     social_justice: Justicia social

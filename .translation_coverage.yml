@@ -37,7 +37,7 @@ da:
   frontpage: 52
   help docs: 11
   main: 89
-  main_1_0: 41
+  main_1_0: 43
 de:
   frontpage: 58
   help docs: 45
@@ -65,7 +65,7 @@ eo:
   main_1_0: 29
 es:
   frontpage: 100
-  help docs: 80
+  help docs: 83
   main: 100
   main_1_0: 100
 fa-IR:
@@ -122,7 +122,7 @@ it:
   frontpage: 60
   help docs: 11
   main: 90
-  main_1_0: 69
+  main_1_0: 82
 it-CH:
   frontpage: 0
   help docs: 0
@@ -158,7 +158,7 @@ mi:
   frontpage: 1
   help docs: 0
   main: 4
-  main_1_0: 5
+  main_1_0: 6
 mk:
   frontpage: 52
   help docs: 3

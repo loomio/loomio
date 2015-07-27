@@ -2,6 +2,8 @@ mi:
   common:
     group: Rōpū
     groups: Ngā Rōpū
+    date_range:
+      today: Ākuanei
     action:
       save: Tiaki
       edit: Whakatika
@@ -26,6 +28,12 @@ mi:
     options_label: Ngā Kōwhiringa
     options:
       label: Ngā Kōwhiringa
+  edit_group_form:
+    profile:
+      name: Ingoa
+      description: Whakaahuatanga
+    permissions:
+      label: Ngā Whakaaetanga
   group_form:
     name_label: Ingoa
     description_label: Whakaahuatanga
@@ -39,6 +47,9 @@ mi:
     name_label: Ingoa
     email_label: Īmēra
     locale_label: Reo
+  dashboard_page:
+    threads_from:
+      today: Ākuanei
   thread_group:
     aria_label: Ingoa rōpū
   help_page:
