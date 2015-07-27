@@ -8,7 +8,7 @@
     "company": "DAVEMO Consulting"
   },
   "dependencies": {
-    "loomio-angular-router": "0.5.6",
+    "angular_record_store": "git://github.com/loomio/angular_record_store.git#1.0.3",
     "coffee-script": "^1.8.0",
     "grunt": "~0.4.5",
     "grunt-angular-templates": "0.5.7",
@@ -19,7 +19,8 @@
     "grunt-haml": "^0.9.0",
     "grunt-ng-annotate": "latest",
     "grunt-sass": "0.18.1",
-    "lineman": "^0.36.0"
+    "lineman": "^0.36.0",
+    "loomio-angular-router": "0.5.6"
   },
   "engines": {
     "node": "~>0.10.5",
