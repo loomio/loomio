@@ -17,6 +17,7 @@ Loomio::Application.routes.draw do
     get 'setup_membership_requests'
     get 'setup_user_email_settings'
     get 'setup_all_notifications'
+    get 'setup_group_with_pending_invitation'
   end
 
   scope '/angular', controller: 'angular', path: 'angular', as: 'angular' do
@@ -77,7 +78,9 @@ Loomio::Application.routes.draw do
       post :ignore, on: :member
     end
 
-    resources :invitations, only: :create
+    resources :invitations, only: [:create, :destroy] do
+      get :pending, on: :collection
+    end
 
     resources :profile, only: [] do
       post :update_profile, on: :collection

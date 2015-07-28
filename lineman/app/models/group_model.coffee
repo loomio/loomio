@@ -10,12 +10,16 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
     setupViews: ->
       @setupView 'discussions', 'createdAt', true
       @setupView 'membershipRequests', 'createdAt', true
+      @setupView 'invitations', 'createdAt', true
 
     discussions: ->
       @discussionsView.data()
 
     membershipRequests: ->
       @membershipRequestsView.data()
+
+    invitations: ->
+      @invitationsView.data()
 
     pendingMembershipRequests: ->
       _.filter @membershipRequestsView.data(), (membershipRequest) ->
@@ -31,6 +35,13 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
     previousMembershipRequests: ->
       _.filter @membershipRequestsView.data(), (membershipRequest) ->
         !membershipRequest.isPending()
+
+    pendingInvitations: ->
+      _.filter @invitationsView.data(), (invitation) ->
+        invitation.isPending()
+
+    hasPendingInvitations: ->
+      _.some @pendingInvitations()
 
     organisationDiscussions: ->
       @recordStore.discussions.find(groupId: { $in: @organisationIds()})

@@ -47,4 +47,9 @@ class InvitationService
       InvitePeopleMailer.delay.to_join_discussion(invitation, inviter, message)
     end
   end
+
+  def self.cancel(invitation:, actor:)
+    actor.ability.authorize! :cancel, invitation
+    invitation.cancel!(canceller: actor)
+  end
 end

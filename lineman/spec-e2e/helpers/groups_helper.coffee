@@ -8,9 +8,6 @@ module.exports = new class GroupsHelper
   loadWithMultipleCoordinators: ->
     browser.get('http://localhost:8000/development/setup_group_with_multiple_coordinators')
 
-  flashSection: ->
-    element(By.css('.flash-root__message'))
-
   membersList: ->
     element(By.css('.group-page-members'))
 

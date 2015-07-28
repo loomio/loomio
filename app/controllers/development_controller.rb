@@ -38,6 +38,13 @@ class DevelopmentController < ApplicationController
     patricks_contact
   end
 
+  def setup_group_with_pending_invitation
+    cleanup_database
+    sign_in patrick
+    pending_invitation
+    redirect_to group_url(test_group)
+  end
+
   def setup_group_to_join
     cleanup_database
     sign_in jennifer
@@ -334,6 +341,16 @@ class DevelopmentController < ApplicationController
       MembershipRequestService.create(membership_request: @membership_request_from_user)
     end
     @membership_request_from_user
+  end
+
+  def pending_invitation
+    unless @pending_invitation
+      @pending_invitation = InvitationService.invite_to_group(recipient_emails: ['judd@example.com'],
+                                                              message: 'Come and join the group!',
+                                                              group: test_group,
+                                                              inviter: patrick)
+    end
+    @pending_invitation
   end
 
   def cleanup_database

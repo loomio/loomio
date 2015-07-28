@@ -61,7 +61,8 @@ class Ability
     can [:update,
          :email_members,
          :hide_next_steps,
-         :archive], Group do |group|
+         :archive,
+         :view_pending_invitations], Group do |group|
       user_is_admin_of?(group.id)
     end
 
