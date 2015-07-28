@@ -2,6 +2,7 @@ describe 'Group Page', ->
 
   groupsHelper = require './helpers/groups_helper.coffee'
   membershipsHelper = require './helpers/memberships_helper.coffee'
+  flashHelper = require './helpers/flash_helper.coffee'
 
   describe 'starting a discussion', ->
     beforeEach ->
@@ -23,7 +24,7 @@ describe 'Group Page', ->
       groupsHelper.visitEditGroupPage()
       groupsHelper.editGroupName('Dancing Dirty Shoes')
       groupsHelper.submitEditGroupForm()
-      expect(groupsHelper.flashSection().getText()).toContain('Group updated')
+      expect(flashHelper.flashMessage()).toContain('Group updated')
       expect(groupsHelper.groupPageHeader().getText()).toContain('Dancing Dirty Shoes')
 
     it 'throws a validation error when name is blank', ->
@@ -37,7 +38,7 @@ describe 'Group Page', ->
       groupsHelper.visitEditGroupPage()
       groupsHelper.editGroupDescription("Describin' the group")
       groupsHelper.submitEditGroupForm()
-      expect(groupsHelper.flashSection().getText()).toContain('Group updated')
+      expect(flashHelper.flashMessage()).toContain('Group updated')
       expect(groupsHelper.groupPageDescriptionText().getText()).toContain("Describin' the group")
 
     it 'successfully edits group privacy', ->
@@ -60,7 +61,7 @@ describe 'Group Page', ->
       groupsHelper.openMemberOptionsDropdown()
       groupsHelper.clickLeaveGroupButton()
       groupsHelper.confirmLeaveGroup()
-      expect(groupsHelper.flashSection().getText()).toContain('You have left this group')
+      expect(flashHelper.flashMessage()).toContain('You have left this group')
       groupsHelper.visitGroupPage()
       expect(groupsHelper.groupsList().getText()).not.toContain('Dirty Dancing Shoes')
 

@@ -1,0 +1,18 @@
+.blank
+  %section.pending-invitations-card{ng-if: 'canSeeInvitations && group.hasPendingInvitations()'}
+    %h3.lmo-card-heading{translate: 'pending_invitations_card.heading'}
+    %table.pending-invitations-card__pending-invitations.table
+      %thead
+        %tr
+          %th{translate: 'pending_invitations_card.email'}
+          %th{translate: 'pending_invitations_card.invitation_link'}
+          %th{translate: 'pending_invitations_card.cancel'}
+      %tbody
+        %tr{ng-repeat: 'invitation in group.pendingInvitations() track by invitation.id'}
+          %td.pending-invitations-card__recipient-email
+            {{invitation.recipientEmail}}
+          %td.pending-invitations-card__invitation-url
+            {{baseUrl}}/invitations/{{invitation.token}}
+          %td.align-center
+            %a.pending-invitations-card__cancel-link{href: '', ng-click: 'openCancelForm(invitation)'}
+              %i.fa.fa-lg.fa-times-circle

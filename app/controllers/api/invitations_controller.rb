@@ -6,8 +6,20 @@ class API::InvitationsController < API::RestfulController
 
     MembershipService.add_users_to_group new_members
     InvitationService.invite_to_group    new_emails
-
+    @invitations = []
     respond_with_collection
+  end
+
+  def pending
+    load_and_authorize :group, :view_pending_invitations
+    @invitations = page_collection(@group.invitations.pending)
+    respond_with_collection
+  end
+
+  def destroy
+    @invitation = Invitation.find(params[:id])
+    InvitationService.cancel(invitation: @invitation, actor: current_user)
+    respond_with_resource
   end
 
   private
@@ -26,10 +38,6 @@ class API::InvitationsController < API::RestfulController
 
   def invitation_parser
     @invitation_parser ||= InvitationParser.new(@invitations)
-  end
-
-  def resource_serializer
-    nil
   end
 
 end

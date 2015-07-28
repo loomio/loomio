@@ -453,6 +453,19 @@ en:
       question: 'Are you sure you want to remove {{name}} as a member of {{group}}?'
       submit: 'Remove'
 
+  pending_invitations_card:
+    heading: Pending invitations
+    email: Email
+    invitation_link: Invitation link
+    cancel: Cancel
+
+  cancel_invitation_form:
+    heading: Cancel invitation
+    question: Are you sure you want to cancel this invitation?
+    submit: Cancel invitation
+    messages:
+      success: Invitation cancelled
+
   profile_page:
     messages:
       updated: 'Profile updated'

@@ -11,6 +11,7 @@ describe API::InvitationsController do
   let(:group_invitable)   { { id: another_group.id, type: :group } }
   let(:contact_invitable) { { email: contact.email, type: :contact } }
   let(:email_invitable)   { { email: 'mail@gmail.com', type: :email } }
+  let(:pending_invitation) { create :invitation, invitable: group }
 
   before do
     stub_request(:post, "http://localhost:9292/faye").to_return(status: 200)
@@ -18,6 +19,7 @@ describe API::InvitationsController do
     another_group.users << user
     another_group.users << another_user
     another_group.users << another_group_member
+    pending_invitation
     sign_in user
   end
 
@@ -56,4 +58,24 @@ describe API::InvitationsController do
     # end
   end
 
+  describe 'pending' do
+    context 'permitted' do
+      it 'returns invitations filtered by group' do
+        get :pending, group_id: group.id
+        json = JSON.parse(response.body)
+        expect(json.keys).to include *(%w[invitations])
+        expect(json['invitations'].first['id']).to eq pending_invitation.id
+      end
+    end
+
+    context 'not permitted' do
+      it 'returns AccessDenied' do
+        sign_out user
+        sign_in another_user
+        get :pending, group_id: group.id
+        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
+        expect(response.status).to eq 403
+      end
+    end
+  end
 end

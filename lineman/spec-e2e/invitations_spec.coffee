@@ -4,6 +4,7 @@ describe 'Invitations', ->
   emailHelper = require './helpers/email_helper.coffee'
   invitationsHelper = require './helpers/invitations_helper.coffee'
   groupsHelper = require './helpers/groups_helper.coffee'
+  flashHelper = require './helpers/flash_helper.coffee'
 
   describe 'basics', ->
     it 'successfully opens a modal', ->
@@ -31,7 +32,7 @@ describe 'Invitations', ->
         expect(groupsHelper.membersList().getText()).toContain('MVS')
 
       it 'displays the correct flash message', ->
-        expect(groupsHelper.flashSection().getText()).toContain('1 member(s) added')
+        expect(flashHelper.flashMessage()).toContain('1 member(s) added')
 
     describe 'by username', ->
       beforeEach ->
@@ -43,20 +44,7 @@ describe 'Invitations', ->
         expect(groupsHelper.membersList().getText()).toContain('MVS')
 
       it 'displays the correct flash message', ->
-        expect(groupsHelper.flashSection().getText()).toContain('1 member(s) added')
-
-    # describe 'inviting a group', ->
-    #   beforeEach ->
-    #     invitationsHelper.openInvitationsModal()
-    #     invitationsHelper.invite('Point')
-    #     invitationsHelper.submitInvitationsForm()
-
-    #   it 'successfuly invites the group', ->
-    #     expect(groupsHelper.flashSection().getText()).toContain('1 member(s) added')
-    #     expect(groupsHelper.membersList().getText()).toContain('MVS')
-
-    #   it 'displays the correct flash message', ->
-    #     expect(groupsHelper.flashSection().getText()).toContain('1 member(s) added')
+        expect(flashHelper.flashMessage()).toContain('1 member(s) added')
 
     describe 'by email address', ->
       beforeEach ->
@@ -68,7 +56,7 @@ describe 'Invitations', ->
         expect(groupsHelper.membersList().getText()).toContain('MVS')
 
       it 'displays the correct flash message', ->
-        expect(groupsHelper.flashSection().getText()).toContain('1 member(s) added')
+        expect(flashHelper.flashMessage()).toContain('1 member(s) added')
 
   describe 'inviting a non-user', ->
     beforeEach ->
@@ -85,7 +73,7 @@ describe 'Invitations', ->
         expect(emailHelper.lastEmailSubject().getText()).toContain('Patrick Swayze has invited you to join Dirty Dancing Shoes on Loomio')
 
       it 'displays the correct flash message', ->
-        expect(groupsHelper.flashSection().getText()).toContain('1 invitation(s) sent')
+        expect(flashHelper.flashMessage()).toContain('1 invitation(s) sent')
 
     describe 'inviting a contact', ->
       beforeEach ->
@@ -98,7 +86,7 @@ describe 'Invitations', ->
         expect(emailHelper.lastEmailSubject().getText()).toContain('Dirty Dancing Shoes')
 
       it 'displays the correct flash message', ->
-        expect(groupsHelper.flashSection().getText()).toContain('1 invitation(s) sent')
+        expect(flashHelper.flashMessage()).toContain('1 invitation(s) sent')
 
   describe 'inviting both users and non-user', ->
     beforeEach ->
@@ -110,4 +98,19 @@ describe 'Invitations', ->
       invitationsHelper.invite('keanu')
       invitationsHelper.invite('mollyringwald@loomio.org')
       invitationsHelper.submitInvitationsForm()
-      expect(groupsHelper.flashSection().getText()).toContain('1 member(s) added and 2 invitation(s) sent')
+      expect(flashHelper.flashMessage()).toContain('1 member(s) added and 2 invitation(s) sent')
+
+  describe 'pending invitations', ->
+    beforeEach ->
+      invitationsHelper.loadPending()
+      invitationsHelper.clickManageMembers()
+
+    it 'it displays pending invitations on the memberships page', ->
+      expect(invitationsHelper.pendingInvitationsPanel().isDisplayed()).toBeTruthy()
+      expect(invitationsHelper.pendingInvitationEmail().getText()).toBe('judd@example.com')
+
+    describe 'cancelling a pending invitation', ->
+      it 'successfully cancels a pending invitation', ->
+        invitationsHelper.cancelPendingInvitation()
+        expect(flashHelper.flashMessage()).toContain('Invitation cancelled')
+        expect(invitationsHelper.pendingInvitationsPanel().isPresent()).toBe(false)

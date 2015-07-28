@@ -1,0 +1,12 @@
+%form{ng-submit: 'submit()'}
+  .modal-header
+    %button{type: 'button', class: 'close', ng-click: '$close()'}
+      %span{aria-hidden: true} &times;
+      %span.sr-only{translate: 'common.action.cancel'}
+    %h1.lmo-h1{translate: 'cancel_invitation_form.heading'}
+
+  .modal-body
+    %span{translate: 'cancel_invitation_form.question'}
+  .modal-footer
+    %button.btn.btn-danger.cancel-invitation-form__submit{type: 'submit', translate: 'cancel_invitation_form.submit'}
+    %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}

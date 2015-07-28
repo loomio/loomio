@@ -3,6 +3,7 @@ describe 'Managing membership requests', ->
   membershipRequestsHelper = require './helpers/membership_requests_helper.coffee'
   groupsHelper = require './helpers/groups_helper.coffee'
   emailHelper = require './helpers/email_helper.coffee'
+  flashHelper = require './helpers/flash_helper.coffee'
 
   beforeEach ->
     membershipRequestsHelper.loadWithMembershipRequests()
@@ -28,7 +29,7 @@ describe 'Managing membership requests', ->
 
     it 'displays the correct flash message', ->
       membershipRequestsHelper.clickApproveButton()
-      expect(membershipRequestsHelper.flashSection().getText()).toContain('Membership request approved')
+      expect(flashHelper.flashMessage()).toContain('Membership request approved')
 
 
   describe 'ignoring a membership request', ->
@@ -39,4 +40,4 @@ describe 'Managing membership requests', ->
 
     it 'displays the correct flash message', ->
       membershipRequestsHelper.clickIgnoreButton()
-      expect(membershipRequestsHelper.flashSection().getText()).toContain('Membership request ignored')
+      expect(flashHelper.flashMessage()).toContain('Membership request ignored')
