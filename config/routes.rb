@@ -54,7 +54,7 @@ Loomio::Application.routes.draw do
       get :subgroups, on: :member
       patch :archive, on: :member
     end
-  
+
     resources :memberships, only: [:index, :create, :update, :destroy] do
       collection do
         post :join_group
