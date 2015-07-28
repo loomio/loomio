@@ -103,7 +103,7 @@ describe 'Invitations', ->
   describe 'pending invitations', ->
     beforeEach ->
       invitationsHelper.loadPending()
-      invitationsHelper.visitMembershipsPage()
+      invitationsHelper.clickManageMembers()
 
     it 'it displays pending invitations on the memberships page', ->
       expect(invitationsHelper.pendingInvitationsPanel().isDisplayed()).toBeTruthy()
