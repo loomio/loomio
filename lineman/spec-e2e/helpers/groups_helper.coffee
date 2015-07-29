@@ -9,10 +9,10 @@ module.exports = new class GroupsHelper
     browser.get('http://localhost:8000/development/setup_group_with_multiple_coordinators')
 
   membersList: ->
-    element(By.css('.group-page-members'))
+    element(By.css('.members-card'))
 
   startThreadButton: ->
-    element(By.css('.group-page__new-thread a'))
+    element(By.css('.discussions-card__new-thread-button'))
 
   clickStartThreadButton: ->
     @startThreadButton().click()
@@ -99,13 +99,13 @@ module.exports = new class GroupsHelper
     element(By.css('.membership-request-form__submit-btn')).click()
 
   groupMembersPanel: ->
-    element(By.css('.group-page-members'))
+    element(By.css('.members-card'))
 
   groupDescriptionPanel: ->
     element(By.css('.group-page__description'))
 
   groupThreadsList: ->
-    element(By.css('.group-thread-list'))
+    element(By.css('.discussions-card'))
 
   subgroupsPanel: ->
     element(By.css('.subgroups-card'))

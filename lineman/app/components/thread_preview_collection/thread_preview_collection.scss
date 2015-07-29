@@ -1,6 +1,5 @@
 .thread-previews-container {
-  @include card;
-  padding: 0;
-  margin-bottom: 26px;
-  margin-top: 9px;
+  @include cardNoPadding;
+  margin-bottom: $cardPaddingSize;
+  margin-top: $thinPaddingSize;
 }

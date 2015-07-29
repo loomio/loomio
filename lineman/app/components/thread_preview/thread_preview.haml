@@ -1,6 +1,7 @@
 .thread-preview
   .thread-preview__star
     %star_toggle{thread: 'thread'}
+
   .thread-preview__actions.hidden-xs
     %button.btn.btn-default.btn-sm.thread-preview__mark-as-read{ng-click: 'thread.reader().markAsRead()', ng-class: '{disabled: !thread.isUnread()}'}>
       %i.fa.fa-check>
@@ -10,30 +11,36 @@
       %i.fa.fa-times>
       %span{translate: 'volume_levels.mute'}
 
-  %a.selector-list-item-link{href: '/d/{{ thread.key }}'}
+  %a.thread-preview__link{href: '/d/{{ thread.key }}'}
+    .thread-preview__icon
+      -#.thread-preview__avatar{}
+      %user_avatar{ng-if: '!thread.activeProposal()', user: 'thread.author()', size: 'medium'}
+      .thread-preview__pie-container{ng-if: 'thread.activeProposal()'}
+        %pie_chart.thread-preview__pie-canvas{votes: 'thread.activeProposal().voteCounts', ng-if: 'thread.activeProposal()'}
+        .thread-preview__position-icon-container
+          .thread-preview__position-icon{ng-if: 'lastVoteByCurrentUser(thread)', class: 'thread-preview__position-icon--{{lastVoteByCurrentUser(thread).position}} '}
+          .thread-preview__undecided-icon{ng-if: '!lastVoteByCurrentUser(thread)'}
+            %i.fa.fa-question
+
     .sr-only
       %span{translate: 'dashboard_page.aria_thread.title', translate-value-title: '{{ thread.title }}'}
       %span{ng-if: 'thread.isUnread()', translate: 'dashboard_page.aria_thread.unread', translate-value-count: '{{ thread.unreadItemsCount() }}'}
       %span{ng-if: 'thread.activeProposal()', translate: 'dashboard_page.aria_thread.current_proposal', translate-value-name: '{{ thread.activeProposal().name }}'}
       %span{ng-if: 'thread.activeProposal() && lastVoteByCurrentUser(thread)', translate: 'dashboard_page.aria_thread.you_voted', translate-value-position: ' {{lastVoteByCurrentUser(thread).position}} '}
+
     .screen-only{aria-hidden: 'true'}
-      .thread-preview__thread-header
-        .thread-preview__thread-title.lmo-truncate{ng-class: "{'is-unread': thread.isUnread() }"}
+      .thread-preview__text-container
+        .thread-preview__title{ng-class: "{'thread-preview--unread': thread.isUnread() }"}
           {{thread.title}}
         .thread-preview__unread-count{ng-if: 'thread.isUnread() && thread.itemsCount > 0'}
           ({{thread.unreadItemsCount()}})
-      .thread-preview__proposal{ng-if: 'thread.activeProposal()'}
-        .thread-preview__icons
-          .thread-preview__icon
-            %pie_chart.lmo-box--tiny{votes: 'thread.activeProposal().voteCounts', ng-if: 'thread.activeProposal()'}
-          .thread-preview__icon
-            .thread-preview__position-icon{ng-if: 'lastVoteByCurrentUser(thread)', class: 'thread-preview__position-icon--{{lastVoteByCurrentUser(thread).position}} '}
-            .thread-preview__undecided-icon{ng-if: '!lastVoteByCurrentUser(thread)'}
-              %i.fa.fa-question-circle
-        .thread-preview__proposal-name.lmo-truncate> {{ thread.activeProposal().name }}
-        .thread-preview__proposal-closing-soon{ng-if: 'thread.activeProposal().closingSoon()'}
-          %span ·
+
+      .thread-preview__text-container{ng-if: 'thread.activeProposal()'}
+        .thread-preview__proposal-name> {{ thread.activeProposal().name }}
+        .thread-preview__proposal-closing-container{ng-if: 'thread.activeProposal().closingSoon()'}
           %closing_in.thread-preview__proposal-closing-at{time: 'thread.activeProposal().closingAt'}>
-      .thread-preview__group-name
-        {{ thread.group().fullName() }} ·
-        %smart_time{time: 'thread.lastActivityAt'}>
+
+      .thread-preview__text-container
+        .thread-preview__group-name
+          {{ thread.group().fullName() }} ·
+          %smart_time{time: 'thread.lastActivityAt'}>

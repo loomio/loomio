@@ -17,6 +17,10 @@
   background-size: cover;
 }
 
+.group-page__description {
+  @include card;
+}
+
 .group-page__header{
   width: 100%;
   position: relative;
@@ -49,70 +53,8 @@
   margin-left: 108px + 15px;
   a{color: $primary-text-color;}
 }
+
 .group-page__privacy{
   float: left;
   margin-left: 15px;
-}
-.group-page__description,
-.group-page__threads,
-.group-page-members{
-  @include card;
-}
-
-.group-page__new-thread{
-  float: right;
-  margin-top: -5px;
-  margin-bottom: 10px;
-  .btn { @include fontSmall; }
-}
-.members-card__invite-members {
-  clear: both;
-  padding-top: 10px;
-}
-.group-member-list-avatar{
-  float: left;
-  margin: 0 2px 2px 0;
-}
-
-.group-page__threads-placeholder {
-  clear: both;
-}
-
-.group-thread-list-empty {
-  padding: 20px 0;
-  text-align: center;
-}
-.group-thread-list{
-  border-top: 1px solid $border-color;
-  clear: both;
-}
-.group-thread-list .thread-preview {
-  padding: 13px 0px;
-}
-
-.subgroups-card{
-  @include card;
-}
-.subgroups-card__list{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.subgroups-card__list-item{
-  clear: both;
-  min-height: 50px;
-  margin-bottom: 12px;
-}
-.subgroups-card__list-item-logo{
-  width: 50px;
-  height: 50px;
-  background: url('http://placehold.it/50x50');
-  float: left;
-}
-.subgroups-card__list-item-name{
-  @include fontHelveticaBold;
-  margin-left: 60px;
-}
-.subgroups-card__list-item-description{
-  margin-left: 60px;
 }

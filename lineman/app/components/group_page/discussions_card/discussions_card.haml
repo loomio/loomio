@@ -1,16 +1,18 @@
-%section.group-page__threads{aria-labelledby: 'threads-card-title'}
-  .group-page__new-thread{ng-if: 'isMemberOfGroup()'}
-    %a.btn.btn-success.lmo-btn-icon{href: '', ng_click: 'openDiscussionForm()', title: "{{ 'navbar.start_thread' | translate }}"}
+%section.discussions-card{aria-labelledby: 'threads-card-title'}
+  .lmo-card-padding
+    %a.discussions-card__new-thread-button.btn.btn-success.lmo-btn-icon{ng-if: 'isMemberOfGroup()', href: '', ng_click: 'openDiscussionForm()', title: "{{ 'navbar.start_thread' | translate }}"}
       %i.fa.fa-plus{aria-hidden: 'true'}>
       %span{translate: 'navbar.start_thread'}
 
-  %h2#threads-card-title.lmo-card-heading{ translate: 'group_page.discussions'}
-  .group-page__threads-placeholder.lmo-hint-text{translate: 'group_page.discussions_placeholder', ng-if: 'showThreadsPlaceholder()' }
-  .group-thread-list
-    .group-thread-list-empty{ng-if: '!loadMoreExecuting && group.organisationDiscussions().length == 0'}
-      .group-thread-list-empty-reason{translate: 'group_page.thread_list.empty.{{whyImEmpty()}}'}
-      .group-thread-list-empty-access{ng-if: 'howToGainAccess()'}
+    %h2#threads-card-title.lmo-card-heading{ translate: 'group_page.discussions'}
+    .lmo-placeholder{translate: 'group_page.discussions_placeholder', ng-if: 'showThreadsPlaceholder()' }
+
+    .discussions-card__list--empty{ng-if: '!loadMoreExecuting && group.organisationDiscussions().length == 0'}
+      .discussions-card__list-empty-reason{translate: 'group_page.thread_list.empty.{{whyImEmpty()}}'}
+      .discussions-card__how-to-gain-access{ng-if: 'howToGainAccess()'}
         %span{translate: 'group_page.thread_list.empty.{{howToGainAccess()}}'}
+
+  .discussions-card__list
 
     .blank{ng-repeat: 'thread in group.organisationDiscussions() | orderBy: "-lastActivityAt" track by thread.id | limitTo:loaded'}
       %thread_preview{thread: 'thread'}
@@ -18,5 +20,5 @@
     %loading{ng-show: 'loadMoreExecuting'}
 
     / Hiding this for now.
-    .discussions-show-more.card-minor-action{ng-if: 'false'}
+    .card-minor-action{ng-if: 'false'}
       %a{ng-hide: 'loadMoreExecuting || !group.hasDiscussions', ng-click: 'loadMore()', href: '', translate: 'common.action.show_more'}

@@ -158,6 +158,18 @@ label.label-with-details{
   margin-top: 22px;
 }
 
+.lmo-card {
+  @include card;
+}
+
+.lmo-card--no-padding {
+  @include cardNoPadding;
+}
+
+.lmo-card-padding {
+  @include cardPadding;
+}
+
 .lmo-card-heading{
   @include fontHelveticaMedium;
   @include fontSmall;
@@ -199,6 +211,7 @@ label.label-with-details{
 
 .lmo-placeholder {
   font-style: italic;
+  color: $grey-on-white;
   padding: 10px 0;
 }
 
@@ -207,10 +220,9 @@ label.label-with-details{
   color: $grey-on-white;
 }
 
+
 .lmo-truncate {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  @include truncateText;
 }
 
 .lmo-width-75 {
@@ -247,4 +259,8 @@ label.label-with-details{
 
 .lmo-box--large {
   @include boxLarge;
+}
+
+.lmo-rounded-corners {
+  @include roundedCorners;
 }

@@ -82,6 +82,12 @@ $block-border-color: darken($block-color, 10%);
   font-stretch:normal;
 }
 
+@mixin truncateText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @mixin roundedCorners {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -99,26 +105,34 @@ $block-border-color: darken($block-color, 10%);
   height: 20px;
 }
 
+$boxSmallSize: 30px;
 @mixin boxSmall {
-  width: 30px;
-  height: 30px;
+  width: $boxSmallSize;
+  height: $boxSmallSize;
 }
 
+
+$boxMediumSize: 50px;
 @mixin boxMedium {
-  width: 50px;
-  height: 50px;
+  width: $boxMediumSize;
+  height: $boxMediumSize;
 }
 
+$boxLargeSize: 80px;
 @mixin boxLarge {
-  width: 80px;
-  height: 80px;
+  width: $boxLargeSize;
+  height: $boxLargeSize;
 }
 
 @mixin card{
+  @include cardNoPadding;
+  @include cardPadding;
+}
+
+@mixin cardNoPadding {
   @include roundedCorners;
   @include box_shadow(1);
   border: 1px solid $border-color;
-  padding: 17px;
   background: #fff;
   margin-bottom: 8px;
   i{ color: $grey-on-white; }
@@ -126,6 +140,12 @@ $block-border-color: darken($block-color, 10%);
     margin: 10px 0 0 0;
     clear: both;
   }
+}
+
+$thinPaddingSize: 10px;
+$cardPaddingSize: 15px;
+@mixin cardPadding {
+  padding: $cardPaddingSize;
 }
 
 @mixin thinRoundedBorder {
@@ -156,6 +176,14 @@ $block-border-color: darken($block-color, 10%);
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   }
 
+}
+
+@mixin displayFlex {
+  display: flex;
+  /*display: -webkit-box;*/
+  /*display: -moz-box;*/
+  display: -ms-flexbox;
+  display: -webkit-flex;
 }
 
 
