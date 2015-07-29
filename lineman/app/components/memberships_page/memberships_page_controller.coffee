@@ -37,6 +37,16 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
   @invitePeople = ->
     ModalService.open InvitationForm, group: => @group
 
+  filteredMemberships = =>
+    if @fragment
+      _.filter @group.memberships(), (membership) =>
+        _.contains membership.userName().toLowerCase(), @fragment.toLowerCase()
+    else
+      @group.memberships()
+
+  @memberships = ->
+    _.sortBy filteredMemberships(), (membership) -> membership.userName()
+
   @name = (membership) ->
     membership.userName()
 
