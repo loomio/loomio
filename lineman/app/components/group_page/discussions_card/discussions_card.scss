@@ -1,0 +1,19 @@
+.discussions-card{
+  @include cardNoPadding;
+}
+
+.discussions-card__new-thread-button{
+  @include fontSmall;
+  float: right;
+}
+
+.discussions-card__list--empty {
+  margin: 0 17px 10px 17px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.discussions-card__list{
+  border-top: 1px solid $border-color;
+  clear: both;
+}

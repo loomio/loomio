@@ -4,11 +4,11 @@
 }
 
 .inbox-page__heading{
-  margin: 20px 13px;
+  padding: $cardPaddingSize;
 }
 
 .inbox-page__no-threads {
-  margin-left: 13px;
+  margin-left: $cardPaddingSize;
 }
 
 .inbox-page__group-name a{
@@ -16,12 +16,15 @@
   @include fontCrapName;
   line-height: 30px;
   color: $grey-on-grey;
-  margin-left: 16px;
-  margin-top: 0;
+  padding-left: $thinPaddingSize;
+}
+
+.inbox-page__group-name-container {
+  padding: 0 $cardPaddingSize;
 }
 
 .inbox-page__show-more{
-  padding: 15px 15px 15px 48px;
+  padding: $cardPaddingSize;
 }
 .inbox-page__show-more a{
   display: block;

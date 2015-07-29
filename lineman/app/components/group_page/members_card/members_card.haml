@@ -1,14 +1,13 @@
 .blank
-  %section.group-page-members{ng-if: 'isMember()', aria-labelledby: 'members-card-title'}
+  %section.members-card{ng-if: 'isMember()', aria-labelledby: 'members-card-title'}
     %h2#members-card-title.lmo-card-heading{ translate: 'group_page.members', translate-value-count: '{{group.membershipsCount}}'}
-    .group-member-list
-      .group-member-list-item{ng-repeat: 'membership in group.memberships() | orderBy: "-admin" | limitTo:10'}
-        .group-member-list-avatar
-          %user_avatar{user: 'membership.user()', coordinator: 'membership.admin', size: 'medium'}
-      .group-page__members-placeholder.group-page-placeholder{translate: 'group_page.members_placeholder', ng-if: 'showMembersPlaceholder()' }
+    .members-card__list
+      .members-card__avatar{ng-repeat: 'membership in group.memberships() | orderBy: "-admin" | limitTo:10'}
+        %user_avatar{user: 'membership.user()', coordinator: 'membership.admin', size: 'medium'}
+      .lmo-placeholder{translate: 'group_page.members_placeholder', ng-if: 'showMembersPlaceholder()' }
     .members-card__invite-members{ng-if: '::canAddMembers()'}
       %a.btn.btn-success.btn-block.lmo-btn-icon{href: '', ng_click: 'invitePeople()'}
         %i.fa.fa-lg.fa-plus>
         %span{translate: 'group_page.invite_people' }
-    .members-card__manage-members.show-more.card-minor-action
+    .members-card__manage-members.card-minor-action
       %a{href: '/g/{{group.key}}/memberships', translate: 'group_page.manage_members'}

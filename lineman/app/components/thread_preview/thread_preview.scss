@@ -1,5 +1,5 @@
 .thread-preview {
-  padding: 13px 13px;
+  min-height: $boxMediumSize + ($thinPaddingSize * 2);
   border-bottom: 1px solid $border-color;
   position: relative;
   &:hover {
@@ -8,72 +8,105 @@
   }
 }
 
-.thread-preview__thread-header {
+.thread-preview__star{
+  float: right;
+  margin-right: $cardPaddingSize;
+  margin-top: $thinPaddingSize;
+}
+
+.thread-preview__actions{
+  display: none;
+  float: right;
+  margin-right: $thinPaddingSize;
+  margin-top: $thinPaddingSize;
+}
+
+.thread-preview__link {
+  display: block;
+  padding: $thinPaddingSize $cardPaddingSize;
+  color: $primary-text-color;
+  text-decoration: none;
+}
+
+.thread-preview__link:hover {
+  color: $primary-text-color;
+  text-decoration: none;
+}
+
+.thread-preview__icon {
+  @include boxMedium;
+  float: left;
+}
+
+.thread-preview__pie-canvas {
+  @include boxMedium;
+}
+
+.thread-preview__text-container{
+  @include displayFlex;
+  line-height: 22px;
+}
+
+.thread-preview__title{
   @include fontCrapName;
-  padding-bottom: 4px;
-  display: flex;
-}
-
-.thread-preview__thread-title {
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.thread-preview__unread-count {
-  font-weight: normal;
-  padding-left: 5px;
-  color: $grey-on-white;
-  min-width: 30px;
-}
-
-.thread-preview__thread-title.is-unread {
-  font-weight: bold;
-}
-
-.thread-preview__proposal {
-  color: $grey-on-white;
-  display: flex;
+  padding-left: $thinPaddingSize;
+  vertical-align: top;
+  @include truncateText;
 }
 
 .thread-preview__proposal-name{
-  color: $primary-text-color;
-  display: inline-block;
-  line-height: 23px;
-  padding-left: 2px;
+  padding-left: $thinPaddingSize;
+  @include truncateText;
+}
+
+.thread-preview__group-name{
+  @include truncateText;
+  padding-left: $thinPaddingSize;
+  font-size: 13px;
+  color: $grey-on-white;
+}
+
+.thread-preview__proposal-closing-container {
+  padding-left: $thinPaddingSize;
+  min-width: 130px;
+}
+
+.thread-preview__unread-count {
+  @include fontCrapName;
+  color: $grey-on-white;
+  min-width: 33px;
+  padding-left: 5px;
+}
+
+.thread-preview--unread {
+  font-weight: bold;
 }
 
 .thread-preview__proposal-closing-at {
-  @include fontSmall;
+  @include fontTiny;
   color: $highlight-red;
-  display: inline-block;
 }
 
-.thread-preview__proposal-closing-soon {
-  min-width: 160px;
-  display: inline-block;
-  padding-left: 4px;
-}
-
-.thread-preview__icons {
-  min-width: 48px;
-}
-.thread-preview__icon {
-  float: left;
-  width: 20px;
-  height: 20px;
-  margin-right: 4px;
-  text-align: center;
+.thread-preview__position-icon-container {
+  @include boxTiny;
+  position: absolute;
+  left: 15px;
+  top: 40px;
+  background-color: white;
+  border-radius: 100%;
+  box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
 }
 
 .thread-preview__position-icon {
-  width: 20px;
-  height: 20px;
   background-repeat: no-repeat;
-  margin: 3px 5px 0 0;
+  height: 18px;
+  margin: 3px 0 0 3px;
+  width: 18px;
 }
 
 .thread-preview__position-icon--yes {
   background-image: url(/img/green_thumb_15.png);
+  margin: 2px 0 0 2px;
 }
 
 .thread-preview__position-icon--no {
@@ -89,46 +122,25 @@
 }
 
 .thread-preview__undecided-icon {
-  font-size: 22px;
-  padding-left: 2px;
+  font-size: 16px;
   margin-top: 0px;
+  text-align: center;
 }
 
-.thread-preview__group-name{
-  @include fontSmall;
-  margin-top: 2px;
-  color: $grey-on-white;
-  /*clear: both;*/
-}
-
-.thread-preview__actions{
-  float: right;
-  padding-left: 10px;
-  display: none;
-}
-
-.thread-preview__star{
-  float: right;
-}
 
 .thread-preview__mark-as-read{
-  margin-top: -17px;
-  margin-bottom: -11px;
   margin-right: 5px;
 }
 
 .thread-preview__mute{
-  margin-top: -17px;
-  margin-bottom: -11px;
   margin-right: 5px;
-  position: relative;
   .fa-volume-off{
     padding-right: 9px;
   }
   .fa-times{
     font-size: 70%;
-    position: absolute;
-    top: 10px;
-    left: 17px;
+    position: relative;
+    right: 10px;
+    bottom: 1px;
   }
 }

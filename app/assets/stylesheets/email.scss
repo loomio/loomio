@@ -20,6 +20,8 @@ h1, h2, h3, h4, h5, h6{
 p{
   max-width: 40em;
   margin-bottom: 0;
+
+  img{max-width: 500px;}
 }
 
 p.unsubscribe{
@@ -85,10 +87,6 @@ th{
 
 .comment{
   padding-left: 25px;
-  max-width: 40em;
-}
-
-img {
   max-width: 40em;
 }
 

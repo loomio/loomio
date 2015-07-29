@@ -12,7 +12,7 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def avatar_url
-    object.avatar_url('medium')
+    object.avatar_url :large
   end
 
   def profile_url
