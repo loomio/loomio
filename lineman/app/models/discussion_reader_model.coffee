@@ -4,27 +4,19 @@ angular.module('loomioApp').factory 'DiscussionReaderModel', (BaseModel) ->
     @plural: 'discussionReaders'
     @indices: ['id', 'discussionId']
 
+    defaultValues: ->
+      readItemsCount:  0
+      readSalientItemsCount: 0
+      readCommentsCount:  0
+      lastReadAt: null
+      volume: null
+      lastReadSequenceId: -1
+
     initialize: (data) ->
-      @readItemsCount = 0
-      @readSalientItemsCount = 0
-      @readCommentsCount = 0
-      @lastReadAt = null
-      @volume = null
-      @lastReadSequenceId = -1
-
-      # commented so I can ask gdpelican about it
-      #if data.discussion_id?
-        #discussion = @recordStore.discussions.find(data.discussion_id)
-        #_.extend data,
-          #id:       discussion.id
-          #group_id: discussion.groupId
-
-      response = @updateFromJSON(data)
+      @baseInitialize(data)
 
       if data.discussion_id
         @id = data.discussion_id
-
-      response
 
     serialize: ->
       data = @baseSerialize()
@@ -43,7 +35,9 @@ angular.module('loomioApp').factory 'DiscussionReaderModel', (BaseModel) ->
       @save()
 
     markAsRead: (sequenceId) ->
-      sequenceId = @discussion().lastSequenceId if isNaN(sequenceId)
-      if @lastReadSequenceId < sequenceId
+      if isNaN(sequenceId)
+        sequenceId = @discussion().lastSequenceId
+
+      if _.isNull(@lastReadAt) or @lastReadSequenceId < sequenceId
         @restfulClient.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})
         @lastReadSequenceId = sequenceId
