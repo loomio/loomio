@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   helper_method :dashboard_or_root_path
 
   before_filter :set_application_locale
+  before_filter :enable_profiling
   around_filter :user_time_zone, if: :user_signed_in?
 
   # intercom
@@ -30,6 +31,12 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+  def enable_profiling
+    if user_signed_in? and current_user.is_admin?
+      Rack::MiniProfiler.authorize_request
+    end
+  end
+
   def permitted_params
     @permitted_params ||= PermittedParams.new(params)
   end
