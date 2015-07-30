@@ -21,7 +21,7 @@
     .discussion-group-selected{ng_show: 'discussion.groupId'}
       .form-group
         %label{for: 'discussion-title-field', translate: 'discussion_form.title_label'}
-        %input.form-control.discussion-form__title-input{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: 'discussion.title', ng-required: 'true'}
+        %input.form-control.discussion-form__title-input{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: 'discussion.title', ng-required: 'true', maxlength: '255'}
 
       .form-group
         %label{for: 'discussion-context-field', translate: 'discussion_form.context_label'}

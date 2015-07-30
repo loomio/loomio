@@ -15,7 +15,7 @@
     %fieldset{ng-disabled: '!proposal.canBeEdited()'}
       .form-group
         %label{for: 'proposal-title-field', translate: 'proposal_form.title_label'}
-        %input.proposal-form__title-field.form-control{placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: 'proposal.name', ng-required: 'false'}
+        %input.proposal-form__title-field.form-control{placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: 'proposal.name', ng-required: 'false', maxlength: '255'}
 
       .form-group
         %label{for: 'proposal-details-field', translate: 'proposal_form.details_label'}
