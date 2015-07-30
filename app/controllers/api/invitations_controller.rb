@@ -33,7 +33,7 @@ class API::InvitationsController < API::RestfulController
   end
 
   def common_params
-    @common_params ||= { group: @group, inviter: current_user, message: params[:invite_message] }
+    @common_params ||= { group: @group, inviter: current_user, message: params[:message] }
   end
 
   def invitation_parser
