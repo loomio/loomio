@@ -1,10 +1,6 @@
 class API::MotionsController < API::RestfulController
   load_and_authorize_resource only: [:show], find_by: :key
 
-  def show
-    respond_with_resource
-  end
-
   def close
     load_resource
     MotionService.close_by_user(@motion, current_user)
@@ -21,8 +17,8 @@ class API::MotionsController < API::RestfulController
 
   def update_outcome
     load_and_authorize(:motion, :update_outcome)
-    MotionService.update_outcome(motion: @motion, 
-                                 params: permitted_params.motion, 
+    MotionService.update_outcome(motion: @motion,
+                                 params: permitted_params.motion,
                                  actor:  current_user)
     respond_with_resource
   end

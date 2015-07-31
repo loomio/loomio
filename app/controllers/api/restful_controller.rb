@@ -3,6 +3,10 @@ class API::RestfulController < API::BaseController
   rescue_from CanCan::AccessDenied                    do |e| respond_with_standard_error e, 403 end
   rescue_from ActionController::UnpermittedParameters do |e| respond_with_standard_error e, 400 end
 
+  def show
+    respond_with_resource
+  end
+
   def index
     instantiate_collection
     respond_with_collection
