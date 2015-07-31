@@ -5,36 +5,31 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
       threadQueryFor createBaseView(), filter
 
     groupQuery: (group = {}, options = {}) ->
-      threadQueryFor createGroupView(group), 
+      threadQueryFor createGroupView(group),
                      options['filter'] or 'show_unread',
-                     options['limit'] or 5
+                     false
 
     timeframeQuery: (options = {}) ->
       threadQueryFor createTimeframeView(options['name'], options['timeframe']),
                      options['filter'] or 'show_all',
-                     options['limit'] or 100
+                     true
 
-    threadQueryFor = (view, filter) ->
-      view: view
-      filter: createFilter(filter)
-      threads: ->
-        @filter @view.data()
-      length: ->
-        @threads().length
-      any: ->
-        @length() > 0
+    threadQueryFor = (view, filter, skipImportantThreads) ->
+      view:       view
+      filter:     createFilter(filter, skipImportantThreads)
+      threads: -> @filter @view.data()
+      length: ->  @threads().length
+      any: ->     @length() > 0
 
     createBaseView = ->
       _.memoize(->
         view = Records.discussions.collection.addDynamicView 'default'
-        view.applySimpleSort('lastActivityAt', true)
         view)()
 
     createGroupView = (group) ->
       _.memoize(->
         view = Records.discussions.collection.addDynamicView group.name
         view.applyFind({groupId: { $in: group.organisationIds() }})
-        view.applySimpleSort('lastActivityAt', true)
         view)()
 
     createTimeframeView = (name, options = {}) ->
@@ -43,7 +38,6 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
         view = Records.discussions.collection.addDynamicView name
         view.applyFind(lastActivityAt: { $gt: parseTimeOption(options['from']) })
         view.applyFind(lastActivityAt: { $lt: parseTimeOption(options['to']) })
-        view.applySimpleSort('lastActivityAt', true)
         view)()
 
     parseTimeOption = (options) ->
@@ -52,15 +46,17 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
       parts = options.split ' '
       moment().startOf('day').subtract(parseInt(parts[0]), parts[1])
 
-    createFilter = (filter = 'show_all') ->
+    createFilter = (filter = 'show_recent', skipImportantThreads = false) ->
       (viewData) ->
         _.filter viewData, (thread) ->
+          return false if skipImportantThreads and (thread.isStarred() or thread.hasActiveProposal())
           return false if thread.isMuted() and filter != 'show_muted'
-          return false if thread.readerNotLoaded()
+          # return false unless thread.visibleOnDashboard
           switch filter
             when 'show_all'           then true
+            when 'show_recent'        then !(thread.isStarred() or thread.hasActiveProposal())
             when 'show_muted'         then thread.isMuted()
             when 'show_unread'        then thread.isUnread()
             when 'show_participating' then thread.isParticipating()
-            when 'show_starred'       then thread.isStarred()
+            when 'show_starred'       then thread.isStarred() and !thread.hasActiveProposal()
             when 'show_proposals'     then thread.hasActiveProposal()

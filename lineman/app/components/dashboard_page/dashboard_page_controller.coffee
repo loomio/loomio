@@ -5,21 +5,25 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
 
   Records.votes.fetchMyRecentVotes()
 
-  @perPage = 25
+  @perPage = 50
   @loaded =
     show_all:           0
     show_muted:         0
-    show_proposals:     0
     show_participating: 0
 
+  @views =
+    recent: []
+    groups: []
+
   @timeframes =
-    today:     { from: '1 second ago', to: '-10 year ago' }
+    today:     { from: '1 second ago', to: '-10 year ago' } # into the future!
     yesterday: { from: '1 day ago',    to: '1 second ago' }
     thisweek:  { from: '1 week ago',   to: '1 day ago' }
     thismonth: { from: '1 month ago',  to: '1 week ago' }
     older:     { from: '3 month ago',  to: '1 month ago' }
   @timeframeNames = _.map @timeframes, (timeframe, name) -> name
-  @timeframeQueryFor = (name) -> @timeframes[name].view
+
+  @recentViewNames = ['proposals', 'starred', 'today', 'yesterday', 'thisweek', 'thismonth', 'older']
 
   @groups = {}
   @groupThreadLimit = 5
@@ -32,13 +36,17 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     _.contains ['show_starred', 'show_muted'], @filter
 
   @updateQueries = ->
-    _.each @groups(), (group) =>
-      @groups[group.key] = ThreadQueryService.groupQuery(group, { filter: @filter })
-    _.each @timeframeNames, (name) =>
-      @timeframes[name].view = ThreadQueryService.timeframeQuery
-        name: name
-        filter: @filter
-        timeframe: @timeframes[name]
+    if @displayByGroup()
+      _.each @groups(), (group) =>
+        @views.groups[group.key] = ThreadQueryService.groupQuery(group, { filter: @filter })
+    else
+      @views.recent.proposals = ThreadQueryService.filterQuery 'show_proposals'
+      @views.recent.starred   = ThreadQueryService.filterQuery 'show_starred'
+      _.each @timeframeNames, (name) =>
+        @views.recent[name] = ThreadQueryService.timeframeQuery
+          name: name
+          filter: @filter
+          timeframe: @timeframes[name]
 
   @loadMore = =>
     from = @loaded[@filter]
