@@ -11,7 +11,7 @@
       %h2.lmo-h2{translate: 'edit_group_form.profile.label'}
 
       %label{for: 'group-name', translate: 'edit_group_form.profile.name'}
-      %input.form-control.edit-group-form__name#group-name{ng-required: true, ng-model: 'group.name'}
+      %input.form-control.edit-group-form__name#group-name{ng-required: true, ng-model: 'group.name', maxlength: '255'}
       %validation_errors{subject: 'group', field: 'name'}
 
       %label{for: 'group-description', translate: 'edit_group_form.profile.description'}
