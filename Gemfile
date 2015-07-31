@@ -64,14 +64,11 @@ gem 'responders', '~> 2.0'
 gem 'activerecord_any_of'
 gem 'rack-attack', '~> 4.2.0'
 gem 'ahoy_matey'
-gem 'oj'
-gem 'oj_mimic_json'
-# might need this
-#gem 'activeuuid', '>= 0.5.0'
 
-# consider uncommenting these when we want to mess around with json parsing
-#gem 'oj'
-#gem 'oj_mimic_json'
+gem 'rack-mini-profiler'
+gem 'flamegraph'
+gem 'stackprof' # ruby 2.1+ only
+gem 'memory_profiler'
 
 group :development, :test do
   gem 'minitest'
@@ -94,13 +91,8 @@ group :development do
   gem 'spring'
   gem "spring-commands-cucumber"
   gem "spring-commands-rspec"
-  #gem 'bullet'
   gem 'launchy'
   gem 'awesome_print'
-  #gem 'quiet_assets'
-  #gem 'meta_request'
-  #gem 'better_errors'
-  #gem 'binding_of_caller'
 end
 
 group :test do
@@ -108,7 +100,6 @@ group :test do
   gem 'email_spec'
   gem 'poltergeist'
   gem 'webmock'
-  gem "codeclimate-test-reporter", require: false
   gem 'rack_session_access'
 end
 
