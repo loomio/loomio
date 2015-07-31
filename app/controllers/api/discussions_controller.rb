@@ -4,42 +4,20 @@ class API::DiscussionsController < API::RestfulController
 
   def dashboard
     instantiate_collection { |collection| filter_collection collection }
-    respond_with_discussions
+    respond_with_collection scope: { visible_on_dashboard: true }, serializer: DiscussionWrapperSerializer, root: 'discussion_wrappers'
   end
 
   def index
     load_and_authorize :group if params[:group_id] || params[:group_key]
     instantiate_collection
-    respond_with_discussions
-  end
-
-  def show
-    respond_with_discussion
+    respond_with_collection serializer: DiscussionWrapperSerializer, root: 'discussion_wrappers'
   end
 
   private
-
-  def respond_with_discussion
-    if resource.errors.empty?
-      render json: DiscussionWrapper.new(discussion: resource, discussion_reader: discussion_reader),
-             serializer: DiscussionWrapperSerializer,
-             root: 'discussion_wrappers'
-    else
-      respond_with_errors
-    end
-  end
-
-  def respond_with_discussions
-    render json: DiscussionWrapper.new_collection(user: current_user, discussions: @discussions),
-           each_serializer: DiscussionWrapperSerializer,
-           root: 'discussion_wrappers'
-  end
 
   def visible_records
     Queries::VisibleDiscussions.new(user: current_user, groups: visible_groups).sorted_by_latest_activity
   end
-
-  private
 
   def visible_groups
     Array(@group).presence || current_user.groups
@@ -56,7 +34,7 @@ class API::DiscussionsController < API::RestfulController
     end
   end
 
-  def discussion_reader
-    @dr ||= DiscussionReader.for(user: current_user, discussion: @discussion)
+  def collection=(value)
+    @discussions = DiscussionWrapper.new_collection user: current_user, discussions: value
   end
 end

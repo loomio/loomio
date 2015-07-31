@@ -37,7 +37,7 @@ class API::RestfulController < API::BaseController
   private
 
   def load_and_authorize(model, action = :show)
-    instance_variable_set :"@#{model}", ModelLocator.new(model, params).locate 
+    instance_variable_set :"@#{model}", ModelLocator.new(model, params).locate
     authorize! action, instance_variable_get(:"@#{model}")
   end
 
@@ -139,16 +139,16 @@ class API::RestfulController < API::BaseController
     "#{resource_name}_service".camelize.constantize
   end
 
-  def respond_with_collection(scope: {}, serializer: resource_serializer)
-    render json: collection, root: serializer_root, scope: scope, each_serializer: serializer
+  def respond_with_collection(scope: {}, serializer: resource_serializer, root: serializer_root)
+    render json: collection, scope: scope, each_serializer: serializer, root: root
   end
 
-  def respond_with_resource(scope: {}, serializer: resource_serializer)
+  def respond_with_resource(scope: {}, serializer: resource_serializer, root: serializer_root)
     if resource.errors.empty?
       if @event.is_a? Event
-        render json: [@event], root: 'events', each_serializer: EventSerializer
+        render json: [@event], scope: scope, each_serializer: EventSerializer, root: 'events'
       else
-        render json: [resource], root: serializer_root, each_serializer: serializer
+        render json: [resource], scope: scope, each_serializer: serializer, root: root
       end
     else
       respond_with_errors
