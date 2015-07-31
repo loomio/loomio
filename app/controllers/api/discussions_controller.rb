@@ -29,7 +29,7 @@ class API::DiscussionsController < API::RestfulController
     when 'show_unread'        then collection.not_muted.unread.sorted_by_latest_activity
     when 'show_participating' then collection.not_muted.participating.sorted_by_importance
     else                           collection.not_muted.sorted_by_importance
-    end.sorted_by_importance
+    end
   end
 
   def sort_by_importance(collection)

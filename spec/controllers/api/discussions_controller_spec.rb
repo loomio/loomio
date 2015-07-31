@@ -89,16 +89,20 @@ describe API::DiscussionsController do
         expect(ids).to_not include discussion.id
         expect(ids).to include old_discussion.id
       end
+
+      it 'can limit collection size' do
+        get :dashboard, limit: 2
+        json = JSON.parse(response.body)
+        expect(json['discussions'].count).to eq 2
+      end
     end
 
     describe 'sorting' do
-      let(:starred_with_proposal) { create :discussion, group: group }
-      let(:with_proposal) { create :discussion, group: group, motions: [active_motion] }
-      let(:starred) { create :discussion, group: group }
-      let(:recent) { create :discussion, group: group, last_activity_at: 1.day.ago }
-      let(:not_recent) { create :discussion, group: group, last_activity_at: 5.days.ago }
-
-      let(:active_motion) { create :motion, closing_at: 2.days.from_now }
+      let(:starred_with_proposal) { create :discussion, group: group, title: 'starred_with_proposal' }
+      let(:with_proposal) { create :discussion, group: group, title: 'with_proposal' }
+      let(:starred) { create :discussion, group: group, title: 'starred', last_activity_at: 20.days.ago }
+      let(:recent) { create :discussion, group: group, last_activity_at: 1.day.ago, title: 'recent' }
+      let(:not_recent) { create :discussion, group: group, last_activity_at: 5.days.ago, title: 'not_recent' }
 
       before do
         recent; not_recent
@@ -107,7 +111,8 @@ describe API::DiscussionsController do
       it 'sorts by starred w/ proposals first' do
         DiscussionReader.for(user: user, discussion: starred_with_proposal).update starred: true
         DiscussionReader.for(user: user, discussion: starred).update starred: true
-        with_proposal.motions << active_motion
+        starred_with_proposal.motions << create(:motion, closing_at: 2.days.from_now)
+        with_proposal.motions         << create(:motion, closing_at: 2.days.from_now)
         get :dashboard
 
         json = JSON.parse(response.body)
@@ -116,7 +121,7 @@ describe API::DiscussionsController do
 
       it 'sorts by proposals second' do
         DiscussionReader.for(user: user, discussion: starred).update starred: true
-        with_proposal.motions << active_motion
+        with_proposal.motions << create(:motion, closing_at: 2.days.from_now)
         get :dashboard
 
         json = JSON.parse(response.body)

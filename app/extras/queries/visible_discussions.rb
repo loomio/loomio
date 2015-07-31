@@ -77,7 +77,7 @@ class Queries::VisibleDiscussions < Delegator
 
   def muted
     join_to_discussion_readers && join_to_memberships
-    @relation = @relation.where('(dv.volume = :mute) OR (dv.volume IS NULL AND m.volume = :mute) ', 
+    @relation = @relation.where('(dv.volume = :mute) OR (dv.volume IS NULL AND m.volume = :mute) ',
                                 {mute: DiscussionReader.volumes[:mute]})
     self
   end
@@ -96,7 +96,7 @@ class Queries::VisibleDiscussions < Delegator
 
   def sorted_by_importance
     join_to_starred_motions && join_to_motions
-    @relation = @relation.order('smo.closing_at ASC, mo.closing_at ASC, dv.starred DESC, last_activity_at DESC')
+    @relation = @relation.order('smo.closing_at ASC, mo.closing_at ASC, dv.starred ASC, last_activity_at ASC')
     self
   end
 
