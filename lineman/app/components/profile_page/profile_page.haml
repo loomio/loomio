@@ -14,7 +14,7 @@
       .profile-page__profile-fieldset.lmo-vertical-spacer
         %label{for: 'user-name-field', translate: 'profile_page.name_label'}
         %input.form-control.profile-page__name-input{ng-required: true, ng-model: 'profilePage.user.name'}
-        %validation_errors{subject: 'user', field: 'name'}
+        %validation_errors{subject: 'profilePage.user', field: 'name'}
 
         %label{for: 'user-username-field', translate: 'profile_page.username_label'}
         %input.form-control.profile-page__username-input{ng-required: true, ng-model: 'profilePage.user.username'}
