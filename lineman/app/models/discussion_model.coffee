@@ -5,7 +5,10 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     @indices: ['id', 'key', 'groupId', 'authorId']
 
     defaultValues: ->
-      uses_markdown: true
+      usesMarkdown: true
+      lastSequenceId: 0
+      firstSequenceId: 0
+      lastItemAt: null
 
     setupViews: ->
       @setupView 'comments'

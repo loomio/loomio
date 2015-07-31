@@ -77,5 +77,9 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.safeEvent = (kind) ->
       _.contains ['new_comment', 'new_motion', 'new_vote'], kind
 
+    $scope.events = ->
+      _.filter $scope.discussion.events(), (event) -> $scope.safeEvent(event.kind)
+
+
     $scope.init()
     return

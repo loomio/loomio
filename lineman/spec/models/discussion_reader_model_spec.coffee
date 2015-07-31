@@ -11,7 +11,7 @@ describe 'DiscussionReaderModel', ->
       recordStore = Records
 
     discussion = recordStore.discussions.import(id: 1, title: 'Hi')
-    reader = recordStore.discussionReaders.import(discussion_id: 1)
+    reader = recordStore.discussionReaders.import(discussion_id: 1, last_read_at: moment())
     item = recordStore.events.import(id:1, discussion_id: 1, createdAt: 'yesterday', sequenceId: 1)
 
   describe 'markItemAsRead', ->
