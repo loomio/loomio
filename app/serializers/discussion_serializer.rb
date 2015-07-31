@@ -17,7 +17,8 @@ class DiscussionSerializer < ActiveModel::Serializer
              :created_at,
              :updated_at,
              :first_sequence_id,
-             :last_sequence_id
+             :last_sequence_id,
+             :visible_on_dashboard
 
   has_one :author, serializer: UserSerializer, root: 'users'
   has_one :group, serializer: GroupSerializer, root: 'groups'
@@ -31,8 +32,16 @@ class DiscussionSerializer < ActiveModel::Serializer
     object.current_motion
   end
 
+  def visible_on_dashboard
+    scope[:visible_on_dashboard]
+  end
+
   def filter(keys)
     keys.delete(:active_proposal) unless object.current_motion.present?
     keys
+  end
+
+  def scope
+    super || {}
   end
 end

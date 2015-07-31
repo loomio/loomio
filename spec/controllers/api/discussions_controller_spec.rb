@@ -41,6 +41,12 @@ describe API::DiscussionsController do
       expect(ids).to_not include muted_discussion.id
     end
 
+    it 'marks the discussions it returns as visible on the dashboard' do
+      get :dashboard
+      json = JSON.parse(response.body)
+      expect(json['discussions'][0]['visible_on_dashboard']).to eq true
+    end
+
     it 'can filter by active proposals' do
       proposal.reload
       motionless_discussion.reload
