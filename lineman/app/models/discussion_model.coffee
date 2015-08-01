@@ -90,6 +90,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     isStarred: ->
       @reader().starred
 
+    isImportant: ->
+      @isStarred() or @hasActiveProposal()
+
     unreadItemsCount: ->
       (@itemsCount - @reader().readItemsCount)
 

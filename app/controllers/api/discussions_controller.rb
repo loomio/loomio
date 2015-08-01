@@ -4,7 +4,12 @@ class API::DiscussionsController < API::RestfulController
 
   def dashboard
     instantiate_collection { |collection| collection_for_dashboard collection }
-    respond_with_collection scope: { visible_on_dashboard: true }, serializer: DiscussionWrapperSerializer, root: 'discussion_wrappers'
+    respond_with_collection scope: { visible_in_dashboard: true }, serializer: DiscussionWrapperSerializer, root: 'discussion_wrappers'
+  end
+
+  def inbox
+    instantiate_collection { |collection| collection_for_inbox collection }
+    respond_with_collection scope: { visible_in_inbox: true }, serializer: DiscussionWrapperSerializer, root: 'discussion_wrappers'
   end
 
   def index
@@ -23,21 +28,24 @@ class API::DiscussionsController < API::RestfulController
     Array(@group).presence || current_user.groups
   end
 
-  def collection_for_dashboard(collection, filter: params[:filter], limit: params[:filter] || 50)
+  def collection_for_dashboard(collection, filter: params[:filter])
     case filter
-    when 'show_muted'         then collection.muted.sorted_by_latest_activity
-    when 'show_unread'        then collection.not_muted.unread.sorted_by_latest_activity
     when 'show_participating' then collection.not_muted.participating.sorted_by_importance
+    when 'show_muted'         then collection.muted.sorted_by_latest_activity
     else                           collection.not_muted.sorted_by_importance
     end
   end
 
-  def sort_by_importance(collection)
-    collection.starred + collection.proposals + collection.normal_priority
+  def collection_for_inbox(collection)
+    collection.not_muted.unread.sorted_by_latest_activity
   end
 
-  def sort_by_group(collection)
-    collection
+  def serializer_scope
+    if params[:filter] == 'show_unread'
+      { visible_in_inbox: true }
+    else
+      { visible_in_dashboard: true }
+    end
   end
 
   def collection=(value)

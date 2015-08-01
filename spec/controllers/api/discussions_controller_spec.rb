@@ -48,10 +48,16 @@ describe API::DiscussionsController do
         expect(ids).to_not include muted_discussion.id
       end
 
-      it 'marks the discussions it returns as visible on the dashboard' do
+      it 'marks the discussions it returns as visible in the dashboard when filter is not unread' do
         get :dashboard
         json = JSON.parse(response.body)
-        expect(json['discussions'][0]['visible_on_dashboard']).to eq true
+        expect(json['discussions'][0]['visible_in_dashboard']).to eq true
+      end
+
+      it 'marks the discussions is returns as visible in the inbox when filter is unread' do
+        get :dashboard, filter: 'show_unread'
+        json = JSON.parse(response.body)
+        expect(json['discussions'][0]['visible_in_inbox']).to eq true
       end
 
       it 'can filter by participating' do
@@ -137,6 +143,7 @@ describe API::DiscussionsController do
       end
 
       it 'sorts by recent activity fourth' do
+        not_recent.update last_activity_at: 10.days.ago
         get :dashboard
 
         json = JSON.parse(response.body)

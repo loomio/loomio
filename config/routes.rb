@@ -93,6 +93,7 @@ Loomio::Application.routes.draw do
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
       get :dashboard, on: :collection
+      get :inbox, on: :collection
     end
 
     resources :discussion_readers, only: :update do

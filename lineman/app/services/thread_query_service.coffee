@@ -1,22 +1,24 @@
 angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
   new class ThreadQueryService
 
-    filterQuery: (filter) ->
-      threadQueryFor createBaseView(), filter
-
-    groupQuery: (group = {}, options = {}) ->
-      threadQueryFor createGroupView(group),
-                     options['filter'] or 'show_unread',
-                     false
+    filterQuery: (filter, options = {}) ->
+      threadQueryFor createBaseView(),
+                     filter,
+                     options['queryType'] or 'important'
 
     timeframeQuery: (options = {}) ->
       threadQueryFor createTimeframeView(options['name'], options['timeframe']),
                      options['filter'] or 'show_all',
-                     true
+                     options['queryType'] or 'timeframe'
 
-    threadQueryFor = (view, filter, skipImportantThreads) ->
+    groupQuery: (group = {}, options = {}) ->
+      threadQueryFor createGroupView(group),
+                     options['filter'] or 'show_unread',
+                     options['queryType'] or 'inbox'
+
+    threadQueryFor = (view, filter, queryType) ->
       view:       view
-      filter:     createFilter(filter, skipImportantThreads)
+      filter:     createFilter(filter, queryType)
       threads: -> @filter @view.data()
       length: ->  @threads().length
       any: ->     @length() > 0
@@ -46,17 +48,20 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
       parts = options.split ' '
       moment().startOf('day').subtract(parseInt(parts[0]), parts[1])
 
-    createFilter = (filter = 'show_recent', skipImportantThreads = false) ->
+    createFilter = (filter = 'show_recent', queryType) ->
       (viewData) ->
         _.filter viewData, (thread) ->
-          return false if skipImportantThreads and (thread.isStarred() or thread.hasActiveProposal())
-          return false if thread.isMuted() and filter != 'show_muted'
-          # return false unless thread.visibleOnDashboard
+          return false if filter != 'show_muted' and thread.isMuted()
+
+          switch queryType
+            when 'important' then return false if !thread.visibleInDashboard or !thread.isImportant()
+            when 'timeframe' then return false if !thread.visibleInDashboard or thread.isImportant()
+            when 'inbox'     then return false if !thread.visibleInInbox     or !thread.isUnread()
+
           switch filter
             when 'show_all'           then true
-            when 'show_recent'        then !(thread.isStarred() or thread.hasActiveProposal())
             when 'show_muted'         then thread.isMuted()
-            when 'show_unread'        then thread.isUnread()
+            when 'show_unread'        then thread.isUnread() and thread.visibleInInbox
             when 'show_participating' then thread.isParticipating()
             when 'show_starred'       then thread.isStarred() and !thread.hasActiveProposal()
             when 'show_proposals'     then thread.hasActiveProposal()
