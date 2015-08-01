@@ -96,7 +96,7 @@ class Queries::VisibleDiscussions < Delegator
 
   def sorted_by_importance
     join_to_starred_motions && join_to_motions
-    @relation = @relation.order('smo.closing_at ASC, mo.closing_at ASC, dv.starred ASC, last_activity_at DESC')
+    @relation = @relation.order('smo.closing_at ASC, mo.closing_at ASC, dv.starred DESC NULLS LAST, last_activity_at DESC')
     self
   end
 
