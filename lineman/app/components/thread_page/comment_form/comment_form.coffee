@@ -3,15 +3,17 @@ angular.module('loomioApp').directive 'commentForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
-  controller: ($scope, FlashService, Records, CurrentUser) ->
+  controller: ($scope, FormService, Records, CurrentUser) ->
     group = $scope.comment.discussion().group()
     discussion = $scope.comment.discussion()
 
-    $scope.submit = ->
-      $scope.comment.save().then ->
-        $scope.comment = Records.comments.build(discussion_id: discussion.id)
-        $scope.$emit('commentSaveSuccess')
-        FlashService.success('comment_form.messages.created')
+    applyFormService = (=>
+      $scope.submit = FormService.submit $scope, $scope.comment,
+        flashSuccess: 'comment_form.messages.created'
+        successCallback: =>
+          $scope.comment.body = ''
+          $scope.comment.newAttachmentIds = []
+    )()
 
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->
       $scope.comment.parentId = parentComment.id

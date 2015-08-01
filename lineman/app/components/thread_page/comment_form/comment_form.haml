@@ -1,5 +1,6 @@
 %section{aria-labelledby: 'comment-form-title'}
   %form.comment-form{name: 'commentForm', ng_submit: 'submit()', role: 'form'}
+    .lmo-disabled-form{ng-show: 'isDisabled'}
     %input{type: 'hidden', ng-model: 'comment.usesMarkdown'}
     %h2.lmo-card-heading#comment-form-title{translate: 'comment_form.aria_label'}
     %span{translate: 'comment_form.in_reply_to', translate-values: "{name: '{{comment.parentAuthorName()}}' }", ng-show: 'comment.parentAuthorName()'}

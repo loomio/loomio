@@ -1,5 +1,6 @@
 .edit-group-form
   %form{ng-submit: 'submit()',  ng-disabled: 'group.processing', name: 'groupForm' }
+    .lmo-disabled-form{ng-show: 'isDisabled'}
     .modal-header
       %button{type: 'button', class: 'close', ng-click: '$close()'}
         %span{aria-hidden: true} &times;
