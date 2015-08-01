@@ -309,7 +309,7 @@ en:
         parent_members: 'This group is now visible only to members of your organisation'
         public: 'This group is now visible to the public'
       leave_group_success: 'You have left this group'
-      deactivate_group_success: 'Group deactivated'
+      archive_group_success: 'This group has been deactivated'
     group_logo: 'Group logo'
     header:
       aria_label: 'Group page header'
