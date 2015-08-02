@@ -4,6 +4,11 @@ angular.module('loomioApp').factory 'StartGroupForm', ->
     $scope.group = group
 
     $scope.submit = FormService.submit $scope, $scope.group,
-      successCallback: (response) ->
-        $location.path "/g/#{response.groups[0].key}"
-        $rootScope.$broadcast 'newGroupCreated'
+      if $scope.group.isSubgroup()
+        flashSuccess: 'start_group_form.messages.success_when_subgroup'
+        successCallback: (response) ->
+          $location.path "/g/#{response.groups[0].key}"
+      else
+        successCallback: (response) ->
+          $location.path "/g/#{response.groups[0].key}"
+          $rootScope.$broadcast 'newGroupCreated'

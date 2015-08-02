@@ -133,3 +133,15 @@ module.exports = new class GroupsHelper
 
   clickAddCoordinatorButton: ->
     element(By.css('.leave-group-form__add-coordinator')).click()
+
+  clickStartSubgroupLink: ->
+    element(By.css('.subgroups-card__add-subgroup-link')).click()
+
+  fillInSubgroupName: (name) ->
+    element(By.css('.start-group-form__name')).sendKeys(name)
+
+  submitSubgroupForm: ->
+    element(By.css('.start-group-form__submit')).click()
+
+  groupName: ->
+    element(By.css('.group-page__name')).getText()
