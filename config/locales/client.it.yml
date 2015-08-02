@@ -28,15 +28,19 @@ it:
       like: Like
       unlike: Unlike
       cancel: Annulla
+      view_all: Vedi tutti
       new_thread: Nuova discussione
       add_subgroup: Aggiungi un sottogruppo
+      loading: In caricamento...
   error_page:
     forbidden: "Non hai l'autorizzazione per farlo."
     internal_server_error: "Spiacenti, ma qualcosa è andato storto. Riprova più tardi "
   start_proposal_card:
     title: Lancia una proposta
+    helptext: "Pronto a prendere una decisione? Le proposte ti permettono di conoscere l'opinione di tutti su un particolare corso d'azione."
   proposal_outcome_panel:
     heading: Risultato
+    set_outcome_hint: "Usa questo spazio per fare conoscere a tutti l'esito della proposta."
   proposal_outcome_form:
     outcome_label: Risultato della proposta
     outcome_placeholder: Rendi noto il risultato della proposta.
@@ -52,11 +56,13 @@ it:
   volume_levels:
     loud: Alto
     normal: Normale
+    quiet: Quieto
     mute: Silenzioso
   inbox:
     clear: Pulisci
     latest: Più recente
     unread: Non letto
+    closing_in: In chiusura
   session_form:
     email_label: "Email:"
     password_label: Password
@@ -75,6 +81,7 @@ it:
     delete_comment: Cancella il commento
     confirm_delete_message: Sei sicuro che vuoi cancellare questo commento?
     confirm_delete: "Si, sono sicuro/a."
+    in_reply_to: "Rispondendo a <strong>{{name}}</strong>:"
     submit_button:
       label: Post
   navbar:
@@ -82,10 +89,12 @@ it:
     unread: Non letto
     groups: Gruppi
     recent_title: Vai alla dashboard
+    unread_title: Vedi le attività non lette
     groups_title: Visualizza i tuoi gruppi
     start_thread: Lancia una nuova discussione
     notifications: Pannello delle notifiche
     user_options:
+      label: menu utente
       contact_us: Contattaci
       new_thread: Nuova discussione
       new_group: Nuovo gruppo
@@ -95,9 +104,11 @@ it:
     search:
       close: Chiudi ricerca
       placeholder: Ricerca
+      loading: Caricamento risultati....
       discussions: Discussioni
       proposals: Proposte
       comments: Commenti
+      no_results: Nessun risultato trovato
   start_menu:
     start_group: Crea un gruppo
     start_subgroup: Crea un sottogruppo
@@ -109,14 +120,18 @@ it:
     new_motion: "<strong>{{name}}</strong> ha creato una proposta <strong>{{proposal}}</strong>"
     motion_closed_by_user: "<strong>{{name}}</strong> ha chiuso la proposta <strong>{{proposal}}</strong>"
     motion_closed_by_expiry: "La proposta <strong>{{proposal}}</strong> è chiusa."
+    new_vote: "<strong>{{name}}</strong> {{position}} sulla proposta <strong>{{proposal}}</strong>"
     new_comment: "<strong>{{name}}</strong> ha inserito un commento nella discussione <strong>{{discussion}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> ha risposto al tuo commento nella discussione su <strong>{{discussion}}</strong>"
     comment_liked: "A <strong>{{name}}</strong> piace il tuo commento nella discussione <strong>{{discussion}}</strong>"
+    user_mentioned: "<strong>{{name}}</strong> ti ha citato in <strong>{{title}}</strong>"
     membership_requested: "<strong>{{name}}</strong> ha chiesto di entrare nel gruppo <strong>{{group}}</strong>"
     membership_request_approved: "<strong>{{name}}</strong> ha approvato la tua richiesta di unirti al gruppo  <strong>{{group}}</strong>"
     user_added_to_group: "<strong>{{name}}</strong> ti ha aggiunto al gruppo <strong>{{group}}</strong>"
     user_added_to_group_no_inviter: "Sei stato/a aggiunto/a al gruppo <strong>{{group}}</strong>"
     motion_closing_soon: "La proposta  <strong>{{proposal}}</strong> è in chiusura."
+    motion_outcome_created: "<strong>{{name}}</strong> ha reso pubblico un risultato sulla proposta <strong>{{proposal}}</strong>"
+    motion_outcome_updated: "<strong>{{name}}</strong> ha aggiornato il risultato della proposta <strong>{{proposal}}</strong>"
   position_buttons_panel:
     heading: Dite la vostra
   vote_form:
@@ -154,8 +169,11 @@ it:
       success: Proposta chiusa
   extend_proposal_form:
     title: Cambia la data di conclusione
+    success: Scadenza della proposta aggiornata
+    submit: Modifica la scadenza
   proposal_form:
     messages:
+      created: Proposta lanciata
       updated: Proposta aggiornata
     start_proposal: Lancia una proposta
     start_a_proposal: Lancia una proposta
@@ -194,6 +212,7 @@ it:
     only_voter_is_you: Nessun altro membro ha ancora votato.
     edit_proposal: Modifica proposta
     close_proposal: Chiudi la proposta
+    votes_count: "{{count}} altri voti"
   proposal_position_yes: favorevole
   proposal_position_abstain: astenuto
   proposal_position_no: contrario
@@ -242,7 +261,6 @@ it:
         parent_members: Il gruppo è ora visibile solo ai membri della tua organizzazione.
         public: "Ora il gruppo è pubblico "
       leave_group_success: Hai lasciato il gruppo.
-      deactivate_group_success: Gruppo disattivato
     group_logo: Logo del gruppo
     header:
       aria_label: Intestazione della pagina del gruppo
@@ -277,12 +295,15 @@ it:
       loud: Invia una mail in caso di qualsiasi tipo di attività.
       loud_aria_description: Il volume delle notifiche per questo gruppo è settato su Alto. Riceverai una mail in caso di qualsiasi attività nel gruppo.
       normal: "Invia emails solo in caso di attività importanti: nuove discussioni e proposte, risultati di votazioni ecc."
+      normal_aria_description: "Il volume delle tue notifiche è settato su Normale. Verrai indormato/a via email sulle attività più importanti, ad esempio quando qualcuno lancia una nuova discussione, una proposta oppure stabilisce un esito."
   edit_group_form:
     title: Modifica le impostazioni del gruppo
     profile:
       label: Profilo
       name: Nome
+      description: Descrizione
     privacy:
+      label: Privacy
       private_visibility: Gruppo chiuso - non sarà presente nella lista
       membership_by_request: Aperto - chiunque può unirsi al gruppo
       membership_by_request_subgroup: "Aperto ai membri del gruppo {{parentGroupName}}"
@@ -296,6 +317,7 @@ it:
       helptext: Cosa possono fare i membri del gruppo?
       members_can_add_members: Invita ed approva nuovi membri
       members_can_create_subgroups: Crea sottogruppi
+      members_can_raise_motions: Lancia nuove proposte
       members_can_vote: Vota le proposte
     messages:
       success: Gruppo aggiornato
@@ -315,6 +337,8 @@ it:
       new_group: Gruppo creato
       update_group: Gruppo aggiornato
     new_group_title: Crea un nuovo gruppo
+    new_subgroup_title: "Crea un nuovo sottogruppo in  {{parentGroupName}}"
+    edit_group_title: Impostazioni del gruppo
     profile_label: Profilo
     name_label: Nome
     name_placeholder: Digita il nome del tuo gruppo
@@ -325,9 +349,12 @@ it:
     invite_people: Invita persone
     find_people: Trova persone
     import_contacts_header: Collega il tuo address book
+    import_contacts_message: Invitare persone in Loomio è più facile se importi i tuoi contatti da Google.
     import_contacts: Importa contatti
     instructions: Inserisci nomi o indirizzi email
     invitation_message: Messaggio di invito
+    send_invite: "Invia {{count}} inviti"
+    to: "a: "
     default_message: "Ciao, vieni a prendere decisioni con noi! Usiamo un tool di decision-making collaborativo chiamato Loomio."
     messages:
       members_added_and_emails_sent: "{{members}} membro(i) aggiunto(i) e {{emails}} invito(i) inviato(i)"
@@ -348,6 +375,8 @@ it:
       title: Espelli membro
       question: "Sei sicuro/a di volere rimuovere {{name}} dal gruppo {{group}}?"
       submit: Rimuovi
+  pending_invitations_card:
+    email: Email
   profile_page:
     messages:
       updated: Profilo aggiornato

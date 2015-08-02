@@ -6,7 +6,7 @@ ga-IE:
     link:
       blog: Blag
       contact: Déan Teagmháil
-      press: Brúigh
+      press: Sa Nuacht
       try_it: Bain triail as
       log_in: SÍNIGH ISTEACH
       video: Féach tuilleadh faoi conas mar a fheidhmíonn Loomio
@@ -14,7 +14,7 @@ ga-IE:
       try_loomio_beta: Bain triail as Loomio béite
       more: Tuilleadh
       top: Barr
-      public_groups: Dreamanna poiblí
+      public_groups: Baiclí poiblí
       terms: Coinníollacha
       privacy: Príobháideachas
       services: Seirbhísí
@@ -31,7 +31,7 @@ ga-IE:
         desc: "Tig le haon duine gníomh a mholadh. Tig le daoine aontú, staonadh, easaontú, nó bac a chur ar thogra - ionas gur féidir conas mar a bhraitheann daoine, agus cad is siocair leis."
       step3:
         header: 3. Déan cinneadh le chéile
-        desc: "Forbraigh an togra le chéile ionas go mbeidh mar shochar do chách. Tá lá cairde ag gach cinneadh, mar sin bíonn toradh soiléir ann i gcónaí."
+        desc: "Forbraigh an togra le chéile ionas go mbeidh sé mar shochar do chách. Tá lá cairde ag gach cinneadh, mar sin bíonn toradh soiléir ann i gcónaí."
     mobile:
       lead_html: "<strong>Feidhmíonn Loomio ar ghléas ar bith,</strong><br />déan cinntí áit ar bith, am ar bith."
     quote:
@@ -59,4 +59,6 @@ ga-IE:
     advisors_html: "<h2>Comhairleoirí</h2> <p>Tugann Comhairle Chomhairleach tacaíocht dúinn. Is iad cuid de na saoithe is fearr i gcúrsaí daonlathais agus teicneolaíochta ar domhan.</p> "
     sascha_bio_html: "Bunaitheoir <a href='http://thexlab.org/' target='_blank'>X-Lab</a> & <a href='http://www.newamerica.org/oti/' target='_blank'>Open Technology Institute</a>"
     katherine_bio_html: "Iar-Leas-Uachtarán Sinsearach, <a href='http://www.aol.com/' target='_blank'>AOL</a>, Leas-chathaoirleach <a href='http://www.rootcapital.org/' target='_blank'>Root Capital</a>"
+    joi_bio_html: "Stiúrthóir <a href=\"http://www.media.mit.edu/\" target=\"_blank\">MIT Media Lab</a>, Comhbhunaitheoir <a href=\"https://creativecommons.org/\" target=\"_blank\">Creative Commons</a>, comhalta de Bhord <a href=\"https://www.mozilla.org/en-US/foundation/\" target=\"_blank\">Mozilla Foundation</a>"
+    rushkoff_bio_html: "<a href=\"http://www.rushkoff.com/\" target=\"_blank\">Údar sárdhíola</a>, tráchtaire ar CNN, teoiricí ar na meáin chumarsáide"
     viv_bio: "Comhbhunaitheoir, Cathaoirleach Bhord Loomio, Stiúrthóir Feidhmiúcháin UNICEF Nua Shéalainne"

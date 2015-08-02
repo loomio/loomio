@@ -132,7 +132,6 @@ fr:
         membership_is_invitation_by_admin_only: "Pour rejoindre ce groupe, vous devez être invité par un coordinateur."
     messages:
       leave_group_success: Vous avez quitté ce groupe
-      deactivate_group_success: Groupe désactivé
     group_logo: Logo du groupe
     description: Description
     discussions: Discussions

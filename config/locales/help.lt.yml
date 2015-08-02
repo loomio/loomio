@@ -20,6 +20,7 @@ lt:
       proposals:
         title_html: Pasiūlymai
       keeping_up_to_date:
+        volume_html: Garsumas
         email_settings_html: El. pašto nustatymai
     getting_started:
       title: Darbo pradžia
@@ -39,10 +40,19 @@ lt:
           title: Ką gali daryti nariai?
           invite_and_approve_new_members:
             title: Kviesti ir tvirtinti naujus narius
+          edit_comments:
+            title: Bet kuriuo metu redaguoti savo komentarus
         what_next:
           title: Kas toliau?
     proposals:
       title: Pasiūlymai
     keeping_up_to_date:
+      volume:
+        title: Garsumas
+        body:
+          loud_title: Garsus
+          normal_title: Normalus
+          quiet_title: Tylus
+          mute_title: Nutildyti
       email_settings:
         title: El. pašto nustatymai

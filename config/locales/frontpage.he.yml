@@ -18,6 +18,8 @@ he:
       terms: תנאי שימוש
       privacy: פרטיות
       services: שירותים
+    hero:
+      header_html: "Loomio הדרך הקלה ביותר<br /> <strong> לקבלת החלטות יחד</strong>"
     product:
       header_html: "כשאנחנו שומעים <strong>את כל הקולות </strong>, אנחנו מקבלים <strong>החלטות טובות יותר</strong>."
       step1:

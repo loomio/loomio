@@ -34,6 +34,7 @@ ga-IE:
       view_all: Féach Orthu Uile
       new_thread: Snáith nua
       add_subgroup: Cuir fobhaicle leis
+      loading: Ag luchtú
   error_page:
     forbidden: Níl cead agat é sin a dhéanamh.
     page_not_found: "Theip orainn sin a aimsiú. B'fhéidir gur scriosadh é nó bogadh é."
@@ -274,7 +275,6 @@ ga-IE:
         parent_members: "Is iad na comhaltaí de d'eagraíocht amháin ar féidir leo an bhaicle seo a fheiceáil"
         public: Tá an saol mór in ann an bhaicle seo a fheiceáil anois
       leave_group_success: "D'fhág tú an bhaicle seo"
-      deactivate_group_success: Cuireadh deireadh leis an mbaicle
     group_logo: Lógó na baicle
     header:
       aria_label: Ceanntásc leathanach na baicle
@@ -409,6 +409,17 @@ ga-IE:
       title: Bain an comhalta
       question: "An bhfuil tú cinnte gur mian leat {{name}} a bhaint as an mbaicle {{group}}?"
       submit: Bain é
+  pending_invitations_card:
+    heading: Cuirí ar feitheamh
+    email: Ríomhphost
+    invitation_link: Nasc chuig an cuireadh
+    cancel: Cealaigh
+  cancel_invitation_form:
+    heading: Cealaigh an cuireadh
+    question: An bhfuil tú cinnte gur mian leat an cuireadh seo a chur ar ceal?
+    submit: "Cealaigh an cuireadh "
+    messages:
+      success: Cuireadh curtha ar ceal
   profile_page:
     messages:
       updated: Nuashonraíodh an bheathaisnéisín
@@ -529,6 +540,7 @@ ga-IE:
   thread_group:
     aria_label: Ainm na baicle
   thread_context:
+    aria_label: Comhthéacs na snáithe
     thread_options: Roghanna na snáithe
   activity_card:
     new_activity: Gníomhaíocht Nua
@@ -574,8 +586,10 @@ ga-IE:
     help: Cabhair
     how_it_works: Conas mar a fheidhmíonn sé
     join_the_community: Bí sa phobal
+    images_and_text_formatting: Íomhánna agus formáidiú an téacs
     keep_up_to_date: Fan ar an eolas
     make_a_decision: Déan cinneadh
+    prompt_people_html: "Spreag daoine le <span class='blue'>@tráchtanna</span>"
     positions_agree_description: "Ciallaíonn <span>Aontaíom</span> go bhfuil tú sásta leis an dtogra."
     positions_abstain_description: "Is éard is brí le <span>Staon</span> ná nach bhfuil tú cinnte, nó go bhfuil tú sásta go ndéanfaidh an bhaicle cinneadh gan tú."
     positions_disagree_description: "Is éard is brí le h<span>Easaontú</span> ná go bhfuil tú den tuairim b'fhéidir go bhfuil rogha níos fearr ann, ach tá tú sásta glacadh le cinneadh na baicle."
@@ -593,6 +607,7 @@ ga-IE:
   pricing_page:
     organisations: Eagraíochtaí
     organisations_examples: "m.sh. gnólachtaí, gníomhaireachtaí rialtais, eagraíochtaí pobail"
+    informal_groups: Dreamanna neamhnósúla
     informal_groups_desc: "Iarrfar ar chomhaltaí do bhaicle pé mhéad a bhfuil sé d'acmhainn acu a íoc"
     informal_groups_examples: "m.sh. teaghlaigh, gluaiseachtaí comhdhaonnacha, comharghnónna"
   angular:

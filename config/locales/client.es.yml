@@ -275,7 +275,6 @@ es:
         parent_members: Ahora este grupo es visible sólo para miembros de tu organización
         public: Ahora este grupo es visible para el público
       leave_group_success: Has dejado este grupo
-      deactivate_group_success: Grupo desactivado
     group_logo: Logo del grupo
     header:
       aria_label: Cabecera de página del grupo
@@ -413,6 +412,17 @@ es:
       title: Eliminar miembro
       question: "¿Estás seguro de que quieres eliminar a {{name}} del grupo {{group}}?"
       submit: Eliminar
+  pending_invitations_card:
+    heading: Invitaciones pendientes
+    email: "correo electrónico "
+    invitation_link: "enlace de invitación "
+    cancel: cancelar
+  cancel_invitation_form:
+    heading: "cancelar invitación "
+    question: Estas seguro de que quieres cancelar esta invitación?
+    submit: cancelar invitación
+    messages:
+      success: "invitación cancelada "
   profile_page:
     messages:
       updated: Perfil actualizado
