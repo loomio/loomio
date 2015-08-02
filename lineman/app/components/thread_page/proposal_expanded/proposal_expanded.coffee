@@ -7,7 +7,6 @@ angular.module('loomioApp').directive 'proposalExpanded', ->
     Records.votes.fetchByProposal($scope.proposal)
 
     $scope.collapse = ->
-      console.log 'emmitting'
       $scope.$emit('collapseProposal')
 
     $scope.showActionsDropdown = ->
