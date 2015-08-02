@@ -42,8 +42,17 @@
 }
 
 .lmo-navbar__item--selected {
-  border-bottom: 4px solid $loomio-orange;
   a{ color: $primary-text-color; }
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    background: $loomio-orange;
+  }
 }
 
 .lmo-navbar__item--user {
