@@ -4,7 +4,6 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope,
       $http.post('/api/v1/message_channel/subscribe', channel: channel).then (response) =>
           subscription = response.data
           PrivatePub.sign(subscription)
-          console.log 'subscribed response:', response
           PrivatePub.subscribe subscription.channel, (data, channel) =>
             @messageReceived(data, onMessageReceived)
 
@@ -41,4 +40,3 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope,
 
       $rootScope.$digest()
       onMessageReceived(data) if onMessageReceived?
-

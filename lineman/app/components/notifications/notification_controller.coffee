@@ -4,9 +4,6 @@ angular.module('loomioApp').controller 'NotificationController', ($scope, LmoUrl
   $scope.event = $scope.notification.event()
   $scope.actor = $scope.event.actor()
 
-  if $scope.event.kind == 'user_added_to_group' and $scope.event.membership().inviter() == null
-    console.log 'found it', $scope.event.membership().inviterId
-
   $scope.link = ->
 
     switch $scope.event.kind
