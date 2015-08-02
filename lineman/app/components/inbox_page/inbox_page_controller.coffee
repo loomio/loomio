@@ -16,10 +16,12 @@ angular.module('loomioApp').controller 'InboxPageController', ($scope, $rootScop
     return if @loading()
     _.each @groups(), (group) =>
       @views.groups[group.key] = ThreadQueryService.groupQuery(group)
-    @baseQuery = ThreadQueryService.filterQuery('show_unread', queryType: 'inbox')
   $scope.$on 'currentUserMembershipsLoaded', @init
   $scope.$on 'currentUserInboxLoaded', @init
   @init()
+
+  @hasThreads = ->
+    ThreadQueryService.filterQuery('show_unread', queryType: 'inbox').any()
 
   @moreForThisGroup = (group) ->
     @views.groups[group.key].length() > @threadLimit
