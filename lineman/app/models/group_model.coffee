@@ -108,6 +108,9 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
     isSubgroup: ->
       @parentId?
 
+    isArchived: ->
+      @archivedAt?
+
     isParent: ->
       !@parentId?
 

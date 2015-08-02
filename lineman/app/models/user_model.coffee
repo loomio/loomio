@@ -38,7 +38,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       # (like abilities) from regular other user concerns.
 
     groups: ->
-      @recordStore.groups.find(id: { $in: @groupIds() })
+      _.filter @recordStore.groups.find(id: { $in: @groupIds() }), (group) -> !group.isArchived()
 
     parentGroups: ->
       _.filter @groups(), (group) -> group.parentId == null

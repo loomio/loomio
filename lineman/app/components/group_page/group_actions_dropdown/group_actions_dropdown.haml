@@ -11,12 +11,10 @@
           .dropdown-menu-item-label{translate: 'group_page.options.edit_group'}
           .dropdown-menu-item-details
       %li.dropdown-menu-item
-        %a.group-page-actions__leave_group{href: '', ng-click: 'groupActions.leaveGroup()'}
+        %a.group-page-actions__leave-group{href: '', ng-click: 'groupActions.leaveGroup()'}
           .dropdown-menu-item-label{translate: 'group_page.options.leave_group'}
         .dropdown-menu-item-details
       %li.dropdown-menu-item{ng-if: 'groupActions.canArchiveGroup()'}
-        %a{href: '', ng-click: 'groupActions.archiveGroup()'}
+        %a.group-page-actions__archive-group{href: '', ng-click: 'groupActions.archiveGroup()'}
           .dropdown-menu-item-label{translate: 'group_page.options.deactivate_group'}
         .dropdown-menu-item-details
-
-
