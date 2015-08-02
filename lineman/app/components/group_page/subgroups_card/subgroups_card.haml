@@ -4,6 +4,7 @@
   %ul.subgroups-card__list
     %li.subgroups-card__list-item{ng-repeat: 'subgroup in group.subgroups() track by subgroup.id'}
       .subgroups-card__list-item-logo
+        %group_avatar{group: 'subgroup', size: 'medium'}
       .subgroups-card__list-item-name
         %a{href: '/g/{{subgroup.key}}'} {{ subgroup.name }}
       .subgroups-card__list-item-description {{ subgroup.description | words:10 }}
