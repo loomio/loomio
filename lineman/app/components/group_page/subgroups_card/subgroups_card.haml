@@ -9,6 +9,6 @@
       .subgroups-card__list-item-description {{ subgroup.description | words:10 }}
 
   .card-minor-action{ng-if: '::canCreateSubgroups()'}
-    %a{href: '/g/{{group.key}}/subgroups/new'}
+    %a.subgroups-card__add-subgroup-link{href: '', ng-click: 'startSubgroup()'}
       %span{aria-hidden:'true'}>+
       %span{ translate: 'common.action.add_subgroup' }

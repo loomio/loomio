@@ -270,10 +270,15 @@ en:
 
   start_group_form:
     heading: 'Start a group'
+    heading_when_subgroup: 'Start a subgroup'
     group_helptext: 'To start making decisions together on Loomio, set up a group for free:'
     group_payment_reminder: "In 30 days, when you've seen how Loomio improves your group's decision making, we'll ask you to choose the <a href='#'>payment plan</a> that works for you."
     name_label: 'Group Name'
+    subgroup_name_label: 'Subgroup name'
     submit: 'Start Group'
+    messages:
+      success: Group created
+      success_when_subgroup: Subgroup created
 
   join_group_button:
     join_group: Join group
