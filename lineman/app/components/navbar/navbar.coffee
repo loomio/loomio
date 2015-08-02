@@ -12,12 +12,3 @@ angular.module('loomioApp').directive 'navbar', ->
 
     $scope.homePageClicked = ->
       $rootScope.$broadcast 'homePageClicked'
-
-    if !$scope.inboxLoaded
-      Records.discussions.fetchInbox(
-        from: 0
-        per: 100
-        since: moment().startOf('day').subtract(6, 'week').toDate() # last 6 weeks of unread content
-        timeframe_for: 'last_activity_at'
-      ).then ->
-        $scope.inboxLoaded = true

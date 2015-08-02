@@ -12,8 +12,8 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     show_participating: 0
 
   @views =
-    recent: []
-    groups: []
+    recent: {}
+    groups: {}
 
   @timeframes =
     today:     { from: '1 second ago', to: '-10 year ago' } # into the future!
@@ -25,20 +25,17 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
 
   @recentViewNames = ['proposals', 'starred', 'today', 'yesterday', 'thisweek', 'thismonth', 'older']
 
-  @groups = {}
   @groupThreadLimit = 5
   @groups = -> CurrentUser.parentGroups()
-  @groupName = (group) -> group.name
-  @groupQueryFor = (group) -> @groups[group.key]
-  @moreForThisGroup = (group) -> @groupQueryFor(group, { filter: @filter }).length() > @groupThreadLimit
+  @moreForThisGroup = (group) -> @views.groups[group.key].length() > @groupThreadLimit
 
   @displayByGroup = ->
-    _.contains ['show_starred', 'show_muted'], @filter
+    _.contains ['show_muted'], @filter
 
   @updateQueries = ->
     if @displayByGroup()
       _.each @groups(), (group) =>
-        @views.groups[group.key] = ThreadQueryService.groupQuery(group, { filter: @filter })
+        @views.groups[group.key] = ThreadQueryService.groupQuery(group, { filter: @filter, queryType: 'all' })
     else
       @views.recent.proposals = ThreadQueryService.filterQuery ['show_proposals', @filter], queryType: 'important'
       @views.recent.starred   = ThreadQueryService.filterQuery ['show_starred', 'hide_proposals', @filter], queryType: 'important'
