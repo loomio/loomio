@@ -27,6 +27,7 @@ it:
     getting_started:
       title: Per cominciare
     group_settings:
+      title: Impostazioni del gruppo
       group_privacy:
         who_can_find_this_group:
           title: Chi può trovare questo gruppo?
@@ -68,6 +69,7 @@ it:
         body:
           loud_title: Alto
           normal_title: Normale
+          quiet_title: Quieto
           mute_title: Silenzioso
       email_settings:
         title: Impostazioni Email

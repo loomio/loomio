@@ -428,6 +428,7 @@ it:
     volume: Volume
     loud: Alto
     normal: Normale
+    quiet: Quieto
     mute: Silenzioso
   discussion_volume:
     loud_description: Mandami una mail in caso ci sia una qualsiasi attività in questa discussione.

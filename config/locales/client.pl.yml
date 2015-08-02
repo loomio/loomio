@@ -274,7 +274,6 @@ pl:
         parent_members: Ta grupa jest teraz widoczna tylko dla członków Twojej organizacji
         public: Ta grupa jest teraz publiczna
       leave_group_success: Opuściłeś/aś tę grupę
-      deactivate_group_success: Grupa nieaktywna
     group_logo: Logo grupy
     header:
       aria_label: Nagłówek strony grupy

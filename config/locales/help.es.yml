@@ -102,6 +102,7 @@ es:
       intro: "Cuando entras en contacto con Loomio por primera vez, puede que te unas de diferentes formas.\nHe aquí alguna información sobre esos puntos de entrada.\n"
       starting_new_group:
         title: Cuando quieres comenzar un nuevo grupo de Loomio
+        body_html: "Si no tienes una cuenta de Loomio, puedes empezar un nuevo grupo desde la pagina principal de Loomio haciendo click en el botón <strong>\"Prueba Loomio beta\"</strong>\nSeras guiado a través de los pasos para empezar tu grupo.\nComo parte del proceso de configuración, deberás determinar como quieres que tu grupo funcione personalizando los ajustes del mismo.\n Puedes leer mas sobre los ajustes de los grupos en la sección <a href=\"#group-settings\">\"Ajustes del Grupo\"</a> en este documento.\n"
       invited_into_group:
         title: Cuando se te invita a un grupo de Loomio
         body_html: "Cuando recibes una invitación para unirte a un grupo ya existente de Loomio, el correo electrónico que recibes incluye un enlace de invitación único.\nCuando sigues este enlace, si no tienes una cuenta de usuario en Loomio, se te pedirá que crees una cuenta con tu dirección de correo electrónico y una contraseña.\nSi ya posees una cuenta de Loomio entrarás directamente en la página del grupo.\n"
@@ -170,6 +171,7 @@ es:
             body_html: "¿Quieres que los miembros de tu grupo puedan <a href=\"#stating-positions\">expresar su postura en las propuestas</a>?\n¿O preferirías que algunas personas solo puedan observar?\nCuando se selecciona esta casilla cualquiera en tu grupo podrá expresar su postura en las propuestas.\nCuando no se selecciona, solo los coordinadores del grupo podrán expresar su postura. \n"
         what_next:
           title: ¿Y después?
+          body_html: "Una vez que envíes el formulario de creación del grupo , seras dirigido hacia la pagina de tu grupo.\nDesde la pagina de tu grupo puedes invitar personas a unirse.\nPuedes leer mas sobre invitaciones en la sección <a href=\"#inviting-members\">\"Invitar nuevos miembros\"</a> de este documento.\n"
     coordination:
       title: Coordinando tu grupo
       intro_html: "Como coordinador de un grupo de Loomio, eres responsable de guiar a tu grupo en el proceso de aprender a usar una nueva pieza de software; así como también aprender nuevos procesos para colaborar más eficazmente y tomar buenas decisiones juntos.\nLas tareas especificadas debajo son tareas que solo los coordinadores de tu grupo tienen permiso de ejecutar.\n"
@@ -229,6 +231,7 @@ es:
         body_html: "Si quieres iniciar una nueva discusión lo puedes hacer desde el <a href=\"#dashboard\">Panel de control</a>, o desde la página del grupo, haciendo clic en el botón <strong>\"Empezar una discusión\"</strong> en el lado derecho de la página.\nSi comienzas una discusión desde el Panel de control, se te pedirá elegir el grupo donde la discusión debería llevarse a cabo.\n"
       providing_context:
         title: "Proveer contexto "
+        body_html: "<p>Una vez hayas hecho clic en el botón <strong>\"Empezar una discusión\"</strong>, el formulario siguiente te pedirá que le pongas un <strong>título</strong> y un <strong>contexto</strong>. Asegúrate de que el título transmite el tema en pocas palabras. ¿Cuál es el mensaje central?\nLos títulos de discusión largos se cortarán en el Panel de control.</p> \n<p>El campo de contexto te permite desarrollar el título y proporcionar cualquier información útil sobre los antecedentes. Intenta proporcionar toda la información sobre antecedentes que se podría necesitar para participar significativamente - todo lo que requiera el grupo para llevar a cabo una discusión productiva e informada.</p>\n<p>El título de la discusión y la información que proveas para el contexto se sitúan en un panel en la parte superior de la página de la discusión.</p>\n<p>A medida que va progresando la discusión, el panel de contexto puede ser actualizado según salga a la luz nueva información.\nAdemás de aclarar el tema, puedes usar este espacio para compartir recursos, resumir la discusión según va progresando, o resumir los protocolos de toma de decisiones que tu grupo está usando.</p>\n<p>Loomio utiliza <strong>Markdown</strong> para formatear texto e incrustar imágenes. Puedes utilizar Markdown en el panel de contexto para formatear el contexto de tu discusión o para incrustar imágenes. \nPara mas información sobre cómo utilizar Markdown, haz clic en el enlace de <a href=\"https://www.loomio.org/d/Wh7vHaTk/markdown-text-formatting-made-easy\">\"Ayuda\"</a> al lado de la casilla de Markdown en el formulario de la nueva discusión, o visita la pagina de ayuda de Markdown directamente <a href=\"/markdown\" target=\"_blank\">loomio.org/markdown</a>.</p>\n"
       discussion_privacy:
         title: Privacidad de la discusión
         body_html: "La privacidad de la discusión se determina mediante la <a href=\"#group-privacy\">privacidad del grupo</a>.\n\nSi estás empezando una discusión en un grupo público, puedes elegir si tu discusión es pública (es decir, se puede buscar y cualquiera puede verla), o privada (sólo será visible para los miembros de tu grupo).\n"
@@ -248,6 +251,7 @@ es:
         body: Puedes añadir tu voz a una discusión mediante el recuadro de comentarios al fondo de la página de discusión.
       markdown:
         title: Markdown
+        body_html: "Loomio usa <strong>Markdown</strong> para formatear texto e incrustar imágenes.\nPara activar Markdown, marca la casilla junto a la palabra <strong>“Markdown”</strong> bajo el recuadro de comentario.\nPara mas información sobre cómo utilizar Markdown, haz clic en el enlace de <a href=\"https://www.loomio.org/d/Wh7vHaTk/markdown-text-formatting-made-easy\">\"Ayuda\"</a> al lado de la casilla de Markdown bajo el recuadro del comentario, o visita la pagina de ayuda de Markdown directamente: <a href=\"/markdown\" target=\"_blank\">loomio.org/markdown</a>.\n"
       attaching_files:
         title: "Adjuntar archivos "
         body: "Loomio te permite adjuntar archivos a los comentarios en una discusión.\nPuedes adjuntar un archivo a un comentario haciendo clic en el icono de clip debajo del recuadro de comentario al fondo de la página de discusión y seleccionando el archivo en tu equipo.\n"
@@ -276,16 +280,19 @@ es:
       editing_proposals:
         title: Editar una propuesta
         body:
+          intro_html: "Los coordinadores del grupo y los autores de las propuestas, pueden editar los detalles de la misma hasta que un miembro del grupo declare su posición.\nSin embrago el tiempo de cierre de la propuesta puede ser cambiado, por un coordinador del grupo o por el autor de la propuesta, en cualquier momento del curso de la misma.\nUna propuesta también puede ser cerrada antes del tiempo de cierre programado, si es evidente que no satisface las necesidades del grupo.\n"
           instructions_html: "A la página <strong>\"Editar propuesta\"</strong> se accede mediante el enlace <strong>\"Editar\"</strong> dentro del panel <strong>\"Decisión actual\"</strong> a la derecha de la página."
       stating_positions:
         title: "Estableciendo tu posición  "
         body:
           intro_html: "Cuando estés listo para dar tu opinión, haz clic en una de los cuatro botones de decisión bajo la propuesta:"
+          additional_info_html: "<p>Una vez hayas seleccionado tu posición, se te pedirá dar una breve explicación sobre porque lo sientes de esa forma.</p>\n<p>Debajo del gráfico circular puedes ver lo que piensan los demás.\nEsto facilita estar al día con la discusión.\nA medida que se vaya añadiendo nueva información, puedes ir cambiando tu decisión en cualquier momento</p>\n"
       changing_positions:
         title: Cambiando tu posición
         body_html: "Si quieres cambiar tu postura, haz clic en <strong>“editar”</strong> junto a ella, en el panel <strong>“Decisión actual”</strong> a la derecha de la página."
       setting_outcome:
         title: Fijar los resultados de una propuesta
+        body_html: "Cuando una propuesta cierra, permanecera en la parte derecha de la pagina de la discusion, dentro del panel de <strong>\"Decisiones previas\"</strong>.\nUn panel editable de resultado aparecerá bajo el titulo de la propuesta, y a la persona que inicio la propuesta le sera enviado un correo electrónico pidiendo que declare el resultado de su propuesta.\nEl resultado de la propuestas solo puede ser escrito por la persona que inicio la misma o por los coordinadores del grupo.\nMarcar el resultado de la propuesta es una buena oportunidad de poner a todos los miembros al día, para que todos entiendan las implicaciones de la propuesta y que estén al tanto de los próximos pasos.\nCuando la declaración sobre el resultado de la propuesta es presentado, todos en el grupo recibirán un correo electrónico notificándoles del resultado.\n"
       closing_proposals:
         title: "Cerrar una propuesta "
       previous_decisions:
