@@ -40,8 +40,8 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
       _.each @groups(), (group) =>
         @views.groups[group.key] = ThreadQueryService.groupQuery(group, { filter: @filter })
     else
-      @views.recent.proposals = ThreadQueryService.filterQuery 'show_proposals'
-      @views.recent.starred   = ThreadQueryService.filterQuery 'show_starred'
+      @views.recent.proposals = ThreadQueryService.filterQuery ['show_proposals', @filter], queryType: 'important'
+      @views.recent.starred   = ThreadQueryService.filterQuery ['show_starred', 'hide_proposals', @filter], queryType: 'important'
       _.each @timeframeNames, (name) =>
         @views.recent[name] = ThreadQueryService.timeframeQuery
           name: name
