@@ -3,6 +3,7 @@
   %main.profile-page{ng-if: 'profilePage.user'}
     %h1.lmo-h1.lmo-vertical-spacer-lg{translate: 'profile_page.profile'}
     .profile-page-card
+      .lmo-disabled-form{ng-show: 'profilePage.isDisabled'}
       %h3.lmo-h3{translate: 'profile_page.edit_profile'}
 
       %label{for: 'user-picture-field', translate: 'profile_page.picture_label'}

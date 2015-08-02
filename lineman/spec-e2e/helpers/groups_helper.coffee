@@ -111,10 +111,16 @@ module.exports = new class GroupsHelper
     element(By.css('.subgroups-card'))
 
   clickLeaveGroupButton: ->
-    element(By.css('.group-page-actions__leave_group')).click()
+    element(By.css('.group-page-actions__leave-group')).click()
+
+  clickArchiveGroupButton: ->
+    element(By.css('.group-page-actions__archive-group')).click()
 
   confirmLeaveGroup: ->
     element(By.css('.leave-group-form__submit')).click()
+
+  confirmArchiveGroup: ->
+    element(By.css('.archive-group-form__submit')).click()
 
   visitGroupPage: ->
     element(By.css('.groups-item')).click()

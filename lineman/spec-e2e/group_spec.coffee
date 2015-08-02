@@ -77,3 +77,14 @@ describe 'Group Page', ->
       groupsHelper.clickLeaveGroupButton()
       groupsHelper.clickAddCoordinatorButton()
       expect(membershipsHelper.membershipsPageHeader().isDisplayed()).toBeTruthy
+
+  describe 'archiving a group', ->
+
+    it 'allows a coordinator to archive a group', ->
+      groupsHelper.load()
+      groupsHelper.openMemberOptionsDropdown()
+      groupsHelper.clickArchiveGroupButton()
+      groupsHelper.confirmArchiveGroup()
+      expect(flashHelper.flashMessage()).toContain('This group has been deactivated')
+      groupsHelper.visitGroupPage()
+      expect(groupsHelper.groupsList().getText()).not.toContain('Dirty Dancing Shoes')

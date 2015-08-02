@@ -15,15 +15,17 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService) ->
         FlashService.loading()
         scope.isDisabled = true
         model.setErrors()
-        submitFn(model).then (response) ->
-          scope.isDisabled = false
-          FlashService.success options.flashSuccess, options.flashOptions if options.flashSuccess?
-          scope.$close()                                                  if typeof scope.$close == 'function'
-          options.successCallback(response)                               if typeof options.successCallback == 'function'
-        , (response) ->
-          scope.isDisabled = false
+
+        submitFn(model).then( (response) ->
           FlashService.dismiss()
-          model.setErrors response.data.errors if response.status == 422
+          FlashService.success options.flashSuccess, options.flashOptions if options.flashSuccess?
+          scope.$close()                                                  if typeof scope.$close is 'function'
+          options.successCallback(response)                               if typeof options.successCallback is 'function'
+        , (response) ->
+          FlashService.dismiss()
+          model.setErrors response.data.errors                            if response.status == 422
           $rootScope.$broadcast errorTypes[response.status] or 'unknownError',
             model: model
             response: response
+        ).finally ->
+          scope.isDisabled = false

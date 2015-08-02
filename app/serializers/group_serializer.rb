@@ -22,7 +22,8 @@ class GroupSerializer < ActiveModel::Serializer
              :logo_url_medium,
              :cover_url_desktop,
              :has_discussions,
-             :has_multiple_admins
+             :has_multiple_admins,
+             :archived_at
 
   has_one :parent, serializer: GroupSerializer, root: 'groups'
 

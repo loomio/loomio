@@ -39,10 +39,6 @@ describe 'DiscussionModel', ->
   describe 'proposals()', ->
     beforeEach ->
       proposal = recordStore.proposals.import(id:7, discussion_id: discussion.id)
-      #proposal = recordStore.proposals.import(id:7, discussion_id: discussion.id)
-      #proposal = recordStore.proposals.import(id:7, discussion_id: discussion.id)
-      #console.log proposal
-      #console.log _.map(discussion.proposals(), (p) -> p.id)
 
     it 'returns proposals', ->
       expect(discussion.proposals()).toContain(proposal)

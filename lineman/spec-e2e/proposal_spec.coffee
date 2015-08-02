@@ -3,6 +3,7 @@ describe 'Proposals', ->
   threadHelper = require './helpers/thread_helper.coffee'
   proposalsHelper = require './helpers/proposals_helper.coffee'
   emailHelper = require './helpers/email_helper.coffee'
+  flashHelper = require './helpers/flash_helper.coffee'
 
   describe 'starting a proposal', ->
 
@@ -70,6 +71,7 @@ describe 'Proposals', ->
       proposalsHelper.setProposalOutcomeBtn().click()
       proposalsHelper.fillInProposalOutcomeForm({ body: 'Everyone is happy!' })
       proposalsHelper.submitProposalOutcomeForm()
+      expect(flashHelper.flashMessage().getText()).toContain('Outcome published')
       expect(proposalsHelper.currentExpandedProposalOutcome().getText()).toContain('Everyone is happy!')
 
     it 'successfully edits a proposal outcome', ->
@@ -78,6 +80,7 @@ describe 'Proposals', ->
       proposalsHelper.editOutcomeLink().click()
       proposalsHelper.editProposalOutcomeForm({ body: 'Gonna make things happen!' })
       proposalsHelper.submitProposalOutcomeForm()
+      expect(flashHelper.flashMessage().getText()).toContain('Outcome published')
       expect(proposalsHelper.currentExpandedProposalOutcome().getText()).toContain('Gonna make things happen!')
 
   describe 'voting by email', ->
