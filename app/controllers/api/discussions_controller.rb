@@ -40,14 +40,6 @@ class API::DiscussionsController < API::RestfulController
     collection.not_muted.unread.sorted_by_latest_activity
   end
 
-  def serializer_scope
-    if params[:filter] == 'show_unread'
-      { visible_in_inbox: true }
-    else
-      { visible_in_dashboard: true }
-    end
-  end
-
   def collection=(value)
     @discussions = DiscussionWrapper.new_collection user: current_user, discussions: value
   end
