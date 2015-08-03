@@ -32,7 +32,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
   @displayByGroup = ->
     _.contains ['show_muted'], @filter
 
-  @updateQueries = ->
+  @updateQueries = =>
     if @displayByGroup()
       _.each @groups(), (group) =>
         @views.groups[group.key] = ThreadQueryService.groupQuery(group, { filter: @filter, queryType: 'all' })
@@ -49,10 +49,10 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     from = @loaded[@filter]
     @loaded[@filter] = @loaded[@filter] + @perPage
 
-    Records.discussions.fetchDashboard
+    Records.discussions.fetchDashboard(
       filter: @filter
       from:   from
-      per:    @perPage
+      per:    @perPage).then @updateQueries
   LoadingService.applyLoadingFunction @, 'loadMore'
 
   @refresh = ->
