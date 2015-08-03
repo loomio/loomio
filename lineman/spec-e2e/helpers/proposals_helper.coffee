@@ -26,7 +26,7 @@ module.exports = new class ProposalsHelper
     element(By.css('.vote-form__submit-btn')).click()
 
   positionsList: ->
-    element(By.css('.proposal-positions-panel__list'))
+    element(By.css('.proposal-positions-panel__list')).getText()
 
   proposalActionsDropdown: ->
     element(By.css('.proposal-actions-dropdown__btn'))
@@ -40,23 +40,20 @@ module.exports = new class ProposalsHelper
   closeProposalButton: ->
     element(By.css('.close-proposal-form__submit-btn'))
 
-  # proposalClosedAt: ->
-  #   element(By.css('.cuke-proposal-closed-badge'))
-
   previousProposalsList: ->
-    element(By.css('.previous-proposals-card'))
+    element(By.css('.previous-proposals-card')).getText()
 
   saveProposalChangesBtn: ->
     element(By.css('.proposal-form__save-changes-btn'))
 
   currentProposalHeading: ->
-    element(By.css('.proposal-expanded__proposal-name'))
+    element(By.css('.proposal-expanded__proposal-name')).getText()
 
-  proposalExpandLink: ->
-    element(By.css('a.proposal-collapsed'))
+  clickProposalExpandLink: ->
+    element(By.css('a.proposal-collapsed')).click()
 
   currentExpandedProposal: ->
-    element(By.css('.proposal-expanded'))
+    element(By.css('.proposal-expanded')).getText()
 
   setProposalOutcomeBtn: ->
     element(By.css('.proposal-outcome-panel__set-outcome-btn'))
@@ -68,7 +65,7 @@ module.exports = new class ProposalsHelper
     element(By.css('.proposal-outcome-form__publish-outcome-btn')).click()
 
   currentExpandedProposalOutcome: ->
-    element(By.css('.proposal-outcome-panel__outcome'))
+    element(By.css('.proposal-outcome-panel__outcome')).getText()
 
   editOutcomeLink: ->
     element(By.css('.proposal-outcome-panel__edit-outcome-link'))
@@ -83,7 +80,7 @@ module.exports = new class ProposalsHelper
     element(By.css('a.undecided-panel__show-undecided-link')).click()
 
   undecidedPanel: ->
-    element(By.css('.undecided-panel'))
+    element(By.css('.undecided-panel')).getText()
 
   clickHideUndecidedLink: ->
     element(By.css('a.undecided-panel__hide-undecided-link')).click()
