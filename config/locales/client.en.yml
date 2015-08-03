@@ -252,6 +252,7 @@ en:
     edit_proposal: 'Edit proposal'
     close_proposal: 'Close proposal'
     votes_count: '{{count}} other votes'
+    closed_badge: Closed
 
 
   proposal_position_yes: 'Agree'

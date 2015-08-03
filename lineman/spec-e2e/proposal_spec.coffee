@@ -69,7 +69,7 @@ describe 'Proposals', ->
       threadHelper.loadWithClosedProposal()
       proposalsHelper.clickProposalExpandLink()
       expect(proposalsHelper.currentExpandedProposal()).toContain('lets go hiking')
-      expect(proposalsHelper.currentExpandedProposal()).toContain('Closed')
+      expect(proposalsHelper.currentExpandedProposal()).toContain('Closed a few seconds ago')
 
   describe 'setting a proposal outcome', ->
 

@@ -40,9 +40,6 @@ module.exports = new class ProposalsHelper
   closeProposalButton: ->
     element(By.css('.close-proposal-form__submit-btn'))
 
-  # proposalClosedAt: ->
-  #   element(By.css('.cuke-proposal-closed-badge'))
-
   previousProposalsList: ->
     element(By.css('.previous-proposals-card')).getText()
 
