@@ -1,9 +1,11 @@
 %a.proposal-collapsed.media{href: '', id: 'proposal-{{proposal.key}}'}
   .sr-only
     {{proposal.name}}.
-    %closing_in{time: 'proposal.closingAt'}.
+    %closing_in{ng-if: 'proposal.isActive()', time: 'proposal.closingAt' }.
+    %closing_in{ng-if: '!proposal.isActive()', time: 'proposal.closedAt' }.
   .screen-only{aria-hidden: 'true'}
-    %closing_in.pull-right{time: 'proposal.closingAt'}
+    %closing_in.pull-right{ng-if: 'proposal.isActive()', time: 'proposal.closingAt' }.
+    %closing_in.pull-right{ng-if: '!proposal.isActive()', time: 'proposal.closedAt' }.
     .proposal-collapsed-expand.pull-right{translate: 'proposal_collapsed.expand'}
     .media-left
       %pie_chart.lmo-box--medium{votes: 'proposal.voteCounts'}

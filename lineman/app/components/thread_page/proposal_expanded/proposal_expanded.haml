@@ -7,8 +7,9 @@
     %span.time-ago>
       {{proposal.createdAt | timeFromNowInWords}}
     %span{aria-hidden: 'true'}·
-    %closing_in{time: 'proposal.closingAt' }>
-    .badge.pull-right.cuke-proposal-closed-badge{ng-show: '!proposal.isActive'} Closed
+    %closing_in{ng-if: 'proposal.isActive()', time: 'proposal.closingAt' }>
+    %closing_in{ng-if: '!proposal.isActive()', time: 'proposal.closedAt' }>
+    .badge.pull-right.cuke-proposal-closed-badge{ng-show: '!proposal.isActive()'} Closed
   .proposal-expanded-description.lmo-markdown-wrapper{marked: 'proposal.description' }
   %proposal_outcome_panel{ng-if: 'showOutcomePanel()', proposal: 'proposal'}
 
