@@ -7,7 +7,7 @@ module.exports = new class MembershipsHelper
     element(By.css('.membership-page__search-filter'))
 
   fillInSearchInput: (name) ->
-    @searchInput().sendKeys(name)
+    @searchInput().clear().sendKeys(name)
 
   clickRemoveLink: ->
     element(By.css('.memberships-page__remove-link')).click()
@@ -22,7 +22,7 @@ module.exports = new class MembershipsHelper
     @searchInput().clear()
 
   membershipsTable: ->
-    element(By.css('.memberships-page__memberships'))
+    element(By.css('.memberships-page__memberships')).getText()
 
   coordinatorCheckbox: ->
     element(By.css('.memberships-page__make-coordinator'))
@@ -35,3 +35,7 @@ module.exports = new class MembershipsHelper
 
   membershipsPageHeader: ->
     element(By.css('.memberships-page__memberships h2'))
+
+  makeJenniferCoordinator: ->
+    @fillInSearchInput('Jennifer')
+    @checkCoordinatorCheckbox()
