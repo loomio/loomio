@@ -1,4 +1,6 @@
 class DevelopmentController < ApplicationController
+  include Development::DashboardHelper
+
   around_filter :ensure_testing_environment
 
   def last_email
@@ -16,6 +18,14 @@ class DevelopmentController < ApplicationController
 
   def dashboard_url
     "http://localhost:8000/dashboard"
+  end
+
+  def setup_dashboard
+    cleanup_database
+    sign_in patrick
+    starred_proposal_discussion; proposal_discussion; starred_discussion
+    recent_discussion; old_discussion; participating_discussion; muted_discussion
+    redirect_to dashboard_url
   end
 
   def setup_group

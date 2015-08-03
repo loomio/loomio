@@ -5,25 +5,30 @@ describe 'Dashboard Page', ->
   beforeEach ->
     dashboardHelper.load()
 
-  describe 'recent view', ->
-    it 'displays threads with active proposals', ->
+  it 'displays a view of recent threads', ->
+    expect(dashboardHelper.proposalsThreads()).toContain('Starred proposal discussion')
+    expect(dashboardHelper.proposalsThreads()).toContain('Proposal discussion')
+    expect(dashboardHelper.proposalsThreads()).not.toContain('Starred discussion')
 
-    it 'does not display muted threads', ->
+    expect(dashboardHelper.starredThreads()).toContain('Starred discussion')
+    expect(dashboardHelper.starredThreads()).not.toContain('Starred proposal discussion')
 
-    it 'displays threads with stars', ->
+    expect(dashboardHelper.todayThreads()).toContain('Recent discussion')
 
-    it 'displays threads by recent activity', ->
+    expect(dashboardHelper.anyThreads()).not.toContain('Muted discussion')
+    expect(dashboardHelper.anyThreads()).not.toContain('Old discussion')
 
-    it 'sorts threads with active proposals by starred', ->
+  it 'displays a view of participating threads', ->
+    dashboardHelper.openFilterDropdown()
+    dashboardHelper.visitParticipatingView()
+    expect(dashboardHelper.anyThreads()).not.toContain('Starred proposal discussion')
+    expect(dashboardHelper.anyThreads()).not.toContain('Recent discussion')
+    expect(dashboardHelper.anyThreads()).toContain('Participating discussion')
 
-  describe 'participating view', ->
-    it 'does not display non-participating threads', ->
-
-    it 'does not display muted threads', ->
-
-  describe 'muted view', ->
-    it 'displays muted threads', ->
-
-    it 'displays threads by group', ->
-
-    it 'does not display old threads', ->
+  iit 'displays a view of muted threads by group', ->
+    dashboardHelper.openFilterDropdown()
+    dashboardHelper.visitMutedView()
+    browser.driver.sleep(10000)
+    expect(dashboardHelper.firstGroupTitle()).toContain('Dirty Dancing Shoes')
+    expect(dashboardHelper.anyThreads()).toContain('Muted discussion')
+    expect(dashboardHelper.anyThreads()).not.toContain('Recent discussion')
