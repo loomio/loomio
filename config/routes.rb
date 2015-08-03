@@ -3,6 +3,7 @@ Loomio::Application.routes.draw do
   namespace :development do
     get 'last_email'
     get 'setup_dashboard'
+    get 'setup_inbox'
     get 'setup_group'
     get 'setup_group_for_invitations'
     get 'setup_group_to_join'

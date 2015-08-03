@@ -25,7 +25,7 @@ describe 'Dashboard Page', ->
     expect(dashboardHelper.anyThreads()).not.toContain('Recent discussion')
     expect(dashboardHelper.anyThreads()).toContain('Participating discussion')
 
-  iit 'displays a view of muted threads by group', ->
+  it 'displays a view of muted threads by group', ->
     dashboardHelper.openFilterDropdown()
     dashboardHelper.visitMutedView()
     browser.driver.sleep(10000)

@@ -15,8 +15,8 @@ module Development::DashboardHelper
     create_discussion!(:participating_discussion) { |discussion| participate!(discussion) }
   end
 
-  def recent_discussion
-    create_discussion!(:recent_discussion)
+  def recent_discussion(group: test_group)
+    create_discussion!(:recent_discussion, group: group)
   end
 
   def old_discussion
