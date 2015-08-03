@@ -251,7 +251,6 @@ en:
     extend_proposal: 'Change closing time'
     edit_proposal: 'Edit proposal'
     close_proposal: 'Close proposal'
-    votes_count: '{{count}} other votes'
     closed_badge: Closed
 
 
