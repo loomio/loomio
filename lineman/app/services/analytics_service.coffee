@@ -3,6 +3,7 @@ angular.module('loomioApp').factory 'AnalyticsService', ($location, $rootScope, 
     data =
       dimension4: window.Loomio.version
       dimension5: window.Loomio.currentUserId
+      dimension6: 1
 
     setVersion: (version) ->
       data.dimension4 = version
