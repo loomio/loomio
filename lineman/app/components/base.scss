@@ -25,18 +25,3 @@ input[type="file"]{
 strong{
   @include fontHelveticaBold;
 }
-
-.main-container{
-  padding-top: 48px;
-  z-index: 0;
-  min-width: 320px;
-}
-
-.btn {
-  @include box_shadow(1);
-  border: none;
-
-  &:hover {
-    @include box_shadow(2);
-  }
-}

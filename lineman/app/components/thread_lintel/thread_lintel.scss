@@ -2,8 +2,9 @@
   @include fontMedium;
   position: fixed;
   top: $navbar-height;
-  left: 0;
-  width: 100% ;
+  margin-left: auto;
+  margin-right: auto;
+  width: $page-max-width;
 }
 
 .thread-lintel__content {
@@ -11,8 +12,10 @@
   border: 1px solid $border-color;
   background-color: $card-background-color;
   clear: both;
-  margin: 0 auto;
-  max-width: $main-max-width;
+  margin: 0 0 auto 0;
+  /*max-width: $main-max-width;*/
+  width: 58.333333333%;
+  right: 41.666666666%;
 }
 
 .thread-lintel__left {

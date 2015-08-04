@@ -1,7 +1,6 @@
 .loading-wrapper.container.main-container
   %loading{ng-if: '!threadPage.discussion'}
   %main.thread-page{ng-if: 'threadPage.discussion'}
-
     %section.media.thread-group{aria-label: "{{ 'thread_group.aria_label' | translate }}"}
       .media-left.thread-group__icon{aria-hidden: 'true'}
         %img.thread-group-logo{ng-src: "{{threadPage.group.logoUrl()}}"}
@@ -42,16 +41,20 @@
 
       %article.thread-context__description.lmo-markdown-wrapper{marked: 'threadPage.discussion.description', aria-label: "{{ 'thread_context.aria_label' | translate }}" }
 
-    %section.start-proposal-card{in-view: 'threadPage.proposalButtonInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.canStartProposal()', aria-label: '{{ "start_proposal_card.title" | translate }}'}
-      %h2.lmo-card-heading{translate: 'common.models.proposal'}
-      %start_proposal_button.table-cell.thread-start-proposal-button{discussion: 'threadPage.discussion'}
-      %span.lmo-placeholder.lmo-hint-text.table-cell{translate: 'start_proposal_card.helptext'}
+    .row
+      .col-sm-5.col-sm-push-7
+        %section.start-proposal-card{in-view: 'threadPage.proposalButtonInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.canStartProposal()', aria-label: '{{ "start_proposal_card.title" | translate }}'}
+          %h2.lmo-card-heading{translate: 'common.models.proposal'}
+          %start_proposal_button.table-cell.thread-start-proposal-button{discussion: 'threadPage.discussion'}
+          %span.lmo-placeholder.lmo-hint-text.table-cell{translate: 'start_proposal_card.helptext'}
 
-    %current_proposal_card{in-view: 'threadPage.proposalInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.discussion.hasActiveProposal()', proposal: 'threadPage.discussion.activeProposal()'}
+        %current_proposal_card{in-view: 'threadPage.proposalInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.discussion.hasActiveProposal()', proposal: 'threadPage.discussion.activeProposal()'}
 
-    %previous_proposals_card{ng-if: 'threadPage.discussion.anyClosedProposals()', discussion: 'threadPage.discussion'}
+        %previous_proposals_card{ng-if: 'threadPage.discussion.anyClosedProposals()', discussion: 'threadPage.discussion'}
 
-    %activity_card{discussion: 'threadPage.discussion'}
-    %comment_form{comment: 'threadPage.comment'}
+      .col-sm-7.col-sm-pull-5
+
+        %activity_card{discussion: 'threadPage.discussion'}
+        %comment_form{comment: 'threadPage.comment'}
 
     %thread_lintel

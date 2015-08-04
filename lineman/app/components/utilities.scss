@@ -69,6 +69,16 @@
   margin: 5px 5px 5px 0;
   display: inline-block;
 }
+
+.btn {
+  @include box_shadow(1);
+  border: none;
+
+  &:hover {
+    @include box_shadow(2);
+  }
+}
+
 .lmo-btn-icon{
   text-align: left;
 }
