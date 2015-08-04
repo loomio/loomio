@@ -107,3 +107,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
 
     markAsRead: (sequenceId) ->
       @reader().markAsRead(sequenceId)
+
+    hasActivity: ->
+      _.some(@comments) or _.some(@events)
