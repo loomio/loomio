@@ -1,4 +1,4 @@
-.user-avatar{class: 'lmo-box--{{size}}', aria-hidden: 'true', ng-class: '{"user-avatar--coordinator": coordinator}'}
+.user-avatar{class: 'lmo-box--{{size}}', aria-hidden: 'true', ng-class: '{"user-avatar--coordinator": coordinator}', title: '{{user.name}}'}
   %div{class: 'lmo-box--{{size}} user-avatar__initials--{{size}}', ng-if: 'user.avatarKind == "initials"'}
     {{user.avatarInitials}}
   %img{class: 'lmo-box--{{size}}', ng-if: 'user.avatarKind == "gravatar"', gravatar-src-once: 'user.gravatarMd5', gravatar-size: "50",  alt: "{{::user.name}}"}
