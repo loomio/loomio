@@ -26,11 +26,12 @@
     %start_menu
 
 
-    - if Rails.env.production?
-      #turn-off-angular{'aria-hidden' => 'true'}
-        =link_to 'Turn off angular', '/angular', target: '_self'
-        =link_to 'Give feedback', 'https://docs.google.com/forms/d/1JS75ZdoBiA3k7IzxDPijV4kPh1fXrmWs9A8k_WG_pyE/viewform', target: '_blank'
-        .lmo-version= "v#{Loomio::Version.current}"
+    -#- if Rails.env.production?
+    #turn-off-angular{'aria-hidden' => 'true'}
+      =link_to t(:'angular.switch_back'), angular_url
+      %br
+      =link_to t(:'angular.give_feedback'), 'https://docs.google.com/a/enspiral.com/forms/d/1JS75ZdoBiA3k7IzxDPijV4kPh1fXrmWs9A8k_WG_pyE/viewform', target: '_self'
+      .lmo-version= link_to "v#{Loomio::Version.current}", 'https://github.com/loomio/loomio/releases', target: '_self'
 
 
     :javascript
