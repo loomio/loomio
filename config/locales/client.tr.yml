@@ -10,16 +10,23 @@ tr:
       public: Genel
     date_range:
       today: Bugün
+      yesterday: Dün
+      thisweek: Bu Hafta
+      thismonth: Bu Ay
+      older: Eski
     models:
       proposal: Öneri
     action:
       save: Kaydet
+      reply: Cevapla
       edit: Düzenle
       like: Beğen
       unlike: Beğenmekten vazgeç
       cancel: İptal et
   error_page:
     forbidden: Bunu yapmaya yetkin bulunmuyor.
+  start_proposal_card:
+    title: Bir öneri başlat
   proposal_outcome_panel:
     heading: Sonuç
   proposal_outcome_form:
@@ -27,10 +34,15 @@ tr:
     publish_outcome: Sonuç yayınla
   context_card:
     heading: İçerik
+  volume_levels:
+    normal: Normal
   inbox:
     clear: Temizle
     unread: Okunmamış
+  session_form:
+    email_label: "Eposta:"
   comment_form:
+    aria_label: Bir yorum ekle
     edit_comment: Yorumu düzenle
     delete_comment: Yorumu sil
     confirm_delete_message: Bu yorumu silmek istediğinden emin misin?
@@ -41,16 +53,23 @@ tr:
       contact_us: Bize yazın
       new_group: Yeni grup
       profile: Profil
+      email_settings: E-posta ayarları
       help: Yardım
     search:
       placeholder: Arama
       discussions: Müzakereler
+      proposals: Öneriler
+      comments: Yorumlar
+  start_menu:
+    start_group: Grup Başlat
+    invite_people: Kişileri davet et
   notifications:
     header: Bildirimler
   position_buttons_panel:
     heading: Söz sahibi ol
   vote_form:
     heading: Söz sahibi ol
+    no_statement: Yorum yok.
     i_agree: Katılıyorum
     i_abstain: Çekimserim
     i_abstain_details: Grubun bensiz karar vermesine razıyım.
@@ -61,10 +80,14 @@ tr:
     submit_position: Konumunu gir
   proposal_positions_panel:
     heading: Konumlar
+    change_your_vote: Oyunu değiştir
   close_proposal_form:
     close_proposal: Öneriyi kapat
+  extend_proposal_form:
+    submit: Kapanış saatini güncelle
   proposal_form:
     start_proposal: Öneri başlat
+    start_a_proposal: Bir öneri başlat
     edit_proposal: Öneri düzenle
     title_label: Başlık
     closes_at_label: de kapanır
@@ -75,10 +98,21 @@ tr:
     context_label: İçerik
     privacy_label: Gizlilik
   proposal_expanded:
+    extend_proposal: Kapanış saatini değiştir
     edit_proposal: Öneri düzenle
     close_proposal: Öneriyi kapat
+    closed_badge: Kapalı
+  proposal_position_yes: Katılıyorum
+  proposal_position_abstain: Çekimserim
+  proposal_position_no: Katılmıyorum
+  proposal_position_block: Engelle
+  group_welcome_modal:
+    heading: Yeni grubuna hoşgeldin
   start_group_form:
     heading: Bir grup başlat
+    submit: Grup Başlat
+    messages:
+      success: Grup oluşturuldu
   join_group_button:
     join_group: Gruba katıl
     ask_to_join_group: Gruba katılmak için talep gönder
@@ -93,6 +127,7 @@ tr:
       empty:
         membership_is_invitation_only: Bu gruba katılmak için bir üye tarafından davet edilmelisin.
         membership_is_invitation_by_admin_only: Bu gruba katılmak için koordinatör tarafından davet edilmelisin.
+    group_logo: Grup logosu
     description: Açıklama
     discussions: Müzakereler
     manage_members: Üyeleri düzenle
@@ -100,16 +135,40 @@ tr:
     options_label: Seçenekler
     options:
       label: Seçenekler
+      leave_group: Gruptan Ayrıl
     leave_group:
       title: Gruptan ayrıl
+      submit: "Evet, bu gruptan ayrıl"
+      add_coordinator: Bir koordinatör ekle
+  edit_group_form:
+    profile:
+      label: Profil
+      name: İsim
+      description: Açıklama
+    privacy:
+      label: Gizlilik
+      visible_to_members: Kimler bu grubu bulabilir?
+      membership_granted_upon: İnsanlar nasıl katılabilir?
+    permissions:
+      label: İzinler
+      members_can_create_subgroups: Alt gruplar oluşturun
+      members_can_raise_motions: Öneriler başlat
+      members_can_vote: Önerileri oylayın
+    submit: Ayarları Güncelle
   membership_requests_page:
     approve: Onayla
     ignore: Yok say
   group_form:
+    messages:
+      new_group: Grup oluşturuldu
+    new_group_title: Yeni bir grup oluştur
+    edit_group_title: Grup Ayarları
     profile_label: Profil
     name_label: İsim
     description_label: Açıklama
     category_label: Kategori
+  invitation:
+    invite_people: Kişileri davet et
   memberships_page:
     members: Üyeler
     name_label: İsim
@@ -117,9 +176,13 @@ tr:
     remove_member_label: Kaldır
     remove_membership:
       submit: Kaldır
+  pending_invitations_card:
+    email: E-posta
+    cancel: İptal et
   profile_page:
     change_picture:
       use_initials: Baş harfleri kullan
+      use_gravatar: Gravatar kullan
     change_password:
       current_password_label: Mevcut şifre
       new_password_label: Yeni şifre
@@ -127,19 +190,36 @@ tr:
     deactivate_user:
       title: Hesabınızı devre dışı bırakın
       submit: Hesabınızı devre dışı bırakın
+    deactivate_user_link: Hesabınızı devre dışı bırakın
     profile: Profil
+    edit_profile: Profili düzenle
     picture_label: Resim
     name_label: İsim
     username_label: Kullanıcı adı
     email_label: E-posta
     locale_label: Dil
+    update_profile: Profili güncelle
+  email_settings_page:
+    header: E-posta ayarları
+    email: E-posta
   dashboard_page:
     aria_label: Kontrol paneli
     mark_as_read: Okundu olarak işaretle
+    filtering:
+      proposals: Öneriler
     threads_from:
       today: Bugün
+      yesterday: Dün
+      thisweek: Bu hafta
+      thismonth: Bu ay
+  inbox_page:
+    view_more: Daha Fazla Göster
+  discussion:
+    proposals: Öneriler
   thread_group:
     aria_label: Grup adı
+  activity_card:
+    new_activity: Yeni aktivite
   delete_comment_dialog:
     title: Yorumu sil
     question: Bu yorumu silmek istediğinden emin misin?
@@ -152,6 +232,7 @@ tr:
     name_label: Adın
     email_label: E-posta adresin
     message_label: Mesajın
+    send_message: Mesaj gönder
   help_page:
     coordinating: Loomio grubunu koordine etmek
     coordinating_details: "Koordinatör olarak, Loomio grubunu düzenlemek ve kişileri davet etmekten \nsen sorumlusun. Yeni bir yazılımın nasıl kullanıldığını öğrenmenin yanı sıra, grubun\ndaha etkili işbirliği ve birlikte iyi kararlar almak için yeni süreçler öğrenecek.\nİşte grubunun başarılı olmasını desteklemen için bazı ipuçları:\n"

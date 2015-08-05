@@ -411,6 +411,7 @@ tr:
   networks:
     previous_requests: Önceki istekler
     approve: Onayla
+    approved: "%{name} tarafından onaylandı"
     threads: Müzakereler
     groups: Gruplar
   group_request:
@@ -421,6 +422,8 @@ tr:
     confirmation:
       title: "Neredeyse bitti! E-postanızı kontrol edin."
       body_html: "Sana grup başlatma daveti içeren bir e-posta gönderdik.\n\nEğer gelen kutusunda birkaç dakika içerisinde göremezseniz <a href='mailto:contact@loomio.org'>contact@loomio.org</a> adresine e-posta göndererek bize ulaşabilirsin.\n"
+  volume:
+    normal: Normal
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> teklife katılıyor."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> teklif üzerinde çekimser kaldı."
@@ -504,6 +507,7 @@ tr:
   move_discussion_where: Bu müzakereyi nereye taşımak istersiniz?
   delete_discussion: Müzakereyi sil
   confirm_delete_discussion: Bu müzakereyi kalıcı olarak silmek istediğinden emin misin?
+  print_tooltip_info: Yazdır
   new_proposal: Yeni Öneri
   edit_proposal: Öneriyi Düzenle
   close_proposal: Öneriyi kapat
@@ -511,6 +515,7 @@ tr:
   change_proposal_close_date: Kapanış tarihini değiştir
   change_proposal_close_date_header: "'%{which}' önerisinin kapanış tarihini değiştir"
   proposal: Öneri
+  proposals: Öneriler
   proposal_close_date_error: Lütfen ileri bir kapanış tarihi verin
   proposal_closing_when: "%{when} içinde kapanıyor"
   proposal_closed_when: "%{when} önce kapandı"

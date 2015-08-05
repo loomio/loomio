@@ -226,7 +226,7 @@ pt-BR:
     extend_proposal: Mudar hora de encerramento
     edit_proposal: Editar proposta
     close_proposal: Encerrar proposição
-    votes_count: "{{count}} outros votos"
+    closed_badge: Fechado
   proposal_position_yes: Concordar
   proposal_position_abstain: Abster
   proposal_position_no: Discordar
@@ -241,10 +241,15 @@ pt-BR:
     ok_got_it: "OK, entendi!"
   start_group_form:
     heading: Iniciar um grupo
+    heading_when_subgroup: Iniciar um subgrupo
     group_helptext: "Para começar a tomar decisões em conjunto no Loomio, crie um grupo gratuitamente:"
     group_payment_reminder: "Em 30 dias, quando você ver como Loomio melhora a tomada de decisão do seu grupo, vamos pedir-lhe para escolher o <a href='#'>plano de pagamento</a> que seja melhor pra você."
     name_label: Nome do Grupo
+    subgroup_name_label: Nome do subgrupo
     submit: Iniciar Grupo
+    messages:
+      success: Grupo criado
+      success_when_subgroup: Subgrupo criado
   join_group_button:
     join_group: Entrar no grupo
     ask_to_join_group: Pedir para entrar no grupo
@@ -275,6 +280,7 @@ pt-BR:
         parent_members: Este grupo agora está visível apenas para membros da sua organização
         public: Este grupo agora é visível publicamente
       leave_group_success: Você deixou este grupo
+      archive_group_success: Este grupo foi desativado
     group_logo: Logo do grupo
     header:
       aria_label: Título da página do grupo
@@ -636,8 +642,16 @@ pt-BR:
     informal_groups_desc: Membros do seu grupo serão solicitados que paguem o que puderem
     informal_groups_examples: "p.ex. famílias, movimentos sociais, coletivos"
   angular:
-    title: "Bem-vindo ao painel Angular!"
-    now_on: Sua interface angular está LIGADA
-    turn_on: Ligar interface angular
-    now_off: Sua interface angular está DESLIGADA
-    turn_off: Desligar interface angular
+    switch_back: Mude de volta para o antigo Loomio
+    give_feedback: Dê suas opiniões
+    enable:
+      invite: "Experimente o novo Loomio!"
+      title: Experimente o novo Loomio
+      intro: Nós reconstruímos o Loomio e precisamos da sua ajuda para nos certificar de que está incrível antes de liberá-lo para o público em geral.
+      body_html: "<p></p>\n<h3>Qual a diferença?</h3>\n\n<p>\nA nova interface é como a antiga, só que mais atual:\n<ul>\n<li>Tudo é atualizado na página enquanto acontece.</li>\n<li>É projetada para todos os seus dispositivos, desde smartphone até desktop.</li>\n<li>É acessível a pessoas cegas e está traduzida para <a href=\"https://www.loomio.org/translation\">um montão de idiomas.</a>\n</ul>\n</p>\n\n<p>Usa o mesmo banco de dados da interface antiga, o que significa que você terá todos os seus grupos e discussões já existentes. Você pode voltar para a interface antiga a qualquer momento.</p>\n<p>As coisas vão mudar um pouco a cada dia, enquanto implementamos o feedback que recebermos durante este tempo. Algumas funções menos utilizadas podem não estar lá ainda.</p>\n<p>Há um link “Voltar para o antigo Loomio” no canto inferior esquerdo do novo aplicativo. Clique nesse link e você pode voltar para o Loomio que você está mais acostumado. Há também um formulário de feedback para que você digite qualquer opinião que você tenha.</p>\n<p>Realmente esperamos ouvir seus comentários. Obrigado pelo seu tempo e apoio.</p>\n"
+      button_text: Ative o novo Loomio
+    disable:
+      title: Obrigado por experimentar o novo Loomio
+      body_html: "<p>Êita, nós fizemos algo errado? Lamentamos se você teve um mau momento no novo Loomio.</p>"
+      give_feedback: "Antes de ir, por favor, considere compartilhar suas opiniões para que possamos melhorar."
+      button_text: Mude de volta para o antigo Loomio

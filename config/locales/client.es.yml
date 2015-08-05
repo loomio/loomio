@@ -226,7 +226,6 @@ es:
     extend_proposal: Cambiar fecha de cierre
     edit_proposal: Editar propuesta
     close_proposal: Cerrar propuesta
-    votes_count: "{{count}} votos más"
   proposal_position_yes: De acuerdo
   proposal_position_abstain: Abstenerse
   proposal_position_no: En desacuerdo
@@ -635,9 +634,3 @@ es:
     informal_groups: Grupo informal
     informal_groups_desc: A los miembros de tu grupo se les pedirá que contribuyan con lo que puedan
     informal_groups_examples: "ej. familias, movimientos sociales, grupos colectivos"
-  angular:
-    title: "¡Bienvenido al escritorio angular!"
-    now_on: Tu interfaz angular está actualmente ACTIVADA
-    turn_on: Activar la interfaz angular
-    now_off: Tu interfaz angular está actualmente DESACTIVADA
-    turn_off: Desactivar la interfaz angular

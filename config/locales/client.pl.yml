@@ -225,7 +225,6 @@ pl:
     extend_proposal: Zmiana terminu zamknięcia
     edit_proposal: Edycja rekomendacji
     close_proposal: Zamknij rekomendację
-    votes_count: "{{count}} innych głosów"
   proposal_position_yes: Zgoda
   proposal_position_abstain: Wstrzymuję się
   proposal_position_no: Nie zgadzam się
@@ -623,9 +622,3 @@ pl:
     informal_groups: Grupy nieformalne
     informal_groups_desc: Członkowie Twojej grupy będą proszeni o dobrowolne wpłaty
     informal_groups_examples: "np. rodziny, ruchy społeczne,zespoły"
-  angular:
-    title: Witamy w pulpicie Angular
-    now_on: Twój interfejs angular jest obecnie WŁĄCZONY
-    turn_on: Włącz interfejs angular
-    now_off: Twój interfejs angular jest obecnie WYŁĄCZONY
-    turn_off: Wyłącz interfejs angular

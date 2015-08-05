@@ -11,14 +11,20 @@ zh-TW:
       public: 公開
     date_range:
       today: 今天
+      yesterday: 昨日
+      thisweek: 本週
+      thismonth: " 本月"
     models:
       proposal: 提案
     action:
       save: 儲存
+      save_changes: 儲存變更
+      reply: 回覆
       edit: 編輯
       like: 讚
       unlike: 收回讚
       cancel: 取消
+      loading: 讀取中
   error_page:
     forbidden: 您沒有足夠的權限。
   proposal_outcome_panel:
@@ -36,6 +42,8 @@ zh-TW:
   inbox:
     clear: 清除
     unread: 未讀
+  session_form:
+    sign_in: 登入
   comment_form:
     edit_comment: 編輯意見
     delete_comment: 刪除意見
@@ -153,6 +161,7 @@ zh-TW:
       proposals: 提議
     threads_from:
       today: 今天
+      yesterday: 昨日
   discussion:
     proposals: 提議
     volume:

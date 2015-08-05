@@ -212,7 +212,6 @@ it:
     only_voter_is_you: Nessun altro membro ha ancora votato.
     edit_proposal: Modifica proposta
     close_proposal: Chiudi la proposta
-    votes_count: "{{count}} altri voti"
   proposal_position_yes: favorevole
   proposal_position_abstain: astenuto
   proposal_position_no: contrario
@@ -560,9 +559,3 @@ it:
     informal_groups: Gruppi informali
     informal_groups_desc: Verrà richiesto ai membri del tuo gruppo di pagare quanto possono
     informal_groups_examples: "es. famiglie, movimenti sociali, collettivi"
-  angular:
-    title: "Benvenuto/a alla dashboard Angular!"
-    now_on: "L'interfaccia Angular è attiva"
-    turn_on: "Attiva l'interfaccia Angular"
-    now_off: La tua interfaccia Angular è attualmente disattivata
-    turn_off: "Disattiva l'interfaccia Angular"
