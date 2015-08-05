@@ -1,9 +1,14 @@
 class AngularController < ApplicationController
   before_filter :authenticate_user!
+  layout 'pages'
 
   def index
+    @mode = if current_user.angular_ui_enabled?
+             'disable'
+           else
+             'enable'
+           end
     @enabled = current_user_or_visitor.angular_ui_enabled?
-    render 'index', layout: false
   end
 
   def on

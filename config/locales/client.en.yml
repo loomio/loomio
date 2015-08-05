@@ -766,8 +766,34 @@ en:
     informal_groups_examples: e.g. families, social movements, collectives
 
   angular:
-    title: 'Welcome to the Angular dashboard!'
-    now_on: 'Your angular interface is currently ON'
-    turn_on: 'Turn on the angular interface'
-    now_off: 'Your angular interface is currently OFF'
-    turn_off: 'Turn off the angular interface'
+    switch_back: 'Switch back to old Loomio'
+    give_feedback: 'Give feedback'
+    enable:
+      invite: 'Try the new Loomio!'
+      title: 'Try the new Loomio'
+      intro: "We've rebuilt Loomio and we need your help to make sure it is awesome before we release it to the general public."
+      body_html: |
+        <p></p>
+        <h3>What's the difference anyway?</h3>
+
+        <p>
+          The new interface is like the old interface but newer:
+          <ul>
+            <li>Everything updates live on the page as it happens</li>
+            <li>It’s designed for all your devices, from smartphone to desktop</li>
+            <li>It’s accessible to people who are blind, and translated into <a href="https://www.loomio.org/translation">heaps of languages</a>
+          </ul>
+        </p>
+
+        <p>It uses the same database as the old interface, meaning it will have all your existing groups and discussions. You can change back to the old interface at any time.</p>
+        <p>Things will be changing slightly every day as we implement the feedback we get during this time. Some less frequently used features may not be there yet.</p>
+        <p>There is a link "Switch back to the old Loomio" in the bottom left corner of the new app. Click that link and you can switch back to the Loomio you're more used to. There is also a feedback form for you to enter any feedback you have.</p>
+        <p>We really look forward to hearing your feedback, thanks for your time and support.</p>
+
+      button_text: 'Enable the new Loomio'
+
+    disable:
+      title: 'Thanks for trying the new Loomio'
+      body_html: "<p>Yikes, did we do something wrong? We're sorry if you had a bad time in the new Loomio.</p>"
+      give_feedback: "Before you go please consider sharing your feedback so we can improve."
+      button_text: 'Switch back to the old Loomio'
