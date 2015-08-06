@@ -704,6 +704,7 @@ DEPENDENCIES
   jquery-ui-rails (~> 5.0.0)
   kaminari
   launchy
+  mime-types (~> 2.6.1)
   minitest
   modernizr-rails
   momentjs-rails
