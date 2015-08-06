@@ -19,7 +19,6 @@ gem 'omnicontacts', github: 'Diego81/omnicontacts', ref: 'beca38666154d660c472e5
 gem 'jquery-rails', '~> 4.0.3'
 gem 'jquery-ui-rails', '~> 5.0.0'
 gem 'simple_form', '3.1.0'
-gem 'country_select'
 gem 'cancancan'
 gem 'rmagick', '~> 2.15.0'
 gem 'gravtastic'
@@ -91,6 +90,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'derailed'
+  gem "stackprof"
   gem 'spring'
   gem "spring-commands-cucumber"
   gem "spring-commands-rspec"
