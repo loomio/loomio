@@ -1,6 +1,9 @@
-angular.module('loomioApp').factory 'DiscussionForm', ->
-  templateUrl: 'generated/components/discussion_form/discussion_form.html'
-  controller: ($scope, $controller, $location, discussion, CurrentUser, Records, FormService) ->
+angular.module('loomioApp').factory 'DiscussionForm', (Records) ->
+  controllerFn = ($scope, $controller, $location, discussion, CurrentUser, Records, FormService) ->
+    $scope.$on 'modal.closing', (event) ->
+      if $scope.discussion.isUnsaved() && confirm('Are you sure')
+        event.preventDefault()
+
     $scope.discussion = discussion.clone()
 
     actionName = if $scope.discussion.isNew() then 'created' else 'updated'
@@ -25,3 +28,11 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
 
     $scope.showPrivacyForm = ->
       $scope.getCurrentPrivacy() == 'public_or_private'
+
+  controllerFn.prototype.canDeactivate = ->
+    #Records.anyDrafts(
+    true
+
+
+  templateUrl: 'generated/components/discussion_form/discussion_form.html'
+  controller: controllerFn

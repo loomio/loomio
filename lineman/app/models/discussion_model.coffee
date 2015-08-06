@@ -90,6 +90,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     isStarred: ->
       @reader().starred
 
+    isUnsaved: ->
+      true
+
     unreadItemsCount: ->
       (@itemsCount - @reader().readItemsCount)
 
