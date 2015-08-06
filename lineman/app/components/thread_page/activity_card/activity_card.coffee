@@ -67,7 +67,8 @@ angular.module('loomioApp').directive 'activityCard', ->
     LoadingService.applyLoadingFunction $scope, 'loadEventsBackwards'
 
     $scope.canLoadBackwards = ->
-      $scope.firstLoadedSequenceId > $scope.discussion.firstSequenceId and
+      $scope.discussion.hasActivity() and
+      ($scope.firstLoadedSequenceId > $scope.discussion.firstSequenceId) and
       !($scope.loadEventsForwardsExecuting or $scope.loadEventsBackwardsExecuting)
 
     $scope.loadMoreAfterReading = (item) ->
