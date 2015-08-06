@@ -6,6 +6,7 @@ de:
     closing_in: "Ende um {{time}}"
     closed_ago: "Endete um {{time}}"
     volume: Lautstärke
+    notification_volume: Benachritigungseinstellungen
     group: Gruppe
     groups: Gruppen
     privacy:
@@ -33,6 +34,7 @@ de:
       view_all: Zeige alle
       new_thread: Neuer Strang
       add_subgroup: Untergruppe anlegen
+      loading: Laden
   error_page:
     forbidden: "Du bist nicht berechtigt, das zu tun."
     page_not_found: Das konnten wir nicht finden. Es wurden entweder gelöscht oder verschoben.
@@ -89,7 +91,10 @@ de:
     confirm_delete_message: "Bist Du sicher, dass Du diesen Kommentar löschen willst?"
     confirm_delete: "Ja, ich bin mir sicher"
     in_reply_to: "In Antwort zu <strong>{{name}}</strong>:"
+    submit_button:
+      label: Veröffentlichen
   navbar:
+    recent: Aktuell
     unread: Ungelesen
     groups: Gruppen
     recent_title: Gehe zum Schreibtisch
@@ -133,11 +138,15 @@ de:
     user_added_to_group: "<strong>{{name}}</strong> fügte Dich der Gruppe <strong>{{group}}</strong> hinzu"
     user_added_to_group_no_inviter: "Du wurdest der Gruppe <strong>{{group}}</strong> hinzugefügt"
     motion_closing_soon: "Vorschlag endet bald: <strong>{{proposal}}</strong>"
+    motion_outcome_created: "<strong>{{name}}</strong> veröffentlichte ein Ergebnis für den Vorschlag <strong>{{proposal}}</strong>"
+    motion_outcome_updated: "<strong>{{name}}</strong> aktualisierte das Ergbnis des Vorschlags <strong>{{proposal}}</strong>"
   position_buttons_panel:
     heading: Komme zu Wort
   vote_form:
     heading: Komme zu Wort
+    no_statement: Keine Begründung.
     i_agree: Ich stimme zu
+    i_agree_details: Ich stimme zu und bin für die Umsetzung dieses Vorschlags.
     i_abstain: Ich enthalte mich
     i_abstain_details: "Ich bin zufrieden damit, wenn die Gruppe ohne mich entscheidet."
     i_disagree: Ich lehne den Vorschlag ab
@@ -178,16 +187,40 @@ de:
     closes: Endet
     details_label: Details
   discussion_form:
+    messages:
+      created: Diskussion eröffnet
+      updated: Diskussion aktualisiert
+    new_discussion_title: Neue Diskussion beginnen
+    edit_discussion_title: Diskussion bearbeiten
+    discussion_helptext: Diskussionen wo jeder diskutiert und gemeinsam Entscheidungen getroffen werden
     group_label: Gruppe
+    group_placeholder: Gruppe auswählen
     title_label: Titel
+    title_placeholder: Welches Thema möchtest Du diskutieren?
     context_label: Kontext
     privacy_label: Privatsphäre
+    new_discussion_submit: Diskussion eröffnen
+    edit_discussion_submit: Diskussion aktualisieren
   proposal_expanded:
+    extend_proposal: Endzeit ändern
     edit_proposal: Vorschlag bearbeiten
     close_proposal: Vorschlag schließen
+    closed_badge: Geschlossen
+  proposal_position_yes: Zustimmen
+  proposal_position_abstain: Enthalten
+  proposal_position_no: Ablehnen
+  proposal_position_block: Veto
+  group_welcome_modal:
+    heading: Willkommen in Deiner neuen Gruppe
   start_group_form:
     heading: Gründen Sie eine Gruppe
+    heading_when_subgroup: Gründe eine Untergruppe
+    name_label: Gruppenname
+    subgroup_name_label: Untergruppenname
     submit: "Gruppe gründen!"
+    messages:
+      success: Gruppe erstellt
+      success_when_subgroup: Untergruppe erstellt
   join_group_button:
     join_group: Der Gruppe beitreten
     ask_to_join_group: Gruppenbeitritt anfragen
@@ -200,29 +233,67 @@ de:
   group_page:
     thread_list:
       empty:
+        no_discussions_matching_filters_html: "Es gibt keine Themen, die den Filterkriterien entsprechen. <a href='%{link}'>Filter zurücksetzen</a>."
         membership_is_invitation_only: Um dieser Gruppe beizutreten musst Du von einem Miglied eingeladen werden.
         membership_is_invitation_by_admin_only: Um dieser Gruppe beizutreten musst Du von einem/r Koordinator/in eingeladen werden.
+    messages:
+      leave_group_success: Du hast diese Gruppe verlassen
+      archive_group_success: Diese Gruppe wurde deaktiviert
+    group_logo: Gruppen-Logo
+    header:
+      aria_label: Gruppenseiter-Kopfleiste
     description: Beschreibung
     discussions: Themen
     manage_members: Mitglieder organisieren
+    subgroups: Untergruppen
     invite_people: Leute einladen
     options_label: Optionen
     options:
       label: Optionen
+      edit_group: Gruppeneinstellungen bearbeiten
+      leave_group: Gruppe verlassen
+      deactivate_group: Gruppe deaktivieren
+    deactivate_group:
+      title: Gruppe deaktivieren
+      question: "Sicher, dass Du diese Gruppe deaktivieren willst?"
+      submit: "Ja, diese Gruppe deaktivieren"
     leave_group:
       title: Gruppe verlassen
+      question: "Sicher, dass Du diese Gruppe verlassen willst?"
+      submit: "Ja, diese Gruppe verlassen"
+      cannot_leave_group: "Du kannst diese Gruppe nicht verlassen, da Du der einzige Koordinator bist. Du kannst die Gruppe entweder über \"Optionen\" deaktivieren oder einen neuen Koordinator hinzufügen."
     volume:
-      loud: "Eine E-Mail, wenn es Tätigkeit gibt"
+      loud: "E-Mail, sobald es Aktuelles gibt."
+      normal: "Nur wichtige Neuigkeiten per E-Mail senden: neue Diskussionen, neue Vorschläge, neue Ergebnisse etc."
+      normal_aria_description: "Deine Benachrichtigungseinstellungen für diese Gruppe stehen auf \"Normal\". Du wirst per E-Mail über wichtige Neuigkeiten informiert, z.B. wenn jemand eine neue Diskussion beginnt, einen Vorschlag eröffnet oder ein Ergebnis bekanntgibt."
       quiet: Keine E-Mail über diese Gruppe. Aktivität wird auf dem Armaturenbrett angezeigt.
       mute: Verstecke diese Gruppe aus dem Armaturenbrett und nicht benachrichtigen
+      updated: Gruppenbenachrichtigung aktualisiert.
+    privacy:
+      private: Diese Gruppe ist nur für Gruppenmitglieder sichtbar
+  edit_group_form:
+    title: Gruppeneinstellungen bearbeiten
+    privacy:
+      visible_to_members: Wer kann diese Gruppe sehen?
+    permissions:
+      members_can_create_subgroups: Untergruppen erstellen
+    messages:
+      success: Gruppe aktualisiert
   membership_requests_page:
     approve: Zustimmen
     ignore: Ignorieren
   group_form:
+    messages:
+      new_group: Gruppe erstellt
+      update_group: Gruppe aktualisiert
+    new_group_title: Eine neue Gruppe erstellen
+    new_subgroup_title: "Neue Untergruppe in {{parentGroupName}} erstellen"
     edit_group_title: Gruppen-Einstellungen
     profile_label: Profil
     name_label: Name
+    name_placeholder: Name Deiner Gruppe eingeben
     description_label: Beschreibung
+    description_placeholder: Deine Gruppe beschreiben
     category_label: Kategorie
   invitation:
     invite_people: Leute einladen
@@ -231,7 +302,9 @@ de:
     name_label: Name
     coordinator_label: Koordinator
     remove_member_label: entfernen
+    fragment_placeholder: Filtert Benutzer anhand des Namens oder des Benutzernamens...
     remove_membership:
+      question: "Bist Du sicher, dass Du {{name}} aus {{group}} entfernen möchtest?"
       submit: entfernen
   profile_page:
     change_picture:
@@ -255,15 +328,24 @@ de:
     aria_label: Schreibtisch
     mark_as_read: Als gelesen markieren
     filtering:
+      filter_threads: Themen filtern
       proposals: Vorschläge
     threads_from:
       today: Heute
       yesterday: Gestern
+      thisweek: In dieser Woche
+      thismonth: Diesen Monat
+  groups_page:
+    page_header: Deine Gruppen
   discussion:
     proposals: Vorschläge
     previous_proposals: Vorherige Vorschläge
+    you_like_this: Das gefällt Dir.
+    liked_by_you_and_someone: "Dir und {{name}} gefällt dies."
+    liked_by_someone: "{{name}} gefällt dies."
+    liked_by_two_others: "{{name_1}} und {{name_2}} gefällt dies."
     volume:
-      loud: "Eine E-Mail, wenn es Tätigkeit in diesem Thread gibt"
+      loud: "E-Mail, sobald es Aktuelles in diese Diskussion gibt."
       normal: "Einfach eine E-Mail, wenn ein Vorschlag erstellt wird, zu schließen, oder ein Ergebnis wird gebucht."
       quiet: Keine E-Mail nicht zu diesem Thema.
       mute: Ausblenden dieses Thema aus dem Armaturenbrett und nicht benachrichtigen

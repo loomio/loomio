@@ -263,6 +263,7 @@ cs:
     success:
       header: "Jste téměř u konce! Zkontrolujte si email."
       email_not_arrived: E-mail nebyl doručen?
+    start_making_decisions: "Abyste začali společně rozhodovat na Loomio, založte skupinu zdarma:"
   group_form:
     name: Název skupiny
     description: Popis
@@ -395,6 +396,8 @@ cs:
     confirmation:
       title: "Jste téměř u konce! Zkontrolujte si email."
       body_html: "Poslali jsme vám email s pozvánkou k vytvoření vaší skupiny.\n\nPokud nic neuvidíte ve své přijaté poště během několika minut, napište nám na <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    volume: Hlasitost
   discussion_items:
     new_discussion: vytvořil(a) diskuzi
     new_motion: vytvořil(a) návrh
