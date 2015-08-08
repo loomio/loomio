@@ -40,3 +40,7 @@ strong{
     @include box_shadow(2);
   }
 }
+
+.badge {
+  @include box_shadow(1);
+}
