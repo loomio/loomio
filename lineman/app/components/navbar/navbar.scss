@@ -49,7 +49,7 @@
     position: absolute;
     width: 100%;
     left: 0;
-    bottom: 0;
+    bottom: -1px;
     height: 4px;
     background: $loomio-orange;
   }
@@ -57,7 +57,7 @@
 
 .lmo-navbar__item--user {
   .lmo-navbar__btn{
-    padding: 6px;
+    padding: 7px 6px;
   }
 }
 
