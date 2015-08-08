@@ -1,4 +1,5 @@
-class API::RestfulController < Snorlax::Base
+class API::RestfulController < API::BaseController
+  snorlax_used_rest!
 
   def create_action
     @event = service.create({resource_symbol => resource, actor: current_user})
