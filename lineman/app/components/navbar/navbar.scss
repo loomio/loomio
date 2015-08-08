@@ -68,8 +68,10 @@
   border-radius: 0;
   line-height: 23px;
   padding: 10px 6px 11px;
-  &:hover, &:focus {
+  &:hover {
     background: $list-hover-color;
+  }
+  &:hover, &:focus {
     box-shadow: none;
   }
 }
