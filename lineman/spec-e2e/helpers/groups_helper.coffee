@@ -135,6 +135,7 @@ module.exports = new class GroupsHelper
     element(By.css('.leave-group-form__add-coordinator')).click()
 
   clickStartSubgroupLink: ->
+    browser.sleep(2000) # this has been a tempremantal test, ugh
     element(By.css('.subgroups-card__add-subgroup-link')).click()
 
   fillInSubgroupName: (name) ->
