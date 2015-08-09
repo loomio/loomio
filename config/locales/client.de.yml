@@ -1,9 +1,9 @@
 de:
   common:
     time:
-      am: Vormittag
-      pm: Nachmitag
-    closing_in: "Ende um {{time}}"
+      am: am
+      pm: pm
+    closing_in: "Endet {{time}}"
     closed_ago: "Endete um {{time}}"
     volume: Lautstärke
     notification_volume: Benachritigungseinstellungen
@@ -202,6 +202,7 @@ de:
     new_discussion_submit: Diskussion eröffnen
     edit_discussion_submit: Diskussion aktualisieren
   proposal_expanded:
+    started_by: "Eröffnet von <strong>{{name}}</strong>"
     extend_proposal: Endzeit ändern
     edit_proposal: Vorschlag bearbeiten
     close_proposal: Vorschlag schließen
@@ -244,9 +245,14 @@ de:
       aria_label: Gruppenseiter-Kopfleiste
     description: Beschreibung
     discussions: Themen
+    members: "Mitgleider ({{count}}) "
+    members_placeholder: "Du bist allein hier: lade einige Leute ein!"
+    member_options: Mitgliedseinstellungen
     manage_members: Mitglieder organisieren
     subgroups: Untergruppen
+    subgroups_placeholder: Untergruppen ermöglichen Dir die Gruppe in verschiedene Teams aufzuteilen
     invite_people: Leute einladen
+    visibility_label: Sichtbarkeit
     options_label: Optionen
     options:
       label: Optionen
@@ -262,26 +268,69 @@ de:
       question: "Sicher, dass Du diese Gruppe verlassen willst?"
       submit: "Ja, diese Gruppe verlassen"
       cannot_leave_group: "Du kannst diese Gruppe nicht verlassen, da Du der einzige Koordinator bist. Du kannst die Gruppe entweder über \"Optionen\" deaktivieren oder einen neuen Koordinator hinzufügen."
+      add_coordinator: Füge einen Koordinator hinzu
     volume:
       loud: "E-Mail, sobald es Aktuelles gibt."
+      loud_aria_description: "Deine Benachrichtigungseinstellungen für diese Gruppe steht auf \"Laut\". Du wirst per eMail informiert, sobald etwas in der Gruppe geschieht."
       normal: "Nur wichtige Neuigkeiten per E-Mail senden: neue Diskussionen, neue Vorschläge, neue Ergebnisse etc."
       normal_aria_description: "Deine Benachrichtigungseinstellungen für diese Gruppe stehen auf \"Normal\". Du wirst per E-Mail über wichtige Neuigkeiten informiert, z.B. wenn jemand eine neue Diskussion beginnt, einen Vorschlag eröffnet oder ein Ergebnis bekanntgibt."
       quiet: Keine E-Mail über diese Gruppe. Aktivität wird auf dem Armaturenbrett angezeigt.
+      quiet_aria_description: "Deine Benachrichtigungseinstellungen für diese Gruppe steht auf \"Leise\". Du erhältst keine eMail bezüglich Aktivitäten in dieser Gruppe. Aktivitäten werden auf der Startseite angezeigt."
       mute: Verstecke diese Gruppe aus dem Armaturenbrett und nicht benachrichtigen
+      mute_aria_description: "Deine Benachrichtigungseinstellungen für diese Gruppe steht auf \"Stumm\". Du wirst nur per eMail informiert, wenn Du @angesprochen wirst. Aktivitäten in dieser Gruppe werden in der Statusleiste nicht angezeigt."
       updated: Gruppenbenachrichtigung aktualisiert.
     privacy:
       private: Diese Gruppe ist nur für Gruppenmitglieder sichtbar
+      parent_members: "Diese Gruppe ist nur sichtbar für Mitglieder von {{parentGroupName}} und von {{groupName}}"
+      public: Diese Diskussion ist im Web sichtbar
   edit_group_form:
     title: Gruppeneinstellungen bearbeiten
+    profile:
+      label: Profil
+      name: Name
+      description: Beschreibung
     privacy:
+      label: Privatsphäre
       visible_to_members: Wer kann diese Gruppe sehen?
+      public_visibility: Jeder - Gruppe öffentlich listen
+      organisation_visibility: "Organisation - nicht öffentlich gelistet, aber für Mitglieder von {{parentGroupName}} sichtbar"
+      private_visibility: Mitglieder - nur Mitglieder können diese Gruppe sehen
+      membership_granted_upon: Wie kann jemand teilnehmen?
+      membership_by_request: "Offen <span>jedeR kann der Gruppe beitreten</span>"
+      membership_by_request_subgroup: "Offen für Mitglider von {{parentGroupName}}"
+      membership_by_approval: Auf Anfrage - jedeR kann eine Mitgliedschaft beantragen
+      membership_by_approval_subgroup: "Auf Anfrage von Mitgliedern der Gruppe {{parentGroupName}}"
+      membership_by_invitation: Nur auf Einladung - Neumitglieder müssen eingeladen werden
+      discussion_privacy_options: Wer kann diese Diskussionen sehen?
+      public_discussions: Nur öffentliche Diskussionen
+      public_discussions_subgroup: "Jeder in {{parentGroupName}} kann Diskussionen sehen"
+      public_or_private_discussions: Öffentliche und nichtöffentliche Diskussionen erlauben
+      private_discussions: Nur Mitglieder können Diskussionen sehen
     permissions:
+      label: Berechtigungen
+      helptext: Was Mitglieder tun können?
+      members_can_add_members: Neue Mitglieder einladen und annehmen
       members_can_create_subgroups: Untergruppen erstellen
+      members_can_start_discussions: Diskussionen eröffnen
+      members_can_edit_discussions: Titel und Kontext jeder Diskussion bearbeiten.
+      members_can_edit_comments: Jederzeit ihre Kommentare bearbeiten
+      members_can_raise_motions: Vorschläge machen
+      members_can_vote: Über Vorschläge abstimmen
+    submit: Einstellungen aktualisieren
     messages:
       success: Gruppe aktualisiert
+  membership_requests_card:
+    heading: "Mitgliedschaftsanfragen ({{count}})"
+    manage_requests: Anfragen bearbeiten
   membership_requests_page:
+    heading: Mitgliedschaftsanfragen
     approve: Zustimmen
     ignore: Ignorieren
+    no_pending_requests: Im Moment gibt es keine offenen Mitgliedschaftsanfragen.
+    previous_requests: Bisherige Anfragen
+    messages:
+      request_approved_success: Mitgliedschaftsanfrage bestätigt
+      request_ignored_success: Mitgliedschaftsanfrage ignoriert.
   group_form:
     messages:
       new_group: Gruppe erstellt
@@ -297,6 +346,14 @@ de:
     category_label: Kategorie
   invitation:
     invite_people: Leute einladen
+    find_people: Finde Menschen
+    import_contacts_header: Verbinde Dein Adressbuch
+    import_contacts_message: "Menschen auf Loomio einladen ist viel einfacher, wenn Du Deine Kontakte von Google importierst."
+    import_contacts: Kontakte importieren
+    instructions: Gib Namen oder eMail-Adressen ein
+    invitation_message: Einladungstext
+    send_invite: "Schicke {{count}} Einladung/en"
+    to: "An:"
   memberships_page:
     members: Mitglieder
     name_label: Name
@@ -344,6 +401,7 @@ de:
     liked_by_you_and_someone: "Dir und {{name}} gefällt dies."
     liked_by_someone: "{{name}} gefällt dies."
     liked_by_two_others: "{{name_1}} und {{name_2}} gefällt dies."
+    started_by: "Eröffnet von <strong>{{name}}</strong>"
     volume:
       loud: "E-Mail, sobald es Aktuelles in diese Diskussion gibt."
       normal: "Einfach eine E-Mail, wenn ein Vorschlag erstellt wird, zu schließen, oder ein Ergebnis wird gebucht."

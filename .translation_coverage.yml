@@ -39,10 +39,10 @@ da:
   main: 89
   main_1_0: 42
 de:
-  frontpage: 58
+  frontpage: 75
   help docs: 45
   main: 96
-  main_1_0: 61
+  main_1_0: 71
 el:
   frontpage: 78
   help docs: 42
@@ -121,9 +121,9 @@ id:
   main_1_0: 23
 it:
   frontpage: 60
-  help docs: 12
+  help docs: 41
   main: 90
-  main_1_0: 83
+  main_1_0: 85
 it-CH:
   frontpage: 0
   help docs: 0
@@ -215,7 +215,7 @@ sl:
   frontpage: 58
   help docs: 10
   main: 91
-  main_1_0: 30
+  main_1_0: 37
 sr:
   frontpage: 58
   help docs: 11
@@ -262,7 +262,7 @@ vi:
   main: 44
   main_1_0: 19
 zh-TW:
-  frontpage: 64
-  help docs: 45
-  main: 99
-  main_1_0: 33
+  frontpage: 100
+  help docs: 46
+  main: 100
+  main_1_0: 100

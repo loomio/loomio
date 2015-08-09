@@ -3,9 +3,15 @@
     .inner-container
       .row-fluid
         %h1 Translation
-        %p This is a reference page for the translators and developers.
-        %p For details about Loomio translation, please see <a href="https://github.com/loomio/loomio/wiki/Translation">this guide</a>.
+        %p
+          This is a reference page for the translators and developers.
+          %br
+          For details about Loomio translation, please see <a href="https://github.com/loomio/loomio/wiki/Translation">this guide</a>.
 
+        %h2 Updates
+        %p
+          Translations were last released
+          %span.code #{time_ago_in_words(Loomio::I18n::TRANSLATION_UPDATED_AT)} ago
 
         %h2 Supported languages (#{selectable_locales.count})
         %table.code
@@ -56,10 +62,10 @@
               %td= locale
               %td= t(locale)
 
-        %h2 Updates
-        .twitter-feed-container
-          <a class="twitter-timeline" href="https://twitter.com/search?q=%40loomio+%23translation" data-widget-id="510776756744114176">Tweets about "@loomio #translation"</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        -#%h2 Updates
+        -#.twitter-feed-container
+          -#<a class="twitter-timeline" href="https://twitter.com/search?q=%40loomio+%23translation" data-widget-id="510776756744114176">Tweets about "@loomio #translation"</a>
+          -#<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
         %h2 Technical
         %p

@@ -465,6 +465,7 @@ it:
     volume:
       loud: Mandami una mail in caso ci sia una qualsiasi attività in questa discussione.
       loud_aria_description: "Il volume delle notifiche di questa discussione è impostato su Alto. Ciò significa che riceverai una mail ogni volta che c'è attività in questa discussione."
+      normal: "Invia una mail solo se viene creata una proposta, se sta per chiudesi oppure viene pubblicato un risultato"
       normal_aria_description: "Il volume delle notifiche di questa discussione è impostato su Normale. Ciò significa che riceverai una mail quando viene creata una proposta, quando sta per scadere, oppure se viene postato il risultato di una votazione o di una discussione."
       quiet: Non mandare mail a proposito di questa discussione.
       quiet_aria_description: Il volume delle notifiche di questa discussione è impostato su Basso. Non riceverai email a proposito di questa discussione a meno che tu non venga menzionato/a da qualcuno/a.
@@ -475,6 +476,7 @@ it:
     aria_label: Nome gruppo
   thread_context:
     aria_label: Contesto della discussione
+    thread_options: Opzioni delle discussioni
   activity_card:
     new_activity: Nuova attività
     attachment_display:
@@ -486,6 +488,7 @@ it:
     confirm: Cancella il commento
   new_comment_item:
     context_menu:
+      aria_label: Opzioni dei commenti
       edit_comment: Modifica commento
       delete_comment: Cancella il commento
     in_reply_to: "<strong>{{author}}</strong> risponde a <strong>{{recipient}}</strong>"
@@ -559,3 +562,14 @@ it:
     informal_groups: Gruppi informali
     informal_groups_desc: Verrà richiesto ai membri del tuo gruppo di pagare quanto possono
     informal_groups_examples: "es. famiglie, movimenti sociali, collettivi"
+  angular:
+    switch_back: Torna al vecchio Loomio
+    give_feedback: Lascia un tuo commento di feedback
+    enable:
+      invite: "Prova il nuovo Loomio!"
+      title: Prova il nuovo Loomio
+      button_text: Attiva il nuovo Loomio
+    disable:
+      title: Grazie per avere provato il nuovo Loomio
+      give_feedback: Prima di uscire ti preghiamo di lasciare il tuo feedback così possiamo migliorare il sistema.
+      button_text: "Torna al \"vecchio\" Loomio"
