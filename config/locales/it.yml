@@ -432,6 +432,7 @@ it:
     mute: Silenzioso
   discussion_volume:
     loud_description: Mandami una mail in caso ci sia una qualsiasi attività in questa discussione.
+    normal_description: "Invia una mail solo se viene creata una proposta, se sta per chiudesi oppure viene pubblicato un risultato"
     quiet_description: Non mandare mail a proposito di questa discussione.
     mute_description: "Elimina questa discussione dalla dashboard e non mandarmi notifiche a meno che non venga @mentioned."
   group_volume:
