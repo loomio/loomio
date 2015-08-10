@@ -9,16 +9,27 @@ sl:
     privacy:
       private: Zasebno
       public: Javno
+      organisation: Organizacija
     date_range:
       today: Danes
+      yesterday: Včeraj
+      thisweek: Ta teden
+      thismonth: Ta mesec
+      older: Starejše
     models:
       proposal: Predlog
     action:
       save: Shrani
+      save_changes: Shrani spremembe
+      reply: Odvrni
       edit: Uredi
       like: Všečkaj
       unlike: Ne všečkaj
       cancel: Prekliči
+      show_more: Pokaži več
+      view_all: Pokaži vse
+      add_subgroup: Dodaj podskupino
+      loading: Nalagam
   error_page:
     forbidden: Nimaš dovoljenja za to.
   proposal_outcome_panel:
@@ -36,23 +47,28 @@ sl:
   inbox:
     clear: Počisti
     unread: Neprebrano
+  session_form:
+    email_label: "Email:"
   comment_form:
     edit_comment: Uredi komentar
     delete_comment: Izbriši komentar
     confirm_delete_message: "Si prepričan/a, da želiš izbrisati ta komentar?"
   navbar:
+    recent: Nedavno
     unread: Neprebrano
     groups: Skupine
     user_options:
       contact_us: Kontaktiraj nas
       new_group: Nova skupina
       profile: Profil
+      email_settings: Email nastavitve
       help: Pomoč
     search:
       placeholder: Išči
       discussions: Razprave
   notifications:
     header: Obvestila
+    comment_liked: "<strong>{{name}}</strong> je všečkal/a tvoj komentar v <strong>{{discussion}}</strong>"
   position_buttons_panel:
     heading: Izrazi svoje mnenje
   vote_form:
@@ -81,19 +97,26 @@ sl:
     context_label: Opis
     privacy_label: Zasebnost
   proposal_expanded:
+    started_by: "Začel/a <strong>{{name}}</strong>"
     edit_proposal: Uredi predlog
     close_proposal: Zapri predlog
   start_group_form:
     heading: Ustvari skupino
+    messages:
+      success_when_subgroup: Podskupina ustvarjena
   join_group_button:
     join_group: Pridruži se skupini
     ask_to_join_group: Prosi za pridružitev skupini
+    messages:
+      joined_group: "Sedaj si član/ica {{group}}"
   membership_request_form:
     heading: Prosi za pridružitev skupini
     name_label: Ime
     email_label: Email
     introduction_label: Predstavi se
     submit_button: Prosi za pridružitev skupini
+    messages:
+      membership_requested: "Zaprosil/a si za članstvo v {{group}}"
   group_page:
     thread_list:
       empty:
@@ -127,6 +150,8 @@ sl:
     remove_member_label: Odstrani
     remove_membership:
       submit: Odstrani
+  pending_invitations_card:
+    email: Email
   profile_page:
     change_picture:
       use_initials: Uporabi inicialke
@@ -143,12 +168,29 @@ sl:
     username_label: Uporabniško ime
     email_label: Email
     locale_label: Jezik
+  email_settings_page:
+    header: Email nastavitve
+    email: Email
+    daily_summary_label: Dnevni email s povzetki
+    update_settings: Posodobi email nastavitve
+    messages:
+      updated: Email nastavitve posodobljene
   dashboard_page:
     aria_label: Nadzorna plošča
     mark_as_read: Označi kot prebrano
     threads_from:
       today: Danes
+      yesterday: Včeraj
   discussion:
+    you_like_this: Ti si všečkal/a.
+    liked_by_you_and_someone: "Ti in {{name}} sta všečkala."
+    liked_by_you_and_others: "Všečkali ti, {{joinedNames}} in {{name}}."
+    liked_by_someone: "{{name}} je všekal/a."
+    liked_by_two_others: "{{name_1}} in {{name_2}} sta všečkala."
+    liked_by_many_others: "Všečkala {{joinedNames}} in {{name}}."
+    liked_by_name: "Všečkal/a {{name}}."
+    liked_by_names_and_name: "Všečkala {{joinedNames}} in {{name}}."
+    started_by: "Začel/a <strong>{{name}}</strong>"
     volume:
       loud: Pošlji email ob vsaki aktivnosti v tej razpravi.
       normal: "Pošlji email ko se predlog odpre, preden se zapre in ko je objavljen izid."
@@ -167,6 +209,7 @@ sl:
   contact_message_form:
     name_label: Tvoje ime
     email_label: Tvoj email naslov
+    email_placeholder: Vnesi svoj email ...
     message_label: Tvoje sporočilo
   help_page:
     coordinating: Koordiniraj svojo Loomio skupino

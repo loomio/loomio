@@ -226,7 +226,6 @@ ga-IE:
     extend_proposal: Athraigh an t-am a dhúnfar an togra
     edit_proposal: Leasaigh an togra
     close_proposal: Dún an togra
-    votes_count: "{{count}} guth eile"
   proposal_position_yes: Aontaigh
   proposal_position_abstain: Staon
   proposal_position_no: Easaontaigh
@@ -610,9 +609,3 @@ ga-IE:
     informal_groups: Dreamanna neamhnósúla
     informal_groups_desc: "Iarrfar ar chomhaltaí do bhaicle pé mhéad a bhfuil sé d'acmhainn acu a íoc"
     informal_groups_examples: "m.sh. teaghlaigh, gluaiseachtaí comhdhaonnacha, comharghnónna"
-  angular:
-    title: "Fáilte go dtí an clár rialaithe uilleach!"
-    now_on: Tá an comhéadan uilleach agat AR SIÚL faoi láthair
-    turn_on: Cuir an comhéadan uilleach ar siúl
-    now_off: Tá do chomhéadan uilleach AS faoi láthair
-    turn_off: Cas as an comhéadan uilleach

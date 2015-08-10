@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722214935) do
+ActiveRecord::Schema.define(version: 20150809210537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -208,14 +208,18 @@ ActiveRecord::Schema.define(version: 20150722214935) do
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
+  add_index "discussion_readers", ["participating"], name: "index_discussion_readers_on_participating", using: :btree
+  add_index "discussion_readers", ["starred"], name: "index_discussion_readers_on_starred", using: :btree
   add_index "discussion_readers", ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true, using: :btree
   add_index "discussion_readers", ["user_id"], name: "index_motion_read_logs_on_user_id", using: :btree
+  add_index "discussion_readers", ["volume"], name: "index_discussion_readers_on_volume", using: :btree
 
   create_table "discussion_search_vectors", force: :cascade do |t|
     t.integer  "discussion_id"
     t.tsvector "search_vector"
   end
 
+  add_index "discussion_search_vectors", ["discussion_id"], name: "index_discussion_search_vectors_on_discussion_id", using: :btree
   add_index "discussion_search_vectors", ["search_vector"], name: "discussion_search_vector_index", using: :gin
 
   create_table "discussions", force: :cascade do |t|
@@ -265,7 +269,6 @@ ActiveRecord::Schema.define(version: 20150722214935) do
   add_index "events", ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true, using: :btree
   add_index "events", ["discussion_id"], name: "index_events_on_discussion_id", using: :btree
   add_index "events", ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id", using: :btree
-  add_index "events", ["sequence_id"], name: "events_sequence_id_idx", using: :btree
   add_index "events", ["sequence_id"], name: "index_events_on_sequence_id", using: :btree
 
   create_table "group_hierarchies", id: false, force: :cascade do |t|
@@ -697,6 +700,7 @@ ActiveRecord::Schema.define(version: 20150722214935) do
     t.boolean  "email_on_participation",                       default: true,       null: false
   end
 
+  add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["key"], name: "index_users_on_key", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

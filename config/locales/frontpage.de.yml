@@ -10,7 +10,7 @@ de:
       try_it: Testen
       log_in: ANMELDEN
       video: "Sieh, wie Loomio funktioniert"
-      try_loomio: "Teste Loomio "
+      try_loomio: Loomio testen
       try_loomio_beta: Loomio Beta testen
       more: Mehr
       top: Nach oben
@@ -54,3 +54,15 @@ de:
       gift:
         header: Schenkwirtschaft
         desc: "Loomio wird von jenen unterstützt, die geben was in ihrer Möglichkeit steht. Das sorgt dafür, dass die Plattform werbefrei betrieben wird und auch für jene zugänglich bleibt, die kein Geld haben."
+  about_page:
+    our_story_1_html: "<h2>Unsere Geschichte</h2> <p>Loomio ist ein Online-Werkzeug für kollaborative Entscheidungsfindung, das von einem Team aus Technikern, Aktivisten und und Social Enterpreneuren aus Neuseeland entwickelt wurde.</p> "
+    our_story_2_html: "<p>Loomio entstand während der Occupy-Bewegung 2011 aus dem Wunsch durch einen skalierbaren Weg integrative Gruppenentscheidungen zu ermöglichen.</p> <p>Wir erfuhren das gesellschaftsverändernde Potential der kollaborativen Entscheidungsfindung genauso wie ihre scharfen Grenzen: wenn Menschen sich zur selben Zeit am selben Platz befinden müssen, um daran teilzuhaben, dann ist es nicht mehr stufenlos skalierbar.</p> <p>Wir machten uns also zu einem Weg auf, dieses Problem zu lösen: nutzen wir das Internet, um Menschen eine einfache Möglichkeit zu bieten, gemeinsam gute Entscheidungen zu treffen - egal wo sie gerade sind.</p> <p>Es heißt Loomio, der wie ein Webstuhl die verschiedenen Perspektiven verwebt. :)</p> <p>Bisher haben mehr als 75.000 Menschen mehr als 25.000 Entscheidungen auf Loomio getroffen.</p> "
+    mission_html: "<h2>Mission</h2> <p>Wir sind eine missions-getriebene Organisation mit einem gesellschaftlichen Aspekt in unserem Herzen: Loomio wurde entwickelt um es jedem Menschen überall zu ermöglichen an Entscheidungen teilzunehmen, die sein Leben betreffen.</p> <p>Wir messen unseren Wirkung an der Zahl der Menschen und Gruppen, die an Entscheidungen beteiligt sind, UND an den beflügelnden Geschichten von Menschen, die es nutzen, um große Dinge in ihren Gemeinschaften zu bewirken.</p> "
+    advisors_html: "<h2>Beirat</h2> <p>Wir werden von einem Beirat begleitet, dem einige der international renommiertesten Köpfe aus den Bereichen Demokratie und Technologie beiwohnen.</p> "
+    sascha_bio_html: "Gründer von <a href='http://thexlab.org/' target='_blank'>X-Lab</a> & <a href='http://www.newamerica.org/oti/' target='_blank'>Open Technology Institute</a>"
+    katherine_bio_html: "früherer Senior-Vizepräsident, <a href='http://www.aol.com/' target='_blank'>AOL</a>, stellvertretender Vorstand von <a href='http://www.rootcapital.org/' target='_blank'>Root Capital</a>"
+    joi_bio_html: "Direktor von <a href=\"http://www.media.mit.edu/\" target=\"_blank\">MIT Media Lab</a>, Mitbegründer <a href=\"https://creativecommons.org/\" target=\"_blank\">Creative Commons</a>, Beirat von <a href=\"https://www.mozilla.org/en-US/foundation/\" target=\"_blank\">Mozilla Foundation</a>"
+    rushkoff_bio_html: "<a href=\"http://www.rushkoff.com/\" target=\"_blank\">Bestselling Autor</a>, CNN Kommentator, Medienwissenschaftler"
+    monahan_bio_html: "Kofinanzierer von <a href=\"http://inflection.com/\" target=\"_blank\">Inflection</a>, <a href=\"http://www.namaste.org/\" target=\"_blank\">Namaste Foundation</a>"
+    team_html: "<h2>Team</h2> <p>Loomio ist ein kooperatives, soziales Unternehmen aus Neuseeland. Wir sind ein leidenschaftliches Team mit einem großen Wissen in den Bereichen Gruppenprozesse und Entwicklung von Open Technology.</p> "
+    ben_bio: "Mitbegründer und Direktor, Community Organizer, Forscher für kollektive Intelligenz"

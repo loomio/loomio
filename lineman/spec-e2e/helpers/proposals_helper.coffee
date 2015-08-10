@@ -84,3 +84,6 @@ module.exports = new class ProposalsHelper
 
   clickHideUndecidedLink: ->
     element(By.css('a.undecided-panel__hide-undecided-link')).click()
+
+  positionButtons: ->
+    element(By.css('.position-buttons-panel'))

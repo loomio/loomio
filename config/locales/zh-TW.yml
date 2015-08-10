@@ -71,6 +71,7 @@ zh-TW:
     group_request_invalid_token: 抱歉！這是無效的邀請碼
     group_private_or_not_found: "找不到群組。\n\n此群組可能是私密群組。如果有人給您這個連結，要求他邀請您加入這個群組。"
     group_already_setup: 您想設置的群組已存在。
+    current_password_did_not_match: 抱歉，我們無法確認您目前的密碼
     passwords_did_not_match: 密碼與確認密碼並不相符
     proposal_already_exists: 在這個討論串中已有一個開啟狀態的提案。
     username_must_be_alphanumeric: 使用者名稱只能包含小寫字母及數字。
@@ -269,12 +270,14 @@ zh-TW:
     email_error: 並非有效的電子郵件地址。
     group_name: 群組名稱
     group_name_error: 群組名稱必填
+    pricing_html: "在 30 天內，當您發現 Loomio 可以為您的團隊在作決策上帶來超棒的改進時，我們將會問您是否要選擇適合您的 <a href='%{link}' target='_blank'>付費方案</a>。"
     terms_html: "要開始一個群組，您即同意遵守 Loomio 的<a href='%{link}' target='_blank'>服務條款</a>。"
     success:
       header: 您就快完成了！請確認您的電子郵件信箱。
       email_delivered: "我們已經寄出一封電子郵件到 %{email}。請跟隨裡面的連結設定您的群組。"
       email_not_arrived: 電子郵件尚未抵達？
       please_hold: 請允許它在五分鐘內到達，並同時也請檢查您的垃圾信資料夾。
+    start_making_decisions: 要開始在 Loomio 上共同作出決策，先免費設定一個群組：
   group_form:
     name: 群組名稱
     description: 描述
@@ -652,7 +655,10 @@ zh-TW:
     vote: 任何時候您都能改變您的立場
   pricing_page:
     header: 價格
+    social_mission_html: "我們的定價模式是由我們的社會使命所驅動： <strong>任何人都能輕鬆參與、討論決策、影響他人</strong>。"
     loomio_for_organisations: 組織用的 Loomio
+    organisations_deal_html: 若您正在公司、正式組織或是職場中使用 Loomio，在 30 天的免費試用後，您將會被收取每月每人美金 1 元的訂閱費。
+    discuss_options_html: "若您想要討論適合您組織的價格選項，<a href=/contact#contact-form target='_blank'>連絡我們</a>。"
     loomio_for_communities: 社群用的 Loomio
     communities_deal: 錢永遠不會是人們在他們的社群中使用 Loomio 做大事的阻礙。如果您的團隊沒有足夠的預算來支付軟體費用，您就不需要支付訂閱的費用。但是，我們偶爾會詢問您的群組成員是否有自願性的捐款。
   contribution:
@@ -810,7 +816,7 @@ zh-TW:
     submit: 直接到我的群組
     payment_model:
       header: Loomio 是大家的！
-      info: "我們的付出模式適用於任何的群組，即使他們沒有錢 :)"
+      info: "我們的付費模式適用於任何的群組，即使他們沒有錢 :)"
       link: 詳細瞭解
   simple_form:
     "yes": 是

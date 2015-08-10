@@ -64,6 +64,7 @@ describe 'Proposals', ->
       expect(flashHelper.flashMessage()).toContain('Proposal closed')
       expect(proposalsHelper.previousProposalsList()).toContain('lets go hiking')
       expect(proposalsHelper.previousProposalsList()).toContain('Closed')
+      expect(proposalsHelper.positionButtons().isPresent()).toBe(false)
 
     it 'displays the time at which the proposal closed', ->
       threadHelper.loadWithClosedProposal()

@@ -1,5 +1,6 @@
 zh-TW:
   new_help:
+    title: 我們可以怎麼協助您呢？
     how_loomio_works:
       title: Loomio 是如何運作的
       start_group_link: 啟動群組
@@ -13,6 +14,7 @@ zh-TW:
       decide_together_link: 共同決策：
       decide_together_description: 任何人可以同意、放棄、反對或凍結 — 這樣您可以了解每個人對提議的感覺。
     contents:
+      title: 內容表格
       what_is_loomio:
         title: Loomio 是什麼
       how_loomio_works:
@@ -93,6 +95,8 @@ zh-TW:
         title_html: Loomio 社群
       loomio_development:
         title_html: 隨時注意 Loomio 的開發
+      faq:
+        title_html: 常見問題
     getting_started:
       title: 開始入門
       intro: "當您第一次來到 Loomio，您可以以多種方式加入。\n這裡有一些關於每一個論點的資訊：\n"
@@ -238,3 +242,5 @@ zh-TW:
           title_html: Loomio 社群
     loomio_community:
       title: Loomio 社群
+    faq:
+      title: 常見問題
