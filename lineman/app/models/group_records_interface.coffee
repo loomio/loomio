@@ -8,4 +8,7 @@ angular.module('loomioApp').factory 'GroupRecordsInterface', (BaseRecordsInterfa
         cacheKey: "subgroupsFor#{parentGroup.key}"
 
     archive: (group) =>
-      @restfulClient.patchMember group.id, "archive"
+      @restfulClient.patchMember(group.id, "archive").then =>
+        _.each group.memberships(), (membership) =>
+          @recordStore.memberships.remove(membership)
+        @recordStore.groups.remove(group)

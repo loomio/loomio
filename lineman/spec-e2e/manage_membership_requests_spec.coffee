@@ -7,7 +7,7 @@ describe 'Managing membership requests', ->
 
   beforeEach ->
     membershipRequestsHelper.loadWithMembershipRequests()
-    membershipRequestsHelper.visitMembershipRequestsPage()
+    membershipRequestsHelper.clickMembershipRequestsLink()
 
   describe 'approving a membership request', ->
 
@@ -18,7 +18,8 @@ describe 'Managing membership requests', ->
     it 'adds existing users to group upon approval', ->
       membershipRequestsHelper.clickApproveButton()
       membershipRequestsHelper.clickApproveButton()
-      membershipRequestsHelper.visitGroupPage()
+      membershipRequestsHelper.clickNavbarGroupLink()
+      membershipRequestsHelper.clickGroupName()
       expect(groupsHelper.membersList().getText()).toContain('MVS')
 
     it 'sends an invitation to non-users upon approval', ->

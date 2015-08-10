@@ -19,6 +19,7 @@ Loomio::Application.routes.draw do
     get 'setup_user_email_settings'
     get 'setup_all_notifications'
     get 'setup_group_with_pending_invitation'
+    get 'setup_group_with_subgroups'
   end
 
   scope '/angular', controller: 'angular', path: 'angular', as: 'angular' do
