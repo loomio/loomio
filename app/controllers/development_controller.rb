@@ -55,6 +55,15 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(another_test_group)
   end
 
+  def setup_group_with_subgroups
+    cleanup_database
+    sign_in jennifer
+    test_group
+    test_subgroup.add_member! jennifer
+    another_test_subgroup.add_member! jennifer
+    redirect_to group_url(another_test_group)
+  end
+
   def params_membership_granted_upon
     if ['request', 'approval', 'invitation'].include? params[:membership_granted_upon]
       params[:membership_granted_upon]
@@ -296,6 +305,16 @@ class DevelopmentController < ApplicationController
       @test_subgroup.add_admin! patrick
     end
     @test_subgroup
+  end
+
+  def another_test_subgroup
+    unless @another_test_subgroup
+      @another_test_subgroup = Group.create!(name: 'Bodhi',
+                                             parent_id: another_test_group.id,
+                                             visible_to: 'public')
+      @another_test_subgroup.add_admin! patrick
+    end
+    @another_test_subgroup
   end
 
   def test_proposal
