@@ -761,6 +761,3 @@ DEPENDENCIES
   uglifier
   underscore-rails
   webmock
-
-BUNDLED WITH
-   1.10.5
