@@ -25,6 +25,13 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def setup_multiple_discussions
+    cleanup_database
+    sign_in patrick
+    test_discussions
+    redirect_to group_url(test_group)
+  end
+
   def setup_group_with_multiple_coordinators
     cleanup_database
     test_group.add_admin! emilio
@@ -272,6 +279,15 @@ class DevelopmentController < ApplicationController
       @test_discussion = Discussion.create!(title: 'What star sign are you?', group: test_group, author: jennifer, private: true)
     end
     @test_discussion
+  end
+
+  def test_discussions
+    100.times do
+      Discussion.create!(title: Faker::Company.bs,
+                         group: test_group,
+                         author: jennifer,
+                         private: true)
+    end
   end
 
   def public_test_discussion

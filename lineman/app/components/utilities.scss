@@ -264,3 +264,15 @@ label.label-with-details{
 .lmo-rounded-corners {
   @include roundedCorners;
 }
+
+.lmo-show-more {
+  padding: $cardPaddingSize;
+
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: $grey-on-white;
+    text-decoration: underline;
+  }
+}
