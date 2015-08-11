@@ -9,7 +9,7 @@
         %a{ng_show: 'threadPage.group.parentId', href: '/g/{{threadPage.group.parent().key}}'}
           {{threadPage.group.parentName()}}
         %span{ng_show: 'threadPage.group.parentId', aria-label: '-'}> >
-        %a{href: '/g/{{threadPage.group.key}}'}
+        %a{lmo-href: '', lmo-href-model: 'threadPage.group'}
           {{threadPage.group.name}}
 
     %section.thread-context{aria-labelledby: "thread-context__heading"}

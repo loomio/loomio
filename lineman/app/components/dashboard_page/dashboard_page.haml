@@ -67,7 +67,7 @@
         %section{ng-if: 'dashboardPage.groupQueryFor(group).any()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.group' | translate }} {{group.name}}"}
           %img.selector-list-item-group-logo.pull-left{ng-src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
           %h2.dashboard-page__group-name
-            %a{href: '/g/{{group.key}}'} {{group.name}}
+            %a{lmo-href: '', lmo-href-model: 'group'} {{group.name}}
           .dashboard-groups.thread-previews-container
             %thread_preview_collection{query: 'dashboardPage.groupQueryFor(group)', limit: 'dashboardPage.groupThreadLimit'}
             .dashboard-page__show-more{ng-show: 'dashboardPage.moreForThisGroup(group)'}

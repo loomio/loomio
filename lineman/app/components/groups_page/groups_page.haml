@@ -10,7 +10,7 @@
         .groups-page__group-header.clearfix
           %img.groups-page__group-logo{ng-src: "{{::group.logoUrl()}}", aria-hidden: 'true'}>
           %h2.groups-page__group-name{id: '{{::group.key}}'}
-            %a{href: '/g/{{::group.key}}'} {{::group.name}}
+            %a{lmo-href: '', lmo-href-model: 'group'} {{::group.name}}
         %ul.groups-page__subgroups{ng-if: 'group.subgroups().length > 0'}
           %li.groups-page__subgroup{ng-repeat: 'subgroup in group.subgroups() track by subgroup.id | orderBy:groupsPage.groupName'}
-            %a{href: '/g/{{::subgroup.key}}'} {{::subgroup.name}}
+            %a{lmo-href: '', lmo-href-model: 'group'} {{::subgroup.name}}
