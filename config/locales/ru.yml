@@ -291,6 +291,7 @@ ru:
       emails: "Мы прекратим направлять Вам электронные письма, относящиеся к Loomio."
   start_group_form:
     header: Создайте новую группу
+    name: Ваше имя
     group_name: Название группы
     success:
       header: "Почти готово! Проверьте почту."
@@ -438,6 +439,11 @@ ru:
     please_select_an_option: "Пожалуйста, выберите вариант"
     confirmation:
       title: "Почти готово! Проверьте почту."
+  volume:
+    volume: Громкость
+    normal: Нориальный
+    quiet: Ограниченный
+    mute: Заглушен
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> согласился с предложением."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> воздержался."
@@ -498,6 +504,7 @@ ru:
   change_proposal_close_date: Изменить дату окончания
   change_proposal_close_date_header: "Изменить даут окончания предложения '%{which}'"
   proposal: Предложение
+  positions: Позиция
   yes_position: Я согласен
   yes_details: "Я согласен с этим и с тем, что из этого следует"
   abstain_position: Я воздерживаюсь
@@ -521,9 +528,12 @@ ru:
     comment_changes: комментарий изменен
     edit_comment: Редактировать коментарий
   help:
+    coordinating: Координация вашей группы
     different_ways: Различные способы использовать Loomio
+    get_in_touch: Оставаться на связи
     get_in_touch_description_html: "Если у Вас есть вопросы или отзыв, <a href='%{link}'>черкните нам пару строк</a>."
     getting_started: С чего начать
+    have_your_say: Выразить свое мнение
     help: Помощь
     how_it_works: Как это работает
     join_the_community: Присоединиться к сообществу
@@ -540,6 +550,7 @@ ru:
     discussion: Подсказки для начала увлекательного обсуждения
     invitation: Подсказки для написания отличного приглашения
     proposal: Подсказки для написания понятного предложения
+    vote: Вы можете изменить вашу позицию в любое время
   pricing_page:
     header: Цены
   contribution:
@@ -568,8 +579,16 @@ ru:
     create_account: Создайте учетную запись
   invitation:
     invite_people: Пригласите людей в вашу группу
+  search:
+    placeholder: Поиск
   example_discussion:
     title: "Пример обсуждения: Добро пожаловать!"
+  contact_page:
+    contact_us: Наши контакты
+    labels:
+      name: Ваше имя
+      email: Ваш е-мейл
+      message: Ваше сообщение
   discussion_form:
     new:
       header: Начать дискуссию

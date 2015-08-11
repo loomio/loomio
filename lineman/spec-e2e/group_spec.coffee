@@ -20,7 +20,7 @@ describe 'Group Page', ->
     beforeEach ->
       groupsHelper.load()
 
-    it 'successfully starts a subgroup', ->
+    xit 'successfully starts a subgroup', ->
       groupsHelper.clickStartSubgroupLink()
       groupsHelper.fillInSubgroupName('The Breakfast Club')
       groupsHelper.submitSubgroupForm()

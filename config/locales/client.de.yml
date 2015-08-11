@@ -129,6 +129,7 @@ de:
     new_motion: "<strong>{{name}}</strong> erstellte den Vorschlag <strong>{{proposal}}</strong>"
     motion_closed_by_user: "<strong>{{name}}</strong> hat den Vorschlag <strong>{{proposal}}</strong> geschlossen"
     motion_closed_by_expiry: "Vorschlag <strong>{{proposal}}</strong> ist geschlossen"
+    new_vote: "<strong>{{name}}</strong> {{position}} im Vorschlag <strong>{{proposal}}</strong>"
     new_comment: "<strong>{{name}}</strong> kommentierte in <strong>{{discussion}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> antwortete auf Deinem Kommentar in <strong>{{discussion}}</strong>"
     comment_liked: "<strong>{{name}}</strong> gefällt Dein Kommentar in <strong>{{discussion}}</strong>"
@@ -157,14 +158,18 @@ de:
     change_position: Meinung ändern
     select_position: Meinung wählen
     statement_placeholder: Teile Deine Gedanken mit der Gruppe
+    aria_statement_label: Wahlweise kannst Du hier eine Stellungnahme zu Deiner Position eingeben
     messages:
       created: Stimmabgabe ist erfolgt
   proposal_positions_panel:
     heading: Meinungen
+    no_votes_yet: Niemand hat bisher für diesen Vorschalg abgestimmt.
     change_your_vote: Ändere Deine Stimmabgabe
   undecided_panel:
     show_undecided: Zeige unentschlossen Mitglieder
     hide_undecided: Verstecke unentschlossen Mitglieder
+  proposal_pie_chart:
+    participation_statement: "{{percentage}}% der Mitglieder haben bereits abgestimmt ({{number}}/{{total}})"
   close_proposal_form:
     close_proposal: Vorschlag schließen
     helptext: Willst Du diesen Vorschlag wirklich jetzt schließen?
@@ -174,6 +179,7 @@ de:
   extend_proposal_form:
     title: Endzeit ändern
     success: Endzeit wurde aktualisiert
+    submit: Endzeit aktualisieren
   proposal_form:
     messages:
       created: Vorschlag eröffnet
@@ -181,11 +187,17 @@ de:
     start_proposal: Vorschlag machen
     start_a_proposal: Einen Vorschlag machen
     edit_proposal: Vorschlag bearbeiten
+    what_does_a_proposal_do: Vorschläge können Dir ein Stimmungsbild der Gruppe ermöglichen.
+    editing_title_and_description_forbidden: "Nachdem Mitglieder abgestimmt haben ist der Titel und die Beschreibung nicht mehr zu ändern. Falls sich dennoch etwas geändert hat, beende den Vorschlag und eröffne einen Neuen"
     title_placeholder: "z.B.: Fliege zum Mond"
     title_label: Titel
     closes_at_label: Endet um
     closes: Endet
     details_label: Details
+    details_placeholder: "Gib genug Informationen an, damit jeder genau versteht, was Zustimmung und Ablehnung jeweils bedeuten."
+  discussion_record:
+    created: "Die Diskussion {{title}} wurde erfolgreich in {{groupName}} erstellt"
+    updated: "Änderungen für {{title}} gespeichert"
   discussion_form:
     messages:
       created: Diskussion eröffnet
@@ -198,11 +210,18 @@ de:
     title_label: Titel
     title_placeholder: Welches Thema möchtest Du diskutieren?
     context_label: Kontext
+    context_placeholder: Gib der Gruppe ausreichend Hintergrundinfos um eine konstruktive Diskussion zu ermöglichen. Diese kann während des Fortschritts der Diskussion aktualisiert werden
     privacy_label: Privatsphäre
+    privacy:
+      will_be_private_to_group: "Die Diskussion wird nur für Mitglieder von {{groupName}} sichtbar sein."
+      will_be_private_to_parent_group: "Diese Diskussion wird nur für Mitglieder von {{parentGroupName}} und {{groupName}} sichtbar sein."
+      will_be_public: Jeder kann die Diskussion sehen.
     new_discussion_submit: Diskussion eröffnen
     edit_discussion_submit: Diskussion aktualisieren
   proposal_expanded:
+    current_votes: Bisherige Stimmen
     started_by: "Eröffnet von <strong>{{name}}</strong>"
+    only_voter_is_you: Keine weiteren Mitglieder haben derzeit abgestimmt.
     extend_proposal: Endzeit ändern
     edit_proposal: Vorschlag bearbeiten
     close_proposal: Vorschlag schließen
@@ -213,9 +232,17 @@ de:
   proposal_position_block: Veto
   group_welcome_modal:
     heading: Willkommen in Deiner neuen Gruppe
+    instructions: "Du bist der Gruppen-Koordinator. Das bedeutet, dass Du die Gruppe aufbauen und Menschen einladen musst."
+    what_next: "Was als nächstes zu tun ist:"
+    first_step: "Erstelle die Gruppen-Beschreibung, ein Logo und ein Titelbild"
+    second_step: Lese die Beispiel-Diskussion und übe Entscheidungsfindung
+    third_step: Lade Leute zu deiner Gruppe ein
+    ok_got_it: "Okay, ich hab´s!"
   start_group_form:
     heading: Gründen Sie eine Gruppe
     heading_when_subgroup: Gründe eine Untergruppe
+    group_helptext: "Um gemeinsam auf Loomio Entscheidungen zu treffen, erstelle kostenlos eine Gruppe:"
+    group_payment_reminder: "Nach 30 Tagen, wenn Du erlebt hast, wie Loomio die Entscheidungsprozesse in Deiner Gruppe verbessert hat, werden wir Dich bitten ein <a href='#'>Vergütungsmodell</a> zu wählen, das Dir gefällt."
     name_label: Gruppenname
     subgroup_name_label: Untergruppenname
     submit: "Gruppe gründen!"
@@ -225,26 +252,41 @@ de:
   join_group_button:
     join_group: Der Gruppe beitreten
     ask_to_join_group: Gruppenbeitritt anfragen
+    messages:
+      joined_group: "Du bist nun Mitglied von {{group}}."
   membership_request_form:
     heading: Gruppenbeitritt anfragen
     name_label: Name
     email_label: eMail
     introduction_label: Stelle dich vor
     submit_button: Gruppenbeitritt anfragen
+    messages:
+      membership_requested: "Du hast die Mitgliedschaft für {{group}} angefragt"
   group_page:
     thread_list:
       empty:
+        no_discussions_in_group: Diese Gruppe hat noch keine Diskussionen.
         no_discussions_matching_filters_html: "Es gibt keine Themen, die den Filterkriterien entsprechen. <a href='%{link}'>Filter zurücksetzen</a>."
+        no_public_discussions: Es gibt keine öffentlichen Diskussionen in dieser Gruppe.
+        discussions_are_private: Alle Diskussionen dieser Gruppe sind nichtöffentlich.
+        join_group: "Um nichtöffentliche Diskussionen lesen zu können, musst Du der Gruppe beitreten"
+        request_membership: "Um nichtöffentliche Diskussionen zu lesen, bitte die Gruppe um Aufnahme"
         membership_is_invitation_only: Um dieser Gruppe beizutreten musst Du von einem Miglied eingeladen werden.
         membership_is_invitation_by_admin_only: Um dieser Gruppe beizutreten musst Du von einem/r Koordinator/in eingeladen werden.
     messages:
+      privacy:
+        members: Diese Gruppe ist nun nur für Mitglieder sichtbar
+        parent_members: Diese Gruppe ist nur für Gruppenmitglieder sichtbar
+        public: Diese Gruppe ist nun im Web sichtbar
       leave_group_success: Du hast diese Gruppe verlassen
       archive_group_success: Diese Gruppe wurde deaktiviert
     group_logo: Gruppen-Logo
     header:
       aria_label: Gruppenseiter-Kopfleiste
     description: Beschreibung
+    description_placeholder: "Nutze diesen Platz um den Zweck der Gruppe zu erläutern, damit Mitglieder wissen, warum sie da sind."
     discussions: Themen
+    discussions_placeholder: In einer Diskussion kann jeder diskutieren und es können gemeinsam Entscheidungen getroffen werden.
     members: "Mitgleider ({{count}}) "
     members_placeholder: "Du bist allein hier: lade einige Leute ein!"
     member_options: Mitgliedseinstellungen
@@ -328,6 +370,7 @@ de:
     ignore: Ignorieren
     no_pending_requests: Im Moment gibt es keine offenen Mitgliedschaftsanfragen.
     previous_requests: Bisherige Anfragen
+    previous_request_response: "{{response}} von {{responder}} "
     messages:
       request_approved_success: Mitgliedschaftsanfrage bestätigt
       request_ignored_success: Mitgliedschaftsanfrage ignoriert.
@@ -354,33 +397,82 @@ de:
     invitation_message: Einladungstext
     send_invite: "Schicke {{count}} Einladung/en"
     to: "An:"
+    default_message: "Hallo ihr, kommt und trefft Entscheidungen mit uns! Wir nutzen ein Werkzeug namens Loomio, dass uns bei der kollektiven Entscheidungsfindung hilft"
+    messages:
+      members_added_and_emails_sent: "{{members}} Mitglied(er) hinzugefügt und {{emails}} Einladung(en) verschickt"
+      members_added: "{{members}} Mitglied(er) hinzugefügt"
+      emails_sent: "{{emails}} Einladung(en) verschickt"
+      no_invitations: "Keine Einladung(en) verschickt!"
   memberships_page:
     members: Mitglieder
     name_label: Name
     coordinator_label: Koordinator
     remove_member_label: entfernen
     fragment_placeholder: Filtert Benutzer anhand des Namens oder des Benutzernamens...
+    messages:
+      remove_member_success: "{{name}} enfernt"
+      make_admin_success: "{{name}} ist nun ein Koordinator"
+      remove_admin_success: "{{name}} ist nun kein Koordinator mehr"
     remove_membership:
+      title: Mitglied entfernen
       question: "Bist Du sicher, dass Du {{name}} aus {{group}} entfernen möchtest?"
       submit: entfernen
+  pending_invitations_card:
+    heading: Ausstehende Einladungen
+    email: eMail
+    invitation_link: Link zur Einladung
+    cancel: Abbrechen
+  cancel_invitation_form:
+    heading: Einladung abbrechen
+    question: "Sicher, dass Du diese Einladung löschen willst?"
+    submit: Einladung abbrechen
+    messages:
+      success: Einladung gelöscht
   profile_page:
+    messages:
+      updated: Profil aktualisiert
+      picture_changed: Profil-Bild aktualisiert
+      password_changed: Passwort aktualisiert
+      deactivated: Konto deaktiviert
     change_picture:
+      title: Bild tauschen
+      helptext: "Du kannst Dein eigenes Profilbild hochladen oder falls Du ein <a href=\"https://en.gravatar.com/support/what-is-gravatar/\">Gravatar</a>-Konto hast, kannst Du jenes benutzen"
       use_initials: Initialen benutzen
+      use_gravatar: Gravatar benutzen
+      use_uploaded: Neues Bild hochladen
     change_password:
+      title: Passwort ändern
+      helptext: "Passwörter müssen mindest 8 Zeichen entalten. Um Dein Konto sicher zu gestalten, sind einfache Passwörter, wie \"passwort\" und ähnliches verboten."
       current_password_label: Aktuelles Passwort
       new_password_label: Neues Passwort
       password_confirmation_label: Neues Passwort erneut eingeben
+      submit: Passwort aktualisieren
     deactivate_user:
       title: Konto deaktivieren
+      question: "Würdest Du uns bitte mitteilen, warum Du Dein Konto deaktivierst?"
+      placeholder: "Antwort ist freiwillig. Jegliche Mitteilung, die Du uns gibst, wird uns bei der Verbesserung von Loomio helfen :)"
       submit: Konto deaktivieren
+    change_picture_link: Bild tauschen
+    change_password_link: Passwort ändern
+    deactivate_user_link: Konto deaktivieren...
     profile: Profil
+    edit_profile: Profil bearbeiten
     picture_label: Bild
     name_label: Name
     username_label: Benutzername
     email_label: eMail
     locale_label: Sprache
+    update_profile: Profil aktualisieren
   email_settings_page:
     header: eMail-Einstellungen
+    email: eMail
+    daily_summary_label: Tägliche Übersichts-eMail
+    daily_summary_description: Allmorgentlich eine E-Mail mit allen ungelesenen Aktivitäten des vorigen Tages erhalten. Dies ist eine gute Möglichkeit um in Deinen Loomio-Gruppen auf dem Laufenden zu bleiben.
+    on_participation_label: "Aktivitäten von den Diskussionen, an denen ich teilhabe"
+    on_participation_description: "Wenn Du Dich an einer Diskussion beteiligst, wird die Benachrichtigungseinstellung auf 'Laut' gestellt, wodurch Du über alle weitere Aktivitäten unverzüglich per eMail benachrichtigt wirst."
+    proposal_closing_soon_label: Bevor ein Vorschlag endet
+    proposal_closing_soon_description: "24 Stunden bevor ein Vorschlag endet wirst Du per eMail über den aktuellen Stand informiert, unabhängig von Deiner Benachrichtigungseinstellung."
+    mentioned_label: "Wenn ich @erwähnt wurde"
   dashboard_page:
     aria_label: Schreibtisch
     mark_as_read: Als gelesen markieren

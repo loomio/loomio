@@ -42,7 +42,7 @@ de:
   frontpage: 75
   help docs: 45
   main: 96
-  main_1_0: 71
+  main_1_0: 85
 el:
   frontpage: 78
   help docs: 42
@@ -202,10 +202,10 @@ ro:
   main: 99
   main_1_0: 31
 ru:
-  frontpage: 58
-  help docs: 8
-  main: 63
-  main_1_0: 19
+  frontpage: 60
+  help docs: 10
+  main: 65
+  main_1_0: 29
 sk:
   frontpage: 52
   help docs: 8

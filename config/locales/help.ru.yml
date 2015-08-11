@@ -11,9 +11,12 @@ ru:
         group_permissions_html: Разрешения
       discussion_threads:
         discussion_privacy_html: Безопасность
+      comments:
+        title_html: Комментарии
       subgroups:
         title_html: Подгруппы
       keeping_up_to_date:
+        volume_html: Громкость
         email_settings_html: Настройки Email
       user_profile:
         account_deactivation_html: Деактивация учетной записи
@@ -46,9 +49,17 @@ ru:
     discussion_threads:
       discussion_privacy:
         title: Безопасность
+    comments:
+      title: Комментарии
     subgroups:
       title: Подгруппы
     keeping_up_to_date:
+      volume:
+        title: Громкость
+        body:
+          normal_title: Нориальный
+          quiet_title: Ограниченный
+          mute_title: Заглушен
       email_settings:
         title: Настройки Email
       yesterday_on_loomio:
