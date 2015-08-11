@@ -1,7 +1,11 @@
 angular.module('loomioApp').factory 'LmoUrlService', ->
   new class LmoUrlService
 
-    group: (g, params) ->
+    model: (model, params = {}) ->
+      return unless model
+      @[model.constructor.singular] model, params
+
+    group: (g, params = {}) ->
       "/g/#{g.key}/#{@stub(g.fullName())}#{@queryStringFor(params)}"
 
     discussion: (d, params = {}) ->

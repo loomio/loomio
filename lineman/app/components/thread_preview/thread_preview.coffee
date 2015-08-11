@@ -7,7 +7,4 @@ angular.module('loomioApp').directive 'threadPreview', ->
     $scope.lastVoteByCurrentUser = (thread) ->
       thread.activeProposal().lastVoteByUser(CurrentUser)
 
-    $scope.threadUrl = ->
-      LmoUrlService.discussion $scope.thread
-
     return
