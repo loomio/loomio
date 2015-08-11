@@ -1,10 +1,10 @@
 angular.module('loomioApp').directive 'lmoHref', ($window, $router, LmoUrlService) ->
   restrict: 'A'
   scope:
-    route: '@lmoHref'
+    path: '@lmoHref'
     model: '=lmoHrefModel'
   link: (scope, elem, attrs) ->
-    route = LmoUrlService.model(scope.model) or scope.route
+    LmoUrlService.route(path: scope.path, model: scope.model, params: scope.params)
     elem.attr 'href', ''
     elem.bind 'click', ($event) ->
       if $event.metaKey
