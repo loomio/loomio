@@ -11,7 +11,7 @@
       %i.fa.fa-times>
       %span{translate: 'volume_levels.mute'}
 
-  %a.thread-preview__link{href: '/d/{{ thread.key }}'}
+  %a.thread-preview__link{ng-click: 'navigateTo($event)'}
     .thread-preview__icon
       -#.thread-preview__avatar{}
       %user_avatar{ng-if: '!thread.activeProposal()', user: 'thread.author()', size: 'medium'}
