@@ -1,8 +1,7 @@
 class Events::NewDiscussion < Event
   def self.publish!(discussion)
     event = create!(kind: 'new_discussion',
-                    eventable: discussion,
-                    sequence_id: 0)
+                    eventable: discussion)
 
     dr = DiscussionReader.for(discussion: discussion, user: discussion.author)
     dr.set_volume_as_required!

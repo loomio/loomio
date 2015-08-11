@@ -21,7 +21,7 @@ class Event < ActiveRecord::Base
   validates_inclusion_of :kind, :in => KINDS
   validates_presence_of :eventable
 
-  acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? }
+  acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? || e.discussion_id.nil? }
 
 
   def notify!(user)

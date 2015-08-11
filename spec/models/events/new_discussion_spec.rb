@@ -10,8 +10,7 @@ describe Events::NewDiscussion do
 
     it 'creates an event' do
       Event.should_receive(:create!).with(kind: 'new_discussion',
-                                          eventable: discussion,
-                                          sequence_id: 0)
+                                          eventable: discussion)
       Events::NewDiscussion.publish!(discussion)
     end
 
