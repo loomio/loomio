@@ -1,6 +1,6 @@
 .blank
   %section.members-card{ng-if: 'isMember()', aria-labelledby: 'members-card-title'}
-    %h2#members-card-title.lmo-card-heading{ translate: 'group_page.members', translate-value-count: '{{group.membershipsCount}}'}
+    %h2#members-card-title.lmo-card-heading{ translate: 'group_page.members'}
     .members-card__list
       .members-card__avatar{ng-repeat: 'membership in group.memberships() | orderBy: "-admin" | limitTo:10'}
         %user_avatar{user: 'membership.user()', coordinator: 'membership.admin', size: 'medium'}
@@ -10,4 +10,4 @@
         %i.fa.fa-lg.fa-plus>
         %span{translate: 'group_page.invite_people' }
     .members-card__manage-members.card-minor-action
-      %a{href: '/g/{{group.key}}/memberships', translate: 'group_page.manage_members'}
+      %a{href: '/g/{{group.key}}/memberships', translate: 'group_page.all_members', translate-value-count: '{{group.membershipsCount}}'}
