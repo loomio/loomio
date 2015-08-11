@@ -9,7 +9,7 @@
           .inbox-page__group-name-container
             %img.selector-list-item-group-logo.pull-left{ng-src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
             %h2.inbox-page__group-name
-              %a{lmo-href: '', lmo-href-model: 'group'} {{group.name}}
+              %a{lmo-href-for: 'group'} {{group.name}}
           .inbox-page__groups.thread-previews-container
             %thread_preview_collection{query: 'inboxPage.queryFor(group)', limit: 'inboxPage.threadLimit'}
             .lmo-show-more{ng-show: 'inboxPage.moreForThisGroup(group)'}

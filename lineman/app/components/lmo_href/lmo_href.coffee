@@ -1,13 +1,8 @@
-angular.module('loomioApp').directive 'lmoHref', ($window, $router, LmoUrlService) ->
+angular.module('loomioApp').directive 'lmoHref', (LmoRedirectService) ->
   restrict: 'A'
   scope:
-    path: '@lmoHref'
-    model: '=lmoHrefModel'
+    route: '@lmoHref'
   link: (scope, elem, attrs) ->
-    route = LmoUrlService.route(path: scope.path, model: scope.model, params: scope.params)
     elem.attr 'href', ''
     elem.bind 'click', ($event) ->
-      if $event.metaKey or $event.ctrlKey
-        $window.open route, '_blank'
-      else
-        $router.navigate route
+      LmoRedirectService.redirect $event, scope.route

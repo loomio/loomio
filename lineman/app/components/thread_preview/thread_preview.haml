@@ -11,7 +11,7 @@
       %i.fa.fa-times>
       %span{translate: 'volume_levels.mute'}
 
-  %a.thread-preview__link{lmo-href: '', lmo-href-model: 'thread'}
+  %a.thread-preview__link{lmo-href-for: 'thread'}
     .thread-preview__icon
       %user_avatar{ng-if: '!thread.activeProposal()', user: 'thread.author()', size: 'medium'}
       .thread-preview__pie-container{ng-if: 'thread.activeProposal()'}
