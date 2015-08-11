@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722214935) do
+ActiveRecord::Schema.define(version: 20150811075115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -265,7 +265,6 @@ ActiveRecord::Schema.define(version: 20150722214935) do
   add_index "events", ["discussion_id", "sequence_id"], name: "index_events_on_discussion_id_and_sequence_id", unique: true, using: :btree
   add_index "events", ["discussion_id"], name: "index_events_on_discussion_id", using: :btree
   add_index "events", ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id", using: :btree
-  add_index "events", ["sequence_id"], name: "events_sequence_id_idx", using: :btree
   add_index "events", ["sequence_id"], name: "index_events_on_sequence_id", using: :btree
 
   create_table "group_hierarchies", id: false, force: :cascade do |t|
