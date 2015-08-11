@@ -19,7 +19,9 @@
       %th Awareness
       %th Acquisition
       %th Activation
-      %th Retention
+      %th Retention (30 days)
+      %th Retention (60 days)
+      %th Retention (90 days)
       %th Revenue
       %th Referral
   %tbody
@@ -37,7 +39,13 @@
           = activated_count = cohort.activated_organisations.count
           (#{safe_pct(activated_count, org_count)}%)
         %td
-          = retained_count = cohort.retained_organisations.count
+          = retained_count = cohort.retained_organisations_30.count
+          (#{safe_pct(retained_count, activated_count)}%)
+        %td
+          = retained_count = cohort.retained_organisations_60.count
+          (#{safe_pct(retained_count, activated_count)}%)
+        %td
+          = retained_count = cohort.retained_organisations_90.count
           (#{safe_pct(retained_count, activated_count)}%)
         %td
           N/A
