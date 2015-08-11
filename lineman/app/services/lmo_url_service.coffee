@@ -1,25 +1,37 @@
 angular.module('loomioApp').factory 'LmoUrlService', ->
   new class LmoUrlService
 
-    model: (model, params = {}) ->
-      return unless model
-      @[model.constructor.singular] model, params
+    route: ({model, path, params}) ->
+      if model? and path?
+        @[model.constructor.singular](model, {}, {noStub: true}) + @routePath(path)
+      else if model?
+        @[model.constructor.singular](model)
+      else
+        @routePath(path)
 
-    group: (g, params = {}) ->
-      "/g/#{g.key}/#{@stub(g.fullName())}#{@queryStringFor(params)}"
+    routePath: (route) ->
+      "/".concat(route).replace('//', '/')
 
-    discussion: (d, params = {}) ->
-      "/d/#{d.key}/#{@stub(d.title)}#{@queryStringFor(params)}"
+    group: (g, params = {}, options = {}) ->
+      @buildModelRoute('g', g.key, g.fullName(), params, options)
 
-    proposal: (p, params = {}) ->
-      "/m/#{p.key}/#{@stub(p.name)}#{@queryStringFor(params)}"
+    discussion: (d, params = {}, options = {}) ->
+      @buildModelRoute('d', d.key, d.title, params, options)
 
-    comment: (c, params = {}) ->
+    proposal: (p, params = {}, options = {}) ->
+      @buildModelRoute('m', p.key, p.name, params, options)
+
+    comment: (c, params = {}, options = {}) ->
       @discussion c.discussion(), _.merge(params, {comment: c.key})
+
+    buildModelRoute: (path, key, name, params, options) ->
+      result = "/#{path}/#{key}"
+      result += "/" + @stub(name) unless options.noStub?
+      result += "?" + @queryStringFor(params) if Object.keys(params).length
+      result
 
     stub: (name) ->
       name.replace(/[^a-z0-9\-_]+/gi, '-').replace(/-+/g, '-').toLowerCase()
 
     queryStringFor: (params = {}) ->
-      queryString = _.map(params, (value, key) -> "#{key}=#{value}").join('&')
-      if queryString.length then "?#{queryString}" else ''
+      _.map(params, (value, key) -> "#{key}=#{value}").join('&')
