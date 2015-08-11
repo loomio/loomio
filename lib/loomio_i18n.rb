@@ -16,6 +16,9 @@ module Loomio
 
     TRANSLATION_COVERAGE = (YAML.load_file Rails.root.join('.translation_coverage.yml')).with_indifferent_access
 
+    js_unix_time_last_updated_at = (YAML.load_file Rails.root.join('.translation_updated_at.yml'))['updated_at']
+    TRANSLATION_UPDATED_AT = Time.at( js_unix_time_last_updated_at/1000 ).to_datetime
+
     SELECTABLE_LOCALES.freeze
     DETECTABLE_LOCALES.freeze
     RTL_LOCALES.freeze

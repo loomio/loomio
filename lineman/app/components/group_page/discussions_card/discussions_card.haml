@@ -19,6 +19,5 @@
 
     %loading{ng-show: 'loadMoreExecuting'}
 
-    / Hiding this for now.
-    .card-minor-action{ng-if: 'false'}
+    .lmo-show-more{ng-if: 'canLoadMoreDiscussions'}
       %a{ng-hide: 'loadMoreExecuting || !group.hasDiscussions', ng-click: 'loadMore()', href: '', translate: 'common.action.show_more'}

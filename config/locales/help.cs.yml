@@ -52,6 +52,7 @@ cs:
       subgroups:
         title_html: Podskupiny
       keeping_up_to_date:
+        volume_html: Hlasitost
         yesterday_on_loomio_html: "\"Včera na Loomio\""
         email_settings_html: Nastavení emailu
       user_profile:
@@ -168,6 +169,8 @@ cs:
     subgroups:
       title: Podskupiny
     keeping_up_to_date:
+      volume:
+        title: Hlasitost
       email_settings:
         title: Nastavení emailu
       yesterday_on_loomio:

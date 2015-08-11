@@ -13,6 +13,10 @@ tr:
         pending_invitations_html: Bekleyen davetler
       discussion_threads:
         discussion_privacy_html: Müzakere gizliliği
+      comments:
+        title_html: Yorumlar
+      proposals:
+        title_html: Öneriler
       subgroups:
         title_html: Alt gruplar
       keeping_up_to_date:
@@ -22,6 +26,7 @@ tr:
     getting_started:
       title: Başlarken
     group_settings:
+      title: Grup Ayarları
       group_privacy:
         who_can_find_this_group:
           title: Kimler bu grubu bulabilir?
@@ -51,9 +56,16 @@ tr:
     discussion_threads:
       discussion_privacy:
         title: Müzakere gizliliği
+    comments:
+      title: Yorumlar
+    proposals:
+      title: Öneriler
     subgroups:
       title: Alt gruplar
     keeping_up_to_date:
+      volume:
+        body:
+          normal_title: Normal
       email_settings:
         title: E-posta ayarları
       yesterday_on_loomio:

@@ -8,11 +8,11 @@ Feature: User edits profile
     And I am a member of a group
     And I visit the profile page
 
-  @javascript
-  Scenario: User updates display name
-    When I fill in and submit the new name
-    And I visit the group page
-    Then I should see my display name has been updated
+  #@javascript
+  #Scenario: User updates display name
+    #When I fill in and submit the new name
+    #And I visit the group page
+    #Then I should see my display name has been updated
 
   @javascript
   Scenario: User updates email

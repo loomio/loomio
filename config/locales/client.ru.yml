@@ -3,21 +3,35 @@ ru:
     time:
       am: дп
       pm: пп
+    closing_in: "Закрывается {{time}}"
+    closed_ago: "Закрыто {{time}}"
+    volume: Громкость
+    notification_volume: Громкость оповещений
     group: Группа
     groups: Группы
     privacy:
       private: Приватная
       public: Публичная
+      organisation: Организация
     date_range:
       today: Сегодня
+      yesterday: Вчера
+      thisweek: Эта неделя
+      thismonth: Этот месяц
+      older: Ранее
     models:
       proposal: Предложение
     action:
       save: Сохранить
+      save_changes: Сохранить изменения
       edit: Редактировать
       like: Нравится
       unlike: Не нравится
       cancel: Отмена
+      show_more: Показать больше
+      view_all: Показать все
+      add_subgroup: Добавить подгруппу
+      loading: Загрузка
   error_page:
     forbidden: У вас недостаточно прав
   proposal_outcome_panel:
@@ -26,30 +40,64 @@ ru:
     publish_outcome: Опубликовать результат
   context_card:
     heading: Описание
+  volume_levels:
+    normal: Нормальный
+    quiet: Ограниченный
+    mute: Заглушен
   inbox:
     clear: Очистить
     unread: Непрочитанные
+  session_form:
+    password_label: "Пароль:"
+    remember_me: Запомнить меня
+    sign_in: Логин
   comment_form:
+    aria_label: "Добавить комментарий "
+    attachments:
+      aria_label: Прикрепить файл
+      remove_attachment: Удалить вложение
+    messages:
+      created: Комментарий добавлен
+      updated: Комментарий обновлен
+      destroyed: Комментарий удалён
     edit_comment: Редактировать коментарий
     delete_comment: Удалить комментарий
     confirm_delete_message: Вы уверены что хотите удалить комментарий?
+    confirm_delete: "Да, я согласен"
   navbar:
     unread: Непрочитанные
     groups: Группы
     user_options:
+      contact_us: Наши контакты
       new_group: Новая группа
       profile: Профиль
+      email_settings: Настройки email
       help: Помощь
     search:
+      close: Закрыть панель поиска
+      placeholder: Поиск
       discussions: Обсуждения
+      comments: Комментарии
+  start_menu:
+    invite_people: Пригласить людей
   notifications:
     header: Уведомления
+  position_buttons_panel:
+    heading: Выразить свое мнение
   vote_form:
+    heading: Выразить свое мнение
     i_agree: Я согласен
     i_abstain: Я воздерживаюсь
     i_abstain_details: "Я был бы рад, если группа примет решение без меня."
     i_disagree: Я не соласен
     i_block: Я блокирую
+    change_position: Изменить позицию
+    select_position: Выбрать позицию
+    messages:
+      created: Голос добавлен
+  proposal_positions_panel:
+    heading: Позиция
+    change_your_vote: Изменить ваш голос
   close_proposal_form:
     close_proposal: Закрыть предложение
   proposal_form:
@@ -57,6 +105,7 @@ ru:
     details_label: Детали
   discussion_form:
     group_label: Группа
+    group_placeholder: Выбрать группу
     title_label: Название
     context_label: Описание
     privacy_label: Конфиденциальность
@@ -91,6 +140,8 @@ ru:
     name_label: Имя
     description_label: Описание
     category_label: Категория
+  invitation:
+    invite_people: Пригласить людей
   memberships_page:
     members: Участники
     name_label: Имя
@@ -110,11 +161,14 @@ ru:
     name_label: Имя
     email_label: Email
     locale_label: Язык
+  email_settings_page:
+    header: Настройки email
   dashboard_page:
     aria_label: Кабинет
     mark_as_read: Отметить прочитанным
     threads_from:
       today: Сегодня
+      yesterday: Вчера
   thread_group:
     aria_label: Название группы
   delete_comment_dialog:
@@ -125,10 +179,22 @@ ru:
     context_menu:
       edit_comment: Редактировать коментарий
       delete_comment: Удалить комментарий
+  contact_message_form:
+    contact_us: Наши контакты
+    name_label: Ваше имя
+    name_placeholder: Введите ваше имя...
+    email_label: Ваш электронный адрес
+    email_placeholder: Введите ваш электронный адрес...
+    message_label: Ваше сообщение
+    message_placeholder: Ваше сообщение...
+    send_message: Отправить сообщение
   help_page:
+    coordinating: Координация вашей группы
     different_ways: Различные способы использовать Loomio
+    get_in_touch: Оставаться на связи
     get_in_touch_description_html: "Если у Вас есть вопросы или отзыв, <a href='%{link}'>черкните нам пару строк</a>."
     getting_started: С чего начать
+    have_your_say: Выразить свое мнение
     help: Помощь
     how_it_works: Как это работает
     join_the_community: Присоединиться к сообществу
@@ -144,6 +210,7 @@ ru:
     discussion: Подсказки для начала увлекательного обсуждения
     invitation: Подсказки для написания отличного приглашения
     proposal: Подсказки для написания понятного предложения
+    vote: Вы можете изменить вашу позицию в любое время
   pricing_page:
     organisations: Организации
     informal_groups: Неформальные группы

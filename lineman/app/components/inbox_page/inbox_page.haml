@@ -12,5 +12,5 @@
               %a{href: '/g/{{group.key}}'} {{group.name}}
           .inbox-page__groups.thread-previews-container
             %thread_preview_collection{query: 'inboxPage.queryFor(group)', limit: 'inboxPage.threadLimit'}
-            .inbox-page__show-more{ng-show: 'inboxPage.moreForThisGroup(group)'}
+            .lmo-show-more{ng-show: 'inboxPage.moreForThisGroup(group)'}
               %a{translate: 'inbox_page.view_more', href: '/g/{{group.key}}'}

@@ -347,9 +347,3 @@ lt:
     join_the_community_description_html: "Visi yra kviečiami prisijungti prie Loomio Bendruomenės, kurioje mes aptarinėjame, kaip geriausiai išnaudoti įrankį ir kaip jis gali būti patobulintas.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Spustelk čia, kad pereitum į Loomio Bendruomenės grupę</a>."
     positions_agree_description: "<span>Pritariu</span> reiškia, kad tau patinka pasiūlymas."
     positions_disagree_description: "<span>Nepritariu</span> reiškia, kad tu galvoji, jog gali būti geresnių alternatyvų, tačiau neprieštarausi grupės sprendimui."
-  angular:
-    title: "Sveikinu atvykus į Kampinį skydelį!"
-    now_on: Tavo kampinė sąsaja šiuo metu yra ĮJUNGTA
-    turn_on: Įjungti kampinę sąsają
-    now_off: Tavo kampinė sąsaja šiuo metu yra IŠJUNGTA
-    turn_off: Išjungti kampinę sąsają

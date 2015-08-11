@@ -6,11 +6,12 @@
         %i.fa.fa-lg.fa-plus{aria-hidden: 'true'}>
         %span{translate: 'navbar.user_options.new_group'}
     .groups-page__groups
-      %section.groups-page__group{ng-repeat: 'group in groupsPage.groups() | orderBy: "name" track by group.id', aria-labelledby: '{{::group.key}}'}
-        .groups-page__group-header.clearfix
-          %img.groups-page__group-logo{ng-src: "{{::group.logoUrl()}}", aria-hidden: 'true'}>
-          %h2.groups-page__group-name{id: '{{::group.key}}'}
-            %a{href: '/g/{{::group.key}}'} {{::group.name}}
-        %ul.groups-page__subgroups{ng-if: 'group.subgroups().length > 0'}
-          %li.groups-page__subgroup{ng-repeat: 'subgroup in group.subgroups() track by subgroup.id | orderBy:groupsPage.groupName'}
-            %a{href: '/g/{{::subgroup.key}}'} {{::subgroup.name}}
+      %ul.groups-page__parent-groups
+        %li.groups-page__parent-group{ng-repeat: 'group in groupsPage.parentGroups() | orderBy: "name" track by group.id'}
+          .groups-page__parent-group-header.clearfix
+            %img.groups-page__parent-group-logo{ng-src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
+            %h2.groups-page__parent-group-name{id: '{{group.key}}'}
+              %a{href: '/g/{{group.key}}'} {{group.name}}
+          %ul.groups-page__subgroups{ng-if: 'group.subgroups().length > 0'}
+            %li.groups-page__subgroup{ng-repeat: 'subgroup in group.subgroups() track by subgroup.id | orderBy:groupsPage.groupName'}
+              %a{href: '/g/{{subgroup.key}}'} {{subgroup.name}}

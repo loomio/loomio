@@ -277,6 +277,7 @@ de:
     group_name: Gruppenname
     success:
       header: "Du bist fast fertig! Prüfe Deine eMails."
+    start_making_decisions: "Um gemeinsam auf Loomio Entscheidungen zu treffen, erstelle kostenlos eine Gruppe:"
   group_form:
     name: Gruppenname
     description: Beschreibung
@@ -1067,7 +1068,7 @@ de:
       mon: Mon
       tue: Die
       wed: Mit
-      thu: Don
+      thu: Do
       fri: Fre
       sat: Sam
       sun: Son
