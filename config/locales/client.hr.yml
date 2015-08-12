@@ -50,7 +50,6 @@ hr:
         membership_is_invitation_only: Za pridruživanje grupi mora vas pozvati član / ica grupe.
         membership_is_invitation_by_admin_only: U ovu grupu mora vas pozvati koordinator / ica.
     description: Opis
-    manage_members: Upravljanje članovima
     invite_people: Pozovi ljude
     leave_group:
       title: Napusti grupu

@@ -227,9 +227,7 @@ cs:
       aria_label: Záhlaví stránek skupiny
     description: Popis
     discussions: Diskuze
-    members: "Členové ({{count}}) "
     members_placeholder: "Jste tu jediná/ý: pozvěte někoho, aby se k Vám přidal!"
-    manage_members: Spravovat členy
     subgroups: Podskupiny
     subgroups_placeholder: Podskupiny Vám umožní rozdělit skupinu do několika různých týmů.
     invite_people: Pozvat další

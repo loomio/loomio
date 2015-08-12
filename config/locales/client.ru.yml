@@ -125,7 +125,6 @@ ru:
   group_page:
     description: Описание
     discussions: Обсуждения
-    manage_members: Управление участниками
     invite_people: Пригласите людей
     options_label: Опции
     options:

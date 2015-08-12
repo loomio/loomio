@@ -94,7 +94,6 @@ eo:
         membership_is_invitation_by_admin_only: Por aliĝi al ĉi tiu grupo vi devas esti invitita de kunordiganto.
     description: Priskribo
     discussions: Diskutoj
-    manage_members: Manaĝi membrojn
     invite_people: Inviti personojn
     options_label: Opcioj
     options:

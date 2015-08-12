@@ -82,7 +82,6 @@ gl:
   group_page:
     description: Descripción
     discussions: Debates
-    manage_members: Xestionar membros
     invite_people: Invitar xente
     options_label: Opcións
     options:
