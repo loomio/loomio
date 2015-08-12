@@ -107,3 +107,11 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
 
     markAsRead: (sequenceId) ->
       @reader().markAsRead(sequenceId)
+
+    minLoadedSequenceId: ->
+      item = _.min @events(), (event) -> event.sequenceId or Number.MAX_VALUE
+      item.sequenceId
+
+    maxLoadedSequenceId: ->
+      item = _.max @events(), (event) -> event.sequenceId or 0
+      item.sequenceId
