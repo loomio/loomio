@@ -102,7 +102,6 @@ be-BY:
         membership_is_invitation_by_admin_only: "Патрэбна атрымаць запрашэнне ад каардынатара групы каб далучыцца да яе. "
     description: Апісанне
     discussions: Абмеркаванні
-    manage_members: Рэдагаваць удзельнікаў
     invite_people: Запрасіць людзей
     options_label: Опцыі
     options:

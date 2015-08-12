@@ -92,7 +92,6 @@ sv:
         membership_is_invitation_by_admin_only: För att gå med i denna grupp måste du bli inbjuden av en koordinator.
     description: Beskrivning
     discussions: Diskussioner
-    manage_members: Hantera medlemmar
     invite_people: Bjud in deltagare
     options_label: Alternativ
     options:

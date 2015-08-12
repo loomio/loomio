@@ -124,7 +124,6 @@ sl:
         membership_is_invitation_by_admin_only: Za pridružitev tej skupini moraš biti povabljen/a s strani koordinatorja.
     description: Opis
     discussions: Razprave
-    manage_members: Upravljaj s člani
     invite_people: Povabi še koga
     options_label: Možnosti
     options:

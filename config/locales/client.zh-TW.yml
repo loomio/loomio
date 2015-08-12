@@ -288,10 +288,10 @@ zh-TW:
     description_placeholder: 使用這個地方來描述群組的目的讓您的夥伴們知道他們為什麼在這裡。
     discussions: 討論
     discussions_placeholder: 討論串是供每個人討論主題並共同作出決策的地方。
-    members: "成員 ({{count}}) "
+    members: "成員 ({{count}})"
     members_placeholder: 不能只有你 ── 邀請一些夥伴來加入吧！
     member_options: 成員選項
-    manage_members: 管理成員
+    all_members: "所有成員 ({{count}}) "
     subgroups: 子群組
     subgroups_placeholder: 子群組讓您將大群組分成不同的小組。
     invite_people: 邀請夥伴

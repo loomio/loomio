@@ -281,10 +281,8 @@ ga-IE:
     description_placeholder: Bain feidhm as an áit seo chun cur síos a dhéanamh ar an mbaicle le go mbeidh a fhios ag na comhaltaí cén fáth a bhfuil siad anseo.
     discussions: Pléití
     discussions_placeholder: Is áit í snáithe inar féidir le gach duine ábhar a phlé agus cinntí a dhéanamh le chéile.
-    members: "Comhaltaí ({{count}}) "
     members_placeholder: "Is tusa an t-aon duine anseo: tabhair cuirí do dhaoine bheith leat!"
     member_options: Roghanna na gcomhaltaí
-    manage_members: Riar na comhaltaí
     subgroups: Fobhaiclí
     subgroups_placeholder: Ligeann fobhaiclí duit an bhaicle a roinnt i bhfoirne éagsúla.
     invite_people: Tabhair cuirí do dhaoine

@@ -95,7 +95,6 @@ sk:
         membership_is_invitation_by_admin_only: Na získanie členstva v tejto skupine vás musí pozvať jej koordinátor.
     description: Popis
     discussions: Diskusie
-    manage_members: Spravovať členov
     invite_people: Pozvať ďalších
     options_label: Nastavenia
     options:

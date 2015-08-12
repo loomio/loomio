@@ -291,7 +291,7 @@ pt-BR:
     members: "Membros ({{count}})"
     members_placeholder: "Você é a única pessoa aqui: convide outras para se juntar a você!"
     member_options: Opçoes de membros
-    manage_members: Gerenciar membros
+    all_members: "Todos os membros ({{count}})"
     subgroups: Subgrupos
     subgroups_placeholder: Subgrupos permitem dividir o grupo em diferentes times
     invite_people: Convidar pessoas

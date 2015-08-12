@@ -104,7 +104,6 @@ el:
         membership_is_invitation_by_admin_only: Για να συμμετάσχετε σε αυτή την ομάδα πρέπει να έχετε προσκεκληθεί από έναν συντονιστή.
     description: Περιγραφή
     discussions: Θέματα
-    manage_members: Διαχείριση μελών
     invite_people: Προσκαλέστε άτομα
     options_label: Ρυθμίσεις
     options:

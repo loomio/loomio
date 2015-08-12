@@ -88,7 +88,6 @@ ca:
   group_page:
     description: Descripció
     discussions: Discussions
-    manage_members: Gestiona membres
     invite_people: Convida gent
     options_label: Opcions
     options:

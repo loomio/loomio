@@ -267,9 +267,7 @@ it:
     description_placeholder: Usa questo spazio per descrivere lo scopo del gruppo in modo che i suoi membri sappiano il motivo per cui sono qui.
     discussions: Discussioni
     discussions_placeholder: Il thread (discussione) è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni su esso.
-    members: "Membri ({{count}}) "
     members_placeholder: "Sei da solo qui: invita altre persone!"
-    manage_members: Gestisci i membri
     subgroups: Sottogruppi
     subgroups_placeholder: I sottogruppi permettono di dividere il gruppo più grande in gruppi di lavoro.
     invite_people: Invita persone
