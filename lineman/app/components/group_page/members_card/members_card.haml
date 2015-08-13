@@ -10,5 +10,5 @@
         %i.fa.fa-lg.fa-plus>
         %span{translate: 'group_page.invite_people' }
     .members-card__manage-members.card-minor-action
-      %a{lmo-href-for: '{ model: group, path: "memberships"}'}
+      %a{lmo-href-for: 'group', lmo-href-path: '/memberships'}
         %span{translate: 'group_page.all_members', translate-value-count: '{{group.membershipsCount}}'}
