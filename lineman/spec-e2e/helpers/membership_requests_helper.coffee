@@ -9,8 +9,11 @@ module.exports = new class MembershipRequestsHelper
   clickApproveButton: ->
     element.all(By.css('.membership-requests-page__approve')).first().click()
 
+  pendingRequestsPanel: ->
+    element(By.css('.membership-requests-page__pending-requests')).getText()
+
   previousRequestsPanel: ->
-    element(By.css('.membership-requests-page__previous-membership-requests'))
+    element(By.css('.membership-requests-page__previous-requests')).getText()
 
   clickNavbarGroupLink: ->
     element(By.cssContainingText('.lmo-navbar__btn-label', 'Groups')).click()
@@ -20,3 +23,6 @@ module.exports = new class MembershipRequestsHelper
 
   clickIgnoreButton: ->
     element.all(By.css('.membership-requests-page__ignore')).first().click()
+
+  approveAllRequests: ->
+    element.all(By.css('.membership-requests-page__approve')).click()

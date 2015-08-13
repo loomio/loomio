@@ -9,7 +9,7 @@ module.exports = new class GroupsHelper
     browser.get('http://localhost:8000/development/setup_group_with_multiple_coordinators')
 
   membersList: ->
-    element(By.css('.members-card'))
+    element(By.css('.members-card')).getText()
 
   startThreadButton: ->
     element(By.css('.discussions-card__new-thread-button'))
