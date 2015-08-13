@@ -12,7 +12,7 @@
   top: $navbar-height;
   left: 0;
   width: 100%;
-  height: 160px;
+  height: 320px;
   background: url('http://placehold.it/640x160') no-repeat center center #f5f5f5;
   background-size: cover;
 }
@@ -24,7 +24,7 @@
 .group-page__header{
   width: 100%;
   position: relative;
-  min-height: 225px;
+  min-height: 335px;
 }
 
 .group-page__header .btn{
@@ -33,7 +33,7 @@
 
 .group-page__logo{
   position: relative;
-  top: 100px;
+  top: 215px;
   width: 108px;
   height: 108px;
   background: url('http://placehold.it/100x100') no-repeat top center white;
@@ -41,7 +41,7 @@
 }
 
 .group-page__name-and-actions{
-  margin-top: 60px;
+  margin-top: 175px;
 }
 
 .group-page__nonmember-actions { float: right; }
