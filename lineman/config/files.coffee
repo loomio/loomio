@@ -39,6 +39,3 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/angular-scroll/angular-scroll.js",
              "vendor/bower_components/svg.js/dist/svg.js",
              "node_modules/angular_record_store/standalone.js" ]
-
-    app: ["app/app.js",
-          "app/**/*.js"]
