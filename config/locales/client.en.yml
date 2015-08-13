@@ -122,6 +122,7 @@ en:
       profile: 'Profile'
       email_settings: 'Email settings'
       help: 'Help'
+      sign_out: 'Sign out'
     search:
       close: 'Close search panel'
       placeholder: 'Search'
