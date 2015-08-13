@@ -39,6 +39,8 @@ $ ->
         alert("The file is too big. It must be less than 100 MB.")
       else if types.test(file.type) || types.test(file.name)
         alert("#{file.name} is an .exe file, which is not allowed")
+      else if !file.name.match(/^[a-zA-Z0-9_\-\.]+$/)
+        alert("#{file.name} contains invalid characters, please rename your file to contain only numbers and letters")
       else
         upload_started()
         data.context = $(tmpl("template-upload-in-progress", file))
