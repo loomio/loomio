@@ -6,4 +6,6 @@ angular.module('loomioApp').directive 'lmoHrefFor', (LmoUrlService, LmoRedirectS
   link: (scope, elem, attrs) ->
     elem.attr 'href', ''
     elem.bind 'click', ($event) ->
-      LmoRedirectService.redirect $event, LmoUrlService.route scope
+      LmoRedirectService.redirect $event, LmoUrlService.route
+        model: scope.model
+        path: scope.path
