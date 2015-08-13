@@ -55,7 +55,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
       per:    @perPage).then @updateQueries
   LoadingService.applyLoadingFunction @, 'loadMore'
 
-  @refresh = ->
+  @refresh = =>
     @updateQueries()
     @loadMore() if @loaded[@filter] == 0
 
@@ -65,5 +65,6 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     @refresh()
   @setFilter()
   $scope.$on 'homePageClicked', => @setFilter()
+  $scope.$on 'starToggled', @refresh
 
   return
