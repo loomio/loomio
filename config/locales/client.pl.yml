@@ -225,7 +225,6 @@ pl:
     extend_proposal: Zmiana terminu zamknięcia
     edit_proposal: Edycja rekomendacji
     close_proposal: Zamknij rekomendację
-    votes_count: "{{count}} innych głosów"
   proposal_position_yes: Zgoda
   proposal_position_abstain: Wstrzymuję się
   proposal_position_no: Nie zgadzam się
@@ -274,7 +273,6 @@ pl:
         parent_members: Ta grupa jest teraz widoczna tylko dla członków Twojej organizacji
         public: Ta grupa jest teraz publiczna
       leave_group_success: Opuściłeś/aś tę grupę
-      deactivate_group_success: Grupa nieaktywna
     group_logo: Logo grupy
     header:
       aria_label: Nagłówek strony grupy
@@ -282,10 +280,8 @@ pl:
     description_placeholder: Opisz cel grupy aby członkowie wiedzieli czemu się w niej znajdują.
     discussions: Dyskusje
     discussions_placeholder: Wątek jest miejscem gdzie wszyscy mogą dyskutować temat i podejmować wspólne decyzje.
-    members: "Członkowie ({{count}}) "
     members_placeholder: "Jesteś jedynym członkiem: zaproś inne osoby!"
     member_options: Opcje członka
-    manage_members: Zarządzanie członkami
     subgroups: Podgrupy
     subgroups_placeholder: Podgrupy pozwalają dzielić grupy na różne zespoły
     invite_people: Zaproś ludzi
@@ -624,9 +620,3 @@ pl:
     informal_groups: Grupy nieformalne
     informal_groups_desc: Członkowie Twojej grupy będą proszeni o dobrowolne wpłaty
     informal_groups_examples: "np. rodziny, ruchy społeczne,zespoły"
-  angular:
-    title: Witamy w pulpicie Angular
-    now_on: Twój interfejs angular jest obecnie WŁĄCZONY
-    turn_on: Włącz interfejs angular
-    now_off: Twój interfejs angular jest obecnie WYŁĄCZONY
-    turn_off: Wyłącz interfejs angular

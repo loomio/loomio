@@ -9,6 +9,7 @@ Loomio::Application.routes.draw do
     get 'setup_group_to_join'
     get 'setup_group_with_multiple_coordinators'
     get 'setup_discussion'
+    get 'setup_multiple_discussions'
     get 'setup_busy_discussion'
     get 'setup_discussion_with_comment'
     get 'setup_proposal'
@@ -20,6 +21,7 @@ Loomio::Application.routes.draw do
     get 'setup_user_email_settings'
     get 'setup_all_notifications'
     get 'setup_group_with_pending_invitation'
+    get 'setup_group_with_subgroups'
   end
 
   scope '/angular', controller: 'angular', path: 'angular', as: 'angular' do
@@ -148,7 +150,7 @@ Loomio::Application.routes.draw do
       get :unauthorized
     end
     devise_scope :user do
-      resources :sessions, only: [:create, :destroy]
+      resource :sessions, only: [:create, :destroy]
     end
     get '/attachments/credentials',      to: 'attachments#credentials'
     get  '/contacts/:importer/callback', to: 'contacts#callback'

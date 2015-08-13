@@ -3,18 +3,26 @@ module.exports = new class MembershipRequestsHelper
   loadWithMembershipRequests: ->
     browser.get('http://localhost:8000/development/setup_membership_requests')
 
-  visitMembershipRequestsPage: ->
+  clickMembershipRequestsLink: ->
     element(By.css('.membership-requests-card__link')).click()
 
   clickApproveButton: ->
     element.all(By.css('.membership-requests-page__approve')).first().click()
 
-  previousRequestsPanel: ->
-    element(By.css('.membership-requests-page__previous-membership-requests'))
+  pendingRequestsPanel: ->
+    element(By.css('.membership-requests-page__pending-requests')).getText()
 
-  visitGroupPage: ->
+  previousRequestsPanel: ->
+    element(By.css('.membership-requests-page__previous-requests')).getText()
+
+  clickNavbarGroupLink: ->
     element(By.cssContainingText('.lmo-navbar__btn-label', 'Groups')).click()
-    element(By.cssContainingText('.groups-page__group-name a', 'Dirty Dancing Shoes')).click()
+
+  clickGroupName: ->
+    element(By.cssContainingText('.groups-page__parent-group-name a', 'Dirty Dancing Shoes')).click()
 
   clickIgnoreButton: ->
     element.all(By.css('.membership-requests-page__ignore')).first().click()
+
+  approveAllRequests: ->
+    element.all(By.css('.membership-requests-page__approve')).click()

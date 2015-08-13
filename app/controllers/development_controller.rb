@@ -47,6 +47,13 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def setup_multiple_discussions
+    cleanup_database
+    sign_in patrick
+    test_discussions
+    redirect_to group_url(test_group)
+  end
+
   def setup_group_with_multiple_coordinators
     cleanup_database
     test_group.add_admin! emilio
@@ -74,6 +81,15 @@ class DevelopmentController < ApplicationController
     public_test_discussion
     private_test_discussion
     test_subgroup
+    redirect_to group_url(another_test_group)
+  end
+
+  def setup_group_with_subgroups
+    cleanup_database
+    sign_in jennifer
+    test_group
+    test_subgroup.add_member! jennifer
+    another_test_subgroup.add_member! jennifer
     redirect_to group_url(another_test_group)
   end
 
@@ -147,7 +163,7 @@ class DevelopmentController < ApplicationController
     sign_in patrick
     test_group
     another_test_group
-    10.times do
+    3.times do
       membership_request_from_logged_out
     end
     membership_request_from_user
@@ -296,6 +312,15 @@ class DevelopmentController < ApplicationController
     @test_discussion
   end
 
+  def test_discussions
+    100.times do
+      Discussion.create!(title: Faker::Company.bs,
+                         group: test_group,
+                         author: jennifer,
+                         private: true)
+    end
+  end
+
   def public_test_discussion
     unless @another_test_discussion
       @another_test_discussion = Discussion.create!(title: "The name's Johnny Utah!", group: another_test_group, author: patrick, private: false)
@@ -318,6 +343,16 @@ class DevelopmentController < ApplicationController
       @test_subgroup.add_admin! patrick
     end
     @test_subgroup
+  end
+
+  def another_test_subgroup
+    unless @another_test_subgroup
+      @another_test_subgroup = Group.create!(name: 'Bodhi',
+                                             parent_id: another_test_group.id,
+                                             visible_to: 'public')
+      @another_test_subgroup.add_admin! patrick
+    end
+    @another_test_subgroup
   end
 
   def test_proposal

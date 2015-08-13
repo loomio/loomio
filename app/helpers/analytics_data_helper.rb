@@ -1,6 +1,7 @@
 module AnalyticsDataHelper
   def analytics_data_tag
-    tg = {dimension4: Loomio::Version.current}
+    tg = {dimension4: Loomio::Version.current,
+          dimension6: 0}
 
     if current_user
      tg.merge!({dimension5: current_user.id})

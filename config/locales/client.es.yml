@@ -226,7 +226,6 @@ es:
     extend_proposal: Cambiar fecha de cierre
     edit_proposal: Editar propuesta
     close_proposal: Cerrar propuesta
-    votes_count: "{{count}} votos más"
   proposal_position_yes: De acuerdo
   proposal_position_abstain: Abstenerse
   proposal_position_no: En desacuerdo
@@ -275,7 +274,6 @@ es:
         parent_members: Ahora este grupo es visible sólo para miembros de tu organización
         public: Ahora este grupo es visible para el público
       leave_group_success: Has dejado este grupo
-      deactivate_group_success: Grupo desactivado
     group_logo: Logo del grupo
     header:
       aria_label: Cabecera de página del grupo
@@ -283,10 +281,8 @@ es:
     description_placeholder: "Usa este espacio para describir el propósito del grupo, de manera que los miembros sepan por qué están aquí."
     discussions: Hilos
     discussions_placeholder: Un hilo es donde todo el mundo puede discutir un tema y tomar decisiones juntos.
-    members: "({{count}}) miembros"
     members_placeholder: "Estás solo aquí: ¡invita a algunas personas para unirse a ti! "
     member_options: Opciones de membresía
-    manage_members: Gestionar miembros
     subgroups: Subgrupos
     subgroups_placeholder: Los subgrupos te permiten dividir el grupo en diferentes equipos
     invite_people: Invitar personas
@@ -413,6 +409,17 @@ es:
       title: Eliminar miembro
       question: "¿Estás seguro de que quieres eliminar a {{name}} del grupo {{group}}?"
       submit: Eliminar
+  pending_invitations_card:
+    heading: Invitaciones pendientes
+    email: "correo electrónico "
+    invitation_link: "enlace de invitación "
+    cancel: cancelar
+  cancel_invitation_form:
+    heading: "cancelar invitación "
+    question: Estas seguro de que quieres cancelar esta invitación?
+    submit: cancelar invitación
+    messages:
+      success: "invitación cancelada "
   profile_page:
     messages:
       updated: Perfil actualizado
@@ -625,9 +632,3 @@ es:
     informal_groups: Grupo informal
     informal_groups_desc: A los miembros de tu grupo se les pedirá que contribuyan con lo que puedan
     informal_groups_examples: "ej. familias, movimientos sociales, grupos colectivos"
-  angular:
-    title: "¡Bienvenido al escritorio angular!"
-    now_on: Tu interfaz angular está actualmente ACTIVADA
-    turn_on: Activar la interfaz angular
-    now_off: Tu interfaz angular está actualmente DESACTIVADA
-    turn_off: Desactivar la interfaz angular

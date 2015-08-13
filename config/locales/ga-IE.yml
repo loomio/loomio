@@ -355,8 +355,10 @@ ga-IE:
     help: Cabhair
     how_it_works: Conas mar a fheidhmíonn sé
     join_the_community: Bí sa phobal
+    images_and_text_formatting: Íomhánna agus formáidiú an téacs
     keep_up_to_date: Fan ar an eolas
     make_a_decision: Déan cinneadh
+    prompt_people_html: "Spreag daoine le <span class='blue'>@tráchtanna</span>"
     positions_agree_description: "Ciallaíonn <span>Aontaíom</span> go bhfuil tú sásta leis an dtogra."
     positions_abstain_description: "Is éard is brí le <span>Staon</span> means you’re unsure, or you’re happy for the group to decide without you."
     positions_disagree_description: "Is éard is brí le h<span>Easaontú</span> ná go bhfuil tú den tuairim b'fhéidir go bhfuil rogha níos fearr ann, ach tá tú sásta glacadh le cinneadh na baicle."

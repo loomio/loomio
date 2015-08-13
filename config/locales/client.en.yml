@@ -122,6 +122,7 @@ en:
       profile: 'Profile'
       email_settings: 'Email settings'
       help: 'Help'
+      sign_out: 'Sign out'
     search:
       close: 'Close search panel'
       placeholder: 'Search'
@@ -251,7 +252,7 @@ en:
     extend_proposal: 'Change closing time'
     edit_proposal: 'Edit proposal'
     close_proposal: 'Close proposal'
-    votes_count: '{{count}} other votes'
+    closed_badge: Closed
 
 
   proposal_position_yes: 'Agree'
@@ -270,10 +271,15 @@ en:
 
   start_group_form:
     heading: 'Start a group'
+    heading_when_subgroup: 'Start a subgroup'
     group_helptext: 'To start making decisions together on Loomio, set up a group for free:'
     group_payment_reminder: "In 30 days, when you've seen how Loomio improves your group's decision making, we'll ask you to choose the <a href='#'>payment plan</a> that works for you."
     name_label: 'Group Name'
+    subgroup_name_label: 'Subgroup name'
     submit: 'Start Group'
+    messages:
+      success: Group created
+      success_when_subgroup: Subgroup created
 
   join_group_button:
     join_group: Join group
@@ -317,10 +323,10 @@ en:
     description_placeholder: 'Use this place to describe the purpose of the group so your members know why they are here.'
     discussions: 'Threads'
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
-    members: 'Members ({{count}}) '
+    members: 'Members'
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
-    manage_members: Manage members
+    all_members: All members ({{count}})
     subgroups: 'Subgroups'
     subgroups_placeholder: 'Subgroups let you break the group up into different teams.'
     invite_people: 'Invite people'
@@ -401,7 +407,8 @@ en:
     heading: Membership Requests
     approve: Approve
     ignore: Ignore
-    no_pending_requests: There are currently no pending membership requests.
+    no_pending_requests: There are currently no pending membership requests for this group.
+    no_previous_requests: There are currently no previous membership requests for this group.
     previous_requests: Previous Requests
     previous_request_response: '{{response}} by {{responder}} '
     messages:
@@ -457,7 +464,6 @@ en:
     heading: Pending invitations
     email: Email
     invitation_link: Invitation link
-    cancel: Cancel
 
   cancel_invitation_form:
     heading: Cancel invitation
@@ -763,8 +769,34 @@ en:
     informal_groups_examples: e.g. families, social movements, collectives
 
   angular:
-    title: 'Welcome to the Angular dashboard!'
-    now_on: 'Your angular interface is currently ON'
-    turn_on: 'Turn on the angular interface'
-    now_off: 'Your angular interface is currently OFF'
-    turn_off: 'Turn off the angular interface'
+    switch_back: 'Switch back to old Loomio'
+    give_feedback: 'Give feedback'
+    enable:
+      invite: 'Try the new Loomio!'
+      title: 'Try the new Loomio'
+      intro: "We've rebuilt Loomio and we need your help to make sure it is awesome before we release it to the general public."
+      body_html: |
+        <p></p>
+        <h3>What's the difference anyway?</h3>
+
+        <p>
+          The new interface is like the old interface but newer:
+          <ul>
+            <li>Everything updates live on the page as it happens</li>
+            <li>It’s designed for all your devices, from smartphone to desktop</li>
+            <li>It’s accessible to people who are blind, and translated into <a href="https://www.loomio.org/translation">heaps of languages</a>
+          </ul>
+        </p>
+
+        <p>It uses the same database as the old interface, meaning it will have all your existing groups and discussions. You can change back to the old interface at any time.</p>
+        <p>Things will be changing slightly every day as we implement the feedback we get during this time. Some less frequently used features may not be there yet.</p>
+        <p>There is a link "Switch back to the old Loomio" in the bottom left corner of the new app. Click that link and you can switch back to the Loomio you're more used to. There is also a feedback form for you to enter any feedback you have.</p>
+        <p>We really look forward to hearing your feedback, thanks for your time and support.</p>
+
+      button_text: 'Enable the new Loomio'
+
+    disable:
+      title: 'Thanks for trying the new Loomio'
+      body_html: "<p>Yikes, did we do something wrong? We're sorry if you had a bad time in the new Loomio.</p>"
+      give_feedback: "Before you go please consider sharing your feedback so we can improve."
+      button_text: 'Switch back to the old Loomio'

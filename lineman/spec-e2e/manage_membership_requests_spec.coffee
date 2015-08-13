@@ -7,19 +7,20 @@ describe 'Managing membership requests', ->
 
   beforeEach ->
     membershipRequestsHelper.loadWithMembershipRequests()
-    membershipRequestsHelper.visitMembershipRequestsPage()
+    membershipRequestsHelper.clickMembershipRequestsLink()
 
   describe 'approving a membership request', ->
 
     it 'successfully approves a membership request', ->
       membershipRequestsHelper.clickApproveButton()
-      expect(membershipRequestsHelper.previousRequestsPanel().getText()).toContain('Approved by Patrick Swayze')
+      expect(membershipRequestsHelper.previousRequestsPanel()).toContain('Approved by Patrick Swayze')
 
     it 'adds existing users to group upon approval', ->
       membershipRequestsHelper.clickApproveButton()
       membershipRequestsHelper.clickApproveButton()
-      membershipRequestsHelper.visitGroupPage()
-      expect(groupsHelper.membersList().getText()).toContain('MVS')
+      membershipRequestsHelper.clickNavbarGroupLink()
+      membershipRequestsHelper.clickGroupName()
+      expect(groupsHelper.membersList()).toContain('MVS')
 
     it 'sends an invitation to non-users upon approval', ->
       membershipRequestsHelper.clickApproveButton()
@@ -36,8 +37,14 @@ describe 'Managing membership requests', ->
 
     it 'successfully ignores a membership request', ->
       membershipRequestsHelper.clickIgnoreButton()
-      expect(membershipRequestsHelper.previousRequestsPanel().getText()).toContain('Ignored by Patrick Swayze')
+      expect(membershipRequestsHelper.previousRequestsPanel()).toContain('Ignored by Patrick Swayze')
 
     it 'displays the correct flash message', ->
       membershipRequestsHelper.clickIgnoreButton()
       expect(flashHelper.flashMessage()).toContain('Membership request ignored')
+
+  describe 'when there are no pending membership requests', ->
+
+    it 'tells you there are no pending membership requests', ->
+      membershipRequestsHelper.approveAllRequests()
+      expect(membershipRequestsHelper.pendingRequestsPanel()).toContain('There are currently no pending membership requests for this group.')

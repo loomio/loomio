@@ -4,7 +4,7 @@
     %p
       %em by #{discussion.author.name}
     .description
-      - if discussion.uses_markdown?
+      - if discussion.uses_markdown? and discussion.description.present?
         = render_email_markdown discussion.description
       - else
         = render_email_plaintext discussion.description

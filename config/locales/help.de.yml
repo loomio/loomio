@@ -1,6 +1,8 @@
 de:
   new_help:
+    title: Wie können wir Dir helfen?
     how_loomio_works:
+      title: Wie Loomio funktioniert
       start_group_link: Gründen Sie eine Gruppe
       start_group_description: um mit anderen Menschen auf Loomio zusammenzuarbeiten
       invite_people_link: Leute einladen
@@ -12,6 +14,11 @@ de:
       decide_together_link: "Gemeinsam entscheiden:"
       decide_together_description: "jeder kann zustimmen, sich enthalten, nicht zustimmen oder Veto einlegen - so kannst Du sehen wie jeder zu dem Vorschlag steht."
     contents:
+      title: Inhaltsverzeichnis
+      what_is_loomio:
+        title: Was ist Loomio?
+      how_loomio_works:
+        title: Wie Loomio funktioniert
       getting_started:
         title_html: Loslegen
         starting_new_group_html: Wenn Du eine neue Loomio Gruppe starten willst
@@ -88,11 +95,14 @@ de:
         title_html: Die Loomio Gemeinschaft
       loomio_development:
         title_html: Mit der Loomio-Entwicklung auf dem Laufenden bleiben
+      faq:
+        title_html: Die meistgestellten Fragen
     getting_started:
       title: Loslegen
       intro: "Es gibt mehrere Wege um mit Loomio zu starten.\nEinige Erläuterungen zu den einzelnen Zugängen:\n"
       starting_new_group:
         title: Wenn Du eine neue Loomio Gruppe starten willst
+        body_html: "Wenn Du kein Loomio-Konto hast, kannst Du eine neue Gruppe gründen indem Du auf der Loomio Startseite auf den <strong>“Teste Loomio Beta”</strong> Button klickst.\nDu wirst durch die Schritte geleitet, damit Du Deine Gruppe gründen kannst.\nAls Teil des Gruppengründungsprozesses wirst Du einige Gruppeneigenschaften einrichten müssen.\nMehr zu den Gruppeneigenschaften im Abschnitt <a href=\"#group-settings\">\"Gruppeneigenschaften\"</a> dieses Dokuments.\n"
       invited_into_group:
         title: Wenn Du in eine Loomio Gruppe eingeladen bist
         body_html: "Wenn Du eine Einladung in eine bestehende Loomio-Gruppe erhältst, dann erhält die eMail, die Du erhalten hast einen indiviuellen Einladungslink.\nWenn Du diesen Link klickst und du kein Loomio-Benutzerkonto hast, wirst Du aufgefordert mit Deiner eMail-Adresse und einem Passwort ein Benutzerkonto zu erstellen.\nWenn Du bereits ein Konto besitzt, wirst Du sofort zur Gruppe weitergeleitet.\n"
@@ -105,10 +115,13 @@ de:
           invitation_only_html: "Einige öffentliche Gruppen erlauben neuen Mitglieder <strong>nur auf Anfrage</strong>. Hier wirst Du nur die Gruppe sehen können aber keine Möglichkeit erhalten, der Gruppe beizutreten.\n"
       single_sign_on:
         title: Einfaches Registrieren
+        body_html: "<p>Loomio ermöglicht ein Anmeldung mit Facebook, Google oder Persona.\nFalls Du kein Loomio-Konto hast, kannst Du diese Dienste zur Anmeldung nutzen indem Du den entsprechenden Button auf der <a href=\"http://loomio.org/sign_in\">Log in-Seite</a> klickst.\nWenn Du momentang auf Google, Facebook oder Persona eingeloggt bist, wird das Konto erkannt.\nAnderenfalls wirst Du aufgefordert, Dich einzuloggen. Wenn Loomio Dein Drittanbieter-Konto erkennt, wirst Du aufgefordert, den Anweisungen zu folgen, um Dein Loomio Konto einzurichten.<p>\n<p>Du kannst auch Dein bestehendes Google-, Facebook- oder Persona-Konto mit einem bestehenden Loomio-Konto verbinden. Dazu musst Du Dich aus Loomio ausloggen und auf der <a href=\"https://www.loomio.org/users/sign_in\">Log in-Seite</a> Deinen gewünschten Drittanbieter auswählen.\nLoomio wird Dich fragen, ob Du ein neues Loomio-Konto einrichten und mit dem Drittanbieter-Konto verknüpfen möchtest oder ob Du es mit dem bestehenden Loomio-Konto verküpfen möchtest.</p>\n"
     group_settings:
       title: Gruppen-Einstellungen
+      intro_html: "Eine neue Loomio-Gruppe zu gründen geht jederzeit.\nWenn Du eine Gruppe gründest, wirst Du augefordert die Funktionseigenschaften der Gruppe einzurichten, indem Du drei Formulare ausfüllst, die den unterschiedlichen Aspekten der Gruppeneigenschaften entsprechen: <strong>Profil</strong>, <strong>Privatsphäre</strong> und <strong>Berechtigungen</strong>.\nDie Einstellungen werden nachfolgend detailliert beschrieben.\nDeine Gruppeneinstellungen kannst Du ändern indem Du den <strong>“Optionen”</strong>-Button im oberen, rechten Eck der Gruppen-Seite klickst und dann <strong>“Gruppeneinstellungen bearbeiten”</strong> .\nDies ist nur für Gruppen-Koordinatoren sichtbar.\n"
       group_profile:
         title: Gruppen-Profil
+        body_html: "Deine Gruppengründung macht es notwendig, dass Du der Gruppe einen Namen gibst und eine Gruppenbeschreibung erstellt.\nBeschreibe, was der Zweck dieser Gruppe sein wird, z.B. \"Eine öffentliche Gruppe für Galeristen um Anfragen für Galerie-Plätze zu genehmigen\" oder \"Raum für unsere Beiratsmitglieder, um Haushaltsvorschläge zu diskutieren\".\nDer Zweck der Gruppe kann sich über die Zeit verändern, aber es ist hilfreich, wenn die Beschreibung neuen Mitgliedern ein klares Verständnis für den Zweck der Gruppe gibt.\nEs gibt auch die Möglichkeit eine Kategorie zu wählen.\nWenn ihr eine öffentliche Gruppe seid, und ihr euch wünscht, dass andere Menschen sich bei euch beteiligen, dann ist die Kategorie-Zuordnung hilfreich, denn damit kann man euch auf der <a href=\"http://loomio.org/explore\">Öffentliche Gruppen-Seite</a> finden.\n"
       group_privacy:
         title: Gruppen-Privatsphäre
         who_can_find_this_group:
@@ -239,3 +252,5 @@ de:
           title_html: Die Loomio Gemeinschaft
     loomio_community:
       title: Die Loomio Gemeinschaft
+    faq:
+      title: Die meistgestellten Fragen (faq)

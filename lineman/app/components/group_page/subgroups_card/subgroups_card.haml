@@ -4,11 +4,12 @@
   %ul.subgroups-card__list
     %li.subgroups-card__list-item{ng-repeat: 'subgroup in group.subgroups() track by subgroup.id'}
       .subgroups-card__list-item-logo
+        %group_avatar{group: 'subgroup', size: 'medium'}
       .subgroups-card__list-item-name
         %a{href: '/g/{{subgroup.key}}'} {{ subgroup.name }}
       .subgroups-card__list-item-description {{ subgroup.description | words:10 }}
 
   .card-minor-action{ng-if: '::canCreateSubgroups()'}
-    %a{href: '/g/{{group.key}}/subgroups/new'}
+    %a.subgroups-card__add-subgroup-link{href: '', ng-click: 'startSubgroup()'}
       %span{aria-hidden:'true'}>+
       %span{ translate: 'common.action.add_subgroup' }

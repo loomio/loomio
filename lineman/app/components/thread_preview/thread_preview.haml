@@ -38,7 +38,7 @@
       .thread-preview__text-container{ng-if: 'thread.activeProposal()'}
         .thread-preview__proposal-name> {{ thread.activeProposal().name }}
         .thread-preview__proposal-closing-container{ng-if: 'thread.activeProposal().closingSoon()'}
-          %closing_in.thread-preview__proposal-closing-at{time: 'thread.activeProposal().closingAt'}>
+          %proposal_closing_time.thread-preview__proposal-closing-at{proposal: 'thread.activeProposal()'}>
 
       .thread-preview__text-container
         .thread-preview__group-name

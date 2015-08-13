@@ -1,9 +1,9 @@
 %a.proposal-collapsed.media{href: '', id: 'proposal-{{proposal.key}}'}
   .sr-only
     {{proposal.name}}.
-    %closing_in{time: 'proposal.closingAt'}.
+    %proposal_closing_time{proposal: 'proposal'}.
   .screen-only{aria-hidden: 'true'}
-    %closing_in.pull-right{time: 'proposal.closingAt'}
+    %proposal_closing_time.pull-right{proposal: 'proposal'}.
     .proposal-collapsed-expand.pull-right{translate: 'proposal_collapsed.expand'}
     .media-left
       %pie_chart.lmo-box--medium{votes: 'proposal.voteCounts'}

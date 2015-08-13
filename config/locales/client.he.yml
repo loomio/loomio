@@ -84,7 +84,6 @@ he:
   group_page:
     description: תיאור
     discussions: דיונים
-    manage_members: ניהול חברים
     invite_people: הזמינו אנשים
     options_label: אפשרויות
     options:

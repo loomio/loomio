@@ -95,7 +95,6 @@ an:
         membership_is_invitation_by_admin_only: Ta unir-te a iste grupo amenestes estar convidau por un coordinador.
     description: Descripción
     discussions: Discusions
-    manage_members: Chestionar miembros
     invite_people: Convidar a personas
     options_label: Opcions
     options:

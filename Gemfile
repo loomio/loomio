@@ -1,11 +1,12 @@
 source 'http://rubygems.org'
 
-ruby '2.2.0'
-gem 'rails', '~> 4.2.2'
+ruby '2.2.2'
+gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
+gem 'rails', '~> 4.2.3'
 gem 'rake'
 gem 'pg', '~> 0.18.2'
-gem 'pg_search', '~> 1.0.3'
-gem 'haml-rails'
+gem 'pg_search', '~> 1.0.4'
+gem 'haml-rails', '~> 0.9.0'
 gem 'devise', '~> 3.4.1'
 gem 'devise-i18n'
 gem 'omniauth', '~> 1.2.2'
@@ -19,11 +20,10 @@ gem 'omnicontacts', github: 'Diego81/omnicontacts', ref: 'beca38666154d660c472e5
 gem 'jquery-rails', '~> 4.0.3'
 gem 'jquery-ui-rails', '~> 5.0.0'
 gem 'simple_form', '3.1.0'
-gem 'country_select'
 gem 'cancancan'
 gem 'rmagick', '~> 2.15.0'
 gem 'gravtastic'
-gem 'paperclip', '~> 4.2.0'
+gem 'paperclip', '~> 4.2.4'
 gem 'kaminari'
 gem 'activeadmin', github: 'activeadmin'
 gem 'nokogiri'
@@ -69,6 +69,8 @@ gem 'oj_mimic_json'
 # might need this
 #gem 'activeuuid', '>= 0.5.0'
 
+gem 'snorlax'
+
 # consider uncommenting these when we want to mess around with json parsing
 #gem 'oj'
 #gem 'oj_mimic_json'
@@ -91,6 +93,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'derailed'
+  gem "stackprof"
   gem 'spring'
   gem "spring-commands-cucumber"
   gem "spring-commands-rspec"

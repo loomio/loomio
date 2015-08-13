@@ -9,7 +9,7 @@ module.exports = new class GroupsHelper
     browser.get('http://localhost:8000/development/setup_group_with_multiple_coordinators')
 
   membersList: ->
-    element(By.css('.members-card'))
+    element(By.css('.members-card')).getText()
 
   startThreadButton: ->
     element(By.css('.discussions-card__new-thread-button'))
@@ -133,3 +133,16 @@ module.exports = new class GroupsHelper
 
   clickAddCoordinatorButton: ->
     element(By.css('.leave-group-form__add-coordinator')).click()
+
+  clickStartSubgroupLink: ->
+    browser.sleep(4000) # this has been a tempremantal test, ugh
+    element(By.css('.subgroups-card__add-subgroup-link')).click()
+
+  fillInSubgroupName: (name) ->
+    element(By.css('.start-group-form__name')).sendKeys(name)
+
+  submitSubgroupForm: ->
+    element(By.css('.start-group-form__submit')).click()
+
+  groupName: ->
+    element(By.css('.group-page__name')).getText()

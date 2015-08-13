@@ -45,6 +45,12 @@
             .user-options.visible-xs
               = render 'application/user_profile_options'
             = render 'search'
+            - if current_user.created_at < 1000.days.ago
+              %li.hidden-sm
+                = link_to angular_path do
+                  %i.fa.fa-star{style: 'color: #F6A82B'}
+                  = t :'angular.enable.invite'
+
 
         %ul.nav.navbar-nav.navbar-right.hidden-xs
           = render 'user_dropdown'

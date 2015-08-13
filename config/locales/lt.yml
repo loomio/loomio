@@ -8,6 +8,8 @@ lt:
     contact: Susisiekite
     help: Pagalba
     privacy: Privatumas
+    public_groups: Viešos grupės
+    terms: Nuostatos
   notifications:
     header: Pranešimai
   user_profile:
@@ -21,22 +23,34 @@ lt:
     what_can_members_do: Ką gali daryti nariai?
     members_can:
       add_members: Kviesti ir tvirtinti naujus narius
+      edit_comments: Bet kuriuo metu redaguoti savo komentarus
       create_subgroups: Kurti pogrupius
     visible_to:
       label: Kas gali rasti šią grupę?
     membership_granted_upon:
       label: Kaip žmonės prisijungia?
+    parent_members_can_see_discussions:
+      "false": Tik nariai gali matyti diskusijas
   group_permissions:
     header: Grupės leidimai
   invite_people: Pakviesti žmones
   manage_members: Tvarkyti narius
+  leave_group: Palikti grupę
   public: Vieša
   new_group: Nauja grupė
   networks:
     threads: Gijos
+    groups: Grupės
+  volume:
+    volume: Garsumas
+    loud: Garsus
+    normal: Normalus
+    quiet: Tylus
+    mute: Nutildyti
   discussion_volume:
     quiet_description: Nesiųsti el. laiškų apie šią giją.
   group_volume:
+    loud_description: Siųsti el. paštas kai tik atsiranda kokia nors veikla.
     quiet_description: Nesiųsti el. laiškų apie šią grupę. Veikla bus rodoma skydelyje.
   discussion_list:
     empty:
@@ -72,14 +86,25 @@ lt:
     use_initials: Naudoti inicialus
   simple_form:
     labels:
+      discussion:
+        title: Antraštė
+        description: Kontekstas
       motion:
+        name: Antraštė
         description: Išsamesnė Informacija
       user:
+        username: Naudotojo vardas
         email: El. paštas
+        language_preference: Kalba
+  helpers:
+    submit:
+      motion:
+        create: Pateikti pasiūlymą
   about_loomio: Apie Loomio
   coordinator: Koordinatorius
   details: Išsamesnė Informacija
   edit: Redaguoti
+  group: Grupę
   like: Patinka
   options: Parinktys
   remove: Šalinti
@@ -89,6 +114,8 @@ lt:
     profile: Profilis
     email_settings: El. pašto nustatymai
     dashboard: Skydelis
+    groups: Grupės
+    today: Šiandien
     meridians:
       am: am
       pm: pm

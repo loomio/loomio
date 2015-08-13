@@ -110,6 +110,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.about,
 .pages.blog,
 .pages.privacy,
+.pages.angular,
 .pages.services,
 .pages.terms_of_service,
 .pages.third_parties,
@@ -627,6 +628,18 @@ body.pages.crowdfunding_celebration {
   }
   .content{
     margin-top: 0;
+  }
+}
+
+.pages.angular{
+  ul{
+    list-style: initial;
+    margin-left: 1.5em;
+  }
+
+  li {
+    font-size: 18px;
+    line-height: 24px;
   }
 }
 

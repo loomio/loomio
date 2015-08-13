@@ -2,27 +2,27 @@ an:
   frontpage: 52
   help docs: 8
   main: 88
-  main_1_0: 29
+  main_1_0: 28
 ar:
   frontpage: 52
   help docs: 7
   main: 49
-  main_1_0: 16
+  main_1_0: 15
 be-BY:
   frontpage: 58
   help docs: 10
   main: 96
-  main_1_0: 32
+  main_1_0: 30
 bg-BG:
   frontpage: 9
   help docs: 2
   main: 41
-  main_1_0: 20
+  main_1_0: 19
 ca:
   frontpage: 49
   help docs: 7
   main: 75
-  main_1_0: 28
+  main_1_0: 26
 cmn:
   frontpage: 1
   help docs: 1
@@ -30,24 +30,24 @@ cmn:
   main_1_0: 12
 cs:
   frontpage: 76
-  help docs: 43
+  help docs: 44
   main: 80
-  main_1_0: 28
+  main_1_0: 69
 da:
   frontpage: 52
   help docs: 11
   main: 89
-  main_1_0: 43
+  main_1_0: 42
 de:
-  frontpage: 58
-  help docs: 45
+  frontpage: 100
+  help docs: 49
   main: 96
-  main_1_0: 41
+  main_1_0: 100
 el:
   frontpage: 78
   help docs: 42
   main: 96
-  main_1_0: 32
+  main_1_0: 31
 en-BE:
   frontpage: 0
   help docs: 0
@@ -62,17 +62,17 @@ eo:
   frontpage: 52
   help docs: 8
   main: 86
-  main_1_0: 29
+  main_1_0: 28
 es:
   frontpage: 100
-  help docs: 83
+  help docs: 85
   main: 100
-  main_1_0: 100
+  main_1_0: 96
 fa-IR:
   frontpage: 52
   help docs: 41
   main: 14
-  main_1_0: 3
+  main_1_0: 2
 fi:
   frontpage: 0
   help docs: 0
@@ -82,22 +82,23 @@ fr:
   frontpage: 58
   help docs: 29
   main: 98
-  main_1_0: 38
+  main_1_0: 37
 ga-IE:
-  frontpage: 66
+  frontpage: 69
   help docs: 9
   main: 61
-  main_1_0: 94
+  main_1_0: 91
 gl:
   frontpage: 29
   help docs: 8
   main: 69
-  main_1_0: 21
+  main_1_0: 20
 he:
-  frontpage: 53
+  frontpage: 55
   help docs: 8
   main: 64
-  main_1_0: 19
+  main_1_0: 18
+he-IL: {}
 hi:
   frontpage: 0
   help docs: 0
@@ -107,22 +108,22 @@ hr:
   frontpage: 100
   help docs: 14
   main: 46
-  main_1_0: 10
+  main_1_0: 9
 hu:
   frontpage: 63
   help docs: 74
   main: 96
-  main_1_0: 41
+  main_1_0: 40
 id:
   frontpage: 29
   help docs: 2
   main: 54
-  main_1_0: 24
+  main_1_0: 23
 it:
   frontpage: 60
-  help docs: 11
+  help docs: 41
   main: 90
-  main_1_0: 82
+  main_1_0: 85
 it-CH:
   frontpage: 0
   help docs: 0
@@ -133,22 +134,22 @@ ja:
   frontpage: 44
   help docs: 4
   main: 62
-  main_1_0: 25
+  main_1_0: 24
 km:
   frontpage: 7
   help docs: 2
   main: 49
-  main_1_0: 21
+  main_1_0: 20
 ko:
   frontpage: 52
   help docs: 3
   main: 56
-  main_1_0: 22
+  main_1_0: 21
 lt:
-  frontpage: 18
-  help docs: 7
-  main: 7
-  main_1_0: 33
+  frontpage: 23
+  help docs: 9
+  main: 9
+  main_1_0: 48
 lv:
   frontpage: 0
   help docs: 0
@@ -168,7 +169,7 @@ ml:
   frontpage: 9
   help docs: 3
   main: 52
-  main_1_0: 22
+  main_1_0: 21
 ml-IN:
   frontpage: 0
   help docs: 0
@@ -179,12 +180,12 @@ nl-NL:
   frontpage: 100
   help docs: 47
   main: 94
-  main_1_0: 44
+  main_1_0: 42
 pl:
   frontpage: 100
   help docs: 56
   main: 59
-  main_1_0: 99
+  main_1_0: 94
 pt-BR:
   frontpage: 100
   help docs: 100
@@ -199,37 +200,37 @@ ro:
   frontpage: 100
   help docs: 53
   main: 99
-  main_1_0: 33
+  main_1_0: 31
 ru:
-  frontpage: 58
-  help docs: 8
-  main: 63
-  main_1_0: 20
+  frontpage: 60
+  help docs: 10
+  main: 65
+  main_1_0: 29
 sk:
   frontpage: 52
   help docs: 8
   main: 88
-  main_1_0: 29
+  main_1_0: 28
 sl:
   frontpage: 58
   help docs: 10
   main: 91
-  main_1_0: 31
+  main_1_0: 37
 sr:
   frontpage: 58
   help docs: 11
   main: 96
-  main_1_0: 32
+  main_1_0: 31
 sr-RS:
   frontpage: 58
   help docs: 10
   main: 94
-  main_1_0: 31
+  main_1_0: 30
 sv:
   frontpage: 52
   help docs: 8
   main: 88
-  main_1_0: 29
+  main_1_0: 28
 te:
   frontpage: 15
   help docs: 2
@@ -237,14 +238,14 @@ te:
   main_1_0: 13
 tr:
   frontpage: 52
-  help docs: 8
-  main: 88
-  main_1_0: 29
+  help docs: 10
+  main: 89
+  main_1_0: 39
 uk:
   frontpage: 64
   help docs: 8
   main: 75
-  main_1_0: 27
+  main_1_0: 26
 ur:
   frontpage: 0
   help docs: 0
@@ -259,9 +260,9 @@ vi:
   frontpage: 7
   help docs: 2
   main: 44
-  main_1_0: 20
+  main_1_0: 19
 zh-TW:
-  frontpage: 64
-  help docs: 45
-  main: 99
-  main_1_0: 32
+  frontpage: 100
+  help docs: 46
+  main: 100
+  main_1_0: 100
