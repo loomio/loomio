@@ -462,7 +462,6 @@ en:
     heading: Pending invitations
     email: Email
     invitation_link: Invitation link
-    cancel: Cancel
 
   cancel_invitation_form:
     heading: Cancel invitation
