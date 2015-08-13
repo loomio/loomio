@@ -4,8 +4,8 @@
   .align-center { text-align: center; }
 }
 
-.membership-requests-page__pending-membership-requests,
-.membership-requests-page__previous-membership-requests {
+.membership-requests-page__pending-requests,
+.membership-requests-page__previous-requests {
   @include card;
   ul {
     list-style: none;

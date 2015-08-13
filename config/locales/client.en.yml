@@ -407,7 +407,8 @@ en:
     heading: Membership Requests
     approve: Approve
     ignore: Ignore
-    no_pending_requests: There are currently no pending membership requests.
+    no_pending_requests: There are currently no pending membership requests for this group.
+    no_previous_requests: There are currently no previous membership requests for this group.
     previous_requests: Previous Requests
     previous_request_response: '{{response}} by {{responder}} '
     messages:

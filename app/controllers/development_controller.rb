@@ -141,7 +141,7 @@ class DevelopmentController < ApplicationController
     sign_in patrick
     test_group
     another_test_group
-    10.times do
+    3.times do
       membership_request_from_logged_out
     end
     membership_request_from_user
