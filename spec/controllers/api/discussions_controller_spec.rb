@@ -48,12 +48,6 @@ describe API::DiscussionsController do
         expect(ids).to_not include muted_discussion.id
       end
 
-      it 'marks the discussions it returns as visible in the dashboard when filter is not unread' do
-        get :dashboard
-        json = JSON.parse(response.body)
-        expect(json['discussions'][0]['visible_in_dashboard']).to eq true
-      end
-
       it 'can filter by participating' do
         CommentService.create actor: user, comment: build(:comment, discussion: participating_discussion)
         get :dashboard, filter: :show_participating
@@ -94,12 +88,6 @@ describe API::DiscussionsController do
         get :dashboard, limit: 2
         json = JSON.parse(response.body)
         expect(json['discussions'].count).to eq 2
-      end
-
-      it 'marks the discussions is returns as visible in the inbox when filter is unread' do
-        get :inbox
-        json = JSON.parse(response.body)
-        expect(json['discussions'][0]['visible_in_inbox']).to eq true
       end
     end
 
