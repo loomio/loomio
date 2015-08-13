@@ -29,8 +29,8 @@ angular.module('loomioApp').directive 'navbarSearch', ->
     $scope.searchField = ->
       angular.element('#primary-search-input')[0]
 
-    $scope.shouldExecuteWithSearchField = (active) ->
-      active == $scope.searchField() or KeyEventService.defaultShouldExecute(active)
+    $scope.shouldExecuteWithSearchField = (active, event) ->
+      active == $scope.searchField() or KeyEventService.defaultShouldExecute(active, event)
 
     KeyEventService.registerKeyEvent $scope, 'pressedEsc', ->
       $scope.searchField().blur()
