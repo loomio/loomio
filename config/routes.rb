@@ -147,7 +147,7 @@ Loomio::Application.routes.draw do
       get :unauthorized
     end
     devise_scope :user do
-      resources :sessions, only: [:create, :destroy]
+      resource :sessions, only: [:create, :destroy]
     end
     get '/attachments/credentials',      to: 'attachments#credentials'
     get  '/contacts/:importer/callback', to: 'contacts#callback'
