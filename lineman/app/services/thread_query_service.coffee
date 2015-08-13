@@ -52,12 +52,10 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
       (viewData) ->
         _.filter viewData, (thread) ->
 
-          return false if queryType != 'inbox' and !thread.visibleInDashboard
-
           switch queryType
             when 'important' then return false if !thread.isImportant()
             when 'timeframe' then return false if thread.isImportant()
-            when 'inbox'     then return false if !thread.visibleInInbox or !thread.isUnread()
+            when 'inbox'     then return false if !thread.isUnread()
 
           return false if _.contains(filters, 'show_muted')         !=   thread.isMuted()
           return false if _.contains(filters, 'show_participating') and !thread.isParticipating()

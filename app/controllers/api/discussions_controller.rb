@@ -4,12 +4,12 @@ class API::DiscussionsController < API::RestfulController
 
   def dashboard
     instantiate_collection { |collection| collection_for_dashboard collection }
-    respond_with_collection scope: { visible_in_dashboard: true }, serializer: DiscussionWrapperSerializer, root: 'discussion_wrappers'
+    respond_with_collection serializer: DiscussionWrapperSerializer, root: 'discussion_wrappers'
   end
 
   def inbox
     instantiate_collection { |collection| collection_for_inbox collection }
-    respond_with_collection scope: { visible_in_inbox: true }, serializer: DiscussionWrapperSerializer, root: 'discussion_wrappers'
+    respond_with_collection serializer: DiscussionWrapperSerializer, root: 'discussion_wrappers'
   end
 
   def index

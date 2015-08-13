@@ -17,9 +17,7 @@ class DiscussionSerializer < ActiveModel::Serializer
              :created_at,
              :updated_at,
              :first_sequence_id,
-             :last_sequence_id,
-             :visible_in_dashboard,
-             :visible_in_inbox
+             :last_sequence_id
 
   has_one :author, serializer: UserSerializer, root: 'users'
   has_one :group, serializer: GroupSerializer, root: 'groups'
@@ -33,28 +31,9 @@ class DiscussionSerializer < ActiveModel::Serializer
     object.current_motion
   end
 
-  def visible_in_dashboard
-    scope[:visible_in_dashboard]
-  end
-
-  def visible_in_inbox
-    scope[:visible_in_inbox]
-  end
-
-  def include_visible_in_dashboard?
-    scope[:visible_in_dashboard]
-  end
-
-  def include_visible_in_inbox?
-    scope[:visible_in_inbox]
-  end
-
   def filter(keys)
     keys.delete(:active_proposal) unless object.current_motion.present?
     keys
   end
 
-  def scope
-    super || {}
-  end
 end
