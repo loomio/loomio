@@ -16,4 +16,4 @@ angular.module('loomioApp').factory 'VoteForm', ->
     $scope.yourLastVote = ->
       $scope.vote.proposal().lastVoteByUser(CurrentUser)
 
-    KeyEventService.submitOnEnter scope
+    KeyEventService.submitOnEnter $scope

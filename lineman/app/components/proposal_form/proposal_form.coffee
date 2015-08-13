@@ -7,4 +7,4 @@ angular.module('loomioApp').factory 'ProposalForm', ->
     $scope.submit = FormService.submit $scope, $scope.proposal,
       flashSuccess: "proposal_form.messages.#{actionName}"
 
-    KeyEventService.submitOnEnter(scope)
+    KeyEventService.submitOnEnter $scope
