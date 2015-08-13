@@ -26,5 +26,7 @@ angular.module('loomioApp').factory 'KeyEventService', ($rootScope) ->
       !event.ctrlKey and !event.altKey and !_.contains(['INPUT', 'TEXTAREA', 'SELECT'], active.nodeName)
 
     submitOnEnter: (scope) ->
-      @registerKeyEvent scope, 'pressedEnter', scope.submit, (active, event) ->
-        (event.ctrlKey or event.metaKey) and _.contains(active.classList, 'lmo-primary-form-input')
+      @registerKeyEvent scope, 'pressedEnter', scope.submit, (active, event) =>
+        (event.ctrlKey or event.metaKey) and
+        angular.element(active).scope() == scope and
+        _.contains(active.classList, 'lmo-primary-form-input')
