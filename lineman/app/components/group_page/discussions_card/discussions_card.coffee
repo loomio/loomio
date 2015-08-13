@@ -15,7 +15,7 @@ angular.module('loomioApp').directive 'discussionsCard', ->
         per:      $scope.perPage
       $scope.loaded += $scope.perPage
       Records.discussions.fetchByGroup(options).then (data) ->
-        if (data.discussions or []).length < $scope.perPage?
+        if (data.discussions or []).length < $scope.perPage
           $scope.canLoadMoreDiscussions = false
 
     LoadingService.applyLoadingFunction $scope, 'loadMore'
