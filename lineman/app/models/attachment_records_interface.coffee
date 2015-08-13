@@ -18,8 +18,11 @@ angular.module('loomioApp').factory 'AttachmentRecordsInterface', ($upload, Base
       else
         $.Deferred().resolve() # resolve an empty promise to return
 
+    sanitizeFilename: (fileName) ->
+      fileName.replace(/[^a-z0-9_\-\.]/gi, '_')
+
     attachmentParams: (file) ->
-      filename: file.name
+      filename: @sanitizeFilename(file.name)
       filesize: file.size
       location: @credentials.url + @uploadKey(file)
 
@@ -37,4 +40,4 @@ angular.module('loomioApp').factory 'AttachmentRecordsInterface', ($upload, Base
         "Content-Type": file.type or 'application/octet-stream'
 
     uploadKey: (file) ->
-      @credentials.key.replace('${filename}', file.name)
+      @credentials.key.replace('${filename}', @sanitizeFilename(file.name))
